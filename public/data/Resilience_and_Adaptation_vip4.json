@@ -2,59 +2,120 @@
   "name": "Resilience and Adaptation",
   "name_vi": "Khả Năng Phục Hồi và Thích Nghi",
   "description": "From rejection to renewal — a 4-step journey of self-trust",
-  "keywords_en": ["resilience", "adaptation", "growth", "healing", "renewal"],
-  "keywords_vi": ["khả năng phục hồi", "thích nghi", "trưởng thành", "chữa lành", "tái sinh"],
+  "keywords_en": [
+    "resilience",
+    "adaptation",
+    "growth",
+    "healing",
+    "renewal"
+  ],
+  "keywords_vi": [
+    "khả năng phục hồi",
+    "thích nghi",
+    "trưởng thành",
+    "chữa lành",
+    "tái sinh"
+  ],
   "entries": [
     {
       "slug": "rejection-as-redirect",
-      "keywords_en": ["rejection", "growth", "redirection", "resilience"],
-      "keywords_vi": ["từ chối", "trưởng thành", "chuyển hướng", "sức bật"],
+      "keywords_en": [
+        "rejection",
+        "growth",
+        "redirection",
+        "resilience"
+      ],
+      "keywords_vi": [
+        "từ chối",
+        "trưởng thành",
+        "chuyển hướng",
+        "sức bật"
+      ],
       "copy": {
         "en": "Rejection is not refusal—it is redirection. A 22-year-old in Bangkok applied to 47 design jobs. Forty-six said no. The 47th said yes—and became her dream studio. Each 'no' was a quiet hand on her shoulder, turning her toward the right door. Feel the sting, then listen. A 'no' from a tech giant pushed a Hanoi coder to a startup—where he built the app that later bought the giant. Rejection is a sculptor, chiselling away what does not belong. Let it hurt for one night. Cry into your pillow, write the rage in a letter you never send. Then rise. Ask: 'What is this teaching me?' A Manila teacher was rejected from 12 schools—used the wait to volunteer. One principal saw her with street kids and hired her on the spot. Your worth is not their verdict. It is the quiet fire that keeps applying, keeps learning, keeps believing. Rejection is not the end of the road—it is the bend where the view finally opens. Keep walking. The path is clearing for you.",
         "vi": "Từ chối không phải khước từ—mà là chuyển hướng. Một bạn 22 tuổi ở Bangkok nộp 47 đơn thiết kế. Bốn mươi sáu nói không. Đơn thứ 47 nói có—và thành studio mơ ước. Mỗi 'không' là bàn tay nhẹ trên vai, xoay cô về đúng cửa. Cảm nhận nỗi đau, rồi lắng nghe. Một 'không' từ gã khổng lồ công nghệ đẩy lập trình viên Hà Nội đến startup—nơi anh xây app sau này mua lại gã khổng lồ. Từ chối là nhà điêu khắc, gọt bỏ điều không thuộc về. Để nó đau một đêm. Khóc vào gối, viết giận dữ vào thư không gửi. Rồi đứng dậy. Hỏi: 'Nó dạy tôi gì?' Một giáo viên Manila bị 12 trường từ chối—dùng thời gian chờ để tình nguyện. Một hiệu trưởng thấy cô với trẻ đường phố và nhận ngay. Giá trị bạn không phải phán quyết của họ. Là ngọn lửa lặng lẽ tiếp tục nộp, tiếp tục học, tiếp tục tin. Từ chối không phải cuối đường—là khúc quanh nơi tầm nhìn mở ra. Tiếp tục bước. Con đường đang mở cho bạn."
       },
-      "tags": ["rejection", "growth", "resilience"],
+      "tags": [
+        "rejection",
+        "growth",
+        "resilience"
+      ],
       "audio": "rooms/resil_v4_01_en.mp3"
     },
     {
       "slug": "burnout-as-beckoning",
-      "keywords_en": ["burnout", "rest", "boundaries", "renewal"],
-      "keywords_vi": ["kiệt sức", "nghỉ ngơi", "ranh giới", "tái sinh"],
+      "keywords_en": [
+        "burnout",
+        "rest",
+        "boundaries",
+        "renewal"
+      ],
+      "keywords_vi": [
+        "kiệt sức",
+        "nghỉ ngơi",
+        "ranh giới",
+        "tái sinh"
+      ],
       "copy": {
         "en": "Burnout is not a failure—it is a beckoning. A Saigon copywriter worked 80-hour weeks until her hands shook and words dried. She thought rest was weakness. Then she slept for three days straight. In the quiet, she heard the whisper: 'Come home to yourself.' Burnout is the body's poem, written in exhaustion. It says: slow, breathe, remember joy. A Cebu nurse cried in the supply closet after 36-hour shifts. She took one unpaid day to walk the beach at dawn. The waves taught her rhythm. She returned with boundaries: no double shifts, one sunset weekly. Her patients felt the difference. Burnout is not the end of passion—it is the call to protect it. Light a candle, not a bonfire. Say no to the 11th task. Walk without destination. Journal: 'What nourished me this week?' A Jakarta teacher burned out grading—started drawing with her students instead. Grades rose. So did her smile. You are not a machine. You are a garden. When the soil is tired, rest it. The flowers return stronger. Burnout is the dark before the bloom. Lie down. The earth is holding you.",
         "vi": "Kiệt sức không phải thất bại—mà là lời mời gọi. Một copywriter Sài Gòn làm 80 giờ/tuần đến khi tay run và từ khô. Cô nghĩ nghỉ ngơi là yếu đuối. Rồi cô ngủ thẳng ba ngày. Trong tĩnh lặng, cô nghe tiếng thì thầm: 'Về nhà với chính mình.' Kiệt sức là bài thơ của cơ thể, viết bằng mệt mỏi. Nó nói: chậm lại, thở, nhớ niềm vui. Một y tá Cebu khóc trong phòng dụng cụ sau ca 36 giờ. Cô xin một ngày không lương để đi biển lúc bình minh. Sóng dạy cô nhịp điệu. Cô trở lại với ranh giới: không ca kép, một hoàng hôn mỗi tuần. Bệnh nhân cảm nhận khác biệt. Kiệt sức không phải kết thúc đam mê—mà là lời bảo vệ nó. Thắp nến, đừng đốt lửa trại. Nói không với nhiệm vụ thứ 11. Đi bộ không đích. Ghi nhật ký: 'Tuần này điều gì nuôi dưỡng tôi?' Một giáo viên Jakarta kiệt sức chấm bài—bắt đầu vẽ cùng học sinh. Điểm tăng. Nụ cười cô cũng vậy. Bạn không phải máy móc. Bạn là vườn cây. Khi đất mệt, để nghỉ. Hoa sẽ trở lại mạnh mẽ hơn. Kiệt sức là bóng tối trước nở hoa. Nằm xuống. Đất đang ôm bạn."
       },
-      "tags": ["burnout", "rest", "boundaries"],
+      "tags": [
+        "burnout",
+        "rest",
+        "boundaries"
+      ],
       "audio": "rooms/resil_v4_02_en.mp3"
     },
     {
       "slug": "path-change-as-poetry",
-      "keywords_en": ["career change", "pivot", "evolution", "courage"],
-      "keywords_vi": ["thay đổi nghề", "xoay chuyển", "tiến hóa", "dũng cảm"],
+      "keywords_en": [
+        "career change",
+        "pivot",
+        "evolution",
+        "courage"
+      ],
+      "keywords_vi": [
+        "thay đổi nghề",
+        "xoay chuyển",
+        "tiến hóa",
+        "dũng cảm"
+      ],
       "copy": {
         "en": "Changing paths is not betrayal—it is poetry. A Manila accountant at 35 closed her spreadsheets and opened a bakery. Her father wept. Six months later, he ate her pandesal and wept again—this time from pride. The old path was a sentence. The new path is a stanza. A Hanoi engineer left oil rigs for organic farming. Colleagues called it madness. His first harvest fed 200 families. The earth forgave faster than people. Path changes are seasons. The tree does not cling to last year's leaves. Let them fall. Plant new seeds. Tell your story gently: 'This chapter served me. The next calls louder.' A Cebu teacher became a coder at 40. Her students cheered when she built their class app. Age is not a cage—it is compost. Your past is not wasted; it is the rich soil beneath the new bloom. Honor it with a quiet ritual: burn the old resume, write the new dream on rice paper, release it to the river. The water carries both grief and gratitude. You are allowed to evolve. The path does not end—it rhymes. Keep writing. The poem is still becoming.",
         "vi": "Thay đổi con đường không phải phản bội—mà là thơ. Một kế toán Manila 35 tuổi đóng bảng tính và mở tiệm bánh. Cha cô khóc. Sáu tháng sau, ông ăn pandesal của cô và khóc lần nữa—lần này vì tự hào. Con đường cũ là một câu. Con đường mới là một khổ thơ. Một kỹ sư Hà Nội rời giàn khoan đến nông nghiệp hữu cơ. Đồng nghiệp gọi là điên. Vụ mùa đầu của anh nuôi 200 gia đình. Đất tha thứ nhanh hơn con người. Thay đổi đường là mùa. Cây không bám lá năm cũ. Để chúng rơi. Gieo hạt mới. Kể chuyện nhẹ nhàng: 'Chương này đã phục vụ tôi. Chương sau gọi to hơn.' Một giáo viên Cebu thành coder ở tuổi 40. Học sinh reo hò khi cô xây app lớp. Tuổi không phải lồng—mà là phân bón. Quá khứ bạn không lãng phí; là đất màu dưới hoa mới. Tôn vinh bằng nghi thức lặng: đốt CV cũ, viết giấc mơ mới lên giấy gạo, thả xuống sông. Nước mang cả nỗi buồn và lòng biết ơn. Bạn được phép tiến hóa. Con đường không kết—mà vần. Tiếp tục viết. Bài thơ vẫn đang thành hình."
       },
-      "tags": ["career change", "evolution", "courage"],
+      "tags": [
+        "career change",
+        "evolution",
+        "courage"
+      ],
       "audio": "rooms/resil_v4_03_en.mp3"
     },
     {
       "slug": "healing-as-homecoming",
-      "keywords_en": ["healing", "self-compassion", "rest", "renewal"],
-      "keywords_vi": ["chữa lành", "tự thương", "nghỉ ngơi", "tái tạo"],
+      "keywords_en": [
+        "healing",
+        "self-compassion",
+        "rest",
+        "renewal"
+      ],
+      "keywords_vi": [
+        "chữa lành",
+        "tự thương",
+        "nghỉ ngơi",
+        "tái tạo"
+      ],
       "copy": {
         "en": "Healing is not fixing—it is homecoming. A Jakarta designer lost her portfolio in a flood. For weeks she could not draw. Then she walked to the sea at 5 a.m., let the salt sting her eyes, and sketched the sunrise on a napkin. That napkin became her comeback collection. Healing begins where control ends. After rejection, sit with the ache. Name it: 'This hurts.' After burnout, lie on the floor and feel your spine touch earth. After a path change, light incense for the old dream—thank it, release it. A Saigon writer lost her voice after a breakup. She planted basil on her balcony. Tending green leaves taught her tending broken hearts. Small rituals are stitches: one breath, one page, one kind word to yourself. You are not behind. You are becoming. The cracked pot lets in light. The broken bone grows denser. Your scars are not shame—they are constellations. When the night feels endless, remember: the same sky holds dawn. You are allowed to rest without quitting. You are allowed to rise without apology. Healing is the quiet art of returning to the self you never left. Welcome home. The door was always open.",
         "vi": "Chữa lành không phải sửa chữa—mà là về nhà. Một nhà thiết kế Jakarta mất portfolio trong lũ. Nhiều tuần cô không vẽ được. Rồi cô ra biển lúc 5 giờ sáng, để muối chạm mắt, và phác thảo bình minh trên khăn giấy. Khăn ấy thành bộ sưu tập trở lại. Chữa lành bắt đầu nơi kiểm soát kết thúc. Sau từ chối, ngồi cùng nỗi đau. Đặt tên: 'Điều này đau.' Sau kiệt sức, nằm sàn và cảm cột sống chạm đất. Sau thay đổi đường, thắp hương cho giấc mơ cũ—cảm ơn, buông. Một nhà văn Sài Gòn mất giọng sau chia tay. Cô trồng húng quế ban công. Chăm lá xanh dạy cô chăm tim vỡ. Nghi thức nhỏ là mũi khâu: một hơi thở, một trang giấy, một lời tử tế với mình. Bạn không tụt hậu. Bạn đang thành hình. Nồi nứt để ánh sáng lọt. Xương gãy mọc dày hơn. Vết sẹo bạn không phải xấu hổ—mà là chòm sao. Khi đêm vô tận, nhớ: cùng bầu trời giữ bình minh. Bạn được nghỉ mà không bỏ cuộc. Bạn được đứng dậy không xin lỗi. Chữa lành là nghệ thuật lặng lẽ trở về cái tôi bạn chưa từng rời. Chào mừng về nhà. Cửa luôn mở."
       },
-      "tags": ["healing", "self-compassion", "renewal"],
+      "tags": [
+        "healing",
+        "self-compassion",
+        "renewal"
+      ],
       "audio": "rooms/resil_v4_04_en.mp3"
     }
-  ],
-  "meta": {
-    "created_at": "2025-11-10T13:49:00+07:00",
-    "updated_at": "2025-11-10T13:49:00+07:00",
-    "entry_count": 4,
-    "tier": "vip4",
-    "room_color": "#E91E63"
-  }
+  ]
 }

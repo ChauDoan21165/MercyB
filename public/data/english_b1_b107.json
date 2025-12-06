@@ -13,63 +13,105 @@
   "entries": [
     {
       "slug": "using-going-to-for-plans",
-      "keywords_en": ["future", "going to"],
-      "keywords_vi": ["tương lai", "going to"],
+      "keywords_en": [
+        "future",
+        "going to"
+      ],
+      "keywords_vi": [
+        "tương lai",
+        "going to"
+      ],
       "copy": {
         "en": "Use going to for future plans you already decided. I am going to visit my friend. I am going to study English tonight. I am going to buy a new phone. Add a small detail to make it clear. I am going to study English tonight because I have a test. Going to is perfect for everyday plans.",
         "vi": "Hãy dùng going to cho những kế hoạch bạn đã quyết định. I am going to visit my friend. I am going to study English tonight. I am going to buy a new phone. Thêm một chi tiết nhỏ để câu rõ ràng hơn. I am going to study English tonight because I have a test. Going to rất phù hợp cho kế hoạch hằng ngày."
       },
-      "audio": "b107_01_en.mp3"
+      "audio": "b107_01_en.mp3",
+      "tags": []
     },
     {
       "slug": "using-will-for-decisions",
-      "keywords_en": ["will", "future"],
-      "keywords_vi": ["will", "tương lai"],
+      "keywords_en": [
+        "will",
+        "future"
+      ],
+      "keywords_vi": [
+        "will",
+        "tương lai"
+      ],
       "copy": {
         "en": "Use will for quick decisions or offers. I will help you. I will call you later. I will take this one. These sentences are short and polite. Will is also used for predictions. It will rain tomorrow. This pattern is common in real conversations.",
         "vi": "Hãy dùng will cho quyết định nhanh hoặc lời đề nghị. I will help you. I will call you later. I will take this one. Đây là các câu đơn giản và lịch sự. Will cũng dùng cho dự đoán. It will rain tomorrow. Mẫu này rất phổ biến trong hội thoại thực tế."
       },
-      "audio": "b107_02_en.mp3"
+      "audio": "b107_02_en.mp3",
+      "tags": []
     },
     {
       "slug": "present-continuous-for-arrangements",
-      "keywords_en": ["future", "arrangements"],
-      "keywords_vi": ["tương lai", "sắp xếp"],
+      "keywords_en": [
+        "future",
+        "arrangements"
+      ],
+      "keywords_vi": [
+        "tương lai",
+        "sắp xếp"
+      ],
       "copy": {
         "en": "Use present continuous for fixed arrangements. I am meeting my friend tomorrow. I am traveling next week. I am having dinner with my family tonight. These plans are already organized. This form makes your English sound natural and confident.",
         "vi": "Hãy dùng hiện tại tiếp diễn cho các kế hoạch đã được sắp xếp. I am meeting my friend tomorrow. I am traveling next week. I am having dinner with my family tonight. Những kế hoạch này đã được chuẩn bị trước. Mẫu câu này giúp tiếng Anh của bạn tự nhiên và tự tin."
       },
-      "audio": "b107_03_en.mp3"
+      "audio": "b107_03_en.mp3",
+      "tags": []
     },
     {
       "slug": "talking-about-goals",
-      "keywords_en": ["goals", "future"],
-      "keywords_vi": ["mục tiêu", "tương lai"],
+      "keywords_en": [
+        "goals",
+        "future"
+      ],
+      "keywords_vi": [
+        "mục tiêu",
+        "tương lai"
+      ],
       "copy": {
         "en": "Talk about your goals using simple lines. I want to learn English better. I want to save money. I want to travel next year. Add one small reason. I want to learn English better because it helps my job. Clear goals make your speaking stronger.",
         "vi": "Hãy nói về mục tiêu của bạn bằng các câu đơn giản. I want to learn English better. I want to save money. I want to travel next year. Thêm một lý do nhỏ. I want to learn English better because it helps my job. Mục tiêu rõ ràng giúp cách nói của bạn mạnh mẽ hơn."
       },
-      "audio": "b107_04_en.mp3"
+      "audio": "b107_04_en.mp3",
+      "tags": []
     },
     {
       "slug": "making-plans-with-others",
-      "keywords_en": ["plans", "conversation"],
-      "keywords_vi": ["kế hoạch", "hội thoại"],
+      "keywords_en": [
+        "plans",
+        "conversation"
+      ],
+      "keywords_vi": [
+        "kế hoạch",
+        "hội thoại"
+      ],
       "copy": {
         "en": "Use easy patterns to make plans with someone. Do you want to meet tonight? What time is good for you? Let's eat together after work. Add final confirmation. Great. See you at seven. Simple planning conversations help you interact confidently.",
         "vi": "Hãy dùng mẫu câu đơn giản để lên kế hoạch với người khác. Do you want to meet tonight? What time is good for you? Let's eat together after work. Thêm phần xác nhận cuối. Great. See you at seven. Hội thoại lập kế hoạch giúp bạn giao tiếp tự tin hơn."
       },
-      "audio": "b107_05_en.mp3"
+      "audio": "b107_05_en.mp3",
+      "tags": []
     },
     {
       "slug": "daily-future-practice",
-      "keywords_en": ["practice", "future"],
-      "keywords_vi": ["luyện tập", "tương lai"],
+      "keywords_en": [
+        "practice",
+        "future"
+      ],
+      "keywords_vi": [
+        "luyện tập",
+        "tương lai"
+      ],
       "copy": {
         "en": "Practice making one future sentence every morning. Use going to, will, or present continuous. I am going to cook later. I will call my friend. I am meeting my teacher tomorrow. Daily practice helps your future tense become natural.",
         "vi": "Hãy luyện nói một câu về tương lai mỗi sáng. Dùng going to, will hoặc hiện tại tiếp diễn. I am going to cook later. I will call my friend. I am meeting my teacher tomorrow. Luyện mỗi ngày giúp thì tương lai của bạn trở nên tự nhiên."
       },
-      "audio": "b107_06_en.mp3"
+      "audio": "b107_06_en.mp3",
+      "tags": []
     }
   ]
 }

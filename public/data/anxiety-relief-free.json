@@ -1,6 +1,4 @@
 {
-  "schema_version": "1.0",
-  "schema_id": "anxiety-relief-free",
   "id": "anxiety-relief-free",
   "tier": "free",
   "domain": "",
@@ -106,13 +104,5 @@
   "room_essay": {
     "en": "Practical guidance for reducing anxiety with immediate, effective techniques to restore calm and focus. Learn deep breathing methods to lower heart rate during stressful moments and grounding exercises to anchor yourself in the present. These simple, actionable practices build resilience against anxious thoughts and promote daily emotional balance. Incorporate them into your routine for gradual improvement in managing worry and tension. Start with just a few minutes each day to experience relief. Discover deeper guidance in higher tiers.",
     "vi": "Hướng dẫn thực tế để giảm lo âu với các kỹ thuật tức thì, hiệu quả để khôi phục sự bình tĩnh và tập trung. Học phương pháp thở sâu để giảm nhịp tim trong lúc căng thẳng và các bài tập tiếp đất để neo mình vào hiện tại. Những thực hành đơn giản, dễ áp dụng này xây dựng khả năng phục hồi trước suy nghĩ lo âu và thúc đẩy cân bằng cảm xúc hàng ngày. Kết hợp chúng vào thói quen để cải thiện dần dần trong việc quản lý lo lắng và căng thẳng. Bắt đầu chỉ với vài phút mỗi ngày để trải nghiệm sự nhẹ nhõm. Khám phá thêm ở cấp độ cao hơn."
-  },
-  "safety_disclaimer": {
-    "en": "",
-    "vi": ""
-  },
-  "crisis_footer": {
-    "en": "",
-    "vi": ""
   }
 }

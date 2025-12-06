@@ -12,72 +12,135 @@
   "entries": [
     {
       "slug": "the-fractured-mirror",
-      "keywords_en": ["worth", "identity", "distortion"],
-      "keywords_vi": ["giá trị", "bản sắc", "biến dạng"],
+      "keywords_en": [
+        "worth",
+        "identity",
+        "distortion"
+      ],
+      "keywords_vi": [
+        "giá trị",
+        "bản sắc",
+        "biến dạng"
+      ],
       "copy": {
         "en": "Distorted self-worth is like looking into a fractured mirror—you see pieces of yourself, but never the whole truth. You focus on flaws, minimize strengths, and assume others see you through the same harsh lens. These distortions often form in environments where love was conditional, praise inconsistent, or success required perfection. When approval was unpredictable, you learned to distrust your value. The fractured mirror becomes your inner judge, shaping a self-image built not on truth, but on old wounds.",
         "vi": "Giá trị bản thân bị biến dạng giống như soi vào chiếc gương nứt—bạn chỉ nhìn thấy những mảnh rời rạc, không bao giờ thấy toàn cảnh. Bạn phóng đại lỗi lầm, thu nhỏ điểm mạnh và cho rằng người khác nhìn bạn qua lăng kính khắc nghiệt giống vậy. Sự biến dạng này thường xuất phát từ môi trường nơi tình yêu có điều kiện, lời khen thất thường hoặc thành công đòi hỏi hoàn hảo. Khi sự chấp nhận không ổn định, bạn học cách nghi ngờ giá trị của chính mình. Chiếc gương nứt trở thành quan tòa bên trong, hình thành cái nhìn sai lệch về con người thật của bạn."
       },
-      "tags": ["worth", "identity"],
+      "tags": [
+        "worth",
+        "identity"
+      ],
       "audio": "vip6_swd_1.mp3"
     },
     {
       "slug": "why-you-cannot-see-your-own-value",
-      "keywords_en": ["blindspots", "self-esteem", "shadow"],
-      "keywords_vi": ["điểm mù", "tự trọng", "bóng tối"],
+      "keywords_en": [
+        "blindspots",
+        "self-esteem",
+        "shadow"
+      ],
+      "keywords_vi": [
+        "điểm mù",
+        "tự trọng",
+        "bóng tối"
+      ],
       "copy": {
         "en": "Many cannot see their own value because they were taught to prioritize others’ needs, emotions, and expectations above their own. You learned to earn worth through usefulness rather than existence. When worth becomes transactional, you fear resting, saying no, or disappointing people. You believe value must be proven repeatedly. This creates exhaustion, resentment, and a chronic sense that you are never enough. The inability to see your worth is not a flaw in character—it is the residue of being valued only for what you provided, not who you were.",
         "vi": "Nhiều người không nhìn thấy giá trị của mình vì họ được dạy phải đặt nhu cầu, cảm xúc và kỳ vọng của người khác lên trên bản thân. Bạn học cách kiếm giá trị thông qua sự hữu ích thay vì sự tồn tại. Khi giá trị trở thành trao đổi, bạn sợ nghỉ ngơi, sợ nói không, sợ làm người khác thất vọng. Bạn tin rằng giá trị phải được chứng minh liên tục. Điều này tạo ra kiệt sức, oán giận và cảm giác mãn tính rằng mình không bao giờ đủ tốt. Không thể thấy giá trị của mình không phải khuyết điểm; đó là hệ quả của việc từng chỉ được trân trọng vì những gì bạn làm chứ không phải con người bạn."
       },
-      "tags": ["self-esteem", "blindspots"],
+      "tags": [
+        "self-esteem",
+        "blindspots"
+      ],
       "audio": "vip6_swd_2.mp3"
     },
     {
       "slug": "comparing-yourself-to-ghosts",
-      "keywords_en": ["comparison", "identity", "pressure"],
-      "keywords_vi": ["so sánh", "bản sắc", "áp lực"],
+      "keywords_en": [
+        "comparison",
+        "identity",
+        "pressure"
+      ],
+      "keywords_vi": [
+        "so sánh",
+        "bản sắc",
+        "áp lực"
+      ],
       "copy": {
         "en": "Self-worth distorts easily when you compare yourself to ghosts—idealized versions of others, imagined expectations, or internalized voices from the past. You measure yourself against standards no human can meet. You forget that people show their highlights, not their struggles. Comparison steals your ability to see your unique path, replacing authenticity with inadequacy. You lose sight of who you are while chasing who you think you should be. The shadow here is the belief that value comes from winning against others, rather than belonging to yourself.",
         "vi": "Giá trị bản thân bị bóp méo khi bạn so sánh mình với những bóng ma—những phiên bản lý tưởng hóa của người khác, kỳ vọng tưởng tượng hoặc giọng nói cũ trong tâm trí. Bạn đo giá trị của mình theo những tiêu chuẩn không ai có thể đạt được. Bạn quên rằng người ta chỉ cho thấy những khoảnh khắc đẹp nhất, không phải những cuộc chiến bên trong. Sự so sánh tước đi khả năng nhìn thấy con đường độc nhất của bạn, thay thế sự chân thật bằng cảm giác kém cỏi. Bạn đánh mất chính mình khi cố trở thành người mà bạn nghĩ mình phải là. Bóng tối ở đây là niềm tin rằng giá trị đến từ việc vượt trội hơn người khác thay vì thuộc về chính mình."
       },
-      "tags": ["comparison", "identity"],
+      "tags": [
+        "comparison",
+        "identity"
+      ],
       "audio": "vip6_swd_3.mp3"
     },
     {
       "slug": "the-shadow-of-not-enough",
-      "keywords_en": ["shadow", "self-worth", "insecurity"],
-      "keywords_vi": ["bóng tối", "giá trị", "bất an"],
+      "keywords_en": [
+        "shadow",
+        "self-worth",
+        "insecurity"
+      ],
+      "keywords_vi": [
+        "bóng tối",
+        "giá trị",
+        "bất an"
+      ],
       "copy": {
         "en": "The shadow of “not enough” shows up in subtle ways—downplaying achievements, apologizing for your presence, or expecting rejection before connection. You anticipate failure even when success is likely. You feel replaceable, forgettable, or undeserving. This shadow forms when your emotional world lacked consistent affirmation. When worth was not mirrored back to you, you learned to question it. Now, even when people value you, the shadow whispers that they must be mistaken. Healing means challenging the old script that your existence needs justification.",
         "vi": "Bóng tối của “không đủ tốt” xuất hiện rất âm thầm—hạ thấp thành tựu, xin lỗi vì sự hiện diện của mình hoặc mong đợi bị từ chối trước khi kết nối. Bạn dự đoán thất bại ngay cả khi thành công có khả năng. Bạn cảm thấy mình có thể bị thay thế, dễ bị lãng quên hoặc không xứng đáng. Bóng tối này hình thành khi thế giới cảm xúc của bạn thiếu sự khẳng định ổn định. Khi giá trị của bạn không được phản chiếu, bạn học cách nghi ngờ nó. Giờ đây, ngay cả khi người khác trân trọng bạn, bóng tối thì thầm rằng họ nhầm. Chữa lành là thách thức bản kịch cũ rằng sự tồn tại của bạn cần phải được chứng minh."
       },
-      "tags": ["shadow", "insecurity"],
+      "tags": [
+        "shadow",
+        "insecurity"
+      ],
       "audio": "vip6_swd_4.mp3"
     },
     {
       "slug": "reclaiming-your-inherent-worth",
-      "keywords_en": ["healing", "worth", "integration"],
-      "keywords_vi": ["chữa lành", "giá trị", "tích hợp"],
+      "keywords_en": [
+        "healing",
+        "worth",
+        "integration"
+      ],
+      "keywords_vi": [
+        "chữa lành",
+        "giá trị",
+        "tích hợp"
+      ],
       "copy": {
         "en": "Reclaiming self-worth means returning to the truth that your value is inherent, not conditional. You learn to validate yourself rather than chasing external approval. You honor your needs, desires, and boundaries without apology. You stop performing and begin belonging—to yourself first. As you integrate the fragments of your identity, the fractured mirror becomes whole again. You start recognizing your strengths, accepting imperfections, and standing with quiet confidence. Worth becomes something you carry, not something you chase.",
         "vi": "Lấy lại giá trị bản thân nghĩa là trở về sự thật rằng giá trị của bạn là vốn có, không phải có điều kiện. Bạn học cách tự công nhận mình thay vì đuổi theo sự chấp thuận từ bên ngoài. Bạn tôn trọng nhu cầu, mong muốn và ranh giới của mình mà không xin lỗi. Bạn dừng việc biểu diễn và bắt đầu thuộc về—trước hết là thuộc về chính mình. Khi bạn tích hợp lại những mảnh bản sắc rời rạc, chiếc gương nứt trở nên nguyên vẹn. Bạn bắt đầu nhận ra điểm mạnh, chấp nhận khuyết điểm và đứng vững với sự tự tin nhẹ nhàng. Giá trị trở thành thứ bạn mang theo, không phải thứ bạn đuổi theo."
       },
-      "tags": ["healing", "worth"],
+      "tags": [
+        "healing",
+        "worth"
+      ],
       "audio": "vip6_swd_5.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all", "combined", "full sequence"],
-      "keywords_vi": ["tất cả", "kết hợp", "chuỗi đầy đủ"],
+      "keywords_en": [
+        "all",
+        "combined",
+        "full sequence"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "kết hợp",
+        "chuỗi đầy đủ"
+      ],
       "copy": {
         "en": "Self-worth distortions form through fractured mirrors, chronic comparisons, old wounds, and the belief that worth must be earned. You downplay strengths, inflate flaws, and fear taking up space. You struggle to see your value because you were once valued only for your usefulness, not your existence. These distortions create the shadow of not-enoughness—an inner voice that questions your belonging. Healing requires reclaiming inherent worth, validating yourself, and allowing your identity to stand whole. Worth becomes something carried from within, not borrowed from others.",
         "vi": "Sự biến dạng giá trị bản thân hình thành từ những chiếc gương nứt, sự so sánh mãn tính, vết thương cũ và niềm tin rằng giá trị phải được kiếm. Bạn hạ thấp điểm mạnh, phóng đại điểm yếu và sợ chiếm chỗ. Bạn khó nhìn thấy giá trị của mình vì từng chỉ được trân trọng vì những gì bạn làm, không phải con người bạn. Sự biến dạng này tạo ra bóng tối của sự không-đủ—giọng nói nghi ngờ bạn có xứng đáng hay không. Chữa lành đòi hỏi lấy lại giá trị vốn có, tự xác nhận mình và cho phép bản sắc đứng trọn vẹn. Giá trị trở thành thứ xuất phát từ bên trong, không phải thứ mượn từ người khác."
       },
-      "tags": ["all", "combined"],
+      "tags": [
+        "all",
+        "combined"
+      ],
       "audio": "vip6_swd_1.mp3 vip6_swd_2.mp3 vip6_swd_3.mp3 vip6_swd_4.mp3 vip6_swd_5.mp3"
     }
-  ],
-  "meta": {
-    "entry_count": 6
-  }
+  ]
 }

@@ -1,4 +1,3 @@
-
 {
   "id": "survival_resilience_vip1_srs12",
   "tier": "VIP1 / VIP1",
@@ -14,64 +13,117 @@
   "entries": [
     {
       "slug": "recognizing-early-signs-of-landslide-risk",
-      "keywords_en": ["landslide signs", "soil movement", "early warning"],
-      "keywords_vi": ["dấu hiệu sạt lở", "chuyển động đất", "cảnh báo sớm"],
+      "keywords_en": [
+        "landslide signs",
+        "soil movement",
+        "early warning"
+      ],
+      "keywords_vi": [
+        "dấu hiệu sạt lở",
+        "chuyển động đất",
+        "cảnh báo sớm"
+      ],
       "copy": {
         "en": "Before a landslide occurs, the ground often gives subtle warnings: cracks forming in soil or walls, doors or windows suddenly jamming, unusual leaning of trees or poles, or water seeping from new places on slopes. Small rock falls or sudden muddy water flow are strong signals that the slope is weakening. If you live near hillsides, pay attention after long rain or rapid snowmelt. Heavy rain saturates the soil, making it heavy and unstable. When these early signs appear, move family members to a safer area immediately and avoid walking near slopes. Awareness is your strongest protection.",
         "vi": "Trước khi sạt lở xảy ra, mặt đất thường có những cảnh báo tinh tế: đất hoặc tường nứt, cửa sổ hoặc cửa ra vào đột nhiên kẹt, cây hoặc cột nghiêng bất thường, hoặc nước rỉ ra từ các điểm mới trên sườn dốc. Đá nhỏ rơi xuống hoặc dòng nước đục đột ngột là dấu hiệu mạnh cho thấy mái dốc đang yếu. Nếu sống gần đồi dốc, hãy đặc biệt chú ý sau mưa kéo dài hoặc tan băng nhanh. Mưa lớn làm đất bão hòa, trở nên nặng và mất ổn định. Khi xuất hiện những dấu hiệu này, hãy di chuyển gia đình đến nơi an toàn ngay và tránh lại gần khu vực dốc. Nhận biết sớm là cách bảo vệ mạnh nhất."
       },
-      "audio": "srs12_01_en.mp3"
+      "audio": "srs12_01_en.mp3",
+      "tags": []
     },
     {
       "slug": "understanding-which-areas-are-most-at-risk",
-      "keywords_en": ["risk zones", "slope danger", "geography"],
-      "keywords_vi": ["khu vực nguy cơ", "dốc nguy hiểm", "địa hình"],
+      "keywords_en": [
+        "risk zones",
+        "slope danger",
+        "geography"
+      ],
+      "keywords_vi": [
+        "khu vực nguy cơ",
+        "dốc nguy hiểm",
+        "địa hình"
+      ],
       "copy": {
         "en": "Certain locations are naturally more prone to landslides: steep hillsides, newly cut slopes, areas near riverbanks, and places with loose or sandy soil. Homes built at the bottom or midpoint of a steep slope face the greatest risk. Construction that alters drainage—such as new roads, retaining walls, or excavation—can weaken the soil unexpectedly. After heavy rain, avoid walking near cliffs or drainage channels even if they look stable. If your community has a history of landslides, treat every storm with caution. Knowing the terrain around your home helps you avoid unnecessary danger.",
         "vi": "Một số vị trí tự nhiên dễ sạt lở hơn: sườn dốc cao, khu vực mới bị cắt xẻ, vùng gần bờ sông và nơi có đất rời hoặc cát. Nhà nằm dưới chân hoặc giữa sườn dốc có nguy cơ cao nhất. Việc xây dựng làm thay đổi dòng thoát nước—như đường mới, tường chắn hoặc đào móng—có thể khiến đất yếu đi bất ngờ. Sau mưa lớn, tránh đi gần vách đá hoặc kênh thoát nước dù trông có vẻ ổn định. Nếu khu vực bạn từng có lịch sử sạt lở, hãy thận trọng trong mọi cơn bão. Hiểu địa hình quanh nhà giúp bạn tránh được nguy hiểm không cần thiết."
       },
-      "audio": "srs12_02_en.mp3"
+      "audio": "srs12_02_en.mp3",
+      "tags": []
     },
     {
       "slug": "how-to-react-when-a-landslide-begins",
-      "keywords_en": ["reaction", "emergency movement", "escaping"],
-      "keywords_vi": ["phản ứng", "di chuyển khẩn cấp", "thoát nạn"],
+      "keywords_en": [
+        "reaction",
+        "emergency movement",
+        "escaping"
+      ],
+      "keywords_vi": [
+        "phản ứng",
+        "di chuyển khẩn cấp",
+        "thoát nạn"
+      ],
       "copy": {
         "en": "If the ground suddenly shifts, you hear rumbling, or you see soil rushing downhill, act immediately. Move perpendicular to the flow—never directly uphill or downhill—because landslides follow the steepest path. Run toward stable ground such as flat areas, wide roads, or open spaces. If escaping is impossible, curl into a ball, protect your head and neck with your arms, and stay as compact as possible to reduce injuries. Avoid rivers and bridges during active slides; debris can block waterways and create sudden floods. Quick, decisive action saves lives.",
         "vi": "Nếu mặt đất bất ngờ dịch chuyển, bạn nghe tiếng ầm hoặc thấy đất đá trượt xuống, hãy hành động ngay lập tức. Di chuyển vuông góc với hướng trượt—không chạy thẳng lên hay xuống dốc—vì sạt lở luôn theo đường dốc nhất. Hãy chạy về phía đất bằng, đường rộng hoặc khu vực trống. Nếu không thể thoát, hãy cuộn người lại, dùng tay che đầu và cổ, giữ cơ thể nhỏ gọn hết mức để giảm thương tích. Tránh sông và cầu trong lúc sạt lở; vật liệu trôi có thể chặn dòng và gây lũ đột ngột. Hành động nhanh và dứt khoát cứu sống bạn."
       },
-      "audio": "srs12_03_en.mp3"
+      "audio": "srs12_03_en.mp3",
+      "tags": []
     },
     {
       "slug": "protecting-your-home-from-soil-instability",
-      "keywords_en": ["home protection", "soil stability", "drainage"],
-      "keywords_vi": ["bảo vệ nhà", "ổn định đất", "thoát nước"],
+      "keywords_en": [
+        "home protection",
+        "soil stability",
+        "drainage"
+      ],
+      "keywords_vi": [
+        "bảo vệ nhà",
+        "ổn định đất",
+        "thoát nước"
+      ],
       "copy": {
         "en": "While homeowners cannot fully prevent landslides, small maintenance habits reduce risk. Ensure gutters, drains, and ditches are clear before storms so water flows away from your home. Redirect roof runoff using extended downspouts. Avoid piling heavy objects, water tanks, or newly added soil near the edge of slopes—the extra weight weakens them. Planting deep-rooted vegetation can help stabilize mild slopes over time. If cracks appear in the yard or retaining walls lean, treat them as serious warnings and consult local authorities. Early maintenance prevents sudden emergencies.",
         "vi": "Dù chủ nhà không thể ngăn sạt lở hoàn toàn, vài thói quen bảo trì nhỏ giúp giảm nguy cơ. Dọn sạch máng xối, cống và rãnh trước bão để nước thoát ra khỏi nhà. Dùng ống dẫn dài để hướng nước từ mái nhà ra xa. Tránh đặt vật nặng, bồn nước hoặc đổ thêm đất gần mép dốc—trọng lượng dư làm dốc yếu đi. Trồng cây rễ sâu có thể giúp ổn định dốc nhẹ theo thời gian. Nếu sân xuất hiện vết nứt hoặc tường chắn nghiêng, hãy coi đó là cảnh báo nghiêm trọng và liên hệ chính quyền địa phương. Bảo trì sớm giúp ngăn khẩn cấp bất ngờ."
       },
-      "audio": "srs12_04_en.mp3"
+      "audio": "srs12_04_en.mp3",
+      "tags": []
     },
     {
       "slug": "safe-evacuation-during-heavy-rain-or-storms",
-      "keywords_en": ["evacuation", "storms", "rain safety"],
-      "keywords_vi": ["sơ tán", "bão lớn", "an toàn mưa lũ"],
+      "keywords_en": [
+        "evacuation",
+        "storms",
+        "rain safety"
+      ],
+      "keywords_vi": [
+        "sơ tán",
+        "bão lớn",
+        "an toàn mưa lũ"
+      ],
       "copy": {
         "en": "During heavy rain, avoid walking or driving near slopes, cliffs, construction sites, or recently flooded areas. Even small slides can sweep vehicles or people downhill. If authorities issue an evacuation order, leave early—waiting too long increases risk because roads may collapse or become blocked by debris. Choose wide, stable routes and avoid shortcuts through hilly terrain. Keep emergency bags, flashlights, and important documents ready during storm seasons so evacuation is fast and calm. Safety depends on timing, not bravery.",
         "vi": "Trong mưa lớn, tránh đi bộ hoặc lái xe gần sườn dốc, vách đá, công trình xây dựng hoặc khu vực mới ngập. Ngay cả trượt lở nhỏ cũng có thể cuốn trôi người hoặc xe. Nếu chính quyền yêu cầu sơ tán, hãy rời đi sớm—đợi quá lâu làm tăng nguy hiểm vì đường có thể sụp hoặc bị chặn bởi đất đá. Chọn tuyến đường rộng và ổn định, tránh đường tắt qua khu vực đồi núi. Luôn chuẩn bị túi khẩn cấp, đèn pin và giấy tờ quan trọng trong mùa bão để việc sơ tán diễn ra nhanh và bình tĩnh. An toàn phụ thuộc vào thời điểm, không phải sự liều lĩnh."
       },
-      "audio": "srs12_05_en.mp3"
+      "audio": "srs12_05_en.mp3",
+      "tags": []
     },
     {
       "slug": "what-to-do-after-a-landslide",
-      "keywords_en": ["after landslide", "secondary hazards", "recovery"],
-      "keywords_vi": ["sau sạt lở", "mối nguy thứ cấp", "khắc phục"],
+      "keywords_en": [
+        "after landslide",
+        "secondary hazards",
+        "recovery"
+      ],
+      "keywords_vi": [
+        "sau sạt lở",
+        "mối nguy thứ cấp",
+        "khắc phục"
+      ],
       "copy": {
         "en": "After the ground stops moving, stay alert—secondary slides often occur. Avoid returning to damaged slopes until authorities confirm safety. Watch for leaning trees, cracked roads, unstable rocks, or unusual water flow patterns. Do not enter partially buried homes or buildings; they may collapse further. Report blocked drains, broken pipes, and power line damage to local officials. Check on neighbors, especially elders, but avoid walking through muddy areas that may hide deep holes. Recovery is safest when done slowly and with awareness.",
         "vi": "Khi đất ngừng trượt, hãy tiếp tục cảnh giác—sạt lở thứ cấp thường xảy ra. Tránh quay lại khu vực dốc hư hại cho đến khi chính quyền xác nhận an toàn. Chú ý cây nghiêng, đường nứt, đá mất ổn định hoặc dòng nước chảy bất thường. Không vào nhà hoặc công trình bị chôn một phần; chúng có thể sụp thêm. Báo cáo cống tắc, ống nước vỡ hoặc dây điện hư cho cơ quan địa phương. Kiểm tra hàng xóm, đặc biệt là người già, nhưng tránh đi vào bùn sâu có thể che miệng hố. Khắc phục sau sạt lở an toàn nhất khi làm chậm rãi và tỉnh táo."
       },
-      "audio": "srs12_06_en.mp3"
+      "audio": "srs12_06_en.mp3",
+      "tags": []
     }
   ]
 }
-

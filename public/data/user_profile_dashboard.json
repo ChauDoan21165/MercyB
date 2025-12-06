@@ -1,11 +1,11 @@
 {
   "header": "// dumb tree, no diagnostics, catch keyword, speak meter, plain (b1), bilingual (en-vi), gentle persuasion only\n\nUser Profile and Dashboard, personalized learning management\n\nSafety first; educational guidance only\n\nEach entry: teach practical steps for profile customization, progress tracking, and community engagement\n\nPhilosophy: empowering, organized, actionable, real-world, humane language\n\nBeliefs:\n- Don't overwhelm. Support growth.\n- Don't prescribe. Encourage exploration.\n- Don't rush. Build consistently.\n\nTalk points\n- Your profile is your learning identity.\n- Progress tracking fuels motivation.\n- Community connection enhances learning.\n- Consistency builds lasting habits.\n\nTiny habits to teach:\n- Update one profile field weekly.\n- Check progress once daily.\n- Connect with one learning partner monthly.\n- Reflect on one achievement daily.",
-  "schema_version": "1.1",
-  "schema_id": "user_profile_dashboard",
   "description": "Echologic Mercy Blade room for user profile management and learning dashboard",
   "description_vi": "Phòng Mercy Blade về quản lý hồ sơ người dùng và bảng điều khiển học tập",
-  "supported_languages": ["en", "vi"],
-  "localization": { "default": "en", "fallback": "en", "i18n_required": true },
+  "supported_languages": [
+    "en",
+    "vi"
+  ],
   "room_color": "#4FC3F7",
   "content_policy_note": {
     "en": "Information is educational; consult professionals for personalized advice on health and learning strategies.",
@@ -15,16 +15,6 @@
     "en": "For personalized learning strategies or health concerns, consult appropriate professionals.",
     "vi": "Đối với chiến lược học tập cá nhân hoặc vấn đề sức khỏe, tham khảo các chuyên gia phù hợp."
   },
-  "meta": {
-    "created_at": "2025-10-20T21:33:00+09:00",
-    "updated_at": "2025-10-20T21:33:00+09:00",
-    "checksum_sha256": "<placeholder>",
-    "meta_notes": "Keyword-driven; field-tested tone; UUIDv4 artifacts; checksum=SHA-256 of canonical JSON; version to -v001 on creation.",
-    "i18n_verified": true,
-    "entry_count": 3,
-    "artifact_set_id": "user_profile_dashboard_v1_20251020",
-    "data_format_version": "MercyBlade-Core-v1.2"
-  },
   "enums": {
     "tags": [
       "profile",
@@ -33,35 +23,81 @@
       "community",
       "personal_growth"
     ],
-    "urgency": ["immediate", "soon", "routine"],
-    "severity_level": [1, 2, 3, 4, 5],
-    "systems": ["learning_management"]
+    "urgency": [
+      "immediate",
+      "soon",
+      "routine"
+    ],
+    "severity_level": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "systems": [
+      "learning_management"
+    ]
   },
   "room_essay": {
     "format": "markdown",
     "en": "## Your Health & Learning Hub: Profile and Dashboard\n\nYour **User Profile and Dashboard** is the heart of your Mercy Blade experience, designed to empower your journey toward better health, wellness, and personal growth. It's more than just a page—it's your personalized command center where you customize your identity, track your progress, and connect with a vibrant community of learners. Whether you're managing diabetes, building confidence, or exploring career burnout recovery, your dashboard keeps you organized, motivated, and engaged.\n\n### **Customizing Your Profile**\nYour profile reflects who you are and what you care about. Add your interests (e.g., fitness, mindfulness, nutrition), set your learning style (visual, hands-on, goal-driven), and share a bit about your goals. For instance, Sarah, a VIP 1 user, customized her profile to highlight her passion for diabetes management and mental wellness. This helped her discover relevant rooms and connect with like-minded learners. Personalization makes your experience uniquely yours, ensuring the app serves your needs.\n\n### **Tracking Your Progress**\nThe dashboard shows your learning journey at a glance: rooms completed, points earned, and goals achieved. Track metrics like time spent, messages sent, or weekly milestones. Minh, a free-tier user, uses the progress tracker to monitor his 5-rooms-per-week goal, staying consistent with habit-building content. For VIP 3 users, the dashboard also highlights matchmaking activity—partners connected, chats engaged, and collaborative goals unlocked. Progress tracking turns abstract efforts into tangible wins, fueling motivation.\n\n### **Engaging with the Community**\nYour dashboard is a gateway to connection. View suggestions for learning partners (VIP 3 exclusive), join room discussions, or share insights with peers. Hùng, a VIP 3 member, uses his dashboard to manage matchmaking chats, swapping workout plans with a fitness buddy and exchanging mindfulness techniques with another learner. The community feature transforms solitary learning into a shared adventure, fostering accountability and support.\n\n### **Staying Consistent**\nConsistency is key to growth, and your dashboard helps you stay on track. Set reminders, review daily/weekly stats, and celebrate small victories. The point system rewards engagement, unlocking new rooms and resources. Your profile and dashboard aren't just tools—they're your partners in lifelong learning, guiding you toward a healthier, more knowledgeable you. Start customizing today and make every interaction count!",
     "vi": "## Trung Tâm Sức Khỏe & Học Tập: Hồ Sơ và Bảng Điều Khiển\n\n**Hồ Sơ Người Dùng và Bảng Điều Khiển** của bạn là trái tim của trải nghiệm Mercy Blade, được thiết kế để trao quyền cho hành trình hướng tới sức khỏe, phúc lợi và phát triển cá nhân tốt hơn. Đây không chỉ là một trang—mà là trung tâm chỉ huy cá nhân hóa nơi bạn tùy chỉnh danh tính, theo dõi tiến độ và kết nối với cộng đồng học viên sôi động. Dù bạn đang quản lý đái tháo đường, xây dựng tự tin hay khám phá phục hồi kiệt sức nghề nghiệp, bảng điều khiển giữ bạn có tổ chức, động lực và tham gia.\n\n### **Tùy Chỉnh Hồ Sơ**\nHồ sơ phản ánh bạn là ai và bạn quan tâm gì. Thêm sở thích (ví dụ: thể dục, chánh niệm, dinh dưỡng), đặt phong cách học (hình ảnh, thực hành, định hướng mục tiêu) và chia sẻ mục tiêu. Ví dụ, Lan, người dùng VIP 1, tùy chỉnh hồ sơ để nổi bật đam mê quản lý đái tháo đường và sức khỏe tinh thần. Điều này giúp cô khám phá các phòng liên quan và kết nối với người học cùng chí hướng. Cá nhân hóa khiến trải nghiệm của bạn độc đáo, đảm bảo ứng dụng phục vụ nhu cầu của bạn.\n\n### **Theo Dõi Tiến Độ**\nBảng điều khiển hiển thị hành trình học của bạn trong nháy mắt: phòng hoàn thành, điểm kiếm được và mục tiêu đạt được. Theo dõi chỉ số như thời gian, tin nhắn gửi hoặc cột mốc hàng tuần. Hùng, người dùng miễn phí, dùng trình theo dõi tiến độ để giám sát mục tiêu 5 phòng mỗi tuần, duy trì nhất quán với nội dung xây dựng thói quen. Đối với người dùng VIP 3, bảng điều khiển cũng nổi bật hoạt động ghép đôi—bạn học kết nối, trò chuyện tham gia và mục tiêu hợp tác mở khóa. Theo dõi tiến độ biến nỗ lực trừu tượng thành chiến thắng hữu hình, thúc đẩy động lực.\n\n### **Tham Gia Cộng Đồng**\nBảng điều khiển là cổng kết nối. Xem gợi ý bạn học (độc quyền VIP 3), tham gia thảo luận phòng hoặc chia sẻ hiểu biết với đồng nghiệp. Nam, thành viên VIP 3, dùng bảng điều khiển quản lý trò chuyện ghép đôi, chia sẻ kế hoạch tập luyện với bạn thể dục và trao đổi kỹ thuật chánh niệm với học viên khác. Tính năng cộng đồng biến học đơn độc thành cuộc phiêu lưu chung, nuôi dưỡng trách nhiệm và hỗ trợ.\n\n### **Duy Trì Nhất Quán**\nNhất quán là chìa khóa tăng trưởng, và bảng điều khiển giúp bạn theo dõi. Đặt nhắc nhở, xem lại thống kê hàng ngày/tuần và tôn vinh chiến thắng nhỏ. Hệ thống điểm thưởng tham gia, mở khóa phòng và tài nguyên mới. Hồ sơ và bảng điều khiển không chỉ là công cụ—mà là đối tác trong học tập suốt đời, dẫn bạn đến một con người khỏe mạnh, hiểu biết hơn. Bắt đầu tùy chỉnh hôm nay và làm cho mọi tương tác có ý nghĩa!"
   },
-  "safety_disclaimer": {
-    "en": "This dashboard provides educational guidance for tracking your health and learning journey. It is not a substitute for professional medical or mental health advice.",
-    "vi": "Bảng điều khiển này cung cấp hướng dẫn giáo dục để theo dõi hành trình sức khỏe và học tập. Nó không thay thế tư vấn y tế hoặc sức khỏe tâm thần chuyên nghiệp."
-  },
-  "crisis_footer": {
-    "en": "If you're experiencing a health emergency, please contact emergency services immediately.",
-    "vi": "Nếu bạn đang gặp tình trạng khẩn cấp về sức khỏe, vui lòng liên hệ dịch vụ cấp cứu ngay lập tức."
-  },
   "keywords": {
     "customize_profile": {
-      "en": ["customize profile", "set up profile", "profile settings", "add interests", "learning style", "update profile"],
-      "vi": ["tùy chỉnh hồ sơ", "thiết lập hồ sơ", "cài đặt hồ sơ", "thêm sở thích", "phong cách học", "cập nhật hồ sơ"]
+      "en": [
+        "customize profile",
+        "set up profile",
+        "profile settings",
+        "add interests",
+        "learning style",
+        "update profile"
+      ],
+      "vi": [
+        "tùy chỉnh hồ sơ",
+        "thiết lập hồ sơ",
+        "cài đặt hồ sơ",
+        "thêm sở thích",
+        "phong cách học",
+        "cập nhật hồ sơ"
+      ]
     },
     "track_progress": {
-      "en": ["track progress", "view progress", "check stats", "rooms completed", "points earned", "learning metrics"],
-      "vi": ["theo dõi tiến độ", "xem tiến độ", "kiểm tra thống kê", "phòng hoàn thành", "điểm kiếm được", "chỉ số học"]
+      "en": [
+        "track progress",
+        "view progress",
+        "check stats",
+        "rooms completed",
+        "points earned",
+        "learning metrics"
+      ],
+      "vi": [
+        "theo dõi tiến độ",
+        "xem tiến độ",
+        "kiểm tra thống kê",
+        "phòng hoàn thành",
+        "điểm kiếm được",
+        "chỉ số học"
+      ]
     },
     "community_engagement": {
-      "en": ["connect with partners", "learning partners", "community", "matchmaking", "join discussions", "share insights"],
-      "vi": ["kết nối với bạn học", "bạn học", "cộng đồng", "ghép đôi", "tham gia thảo luận", "chia sẻ hiểu biết"]
+      "en": [
+        "connect with partners",
+        "learning partners",
+        "community",
+        "matchmaking",
+        "join discussions",
+        "share insights"
+      ],
+      "vi": [
+        "kết nối với bạn học",
+        "bạn học",
+        "cộng đồng",
+        "ghép đôi",
+        "tham gia thảo luận",
+        "chia sẻ hiểu biết"
+      ]
     }
   },
   "word_count_en": 404,
@@ -78,15 +114,29 @@
         "vi": "**Tùy Chỉnh Hồ Sơ**\n\nHồ sơ là danh tính cá nhân của bạn trong Mercy Blade, thể hiện sở thích, mục tiêu và phong cách học. Bắt đầu bằng cách thêm chi tiết phản ánh bạn là ai:\n\n- **Sở Thích**: Chọn chủ đề như thể dục, sức khỏe tinh thần, quản lý đái tháo đường hoặc phát triển sự nghiệp. Điều này giúp ứng dụng gợi ý phòng liên quan và, đối với người dùng VIP 3, ghép bạn với bạn học lý tưởng.\n- **Phong Cách Học**: Chọn hình ảnh (ưa ảnh/video), thực hành (bài tập thực tế) hoặc định hướng mục tiêu (tập trung kết quả). Ví dụ, Hùng, người học hình ảnh, đặt phong cách \"hình ảnh\" và giờ nhận gợi ý phòng với đồ họa phong phú.\n- **Mục Tiêu**: Đặt mục tiêu cụ thể, như \"Hoàn thành 5 phòng mỗi tuần\" hoặc \"Kết nối 2 bạn học mỗi tháng.\" Mục tiêu giữ bạn có trách nhiệm và động lực.\n- **Tiểu Sử**: Thêm mô tả ngắn (ví dụ: \"Đam mê chánh niệm và thể dục\") để giúp người khác hiểu sở thích, đặc biệt trong trò chuyện ghép đôi VIP 3.\n\nTùy chỉnh khiến bảng điều khiển cảm thấy độc đáo của bạn, đảm bảo mọi tương tác phù hợp với hành trình sức khỏe và học tập. Cập nhật hồ sơ bất cứ lúc nào để phản ánh sở thích mới hoặc mục tiêu phát triển!"
       },
       "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["profile", "personal_growth"],
+      "tags": [
+        "profile",
+        "personal_growth"
+      ],
       "urgency": "routine",
       "severity_level": 1,
-      "systems": ["learning_management"],
-      "metadata": { "topic": "profile", "outcome": "customization" },
+      "systems": [
+        "learning_management"
+      ],
+      "metadata": {
+        "topic": "profile",
+        "outcome": "customization"
+      },
       "artifact_id": "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
       "artifact_version_id": "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d-v001",
       "created_at": "2025-10-20T21:33:00+09:00",
-      "updated_at": "2025-10-20T21:33:00+09:00"
+      "updated_at": "2025-10-20T21:33:00+09:00",
+      "keywords_en": [
+        "Customize_profile"
+      ],
+      "keywords_vi": [
+        "Customize_profile"
+      ]
     },
     {
       "slug": "track_progress",
@@ -99,15 +149,29 @@
         "vi": "**Theo Dõi Tiến Độ**\n\nBảng điều khiển cung cấp cái nhìn toàn diện về hành trình học, giúp bạn duy trì động lực và nhất quán:\n\n- **Phòng Hoàn Thành**: Xem phòng bạn đã hoàn thành (ví dụ: \"Phục Hồi Kiệt Sức,\" \"Cơ Bản Đái Tháo Đường\") và xem lại bất cứ lúc nào. Lan theo dõi 10 phòng hoàn thành, kỷ niệm mỗi cột mốc.\n- **Điểm Kiếm Được**: Kiếm điểm qua trò chuyện, hoàn thành mục phòng và, đối với người dùng VIP 3, hợp tác với bạn học. Điểm mở khóa tài nguyên và phòng mới.\n- **Thời Gian Dành**: Giám sát thời gian bạn dành cho học. Đặt mục tiêu hàng tuần như \"Dành 2 giờ trên phòng sức khỏe\" để xây dựng nhất quán.\n- **Mục Tiêu Đạt Được**: Xem mục tiêu hoàn thành (ví dụ: \"Hoàn thành 5 phòng tuần này\") và đặt mới. Thanh tiến độ và huy hiệu làm cho thành tích hữu hình và đáng giá.\n- **Hoạt Động Ghép Đôi** (VIP 3): Theo dõi bạn học kết nối, trò chuyện tham gia và mục tiêu hợp tác đạt được. Nam dùng điều này quản lý 3 mối quan hệ học tập đang hoạt động.\n\nTheo dõi thường xuyên biến nỗ lực thành kết quả hiển thị, thúc đẩy cam kết với sức khỏe và kiến thức. Kiểm tra bảng điều khiển hàng ngày để theo dõi!"
       },
       "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["dashboard", "progress_tracking"],
+      "tags": [
+        "dashboard",
+        "progress_tracking"
+      ],
       "urgency": "routine",
       "severity_level": 1,
-      "systems": ["learning_management"],
-      "metadata": { "topic": "progress", "outcome": "tracking" },
+      "systems": [
+        "learning_management"
+      ],
+      "metadata": {
+        "topic": "progress",
+        "outcome": "tracking"
+      },
       "artifact_id": "2b3c4d5e-6f7a-8b9c-0d1e-2f3a4b5c6d7e",
       "artifact_version_id": "2b3c4d5e-6f7a-8b9c-0d1e-2f3a4b5c6d7e-v001",
       "created_at": "2025-10-20T21:33:00+09:00",
-      "updated_at": "2025-10-20T21:33:00+09:00"
+      "updated_at": "2025-10-20T21:33:00+09:00",
+      "keywords_en": [
+        "Track_progress"
+      ],
+      "keywords_vi": [
+        "Track_progress"
+      ]
     },
     {
       "slug": "community_engagement",
@@ -120,15 +184,29 @@
         "vi": "**Tham Gia Cộng Đồng**\n\nBảng điều khiển kết nối bạn với cộng đồng học viên sôi động, biến học đơn độc thành tăng trưởng hợp tác:\n\n- **Gợi Ý Bạn Học** (VIP 3): Xem bạn học được AI ghép dựa trên sở thích chung (ví dụ: thể dục, chánh niệm) và phong cách học. Nam kết nối với 2 bạn học để trao đổi mẹo quản lý đái tháo đường, tăng động lực.\n- **Thảo Luận Phòng**: Tham gia trò chuyện trong phòng để chia sẻ hiểu biết, đặt câu hỏi và học từ đồng nghiệp. Tham gia với người học chủ đề giống nhau, như \"Quản Lý Căng Thẳng\" hoặc \"Cơ Bản Dinh Dưỡng.\"\n- **Mục Tiêu Hợp Tác**: Đối với người dùng VIP 3, đặt mục tiêu chung với bạn học (ví dụ: \"Hoàn thành 3 phòng cùng nhau tháng này\") và theo dõi tiến độ cùng nhau. Điểm kiếm từ hợp tác mở khóa tài nguyên độc quyền.\n- **Tin Nhắn Cộng Đồng**: Gửi và nhận tin nhắn trong trò chuyện ghép đôi, chia sẻ mẹo, khích lệ và cập nhật tiến độ. Lan dùng điều này để chia sẻ kế hoạch tập luyện với bạn thể dục.\n\nTham gia biến học thành cuộc phiêu lưu chung, nuôi dưỡng trách nhiệm và hỗ trợ. Kiểm tra phần cộng đồng bảng điều khiển hàng ngày để giữ kết nối!"
       },
       "attribution": "Best Practices / Thực hành tốt nhất",
-      "tags": ["community", "dashboard"],
+      "tags": [
+        "community",
+        "dashboard"
+      ],
       "urgency": "routine",
       "severity_level": 1,
-      "systems": ["learning_management"],
-      "metadata": { "topic": "community", "outcome": "engagement" },
+      "systems": [
+        "learning_management"
+      ],
+      "metadata": {
+        "topic": "community",
+        "outcome": "engagement"
+      },
       "artifact_id": "3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f",
       "artifact_version_id": "3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f-v001",
       "created_at": "2025-10-20T21:33:00+09:00",
-      "updated_at": "2025-10-20T21:33:00+09:00"
+      "updated_at": "2025-10-20T21:33:00+09:00",
+      "keywords_en": [
+        "Community_engagement"
+      ],
+      "keywords_vi": [
+        "Community_engagement"
+      ]
     }
   ],
   "ui_triggers": {

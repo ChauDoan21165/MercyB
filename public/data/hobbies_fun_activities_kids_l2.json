@@ -13,77 +13,134 @@
   "entries": [
     {
       "slug": "reading-for-fun",
-      "keywords_en": ["read", "book", "quiet"],
-      "keywords_vi": ["đọc", "sách", "yên tĩnh"],
+      "keywords_en": [
+        "read",
+        "book",
+        "quiet"
+      ],
+      "keywords_vi": [
+        "đọc",
+        "sách",
+        "yên tĩnh"
+      ],
       "copy": {
         "en": "Teach the word “read” by introducing small picture books. Say: “Let’s read together.” Let your child turn the pages slowly and name what they see. Reading builds imagination and helps kids hear natural language patterns in a calm moment.",
         "vi": "Dạy từ “read” bằng cách dùng sách nhiều hình. Nói: “Let’s read together.” Để bé tự lật trang và kể tên những gì thấy. Đọc sách nuôi dưỡng trí tưởng tượng và giúp trẻ nghe được ngữ điệu tiếng Anh tự nhiên trong khoảnh khắc yên bình."
       },
-      "tags": ["reading", "books"],
+      "tags": [
+        "reading",
+        "books"
+      ],
       "audio": "hobbies_fun_v1_reading.mp3"
     },
     {
       "slug": "drawing-for-fun",
-      "keywords_en": ["draw", "art", "picture"],
-      "keywords_vi": ["vẽ", "nghệ thuật", "hình"],
+      "keywords_en": [
+        "draw",
+        "art",
+        "picture"
+      ],
+      "keywords_vi": [
+        "vẽ",
+        "nghệ thuật",
+        "hình"
+      ],
       "copy": {
         "en": "Teach “draw” by inviting your child to make anything they like—animals, shapes, or simple people. Say: “Let’s draw something fun.” Avoid correcting details. Drawing helps kids express their ideas without pressure.",
         "vi": "Dạy “draw” bằng cách cho bé vẽ bất kỳ thứ gì bé thích—con vật, hình dạng, hoặc người đơn giản. Nói: “Let’s draw something fun.” Tránh sửa nét vẽ. Vẽ giúp trẻ diễn đạt ý tưởng tự do, không áp lực."
       },
-      "tags": ["draw", "art"],
+      "tags": [
+        "draw",
+        "art"
+      ],
       "audio": "hobbies_fun_v1_drawing.mp3"
     },
     {
       "slug": "dancing-and-moving",
-      "keywords_en": ["dance", "move", "music"],
-      "keywords_vi": ["nhảy", "chuyển động", "âm nhạc"],
+      "keywords_en": [
+        "dance",
+        "move",
+        "music"
+      ],
+      "keywords_vi": [
+        "nhảy",
+        "chuyển động",
+        "âm nhạc"
+      ],
       "copy": {
         "en": "Teach “dance” with simple motions. Play a short song and say: “Let’s dance!” Show easy moves like tapping feet or swaying arms. Dancing helps kids build confidence, rhythm, and joy through movement.",
         "vi": "Dạy “dance” bằng những động tác đơn giản. Mở đoạn nhạc ngắn và nói: “Let’s dance!” Thể hiện bước chân nhẹ hoặc vung tay dễ làm. Nhảy múa giúp trẻ tự tin, cảm nhịp và vui vẻ qua vận động."
       },
-      "tags": ["dance", "music"],
+      "tags": [
+        "dance",
+        "music"
+      ],
       "audio": "hobbies_fun_v1_dancing.mp3"
     },
     {
       "slug": "playing-games",
-      "keywords_en": ["play", "game", "fun"],
-      "keywords_vi": ["chơi", "trò chơi", "vui"],
+      "keywords_en": [
+        "play",
+        "game",
+        "fun"
+      ],
+      "keywords_vi": [
+        "chơi",
+        "trò chơi",
+        "vui"
+      ],
       "copy": {
         "en": "Teach “play” using simple games like matching cards or soft toys. Say: “Let’s play a game.” Let your child choose which game to try. Playing teaches turn-taking and helps children practice language naturally.",
         "vi": "Dạy “play” bằng những trò đơn giản như ghép thẻ hoặc chơi thú bông. Nói: “Let’s play a game.” Để bé chọn trò muốn chơi. Chơi giúp trẻ học lượt chơi và luyện ngôn ngữ tự nhiên."
       },
-      "tags": ["play", "games"],
+      "tags": [
+        "play",
+        "games"
+      ],
       "audio": "hobbies_fun_v1_playing.mp3"
     },
     {
       "slug": "building-things",
-      "keywords_en": ["build", "blocks", "make"],
-      "keywords_vi": ["xây", "khối", "làm"],
+      "keywords_en": [
+        "build",
+        "blocks",
+        "make"
+      ],
+      "keywords_vi": [
+        "xây",
+        "khối",
+        "làm"
+      ],
       "copy": {
         "en": "Teach “build” using blocks or simple household items. Say: “Let’s build something!” Let your child stack, arrange, and experiment. Building helps early problem-solving and encourages creativity through hands-on exploration.",
         "vi": "Dạy “build” bằng khối xây hoặc vật dụng đơn giản. Nói: “Let’s build something!” Để bé xếp, đặt và thử nghiệm. Xây dựng giúp trẻ luyện giải quyết vấn đề sớm và khuyến khích sáng tạo qua khám phá trực tiếp."
       },
-      "tags": ["build", "blocks"],
+      "tags": [
+        "build",
+        "blocks"
+      ],
       "audio": "hobbies_fun_v1_building.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all", "full", "complete"],
-      "keywords_vi": ["tất cả", "đầy đủ", "hoàn thiện"],
+      "keywords_en": [
+        "all",
+        "full",
+        "complete"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "đầy đủ",
+        "hoàn thiện"
+      ],
       "copy": {
         "en": "Teach “read” using picture books and quiet moments.\n\nTeach “draw” by letting kids create anything freely.\n\nTeach “dance” with simple movements and happy music.\n\nTeach “play” through easy games that encourage turn-taking.\n\nTeach “build” with blocks or objects for hands-on creativity.\n\nThese fun activities help children express what they enjoy, build confidence, and use English naturally during play.",
         "vi": "Dạy “read” với sách nhiều hình và khoảnh khắc yên tĩnh.\n\nDạy “draw” để bé vẽ tự do bất kỳ điều gì.\n\nDạy “dance” bằng động tác đơn giản và nhạc vui.\n\nDạy “play” qua trò chơi giúp bé học lượt chơi.\n\nDạy “build” bằng khối xây cho bé khám phá sáng tạo.\n\nNhững hoạt động này giúp trẻ nói điều mình thích, tăng tự tin và dùng tiếng Anh tự nhiên khi chơi."
       },
-      "tags": ["all"],
+      "tags": [
+        "all"
+      ],
       "audio": "hobbies_fun_v1_reading.mp3 hobbies_fun_v1_drawing.mp3 hobbies_fun_v1_dancing.mp3 hobbies_fun_v1_playing.mp3 hobbies_fun_v1_building.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "7-10",
-    "level": "Kids Level 2",
-    "created_at": "2025-11-21T00:00:00+00:00",
-    "updated_at": "2025-11-21T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#FFD7B5"
-  }
+  ]
 }

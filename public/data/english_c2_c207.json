@@ -13,63 +13,105 @@
   "entries": [
     {
       "slug": "identifying-argument-structure",
-      "keywords_en": ["argument", "structure"],
-      "keywords_vi": ["lập luận", "cấu trúc"],
+      "keywords_en": [
+        "argument",
+        "structure"
+      ],
+      "keywords_vi": [
+        "lập luận",
+        "cấu trúc"
+      ],
       "copy": {
         "en": "Advanced readers look for structure, not just sentences. Most texts follow a pattern: claim, support, example, conclusion. When you identify this flow, you understand the writer’s intention faster and more accurately. Practice recognizing where the main claim begins and how each paragraph supports it.",
         "vi": "Người đọc nâng cao tìm kiếm cấu trúc, không chỉ câu chữ. Hầu hết văn bản theo mô hình: luận điểm, hỗ trợ, ví dụ, kết luận. Khi nhận ra dòng chảy này, bạn hiểu mục đích của tác giả nhanh và chính xác hơn. Hãy luyện cách xác định luận điểm chính và vai trò của từng đoạn."
       },
-      "audio": "c207_01_en.mp3"
+      "audio": "c207_01_en.mp3",
+      "tags": []
     },
     {
       "slug": "reading-for-author-intention",
-      "keywords_en": ["intention", "author"],
-      "keywords_vi": ["ý định", "tác giả"],
+      "keywords_en": [
+        "intention",
+        "author"
+      ],
+      "keywords_vi": [
+        "ý định",
+        "tác giả"
+      ],
       "copy": {
         "en": "Ask yourself: Why did the author write this? To inform, persuade, warn, or entertain? Intention changes tone, vocabulary, and structure. Understanding intention helps you interpret meaning correctly instead of guessing. You begin to see the message behind the words.",
         "vi": "Hãy tự hỏi: Tác giả viết để làm gì? Để cung cấp thông tin, thuyết phục, cảnh báo hay giải trí? Ý định quyết định giọng điệu, từ vựng và cấu trúc. Hiểu được ý định giúp bạn diễn giải đúng nghĩa thay vì đoán. Bạn sẽ nhìn thấy thông điệp đằng sau câu chữ."
       },
-      "audio": "c207_02_en.mp3"
+      "audio": "c207_02_en.mp3",
+      "tags": []
     },
     {
       "slug": "recognizing-bias-and-perspective",
-      "keywords_en": ["bias", "perspective"],
-      "keywords_vi": ["thiên kiến", "quan điểm"],
+      "keywords_en": [
+        "bias",
+        "perspective"
+      ],
+      "keywords_vi": [
+        "thiên kiến",
+        "quan điểm"
+      ],
       "copy": {
         "en": "Every writer has a perspective shaped by culture, experience, and goals. Bias does not always mean wrong; it simply means partial. Look for loaded words, selective examples, or one-sided arguments. Recognizing bias helps you read critically without being manipulated by tone or emotion.",
         "vi": "Mỗi tác giả đều mang một góc nhìn chịu ảnh hưởng từ văn hóa, trải nghiệm và mục tiêu. Thiên kiến không phải lúc nào cũng sai, nó chỉ là một phần của quan điểm. Hãy chú ý từ ngữ mang cảm xúc, ví dụ chọn lọc hoặc lập luận một chiều. Nhận diện thiên kiến giúp bạn đọc một cách phản biện mà không bị tác động bởi giọng điệu hay cảm xúc."
       },
-      "audio": "c207_03_en.mp3"
+      "audio": "c207_03_en.mp3",
+      "tags": []
     },
     {
       "slug": "interpreting-implied-meaning",
-      "keywords_en": ["implied meaning", "subtext"],
-      "keywords_vi": ["hàm ý", "ẩn ý"],
+      "keywords_en": [
+        "implied meaning",
+        "subtext"
+      ],
+      "keywords_vi": [
+        "hàm ý",
+        "ẩn ý"
+      ],
       "copy": {
         "en": "Advanced texts often say more than they state directly. Look for implied meaning in tone, contrast, or what is left unsaid. For example, a sentence like The results were interesting may imply concern or disappointment. Interpreting these subtleties requires attention to context, not just vocabulary.",
         "vi": "Văn bản nâng cao thường hàm chứa nhiều ý hơn những gì được viết trực tiếp. Hãy tìm hàm ý trong giọng điệu, sự đối lập hoặc những điều không được nói ra. Ví dụ, câu The results were interesting có thể hàm ý lo lắng hoặc thất vọng. Hiểu được sắc thái này cần quan sát ngữ cảnh, không chỉ từ vựng."
       },
-      "audio": "c207_04_en.mp3"
+      "audio": "c207_04_en.mp3",
+      "tags": []
     },
     {
       "slug": "evaluating-evidence-and-reasoning",
-      "keywords_en": ["evidence", "reasoning"],
-      "keywords_vi": ["bằng chứng", "lập luận"],
+      "keywords_en": [
+        "evidence",
+        "reasoning"
+      ],
+      "keywords_vi": [
+        "bằng chứng",
+        "lập luận"
+      ],
       "copy": {
         "en": "Critical readers evaluate whether evidence is strong, weak, or irrelevant. Ask: Is the example representative? Is the data reliable? Does the argument logically follow from the evidence? This habit strengthens your ability to judge information and avoid misleading conclusions.",
         "vi": "Người đọc phản biện đánh giá xem bằng chứng mạnh, yếu hay không liên quan. Hãy hỏi: Ví dụ này có tiêu biểu không? Dữ liệu có đáng tin không? Lập luận có theo logic từ bằng chứng hay không? Thói quen này giúp bạn đánh giá thông tin và tránh kết luận sai lệch."
       },
-      "audio": "c207_05_en.mp3"
+      "audio": "c207_05_en.mp3",
+      "tags": []
     },
     {
       "slug": "summarizing-with-accuracy",
-      "keywords_en": ["summary", "accuracy"],
-      "keywords_vi": ["tóm tắt", "chính xác"],
+      "keywords_en": [
+        "summary",
+        "accuracy"
+      ],
+      "keywords_vi": [
+        "tóm tắt",
+        "chính xác"
+      ],
       "copy": {
         "en": "A high-level summary keeps the author’s meaning while removing unnecessary detail. Focus on the main claim, the key reasons, and the final conclusion. Avoid adding your opinion. Accurate summarizing shows deep understanding and strengthens academic and professional skill.",
         "vi": "Một bản tóm tắt nâng cao giữ đúng ý của tác giả nhưng loại bỏ chi tiết không cần thiết. Hãy tập trung vào luận điểm chính, lý do quan trọng và kết luận cuối cùng. Tránh thêm ý kiến cá nhân. Tóm tắt chính xác thể hiện sự hiểu sâu và tăng khả năng học thuật cũng như chuyên môn."
       },
-      "audio": "c207_06_en.mp3"
+      "audio": "c207_06_en.mp3",
+      "tags": []
     }
   ]
 }

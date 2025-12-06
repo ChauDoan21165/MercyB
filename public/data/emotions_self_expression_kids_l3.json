@@ -13,77 +13,125 @@
   "entries": [
     {
       "slug": "name-your-feelings",
-      "keywords_en": ["feelings", "name", "emotions"],
-      "keywords_vi": ["cảm xúc", "gọi tên", "cảm nhận"],
+      "keywords_en": [
+        "feelings",
+        "name",
+        "emotions"
+      ],
+      "keywords_vi": [
+        "cảm xúc",
+        "gọi tên",
+        "cảm nhận"
+      ],
       "copy": {
         "en": "Teach kids to pause and name what they feel with clear words like happy, sad, excited, nervous, angry, or proud. Ask them to notice body signals too: a fast heartbeat, tight stomach, warm cheeks, or heavy shoulders. You can say, “Let’s find the feeling word,” and offer a small list to choose from. Naming feelings helps children understand themselves and speak up sooner instead of holding emotions inside. Over time, this habit builds self-awareness, reduces confusion, and makes calm communication feel normal.",
         "vi": "Hãy dạy trẻ dừng lại và gọi tên cảm xúc của mình bằng những từ rõ ràng như happy, sad, excited, nervous, angry hoặc proud. Khuyến khích trẻ nhận ra tín hiệu cơ thể: tim đập nhanh, bụng thắt lại, má nóng lên hay vai nặng. Bạn có thể nói: “Mình tìm từ cảm xúc nhé,” rồi cho trẻ chọn trong một danh sách nhỏ. Gọi tên cảm xúc giúp trẻ hiểu bản thân và nói ra sớm hơn thay vì giữ trong lòng. Dần dần, thói quen này tăng tự nhận thức, giảm rối bời và khiến giao tiếp bình tĩnh trở nên tự nhiên."
       },
-      "tags": ["feelings"],
+      "tags": [
+        "feelings"
+      ],
       "audio": "emotions_self_expression_v1_name_feelings.mp3"
     },
     {
       "slug": "use-i-feel-sentences",
-      "keywords_en": ["i feel", "sentence", "expression"],
-      "keywords_vi": ["i feel", "câu nói", "diễn đạt"],
+      "keywords_en": [
+        "i feel",
+        "sentence",
+        "expression"
+      ],
+      "keywords_vi": [
+        "i feel",
+        "câu nói",
+        "diễn đạt"
+      ],
       "copy": {
         "en": "Teach kids the pattern “I feel… when…” to express emotions safely and clearly. Give simple examples: “I feel worried when I can’t find my homework,” or “I feel happy when I play with my friends.” Explain that this sentence shares feelings without blaming anyone. Practice together during real moments, like after school or before bedtime. When children use “I feel” sentences, adults understand them faster, and kids learn that emotions can be spoken with respect.",
         "vi": "Hãy dạy trẻ mẫu câu “I feel… when…” để diễn đạt cảm xúc an toàn và rõ ràng. Cho ví dụ đơn giản: “I feel worried when I can’t find my homework,” hoặc “I feel happy when I play with my friends.” Giải thích rằng mẫu câu này chia sẻ cảm xúc mà không đổ lỗi cho ai. Luyện cùng trẻ trong tình huống thật, như sau giờ học hay trước khi ngủ. Khi trẻ dùng câu “I feel”, người lớn hiểu nhanh hơn, và trẻ học rằng cảm xúc có thể nói ra một cách tôn trọng."
       },
-      "tags": ["expression"],
+      "tags": [
+        "expression"
+      ],
       "audio": "emotions_self_expression_v1_i_feel.mp3"
     },
     {
       "slug": "explain-why",
-      "keywords_en": ["because", "reason", "emotion"],
-      "keywords_vi": ["because", "lý do", "cảm xúc"],
+      "keywords_en": [
+        "because",
+        "reason",
+        "emotion"
+      ],
+      "keywords_vi": [
+        "because",
+        "lý do",
+        "cảm xúc"
+      ],
       "copy": {
         "en": "Help kids add a short reason using “because.” Try lines like “I feel upset because I lost my pencil,” or “I feel proud because I finished my project.” Giving a reason makes emotions feel understandable, not overwhelming. It also helps parents and teachers respond supportively because they know what happened. Encourage one simple reason at a time. Kids learn that feelings are messages connected to events, and they become better at solving problems calmly.",
         "vi": "Hãy giúp trẻ thêm một lý do ngắn bằng từ “because.” Ví dụ: “I feel upset because I lost my pencil,” hoặc “I feel proud because I finished my project.” Nêu lý do khiến cảm xúc trở nên dễ hiểu hơn, không quá choáng ngợp. Người lớn cũng hỗ trợ đúng hơn vì biết chuyện gì đã xảy ra. Khuyến khích mỗi lần chỉ cần một lý do đơn giản. Trẻ sẽ hiểu rằng cảm xúc là thông điệp gắn với sự kiện, và dần biết giải quyết vấn đề một cách bình tĩnh."
       },
-      "tags": ["because"],
+      "tags": [
+        "because"
+      ],
       "audio": "emotions_self_expression_v1_explain_why.mp3"
     },
     {
       "slug": "express-needs",
-      "keywords_en": ["need", "help", "calm"],
-      "keywords_vi": ["nhu cầu", "giúp đỡ", "bình tĩnh"],
+      "keywords_en": [
+        "need",
+        "help",
+        "calm"
+      ],
+      "keywords_vi": [
+        "nhu cầu",
+        "giúp đỡ",
+        "bình tĩnh"
+      ],
       "copy": {
         "en": "Teach children to express needs during strong emotions. Give them gentle phrases like “I need a break,” “I need help,” “I need more time,” or “I need quiet.” Practice role-plays: one person feels stressed, the other listens and responds. Explain that asking for what you need is brave, not rude. When kids have words for needs, they recover faster, avoid meltdowns, and feel more in control of their feelings.",
         "vi": "Hãy dạy trẻ nói ra nhu cầu khi cảm xúc mạnh. Cho trẻ những câu nhẹ nhàng như “I need a break,” “I need help,” “I need more time,” hoặc “I need quiet.” Có thể đóng vai: một người đang căng thẳng, người kia lắng nghe và phản hồi. Giải thích rằng nói nhu cầu là dũng cảm, không phải hỗn. Khi trẻ có từ để nói nhu cầu, trẻ hồi phục nhanh hơn, giảm bùng nổ cảm xúc và cảm thấy kiểm soát được cảm giác của mình."
       },
-      "tags": ["needs"],
+      "tags": [
+        "needs"
+      ],
       "audio": "emotions_self_expression_v1_express_need.mp3"
     },
     {
       "slug": "listen-and-respond",
-      "keywords_en": ["empathy", "listen", "respond"],
-      "keywords_vi": ["thấu cảm", "lắng nghe", "phản hồi"],
+      "keywords_en": [
+        "empathy",
+        "listen",
+        "respond"
+      ],
+      "keywords_vi": [
+        "thấu cảm",
+        "lắng nghe",
+        "phản hồi"
+      ],
       "copy": {
         "en": "Teach empathy by showing kids how to respond kindly when someone shares feelings. Offer simple replies: “I hear you,” “That sounds hard,” “I’m happy for you,” or “I’m here for you.” Practice with short family stories or school situations. Remind them to look at the speaker, stay quiet until the other person finishes, then answer softly. Kids learn that conversation includes listening with care, not only talking, and friendships grow stronger.",
         "vi": "Hãy dạy trẻ thấu cảm bằng cách hướng dẫn trẻ phản hồi tử tế khi ai đó chia sẻ cảm xúc. Gợi ý câu đơn giản: “I hear you,” “That sounds hard,” “I’m happy for you,” hoặc “I’m here for you.” Luyện qua những câu chuyện nhỏ trong gia đình hay ở trường. Nhắc trẻ nhìn người nói, im lặng đến khi người kia nói xong rồi mới đáp nhẹ nhàng. Trẻ sẽ hiểu rằng trò chuyện là lắng nghe với sự quan tâm, không chỉ nói, và tình bạn sẽ bền hơn."
       },
-      "tags": ["empathy"],
+      "tags": [
+        "empathy"
+      ],
       "audio": "emotions_self_expression_v1_listen_respond.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all"],
-      "keywords_vi": ["tất cả"],
+      "keywords_en": [
+        "all"
+      ],
+      "keywords_vi": [
+        "tất cả"
+      ],
       "copy": {
         "en": "Teach kids to pause and name what they feel with clear words like happy, sad, excited, nervous, angry, or proud. Ask them to notice body signals too: a fast heartbeat, tight stomach, warm cheeks, or heavy shoulders. You can say, “Let’s find the feeling word,” and offer a small list to choose from. Naming feelings helps children understand themselves and speak up sooner instead of holding emotions inside. Over time, this habit builds self-awareness, reduces confusion, and makes calm communication feel normal.Teach kids the pattern “I feel… when…” to express emotions safely and clearly. Give simple examples: “I feel worried when I can’t find my homework,” or “I feel happy when I play with my friends.” Explain that this sentence shares feelings without blaming anyone. Practice together during real moments, like after school or before bedtime. When children use “I feel” sentences, adults understand them faster, and kids learn that emotions can be spoken with respect.Help kids add a short reason using “because.” Try lines like “I feel upset because I lost my pencil,” or “I feel proud because I finished my project.” Giving a reason makes emotions feel understandable, not overwhelming. It also helps parents and teachers respond supportively because they know what happened. Encourage one simple reason at a time. Kids learn that feelings are messages connected to events, and they become better at solving problems calmly.Teach children to express needs during strong emotions. Give them gentle phrases like “I need a break,” “I need help,” “I need more time,” or “I need quiet.” Practice role-plays: one person feels stressed, the other listens and responds. Explain that asking for what you need is brave, not rude. When kids have words for needs, they recover faster, avoid meltdowns, and feel more in control of their feelings.Teach empathy by showing kids how to respond kindly when someone shares feelings. Offer simple replies: “I hear you,” “That sounds hard,” “I’m happy for you,” or “I’m here for you.” Practice with short family stories or school situations. Remind them to look at the speaker, stay quiet until the other person finishes, then answer softly. Kids learn that conversation includes listening with care, not only talking, and friendships grow stronger.",
         "vi": "Hãy dạy trẻ dừng lại và gọi tên cảm xúc của mình bằng những từ rõ ràng như happy, sad, excited, nervous, angry hoặc proud. Khuyến khích trẻ nhận ra tín hiệu cơ thể: tim đập nhanh, bụng thắt lại, má nóng lên hay vai nặng. Bạn có thể nói: “Mình tìm từ cảm xúc nhé,” rồi cho trẻ chọn trong một danh sách nhỏ. Gọi tên cảm xúc giúp trẻ hiểu bản thân và nói ra sớm hơn thay vì giữ trong lòng. Dần dần, thói quen này tăng tự nhận thức, giảm rối bời và khiến giao tiếp bình tĩnh trở nên tự nhiên.Hãy dạy trẻ mẫu câu “I feel… when…” để diễn đạt cảm xúc an toàn và rõ ràng. Cho ví dụ đơn giản: “I feel worried when I can’t find my homework,” hoặc “I feel happy when I play with my friends.” Giải thích rằng mẫu câu này chia sẻ cảm xúc mà không đổ lỗi cho ai. Luyện cùng trẻ trong tình huống thật, như sau giờ học hay trước khi ngủ. Khi trẻ dùng câu “I feel”, người lớn hiểu nhanh hơn, và trẻ học rằng cảm xúc có thể nói ra một cách tôn trọng.Hãy giúp trẻ thêm một lý do ngắn bằng từ “because.” Ví dụ: “I feel upset because I lost my pencil,” hoặc “I feel proud because I finished my project.” Nêu lý do khiến cảm xúc trở nên dễ hiểu hơn, không quá choáng ngợp. Người lớn cũng hỗ trợ đúng hơn vì biết chuyện gì đã xảy ra. Khuyến khích mỗi lần chỉ cần một lý do đơn giản. Trẻ sẽ hiểu rằng cảm xúc là thông điệp gắn với sự kiện, và dần biết giải quyết vấn đề một cách bình tĩnh.Hãy dạy trẻ nói ra nhu cầu khi cảm xúc mạnh. Cho trẻ những câu nhẹ nhàng như “I need a break,” “I need help,” “I need more time,” hoặc “I need quiet.” Có thể đóng vai: một người đang căng thẳng, người kia lắng nghe và phản hồi. Giải thích rằng nói nhu cầu là dũng cảm, không phải hỗn. Khi trẻ có từ để nói nhu cầu, trẻ hồi phục nhanh hơn, giảm bùng nổ cảm xúc và cảm thấy kiểm soát được cảm giác của mình.Hãy dạy trẻ thấu cảm bằng cách hướng dẫn trẻ phản hồi tử tế khi ai đó chia sẻ cảm xúc. Gợi ý câu đơn giản: “I hear you,” “That sounds hard,” “I’m happy for you,” hoặc “I’m here for you.” Luyện qua những câu chuyện nhỏ trong gia đình hay ở trường. Nhắc trẻ nhìn người nói, im lặng đến khi người kia nói xong rồi mới đáp nhẹ nhàng. Trẻ sẽ hiểu rằng trò chuyện là lắng nghe với sự quan tâm, không chỉ nói, và tình bạn sẽ bền hơn."
       },
-      "tags": ["all"],
+      "tags": [
+        "all"
+      ],
       "audio": "emotions_self_expression_v1_name_feelings.mp3 emotions_self_expression_v1_i_feel.mp3 emotions_self_expression_v1_explain_why.mp3 emotions_self_expression_v1_express_need.mp3 emotions_self_expression_v1_listen_respond.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "10-13",
-    "level": "Kids Level 3",
-    "created_at": "2025-11-23T00:00:00+00:00",
-    "updated_at": "2025-11-23T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#FFE7F0"
-  }
+  ]
 }

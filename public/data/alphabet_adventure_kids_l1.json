@@ -13,77 +13,151 @@
   "entries": [
     {
       "slug": "abc-warm-up-song",
-      "keywords_en": ["alphabet", "song", "fun", "letters"],
-      "keywords_vi": ["bảng chữ cái", "bài hát", "vui", "chữ cái"],
+      "keywords_en": [
+        "alphabet",
+        "song",
+        "fun",
+        "letters"
+      ],
+      "keywords_vi": [
+        "bảng chữ cái",
+        "bài hát",
+        "vui",
+        "chữ cái"
+      ],
       "copy": {
         "en": "The alphabet is like a magic song you can learn by heart. Start by singing A–B–C slowly, clapping your hands with each letter. Point to big, colorful letters on a page or screen as you sing. Don’t worry about mistakes; just enjoy the rhythm and sound. When your child smiles or joins in, repeat the song once more. Bit by bit, the letters will feel friendly and familiar, like fun little characters they meet every day.",
         "vi": "Bảng chữ cái giống như một bài hát kỳ diệu mà bé có thể học thuộc. Bắt đầu bằng cách hát A–B–C thật chậm, vỗ tay theo từng chữ. Chỉ vào các chữ cái to, nhiều màu trên trang giấy hoặc màn hình khi hát. Đừng lo về sai sót; cứ tận hưởng nhịp điệu và âm thanh. Khi bé mỉm cười hoặc hát theo, hãy lặp lại bài hát thêm một lần. Dần dần, các chữ cái sẽ trở nên thân quen, như những người bạn nhỏ bé gặp mỗi ngày."
       },
-      "tags": ["alphabet", "song", "warm-up"],
+      "tags": [
+        "alphabet",
+        "song",
+        "warm-up"
+      ],
       "audio": "alphabet_adventure_v1_abc_song.mp3"
     },
     {
       "slug": "letter-hunt-at-home",
-      "keywords_en": ["alphabet", "game", "home", "sounds"],
-      "keywords_vi": ["bảng chữ cái", "trò chơi", "ở nhà", "âm thanh"],
+      "keywords_en": [
+        "alphabet",
+        "game",
+        "home",
+        "sounds"
+      ],
+      "keywords_vi": [
+        "bảng chữ cái",
+        "trò chơi",
+        "ở nhà",
+        "âm thanh"
+      ],
       "copy": {
         "en": "Turn your home into a secret alphabet playground. Choose one letter, like “B,” and invite your child to find things that start with that sound: ball, book, bag. Say the word slowly and gently highlight the first sound. Celebrate every correct guess with a high-five or happy “yes!” If they get stuck, give hints instead of answers. This simple game turns everyday objects into learning tools and helps letters feel real, useful, and exciting.",
         "vi": "Biến ngôi nhà thành một sân chơi bảng chữ cái bí mật. Chọn một chữ, ví dụ “B”, và rủ bé tìm đồ vật bắt đầu bằng âm đó: bóng, sách, ba lô. Nói từ thật chậm và nhấn nhẹ âm đầu. Ăn mừng mỗi lần bé đoán đúng bằng một cái vỗ tay hoặc tiếng “đúng rồi!”. Nếu bé bí, hãy gợi ý thay vì nói luôn đáp án. Trò chơi đơn giản này biến đồ vật hằng ngày thành dụng cụ học tập và giúp chữ cái trở nên thật, hữu ích và thú vị."
       },
-      "tags": ["alphabet", "home game"],
+      "tags": [
+        "alphabet",
+        "home game"
+      ],
       "audio": "alphabet_adventure_v1_letter_hunt.mp3"
     },
     {
       "slug": "animal-alphabet-friends",
-      "keywords_en": ["animals", "letters", "movement", "sounds"],
-      "keywords_vi": ["con vật", "chữ cái", "vận động", "âm thanh"],
+      "keywords_en": [
+        "animals",
+        "letters",
+        "movement",
+        "sounds"
+      ],
+      "keywords_vi": [
+        "con vật",
+        "chữ cái",
+        "vận động",
+        "âm thanh"
+      ],
       "copy": {
         "en": "Children love animals, so let letters borrow their magic. Match each letter with a fun animal: A for alligator, B for bear, C for cat. Show a picture, say the animal name, then repeat the first sound together. Invite your child to move like the animal while saying the letter: “B, B, bear!” This playful mix of sound, image, and movement helps the alphabet stick in a gentle, joyful way that feels more like a game than study.",
         "vi": "Trẻ rất thích động vật, nên hãy để chữ cái mượn một chút phép màu đó. Ghép mỗi chữ với một con vật vui: A cho alligator, B cho bear, C cho cat. Cho bé xem hình, đọc tên con vật, rồi cùng lặp lại âm đầu. Rủ bé bắt chước dáng đi hay động tác của con vật khi nói chữ: “B, B, bear!”. Sự kết hợp vui nhộn giữa âm thanh, hình ảnh và chuyển động giúp bảng chữ cái in sâu một cách nhẹ nhàng, như đang chơi chứ không phải học."
       },
-      "tags": ["alphabet", "animals", "movement"],
+      "tags": [
+        "alphabet",
+        "animals",
+        "movement"
+      ],
       "audio": "alphabet_adventure_v1_animal_friends.mp3"
     },
     {
       "slug": "drawing-and-tracing-letters",
-      "keywords_en": ["writing", "tracing", "motor skills", "letters"],
-      "keywords_vi": ["tập viết", "tô chữ", "vận động tinh", "chữ cái"],
+      "keywords_en": [
+        "writing",
+        "tracing",
+        "motor skills",
+        "letters"
+      ],
+      "keywords_vi": [
+        "tập viết",
+        "tô chữ",
+        "vận động tinh",
+        "chữ cái"
+      ],
       "copy": {
         "en": "Learning letters through the hand makes them stay longer in the mind. Start with big shapes: draw a giant “A” on paper or in the air, and let your child trace over it with a finger or crayon. Name the letter each time they follow the line. Praise effort, not perfection—crooked lines are welcome. You can even trace letters on sand, rice, or a foggy window. The goal is to connect the feel of each movement with the sound of each letter.",
         "vi": "Học chữ qua đôi tay giúp chúng ở lại lâu hơn trong trí nhớ. Bắt đầu với hình to: vẽ một chữ “A” thật lớn trên giấy hoặc trong không khí và để bé dùng ngón tay hay bút màu tô theo. Nhắc tên chữ mỗi lần bé đi theo nét. Khen ngợi sự cố gắng, không đòi hỏi hoàn hảo—nét cong lệch cũng được. Bạn có thể tô chữ trên cát, gạo hoặc ô cửa mờ hơi nước. Mục tiêu là nối cảm giác vận động với âm thanh của từng chữ."
       },
-      "tags": ["writing", "tracing"],
+      "tags": [
+        "writing",
+        "tracing"
+      ],
       "audio": "alphabet_adventure_v1_drawing.mp3"
     },
     {
       "slug": "alphabet-bedtime-ritual",
-      "keywords_en": ["bedtime", "ritual", "review", "calm"],
-      "keywords_vi": ["trước khi ngủ", "nghi thức", "ôn lại", "bình yên"],
+      "keywords_en": [
+        "bedtime",
+        "ritual",
+        "review",
+        "calm"
+      ],
+      "keywords_vi": [
+        "trước khi ngủ",
+        "nghi thức",
+        "ôn lại",
+        "bình yên"
+      ],
       "copy": {
         "en": "Turn the alphabet into a soft bedtime ritual. As your child settles in, choose three letters for the night, like A, B, and C. Whisper the letters slowly, then together think of one gentle word for each: A for apple, B for blanket, C for cuddle. Let your child choose some words too. This quiet review at the end of the day keeps learning calm and cozy. Over time, the alphabet becomes linked with warmth, safety, and happy memories.",
         "vi": "Hãy biến bảng chữ cái thành một nghi thức nhẹ nhàng trước giờ ngủ. Khi bé nằm yên, chọn ba chữ cho buổi tối, như A, B và C. Thì thầm các chữ thật chậm, rồi cùng nghĩ một từ dịu dàng cho mỗi chữ: A cho apple, B cho blanket, C cho cuddle. Để bé tự chọn thêm một số từ. Khoảnh khắc ôn lại yên tĩnh cuối ngày giúp việc học trở nên ấm áp và dễ chịu. Lâu dần, bảng chữ cái sẽ gắn với cảm giác an toàn và ký ức hạnh phúc."
       },
-      "tags": ["bedtime", "alphabet", "ritual"],
+      "tags": [
+        "bedtime",
+        "alphabet",
+        "ritual"
+      ],
       "audio": "alphabet_adventure_v1_bedtime_ritual.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all", "full", "complete", "everything"],
-      "keywords_vi": ["tất cả", "toàn bộ", "đầy đủ", "hết"],
+      "keywords_en": [
+        "all",
+        "full",
+        "complete",
+        "everything"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "toàn bộ",
+        "đầy đủ",
+        "hết"
+      ],
       "copy": {
         "en": "The alphabet is like a magic song you can learn by heart. Start by singing A–B–C slowly, clapping your hands with each letter. Point to big, colorful letters on a page or screen as you sing. Don’t worry about mistakes; just enjoy the rhythm and sound. When your child smiles or joins in, repeat the song once more. Bit by bit, the letters will feel friendly and familiar, like fun little characters they meet every day.\n\nTurn your home into a secret alphabet playground. Choose one letter, like “B,” and invite your child to find things that start with that sound: ball, book, bag. Say the word slowly and gently highlight the first sound. Celebrate every correct guess with a high-five or happy “yes!” If they get stuck, give hints instead of answers. This simple game turns everyday objects into learning tools and helps letters feel real, useful, and exciting.\n\nChildren love animals, so let letters borrow their magic. Match each letter with a fun animal: A for alligator, B for bear, C for cat. Show a picture, say the animal name, then repeat the first sound together. Invite your child to move like the animal while saying the letter: “B, B, bear!” This playful mix of sound, image, and movement helps the alphabet stick in a gentle, joyful way that feels more like a game than study.\n\nLearning letters through the hand makes them stay longer in the mind. Start with big shapes: draw a giant “A” on paper or in the air, and let your child trace over it with a finger or crayon. Name the letter each time they follow the line. Praise effort, not perfection—crooked lines are welcome. You can even trace letters on sand, rice, or a foggy window. The goal is to connect the feel of each movement with the sound of each letter.\n\nTurn the alphabet into a soft bedtime ritual. As your child settles in, choose three letters for the night, like A, B, and C. Whisper the letters slowly, then together think of one gentle word for each: A for apple, B for blanket, C for cuddle. Let your child choose some words too. This quiet review at the end of the day keeps learning calm and cozy. Over time, the alphabet becomes linked with warmth, safety, and happy memories.",
         "vi": "Bảng chữ cái giống như một bài hát kỳ diệu mà bé có thể học thuộc. Bắt đầu bằng cách hát A–B–C thật chậm, vỗ tay theo từng chữ. Chỉ vào các chữ cái to, nhiều màu trên trang giấy hoặc màn hình khi hát. Đừng lo về sai sót; cứ tận hưởng nhịp điệu và âm thanh. Khi bé mỉm cười hoặc hát theo, hãy lặp lại bài hát thêm một lần. Dần dần, các chữ cái sẽ trở nên thân quen, như những người bạn nhỏ bé gặp mỗi ngày.\n\nBiến ngôi nhà thành một sân chơi bảng chữ cái bí mật. Chọn một chữ, ví dụ “B”, và rủ bé tìm đồ vật bắt đầu bằng âm đó: bóng, sách, ba lô. Nói từ thật chậm và nhấn nhẹ âm đầu. Ăn mừng mỗi lần bé đoán đúng bằng một cái vỗ tay hoặc tiếng “đúng rồi!”. Nếu bé bí, hãy gợi ý thay vì nói luôn đáp án. Trò chơi đơn giản này biến đồ vật hằng ngày thành dụng cụ học tập và giúp chữ cái trở nên thật, hữu ích và thú vị.\n\nTrẻ rất thích động vật, nên hãy để chữ cái mượn một chút phép màu đó. Ghép mỗi chữ với một con vật vui: A cho alligator, B cho bear, C cho cat. Cho bé xem hình, đọc tên con vật, rồi cùng lặp lại âm đầu. Rủ bé bắt chước dáng đi hay động tác của con vật khi nói chữ: “B, B, bear!”. Sự kết hợp vui nhộn giữa âm thanh, hình ảnh và chuyển động giúp bảng chữ cái in sâu một cách nhẹ nhàng, như đang chơi chứ không phải học.\n\nHọc chữ qua đôi tay giúp chúng ở lại lâu hơn trong trí nhớ. Bắt đầu với hình to: vẽ một chữ “A” thật lớn trên giấy hoặc trong không khí và để bé dùng ngón tay hay bút màu tô theo. Nhắc tên chữ mỗi lần bé đi theo nét. Khen ngợi sự cố gắng, không đòi hỏi hoàn hảo—nét cong lệch cũng được. Bạn có thể tô chữ trên cát, gạo hoặc ô cửa mờ hơi nước. Mục tiêu là nối cảm giác vận động với âm thanh của từng chữ.\n\nHãy biến bảng chữ cái thành một nghi thức nhẹ nhàng trước giờ ngủ. Khi bé nằm yên, chọn ba chữ cho buổi tối, như A, B và C. Thì thầm các chữ thật chậm, rồi cùng nghĩ một từ dịu dàng cho mỗi chữ: A cho apple, B cho blanket, C cho cuddle. Để bé tự chọn thêm một số từ. Khoảnh khắc ôn lại yên tĩnh cuối ngày giúp việc học trở nên ấm áp và dễ chịu. Lâu dần, bảng chữ cái sẽ gắn với cảm giác an toàn và ký ức hạnh phúc."
       },
-      "tags": ["all", "full", "complete"],
+      "tags": [
+        "all",
+        "full",
+        "complete"
+      ],
       "audio": "alphabet_adventure_v1_abc_song.mp3 alphabet_adventure_v1_letter_hunt.mp3 alphabet_adventure_v1_animal_friends.mp3 alphabet_adventure_v1_drawing.mp3 alphabet_adventure_v1_bedtime_ritual.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "4-7",
-    "level": "Kids Level 1",
-    "created_at": "2025-11-21T00:00:00+00:00",
-    "updated_at": "2025-11-21T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#FFC1E3"
-  }
+  ]
 }

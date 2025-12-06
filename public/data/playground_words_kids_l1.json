@@ -13,77 +13,121 @@
   "entries": [
     {
       "slug": "slide",
-      "keywords_en": ["playground", "slide"],
-      "keywords_vi": ["sân chơi", "cầu trượt"],
+      "keywords_en": [
+        "playground",
+        "slide"
+      ],
+      "keywords_vi": [
+        "sân chơi",
+        "cầu trượt"
+      ],
       "copy": {
         "en": "Begin with the word “slide.” Point to the slide, touch it gently, and say the word slowly. Let your child place their hand on it before climbing. Say “slide!” again as they go down. Linking the word with movement makes it easy and exciting to remember.",
         "vi": "Bắt đầu với từ “slide.” Chỉ vào cầu trượt, chạm nhẹ và đọc từ chậm rãi. Để bé đặt tay lên cầu trượt trước khi leo lên. Khi bé trượt xuống, hãy đọc “slide!” thêm lần nữa. Kết hợp từ với chuyển động giúp bé nhớ nhanh và thích thú."
       },
-      "tags": ["playground"],
+      "tags": [
+        "playground"
+      ],
       "audio": "playground_words_v1_slide.mp3"
     },
     {
       "slug": "swing",
-      "keywords_en": ["playground", "swing"],
-      "keywords_vi": ["sân chơi", "xích đu"],
+      "keywords_en": [
+        "playground",
+        "swing"
+      ],
+      "keywords_vi": [
+        "sân chơi",
+        "xích đu"
+      ],
       "copy": {
         "en": "Teach the word “swing” by gently holding the swing seat and saying the word slowly. Give a soft push while repeating it. Let your child say the word each time the swing moves forward. Rhythm and repetition make this word especially fun to learn.",
         "vi": "Dạy từ “swing” bằng cách cầm nhẹ ghế xích đu và đọc từ thật chậm. Đẩy nhẹ và lặp lại từ. Để bé nói từ mỗi khi xích đu đưa về phía trước. Nhịp và lặp lại khiến từ này cực kỳ vui để học."
       },
-      "tags": ["playground"],
+      "tags": [
+        "playground"
+      ],
       "audio": "playground_words_v1_swing.mp3"
     },
     {
       "slug": "sand",
-      "keywords_en": ["playground", "sand"],
-      "keywords_vi": ["sân chơi", "cát"],
+      "keywords_en": [
+        "playground",
+        "sand"
+      ],
+      "keywords_vi": [
+        "sân chơi",
+        "cát"
+      ],
       "copy": {
         "en": "Introduce the word “sand” at the sandbox. Scoop a little sand and let it fall through your fingers while saying the word. Give your child a small cup or shovel to copy the action. Sensory play helps the sound of the word stick in their memory.",
         "vi": "Giới thiệu từ “sand” ở khu cát. Bạn xúc một ít cát và để nó rơi qua kẽ tay khi đọc từ. Đưa bé chiếc cốc hoặc xẻng nhỏ để bé làm theo. Chơi cảm giác giúp âm của từ in sâu trong trí nhớ bé."
       },
-      "tags": ["playground"],
+      "tags": [
+        "playground"
+      ],
       "audio": "playground_words_v1_sand.mp3"
     },
     {
       "slug": "ball",
-      "keywords_en": ["playground", "ball"],
-      "keywords_vi": ["sân chơi", "bóng"],
+      "keywords_en": [
+        "playground",
+        "ball"
+      ],
+      "keywords_vi": [
+        "sân chơi",
+        "bóng"
+      ],
       "copy": {
         "en": "Teach the word “ball” through gentle tossing. Say the word, roll the ball to your child, and let them roll it back. Next, try a tiny toss together. The turn-taking helps children practice the word naturally through play.",
         "vi": "Dạy từ “ball” bằng cách lăn bóng nhẹ. Đọc từ, lăn bóng về phía bé và để bé lăn lại. Sau đó thử ném nhẹ cùng nhau. Sự luân phiên giúp trẻ luyện từ tự nhiên qua việc chơi."
       },
-      "tags": ["playground"],
+      "tags": [
+        "playground"
+      ],
       "audio": "playground_words_v1_ball.mp3"
     },
     {
       "slug": "playground-game",
-      "keywords_en": ["playground", "game", "run"],
-      "keywords_vi": ["sân chơi", "trò chơi", "chạy"],
+      "keywords_en": [
+        "playground",
+        "game",
+        "run"
+      ],
+      "keywords_vi": [
+        "sân chơi",
+        "trò chơi",
+        "chạy"
+      ],
       "copy": {
         "en": "Create a simple playground game. Point to different objects—slide, swing, sand, ball—and say each word clearly. Ask your child to run or walk to the object. Children love being the leader, so let them call out a word for you to follow too.",
         "vi": "Tạo trò chơi sân chơi đơn giản. Chỉ vào từng đồ vật—slide, swing, sand, ball—và đọc từ rõ ràng. Yêu cầu bé chạy hoặc đi đến đúng đồ vật. Trẻ rất thích làm người dẫn, nên hãy để bé gọi tên một món để bạn đi đến nữa."
       },
-      "tags": ["playground", "game"],
+      "tags": [
+        "playground",
+        "game"
+      ],
       "audio": "playground_words_v1_game.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all", "full", "complete"],
-      "keywords_vi": ["tất cả", "đầy đủ"],
+      "keywords_en": [
+        "all",
+        "full",
+        "complete"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "đầy đủ"
+      ],
       "copy": {
         "en": "Start with “slide,” touching it gently and saying the word as your child climbs and glides down.\n\nTeach “swing” with slow pushes and repeating the word each time the swing moves.\n\nPlay with “sand” by letting grains fall through your fingers and copying with a cup or shovel.\n\nUse a rolling or tossing game to teach “ball,” taking turns back and forth.\n\nFinish with a playground game, naming slide, swing, sand, and ball while running or walking to each.\n\nThese lively outdoor moments help your child learn English naturally through movement and play.",
         "vi": "Bắt đầu với “slide,” chạm nhẹ và đọc từ khi bé leo lên và trượt xuống.\n\nDạy “swing” bằng cách đẩy nhẹ và lặp lại từ mỗi khi xích đu đưa.\n\nChơi với “sand,” để cát rơi qua tay và cho bé làm theo.\n\nDạy “ball” bằng trò lăn hoặc ném bóng luân phiên.\n\nKết thúc bằng trò chơi sân chơi, gọi tên slide, swing, sand và ball khi di chuyển đến từng món.\n\nNhững khoảnh khắc vui nhộn ngoài trời giúp bé học tiếng Anh qua vận động và chơi."
       },
-      "tags": ["all"],
+      "tags": [
+        "all"
+      ],
       "audio": "playground_words_v1_slide.mp3 playground_words_v1_swing.mp3 playground_words_v1_sand.mp3 playground_words_v1_ball.mp3 playground_words_v1_game.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "4-7",
-    "level": "Kids Level 1",
-    "created_at": "2025-11-21T00:00:00+00:00",
-    "updated_at": "2025-11-21T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#F3F8FF"
-  }
+  ]
 }

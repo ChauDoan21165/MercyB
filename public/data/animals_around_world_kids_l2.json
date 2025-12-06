@@ -13,77 +13,134 @@
   "entries": [
     {
       "slug": "polar-animals",
-      "keywords_en": ["polar", "cold", "animals"],
-      "keywords_vi": ["cực", "lạnh", "động vật"],
+      "keywords_en": [
+        "polar",
+        "cold",
+        "animals"
+      ],
+      "keywords_vi": [
+        "cực",
+        "lạnh",
+        "động vật"
+      ],
       "copy": {
         "en": "Teach “polar animals” using pictures of penguins and polar bears. Say: “Cold animals!” and rub your arms like you're chilly. Show how penguins waddle and how bears walk slowly on ice. Kids love copying movements, which helps them remember the names and the habitat.",
         "vi": "Dạy “polar animals” bằng hình ảnh chim cánh cụt và gấu trắng. Nói: “Cold animals!” và xoa tay như đang lạnh. Cho bé xem cách chim cánh cụt lạch bạch và gấu trắng đi chậm trên băng. Trẻ thích bắt chước, giúp ghi nhớ tên và môi trường sống."
       },
-      "tags": ["polar", "cold"],
+      "tags": [
+        "polar",
+        "cold"
+      ],
       "audio": "animals_around_world_v1_polar.mp3"
     },
     {
       "slug": "rainforest-animals",
-      "keywords_en": ["rainforest", "jungle", "animals"],
-      "keywords_vi": ["rừng mưa", "rừng rậm", "động vật"],
+      "keywords_en": [
+        "rainforest",
+        "jungle",
+        "animals"
+      ],
+      "keywords_vi": [
+        "rừng mưa",
+        "rừng rậm",
+        "động vật"
+      ],
       "copy": {
         "en": "Teach “rainforest animals” with bright, colorful pictures. Say: “Monkey!” “Parrot!” “Tiger!” and make simple sounds or movements. Kids enjoy acting like animals—jumping like a monkey or spreading arms like a parrot. This play makes vocabulary stick naturally.",
         "vi": "Dạy “rainforest animals” bằng hình ảnh nhiều màu sắc. Nói: “Monkey!” “Parrot!” “Tiger!” và làm âm thanh hoặc động tác đơn giản. Trẻ thích bắt chước—nhảy như khỉ hoặc dang tay như vẹt. Trò chơi giúp từ vựng ghi nhớ tự nhiên."
       },
-      "tags": ["rainforest", "jungle"],
+      "tags": [
+        "rainforest",
+        "jungle"
+      ],
       "audio": "animals_around_world_v1_rainforest.mp3"
     },
     {
       "slug": "savanna-animals",
-      "keywords_en": ["savanna", "grassland", "animals"],
-      "keywords_vi": ["thảo nguyên", "đồng cỏ", "động vật"],
+      "keywords_en": [
+        "savanna",
+        "grassland",
+        "animals"
+      ],
+      "keywords_vi": [
+        "thảo nguyên",
+        "đồng cỏ",
+        "động vật"
+      ],
       "copy": {
         "en": "Teach “savanna animals” like lions, giraffes, and elephants. Say each name clearly while showing how the animal moves—stretch tall for a giraffe or stomp slowly like an elephant. Kids learn best when words connect with body movement.",
         "vi": "Dạy “savanna animals” như sư tử, hươu cao cổ và voi. Nói rõ tên từng con và làm mẫu cách chúng di chuyển—vươn cao như hươu cao cổ hoặc bước chậm như voi. Trẻ học tốt nhất khi từ gắn với chuyển động cơ thể."
       },
-      "tags": ["savanna", "grassland"],
+      "tags": [
+        "savanna",
+        "grassland"
+      ],
       "audio": "animals_around_world_v1_savanna.mp3"
     },
     {
       "slug": "ocean-animals",
-      "keywords_en": ["ocean", "sea", "animals"],
-      "keywords_vi": ["đại dương", "biển", "động vật"],
+      "keywords_en": [
+        "ocean",
+        "sea",
+        "animals"
+      ],
+      "keywords_vi": [
+        "đại dương",
+        "biển",
+        "động vật"
+      ],
       "copy": {
         "en": "Teach “ocean animals” by pretending to swim like fish or glide like dolphins. Say: “Fish!” “Dolphin!” “Shark!” while drawing soft waves with your hands. Kids enjoy the feeling of underwater play while learning new words.",
         "vi": "Dạy “ocean animals” bằng cách giả vờ bơi như cá hoặc lướt như cá heo. Nói: “Fish!” “Dolphin!” “Shark!” và vẽ sóng bằng tay. Trẻ thích cảm giác chơi dưới nước và ghi nhớ từ mới."
       },
-      "tags": ["ocean", "sea"],
+      "tags": [
+        "ocean",
+        "sea"
+      ],
       "audio": "animals_around_world_v1_ocean.mp3"
     },
     {
       "slug": "desert-animals",
-      "keywords_en": ["desert", "hot", "animals"],
-      "keywords_vi": ["sa mạc", "nóng", "động vật"],
+      "keywords_en": [
+        "desert",
+        "hot",
+        "animals"
+      ],
+      "keywords_vi": [
+        "sa mạc",
+        "nóng",
+        "động vật"
+      ],
       "copy": {
         "en": "Teach “desert animals” with simple examples: camel, lizard, and snake. Say: “Hot desert!” and make slow, wide steps like a camel. Children enjoy acting out movements, making the words meaningful and memorable.",
         "vi": "Dạy “desert animals” bằng ví dụ đơn giản: lạc đà, thằn lằn và rắn. Nói: “Hot desert!” và bước chậm, rộng như lạc đà. Trẻ thích đóng vai động vật, giúp từ trở nên ý nghĩa và dễ nhớ."
       },
-      "tags": ["desert", "hot"],
+      "tags": [
+        "desert",
+        "hot"
+      ],
       "audio": "animals_around_world_v1_desert.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all", "full", "complete"],
-      "keywords_vi": ["tất cả", "đầy đủ", "trọn vẹn"],
+      "keywords_en": [
+        "all",
+        "full",
+        "complete"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "đầy đủ",
+        "trọn vẹn"
+      ],
       "copy": {
         "en": "Teach polar animals with cold motions.\n\nTeach rainforest animals through colorful sounds and play.\n\nTeach savanna animals with tall and strong movements.\n\nTeach ocean animals through swimming actions.\n\nTeach desert animals with slow, wide steps.\n\nThese animal words help kids explore the world and nature with excitement.",
         "vi": "Dạy động vật vùng cực bằng cảm giác lạnh.\n\nDạy động vật rừng mưa qua âm thanh và trò chơi.\n\nDạy động vật thảo nguyên bằng động tác cao và mạnh.\n\nDạy động vật đại dương bằng động tác bơi.\n\nDạy động vật sa mạc bằng bước chậm và rộng.\n\nNhững từ này giúp trẻ khám phá thế giới và thiên nhiên với sự hứng thú."
       },
-      "tags": ["all"],
+      "tags": [
+        "all"
+      ],
       "audio": "animals_around_world_v1_polar.mp3 animals_around_world_v1_rainforest.mp3 animals_around_world_v1_savanna.mp3 animals_around_world_v1_ocean.mp3 animals_around_world_v1_desert.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "7-10",
-    "level": "Kids Level 2",
-    "created_at": "2025-11-21T00:00:00+00:00",
-    "updated_at": "2025-11-21T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#FFE9D6"
-  }
+  ]
 }

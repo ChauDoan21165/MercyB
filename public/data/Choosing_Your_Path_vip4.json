@@ -3,52 +3,17 @@
   "name_vi": "Chọn Con Đường Của Bạn",
   "description": "Gentle guidance to help students understand themselves, meet the world, and choose a meaningful career path.",
   "description_vi": "Những lời gợi mở nhẹ nhàng giúp học sinh hiểu chính mình, chạm vào thế giới và chọn một con đường nghề nghiệp có ý nghĩa.",
-  "keywords_en": ["career choice", "self discovery", "students", "meaningful work"],
-  "keywords_vi": ["chọn nghề", "hiểu bản thân", "học sinh", "công việc ý nghĩa"],
-  "entries": [
-    {
-      "slug": "learn-yourself-meet-world",
-      "keywords_en": ["self discovery", "exploration", "world of work"],
-      "keywords_vi": ["tự khám phá", "trải nghiệm", "thế giới nghề nghiệp"],
-      "essay_en": "Before choosing a career, learn to know yourself and the world that reflects you. True understanding comes from experience, not guessing. Spend a day in a factory, visit a hospital, sit in a courtroom, or walk through an art gallery. Observe teachers, farmers, scientists, designers, journalists, and volunteers. Each scene whispers something—notice what awakens your curiosity or peace. Write down what draws you, what drains you. Career begins not in job listings but in the heartbeat of wonder. The more you explore, the clearer you'll hear: this is where I belong.",
-      "essay_vi": "Trước khi chọn nghề, hãy học cách hiểu chính mình và thế giới đang soi chiếu bạn. Cảm nhận không đến từ suy đoán mà từ trải nghiệm. Hãy tới nhà máy, bệnh viện, tòa án, phòng tranh, hay nơi làm việc của thầy cô, nông dân, nhà khoa học, nhà báo, tình nguyện viên. Mỗi khung cảnh thì thầm điều gì đó với bạn — hãy chú ý điều khiến bạn tò mò hay bình yên. Ghi lại điều thu hút bạn, điều khiến bạn mệt. Nghề nghiệp không bắt đầu trong danh sách việc làm mà trong nhịp tim của sự ngạc nhiên. Càng khám phá, bạn càng nghe rõ: đây là nơi mình thuộc về.",
-      "audio_en": "path_vip4_01_en.mp3"
-    },
-    {
-      "slug": "career-as-self-learning",
-      "keywords_en": ["choosing career", "effort", "inner rhythm"],
-      "keywords_vi": ["chọn nghề", "nỗ lực", "nhịp điệu bên trong"],
-      "essay_en": "Choosing a career is not just about work—it's a lesson about who you are. You are choosing who you want to become. Some jobs are loud and fast; others are quiet yet deep. Novelists, gardeners, and researchers thrive in calm focus. The key is attention. Notice your rhythm. Do you grow in crowds or in solitude? Do you love fixing details or dreaming big? Invest real effort now—each hour of honest reflection saves years of confusion later. A career chosen with awareness is like a tuned instrument; it sounds better the longer you play.",
-      "essay_vi": "Chọn nghề không chỉ là quyết định về công việc mà là bài học về chính bạn. Bạn chọn không chỉ việc làm mà cả người mình muốn trở thành. Có nghề ồn ào, có nghề yên tĩnh. Nhà văn, nhà nghiên cứu, người làm vườn tìm thấy bình yên trong im lặng. Hãy chú ý nhịp điệu của bạn: bạn nở rộ giữa đám đông hay trong sự tập trung một mình? Yêu chi tiết hay tầm nhìn lớn? Đầu tư nghiêm túc cho giai đoạn này, thời gian bỏ ra hôm nay sẽ tránh lạc lối mai sau. Nghề được chọn bằng sự tỉnh thức giống như nhạc cụ chỉnh đúng: càng chơi, âm thanh càng đẹp.",
-      "audio_en": "path_vip4_02_en.mp3"
-    },
-    {
-      "slug": "inspiration-from-stories",
-      "keywords_en": ["role models", "movies and books", "inspiration"],
-      "keywords_vi": ["hình mẫu", "phim và sách", "truyền cảm hứng"],
-      "essay_en": "Sometimes the doorway to your dream career opens through stories. Think of characters in films or books who stayed with you—a lawyer for the weak, a nurse holding a hand, a scientist in a lab, a teacher awakening minds. Ask why they move you. Their courage or patience mirrors a seed inside you. Collect such moments; they reveal your direction. Maybe you long to heal, teach, build, or create. These are not dreams but clues. The stories that touch you are mirrors showing who you can become. Follow them gently but firmly.",
-      "essay_vi": "Đôi khi, cánh cửa dẫn đến nghề mơ ước lại mở ra từ câu chuyện của người khác. Nghĩ về những nhân vật trong phim, sách đã ở lại trong bạn: luật sư bảo vệ yếu thế, y tá nắm tay bệnh nhân, thầy cô khơi dậy trí tuệ, nhà khoa học miệt mài trong phòng thí nghiệm. Hãy hỏi vì sao họ chạm vào bạn. Sự can đảm hay kiên nhẫn của họ phản chiếu một hạt giống trong bạn. Gom những khoảnh khắc ấy lại, chúng chỉ cho bạn hướng đi. Có thể bạn muốn chữa lành, dạy dỗ, xây dựng, sáng tạo. Những câu chuyện đó là tấm gương soi bạn tương lai. Hãy đi theo với sự dịu dàng và kiên định.",
-      "audio_en": "path_vip4_03_en.mp3"
-    },
-    {
-      "slug": "meaning-beyond-money",
-      "keywords_en": ["meaningful work", "money", "purpose"],
-      "keywords_vi": ["công việc ý nghĩa", "tiền bạc", "mục đích"],
-      "essay_en": "Money is needed, but meaning sustains you. A salary feeds your body, purpose feeds your soul. Many earn well but feel empty because their work lacks purpose. When choosing a career, imagine not only the income but the impact. Ask: will my heart grow kinder, wiser, freer? Simple jobs done with love—teaching, repairing, writing, helping—can be deeply rich. Money measures exchange; meaning measures life. Be practical but never sell your inner light for numbers. When work and heart move together, even ordinary days shine.",
-      "essay_vi": "Tiền cần thiết nhưng ý nghĩa mới nuôi được tinh thần. Lương nuôi thân, mục đích nuôi hồn. Nhiều người kiếm khá nhưng thấy trống rỗng vì công việc thiếu ý nghĩa. Khi chọn nghề, hãy nghĩ đến cả tác động. Hỏi: lòng mình có nhân hậu, khôn ngoan, tự do hơn không? Công việc giản dị nhưng làm bằng tình yêu như dạy trẻ, sửa máy, viết chữ, giúp người đều làm đời thêm giàu có. Tiền đo trao đổi, ý nghĩa đo sự sống. Hãy thực tế nhưng đừng bán ánh sáng bên trong lấy con số. Khi trái tim và công việc cùng hướng, ngày thường cũng rực rỡ.",
-      "audio_en": "path_vip4_04_en.mp3"
-    }
+  "keywords_en": [
+    "career choice",
+    "self discovery",
+    "students",
+    "meaningful work"
   ],
-  "meta": {
-    "created_at": "2025-11-09T00:00:00+07:00",
-    "updated_at": "2025-11-09T00:00:00+07:00",
-    "entry_count": 4,
-    "tier": "vip4",
-    "room_color": "#FFC107",
-    "artifact_version_id": "choosing-your-path-v001",
-    "localization": {
-      "i18n_required": true,
-      "i18n_verified": true
-    }
-  }
+  "keywords_vi": [
+    "chọn nghề",
+    "hiểu bản thân",
+    "học sinh",
+    "công việc ý nghĩa"
+  ],
+  "entries": []
 }

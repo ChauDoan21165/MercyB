@@ -13,77 +13,125 @@
   "entries": [
     {
       "slug": "screen-and-device-words",
-      "keywords_en": ["screen", "device", "technology"],
-      "keywords_vi": ["màn hình", "thiết bị", "công nghệ"],
+      "keywords_en": [
+        "screen",
+        "device",
+        "technology"
+      ],
+      "keywords_vi": [
+        "màn hình",
+        "thiết bị",
+        "công nghệ"
+      ],
       "copy": {
         "en": "Teach kids simple words for the tools they use every day: screen, tablet, laptop, and keyboard. Show them how each device has a purpose—tablets for touching, laptops for typing, screens for showing images. Encourage them to describe what they see on the screen using clear, short sentences. Learning these words helps children talk about technology confidently and responsibly.",
         "vi": "Hãy dạy trẻ các từ đơn giản về những công cụ trẻ dùng hằng ngày: màn hình, máy tính bảng, máy tính xách tay và bàn phím. Giải thích rằng mỗi thiết bị có mục đích riêng—máy tính bảng để chạm, máy tính xách tay để gõ, màn hình để hiển thị hình ảnh. Khuyến khích trẻ mô tả những gì mình thấy trên màn hình bằng câu ngắn và rõ ràng. Học những từ này giúp trẻ nói về công nghệ một cách tự tin và có trách nhiệm."
       },
-      "tags": ["technology"],
+      "tags": [
+        "technology"
+      ],
       "audio": "digital_literacy_words_v1_screen_device.mp3"
     },
     {
       "slug": "tap-click-and-type",
-      "keywords_en": ["tap", "click", "type"],
-      "keywords_vi": ["chạm", "nhấp", "gõ"],
+      "keywords_en": [
+        "tap",
+        "click",
+        "type"
+      ],
+      "keywords_vi": [
+        "chạm",
+        "nhấp",
+        "gõ"
+      ],
       "copy": {
         "en": "Teach action words like tap, click, and type. Kids learn that tapping is for touchscreens, clicking is for a mouse, and typing is for keyboards. Let them practice slowly so they can feel the difference. These words help children explain what they are doing when they use apps or websites.",
         "vi": "Hãy dạy những từ hành động như chạm, nhấp và gõ. Trẻ học rằng chạm dành cho màn hình cảm ứng, nhấp dành cho chuột và gõ dành cho bàn phím. Cho trẻ luyện tập chậm rãi để cảm nhận sự khác nhau. Những từ này giúp trẻ diễn tả những gì mình đang làm khi sử dụng ứng dụng hoặc trang web."
       },
-      "tags": ["actions"],
+      "tags": [
+        "actions"
+      ],
       "audio": "digital_literacy_words_v1_tap_click_type.mp3"
     },
     {
       "slug": "search-and-find",
-      "keywords_en": ["search", "find", "internet"],
-      "keywords_vi": ["tìm kiếm", "tìm", "internet"],
+      "keywords_en": [
+        "search",
+        "find",
+        "internet"
+      ],
+      "keywords_vi": [
+        "tìm kiếm",
+        "tìm",
+        "internet"
+      ],
       "copy": {
         "en": "Teach kids the word search by showing them how to look up information safely. Demonstrate typing simple questions into a search bar. Explain that searching helps them find answers, pictures, or facts. Encourage them to ask before searching something new to build safe digital habits.",
         "vi": "Hãy dạy trẻ từ tìm kiếm bằng cách chỉ trẻ cách tra cứu thông tin an toàn. Hướng dẫn trẻ gõ các câu hỏi đơn giản vào thanh tìm kiếm. Giải thích rằng tìm kiếm giúp trẻ tìm câu trả lời, hình ảnh hoặc thông tin. Khuyến khích trẻ xin phép trước khi tìm điều gì đó mới để tạo thói quen công nghệ an toàn."
       },
-      "tags": ["search"],
+      "tags": [
+        "search"
+      ],
       "audio": "digital_literacy_words_v1_search_find.mp3"
     },
     {
       "slug": "login-and-password",
-      "keywords_en": ["login", "password", "account"],
-      "keywords_vi": ["đăng nhập", "mật khẩu", "tài khoản"],
+      "keywords_en": [
+        "login",
+        "password",
+        "account"
+      ],
+      "keywords_vi": [
+        "đăng nhập",
+        "mật khẩu",
+        "tài khoản"
+      ],
       "copy": {
         "en": "Introduce simple safety words like login and password. Explain that passwords protect personal information and must be kept private. Kids can learn that logging in means entering their username and password to access something. Teach them to always ask an adult before typing a password.",
         "vi": "Hãy giới thiệu những từ an toàn đơn giản như đăng nhập và mật khẩu. Giải thích rằng mật khẩu bảo vệ thông tin cá nhân và phải được giữ bí mật. Trẻ có thể học rằng đăng nhập nghĩa là nhập tên người dùng và mật khẩu để truy cập điều gì đó. Dạy trẻ luôn hỏi người lớn trước khi nhập mật khẩu."
       },
-      "tags": ["safety"],
+      "tags": [
+        "safety"
+      ],
       "audio": "digital_literacy_words_v1_login_password.mp3"
     },
     {
       "slug": "online-safety-basics",
-      "keywords_en": ["online safety", "internet", "rules"],
-      "keywords_vi": ["an toàn mạng", "internet", "quy tắc"],
+      "keywords_en": [
+        "online safety",
+        "internet",
+        "rules"
+      ],
+      "keywords_vi": [
+        "an toàn mạng",
+        "internet",
+        "quy tắc"
+      ],
       "copy": {
         "en": "Teach kids that being online has rules, just like real life. Explain simple safety reminders such as not sharing personal details, only talking to people they know, and asking an adult if something feels strange. These basic online-safety words help children stay confident and protected when using the internet.",
         "vi": "Hãy dạy trẻ rằng việc sử dụng internet cũng có quy tắc như ngoài đời thật. Giải thích các lời nhắc an toàn đơn giản như không chia sẻ thông tin cá nhân, chỉ nói chuyện với người quen và báo người lớn nếu có điều gì đó lạ. Những từ về an toàn mạng giúp trẻ sử dụng internet tự tin và an toàn."
       },
-      "tags": ["online"],
+      "tags": [
+        "online"
+      ],
       "audio": "digital_literacy_words_v1_online_safety.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all"],
-      "keywords_vi": ["tất cả"],
+      "keywords_en": [
+        "all"
+      ],
+      "keywords_vi": [
+        "tất cả"
+      ],
       "copy": {
         "en": "Teach kids simple words for the tools they use every day: screen, tablet, laptop, and keyboard. Show them how each device has a purpose—tablets for touching, laptops for typing, screens for showing images. Encourage them to describe what they see on the screen using clear, short sentences. Learning these words helps children talk about technology confidently and responsibly.Teach action words like tap, click, and type. Kids learn that tapping is for touchscreens, clicking is for a mouse, and typing is for keyboards. Let them practice slowly so they can feel the difference. These words help children explain what they are doing when they use apps or websites.Teach kids the word search by showing them how to look up information safely. Demonstrate typing simple questions into a search bar. Explain that searching helps them find answers, pictures, or facts. Encourage them to ask before searching something new to build safe digital habits.Introduce simple safety words like login and password. Explain that passwords protect personal information and must be kept private. Kids can learn that logging in means entering their username and password to access something. Teach them to always ask an adult before typing a password.Teach kids that being online has rules, just like real life. Explain simple safety reminders such as not sharing personal details, only talking to people they know, and asking an adult if something feels strange. These basic online-safety words help children stay confident and protected when using the internet.",
         "vi": "Hãy dạy trẻ các từ đơn giản về những công cụ trẻ dùng hằng ngày: màn hình, máy tính bảng, máy tính xách tay và bàn phím. Giải thích rằng mỗi thiết bị có mục đích riêng—máy tính bảng để chạm, máy tính xách tay để gõ, màn hình để hiển thị hình ảnh. Khuyến khích trẻ mô tả những gì mình thấy trên màn hình bằng câu ngắn và rõ ràng. Học những từ này giúp trẻ nói về công nghệ một cách tự tin và có trách nhiệm.Hãy dạy những từ hành động như chạm, nhấp và gõ. Trẻ học rằng chạm dành cho màn hình cảm ứng, nhấp dành cho chuột và gõ dành cho bàn phím. Cho trẻ luyện tập chậm rãi để cảm nhận sự khác nhau. Những từ này giúp trẻ diễn tả những gì mình đang làm khi sử dụng ứng dụng hoặc trang web.Hãy dạy trẻ từ tìm kiếm bằng cách chỉ trẻ cách tra cứu thông tin an toàn. Hướng dẫn trẻ gõ các câu hỏi đơn giản vào thanh tìm kiếm. Giải thích rằng tìm kiếm giúp trẻ tìm câu trả lời, hình ảnh hoặc thông tin. Khuyến khích trẻ xin phép trước khi tìm điều gì đó mới để tạo thói quen công nghệ an toàn.Hãy giới thiệu những từ an toàn đơn giản như đăng nhập và mật khẩu. Giải thích rằng mật khẩu bảo vệ thông tin cá nhân và phải được giữ bí mật. Trẻ có thể học rằng đăng nhập nghĩa là nhập tên người dùng và mật khẩu để truy cập điều gì đó. Dạy trẻ luôn hỏi người lớn trước khi nhập mật khẩu.Hãy dạy trẻ rằng việc sử dụng internet cũng có quy tắc như ngoài đời thật. Giải thích các lời nhắc an toàn đơn giản như không chia sẻ thông tin cá nhân, chỉ nói chuyện với người quen và báo người lớn nếu có điều gì đó lạ. Những từ về an toàn mạng giúp trẻ sử dụng internet tự tin và an toàn."
       },
-      "tags": ["all"],
+      "tags": [
+        "all"
+      ],
       "audio": "digital_literacy_words_v1_screen_device.mp3 digital_literacy_words_v1_tap_click_type.mp3 digital_literacy_words_v1_search_find.mp3 digital_literacy_words_v1_login_password.mp3 digital_literacy_words_v1_online_safety.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "10-13",
-    "level": "Kids Level 3",
-    "created_at": "2025-11-23T00:00:00+00:00",
-    "updated_at": "2025-11-23T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#FFF3E0"
-  }
+  ]
 }

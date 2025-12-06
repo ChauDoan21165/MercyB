@@ -120,12 +120,5 @@
       ],
       "audio": "meaning_of_life_free.mp3 small_joys_free.mp3 living_with_awareness_free.mp3"
     }
-  ],
-  "meta": {
-    "created_at": "2025-10-27T00:00:00+00:00",
-    "updated_at": "2025-11-19T00:00:00+00:00",
-    "entry_count": 4,
-    "tier": "free",
-    "room_color": "#8B7355"
-  }
+  ]
 }

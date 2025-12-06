@@ -6,452 +6,165 @@
 import { RoomData } from "@/lib/roomData";
 
 export const roomDataMap: Record<string, RoomData> = {
-  "adhd-support-vip1": {
-      "id": "adhd-support-vip1",
-      "nameEn": "ADHD Support",
-      "nameVi": "Hỗ Trợ Rối Loạn Tăng Động Giảm Chú Ý",
-      "tier": "vip1",
-      "hasData": true
-  },
-  "adhd-support-vip2": {
-      "id": "adhd-support-vip2",
-      "nameEn": "ADHD Support",
-      "nameVi": "Hỗ Trợ Rối Loạn Tăng Động Giảm Chú Ý",
+  "cognitive-clarity-and-mental-load-vip2": {
+      "id": "cognitive-clarity-and-mental-load-vip2",
+      "nameEn": "Cognitive Clarity & Mental Load Management — Room 7",
+      "nameVi": "Rõ Ràng Tư Duy & Quản Lý Gánh Nặng Tâm Trí — Phòng 7",
       "tier": "vip2",
       "hasData": true
   },
-  "adhd-support-vip3": {
-      "id": "adhd-support-vip3",
-      "nameEn": "ADHD Support",
-      "nameVi": "Hỗ Trợ Rối Loạn Tăng Động Giảm Chú Ý",
-      "tier": "vip3",
+  "corporate-analytics-strategy-vip9": {
+      "id": "corporate-analytics-strategy-vip9",
+      "nameEn": "Corporate Analytics Strategy",
+      "nameVi": "Chiến Lược Phân Tích Doanh Nghiệp",
+      "tier": "vip9",
       "hasData": true
   },
-  "ai-free": {
-      "id": "ai-free",
-      "nameEn": "AI Fundamentals",
-      "nameVi": "Nền Tảng AI",
-      "tier": "free",
+  "corporate-conflict-navigation-vip9": {
+      "id": "corporate-conflict-navigation-vip9",
+      "nameEn": "Corporate Conflict Navigation",
+      "nameVi": "Điều Hướng Xung Đột Doanh Nghiệp",
+      "tier": "vip9",
       "hasData": true
   },
-  "ai-vip1": {
-      "id": "ai-vip1",
-      "nameEn": "AI Advanced Techniques VIP1",
-      "nameVi": "Kỹ Thuật AI Nâng Cao VIP1",
-      "tier": "vip1",
+  "corporate-crisis-strategy-vip9": {
+      "id": "corporate-crisis-strategy-vip9",
+      "nameEn": "Corporate Crisis Strategy",
+      "nameVi": "Chiến Lược Ứng Phó Khủng Hoảng Doanh Nghiệp",
+      "tier": "vip9",
       "hasData": true
   },
-  "ai-vip2": {
-      "id": "ai-vip2",
-      "nameEn": "AI Mastery",
-      "nameVi": "Thành Thạo AI",
+  "corporate-cross-functional-vip9": {
+      "id": "corporate-cross-functional-vip9",
+      "nameEn": "Corporate Cross-Functional Collaboration",
+      "nameVi": "Hợp Tác Chức Năng Chéo Doanh Nghiệp",
+      "tier": "vip9",
+      "hasData": true
+  },
+  "corporate-execution-systems-vip9": {
+      "id": "corporate-execution-systems-vip9",
+      "nameEn": "Corporate Execution Systems",
+      "nameVi": "Hệ Thống Thực Thi Doanh Nghiệp",
+      "tier": "vip9",
+      "hasData": true
+  },
+  "corporate-foresight-vip9": {
+      "id": "corporate-foresight-vip9",
+      "nameEn": "Corporate Strategic Foresight",
+      "nameVi": "Dự Báo Chiến Lược Doanh Nghiệp",
+      "tier": "vip9",
+      "hasData": true
+  },
+  "corporate-global-strategy-vip9": {
+      "id": "corporate-global-strategy-vip9",
+      "nameEn": "Corporate Global Strategy",
+      "nameVi": "Chiến Lược Toàn Cầu Doanh Nghiệp",
+      "tier": "vip9",
+      "hasData": true
+  },
+  "corporate-governance-vip9": {
+      "id": "corporate-governance-vip9",
+      "nameEn": "Corporate Governance",
+      "nameVi": "Quản Trị Doanh Nghiệp",
+      "tier": "vip9",
+      "hasData": true
+  },
+  "corporate-innovation-engines-vip9": {
+      "id": "corporate-innovation-engines-vip9",
+      "nameEn": "Corporate Innovation Engines",
+      "nameVi": "Động Cơ Sáng Tạo Doanh Nghiệp",
+      "tier": "vip9",
+      "hasData": true
+  },
+  "corporate-leadership-leverage-vip9": {
+      "id": "corporate-leadership-leverage-vip9",
+      "nameEn": "Corporate Leadership Leverage",
+      "nameVi": "Đòn Bẩy Lãnh Đạo Doanh Nghiệp",
+      "tier": "vip9",
+      "hasData": true
+  },
+  "corporate-long-cycle-planning-vip9": {
+      "id": "corporate-long-cycle-planning-vip9",
+      "nameEn": "Corporate Long Cycle Planning",
+      "nameVi": "Hoạch Định Chu Kỳ Dài Doanh Nghiệp",
+      "tier": "vip9",
+      "hasData": true
+  },
+  "corporate-negotiation-vip9": {
+      "id": "corporate-negotiation-vip9",
+      "nameEn": "Corporate Negotiation",
+      "nameVi": "Đàm Phán Doanh Nghiệp",
+      "tier": "vip9",
+      "hasData": true
+  },
+  "corporate-positioning-vip9": {
+      "id": "corporate-positioning-vip9",
+      "nameEn": "Corporate Positioning",
+      "nameVi": "Định Vị Doanh Nghiệp",
+      "tier": "vip9",
+      "hasData": true
+  },
+  "corporate-resource-allocation-vip9": {
+      "id": "corporate-resource-allocation-vip9",
+      "nameEn": "Corporate Resource Allocation",
+      "nameVi": "Phân Bổ Nguồn Lực Doanh Nghiệp",
+      "tier": "vip9",
+      "hasData": true
+  },
+  "corporate-scaling-strategy-vip9": {
+      "id": "corporate-scaling-strategy-vip9",
+      "nameEn": "Corporate Scaling Strategy",
+      "nameVi": "Chiến Lược Mở Rộng Doanh Nghiệp",
+      "tier": "vip9",
+      "hasData": true
+  },
+  "corporate-talent-architecture-vip9": {
+      "id": "corporate-talent-architecture-vip9",
+      "nameEn": "Corporate Talent Architecture",
+      "nameVi": "Kiến Trúc Tài Năng Doanh Nghiệp",
+      "tier": "vip9",
+      "hasData": true
+  },
+  "corporate-team-culture-vip9": {
+      "id": "corporate-team-culture-vip9",
+      "nameEn": "Corporate Team Culture",
+      "nameVi": "Văn Hóa Đội Nhóm Doanh Nghiệp",
+      "tier": "vip9",
+      "hasData": true
+  },
+  "debate-fallacies-vip2": {
+      "id": "debate-fallacies-vip2",
+      "nameEn": "Fallacies in Debate — VIP2 Room",
+      "nameVi": "Ngụy Biện Trong Tranh Luận — Phòng VIP2",
       "tier": "vip2",
       "hasData": true
   },
-  "ai-vip3": {
-      "id": "ai-vip3",
-      "nameEn": "AI Frontier",
-      "nameVi": "Biên Giới AI",
-      "tier": "vip3",
-      "hasData": true
-  },
-  "addiction-support-free": {
-      "id": "addiction-support-free",
-      "nameEn": "Addiction Support",
-      "nameVi": "Hỗ Trợ Cai Nghiện",
-      "tier": "free",
-      "hasData": true
-  },
-  "addiction-support-vip1": {
-      "id": "addiction-support-vip1",
-      "nameEn": "Addiction Support",
-      "nameVi": "Hỗ Trợ Cai Nghiện",
-      "tier": "vip1",
-      "hasData": true
-  },
-  "addiction-support-vip2": {
-      "id": "addiction-support-vip2",
-      "nameEn": "Addiction Support",
-      "nameVi": "Hỗ Trợ Cai Nghiện",
+  "deep-work-and-focus-vip2": {
+      "id": "deep-work-and-focus-vip2",
+      "nameEn": "Deep Work & Focus Architecture — Room 3",
+      "nameVi": "Làm Việc Sâu & Kiến Trúc Tập Trung — Phòng 3",
       "tier": "vip2",
       "hasData": true
   },
-  "addiction-support-vip3": {
-      "id": "addiction-support-vip3",
-      "nameEn": "Addiction Support",
-      "nameVi": "Hỗ Trợ Cai Nghiện",
-      "tier": "vip3",
-      "hasData": true
-  },
-  "adhd-support-free": {
-      "id": "adhd-support-free",
-      "nameEn": "ADHD Support",
-      "nameVi": "Hỗ Trợ Rối Loạn Tăng Động Giảm Chú Ý",
-      "tier": "free",
-      "hasData": true
-  },
-  "anxiety-relief-free": {
-      "id": "anxiety-relief-free",
-      "nameEn": "Anxiety Relief",
-      "nameVi": "Giảm Lo Âu",
-      "tier": "free",
-      "hasData": true
-  },
-  "anxiety-relief-vip1": {
-      "id": "anxiety-relief-vip1",
-      "nameEn": "Anxiety Relief",
-      "nameVi": "Giảm Lo Âu",
-      "tier": "vip1",
-      "hasData": true
-  },
-  "anxiety-relief-vip2": {
-      "id": "anxiety-relief-vip2",
-      "nameEn": "Anxiety Relief",
-      "nameVi": "Giảm Lo Âu",
+  "execution-flow-and-momentum-vip2": {
+      "id": "execution-flow-and-momentum-vip2",
+      "nameEn": "Execution Flow & Momentum — Room 5",
+      "nameVi": "Dòng Chảy Thực Thi & Đà Tiến — Phòng 5",
       "tier": "vip2",
       "hasData": true
   },
-  "anxiety-relief-vip3": {
-      "id": "anxiety-relief-vip3",
-      "nameEn": "Anxiety Relief",
-      "nameVi": "Giảm Lo Âu",
-      "tier": "vip3",
-      "hasData": true
-  },
-  "bipolar-support-free": {
-      "id": "bipolar-support-free",
-      "nameEn": "Bipolar Support",
-      "nameVi": "Hỗ Trợ Rối Loạn Lưỡng Cực",
-      "tier": "free",
-      "hasData": true
-  },
-  "bipolar-support-vip1": {
-      "id": "bipolar-support-vip1",
-      "nameEn": "Bipolar Support",
-      "nameVi": "Hỗ Trợ Rối Loạn Lưỡng Cực",
-      "tier": "vip1",
-      "hasData": true
-  },
-  "bipolar-support-vip2": {
-      "id": "bipolar-support-vip2",
-      "nameEn": "Bipolar Support",
-      "nameVi": "Hỗ Trợ Rối Loạn Lưỡng Cực",
+  "executive-function-mastery-vip2": {
+      "id": "executive-function-mastery-vip2",
+      "nameEn": "Executive Function Mastery — Room 8",
+      "nameVi": "Làm Chủ Chức Năng Điều Hành — Phòng 8",
       "tier": "vip2",
       "hasData": true
   },
-  "bipolar-support-vip3": {
-      "id": "bipolar-support-vip3",
-      "nameEn": "Bipolar Support",
-      "nameVi": "Hỗ Trợ Rối Loạn Lưỡng Cực",
-      "tier": "vip3",
-      "hasData": true
-  },
-  "bridge-to-reality-vip4": {
-      "id": "bridge-to-reality-vip4",
-      "nameEn": "Bridge To Reality",
-      "nameVi": "Bridge To Reality",
-      "tier": "vip4",
-      "hasData": true
-  },
-  "burnout-recovery-free": {
-      "id": "burnout-recovery-free",
-      "nameEn": "Burnout Recovery",
-      "nameVi": "Phục Hồi Kiệt Sức",
-      "tier": "free",
-      "hasData": true
-  },
-  "burnout-recovery-vip1": {
-      "id": "burnout-recovery-vip1",
-      "nameEn": "Burnout Recovery",
-      "nameVi": "Phục Hồi Kiệt Sức",
-      "tier": "vip1",
-      "hasData": true
-  },
-  "burnout-recovery-vip2": {
-      "id": "burnout-recovery-vip2",
-      "nameEn": "Burnout Recovery",
-      "nameVi": "Phục Hồi Kiệt Sức",
-      "tier": "vip2",
-      "hasData": true
-  },
-  "burnout-recovery-vip3": {
-      "id": "burnout-recovery-vip3",
-      "nameEn": "Burnout Recovery",
-      "nameVi": "Phục Hồi Kiệt Sức",
-      "tier": "vip3",
-      "hasData": true
-  },
-  "calm-body-calm-money-vip3-sub1": {
-      "id": "calm-body-calm-money-vip3-sub1",
-      "nameEn": "Calm Body, Calm Money",
-      "nameVi": "Thân Thể Bình An, Tiền Bạc Yên Tâm",
-      "tier": "vip3",
-      "hasData": true
-  },
-  "calm-confident-sexual-health-vip3-sub3-sex": {
-      "id": "calm-confident-sexual-health-vip3-sub3-sex",
-      "nameEn": "Calm Confident Sexual Health",
-      "nameVi": "Sức Khỏe Tình Dục Bình Tĩnh & Tự Tin",
-      "tier": "vip3",
-      "hasData": true
-  },
-  "career-community-vip4": {
-      "id": "career-community-vip4",
-      "nameEn": "Career Community",
-      "nameVi": "Career Community",
-      "tier": "vip4",
-      "hasData": true
-  },
-  "career-consultant-free": {
-      "id": "career-consultant-free",
-      "nameEn": "Career Consultant",
-      "nameVi": "Chuyên Gia Định Hướng Nghề Nghiệp",
-      "tier": "free",
-      "hasData": true
-  },
-  "choosing-your-path-vip4": {
-      "id": "choosing-your-path-vip4",
-      "nameEn": "Choosing Your Path",
-      "nameVi": "Chọn Con Đường Của Bạn",
-      "tier": "vip4",
-      "hasData": true
-  },
-  "courage-to-begin-vip4": {
-      "id": "courage-to-begin-vip4",
-      "nameEn": "Courage to Begin",
-      "nameVi": "Dám Bắt Đầu",
-      "tier": "vip4",
-      "hasData": true
-  },
-  "depression-support-vip1": {
-      "id": "depression-support-vip1",
-      "nameEn": "Depression Support",
-      "nameVi": "Hỗ Trợ Trầm Cảm",
-      "tier": "vip1",
-      "hasData": true
-  },
-  "depression-support-vip3": {
-      "id": "depression-support-vip3",
-      "nameEn": "Depression Support",
-      "nameVi": "Hỗ Trợ Trầm Cảm",
-      "tier": "vip3",
-      "hasData": true
-  },
-  "diverse-desires-&-belonging-vip3-sub5-sex": {
-      "id": "diverse-desires-&-belonging-vip3-sub5-sex",
-      "nameEn": "Diverse Desires & Belonging",
-      "nameVi": "Khao Khát Đa Dạng & Thuộc Về",
-      "tier": "vip3",
-      "hasData": true
-  },
-  "eating-disorder-support-free": {
-      "id": "eating-disorder-support-free",
-      "nameEn": "Eating Disorder Support",
-      "nameVi": "Hỗ Trợ Rối Loạn Ăn Uống",
-      "tier": "free",
-      "hasData": true
-  },
-  "eating-disorder-support-vip1": {
-      "id": "eating-disorder-support-vip1",
-      "nameEn": "Eating Disorder Support",
-      "nameVi": "Hỗ Trợ Rối Loạn Ăn Uống",
-      "tier": "vip1",
-      "hasData": true
-  },
-  "eating-disorder-support-vip2": {
-      "id": "eating-disorder-support-vip2",
-      "nameEn": "Eating Disorder Support",
-      "nameVi": "Hỗ Trợ Rối Loạn Ăn Uống",
-      "tier": "vip2",
-      "hasData": true
-  },
-  "eating-disorder-support-vip3": {
-      "id": "eating-disorder-support-vip3",
-      "nameEn": "Eating Disorder Support",
-      "nameVi": "Hỗ Trợ Rối Loạn Ăn Uống",
-      "tier": "vip3",
-      "hasData": true
-  },
-  "english-writing-free": {
-      "id": "english-writing-free",
-      "nameEn": "English Writing Foundations",
-      "nameVi": "Nền Tảng Viết Tiếng Anh",
-      "tier": "free",
-      "hasData": true
-  },
-  "english-writing-structure-vip2": {
-      "id": "english-writing-structure-vip2",
-      "nameEn": "Writing for Fluency & Structure",
-      "nameVi": "Viết Trôi Chảy & Cấu Trúc",
-      "tier": "vip2",
-      "hasData": true
-  },
-  "english-writing-mastery-vip3": {
-      "id": "english-writing-mastery-vip3",
-      "nameEn": "Writing Mastery & Excellence",
-      "nameVi": "Thành Thạo Viết & Xuất Sắc",
-      "tier": "vip3",
-      "hasData": true
-  },
-  "english-writing-deep-dive-vip3-ii": {
-      "id": "english-writing-deep-dive-vip3-ii",
-      "nameEn": "Writing Deep Dive VIP3 II",
-      "nameVi": "Viết Chuyên Sâu VIP3 II",
-      "tier": "vip3_ii",
-      "hasData": true
-  },
-  "english-writing-deep-dive-vip3-ii-ii": {
-      "id": "english-writing-deep-dive-vip3-ii-ii",
-      "nameEn": "Writing Deep Dive VIP3 II (Advanced)",
-      "nameVi": "Viết Chuyên Sâu VIP3 II (Nâng Cao)",
-      "tier": "vip3_ii",
-      "hasData": true
-  },
-  "english-writing-deep-dive-vip3-ii-iii": {
-      "id": "english-writing-deep-dive-vip3-ii-iii",
-      "nameEn": "Writing Deep Dive VIP3 III (Expert)",
-      "nameVi": "Viết Chuyên Sâu VIP3 III (Chuyên Gia)",
-      "tier": "vip3_iii",
-      "hasData": true
-  },
-  "english-writing-deepdive-part4-vip3-ii": {
-      "id": "english-writing-deepdive-part4-vip3-ii",
-      "nameEn": "Writing Deep-Dive: Part IV — Master Editor",
-      "nameVi": "Đi Sâu Viết Lách: Phần IV — Bậc Thầy Chỉnh Sửa",
-      "tier": "vip3_ii",
-      "hasData": true
-  },
-  "english-writing-deepdive-part5-vip3-ii": {
-      "id": "english-writing-deepdive-part5-vip3-ii",
-      "nameEn": "Writing Deep-Dive: Part V — Elite Writing Psychology",
-      "nameVi": "Đi Sâu Viết Lách: Phần V — Tâm Lý Viết Ở Cấp Độ Tinh Hoa",
-      "tier": "vip3_ii",
-      "hasData": true
-  },
-  "english-writing-deepdive-part6-vip3-ii": {
-      "id": "english-writing-deepdive-part6-vip3-ii",
-      "nameEn": "Writing Deep-Dive: Part VI — Sentence Engineering Lab: Ultra-Precise Style Shaping",
-      "nameVi": "Đi Sâu Viết Lách: Phần VI — Phòng Thí Nghiệm Cấu Trúc Câu: Định Hình Văn Phong Cực Kỳ Chính Xác",
-      "tier": "vip3_ii",
-      "hasData": true
-  },
-  "english-writing-deepdive-part7-vip3-ii": {
-      "id": "english-writing-deepdive-part7-vip3-ii",
-      "nameEn": "Writing Deep-Dive: Part VII — Masterclass in Paragraph Architecture",
-      "nameVi": "Đi Sâu Viết Lách: Phần VII — Bậc Thầy Kiến Trúc Đoạn Văn",
-      "tier": "vip3_ii",
-      "hasData": true
-  },
-  "english-writing-deepdive-part8-vip3-ii": {
-      "id": "english-writing-deepdive-part8-vip3-ii",
-      "nameEn": "Writing Deep-Dive: Part VIII — Narrative Flow Systems",
-      "nameVi": "Đi Sâu Viết Lách: Phần VIII — Hệ Thống Dòng Chảy Tự Sự",
-      "tier": "vip3_ii",
-      "hasData": true
-  },
-  "english-writing-deepdive-part9-vip3-ii": {
-      "id": "english-writing-deepdive-part9-vip3-ii",
-      "nameEn": "Writing Deep-Dive: Part IX — Advanced Cohesion Engineering",
-      "nameVi": "Đi Sâu Viết Lách: Phần IX — Kỹ Thuật Liên Kết Nâng Cao",
-      "tier": "vip3_ii",
-      "hasData": true
-  },
-  "english-specialization-mastery-vip3-ii": {
-      "id": "english-specialization-mastery-vip3-ii",
-      "nameEn": "VIP3 II – English Specialization Mastery",
-      "nameVi": "VIP3 II – Tinh Thông Tiếng Anh Chuyên Sâu",
-      "tier": "vip3_ii",
-      "hasData": true
-  },
-  "english-specialization-mastery-module2-vip3-ii": {
-      "id": "english-specialization-mastery-module2-vip3-ii",
-      "nameEn": "VIP3 II – English Specialization Mastery: Advanced Module",
-      "nameVi": "VIP3 II – Tinh Thông Tiếng Anh Chuyên Sâu: Mô-đun Nâng Cao",
-      "tier": "vip3_ii",
-      "hasData": true
-  },
-  "erotic-wisdom-for-life-vip3-sub-6-sex": {
-      "id": "erotic-wisdom-for-life-vip3-sub-6-sex",
-      "nameEn": "Erotic Wisdom for Life",
-      "nameVi": "Trí Tuệ Gợi Cảm Trọn Đời",
-      "tier": "vip3",
-      "hasData": true
-  },
-  "finance-calm-money-clear-future-preview-free": {
-      "id": "finance-calm-money-clear-future-preview-free",
-      "nameEn": "Calm Money, Clear Future — Preview",
-      "nameVi": "Tiền Bình Tĩnh, Tương Lai Rõ Ràng — Giới Thiệu",
-      "tier": "free",
-      "hasData": true
-  },
-  "finance-calm-money-sub1-nervous-system-vip3": {
-      "id": "finance-calm-money-sub1-nervous-system-vip3",
-      "nameEn": "Money & Your Nervous System",
-      "nameVi": "Tiền & Hệ Thống Thần Kinh",
-      "tier": "vip3",
-      "hasData": true
-  },
-  "finance-calm-money-sub2-money-basics-vip3": {
-      "id": "finance-calm-money-sub2-money-basics-vip3",
-      "nameEn": "Money Basics You Should've Learned",
-      "nameVi": "Kiến Thức Tiền Bạc Cơ Bản Bạn Nên Học",
-      "tier": "vip3",
-      "hasData": true
-  },
-  "finance-calm-money-sub3-growing-money-vip3": {
-      "id": "finance-calm-money-sub3-growing-money-vip3",
-      "nameEn": "Growing Your Money (Simply)",
-      "nameVi": "Phát Triển Tiền Của Bạn (Đơn Giản)",
-      "tier": "vip3",
-      "hasData": true
-  },
-  "finance-calm-money-sub4-vip3": {
-      "id": "finance-calm-money-sub4-vip3",
-      "nameEn": "Protecting What Matters",
-      "nameVi": "Bảo Vệ Điều Quan Trọng",
-      "tier": "vip3",
-      "hasData": true
-  },
-  "finance-calm-money-sub5-growing-bigger-vip3": {
-      "id": "finance-calm-money-sub5-growing-bigger-vip3",
-      "nameEn": "Growing Bigger (When Ready)",
-      "nameVi": "Phát Triển Lớn Hơn (Khi Sẵn Sàng)",
-      "tier": "vip3",
-      "hasData": true
-  },
-  "finance-calm-money-sub6-legacy-peace-vip3": {
-      "id": "finance-calm-money-sub6-legacy-peace-vip3",
-      "nameEn": "Legacy & Long-Term Peace",
-      "nameVi": "Di Sản & Bình An Lâu Dài",
-      "tier": "vip3",
-      "hasData": true
-  },
-  "finance-glory-vip3": {
-      "id": "finance-glory-vip3",
-      "nameEn": "Finance Glory",
-      "nameVi": "Vinh Quang Tài Chính",
-      "tier": "vip3",
-      "hasData": true
-  },
-  "find-what-you-love-vip4": {
-      "id": "find-what-you-love-vip4",
-      "nameEn": "Find What You Love",
-      "nameVi": "Tìm Điều Bạn Yêu",
-      "tier": "vip4",
-      "hasData": true
-  },
-  "grief-healing-free": {
-      "id": "grief-healing-free",
-      "nameEn": "Grief Healing",
-      "nameVi": "Chữa Lành Nỗi Đau Mất Mát",
-      "tier": "free",
-      "hasData": true
-  },
-  "grammar-accelerator-vip1": {
-      "id": "grammar-accelerator-vip1",
-      "nameEn": "Grammar Accelerator: Fast, Clear, Automatic",
-      "nameVi": "Tăng Tốc Ngữ Pháp: Nhanh, Rõ, Tự Động",
-      "tier": "vip1",
+  "frederick-bismarck-comparison-vip9": {
+      "id": "frederick-bismarck-comparison-vip9",
+      "nameEn": "Frederick the Great vs Otto von Bismarck — Comparative Strategy",
+      "nameVi": "Frederick Đại đế và Otto von Bismarck — So Sánh Chiến Lược",
+      "tier": "vip9",
       "hasData": true
   },
   "grammar-fluency-structure-vip2": {
@@ -463,51 +176,65 @@ export const roomDataMap: Record<string, RoomData> = {
   },
   "grammar-foundations-free": {
       "id": "grammar-foundations-free",
-      "nameEn": "Grammar Foundations: The Essentials",
-      "nameVi": "Nền Tảng Ngữ Pháp: Những Điều Quan Trọng Nhất",
+      "nameEn": "Grammar Foundations",
+      "nameVi": "Grammar Foundations",
       "tier": "free",
       "hasData": true
   },
-  "grammar-native-logic-vip3-ii": {
-      "id": "grammar-native-logic-vip3-ii",
-      "nameEn": "Grammar: Native Logic II",
-      "nameVi": "Ngữ Pháp: Logic Bản Ngữ II",
-      "tier": "vip3",
+  "interpersonal-intelligence-mastery-vip5": {
+      "id": "interpersonal-intelligence-mastery-vip5",
+      "nameEn": "Interpersonal Intelligence Mastery",
+      "nameVi": "Làm Chủ Trí Tuệ Giao Tiếp",
+      "tier": "vip5",
       "hasData": true
   },
-  "growing-bigger-when-ready-vip3-5-finance": {
-      "id": "growing-bigger-when-ready-vip3-5-finance",
-      "nameEn": "Protecting What Matters",
-      "nameVi": "Bảo Vệ Điều Quan Trọng",
-      "tier": "vip3",
+  "long-term-projects-and-lifetime-systems-vip2": {
+      "id": "long-term-projects-and-lifetime-systems-vip2",
+      "nameEn": "Long-Term Projects & Lifetime Systems — Room 6",
+      "nameVi": "Dự Án Dài Hạn & Hệ Thống Trọn Đời — Phòng 6",
+      "tier": "vip2",
       "hasData": true
   },
-  "know-yourself-deeply-vip4": {
-      "id": "know-yourself-deeply-vip4",
-      "nameEn": "Know Yourself Deeply",
-      "nameVi": "Know Yourself Deeply",
-      "tier": "vip4",
+  "machiavelli-grand-strategy-vip9": {
+      "id": "machiavelli-grand-strategy-vip9",
+      "nameEn": "Machiavelli Grand Strategy",
+      "nameVi": "Đại Chiến Lược Machiavelli",
+      "tier": "vip9",
       "hasData": true
   },
-  "legacy-and-impact-vip4": {
-      "id": "legacy-and-impact-vip4",
-      "nameEn": "Legacy and Impact",
-      "nameVi": "Di Sản Và Ảnh Hưởng",
-      "tier": "vip4",
+  "machiavelli-strategy-1-vip9": {
+      "id": "machiavelli-strategy-1-vip9",
+      "nameEn": "Machiavellian Strategy – Volume I",
+      "nameVi": "Chiến Lược Machiavelli – Tập I",
+      "tier": "vip9",
       "hasData": true
   },
-  "loneliness-comfort-free": {
-      "id": "loneliness-comfort-free",
-      "nameEn": "Loneliness Comfort",
-      "nameVi": "An Ủi Nỗi Cô Đơn",
-      "tier": "free",
+  "machiavelli-strategy-2-vip9": {
+      "id": "machiavelli-strategy-2-vip9",
+      "nameEn": "Machiavellian Strategy – Volume II",
+      "nameVi": "Chiến Lược Machiavelli – Tập II",
+      "tier": "vip9",
       "hasData": true
   },
-  "lullabies-for-a-tired-heart-vip3": {
-      "id": "lullabies-for-a-tired-heart-vip3",
-      "nameEn": "Lullabies For A Tired Heart",
-      "nameVi": "Khúc Ru Cho Trái Tim Mệt Mỏi",
-      "tier": "vip3",
+  "machiavelli-strategy-3-vip9": {
+      "id": "machiavelli-strategy-3-vip9",
+      "nameEn": "Machiavellian Strategy – Volume III",
+      "nameVi": "Chiến Lược Machiavelli – Tập III",
+      "tier": "vip9",
+      "hasData": true
+  },
+  "machiavelli-strategy-4-vip9": {
+      "id": "machiavelli-strategy-4-vip9",
+      "nameEn": "Machiavellian Strategy – Volume IV",
+      "nameVi": "Chiến Lược Machiavelli – Tập IV",
+      "tier": "vip9",
+      "hasData": true
+  },
+  "machiavelli-strategy-5-vip9": {
+      "id": "machiavelli-strategy-5-vip9",
+      "nameEn": "Machiavellian Strategy – Volume V",
+      "nameVi": "Chiến Lược Machiavelli – Tập V",
+      "tier": "vip9",
       "hasData": true
   },
   "master-english-high-efficiency-vip1": {
@@ -519,863 +246,296 @@ export const roomDataMap: Record<string, RoomData> = {
   },
   "master-english-high-efficiency-vip2": {
       "id": "master-english-high-efficiency-vip2",
-      "nameEn": "Master English: High-Efficiency Intermediate",
-      "nameVi": "Làm Chủ Tiếng Anh: Trung Cấp Hiệu Quả Cao",
+      "nameEn": "Master English: High-Efficiency Intermediate Accelerator",
+      "nameVi": "Làm Chủ Tiếng Anh: Bộ Tăng Tốc Trung Cấp Hiệu Quả Cao",
       "tier": "vip2",
       "hasData": true
   },
-  "master-english-high-efficiency-vip3": {
-      "id": "master-english-high-efficiency-vip3",
-      "nameEn": "Master English: High-Efficiency Learning",
-      "nameVi": "Làm Chủ Tiếng Anh: Phương Pháp Hiệu Quả Cao",
-      "tier": "vip3",
+  "national-civilization-cycles-vip9": {
+      "id": "national-civilization-cycles-vip9",
+      "nameEn": "National Civilization Cycles",
+      "nameVi": "Chu Kỳ Văn Minh Quốc Gia",
+      "tier": "vip9",
       "hasData": true
   },
-  "master-english-high-efficiency-vip3-ii": {
-      "id": "master-english-high-efficiency-vip3-ii",
-      "nameEn": "Master English: Cognitive Fluency & High-Performance Communication II",
-      "nameVi": "Làm Chủ Tiếng Anh: Tư Duy Trôi Chảy & Giao Tiếp Hiệu Suất Cao II",
-      "tier": "vip3",
+  "national-culture-power-vip9": {
+      "id": "national-culture-power-vip9",
+      "nameEn": "National Culture Power",
+      "nameVi": "Sức Mạnh Văn Hóa Quốc Gia",
+      "tier": "vip9",
       "hasData": true
   },
-  "master-english-grammar-high-roi-vip3": {
-      "id": "master-english-grammar-high-roi-vip3",
-      "nameEn": "Master English Grammar: The High-ROI Systems",
-      "nameVi": "Làm Chủ Ngữ Pháp Tiếng Anh: Hệ Thống Hiệu Suất Cao",
-      "tier": "vip3",
+  "national-cyber-strategy-vip9": {
+      "id": "national-cyber-strategy-vip9",
+      "nameEn": "National Cyber Strategy",
+      "nameVi": "Chiến Lược An Ninh Mạng Quốc Gia",
+      "tier": "vip9",
       "hasData": true
   },
-  "meaning-of-life-free": {
-      "id": "meaning-of-life-free",
-      "nameEn": "The Meaning of Life: Foundations of Balance",
-      "nameVi": "Ý Nghĩa Của Cuộc Sống: Nền Tảng Của Sự Cân Bằng",
-      "tier": "free",
+  "national-diplomacy-vip9": {
+      "id": "national-diplomacy-vip9",
+      "nameEn": "National Diplomacy Strategy",
+      "nameVi": "Chiến Lược Ngoại Giao Quốc Gia",
+      "tier": "vip9",
       "hasData": true
   },
-  "meaning-of-life-vip3": {
-      "id": "meaning-of-life-vip3",
-      "nameEn": "The Meaning of Life: Harmony of Being",
-      "nameVi": "Ý Nghĩa Của Cuộc Sống: Hòa Điệu Của Tồn Tại",
-      "tier": "vip3",
+  "national-economic-strategy-vip9": {
+      "id": "national-economic-strategy-vip9",
+      "nameEn": "National Economic Strategy",
+      "nameVi": "Chiến Lược Kinh Tế Quốc Gia",
+      "tier": "vip9",
       "hasData": true
   },
-  "mens-mental-health-free": {
-      "id": "mens-mental-health-free",
-      "nameEn": "Men's Mental Health",
-      "nameVi": "Sức Khỏe Tinh Thần Nam Giới",
-      "tier": "free",
+  "national-energy-security-vip9": {
+      "id": "national-energy-security-vip9",
+      "nameEn": "National Energy Security",
+      "nameVi": "An Ninh Năng Lượng Quốc Gia",
+      "tier": "vip9",
       "hasData": true
   },
-  "mens-mental-health-vip1": {
-      "id": "mens-mental-health-vip1",
-      "nameEn": "Men’s Mental Health",
-      "nameVi": "Sức Khỏe Tinh Thần Nam Giới",
-      "tier": "vip1",
+  "national-geopolitical-mapping-vip9": {
+      "id": "national-geopolitical-mapping-vip9",
+      "nameEn": "National Geopolitical Mapping",
+      "nameVi": "Bản Đồ Địa Chính Trị Quốc Gia",
+      "tier": "vip9",
       "hasData": true
   },
-  "mens-mental-health-vip2": {
-      "id": "mens-mental-health-vip2",
-      "nameEn": "Men’s Mental Health",
-      "nameVi": "Sức Khỏe Tinh Thần Nam Giới",
+  "national-identity-strategy-vip9": {
+      "id": "national-identity-strategy-vip9",
+      "nameEn": "National Identity Strategy",
+      "nameVi": "Chiến Lược Bản Sắc Quốc Gia",
+      "tier": "vip9",
+      "hasData": true
+  },
+  "national-megatrends-vip9": {
+      "id": "national-megatrends-vip9",
+      "nameEn": "National Megatrends Strategy",
+      "nameVi": "Chiến Lược Megatrend Quốc Gia",
+      "tier": "vip9",
+      "hasData": true
+  },
+  "national-military-strategy-vip9": {
+      "id": "national-military-strategy-vip9",
+      "nameEn": "National Military Strategy",
+      "nameVi": "Chiến Lược Quân Sự Quốc Gia",
+      "tier": "vip9",
+      "hasData": true
+  },
+  "national-power-capability-vip9": {
+      "id": "national-power-capability-vip9",
+      "nameEn": "National Power Capability",
+      "nameVi": "Năng Lực Quyền Lực Quốc Gia",
+      "tier": "vip9",
+      "hasData": true
+  },
+  "national-resilience-systems-vip9": {
+      "id": "national-resilience-systems-vip9",
+      "nameEn": "National Resilience Systems",
+      "nameVi": "Hệ Thống Chống Chịu Quốc Gia",
+      "tier": "vip9",
+      "hasData": true
+  },
+  "national-risk-intelligence-vip9": {
+      "id": "national-risk-intelligence-vip9",
+      "nameEn": "National Risk & Intelligence Strategy",
+      "nameVi": "Chiến Lược Rủi Ro & Tình Báo Quốc Gia",
+      "tier": "vip9",
+      "hasData": true
+  },
+  "national-space-strategy-vip9": {
+      "id": "national-space-strategy-vip9",
+      "nameEn": "National Space Strategy",
+      "nameVi": "Chiến Lược Không Gian Quốc Gia",
+      "tier": "vip9",
+      "hasData": true
+  },
+  "national-strategy-foundations-vip9": {
+      "id": "national-strategy-foundations-vip9",
+      "nameEn": "National Strategy Foundations",
+      "nameVi": "Nền Tảng Chiến Lược Quốc Gia",
+      "tier": "vip9",
+      "hasData": true
+  },
+  "personal-operating-system-vip2": {
+      "id": "personal-operating-system-vip2",
+      "nameEn": "Personal Operating System — Room 2",
+      "nameVi": "Hệ Điều Hành Cá Nhân — Phòng 2",
       "tier": "vip2",
       "hasData": true
   },
-  "mens-mental-health-vip3": {
-      "id": "mens-mental-health-vip3",
-      "nameEn": "Men’s Mental Health",
-      "nameVi": "Sức Khỏe Tinh Thần Nam Giới",
-      "tier": "vip3",
-      "hasData": true
-  },
-  "mental-health-vip1": {
-      "id": "mental-health-vip1",
-      "nameEn": "Mental Health VIP1",
-      "nameVi": "Mental Health VIP1",
-      "tier": "vip1",
-      "hasData": true
-  },
-  "mental-sharpness-vip3": {
-      "id": "mental-sharpness-vip3",
-      "nameEn": "Mental Sharpness",
-      "nameVi": "Mental Sharpness",
-      "tier": "vip3",
-      "hasData": true
-  },
-  "mentors-who-light-the-way-vip4": {
-      "id": "mentors-who-light-the-way-vip4",
-      "nameEn": "Mentors Who Light the Way",
-      "nameVi": "Những Người Dẫn Đường Thắp Sáng",
-      "tier": "vip4",
-      "hasData": true
-  },
-  "mindfulness-vip1": {
-      "id": "mindfulness-vip1",
-      "nameEn": "Mindfulness",
-      "nameVi": "Thực Hành Chánh Niệm",
-      "tier": "vip1",
-      "hasData": true
-  },
-  "nutrition-free": {
-      "id": "nutrition-free",
-      "nameEn": "Nutrition",
-      "nameVi": "Dinh Dưỡng",
-      "tier": "free",
-      "hasData": true
-  },
-  "nutrition-your-health-vip1": {
-      "id": "nutrition-your-health-vip1",
-      "nameEn": "Intermediate Nutrition",
-      "nameVi": "Dinh Dưỡng Trung Cấp",
-      "tier": "vip1",
-      "hasData": true
-  },
-  "nutrition-vip2": {
-      "id": "nutrition-vip2",
-      "nameEn": "Nutrition",
-      "nameVi": "Dinh Dưỡng",
+  "productivity-foundations-vip2": {
+      "id": "productivity-foundations-vip2",
+      "nameEn": "Foundations of Productivity — Room 1",
+      "nameVi": "Nền Tảng Năng Suất — Phòng 1",
       "tier": "vip2",
       "hasData": true
   },
-  "nutrition-vip3": {
-      "id": "nutrition-vip3",
-      "nameEn": "Nutrition",
-      "nameVi": "Dinh Dưỡng",
+  "public-speaking-delivery-vip3": {
+      "id": "public-speaking-delivery-vip3",
+      "nameEn": "Delivery & Presence — Room 3",
+      "nameVi": "Trình Bày & Hiện Diện — Phòng 3",
       "tier": "vip3",
       "hasData": true
   },
-  "ocd-support-free": {
-      "id": "ocd-support-free",
-      "nameEn": "OCD Support",
-      "nameVi": "Hỗ Trợ Rối Loạn Ám Ảnh Cưỡng Chế",
-      "tier": "free",
-      "hasData": true
-  },
-  "obesity-management-vip3": {
-      "id": "obesity-management-vip3",
-      "nameEn": "Obesity Management VIP3",
-      "nameVi": "Quản Lý Béo Phì VIP3",
+  "public-speaking-foundations-vip3": {
+      "id": "public-speaking-foundations-vip3",
+      "nameEn": "Public Speaking Foundations — Room 1",
+      "nameVi": "Nền Tảng Nói Trước Công Chúng — Phòng 1",
       "tier": "vip3",
       "hasData": true
   },
-  "obesity-management-ii-vip3": {
-      "id": "obesity-management-ii-vip3",
-      "nameEn": "Obesity Management II VIP3",
-      "nameVi": "Quản Lý Béo Phì II VIP3",
+  "public-speaking-structure-vip3": {
+      "id": "public-speaking-structure-vip3",
+      "nameEn": "Structuring Your Message — Room 2",
+      "nameVi": "Cấu Trúc Thông Điệp — Phòng 2",
       "tier": "vip3",
-      "hasData": true
-  },
-  "obesity-free": {
-      "id": "obesity-free",
-      "nameEn": "Obesity",
-      "nameVi": "Béo Phì",
-      "tier": "free",
-      "hasData": true
-  },
-  "ocd-support-vip1": {
-      "id": "ocd-support-vip1",
-      "nameEn": "OCD Support",
-      "nameVi": "Hỗ Trợ Rối Loạn Ám Ảnh Cưỡng Chế",
-      "tier": "vip1",
-      "hasData": true
-  },
-  "ocd-support-vip2": {
-      "id": "ocd-support-vip2",
-      "nameEn": "OCD Support",
-      "nameVi": "Hỗ Trợ Rối Loạn Ám Ảnh Cưỡng Chế",
-      "tier": "vip2",
-      "hasData": true
-  },
-  "ocd-support-vip3": {
-      "id": "ocd-support-vip3",
-      "nameEn": "OCD Support",
-      "nameVi": "Hỗ Trợ Rối Loạn Ám Ảnh Cưỡng Chế",
-      "tier": "vip3",
-      "hasData": true
-  },
-  "overcome-storm-vip3": {
-      "id": "overcome-storm-vip3",
-      "nameEn": "Overcome Storm",
-      "nameVi": "Overcome Storm",
-      "tier": "vip3",
-      "hasData": true
-  },
-  "philosophy-of-everyday-free": {
-      "id": "philosophy-of-everyday-free",
-      "nameEn": "Philosophy of Everyday (Free)",
-      "nameVi": "Triết Học Đời Thường (Miễn Phí)",
-      "tier": "free",
-      "hasData": true
-  },
-  "philosophy-of-everyday-vip2": {
-      "id": "philosophy-of-everyday-vip2",
-      "nameEn": "Philosophy of Everyday Life VIP2",
-      "nameVi": "Triết Lý Cuộc Sống Hàng Ngày VIP2",
-      "tier": "vip2",
-      "hasData": true
-  },
-  "philosophy-of-everyday-vip3": {
-      "id": "philosophy-of-everyday-vip3",
-      "nameEn": "Philosophy Of Everyday",
-      "nameVi": "Philosophy Of Everyday",
-      "tier": "vip3",
-      "hasData": true
-  },
-  "physical-fitness-and-nutrition-free": {
-      "id": "physical-fitness-and-nutrition-free",
-      "nameEn": "Physical Fitness and Nutrition",
-      "nameVi": "Thể Chất và Dinh Dưỡng",
-      "tier": "free",
-      "hasData": true
-  },
-  "productivity-and-focus-free": {
-      "id": "productivity-and-focus-free",
-      "nameEn": "Productivity & Focus",
-      "nameVi": "Năng Suất & Tập Trung",
-      "tier": "free",
-      "hasData": true
-  },
-  "productivity-and-focus-vip1": {
-      "id": "productivity-and-focus-vip1",
-      "nameEn": "Productivity & Focus",
-      "nameVi": "Năng Suất & Tập Trung",
-      "tier": "vip1",
-      "hasData": true
-  },
-  "productivity-and-focus-vip2": {
-      "id": "productivity-and-focus-vip2",
-      "nameEn": "Productivity & Focus",
-      "nameVi": "Năng Suất & Tập Trung",
-      "tier": "vip2",
-      "hasData": true
-  },
-  "productivity-and-focus-vip3": {
-      "id": "productivity-and-focus-vip3",
-      "nameEn": "Productivity & Focus",
-      "nameVi": "Năng Suất & Tập Trung",
-      "tier": "vip3",
-      "hasData": true
-  },
-  "protecting-what-matters-vip3-4-finance": {
-      "id": "protecting-what-matters-vip3-4-finance",
-      "nameEn": "Protecting What Matters",
-      "nameVi": "Bảo Vệ Điều Quan Trọng",
-      "tier": "vip3",
-      "hasData": true
-  },
-  "ptsd-support-free": {
-      "id": "ptsd-support-free",
-      "nameEn": "PTSD Support",
-      "nameVi": "Hỗ Trợ Rối Loạn Căng Thẳng Sau Sang Chấn",
-      "tier": "free",
-      "hasData": true
-  },
-  "quiet-growth-simple-investing-vip3-3-finance": {
-      "id": "quiet-growth-simple-investing-vip3-3-finance",
-      "nameEn": "Quiet Growth: Simple Investing",
-      "nameVi": "Tăng Trưởng Lặng Lẽ: Đầu Tư Đơn Giản",
-      "tier": "vip3",
-      "hasData": true
-  },
-  "relational-intelligence-&-erotic-communication-vip3-sub2-sex": {
-      "id": "relational-intelligence-&-erotic-communication-vip3-sub2-sex",
-      "nameEn": "Relational Intelligence & Erotic Communication",
-      "nameVi": "Thông Minh Quan Hệ & Giao Tiếp Gợi Cảm",
-      "tier": "vip3",
-      "hasData": true
-  },
-  "relationship-healing-free": {
-      "id": "relationship-healing-free",
-      "nameEn": "Relationship Healing",
-      "nameVi": "Hàn Gắn Mối Quan Hệ",
-      "tier": "free",
-      "hasData": true
-  },
-  "resilience-and-adaptation-vip4": {
-      "id": "resilience-and-adaptation-vip4",
-      "nameEn": "Resilience and Adaptation",
-      "nameVi": "Khả Năng Phục Hồi và Thích Nghi",
-      "tier": "vip4",
-      "hasData": true
-  },
-  "sacred-body-curious-self-vip3-sub2-sex": {
-      "id": "sacred-body-curious-self-vip3-sub2-sex",
-      "nameEn": "Sacred Body, Curious Self",
-      "nameVi": "Thân Thể Linh Thiêng, Bản Ngã Tò Mò",
-      "tier": "vip3",
-      "hasData": true
-  },
-  "see-your-money-clearly-vip3-2-finance": {
-      "id": "see-your-money-clearly-vip3-2-finance",
-      "nameEn": "Money Basics You Should've Learned",
-      "nameVi": "Kiến Thức Tiền Bạc Nên Được Dạy",
-      "tier": "vip3",
-      "hasData": true
-  },
-  "self-love-free": {
-      "id": "self-love-free",
-      "nameEn": "Self Love",
-      "nameVi": "Yêu Thương Bản Thân",
-      "tier": "free",
-      "hasData": true
-  },
-  "sexuality-&-curiosity-&-culture-vip3": {
-      "id": "sexuality-&-curiosity-&-culture-vip3",
-      "nameEn": "Sexuality & Curiosity & Culture",
-      "nameVi": "Tính Dục, Sự Tò Mò & Văn Hóa",
-      "tier": "vip3",
-      "hasData": true
-  },
-  "sexuality-&-curiosity-free": {
-      "id": "sexuality-&-curiosity-free",
-      "nameEn": "Sexuality & Curiosity",
-      "nameVi": "Tính Dục & Sự Tò Mò",
-      "tier": "free",
-      "hasData": true
-  },
-  "sexuality-curiosity-vip3-sub4": {
-      "id": "sexuality-curiosity-vip3-sub4",
-      "nameEn": "Sexual Health and Safety",
-      "nameVi": "Sức Khỏe và An Toàn Tình Dục",
-      "tier": "vip3",
-      "hasData": true
-  },
-  "shadow-work-free": {
-      "id": "shadow-work-free",
-      "nameEn": "Shadow Work",
-      "nameVi": "Làm Việc Với Bóng Tối",
-      "tier": "free",
-      "hasData": true
-  },
-  "shadow-work-vip1": {
-      "id": "shadow-work-vip1",
-      "nameEn": "Shadow Work",
-      "nameVi": "Làm Việc Với Bóng Tối",
-      "tier": "vip1",
-      "hasData": true
-  },
-  "shadow-work-vip2": {
-      "id": "shadow-work-vip2",
-      "nameEn": "Shadow Work",
-      "nameVi": "Làm Việc Với Bóng Tối",
-      "tier": "vip2",
-      "hasData": true
-  },
-  "shadow-work-vip3": {
-      "id": "shadow-work-vip3",
-      "nameEn": "Shadow Work",
-      "nameVi": "Làm Việc Với Bóng Tối",
-      "tier": "vip3",
-      "hasData": true
-  },
-  "sleep-improvement-free": {
-      "id": "sleep-improvement-free",
-      "nameEn": "Sleep Improvement",
-      "nameVi": "Sleep Improvement",
-      "tier": "free",
-      "hasData": true
-  },
-  "sleep-improvement-vip1": {
-      "id": "sleep-improvement-vip1",
-      "nameEn": "Sleep Improvement",
-      "nameVi": "Sleep Improvement",
-      "tier": "vip1",
-      "hasData": true
-  },
-  "sleep-improvement-vip3": {
-      "id": "sleep-improvement-vip3",
-      "nameEn": "Sleep Improvement",
-      "nameVi": "Sleep Improvement",
-      "tier": "vip3",
-      "hasData": true
-  },
-  "social-anxiety-free": {
-      "id": "social-anxiety-free",
-      "nameEn": "Social Anxiety",
-      "nameVi": "Lo Âu Xã Hội",
-      "tier": "free",
-      "hasData": true
-  },
-  "social-anxiety-vip2": {
-      "id": "social-anxiety-vip2",
-      "nameEn": "Social Anxiety",
-      "nameVi": "Lo Âu Xã Hội",
-      "tier": "vip2",
-      "hasData": true
-  },
-  "social-anxiety-vip3": {
-      "id": "social-anxiety-vip3",
-      "nameEn": "Social Anxiety",
-      "nameVi": "Lo Âu Xã Hội",
-      "tier": "vip3",
-      "hasData": true
-  },
-  "soulmate-free": {
-      "id": "soulmate-free",
-      "nameEn": "Find Your Soul Mate",
-      "nameVi": "Tìm Người Tri Kỷ",
-      "tier": "free",
       "hasData": true
   },
   "stoicism-free": {
       "id": "stoicism-free",
-      "nameEn": "Stoic Philosophy (Free)",
-      "nameVi": "Triết Học Khắc Kỷ (Miễn Phí)",
+      "nameEn": "Stoicism",
+      "nameVi": "Stoicism",
       "tier": "free",
       "hasData": true
   },
-  "strategy-in-life-1-vip3": {
-      "id": "strategy-in-life-1-vip3",
-      "nameEn": "Strategy in Life - Foundations",
-      "nameVi": "Chiến Lược Cuộc Sống - Nền Tảng",
-      "tier": "vip3",
+  "strategic-adaptive-intelligence-vip9": {
+      "id": "strategic-adaptive-intelligence-vip9",
+      "nameEn": "Strategic Adaptive Intelligence",
+      "nameVi": "Trí Tuệ Thích Ứng Chiến Lược",
+      "tier": "vip9",
       "hasData": true
   },
-  "strategy-in-life-2-vip3": {
-      "id": "strategy-in-life-2-vip3",
-      "nameEn": "Strategy in Life - Advanced Tactics",
-      "nameVi": "Chiến Lược Cuộc Sống - Chiến Thuật Nâng Cao",
-      "tier": "vip3",
+  "strategic-antifragile-growth-vip9": {
+      "id": "strategic-antifragile-growth-vip9",
+      "nameEn": "Antifragile Growth Mastery",
+      "nameVi": "Làm Chủ Tăng Trưởng Chống Mong Manh",
+      "tier": "vip9",
       "hasData": true
   },
-  "strategy-in-life-3-vip3": {
-      "id": "strategy-in-life-3-vip3",
-      "nameEn": "Strategy in Life - Mastery & Legacy",
-      "nameVi": "Chiến Lược Cuộc Sống - Tinh Thông & Di Sản",
-      "tier": "vip3",
+  "strategic-cognitive-models-vip9": {
+      "id": "strategic-cognitive-models-vip9",
+      "nameEn": "Cognitive Precision & Mental Models",
+      "nameVi": "Độ Chính Xác Nhận Thức & Mô Hình Tư Duy",
+      "tier": "vip9",
       "hasData": true
   },
-  "strategy-in-life-foundations-ii-vip3": {
-      "id": "strategy-in-life-foundations-ii-vip3",
-      "nameEn": "Strategy in Life - Foundations II",
-      "nameVi": "Chiến Lược Cuộc Sống - Nền Tảng II",
-      "tier": "vip3",
+  "strategic-deep-work-vip9": {
+      "id": "strategic-deep-work-vip9",
+      "nameEn": "Deep Work Mastery",
+      "nameVi": "Làm Chủ Công Việc Sâu",
+      "tier": "vip9",
       "hasData": true
   },
-  "strategy-in-life-advanced-tactics-ii-vip3": {
-      "id": "strategy-in-life-advanced-tactics-ii-vip3",
-      "nameEn": "Strategy in Life - Advanced Tactics II",
-      "nameVi": "Chiến Lược Cuộc Sống - Chiến Thuật Nâng Cao II",
-      "tier": "vip3",
+  "strategic-emotional-neutrality-vip9": {
+      "id": "strategic-emotional-neutrality-vip9",
+      "nameEn": "Strategic Emotional Neutrality",
+      "nameVi": "Trung Lập Cảm Xúc Chiến Lược",
+      "tier": "vip9",
       "hasData": true
   },
-  "strategy-in-life-mastery-legacy-ii-vip3": {
-      "id": "strategy-in-life-mastery-legacy-ii-vip3",
-      "nameEn": "Strategy in Life - Mastery & Legacy II",
-      "nameVi": "Chiến Lược Cuộc Sống - Tinh Thông & Di Sản II",
-      "tier": "vip3",
+  "strategic-failure-recovery-vip9": {
+      "id": "strategic-failure-recovery-vip9",
+      "nameEn": "Failure Recovery Mastery",
+      "nameVi": "Làm Chủ Hồi Phục Thất Bại",
+      "tier": "vip9",
       "hasData": true
   },
-  "stress-free": {
-      "id": "stress-free",
-      "nameEn": "Stress",
-      "nameVi": "Stress",
-      "tier": "free",
+  "strategic-foundations-vip9": {
+      "id": "strategic-foundations-vip9",
+      "nameEn": "Foundations of Strategic Thinking",
+      "nameVi": "Nền Tảng Tư Duy Chiến Lược",
+      "tier": "vip9",
       "hasData": true
   },
-  "stress-vip2": {
-      "id": "stress-vip2",
-      "nameEn": "Stress",
-      "nameVi": "Stress",
-      "tier": "vip2",
+  "strategic-identity-vip9": {
+      "id": "strategic-identity-vip9",
+      "nameEn": "Strategic Identity Mastery",
+      "nameVi": "Làm Chủ Bản Sắc Chiến Lược",
+      "tier": "vip9",
       "hasData": true
   },
-  "stress-vip3": {
-      "id": "stress-vip3",
-      "nameEn": "Stress",
-      "nameVi": "Stress",
-      "tier": "vip3",
+  "strategic-influence-individual-vip9": {
+      "id": "strategic-influence-individual-vip9",
+      "nameEn": "Individual Influence Mastery",
+      "nameVi": "Làm Chủ Ảnh Hưởng Cá Nhân",
+      "tier": "vip9",
       "hasData": true
   },
-  "strategy-in-life-mastery-legacy-vip3": {
-      "id": "strategy-in-life-mastery-legacy-vip3",
-      "nameEn": "Strategy in Life - Mastery & Legacy",
-      "nameVi": "Chiến Lược Cuộc Sống - Tinh Thông & Di Sản",
-      "tier": "vip3",
+  "strategic-lifelong-fitness-vip9": {
+      "id": "strategic-lifelong-fitness-vip9",
+      "nameEn": "Lifelong Fitness Mastery",
+      "nameVi": "Làm Chủ Thể Lực Suốt Đời",
+      "tier": "vip9",
       "hasData": true
   },
-  "trigger-point-release-vip1": {
-      "id": "trigger-point-release-vip1",
-      "nameEn": "Trigger Point Release",
-      "nameVi": "Giải Phóng Điểm Kích Hoạt",
-      "tier": "vip1",
+  "strategic-long-horizon-vip9": {
+      "id": "strategic-long-horizon-vip9",
+      "nameEn": "Long Horizon Mastery",
+      "nameVi": "Làm Chủ Chân Trời Dài",
+      "tier": "vip9",
       "hasData": true
   },
-  "wealth-&-wisdom-vip3-preview-free": {
-      "id": "wealth-&-wisdom-vip3-preview-free",
-      "nameEn": "Wealth & Wisdom — VIP3 Preview",
-      "nameVi": "Giàu Có & Trí Tuệ — Giới Thiệu VIP3",
-      "tier": "free",
+  "strategic-negotiation-individual-vip9": {
+      "id": "strategic-negotiation-individual-vip9",
+      "nameEn": "Individual Negotiation Mastery",
+      "nameVi": "Làm Chủ Đàm Phán Cá Nhân",
+      "tier": "vip9",
       "hasData": true
   },
-  "weight-loss-and-fitness-free": {
-      "id": "weight-loss-and-fitness-free",
-      "nameEn": "Weight Loss & Fitness",
-      "nameVi": "Giảm Cân & Thể Dục",
-      "tier": "free",
+  "strategic-pattern-recognition-vip9": {
+      "id": "strategic-pattern-recognition-vip9",
+      "nameEn": "Pattern Recognition Mastery",
+      "nameVi": "Làm Chủ Nhận Diện Mẫu Hình",
+      "tier": "vip9",
       "hasData": true
   },
-  "weight-loss-and-fitness-vip2": {
-      "id": "weight-loss-and-fitness-vip2",
-      "nameEn": "Weight Loss & Fitness",
-      "nameVi": "Giảm Cân & Thể Dục",
-      "tier": "vip2",
+  "strategic-personal-systems-vip9": {
+      "id": "strategic-personal-systems-vip9",
+      "nameEn": "Personal Systems Mastery",
+      "nameVi": "Làm Chủ Hệ Thống Cá Nhân",
+      "tier": "vip9",
       "hasData": true
   },
-  "weight-loss-and-fitness-vip3": {
-      "id": "weight-loss-and-fitness-vip3",
-      "nameEn": "Weight Loss & Fitness",
-      "nameVi": "Giảm Cân & Thể Dục",
-      "tier": "vip3",
+  "strategic-reputation-individual-vip9": {
+      "id": "strategic-reputation-individual-vip9",
+      "nameEn": "Individual Reputation Mastery",
+      "nameVi": "Làm Chủ Danh Tiếng Cá Nhân",
+      "tier": "vip9",
       "hasData": true
   },
-  "confidence-vip3": {
-      "id": "confidence-vip3",
-      "nameEn": "Confidence",
-      "nameVi": "Confidence",
-      "tier": "vip3",
+  "strategic-risk-calibration-vip9": {
+      "id": "strategic-risk-calibration-vip9",
+      "nameEn": "Risk Calibration Mastery",
+      "nameVi": "Làm Chủ Hiệu Chỉnh Rủi Ro",
+      "tier": "vip9",
       "hasData": true
   },
-  "sleep-improvement-vip2": {
-      "id": "sleep-improvement-vip2",
-      "nameEn": "Sleep Improvement",
-      "nameVi": "Sleep Improvement",
-      "tier": "vip2",
+  "strategic-scenario-thinking-vip9": {
+      "id": "strategic-scenario-thinking-vip9",
+      "nameEn": "Scenario Thinking Mastery",
+      "nameVi": "Làm Chủ Tư Duy Kịch Bản",
+      "tier": "vip9",
       "hasData": true
   },
-  "finding-gods-peace-free": {
-      "id": "finding-gods-peace-free",
-      "nameEn": "Finding God's Peace",
-      "nameVi": "Tìm Bình An Của Thiên Chúa",
-      "tier": "free",
+  "strategic-self-governance-vip9": {
+      "id": "strategic-self-governance-vip9",
+      "nameEn": "Self-Governance Mastery",
+      "nameVi": "Làm Chủ Tự Quản Trị",
+      "tier": "vip9",
       "hasData": true
   },
-  "build-skills-vip4-career-3": {
-      "id": "build-skills-vip4-career-3",
-      "nameEn": "Build Skills (Career 3)",
-      "nameVi": "Xây Dựng Kỹ Năng (Nghề Nghiệp 3)",
-      "tier": "vip4",
+  "strategic-signal-detection-vip9": {
+      "id": "strategic-signal-detection-vip9",
+      "nameEn": "Signal Detection Mastery",
+      "nameVi": "Làm Chủ Phát Hiện Tín Hiệu",
+      "tier": "vip9",
       "hasData": true
   },
-  "build-skills-vip4-career-3-ii": {
-      "id": "build-skills-vip4-career-3-ii",
-      "nameEn": "Build Skills II (Career 3)",
-      "nameVi": "Xây Dựng Kỹ Năng II (Nghề Nghiệp 3)",
-      "tier": "vip4",
+  "sun-tzu-strategy-vip9": {
+      "id": "sun-tzu-strategy-vip9",
+      "nameEn": "Sun Tzu – Strategic Foundations",
+      "nameVi": "Tôn Tử – Nền Tảng Chiến Lược",
+      "tier": "vip9",
       "hasData": true
-  },
-  "discover-self-vip4-career-1": {
-      "id": "discover-self-vip4-career-1",
-      "nameEn": "Discover Self (Career 1)",
-      "nameVi": "Khám Phá Bản Thân (Nghề Nghiệp 1)",
-      "tier": "vip4",
-      "hasData": true
-  },
-  "explore-world-vip4-career-i-2": {
-      "id": "explore-world-vip4-career-i-2",
-      "nameEn": "Explore World I (Career 2)",
-      "nameVi": "Khám Phá Thế Giới I (Nghề Nghiệp 2)",
-      "tier": "vip4",
-      "hasData": true
-  },
-  "explore-world-vip4-career-ii-2": {
-      "id": "explore-world-vip4-career-ii-2",
-      "nameEn": "Explore World II (Career 2)",
-      "nameVi": "Khám Phá Thế Giới II (Nghề Nghiệp 2)",
-      "tier": "vip4",
-      "hasData": true
-  },
-  "god-with-us-free": {
-      "id": "god-with-us-free",
-      "nameEn": "God With Us",
-      "nameVi": "Chúa Ở Cùng Chúng Ta",
-      "tier": "free",
-      "hasData": true
-  },
-  "grow-wealth-vip4-career-6": {
-      "id": "grow-wealth-vip4-career-6",
-      "nameEn": "Grow Wealth (Career 6)",
-      "nameVi": "Phát Triển Tài Sản (Nghề Nghiệp 6)",
-      "tier": "vip4",
-      "hasData": true
-  },
-  "launch-career-vip4-career-4-ii": {
-      "id": "launch-career-vip4-career-4-ii",
-      "nameEn": "Launch Career II (Career 4)",
-      "nameVi": "Khởi Nghiệp II (Nghề Nghiệp 4)",
-      "tier": "vip4",
-      "hasData": true
-  },
-  "strategy-in-life-advanced-tactics-ii-alt-vip3": {
-      "id": "strategy-in-life-advanced-tactics-ii-alt-vip3",
-      "nameEn": "Strategy in Life: Advanced Tactics II (Alt)",
-      "nameVi": "Chiến Lược Trong Đời: Chiến Thuật Nâng Cao II (Thay Thế)",
-      "tier": "vip3",
-      "hasData": true
-  },
-  "schizophrenia-support-free": {
-      "id": "schizophrenia-support-free",
-      "nameEn": "Schizophrenia Support",
-      "nameVi": "Hỗ Trợ Tâm Thần Phân Liệt",
-      "tier": "free",
-      "hasData": true
-  },
-  "schizophrenia-understanding-vip1": {
-      "id": "schizophrenia-understanding-vip1",
-      "nameEn": "Understanding Schizophrenia",
-      "nameVi": "Hiểu Về Tâm Thần Phân Liệt",
-      "tier": "vip1",
-      "hasData": true
-  },
-  "schizophrenia-understanding-vip2": {
-      "id": "schizophrenia-understanding-vip2",
-      "nameEn": "Understanding Schizophrenia: Scientific Root Causes",
-      "nameVi": "Hiểu Về Tâm Thần Phân Liệt: Nguyên Nhân Khoa Học Sâu Xa",
-      "tier": "vip2",
-      "hasData": true
-  },
-  "schizophrenia-mastery-vip3": {
-      "id": "schizophrenia-mastery-vip3",
-      "nameEn": "Schizophrenia Mastery",
-      "nameVi": "Thành Thạo Tâm Thần Phân Liệt",
-      "tier": "vip3",
-      "hasData": true
-  },
-  "english-writing-deepdive-part10-vip3-ii": {
-      "id": "english-writing-deepdive-part10-vip3-ii",
-      "nameEn": "Writing Deep-Dive: Part X — Professional Argument Engineering",
-      "nameVi": "Đi Sâu Viết Lách: Phần X — Kỹ Thuật Lập Luận Chuyên Nghiệp",
-      "tier": "vip3_ii",
-      "hasData": true
-  },
-  "writing-logic-vip3-ii": {
-      "id": "writing-logic-vip3-ii",
-      "nameEn": "Expert Logic Systems for Writing",
-      "nameVi": "Hệ Thống Lập Luận Chuyên Sâu Cho Viết Học",
-      "tier": "vip3_ii",
-      "hasData": true
-  },
-  "writing-deepdive-part12-vip3-ii": {
-      "id": "writing-deepdive-part12-vip3-ii",
-      "nameEn": "Advanced Evidence Architecture: Data, Examples & Intellectual Proofs",
-      "nameVi": "Kiến Trúc Bằng Chứng Nâng Cao: Dữ Liệu, Ví Dụ & Lập Luận Trí Tuệ",
-      "tier": "vip3_ii",
-      "hasData": true
-  },
-  "writing-vip3ii-part14": {
-      "id": "writing-vip3ii-part14",
-      "nameEn": "Meta-Cognition for Writers: Thinking About How You Think",
-      "nameVi": "Siêu Nhận Thức Cho Người Viết: Nghĩ Về Cách Bạn Nghĩ",
-      "tier": "vip3_ii",
-      "hasData": true
-  },
-  "vip6-shadow-self": {
-      "id": "vip6-shadow-self",
-      "nameEn": "The Shadow Self",
-      "nameVi": "Bóng Tối Bên Trong",
-      "tier": "vip6",
-      "hasData": true
-  },
-  "vip6-projection-triggers": {
-      "id": "vip6-projection-triggers",
-      "nameEn": "Projection & Triggers",
-      "nameVi": "Sự Chiếu & Kích Hoạt",
-      "tier": "vip6",
-      "hasData": true
-  },
-  "vip6-emotional-blindspots": {
-    "id": "vip6-emotional-blindspots",
-    "nameEn": "Emotional Blindspots",
-    "nameVi": "Điểm Mù Cảm Xúc",
-    "tier": "vip6",
-    "hasData": true
-  },
-  "vip6-inner-fragmentation": {
-    "id": "vip6-inner-fragmentation",
-    "nameEn": "Inner Fragmentation",
-    "nameVi": "Sự Phân Mảnh Nội Tâm",
-    "tier": "vip6",
-    "hasData": true
-  },
-  "vip6-repressed-desires": {
-    "id": "vip6-repressed-desires",
-    "nameEn": "Repressed Desires",
-    "nameVi": "Khát Khao Bị Kìm Nén",
-    "tier": "vip6",
-    "hasData": true
-  },
-  "vip6-fear-abandonment": {
-    "id": "vip6-fear-abandonment",
-    "nameEn": "Fear of Abandonment",
-    "nameVi": "Nỗi Sợ Bị Bỏ Rơi",
-    "tier": "vip6",
-    "hasData": true
-  },
-  "vip6-guilt-hidden-shame": {
-    "id": "vip6-guilt-hidden-shame",
-    "nameEn": "Guilt & Hidden Shame",
-    "nameVi": "Tội Lỗi & Nỗi Xấu Hổ Ẩn Giấu",
-    "tier": "vip6",
-    "hasData": true
-  },
-  "vip6-attachment-wounds": {
-    "id": "vip6-attachment-wounds",
-    "nameEn": "Attachment Wounds",
-    "nameVi": "Vết Thương Gắn Bó",
-    "tier": "vip6",
-    "hasData": true
-  },
-  "vip6-shadow-in-love": {
-    "id": "vip6-shadow-in-love",
-    "nameEn": "Shadow in Love",
-    "nameVi": "Bóng Tối Trong Tình Yêu",
-    "tier": "vip6",
-    "hasData": true
-  },
-  "vip6-control-patterns": {
-    "id": "vip6-control-patterns",
-    "nameEn": "Control Patterns",
-    "nameVi": "Mô Thức Kiểm Soát",
-    "tier": "vip6",
-    "hasData": true
-  },
-  "vip6-suppressed-rage": {
-    "id": "vip6-suppressed-rage",
-    "nameEn": "Anger & Suppressed Rage",
-    "nameVi": "Giận Dữ & Cơn Thịnh Nộ Bị Kìm Nén",
-    "tier": "vip6",
-    "hasData": true
-  },
-  "vip6-self-sabotage-relationship": {
-    "id": "vip6-self-sabotage-relationship",
-    "nameEn": "Self-Sabotage in Relationships",
-    "nameVi": "Tự Phá Hoại Trong Tình Yêu",
-    "tier": "vip6",
-    "hasData": true
-  },
-  "vip6-avoidant-behaviors": {
-    "id": "vip6-avoidant-behaviors",
-    "nameEn": "Avoidant Behaviors",
-    "nameVi": "Hành Vi Né Tránh",
-    "tier": "vip6",
-      "hasData": true
-    },
-  "vip6-emotional-dependency": {
-    "id": "vip6-emotional-dependency",
-    "nameEn": "Clinging & Emotional Dependency",
-    "nameVi": "Bám Víu & Phụ Thuộc Cảm Xúc",
-    "tier": "vip6",
-    "hasData": true
-  },
-  "vip6-fear-failure": {
-    "id": "vip6-fear-failure",
-    "nameEn": "Fear of Failure",
-    "nameVi": "Sợ Thất Bại",
-    "tier": "vip6",
-    "hasData": true
-  },
-  "vip6-perfectionism-shadows": {
-    "id": "vip6-perfectionism-shadows",
-    "nameEn": "Perfectionism Shadows",
-    "nameVi": "Bóng Tối Chủ Nghĩa Hoàn Hảo",
-    "tier": "vip6",
-    "hasData": true
-  },
-  "vip6-people-pleasing": {
-    "id": "vip6-people-pleasing",
-    "nameEn": "People-Pleasing Patterns",
-    "nameVi": "Mô Thức Làm Hài Lòng Người Khác",
-    "tier": "vip6",
-    "hasData": true
-  },
-  "vip6-martyr-complex": {
-    "id": "vip6-martyr-complex",
-    "nameEn": "Martyr Complex",
-    "nameVi": "Phức Hợp Tử Vì Đạo",
-    "tier": "vip6",
-    "hasData": true
-  },
-  "vip6-pride-ego-shadow": {
-    "id": "vip6-pride-ego-shadow",
-    "nameEn": "Shadow of Pride & Ego",
-    "nameVi": "Bóng Tối của Kiêu Hãnh & Bản Ngã",
-    "tier": "vip6",
-    "hasData": true
-  },
-  "vip6-abandonment-wound": {
-    "id": "vip6-abandonment-wound",
-    "nameEn": "The Abandonment Wound",
-    "nameVi": "Vết Thương Bị Bỏ Rơi",
-    "tier": "vip6",
-    "hasData": true
-  },
-  "vip6-attachment-trauma": {
-    "id": "vip6-attachment-trauma",
-    "nameEn": "Attachment Trauma Patterns",
-    "nameVi": "Mô Thức Tổn Thương Gắn Bó",
-    "tier": "vip6",
-    "hasData": true
-  },
-  "vip6-fear-success": {
-    "id": "vip6-fear-success",
-    "nameEn": "Fear of Success",
-    "nameVi": "Sợ Thành Công",
-    "tier": "vip6",
-    "hasData": true
-  },
-  "vip6-freeze-response": {
-    "id": "vip6-freeze-response",
-    "nameEn": "Freeze Response",
-    "nameVi": "Phản Ứng Đóng Băng",
-    "tier": "vip6",
-    "hasData": true
-  },
-  "vip6-imposter-wounds": {
-    "id": "vip6-imposter-wounds",
-    "nameEn": "Imposter Wounds",
-    "nameVi": "Vết Thương Kẻ Giả Mạo",
-    "tier": "vip6",
-    "hasData": true
-  },
-  "vip6-inner-saboteur": {
-    "id": "vip6-inner-saboteur",
-    "nameEn": "Inner War: Saboteur vs. Self",
-    "nameVi": "Chiến Tranh Nội Tâm: Kẻ Phá Hoại và Bản Ngã",
-    "tier": "vip6",
-    "hasData": true
-  },
-  "vip6-not-enough-wound": {
-    "id": "vip6-not-enough-wound",
-    "nameEn": "The Not Enough Wound",
-    "nameVi": "Vết Thương Không Đủ Tốt",
-    "tier": "vip6",
-    "hasData": true
-  },
-  "vip6-reclaim-power": {
-    "id": "vip6-reclaim-power",
-    "nameEn": "Reclaiming Inner Power",
-    "nameVi": "Giành Lại Sức Mạnh Nội Tại",
-    "tier": "vip6",
-    "hasData": true
-  },
-  "vip6-self-worth-distortions": {
-    "id": "vip6-self-worth-distortions",
-    "nameEn": "Self-Worth Distortions",
-    "nameVi": "Biến Dạng Giá Trị Bản Thân",
-    "tier": "vip6",
-    "hasData": true
-  },
-  "vip6-shadow-envy": {
-    "id": "vip6-shadow-envy",
-    "nameEn": "The Shadow of Envy",
-    "nameVi": "Bóng Tối của Sự Ghen Tị",
-    "tier": "vip6",
-    "hasData": true
-  },
-  "vip6-shadow-perfectionism": {
-    "id": "vip6-shadow-perfectionism",
-    "nameEn": "Shadow of Perfectionism",
-    "nameVi": "Bóng Tối của Chủ Nghĩa Hoàn Hảo",
-    "tier": "vip6",
-    "hasData": true
   }
 };

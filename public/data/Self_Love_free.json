@@ -1,92 +1,85 @@
 {
-"name": "Self Love",
-"name_vi": "Yêu Thương Bản Thân",
-"description": "Gentle guidance for cultivating self-love, self-acceptance, and inner resilience",
-"keywords_en": [
-"self-love",
-"self-acceptance",
-"resilience",
-"self-care"
-],
-"keywords_vi": [
-"yêu thương bản thân",
-"tự chấp nhận",
-"kiên cường",
-"tự chăm sóc"
-],
-"entries": [
-{
-"slug": "self-acceptance",
-"keywords_en": [
-"self-acceptance",
-"confidence",
-"empathy"
-],
-"keywords_vi": [
-"tự chấp nhận",
-"tự tin",
-"đồng cảm"
-],
-"copy": {
-"en": "Self-love begins with self-acceptance. Embrace your strengths and flaws without judgment. Practice kind, positive self-talk to build confidence and compassion toward yourself. Reflect on your unique qualities each day. Connect with supportive people for encouragement, fostering resilience and a deeper sense of self-worth.",
-"vi": "Yêu thương bản thân bắt đầu bằng sự tự chấp nhận. Hãy đón nhận cả điểm mạnh lẫn khuyết điểm của mình mà không phán xét. Thực hành tự nói tích cực và tử tế để xây dựng sự tự tin và lòng cảm thông với chính mình. Suy ngẫm mỗi ngày về những phẩm chất riêng biệt của bạn. Kết nối với người hỗ trợ để được khích lệ, nuôi dưỡng nghị lực và giá trị bản thân sâu sắc hơn."
-},
-"tags": [
-"self-acceptance",
-"self-love"
-],
-"audio": "self_love_free_self_acceptance.mp3"
-},
-{
-"slug": "positive-self-talk",
-"keywords_en": [
-"positive self-talk",
-"confidence",
-"mindset"
-],
-"keywords_vi": [
-"tự nói tích cực",
-"tự tin",
-"tư duy"
-],
-"copy": {
-"en": "Positive self-talk nurtures self-love and confidence. Replace negative thoughts with gentle affirmations like “I am enough” or “I deserve kindness.” Practice daily to strengthen self-belief. Journal your achievements to reinforce a positive mindset. Connect with a supportive community for encouragement, expanding your sense of worth and peace.",
-"vi": "Tự nói tích cực nuôi dưỡng tình yêu bản thân và sự tự tin. Thay thế suy nghĩ tiêu cực bằng những lời khẳng định nhẹ nhàng như “Tôi đủ tốt” hoặc “Tôi xứng đáng với sự tử tế.” Thực hành mỗi ngày để củng cố niềm tin vào bản thân. Ghi lại thành tựu của bạn để duy trì tư duy tích cực. Kết nối với cộng đồng hỗ trợ để nhận sự khích lệ, mở rộng cảm giác giá trị và bình an bên trong."
-},
-"tags": [
-"self-talk",
-"self-love"
-],
-"audio": "self_love_free_positive_self_talk.mp3"
-},
-{
-"slug": "self-care",
-"keywords_en": [
-"self-care",
-"well-being",
-"resilience"
-],
-"keywords_vi": [
-"tự chăm sóc",
-"sức khỏe tinh thần",
-"kiên cường"
-],
-"copy": {
-"en": "Self-care is the heart of self-love. Prioritize rest, nourishing meals, and gentle movement. Set aside time for hobbies, creativity, or quiet reflection. Connect with caring friends who uplift you. These simple acts strengthen resilience and help you nurture well-being and self-worth every day.",
-"vi": "Tự chăm sóc là cốt lõi của yêu thương bản thân. Ưu tiên nghỉ ngơi, ăn uống đầy đủ dinh dưỡng và vận động nhẹ nhàng. Dành thời gian cho sở thích, sáng tạo hoặc tĩnh lặng để suy ngẫm. Kết nối với những người bạn biết quan tâm để được nâng đỡ tinh thần. Những hành động giản dị này giúp bạn nuôi dưỡng sức khỏe tinh thần, nghị lực và giá trị bản thân mỗi ngày."
-},
-"tags": [
-"self-care",
-"self-love"
-],
-"audio": "self_love_free_self_care.mp3"
-}
-],
-"meta": {
-"created_at": "2025-10-27T00:00:00+00:00",
-"updated_at": "2025-10-27T00:00:00+00:00",
-"entry_count": 3,
-"tier": "free",
-"room_color": "#4A90E2"
-}
+  "name": "Self Love",
+  "name_vi": "Yêu Thương Bản Thân",
+  "description": "Gentle guidance for cultivating self-love, self-acceptance, and inner resilience",
+  "keywords_en": [
+    "self-love",
+    "self-acceptance",
+    "resilience",
+    "self-care"
+  ],
+  "keywords_vi": [
+    "yêu thương bản thân",
+    "tự chấp nhận",
+    "kiên cường",
+    "tự chăm sóc"
+  ],
+  "entries": [
+    {
+      "slug": "self-acceptance",
+      "keywords_en": [
+        "self-acceptance",
+        "confidence",
+        "empathy"
+      ],
+      "keywords_vi": [
+        "tự chấp nhận",
+        "tự tin",
+        "đồng cảm"
+      ],
+      "copy": {
+        "en": "Self-love begins with self-acceptance. Embrace your strengths and flaws without judgment. Practice kind, positive self-talk to build confidence and compassion toward yourself. Reflect on your unique qualities each day. Connect with supportive people for encouragement, fostering resilience and a deeper sense of self-worth.",
+        "vi": "Yêu thương bản thân bắt đầu bằng sự tự chấp nhận. Hãy đón nhận cả điểm mạnh lẫn khuyết điểm của mình mà không phán xét. Thực hành tự nói tích cực và tử tế để xây dựng sự tự tin và lòng cảm thông với chính mình. Suy ngẫm mỗi ngày về những phẩm chất riêng biệt của bạn. Kết nối với người hỗ trợ để được khích lệ, nuôi dưỡng nghị lực và giá trị bản thân sâu sắc hơn."
+      },
+      "tags": [
+        "self-acceptance",
+        "self-love"
+      ],
+      "audio": "self_love_free_self_acceptance.mp3"
+    },
+    {
+      "slug": "positive-self-talk",
+      "keywords_en": [
+        "positive self-talk",
+        "confidence",
+        "mindset"
+      ],
+      "keywords_vi": [
+        "tự nói tích cực",
+        "tự tin",
+        "tư duy"
+      ],
+      "copy": {
+        "en": "Positive self-talk nurtures self-love and confidence. Replace negative thoughts with gentle affirmations like “I am enough” or “I deserve kindness.” Practice daily to strengthen self-belief. Journal your achievements to reinforce a positive mindset. Connect with a supportive community for encouragement, expanding your sense of worth and peace.",
+        "vi": "Tự nói tích cực nuôi dưỡng tình yêu bản thân và sự tự tin. Thay thế suy nghĩ tiêu cực bằng những lời khẳng định nhẹ nhàng như “Tôi đủ tốt” hoặc “Tôi xứng đáng với sự tử tế.” Thực hành mỗi ngày để củng cố niềm tin vào bản thân. Ghi lại thành tựu của bạn để duy trì tư duy tích cực. Kết nối với cộng đồng hỗ trợ để nhận sự khích lệ, mở rộng cảm giác giá trị và bình an bên trong."
+      },
+      "tags": [
+        "self-talk",
+        "self-love"
+      ],
+      "audio": "self_love_free_positive_self_talk.mp3"
+    },
+    {
+      "slug": "self-care",
+      "keywords_en": [
+        "self-care",
+        "well-being",
+        "resilience"
+      ],
+      "keywords_vi": [
+        "tự chăm sóc",
+        "sức khỏe tinh thần",
+        "kiên cường"
+      ],
+      "copy": {
+        "en": "Self-care is the heart of self-love. Prioritize rest, nourishing meals, and gentle movement. Set aside time for hobbies, creativity, or quiet reflection. Connect with caring friends who uplift you. These simple acts strengthen resilience and help you nurture well-being and self-worth every day.",
+        "vi": "Tự chăm sóc là cốt lõi của yêu thương bản thân. Ưu tiên nghỉ ngơi, ăn uống đầy đủ dinh dưỡng và vận động nhẹ nhàng. Dành thời gian cho sở thích, sáng tạo hoặc tĩnh lặng để suy ngẫm. Kết nối với những người bạn biết quan tâm để được nâng đỡ tinh thần. Những hành động giản dị này giúp bạn nuôi dưỡng sức khỏe tinh thần, nghị lực và giá trị bản thân mỗi ngày."
+      },
+      "tags": [
+        "self-care",
+        "self-love"
+      ],
+      "audio": "self_love_free_self_care.mp3"
+    }
+  ]
 }

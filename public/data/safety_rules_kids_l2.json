@@ -13,77 +13,134 @@
   "entries": [
     {
       "slug": "stop-and-think",
-      "keywords_en": ["stop", "think", "safety"],
-      "keywords_vi": ["dừng lại", "nghĩ", "an toàn"],
+      "keywords_en": [
+        "stop",
+        "think",
+        "safety"
+      ],
+      "keywords_vi": [
+        "dừng lại",
+        "nghĩ",
+        "an toàn"
+      ],
       "copy": {
         "en": "Teach “stop” by practicing simple, playful moments. Say, “Stop!” and freeze together like statues. Turn it into a quick game so children learn the word in a calm, fun way. Later, link the word to real safety moments—before crossing a street, touching something hot, or running too fast indoors. Explain that “stop” helps keep our bodies safe. Kids quickly understand that stopping gives them time to think before acting.",
         "vi": "Dạy từ “stop” bằng trò chơi đơn giản. Nói: “Stop!” và cùng đứng yên như tượng. Biến thành trò chơi nhanh để trẻ học từ trong không khí vui vẻ. Sau đó, gắn từ này vào tình huống thật—trước khi qua đường, chạm đồ nóng hoặc chạy quá nhanh trong nhà. Giải thích rằng “stop” giúp giữ an toàn cho cơ thể. Trẻ sẽ nhanh hiểu rằng dừng lại giúp nghĩ kỹ trước khi hành động."
       },
-      "tags": ["stop", "safety"],
+      "tags": [
+        "stop",
+        "safety"
+      ],
       "audio": "safety_rules_v1_stop.mp3"
     },
     {
       "slug": "be-careful",
-      "keywords_en": ["careful", "slow", "safe"],
-      "keywords_vi": ["cẩn thận", "chậm", "an toàn"],
+      "keywords_en": [
+        "careful",
+        "slow",
+        "safe"
+      ],
+      "keywords_vi": [
+        "cẩn thận",
+        "chậm",
+        "an toàn"
+      ],
       "copy": {
         "en": "Teach “careful” by showing gentle movements. Say, “Be careful,” when carrying water cups, walking near the stairs, or climbing onto a chair. Demonstrate slow, steady actions and let your child copy you. Explain that being careful means moving in a way that keeps everyone safe. Kids learn best when they see the behavior and hear the word together.",
         "vi": "Dạy từ “careful” bằng cách chỉ những chuyển động nhẹ nhàng. Nói: “Be careful,” khi mang ly nước, đi gần cầu thang hoặc leo lên ghế. Làm mẫu động tác chậm, vững và để trẻ làm theo. Giải thích rằng cẩn thận nghĩa là di chuyển sao cho mọi người đều an toàn. Trẻ học tốt nhất khi vừa nhìn thấy hành động vừa nghe từ."
       },
-      "tags": ["careful", "movement"],
+      "tags": [
+        "careful",
+        "movement"
+      ],
       "audio": "safety_rules_v1_careful.mp3"
     },
     {
       "slug": "slow-down",
-      "keywords_en": ["slow", "walking", "calm"],
-      "keywords_vi": ["chậm lại", "đi bộ", "bình tĩnh"],
+      "keywords_en": [
+        "slow",
+        "walking",
+        "calm"
+      ],
+      "keywords_vi": [
+        "chậm lại",
+        "đi bộ",
+        "bình tĩnh"
+      ],
       "copy": {
         "en": "Teach “slow down” in places where running isn’t safe—hallways, stores, or the kitchen. Say it gently: “Slow down, please.” Walk slowly together and match steps. Show how slowing down helps us see more, avoid bumps, and stay aware of others. The phrase becomes easy for kids to remember when used with calm, shared movement.",
         "vi": "Dạy cụm từ “slow down” ở những nơi không nên chạy—hành lang, cửa hàng hoặc bếp. Nói nhẹ nhàng: “Slow down, please.” Đi chậm cùng nhau và bước đều. Cho trẻ thấy rằng đi chậm giúp quan sát tốt hơn, tránh va chạm và để ý mọi người xung quanh. Cụm từ này trở nên dễ nhớ khi gắn với chuyển động chậm và êm."
       },
-      "tags": ["slow", "movement"],
+      "tags": [
+        "slow",
+        "movement"
+      ],
       "audio": "safety_rules_v1_slow.mp3"
     },
     {
       "slug": "look-first",
-      "keywords_en": ["look", "attention", "safe"],
-      "keywords_vi": ["nhìn trước", "chú ý", "an toàn"],
+      "keywords_en": [
+        "look",
+        "attention",
+        "safe"
+      ],
+      "keywords_vi": [
+        "nhìn trước",
+        "chú ý",
+        "an toàn"
+      ],
       "copy": {
         "en": "Teach “look” by practicing awareness in daily routines. Before opening a door, say, “Look first.” Before crossing a walkway, say, “Look left, look right.” Make it a small ritual. Children learn that looking helps them understand what’s around them. This builds strong habits of awareness and safety.",
         "vi": "Dạy từ “look” bằng cách luyện sự chú ý trong thói quen hằng ngày. Trước khi mở cửa, hãy nói: “Look first.” Trước khi qua lối đi, nói: “Look left, look right.” Biến thành nghi thức nhỏ. Trẻ sẽ học rằng nhìn xung quanh giúp hiểu môi trường. Điều này tạo thói quen an toàn và quan sát tốt."
       },
-      "tags": ["look", "awareness"],
+      "tags": [
+        "look",
+        "awareness"
+      ],
       "audio": "safety_rules_v1_look.mp3"
     },
     {
       "slug": "safe-choices",
-      "keywords_en": ["safe", "choices", "rules"],
-      "keywords_vi": ["an toàn", "lựa chọn", "quy tắc"],
+      "keywords_en": [
+        "safe",
+        "choices",
+        "rules"
+      ],
+      "keywords_vi": [
+        "an toàn",
+        "lựa chọn",
+        "quy tắc"
+      ],
       "copy": {
         "en": "Teach “safe” by giving two choices. Say, “Safe choice or unsafe choice?” Show examples: sitting on a chair versus standing on it, walking versus running near water, touching toys versus touching hot objects. Kids enjoy choosing, and this helps them understand the meaning of “safe” through real actions.",
         "vi": "Dạy từ “safe” bằng cách đưa hai lựa chọn. Nói: “Safe choice or unsafe choice?” Đưa ví dụ: ngồi trên ghế so với đứng lên ghế, đi bộ so với chạy gần nước, chạm đồ chơi so với chạm đồ nóng. Trẻ thích được chọn, và điều này giúp hiểu ý nghĩa “an toàn” qua hành động thật."
       },
-      "tags": ["safe", "choices"],
+      "tags": [
+        "safe",
+        "choices"
+      ],
       "audio": "safety_rules_v1_safe.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all", "complete", "full"],
-      "keywords_vi": ["tất cả", "đầy đủ", "trọn vẹn"],
+      "keywords_en": [
+        "all",
+        "complete",
+        "full"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "đầy đủ",
+        "trọn vẹn"
+      ],
       "copy": {
         "en": "Teach “stop” with freeze games and real moments.\n\nTeach “careful” through slow, steady movements.\n\nTeach “slow down” in places where running isn't safe.\n\nTeach “look” by making awareness a daily habit.\n\nTeach “safe” with simple choices and examples.\n\nThese words guide children to move safely, make calm decisions, and understand why rules help protect themselves and others.",
         "vi": "Dạy “stop” bằng trò đứng yên và tình huống thật.\n\nDạy “careful” qua chuyển động chậm và vững.\n\nDạy “slow down” ở những nơi không được chạy.\n\nDạy “look” bằng thói quen chú ý mỗi ngày.\n\nDạy “safe” với lựa chọn đơn giản.\n\nNhững bài học này giúp trẻ di chuyển an toàn, quyết định bình tĩnh và hiểu vì sao quy tắc bảo vệ bản thân và mọi người."
       },
-      "tags": ["all"],
+      "tags": [
+        "all"
+      ],
       "audio": "safety_rules_v1_stop.mp3 safety_rules_v1_careful.mp3 safety_rules_v1_slow.mp3 safety_rules_v1_look.mp3 safety_rules_v1_safe.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "7-10",
-    "level": "Kids Level 2",
-    "created_at": "2025-11-21T00:00:00+00:00",
-    "updated_at": "2025-11-21T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#FFF7D8"
-  }
+  ]
 }

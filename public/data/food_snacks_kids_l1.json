@@ -13,77 +13,131 @@
   "entries": [
     {
       "slug": "fruit-fun",
-      "keywords_en": ["food", "fruit", "snack"],
-      "keywords_vi": ["đồ ăn", "trái cây", "ăn nhẹ"],
+      "keywords_en": [
+        "food",
+        "fruit",
+        "snack"
+      ],
+      "keywords_vi": [
+        "đồ ăn",
+        "trái cây",
+        "ăn nhẹ"
+      ],
       "copy": {
         "en": "Begin with colorful fruits that children already know: apple, banana, and orange. Hold each fruit, say the word slowly, and let your child touch or smell it. You can tap the fruit gently while repeating the name to create a fun rhythm. Ask simple questions like “Apple or banana?” to let your child choose. Choices help them feel confident and make the words stick naturally.",
         "vi": "Bắt đầu với những loại trái cây đầy màu sắc mà bé đã quen: apple, banana và orange. Bạn cầm từng quả, đọc tên chậm rãi và để bé chạm hoặc ngửi. Bạn có thể gõ nhẹ vào quả khi đọc chữ để tạo nhịp vui. Hỏi “Apple hay banana?” để bé chọn. Việc chọn giúp bé tự tin và ghi nhớ tự nhiên hơn."
       },
-      "tags": ["fruit", "food"],
+      "tags": [
+        "fruit",
+        "food"
+      ],
       "audio": "food_snacks_v1_fruit_fun.mp3"
     },
     {
       "slug": "crunchy-snacks",
-      "keywords_en": ["food", "snack", "crunchy"],
-      "keywords_vi": ["đồ ăn", "ăn nhẹ", "giòn"],
+      "keywords_en": [
+        "food",
+        "snack",
+        "crunchy"
+      ],
+      "keywords_vi": [
+        "đồ ăn",
+        "ăn nhẹ",
+        "giòn"
+      ],
       "copy": {
         "en": "Teach words like “cracker,” “cookie,” and “chips” using sound. Let your child hear the soft crunch and repeat the word after you. Kids enjoy matching sounds to words, so encourage them to tap the cracker or break it in half while saying the name. Keep the portions tiny—this is about vocabulary, not eating much.",
         "vi": "Dạy các từ như “cracker,” “cookie,” và “chips” bằng âm thanh. Hãy để bé nghe tiếng giòn nhẹ và lặp lại từ theo bạn. Trẻ thích nối âm thanh với từ vựng, nên hãy để bé gõ nhẹ chiếc cracker hoặc bẻ đôi khi đọc tên. Phần ăn chỉ cần rất nhỏ—mục tiêu là học từ, không phải ăn nhiều."
       },
-      "tags": ["snack", "crunchy"],
+      "tags": [
+        "snack",
+        "crunchy"
+      ],
       "audio": "food_snacks_v1_crunchy_snacks.mp3"
     },
     {
       "slug": "favorite-drinks",
-      "keywords_en": ["drink", "juice", "milk"],
-      "keywords_vi": ["đồ uống", "nước trái cây", "sữa"],
+      "keywords_en": [
+        "drink",
+        "juice",
+        "milk"
+      ],
+      "keywords_vi": [
+        "đồ uống",
+        "nước trái cây",
+        "sữa"
+      ],
       "copy": {
         "en": "Introduce simple drink words like “juice” and “milk.” Pour a tiny sip and say the word clearly. Children love watching liquids move, so swirl the cup gently and repeat the word once more. Ask, “Juice or milk?” to let your child choose. The action of choosing reinforces both vocabulary and communication.",
         "vi": "Giới thiệu các từ đồ uống đơn giản như “juice” và “milk.” Rót một ngụm nhỏ và đọc từ thật rõ. Trẻ thích nhìn chất lỏng chuyển động, nên hãy xoay nhẹ chiếc cốc và đọc lại từ. Hỏi “Juice hay milk?” để bé chọn. Việc chọn giúp bé ghi nhớ từ và giao tiếp tốt hơn."
       },
-      "tags": ["drinks"],
+      "tags": [
+        "drinks"
+      ],
       "audio": "food_snacks_v1_favorite_drinks.mp3"
     },
     {
       "slug": "small-treats",
-      "keywords_en": ["treat", "sweet", "snack"],
-      "keywords_vi": ["món ngon", "ngọt", "ăn vặt"],
+      "keywords_en": [
+        "treat",
+        "sweet",
+        "snack"
+      ],
+      "keywords_vi": [
+        "món ngon",
+        "ngọt",
+        "ăn vặt"
+      ],
       "copy": {
         "en": "Teach gentle treat words like “candy” or “chocolate” with very small pieces. Show the treat, say the word, and let your child take a tiny bite. Make it special by saying, “Little treat!” Kids remember words better when the moment feels warm and exciting. Keep the portion tiny so the focus stays on learning, not sugar.",
         "vi": "Dạy các từ về món ngon như “candy” hoặc “chocolate” với phần rất nhỏ. Bạn giơ món ăn, đọc từ và để bé cắn một miếng xíu. Làm cho khoảnh khắc đặc biệt bằng cách nói “Little treat!” Trẻ nhớ từ tốt hơn khi khoảnh khắc ấm áp và vui. Giữ phần ăn thật nhỏ để tập trung vào việc học, không phải đường."
       },
-      "tags": ["treats"],
+      "tags": [
+        "treats"
+      ],
       "audio": "food_snacks_v1_small_treats.mp3"
     },
     {
       "slug": "snack-choice-game",
-      "keywords_en": ["snack", "game", "choose"],
-      "keywords_vi": ["ăn nhẹ", "trò chơi", "chọn"],
+      "keywords_en": [
+        "snack",
+        "game",
+        "choose"
+      ],
+      "keywords_vi": [
+        "ăn nhẹ",
+        "trò chơi",
+        "chọn"
+      ],
       "copy": {
         "en": "Play a simple choosing game. Place two snacks in front of your child and say their names slowly: “apple,” “cracker.” Ask, “Which one?” and let them point. Switch the items and repeat. Children love being in control, and choosing helps them say the words with confidence.",
         "vi": "Chơi trò chọn đồ ăn nhẹ. Đặt hai món trước bé và đọc tên chậm rãi: “apple,” “cracker.” Hỏi “Which one?” và để bé chỉ. Đổi vị trí món và lặp lại. Trẻ rất thích được chọn, và việc chọn giúp bé nói từ tự tin hơn."
       },
-      "tags": ["snack", "game"],
+      "tags": [
+        "snack",
+        "game"
+      ],
       "audio": "food_snacks_v1_choice_game.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all", "full", "complete"],
-      "keywords_vi": ["tất cả", "đầy đủ"],
+      "keywords_en": [
+        "all",
+        "full",
+        "complete"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "đầy đủ"
+      ],
       "copy": {
         "en": "Begin with colorful fruits such as apple, banana, and orange, letting your child touch and choose.\n\nTeach crunchy snacks like crackers and cookies by using sound and tiny bites.\n\nIntroduce drink words like juice and milk with gentle swirling and repeating.\n\nOffer small treats like candy or chocolate in tiny pieces to make the learning moment warm and special.\n\nPlay a snack-choice game with two items, letting your child point, choose, and repeat the words with confidence.",
         "vi": "Bắt đầu với trái cây đầy màu sắc như apple, banana và orange, để bé chạm và chọn.\n\nDạy đồ ăn giòn như cracker và cookie bằng âm thanh và miếng nhỏ.\n\nGiới thiệu từ đồ uống như juice và milk cùng chuyển động nhẹ của cốc.\n\nDùng món ngon nhỏ như candy hoặc chocolate để tạo khoảnh khắc đặc biệt.\n\nChơi trò chọn đồ ăn với hai món để bé chỉ, chọn và lặp lại từ tự tin hơn."
       },
-      "tags": ["all"],
+      "tags": [
+        "all"
+      ],
       "audio": "food_snacks_v1_fruit_fun.mp3 food_snacks_v1_crunchy_snacks.mp3 food_snacks_v1_favorite_drinks.mp3 food_snacks_v1_small_treats.mp3 food_snacks_v1_choice_game.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "4-7",
-    "level": "Kids Level 1",
-    "created_at": "2025-11-21T00:00:00+00:00",
-    "updated_at": "2025-11-21T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#FFE8C6"
-  }
+  ]
 }

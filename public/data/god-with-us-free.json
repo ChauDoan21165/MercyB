@@ -1,6 +1,4 @@
 {
-  "schema_version": "1.0",
-  "schema_id": "god-with-us-free",
   "id": "god-with-us-free",
   "tier": "free",
   "domain": "",
@@ -165,13 +163,5 @@
   "room_essay": {
     "en": "A gentle room of presence, holiness, and cosmic peace.",
     "vi": "Một không gian dịu dàng của sự hiện diện, thiêng liêng và bình an vũ trụ."
-  },
-  "safety_disclaimer": {
-    "en": "",
-    "vi": ""
-  },
-  "crisis_footer": {
-    "en": "",
-    "vi": ""
   }
 }

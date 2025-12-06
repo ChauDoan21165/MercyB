@@ -13,77 +13,134 @@
   "entries": [
     {
       "slug": "plants-and-grow",
-      "keywords_en": ["plant", "grow", "science"],
-      "keywords_vi": ["cây", "lớn lên", "khoa học"],
+      "keywords_en": [
+        "plant",
+        "grow",
+        "science"
+      ],
+      "keywords_vi": [
+        "cây",
+        "lớn lên",
+        "khoa học"
+      ],
       "copy": {
         "en": "Show your child a small plant or leaf and teach the words “plant” and “grow.” Explain that plants need water, light, and time to grow. Let them touch the leaf and say the word together: “Plant. Grow.” You can place a seed in cotton and watch it sprout over days. This simple routine helps kids connect science words with real-life changes they can see.",
         "vi": "Cho bé xem một cái cây nhỏ hoặc chiếc lá và dạy các từ “plant” và “grow.” Giải thích rằng cây cần nước, ánh sáng và thời gian để lớn lên. Hãy để bé chạm vào lá và cùng nói: “Plant. Grow.” Bạn có thể đặt một hạt lên bông gòn và quan sát nó nảy mầm trong vài ngày. Hoạt động đơn giản này giúp trẻ kết nối từ vựng khoa học với những thay đổi thật mà bé nhìn thấy."
       },
-      "tags": ["plants", "grow"],
+      "tags": [
+        "plants",
+        "grow"
+      ],
       "audio": "science_basics_v1_plants_grow.mp3"
     },
     {
       "slug": "light-and-dark",
-      "keywords_en": ["light", "dark", "observe"],
-      "keywords_vi": ["ánh sáng", "bóng tối", "quan sát"],
+      "keywords_en": [
+        "light",
+        "dark",
+        "observe"
+      ],
+      "keywords_vi": [
+        "ánh sáng",
+        "bóng tối",
+        "quan sát"
+      ],
       "copy": {
         "en": "Teach “light” and “dark” by turning a lamp on and off. Say: “Light. Dark.” Encourage your child to notice how objects look different in each condition. You can shine a small flashlight on toys to explore how shadows change shape. These simple observations build early science curiosity.",
         "vi": "Dạy từ “light” và “dark” bằng cách bật rồi tắt đèn bàn. Nói: “Light. Dark.” Khuyến khích bé nhận ra đồ vật trông khác nhau thế nào trong mỗi trạng thái. Bạn có thể chiếu đèn pin lên đồ chơi để xem bóng thay đổi ra sao. Những quan sát đơn giản này giúp trẻ nuôi dưỡng sự tò mò khoa học ban đầu."
       },
-      "tags": ["light", "dark"],
+      "tags": [
+        "light",
+        "dark"
+      ],
       "audio": "science_basics_v1_light_dark.mp3"
     },
     {
       "slug": "float-and-sink",
-      "keywords_en": ["float", "sink", "water"],
-      "keywords_vi": ["nổi", "chìm", "nước"],
+      "keywords_en": [
+        "float",
+        "sink",
+        "water"
+      ],
+      "keywords_vi": [
+        "nổi",
+        "chìm",
+        "nước"
+      ],
       "copy": {
         "en": "Fill a bowl with water and test objects to teach “float” and “sink.” Ask: “Does it float? Does it sink?” Let your child predict first, then try it. Soft items like sponges float, while heavier items like coins sink. Kids enjoy the surprise, and it builds vocabulary through hands-on discovery.",
         "vi": "Đổ nước vào tô và thử các vật khác nhau để dạy “float” và “sink.” Hỏi: “Does it float? Does it sink?” Hãy để bé đoán trước rồi thử. Miếng bọt biển thường nổi, trong khi đồng xu thì chìm. Trẻ rất thích sự bất ngờ và học từ vựng thông qua khám phá thực tế."
       },
-      "tags": ["float", "sink"],
+      "tags": [
+        "float",
+        "sink"
+      ],
       "audio": "science_basics_v1_float_sink.mp3"
     },
     {
       "slug": "hot-and-cold",
-      "keywords_en": ["hot", "cold", "temperature"],
-      "keywords_vi": ["nóng", "lạnh", "nhiệt độ"],
+      "keywords_en": [
+        "hot",
+        "cold",
+        "temperature"
+      ],
+      "keywords_vi": [
+        "nóng",
+        "lạnh",
+        "nhiệt độ"
+      ],
       "copy": {
         "en": "Use warm water and cool water to show the difference between “hot” and “cold.” Let your child touch gently and say the word: “Hot. Cold.” Remind them that hot things can be dangerous, so we touch carefully. This exercise builds sensory awareness and safe science habits.",
         "vi": "Dùng nước ấm và nước mát để chỉ sự khác nhau giữa “hot” và “cold.” Cho bé chạm nhẹ và nói từ: “Hot. Cold.” Nhắc bé rằng đồ nóng có thể nguy hiểm nên phải chạm cẩn thận. Hoạt động này giúp trẻ nhận biết cảm giác và hình thành thói quen khoa học an toàn."
       },
-      "tags": ["hot", "cold"],
+      "tags": [
+        "hot",
+        "cold"
+      ],
       "audio": "science_basics_v1_hot_cold.mp3"
     },
     {
       "slug": "solid-and-liquid",
-      "keywords_en": ["solid", "liquid", "matter"],
-      "keywords_vi": ["rắn", "lỏng", "chất"],
+      "keywords_en": [
+        "solid",
+        "liquid",
+        "matter"
+      ],
+      "keywords_vi": [
+        "rắn",
+        "lỏng",
+        "chất"
+      ],
       "copy": {
         "en": "Teach “solid” and “liquid” with simple examples. Hold an ice cube and say: “Solid.” Then pour water and say: “Liquid.” Kids can touch both to notice the difference. This small comparison helps them understand basic states of matter in a gentle, age-friendly way.",
         "vi": "Dạy “solid” và “liquid” bằng ví dụ đơn giản. Cầm một viên đá và nói: “Solid.” Sau đó rót nước và nói: “Liquid.” Cho bé chạm cả hai để cảm nhận sự khác biệt. So sánh nhỏ này giúp trẻ hiểu trạng thái vật chất cơ bản một cách nhẹ nhàng và phù hợp lứa tuổi."
       },
-      "tags": ["solid", "liquid"],
+      "tags": [
+        "solid",
+        "liquid"
+      ],
       "audio": "science_basics_v1_solid_liquid.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all", "complete", "full"],
-      "keywords_vi": ["tất cả", "đầy đủ", "hoàn chỉnh"],
+      "keywords_en": [
+        "all",
+        "complete",
+        "full"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "đầy đủ",
+        "hoàn chỉnh"
+      ],
       "copy": {
         "en": "Teach “plant” and “grow” by observing a small leaf or seed.\n\nTeach “light” and “dark” with a lamp and simple shadow play.\n\nTeach “float” and “sink” by testing objects in water.\n\nTeach “hot” and “cold” using warm and cool bowls of water.\n\nTeach “solid” and “liquid” with ice and melted water.\n\nTogether, these hands-on activities help children learn science words through real objects, simple observations, and everyday curiosity.",
         "vi": "Dạy “plant” và “grow” khi quan sát cây nhỏ hoặc hạt nảy mầm.\n\nDạy “light” và “dark” bằng đèn bàn và trò chơi bóng.\n\nDạy “float” và “sink” bằng cách thử vật trong nước.\n\nDạy “hot” và “cold” với tô nước ấm và mát.\n\nDạy “solid” và “liquid” với đá và nước tan.\n\nNhững hoạt động thực tế này giúp trẻ học từ vựng khoa học qua đồ vật thật, quan sát đơn giản và sự tò mò tự nhiên."
       },
-      "tags": ["all"],
+      "tags": [
+        "all"
+      ],
       "audio": "science_basics_v1_plants_grow.mp3 science_basics_v1_light_dark.mp3 science_basics_v1_float_sink.mp3 science_basics_v1_hot_cold.mp3 science_basics_v1_solid_liquid.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "7-10",
-    "level": "Kids Level 2",
-    "created_at": "2025-11-21T00:00:00+00:00",
-    "updated_at": "2025-11-21T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#CBE0FF"
-  }
+  ]
 }

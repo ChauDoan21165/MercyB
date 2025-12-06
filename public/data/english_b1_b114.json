@@ -13,63 +13,105 @@
   "entries": [
     {
       "slug": "talking-about-stress",
-      "keywords_en": ["stress", "feelings"],
-      "keywords_vi": ["căng thẳng", "cảm xúc"],
+      "keywords_en": [
+        "stress",
+        "feelings"
+      ],
+      "keywords_vi": [
+        "căng thẳng",
+        "cảm xúc"
+      ],
       "copy": {
         "en": "Use short lines to talk about stress. I feel tired today. I feel stressed about work. I need a little rest. I want a quiet moment. Clear words help people understand how you feel.",
         "vi": "Hãy dùng câu ngắn để nói về căng thẳng. Hôm nay tôi thấy mệt. Tôi căng thẳng vì công việc. Tôi cần nghỉ một chút. Tôi muốn có khoảnh khắc yên tĩnh. Lời nói rõ ràng giúp người khác hiểu cảm xúc của bạn."
       },
-      "audio": "b114_01_en.mp3"
+      "audio": "b114_01_en.mp3",
+      "tags": []
     },
     {
       "slug": "talking-about-lack-of-time",
-      "keywords_en": ["time", "busy"],
-      "keywords_vi": ["thời gian", "bận rộn"],
+      "keywords_en": [
+        "time",
+        "busy"
+      ],
+      "keywords_vi": [
+        "thời gian",
+        "bận rộn"
+      ],
       "copy": {
         "en": "Time problems are common. I have too much to do. I do not have enough time. I need to finish this first. I will do the rest later. Simple lines make your message easy.",
         "vi": "Khó khăn về thời gian rất phổ biến. Tôi có quá nhiều việc. Tôi không đủ thời gian. Tôi cần làm việc này trước. Phần còn lại tôi làm sau. Câu đơn giản giúp thông điệp rõ ràng."
       },
-      "audio": "b114_02_en.mp3"
+      "audio": "b114_02_en.mp3",
+      "tags": []
     },
     {
       "slug": "talking-about-health-problems",
-      "keywords_en": ["health", "problems"],
-      "keywords_vi": ["sức khỏe", "vấn đề"],
+      "keywords_en": [
+        "health",
+        "problems"
+      ],
+      "keywords_vi": [
+        "sức khỏe",
+        "vấn đề"
+      ],
       "copy": {
         "en": "Use soft words for health challenges. I feel a little sick. My head hurts. I need to rest. I will see a doctor if it gets worse. Calm English makes the situation easier.",
         "vi": "Hãy dùng câu nhẹ nhàng khi nói về sức khỏe. Tôi hơi mệt. Tôi đau đầu. Tôi cần nghỉ ngơi. Tôi sẽ đi khám nếu nặng hơn. Cách nói bình tĩnh giúp mọi thứ dễ chịu hơn."
       },
-      "audio": "b114_03_en.mp3"
+      "audio": "b114_03_en.mp3",
+      "tags": []
     },
     {
       "slug": "talking-about-mistakes",
-      "keywords_en": ["mistakes", "learning"],
-      "keywords_vi": ["sai lầm", "học tập"],
+      "keywords_en": [
+        "mistakes",
+        "learning"
+      ],
+      "keywords_vi": [
+        "sai lầm",
+        "học tập"
+      ],
       "copy": {
         "en": "Mistakes are normal. I made a small mistake. I will fix it. I am learning. I will try again. Short statements help you stay positive and confident.",
         "vi": "Sai lầm là điều bình thường. Tôi mắc một lỗi nhỏ. Tôi sẽ sửa. Tôi đang học. Tôi sẽ thử lại. Câu ngắn giúp bạn giữ tinh thần tích cực và tự tin."
       },
-      "audio": "b114_04_en.mp3"
+      "audio": "b114_04_en.mp3",
+      "tags": []
     },
     {
       "slug": "asking-for-support",
-      "keywords_en": ["support", "help"],
-      "keywords_vi": ["hỗ trợ", "giúp đỡ"],
+      "keywords_en": [
+        "support",
+        "help"
+      ],
+      "keywords_vi": [
+        "hỗ trợ",
+        "giúp đỡ"
+      ],
       "copy": {
         "en": "Use simple lines to ask for help. Can you help me? I need some advice. I am having a hard day. Can we talk later? Clear requests build connection.",
         "vi": "Hãy dùng câu đơn giản để xin hỗ trợ. Bạn giúp tôi được không? Tôi cần lời khuyên. Hôm nay tôi hơi mệt. Chúng ta nói chuyện sau nhé? Yêu cầu rõ ràng giúp tạo sự kết nối."
       },
-      "audio": "b114_05_en.mp3"
+      "audio": "b114_05_en.mp3",
+      "tags": []
     },
     {
       "slug": "daily-challenge-practice",
-      "keywords_en": ["practice", "daily life"],
-      "keywords_vi": ["luyện tập", "đời sống"],
+      "keywords_en": [
+        "practice",
+        "daily life"
+      ],
+      "keywords_vi": [
+        "luyện tập",
+        "đời sống"
+      ],
       "copy": {
         "en": "Each day, name one challenge and one small step. I am tired. I will rest. I am busy. I will plan better. Daily practice builds strong, honest English.",
         "vi": "Mỗi ngày, hãy gọi tên một khó khăn và một bước nhỏ. Tôi mệt. Tôi sẽ nghỉ. Tôi bận. Tôi sẽ sắp xếp tốt hơn. Luyện tập hằng ngày giúp tiếng Anh của bạn mạnh mẽ và chân thật."
       },
-      "audio": "b114_06_en.mp3"
+      "audio": "b114_06_en.mp3",
+      "tags": []
     }
   ]
 }

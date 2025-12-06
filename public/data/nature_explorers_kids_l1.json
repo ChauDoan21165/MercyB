@@ -13,77 +13,133 @@
   "entries": [
     {
       "slug": "tree",
-      "keywords_en": ["nature", "tree", "outside"],
-      "keywords_vi": ["thiên nhiên", "cây", "bên ngoài"],
+      "keywords_en": [
+        "nature",
+        "tree",
+        "outside"
+      ],
+      "keywords_vi": [
+        "thiên nhiên",
+        "cây",
+        "bên ngoài"
+      ],
       "copy": {
         "en": "Begin with the word tree. Stand near a tree and say the word clearly. Let your child touch the bark, feel the leaves, and look up at the branches. Connecting the word to real sensory experiences helps it become natural and memorable.",
         "vi": "Bắt đầu với từ tree. Đứng gần cây và nói từ rõ ràng. Để bé chạm vào vỏ, cảm nhận lá và nhìn lên các cành. Kết nối từ với trải nghiệm giác quan thật giúp nó trở nên tự nhiên và dễ nhớ."
       },
-      "tags": ["nature", "tree"],
+      "tags": [
+        "nature",
+        "tree"
+      ],
       "audio": "nature_explorers_v1_tree.mp3"
     },
     {
       "slug": "flower",
-      "keywords_en": ["nature", "flower", "pretty"],
-      "keywords_vi": ["thiên nhiên", "hoa", "đẹp"],
+      "keywords_en": [
+        "nature",
+        "flower",
+        "pretty"
+      ],
+      "keywords_vi": [
+        "thiên nhiên",
+        "hoa",
+        "đẹp"
+      ],
       "copy": {
         "en": "Teach the word flower by pointing to colorful blooms. Say the word gently and let your child smell or touch the petals carefully. Flowers are beautiful and gentle, making this word feel warm and inviting for young learners.",
         "vi": "Dạy từ flower bằng cách chỉ vào những bông hoa màu sắc. Nói từ nhẹ nhàng và để bé ngửi hoặc chạm nhẹ vào cánh hoa. Hoa đẹp và dịu dàng, khiến từ này cảm thấy ấm áp và hấp dẫn cho trẻ học."
       },
-      "tags": ["nature", "flower"],
+      "tags": [
+        "nature",
+        "flower"
+      ],
       "audio": "nature_explorers_v1_flower.mp3"
     },
     {
       "slug": "grass",
-      "keywords_en": ["nature", "grass", "ground"],
-      "keywords_vi": ["thiên nhiên", "cỏ", "đất"],
+      "keywords_en": [
+        "nature",
+        "grass",
+        "ground"
+      ],
+      "keywords_vi": [
+        "thiên nhiên",
+        "cỏ",
+        "đất"
+      ],
       "copy": {
         "en": "Introduce the word grass by walking or sitting on it together. Say the word and let your child feel the soft blades with their hands. The texture and coolness of grass make this word easy to connect with outdoor play.",
         "vi": "Giới thiệu từ grass bằng cách đi hoặc ngồi trên nó cùng nhau. Nói từ và để bé cảm nhận ngọn cỏ mềm bằng tay. Kết cấu và sự mát mẻ của cỏ khiến từ này dễ kết nối với chơi ngoài trời."
       },
-      "tags": ["nature", "grass"],
+      "tags": [
+        "nature",
+        "grass"
+      ],
       "audio": "nature_explorers_v1_grass.mp3"
     },
     {
       "slug": "sky-clouds",
-      "keywords_en": ["nature", "sky", "clouds"],
-      "keywords_vi": ["thiên nhiên", "bầu trời", "mây"],
+      "keywords_en": [
+        "nature",
+        "sky",
+        "clouds"
+      ],
+      "keywords_vi": [
+        "thiên nhiên",
+        "bầu trời",
+        "mây"
+      ],
       "copy": {
         "en": "Teach the words sky and clouds by looking up together. Point to the blue sky and white clouds, naming each one. Let your child describe what they see. Looking up and naming creates a peaceful, wonder-filled learning moment.",
         "vi": "Dạy các từ sky và clouds bằng cách nhìn lên cùng nhau. Chỉ vào bầu trời xanh và đám mây trắng, đặt tên từng thứ. Để bé mô tả những gì bé nhìn thấy. Nhìn lên và đặt tên tạo ra khoảnh khắc học tập yên bình, đầy kỳ diệu."
       },
-      "tags": ["nature", "sky"],
+      "tags": [
+        "nature",
+        "sky"
+      ],
       "audio": "nature_explorers_v1_sky_clouds.mp3"
     },
     {
       "slug": "nature-walk",
-      "keywords_en": ["nature", "walk", "explore"],
-      "keywords_vi": ["thiên nhiên", "đi dạo", "khám phá"],
+      "keywords_en": [
+        "nature",
+        "walk",
+        "explore"
+      ],
+      "keywords_vi": [
+        "thiên nhiên",
+        "đi dạo",
+        "khám phá"
+      ],
       "copy": {
         "en": "Take a short nature walk together. Point out trees, flowers, grass, and the sky, naming each one as you go. Let your child lead and point to things they notice. This gentle exploration turns every walk into a natural English lesson.",
         "vi": "Đi dạo thiên nhiên ngắn cùng nhau. Chỉ ra cây, hoa, cỏ và bầu trời, đặt tên từng thứ khi đi. Để bé dẫn và chỉ vào những thứ bé nhận thấy. Việc khám phá nhẹ nhàng này biến mỗi chuyến đi dạo thành bài học tiếng Anh tự nhiên."
       },
-      "tags": ["walk", "explore"],
+      "tags": [
+        "walk",
+        "explore"
+      ],
       "audio": "nature_explorers_v1_nature_walk.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all", "full", "complete"],
-      "keywords_vi": ["tất cả", "đầy đủ"],
+      "keywords_en": [
+        "all",
+        "full",
+        "complete"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "đầy đủ"
+      ],
       "copy": {
         "en": "Start with tree, letting your child touch the bark and feel the leaves.\n\nTeach flower by pointing to colorful blooms and letting your child smell them gently.\n\nIntroduce grass by sitting or walking on it and feeling the soft blades.\n\nShow sky and clouds by looking up and describing what you see together.\n\nFinish with a nature walk, pointing out and naming everything you discover.\n\nThese outdoor activities help your child learn nature vocabulary through real exploration and gentle observation.",
         "vi": "Bắt đầu với tree, để bé chạm vào vỏ và cảm nhận lá.\n\nDạy flower bằng cách chỉ vào những bông hoa màu sắc và để bé ngửi nhẹ.\n\nGiới thiệu grass bằng cách ngồi hoặc đi trên nó và cảm nhận ngọn cỏ mềm.\n\nChỉ sky và clouds bằng cách nhìn lên và mô tả những gì bạn thấy cùng nhau.\n\nKết thúc với chuyến đi dạo thiên nhiên, chỉ ra và đặt tên mọi thứ bạn khám phá.\n\nNhững hoạt động ngoài trời này giúp bé học từ vựng thiên nhiên qua khám phá thật và quan sát nhẹ nhàng."
       },
-      "tags": ["all"],
+      "tags": [
+        "all"
+      ],
       "audio": "nature_explorers_v1_tree.mp3 nature_explorers_v1_flower.mp3 nature_explorers_v1_grass.mp3 nature_explorers_v1_sky_clouds.mp3 nature_explorers_v1_nature_walk.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "4-7",
-    "level": "Kids Level 1",
-    "created_at": "2025-11-21T00:00:00+00:00",
-    "updated_at": "2025-11-21T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#E6FFE6"
-  }
+  ]
 }

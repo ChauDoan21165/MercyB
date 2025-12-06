@@ -3,150 +3,19 @@
   "name_vi": "Bảo Vệ Điều Quan Trọng",
   "description": "Quiet shields for life’s surprises — so nothing can knock you down when you’re just getting steady.",
   "description_vi": "Lá chắn lặng lẽ cho những bất ngờ của đời — để không gì làm bạn ngã khi vừa mới vững.",
-  "keywords_en": ["protection", "insurance", "emergency", "backup", "peace"],
-  "keywords_vi": ["bảo vệ", "bảo hiểm", "khẩn cấp", "dự phòng", "bình yên"],
-  "entries": [
-    {
-      "slug": "backup-plan-sleep",
-      "keywords_en": ["backup", "sleep", "simple"],
-      "keywords_vi": ["dự phòng", "ngủ", "đơn giản"],
-      "essay_en": "A backup plan is a love note to your future self. It says: “If things go wrong, I will not abandon you.” You do not need a thick binder or a complicated system. You just need a small, clear script for a bad week.\n\nStart with three lines in your phone: who you will call if your income suddenly stops, one bill you could pause or shrink, and one skill you can lean on tomorrow to bring in even a little cash. Those three lines turn pure panic into a sequence of actions.\n\nYour brain relaxes when it knows there is a next step, even if the step is tiny. When worry starts whispering, you can answer it with: “I have a plan, and I’m not alone.” A backup plan is not about expecting disaster; it is about offering yourself a soft place to land if life gets rough. You are allowed to rest inside that knowledge.",
-      "essay_vi": "Kế hoạch dự phòng là một lá thư yêu gửi cho phiên bản tương lai của bạn. Nó nói: “Nếu mọi chuyện tệ đi, tôi sẽ không bỏ rơi bạn.” Bạn không cần một tập hồ sơ dày hay một hệ thống phức tạp. Bạn chỉ cần một kịch bản nhỏ, rõ ràng cho những tuần khó khăn.\n\nHãy bắt đầu bằng ba dòng trong điện thoại: bạn sẽ gọi cho ai nếu thu nhập đột ngột dừng lại, một hóa đơn bạn có thể tạm hoãn hoặc giảm bớt, và một kỹ năng bạn có thể dựa vào ngay ngày mai để kiếm thêm dù chỉ một chút tiền. Ba dòng đó biến nỗi hoảng loạn thuần túy thành một chuỗi hành động.\n\nNão bạn thư giãn khi nó biết bước kế tiếp là gì, dù bước đó rất nhỏ. Khi lo lắng bắt đầu thì thầm, bạn có thể trả lời: “Mình có kế hoạch, và mình không một mình.” Kế hoạch dự phòng không phải để chờ đợi thảm họa; nó là cách bạn tặng cho mình một nơi đáp xuống êm ái khi cuộc đời trở nên gập ghềnh. Bạn được phép nghỉ ngơi trong cảm giác biết mình đã chuẩn bị đó.",
-      "audio_en": "calm_vip3_41_en.mp3",
-      "audio_vi": "calm_vip3_41_vi.mp3",
-      "ai_prompt_en": "Help me write a 3-line backup plan I can keep in my phone.",
-      "ai_prompt_vi": "Giúp tôi viết kế hoạch dự phòng 3 dòng để trong điện thoại.",
-      "ai_followup_en": "Want to test this plan with a 'what if' question?",
-      "ai_followup_vi": "Muốn thử kế hoạch này với câu hỏi 'nếu thì' không?"
-    },
-    {
-      "slug": "insurance-only-need",
-      "keywords_en": ["insurance", "simple", "need"],
-      "keywords_vi": ["bảo hiểm", "đơn giản", "cần"],
-      "essay_en": "It is impossible to insure yourself against every fear. If you try, you end up paying for protection you do not need and still feeling unsafe. A calmer way is to draw a simple line: insurance is for what you cannot realistically rebuild alone.\n\nIf losing something would take away your home, your ability to work, or basic medical care, that is a good candidate to insure. If losing it would hurt but not destroy you, you may choose to accept that risk. In Thailand, this might look like keeping your health coverage active and carrying basic car insurance if you drive. In other places, it might be major medical or disability.\n\nSpend ten quiet minutes listing the things that truly keep you up at night. Ask yourself, “If this disappeared, could I replace it from savings or future income?” When the answer is no, that is where insurance belongs. Real protection is targeted, not bloated. You are allowed to feel secure, not smothered, by your policies.",
-      "essay_vi": "Không thể nào mua bảo hiểm cho mọi nỗi sợ. Nếu cố làm vậy, bạn sẽ vừa trả tiền cho những lớp bảo vệ không cần thiết, vừa vẫn cảm thấy không an toàn. Một cách bình tĩnh hơn là vạch ra một ranh giới đơn giản: bảo hiểm dành cho những gì bạn khó có thể tự xây dựng lại một mình.\n\nNếu mất đi một thứ gì đó đồng nghĩa với mất nhà, mất khả năng làm việc hoặc mất quyền được chăm sóc y tế cơ bản, đó là ứng viên tốt để mua bảo hiểm. Nếu mất nó khiến bạn đau nhưng không đánh gục bạn, bạn có thể chọn chấp nhận rủi ro đó. Ở Thái Lan, điều này có thể là giữ cho bảo hiểm y tế của bạn luôn còn hiệu lực và có bảo hiểm xe cơ bản nếu bạn lái xe. Ở những nơi khác, có thể là bảo hiểm y tế lớn hoặc bảo hiểm mất khả năng lao động.\n\nHãy dành mười phút yên tĩnh để liệt kê những điều thật sự khiến bạn mất ngủ. Tự hỏi: “Nếu thứ này biến mất, mình có thể bù lại bằng tiền tiết kiệm hoặc thu nhập tương lai không?” Khi câu trả lời là không, đó là chỗ bảo hiểm nên xuất hiện. Sự bảo vệ thực sự là nhắm đúng mục tiêu, không phình to vô ích. Bạn được phép cảm thấy an toàn, chứ không bị “ngộp thở” bởi các hợp đồng bảo hiểm.",
-      "audio_en": "calm_vip3_42_en.mp3",
-      "audio_vi": "calm_vip3_42_vi.mp3",
-      "ai_prompt_en": "I’m in Thailand. Which 2 insurances do I actually need right now?",
-      "ai_prompt_vi": "Tôi ở Thái. 2 bảo hiểm nào tôi thật sự cần lúc này?",
-      "ai_followup_en": "Want help comparing one option?",
-      "ai_followup_vi": "Muốn so sánh một lựa chọn không?"
-    },
-    {
-      "slug": "wills-letters",
-      "keywords_en": ["will", "letter", "simple"],
-      "keywords_vi": ["di chúc", "thư", "đơn giản"],
-      "essay_en": "Thinking about death is uncomfortable, but avoiding it does not protect the people you love. A simple will or “if I’m gone” letter is a way of saying: “I want your grief to be lighter, not heavier.” It is love translated into instructions.\n\nYou do not have to get everything perfect. Start with one page in clear language: who should receive what, where your important accounts and passwords are, and any wishes you have for dependents or pets. Keep this page with your ID or important documents, and tell one trusted person where it lives.\n\nThis is not about controlling anyone’s life after you are gone. It is about removing confusion at a time when hearts are already heavy. When you take a small piece of time now to put love on paper, you create a future moment of relief for the people who care about you. That is a quiet, generous legacy.",
-      "essay_vi": "Nghĩ về cái chết luôn khó chịu, nhưng lảng tránh nó không bảo vệ được những người bạn yêu thương. Một bản di chúc đơn giản hoặc một lá thư “nếu tôi đi” là cách bạn nói: “Tôi muốn nỗi buồn của bạn nhẹ hơn, không nặng thêm.” Đó là tình yêu được dịch thành hướng dẫn cụ thể.\n\nBạn không cần phải làm mọi thứ hoàn hảo. Hãy bắt đầu với một trang giấy bằng ngôn ngữ rõ ràng: ai sẽ nhận những gì, chỗ lưu các tài khoản và mật khẩu quan trọng, và bất kỳ mong muốn nào bạn có cho người phụ thuộc hoặc thú cưng. Giữ trang giấy này cùng với giấy tờ tùy thân hoặc hồ sơ quan trọng, và nói cho một người đáng tin cậy biết nó được cất ở đâu.\n\nĐiều này không phải để kiểm soát cuộc sống của ai đó sau khi bạn mất. Nó nhằm loại bớt sự rối rắm trong một thời điểm mà trái tim người ở lại đã quá nặng nề. Khi dành một chút thời gian bây giờ để viết tình yêu ra giấy, bạn đang tạo nên một khoảnh khắc nhẹ nhõm trong tương lai cho những người quan tâm đến bạn. Đó là một di sản lặng lẽ nhưng hào phóng.",
-      "audio_en": "calm_vip3_43_en.mp3",
-      "audio_vi": "calm_vip3_43_vi.mp3",
-      "ai_prompt_en": "Help me draft a one-page 'if I’m gone' letter.",
-      "ai_prompt_vi": "Giúp tôi soạn thư một trang 'nếu tôi đi'.",
-      "ai_followup_en": "Want to store this safely online?",
-      "ai_followup_vi": "Muốn lưu an toàn online không?"
-    },
-    {
-      "slug": "fraud-spot-fast",
-      "keywords_en": ["fraud", "scam", "simple"],
-      "keywords_vi": ["lừa đảo", "gian lận", "đơn giản"],
-      "essay_en": "Most scams are built on three ingredients: urgency, secrecy, and pressure. The message is always some version of “do this now, don’t tell anyone, or something bad will happen.” Your power lives in doing the opposite.\n\nCreate a personal rule: no money leaves your account within twenty-four hours of an unexpected request. During that pause, show the message to a friend, check the official website or app, or call the real customer service number you find yourself — not the one in the message. Take your time to look for spelling mistakes, strange email addresses, or offers that feel too perfect.\n\nYou do not need to become suspicious of everyone, just loyal to your own safety. A single day of waiting can protect you from losing money, time, and trust. Each time you choose to pause instead of react, you tell your nervous system: “We are in control here.” That quiet confidence is one of your best shields.",
-      "essay_vi": "Hầu hết các vụ lừa đảo được xây trên ba yếu tố: cấp bách, bí mật và áp lực. Thông điệp luôn là một biến thể của “làm ngay đi, đừng nói với ai, nếu không sẽ có chuyện xấu xảy ra.” Sức mạnh của bạn nằm ở việc làm điều ngược lại.\n\nHãy tạo cho mình một quy tắc cá nhân: không đồng ý cho bất kỳ khoản tiền nào rời khỏi tài khoản trong vòng hai mươi bốn giờ sau một yêu cầu bất ngờ. Trong khoảng dừng đó, hãy cho một người bạn xem tin nhắn, kiểm tra trang web hoặc ứng dụng chính thức, hoặc tự mình gọi số tổng đài thật của ngân hàng hay đơn vị cung cấp dịch vụ – không dùng số trong tin nhắn. Từ tốn quan sát lỗi chính tả, địa chỉ email lạ, hoặc những đề nghị quá hoàn hảo.\n\nBạn không cần nghi ngờ mọi người, chỉ cần trung thành với sự an toàn của chính mình. Chỉ một ngày chờ đợi có thể bảo vệ bạn khỏi mất tiền, mất thời gian và mất niềm tin. Mỗi lần bạn chọn tạm dừng thay vì phản ứng ngay, bạn đang nói với hệ thần kinh của mình: “Chúng ta đang kiểm soát tình huống này.” Sự tự tin lặng lẽ đó là một trong những tấm khiên tốt nhất của bạn.",
-      "audio_en": "calm_vip3_44_en.mp3",
-      "audio_vi": "calm_vip3_44_vi.mp3",
-      "ai_prompt_en": "This message asks for money. Help me check if it’s real.",
-      "ai_prompt_vi": "Tin nhắn này đòi tiền. Giúp tôi kiểm tra thật giả.",
-      "ai_followup_en": "Want a 'pause rule' reminder for next time?",
-      "ai_followup_vi": "Muốn nhắc 'quy tắc dừng' lần tới không?"
-    },
-    {
-      "slug": "ai-check-risk",
-      "keywords_en": ["risk", "check", "simple"],
-      "keywords_vi": ["rủi ro", "kiểm tra", "đơn giản"],
-      "essay_en": "We all have areas of life we simply do not look at closely: a password we never changed, a family member who depends on our income, a loan we keep pushing from our mind. These blind spots are human, but they can hurt us if we never gently turn toward them.\n\nYou can use AI as a calm mirror. Describe your situation in a few lines: your work, savings, debts, health, and who relies on you. Then ask for one or two risks you might be overlooking. You are not asking for dramatic predictions; you are asking for perspective.\n\nWhen a risk is named, you gain power. You can choose a small, concrete step instead of feeling vague dread. Awareness is not the same as anxiety. Seeing a gap does not mean you are failing; it means you are now in a position to close it. That is what real protection looks like — honest, kind, and doable.",
-      "essay_vi": "Ai trong chúng ta cũng có những góc đời mình ít khi nhìn kỹ: một mật khẩu chưa từng đổi, một người thân phụ thuộc vào thu nhập của mình, một khoản vay mà ta cứ đẩy ra khỏi tâm trí. Những “điểm mù” này rất con người, nhưng có thể làm ta tổn thương nếu ta không bao giờ nhẹ nhàng quay lại nhìn chúng.\n\nBạn có thể dùng AI như một tấm gương bình tĩnh. Hãy mô tả hoàn cảnh của mình trong vài dòng: công việc, khoản tiết kiệm, nợ nần, sức khỏe và những người đang dựa vào bạn. Sau đó, hãy xin gợi ý một hoặc hai rủi ro mà bạn có thể đang bỏ qua. Bạn không yêu cầu những lời tiên tri kịch tính; bạn đang xin một góc nhìn.\n\nKhi một rủi ro được gọi tên, bạn có thêm sức mạnh. Bạn có thể chọn một bước đi nhỏ, cụ thể thay vì chỉ thấy một nỗi lo mơ hồ. Nhận biết không giống với lo âu. Thấy một khoảng trống không có nghĩa là bạn thất bại; nó chỉ có nghĩa là bạn đang ở vị trí có thể lấp đầy nó. Đó chính là hình dạng của sự bảo vệ thật sự – trung thực, tử tế và khả thi.",
-      "audio_en": "calm_vip3_45_en.mp3",
-      "audio_vi": "calm_vip3_45_vi.mp3",
-      "ai_prompt_en": "Here’s my situation: [brief]. What’s one risk I might be missing?",
-      "ai_prompt_vi": "Đây là tình hình tôi: [ngắn]. Rủi ro nào tôi có thể bỏ sót?",
-      "ai_followup_en": "Want to add this to your backup plan?",
-      "ai_followup_vi": "Muốn thêm vào kế hoạch dự phòng không?"
-    },
-    {
-      "slug": "health-crises-money",
-      "keywords_en": ["health", "crisis", "buffer"],
-      "keywords_vi": ["sức khỏe", "khủng hoảng", "đệm"],
-      "essay_en": "Your body is not a machine you can simply replace, and yet money fears often stop people from seeking care when they need it. A small health buffer, even if it feels symbolic at first, can change the choices you make on a hard day.\n\nChoose a name that feels kind — “Body Fund” or “Health Cushion” — and open a separate pocket for it. Start with a modest target like five thousand baht, or whatever amount makes you think, “At least I could go see a doctor.” If your country offers public or low-cost healthcare, learn how to access it, and let your fund cover the gaps around it.\n\nEach deposit into this fund is a message to yourself: “My well-being matters more than my fear.” When a health surprise comes, you may still feel worried, but you will not feel completely helpless. Protecting your body is not selfish; it is the foundation that allows you to work, love, and live.",
-      "essay_vi": "Cơ thể bạn không phải một cỗ máy có thể đơn giản thay mới, vậy mà nỗi sợ tiền bạc thường khiến người ta chần chừ đi khám khi cần. Một khoản đệm sức khỏe nhỏ, dù ban đầu chỉ mang tính biểu tượng, cũng có thể thay đổi lựa chọn bạn đưa ra trong những ngày khó khăn.\n\nHãy chọn một cái tên dễ chịu – “Quỹ Thân Thể” hoặc “Đệm Sức Khỏe” – và mở một “ngăn” riêng cho nó. Bắt đầu với một mục tiêu khiêm tốn, chẳng hạn năm nghìn baht, hoặc bất kỳ số tiền nào khiến bạn nghĩ: “Ít nhất mình cũng có thể đi khám được.” Nếu đất nước bạn có hệ thống y tế công hoặc chi phí thấp, hãy tìm hiểu cách sử dụng, và để quỹ này chi cho những khoảng trống xung quanh.\n\nMỗi lần gửi thêm vào quỹ, bạn đang gửi tới chính mình một thông điệp: “Sự khỏe mạnh của mình quan trọng hơn nỗi sợ.” Khi bất ngờ về sức khỏe xảy ra, bạn vẫn có thể lo lắng, nhưng sẽ không còn cảm giác hoàn toàn bất lực. Bảo vệ cơ thể không phải ích kỷ; đó là nền móng giúp bạn có thể làm việc, yêu thương và sống.",
-      "audio_en": "calm_vip3_46_en.mp3",
-      "audio_vi": "calm_vip3_46_vi.mp3",
-      "ai_prompt_en": "Help me start a small 'Body Fund' for health surprises.",
-      "ai_prompt_vi": "Giúp tôi bắt đầu 'Quỹ Thân Thể' nhỏ cho bất ngờ sức khỏe.",
-      "ai_followup_en": "Want to add 1,000 baht this month?",
-      "ai_followup_vi": "Muốn thêm 1.000 baht tháng này không?"
-    },
-    {
-      "slug": "job-loss-bridge",
-      "keywords_en": ["job loss", "bridge", "3 months"],
-      "keywords_vi": ["mất việc", "cầu", "3 tháng"],
-      "essay_en": "Jobs change. Companies close. Bosses make choices you cannot control. None of that means you are broken or lazy; it means you are human in a shifting world. A “Bridge Account” is money set aside to carry you from one chapter of work to the next.\n\nStart by adding up your bare-bones monthly costs: a roof, basic food, and the few bills you must keep current. Multiply by three. That number is your gentle target, not a pass-fail exam. Then choose a small percentage of your income — maybe ten percent — and route it into a separate account with a name that comforts you.\n\nAs that balance slowly grows, something inside you loosens. You may still worry about losing a job, but you will know you have time to look for the next one without saying yes to the first terrible option. That breathing space is priceless. Preparing for a hard season does not summon it; it simply means you are ready if it comes.",
-      "essay_vi": "Việc làm thay đổi. Công ty đóng cửa. Sếp đưa ra những quyết định bạn không kiểm soát được. Những điều đó không có nghĩa là bạn hỏng hay lười; nó chỉ có nghĩa là bạn là một con người đang sống trong một thế giới luôn dịch chuyển. “Tài khoản Cầu” là khoản tiền bạn để riêng ra để đưa mình từ chương làm việc này sang chương tiếp theo.\n\nHãy bắt đầu bằng cách cộng các chi phí tối thiểu mỗi tháng: chỗ ở, đồ ăn cơ bản và vài hóa đơn bạn buộc phải trả đúng hạn. Nhân con số đó lên ba. Đó là mục tiêu nhẹ nhàng của bạn, không phải một bài kiểm tra đậu – rớt. Sau đó, hãy chọn một tỷ lệ nhỏ từ thu nhập – có thể là mười phần trăm – và chuyển đều vào một tài khoản riêng với cái tên khiến bạn thấy yên lòng.\n\nKhi số dư đó từ từ lớn lên, có một điều gì đó trong bạn cũng nới lỏng ra. Bạn có thể vẫn lo lắng chuyện mất việc, nhưng bạn sẽ biết mình có thời gian tìm công việc tiếp theo mà không phải gật đầu với lựa chọn tệ hại đầu tiên. Khoảng không thở ấy là vô giá. Chuẩn bị cho một mùa khó khăn không gọi nó đến; nó chỉ có nghĩa là nếu mùa đó tới, bạn đã sẵn sàng.",
-      "audio_en": "calm_vip3_47_en.mp3",
-      "audio_vi": "calm_vip3_47_vi.mp3",
-      "ai_prompt_en": "Help me calculate a 3-month bridge using my current bills.",
-      "ai_prompt_vi": "Giúp tôi tính cầu 3 tháng dùng hóa đơn hiện tại.",
-      "ai_followup_en": "Want to automate 10% into this account?",
-      "ai_followup_vi": "Muốn tự động 10% vào tài khoản này không?"
-    },
-    {
-      "slug": "family-money-boundaries",
-      "keywords_en": ["family", "boundaries", "kind"],
-      "keywords_vi": ["gia đình", "ranh giới", "tử tế"],
-      "essay_en": "Money and love can become tangled so quickly, especially in families where helping each other has always been the norm. Saying yes can feel like proof that you care; saying no can feel like betrayal. But support that empties you is not sustainable support.\n\nBefore the next request arrives, choose a sentence that honors both your heart and your limits. Something like: “I care about you, and I can help with this smaller amount, but I can’t take on the whole problem.” Practise saying it out loud when you are alone, so your voice remembers it when you feel emotional.\n\nBoundaries are not walls against love; they are fences that protect the garden where love grows. When you keep your own finances stable, you are more likely to be able to offer help again in the future — and less likely to resent the people you care about. Saying no kindly is one way of saying yes to a longer, healthier relationship.",
-      "essay_vi": "Tiền bạc và tình yêu có thể rối vào nhau rất nhanh, đặc biệt trong những gia đình nơi việc giúp đỡ nhau luôn là điều bình thường. Nói “đồng ý” có thể giống như bằng chứng là bạn quan tâm; nói “không” có thể giống như phản bội. Nhưng sự hỗ trợ khiến bạn cạn kiệt thì không thể duy trì lâu dài.\n\nTrước khi lời đề nghị tiếp theo xuất hiện, hãy chọn một câu nói tôn trọng cả trái tim lẫn giới hạn của bạn. Chẳng hạn: “Con rất thương và con có thể giúp phần nhỏ này, nhưng con không thể gánh hết cả vấn đề.” Luyện nói câu đó thành tiếng khi chỉ có một mình, để giọng nói nhớ được nó trong lúc bạn đang xúc động.\n\nRanh giới không phải là bức tường chắn lại tình yêu; chúng là hàng rào bảo vệ khu vườn nơi tình yêu lớn lên. Khi giữ tài chính của mình ổn định, bạn có nhiều khả năng giúp đỡ thêm lần nữa trong tương lai – và ít có nguy cơ oán trách những người mình quan tâm. Nói “không” một cách tử tế cũng là một cách nói “có” với mối quan hệ dài lâu và lành mạnh hơn.",
-      "audio_en": "calm_vip3_48_en.mp3",
-      "audio_vi": "calm_vip3_48_vi.mp3",
-      "ai_prompt_en": "Help me say no kindly to a family money request.",
-      "ai_prompt_vi": "Giúp tôi từ chối yêu cầu tiền gia đình một cách tử tế.",
-      "ai_followup_en": "Want to role-play this before using it?",
-      "ai_followup_vi": "Muốn diễn tập trước khi dùng không?"
-    },
-    {
-      "slug": "future-risks",
-      "keywords_en": ["future", "climate", "cyber"],
-      "keywords_vi": ["tương lai", "khí hậu", "mạng"],
-      "essay_en": "Some risks belong to the age we live in. Climate events, power cuts, hacked accounts, and AI-generated scams are part of today’s landscape. You cannot control all of it, but you can decide not to be the easiest target and not to be caught completely off guard.\n\nThink in three simple layers. First, information: back up your phone and important files regularly, so a lost device or broken screen is an inconvenience, not a crisis. Second, cash: keep a small amount of physical money in a safe place at home in case digital payments fail for a few days. Third, identity: know where your key documents are and how to contact your bank or mobile provider quickly if something feels wrong.\n\nPreparedness is not about living in fear; it is about giving yourself options when the unexpected arrives. Each small step says, “I take my safety seriously.” That quiet readiness becomes a form of peace you can feel in your body.",
-      "essay_vi": "Một số rủi ro thuộc về chính thời đại chúng ta đang sống. Thiên tai do khí hậu, mất điện, tài khoản bị hack và những chiêu lừa đảo dùng AI là một phần của bức tranh hiện tại. Bạn không thể kiểm soát tất cả, nhưng bạn có thể quyết định không trở thành mục tiêu dễ nhất và không hoàn toàn bị bất ngờ.\n\nHãy nghĩ theo ba lớp đơn giản. Thứ nhất, thông tin: sao lưu điện thoại và các tệp quan trọng thường xuyên, để việc mất máy hoặc vỡ màn hình chỉ là bất tiện, không phải khủng hoảng. Thứ hai, tiền mặt: giữ một khoản tiền mặt nhỏ ở chỗ an toàn trong nhà, phòng khi hệ thống thanh toán điện tử gặp trục trặc vài ngày. Thứ ba, danh tính: biết rõ giấy tờ quan trọng của bạn ở đâu và cách liên hệ nhanh với ngân hàng hoặc nhà mạng khi có điều gì đó bất thường.\n\nChuẩn bị không phải là sống trong sợ hãi; đó là cho mình thêm lựa chọn khi điều bất ngờ xảy ra. Mỗi bước nhỏ đều nói rằng: “Tôi coi trọng sự an toàn của mình.” Sự sẵn sàng lặng lẽ đó trở thành một dạng bình an mà bạn có thể cảm nhận trong cơ thể.",
-      "audio_en": "calm_vip3_49_en.mp3",
-      "audio_vi": "calm_vip3_49_vi.mp3",
-      "ai_prompt_en": "Give me a 3-step future-risk prep list for Thailand.",
-      "ai_prompt_vi": "Đưa tôi danh sách chuẩn bị rủi ro tương lai 3 bước cho Thái Lan.",
-      "ai_followup_en": "Want to check one off this week?",
-      "ai_followup_vi": "Muốn hoàn thành một việc tuần này không?"
-    },
-    {
-      "slug": "im-protected-checklist",
-      "keywords_en": ["checklist", "peace", "done"],
-      "keywords_vi": ["danh sách", "bình yên", "xong"],
-      "essay_en": "Protection does not mean nothing bad will ever happen. It means you have built enough layers that when life shakes, you bend instead of breaking. Sometimes that is as simple as three quiet check marks: a starter emergency fund, one solid insurance in place, and a written backup plan.\n\nIf you have those, pause. Let yourself notice that you are no longer completely exposed. Many people move from goal to goal without ever acknowledging what they have already built. Your nervous system needs a moment of recognition: “I am safer than I used to be.”\n\nFind a small way to celebrate — a cup of something you enjoy, a note in your journal, a message to a trusted friend. This is not about bragging; it is about anchoring a new identity. You are someone who takes care of your future, not just your present. That sentence, “I’m protected enough for now,” can become a soft place for your mind to rest.",
-      "essay_vi": "Bảo vệ không có nghĩa là sẽ không bao giờ có chuyện xấu xảy ra. Nó có nghĩa là bạn đã xây đủ lớp đệm để khi cuộc đời rung chuyển, bạn uốn theo thay vì gãy. Đôi khi, điều đó đơn giản chỉ là ba dấu tick lặng lẽ: một quỹ khẩn cấp khởi động, một bảo hiểm vững chắc, và một bản kế hoạch dự phòng đã được viết ra.\n\nNếu bạn đã có những thứ đó, hãy dừng lại. Cho phép mình nhận ra rằng bạn không còn hoàn toàn trống trải nữa. Rất nhiều người đi từ mục tiêu này sang mục tiêu khác mà không bao giờ nhìn lại những gì mình đã xây dựng. Hệ thần kinh của bạn cần một khoảnh khắc được công nhận: “Mình an toàn hơn trước đây rồi.”\n\nHãy tìm một cách ăn mừng nhỏ – một tách đồ uống yêu thích, một dòng ghi chú trong nhật ký, hoặc một tin nhắn gửi cho người bạn tin cậy. Điều này không phải để khoe khoang; nó là để neo một bản sắc mới. Bạn là người biết chăm lo cho tương lai của mình, không chỉ hiện tại. Câu nói “Bây giờ mình được bảo vệ đủ rồi” có thể trở thành một chỗ dựa êm cho tâm trí bạn nghỉ ngơi.",
-      "audio_en": "calm_vip3_50_en.mp3",
-      "audio_vi": "calm_vip3_50_vi.mp3",
-      "ai_prompt_en": "I finished [protection step]. Help me celebrate and name the next.",
-      "ai_prompt_vi": "Tôi hoàn thành [bước bảo vệ]. Giúp tôi kỷ niệm và đặt tên bước tới.",
-      "ai_followup_en": "Want to review your full shield in 3 months?",
-      "ai_followup_vi": "Muốn xem lại toàn bộ lá chắn sau 3 tháng không?"
-    }
+  "keywords_en": [
+    "protection",
+    "insurance",
+    "emergency",
+    "backup",
+    "peace"
   ],
-  "meta": {
-    "created_at": "2025-11-07T10:32:00+07:00",
-    "updated_at": "2025-11-07T10:50:00+07:00",
-    "entry_count": 10,
-    "tier": "vip3",
-    "room_color": "#D0E0D2",
-    "artifact_version_id": "money-safe-shield-vip3-sub4-v002",
-    "localization": {
-      "i18n_required": true,
-      "i18n_verified": false
-    }
-  }
+  "keywords_vi": [
+    "bảo vệ",
+    "bảo hiểm",
+    "khẩn cấp",
+    "dự phòng",
+    "bình yên"
+  ],
+  "entries": []
 }

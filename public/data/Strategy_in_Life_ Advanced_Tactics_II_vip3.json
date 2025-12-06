@@ -9,186 +9,410 @@
     "vi": "Khung chiến lược nâng cao cho những thử thách phức tạp trong cuộc sống. Làm chủ nghệ thuật tinh tế của ảnh hưởng, đàm phán và động lực quyền lực."
   },
   "id": "strategy_life_advanced_tactics_ii_vip3",
-  "schema_id": "strategy_life_advanced_tactics_ii_vip3",
   "name": "Strategy in Life - Advanced Tactics II",
   "entries": [
     {
       "slug": "competitive-intelligence",
-      "keywords_en": ["intelligence", "competitors", "analysis", "edge"],
-      "keywords_vi": ["tình báo", "đối thủ", "phân tích", "lợi thế"],
+      "keywords_en": [
+        "intelligence",
+        "competitors",
+        "analysis",
+        "edge"
+      ],
+      "keywords_vi": [
+        "tình báo",
+        "đối thủ",
+        "phân tích",
+        "lợi thế"
+      ],
       "copy": {
         "en": "Competitive intelligence is systematic observation of the battlefield. Build a 'rival dashboard': track 5 key rivals across pricing, messaging, hiring, funding, and customer sentiment. Use 'shadow accounts' to monitor without alerting. Set Google Alerts for their brand + keywords. The advanced strategist reverse-engineers their moves: new feature launch → what customer pain does it solve? Hiring spree → what’s their next market? Map their supply chain—weak links are your entry points. Intelligence without action is entertainment. Turn insight into preemptive strikes: launch your version 30 days earlier. Competitive intelligence compounds advantage. The strategic life wins before the fight begins.",
         "vi": "Tình báo cạnh tranh là quan sát có hệ thống chiến trường. Xây 'bảng điều khiển đối thủ': theo dõi 5 đối thủ chính về giá, thông điệp, tuyển dụng, vốn và cảm xúc khách hàng. Dùng 'tài khoản bóng' để giám sát mà không báo động. Đặt Google Alerts cho thương hiệu + từ khóa của họ. Nhà chiến lược nâng cao đảo ngược công trình của họ: ra tính năng mới → giải quyết nỗi đau khách hàng nào? Tuyển dụng ồ ạt → thị trường tiếp theo là gì? Vẽ chuỗi cung ứng—mắt xích yếu là điểm vào của bạn. Tình báo không hành động là giải trí. Biến insight thành đòn đánh phủ đầu: ra phiên bản của bạn sớm 30 ngày. Tình báo cạnh tranh tích lũy lợi thế. Cuộc sống chiến lược thắng trước khi trận đấu bắt đầu."
       },
-      "tags": ["intelligence", "rivals", "preemption", "analysis"],
+      "tags": [
+        "intelligence",
+        "rivals",
+        "preemption",
+        "analysis"
+      ],
       "audio": "strategy_life_2_vip3_room_16.mp3",
       "essay_ref": "competitive-intelligence_vip3_essay.txt"
     },
     {
       "slug": "strategic-positioning-2.0",
-      "keywords_en": ["positioning", "market", "differentiation", "perception"],
-      "keywords_vi": ["định vị", "thị trường", "khác biệt hóa", "nhận thức"],
+      "keywords_en": [
+        "positioning",
+        "market",
+        "differentiation",
+        "perception"
+      ],
+      "keywords_vi": [
+        "định vị",
+        "thị trường",
+        "khác biệt hóa",
+        "nhận thức"
+      ],
       "copy": {
         "en": "Strategic Positioning 2.0 is owning a category of one. Use the 'onlyness test': are you the only one who does X for Y in Z way? If not, carve. Combine two unrelated strengths: 'We’re the Tesla of personal coaching' or 'The Notion for family legacy planning.' The advanced positioner uses 'category creation': invent the problem, then solve it. Seed the narrative through micro-influencers and niche communities. Protect positioning with trademarks and origin stories. Audit perception quarterly: what do strangers say when they hear your name? Positioning compounds through repetition. The strategic life doesn’t compete—it redefines the game.",
         "vi": "Định vị Chiến lược 2.0 là sở hữu một phân khúc độc nhất. Dùng 'kiểm tra duy nhất': bạn có phải người duy nhất làm X cho Y theo cách Z? Nếu không, khắc ra. Kết hợp hai sức mạnh không liên quan: 'Chúng tôi là Tesla của huấn luyện cá nhân' hoặc 'Notion cho kế hoạch di sản gia đình.' Người định vị nâng cao dùng 'tạo phân khúc': phát minh vấn đề, rồi giải quyết. Gieo câu chuyện qua micro-influencer và cộng đồng ngách. Bảo vệ định vị bằng thương hiệu và câu chuyện nguồn gốc. Kiểm toán nhận thức hàng quý: người lạ nói gì khi nghe tên bạn? Định vị tích lũy qua lặp lại. Cuộc sống chiến lược không cạnh tranh—mà định nghĩa lại trò chơi."
       },
-      "tags": ["positioning", "category", "differentiation", "narrative"],
+      "tags": [
+        "positioning",
+        "category",
+        "differentiation",
+        "narrative"
+      ],
       "audio": "strategy_life_2_vip3_room_17.mp3",
       "essay_ref": "strategic-positioning-2.0_vip3_essay.txt"
     },
     {
       "slug": "momentum-amplification",
-      "keywords_en": ["momentum", "acceleration", "flywheel", "scale"],
-      "keywords_vi": ["đà tiến", "tăng tốc", "bánh đà", "mở rộng"],
+      "keywords_en": [
+        "momentum",
+        "acceleration",
+        "flywheel",
+        "scale"
+      ],
+      "keywords_vi": [
+        "đà tiến",
+        "tăng tốc",
+        "bánh đà",
+        "mở rộng"
+      ],
       "copy": {
         "en": "Momentum amplification turns linear growth into exponential. Use the 'momentum stack': small wins → public proof → bigger bets → viral loops. Celebrate publicly at every milestone—social proof accelerates. The advanced amplifier uses 'momentum triggers': hit 1,000 users → launch referral program; hit $10k MRR → hire growth lead. Remove friction at every step: one-click signups, instant onboarding. Create 'momentum artifacts': case studies, leaderboards, live counters. Momentum compounds through visibility. The strategic life doesn’t push—it pulls the future forward.",
         "vi": "Tăng cường đà tiến biến tăng trưởng tuyến tính thành lũy tiến. Dùng 'ngăn xếp đà tiến': chiến thắng nhỏ → bằng chứng công khai → cược lớn → vòng lặp lan truyền. Kỷ niệm công khai mỗi cột mốc—bằng chứng xã hội tăng tốc. Người tăng cường nâng cao dùng 'kích hoạt đà tiến': đạt 1.000 người dùng → ra chương trình giới thiệu; đạt 10 triệu MRR → thuê trưởng tăng trưởng. Loại bỏ ma sát mọi bước: đăng ký một cú click, onboarding tức thì. Tạo 'vật chứng đà tiến': nghiên cứu trường hợp, bảng xếp hạng, bộ đếm trực tiếp. Đà tiến tích lũy qua hiển thị. Cuộc sống chiến lược không đẩy—mà kéo tương lai về phía trước."
       },
-      "tags": ["momentum", "flywheel", "scale", "proof"],
+      "tags": [
+        "momentum",
+        "flywheel",
+        "scale",
+        "proof"
+      ],
       "audio": "strategy_life_2_vip3_room_18.mp3",
       "essay_ref": "momentum-amplification_vip3_essay.txt"
     },
     {
       "slug": "strategic-reputation",
-      "keywords_en": ["reputation", "perception", "crisis", "narrative"],
-      "keywords_vi": ["danh tiếng", "nhận thức", "khủng hoảng", "câu chuyện"],
+      "keywords_en": [
+        "reputation",
+        "perception",
+        "crisis",
+        "narrative"
+      ],
+      "keywords_vi": [
+        "danh tiếng",
+        "nhận thức",
+        "khủng hoảng",
+        "câu chuyện"
+      ],
       "copy": {
         "en": "Strategic reputation is perception insured against crisis. Build a 'reputation bank': deposit goodwill through consistent value, over-delivery, and public generosity. Use the 'reputation shield': pre-publish your values and decision framework—when attacked, point to alignment. The advanced strategist runs 'reputation drills': simulate scandals quarterly, draft responses. Monitor sentiment daily. Respond to criticism with 'acknowledge, align, advance': admit flaw, restate values, announce fix. Reputation compounds through consistency. The strategic life turns attacks into affirmations.",
         "vi": "Danh tiếng chiến lược là nhận thức được bảo hiểm chống khủng hoảng. Xây 'ngân hàng danh tiếng': gửi thiện chí qua giá trị nhất quán, vượt kỳ vọng và hào phóng công khai. Dùng 'lá chắn danh tiếng': công bố trước giá trị và khung quyết định—khi bị tấn công, chỉ vào sự căn chỉnh. Nhà chiến lược nâng cao chạy 'diễn tập danh tiếng': mô phỏng scandal hàng quý, soạn phản hồi. Giám sát cảm xúc hàng ngày. Đáp lại chỉ trích bằng 'thừa nhận, căn chỉnh, tiến lên': thừa nhận lỗi, nhắc lại giá trị, công bố sửa chữa. Danh tiếng tích lũy qua nhất quán. Cuộc sống chiến lược biến tấn công thành khẳng định."
       },
-      "tags": ["reputation", "crisis", "perception", "shield"],
+      "tags": [
+        "reputation",
+        "crisis",
+        "perception",
+        "shield"
+      ],
       "audio": "strategy_life_2_vip3_room_19.mp3",
       "essay_ref": "strategic-reputation_vip3_essay.txt"
     },
     {
       "slug": "complex-systems",
-      "keywords_en": ["systems", "chaos", "navigation", "leverage"],
-      "keywords_vi": ["hệ thống", "hỗn loạn", "điều hướng", "đòn bẩy"],
+      "keywords_en": [
+        "systems",
+        "chaos",
+        "navigation",
+        "leverage"
+      ],
+      "keywords_vi": [
+        "hệ thống",
+        "hỗn loạn",
+        "điều hướng",
+        "đòn bẩy"
+      ],
       "copy": {
         "en": "Complex systems reward leverage, not control. Identify 'keystone variables': small inputs with large outputs. In relationships, it’s emotional safety; in business, it’s customer retention. Use 'system mapping': draw feedback loops, delays, stocks, flows. Find 'strange attractors'—patterns that persist in chaos. The advanced navigator uses 'probe-sense-respond': test small, observe, scale what works. Build antifragility: design to benefit from volatility. Complex systems compound through intervention at leverage points. The strategic life thrives in turbulence.",
         "vi": "Hệ thống phức tạp thưởng đòn bẩy, không kiểm soát. Xác định 'biến then chốt': đầu vào nhỏ, đầu ra lớn. Trong mối quan hệ, là an toàn cảm xúc; trong kinh doanh, là giữ chân khách. Dùng 'vẽ hệ thống': vẽ vòng phản hồi, độ trễ, kho, dòng chảy. Tìm 'hấp dẫn lạ'—mẫu hình tồn tại trong hỗn loạn. Người điều hướng nâng cao dùng 'dò-xem-phản hồi': thử nhỏ, quan sát, mở rộng cái hiệu quả. Xây chống gãy: thiết kế để hưởng lợi từ biến động. Hệ thống phức tạp tích lũy qua can thiệp ở điểm đòn bẩy. Cuộc sống chiến lược thịnh vượng trong nhiễu loạn."
       },
-      "tags": ["systems", "leverage", "antifragile", "chaos"],
+      "tags": [
+        "systems",
+        "leverage",
+        "antifragile",
+        "chaos"
+      ],
       "audio": "strategy_life_2_vip3_room_20.mp3",
       "essay_ref": "complex-systems_vip3_essay.txt"
     },
     {
       "slug": "strategic-resilience",
-      "keywords_en": ["resilience", "recovery", "antifragile", "stress"],
-      "keywords_vi": ["phục hồi", "hồi phục", "chống gãy", "căng thẳng"],
+      "keywords_en": [
+        "resilience",
+        "recovery",
+        "antifragile",
+        "stress"
+      ],
+      "keywords_vi": [
+        "phục hồi",
+        "hồi phục",
+        "chống gãy",
+        "căng thẳng"
+      ],
       "copy": {
         "en": "Strategic resilience is engineered recovery. Use the 'resilience stack': physical (sleep, movement), mental (meditation, journaling), emotional (support network), financial (6-month buffer). Schedule 'stress inoculation': deliberate discomfort weekly—cold showers, public speaking, fasting. The advanced resilient uses 'post-traumatic growth': after setback, ask 'What strength did I gain?' Build 'resilience rituals': 10-minute morning review, evening gratitude. Resilience compounds through exposure. The strategic life grows stronger from pressure.",
         "vi": "Phục hồi chiến lược là hồi phục được kỹ thuật. Dùng 'ngăn xếp phục hồi': thể chất (ngủ, vận động), tinh thần (thiền, nhật ký), cảm xúc (mạng lưới hỗ trợ), tài chính (đệm 6 tháng). Lên lịch 'tiêm chủng căng thẳng': khó chịu cố ý hàng tuần—tắm lạnh, nói trước đám đông, nhịn ăn. Người phục hồi nâng cao dùng 'tăng trưởng sau chấn thương': sau thất bại, hỏi 'Tôi mạnh lên gì?' Xây 'nghi thức phục hồi': xem lại sáng 10 phút, biết ơn tối. Phục hồi tích lũy qua tiếp xúc. Cuộc sống chiến lược mạnh hơn từ áp lực."
       },
-      "tags": ["resilience", "antifragile", "recovery", "rituals"],
+      "tags": [
+        "resilience",
+        "antifragile",
+        "recovery",
+        "rituals"
+      ],
       "audio": "strategy_life_2_vip3_room_21.mp3",
       "essay_ref": "strategic-resilience_vip3_essay.txt"
     },
     {
       "slug": "influence-multiplication",
-      "keywords_en": ["influence", "scale", "surrogates", "leverage"],
-      "keywords_vi": ["ảnh hưởng", "mở rộng", "người thay thế", "đòn bẩy"],
+      "keywords_en": [
+        "influence",
+        "scale",
+        "surrogates",
+        "leverage"
+      ],
+      "keywords_vi": [
+        "ảnh hưởng",
+        "mở rộng",
+        "người thay thế",
+        "đòn bẩy"
+      ],
       "copy": {
         "en": "Influence multiplication scales your voice through others. Train 10 surrogates to deliver your message with 80% fidelity. Use the 'influence playbook': scripts, slides, FAQs. The advanced multiplier uses 'influence franchising': license your method to certified practitioners. Create 'influence assets': courses, books, templates that spread autonomously. Measure 'influence velocity': how fast does one mind changed become 100? Influence compounds through distribution. The strategic life echoes beyond your reach.",
         "vi": "Nhân rộng ảnh hưởng mở rộng giọng nói qua người khác. Huấn luyện 10 người thay thế truyền thông điệp với độ chính xác 80%. Dùng 'sổ tay ảnh hưởng': kịch bản, slide, FAQ. Người nhân rộng nâng cao dùng 'nhượng quyền ảnh hưởng': cấp phép phương pháp cho thực hành viên được chứng nhận. Tạo 'tài sản ảnh hưởng': khóa học, sách, mẫu tự lan truyền. Đo 'tốc độ ảnh hưởng': một tâm trí thay đổi thành 100 nhanh thế nào? Ảnh hưởng tích lũy qua phân phối. Cuộc sống chiến lược vang vọng ngoài tầm với."
       },
-      "tags": ["influence", "scale", "franchise", "assets"],
+      "tags": [
+        "influence",
+        "scale",
+        "franchise",
+        "assets"
+      ],
       "audio": "strategy_life_2_vip3_room_22.mp3",
       "essay_ref": "influence-multiplication_vip3_essay.txt"
     },
     {
       "slug": "strategic-timing",
-      "keywords_en": ["timing", "execution", "windows", "precision"],
-      "keywords_vi": ["thời điểm", "thực thi", "cửa sổ", "chính xác"],
+      "keywords_en": [
+        "timing",
+        "execution",
+        "windows",
+        "precision"
+      ],
+      "keywords_vi": [
+        "thời điểm",
+        "thực thi",
+        "cửa sổ",
+        "chính xác"
+      ],
       "copy": {
         "en": "Strategic timing is precision execution at the perfect window. Use the 'timing matrix': urgency vs. importance vs. readiness. Launch when all three align. The advanced timer uses 'window forecasting': predict market shifts 90 days out. Build 'timing triggers': when competitor stumbles, when sentiment peaks. Practice 'micro-timing': send email at 8:03am, not 8:00. Timing compounds through preparation. The strategic life strikes when iron is hottest.",
         "vi": "Thời điểm chiến lược là thực thi chính xác ở cửa sổ hoàn hảo. Dùng 'ma trận thời điểm': khẩn cấp vs. quan trọng vs. sẵn sàng. Ra mắt khi cả ba căn chỉnh. Người định giờ nâng cao dùng 'dự báo cửa sổ': dự đoán chuyển dịch thị trường 90 ngày. Xây 'kích hoạt thời điểm': khi đối thủ vấp, khi cảm xúc đỉnh. Luyện 'vi thời điểm': gửi email lúc 8:03, không 8:00. Thời điểm tích lũy qua chuẩn bị. Cuộc sống chiến lược đánh khi sắt nóng nhất."
       },
-      "tags": ["timing", "windows", "precision", "triggers"],
+      "tags": [
+        "timing",
+        "windows",
+        "precision",
+        "triggers"
+      ],
       "audio": "strategy_life_2_vip3_room_23.mp3",
       "essay_ref": "strategic-timing_vip3_essay.txt"
     },
     {
       "slug": "crisis-transformation",
-      "keywords_en": ["crisis", "transformation", "opportunity", "pivot"],
-      "keywords_vi": ["khủng hoảng", "chuyển hóa", "cơ hội", "xoay chuyển"],
+      "keywords_en": [
+        "crisis",
+        "transformation",
+        "opportunity",
+        "pivot"
+      ],
+      "keywords_vi": [
+        "khủng hoảng",
+        "chuyển hóa",
+        "cơ hội",
+        "xoay chuyển"
+      ],
       "copy": {
         "en": "Crisis transformation turns breakdown into breakthrough. Use the 'crisis protocol': contain, communicate, capitalize. Contain damage in 24 hours. Communicate with radical transparency. Capitalize by solving the root cause publicly. The advanced transformer uses 'crisis capital': leverage attention to launch new initiatives. Document the journey—crises become case studies. Crisis compounds credibility. The strategic life forges steel in fire.",
         "vi": "Chuyển hóa khủng hoảng biến đổ vỡ thành đột phá. Dùng 'giao thức khủng hoảng': kiềm chế, truyền thông, tận dụng. Kiềm chế thiệt hại trong 24 giờ. Truyền thông với minh bạch triệt để. Tận dụng bằng giải quyết gốc rễ công khai. Người chuyển hóa nâng cao dùng 'vốn khủng hoảng': tận dụng chú ý để ra sáng kiến mới. Ghi chép hành trình—khủng hoảng thành nghiên cứu trường hợp. Khủng hoảng tích lũy uy tín. Cuộc sống chiến lược rèn thép trong lửa."
       },
-      "tags": ["crisis", "transformation", "capital", "transparency"],
+      "tags": [
+        "crisis",
+        "transformation",
+        "capital",
+        "transparency"
+      ],
       "audio": "strategy_life_2_vip3_room_24.mp3",
       "essay_ref": "crisis-transformation_vip3_essay.txt"
     },
     {
       "slug": "strategic-innovation",
-      "keywords_en": ["innovation", "categories", "disruption", "creation"],
-      "keywords_vi": ["đổi mới", "phân khúc", "phá vỡ", "sáng tạo"],
+      "keywords_en": [
+        "innovation",
+        "categories",
+        "disruption",
+        "creation"
+      ],
+      "keywords_vi": [
+        "đổi mới",
+        "phân khúc",
+        "phá vỡ",
+        "sáng tạo"
+      ],
       "copy": {
         "en": "Strategic innovation creates new categories, not better products. Use the 'innovation stack': question assumptions → combine domains → prototype fast. Ask 'What’s inevitable in 10 years?' Build it now. The advanced innovator uses 'innovation theater': public experiments to shape perception. Protect with speed, not patents. Innovation compounds through adoption. The strategic life invents the future.",
         "vi": "Đổi mới chiến lược tạo phân khúc mới, không phải sản phẩm tốt hơn. Dùng 'ngăn xếp đổi mới': đặt câu hỏi giả định → kết hợp lĩnh vực → nguyên mẫu nhanh. Hỏi 'Điều gì tất yếu trong 10 năm?' Xây ngay. Người đổi mới nâng cao dùng 'sân khấu đổi mới': thí nghiệm công khai để định hình nhận thức. Bảo vệ bằng tốc độ, không bằng sáng chế. Đổi mới tích lũy qua chấp nhận. Cuộc sống chiến lược phát minh tương lai."
       },
-      "tags": ["innovation", "categories", "disruption", "speed"],
+      "tags": [
+        "innovation",
+        "categories",
+        "disruption",
+        "speed"
+      ],
       "audio": "strategy_life_2_vip3_room_25.mp3",
       "essay_ref": "strategic-innovation_vip3_essay.txt"
     },
     {
       "slug": "legacy-strategy",
-      "keywords_en": ["legacy", "impact", "duration", "transmission"],
-      "keywords_vi": ["di sản", "tác động", "thời gian", "truyền tải"],
+      "keywords_en": [
+        "legacy",
+        "impact",
+        "duration",
+        "transmission"
+      ],
+      "keywords_vi": [
+        "di sản",
+        "tác động",
+        "thời gian",
+        "truyền tải"
+      ],
       "copy": {
         "en": "Legacy strategy designs impact beyond your lifetime. Use the 'legacy blueprint': values, vehicles, verification. Codify values in writing. Choose vehicles: institutions, writings, people. Verify transmission annually. The advanced strategist builds 'legacy engines': self-sustaining systems that propagate your work. Mentor successors. Legacy compounds through systems. The strategic life echoes through centuries.",
         "vi": "Chiến lược di sản thiết kế tác động ngoài đời bạn. Dùng 'bản thiết kế di sản': giá trị, phương tiện, xác minh. Mã hóa giá trị bằng văn bản. Chọn phương tiện: tổ chức, tác phẩm, con người. Xác minh truyền tải hàng năm. Nhà chiến lược nâng cao xây 'động cơ di sản': hệ thống tự duy trì lan truyền công việc. Cố vấn người kế thừa. Di sản tích lũy qua hệ thống. Cuộc sống chiến lược vang vọng qua thế kỷ."
       },
-      "tags": ["legacy", "impact", "systems", "transmission"],
+      "tags": [
+        "legacy",
+        "impact",
+        "systems",
+        "transmission"
+      ],
       "audio": "strategy_life_2_vip3_room_26.mp3",
       "essay_ref": "legacy-strategy_vip3_essay.txt"
     },
     {
       "slug": "strategic-collaboration",
-      "keywords_en": ["collaboration", "synergy", "teams", "flow"],
-      "keywords_vi": ["hợp tác", "hiệp lực", "đội nhóm", "dòng chảy"],
+      "keywords_en": [
+        "collaboration",
+        "synergy",
+        "teams",
+        "flow"
+      ],
+      "keywords_vi": [
+        "hợp tác",
+        "hiệp lực",
+        "đội nhóm",
+        "dòng chảy"
+      ],
       "copy": {
         "en": "Strategic collaboration creates synergy beyond sum of parts. Use the 'collaboration canvas': shared vision, unique contributions, decision rules, conflict protocol. The advanced collaborator uses 'collaboration chemistry': pair complementary cognitive styles. Build 'collaboration rituals': daily standup, weekly deep dive. Collaboration compounds through trust. The strategic life achieves through others.",
         "vi": "Hợp tác chiến lược tạo hiệp lực vượt tổng phần. Dùng 'bản đồ hợp tác': tầm nhìn chung, đóng góp độc đáo, quy tắc quyết định, giao thức xung đột. Người hợp tác nâng cao dùng 'hóa học hợp tác': ghép phong cách nhận thức bổ sung. Xây 'nghi thức hợp tác': standup hàng ngày, deep dive hàng tuần. Hợp tác tích lũy qua tin cậy. Cuộc sống chiến lược đạt được qua người khác."
       },
-      "tags": ["collaboration", "synergy", "rituals", "trust"],
+      "tags": [
+        "collaboration",
+        "synergy",
+        "rituals",
+        "trust"
+      ],
       "audio": "strategy_life_2_vip3_room_27.mp3",
       "essay_ref": "strategic-collaboration_vip3_essay.txt"
     },
     {
       "slug": "advanced-execution",
-      "keywords_en": ["execution", "implementation", "systems", "discipline"],
-      "keywords_vi": ["thực thi", "triển khai", "hệ thống", "kỷ luật"],
+      "keywords_en": [
+        "execution",
+        "implementation",
+        "systems",
+        "discipline"
+      ],
+      "keywords_vi": [
+        "thực thi",
+        "triển khai",
+        "hệ thống",
+        "kỷ luật"
+      ],
       "copy": {
         "en": "Advanced execution turns vision into reality with zero leakage. Use the 'execution stack': clarity (one-page plan), cadence (weekly review), accountability (public dashboards). The advanced executor uses 'execution automation': SOPs, checklists, AI agents. Measure 'execution velocity': tasks completed vs. planned. Execution compounds through systems. The strategic life delivers flawlessly.",
         "vi": "Thực thi nâng cao biến tầm nhìn thành hiện thực không rò rỉ. Dùng 'ngăn xếp thực thi': rõ ràng (kế hoạch một trang), nhịp độ (xem lại hàng tuần), trách nhiệm (bảng công khai). Người thực thi nâng cao dùng 'tự động thực thi': SOP, checklist, AI. Đo 'tốc độ thực thi': nhiệm vụ hoàn thành vs. kế hoạch. Thực thi tích lũy qua hệ thống. Cuộc sống chiến lược giao hàng hoàn hảo."
       },
-      "tags": ["execution", "systems", "velocity", "automation"],
+      "tags": [
+        "execution",
+        "systems",
+        "velocity",
+        "automation"
+      ],
       "audio": "strategy_life_2_vip3_room_28.mp3",
       "essay_ref": "advanced-execution_vip3_essay.txt"
     },
     {
       "slug": "strategic-mastery",
-      "keywords_en": ["mastery", "integration", "flow", "art"],
-      "keywords_vi": ["tinh thông", "tích hợp", "dòng chảy", "nghệ thuật"],
+      "keywords_en": [
+        "mastery",
+        "integration",
+        "flow",
+        "art"
+      ],
+      "keywords_vi": [
+        "tinh thông",
+        "tích hợp",
+        "dòng chảy",
+        "nghệ thuật"
+      ],
       "copy": {
         "en": "Strategic mastery is strategy as unconscious competence. Integrate all tools into a personal system. Practice 'strategy in motion': apply one principle daily. The advanced master uses 'meta-strategy': strategize about strategizing. Mastery compounds through reflection. The strategic life becomes art.",
         "vi": "Tinh thông chiến lược là chiến lược thành năng lực vô thức. Tích hợp mọi công cụ vào hệ thống cá nhân. Luyện 'chiến lược trong chuyển động': áp dụng một nguyên tắc hàng ngày. Bậc thầy nâng cao dùng 'siêu chiến lược': lập chiến lược về lập chiến lược. Tinh thông tích lũy qua phản tư. Cuộc sống chiến lược trở thành nghệ thuật."
       },
-      "tags": ["mastery", "integration", "meta", "art"],
+      "tags": [
+        "mastery",
+        "integration",
+        "meta",
+        "art"
+      ],
       "audio": "strategy_life_2_vip3_room_29.mp3",
       "essay_ref": "strategic-mastery_vip3_essay.txt"
     },
     {
       "slug": "integration-flow",
-      "keywords_en": ["integration", "flow", "living", "harmony"],
-      "keywords_vi": ["tích hợp", "dòng chảy", "sống", "hài hòa"],
+      "keywords_en": [
+        "integration",
+        "flow",
+        "living",
+        "harmony"
+      ],
+      "keywords_vi": [
+        "tích hợp",
+        "dòng chảy",
+        "sống",
+        "hài hòa"
+      ],
       "copy": {
         "en": "Integration & flow is living strategically without effort. All principles become one seamless system. Strategy is who you are, not what you do. The strategic life flows in harmony with purpose.",
         "vi": "Tích hợp & dòng chảy là sống chiến lược không nỗ lực. Mọi nguyên tắc thành một hệ thống liền mạch. Chiến lược là bạn là ai, không phải bạn làm gì. Cuộc sống chiến lược chảy hài hòa với mục đích."
       },
-      "tags": ["integration", "flow", "harmony", "being"],
+      "tags": [
+        "integration",
+        "flow",
+        "harmony",
+        "being"
+      ],
       "audio": "strategy_life_2_vip3_room_30.mp3",
       "essay_ref": "integration-flow_vip3_essay.txt"
     }

@@ -13,77 +13,125 @@
   "entries": [
     {
       "slug": "simple-opinions",
-      "keywords_en": ["opinion", "debate", "thinking"],
-      "keywords_vi": ["ý kiến", "tranh luận", "suy nghĩ"],
+      "keywords_en": [
+        "opinion",
+        "debate",
+        "thinking"
+      ],
+      "keywords_vi": [
+        "ý kiến",
+        "tranh luận",
+        "suy nghĩ"
+      ],
       "copy": {
         "en": "Teach children to share opinions with simple sentence starters like “I think…” or “In my opinion…”. Ask them to talk about topics they enjoy—games, school lunch, or pets. Keeping the topic light makes debating comfortable. Encourage them to speak clearly and use one short reason. This builds the habit of expressing ideas without fear, forming the first step of confident debating.",
         "vi": "Hãy dạy trẻ chia sẻ ý kiến bằng những câu mở đầu đơn giản như “I think…” hoặc “In my opinion…”. Hãy chọn chủ đề trẻ thích—trò chơi, bữa trưa ở trường hoặc thú cưng. Chủ đề nhẹ giúp việc tranh luận dễ chịu hơn. Khuyến khích trẻ nói rõ ràng và đưa ra một lý do ngắn. Điều này tạo thói quen diễn đạt ý tưởng không sợ hãi, là bước đầu của tranh luận tự tin."
       },
-      "tags": ["opinion"],
+      "tags": [
+        "opinion"
+      ],
       "audio": "debate_basics_v1_simple_opinions.mp3"
     },
     {
       "slug": "give-reasons",
-      "keywords_en": ["reasons", "explain", "debate"],
-      "keywords_vi": ["lý do", "giải thích", "tranh luận"],
+      "keywords_en": [
+        "reasons",
+        "explain",
+        "debate"
+      ],
+      "keywords_vi": [
+        "lý do",
+        "giải thích",
+        "tranh luận"
+      ],
       "copy": {
         "en": "Teach kids to support their ideas using simple reasons. Show them patterns like “because…” or “My reason is…”. Ask them to match each opinion with one clear reason. For example: “I think dogs are great pets because they play with you.” This helps children understand that strong arguments are built from both an idea and a reason.",
         "vi": "Hãy dạy trẻ hỗ trợ ý kiến bằng những lý do đơn giản. Hướng dẫn trẻ mẫu câu như “because…” hoặc “Lý do của con là…”. Yêu cầu trẻ ghép mỗi ý kiến với một lý do rõ ràng. Ví dụ: “Con nghĩ chó là thú cưng tuyệt vì chúng chơi với con.” Điều này giúp trẻ hiểu rằng lập luận mạnh mẽ được tạo từ ý kiến và lý do."
       },
-      "tags": ["reasoning"],
+      "tags": [
+        "reasoning"
+      ],
       "audio": "debate_basics_v1_give_reasons.mp3"
     },
     {
       "slug": "listen-respectfully",
-      "keywords_en": ["listen", "respect", "debate"],
-      "keywords_vi": ["lắng nghe", "tôn trọng", "tranh luận"],
+      "keywords_en": [
+        "listen",
+        "respect",
+        "debate"
+      ],
+      "keywords_vi": [
+        "lắng nghe",
+        "tôn trọng",
+        "tranh luận"
+      ],
       "copy": {
         "en": "Debating is not only about speaking—it’s also about listening. Teach children to wait for their turn, look at the speaker, and respond politely. Phrases like “I understand your point” or “I see what you mean” help them acknowledge others before giving their own view. This builds respectful communication and helps conversations stay calm.",
         "vi": "Tranh luận không chỉ là nói mà còn là lắng nghe. Hãy dạy trẻ chờ đến lượt, nhìn người đang nói và phản hồi lịch sự. Các câu như “I understand your point” hoặc “I see what you mean” giúp trẻ ghi nhận ý kiến người khác trước khi đưa ra quan điểm của mình. Điều này xây dựng giao tiếp tôn trọng và giữ cuộc trò chuyện bình tĩnh."
       },
-      "tags": ["listening"],
+      "tags": [
+        "listening"
+      ],
       "audio": "debate_basics_v1_listen_respectfully.mp3"
     },
     {
       "slug": "agree-or-disagree",
-      "keywords_en": ["agree", "disagree", "debate"],
-      "keywords_vi": ["đồng ý", "không đồng ý", "tranh luận"],
+      "keywords_en": [
+        "agree",
+        "disagree",
+        "debate"
+      ],
+      "keywords_vi": [
+        "đồng ý",
+        "không đồng ý",
+        "tranh luận"
+      ],
       "copy": {
         "en": "Teach kids to agree or disagree politely using simple phrases like “I agree because…” or “I disagree because…”. Remind them that disagreeing is not the same as being rude. Teach them to stay calm, speak gently, and focus on reasons instead of emotions. This gives children tools to express different views confidently and respectfully.",
         "vi": "Hãy dạy trẻ đồng ý hoặc không đồng ý một cách lịch sự bằng các mẫu câu như “I agree because…” hoặc “I disagree because…”. Nhắc trẻ rằng không đồng ý không có nghĩa là thô lỗ. Dạy trẻ bình tĩnh, nói nhẹ nhàng và tập trung vào lý do thay vì cảm xúc. Điều này giúp trẻ bày tỏ quan điểm khác biệt một cách tự tin và tôn trọng."
       },
-      "tags": ["agree-disagree"],
+      "tags": [
+        "agree-disagree"
+      ],
       "audio": "debate_basics_v1_agree_or_disagree.mp3"
     },
     {
       "slug": "simple-rebuttal",
-      "keywords_en": ["rebuttal", "response", "debate"],
-      "keywords_vi": ["phản biện", "phản hồi", "tranh luận"],
+      "keywords_en": [
+        "rebuttal",
+        "response",
+        "debate"
+      ],
+      "keywords_vi": [
+        "phản biện",
+        "phản hồi",
+        "tranh luận"
+      ],
       "copy": {
         "en": "Teach children a gentle form of rebuttal by showing them how to respond to an opinion with a different idea. Use a simple pattern: “I understand, but I think…” or “That is true, however…”. This helps them practice thinking critically while remaining respectful. Rebuttals teach kids that discussions can have many viewpoints, and it’s okay to express a thoughtful difference.",
         "vi": "Hãy dạy trẻ cách phản biện nhẹ nhàng bằng cách đưa ra ý kiến khác với một câu mở đầu lịch sự. Sử dụng mẫu: “Con hiểu, nhưng con nghĩ…” hoặc “Điều đó đúng, tuy nhiên…”. Điều này giúp trẻ rèn tư duy phản biện mà vẫn tôn trọng người khác. Phản biện dạy trẻ rằng một cuộc thảo luận có nhiều góc nhìn và việc nêu ý khác là hoàn toàn bình thường."
       },
-      "tags": ["rebuttal"],
+      "tags": [
+        "rebuttal"
+      ],
       "audio": "debate_basics_v1_simple_rebuttal.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all"],
-      "keywords_vi": ["tất cả"],
+      "keywords_en": [
+        "all"
+      ],
+      "keywords_vi": [
+        "tất cả"
+      ],
       "copy": {
         "en": "Teach children to share opinions with simple sentence starters like “I think…” or “In my opinion…”. Ask them to talk about topics they enjoy—games, school lunch, or pets. Keeping the topic light makes debating comfortable. Encourage them to speak clearly and use one short reason. This builds the habit of expressing ideas without fear, forming the first step of confident debating.Teach kids to support their ideas using simple reasons. Show them patterns like “because…” or “My reason is…”. Ask them to match each opinion with one clear reason. For example: “I think dogs are great pets because they play with you.” This helps children understand that strong arguments are built from both an idea and a reason.Debating is not only about speaking—it’s also about listening. Teach children to wait for their turn, look at the speaker, and respond politely. Phrases like “I understand your point” or “I see what you mean” help them acknowledge others before giving their own view. This builds respectful communication and helps conversations stay calm.Teach kids to agree or disagree politely using simple phrases like “I agree because…” or “I disagree because…”. Remind them that disagreeing is not the same as being rude. Teach them to stay calm, speak gently, and focus on reasons instead of emotions. This gives children tools to express different views confidently and respectfully.Teach children a gentle form of rebuttal by showing them how to respond to an opinion with a different idea. Use a simple pattern: “I understand, but I think…” or “That is true, however…”. This helps them practice thinking critically while remaining respectful. Rebuttals teach kids that discussions can have many viewpoints, and it’s okay to express a thoughtful difference.",
         "vi": "Hãy dạy trẻ chia sẻ ý kiến bằng những câu mở đầu đơn giản như “I think…” hoặc “In my opinion…”. Hãy chọn chủ đề trẻ thích—trò chơi, bữa trưa ở trường hoặc thú cưng. Chủ đề nhẹ giúp việc tranh luận dễ chịu hơn. Khuyến khích trẻ nói rõ ràng và đưa ra một lý do ngắn. Điều này tạo thói quen diễn đạt ý tưởng không sợ hãi, là bước đầu của tranh luận tự tin.Hãy dạy trẻ hỗ trợ ý kiến bằng những lý do đơn giản. Hướng dẫn trẻ mẫu câu như “because…” hoặc “Lý do của con là…”. Yêu cầu trẻ ghép mỗi ý kiến với một lý do rõ ràng. Ví dụ: “Con nghĩ chó là thú cưng tuyệt vì chúng chơi với con.” Điều này giúp trẻ hiểu rằng lập luận mạnh mẽ được tạo từ ý kiến và lý do.Tranh luận không chỉ là nói mà còn là lắng nghe. Hãy dạy trẻ chờ đến lượt, nhìn người đang nói và phản hồi lịch sự. Các câu như “I understand your point” hoặc “I see what you mean” giúp trẻ ghi nhận ý kiến người khác trước khi đưa ra quan điểm của mình. Điều này xây dựng giao tiếp tôn trọng và giữ cuộc trò chuyện bình tĩnh.Hãy dạy trẻ đồng ý hoặc không đồng ý một cách lịch sự bằng các mẫu câu như “I agree because…” hoặc “I disagree because…”. Nhắc trẻ rằng không đồng ý không có nghĩa là thô lỗ. Dạy trẻ bình tĩnh, nói nhẹ nhàng và tập trung vào lý do thay vì cảm xúc. Điều này giúp trẻ bày tỏ quan điểm khác biệt một cách tự tin và tôn trọng.Hãy dạy trẻ cách phản biện nhẹ nhàng bằng cách đưa ra ý kiến khác với một câu mở đầu lịch sự. Sử dụng mẫu: “Con hiểu, nhưng con nghĩ…” hoặc “Điều đó đúng, tuy nhiên…”. Điều này giúp trẻ rèn tư duy phản biện mà vẫn tôn trọng người khác. Phản biện dạy trẻ rằng một cuộc thảo luận có nhiều góc nhìn và việc nêu ý khác là hoàn toàn bình thường."
       },
-      "tags": ["all"],
+      "tags": [
+        "all"
+      ],
       "audio": "debate_basics_v1_simple_opinions.mp3 debate_basics_v1_give_reasons.mp3 debate_basics_v1_listen_respectfully.mp3 debate_basics_v1_agree_or_disagree.mp3 debate_basics_v1_simple_rebuttal.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "10-13",
-    "level": "Kids Level 3",
-    "created_at": "2025-11-23T00:00:00+00:00",
-    "updated_at": "2025-11-23T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#FFE8D6"
-  }
+  ]
 }

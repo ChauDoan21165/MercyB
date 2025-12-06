@@ -4,7 +4,7 @@
  * Checks all room JSON files for syntax, structure, completeness, and consistency
  */
 
-import { readFileSync, readdirSync } from 'fs';
+import { readFileSync, readdirSync, existsSync } from 'fs';
 import { join } from 'path';
 
 interface ValidationReport {
@@ -37,43 +37,60 @@ const report: ValidationReport = {
   }
 };
 
-// Check which files exist (only in rooms folder, not system folder)
-const roomsDir = join(process.cwd(), 'src/data/rooms');
+// ✅ Look in public/data (real room JSONs), not src/data/rooms
+const roomsDir = join(process.cwd(), 'public', 'data');
+
+if (!existsSync(roomsDir)) {
+  console.error(`\n❌ Rooms directory not found: ${roomsDir}`);
+  console.error('Make sure your room JSON files live in public/data\n');
+  process.exit(1);
+}
+
 const existingFiles = readdirSync(roomsDir).filter(f => f.endsWith('.json'));
 
-// Check which files are imported
-const importsFile = readFileSync(join(process.cwd(), 'src/lib/roomDataImports.ts'), 'utf-8');
+// Optional: import consistency check (only if file exists)
+const importsPath = join(process.cwd(), 'src/lib/roomDataImports.ts');
 const importedFiles = new Set<string>();
-const importMatches = importsFile.matchAll(/from '@\/data\/rooms\/(.+?)\.json'/g);
-for (const match of importMatches) {
-  importedFiles.add(match[1] + '.json');
+
+if (existsSync(importsPath)) {
+  const importsFile = readFileSync(importsPath, 'utf-8');
+  const importMatches = importsFile.matchAll(/from '@\/data\/rooms\/(.+?)\.json'/g);
+  for (const match of importMatches) {
+    importedFiles.add(match[1] + '.json');
+  }
 }
 
 console.log('\n🔍 Room Data Integrity & Quality Validation');
 console.log('═'.repeat(70));
-console.log(`\n📁 Found ${existingFiles.length} JSON files in src/data/rooms/`);
-console.log(`📦 Found ${importedFiles.size} imported files in roomDataImports.ts\n`);
-
-// Check for orphaned files (exist but not imported)
-const orphanedFiles = existingFiles.filter(f => !importedFiles.has(f));
-if (orphanedFiles.length > 0) {
-  console.log(`⚠️  Found ${orphanedFiles.length} orphaned files (exist but not imported):`);
-  orphanedFiles.forEach(f => {
-    console.log(`   - ${f}`);
-    report.warnings.push({ file: f, message: 'File exists but is not imported in roomDataImports.ts' });
-  });
-  console.log();
+console.log(`\n📁 Found ${existingFiles.length} JSON files in public/data/`);
+if (existsSync(importsPath)) {
+  console.log(`📦 Found ${importedFiles.size} imported files in roomDataImports.ts\n`);
+} else {
+  console.log('📦 roomDataImports.ts not found – skipping import consistency checks\n');
 }
 
-// Check for missing files (imported but don't exist)
-const missingFiles = Array.from(importedFiles).filter(f => !existingFiles.includes(f));
-if (missingFiles.length > 0) {
-  console.log(`❌ Found ${missingFiles.length} missing files (imported but don't exist):`);
-  missingFiles.forEach(f => {
-    console.log(`   - ${f}`);
-    report.errors.push({ file: f, message: 'File is imported but does not exist' });
-  });
-  console.log();
+// Check orphaned files (exist but not imported)
+if (importedFiles.size > 0) {
+  const orphanedFiles = existingFiles.filter(f => !importedFiles.has(f));
+  if (orphanedFiles.length > 0) {
+    console.log(`⚠️  Found ${orphanedFiles.length} orphaned files (exist but not imported):`);
+    orphanedFiles.forEach(f => {
+      console.log(`   - ${f}`);
+      report.warnings.push({ file: f, message: 'File exists but is not imported in roomDataImports.ts' });
+    });
+    console.log();
+  }
+
+  // Check missing files (imported but don’t exist)
+  const missingFiles = Array.from(importedFiles).filter(f => !existingFiles.includes(f));
+  if (missingFiles.length > 0) {
+    console.log(`❌ Found ${missingFiles.length} missing files (imported but don’t exist):`);
+    missingFiles.forEach(f => {
+      console.log(`   - ${f}`);
+      report.errors.push({ file: f, message: 'File is imported but does not exist' });
+    });
+    console.log();
+  }
 }
 
 console.log('🔬 Validating file contents...\n');
@@ -97,10 +114,10 @@ existingFiles.forEach(filename => {
       return;
     }
     
-    // 2. Required Fields
+    // 2. Required Fields (legacy room-schema style – keep for now)
     const requiredFields = ['schema_version', 'schema_id', 'description', 'keywords', 'entries'];
     requiredFields.forEach(field => {
-      if (!data[field]) {
+      if (data[field] === undefined) {
         report.errors.push({ file: filename, message: `Missing required field: ${field}` });
         hasIssues = true;
       }
@@ -130,7 +147,6 @@ existingFiles.forEach(filename => {
         report.info.push({ file: filename, message: `Only ${keywordCount} keyword categories (consider adding more)` });
       }
       
-      // Check each keyword has both languages
       Object.entries(data.keywords).forEach(([key, value]: [string, any]) => {
         if (!value?.en || value.en.length === 0) {
           report.warnings.push({ file: filename, message: `Keyword "${key}" missing English terms` });
@@ -155,7 +171,6 @@ existingFiles.forEach(filename => {
         report.info.push({ file: filename, message: `Only ${entryCount} entries (might need more content)` });
       }
       
-      // Check each entry
       data.entries.forEach((entry: any, idx: number) => {
         const entryId = entry.slug || `entry-${idx}`;
         
@@ -212,8 +227,12 @@ existingFiles.forEach(filename => {
 });
 
 // Calculate averages
-report.stats.avgEntriesPerRoom = Math.round(report.stats.totalEntries / report.totalFiles);
-report.stats.avgKeywordsPerRoom = Math.round(report.stats.totalKeywords / report.totalFiles);
+report.stats.avgEntriesPerRoom = report.totalFiles > 0
+  ? Math.round(report.stats.totalEntries / report.totalFiles)
+  : 0;
+report.stats.avgKeywordsPerRoom = report.totalFiles > 0
+  ? Math.round(report.stats.totalKeywords / report.totalFiles)
+  : 0;
 
 // Print Report
 console.log('═'.repeat(70));
@@ -256,7 +275,7 @@ console.log(`   Avg keywords/room:    ${report.stats.avgKeywordsPerRoom}`);
 
 console.log('\n═'.repeat(70));
 
-const issueCount = report.errors.length + report.warnings.length;
+const issueCount = report.errors.length + report.warnings.length + report.info.length;
 console.log(`\n${issueCount === 0 ? '✅' : '⚠️'} Total issues: ${issueCount} (${report.errors.length} errors, ${report.warnings.length} warnings, ${report.info.length} info)\n`);
 
 // Exit code: 0 if no errors, 1 if errors exist

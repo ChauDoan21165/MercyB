@@ -13,63 +13,105 @@
   "entries": [
     {
       "slug": "i-you-we-they-patterns",
-      "keywords_en": ["simple present", "patterns"],
-      "keywords_vi": ["hiện tại đơn", "mẫu câu"],
+      "keywords_en": [
+        "simple present",
+        "patterns"
+      ],
+      "keywords_vi": [
+        "hiện tại đơn",
+        "mẫu câu"
+      ],
       "copy": {
         "en": "Practice these patterns.\nI go.\nYou go.\nWe go.\nThey go.\nI work.\nYou work.\nWe work.\nThey work.\nSay each line slowly.\nThese are the most useful beginner patterns.",
         "vi": "Hãy luyện các mẫu câu sau: I go, You go, We go, They go, I work, You work, We work, They work. Đọc chậm và rõ. Đây là những mẫu câu hữu ích nhất cho người mới."
       },
-      "audio": "a103_01_en.mp3"
+      "audio": "a103_01_en.mp3",
+      "tags": []
     },
     {
       "slug": "daily-activities",
-      "keywords_en": ["daily routine", "verbs"],
-      "keywords_vi": ["thói quen hằng ngày", "động từ"],
+      "keywords_en": [
+        "daily routine",
+        "verbs"
+      ],
+      "keywords_vi": [
+        "thói quen hằng ngày",
+        "động từ"
+      ],
       "copy": {
         "en": "Practice these daily verbs.\nI eat.\nI drink.\nI read.\nI walk.\nI study.\nI sleep.\nSay them calmly.\nThese verbs help you talk about your day.",
         "vi": "Hãy luyện các động từ hằng ngày: I eat, I drink, I read, I walk, I study, I sleep. Nói bình tĩnh. Những động từ này giúp bạn nói về ngày của mình."
       },
-      "audio": "a103_02_en.mp3"
+      "audio": "a103_02_en.mp3",
+      "tags": []
     },
     {
       "slug": "likes-and-dislikes",
-      "keywords_en": ["like", "dislike"],
-      "keywords_vi": ["thích", "không thích"],
+      "keywords_en": [
+        "like",
+        "dislike"
+      ],
+      "keywords_vi": [
+        "thích",
+        "không thích"
+      ],
       "copy": {
         "en": "Use these lines to talk about likes.\nI like coffee.\nI like music.\nI like English.\nI like books.\nTo say no:\nI do not like noise.\nI do not like cold weather.\nSay everything slowly and clearly.",
         "vi": "Dùng các câu sau để nói về sở thích: I like coffee, I like music, I like English, I like books. Để nói không thích: I do not like noise, I do not like cold weather. Hãy nói chậm và rõ ràng."
       },
-      "audio": "a103_03_en.mp3"
+      "audio": "a103_03_en.mp3",
+      "tags": []
     },
     {
       "slug": "simple-present-questions",
-      "keywords_en": ["questions", "beginner grammar"],
-      "keywords_vi": ["câu hỏi", "ngữ pháp cơ bản"],
+      "keywords_en": [
+        "questions",
+        "beginner grammar"
+      ],
+      "keywords_vi": [
+        "câu hỏi",
+        "ngữ pháp cơ bản"
+      ],
       "copy": {
         "en": "Practice easy questions.\nDo you like coffee.\nDo you study English.\nDo you work here.\nDo you live in Hanoi.\nSay the question.\nThen answer slowly.",
         "vi": "Hãy luyện các câu hỏi đơn giản: Do you like coffee, Do you study English, Do you work here, Do you live in Hanoi. Hãy nói câu hỏi, rồi trả lời chậm rãi."
       },
-      "audio": "a103_04_en.mp3"
+      "audio": "a103_04_en.mp3",
+      "tags": []
     },
     {
       "slug": "simple-sentences",
-      "keywords_en": ["sentences", "beginner"],
-      "keywords_vi": ["câu đơn giản", "người mới"],
+      "keywords_en": [
+        "sentences",
+        "beginner"
+      ],
+      "keywords_vi": [
+        "câu đơn giản",
+        "người mới"
+      ],
       "copy": {
         "en": "Read these short sentences.\nI work every day.\nWe study English.\nYou walk to school.\nThey read in the evening.\nKeep your voice calm.\nSlow is correct.",
         "vi": "Hãy đọc các câu ngắn sau: I work every day, We study English, You walk to school, They read in the evening. Giữ giọng nhẹ và bình tĩnh. Chậm là đúng."
       },
-      "audio": "a103_05_en.mp3"
+      "audio": "a103_05_en.mp3",
+      "tags": []
     },
     {
       "slug": "mini-speaking-drill",
-      "keywords_en": ["speaking", "practice"],
-      "keywords_vi": ["nói", "luyện tập"],
+      "keywords_en": [
+        "speaking",
+        "practice"
+      ],
+      "keywords_vi": [
+        "nói",
+        "luyện tập"
+      ],
       "copy": {
         "en": "Repeat these lines slowly.\nI study in the morning.\nI work in the afternoon.\nI rest in the evening.\nI like simple English.\nRepeat gently.\nConfidence comes from calm practice.",
         "vi": "Hãy lặp lại các câu sau: I study in the morning, I work in the afternoon, I rest in the evening, I like simple English. Lặp lại nhẹ nhàng. Sự tự tin đến từ luyện tập bình tĩnh."
       },
-      "audio": "a103_06_en.mp3"
+      "audio": "a103_06_en.mp3",
+      "tags": []
     }
   ]
 }

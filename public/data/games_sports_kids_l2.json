@@ -13,77 +13,134 @@
   "entries": [
     {
       "slug": "running-fun",
-      "keywords_en": ["run", "fast", "play"],
-      "keywords_vi": ["chạy", "nhanh", "chơi"],
+      "keywords_en": [
+        "run",
+        "fast",
+        "play"
+      ],
+      "keywords_vi": [
+        "chạy",
+        "nhanh",
+        "chơi"
+      ],
       "copy": {
         "en": "Teach “run” through a simple race. Say: “Let’s run!” and choose a short distance in the house or yard. Encourage your child to run slowly first, then a little faster. Running builds energy and helps kids hear and use action verbs naturally.",
         "vi": "Dạy từ “run” bằng cuộc đua nhỏ. Nói: “Let’s run!” và chọn đoạn đường ngắn trong nhà hoặc sân. Khuyến khích bé chạy chậm trước rồi nhanh hơn chút. Chạy giúp trẻ giải phóng năng lượng và nghe, dùng động từ hành động tự nhiên."
       },
-      "tags": ["run", "movement"],
+      "tags": [
+        "run",
+        "movement"
+      ],
       "audio": "games_sports_v1_running.mp3"
     },
     {
       "slug": "jump-like-a-bunny",
-      "keywords_en": ["jump", "bounce", "fun"],
-      "keywords_vi": ["nhảy", "bật", "vui"],
+      "keywords_en": [
+        "jump",
+        "bounce",
+        "fun"
+      ],
+      "keywords_vi": [
+        "nhảy",
+        "bật",
+        "vui"
+      ],
       "copy": {
         "en": "Teach “jump” by pretending to be animals. Say: “Jump like a bunny!” or “Jump like a frog!” Simple, playful jumps help kids link words to actions while staying safe and active. Always remind them to land softly.",
         "vi": "Dạy “jump” bằng cách giả làm động vật. Nói: “Jump like a bunny!” hoặc “Jump like a frog!” Các cú nhảy vui nhộn giúp trẻ kết nối từ vựng với hành động. Nhắc bé tiếp đất nhẹ nhàng để an toàn."
       },
-      "tags": ["jump", "movement"],
+      "tags": [
+        "jump",
+        "movement"
+      ],
       "audio": "games_sports_v1_jump.mp3"
     },
     {
       "slug": "kick-the-ball",
-      "keywords_en": ["kick", "ball", "play"],
-      "keywords_vi": ["đá", "bóng", "chơi"],
+      "keywords_en": [
+        "kick",
+        "ball",
+        "play"
+      ],
+      "keywords_vi": [
+        "đá",
+        "bóng",
+        "chơi"
+      ],
       "copy": {
         "en": "Teach “kick” using a soft ball. Say: “Kick the ball!” and gently roll it toward your child. Celebrate each try, even if the ball barely moves. Kicking games teach coordination and help kids understand action words through play.",
         "vi": "Dạy “kick” bằng quả bóng mềm. Nói: “Kick the ball!” và nhẹ nhàng lăn bóng về phía bé. Mỗi cú đá đều được khen, dù bóng chỉ di chuyển chút ít. Trò đá bóng giúp trẻ phối hợp vận động và hiểu động từ qua chơi."
       },
-      "tags": ["kick", "ball"],
+      "tags": [
+        "kick",
+        "ball"
+      ],
       "audio": "games_sports_v1_kick.mp3"
     },
     {
       "slug": "throw-and-catch",
-      "keywords_en": ["throw", "catch", "ball"],
-      "keywords_vi": ["ném", "bắt", "bóng"],
+      "keywords_en": [
+        "throw",
+        "catch",
+        "ball"
+      ],
+      "keywords_vi": [
+        "ném",
+        "bắt",
+        "bóng"
+      ],
       "copy": {
         "en": "Teach “throw” and “catch” with a soft toy or foam ball. Stand close and say: “Throw it to me!” then “Catch!” Use slow motions first. These simple actions help kids listen, react, and learn two verbs at once.",
         "vi": "Dạy “throw” và “catch” bằng thú bông hoặc bóng xốp. Đứng gần và nói: “Throw it to me!” rồi “Catch!” Bắt đầu bằng động tác chậm. Hoạt động này giúp trẻ lắng nghe, phản ứng và học hai động từ cùng lúc."
       },
-      "tags": ["throw", "catch"],
+      "tags": [
+        "throw",
+        "catch"
+      ],
       "audio": "games_sports_v1_throw_catch.mp3"
     },
     {
       "slug": "team-play-basics",
-      "keywords_en": ["team", "friends", "play"],
-      "keywords_vi": ["đội", "bạn bè", "chơi"],
+      "keywords_en": [
+        "team",
+        "friends",
+        "play"
+      ],
+      "keywords_vi": [
+        "đội",
+        "bạn bè",
+        "chơi"
+      ],
       "copy": {
         "en": "Teach the word “team” by letting your child play with a sibling or parent. Say: “We’re a team!” Do a simple task together, like rolling a ball back and forth. The idea of teamwork helps kids learn social language and cooperation.",
         "vi": "Dạy từ “team” bằng cách cho bé chơi với anh chị em hoặc cha mẹ. Nói: “We’re a team!” và cùng làm nhiệm vụ đơn giản, như lăn bóng qua lại. Khái niệm đồng đội giúp trẻ học ngôn ngữ xã hội và tinh thần hợp tác."
       },
-      "tags": ["team", "cooperation"],
+      "tags": [
+        "team",
+        "cooperation"
+      ],
       "audio": "games_sports_v1_teamplay.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all", "full", "complete"],
-      "keywords_vi": ["tất cả", "đầy đủ", "hoàn thiện"],
+      "keywords_en": [
+        "all",
+        "full",
+        "complete"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "đầy đủ",
+        "hoàn thiện"
+      ],
       "copy": {
         "en": "Teach “run” with a short, playful race.\n\nTeach “jump” through fun animal motions.\n\nTeach “kick” using soft, gentle ball play.\n\nTeach “throw” and “catch” with slow, safe moves.\n\nTeach “team” by playing cooperatively with a parent or sibling.\n\nThese active moments help kids link English verbs to real actions, making learning natural, energetic, and joyful.",
         "vi": "Dạy “run” bằng cuộc đua nhỏ vui nhộn.\n\nDạy “jump” qua động tác bắt chước động vật.\n\nDạy “kick” với trò đá bóng nhẹ nhàng.\n\nDạy “throw” và “catch” bằng chuyển động chậm và an toàn.\n\nDạy “team” qua chơi hợp tác với người thân.\n\nNhững khoảnh khắc vận động này giúp trẻ gắn động từ tiếng Anh với hành động thật, khiến việc học tự nhiên và đầy năng lượng."
       },
-      "tags": ["all"],
+      "tags": [
+        "all"
+      ],
       "audio": "games_sports_v1_running.mp3 games_sports_v1_jump.mp3 games_sports_v1_kick.mp3 games_sports_v1_throw_catch.mp3 games_sports_v1_teamplay.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "7-10",
-    "level": "Kids Level 2",
-    "created_at": "2025-11-21T00:00:00+00:00",
-    "updated_at": "2025-11-21T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#FFD7B5"
-  }
+  ]
 }

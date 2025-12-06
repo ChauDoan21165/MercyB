@@ -13,77 +13,145 @@
   "entries": [
     {
       "slug": "sound-s",
-      "keywords_en": ["phonics", "s", "sound", "snake"],
-      "keywords_vi": ["phonics", "s", "âm", "con rắn"],
+      "keywords_en": [
+        "phonics",
+        "s",
+        "sound",
+        "snake"
+      ],
+      "keywords_vi": [
+        "phonics",
+        "s",
+        "âm",
+        "con rắn"
+      ],
       "copy": {
         "en": "Teach the sound /s/ by pretending to be a snake. Make a long, gentle “ssss” sound while moving your hand like a slithering snake. Children love copying this motion. Point to objects that start with the sound—sun, sock, soap—and say each word slowly. Keep the focus on the first sound, not spelling. The goal is for children to hear the soft, steady beginning of the /s/ sound through play.",
         "vi": "Dạy âm /s/ bằng cách giả làm con rắn. Bạn kéo dài âm “ssss” nhẹ nhàng và đưa tay uốn lượn như rắn bò. Trẻ rất thích bắt chước. Hãy chỉ vào các đồ vật bắt đầu bằng âm này—sun, sock, soap—và đọc thật chậm. Tập trung vào âm đầu tiên, không phải đánh vần. Mục tiêu là để bé nghe được âm /s/ nhẹ nhàng thông qua trò chơi."
       },
-      "tags": ["phonics", "s"],
+      "tags": [
+        "phonics",
+        "s"
+      ],
       "audio": "early_phonics_v1_sound_s.mp3"
     },
     {
       "slug": "sound-m",
-      "keywords_en": ["phonics", "m", "sound", "humming"],
-      "keywords_vi": ["phonics", "m", "âm", "ngân"],
+      "keywords_en": [
+        "phonics",
+        "m",
+        "sound",
+        "humming"
+      ],
+      "keywords_vi": [
+        "phonics",
+        "m",
+        "âm",
+        "ngân"
+      ],
       "copy": {
         "en": "Teach the sound /m/ with a simple humming game. Place your fingers on your lips and say “mmm” like you’re enjoying tasty food. Ask your child to copy the feeling of the lips gently pressing together. Find familiar words beginning with /m/ such as milk, monkey, or mom. Children respond well when the sound is connected to something warm and familiar, making the learning comfortable and memorable.",
         "vi": "Dạy âm /m/ bằng trò ngân nhỏ. Bạn đặt ngón tay lên môi và ngân “mmm” như đang thưởng thức món ngon. Rủ bé làm theo để cảm nhận môi chạm nhẹ. Hãy tìm các từ quen bắt đầu bằng /m/: milk, monkey, mom. Trẻ thường phản ứng tốt khi âm gắn với điều thân thuộc, giúp việc học dễ chịu và đáng nhớ."
       },
-      "tags": ["phonics", "m"],
+      "tags": [
+        "phonics",
+        "m"
+      ],
       "audio": "early_phonics_v1_sound_m.mp3"
     },
     {
       "slug": "sound-a",
-      "keywords_en": ["phonics", "a", "sound", "vowel"],
-      "keywords_vi": ["phonics", "a", "âm", "nguyên âm"],
+      "keywords_en": [
+        "phonics",
+        "a",
+        "sound",
+        "vowel"
+      ],
+      "keywords_vi": [
+        "phonics",
+        "a",
+        "âm",
+        "nguyên âm"
+      ],
       "copy": {
         "en": "Teach the short vowel /a/ as in “apple.” Open your mouth slightly and say “a-a-a” with a light, bouncy rhythm. Show a picture of an apple and tap it each time you say the sound. Children love copying your facial expression, so exaggerate gently. You can pretend the sound is a tiny sneeze or a baby’s cry to make it playful and memorable.",
         "vi": "Dạy nguyên âm ngắn /a/ như trong “apple.” Há miệng nhẹ và đọc “a-a-a” với nhịp vui. Cho bé xem hình quả táo và chạm vào hình mỗi lần phát âm. Trẻ thích bắt chước nét mặt, nên bạn có thể làm hơi cường điệu. Hãy biến âm thành tiếng hắt hơi nhỏ hoặc tiếng em bé khóc để việc học vui và đáng nhớ."
       },
-      "tags": ["phonics", "a"],
+      "tags": [
+        "phonics",
+        "a"
+      ],
       "audio": "early_phonics_v1_sound_a.mp3"
     },
     {
       "slug": "sound-t",
-      "keywords_en": ["phonics", "t", "sound", "tap"],
-      "keywords_vi": ["phonics", "t", "âm", "gõ nhẹ"],
+      "keywords_en": [
+        "phonics",
+        "t",
+        "sound",
+        "tap"
+      ],
+      "keywords_vi": [
+        "phonics",
+        "t",
+        "âm",
+        "gõ nhẹ"
+      ],
       "copy": {
         "en": "Teach the sound /t/ using a tiny tapping motion. Lightly tap your child’s hand and say “t-t-t.” Then tap the table or a soft object to keep the rhythm. Show simple words like toy, ten, or tiger, saying them slowly and emphasizing the first sound. The quick, gentle “t” sound helps children practice short, clear bursts of air.",
         "vi": "Dạy âm /t/ bằng động tác gõ nhẹ. Bạn gõ nhẹ lên tay bé và đọc “t-t-t.” Sau đó gõ lên bàn hoặc món đồ mềm để giữ nhịp. Cho bé xem các từ đơn như toy, ten, tiger và đọc chậm, nhấn mạnh âm đầu tiên. Âm /t/ ngắn và nhẹ giúp bé luyện các luồng hơi ngắn, rõ ràng."
       },
-      "tags": ["phonics", "t"],
+      "tags": [
+        "phonics",
+        "t"
+      ],
       "audio": "early_phonics_v1_sound_t.mp3"
     },
     {
       "slug": "sound-p",
-      "keywords_en": ["phonics", "p", "sound", "air"],
-      "keywords_vi": ["phonics", "p", "âm", "luồng hơi"],
+      "keywords_en": [
+        "phonics",
+        "p",
+        "sound",
+        "air"
+      ],
+      "keywords_vi": [
+        "phonics",
+        "p",
+        "âm",
+        "luồng hơi"
+      ],
       "copy": {
         "en": "Teach the sound /p/ by showing the tiny puff of air it makes. Hold a small piece of tissue in front of your lips and say “p-p-p.” The tissue will move slightly, and children love trying it themselves. Use simple words like pen, pig, or pizza and let your child repeat them with playful energy. The goal is to connect the short popping sound with the movement of the lips and air.",
         "vi": "Dạy âm /p/ bằng cách cho bé thấy luồng hơi nhỏ. Bạn cầm mảnh giấy trước môi và đọc “p-p-p.” Giấy sẽ khẽ rung và bé sẽ rất thích thử theo. Sử dụng các từ đơn như pen, pig, pizza và cho bé lặp lại thật vui. Mục tiêu là giúp bé gắn âm bật ngắn với chuyển động môi và hơi thở."
       },
-      "tags": ["phonics", "p"],
+      "tags": [
+        "phonics",
+        "p"
+      ],
       "audio": "early_phonics_v1_sound_p.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all", "full", "complete"],
-      "keywords_vi": ["tất cả", "đầy đủ", "hoàn chỉnh"],
+      "keywords_en": [
+        "all",
+        "full",
+        "complete"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "đầy đủ",
+        "hoàn chỉnh"
+      ],
       "copy": {
         "en": "Teach the sound /s/ by pretending to be a snake. Make a long, gentle “ssss” sound while moving your hand like a slithering snake. Point to objects like sun, sock, and soap.\n\nTeach the sound /m/ with humming, touching the lips gently and using words like milk, monkey, and mom.\n\nTeach the short vowel /a/ with “a-a-a” like in apple, using pictures and fun facial expressions.\n\nTeach the sound /t/ with tiny tapping motions and words like toy, ten, and tiger.\n\nTeach the sound /p/ with a light puff of air using tissue and fun words like pen, pig, and pizza.",
         "vi": "Dạy âm /s/ bằng trò giả làm rắn, kéo dài âm “ssss” và chỉ vào các đồ như sun, sock, soap.\n\nDạy âm /m/ bằng trò ngân môi nhẹ với các từ milk, monkey, mom.\n\nDạy âm /a/ bằng âm “a-a-a” của apple, kết hợp hình ảnh và nét mặt vui.\n\nDạy âm /t/ bằng động tác gõ nhẹ và các từ toy, ten, tiger.\n\nDạy âm /p/ bằng luồng hơi nhỏ và các từ pen, pig, pizza."
       },
-      "tags": ["all", "full"],
+      "tags": [
+        "all",
+        "full"
+      ],
       "audio": "early_phonics_v1_sound_s.mp3 early_phonics_v1_sound_m.mp3 early_phonics_v1_sound_a.mp3 early_phonics_v1_sound_t.mp3 early_phonics_v1_sound_p.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "4-7",
-    "level": "Kids Level 1",
-    "created_at": "2025-11-21T00:00:00+00:00",
-    "updated_at": "2025-11-21T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#FFEED6"
-  }
+  ]
 }

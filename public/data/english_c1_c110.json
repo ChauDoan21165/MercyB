@@ -13,63 +13,105 @@
   "entries": [
     {
       "slug": "stating-your-idea-clearly",
-      "keywords_en": ["clarity", "ideas"],
-      "keywords_vi": ["rõ ràng", "ý tưởng"],
+      "keywords_en": [
+        "clarity",
+        "ideas"
+      ],
+      "keywords_vi": [
+        "rõ ràng",
+        "ý tưởng"
+      ],
       "copy": {
         "en": "Clear communication begins with a simple structure. Start with one sentence that states your idea directly. Add one short detail. Pause. This keeps your message strong and easy to follow. Professional English prefers calm, direct clarity over complex sentences.",
         "vi": "Giao tiếp rõ ràng bắt đầu từ cấu trúc đơn giản. Hãy mở đầu bằng một câu thể hiện trực tiếp ý của bạn. Thêm một chi tiết ngắn. Ngừng nhẹ. Điều này giúp thông điệp mạch lạc và dễ theo dõi. Tiếng Anh chuyên nghiệp ưu tiên sự rõ ràng bình tĩnh hơn là câu phức tạp."
       },
-      "audio": "c110_01_en.mp3"
+      "audio": "c110_01_en.mp3",
+      "tags": []
     },
     {
       "slug": "asking-professionally",
-      "keywords_en": ["asking", "professional"],
-      "keywords_vi": ["hỏi", "chuyên nghiệp"],
+      "keywords_en": [
+        "asking",
+        "professional"
+      ],
+      "keywords_vi": [
+        "hỏi",
+        "chuyên nghiệp"
+      ],
       "copy": {
         "en": "Professional requests sound polite and respectful. Use phrases like Could you tell me, May I ask, or Would you mind. These expressions soften the request while keeping it clear. Polite asking builds strong relationships at work.",
         "vi": "Yêu cầu chuyên nghiệp luôn nghe lịch sự và tôn trọng. Hãy dùng các cụm như Could you tell me, May I ask, Would you mind. Những cách nói này làm nhẹ lời đề nghị nhưng vẫn rõ ràng. Hỏi lịch sự giúp xây dựng quan hệ tốt trong công việc."
       },
-      "audio": "c110_02_en.mp3"
+      "audio": "c110_02_en.mp3",
+      "tags": []
     },
     {
       "slug": "handling-difficult-conversations",
-      "keywords_en": ["difficult conversations", "calm"],
-      "keywords_vi": ["trò chuyện khó", "bình tĩnh"],
+      "keywords_en": [
+        "difficult conversations",
+        "calm"
+      ],
+      "keywords_vi": [
+        "trò chuyện khó",
+        "bình tĩnh"
+      ],
       "copy": {
         "en": "In difficult conversations, keep your tone slow and steady. Use gentle frames like I understand your point or Let’s find a solution together. These lines reduce tension and keep the conversation productive. Calm communication shows true professionalism.",
         "vi": "Trong những cuộc trò chuyện khó, hãy giữ giọng chậm và ổn định. Dùng các câu mềm như Tôi hiểu ý bạn hoặc Chúng ta hãy cùng tìm giải pháp. Những câu này giảm căng thẳng và giữ cuộc trao đổi mang tính xây dựng. Giao tiếp bình tĩnh thể hiện sự chuyên nghiệp thực sự."
       },
-      "audio": "c110_03_en.mp3"
+      "audio": "c110_03_en.mp3",
+      "tags": []
     },
     {
       "slug": "expressing-disagreement-respectfully",
-      "keywords_en": ["disagreement", "respect"],
-      "keywords_vi": ["bất đồng", "tôn trọng"],
+      "keywords_en": [
+        "disagreement",
+        "respect"
+      ],
+      "keywords_vi": [
+        "bất đồng",
+        "tôn trọng"
+      ],
       "copy": {
         "en": "You can disagree without sounding rude. Start with I see your point, then add your view calmly. Avoid sharp words. Use gentle phrases like I have a different view or Another way to look at this is. Respectful disagreement builds trust.",
         "vi": "Bạn có thể bất đồng mà không làm mất lòng người khác. Hãy bắt đầu bằng Tôi hiểu ý bạn, rồi nêu quan điểm của mình một cách bình tĩnh. Tránh từ ngữ sắc bén. Hãy dùng các câu nhẹ như Tôi có góc nhìn khác hoặc Một cách nhìn khác là. Bất đồng tôn trọng tạo dựng sự tin cậy."
       },
-      "audio": "c110_04_en.mp3"
+      "audio": "c110_04_en.mp3",
+      "tags": []
     },
     {
       "slug": "showing-confidence-through-language",
-      "keywords_en": ["confidence", "language"],
-      "keywords_vi": ["tự tin", "ngôn ngữ"],
+      "keywords_en": [
+        "confidence",
+        "language"
+      ],
+      "keywords_vi": [
+        "tự tin",
+        "ngôn ngữ"
+      ],
       "copy": {
         "en": "Confidence in English does not require strong words. It comes from steady tone, simple sentences, and clear intention. Say what you mean calmly. Avoid filler words like maybe or I guess when you are sure. Quiet confidence is powerful.",
         "vi": "Sự tự tin trong tiếng Anh không cần từ ngữ mạnh mẽ. Nó đến từ giọng nói ổn định, câu đơn giản và ý định rõ ràng. Hãy nói điều bạn muốn truyền đạt một cách bình tĩnh. Tránh các từ như maybe hoặc I guess khi bạn chắc chắn. Sự tự tin nhẹ nhàng rất mạnh mẽ."
       },
-      "audio": "c110_05_en.mp3"
+      "audio": "c110_05_en.mp3",
+      "tags": []
     },
     {
       "slug": "daily-professional-communication-practice",
-      "keywords_en": ["practice", "professional"],
-      "keywords_vi": ["luyện tập", "chuyên nghiệp"],
+      "keywords_en": [
+        "practice",
+        "professional"
+      ],
+      "keywords_vi": [
+        "luyện tập",
+        "chuyên nghiệp"
+      ],
       "copy": {
         "en": "Build your professional communication with a daily routine. Read one short email aloud. Rewrite one long sentence into two shorter ones. Practice one polite request. Small habits create strong communication skills over time.",
         "vi": "Hãy phát triển kỹ năng giao tiếp chuyên nghiệp bằng thói quen hằng ngày. Đọc to một email ngắn. Viết lại một câu dài thành hai câu ngắn. Luyện một câu yêu cầu lịch sự. Những thói quen nhỏ tạo nên kỹ năng giao tiếp vững chắc theo thời gian."
       },
-      "audio": "c110_06_en.mp3"
+      "audio": "c110_06_en.mp3",
+      "tags": []
     }
   ]
 }

@@ -13,77 +13,134 @@
   "entries": [
     {
       "slug": "teachers-help-us-learn",
-      "keywords_en": ["teacher", "school", "learn"],
-      "keywords_vi": ["giáo viên", "trường học", "học"],
+      "keywords_en": [
+        "teacher",
+        "school",
+        "learn"
+      ],
+      "keywords_vi": [
+        "giáo viên",
+        "trường học",
+        "học"
+      ],
       "copy": {
         "en": "Teach the word “teacher” by linking it to familiar moments. Say, “A teacher helps you learn new things,” and give simple examples like reading, writing, or counting. Show a picture of your child’s teacher and ask, “What does your teacher help you do?” Encouraging children to name activities helps them connect the word to real experiences. This makes “teacher” a meaningful word they understand and use confidently.",
         "vi": "Dạy từ “teacher” bằng cách gắn với những khoảnh khắc quen thuộc. Nói: “A teacher helps you learn new things,” và đưa ví dụ đơn giản như đọc, viết hoặc đếm. Cho bé xem hình giáo viên của mình và hỏi: “Cô giúp con làm gì?” Khuyến khích trẻ kể hoạt động giúp chúng kết nối từ vựng với trải nghiệm thật. Điều này giúp từ “teacher” trở nên có ý nghĩa và dễ dùng."
       },
-      "tags": ["teacher", "school"],
+      "tags": [
+        "teacher",
+        "school"
+      ],
       "audio": "community_helpers_v1_teacher.mp3"
     },
     {
       "slug": "doctors-keep-us-healthy",
-      "keywords_en": ["doctor", "health", "checkup"],
-      "keywords_vi": ["bác sĩ", "sức khỏe", "khám bệnh"],
+      "keywords_en": [
+        "doctor",
+        "health",
+        "checkup"
+      ],
+      "keywords_vi": [
+        "bác sĩ",
+        "sức khỏe",
+        "khám bệnh"
+      ],
       "copy": {
         "en": "Teach “doctor” by describing simple checkup moments. Say, “A doctor helps you feel better,” and pretend to do a gentle checkup with a toy stethoscope. Explain that doctors help when we’re sick or hurt. Keep the tone calm to reduce fear. Use short sentences like, “The doctor checks your heartbeat,” or “The doctor helps your body heal.” This builds trust and helps children understand the important role doctors play.",
         "vi": "Dạy từ “doctor” bằng cách mô tả những khoảnh khắc khám bệnh đơn giản. Nói: “A doctor helps you feel better,” và giả vờ khám nhẹ bằng ống nghe đồ chơi. Giải thích rằng bác sĩ giúp khi ta ốm hoặc đau. Giữ giọng bình tĩnh để bé không sợ. Dùng câu ngắn như: “The doctor checks your heartbeat” hoặc “The doctor helps your body heal.” Điều này giúp trẻ hiểu vai trò quan trọng của bác sĩ."
       },
-      "tags": ["doctor", "health"],
+      "tags": [
+        "doctor",
+        "health"
+      ],
       "audio": "community_helpers_v1_doctor.mp3"
     },
     {
       "slug": "firefighters-brave-and-strong",
-      "keywords_en": ["firefighter", "brave", "help"],
-      "keywords_vi": ["lính cứu hỏa", "dũng cảm", "giúp đỡ"],
+      "keywords_en": [
+        "firefighter",
+        "brave",
+        "help"
+      ],
+      "keywords_vi": [
+        "lính cứu hỏa",
+        "dũng cảm",
+        "giúp đỡ"
+      ],
       "copy": {
         "en": "Teach “firefighter” by showing how they help in emergencies. Say, “Firefighters help people stay safe,” and show a picture of a fire truck. Explain that they put out fires, rescue people, and keep the community safe. You can pretend to hold a hose together and say, “Spray the water!” Kids love the movement, and it helps them remember the word in a fun, active way.",
         "vi": "Dạy từ “firefighter” bằng cách cho trẻ thấy họ giúp trong lúc khẩn cấp. Nói: “Firefighters help people stay safe,” và cho bé xem hình xe cứu hỏa. Giải thích rằng họ dập lửa, cứu người và giữ an toàn cho cộng đồng. Có thể giả vờ cầm vòi nước và nói: “Spray the water!” Trẻ rất thích hoạt động này, giúp ghi nhớ từ một cách vui nhộn."
       },
-      "tags": ["firefighter", "safety"],
+      "tags": [
+        "firefighter",
+        "safety"
+      ],
       "audio": "community_helpers_v1_firefighter.mp3"
     },
     {
       "slug": "police-officers-protect",
-      "keywords_en": ["police", "protect", "safe"],
-      "keywords_vi": ["cảnh sát", "bảo vệ", "an toàn"],
+      "keywords_en": [
+        "police",
+        "protect",
+        "safe"
+      ],
+      "keywords_vi": [
+        "cảnh sát",
+        "bảo vệ",
+        "an toàn"
+      ],
       "copy": {
         "en": "Teach “police officer” by keeping it simple and reassuring. Say, “Police officers help keep people safe,” and show a picture of a uniform or badge. Explain that they help when someone is lost, hurt, or needs protection. Avoid scary examples—focus on safety and support. Kids learn best when the message feels calm and positive.",
         "vi": "Dạy từ “police officer” bằng lời giải thích đơn giản và nhẹ nhàng. Nói: “Police officers help keep people safe,” và cho bé xem hình đồng phục hoặc huy hiệu. Giải thích rằng họ giúp khi ai đó bị lạc, bị thương hoặc cần bảo vệ. Tránh ví dụ đáng sợ—hãy tập trung vào sự an toàn và hỗ trợ. Trẻ học tốt nhất khi thông điệp nhẹ nhàng và tích cực."
       },
-      "tags": ["police", "safety"],
+      "tags": [
+        "police",
+        "safety"
+      ],
       "audio": "community_helpers_v1_police.mp3"
     },
     {
       "slug": "delivery-helpers",
-      "keywords_en": ["delivery", "package", "help"],
-      "keywords_vi": ["giao hàng", "kiện hàng", "giúp đỡ"],
+      "keywords_en": [
+        "delivery",
+        "package",
+        "help"
+      ],
+      "keywords_vi": [
+        "giao hàng",
+        "kiện hàng",
+        "giúp đỡ"
+      ],
       "copy": {
         "en": "Teach “delivery person” by describing their daily work. Say, “They bring packages to our house,” and point to a real delivery if possible. Show how they help families get food, books, clothes, and more. Children often find it exciting to see a package arrive, which makes the word easy to remember.",
         "vi": "Dạy từ “delivery person” bằng cách mô tả công việc hằng ngày. Nói: “They bring packages to our house,” và chỉ cho bé thấy nếu gặp người giao hàng thật. Giải thích rằng họ giúp gia đình nhận đồ ăn, sách, quần áo và nhiều thứ khác. Trẻ thường rất háo hức khi thấy kiện hàng đến, điều này giúp nhớ từ dễ hơn."
       },
-      "tags": ["delivery", "helpers"],
+      "tags": [
+        "delivery",
+        "helpers"
+      ],
       "audio": "community_helpers_v1_delivery.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all", "complete", "full"],
-      "keywords_vi": ["tất cả", "đầy đủ", "trọn vẹn"],
+      "keywords_en": [
+        "all",
+        "complete",
+        "full"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "đầy đủ",
+        "trọn vẹn"
+      ],
       "copy": {
         "en": "Teachers help kids learn new things.\n\nDoctors help us stay healthy and feel better.\n\nFirefighters protect the community and put out fires.\n\nPolice officers keep people safe and help when someone is lost or scared.\n\nDelivery helpers bring packages and important items to our homes.\n\nTogether, these community helpers teach children that many people work every day to keep the world safe, clean, healthy, and happy.",
         "vi": "Giáo viên giúp trẻ học điều mới.\n\nBác sĩ giúp chúng ta khỏe mạnh và hồi phục.\n\nLính cứu hỏa bảo vệ cộng đồng và dập lửa.\n\nCảnh sát giữ an toàn cho mọi người và giúp khi ai đó bị lạc hoặc sợ.\n\nNgười giao hàng mang các gói đồ quan trọng đến nhà.\n\nTất cả những người này giúp trẻ hiểu rằng có nhiều người làm việc mỗi ngày để khiến thế giới an toàn, sạch sẽ, khỏe mạnh và vui vẻ."
       },
-      "tags": ["all"],
+      "tags": [
+        "all"
+      ],
       "audio": "community_helpers_v1_teacher.mp3 community_helpers_v1_doctor.mp3 community_helpers_v1_firefighter.mp3 community_helpers_v1_police.mp3 community_helpers_v1_delivery.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "7-10",
-    "level": "Kids Level 2",
-    "created_at": "2025-11-21T00:00:00+00:00",
-    "updated_at": "2025-11-21T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#FFF3C4"
-  }
+  ]
 }

@@ -1,6 +1,4 @@
 {
-  "schema_version": "1.0",
-  "schema_id": "stress-free",
   "id": "stress-free",
   "tier": "free",
   "domain": "",
@@ -131,13 +129,5 @@
   "room_essay": {
     "en": "Simple practices to calm your mind, reset your rhythm, and build lasting peace through breathing, mindfulness, and routines.",
     "vi": "Các thực hành đơn giản để làm dịu tâm trí, khôi phục nhịp điệu nội tâm và xây dựng sự bình yên bền vững qua hơi thở, chánh niệm và thói quen."
-  },
-  "safety_disclaimer": {
-    "en": "",
-    "vi": ""
-  },
-  "crisis_footer": {
-    "en": "",
-    "vi": ""
   }
 }

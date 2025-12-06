@@ -13,77 +13,125 @@
   "entries": [
     {
       "slug": "what-is-a-website",
-      "keywords_en": ["website", "page", "internet"],
-      "keywords_vi": ["trang web", "trang", "internet"],
+      "keywords_en": [
+        "website",
+        "page",
+        "internet"
+      ],
+      "keywords_vi": [
+        "trang web",
+        "trang",
+        "internet"
+      ],
       "copy": {
         "en": "Teach kids the word website by showing them different pages they already use for school or hobbies. Explain that a website is a place on the internet where information lives. Each page can show pictures, text, videos, or games. Encourage kids to describe what they see on a website so they learn to use the word confidently and clearly.",
         "vi": "Hãy dạy trẻ từ trang web bằng cách cho xem các trang trẻ đã dùng cho học tập hoặc sở thích. Giải thích rằng trang web là nơi chứa thông tin trên internet. Mỗi trang có thể hiển thị hình ảnh, chữ, video hoặc trò chơi. Khuyến khích trẻ mô tả những gì mình thấy để dùng từ này tự tin và rõ ràng."
       },
-      "tags": ["website"],
+      "tags": [
+        "website"
+      ],
       "audio": "internet_vocabulary_v1_website.mp3"
     },
     {
       "slug": "what-is-a-link",
-      "keywords_en": ["link", "click", "open"],
-      "keywords_vi": ["liên kết", "nhấp", "mở"],
+      "keywords_en": [
+        "link",
+        "click",
+        "open"
+      ],
+      "keywords_vi": [
+        "liên kết",
+        "nhấp",
+        "mở"
+      ],
       "copy": {
         "en": "Teach kids that a link is something you can tap or click to go somewhere new on the internet. Show how links can be blue words, buttons, or pictures. Explain that clicking a link takes them to another page. This helps children understand how information on the internet connects together.",
         "vi": "Hãy dạy trẻ rằng liên kết là thứ trẻ có thể chạm hoặc nhấp để đi đến nơi khác trên internet. Cho trẻ thấy liên kết có thể là chữ màu xanh, nút bấm hoặc hình ảnh. Giải thích rằng nhấp vào liên kết sẽ mở trang mới. Điều này giúp trẻ hiểu cách thông tin trên internet được kết nối."
       },
-      "tags": ["link"],
+      "tags": [
+        "link"
+      ],
       "audio": "internet_vocabulary_v1_link.mp3"
     },
     {
       "slug": "browser-and-app",
-      "keywords_en": ["browser", "app", "internet"],
-      "keywords_vi": ["trình duyệt", "ứng dụng", "internet"],
+      "keywords_en": [
+        "browser",
+        "app",
+        "internet"
+      ],
+      "keywords_vi": [
+        "trình duyệt",
+        "ứng dụng",
+        "internet"
+      ],
       "copy": {
         "en": "Teach kids the difference between a browser and an app. A browser is a tool used to explore the internet, such as Chrome or Safari. An app is a program children open for a specific purpose, like watching videos or drawing. Show them the icons and let them explain which one they are using. This builds digital awareness and clear vocabulary.",
         "vi": "Hãy dạy trẻ sự khác nhau giữa trình duyệt và ứng dụng. Trình duyệt là công cụ dùng để khám phá internet như Chrome hoặc Safari. Ứng dụng là chương trình trẻ mở để làm một việc cụ thể như xem video hoặc vẽ. Cho trẻ xem biểu tượng và yêu cầu trẻ nói mình đang dùng cái nào. Điều này giúp trẻ hiểu công nghệ và dùng từ chính xác."
       },
-      "tags": ["browser"],
+      "tags": [
+        "browser"
+      ],
       "audio": "internet_vocabulary_v1_browser_app.mp3"
     },
     {
       "slug": "online-and-offline",
-      "keywords_en": ["online", "offline", "internet"],
-      "keywords_vi": ["trực tuyến", "ngoại tuyến", "internet"],
+      "keywords_en": [
+        "online",
+        "offline",
+        "internet"
+      ],
+      "keywords_vi": [
+        "trực tuyến",
+        "ngoại tuyến",
+        "internet"
+      ],
       "copy": {
         "en": "Teach kids the words online and offline. Explain that online means using the internet to watch, play, or search. Offline means doing something without the internet—reading a book, drawing, or playing outside. Kids learn that not everything needs the internet, and both online and offline activities are important.",
         "vi": "Hãy dạy trẻ các từ trực tuyến và ngoại tuyến. Giải thích rằng trực tuyến nghĩa là dùng internet để xem, chơi hoặc tìm kiếm. Ngoại tuyến nghĩa là làm điều gì đó không cần internet—đọc sách, vẽ hoặc chơi ngoài trời. Trẻ hiểu rằng không phải mọi thứ đều cần internet và cả hai hoạt động đều quan trọng."
       },
-      "tags": ["online"],
+      "tags": [
+        "online"
+      ],
       "audio": "internet_vocabulary_v1_online_offline.mp3"
     },
     {
       "slug": "internet-safety-words",
-      "keywords_en": ["safety", "rules", "internet"],
-      "keywords_vi": ["an toàn", "quy tắc", "internet"],
+      "keywords_en": [
+        "safety",
+        "rules",
+        "internet"
+      ],
+      "keywords_vi": [
+        "an toàn",
+        "quy tắc",
+        "internet"
+      ],
       "copy": {
         "en": "Teach kids simple safety words such as safe, report, block, and privacy. Explain that these words help protect them when using the internet. Teach them to tell an adult if they see something strange or uncomfortable. Safety words help children build healthy, confident online habits.",
         "vi": "Hãy dạy trẻ những từ an toàn đơn giản như an toàn, báo cáo, chặn và quyền riêng tư. Giải thích rằng những từ này giúp bảo vệ trẻ khi sử dụng internet. Dạy trẻ báo cho người lớn nếu trẻ thấy điều gì đó lạ hoặc không thoải mái. Những từ an toàn này giúp trẻ xây dựng thói quen trực tuyến lành mạnh và tự tin."
       },
-      "tags": ["safety"],
+      "tags": [
+        "safety"
+      ],
       "audio": "internet_vocabulary_v1_safety_words.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all"],
-      "keywords_vi": ["tất cả"],
+      "keywords_en": [
+        "all"
+      ],
+      "keywords_vi": [
+        "tất cả"
+      ],
       "copy": {
         "en": "Teach kids the word website by showing them different pages they already use for school or hobbies. Explain that a website is a place on the internet where information lives. Each page can show pictures, text, videos, or games. Encourage kids to describe what they see on a website so they learn to use the word confidently and clearly.Teach kids that a link is something you can tap or click to go somewhere new on the internet. Show how links can be blue words, buttons, or pictures. Explain that clicking a link takes them to another page. This helps children understand how information on the internet connects together.Teach kids the difference between a browser and an app. A browser is a tool used to explore the internet, such as Chrome or Safari. An app is a program children open for a specific purpose, like watching videos or drawing. Show them the icons and let them explain which one they are using. This builds digital awareness and clear vocabulary.Teach kids the words online and offline. Explain that online means using the internet to watch, play, or search. Offline means doing something without the internet—reading a book, drawing, or playing outside. Kids learn that not everything needs the internet, and both online and offline activities are important.Teach kids simple safety words such as safe, report, block, and privacy. Explain that these words help protect them when using the internet. Teach them to tell an adult if they see something strange or uncomfortable. Safety words help children build healthy, confident online habits.",
         "vi": "Hãy dạy trẻ từ trang web bằng cách cho xem các trang trẻ đã dùng cho học tập hoặc sở thích. Giải thích rằng trang web là nơi chứa thông tin trên internet. Mỗi trang có thể hiển thị hình ảnh, chữ, video hoặc trò chơi. Khuyến khích trẻ mô tả những gì mình thấy để dùng từ này tự tin và rõ ràng.Hãy dạy trẻ rằng liên kết là thứ trẻ có thể chạm hoặc nhấp để đi đến nơi khác trên internet. Cho trẻ thấy liên kết có thể là chữ màu xanh, nút bấm hoặc hình ảnh. Giải thích rằng nhấp vào liên kết sẽ mở trang mới. Điều này giúp trẻ hiểu cách thông tin trên internet được kết nối.Hãy dạy trẻ sự khác nhau giữa trình duyệt và ứng dụng. Trình duyệt là công cụ dùng để khám phá internet như Chrome hoặc Safari. Ứng dụng là chương trình trẻ mở để làm một việc cụ thể như xem video hoặc vẽ. Cho trẻ xem biểu tượng và yêu cầu trẻ nói mình đang dùng cái nào. Điều này giúp trẻ hiểu công nghệ và dùng từ chính xác.Hãy dạy trẻ các từ trực tuyến và ngoại tuyến. Giải thích rằng trực tuyến nghĩa là dùng internet để xem, chơi hoặc tìm kiếm. Ngoại tuyến nghĩa là làm điều gì đó không cần internet—đọc sách, vẽ hoặc chơi ngoài trời. Trẻ hiểu rằng không phải mọi thứ đều cần internet và cả hai hoạt động đều quan trọng.Hãy dạy trẻ những từ an toàn đơn giản như an toàn, báo cáo, chặn và quyền riêng tư. Giải thích rằng những từ này giúp bảo vệ trẻ khi sử dụng internet. Dạy trẻ báo cho người lớn nếu trẻ thấy điều gì đó lạ hoặc không thoải mái. Những từ an toàn này giúp trẻ xây dựng thói quen trực tuyến lành mạnh và tự tin."
       },
-      "tags": ["all"],
+      "tags": [
+        "all"
+      ],
       "audio": "internet_vocabulary_v1_website.mp3 internet_vocabulary_v1_link.mp3 internet_vocabulary_v1_browser_app.mp3 internet_vocabulary_v1_online_offline.mp3 internet_vocabulary_v1_safety_words.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "10-13",
-    "level": "Kids Level 3",
-    "created_at": "2025-11-23T00:00:00+00:00",
-    "updated_at": "2025-11-23T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#E8FFEF"
-  }
+  ]
 }

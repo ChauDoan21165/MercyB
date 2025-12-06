@@ -13,63 +13,105 @@
   "entries": [
     {
       "slug": "talking-about-your-day",
-      "keywords_en": ["daily life", "speaking"],
-      "keywords_vi": ["đời sống", "nói"],
+      "keywords_en": [
+        "daily life",
+        "speaking"
+      ],
+      "keywords_vi": [
+        "đời sống",
+        "nói"
+      ],
       "copy": {
         "en": "Practice these fluent sentences. They help you describe your day in a natural way. I usually start my morning with a cup of tea because it helps me wake up. After that, I check my messages and plan my tasks for the day. If I have time, I like to take a short walk before work. These sentences help you add details and sound more confident.",
         "vi": "Luyện các câu trôi chảy sau. Chúng giúp bạn mô tả một ngày của mình tự nhiên hơn. Tôi thường bắt đầu buổi sáng với một tách trà vì nó giúp tôi tỉnh táo. Sau đó tôi kiểm tra tin nhắn và lên kế hoạch cho công việc trong ngày. Nếu có thời gian, tôi thích đi bộ một chút trước khi làm việc. Những câu này giúp bạn thêm chi tiết và nói tự tin hơn."
       },
-      "audio": "b101_01_en.mp3"
+      "audio": "b101_01_en.mp3",
+      "tags": []
     },
     {
       "slug": "giving-simple-reasons",
-      "keywords_en": ["reason", "explanation"],
-      "keywords_vi": ["lý do", "giải thích"],
+      "keywords_en": [
+        "reason",
+        "explanation"
+      ],
+      "keywords_vi": [
+        "lý do",
+        "giải thích"
+      ],
       "copy": {
         "en": "Use because to give clear reasons. I stayed home today because I needed to finish a project. I started learning English again because I want to travel more. I cook at home more often now because it is healthier and cheaper. Giving reasons makes your sentences stronger and more natural.",
         "vi": "Hãy dùng because để đưa ra lý do rõ ràng. Hôm nay tôi ở nhà vì tôi cần hoàn thành một dự án. Tôi bắt đầu học tiếng Anh lại vì tôi muốn đi du lịch nhiều hơn. Gần đây tôi hay nấu ăn ở nhà vì nó lành mạnh và rẻ hơn. Việc đưa ra lý do giúp câu của bạn tự nhiên và rõ ràng hơn."
       },
-      "audio": "b101_02_en.mp3"
+      "audio": "b101_02_en.mp3",
+      "tags": []
     },
     {
       "slug": "adding-details",
-      "keywords_en": ["details", "fluency"],
-      "keywords_vi": ["chi tiết", "trôi chảy"],
+      "keywords_en": [
+        "details",
+        "fluency"
+      ],
+      "keywords_vi": [
+        "chi tiết",
+        "trôi chảy"
+      ],
       "copy": {
         "en": "Add small details to sound more fluent. I met my friend yesterday and we talked for almost an hour. I finished my work early, so I went for a walk in the park. I tried a new restaurant last night. The food was simple, but it tasted very good. Details help your English feel complete.",
         "vi": "Hãy thêm chi tiết để nghe trôi chảy hơn. Hôm qua tôi gặp bạn và chúng tôi nói chuyện gần một giờ. Tôi hoàn thành công việc sớm nên tôi đi dạo trong công viên. Tối qua tôi thử một nhà hàng mới. Món ăn đơn giản nhưng rất ngon. Chi tiết giúp câu tiếng Anh của bạn đầy đủ hơn."
       },
-      "audio": "b101_03_en.mp3"
+      "audio": "b101_03_en.mp3",
+      "tags": []
     },
     {
       "slug": "talking-about-feelings",
-      "keywords_en": ["feelings", "expression"],
-      "keywords_vi": ["cảm xúc", "biểu đạt"],
+      "keywords_en": [
+        "feelings",
+        "expression"
+      ],
+      "keywords_vi": [
+        "cảm xúc",
+        "biểu đạt"
+      ],
       "copy": {
         "en": "Practice expressing feelings clearly. I felt a bit tired this morning, but after breakfast I felt better. I am excited about learning more English this month. I sometimes feel stressed when I have too many tasks, but short breaks help a lot. These sentences help you express yourself naturally.",
         "vi": "Luyện diễn đạt cảm xúc rõ ràng. Sáng nay tôi hơi mệt nhưng sau khi ăn sáng tôi thấy khá hơn. Tôi rất hào hứng học thêm tiếng Anh trong tháng này. Đôi khi tôi cảm thấy căng thẳng khi có quá nhiều việc nhưng nghỉ ngắn giúp rất nhiều. Những câu này giúp bạn diễn đạt tự nhiên hơn."
       },
-      "audio": "b101_04_en.mp3"
+      "audio": "b101_04_en.mp3",
+      "tags": []
     },
     {
       "slug": "simple-future-plans",
-      "keywords_en": ["future", "plans"],
-      "keywords_vi": ["tương lai", "kế hoạch"],
+      "keywords_en": [
+        "future",
+        "plans"
+      ],
+      "keywords_vi": [
+        "tương lai",
+        "kế hoạch"
+      ],
       "copy": {
         "en": "Use going to for future plans. I am going to visit my parents this weekend. I am going to start a new exercise routine next week. I am going to practice English every day, even if it is only a few minutes. Future plans show direction and give your sentences purpose.",
         "vi": "Hãy dùng going to cho kế hoạch tương lai. Cuối tuần này tôi sẽ về thăm bố mẹ. Tuần sau tôi sẽ bắt đầu thói quen tập thể dục mới. Tôi sẽ luyện tiếng Anh mỗi ngày, dù chỉ vài phút. Kế hoạch tương lai giúp câu của bạn có hướng và có mục đích."
       },
-      "audio": "b101_05_en.mp3"
+      "audio": "b101_05_en.mp3",
+      "tags": []
     },
     {
       "slug": "daily-fluency-routine",
-      "keywords_en": ["routine", "fluency"],
-      "keywords_vi": ["thói quen", "trôi chảy"],
+      "keywords_en": [
+        "routine",
+        "fluency"
+      ],
+      "keywords_vi": [
+        "thói quen",
+        "trôi chảy"
+      ],
       "copy": {
         "en": "Follow this simple routine each day. Read three fluent sentences slowly. Say one short paragraph out loud. Listen to one short audio and repeat the main idea. These small habits build B1 fluency step by step.",
         "vi": "Làm theo thói quen đơn giản này mỗi ngày. Đọc ba câu trôi chảy thật chậm. Nói một đoạn ngắn thành tiếng. Nghe một audio ngắn và lặp lại ý chính. Những thói quen nhỏ này giúp bạn đạt mức độ trôi chảy B1 từng bước."
       },
-      "audio": "b101_06_en.mp3"
+      "audio": "b101_06_en.mp3",
+      "tags": []
     }
   ]
 }

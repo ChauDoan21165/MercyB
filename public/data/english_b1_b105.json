@@ -13,63 +13,105 @@
   "entries": [
     {
       "slug": "describing-people",
-      "keywords_en": ["people", "description"],
-      "keywords_vi": ["con người", "mô tả"],
+      "keywords_en": [
+        "people",
+        "description"
+      ],
+      "keywords_vi": [
+        "con người",
+        "mô tả"
+      ],
       "copy": {
         "en": "Use simple adjectives to describe people. She is tall. He is short. She has long hair. He has a friendly smile. Add one personality detail. She is kind. He is funny. Small details make your English clear and natural.",
         "vi": "Hãy dùng các tính từ đơn giản để mô tả con người. She is tall. He is short. She has long hair. He has a friendly smile. Thêm một đặc điểm tính cách. She is kind. He is funny. Những chi tiết nhỏ giúp câu tiếng Anh tự nhiên và rõ ràng hơn."
       },
-      "audio": "b105_01_en.mp3"
+      "audio": "b105_01_en.mp3",
+      "tags": []
     },
     {
       "slug": "describing-places",
-      "keywords_en": ["places", "description"],
-      "keywords_vi": ["địa điểm", "mô tả"],
+      "keywords_en": [
+        "places",
+        "description"
+      ],
+      "keywords_vi": [
+        "địa điểm",
+        "mô tả"
+      ],
       "copy": {
         "en": "Describe places using simple patterns. My city is busy and noisy. My room is small but comfortable. The park is quiet and green. Add one feeling. I like this place because it feels safe. Clear place descriptions help you in conversations and travel.",
         "vi": "Hãy mô tả địa điểm bằng các mẫu câu đơn giản. My city is busy and noisy. My room is small but comfortable. The park is quiet and green. Thêm một cảm xúc. I like this place because it feels safe. Mô tả địa điểm rõ ràng giúp bạn trò chuyện và du lịch dễ dàng hơn."
       },
-      "audio": "b105_02_en.mp3"
+      "audio": "b105_02_en.mp3",
+      "tags": []
     },
     {
       "slug": "describing-things",
-      "keywords_en": ["things", "objects"],
-      "keywords_vi": ["đồ vật", "vật dụng"],
+      "keywords_en": [
+        "things",
+        "objects"
+      ],
+      "keywords_vi": [
+        "đồ vật",
+        "vật dụng"
+      ],
       "copy": {
         "en": "Use clear adjectives to describe objects. This bag is light and cheap. That laptop is fast and new. The chair is old but strong. Add a small detail to make it complete. The laptop is fast because it has a new processor. Simple object descriptions are useful in shopping and daily life.",
         "vi": "Hãy dùng tính từ rõ ràng để mô tả đồ vật. This bag is light and cheap. That laptop is fast and new. The chair is old but strong. Thêm một chi tiết để câu hoàn chỉnh. The laptop is fast because it has a new processor. Mô tả đồ vật đơn giản rất hữu ích trong mua sắm và cuộc sống hằng ngày."
       },
-      "audio": "b105_03_en.mp3"
+      "audio": "b105_03_en.mp3",
+      "tags": []
     },
     {
       "slug": "adding-small-details",
-      "keywords_en": ["details", "description"],
-      "keywords_vi": ["chi tiết", "mô tả"],
+      "keywords_en": [
+        "details",
+        "description"
+      ],
+      "keywords_vi": [
+        "chi tiết",
+        "mô tả"
+      ],
       "copy": {
         "en": "Add one small detail to improve your description. My room is small but very clean. The street is quiet at night. She has short hair and warm eyes. One detail makes your English sound richer without being difficult.",
         "vi": "Hãy thêm một chi tiết nhỏ để mô tả tốt hơn. My room is small but very clean. The street is quiet at night. She has short hair and warm eyes. Một chi tiết giúp câu tiếng Anh sinh động hơn mà không hề khó."
       },
-      "audio": "b105_04_en.mp3"
+      "audio": "b105_04_en.mp3",
+      "tags": []
     },
     {
       "slug": "talking-about-comparisons",
-      "keywords_en": ["comparisons", "adjectives"],
-      "keywords_vi": ["so sánh", "tính từ"],
+      "keywords_en": [
+        "comparisons",
+        "adjectives"
+      ],
+      "keywords_vi": [
+        "so sánh",
+        "tính từ"
+      ],
       "copy": {
         "en": "Use easy comparison forms. This room is bigger. That bag is cheaper. She is taller than me. Add a reason to make it natural. This room is bigger because it has more windows. Simple comparisons help you describe differences clearly.",
         "vi": "Hãy dùng dạng so sánh đơn giản. This room is bigger. That bag is cheaper. She is taller than me. Hãy thêm một lý do để tự nhiên hơn. This room is bigger because it has more windows. Các câu so sánh đơn giản giúp bạn mô tả sự khác biệt rõ ràng."
       },
-      "audio": "b105_05_en.mp3"
+      "audio": "b105_05_en.mp3",
+      "tags": []
     },
     {
       "slug": "daily-description-practice",
-      "keywords_en": ["practice", "description"],
-      "keywords_vi": ["luyện tập", "mô tả"],
+      "keywords_en": [
+        "practice",
+        "description"
+      ],
+      "keywords_vi": [
+        "luyện tập",
+        "mô tả"
+      ],
       "copy": {
         "en": "Practice describing one thing every day. A person. A place. A room. An object. Say two adjectives and one small detail. She is kind and funny. She has a warm voice. Daily practice helps your English become natural and confident.",
         "vi": "Hãy luyện mô tả một thứ mỗi ngày. Một người. Một nơi. Một căn phòng. Một đồ vật. Nói hai tính từ và một chi tiết nhỏ. She is kind and funny. She has a warm voice. Luyện tập hằng ngày giúp tiếng Anh của bạn tự nhiên và tự tin hơn."
       },
-      "audio": "b105_06_en.mp3"
+      "audio": "b105_06_en.mp3",
+      "tags": []
     }
   ]
 }

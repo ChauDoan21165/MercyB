@@ -13,77 +13,130 @@
   "entries": [
     {
       "slug": "class-and-teacher",
-      "keywords_en": ["class", "teacher", "school"],
-      "keywords_vi": ["lớp học", "giáo viên", "trường học"],
+      "keywords_en": [
+        "class",
+        "teacher",
+        "school"
+      ],
+      "keywords_vi": [
+        "lớp học",
+        "giáo viên",
+        "trường học"
+      ],
       "copy": {
         "en": "Teach the words “class” and “teacher” by connecting them to daily routines. Ask your child, “What time does your class start?” or “Who is your teacher today?” Encourage short answers like: “My class starts at eight,” or “My teacher is Ms. Anna.” These tiny question-and-answer moments help children use English naturally in real situations without feeling pressured.",
         "vi": "Dạy từ “class” và “teacher” bằng cách liên hệ với thói quen hằng ngày. Hỏi bé: “Lớp học của con bắt đầu lúc mấy giờ?” hoặc “Hôm nay giáo viên của con là ai?” Khuyến khích câu trả lời ngắn: “Lớp của con bắt đầu lúc tám giờ,” hoặc “Giáo viên của con là cô Anna.” Những khoảnh khắc hỏi–đáp nhỏ giúp trẻ dùng tiếng Anh tự nhiên trong tình huống thật mà không cảm thấy áp lực."
       },
-      "tags": ["school", "class"],
+      "tags": [
+        "school",
+        "class"
+      ],
       "audio": "school_life_vocabulary_v1_class_teacher.mp3"
     },
     {
       "slug": "desk-and-chair",
-      "keywords_en": ["desk", "chair", "objects"],
-      "keywords_vi": ["bàn", "ghế", "đồ vật"],
+      "keywords_en": [
+        "desk",
+        "chair",
+        "objects"
+      ],
+      "keywords_vi": [
+        "bàn",
+        "ghế",
+        "đồ vật"
+      ],
       "copy": {
         "en": "Introduce “desk” and “chair” by having your child point to objects in their study space. Say: “This is my desk. This is my chair.” Then switch roles and let them lead the phrases. You can turn it into a fast game by asking: “Touch the desk! Touch the chair!” Kids enjoy quick actions, and the words become tied to movement and fun.",
         "vi": "Giới thiệu từ “desk” và “chair” bằng cách để bé chỉ vào đồ vật trong góc học tập. Nói: “This is my desk. This is my chair.” Sau đó đổi vai để bé dẫn câu. Bạn có thể biến nó thành trò chơi nhanh bằng cách yêu cầu: “Touch the desk! Touch the chair!” Trẻ thích vận động nhanh, và các từ vựng sẽ gắn liền với niềm vui."
       },
-      "tags": ["objects", "desk"],
+      "tags": [
+        "objects",
+        "desk"
+      ],
       "audio": "school_life_vocabulary_v1_desk_chair.mp3"
     },
     {
       "slug": "backpack-and-books",
-      "keywords_en": ["backpack", "books", "school items"],
-      "keywords_vi": ["ba lô", "sách", "đồ dùng học tập"],
+      "keywords_en": [
+        "backpack",
+        "books",
+        "school items"
+      ],
+      "keywords_vi": [
+        "ba lô",
+        "sách",
+        "đồ dùng học tập"
+      ],
       "copy": {
         "en": "Teach “backpack” and “books” by doing a simple packing activity. Ask: “What is inside your backpack?” Let your child take out items and name them: “a book,” “a pencil,” “a notebook.” If they forget a word, give a gentle hint. Making English part of real preparation helps children remember vocabulary easily.",
         "vi": "Dạy từ “backpack” và “books” bằng hoạt động sắp ba lô đơn giản. Hỏi: “Trong ba lô của con có gì?” Để bé lấy đồ ra và gọi tên: “a book,” “a pencil,” “a notebook.” Nếu bé quên, hãy gợi ý nhẹ nhàng. Việc đưa tiếng Anh vào chuẩn bị thực tế giúp trẻ ghi nhớ từ vựng dễ dàng."
       },
-      "tags": ["backpack", "books"],
+      "tags": [
+        "backpack",
+        "books"
+      ],
       "audio": "school_life_vocabulary_v1_backpack_books.mp3"
     },
     {
       "slug": "recess-and-break-time",
-      "keywords_en": ["recess", "break", "school life"],
-      "keywords_vi": ["giờ ra chơi", "nghỉ giải lao", "trường học"],
+      "keywords_en": [
+        "recess",
+        "break",
+        "school life"
+      ],
+      "keywords_vi": [
+        "giờ ra chơi",
+        "nghỉ giải lao",
+        "trường học"
+      ],
       "copy": {
         "en": "Teach “recess” by asking your child what they do during break time. Questions like: “What do you play at recess?” or “Who do you sit with?” create small, friendly conversations. Children can answer with short phrases: “I play tag,” “I sit with my friend,” or “I eat a snack.” These everyday exchanges help build confidence in speaking.",
         "vi": "Dạy từ “recess” bằng cách hỏi bé làm gì trong giờ ra chơi. Câu hỏi như: “Con chơi gì lúc ra chơi?” hoặc “Con ngồi với ai?” tạo nên cuộc hội thoại nhẹ nhàng. Trẻ có thể trả lời ngắn: “I play tag,” “I sit with my friend,” hoặc “I eat a snack.” Những trao đổi đơn giản hằng ngày giúp trẻ tự tin hơn khi nói."
       },
-      "tags": ["recess", "break"],
+      "tags": [
+        "recess",
+        "break"
+      ],
       "audio": "school_life_vocabulary_v1_recess.mp3"
     },
     {
       "slug": "school-bag-check",
-      "keywords_en": ["school bag", "checklist"],
-      "keywords_vi": ["cặp sách", "kiểm tra"],
+      "keywords_en": [
+        "school bag",
+        "checklist"
+      ],
+      "keywords_vi": [
+        "cặp sách",
+        "kiểm tra"
+      ],
       "copy": {
         "en": "Teach “school bag” with a small checklist routine. Say: “Let’s check your school bag!” Then name items one by one: “book, pencil case, water bottle.” Let your child respond: “Yes, I have it,” or “No, I don’t.” This teaches vocabulary and also builds responsibility in a positive, encouraging way.",
         "vi": "Dạy từ “school bag” bằng một thói quen kiểm tra nhỏ. Nói: “Hãy kiểm tra cặp sách nhé!” Rồi đọc từng món: “book, pencil case, water bottle.” Để bé trả lời: “Yes, I have it,” hoặc “No, I don’t.” Cách này vừa dạy từ vựng vừa giúp trẻ hình thành trách nhiệm theo hướng tích cực."
       },
-      "tags": ["school bag", "checklist"],
+      "tags": [
+        "school bag",
+        "checklist"
+      ],
       "audio": "school_life_vocabulary_v1_bag_check.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all", "complete"],
-      "keywords_vi": ["tất cả", "đầy đủ"],
+      "keywords_en": [
+        "all",
+        "complete"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "đầy đủ"
+      ],
       "copy": {
         "en": "Teach “class” and “teacher” through short daily questions.\n\nTeach “desk” and “chair” by pointing and moving during a quick game.\n\nTeach “backpack” and “books” with a simple packing routine.\n\nTeach “recess” through friendly questions about break time.\n\nTeach “school bag” using a positive checklist activity.\n\nThese small real-life practices help children use school words confidently and naturally every day.",
         "vi": "Dạy “class” và “teacher” qua câu hỏi hằng ngày.\n\nDạy “desk” và “chair” bằng việc chỉ đồ vật và chơi nhanh.\n\nDạy “backpack” và “books” bằng hoạt động sắp ba lô.\n\nDạy “recess” qua câu hỏi nhẹ nhàng về giờ ra chơi.\n\nDạy “school bag” bằng thói quen kiểm tra tích cực.\n\nNhững thực hành nhỏ hằng ngày giúp trẻ dùng từ vựng trường học tự tin và tự nhiên."
       },
-      "tags": ["all"],
+      "tags": [
+        "all"
+      ],
       "audio": "school_life_vocabulary_v1_class_teacher.mp3 school_life_vocabulary_v1_desk_chair.mp3 school_life_vocabulary_v1_backpack_books.mp3 school_life_vocabulary_v1_recess.mp3 school_life_vocabulary_v1_bag_check.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "7-10",
-    "level": "Kids Level 2",
-    "created_at": "2025-11-21T00:00:00+00:00",
-    "updated_at": "2025-11-21T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#CBE0FF"
-  }
+  ]
 }

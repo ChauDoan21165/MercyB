@@ -1,4 +1,3 @@
-
 {
   "id": "english_c2_c204",
   "tier": "VIP3 / VIP3",
@@ -14,64 +13,105 @@
   "entries": [
     {
       "slug": "softening-strong-messages",
-      "keywords_en": ["tone", "softening"],
-      "keywords_vi": ["giọng điệu", "làm mềm"],
+      "keywords_en": [
+        "tone",
+        "softening"
+      ],
+      "keywords_vi": [
+        "giọng điệu",
+        "làm mềm"
+      ],
       "copy": {
         "en": "To soften a strong message, add gentle framing. Instead of saying you are wrong, try I see it differently or I understand, but I think. These phrases keep communication respectful. They protect relationships while still expressing your view. Tone is not about hiding the truth but delivering it carefully.",
         "vi": "Để làm mềm thông điệp mạnh, hãy thêm phần mở lời nhẹ nhàng. Thay vì nói you are wrong, hãy thử nói I see it differently hoặc I understand, but I think. Những cách nói này giữ sự tôn trọng trong giao tiếp. Chúng bảo vệ mối quan hệ mà vẫn thể hiện quan điểm. Giọng điệu không phải che giấu sự thật mà là truyền đạt khéo léo."
       },
-      "audio": "c204_01_en.mp3"
+      "audio": "c204_01_en.mp3",
+      "tags": []
     },
     {
       "slug": "sounding-firm-without-sounding-rude",
-      "keywords_en": ["firmness", "politeness"],
-      "keywords_vi": ["kiên quyết", "lịch sự"],
+      "keywords_en": [
+        "firmness",
+        "politeness"
+      ],
+      "keywords_vi": [
+        "kiên quyết",
+        "lịch sự"
+      ],
       "copy": {
         "en": "Firm tone comes from clarity, not volume. Use short sentences and calm pacing. For example: I cannot agree with that or This deadline is important. Avoid emotional phrases like obviously or you should know. They create conflict. Firm language should be steady, respectful, and free of blame.",
         "vi": "Giọng chắc chắn đến từ sự rõ ràng, không phải lớn tiếng. Hãy dùng câu ngắn và nhịp điệu bình tĩnh. Ví dụ: I cannot agree with that hoặc This deadline is important. Tránh các cụm mang cảm xúc như obviously hoặc you should know. Chúng dễ gây xung đột. Ngôn ngữ kiên quyết nên điềm tĩnh, tôn trọng và không đổ lỗi."
       },
-      "audio": "c204_02_en.mp3"
+      "audio": "c204_02_en.mp3",
+      "tags": []
     },
     {
       "slug": "choosing-neutral-vs-emotional-phrasing",
-      "keywords_en": ["phrasing", "emotion"],
-      "keywords_vi": ["cách diễn đạt", "cảm xúc"],
+      "keywords_en": [
+        "phrasing",
+        "emotion"
+      ],
+      "keywords_vi": [
+        "cách diễn đạt",
+        "cảm xúc"
+      ],
       "copy": {
         "en": "Neutral phrasing helps you sound professional. Compare these pairs: You never listen versus I sometimes feel unheard. That is stupid versus I do not understand the logic yet. Emotional phrases attack the person. Neutral phrases focus on the situation. Choosing neutral wording reduces tension and builds trust.",
         "vi": "Diễn đạt trung tính giúp bạn nghe chuyên nghiệp hơn. Hãy so sánh: You never listen với I sometimes feel unheard. That is stupid với I do not understand the logic yet. Cách nói cảm xúc công kích con người. Cách nói trung tính tập trung vào tình huống. Chọn từ trung tính giúp giảm căng thẳng và tăng sự tin tưởng."
       },
-      "audio": "c204_03_en.mp3"
+      "audio": "c204_03_en.mp3",
+      "tags": []
     },
     {
       "slug": "using-emphasis-without-overreacting",
-      "keywords_en": ["emphasis", "intonation"],
-      "keywords_vi": ["nhấn mạnh", "ngữ điệu"],
+      "keywords_en": [
+        "emphasis",
+        "intonation"
+      ],
+      "keywords_vi": [
+        "nhấn mạnh",
+        "ngữ điệu"
+      ],
       "copy": {
         "en": "Advanced speakers use emphasis selectively. Stress one key word per sentence, not every word. For example: I really appreciate your help sounds natural, but I really, really, really appreciate your help sounds dramatic. Controlled emphasis makes your speech strong and sincere without sounding emotional.",
         "vi": "Người nói nâng cao dùng sự nhấn mạnh một cách chọn lọc. Nhấn một từ quan trọng trong mỗi câu, không phải tất cả. Ví dụ: I really appreciate your help nghe tự nhiên, nhưng I really, really, really appreciate your help nghe quá kịch tính. Nhấn mạnh có kiểm soát làm lời nói mạnh mẽ và chân thành mà không cảm xúc quá mức."
       },
-      "audio": "c204_04_en.mp3"
+      "audio": "c204_04_en.mp3",
+      "tags": []
     },
     {
       "slug": "adjusting-tone-for-different-contexts",
-      "keywords_en": ["context", "tone"],
-      "keywords_vi": ["ngữ cảnh", "giọng điệu"],
+      "keywords_en": [
+        "context",
+        "tone"
+      ],
+      "keywords_vi": [
+        "ngữ cảnh",
+        "giọng điệu"
+      ],
       "copy": {
         "en": "Tone changes with context. In professional settings, keep it calm, focused, and neutral. With friends, it can be warmer and more relaxed. With someone upset, use slow pacing and soft language. Matching tone to context shows emotional intelligence and helps conversations flow smoothly.",
         "vi": "Giọng điệu thay đổi theo ngữ cảnh. Trong công việc, hãy giữ giọng bình tĩnh, tập trung và trung tính. Với bạn bè, giọng có thể ấm áp và thoải mái hơn. Khi ai đó đang buồn, hãy nói chậm và dùng ngôn ngữ nhẹ nhàng. Phối hợp giọng điệu đúng ngữ cảnh thể hiện trí tuệ cảm xúc và giúp cuộc trò chuyện trôi chảy hơn."
       },
-      "audio": "c204_05_en.mp3"
+      "audio": "c204_05_en.mp3",
+      "tags": []
     },
     {
       "slug": "mastering-implied-meaning",
-      "keywords_en": ["implication", "subtext"],
-      "keywords_vi": ["hàm ý", "ẩn ý"],
+      "keywords_en": [
+        "implication",
+        "subtext"
+      ],
+      "keywords_vi": [
+        "hàm ý",
+        "ẩn ý"
+      ],
       "copy": {
         "en": "C2 speakers understand what is said and what is implied. For example: That is interesting may mean I disagree or I need more information. Likewise, We should talk can mean something serious is coming. Recognizing implied meaning requires listening to tone, pauses, and context. This skill helps you respond with sensitivity and accuracy.",
         "vi": "Người đạt trình độ C2 hiểu cả lời nói và hàm ý. Ví dụ: That is interesting có thể nghĩa là tôi không đồng ý hoặc tôi cần thêm thông tin. Tương tự, We should talk có thể báo hiệu điều nghiêm trọng. Nhận ra hàm ý cần lắng nghe giọng điệu, khoảng dừng và ngữ cảnh. Kỹ năng này giúp bạn phản hồi tinh tế và chính xác."
       },
-      "audio": "c204_06_en.mp3"
+      "audio": "c204_06_en.mp3",
+      "tags": []
     }
   ]
 }
-

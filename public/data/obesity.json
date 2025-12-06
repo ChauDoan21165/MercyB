@@ -1,6 +1,4 @@
 {
-  "schema_version": "1.0",
-  "schema_id": "obesity",
   "id": "obesity",
   "tier": "free",
   "domain": "",
@@ -18,13 +16,5 @@
   "room_essay": {
     "en": "Evidence-based guidance for healthy weight management.",
     "vi": "Hướng dẫn dựa trên bằng chứng để quản lý cân nặng khỏe mạnh."
-  },
-  "safety_disclaimer": {
-    "en": "",
-    "vi": ""
-  },
-  "crisis_footer": {
-    "en": "",
-    "vi": ""
   }
 }

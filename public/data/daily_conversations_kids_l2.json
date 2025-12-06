@@ -13,77 +13,134 @@
   "entries": [
     {
       "slug": "hello",
-      "keywords_en": ["hello", "greeting", "conversation"],
-      "keywords_vi": ["xin chào", "chào hỏi", "hội thoại"],
+      "keywords_en": [
+        "hello",
+        "greeting",
+        "conversation"
+      ],
+      "keywords_vi": [
+        "xin chào",
+        "chào hỏi",
+        "hội thoại"
+      ],
       "copy": {
         "en": "Teach “hello” as a warm greeting. Start by saying, “Hello!” each morning with a smile. Wave your hand gently so your child can copy the gesture. Use “hello” when meeting family members, teachers, or friends. Repeating the greeting in real situations helps children learn that “hello” is how we start friendly conversations.",
         "vi": "Dạy từ “hello” như một lời chào ấm áp. Bắt đầu bằng cách nói: “Hello!” mỗi sáng cùng một nụ cười. Vẫy tay nhẹ để bé bắt chước. Dùng “hello” khi gặp người thân, thầy cô hoặc bạn bè. Sự lặp lại trong tình huống thật giúp trẻ hiểu rằng “hello” là cách mở đầu cuộc trò chuyện thân thiện."
       },
-      "tags": ["hello", "greeting"],
+      "tags": [
+        "hello",
+        "greeting"
+      ],
       "audio": "daily_conversations_v1_hello.mp3"
     },
     {
       "slug": "thank-you",
-      "keywords_en": ["thank you", "manners", "gratitude"],
-      "keywords_vi": ["cảm ơn", "lễ phép", "biết ơn"],
+      "keywords_en": [
+        "thank you",
+        "manners",
+        "gratitude"
+      ],
+      "keywords_vi": [
+        "cảm ơn",
+        "lễ phép",
+        "biết ơn"
+      ],
       "copy": {
         "en": "Teach “thank you” when someone helps or shares. Say: “Thank you!” in a clear and cheerful voice whenever your child receives something—a snack, a toy, or help with a task. Kids learn this phrase quickly when they hear it used with real kindness. Explain that saying “thank you” shows appreciation and makes others happy.",
         "vi": "Dạy “thank you” khi ai đó giúp đỡ hoặc chia sẻ. Nói: “Thank you!” rõ ràng và vui vẻ mỗi khi bé nhận được điều gì đó—món ăn nhẹ, đồ chơi hoặc sự giúp đỡ. Trẻ học nhanh khi nghe câu này gắn với sự tử tế. Giải thích rằng nói “thank you” thể hiện sự biết ơn và khiến người khác vui."
       },
-      "tags": ["thank you", "manners"],
+      "tags": [
+        "thank you",
+        "manners"
+      ],
       "audio": "daily_conversations_v1_thank_you.mp3"
     },
     {
       "slug": "please",
-      "keywords_en": ["please", "polite", "request"],
-      "keywords_vi": ["làm ơn", "lịch sự", "yêu cầu"],
+      "keywords_en": [
+        "please",
+        "polite",
+        "request"
+      ],
+      "keywords_vi": [
+        "làm ơn",
+        "lịch sự",
+        "yêu cầu"
+      ],
       "copy": {
         "en": "Teach “please” when asking for something. Say: “Please?” while pointing to the object your child wants. Model polite asking: “Can I have it, please?” Invite your child to try. Praise them when they remember to use “please.” This simple word helps children communicate kindly and respectfully.",
         "vi": "Dạy “please” khi bé muốn xin điều gì đó. Nói: “Please?” và chỉ vào món đồ bé muốn. Làm mẫu cách xin lịch sự: “Can I have it, please?” Khuyến khích bé thử. Khen khi bé nhớ dùng từ “please.” Từ đơn giản này giúp trẻ giao tiếp nhẹ nhàng và tôn trọng."
       },
-      "tags": ["please", "request"],
+      "tags": [
+        "please",
+        "request"
+      ],
       "audio": "daily_conversations_v1_please.mp3"
     },
     {
       "slug": "excuse-me",
-      "keywords_en": ["excuse me", "attention", "polite"],
-      "keywords_vi": ["xin lỗi", "thu hút chú ý", "lịch sự"],
+      "keywords_en": [
+        "excuse me",
+        "attention",
+        "polite"
+      ],
+      "keywords_vi": [
+        "xin lỗi",
+        "thu hút chú ý",
+        "lịch sự"
+      ],
       "copy": {
         "en": "Teach “excuse me” for polite interruptions. Say it when walking past someone, when needing attention, or when gently correcting behavior. Practice together by pretending to walk through a small space. Children learn that “excuse me” helps them communicate respectfully and solve small social moments kindly.",
         "vi": "Dạy “excuse me” khi cần lịch sự ngắt lời hoặc đi ngang qua ai đó. Nói từ này khi cần sự chú ý hoặc khi muốn sửa hành vi nhẹ nhàng. Tập cùng bé bằng trò đi qua lối nhỏ. Trẻ sẽ học rằng “excuse me” giúp giao tiếp tôn trọng và xử lý tình huống xã hội nhẹ nhàng."
       },
-      "tags": ["excuse me", "politeness"],
+      "tags": [
+        "excuse me",
+        "politeness"
+      ],
       "audio": "daily_conversations_v1_excuse_me.mp3"
     },
     {
       "slug": "goodbye",
-      "keywords_en": ["goodbye", "farewell", "conversation"],
-      "keywords_vi": ["tạm biệt", "chia tay", "hội thoại"],
+      "keywords_en": [
+        "goodbye",
+        "farewell",
+        "conversation"
+      ],
+      "keywords_vi": [
+        "tạm biệt",
+        "chia tay",
+        "hội thoại"
+      ],
       "copy": {
         "en": "Teach “goodbye” at the end of small moments—leaving home, finishing a call, or ending playtime. Say: “Goodbye!” with a friendly wave. Encourage your child to wave too. Repeating this phrase daily helps kids understand how conversations end politely and calmly.",
         "vi": "Dạy “goodbye” vào cuối các khoảnh khắc nhỏ—rời nhà, kết thúc cuộc gọi hoặc kết thúc giờ chơi. Nói: “Goodbye!” cùng cái vẫy tay thân thiện. Khuyến khích bé vẫy tay theo. Việc lặp lại hằng ngày giúp trẻ hiểu cách kết thúc hội thoại lịch sự và nhẹ nhàng."
       },
-      "tags": ["goodbye", "farewell"],
+      "tags": [
+        "goodbye",
+        "farewell"
+      ],
       "audio": "daily_conversations_v1_goodbye.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all", "complete", "full"],
-      "keywords_vi": ["tất cả", "đầy đủ", "trọn vẹn"],
+      "keywords_en": [
+        "all",
+        "complete",
+        "full"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "đầy đủ",
+        "trọn vẹn"
+      ],
       "copy": {
         "en": "Teach “hello” to start friendly conversations.\n\nTeach “thank you” to show gratitude.\n\nTeach “please” to make polite requests.\n\nTeach “excuse me” to handle small social moments.\n\nTeach “goodbye” to end interactions kindly.\n\nThese simple words help children build confident, polite English communication in everyday life.",
         "vi": "Dạy “hello” để mở đầu cuộc trò chuyện.\n\nDạy “thank you” để thể hiện biết ơn.\n\nDạy “please” khi xin điều gì đó.\n\nDạy “excuse me” để xử lý tình huống xã hội.\n\nDạy “goodbye” để kết thúc tương tác.\n\nNhững từ đơn giản này giúp trẻ giao tiếp tiếng Anh lịch sự và tự tin hằng ngày."
       },
-      "tags": ["all"],
+      "tags": [
+        "all"
+      ],
       "audio": "daily_conversations_v1_hello.mp3 daily_conversations_v1_thank_you.mp3 daily_conversations_v1_please.mp3 daily_conversations_v1_excuse_me.mp3 daily_conversations_v1_goodbye.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "7-10",
-    "level": "Kids Level 2",
-    "created_at": "2025-11-21T00:00:00+00:00",
-    "updated_at": "2025-11-21T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#FFEED1"
-  }
+  ]
 }

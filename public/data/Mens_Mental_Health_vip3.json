@@ -40,7 +40,8 @@
       "audio": {
         "en": "mmh_vip3_1_en.mp3",
         "vi": "mmh_vip3_1_vi.mp3"
-      }
+      },
+      "tags": []
     },
     {
       "slug": "nature-ipt",
@@ -61,7 +62,8 @@
       "audio": {
         "en": "mmh_vip3_2_en.mp3",
         "vi": "mmh_vip3_2_vi.mp3"
-      }
+      },
+      "tags": []
     },
     {
       "slug": "rx-fitness",
@@ -82,7 +84,8 @@
       "audio": {
         "en": "mmh_vip3_3_en.mp3",
         "vi": "mmh_vip3_3_vi.mp3"
-      }
+      },
+      "tags": []
     },
     {
       "slug": "stoic-core",
@@ -103,7 +106,8 @@
       "audio": {
         "en": "mmh_vip3_4_en.mp3",
         "vi": "mmh_vip3_4_vi.mp3"
-      }
+      },
+      "tags": []
     },
     {
       "slug": "rage-lab",
@@ -124,7 +128,8 @@
       "audio": {
         "en": "mmh_vip3_5_en.mp3",
         "vi": "mmh_vip3_5_vi.mp3"
-      }
+      },
+      "tags": []
     },
     {
       "slug": "dad-bond",
@@ -145,7 +150,8 @@
       "audio": {
         "en": "mmh_vip3_6_en.mp3",
         "vi": "mmh_vip3_6_vi.mp3"
-      }
+      },
+      "tags": []
     },
     {
       "slug": "t-level",
@@ -166,7 +172,8 @@
       "audio": {
         "en": "mmh_vip3_7_en.mp3",
         "vi": "mmh_vip3_7_vi.mp3"
-      }
+      },
+      "tags": []
     },
     {
       "slug": "iron-psyche",
@@ -187,37 +194,9 @@
       "audio": {
         "en": "mmh_vip3_8_en.mp3",
         "vi": "mmh_vip3_8_vi.mp3"
-      }
+      },
+      "tags": []
     }
   ],
-  "meta": {
-    "artifact_id": "d3a5e987-2a5f-4c2f-94df-3b0f16c23c79",
-    "artifact_version_id": "d3a5e987-2a5f-4c2f-94df-3b0f16c23c79-v002",
-    "created_at": "2025-10-28T00:00:00Z",
-    "updated_at": "2025-10-28T14:30:00Z",
-    "entry_count": 8,
-    "tier": "vip3",
-    "data_version": "1.0.1",
-    "room_color": "#2E4057",
-    "checksum_sha256": "<placeholder>",
-    "localization": {
-      "strict": true,
-      "normalize_case": true
-    },
-    "validation": {
-      "required_fields": [
-        "name",
-        "name_vi",
-        "entries",
-        "meta"
-      ],
-      "canonicalization_hints": [
-        "ensure bilingual parity",
-        "validate MP3 file naming consistency",
-        "normalize timestamps to UTC",
-        "verify entry-level keywords presence"
-      ]
-    }
-  },
   "audio": "mmh_vip3_8_en.mp3"
 }

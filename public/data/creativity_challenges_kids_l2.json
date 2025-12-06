@@ -13,44 +13,75 @@
   "entries": [
     {
       "slug": "picture-challenge",
-      "keywords_en": ["draw", "imagine", "describe", "details"],
-      "keywords_vi": ["vẽ", "tưởng tượng", "miêu tả", "chi tiết"],
+      "keywords_en": [
+        "draw",
+        "imagine",
+        "describe",
+        "details"
+      ],
+      "keywords_vi": [
+        "vẽ",
+        "tưởng tượng",
+        "miêu tả",
+        "chi tiết"
+      ],
       "copy": {
         "en": "Children draw a picture and then describe it in English: colors, shapes, and what is happening.",
         "vi": "Trẻ vẽ một bức tranh rồi miêu tả bằng tiếng Anh: màu sắc, hình dạng và điều gì đang diễn ra."
       },
-      "tags": ["art", "creativity"],
+      "tags": [
+        "art",
+        "creativity"
+      ],
       "audio": ""
     },
     {
       "slug": "what-if-game",
-      "keywords_en": ["what if", "imagine", "magic", "adventure"],
-      "keywords_vi": ["nếu như", "tưởng tượng", "phép màu", "phiêu lưu"],
+      "keywords_en": [
+        "what if",
+        "imagine",
+        "magic",
+        "adventure"
+      ],
+      "keywords_vi": [
+        "nếu như",
+        "tưởng tượng",
+        "phép màu",
+        "phiêu lưu"
+      ],
       "copy": {
         "en": "Practice 'What if...?' questions to build creative stories, like 'What if my school was in space?'.",
         "vi": "Luyện câu hỏi 'Nếu như...?' để xây dựng câu chuyện sáng tạo, ví dụ 'Nếu như trường con ở ngoài không gian?'."
       },
-      "tags": ["imagination", "games"],
+      "tags": [
+        "imagination",
+        "games"
+      ],
       "audio": ""
     },
     {
       "slug": "new-game-ideas",
-      "keywords_en": ["rules", "players", "turns", "win"],
-      "keywords_vi": ["luật chơi", "người chơi", "lượt chơi", "thắng"],
+      "keywords_en": [
+        "rules",
+        "players",
+        "turns",
+        "win"
+      ],
+      "keywords_vi": [
+        "luật chơi",
+        "người chơi",
+        "lượt chơi",
+        "thắng"
+      ],
       "copy": {
         "en": "Children invent a simple new game and explain the rules, players, and how to win in English.",
         "vi": "Trẻ sáng tạo một trò chơi đơn giản và giải thích luật chơi, người chơi và cách thắng bằng tiếng Anh."
       },
-      "tags": ["games", "creative-thinking"],
+      "tags": [
+        "games",
+        "creative-thinking"
+      ],
       "audio": ""
     }
-  ],
-  "meta": {
-    "age_range": "7-9",
-    "level": "level2",
-    "created_at": "2025-11-23T00:00:00.000Z",
-    "updated_at": "2025-11-23T00:00:00.000Z",
-    "num_entries": 3,
-    "room_color": "#A7F3D0"
-  }
+  ]
 }

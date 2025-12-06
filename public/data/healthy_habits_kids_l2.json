@@ -13,77 +13,134 @@
   "entries": [
     {
       "slug": "wash-hands",
-      "keywords_en": ["wash", "hands", "clean"],
-      "keywords_vi": ["rửa", "tay", "sạch"],
+      "keywords_en": [
+        "wash",
+        "hands",
+        "clean"
+      ],
+      "keywords_vi": [
+        "rửa",
+        "tay",
+        "sạch"
+      ],
       "copy": {
         "en": "Teach “wash hands” during daily routines like before meals or after outdoor play. Say, “Let’s wash hands—soap, rub, rinse!” Show each step slowly so your child links the actions to the words. Explain why washing hands keeps germs away and helps everyone stay healthy. Children remember vocabulary better when it is part of a real, meaningful habit.",
         "vi": "Dạy cụm từ “wash hands” trong thói quen hằng ngày như trước bữa ăn hoặc sau khi chơi ngoài trời. Nói: “Let’s wash hands—soap, rub, rinse!” và làm mẫu chậm rãi. Giải thích rằng rửa tay giúp tránh vi khuẩn và giữ sức khỏe. Trẻ dễ nhớ từ vựng hơn khi nó gắn với thói quen thật."
       },
-      "tags": ["wash", "clean"],
+      "tags": [
+        "wash",
+        "clean"
+      ],
       "audio": "healthy_habits_v1_wash_hands.mp3"
     },
     {
       "slug": "brush-teeth",
-      "keywords_en": ["brush", "teeth", "clean"],
-      "keywords_vi": ["đánh răng", "răng", "sạch"],
+      "keywords_en": [
+        "brush",
+        "teeth",
+        "clean"
+      ],
+      "keywords_vi": [
+        "đánh răng",
+        "răng",
+        "sạch"
+      ],
       "copy": {
         "en": "Teach “brush teeth” during morning and bedtime routines. Say, “Brush teeth—up, down, circles,” while making slow motions your child can copy. Explain that brushing keeps teeth shiny and strong. Celebrate small improvements, such as brushing a little longer. Kids learn quickly when the vocabulary is paired with clear, repeated actions.",
         "vi": "Dạy từ “brush teeth” trong thói quen buổi sáng và trước khi ngủ. Nói: “Brush teeth—up, down, circles,” và làm mẫu chuyển động chậm để trẻ bắt chước. Giải thích rằng đánh răng giúp răng sạch và khỏe. Khen ngợi sự cố gắng nhỏ. Trẻ học nhanh khi từ vựng đi kèm động tác lặp lại."
       },
-      "tags": ["teeth", "routine"],
+      "tags": [
+        "teeth",
+        "routine"
+      ],
       "audio": "healthy_habits_v1_brush_teeth.mp3"
     },
     {
       "slug": "eat-fruits",
-      "keywords_en": ["eat", "fruit", "healthy"],
-      "keywords_vi": ["ăn", "trái cây", "lành mạnh"],
+      "keywords_en": [
+        "eat",
+        "fruit",
+        "healthy"
+      ],
+      "keywords_vi": [
+        "ăn",
+        "trái cây",
+        "lành mạnh"
+      ],
       "copy": {
         "en": "Teach “fruits” by showing real choices. Say, “Apple, banana, orange—pick one!” Let your child choose, smell, and taste. Explain that fruits help the body grow strong and energetic. Use short phrases like “Fruits are healthy” or “Fruits give energy.” Kids learn vocabulary easily when it involves touching and tasting.",
         "vi": "Dạy từ “fruits” bằng cách dùng trái cây thật. Nói: “Apple, banana, orange—pick one!” và để trẻ chọn, ngửi, nếm. Giải thích rằng trái cây giúp cơ thể khỏe và tràn năng lượng. Dùng câu ngắn như “Fruits are healthy.” Trẻ học từ nhanh khi được chạm và nếm."
       },
-      "tags": ["fruits", "eating"],
+      "tags": [
+        "fruits",
+        "eating"
+      ],
       "audio": "healthy_habits_v1_eat_fruits.mp3"
     },
     {
       "slug": "drink-water",
-      "keywords_en": ["drink", "water", "healthy"],
-      "keywords_vi": ["uống", "nước", "lành mạnh"],
+      "keywords_en": [
+        "drink",
+        "water",
+        "healthy"
+      ],
+      "keywords_vi": [
+        "uống",
+        "nước",
+        "lành mạnh"
+      ],
       "copy": {
         "en": "Teach “drink water” by making it part of small breaks. Say, “Water break!” and take a sip together. Explain that water helps the body stay cool, think clearly, and play longer. Encourage your child to notice when they feel thirsty. The word becomes meaningful when children connect it to how their body feels.",
         "vi": "Dạy cụm từ “drink water” bằng cách đưa vào những khoảng nghỉ nhỏ. Nói: “Water break!” và cùng uống một ngụm. Giải thích rằng nước giúp cơ thể mát, đầu óc tỉnh táo và chơi lâu hơn. Khuyến khích trẻ để ý khi mình khát. Từ vựng trở nên có ý nghĩa khi trẻ gắn nó với cảm giác cơ thể."
       },
-      "tags": ["water", "healthy"],
+      "tags": [
+        "water",
+        "healthy"
+      ],
       "audio": "healthy_habits_v1_drink_water.mp3"
     },
     {
       "slug": "good-sleep",
-      "keywords_en": ["sleep", "rest", "energy"],
-      "keywords_vi": ["ngủ", "nghỉ ngơi", "năng lượng"],
+      "keywords_en": [
+        "sleep",
+        "rest",
+        "energy"
+      ],
+      "keywords_vi": [
+        "ngủ",
+        "nghỉ ngơi",
+        "năng lượng"
+      ],
       "copy": {
         "en": "Teach “sleep” by creating a calm bedtime routine. Say, “Time to sleep—soft lights, quiet voice,” and guide your child through stretching, breathing, or choosing a bedtime story. Explain that sleep gives the body energy to learn and play tomorrow. When vocabulary is paired with peaceful moments, children remember it easily.",
         "vi": "Dạy từ “sleep” bằng cách tạo thói quen đi ngủ dễ chịu. Nói: “Time to sleep—soft lights, quiet voice,” và hướng dẫn bé duỗi người, thở nhẹ hoặc chọn truyện. Giải thích rằng ngủ giúp cơ thể có năng lượng học và chơi ngày mai. Khi từ vựng gắn với khoảnh khắc yên bình, trẻ ghi nhớ rất nhanh."
       },
-      "tags": ["sleep", "routine"],
+      "tags": [
+        "sleep",
+        "routine"
+      ],
       "audio": "healthy_habits_v1_sleep.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all", "full", "complete"],
-      "keywords_vi": ["tất cả", "đầy đủ", "trọn vẹn"],
+      "keywords_en": [
+        "all",
+        "full",
+        "complete"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "đầy đủ",
+        "trọn vẹn"
+      ],
       "copy": {
         "en": "Wash hands to stay clean and keep germs away.\n\nBrush teeth morning and night to protect your smile.\n\nEat fruits to grow strong and get natural energy.\n\nDrink water to stay fresh, think clearly, and play longer.\n\nSleep well so your body can rest and recharge.\n\nThese simple habits teach children that taking care of their body every day helps them feel healthy, happy, and ready to learn.",
         "vi": "Rửa tay để sạch sẽ và tránh vi khuẩn.\n\nĐánh răng sáng tối để bảo vệ nụ cười.\n\nĂn trái cây để khỏe mạnh và có năng lượng.\n\nUống nước để tỉnh táo và chơi lâu hơn.\n\nNgủ ngon để cơ thể nghỉ ngơi và phục hồi.\n\nNhững thói quen đơn giản này giúp trẻ hiểu rằng chăm sóc cơ thể mỗi ngày giúp khỏe mạnh, vui vẻ và sẵn sàng học tập."
       },
-      "tags": ["all"],
+      "tags": [
+        "all"
+      ],
       "audio": "healthy_habits_v1_wash_hands.mp3 healthy_habits_v1_brush_teeth.mp3 healthy_habits_v1_eat_fruits.mp3 healthy_habits_v1_drink_water.mp3 healthy_habits_v1_sleep.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "7-10",
-    "level": "Kids Level 2",
-    "created_at": "2025-11-21T00:00:00+00:00",
-    "updated_at": "2025-11-21T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#E8F9D2"
-  }
+  ]
 }

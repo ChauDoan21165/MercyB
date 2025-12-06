@@ -1,6 +1,4 @@
 {
-  "schema_version": "1.0",
-  "schema_id": "grief-healing-free",
   "id": "grief-healing-free",
   "tier": "free",
   "domain": "",
@@ -122,13 +120,5 @@
   "room_essay": {
     "en": "Practical guidance for healing from grief with emotional support.",
     "vi": "Hướng dẫn thực tế giúp bạn chữa lành nỗi đau mất mát thông qua sự nâng đỡ cảm xúc và kết nối lành mạnh."
-  },
-  "safety_disclaimer": {
-    "en": "",
-    "vi": ""
-  },
-  "crisis_footer": {
-    "en": "",
-    "vi": ""
   }
 }

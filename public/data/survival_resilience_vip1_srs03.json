@@ -13,63 +13,117 @@
   "entries": [
     {
       "slug": "staying-warm-without-electricity",
-      "keywords_en": ["heating", "cold weather", "indoor warmth"],
-      "keywords_vi": ["giữ ấm", "trời lạnh", "ấm trong nhà"],
+      "keywords_en": [
+        "heating",
+        "cold weather",
+        "indoor warmth"
+      ],
+      "keywords_vi": [
+        "giữ ấm",
+        "trời lạnh",
+        "ấm trong nhà"
+      ],
       "copy": {
         "en": "Staying warm during a power outage is essential for preventing hypothermia and stress. Choose one room to insulate and gather everyone there. Close doors, seal gaps with towels, and cover windows with blankets to reduce heat loss. Wear multiple thin layers instead of one thick layer—this traps warm air better. Use hats, socks, and scarves indoors, as most body heat escapes through the head and feet. Drink warm fluids if available, but avoid alcohol because it lowers core temperature. If you have a safe, approved indoor heater, use it sparingly and ventilate the room. Never use charcoal, gas stoves, or car engines for heating indoors—they release deadly carbon monoxide. Keeping warm is about conserving heat, not producing large amounts of it. Small, steady actions keep the whole family comfortable.",
         "vi": "Giữ ấm khi mất điện rất quan trọng để tránh hạ thân nhiệt và căng thẳng. Hãy chọn một phòng và cách nhiệt cho phòng đó. Đóng cửa, chèn khe hở bằng khăn và phủ chăn lên cửa sổ để giảm thất thoát nhiệt. Mặc nhiều lớp mỏng thay vì một lớp dày—cách này giữ nhiệt tốt hơn. Đội mũ, mang vớ và khăn choàng trong nhà vì phần lớn nhiệt thất thoát qua đầu và chân. Uống đồ ấm nếu có, nhưng tránh rượu vì nó làm giảm thân nhiệt. Nếu có thiết bị sưởi an toàn dùng trong nhà, hãy dùng tiết kiệm và thông gió nhẹ. Tuyệt đối không dùng than, bếp gas hoặc nổ máy xe trong nhà—chúng tạo khí carbon monoxide gây tử vong. Giữ ấm là giữ nhiệt, không phải tạo ra thật nhiều nhiệt. Những bước nhỏ và đều đặn giúp cả gia đình thoải mái."
       },
-      "audio": "srs03_01_en.mp3"
+      "audio": "srs03_01_en.mp3",
+      "tags": []
     },
     {
       "slug": "cooling-safely-during-heatwaves",
-      "keywords_en": ["cooling", "heatwave safety", "temperature control"],
-      "keywords_vi": ["làm mát", "nắng nóng cực điểm", "kiểm soát nhiệt"],
+      "keywords_en": [
+        "cooling",
+        "heatwave safety",
+        "temperature control"
+      ],
+      "keywords_vi": [
+        "làm mát",
+        "nắng nóng cực điểm",
+        "kiểm soát nhiệt"
+      ],
       "copy": {
         "en": "During heatwaves, your goal is to lower body temperature slowly and safely. Stay in shaded, well-ventilated areas and avoid direct sunlight. Keep curtains closed during the day to block heat. Place a damp cloth on your neck, wrists, or ankles—these pulse points cool the body quickly. Drink water consistently rather than chugging large amounts at once, and include electrolyte packets if sweating heavily. Take cool (not ice-cold) showers to avoid shocking the body. For children, elders, or pets, check for early signs of heat exhaustion such as dizziness, headache, nausea, or irritability. Never rely on fans alone when temperatures rise above 37°C—they circulate hot air and can worsen dehydration. Slow, steady cooling protects the heart, reduces stress, and prevents heat-related emergencies.",
         "vi": "Trong đợt nắng nóng, mục tiêu là hạ thân nhiệt một cách từ từ và an toàn. Ở trong bóng râm và nơi thoáng gió, tránh ánh nắng trực tiếp. Đóng rèm vào ban ngày để giảm nhiệt. Đặt khăn ướt lên cổ, cổ tay hoặc mắt cá chân—những điểm mạch này giúp cơ thể mát nhanh. Uống nước đều đặn, không uống quá nhiều một lúc, và bổ sung điện giải nếu ra nhiều mồ hôi. Tắm nước mát (không lạnh buốt) để tránh sốc nhiệt. Với trẻ em, người già hoặc thú cưng, hãy theo dõi chóng mặt, đau đầu, buồn nôn hoặc cáu gắt—các dấu hiệu sớm của say nóng. Khi nhiệt độ trên 37°C, quạt gió không đủ—chúng chỉ thổi khí nóng và làm mất nước nhanh hơn. Làm mát từ từ giúp bảo vệ tim, giảm căng thẳng và ngăn cấp cứu liên quan đến nhiệt."
       },
-      "audio": "srs03_02_en.mp3"
+      "audio": "srs03_02_en.mp3",
+      "tags": []
     },
     {
       "slug": "safe-lighting-options",
-      "keywords_en": ["lighting", "blackout safety", "indoor light"],
-      "keywords_vi": ["chiếu sáng", "an toàn khi mất điện", "ánh sáng trong nhà"],
+      "keywords_en": [
+        "lighting",
+        "blackout safety",
+        "indoor light"
+      ],
+      "keywords_vi": [
+        "chiếu sáng",
+        "an toàn khi mất điện",
+        "ánh sáng trong nhà"
+      ],
       "copy": {
         "en": "When electricity fails, lighting becomes both a safety tool and a source of calm. LED flashlights and headlamps are the safest and most efficient options. Keep one flashlight within reach of your bed and another in your main living area. Battery-powered lamps provide soft, steady light that helps reduce fear, especially for children. Avoid candles whenever possible—they cause many accidental fires during storms or blackouts. If you must use candles, place them in sturdy holders, far from curtains and pets, and never leave them unattended. Glow sticks offer a child-friendly, fire-free alternative and help illuminate hallways or bathrooms at night. Proper lighting reduces injuries, prevents household accidents, and keeps everyone oriented in the dark.",
         "vi": "Khi mất điện, ánh sáng trở thành công cụ an toàn và là nguồn trấn an tinh thần. Đèn pin LED và đèn đội đầu là lựa chọn an toàn và hiệu quả nhất. Hãy để một đèn pin gần giường ngủ và một cái ở phòng khách. Đèn chạy bằng pin cho ánh sáng dịu, ổn định và giảm lo lắng, đặc biệt cho trẻ em. Hạn chế dùng nến—chúng gây ra nhiều vụ cháy trong bão hoặc mất điện. Nếu buộc phải dùng nến, hãy đặt chúng vào chân nến chắc chắn, tránh rèm cửa và thú cưng, và không bao giờ để cháy unattended. Gậy phát sáng là lựa chọn không lửa, phù hợp cho trẻ em và dùng để chiếu sáng hành lang hoặc nhà vệ sinh ban đêm. Ánh sáng an toàn giảm chấn thương và giúp mọi người định hướng trong bóng tối."
       },
-      "audio": "srs03_03_en.mp3"
+      "audio": "srs03_03_en.mp3",
+      "tags": []
     },
     {
       "slug": "food-safety-during-power-outages",
-      "keywords_en": ["food safety", "power loss", "refrigeration"],
-      "keywords_vi": ["an toàn thực phẩm", "mất điện", "bảo quản lạnh"],
+      "keywords_en": [
+        "food safety",
+        "power loss",
+        "refrigeration"
+      ],
+      "keywords_vi": [
+        "an toàn thực phẩm",
+        "mất điện",
+        "bảo quản lạnh"
+      ],
       "copy": {
         "en": "Food spoils faster than most people think during blackouts. Keep refrigerator and freezer doors closed as much as possible. A full freezer can keep food safe for 48 hours; a half-full freezer for about 24. If food has been above 5°C for more than two hours, treat it as unsafe. Rely on shelf-stable supplies first, reserving refrigerated items for early use. Avoid tasting food to check if it is spoiled—smell and appearance are unreliable indicators. Keep a small thermometer in your fridge to help you make decisions quickly. When in doubt, throw it out. Food poisoning during emergencies is extremely dangerous because medical care may be delayed.",
         "vi": "Thực phẩm hỏng nhanh hơn bạn tưởng khi mất điện. Hãy hạn chế mở tủ lạnh và tủ đông. Tủ đông đầy có thể giữ lạnh 48 giờ; tủ đông nửa đầy khoảng 24 giờ. Nếu thực phẩm ở trên 5°C quá hai giờ, hãy xem là không an toàn. Dùng thực phẩm khô, đóng hộp trước; để dành đồ trong tủ lạnh cho bữa đầu tiên. Không nếm thức ăn để kiểm tra vì mùi và hình dáng không đáng tin. Đặt một nhiệt kế nhỏ trong tủ lạnh để dễ quyết định. Nếu nghi ngờ, hãy bỏ. Ngộ độc thực phẩm trong tình huống khẩn cấp rất nguy hiểm vì hỗ trợ y tế có thể đến trễ."
       },
-      "audio": "srs03_04_en.mp3"
+      "audio": "srs03_04_en.mp3",
+      "tags": []
     },
     {
       "slug": "communication-and-calm-during-outages",
-      "keywords_en": ["communication", "calm", "mental stability"],
-      "keywords_vi": ["liên lạc", "bình tĩnh", "ổn định tâm lý"],
+      "keywords_en": [
+        "communication",
+        "calm",
+        "mental stability"
+      ],
+      "keywords_vi": [
+        "liên lạc",
+        "bình tĩnh",
+        "ổn định tâm lý"
+      ],
       "copy": {
         "en": "Blackouts are stressful because they disrupt routines and disconnect you from news. Keep phones charged using power banks and check essential updates periodically, not constantly. Create a small household plan so everyone knows what to do—where the flashlights are, which room to stay in, and how to conserve battery. Talk calmly with children or elders to reduce anxiety. Light activities such as reading, board games, or gentle conversations help pass time without stress. Emotional stability is as important as physical safety during outages; a calm household makes better decisions and avoids unnecessary risk.",
         "vi": "Mất điện gây căng thẳng vì làm xáo trộn sinh hoạt và cắt kết nối thông tin. Hãy giữ điện thoại được sạc bằng pin dự phòng và kiểm tra cập nhật quan trọng theo giờ, không phải liên tục. Tạo một kế hoạch nhỏ để mọi người biết cần làm gì—đèn pin ở đâu, ở phòng nào là an toàn nhất và cách tiết kiệm pin. Nói chuyện bình tĩnh với trẻ em hoặc người già để giảm lo âu. Các hoạt động nhẹ như đọc sách, trò chơi bàn hoặc trò chuyện giúp thời gian trôi qua dễ chịu hơn. Sự ổn định tinh thần quan trọng ngang với an toàn thể chất; một gia đình bình tĩnh đưa ra quyết định tốt hơn và tránh rủi ro không cần thiết."
       },
-      "audio": "srs03_05_en.mp3"
+      "audio": "srs03_05_en.mp3",
+      "tags": []
     },
     {
       "slug": "long-duration-outage-strategies",
-      "keywords_en": ["long outage", "planning", "resilience"],
-      "keywords_vi": ["mất điện dài", "kế hoạch", "kiên cường"],
+      "keywords_en": [
+        "long outage",
+        "planning",
+        "resilience"
+      ],
+      "keywords_vi": [
+        "mất điện dài",
+        "kế hoạch",
+        "kiên cường"
+      ],
       "copy": {
         "en": "For outages lasting more than 24–48 hours, shift from short-term coping to structured routine. Prioritize hydration, nutrition, and temperature control. Set specific times for checking news and conserve device power. If it is safe, ventilate the home during the coolest parts of the day. Use stored water wisely and rest when heat or cold becomes intense. Check on neighbors, especially those living alone. If someone in the household requires electricity for medical devices, relocate early to a safer facility rather than waiting for conditions to worsen. Long outages test patience more than strength, and routines protect your energy and health.",
         "vi": "Với các đợt mất điện kéo dài hơn 24–48 giờ, hãy chuyển từ ứng phó ngắn hạn sang sinh hoạt có trật tự. Ưu tiên nước uống, dinh dưỡng và kiểm soát nhiệt độ. Đặt giờ cố định để cập nhật tin tức và tiết kiệm pin thiết bị. Nếu an toàn, hãy thông gió vào thời điểm mát nhất trong ngày. Sử dụng nước dự trữ tiết kiệm và nghỉ ngơi khi thời tiết quá nóng hoặc quá lạnh. Kiểm tra hàng xóm, đặc biệt người sống một mình. Nếu gia đình có người cần thiết bị y tế dùng điện, hãy di chuyển sớm đến nơi an toàn thay vì chờ tình hình xấu đi. Mất điện dài thử thách sự kiên nhẫn nhiều hơn sức mạnh; thói quen ổn định giúp bạn giữ năng lượng và sức khỏe."
       },
-      "audio": "srs03_06_en.mp3"
+      "audio": "srs03_06_en.mp3",
+      "tags": []
     }
   ]
 }

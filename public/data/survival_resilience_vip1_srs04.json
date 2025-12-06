@@ -1,75 +1,129 @@
 {
-"id": "survival_resilience_vip1_srs04",
-"tier": "VIP1 / VIP1",
-"domain": "Survival",
-"title": {
-"en": "SRS-04 — Water Safety & Emergency Purification",
-"vi": "SRS-04 — An Toàn Nguồn Nước & Lọc Nước Khẩn Cấp"
-},
-"content": {
-"en": "When disasters strike, clean water becomes the first and most urgent need. This room gives you a practical foundation in finding, storing, and purifying water during emergencies. You will learn how contamination happens, how long stored water stays safe, how to use simple purification methods, and how to recognize early signs of dehydration in adults, elders, and children. These six entries teach you calm, reliable ways to secure drinkable water even when taps run dry, roads are flooded, or normal supply chains are disrupted. Water keeps families alive—this room shows you how to protect it.",
-"vi": "Khi thiên tai xảy ra, nước sạch trở thành nhu cầu đầu tiên và quan trọng nhất. Phòng này giúp bạn nắm các nguyên tắc thực tế về tìm, trữ và lọc nước trong tình huống khẩn cấp. Bạn sẽ học cách nước bị nhiễm bẩn, nước dự trữ an toàn trong bao lâu, các phương pháp lọc đơn giản và cách nhận biết dấu hiệu mất nước ở người lớn, người già và trẻ em. Sáu mục nội dung hướng dẫn bạn những cách bình tĩnh và đáng tin cậy để có nước uống ngay cả khi vòi nước ngừng chảy, đường sá ngập lụt hoặc chuỗi cung ứng bị gián đoạn. Nước giữ sự sống—phòng này giúp bạn bảo vệ nó."
-},
-"entries": [
-{
-"slug": "understanding-water-contamination",
-"keywords_en": ["water safety", "contamination", "risk awareness"],
-"keywords_vi": ["an toàn nước", "ô nhiễm", "nhận biết rủi ro"],
-"copy": {
-"en": "Water can become unsafe quickly during storms, floods, or infrastructure failures. Contamination comes from microorganisms, chemicals, soil runoff, damaged pipes, or sewage overflows. Clear-looking water is not always safe—many contaminants are invisible and tasteless. When in doubt, treat all unfiltered water as unsafe until purified. If local authorities announce a boil-water notice, follow it strictly. Heavy rain can also disturb reservoirs and mix clean water with sediment or bacteria. After a flood, never drink water from taps unless verified safe. Understanding how water becomes contaminated helps you make better, calmer decisions about purification and storage. The goal is not fear—it is awareness.",
-"vi": "Nước có thể trở nên không an toàn rất nhanh khi có bão, lũ hoặc sự cố hạ tầng. Ô nhiễm đến từ vi sinh, hóa chất, đất cát, ống nước hỏng hoặc tràn nước thải. Nước trong không có nghĩa là nước sạch—nhiều chất ô nhiễm không màu và không mùi. Khi nghi ngờ, hãy xem mọi nguồn nước chưa lọc là không an toàn cho đến khi được xử lý. Nếu cơ quan chức năng ra thông báo đun sôi nước, hãy tuân thủ tuyệt đối. Mưa lớn có thể khuấy hồ chứa và trộn nước sạch với bùn hoặc vi khuẩn. Sau lũ, không uống nước máy nếu chưa được xác nhận an toàn. Hiểu cách nước bị ô nhiễm giúp bạn đưa ra quyết định bình tĩnh và chính xác hơn về lọc và trữ nước. Mục tiêu không phải sợ hãi—mà là nhận thức."
-},
-"audio": "srs04_01_en.mp3"
-},
-{
-"slug": "storing-water-safely",
-"keywords_en": ["water storage", "containers", "preparedness"],
-"keywords_vi": ["trữ nước", "dụng cụ chứa", "chuẩn bị"],
-"copy": {
-"en": "Safe water storage begins with clean, food-grade containers. Rinse them with soap, then with a little diluted bleach, and let them air dry. Fill containers fully to reduce oxygen exposure, which slows bacterial growth. Store water in cool, dark places away from chemicals. Properly stored water can stay safe for about six months; rotate every few months for freshness. Avoid thin plastic bottles that warp in heat. During emergencies, fill bathtubs and sinks early—this water is for washing or flushing, not drinking. Label drinking water clearly so no one confuses it with utility water. Smart storage reduces panic and ensures stability for the first critical days.",
-"vi": "Trữ nước an toàn bắt đầu với bình chứa sạch và đạt chuẩn thực phẩm. Rửa bằng xà phòng, sau đó rửa lại bằng dung dịch nước pha loãng với một ít thuốc tẩy, rồi để khô tự nhiên. Đổ đầy nước để giảm tiếp xúc với oxy, giúp hạn chế vi khuẩn phát triển. Trữ nước nơi mát, tối và tránh xa hóa chất. Nếu trữ đúng, nước có thể an toàn khoảng sáu tháng; xoay vòng định kỳ để nước luôn tươi. Tránh chai nhựa mỏng dễ biến dạng khi nóng. Trong khẩn cấp, hãy trữ nước trong bồn tắm và bồn rửa càng sớm càng tốt—nguồn này dùng để rửa, không dùng để uống. Ghi nhãn rõ ràng để tránh nhầm giữa nước uống và nước dùng sinh hoạt. Trữ nước thông minh giúp giảm hoảng loạn và ổn định những ngày đầu quan trọng."
-},
-"audio": "srs04_02_en.mp3"
-},
-{
-"slug": "boiling-and-basic-purification",
-"keywords_en": ["boiling", "purification", "safe water"],
-"keywords_vi": ["đun sôi", "lọc cơ bản", "nước uống an toàn"],
-"copy": {
-"en": "Boiling is the simplest and most reliable way to make water safe. Bring water to a rolling boil for at least one full minute (or three minutes at high altitudes). Let it cool naturally without adding ice. If the water is cloudy, filter it first through a clean cloth or coffee filter. Boiling kills bacteria, viruses, and parasites effectively, but it does not remove chemicals or heavy metals. Use boiled water for drinking, brushing teeth, preparing food, and making baby formula. Even if the water source looks clean, boiling adds an essential layer of protection. In emergencies, you never regret having boiled water—only regretting not boiling it.",
-"vi": "Đun sôi là cách đơn giản và đáng tin cậy nhất để làm nước an toàn. Đun nước đến khi sôi mạnh ít nhất một phút (hoặc ba phút nếu ở vùng núi cao). Để nguội tự nhiên, không cho đá vào. Nếu nước đục, hãy lọc qua vải sạch hoặc giấy lọc trước khi đun. Đun sôi tiêu diệt hiệu quả vi khuẩn, virus và ký sinh trùng, nhưng không loại bỏ hóa chất hay kim loại nặng. Dùng nước đã đun để uống, đánh răng, nấu ăn và pha sữa cho trẻ nhỏ. Dù nguồn nước trông có vẻ sạch, việc đun sôi vẫn là lớp bảo vệ quan trọng. Trong khẩn cấp, bạn sẽ không bao giờ hối hận vì đã đun nước—chỉ hối hận khi không làm."
-},
-"audio": "srs04_03_en.mp3"
-},
-{
-"slug": "using-purification-tablets-and-filters",
-"keywords_en": ["water tablets", "filters", "portable purification"],
-"keywords_vi": ["viên lọc nước", "bộ lọc", "lọc di động"],
-"copy": {
-"en": "Purification tablets and portable filters give you flexibility when boiling is not possible. Chlorine dioxide tablets kill most microorganisms within 30–60 minutes; read instructions carefully for correct dosage. Portable hollow-fiber or activated carbon filters remove bacteria and sediment, though not all viruses. Many filters improve taste and make cloudy water clearer. Replace cartridges as instructed to maintain performance. For travel or evacuation, keep a small emergency filter in your bag—it weighs little but is invaluable during sudden disruptions. Tablets and filters work best as part of a layered approach: filter first, then boil or chemically treat if the source is questionable.",
-"vi": "Viên lọc nước và bộ lọc di động giúp bạn linh hoạt khi không thể đun sôi. Viên chlorine dioxide diệt hầu hết vi sinh trong 30–60 phút; hãy đọc kỹ hướng dẫn để dùng đúng liều. Bộ lọc sợi rỗng hoặc than hoạt tính loại bỏ vi khuẩn và cặn, dù không phải tất cả virus. Nhiều bộ lọc cải thiện vị nước và làm nước đục trở nên trong hơn. Thay lõi lọc đúng lịch để duy trì hiệu quả. Khi đi lại hoặc sơ tán, hãy mang theo một bộ lọc khẩn cấp nhỏ—nhẹ nhưng vô giá khi nguồn nước bị gián đoạn. Viên lọc và bộ lọc hiệu quả nhất khi dùng theo nhiều lớp: lọc trước, sau đó đun sôi hoặc xử lý hóa học nếu nguồn đáng nghi."
-},
-"audio": "srs04_04_en.mp3"
-},
-{
-"slug": "finding-water-in-urban-or-rural-settings",
-"keywords_en": ["finding water", "urban water", "rural water"],
-"keywords_vi": ["tìm nước", "nguồn nước đô thị", "nguồn nước nông thôn"],
-"copy": {
-"en": "In cities, water sources include rooftop tanks, rainwater runoff, public fountains, and emergency distribution points announced by authorities. Avoid underground or stagnant water unless purified thoroughly. In rural areas, wells, streams, and collected rainwater are common sources, but each requires caution. Avoid water downstream from farms, factories, or livestock areas. Running water is usually safer than still water but must still be purified. During floods, never drink river or street water—floodwater contains sewage and chemicals. Knowing where water exists in your environment helps you plan calmly instead of acting in desperation.",
-"vi": "Ở khu đô thị, nguồn nước có thể đến từ bồn chứa trên mái nhà, nước mưa chảy xuống, đài phun công cộng hoặc các điểm phân phối khẩn cấp do chính quyền thông báo. Tránh nguồn nước ngầm hoặc nước đọng nếu không lọc kỹ. Ở nông thôn, giếng, suối và nước mưa là nguồn phổ biến nhưng cần thận trọng. Tránh nước ở hạ lưu trang trại, nhà máy hoặc khu chăn nuôi. Nước chảy thường an toàn hơn nước đọng nhưng vẫn phải lọc. Trong lũ, tuyệt đối không uống nước sông hoặc nước đường—nước lũ chứa nước thải và hóa chất. Hiểu nguồn nước quanh bạn giúp bạn chuẩn bị bình tĩnh thay vì hành động trong hoảng loạn."
-},
-"audio": "srs04_05_en.mp3"
-},
-{
-"slug": "recognizing-dehydration-and-preventing-it",
-"keywords_en": ["dehydration", "health", "hydration"],
-"keywords_vi": ["mất nước", "sức khỏe", "bổ sung nước"],
-"copy": {
-"en": "Dehydration develops faster during heatwaves, illness, or stress. Early signs include dry mouth, headache, dizziness, dark urine, and fatigue. In children, look for irritability, fewer wet diapers, or crying with little to no tears. Elders may show confusion or unusual sleepiness. Sip water steadily rather than drinking large amounts at once. Add oral rehydration salts if sweating heavily or after diarrhea. Prioritize hydration before hunger—your body can function without food longer than it can without water. Recognizing dehydration early prevents emergency situations and protects your long-term health during crises.",
-"vi": "Mất nước xảy ra nhanh hơn khi trời nóng, bệnh hoặc căng thẳng. Dấu hiệu sớm gồm khô miệng, đau đầu, chóng mặt, nước tiểu sẫm màu và mệt mỏi. Ở trẻ nhỏ, hãy chú ý cáu gắt, ít thay tã ướt hoặc khóc không ra nước mắt. Người già có thể lú lẫn hoặc buồn ngủ bất thường. Hãy uống nước đều đặn thay vì uống nhiều một lúc. Bổ sung gói điện giải nếu ra nhiều mồ hôi hoặc tiêu chảy. Luôn ưu tiên nước hơn thức ăn—cơ thể bạn có thể chịu đói lâu hơn chịu khát. Nhận biết mất nước sớm giúp ngăn tình huống khẩn cấp và bảo vệ sức khỏe khi có khủng hoảng."
-},
-"audio": "srs04_06_en.mp3"
-}
-]
+  "id": "survival_resilience_vip1_srs04",
+  "tier": "VIP1 / VIP1",
+  "domain": "Survival",
+  "title": {
+    "en": "SRS-04 — Water Safety & Emergency Purification",
+    "vi": "SRS-04 — An Toàn Nguồn Nước & Lọc Nước Khẩn Cấp"
+  },
+  "content": {
+    "en": "When disasters strike, clean water becomes the first and most urgent need. This room gives you a practical foundation in finding, storing, and purifying water during emergencies. You will learn how contamination happens, how long stored water stays safe, how to use simple purification methods, and how to recognize early signs of dehydration in adults, elders, and children. These six entries teach you calm, reliable ways to secure drinkable water even when taps run dry, roads are flooded, or normal supply chains are disrupted. Water keeps families alive—this room shows you how to protect it.",
+    "vi": "Khi thiên tai xảy ra, nước sạch trở thành nhu cầu đầu tiên và quan trọng nhất. Phòng này giúp bạn nắm các nguyên tắc thực tế về tìm, trữ và lọc nước trong tình huống khẩn cấp. Bạn sẽ học cách nước bị nhiễm bẩn, nước dự trữ an toàn trong bao lâu, các phương pháp lọc đơn giản và cách nhận biết dấu hiệu mất nước ở người lớn, người già và trẻ em. Sáu mục nội dung hướng dẫn bạn những cách bình tĩnh và đáng tin cậy để có nước uống ngay cả khi vòi nước ngừng chảy, đường sá ngập lụt hoặc chuỗi cung ứng bị gián đoạn. Nước giữ sự sống—phòng này giúp bạn bảo vệ nó."
+  },
+  "entries": [
+    {
+      "slug": "understanding-water-contamination",
+      "keywords_en": [
+        "water safety",
+        "contamination",
+        "risk awareness"
+      ],
+      "keywords_vi": [
+        "an toàn nước",
+        "ô nhiễm",
+        "nhận biết rủi ro"
+      ],
+      "copy": {
+        "en": "Water can become unsafe quickly during storms, floods, or infrastructure failures. Contamination comes from microorganisms, chemicals, soil runoff, damaged pipes, or sewage overflows. Clear-looking water is not always safe—many contaminants are invisible and tasteless. When in doubt, treat all unfiltered water as unsafe until purified. If local authorities announce a boil-water notice, follow it strictly. Heavy rain can also disturb reservoirs and mix clean water with sediment or bacteria. After a flood, never drink water from taps unless verified safe. Understanding how water becomes contaminated helps you make better, calmer decisions about purification and storage. The goal is not fear—it is awareness.",
+        "vi": "Nước có thể trở nên không an toàn rất nhanh khi có bão, lũ hoặc sự cố hạ tầng. Ô nhiễm đến từ vi sinh, hóa chất, đất cát, ống nước hỏng hoặc tràn nước thải. Nước trong không có nghĩa là nước sạch—nhiều chất ô nhiễm không màu và không mùi. Khi nghi ngờ, hãy xem mọi nguồn nước chưa lọc là không an toàn cho đến khi được xử lý. Nếu cơ quan chức năng ra thông báo đun sôi nước, hãy tuân thủ tuyệt đối. Mưa lớn có thể khuấy hồ chứa và trộn nước sạch với bùn hoặc vi khuẩn. Sau lũ, không uống nước máy nếu chưa được xác nhận an toàn. Hiểu cách nước bị ô nhiễm giúp bạn đưa ra quyết định bình tĩnh và chính xác hơn về lọc và trữ nước. Mục tiêu không phải sợ hãi—mà là nhận thức."
+      },
+      "audio": "srs04_01_en.mp3",
+      "tags": []
+    },
+    {
+      "slug": "storing-water-safely",
+      "keywords_en": [
+        "water storage",
+        "containers",
+        "preparedness"
+      ],
+      "keywords_vi": [
+        "trữ nước",
+        "dụng cụ chứa",
+        "chuẩn bị"
+      ],
+      "copy": {
+        "en": "Safe water storage begins with clean, food-grade containers. Rinse them with soap, then with a little diluted bleach, and let them air dry. Fill containers fully to reduce oxygen exposure, which slows bacterial growth. Store water in cool, dark places away from chemicals. Properly stored water can stay safe for about six months; rotate every few months for freshness. Avoid thin plastic bottles that warp in heat. During emergencies, fill bathtubs and sinks early—this water is for washing or flushing, not drinking. Label drinking water clearly so no one confuses it with utility water. Smart storage reduces panic and ensures stability for the first critical days.",
+        "vi": "Trữ nước an toàn bắt đầu với bình chứa sạch và đạt chuẩn thực phẩm. Rửa bằng xà phòng, sau đó rửa lại bằng dung dịch nước pha loãng với một ít thuốc tẩy, rồi để khô tự nhiên. Đổ đầy nước để giảm tiếp xúc với oxy, giúp hạn chế vi khuẩn phát triển. Trữ nước nơi mát, tối và tránh xa hóa chất. Nếu trữ đúng, nước có thể an toàn khoảng sáu tháng; xoay vòng định kỳ để nước luôn tươi. Tránh chai nhựa mỏng dễ biến dạng khi nóng. Trong khẩn cấp, hãy trữ nước trong bồn tắm và bồn rửa càng sớm càng tốt—nguồn này dùng để rửa, không dùng để uống. Ghi nhãn rõ ràng để tránh nhầm giữa nước uống và nước dùng sinh hoạt. Trữ nước thông minh giúp giảm hoảng loạn và ổn định những ngày đầu quan trọng."
+      },
+      "audio": "srs04_02_en.mp3",
+      "tags": []
+    },
+    {
+      "slug": "boiling-and-basic-purification",
+      "keywords_en": [
+        "boiling",
+        "purification",
+        "safe water"
+      ],
+      "keywords_vi": [
+        "đun sôi",
+        "lọc cơ bản",
+        "nước uống an toàn"
+      ],
+      "copy": {
+        "en": "Boiling is the simplest and most reliable way to make water safe. Bring water to a rolling boil for at least one full minute (or three minutes at high altitudes). Let it cool naturally without adding ice. If the water is cloudy, filter it first through a clean cloth or coffee filter. Boiling kills bacteria, viruses, and parasites effectively, but it does not remove chemicals or heavy metals. Use boiled water for drinking, brushing teeth, preparing food, and making baby formula. Even if the water source looks clean, boiling adds an essential layer of protection. In emergencies, you never regret having boiled water—only regretting not boiling it.",
+        "vi": "Đun sôi là cách đơn giản và đáng tin cậy nhất để làm nước an toàn. Đun nước đến khi sôi mạnh ít nhất một phút (hoặc ba phút nếu ở vùng núi cao). Để nguội tự nhiên, không cho đá vào. Nếu nước đục, hãy lọc qua vải sạch hoặc giấy lọc trước khi đun. Đun sôi tiêu diệt hiệu quả vi khuẩn, virus và ký sinh trùng, nhưng không loại bỏ hóa chất hay kim loại nặng. Dùng nước đã đun để uống, đánh răng, nấu ăn và pha sữa cho trẻ nhỏ. Dù nguồn nước trông có vẻ sạch, việc đun sôi vẫn là lớp bảo vệ quan trọng. Trong khẩn cấp, bạn sẽ không bao giờ hối hận vì đã đun nước—chỉ hối hận khi không làm."
+      },
+      "audio": "srs04_03_en.mp3",
+      "tags": []
+    },
+    {
+      "slug": "using-purification-tablets-and-filters",
+      "keywords_en": [
+        "water tablets",
+        "filters",
+        "portable purification"
+      ],
+      "keywords_vi": [
+        "viên lọc nước",
+        "bộ lọc",
+        "lọc di động"
+      ],
+      "copy": {
+        "en": "Purification tablets and portable filters give you flexibility when boiling is not possible. Chlorine dioxide tablets kill most microorganisms within 30–60 minutes; read instructions carefully for correct dosage. Portable hollow-fiber or activated carbon filters remove bacteria and sediment, though not all viruses. Many filters improve taste and make cloudy water clearer. Replace cartridges as instructed to maintain performance. For travel or evacuation, keep a small emergency filter in your bag—it weighs little but is invaluable during sudden disruptions. Tablets and filters work best as part of a layered approach: filter first, then boil or chemically treat if the source is questionable.",
+        "vi": "Viên lọc nước và bộ lọc di động giúp bạn linh hoạt khi không thể đun sôi. Viên chlorine dioxide diệt hầu hết vi sinh trong 30–60 phút; hãy đọc kỹ hướng dẫn để dùng đúng liều. Bộ lọc sợi rỗng hoặc than hoạt tính loại bỏ vi khuẩn và cặn, dù không phải tất cả virus. Nhiều bộ lọc cải thiện vị nước và làm nước đục trở nên trong hơn. Thay lõi lọc đúng lịch để duy trì hiệu quả. Khi đi lại hoặc sơ tán, hãy mang theo một bộ lọc khẩn cấp nhỏ—nhẹ nhưng vô giá khi nguồn nước bị gián đoạn. Viên lọc và bộ lọc hiệu quả nhất khi dùng theo nhiều lớp: lọc trước, sau đó đun sôi hoặc xử lý hóa học nếu nguồn đáng nghi."
+      },
+      "audio": "srs04_04_en.mp3",
+      "tags": []
+    },
+    {
+      "slug": "finding-water-in-urban-or-rural-settings",
+      "keywords_en": [
+        "finding water",
+        "urban water",
+        "rural water"
+      ],
+      "keywords_vi": [
+        "tìm nước",
+        "nguồn nước đô thị",
+        "nguồn nước nông thôn"
+      ],
+      "copy": {
+        "en": "In cities, water sources include rooftop tanks, rainwater runoff, public fountains, and emergency distribution points announced by authorities. Avoid underground or stagnant water unless purified thoroughly. In rural areas, wells, streams, and collected rainwater are common sources, but each requires caution. Avoid water downstream from farms, factories, or livestock areas. Running water is usually safer than still water but must still be purified. During floods, never drink river or street water—floodwater contains sewage and chemicals. Knowing where water exists in your environment helps you plan calmly instead of acting in desperation.",
+        "vi": "Ở khu đô thị, nguồn nước có thể đến từ bồn chứa trên mái nhà, nước mưa chảy xuống, đài phun công cộng hoặc các điểm phân phối khẩn cấp do chính quyền thông báo. Tránh nguồn nước ngầm hoặc nước đọng nếu không lọc kỹ. Ở nông thôn, giếng, suối và nước mưa là nguồn phổ biến nhưng cần thận trọng. Tránh nước ở hạ lưu trang trại, nhà máy hoặc khu chăn nuôi. Nước chảy thường an toàn hơn nước đọng nhưng vẫn phải lọc. Trong lũ, tuyệt đối không uống nước sông hoặc nước đường—nước lũ chứa nước thải và hóa chất. Hiểu nguồn nước quanh bạn giúp bạn chuẩn bị bình tĩnh thay vì hành động trong hoảng loạn."
+      },
+      "audio": "srs04_05_en.mp3",
+      "tags": []
+    },
+    {
+      "slug": "recognizing-dehydration-and-preventing-it",
+      "keywords_en": [
+        "dehydration",
+        "health",
+        "hydration"
+      ],
+      "keywords_vi": [
+        "mất nước",
+        "sức khỏe",
+        "bổ sung nước"
+      ],
+      "copy": {
+        "en": "Dehydration develops faster during heatwaves, illness, or stress. Early signs include dry mouth, headache, dizziness, dark urine, and fatigue. In children, look for irritability, fewer wet diapers, or crying with little to no tears. Elders may show confusion or unusual sleepiness. Sip water steadily rather than drinking large amounts at once. Add oral rehydration salts if sweating heavily or after diarrhea. Prioritize hydration before hunger—your body can function without food longer than it can without water. Recognizing dehydration early prevents emergency situations and protects your long-term health during crises.",
+        "vi": "Mất nước xảy ra nhanh hơn khi trời nóng, bệnh hoặc căng thẳng. Dấu hiệu sớm gồm khô miệng, đau đầu, chóng mặt, nước tiểu sẫm màu và mệt mỏi. Ở trẻ nhỏ, hãy chú ý cáu gắt, ít thay tã ướt hoặc khóc không ra nước mắt. Người già có thể lú lẫn hoặc buồn ngủ bất thường. Hãy uống nước đều đặn thay vì uống nhiều một lúc. Bổ sung gói điện giải nếu ra nhiều mồ hôi hoặc tiêu chảy. Luôn ưu tiên nước hơn thức ăn—cơ thể bạn có thể chịu đói lâu hơn chịu khát. Nhận biết mất nước sớm giúp ngăn tình huống khẩn cấp và bảo vệ sức khỏe khi có khủng hoảng."
+      },
+      "audio": "srs04_06_en.mp3",
+      "tags": []
+    }
+  ]
 }

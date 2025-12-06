@@ -13,77 +13,148 @@
   "entries": [
     {
       "slug": "touch-and-name",
-      "keywords_en": ["body parts", "touch", "naming", "head", "hands"],
-      "keywords_vi": ["cơ thể", "chạm", "gọi tên", "đầu", "tay"],
+      "keywords_en": [
+        "body parts",
+        "touch",
+        "naming",
+        "head",
+        "hands"
+      ],
+      "keywords_vi": [
+        "cơ thể",
+        "chạm",
+        "gọi tên",
+        "đầu",
+        "tay"
+      ],
       "copy": {
         "en": "Begin by gently touching each body part and naming it slowly: “head,” “ears,” “hands,” “feet.” Invite your child to touch the same part on themselves or on a doll or toy animal. You can turn it into a little call-and-response game—“Touch your… head!”—and let your child copy your actions. Keep your voice happy and playful so the words stay light. If your child touches the wrong part, simply model again without pressure. The goal is helping them connect each English word with a real place on their body.",
         "vi": "Bắt đầu bằng cách chạm nhẹ vào từng bộ phận và đọc chậm rãi: “head,” “ears,” “hands,” “feet.” Rủ bé chạm vào phần tương ứng trên cơ thể mình hoặc trên búp bê hay thú bông. Bạn có thể biến hoạt động thành trò chơi gọi–đáp: “Touch your… head!” và để bé làm theo. Hãy giữ giọng vui và nhẹ nhàng để từ vựng trở nên dễ chịu. Nếu bé chạm nhầm, bạn chỉ cần làm mẫu lại mà không tạo áp lực. Mục tiêu là giúp bé kết nối mỗi từ tiếng Anh với vị trí thật trên cơ thể."
       },
-      "tags": ["body parts", "touch", "naming"],
+      "tags": [
+        "body parts",
+        "touch",
+        "naming"
+      ],
       "audio": "body_parts_movement_v1_touch_and_name.mp3"
     },
     {
       "slug": "movement-copy-game",
-      "keywords_en": ["movement", "copy", "actions", "play"],
-      "keywords_vi": ["vận động", "bắt chước", "hành động", "chơi"],
+      "keywords_en": [
+        "movement",
+        "copy",
+        "actions",
+        "play"
+      ],
+      "keywords_vi": [
+        "vận động",
+        "bắt chước",
+        "hành động",
+        "chơi"
+      ],
       "copy": {
         "en": "Children learn quickly when they use their whole body. Stand in front of your child and perform simple actions: “clap your hands,” “stamp your feet,” “nod your head,” “wiggle your fingers.” Say each action clearly while you do it. Then invite your child to be the leader and you copy them. This role-switching feels empowering to young children and keeps the learning joyful. Movement also helps the brain store new English words more deeply.",
         "vi": "Trẻ học rất nhanh khi dùng cả cơ thể. Bạn đứng trước bé và làm những động tác đơn giản: “clap your hands,” “stamp your feet,” “nod your head,” “wiggle your fingers.” Vừa làm vừa đọc rõ ràng từng cụm. Sau đó đổi vai, để bé làm người dẫn còn bạn bắt chước. Việc đổi vai khiến trẻ thích thú và cảm thấy “mình cũng giỏi.” Vận động còn giúp não ghi nhớ từ tiếng Anh sâu hơn."
       },
-      "tags": ["movement", "actions"],
+      "tags": [
+        "movement",
+        "actions"
+      ],
       "audio": "body_parts_movement_v1_copy_game.mp3"
     },
     {
       "slug": "mirror-movements",
-      "keywords_en": ["mirror", "imitation", "body", "game"],
-      "keywords_vi": ["soi gương", "bắt chước", "cơ thể", "trò chơi"],
+      "keywords_en": [
+        "mirror",
+        "imitation",
+        "body",
+        "game"
+      ],
+      "keywords_vi": [
+        "soi gương",
+        "bắt chước",
+        "cơ thể",
+        "trò chơi"
+      ],
       "copy": {
         "en": "Play a quiet mirror game. Face your child and say, “You are my mirror!” Move your arms up, bend your knees, stretch tall, or turn slowly, and let your child copy you without speaking. After a few moves, add English words: “up,” “down,” “stretch,” “turn.” Because the child is already moving, the words attach naturally to each action. Then switch roles and let your child lead. This game builds attention, coordination, and the link between English and body awareness.",
         "vi": "Hãy chơi trò “gương soi.” Bạn đối diện bé và nói: “You are my mirror!” rồi giơ tay, khuỵu gối, vươn người hoặc xoay chậm. Bé sẽ làm theo mà không cần nói. Một lát sau, bạn thêm từ tiếng Anh: “up,” “down,” “stretch,” “turn.” Vì bé đã sẵn vận động, từ vựng sẽ gắn tự nhiên với từng động tác. Cuối cùng đổi vai cho bé làm người dẫn. Trò chơi này rèn sự chú ý, phối hợp và kết nối tiếng Anh với cảm nhận cơ thể."
       },
-      "tags": ["movement", "mirror"],
+      "tags": [
+        "movement",
+        "mirror"
+      ],
       "audio": "body_parts_movement_v1_mirror_game.mp3"
     },
     {
       "slug": "body-parts-in-nature",
-      "keywords_en": ["nature", "body", "walk", "observation"],
-      "keywords_vi": ["thiên nhiên", "cơ thể", "đi dạo", "quan sát"],
+      "keywords_en": [
+        "nature",
+        "body",
+        "walk",
+        "observation"
+      ],
+      "keywords_vi": [
+        "thiên nhiên",
+        "cơ thể",
+        "đi dạo",
+        "quan sát"
+      ],
       "copy": {
         "en": "If possible, take a short walk and use nature to highlight body parts and movement. Say, “We use our feet to walk,” “We use our eyes to look,” “We use our hands to touch leaves.” Let your child try each action. You can invite small challenges like stepping over a line, reaching up to a branch, or hopping across a stone while naming the body part involved. These real-world experiences make English feel meaningful and connected to daily life.",
         "vi": "Nếu có thể, hãy đi dạo ngắn và dùng thiên nhiên để minh họa cơ thể và vận động. Bạn nói: “We use our feet to walk,” “We use our eyes to look,” “We use our hands to touch leaves.” Rủ bé làm theo từng động tác. Bạn có thể thử những thử thách nhỏ như bước qua vạch, với tay chạm cành cây, hoặc nhảy qua hòn đá rồi gọi tên bộ phận được dùng. Những trải nghiệm thật như thế giúp tiếng Anh trở nên ý nghĩa và gắn với đời sống hằng ngày."
       },
-      "tags": ["nature", "movement"],
+      "tags": [
+        "nature",
+        "movement"
+      ],
       "audio": "body_parts_movement_v1_nature_walk.mp3"
     },
     {
       "slug": "gentle-bedtime-stretching",
-      "keywords_en": ["bedtime", "stretch", "calm", "routine"],
-      "keywords_vi": ["trước khi ngủ", "vươn người", "bình yên", "thói quen"],
+      "keywords_en": [
+        "bedtime",
+        "stretch",
+        "calm",
+        "routine"
+      ],
+      "keywords_vi": [
+        "trước khi ngủ",
+        "vươn người",
+        "bình yên",
+        "thói quen"
+      ],
       "copy": {
         "en": "Before sleep, guide your child through tiny calming movements with English words. Whisper, “stretch your arms,” “relax your shoulders,” “wiggle your toes,” “take a slow breath.” You can dim the lights and move slowly together. Soft movements help the body feel safe, and the English phrases become linked with comfort and winding down. This bedtime practice strengthens memory and makes learning feel gentle instead of demanding.",
         "vi": "Trước giờ ngủ, bạn hãy hướng dẫn bé vài động tác thư giãn nhỏ kèm từ tiếng Anh. Thì thầm: “stretch your arms,” “relax your shoulders,” “wiggle your toes,” “take a slow breath.” Giảm ánh sáng và cùng nhau di chuyển chậm. Chuyển động nhẹ nhàng khiến cơ thể bé cảm thấy an toàn, và các cụm tiếng Anh sẽ gắn với sự thư thái. Thói quen trước khi ngủ này giúp bé ghi nhớ từ vựng mà không cảm thấy bị ép học."
       },
-      "tags": ["bedtime", "stretching"],
+      "tags": [
+        "bedtime",
+        "stretching"
+      ],
       "audio": "body_parts_movement_v1_bedtime_stretch.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all", "full", "complete"],
-      "keywords_vi": ["tất cả", "đầy đủ", "hoàn chỉnh"],
+      "keywords_en": [
+        "all",
+        "full",
+        "complete"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "đầy đủ",
+        "hoàn chỉnh"
+      ],
       "copy": {
         "en": "Begin by gently naming and touching each body part…\n\nUse simple movement actions like clap, stamp, nod, and wiggle…\n\nPlay a mirror game to connect English with imitation…\n\nTake a short walk and link body parts with real actions…\n\nEnd the day with quiet bedtime stretching using soft English words.",
         "vi": "Bắt đầu bằng cách chạm nhẹ và gọi tên từng bộ phận…\n\nDùng các động tác đơn giản như clap, stamp, nod và wiggle…\n\nChơi trò gương soi để kết nối tiếng Anh với vận động…\n\nĐi dạo và gắn bộ phận cơ thể với hành động thật…\n\nKết thúc ngày bằng động tác vươn người nhẹ nhàng kèm tiếng Anh dịu dàng."
       },
-      "tags": ["all", "full"],
+      "tags": [
+        "all",
+        "full"
+      ],
       "audio": "body_parts_movement_v1_touch_and_name.mp3 body_parts_movement_v1_copy_game.mp3 body_parts_movement_v1_mirror_game.mp3 body_parts_movement_v1_nature_walk.mp3 body_parts_movement_v1_bedtime_stretch.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "4-7",
-    "level": "Kids Level 1",
-    "created_at": "2025-11-21T00:00:00+00:00",
-    "updated_at": "2025-11-21T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#E2F7D4"
-  }
+  ]
 }

@@ -13,77 +13,132 @@
   "entries": [
     {
       "slug": "lion-roar",
-      "keywords_en": ["wild", "lion", "sound"],
-      "keywords_vi": ["hoang dã", "sư tử", "âm thanh"],
+      "keywords_en": [
+        "wild",
+        "lion",
+        "sound"
+      ],
+      "keywords_vi": [
+        "hoang dã",
+        "sư tử",
+        "âm thanh"
+      ],
       "copy": {
         "en": "Teach the word “lion” by showing a picture and saying the word slowly. Add a soft, playful roar—“roar!” Encourage your child to stand tall and pretend to be a brave lion. Acting strongly helps children remember energetic words like this.",
         "vi": "Dạy từ “lion” bằng cách cho bé xem hình và đọc từ chậm rãi. Thêm tiếng gầm nhẹ vui nhộn—“roar!” Khuyến khích bé đứng thẳng như sư tử. Việc nhập vai mạnh mẽ giúp bé ghi nhớ những từ đầy năng lượng."
       },
-      "tags": ["wild", "lion"],
+      "tags": [
+        "wild",
+        "lion"
+      ],
       "audio": "wild_animals_v1_lion.mp3"
     },
     {
       "slug": "elephant-trumpet",
-      "keywords_en": ["wild", "elephant", "sound"],
-      "keywords_vi": ["hoang dã", "voi", "âm thanh"],
+      "keywords_en": [
+        "wild",
+        "elephant",
+        "sound"
+      ],
+      "keywords_vi": [
+        "hoang dã",
+        "voi",
+        "âm thanh"
+      ],
       "copy": {
         "en": "Introduce “elephant” by raising your arm like a trunk and saying the word. Add a playful trumpet sound, “pawooo!” Invite your child to copy the trunk motion. Big gestures help anchor the word in memory.",
         "vi": "Giới thiệu từ “elephant” bằng cách giơ tay lên như chiếc vòi và đọc từ. Thêm âm thanh “pawooo!” vui nhộn. Rủ bé làm theo. Những cử chỉ lớn giúp bé nhớ từ lâu hơn."
       },
-      "tags": ["wild", "elephant"],
+      "tags": [
+        "wild",
+        "elephant"
+      ],
       "audio": "wild_animals_v1_elephant.mp3"
     },
     {
       "slug": "monkey-chatter",
-      "keywords_en": ["wild", "monkey", "sound"],
-      "keywords_vi": ["hoang dã", "khỉ", "âm thanh"],
+      "keywords_en": [
+        "wild",
+        "monkey",
+        "sound"
+      ],
+      "keywords_vi": [
+        "hoang dã",
+        "khỉ",
+        "âm thanh"
+      ],
       "copy": {
         "en": "Teach “monkey” through silly sounds and movements. Say the word slowly and make a light ‘oo-oo aa-aa.’ Invite your child to jump or swing their arms like a monkey. Children love this playful mix of action and sound.",
         "vi": "Dạy từ “monkey” bằng âm thanh và động tác ngộ nghĩnh. Đọc từ chậm rồi kêu ‘oo-oo aa-aa.’ Rủ bé nhảy hoặc đung đưa cánh tay như khỉ. Sự vui nhộn khiến từ vựng in sâu nhanh chóng."
       },
-      "tags": ["wild", "monkey"],
+      "tags": [
+        "wild",
+        "monkey"
+      ],
       "audio": "wild_animals_v1_monkey.mp3"
     },
     {
       "slug": "giraffe-tall",
-      "keywords_en": ["wild", "giraffe", "tall"],
-      "keywords_vi": ["hoang dã", "hươu cao cổ", "cao"],
+      "keywords_en": [
+        "wild",
+        "giraffe",
+        "tall"
+      ],
+      "keywords_vi": [
+        "hoang dã",
+        "hươu cao cổ",
+        "cao"
+      ],
       "copy": {
         "en": "Introduce “giraffe” by stretching your neck tall and saying the word clearly. Show your child how giraffes reach up for leaves. Gentle pretend motions help children connect the word with a picture in their mind.",
         "vi": "Giới thiệu từ “giraffe” bằng cách kéo dài cổ và đọc từ rõ ràng. Minh họa cảnh hươu cao cổ vươn lên ăn lá. Hành động nhẹ nhàng giúp bé hình dung và ghi nhớ từ tốt hơn."
       },
-      "tags": ["wild", "giraffe"],
+      "tags": [
+        "wild",
+        "giraffe"
+      ],
       "audio": "wild_animals_v1_giraffe.mp3"
     },
     {
       "slug": "wild-animal-game",
-      "keywords_en": ["wild", "game", "movement"],
-      "keywords_vi": ["hoang dã", "trò chơi", "vận động"],
+      "keywords_en": [
+        "wild",
+        "game",
+        "movement"
+      ],
+      "keywords_vi": [
+        "hoang dã",
+        "trò chơi",
+        "vận động"
+      ],
       "copy": {
         "en": "Play a simple wild-animal game. Say a word—lion, elephant, monkey, or giraffe—and let your child act it out. Then switch roles and let them choose an animal for you. Children love taking the lead, and it reinforces vocabulary naturally.",
         "vi": "Chơi trò động vật hoang dã đơn giản. Đọc một từ—lion, elephant, monkey hoặc giraffe—và để bé diễn tả bằng hành động. Đổi vai để bé chọn con vật cho bạn. Trẻ thích được làm “người dẫn,” và điều này giúp từ vựng được củng cố tự nhiên."
       },
-      "tags": ["wild", "game"],
+      "tags": [
+        "wild",
+        "game"
+      ],
       "audio": "wild_animals_v1_game.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all", "complete"],
-      "keywords_vi": ["tất cả", "đầy đủ"],
+      "keywords_en": [
+        "all",
+        "complete"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "đầy đủ"
+      ],
       "copy": {
         "en": "Teach “lion” with soft roars and strong standing.\n\nTeach “elephant” using a pretend trunk and a fun trumpet sound.\n\nTeach “monkey” through silly chatter and playful jumping.\n\nTeach “giraffe” by stretching tall and pretending to reach for leaves.\n\nPlay a wild animal game where your child acts like lion, elephant, monkey, or giraffe.\n\nAll these big motions and fun sounds help children learn wild animals in a joyful, natural way.",
         "vi": "Dạy “lion” bằng tiếng gầm nhẹ và tư thế mạnh mẽ.\n\nDạy “elephant” với chiếc vòi giả và âm thanh vui.\n\nDạy “monkey” bằng tiếng kêu ngộ nghĩnh và động tác nhảy.\n\nDạy “giraffe” bằng cách vươn cao và giả vờ hái lá.\n\nChơi trò động vật hoang dã với lion, elephant, monkey và giraffe.\n\nNhững chuyển động lớn và âm thanh vui giúp bé học từ vựng động vật hoang dã tự nhiên."
       },
-      "tags": ["all"],
+      "tags": [
+        "all"
+      ],
       "audio": "wild_animals_v1_lion.mp3 wild_animals_v1_elephant.mp3 wild_animals_v1_monkey.mp3 wild_animals_v1_giraffe.mp3 wild_animals_v1_game.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "4-7",
-    "level": "Kids Level 1",
-    "created_at": "2025-11-21T00:00:00+00:00",
-    "updated_at": "2025-11-21T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#FFE2CF"
-  }
+  ]
 }

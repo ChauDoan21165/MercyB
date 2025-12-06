@@ -1,6 +1,4 @@
 {
-  "schema_version": "1.0",
-  "schema_id": "productivity-and-focus-vip2",
   "id": "productivity-and-focus-vip2",
   "tier": "free",
   "domain": "",
@@ -213,13 +211,5 @@
   "room_essay": {
     "en": "This room helps you build steadier focus, calmer workflow, and sustainable productivity without burnout. Instead of forcing intensity, you will practice gentle systems that support clarity: planning tasks with intention, setting up an environment that reduces friction, and understanding your natural energy rhythm. Each entry offers a small, realistic action you can apply today, designed for real life, not perfection. Over time, these habits help you approach work with more presence, consistency, and confidence. Productivity becomes less about pressure and more about creating space for your best work to emerge.",
     "vi": "Phòng này giúp bạn xây dựng sự tập trung vững hơn, quy trình làm việc bình tĩnh hơn và mức năng suất bền vững mà không kiệt sức. Thay vì ép mình làm việc với cường độ cao, bạn sẽ tập các hệ thống nhẹ nhàng hỗ trợ sự sáng rõ: lập kế hoạch công việc có chủ đích, thiết kế môi trường làm việc giảm ma sát và hiểu nhịp năng lượng tự nhiên của chính mình. Mỗi mục nội dung mang đến một hành động nhỏ, thực tế mà bạn có thể áp dụng ngay hôm nay, được thiết kế cho đời sống thật chứ không phải sự hoàn hảo. Theo thời gian, những thói quen này giúp bạn đến với công việc với nhiều hiện diện, đều đặn và tự tin hơn. Năng suất dần bớt gắn với áp lực và trở thành việc tạo không gian để phần công việc tốt nhất của bạn được bộc lộ."
-  },
-  "safety_disclaimer": {
-    "en": "",
-    "vi": ""
-  },
-  "crisis_footer": {
-    "en": "",
-    "vi": ""
   }
 }

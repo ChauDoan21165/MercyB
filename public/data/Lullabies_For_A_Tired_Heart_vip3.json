@@ -34,7 +34,8 @@
       "audio": {
         "en": "lullaby_vip3_1_en.mp3",
         "vi": "lullaby_vip3_1_vi.mp3"
-      }
+      },
+      "tags": []
     },
     {
       "slug": "forest-heartbeat-of-safety",
@@ -63,7 +64,8 @@
       "audio": {
         "en": "lullaby_vip3_2_en.mp3",
         "vi": "lullaby_vip3_2_vi.mp3"
-      }
+      },
+      "tags": []
     },
     {
       "slug": "morning-light-waiting-for-you",
@@ -92,7 +94,8 @@
       "audio": {
         "en": "lullaby_vip3_3_en.mp3",
         "vi": "lullaby_vip3_3_vi.mp3"
-      }
+      },
+      "tags": []
     }
   ]
 }

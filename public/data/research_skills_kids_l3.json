@@ -13,77 +13,125 @@
   "entries": [
     {
       "slug": "ask-clear-questions",
-      "keywords_en": ["question", "research", "ask"],
-      "keywords_vi": ["câu hỏi", "tìm hiểu", "hỏi"],
+      "keywords_en": [
+        "question",
+        "research",
+        "ask"
+      ],
+      "keywords_vi": [
+        "câu hỏi",
+        "tìm hiểu",
+        "hỏi"
+      ],
       "copy": {
         "en": "Good research begins with a clear question. Teach kids to ask simple, focused questions like “Why do cats purr?” or “How does rain form?” Encourage them to choose one question at a time so they do not feel overwhelmed. This helps children understand that research is about curiosity and finding clear answers step by step.",
         "vi": "Mọi việc tìm hiểu tốt đều bắt đầu từ một câu hỏi rõ ràng. Hãy dạy trẻ đặt câu hỏi đơn giản và tập trung như “Vì sao mèo kêu rù rù?” hoặc “Mưa hình thành thế nào?” Khuyến khích trẻ chọn một câu hỏi mỗi lần để không bị quá tải. Điều này giúp trẻ hiểu rằng tìm hiểu là khám phá từng bước theo sự tò mò."
       },
-      "tags": ["questions"],
+      "tags": [
+        "questions"
+      ],
       "audio": "research_skills_v1_ask_clear_questions.mp3"
     },
     {
       "slug": "choose-good-sources",
-      "keywords_en": ["sources", "information", "research"],
-      "keywords_vi": ["nguồn tin", "thông tin", "tìm hiểu"],
+      "keywords_en": [
+        "sources",
+        "information",
+        "research"
+      ],
+      "keywords_vi": [
+        "nguồn tin",
+        "thông tin",
+        "tìm hiểu"
+      ],
       "copy": {
         "en": "Teach kids that good sources are places with correct and helpful information—school websites, children’s encyclopedias, educational videos, or teacher-approved pages. Explain that not everything online is true, so choosing the right source is important. This helps kids build safe and smart research habits.",
         "vi": "Hãy dạy trẻ rằng nguồn tin tốt là nơi có thông tin chính xác và hữu ích—trang web của trường, sách bách khoa dành cho trẻ, video giáo dục hoặc trang được giáo viên gợi ý. Giải thích rằng không phải mọi thứ trên mạng đều đúng, nên chọn nguồn tin là rất quan trọng. Điều này giúp trẻ hình thành thói quen tìm hiểu an toàn và thông minh."
       },
-      "tags": ["sources"],
+      "tags": [
+        "sources"
+      ],
       "audio": "research_skills_v1_good_sources.mp3"
     },
     {
       "slug": "read-carefully",
-      "keywords_en": ["reading", "careful", "research"],
-      "keywords_vi": ["đọc", "cẩn thận", "tìm hiểu"],
+      "keywords_en": [
+        "reading",
+        "careful",
+        "research"
+      ],
+      "keywords_vi": [
+        "đọc",
+        "cẩn thận",
+        "tìm hiểu"
+      ],
       "copy": {
         "en": "Teach kids to read slowly and notice details. Show them how to look for important words, examples, or facts that answer their question. Encourage them to highlight or write one short note. Careful reading helps kids understand information better and stay focused on the topic.",
         "vi": "Hãy dạy trẻ đọc chậm và chú ý chi tiết. Chỉ trẻ cách tìm những từ quan trọng, ví dụ hoặc dữ kiện trả lời câu hỏi của trẻ. Khuyến khích trẻ gạch dưới hoặc ghi một ghi chú ngắn. Đọc cẩn thận giúp trẻ hiểu thông tin tốt hơn và tập trung vào chủ đề."
       },
-      "tags": ["reading"],
+      "tags": [
+        "reading"
+      ],
       "audio": "research_skills_v1_read_carefully.mp3"
     },
     {
       "slug": "check-facts",
-      "keywords_en": ["facts", "check", "truth"],
-      "keywords_vi": ["sự thật", "kiểm tra", "đúng sai"],
+      "keywords_en": [
+        "facts",
+        "check",
+        "truth"
+      ],
+      "keywords_vi": [
+        "sự thật",
+        "kiểm tra",
+        "đúng sai"
+      ],
       "copy": {
         "en": "Teach kids to check facts by comparing information from two sources. If both sources say the same thing, it is more likely to be true. Explain that checking facts helps avoid mistakes and makes their learning more reliable.",
         "vi": "Hãy dạy trẻ kiểm tra sự thật bằng cách so sánh thông tin từ hai nguồn khác nhau. Nếu cả hai nguồn đều nói giống nhau, thông tin đó có khả năng đúng hơn. Giải thích rằng kiểm tra sự thật giúp tránh sai sót và khiến việc học của trẻ đáng tin cậy hơn."
       },
-      "tags": ["facts"],
+      "tags": [
+        "facts"
+      ],
       "audio": "research_skills_v1_check_facts.mp3"
     },
     {
       "slug": "share-what-you-learn",
-      "keywords_en": ["share", "learning", "research"],
-      "keywords_vi": ["chia sẻ", "học hỏi", "tìm hiểu"],
+      "keywords_en": [
+        "share",
+        "learning",
+        "research"
+      ],
+      "keywords_vi": [
+        "chia sẻ",
+        "học hỏi",
+        "tìm hiểu"
+      ],
       "copy": {
         "en": "Teach kids to share what they learned using simple words. Encourage them to explain their answer in one or two clear sentences or draw a picture of what they found. Sharing helps kids remember information better and feel proud of their learning.",
         "vi": "Hãy dạy trẻ chia sẻ những gì mình học được bằng từ ngữ đơn giản. Khuyến khích trẻ giải thích câu trả lời bằng một hoặc hai câu rõ ràng hoặc vẽ hình thể hiện điều trẻ tìm hiểu. Chia sẻ giúp trẻ ghi nhớ tốt hơn và cảm thấy tự hào về việc học của mình."
       },
-      "tags": ["share"],
+      "tags": [
+        "share"
+      ],
       "audio": "research_skills_v1_share_what_you_learn.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all"],
-      "keywords_vi": ["tất cả"],
+      "keywords_en": [
+        "all"
+      ],
+      "keywords_vi": [
+        "tất cả"
+      ],
       "copy": {
         "en": "Good research begins with a clear question. Teach kids to ask simple, focused questions like “Why do cats purr?” or “How does rain form?” Encourage them to choose one question at a time so they do not feel overwhelmed. This helps children understand that research is about curiosity and finding clear answers step by step.Teach kids that good sources are places with correct and helpful information—school websites, children’s encyclopedias, educational videos, or teacher-approved pages. Explain that not everything online is true, so choosing the right source is important. This helps kids build safe and smart research habits.Teach kids to read slowly and notice details. Show them how to look for important words, examples, or facts that answer their question. Encourage them to highlight or write one short note. Careful reading helps kids understand information better and stay focused on the topic.Teach kids to check facts by comparing information from two sources. If both sources say the same thing, it is more likely to be true. Explain that checking facts helps avoid mistakes and makes their learning more reliable.Teach kids to share what they learned using simple words. Encourage them to explain their answer in one or two clear sentences or draw a picture of what they found. Sharing helps kids remember information better and feel proud of their learning.",
         "vi": "Mọi việc tìm hiểu tốt đều bắt đầu từ một câu hỏi rõ ràng. Hãy dạy trẻ đặt câu hỏi đơn giản và tập trung như “Vì sao mèo kêu rù rù?” hoặc “Mưa hình thành thế nào?” Khuyến khích trẻ chọn một câu hỏi mỗi lần để không bị quá tải. Điều này giúp trẻ hiểu rằng tìm hiểu là khám phá từng bước theo sự tò mò.Hãy dạy trẻ rằng nguồn tin tốt là nơi có thông tin chính xác và hữu ích—trang web của trường, sách bách khoa dành cho trẻ, video giáo dục hoặc trang được giáo viên gợi ý. Giải thích rằng không phải mọi thứ trên mạng đều đúng, nên chọn nguồn tin là rất quan trọng. Điều này giúp trẻ hình thành thói quen tìm hiểu an toàn và thông minh.Hãy dạy trẻ đọc chậm và chú ý chi tiết. Chỉ trẻ cách tìm những từ quan trọng, ví dụ hoặc dữ kiện trả lời câu hỏi của trẻ. Khuyến khích trẻ gạch dưới hoặc ghi một ghi chú ngắn. Đọc cẩn thận giúp trẻ hiểu thông tin tốt hơn và tập trung vào chủ đề.Hãy dạy trẻ kiểm tra sự thật bằng cách so sánh thông tin từ hai nguồn khác nhau. Nếu cả hai nguồn đều nói giống nhau, thông tin đó có khả năng đúng hơn. Giải thích rằng kiểm tra sự thật giúp tránh sai sót và khiến việc học của trẻ đáng tin cậy hơn.Hãy dạy trẻ chia sẻ những gì mình học được bằng từ ngữ đơn giản. Khuyến khích trẻ giải thích câu trả lời bằng một hoặc hai câu rõ ràng hoặc vẽ hình thể hiện điều trẻ tìm hiểu. Chia sẻ giúp trẻ ghi nhớ tốt hơn và cảm thấy tự hào về việc học của mình."
       },
-      "tags": ["all"],
+      "tags": [
+        "all"
+      ],
       "audio": "research_skills_v1_ask_clear_questions.mp3 research_skills_v1_good_sources.mp3 research_skills_v1_read_carefully.mp3 research_skills_v1_check_facts.mp3 research_skills_v1_share_what_you_learn.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "10-13",
-    "level": "Kids Level 3",
-    "created_at": "2025-11-23T00:00:00+00:00",
-    "updated_at": "2025-11-23T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#FDF5E6"
-  }
+  ]
 }

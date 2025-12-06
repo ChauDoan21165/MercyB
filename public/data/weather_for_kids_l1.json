@@ -13,77 +13,132 @@
   "entries": [
     {
       "slug": "sunny",
-      "keywords_en": ["weather", "sun", "warm"],
-      "keywords_vi": ["thời tiết", "nắng", "ấm"],
+      "keywords_en": [
+        "weather",
+        "sun",
+        "warm"
+      ],
+      "keywords_vi": [
+        "thời tiết",
+        "nắng",
+        "ấm"
+      ],
       "copy": {
         "en": "Teach the word “sun” by stepping outside and pointing to the bright sky. Say the word clearly: “sun.” Invite your child to close their eyes for a moment and feel the warm light on their face. Connecting a real feeling to a word makes it stick.",
         "vi": "Dạy từ “sun” bằng cách ra ngoài trời và chỉ lên bầu trời sáng. Đọc rõ ràng: “sun.” Rủ bé nhắm mắt một chút để cảm nhận ánh nắng ấm. Kết nối cảm giác thật với từ giúp bé nhớ lâu."
       },
-      "tags": ["weather", "sun"],
+      "tags": [
+        "weather",
+        "sun"
+      ],
       "audio": "weather_for_kids_v1_sun.mp3"
     },
     {
       "slug": "rainy",
-      "keywords_en": ["weather", "rain", "wet"],
-      "keywords_vi": ["thời tiết", "mưa", "ướt"],
+      "keywords_en": [
+        "weather",
+        "rain",
+        "wet"
+      ],
+      "keywords_vi": [
+        "thời tiết",
+        "mưa",
+        "ướt"
+      ],
       "copy": {
         "en": "Introduce the word “rain” by listening for raindrops or tapping your fingers lightly to imitate rain. Say the word slowly and let your child make gentle tapping sounds too. Soft rhythms make this word fun to learn.",
         "vi": "Giới thiệu từ “rain” bằng cách lắng nghe tiếng mưa hoặc gõ nhẹ ngón tay để mô phỏng. Đọc từ thật chậm và để bé gõ theo. Nhịp nhẹ nhàng khiến từ này vui và dễ nhớ."
       },
-      "tags": ["weather", "rain"],
+      "tags": [
+        "weather",
+        "rain"
+      ],
       "audio": "weather_for_kids_v1_rain.mp3"
     },
     {
       "slug": "windy",
-      "keywords_en": ["weather", "wind", "blow"],
-      "keywords_vi": ["thời tiết", "gió", "thổi"],
+      "keywords_en": [
+        "weather",
+        "wind",
+        "blow"
+      ],
+      "keywords_vi": [
+        "thời tiết",
+        "gió",
+        "thổi"
+      ],
       "copy": {
         "en": "Teach the word “wind” by standing where the breeze can be felt. Say the word softly and invite your child to hold out their hands to feel the air. Blow gently toward each other to imitate wind. This simple motion helps the meaning stick.",
         "vi": "Dạy từ “wind” bằng cách đứng nơi có gió nhẹ. Đọc từ dịu dàng và để bé đưa tay cảm nhận không khí. Thổi nhẹ vào nhau để bắt chước gió. Động tác đơn giản này giúp bé ghi nhớ ý nghĩa từ tốt hơn."
       },
-      "tags": ["weather", "wind"],
+      "tags": [
+        "weather",
+        "wind"
+      ],
       "audio": "weather_for_kids_v1_wind.mp3"
     },
     {
       "slug": "cloudy",
-      "keywords_en": ["weather", "cloud", "sky"],
-      "keywords_vi": ["thời tiết", "mây", "bầu trời"],
+      "keywords_en": [
+        "weather",
+        "cloud",
+        "sky"
+      ],
+      "keywords_vi": [
+        "thời tiết",
+        "mây",
+        "bầu trời"
+      ],
       "copy": {
         "en": "Teach “cloud” by looking up at the sky together. Point to a cloud and say the word clearly. Ask your child what shape it looks like—a bunny, a boat, or a mountain. Imagination makes vocabulary warm and enjoyable.",
         "vi": "Dạy từ “cloud” bằng cách cùng nhìn lên trời. Chỉ vào đám mây và đọc từ rõ ràng. Hỏi bé xem chúng giống hình gì—con thỏ, con thuyền hay ngọn núi. Tưởng tượng khiến việc học trở nên thú vị."
       },
-      "tags": ["weather", "cloud"],
+      "tags": [
+        "weather",
+        "cloud"
+      ],
       "audio": "weather_for_kids_v1_cloud.mp3"
     },
     {
       "slug": "weather-game",
-      "keywords_en": ["weather", "game", "move"],
-      "keywords_vi": ["thời tiết", "trò chơi", "di chuyển"],
+      "keywords_en": [
+        "weather",
+        "game",
+        "move"
+      ],
+      "keywords_vi": [
+        "thời tiết",
+        "trò chơi",
+        "di chuyển"
+      ],
       "copy": {
         "en": "Create a weather-movement game. Say “sun” and ask your child to stretch tall. Say “rain” and let them tap their fingers. Say “wind” and let them sway side to side. Say “cloud” and let them look up slowly. Movement keeps learning playful.",
         "vi": "Tạo trò chơi thời tiết. Khi bạn nói “sun,” bé vươn cao. Khi nói “rain,” bé gõ nhẹ ngón tay. Khi nói “wind,” bé lắc nhẹ người. Khi nói “cloud,” bé ngẩng đầu nhìn lên. Vận động giúp việc học vui hơn."
       },
-      "tags": ["weather", "game"],
+      "tags": [
+        "weather",
+        "game"
+      ],
       "audio": "weather_for_kids_v1_game.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all", "complete"],
-      "keywords_vi": ["tất cả", "đầy đủ"],
+      "keywords_en": [
+        "all",
+        "complete"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "đầy đủ"
+      ],
       "copy": {
         "en": "Teach “sun” by pointing to the bright sky and feeling warm light.\n\nTeach “rain” by imitating raindrops with gentle tapping.\n\nTeach “wind” by feeling the breeze and blowing softly.\n\nTeach “cloud” by looking up and imagining shapes together.\n\nPlay a weather-movement game with sun, rain, wind, and cloud.\n\nThese soft outdoor sensations help children learn weather words naturally through real experience and playful movement.",
         "vi": "Dạy “sun” bằng cách chỉ lên trời sáng và cảm nhận ánh nắng.\n\nDạy “rain” bằng cách gõ nhẹ mô phỏng tiếng mưa.\n\nDạy “wind” bằng cách cảm nhận gió và thổi nhẹ.\n\nDạy “cloud” bằng cách nhìn lên và tưởng tượng hình dạng.\n\nChơi trò chơi thời tiết với sun, rain, wind và cloud.\n\nNhững cảm giác ngoài trời nhẹ nhàng giúp bé học từ vựng thời tiết một cách tự nhiên."
       },
-      "tags": ["all"],
+      "tags": [
+        "all"
+      ],
       "audio": "weather_for_kids_v1_sun.mp3 weather_for_kids_v1_rain.mp3 weather_for_kids_v1_wind.mp3 weather_for_kids_v1_cloud.mp3 weather_for_kids_v1_game.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "4-7",
-    "level": "Kids Level 1",
-    "created_at": "2025-11-21T00:00:00+00:00",
-    "updated_at": "2025-11-21T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#CFE8FF"
-  }
+  ]
 }

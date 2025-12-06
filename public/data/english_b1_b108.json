@@ -13,63 +13,105 @@
   "entries": [
     {
       "slug": "sharing-your-opinion",
-      "keywords_en": ["opinion", "speaking"],
-      "keywords_vi": ["ý kiến", "nói"],
+      "keywords_en": [
+        "opinion",
+        "speaking"
+      ],
+      "keywords_vi": [
+        "ý kiến",
+        "nói"
+      ],
       "copy": {
         "en": "Use simple lines to share your opinion. I think this is a good idea. I feel that this plan is better. In my opinion, this option is easier. These phrases are polite and clear. Start with short sentences before trying longer ones.",
         "vi": "Hãy dùng các câu đơn giản để nêu ý kiến. I think this is a good idea. I feel that this plan is better. In my opinion, this option is easier. Những câu này lịch sự và rõ ràng. Hãy bắt đầu với câu ngắn trước khi thử câu dài."
       },
-      "audio": "b108_01_en.mp3"
+      "audio": "b108_01_en.mp3",
+      "tags": []
     },
     {
       "slug": "agreeing-politely",
-      "keywords_en": ["agree", "conversation"],
-      "keywords_vi": ["đồng ý", "hội thoại"],
+      "keywords_en": [
+        "agree",
+        "conversation"
+      ],
+      "keywords_vi": [
+        "đồng ý",
+        "hội thoại"
+      ],
       "copy": {
         "en": "Use easy patterns to agree politely. I agree with you. That is true. You are right. I think so too. Add a short reason if possible. I agree because it saves time. These lines make conversations smooth and friendly.",
         "vi": "Hãy dùng các mẫu đơn giản để đồng ý một cách lịch sự. I agree with you. That is true. You are right. I think so too. Thêm một lý do ngắn nếu có thể. I agree because it saves time. Những câu này giúp hội thoại diễn ra trôi chảy và thân thiện."
       },
-      "audio": "b108_02_en.mp3"
+      "audio": "b108_02_en.mp3",
+      "tags": []
     },
     {
       "slug": "disagreeing-politely",
-      "keywords_en": ["disagree", "conversation"],
-      "keywords_vi": ["không đồng ý", "hội thoại"],
+      "keywords_en": [
+        "disagree",
+        "conversation"
+      ],
+      "keywords_vi": [
+        "không đồng ý",
+        "hội thoại"
+      ],
       "copy": {
         "en": "Disagreeing politely is important. Use soft phrases. I am not sure about that. I see your point, but I think differently. I understand, but I do not agree. These phrases keep the conversation calm and respectful.",
         "vi": "Việc không đồng ý một cách lịch sự rất quan trọng. Hãy dùng các mẫu nhẹ nhàng. I am not sure about that. I see your point, but I think differently. I understand, but I do not agree. Các mẫu này giữ cho cuộc trò chuyện bình tĩnh và tôn trọng."
       },
-      "audio": "b108_03_en.mp3"
+      "audio": "b108_03_en.mp3",
+      "tags": []
     },
     {
       "slug": "giving-simple-reasons",
-      "keywords_en": ["reasons", "explain"],
-      "keywords_vi": ["lý do", "giải thích"],
+      "keywords_en": [
+        "reasons",
+        "explain"
+      ],
+      "keywords_vi": [
+        "lý do",
+        "giải thích"
+      ],
       "copy": {
         "en": "Give short reasons with because. I like this one because it is easy. I prefer this because it is cheaper. I do not choose that because it takes too long. Keep the reason short. Simple is clear.",
         "vi": "Hãy đưa ra lý do ngắn gọn với because. I like this one because it is easy. I prefer this because it is cheaper. I do not choose that because it takes too long. Giữ lý do thật ngắn. Đơn giản là rõ ràng."
       },
-      "audio": "b108_04_en.mp3"
+      "audio": "b108_04_en.mp3",
+      "tags": []
     },
     {
       "slug": "asking-for-opinions",
-      "keywords_en": ["opinion", "ask"],
-      "keywords_vi": ["ý kiến", "hỏi"],
+      "keywords_en": [
+        "opinion",
+        "ask"
+      ],
+      "keywords_vi": [
+        "ý kiến",
+        "hỏi"
+      ],
       "copy": {
         "en": "Use simple questions to ask for opinions. What do you think? How do you feel about it? Do you agree? These questions help you start discussions and show respect for others.",
         "vi": "Hãy dùng các câu hỏi đơn giản để hỏi ý kiến. What do you think? How do you feel about it? Do you agree? Những câu hỏi này giúp bạn bắt đầu trao đổi và thể hiện sự tôn trọng người khác."
       },
-      "audio": "b108_05_en.mp3"
+      "audio": "b108_05_en.mp3",
+      "tags": []
     },
     {
       "slug": "daily-opinion-practice",
-      "keywords_en": ["practice", "opinion"],
-      "keywords_vi": ["luyện tập", "ý kiến"],
+      "keywords_en": [
+        "practice",
+        "opinion"
+      ],
+      "keywords_vi": [
+        "luyện tập",
+        "ý kiến"
+      ],
       "copy": {
         "en": "Practice one opinion sentence every day. I think English is helpful. I prefer studying in the morning. I do not agree with this idea. Daily practice builds confidence and fluency.",
         "vi": "Hãy luyện nói một câu nêu ý kiến mỗi ngày. I think English is helpful. I prefer studying in the morning. I do not agree with this idea. Việc luyện tập hằng ngày giúp bạn tự tin và trôi chảy hơn."
       },
-      "audio": "b108_06_en.mp3"
+      "audio": "b108_06_en.mp3",
+      "tags": []
     }
   ]
 }

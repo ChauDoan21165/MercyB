@@ -13,77 +13,137 @@
   "entries": [
     {
       "slug": "sunny-day",
-      "keywords_en": ["sunny", "weather", "bright"],
-      "keywords_vi": ["nắng", "thời tiết", "sáng"],
+      "keywords_en": [
+        "sunny",
+        "weather",
+        "bright"
+      ],
+      "keywords_vi": [
+        "nắng",
+        "thời tiết",
+        "sáng"
+      ],
       "copy": {
         "en": "Teach “sunny” by pointing to the bright sky. Say: “Sunny day!” and let your child feel the warm sunlight on their hands. You can also draw a small sun with a smile to connect the word with a friendly image. Kids remember weather words well when they feel and see the real moment.",
         "vi": "Dạy từ “sunny” bằng cách chỉ lên bầu trời sáng. Nói: “Sunny day!” và để bé cảm ánh nắng trên tay. Bạn có thể vẽ mặt trời nhỏ có nụ cười để gắn từ với hình ảnh thân thiện. Trẻ ghi nhớ tốt khi cảm nhận thời tiết thật."
       },
-      "tags": ["sunny", "weather"],
+      "tags": [
+        "sunny",
+        "weather"
+      ],
       "audio": "weather_seasons_v1_sunny.mp3"
     },
     {
       "slug": "rainy-day",
-      "keywords_en": ["rainy", "weather", "wet"],
-      "keywords_vi": ["mưa", "thời tiết", "ướt"],
+      "keywords_en": [
+        "rainy",
+        "weather",
+        "wet"
+      ],
+      "keywords_vi": [
+        "mưa",
+        "thời tiết",
+        "ướt"
+      ],
       "copy": {
         "en": "Teach “rainy” by looking out the window together. Say: “Rainy day,” and listen to the raindrops. Show how umbrellas or raincoats are used. Kids enjoy linking the sound of rain with the word, making it easy to remember.",
         "vi": "Dạy từ “rainy” bằng cách nhìn mưa qua cửa sổ. Nói: “Rainy day,” và lắng nghe tiếng mưa rơi. Cho bé xem ô hoặc áo mưa được dùng thế nào. Trẻ thích liên kết âm thanh mưa với từ mới, giúp ghi nhớ nhanh."
       },
-      "tags": ["rainy", "weather"],
+      "tags": [
+        "rainy",
+        "weather"
+      ],
       "audio": "weather_seasons_v1_rainy.mp3"
     },
     {
       "slug": "windy-day",
-      "keywords_en": ["windy", "air", "movement"],
-      "keywords_vi": ["gió", "không khí", "chuyển động"],
+      "keywords_en": [
+        "windy",
+        "air",
+        "movement"
+      ],
+      "keywords_vi": [
+        "gió",
+        "không khí",
+        "chuyển động"
+      ],
       "copy": {
         "en": "Teach “windy” by feeling the air move. Step outside and say, “Windy!” while letting your child stretch their arms out. Show how leaves move or how hair blows in the wind. Real movement helps kids understand the meaning easily.",
         "vi": "Dạy từ “windy” bằng cách cảm gió thổi. Bước ra ngoài và nói: “Windy!” khi bé dang tay. Chỉ cho bé thấy lá cây rung hoặc tóc bay trong gió. Chuyển động thật giúp trẻ hiểu nghĩa của từ nhanh chóng."
       },
-      "tags": ["windy", "weather"],
+      "tags": [
+        "windy",
+        "weather"
+      ],
       "audio": "weather_seasons_v1_windy.mp3"
     },
     {
       "slug": "hot-and-cold",
-      "keywords_en": ["hot", "cold", "temperature"],
-      "keywords_vi": ["nóng", "lạnh", "nhiệt độ"],
+      "keywords_en": [
+        "hot",
+        "cold",
+        "temperature"
+      ],
+      "keywords_vi": [
+        "nóng",
+        "lạnh",
+        "nhiệt độ"
+      ],
       "copy": {
         "en": "Teach “hot” and “cold” using safe examples. Say: “Hot!” when holding a warm cup of tea and “Cold!” when touching ice or cool water. Let your child feel the difference gently. Kids learn temperature words best through real sensations.",
         "vi": "Dạy “hot” và “cold” bằng ví dụ an toàn. Nói: “Hot!” khi cầm cốc nước ấm và “Cold!” khi chạm vào nước lạnh hoặc đá. Để bé cảm nhận nhẹ nhàng sự khác biệt. Trẻ học từ về nhiệt độ tốt nhất qua cảm giác thật."
       },
-      "tags": ["hot", "cold"],
+      "tags": [
+        "hot",
+        "cold"
+      ],
       "audio": "weather_seasons_v1_hot_cold.mp3"
     },
     {
       "slug": "four-seasons",
-      "keywords_en": ["seasons", "spring", "summer", "autumn", "winter"],
-      "keywords_vi": ["mùa", "xuân", "hè", "thu", "đông"],
+      "keywords_en": [
+        "seasons",
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "keywords_vi": [
+        "mùa",
+        "xuân",
+        "hè",
+        "thu",
+        "đông"
+      ],
       "copy": {
         "en": "Teach the four seasons by matching them with simple pictures or symbols. Say: “Spring—flowers,” “Summer—sun,” “Autumn—leaves,” “Winter—snow.” Children enjoy naming the seasons when each one has a clear image. Repeat during books or daily conversations.",
         "vi": "Dạy bốn mùa bằng cách ghép chúng với hình ảnh đơn giản. Nói: “Spring—flowers,” “Summer—sun,” “Autumn—leaves,” “Winter—snow.” Trẻ thích gọi tên các mùa khi mỗi mùa có biểu tượng rõ ràng. Lặp lại khi đọc sách hoặc trò chuyện mỗi ngày."
       },
-      "tags": ["seasons"],
+      "tags": [
+        "seasons"
+      ],
       "audio": "weather_seasons_v1_four_seasons.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all", "complete", "full"],
-      "keywords_vi": ["tất cả", "đầy đủ", "trọn vẹn"],
+      "keywords_en": [
+        "all",
+        "complete",
+        "full"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "đầy đủ",
+        "trọn vẹn"
+      ],
       "copy": {
         "en": "Teach “sunny” with bright skies.\n\nTeach “rainy” by watching raindrops.\n\nTeach “windy” by feeling moving air.\n\nTeach “hot” and “cold” through safe temperature moments.\n\nTeach the four seasons with clear images.\n\nThese simple weather words help children talk about the world around them with confidence.",
         "vi": "Dạy “sunny” bằng bầu trời sáng.\n\nDạy “rainy” bằng tiếng mưa rơi.\n\nDạy “windy” khi cảm gió thổi.\n\nDạy “hot” và “cold” bằng ví dụ nhiệt độ an toàn.\n\nDạy bốn mùa bằng hình ảnh rõ ràng.\n\nNhững từ vựng này giúp trẻ tự tin nói về thế giới xung quanh."
       },
-      "tags": ["all"],
+      "tags": [
+        "all"
+      ],
       "audio": "weather_seasons_v1_sunny.mp3 weather_seasons_v1_rainy.mp3 weather_seasons_v1_windy.mp3 weather_seasons_v1_hot_cold.mp3 weather_seasons_v1_four_seasons.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "7-10",
-    "level": "Kids Level 2",
-    "created_at": "2025-11-21T00:00:00+00:00",
-    "updated_at": "2025-11-21T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#D6EEFF"
-  }
+  ]
 }

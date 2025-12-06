@@ -13,63 +13,105 @@
   "entries": [
     {
       "slug": "using-simple-past",
-      "keywords_en": ["past tense", "grammar"],
-      "keywords_vi": ["thì quá khứ", "ngữ pháp"],
+      "keywords_en": [
+        "past tense",
+        "grammar"
+      ],
+      "keywords_vi": [
+        "thì quá khứ",
+        "ngữ pháp"
+      ],
       "copy": {
         "en": "Use simple past to talk about completed actions. I visited my friend. I watched a movie. I worked last night. Keep each line short and clear so the listener understands easily.",
         "vi": "Hãy dùng thì quá khứ đơn để nói về hành động đã hoàn thành. Tôi đã thăm bạn. Tôi đã xem phim. Tôi đã làm việc tối qua. Giữ câu ngắn và rõ để người nghe dễ hiểu."
       },
-      "audio": "b112_01_en.mp3"
+      "audio": "b112_01_en.mp3",
+      "tags": []
     },
     {
       "slug": "talking-about-travel",
-      "keywords_en": ["travel", "past"],
-      "keywords_vi": ["du lịch", "quá khứ"],
+      "keywords_en": [
+        "travel",
+        "past"
+      ],
+      "keywords_vi": [
+        "du lịch",
+        "quá khứ"
+      ],
       "copy": {
         "en": "Describe travel experiences with simple sentences. I went to Da Nang. I visited the beach. I tried new food. I took many photos. Simple lines help you share your experience naturally.",
         "vi": "Hãy mô tả trải nghiệm du lịch bằng câu đơn giản. Tôi đã đi Đà Nẵng. Tôi đã thăm bãi biển. Tôi đã thử món ăn mới. Tôi đã chụp nhiều ảnh. Câu ngắn giúp bạn chia sẻ tự nhiên."
       },
-      "audio": "b112_02_en.mp3"
+      "audio": "b112_02_en.mp3",
+      "tags": []
     },
     {
       "slug": "sharing-school-or-work-experiences",
-      "keywords_en": ["school", "work"],
-      "keywords_vi": ["trường học", "công việc"],
+      "keywords_en": [
+        "school",
+        "work"
+      ],
+      "keywords_vi": [
+        "trường học",
+        "công việc"
+      ],
       "copy": {
         "en": "Talk about school or work in the past. I studied late yesterday. I learned something new. I helped my team. I finished a big task. Short lines make the story easy to follow.",
         "vi": "Hãy nói về chuyện học hoặc làm trong quá khứ. Hôm qua tôi học khuya. Tôi đã học điều mới. Tôi đã hỗ trợ nhóm. Tôi đã hoàn thành một nhiệm vụ lớn. Câu ngắn giúp câu chuyện dễ theo dõi."
       },
-      "audio": "b112_03_en.mp3"
+      "audio": "b112_03_en.mp3",
+      "tags": []
     },
     {
       "slug": "talking-about-how-you-felt",
-      "keywords_en": ["feelings", "past"],
-      "keywords_vi": ["cảm xúc", "quá khứ"],
+      "keywords_en": [
+        "feelings",
+        "past"
+      ],
+      "keywords_vi": [
+        "cảm xúc",
+        "quá khứ"
+      ],
       "copy": {
         "en": "Use simple lines to describe past feelings. I felt happy. I felt nervous. I felt tired after work. I felt excited about the trip. Clear feelings make your stories warm and real.",
         "vi": "Hãy dùng câu ngắn để nói về cảm xúc đã qua. Tôi đã vui. Tôi đã lo. Tôi đã mệt sau giờ làm. Tôi đã háo hức về chuyến đi. Cảm xúc rõ ràng giúp câu chuyện chân thật và ấm áp."
       },
-      "audio": "b112_04_en.mp3"
+      "audio": "b112_04_en.mp3",
+      "tags": []
     },
     {
       "slug": "telling-a-short-memory",
-      "keywords_en": ["memory", "story"],
-      "keywords_vi": ["kỷ niệm", "câu chuyện"],
+      "keywords_en": [
+        "memory",
+        "story"
+      ],
+      "keywords_vi": [
+        "kỷ niệm",
+        "câu chuyện"
+      ],
       "copy": {
         "en": "Share a short memory using simple lines. Last year I met a new friend. We talked for hours. We took photos and laughed a lot. Simple memories help you practice storytelling.",
         "vi": "Hãy chia sẻ một kỷ niệm bằng câu đơn giản. Năm ngoái tôi gặp một người bạn mới. Chúng tôi nói chuyện hàng giờ. Chúng tôi chụp ảnh và cười rất nhiều. Kỷ niệm đơn giản giúp bạn luyện kể chuyện."
       },
-      "audio": "b112_05_en.mp3"
+      "audio": "b112_05_en.mp3",
+      "tags": []
     },
     {
       "slug": "daily-past-practice",
-      "keywords_en": ["practice", "past tense"],
-      "keywords_vi": ["luyện tập", "thì quá khứ"],
+      "keywords_en": [
+        "practice",
+        "past tense"
+      ],
+      "keywords_vi": [
+        "luyện tập",
+        "thì quá khứ"
+      ],
       "copy": {
         "en": "Every night, say three short lines about your day. I worked. I learned. I relaxed. Daily practice builds natural past tense skills.",
         "vi": "Mỗi tối hãy nói ba câu ngắn về ngày của bạn. Tôi đã làm việc. Tôi đã học. Tôi đã nghỉ ngơi. Luyện tập hằng ngày giúp bạn dùng thì quá khứ tự nhiên hơn."
       },
-      "audio": "b112_06_en.mp3"
+      "audio": "b112_06_en.mp3",
+      "tags": []
     }
   ]
 }

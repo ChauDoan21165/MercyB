@@ -13,83 +13,183 @@
   "entries": [
     {
       "slug": "strategic_geography_and_hard_constraints",
-      "keywords_en": ["geography", "hard constraints", "terrain", "borders", "buffer"],
-      "keywords_vi": ["địa lý", "giới hạn cứng", "địa hình", "biên giới", "vùng đệm"],
+      "keywords_en": [
+        "geography",
+        "hard constraints",
+        "terrain",
+        "borders",
+        "buffer"
+      ],
+      "keywords_vi": [
+        "địa lý",
+        "giới hạn cứng",
+        "địa hình",
+        "biên giới",
+        "vùng đệm"
+      ],
       "copy": {
         "en": "Geography is the first and least negotiable element of national power. It creates hard constraints and enabling conditions that leaders must adapt to rather than wish away. A nation with mountain borders enjoys natural defensibility but may suffer trade limitations. A maritime nation commands mobility and reach yet faces vulnerability in blockade warfare. A large landmass provides resource depth but increases the cost of internal cohesion. Strategic geography is not destiny, but it shapes the menu of realistic actions. States that align policy with terrain gain compounding advantages, as seen in Britain’s use of naval dominance, Russia’s use of depth, and Japan’s use of maritime chokepoints. Geography also shapes population distribution, economic centers, logistical routes, and vulnerability points such as straits or narrow plains. The wise strategist does not view geography as static; engineering, technology, and infrastructure can shift constraints. Railroads changed continental warfare, satellites altered reconnaissance, and canals reshaped global trade. Geography becomes power when a state invests in ports, fortifications, internal mobility, and regional integration. Ignoring geography leads to overextension, misallocation, and avoidable defeats. Understanding the map is understanding the possible.",
         "vi": "Địa lý là yếu tố đầu tiên và ít có khả năng thay đổi trong quyền lực quốc gia. Nó tạo ra các giới hạn cứng và điều kiện thuận lợi mà lãnh đạo phải thích ứng thay vì phủ nhận. Quốc gia có biên giới núi dễ phòng thủ nhưng bị hạn chế thương mại. Quốc gia biển có khả năng cơ động và tiếp cận rộng nhưng dễ tổn thương trước phong tỏa. Lãnh thổ lớn có độ sâu tài nguyên nhưng đòi hỏi chi phí cao để duy trì gắn kết nội bộ. Địa lý không phải định mệnh, nhưng nó định hình danh mục hành động khả thi. Những quốc gia điều chỉnh chính sách phù hợp với địa hình hưởng lợi thế cộng hưởng, như Anh với hải quân, Nga với chiều sâu phòng thủ, Nhật với điểm nghẽn hải lộ. Địa lý còn định hình phân bố dân cư, trung tâm kinh tế, tuyến hậu cần và các điểm dễ tổn thương như eo biển. Nhà chiến lược khôn ngoan không xem địa lý là tĩnh; kỹ thuật, công nghệ và hạ tầng có thể thay đổi giới hạn. Đường sắt thay đổi chiến tranh lục địa, vệ tinh thay đổi trinh sát, kênh đào thay đổi thương mại. Địa lý trở thành quyền lực khi quốc gia đầu tư vào cảng, pháo đài, cơ động nội địa và hội nhập khu vực. Bỏ qua địa lý dẫn đến quá tải, sai phân bổ và thất bại tránh được. Hiểu bản đồ là hiểu cái khả thi."
       },
-      "audio": "npc_v1_1_en.mp3"
+      "audio": "npc_v1_1_en.mp3",
+      "tags": []
     },
     {
       "slug": "demographics_and_population_resilience",
-      "keywords_en": ["demographics", "population", "resilience", "labor", "age structure"],
-      "keywords_vi": ["dân số", "nhân khẩu", "phục hồi", "lao động", "cơ cấu tuổi"],
+      "keywords_en": [
+        "demographics",
+        "population",
+        "resilience",
+        "labor",
+        "age structure"
+      ],
+      "keywords_vi": [
+        "dân số",
+        "nhân khẩu",
+        "phục hồi",
+        "lao động",
+        "cơ cấu tuổi"
+      ],
       "copy": {
         "en": "Demographics determine the long-term vitality of national power. A youthful population increases economic dynamism and military potential but requires jobs, education, and political stability. An aging population strains pensions, healthcare, and tax systems, reducing resources available for strategic investment. The true strength of demographics lies not only in numbers but in resilience—health, education, skills, and social cohesion. Nations with declining birth rates must adapt structurally through automation, immigration policy, and productivity upgrades. Nations with youth-heavy populations must prevent unemployment shocks that lead to instability. Demographics also influence geopolitical behavior: rising populations demand expansion of markets and energy; shrinking populations encourage defensive grand strategies. Strategic demography asks: can the nation replace its workers, soldiers, innovators, and caregivers faster than it loses them? Can society integrate new citizens? Can it prevent brain drain? Demographic resilience can outweigh demographic size if a smaller nation maintains superior health, literacy, and institutional quality. Population is not merely a number—it is the human engine of strategy.",
         "vi": "Dân số quyết định sức sống dài hạn của quyền lực quốc gia. Dân số trẻ tăng động lực kinh tế và tiềm lực quân sự nhưng đòi hỏi việc làm, giáo dục và ổn định chính trị. Dân số già tạo gánh nặng cho lương hưu, y tế và thuế, làm giảm nguồn lực cho đầu tư chiến lược. Sức mạnh thật sự của nhân khẩu không chỉ nằm ở số lượng mà ở khả năng phục hồi—sức khỏe, giáo dục, kỹ năng và gắn kết xã hội. Quốc gia có tỷ lệ sinh giảm phải thích ứng bằng tự động hóa, chính sách nhập cư và nâng năng suất. Quốc gia có dân số trẻ phải tránh cú sốc thất nghiệp gây bất ổn. Nhân khẩu còn ảnh hưởng hành vi địa chính trị: dân số tăng đòi hỏi mở rộng thị trường; dân số giảm dẫn đến chiến lược phòng thủ. Nhân khẩu chiến lược đặt câu hỏi: quốc gia có thể thay thế lực lượng lao động, binh sĩ, nhà sáng tạo và người chăm sóc nhanh hơn tốc độ mất đi không? Xã hội có thể hòa nhập người mới không? Có thể ngăn chảy máu chất xám không? Dân số nhỏ nhưng khỏe mạnh, có học vấn và thể chế tốt có thể vượt dân số lớn nhưng yếu. Dân số không chỉ là con số—nó là động cơ con người của chiến lược."
       },
-      "audio": "npc_v1_2_en.mp3"
+      "audio": "npc_v1_2_en.mp3",
+      "tags": []
     },
     {
       "slug": "economic_foundations_and_industrial_depth",
-      "keywords_en": ["economy", "industry", "production", "infrastructure", "growth"],
-      "keywords_vi": ["kinh tế", "công nghiệp", "sản xuất", "hạ tầng", "tăng trưởng"],
+      "keywords_en": [
+        "economy",
+        "industry",
+        "production",
+        "infrastructure",
+        "growth"
+      ],
+      "keywords_vi": [
+        "kinh tế",
+        "công nghiệp",
+        "sản xuất",
+        "hạ tầng",
+        "tăng trưởng"
+      ],
       "copy": {
         "en": "Economic strength forms the backbone of sustained national power. GDP size matters, but composition matters more. An economy driven by finance and consumption cannot sustain prolonged conflict or technological competition without industrial depth. A nation must possess diversified production, supply chain security, infrastructure capacity, and energy resilience. Industrial capabilities—steel, semiconductors, chemicals, precision manufacturing, shipbuilding—aren’t just economic sectors; they are strategic tissues. Nations that lose industrial capacity lose autonomy. A strong economic base funds military modernization, education, research, diplomacy, and welfare needed for stability. Growth without resilience is fragile; resilience without growth stagnates. The optimal structure blends productivity, technological advancement, export capability, and redundancy. Nations rise when they convert economic surplus into strategic capability and decline when debt, inequality, corruption, or deindustrialization hollow out their core.",
         "vi": "Sức mạnh kinh tế là xương sống của quyền lực quốc gia bền vững. Quy mô GDP quan trọng, nhưng cấu trúc quan trọng hơn. Nền kinh tế dựa vào tài chính và tiêu dùng không thể duy trì cạnh tranh công nghệ hoặc xung đột kéo dài nếu thiếu chiều sâu công nghiệp. Quốc gia phải có sản xuất đa dạng, chuỗi cung ứng an toàn, hạ tầng mạnh và năng lượng ổn định. Năng lực công nghiệp—thép, bán dẫn, hóa chất, chế tạo chính xác, đóng tàu—không chỉ là ngành kinh tế mà là mô liên kết chiến lược. Mất năng lực công nghiệp là mất tự chủ. Nền kinh tế mạnh tài trợ hiện đại hóa quân sự, giáo dục, nghiên cứu, ngoại giao và an sinh để giữ ổn định. Tăng trưởng không có khả năng phục hồi sẽ mong manh; khả năng phục hồi không có tăng trưởng sẽ trì trệ. Cấu trúc tối ưu kết hợp năng suất, công nghệ, xuất khẩu và dự phòng. Quốc gia trỗi dậy khi chuyển thặng dư kinh tế thành năng lực chiến lược và suy yếu khi nợ, bất bình đẳng hoặc mất công nghiệp làm rỗng lõi sức mạnh."
       },
-      "audio": "npc_v1_3_en.mp3"
+      "audio": "npc_v1_3_en.mp3",
+      "tags": []
     },
     {
       "slug": "military_power_structure_and_force_projection",
-      "keywords_en": ["military", "force projection", "deterrence", "logistics", "doctrine"],
-      "keywords_vi": ["quân sự", "triển khai lực lượng", "răn đe", "hậu cần", "học thuyết"],
+      "keywords_en": [
+        "military",
+        "force projection",
+        "deterrence",
+        "logistics",
+        "doctrine"
+      ],
+      "keywords_vi": [
+        "quân sự",
+        "triển khai lực lượng",
+        "răn đe",
+        "hậu cần",
+        "học thuyết"
+      ],
       "copy": {
         "en": "Military capability is not simply the size of the army but its ability to project force, sustain operations, and impose costs on adversaries. A modern military requires doctrine, logistics, training, interoperability, and technological integration. Air, sea, land, cyber, and space domains must coordinate through unified command. Deterrence depends on credibility: the adversary must believe you can and will respond. Power projection requires mobility, bases, supply lines, and political alliances. A large army without logistics collapses; a modern air force without munitions is symbolic; a navy without shipyards cannot survive attrition. The true measure of military strength is the ability to fight for weeks, not hours. Nations that combine industrial depth, coherent doctrine, disciplined forces, and long-range logistics create strategic leverage far beyond troop numbers. Military power is an instrument of policy, not a substitute for it. Its purpose is to enforce national objectives with minimum cost.",
         "vi": "Năng lực quân sự không chỉ là quy mô quân đội mà là khả năng triển khai lực lượng, duy trì chiến dịch và gây chi phí cho đối thủ. Quân đội hiện đại cần học thuyết, hậu cần, huấn luyện, khả năng phối hợp và tích hợp công nghệ. Không quân, hải quân, lục quân, không gian mạng và không gian vũ trụ phải phối hợp thông qua chỉ huy thống nhất. Răn đe phụ thuộc vào độ tin cậy: đối thủ phải tin rằng bạn có thể và sẽ đáp trả. Triển khai lực lượng đòi hỏi cơ động, căn cứ, tuyến hậu cần và liên minh. Quân đội lớn nhưng thiếu hậu cần sẽ sụp đổ; không quân hiện đại nhưng thiếu đạn chỉ mang tính biểu tượng; hải quân không có nhà máy đóng tàu không thể trụ vững trước tiêu hao. Thước đo thực sự của sức mạnh quân sự là khả năng chiến đấu trong nhiều tuần, không phải vài giờ. Quốc gia kết hợp chiều sâu công nghiệp, học thuyết rõ ràng, lực lượng kỷ luật và hậu cần tầm xa sẽ tạo ra đòn bẩy chiến lược vượt xa quân số. Sức mạnh quân sự là công cụ của chính sách, không phải thay thế. Mục đích của nó là bảo vệ mục tiêu quốc gia với chi phí thấp nhất."
       },
-      "audio": "npc_v1_4_en.mp3"
+      "audio": "npc_v1_4_en.mp3",
+      "tags": []
     },
     {
       "slug": "political_coherence_and_state_capacity",
-      "keywords_en": ["political cohesion", "state capacity", "institutions", "governance"],
-      "keywords_vi": ["liên kết chính trị", "năng lực nhà nước", "thể chế", "quản trị"],
+      "keywords_en": [
+        "political cohesion",
+        "state capacity",
+        "institutions",
+        "governance"
+      ],
+      "keywords_vi": [
+        "liên kết chính trị",
+        "năng lực nhà nước",
+        "thể chế",
+        "quản trị"
+      ],
       "copy": {
         "en": "Political coherence determines whether national power can be mobilized at all. Fragmented governments, polarized societies, and corrupt institutions drain capability even when economic and military resources exist. State capacity means the ability to tax, enforce law, provide services, implement policy, and coordinate large-scale actions. Nations with weak governance waste resources through inefficiency and internal conflict. Those with strong governance multiply power by aligning bureaucracy, industry, and military under a shared strategic direction. Political legitimacy also matters. A government perceived as predatory or incompetent loses public trust and struggles to mobilize its population in crises. Conversely, trusted institutions generate loyalty, discipline, and willingness to sacrifice. State capacity is strategy scaled to millions: if a nation cannot execute policy, it cannot compete, regardless of assets on paper.",
         "vi": "Liên kết chính trị quyết định việc quyền lực quốc gia có thể được huy động hay không. Chính phủ chia rẽ, xã hội phân cực và thể chế tham nhũng làm suy kiệt năng lực ngay cả khi tài nguyên kinh tế và quân sự dồi dào. Năng lực nhà nước nghĩa là khả năng thu thuế, thực thi pháp luật, cung cấp dịch vụ, triển khai chính sách và điều phối hành động quy mô lớn. Quốc gia có quản trị yếu sẽ lãng phí tài nguyên vì kém hiệu quả và xung đột nội bộ. Quốc gia có quản trị mạnh sẽ nhân sức mạnh bằng cách liên kết bộ máy, công nghiệp và quân đội dưới một hướng chiến lược thống nhất. Tính chính danh cũng quan trọng. Chính phủ bị xem là tham nhũng hoặc bất tài sẽ mất niềm tin công chúng và khó huy động trong khủng hoảng. Ngược lại, thể chế được tin cậy tạo ra lòng trung thành, kỷ luật và sự sẵn sàng hy sinh. Năng lực nhà nước là chiến lược được phóng đại lên quy mô hàng triệu người: nếu quốc gia không thể thực thi chính sách, nó không thể cạnh tranh dù trên giấy tờ có nhiều tài sản."
       },
-      "audio": "npc_v1_5_en.mp3"
+      "audio": "npc_v1_5_en.mp3",
+      "tags": []
     },
     {
       "slug": "science_technology_and_innovation_velocity",
-      "keywords_en": ["technology", "innovation", "R&D", "science", "future systems"],
-      "keywords_vi": ["công nghệ", "đổi mới", "R&D", "khoa học", "hệ thống tương lai"],
+      "keywords_en": [
+        "technology",
+        "innovation",
+        "R&D",
+        "science",
+        "future systems"
+      ],
+      "keywords_vi": [
+        "công nghệ",
+        "đổi mới",
+        "R&D",
+        "khoa học",
+        "hệ thống tương lai"
+      ],
       "copy": {
         "en": "Technology determines the future balance of national power. Nations that dominate research, patents, advanced manufacturing, AI, biotechnology, and energy breakthroughs shape the global strategic environment. Innovation velocity—the speed at which a country converts ideas into usable capability—matters more than static advantage. A state with strong R&D but weak industrial scaling will fall behind. Strategic technology ecosystems require universities, labs, private sector incentives, risk-taking culture, and state funding. Disruptive technologies create asymmetric power: drones vs. armor, cyber vs. infrastructure, satellites vs. concealment, AI vs. manpower. The key is integration. Technology without doctrine is noise; doctrine without technology is stagnation. Nations that fuse both gain long-term compounding advantage.",
         "vi": "Công nghệ định hình cán cân quyền lực trong tương lai. Quốc gia thống trị nghiên cứu, bằng sáng chế, sản xuất tiên tiến, AI, công nghệ sinh học và đột phá năng lượng sẽ định hình môi trường chiến lược toàn cầu. Tốc độ đổi mới—tốc độ chuyển đổi ý tưởng thành năng lực thực tế—quan trọng hơn lợi thế tĩnh. Quốc gia có R&D mạnh nhưng thiếu khả năng mở rộng công nghiệp sẽ tụt lại. Hệ sinh thái công nghệ chiến lược cần đại học, phòng thí nghiệm, khuyến khích khu vực tư nhân, văn hóa mạo hiểm và tài trợ nhà nước. Công nghệ mang tính đột phá tạo ra quyền lực phi đối xứng: drone đối kháng xe tăng, không gian mạng đối kháng hạ tầng, vệ tinh đối kháng che giấu, AI đối kháng nhân lực. Điều quan trọng là sự tích hợp. Công nghệ không có học thuyết chỉ là tiếng ồn; học thuyết không có công nghệ sẽ trì trệ. Quốc gia kết hợp cả hai sẽ hưởng lợi thế lũy tiến dài hạn."
       },
-      "audio": "npc_v1_6_en.mp3"
+      "audio": "npc_v1_6_en.mp3",
+      "tags": []
     },
     {
       "slug": "alliances_diplomacy_and_international_positioning",
-      "keywords_en": ["alliances", "diplomacy", "coalitions", "international order"],
-      "keywords_vi": ["liên minh", "ngoại giao", "liên kết", "trật tự quốc tế"],
+      "keywords_en": [
+        "alliances",
+        "diplomacy",
+        "coalitions",
+        "international order"
+      ],
+      "keywords_vi": [
+        "liên minh",
+        "ngoại giao",
+        "liên kết",
+        "trật tự quốc tế"
+      ],
       "copy": {
         "en": "Diplomacy multiplies national power by leveraging other states’ capabilities. A nation with strong alliances gains access to markets, technology, military cooperation, intelligence sharing, and political legitimacy. A diplomatically isolated nation must rely on its own strength alone, which increases vulnerability. Coalition-building requires credibility, consistency, and long-term relationship management. Nations that weaponize alliances for short-term gain lose trust; those that act predictably gain influence. Diplomacy also mitigates risks by preventing encirclement and balancing rivals. Positioning within the international order—trade systems, treaties, institutions—affects economic security and military freedom of action. The greatest strategic advantage is not dominance but centrality: becoming indispensable to multiple partners.",
         "vi": "Ngoại giao nhân quyền lực quốc gia thông qua khai thác năng lực của quốc gia khác. Quốc gia có liên minh mạnh có quyền tiếp cận thị trường, công nghệ, hợp tác quân sự, chia sẻ tình báo và tính chính danh chính trị. Quốc gia bị cô lập phải dựa vào sức mình, làm tăng rủi ro. Xây dựng liên minh đòi hỏi uy tín, nhất quán và quản lý quan hệ dài hạn. Quốc gia sử dụng liên minh như vũ khí lợi ích ngắn hạn sẽ mất niềm tin; quốc gia hành xử dự đoán được sẽ tăng ảnh hưởng. Ngoại giao còn giảm rủi ro bằng cách ngăn bao vây và cân bằng đối thủ. Vị thế trong trật tự quốc tế—hệ thống thương mại, hiệp ước, thể chế—ảnh hưởng an ninh kinh tế và tự do hành động quân sự. Lợi thế chiến lược lớn nhất không phải thống trị mà là trung tâm: trở thành quốc gia không thể thay thế với nhiều đối tác."
       },
-      "audio": "npc_v1_7_en.mp3"
+      "audio": "npc_v1_7_en.mp3",
+      "tags": []
     },
     {
       "slug": "national_moral_character_and_strategic_culture",
-      "keywords_en": ["culture", "identity", "cohesion", "national purpose", "resilience"],
-      "keywords_vi": ["văn hóa", "bản sắc", "gắn kết", "mục tiêu quốc gia", "phục hồi"],
+      "keywords_en": [
+        "culture",
+        "identity",
+        "cohesion",
+        "national purpose",
+        "resilience"
+      ],
+      "keywords_vi": [
+        "văn hóa",
+        "bản sắc",
+        "gắn kết",
+        "mục tiêu quốc gia",
+        "phục hồi"
+      ],
       "copy": {
         "en": "Strategic culture—the patterns of thinking, values, fears, and expectations embedded in a society—determines how national power is used. Nations with high social trust coordinate faster, mobilize more effectively, and withstand crisis without fragmentation. A shared national purpose strengthens resilience: people endure hardship when they believe in the future of their state. Fragmented nations waste energy on internal conflict. Culture affects risk tolerance, military doctrine, economic behavior, and diplomatic preferences. A nation with fatalistic culture may avoid innovation; a nation with heroic culture may take reckless risks. The strongest cultures balance ambition with discipline, pride with humility, unity with debate. National power collapses from within when cynicism replaces purpose and polarization replaces cohesion. Strategic culture is the invisible architecture of power.",
         "vi": "Văn hóa chiến lược—các mô thức tư duy, giá trị, nỗi sợ và kỳ vọng ăn sâu trong xã hội—quyết định cách quyền lực quốc gia được sử dụng. Quốc gia có mức độ tin cậy xã hội cao điều phối nhanh hơn, huy động hiệu quả hơn và trụ vững trong khủng hoảng mà không chia rẽ. Mục tiêu quốc gia chung tạo sức bền: người dân chịu đựng khó khăn khi tin vào tương lai đất nước. Quốc gia phân mảnh lãng phí năng lượng vào xung đột nội bộ. Văn hóa ảnh hưởng mức chấp nhận rủi ro, học thuyết quân sự, hành vi kinh tế và xu hướng ngoại giao. Quốc gia có văn hóa bi quan có thể tránh đổi mới; quốc gia có văn hóa anh hùng có thể mạo hiểm thái quá. Văn hóa mạnh nhất là sự cân bằng giữa tham vọng và kỷ luật, tự hào và khiêm tốn, đoàn kết và tranh luận. Quyền lực quốc gia sụp đổ từ bên trong khi hoài nghi thay thế mục tiêu và phân cực thay thế gắn kết. Văn hóa chiến lược là kiến trúc vô hình của quyền lực."
       },
-      "audio": "npc_v1_8_en.mp3"
+      "audio": "npc_v1_8_en.mp3",
+      "tags": []
     }
   ]
 }

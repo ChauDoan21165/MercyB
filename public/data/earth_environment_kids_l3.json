@@ -13,77 +13,125 @@
   "entries": [
     {
       "slug": "what-earth-is-made-of",
-      "keywords_en": ["earth", "nature", "environment"],
-      "keywords_vi": ["trái đất", "thiên nhiên", "môi trường"],
+      "keywords_en": [
+        "earth",
+        "nature",
+        "environment"
+      ],
+      "keywords_vi": [
+        "trái đất",
+        "thiên nhiên",
+        "môi trường"
+      ],
       "copy": {
         "en": "Teach kids that Earth is made of land, water, and air. Explain that forests, oceans, mountains, and rivers are all part of our home. Children can observe which parts of Earth they see daily—trees, clouds, soil, or sunlight. This helps them build a simple picture of the planet and feel connected to the natural world.",
         "vi": "Hãy dạy trẻ rằng Trái Đất được tạo nên từ đất, nước và không khí. Giải thích rằng rừng, đại dương, núi và sông đều là một phần của ngôi nhà chung. Trẻ có thể quan sát những gì mình thấy mỗi ngày—cây cối, mây, đất hoặc ánh nắng. Điều này giúp trẻ hình dung đơn giản về hành tinh và cảm thấy gắn kết với thiên nhiên."
       },
-      "tags": ["earth"],
+      "tags": [
+        "earth"
+      ],
       "audio": "earth_environment_v1_what_earth_is_made_of.mp3"
     },
     {
       "slug": "resources",
-      "keywords_en": ["resources", "water", "energy"],
-      "keywords_vi": ["tài nguyên", "nước", "năng lượng"],
+      "keywords_en": [
+        "resources",
+        "water",
+        "energy"
+      ],
+      "keywords_vi": [
+        "tài nguyên",
+        "nước",
+        "năng lượng"
+      ],
       "copy": {
         "en": "Explain that resources are things we use every day—water to drink, trees for paper, sunlight for energy. Show children how resources can run out if we waste them. Simple actions like turning off lights or saving water teach kids responsibility and awareness.",
         "vi": "Hãy giải thích rằng tài nguyên là những thứ chúng ta dùng hằng ngày—nước để uống, cây để làm giấy, ánh nắng để tạo năng lượng. Giải thích cho trẻ rằng tài nguyên có thể cạn kiệt nếu chúng ta dùng lãng phí. Những hành động nhỏ như tắt đèn hoặc tiết kiệm nước giúp trẻ học trách nhiệm và sự quan tâm."
       },
-      "tags": ["resources"],
+      "tags": [
+        "resources"
+      ],
       "audio": "earth_environment_v1_resources.mp3"
     },
     {
       "slug": "pollution",
-      "keywords_en": ["pollution", "air", "trash"],
-      "keywords_vi": ["ô nhiễm", "không khí", "rác thải"],
+      "keywords_en": [
+        "pollution",
+        "air",
+        "trash"
+      ],
+      "keywords_vi": [
+        "ô nhiễm",
+        "không khí",
+        "rác thải"
+      ],
       "copy": {
         "en": "Teach that pollution happens when harmful things enter air, water, or soil. Show simple examples: too much trash, dirty air from smoke, or plastic in rivers. Children can learn to reduce pollution by throwing trash properly and choosing reusable items.",
         "vi": "Hãy dạy trẻ rằng ô nhiễm xảy ra khi những thứ gây hại đi vào không khí, nước hoặc đất. Giải thích các ví dụ đơn giản: quá nhiều rác, không khí bẩn từ khói hoặc nhựa trong sông. Trẻ có thể học giảm ô nhiễm bằng cách vứt rác đúng chỗ và sử dụng đồ tái dùng."
       },
-      "tags": ["pollution"],
+      "tags": [
+        "pollution"
+      ],
       "audio": "earth_environment_v1_pollution.mp3"
     },
     {
       "slug": "recycle-and-reuse",
-      "keywords_en": ["recycle", "reuse", "environment"],
-      "keywords_vi": ["tái chế", "tái sử dụng", "môi trường"],
+      "keywords_en": [
+        "recycle",
+        "reuse",
+        "environment"
+      ],
+      "keywords_vi": [
+        "tái chế",
+        "tái sử dụng",
+        "môi trường"
+      ],
       "copy": {
         "en": "Teach recycling through everyday items—bottles, paper, boxes. Show kids how old things can become new things again. Explain that reusing helps the Earth because it creates less waste. Children feel proud when they learn their small actions help the planet.",
         "vi": "Hãy dạy tái chế qua những đồ vật hằng ngày—chai, giấy, hộp. Giải thích cho trẻ rằng đồ cũ có thể trở thành đồ mới. Tái sử dụng giúp Trái Đất vì tạo ra ít rác hơn. Trẻ sẽ thấy tự hào khi biết hành động nhỏ của mình có thể giúp hành tinh."
       },
-      "tags": ["recycle"],
+      "tags": [
+        "recycle"
+      ],
       "audio": "earth_environment_v1_recycle_and_reuse.mp3"
     },
     {
       "slug": "protect-nature",
-      "keywords_en": ["protect", "nature", "animals"],
-      "keywords_vi": ["bảo vệ", "thiên nhiên", "động vật"],
+      "keywords_en": [
+        "protect",
+        "nature",
+        "animals"
+      ],
+      "keywords_vi": [
+        "bảo vệ",
+        "thiên nhiên",
+        "động vật"
+      ],
       "copy": {
         "en": "Show kids simple ways to protect nature—watering plants, caring for trees, or keeping parks clean. Explain how animals need safe places to live. When children help nature, they build empathy and understand their role in caring for Earth.",
         "vi": "Hãy chỉ trẻ những cách đơn giản để bảo vệ thiên nhiên—tưới cây, chăm sóc cây cối hoặc giữ công viên sạch đẹp. Giải thích rằng động vật cần nơi an toàn để sống. Khi trẻ giúp đỡ thiên nhiên, trẻ sẽ phát triển sự thấu cảm và hiểu vai trò của mình trong việc chăm sóc Trái Đất."
       },
-      "tags": ["nature"],
+      "tags": [
+        "nature"
+      ],
       "audio": "earth_environment_v1_protect_nature.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all"],
-      "keywords_vi": ["tất cả"],
+      "keywords_en": [
+        "all"
+      ],
+      "keywords_vi": [
+        "tất cả"
+      ],
       "copy": {
         "en": "Teach kids that Earth is made of land, water, and air. Explain that forests, oceans, mountains, and rivers are all part of our home. Children can observe which parts of Earth they see daily—trees, clouds, soil, or sunlight. This helps them build a simple picture of the planet and feel connected to the natural world.Explain that resources are things we use every day—water to drink, trees for paper, sunlight for energy. Show children how resources can run out if we waste them. Simple actions like turning off lights or saving water teach kids responsibility and awareness.Teach that pollution happens when harmful things enter air, water, or soil. Show simple examples: too much trash, dirty air from smoke, or plastic in rivers. Children can learn to reduce pollution by throwing trash properly and choosing reusable items.Teach recycling through everyday items—bottles, paper, boxes. Show kids how old things can become new things again. Explain that reusing helps the Earth because it creates less waste. Children feel proud when they learn their small actions help the planet.Show kids simple ways to protect nature—watering plants, caring for trees, or keeping parks clean. Explain how animals need safe places to live. When children help nature, they build empathy and understand their role in caring for Earth.",
         "vi": "Hãy dạy trẻ rằng Trái Đất được tạo nên từ đất, nước và không khí. Giải thích rằng rừng, đại dương, núi và sông đều là một phần của ngôi nhà chung. Trẻ có thể quan sát những gì mình thấy mỗi ngày—cây cối, mây, đất hoặc ánh nắng. Điều này giúp trẻ hình dung đơn giản về hành tinh và cảm thấy gắn kết với thiên nhiên.Hãy giải thích rằng tài nguyên là những thứ chúng ta dùng hằng ngày—nước để uống, cây để làm giấy, ánh nắng để tạo năng lượng. Giải thích cho trẻ rằng tài nguyên có thể cạn kiệt nếu chúng ta dùng lãng phí. Những hành động nhỏ như tắt đèn hoặc tiết kiệm nước giúp trẻ học trách nhiệm và sự quan tâm.Hãy dạy trẻ rằng ô nhiễm xảy ra khi những thứ gây hại đi vào không khí, nước hoặc đất. Giải thích các ví dụ đơn giản: quá nhiều rác, không khí bẩn từ khói hoặc nhựa trong sông. Trẻ có thể học giảm ô nhiễm bằng cách vứt rác đúng chỗ và sử dụng đồ tái dùng.Hãy dạy tái chế qua những đồ vật hằng ngày—chai, giấy, hộp. Giải thích cho trẻ rằng đồ cũ có thể trở thành đồ mới. Tái sử dụng giúp Trái Đất vì tạo ra ít rác hơn. Trẻ sẽ thấy tự hào khi biết hành động nhỏ của mình có thể giúp hành tinh.Hãy chỉ trẻ những cách đơn giản để bảo vệ thiên nhiên—tưới cây, chăm sóc cây cối hoặc giữ công viên sạch đẹp. Giải thích rằng động vật cần nơi an toàn để sống. Khi trẻ giúp đỡ thiên nhiên, trẻ sẽ phát triển sự thấu cảm và hiểu vai trò của mình trong việc chăm sóc Trái Đất."
       },
-      "tags": ["all"],
+      "tags": [
+        "all"
+      ],
       "audio": "earth_environment_v1_what_earth_is_made_of.mp3 earth_environment_v1_resources.mp3 earth_environment_v1_pollution.mp3 earth_environment_v1_recycle_and_reuse.mp3 earth_environment_v1_protect_nature.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "10-13",
-    "level": "Kids Level 3",
-    "created_at": "2025-11-23T00:00:00+00:00",
-    "updated_at": "2025-11-23T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#E9FFE5"
-  }
+  ]
 }

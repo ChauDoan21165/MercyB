@@ -1,6 +1,4 @@
 {
-  "schema_version": "1.0",
-  "schema_id": "anxiety-relief-vip2",
   "id": "anxiety-relief-vip2",
   "tier": "free",
   "domain": "",
@@ -189,14 +187,6 @@
   ],
   "room_essay": {
     "en": "Advanced, evidence-based tools for long-term anxiety relief. This VIP2 room teaches breathing, grounding, thought challenge, body scan, exposure, and lifestyle balance. Practice one skill daily. Track progress gently. Over weeks, anxiety softens. No pressure, just steady growth. Deeper support in higher tiers.",
-    "vi": ""
-  },
-  "safety_disclaimer": {
-    "en": "",
-    "vi": ""
-  },
-  "crisis_footer": {
-    "en": "",
     "vi": ""
   }
 }

@@ -1,6 +1,4 @@
 {
-  "schema_version": "1.0",
-  "schema_id": "finance-calm-money-clear-future-preview-free",
   "id": "finance-calm-money-clear-future-preview-free",
   "tier": "free",
   "domain": "",
@@ -44,13 +42,5 @@
   "room_essay": {
     "en": "A gentle preview of the Calm Money, Clear Future finance series, helping you see money with less anxiety and more clarity.",
     "vi": "Phòng giới thiệu nhẹ nhàng về chuỗi Tiền Bình An, Tương Lai Rõ Ràng, giúp bạn nhìn lại tài chính với ít lo âu hơn và nhiều rõ ràng hơn."
-  },
-  "safety_disclaimer": {
-    "en": "",
-    "vi": ""
-  },
-  "crisis_footer": {
-    "en": "",
-    "vi": ""
   }
 }

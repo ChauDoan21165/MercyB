@@ -1,6 +1,4 @@
 {
-  "schema_version": "1.0",
-  "schema_id": "loneliness-comfort-free",
   "id": "loneliness-comfort-free",
   "tier": "free",
   "domain": "",
@@ -87,14 +85,6 @@
   ],
   "room_essay": {
     "en": "{\"en\":\"Practical guidance for finding comfort in loneliness through connection and compassion.\",\"vi\":\"Hướng dẫn thực tế giúp bạn tìm sự an ủi trong nỗi cô đơn thông qua kết nối và lòng trắc ẩn.\"}",
-    "vi": ""
-  },
-  "safety_disclaimer": {
-    "en": "",
-    "vi": ""
-  },
-  "crisis_footer": {
-    "en": "",
     "vi": ""
   }
 }

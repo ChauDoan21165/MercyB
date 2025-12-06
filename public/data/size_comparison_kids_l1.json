@@ -13,77 +13,148 @@
   "entries": [
     {
       "slug": "big-and-small",
-      "keywords_en": ["size", "big", "small", "comparison"],
-      "keywords_vi": ["kích thước", "to", "nhỏ", "so sánh"],
+      "keywords_en": [
+        "size",
+        "big",
+        "small",
+        "comparison"
+      ],
+      "keywords_vi": [
+        "kích thước",
+        "to",
+        "nhỏ",
+        "so sánh"
+      ],
       "copy": {
         "en": "Teach big and small using objects around the house. Hold a big pillow and a small toy, then say, “big… small.” Let your child hold one in each hand and repeat the words. Ask simple questions like, “Which one is big?” or “Can you find something small?” Children enjoy choosing items themselves, so allow them to walk around and bring objects for comparison. The more they explore, the deeper the words stick.",
         "vi": "Dạy big và small bằng các đồ vật quanh nhà. Bạn cầm một chiếc gối to và một món đồ chơi nhỏ rồi đọc: “big… small.” Cho bé cầm mỗi thứ một tay và lặp lại. Hỏi những câu đơn giản như: “Cái nào big?” hoặc “Con tìm được gì small không?” Trẻ thích tự chọn đồ, nên hãy để bé đi quanh nhà mang đồ đến so sánh. Bé càng khám phá nhiều, từ vựng càng dễ ghi nhớ."
       },
-      "tags": ["size", "big", "small"],
+      "tags": [
+        "size",
+        "big",
+        "small"
+      ],
       "audio": "size_comparison_v1_big_small.mp3"
     },
     {
       "slug": "tall-and-short",
-      "keywords_en": ["height", "tall", "short", "comparison"],
-      "keywords_vi": ["chiều cao", "cao", "thấp", "so sánh"],
+      "keywords_en": [
+        "height",
+        "tall",
+        "short",
+        "comparison"
+      ],
+      "keywords_vi": [
+        "chiều cao",
+        "cao",
+        "thấp",
+        "so sánh"
+      ],
       "copy": {
         "en": "Use everyday objects to teach tall and short. Stand a tall water bottle next to a short cup and say, “tall… short.” Let your child line up toys like blocks or dolls from tall to short. You can also stand back-to-back and compare heights for fun. Children love to copy your tone and gestures, so make the contrast clear: stretch your body tall, then crouch short. Dramatic movements help the meaning click instantly.",
         "vi": "Dùng đồ vật hằng ngày để dạy tall và short. Đặt một chai nước cao cạnh một chiếc cốc thấp rồi đọc: “tall… short.” Cho bé xếp đồ chơi như khối gỗ hay búp bê theo thứ tự từ cao đến thấp. Bạn cũng có thể đứng quay lưng và so chiều cao với bé cho vui. Trẻ thích bắt chước giọng và động tác của bạn, nên hãy làm thật rõ: vươn người cao lên rồi thu người thấp xuống. Những cử động rõ ràng giúp bé hiểu nghĩa nhanh chóng."
       },
-      "tags": ["height", "tall", "short"],
+      "tags": [
+        "height",
+        "tall",
+        "short"
+      ],
       "audio": "size_comparison_v1_tall_short.mp3"
     },
     {
       "slug": "long-and-short",
-      "keywords_en": ["length", "long", "short", "comparison"],
-      "keywords_vi": ["độ dài", "dài", "ngắn", "so sánh"],
+      "keywords_en": [
+        "length",
+        "long",
+        "short",
+        "comparison"
+      ],
+      "keywords_vi": [
+        "độ dài",
+        "dài",
+        "ngắn",
+        "so sánh"
+      ],
       "copy": {
         "en": "Teach long and short with strings, crayons, or paper strips. Hold a long strip next to a short one and say the words slowly. Invite your child to sort items into two groups: long things and short things. Children enjoy measuring with their hands or arms, pretending to be human rulers. The goal is not accuracy, but noticing the difference through touch and sight. Simple, hands-on play builds strong vocabulary foundations.",
         "vi": "Dạy long và short bằng dây, bút màu hoặc dải giấy. Cầm một dải dài cạnh một dải ngắn và đọc từ thật chậm. Rủ bé phân loại đồ thành hai nhóm: đồ long và đồ short. Trẻ thích đo bằng tay hoặc cánh tay, giả làm “thước đo.” Mục tiêu không phải độ chính xác mà là cảm nhận sự khác nhau bằng mắt và tay. Cách chơi đơn giản này giúp bé ghi nhớ từ vựng tốt hơn."
       },
-      "tags": ["length", "long", "short"],
+      "tags": [
+        "length",
+        "long",
+        "short"
+      ],
       "audio": "size_comparison_v1_long_short.mp3"
     },
     {
       "slug": "heavy-and-light",
-      "keywords_en": ["weight", "heavy", "light", "comparison"],
-      "keywords_vi": ["cân nặng", "nặng", "nhẹ", "so sánh"],
+      "keywords_en": [
+        "weight",
+        "heavy",
+        "light",
+        "comparison"
+      ],
+      "keywords_vi": [
+        "cân nặng",
+        "nặng",
+        "nhẹ",
+        "so sánh"
+      ],
       "copy": {
         "en": "Teach heavy and light using safe, kid-friendly objects. Hold a light scarf and a heavier book, letting your child feel the difference. Say, “light… heavy,” switching objects from hand to hand. Ask questions like, “Which one feels heavy?” Children enjoy pretending to be weightlifters or feathers floating in the air. These small imaginative moments help the meaning of the words become physical and memorable.",
         "vi": "Dạy heavy và light bằng những đồ an toàn cho trẻ. Bạn cầm một chiếc khăn nhẹ và một cuốn sách nặng hơn, cho bé cảm nhận sự khác biệt. Đọc: “light… heavy,” rồi đổi đồ cho nhau. Hỏi bé: “Cái nào heavy?” Trẻ thường thích giả làm vận động viên nâng tạ hoặc chiếc lông vũ bay trong gió. Những khoảnh khắc tưởng tượng này giúp từ vựng trở nên sinh động và dễ nhớ."
       },
-      "tags": ["weight", "heavy", "light"],
+      "tags": [
+        "weight",
+        "heavy",
+        "light"
+      ],
       "audio": "size_comparison_v1_heavy_light.mp3"
     },
     {
       "slug": "compare-around-the-house",
-      "keywords_en": ["comparison", "home", "game"],
-      "keywords_vi": ["so sánh", "ở nhà", "trò chơi"],
+      "keywords_en": [
+        "comparison",
+        "home",
+        "game"
+      ],
+      "keywords_vi": [
+        "so sánh",
+        "ở nhà",
+        "trò chơi"
+      ],
       "copy": {
         "en": "Turn comparison into a short adventure around the house. Say, “Let’s find something big!” or “Find something tall!” and let your child explore. Each time they bring an item, celebrate with a big smile or cheer. Switch roles and let your child give the command. This playful back-and-forth builds confidence and makes English feel active and useful in daily life.",
         "vi": "Biến việc so sánh thành chuyến phiêu lưu nhỏ trong nhà. Bạn đọc: “Let’s find something big!” hoặc “Find something tall!” và để bé đi tìm. Mỗi lần bé mang đồ về, hãy khen ngợi bằng nụ cười lớn hoặc tiếng reo vui. Đổi vai cho bé làm người ra lệnh. Trò chơi qua lại này giúp bé tự tin và khiến tiếng Anh trở nên gần gũi trong sinh hoạt hằng ngày."
       },
-      "tags": ["comparison", "home", "game"],
+      "tags": [
+        "comparison",
+        "home",
+        "game"
+      ],
       "audio": "size_comparison_v1_compare_game.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all", "full", "complete"],
-      "keywords_vi": ["tất cả", "đầy đủ", "hoàn chỉnh"],
+      "keywords_en": [
+        "all",
+        "full",
+        "complete"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "đầy đủ",
+        "hoàn chỉnh"
+      ],
       "copy": {
         "en": "Big and small with real objects…\n\nTall and short with clear body movements…\n\nLong and short using strips and strings…\n\nHeavy and light through safe, gentle lifting…\n\nA fun comparison walk around the house.",
         "vi": "Big và small với đồ thật…\n\nTall và short với cử động rõ ràng…\n\nLong và short bằng dải giấy và dây…\n\nHeavy và light với các vật an toàn…\n\nCuộc phiêu lưu so sánh quanh nhà."
       },
-      "tags": ["all", "full"],
+      "tags": [
+        "all",
+        "full"
+      ],
       "audio": "size_comparison_v1_big_small.mp3 size_comparison_v1_tall_short.mp3 size_comparison_v1_long_short.mp3 size_comparison_v1_heavy_light.mp3 size_comparison_v1_compare_game.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "4-7",
-    "level": "Kids Level 1",
-    "created_at": "2025-11-21T00:00:00+00:00",
-    "updated_at": "2025-11-21T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#FFD9F2"
-  }
+  ]
 }

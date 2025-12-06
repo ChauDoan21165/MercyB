@@ -13,63 +13,105 @@
   "entries": [
     {
       "slug": "vocabulary-review",
-      "keywords_en": ["vocabulary", "review"],
-      "keywords_vi": ["từ vựng", "ôn tập"],
+      "keywords_en": [
+        "vocabulary",
+        "review"
+      ],
+      "keywords_vi": [
+        "từ vựng",
+        "ôn tập"
+      ],
       "copy": {
         "en": "Review important A2 words.\nSay each one clearly:\ntravel\nrestaurant\ncomfortable\nusually\ninteresting\nRemember the meaning and say a simple sentence with each word.\nSmall review keeps your vocabulary strong.",
         "vi": "Ôn lại các từ quan trọng của A2.\nĐọc rõ từng từ:\ntravel\nrestaurant\ncomfortable\nusually\ninteresting\nHãy nhớ nghĩa và nói một câu đơn giản với mỗi từ.\nÔn tập nhỏ giúp từ vựng vững hơn."
       },
-      "audio": "a214_01_en.mp3"
+      "audio": "a214_01_en.mp3",
+      "tags": []
     },
     {
       "slug": "grammar-review",
-      "keywords_en": ["grammar", "review"],
-      "keywords_vi": ["ngữ pháp", "ôn tập"],
+      "keywords_en": [
+        "grammar",
+        "review"
+      ],
+      "keywords_vi": [
+        "ngữ pháp",
+        "ôn tập"
+      ],
       "copy": {
         "en": "Check your grammar basics.\nPractice these patterns:\nI usually wake up at seven.\nShe is studying now.\nThey went to the market yesterday.\nChoose one sentence and change it to past, present, and future.\nThis helps you control tense naturally.",
         "vi": "Kiểm tra ngữ pháp cơ bản.\nLuyện các mẫu câu sau:\nI usually wake up at seven.\nShe is studying now.\nThey went to the market yesterday.\nChọn một câu và đổi sang quá khứ, hiện tại và tương lai.\nCách này giúp bạn dùng thì tự nhiên hơn."
       },
-      "audio": "a214_02_en.mp3"
+      "audio": "a214_02_en.mp3",
+      "tags": []
     },
     {
       "slug": "speaking-review",
-      "keywords_en": ["speaking", "review"],
-      "keywords_vi": ["nói", "ôn tập"],
+      "keywords_en": [
+        "speaking",
+        "review"
+      ],
+      "keywords_vi": [
+        "nói",
+        "ôn tập"
+      ],
       "copy": {
         "en": "Speak these lines slowly.\nFocus on clear sound:\nI can express my ideas.\nI feel more confident now.\nI can join simple conversations.\nRepeat until your voice sounds calm and natural.\nConfidence grows with steady practice.",
         "vi": "Nói những câu sau thật chậm.\nTập trung vào âm rõ:\nI can express my ideas.\nI feel more confident now.\nI can join simple conversations.\nLặp lại cho đến khi giọng bạn tự nhiên và bình tĩnh.\nSự tự tin đến từ luyện tập đều đặn."
       },
-      "audio": "a214_03_en.mp3"
+      "audio": "a214_03_en.mp3",
+      "tags": []
     },
     {
       "slug": "listening-review",
-      "keywords_en": ["listening", "review"],
-      "keywords_vi": ["nghe", "ôn tập"],
+      "keywords_en": [
+        "listening",
+        "review"
+      ],
+      "keywords_vi": [
+        "nghe",
+        "ôn tập"
+      ],
       "copy": {
         "en": "Test your listening.\nListen to one short audio from previous rooms.\nTry to catch key words, not every word.\nAsk yourself:\nWho is speaking?\nWhat do they want?\nWhat is the main idea?\nUnderstanding the main message is the goal.",
         "vi": "Kiểm tra kỹ năng nghe.\nNghe lại một đoạn audio ngắn từ các phòng trước.\nCố gắng nắm từ khóa, không cần nghe hết.\nTự hỏi:\nAi đang nói?\nHọ muốn gì?\nÝ chính là gì?\nMục tiêu là hiểu ý chính."
       },
-      "audio": "a214_04_en.mp3"
+      "audio": "a214_04_en.mp3",
+      "tags": []
     },
     {
       "slug": "reading-review",
-      "keywords_en": ["reading", "review"],
-      "keywords_vi": ["đọc", "ôn tập"],
+      "keywords_en": [
+        "reading",
+        "review"
+      ],
+      "keywords_vi": [
+        "đọc",
+        "ôn tập"
+      ],
       "copy": {
         "en": "Read a short paragraph from earlier lessons.\nRead it slowly.\nCheck if you understand the meaning.\nIf one sentence feels difficult, read it again more calmly.\nGood reading comes from patience, not speed.",
         "vi": "Đọc lại một đoạn văn ngắn từ những bài học trước.\nĐọc chậm.\nKiểm tra xem bạn có hiểu nghĩa không.\nNếu câu nào khó, hãy đọc lại chậm hơn.\nKỹ năng đọc tốt đến từ sự kiên nhẫn, không phải tốc độ."
       },
-      "audio": "a214_05_en.mp3"
+      "audio": "a214_05_en.mp3",
+      "tags": []
     },
     {
       "slug": "communication-check",
-      "keywords_en": ["communication", "review"],
-      "keywords_vi": ["giao tiếp", "ôn tập"],
+      "keywords_en": [
+        "communication",
+        "review"
+      ],
+      "keywords_vi": [
+        "giao tiếp",
+        "ôn tập"
+      ],
       "copy": {
         "en": "Check your everyday English.\nAnswer these questions out loud:\nWhat did you do yesterday?\nWhat do you usually do after work?\nWhat are your plans for tomorrow?\nIf you can answer simply and clearly, you are ready for B1.",
         "vi": "Kiểm tra khả năng giao tiếp hàng ngày.\nHãy trả lời thành tiếng:\nHôm qua bạn làm gì?\nBạn thường làm gì sau khi đi làm về?\nKế hoạch ngày mai của bạn là gì?\nNếu bạn trả lời đơn giản và rõ, bạn đã sẵn sàng cho B1."
       },
-      "audio": "a214_06_en.mp3"
+      "audio": "a214_06_en.mp3",
+      "tags": []
     }
   ]
 }

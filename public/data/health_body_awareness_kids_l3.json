@@ -13,77 +13,125 @@
   "entries": [
     {
       "slug": "body-signals",
-      "keywords_en": ["body", "signals", "health"],
-      "keywords_vi": ["cơ thể", "tín hiệu", "sức khỏe"],
+      "keywords_en": [
+        "body",
+        "signals",
+        "health"
+      ],
+      "keywords_vi": [
+        "cơ thể",
+        "tín hiệu",
+        "sức khỏe"
+      ],
       "copy": {
         "en": "Teach children to notice body signals using simple words like “I feel tired,” “My head hurts,” or “I’m thirsty.” Encourage them to say what part of the body feels different. Learning body signals helps kids understand their needs and ask for help when necessary.",
         "vi": "Hãy dạy trẻ nhận biết tín hiệu cơ thể bằng các câu đơn giản như “I feel tired,” “My head hurts,” hoặc “I’m thirsty.” Khuyến khích trẻ nói rõ bộ phận nào cảm thấy khác thường. Việc nhận biết tín hiệu cơ thể giúp trẻ hiểu nhu cầu của mình và biết nhờ hỗ trợ khi cần."
       },
-      "tags": ["body"],
+      "tags": [
+        "body"
+      ],
       "audio": "health_body_awareness_v1_body_signals.mp3"
     },
     {
       "slug": "breathing-awareness",
-      "keywords_en": ["breathing", "calm", "health"],
-      "keywords_vi": ["hơi thở", "bình tĩnh", "sức khỏe"],
+      "keywords_en": [
+        "breathing",
+        "calm",
+        "health"
+      ],
+      "keywords_vi": [
+        "hơi thở",
+        "bình tĩnh",
+        "sức khỏe"
+      ],
       "copy": {
         "en": "Teach kids to notice their breathing using phrases like “Breathe in” and “Breathe out.” Practice slow breathing when they feel worried or tense. Understanding breathing helps kids stay calm and feel more in control of their emotions.",
         "vi": "Hãy dạy trẻ chú ý đến hơi thở bằng các câu như “Breathe in” và “Breathe out.” Luyện thở chậm khi trẻ cảm thấy lo hoặc căng thẳng. Hiểu hơi thở giúp trẻ giữ bình tĩnh và kiểm soát cảm xúc tốt hơn."
       },
-      "tags": ["breathing"],
+      "tags": [
+        "breathing"
+      ],
       "audio": "health_body_awareness_v1_breathing_awareness.mp3"
     },
     {
       "slug": "movement-check",
-      "keywords_en": ["movement", "body", "health"],
-      "keywords_vi": ["vận động", "cơ thể", "sức khỏe"],
+      "keywords_en": [
+        "movement",
+        "body",
+        "health"
+      ],
+      "keywords_vi": [
+        "vận động",
+        "cơ thể",
+        "sức khỏe"
+      ],
       "copy": {
         "en": "Teach children to check how their body moves using phrases like “My arms feel strong,” “My legs feel tired,” or “I can stretch.” Encourage them to notice balance, stretching, and simple body movements. This builds awareness of strength and comfort.",
         "vi": "Hãy dạy trẻ kiểm tra cơ thể vận động thế nào bằng các câu như “My arms feel strong,” “My legs feel tired,” hoặc “I can stretch.” Khuyến khích trẻ chú ý sự thăng bằng, kéo giãn và những chuyển động đơn giản. Điều này giúp trẻ nhận thức về sức mạnh và sự thoải mái của cơ thể."
       },
-      "tags": ["movement"],
+      "tags": [
+        "movement"
+      ],
       "audio": "health_body_awareness_v1_movement_check.mp3"
     },
     {
       "slug": "energy-levels",
-      "keywords_en": ["energy", "tired", "strong"],
-      "keywords_vi": ["năng lượng", "mệt", "khỏe"],
+      "keywords_en": [
+        "energy",
+        "tired",
+        "strong"
+      ],
+      "keywords_vi": [
+        "năng lượng",
+        "mệt",
+        "khỏe"
+      ],
       "copy": {
         "en": "Teach kids to talk about their energy levels using phrases like “I have energy,” “I feel low energy,” or “I need a break.” Helping children name energy changes teaches self-awareness and healthy pacing.",
         "vi": "Hãy dạy trẻ nói về mức năng lượng bằng các câu như “I have energy,” “I feel low energy,” hoặc “I need a break.” Việc gọi tên thay đổi năng lượng giúp trẻ tự nhận thức và điều chỉnh nhịp độ hoạt động."
       },
-      "tags": ["energy"],
+      "tags": [
+        "energy"
+      ],
       "audio": "health_body_awareness_v1_energy_levels.mp3"
     },
     {
       "slug": "feeling-unwell",
-      "keywords_en": ["unwell", "health", "feelings"],
-      "keywords_vi": ["khó chịu", "sức khỏe", "cảm giác"],
+      "keywords_en": [
+        "unwell",
+        "health",
+        "feelings"
+      ],
+      "keywords_vi": [
+        "khó chịu",
+        "sức khỏe",
+        "cảm giác"
+      ],
       "copy": {
         "en": "Teach children to express feeling unwell using sentences like “I feel sick,” “My stomach hurts,” or “I feel dizzy.” Encourage them to describe when the feeling started and what makes it worse or better. This helps adults support them quickly and clearly.",
         "vi": "Hãy dạy trẻ diễn đạt cảm giác khó chịu bằng các câu như “I feel sick,” “My stomach hurts,” hoặc “I feel dizzy.” Khuyến khích trẻ mô tả cảm giác bắt đầu khi nào và điều gì khiến nó nặng hơn hoặc nhẹ hơn. Điều này giúp người lớn hỗ trợ trẻ nhanh và chính xác."
       },
-      "tags": ["unwell"],
+      "tags": [
+        "unwell"
+      ],
       "audio": "health_body_awareness_v1_feeling_unwell.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all"],
-      "keywords_vi": ["tất cả"],
+      "keywords_en": [
+        "all"
+      ],
+      "keywords_vi": [
+        "tất cả"
+      ],
       "copy": {
         "en": "Teach children to notice body signals using simple words like “I feel tired,” “My head hurts,” or “I’m thirsty.” Encourage them to say what part of the body feels different. Learning body signals helps kids understand their needs and ask for help when necessary.\n\nTeach kids to notice their breathing using phrases like “Breathe in” and “Breathe out.” Practice slow breathing when they feel worried or tense. Understanding breathing helps kids stay calm and feel more in control of their emotions.\n\nTeach children to check how their body moves using phrases like “My arms feel strong,” “My legs feel tired,” or “I can stretch.” Encourage them to notice balance, stretching, and simple body movements. This builds awareness of strength and comfort.\n\nTeach kids to talk about their energy levels using phrases like “I have energy,” “I feel low energy,” or “I need a break.” Helping children name energy changes teaches self-awareness and healthy pacing.\n\nTeach children to express feeling unwell using sentences like “I feel sick,” “My stomach hurts,” or “I feel dizzy.” Encourage them to describe when the feeling started and what makes it worse or better. This helps adults support them quickly and clearly.",
         "vi": "Hãy dạy trẻ nhận biết tín hiệu cơ thể bằng các câu đơn giản như “I feel tired,” “My head hurts,” hoặc “I’m thirsty.” Khuyến khích trẻ nói rõ bộ phận nào cảm thấy khác thường. Việc nhận biết tín hiệu cơ thể giúp trẻ hiểu nhu cầu của mình và biết nhờ hỗ trợ khi cần.\n\nHãy dạy trẻ chú ý đến hơi thở bằng các câu như “Breathe in” và “Breathe out.” Luyện thở chậm khi trẻ cảm thấy lo hoặc căng thẳng. Hiểu hơi thở giúp trẻ giữ bình tĩnh và kiểm soát cảm xúc tốt hơn.\n\nHãy dạy trẻ kiểm tra cơ thể vận động thế nào bằng các câu như “My arms feel strong,” “My legs feel tired,” hoặc “I can stretch.” Khuyến khích trẻ chú ý sự thăng bằng, kéo giãn và những chuyển động đơn giản. Điều này giúp trẻ nhận thức về sức mạnh và sự thoải mái của cơ thể.\n\nHãy dạy trẻ nói về mức năng lượng bằng các câu như “I have energy,” “I feel low energy,” hoặc “I need a break.” Việc gọi tên thay đổi năng lượng giúp trẻ tự nhận thức và điều chỉnh nhịp độ hoạt động.\n\nHãy dạy trẻ diễn đạt cảm giác khó chịu bằng các câu như “I feel sick,” “My stomach hurts,” hoặc “I feel dizzy.” Khuyến khích trẻ mô tả cảm giác bắt đầu khi nào và điều gì khiến nó nặng hơn hoặc nhẹ hơn. Điều này giúp người lớn hỗ trợ trẻ nhanh và chính xác."
       },
-      "tags": ["all"],
+      "tags": [
+        "all"
+      ],
       "audio": "health_body_awareness_v1_body_signals.mp3 health_body_awareness_v1_breathing_awareness.mp3 health_body_awareness_v1_movement_check.mp3 health_body_awareness_v1_energy_levels.mp3 health_body_awareness_v1_feeling_unwell.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "10-13",
-    "level": "Kids Level 3",
-    "created_at": "2025-11-23T00:00:00+00:00",
-    "updated_at": "2025-11-23T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#FFE6D8"
-  }
+  ]
 }

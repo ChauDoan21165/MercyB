@@ -13,63 +13,117 @@
   "entries": [
     {
       "slug": "water-and-hydration-essentials",
-      "keywords_en": ["water", "hydration", "supplies"],
-      "keywords_vi": ["nước uống", "bù nước", "dự trữ"],
+      "keywords_en": [
+        "water",
+        "hydration",
+        "supplies"
+      ],
+      "keywords_vi": [
+        "nước uống",
+        "bù nước",
+        "dự trữ"
+      ],
       "copy": {
         "en": "Water is the most important part of any emergency kit. Aim for at least three liters per person per day—more if you live in a hot climate. Store water in sturdy, sealed containers and keep them in a cool, dark place. Include a small water filter or purification tablets in case supplies run out or tap water becomes unsafe. Pack a reusable bottle for each family member to help ration water calmly. If you have children or elders, prepare extra fluids such as oral rehydration salts, which help prevent dehydration during heat or illness. Do not rely on soft drinks or sugary beverages; they worsen dehydration. Water keeps you stable, clear-headed, and safe while waiting for normal services to return.",
         "vi": "Nước là phần quan trọng nhất của mọi bộ dụng cụ khẩn cấp. Hãy chuẩn bị ít nhất ba lít cho mỗi người mỗi ngày—nhiều hơn nếu bạn sống ở nơi nóng. Dự trữ nước trong bình chắc chắn, kín và giữ chúng nơi mát, tối. Chuẩn bị thêm bộ lọc nước hoặc viên khử trùng phòng trường hợp nước dự trữ hết hoặc nước máy không an toàn. Mỗi thành viên nên có một chai riêng để chia khẩu phần nước dễ dàng. Nếu nhà có trẻ nhỏ hoặc người già, hãy chuẩn bị dung dịch bù nước điện giải để tránh mất nước khi nắng nóng hoặc ốm. Đừng dùng nước ngọt hay đồ uống có đường vì chúng khiến cơ thể mất nước nhanh hơn. Nước giúp bạn ổn định, tỉnh táo và an toàn trong khi chờ dịch vụ trở lại bình thường."
       },
-      "audio": "srs02_01_en.mp3"
+      "audio": "srs02_01_en.mp3",
+      "tags": []
     },
     {
       "slug": "no-cook-food-and-shelf-stable-supplies",
-      "keywords_en": ["food", "emergency meals", "nutrition"],
-      "keywords_vi": ["thực phẩm", "bữa ăn khẩn cấp", "dinh dưỡng"],
+      "keywords_en": [
+        "food",
+        "emergency meals",
+        "nutrition"
+      ],
+      "keywords_vi": [
+        "thực phẩm",
+        "bữa ăn khẩn cấp",
+        "dinh dưỡng"
+      ],
       "copy": {
         "en": "Choose foods that require no cooking, no heating, and minimal cleanup. Canned beans, tuna, sardines, fruit cups, protein bars, nuts, and instant oatmeal are good options. Avoid fragile items like bread or foods with short expiration. Pack a manual can opener—people often forget this and cannot access half their supplies. Include simple comfort foods for children such as crackers or soft snacks; calm eating reduces stress. Store enough for three days, rotating stock every few months. Think in terms of energy, not gourmet meals: your body needs steady calories to stay warm, alert, and emotionally steady. Lightweight, high-calorie foods keep you functioning even when conditions feel chaotic.",
         "vi": "Hãy chọn thực phẩm không cần nấu, không cần hâm nóng và ít phải rửa dọn. Các lựa chọn tốt gồm đậu hộp, cá ngừ, cá mòi, trái cây đóng hộp nhỏ, thanh protein, các loại hạt và cháo ăn liền. Tránh bánh mì hoặc thực phẩm dễ hỏng. Đừng quên chuẩn bị dụng cụ mở hộp thủ công—nhiều người quên và không thể dùng một nửa đồ dự trữ. Với trẻ em, hãy chuẩn bị bánh quy hoặc đồ ăn mềm giúp giảm căng thẳng. Lưu trữ đủ cho ba ngày và thay mới mỗi vài tháng. Hãy nghĩ về năng lượng thay vì bữa ăn ngon: cơ thể cần calo ổn định để giữ ấm, tỉnh táo và bình tĩnh. Thực phẩm nhẹ, giàu năng lượng giúp bạn duy trì hoạt động ngay cả khi tình huống rối loạn."
       },
-      "audio": "srs02_02_en.mp3"
+      "audio": "srs02_02_en.mp3",
+      "tags": []
     },
     {
       "slug": "light-power-and-basic-energy",
-      "keywords_en": ["light", "power", "flashlights"],
-      "keywords_vi": ["ánh sáng", "nguồn điện", "đèn pin"],
+      "keywords_en": [
+        "light",
+        "power",
+        "flashlights"
+      ],
+      "keywords_vi": [
+        "ánh sáng",
+        "nguồn điện",
+        "đèn pin"
+      ],
       "copy": {
         "en": "Losing power during emergencies is common, so pack multiple lighting and charging options. Include a small LED flashlight, a headlamp, and a box of extra batteries. A power bank with enough capacity to charge your phone twice can make the difference between being informed and being isolated. Solar chargers can help during long outages, especially in sunny climates. Avoid candles if possible—they start many accidental fires during storms. Glow sticks are useful for children or elders who may panic in the dark. Light and power give you communication, safety, and a sense of control when the situation feels uncertain.",
         "vi": "Mất điện trong khủng hoảng là điều thường gặp nên hãy chuẩn bị nhiều cách chiếu sáng và sạc điện. Bao gồm đèn pin LED nhỏ, đèn đội đầu và một hộp pin dự phòng. Pin sạc dự phòng đủ để sạc điện thoại hai lần có thể quyết định giữa việc cập nhật thông tin và bị cô lập. Bộ sạc năng lượng mặt trời rất hữu ích trong các đợt cúp điện dài, đặc biệt ở nơi nhiều nắng. Hạn chế dùng nến vì chúng gây ra nhiều vụ cháy trong bão. Gậy phát sáng là lựa chọn tốt cho trẻ em hoặc người già dễ hoảng sợ khi tối. Ánh sáng và nguồn điện mang lại khả năng liên lạc, an toàn và cảm giác kiểm soát trong lúc hỗn loạn."
       },
-      "audio": "srs02_03_en.mp3"
+      "audio": "srs02_03_en.mp3",
+      "tags": []
     },
     {
       "slug": "safety-tools-and-first-aid-basics",
-      "keywords_en": ["first aid", "safety tools", "bandages"],
-      "keywords_vi": ["sơ cứu", "dụng cụ an toàn", "băng gạc"],
+      "keywords_en": [
+        "first aid",
+        "safety tools",
+        "bandages"
+      ],
+      "keywords_vi": [
+        "sơ cứu",
+        "dụng cụ an toàn",
+        "băng gạc"
+      ],
       "copy": {
         "en": "Your kit should contain basic tools that handle everyday injuries or small emergencies. Include bandages, gauze, adhesive tape, antiseptic wipes, pain relievers, and any essential medications your household needs. Add a whistle for signaling, a small multi-tool, and a lighter stored inside a waterproof bag. If someone in your family has medical conditions, pack backup medication for at least three days and copies of important prescriptions. These simple tools prevent small problems from turning into serious ones when professional help is delayed.",
         "vi": "Bộ dụng cụ nên có các vật dụng xử lý chấn thương nhẹ hoặc sự cố nhỏ. Hãy chuẩn bị băng cá nhân, gạc, băng keo y tế, khăn sát trùng, thuốc giảm đau và các loại thuốc thiết yếu mà gia đình cần. Thêm một còi để ra tín hiệu, dao đa năng nhỏ và bật lửa để trong túi chống nước. Nếu gia đình có người bệnh mãn tính, hãy mang thuốc dự phòng ít nhất ba ngày và bản sao toa thuốc. Những dụng cụ đơn giản này giúp ngăn vấn đề nhỏ trở thành nghiêm trọng khi hỗ trợ chuyên môn đến chậm."
       },
-      "audio": "srs02_04_en.mp3"
+      "audio": "srs02_04_en.mp3",
+      "tags": []
     },
     {
       "slug": "documents-personal-items-and-ready-bags",
-      "keywords_en": ["documents", "ready bag", "evacuation"],
-      "keywords_vi": ["giấy tờ", "túi khẩn cấp", "sơ tán"],
+      "keywords_en": [
+        "documents",
+        "ready bag",
+        "evacuation"
+      ],
+      "keywords_vi": [
+        "giấy tờ",
+        "túi khẩn cấp",
+        "sơ tán"
+      ],
       "copy": {
         "en": "Keep photocopies or digital backups of your essential documents: identification cards, passports, insurance papers, medical records, and emergency contact lists. Store them in a waterproof folder inside your kit. Include small personal items such as cash, phone chargers, hygiene supplies, and any comfort objects that reduce stress for children. A ready-to-grab bag saves time during evacuation and prevents mistakes caused by panic. When everything important is already packed, you protect your identity, your finances, and your peace of mind.",
         "vi": "Hãy giữ bản photo hoặc bản sao kỹ thuật số của giấy tờ quan trọng: căn cước, hộ chiếu, giấy bảo hiểm, hồ sơ y tế và danh sách liên lạc khẩn cấp. Để chúng vào túi chống nước trong bộ dụng cụ. Thêm các vật dụng cá nhân như tiền mặt, sạc điện thoại, đồ vệ sinh và một số đồ quen thuộc giúp trẻ bớt căng thẳng. Túi khẩn cấp giúp tiết kiệm thời gian nếu phải sơ tán và tránh sai sót do hoảng loạn. Khi mọi thứ quan trọng đã được sắp sẵn, bạn bảo vệ được danh tính, tài chính và sự bình tĩnh của mình."
       },
-      "audio": "srs02_05_en.mp3"
+      "audio": "srs02_05_en.mp3",
+      "tags": []
     },
     {
       "slug": "adapting-the-kit-for-your-family",
-      "keywords_en": ["family needs", "customization", "preparedness"],
-      "keywords_vi": ["nhu cầu gia đình", "tùy chỉnh", "chuẩn bị"],
+      "keywords_en": [
+        "family needs",
+        "customization",
+        "preparedness"
+      ],
+      "keywords_vi": [
+        "nhu cầu gia đình",
+        "tùy chỉnh",
+        "chuẩn bị"
+      ],
       "copy": {
         "en": "Every family has different needs. Adapt your kit for infants, children, elders, pets, or members with medical conditions. For babies, include formula, diapers, and wipes. For elders, add medications, reading glasses, mobility aids, or hearing batteries. For pets, pack food, leashes, and a small water container. Review your kit every three to six months and update expired items, clothing sizes, or seasonal needs. A customized kit ensures comfort, reduces fear, and keeps your household functioning even in stressful conditions.",
         "vi": "Mỗi gia đình đều có nhu cầu khác nhau. Hãy điều chỉnh bộ dụng cụ theo nhu cầu của trẻ sơ sinh, trẻ nhỏ, người già, thú cưng hoặc người có bệnh nền. Với trẻ nhỏ, cần sữa, tã và khăn ướt. Với người già, hãy thêm thuốc men, kính đọc, dụng cụ hỗ trợ di chuyển hoặc pin máy trợ thính. Với thú cưng, hãy chuẩn bị thức ăn, dây dắt và hộp nước nhỏ. Xem lại bộ dụng cụ mỗi ba đến sáu tháng để thay đồ hết hạn hoặc theo mùa. Một bộ dụng cụ được tùy chỉnh giúp giảm sợ hãi và giữ cho gia đình hoạt động ổn định dù trong hoàn cảnh căng thẳng."
       },
-      "audio": "srs02_06_en.mp3"
+      "audio": "srs02_06_en.mp3",
+      "tags": []
     }
   ]
 }

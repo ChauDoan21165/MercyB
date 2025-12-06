@@ -13,77 +13,125 @@
   "entries": [
     {
       "slug": "observe-and-notice",
-      "keywords_en": ["observe", "notice", "science"],
-      "keywords_vi": ["quan sát", "nhận ra", "khoa học"],
+      "keywords_en": [
+        "observe",
+        "notice",
+        "science"
+      ],
+      "keywords_vi": [
+        "quan sát",
+        "nhận ra",
+        "khoa học"
+      ],
       "copy": {
         "en": "Science begins with observation. Teach kids to notice small details—shadows changing during the day, plants growing, ice melting, or how water moves. Encourage them to describe what they see without needing explanations. This strengthens curiosity and builds the habit of looking closely at the world.",
         "vi": "Khoa học bắt đầu từ quan sát. Hãy dạy trẻ chú ý những chi tiết nhỏ—bóng đổ thay đổi theo ngày, cây lớn lên, băng tan hoặc nước chuyển động ra sao. Khuyến khích trẻ mô tả những gì mình thấy mà không cần giải thích. Điều này nuôi dưỡng sự tò mò và thói quen quan sát kỹ thế giới."
       },
-      "tags": ["observe"],
+      "tags": [
+        "observe"
+      ],
       "audio": "science_for_kids_v1_observe_and_notice.mp3"
     },
     {
       "slug": "cause-and-effect",
-      "keywords_en": ["cause", "effect", "science"],
-      "keywords_vi": ["nguyên nhân", "kết quả", "khoa học"],
+      "keywords_en": [
+        "cause",
+        "effect",
+        "science"
+      ],
+      "keywords_vi": [
+        "nguyên nhân",
+        "kết quả",
+        "khoa học"
+      ],
       "copy": {
         "en": "Teach kids that one action can create a result. Simple examples work best: pushing a toy car makes it move, mixing colors creates new ones, or heating something changes its state. Ask children, “What happened when you did that?” This teaches the basics of cause and effect in a playful way.",
         "vi": "Hãy dạy trẻ rằng một hành động có thể tạo ra kết quả. Ví dụ đơn giản là hiệu quả nhất: đẩy xe đồ chơi làm nó chuyển động, trộn màu tạo màu mới hoặc làm nóng khiến vật thay đổi trạng thái. Hỏi trẻ: “Điều gì xảy ra khi con làm vậy?” Điều này giúp trẻ hiểu nguyên nhân–kết quả một cách vui vẻ."
       },
-      "tags": ["cause-effect"],
+      "tags": [
+        "cause-effect"
+      ],
       "audio": "science_for_kids_v1_cause_and_effect.mp3"
     },
     {
       "slug": "simple-experiments",
-      "keywords_en": ["experiment", "try", "science"],
-      "keywords_vi": ["thí nghiệm", "thử", "khoa học"],
+      "keywords_en": [
+        "experiment",
+        "try",
+        "science"
+      ],
+      "keywords_vi": [
+        "thí nghiệm",
+        "thử",
+        "khoa học"
+      ],
       "copy": {
         "en": "Kids love experiments. Start with tiny, safe ones: placing objects in water to see which float, shining a flashlight to make shadows, or melting ice in warm hands. The goal isn’t perfect results—it’s curiosity. Teach them to guess first, try it, then compare what really happened.",
         "vi": "Trẻ rất thích thí nghiệm. Hãy bắt đầu bằng những thí nghiệm nhỏ và an toàn: thả vật vào nước để xem vật nào nổi, chiếu đèn để tạo bóng hoặc làm tan băng trong tay ấm. Mục tiêu không phải kết quả hoàn hảo—mà là sự tò mò. Dạy trẻ đoán trước, thử nghiệm rồi so sánh điều thực sự xảy ra."
       },
-      "tags": ["experiment"],
+      "tags": [
+        "experiment"
+      ],
       "audio": "science_for_kids_v1_simple_experiments.mp3"
     },
     {
       "slug": "ask-why",
-      "keywords_en": ["why", "question", "science"],
-      "keywords_vi": ["tại sao", "câu hỏi", "khoa học"],
+      "keywords_en": [
+        "why",
+        "question",
+        "science"
+      ],
+      "keywords_vi": [
+        "tại sao",
+        "câu hỏi",
+        "khoa học"
+      ],
       "copy": {
         "en": "Questions are the heart of science. When children ask “Why?”, keep the answer simple: one sentence and one example. If you don’t know, say, “Let’s find out together.” This teaches kids that science is about exploring, not having all the answers.",
         "vi": "Câu hỏi là trung tâm của khoa học. Khi trẻ hỏi “Tại sao?”, hãy trả lời đơn giản: một câu và một ví dụ. Nếu bạn không biết, hãy nói: “Chúng ta cùng tìm hiểu nhé.” Điều này giúp trẻ hiểu khoa học là khám phá, không phải biết hết mọi thứ."
       },
-      "tags": ["why"],
+      "tags": [
+        "why"
+      ],
       "audio": "science_for_kids_v1_ask_why.mp3"
     },
     {
       "slug": "real-world-science",
-      "keywords_en": ["real world", "everyday", "science"],
-      "keywords_vi": ["đời sống", "hằng ngày", "khoa học"],
+      "keywords_en": [
+        "real world",
+        "everyday",
+        "science"
+      ],
+      "keywords_vi": [
+        "đời sống",
+        "hằng ngày",
+        "khoa học"
+      ],
       "copy": {
         "en": "Show children that science is everywhere. Point out steam from hot soup, rain forming puddles, magnets sticking, or animals adapting to weather. These daily moments make science feel real and exciting, helping kids understand learning happens beyond the classroom.",
         "vi": "Hãy cho trẻ thấy khoa học ở khắp mọi nơi. Chỉ cho trẻ hơi nước từ tô súp nóng, mưa tạo vũng nước, nam châm hút hay động vật thích nghi với thời tiết. Những khoảnh khắc đời sống này khiến khoa học trở nên gần gũi và thú vị, giúp trẻ hiểu việc học xảy ra ngoài lớp học."
       },
-      "tags": ["real-world"],
+      "tags": [
+        "real-world"
+      ],
       "audio": "science_for_kids_v1_real_world_science.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all"],
-      "keywords_vi": ["tất cả"],
+      "keywords_en": [
+        "all"
+      ],
+      "keywords_vi": [
+        "tất cả"
+      ],
       "copy": {
         "en": "Science begins with observation. Teach kids to notice small details—shadows changing during the day, plants growing, ice melting, or how water moves. Encourage them to describe what they see without needing explanations. This strengthens curiosity and builds the habit of looking closely at the world.Teach kids that one action can create a result. Simple examples work best: pushing a toy car makes it move, mixing colors creates new ones, or heating something changes its state. Ask children, “What happened when you did that?” This teaches the basics of cause and effect in a playful way.Kids love experiments. Start with tiny, safe ones: placing objects in water to see which float, shining a flashlight to make shadows, or melting ice in warm hands. The goal isn’t perfect results—it’s curiosity. Teach them to guess first, try it, then compare what really happened.Questions are the heart of science. When children ask “Why?”, keep the answer simple: one sentence and one example. If you don’t know, say, “Let’s find out together.” This teaches kids that science is about exploring, not having all the answers.Show children that science is everywhere. Point out steam from hot soup, rain forming puddles, magnets sticking, or animals adapting to weather. These daily moments make science feel real and exciting, helping kids understand learning happens beyond the classroom.",
         "vi": "Khoa học bắt đầu từ quan sát. Hãy dạy trẻ chú ý những chi tiết nhỏ—bóng đổ thay đổi theo ngày, cây lớn lên, băng tan hoặc nước chuyển động ra sao. Khuyến khích trẻ mô tả những gì mình thấy mà không cần giải thích. Điều này nuôi dưỡng sự tò mò và thói quen quan sát kỹ thế giới.Hãy dạy trẻ rằng một hành động có thể tạo ra kết quả. Ví dụ đơn giản là hiệu quả nhất: đẩy xe đồ chơi làm nó chuyển động, trộn màu tạo màu mới hoặc làm nóng khiến vật thay đổi trạng thái. Hỏi trẻ: “Điều gì xảy ra khi con làm vậy?” Điều này giúp trẻ hiểu nguyên nhân–kết quả một cách vui vẻ.Trẻ rất thích thí nghiệm. Hãy bắt đầu bằng những thí nghiệm nhỏ và an toàn: thả vật vào nước để xem vật nào nổi, chiếu đèn để tạo bóng hoặc làm tan băng trong tay ấm. Mục tiêu không phải kết quả hoàn hảo—mà là sự tò mò. Dạy trẻ đoán trước, thử nghiệm rồi so sánh điều thực sự xảy ra.Câu hỏi là trung tâm của khoa học. Khi trẻ hỏi “Tại sao?”, hãy trả lời đơn giản: một câu và một ví dụ. Nếu bạn không biết, hãy nói: “Chúng ta cùng tìm hiểu nhé.” Điều này giúp trẻ hiểu khoa học là khám phá, không phải biết hết mọi thứ.Hãy cho trẻ thấy khoa học ở khắp mọi nơi. Chỉ cho trẻ hơi nước từ tô súp nóng, mưa tạo vũng nước, nam châm hút hay động vật thích nghi với thời tiết. Những khoảnh khắc đời sống này khiến khoa học trở nên gần gũi và thú vị, giúp trẻ hiểu việc học xảy ra ngoài lớp học."
       },
-      "tags": ["all"],
+      "tags": [
+        "all"
+      ],
       "audio": "science_for_kids_v1_observe_and_notice.mp3 science_for_kids_v1_cause_and_effect.mp3 science_for_kids_v1_simple_experiments.mp3 science_for_kids_v1_ask_why.mp3 science_for_kids_v1_real_world_science.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "10-13",
-    "level": "Kids Level 3",
-    "created_at": "2025-11-23T00:00:00+00:00",
-    "updated_at": "2025-11-23T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#FFF5D6"
-  }
+  ]
 }

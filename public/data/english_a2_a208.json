@@ -13,63 +13,105 @@
   "entries": [
     {
       "slug": "basic-appearance-words",
-      "keywords_en": ["appearance", "adjectives"],
-      "keywords_vi": ["ngoại hình", "tính từ"],
+      "keywords_en": [
+        "appearance",
+        "adjectives"
+      ],
+      "keywords_vi": [
+        "ngoại hình",
+        "tính từ"
+      ],
       "copy": {
         "en": "Common appearance words. tall short young old pretty handsome strong weak. Use them in short lines. She is tall. He is young. They are strong.",
         "vi": "Các từ mô tả ngoại hình thường gặp: tall, short, young, old, pretty, handsome, strong, weak. Hãy dùng chúng trong câu ngắn. She is tall. He is young. They are strong."
       },
-      "audio": "a208_01_en.mp3"
+      "audio": "a208_01_en.mp3",
+      "tags": []
     },
     {
       "slug": "basic-personality-words",
-      "keywords_en": ["personality", "adjectives"],
-      "keywords_vi": ["tính cách", "tính từ"],
+      "keywords_en": [
+        "personality",
+        "adjectives"
+      ],
+      "keywords_vi": [
+        "tính cách",
+        "tính từ"
+      ],
       "copy": {
         "en": "Useful personality words. kind friendly quiet funny serious confident shy. Make simple sentences. She is kind. He is funny. They are friendly.",
         "vi": "Các từ mô tả tính cách hữu ích: kind, friendly, quiet, funny, serious, confident, shy. Hãy tạo câu đơn giản. She is kind. He is funny. They are friendly."
       },
-      "audio": "a208_02_en.mp3"
+      "audio": "a208_02_en.mp3",
+      "tags": []
     },
     {
       "slug": "be-plus-adjective",
-      "keywords_en": ["be", "adjective"],
-      "keywords_vi": ["be", "tính từ"],
+      "keywords_en": [
+        "be",
+        "adjective"
+      ],
+      "keywords_vi": [
+        "be",
+        "tính từ"
+      ],
       "copy": {
         "en": "Use be with adjectives. I am happy. You are tall. She is quiet. We are tired. They are friendly. Keep the sentences short and clear.",
         "vi": "Dùng be với tính từ. I am happy. You are tall. She is quiet. We are tired. They are friendly. Hãy giữ câu ngắn và rõ ràng."
       },
-      "audio": "a208_03_en.mp3"
+      "audio": "a208_03_en.mp3",
+      "tags": []
     },
     {
       "slug": "describing-yourself",
-      "keywords_en": ["describe", "self"],
-      "keywords_vi": ["miêu tả", "bản thân"],
+      "keywords_en": [
+        "describe",
+        "self"
+      ],
+      "keywords_vi": [
+        "miêu tả",
+        "bản thân"
+      ],
       "copy": {
         "en": "Use simple lines to talk about yourself. I am friendly. I am not tall. I am a quiet person. I am confident at work. Practice slowly with a calm voice.",
         "vi": "Dùng câu đơn giản để nói về bản thân. I am friendly. I am not tall. I am a quiet person. I am confident at work. Hãy luyện chậm với giọng nhẹ nhàng."
       },
-      "audio": "a208_04_en.mp3"
+      "audio": "a208_04_en.mp3",
+      "tags": []
     },
     {
       "slug": "describing-other-people",
-      "keywords_en": ["describe", "others"],
-      "keywords_vi": ["miêu tả", "người khác"],
+      "keywords_en": [
+        "describe",
+        "others"
+      ],
+      "keywords_vi": [
+        "miêu tả",
+        "người khác"
+      ],
       "copy": {
         "en": "Talk about others using be. She is kind. He is serious. They are funny. Do not use tones. Keep the sound flat for clear English rhythm.",
         "vi": "Hãy nói về người khác bằng be. She is kind. He is serious. They are funny. Đừng dùng thanh điệu. Giữ âm đều để tạo nhịp tiếng Anh tự nhiên."
       },
-      "audio": "a208_05_en.mp3"
+      "audio": "a208_05_en.mp3",
+      "tags": []
     },
     {
       "slug": "mini-practice-descriptions",
-      "keywords_en": ["practice", "descriptions"],
-      "keywords_vi": ["luyện tập", "miêu tả"],
+      "keywords_en": [
+        "practice",
+        "descriptions"
+      ],
+      "keywords_vi": [
+        "luyện tập",
+        "miêu tả"
+      ],
       "copy": {
         "en": "Practice lines. She is tall and friendly. He is short but strong. They are young and confident. Repeat daily until the rhythm feels natural.",
         "vi": "Luyện câu. She is tall and friendly. He is short but strong. They are young and confident. Luyện mỗi ngày cho đến khi nhịp nói tự nhiên."
       },
-      "audio": "a208_06_en.mp3"
+      "audio": "a208_06_en.mp3",
+      "tags": []
     }
   ]
 }

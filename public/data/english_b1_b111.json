@@ -13,63 +13,105 @@
   "entries": [
     {
       "slug": "describing-appearance",
-      "keywords_en": ["appearance", "description"],
-      "keywords_vi": ["ngoại hình", "miêu tả"],
+      "keywords_en": [
+        "appearance",
+        "description"
+      ],
+      "keywords_vi": [
+        "ngoại hình",
+        "miêu tả"
+      ],
       "copy": {
         "en": "Use simple adjectives to describe appearance. She is tall. He has short hair. She has a friendly smile. He wears glasses. Keep each line short and calm so the description is easy to understand.",
         "vi": "Hãy dùng các tính từ đơn giản để miêu tả ngoại hình. Cô ấy cao. Anh ấy có tóc ngắn. Cô ấy có nụ cười thân thiện. Anh ấy đeo kính. Mỗi câu nên ngắn và rõ để người nghe dễ hiểu."
       },
-      "audio": "b111_01_en.mp3"
+      "audio": "b111_01_en.mp3",
+      "tags": []
     },
     {
       "slug": "talking-about-personality",
-      "keywords_en": ["personality", "character"],
-      "keywords_vi": ["tính cách", "đặc điểm"],
+      "keywords_en": [
+        "personality",
+        "character"
+      ],
+      "keywords_vi": [
+        "tính cách",
+        "đặc điểm"
+      ],
       "copy": {
         "en": "Describe personality with clear words. She is kind. He is funny. She is quiet. He is confident. Simple adjectives help you talk naturally without long explanations.",
         "vi": "Hãy dùng các từ đơn giản để miêu tả tính cách. Cô ấy tốt bụng. Anh ấy hài hước. Cô ấy trầm tính. Anh ấy tự tin. Tính từ đơn giản giúp bạn nói tự nhiên mà không cần giải thích dài."
       },
-      "audio": "b111_02_en.mp3"
+      "audio": "b111_02_en.mp3",
+      "tags": []
     },
     {
       "slug": "describing-habits-and-behaviors",
-      "keywords_en": ["habits", "behavior"],
-      "keywords_vi": ["thói quen", "hành vi"],
+      "keywords_en": [
+        "habits",
+        "behavior"
+      ],
+      "keywords_vi": [
+        "thói quen",
+        "hành vi"
+      ],
       "copy": {
         "en": "Talk about habits with easy patterns. She reads every night. He works early. She exercises in the morning. He drinks tea after lunch. These lines help you describe daily behavior clearly.",
         "vi": "Hãy nói về thói quen bằng các mẫu câu đơn giản. Cô ấy đọc sách mỗi tối. Anh ấy làm việc sớm. Cô ấy tập thể dục buổi sáng. Anh ấy uống trà sau bữa trưa. Những câu này giúp bạn miêu tả hành vi hằng ngày rõ ràng."
       },
-      "audio": "b111_03_en.mp3"
+      "audio": "b111_03_en.mp3",
+      "tags": []
     },
     {
       "slug": "describing-feelings",
-      "keywords_en": ["feelings", "emotion"],
-      "keywords_vi": ["cảm xúc", "tâm trạng"],
+      "keywords_en": [
+        "feelings",
+        "emotion"
+      ],
+      "keywords_vi": [
+        "cảm xúc",
+        "tâm trạng"
+      ],
       "copy": {
         "en": "Use simple lines to talk about feelings. She is happy today. He feels tired. She is worried about work. He is excited for the trip. Talking about feelings helps conversations feel warm and real.",
         "vi": "Hãy dùng câu ngắn để nói về cảm xúc. Hôm nay cô ấy vui. Anh ấy thấy mệt. Cô ấy lo về công việc. Anh ấy háo hức cho chuyến đi. Nói về cảm xúc giúp cuộc trò chuyện ấm áp và chân thật hơn."
       },
-      "audio": "b111_04_en.mp3"
+      "audio": "b111_04_en.mp3",
+      "tags": []
     },
     {
       "slug": "comparing-people",
-      "keywords_en": ["comparison", "people"],
-      "keywords_vi": ["so sánh", "con người"],
+      "keywords_en": [
+        "comparison",
+        "people"
+      ],
+      "keywords_vi": [
+        "so sánh",
+        "con người"
+      ],
       "copy": {
         "en": "Use simple comparisons. She is taller than me. He is more patient. She is funnier. He is more organized. Comparisons help you describe people more clearly.",
         "vi": "Hãy dùng các mẫu so sánh đơn giản. Cô ấy cao hơn tôi. Anh ấy kiên nhẫn hơn. Cô ấy hài hước hơn. Anh ấy gọn gàng hơn. So sánh giúp bạn miêu tả con người rõ ràng hơn."
       },
-      "audio": "b111_05_en.mp3"
+      "audio": "b111_05_en.mp3",
+      "tags": []
     },
     {
       "slug": "daily-description-practice",
-      "keywords_en": ["practice", "description"],
-      "keywords_vi": ["luyện tập", "miêu tả"],
+      "keywords_en": [
+        "practice",
+        "description"
+      ],
+      "keywords_vi": [
+        "luyện tập",
+        "miêu tả"
+      ],
       "copy": {
         "en": "Choose one person each day and describe them in three short lines. One for appearance. One for personality. One for habits. Daily practice builds smooth and natural English.",
         "vi": "Mỗi ngày hãy chọn một người và miêu tả họ bằng ba câu ngắn. Một câu về ngoại hình. Một câu về tính cách. Một câu về thói quen. Luyện tập hằng ngày giúp bạn nói tiếng Anh trôi chảy và tự nhiên."
       },
-      "audio": "b111_06_en.mp3"
+      "audio": "b111_06_en.mp3",
+      "tags": []
     }
   ]
 }

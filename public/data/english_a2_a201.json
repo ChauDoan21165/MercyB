@@ -13,63 +13,107 @@
   "entries": [
     {
       "slug": "polite-requests",
-      "keywords_en": ["requests", "polite", "communication"],
-      "keywords_vi": ["yêu cầu", "lịch sự", "giao tiếp"],
+      "keywords_en": [
+        "requests",
+        "polite",
+        "communication"
+      ],
+      "keywords_vi": [
+        "yêu cầu",
+        "lịch sự",
+        "giao tiếp"
+      ],
       "copy": {
         "en": "Use these patterns to ask politely. Can I have a bottle of water please. Could you help me with this please. Can you show me the way please. Could I ask you a question. Soft, polite requests make conversation easier.",
         "vi": "Hãy dùng các mẫu sau để yêu cầu lịch sự: Can I have a bottle of water please. Could you help me with this please. Can you show me the way please. Could I ask you a question. Cách yêu cầu nhẹ nhàng giúp giao tiếp dễ dàng hơn."
       },
-      "audio": "a201_01_en.mp3"
+      "audio": "a201_01_en.mp3",
+      "tags": []
     },
     {
       "slug": "linking-ideas",
-      "keywords_en": ["linking words", "ideas"],
-      "keywords_vi": ["từ nối", "liên kết ý"],
+      "keywords_en": [
+        "linking words",
+        "ideas"
+      ],
+      "keywords_vi": [
+        "từ nối",
+        "liên kết ý"
+      ],
       "copy": {
         "en": "These words help you join ideas. and but because so Use them in simple lines. I want tea but I do not want sugar. I am tired because I worked late. It is cold so I need a jacket.",
         "vi": "Những từ này giúp bạn nối ý: and, but, because, so. Ví dụ: I want tea but I do not want sugar. I am tired because I worked late. It is cold so I need a jacket."
       },
-      "audio": "a201_02_en.mp3"
+      "audio": "a201_02_en.mp3",
+      "tags": []
     },
     {
       "slug": "expressing-needs",
-      "keywords_en": ["needs", "communication"],
-      "keywords_vi": ["nhu cầu", "giao tiếp"],
+      "keywords_en": [
+        "needs",
+        "communication"
+      ],
+      "keywords_vi": [
+        "nhu cầu",
+        "giao tiếp"
+      ],
       "copy": {
         "en": "Say what you need clearly. I need more time. I need help with this. I need a new ticket. I need a quiet place to study. Clear needs make communication simple and calm.",
         "vi": "Hãy diễn đạt nhu cầu rõ ràng: I need more time. I need help with this. I need a new ticket. I need a quiet place to study. Nói nhu cầu rõ ràng giúp giao tiếp đơn giản và nhẹ nhàng."
       },
-      "audio": "a201_03_en.mp3"
+      "audio": "a201_03_en.mp3",
+      "tags": []
     },
     {
       "slug": "expressing-preferences",
-      "keywords_en": ["preferences", "likes"],
-      "keywords_vi": ["sở thích", "ưu tiên"],
+      "keywords_en": [
+        "preferences",
+        "likes"
+      ],
+      "keywords_vi": [
+        "sở thích",
+        "ưu tiên"
+      ],
       "copy": {
         "en": "Use these patterns to say what you like. I like morning coffee. I like quiet places. I prefer cold drinks. I prefer walking to driving. Preferences help people understand you better.",
         "vi": "Dùng các mẫu này để nói điều bạn thích: I like morning coffee. I like quiet places. I prefer cold drinks. I prefer walking to driving. Việc nói sở thích giúp người khác hiểu bạn hơn."
       },
-      "audio": "a201_04_en.mp3"
+      "audio": "a201_04_en.mp3",
+      "tags": []
     },
     {
       "slug": "simple-explanations",
-      "keywords_en": ["explanations", "speaking"],
-      "keywords_vi": ["giải thích", "nói"],
+      "keywords_en": [
+        "explanations",
+        "speaking"
+      ],
+      "keywords_vi": [
+        "giải thích",
+        "nói"
+      ],
       "copy": {
         "en": "These lines help you explain things. I am late because the bus was slow. I cannot go because I am busy. I am tired because I slept late. Simple explanations make conversations smoother.",
         "vi": "Những câu này giúp bạn giải thích: I am late because the bus was slow. I cannot go because I am busy. I am tired because I slept late. Giải thích đơn giản giúp cuộc trò chuyện trôi chảy hơn."
       },
-      "audio": "a201_05_en.mp3"
+      "audio": "a201_05_en.mp3",
+      "tags": []
     },
     {
       "slug": "short-daily-patterns",
-      "keywords_en": ["daily speaking", "patterns"],
-      "keywords_vi": ["mẫu nói hằng ngày", "nói"],
+      "keywords_en": [
+        "daily speaking",
+        "patterns"
+      ],
+      "keywords_vi": [
+        "mẫu nói hằng ngày",
+        "nói"
+      ],
       "copy": {
         "en": "Practice these everyday patterns. I am not sure. I think so. I hope so. I do not know. Let me check. These small patterns help you speak naturally at A2.",
         "vi": "Hãy luyện các mẫu hằng ngày sau: I am not sure. I think so. I hope so. I do not know. Let me check. Những mẫu nhỏ này giúp bạn nói tự nhiên ở mức A2."
       },
-      "audio": "a201_06_en.mp3"
+      "audio": "a201_06_en.mp3",
+      "tags": []
     }
   ]
 }

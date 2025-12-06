@@ -13,63 +13,105 @@
   "entries": [
     {
       "slug": "story-morning-routine",
-      "keywords_en": ["story", "routine"],
-      "keywords_vi": ["truyện", "thói quen"],
+      "keywords_en": [
+        "story",
+        "routine"
+      ],
+      "keywords_vi": [
+        "truyện",
+        "thói quen"
+      ],
       "copy": {
         "en": "Anna wakes up at six every morning. She opens her window and feels the cool air. She makes a cup of tea and eats a small breakfast. After that, she checks her schedule for the day. She walks to work because her office is close. She likes slow mornings. They help her start the day calmly.",
         "vi": "Anna thức dậy lúc sáu giờ mỗi sáng. Cô mở cửa sổ và cảm nhận không khí mát. Cô pha một tách trà và ăn bữa sáng nhẹ. Sau đó, cô xem lịch làm việc trong ngày. Cô đi bộ đến chỗ làm vì văn phòng khá gần. Cô thích những buổi sáng chậm rãi vì chúng giúp cô bắt đầu ngày mới một cách bình tĩnh."
       },
-      "audio": "a204_01_en.mp3"
+      "audio": "a204_01_en.mp3",
+      "tags": []
     },
     {
       "slug": "story-lost-ticket",
-      "keywords_en": ["story", "travel"],
-      "keywords_vi": ["truyện", "du lịch"],
+      "keywords_en": [
+        "story",
+        "travel"
+      ],
+      "keywords_vi": [
+        "truyện",
+        "du lịch"
+      ],
       "copy": {
         "en": "Tom is at the bus station. He looks for his ticket but cannot find it. He checks his pockets, his bag, and his wallet. Nothing. He feels worried. Then a woman walks to him and smiles. She holds a ticket in her hand. She says he dropped it near the door. Tom thanks her many times. He feels happy and relieved.",
         "vi": "Tom đang ở trạm xe buýt. Anh tìm vé nhưng không thấy. Anh kiểm tra túi quần, túi xách và ví. Không có gì. Anh bắt đầu lo lắng. Một người phụ nữ bước đến và mỉm cười. Cô cầm vé trên tay và nói rằng anh đã làm rơi gần cửa. Tom cảm ơn cô rất nhiều. Anh cảm thấy nhẹ nhõm."
       },
-      "audio": "a204_02_en.mp3"
+      "audio": "a204_02_en.mp3",
+      "tags": []
     },
     {
       "slug": "story-friendly-neighbor",
-      "keywords_en": ["story", "people"],
-      "keywords_vi": ["truyện", "con người"],
+      "keywords_en": [
+        "story",
+        "people"
+      ],
+      "keywords_vi": [
+        "truyện",
+        "con người"
+      ],
       "copy": {
         "en": "Mai moves into a new apartment. She feels a little nervous because she does not know anyone. In the evening, her neighbor knocks on her door. He brings a small cake and says welcome. They talk for a few minutes about the building and the area. Mai feels warm inside. A simple act of kindness makes her feel at home.",
         "vi": "Mai chuyển đến một căn hộ mới. Cô hơi lo lắng vì không quen ai. Buổi tối, hàng xóm gõ cửa phòng cô. Anh mang theo một chiếc bánh nhỏ và chào mừng. Họ nói chuyện vài phút về tòa nhà và khu vực. Mai cảm thấy ấm áp. Một cử chỉ tử tế khiến cô thấy như đang ở nhà."
       },
-      "audio": "a204_03_en.mp3"
+      "audio": "a204_03_en.mp3",
+      "tags": []
     },
     {
       "slug": "story-rainy-day",
-      "keywords_en": ["story", "weather"],
-      "keywords_vi": ["truyện", "thời tiết"],
+      "keywords_en": [
+        "story",
+        "weather"
+      ],
+      "keywords_vi": [
+        "truyện",
+        "thời tiết"
+      ],
       "copy": {
         "en": "It is raining all day. Linh cannot go to the park, so she stays home. She listens to music and reads a book. She makes warm soup for lunch. In the afternoon, the rain becomes lighter. She opens her window and feels the fresh air. Even a rainy day can be peaceful when she takes it slowly.",
         "vi": "Trời mưa cả ngày. Linh không thể đi công viên nên cô ở nhà. Cô nghe nhạc và đọc sách. Cô nấu súp nóng cho bữa trưa. Buổi chiều, mưa nhỏ dần. Cô mở cửa sổ và cảm nhận không khí tươi mát. Ngay cả ngày mưa cũng có thể bình yên nếu cô tận hưởng nó chậm rãi."
       },
-      "audio": "a204_04_en.mp3"
+      "audio": "a204_04_en.mp3",
+      "tags": []
     },
     {
       "slug": "story-small-surprise",
-      "keywords_en": ["story", "emotion"],
-      "keywords_vi": ["truyện", "cảm xúc"],
+      "keywords_en": [
+        "story",
+        "emotion"
+      ],
+      "keywords_vi": [
+        "truyện",
+        "cảm xúc"
+      ],
       "copy": {
         "en": "David has a long and tiring day at work. When he gets home, he sees a small note on the table. It is from his sister. She wrote a simple message. She says she believes in him and hopes he rests well. David smiles. A small surprise can change a whole day.",
         "vi": "David có một ngày làm việc dài và mệt mỏi. Khi về nhà, anh thấy một mảnh giấy nhỏ trên bàn. Đó là của em gái anh. Cô viết một lời nhắn đơn giản rằng cô luôn tin tưởng anh và mong anh nghỉ ngơi tốt. David mỉm cười. Một bất ngờ nhỏ có thể thay đổi cả một ngày."
       },
-      "audio": "a204_05_en.mp3"
+      "audio": "a204_05_en.mp3",
+      "tags": []
     },
     {
       "slug": "story-evening-walk",
-      "keywords_en": ["story", "routine"],
-      "keywords_vi": ["truyện", "thói quen"],
+      "keywords_en": [
+        "story",
+        "routine"
+      ],
+      "keywords_vi": [
+        "truyện",
+        "thói quen"
+      ],
       "copy": {
         "en": "Sara likes walking in the evening. The air is cool and the streets are quiet. She listens to her steps on the ground. She thinks about her day and lets her mind rest. When she returns home, she feels light and calm. A short walk helps her end the day with peace.",
         "vi": "Sara thích đi bộ vào buổi tối. Không khí mát và đường phố yên tĩnh. Cô lắng nghe tiếng bước chân của mình. Cô nghĩ về một ngày đã qua và để tâm trí nghỉ ngơi. Khi trở về nhà, cô cảm thấy nhẹ nhàng và bình tĩnh. Một buổi đi bộ ngắn giúp cô kết thúc ngày với sự an yên."
       },
-      "audio": "a204_06_en.mp3"
+      "audio": "a204_06_en.mp3",
+      "tags": []
     }
   ]
 }

@@ -13,77 +13,131 @@
   "entries": [
     {
       "slug": "once",
-      "keywords_en": ["story", "once", "beginning"],
-      "keywords_vi": ["truyện", "once", "mở đầu"],
+      "keywords_en": [
+        "story",
+        "once",
+        "beginning"
+      ],
+      "keywords_vi": [
+        "truyện",
+        "once",
+        "mở đầu"
+      ],
       "copy": {
         "en": "Teach the word “once” by starting a tiny story: “Once… there was a little star.” Say it slowly and let your child repeat “once.” Explain that it is a soft, magical way to begin a story. Children enjoy repeating it as part of a cozy routine.",
         "vi": "Dạy từ “once” bằng cách mở đầu một câu chuyện nhỏ: “Once… there was a little star.” Đọc thật chậm và để bé lặp lại “once.” Giải thích rằng đây là cách mở đầu nhẹ nhàng, kỳ diệu cho câu chuyện. Trẻ thích lặp lại nó như một nghi thức ấm áp."
       },
-      "tags": ["story"],
+      "tags": [
+        "story"
+      ],
       "audio": "magic_story_words_v1_once.mp3"
     },
     {
       "slug": "magic",
-      "keywords_en": ["story", "magic", "imagination"],
-      "keywords_vi": ["truyện", "magic", "tưởng tượng"],
+      "keywords_en": [
+        "story",
+        "magic",
+        "imagination"
+      ],
+      "keywords_vi": [
+        "truyện",
+        "magic",
+        "tưởng tượng"
+      ],
       "copy": {
         "en": "Teach the word “magic” by opening your hands slowly like a spark of light. Say the word softly, “magic…” Invite your child to pretend they are sprinkling sparkles in the air. Gentle imagination helps the word feel special and delightful.",
         "vi": "Dạy từ “magic” bằng cách mở hai bàn tay như tia sáng nhỏ. Đọc từ nhẹ nhàng: “magic…” Rủ bé tưởng tượng đang tung những hạt lấp lánh trong không khí. Tưởng tượng dịu dàng khiến từ này trở nên đặc biệt và dễ nhớ."
       },
-      "tags": ["story", "magic"],
+      "tags": [
+        "story",
+        "magic"
+      ],
       "audio": "magic_story_words_v1_magic.mp3"
     },
     {
       "slug": "hero",
-      "keywords_en": ["story", "hero", "brave"],
-      "keywords_vi": ["truyện", "hero", "dũng cảm"],
+      "keywords_en": [
+        "story",
+        "hero",
+        "brave"
+      ],
+      "keywords_vi": [
+        "truyện",
+        "hero",
+        "dũng cảm"
+      ],
       "copy": {
         "en": "Teach the word “hero” by standing tall and placing a hand gently on your chest. Say the word clearly: “hero.” Invite your child to stand proudly too. Explain that a hero is someone who helps, protects, or is brave—even in small ways.",
         "vi": "Dạy từ “hero” bằng cách đứng thẳng và đặt tay lên ngực. Đọc rõ ràng: “hero.” Rủ bé đứng tự tin cùng bạn. Giải thích rằng hero là người giúp đỡ, bảo vệ hoặc dũng cảm—even trong những điều nhỏ."
       },
-      "tags": ["story", "hero"],
+      "tags": [
+        "story",
+        "hero"
+      ],
       "audio": "magic_story_words_v1_hero.mp3"
     },
     {
       "slug": "dragon",
-      "keywords_en": ["story", "dragon", "creature"],
-      "keywords_vi": ["truyện", "rồng", "sinh vật"],
+      "keywords_en": [
+        "story",
+        "dragon",
+        "creature"
+      ],
+      "keywords_vi": [
+        "truyện",
+        "rồng",
+        "sinh vật"
+      ],
       "copy": {
         "en": "Introduce “dragon” by tracing a long shape in the air and making a soft growl. Say the word slowly and let your child copy the motion. Dragons in kids’ stories can be friendly, silly, or sleepy—this makes the word feel safe and fun.",
         "vi": "Giới thiệu từ “dragon” bằng cách vẽ hình cong dài trong không khí và tạo tiếng gầm nhẹ. Đọc từ chậm rãi và để bé làm theo. Rồng trong truyện trẻ em có thể thân thiện, ngộ nghĩnh hoặc buồn ngủ—giúp từ này trở nên an toàn và vui."
       },
-      "tags": ["story", "dragon"],
+      "tags": [
+        "story",
+        "dragon"
+      ],
       "audio": "magic_story_words_v1_dragon.mp3"
     },
     {
       "slug": "forest",
-      "keywords_en": ["story", "forest", "place"],
-      "keywords_vi": ["truyện", "rừng", "địa điểm"],
+      "keywords_en": [
+        "story",
+        "forest",
+        "place"
+      ],
+      "keywords_vi": [
+        "truyện",
+        "rừng",
+        "địa điểm"
+      ],
       "copy": {
         "en": "Teach “forest” by closing your eyes with your child and imagining tall trees around you. Say the word softly: “forest.” Then open your eyes and stretch your arms up like tree branches. Imagination mixed with movement helps the word stay in memory.",
         "vi": "Dạy từ “forest” bằng cách nhắm mắt cùng bé và tưởng tượng rừng cây xung quanh. Đọc nhẹ nhàng: “forest.” Sau đó mở mắt và vươn tay lên như cành cây. Tưởng tượng kết hợp vận động giúp từ lưu lại lâu hơn."
       },
-      "tags": ["story", "forest"],
+      "tags": [
+        "story",
+        "forest"
+      ],
       "audio": "magic_story_words_v1_forest.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all", "complete"],
-      "keywords_vi": ["tất cả", "đầy đủ"],
+      "keywords_en": [
+        "all",
+        "complete"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "đầy đủ"
+      ],
       "copy": {
         "en": "Teach “once” by starting a tiny story together.\n\nTeach “magic” with gentle hand motions like sparkles.\n\nTeach “hero” by standing proudly and explaining brave helpers.\n\nTeach “dragon” by tracing shapes in the air and making soft growls.\n\nTeach “forest” by imagining tall trees and stretching like branches.\n\nThese warm, dreamy moments help children learn story words that build imagination and cozy storytelling habits.",
         "vi": "Dạy “once” bằng cách mở đầu một câu chuyện nho nhỏ.\n\nDạy “magic” bằng tay mở nhẹ như tia sáng.\n\nDạy “hero” bằng tư thế tự tin và giải thích sự dũng cảm.\n\nDạy “dragon” bằng động tác vẽ rồng và tiếng gầm nhẹ.\n\nDạy “forest” bằng tưởng tượng rừng cây và vươn tay như cành.\n\nNhững khoảnh khắc ấm áp, mơ mộng giúp bé học từ vựng truyện và nuôi dưỡng trí tưởng tượng."
       },
-      "tags": ["all"],
+      "tags": [
+        "all"
+      ],
       "audio": "magic_story_words_v1_once.mp3 magic_story_words_v1_magic.mp3 magic_story_words_v1_hero.mp3 magic_story_words_v1_dragon.mp3 magic_story_words_v1_forest.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "4-7",
-    "level": "Kids Level 1",
-    "created_at": "2025-11-21T00:00:00+00:00",
-    "updated_at": "2025-11-21T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#FFF0F9"
-  }
+  ]
 }

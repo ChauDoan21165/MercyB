@@ -13,77 +13,125 @@
   "entries": [
     {
       "slug": "daily-moments",
-      "keywords_en": ["daily moments", "journal", "reflection"],
-      "keywords_vi": ["khoảnh khắc hằng ngày", "nhật ký", "suy ngẫm"],
+      "keywords_en": [
+        "daily moments",
+        "journal",
+        "reflection"
+      ],
+      "keywords_vi": [
+        "khoảnh khắc hằng ngày",
+        "nhật ký",
+        "suy ngẫm"
+      ],
       "copy": {
         "en": "Teach kids to journal by starting with small moments from the day. Ask them to write one thing they enjoyed, one thing that surprised them, or one thing they learned. Keeping it simple helps journaling feel comfortable. They can begin with a sentence like, “Today I liked…” or “Today I noticed…” This builds awareness and teaches children to slow down and remember meaningful moments.",
         "vi": "Hãy dạy trẻ viết nhật ký bằng cách bắt đầu từ những khoảnh khắc nhỏ trong ngày. Hỏi trẻ ghi lại một điều vui, một điều khiến trẻ ngạc nhiên hoặc một điều trẻ học được. Giữ mọi thứ đơn giản giúp việc viết nhật ký trở nên dễ chịu. Trẻ có thể bắt đầu bằng câu: “Hôm nay con thích…” hoặc “Hôm nay con nhận ra…”. Cách này giúp trẻ biết quan sát và nhớ lại những khoảnh khắc ý nghĩa."
       },
-      "tags": ["moments"],
+      "tags": [
+        "moments"
+      ],
       "audio": "journaling_reflection_v1_daily_moments.mp3"
     },
     {
       "slug": "feelings-check-in",
-      "keywords_en": ["feelings", "check-in", "journal"],
-      "keywords_vi": ["cảm xúc", "ghi lại", "nhật ký"],
+      "keywords_en": [
+        "feelings",
+        "check-in",
+        "journal"
+      ],
+      "keywords_vi": [
+        "cảm xúc",
+        "ghi lại",
+        "nhật ký"
+      ],
       "copy": {
         "en": "A feelings check-in teaches children to understand and name emotions. Ask them to write how they felt that day—happy, worried, excited, or tired. Encourage them to add a reason: “I felt excited because…” This helps kids connect events with feelings and strengthens emotional awareness, which improves both writing and communication.",
         "vi": "Ghi lại cảm xúc giúp trẻ hiểu và gọi tên cảm xúc của mình. Hãy yêu cầu trẻ viết hôm nay trẻ cảm thấy thế nào—vui, lo lắng, háo hức hoặc mệt mỏi. Khuyến khích trẻ thêm lý do: “Con thấy háo hức vì…”. Cách này giúp trẻ kết nối sự kiện với cảm xúc và tăng cường nhận thức cảm xúc, tốt cho cả viết lẫn giao tiếp."
       },
-      "tags": ["feelings"],
+      "tags": [
+        "feelings"
+      ],
       "audio": "journaling_reflection_v1_feelings_check_in.mp3"
     },
     {
       "slug": "three-good-things",
-      "keywords_en": ["gratitude", "reflection", "writing"],
-      "keywords_vi": ["biết ơn", "suy ngẫm", "viết"],
+      "keywords_en": [
+        "gratitude",
+        "reflection",
+        "writing"
+      ],
+      "keywords_vi": [
+        "biết ơn",
+        "suy ngẫm",
+        "viết"
+      ],
       "copy": {
         "en": "Teach kids gratitude by writing three good things each day. These can be small—someone smiled at them, they enjoyed lunch, or they finished homework. Ask them to write one sentence for each good thing. This practice helps children focus on positive moments and strengthens emotional balance, making journaling warm and uplifting.",
         "vi": "Hãy dạy trẻ biết ơn bằng cách viết ba điều tốt trong ngày. Chúng có thể rất nhỏ—ai đó mỉm cười với trẻ, bữa trưa ngon miệng hoặc trẻ hoàn thành bài tập. Yêu cầu trẻ viết một câu cho mỗi điều tốt. Thói quen này giúp trẻ chú ý đến khoảnh khắc tích cực và nuôi dưỡng cảm xúc lành mạnh, khiến việc viết nhật ký trở nên ấm áp và đầy khích lệ."
       },
-      "tags": ["gratitude"],
+      "tags": [
+        "gratitude"
+      ],
       "audio": "journaling_reflection_v1_three_good_things.mp3"
     },
     {
       "slug": "question-prompts",
-      "keywords_en": ["prompts", "questions", "journal"],
-      "keywords_vi": ["gợi ý", "câu hỏi", "nhật ký"],
+      "keywords_en": [
+        "prompts",
+        "questions",
+        "journal"
+      ],
+      "keywords_vi": [
+        "gợi ý",
+        "câu hỏi",
+        "nhật ký"
+      ],
       "copy": {
         "en": "Give kids simple prompts to help them write when they don’t know what to say. Questions like “What made you smile today?”, “What was difficult today?”, or “What do you want to try tomorrow?” guide reflection and curiosity. These prompts help children think gently about their day and express ideas more clearly.",
         "vi": "Hãy cho trẻ những gợi ý đơn giản để viết khi trẻ không biết bắt đầu từ đâu. Các câu hỏi như “Điều gì làm con mỉm cười hôm nay?”, “Hôm nay có điều gì khó khăn?”, hoặc “Ngày mai con muốn thử điều gì?” giúp trẻ suy ngẫm và tò mò. Những gợi ý này giúp trẻ nghĩ về ngày của mình một cách nhẹ nhàng và diễn đạt ý rõ ràng hơn."
       },
-      "tags": ["prompts"],
+      "tags": [
+        "prompts"
+      ],
       "audio": "journaling_reflection_v1_question_prompts.mp3"
     },
     {
       "slug": "small-goals",
-      "keywords_en": ["goals", "reflection", "future"],
-      "keywords_vi": ["mục tiêu", "suy ngẫm", "tương lai"],
+      "keywords_en": [
+        "goals",
+        "reflection",
+        "future"
+      ],
+      "keywords_vi": [
+        "mục tiêu",
+        "suy ngẫm",
+        "tương lai"
+      ],
       "copy": {
         "en": "Teach kids to set small goals through journaling. Ask them to write one tiny thing they want to improve—reading for ten minutes, being kind to a friend, or keeping their desk clean. Writing goals helps children think about their future choices and builds responsibility in a gentle, encouraging way.",
         "vi": "Hãy dạy trẻ đặt mục tiêu nhỏ thông qua nhật ký. Yêu cầu trẻ viết một điều nhỏ mà trẻ muốn cải thiện—đọc sách mười phút, tử tế với bạn, hoặc giữ bàn học gọn gàng. Việc viết mục tiêu giúp trẻ suy nghĩ về lựa chọn tương lai và xây dựng tinh thần trách nhiệm một cách nhẹ nhàng, tích cực."
       },
-      "tags": ["goals"],
+      "tags": [
+        "goals"
+      ],
       "audio": "journaling_reflection_v1_small_goals.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all"],
-      "keywords_vi": ["tất cả"],
+      "keywords_en": [
+        "all"
+      ],
+      "keywords_vi": [
+        "tất cả"
+      ],
       "copy": {
         "en": "Teach kids to journal by starting with small moments from the day. Ask them to write one thing they enjoyed, one thing that surprised them, or one thing they learned. Keeping it simple helps journaling feel comfortable. They can begin with a sentence like, “Today I liked…” or “Today I noticed…” This builds awareness and teaches children to slow down and remember meaningful moments.A feelings check-in teaches children to understand and name emotions. Ask them to write how they felt that day—happy, worried, excited, or tired. Encourage them to add a reason: “I felt excited because…” This helps kids connect events with feelings and strengthens emotional awareness, which improves both writing and communication.Teach kids gratitude by writing three good things each day. These can be small—someone smiled at them, they enjoyed lunch, or they finished homework. Ask them to write one sentence for each good thing. This practice helps children focus on positive moments and strengthens emotional balance, making journaling warm and uplifting.Give kids simple prompts to help them write when they don’t know what to say. Questions like “What made you smile today?”, “What was difficult today?”, or “What do you want to try tomorrow?” guide reflection and curiosity. These prompts help children think gently about their day and express ideas more clearly.Teach kids to set small goals through journaling. Ask them to write one tiny thing they want to improve—reading for ten minutes, being kind to a friend, or keeping their desk clean. Writing goals helps children think about their future choices and builds responsibility in a gentle, encouraging way.",
         "vi": "Hãy dạy trẻ viết nhật ký bằng cách bắt đầu từ những khoảnh khắc nhỏ trong ngày. Hỏi trẻ ghi lại một điều vui, một điều khiến trẻ ngạc nhiên hoặc một điều trẻ học được. Giữ mọi thứ đơn giản giúp việc viết nhật ký trở nên dễ chịu. Trẻ có thể bắt đầu bằng câu: “Hôm nay con thích…” hoặc “Hôm nay con nhận ra…”. Cách này giúp trẻ biết quan sát và nhớ lại những khoảnh khắc ý nghĩa.Ghi lại cảm xúc giúp trẻ hiểu và gọi tên cảm xúc của mình. Hãy yêu cầu trẻ viết hôm nay trẻ cảm thấy thế nào—vui, lo lắng, háo hức hoặc mệt mỏi. Khuyến khích trẻ thêm lý do: “Con thấy háo hức vì…”. Cách này giúp trẻ kết nối sự kiện với cảm xúc và tăng cường nhận thức cảm xúc, tốt cho cả viết lẫn giao tiếp.Hãy dạy trẻ biết ơn bằng cách viết ba điều tốt trong ngày. Chúng có thể rất nhỏ—ai đó mỉm cười với trẻ, bữa trưa ngon miệng hoặc trẻ hoàn thành bài tập. Yêu cầu trẻ viết một câu cho mỗi điều tốt. Thói quen này giúp trẻ chú ý đến khoảnh khắc tích cực và nuôi dưỡng cảm xúc lành mạnh, khiến việc viết nhật ký trở nên ấm áp và đầy khích lệ.Hãy cho trẻ những gợi ý đơn giản để viết khi trẻ không biết bắt đầu từ đâu. Các câu hỏi như “Điều gì làm con mỉm cười hôm nay?”, “Hôm nay có điều gì khó khăn?”, hoặc “Ngày mai con muốn thử điều gì?” giúp trẻ suy ngẫm và tò mò. Những gợi ý này giúp trẻ nghĩ về ngày của mình một cách nhẹ nhàng và diễn đạt ý rõ ràng hơn.Hãy dạy trẻ đặt mục tiêu nhỏ thông qua nhật ký. Yêu cầu trẻ viết một điều nhỏ mà trẻ muốn cải thiện—đọc sách mười phút, tử tế với bạn, hoặc giữ bàn học gọn gàng. Việc viết mục tiêu giúp trẻ suy nghĩ về lựa chọn tương lai và xây dựng tinh thần trách nhiệm một cách nhẹ nhàng, tích cực."
       },
-      "tags": ["all"],
+      "tags": [
+        "all"
+      ],
       "audio": "journaling_reflection_v1_daily_moments.mp3 journaling_reflection_v1_feelings_check_in.mp3 journaling_reflection_v1_three_good_things.mp3 journaling_reflection_v1_question_prompts.mp3 journaling_reflection_v1_small_goals.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "10-13",
-    "level": "Kids Level 3",
-    "created_at": "2025-11-23T00:00:00+00:00",
-    "updated_at": "2025-11-23T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#FFF7EB"
-  }
+  ]
 }

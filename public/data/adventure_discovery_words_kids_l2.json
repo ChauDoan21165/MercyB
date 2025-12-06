@@ -13,77 +13,129 @@
   "entries": [
     {
       "slug": "discover",
-      "keywords_en": ["discover", "find", "explore"],
-      "keywords_vi": ["khám phá", "tìm thấy", "thám hiểm"],
+      "keywords_en": [
+        "discover",
+        "find",
+        "explore"
+      ],
+      "keywords_vi": [
+        "khám phá",
+        "tìm thấy",
+        "thám hiểm"
+      ],
       "copy": {
         "en": "Teach “discover” by hiding a small toy somewhere safe. Say: “Let’s discover where it is!” Give gentle clues—under, behind, near. Celebrate when your child finds it. Discover becomes a joyful word linked with curiosity and movement.",
         "vi": "Dạy từ “discover” bằng cách giấu một món đồ chơi ở nơi an toàn. Nói: “Hãy khám phá xem nó ở đâu!” Gợi ý nhẹ—dưới, sau, gần. Ăn mừng khi bé tìm thấy. Discover trở thành từ gắn với sự tò mò và vận động."
       },
-      "tags": ["discover"],
+      "tags": [
+        "discover"
+      ],
       "audio": "adventure_discovery_v1_discover.mp3"
     },
     {
       "slug": "explore",
-      "keywords_en": ["explore", "look", "adventure"],
-      "keywords_vi": ["khám phá", "quan sát", "phiêu lưu"],
+      "keywords_en": [
+        "explore",
+        "look",
+        "adventure"
+      ],
+      "keywords_vi": [
+        "khám phá",
+        "quan sát",
+        "phiêu lưu"
+      ],
       "copy": {
         "en": "Teach “explore” by walking around the house or yard together. Say: “Let’s explore!” Encourage your child to look high, low, near, and far. Exploring teaches kids to notice details and enjoy discovering new things safely.",
         "vi": "Dạy “explore” bằng cách đi quanh nhà hoặc sân cùng bé. Nói: “Let’s explore!” Khuyến khích bé quan sát trên cao, dưới thấp, gần và xa. Khám phá giúp trẻ để ý chi tiết và tìm hiểu an toàn."
       },
-      "tags": ["explore"],
+      "tags": [
+        "explore"
+      ],
       "audio": "adventure_discovery_v1_explore.mp3"
     },
     {
       "slug": "map",
-      "keywords_en": ["map", "directions", "guide"],
-      "keywords_vi": ["bản đồ", "hướng đi", "chỉ dẫn"],
+      "keywords_en": [
+        "map",
+        "directions",
+        "guide"
+      ],
+      "keywords_vi": [
+        "bản đồ",
+        "hướng đi",
+        "chỉ dẫn"
+      ],
       "copy": {
         "en": "Teach “map” by drawing a simple treasure map—an X, a tree, a door, or a path. Say: “A map shows where to go.” Let your child follow the path you draw. This helps them connect the word to pictures and direction.",
         "vi": "Dạy “map” bằng cách vẽ bản đồ kho báu đơn giản—một dấu X, cái cây, cánh cửa hoặc lối đi. Nói: “Map cho biết đường đi.” Cho bé đi theo đường bạn vẽ. Điều này giúp trẻ hiểu bản đồ qua hình ảnh và hướng đi."
       },
-      "tags": ["map"],
+      "tags": [
+        "map"
+      ],
       "audio": "adventure_discovery_v1_map.mp3"
     },
     {
       "slug": "trail",
-      "keywords_en": ["trail", "path", "walk"],
-      "keywords_vi": ["đường mòn", "lối đi", "dạo bước"],
+      "keywords_en": [
+        "trail",
+        "path",
+        "walk"
+      ],
+      "keywords_vi": [
+        "đường mòn",
+        "lối đi",
+        "dạo bước"
+      ],
       "copy": {
         "en": "Teach “trail” by making a small path using toys, pillows, or paper shapes. Say: “Follow the trail!” Let your child walk along the path. This makes trail feel like a playful journey toward something exciting.",
         "vi": "Dạy “trail” bằng cách tạo một lối đi nhỏ bằng đồ chơi, gối hoặc giấy. Nói: “Follow the trail!” Cho bé bước theo lối đi. Trail trở thành hành trình vui vẻ dẫn đến điều thú vị."
       },
-      "tags": ["trail"],
+      "tags": [
+        "trail"
+      ],
       "audio": "adventure_discovery_v1_trail.mp3"
     },
     {
       "slug": "treasure",
-      "keywords_en": ["treasure", "reward", "fun"],
-      "keywords_vi": ["kho báu", "phần thưởng", "vui vẻ"],
+      "keywords_en": [
+        "treasure",
+        "reward",
+        "fun"
+      ],
+      "keywords_vi": [
+        "kho báu",
+        "phần thưởng",
+        "vui vẻ"
+      ],
       "copy": {
         "en": "Teach “treasure” by placing a small surprise at the end of a simple path—a sticker, snack, or drawing. Say: “This is the treasure!” Kids love the excitement and quickly understand that treasure means something special.",
         "vi": "Dạy “treasure” bằng cách đặt một món quà nhỏ ở cuối lối đi—nhãn dán, đồ ăn nhẹ hoặc hình vẽ. Nói: “Đây là kho báu!” Trẻ rất thích sự bất ngờ và nhanh hiểu rằng treasure nghĩa là thứ đặc biệt."
       },
-      "tags": ["treasure"],
+      "tags": [
+        "treasure"
+      ],
       "audio": "adventure_discovery_v1_treasure.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all", "complete", "full"],
-      "keywords_vi": ["tất cả", "đầy đủ", "trọn vẹn"],
+      "keywords_en": [
+        "all",
+        "complete",
+        "full"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "đầy đủ",
+        "trọn vẹn"
+      ],
       "copy": {
         "en": "Learn “discover” by finding hidden surprises.\n\nLearn “explore” by walking around and observing the world.\n\nLearn “map” through simple drawings that guide the way.\n\nLearn “trail” by following playful paths.\n\nLearn “treasure” through special surprises at the end.\n\nThese words turn everyday moments into joyful adventures.",
         "vi": "Học “discover” qua trò tìm đồ vật.\n\nHọc “explore” bằng việc dạo quanh và quan sát.\n\nHọc “map” với bản đồ đơn giản.\n\nHọc “trail” bằng lối đi vui nhộn.\n\nHọc “treasure” qua những món quà bất ngờ.\n\nCác từ này biến khoảnh khắc hằng ngày thành chuyến phiêu lưu thú vị."
       },
-      "tags": ["all"],
+      "tags": [
+        "all"
+      ],
       "audio": "adventure_discovery_v1_discover.mp3 adventure_discovery_v1_explore.mp3 adventure_discovery_v1_map.mp3 adventure_discovery_v1_trail.mp3 adventure_discovery_v1_treasure.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "7-10",
-    "level": "Kids Level 2",
-    "created_at": "2025-11-21T00:00:00+00:00",
-    "updated_at": "2025-11-21T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#FFF0DA"
-  }
+  ]
 }

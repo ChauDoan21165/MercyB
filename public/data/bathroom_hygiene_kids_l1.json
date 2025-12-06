@@ -13,77 +13,127 @@
   "entries": [
     {
       "slug": "wash-hands",
-      "keywords_en": ["bathroom", "wash hands", "clean"],
-      "keywords_vi": ["phòng tắm", "rửa tay", "sạch"],
+      "keywords_en": [
+        "bathroom",
+        "wash hands",
+        "clean"
+      ],
+      "keywords_vi": [
+        "phòng tắm",
+        "rửa tay",
+        "sạch"
+      ],
       "copy": {
         "en": "Begin with the phrase “wash hands.” Turn on the water slowly and show the rubbing motion. Let your child place their hands under the stream and swirl their fingers gently. Say the phrase each time your hands move. Children love simple water play, and it helps link the motion to the words naturally.",
         "vi": "Bắt đầu với cụm từ “wash hands.” Mở nước chậm rãi và làm mẫu động tác xoa tay. Để bé cho tay vào dòng nước và xoay ngón nhẹ nhàng. Lặp lại cụm từ mỗi khi tay bạn chuyển động. Trẻ thích chơi với nước, giúp chúng kết nối hành động với từ vựng tự nhiên."
       },
-      "tags": ["hygiene", "clean"],
+      "tags": [
+        "hygiene",
+        "clean"
+      ],
       "audio": "bathroom_hygiene_v1_wash_hands.mp3"
     },
     {
       "slug": "soap",
-      "keywords_en": ["bathroom", "soap"],
-      "keywords_vi": ["phòng tắm", "xà phòng"],
+      "keywords_en": [
+        "bathroom",
+        "soap"
+      ],
+      "keywords_vi": [
+        "phòng tắm",
+        "xà phòng"
+      ],
       "copy": {
         "en": "Teach the word “soap” by holding it up and letting your child smell or touch it. Say the word slowly while rubbing your hands together. Encourage your child to make tiny bubbles and repeat the word. Sensory play makes hygiene words feel fun and memorable.",
         "vi": "Dạy từ “soap” bằng cách đưa xà phòng lên và để bé ngửi hoặc chạm nhẹ. Đọc từ thật chậm khi bạn xoa hai tay vào nhau. Khuyến khích bé tạo bong bóng nhỏ và lặp lại từ. Chơi cảm giác giúp từ vựng vệ sinh trở nên vui và dễ nhớ."
       },
-      "tags": ["soap", "hygiene"],
+      "tags": [
+        "soap",
+        "hygiene"
+      ],
       "audio": "bathroom_hygiene_v1_soap.mp3"
     },
     {
       "slug": "towel",
-      "keywords_en": ["bathroom", "towel"],
-      "keywords_vi": ["phòng tắm", "khăn"],
+      "keywords_en": [
+        "bathroom",
+        "towel"
+      ],
+      "keywords_vi": [
+        "phòng tắm",
+        "khăn"
+      ],
       "copy": {
         "en": "Introduce the word “towel” by gently patting your hands dry. Hand your child a small towel and say the word as they pat their hands too. The soft texture and slow rhythm help them link the object with the word easily, especially during everyday routines.",
         "vi": "Giới thiệu từ “towel” bằng cách thấm tay thật nhẹ nhàng. Đưa cho bé chiếc khăn nhỏ và đọc từ khi bé thấm tay theo. Chất liệu mềm và nhịp điệu chậm giúp bé dễ kết nối đồ vật với từ trong các thói quen hằng ngày."
       },
-      "tags": ["towel", "bathroom"],
+      "tags": [
+        "towel",
+        "bathroom"
+      ],
       "audio": "bathroom_hygiene_v1_towel.mp3"
     },
     {
       "slug": "brush-hair",
-      "keywords_en": ["bathroom", "brush hair"],
-      "keywords_vi": ["phòng tắm", "chải tóc"],
+      "keywords_en": [
+        "bathroom",
+        "brush hair"
+      ],
+      "keywords_vi": [
+        "phòng tắm",
+        "chải tóc"
+      ],
       "copy": {
         "en": "Teach the phrase “brush hair” using slow, gentle strokes. Hand your child a soft brush and let them copy the motion. Say the phrase each time the brush moves. Kids enjoy caring for themselves, and this calm activity helps them repeat the words without pressure.",
         "vi": "Dạy cụm từ “brush hair” bằng những đường chải nhẹ nhàng. Đưa cho bé chiếc lược mềm và để bé bắt chước động tác. Lặp lại cụm từ mỗi khi lược di chuyển. Trẻ thích tự chăm sóc bản thân, và hoạt động bình yên này giúp bé lặp lại từ mà không áp lực."
       },
-      "tags": ["hair", "routine"],
+      "tags": [
+        "hair",
+        "routine"
+      ],
       "audio": "bathroom_hygiene_v1_brush_hair.mp3"
     },
     {
       "slug": "clean-up-game",
-      "keywords_en": ["bathroom", "clean", "game"],
-      "keywords_vi": ["phòng tắm", "dọn dẹp", "trò chơi"],
+      "keywords_en": [
+        "bathroom",
+        "clean",
+        "game"
+      ],
+      "keywords_vi": [
+        "phòng tắm",
+        "dọn dẹp",
+        "trò chơi"
+      ],
       "copy": {
         "en": "Turn hygiene into a small game. Place a few safe bathroom items—soap, towel, cup—and ask your child to put each in its place after naming it. Say the word clearly and let your child repeat. Kids enjoy sorting, and this simple game helps make bathroom routines joyful and easy to remember.",
         "vi": "Biến vệ sinh thành trò chơi nhỏ. Đặt vài món đồ an toàn—soap, towel, cup—và nhờ bé cất từng món vào đúng chỗ sau khi gọi tên. Đọc từ rõ ràng và để bé lặp lại. Trẻ thích sắp xếp, và trò chơi đơn giản này giúp thói quen phòng tắm trở nên vui và dễ nhớ."
       },
-      "tags": ["game", "clean"],
+      "tags": [
+        "game",
+        "clean"
+      ],
       "audio": "bathroom_hygiene_v1_clean_up_game.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all", "full", "complete"],
-      "keywords_vi": ["tất cả", "đầy đủ"],
+      "keywords_en": [
+        "all",
+        "full",
+        "complete"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "đầy đủ"
+      ],
       "copy": {
         "en": "Start with “wash hands,” showing slow motions under running water.\n\nTeach “soap” with touch, scent, and tiny bubbles.\n\nIntroduce “towel” by gently patting hands dry together.\n\nUse soft, slow brushing to teach “brush hair.”\n\nEnd with a cheerful clean-up game, naming items and putting them back in place.\n\nThese small routines make bathroom vocabulary gentle, real, and easy for your child to remember.",
         "vi": "Bắt đầu với “wash hands,” làm mẫu dưới nước đang chảy.\n\nDạy “soap” bằng cảm giác, mùi và bong bóng nhỏ.\n\nGiới thiệu “towel” bằng việc thấm khô tay nhẹ nhàng.\n\nDạy “brush hair” với đường chải mềm và chậm.\n\nKết thúc bằng trò dọn dẹp vui vẻ, gọi tên đồ vật và cất đúng chỗ.\n\nNhững thói quen này giúp từ vựng phòng tắm trở nên nhẹ nhàng, thật và dễ nhớ."
       },
-      "tags": ["all"],
+      "tags": [
+        "all"
+      ],
       "audio": "bathroom_hygiene_v1_wash_hands.mp3 bathroom_hygiene_v1_soap.mp3 bathroom_hygiene_v1_towel.mp3 bathroom_hygiene_v1_brush_hair.mp3 bathroom_hygiene_v1_clean_up_game.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "4-7",
-    "level": "Kids Level 1",
-    "created_at": "2025-11-21T00:00:00+00:00",
-    "updated_at": "2025-11-21T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#E3F5FF"
-  }
+  ]
 }

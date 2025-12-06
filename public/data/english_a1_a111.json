@@ -13,63 +13,105 @@
   "entries": [
     {
       "slug": "greeting-and-introductions",
-      "keywords_en": ["conversation", "greeting"],
-      "keywords_vi": ["hội thoại", "chào hỏi"],
+      "keywords_en": [
+        "conversation",
+        "greeting"
+      ],
+      "keywords_vi": [
+        "hội thoại",
+        "chào hỏi"
+      ],
       "copy": {
         "en": "A: Hello.\nB: Hi.\nA: What is your name?\nB: My name is Linh.\nA: Nice to meet you.\nB: Nice to meet you too.",
         "vi": "A: Hello.\nB: Hi.\nA: Bạn tên gì?\nB: Tôi tên Linh.\nA: Rất vui được gặp bạn.\nB: Tôi cũng vậy."
       },
-      "audio": "a111_01_en.mp3"
+      "audio": "a111_01_en.mp3",
+      "tags": []
     },
     {
       "slug": "ordering-food",
-      "keywords_en": ["conversation", "food"],
-      "keywords_vi": ["hội thoại", "gọi món"],
+      "keywords_en": [
+        "conversation",
+        "food"
+      ],
+      "keywords_vi": [
+        "hội thoại",
+        "gọi món"
+      ],
       "copy": {
         "en": "A: Hello. I want a coffee.\nB: Hot or cold?\nA: Hot, please.\nB: Anything else?\nA: No, thank you.",
         "vi": "A: Hello. Tôi muốn một ly cà phê.\nB: Nóng hay lạnh?\nA: Nóng, cảm ơn.\nB: Bạn muốn thêm gì không?\nA: Không, cảm ơn."
       },
-      "audio": "a111_02_en.mp3"
+      "audio": "a111_02_en.mp3",
+      "tags": []
     },
     {
       "slug": "asking-for-help",
-      "keywords_en": ["help", "conversation"],
-      "keywords_vi": ["giúp đỡ", "hội thoại"],
+      "keywords_en": [
+        "help",
+        "conversation"
+      ],
+      "keywords_vi": [
+        "giúp đỡ",
+        "hội thoại"
+      ],
       "copy": {
         "en": "A: Excuse me. Can you help me?\nB: Yes. What do you need?\nA: Where is the bus stop?\nB: Over there.\nA: Thank you.\nB: You are welcome.",
         "vi": "A: Xin lỗi, bạn giúp tôi được không?\nB: Được. Bạn cần gì?\nA: Trạm xe buýt ở đâu?\nB: Ở đằng kia.\nA: Cảm ơn bạn.\nB: Không có gì."
       },
-      "audio": "a111_03_en.mp3"
+      "audio": "a111_03_en.mp3",
+      "tags": []
     },
     {
       "slug": "shopping-simple",
-      "keywords_en": ["shopping", "conversation"],
-      "keywords_vi": ["mua sắm", "hội thoại"],
+      "keywords_en": [
+        "shopping",
+        "conversation"
+      ],
+      "keywords_vi": [
+        "mua sắm",
+        "hội thoại"
+      ],
       "copy": {
         "en": "A: How much is this?\nB: Ten dollars.\nA: Can I try it?\nB: Yes, of course.\nA: It is good. I take it.",
         "vi": "A: Cái này bao nhiêu tiền?\nB: Mười đô.\nA: Tôi thử được không?\nB: Được, tất nhiên rồi.\nA: Tốt đấy. Tôi lấy cái này."
       },
-      "audio": "a111_04_en.mp3"
+      "audio": "a111_04_en.mp3",
+      "tags": []
     },
     {
       "slug": "small-talk-weather",
-      "keywords_en": ["weather", "conversation"],
-      "keywords_vi": ["thời tiết", "hội thoại"],
+      "keywords_en": [
+        "weather",
+        "conversation"
+      ],
+      "keywords_vi": [
+        "thời tiết",
+        "hội thoại"
+      ],
       "copy": {
         "en": "A: It is hot today.\nB: Yes, very hot.\nA: Do you like this weather?\nB: Not really. I like cool weather.\nA: Me too.",
         "vi": "A: Hôm nay nóng quá.\nB: Ừ, rất nóng.\nA: Bạn thích thời tiết này không?\nB: Không lắm. Tôi thích trời mát.\nA: Tôi cũng vậy."
       },
-      "audio": "a111_05_en.mp3"
+      "audio": "a111_05_en.mp3",
+      "tags": []
     },
     {
       "slug": "daily-routine-check",
-      "keywords_en": ["routine", "conversation"],
-      "keywords_vi": ["thói quen", "hội thoại"],
+      "keywords_en": [
+        "routine",
+        "conversation"
+      ],
+      "keywords_vi": [
+        "thói quen",
+        "hội thoại"
+      ],
       "copy": {
         "en": "A: Are you busy today?\nB: A little.\nA: What do you have to do?\nB: Work, then study English.\nA: Good luck.\nB: Thanks.",
         "vi": "A: Hôm nay bạn bận không?\nB: Cũng hơi bận.\nA: Bạn phải làm gì?\nB: Làm việc, rồi học tiếng Anh.\nA: Chúc may mắn.\nB: Cảm ơn."
       },
-      "audio": "a111_06_en.mp3"
+      "audio": "a111_06_en.mp3",
+      "tags": []
     }
   ]
 }

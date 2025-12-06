@@ -1,6 +1,4 @@
 {
-  "schema_version": "1.0",
-  "schema_id": "ptsd_support_free",
   "id": "ptsd-support-free",
   "tier": "free",
   "domain": "",
@@ -89,14 +87,6 @@
   ],
   "room_essay": {
     "en": "Practical PTSD guidance",
-    "vi": ""
-  },
-  "safety_disclaimer": {
-    "en": "",
-    "vi": ""
-  },
-  "crisis_footer": {
-    "en": "",
     "vi": ""
   }
 }

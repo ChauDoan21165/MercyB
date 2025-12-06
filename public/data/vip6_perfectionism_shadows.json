@@ -12,72 +12,135 @@
   "entries": [
     {
       "slug": "the-armor-of-flawlessness",
-      "keywords_en": ["perfectionism", "armor", "fear"],
-      "keywords_vi": ["hoàn hảo", "lá chắn", "nỗi sợ"],
+      "keywords_en": [
+        "perfectionism",
+        "armor",
+        "fear"
+      ],
+      "keywords_vi": [
+        "hoàn hảo",
+        "lá chắn",
+        "nỗi sợ"
+      ],
       "copy": {
         "en": "Perfectionism forms when you learn that mistakes lead to rejection, shame, or punishment. You begin to wear flawlessness as armor—trying to stay safe by never giving others anything to criticize. You correct endlessly, overprepare, and fear disappointing those around you. But the pursuit of perfection is not about excellence. It is about survival. It is a desperate attempt to avoid the emotional pain you once felt when you were not allowed to be human. Instead of protecting you, perfectionism becomes a cage.",
         "vi": "Chủ nghĩa hoàn hảo hình thành khi bạn học rằng sai lầm dẫn đến bị từ chối, xấu hổ hoặc trừng phạt. Bạn bắt đầu khoác sự không tì vết như một bộ giáp—cố giữ an toàn bằng cách không để lại điều gì cho người khác chỉ trích. Bạn chỉnh sửa vô tận, chuẩn bị quá mức và sợ làm người khác thất vọng. Nhưng sự theo đuổi hoàn hảo không phải để xuất sắc. Đó là cách để sinh tồn. Đó là nỗ lực tuyệt vọng nhằm tránh nỗi đau cảm xúc từng trải khi bạn không được phép là con người. Thay vì bảo vệ bạn, chủ nghĩa hoàn hảo trở thành chiếc lồng."
       },
-      "tags": ["perfectionism", "fear"],
+      "tags": [
+        "perfectionism",
+        "fear"
+      ],
       "audio": "vip6_ps_1.mp3"
     },
     {
       "slug": "why-good-is-never-enough",
-      "keywords_en": ["standards", "pressure", "self-criticism"],
-      "keywords_vi": ["tiêu chuẩn", "áp lực", "tự chỉ trích"],
+      "keywords_en": [
+        "standards",
+        "pressure",
+        "self-criticism"
+      ],
+      "keywords_vi": [
+        "tiêu chuẩn",
+        "áp lực",
+        "tự chỉ trích"
+      ],
       "copy": {
         "en": "To a perfectionist, ‘good’ is never enough. You chase impossible standards, believing that worth must be proven through flawless performance. You fear average, fear mistakes, fear being seen as ordinary. This pressure does not come from ambition—it comes from fear. You are constantly trying to outrun the belief that you are inadequate. No achievement feels satisfying because the goalpost moves every time you succeed. Good is never enough because somewhere deep inside, you believe you are never enough.",
         "vi": "Với người theo chủ nghĩa hoàn hảo, “tốt” chẳng bao giờ đủ. Bạn theo đuổi những tiêu chuẩn không thể đạt, tin rằng giá trị phải được chứng minh bằng sự hoàn hảo tuyệt đối. Bạn sợ tầm thường, sợ sai sót, sợ bị xem là người bình thường. Áp lực này không xuất phát từ tham vọng—nó đến từ nỗi sợ. Bạn liên tục cố chạy khỏi niềm tin rằng mình không đủ tốt. Không thành tựu nào mang lại thỏa mãn vì mục tiêu luôn bị dời xa mỗi khi bạn đạt được nó. ‘Tốt’ không bao giờ đủ vì sâu bên trong, bạn tin rằng chính bạn không đủ."
       },
-      "tags": ["standards", "pressure"],
+      "tags": [
+        "standards",
+        "pressure"
+      ],
       "audio": "vip6_ps_2.mp3"
     },
     {
       "slug": "the-freeze-of-never-ready",
-      "keywords_en": ["freeze", "avoidance", "paralysis"],
-      "keywords_vi": ["tê liệt", "tránh né", "đóng băng"],
+      "keywords_en": [
+        "freeze",
+        "avoidance",
+        "paralysis"
+      ],
+      "keywords_vi": [
+        "tê liệt",
+        "tránh né",
+        "đóng băng"
+      ],
       "copy": {
         "en": "Perfectionism creates paralysis. You delay starting because the beginning is imperfect. You delay finishing because the outcome is imperfect. You stay trapped in preparation, polishing, and second-guessing. This freeze response is not laziness—it is fear disguised as discipline. You learned that mistakes are dangerous, so you avoid situations where imperfection might be seen. The result is a life half-lived, trapped between vision and execution. Perfectionism keeps you safe, but it also keeps you stuck.",
         "vi": "Chủ nghĩa hoàn hảo tạo ra sự tê liệt. Bạn trì hoãn bắt đầu vì khởi đầu không hoàn hảo. Bạn trì hoãn kết thúc vì kết quả không hoàn hảo. Bạn mắc kẹt trong chuẩn bị, trau chuốt và hoài nghi. Phản ứng tê liệt này không phải lười biếng—đó là nỗi sợ đội lốt kỷ luật. Bạn học rằng sai sót nguy hiểm, nên bạn tránh những tình huống nơi sự không hoàn hảo có thể bị nhìn thấy. Kết quả là một cuộc đời chỉ sống một nửa, mắc kẹt giữa tầm nhìn và hành động. Chủ nghĩa hoàn hảo giữ bạn an toàn nhưng cũng giữ bạn đứng yên."
       },
-      "tags": ["freeze", "avoidance"],
+      "tags": [
+        "freeze",
+        "avoidance"
+      ],
       "audio": "vip6_ps_3.mp3"
     },
     {
       "slug": "the-cost-of-appearing-perfect",
-      "keywords_en": ["image", "pressure", "exhaustion"],
-      "keywords_vi": ["hình ảnh", "áp lực", "kiệt sức"],
+      "keywords_en": [
+        "image",
+        "pressure",
+        "exhaustion"
+      ],
+      "keywords_vi": [
+        "hình ảnh",
+        "áp lực",
+        "kiệt sức"
+      ],
       "copy": {
         "en": "Appearing perfect comes at a high emotional cost. You censor your personality, hide your struggles, and suppress your needs to maintain an image. You fear being judged if others see your imperfections. Yet this performance demands constant control—of emotions, behaviors, and even relationships. You feel disconnected from others because they love the mask, not the real you. Perfection may earn admiration, but it rarely earns intimacy. Pretending to be perfect is exhausting, lonely, and unsustainable.",
         "vi": "Việc tỏ ra hoàn hảo phải trả giá rất đắt. Bạn kiểm duyệt tính cách, giấu nỗi đấu tranh và kìm nén nhu cầu để giữ hình ảnh. Bạn sợ bị phán xét nếu người khác nhìn thấy khuyết điểm. Nhưng màn trình diễn này đòi hỏi kiểm soát liên tục—cảm xúc, hành vi và cả mối quan hệ. Bạn cảm thấy tách biệt vì người khác yêu chiếc mặt nạ, không phải bạn thật. Sự hoàn hảo có thể đem lại ngưỡng mộ nhưng hiếm khi mang lại sự thân mật. Giả vờ hoàn hảo khiến bạn kiệt sức, cô đơn và không thể duy trì."
       },
-      "tags": ["image", "exhaustion"],
+      "tags": [
+        "image",
+        "exhaustion"
+      ],
       "audio": "vip6_ps_4.mp3"
     },
     {
       "slug": "releasing-the-perfect-self",
-      "keywords_en": ["healing", "self-acceptance", "growth"],
-      "keywords_vi": ["chữa lành", "tự chấp nhận", "phát triển"],
+      "keywords_en": [
+        "healing",
+        "self-acceptance",
+        "growth"
+      ],
+      "keywords_vi": [
+        "chữa lành",
+        "tự chấp nhận",
+        "phát triển"
+      ],
       "copy": {
         "en": "Healing perfectionism means releasing the perfect self—the version of you created for safety, approval, and survival. You learn to allow mistakes without collapse, to show vulnerability without shame, and to try imperfectly without fear. True growth begins when you stop performing and start living. The real you is not flawless—but whole, human, and enough. When you embrace imperfection, you reclaim freedom. When you stop striving to be perfect, you finally become real.",
         "vi": "Chữa lành chủ nghĩa hoàn hảo nghĩa là giải phóng bản ngã hoàn hảo—phiên bản bạn tạo ra để được an toàn, được chấp nhận và để sinh tồn. Bạn học cho phép sai sót mà không sụp đổ, cho phép tổn thương mà không xấu hổ và thử một cách không hoàn hảo mà không sợ hãi. Sự phát triển thực sự bắt đầu khi bạn ngừng biểu diễn và bắt đầu sống. Con người thật của bạn không hoàn hảo—nhưng trọn vẹn, nhân bản và đủ đầy. Khi bạn ôm lấy sự không hoàn hảo, bạn lấy lại tự do. Khi bạn thôi cố gắng trở nên hoàn hảo, bạn cuối cùng trở nên chân thật."
       },
-      "tags": ["healing", "growth"],
+      "tags": [
+        "healing",
+        "growth"
+      ],
       "audio": "vip6_ps_5.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all", "combined", "full sequence"],
-      "keywords_vi": ["tất cả", "kết hợp", "chuỗi đầy đủ"],
+      "keywords_en": [
+        "all",
+        "combined",
+        "full sequence"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "kết hợp",
+        "chuỗi đầy đủ"
+      ],
       "copy": {
         "en": "Perfectionism is armor against shame, a shield built from fear of being seen as not enough. You chase impossible standards, freeze before beginnings, and hide flaws to stay safe. But the pursuit of flawlessness becomes a cage of self-criticism and exhaustion. You lose connection with others and with yourself. Healing means letting go of the perfect self, embracing imperfection, and allowing your humanity to lead. You are not meant to be flawless—you are meant to be whole.",
         "vi": "Chủ nghĩa hoàn hảo là bộ giáp chống lại xấu hổ, chiếc khiên được xây từ nỗi sợ bị nhìn thấy như người không đủ tốt. Bạn theo đuổi tiêu chuẩn bất khả thi, tê liệt trước khởi đầu và che giấu khuyết điểm để an toàn. Nhưng sự hoàn hảo trở thành chiếc lồng của tự chỉ trích và kiệt sức. Bạn mất kết nối với người khác và với chính mình. Chữa lành nghĩa là buông bản ngã hoàn hảo, ôm lấy sự không hoàn hảo và để nhân tính dẫn đường. Bạn không sinh ra để hoàn hảo—bạn sinh ra để trọn vẹn."
       },
-      "tags": ["all", "combined"],
+      "tags": [
+        "all",
+        "combined"
+      ],
       "audio": "vip6_ps_1.mp3 vip6_ps_2.mp3 vip6_ps_3.mp3 vip6_ps_4.mp3 vip6_ps_5.mp3"
     }
-  ],
-  "meta": {
-    "entry_count": 6
-  }
+  ]
 }

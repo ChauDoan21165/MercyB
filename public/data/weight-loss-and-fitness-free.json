@@ -1,6 +1,4 @@
 {
-  "schema_version": "1.0",
-  "schema_id": "weight-loss-and-fitness-free",
   "id": "weight-loss-and-fitness-free",
   "tier": "free",
   "domain": "",
@@ -81,14 +79,6 @@
     }
   ],
   "room_essay": {
-    "en": "",
-    "vi": ""
-  },
-  "safety_disclaimer": {
-    "en": "",
-    "vi": ""
-  },
-  "crisis_footer": {
     "en": "",
     "vi": ""
   }

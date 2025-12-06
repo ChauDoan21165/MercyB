@@ -1,6 +1,4 @@
 {
-  "schema_version": "1.0",
-  "schema_id": "eating-disorder-support-free",
   "id": "eating-disorder-support-free",
   "tier": "free",
   "domain": "",
@@ -149,13 +147,5 @@
   "room_essay": {
     "en": "Guidance for recovering from eating disorders with practical and emotional support. Start with small, intentional steps and build a strong support network. Discover deeper guidance in higher tiers.",
     "vi": "Hướng dẫn phục hồi rối loạn ăn uống với sự hỗ trợ thực tế và cảm xúc. Bắt đầu bằng những bước nhỏ, có chủ đích và xây dựng mạng lưới hỗ trợ vững chắc. Khám phá thêm ở các cấp độ cao hơn."
-  },
-  "safety_disclaimer": {
-    "en": "",
-    "vi": ""
-  },
-  "crisis_footer": {
-    "en": "",
-    "vi": ""
   }
 }

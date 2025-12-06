@@ -13,63 +13,105 @@
   "entries": [
     {
       "slug": "building-step-by-step-logic",
-      "keywords_en": ["logic", "reasoning"],
-      "keywords_vi": ["logic", "lập luận"],
+      "keywords_en": [
+        "logic",
+        "reasoning"
+      ],
+      "keywords_vi": [
+        "logic",
+        "lập luận"
+      ],
       "copy": {
         "en": "Strong arguments grow in steps, not jumps. Start with a clear idea. Add a supporting explanation. Give one piece of evidence. Then show the effect or meaning. Each sentence builds on the previous one. This simple structure creates powerful, convincing reasoning.",
         "vi": "Lập luận mạnh phát triển theo từng bước, không phải nhảy vọt. Bắt đầu bằng ý rõ ràng. Thêm phần giải thích. Đưa ra một bằng chứng. Sau đó chỉ ra ý nghĩa hoặc kết quả. Mỗi câu dựa trên câu trước. Cấu trúc đơn giản này tạo nên lập luận thuyết phục và vững chắc."
       },
-      "audio": "c209_01_en.mp3"
+      "audio": "c209_01_en.mp3",
+      "tags": []
     },
     {
       "slug": "cause-and-effect-chains",
-      "keywords_en": ["cause and effect", "analysis"],
-      "keywords_vi": ["nguyên nhân kết quả", "phân tích"],
+      "keywords_en": [
+        "cause and effect",
+        "analysis"
+      ],
+      "keywords_vi": [
+        "nguyên nhân kết quả",
+        "phân tích"
+      ],
       "copy": {
         "en": "Many complex arguments use cause and effect. Explain what happens first, then show what it leads to. Use words like because, therefore, as a result, and consequently. Clear cause and effect helps the reader follow long ideas without getting lost.",
         "vi": "Nhiều lập luận phức tạp dựa trên quan hệ nguyên nhân – kết quả. Hãy giải thích điều xảy ra trước rồi chỉ ra điều nó dẫn đến. Dùng các từ như because, therefore, as a result và consequently. Quan hệ nguyên nhân – kết quả rõ ràng giúp người đọc theo dõi ý dài mà không bị rối."
       },
-      "audio": "c209_02_en.mp3"
+      "audio": "c209_02_en.mp3",
+      "tags": []
     },
     {
       "slug": "contrast-and-counterpoints",
-      "keywords_en": ["counterpoint", "contrast"],
-      "keywords_vi": ["phản biện", "tương phản"],
+      "keywords_en": [
+        "counterpoint",
+        "contrast"
+      ],
+      "keywords_vi": [
+        "phản biện",
+        "tương phản"
+      ],
       "copy": {
         "en": "Complex reasoning includes both your idea and the opposite idea. A counterpoint shows you understand different views. Use phrases like however, on the other hand, or some people think. Then explain why your idea remains stronger. Balanced writing builds credibility.",
         "vi": "Lập luận phức tạp bao gồm cả ý của bạn và ý ngược lại. Phản biện cho thấy bạn hiểu các góc nhìn khác nhau. Hãy dùng các cụm như however, on the other hand hoặc some people think. Sau đó giải thích vì sao ý của bạn vẫn mạnh hơn. Cách viết cân bằng tạo sự đáng tin cậy."
       },
-      "audio": "c209_03_en.mp3"
+      "audio": "c209_03_en.mp3",
+      "tags": []
     },
     {
       "slug": "multi-layer-explanations",
-      "keywords_en": ["explanation", "depth"],
-      "keywords_vi": ["giải thích", "chiều sâu"],
+      "keywords_en": [
+        "explanation",
+        "depth"
+      ],
+      "keywords_vi": [
+        "giải thích",
+        "chiều sâu"
+      ],
       "copy": {
         "en": "Sometimes one explanation is not enough. Add a second layer by answering why again. This technique is called drilling. For example: The policy failed. Why? Poor planning. Why? Leaders did not understand the risks. Multi-layer explanation gives your writing depth and authority.",
         "vi": "Đôi khi một lời giải thích là chưa đủ. Hãy thêm lớp thứ hai bằng cách trả lời câu hỏi tại sao một lần nữa. Kỹ thuật này gọi là đào sâu. Ví dụ: Chính sách thất bại. Tại sao? Kế hoạch kém. Tại sao? Lãnh đạo không hiểu rủi ro. Giải thích nhiều lớp tạo chiều sâu và sức nặng cho bài viết."
       },
-      "audio": "c209_04_en.mp3"
+      "audio": "c209_04_en.mp3",
+      "tags": []
     },
     {
       "slug": "building-long-chains-with-coherence",
-      "keywords_en": ["coherence", "long chains"],
-      "keywords_vi": ["mạch lạc", "chuỗi dài"],
+      "keywords_en": [
+        "coherence",
+        "long chains"
+      ],
+      "keywords_vi": [
+        "mạch lạc",
+        "chuỗi dài"
+      ],
       "copy": {
         "en": "To build long argument chains, you must maintain coherence. Repeat key words. Keep the idea order stable. Link each sentence with a small connector like so, also, for this reason, or in addition. Coherence holds the entire argument together like a bridge.",
         "vi": "Để xây dựng chuỗi lập luận dài, bạn phải duy trì tính mạch lạc. Lặp lại từ khóa. Giữ thứ tự ý ổn định. Nối mỗi câu bằng một từ nhỏ như so, also, for this reason hoặc in addition. Tính mạch lạc giữ toàn bộ lập luận liền mạch như một cây cầu."
       },
-      "audio": "c209_05_en.mp3"
+      "audio": "c209_05_en.mp3",
+      "tags": []
     },
     {
       "slug": "ending-with-strong-conclusions",
-      "keywords_en": ["conclusion", "argument"],
-      "keywords_vi": ["kết luận", "lập luận"],
+      "keywords_en": [
+        "conclusion",
+        "argument"
+      ],
+      "keywords_vi": [
+        "kết luận",
+        "lập luận"
+      ],
       "copy": {
         "en": "A good conclusion is short, clear, and strong. Restate your main idea in a fresh way. Show the final message or impact. Do not add new evidence at the end. A strong ending makes the reader remember your point long after they finish reading.",
         "vi": "Một kết luận tốt nên ngắn gọn, rõ ràng và mạnh mẽ. Hãy trình bày lại ý chính theo cách mới mẻ. Chỉ ra thông điệp hoặc tác động cuối cùng. Không thêm bằng chứng mới ở phần kết. Một kết thúc mạnh giúp người đọc nhớ luận điểm của bạn lâu hơn."
       },
-      "audio": "c209_06_en.mp3"
+      "audio": "c209_06_en.mp3",
+      "tags": []
     }
   ]
 }

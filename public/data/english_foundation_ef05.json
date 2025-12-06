@@ -1,6 +1,4 @@
 {
-  "schema_version": "1.0",
-  "schema_id": "english_foundation_ef05",
   "id": "english_foundation_ef05",
   "tier": "Free / Miễn phí",
   "domain": "",
@@ -38,112 +36,9 @@
     "ôn tập",
     "thói quen học"
   ],
-  "entries": [
-    {
-      "slug": "beginner-numbers",
-      "audio": "ef05_01_en.mp3",
-      "copy_en": "Practice these numbers slowly:\n\none\ntwo\nthree\nfour\nfive\nsix\nseven\neight\nnine\nten\n\ntwenty\nthirty\nforty\nfifty\none hundred\n\nClear ending sounds help people understand you better.",
-      "copy_vi": "Hãy luyện các số sau thật chậm: one, two, three, four, five, six, seven, eight, nine, ten, twenty, thirty, forty, fifty, one hundred. Giữ rõ âm cuối để người nghe hiểu bạn dễ hơn.",
-      "keywords_en": [
-        "numbers",
-        "counting",
-        "beginner"
-      ],
-      "keywords_vi": [
-        "số đếm",
-        "đếm",
-        "người mới"
-      ]
-    },
-    {
-      "slug": "telling-time",
-      "audio": "ef05_02_en.mp3",
-      "copy_en": "Basic ways to say the time:\n\nIt is one o'clock.\nIt is two thirty.\nIt is six fifteen.\nIt is nine forty-five.\nIt is midnight.\nIt is noon.\n\nSay each line slowly.\nFocus on the numbers.",
-      "copy_vi": "Các cách nói giờ cơ bản: It is one o'clock, It is two thirty, It is six fifteen, It is nine forty-five, It is midnight, It is noon. Hãy nói từng câu chậm rãi và tập trung vào số.",
-      "keywords_en": [
-        "time",
-        "clock",
-        "daily life"
-      ],
-      "keywords_vi": [
-        "giờ giấc",
-        "đồng hồ",
-        "hằng ngày"
-      ]
-    },
-    {
-      "slug": "days-of-the-week",
-      "audio": "ef05_03_en.mp3",
-      "copy_en": "Practice the days of the week:\n\nMonday\nTuesday\nWednesday\nThursday\nFriday\nSaturday\nSunday\n\nSay them gently.\nNo tones.\nJust smooth English rhythm.",
-      "copy_vi": "Hãy luyện các ngày trong tuần: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday. Đọc nhẹ nhàng, không thêm thanh điệu. Giữ nhịp tiếng Anh tự nhiên.",
-      "keywords_en": [
-        "days",
-        "calendar",
-        "beginner"
-      ],
-      "keywords_vi": [
-        "thứ",
-        "lịch",
-        "người mới"
-      ]
-    },
-    {
-      "slug": "months-and-simple-dates",
-      "audio": "ef05_04_en.mp3",
-      "copy_en": "Learn basic months and dates:\n\nJanuary\nFebruary\nMarch\nApril\nMay\nJune\nJuly\nAugust\nSeptember\nOctober\nNovember\nDecember\n\nSay simple dates:\nMay 2\nJune 10\nDecember 25",
-      "copy_vi": "Hãy học tên các tháng: January, February, March, April, May, June, July, August, September, October, November, December. Các ví dụ ngày đơn giản: May 2, June 10, December 25.",
-      "keywords_en": [
-        "months",
-        "dates",
-        "calendar"
-      ],
-      "keywords_vi": [
-        "tháng",
-        "ngày",
-        "lịch"
-      ]
-    },
-    {
-      "slug": "using-time-in-real-life",
-      "audio": "ef05_05_en.mp3",
-      "copy_en": "Useful daily sentences:\n\nI start work at nine.\nThe meeting is at two.\nI go home at six.\nThe bus comes at ten.\nThe store opens at eight.\n\nUse slow, clear numbers.\nAccuracy helps communication.",
-      "copy_vi": "Các câu hữu ích hằng ngày: I start work at nine, The meeting is at two, I go home at six, The bus comes at ten, The store opens at eight. Hãy nói số thật rõ để giao tiếp chính xác.",
-      "keywords_en": [
-        "time",
-        "practice",
-        "real life"
-      ],
-      "keywords_vi": [
-        "giờ giấc",
-        "luyện tập",
-        "thực tế"
-      ]
-    },
-    {
-      "slug": "daily-review-time",
-      "audio": "ef05_06_en.mp3",
-      "copy_en": "Review numbers and dates every morning.\nSay ten numbers.\nSay one time.\nSay one date.\n\nDaily repetition makes everything natural.",
-      "copy_vi": "Mỗi sáng hãy ôn lại số và ngày tháng. Nói mười con số, một giờ và một ngày. Lặp lại mỗi ngày giúp mọi thứ trở nên tự nhiên.",
-      "keywords_en": [
-        "review",
-        "study habit"
-      ],
-      "keywords_vi": [
-        "ôn tập",
-        "thói quen học"
-      ]
-    }
-  ],
+  "entries": [],
   "room_essay": {
     "en": "This room teaches numbers, basic time expressions, days of the week, and simple dates. These skills help beginners understand schedules, appointments, prices, and daily conversations. You will learn clear pronunciation for numbers, how to say the time, how to name the days, and how to read dates correctly. Everything is slow, simple, and practical so you can use it right away.",
     "vi": "Phòng này dạy số đếm, cách nói giờ, các ngày trong tuần và cách đọc ngày tháng. Đây là những kỹ năng cơ bản giúp bạn hiểu lịch trình, cuộc hẹn, giá cả và hội thoại hằng ngày. Bạn sẽ học phát âm rõ ràng các số, cách nói giờ, tên các thứ và cách đọc ngày tháng. Mọi thứ đều chậm rãi, đơn giản và thực tế để bạn áp dụng ngay."
-  },
-  "safety_disclaimer": {
-    "en": "",
-    "vi": ""
-  },
-  "crisis_footer": {
-    "en": "",
-    "vi": ""
   }
 }

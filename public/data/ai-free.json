@@ -1,6 +1,4 @@
 {
-  "schema_version": "1.0",
-  "schema_id": "ai-free",
   "id": "ai-free",
   "tier": "free",
   "domain": "",
@@ -105,13 +103,5 @@
   "room_essay": {
     "en": "Artificial Intelligence begins with curiosity—how can machines learn, decide, and adapt like humans? This room introduces the essential ideas behind AI: pattern recognition, data training, and problem-solving. You’ll explore how algorithms find meaning in information, building systems that sense and respond intelligently. Instead of getting lost in jargon, you’ll focus on clear mental models: inputs, rules, feedback, and improvement. Start simple, observe patiently, and experiment boldly. Every small step in AI expands your ability to understand how logic meets creativity in the digital mind.",
     "vi": "Trí tuệ Nhân tạo bắt đầu từ sự tò mò — làm thế nào máy móc có thể học hỏi, ra quyết định và thích ứng như con người? Phòng này giới thiệu những ý tưởng cốt lõi của AI: nhận dạng mẫu, huấn luyện dữ liệu và giải quyết vấn đề. Bạn sẽ khám phá cách thuật toán tìm ý nghĩa trong thông tin, xây dựng hệ thống biết cảm nhận và phản hồi thông minh. Thay vì lạc trong thuật ngữ, bạn sẽ tập trung vào các mô hình rõ ràng: đầu vào, quy tắc, phản hồi và cải thiện. Hãy bắt đầu đơn giản, quan sát kiên nhẫn và thử nghiệm táo bạo. Mỗi bước nhỏ trong AI đều mở rộng khả năng hiểu sự giao thoa giữa logic và sáng tạo của trí tuệ số."
-  },
-  "safety_disclaimer": {
-    "en": "",
-    "vi": ""
-  },
-  "crisis_footer": {
-    "en": "",
-    "vi": ""
   }
 }

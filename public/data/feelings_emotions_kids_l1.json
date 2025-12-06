@@ -13,77 +13,145 @@
   "entries": [
     {
       "slug": "happy-and-smile",
-      "keywords_en": ["feelings", "happy", "smile", "expression"],
-      "keywords_vi": ["cảm xúc", "vui", "cười", "biểu cảm"],
+      "keywords_en": [
+        "feelings",
+        "happy",
+        "smile",
+        "expression"
+      ],
+      "keywords_vi": [
+        "cảm xúc",
+        "vui",
+        "cười",
+        "biểu cảm"
+      ],
       "copy": {
         "en": "Begin with the easiest and warmest feeling: happy. Smile brightly and say, “happy.” Invite your child to smile with you, then show a happy face on a toy or picture book. You can play a tiny mirror game—“Show me your happy face!” Let your child exaggerate and be silly. If you take turns pretending to celebrate something small like finding a toy, say, “I am happy!” This helps children understand that feelings can be expressed with both the face and English words.",
         "vi": "Bắt đầu với cảm xúc dễ nhất và ấm áp nhất: happy. Bạn mỉm cười thật tươi và đọc: “happy.” Rủ bé cười theo, rồi chỉ vào khuôn mặt vui trên đồ chơi hoặc sách tranh. Bạn có thể chơi trò “gương soi”—“Con làm mặt happy nào!” Hãy để bé làm mặt thật ngộ nghĩnh. Khi hai mẹ con giả vờ ăn mừng điều nhỏ như tìm được đồ chơi, bạn đọc: “I am happy!” Cách này giúp bé hiểu rằng cảm xúc có thể thể hiện qua nét mặt và từ tiếng Anh."
       },
-      "tags": ["happy", "expression"],
+      "tags": [
+        "happy",
+        "expression"
+      ],
       "audio": "feelings_emotions_v1_happy.mp3"
     },
     {
       "slug": "sad-and-comfort",
-      "keywords_en": ["feelings", "sad", "comfort", "soothing"],
-      "keywords_vi": ["cảm xúc", "buồn", "an ủi", "xoa dịu"],
+      "keywords_en": [
+        "feelings",
+        "sad",
+        "comfort",
+        "soothing"
+      ],
+      "keywords_vi": [
+        "cảm xúc",
+        "buồn",
+        "an ủi",
+        "xoa dịu"
+      ],
       "copy": {
         "en": "Show a gentle sad face by lowering your eyebrows and shoulders. Say, “sad,” slowly, then let your child copy you. Use a soft toy to act out a simple story: the toy drops something and feels sad. Say, “The bear is sad,” and gently pat it to show comfort. This teaches your child that sadness is normal and can be talked about. If your child wants to share their own example, listen and repeat softly: “You feel sad… I hear you.” This builds emotional understanding and connection.",
         "vi": "Bạn tạo khuôn mặt buồn nhẹ bằng cách hơi nhíu mày và thả lỏng vai. Đọc chậm: “sad,” rồi để bé bắt chước. Dùng thú bông đóng một câu chuyện đơn giản: thú bông làm rơi món đồ và buồn. Bạn nói: “The bear is sad,” rồi xoa nhẹ để an ủi. Cách này giúp bé hiểu rằng cảm giác buồn là bình thường và có thể nói ra. Nếu bé chia sẻ chuyện của mình, hãy lắng nghe rồi nhắc nhẹ: “You feel sad… mẹ hiểu.” Điều này nuôi dưỡng sự thấu cảm và kết nối tình cảm."
       },
-      "tags": ["sad", "comfort"],
+      "tags": [
+        "sad",
+        "comfort"
+      ],
       "audio": "feelings_emotions_v1_sad.mp3"
     },
     {
       "slug": "angry-and-calm",
-      "keywords_en": ["feelings", "angry", "calm", "regulation"],
-      "keywords_vi": ["cảm xúc", "giận", "bình tĩnh", "kiểm soát"],
+      "keywords_en": [
+        "feelings",
+        "angry",
+        "calm",
+        "regulation"
+      ],
+      "keywords_vi": [
+        "cảm xúc",
+        "giận",
+        "bình tĩnh",
+        "kiểm soát"
+      ],
       "copy": {
         "en": "To teach angry, make a pretend frustrated face—scrunch eyebrows, puff cheeks—and say, “angry,” clearly but softly so it doesn’t feel scary. Tell your child it’s okay to feel angry sometimes. Then immediately teach the opposite action: calm. Take a slow breath and say, “calm…” Invite your child to do it with you. This pairing helps them learn both the emotion and a simple tool to manage it. Using English during big feelings helps children understand themselves instead of feeling overwhelmed.",
         "vi": "Để dạy từ angry, bạn làm gương mặt hơi tức giận—nhíu mày, phồng má—và đọc rõ: “angry,” nhưng vẫn giữ giọng nhẹ để không làm bé sợ. Giải thích rằng ai cũng có lúc angry. Sau đó dạy ngay hành động ngược lại: calm. Bạn hít nhẹ và đọc: “calm…” rồi rủ bé làm theo. Cặp từ này giúp bé hiểu cảm xúc và có công cụ đơn giản để bình tĩnh lại. Việc dùng tiếng Anh trong lúc có cảm xúc mạnh giúp bé hiểu bản thân thay vì bị ngợp."
       },
-      "tags": ["angry", "calm"],
+      "tags": [
+        "angry",
+        "calm"
+      ],
       "audio": "feelings_emotions_v1_angry.mp3"
     },
     {
       "slug": "scared-and-brave",
-      "keywords_en": ["feelings", "scared", "brave", "support"],
-      "keywords_vi": ["cảm xúc", "sợ", "dũng cảm", "hỗ trợ"],
+      "keywords_en": [
+        "feelings",
+        "scared",
+        "brave",
+        "support"
+      ],
+      "keywords_vi": [
+        "cảm xúc",
+        "sợ",
+        "dũng cảm",
+        "hỗ trợ"
+      ],
       "copy": {
         "en": "Children sometimes feel scared of loud noises or the dark. Cover your mouth slightly, widen your eyes, and say, “scared.” Then show how to move through the feeling by pairing it with the word “brave.” Sit up tall, put a hand on your heart, and say, “brave.” Invite your child to act out both feelings. Explain that brave doesn’t mean not scared—it means trying anyway. This builds emotional literacy and resilience in a gentle way.",
         "vi": "Trẻ đôi khi sợ tiếng động lớn hoặc bóng tối. Bạn che miệng nhẹ, mở to mắt và đọc: “scared.” Sau đó thể hiện cách vượt qua cảm xúc bằng cách ghép với từ “brave.” Bạn ngồi thẳng, đặt tay lên ngực và đọc: “brave.” Rủ bé đóng cả hai cảm xúc. Giải thích rằng brave không có nghĩa là không sợ, mà là vẫn cố gắng. Cách này xây dựng vốn cảm xúc và sự dũng cảm một cách nhẹ nhàng."
       },
-      "tags": ["scared", "brave"],
+      "tags": [
+        "scared",
+        "brave"
+      ],
       "audio": "feelings_emotions_v1_scared_brave.mp3"
     },
     {
       "slug": "proud-and-try-again",
-      "keywords_en": ["feelings", "proud", "try again", "confidence"],
-      "keywords_vi": ["cảm xúc", "tự hào", "thử lại", "tự tin"],
+      "keywords_en": [
+        "feelings",
+        "proud",
+        "try again",
+        "confidence"
+      ],
+      "keywords_vi": [
+        "cảm xúc",
+        "tự hào",
+        "thử lại",
+        "tự tin"
+      ],
       "copy": {
         "en": "Proud is an important feeling for young children. Hold your chest high, put your hands on your hips, and say, “proud!” Encourage your child to show their proud pose. Then connect it with trying: “You try… I’m proud.” Use it when your child attempts something—even if they don’t succeed. Teaching proud early helps children build confidence and see mistakes as part of learning rather than something to fear.",
         "vi": "Từ proud rất quan trọng với trẻ nhỏ. Bạn ưỡn ngực, chống tay lên hông và đọc: “proud!” rồi rủ bé tạo dáng tự hào. Sau đó bạn liên kết với sự cố gắng: “You try… I’m proud.” Hãy dùng từ này mỗi khi bé thử làm điều gì—kể cả khi chưa làm được. Việc dạy proud từ sớm giúp bé tự tin và xem sai sót là một phần của quá trình học, không phải điều đáng sợ."
       },
-      "tags": ["proud", "confidence"],
+      "tags": [
+        "proud",
+        "confidence"
+      ],
       "audio": "feelings_emotions_v1_proud.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all", "full", "complete"],
-      "keywords_vi": ["tất cả", "đầy đủ", "hoàn chỉnh"],
+      "keywords_en": [
+        "all",
+        "full",
+        "complete"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "đầy đủ",
+        "hoàn chỉnh"
+      ],
       "copy": {
         "en": "Smile and learn the feeling happy…\n\nShow a gentle sad face and comfort a toy…\n\nPretend to be angry, then practice calming down…\n\nAct out scared and brave with simple motions…\n\nEnd with proud to build confidence and emotional strength.",
         "vi": "Mỉm cười và học từ happy…\n\nLàm khuôn mặt sad nhẹ và an ủi thú bông…\n\nGiả vờ angry rồi tập calm…\n\nDiễn tả scared và brave bằng cử động đơn giản…\n\nKết thúc với proud để xây dựng tự tin và sự mạnh mẽ cảm xúc."
       },
-      "tags": ["all", "full"],
+      "tags": [
+        "all",
+        "full"
+      ],
       "audio": "feelings_emotions_v1_happy.mp3 feelings_emotions_v1_sad.mp3 feelings_emotions_v1_angry.mp3 feelings_emotions_v1_scared_brave.mp3 feelings_emotions_v1_proud.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "4-7",
-    "level": "Kids Level 1",
-    "created_at": "2025-11-21T00:00:00+00:00",
-    "updated_at": "2025-11-21T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#FCE1E8"
-  }
+  ]
 }

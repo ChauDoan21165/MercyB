@@ -1,6 +1,4 @@
 {
-  "schema_version": "1.0",
-  "schema_id": "stoicism",
   "id": "stoicism",
   "tier": "free",
   "domain": "",
@@ -18,13 +16,5 @@
   "room_essay": {
     "en": "Ancient wisdom for modern life - develop inner strength, emotional control, and peaceful living.",
     "vi": "Trí tuệ cổ đại cho đời sống hiện đại - phát triển sức mạnh nội tâm, làm chủ cảm xúc và sống bình yên."
-  },
-  "safety_disclaimer": {
-    "en": "",
-    "vi": ""
-  },
-  "crisis_footer": {
-    "en": "",
-    "vi": ""
   }
 }

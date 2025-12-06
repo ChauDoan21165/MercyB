@@ -13,63 +13,117 @@
   "entries": [
     {
       "slug": "scene-safety-and-initial-assessment",
-      "keywords_en": ["scene safety", "assessment", "calm response"],
-      "keywords_vi": ["an toàn hiện trường", "đánh giá ban đầu", "bình tĩnh ứng phó"],
+      "keywords_en": [
+        "scene safety",
+        "assessment",
+        "calm response"
+      ],
+      "keywords_vi": [
+        "an toàn hiện trường",
+        "đánh giá ban đầu",
+        "bình tĩnh ứng phó"
+      ],
       "copy": {
         "en": "Before helping anyone, ensure the scene is safe. Look for fire hazards, falling debris, traffic, unstable structures, or electrical risks. Do not rush in—a second injured person creates a larger emergency. Approach slowly and speak calmly. Check if the person is conscious by asking simple questions. Observe their breathing and posture without shaking them. If they do not respond, call for help immediately and stay nearby. Initial assessment is about creating stability, not performing medical actions. Your calm presence reduces fear and prevents confusion.",
         "vi": "Trước khi giúp ai, hãy đảm bảo hiện trường an toàn. Quan sát nguy cơ cháy nổ, vật rơi, xe cộ, công trình không vững hoặc điện rò rỉ. Đừng lao vào—một người bị thương thứ hai chỉ khiến tình hình nguy hiểm hơn. Tiếp cận chậm và nói chuyện bình tĩnh. Kiểm tra người bị nạn có tỉnh táo không bằng cách hỏi vài câu đơn giản. Quan sát hơi thở và tư thế mà không lắc mạnh. Nếu họ không đáp lại, hãy gọi hỗ trợ ngay và ở gần họ. Đánh giá ban đầu là để tạo sự ổn định, không phải làm thủ thuật y khoa. Sự bình tĩnh của bạn giúp giảm sợ hãi và tránh hỗn loạn."
       },
-      "audio": "srs05_01_en.mp3"
+      "audio": "srs05_01_en.mp3",
+      "tags": []
     },
     {
       "slug": "supporting-breathing-safely",
-      "keywords_en": ["breathing support", "airway awareness", "safety"],
-      "keywords_vi": ["hỗ trợ hô hấp", "đường thở", "an toàn"],
+      "keywords_en": [
+        "breathing support",
+        "airway awareness",
+        "safety"
+      ],
+      "keywords_vi": [
+        "hỗ trợ hô hấp",
+        "đường thở",
+        "an toàn"
+      ],
       "copy": {
         "en": "If someone is breathing with difficulty, your role is to keep their airway open without performing medical procedures. Help them sit upright or lean slightly forward to ease chest pressure. Remove tight clothing around the neck. Encourage slow, steady breaths but do not force any technique. If they become unconscious but still breathe, place them gently in the recovery position by turning them on their side. This prevents the tongue from blocking the airway and reduces choking risk. If breathing stops, call emergency services immediately. Calm support keeps the person safe until professionals arrive.",
         "vi": "Nếu ai đó thở khó, vai trò của bạn là giữ đường thở thông thoáng mà không làm thủ thuật y khoa. Hãy giúp họ ngồi thẳng hoặc hơi cúi về trước để giảm áp lực lên ngực. Nới lỏng quần áo quanh cổ. Khuyến khích họ thở chậm và đều, nhưng không ép buộc. Nếu họ bất tỉnh nhưng vẫn thở, hãy đặt họ vào tư thế hồi phục bằng cách xoay nhẹ sang một bên. Cách này ngăn lưỡi chặn đường thở và giảm nguy cơ sặc. Nếu họ ngừng thở, hãy gọi cấp cứu ngay. Sự hỗ trợ bình tĩnh giúp giữ an toàn cho họ cho đến khi chuyên môn tiếp cận."
       },
-      "audio": "srs05_02_en.mp3"
+      "audio": "srs05_02_en.mp3",
+      "tags": []
     },
     {
       "slug": "controlling-minor-bleeding",
-      "keywords_en": ["bleeding", "first aid", "pressure"],
-      "keywords_vi": ["chảy máu", "sơ cứu", "ấn giữ"],
+      "keywords_en": [
+        "bleeding",
+        "first aid",
+        "pressure"
+      ],
+      "keywords_vi": [
+        "chảy máu",
+        "sơ cứu",
+        "ấn giữ"
+      ],
       "copy": {
         "en": "For small cuts or superficial bleeding, wash the area with clean water if available. Apply firm, direct pressure using a clean cloth, tissue, or bandage. Hold pressure for several minutes without checking too often. Elevate the limb if the injury is on an arm or leg. Do not apply tourniquets, tighten belts, or attempt medical techniques you are not trained for. Once bleeding slows, cover with a clean bandage. If bleeding soaks through multiple layers or does not slow after sustained pressure, seek help quickly. Your goal is simple—control bleeding safely without causing further harm.",
         "vi": "Với vết cắt nhỏ hoặc chảy máu nhẹ, hãy rửa vùng bị thương bằng nước sạch nếu có. Dùng vải sạch, khăn giấy hoặc băng gạc ấn trực tiếp và chắc lên vết thương. Giữ như vậy vài phút mà không nhấc ra quá sớm. Nếu vết thương ở tay hoặc chân, hãy nâng chi lên. Không dùng garo, không siết dây lưng và không áp dụng kỹ thuật y tế mà bạn chưa được đào tạo. Khi máu đã giảm, hãy băng lại bằng gạc sạch. Nếu máu thấm qua nhiều lớp hoặc không giảm dù đã ấn giữ lâu, hãy tìm hỗ trợ ngay. Mục tiêu là kiểm soát chảy máu an toàn mà không gây tổn thương thêm."
       },
-      "audio": "srs05_03_en.mp3"
+      "audio": "srs05_03_en.mp3",
+      "tags": []
     },
     {
       "slug": "stabilizing-common-injuries",
-      "keywords_en": ["injury support", "sprains", "stability"],
-      "keywords_vi": ["chấn thương", "trật khớp nhẹ", "cố định"],
+      "keywords_en": [
+        "injury support",
+        "sprains",
+        "stability"
+      ],
+      "keywords_vi": [
+        "chấn thương",
+        "trật khớp nhẹ",
+        "cố định"
+      ],
       "copy": {
         "en": "For injuries such as sprains, minor falls, or suspected strains, your focus is stabilization—not treatment. Encourage the person to stay still and avoid putting weight on the injury. Apply a cold pack wrapped in cloth for short periods to reduce swelling. Support the injured limb with pillows or rolled towels. Do not attempt to straighten limbs, push joints back into place, or massage painful areas. If pain worsens, the limb looks deformed, or the person cannot stand, seek medical help. Stability reduces further harm and buys time for proper care.",
         "vi": "Với các chấn thương như bong gân, té nhẹ hoặc nghi căng cơ, điều quan trọng là cố định—không chữa trị. Khuyên người bị nạn giữ yên và không dồn lực lên chỗ đau. Chườm lạnh bằng khăn bọc đá trong thời gian ngắn để giảm sưng. Đỡ chi bị thương bằng gối hoặc khăn cuộn. Không cố duỗi thẳng chi, không tự nắn khớp và không xoa bóp vùng đau. Nếu đau tăng, chi biến dạng hoặc không thể đứng, hãy tìm hỗ trợ y tế. Giữ ổn định giúp hạn chế tổn thương thêm và chờ chăm sóc phù hợp."
       },
-      "audio": "srs05_04_en.mp3"
+      "audio": "srs05_04_en.mp3",
+      "tags": []
     },
     {
       "slug": "managing-shock-and-stress",
-      "keywords_en": ["shock", "stress response", "calm"],
-      "keywords_vi": ["sốc", "phản ứng căng thẳng", "bình tĩnh"],
+      "keywords_en": [
+        "shock",
+        "stress response",
+        "calm"
+      ],
+      "keywords_vi": [
+        "sốc",
+        "phản ứng căng thẳng",
+        "bình tĩnh"
+      ],
       "copy": {
         "en": "Shock can occur after injuries, fear, or sudden events. Symptoms include pale skin, rapid breathing, trembling, or confusion. Keep the person lying down if possible and elevate their legs slightly unless they have a head, neck, or back injury. Keep them warm with a blanket and speak gently to reduce fear. Do not give food or drink if they might need medical evaluation soon. Shock is dangerous because it reduces blood flow to vital organs. Your calm support and steady reassurance help stabilize the person while waiting for help.",
         "vi": "Sốc có thể xảy ra sau chấn thương, sợ hãi hoặc biến cố bất ngờ. Dấu hiệu gồm da tái, thở nhanh, run hoặc lú lẫn. Hãy để người bị nạn nằm xuống nếu có thể và kê chân họ hơi cao, trừ khi nghi ngờ chấn thương đầu, cổ hoặc lưng. Giữ ấm bằng chăn và nói chuyện nhẹ nhàng để giảm sợ hãi. Không cho ăn uống nếu họ có thể cần được đánh giá y tế sớm. Sốc nguy hiểm vì giảm lưu thông máu đến các cơ quan quan trọng. Sự trấn an bình tĩnh của bạn giúp ổn định tình trạng trong lúc chờ hỗ trợ."
       },
-      "audio": "srs05_05_en.mp3"
+      "audio": "srs05_05_en.mp3",
+      "tags": []
     },
     {
       "slug": "when-to-seek-professional-help",
-      "keywords_en": ["emergency help", "professional assistance", "safety"],
-      "keywords_vi": ["gọi cứu trợ", "hỗ trợ chuyên môn", "an toàn"],
+      "keywords_en": [
+        "emergency help",
+        "professional assistance",
+        "safety"
+      ],
+      "keywords_vi": [
+        "gọi cứu trợ",
+        "hỗ trợ chuyên môn",
+        "an toàn"
+      ],
       "copy": {
         "en": "Knowing when to seek professional help is as important as knowing how to assist. Call emergency services if someone stops breathing, loses consciousness, bleeds heavily, cannot move a limb, or shows signs of shock that do not improve. If you are unsure, choose the safer option and seek help anyway. While waiting, keep the person calm, stable, and warm. First aid is not about replacing medical care; it is about bridging the gap until professionals arrive. Your awareness and quick decisions protect lives.",
         "vi": "Biết khi nào cần hỗ trợ chuyên môn quan trọng như biết cách sơ cứu. Gọi cấp cứu nếu ai đó ngừng thở, bất tỉnh, chảy máu nhiều, không cử động được chi, hoặc có dấu hiệu sốc không cải thiện. Nếu bạn không chắc chắn, hãy chọn phương án an toàn và tìm hỗ trợ. Trong lúc chờ, hãy giữ người bị nạn bình tĩnh, ổn định và ấm áp. Sơ cứu không thay thế chăm sóc y tế; nó giúp duy trì an toàn cho đến khi chuyên môn tới nơi. Nhận thức và quyết định nhanh của bạn có thể cứu sống."
       },
-      "audio": "srs05_06_en.mp3"
+      "audio": "srs05_06_en.mp3",
+      "tags": []
     }
   ]
 }

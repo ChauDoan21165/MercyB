@@ -12,73 +12,135 @@
   "entries": [
     {
       "slug": "the-weight-you-cannot-explain",
-      "keywords_en": ["guilt", "shame", "burden"],
-      "keywords_vi": ["tội lỗi", "xấu hổ", "gánh nặng"],
+      "keywords_en": [
+        "guilt",
+        "shame",
+        "burden"
+      ],
+      "keywords_vi": [
+        "tội lỗi",
+        "xấu hổ",
+        "gánh nặng"
+      ],
       "copy": {
         "en": "Guilt is the feeling that you did something wrong; shame is the feeling that something is wrong with you. This difference matters, because shame is heavier, older, and far more hidden. You may feel guilt over mistakes, words said in anger, or moments you wish you had handled differently. But shame is the quiet belief that you are fundamentally flawed, broken, or unworthy. This belief often forms in childhood—when affection was conditional, when mistakes were punished harshly, or when emotional needs were dismissed. You carry the weight without knowing why. Shame becomes the lens through which you interpret everything: relationships, choices, opportunities. You shrink yourself, apologize excessively, or avoid closeness to hide the parts you fear others will judge. Yet shame is not truth. It is a story written long ago by someone else’s absence or misunderstanding. Healing begins when you realize the weight you carry is not your identity but an echo from the past.",
         "vi": "Tội lỗi là cảm giác rằng bạn đã làm điều gì sai; xấu hổ là cảm giác rằng bản thân bạn có điều gì sai. Sự khác biệt này quan trọng, vì xấu hổ nặng hơn, cũ hơn và ẩn sâu hơn. Bạn có thể cảm thấy tội lỗi vì sai lầm, lời nói trong lúc giận dữ hoặc những khoảnh khắc bạn ước mình có thể xử lý tốt hơn. Nhưng xấu hổ là niềm tin âm thầm rằng bạn vốn dĩ khiếm khuyết, hỏng hóc hoặc không xứng đáng. Niềm tin này thường hình thành từ thời thơ ấu—khi sự trìu mến có điều kiện, khi sai sót bị phạt nặng hoặc khi nhu cầu cảm xúc bị phớt lờ. Bạn mang gánh nặng ấy mà không hiểu vì sao. Xấu hổ trở thành lăng kính qua đó bạn nhìn mọi thứ: các mối quan hệ, lựa chọn, cơ hội. Bạn thu mình, xin lỗi quá mức hoặc tránh gần gũi để che giấu những phần bạn sợ người khác đánh giá. Nhưng xấu hổ không phải sự thật. Nó là câu chuyện được viết từ lâu bởi sự thiếu vắng hoặc hiểu lầm của người khác. Chữa lành bắt đầu khi bạn nhận ra gánh nặng bạn mang không phải bản chất của bạn mà chỉ là âm vọng của quá khứ."
       },
-      "tags": ["guilt", "shame"],
+      "tags": [
+        "guilt",
+        "shame"
+      ],
       "audio": "vip6_ghs_1.mp3"
     },
     {
       "slug": "shame-as-identity",
-      "keywords_en": ["identity", "self-concept", "wounding"],
-      "keywords_vi": ["bản sắc", "nhận thức bản thân", "tổn thương"],
+      "keywords_en": [
+        "identity",
+        "self-concept",
+        "wounding"
+      ],
+      "keywords_vi": [
+        "bản sắc",
+        "nhận thức bản thân",
+        "tổn thương"
+      ],
       "copy": {
         "en": "When shame becomes part of identity, it feels less like a feeling and more like a truth. You start believing you are defective, burdensome, or fundamentally wrong. This belief shapes how you move through the world. You might avoid opportunities because you assume you will fail, or keep emotional distance because you fear burdening others. You may interpret kindness as pity, love as obligation, or praise as misunderstanding. Shame distorts every mirror you look into. But this identity was never chosen—it was formed from unmet emotional needs or messages absorbed long before you could protect yourself. Shame is not who you are; it is who you learned to be in an environment that did not nurture your wholeness. Healing begins when you question the old script rather than obey it. When you speak to yourself gently, the identity built from shame begins to crack, revealing the truth beneath: you were never the flaw—you were the child surviving without guidance.",
         "vi": "Khi xấu hổ trở thành một phần của bản sắc, nó không còn giống một cảm xúc mà giống như sự thật. Bạn bắt đầu tin rằng mình khiếm khuyết, là gánh nặng hoặc vốn dĩ sai. Niềm tin này định hình cách bạn bước đi trong cuộc sống. Bạn có thể tránh cơ hội vì cho rằng mình sẽ thất bại, hoặc giữ khoảng cách cảm xúc vì sợ làm phiền người khác. Bạn có thể diễn giải sự tử tế thành thương hại, tình yêu thành nghĩa vụ, lời khen thành hiểu lầm. Xấu hổ làm méo mó mọi tấm gương bạn soi vào. Nhưng bản sắc này không phải bạn lựa chọn—nó hình thành từ những nhu cầu cảm xúc không được đáp ứng hoặc những thông điệp bạn hấp thụ từ lâu trước khi có khả năng bảo vệ bản thân. Xấu hổ không phải con người thật của bạn; nó là con người bạn học để sinh tồn trong môi trường không nuôi dưỡng sự toàn vẹn của bạn. Chữa lành bắt đầu khi bạn đặt câu hỏi với kịch bản cũ thay vì vâng theo nó. Khi bạn nói với mình bằng sự dịu dàng, bản sắc được xây từ xấu hổ bắt đầu nứt ra, hé lộ sự thật bên dưới: bạn chưa bao giờ là lỗi lầm—bạn chỉ là đứa trẻ sống sót mà không có người dẫn dắt."
       },
-      "tags": ["identity", "shame"],
+      "tags": [
+        "identity",
+        "shame"
+      ],
       "audio": "vip6_ghs_2.mp3"
     },
     {
       "slug": "hiding-the-soft-parts",
-      "keywords_en": ["vulnerability", "masking", "self-protection"],
-      "keywords_vi": ["dễ tổn thương", "che giấu", "tự bảo vệ"],
+      "keywords_en": [
+        "vulnerability",
+        "masking",
+        "self-protection"
+      ],
+      "keywords_vi": [
+        "dễ tổn thương",
+        "che giấu",
+        "tự bảo vệ"
+      ],
       "copy": {
         "en": "Shame teaches you to hide the softest parts of yourself. You mask your needs, silence your fears, and present a controlled version of who you are. You may appear competent, calm, or even cheerful, but underneath is a quiet terror: “If they see the real me, they will leave.” This masking is not dishonesty—it is self-protection learned in places where vulnerability was unsafe. You learned to hold your pain alone, to cry in silence, to appear stronger than you felt. But hiding comes at a cost. When you conceal your true self, you also block the very connection you long for. Others cannot love the parts you never show. Healing begins when you let yourself be seen—not all at once, but in small moments where softness feels possible. Each time you reveal a truth without collapsing, shame loses a little of its power.",
         "vi": "Xấu hổ dạy bạn che giấu những phần mềm yếu nhất của mình. Bạn giấu nhu cầu, im lặng nỗi sợ và thể hiện phiên bản kiểm soát của bản thân. Bạn có thể trông giỏi giang, bình tĩnh hoặc thậm chí vui vẻ, nhưng bên dưới là nỗi kinh hoàng âm thầm: “Nếu họ thấy con người thật của mình, họ sẽ rời đi.” Sự che giấu này không phải dối trá—mà là tự bảo vệ hình thành từ nơi sự dễ tổn thương không an toàn. Bạn đã học cách chịu đựng nỗi đau một mình, khóc trong im lặng, tỏ ra mạnh mẽ hơn cảm xúc thật. Nhưng việc che giấu có cái giá của nó. Khi bạn giấu đi bản chất thật, bạn cũng chặn luôn kết nối mà mình khao khát. Người khác không thể yêu những phần bạn chưa từng để họ thấy. Chữa lành bắt đầu khi bạn cho phép mình được nhìn thấy—không phải tất cả cùng lúc, mà qua những khoảnh khắc nhỏ nơi sự mềm mại trở nên có thể. Mỗi lần bạn nói ra sự thật mà không sụp đổ, xấu hổ mất đi một chút sức mạnh."
       },
-      "tags": ["masking", "vulnerability"],
+      "tags": [
+        "masking",
+        "vulnerability"
+      ],
       "audio": "vip6_ghs_3.mp3"
     },
     {
       "slug": "releasing-inherited-shame",
-      "keywords_en": ["intergenerational", "family patterns", "healing"],
-      "keywords_vi": ["liên thế hệ", "mô thức gia đình", "chữa lành"],
+      "keywords_en": [
+        "intergenerational",
+        "family patterns",
+        "healing"
+      ],
+      "keywords_vi": [
+        "liên thế hệ",
+        "mô thức gia đình",
+        "chữa lành"
+      ],
       "copy": {
         "en": "Not all shame is yours; some of it is inherited. Families pass down unspoken rules: don’t feel too much, don’t speak too loudly, don’t take up space. You may carry shame for simply existing in ways that were discouraged or dismissed. Parents overwhelmed by their own wounds often transmit shame unknowingly. You learn to dim your light, quiet your joy, or minimize your needs to avoid criticism or withdrawal. This shame does not begin with you—yet it lives in you. Healing involves giving back what never belonged to you. You learn to recognize the difference between your authentic self and the version shaped by family wounds. As you step into your truth, inherited shame dissolves. You are not responsible for carrying the emotional debts of your lineage.",
         "vi": "Không phải mọi nỗi xấu hổ đều là của bạn; một phần trong đó là kế thừa. Gia đình truyền lại những quy tắc không lời: đừng cảm xúc quá nhiều, đừng nói quá lớn, đừng chiếm quá nhiều chỗ. Bạn có thể mang xấu hổ chỉ vì tồn tại theo những cách bị ngăn cản hoặc phớt lờ. Cha mẹ mang những vết thương riêng thường truyền xấu hổ một cách vô thức. Bạn học cách hạ thấp ánh sáng của mình, im lặng niềm vui hoặc thu nhỏ nhu cầu để tránh bị chỉ trích hoặc bị rút lại yêu thương. Nỗi xấu hổ này không bắt đầu từ bạn—nhưng nó sống trong bạn. Chữa lành là trả lại những điều vốn không thuộc về bạn. Bạn học cách phân biệt bản thân chân thật với phiên bản được hình thành bởi mô thức tổn thương của gia đình. Khi bạn bước vào sự thật của mình, nỗi xấu hổ kế thừa tan rã. Bạn không có trách nhiệm gánh những món nợ cảm xúc của dòng họ."
       },
-      "tags": ["family", "healing"],
+      "tags": [
+        "family",
+        "healing"
+      ],
       "audio": "vip6_ghs_4.mp3"
     },
     {
       "slug": "meeting-yourself-with-mercy",
-      "keywords_en": ["self-compassion", "healing", "acceptance"],
-      "keywords_vi": ["tự từ bi", "chữa lành", "chấp nhận"],
+      "keywords_en": [
+        "self-compassion",
+        "healing",
+        "acceptance"
+      ],
+      "keywords_vi": [
+        "tự từ bi",
+        "chữa lành",
+        "chấp nhận"
+      ],
       "copy": {
         "en": "Shame dissolves not through perfection but through mercy. You do not heal by proving you are good; you heal by realizing you were never unworthy. Self-compassion is not indulgence—it is medicine. When you speak to yourself gently, your nervous system softens. When you allow mistakes without self-punishment, you reclaim your humanity. When you hold your wounded parts with tenderness, shame loses its authority. You begin to understand that worthiness is not earned but inherent. Healing shame is an act of returning to yourself, of choosing presence over judgment. You become the one who stays, the one who listens, the one who offers warmth to the places long kept in darkness. This is how shame loosens. This is how you come home to yourself.",
-        "vi": "Xấu hổ không tan nhờ sự hoàn hảo mà nhờ lòng thương mình. Bạn không chữa lành bằng cách chứng minh mình tốt; bạn chữa lành khi nhận ra mình chưa bao giờ không xứng đáng. Tự từ bi không phải nuông chiều—mà là liều thuốc. Khi bạn nói với mình bằng sự dịu dàng, hệ thần kinh của bạn mềm lại. Khi bạn cho phép sai lầm mà không tự trừng phạt, bạn lấy lại tính người của mình. Khi bạn ôm lấy những phần bị tổn thương bằng sự ân cần, xấu hổ mất đi quyền lực của nó. Bạn bắt đầu hiểu rằng giá trị không phải thứ đạt được mà là thứ vốn có. Chữa lành xấu hổ là hành động trở về với chính mình, chọn sự hiện diện thay cho phán xét. Bạn trở thành người ở lại, người lắng nghe, người trao hơi ấm cho những nơi bị giữ trong bóng tối từ lâu. Đây là cách xấu hổ nới lỏng. Đây là cách bạn trở về nhà.",
         "vi": "Xấu hổ không tan nhờ sự hoàn hảo mà nhờ lòng thương mình. Bạn không chữa lành bằng cách chứng minh mình tốt; bạn chữa lành khi nhận ra mình chưa bao giờ không xứng đáng. Tự từ bi không phải nuông chiều—mà là liều thuốc. Khi bạn nói với mình bằng sự dịu dàng, hệ thần kinh của bạn mềm lại. Khi bạn cho phép sai lầm mà không tự trừng phạt, bạn lấy lại tính người của mình. Khi bạn ôm lấy những phần bị tổn thương bằng sự ân cần, xấu hổ mất đi quyền lực của nó. Bạn bắt đầu hiểu rằng giá trị không phải thứ đạt được mà là thứ vốn có. Chữa lành xấu hổ là hành động trở về với chính mình, chọn sự hiện diện thay cho phán xét. Bạn trở thành người ở lại, người lắng nghe, người trao hơi ấm cho những nơi bị giữ trong bóng tối từ lâu. Đây là cách xấu hổ nới lỏng. Đây là cách bạn trở về nhà."
       },
-      "tags": ["self-compassion", "healing"],
+      "tags": [
+        "self-compassion",
+        "healing"
+      ],
       "audio": "vip6_ghs_5.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all", "full sequence", "combined"],
-      "keywords_vi": ["tất cả", "chuỗi đầy đủ", "kết hợp"],
+      "keywords_en": [
+        "all",
+        "full sequence",
+        "combined"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "chuỗi đầy đủ",
+        "kết hợp"
+      ],
       "copy": {
         "en": "Guilt says you did something wrong; shame says you are wrong. Shame becomes identity when it grows from unmet childhood needs, conditional affection, or harsh expectations. You hide your softness, mask your fear, and offer controlled versions of yourself to stay safe. Shame distorts your mirrors, making kindness feel like pity and love feel undeserved. Some shame is inherited, passed quietly through family rules and emotional absence. Healing begins with mercy: speaking gently to yourself, questioning old scripts, and recognizing that unworthiness was never your truth. Shame dissolves as you reveal your real self in small moments, discovering that you are not flawed—you were simply surviving. Every act of tenderness toward yourself rewrites the identity shame once held.",
         "vi": "Tội lỗi nói rằng bạn đã làm sai; xấu hổ nói rằng bản thân bạn sai. Xấu hổ trở thành bản sắc khi nó lớn lên từ những nhu cầu thời thơ ấu không được đáp ứng, tình cảm có điều kiện hoặc kỳ vọng khắc nghiệt. Bạn che giấu sự mềm yếu, giấu nỗi sợ và thể hiện phiên bản được kiểm soát để giữ an toàn. Xấu hổ làm méo mó mọi tấm gương, khiến sự tử tế trở thành thương hại và tình yêu trở thành điều bạn không xứng đáng. Một phần xấu hổ được kế thừa, truyền qua những quy tắc gia đình và sự vắng mặt cảm xúc. Chữa lành bắt đầu bằng lòng thương mình: nói nhẹ nhàng với chính mình, đặt câu hỏi với kịch bản cũ và nhận ra rằng cảm giác không xứng đáng chưa bao giờ là sự thật. Xấu hổ tan dần khi bạn bộc lộ bản thân thật qua những khoảnh khắc nhỏ, khám phá rằng bạn không có lỗi—bạn chỉ đang sinh tồn. Mỗi hành động ân cần với chính mình đều viết lại bản sắc mà xấu hổ từng nắm giữ."
       },
-      "tags": ["all", "combined"],
+      "tags": [
+        "all",
+        "combined"
+      ],
       "audio": "vip6_ghs_1.mp3 vip6_ghs_2.mp3 vip6_ghs_3.mp3 vip6_ghs_4.mp3 vip6_ghs_5.mp3"
     }
-  ],
-  "meta": {
-    "entry_count": 6
-  }
+  ]
 }

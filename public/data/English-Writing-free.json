@@ -1,6 +1,4 @@
 {
-  "schema_version": "1.0",
-  "schema_id": "English-Writing-free",
   "id": "English-Writing-free",
   "tier": "free",
   "domain": "",
@@ -90,13 +88,5 @@
   "room_essay": {
     "en": "Writing in English is a powerful skill that opens doors to education, global opportunities, and clearer thinking. This room gives you simple reasons to begin writing regularly. You will learn why writing improves vocabulary, strengthens logic, and builds confidence in expressing ideas. Start small—one paragraph a day is enough to unlock growth. Discover deeper guidance in VIP tiers.\n",
     "vi": "Viết tiếng Anh là một kỹ năng mạnh mẽ mở ra cơ hội học tập, phát triển toàn cầu và tư duy rõ ràng hơn. Phòng này giúp bạn hiểu những lý do đơn giản để bắt đầu viết thường xuyên. Bạn sẽ biết vì sao viết giúp tăng vốn từ, củng cố tư duy logic và xây dựng sự tự tin khi diễn đạt. Hãy bắt đầu thật nhỏ—một đoạn văn mỗi ngày cũng đủ để tạo bước tiến. Khám phá thêm ở các cấp độ VIP."
-  },
-  "safety_disclaimer": {
-    "en": "",
-    "vi": ""
-  },
-  "crisis_footer": {
-    "en": "",
-    "vi": ""
   }
 }

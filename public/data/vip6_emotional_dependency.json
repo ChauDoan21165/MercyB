@@ -12,72 +12,135 @@
   "entries": [
     {
       "slug": "why-you-cling",
-      "keywords_en": ["clinging", "fear", "dependency"],
-      "keywords_vi": ["bám víu", "nỗi sợ", "phụ thuộc"],
+      "keywords_en": [
+        "clinging",
+        "fear",
+        "dependency"
+      ],
+      "keywords_vi": [
+        "bám víu",
+        "nỗi sợ",
+        "phụ thuộc"
+      ],
       "copy": {
         "en": "Clinging begins with fear—fear of being left, forgotten, or replaced. When connection feels fragile, you may hold tighter, hoping closeness will stop loss. But the urgency to cling does not come from need alone; it comes from past wounds where your emotional world depended on someone unpredictable. Dependency forms when love once felt scarce. You cling not because you are weak, but because your nervous system learned that losing connection feels life-threatening.",
         "vi": "Bám víu bắt đầu từ sợ hãi—sợ bị bỏ lại, bị lãng quên hoặc bị thay thế. Khi kết nối cảm thấy mong manh, bạn có thể siết chặt hơn, hy vọng sự gần gũi sẽ ngăn chặn mất mát. Nhưng sự bám víu không chỉ đến từ nhu cầu; nó đến từ vết thương cũ khi thế giới cảm xúc của bạn phụ thuộc vào một người không ổn định. Phụ thuộc hình thành khi tình yêu từng khan hiếm. Bạn bám víu không phải vì yếu đuối, mà vì hệ thần kinh học rằng mất kết nối là đe dọa sự sống."
       },
-      "tags": ["dependency", "fear"],
+      "tags": [
+        "dependency",
+        "fear"
+      ],
       "audio": "vip6_ed_1.mp3"
     },
     {
       "slug": "the-fear-of-separation",
-      "keywords_en": ["separation", "anxiety", "attachment"],
-      "keywords_vi": ["chia cách", "lo âu", "gắn bó"],
+      "keywords_en": [
+        "separation",
+        "anxiety",
+        "attachment"
+      ],
+      "keywords_vi": [
+        "chia cách",
+        "lo âu",
+        "gắn bó"
+      ],
       "copy": {
         "en": "For emotionally dependent individuals, even small separations feel catastrophic. A delayed reply, a shift in tone, or a busy day from your partner can trigger panic. Your mind fills the gap with worst-case scenarios, assuming distance equals rejection. This fear is not irrational—it is learned. When emotional stability depended on another’s presence in the past, any distance now feels like danger. Healing means learning that space does not equal abandonment.",
         "vi": "Với người phụ thuộc cảm xúc, ngay cả khoảng cách nhỏ cũng cảm thấy thảm họa. Một tin nhắn trả lời chậm, giọng nói thay đổi hay một ngày bận rộn của người yêu có thể kích hoạt hoảng loạn. Tâm trí lấp đầy khoảng trống bằng kịch bản tệ nhất, mặc định khoảng cách đồng nghĩa với bị bỏ rơi. Nỗi sợ này không vô lý—nó được học từ quá khứ, khi sự ổn định cảm xúc phụ thuộc vào sự hiện diện của người khác. Chữa lành nghĩa là hiểu rằng khoảng cách không phải sự rời bỏ."
       },
-      "tags": ["anxiety", "attachment"],
+      "tags": [
+        "anxiety",
+        "attachment"
+      ],
       "audio": "vip6_ed_2.mp3"
     },
     {
       "slug": "losing-yourself-in-love",
-      "keywords_en": ["identity", "relationships", "self-loss"],
-      "keywords_vi": ["bản sắc", "mối quan hệ", "đánh mất bản thân"],
+      "keywords_en": [
+        "identity",
+        "relationships",
+        "self-loss"
+      ],
+      "keywords_vi": [
+        "bản sắc",
+        "mối quan hệ",
+        "đánh mất bản thân"
+      ],
       "copy": {
         "en": "Emotional dependency often leads to losing yourself in love. You mold your preferences, behaviors, or values to match the other person, fearing that being fully yourself will push them away. You mute your needs, ignore your boundaries, and prioritize maintaining connection over maintaining identity. But love that requires self-erasure is not security—it is survival mode. Healing requires reclaiming your individuality and allowing love to meet the real you.",
         "vi": "Phụ thuộc cảm xúc thường dẫn đến đánh mất bản thân trong tình yêu. Bạn uốn mình theo sở thích, hành vi hoặc giá trị của người kia vì sợ rằng là chính mình sẽ khiến họ rời xa. Bạn kìm nén nhu cầu, bỏ qua ranh giới và đặt việc giữ kết nối cao hơn việc giữ bản sắc. Nhưng tình yêu đòi hỏi bạn xoá chính mình không phải là sự an toàn—mà là chế độ sinh tồn. Chữa lành nghĩa là lấy lại bản ngã và cho phép tình yêu gặp con người thật của bạn."
       },
-      "tags": ["identity", "self"],
+      "tags": [
+        "identity",
+        "self"
+      ],
       "audio": "vip6_ed_3.mp3"
     },
     {
       "slug": "when-love-becomes-oxygen",
-      "keywords_en": ["oxygen", "dependence", "need"],
-      "keywords_vi": ["oxy", "phụ thuộc", "nhu cầu"],
+      "keywords_en": [
+        "oxygen",
+        "dependence",
+        "need"
+      ],
+      "keywords_vi": [
+        "oxy",
+        "phụ thuộc",
+        "nhu cầu"
+      ],
       "copy": {
         "en": "Dependency turns love into oxygen—you feel you cannot breathe without the other person. Their mood controls your mood. Their presence determines your worth. Their reassurance becomes your emotional lifeline. This intensity is not love; it is survival tied to attachment wounds. When someone becomes your only source of grounding, you lose access to your own inner stability. Healing begins when you learn to create internal oxygen—self-soothing, grounding, and emotional regulation.",
         "vi": "Phụ thuộc biến tình yêu thành oxy—bạn cảm thấy mình không thể thở nếu thiếu người kia. Tâm trạng họ điều khiển tâm trạng bạn. Sự hiện diện của họ quyết định giá trị của bạn. Sự trấn an của họ trở thành đường dây sinh tồn cảm xúc. Cường độ này không phải là tình yêu; đó là sinh tồn gắn với vết thương gắn bó. Khi một người trở thành nguồn ổn định duy nhất, bạn mất đi sự vững vàng bên trong. Chữa lành bắt đầu khi bạn học tạo ra 'oxy nội tâm'—tự trấn an, tự ổn định và điều hòa cảm xúc."
       },
-      "tags": ["dependence", "healing"],
+      "tags": [
+        "dependence",
+        "healing"
+      ],
       "audio": "vip6_ed_4.mp3"
     },
     {
       "slug": "reclaiming-your-center",
-      "keywords_en": ["healing", "inner strength", "balance"],
-      "keywords_vi": ["chữa lành", "sức mạnh bên trong", "cân bằng"],
+      "keywords_en": [
+        "healing",
+        "inner strength",
+        "balance"
+      ],
+      "keywords_vi": [
+        "chữa lành",
+        "sức mạnh bên trong",
+        "cân bằng"
+      ],
       "copy": {
         "en": "Healing emotional dependency requires reclaiming your center. You learn to soothe your fears without demanding constant reassurance. You reconnect with interests, friendships, and parts of yourself neglected in the shadow of dependency. Love becomes a choice, not a lifeline. As you strengthen your inner stability, connection becomes steadier—not because you cling, but because you stand. The goal is not detachment, but balanced intimacy where two complete selves meet.",
         "vi": "Chữa lành phụ thuộc cảm xúc đòi hỏi bạn lấy lại tâm điểm của mình. Bạn học tự xoa dịu nỗi sợ mà không đòi hỏi sự trấn an liên tục. Bạn kết nối lại với sở thích, tình bạn và những phần bản thân từng bị bỏ quên dưới bóng phụ thuộc. Tình yêu trở thành lựa chọn, không phải chiếc phao sự sống. Khi bạn nuôi dưỡng sự vững vàng bên trong, kết nối trở nên ổn định hơn—không phải vì bạn bám víu, mà vì bạn đứng vững. Mục tiêu không phải tách rời, mà là sự thân mật cân bằng giữa hai con người trọn vẹn."
       },
-      "tags": ["balance", "inner strength"],
+      "tags": [
+        "balance",
+        "inner strength"
+      ],
       "audio": "vip6_ed_5.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all", "full sequence", "combined"],
-      "keywords_vi": ["tất cả", "chuỗi đầy đủ", "kết hợp"],
+      "keywords_en": [
+        "all",
+        "full sequence",
+        "combined"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "chuỗi đầy đủ",
+        "kết hợp"
+      ],
       "copy": {
         "en": "Emotional dependency grows from fear—fear of loss, fear of being forgotten, and fear of not surviving without another’s presence. Clinging becomes a way to feel safe, yet it recreates the instability you fear. Small separations trigger panic, leading to overthinking, doubt, and self-erasure. You mold yourself to maintain closeness, turning love into oxygen and identity into sacrifice. Healing requires internal grounding: reclaiming your individuality, soothing fear without constant reassurance, and learning that distance does not equal abandonment. When you stand in your own center, connection deepens—not through dependency but through balanced intimacy.",
         "vi": "Phụ thuộc cảm xúc lớn lên từ nỗi sợ—sợ mất mát, sợ bị lãng quên và sợ không thể tồn tại nếu thiếu người khác. Bám víu trở thành cách tìm kiếm an toàn, nhưng lại tái tạo sự bất ổn bạn luôn lo sợ. Khoảng cách nhỏ kích hoạt hoảng loạn, dẫn đến suy nghĩ quá mức, nghi ngờ và đánh mất bản thân. Bạn uốn mình để giữ tình yêu, biến tình yêu thành oxy và bản sắc thành sự hy sinh. Chữa lành đòi hỏi sự vững vàng nội tâm: lấy lại bản ngã, xoa dịu nỗi sợ mà không cần trấn an liên tục và hiểu rằng khoảng cách không đồng nghĩa với rời bỏ. Khi bạn đứng vững trong tâm mình, kết nối trở nên sâu sắc—không phải nhờ phụ thuộc mà nhờ sự thân mật cân bằng."
       },
-      "tags": ["all", "combined"],
+      "tags": [
+        "all",
+        "combined"
+      ],
       "audio": "vip6_ed_1.mp3 vip6_ed_2.mp3 vip6_ed_3.mp3 vip6_ed_4.mp3 vip6_ed_5.mp3"
     }
-  ],
-  "meta": {
-    "entry_count": 6
-  }
+  ]
 }

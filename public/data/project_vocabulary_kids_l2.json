@@ -13,77 +13,129 @@
   "entries": [
     {
       "slug": "project-plan",
-      "keywords_en": ["plan", "project", "steps"],
-      "keywords_vi": ["kế hoạch", "dự án", "bước"],
+      "keywords_en": [
+        "plan",
+        "project",
+        "steps"
+      ],
+      "keywords_vi": [
+        "kế hoạch",
+        "dự án",
+        "bước"
+      ],
       "copy": {
         "en": "Start with the word “plan.” Say: “A plan tells us what to do.” Help your child make a tiny plan with three steps, such as drawing a house or building a paper robot. Keeping the plan simple teaches children how to organize ideas before starting.",
         "vi": "Bắt đầu với từ “plan.” Nói: “A plan tells us what to do.” Giúp bé làm một kế hoạch nhỏ với ba bước, như vẽ ngôi nhà hoặc làm robot giấy. Giữ kế hoạch đơn giản giúp trẻ học cách sắp xếp ý tưởng trước khi bắt đầu."
       },
-      "tags": ["plan"],
+      "tags": [
+        "plan"
+      ],
       "audio": "project_vocabulary_v1_project_plan.mp3"
     },
     {
       "slug": "project-ideas",
-      "keywords_en": ["idea", "brainstorm", "think"],
-      "keywords_vi": ["ý tưởng", "động não", "nghĩ"],
+      "keywords_en": [
+        "idea",
+        "brainstorm",
+        "think"
+      ],
+      "keywords_vi": [
+        "ý tưởng",
+        "động não",
+        "nghĩ"
+      ],
       "copy": {
         "en": "Teach the word “idea” by asking simple questions: “What is your idea?” Let your child choose between two or three options, such as drawing, building, or decorating. This builds confidence and helps kids explore creativity without pressure.",
         "vi": "Dạy từ “idea” bằng cách hỏi: “What is your idea?” Cho bé chọn giữa hai hoặc ba hoạt động như vẽ, xây dựng hoặc trang trí. Cách này giúp trẻ tự tin và khám phá sự sáng tạo mà không áp lực."
       },
-      "tags": ["idea"],
+      "tags": [
+        "idea"
+      ],
       "audio": "project_vocabulary_v1_project_ideas.mp3"
     },
     {
       "slug": "materials-for-projects",
-      "keywords_en": ["materials", "tools", "items"],
-      "keywords_vi": ["vật liệu", "dụng cụ", "đồ dùng"],
+      "keywords_en": [
+        "materials",
+        "tools",
+        "items"
+      ],
+      "keywords_vi": [
+        "vật liệu",
+        "dụng cụ",
+        "đồ dùng"
+      ],
       "copy": {
         "en": "Teach “materials” by gathering items like paper, tape, sticks, or boxes. Say: “These are materials.” Let your child choose what to use. Handling real materials helps them understand that projects need tools and supplies.",
         "vi": "Dạy từ “materials” bằng cách gom giấy, băng keo, que gỗ hoặc hộp nhỏ. Nói: “These are materials.” Để bé chọn món cần dùng. Việc chạm vào vật thật giúp bé hiểu rằng dự án cần dụng cụ và đồ dùng."
       },
-      "tags": ["materials"],
+      "tags": [
+        "materials"
+      ],
       "audio": "project_vocabulary_v1_materials.mp3"
     },
     {
       "slug": "build-and-make",
-      "keywords_en": ["build", "make", "create"],
-      "keywords_vi": ["xây", "làm", "tạo"],
+      "keywords_en": [
+        "build",
+        "make",
+        "create"
+      ],
+      "keywords_vi": [
+        "xây",
+        "làm",
+        "tạo"
+      ],
       "copy": {
         "en": "Teach the word “build” by encouraging hands-on work. Say: “Let’s build!” Let your child glue, tape, stack, or fold. The goal is not perfection but joyful making. When kids build freely, they learn problem-solving naturally.",
         "vi": "Dạy từ “build” bằng cách khuyến khích hoạt động thực tế. Nói: “Let’s build!” Để bé dán, dính băng keo, xếp chồng hoặc gấp giấy. Mục tiêu không phải hoàn hảo mà là niềm vui tạo ra. Khi được tự do xây dựng, trẻ học cách giải quyết vấn đề một cách tự nhiên."
       },
-      "tags": ["build"],
+      "tags": [
+        "build"
+      ],
       "audio": "project_vocabulary_v1_build_make.mp3"
     },
     {
       "slug": "finish-and-show",
-      "keywords_en": ["finish", "show", "present"],
-      "keywords_vi": ["hoàn thành", "khoe", "trình bày"],
+      "keywords_en": [
+        "finish",
+        "show",
+        "present"
+      ],
+      "keywords_vi": [
+        "hoàn thành",
+        "khoe",
+        "trình bày"
+      ],
       "copy": {
         "en": "Teach the word “finish” at the end of the project. Say: “We finish. Let’s show it!” Encourage your child to present their work using simple phrases like: “This is my project. I made it.” Celebrating the finish builds confidence and pride.",
         "vi": "Dạy từ “finish” khi dự án kết thúc. Nói: “We finish. Let’s show it!” Khuyến khích bé trình bày sản phẩm bằng các câu đơn giản: “This is my project. I made it.” Việc ăn mừng khi hoàn thành giúp trẻ tự tin và tự hào."
       },
-      "tags": ["finish"],
+      "tags": [
+        "finish"
+      ],
       "audio": "project_vocabulary_v1_finish_show.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all", "complete", "full"],
-      "keywords_vi": ["tất cả", "đầy đủ", "hoàn chỉnh"],
+      "keywords_en": [
+        "all",
+        "complete",
+        "full"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "đầy đủ",
+        "hoàn chỉnh"
+      ],
       "copy": {
         "en": "Teach “plan” using three small steps for a tiny project.\n\nTeach “idea” by letting your child choose what they want to make.\n\nTeach “materials” by gathering simple items like paper and tape.\n\nTeach “build” through joyful hands-on making and problem-solving.\n\nTeach “finish” by showing the completed project with pride.\n\nThese small project moments help kids organize ideas, speak clearly, and explore creativity with confidence.",
         "vi": "Dạy “plan” bằng ba bước nhỏ cho một dự án đơn giản.\n\nDạy “idea” bằng cách để bé chọn điều bé muốn làm.\n\nDạy “materials” bằng cách chuẩn bị giấy, băng keo và đồ dùng đơn giản.\n\nDạy “build” qua hoạt động tạo ra vui vẻ và giải quyết vấn đề tự nhiên.\n\nDạy “finish” bằng cách khoe sản phẩm và tự hào về thành quả.\n\nNhững khoảnh khắc làm dự án giúp trẻ sắp xếp ý tưởng, nói rõ ràng và khám phá sáng tạo một cách tự tin."
       },
-      "tags": ["all"],
+      "tags": [
+        "all"
+      ],
       "audio": "project_vocabulary_v1_project_plan.mp3 project_vocabulary_v1_project_ideas.mp3 project_vocabulary_v1_materials.mp3 project_vocabulary_v1_build_make.mp3 project_vocabulary_v1_finish_show.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "7-10",
-    "level": "Kids Level 2",
-    "created_at": "2025-11-21T00:00:00+00:00",
-    "updated_at": "2025-11-21T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#CBE0FF"
-  }
+  ]
 }

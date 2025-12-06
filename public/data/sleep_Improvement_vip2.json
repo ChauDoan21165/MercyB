@@ -5,70 +5,137 @@
   "name_vi": "Cải Thiện Giấc Ngủ Trung Cấp",
   "description": "This room deepens your sleep skills through gentle, practical techniques that help your body unwind and create consistent rest. We focus on four pillars: building a predictable sleep rhythm, practicing calming relaxation methods, supporting your body with an evening-friendly diet, and shaping an environment that signals comfort and safety. Nothing here is extreme or strict; each step is small, realistic, and designed to fit daily life. Over time, these habits help you fall asleep easier, wake more refreshed, and trust your own rhythm. Sleep becomes a supportive ritual instead of a struggle.",
   "description_vi": "Phòng này giúp bạn nâng cao kỹ năng ngủ thông qua các kỹ thuật nhẹ nhàng, thực tế giúp cơ thể thư giãn và tạo giấc ngủ đều đặn. Chúng ta tập trung vào bốn trụ cột: xây dựng nhịp ngủ ổn định, thực hành phương pháp thư giãn dịu nhẹ, hỗ trợ cơ thể bằng chế độ ăn tối thân thiện và tạo môi trường báo hiệu sự thoải mái, an toàn. Không có gì quá khắt khe; mỗi bước đều nhỏ, dễ áp dụng và phù hợp với cuộc sống hàng ngày. Dần dần, những thói quen này giúp bạn dễ đi vào giấc ngủ hơn, thức dậy tươi tỉnh hơn và tin tưởng vào nhịp sinh học của mình. Giấc ngủ trở thành nghi thức nuôi dưỡng thay vì cuộc chiến.",
-  "keywords_en": ["sleep improvement","sleep rhythm","relaxation","diet","sleep environment"],
-  "keywords_vi": ["cải thiện giấc ngủ","nhịp ngủ","thư giãn","chế độ ăn","môi trường ngủ"],
+  "keywords_en": [
+    "sleep improvement",
+    "sleep rhythm",
+    "relaxation",
+    "diet",
+    "sleep environment"
+  ],
+  "keywords_vi": [
+    "cải thiện giấc ngủ",
+    "nhịp ngủ",
+    "thư giãn",
+    "chế độ ăn",
+    "môi trường ngủ"
+  ],
   "entries": [
     {
       "slug": "consistent-sleep-rhythm",
-      "keywords_en": ["Sleep Schedule","circadian rhythm","consistency"],
-      "keywords_vi": ["Lịch Ngủ","nhịp sinh học","nhất quán"],
+      "keywords_en": [
+        "Sleep Schedule",
+        "circadian rhythm",
+        "consistency"
+      ],
+      "keywords_vi": [
+        "Lịch Ngủ",
+        "nhịp sinh học",
+        "nhất quán"
+      ],
       "copy": {
         "en": "A consistent rhythm helps your body know when to unwind. Choose a bedtime you can keep most nights and protect it as a personal boundary. Begin dimming lights an hour before sleep and reduce stimulating noise. Gentle signals like warm lighting, soft stretches, or washing your face prepare your mind for rest. Avoid screens thirty minutes before bed to prevent alertness spikes. Throughout the week, notice how stable routines improve your mood and morning clarity. Consistency doesn’t demand perfection—just steady intention. Each repeated cue slowly teaches your body to relax naturally and settle into predictable, peaceful rest.",
         "vi": "Nhịp ngủ nhất quán giúp cơ thể nhận biết thời điểm thư giãn. Hãy chọn một giờ đi ngủ có thể duy trì hầu hết các ngày và bảo vệ nó như một giới hạn cá nhân. Bắt đầu làm mờ ánh sáng trước khoảng một giờ và giảm tiếng ồn kích thích. Những tín hiệu nhẹ nhàng như ánh sáng ấm, duỗi người nhẹ hoặc rửa mặt giúp tâm trí chuẩn bị nghỉ ngơi. Tránh màn hình ba mươi phút trước khi ngủ để không làm tăng sự tỉnh táo. Trong tuần, hãy quan sát cách lịch ngủ ổn định cải thiện tâm trạng và sự tỉnh táo buổi sáng. Nhịp đều đặn không đòi hỏi hoàn hảo—chỉ cần ý định ổn định."
       },
-      "tags": ["sleep-hygiene","routine"],
+      "tags": [
+        "sleep-hygiene",
+        "routine"
+      ],
       "audio": "sleep_vip2_1_en.mp3"
     },
     {
       "slug": "relaxation-practices",
-      "keywords_en": ["Relaxation","breathing","calming"],
-      "keywords_vi": ["Thư Giãn","hít thở","xoa dịu"],
+      "keywords_en": [
+        "Relaxation",
+        "breathing",
+        "calming"
+      ],
+      "keywords_vi": [
+        "Thư Giãn",
+        "hít thở",
+        "xoa dịu"
+      ],
       "copy": {
         "en": "Relaxation techniques help guide the mind out of tension and into rest. Try slow breathing by inhaling for four counts, holding briefly, and exhaling until your shoulders soften. Add a comfortable position, dimmed lighting, or gentle music to enhance calm. If thoughts wander, acknowledge them lightly and return to breath. Practice for a few minutes each night to build a predictable cue that sleep is approaching. Over time, these rituals reduce mental noise and help you drift into rest with less effort. Keep the practice simple so it becomes a steady, comforting part of your evening rhythm.",
         "vi": "Các kỹ thuật thư giãn giúp dẫn tâm trí thoát khỏi căng thẳng và bước vào trạng thái nghỉ ngơi. Hãy thử hít thở chậm: hít vào bốn nhịp, giữ nhẹ và thở ra cho đến khi vai mềm lại. Bạn có thể thêm tư thế thoải mái, ánh sáng dịu hoặc nhạc nhẹ để tăng hiệu quả. Nếu suy nghĩ lang thang, hãy nhận biết nhẹ nhàng rồi quay lại hơi thở. Thực hành vài phút mỗi tối để tạo tín hiệu dự báo giấc ngủ. Theo thời gian, những nghi thức này giảm tiếng ồn tinh thần và giúp bạn dễ đi vào giấc ngủ hơn. Giữ mọi thứ đơn giản để duy trì ổn định."
       },
-      "tags": ["relaxation","breathing"],
+      "tags": [
+        "relaxation",
+        "breathing"
+      ],
       "audio": "sleep_vip2_2_en.mp3"
     },
     {
       "slug": "evening-diet-support",
-      "keywords_en": ["Evening Diet","light meals","digestion"],
-      "keywords_vi": ["Chế Độ Ăn Tối","bữa nhẹ","tiêu hoá"],
+      "keywords_en": [
+        "Evening Diet",
+        "light meals",
+        "digestion"
+      ],
+      "keywords_vi": [
+        "Chế Độ Ăn Tối",
+        "bữa nhẹ",
+        "tiêu hoá"
+      ],
       "copy": {
         "en": "Your evening diet can support smoother sleep by keeping digestion calm. Choose lighter meals and avoid caffeine, sugar, or heavy foods close to bedtime. If you feel hungry later, try gentle snacks like yogurt, fruit, or herbal tea. Eat dinner earlier when possible and let your body transition naturally into rest. Notice how different foods affect your comfort, mood, and sleep depth. Changing eating habits gradually is more effective than strict rules. These small adjustments help your body wind down with less internal activity, creating a softer, easier path toward steady nighttime rest.",
         "vi": "Chế độ ăn tối có thể hỗ trợ giấc ngủ êm hơn bằng cách giữ tiêu hoá nhẹ nhàng. Hãy chọn bữa ăn nhẹ và tránh caffeine, đường hoặc thức ăn nặng gần giờ ngủ. Nếu đói muộn, bạn có thể chọn đồ ăn nhẹ như sữa chua, trái cây hoặc trà thảo mộc. Ăn tối sớm khi có thể và để cơ thể chuyển dần vào trạng thái nghỉ ngơi. Quan sát cách từng loại thực phẩm ảnh hưởng đến sự thoải mái, tâm trạng và độ sâu của giấc ngủ. Thay đổi thói quen ăn uống từ từ sẽ hiệu quả hơn. Những điều chỉnh nhỏ giúp cơ thể dễ thư giãn và bước vào giấc ngủ ổn định hơn."
       },
-      "tags": ["diet","sleep-hygiene"],
+      "tags": [
+        "diet",
+        "sleep-hygiene"
+      ],
       "audio": "sleep_vip2_3_en.mp3"
     },
     {
       "slug": "sleep-environment-design",
-      "keywords_en": ["Environment","darkness","comfort"],
-      "keywords_vi": ["Môi Trường","bóng tối","thoải mái"],
+      "keywords_en": [
+        "Environment",
+        "darkness",
+        "comfort"
+      ],
+      "keywords_vi": [
+        "Môi Trường",
+        "bóng tối",
+        "thoải mái"
+      ],
       "copy": {
         "en": "A supportive environment helps your body recognize that it is safe to rest. Keep your bedroom cool, dim, and free of clutter. Try blackout curtains or warm lighting to reduce stimulation. Soft textures, comfortable bedding, or calming scents can create a gentle sense of ease. Reduce noise with a fan or quiet background sound. Adjust one element at a time to see what brings the most comfort. Over time, your room becomes a signal of calm the moment you enter, helping your mind shift into rest without effort and creating a reliable foundation for deeper sleep.",
         "vi": "Một môi trường hỗ trợ giúp cơ thể nhận ra rằng đã an toàn để nghỉ ngơi. Giữ phòng ngủ mát mẻ, ánh sáng dịu và không bừa bộn. Hãy thử rèm cản sáng hoặc ánh sáng ấm để giảm kích thích. Chăn ga mềm mại, hương thơm nhẹ nhàng hoặc kết cấu êm ái có thể tạo cảm giác thư thái. Giảm tiếng ồn bằng quạt hoặc âm thanh nền nhẹ. Điều chỉnh từng yếu tố để xem điều gì mang lại thoải mái nhất. Theo thời gian, căn phòng sẽ trở thành tín hiệu bình yên ngay khi bạn bước vào, giúp tâm trí dễ dàng chuyển sang trạng thái nghỉ ngơi."
       },
-      "tags": ["environment","sleep-hygiene"],
+      "tags": [
+        "environment",
+        "sleep-hygiene"
+      ],
       "audio": "sleep_vip2_4_en.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all","full sequence","combined","complete","sleep improvement"],
-      "keywords_vi": ["tất cả","chuỗi đầy đủ","kết hợp","hoàn chỉnh","cải thiện giấc ngủ"],
+      "keywords_en": [
+        "all",
+        "full sequence",
+        "combined",
+        "complete",
+        "sleep improvement"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "chuỗi đầy đủ",
+        "kết hợp",
+        "hoàn chỉnh",
+        "cải thiện giấc ngủ"
+      ],
       "copy": {
         "en": "A consistent rhythm helps your body know when to unwind. Choose a bedtime you can keep most nights and protect it as a personal boundary. Begin dimming lights an hour before sleep and reduce stimulating noise. Gentle signals like warm lighting, soft stretches, or washing your face prepare your mind for rest. Avoid screens thirty minutes before bed to prevent alertness spikes. Throughout the week, notice how stable routines improve your mood and morning clarity. Consistency doesn’t demand perfection—just steady intention. Each repeated cue slowly teaches your body to relax naturally and settle into predictable, peaceful rest. Relaxation techniques help guide the mind out of tension and into rest. Try slow breathing by inhaling for four counts, holding briefly, and exhaling until your shoulders soften. Add a comfortable position, dimmed lighting, or gentle music to enhance calm. If thoughts wander, acknowledge them lightly and return to breath. Practice for a few minutes each night to build a predictable cue that sleep is approaching. Over time, these rituals reduce mental noise and help you drift into rest with less effort. Keep the practice simple so it becomes a steady, comforting part of your evening rhythm. Your evening diet can support smoother sleep by keeping digestion calm. Choose lighter meals and avoid caffeine, sugar, or heavy foods close to bedtime. If you feel hungry later, try gentle snacks like yogurt, fruit, or herbal tea. Eat dinner earlier when possible and let your body transition naturally into rest. Notice how different foods affect your comfort, mood, and sleep depth. Changing eating habits gradually is more effective than strict rules. These small adjustments help your body wind down with less internal activity, creating a softer, easier path toward steady nighttime rest. A supportive environment helps your body recognize that it is safe to rest. Keep your bedroom cool, dim, and free of clutter. Try blackout curtains or warm lighting to reduce stimulation. Soft textures, comfortable bedding, or calming scents can create a gentle sense of ease. Reduce noise with a fan or quiet background sound. Adjust one element at a time ... Over time, your room becomes a signal of calm the moment you enter, helping your mind shift into rest without effort and creating a reliable foundation for deeper sleep.",
         "vi": "Nhịp ngủ nhất quán giúp cơ thể nhận biết thời điểm thư giãn. Hãy chọn một giờ đi ngủ có thể duy trì hầu hết các ngày và bảo vệ nó như một giới hạn cá nhân. Bắt đầu làm mờ ánh sáng trước khoảng một giờ và giảm tiếng ồn kích thích. Những tín hiệu nhẹ nhàng như ánh sáng ấm, duỗi người nhẹ hoặc rửa mặt giúp tâm trí chuẩn bị nghỉ ngơi. Tránh màn hình ba mươi phút trước khi ngủ để không làm tăng sự tỉnh táo. Trong tuần, hãy quan sát cách lịch ngủ ổn định cải thiện tâm trạng và sự tỉnh táo buổi sáng. Nhịp đều đặn không đòi hỏi hoàn hảo—chỉ cần ý định ổn định. Các kỹ thuật thư giãn giúp dẫn tâm trí thoát khỏi căng thẳng và bước vào trạng thái nghỉ ngơi. Hãy thử hít thở chậm: hít vào bốn nhịp, giữ nhẹ và thở ra cho đến khi vai mềm lại. Bạn có thể thêm tư thế thoải mái, ánh sáng dịu hoặc nhạc nhẹ để tăng hiệu quả. Nếu suy nghĩ lang thang, hãy nhận biết nhẹ nhàng rồi quay lại hơi thở. Thực hành vài phút mỗi tối để tạo tín hiệu dự báo giấc ngủ. Theo thời gian, những nghi thức này giảm tiếng ồn tinh thần và giúp bạn dễ đi vào giấc ngủ hơn. Giữ mọi thứ đơn giản để duy trì ổn định. Chế độ ăn tối có thể hỗ trợ giấc ngủ êm hơn bằng cách giữ tiêu hoá nhẹ nhàng. Hãy chọn bữa ăn nhẹ và tránh caffeine, đường hoặc thức ăn nặng gần giờ ngủ. Nếu đói muộn, bạn có thể chọn đồ ăn nhẹ như sữa chua, trái cây hoặc trà thảo mộc. Ăn tối sớm khi có thể và để cơ thể chuyển dần vào trạng thái nghỉ ngơi. Quan sát cách từng loại thực phẩm ảnh hưởng đến sự thoải mái, tâm trạng và độ sâu của giấc ngủ. Thay đổi thói quen ăn uống từ từ sẽ hiệu quả hơn. Những điều chỉnh nhỏ giúp cơ thể dễ thư giãn và bước vào giấc ngủ ổn định hơn. Một môi trường hỗ trợ giúp cơ thể nhận ra rằng đã an toàn để nghỉ ngơi. Giữ phòng ngủ mát mẻ, ánh sáng dịu và không bừa bộn. Hãy thử rèm cản sáng hoặc ánh sáng ấm để giảm kích thích. Chăn ga mềm mại, hương thơm nhẹ nhàng hoặc kết cấu êm ái có thể tạo cảm giác thư thái. Giảm tiếng ồn bằng quạt hoặc âm thanh nền nhẹ. Điều chỉnh từng yếu tố để xem điều gì mang lại thoải mái nhất. Theo thời gian, căn phòng sẽ trở thành tín hiệu bình yên ngay khi bạn bước vào, giúp tâm trí dễ dàng chuyển sang trạng thái nghỉ ngơi."
       },
-      "tags": ["all","combined","full","complete","sleep"],
+      "tags": [
+        "all",
+        "combined",
+        "full",
+        "complete",
+        "sleep"
+      ],
       "audio": "sleep_vip2_1_en.mp3 sleep_vip2_2_en.mp3 sleep_vip2_3_en.mp3 sleep_vip2_4_en.mp3"
     }
-  ],
-  "meta": {
-    "created_at": "2025-11-20T00:00:00+09:00",
-    "updated_at": "2025-11-20T00:00:00+09:00",
-    "entry_count": 5,
-    "tier": "vip2",
-    "room_color": "#2E3A59"
-  }
+  ]
 }

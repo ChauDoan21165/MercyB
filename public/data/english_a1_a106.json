@@ -13,63 +13,107 @@
   "entries": [
     {
       "slug": "using-want",
-      "keywords_en": ["want", "verbs", "beginner"],
-      "keywords_vi": ["want", "động từ", "người mới"],
+      "keywords_en": [
+        "want",
+        "verbs",
+        "beginner"
+      ],
+      "keywords_vi": [
+        "want",
+        "động từ",
+        "người mới"
+      ],
       "copy": {
         "en": "Practice these simple lines.\nI want water.\nI want coffee.\nI want a book.\nI want this one.\nSay each line slowly.\nFocus on clear ending sounds.",
         "vi": "Luyện các câu đơn giản sau: I want water, I want coffee, I want a book, I want this one. Nói chậm và chú ý âm cuối."
       },
-      "audio": "a106_01_en.mp3"
+      "audio": "a106_01_en.mp3",
+      "tags": []
     },
     {
       "slug": "using-like",
-      "keywords_en": ["like", "preference"],
-      "keywords_vi": ["like", "sở thích"],
+      "keywords_en": [
+        "like",
+        "preference"
+      ],
+      "keywords_vi": [
+        "like",
+        "sở thích"
+      ],
       "copy": {
         "en": "Practice these beginner patterns.\nI like music.\nI like tea.\nI like English.\nI like this place.\nSpeak clearly.\nDo not add extra sounds.",
         "vi": "Luyện các mẫu câu sau: I like music, I like tea, I like English, I like this place. Nói rõ ràng, không thêm âm thừa."
       },
-      "audio": "a106_02_en.mp3"
+      "audio": "a106_02_en.mp3",
+      "tags": []
     },
     {
       "slug": "using-need",
-      "keywords_en": ["need", "daily life"],
-      "keywords_vi": ["need", "đời sống"],
+      "keywords_en": [
+        "need",
+        "daily life"
+      ],
+      "keywords_vi": [
+        "need",
+        "đời sống"
+      ],
       "copy": {
         "en": "Use these short lines.\nI need help.\nI need time.\nI need money.\nI need a pen.\nSay each one calmly.\nShort sentences build confidence.",
         "vi": "Dùng các câu sau: I need help, I need time, I need money, I need a pen. Nói nhẹ nhàng. Câu ngắn giúp bạn tự tin hơn."
       },
-      "audio": "a106_03_en.mp3"
+      "audio": "a106_03_en.mp3",
+      "tags": []
     },
     {
       "slug": "mixing-the-three-verbs",
-      "keywords_en": ["verbs", "practice"],
-      "keywords_vi": ["động từ", "luyện tập"],
+      "keywords_en": [
+        "verbs",
+        "practice"
+      ],
+      "keywords_vi": [
+        "động từ",
+        "luyện tập"
+      ],
       "copy": {
         "en": "Practice mixing verbs.\nI want tea.\nI like tea.\nI need tea.\nSay each line clearly.\nFeel the difference in meaning.",
         "vi": "Luyện sự khác nhau của các động từ: I want tea, I like tea, I need tea. Nói rõ ràng và cảm nhận sự khác biệt về nghĩa."
       },
-      "audio": "a106_04_en.mp3"
+      "audio": "a106_04_en.mp3",
+      "tags": []
     },
     {
       "slug": "short-daily-life-lines",
-      "keywords_en": ["daily life", "sentences"],
-      "keywords_vi": ["đời sống", "câu ngắn"],
+      "keywords_en": [
+        "daily life",
+        "sentences"
+      ],
+      "keywords_vi": [
+        "đời sống",
+        "câu ngắn"
+      ],
       "copy": {
         "en": "Read these useful lines.\nI want a ticket.\nI like this food.\nI need a doctor.\nI need a break.\nSpeak slowly.\nClear sound is the goal.",
         "vi": "Hãy đọc các câu hữu ích sau: I want a ticket, I like this food, I need a doctor, I need a break. Đọc chậm. Mục tiêu là âm rõ."
       },
-      "audio": "a106_05_en.mp3"
+      "audio": "a106_05_en.mp3",
+      "tags": []
     },
     {
       "slug": "mini-speaking-drill",
-      "keywords_en": ["speaking", "drill"],
-      "keywords_vi": ["luyện nói", "thực hành"],
+      "keywords_en": [
+        "speaking",
+        "drill"
+      ],
+      "keywords_vi": [
+        "luyện nói",
+        "thực hành"
+      ],
       "copy": {
         "en": "Repeat this drill.\nI want it.\nI like it.\nI need it.\nSimple.\nClear.\nSteady.\nThese lines help real communication.",
         "vi": "Luyện đoạn sau: I want it, I like it, I need it. Ngắn gọn, rõ ràng và đều. Những câu này rất hữu ích trong giao tiếp thực tế."
       },
-      "audio": "a106_06_en.mp3"
+      "audio": "a106_06_en.mp3",
+      "tags": []
     }
   ]
 }

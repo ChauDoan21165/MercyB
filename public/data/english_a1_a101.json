@@ -13,63 +13,107 @@
   "entries": [
     {
       "slug": "simple-greetings",
-      "keywords_en": ["greetings", "beginner", "hello"],
-      "keywords_vi": ["chào hỏi", "người mới", "hello"],
+      "keywords_en": [
+        "greetings",
+        "beginner",
+        "hello"
+      ],
+      "keywords_vi": [
+        "chào hỏi",
+        "người mới",
+        "hello"
+      ],
       "copy": {
         "en": "Practice these basic greetings.\nHello.\nHi.\nGood morning.\nGood afternoon.\nGood evening.\nGood night.\nSay each line slowly.\nSmile a little when you speak.\nThis makes your voice sound warm and friendly.",
         "vi": "Hãy luyện các câu chào cơ bản sau: Hello, Hi, Good morning, Good afternoon, Good evening, Good night. Nói từng câu thật chậm và mỉm cười nhẹ khi nói. Điều này giúp giọng bạn nghe ấm áp và thân thiện hơn."
       },
-      "audio": "a101_01_en.mp3"
+      "audio": "a101_01_en.mp3",
+      "tags": []
     },
     {
       "slug": "asking-names",
-      "keywords_en": ["names", "questions"],
-      "keywords_vi": ["tên", "câu hỏi"],
+      "keywords_en": [
+        "names",
+        "questions"
+      ],
+      "keywords_vi": [
+        "tên",
+        "câu hỏi"
+      ],
       "copy": {
         "en": "Use these questions for names.\nWhat is your name.\nWhat is your full name.\nMy name is Anna.\nMy name is Minh.\nSay the question.\nThen say the answer.\nRepeat a few times slowly.",
         "vi": "Dùng các câu sau để hỏi tên: What is your name, What is your full name. Trả lời: My name is Anna, My name is Minh. Hãy nói câu hỏi, rồi nói câu trả lời. Lặp lại vài lần một cách chậm rãi."
       },
-      "audio": "a101_02_en.mp3"
+      "audio": "a101_02_en.mp3",
+      "tags": []
     },
     {
       "slug": "saying-where-you-are-from",
-      "keywords_en": ["country", "self introduction"],
-      "keywords_vi": ["quốc gia", "giới thiệu bản thân"],
+      "keywords_en": [
+        "country",
+        "self introduction"
+      ],
+      "keywords_vi": [
+        "quốc gia",
+        "giới thiệu bản thân"
+      ],
       "copy": {
         "en": "Use these lines to say where you are from.\nI am from Vietnam.\nI am from Hanoi.\nI am from Ho Chi Minh City.\nWhere are you from.\nI am from Japan.\nI am from Korea.\nSay each line clearly and calmly.",
         "vi": "Dùng các câu sau để nói bạn đến từ đâu: I am from Vietnam, I am from Hanoi, I am from Ho Chi Minh City. Hỏi người khác: Where are you from. Trả lời: I am from Japan, I am from Korea. Hãy nói từng câu thật rõ và bình tĩnh."
       },
-      "audio": "a101_03_en.mp3"
+      "audio": "a101_03_en.mp3",
+      "tags": []
     },
     {
       "slug": "nice-to-meet-you",
-      "keywords_en": ["polite phrases", "meeting people"],
-      "keywords_vi": ["câu lịch sự", "gặp gỡ"],
+      "keywords_en": [
+        "polite phrases",
+        "meeting people"
+      ],
+      "keywords_vi": [
+        "câu lịch sự",
+        "gặp gỡ"
+      ],
       "copy": {
         "en": "Practice polite phrases.\nNice to meet you.\nNice to meet you too.\nIt is good to see you.\nHow are you.\nI am fine thank you.\nSay each line softly.\nPolite English feels gentle and calm.",
         "vi": "Hãy luyện các câu lịch sự: Nice to meet you, Nice to meet you too, It is good to see you, How are you, I am fine thank you. Nói từng câu với giọng nhẹ và bình tĩnh. Tiếng Anh lịch sự luôn mang cảm giác êm và nhẹ."
       },
-      "audio": "a101_04_en.mp3"
+      "audio": "a101_04_en.mp3",
+      "tags": []
     },
     {
       "slug": "introducing-yourself",
-      "keywords_en": ["self introduction", "basic sentences"],
-      "keywords_vi": ["giới thiệu bản thân", "câu cơ bản"],
+      "keywords_en": [
+        "self introduction",
+        "basic sentences"
+      ],
+      "keywords_vi": [
+        "giới thiệu bản thân",
+        "câu cơ bản"
+      ],
       "copy": {
         "en": "These lines help you introduce yourself.\nMy name is Lan.\nI am twenty years old.\nI am a student.\nI am from Vietnam.\nI live in Da Nang.\nSay these slowly.\nYou only need to sound calm, not perfect.",
         "vi": "Các câu sau giúp bạn giới thiệu bản thân: My name is Lan, I am twenty years old, I am a student, I am from Vietnam, I live in Da Nang. Hãy đọc chậm rãi. Bạn không cần hoàn hảo, chỉ cần bình tĩnh."
       },
-      "audio": "a101_05_en.mp3"
+      "audio": "a101_05_en.mp3",
+      "tags": []
     },
     {
       "slug": "ending-a-conversation",
-      "keywords_en": ["conversation", "closing phrases"],
-      "keywords_vi": ["hội thoại", "kết thúc"],
+      "keywords_en": [
+        "conversation",
+        "closing phrases"
+      ],
+      "keywords_vi": [
+        "hội thoại",
+        "kết thúc"
+      ],
       "copy": {
         "en": "Use these lines to end a short conversation.\nThank you.\nSee you soon.\nHave a nice day.\nGoodbye.\nSpeak slowly.\nClear endings make you sound confident.",
         "vi": "Dùng các câu sau để kết thúc cuộc trò chuyện: Thank you, See you soon, Have a nice day, Goodbye. Hãy nói chậm và rõ. Kết thúc câu dứt khoát khiến bạn nghe tự tin hơn."
       },
-      "audio": "a101_06_en.mp3"
+      "audio": "a101_06_en.mp3",
+      "tags": []
     }
   ]
 }

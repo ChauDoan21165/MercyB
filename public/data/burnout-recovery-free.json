@@ -1,6 +1,4 @@
 {
-  "schema_version": "1.0",
-  "schema_id": "burnout-recovery-free",
   "id": "burnout-recovery-free",
   "tier": "free",
   "domain": "",
@@ -125,13 +123,5 @@
   "room_essay": {
     "en": "Practical guidance for recovering from burnout through rest, balance, and gentle daily adjustments. This room teaches simple habits that help reset your energy and rebuild stability. Explore deeper skills in higher tiers.",
     "vi": "Hướng dẫn thực tế để phục hồi kiệt sức thông qua nghỉ ngơi, cân bằng và những điều chỉnh nhẹ nhàng mỗi ngày. Phòng này giúp bạn xây dựng những thói quen đơn giản để tái tạo năng lượng và lấy lại sự ổn định. Khám phá thêm kỹ năng sâu hơn ở cấp độ cao hơn."
-  },
-  "safety_disclaimer": {
-    "en": "",
-    "vi": ""
-  },
-  "crisis_footer": {
-    "en": "",
-    "vi": ""
   }
 }

@@ -35,7 +35,10 @@
         "en": "Finding comfort in loneliness starts with building connection. Reach out to a friend or join a group activity to foster empathy. Share your feelings openly to build trust. Small interactions can ease isolation, helping you feel supported and valued.",
         "vi": "Tìm sự an ủi trong cô đơn bắt đầu từ việc xây dựng kết nối. Hãy liên hệ với bạn bè hoặc tham gia các hoạt động nhóm để nuôi dưỡng sự đồng cảm. Chia sẻ cảm xúc một cách cởi mở để tạo dựng niềm tin. Những tương tác nhỏ có thể làm dịu cảm giác cô lập, giúp bạn cảm thấy được lắng nghe và trân trọng."
       },
-      "tags": ["connection", "loneliness"],
+      "tags": [
+        "connection",
+        "loneliness"
+      ],
       "audio": "loneliness_comfort_free_connection_en.mp3"
     },
     {
@@ -54,7 +57,10 @@
         "en": "Self-compassion eases loneliness. Be kind to yourself, accepting your feelings without judgment. Practice affirmations like “I am enough” to build self-worth. Journal to process emotions. These steps foster resilience, helping you find comfort within yourself.",
         "vi": "Lòng tự trắc ẩn giúp xoa dịu nỗi cô đơn. Hãy đối xử dịu dàng với chính mình, chấp nhận cảm xúc mà không tự phán xét. Thực hành các câu khẳng định như “Tôi đủ tốt” để nuôi dưỡng giá trị bản thân. Viết nhật ký để xử lý cảm xúc. Những bước này giúp tăng sức bền tinh thần và mang lại sự an ủi từ bên trong."
       },
-      "tags": ["self-compassion", "loneliness"],
+      "tags": [
+        "self-compassion",
+        "loneliness"
+      ],
       "audio": "loneliness_comfort_free_self_compassion_en.mp3"
     },
     {
@@ -73,16 +79,12 @@
         "en": "Community engagement reduces loneliness. Join a local group or online forum to connect with others. Share your experiences to build empathy. Regular participation fosters a sense of belonging, helping you feel supported and less isolated daily.",
         "vi": "Tham gia cộng đồng giúp giảm bớt nỗi cô đơn. Hãy tham gia một nhóm địa phương hoặc một diễn đàn trực tuyến để kết nối với người khác. Chia sẻ trải nghiệm của bạn để xây dựng sự đồng cảm. Việc tham gia thường xuyên tạo cảm giác thuộc về, giúp bạn cảm thấy được hỗ trợ và bớt cô lập hơn mỗi ngày."
       },
-      "tags": ["community", "loneliness"],
+      "tags": [
+        "community",
+        "loneliness"
+      ],
       "audio": "loneliness_comfort_free_community_engagement_en.mp3"
     }
   ],
-  "meta": {
-    "created_at": "2025-10-27T00:00:00+00:00",
-    "updated_at": "2025-10-27T00:00:00+00:00",
-    "entry_count": 3,
-    "tier": "free",
-    "room_color": "#4A90E2"
-  },
   "audio": "loneliness_comfort_free_community_engagement_en.mp3"
 }

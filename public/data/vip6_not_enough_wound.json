@@ -12,72 +12,135 @@
   "entries": [
     {
       "slug": "where-the-wound-begins",
-      "keywords_en": ["worth", "childhood", "origin"],
-      "keywords_vi": ["giá trị", "thời thơ ấu", "nguồn gốc"],
+      "keywords_en": [
+        "worth",
+        "childhood",
+        "origin"
+      ],
+      "keywords_vi": [
+        "giá trị",
+        "thời thơ ấu",
+        "nguồn gốc"
+      ],
       "copy": {
         "en": "The wound of 'not enough' begins in moments when your needs were dismissed, your feelings minimized, or your efforts unnoticed. You learned early that approval must be earned and love must be deserved. Small comments, inconsistent affection, or impossible expectations taught you that something about you was lacking. Over time, this became a quiet belief living beneath everything you do. You are not born feeling unworthy—this wound was taught, not chosen.",
         "vi": "Vết thương 'không đủ tốt' bắt đầu từ những khoảnh khắc nhu cầu của bạn bị bỏ qua, cảm xúc bị xem nhẹ hoặc nỗ lực không được ghi nhận. Bạn học từ sớm rằng sự chấp nhận phải được kiếm bằng nỗ lực và tình yêu phải được xứng đáng. Những lời nói nhỏ, sự yêu thương thất thường hoặc kỳ vọng quá mức khiến bạn tin rằng có điều gì đó ở mình chưa đủ. Theo thời gian, niềm tin ấy trở thành lớp nền im lặng dưới mọi việc bạn làm. Bạn không sinh ra với cảm giác kém giá trị—vết thương này được dạy, không phải do bạn chọn."
       },
-      "tags": ["worth", "origin"],
+      "tags": [
+        "worth",
+        "origin"
+      ],
       "audio": "vip6_ne_1.mp3"
     },
     {
       "slug": "the-constant-self-measurement",
-      "keywords_en": ["comparison", "measurement", "self-worth"],
-      "keywords_vi": ["so sánh", "đo lường", "tự giá trị"],
+      "keywords_en": [
+        "comparison",
+        "measurement",
+        "self-worth"
+      ],
+      "keywords_vi": [
+        "so sánh",
+        "đo lường",
+        "tự giá trị"
+      ],
       "copy": {
         "en": "When you carry the 'not enough' wound, you measure yourself constantly—against others, against expectations, against an ideal version of who you think you should be. No achievement feels complete, no praise feels real, and every success feels temporary. You wait for the moment someone discovers your flaws, convinced that your worth is fragile. This self-measurement is not vanity—it is fear. You are terrified that one misstep will confirm your deepest belief: that you are insufficient.",
         "vi": "Khi mang vết thương 'không đủ tốt', bạn liên tục đo lường bản thân—so với người khác, so với kỳ vọng, so với phiên bản lý tưởng mà bạn nghĩ mình phải đạt được. Không thành tựu nào đủ trọn vẹn, không lời khen nào đủ thật, và mọi thành công đều thoáng qua. Bạn chờ khoảnh khắc ai đó phát hiện khuyết điểm của mình, tin rằng giá trị của mình rất mong manh. Sự đo lường này không phải phù phiếm—mà là nỗi sợ. Bạn lo rằng chỉ một sai sót sẽ chứng minh niềm tin sâu nhất: rằng bạn không đủ."
       },
-      "tags": ["comparison", "worth"],
+      "tags": [
+        "comparison",
+        "worth"
+      ],
       "audio": "vip6_ne_2.mp3"
     },
     {
       "slug": "how-the-wound-shapes-your-life",
-      "keywords_en": ["patterns", "behavior", "impact"],
-      "keywords_vi": ["mô thức", "hành vi", "tác động"],
+      "keywords_en": [
+        "patterns",
+        "behavior",
+        "impact"
+      ],
+      "keywords_vi": [
+        "mô thức",
+        "hành vi",
+        "tác động"
+      ],
       "copy": {
         "en": "The 'not enough' wound shapes your choices quietly. You stay in relationships where you are undervalued, accept jobs beneath your abilities, overwork to prove your worth, or hide your talents out of fear of failure. You apologize for existing, shrink your voice, and downplay your strengths. This wound convinces you to take up less space in the world. But these behaviors are not your truth—they are your adaptations to pain.",
         "vi": "Vết thương 'không đủ tốt' âm thầm định hình lựa chọn của bạn. Bạn ở lại trong những mối quan hệ không trân trọng mình, chấp nhận công việc dưới khả năng, làm việc quá mức để chứng minh giá trị hoặc giấu tài năng vì sợ thất bại. Bạn xin lỗi vì sự tồn tại của mình, thu nhỏ tiếng nói và làm mờ đi sức mạnh của bản thân. Vết thương này khiến bạn chiếm ít không gian hơn trong cuộc sống. Nhưng những hành vi ấy không phải sự thật của bạn—đó là thích nghi với nỗi đau."
       },
-      "tags": ["patterns", "behaviors"],
+      "tags": [
+        "patterns",
+        "behaviors"
+      ],
       "audio": "vip6_ne_3.mp3"
     },
     {
       "slug": "the-inner-critic-s voice",
-      "keywords_en": ["inner critic", "shame", "self-talk"],
-      "keywords_vi": ["tiếng nói bên trong", "xấu hổ", "tự thoại"],
+      "keywords_en": [
+        "inner critic",
+        "shame",
+        "self-talk"
+      ],
+      "keywords_vi": [
+        "tiếng nói bên trong",
+        "xấu hổ",
+        "tự thoại"
+      ],
       "copy": {
         "en": "The inner critic becomes loud in the 'not enough' wound. It tells you that you are too much and not enough at the same time. It exaggerates mistakes, minimizes successes, and compares you to impossible standards. This voice is not your own—it is the echo of old environments where you felt inadequate. The shame you carry is inherited, not deserved. Learning to separate your true self from this inner critic is the doorway to healing.",
         "vi": "Tiếng nói bên trong trở nên mạnh mẽ khi mang vết thương 'không đủ tốt'. Nó bảo bạn rằng bạn vừa quá nhiều vừa không đủ cùng một lúc. Nó phóng đại sai sót, làm nhỏ thành công và so sánh bạn với tiêu chuẩn không thể đạt. Giọng nói này không phải của bạn—đó là tiếng vọng của những môi trường cũ nơi bạn từng cảm thấy kém cỏi. Sự xấu hổ bạn mang theo là được thừa hưởng, không phải đáng phải chịu. Học tách bản thân thật khỏi tiếng nói chỉ trích này là cánh cửa dẫn đến chữa lành."
       },
-      "tags": ["inner critic", "shame"],
+      "tags": [
+        "inner critic",
+        "shame"
+      ],
       "audio": "vip6_ne_4.mp3"
     },
     {
       "slug": "healing-the-not-enough-wound",
-      "keywords_en": ["healing", "worthiness", "self-love"],
-      "keywords_vi": ["chữa lành", "xứng đáng", "tự yêu"],
+      "keywords_en": [
+        "healing",
+        "worthiness",
+        "self-love"
+      ],
+      "keywords_vi": [
+        "chữa lành",
+        "xứng đáng",
+        "tự yêu"
+      ],
       "copy": {
         "en": "Healing begins when you challenge the belief that you must earn worth. You start treating yourself with gentleness, recognizing effort instead of perfection. You allow yourself to take up space, speak honestly, rest without guilt, and receive support without feeling like a burden. As you embrace your inherent worthiness, the wound loosens. You realize the truth that was always yours: you were never “not enough.” You were simply taught to believe it.",
         "vi": "Chữa lành bắt đầu khi bạn thách thức niềm tin rằng giá trị phải được kiếm bằng nỗ lực. Bạn bắt đầu đối xử với bản thân bằng sự dịu dàng, ghi nhận nỗ lực thay vì yêu cầu hoàn hảo. Bạn cho phép mình chiếm không gian, nói thật lòng, nghỉ ngơi không tội lỗi và nhận hỗ trợ mà không cảm thấy là gánh nặng. Khi bạn ôm lấy giá trị vốn có của mình, vết thương dần nới lỏng. Bạn nhận ra sự thật vốn thuộc về bạn: bạn chưa bao giờ 'không đủ tốt'. Bạn chỉ được dạy để tin như vậy."
       },
-      "tags": ["healing", "worthiness"],
+      "tags": [
+        "healing",
+        "worthiness"
+      ],
       "audio": "vip6_ne_5.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all", "full sequence", "combined"],
-      "keywords_vi": ["tất cả", "chuỗi đầy đủ", "kết hợp"],
+      "keywords_en": [
+        "all",
+        "full sequence",
+        "combined"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "chuỗi đầy đủ",
+        "kết hợp"
+      ],
       "copy": {
         "en": "The wound of feeling 'not enough' comes from environments that taught you love was conditional and worth was earned. It creates self-measurement, comparison, and patterns of shrinking yourself to fit. But this wound is not your truth—it is your inheritance. Healing means reclaiming your inherent worth, softening self-judgment, and allowing yourself to exist fully without earning your place. You were never broken. You were never lacking. You were always enough.",
         "vi": "Vết thương 'không đủ tốt' sinh ra từ môi trường dạy bạn rằng tình yêu có điều kiện và giá trị phải được chứng minh. Nó tạo ra sự đo lường bản thân, so sánh và những mô thức thu mình để vừa vặn. Nhưng vết thương này không phải sự thật của bạn—đó chỉ là di sản. Chữa lành nghĩa là lấy lại giá trị vốn có, làm mềm phán xét nội tâm và cho phép bản thân tồn tại trọn vẹn mà không cần chứng minh. Bạn chưa bao giờ hỏng. Bạn chưa bao giờ thiếu. Bạn luôn đủ."
       },
-      "tags": ["all", "combined"],
+      "tags": [
+        "all",
+        "combined"
+      ],
       "audio": "vip6_ne_1.mp3 vip6_ne_2.mp3 vip6_ne_3.mp3 vip6_ne_4.mp3 vip6_ne_5.mp3"
     }
-  ],
-  "meta": {
-    "entry_count": 6
-  }
+  ]
 }

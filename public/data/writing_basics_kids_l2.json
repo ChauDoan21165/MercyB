@@ -13,77 +13,134 @@
   "entries": [
     {
       "slug": "holding-the-pencil",
-      "keywords_en": ["hold", "pencil", "writing"],
-      "keywords_vi": ["cầm", "bút chì", "viết"],
+      "keywords_en": [
+        "hold",
+        "pencil",
+        "writing"
+      ],
+      "keywords_vi": [
+        "cầm",
+        "bút chì",
+        "viết"
+      ],
       "copy": {
         "en": "Start by teaching how to hold a pencil gently. Say: “Hold the pencil.” Show a relaxed grip—no squeezing. Let your child practice drawing slow lines or circles. The goal is comfort first, not perfect writing. A relaxed hand helps children enjoy writing more.",
         "vi": "Bắt đầu bằng cách dạy bé cầm bút chì thật nhẹ. Nói: “Hold the pencil.” Hướng dẫn bé cầm thoải mái, không bóp chặt. Để bé luyện tập bằng cách vẽ đường thẳng hoặc hình tròn chậm rãi. Mục tiêu là sự thoải mái trước tiên, không phải viết đẹp. Tay thư giãn giúp bé thích viết hơn."
       },
-      "tags": ["pencil", "write"],
+      "tags": [
+        "pencil",
+        "write"
+      ],
       "audio": "writing_basics_v1_hold_pencil.mp3"
     },
     {
       "slug": "lines-and-shapes",
-      "keywords_en": ["lines", "shapes", "practice"],
-      "keywords_vi": ["đường thẳng", "hình dạng", "luyện tập"],
+      "keywords_en": [
+        "lines",
+        "shapes",
+        "practice"
+      ],
+      "keywords_vi": [
+        "đường thẳng",
+        "hình dạng",
+        "luyện tập"
+      ],
       "copy": {
         "en": "Teach writing by practicing simple lines and shapes. Say: “Line. Circle. Square.” Kids can trace these shapes with a crayon or finger. Lines and shapes prepare their hands for writing letters later. Keep the practice short and fun.",
         "vi": "Dạy viết bằng cách luyện tập các đường và hình đơn giản. Nói: “Line. Circle. Square.” Bé có thể tô theo các hình này bằng bút màu hoặc ngón tay. Đường và hình giúp tay bé sẵn sàng viết chữ sau này. Giữ buổi tập ngắn và vui vẻ."
       },
-      "tags": ["shapes", "lines"],
+      "tags": [
+        "shapes",
+        "lines"
+      ],
       "audio": "writing_basics_v1_lines_shapes.mp3"
     },
     {
       "slug": "writing-letters",
-      "keywords_en": ["letters", "trace", "writing"],
-      "keywords_vi": ["chữ cái", "tô chữ", "viết"],
+      "keywords_en": [
+        "letters",
+        "trace",
+        "writing"
+      ],
+      "keywords_vi": [
+        "chữ cái",
+        "tô chữ",
+        "viết"
+      ],
       "copy": {
         "en": "Introduce writing letters by tracing first. Say: “Let’s trace the letter A.” Make big letters so your child can follow the lines easily. Celebrate effort, not accuracy. Tracing builds confidence and helps children understand how letters are formed.",
         "vi": "Giới thiệu viết chữ bằng cách tô trước. Nói: “Let’s trace the letter A.” Vẽ chữ thật to để bé dễ theo nét. Khen ngợi sự cố gắng, không yêu cầu hoàn hảo. Tô chữ giúp bé tự tin và hiểu cách tạo hình chữ cái."
       },
-      "tags": ["letters", "trace"],
+      "tags": [
+        "letters",
+        "trace"
+      ],
       "audio": "writing_basics_v1_writing_letters.mp3"
     },
     {
       "slug": "spaces-and-neatness",
-      "keywords_en": ["space", "neat", "writing"],
-      "keywords_vi": ["khoảng cách", "gọn gàng", "viết"],
+      "keywords_en": [
+        "space",
+        "neat",
+        "writing"
+      ],
+      "keywords_vi": [
+        "khoảng cách",
+        "gọn gàng",
+        "viết"
+      ],
       "copy": {
         "en": "Teach the idea of “space” between words by using small objects as separators. Say: “Space here.” Show how one little finger can create a gap between words. Neat writing starts with learning simple spacing, not perfect handwriting.",
         "vi": "Dạy khái niệm “space” giữa các từ bằng đồ vật nhỏ làm dấu. Nói: “Space here.” Chỉ cho bé cách dùng 1 ngón tay để tạo khoảng cách giữa các từ. Viết gọn gàng bắt đầu từ việc hiểu khoảng cách đơn giản, không phải chữ đẹp."
       },
-      "tags": ["space", "neat"],
+      "tags": [
+        "space",
+        "neat"
+      ],
       "audio": "writing_basics_v1_space_neat.mp3"
     },
     {
       "slug": "writing-your-name",
-      "keywords_en": ["name", "write", "identity"],
-      "keywords_vi": ["tên", "viết", "nhận diện"],
+      "keywords_en": [
+        "name",
+        "write",
+        "identity"
+      ],
+      "keywords_vi": [
+        "tên",
+        "viết",
+        "nhận diện"
+      ],
       "copy": {
         "en": "Help your child learn to write their name slowly. Say each letter and let them trace or write it. Celebrate every attempt. Writing their name gives children pride and a sense of identity—it’s often their favorite writing milestone.",
         "vi": "Hướng dẫn bé viết tên mình thật chậm. Đọc từng chữ cái và để bé tô hoặc viết theo. Hãy khen ngợi mọi nỗ lực. Viết được tên giúp trẻ tự hào và cảm nhận được bản thân—đây thường là cột mốc viết yêu thích của bé."
       },
-      "tags": ["name", "write"],
+      "tags": [
+        "name",
+        "write"
+      ],
       "audio": "writing_basics_v1_write_name.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all", "complete", "full"],
-      "keywords_vi": ["tất cả", "đầy đủ", "hoàn chỉnh"],
+      "keywords_en": [
+        "all",
+        "complete",
+        "full"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "đầy đủ",
+        "hoàn chỉnh"
+      ],
       "copy": {
         "en": "Teach children to hold the pencil gently and draw slow shapes.\n\nPractice simple lines and circles to warm up their hands.\n\nTrace big letters together to learn how letters are formed.\n\nTeach spacing with small objects or a finger between words.\n\nHelp your child write their name slowly with encouragement.\n\nThese steps make writing enjoyable, calm, and confidence-building for young learners.",
         "vi": "Dạy trẻ cầm bút nhẹ nhàng và vẽ hình chậm rãi.\n\nLuyện tập đường thẳng và hình tròn để làm nóng bàn tay.\n\nTô chữ cái lớn để học cách tạo hình chữ.\n\nDạy khoảng cách giữa các từ bằng vật nhỏ hoặc ngón tay.\n\nHướng dẫn bé viết tên mình thật chậm và khen ngợi mọi nỗ lực.\n\nNhững bước này giúp việc viết trở nên vui vẻ, nhẹ nhàng và tăng tự tin cho trẻ."
       },
-      "tags": ["all"],
+      "tags": [
+        "all"
+      ],
       "audio": "writing_basics_v1_hold_pencil.mp3 writing_basics_v1_lines_shapes.mp3 writing_basics_v1_writing_letters.mp3 writing_basics_v1_space_neat.mp3 writing_basics_v1_write_name.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "7-10",
-    "level": "Kids Level 2",
-    "created_at": "2025-11-21T00:00:00+00:00",
-    "updated_at": "2025-11-21T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#CBE0FF"
-  }
+  ]
 }

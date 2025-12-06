@@ -1,37 +1,39 @@
 {
-  "schema_version": "MercyBlade-Core-v1.2",
-  "schema_id": "sleep_improvement_vip3",
   "room_purpose": {
     "en": "Advanced Sleep Improvement - Master comprehensive sleep strategies including schedule optimization, deep relaxation, nutrition timing, environment perfection, mindful activity, and pattern tracking for complete sleep wellness",
     "vi": "Cải thiện giấc ngủ nâng cao - Làm chủ chiến lược giấc ngủ toàn diện bao gồm tối ưu hóa lịch trình, thư giãn sâu, thời điểm dinh dưỡng, môi trường hoàn hảo, hoạt động tỉnh táo và theo dõi mô hình cho sức khỏe giấc ngủ hoàn chỉnh"
   },
-  "supported_languages": ["en", "vi"],
-  "safety_disclaimer": {
-    "en": "This content is for educational purposes only and does not replace professional medical advice. If you experience chronic insomnia, sleep disorders, or related health concerns, please consult a qualified healthcare provider or sleep specialist.",
-    "vi": "Nội dung này chỉ mang tính chất giáo dục và không thay thế lời khuyên y tế chuyên nghiệp. Nếu bạn gặp chứng mất ngủ mãn tính, rối loạn giấc ngủ hoặc các vấn đề sức khỏe liên quan, vui lòng tham khảo ý kiến nhà cung cấp dịch vụ y tế đủ tiêu chuẩn hoặc chuyên gia về giấc ngủ."
-  },
-  "crisis_footer": {
-    "en": "If you're experiencing a mental health crisis or severe sleep-related distress, please contact your local emergency services or a crisis hotline immediately.",
-    "vi": "Nếu bạn đang trải qua khủng hoảng sức khỏe tâm thần hoặc đau khổ nghiêm trọng liên quan đến giấc ngủ, vui lòng liên hệ ngay với dịch vụ khẩn cấp địa phương hoặc đường dây nóng khủng hoảng."
-  },
-  "localization": {
-    "default_language": "en",
-    "fallback_language": "en"
-  },
-  "meta": {
-    "created_at": "2025-10-25T13:07:00+09:00",
-    "updated_at": "2025-10-25T13:07:00+09:00",
-    "entry_count": 6,
-    "artifact_set_id": "b2c3d4e5-f6a7-48b9-c0d1-e2f3a4b5c6d7",
-    "data_format_version": "MercyBlade-Core-v1.2",
-    "room_color": "#D7CCC8",
-    "tier": "vip3"
-  },
+  "supported_languages": [
+    "en",
+    "vi"
+  ],
   "enumerations": {
-    "tags": ["sleep_schedule", "relaxation", "nutrition", "environment", "activity", "tracking"],
-    "urgency_levels": ["routine", "moderate", "high"],
-    "severity_scale": ["mild", "moderate", "significant"],
-    "affected_systems": ["circadian", "nervous", "digestive", "sensory", "musculoskeletal", "cognitive"]
+    "tags": [
+      "sleep_schedule",
+      "relaxation",
+      "nutrition",
+      "environment",
+      "activity",
+      "tracking"
+    ],
+    "urgency_levels": [
+      "routine",
+      "moderate",
+      "high"
+    ],
+    "severity_scale": [
+      "mild",
+      "moderate",
+      "significant"
+    ],
+    "affected_systems": [
+      "circadian",
+      "nervous",
+      "digestive",
+      "sensory",
+      "musculoskeletal",
+      "cognitive"
+    ]
   },
   "keywords": {
     "personalized_sleep_improvement": {
@@ -69,11 +71,25 @@
         "vi": "Làm chủ lịch trình giấc ngủ của bạn để đạt được giấc nghỉ nhất quán, phục hồi. Chọn thời gian đi ngủ và thức dậy cố định mà bạn duy trì mỗi ngày, bao gồm cả cuối tuần. Nhịp điệu đều đặn này neo giữ chu kỳ sinh học tự nhiên của cơ thể bạn, cân bằng hormone kiểm soát năng lượng và sự tỉnh táo. Bắt đầu thư giãn chín mươi phút trước khi ngủ bằng cách làm mờ đèn, giảm âm lượng và giảm hoạt động. Thay thế việc lướt điện thoại bằng nhạc nhẹ, đọc sách nhẹ hoặc suy ngẫm. Ghi nhật ký hàng tuần để theo dõi các mô hình năng lượng, tâm trạng và sự tập trung, ghi chú cách sự nhất quán cải thiện sự phục hồi. Nhờ một người bạn đáng tin cậy giúp bạn có trách nhiệm hàng tháng nếu thói quen trượt dốc. Theo thời gian, cơ thể bạn sẽ dễ dàng ngủ và thức dậy tươi tỉnh mà không cần báo thức. Bắt đầu tối nay bằng cách chọn giờ đi ngủ và bảo vệ nó như một lời hứa thiêng liêng với sức khỏe. Sẵn sàng làm chủ nhịp điệu phục hồi? Khám phá vượt qua VIP 3."
       },
       "attribution": "Sleep Medicine Research",
-      "tags": ["sleep_schedule", "circadian", "consistency"],
+      "tags": [
+        "sleep_schedule",
+        "circadian",
+        "consistency"
+      ],
       "urgency": "routine",
-      "severity": "moderate",
-      "systems": ["circadian", "nervous", "cognitive"],
-      "audio_file": "/audio/Mastering_Your_Sleep_Schedule_vip3.mp3"
+      "systems": [
+        "circadian",
+        "nervous",
+        "cognitive"
+      ],
+      "audio_file": "/audio/Mastering_Your_Sleep_Schedule_vip3.mp3",
+      "slug": "auto-1",
+      "keywords_en": [
+        "Auto 1"
+      ],
+      "keywords_vi": [
+        "Auto 1"
+      ]
     },
     {
       "artifact_id": "sleep_vip3_002",
@@ -86,11 +102,24 @@
         "vi": "Thực hành thư giãn sâu sắc bằng cách huấn luyện cơ thể giải phóng căng thẳng theo lệnh. Mỗi đêm, tìm một nơi yên tĩnh và thực hành nhịp thở 4-7-8—hít vào trong bốn giây, giữ bảy giây, thở ra tám giây—trong khi tập trung vào nhịp tim của bạn. Thêm động tác kéo giãn nhẹ nhàng hoặc thiền định để tăng cường sự bình tĩnh. Sự kết hợp này dạy hệ thần kinh rằng việc nghỉ ngơi là an toàn. Ghi nhật ký hàng tuần để mô tả cảm giác và cải thiện độ sâu giấc ngủ. Chia sẻ trải nghiệm hàng tháng với một người bạn để tinh chỉnh kỹ thuật của bạn. Khi lo lắng xâm nhập, trở lại hơi thở và sự mềm mại. Theo thời gian, sự thư giãn trở nên bản năng, giảm căng thẳng ban đêm và giảm bồn chồn. Một buổi bình tĩnh trước giờ ngủ mỗi tối tăng cường cả thể chất lẫn tinh thần. Bắt đầu tối nay với hơi thở tỉnh táo để có sự bình yên kéo dài suốt đêm. Sẵn sàng thở để nghỉ ngơi sâu hơn? Khám phá vượt qua VIP 3."
       },
       "attribution": "Mindfulness & Sleep Research",
-      "tags": ["relaxation", "breathing", "meditation"],
+      "tags": [
+        "relaxation",
+        "breathing",
+        "meditation"
+      ],
       "urgency": "routine",
-      "severity": "moderate",
-      "systems": ["nervous", "cognitive"],
-      "audio_file": "/audio/Deepening_Relaxation_Practices_vip3.mp3"
+      "systems": [
+        "nervous",
+        "cognitive"
+      ],
+      "audio_file": "/audio/Deepening_Relaxation_Practices_vip3.mp3",
+      "slug": "auto-2",
+      "keywords_en": [
+        "Auto 2"
+      ],
+      "keywords_vi": [
+        "Auto 2"
+      ]
     },
     {
       "artifact_id": "sleep_vip3_003",
@@ -103,11 +132,24 @@
         "vi": "Tối ưu hóa dinh dưỡng trước giờ ngủ để hỗ trợ giấc ngủ không bị gián đoạn. Ăn bữa cuối cùng ít nhất ba giờ trước giờ đi ngủ, ưu tiên các phần cân đối của protein nạc, carbohydrate phức tạp và rau. Bỏ qua caffeine, rượu và thức ăn chiên nặng làm tăng nhịp tim hoặc làm rối loạn tiêu hóa. Nếu cảm thấy đói muộn, chọn một bữa ăn nhẹ như sữa chua, chuối hoặc một vài hạnh nhân. Giữ nhật ký hàng tuần về những gì và khi nào bạn ăn, ghi chú cách nó ảnh hưởng đến năng lượng và giấc mơ. Xem xét tiến độ hàng tháng và điều chỉnh thời gian dần dần. Theo thời gian, những thói quen ổn định này giảm đầy hơi và thức giấc nửa đêm trong khi cải thiện chuyển hóa tổng thể. Kết hợp ăn uống tỉnh táo với hydrat hóa nhẹ nhàng buổi tối—nước hoặc trà thảo mộc, không bao giờ uống đường. Bắt đầu tối nay bằng cách kết thúc ăn sớm hơn và cảm nhận sự thoải mái yên tĩnh theo sau. Sẵn sàng nuôi dưỡng sự nghỉ ngơi? Khám phá vượt qua VIP 3."
       },
       "attribution": "Nutritional Sleep Science",
-      "tags": ["nutrition", "timing", "digestion"],
+      "tags": [
+        "nutrition",
+        "timing",
+        "digestion"
+      ],
       "urgency": "routine",
-      "severity": "moderate",
-      "systems": ["digestive", "nervous"],
-      "audio_file": "/audio/Optimizing_Pre-Bed_Nutrition_vip3.mp3"
+      "systems": [
+        "digestive",
+        "nervous"
+      ],
+      "audio_file": "/audio/Optimizing_Pre-Bed_Nutrition_vip3.mp3",
+      "slug": "auto-3",
+      "keywords_en": [
+        "Auto 3"
+      ],
+      "keywords_vi": [
+        "Auto 3"
+      ]
     },
     {
       "artifact_id": "sleep_vip3_004",
@@ -120,11 +162,24 @@
         "vi": "Hoàn thiện môi trường giấc ngủ của bạn để các giác quan chỉ liên kết nó với sự nghỉ ngơi. Giữ phòng ngủ tối, mát và không có lộn xộn—khoảng 65 °F hoặc 18 °C là lý tưởng. Sử dụng rèm cửa tối, ga giường thoáng khí và mùi hương nhẹ nhàng như hoa oải hương hoặc cúc la mã. Tiếng ồn trắng, quạt hoặc nút bịt tai có thể chặn phiền nhiễu. Dành giường của bạn độc quyền cho giấc ngủ và sự thân mật để tăng cường tín hiệu thư giãn của não. Ghi nhật ký hàng tuần về ánh sáng, nhiệt độ và sự thoải mái, điều chỉnh từng yếu tố một. Mỗi tháng một lần, đánh giá tiến độ và làm mới vải lanh hoặc ánh sáng nếu cần. Những tinh chỉnh đơn giản này huấn luyện cơ thể bạn thư giãn ngay khi bước vào phòng. Bắt đầu tối nay bằng cách làm mờ đèn, tắt thiết bị và để sự bình tĩnh lấp đầy không gian. Sẵn sàng tạo ra nơi thánh thiêng hoàn hảo của bạn? Khám phá vượt qua VIP 3."
       },
       "attribution": "Environmental Sleep Science",
-      "tags": ["environment", "sensory", "comfort"],
+      "tags": [
+        "environment",
+        "sensory",
+        "comfort"
+      ],
       "urgency": "routine",
-      "severity": "mild",
-      "systems": ["sensory", "nervous"],
-      "audio_file": "/audio/Perfecting_Your_Sleep_Environment_vip3.mp3"
+      "systems": [
+        "sensory",
+        "nervous"
+      ],
+      "audio_file": "/audio/Perfecting_Your_Sleep_Environment_vip3.mp3",
+      "slug": "auto-4",
+      "keywords_en": [
+        "Auto 4"
+      ],
+      "keywords_vi": [
+        "Auto 4"
+      ]
     },
     {
       "artifact_id": "sleep_vip3_005",
@@ -137,11 +192,24 @@
         "vi": "Kết hợp chuyển động tỉnh táo để chuẩn bị cơ thể cho giấc ngủ sâu hơn. Tham gia một hoạt động thể chất nhẹ hàng ngày—yoga nhẹ nhàng, kéo giãn buổi tối hoặc đi bộ thư giãn—hoàn thành ít nhất ba giờ trước khi đi ngủ. Điều này giảm cortisol, giảm căng thẳng cơ bắp và ổn định mức năng lượng. Ghi lại hoạt động hàng tuần trong nhật ký để ghi chú ảnh hưởng đến tâm trạng và chất lượng giấc ngủ. Mỗi tháng một lần, tham gia lớp yoga hoặc thiền định nhóm để có sự đa dạng và hỗ trợ. Hãy nhớ, chuyển động là thuốc; gắng sức quá mức gần giờ ngủ có thể phản tác dụng bằng cách giữ adrenaline cao. Thay vào đó, coi hoạt động như một cầu nối duyên dáng từ sự bận rộn ban ngày đến sự thanh thản ban đêm. Bắt đầu hôm nay với một buổi bình tĩnh, nhịp nhàng mời gọi sự bình yên vào cả thể chất lẫn tinh thần. Sẵn sàng di chuyển tỉnh táo về phía nghỉ ngơi? Khám phá vượt qua VIP 3."
       },
       "attribution": "Exercise & Sleep Research",
-      "tags": ["activity", "movement", "timing"],
+      "tags": [
+        "activity",
+        "movement",
+        "timing"
+      ],
       "urgency": "routine",
-      "severity": "mild",
-      "systems": ["musculoskeletal", "nervous"],
-      "audio_file": "/audio/Incorporating_Mindful_Activity_vip3.mp3"
+      "systems": [
+        "musculoskeletal",
+        "nervous"
+      ],
+      "audio_file": "/audio/Incorporating_Mindful_Activity_vip3.mp3",
+      "slug": "auto-5",
+      "keywords_en": [
+        "Auto 5"
+      ],
+      "keywords_vi": [
+        "Auto 5"
+      ]
     },
     {
       "artifact_id": "sleep_vip3_006",
@@ -154,11 +222,24 @@
         "vi": "Theo dõi mô hình giấc ngủ của bạn để tinh chỉnh chiến lược sức khỏe của bạn. Sử dụng nhật ký hoặc ứng dụng kỹ thuật số để ghi lại giờ đi ngủ, giờ thức dậy, chất lượng giấc ngủ cảm nhận và tâm trạng hàng ngày. Sau hai tuần, xem xét các mô hình lặp lại—có lẽ màn hình đêm khuya trì hoãn sự nghỉ ngơi, hoặc đi bộ buổi tối cải thiện độ sâu. Sử dụng những khám phá này để điều chỉnh thói quen có chủ ý thay vì đoán. Mỗi tháng, chia sẻ hiểu biết với bạn bè hoặc huấn luyện viên để khuyến khích và trách nhiệm. Theo dõi biến đổi giấc ngủ từ một bí ẩn thành khoa học tự quan sát. Nó xây dựng nhận thức, động lực và kiểm soát. Theo thời gian, bạn sẽ nhận ra các dấu hiệu tinh tế của mệt mỏi và phản ứng sớm hơn với các thói quen bình tĩnh. Bắt đầu tối nay bằng cách viết ra khoảnh khắc bạn nhắm mắt và khoảnh khắc bạn thức dậy. Sẵn sàng hiểu nhịp điệu cơ thể của bạn hoàn toàn? Khám phá vượt qua VIP 3."
       },
       "attribution": "Sleep Pattern Analysis",
-      "tags": ["tracking", "patterns", "awareness"],
+      "tags": [
+        "tracking",
+        "patterns",
+        "awareness"
+      ],
       "urgency": "routine",
-      "severity": "mild",
-      "systems": ["cognitive", "circadian"],
-      "audio_file": "/audio/Tracking_Sleep_Patterns_vip3.mp3"
+      "systems": [
+        "cognitive",
+        "circadian"
+      ],
+      "audio_file": "/audio/Tracking_Sleep_Patterns_vip3.mp3",
+      "slug": "auto-6",
+      "keywords_en": [
+        "Auto 6"
+      ],
+      "keywords_vi": [
+        "Auto 6"
+      ]
     }
   ]
 }

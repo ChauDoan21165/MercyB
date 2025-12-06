@@ -12,72 +12,135 @@
   "entries": [
     {
       "slug": "success-as-a-threat",
-      "keywords_en": ["success", "fear", "pressure"],
-      "keywords_vi": ["thành công", "nỗi sợ", "áp lực"],
+      "keywords_en": [
+        "success",
+        "fear",
+        "pressure"
+      ],
+      "keywords_vi": [
+        "thành công",
+        "nỗi sợ",
+        "áp lực"
+      ],
       "copy": {
         "en": "Success may feel like a threat when your nervous system associates achievement with pressure, responsibility, or exposure. Each step forward invites expectations, attention, or change. A part of you fears that success will demand more than you can give—or reveal more than you can hide. You fear losing freedom, losing relationships, or losing the version of yourself that feels familiar. So you shrink your potential to stay safe. Fear of success is not laziness; it is protection born from past overwhelm.",
         "vi": "Thành công có thể trở thành mối đe dọa khi hệ thần kinh của bạn gắn thành tựu với áp lực, trách nhiệm hoặc sự phơi bày. Mỗi bước tiến mời gọi kỳ vọng, sự chú ý hoặc thay đổi. Một phần trong bạn sợ rằng thành công sẽ đòi hỏi nhiều hơn khả năng bạn có—hoặc phơi bày những điều bạn muốn giấu. Bạn sợ mất tự do, mất mối quan hệ hoặc mất đi phiên bản quen thuộc của chính mình. Vì vậy bạn thu nhỏ tiềm năng để giữ an toàn. Sợ thành công không phải lười biếng; đó là sự bảo vệ sinh ra từ quá tải trong quá khứ."
       },
-      "tags": ["fear", "success"],
+      "tags": [
+        "fear",
+        "success"
+      ],
       "audio": "vip6_fs_1.mp3"
     },
     {
       "slug": "fear-of-being-seen",
-      "keywords_en": ["visibility", "exposure", "identity"],
-      "keywords_vi": ["bị nhìn thấy", "phơi bày", "bản sắc"],
+      "keywords_en": [
+        "visibility",
+        "exposure",
+        "identity"
+      ],
+      "keywords_vi": [
+        "bị nhìn thấy",
+        "phơi bày",
+        "bản sắc"
+      ],
       "copy": {
         "en": "Success exposes you. It puts you in the light, where your flaws, limits, and insecurities feel visible. If you grew up learning to stay small, invisible, or compliant, success feels like a violation of your survival strategy. Being seen feels unsafe—not because visibility is dangerous, but because it once was. You fear judgment, envy, or scrutiny. You fear not being good enough publicly. So you step back from opportunities to avoid being truly seen.",
         "vi": "Thành công khiến bạn bị nhìn thấy. Nó đặt bạn dưới ánh sáng nơi khuyết điểm, giới hạn và bất an của bạn cảm giác như phơi bày. Nếu bạn lớn lên với mô thức phải nhỏ bé, vô hình hoặc ngoan ngoãn, thì thành công trở thành sự phá vỡ chiến lược sinh tồn. Bị nhìn thấy cảm giác không an toàn—không phải vì ánh nhìn nguy hiểm, mà vì nó từng như vậy. Bạn sợ bị phán xét, ganh tị hoặc soi mói. Bạn sợ không đủ tốt trước công chúng. Vì vậy bạn lùi khỏi cơ hội để tránh bị nhìn thấu."
       },
-      "tags": ["visibility", "shadow"],
+      "tags": [
+        "visibility",
+        "shadow"
+      ],
       "audio": "vip6_fs_2.mp3"
     },
     {
       "slug": "success-and-self-worth",
-      "keywords_en": ["worth", "deserving", "achievement"],
-      "keywords_vi": ["giá trị", "xứng đáng", "thành tựu"],
+      "keywords_en": [
+        "worth",
+        "deserving",
+        "achievement"
+      ],
+      "keywords_vi": [
+        "giá trị",
+        "xứng đáng",
+        "thành tựu"
+      ],
       "copy": {
         "en": "If deep down you believe you are not worthy, success becomes incompatible with your identity. Achievements feel accidental. Praise feels uncomfortable. Opportunities feel like mistakes. You downplay your talents to avoid confronting the belief that you do not deserve good things. This internal conflict leads to procrastination, self-sabotage, or abandoning projects prematurely. Success requires not only skill, but the belief that you belong where you are rising.",
         "vi": "Nếu sâu bên trong bạn tin rằng mình không xứng đáng, thành công trở nên không phù hợp với bản sắc. Thành tựu cảm giác như ngẫu nhiên. Lời khen gây khó chịu. Cơ hội trông như nhầm lẫn. Bạn hạ thấp khả năng của mình để tránh đối mặt với niềm tin rằng mình không xứng đáng với điều tốt đẹp. Mâu thuẫn này dẫn đến trì hoãn, tự phá hoại hoặc bỏ dở dự án. Thành công không chỉ yêu cầu kỹ năng, mà còn yêu cầu niềm tin rằng bạn thuộc về nơi mình đang vươn tới."
       },
-      "tags": ["worth", "success"],
+      "tags": [
+        "worth",
+        "success"
+      ],
       "audio": "vip6_fs_3.mp3"
     },
     {
       "slug": "fear-of-losing-yourself",
-      "keywords_en": ["identity", "change", "growth"],
-      "keywords_vi": ["bản ngã", "thay đổi", "phát triển"],
+      "keywords_en": [
+        "identity",
+        "change",
+        "growth"
+      ],
+      "keywords_vi": [
+        "bản ngã",
+        "thay đổi",
+        "phát triển"
+      ],
       "copy": {
         "en": "Success requires expansion—new roles, new responsibilities, new versions of yourself. But growth can feel like betrayal to the parts of you formed in survival. You fear that succeeding will disconnect you from your roots, your community, or the identity that once protected you. A part of you clings to the familiar self, even if it keeps you small. The fear is not of success—but of becoming someone you no longer recognize.",
         "vi": "Thành công đòi hỏi sự mở rộng—vai trò mới, trách nhiệm mới, phiên bản mới của bạn. Nhưng phát triển có thể giống sự phản bội đối với những phần được hình thành trong sinh tồn. Bạn sợ rằng thành công sẽ khiến bạn rời xa gốc rễ, cộng đồng hoặc bản sắc từng bảo vệ bạn. Một phần trong bạn bám lấy con người quen thuộc, dù điều đó giữ bạn nhỏ bé. Nỗi sợ không phải là thành công—mà là trở thành người bạn không còn nhận ra."
       },
-      "tags": ["identity", "change"],
+      "tags": [
+        "identity",
+        "change"
+      ],
       "audio": "vip6_fs_4.mp3"
     },
     {
       "slug": "stepping-into-your-expansion",
-      "keywords_en": ["growth", "courage", "healing"],
-      "keywords_vi": ["phát triển", "dũng khí", "chữa lành"],
+      "keywords_en": [
+        "growth",
+        "courage",
+        "healing"
+      ],
+      "keywords_vi": [
+        "phát triển",
+        "dũng khí",
+        "chữa lành"
+      ],
       "copy": {
         "en": "Healing the fear of success means allowing expansion without abandoning yourself. You learn to grow at a pace that feels steady, not shocking. You celebrate small wins without minimizing them. You take opportunities while grounding in your values. Success becomes less about pressure and more about expression—showing the world who you truly are. When you no longer fear change, success becomes a natural extension of your truth, not a threat to your identity.",
         "vi": "Chữa lành nỗi sợ thành công nghĩa là cho phép bản thân mở rộng mà không đánh mất mình. Bạn học phát triển với tốc độ vững vàng, không choáng ngợp. Bạn ăn mừng những tiến bộ nhỏ mà không hạ thấp chúng. Bạn đón nhận cơ hội trong khi giữ chặt giá trị cá nhân. Thành công trở nên ít áp lực hơn và nhiều sự biểu đạt hơn—cho thế giới thấy con người thật của bạn. Khi bạn không còn sợ thay đổi, thành công trở thành phần mở rộng tự nhiên của sự thật bên trong, không phải mối đe dọa đối với bản sắc."
       },
-      "tags": ["growth", "healing"],
+      "tags": [
+        "growth",
+        "healing"
+      ],
       "audio": "vip6_fs_5.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all", "full sequence", "combined"],
-      "keywords_vi": ["tất cả", "chuỗi đầy đủ", "kết hợp"],
+      "keywords_en": [
+        "all",
+        "full sequence",
+        "combined"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "chuỗi đầy đủ",
+        "kết hợp"
+      ],
       "copy": {
         "en": "Fear of success grows from fear of visibility, fear of pressure, fear of change, and fear of being unworthy. You shrink your potential to stay safe, avoid opportunities to avoid exposure, and sabotage your growth to protect your identity. Success feels dangerous because it challenges old survival strategies. Healing requires recognizing that expansion does not erase who you are—it expresses who you truly are. When you allow yourself to grow without fear, success becomes a path of authenticity rather than a threat to your safety.",
         "vi": "Sợ thành công lớn lên từ nỗi sợ bị nhìn thấy, sợ áp lực, sợ thay đổi và sợ không xứng đáng. Bạn thu nhỏ tiềm năng để giữ an toàn, tránh cơ hội để tránh phơi bày và tự phá hoại để bảo vệ bản sắc. Thành công cảm giác nguy hiểm vì nó thách thức chiến lược sinh tồn cũ. Chữa lành nghĩa là hiểu rằng mở rộng không xoá bạn đi—mà thể hiện con người thật của bạn. Khi bạn cho phép mình phát triển mà không sợ hãi, thành công trở thành con đường thể hiện chân thật, không phải mối đe dọa đối với sự an toàn."
       },
-      "tags": ["all", "combined"],
+      "tags": [
+        "all",
+        "combined"
+      ],
       "audio": "vip6_fs_1.mp3 vip6_fs_2.mp3 vip6_fs_3.mp3 vip6_fs_4.mp3 vip6_fs_5.mp3"
     }
-  ],
-  "meta": {
-    "entry_count": 6
-  }
+  ]
 }

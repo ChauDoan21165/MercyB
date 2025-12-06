@@ -1,6 +1,4 @@
 {
-  "schema_version": "1.0",
-  "schema_id": "relationship-healing-free",
   "id": "relationship-healing-free",
   "tier": "free",
   "domain": "",
@@ -88,14 +86,6 @@
   ],
   "room_essay": {
     "en": "Practical guidance for healing relationships through communication and trust",
-    "vi": ""
-  },
-  "safety_disclaimer": {
-    "en": "",
-    "vi": ""
-  },
-  "crisis_footer": {
-    "en": "",
     "vi": ""
   }
 }

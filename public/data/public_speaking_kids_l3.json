@@ -13,77 +13,125 @@
   "entries": [
     {
       "slug": "confident-posture",
-      "keywords_en": ["posture", "confidence", "speaking"],
-      "keywords_vi": ["tư thế", "tự tin", "nói"],
+      "keywords_en": [
+        "posture",
+        "confidence",
+        "speaking"
+      ],
+      "keywords_vi": [
+        "tư thế",
+        "tự tin",
+        "nói"
+      ],
       "copy": {
         "en": "Confidence starts with posture. Teach kids to stand tall with relaxed shoulders and both feet on the ground. Show them how this position helps their voice become stronger and clearer. Practice by having your child introduce themselves while keeping this posture. Celebrate effort, not perfection. This builds the foundation for confident speaking in every situation.",
         "vi": "Sự tự tin bắt đầu từ tư thế. Hãy dạy trẻ đứng thẳng, vai thả lỏng và hai chân vững trên mặt đất. Giải thích rằng tư thế này giúp giọng nói mạnh mẽ và rõ ràng hơn. Luyện tập bằng cách để trẻ tự giới thiệu bản thân khi giữ tư thế đó. Hãy khen ngợi sự cố gắng hơn là sự hoàn hảo. Điều này tạo nền tảng cho sự tự tin trong mọi tình huống nói."
       },
-      "tags": ["posture"],
+      "tags": [
+        "posture"
+      ],
       "audio": "public_speaking_v1_confident_posture.mp3"
     },
     {
       "slug": "breathe-and-speak",
-      "keywords_en": ["breathing", "voice", "speaking"],
-      "keywords_vi": ["hít thở", "giọng nói", "nói"],
+      "keywords_en": [
+        "breathing",
+        "voice",
+        "speaking"
+      ],
+      "keywords_vi": [
+        "hít thở",
+        "giọng nói",
+        "nói"
+      ],
       "copy": {
         "en": "Teach children that calm breathing helps strong speaking. Practice taking a slow breath before starting a sentence. Show them how to speak clearly by moving their mouth fully and slowing down their pace. Short exercises like reading one sentence aloud help build vocal confidence. Over time, they learn that breath controls voice and reduces nervousness.",
         "vi": "Hãy dạy trẻ rằng hơi thở bình tĩnh giúp nói mạnh mẽ hơn. Luyện tập bằng cách hít sâu chậm trước khi bắt đầu câu. Chỉ cho trẻ cách nói rõ ràng bằng cách mở khẩu hình đầy đủ và nói chậm lại. Các bài tập ngắn như đọc một câu thành tiếng giúp xây dựng sự tự tin về giọng nói. Lâu dần, trẻ hiểu rằng hơi thở điều khiển giọng nói và giảm lo lắng."
       },
-      "tags": ["breathing"],
+      "tags": [
+        "breathing"
+      ],
       "audio": "public_speaking_v1_breathe_and_speak.mp3"
     },
     {
       "slug": "short-practice-speeches",
-      "keywords_en": ["speech", "practice", "speaking"],
-      "keywords_vi": ["bài nói", "luyện tập", "nói"],
+      "keywords_en": [
+        "speech",
+        "practice",
+        "speaking"
+      ],
+      "keywords_vi": [
+        "bài nói",
+        "luyện tập",
+        "nói"
+      ],
       "copy": {
         "en": "Short speeches help kids practice safely. Start with tiny topics: their favorite toy, a fun moment at school, or a hobby they enjoy. Ask them to speak for 10–15 seconds. Keeping speeches short removes pressure and builds positive feelings. Repeat the activity daily to help them become more comfortable sharing ideas aloud.",
         "vi": "Bài nói ngắn giúp trẻ luyện tập an toàn. Hãy bắt đầu với chủ đề nhỏ: món đồ chơi yêu thích, khoảnh khắc vui ở trường hoặc sở thích của trẻ. Yêu cầu trẻ nói trong 10–15 giây. Bài nói ngắn giảm áp lực và tạo cảm giác tích cực. Luyện tập hằng ngày giúp trẻ thoải mái hơn khi chia sẻ ý tưởng bằng lời."
       },
-      "tags": ["speech"],
+      "tags": [
+        "speech"
+      ],
       "audio": "public_speaking_v1_short_practice_speeches.mp3"
     },
     {
       "slug": "eye-contact",
-      "keywords_en": ["eye contact", "connection", "speaking"],
-      "keywords_vi": ["giao tiếp mắt", "kết nối", "nói"],
+      "keywords_en": [
+        "eye contact",
+        "connection",
+        "speaking"
+      ],
+      "keywords_vi": [
+        "giao tiếp mắt",
+        "kết nối",
+        "nói"
+      ],
       "copy": {
         "en": "Eye contact helps speakers connect with listeners. Teach children to look at one friendly face—or even a soft object—while speaking. This prevents them from feeling overwhelmed by a whole group. Over time, they can switch between two or three faces. Eye contact builds trust and makes their speaking sound more confident and sincere.",
         "vi": "Giao tiếp mắt giúp người nói kết nối với người nghe. Hãy dạy trẻ nhìn vào một khuôn mặt thân thiện—hoặc thậm chí một vật mềm—khi nói. Điều này giúp trẻ không bị choáng khi nhìn cả nhóm. Lâu dần, trẻ có thể chuyển sang hai hoặc ba người. Giao tiếp mắt tạo sự tin tưởng và khiến bài nói tự tin và chân thành hơn."
       },
-      "tags": ["eye-contact"],
+      "tags": [
+        "eye-contact"
+      ],
       "audio": "public_speaking_v1_eye_contact.mp3"
     },
     {
       "slug": "ending-strong",
-      "keywords_en": ["ending", "confidence", "speaking"],
-      "keywords_vi": ["kết thúc", "tự tin", "nói"],
+      "keywords_en": [
+        "ending",
+        "confidence",
+        "speaking"
+      ],
+      "keywords_vi": [
+        "kết thúc",
+        "tự tin",
+        "nói"
+      ],
       "copy": {
         "en": "Teach children to finish their speech with one strong sentence. A simple ending like “Thank you for listening” or “That’s my idea” helps them close with confidence. Practice the ending separately so it becomes a natural habit. A strong finish teaches kids that clarity and confidence matter more than long speeches.",
         "vi": "Hãy dạy trẻ kết thúc bài nói bằng một câu mạnh mẽ. Một kết thúc đơn giản như “Thank you for listening” hoặc “Đó là ý của con” giúp trẻ đóng lại bài nói đầy tự tin. Luyện cuối bài riêng để trẻ hình thành thói quen tự nhiên. Kết thúc rõ ràng giúp trẻ hiểu rằng sự tự tin quan trọng hơn độ dài bài nói."
       },
-      "tags": ["ending"],
+      "tags": [
+        "ending"
+      ],
       "audio": "public_speaking_v1_ending_strong.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all"],
-      "keywords_vi": ["tất cả"],
+      "keywords_en": [
+        "all"
+      ],
+      "keywords_vi": [
+        "tất cả"
+      ],
       "copy": {
         "en": "Confidence starts with posture. Teach kids to stand tall with relaxed shoulders and both feet on the ground. Show them how this position helps their voice become stronger and clearer. Practice by having your child introduce themselves while keeping this posture. Celebrate effort, not perfection. This builds the foundation for confident speaking in every situation.Teach children that calm breathing helps strong speaking. Practice taking a slow breath before starting a sentence. Show them how to speak clearly by moving their mouth fully and slowing down their pace. Short exercises like reading one sentence aloud help build vocal confidence. Over time, they learn that breath controls voice and reduces nervousness.Short speeches help kids practice safely. Start with tiny topics: their favorite toy, a fun moment at school, or a hobby they enjoy. Ask them to speak for 10–15 seconds. Keeping speeches short removes pressure and builds positive feelings. Repeat the activity daily to help them become more comfortable sharing ideas aloud.Eye contact helps speakers connect with listeners. Teach children to look at one friendly face—or even a soft object—while speaking. This prevents them from feeling overwhelmed by a whole group. Over time, they can switch between two or three faces. Eye contact builds trust and makes their speaking sound more confident and sincere.Teach children to finish their speech with one strong sentence. A simple ending like “Thank you for listening” or “That’s my idea” helps them close with confidence. Practice the ending separately so it becomes a natural habit. A strong finish teaches kids that clarity and confidence matter more than long speeches.",
         "vi": "Sự tự tin bắt đầu từ tư thế. Hãy dạy trẻ đứng thẳng, vai thả lỏng và hai chân vững trên mặt đất. Giải thích rằng tư thế này giúp giọng nói mạnh mẽ và rõ ràng hơn. Luyện tập bằng cách để trẻ tự giới thiệu bản thân khi giữ tư thế đó. Hãy khen ngợi sự cố gắng hơn là sự hoàn hảo. Điều này tạo nền tảng cho sự tự tin trong mọi tình huống nói.Hãy dạy trẻ rằng hơi thở bình tĩnh giúp nói mạnh mẽ hơn. Luyện tập bằng cách hít sâu chậm trước khi bắt đầu câu. Chỉ cho trẻ cách nói rõ ràng bằng cách mở khẩu hình đầy đủ và nói chậm lại. Các bài tập ngắn như đọc một câu thành tiếng giúp xây dựng sự tự tin về giọng nói. Lâu dần, trẻ hiểu rằng hơi thở điều khiển giọng nói và giảm lo lắng.Bài nói ngắn giúp trẻ luyện tập an toàn. Hãy bắt đầu với chủ đề nhỏ: món đồ chơi yêu thích, khoảnh khắc vui ở trường hoặc sở thích của trẻ. Yêu cầu trẻ nói trong 10–15 giây. Bài nói ngắn giảm áp lực và tạo cảm giác tích cực. Luyện tập hằng ngày giúp trẻ thoải mái hơn khi chia sẻ ý tưởng bằng lời.Giao tiếp mắt giúp người nói kết nối với người nghe. Hãy dạy trẻ nhìn vào một khuôn mặt thân thiện—hoặc thậm chí một vật mềm—khi nói. Điều này giúp trẻ không bị choáng khi nhìn cả nhóm. Lâu dần, trẻ có thể chuyển sang hai hoặc ba người. Giao tiếp mắt tạo sự tin tưởng và khiến bài nói tự tin và chân thành hơn.Hãy dạy trẻ kết thúc bài nói bằng một câu mạnh mẽ. Một kết thúc đơn giản như “Thank you for listening” hoặc “Đó là ý của con” giúp trẻ đóng lại bài nói đầy tự tin. Luyện cuối bài riêng để trẻ hình thành thói quen tự nhiên. Kết thúc rõ ràng giúp trẻ hiểu rằng sự tự tin quan trọng hơn độ dài bài nói."
       },
-      "tags": ["all"],
+      "tags": [
+        "all"
+      ],
       "audio": "public_speaking_v1_confident_posture.mp3 public_speaking_v1_breathe_and_speak.mp3 public_speaking_v1_short_practice_speeches.mp3 public_speaking_v1_eye_contact.mp3 public_speaking_v1_ending_strong.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "10-13",
-    "level": "Kids Level 3",
-    "created_at": "2025-11-23T00:00:00+00:00",
-    "updated_at": "2025-11-23T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#FFE0F0"
-  }
+  ]
 }

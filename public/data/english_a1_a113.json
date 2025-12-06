@@ -13,63 +13,105 @@
   "entries": [
     {
       "slug": "warm-up-lines",
-      "keywords_en": ["speaking", "warm up"],
-      "keywords_vi": ["nói", "khởi động"],
+      "keywords_en": [
+        "speaking",
+        "warm up"
+      ],
+      "keywords_vi": [
+        "nói",
+        "khởi động"
+      ],
       "copy": {
         "en": "Start with soft warm up lines.\nI am ready.\nI can learn.\nI speak slowly.\nI feel calm.\nMy English gets better every day.",
         "vi": "Khởi động bằng những câu nhẹ nhàng:\nTôi đã sẵn sàng.\nTôi có thể học.\nTôi nói chậm.\nTôi cảm thấy bình tĩnh.\nTiếng Anh của tôi tốt hơn mỗi ngày."
       },
-      "audio": "a113_01_en.mp3"
+      "audio": "a113_01_en.mp3",
+      "tags": []
     },
     {
       "slug": "daily-self-introduction",
-      "keywords_en": ["introduction", "practice"],
-      "keywords_vi": ["giới thiệu", "luyện tập"],
+      "keywords_en": [
+        "introduction",
+        "practice"
+      ],
+      "keywords_vi": [
+        "giới thiệu",
+        "luyện tập"
+      ],
       "copy": {
         "en": "Practice a short self introduction.\nHello.\nMy name is Linh.\nI am from Vietnam.\nI am learning English.\nNice to meet you.",
         "vi": "Hãy luyện câu giới thiệu bản thân:\nHello.\nTên tôi là Linh.\nTôi đến từ Việt Nam.\nTôi đang học tiếng Anh.\nRất vui được gặp bạn."
       },
-      "audio": "a113_02_en.mp3"
+      "audio": "a113_02_en.mp3",
+      "tags": []
     },
     {
       "slug": "daily-routine-lines",
-      "keywords_en": ["daily routine", "speaking"],
-      "keywords_vi": ["thói quen", "nói"],
+      "keywords_en": [
+        "daily routine",
+        "speaking"
+      ],
+      "keywords_vi": [
+        "thói quen",
+        "nói"
+      ],
       "copy": {
         "en": "Say simple lines about your day.\nI wake up at six.\nI drink coffee.\nI go to work.\nI study English at night.\nI try my best.",
         "vi": "Nói vài câu đơn giản về ngày của bạn:\nTôi dậy lúc sáu giờ.\nTôi uống cà phê.\nTôi đi làm.\nTôi học tiếng Anh buổi tối.\nTôi cố gắng hết mình."
       },
-      "audio": "a113_03_en.mp3"
+      "audio": "a113_03_en.mp3",
+      "tags": []
     },
     {
       "slug": "feeling-lines",
-      "keywords_en": ["feelings", "speaking"],
-      "keywords_vi": ["cảm xúc", "nói"],
+      "keywords_en": [
+        "feelings",
+        "speaking"
+      ],
+      "keywords_vi": [
+        "cảm xúc",
+        "nói"
+      ],
       "copy": {
         "en": "Practice feeling words.\nI am happy.\nI am tired.\nI am busy.\nI am okay.\nI feel good today.",
         "vi": "Luyện các câu nói về cảm xúc:\nTôi vui.\nTôi mệt.\nTôi bận.\nTôi ổn.\nHôm nay tôi cảm thấy tốt."
       },
-      "audio": "a113_04_en.mp3"
+      "audio": "a113_04_en.mp3",
+      "tags": []
     },
     {
       "slug": "confidence-lines",
-      "keywords_en": ["confidence", "speaking"],
-      "keywords_vi": ["tự tin", "nói"],
+      "keywords_en": [
+        "confidence",
+        "speaking"
+      ],
+      "keywords_vi": [
+        "tự tin",
+        "nói"
+      ],
       "copy": {
         "en": "Build confidence with gentle lines.\nI can speak.\nI am learning.\nI am improving.\nI do not need to be perfect.\nI just need to try.",
         "vi": "Tăng tự tin với những câu nhẹ nhàng:\nTôi có thể nói.\nTôi đang học.\nTôi đang tiến bộ.\nTôi không cần hoàn hảo.\nTôi chỉ cần cố gắng."
       },
-      "audio": "a113_05_en.mp3"
+      "audio": "a113_05_en.mp3",
+      "tags": []
     },
     {
       "slug": "three-minute-habit",
-      "keywords_en": ["habit", "daily speaking"],
-      "keywords_vi": ["thói quen", "nói mỗi ngày"],
+      "keywords_en": [
+        "habit",
+        "daily speaking"
+      ],
+      "keywords_vi": [
+        "thói quen",
+        "nói mỗi ngày"
+      ],
       "copy": {
         "en": "This is your daily routine.\nOne minute warm up.\nOne minute reading short lines.\nOne minute free speaking.\nJust speak softly for three minutes.\nThat is enough for beginners.",
         "vi": "Đây là thói quen mỗi ngày:\nMột phút khởi động.\nMột phút đọc câu ngắn.\nMột phút nói tự do.\nChỉ cần nói nhẹ nhàng trong ba phút.\nNhư vậy là đủ cho người mới bắt đầu."
       },
-      "audio": "a113_06_en.mp3"
+      "audio": "a113_06_en.mp3",
+      "tags": []
     }
   ]
 }

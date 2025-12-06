@@ -13,63 +13,105 @@
   "entries": [
     {
       "slug": "simple-past-regular-verbs",
-      "keywords_en": ["past tense", "regular verbs"],
-      "keywords_vi": ["thì quá khứ", "động từ có quy tắc"],
+      "keywords_en": [
+        "past tense",
+        "regular verbs"
+      ],
+      "keywords_vi": [
+        "thì quá khứ",
+        "động từ có quy tắc"
+      ],
       "copy": {
         "en": "Use regular verbs to talk about past events. I worked yesterday. I visited my friend. I watched a movie. Keep the sentences short and clear. Add one detail. I watched a movie last night and it was relaxing. Regular past tense helps you speak confidently about daily events.",
         "vi": "Hãy dùng động từ có quy tắc để nói về các sự kiện trong quá khứ. I worked yesterday. I visited my friend. I watched a movie. Hãy giữ câu ngắn và rõ ràng. Thêm một chi tiết nhỏ. I watched a movie last night and it was relaxing. Thì quá khứ đơn giúp bạn kể lại sự việc một cách tự tin."
       },
-      "audio": "b106_01_en.mp3"
+      "audio": "b106_01_en.mp3",
+      "tags": []
     },
     {
       "slug": "simple-past-irregular-verbs",
-      "keywords_en": ["irregular verbs", "past"],
-      "keywords_vi": ["động từ bất quy tắc", "quá khứ"],
+      "keywords_en": [
+        "irregular verbs",
+        "past"
+      ],
+      "keywords_vi": [
+        "động từ bất quy tắc",
+        "quá khứ"
+      ],
       "copy": {
         "en": "Learn common irregular verbs for everyday stories. I went to the park. I ate noodles. I saw my friend. I had a busy day. Irregular verbs do not follow rules, so practice slowly. These verbs appear often in real conversations.",
         "vi": "Hãy học các động từ bất quy tắc thường gặp. I went to the park. I ate noodles. I saw my friend. I had a busy day. Động từ bất quy tắc không theo quy tắc, nên hãy luyện chậm rãi. Chúng xuất hiện rất nhiều trong hội thoại thực tế."
       },
-      "audio": "b106_02_en.mp3"
+      "audio": "b106_02_en.mp3",
+      "tags": []
     },
     {
       "slug": "telling-short-stories",
-      "keywords_en": ["stories", "past"],
-      "keywords_vi": ["kể chuyện", "quá khứ"],
+      "keywords_en": [
+        "stories",
+        "past"
+      ],
+      "keywords_vi": [
+        "kể chuyện",
+        "quá khứ"
+      ],
       "copy": {
         "en": "Use a simple three-step pattern to tell a story. First, set the time. Yesterday, last weekend, last night. Then, describe the main action. I visited my friend. Finally, add one feeling. It was fun. This structure keeps your story clear and easy to follow.",
         "vi": "Hãy dùng mẫu ba bước để kể một câu chuyện. Đầu tiên, nói thời gian. Yesterday, last weekend, last night. Sau đó, mô tả hành động chính. I visited my friend. Cuối cùng, thêm cảm xúc. It was fun. Mẫu này giúp câu chuyện rõ ràng và dễ hiểu."
       },
-      "audio": "b106_03_en.mp3"
+      "audio": "b106_03_en.mp3",
+      "tags": []
     },
     {
       "slug": "talking-about-first-time-experiences",
-      "keywords_en": ["first time", "experiences"],
-      "keywords_vi": ["lần đầu", "trải nghiệm"],
+      "keywords_en": [
+        "first time",
+        "experiences"
+      ],
+      "keywords_vi": [
+        "lần đầu",
+        "trải nghiệm"
+      ],
       "copy": {
         "en": "Use easy patterns to describe first-time experiences. It was my first time eating sushi. It was my first time traveling alone. Add a short feeling. I felt excited. I felt nervous. First-time stories help you express emotions naturally.",
         "vi": "Hãy dùng mẫu câu đơn giản để mô tả trải nghiệm lần đầu. It was my first time eating sushi. It was my first time traveling alone. Thêm một cảm xúc ngắn. I felt excited. I felt nervous. Những câu chuyện lần đầu giúp bạn diễn đạt cảm xúc tự nhiên."
       },
-      "audio": "b106_04_en.mp3"
+      "audio": "b106_04_en.mp3",
+      "tags": []
     },
     {
       "slug": "expressing-past-feelings",
-      "keywords_en": ["feelings", "past"],
-      "keywords_vi": ["cảm xúc", "quá khứ"],
+      "keywords_en": [
+        "feelings",
+        "past"
+      ],
+      "keywords_vi": [
+        "cảm xúc",
+        "quá khứ"
+      ],
       "copy": {
         "en": "Describe feelings from the past using simple lines. I felt happy. I felt tired after work. I felt worried about my exam. Add one cause. I felt happy because I finished my project. Short feeling sentences make your English more expressive.",
         "vi": "Hãy mô tả cảm xúc trong quá khứ bằng câu đơn giản. I felt happy. I felt tired after work. I felt worried about my exam. Thêm một nguyên nhân. I felt happy because I finished my project. Các câu cảm xúc giúp tiếng Anh của bạn sinh động hơn."
       },
-      "audio": "b106_05_en.mp3"
+      "audio": "b106_05_en.mp3",
+      "tags": []
     },
     {
       "slug": "daily-past-practice",
-      "keywords_en": ["practice", "past tense"],
-      "keywords_vi": ["luyện tập", "thì quá khứ"],
+      "keywords_en": [
+        "practice",
+        "past tense"
+      ],
+      "keywords_vi": [
+        "luyện tập",
+        "thì quá khứ"
+      ],
       "copy": {
         "en": "Practice talking about one thing you did yesterday. Keep it simple. I cooked dinner. I met my friend. I watched a show. Add one detail or feeling. I cooked dinner and it was relaxing. Daily practice makes your past tense natural and confident.",
         "vi": "Hãy luyện nói về một điều bạn đã làm hôm qua. Giữ câu thật đơn giản. I cooked dinner. I met my friend. I watched a show. Thêm một chi tiết hoặc cảm xúc. I cooked dinner and it was relaxing. Luyện tập mỗi ngày giúp bạn dùng thì quá khứ tự nhiên và tự tin."
       },
-      "audio": "b106_06_en.mp3"
+      "audio": "b106_06_en.mp3",
+      "tags": []
     }
   ]
 }

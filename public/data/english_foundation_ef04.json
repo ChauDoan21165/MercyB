@@ -1,6 +1,4 @@
 {
-  "schema_version": "1.0",
-  "schema_id": "english_foundation_ef04",
   "id": "english_foundation_ef04",
   "tier": "Free / Miễn phí",
   "domain": "",
@@ -37,110 +35,9 @@
     "luyện tập",
     "thói quen"
   ],
-  "entries": [
-    {
-      "slug": "basic-introductions",
-      "audio": "ef04_01_en.mp3",
-      "copy_en": "Practice these simple introduction sentences:\n\nMy name is...\nI am from Vietnam.\nI am a student.\nI am learning English.\nNice to meet you.\nThank you.\n\nSay each line slowly.\nKeep your voice gentle and steady.",
-      "copy_vi": "Hãy luyện các câu giới thiệu đơn giản sau: My name is..., I am from Vietnam, I am a student, I am learning English, Nice to meet you, Thank you. Đọc từng câu chậm rãi và giữ giọng nhẹ, đều.",
-      "keywords_en": [
-        "sentences",
-        "introduction",
-        "beginner"
-      ],
-      "keywords_vi": [
-        "câu giao tiếp",
-        "giới thiệu",
-        "người mới"
-      ]
-    },
-    {
-      "slug": "asking-for-help",
-      "audio": "ef04_02_en.mp3",
-      "copy_en": "Use these sentences when you need help:\n\nCan you help me?\nCan you say that again?\nI do not understand.\nPlease speak slowly.\nWhere is the bathroom?\nThank you for helping.\n\nShort, clear sentences work best.",
-      "copy_vi": "Dùng các câu sau khi bạn cần giúp đỡ: Can you help me?, Can you say that again?, I do not understand, Please speak slowly, Where is the bathroom?, Thank you for helping. Câu ngắn và rõ ràng luôn hiệu quả nhất.",
-      "keywords_en": [
-        "help",
-        "survival",
-        "communication"
-      ],
-      "keywords_vi": [
-        "giúp đỡ",
-        "sinh tồn",
-        "giao tiếp"
-      ]
-    },
-    {
-      "slug": "ordering-food",
-      "audio": "ef04_03_en.mp3",
-      "copy_en": "Practice simple food sentences:\n\nI would like this.\nI want the chicken.\nOne coffee, please.\nDo you have water?\nHow much is it?\nThank you.\n\nSpeak slowly.\nClear rhythm helps people understand you.",
-      "copy_vi": "Hãy luyện các câu gọi món sau: I would like this, I want the chicken, One coffee please, Do you have water?, How much is it?, Thank you. Nói chậm sẽ giúp người nghe hiểu bạn dễ hơn.",
-      "keywords_en": [
-        "food",
-        "ordering",
-        "beginner"
-      ],
-      "keywords_vi": [
-        "đồ ăn",
-        "gọi món",
-        "người mới"
-      ]
-    },
-    {
-      "slug": "polite-requests",
-      "audio": "ef04_04_en.mp3",
-      "copy_en": "These polite sentences make communication easier:\n\nPlease help me.\nPlease wait.\nPlease show me.\nPlease write it down.\nThat is okay.\nThank you so much.\n\nPolite tone builds trust.",
-      "copy_vi": "Các câu lịch sự giúp giao tiếp dễ dàng hơn: Please help me, Please wait, Please show me, Please write it down, That is okay, Thank you so much. Giọng lịch sự tạo thiện cảm ngay lập tức.",
-      "keywords_en": [
-        "polite",
-        "requests",
-        "communication"
-      ],
-      "keywords_vi": [
-        "lịch sự",
-        "yêu cầu",
-        "giao tiếp"
-      ]
-    },
-    {
-      "slug": "daily-routines",
-      "audio": "ef04_05_en.mp3",
-      "copy_en": "Use these sentences for daily routines:\n\nI am going to work.\nI am going home.\nI am eating.\nI am busy.\nI am tired.\nI need a break.\n\nSpeak lightly.\nKeep the ending sound.",
-      "copy_vi": "Dùng các câu sau cho sinh hoạt hằng ngày: I am going to work, I am going home, I am eating, I am busy, I am tired, I need a break. Hãy nói nhẹ nhàng và giữ âm cuối.",
-      "keywords_en": [
-        "daily life",
-        "sentences"
-      ],
-      "keywords_vi": [
-        "cuộc sống hằng ngày",
-        "câu đơn"
-      ]
-    },
-    {
-      "slug": "daily-sentence-practice",
-      "audio": "ef04_06_en.mp3",
-      "copy_en": "Repeat three sentences every morning.\nChoose any from this room.\nRead slowly.\nRead clearly.\n\nSmall daily practice creates real confidence.",
-      "copy_vi": "Mỗi sáng hãy lặp lại ba câu. Chọn bất kỳ câu nào trong phòng này. Đọc chậm và rõ. Luyện đều mỗi ngày sẽ tạo sự tự tin thật sự.",
-      "keywords_en": [
-        "practice",
-        "habit"
-      ],
-      "keywords_vi": [
-        "luyện tập",
-        "thói quen"
-      ]
-    }
-  ],
+  "entries": [],
   "room_essay": {
     "en": "This room teaches simple, useful sentences that beginners can use immediately. Each entry gives short patterns you can speak in daily life, such as asking for help, ordering food, or introducing yourself. The focus is clarity, slow rhythm, and correct ending sounds. Read each line gently and let the sound be natural. With these survival sentences, you can start real communication even at beginner level.",
     "vi": "Phòng này dạy các câu giao tiếp đơn giản và thiết thực mà người mới có thể dùng ngay. Mỗi mục cung cấp mẫu câu ngắn cho các tình huống hằng ngày như xin giúp đỡ, gọi món hoặc giới thiệu bản thân. Trọng tâm là nói rõ ràng, nhịp chậm và giữ âm cuối đúng. Hãy đọc từng dòng nhẹ nhàng để âm trở nên tự nhiên hơn. Với những câu cơ bản này, bạn có thể bắt đầu giao tiếp thật sự ngay cả khi mới học."
-  },
-  "safety_disclaimer": {
-    "en": "",
-    "vi": ""
-  },
-  "crisis_footer": {
-    "en": "",
-    "vi": ""
   }
 }

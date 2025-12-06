@@ -1,75 +1,129 @@
 {
-"id": "survival_resilience_vip1_srs11",
-"tier": "VIP1 / VIP1",
-"domain": "Survival",
-"title": {
-"en": "SRS-11 — Earthquakes & Building Safety Basics",
-"vi": "SRS-11 — An Toàn Động Đất & Ứng Xử Trong Nhà"
-},
-"content": {
-"en": "Earthquakes strike without warning, leaving only seconds to act. This room teaches simple, reliable actions you can take before, during, and after shaking to protect yourself and your family. You will learn how to prepare your home, where to shelter inside different buildings, what to avoid during shaking, and how to move safely once the tremors stop. These six entries focus on calm, practical steps—not technical construction advice—so ordinary people can make safer choices in apartments, houses, workplaces, and public spaces when the ground begins to move.",
-"vi": "Động đất xảy ra không báo trước, và bạn chỉ có vài giây để hành động. Phòng này hướng dẫn những bước đơn giản, đáng tin cậy mà bạn có thể làm trước, trong và sau rung lắc để bảo vệ bản thân và gia đình. Bạn sẽ học cách chuẩn bị nhà cửa, chọn chỗ trú an toàn trong các loại tòa nhà, điều nên tránh khi đang rung lắc và cách di chuyển an toàn sau khi động đất tạm dừng. Sáu mục nội dung tập trung vào các bước bình tĩnh, thực tế—không phải kỹ thuật xây dựng—để người bình thường có thể đưa ra lựa chọn an toàn hơn trong căn hộ, nhà riêng, nơi làm việc và không gian công cộng khi mặt đất bắt đầu rung."
-},
-"entries": [
-{
-"slug": "understanding-earthquake-risk-and-typical-hazards",
-"keywords_en": ["earthquake risk", "falling objects", "hazards"],
-"keywords_vi": ["nguy cơ động đất", "vật rơi", "mối nguy"],
-"copy": {
-"en": "In an earthquake, most injuries do not come from the ground opening, but from falling objects, broken glass, and collapsing interior structures. Tall shelves, unsecured cabinets, hanging lights, mirrors, and heavy items above beds are common hazards. Glass windows can shatter and send fragments across rooms. Stairwells and crowded exits can become dangerous if many people panic at once. Understanding these typical hazards helps you prepare smarter: move heavy objects lower, secure tall furniture to walls, and avoid sleeping directly under shelves or large frames. The goal is not to remove all risk, but to remove obvious dangers so your living space is more forgiving when shaking starts.",
-"vi": "Trong động đất, phần lớn chấn thương không đến từ mặt đất nứt ra, mà từ vật rơi, kính vỡ và cấu trúc bên trong sụp đổ. Kệ cao, tủ không bắt vít, đèn treo, gương và đồ nặng phía trên giường là các mối nguy thường gặp. Cửa kính có thể vỡ và văng mảnh khắp phòng. Cầu thang và lối thoát đông người trở nên nguy hiểm khi nhiều người hoảng loạn cùng lúc. Hiểu những mối nguy điển hình này giúp bạn chuẩn bị thông minh hơn: đặt đồ nặng xuống thấp, cố định nội thất cao vào tường và tránh ngủ bên dưới kệ hoặc tranh lớn. Mục tiêu không phải xóa sạch rủi ro, mà là loại bỏ các nguy hiểm rõ ràng để không gian sống “dễ tha thứ hơn” khi bắt đầu rung."
-},
-"audio": "srs11_01_en.mp3"
-},
-{
-"slug": "securing-your-home-before-an-earthquake",
-"keywords_en": ["home preparation", "securing furniture", "pre-disaster"],
-"keywords_vi": ["chuẩn bị nhà", "cố định nội thất", "trước thảm họa"],
-"copy": {
-"en": "Small changes at home can prevent serious injuries. Use brackets or straps to anchor bookshelves, wardrobes, and tall cabinets to the wall. Place heavy items on lower shelves so they are less likely to fall. Secure TVs, desktop computers, and tabletop appliances with anti-slip pads or straps. Keep escape paths—hallways and main doors—clear of clutter that could block movement if items shift. Store breakable dishes and glassware in cabinets with latches. Know how to turn off gas and where the main switches are, but only do so if it is safe and you smell gas or suspect a leak. A few hours of preparation can protect you for many years of potential earthquakes.",
-"vi": "Những chỉnh sửa nhỏ trong nhà có thể ngăn chấn thương nghiêm trọng. Dùng giá đỡ hoặc dây đai để bắt kệ sách, tủ áo và tủ cao vào tường. Đặt đồ nặng ở kệ thấp để giảm khả năng rơi. Cố định TV, máy tính để bàn và thiết bị đặt trên mặt bàn bằng miếng chống trượt hoặc dây giữ. Giữ lối đi—hành lang và cửa chính—luôn thông thoáng, tránh chất đống đồ có thể đổ xuống chặn đường khi đồ đạc dịch chuyển. Để chén dĩa và đồ dễ vỡ trong tủ có chốt khóa. Hãy biết vị trí van gas và cầu dao điện tổng, nhưng chỉ tắt khi an toàn và khi bạn ngửi thấy mùi gas hoặc nghi rò rỉ. Vài giờ chuẩn bị có thể bảo vệ bạn suốt nhiều năm động đất tiềm ẩn."
-},
-"audio": "srs11_02_en.mp3"
-},
-{
-"slug": "what-to-do-during-shaking-indoors",
-"keywords_en": ["during earthquake", "drop cover hold", "indoor safety"],
-"keywords_vi": ["khi đang động đất", "chui núp", "an toàn trong nhà"],
-"copy": {
-"en": "When the ground starts to shake, you will not have time to think through complex options. The simplest guidance indoors is: drop, cover, and hold on. Drop down on your hands and knees to prevent being knocked over. Take cover under a sturdy table or desk if nearby, protecting your head and neck with your arms. Hold on to table legs so the cover moves with you. If no sturdy furniture is available, crouch next to an interior wall away from windows, tall shelves, or heavy objects, and shield your head. Do not run to the stairs or elevator while shaking; most injuries happen when people try to move too far or too fast. Staying low, covered, and still is your best protection until the shaking stops.",
-"vi": "Khi mặt đất bắt đầu rung, bạn không có thời gian suy nghĩ phức tạp. Hướng dẫn đơn giản nhất khi ở trong nhà là: nằm thấp, chui núp và bám chặt. Hạ người xuống bằng hai tay và đầu gối để không bị quật ngã. Nếu gần bàn chắc chắn, hãy chui xuống gầm, dùng tay che đầu và cổ. Bám vào chân bàn để chỗ trú di chuyển cùng bạn. Nếu không có bàn ghế vững, hãy ngồi xổm cạnh tường trong nhà, tránh xa cửa kính, kệ cao và đồ nặng, đồng thời che đầu. Đừng chạy ra cầu thang hay thang máy khi đang rung; nhiều người chấn thương vì cố di chuyển quá xa, quá nhanh. Giữ tư thế thấp, có che chắn và hạn chế di chuyển là cách bảo vệ tốt nhất cho đến khi động đất dừng."
-},
-"audio": "srs11_03_en.mp3"
-},
-{
-"slug": "what-to-do-during-shaking-outdoors-or-in-vehicles",
-"keywords_en": ["outdoor safety", "vehicles", "open areas"],
-"keywords_vi": ["an toàn ngoài trời", "trong xe", "khu vực trống"],
-"copy": {
-"en": "If an earthquake begins while you are outdoors, move away from buildings, trees, power lines, and bridges if you can do so safely. Once in a more open area, crouch down and protect your head with your arms. Avoid standing under balconies or near glass façades that may break. If you are in a moving vehicle, slow down and pull over to a safe spot away from overpasses, tunnels, and power lines. Stay inside the vehicle with your seatbelt on until the shaking stops; the car’s frame offers protection from falling debris. When the tremors end, check for hazards before exiting. Your first priority is to avoid things that can fall, collapse, or shatter around you.",
-"vi": "Nếu động đất xảy ra khi bạn đang ở ngoài, hãy di chuyển khỏi tòa nhà, cây lớn, đường dây điện và cầu nếu có thể làm an toàn. Khi đến khu vực trống hơn, hãy hạ thấp người và dùng tay che đầu. Tránh đứng dưới ban công hoặc gần mặt dựng kính có thể vỡ. Nếu bạn đang trong xe di chuyển, hãy giảm tốc và tấp vào nơi an toàn, tránh cầu vượt, hầm và dây điện. Ở yên trong xe, cài dây an toàn cho đến khi rung lắc dừng; khung xe giúp che chắn khỏi vật rơi. Khi động đất tạm ngưng, hãy quan sát kỹ mối nguy trước khi ra khỏi xe. Ưu tiên đầu tiên là tránh những thứ có thể rơi, sụp hoặc vỡ xung quanh bạn."
-},
-"audio": "srs11_04_en.mp3"
-},
-{
-"slug": "after-the-shaking-checking-for-danger-and-injuries",
-"keywords_en": ["after earthquake", "checking danger", "injury scan"],
-"keywords_vi": ["sau động đất", "kiểm tra nguy hiểm", "kiểm tra chấn thương"],
-"copy": {
-"en": "Once the main shaking stops, take a few breaths before moving. Expect aftershocks. First, check yourself and nearby people for injuries. If someone is hurt, keep them still unless they are in immediate danger from fire, gas, or collapse. Look for broken glass, exposed wires, fallen objects, and unstable furniture before standing up. Do not light candles or matches until you are sure there is no gas smell. Use your phone light or a battery lamp instead. If you are in a damaged building, move carefully toward a safe exit without running, watching ceilings and walls for cracks or falling material. Calm, deliberate movement after an earthquake prevents many secondary injuries.",
-"vi": "Khi rung lắc chính dừng lại, hãy hít thở vài nhịp trước khi di chuyển. Hãy chờ sau dư chấn. Trước hết, kiểm tra bản thân và người xung quanh xem có bị thương không. Nếu ai đó chấn thương, đừng di chuyển họ trừ khi đang đối mặt với nguy cơ trực tiếp như cháy, rò gas hoặc sụp đổ. Quan sát kính vỡ, dây điện lộ ra, đồ rơi và nội thất mất ổn định trước khi đứng dậy. Không đốt nến hoặc bật lửa cho đến khi chắc chắn không có mùi gas. Hãy dùng đèn điện thoại hoặc đèn pin. Nếu bạn đang ở trong tòa nhà hư hại, hãy di chuyển chậm rãi về phía lối thoát an toàn, không chạy, đồng thời quan sát trần và tường xem có nứt hoặc vật liệu rơi không. Di chuyển bình tĩnh, có chủ đích sau động đất giúp tránh nhiều chấn thương thứ cấp."
-},
-"audio": "srs11_05_en.mp3"
-},
-{
-"slug": "family-communication-and-meeting-points-after-quakes",
-"keywords_en": ["family plan", "meeting point", "communication"],
-"keywords_vi": ["kế hoạch gia đình", "điểm tập trung", "liên lạc"],
-"copy": {
-"en": "Communication is often disrupted after earthquakes. Agree in advance on one or two safe meeting points near your home and another outside your neighborhood in case evacuation is needed. Decide who will pick up children from school if systems fail. After shaking stops and it is safe to move, go to the meeting point instead of searching separately—this reduces panic and confusion. Use short text messages rather than long calls to preserve battery and ease network load. Write down important phone numbers on paper in case your device is lost or runs out of power. A simple family plan turns a chaotic situation into a sequence of clear steps everyone understands.",
-"vi": "Liên lạc thường bị gián đoạn sau động đất. Hãy thống nhất trước một hoặc hai điểm tập trung an toàn gần nhà và một điểm xa hơn phòng khi phải sơ tán khỏi khu vực. Quy ước trước ai sẽ đón trẻ nếu hệ thống trường học trục trặc. Sau khi rung lắc dừng và di chuyển an toàn, hãy tới điểm tập trung thay vì mỗi người tự đi tìm nhau—như vậy giảm hoang mang và nhầm lẫn. Ưu tiên nhắn tin ngắn thay vì gọi lâu để tiết kiệm pin và giảm tải mạng. Ghi số điện thoại quan trọng ra giấy phòng trường hợp mất máy hoặc hết pin. Một kế hoạch gia đình đơn giản biến tình huống hỗn loạn thành chuỗi bước rõ ràng mà ai cũng hiểu."
-},
-"audio": "srs11_06_en.mp3"
-}
-]
+  "id": "survival_resilience_vip1_srs11",
+  "tier": "VIP1 / VIP1",
+  "domain": "Survival",
+  "title": {
+    "en": "SRS-11 — Earthquakes & Building Safety Basics",
+    "vi": "SRS-11 — An Toàn Động Đất & Ứng Xử Trong Nhà"
+  },
+  "content": {
+    "en": "Earthquakes strike without warning, leaving only seconds to act. This room teaches simple, reliable actions you can take before, during, and after shaking to protect yourself and your family. You will learn how to prepare your home, where to shelter inside different buildings, what to avoid during shaking, and how to move safely once the tremors stop. These six entries focus on calm, practical steps—not technical construction advice—so ordinary people can make safer choices in apartments, houses, workplaces, and public spaces when the ground begins to move.",
+    "vi": "Động đất xảy ra không báo trước, và bạn chỉ có vài giây để hành động. Phòng này hướng dẫn những bước đơn giản, đáng tin cậy mà bạn có thể làm trước, trong và sau rung lắc để bảo vệ bản thân và gia đình. Bạn sẽ học cách chuẩn bị nhà cửa, chọn chỗ trú an toàn trong các loại tòa nhà, điều nên tránh khi đang rung lắc và cách di chuyển an toàn sau khi động đất tạm dừng. Sáu mục nội dung tập trung vào các bước bình tĩnh, thực tế—không phải kỹ thuật xây dựng—để người bình thường có thể đưa ra lựa chọn an toàn hơn trong căn hộ, nhà riêng, nơi làm việc và không gian công cộng khi mặt đất bắt đầu rung."
+  },
+  "entries": [
+    {
+      "slug": "understanding-earthquake-risk-and-typical-hazards",
+      "keywords_en": [
+        "earthquake risk",
+        "falling objects",
+        "hazards"
+      ],
+      "keywords_vi": [
+        "nguy cơ động đất",
+        "vật rơi",
+        "mối nguy"
+      ],
+      "copy": {
+        "en": "In an earthquake, most injuries do not come from the ground opening, but from falling objects, broken glass, and collapsing interior structures. Tall shelves, unsecured cabinets, hanging lights, mirrors, and heavy items above beds are common hazards. Glass windows can shatter and send fragments across rooms. Stairwells and crowded exits can become dangerous if many people panic at once. Understanding these typical hazards helps you prepare smarter: move heavy objects lower, secure tall furniture to walls, and avoid sleeping directly under shelves or large frames. The goal is not to remove all risk, but to remove obvious dangers so your living space is more forgiving when shaking starts.",
+        "vi": "Trong động đất, phần lớn chấn thương không đến từ mặt đất nứt ra, mà từ vật rơi, kính vỡ và cấu trúc bên trong sụp đổ. Kệ cao, tủ không bắt vít, đèn treo, gương và đồ nặng phía trên giường là các mối nguy thường gặp. Cửa kính có thể vỡ và văng mảnh khắp phòng. Cầu thang và lối thoát đông người trở nên nguy hiểm khi nhiều người hoảng loạn cùng lúc. Hiểu những mối nguy điển hình này giúp bạn chuẩn bị thông minh hơn: đặt đồ nặng xuống thấp, cố định nội thất cao vào tường và tránh ngủ bên dưới kệ hoặc tranh lớn. Mục tiêu không phải xóa sạch rủi ro, mà là loại bỏ các nguy hiểm rõ ràng để không gian sống “dễ tha thứ hơn” khi bắt đầu rung."
+      },
+      "audio": "srs11_01_en.mp3",
+      "tags": []
+    },
+    {
+      "slug": "securing-your-home-before-an-earthquake",
+      "keywords_en": [
+        "home preparation",
+        "securing furniture",
+        "pre-disaster"
+      ],
+      "keywords_vi": [
+        "chuẩn bị nhà",
+        "cố định nội thất",
+        "trước thảm họa"
+      ],
+      "copy": {
+        "en": "Small changes at home can prevent serious injuries. Use brackets or straps to anchor bookshelves, wardrobes, and tall cabinets to the wall. Place heavy items on lower shelves so they are less likely to fall. Secure TVs, desktop computers, and tabletop appliances with anti-slip pads or straps. Keep escape paths—hallways and main doors—clear of clutter that could block movement if items shift. Store breakable dishes and glassware in cabinets with latches. Know how to turn off gas and where the main switches are, but only do so if it is safe and you smell gas or suspect a leak. A few hours of preparation can protect you for many years of potential earthquakes.",
+        "vi": "Những chỉnh sửa nhỏ trong nhà có thể ngăn chấn thương nghiêm trọng. Dùng giá đỡ hoặc dây đai để bắt kệ sách, tủ áo và tủ cao vào tường. Đặt đồ nặng ở kệ thấp để giảm khả năng rơi. Cố định TV, máy tính để bàn và thiết bị đặt trên mặt bàn bằng miếng chống trượt hoặc dây giữ. Giữ lối đi—hành lang và cửa chính—luôn thông thoáng, tránh chất đống đồ có thể đổ xuống chặn đường khi đồ đạc dịch chuyển. Để chén dĩa và đồ dễ vỡ trong tủ có chốt khóa. Hãy biết vị trí van gas và cầu dao điện tổng, nhưng chỉ tắt khi an toàn và khi bạn ngửi thấy mùi gas hoặc nghi rò rỉ. Vài giờ chuẩn bị có thể bảo vệ bạn suốt nhiều năm động đất tiềm ẩn."
+      },
+      "audio": "srs11_02_en.mp3",
+      "tags": []
+    },
+    {
+      "slug": "what-to-do-during-shaking-indoors",
+      "keywords_en": [
+        "during earthquake",
+        "drop cover hold",
+        "indoor safety"
+      ],
+      "keywords_vi": [
+        "khi đang động đất",
+        "chui núp",
+        "an toàn trong nhà"
+      ],
+      "copy": {
+        "en": "When the ground starts to shake, you will not have time to think through complex options. The simplest guidance indoors is: drop, cover, and hold on. Drop down on your hands and knees to prevent being knocked over. Take cover under a sturdy table or desk if nearby, protecting your head and neck with your arms. Hold on to table legs so the cover moves with you. If no sturdy furniture is available, crouch next to an interior wall away from windows, tall shelves, or heavy objects, and shield your head. Do not run to the stairs or elevator while shaking; most injuries happen when people try to move too far or too fast. Staying low, covered, and still is your best protection until the shaking stops.",
+        "vi": "Khi mặt đất bắt đầu rung, bạn không có thời gian suy nghĩ phức tạp. Hướng dẫn đơn giản nhất khi ở trong nhà là: nằm thấp, chui núp và bám chặt. Hạ người xuống bằng hai tay và đầu gối để không bị quật ngã. Nếu gần bàn chắc chắn, hãy chui xuống gầm, dùng tay che đầu và cổ. Bám vào chân bàn để chỗ trú di chuyển cùng bạn. Nếu không có bàn ghế vững, hãy ngồi xổm cạnh tường trong nhà, tránh xa cửa kính, kệ cao và đồ nặng, đồng thời che đầu. Đừng chạy ra cầu thang hay thang máy khi đang rung; nhiều người chấn thương vì cố di chuyển quá xa, quá nhanh. Giữ tư thế thấp, có che chắn và hạn chế di chuyển là cách bảo vệ tốt nhất cho đến khi động đất dừng."
+      },
+      "audio": "srs11_03_en.mp3",
+      "tags": []
+    },
+    {
+      "slug": "what-to-do-during-shaking-outdoors-or-in-vehicles",
+      "keywords_en": [
+        "outdoor safety",
+        "vehicles",
+        "open areas"
+      ],
+      "keywords_vi": [
+        "an toàn ngoài trời",
+        "trong xe",
+        "khu vực trống"
+      ],
+      "copy": {
+        "en": "If an earthquake begins while you are outdoors, move away from buildings, trees, power lines, and bridges if you can do so safely. Once in a more open area, crouch down and protect your head with your arms. Avoid standing under balconies or near glass façades that may break. If you are in a moving vehicle, slow down and pull over to a safe spot away from overpasses, tunnels, and power lines. Stay inside the vehicle with your seatbelt on until the shaking stops; the car’s frame offers protection from falling debris. When the tremors end, check for hazards before exiting. Your first priority is to avoid things that can fall, collapse, or shatter around you.",
+        "vi": "Nếu động đất xảy ra khi bạn đang ở ngoài, hãy di chuyển khỏi tòa nhà, cây lớn, đường dây điện và cầu nếu có thể làm an toàn. Khi đến khu vực trống hơn, hãy hạ thấp người và dùng tay che đầu. Tránh đứng dưới ban công hoặc gần mặt dựng kính có thể vỡ. Nếu bạn đang trong xe di chuyển, hãy giảm tốc và tấp vào nơi an toàn, tránh cầu vượt, hầm và dây điện. Ở yên trong xe, cài dây an toàn cho đến khi rung lắc dừng; khung xe giúp che chắn khỏi vật rơi. Khi động đất tạm ngưng, hãy quan sát kỹ mối nguy trước khi ra khỏi xe. Ưu tiên đầu tiên là tránh những thứ có thể rơi, sụp hoặc vỡ xung quanh bạn."
+      },
+      "audio": "srs11_04_en.mp3",
+      "tags": []
+    },
+    {
+      "slug": "after-the-shaking-checking-for-danger-and-injuries",
+      "keywords_en": [
+        "after earthquake",
+        "checking danger",
+        "injury scan"
+      ],
+      "keywords_vi": [
+        "sau động đất",
+        "kiểm tra nguy hiểm",
+        "kiểm tra chấn thương"
+      ],
+      "copy": {
+        "en": "Once the main shaking stops, take a few breaths before moving. Expect aftershocks. First, check yourself and nearby people for injuries. If someone is hurt, keep them still unless they are in immediate danger from fire, gas, or collapse. Look for broken glass, exposed wires, fallen objects, and unstable furniture before standing up. Do not light candles or matches until you are sure there is no gas smell. Use your phone light or a battery lamp instead. If you are in a damaged building, move carefully toward a safe exit without running, watching ceilings and walls for cracks or falling material. Calm, deliberate movement after an earthquake prevents many secondary injuries.",
+        "vi": "Khi rung lắc chính dừng lại, hãy hít thở vài nhịp trước khi di chuyển. Hãy chờ sau dư chấn. Trước hết, kiểm tra bản thân và người xung quanh xem có bị thương không. Nếu ai đó chấn thương, đừng di chuyển họ trừ khi đang đối mặt với nguy cơ trực tiếp như cháy, rò gas hoặc sụp đổ. Quan sát kính vỡ, dây điện lộ ra, đồ rơi và nội thất mất ổn định trước khi đứng dậy. Không đốt nến hoặc bật lửa cho đến khi chắc chắn không có mùi gas. Hãy dùng đèn điện thoại hoặc đèn pin. Nếu bạn đang ở trong tòa nhà hư hại, hãy di chuyển chậm rãi về phía lối thoát an toàn, không chạy, đồng thời quan sát trần và tường xem có nứt hoặc vật liệu rơi không. Di chuyển bình tĩnh, có chủ đích sau động đất giúp tránh nhiều chấn thương thứ cấp."
+      },
+      "audio": "srs11_05_en.mp3",
+      "tags": []
+    },
+    {
+      "slug": "family-communication-and-meeting-points-after-quakes",
+      "keywords_en": [
+        "family plan",
+        "meeting point",
+        "communication"
+      ],
+      "keywords_vi": [
+        "kế hoạch gia đình",
+        "điểm tập trung",
+        "liên lạc"
+      ],
+      "copy": {
+        "en": "Communication is often disrupted after earthquakes. Agree in advance on one or two safe meeting points near your home and another outside your neighborhood in case evacuation is needed. Decide who will pick up children from school if systems fail. After shaking stops and it is safe to move, go to the meeting point instead of searching separately—this reduces panic and confusion. Use short text messages rather than long calls to preserve battery and ease network load. Write down important phone numbers on paper in case your device is lost or runs out of power. A simple family plan turns a chaotic situation into a sequence of clear steps everyone understands.",
+        "vi": "Liên lạc thường bị gián đoạn sau động đất. Hãy thống nhất trước một hoặc hai điểm tập trung an toàn gần nhà và một điểm xa hơn phòng khi phải sơ tán khỏi khu vực. Quy ước trước ai sẽ đón trẻ nếu hệ thống trường học trục trặc. Sau khi rung lắc dừng và di chuyển an toàn, hãy tới điểm tập trung thay vì mỗi người tự đi tìm nhau—như vậy giảm hoang mang và nhầm lẫn. Ưu tiên nhắn tin ngắn thay vì gọi lâu để tiết kiệm pin và giảm tải mạng. Ghi số điện thoại quan trọng ra giấy phòng trường hợp mất máy hoặc hết pin. Một kế hoạch gia đình đơn giản biến tình huống hỗn loạn thành chuỗi bước rõ ràng mà ai cũng hiểu."
+      },
+      "audio": "srs11_06_en.mp3",
+      "tags": []
+    }
+  ]
 }

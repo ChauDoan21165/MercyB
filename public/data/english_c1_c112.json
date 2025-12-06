@@ -13,63 +13,105 @@
   "entries": [
     {
       "slug": "hearing-connected-speech",
-      "keywords_en": ["listening", "connected speech"],
-      "keywords_vi": ["nghe", "nối âm"],
+      "keywords_en": [
+        "listening",
+        "connected speech"
+      ],
+      "keywords_vi": [
+        "nghe",
+        "nối âm"
+      ],
       "copy": {
         "en": "Native speakers often connect words to keep speech smooth. For example: want to becomes wanna, going to becomes gonna, did you becomes didja. Do not try to catch each sound. Listen for the whole idea. Your brain will adjust with practice.",
         "vi": "Người bản xứ thường nối từ để lời nói trôi chảy hơn. Ví dụ: want to thành wanna, going to thành gonna, did you thành didja. Đừng cố nghe từng âm. Hãy nghe toàn ý. Bộ não của bạn sẽ thích nghi khi luyện tập đều."
       },
-      "audio": "c112_01_en.mp3"
+      "audio": "c112_01_en.mp3",
+      "tags": []
     },
     {
       "slug": "noticing-reduced-sounds",
-      "keywords_en": ["reduced sounds", "natural speech"],
-      "keywords_vi": ["rút âm", "giọng tự nhiên"],
+      "keywords_en": [
+        "reduced sounds",
+        "natural speech"
+      ],
+      "keywords_vi": [
+        "rút âm",
+        "giọng tự nhiên"
+      ],
       "copy": {
         "en": "In fast speech, many small words lose their full sound. For example: for becomes fer, and becomes n, of becomes uh. This is normal and not lazy. Reduced sounds help speakers talk smoothly. Train your ear to expect these soft forms.",
         "vi": "Trong tốc độ tự nhiên, nhiều từ nhỏ bị rút âm. Ví dụ: for thành fer, and thành n, of thành uh. Đây là hiện tượng bình thường, không phải nói cẩu thả. Rút âm giúp lời nói liền mạch. Hãy tập để tai quen với các dạng âm nhẹ này."
       },
-      "audio": "c112_02_en.mp3"
+      "audio": "c112_02_en.mp3",
+      "tags": []
     },
     {
       "slug": "listening-for-stress-and-meaning",
-      "keywords_en": ["stress", "meaning"],
-      "keywords_vi": ["nhấn âm", "ý chính"],
+      "keywords_en": [
+        "stress",
+        "meaning"
+      ],
+      "keywords_vi": [
+        "nhấn âm",
+        "ý chính"
+      ],
       "copy": {
         "en": "English uses stress to show meaning. Speakers highlight important words and reduce others. When listening, focus on the stressed words. They carry the message. Do not panic if you miss the small words. Meaning remains clear when you follow the stress pattern.",
         "vi": "Tiếng Anh dùng nhấn âm để truyền tải ý nghĩa. Người nói nhấn các từ quan trọng và giảm âm các từ còn lại. Khi nghe, hãy tập trung vào từ được nhấn. Đó là nơi chứa thông điệp. Đừng lo nếu bạn bỏ lỡ từ nhỏ; ý chính vẫn rõ nếu bạn theo dõi nhịp nhấn."
       },
-      "audio": "c112_03_en.mp3"
+      "audio": "c112_03_en.mp3",
+      "tags": []
     },
     {
       "slug": "following-natural-rhythm",
-      "keywords_en": ["rhythm", "listening"],
-      "keywords_vi": ["nhịp", "nghe"],
+      "keywords_en": [
+        "rhythm",
+        "listening"
+      ],
+      "keywords_vi": [
+        "nhịp",
+        "nghe"
+      ],
       "copy": {
         "en": "Every native speaker has a rhythm. Some speak fast with short pauses; others speak slower with long pauses. Train yourself to follow rhythm, not speed. When you focus on the flow of the voice, your understanding becomes smoother and less stressful.",
         "vi": "Mỗi người bản xứ có nhịp nói riêng. Có người nói nhanh với khoảng nghỉ ngắn, có người nói chậm với khoảng nghỉ dài. Hãy luyện theo nhịp, không phải tốc độ. Khi tập trung vào dòng chảy của giọng nói, khả năng nghe của bạn sẽ tự nhiên và bớt căng thẳng hơn."
       },
-      "audio": "c112_04_en.mp3"
+      "audio": "c112_04_en.mp3",
+      "tags": []
     },
     {
       "slug": "guessing-from-context",
-      "keywords_en": ["context", "understanding"],
-      "keywords_vi": ["ngữ cảnh", "hiểu"],
+      "keywords_en": [
+        "context",
+        "understanding"
+      ],
+      "keywords_vi": [
+        "ngữ cảnh",
+        "hiểu"
+      ],
       "copy": {
         "en": "You do not need to understand every word. Use context: the topic, the speaker’s emotion, the situation, and the words around the one you missed. Guessing is a natural part of listening. Even native speakers guess when they miss sounds.",
         "vi": "Bạn không cần hiểu từng từ. Hãy dùng ngữ cảnh: chủ đề, cảm xúc người nói, tình huống và các từ xung quanh từ bạn bỏ lỡ. Việc đoán nghĩa là một phần tự nhiên của kỹ năng nghe. Ngay cả người bản xứ cũng đoán khi họ nghe không rõ."
       },
-      "audio": "c112_05_en.mp3"
+      "audio": "c112_05_en.mp3",
+      "tags": []
     },
     {
       "slug": "training-with-short-real-speech",
-      "keywords_en": ["practice", "real speech"],
-      "keywords_vi": ["luyện tập", "giọng tự nhiên"],
+      "keywords_en": [
+        "practice",
+        "real speech"
+      ],
+      "keywords_vi": [
+        "luyện tập",
+        "giọng tự nhiên"
+      ],
       "copy": {
         "en": "Practice with short sentences spoken at natural speed. Repeat them several times. Focus on the overall idea, then the rhythm, then the details. Layered listening builds confidence. Real listening is not perfect listening. It is calm, steady understanding.",
         "vi": "Hãy luyện với các câu ngắn được nói ở tốc độ tự nhiên. Lặp lại nhiều lần. Tập trung vào ý chính, rồi nhịp điệu, rồi chi tiết. Luyện nghe theo từng lớp giúp bạn tự tin hơn. Nghe hiểu thực tế không cần hoàn hảo—chỉ cần bình tĩnh và ổn định."
       },
-      "audio": "c112_06_en.mp3"
+      "audio": "c112_06_en.mp3",
+      "tags": []
     }
   ]
 }

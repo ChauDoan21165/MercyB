@@ -13,63 +13,105 @@
   "entries": [
     {
       "slug": "asking-wh-questions-clearly",
-      "keywords_en": ["questions", "speaking"],
-      "keywords_vi": ["câu hỏi", "giao tiếp"],
+      "keywords_en": [
+        "questions",
+        "speaking"
+      ],
+      "keywords_vi": [
+        "câu hỏi",
+        "giao tiếp"
+      ],
       "copy": {
         "en": "Use clear patterns to ask WH questions. Who is he? What do you want to eat? When does the class start? Where are you going? Why is it important? How do you do this? Say each question slowly to build confidence.",
         "vi": "Hãy dùng các mẫu rõ ràng để đặt câu hỏi WH. Who is he? What do you want to eat? When does the class start? Where are you going? Why is it important? How do you do this? Hãy nói từng câu chậm rãi để tạo sự tự tin."
       },
-      "audio": "b109_01_en.mp3"
+      "audio": "b109_01_en.mp3",
+      "tags": []
     },
     {
       "slug": "answering-short-but-complete",
-      "keywords_en": ["answers", "speaking"],
-      "keywords_vi": ["trả lời", "giao tiếp"],
+      "keywords_en": [
+        "answers",
+        "speaking"
+      ],
+      "keywords_vi": [
+        "trả lời",
+        "giao tiếp"
+      ],
       "copy": {
         "en": "Answer with short but complete lines. Who is he? He is my brother. What do you want to eat? I want noodles. Where are you going? I am going to work. Simple answers sound natural and clear.",
         "vi": "Hãy trả lời bằng câu ngắn nhưng đầy đủ. Who is he? He is my brother. What do you want to eat? I want noodles. Where are you going? I am going to work. Câu trả lời đơn giản nghe tự nhiên và rõ ràng."
       },
-      "audio": "b109_02_en.mp3"
+      "audio": "b109_02_en.mp3",
+      "tags": []
     },
     {
       "slug": "asking-for-more-details",
-      "keywords_en": ["details", "conversation"],
-      "keywords_vi": ["chi tiết", "hội thoại"],
+      "keywords_en": [
+        "details",
+        "conversation"
+      ],
+      "keywords_vi": [
+        "chi tiết",
+        "hội thoại"
+      ],
       "copy": {
         "en": "Use simple lines to ask for more details. Can you tell me more? What do you mean? Can you explain that? These phrases help you understand better and continue the conversation.",
         "vi": "Hãy dùng các câu đơn giản để hỏi thêm chi tiết. Can you tell me more? What do you mean? Can you explain that? Những câu này giúp bạn hiểu rõ hơn và tiếp tục cuộc trò chuyện."
       },
-      "audio": "b109_03_en.mp3"
+      "audio": "b109_03_en.mp3",
+      "tags": []
     },
     {
       "slug": "giving-reasons-in-answers",
-      "keywords_en": ["reasons", "answers"],
-      "keywords_vi": ["lý do", "trả lời"],
+      "keywords_en": [
+        "reasons",
+        "answers"
+      ],
+      "keywords_vi": [
+        "lý do",
+        "trả lời"
+      ],
       "copy": {
         "en": "Add a short reason to make your answer stronger. I like this place because it is quiet. I study English because it helps my job. I walk to work because it is close. Simple reasons make your speaking clearer.",
         "vi": "Hãy thêm một lý do ngắn để câu trả lời thuyết phục hơn. I like this place because it is quiet. I study English because it helps my job. I walk to work because it is close. Lý do đơn giản giúp lời nói của bạn rõ ràng hơn."
       },
-      "audio": "b109_04_en.mp3"
+      "audio": "b109_04_en.mp3",
+      "tags": []
     },
     {
       "slug": "practicing-longer-questions",
-      "keywords_en": ["questions", "practice"],
-      "keywords_vi": ["câu hỏi", "luyện tập"],
+      "keywords_en": [
+        "questions",
+        "practice"
+      ],
+      "keywords_vi": [
+        "câu hỏi",
+        "luyện tập"
+      ],
       "copy": {
         "en": "Practice a few longer questions. What do you usually do after work? Where do you want to travel this year? Why did you choose this job? Practice slowly so the rhythm feels natural.",
         "vi": "Hãy luyện vài câu hỏi dài hơn. What do you usually do after work? Where do you want to travel this year? Why did you choose this job? Hãy luyện chậm để nhịp nói tự nhiên hơn."
       },
-      "audio": "b109_05_en.mp3"
+      "audio": "b109_05_en.mp3",
+      "tags": []
     },
     {
       "slug": "daily-question-practice",
-      "keywords_en": ["practice", "daily"],
-      "keywords_vi": ["luyện tập", "hằng ngày"],
+      "keywords_en": [
+        "practice",
+        "daily"
+      ],
+      "keywords_vi": [
+        "luyện tập",
+        "hằng ngày"
+      ],
       "copy": {
         "en": "Ask and answer one WH question each day. Start with easy ones and repeat until you feel comfortable. Daily practice builds strong speaking habits and clear thinking.",
         "vi": "Hãy luyện hỏi và trả lời một câu WH mỗi ngày. Bắt đầu với câu dễ và lặp lại cho đến khi bạn thấy thoải mái. Luyện tập hằng ngày giúp bạn hình thành thói quen nói tốt và suy nghĩ rõ ràng."
       },
-      "audio": "b109_06_en.mp3"
+      "audio": "b109_06_en.mp3",
+      "tags": []
     }
   ]
 }

@@ -1,6 +1,4 @@
 {
-  "schema_version": "1.0",
-  "schema_id": "adhd-support-free",
   "id": "adhd-support-free",
   "tier": "free",
   "domain": "",
@@ -123,13 +121,5 @@
   "room_essay": {
     "en": "Practical guidance for managing ADHD with simple, supportive strategies. This room helps you build focus, organize your day, and rely on a healthy support network. Start small, stay consistent, and explore deeper tools in higher tiers.",
     "vi": "Hướng dẫn thực tế để quản lý ADHD bằng những chiến lược đơn giản và mang tính hỗ trợ. Phòng này giúp bạn tăng khả năng tập trung, tổ chức ngày của mình và xây dựng hệ thống hỗ trợ lành mạnh. Bắt đầu từ những bước nhỏ, duy trì đều đặn và khám phá thêm công cụ nâng cao ở các cấp độ cao hơn."
-  },
-  "safety_disclaimer": {
-    "en": "",
-    "vi": ""
-  },
-  "crisis_footer": {
-    "en": "",
-    "vi": ""
   }
 }

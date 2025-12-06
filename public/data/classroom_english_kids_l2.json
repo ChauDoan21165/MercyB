@@ -13,77 +13,132 @@
   "entries": [
     {
       "slug": "listen-and-repeat",
-      "keywords_en": ["listen", "repeat", "teacher"],
-      "keywords_vi": ["nghe", "nhắc lại", "giáo viên"],
+      "keywords_en": [
+        "listen",
+        "repeat",
+        "teacher"
+      ],
+      "keywords_vi": [
+        "nghe",
+        "nhắc lại",
+        "giáo viên"
+      ],
       "copy": {
         "en": "Teach the phrase “Listen and repeat” by practicing with short, simple words. Say: “Listen and repeat: apple.” Then let your child repeat. Use friendly gestures like pointing to your ear and then your mouth. Start with easy words and celebrate every try. This helps children follow teacher instructions naturally without feeling stressed.",
         "vi": "Dạy câu “Listen and repeat” bằng cách luyện tập với các từ ngắn, đơn giản. Nói: “Listen and repeat: apple.” Sau đó để bé nhắc lại. Dùng cử chỉ thân thiện như chỉ vào tai rồi miệng. Bắt đầu với từ dễ và khen ngợi mọi nỗ lực. Điều này giúp trẻ làm quen với lệnh giáo viên một cách tự nhiên, không căng thẳng."
       },
-      "tags": ["classroom", "instructions"],
+      "tags": [
+        "classroom",
+        "instructions"
+      ],
       "audio": "classroom_english_v1_listen_repeat.mp3"
     },
     {
       "slug": "stand-up-sit-down",
-      "keywords_en": ["stand up", "sit down", "movement"],
-      "keywords_vi": ["đứng lên", "ngồi xuống", "vận động"],
+      "keywords_en": [
+        "stand up",
+        "sit down",
+        "movement"
+      ],
+      "keywords_vi": [
+        "đứng lên",
+        "ngồi xuống",
+        "vận động"
+      ],
       "copy": {
         "en": "Teach “Stand up” and “Sit down” through a simple movement game. Say the words slowly while doing the actions together. Then switch roles and let your child give the commands. Kids learn best when they move their bodies, and turning instructions into play builds confidence and fast understanding.",
         "vi": "Dạy “Stand up” và “Sit down” bằng trò chơi vận động đơn giản. Nói chậm và cùng làm động tác. Sau đó đổi vai để bé đưa ra lệnh. Trẻ học tốt nhất khi được vận động, và biến câu lệnh thành trò chơi giúp bé hiểu nhanh và tự tin hơn."
       },
-      "tags": ["movement", "commands"],
+      "tags": [
+        "movement",
+        "commands"
+      ],
       "audio": "classroom_english_v1_stand_sit.mp3"
     },
     {
       "slug": "open-your-book",
-      "keywords_en": ["open your book", "read", "classroom"],
-      "keywords_vi": ["mở sách", "đọc", "lớp học"],
+      "keywords_en": [
+        "open your book",
+        "read",
+        "classroom"
+      ],
+      "keywords_vi": [
+        "mở sách",
+        "đọc",
+        "lớp học"
+      ],
       "copy": {
         "en": "Use real objects to teach “Open your book.” Hand your child a book and say the phrase slowly. Encourage them to open it and look at a page. You can add small challenges like: “Open your book to page three.” Connecting the phrase to a real action helps children remember it easily.",
         "vi": "Dùng đồ thật để dạy câu “Open your book.” Đưa bé một quyển sách và nói chậm rãi. Khuyến khích bé mở ra và xem một trang. Bạn có thể thêm thử thách nhỏ: “Open your book to page three.” Việc gắn câu lệnh với hành động thật giúp trẻ ghi nhớ dễ dàng."
       },
-      "tags": ["reading", "classroom"],
+      "tags": [
+        "reading",
+        "classroom"
+      ],
       "audio": "classroom_english_v1_open_book.mp3"
     },
     {
       "slug": "raise-your-hand",
-      "keywords_en": ["raise your hand", "question", "class behavior"],
-      "keywords_vi": ["giơ tay", "câu hỏi", "hành vi lớp học"],
+      "keywords_en": [
+        "raise your hand",
+        "question",
+        "class behavior"
+      ],
+      "keywords_vi": [
+        "giơ tay",
+        "câu hỏi",
+        "hành vi lớp học"
+      ],
       "copy": {
         "en": "Teach “Raise your hand” by turning it into a fun reaction game. Say the phrase at different speeds, and your child responds by lifting their hand. You can mix it with silly phrases to keep it playful: “Raise your hand… touch your nose… raise your hand!” This helps children understand the classroom rule in a positive, memorable way.",
         "vi": "Dạy “Raise your hand” bằng trò chơi phản xạ vui. Nói câu ở tốc độ khác nhau và bé giơ tay đáp lại. Bạn có thể xen câu hài hước để tăng phần vui: “Raise your hand… touch your nose… raise your hand!” Hoạt động này giúp bé hiểu quy tắc lớp học theo cách tích cực và dễ nhớ."
       },
-      "tags": ["behavior", "questions"],
+      "tags": [
+        "behavior",
+        "questions"
+      ],
       "audio": "classroom_english_v1_raise_hand.mp3"
     },
     {
       "slug": "can-i-go-out",
-      "keywords_en": ["can I go out", "permission"],
-      "keywords_vi": ["con có thể ra ngoài không", "xin phép"],
+      "keywords_en": [
+        "can I go out",
+        "permission"
+      ],
+      "keywords_vi": [
+        "con có thể ra ngoài không",
+        "xin phép"
+      ],
       "copy": {
         "en": "Teach children how to ask permission with the phrase “Can I go out?” Practice by acting out small situations: needing the bathroom, getting a drink, or taking a short break. Encourage your child to use a polite tone. Understanding how to ask permission builds confidence and improves real-life communication.",
         "vi": "Dạy trẻ cách xin phép bằng câu “Can I go out?” Hãy đóng vai các tình huống nhỏ: cần đi vệ sinh, uống nước hoặc nghỉ ngắn. Khuyến khích bé nói với giọng lễ phép. Việc biết cách xin phép giúp trẻ tự tin hơn và giao tiếp tốt trong đời sống."
       },
-      "tags": ["permission", "classroom"],
+      "tags": [
+        "permission",
+        "classroom"
+      ],
       "audio": "classroom_english_v1_canigoout.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all", "full", "complete"],
-      "keywords_vi": ["tất cả", "đầy đủ", "hoàn chỉnh"],
+      "keywords_en": [
+        "all",
+        "full",
+        "complete"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "đầy đủ",
+        "hoàn chỉnh"
+      ],
       "copy": {
         "en": "Teach “Listen and repeat” using short words and friendly gestures.\n\nTeach “Stand up” and “Sit down” with a fun movement game.\n\nTeach “Open your book” using real objects and simple actions.\n\nTeach “Raise your hand” with a playful reaction activity.\n\nTeach “Can I go out?” through role-play and permission practice.\n\nTogether, these lessons help children understand and use common classroom English in real situations with confidence.",
         "vi": "Dạy “Listen and repeat” bằng từ ngắn và cử chỉ thân thiện.\n\nDạy “Stand up” và “Sit down” qua trò chơi vận động.\n\nDạy “Open your book” bằng hành động thật với sách.\n\nDạy “Raise your hand” bằng trò phản xạ vui.\n\nDạy “Can I go out?” qua đóng vai xin phép.\n\nNhững hoạt động này giúp trẻ hiểu và dùng tiếng Anh lớp học trong tình huống thật với sự tự tin."
       },
-      "tags": ["all"],
+      "tags": [
+        "all"
+      ],
       "audio": "classroom_english_v1_listen_repeat.mp3 classroom_english_v1_stand_sit.mp3 classroom_english_v1_open_book.mp3 classroom_english_v1_raise_hand.mp3 classroom_english_v1_canigoout.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "7-10",
-    "level": "Kids Level 2",
-    "created_at": "2025-11-21T00:00:00+00:00",
-    "updated_at": "2025-11-21T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#CBE0FF"
-  }
+  ]
 }

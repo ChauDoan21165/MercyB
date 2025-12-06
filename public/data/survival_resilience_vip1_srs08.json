@@ -1,75 +1,133 @@
 {
-"id": "survival_resilience_vip1_srs08",
-"tier": "VIP1 / VIP1",
-"domain": "Survival",
-"title": {
-"en": "SRS-08 — Storms, Typhoons & Household Reinforcement",
-"vi": "SRS-08 — Bão, Lũ & Gia Cố An Toàn Cho Gia Đình"
-},
-"content": {
-"en": "Severe storms and typhoons are becoming more frequent and intense. This room shows you how to prepare your home and family before the wind rises and the rain begins. You will learn how to read basic storm warnings, reinforce doors and windows, organize a safe room, and protect vulnerable family members when the outside world becomes dangerous. These six entries focus on calm, practical steps you can take days, hours, and minutes before impact so that your home is safer, your supplies are organized, and your mind is steady when the storm arrives.",
-"vi": "Bão lớn và mưa lũ đang ngày càng xuất hiện thường xuyên và dữ dội hơn. Phòng này giúp bạn chuẩn bị cho nhà và gia đình từ trước, khi gió còn nhẹ và mưa chưa tới. Bạn sẽ học cách đọc cảnh báo bão cơ bản, gia cố cửa và cửa sổ, sắp xếp phòng an toàn và bảo vệ thành viên dễ tổn thương khi thế giới bên ngoài trở nên nguy hiểm. Sáu mục nội dung tập trung vào những bước bình tĩnh, thực tế mà bạn có thể làm trong nhiều ngày, nhiều giờ và ngay trước khi bão đổ bộ để nhà an toàn hơn, đồ đạc sẵn sàng và tâm trí vững vàng khi bão đến."
-},
-"entries": [
-{
-"slug": "reading-basic-storm-and-typhoon-warnings",
-"keywords_en": ["storm warnings", "typhoon levels", "risk awareness"],
-"keywords_vi": ["cảnh báo bão", "cấp độ bão", "nhận biết rủi ro"],
-"copy": {
-"en": "Storm warnings are not just numbers on a screen; they tell you how urgent your preparation should be. Learn the difference between a watch and a warning: a watch means conditions are favorable, a warning means dangerous weather is expected or already happening. Pay attention to wind speed categories and expected rainfall. Heavy rain over many hours can be as dangerous as strong wind. When forecasts mention storm surge or flooding, plan to move important items and documents to higher levels. Follow trusted local sources, not rumors or dramatic social media posts. Understanding basic warning language turns vague anxiety into clear decisions and timely action.",
-"vi": "Cảnh báo bão không chỉ là vài con số trên màn hình; chúng cho bạn biết mức độ khẩn cấp của việc chuẩn bị. Hãy phân biệt giữa cảnh báo theo dõi và cảnh báo nguy hiểm: theo dõi nghĩa là điều kiện thuận lợi để bão hình thành, còn cảnh báo nguy hiểm nghĩa là thời tiết xấu đang được dự báo hoặc đã xảy ra. Chú ý cấp gió và lượng mưa dự kiến. Mưa lớn kéo dài nhiều giờ có thể nguy hiểm không kém gió mạnh. Khi dự báo nhắc đến triều cường hoặc ngập lụt, hãy lên kế hoạch chuyển đồ quan trọng và giấy tờ lên tầng cao. Theo dõi nguồn tin địa phương đáng tin, không chạy theo tin đồn hoặc mạng xã hội giật gân. Hiểu ngôn ngữ cảnh báo cơ bản giúp biến lo lắng mơ hồ thành quyết định rõ ràng và hành động kịp thời."
-},
-"audio": "srs08_01_en.mp3"
-},
-{
-"slug": "reinforcing-doors-windows-and-balconies",
-"keywords_en": ["reinforcement", "doors", "windows", "balcony safety"],
-"keywords_vi": ["gia cố", "cửa ra vào", "cửa sổ", "an toàn ban công"],
-"copy": {
-"en": "Strong winds turn weak points of the house into entry paths for rain and debris. Before storm season, check doors and windows for loose hinges, cracked glass, or gaps. Use simple weatherstripping or tape to reduce rattling and leaks. For sliding doors or balcony glass, move heavy furniture away so broken glass does not fall onto beds or regular sitting areas. Bring plants, loose objects, and light furniture indoors so they do not become flying projectiles. Close and secure shutters if you have them. These small reinforcements do not make your home indestructible, but they significantly reduce damage and danger from wind and broken glass.",
-"vi": "Gió mạnh biến các điểm yếu của căn nhà thành lối cho mưa và vật bay xâm nhập. Trước mùa bão, hãy kiểm tra cửa ra vào và cửa sổ xem bản lề có lỏng, kính có nứt hay có khe hở không. Dùng gioăng chắn gió hoặc băng dán để giảm rung và giảm rò nước. Với cửa trượt hoặc kính ban công, hãy kê giường và ghế xa khu vực ấy để nếu kính vỡ, mảnh vỡ không rơi trực tiếp lên nơi ngủ hay chỗ ngồi thường xuyên. Đưa cây, đồ trang trí và nội thất nhẹ ngoài ban công vào trong để chúng không trở thành vật bay nguy hiểm. Đóng và khóa chặt cửa chớp nếu nhà có. Những bước gia cố nhỏ này không biến nhà bạn thành pháo đài, nhưng giảm đáng kể hư hại và nguy hiểm do gió và kính vỡ."
-},
-"audio": "srs08_02_en.mp3"
-},
-{
-"slug": "creating-a-safe-room-inside-your-home",
-"keywords_en": ["safe room", "interior safety", "family shelter"],
-"keywords_vi": ["phòng an toàn", "an toàn trong nhà", "nơi trú gia đình"],
-"copy": {
-"en": "A safe room is a simple interior space where your family can stay when wind and debris become dangerous. Choose a room without large windows, ideally in the center of the home—such as a small bedroom, hallway, or storage room. Keep a basic kit there: water, light, a first aid kit, snacks, a battery-powered radio, and important medications. Prepare thin mattresses or blankets so children and elders can rest on the floor away from glass. Charge phones and power banks before moving in. During the height of the storm, staying together in this safe room reduces panic and keeps everyone away from falling objects and broken windows.",
-"vi": "Phòng an toàn là một không gian đơn giản bên trong nhà nơi gia đình bạn có thể trú khi gió và vật bay trở nên nguy hiểm. Hãy chọn phòng không có cửa kính lớn, lý tưởng ở giữa nhà—như phòng ngủ nhỏ, hành lang hoặc kho. Để sẵn một bộ dụng cụ cơ bản: nước uống, nguồn sáng, hộp sơ cứu, đồ ăn nhẹ, radio dùng pin và thuốc thiết yếu. Chuẩn bị nệm mỏng hoặc chăn để trẻ em và người già có thể nằm trên sàn, tránh xa kính. Sạc sẵn điện thoại và pin dự phòng trước khi vào. Khi bão đạt đỉnh, việc ở cùng nhau trong phòng an toàn giúp giảm hoảng loạn và tránh xa đồ rơi hay kính vỡ."
-},
-"audio": "srs08_03_en.mp3"
-},
-{
-"slug": "managing-flood-risk-inside-and-around-the-house",
-"keywords_en": ["flood risk", "drainage", "indoor protection"],
-"keywords_vi": ["nguy cơ ngập", "thoát nước", "bảo vệ trong nhà"],
-"copy": {
-"en": "Heavy rain often brings flooding, even if you do not live near a river. Clear drains, gutters, and balcony outlets before storms so water can flow freely. Move electrical cords, power strips, and low-lying appliances off the floor where possible. Store important documents, electronics, and sentimental items on higher shelves or upper floors. Prepare a pair of sturdy waterproof shoes and gloves for moving around after the rain. Never walk through fast-moving floodwater—it can hide open drains, sharp objects, and electrical risks. Managing flood risk is about guiding water away from your living space and keeping your essential items dry and safe.",
-"vi": "Mưa lớn thường kéo theo ngập lụt, ngay cả khi bạn không sống gần sông. Trước bão, hãy dọn sạch cống, máng xối và lỗ thoát nước trên ban công để nước chảy tự do. Di chuyển dây điện, ổ cắm và thiết bị đặt sát sàn lên cao nếu có thể. Cất giấy tờ quan trọng, đồ điện tử và kỷ vật lên kệ cao hoặc tầng trên. Chuẩn bị giày chống thấm chắc chắn và găng tay để di chuyển sau mưa. Không đi bộ trong dòng nước chảy xiết—nước che khuất miệng cống, vật sắc và nguy cơ điện giật. Quản lý nguy cơ ngập là hướng nước ra khỏi không gian sống và giữ cho vật dụng thiết yếu khô ráo, an toàn."
-},
-"audio": "srs08_04_en.mp3"
-},
-{
-"slug": "planning-for-power-and-communication-loss",
-"keywords_en": ["power loss", "communication", "planning"],
-"keywords_vi": ["mất điện", "liên lạc", "kế hoạch"],
-"copy": {
-"en": "Typhoons and severe storms almost always bring power cuts and unstable communication. Charge phones, power banks, and small rechargeable lights before the storm. Download key offline maps and save important phone numbers on paper in case devices fail. Decide in advance which messaging app or channel your family will use to check in when networks are unstable. Keep at least one battery-powered or crank radio if possible to receive updates. Limit unnecessary screen use during outages to preserve battery. When you expect power loss, preparation turns darkness into quiet inconvenience instead of chaos.",
-"vi": "Bão lớn gần như luôn kéo theo mất điện và liên lạc chập chờn. Hãy sạc đầy điện thoại, pin dự phòng và các đèn sạc nhỏ trước khi bão tới. Tải bản đồ offline và ghi số điện thoại quan trọng ra giấy phòng khi thiết bị gặp sự cố. Thống nhất trước ứng dụng hoặc kênh liên lạc mà gia đình sẽ dùng để báo an nếu mạng chập chờn. Nếu có thể, hãy chuẩn bị một radio dùng pin hoặc quay tay để nhận thông tin. Hạn chế dùng điện thoại vào việc không cần thiết khi mất điện để giữ pin lâu. Khi bạn chủ động chuẩn bị, mất điện sẽ trở thành sự bất tiện yên tĩnh thay vì hỗn loạn."
-},
-"audio": "srs08_05_en.mp3"
-},
-{
-"slug": "protecting-children-elders-and-pets-during-storms",
-"keywords_en": ["children safety", "elders", "pets", "storm support"],
-"keywords_vi": ["an toàn trẻ em", "người già", "thú cưng", "hỗ trợ khi bão"],
-"copy": {
-"en": "Severe weather can be frightening, especially for children, elders, and animals. Explain the situation in simple, calm language—what is happening, what the plan is, and how you will stay together. Prepare comfort items like favorite toys, books, or music for children. For elders, ensure medications, glasses, and mobility aids are within reach in the safe room. Keep pets indoors before the storm; many run away when scared by wind and thunder. Have leashes, carriers, and a small supply of pet food ready. When each vulnerable member has what they need, the whole household feels calmer and more secure throughout the storm.",
-"vi": "Thời tiết cực đoan dễ gây sợ hãi, đặc biệt với trẻ em, người già và thú cưng. Hãy giải thích tình hình bằng lời lẽ đơn giản và bình tĩnh—điều gì đang xảy ra, kế hoạch là gì và cả nhà sẽ ở bên nhau thế nào. Chuẩn bị đồ vật giúp trẻ thấy an tâm như đồ chơi yêu thích, sách hoặc nhạc. Với người già, hãy để thuốc, kính và dụng cụ hỗ trợ di chuyển trong tầm tay tại phòng an toàn. Giữ thú cưng trong nhà trước khi bão đến; nhiều con bỏ chạy vì sợ gió mạnh và sấm. Chuẩn bị sẵn dây dắt, lồng và một ít thức ăn cho chúng. Khi từng người dễ tổn thương đều được chăm lo, cả gia đình sẽ bình tĩnh và vững vàng hơn trong suốt cơn bão."
-},
-"audio": "srs08_06_en.mp3"
-}
-]
+  "id": "survival_resilience_vip1_srs08",
+  "tier": "VIP1 / VIP1",
+  "domain": "Survival",
+  "title": {
+    "en": "SRS-08 — Storms, Typhoons & Household Reinforcement",
+    "vi": "SRS-08 — Bão, Lũ & Gia Cố An Toàn Cho Gia Đình"
+  },
+  "content": {
+    "en": "Severe storms and typhoons are becoming more frequent and intense. This room shows you how to prepare your home and family before the wind rises and the rain begins. You will learn how to read basic storm warnings, reinforce doors and windows, organize a safe room, and protect vulnerable family members when the outside world becomes dangerous. These six entries focus on calm, practical steps you can take days, hours, and minutes before impact so that your home is safer, your supplies are organized, and your mind is steady when the storm arrives.",
+    "vi": "Bão lớn và mưa lũ đang ngày càng xuất hiện thường xuyên và dữ dội hơn. Phòng này giúp bạn chuẩn bị cho nhà và gia đình từ trước, khi gió còn nhẹ và mưa chưa tới. Bạn sẽ học cách đọc cảnh báo bão cơ bản, gia cố cửa và cửa sổ, sắp xếp phòng an toàn và bảo vệ thành viên dễ tổn thương khi thế giới bên ngoài trở nên nguy hiểm. Sáu mục nội dung tập trung vào những bước bình tĩnh, thực tế mà bạn có thể làm trong nhiều ngày, nhiều giờ và ngay trước khi bão đổ bộ để nhà an toàn hơn, đồ đạc sẵn sàng và tâm trí vững vàng khi bão đến."
+  },
+  "entries": [
+    {
+      "slug": "reading-basic-storm-and-typhoon-warnings",
+      "keywords_en": [
+        "storm warnings",
+        "typhoon levels",
+        "risk awareness"
+      ],
+      "keywords_vi": [
+        "cảnh báo bão",
+        "cấp độ bão",
+        "nhận biết rủi ro"
+      ],
+      "copy": {
+        "en": "Storm warnings are not just numbers on a screen; they tell you how urgent your preparation should be. Learn the difference between a watch and a warning: a watch means conditions are favorable, a warning means dangerous weather is expected or already happening. Pay attention to wind speed categories and expected rainfall. Heavy rain over many hours can be as dangerous as strong wind. When forecasts mention storm surge or flooding, plan to move important items and documents to higher levels. Follow trusted local sources, not rumors or dramatic social media posts. Understanding basic warning language turns vague anxiety into clear decisions and timely action.",
+        "vi": "Cảnh báo bão không chỉ là vài con số trên màn hình; chúng cho bạn biết mức độ khẩn cấp của việc chuẩn bị. Hãy phân biệt giữa cảnh báo theo dõi và cảnh báo nguy hiểm: theo dõi nghĩa là điều kiện thuận lợi để bão hình thành, còn cảnh báo nguy hiểm nghĩa là thời tiết xấu đang được dự báo hoặc đã xảy ra. Chú ý cấp gió và lượng mưa dự kiến. Mưa lớn kéo dài nhiều giờ có thể nguy hiểm không kém gió mạnh. Khi dự báo nhắc đến triều cường hoặc ngập lụt, hãy lên kế hoạch chuyển đồ quan trọng và giấy tờ lên tầng cao. Theo dõi nguồn tin địa phương đáng tin, không chạy theo tin đồn hoặc mạng xã hội giật gân. Hiểu ngôn ngữ cảnh báo cơ bản giúp biến lo lắng mơ hồ thành quyết định rõ ràng và hành động kịp thời."
+      },
+      "audio": "srs08_01_en.mp3",
+      "tags": []
+    },
+    {
+      "slug": "reinforcing-doors-windows-and-balconies",
+      "keywords_en": [
+        "reinforcement",
+        "doors",
+        "windows",
+        "balcony safety"
+      ],
+      "keywords_vi": [
+        "gia cố",
+        "cửa ra vào",
+        "cửa sổ",
+        "an toàn ban công"
+      ],
+      "copy": {
+        "en": "Strong winds turn weak points of the house into entry paths for rain and debris. Before storm season, check doors and windows for loose hinges, cracked glass, or gaps. Use simple weatherstripping or tape to reduce rattling and leaks. For sliding doors or balcony glass, move heavy furniture away so broken glass does not fall onto beds or regular sitting areas. Bring plants, loose objects, and light furniture indoors so they do not become flying projectiles. Close and secure shutters if you have them. These small reinforcements do not make your home indestructible, but they significantly reduce damage and danger from wind and broken glass.",
+        "vi": "Gió mạnh biến các điểm yếu của căn nhà thành lối cho mưa và vật bay xâm nhập. Trước mùa bão, hãy kiểm tra cửa ra vào và cửa sổ xem bản lề có lỏng, kính có nứt hay có khe hở không. Dùng gioăng chắn gió hoặc băng dán để giảm rung và giảm rò nước. Với cửa trượt hoặc kính ban công, hãy kê giường và ghế xa khu vực ấy để nếu kính vỡ, mảnh vỡ không rơi trực tiếp lên nơi ngủ hay chỗ ngồi thường xuyên. Đưa cây, đồ trang trí và nội thất nhẹ ngoài ban công vào trong để chúng không trở thành vật bay nguy hiểm. Đóng và khóa chặt cửa chớp nếu nhà có. Những bước gia cố nhỏ này không biến nhà bạn thành pháo đài, nhưng giảm đáng kể hư hại và nguy hiểm do gió và kính vỡ."
+      },
+      "audio": "srs08_02_en.mp3",
+      "tags": []
+    },
+    {
+      "slug": "creating-a-safe-room-inside-your-home",
+      "keywords_en": [
+        "safe room",
+        "interior safety",
+        "family shelter"
+      ],
+      "keywords_vi": [
+        "phòng an toàn",
+        "an toàn trong nhà",
+        "nơi trú gia đình"
+      ],
+      "copy": {
+        "en": "A safe room is a simple interior space where your family can stay when wind and debris become dangerous. Choose a room without large windows, ideally in the center of the home—such as a small bedroom, hallway, or storage room. Keep a basic kit there: water, light, a first aid kit, snacks, a battery-powered radio, and important medications. Prepare thin mattresses or blankets so children and elders can rest on the floor away from glass. Charge phones and power banks before moving in. During the height of the storm, staying together in this safe room reduces panic and keeps everyone away from falling objects and broken windows.",
+        "vi": "Phòng an toàn là một không gian đơn giản bên trong nhà nơi gia đình bạn có thể trú khi gió và vật bay trở nên nguy hiểm. Hãy chọn phòng không có cửa kính lớn, lý tưởng ở giữa nhà—như phòng ngủ nhỏ, hành lang hoặc kho. Để sẵn một bộ dụng cụ cơ bản: nước uống, nguồn sáng, hộp sơ cứu, đồ ăn nhẹ, radio dùng pin và thuốc thiết yếu. Chuẩn bị nệm mỏng hoặc chăn để trẻ em và người già có thể nằm trên sàn, tránh xa kính. Sạc sẵn điện thoại và pin dự phòng trước khi vào. Khi bão đạt đỉnh, việc ở cùng nhau trong phòng an toàn giúp giảm hoảng loạn và tránh xa đồ rơi hay kính vỡ."
+      },
+      "audio": "srs08_03_en.mp3",
+      "tags": []
+    },
+    {
+      "slug": "managing-flood-risk-inside-and-around-the-house",
+      "keywords_en": [
+        "flood risk",
+        "drainage",
+        "indoor protection"
+      ],
+      "keywords_vi": [
+        "nguy cơ ngập",
+        "thoát nước",
+        "bảo vệ trong nhà"
+      ],
+      "copy": {
+        "en": "Heavy rain often brings flooding, even if you do not live near a river. Clear drains, gutters, and balcony outlets before storms so water can flow freely. Move electrical cords, power strips, and low-lying appliances off the floor where possible. Store important documents, electronics, and sentimental items on higher shelves or upper floors. Prepare a pair of sturdy waterproof shoes and gloves for moving around after the rain. Never walk through fast-moving floodwater—it can hide open drains, sharp objects, and electrical risks. Managing flood risk is about guiding water away from your living space and keeping your essential items dry and safe.",
+        "vi": "Mưa lớn thường kéo theo ngập lụt, ngay cả khi bạn không sống gần sông. Trước bão, hãy dọn sạch cống, máng xối và lỗ thoát nước trên ban công để nước chảy tự do. Di chuyển dây điện, ổ cắm và thiết bị đặt sát sàn lên cao nếu có thể. Cất giấy tờ quan trọng, đồ điện tử và kỷ vật lên kệ cao hoặc tầng trên. Chuẩn bị giày chống thấm chắc chắn và găng tay để di chuyển sau mưa. Không đi bộ trong dòng nước chảy xiết—nước che khuất miệng cống, vật sắc và nguy cơ điện giật. Quản lý nguy cơ ngập là hướng nước ra khỏi không gian sống và giữ cho vật dụng thiết yếu khô ráo, an toàn."
+      },
+      "audio": "srs08_04_en.mp3",
+      "tags": []
+    },
+    {
+      "slug": "planning-for-power-and-communication-loss",
+      "keywords_en": [
+        "power loss",
+        "communication",
+        "planning"
+      ],
+      "keywords_vi": [
+        "mất điện",
+        "liên lạc",
+        "kế hoạch"
+      ],
+      "copy": {
+        "en": "Typhoons and severe storms almost always bring power cuts and unstable communication. Charge phones, power banks, and small rechargeable lights before the storm. Download key offline maps and save important phone numbers on paper in case devices fail. Decide in advance which messaging app or channel your family will use to check in when networks are unstable. Keep at least one battery-powered or crank radio if possible to receive updates. Limit unnecessary screen use during outages to preserve battery. When you expect power loss, preparation turns darkness into quiet inconvenience instead of chaos.",
+        "vi": "Bão lớn gần như luôn kéo theo mất điện và liên lạc chập chờn. Hãy sạc đầy điện thoại, pin dự phòng và các đèn sạc nhỏ trước khi bão tới. Tải bản đồ offline và ghi số điện thoại quan trọng ra giấy phòng khi thiết bị gặp sự cố. Thống nhất trước ứng dụng hoặc kênh liên lạc mà gia đình sẽ dùng để báo an nếu mạng chập chờn. Nếu có thể, hãy chuẩn bị một radio dùng pin hoặc quay tay để nhận thông tin. Hạn chế dùng điện thoại vào việc không cần thiết khi mất điện để giữ pin lâu. Khi bạn chủ động chuẩn bị, mất điện sẽ trở thành sự bất tiện yên tĩnh thay vì hỗn loạn."
+      },
+      "audio": "srs08_05_en.mp3",
+      "tags": []
+    },
+    {
+      "slug": "protecting-children-elders-and-pets-during-storms",
+      "keywords_en": [
+        "children safety",
+        "elders",
+        "pets",
+        "storm support"
+      ],
+      "keywords_vi": [
+        "an toàn trẻ em",
+        "người già",
+        "thú cưng",
+        "hỗ trợ khi bão"
+      ],
+      "copy": {
+        "en": "Severe weather can be frightening, especially for children, elders, and animals. Explain the situation in simple, calm language—what is happening, what the plan is, and how you will stay together. Prepare comfort items like favorite toys, books, or music for children. For elders, ensure medications, glasses, and mobility aids are within reach in the safe room. Keep pets indoors before the storm; many run away when scared by wind and thunder. Have leashes, carriers, and a small supply of pet food ready. When each vulnerable member has what they need, the whole household feels calmer and more secure throughout the storm.",
+        "vi": "Thời tiết cực đoan dễ gây sợ hãi, đặc biệt với trẻ em, người già và thú cưng. Hãy giải thích tình hình bằng lời lẽ đơn giản và bình tĩnh—điều gì đang xảy ra, kế hoạch là gì và cả nhà sẽ ở bên nhau thế nào. Chuẩn bị đồ vật giúp trẻ thấy an tâm như đồ chơi yêu thích, sách hoặc nhạc. Với người già, hãy để thuốc, kính và dụng cụ hỗ trợ di chuyển trong tầm tay tại phòng an toàn. Giữ thú cưng trong nhà trước khi bão đến; nhiều con bỏ chạy vì sợ gió mạnh và sấm. Chuẩn bị sẵn dây dắt, lồng và một ít thức ăn cho chúng. Khi từng người dễ tổn thương đều được chăm lo, cả gia đình sẽ bình tĩnh và vững vàng hơn trong suốt cơn bão."
+      },
+      "audio": "srs08_06_en.mp3",
+      "tags": []
+    }
+  ]
 }

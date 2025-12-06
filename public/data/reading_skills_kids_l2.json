@@ -13,77 +13,131 @@
   "entries": [
     {
       "slug": "look-and-read",
-      "keywords_en": ["read", "look", "books"],
-      "keywords_vi": ["đọc", "nhìn", "sách"],
+      "keywords_en": [
+        "read",
+        "look",
+        "books"
+      ],
+      "keywords_vi": [
+        "đọc",
+        "nhìn",
+        "sách"
+      ],
       "copy": {
         "en": "Start with the idea that reading begins with looking. Open a book and say: “Look. Read.” Let your child point at pictures first and describe what they see. You can then point at a simple word and say it slowly. Kids learn faster when reading feels connected to visuals they already enjoy.",
         "vi": "Bắt đầu với ý tưởng rằng việc đọc bắt đầu từ việc nhìn. Mở sách và nói: “Look. Read.” Để bé chỉ vào tranh và mô tả những gì bé thấy. Sau đó bạn chỉ vào một từ đơn giản và đọc chậm rãi. Trẻ học nhanh hơn khi việc đọc gắn liền với hình ảnh mà bé thích."
       },
-      "tags": ["read"],
+      "tags": [
+        "read"
+      ],
       "audio": "reading_skills_v1_look_read.mp3"
     },
     {
       "slug": "sounds-and-blending",
-      "keywords_en": ["sounds", "blend", "phonics"],
-      "keywords_vi": ["âm", "ghép âm", "phonics"],
+      "keywords_en": [
+        "sounds",
+        "blend",
+        "phonics"
+      ],
+      "keywords_vi": [
+        "âm",
+        "ghép âm",
+        "phonics"
+      ],
       "copy": {
         "en": "Teach early sounds by saying them clearly: “m,” “a,” “t.” Show how sounds blend: “m–a–t, mat.” Let your child try slow blending too. Kids don’t need to be perfect—just hearing and trying helps build strong phonics foundations.",
         "vi": "Dạy âm cơ bản bằng cách đọc rõ: “m”, “a”, “t.” Sau đó ghép lại: “m–a–t, mat.” Để bé thử ghép chậm rãi. Trẻ không cần phải chính xác—chỉ cần nghe và thử là đủ để xây nền tảng phonics vững chắc."
       },
-      "tags": ["sounds", "phonics"],
+      "tags": [
+        "sounds",
+        "phonics"
+      ],
       "audio": "reading_skills_v1_sounds_blending.mp3"
     },
     {
       "slug": "word-hunt",
-      "keywords_en": ["word", "find", "activity"],
-      "keywords_vi": ["từ", "tìm", "hoạt động"],
+      "keywords_en": [
+        "word",
+        "find",
+        "activity"
+      ],
+      "keywords_vi": [
+        "từ",
+        "tìm",
+        "hoạt động"
+      ],
       "copy": {
         "en": "Choose an easy word like “cat” or “sun” and ask your child to find it on the page. Point to each letter together and say the sounds slowly. Word hunts turn reading into a game, helping kids notice letters and patterns without pressure.",
         "vi": "Chọn một từ đơn giản như “cat” hoặc “sun” và yêu cầu bé tìm trên trang sách. Cùng chỉ vào từng chữ cái và đọc âm chậm rãi. Trò chơi tìm từ khiến việc đọc giống như một trò chơi giúp trẻ chú ý đến chữ cái và mẫu từ mà không bị áp lực."
       },
-      "tags": ["word hunt"],
+      "tags": [
+        "word hunt"
+      ],
       "audio": "reading_skills_v1_word_hunt.mp3"
     },
     {
       "slug": "page-and-turning",
-      "keywords_en": ["page", "turn", "book skills"],
-      "keywords_vi": ["trang", "lật trang", "kỹ năng đọc"],
+      "keywords_en": [
+        "page",
+        "turn",
+        "book skills"
+      ],
+      "keywords_vi": [
+        "trang",
+        "lật trang",
+        "kỹ năng đọc"
+      ],
       "copy": {
         "en": "Teach “page” and “turn” by showing how to move through a book. Say: “Turn the page.” Let your child do it slowly. This builds comfort with books and teaches the rhythm of reading: page by page, idea by idea.",
         "vi": "Dạy các từ “page” và “turn” bằng cách hướng dẫn cách lật sách. Nói: “Turn the page.” Để bé tự lật thật chậm. Điều này giúp trẻ quen với sách và hiểu nhịp đọc: từng trang, từng ý."
       },
-      "tags": ["page", "turn"],
+      "tags": [
+        "page",
+        "turn"
+      ],
       "audio": "reading_skills_v1_page_turn.mp3"
     },
     {
       "slug": "story-and meaning",
-      "keywords_en": ["story", "meaning", "understand"],
-      "keywords_vi": ["câu chuyện", "ý nghĩa", "hiểu"],
+      "keywords_en": [
+        "story",
+        "meaning",
+        "understand"
+      ],
+      "keywords_vi": [
+        "câu chuyện",
+        "ý nghĩa",
+        "hiểu"
+      ],
       "copy": {
         "en": "Introduce the idea of a “story.” Say: “A story tells something.” After reading a short page, ask: “What happened?” Let your child answer with one small idea. Story talk helps kids connect words to meaning, which is the heart of reading.",
         "vi": "Giới thiệu khái niệm “story.” Nói: “A story tells something.” Sau khi đọc một trang ngắn, hỏi bé: “Chuyện gì đã xảy ra?” Hãy để bé trả lời bằng một ý nhỏ. Việc nói về câu chuyện giúp trẻ kết nối từ với ý nghĩa—đó là cốt lõi của việc đọc."
       },
-      "tags": ["story"],
+      "tags": [
+        "story"
+      ],
       "audio": "reading_skills_v1_story_meaning.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all", "complete", "full"],
-      "keywords_vi": ["tất cả", "đầy đủ", "hoàn chỉnh"],
+      "keywords_en": [
+        "all",
+        "complete",
+        "full"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "đầy đủ",
+        "hoàn chỉnh"
+      ],
       "copy": {
         "en": "Reading begins with looking at pictures and simple words.\n\nKids explore early sounds and learn how to blend them.\n\nWord hunts turn reading into a playful search activity.\n\nTurning pages teaches rhythm and comfort with books.\n\nTalking about the story helps children understand meaning.\n\nTogether, these activities build a strong, gentle foundation for reading confidence.",
         "vi": "Việc đọc bắt đầu từ việc nhìn tranh và từ ngắn.\n\nTrẻ khám phá âm cơ bản và học cách ghép âm.\n\nTìm từ khiến việc đọc giống như trò chơi.\n\nLật trang giúp trẻ hiểu nhịp đọc và cảm thấy thoải mái với sách.\n\nNói về câu chuyện giúp trẻ hiểu ý nghĩa.\n\nNhững hoạt động này tạo nền tảng vững chắc và nhẹ nhàng cho sự tự tin khi đọc."
       },
-      "tags": ["all"],
+      "tags": [
+        "all"
+      ],
       "audio": "reading_skills_v1_look_read.mp3 reading_skills_v1_sounds_blending.mp3 reading_skills_v1_word_hunt.mp3 reading_skills_v1_page_turn.mp3 reading_skills_v1_story_meaning.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "7-10",
-    "level": "Kids Level 2",
-    "created_at": "2025-11-21T00:00:00+00:00",
-    "updated_at": "2025-11-21T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#CBE0FF"
-  }
+  ]
 }

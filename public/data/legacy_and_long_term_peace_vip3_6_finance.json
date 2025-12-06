@@ -3,154 +3,19 @@
   "name_vi": "Di Sản & Bình Yên Dài Hạn",
   "description": "What your money is really for — a life that feels good now and later. Write your quiet promise to yourself.",
   "description_vi": "Tiền của bạn thật sự dành cho gì — một cuộc đời cảm thấy tốt ngay bây giờ và sau này. Viết lời hứa lặng lẽ với chính mình.",
-  "keywords_en": ["legacy", "manifesto", "peace", "giving", "future self"],
-  "keywords_vi": ["di sản", "tuyên ngôn", "bình yên", "cho đi", "tôi tương lai"],
-  "entries": [
-    {
-      "slug": "money-life-manifesto",
-      "keywords_en": ["manifesto", "1-2 pages", "promise"],
-      "keywords_vi": ["tuyên ngôn", "1-2 trang", "lời hứa"],
-      "copy_en": "Your Money & Life Manifesto is your quiet compass — a 1–2 page promise to yourself about what money truly means in your life. Set aside one peaceful evening. Take a pen and answer three questions: What do I want money to do for me? For others? For the world? Don’t worry about writing perfectly. Write freely, as if your future self is listening. Maybe you want money to buy time, not things. Maybe you want it to help your parents rest easier, or to fund something kind — a library, a scholarship, a meal for someone forgotten. The goal isn’t numbers; it’s clarity. Keep this page somewhere private and sacred — maybe beside your journal or in your Notes app. Each year, read it again. You’ll notice your words maturing, your dreams softening or deepening. That’s growth. Your Money & Life Manifesto becomes a mirror of who you are becoming.",
-      "copy_vi": "Tuyên Ngôn Tiền & Đời của bạn là la bàn lặng lẽ — một lời hứa 1–2 trang với chính mình về ý nghĩa thực sự của tiền trong cuộc đời. Dành một tối yên bình. Cầm bút và trả lời ba câu hỏi: Tôi muốn tiền làm gì cho tôi? Cho người khác? Cho thế giới? Đừng lo viết hoàn hảo. Viết tự do, như thể tôi tương lai đang lắng nghe. Có thể bạn muốn tiền mua thời gian, không phải đồ vật. Có thể bạn muốn nó giúp bố mẹ nghỉ ngơi dễ dàng hơn, hoặc tài trợ điều gì tử tế — một thư viện, học bổng, bữa ăn cho người bị lãng quên. Mục tiêu không phải con số; là sự rõ ràng. Giữ trang này ở nơi riêng tư và thiêng liêng — có lẽ bên nhật ký hoặc trong ứng dụng Ghi chú. Mỗi năm, đọc lại. Bạn sẽ thấy lời mình chín chắn, giấc mơ dịu lại hoặc sâu hơn. Đó là trưởng thành. Tuyên Ngôn Tiền & Đời trở thành gương phản chiếu con người bạn đang trở thành.",
-      "audio_en": "calm_vip3_51_en.mp3",
-      "audio_vi": "calm_vip3_51_vi.mp3",
-      "ai_prompt_en": "Help me start my Money & Life Manifesto with these 3 answers: [paste].",
-      "ai_prompt_vi": "Giúp tôi bắt đầu Tuyên Ngôn Tiền & Đời với 3 câu trả lời này: [dán].",
-      "ai_followup_en": "Want to save a draft and revisit in 30 days?",
-      "ai_followup_vi": "Muốn lưu bản nháp và xem lại sau 30 ngày không?"
-    },
-    {
-      "slug": "teach-kids-money",
-      "keywords_en": ["kids", "teach", "simple"],
-      "keywords_vi": ["trẻ", "dạy", "đơn giản"],
-      "copy_en": "Children don’t learn about money from lectures — they learn from how we live. Imagine giving a child 20,000 VND and asking them to choose: spend, save, or share. Sit together and talk: “Why did you choose that?” Their answer reveals more than any textbook could. Maybe they’ll buy snacks, maybe save for a toy, maybe give to someone in need. The point isn’t what they choose, but that they feel safe around the topic of money — no shame, no fear. You can even create three jars labeled Spending, Saving, and Giving, letting them see money move in and out. Over time, they’ll understand that money is just a tool — not a secret or a source of tension. When children see calm, mindful adults, they grow up with peace instead of panic. You’re not just teaching them arithmetic; you’re teaching them emotional literacy. Let them see that generosity and self-care can coexist, that small decisions matter, and that every đồng has meaning when guided by kindness.",
-      "copy_vi": "Trẻ không học tiền từ bài giảng — chúng học từ cách chúng ta sống. Hãy tưởng tượng đưa trẻ 20.000 đồng và bảo chọn: chi, để dành, hay chia sẻ. Ngồi cùng và hỏi: “Tại sao con chọn vậy?” Câu trả lời của con tiết lộ nhiều hơn bất kỳ sách giáo khoa nào. Có thể con mua bánh, để dành mua đồ chơi, hoặc cho người cần. Quan trọng không phải con chọn gì, mà là con cảm thấy an toàn khi nói về tiền — không xấu hổ, không sợ. Bạn có thể tạo ba lọ ghi Chi tiêu, Tiết kiệm, Cho đi, để con thấy tiền ra vào. Dần dần, con hiểu tiền chỉ là công cụ — không phải bí mật hay nguồn căng thẳng. Khi trẻ thấy người lớn bình tĩnh, tỉnh thức, chúng lớn lên với bình yên thay vì hoảng loạn. Bạn không chỉ dạy con toán; bạn dạy con biết cảm xúc. Hãy để con thấy lòng hào phóng và tự chăm sóc có thể cùng tồn tại, rằng quyết định nhỏ cũng quan trọng, và mỗi đồng có ý nghĩa khi được dẫn dắt bởi lòng tốt.",
-      "audio_en": "calm_vip3_52_en.mp3",
-      "audio_vi": "calm_vip3_52_vi.mp3",
-      "ai_prompt_en": "Help me explain 'spend, save, give' to a 7-year-old in 3 sentences.",
-      "ai_prompt_vi": "Giúp tôi giải thích 'chi, để, cho' cho trẻ 7 tuổi trong 3 câu.",
-      "ai_followup_en": "Want to try this with a real child this week?",
-      "ai_followup_vi": "Muốn thử với trẻ thật tuần này không?"
-    },
-    {
-      "slug": "retirement-feeling",
-      "keywords_en": ["retirement", "feeling", "not number"],
-      "keywords_vi": ["hưu trí", "cảm giác", "không phải số"],
-      "copy_en": "Retirement isn’t about a number or an age — it’s about a feeling of exhale. It’s the peace of waking up without an alarm, sipping morning tea slowly, and knowing that life still has rhythm even when work ends. Close your eyes for a moment. Picture that morning. Are you in Da Lat, watching mist roll over the hills? Are you in Hanoi, watering balcony plants, hearing the city hum below? Maybe you’re teaching part-time, writing, painting, or simply caring for your garden. The picture you see is your compass, not your bank account. From that image, plan backward. What small step today moves you toward that freedom? Maybe it’s setting aside 500,000 VND a month, maybe it’s simplifying your lifestyle, or learning a new skill you can still love at 70. Retirement is not escape — it’s continuation, with gentler edges. Don’t chase numbers; shape moments. Build a future that still feels alive inside you.",
-      "copy_vi": "Hưu trí không phải con số hay tuổi tác — là cảm giác thở ra nhẹ nhàng. Là bình yên thức dậy không báo thức, nhấm nháp trà sáng chậm rãi, và biết cuộc sống vẫn có nhịp dù công việc kết thúc. Nhắm mắt một chút. Hình dung buổi sáng ấy. Bạn đang ở Đà Lạt, ngắm sương lăn trên đồi? Ở Hà Nội, tưới cây ban công, nghe thành phố rì rầm bên dưới? Có thể bạn dạy bán thời gian, viết lách, vẽ tranh, hoặc chỉ chăm vườn. Hình ảnh bạn thấy là la bàn, không phải tài khoản ngân hàng. Từ hình ảnh đó, lập kế hoạch ngược lại. Bước nhỏ hôm nay nào đưa bạn đến tự do ấy? Có thể để dành 500.000 đồng mỗi tháng, đơn giản hóa lối sống, hoặc học kỹ năng mới bạn vẫn yêu ở tuổi 70. Hưu trí không phải trốn chạy — là tiếp nối, với cạnh mềm mại hơn. Đừng đuổi theo số; hãy định hình khoảnh khắc. Xây tương lai vẫn sống động trong bạn.",
-      "audio_en": "calm_vip3_53_en.mp3",
-      "audio_vi": "calm_vip3_53_vi.mp3",
-      "ai_prompt_en": "Help me describe my ideal retirement morning in 3 lines.",
-      "ai_prompt_vi": "Giúp tôi miêu tả buổi sáng hưu trí lý tưởng trong 3 dòng.",
-      "ai_followup_en": "Want to add this to your manifesto?",
-      "ai_followup_vi": "Muốn thêm vào tuyên ngôn không?"
-    },
-    {
-      "slug": "ai-future-self",
-      "keywords_en": ["future self", "letter", "10 years"],
-      "keywords_vi": ["tôi tương lai", "thư", "10 năm"],
-      "copy_en": "Write to yourself ten years from now. Picture that version of you — wiser, calmer, smiling at how far you’ve come. Begin the letter with: “Dear Future Me, I hope you’re still…” Then fill in the rest: still kind, still curious, still grateful. Describe what you hope your money has done for you by then — maybe built your parents a comfortable space, funded your children’s studies, or simply bought you quiet mornings free of worry. Tell your future self what mattered most right now, in this exact year — 2025 — so that you never forget how it felt to be building from here. Don’t make it grand; make it honest. Seal it digitally or on paper, label it “Open in 2035.” The day you open it, you’ll realize how every little effort mattered. This letter is a time capsule of love and trust — proof that your younger self believed you were worth investing in.",
-      "copy_vi": "Viết cho chính mình mười năm sau. Hình dung phiên bản ấy — khôn ngoan hơn, bình tĩnh hơn, mỉm cười vì đã đi được xa đến thế. Bắt đầu thư bằng: “Gửi Tôi Tương Lai, tôi hy vọng em vẫn…” Rồi điền tiếp: vẫn tử tế, vẫn tò mò, vẫn biết ơn. Mô tả điều bạn hy vọng tiền đã làm cho mình đến lúc đó — có thể xây cho bố mẹ không gian thoải mái, tài trợ con học, hoặc chỉ mua cho bạn những buổi sáng yên bình không lo. Kể cho tôi tương lai điều quan trọng nhất ngay bây giờ, năm chính xác này — 2025 — để bạn không bao giờ quên cảm giác xây dựng từ đây. Đừng làm nó hoành tráng; hãy chân thật. Niêm phong kỹ thuật số hoặc giấy, ghi “Mở năm 2035.” Ngày mở ra, bạn sẽ nhận ra mọi nỗ lực nhỏ đều có ý nghĩa. Thư này là viên nang thời gian của yêu thương và tin tưởng — bằng chứng rằng tôi trẻ hơn đã tin bạn đáng để đầu tư.",
-      "audio_en": "calm_vip3_54_en.mp3",
-      "audio_vi": "calm_vip3_54_vi.mp3",
-      "ai_prompt_en": "In 10 years, what do I want my money to have done for me and others?",
-      "ai_prompt_vi": "Sau 10 năm, tôi muốn tiền đã làm gì cho tôi và người khác?",
-      "ai_followup_en": "Want to seal this letter and open it in 2035?",
-      "ai_followup_vi": "Muốn niêm phong thư và mở năm 2035 không?"
-    },
-    {
-      "slug": "ethics-money-sleeps",
-      "keywords_en": ["ethics", "sleeps", "values"],
-      "keywords_vi": ["đạo đức", "ngủ", "giá trị"],
-      "copy_en": "Where your money sleeps is where your values rest. Every đồng you hold is a quiet vote — for the kind of world you want to live in. Does your money sleep in a place that builds hope or drains it? Try this: choose one value that feels sacred — kindness, fairness, sustainability — and check where your savings or investments are resting. Are they with institutions that align with that spirit? Maybe you support a cooperative bank that helps farmers or a microloan project that funds women entrepreneurs. Or perhaps you simply choose a bank known for transparency. The point isn’t perfection; it’s awareness. You can begin small — moving a little toward integrity, a little away from exploitation. The world won’t change overnight, but your peace will deepen instantly. Each account, each investment, becomes a reflection of who you are, not just what you earn. Let your money rest where your heart can, too.",
-      "copy_vi": "Tiền ngủ ở đâu là nơi giá trị bạn nghỉ ngơi. Mỗi đồng bạn giữ là một phiếu bầu lặng lẽ — cho thế giới bạn muốn sống. Tiền của bạn ngủ ở nơi xây hy vọng hay làm cạn kiệt nó? Thử này: chọn một giá trị thiêng liêng — tử tế, công bằng, bền vững — và kiểm tra tiết kiệm hay đầu tư đang nghỉ ở đâu. Chúng có ở tổ chức phù hợp tinh thần ấy không? Có thể bạn ủng hộ ngân hàng hợp tác giúp nông dân hoặc dự án vay nhỏ tài trợ nữ doanh nhân. Hoặc chỉ chọn ngân hàng nổi tiếng minh bạch. Quan trọng không phải hoàn hảo; là nhận thức. Bạn có thể bắt đầu nhỏ — chuyển một chút về phía liêm chính, xa khỏi bóc lột. Thế giới không thay đổi qua đêm, nhưng bình yên bạn sẽ sâu ngay lập tức. Mỗi tài khoản, mỗi khoản đầu tư, trở thành phản chiếu con người bạn, không chỉ thu nhập. Hãy để tiền nghỉ nơi trái tim bạn cũng được nghỉ.",
-      "audio_en": "calm_vip3_55_en.mp3",
-      "audio_vi": "calm_vip3_55_vi.mp3",
-      "ai_prompt_en": "My top value is [value]. Suggest one calm place for my money to sleep.",
-      "ai_prompt_vi": "Giá trị hàng đầu của tôi là [giá trị]. Gợi ý một chỗ bình tĩnh cho tiền ngủ.",
-      "ai_followup_en": "Want to move 1,000 baht this month?",
-      "ai_followup_vi": "Muốn chuyển 1.000 baht tháng này không?"
-    },
-    {
-      "slug": "aging-care-dignity",
-      "keywords_en": ["aging", "care", "dignity"],
-      "keywords_vi": ["già đi", "chăm sóc", "phẩm giá"],
-      "copy_en": "Aging gracefully doesn’t start at sixty; it starts with one compassionate decision today. Try this: place 200,000 VND each month into a small envelope or account labeled “Future Care.” This isn’t just saving — it’s an act of self-respect. Picture your older self — wrinkles softened by laughter, eyes still bright with curiosity. What kind of life would you like to give that person? Maybe you’ll afford a kind caretaker, a cozy home, a good doctor, or simply the freedom not to depend on anyone. The earlier you prepare, the more gentle aging becomes. You’re not buying control; you’re creating dignity. If you ever feel guilty saving for yourself, remember this: future you is someone you deeply love. Each small deposit whispers, “I will take care of you.” Aging well isn’t about wealth — it’s about tenderness in planning. Start now, lovingly, without fear.",
-      "copy_vi": "Già đi duyên dáng không bắt đầu ở tuổi sáu mươi; nó bắt đầu bằng một quyết định từ bi hôm nay. Thử này: đặt 200.000 đồng mỗi tháng vào phong bì hoặc tài khoản nhỏ ghi “Chăm Sóc Tương Lai.” Đây không chỉ là tiết kiệm — là hành động tự trọng. Hình dung tôi già hơn — nếp nhăn dịu đi vì cười, mắt vẫn sáng tò mò. Bạn muốn tặng người ấy cuộc sống thế nào? Có thể đủ tiền thuê người chăm tử tế, nhà ấm cúng, bác sĩ tốt, hoặc chỉ tự do không phụ thuộc ai. Càng chuẩn bị sớm, tuổi già càng dịu dàng. Bạn không mua kiểm soát; bạn tạo phẩm giá. Nếu từng thấy tội lỗi khi tiết kiệm cho mình, nhớ này: tôi tương lai là người bạn yêu sâu sắc. Mỗi khoản gửi nhỏ thì thầm, “Tôi sẽ chăm sóc em.” Già tốt không phải giàu có — là dịu dàng trong lập kế hoạch. Bắt đầu ngay, yêu thương, không sợ hãi.",
-      "audio_en": "calm_vip3_56_en.mp3",
-      "audio_vi": "calm_vip3_56_vi.mp3",
-      "ai_prompt_en": "Help me start a small 'Future Care' fund with 200,000 VND.",
-      "ai_prompt_vi": "Giúp tôi bắt đầu quỹ 'Chăm Sóc Tương Lai' nhỏ với 200.000 đồng.",
-      "ai_followup_en": "Want to automate this 200,000 VND?",
-      "ai_followup_vi": "Muốn tự động 200.000 đồng này không?"
-    },
-    {
-      "slug": "family-wealth-talk",
-      "keywords_en": ["family", "talk", "gentle"],
-      "keywords_vi": ["gia đình", "nói", "dịu dàng"],
-      "copy_en": "Money conversations in families can open wounds — but they can also open hearts. Try this: gather your family for tea. Begin softly: “Lately I’ve been learning about money, and I want to share a few thoughts.” Keep it humble, not instructional. Ask one question, like, “What was the first thing you learned about money as a child?” You’ll be surprised how stories pour out — tales of scarcity, pride, care, or fear. These stories shape the way we spend and save even now. Listen without judgment. You might notice patterns that your family has carried for generations — debts of worry or habits of giving. Gently, offer one new idea: that money can be calm, kind, and managed without shame. You don’t have to fix anyone. Just being the calm voice at the table is enough. That’s how healing begins — quietly, between cups of tea, with compassion instead of blame.",
-      "copy_vi": "Cuộc trò chuyện tiền trong gia đình có thể mở vết thương — nhưng cũng có thể mở trái tim. Thử này: tụ họp gia đình uống trà. Bắt đầu nhẹ: “Gần đây con học về tiền, và muốn chia sẻ vài suy nghĩ.” Giữ khiêm tốn, không dạy dỗ. Hỏi một câu, như, “Điều đầu tiên bố/mẹ học về tiền khi nhỏ là gì?” Bạn sẽ ngạc nhiên khi câu chuyện tuôn ra — chuyện thiếu thốn, tự hào, chăm sóc, hoặc sợ hãi. Những câu chuyện này định hình cách chúng ta chi tiêu và tiết kiệm ngay cả bây giờ. Lắng nghe không phán xét. Bạn có thể nhận ra mẫu hình gia đình mang qua nhiều thế hệ — nợ lo âu hoặc thói quen cho đi. Nhẹ nhàng, đưa một ý mới: rằng tiền có thể bình tĩnh, tử tế, và quản lý mà không xấu hổ. Bạn không cần sửa ai. Chỉ cần là giọng nói bình tĩnh bên bàn là đủ. Đó là cách chữa lành bắt đầu — lặng lẽ, giữa những tách trà, với từ bi thay vì trách móc.",
-      "audio_en": "calm_vip3_57_en.mp3",
-      "audio_vi": "calm_vip3_57_vi.mp3",
-      "ai_prompt_en": "Help me start a calm money talk with my [parent/sibling].",
-      "ai_prompt_vi": "Giúp tôi mở lời nói tiền bình tĩnh với [bố mẹ/anh em].",
-      "ai_followup_en": "Want to practice this sentence first?",
-      "ai_followup_vi": "Muốn luyện câu này trước không?"
-    },
-    {
-      "slug": "when-hire-help",
-      "keywords_en": ["hire help", "advisor", "when"],
-      "keywords_vi": ["mướn giúp", "cố vấn", "khi nào"],
-      "copy_en": "You don’t need a financial advisor to feel safe — but sometimes, hiring help gives you back the one resource you can’t buy: peace of mind. Ask yourself: “What part of my financial life drains my energy the most?” Maybe it’s tracking taxes, managing investments, or keeping receipts for your freelance work. Write that one down. Now imagine someone competent and kind doing that for you — and you simply reviewing, not wrestling. That’s not weakness; it’s wisdom. Start by asking a friend or colleague who they trust. You can find affordable advisors or online planners in Vietnam who charge modestly for specific tasks, not full portfolios. Even an hour of good guidance can save you weeks of stress. Remember: outsourcing isn’t losing control — it’s sharing responsibility. The right helper doesn’t take over your power; they return your calm. Hire clarity, not luxury.",
-      "copy_vi": "Bạn không cần cố vấn tài chính để cảm thấy an toàn — nhưng đôi khi, thuê giúp trả lại tài nguyên không mua được: bình tâm. Tự hỏi: “Phần nào trong đời tài chính làm tôi kiệt sức nhất?” Có thể là theo dõi thuế, quản lý đầu tư, hoặc giữ biên lai công việc tự do. Ghi lại cái đó. Bây giờ tưởng tượng ai đó có năng lực và tử tế làm việc ấy cho bạn — bạn chỉ xem lại, không vật lộn. Đó không phải yếu đuối; là khôn ngoan. Bắt đầu bằng hỏi bạn bè hoặc đồng nghiệp ai họ tin. Bạn có thể tìm cố vấn giá phải chăng hoặc lập kế hoạch trực tuyến ở Việt Nam chỉ tính phí nhiệm vụ cụ thể, không cả danh mục. Thậm chí một giờ hướng dẫn tốt có thể tiết kiệm hàng tuần căng thẳng. Nhớ: thuê ngoài không mất kiểm soát — là chia sẻ trách nhiệm. Người giúp đúng không chiếm quyền bạn; họ trả lại bình tĩnh. Thuê sự rõ ràng, không xa xỉ.",
-      "audio_en": "calm_vip3_58_en.mp3",
-      "audio_vi": "calm_vip3_58_vi.mp3",
-      "ai_prompt_en": "I hate [money task]. Help me decide if I should hire help.",
-      "ai_prompt_vi": "Tôi ghét [việc tiền]. Giúp tôi quyết có nên mướn giúp không.",
-      "ai_followup_en": "Want a short list of calm helpers in Vietnam?",
-      "ai_followup_vi": "Muốn danh sách ngắn người giúp bình tĩnh ở Việt Nam không?"
-    },
-    {
-      "slug": "annual-money-ritual",
-      "keywords_en": ["annual", "ritual", "review"],
-      "keywords_vi": ["hàng năm", "nghi thức", "xem lại"],
-      "copy_en": "Once a year, create your quiet ritual of review. Brew a cup of jasmine tea, open your Money & Life Manifesto, and light one gentle candle. Ask yourself just one question: “Did my money serve my life this year?” Read your old notes slowly. Maybe you find that you earned more but felt less peace. Or perhaps you gave less but loved deeper. Adjust one sentence in your manifesto to reflect who you are now. This is not about guilt or goals — it’s about alignment. You can do this every Tet season or on your birthday. Make it an annual promise of mindfulness. Write the date, whisper a blessing for your future self, and close the notebook. You’ll notice that each year feels a little lighter, a little clearer. That’s what growth sounds like — not a rush of success, but a rhythm of peace.",
-      "copy_vi": "Mỗi năm một lần, tạo nghi thức xem lại lặng lẽ. Pha tách trà lài, mở Tuyên Ngôn Tiền & Đời, thắp một cây nến dịu. Chỉ hỏi mình một câu: “Năm nay tiền có phục vụ đời tôi không?” Đọc ghi chú cũ chậm rãi. Có thể bạn thấy kiếm nhiều hơn nhưng ít bình yên. Hoặc cho ít hơn nhưng yêu sâu hơn. Điều chỉnh một câu trong tuyên ngôn để phản ánh con người bạn bây giờ. Đây không phải tội lỗi hay mục tiêu — là sự căn chỉnh. Bạn có thể làm vào mỗi mùa Tết hoặc sinh nhật. Biến thành lời hứa hàng năm của tỉnh thức. Ghi ngày, thì thầm lời chúc phúc cho tôi tương lai, và đóng sổ. Bạn sẽ thấy mỗi năm nhẹ hơn, rõ hơn. Đó là âm thanh của trưởng thành — không phải tiếng lao xao thành công, mà nhịp điệu bình yên.",
-      "audio_en": "calm_vip3_59_en.mp3",
-      "audio_vi": "calm_vip3_59_vi.mp3",
-      "ai_prompt_en": "It’s my annual money ritual. Help me review with this manifesto: [paste].",
-      "ai_prompt_vi": "Hôm nay nghi thức tiền hàng năm. Giúp tôi xem lại với tuyên ngôn: [dán].",
-      "ai_followup_en": "Want to schedule this for next Tet?",
-      "ai_followup_vi": "Muốn lên lịch cho Tết tới không?"
-    },
-    {
-      "slug": "letter-glad-wrote",
-      "keywords_en": ["letter", "future", "glad"],
-      "keywords_vi": ["thư", "tương lai", "vui"],
-      "copy_en": "There’s a letter only you can write — one your future self will open in five years and smile through tears. Take a quiet hour tonight. Begin with: “Dear Future Me, today I…” Tell the truth of where you are — your hopes, your fears, your gratitude. Describe one dream you’re nurturing and one fear you’re learning to release. End with a promise: “I’m doing my best to build a life that feels peaceful, not perfect.” Seal it in an envelope or a digital note labeled “Open in 2030.” You’ll forget about it — until the day you find it again, and realize how every small step mattered. It’s not about achievement; it’s about proof of care. The person reading that letter will thank you for believing in them before anyone else did. You’re writing a love note across time — and it will outlast every number in your bank account.",
-      "copy_vi": "Có một lá thư chỉ bạn viết được — lá thư tôi tương lai sẽ mở sau năm năm và mỉm cười qua nước mắt. Dành một giờ yên tĩnh tối nay. Bắt đầu bằng: “Gửi Tôi Tương Lai, hôm nay tôi…” Kể sự thật về nơi bạn đang đứng — hy vọng, nỗi sợ, lòng biết ơn. Mô tả một giấc mơ bạn đang nuôi dưỡng và một nỗi sợ bạn đang học buông bỏ. Kết thúc bằng lời hứa: “Tôi đang cố hết sức xây cuộc đời cảm thấy bình yên, không phải hoàn hảo.” Niêm phong trong phong bì hoặc ghi chú số ghi “Mở năm 2030.” Bạn sẽ quên nó — cho đến ngày tìm lại, và nhận ra mọi bước nhỏ đều có ý nghĩa. Không phải thành tựu; là bằng chứng chăm sóc. Người đọc lá thư sẽ cảm ơn bạn vì đã tin họ trước bất kỳ ai. Bạn đang viết thư tình qua thời gian — và nó sẽ trường tồn hơn mọi con số trong tài khoản ngân hàng.",
-      "audio_en": "calm_vip3_60_en.mp3",
-      "audio_vi": "calm_vip3_60_vi.mp3",
-      "ai_prompt_en": "Help me write a short letter to open in 2030.",
-      "ai_prompt_vi": "Giúp tôi viết thư ngắn mở năm 2030.",
-      "ai_followup_en": "Want to store this in the app and get a reminder in 2030?",
-      "ai_followup_vi": "Muốn lưu trong app và nhận nhắc năm 2030 không?"
-    }
+  "keywords_en": [
+    "legacy",
+    "manifesto",
+    "peace",
+    "giving",
+    "future self"
   ],
-  "meta": {
-    "created_at": "2025-11-07T13:40:00+07:00",
-    "updated_at": "2025-11-07T13:40:00+07:00",
-    "entry_count": 10,
-    "tier": "vip3",
-    "room_color": "#BED1BF",
-    "artifact_version_id": "money-legacy-peace-vip3-sub6-v002",
-    "localization": {
-      "i18n_required": true,
-      "i18n_verified": true
-    },
-    "user": {
-      "handle": "@CDsillyman",
-      "country": "th"
-    }
-  }
+  "keywords_vi": [
+    "di sản",
+    "tuyên ngôn",
+    "bình yên",
+    "cho đi",
+    "tôi tương lai"
+  ],
+  "entries": []
 }

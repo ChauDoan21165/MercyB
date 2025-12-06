@@ -151,12 +151,5 @@
       ],
       "audio": "addiction_support_vip3_resilience.mp3"
     }
-  ],
-  "meta": {
-    "created_at": "2025-10-27T00:00:00+00:00",
-    "updated_at": "2025-10-27T00:00:00+00:00",
-    "entry_count": 6,
-    "tier": "vip3",
-    "room_color": "#4A90E2"
-  }
+  ]
 }

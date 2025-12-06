@@ -30,110 +30,235 @@
   "entries": [
     {
       "slug": "not-rich-to-start",
-      "keywords_en": ["starting small", "accessibility", "beginner", "investing basics"],
-      "keywords_vi": ["bắt đầu nhỏ", "dễ tiếp cận", "người mới", "cơ bản đầu tư"],
-      "audio": {"en": "calm_vip3_11_en.mp3"},
+      "keywords_en": [
+        "starting small",
+        "accessibility",
+        "beginner",
+        "investing basics"
+      ],
+      "keywords_vi": [
+        "bắt đầu nhỏ",
+        "dễ tiếp cận",
+        "người mới",
+        "cơ bản đầu tư"
+      ],
+      "audio": {
+        "en": "calm_vip3_11_en.mp3"
+      },
       "copy": {
         "en": "You don't need to be rich to start investing. You need $10, curiosity, and patience. Wealth isn't about big moves—it's about consistent small ones over time.",
         "vi": "Bạn không cần giàu để bắt đầu đầu tư. Bạn cần $10, tò mò, và kiên nhẫn. Tài sản không phải về những động thái lớn—đó là về những động thái nhỏ nhất quán theo thời gian."
-      }
+      },
+      "tags": []
     },
     {
       "slug": "index-funds-superpower",
-      "keywords_en": ["index funds", "diversification", "passive investing", "ETF"],
-      "keywords_vi": ["quỹ chỉ số", "đa dạng hóa", "đầu tư thụ động", "ETF"],
-      "audio": {"en": "calm_vip3_12_en.mp3"},
+      "keywords_en": [
+        "index funds",
+        "diversification",
+        "passive investing",
+        "ETF"
+      ],
+      "keywords_vi": [
+        "quỹ chỉ số",
+        "đa dạng hóa",
+        "đầu tư thụ động",
+        "ETF"
+      ],
+      "audio": {
+        "en": "calm_vip3_12_en.mp3"
+      },
       "copy": {
         "en": "Index Funds: The Quiet Superpower. They hold hundreds of companies. You buy one thing, own everything. Low fees. No stress. Vanguard research shows they beat 80% of active managers.",
         "vi": "Quỹ Chỉ Số: Siêu Năng Lực Im Lặng. Chúng nắm giữ hàng trăm công ty. Bạn mua một thứ, sở hữu mọi thứ. Phí thấp. Không căng thẳng. Nghiên cứu Vanguard cho thấy chúng đánh bại 80% nhà quản lý chủ động."
-      }
+      },
+      "tags": []
     },
     {
       "slug": "compound-growth-magic",
-      "keywords_en": ["compound interest", "long-term", "growth", "time value"],
-      "keywords_vi": ["lãi kép", "dài hạn", "tăng trưởng", "giá trị thời gian"],
-      "audio": {"en": "calm_vip3_13_en.mp3"},
+      "keywords_en": [
+        "compound interest",
+        "long-term",
+        "growth",
+        "time value"
+      ],
+      "keywords_vi": [
+        "lãi kép",
+        "dài hạn",
+        "tăng trưởng",
+        "giá trị thời gian"
+      ],
+      "audio": {
+        "en": "calm_vip3_13_en.mp3"
+      },
       "copy": {
         "en": "Compound Growth—the real magic: $100 at 7% for 30 years = $761. Not from luck. From time. Start now, even tiny. Your future self will thank you.",
         "vi": "Tăng Trưởng Kép—phép màu thực sự: $100 ở 7% trong 30 năm = $761. Không từ may mắn. Từ thời gian. Bắt đầu ngay, dù rất nhỏ. Bản thân tương lai sẽ cảm ơn bạn."
-      }
+      },
+      "tags": []
     },
     {
       "slug": "risk-what-means",
-      "keywords_en": ["risk", "volatility", "tolerance", "understanding"],
-      "keywords_vi": ["rủi ro", "biến động", "khả năng chịu đựng", "hiểu biết"],
-      "audio": {"en": "calm_vip3_14_en.mp3"},
+      "keywords_en": [
+        "risk",
+        "volatility",
+        "tolerance",
+        "understanding"
+      ],
+      "keywords_vi": [
+        "rủi ro",
+        "biến động",
+        "khả năng chịu đựng",
+        "hiểu biết"
+      ],
+      "audio": {
+        "en": "calm_vip3_14_en.mp3"
+      },
       "copy": {
         "en": "Risk: What it actually means for you. Not 'losing everything'—it's short-term drops. Markets go up and down. Your job: stay calm, stay in. Panic sells lose. Patient holds win.",
         "vi": "Rủi Ro: Điều đó thực sự có nghĩa gì với bạn. Không phải 'mất tất cả'—đó là giảm ngắn hạn. Thị trường lên xuống. Công việc của bạn: giữ bình tĩnh, ở lại. Bán hoảng loạn thua. Giữ kiên nhẫn thắng."
-      }
+      },
+      "tags": []
     },
     {
       "slug": "retirement-accounts",
-      "keywords_en": ["retirement", "401k", "IRA", "pension", "savings plan"],
-      "keywords_vi": ["nghỉ hưu", "401k", "IRA", "lương hưu", "kế hoạch tiết kiệm"],
-      "audio": {"en": "calm_vip3_15_en.mp3"},
+      "keywords_en": [
+        "retirement",
+        "401k",
+        "IRA",
+        "pension",
+        "savings plan"
+      ],
+      "keywords_vi": [
+        "nghỉ hưu",
+        "401k",
+        "IRA",
+        "lương hưu",
+        "kế hoạch tiết kiệm"
+      ],
+      "audio": {
+        "en": "calm_vip3_15_en.mp3"
+      },
       "copy": {
         "en": "Retirement Accounts (Yours or Your Country's): 401k, IRA, superannuation—different names, same idea. Tax breaks for future you. Contribute what you can. Even 5% matters.",
         "vi": "Tài Khoản Nghỉ Hưu (Của Bạn hoặc Của Quốc Gia): 401k, IRA, superannuation—tên khác nhau, ý tưởng giống nhau. Miễn giảm thuế cho bạn tương lai. Đóng góp những gì bạn có thể. Ngay cả 5% cũng quan trọng."
-      }
+      },
+      "tags": []
     },
     {
       "slug": "ai-explain-options",
-      "keywords_en": ["AI prompt", "investment options", "guidance", "choices"],
-      "keywords_vi": ["AI prompt", "lựa chọn đầu tư", "hướng dẫn", "lựa chọn"],
-      "audio": {"en": "calm_vip3_16_en.mp3"},
+      "keywords_en": [
+        "AI prompt",
+        "investment options",
+        "guidance",
+        "choices"
+      ],
+      "keywords_vi": [
+        "AI prompt",
+        "lựa chọn đầu tư",
+        "hướng dẫn",
+        "lựa chọn"
+      ],
+      "audio": {
+        "en": "calm_vip3_16_en.mp3"
+      },
       "copy": {
         "en": "AI Prompt: 'I have $500 to invest. Explain 2 simple choices in plain language.' Use tools to demystify. You don't need a finance degree—just clarity.",
         "vi": "AI Prompt: 'Tôi có $500 để đầu tư. Giải thích 2 lựa chọn đơn giản bằng ngôn ngữ đơn giản.' Sử dụng công cụ để làm rõ. Bạn không cần bằng tài chính—chỉ cần sự rõ ràng."
-      }
+      },
+      "tags": []
     },
     {
       "slug": "rebalancing-yearly",
-      "keywords_en": ["rebalancing", "portfolio management", "maintenance", "annual review"],
-      "keywords_vi": ["tái cân bằng", "quản lý danh mục", "bảo trì", "xem xét hàng năm"],
-      "audio": {"en": "calm_vip3_17_en.mp3"},
+      "keywords_en": [
+        "rebalancing",
+        "portfolio management",
+        "maintenance",
+        "annual review"
+      ],
+      "keywords_vi": [
+        "tái cân bằng",
+        "quản lý danh mục",
+        "bảo trì",
+        "xem xét hàng năm"
+      ],
+      "audio": {
+        "en": "calm_vip3_17_en.mp3"
+      },
       "copy": {
         "en": "Rebalancing: The Once-a-Year Move. Your mix shifts as markets move. Once yearly, nudge it back to your target. 15 minutes. Done. Don't overthink it.",
         "vi": "Tái Cân Bằng: Động Thái Mỗi Năm Một Lần. Hỗn hợp của bạn thay đổi khi thị trường di chuyển. Mỗi năm một lần, đẩy nó trở lại mục tiêu. 15 phút. Xong. Đừng nghĩ quá nhiều."
-      }
+      },
+      "tags": []
     },
     {
       "slug": "when-sell-wait",
-      "keywords_en": ["selling", "timing", "patience", "strategy"],
-      "keywords_vi": ["bán", "thời điểm", "kiên nhẫn", "chiến lược"],
-      "audio": {"en": "calm_vip3_18_en.mp3"},
+      "keywords_en": [
+        "selling",
+        "timing",
+        "patience",
+        "strategy"
+      ],
+      "keywords_vi": [
+        "bán",
+        "thời điểm",
+        "kiên nhẫn",
+        "chiến lược"
+      ],
+      "audio": {
+        "en": "calm_vip3_18_en.mp3"
+      },
       "copy": {
         "en": "When to Sell (And When to Wait): Sell when you need the money for a goal. Wait through dips. The market rewards patience. Emotion-driven selling rarely wins.",
         "vi": "Khi Nào Bán (Và Khi Nào Chờ): Bán khi bạn cần tiền cho mục tiêu. Chờ qua các đợt giảm. Thị trường thưởng cho sự kiên nhẫn. Bán theo cảm xúc hiếm khi thắng."
-      }
+      },
+      "tags": []
     },
     {
       "slug": "investing-uneven-income",
-      "keywords_en": ["irregular income", "freelance", "gig economy", "flexible investing"],
-      "keywords_vi": ["thu nhập không đều", "tự do", "kinh tế gig", "đầu tư linh hoạt"],
-      "audio": {"en": "calm_vip3_19_en.mp3"},
+      "keywords_en": [
+        "irregular income",
+        "freelance",
+        "gig economy",
+        "flexible investing"
+      ],
+      "keywords_vi": [
+        "thu nhập không đều",
+        "tự do",
+        "kinh tế gig",
+        "đầu tư linh hoạt"
+      ],
+      "audio": {
+        "en": "calm_vip3_19_en.mp3"
+      },
       "copy": {
         "en": "Investing When Income Is Uneven: Freelance? Seasonal? Invest when you can, not on a schedule. $50 this month, $0 next—fine. Progress isn't linear. It's cumulative.",
         "vi": "Đầu Tư Khi Thu Nhập Không Đều: Tự do? Theo mùa? Đầu tư khi bạn có thể, không theo lịch trình. $50 tháng này, $0 tháng sau—được. Tiến bộ không tuyến tính. Nó là tích lũy."
-      }
+      },
+      "tags": []
     },
     {
       "slug": "growing-milestone",
-      "keywords_en": ["milestone", "progress", "achievement", "growth"],
-      "keywords_vi": ["cột mốc", "tiến bộ", "thành tựu", "tăng trưởng"],
-      "audio": {"en": "calm_vip3_20_en.mp3"},
+      "keywords_en": [
+        "milestone",
+        "progress",
+        "achievement",
+        "growth"
+      ],
+      "keywords_vi": [
+        "cột mốc",
+        "tiến bộ",
+        "thành tựu",
+        "tăng trưởng"
+      ],
+      "audio": {
+        "en": "calm_vip3_20_en.mp3"
+      },
       "copy": {
         "en": "Your 'I'm Growing' Milestone: First $100 invested. First dividend received. First year of consistent contributions. These aren't small—they're seismic. Acknowledge them.",
         "vi": "Cột Mốc 'Tôi Đang Phát Triển': $100 đầu tiên đầu tư. Cổ tức đầu tiên nhận được. Năm đầu tiên đóng góp nhất quán. Những điều này không nhỏ—chúng là địa chấn. Thừa nhận chúng."
-      }
+      },
+      "tags": []
     }
-  ],
-  "meta": {
-    "created_at": "2025-11-07T00:00:00+09:00",
-    "updated_at": "2025-11-07T00:00:00+09:00",
-    "entry_count": 10,
-    "tier": "vip3",
-    "room_color": "#FFD700"
-  }
+  ]
 }

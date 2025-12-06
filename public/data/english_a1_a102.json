@@ -13,63 +13,107 @@
   "entries": [
     {
       "slug": "people-and-basic-nouns",
-      "keywords_en": ["people", "nouns", "beginner"],
-      "keywords_vi": ["con người", "danh từ", "người mới"],
+      "keywords_en": [
+        "people",
+        "nouns",
+        "beginner"
+      ],
+      "keywords_vi": [
+        "con người",
+        "danh từ",
+        "người mới"
+      ],
       "copy": {
         "en": "Practice these simple words.\nman\nwoman\nboy\ngirl\nfriend\nteacher\nstudent\nUse a calm voice.\nSay each word slowly until it feels easy.",
         "vi": "Hãy luyện các từ đơn giản: man, woman, boy, girl, friend, teacher, student. Nói chậm và rõ cho đến khi bạn cảm thấy quen và dễ dàng."
       },
-      "audio": "a102_01_en.mp3"
+      "audio": "a102_01_en.mp3",
+      "tags": []
     },
     {
       "slug": "family-members",
-      "keywords_en": ["family", "vocabulary"],
-      "keywords_vi": ["gia đình", "từ vựng"],
+      "keywords_en": [
+        "family",
+        "vocabulary"
+      ],
+      "keywords_vi": [
+        "gia đình",
+        "từ vựng"
+      ],
       "copy": {
         "en": "Practice basic family words.\nfather\nmother\nbrother\nsister\nson\ndaughter\nfamily\nSay them clearly.\nThese words are common in daily conversation.",
         "vi": "Hãy luyện các từ về gia đình: father, mother, brother, sister, son, daughter, family. Nói rõ ràng. Đây là những từ rất thường gặp trong giao tiếp hằng ngày."
       },
-      "audio": "a102_02_en.mp3"
+      "audio": "a102_02_en.mp3",
+      "tags": []
     },
     {
       "slug": "daily-life-objects",
-      "keywords_en": ["objects", "daily life"],
-      "keywords_vi": ["đồ vật", "sinh hoạt hằng ngày"],
+      "keywords_en": [
+        "objects",
+        "daily life"
+      ],
+      "keywords_vi": [
+        "đồ vật",
+        "sinh hoạt hằng ngày"
+      ],
       "copy": {
         "en": "Practice these daily objects.\nphone\nbag\nkey\nhouse\nroom\nchair\ntable\nSay each word slowly.\nFocus on ending sounds like n, g, m.",
         "vi": "Hãy luyện các đồ vật hằng ngày: phone, bag, key, house, room, chair, table. Đọc chậm và giữ rõ các âm cuối như n, g, m."
       },
-      "audio": "a102_03_en.mp3"
+      "audio": "a102_03_en.mp3",
+      "tags": []
     },
     {
       "slug": "simple-describing-words",
-      "keywords_en": ["adjectives", "describing"],
-      "keywords_vi": ["tính từ", "miêu tả"],
+      "keywords_en": [
+        "adjectives",
+        "describing"
+      ],
+      "keywords_vi": [
+        "tính từ",
+        "miêu tả"
+      ],
       "copy": {
         "en": "Practice basic describing words.\nbig\nsmall\nhappy\nsad\nbeautiful\nnew\nold\nUse a gentle voice.\nThese words help you talk about people and things.",
         "vi": "Hãy luyện các tính từ cơ bản: big, small, happy, sad, beautiful, new, old. Dùng giọng nhẹ nhàng. Các từ này giúp bạn miêu tả người và đồ vật."
       },
-      "audio": "a102_04_en.mp3"
+      "audio": "a102_04_en.mp3",
+      "tags": []
     },
     {
       "slug": "simple-phrases",
-      "keywords_en": ["phrases", "beginner"],
-      "keywords_vi": ["cụm từ", "người mới"],
+      "keywords_en": [
+        "phrases",
+        "beginner"
+      ],
+      "keywords_vi": [
+        "cụm từ",
+        "người mới"
+      ],
       "copy": {
         "en": "Practice these simple phrases.\nmy family\nmy friend\nmy house\nmy room\nThis is my bag.\nThat is my phone.\nSay them slowly.\nShort phrases make speaking easier.",
         "vi": "Hãy luyện các cụm từ đơn giản: my family, my friend, my house, my room. Câu ví dụ: This is my bag, That is my phone. Nói thật chậm. Các cụm từ ngắn giúp bạn nói dễ hơn."
       },
-      "audio": "a102_05_en.mp3"
+      "audio": "a102_05_en.mp3",
+      "tags": []
     },
     {
       "slug": "daily-life-mini-drill",
-      "keywords_en": ["practice", "drill"],
-      "keywords_vi": ["luyện tập", "thực hành"],
+      "keywords_en": [
+        "practice",
+        "drill"
+      ],
+      "keywords_vi": [
+        "luyện tập",
+        "thực hành"
+      ],
       "copy": {
         "en": "Read these short lines.\nThis is my family.\nShe is my sister.\nHe is my friend.\nThis is my room.\nThat is my phone.\nRepeat them gently.\nCalm practice builds confidence.",
         "vi": "Hãy đọc các câu ngắn: This is my family, She is my sister, He is my friend, This is my room, That is my phone. Lặp lại nhẹ nhàng. Luyện tập bình tĩnh giúp bạn tự tin hơn."
       },
-      "audio": "a102_06_en.mp3"
+      "audio": "a102_06_en.mp3",
+      "tags": []
     }
   ]
 }

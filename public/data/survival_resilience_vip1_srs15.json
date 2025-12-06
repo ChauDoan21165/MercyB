@@ -13,63 +13,117 @@
   "entries": [
     {
       "slug": "drop-cover-hold-basics",
-      "keywords_en": ["earthquake safety", "drop cover hold", "immediate response"],
-      "keywords_vi": ["an toàn động đất", "nằm xuống che chắn bám giữ", "phản ứng ngay"],
+      "keywords_en": [
+        "earthquake safety",
+        "drop cover hold",
+        "immediate response"
+      ],
+      "keywords_vi": [
+        "an toàn động đất",
+        "nằm xuống che chắn bám giữ",
+        "phản ứng ngay"
+      ],
       "copy": {
         "en": "When shaking begins, act immediately: Drop to your hands and knees to prevent falling. Cover your head and neck under a sturdy table or desk, or use your arms if nothing is nearby. Hold on to the shelter until the shaking stops. Do not run outside—most injuries happen from falling objects, glass, or collapsing walls. If you are in bed, stay there and cover your head with a pillow. Your instinct may be to move, but staying protected in place is far safer than running.",
         "vi": "Khi mặt đất bắt đầu rung, hãy hành động ngay: Nằm xuống bằng tay và đầu gối để tránh ngã. Che đầu và cổ dưới bàn hoặc vật chắc chắn, hoặc dùng tay nếu không có vật che. Giữ chặt cho đến khi hết rung. Đừng chạy ra ngoài—nhiều chấn thương xảy ra do vật rơi, kính vỡ hoặc tường sập. Nếu đang nằm trên giường, hãy ở yên và che đầu bằng gối. Bản năng thúc bạn chạy, nhưng ở yên trong điểm che chắn an toàn hơn nhiều."
       },
-      "audio": "srs15_01_en.mp3"
+      "audio": "srs15_01_en.mp3",
+      "tags": []
     },
     {
       "slug": "staying-safe-indoors",
-      "keywords_en": ["indoors safety", "falling objects", "glass hazards"],
-      "keywords_vi": ["an toàn trong nhà", "vật rơi", "nguy cơ kính vỡ"],
+      "keywords_en": [
+        "indoors safety",
+        "falling objects",
+        "glass hazards"
+      ],
+      "keywords_vi": [
+        "an toàn trong nhà",
+        "vật rơi",
+        "nguy cơ kính vỡ"
+      ],
       "copy": {
         "en": "Indoors, most injuries come from shelves, ceiling fixtures, and broken glass. Stay away from windows, mirrors, and tall furniture that could fall. Protect vital organs by turning your body toward inner walls or corners. Do not use elevators—power may fail or cables may be damaged. After the shaking stops, watch for broken items, spilled chemicals, and unstable shelves before moving. Indoor safety is about minimizing exposure to falling or shattering objects.",
         "vi": "Trong nhà, chấn thương thường đến từ kệ đổ, đèn trần và kính vỡ. Tránh xa cửa sổ, gương và đồ nội thất cao có thể đổ. Bảo vệ các vùng quan trọng bằng cách hướng người vào tường trong hoặc góc phòng. Không dùng thang máy—điện có thể cúp hoặc cáp bị hỏng. Khi hết rung, hãy quan sát kỹ đồ vỡ, hóa chất đổ hoặc kệ lung lay trước khi di chuyển. Sự an toàn trong nhà nằm ở việc tránh xa vật rơi và kính vỡ."
       },
-      "audio": "srs15_02_en.mp3"
+      "audio": "srs15_02_en.mp3",
+      "tags": []
     },
     {
       "slug": "staying-safe-outdoors",
-      "keywords_en": ["outdoors safety", "open area", "falling debris"],
-      "keywords_vi": ["an toàn ngoài trời", "khu vực trống", "mảnh vỡ rơi"],
+      "keywords_en": [
+        "outdoors safety",
+        "open area",
+        "falling debris"
+      ],
+      "keywords_vi": [
+        "an toàn ngoài trời",
+        "khu vực trống",
+        "mảnh vỡ rơi"
+      ],
       "copy": {
         "en": "If you're outdoors, move quickly to an open area away from buildings, trees, power lines, and streetlights. Falling debris causes more injuries than ground movement. Avoid standing near walls, balconies, or anything that could collapse. If you are near the coast, be aware of tsunami warnings after strong earthquakes. Do not rush toward crowded areas; calm movement to open space is the safest response.",
         "vi": "Nếu bạn ở ngoài trời, hãy nhanh chóng di chuyển đến khu vực trống, tránh xa nhà cửa, cây lớn, dây điện và đèn đường. Mảnh vỡ rơi gây chấn thương nhiều hơn là rung lắc. Tránh đứng gần tường, ban công hoặc cấu trúc có thể sập. Nếu gần biển, chú ý cảnh báo sóng thần sau động đất mạnh. Đừng chạy về khu đông người; di chuyển bình tĩnh đến nơi trống là an toàn nhất."
       },
-      "audio": "srs15_03_en.mp3"
+      "audio": "srs15_03_en.mp3",
+      "tags": []
     },
     {
       "slug": "safety-in-vehicles",
-      "keywords_en": ["vehicles", "driving safety", "earthquake response"],
-      "keywords_vi": ["phương tiện", "an toàn khi lái xe", "ứng phó động đất"],
+      "keywords_en": [
+        "vehicles",
+        "driving safety",
+        "earthquake response"
+      ],
+      "keywords_vi": [
+        "phương tiện",
+        "an toàn khi lái xe",
+        "ứng phó động đất"
+      ],
       "copy": {
         "en": "If you're driving when an earthquake hits, pull over safely and stop the car. Avoid stopping under bridges, overpasses, trees, or power lines. Remain inside with your seatbelt on until the shaking stops. Afterward, drive cautiously—roads may be cracked, traffic lights out, and debris may block lanes. If you are in a parking garage, exit the vehicle only after ensuring the structure looks stable. Your vehicle is a protective shell when used correctly.",
         "vi": "Nếu bạn đang lái xe khi động đất xảy ra, hãy dừng xe an toàn. Tránh dừng dưới cầu vượt, cây lớn hoặc dây điện. Ở yên trong xe với dây an toàn cho đến khi hết rung. Sau đó lái chậm vì đường có thể nứt, đèn giao thông hỏng và mảnh vỡ cản trở. Nếu ở bãi đỗ nhiều tầng, chỉ rời xe khi chắc chắn cấu trúc ổn định. Chiếc xe là lớp bảo vệ tốt nếu được dùng đúng cách."
       },
-      "audio": "srs15_04_en.mp3"
+      "audio": "srs15_04_en.mp3",
+      "tags": []
     },
     {
       "slug": "aftershocks-and-secondary-risks",
-      "keywords_en": ["aftershocks", "secondary risks", "structural safety"],
-      "keywords_vi": ["dư chấn", "rủi ro thứ cấp", "an toàn cấu trúc"],
+      "keywords_en": [
+        "aftershocks",
+        "secondary risks",
+        "structural safety"
+      ],
+      "keywords_vi": [
+        "dư chấn",
+        "rủi ro thứ cấp",
+        "an toàn cấu trúc"
+      ],
       "copy": {
         "en": "Aftershocks may follow within minutes or hours and can be as dangerous as the initial quake. Stay alert and avoid re-entering damaged buildings until authorities declare them safe. Watch for gas leaks, fires, broken water lines, and unstable furniture. If you smell gas, evacuate immediately and avoid using switches or matches. Secondary risks often cause more injuries than the first shake—caution saves lives.",
         "vi": "Dư chấn có thể xảy ra sau vài phút hoặc vài giờ và nguy hiểm không kém trận đầu. Luôn cảnh giác và không quay lại tòa nhà hư hại cho đến khi được xác nhận an toàn. Chú ý rò gas, cháy, ống nước vỡ và đồ đạc lung lay. Nếu ngửi thấy mùi gas, hãy rời đi ngay và tránh bật công tắc hoặc dùng lửa. Rủi ro thứ cấp thường gây chấn thương nhiều hơn rung lắc ban đầu—cẩn thận sẽ cứu mạng."
       },
-      "audio": "srs15_05_en.mp3"
+      "audio": "srs15_05_en.mp3",
+      "tags": []
     },
     {
       "slug": "family-preparedness-and-safe-room-setup",
-      "keywords_en": ["family plan", "safe room", "preparedness"],
-      "keywords_vi": ["kế hoạch gia đình", "phòng an toàn", "chuẩn bị"],
+      "keywords_en": [
+        "family plan",
+        "safe room",
+        "preparedness"
+      ],
+      "keywords_vi": [
+        "kế hoạch gia đình",
+        "phòng an toàn",
+        "chuẩn bị"
+      ],
       "copy": {
         "en": "Preparation reduces fear and confusion. Choose a safe room in your home—away from glass, heavy shelves, and hanging fixtures. Secure tall furniture to walls and keep emergency kits in accessible places. Practice earthquake drills with your family so everyone knows where to go and how to protect themselves. Establish a check-in routine in case members get separated. A prepared family reacts faster and stays calmer during real emergencies.",
         "vi": "Chuẩn bị trước giúp giảm sợ hãi và hỗn loạn. Chọn một phòng an toàn trong nhà—xa kính, kệ cao và đồ treo. Cố định nội thất cao vào tường và để bộ dụng cụ khẩn cấp ở nơi dễ lấy. Tập diễn tập động đất với gia đình để ai cũng biết phải làm gì và đi đâu. Lập thói quen liên lạc trong trường hợp bị tách nhau. Gia đình chuẩn bị tốt sẽ phản ứng nhanh và bình tĩnh hơn khi khẩn cấp thật sự."
       },
-      "audio": "srs15_06_en.mp3"
+      "audio": "srs15_06_en.mp3",
+      "tags": []
     }
   ]
 }

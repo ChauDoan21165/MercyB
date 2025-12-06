@@ -13,63 +13,105 @@
   "entries": [
     {
       "slug": "i-go-you-go",
-      "keywords_en": ["simple present", "beginner"],
-      "keywords_vi": ["hiện tại đơn", "người mới"],
+      "keywords_en": [
+        "simple present",
+        "beginner"
+      ],
+      "keywords_vi": [
+        "hiện tại đơn",
+        "người mới"
+      ],
       "copy": {
         "en": "Practice these lines.\nI go to work.\nI go to school.\nI go home.\nYou go now.\nYou go first.\nSay each line slowly.\nShort is correct.",
         "vi": "Luyện các câu sau: I go to work, I go to school, I go home, You go now, You go first. Đọc chậm. Câu ngắn là đúng."
       },
-      "audio": "a107_01_en.mp3"
+      "audio": "a107_01_en.mp3",
+      "tags": []
     },
     {
       "slug": "he-goes-she-goes",
-      "keywords_en": ["he goes", "she goes"],
-      "keywords_vi": ["he goes", "she goes"],
+      "keywords_en": [
+        "he goes",
+        "she goes"
+      ],
+      "keywords_vi": [
+        "he goes",
+        "she goes"
+      ],
       "copy": {
         "en": "Practice with third person.\nHe goes to work.\nShe goes to school.\nHe goes home.\nShe goes early.\nThe s sound is important.\nSay goes slowly.",
         "vi": "Luyện ngôi thứ ba: He goes to work, She goes to school, He goes home, She goes early. Âm s rất quan trọng. Hãy đọc goes thật chậm và rõ."
       },
-      "audio": "a107_02_en.mp3"
+      "audio": "a107_02_en.mp3",
+      "tags": []
     },
     {
       "slug": "daily-action-words",
-      "keywords_en": ["actions", "verbs"],
-      "keywords_vi": ["hành động", "động từ"],
+      "keywords_en": [
+        "actions",
+        "verbs"
+      ],
+      "keywords_vi": [
+        "hành động",
+        "động từ"
+      ],
       "copy": {
         "en": "Practice these verbs.\nI eat.\nI read.\nHe reads.\nShe eats.\nI walk.\nHe walks.\nListen for s with he or she.\nSpeak calmly.",
         "vi": "Luyện các động từ sau: I eat, I read, He reads, She eats, I walk, He walks. Nghe kỹ âm s khi dùng he hoặc she. Nói bình tĩnh."
       },
-      "audio": "a107_03_en.mp3"
+      "audio": "a107_03_en.mp3",
+      "tags": []
     },
     {
       "slug": "simple-patterns",
-      "keywords_en": ["patterns", "sentences"],
-      "keywords_vi": ["mẫu câu", "câu"],
+      "keywords_en": [
+        "patterns",
+        "sentences"
+      ],
+      "keywords_vi": [
+        "mẫu câu",
+        "câu"
+      ],
       "copy": {
         "en": "Practice these patterns.\nI work in the morning.\nHe works at night.\nI study English.\nShe studies at home.\nFeel each ending sound.\nAccuracy first.",
         "vi": "Luyện các mẫu câu sau: I work in the morning, He works at night, I study English, She studies at home. Cảm nhận âm cuối. Độ chính xác là quan trọng nhất."
       },
-      "audio": "a107_04_en.mp3"
+      "audio": "a107_04_en.mp3",
+      "tags": []
     },
     {
       "slug": "short-daily-lines",
-      "keywords_en": ["daily", "sentences"],
-      "keywords_vi": ["đời sống", "câu ngắn"],
+      "keywords_en": [
+        "daily",
+        "sentences"
+      ],
+      "keywords_vi": [
+        "đời sống",
+        "câu ngắn"
+      ],
       "copy": {
         "en": "Read these simple lines.\nI drive.\nHe drives.\nI cook.\nShe cooks.\nI clean.\nHe cleans.\nSay everything slowly and clearly.",
         "vi": "Hãy đọc các câu sau: I drive, He drives, I cook, She cooks, I clean, He cleans. Đọc chậm và rõ ràng."
       },
-      "audio": "a107_05_en.mp3"
+      "audio": "a107_05_en.mp3",
+      "tags": []
     },
     {
       "slug": "mini-speaking-drill",
-      "keywords_en": ["drill", "speaking"],
-      "keywords_vi": ["luyện nói", "thực hành"],
+      "keywords_en": [
+        "drill",
+        "speaking"
+      ],
+      "keywords_vi": [
+        "luyện nói",
+        "thực hành"
+      ],
       "copy": {
         "en": "Repeat this short drill.\nI walk.\nHe walks.\nI read.\nShe reads.\nI study.\nHe studies.\nCalm practice builds strong skill.",
         "vi": "Luyện đoạn sau: I walk, He walks, I read, She reads, I study, He studies. Thực hành bình tĩnh tạo nên kỹ năng vững chắc."
       },
-      "audio": "a107_06_en.mp3"
+      "audio": "a107_06_en.mp3",
+      "tags": []
     }
   ]
 }

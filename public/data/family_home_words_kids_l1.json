@@ -13,77 +13,139 @@
   "entries": [
     {
       "slug": "mom-and-dad",
-      "keywords_en": ["family", "mom", "dad", "parents"],
-      "keywords_vi": ["gia đình", "mẹ", "ba", "phụ huynh"],
+      "keywords_en": [
+        "family",
+        "mom",
+        "dad",
+        "parents"
+      ],
+      "keywords_vi": [
+        "gia đình",
+        "mẹ",
+        "ba",
+        "phụ huynh"
+      ],
       "copy": {
         "en": "Begin with the warmest words: mom and dad. Show a family photo and point gently while saying, “mom… dad.” Let your child repeat at their own pace. You can play a tiny game by hiding the photo behind your back and showing it again as you say the words. Children enjoy the predictability and comfort of familiar faces. These first family words help them feel safe while learning English.",
         "vi": "Bắt đầu với những từ thân thương nhất: mom và dad. Bạn cho bé xem ảnh gia đình và chỉ nhẹ nhàng khi đọc: “mom… dad.” Hãy để bé lặp lại theo nhịp của mình. Bạn có thể chơi trò giấu ảnh sau lưng rồi đưa ra lại khi đọc từ. Trẻ thích sự quen thuộc và cảm giác an toàn. Những từ đầu tiên về gia đình giúp bé cảm thấy ấm áp khi học tiếng Anh."
       },
-      "tags": ["family", "parents"],
+      "tags": [
+        "family",
+        "parents"
+      ],
       "audio": "family_home_words_v1_mom_dad.mp3"
     },
     {
       "slug": "brother-and-sister",
-      "keywords_en": ["family", "brother", "sister", "siblings"],
-      "keywords_vi": ["gia đình", "anh", "chị", "em"],
+      "keywords_en": [
+        "family",
+        "brother",
+        "sister",
+        "siblings"
+      ],
+      "keywords_vi": [
+        "gia đình",
+        "anh",
+        "chị",
+        "em"
+      ],
       "copy": {
         "en": "Teach brother and sister using real people or photos. Point to the sibling and say the word slowly: “brother… sister.” If your child has no siblings, use picture books or stuffed animals to act out a small story. Children enjoy giving roles to toys—big brother, little sister—and repeating the words during pretend play. This helps them connect English with real relationships.",
         "vi": "Dạy brother và sister bằng người thật hoặc ảnh. Bạn chỉ vào anh chị em và đọc từ thật chậm: “brother… sister.” Nếu bé không có anh chị em, hãy dùng sách tranh hoặc thú bông để đóng vai. Trẻ thích phân vai cho đồ chơi—anh lớn, em nhỏ—và lặp lại từ khi chơi tưởng tượng. Điều này giúp bé kết nối tiếng Anh với các mối quan hệ thật."
       },
-      "tags": ["family", "siblings"],
+      "tags": [
+        "family",
+        "siblings"
+      ],
       "audio": "family_home_words_v1_brother_sister.mp3"
     },
     {
       "slug": "common-home-objects",
-      "keywords_en": ["home", "objects", "vocabulary"],
-      "keywords_vi": ["nhà cửa", "đồ vật", "từ vựng"],
+      "keywords_en": [
+        "home",
+        "objects",
+        "vocabulary"
+      ],
+      "keywords_vi": [
+        "nhà cửa",
+        "đồ vật",
+        "từ vựng"
+      ],
       "copy": {
         "en": "Walk around your home and point to everyday objects—chair, bed, table, door. Say each word slowly and clearly. Then let your child point while you name the object. Switch roles so your child becomes the “teacher.” Kids love leading the game, and repeating the words while moving helps them remember effortlessly.",
         "vi": "Hãy đi quanh nhà và chỉ vào những đồ vật quen thuộc—chair, bed, table, door. Bạn đọc từng từ chậm rãi và rõ ràng. Sau đó để bé chỉ và bạn đọc tên đồ vật. Đổi vai để bé trở thành “thầy giáo.” Trẻ rất thích được dẫn dắt, và việc lặp lại từ khi di chuyển giúp bé ghi nhớ tự nhiên."
       },
-      "tags": ["home", "objects"],
+      "tags": [
+        "home",
+        "objects"
+      ],
       "audio": "family_home_words_v1_home_objects.mp3"
     },
     {
       "slug": "my-room-words",
-      "keywords_en": ["home", "room", "kids room"],
-      "keywords_vi": ["nhà cửa", "phòng ngủ", "phòng của bé"],
+      "keywords_en": [
+        "home",
+        "room",
+        "kids room"
+      ],
+      "keywords_vi": [
+        "nhà cửa",
+        "phòng ngủ",
+        "phòng của bé"
+      ],
       "copy": {
         "en": "Use your child’s room to teach simple words like bed, pillow, toy, and light. Children learn faster when the objects belong to them. Point, name, and let your child repeat while touching or holding the item. You can pretend the objects “talk,” saying hello in English, which makes the learning gentle and fun.",
         "vi": "Dùng phòng ngủ của bé để dạy các từ đơn giản như bed, pillow, toy, light. Trẻ học nhanh hơn khi đồ vật là của mình. Bạn chỉ, đọc tên và để bé lặp lại khi chạm hoặc cầm đồ vật. Bạn có thể giả những món đồ biết nói tiếng Anh để việc học vui và nhẹ nhàng hơn."
       },
-      "tags": ["home", "room"],
+      "tags": [
+        "home",
+        "room"
+      ],
       "audio": "family_home_words_v1_my_room_words.mp3"
     },
     {
       "slug": "family-role-play",
-      "keywords_en": ["family", "play", "pretend"],
-      "keywords_vi": ["gia đình", "chơi", "tưởng tượng"],
+      "keywords_en": [
+        "family",
+        "play",
+        "pretend"
+      ],
+      "keywords_vi": [
+        "gia đình",
+        "chơi",
+        "tưởng tượng"
+      ],
       "copy": {
         "en": "Play a short pretend game using family roles. Hold two toys and say, “This is mom. This is dad.” Then let your child choose a toy and decide who it is—brother, sister, or baby. Act out tiny scenes like bedtime or breakfast. Every time a character appears, repeat the English name. Children remember words better when they are part of a story.",
         "vi": "Chơi trò tưởng tượng bằng vai gia đình. Bạn cầm hai món đồ chơi và nói: “This is mom. This is dad.” Sau đó để bé chọn đồ chơi và quyết định đó là ai—brother, sister hoặc baby. Hãy diễn những cảnh nhỏ như đi ngủ hoặc ăn sáng. Mỗi lần nhân vật xuất hiện, bạn lặp lại tên tiếng Anh. Trẻ nhớ từ tốt hơn khi từ nằm trong câu chuyện."
       },
-      "tags": ["family", "pretend"],
+      "tags": [
+        "family",
+        "pretend"
+      ],
       "audio": "family_home_words_v1_family_role_play.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all", "full", "complete"],
-      "keywords_vi": ["tất cả", "đầy đủ", "hoàn chỉnh"],
+      "keywords_en": [
+        "all",
+        "full",
+        "complete"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "đầy đủ",
+        "hoàn chỉnh"
+      ],
       "copy": {
         "en": "Begin with the warmest words: mom and dad. Show a family photo and say the words slowly.\n\nTeach brother and sister using real people, photos, or pretend play with toys.\n\nWalk around the home and name everyday objects like chair, bed, table, and door.\n\nUse your child’s room to teach familiar items like pillow, toy, and light.\n\nPlay a pretend family game with characters like mom, dad, brother, sister, and baby.",
         "vi": "Bắt đầu với các từ thân thương: mom và dad. Cho bé xem ảnh và đọc từ thật chậm.\n\nDạy brother và sister bằng người thật, ảnh hoặc thú bông.\n\nĐi quanh nhà và gọi tên các đồ vật như chair, bed, table, door.\n\nDùng phòng bé để dạy các từ quen thuộc như pillow, toy, light.\n\nChơi trò tưởng tượng với các vai mom, dad, brother, sister và baby."
       },
-      "tags": ["all", "full"],
+      "tags": [
+        "all",
+        "full"
+      ],
       "audio": "family_home_words_v1_mom_dad.mp3 family_home_words_v1_brother_sister.mp3 family_home_words_v1_home_objects.mp3 family_home_words_v1_my_room_words.mp3 family_home_words_v1_family_role_play.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "4-7",
-    "level": "Kids Level 1",
-    "created_at": "2025-11-21T00:00:00+00:00",
-    "updated_at": "2025-11-21T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#FFE3D1"
-  }
+  ]
 }

@@ -30,110 +30,233 @@
   "entries": [
     {
       "slug": "money-life-manifesto",
-      "keywords_en": ["manifesto", "values", "purpose", "vision"],
-      "keywords_vi": ["tuyên ngôn", "giá trị", "mục đích", "tầm nhìn"],
-      "audio": {"en": "calm_vip3_11_en.mp3"},
+      "keywords_en": [
+        "manifesto",
+        "values",
+        "purpose",
+        "vision"
+      ],
+      "keywords_vi": [
+        "tuyên ngôn",
+        "giá trị",
+        "mục đích",
+        "tầm nhìn"
+      ],
+      "audio": {
+        "en": "calm_vip3_11_en.mp3"
+      },
       "copy": {
         "en": "Your Money & Life Manifesto (1–2 Pages): What do you stand for? What won't you compromise? How will you use money as a tool for good? Write it. Revisit yearly. It becomes your compass.",
         "vi": "Tuyên Ngôn Tiền & Cuộc Sống Của Bạn (1–2 Trang): Bạn đại diện cho điều gì? Bạn sẽ không thỏa hiệp điều gì? Bạn sẽ sử dụng tiền như công cụ cho điều tốt như thế nào? Viết nó. Xem xét hàng năm. Nó trở thành la bàn của bạn."
-      }
+      },
+      "tags": []
     },
     {
       "slug": "teaching-kids-money",
-      "keywords_en": ["teaching", "children", "financial education", "next generation"],
-      "keywords_vi": ["dạy", "trẻ em", "giáo dục tài chính", "thế hệ tiếp theo"],
-      "audio": {"en": "calm_vip3_12_en.mp3"},
+      "keywords_en": [
+        "teaching",
+        "children",
+        "financial education",
+        "next generation"
+      ],
+      "keywords_vi": [
+        "dạy",
+        "trẻ em",
+        "giáo dục tài chính",
+        "thế hệ tiếp theo"
+      ],
+      "audio": {
+        "en": "calm_vip3_12_en.mp3"
+      },
       "copy": {
         "en": "Teaching Kids (or Nieces) About Money: Show them budgets. Let them earn. Let them fail small. Money isn't taboo—it's a life skill. Break the cycle of silence.",
         "vi": "Dạy Trẻ Em (hoặc Cháu) Về Tiền: Cho chúng thấy ngân sách. Để chúng kiếm. Để chúng thất bại nhỏ. Tiền không phải là cấm kỵ—đó là kỹ năng sống. Phá vỡ chu kỳ im lặng."
-      }
+      },
+      "tags": []
     },
     {
       "slug": "retirement-not-number",
-      "keywords_en": ["retirement", "lifestyle", "freedom", "fulfillment"],
-      "keywords_vi": ["nghỉ hưu", "lối sống", "tự do", "hoàn thành"],
-      "audio": {"en": "calm_vip3_13_en.mp3"},
+      "keywords_en": [
+        "retirement",
+        "lifestyle",
+        "freedom",
+        "fulfillment"
+      ],
+      "keywords_vi": [
+        "nghỉ hưu",
+        "lối sống",
+        "tự do",
+        "hoàn thành"
+      ],
+      "audio": {
+        "en": "calm_vip3_13_en.mp3"
+      },
       "copy": {
         "en": "Retirement: Not a Number, a Feeling. Enough to live comfortably. Enough to choose how you spend time. Enough to feel free. Define your 'enough.' Then work backward.",
         "vi": "Nghỉ Hưu: Không Phải Một Con Số, Một Cảm Giác. Đủ để sống thoải mái. Đủ để chọn cách bạn dành thời gian. Đủ để cảm thấy tự do. Định nghĩa 'đủ' của bạn. Sau đó làm việc ngược lại."
-      }
+      },
+      "tags": []
     },
     {
       "slug": "ai-write-future-self",
-      "keywords_en": ["AI prompt", "future vision", "goals", "reflection"],
-      "keywords_vi": ["AI prompt", "tầm nhìn tương lai", "mục tiêu", "suy ngẫm"],
-      "audio": {"en": "calm_vip3_14_en.mp3"},
+      "keywords_en": [
+        "AI prompt",
+        "future vision",
+        "goals",
+        "reflection"
+      ],
+      "keywords_vi": [
+        "AI prompt",
+        "tầm nhìn tương lai",
+        "mục tiêu",
+        "suy ngẫm"
+      ],
+      "audio": {
+        "en": "calm_vip3_14_en.mp3"
+      },
       "copy": {
         "en": "AI Prompt: 'In 10 years, what do I want my money to have done for me and others?' Write the letter your future self would send you. Let it guide today's choices.",
         "vi": "AI Prompt: 'Trong 10 năm, tôi muốn tiền của tôi đã làm gì cho tôi và người khác?' Viết bức thư bản thân tương lai sẽ gửi cho bạn. Để nó hướng dẫn lựa chọn hôm nay."
-      }
+      },
+      "tags": []
     },
     {
       "slug": "ethics-where-money-sleeps",
-      "keywords_en": ["ethics", "values", "ESG", "responsible investing"],
-      "keywords_vi": ["đạo đức", "giá trị", "ESG", "đầu tư có trách nhiệm"],
-      "audio": {"en": "calm_vip3_15_en.mp3"},
+      "keywords_en": [
+        "ethics",
+        "values",
+        "ESG",
+        "responsible investing"
+      ],
+      "keywords_vi": [
+        "đạo đức",
+        "giá trị",
+        "ESG",
+        "đầu tư có trách nhiệm"
+      ],
+      "audio": {
+        "en": "calm_vip3_15_en.mp3"
+      },
       "copy": {
         "en": "Ethics: Where Your Money Sleeps. Your investments fund companies. Do they align with your values? ESG, ethical funds, impact investing—options exist. Money can do good while growing.",
         "vi": "Đạo Đức: Nơi Tiền Của Bạn Ngủ. Đầu tư của bạn tài trợ công ty. Chúng có phù hợp với giá trị của bạn không? ESG, quỹ đạo đức, đầu tư tác động—có lựa chọn. Tiền có thể làm tốt trong khi phát triển."
-      }
+      },
+      "tags": []
     },
     {
       "slug": "aging-care-dignity",
-      "keywords_en": ["aging", "elder care", "planning", "dignity"],
-      "keywords_vi": ["già đi", "chăm sóc người cao tuổi", "hoạch định", "phẩm giá"],
-      "audio": {"en": "calm_vip3_16_en.mp3"},
+      "keywords_en": [
+        "aging",
+        "elder care",
+        "planning",
+        "dignity"
+      ],
+      "keywords_vi": [
+        "già đi",
+        "chăm sóc người cao tuổi",
+        "hoạch định",
+        "phẩm giá"
+      ],
+      "audio": {
+        "en": "calm_vip3_16_en.mp3"
+      },
       "copy": {
         "en": "Aging, Care, and Dignity: Long-term care costs. Who will help? Where will you live? These aren't morbid—they're loving. Plan so you're not a burden. Plan so you have choices.",
         "vi": "Già Đi, Chăm Sóc, và Phẩm Giá: Chi phí chăm sóc dài hạn. Ai sẽ giúp? Bạn sẽ sống ở đâu? Đây không phải u ám—chúng là yêu thương. Lập kế hoạch để bạn không là gánh nặng. Lập kế hoạch để bạn có lựa chọn."
-      }
+      },
+      "tags": []
     },
     {
       "slug": "family-wealth-conversations",
-      "keywords_en": ["family", "wealth transfer", "communication", "transparency"],
-      "keywords_vi": ["gia đình", "chuyển giao tài sản", "giao tiếp", "minh bạch"],
-      "audio": {"en": "calm_vip3_17_en.mp3"},
+      "keywords_en": [
+        "family",
+        "wealth transfer",
+        "communication",
+        "transparency"
+      ],
+      "keywords_vi": [
+        "gia đình",
+        "chuyển giao tài sản",
+        "giao tiếp",
+        "minh bạch"
+      ],
+      "audio": {
+        "en": "calm_vip3_17_en.mp3"
+      },
       "copy": {
         "en": "Family Wealth Conversations: Talk about money before it's urgent. Who inherits what. Why. How. Silence breeds resentment. Transparency builds trust. Hard talks now = peace later.",
         "vi": "Cuộc Trò Chuyện Về Tài Sản Gia Đình: Nói về tiền trước khi khẩn cấp. Ai thừa kế gì. Tại sao. Như thế nào. Im lặng nuôi dưỡng oán giận. Minh bạch xây dựng niềm tin. Nói chuyện khó bây giờ = bình an sau này."
-      }
+      },
+      "tags": []
     },
     {
       "slug": "when-hire-help",
-      "keywords_en": ["financial advisor", "professional help", "guidance", "when to hire"],
-      "keywords_vi": ["cố vấn tài chính", "trợ giúp chuyên nghiệp", "hướng dẫn", "khi nào thuê"],
-      "audio": {"en": "calm_vip3_18_en.mp3"},
+      "keywords_en": [
+        "financial advisor",
+        "professional help",
+        "guidance",
+        "when to hire"
+      ],
+      "keywords_vi": [
+        "cố vấn tài chính",
+        "trợ giúp chuyên nghiệp",
+        "hướng dẫn",
+        "khi nào thuê"
+      ],
+      "audio": {
+        "en": "calm_vip3_18_en.mp3"
+      },
       "copy": {
         "en": "When to Hire Help (And When Not): Hire for complexity (taxes, estate planning). DIY for basics (budgeting, index funds). Pay for expertise, not hand-holding. Choose fee-only advisors.",
         "vi": "Khi Nào Thuê Trợ Giúp (Và Khi Nào Không): Thuê cho phức tạp (thuế, hoạch định tài sản). Tự làm cho cơ bản (lập ngân sách, quỹ chỉ số). Trả cho chuyên môn, không phải nắm tay. Chọn cố vấn chỉ phí."
-      }
+      },
+      "tags": []
     },
     {
       "slug": "annual-money-ritual",
-      "keywords_en": ["ritual", "annual review", "reflection", "celebration"],
-      "keywords_vi": ["nghi thức", "xem xét hàng năm", "suy ngẫm", "ăn mừng"],
-      "audio": {"en": "calm_vip3_19_en.mp3"},
+      "keywords_en": [
+        "ritual",
+        "annual review",
+        "reflection",
+        "celebration"
+      ],
+      "keywords_vi": [
+        "nghi thức",
+        "xem xét hàng năm",
+        "suy ngẫm",
+        "ăn mừng"
+      ],
+      "audio": {
+        "en": "calm_vip3_19_en.mp3"
+      },
       "copy": {
         "en": "Your Annual Money Ritual: End of year. Review what worked, what didn't. Celebrate wins. Forgive mistakes. Set intentions for next year. This isn't a chore—it's a gift to future you.",
         "vi": "Nghi Thức Tiền Hàng Năm Của Bạn: Cuối năm. Xem xét cái gì hiệu quả, cái gì không. Ăn mừng chiến thắng. Tha thứ sai lầm. Đặt ý định cho năm sau. Đây không phải việc vặt—đó là món quà cho bạn tương lai."
-      }
+      },
+      "tags": []
     },
     {
       "slug": "letter-glad-you-wrote",
-      "keywords_en": ["letter", "legacy", "final thoughts", "wisdom"],
-      "keywords_vi": ["thư", "di sản", "suy nghĩ cuối cùng", "trí tuệ"],
-      "audio": {"en": "calm_vip3_20_en.mp3"},
+      "keywords_en": [
+        "letter",
+        "legacy",
+        "final thoughts",
+        "wisdom"
+      ],
+      "keywords_vi": [
+        "thư",
+        "di sản",
+        "suy nghĩ cuối cùng",
+        "trí tuệ"
+      ],
+      "audio": {
+        "en": "calm_vip3_20_en.mp3"
+      },
       "copy": {
         "en": "The Letter You'll Be Glad You Wrote: To your kids. To yourself at 80. To whoever inherits your values. What do you want them to know? Write it now. Seal it. Rest easy.",
         "vi": "Bức Thư Bạn Sẽ Vui Khi Đã Viết: Cho con bạn. Cho bản thân ở tuổi 80. Cho ai kế thừa giá trị của bạn. Bạn muốn họ biết điều gì? Viết nó ngay bây giờ. Niêm phong nó. Yên tâm."
-      }
+      },
+      "tags": []
     }
-  ],
-  "meta": {
-    "created_at": "2025-11-07T00:00:00+09:00",
-    "updated_at": "2025-11-07T00:00:00+09:00",
-    "entry_count": 10,
-    "tier": "vip3",
-    "room_color": "#FFD700"
-  }
+  ]
 }

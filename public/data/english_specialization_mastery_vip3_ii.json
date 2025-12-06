@@ -3,53 +3,118 @@
   "tier": "vip3_ii",
   "highlighted_words": [
     {
-      "en": ["Chunk-stacking", "chunk stacking", "stacking"],
-      "vi": ["Xếp cụm", "xếp cụm từ"],
+      "en": [
+        "Chunk-stacking",
+        "chunk stacking",
+        "stacking"
+      ],
+      "vi": [
+        "Xếp cụm",
+        "xếp cụm từ"
+      ],
       "color": "#A8F0A8"
     },
     {
-      "en": ["argue", "argument", "I'd argue"],
-      "vi": ["lập luận", "tôi cho rằng"],
+      "en": [
+        "argue",
+        "argument",
+        "I'd argue"
+      ],
+      "vi": [
+        "lập luận",
+        "tôi cho rằng"
+      ],
       "color": "#FFD8B8"
     },
     {
-      "en": ["Honestly", "honestly I feel"],
-      "vi": ["Thành thật", "thành thật mà nói"],
+      "en": [
+        "Honestly",
+        "honestly I feel"
+      ],
+      "vi": [
+        "Thành thật",
+        "thành thật mà nói"
+      ],
       "color": "#FFE0CC"
     },
     {
-      "en": ["productivity", "productive"],
-      "vi": ["năng suất", "hiệu quả"],
+      "en": [
+        "productivity",
+        "productive"
+      ],
+      "vi": [
+        "năng suất",
+        "hiệu quả"
+      ],
       "color": "#FFF4D8"
     },
     {
-      "en": ["momentum", "linguistic momentum"],
-      "vi": ["động lực", "động lực ngôn ngữ"],
+      "en": [
+        "momentum",
+        "linguistic momentum"
+      ],
+      "vi": [
+        "động lực",
+        "động lực ngôn ngữ"
+      ],
       "color": "#FFB8A3"
     },
     {
-      "en": ["fluency", "fluid speech", "flowing"],
-      "vi": ["lưu loát", "trôi chảy"],
+      "en": [
+        "fluency",
+        "fluid speech",
+        "flowing"
+      ],
+      "vi": [
+        "lưu loát",
+        "trôi chảy"
+      ],
       "color": "#B8D4F1"
     },
     {
-      "en": ["cognitive", "cognitive flow", "cognitive load"],
-      "vi": ["nhận thức", "luồng nhận thức"],
+      "en": [
+        "cognitive",
+        "cognitive flow",
+        "cognitive load"
+      ],
+      "vi": [
+        "nhận thức",
+        "luồng nhận thức"
+      ],
       "color": "#D9C8F0"
     },
     {
-      "en": ["precision", "precise", "accuracy"],
-      "vi": ["chính xác", "độ chính xác"],
+      "en": [
+        "precision",
+        "precise",
+        "accuracy"
+      ],
+      "vi": [
+        "chính xác",
+        "độ chính xác"
+      ],
       "color": "#98FB98"
     },
     {
-      "en": ["layered speech", "multi-layered"],
-      "vi": ["lời nói nhiều tầng"],
+      "en": [
+        "layered speech",
+        "multi-layered"
+      ],
+      "vi": [
+        "lời nói nhiều tầng"
+      ],
       "color": "#E0D8F5"
     },
     {
-      "en": ["nuanced", "nuance", "subtle"],
-      "vi": ["tinh tế", "sắc thái"],
+      "en": [
+        "nuanced",
+        "nuance",
+        "subtle"
+      ],
+      "vi": [
+        "tinh tế",
+        "sắc thái"
+      ],
       "color": "#D4EED5"
     }
   ],
@@ -64,101 +129,200 @@
   "entries": [
     {
       "slug": "precision-reading-systems",
-      "keywords_en": ["reading", "precision", "analysis"],
-      "keywords_vi": ["đọc", "chính xác", "phân tích"],
+      "keywords_en": [
+        "reading",
+        "precision",
+        "analysis"
+      ],
+      "keywords_vi": [
+        "đọc",
+        "chính xác",
+        "phân tích"
+      ],
       "copy": {
         "en": "Expert readers do not read word by word—they process English in structured layers. First, identify the macro-purpose: inform, argue, analyze, or persuade. Then scan for global signals: topic sentences, contrast markers (however, whereas), and result markers (therefore, thus). Next, track lexical chains—repeated keywords that show the author’s direction. Finally, extract functional language such as claims, evidence, and limitations. This four-layer approach trains comprehension beyond vocabulary level, allowing you to read articles, reports, and academic pieces efficiently. Practice by summarizing each paragraph in one sentence, then rewriting the whole text in four to five lines. Over time, you’ll read faster, retain more, and understand author intention with clarity.",
         "vi": "Người đọc chuyên sâu không đọc từng từ mà xử lý theo nhiều lớp. Trước tiên, xác định mục đích chính: thông tin, lập luận, phân tích hay thuyết phục. Sau đó quét tín hiệu toàn bài: câu chủ đề, từ nối tương phản (however, whereas) và kết quả (therefore, thus). Tiếp theo, theo dõi chuỗi từ vựng—các từ lặp cho thấy hướng lập luận. Cuối cùng, trích xuất ngôn ngữ chức năng như luận điểm, bằng chứng và giới hạn. Cách bốn lớp này giúp hiểu vượt mức từ vựng, cho phép bạn đọc bài báo, báo cáo và văn bản học thuật hiệu quả. Hãy tóm tắt mỗi đoạn bằng một câu, rồi rút toàn bài còn bốn đến năm câu. Bạn sẽ đọc nhanh hơn, nhớ lâu và hiểu ý tác giả rõ ràng hơn."
       },
-      "tags": ["reading", "analysis"],
+      "tags": [
+        "reading",
+        "analysis"
+      ],
       "audio": "En_Spe_mas_vip3_ii_read.mp3"
     },
     {
       "slug": "listening-deconstruction",
-      "keywords_en": ["listening", "analysis", "native speed"],
-      "keywords_vi": ["nghe", "phân tích", "tốc độ bản ngữ"],
+      "keywords_en": [
+        "listening",
+        "analysis",
+        "native speed"
+      ],
+      "keywords_vi": [
+        "nghe",
+        "phân tích",
+        "tốc độ bản ngữ"
+      ],
       "copy": {
         "en": "Advanced listening is not hearing every word—it’s recognizing patterns. Native speech compresses sounds, drops syllables, and merges words: did you becomes d’you, want to becomes wanna. Instead of chasing each word, focus on three elements: stress peaks (the words that carry meaning), function-word shadows (reduced sounds around keywords), and intention tone (emotion, attitude, certainty). Choose short segments from interviews or documentaries and replay them five to seven times. First listen: main idea. Second: stressed words. Third: reduced forms. Fourth: paraphrase the meaning. When you train your brain to decode patterns instead of sounds, native speed becomes manageable and predictable.",
         "vi": "Nghe nâng cao không phải nghe từng từ mà nhận dạng mẫu. Người bản ngữ rút gọn âm, nuốt âm và nối từ: did you becomes d’you, want to becomes wanna. Thay vì đuổi theo từng từ, hãy tập trung ba yếu tố: điểm nhấn (từ mang nghĩa), bóng từ chức năng (âm giảm xung quanh từ khóa) và sắc thái ý định (cảm xúc, thái độ, mức chắc chắn). Chọn đoạn ngắn từ phỏng vấn hoặc tài liệu và nghe lại năm đến bảy lần. Lần 1: ý chính. Lần 2: từ nhấn. Lần 3: dạng rút gọn. Lần 4: diễn giải lại nghĩa. Khi não quen giải mã mẫu thay vì âm, tốc độ bản ngữ trở nên dễ dự đoán."
       },
-      "tags": ["listening", "native"],
+      "tags": [
+        "listening",
+        "native"
+      ],
       "audio": "En_Spe_mas_vip3_ii_listen.mp3"
     },
     {
       "slug": "academic-writing-architecture",
-      "keywords_en": ["writing", "academic", "structure"],
-      "keywords_vi": ["viết", "học thuật", "cấu trúc"],
+      "keywords_en": [
+        "writing",
+        "academic",
+        "structure"
+      ],
+      "keywords_vi": [
+        "viết",
+        "học thuật",
+        "cấu trúc"
+      ],
       "copy": {
         "en": "Expert writing is built through architecture, not inspiration. At a specialized level, every paragraph follows a logic grid: claim becomes explanation becomes evidence becomes implication. This structure ensures clarity even for complex topics. Begin with a precise claim using hedging language (The data suggests…). Follow with reasoning that clarifies mechanism or rationale. Add evidence—examples, statistics, or references. End with an implication that shows why it matters. Practice rewriting short paragraphs into this four-part design. Over time, your writing becomes tighter, more persuasive, and academically credible. This framework also prevents common issues like vague ideas, weak arguments, or disconnected sentences.",
         "vi": "Viết chuyên sâu dựa trên kiến trúc, không phải cảm hứng. Ở mức độ chuyên môn, mỗi đoạn theo lưới logic: luận điểm becomes giải thích becomes bằng chứng becomes hàm ý. Cách này giúp rõ ràng ngay cả với chủ đề phức tạp. Bắt đầu bằng luận điểm chính xác với ngôn ngữ hedging (The data suggests…). Tiếp theo là lý giải cơ chế hoặc lý do. Thêm bằng chứng—ví dụ, số liệu hoặc trích dẫn. Kết bằng hàm ý thể hiện tầm quan trọng. Luyện viết lại đoạn ngắn theo bốn phần. Lâu dần, văn bản trở nên chặt, thuyết phục và đạt chuẩn học thuật. Khung này cũng loại bỏ lỗi phổ biến như ý mơ hồ, lập luận yếu hoặc câu rời rạc."
       },
-      "tags": ["writing", "academic"],
+      "tags": [
+        "writing",
+        "academic"
+      ],
       "audio": "En_Spe_mas_vip3_ii_write.mp3"
     },
     {
       "slug": "speaking-professional-fluidity",
-      "keywords_en": ["speaking", "professional", "fluency"],
-      "keywords_vi": ["nói", "chuyên nghiệp", "trôi chảy"],
+      "keywords_en": [
+        "speaking",
+        "professional",
+        "fluency"
+      ],
+      "keywords_vi": [
+        "nói",
+        "chuyên nghiệp",
+        "trôi chảy"
+      ],
       "copy": {
         "en": "Specialized speaking requires controlled flow, professional tone, and strategic phrasing. Instead of speaking fast, aim to speak in structured units: stance becomes detail becomes micro-example. For instance: I believe the proposal is workable (stance) because it improves efficiency (detail). For example, the new workflow reduces processing time by 20% (micro-example). This modular rhythm mirrors native professional communication. Train by using anchor phrases such as From my perspective…, The key issue is…, and One practical example is…. These frames create clarity under pressure and help you maintain a confident, expert presence in discussions, presentations, and interviews.",
         "vi": "Nói chuyên sâu đòi hỏi mạch kiểm soát, giọng chuyên nghiệp và cụm diễn đạt chiến lược. Thay vì nói nhanh, hãy nói theo nhịp mô-đun: quan điểm becomes chi tiết becomes ví dụ nhỏ. Ví dụ: I believe the proposal is workable (quan điểm) because it improves efficiency (chi tiết). For example, the new workflow reduces processing time by 20% (ví dụ). Nhịp này giống giao tiếp chuyên nghiệp của người bản xứ. Hãy luyện với các cụm neo như From my perspective…, The key issue is…, One practical example is…. Khung này tạo rõ ràng và giúp bạn giữ sự tự tin trong thảo luận, thuyết trình và phỏng vấn."
       },
-      "tags": ["speaking", "professional"],
+      "tags": [
+        "speaking",
+        "professional"
+      ],
       "audio": "En_Spe_mas_vip3_ii_speak.mp3"
     },
     {
       "slug": "deep-vocabulary-systems",
-      "keywords_en": ["vocabulary", "depth", "systems"],
-      "keywords_vi": ["từ vựng", "chiều sâu", "hệ thống"],
+      "keywords_en": [
+        "vocabulary",
+        "depth",
+        "systems"
+      ],
+      "keywords_vi": [
+        "từ vựng",
+        "chiều sâu",
+        "hệ thống"
+      ],
       "copy": {
         "en": "Specialized vocabulary learning moves beyond memorizing words. Build networks: root becomes family becomes register becomes collocations. Take struct: structure, construct, instruct, obstruct, infrastructure. Add register: formal, neutral, informal. Add collocations: highly structured, construct an argument, instruction manual, obstruct progress. This system expands one word into dozens of usable expressions. Practice by choosing one root per week and mapping its family tree. Then write five sentences using different forms and registers. This method builds long-term retention and gives you expressive power across academic, professional, and conversational contexts.",
         "vi": "Học từ vựng chuyên sâu vượt xa việc học thuộc từng từ. Hãy xây mạng lưới: gốc từ becomes họ từ becomes sắc thái becomes collocation. Ví dụ gốc struct: structure, construct, instruct, obstruct, infrastructure. Thêm sắc thái: trang trọng, trung tính, thân mật. Thêm collocation: highly structured, construct an argument, instruction manual, obstruct progress. Một gốc từ mở rộng thành hàng chục cách diễn đạt. Hãy chọn một gốc mỗi tuần và lập sơ đồ họ từ. Sau đó viết năm câu dùng dạng và sắc thái khác nhau. Cách này giúp nhớ lâu và tăng sức diễn đạt ở mọi bối cảnh."
       },
-      "tags": ["vocabulary", "depth"],
+      "tags": [
+        "vocabulary",
+        "depth"
+      ],
       "audio": "En_Spe_mas_vip3_ii_vocab.mp3"
     },
     {
       "slug": "longform-processing",
-      "keywords_en": ["longform", "processing", "comprehension"],
-      "keywords_vi": ["dài", "xử lý", "hiểu"],
+      "keywords_en": [
+        "longform",
+        "processing",
+        "comprehension"
+      ],
+      "keywords_vi": [
+        "dài",
+        "xử lý",
+        "hiểu"
+      ],
       "copy": {
         "en": "Long-form English—lectures, reports, podcasts—requires sustained mental processing. Instead of listening or reading straight through, break the information into cognitive packets: frame (what is the topic?), stance (what is the speaker’s position?), support (what evidence is given?), and shift (what changes next?). This technique reveals structure behind the content. Practice by pausing every two to three minutes to label each packet. Then summarize the full material in five sentences: topic becomes stance becomes support becomes shift becomes conclusion. With repetition, your brain learns to track long English content without fatigue, giving you expert-level comprehension.",
         "vi": "Tiếng Anh dạng dài—bài giảng, báo cáo, podcast—đòi hỏi xử lý thông tin liên tục. Thay vì đọc hoặc nghe một mạch, hãy chia nội dung thành gói nhận thức: chủ đề (nói về gì?), quan điểm (lập trường của người nói?), hỗ trợ (bằng chứng?), và chuyển ý (điều gì tiếp theo?). Cách này làm lộ cấu trúc ẩn sau nội dung. Hãy luyện dừng mỗi hai đến ba phút để gắn nhãn từng gói. Sau đó tóm tắt toàn bộ bằng năm câu: chủ đề becomes quan điểm becomes hỗ trợ becomes chuyển ý becomes kết luận. Lặp lại sẽ giúp não theo kịp nội dung dài mà không mệt."
       },
-      "tags": ["longform", "processing"],
+      "tags": [
+        "longform",
+        "processing"
+      ],
       "audio": "En_Spe_mas_vip3_ii_long.mp3"
     },
     {
       "slug": "pronunciation-precision",
-      "keywords_en": ["pronunciation", "precision", "stress"],
-      "keywords_vi": ["phát âm", "chính xác", "trọng âm"],
+      "keywords_en": [
+        "pronunciation",
+        "precision",
+        "stress"
+      ],
+      "keywords_vi": [
+        "phát âm",
+        "chính xác",
+        "trọng âm"
+      ],
       "copy": {
         "en": "Pronunciation mastery is not about sounding native—it's about precision and intelligibility. Focus on three high-impact elements: stress placement, vowel contrast, and thought grouping. English relies on stress to signal meaning: record vs. record, address vs. address. Vowel clarity distinguishes minimal pairs such as ship/sheep or full/fool. Thought grouping organizes speech into clear segments: When I looked at the data | I realized a pattern. Practice by recording yourself and marking stress with CAPITALS and groups with |. Precision improves clarity and eliminates misunderstandings, especially in professional settings.",
         "vi": "Làm chủ phát âm không nhằm giống người bản xứ mà đạt độ rõ và chính xác. Hãy tập trung ba yếu tố quan trọng: trọng âm, phân biệt nguyên âm và chia nhịp ý. Tiếng Anh dùng trọng âm để tạo nghĩa: record vs. reCORD, address vs. adDRESS. Sự rõ ràng của nguyên âm phân biệt cặp ship/sheep hay full/fool. Chia nhịp giúp câu mạch lạc: When I looked at the data | I realized a pattern. Hãy ghi âm, đánh dấu trọng âm bằng CHỮ HOA và nhịp bằng |. Độ chính xác nâng khả năng hiểu trong môi trường chuyên nghiệp."
       },
-      "tags": ["pronunciation", "precision"],
+      "tags": [
+        "pronunciation",
+        "precision"
+      ],
       "audio": "En_Spe_mas_vip3_ii_pron.mp3"
     },
     {
       "slug": "error-analysis-system",
-      "keywords_en": ["error analysis", "correction", "mastery"],
-      "keywords_vi": ["phân tích lỗi", "sửa lỗi", "làm chủ"],
+      "keywords_en": [
+        "error analysis",
+        "correction",
+        "mastery"
+      ],
+      "keywords_vi": [
+        "phân tích lỗi",
+        "sửa lỗi",
+        "làm chủ"
+      ],
       "copy": {
         "en": "Specialists improve by analyzing errors systematically, not randomly. Create an error log with three categories: form (grammar/tenses), choice (vocabulary/collocation), and logic (clarity/structure). Each time you make a mistake, record the sentence, corrected version, and explanation. Then create a replacement template to reuse correctly in future context. For example: I look forward to meet becomes I look forward to meeting + noun/gerund. Repeat your log weekly to reinforce correct patterns. This method turns mistakes into data and accelerates mastery far faster than passive practice.",
         "vi": "Người chuyên sâu cải thiện bằng phân tích lỗi có hệ thống, không ngẫu nhiên. Hãy tạo nhật ký lỗi gồm ba loại: hình thức (ngữ pháp/thì), lựa chọn (từ vựng/collocation) và logic (rõ ràng/cấu trúc). Mỗi khi mắc lỗi, ghi câu sai, câu đúng và giải thích. Sau đó tạo mẫu thay thế để dùng đúng về sau. Ví dụ: I look forward to meet becomes I look forward to meeting + danh từ/gerund. Ôn nhật ký mỗi tuần để củng cố mẫu đúng. Cách này biến lỗi thành dữ liệu và tăng tốc độ làm chủ nhanh hơn luyện tập thụ động."
       },
-      "tags": ["error", "analysis"],
+      "tags": [
+        "error",
+        "analysis"
+      ],
       "audio": "En_Spe_mas_vip3_ii_error.mp3"
     },
     {
       "slug": "specialist-mindset",
-      "keywords_en": ["mindset", "specialization", "mastery"],
-      "keywords_vi": ["tư duy", "chuyên sâu", "làm chủ"],
+      "keywords_en": [
+        "mindset",
+        "specialization",
+        "mastery"
+      ],
+      "keywords_vi": [
+        "tư duy",
+        "chuyên sâu",
+        "làm chủ"
+      ],
       "copy": {
         "en": "Specialization is a mindset: high-level learners train deliberately, measure progress, and refine weaknesses. Adopt the expert loop: set a micro-goal (improve connectors), collect input (examples from books or videos), produce output (write/speak), analyze errors, refine templates, repeat. Focus on depth, not volume. One structure mastered deeply is more valuable than twenty learned superficially. Build a weekly ritual: one reading analysis, one listening deconstruction, one writing paragraph, one speaking reflection, and one error-review session. Over time, this mindset compounds, transforming English from a school subject into a professional tool of expression and reasoning.",
         "vi": "Chuyên sâu là tư duy: người học nâng cao luyện có chủ đích, đo tiến bộ và chỉnh điểm yếu. Hãy áp dụng vòng chuyên gia: đặt mục tiêu nhỏ (cải thiện liên từ), thu thập đầu vào (ví dụ từ sách hoặc video), tạo đầu ra (viết/nói), phân tích lỗi, tinh chỉnh mẫu và lặp lại. Tập trung chiều sâu thay vì số lượng. Một cấu trúc được làm chủ sâu còn quý hơn hai mươi cấu trúc biết qua loa. Tạo nghi thức hàng tuần: một bài phân tích đọc, một lần phân tích nghe, một đoạn viết, một phần nói phản chiếu và một buổi rà lỗi. Lâu dần, tư duy này giúp tiếng Anh trở thành công cụ chuyên nghiệp để diễn đạt và tư duy."
       },
-      "tags": ["mindset", "mastery"],
+      "tags": [
+        "mindset",
+        "mastery"
+      ],
       "audio": "En_Spe_mas_vip3_ii_mind.mp3"
     }
   ],
@@ -187,18 +351,5 @@
         "tư duy chuyên gia"
       ]
     }
-  },
-  "meta": {
-    "created_at": "2025-11-16T20:27:00+07:00",
-    "updated_at": "2025-11-16T20:27:00+07:00",
-    "entry_count": 9,
-    "artifact_set_id": "english-specialization-mastery-vip3-ii-2025",
-    "data_format_version": "MercyBlade-Core-v1.3",
-    "room_color": "#8B5CF6",
-    "special_theme": "specialization-mastery",
-    "tier": "vip3",
-    "origin": "vip3_ii_specialization + short_audio_names",
-    "audio_naming_convention": "short_abbrev",
-    "validation_script": "node scripts/validate-audio-content-match.js public/data/rooms/english_specialization_mastery_vip3_ii.json"
   }
 }

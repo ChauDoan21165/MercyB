@@ -13,77 +13,133 @@
   "entries": [
     {
       "slug": "jump",
-      "keywords_en": ["action", "jump", "move"],
-      "keywords_vi": ["hành động", "nhảy", "di chuyển"],
+      "keywords_en": [
+        "action",
+        "jump",
+        "move"
+      ],
+      "keywords_vi": [
+        "hành động",
+        "nhảy",
+        "di chuyển"
+      ],
       "copy": {
         "en": "Start with the simple verb jump. Bend your knees gently and lift off the ground. Say the word each time you land. Encourage your child to jump alongside you. The physical motion helps children connect the word to the action naturally and joyfully.",
         "vi": "Bắt đầu với động từ jump. Cúi đầu gối nhẹ và nhảy lên. Nói từ mỗi khi bạn chạm đất. Khuyến khích bé nhảy cùng bạn. Chuyển động cơ thể giúp trẻ kết nối từ với hành động một cách tự nhiên và vui vẻ."
       },
-      "tags": ["action", "movement"],
+      "tags": [
+        "action",
+        "movement"
+      ],
       "audio": "first_action_verbs_v1_jump.mp3"
     },
     {
       "slug": "run",
-      "keywords_en": ["action", "run", "fast"],
-      "keywords_vi": ["hành động", "chạy", "nhanh"],
+      "keywords_en": [
+        "action",
+        "run",
+        "fast"
+      ],
+      "keywords_vi": [
+        "hành động",
+        "chạy",
+        "nhanh"
+      ],
       "copy": {
         "en": "Teach the verb run by jogging in place or moving quickly across the room. Say the word as your feet move. Let your child copy you. Kids love moving fast, and this energetic verb makes learning feel like playtime.",
         "vi": "Dạy động từ run bằng cách chạy tại chỗ hoặc di chuyển nhanh qua phòng. Nói từ khi chân bạn chuyển động. Để bé bắt chước bạn. Trẻ thích di chuyển nhanh, và động từ đầy năng lượng này khiến việc học giống như giờ chơi."
       },
-      "tags": ["action", "fast"],
+      "tags": [
+        "action",
+        "fast"
+      ],
       "audio": "first_action_verbs_v1_run.mp3"
     },
     {
       "slug": "clap",
-      "keywords_en": ["action", "clap", "hands"],
-      "keywords_vi": ["hành động", "vỗ tay", "tay"],
+      "keywords_en": [
+        "action",
+        "clap",
+        "hands"
+      ],
+      "keywords_vi": [
+        "hành động",
+        "vỗ tay",
+        "tay"
+      ],
       "copy": {
         "en": "Introduce the verb clap by bringing your hands together with a gentle rhythm. Say the word each time your palms meet. Encourage your child to clap along. This simple action is easy to repeat and creates a joyful sound that reinforces the word.",
         "vi": "Giới thiệu động từ clap bằng cách đưa hai bàn tay lại với nhịp điệu nhẹ nhàng. Nói từ mỗi khi lòng bàn tay chạm nhau. Khuyến khích bé vỗ tay theo. Hành động đơn giản này dễ lặp lại và tạo âm thanh vui giúp củng cố từ vựng."
       },
-      "tags": ["action", "hands"],
+      "tags": [
+        "action",
+        "hands"
+      ],
       "audio": "first_action_verbs_v1_clap.mp3"
     },
     {
       "slug": "sit-stand",
-      "keywords_en": ["action", "sit", "stand"],
-      "keywords_vi": ["hành động", "ngồi", "đứng"],
+      "keywords_en": [
+        "action",
+        "sit",
+        "stand"
+      ],
+      "keywords_vi": [
+        "hành động",
+        "ngồi",
+        "đứng"
+      ],
       "copy": {
         "en": "Teach the verbs sit and stand by switching between the two positions slowly. Say each word clearly as you move. Let your child mirror you. These everyday actions help build body awareness and make transitions between activities feel natural and calm.",
         "vi": "Dạy các động từ sit và stand bằng cách chuyển đổi giữa hai tư thế chậm rãi. Nói mỗi từ rõ ràng khi bạn di chuyển. Để bé làm theo bạn. Những hành động hằng ngày này giúp xây dựng nhận thức cơ thể và làm cho các chuyển đổi giữa hoạt động trở nên tự nhiên và bình tĩnh."
       },
-      "tags": ["action", "position"],
+      "tags": [
+        "action",
+        "position"
+      ],
       "audio": "first_action_verbs_v1_sit_stand.mp3"
     },
     {
       "slug": "action-game",
-      "keywords_en": ["action", "game", "play"],
-      "keywords_vi": ["hành động", "trò chơi", "chơi"],
+      "keywords_en": [
+        "action",
+        "game",
+        "play"
+      ],
+      "keywords_vi": [
+        "hành động",
+        "trò chơi",
+        "chơi"
+      ],
       "copy": {
         "en": "Turn verbs into a simple game. Call out an action such as jump, clap, or run and do it together. Switch who leads the action. Children love being in charge, and this playful game helps them remember verbs through movement and laughter.",
         "vi": "Biến động từ thành trò chơi đơn giản. Gọi một hành động như jump, clap hoặc run và làm cùng nhau. Thay phiên ai dẫn hành động. Trẻ thích làm chủ, và trò chơi vui này giúp bé nhớ động từ qua chuyển động và tiếng cười."
       },
-      "tags": ["game", "action"],
+      "tags": [
+        "game",
+        "action"
+      ],
       "audio": "first_action_verbs_v1_action_game.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all", "full", "complete"],
-      "keywords_vi": ["tất cả", "đầy đủ"],
+      "keywords_en": [
+        "all",
+        "full",
+        "complete"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "đầy đủ"
+      ],
       "copy": {
         "en": "Begin with jump, lifting off the ground and landing gently while repeating the word.\n\nTeach run by moving quickly together, saying the word as your feet move.\n\nIntroduce clap with a simple rhythm, bringing hands together each time you say the word.\n\nPractice sit and stand, switching positions slowly while naming each action.\n\nFinish with an action game where you take turns calling out and doing verbs together.\n\nThese playful movements help your child learn action verbs naturally through motion and joy.",
         "vi": "Bắt đầu với jump, nhảy lên và hạ xuống nhẹ nhàng khi lặp lại từ.\n\nDạy run bằng cách di chuyển nhanh cùng nhau, nói từ khi chân bạn chuyển động.\n\nGiới thiệu clap với nhịp điệu đơn giản, đưa tay lại mỗi khi bạn nói từ.\n\nThực hành sit và stand, chuyển đổi tư thế chậm rãi khi đặt tên cho mỗi hành động.\n\nKết thúc với trò chơi hành động mà bạn thay phiên gọi và làm động từ cùng nhau.\n\nNhững chuyển động vui này giúp bé học động từ hành động tự nhiên qua chuyển động và niềm vui."
       },
-      "tags": ["all"],
+      "tags": [
+        "all"
+      ],
       "audio": "first_action_verbs_v1_jump.mp3 first_action_verbs_v1_run.mp3 first_action_verbs_v1_clap.mp3 first_action_verbs_v1_sit_stand.mp3 first_action_verbs_v1_action_game.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "4-7",
-    "level": "Kids Level 1",
-    "created_at": "2025-11-21T00:00:00+00:00",
-    "updated_at": "2025-11-21T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#FFE5CC"
-  }
+  ]
 }

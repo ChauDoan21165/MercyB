@@ -3,150 +3,21 @@
   "name_vi": "Kiến Thức Tiền Bạc Nên Được Dạy",
   "description": "No shame, no jargon. Just the simple tools to see your money clearly — and start today.",
   "description_vi": "Không xấu hổ, không thuật ngữ. Chỉ những công cụ đơn giản để thấy rõ tiền của bạn — và bắt đầu hôm nay.",
-  "keywords_en": ["money basics", "snapshot", "income", "spending", "saving", "debt"],
-  "keywords_vi": ["kiến thức cơ bản tiền", "ảnh chụp", "thu nhập", "chi tiêu", "tiết kiệm", "nợ"],
-  "entries": [
-    {
-      "slug": "your-money-snapshot",
-      "keywords_en": ["snapshot", "net worth", "simple"],
-      "keywords_vi": ["ảnh chụp", "tài sản ròng", "đơn giản"],
-      "copy_en": "You don’t need spreadsheets. Grab a scrap of paper. Write three lines: 1) What I own (cash, savings, things worth money). 2) What I owe (loans, cards, rent). 3) The difference. That’s your snapshot. Messy is okay. You’re allowed to see the truth without fixing everything today.",
-      "copy_vi": "Bạn không cần bảng tính. Lấy một mẩu giấy. Viết ba dòng: 1) Tôi sở hữu gì (tiền mặt, tiết kiệm, đồ có giá). 2) Tôi nợ gì (vay, thẻ, tiền thuê). 3) Hiệu số. Đó là ảnh chụp của bạn. Lộn xộn cũng được. Bạn được thấy sự thật mà không cần sửa hết ngay hôm nay.",
-      "audio_en": "calm_vip3_11_en.mp3",
-      "audio_vi": "calm_vip3_11_vi.mp3",
-      "ai_prompt_en": "Help me make a 3-line money snapshot using only what I know right now.",
-      "ai_prompt_vi": "Giúp tôi tạo ảnh chụp tiền 3 dòng chỉ dùng những gì tôi biết ngay bây giờ.",
-      "ai_followup_en": "Want to update this snapshot in 30 days?",
-      "ai_followup_vi": "Muốn cập nhật ảnh chụp này sau 30 ngày không?"
-    },
-    {
-      "slug": "income-spending-saving",
-      "keywords_en": ["income", "spending", "saving", "flow"],
-      "keywords_vi": ["thu nhập", "chi tiêu", "tiết kiệm", "dòng chảy"],
-      "copy_en": "Money comes in, money goes out. That’s the flow. For one week, write down every baht in and out. No judgment, just curiosity. At the end, circle one thing you’re glad you spent on, and one you could skip next time. You’re learning your rhythm, not passing an exam.",
-      "copy_vi": "Tiền vào, tiền ra. Đó là dòng chảy. Trong một tuần, ghi lại mỗi baht vào ra. Không phán xét, chỉ tò mò. Cuối tuần, khoanh một khoản bạn vui vì đã chi, và một khoản có thể bỏ lần sau. Bạn đang học nhịp của mình, không đi thi.",
-      "audio_en": "calm_vip3_12_en.mp3",
-      "audio_vi": "calm_vip3_12_vi.mp3",
-      "ai_prompt_en": "Track my money flow for 3 days and show me one pattern in plain words.",
-      "ai_prompt_vi": "Theo dõi dòng tiền tôi 3 ngày và chỉ ra một mẫu bằng lời đơn giản.",
-      "ai_followup_en": "Ready to try this for a full week?",
-      "ai_followup_vi": "Sẵn sàng thử cả tuần chưa?"
-    },
-    {
-      "slug": "50-30-20-or-yours",
-      "keywords_en": ["50/30/20", "budget", "flexible"],
-      "keywords_vi": ["50/30/20", "ngân sách", "linh hoạt"],
-      "copy_en": "A simple guide: 50% needs (rent, food), 30% wants (fun, coffee), 20% future (savings, debt). But it’s your life. Draw three jars on paper. Fill them with your real numbers. Adjust until it feels possible, not perfect. You’re allowed to bend the rule to fit your reality.",
-      "copy_vi": "Một khung đơn giản: 50% nhu cầu (tiền nhà, ăn uống), 30% mong muốn (vui chơi, cà phê), 20% tương lai (tiết kiệm, trả nợ). Nhưng đây là cuộc đời bạn. Vẽ ba chiếc lọ trên giấy. Đổ số thật của bạn vào. Điều chỉnh đến khi thấy khả thi, không cần hoàn hảo. Bạn được quyền uốn quy tắc cho hợp với thực tế của mình.",
-      "audio_en": "calm_vip3_13_en.mp3",
-      "audio_vi": "calm_vip3_13_vi.mp3",
-      "ai_prompt_en": "Help me split my income into needs/wants/future using numbers I give you.",
-      "ai_prompt_vi": "Giúp tôi chia thu nhập thành nhu cầu/mong muốn/tương lai dùng các con số tôi đưa.",
-      "ai_followup_en": "Want to tweak this next month?",
-      "ai_followup_vi": "Muốn chỉnh lại vào tháng tới không?"
-    },
-    {
-      "slug": "debt-snowball-avalanche",
-      "keywords_en": ["debt", "snowball", "avalanche"],
-      "keywords_vi": ["nợ", "quả cầu tuyết", "lở tuyết"],
-      "copy_en": "Two gentle ways to clear debt: Snowball (smallest first for quick wins) or Avalanche (highest interest first for more savings). List your debts. Next, circle the one you’ll attack first. You’re allowed to choose momentum or math — whichever keeps you going.",
-      "copy_vi": "Có hai cách nhẹ nhàng để xóa nợ: Quả cầu tuyết (trả khoản nhỏ nhất trước để có chiến thắng nhanh) hoặc Lở tuyết (trả khoản lãi cao nhất trước để tiết kiệm hơn). Hãy liệt kê các khoản nợ. Rồi khoanh tròn khoản bạn sẽ “đánh” đầu tiên. Bạn được chọn động lực hay toán học — miễn là giúp bạn đi tiếp.",
-      "audio_en": "calm_vip3_14_en.mp3",
-      "audio_vi": "calm_vip3_14_vi.mp3",
-      "ai_prompt_en": "I have these debts: [list]. Tell me snowball vs avalanche in simple terms.",
-      "ai_prompt_vi": "Tôi có các khoản nợ này: [danh sách]. Giải thích quả cầu tuyết vs lở tuyết bằng lời đơn giản.",
-      "ai_followup_en": "Ready to make your first extra payment?",
-      "ai_followup_vi": "Sẵn sàng trả thêm lần đầu chưa?"
-    },
-    {
-      "slug": "credit-score-simple",
-      "keywords_en": ["credit score", "simple", "habits"],
-      "keywords_vi": ["điểm tín dụng", "đơn giản", "thói quen"],
-      "copy_en": "Your score is just a habit report, not a judgment on your worth. Pay on time, keep balances low, don’t open too many cards. That’s most of it. Start small: set one bill to auto-pay or reminder. You’re allowed to build trust one tiny habit at a time.",
-      "copy_vi": "Điểm tín dụng chỉ là bản báo cáo thói quen, không phải giá trị con người bạn. Trả đúng hạn, giữ dư nợ thấp, đừng mở quá nhiều thẻ. Đó là phần lớn câu chuyện. Bắt đầu nhỏ: đặt một hóa đơn trả tự động hoặc nhắc lịch. Bạn được xây niềm tin từng thói quen nhỏ.",
-      "audio_en": "calm_vip3_15_en.mp3",
-      "audio_vi": "calm_vip3_15_vi.mp3",
-      "ai_prompt_en": "Explain my credit score habits using only what I tell you.",
-      "ai_prompt_vi": "Giải thích thói quen ảnh hưởng điểm tín dụng của tôi chỉ bằng thông tin tôi cung cấp.",
-      "ai_followup_en": "Want a reminder before your next bill?",
-      "ai_followup_vi": "Muốn được nhắc trước kỳ hóa đơn tới không?"
-    },
-    {
-      "slug": "emergency-fund-100",
-      "keywords_en": ["emergency fund", "start small", "safety"],
-      "keywords_vi": ["quỹ khẩn", "bắt đầu nhỏ", "an toàn"],
-      "copy_en": "An emergency fund doesn’t start at 6 months — it starts at one safe step. Aim for 1,000 baht. Then 5,000. Open a separate account (or jar) and label it “Peace.” Every coin you add is a vote for your safety. You’re allowed to build security slowly.",
-      "copy_vi": "Quỹ khẩn cấp không bắt đầu từ 6 tháng chi tiêu — nó bắt đầu từ một bước an toàn. Nhắm tới 1.000 baht. Rồi 5.000. Mở một tài khoản riêng (hoặc một chiếc lọ) và ghi “Bình Yên.” Mỗi đồng bạn bỏ vào là một lá phiếu cho sự an toàn của mình. Bạn được xây sự vững chãi một cách chậm rãi.",
-      "audio_en": "calm_vip3_16_en.mp3",
-      "audio_vi": "calm_vip3_16_vi.mp3",
-      "ai_prompt_en": "I saved [amount] for emergencies. Help me name this win and plan the next step.",
-      "ai_prompt_vi": "Tôi đã tiết kiệm được [số tiền] cho khẩn cấp. Giúp tôi đặt tên chiến thắng này và lên kế hoạch bước tiếp.",
-      "ai_followup_en": "Want to add 500 baht this month?",
-      "ai_followup_vi": "Muốn thêm 500 baht trong tháng này không?"
-    },
-    {
-      "slug": "ai-find-leak",
-      "keywords_en": ["leak", "spending", "pattern"],
-      "keywords_vi": ["rò rỉ", "chi tiêu", "mẫu"],
-      "copy_en": "One small leak can slowly empty the bucket. Share your last 3 days of spending with the AI and let it show you one pattern in plain words. You’re allowed to fix just one leak this week. No blame, no perfection — just one gentle adjustment.",
-      "copy_vi": "Một chỗ rò nhỏ cũng có thể làm cạn cả thùng nước. Hãy chia sẻ 3 ngày chi tiêu gần nhất với AI và để nó chỉ ra một mẫu bằng lời dễ hiểu. Tuần này, bạn chỉ cần sửa một chỗ rò là đủ. Không đổ lỗi, không đòi hoàn hảo — chỉ một điều chỉnh nhẹ.",
-      "audio_en": "calm_vip3_17_en.mp3",
-      "audio_vi": "calm_vip3_17_vi.mp3",
-      "ai_prompt_en": "Here’s what I spent in 3 days: [list]. Show me one easy change.",
-      "ai_prompt_vi": "Đây là chi tiêu 3 ngày của tôi: [danh sách]. Chỉ cho tôi một thay đổi dễ làm.",
-      "ai_followup_en": "Want to check this again in 7 days?",
-      "ai_followup_vi": "Muốn kiểm tra lại sau 7 ngày không?"
-    },
-    {
-      "slug": "taxes-what-to-know",
-      "keywords_en": ["taxes", "simple", "prepare"],
-      "keywords_vi": ["thuế", "đơn giản", "chuẩn bị"],
-      "copy_en": "Taxes are part of life, not a trap. Laws differ by country, but three basics help: 1) Keep receipts for work-related costs. 2) Mark tax deadlines on your calendar. 3) Ask a professional or trusted source if confused. You’re allowed to learn one rule at a time.",
-      "copy_vi": "Thuế là một phần của cuộc sống, không phải cái bẫy. Luật khác nhau theo từng nước, nhưng ba điều cơ bản giúp bạn: 1) Giữ biên lai chi phí liên quan đến công việc. 2) Đánh dấu hạn nộp thuế trên lịch. 3) Hỏi chuyên gia hoặc nguồn tin đáng tin khi bối rối. Bạn được học một quy tắc mỗi lần.",
-      "audio_en": "calm_vip3_18_en.mp3",
-      "audio_vi": "calm_vip3_18_vi.mp3",
-      "ai_prompt_en": "Explain one tax thing I need to know this year in 3 sentences.",
-      "ai_prompt_vi": "Giải thích một điều về thuế tôi cần biết trong năm nay bằng 3 câu.",
-      "ai_followup_en": "Want a reminder 30 days before tax deadline?",
-      "ai_followup_vi": "Muốn được nhắc 30 ngày trước hạn thuế không?"
-    },
-    {
-      "slug": "bank-accounts-for-you",
-      "keywords_en": ["bank", "accounts", "simple"],
-      "keywords_vi": ["ngân hàng", "tài khoản", "đơn giản"],
-      "copy_en": "Think of three pockets: 1) Daily (spending). 2) Bills (auto-pay and due dates). 3) Peace (savings). If you only have one account now, open one extra online and label it “Future.” You’re allowed to keep money separate so your brain feels clearer.",
-      "copy_vi": "Hãy tưởng tượng bạn có ba chiếc túi: 1) Hàng ngày (chi tiêu). 2) Hóa đơn (tự động và đến hạn). 3) Bình yên (tiết kiệm). Nếu giờ bạn chỉ có một tài khoản, hãy mở thêm một tài khoản online và ghi “Tương Lai.” Bạn được giữ tiền tách biệt để đầu óc nhẹ hơn.",
-      "audio_en": "calm_vip3_19_en.mp3",
-      "audio_vi": "calm_vip3_19_vi.mp3",
-      "ai_prompt_en": "Help me choose a second bank account for savings with low or no fees.",
-      "ai_prompt_vi": "Giúp tôi chọn tài khoản ngân hàng thứ hai để tiết kiệm với phí thấp hoặc không phí.",
-      "ai_followup_en": "Want help setting up auto-transfer?",
-      "ai_followup_vi": "Muốn được giúp thiết lập chuyển tiền tự động không?"
-    },
-    {
-      "slug": "monthly-money-date",
-      "keywords_en": ["money date", "habit", "ritual"],
-      "keywords_vi": ["hẹn tiền", "thói quen", "nghi thức"],
-      "copy_en": "Once a month, 15 minutes: make a drink you like, sit in your safe spot, open one account. Look, breathe, and write one line: “This month I…” No fixing required. You’re allowed to make money time feel like gentle self-care, not punishment.",
-      "copy_vi": "Mỗi tháng một lần, 15 phút: chuẩn bị món uống bạn thích, ngồi ở góc an toàn, mở một tài khoản. Nhìn, hít thở, và ghi một dòng: “Tháng này tôi…” Không cần sửa gì cả. Bạn được biến giờ tiền thành một kiểu tự chăm sóc dịu dàng, không phải trừng phạt.",
-      "audio_en": "calm_vip3_20_en.mp3",
-      "audio_vi": "calm_vip3_20_vi.mp3",
-      "ai_prompt_en": "Schedule my first monthly money date and send a calm reminder.",
-      "ai_prompt_vi": "Lên lịch hẹn tiền đầu tiên cho tôi và gửi một lời nhắc thật bình tĩnh.",
-      "ai_followup_en": "How was your first money date? Want to plan the next?",
-      "ai_followup_vi": "Buổi hẹn tiền đầu tiên của bạn thế nào? Muốn lên kế hoạch cho lần tiếp theo không?"
-    }
+  "keywords_en": [
+    "money basics",
+    "snapshot",
+    "income",
+    "spending",
+    "saving",
+    "debt"
   ],
-  "meta": {
-    "created_at": "2025-11-07T09:43:00+07:00",
-    "updated_at": "2025-11-07T10:05:00+07:00",
-    "entry_count": 10,
-    "tier": "vip3",
-    "room_color": "#E6F0DA",
-    "artifact_version_id": "finance-calm-vip3-sub2-v001",
-    "localization": {
-      "i18n_required": true,
-      "i18n_verified": false
-    }
-  }
+  "keywords_vi": [
+    "kiến thức cơ bản tiền",
+    "ảnh chụp",
+    "thu nhập",
+    "chi tiêu",
+    "tiết kiệm",
+    "nợ"
+  ],
+  "entries": []
 }

@@ -13,63 +13,105 @@
   "entries": [
     {
       "slug": "removing-filler-words",
-      "keywords_en": ["filler words", "clarity"],
-      "keywords_vi": ["từ đệm", "rõ ràng"],
+      "keywords_en": [
+        "filler words",
+        "clarity"
+      ],
+      "keywords_vi": [
+        "từ đệm",
+        "rõ ràng"
+      ],
       "copy": {
         "en": "Filler words weaken your message. Words like actually, basically, or really add little meaning. Try removing them and notice how your sentence becomes clearer. For example: I really think we should try becomes I think we should try. Clean sentences sound confident and mature.",
         "vi": "Từ đệm làm yếu thông điệp của bạn. Các từ như actually, basically hoặc really thường không mang nhiều ý nghĩa. Hãy thử bỏ chúng và bạn sẽ thấy câu trở nên rõ ràng hơn. Ví dụ: I really think we should try thành I think we should try. Câu văn gọn gàng nghe tự tin và trưởng thành hơn."
       },
-      "audio": "c206_01_en.mp3"
+      "audio": "c206_01_en.mp3",
+      "tags": []
     },
     {
       "slug": "shortening-long-sentences",
-      "keywords_en": ["conciseness", "sentence structure"],
-      "keywords_vi": ["ngắn gọn", "cấu trúc câu"],
+      "keywords_en": [
+        "conciseness",
+        "sentence structure"
+      ],
+      "keywords_vi": [
+        "ngắn gọn",
+        "cấu trúc câu"
+      ],
       "copy": {
         "en": "Long sentences often hide your message. Break them into two or remove repeating ideas. For example: I want to explain this idea because it is important becomes This idea is important, so let me explain. Shorter sentences help your listener understand quickly without losing depth.",
         "vi": "Câu dài thường che khuất ý chính. Hãy tách câu thành hai phần hoặc loại bỏ ý lặp lại. Ví dụ: I want to explain this idea because it is important thành This idea is important, so let me explain. Câu ngắn giúp người nghe hiểu nhanh mà vẫn giữ chiều sâu."
       },
-      "audio": "c206_02_en.mp3"
+      "audio": "c206_02_en.mp3",
+      "tags": []
     },
     {
       "slug": "choosing-elegant-phrasing",
-      "keywords_en": ["style", "phrasing"],
-      "keywords_vi": ["phong cách", "cách diễn đạt"],
+      "keywords_en": [
+        "style",
+        "phrasing"
+      ],
+      "keywords_vi": [
+        "phong cách",
+        "cách diễn đạt"
+      ],
       "copy": {
         "en": "Elegant English uses simple, strong phrases, not complex ones. Compare: due to the fact that with because or in the event that with if. Elegant phrasing feels clean and modern. It shows control over language without sounding formal or distant.",
         "vi": "Tiếng Anh thanh lịch dùng các cụm từ đơn giản, mạnh mẽ thay vì phức tạp. Hãy so sánh: due to the fact that với because hoặc in the event that với if. Cách diễn đạt tinh gọn tạo cảm giác hiện đại và mạch lạc. Nó thể hiện sự làm chủ ngôn ngữ mà không quá trang trọng."
       },
-      "audio": "c206_03_en.mp3"
+      "audio": "c206_03_en.mp3",
+      "tags": []
     },
     {
       "slug": "avoiding-over-explanation",
-      "keywords_en": ["over-explaining", "confidence"],
-      "keywords_vi": ["giải thích quá mức", "tự tin"],
+      "keywords_en": [
+        "over-explaining",
+        "confidence"
+      ],
+      "keywords_vi": [
+        "giải thích quá mức",
+        "tự tin"
+      ],
       "copy": {
         "en": "Over-explaining often signals insecurity. Instead of giving three reasons, choose the strongest one. Instead of repeating yourself, trust the listener to understand. For example: I want to be clear becomes Let me clarify. Confident language is short, direct, and respectful.",
         "vi": "Giải thích quá mức thường xuất phát từ thiếu tự tin. Thay vì đưa ra ba lý do, hãy chọn lý do mạnh nhất. Thay vì lặp lại, hãy tin rằng người nghe sẽ hiểu. Ví dụ: I want to be clear thành Let me clarify. Ngôn ngữ tự tin luôn ngắn gọn, trực tiếp và tôn trọng."
       },
-      "audio": "c206_04_en.mp3"
+      "audio": "c206_04_en.mp3",
+      "tags": []
     },
     {
       "slug": "achieving-precision-with-few-words",
-      "keywords_en": ["precision", "word choice"],
-      "keywords_vi": ["chính xác", "chọn từ"],
+      "keywords_en": [
+        "precision",
+        "word choice"
+      ],
+      "keywords_vi": [
+        "chính xác",
+        "chọn từ"
+      ],
       "copy": {
         "en": "Fewer words can carry more meaning when chosen carefully. For example: The situation is becoming worse can become The situation is worsening. One precise word replaces a whole phrase. Precision makes your English sound advanced, efficient, and elegant.",
         "vi": "Ít từ hơn có thể truyền tải nhiều ý nghĩa hơn khi được chọn cẩn thận. Ví dụ: The situation is becoming worse có thể rút lại thành The situation is worsening. Một từ chính xác thay cho cả một cụm. Sự chính xác khiến tiếng Anh của bạn nghe nâng cao, hiệu quả và thanh lịch."
       },
-      "audio": "c206_05_en.mp3"
+      "audio": "c206_05_en.mp3",
+      "tags": []
     },
     {
       "slug": "sounding-natural-while-being-concise",
-      "keywords_en": ["natural tone", "concise"],
-      "keywords_vi": ["giọng tự nhiên", "ngắn gọn"],
+      "keywords_en": [
+        "natural tone",
+        "concise"
+      ],
+      "keywords_vi": [
+        "giọng tự nhiên",
+        "ngắn gọn"
+      ],
       "copy": {
         "en": "Concise English must still sound natural. Avoid robotic sentences. Use short connectors like so, but, and because. Use gentle openers such as I think or it seems when needed. Natural conciseness is the balance between clarity and warmth.",
         "vi": "Tiếng Anh ngắn gọn vẫn phải tự nhiên. Tránh câu nghe cứng nhắc. Hãy dùng các liên từ ngắn như so, but, because. Khi cần, dùng các mở đầu nhẹ như I think hoặc it seems. Sự ngắn gọn tự nhiên là sự cân bằng giữa rõ ràng và ấm áp."
       },
-      "audio": "c206_06_en.mp3"
+      "audio": "c206_06_en.mp3",
+      "tags": []
     }
   ]
 }

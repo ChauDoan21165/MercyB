@@ -13,44 +13,80 @@
   "entries": [
     {
       "slug": "sharing-feelings",
-      "keywords_en": ["happy", "sad", "angry", "scared", "feelings"],
-      "keywords_vi": ["vui", "buồn", "tức giận", "sợ", "cảm xúc"],
+      "keywords_en": [
+        "happy",
+        "sad",
+        "angry",
+        "scared",
+        "feelings"
+      ],
+      "keywords_vi": [
+        "vui",
+        "buồn",
+        "tức giận",
+        "sợ",
+        "cảm xúc"
+      ],
       "copy": {
         "en": "Practice sentences like: 'I feel happy when I play with my friends.' and 'I feel sad when I lose my toy.'",
         "vi": "Luyện các câu như: 'Con cảm thấy vui khi chơi với bạn.' và 'Con cảm thấy buồn khi làm mất đồ chơi.'"
       },
-      "tags": ["feelings", "social", "kids", "level2"],
+      "tags": [
+        "feelings",
+        "social",
+        "kids",
+        "level2"
+      ],
       "audio": ""
     },
     {
       "slug": "kind-words",
-      "keywords_en": ["please", "thank you", "sorry", "excuse me"],
-      "keywords_vi": ["làm ơn", "cảm ơn", "xin lỗi", "xin phép"],
+      "keywords_en": [
+        "please",
+        "thank you",
+        "sorry",
+        "excuse me"
+      ],
+      "keywords_vi": [
+        "làm ơn",
+        "cảm ơn",
+        "xin lỗi",
+        "xin phép"
+      ],
       "copy": {
         "en": "Learn kind words like 'please', 'thank you', 'sorry', and when to use them in everyday life.",
         "vi": "Học những từ lịch sự như 'làm ơn', 'cảm ơn', 'xin lỗi' và khi nào dùng trong cuộc sống hằng ngày."
       },
-      "tags": ["manners", "polite", "social"],
+      "tags": [
+        "manners",
+        "polite",
+        "social"
+      ],
       "audio": ""
     },
     {
       "slug": "making-friends",
-      "keywords_en": ["friends", "play", "invite", "take turns"],
-      "keywords_vi": ["bạn bè", "chơi", "rủ", "thay phiên"],
+      "keywords_en": [
+        "friends",
+        "play",
+        "invite",
+        "take turns"
+      ],
+      "keywords_vi": [
+        "bạn bè",
+        "chơi",
+        "rủ",
+        "thay phiên"
+      ],
       "copy": {
         "en": "Practice English for meeting new friends, inviting someone to play, and taking turns in games.",
         "vi": "Luyện tiếng Anh để làm quen bạn mới, rủ bạn chơi và thay phiên trong trò chơi."
       },
-      "tags": ["friendship", "social-skills"],
+      "tags": [
+        "friendship",
+        "social-skills"
+      ],
       "audio": ""
     }
-  ],
-  "meta": {
-    "age_range": "7-9",
-    "level": "level2",
-    "created_at": "2025-11-23T00:00:00.000Z",
-    "updated_at": "2025-11-23T00:00:00.000Z",
-    "num_entries": 3,
-    "room_color": "#FDE68A"
-  }
+  ]
 }

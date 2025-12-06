@@ -13,77 +13,155 @@
   "entries": [
     {
       "slug": "color-game-at-home",
-      "keywords_en": ["colors", "home game", "objects", "noticing"],
-      "keywords_vi": ["màu sắc", "trò chơi ở nhà", "đồ vật", "quan sát"],
+      "keywords_en": [
+        "colors",
+        "home game",
+        "objects",
+        "noticing"
+      ],
+      "keywords_vi": [
+        "màu sắc",
+        "trò chơi ở nhà",
+        "đồ vật",
+        "quan sát"
+      ],
       "copy": {
         "en": "Start with a simple color game that turns your home into a learning playground. Choose two or three colors, like red, blue, and yellow. Show each color on a crayon, toy, or book and say the word slowly: “red… blue… yellow.” Then invite your child: “Can you find something red?” Give them time to look around and bring an object back. Celebrate every try, even if it is not perfect. You can gently correct by saying, “This is more blue than red.” Keep the game short and happy, then stop while your child is still smiling. Short, positive moments like this help color words sink in without pressure.",
         "vi": "Bắt đầu bằng một trò chơi màu sắc đơn giản, biến ngôi nhà thành sân chơi học tập. Bạn chọn hai hoặc ba màu, ví dụ red, blue và yellow. Cho bé xem mỗi màu trên bút chì màu, đồ chơi hoặc quyển sách và đọc chậm rãi: “red… blue… yellow.” Sau đó rủ bé: “Con tìm giúp mẹ một đồ vật màu red nhé?” Cho bé thời gian nhìn quanh và mang đồ vật lại. Hãy khen ngợi mọi nỗ lực, kể cả khi bé chọn chưa đúng. Bạn có thể sửa nhẹ nhàng: “Cái này hơi giống blue hơn red.” Giữ trò chơi ngắn, vui và dừng lại khi bé còn đang cười. Những khoảnh khắc ngắn, tích cực như vậy giúp từ vựng về màu sắc ngấm vào đầu bé mà không tạo áp lực."
       },
-      "tags": ["colors", "home game", "noticing"],
+      "tags": [
+        "colors",
+        "home game",
+        "noticing"
+      ],
       "audio": "colors_shapes_v1_color_game.mp3"
     },
     {
       "slug": "find-the-shapes",
-      "keywords_en": ["shapes", "circle", "square", "triangle", "rectangle"],
-      "keywords_vi": ["hình dạng", "tròn", "vuông", "tam giác", "chữ nhật"],
+      "keywords_en": [
+        "shapes",
+        "circle",
+        "square",
+        "triangle",
+        "rectangle"
+      ],
+      "keywords_vi": [
+        "hình dạng",
+        "tròn",
+        "vuông",
+        "tam giác",
+        "chữ nhật"
+      ],
       "copy": {
         "en": "Next, introduce four simple shapes: circle, square, triangle, and rectangle. Draw each one big on a piece of paper, saying the name slowly as you trace it with your finger. Invite your child to trace over your line, then try drawing it themselves. Now turn the room into a shape hunt. Ask, “Can you find a circle?” and point to things like a plate or a clock. For square, you might use a box; for triangle, a piece of snack; for rectangle, a book or door. Let your child show you their ideas too. When shapes are connected with real objects, the English words feel alive instead of abstract.",
         "vi": "Tiếp theo, bạn giới thiệu bốn hình đơn giản: circle, square, triangle và rectangle. Vẽ mỗi hình thật to trên giấy và đọc tên chậm rãi khi dùng ngón tay đi theo nét vẽ. Rủ bé tô lại theo đường của bạn, rồi thử tự vẽ một lần. Bây giờ hãy biến căn phòng thành nơi săn tìm hình khối. Hỏi: “Con tìm giúp mẹ một đồ vật hình circle nhé?” và gợi ý những thứ như cái đĩa, chiếc đồng hồ. Với square, bạn có thể dùng cái hộp; với triangle là miếng bánh; với rectangle là quyển sách hoặc cánh cửa. Khuyến khích bé tự chỉ ra những món đồ bé nghĩ ra. Khi hình khối gắn với đồ vật thật, các từ tiếng Anh sẽ trở nên sống động thay vì chỉ là khái niệm trừu tượng."
       },
-      "tags": ["shapes", "hunt", "drawing"],
+      "tags": [
+        "shapes",
+        "hunt",
+        "drawing"
+      ],
       "audio": "colors_shapes_v1_find_shapes.mp3"
     },
     {
       "slug": "mix-and-match-colors-shapes",
-      "keywords_en": ["colors", "shapes", "game", "phrases"],
-      "keywords_vi": ["màu sắc", "hình dạng", "trò chơi", "cụm từ"],
+      "keywords_en": [
+        "colors",
+        "shapes",
+        "game",
+        "phrases"
+      ],
+      "keywords_vi": [
+        "màu sắc",
+        "hình dạng",
+        "trò chơi",
+        "cụm từ"
+      ],
       "copy": {
         "en": "Now you can mix colors and shapes into fun little phrases. On a page, draw a few circles, squares, and triangles, each in a different color. Point and say, “red circle,” “blue square,” “yellow triangle.” Ask your child to repeat after you, then let them become the teacher and give you commands: “Point to the green circle!” You pretend to be silly and choose the wrong one sometimes so your child can correct you. This role-reversal makes them laugh and gives them confidence to say the words clearly. Short combinations like “red circle” or “blue square” prepare their ears and mouth for longer English sentences later.",
         "vi": "Bây giờ bạn có thể trộn màu sắc và hình dạng thành những cụm từ vui nhộn. Trên một tờ giấy, vẽ vài circle, square và triangle với các màu khác nhau. Chỉ vào từng hình và đọc: “red circle”, “blue square”, “yellow triangle.” Rủ bé lặp lại theo bạn, rồi đổi vai để bé làm “cô giáo” và ra lệnh cho bạn: “Mẹ chỉ vào green circle đi!” Bạn có thể cố tình chọn sai để bé sửa. Việc đổi vai khiến bé bật cười và tự tin nói từ rõ ràng hơn. Những cụm ngắn như “red circle” hay “blue square” giúp tai và miệng bé làm quen dần với cách ghép từ tiếng Anh, chuẩn bị cho những câu dài hơn sau này."
       },
-      "tags": ["colors", "shapes", "phrases"],
+      "tags": [
+        "colors",
+        "shapes",
+        "phrases"
+      ],
       "audio": "colors_shapes_v1_mix_and_match.mp3"
     },
     {
       "slug": "color-walk",
-      "keywords_en": ["colors", "movement", "walk", "outside"],
-      "keywords_vi": ["màu sắc", "vận động", "đi dạo", "bên ngoài"],
+      "keywords_en": [
+        "colors",
+        "movement",
+        "walk",
+        "outside"
+      ],
+      "keywords_vi": [
+        "màu sắc",
+        "vận động",
+        "đi dạo",
+        "bên ngoài"
+      ],
       "copy": {
         "en": "If you can, take a short color walk with your child, either outside or just around the house. Before you start, choose two focus colors, for example green and yellow. Tell your child, “On our walk, we will look for green and yellow things.” As you walk slowly, point and say, “green tree, yellow flower, green leaf, yellow sign.” Invite your child to spot colors before you do and praise every attempt. If going outside is not possible, you can do a color walk through books, toys, or clothes in the closet. Linking color words with movement and real surroundings helps them stick in a natural, relaxed way.",
         "vi": "Nếu có thể, bạn hãy cùng bé đi một “chuyến dạo chơi màu sắc” ngắn, ngoài trời hoặc chỉ quanh nhà. Trước khi bắt đầu, hãy chọn hai màu trọng tâm, ví dụ green và yellow. Nói với bé: “Khi đi dạo, mình sẽ cùng tìm những thứ màu green và yellow nhé.” Khi bước chậm rãi, bạn chỉ và đọc: “green tree, yellow flower, green leaf, yellow sign.” Rủ bé tìm màu trước bạn và khen ngợi mọi nỗ lực. Nếu không ra ngoài được, bạn có thể “đi dạo màu sắc” qua sách tranh, đồ chơi hoặc quần áo trong tủ. Khi từ vựng về màu sắc gắn với chuyển động và khung cảnh thật, chúng sẽ ở lại trong trí nhớ của bé một cách tự nhiên, nhẹ nhàng."
       },
-      "tags": ["colors", "movement", "walk"],
+      "tags": [
+        "colors",
+        "movement",
+        "walk"
+      ],
       "audio": "colors_shapes_v1_color_walk.mp3"
     },
     {
       "slug": "shapes-bedtime-ritual",
-      "keywords_en": ["shapes", "bedtime", "ritual", "calm"],
-      "keywords_vi": ["hình dạng", "trước khi ngủ", "nghi thức", "bình yên"],
+      "keywords_en": [
+        "shapes",
+        "bedtime",
+        "ritual",
+        "calm"
+      ],
+      "keywords_vi": [
+        "hình dạng",
+        "trước khi ngủ",
+        "nghi thức",
+        "bình yên"
+      ],
       "copy": {
         "en": "At the end of the day, you can use shapes to create a quiet bedtime ritual. While your child is lying down, gently draw a circle, square, triangle, or rectangle with your finger on their back or hand and whisper the English word. Ask, “What shape do you think this is?” and let them guess without pressure. You can also look around the bedroom and name a few shapes softly: “circle clock, square pillow, rectangle book.” This calm review helps your child connect English with safety and comfort. When learning feels cozy and loving, colors and shapes become part of their inner world, not just a school task.",
         "vi": "Cuối ngày, bạn có thể dùng hình dạng để tạo nên một nghi thức nhẹ nhàng trước giờ ngủ. Khi bé nằm yên, bạn dùng ngón tay vẽ một circle, square, triangle hoặc rectangle lên lưng hoặc bàn tay bé và thì thầm tên tiếng Anh của hình đó. Hỏi: “Con đoán xem đây là hình gì nhé?” và để bé đoán mà không tạo áp lực. Bạn cũng có thể nhìn quanh phòng ngủ và khẽ gọi tên vài hình: “circle clock, square pillow, rectangle book.” Việc ôn lại yên tĩnh như vậy giúp bé gắn tiếng Anh với cảm giác an toàn và ấm áp. Khi việc học mang lại sự gần gũi và yêu thương, màu sắc và hình dạng sẽ trở thành một phần thế giới bên trong của bé, chứ không chỉ là bài tập ở trường."
       },
-      "tags": ["shapes", "bedtime", "ritual"],
+      "tags": [
+        "shapes",
+        "bedtime",
+        "ritual"
+      ],
       "audio": "colors_shapes_v1_shapes_bedtime.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all", "full", "complete", "everything"],
-      "keywords_vi": ["tất cả", "toàn bộ", "đầy đủ", "hết"],
+      "keywords_en": [
+        "all",
+        "full",
+        "complete",
+        "everything"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "toàn bộ",
+        "đầy đủ",
+        "hết"
+      ],
       "copy": {
         "en": "Start with a simple color game that turns your home into a learning playground. Choose two or three colors, like red, blue, and yellow. Show each color on a crayon, toy, or book and say the word slowly: “red… blue… yellow.” Then invite your child: “Can you find something red?” Give them time to look around and bring an object back. Celebrate every try, even if it is not perfect. You can gently correct by saying, “This is more blue than red.” Keep the game short and happy, then stop while your child is still smiling. Short, positive moments like this help color words sink in without pressure.\n\nNext, introduce four simple shapes: circle, square, triangle, and rectangle. Draw each one big on a piece of paper, saying the name slowly as you trace it with your finger. Invite your child to trace over your line, then try drawing it themselves. Now turn the room into a shape hunt. Ask, “Can you find a circle?” and point to things like a plate or a clock. For square, you might use a box; for triangle, a piece of snack; for rectangle, a book or door. Let your child show you their ideas too. When shapes are connected with real objects, the English words feel alive instead of abstract.\n\nNow you can mix colors and shapes into fun little phrases. On a page, draw a few circles, squares, and triangles, each in a different color. Point and say, “red circle,” “blue square,” “yellow triangle.” Ask your child to repeat after you, then let them become the teacher and give you commands: “Point to the green circle!” You pretend to be silly and choose the wrong one sometimes so your child can correct you. This role-reversal makes them laugh and gives them confidence to say the words clearly. Short combinations like “red circle” or “blue square” prepare their ears and mouth for longer English sentences later.\n\nIf you can, take a short color walk with your child, either outside or just around the house. Before you start, choose two focus colors, for example green and yellow. Tell your child, “On our walk, we will look for green and yellow things.” As you walk slowly, point and say, “green tree, yellow flower, green leaf, yellow sign.” Invite your child to spot colors before you do and praise every attempt. If going outside is not possible, you can do a color walk through books, toys, or clothes in the closet. Linking color words with movement and real surroundings helps them stick in a natural, relaxed way.\n\nAt the end of the day, you can use shapes to create a quiet bedtime ritual. While your child is lying down, gently draw a circle, square, triangle, or rectangle with your finger on their back or hand and whisper the English word. Ask, “What shape do you think this is?” and let them guess without pressure. You can also look around the bedroom and name a few shapes softly: “circle clock, square pillow, rectangle book.” This calm review helps your child connect English with safety and comfort. When learning feels cozy and loving, colors and shapes become part of their inner world, not just a school task.",
         "vi": "Bắt đầu bằng một trò chơi màu sắc đơn giản, biến ngôi nhà thành sân chơi học tập. Bạn chọn hai hoặc ba màu, ví dụ red, blue và yellow. Cho bé xem mỗi màu trên bút chì màu, đồ chơi hoặc quyển sách và đọc chậm rãi: “red… blue… yellow.” Sau đó rủ bé: “Con tìm giúp mẹ một đồ vật màu red nhé?” Cho bé thời gian nhìn quanh và mang đồ vật lại. Hãy khen ngợi mọi nỗ lực, kể cả khi bé chọn chưa đúng. Bạn có thể sửa nhẹ nhàng: “Cái này hơi giống blue hơn red.” Giữ trò chơi ngắn, vui và dừng lại khi bé còn đang cười. Những khoảnh khắc ngắn, tích cực như vậy giúp từ vựng về màu sắc ngấm vào đầu bé mà không tạo áp lực.\n\nTiếp theo, bạn giới thiệu bốn hình đơn giản: circle, square, triangle và rectangle. Vẽ mỗi hình thật to trên giấy và đọc tên chậm rãi khi dùng ngón tay đi theo nét vẽ. Rủ bé tô lại theo đường của bạn, rồi thử tự vẽ một lần. Bây giờ hãy biến căn phòng thành nơi săn tìm hình khối. Hỏi: “Con tìm giúp mẹ một đồ vật hình circle nhé?” và gợi ý những thứ như cái đĩa, chiếc đồng hồ. Với square, bạn có thể dùng cái hộp; với triangle là miếng bánh; với rectangle là quyển sách hoặc cánh cửa. Khuyến khích bé tự chỉ ra những món đồ bé nghĩ ra. Khi hình khối gắn với đồ vật thật, các từ tiếng Anh sẽ trở nên sống động thay vì chỉ là khái niệm trừu tượng.\n\nBây giờ bạn có thể trộn màu sắc và hình dạng thành những cụm từ vui nhộn. Trên một tờ giấy, vẽ vài circle, square và triangle với các màu khác nhau. Chỉ vào từng hình và đọc: “red circle”, “blue square”, “yellow triangle.” Rủ bé lặp lại theo bạn, rồi đổi vai để bé làm “cô giáo” và ra lệnh cho bạn: “Mẹ chỉ vào green circle đi!” Bạn có thể cố tình chọn sai để bé sửa. Việc đổi vai khiến bé bật cười và tự tin nói từ rõ ràng hơn. Những cụm ngắn như “red circle” hay “blue square” giúp tai và miệng bé làm quen dần với cách ghép từ tiếng Anh, chuẩn bị cho những câu dài hơn sau này.\n\nNếu có thể, bạn hãy cùng bé đi một “chuyến dạo chơi màu sắc” ngắn, ngoài trời hoặc chỉ quanh nhà. Trước khi bắt đầu, hãy chọn hai màu trọng tâm, ví dụ green và yellow. Nói với bé: “Khi đi dạo, mình sẽ cùng tìm những thứ màu green và yellow nhé.” Khi bước chậm rãi, bạn chỉ và đọc: “green tree, yellow flower, green leaf, yellow sign.” Rủ bé tìm màu trước bạn và khen ngợi mọi nỗ lực. Nếu không ra ngoài được, bạn có thể “đi dạo màu sắc” qua sách tranh, đồ chơi hoặc quần áo trong tủ. Khi từ vựng về màu sắc gắn với chuyển động và khung cảnh thật, chúng sẽ ở lại trong trí nhớ của bé một cách tự nhiên, nhẹ nhàng.\n\nCuối ngày, bạn có thể dùng hình dạng để tạo nên một nghi thức nhẹ nhàng trước giờ ngủ. Khi bé nằm yên, bạn dùng ngón tay vẽ một circle, square, triangle hoặc rectangle lên lưng hoặc bàn tay bé và thì thầm tên tiếng Anh của hình đó. Hỏi: “Con đoán xem đây là hình gì nhé?” và để bé đoán mà không tạo áp lực. Bạn cũng có thể nhìn quanh phòng ngủ và khẽ gọi tên vài hình: “circle clock, square pillow, rectangle book.” Việc ôn lại yên tĩnh như vậy giúp bé gắn tiếng Anh với cảm giác an toàn và ấm áp. Khi việc học mang lại sự gần gũi và yêu thương, màu sắc và hình dạng sẽ trở thành một phần thế giới bên trong của bé, chứ không chỉ là bài tập ở trường."
       },
-      "tags": ["all", "full", "complete"],
+      "tags": [
+        "all",
+        "full",
+        "complete"
+      ],
       "audio": "colors_shapes_v1_color_game.mp3 colors_shapes_v1_find_shapes.mp3 colors_shapes_v1_mix_and_match.mp3 colors_shapes_v1_color_walk.mp3 colors_shapes_v1_shapes_bedtime.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "4-7",
-    "level": "Kids Level 1",
-    "created_at": "2025-11-21T00:00:00+00:00",
-    "updated_at": "2025-11-21T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#FFE4B5"
-  }
+  ]
 }

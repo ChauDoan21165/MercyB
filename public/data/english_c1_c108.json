@@ -13,63 +13,105 @@
   "entries": [
     {
       "slug": "hearing-tone-clearly",
-      "keywords_en": ["tone", "listening"],
-      "keywords_vi": ["giọng điệu", "nghe"],
+      "keywords_en": [
+        "tone",
+        "listening"
+      ],
+      "keywords_vi": [
+        "giọng điệu",
+        "nghe"
+      ],
       "copy": {
         "en": "Tone changes meaning. The same sentence can sound friendly, neutral, or cold depending on the voice. Listen for softness, firmness, or distance. These signals help you understand mood before you respond. Tone awareness is a key C1 skill.",
         "vi": "Giọng điệu thay đổi ý nghĩa. Cùng một câu có thể nghe thân thiện, trung tính hoặc lạnh tùy theo giọng nói. Hãy lắng nghe sự mềm mại, cứng rắn hoặc xa cách. Những tín hiệu này giúp bạn nhận biết tâm trạng trước khi phản hồi. Nhận diện giọng điệu là kỹ năng quan trọng ở cấp độ C1."
       },
-      "audio": "c108_01_en.mp3"
+      "audio": "c108_01_en.mp3",
+      "tags": []
     },
     {
       "slug": "listening-for-intention",
-      "keywords_en": ["intention", "meaning"],
-      "keywords_vi": ["dụng ý", "ý nghĩa"],
+      "keywords_en": [
+        "intention",
+        "meaning"
+      ],
+      "keywords_vi": [
+        "dụng ý",
+        "ý nghĩa"
+      ],
       "copy": {
         "en": "People often say one thing but mean another. Pay attention to the intention behind the words. Listen for hesitation, warmth, or urgency. These clues reveal what the speaker truly needs. Understanding intention improves every conversation.",
         "vi": "Nhiều khi người nói dùng một câu nhưng ngụ ý câu khác. Hãy chú ý đến dụng ý phía sau lời nói. Lắng nghe sự ngập ngừng, sự ấm áp hoặc sự vội vã. Những dấu hiệu này cho thấy người nói thực sự cần gì. Hiểu dụng ý giúp mọi cuộc giao tiếp trở nên hiệu quả hơn."
       },
-      "audio": "c108_02_en.mp3"
+      "audio": "c108_02_en.mp3",
+      "tags": []
     },
     {
       "slug": "recognizing-stress-and-emphasis",
-      "keywords_en": ["stress", "emphasis"],
-      "keywords_vi": ["trọng âm", "nhấn mạnh"],
+      "keywords_en": [
+        "stress",
+        "emphasis"
+      ],
+      "keywords_vi": [
+        "trọng âm",
+        "nhấn mạnh"
+      ],
       "copy": {
         "en": "English speakers use stress to highlight important information. Notice which word is louder or longer. That word carries the main message. This skill helps you follow long sentences and understand the speaker’s focus instantly.",
         "vi": "Người nói tiếng Anh sử dụng trọng âm để nhấn ý chính. Hãy chú ý từ nào được nói lớn hơn hoặc dài hơn. Từ đó mang thông điệp chính. Kỹ năng này giúp bạn theo dõi câu dài và hiểu trọng tâm của người nói ngay lập tức."
       },
-      "audio": "c108_03_en.mp3"
+      "audio": "c108_03_en.mp3",
+      "tags": []
     },
     {
       "slug": "catching-implied-meaning",
-      "keywords_en": ["implied meaning", "context"],
-      "keywords_vi": ["ngụ ý", "ngữ cảnh"],
+      "keywords_en": [
+        "implied meaning",
+        "context"
+      ],
+      "keywords_vi": [
+        "ngụ ý",
+        "ngữ cảnh"
+      ],
       "copy": {
         "en": "Advanced listeners understand what is not said directly. Phrases like I’m not sure or It’s a bit difficult often mean no. Listen to context, tone, and situation. Implied meaning appears between the lines and requires calm attention.",
         "vi": "Người nghe nâng cao hiểu được điều không được nói ra trực tiếp. Những câu như Tôi không chắc hoặc Hơi khó thường mang nghĩa là không. Hãy nghe trong bối cảnh, giọng điệu và tình huống. Ngụ ý nằm giữa các dòng và cần sự chú ý bình tĩnh."
       },
-      "audio": "c108_04_en.mp3"
+      "audio": "c108_04_en.mp3",
+      "tags": []
     },
     {
       "slug": "listening-to-emotion",
-      "keywords_en": ["emotion", "listening"],
-      "keywords_vi": ["cảm xúc", "nghe"],
+      "keywords_en": [
+        "emotion",
+        "listening"
+      ],
+      "keywords_vi": [
+        "cảm xúc",
+        "nghe"
+      ],
       "copy": {
         "en": "Emotion changes the entire message. A tired voice, a bright voice, or a shaky voice tells you more than words alone. Listening to emotion helps you respond gently and choose the right tone. Emotional listening builds trust.",
         "vi": "Cảm xúc thay đổi toàn bộ thông điệp. Giọng mệt, giọng tươi sáng hoặc giọng run cung cấp nhiều thông tin hơn lời nói. Nghe theo cảm xúc giúp bạn phản hồi nhẹ nhàng và chọn giọng điệu phù hợp. Lắng nghe cảm xúc tạo sự tin cậy."
       },
-      "audio": "c108_05_en.mp3"
+      "audio": "c108_05_en.mp3",
+      "tags": []
     },
     {
       "slug": "daily-advanced-listening-habit",
-      "keywords_en": ["habit", "advanced listening"],
-      "keywords_vi": ["thói quen", "nghe nâng cao"],
+      "keywords_en": [
+        "habit",
+        "advanced listening"
+      ],
+      "keywords_vi": [
+        "thói quen",
+        "nghe nâng cao"
+      ],
       "copy": {
         "en": "Build your listening skill with a daily routine. Listen to one short clip. Write down the feelings you hear, not just the words. Notice tone, stress, and intention. This simple habit trains your ear to understand meaning at a deeper level.",
         "vi": "Hãy rèn kỹ năng nghe bằng thói quen hằng ngày. Nghe một đoạn ngắn. Ghi lại cảm xúc bạn nghe thấy, không chỉ từ ngữ. Chú ý giọng điệu, trọng âm và dụng ý. Thói quen đơn giản này giúp tai bạn hiểu ý nghĩa ở tầng sâu hơn."
       },
-      "audio": "c108_06_en.mp3"
+      "audio": "c108_06_en.mp3",
+      "tags": []
     }
   ]
 }

@@ -13,77 +13,125 @@
   "entries": [
     {
       "slug": "country-names",
-      "keywords_en": ["country", "names", "world"],
-      "keywords_vi": ["quốc gia", "tên nước", "thế giới"],
+      "keywords_en": [
+        "country",
+        "names",
+        "world"
+      ],
+      "keywords_vi": [
+        "quốc gia",
+        "tên nước",
+        "thế giới"
+      ],
       "copy": {
         "en": "Teach kids to name countries using simple phrases like “This country is…” or “I know this place.” Encourage them to say the names of countries they have heard before. Naming countries helps children learn about the world and recognize global diversity.",
         "vi": "Hãy dạy trẻ gọi tên các quốc gia bằng những câu đơn giản như “This country is…” hoặc “I know this place.” Khuyến khích trẻ nói tên các nước mà trẻ từng nghe. Việc gọi tên quốc gia giúp trẻ học về thế giới và nhận ra sự đa dạng toàn cầu."
       },
-      "tags": ["country"],
+      "tags": [
+        "country"
+      ],
       "audio": "countries_cultures_v1_country_names.mp3"
     },
     {
       "slug": "cities-places",
-      "keywords_en": ["cities", "places", "world"],
-      "keywords_vi": ["thành phố", "địa điểm", "thế giới"],
+      "keywords_en": [
+        "cities",
+        "places",
+        "world"
+      ],
+      "keywords_vi": [
+        "thành phố",
+        "địa điểm",
+        "thế giới"
+      ],
       "copy": {
         "en": "Teach children to talk about cities using phrases like “This city is big” or “This place is famous.” Encourage them to notice landmarks or special features of a city. Learning about cities helps kids understand how people live differently around the world.",
         "vi": "Hãy dạy trẻ nói về thành phố bằng các câu như “This city is big” hoặc “This place is famous.” Khuyến khích trẻ nhận biết các địa danh hoặc điểm đặc biệt của một thành phố. Việc tìm hiểu thành phố giúp trẻ hiểu cách con người sống khác nhau trên thế giới."
       },
-      "tags": ["cities"],
+      "tags": [
+        "cities"
+      ],
       "audio": "countries_cultures_v1_cities_places.mp3"
     },
     {
       "slug": "traditions",
-      "keywords_en": ["traditions", "culture", "customs"],
-      "keywords_vi": ["truyền thống", "văn hóa", "phong tục"],
+      "keywords_en": [
+        "traditions",
+        "culture",
+        "customs"
+      ],
+      "keywords_vi": [
+        "truyền thống",
+        "văn hóa",
+        "phong tục"
+      ],
       "copy": {
         "en": "Teach kids to talk about traditions using phrases like “People celebrate…” or “This tradition means…” Encourage them to describe holidays, dances, or clothes from different cultures. Learning about traditions helps kids appreciate cultural beauty.",
         "vi": "Hãy dạy trẻ nói về truyền thống bằng các câu như “People celebrate…” hoặc “This tradition means…” Khuyến khích trẻ mô tả lễ hội, điệu nhảy hoặc trang phục từ các nền văn hóa khác nhau. Việc học truyền thống giúp trẻ trân trọng vẻ đẹp văn hóa."
       },
-      "tags": ["traditions"],
+      "tags": [
+        "traditions"
+      ],
       "audio": "countries_cultures_v1_traditions.mp3"
     },
     {
       "slug": "languages",
-      "keywords_en": ["languages", "speak", "culture"],
-      "keywords_vi": ["ngôn ngữ", "nói", "văn hóa"],
+      "keywords_en": [
+        "languages",
+        "speak",
+        "culture"
+      ],
+      "keywords_vi": [
+        "ngôn ngữ",
+        "nói",
+        "văn hóa"
+      ],
       "copy": {
         "en": "Teach children to talk about languages using phrases like “People speak…” or “This language sounds like…” Show them how languages are part of culture and identity. Learning about languages encourages curiosity and respect.",
         "vi": "Hãy dạy trẻ nói về ngôn ngữ bằng các câu như “People speak…” hoặc “This language sounds like…” Giải thích rằng ngôn ngữ là một phần của văn hóa và bản sắc. Việc học ngôn ngữ giúp trẻ phát triển sự tò mò và tôn trọng."
       },
-      "tags": ["languages"],
+      "tags": [
+        "languages"
+      ],
       "audio": "countries_cultures_v1_languages.mp3"
     },
     {
       "slug": "unique-things",
-      "keywords_en": ["unique", "culture", "special"],
-      "keywords_vi": ["đặc biệt", "văn hóa", "riêng biệt"],
+      "keywords_en": [
+        "unique",
+        "culture",
+        "special"
+      ],
+      "keywords_vi": [
+        "đặc biệt",
+        "văn hóa",
+        "riêng biệt"
+      ],
       "copy": {
         "en": "Teach kids to notice unique things about each culture using phrases like “This is special here” or “People do this differently.” Encourage them to observe food, music, buildings, or daily habits. This helps kids understand that every culture has something wonderful.",
         "vi": "Hãy dạy trẻ nhận ra những điều đặc biệt của mỗi nền văn hóa bằng các câu như “This is special here” hoặc “People do this differently.” Khuyến khích trẻ quan sát món ăn, âm nhạc, công trình hoặc thói quen hằng ngày. Điều này giúp trẻ hiểu rằng mỗi văn hóa đều có điều tuyệt vời riêng."
       },
-      "tags": ["unique"],
+      "tags": [
+        "unique"
+      ],
       "audio": "countries_cultures_v1_unique_things.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all"],
-      "keywords_vi": ["tất cả"],
+      "keywords_en": [
+        "all"
+      ],
+      "keywords_vi": [
+        "tất cả"
+      ],
       "copy": {
         "en": "Teach kids to name countries using simple phrases like “This country is…” or “I know this place.” Encourage them to say the names of countries they have heard before. Naming countries helps children learn about the world and recognize global diversity.\n\nTeach children to talk about cities using phrases like “This city is big” or “This place is famous.” Encourage them to notice landmarks or special features of a city. Learning about cities helps kids understand how people live differently around the world.\n\nTeach kids to talk about traditions using phrases like “People celebrate…” or “This tradition means…” Encourage them to describe holidays, dances, or clothes from different cultures. Learning about traditions helps kids appreciate cultural beauty.\n\nTeach children to talk about languages using phrases like “People speak…” or “This language sounds like…” Show them how languages are part of culture and identity. Learning about languages encourages curiosity and respect.\n\nTeach kids to notice unique things about each culture using phrases like “This is special here” or “People do this differently.” Encourage them to observe food, music, buildings, or daily habits. This helps kids understand that every culture has something wonderful.",
         "vi": "Hãy dạy trẻ gọi tên các quốc gia bằng những câu đơn giản như “This country is…” hoặc “I know this place.” Khuyến khích trẻ nói tên các nước mà trẻ từng nghe. Việc gọi tên quốc gia giúp trẻ học về thế giới và nhận ra sự đa dạng toàn cầu.\n\nHãy dạy trẻ nói về thành phố bằng các câu như “This city is big” hoặc “This place is famous.” Khuyến khích trẻ nhận biết các địa danh hoặc điểm đặc biệt của một thành phố. Việc tìm hiểu thành phố giúp trẻ hiểu cách con người sống khác nhau trên thế giới.\n\nHãy dạy trẻ nói về truyền thống bằng các câu như “People celebrate…” hoặc “This tradition means…” Khuyến khích trẻ mô tả lễ hội, điệu nhảy hoặc trang phục từ các nền văn hóa khác nhau. Việc học truyền thống giúp trẻ trân trọng vẻ đẹp văn hóa.\n\nHãy dạy trẻ nói về ngôn ngữ bằng các câu như “People speak…” hoặc “This language sounds like…” Giải thích rằng ngôn ngữ là một phần của văn hóa và bản sắc. Việc học ngôn ngữ giúp trẻ phát triển sự tò mò và tôn trọng.\n\nHãy dạy trẻ nhận ra những điều đặc biệt của mỗi nền văn hóa bằng các câu như “This is special here” hoặc “People do this differently.” Khuyến khích trẻ quan sát món ăn, âm nhạc, công trình hoặc thói quen hằng ngày. Điều này giúp trẻ hiểu rằng mỗi văn hóa đều có điều tuyệt vời riêng."
       },
-      "tags": ["all"],
+      "tags": [
+        "all"
+      ],
       "audio": "countries_cultures_v1_country_names.mp3 countries_cultures_v1_cities_places.mp3 countries_cultures_v1_traditions.mp3 countries_cultures_v1_languages.mp3 countries_cultures_v1_unique_things.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "10-13",
-    "level": "Kids Level 3",
-    "created_at": "2025-11-23T00:00:00+00:00",
-    "updated_at": "2025-11-23T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#FFEFEF"
-  }
+  ]
 }

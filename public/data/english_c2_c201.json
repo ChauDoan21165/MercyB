@@ -13,63 +13,105 @@
   "entries": [
     {
       "slug": "replacing-common-words-with-precise-terms",
-      "keywords_en": ["precision", "vocabulary"],
-      "keywords_vi": ["từ vựng", "chuẩn xác"],
+      "keywords_en": [
+        "precision",
+        "vocabulary"
+      ],
+      "keywords_vi": [
+        "từ vựng",
+        "chuẩn xác"
+      ],
       "copy": {
         "en": "Advanced speakers replace vague words with precise terms. Instead of very big, use substantial or significant. Instead of very small, use minimal. Instead of many problems, use multiple challenges. These choices show clarity and confidence. Precision does not mean complexity. It means choosing the word that fits the idea with no extra noise.",
         "vi": "Người dùng tiếng Anh nâng cao thay những từ mơ hồ bằng từ chính xác hơn. Thay vì very big, hãy dùng substantial hoặc significant. Thay vì very small, dùng minimal. Thay vì many problems, dùng multiple challenges. Những lựa chọn này thể hiện sự rõ ràng và tự tin. Sự chính xác không đồng nghĩa với phức tạp—chỉ đơn giản là chọn từ phù hợp nhất với ý bạn muốn nói."
       },
-      "audio": "c201_01_en.mp3"
+      "audio": "c201_01_en.mp3",
+      "tags": []
     },
     {
       "slug": "neutral-professional-tone",
-      "keywords_en": ["professional tone", "neutral language"],
-      "keywords_vi": ["giọng chuyên nghiệp", "ngôn ngữ trung tính"],
+      "keywords_en": [
+        "professional tone",
+        "neutral language"
+      ],
+      "keywords_vi": [
+        "giọng chuyên nghiệp",
+        "ngôn ngữ trung tính"
+      ],
       "copy": {
         "en": "Professional English avoids emotional or dramatic language. Instead of This is terrible, say This is not ideal. Instead of I hate this idea, say I have concerns about this approach. Neutral tone helps you sound calm, reliable, and solution-focused. It also prevents misunderstandings in multicultural environments.",
         "vi": "Tiếng Anh chuyên nghiệp tránh ngôn ngữ cảm xúc hoặc kịch tính. Thay vì This is terrible, hãy nói This is not ideal. Thay vì I hate this idea, hãy dùng I have concerns about this approach. Giọng trung tính khiến bạn nghe bình tĩnh, đáng tin và tập trung vào giải pháp. Nó cũng giúp tránh hiểu lầm trong môi trường đa văn hóa."
       },
-      "audio": "c201_02_en.mp3"
+      "audio": "c201_02_en.mp3",
+      "tags": []
     },
     {
       "slug": "precision-in-describing-change",
-      "keywords_en": ["change", "description"],
-      "keywords_vi": ["mô tả", "thay đổi"],
+      "keywords_en": [
+        "change",
+        "description"
+      ],
+      "keywords_vi": [
+        "mô tả",
+        "thay đổi"
+      ],
       "copy": {
         "en": "To describe change precisely, use verbs such as increase, decrease, accelerate, stabilize, decline, or fluctuate. Avoid unclear phrases like go up a lot or go down a bit. Specific verbs show that you understand what is happening and can describe it calmly in meetings or reports.",
         "vi": "Để mô tả sự thay đổi một cách chính xác, hãy dùng các động từ như increase, decrease, accelerate, stabilize, decline hoặc fluctuate. Tránh các cụm từ mơ hồ như go up a lot hoặc go down a bit. Động từ cụ thể cho thấy bạn hiểu tình hình và có thể mô tả nó rõ ràng trong cuộc họp hoặc báo cáo."
       },
-      "audio": "c201_03_en.mp3"
+      "audio": "c201_03_en.mp3",
+      "tags": []
     },
     {
       "slug": "professional-hedging",
-      "keywords_en": ["hedging", "professional"],
-      "keywords_vi": ["giảm nhẹ", "chuyên nghiệp"],
+      "keywords_en": [
+        "hedging",
+        "professional"
+      ],
+      "keywords_vi": [
+        "giảm nhẹ",
+        "chuyên nghiệp"
+      ],
       "copy": {
         "en": "Hedging is the art of softening statements to remain accurate and diplomatic. Useful forms include It appears that…, The data suggests…, and We may need to consider…. Hedging does not weaken your message. It makes you sound objective, thoughtful, and responsible.",
         "vi": "Hedging là kỹ thuật làm mềm câu nói để giữ sự chính xác và ngoại giao. Các mẫu câu hữu ích gồm It appears that…, The data suggests…, và We may need to consider…. Hedging không làm yếu thông điệp của bạn; nó giúp bạn nghe khách quan, thận trọng và có trách nhiệm."
       },
-      "audio": "c201_04_en.mp3"
+      "audio": "c201_04_en.mp3",
+      "tags": []
     },
     {
       "slug": "high-clarity-linking-phrases",
-      "keywords_en": ["linking", "clarity"],
-      "keywords_vi": ["liên kết", "rõ ràng"],
+      "keywords_en": [
+        "linking",
+        "clarity"
+      ],
+      "keywords_vi": [
+        "liên kết",
+        "rõ ràng"
+      ],
       "copy": {
         "en": "Advanced communication uses linking phrases to guide listeners. For adding ideas: furthermore, in addition, moreover. For contrast: however, on the other hand, nevertheless. For results: therefore, as a result, consequently. These signals help listeners follow your thinking with ease.",
         "vi": "Giao tiếp nâng cao dùng các từ nối để dẫn dắt người nghe. Để bổ sung ý: furthermore, in addition, moreover. Để tương phản: however, on the other hand, nevertheless. Để chỉ kết quả: therefore, as a result, consequently. Những từ nối này giúp người nghe theo dõi dòng suy nghĩ của bạn dễ dàng."
       },
-      "audio": "c201_05_en.mp3"
+      "audio": "c201_05_en.mp3",
+      "tags": []
     },
     {
       "slug": "refining-your-word-choice",
-      "keywords_en": ["word choice", "refinement"],
-      "keywords_vi": ["chọn từ", "tinh chỉnh"],
+      "keywords_en": [
+        "word choice",
+        "refinement"
+      ],
+      "keywords_vi": [
+        "chọn từ",
+        "tinh chỉnh"
+      ],
       "copy": {
         "en": "Refining vocabulary means choosing words that express exactly the level of meaning you want. For small improvement, use slight improvement. For major loss, use significant decline. For neutral change, use moderate shift. This precision helps your communication sound intelligent, controlled, and trustworthy.",
         "vi": "Tinh chỉnh từ vựng nghĩa là chọn từ diễn đạt đúng mức độ ý bạn muốn nói. Để chỉ cải thiện nhỏ, dùng slight improvement. Để chỉ giảm mạnh, dùng significant decline. Để chỉ thay đổi trung tính, dùng moderate shift. Sự chính xác này giúp lời nói của bạn nghe thông minh, kiểm soát và đáng tin."
       },
-      "audio": "c201_06_en.mp3"
+      "audio": "c201_06_en.mp3",
+      "tags": []
     }
   ]
 }

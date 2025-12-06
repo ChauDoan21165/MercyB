@@ -13,77 +13,133 @@
   "entries": [
     {
       "slug": "green-grass",
-      "keywords_en": ["color", "green", "grass"],
-      "keywords_vi": ["màu sắc", "xanh lá", "cỏ"],
+      "keywords_en": [
+        "color",
+        "green",
+        "grass"
+      ],
+      "keywords_vi": [
+        "màu sắc",
+        "xanh lá",
+        "cỏ"
+      ],
       "copy": {
         "en": "Begin with the color green by pointing to grass or leaves. Say the word clearly and let your child touch the green plants. The connection between color and nature helps the word feel real and easy to remember.",
         "vi": "Bắt đầu với màu green bằng cách chỉ vào cỏ hoặc lá. Nói từ rõ ràng và để bé chạm vào cây xanh. Sự kết nối giữa màu sắc và thiên nhiên giúp từ cảm thấy thật và dễ nhớ."
       },
-      "tags": ["color", "green"],
+      "tags": [
+        "color",
+        "green"
+      ],
       "audio": "colors_nature_v1_green_grass.mp3"
     },
     {
       "slug": "blue-sky",
-      "keywords_en": ["color", "blue", "sky"],
-      "keywords_vi": ["màu sắc", "xanh dương", "bầu trời"],
+      "keywords_en": [
+        "color",
+        "blue",
+        "sky"
+      ],
+      "keywords_vi": [
+        "màu sắc",
+        "xanh dương",
+        "bầu trời"
+      ],
       "copy": {
         "en": "Teach the color blue by looking up at the sky together. Say the word and point to the blue expanse above. Let your child say it with you. The calm, open sky makes this color word peaceful and memorable.",
         "vi": "Dạy màu blue bằng cách nhìn lên bầu trời cùng nhau. Nói từ và chỉ vào không gian xanh phía trên. Để bé nói theo bạn. Bầu trời rộng lớn, yên bình khiến từ màu này dễ nhớ và thanh thản."
       },
-      "tags": ["color", "blue"],
+      "tags": [
+        "color",
+        "blue"
+      ],
       "audio": "colors_nature_v1_blue_sky.mp3"
     },
     {
       "slug": "yellow-sun",
-      "keywords_en": ["color", "yellow", "sun"],
-      "keywords_vi": ["màu sắc", "vàng", "mặt trời"],
+      "keywords_en": [
+        "color",
+        "yellow",
+        "sun"
+      ],
+      "keywords_vi": [
+        "màu sắc",
+        "vàng",
+        "mặt trời"
+      ],
       "copy": {
         "en": "Introduce the color yellow by pointing to the sun or yellow flowers. Say the word and let your child look for other yellow things around them. The brightness of yellow makes it a joyful, easy-to-spot color for young learners.",
         "vi": "Giới thiệu màu yellow bằng cách chỉ vào mặt trời hoặc hoa vàng. Nói từ và để bé tìm những thứ vàng khác xung quanh. Độ sáng của màu vàng khiến nó trở thành màu vui và dễ nhận ra cho trẻ học."
       },
-      "tags": ["color", "yellow"],
+      "tags": [
+        "color",
+        "yellow"
+      ],
       "audio": "colors_nature_v1_yellow_sun.mp3"
     },
     {
       "slug": "brown-tree",
-      "keywords_en": ["color", "brown", "tree"],
-      "keywords_vi": ["màu sắc", "nâu", "cây"],
+      "keywords_en": [
+        "color",
+        "brown",
+        "tree"
+      ],
+      "keywords_vi": [
+        "màu sắc",
+        "nâu",
+        "cây"
+      ],
       "copy": {
         "en": "Teach brown by touching the bark of a tree or looking at brown soil. Say the word clearly and let your child feel the texture. Brown is everywhere in nature, making it an easy, grounding color to learn.",
         "vi": "Dạy brown bằng cách chạm vào vỏ cây hoặc nhìn đất nâu. Nói từ rõ ràng và để bé cảm nhận kết cấu. Màu nâu có khắp nơi trong thiên nhiên, khiến nó trở thành màu dễ học và gần gũi."
       },
-      "tags": ["color", "brown"],
+      "tags": [
+        "color",
+        "brown"
+      ],
       "audio": "colors_nature_v1_brown_tree.mp3"
     },
     {
       "slug": "color-hunt",
-      "keywords_en": ["color", "hunt", "game"],
-      "keywords_vi": ["màu sắc", "tìm kiếm", "trò chơi"],
+      "keywords_en": [
+        "color",
+        "hunt",
+        "game"
+      ],
+      "keywords_vi": [
+        "màu sắc",
+        "tìm kiếm",
+        "trò chơi"
+      ],
       "copy": {
         "en": "Play a color hunt game outdoors. Say a color—green, blue, yellow, brown—and let your child find something in nature that matches. Take turns choosing colors. This playful hunt makes learning colors interactive and fun.",
         "vi": "Chơi trò săn màu ngoài trời. Nói một màu—green, blue, yellow, brown—và để bé tìm thứ gì đó trong thiên nhiên khớp với nó. Thay phiên chọn màu. Trò săn vui này khiến việc học màu sắc tương tác và vui."
       },
-      "tags": ["game", "color"],
+      "tags": [
+        "game",
+        "color"
+      ],
       "audio": "colors_nature_v1_color_hunt.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all", "full", "complete"],
-      "keywords_vi": ["tất cả", "đầy đủ"],
+      "keywords_en": [
+        "all",
+        "full",
+        "complete"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "đầy đủ"
+      ],
       "copy": {
         "en": "Start with green by pointing to grass and leaves, letting your child touch them.\n\nTeach blue by looking up at the sky and naming the color together.\n\nIntroduce yellow by pointing to the sun or yellow flowers nearby.\n\nShow brown by touching tree bark or looking at brown soil.\n\nFinish with a color hunt game, finding and naming colors in nature together.\n\nThese outdoor activities help your child learn colors through real-world exploration and playful discovery.",
         "vi": "Bắt đầu với green bằng cách chỉ vào cỏ và lá, để bé chạm vào.\n\nDạy blue bằng cách nhìn lên bầu trời và đặt tên màu cùng nhau.\n\nGiới thiệu yellow bằng cách chỉ vào mặt trời hoặc hoa vàng gần đó.\n\nChỉ brown bằng cách chạm vào vỏ cây hoặc nhìn đất nâu.\n\nKết thúc với trò săn màu, tìm và đặt tên màu sắc trong thiên nhiên cùng nhau.\n\nNhững hoạt động ngoài trời này giúp bé học màu sắc qua khám phá thế giới thực và phát hiện vui vẻ."
       },
-      "tags": ["all"],
+      "tags": [
+        "all"
+      ],
       "audio": "colors_nature_v1_green_grass.mp3 colors_nature_v1_blue_sky.mp3 colors_nature_v1_yellow_sun.mp3 colors_nature_v1_brown_tree.mp3 colors_nature_v1_color_hunt.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "4-7",
-    "level": "Kids Level 1",
-    "created_at": "2025-11-21T00:00:00+00:00",
-    "updated_at": "2025-11-21T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#FFFACD"
-  }
+  ]
 }

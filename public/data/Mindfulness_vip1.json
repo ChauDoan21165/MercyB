@@ -154,12 +154,5 @@
       ],
       "audio": "mindfulness_vip1_meditation.mp3 mindfulness_vip1_breathing_exercises.mp3 mindfulness_vip1_breathing_exercises.mp3 mindfulness_vip1_awareness.mp3 mindfulness_vip1_emotional_regulation.mp3"
     }
-  ],
-  "meta": {
-    "created_at": "2025-10-27T00:00:00+00:00",
-    "updated_at": "2025-10-27T00:00:00+00:00",
-    "entry_count": 5,
-    "tier": "vip1",
-    "room_color": "#4A90E2"
-  }
+  ]
 }

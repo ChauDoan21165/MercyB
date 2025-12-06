@@ -13,63 +13,105 @@
   "entries": [
     {
       "slug": "softening-strong-feelings",
-      "keywords_en": ["emotions", "softening"],
-      "keywords_vi": ["cảm xúc", "làm mềm câu"],
+      "keywords_en": [
+        "emotions",
+        "softening"
+      ],
+      "keywords_vi": [
+        "cảm xúc",
+        "làm mềm câu"
+      ],
       "copy": {
         "en": "Native speakers often soften emotional statements to sound calm and balanced. Instead of saying I am angry, they may say I am a bit upset or I am not feeling great. Instead of I hate this, they use I am not a fan of this. Softening helps you express emotions honestly without sounding harsh or negative.",
         "vi": "Người bản xứ thường làm mềm câu diễn đạt cảm xúc để nghe bình tĩnh và cân bằng hơn. Thay vì nói Tôi đang giận, họ có thể nói Tôi hơi bực hoặc Tôi không thấy ổn lắm. Thay vì Tôi ghét cái này, họ dùng Tôi không thích lắm. Việc làm mềm câu giúp bạn nói thật cảm xúc mà vẫn nhẹ nhàng, không tiêu cực."
       },
-      "audio": "c113_01_en.mp3"
+      "audio": "c113_01_en.mp3",
+      "tags": []
     },
     {
       "slug": "describing-mixed-feelings",
-      "keywords_en": ["mixed feelings", "describing"],
-      "keywords_vi": ["cảm xúc lẫn lộn", "miêu tả"],
+      "keywords_en": [
+        "mixed feelings",
+        "describing"
+      ],
+      "keywords_vi": [
+        "cảm xúc lẫn lộn",
+        "miêu tả"
+      ],
       "copy": {
         "en": "Sometimes we feel more than one emotion at the same time. To express this, native speakers use phrases like I feel excited but also nervous or I am happy for you, but a little sad for myself. These phrases show honesty and emotional awareness. Mixed feelings are normal and expressing them clearly builds trust.",
         "vi": "Đôi khi chúng ta cảm thấy nhiều cảm xúc cùng lúc. Để diễn đạt điều này, người bản xứ dùng các câu như Tôi thấy hào hứng mà cũng hơi lo hoặc Tôi vui cho bạn nhưng cũng hơi buồn cho bản thân. Những câu này thể hiện sự chân thật và nhận thức cảm xúc. Cảm xúc lẫn lộn là bình thường, và diễn đạt rõ ràng giúp xây dựng sự tin cậy."
       },
-      "audio": "c113_02_en.mp3"
+      "audio": "c113_02_en.mp3",
+      "tags": []
     },
     {
       "slug": "expressing-low-intensity-emotions",
-      "keywords_en": ["mild emotions", "tone"],
-      "keywords_vi": ["cảm xúc nhẹ", "giọng điệu"],
+      "keywords_en": [
+        "mild emotions",
+        "tone"
+      ],
+      "keywords_vi": [
+        "cảm xúc nhẹ",
+        "giọng điệu"
+      ],
       "copy": {
         "en": "Native speakers often describe light emotions with soft phrases. Instead of I am sad, they may say I am feeling a bit low. Instead of I am stressed, they say I am a little overwhelmed. These soft forms make conversation feel natural and emotionally mature.",
         "vi": "Người bản xứ thường diễn đạt cảm xúc nhẹ bằng các cụm từ mềm mại. Thay vì Tôi buồn, họ có thể nói Tôi hơi xuống tinh thần. Thay vì Tôi căng thẳng, họ nói Tôi hơi choáng hoặc hơi quá tải. Những cách nói này làm cuộc trò chuyện tự nhiên và chín chắn hơn."
       },
-      "audio": "c113_03_en.mp3"
+      "audio": "c113_03_en.mp3",
+      "tags": []
     },
     {
       "slug": "expressing-positive-subtle-feelings",
-      "keywords_en": ["positive feelings", "subtle"],
-      "keywords_vi": ["cảm xúc tích cực", "tinh tế"],
+      "keywords_en": [
+        "positive feelings",
+        "subtle"
+      ],
+      "keywords_vi": [
+        "cảm xúc tích cực",
+        "tinh tế"
+      ],
       "copy": {
         "en": "Positive emotions can also be nuanced. Instead of I love it, speakers often say I really like this or This makes me feel good. Instead of I am happy, they use I feel really calm today or I feel lighter. These subtle expressions sound gentle and sincere.",
         "vi": "Cảm xúc tích cực cũng có thể được diễn đạt tinh tế. Thay vì Tôi thích lắm, người bản xứ nói Tôi thật sự thích cái này hoặc Điều này làm tôi thấy dễ chịu. Thay vì Tôi hạnh phúc, họ nói Hôm nay tôi thấy rất bình yên hoặc Tôi thấy nhẹ nhàng hơn. Các biểu đạt này nghe nhẹ nhàng và chân thật."
       },
-      "audio": "c113_04_en.mp3"
+      "audio": "c113_04_en.mp3",
+      "tags": []
     },
     {
       "slug": "describing-emotional-change",
-      "keywords_en": ["emotional change", "progress"],
-      "keywords_vi": ["thay đổi cảm xúc", "tiến triển"],
+      "keywords_en": [
+        "emotional change",
+        "progress"
+      ],
+      "keywords_vi": [
+        "thay đổi cảm xúc",
+        "tiến triển"
+      ],
       "copy": {
         "en": "To show change, native speakers use phrases like I am feeling better now or I was upset earlier, but I am okay now. These lines communicate growth and emotional movement. They also help the listener understand your current state without confusion.",
         "vi": "Để diễn đạt sự thay đổi, người bản xứ dùng các câu như Bây giờ tôi thấy ổn hơn hoặc Lúc nãy tôi hơi bực, nhưng giờ thì ổn rồi. Những câu này thể hiện sự chuyển biến cảm xúc và giúp người nghe hiểu rõ trạng thái hiện tại của bạn."
       },
-      "audio": "c113_05_en.mp3"
+      "audio": "c113_05_en.mp3",
+      "tags": []
     },
     {
       "slug": "expressing-uncertainty-and-honesty",
-      "keywords_en": ["uncertainty", "honesty"],
-      "keywords_vi": ["không chắc chắn", "thành thật"],
+      "keywords_en": [
+        "uncertainty",
+        "honesty"
+      ],
+      "keywords_vi": [
+        "không chắc chắn",
+        "thành thật"
+      ],
       "copy": {
         "en": "Emotional honesty includes uncertainty. Native speakers often say I am not sure how I feel or I am still thinking about it. These lines show maturity and reflection. You do not need to have perfect clarity. You only need to speak honestly and gently.",
         "vi": "Sự thành thật về cảm xúc bao gồm cả việc không chắc chắn. Người bản xứ thường nói Tôi không chắc mình cảm thấy thế nào hoặc Tôi vẫn đang suy nghĩ về chuyện đó. Những câu này thể hiện sự chín chắn và suy ngẫm. Bạn không cần hiểu rõ mọi thứ; chỉ cần diễn đạt chân thật và nhẹ nhàng."
       },
-      "audio": "c113_06_en.mp3"
+      "audio": "c113_06_en.mp3",
+      "tags": []
     }
   ]
 }

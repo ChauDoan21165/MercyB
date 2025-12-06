@@ -13,63 +13,105 @@
   "entries": [
     {
       "slug": "am-are-is-basics",
-      "keywords_en": ["be", "basic grammar"],
-      "keywords_vi": ["be", "ngữ pháp cơ bản"],
+      "keywords_en": [
+        "be",
+        "basic grammar"
+      ],
+      "keywords_vi": [
+        "be",
+        "ngữ pháp cơ bản"
+      ],
       "copy": {
         "en": "Practice these core patterns.\nI am.\nYou are.\nWe are.\nThey are.\nHe is.\nShe is.\nSay each line slowly.\nThese are the building blocks of English.",
         "vi": "Hãy luyện các mẫu cơ bản: I am, You are, We are, They are, He is, She is. Nói từng câu chậm rãi. Đây là nền tảng của tiếng Anh."
       },
-      "audio": "a104_01_en.mp3"
+      "audio": "a104_01_en.mp3",
+      "tags": []
     },
     {
       "slug": "describing-yourself",
-      "keywords_en": ["self description", "beginner"],
-      "keywords_vi": ["miêu tả bản thân", "người mới"],
+      "keywords_en": [
+        "self description",
+        "beginner"
+      ],
+      "keywords_vi": [
+        "miêu tả bản thân",
+        "người mới"
+      ],
       "copy": {
         "en": "Practice these lines.\nI am Vietnamese.\nI am a student.\nI am twenty years old.\nI am happy.\nSay everything clearly.\nShort sentences help you speak with confidence.",
         "vi": "Hãy luyện các câu sau: I am Vietnamese, I am a student, I am twenty years old, I am happy. Hãy nói rõ ràng. Câu ngắn giúp bạn nói tự tin hơn."
       },
-      "audio": "a104_02_en.mp3"
+      "audio": "a104_02_en.mp3",
+      "tags": []
     },
     {
       "slug": "describing-others",
-      "keywords_en": ["descriptions", "people"],
-      "keywords_vi": ["miêu tả", "con người"],
+      "keywords_en": [
+        "descriptions",
+        "people"
+      ],
+      "keywords_vi": [
+        "miêu tả",
+        "con người"
+      ],
       "copy": {
         "en": "Use these lines to describe people.\nHe is tall.\nShe is short.\nHe is friendly.\nShe is smart.\nThey are kind.\nSay each line slowly.\nFocus on clear endings.",
         "vi": "Dùng các câu sau để miêu tả người khác: He is tall, She is short, He is friendly, She is smart, They are kind. Đọc chậm và giữ âm cuối rõ ràng."
       },
-      "audio": "a104_03_en.mp3"
+      "audio": "a104_03_en.mp3",
+      "tags": []
     },
     {
       "slug": "feelings-with-be",
-      "keywords_en": ["feelings", "be verb"],
-      "keywords_vi": ["cảm xúc", "động từ be"],
+      "keywords_en": [
+        "feelings",
+        "be verb"
+      ],
+      "keywords_vi": [
+        "cảm xúc",
+        "động từ be"
+      ],
       "copy": {
         "en": "Practice saying feelings.\nI am tired.\nI am excited.\nI am sad.\nI am okay.\nYou are strong.\nYou are calm.\nSpeak softly.\nThese sentences help daily communication.",
         "vi": "Hãy luyện nói cảm xúc: I am tired, I am excited, I am sad, I am okay, You are strong, You are calm. Nói nhẹ nhàng. Những câu này rất hữu ích trong giao tiếp hằng ngày."
       },
-      "audio": "a104_04_en.mp3"
+      "audio": "a104_04_en.mp3",
+      "tags": []
     },
     {
       "slug": "short-descriptive-lines",
-      "keywords_en": ["sentences", "description"],
-      "keywords_vi": ["câu ngắn", "miêu tả"],
+      "keywords_en": [
+        "sentences",
+        "description"
+      ],
+      "keywords_vi": [
+        "câu ngắn",
+        "miêu tả"
+      ],
       "copy": {
         "en": "Read these short lines.\nShe is my friend.\nHe is my teacher.\nThis is my room.\nIt is small.\nIt is clean.\nSay everything slowly and clearly.",
         "vi": "Hãy đọc các câu sau: She is my friend, He is my teacher, This is my room, It is small, It is clean. Đọc chậm và rõ ràng."
       },
-      "audio": "a104_05_en.mp3"
+      "audio": "a104_05_en.mp3",
+      "tags": []
     },
     {
       "slug": "be-mini-speaking-drill",
-      "keywords_en": ["speaking", "practice"],
-      "keywords_vi": ["luyện nói", "thực hành"],
+      "keywords_en": [
+        "speaking",
+        "practice"
+      ],
+      "keywords_vi": [
+        "luyện nói",
+        "thực hành"
+      ],
       "copy": {
         "en": "Repeat these lines.\nI am ready.\nI am learning.\nYou are kind.\nYou are helpful.\nWe are students.\nThey are my friends.\nCalm practice builds strong confidence.",
         "vi": "Hãy lặp lại các câu sau: I am ready, I am learning, You are kind, You are helpful, We are students, They are my friends. Thực hành bình tĩnh tạo nên sự tự tin vững chắc."
       },
-      "audio": "a104_06_en.mp3"
+      "audio": "a104_06_en.mp3",
+      "tags": []
     }
   ]
 }

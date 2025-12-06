@@ -13,77 +13,133 @@
   "entries": [
     {
       "slug": "plants-and-trees",
-      "keywords_en": ["plants", "trees", "nature"],
-      "keywords_vi": ["cây", "cây cối", "thiên nhiên"],
+      "keywords_en": [
+        "plants",
+        "trees",
+        "nature"
+      ],
+      "keywords_vi": [
+        "cây",
+        "cây cối",
+        "thiên nhiên"
+      ],
       "copy": {
         "en": "Teach “plants” and “trees” by exploring your yard or a nearby park. Point to leaves, branches, and flowers. Say: “Plants need sun and water.” Let your child touch the bark or collect a fallen leaf. This builds early awareness of nature.",
         "vi": "Dạy từ “plants” và “trees” bằng cách khám phá sân nhà hoặc công viên gần đó. Chỉ vào lá, cành và hoa. Nói: “Plants cần ánh nắng và nước.” Cho bé chạm vào vỏ cây hoặc nhặt lá rơi. Điều này giúp trẻ hình thành sự quan sát thiên nhiên."
       },
-      "tags": ["plants", "trees"],
+      "tags": [
+        "plants",
+        "trees"
+      ],
       "audio": "environment_nature_v1_plants.mp3"
     },
     {
       "slug": "clean-water",
-      "keywords_en": ["water", "clean", "nature"],
-      "keywords_vi": ["nước", "sạch", "thiên nhiên"],
+      "keywords_en": [
+        "water",
+        "clean",
+        "nature"
+      ],
+      "keywords_vi": [
+        "nước",
+        "sạch",
+        "thiên nhiên"
+      ],
       "copy": {
         "en": "Teach “clean water” by showing the difference between clear and dirty water. Pour water into two cups—one clean, one with sand or leaves. Say: “Clean water is safe to drink.” Children quickly understand how important water is for life.",
         "vi": "Dạy “clean water” bằng cách cho bé thấy sự khác nhau giữa nước trong và nước dơ. Đổ nước vào hai cốc—một sạch, một có cát hoặc lá. Nói: “Clean water là nước sạch để uống.” Trẻ sẽ hiểu nước quan trọng thế nào."
       },
-      "tags": ["water", "clean"],
+      "tags": [
+        "water",
+        "clean"
+      ],
       "audio": "environment_nature_v1_clean_water.mp3"
     },
     {
       "slug": "clean-air",
-      "keywords_en": ["air", "clean", "environment"],
-      "keywords_vi": ["không khí", "sạch", "môi trường"],
+      "keywords_en": [
+        "air",
+        "clean",
+        "environment"
+      ],
+      "keywords_vi": [
+        "không khí",
+        "sạch",
+        "môi trường"
+      ],
       "copy": {
         "en": "Teach “clean air” by taking a deep breath outdoors. Say: “Clean air helps us breathe.” Let your child feel the wind or wave their hands in the air. Simple moments help them connect the word with the world.",
         "vi": "Dạy “clean air” bằng cách hít sâu ngoài trời. Nói: “Clean air giúp chúng ta thở.” Cho trẻ cảm nhận gió hoặc vung tay trong không khí. Khoảnh khắc đơn giản giúp trẻ liên kết từ với môi trường."
       },
-      "tags": ["air", "clean"],
+      "tags": [
+        "air",
+        "clean"
+      ],
       "audio": "environment_nature_v1_clean_air.mp3"
     },
     {
       "slug": "recycling",
-      "keywords_en": ["recycle", "sort", "environment"],
-      "keywords_vi": ["tái chế", "phân loại", "môi trường"],
+      "keywords_en": [
+        "recycle",
+        "sort",
+        "environment"
+      ],
+      "keywords_vi": [
+        "tái chế",
+        "phân loại",
+        "môi trường"
+      ],
       "copy": {
         "en": "Teach “recycle” by sorting objects into two groups—trash and recycle. Bottles, boxes, and clean paper can go into the recycle group. Say: “Recycle means use again.” Kids enjoy sorting and quickly learn how to help the Earth.",
         "vi": "Dạy “recycle” bằng cách phân loại đồ vật thành hai nhóm—rác và tái chế. Chai nhựa, hộp và giấy sạch bỏ vào nhóm tái chế. Nói: “Recycle nghĩa là dùng lại.” Trẻ thích phân loại và học nhanh cách giúp Trái Đất."
       },
-      "tags": ["recycle"],
+      "tags": [
+        "recycle"
+      ],
       "audio": "environment_nature_v1_recycle.mp3"
     },
     {
       "slug": "take-care-of-earth",
-      "keywords_en": ["Earth", "care", "environment"],
-      "keywords_vi": ["Trái Đất", "chăm sóc", "môi trường"],
+      "keywords_en": [
+        "Earth",
+        "care",
+        "environment"
+      ],
+      "keywords_vi": [
+        "Trái Đất",
+        "chăm sóc",
+        "môi trường"
+      ],
       "copy": {
         "en": "Teach “take care of Earth” by showing small helpful actions—picking up a leaf, watering a plant, or turning off lights. Say: “We take care of Earth by helping.” Kids learn that even tiny actions matter.",
         "vi": "Dạy “take care of Earth” qua những việc nhỏ—nhặt lá, tưới cây hoặc tắt đèn. Nói: “Chúng ta chăm sóc Trái Đất bằng cách giúp đỡ.” Trẻ hiểu rằng hành động nhỏ cũng quan trọng."
       },
-      "tags": ["Earth", "care"],
+      "tags": [
+        "Earth",
+        "care"
+      ],
       "audio": "environment_nature_v1_care_earth.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all", "full", "complete"],
-      "keywords_vi": ["tất cả", "đầy đủ", "trọn vẹn"],
+      "keywords_en": [
+        "all",
+        "full",
+        "complete"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "đầy đủ",
+        "trọn vẹn"
+      ],
       "copy": {
         "en": "Learn plants and trees by exploring nature.\n\nLearn clean water through simple comparisons.\n\nLearn clean air by breathing and noticing the wind.\n\nLearn recycling by sorting objects.\n\nLearn how to care for Earth with small daily actions.\n\nThese activities help children build gentle habits that protect the world.",
         "vi": "Học về cây cối qua việc khám phá thiên nhiên.\n\nHọc về nước sạch qua so sánh đơn giản.\n\nHọc về không khí sạch qua hít thở và cảm nhận gió.\n\nHọc tái chế bằng phân loại đồ vật.\n\nHọc chăm sóc Trái Đất qua hành động nhỏ mỗi ngày.\n\nNhững hoạt động này giúp trẻ hình thành thói quen bảo vệ thế giới."
       },
-      "tags": ["all"],
+      "tags": [
+        "all"
+      ],
       "audio": "environment_nature_v1_plants.mp3 environment_nature_v1_clean_water.mp3 environment_nature_v1_clean_air.mp3 environment_nature_v1_recycle.mp3 environment_nature_v1_care_earth.mp3"
     }
-  ],
-  "meta": {
-    "age_range": "7-10",
-    "level": "Kids Level 2",
-    "created_at": "2025-11-21T00:00:00+00:00",
-    "updated_at": "2025-11-21T00:00:00+00:00",
-    "entry_count": 6,
-    "room_color": "#E6FFE6"
-  }
+  ]
 }

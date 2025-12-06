@@ -12,72 +12,135 @@
   "entries": [
     {
       "slug": "the-hidden-roots-of-anger",
-      "keywords_en": ["anger", "roots", "pain"],
-      "keywords_vi": ["giận dữ", "gốc rễ", "tổn thương"],
+      "keywords_en": [
+        "anger",
+        "roots",
+        "pain"
+      ],
+      "keywords_vi": [
+        "giận dữ",
+        "gốc rễ",
+        "tổn thương"
+      ],
       "copy": {
         "en": "Anger is rarely the first emotion—it is the final one. Beneath it lies disappointment, hurt, fear, or exhaustion. When these softer emotions are ignored or invalidated, they compress into heat. Anger becomes the body’s attempt to protect you from vulnerability. It is the shield your nervous system raises when it feels unsafe to express sadness or ask for help. Understanding anger as layered emotion brings compassion. Instead of asking, “Why am I so angry?” you begin asking, “What pain am I protecting?”",
         "vi": "Giận dữ hiếm khi là cảm xúc xuất hiện đầu tiên—nó là cảm xúc cuối cùng. Bên dưới nó là thất vọng, tổn thương, sợ hãi hoặc kiệt sức. Khi những cảm xúc mềm mại này bị phớt lờ hoặc không được công nhận, chúng nén lại thành sức nóng. Giận dữ trở thành nỗ lực của cơ thể nhằm bảo vệ bạn khỏi sự dễ tổn thương. Đó là tấm khiên mà hệ thần kinh dựng lên khi không an toàn để bộc lộ nỗi buồn hoặc xin giúp đỡ. Hiểu giận dữ như một cảm xúc nhiều lớp giúp bạn có lòng trắc ẩn hơn. Thay vì hỏi “Tại sao tôi giận thế này?”, bạn bắt đầu hỏi “Tôi đang bảo vệ nỗi đau nào?”"
       },
-      "tags": ["anger", "pain"],
+      "tags": [
+        "anger",
+        "pain"
+      ],
       "audio": "vip6_ar_1.mp3"
     },
     {
       "slug": "suppressed-rage",
-      "keywords_en": ["suppression", "rage", "numbing"],
-      "keywords_vi": ["kìm nén", "thịnh nộ", "tê liệt"],
+      "keywords_en": [
+        "suppression",
+        "rage",
+        "numbing"
+      ],
+      "keywords_vi": [
+        "kìm nén",
+        "thịnh nộ",
+        "tê liệt"
+      ],
       "copy": {
         "en": "Suppressed rage forms when anger has no safe exit. Instead of erupting, it buries itself in the body—tight shoulders, clenched jaw, rapid heartbeat, chronic fatigue. You become polite instead of honest, agreeable instead of expressive. Rage grows silently in the spaces where you silence yourself. Over time, this suppression leads to emotional numbness or unexpected explosions. Suppressed rage is not a flaw; it is a signal that your boundaries were crossed long before you learned to defend them.",
         "vi": "Cơn thịnh nộ bị kìm nén hình thành khi giận dữ không có lối thoát an toàn. Thay vì bùng nổ, nó chôn sâu trong cơ thể—vai cứng, hàm nghiến, tim đập nhanh, mệt mỏi kéo dài. Bạn trở nên lịch sự thay vì trung thực, dễ chịu thay vì biểu lộ. Cơn thịnh nộ âm thầm lớn lên ở những nơi bạn buộc mình phải im lặng. Theo thời gian, sự kìm nén này dẫn đến tê liệt cảm xúc hoặc những cơn bùng nổ bất ngờ. Giận dữ bị kìm nén không phải điểm yếu; đó là tín hiệu rằng ranh giới của bạn bị xâm phạm từ lâu trước khi bạn học cách bảo vệ chúng."
       },
-      "tags": ["suppression", "rage"],
+      "tags": [
+        "suppression",
+        "rage"
+      ],
       "audio": "vip6_ar_2.mp3"
     },
     {
       "slug": "anger-in-relationships",
-      "keywords_en": ["relationships", "conflict", "patterns"],
-      "keywords_vi": ["mối quan hệ", "xung đột", "mô thức"],
+      "keywords_en": [
+        "relationships",
+        "conflict",
+        "patterns"
+      ],
+      "keywords_vi": [
+        "mối quan hệ",
+        "xung đột",
+        "mô thức"
+      ],
       "copy": {
         "en": "Anger in relationships often masks softer emotions—fear of abandonment, feeling unappreciated, or losing your voice. When anger appears, it may be protecting a longing to feel heard, valued, or secure. But unmanaged anger can damage connection: explosions create fear, while withdrawal creates distance. The shadow of anger grows when you expect others to guess your emotional needs. Healing begins when you express the need beneath the reaction rather than the reaction itself.",
         "vi": "Giận dữ trong các mối quan hệ thường che giấu những cảm xúc mềm mại hơn—sợ bị bỏ rơi, cảm giác không được trân trọng hoặc mất tiếng nói của mình. Khi giận dữ xuất hiện, nó có thể đang bảo vệ khao khát được lắng nghe, được coi trọng hoặc được an toàn. Nhưng giận dữ không được quản lý có thể làm hỏng kết nối: bùng nổ tạo nỗi sợ, rút lui tạo khoảng cách. Bóng tối của giận dữ lớn lên khi bạn mong người khác đoán được nhu cầu cảm xúc của mình. Chữa lành bắt đầu khi bạn bộc lộ nhu cầu nằm dưới phản ứng thay vì phản ứng đó."
       },
-      "tags": ["relationships", "anger"],
+      "tags": [
+        "relationships",
+        "anger"
+      ],
       "audio": "vip6_ar_3.mp3"
     },
     {
       "slug": "learning-to-release",
-      "keywords_en": ["release", "healing", "expression"],
-      "keywords_vi": ["giải phóng", "chữa lành", "biểu lộ"],
+      "keywords_en": [
+        "release",
+        "healing",
+        "expression"
+      ],
+      "keywords_vi": [
+        "giải phóng",
+        "chữa lành",
+        "biểu lộ"
+      ],
       "copy": {
         "en": "Releasing anger does not mean exploding—it means allowing the emotion to move without harming yourself or others. This can look like naming your feelings, grounding through breath, shaking out the body, journaling with honesty, or setting boundaries early instead of waiting until resentment builds. Healthy expression turns anger into information rather than destruction. You learn that anger is not your identity; it is an emotional wave meant to pass through, not take over.",
         "vi": "Giải phóng giận dữ không có nghĩa là bùng nổ—mà là cho phép cảm xúc được chuyển động mà không gây hại cho mình hoặc người khác. Điều này có thể là gọi tên cảm xúc, thở sâu để ổn định, lắc cơ thể, viết nhật ký trung thực hoặc đặt ranh giới sớm thay vì chờ đến khi oán giận tích tụ. Biểu lộ lành mạnh biến giận dữ thành thông tin thay vì phá hoại. Bạn học rằng giận dữ không phải danh tính của bạn; nó là làn sóng cảm xúc cần đi qua, không phải chiếm lấy bạn."
       },
-      "tags": ["release", "healing"],
+      "tags": [
+        "release",
+        "healing"
+      ],
       "audio": "vip6_ar_4.mp3"
     },
     {
       "slug": "anger-as-guidance",
-      "keywords_en": ["guidance", "boundaries", "truth"],
-      "keywords_vi": ["hướng dẫn", "ranh giới", "sự thật"],
+      "keywords_en": [
+        "guidance",
+        "boundaries",
+        "truth"
+      ],
+      "keywords_vi": [
+        "hướng dẫn",
+        "ranh giới",
+        "sự thật"
+      ],
       "copy": {
         "en": "Anger is a compass pointing to where your truth was ignored. It reveals where your boundaries are thin, where your needs were dismissed, and where your voice went unheard. When anger is honored—not feared—it becomes guidance instead of chaos. You learn what you will no longer tolerate, what your heart requires, and where healing must begin. Anger is not the enemy; it is the messenger escorting you back to your power.",
         "vi": "Giận dữ là chiếc la bàn chỉ vào nơi sự thật của bạn bị bỏ qua. Nó cho thấy nơi ranh giới của bạn mong manh, nơi nhu cầu bị xem nhẹ và nơi tiếng nói của bạn không được lắng nghe. Khi giận dữ được tôn trọng—không bị sợ hãi—nó trở thành sự hướng dẫn thay vì hỗn loạn. Bạn học điều mình không thể chấp nhận nữa, điều trái tim cần và nơi quá trình chữa lành phải bắt đầu. Giận dữ không phải kẻ thù; nó là sứ giả đưa bạn trở lại với sức mạnh của mình."
       },
-      "tags": ["boundaries", "truth"],
+      "tags": [
+        "boundaries",
+        "truth"
+      ],
       "audio": "vip6_ar_5.mp3"
     },
     {
       "slug": "all",
-      "keywords_en": ["all", "combined", "full sequence"],
-      "keywords_vi": ["tất cả", "kết hợp", "chuỗi đầy đủ"],
+      "keywords_en": [
+        "all",
+        "combined",
+        "full sequence"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "kết hợp",
+        "chuỗi đầy đủ"
+      ],
       "copy": {
         "en": "Anger is a layered emotion rooted in hurt, fear, and unmet needs. When suppressed, it buries itself in the body, creating tension, exhaustion, and emotional numbness. In relationships, anger masks softer feelings—a desire to feel valued, safe, or heard. Possessing a hidden intelligence, anger reveals violated boundaries and ignored truths. Healing involves recognizing the pain beneath the heat, expressing emotions honestly, and releasing tension without harm. When honored, anger becomes guidance, not destruction, showing where growth, limits, and self-respect must strengthen. It is not your enemy—it is your messenger.",
         "vi": "Giận dữ là cảm xúc nhiều lớp bắt nguồn từ tổn thương, sợ hãi và nhu cầu chưa được đáp ứng. Khi bị kìm nén, nó chôn sâu trong cơ thể, tạo căng thẳng, kiệt sức và tê liệt cảm xúc. Trong các mối quan hệ, giận dữ che giấu những cảm xúc mềm mại hơn—khao khát được lắng nghe, được coi trọng hoặc được an toàn. Mang trí tuệ riêng, giận dữ chỉ ra ranh giới bị xâm phạm và sự thật bị phớt lờ. Chữa lành đòi hỏi nhận diện nỗi đau dưới sức nóng, bộc lộ cảm xúc trung thực và giải phóng căng thẳng mà không gây hại. Khi được tôn trọng, giận dữ trở thành sự hướng dẫn, không phải phá hoại, cho thấy nơi cần trưởng thành, đặt giới hạn và nuôi dưỡng sự tự tôn. Nó không phải kẻ thù—mà là sứ giả của bạn."
       },
-      "tags": ["all", "combined"],
+      "tags": [
+        "all",
+        "combined"
+      ],
       "audio": "vip6_ar_1.mp3 vip6_ar_2.mp3 vip6_ar_3.mp3 vip6_ar_4.mp3 vip6_ar_5.mp3"
     }
-  ],
-  "meta": {
-    "entry_count": 6
-  }
+  ]
 }

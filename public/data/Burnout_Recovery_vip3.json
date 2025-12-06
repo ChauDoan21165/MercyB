@@ -213,12 +213,5 @@
       }
     }
   ],
-  "meta": {
-    "created_at": "2025-10-28T00:00:00+00:00",
-    "updated_at": "2025-10-28T00:00:00+00:00",
-    "entry_count": 8,
-    "tier": "vip3",
-    "room_color": "#4A90E2"
-  },
   "audio": "bur_vip3_8_en.mp3"
 }

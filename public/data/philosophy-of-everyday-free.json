@@ -1,6 +1,4 @@
 {
-  "schema_version": "1.0",
-  "schema_id": "philosophy-of-everyday-free",
   "id": "philosophy-of-everyday-free",
   "tier": "free",
   "domain": "",
@@ -129,13 +127,5 @@
   "room_essay": {
     "en": "A gentle quest for balance, mindfulness, and finding meaning in everyday life.",
     "vi": "Hành trình nhẹ nhàng đi tìm sự cân bằng, chánh niệm và ý nghĩa trong đời sống thường ngày."
-  },
-  "safety_disclaimer": {
-    "en": "",
-    "vi": ""
-  },
-  "crisis_footer": {
-    "en": "",
-    "vi": ""
   }
 }
