@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useCallback } from 'react';
 import { useVersionCheck } from '@/hooks/useVersionCheck';
 import { UpdateBanner } from '@/components/UpdateBanner';
 import { VersionBadge } from '@/components/VersionBadge';
@@ -11,16 +11,20 @@ import { VersionBlockOverlay } from '@/components/VersionBlockOverlay';
 export function AppVersionManager() {
   const { updateAvailable, isBlocked, latestVersion, applyUpdate, dismissUpdate } = useVersionCheck();
 
-  // Unregister any service workers on mount to prevent Safari cache issues
-  useEffect(() => {
+  // Handle reload with service worker cleanup
+  const handleReload = useCallback(() => {
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.getRegistrations().then((registrations) => {
-        for (const registration of registrations) {
-          registration.unregister();
-          console.log('[version] Unregistered service worker:', registration.scope);
-        }
+      navigator.serviceWorker.getRegistrations().then(regs => {
+        regs.forEach(r => {
+          r.unregister();
+          console.log('[version] Unregistered service worker:', r.scope);
+        });
       });
     }
+    // Clear version storage and reload
+    localStorage.removeItem('mb_app_version');
+    localStorage.removeItem('mb_min_version_blocked');
+    window.location.reload();
   }, []);
 
   return (
@@ -28,14 +32,14 @@ export function AppVersionManager() {
       {/* Hard block overlay when update is required */}
       <VersionBlockOverlay 
         visible={isBlocked}
-        onReload={applyUpdate}
+        onReload={handleReload}
         latestVersion={latestVersion?.version}
       />
       
       {/* Update banner at top when new version available (but not blocking) */}
       <UpdateBanner 
         visible={updateAvailable && !isBlocked}
-        onUpdate={applyUpdate}
+        onUpdate={handleReload}
         onDismiss={dismissUpdate}
       />
       

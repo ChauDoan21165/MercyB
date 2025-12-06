@@ -25,7 +25,10 @@ export function useVersionCheck() {
       // Add cache-busting query param
       const response = await fetch(`/version.json?t=${Date.now()}`, {
         cache: 'no-store',
-        headers: { 'Cache-Control': 'no-cache' }
+        headers: { 
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
+          'Pragma': 'no-cache'
+        }
       });
       
       if (!response.ok) {
