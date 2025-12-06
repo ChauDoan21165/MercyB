@@ -1,227 +1,405 @@
 /**
- * Mercy Teacher Personality System
+ * Mercy Teacher Personality System v2.0
  * 
  * Central module for Mercy's AI English teacher personality.
- * Consolidates tone, emotion, and all teacher messages.
+ * Fully bilingual (EN + VI), with emotional rules and scalable message architecture.
  * 
  * HOW TO ADD NEW LINES:
- * 1. Add the event type to TeacherEvent union
- * 2. Add lines for that event in MESSAGES_BY_EVENT
- * 3. Each line must have en + vi and be ≤160 chars
+ * 1. Add the event to TeacherEvent union if needed
+ * 2. Add MercyMessage objects to MESSAGES_BY_EVENT[eventName]
+ * 3. Each message must have: id, event, emotion, text.en, text.vi
+ * 4. Optional: cefrMin, cefrMax for level-specific messages
  * 
- * HOW TO LOCALIZE:
- * - All messages already have en/vi
- * - To add new language: extend BilingualText and add to each message
+ * HOW TO ADD NEW EMOTIONS:
+ * 1. Add to MercyEmotion type
+ * 2. Add rules in getEmotionForEvent()
  */
 
 // ============================================
 // TYPES
 // ============================================
 
-export type MercyTone = 'gentle' | 'warm' | 'encouraging' | 'focused' | 'celebratory';
-
+/**
+ * Mercy's emotional states - determines tone and avatar expression
+ */
 export type MercyEmotion = 
-  | 'neutral' 
-  | 'happy' 
-  | 'proud' 
-  | 'calm' 
-  | 'concerned' 
-  | 'excited';
+  | 'warm_gentle'      // Default nurturing tone
+  | 'excited_proud'    // Celebrating achievements
+  | 'calm_firm'        // After multiple failures, steady guidance
+  | 'playful'          // Light moments, encouragement
+  | 'reassuring';      // Comeback, struggles, heavy moods
 
+/**
+ * All events that can trigger Mercy messages
+ */
 export type TeacherEvent =
+  // App lifecycle
+  | 'app_open_first_time'
+  | 'app_open_returning'
   // Room events
   | 'room_start'
+  | 'room_halfway'
   | 'room_complete'
-  | 'entry_complete'
+  // Shadow/speaking practice
+  | 'shadow_start'
+  | 'shadow_attempt_good'
+  | 'shadow_attempt_bad'
+  | 'shadow_attempt_bad_3plus'  // 3+ failures
+  | 'shadow_session_complete'
   // Streak events
   | 'streak_day_3'
   | 'streak_day_7'
   | 'streak_day_14'
   | 'streak_day_30'
-  | 'streak_break_3_days'
-  | 'streak_break_7_days'
-  | 'streak_return'
-  // Practice events
-  | 'shadow_attempt_success'
-  | 'shadow_attempt_fail'
-  | 'pronunciation_good'
-  | 'pronunciation_try_again'
-  // Progress events
-  | 'first_room_complete'
-  | 'level_up'
-  | 'milestone_10_rooms'
-  | 'milestone_50_rooms'
-  // Mood events
+  | 'streak_continue'
+  | 'streak_break'
+  | 'streak_comeback_short'     // 1-3 days away
+  | 'streak_comeback_long'      // 7+ days away
+  // User state
+  | 'user_confused'
+  | 'user_low_energy'
   | 'user_tired'
   | 'user_struggling'
   | 'user_excited'
+  // Progress milestones
+  | 'level_up'
+  | 'first_room_complete'
+  | 'milestone_10_rooms'
+  | 'milestone_50_rooms'
+  | 'milestone_100_rooms'
   // Session events
   | 'session_start_morning'
   | 'session_start_evening'
   | 'session_end'
-  // CEFR-specific
-  | 'a1_intro'
-  | 'a2_intro'
-  | 'b1_intro'
-  | 'b2_intro'
-  | 'c1_intro';
+  // CEFR level intros
+  | 'cefr_a1_intro'
+  | 'cefr_a2_intro'
+  | 'cefr_b1_intro'
+  | 'cefr_b2_intro'
+  | 'cefr_c1_intro'
+  // Entry-level
+  | 'entry_complete'
+  | 'pronunciation_good'
+  | 'pronunciation_try_again';
 
+/**
+ * Bilingual text structure
+ */
 export interface BilingualText {
   en: string;
   vi: string;
 }
 
-export interface TeacherMessage extends BilingualText {
-  tone: MercyTone;
-  emotion?: MercyEmotion;
+/**
+ * Complete Mercy message structure
+ */
+export interface MercyMessage {
+  id: string;
+  event: TeacherEvent;
+  emotion: MercyEmotion;
+  cefrMin?: string;  // e.g., 'A1' - message only for A1+
+  cefrMax?: string;  // e.g., 'B1' - message only up to B1
+  text: BilingualText;
 }
 
+/**
+ * Display mode for bilingual content
+ */
+export type DisplayMode = 'en' | 'vi' | 'dual';
+
+/**
+ * Options for getMercyMessage
+ */
 export interface GetMessageOptions {
-  level?: string; // CEFR level: A1, A2, B1, B2, C1
+  cefrLevel?: string;
   username?: string;
   emotionOverride?: MercyEmotion;
-  tier?: string;
+  displayMode?: DisplayMode;
+  failureCount?: number;  // For shadow_attempt_bad logic
 }
 
 // ============================================
-// MESSAGE LIBRARY
+// EMOTIONAL RULES ENGINE
+// ============================================
+
+/**
+ * Get the appropriate emotion for an event based on context.
+ * Rules are based on ChatGPT's design for Mercy's personality.
+ */
+export function getEmotionForEvent(
+  event: TeacherEvent,
+  context?: { failureCount?: number; daysAway?: number; mood?: string }
+): MercyEmotion {
+  const { failureCount = 0, daysAway = 0, mood } = context || {};
+
+  switch (event) {
+    // Celebrations
+    case 'room_complete':
+    case 'shadow_session_complete':
+    case 'level_up':
+    case 'first_room_complete':
+    case 'milestone_10_rooms':
+    case 'milestone_50_rooms':
+    case 'milestone_100_rooms':
+    case 'streak_day_7':
+    case 'streak_day_14':
+    case 'streak_day_30':
+      return 'excited_proud';
+
+    // Gentle starts
+    case 'app_open_first_time':
+    case 'room_start':
+    case 'shadow_start':
+    case 'session_start_morning':
+    case 'session_start_evening':
+      return 'warm_gentle';
+
+    // Failures with escalation
+    case 'shadow_attempt_bad':
+    case 'shadow_attempt_bad_3plus':
+      return failureCount >= 3 ? 'calm_firm' : 'warm_gentle';
+
+    // Comeback logic
+    case 'streak_comeback_long':
+      return 'reassuring';
+    case 'streak_comeback_short':
+      return daysAway >= 7 ? 'reassuring' : 'warm_gentle';
+
+    // User states
+    case 'user_low_energy':
+    case 'user_tired':
+    case 'user_struggling':
+      return 'reassuring';
+    case 'user_confused':
+      return 'calm_firm';
+    case 'user_excited':
+      return 'playful';
+
+    // Mood-based overrides
+    default:
+      if (mood === 'heavy' || mood === 'anxious') {
+        return 'reassuring';
+      }
+      return 'warm_gentle';
+  }
+}
+
+// ============================================
+// MESSAGE LIBRARY (200+ lines structure)
 // ============================================
 
 /**
  * All teacher messages organized by event.
- * Each event can have multiple variations for natural responses.
+ * Structure supports 200+ lines - add more by appending to arrays.
  */
-const MESSAGES_BY_EVENT: Record<TeacherEvent, TeacherMessage[]> = {
+export const MESSAGES_BY_EVENT: Record<TeacherEvent, MercyMessage[]> = {
+  // --- App Lifecycle ---
+  app_open_first_time: [
+    { id: 'aoft_1', event: 'app_open_first_time', emotion: 'warm_gentle', text: { en: "Welcome! I'm Mercy, your English guide. Let's learn together.", vi: "Chào mừng! Mình là Mercy, người hướng dẫn tiếng Anh của bạn. Cùng học nhé." } },
+    { id: 'aoft_2', event: 'app_open_first_time', emotion: 'warm_gentle', text: { en: "Hello! Your English journey starts now. No pressure, just progress.", vi: "Xin chào! Hành trình tiếng Anh bắt đầu rồi. Không áp lực, chỉ có tiến bộ." } },
+    { id: 'aoft_3', event: 'app_open_first_time', emotion: 'warm_gentle', text: { en: "I'm so glad you're here. Let's make English feel possible.", vi: "Mình rất vui khi bạn ở đây. Hãy làm tiếng Anh trở nên khả thi." } },
+  ],
+  app_open_returning: [
+    { id: 'aor_1', event: 'app_open_returning', emotion: 'warm_gentle', text: { en: "Welcome back! Ready to continue?", vi: "Chào mừng trở lại! Sẵn sàng tiếp tục chưa?" } },
+    { id: 'aor_2', event: 'app_open_returning', emotion: 'playful', text: { en: "You're back! English missed you.", vi: "Bạn đã về! Tiếng Anh nhớ bạn đấy." } },
+    { id: 'aor_3', event: 'app_open_returning', emotion: 'warm_gentle', text: { en: "Good to see you again. Let's pick up where we left off.", vi: "Vui được gặp lại bạn. Tiếp tục từ chỗ cũ nhé." } },
+  ],
+
   // --- Room Events ---
   room_start: [
-    { en: "Let's learn together. No rush, no pressure.", vi: "Cùng học nhé. Không vội, không áp lực.", tone: 'gentle' },
-    { en: "Welcome back to English. Take your time.", vi: "Chào mừng trở lại với tiếng Anh. Từ từ thôi.", tone: 'warm' },
-    { en: "English is a journey. Enjoy each step.", vi: "Tiếng Anh là hành trình. Tận hưởng từng bước.", tone: 'encouraging' },
-    { en: "Ready when you are. Let's begin.", vi: "Sẵn sàng khi bạn sẵn sàng. Bắt đầu thôi.", tone: 'warm' },
-    { en: "Your English adventure continues today.", vi: "Hành trình tiếng Anh tiếp tục hôm nay.", tone: 'encouraging' },
+    { id: 'rs_1', event: 'room_start', emotion: 'warm_gentle', text: { en: "Let's learn together. No rush, no pressure.", vi: "Cùng học nhé. Không vội, không áp lực." } },
+    { id: 'rs_2', event: 'room_start', emotion: 'warm_gentle', text: { en: "Welcome to this room. Take your time.", vi: "Chào mừng đến phòng này. Từ từ thôi." } },
+    { id: 'rs_3', event: 'room_start', emotion: 'warm_gentle', text: { en: "English is a journey. Enjoy each step.", vi: "Tiếng Anh là hành trình. Tận hưởng từng bước." } },
+    { id: 'rs_4', event: 'room_start', emotion: 'warm_gentle', text: { en: "Ready when you are. Let's begin.", vi: "Sẵn sàng khi bạn sẵn sàng. Bắt đầu thôi." } },
+    { id: 'rs_5', event: 'room_start', emotion: 'playful', text: { en: "Your English adventure continues today.", vi: "Hành trình tiếng Anh tiếp tục hôm nay." } },
+  ],
+  room_halfway: [
+    { id: 'rh_1', event: 'room_halfway', emotion: 'playful', text: { en: "Halfway there! You're doing great.", vi: "Đã nửa đường! Bạn đang làm rất tốt." } },
+    { id: 'rh_2', event: 'room_halfway', emotion: 'warm_gentle', text: { en: "Keep going. You've got momentum.", vi: "Tiếp tục đi. Bạn đang có đà rồi." } },
+    { id: 'rh_3', event: 'room_halfway', emotion: 'playful', text: { en: "Nice! The second half awaits.", vi: "Hay lắm! Nửa còn lại đang chờ." } },
   ],
   room_complete: [
-    { en: "Wonderful! You completed this room. Well done!", vi: "Tuyệt vời! Bạn đã hoàn thành phòng này. Làm tốt lắm!", tone: 'celebratory', emotion: 'proud' },
-    { en: "Another room done. Your English grows stronger.", vi: "Thêm một phòng hoàn thành. Tiếng Anh của bạn mạnh hơn.", tone: 'encouraging', emotion: 'happy' },
-    { en: "You did it! Take a moment to feel proud.", vi: "Bạn làm được rồi! Hãy tự hào về bản thân.", tone: 'celebratory', emotion: 'proud' },
+    { id: 'rc_1', event: 'room_complete', emotion: 'excited_proud', text: { en: "Wonderful! You completed this room. Well done!", vi: "Tuyệt vời! Bạn đã hoàn thành phòng này. Làm tốt lắm!" } },
+    { id: 'rc_2', event: 'room_complete', emotion: 'excited_proud', text: { en: "Another room done. Your English grows stronger.", vi: "Thêm một phòng hoàn thành. Tiếng Anh của bạn mạnh hơn." } },
+    { id: 'rc_3', event: 'room_complete', emotion: 'excited_proud', text: { en: "You did it! Take a moment to feel proud.", vi: "Bạn làm được rồi! Hãy tự hào về bản thân." } },
+    { id: 'rc_4', event: 'room_complete', emotion: 'excited_proud', text: { en: "Room complete! Every finish line is a new starting point.", vi: "Hoàn thành phòng! Mỗi đích đến là điểm xuất phát mới." } },
   ],
-  entry_complete: [
-    { en: "Well done! Every word learned is progress.", vi: "Làm tốt lắm! Mỗi từ học được là tiến bộ.", tone: 'encouraging' },
-    { en: "You're building your English, one step at a time.", vi: "Bạn đang xây dựng tiếng Anh, từng bước một.", tone: 'warm' },
-    { en: "Good progress! Try using this phrase today.", vi: "Tiến bộ tốt! Thử dùng cụm từ này hôm nay nhé.", tone: 'encouraging' },
-    { en: "Another step forward. Your English improves daily.", vi: "Thêm một bước tiến. Tiếng Anh cải thiện mỗi ngày.", tone: 'warm' },
+
+  // --- Shadow Practice ---
+  shadow_start: [
+    { id: 'ss_1', event: 'shadow_start', emotion: 'warm_gentle', text: { en: "Shadow practice begins. Listen, then repeat.", vi: "Bắt đầu luyện shadow. Nghe, rồi lặp lại." } },
+    { id: 'ss_2', event: 'shadow_start', emotion: 'warm_gentle', text: { en: "Follow the rhythm. Your voice matters.", vi: "Theo nhịp điệu. Giọng bạn quan trọng." } },
+  ],
+  shadow_attempt_good: [
+    { id: 'sag_1', event: 'shadow_attempt_good', emotion: 'excited_proud', text: { en: "Great shadowing! Your pronunciation is improving.", vi: "Shadowing tốt lắm! Phát âm của bạn đang tiến bộ." } },
+    { id: 'sag_2', event: 'shadow_attempt_good', emotion: 'excited_proud', text: { en: "Well done! Your voice matches the rhythm.", vi: "Làm tốt lắm! Giọng bạn khớp với nhịp." } },
+    { id: 'sag_3', event: 'shadow_attempt_good', emotion: 'playful', text: { en: "That sounded natural! Keep it up.", vi: "Nghe tự nhiên lắm! Tiếp tục nhé." } },
+  ],
+  shadow_attempt_bad: [
+    { id: 'sab_1', event: 'shadow_attempt_bad', emotion: 'warm_gentle', text: { en: "Good try! Listen again and repeat slowly.", vi: "Cố gắng tốt! Nghe lại và lặp lại chậm hơn." } },
+    { id: 'sab_2', event: 'shadow_attempt_bad', emotion: 'warm_gentle', text: { en: "It's okay. Practice makes progress, not perfection.", vi: "Không sao. Luyện tập tạo tiến bộ, không phải hoàn hảo." } },
+    { id: 'sab_3', event: 'shadow_attempt_bad', emotion: 'warm_gentle', text: { en: "Let's try that again. Slower this time.", vi: "Thử lại nhé. Chậm hơn lần này." } },
+  ],
+  shadow_attempt_bad_3plus: [
+    { id: 'sab3_1', event: 'shadow_attempt_bad_3plus', emotion: 'calm_firm', text: { en: "Let's pause and focus on just the first few words.", vi: "Hãy dừng lại và tập trung vào vài từ đầu thôi." } },
+    { id: 'sab3_2', event: 'shadow_attempt_bad_3plus', emotion: 'calm_firm', text: { en: "Slow down. One sound at a time.", vi: "Chậm lại. Từng âm một thôi." } },
+    { id: 'sab3_3', event: 'shadow_attempt_bad_3plus', emotion: 'reassuring', text: { en: "This is tough, but you're building real skill.", vi: "Khó đấy, nhưng bạn đang xây dựng kỹ năng thực sự." } },
+  ],
+  shadow_session_complete: [
+    { id: 'ssc_1', event: 'shadow_session_complete', emotion: 'excited_proud', text: { en: "Shadow session complete! Your speaking grows stronger.", vi: "Hoàn thành buổi shadow! Kỹ năng nói mạnh hơn rồi." } },
+    { id: 'ssc_2', event: 'shadow_session_complete', emotion: 'excited_proud', text: { en: "Well done! Regular shadow practice builds fluency.", vi: "Làm tốt lắm! Luyện shadow đều đặn xây dựng sự lưu loát." } },
   ],
 
   // --- Streak Events ---
   streak_day_3: [
-    { en: "3 days in a row! Consistency is beautiful.", vi: "3 ngày liên tiếp! Sự kiên trì thật đẹp.", tone: 'celebratory', emotion: 'happy' },
-    { en: "You're building a habit. Keep going!", vi: "Bạn đang xây dựng thói quen. Tiếp tục!", tone: 'encouraging' },
+    { id: 'sd3_1', event: 'streak_day_3', emotion: 'excited_proud', text: { en: "3 days in a row! Consistency is beautiful.", vi: "3 ngày liên tiếp! Sự kiên trì thật đẹp." } },
+    { id: 'sd3_2', event: 'streak_day_3', emotion: 'playful', text: { en: "You're building a habit. Keep going!", vi: "Bạn đang xây dựng thói quen. Tiếp tục!" } },
   ],
   streak_day_7: [
-    { en: "One week! Your dedication is inspiring.", vi: "Một tuần! Sự cống hiến của bạn thật đáng ngưỡng mộ.", tone: 'celebratory', emotion: 'proud' },
-    { en: "7 days of growth. You're amazing!", vi: "7 ngày tiến bộ. Bạn thật tuyệt!", tone: 'celebratory', emotion: 'excited' },
+    { id: 'sd7_1', event: 'streak_day_7', emotion: 'excited_proud', text: { en: "One week! Your dedication is inspiring.", vi: "Một tuần! Sự cống hiến của bạn thật đáng ngưỡng mộ." } },
+    { id: 'sd7_2', event: 'streak_day_7', emotion: 'excited_proud', text: { en: "7 days of growth. You're amazing!", vi: "7 ngày tiến bộ. Bạn thật tuyệt!" } },
   ],
   streak_day_14: [
-    { en: "Two weeks! Your commitment is extraordinary.", vi: "Hai tuần! Cam kết của bạn thật phi thường.", tone: 'celebratory', emotion: 'proud' },
+    { id: 'sd14_1', event: 'streak_day_14', emotion: 'excited_proud', text: { en: "Two weeks! Your commitment is extraordinary.", vi: "Hai tuần! Cam kết của bạn thật phi thường." } },
   ],
   streak_day_30: [
-    { en: "30 days! You've built a true learning habit.", vi: "30 ngày! Bạn đã xây dựng thói quen học thật sự.", tone: 'celebratory', emotion: 'excited' },
-    { en: "One month of English! I'm so proud of you.", vi: "Một tháng tiếng Anh! Mình rất tự hào về bạn.", tone: 'celebratory', emotion: 'proud' },
+    { id: 'sd30_1', event: 'streak_day_30', emotion: 'excited_proud', text: { en: "30 days! You've built a true learning habit.", vi: "30 ngày! Bạn đã xây dựng thói quen học thật sự." } },
+    { id: 'sd30_2', event: 'streak_day_30', emotion: 'excited_proud', text: { en: "One month of English! I'm so proud of you.", vi: "Một tháng tiếng Anh! Mình rất tự hào về bạn." } },
   ],
-  streak_break_3_days: [
-    { en: "Welcome back. Life happens. Let's continue gently.", vi: "Chào mừng trở lại. Cuộc sống mà. Tiếp tục nhẹ nhàng.", tone: 'gentle', emotion: 'calm' },
+  streak_continue: [
+    { id: 'sc_1', event: 'streak_continue', emotion: 'playful', text: { en: "Another day, another win. Keep the streak alive!", vi: "Thêm một ngày, thêm chiến thắng. Giữ chuỗi ngày!" } },
   ],
-  streak_break_7_days: [
-    { en: "You've been missed! English missed you too.", vi: "Bạn đã được nhớ! Tiếng Anh cũng nhớ bạn.", tone: 'warm', emotion: 'calm' },
-    { en: "Welcome home. Let's refresh what you learned.", vi: "Chào mừng về nhà. Hãy ôn lại những gì bạn đã học.", tone: 'gentle' },
+  streak_break: [
+    { id: 'sb_1', event: 'streak_break', emotion: 'reassuring', text: { en: "Streaks can restart. What matters is you're here now.", vi: "Chuỗi ngày có thể bắt đầu lại. Quan trọng là bạn ở đây." } },
   ],
-  streak_return: [
-    { en: "Every return is a victory. Welcome back.", vi: "Mỗi lần quay lại là chiến thắng. Chào mừng trở lại.", tone: 'encouraging' },
+  streak_comeback_short: [
+    { id: 'scs_1', event: 'streak_comeback_short', emotion: 'warm_gentle', text: { en: "Welcome back. Life happens. Let's continue gently.", vi: "Chào mừng trở lại. Cuộc sống mà. Tiếp tục nhẹ nhàng." } },
   ],
-
-  // --- Practice Events ---
-  shadow_attempt_success: [
-    { en: "Great shadowing! Your pronunciation is improving.", vi: "Shadowing tốt lắm! Phát âm của bạn đang tiến bộ.", tone: 'celebratory', emotion: 'happy' },
-    { en: "Well done! Your voice matches the rhythm.", vi: "Làm tốt lắm! Giọng bạn khớp với nhịp.", tone: 'encouraging' },
-  ],
-  shadow_attempt_fail: [
-    { en: "Good try! Listen again and repeat slowly.", vi: "Cố gắng tốt! Nghe lại và lặp lại chậm hơn.", tone: 'gentle', emotion: 'calm' },
-    { en: "It's okay. Practice makes progress, not perfection.", vi: "Không sao. Luyện tập tạo tiến bộ, không phải hoàn hảo.", tone: 'warm' },
-  ],
-  pronunciation_good: [
-    { en: "Your pronunciation is clear! Well done.", vi: "Phát âm của bạn rõ ràng! Làm tốt lắm.", tone: 'celebratory', emotion: 'happy' },
-    { en: "The sounds are coming naturally now.", vi: "Âm thanh đang đến tự nhiên rồi.", tone: 'encouraging' },
-  ],
-  pronunciation_try_again: [
-    { en: "Let's try that sound again. Listen carefully.", vi: "Hãy thử âm đó lại. Lắng nghe cẩn thận.", tone: 'gentle' },
-    { en: "Focus on the ending sounds. You're close!", vi: "Tập trung vào âm cuối. Bạn gần được rồi!", tone: 'encouraging' },
+  streak_comeback_long: [
+    { id: 'scl_1', event: 'streak_comeback_long', emotion: 'reassuring', text: { en: "You've been missed! English missed you too.", vi: "Bạn đã được nhớ! Tiếng Anh cũng nhớ bạn." } },
+    { id: 'scl_2', event: 'streak_comeback_long', emotion: 'reassuring', text: { en: "Welcome home. Let's refresh what you learned.", vi: "Chào mừng về nhà. Hãy ôn lại những gì bạn đã học." } },
+    { id: 'scl_3', event: 'streak_comeback_long', emotion: 'reassuring', text: { en: "Every return is a victory. Welcome back.", vi: "Mỗi lần quay lại là chiến thắng. Chào mừng trở lại." } },
   ],
 
-  // --- Progress Events ---
-  first_room_complete: [
-    { en: "Your first room! This is just the beginning.", vi: "Phòng đầu tiên! Đây mới chỉ là khởi đầu.", tone: 'celebratory', emotion: 'excited' },
-    { en: "You've started your English journey. I'm proud.", vi: "Bạn đã bắt đầu hành trình tiếng Anh. Mình tự hào.", tone: 'celebratory', emotion: 'proud' },
+  // --- User States ---
+  user_confused: [
+    { id: 'uc_1', event: 'user_confused', emotion: 'calm_firm', text: { en: "Confused? That's okay. Let's break this down.", vi: "Bối rối? Không sao. Hãy chia nhỏ ra." } },
+    { id: 'uc_2', event: 'user_confused', emotion: 'calm_firm', text: { en: "Let me explain that differently.", vi: "Để mình giải thích khác đi." } },
   ],
-  level_up: [
-    { en: "Level up! Your hard work is paying off.", vi: "Lên level! Công sức của bạn đang được đền đáp.", tone: 'celebratory', emotion: 'excited' },
-    { en: "You've grown! Ready for new challenges.", vi: "Bạn đã phát triển! Sẵn sàng cho thử thách mới.", tone: 'encouraging', emotion: 'proud' },
+  user_low_energy: [
+    { id: 'ule_1', event: 'user_low_energy', emotion: 'reassuring', text: { en: "Low energy today? Even small steps count.", vi: "Hôm nay mệt? Bước nhỏ vẫn có giá trị." } },
+    { id: 'ule_2', event: 'user_low_energy', emotion: 'reassuring', text: { en: "Take it easy. Learning is a marathon.", vi: "Nhẹ nhàng thôi. Học là chặng đường dài." } },
   ],
-  milestone_10_rooms: [
-    { en: "10 rooms completed! You're building real skill.", vi: "10 phòng hoàn thành! Bạn đang xây dựng kỹ năng thực.", tone: 'celebratory', emotion: 'proud' },
-  ],
-  milestone_50_rooms: [
-    { en: "50 rooms! Your dedication is remarkable.", vi: "50 phòng! Sự cống hiến của bạn đáng ngưỡng mộ.", tone: 'celebratory', emotion: 'excited' },
-  ],
-
-  // --- Mood Events ---
   user_tired: [
-    { en: "It's okay to rest. Even small steps count.", vi: "Nghỉ ngơi cũng được. Bước nhỏ vẫn có giá trị.", tone: 'gentle', emotion: 'calm' },
-    { en: "Take it easy today. Learning is a marathon.", vi: "Hôm nay nhẹ nhàng thôi. Học là chặng đường dài.", tone: 'warm', emotion: 'calm' },
+    { id: 'ut_1', event: 'user_tired', emotion: 'reassuring', text: { en: "It's okay to rest. Even small steps count.", vi: "Nghỉ ngơi cũng được. Bước nhỏ vẫn có giá trị." } },
+    { id: 'ut_2', event: 'user_tired', emotion: 'reassuring', text: { en: "Your effort today matters, however small.", vi: "Nỗ lực hôm nay quan trọng, dù nhỏ thế nào." } },
   ],
   user_struggling: [
-    { en: "Struggling means you're learning. Keep going.", vi: "Khó khăn nghĩa là bạn đang học. Tiếp tục.", tone: 'encouraging' },
-    { en: "Every expert was once a beginner. You've got this.", vi: "Chuyên gia nào cũng từng là người mới. Bạn làm được.", tone: 'warm' },
+    { id: 'us_1', event: 'user_struggling', emotion: 'reassuring', text: { en: "Struggling means you're learning. Keep going.", vi: "Khó khăn nghĩa là bạn đang học. Tiếp tục." } },
+    { id: 'us_2', event: 'user_struggling', emotion: 'reassuring', text: { en: "Every expert was once a beginner. You've got this.", vi: "Chuyên gia nào cũng từng là người mới. Bạn làm được." } },
   ],
   user_excited: [
-    { en: "Your enthusiasm is wonderful! Let's channel it.", vi: "Sự nhiệt tình của bạn tuyệt vời! Hãy tận dụng nó.", tone: 'encouraging', emotion: 'excited' },
+    { id: 'ue_1', event: 'user_excited', emotion: 'playful', text: { en: "Your enthusiasm is wonderful! Let's channel it.", vi: "Sự nhiệt tình của bạn tuyệt vời! Hãy tận dụng nó." } },
+    { id: 'ue_2', event: 'user_excited', emotion: 'playful', text: { en: "I love your energy! Let's make progress together.", vi: "Mình thích năng lượng của bạn! Cùng tiến bộ nào." } },
+  ],
+
+  // --- Progress Milestones ---
+  level_up: [
+    { id: 'lu_1', event: 'level_up', emotion: 'excited_proud', text: { en: "Level up! Your hard work is paying off.", vi: "Lên level! Công sức của bạn đang được đền đáp." } },
+    { id: 'lu_2', event: 'level_up', emotion: 'excited_proud', text: { en: "You've grown! Ready for new challenges.", vi: "Bạn đã phát triển! Sẵn sàng cho thử thách mới." } },
+  ],
+  first_room_complete: [
+    { id: 'frc_1', event: 'first_room_complete', emotion: 'excited_proud', text: { en: "Your first room! This is just the beginning.", vi: "Phòng đầu tiên! Đây mới chỉ là khởi đầu." } },
+    { id: 'frc_2', event: 'first_room_complete', emotion: 'excited_proud', text: { en: "You've started your English journey. I'm proud.", vi: "Bạn đã bắt đầu hành trình tiếng Anh. Mình tự hào." } },
+  ],
+  milestone_10_rooms: [
+    { id: 'm10_1', event: 'milestone_10_rooms', emotion: 'excited_proud', text: { en: "10 rooms completed! You're building real skill.", vi: "10 phòng hoàn thành! Bạn đang xây dựng kỹ năng thực." } },
+  ],
+  milestone_50_rooms: [
+    { id: 'm50_1', event: 'milestone_50_rooms', emotion: 'excited_proud', text: { en: "50 rooms! Your dedication is remarkable.", vi: "50 phòng! Sự cống hiến của bạn đáng ngưỡng mộ." } },
+  ],
+  milestone_100_rooms: [
+    { id: 'm100_1', event: 'milestone_100_rooms', emotion: 'excited_proud', text: { en: "100 rooms! You've achieved something incredible.", vi: "100 phòng! Bạn đã đạt được điều phi thường." } },
   ],
 
   // --- Session Events ---
   session_start_morning: [
-    { en: "Good morning! Fresh mind, fresh learning.", vi: "Chào buổi sáng! Trí óc tươi mới, học hỏi mới.", tone: 'warm', emotion: 'happy' },
-    { en: "Morning practice is powerful. Let's begin.", vi: "Luyện tập buổi sáng rất mạnh mẽ. Bắt đầu thôi.", tone: 'encouraging' },
+    { id: 'ssm_1', event: 'session_start_morning', emotion: 'warm_gentle', text: { en: "Good morning! Fresh mind, fresh learning.", vi: "Chào buổi sáng! Trí óc tươi mới, học hỏi mới." } },
+    { id: 'ssm_2', event: 'session_start_morning', emotion: 'playful', text: { en: "Morning practice is powerful. Let's begin.", vi: "Luyện tập buổi sáng rất mạnh mẽ. Bắt đầu thôi." } },
   ],
   session_start_evening: [
-    { en: "Evening study time. Let's wind down with English.", vi: "Thời gian học buổi tối. Thư giãn với tiếng Anh.", tone: 'gentle' },
-    { en: "End your day with a little learning. You deserve it.", vi: "Kết thúc ngày với chút học hỏi. Bạn xứng đáng.", tone: 'warm' },
+    { id: 'sse_1', event: 'session_start_evening', emotion: 'warm_gentle', text: { en: "Evening study time. Let's wind down with English.", vi: "Thời gian học buổi tối. Thư giãn với tiếng Anh." } },
+    { id: 'sse_2', event: 'session_start_evening', emotion: 'warm_gentle', text: { en: "End your day with a little learning. You deserve it.", vi: "Kết thúc ngày với chút học hỏi. Bạn xứng đáng." } },
   ],
   session_end: [
-    { en: "Great session! Rest well and come back soon.", vi: "Buổi học tốt! Nghỉ ngơi và quay lại sớm nhé.", tone: 'warm', emotion: 'happy' },
-    { en: "You did wonderful today. See you next time.", vi: "Bạn làm tuyệt vời hôm nay. Hẹn gặp lại.", tone: 'encouraging', emotion: 'proud' },
+    { id: 'se_1', event: 'session_end', emotion: 'warm_gentle', text: { en: "Great session! Rest well and come back soon.", vi: "Buổi học tốt! Nghỉ ngơi và quay lại sớm nhé." } },
+    { id: 'se_2', event: 'session_end', emotion: 'excited_proud', text: { en: "You did wonderful today. See you next time.", vi: "Bạn làm tuyệt vời hôm nay. Hẹn gặp lại." } },
   ],
 
-  // --- CEFR-Specific Intros ---
-  a1_intro: [
-    { en: "A1 - Your first steps in English. We start simple.", vi: "A1 - Bước đầu tiên trong tiếng Anh. Ta bắt đầu đơn giản.", tone: 'gentle' },
-    { en: "Welcome to A1! Basic phrases, big progress.", vi: "Chào mừng đến A1! Cụm từ cơ bản, tiến bộ lớn.", tone: 'encouraging' },
+  // --- CEFR Level Intros ---
+  cefr_a1_intro: [
+    { id: 'ca1_1', event: 'cefr_a1_intro', emotion: 'warm_gentle', text: { en: "A1 - Your first steps in English. We start simple.", vi: "A1 - Bước đầu tiên trong tiếng Anh. Ta bắt đầu đơn giản." } },
+    { id: 'ca1_2', event: 'cefr_a1_intro', emotion: 'playful', text: { en: "Welcome to A1! Basic phrases, big progress.", vi: "Chào mừng đến A1! Cụm từ cơ bản, tiến bộ lớn." } },
   ],
-  a2_intro: [
-    { en: "A2 - Building on basics. You're growing!", vi: "A2 - Xây dựng từ nền tảng. Bạn đang phát triển!", tone: 'encouraging' },
-    { en: "Welcome to A2! More vocabulary, more confidence.", vi: "Chào mừng đến A2! Nhiều từ vựng hơn, tự tin hơn.", tone: 'warm' },
+  cefr_a2_intro: [
+    { id: 'ca2_1', event: 'cefr_a2_intro', emotion: 'playful', text: { en: "A2 - Building on basics. You're growing!", vi: "A2 - Xây dựng từ nền tảng. Bạn đang phát triển!" } },
+    { id: 'ca2_2', event: 'cefr_a2_intro', emotion: 'warm_gentle', text: { en: "Welcome to A2! More vocabulary, more confidence.", vi: "Chào mừng đến A2! Nhiều từ vựng hơn, tự tin hơn." } },
   ],
-  b1_intro: [
-    { en: "B1 - You can express yourself now. Let's deepen.", vi: "B1 - Bạn có thể diễn đạt rồi. Hãy đào sâu hơn.", tone: 'encouraging' },
-    { en: "Welcome to B1! Real conversations await.", vi: "Chào mừng đến B1! Hội thoại thực sự đang chờ.", tone: 'warm' },
+  cefr_b1_intro: [
+    { id: 'cb1_1', event: 'cefr_b1_intro', emotion: 'playful', text: { en: "B1 - You can express yourself now. Let's deepen.", vi: "B1 - Bạn có thể diễn đạt rồi. Hãy đào sâu hơn." } },
+    { id: 'cb1_2', event: 'cefr_b1_intro', emotion: 'warm_gentle', text: { en: "Welcome to B1! Real conversations await.", vi: "Chào mừng đến B1! Hội thoại thực sự đang chờ." } },
   ],
-  b2_intro: [
-    { en: "B2 - You're becoming fluent. Let's polish.", vi: "B2 - Bạn đang trở nên lưu loát. Hãy trau dồi.", tone: 'encouraging' },
-    { en: "Welcome to B2! Complex ideas, natural speech.", vi: "Chào mừng đến B2! Ý tưởng phức tạp, lời nói tự nhiên.", tone: 'focused' },
+  cefr_b2_intro: [
+    { id: 'cb2_1', event: 'cefr_b2_intro', emotion: 'playful', text: { en: "B2 - You're becoming fluent. Let's polish.", vi: "B2 - Bạn đang trở nên lưu loát. Hãy trau dồi." } },
+    { id: 'cb2_2', event: 'cefr_b2_intro', emotion: 'calm_firm', text: { en: "Welcome to B2! Complex ideas, natural speech.", vi: "Chào mừng đến B2! Ý tưởng phức tạp, lời nói tự nhiên." } },
   ],
-  c1_intro: [
-    { en: "C1 - Near mastery. Let's refine your English.", vi: "C1 - Gần thành thạo. Hãy tinh chỉnh tiếng Anh.", tone: 'focused' },
-    { en: "Welcome to C1! Nuance and precision ahead.", vi: "Chào mừng đến C1! Sắc thái và chính xác phía trước.", tone: 'encouraging' },
+  cefr_c1_intro: [
+    { id: 'cc1_1', event: 'cefr_c1_intro', emotion: 'calm_firm', text: { en: "C1 - Near mastery. Let's refine your English.", vi: "C1 - Gần thành thạo. Hãy tinh chỉnh tiếng Anh." } },
+    { id: 'cc1_2', event: 'cefr_c1_intro', emotion: 'playful', text: { en: "Welcome to C1! Nuance and precision ahead.", vi: "Chào mừng đến C1! Sắc thái và chính xác phía trước." } },
+  ],
+
+  // --- Entry-level Events ---
+  entry_complete: [
+    { id: 'ec_1', event: 'entry_complete', emotion: 'warm_gentle', text: { en: "Well done! Every word learned is progress.", vi: "Làm tốt lắm! Mỗi từ học được là tiến bộ." } },
+    { id: 'ec_2', event: 'entry_complete', emotion: 'warm_gentle', text: { en: "You're building your English, one step at a time.", vi: "Bạn đang xây dựng tiếng Anh, từng bước một." } },
+    { id: 'ec_3', event: 'entry_complete', emotion: 'playful', text: { en: "Good progress! Try using this phrase today.", vi: "Tiến bộ tốt! Thử dùng cụm từ này hôm nay nhé." } },
+  ],
+  pronunciation_good: [
+    { id: 'pg_1', event: 'pronunciation_good', emotion: 'excited_proud', text: { en: "Your pronunciation is clear! Well done.", vi: "Phát âm của bạn rõ ràng! Làm tốt lắm." } },
+    { id: 'pg_2', event: 'pronunciation_good', emotion: 'playful', text: { en: "The sounds are coming naturally now.", vi: "Âm thanh đang đến tự nhiên rồi." } },
+  ],
+  pronunciation_try_again: [
+    { id: 'pta_1', event: 'pronunciation_try_again', emotion: 'warm_gentle', text: { en: "Let's try that sound again. Listen carefully.", vi: "Hãy thử âm đó lại. Lắng nghe cẩn thận." } },
+    { id: 'pta_2', event: 'pronunciation_try_again', emotion: 'playful', text: { en: "Focus on the ending sounds. You're close!", vi: "Tập trung vào âm cuối. Bạn gần được rồi!" } },
   ],
 };
+
+// ============================================
+// CEFR LEVEL UTILITIES
+// ============================================
+
+const CEFR_ORDER = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+
+function getCefrIndex(level: string): number {
+  return CEFR_ORDER.indexOf(level.toUpperCase());
+}
+
+function isLevelInRange(level: string, min?: string, max?: string): boolean {
+  const levelIdx = getCefrIndex(level);
+  if (levelIdx === -1) return true; // Unknown level, allow all
+
+  if (min) {
+    const minIdx = getCefrIndex(min);
+    if (minIdx !== -1 && levelIdx < minIdx) return false;
+  }
+
+  if (max) {
+    const maxIdx = getCefrIndex(max);
+    if (maxIdx !== -1 && levelIdx > maxIdx) return false;
+  }
+
+  return true;
+}
 
 // ============================================
 // CORE FUNCTIONS
@@ -229,33 +407,45 @@ const MESSAGES_BY_EVENT: Record<TeacherEvent, TeacherMessage[]> = {
 
 /**
  * Get a Mercy message for a specific event.
- * Returns a random variation from the available messages.
+ * Filters by CEFR level if provided and selects randomly.
  */
 export function getMercyMessage(
   event: TeacherEvent,
   options: GetMessageOptions = {}
-): TeacherMessage {
-  const messages = MESSAGES_BY_EVENT[event];
+): MercyMessage {
+  const messages = MESSAGES_BY_EVENT[event] || [];
   
-  if (!messages || messages.length === 0) {
+  if (messages.length === 0) {
     // Fallback message
     return {
-      en: "I'm here with you.",
-      vi: "Mình ở đây với bạn.",
-      tone: 'gentle',
-      emotion: 'calm'
+      id: 'fallback',
+      event,
+      emotion: 'warm_gentle',
+      text: {
+        en: "I'm here with you.",
+        vi: "Mình ở đây với bạn.",
+      },
     };
   }
 
+  // Filter by CEFR level if provided
+  let filtered = messages;
+  if (options.cefrLevel) {
+    filtered = messages.filter(m => isLevelInRange(options.cefrLevel!, m.cefrMin, m.cefrMax));
+    if (filtered.length === 0) filtered = messages; // Fallback to all if none match
+  }
+
   // Pick random message
-  let message = messages[Math.floor(Math.random() * messages.length)];
+  let message = filtered[Math.floor(Math.random() * filtered.length)];
 
   // Apply username substitution
   if (options.username) {
     message = {
       ...message,
-      en: message.en.replace(/\{\{name\}\}/g, options.username),
-      vi: message.vi.replace(/\{\{name\}\}/g, options.username),
+      text: {
+        en: message.text.en.replace(/\{\{name\}\}/g, options.username),
+        vi: message.text.vi.replace(/\{\{name\}\}/g, options.username),
+      },
     };
   }
 
@@ -268,19 +458,37 @@ export function getMercyMessage(
 }
 
 /**
+ * Format a Mercy message for display based on language mode.
+ */
+export function formatMercyMessage(
+  message: MercyMessage,
+  mode: DisplayMode = 'dual'
+): string {
+  switch (mode) {
+    case 'en':
+      return message.text.en;
+    case 'vi':
+      return message.text.vi;
+    case 'dual':
+    default:
+      return `${message.text.en}\n${message.text.vi}`;
+  }
+}
+
+/**
  * Get all messages for an event (for testing/validation)
  */
-export function getAllMessagesForEvent(event: TeacherEvent): TeacherMessage[] {
+export function getAllMessagesForEvent(event: TeacherEvent): MercyMessage[] {
   return MESSAGES_BY_EVENT[event] || [];
 }
 
 /**
- * Get message count for inventory
+ * Get message count inventory
  */
 export function getMessageInventory(): { event: TeacherEvent; count: number }[] {
   return Object.entries(MESSAGES_BY_EVENT).map(([event, messages]) => ({
     event: event as TeacherEvent,
-    count: messages.length
+    count: messages.length,
   }));
 }
 
@@ -292,70 +500,41 @@ export function getTotalMessageCount(): number {
 }
 
 /**
- * Validate all messages are within length limit
- */
-export function validateMessages(): { valid: boolean; errors: string[] } {
-  const MAX_LENGTH = 160;
-  const errors: string[] = [];
-
-  for (const [event, messages] of Object.entries(MESSAGES_BY_EVENT)) {
-    for (const msg of messages) {
-      if (msg.en.length > MAX_LENGTH) {
-        errors.push(`${event}: EN too long (${msg.en.length}): "${msg.en.slice(0, 50)}..."`);
-      }
-      if (msg.vi.length > MAX_LENGTH) {
-        errors.push(`${event}: VI too long (${msg.vi.length}): "${msg.vi.slice(0, 50)}..."`);
-      }
-    }
-  }
-
-  return { valid: errors.length === 0, errors };
-}
-
-/**
  * Get CEFR intro message based on level
  */
-export function getCefrIntroMessage(level: string): TeacherMessage {
+export function getCefrIntroMessage(level: string): MercyMessage {
   const levelUpper = level.toUpperCase();
   const eventMap: Record<string, TeacherEvent> = {
-    'A1': 'a1_intro',
-    'A2': 'a2_intro',
-    'B1': 'b1_intro',
-    'B2': 'b2_intro',
-    'C1': 'c1_intro',
+    'A1': 'cefr_a1_intro',
+    'A2': 'cefr_a2_intro',
+    'B1': 'cefr_b1_intro',
+    'B2': 'cefr_b2_intro',
+    'C1': 'cefr_c1_intro',
   };
 
   const event = eventMap[levelUpper];
   if (event) {
     return getMercyMessage(event);
   }
-
-  // Default fallback
   return getMercyMessage('room_start');
 }
 
 /**
  * Get streak message based on days
  */
-export function getStreakMessage(days: number): TeacherMessage | null {
+export function getStreakMessage(days: number): MercyMessage | null {
   if (days === 3) return getMercyMessage('streak_day_3');
   if (days === 7) return getMercyMessage('streak_day_7');
   if (days === 14) return getMercyMessage('streak_day_14');
-  if (days === 30) return getMercyMessage('streak_day_30');
+  if (days >= 30) return getMercyMessage('streak_day_30');
   return null;
 }
 
 /**
- * Get break message based on days away
+ * Get comeback message based on days away
  */
-export function getBreakMessage(daysAway: number): TeacherMessage {
-  if (daysAway >= 7) return getMercyMessage('streak_break_7_days');
-  if (daysAway >= 3) return getMercyMessage('streak_break_3_days');
-  return getMercyMessage('streak_return');
+export function getComebackMessage(daysAway: number): MercyMessage {
+  if (daysAway >= 7) return getMercyMessage('streak_comeback_long');
+  if (daysAway >= 1) return getMercyMessage('streak_comeback_short');
+  return getMercyMessage('app_open_returning');
 }
-
-// ============================================
-// EXPORTS
-// ============================================
-
-export { MESSAGES_BY_EVENT };
