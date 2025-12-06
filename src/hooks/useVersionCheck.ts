@@ -57,7 +57,8 @@ export function useVersionCheck() {
       // Compare versions
       if (serverVersion.version !== storedVersion.version || 
           serverVersion.hash !== storedVersion.hash) {
-        console.log('[version] Update available:', storedVersion.version, '->', serverVersion.version);
+        console.log('[version] New version detected:', serverVersion.version, 'from', storedVersion.version);
+        console.log('[version] Server semver:', serverVersion.semver, '| Stored semver:', storedVersion.semver);
         setUpdateAvailable(true);
         
         // Set blocked flag
