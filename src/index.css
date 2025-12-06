@@ -673,6 +673,57 @@ All colors MUST be HSL.
   animation: mercy-breathe 2s ease-in-out infinite;
 }
 
+/* ============================================
+   ADMIN THEME SYSTEM
+   Separate from public app, WCAG AA contrast
+   ============================================ */
+
+/* Admin Light Mode */
+.admin-light {
+  --admin-bg: 0 0% 96%;
+  --admin-card-bg: 0 0% 100%;
+  --admin-card-border: 0 0% 85%;
+  --admin-text: 0 0% 10%;
+  --admin-text-muted: 0 0% 40%;
+  --admin-heading: 0 0% 5%;
+  --admin-accent: 220 70% 50%;
+  --admin-accent-foreground: 0 0% 100%;
+}
+
+/* Admin Dark Mode */
+.admin-dark {
+  --admin-bg: 220 15% 13%;
+  --admin-card-bg: 220 15% 20%;
+  --admin-card-border: 220 15% 30%;
+  --admin-text: 0 0% 95%;
+  --admin-text-muted: 0 0% 70%;
+  --admin-heading: 0 0% 100%;
+  --admin-accent: 220 80% 65%;
+  --admin-accent-foreground: 0 0% 10%;
+}
+
+/* Admin-specific utility classes */
+.admin-bg {
+  background-color: hsl(var(--admin-bg));
+}
+
+.admin-card {
+  background-color: hsl(var(--admin-card-bg));
+  border: 1px solid hsl(var(--admin-card-border));
+}
+
+.admin-text {
+  color: hsl(var(--admin-text));
+}
+
+.admin-text-muted {
+  color: hsl(var(--admin-text-muted));
+}
+
+.admin-heading {
+  color: hsl(var(--admin-heading));
+}
+
 @layer base {
   * {
     @apply border-border;

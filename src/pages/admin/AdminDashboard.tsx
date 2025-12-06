@@ -92,72 +92,72 @@ const AdminDashboard = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen admin-bg">
       <ColorfulMercyBladeHeader subtitle="Admin Dashboard" />
       <div className="container mx-auto px-4 py-8 max-w-7xl">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-2">Admin Dashboard</h1>
-          <p className="text-muted-foreground">System overview and quick actions</p>
+          <h1 className="text-4xl font-bold mb-2 admin-heading">Admin Dashboard</h1>
+          <p className="admin-text-muted">System overview and quick actions</p>
         </div>
 
         {/* Quick Stats */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          <Card className="bg-card border border-border">
+          <Card className="admin-card">
             <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-medium flex items-center gap-2">
+              <CardTitle className="text-sm font-medium flex items-center gap-2 admin-text">
                 <Users className="h-4 w-4" />
                 Total Users
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">—</div>
-              <p className="text-xs text-muted-foreground mt-1">
+              <div className="text-2xl font-bold admin-heading">—</div>
+              <p className="text-xs admin-text-muted mt-1">
                 Loading...
               </p>
             </CardContent>
           </Card>
 
-          <Card className="bg-card border border-border">
+          <Card className="admin-card">
             <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-medium flex items-center gap-2">
+              <CardTitle className="text-sm font-medium flex items-center gap-2 admin-text">
                 <Activity className="h-4 w-4" />
                 Active Today
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">—</div>
-              <p className="text-xs text-muted-foreground mt-1">
+              <div className="text-2xl font-bold admin-heading">—</div>
+              <p className="text-xs admin-text-muted mt-1">
                 Loading...
               </p>
             </CardContent>
           </Card>
 
-          <Card className="bg-card border border-border">
+          <Card className="admin-card">
             <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-medium flex items-center gap-2">
+              <CardTitle className="text-sm font-medium flex items-center gap-2 admin-text">
                 <Database className="h-4 w-4" />
                 Total Rooms
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">—</div>
-              <p className="text-xs text-muted-foreground mt-1">
+              <div className="text-2xl font-bold admin-heading">—</div>
+              <p className="text-xs admin-text-muted mt-1">
                 Loading...
               </p>
             </CardContent>
           </Card>
 
-          <Card className="bg-card border border-border">
+          <Card className="admin-card">
             <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-medium flex items-center gap-2">
+              <CardTitle className="text-sm font-medium flex items-center gap-2 admin-text">
                 <DollarSign className="h-4 w-4" />
                 Revenue (Month)
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">—</div>
-              <p className="text-xs text-muted-foreground mt-1">
+              <div className="text-2xl font-bold admin-heading">—</div>
+              <p className="text-xs admin-text-muted mt-1">
                 Loading...
               </p>
             </CardContent>
@@ -166,22 +166,22 @@ const AdminDashboard = () => {
 
         {/* Quick Actions */}
         <div>
-          <h2 className="text-2xl font-bold mb-4">Quick Actions</h2>
+          <h2 className="text-2xl font-bold mb-4 admin-heading">Quick Actions</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {quickActions.map((action) => {
               const Icon = action.icon;
               return (
                 <Card 
                   key={action.path} 
-                  className="bg-card border border-border hover:border-primary/50 transition-colors cursor-pointer"
+                  className="admin-card hover:border-primary/50 transition-colors cursor-pointer"
                   onClick={() => navigate(action.path)}
                 >
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-2 text-lg">
+                    <CardTitle className="flex items-center gap-2 text-lg admin-text">
                       <Icon className="h-5 w-5" />
                       {action.title}
                     </CardTitle>
-                    <CardDescription>{action.description}</CardDescription>
+                    <CardDescription className="admin-text-muted">{action.description}</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <Button 
