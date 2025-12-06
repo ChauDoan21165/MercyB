@@ -1,0 +1,185 @@
+import { useState } from "react";
+import { Gift, Loader2, X } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
+
+interface GiftCodeModalProps {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  targetTier?: string;
+  onSuccess?: (tier: string) => void;
+}
+
+export function GiftCodeModal({ 
+  open, 
+  onOpenChange, 
+  targetTier,
+  onSuccess 
+}: GiftCodeModalProps) {
+  const [code, setCode] = useState("");
+  const [isRedeeming, setIsRedeeming] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const { toast } = useToast();
+
+  const handleRedeem = async () => {
+    if (!code.trim()) {
+      setError("Please enter a gift code / Vui lòng nhập mã quà tặng");
+      return;
+    }
+
+    setIsRedeeming(true);
+    setError(null);
+
+    try {
+      console.log('[redeem-gift-code] Attempting to redeem:', code.trim());
+      
+      const { data, error: invokeError } = await supabase.functions.invoke('redeem-gift-code', {
+        body: { code: code.trim() },
+      });
+
+      console.log('[redeem-gift-code] Response:', { data, invokeError });
+
+      if (invokeError) {
+        console.error('[redeem-gift-code] Invoke error:', invokeError);
+        setError(invokeError.message || "Failed to redeem code");
+        return;
+      }
+
+      if (data?.error) {
+        console.error('[redeem-gift-code] API error:', data.error);
+        setError(data.error);
+        return;
+      }
+
+      if (data?.success) {
+        toast({
+          title: "🎁 Access Activated! / Đã Kích Hoạt!",
+          description: `${data.tier} access granted for 1 year / Quyền truy cập ${data.tier} đã được mở trong 1 năm`,
+        });
+
+        // Clear input and close modal
+        setCode("");
+        onOpenChange(false);
+
+        // Refresh session to update access
+        await supabase.auth.refreshSession();
+
+        // Callback for navigation/refresh
+        if (onSuccess) {
+          onSuccess(data.tier);
+        } else {
+          // Default: reload to refresh all access states
+          window.location.reload();
+        }
+      }
+    } catch (err: any) {
+      console.error('[redeem-gift-code] Unexpected error:', err);
+      setError(err.message || "An unexpected error occurred");
+    } finally {
+      setIsRedeeming(false);
+    }
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && !isRedeeming) {
+      handleRedeem();
+    }
+  };
+
+  return (
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="sm:max-w-md">
+        <DialogHeader>
+          <DialogTitle className="flex items-center gap-2">
+            <Gift className="h-5 w-5 text-primary" />
+            Enter Gift Code / Nhập Mã Quà Tặng
+          </DialogTitle>
+          <DialogDescription>
+            {targetTier 
+              ? `Enter your gift code to unlock ${targetTier} access`
+              : "Enter your gift code to unlock VIP access"
+            }
+            <br />
+            <span className="text-muted-foreground">
+              Nhập mã quà tặng để mở khóa quyền truy cập
+            </span>
+          </DialogDescription>
+        </DialogHeader>
+
+        <div className="space-y-4 py-4">
+          <div className="space-y-2">
+            <Label htmlFor="gift-code">Gift Code / Mã quà tặng</Label>
+            <Input
+              id="gift-code"
+              placeholder="VIP3-XXXX-XXXX-XXXX"
+              value={code}
+              onChange={(e) => {
+                setCode(e.target.value.toUpperCase());
+                setError(null);
+              }}
+              onKeyPress={handleKeyPress}
+              disabled={isRedeeming}
+              className="font-mono text-center text-lg"
+            />
+            <p className="text-xs text-muted-foreground">
+              Format: VIP1-XXXX-XXXX-XXXX through VIP9-XXXX-XXXX-XXXX
+            </p>
+          </div>
+
+          {error && (
+            <div className="bg-destructive/10 text-destructive text-sm p-3 rounded-md">
+              {error}
+            </div>
+          )}
+
+          <div className="flex gap-2">
+            <Button
+              onClick={handleRedeem}
+              disabled={isRedeeming || !code.trim()}
+              className="flex-1"
+            >
+              {isRedeeming ? (
+                <>
+                  <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                  Redeeming...
+                </>
+              ) : (
+                <>
+                  <Gift className="h-4 w-4 mr-2" />
+                  Redeem / Kích hoạt
+                </>
+              )}
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() => onOpenChange(false)}
+              disabled={isRedeeming}
+            >
+              Cancel
+            </Button>
+          </div>
+
+          <div className="bg-muted/50 rounded-lg p-3 text-xs text-muted-foreground">
+            <p className="font-medium mb-1">How it works:</p>
+            <ul className="space-y-1 list-disc list-inside">
+              <li>Enter your gift code above</li>
+              <li>Click "Redeem" to activate</li>
+              <li>VIP access is granted for 1 year</li>
+              <li>Each code can only be used once</li>
+            </ul>
+          </div>
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+}
