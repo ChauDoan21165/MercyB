@@ -45,7 +45,7 @@ export function MbThemeProvider({ children }: { children: ReactNode }) {
     applyThemeAttribute(next);
   };
 
-  const toggle = () => setMode(mode === "color" ? "bw" : "color");
+  const toggle = () => setMode(prev => (prev === "color" ? "bw" : "color"));
 
   const value: MbThemeContextValue = { mode, toggle, setMode };
 

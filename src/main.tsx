@@ -1,7 +1,6 @@
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
-import { ColorModeProvider } from "@/lib/color-mode";
 import { MercyHostProvider } from "@/components/mercy/MercyHostProvider";
 
 // Initialize session manager for auto-renewal
@@ -16,9 +15,7 @@ if (import.meta.env.DEV) {
 }
 
 createRoot(document.getElementById("root")!).render(
-  <ColorModeProvider>
-    <MercyHostProvider>
-      <App />
-    </MercyHostProvider>
-  </ColorModeProvider>
+  <MercyHostProvider>
+    <App />
+  </MercyHostProvider>
 );
