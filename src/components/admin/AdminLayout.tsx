@@ -27,14 +27,14 @@ export const AdminLayout = ({ children }: AdminLayoutProps) => {
   return (
     <AdminThemeProvider>
       <SidebarProvider defaultOpen={true}>
-      <div className="min-h-screen flex w-full bg-white">
+      <div className="min-h-screen flex w-full bg-[hsl(var(--admin-bg))] text-[hsl(var(--admin-text))]">
         <AdminSidebar />
         
         <div className="flex-1 flex flex-col">
           {/* Header with breadcrumbs and actions */}
-          <header className="h-14 border-b-2 border-black flex items-center justify-between px-4 sticky top-0 bg-white z-10">
+          <header className="h-14 border-b border-[hsl(var(--admin-card-border))] flex items-center justify-between px-4 sticky top-0 bg-[hsl(var(--admin-card-bg))] z-10">
             <div className="flex items-center gap-4">
-              <SidebarTrigger />
+              <SidebarTrigger className="text-[hsl(var(--admin-text))]" />
               <AdminBreadcrumbs />
             </div>
             
@@ -44,7 +44,7 @@ export const AdminLayout = ({ children }: AdminLayoutProps) => {
                 variant="outline"
                 size="sm"
                 onClick={() => window.location.reload()}
-                className="gap-2 border-black text-black hover:bg-gray-100"
+                className="gap-2 border-[hsl(var(--admin-card-border))] text-[hsl(var(--admin-text))] hover:bg-[hsl(var(--admin-bg))]"
               >
                 <RefreshCw className="h-4 w-4" />
                 Refresh
@@ -53,7 +53,7 @@ export const AdminLayout = ({ children }: AdminLayoutProps) => {
                 variant="outline"
                 size="sm"
                 onClick={() => navigate("/")}
-                className="gap-2 border-black text-black hover:bg-gray-100"
+                className="gap-2 border-[hsl(var(--admin-card-border))] text-[hsl(var(--admin-text))] hover:bg-[hsl(var(--admin-bg))]"
               >
                 <ArrowLeft className="h-4 w-4" />
                 Back to App
@@ -62,7 +62,7 @@ export const AdminLayout = ({ children }: AdminLayoutProps) => {
           </header>
 
           {/* Main content area */}
-          <main className="flex-1 p-6 bg-white overflow-auto">
+          <main className="flex-1 p-6 bg-[hsl(var(--admin-bg))] overflow-auto">
             {children}
           </main>
         </div>
