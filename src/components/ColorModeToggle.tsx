@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
-import { useColorMode } from "@/lib/color-mode";
+import { useMbTheme } from "@/hooks/useMbTheme";
 
 export function ColorModeToggle() {
-  const { mode, toggle } = useColorMode();
+  const { mode, toggle } = useMbTheme();
   const isBw = mode === "bw";
 
   return (

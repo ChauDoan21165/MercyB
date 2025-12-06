@@ -6,7 +6,7 @@
 
 import { useState, useEffect, useCallback, useMemo, createElement } from 'react';
 import { supabase } from '@/integrations/supabase/client';
-import { useColorMode } from '@/lib/color-mode';
+import { useMbTheme } from '@/hooks/useMbTheme';
 import { 
   wasGreetingShown,
   markGreetingShown,
@@ -42,7 +42,7 @@ export function useMercyHost(config: MercyHostConfig): MercyHostEngine {
   const [audioElement, setAudioElement] = useState<HTMLAudioElement | null>(null);
   const [currentAnimation, setCurrentAnimation] = useState<'halo' | 'ripple' | 'glow' | null>('halo');
   
-  const { mode } = useColorMode();
+  const { mode } = useMbTheme();
   
   // Get tier script
   const tierScript = useMemo(() => getTierScript(roomTier), [roomTier]);
