@@ -23,9 +23,23 @@ interface GiftCode {
   notes: string | null;
 }
 
+type GiftTier = 'VIP1' | 'VIP2' | 'VIP3' | 'VIP4' | 'VIP5' | 'VIP6' | 'VIP7' | 'VIP8' | 'VIP9';
+
+const TIER_COLORS: Record<GiftTier, string> = {
+  VIP1: 'bg-slate-100 text-slate-700',
+  VIP2: 'bg-blue-100 text-blue-700',
+  VIP3: 'bg-purple-100 text-purple-700',
+  VIP4: 'bg-indigo-100 text-indigo-700',
+  VIP5: 'bg-pink-100 text-pink-700',
+  VIP6: 'bg-rose-100 text-rose-700',
+  VIP7: 'bg-amber-100 text-amber-700',
+  VIP8: 'bg-emerald-100 text-emerald-700',
+  VIP9: 'bg-gradient-to-r from-yellow-200 to-amber-200 text-amber-800',
+};
+
 const AdminGiftCodes = () => {
   const navigate = useNavigate();
-  const [tier, setTier] = useState<'VIP2' | 'VIP3'>('VIP2');
+  const [tier, setTier] = useState<GiftTier>('VIP1');
   const [count, setCount] = useState(1);
   const [notes, setNotes] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
@@ -175,20 +189,27 @@ const AdminGiftCodes = () => {
                 <Gift className="w-5 h-5" />
                 Generate Gift Codes
               </CardTitle>
-              <CardDescription>
-                Create new VIP2 or VIP3 gift codes for 1-year access
+            <CardDescription>
+                Create new VIP gift codes (VIP1–VIP9) for 1-year access
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="tier">Tier</Label>
-                <Select value={tier} onValueChange={(value) => setTier(value as 'VIP2' | 'VIP3')}>
+                <Select value={tier} onValueChange={(value) => setTier(value as GiftTier)}>
                   <SelectTrigger>
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
+                    <SelectItem value="VIP1">VIP1</SelectItem>
                     <SelectItem value="VIP2">VIP2</SelectItem>
                     <SelectItem value="VIP3">VIP3</SelectItem>
+                    <SelectItem value="VIP4">VIP4</SelectItem>
+                    <SelectItem value="VIP5">VIP5</SelectItem>
+                    <SelectItem value="VIP6">VIP6</SelectItem>
+                    <SelectItem value="VIP7">VIP7</SelectItem>
+                    <SelectItem value="VIP8">VIP8</SelectItem>
+                    <SelectItem value="VIP9">VIP9</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -308,7 +329,7 @@ const AdminGiftCodes = () => {
                       <div className="text-xs space-y-1 text-muted-foreground">
                         <div className="flex items-center gap-2">
                           <span className={`px-2 py-0.5 rounded ${
-                            giftCode.tier === 'VIP3' ? 'bg-purple-100 text-purple-700' : 'bg-blue-100 text-blue-700'
+                            TIER_COLORS[giftCode.tier as GiftTier] || 'bg-gray-100 text-gray-700'
                           }`}>
                             {giftCode.tier}
                           </span>
