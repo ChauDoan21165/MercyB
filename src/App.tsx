@@ -23,6 +23,7 @@ import { DevObservabilityPanel } from "@/components/dev/DevObservabilityPanel";
 import { MercyToggle } from "@/components/companion/MercyToggle";
 // GlobalHeader removed from global render - individual pages handle their own headers
 import { GlobalNavigationBox } from "@/components/GlobalNavigationBox";
+import { AppVersionManager } from "@/components/AppVersionManager";
 import { logger } from "@/lib/logger";
 
 // Critical pages - loaded immediately
@@ -237,6 +238,7 @@ const App = () => {
                   <BrowserRouter>
                     <EnvironmentBanner />
                     <GlobalNavigationBox />
+                    <AppVersionManager />
                     
                     <PerformanceProfiler />
                     
