@@ -31,12 +31,23 @@ Deno.serve(async (req) => {
   }
 
   try {
+    const authHeader = req.headers.get('Authorization');
+    console.log('[generate-gift-code] Auth header present:', !!authHeader);
+    
+    if (!authHeader) {
+      return new Response(
+        JSON.stringify({ error: 'Missing authorization header' }),
+        { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 401 }
+      );
+    }
+
+    // Create client with user's auth for getting user info
     const supabaseClient = createClient(
       Deno.env.get('SUPABASE_URL') ?? '',
       Deno.env.get('SUPABASE_ANON_KEY') ?? '',
       {
         global: {
-          headers: { Authorization: req.headers.get('Authorization')! },
+          headers: { Authorization: authHeader },
         },
       }
     );
@@ -47,18 +58,26 @@ Deno.serve(async (req) => {
     
     if (authError || !user) {
       return new Response(
-        JSON.stringify({ error: 'Unauthorized' }),
+        JSON.stringify({ error: 'Unauthorized - invalid token' }),
         { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 401 }
       );
     }
 
-    // Check if user is admin
-    const { data: userRole } = await supabaseClient
+    // Use service role client for admin checks and inserts to bypass RLS
+    const supabaseAdmin = createClient(
+      Deno.env.get('SUPABASE_URL') ?? '',
+      Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
+    );
+
+    // Check if user is admin using service role
+    const { data: userRole, error: roleError } = await supabaseAdmin
       .from('user_roles')
       .select('role')
       .eq('user_id', user.id)
       .eq('role', 'admin')
       .single();
+
+    console.log('[generate-gift-code] Role check:', { userRole, roleError: roleError?.message });
 
     if (!userRole) {
       return new Response(
@@ -93,9 +112,9 @@ Deno.serve(async (req) => {
       let attempts = 0;
       const maxAttempts = 10;
 
-      // Try to generate a unique code
+      // Try to generate a unique code using admin client
       while (attempts < maxAttempts) {
-        const { data: existing } = await supabaseClient
+        const { data: existing } = await supabaseAdmin
           .from('gift_codes')
           .select('id')
           .eq('code', code)
@@ -114,8 +133,8 @@ Deno.serve(async (req) => {
         continue;
       }
 
-      // Insert the code
-      const { error: insertError } = await supabaseClient
+      // Insert the code using admin client
+      const { error: insertError } = await supabaseAdmin
         .from('gift_codes')
         .insert({
           code,
