@@ -11,6 +11,7 @@ import { VirtualizedRoomGrid } from '@/components/VirtualizedRoomGrid';
 import { LowDataModeToggle } from '@/components/LowDataModeToggle';
 import { useToast } from "@/hooks/use-toast";
 import { usePrefetchRooms } from "@/hooks/usePrefetchRooms";
+import { VIPLockedAccess } from "@/components/VIPLockedAccess";
 
 const RoomGridVIP1 = () => {
   const navigate = useNavigate();
@@ -43,11 +44,7 @@ const RoomGridVIP1 = () => {
   }
 
   if (!hasAccess) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-background">
-        <p className="text-muted-foreground">You don't have access to VIP1 yet.</p>
-      </div>
-    );
+    return <VIPLockedAccess tier="vip1" tierLabel="VIP1" backgroundColor="hsl(var(--page-vip1))" />;
   }
 
   return (

@@ -13,6 +13,7 @@ import { useRegistryVipRooms } from '@/hooks/useRegistryVipRooms';
 import type { RegistryRoom } from '@/hooks/useRegistryVipRooms';
 import { getLockedRoomClassNames } from '@/components/room/LockedRoomStyles';
 import { LockedBadge } from '@/components/room/LockedBadge';
+import { VIPLockedAccess } from '@/components/VIPLockedAccess';
 
 interface DomainSection {
   id: string;
@@ -97,6 +98,10 @@ const RoomsVIP9 = () => {
         </div>
       </div>
     );
+  }
+
+  if (!hasAccess) {
+    return <VIPLockedAccess tier="vip9" tierLabel="VIP9 Strategic Mastery" backgroundColor="#0f172a" />;
   }
 
   const domainIcons = {
