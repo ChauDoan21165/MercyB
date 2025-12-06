@@ -240,44 +240,110 @@ export const MESSAGES_BY_EVENT: Record<TeacherEvent, MercyMessage[]> = {
   ],
 
   // ============================================
-  // ROOM START (20 lines) - TODO: Awaiting batch from user
+  // ROOM START (20 lines) ✅ COMPLETE
   // ============================================
   room_start: [
-    { id: 'rs_1', event: 'room_start', emotion: 'warm_gentle', text: { en: "Let's learn together. No rush, no pressure.", vi: "Cùng học nhé. Không vội, không áp lực." } },
-    { id: 'rs_2', event: 'room_start', emotion: 'warm_gentle', text: { en: "Welcome to this room. Take your time.", vi: "Chào mừng đến phòng này. Từ từ thôi." } },
-    { id: 'rs_3', event: 'room_start', emotion: 'warm_gentle', text: { en: "English is a journey. Enjoy each step.", vi: "Tiếng Anh là hành trình. Tận hưởng từng bước." } },
-    { id: 'rs_4', event: 'room_start', emotion: 'warm_gentle', text: { en: "Ready when you are. Let's begin.", vi: "Sẵn sàng khi bạn sẵn sàng. Bắt đầu thôi." } },
-    { id: 'rs_5', event: 'room_start', emotion: 'playful', text: { en: "Your English adventure continues today.", vi: "Hành trình tiếng Anh tiếp tục hôm nay." } },
+    { id: 'room_start_01', event: 'room_start', emotion: 'warm_gentle', text: { en: "Let's enter this room slowly. No rush—just clarity.", vi: "Hãy vào phòng này thật chậm rãi. Không vội—chỉ cần rõ ràng." } },
+    { id: 'room_start_02', event: 'room_start', emotion: 'warm_gentle', text: { en: "Give your mind a second to settle. We begin gently.", vi: "Hãy để tâm trí bạn ổn định một chút. Chúng ta bắt đầu nhẹ nhàng." } },
+    { id: 'room_start_03', event: 'room_start', emotion: 'playful', text: { en: "Ready? Let's see how your English brain wakes up.", vi: "Sẵn sàng chưa? Xem thử bộ não tiếng Anh của bạn thức dậy thế nào nhé." } },
+    { id: 'room_start_04', event: 'room_start', emotion: 'warm_gentle', text: { en: "One small step in this room is enough.", vi: "Chỉ một bước nhỏ trong phòng này là đủ rồi." } },
+    { id: 'room_start_05', event: 'room_start', emotion: 'reassuring', text: { en: "If anything feels heavy, I'll guide you through it.", vi: "Nếu điều gì khiến bạn nặng đầu, mình sẽ dẫn bạn đi qua." } },
+    { id: 'room_start_06', event: 'room_start', emotion: 'playful', text: { en: "Let's warm your tongue up a bit before we dive in.", vi: "Hâm nóng chiếc lưỡi một chút trước khi bắt đầu nhé." } },
+    { id: 'room_start_07', event: 'room_start', emotion: 'warm_gentle', text: { en: "Focus on meaning first. The English will follow.", vi: "Hãy tập trung vào ý nghĩa trước. Tiếng Anh sẽ theo sau." } },
+    { id: 'room_start_08', event: 'room_start', emotion: 'reassuring', text: { en: "You don't need to be perfect here—just present.", vi: "Bạn không cần hoàn hảo—chỉ cần có mặt ở đây." } },
+    { id: 'room_start_09', event: 'room_start', emotion: 'warm_gentle', text: { en: "Let's take this page one breath at a time.", vi: "Hãy đi từng hơi thở một." } },
+    { id: 'room_start_10', event: 'room_start', emotion: 'playful', text: { en: "Let's stretch your listening muscles a bit.", vi: "Cùng kéo giãn cơ nghe của bạn một chút nhé." } },
+    { id: 'room_start_11', event: 'room_start', emotion: 'warm_gentle', text: { en: "A little patience here creates strong understanding later.", vi: "Một chút kiên nhẫn bây giờ sẽ tạo ra sự hiểu mạnh mẽ sau này." } },
+    { id: 'room_start_12', event: 'room_start', emotion: 'reassuring', text: { en: "If a sentence feels too long, we'll chop it together.", vi: "Nếu câu nào quá dài, mình sẽ cắt nhỏ cùng bạn." } },
+    { id: 'room_start_13', event: 'room_start', emotion: 'warm_gentle', text: { en: "You don't need to try hard—just try honestly.", vi: "Bạn không cần cố quá—chỉ cần cố thật lòng." } },
+    { id: 'room_start_14', event: 'room_start', emotion: 'playful', text: { en: "Let's test how awake your listening is today.", vi: "Xem thử khả năng nghe hôm nay tỉnh táo tới đâu nhé." } },
+    { id: 'room_start_15', event: 'room_start', emotion: 'warm_gentle', text: { en: "Kind attention is enough for this room.", vi: "Chỉ cần sự chú ý nhẹ nhàng là đủ cho phòng này." } },
+    { id: 'room_start_16', event: 'room_start', emotion: 'reassuring', text: { en: "We'll keep this simple. Simplicity builds confidence.", vi: "Chúng ta sẽ giữ mọi thứ đơn giản. Đơn giản tạo tự tin." } },
+    { id: 'room_start_17', event: 'room_start', emotion: 'warm_gentle', text: { en: "Let's get curious—not perfect.", vi: "Hãy tò mò—không cần hoàn hảo." } },
+    { id: 'room_start_18', event: 'room_start', emotion: 'playful', text: { en: "Alright, English brain—wake up!", vi: "Được rồi, bộ não tiếng Anh—thức dậy nào!" } },
+    { id: 'room_start_19', event: 'room_start', emotion: 'warm_gentle', text: { en: "You can take this at your own pace. I'm here with you.", vi: "Bạn có thể đi với nhịp độ của mình. Mình ở đây cùng bạn." } },
+    { id: 'room_start_20', event: 'room_start', emotion: 'reassuring', text: { en: "Whatever you give today is enough.", vi: "Hôm nay bạn làm được bao nhiêu cũng là đủ." } },
     // --- INSERT NEW room_start MESSAGES ABOVE THIS LINE ---
   ],
 
   // ============================================
-  // ROOM HALFWAY (20 lines) - TODO: Awaiting batch from user
+  // ROOM HALFWAY (20 lines) ✅ COMPLETE
   // ============================================
   room_halfway: [
-    { id: 'rh_1', event: 'room_halfway', emotion: 'playful', text: { en: "Halfway there! You're doing great.", vi: "Đã nửa đường! Bạn đang làm rất tốt." } },
-    { id: 'rh_2', event: 'room_halfway', emotion: 'warm_gentle', text: { en: "Keep going. You've got momentum.", vi: "Tiếp tục đi. Bạn đang có đà rồi." } },
-    { id: 'rh_3', event: 'room_halfway', emotion: 'playful', text: { en: "Nice! The second half awaits.", vi: "Hay lắm! Nửa còn lại đang chờ." } },
+    { id: 'room_half_01', event: 'room_halfway', emotion: 'warm_gentle', text: { en: "You're halfway. Let's keep the rhythm steady.", vi: "Bạn đã đi được nửa đường. Hãy giữ nhịp thật đều." } },
+    { id: 'room_half_02', event: 'room_halfway', emotion: 'excited_proud', text: { en: "Nice! You've passed the tricky parts.", vi: "Tốt lắm! Bạn đã vượt qua phần khó rồi." } },
+    { id: 'room_half_03', event: 'room_halfway', emotion: 'reassuring', text: { en: "If the middle feels messy, that's normal. Keep going.", vi: "Nếu đoạn giữa hơi rối, điều đó là bình thường. Tiếp tục nhé." } },
+    { id: 'room_half_04', event: 'room_halfway', emotion: 'warm_gentle', text: { en: "Halfway means momentum. Don't break it.", vi: "Nửa đường nghĩa là bạn đang có đà. Đừng để đà mất đi." } },
+    { id: 'room_half_05', event: 'room_halfway', emotion: 'playful', text: { en: "The finish line is flirting with you.", vi: "Vạch đích đang lấp ló trêu bạn kìa." } },
+    { id: 'room_half_06', event: 'room_halfway', emotion: 'reassuring', text: { en: "If something felt unclear, we can revisit it later.", vi: "Nếu có gì chưa rõ, lát nữa mình xem lại cũng được." } },
+    { id: 'room_half_07', event: 'room_halfway', emotion: 'warm_gentle', text: { en: "Halfway is the perfect time to breathe once.", vi: "Nửa đường là lúc tuyệt vời để hít một hơi thật nhẹ." } },
+    { id: 'room_half_08', event: 'room_halfway', emotion: 'excited_proud', text: { en: "You're doing beautifully. Let's finish strong.", vi: "Bạn đang làm rất tốt. Cùng kết thúc thật mạnh mẽ nhé." } },
+    { id: 'room_half_09', event: 'room_halfway', emotion: 'warm_gentle', text: { en: "The second half will feel smoother.", vi: "Nửa sau sẽ trôi mượt hơn." } },
+    { id: 'room_half_10', event: 'room_halfway', emotion: 'playful', text: { en: "Your brain is warmed up now. Let's glide.", vi: "Não bạn đã nóng máy rồi. Giờ lướt nhé." } },
+    { id: 'room_half_11', event: 'room_halfway', emotion: 'reassuring', text: { en: "No need to hurry. Precision grows from calm steps.", vi: "Không cần vội. Sự chính xác đến từ những bước bình tĩnh." } },
+    { id: 'room_half_12', event: 'room_halfway', emotion: 'warm_gentle', text: { en: "Look how far you've come in this room already.", vi: "Nhìn xem bạn đã đi xa thế nào trong phòng này rồi." } },
+    { id: 'room_half_13', event: 'room_halfway', emotion: 'excited_proud', text: { en: "Strong work so far. Let's keep that energy.", vi: "Bạn làm rất tốt. Giữ nguyên năng lượng đó nhé." } },
+    { id: 'room_half_14', event: 'room_halfway', emotion: 'warm_gentle', text: { en: "Small steps brought you here. Small steps will finish it.", vi: "Những bước nhỏ đã đưa bạn đến đây. Chúng cũng sẽ đưa bạn đến đích." } },
+    { id: 'room_half_15', event: 'room_halfway', emotion: 'reassuring', text: { en: "If you feel tired, we'll slow down without stopping.", vi: "Nếu bạn mệt, mình giảm tốc nhưng không dừng lại nhé." } },
+    { id: 'room_half_16', event: 'room_halfway', emotion: 'playful', text: { en: "Halfway heroes don't quit.", vi: "Anh hùng nửa đường sẽ không bỏ cuộc đâu." } },
+    { id: 'room_half_17', event: 'room_halfway', emotion: 'warm_gentle', text: { en: "You're absorbing more than you think.", vi: "Bạn đang hấp thụ nhiều hơn bạn nghĩ đấy." } },
+    { id: 'room_half_18', event: 'room_halfway', emotion: 'reassuring', text: { en: "If something felt difficult, it's passing now.", vi: "Nếu có gì khó, giờ nó đang dần qua rồi." } },
+    { id: 'room_half_19', event: 'room_halfway', emotion: 'excited_proud', text: { en: "Momentum is on your side. Keep flowing.", vi: "Đà đang đứng về phía bạn. Cứ thế mà tiếp tục nhé." } },
+    { id: 'room_half_20', event: 'room_halfway', emotion: 'warm_gentle', text: { en: "Let's finish this room with softness, not force.", vi: "Hãy hoàn thành phòng này bằng sự nhẹ nhàng, không phải gượng ép." } },
     // --- INSERT NEW room_halfway MESSAGES ABOVE THIS LINE ---
   ],
 
   // ============================================
-  // ROOM COMPLETE (20 lines) - TODO: Awaiting batch from user
+  // ROOM COMPLETE (20 lines) ✅ COMPLETE
   // ============================================
   room_complete: [
-    { id: 'rc_1', event: 'room_complete', emotion: 'excited_proud', text: { en: "Wonderful! You completed this room. Well done!", vi: "Tuyệt vời! Bạn đã hoàn thành phòng này. Làm tốt lắm!" } },
-    { id: 'rc_2', event: 'room_complete', emotion: 'excited_proud', text: { en: "Another room done. Your English grows stronger.", vi: "Thêm một phòng hoàn thành. Tiếng Anh của bạn mạnh hơn." } },
-    { id: 'rc_3', event: 'room_complete', emotion: 'excited_proud', text: { en: "You did it! Take a moment to feel proud.", vi: "Bạn làm được rồi! Hãy tự hào về bản thân." } },
-    { id: 'rc_4', event: 'room_complete', emotion: 'excited_proud', text: { en: "Room complete! Every finish line is a new starting point.", vi: "Hoàn thành phòng! Mỗi đích đến là điểm xuất phát mới." } },
+    { id: 'room_complete_01', event: 'room_complete', emotion: 'excited_proud', text: { en: "You finished the room—beautiful work. Let that sink in.", vi: "Bạn đã hoàn thành phòng này—tuyệt vời. Hãy để cảm giác ấy lan tỏa." } },
+    { id: 'room_complete_02', event: 'room_complete', emotion: 'excited_proud', text: { en: "Strong finish! Your brain just stored something new.", vi: "Kết thúc tuyệt vời! Não bạn vừa lưu thêm điều mới." } },
+    { id: 'room_complete_03', event: 'room_complete', emotion: 'warm_gentle', text: { en: "Take a breath. You did that with patience and focus.", vi: "Hít một hơi. Bạn vừa làm điều đó bằng sự kiên nhẫn và tập trung." } },
+    { id: 'room_complete_04', event: 'room_complete', emotion: 'excited_proud', text: { en: "Another brick in your English foundation—well done.", vi: "Một viên gạch nữa trong nền tảng tiếng Anh của bạn—tốt lắm." } },
+    { id: 'room_complete_05', event: 'room_complete', emotion: 'playful', text: { en: "Look at you finishing rooms like a pro.", vi: "Nhìn bạn hoàn thành phòng như dân chuyên kìa." } },
+    { id: 'room_complete_06', event: 'room_complete', emotion: 'warm_gentle', text: { en: "Let this success stay in your chest for a second.", vi: "Hãy để cảm giác thành công này ở lại trong ngực bạn một chút." } },
+    { id: 'room_complete_07', event: 'room_complete', emotion: 'excited_proud', text: { en: "Done! Your consistency is showing.", vi: "Xong rồi! Sự đều đặn của bạn đang lộ rõ." } },
+    { id: 'room_complete_08', event: 'room_complete', emotion: 'warm_gentle', text: { en: "You handled the hard parts with calm. Impressive.", vi: "Bạn đã xử lý phần khó bằng sự bình tĩnh. Ấn tượng đấy." } },
+    { id: 'room_complete_09', event: 'room_complete', emotion: 'excited_proud', text: { en: "This is real progress—felt or not.", vi: "Đây là tiến bộ thật—dù bạn có cảm thấy hay chưa." } },
+    { id: 'room_complete_10', event: 'room_complete', emotion: 'playful', text: { en: "Room demolished. Next?", vi: "Phòng này bị bạn "phá đảo" rồi. Tiếp theo chứ?" } },
+    { id: 'room_complete_11', event: 'room_complete', emotion: 'warm_gentle', text: { en: "Take a small pause. Let the learning settle.", vi: "Tạm dừng một chút. Để kiến thức thấm vào nhé." } },
+    { id: 'room_complete_12', event: 'room_complete', emotion: 'excited_proud', text: { en: "You're building something strong inside yourself.", vi: "Bạn đang xây dựng một điều mạnh mẽ bên trong mình." } },
+    { id: 'room_complete_13', event: 'room_complete', emotion: 'playful', text: { en: "You finished it smoother than you think.", vi: "Bạn hoàn thành còn mượt hơn bạn tưởng đó." } },
+    { id: 'room_complete_14', event: 'room_complete', emotion: 'warm_gentle', text: { en: "Good work. Rest your mind for a moment.", vi: "Làm tốt lắm. Cho tâm trí nghỉ một chút nhé." } },
+    { id: 'room_complete_15', event: 'room_complete', emotion: 'excited_proud', text: { en: "Victory. Quiet, but very real.", vi: "Chiến thắng. Lặng lẽ nhưng rất thật." } },
+    { id: 'room_complete_16', event: 'room_complete', emotion: 'warm_gentle', text: { en: "Your English grew a little right here.", vi: "Tiếng Anh của bạn vừa lớn thêm một chút ngay tại đây." } },
+    { id: 'room_complete_17', event: 'room_complete', emotion: 'reassuring', text: { en: "Even if it felt messy, finishing matters.", vi: "Dù có hơi rối, hoàn thành mới là điều quan trọng." } },
+    { id: 'room_complete_18', event: 'room_complete', emotion: 'excited_proud', text: { en: "Great job staying with it to the end.", vi: "Bạn đã làm rất tốt khi theo tới cuối." } },
+    { id: 'room_complete_19', event: 'room_complete', emotion: 'warm_gentle', text: { en: "Be proud of this moment. It counts.", vi: "Hãy tự hào về khoảnh khắc này. Nó rất có giá trị." } },
+    { id: 'room_complete_20', event: 'room_complete', emotion: 'playful', text: { en: "Finished! Your brain did a little dance just now.", vi: "Xong rồi! Não bạn vừa nhảy một điệu nhỏ đấy." } },
     // --- INSERT NEW room_complete MESSAGES ABOVE THIS LINE ---
   ],
 
   // ============================================
-  // SHADOW START (20 lines) - TODO: Awaiting batch from user
+  // SHADOW START (20 lines) ✅ COMPLETE
   // ============================================
   shadow_start: [
-    { id: 'ss_1', event: 'shadow_start', emotion: 'warm_gentle', text: { en: "Shadow practice begins. Listen, then repeat.", vi: "Bắt đầu luyện shadow. Nghe, rồi lặp lại." } },
-    { id: 'ss_2', event: 'shadow_start', emotion: 'warm_gentle', text: { en: "Follow the rhythm. Your voice matters.", vi: "Theo nhịp điệu. Giọng bạn quan trọng." } },
+    { id: 'shadow_start_01', event: 'shadow_start', emotion: 'warm_gentle', text: { en: "Let's warm your voice. No pressure—just echo me.", vi: "Cùng làm ấm giọng bạn nhé. Không áp lực—chỉ cần lặp theo mình." } },
+    { id: 'shadow_start_02', event: 'shadow_start', emotion: 'playful', text: { en: "Ready to let your tongue dance a bit?", vi: "Sẵn sàng cho chiếc lưỡi nhảy múa chút chưa?" } },
+    { id: 'shadow_start_03', event: 'shadow_start', emotion: 'warm_gentle', text: { en: "Shadowing works best when you relax your throat.", vi: "Shadowing hiệu quả nhất khi bạn thả lỏng cổ họng." } },
+    { id: 'shadow_start_04', event: 'shadow_start', emotion: 'calm_firm', text: { en: "Listen once. Then we speak together.", vi: "Nghe một lần. Rồi chúng ta nói cùng nhau." } },
+    { id: 'shadow_start_05', event: 'shadow_start', emotion: 'warm_gentle', text: { en: "You don't need to be loud—just accurate.", vi: "Không cần nói to—chỉ cần chính xác." } },
+    { id: 'shadow_start_06', event: 'shadow_start', emotion: 'playful', text: { en: "Let's stretch your pronunciation muscles.", vi: "Kéo giãn cơ phát âm một chút nhé." } },
+    { id: 'shadow_start_07', event: 'shadow_start', emotion: 'warm_gentle', text: { en: "Shadowing sharpens rhythm. Let's tune yours.", vi: "Shadowing giúp sắc bén nhịp điệu. Cùng chỉnh nhịp của bạn nhé." } },
+    { id: 'shadow_start_08', event: 'shadow_start', emotion: 'reassuring', text: { en: "If it feels awkward at first, that's perfect.", vi: "Nếu ban đầu thấy gượng gạo, như vậy là đúng đấy." } },
+    { id: 'shadow_start_09', event: 'shadow_start', emotion: 'warm_gentle', text: { en: "Just follow the sound. Your mouth will learn the path.", vi: "Chỉ cần theo âm thanh. Miệng bạn sẽ tự học đường đi." } },
+    { id: 'shadow_start_10', event: 'shadow_start', emotion: 'playful', text: { en: "Let's give your pronunciation a tiny workout.", vi: "Cho phát âm của bạn tập thể dục nhẹ nhé." } },
+    { id: 'shadow_start_11', event: 'shadow_start', emotion: 'warm_gentle', text: { en: "Let your voice soften. Then follow mine.", vi: "Hãy để giọng bạn mềm xuống. Rồi đi theo mình." } },
+    { id: 'shadow_start_12', event: 'shadow_start', emotion: 'reassuring', text: { en: "It's okay if you stumble. That's part of shadowing.", vi: "Vấp một chút cũng không sao. Đó là một phần của shadowing." } },
+    { id: 'shadow_start_13', event: 'shadow_start', emotion: 'calm_firm', text: { en: "Stay with the rhythm more than the words.", vi: "Hãy bám nhịp nhiều hơn là bám chữ." } },
+    { id: 'shadow_start_14', event: 'shadow_start', emotion: 'warm_gentle', text: { en: "Let's move your mouth the English way.", vi: "Cùng di chuyển miệng theo kiểu tiếng Anh nhé." } },
+    { id: 'shadow_start_15', event: 'shadow_start', emotion: 'playful', text: { en: "Don't worry, your tongue will catch up.", vi: "Đừng lo, lưỡi bạn sẽ theo kịp ngay thôi." } },
+    { id: 'shadow_start_16', event: 'shadow_start', emotion: 'warm_gentle', text: { en: "Shadowing is muscle training. Let's train softly.", vi: "Shadowing là tập cơ. Chúng ta tập nhẹ nhàng thôi." } },
+    { id: 'shadow_start_17', event: 'shadow_start', emotion: 'reassuring', text: { en: "Your voice may feel shy. It opens with practice.", vi: "Giọng bạn có thể hơi ngại. Nó sẽ mở ra khi luyện tập." } },
+    { id: 'shadow_start_18', event: 'shadow_start', emotion: 'warm_gentle', text: { en: "Even small attempts here build big fluency later.", vi: "Dù cố gắng nhỏ cũng tạo ra sự trôi chảy lớn sau này." } },
+    { id: 'shadow_start_19', event: 'shadow_start', emotion: 'playful', text: { en: "Let's wake your speaking engine gently.", vi: "Cùng đánh thức động cơ nói của bạn thật nhẹ nhàng." } },
+    { id: 'shadow_start_20', event: 'shadow_start', emotion: 'warm_gentle', text: { en: "We'll go slow first, then flow naturally.", vi: "Ta đi chậm trước, rồi sẽ trôi chảy tự nhiên." } },
     // --- INSERT NEW shadow_start MESSAGES ABOVE THIS LINE ---
   ],
 
