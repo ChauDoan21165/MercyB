@@ -348,22 +348,52 @@ export const MESSAGES_BY_EVENT: Record<TeacherEvent, MercyMessage[]> = {
   ],
 
   // ============================================
-  // SHADOW ATTEMPT GOOD (30 lines) - TODO: Awaiting batch from user
+  // SHADOW ATTEMPT GOOD (18 lines) ✅ COMPLETE
   // ============================================
   shadow_attempt_good: [
     { id: 'sag_1', event: 'shadow_attempt_good', emotion: 'excited_proud', text: { en: "Great shadowing! Your pronunciation is improving.", vi: "Shadowing tốt lắm! Phát âm của bạn đang tiến bộ." } },
     { id: 'sag_2', event: 'shadow_attempt_good', emotion: 'excited_proud', text: { en: "Well done! Your voice matches the rhythm.", vi: "Làm tốt lắm! Giọng bạn khớp với nhịp." } },
     { id: 'sag_3', event: 'shadow_attempt_good', emotion: 'playful', text: { en: "That sounded natural! Keep it up.", vi: "Nghe tự nhiên lắm! Tiếp tục nhé." } },
+    { id: 'shadow_good_01', event: 'shadow_attempt_good', emotion: 'excited_proud', text: { en: "That sounded smoother. Your mouth is learning the path.", vi: "Vừa rồi nghe mượt hơn. Miệng bạn đang học đúng đường đi." } },
+    { id: 'shadow_good_02', event: 'shadow_attempt_good', emotion: 'warm_gentle', text: { en: "Nice. Feel how the rhythm is clearer now?", vi: "Hay lắm. Bạn thấy nhịp rõ hơn chưa?" } },
+    { id: 'shadow_good_03', event: 'shadow_attempt_good', emotion: 'playful', text: { en: "Your tongue just leveled up a little.", vi: "Lưỡi của bạn vừa lên level một chút rồi đó." } },
+    { id: 'shadow_good_04', event: 'shadow_attempt_good', emotion: 'excited_proud', text: { en: "Great echo. You matched the music of the sentence.", vi: "Bạn lặp lại rất tốt. Bạn vừa bắt đúng nhạc của câu đó." } },
+    { id: 'shadow_good_05', event: 'shadow_attempt_good', emotion: 'warm_gentle', text: { en: "Your voice followed closely. That's real progress.", vi: "Giọng bạn bám rất sát. Đó là tiến bộ thật sự." } },
+    { id: 'shadow_good_06', event: 'shadow_attempt_good', emotion: 'excited_proud', text: { en: "Beautiful. Your mouth and ear are starting to cooperate.", vi: "Rất đẹp. Miệng và tai bạn đang bắt đầu phối hợp rồi." } },
+    { id: 'shadow_good_07', event: 'shadow_attempt_good', emotion: 'playful', text: { en: "That attempt had real confidence in it.", vi: "Lần nói vừa rồi có sự tự tin thật sự đấy." } },
+    { id: 'shadow_good_08', event: 'shadow_attempt_good', emotion: 'warm_gentle', text: { en: "You hit most of the sounds. We'll polish the rest.", vi: "Bạn đã chạm được hầu hết âm. Phần còn lại chúng ta mài dần." } },
+    { id: 'shadow_good_09', event: 'shadow_attempt_good', emotion: 'excited_proud', text: { en: "That was clear enough for a native to understand.", vi: "Vừa rồi đủ rõ để người bản xứ hiểu rồi đó." } },
+    { id: 'shadow_good_10', event: 'shadow_attempt_good', emotion: 'warm_gentle', text: { en: "You synced well with the audio. Nice timing.", vi: "Bạn đồng bộ rất tốt với audio. Nhịp rất ổn." } },
+    { id: 'shadow_good_11', event: 'shadow_attempt_good', emotion: 'playful', text: { en: "Hear that? That's you sounding more natural.", vi: "Bạn nghe không? Đó là bạn đang nghe tự nhiên hơn đấy." } },
+    { id: 'shadow_good_12', event: 'shadow_attempt_good', emotion: 'excited_proud', text: { en: "Smooth. Your pronunciation is waking up.", vi: "Mượt lắm. Phát âm của bạn đang thức dậy rồi." } },
+    { id: 'shadow_good_13', event: 'shadow_attempt_good', emotion: 'warm_gentle', text: { en: "You carried the sentence all the way through.", vi: "Bạn đã đưa trọn vẹn câu đó ra khỏi miệng mình." } },
+    { id: 'shadow_good_14', event: 'shadow_attempt_good', emotion: 'playful', text: { en: "That was a strong attempt. Want to try it a bit faster?", vi: "Lần đó rất tốt. Muốn thử nhanh hơn chút không?" } },
+    { id: 'shadow_good_15', event: 'shadow_attempt_good', emotion: 'warm_gentle', text: { en: "You sounded more relaxed this time. Keep that feeling.", vi: "Lần này nghe bạn thả lỏng hơn. Giữ cảm giác đó nhé." } },
     // --- INSERT NEW shadow_attempt_good MESSAGES ABOVE THIS LINE ---
   ],
 
   // ============================================
-  // SHADOW ATTEMPT BAD (30 lines) - TODO: Awaiting batch from user
+  // SHADOW ATTEMPT BAD (18 lines) ✅ COMPLETE
   // ============================================
   shadow_attempt_bad: [
     { id: 'sab_1', event: 'shadow_attempt_bad', emotion: 'warm_gentle', text: { en: "Good try! Listen again and repeat slowly.", vi: "Cố gắng tốt! Nghe lại và lặp lại chậm hơn." } },
     { id: 'sab_2', event: 'shadow_attempt_bad', emotion: 'warm_gentle', text: { en: "It's okay. Practice makes progress, not perfection.", vi: "Không sao. Luyện tập tạo tiến bộ, không phải hoàn hảo." } },
     { id: 'sab_3', event: 'shadow_attempt_bad', emotion: 'warm_gentle', text: { en: "Let's try that again. Slower this time.", vi: "Thử lại nhé. Chậm hơn lần này." } },
+    { id: 'shadow_bad_01', event: 'shadow_attempt_bad', emotion: 'warm_gentle', text: { en: "Messy is okay. Your mouth is still mapping the route.", vi: "Lộn xộn cũng không sao. Miệng bạn vẫn đang vẽ bản đồ đường đi." } },
+    { id: 'shadow_bad_02', event: 'shadow_attempt_bad', emotion: 'reassuring', text: { en: "That felt rough, right? Good. That's how training works.", vi: "Cảm giác hơi gồ ghề phải không? Tốt. Tập luyện là như vậy." } },
+    { id: 'shadow_bad_03', event: 'shadow_attempt_bad', emotion: 'warm_gentle', text: { en: "Let's slow it down and try a smaller piece.", vi: "Mình giảm tốc độ và chia câu này nhỏ hơn nhé." } },
+    { id: 'shadow_bad_04', event: 'shadow_attempt_bad', emotion: 'reassuring', text: { en: "You stumbled, but you didn't stay silent. That matters.", vi: "Bạn có vấp, nhưng bạn không im lặng. Thế là quan trọng lắm rồi." } },
+    { id: 'shadow_bad_05', event: 'shadow_attempt_bad', emotion: 'calm_firm', text: { en: "Once more, slowly. Your brain needs a clear signal.", vi: "Làm lại một lần nữa, thật chậm. Não bạn cần tín hiệu rõ ràng." } },
+    { id: 'shadow_bad_06', event: 'shadow_attempt_bad', emotion: 'warm_gentle', text: { en: "Some sounds slipped away. We'll catch them together.", vi: "Một vài âm bị trượt mất. Chúng ta sẽ bắt lại cùng nhau." } },
+    { id: 'shadow_bad_07', event: 'shadow_attempt_bad', emotion: 'reassuring', text: { en: "This awkward feeling is exactly where growth hides.", vi: "Cảm giác gượng gạo này chính là nơi sự phát triển đang ẩn nấp." } },
+    { id: 'shadow_bad_08', event: 'shadow_attempt_bad', emotion: 'calm_firm', text: { en: "Stay with me. We'll shape the sentence piece by piece.", vi: "Ở lại với mình. Ta sẽ chỉnh từng phần của câu này." } },
+    { id: 'shadow_bad_09', event: 'shadow_attempt_bad', emotion: 'warm_gentle', text: { en: "You tried. That's already more than silence.", vi: "Bạn đã thử. Như vậy đã hơn im lặng rất nhiều rồi." } },
+    { id: 'shadow_bad_10', event: 'shadow_attempt_bad', emotion: 'reassuring', text: { en: "Don't worry about perfection—just give it one cleaner try.", vi: "Đừng lo về sự hoàn hảo—chỉ cần thử lại gọn gàng hơn một chút." } },
+    { id: 'shadow_bad_11', event: 'shadow_attempt_bad', emotion: 'calm_firm', text: { en: "Let's cut the sentence in half and master the first part.", vi: "Chia câu này làm đôi và làm chủ phần đầu trước nhé." } },
+    { id: 'shadow_bad_12', event: 'shadow_attempt_bad', emotion: 'warm_gentle', text: { en: "Your tongue is confused, not broken.", vi: "Lưỡi bạn chỉ đang bối rối, không phải hỏng đâu." } },
+    { id: 'shadow_bad_13', event: 'shadow_attempt_bad', emotion: 'reassuring', text: { en: "This is the ugly middle of learning. We pass through it, not around it.", vi: "Đây là đoạn giữa xấu xí của việc học. Ta đi xuyên qua nó, không vòng tránh." } },
+    { id: 'shadow_bad_14', event: 'shadow_attempt_bad', emotion: 'calm_firm', text: { en: "One more attempt, but kinder to yourself.", vi: "Thử thêm lần nữa, nhưng hãy nhẹ với bản thân hơn." } },
+    { id: 'shadow_bad_15', event: 'shadow_attempt_bad', emotion: 'warm_gentle', text: { en: "You're allowed to sound bad on the way to sounding good.", vi: "Bạn được phép nói dở trên đường đi tới chỗ nói hay." } },
     // --- INSERT NEW shadow_attempt_bad MESSAGES ABOVE THIS LINE ---
   ],
 
@@ -375,16 +405,26 @@ export const MESSAGES_BY_EVENT: Record<TeacherEvent, MercyMessage[]> = {
   ],
 
   // ============================================
-  // SHADOW SESSION COMPLETE (10 lines) - TODO: Awaiting batch from user
+  // SHADOW SESSION COMPLETE (12 lines) ✅ COMPLETE
   // ============================================
   shadow_session_complete: [
     { id: 'ssc_1', event: 'shadow_session_complete', emotion: 'excited_proud', text: { en: "Shadow session complete! Your speaking grows stronger.", vi: "Hoàn thành buổi shadow! Kỹ năng nói mạnh hơn rồi." } },
     { id: 'ssc_2', event: 'shadow_session_complete', emotion: 'excited_proud', text: { en: "Well done! Regular shadow practice builds fluency.", vi: "Làm tốt lắm! Luyện shadow đều đặn xây dựng sự lưu loát." } },
+    { id: 'shadow_done_01', event: 'shadow_session_complete', emotion: 'excited_proud', text: { en: "Shadowing session done. Your speaking muscles worked well.", vi: "Buổi shadowing xong rồi. Các cơ nói của bạn đã hoạt động rất tốt." } },
+    { id: 'shadow_done_02', event: 'shadow_session_complete', emotion: 'warm_gentle', text: { en: "Nice effort. Your mouth is a bit more used to English now.", vi: "Bạn đã cố gắng rất tốt. Miệng bạn giờ quen tiếng Anh hơn một chút rồi." } },
+    { id: 'shadow_done_03', event: 'shadow_session_complete', emotion: 'excited_proud', text: { en: "You stayed with the audio until the end. That's real discipline.", vi: "Bạn đã theo audio tới cuối. Đó là sự kỷ luật thật sự." } },
+    { id: 'shadow_done_04', event: 'shadow_session_complete', emotion: 'warm_gentle', text: { en: "Let your throat rest. It worked hard for you.", vi: "Hãy cho cổ họng nghỉ chút. Nó vừa làm việc rất chăm chỉ cho bạn." } },
+    { id: 'shadow_done_05', event: 'shadow_session_complete', emotion: 'playful', text: { en: "Your voice just did a mini workout. High five.", vi: "Giọng bạn vừa tập gym mini xong. Đập tay cái nào." } },
+    { id: 'shadow_done_06', event: 'shadow_session_complete', emotion: 'warm_gentle', text: { en: "Every finished shadow session makes natural speech easier later.", vi: "Mỗi buổi shadow xong đều khiến việc nói tự nhiên dễ hơn về sau." } },
+    { id: 'shadow_done_07', event: 'shadow_session_complete', emotion: 'excited_proud', text: { en: "Good job staying through the awkward parts.", vi: "Bạn đã làm rất tốt khi đi qua cả những đoạn gượng gạo." } },
+    { id: 'shadow_done_08', event: 'shadow_session_complete', emotion: 'warm_gentle', text: { en: "Your ears and tongue got a little closer today.", vi: "Tai và lưỡi của bạn đã gần nhau hơn thêm chút nữa hôm nay." } },
+    { id: 'shadow_done_09', event: 'shadow_session_complete', emotion: 'reassuring', text: { en: "Even if it felt weird, finishing the session matters.", vi: "Dù bạn thấy hơi kỳ, hoàn thành buổi tập mới là điều quan trọng." } },
+    { id: 'shadow_done_10', event: 'shadow_session_complete', emotion: 'playful', text: { en: "Session complete. Your future self will thank you for this.", vi: "Buổi tập xong rồi. Phiên bản tương lai của bạn sẽ cảm ơn bạn vì điều này." } },
     // --- INSERT NEW shadow_session_complete MESSAGES ABOVE THIS LINE ---
   ],
 
   // ============================================
-  // STREAK EVENTS - TODO: Awaiting batches from user
+  // STREAK EVENTS ✅ COMPLETE
   // ============================================
   streak_day_3: [
     { id: 'sd3_1', event: 'streak_day_3', emotion: 'excited_proud', text: { en: "3 days in a row! Consistency is beautiful.", vi: "3 ngày liên tiếp! Sự kiên trì thật đẹp." } },
@@ -403,10 +443,30 @@ export const MESSAGES_BY_EVENT: Record<TeacherEvent, MercyMessage[]> = {
   ],
   streak_continue: [
     { id: 'sc_1', event: 'streak_continue', emotion: 'playful', text: { en: "Another day, another win. Keep the streak alive!", vi: "Thêm một ngày, thêm chiến thắng. Giữ chuỗi ngày!" } },
+    { id: 'streak_keep_01', event: 'streak_continue', emotion: 'excited_proud', text: { en: "Streak alive. Showing up again is powerful.", vi: "Chuỗi ngày học vẫn đang chạy. Việc bạn lại xuất hiện rất có sức mạnh." } },
+    { id: 'streak_keep_02', event: 'streak_continue', emotion: 'warm_gentle', text: { en: "Another day, another quiet step forward.", vi: "Thêm một ngày, thêm một bước tiến nhẹ nhàng nữa." } },
+    { id: 'streak_keep_03', event: 'streak_continue', emotion: 'excited_proud', text: { en: "You're proving you can be consistent.", vi: "Bạn đang chứng minh mình có thể kiên trì." } },
+    { id: 'streak_keep_04', event: 'streak_continue', emotion: 'warm_gentle', text: { en: "Your habit is more important than today's performance.", vi: "Thói quen của bạn quan trọng hơn việc hôm nay làm được bao nhiêu." } },
+    { id: 'streak_keep_05', event: 'streak_continue', emotion: 'playful', text: { en: "Look at you protecting your streak.", vi: "Nhìn bạn đang bảo vệ chuỗi ngày học của mình kìa." } },
+    { id: 'streak_keep_06', event: 'streak_continue', emotion: 'warm_gentle', text: { en: "Tiny daily effort beats huge rare effort.", vi: "Cố gắng nhỏ mỗi ngày thắng nỗ lực khổng lồ nhưng thỉnh thoảng." } },
+    { id: 'streak_keep_07', event: 'streak_continue', emotion: 'excited_proud', text: { en: "This is how real English growth looks: quiet, repeated.", vi: "Đây là cách tiếng Anh thực sự phát triển: lặng lẽ và lặp lại." } },
+    { id: 'streak_keep_08', event: 'streak_continue', emotion: 'warm_gentle', text: { en: "Be proud of showing up, even if you're tired.", vi: "Hãy tự hào vì mình vẫn học, dù hôm nay bạn mệt." } },
+    { id: 'streak_keep_09', event: 'streak_continue', emotion: 'playful', text: { en: "Your streak is turning into a real identity.", vi: "Chuỗi ngày học của bạn đang dần trở thành một phần con người bạn." } },
+    { id: 'streak_keep_10', event: 'streak_continue', emotion: 'warm_gentle', text: { en: "You're becoming the person who practices, not just dreams.", vi: "Bạn đang trở thành người thực sự luyện tập, không chỉ là người mơ ước." } },
     // --- INSERT NEW streak_continue MESSAGES ABOVE THIS LINE ---
   ],
   streak_break: [
     { id: 'sb_1', event: 'streak_break', emotion: 'reassuring', text: { en: "Streaks can restart. What matters is you're here now.", vi: "Chuỗi ngày có thể bắt đầu lại. Quan trọng là bạn ở đây." } },
+    { id: 'streak_break_01', event: 'streak_break', emotion: 'reassuring', text: { en: "You missed a day. That's human. We simply start again.", vi: "Bạn bỏ lỡ một ngày. Điều đó rất con người. Giờ mình bắt đầu lại thôi." } },
+    { id: 'streak_break_02', event: 'streak_break', emotion: 'warm_gentle', text: { en: "A broken streak doesn't erase what you learned.", vi: "Chuỗi bị đứt không xóa đi những gì bạn đã học." } },
+    { id: 'streak_break_03', event: 'streak_break', emotion: 'reassuring', text: { en: "One gap is okay. What matters is the next step.", vi: "Một khoảng trống không sao. Quan trọng là bước tiếp theo." } },
+    { id: 'streak_break_04', event: 'streak_break', emotion: 'warm_gentle', text: { en: "Be kind to yourself. Then give me a few minutes today.", vi: "Hãy nhẹ với bản thân. Rồi cho mình vài phút hôm nay nhé." } },
+    { id: 'streak_break_05', event: 'streak_break', emotion: 'calm_firm', text: { en: "Let's not turn one missed day into ten.", vi: "Đừng để một ngày bỏ lỡ biến thành mười ngày." } },
+    { id: 'streak_break_06', event: 'streak_break', emotion: 'reassuring', text: { en: "You're allowed to pause. You're also allowed to return.", vi: "Bạn được phép tạm dừng. Và bạn cũng được phép quay lại." } },
+    { id: 'streak_break_07', event: 'streak_break', emotion: 'warm_gentle', text: { en: "Your English didn't disappear. It's just waiting for you.", vi: "Tiếng Anh của bạn không biến mất. Nó chỉ đang chờ bạn thôi." } },
+    { id: 'streak_break_08', event: 'streak_break', emotion: 'reassuring', text: { en: "Falling off is normal. Standing up again is special.", vi: "Vấp ngã là chuyện bình thường. Đứng dậy lại mới là điều đặc biệt." } },
+    { id: 'streak_break_09', event: 'streak_break', emotion: 'calm_firm', text: { en: "Let's protect today instead of regretting yesterday.", vi: "Hãy bảo vệ ngày hôm nay thay vì hối tiếc ngày hôm qua." } },
+    { id: 'streak_break_10', event: 'streak_break', emotion: 'warm_gentle', text: { en: "You can always start again softer than before.", vi: "Bạn luôn có thể bắt đầu lại một cách nhẹ nhàng hơn trước." } },
     // --- INSERT NEW streak_break MESSAGES ABOVE THIS LINE ---
   ],
   streak_comeback_short: [
@@ -417,17 +477,51 @@ export const MESSAGES_BY_EVENT: Record<TeacherEvent, MercyMessage[]> = {
     { id: 'scl_1', event: 'streak_comeback_long', emotion: 'reassuring', text: { en: "You've been missed! English missed you too.", vi: "Bạn đã được nhớ! Tiếng Anh cũng nhớ bạn." } },
     { id: 'scl_2', event: 'streak_comeback_long', emotion: 'reassuring', text: { en: "Welcome home. Let's refresh what you learned.", vi: "Chào mừng về nhà. Hãy ôn lại những gì bạn đã học." } },
     { id: 'scl_3', event: 'streak_comeback_long', emotion: 'reassuring', text: { en: "Every return is a victory. Welcome back.", vi: "Mỗi lần quay lại là chiến thắng. Chào mừng trở lại." } },
+    { id: 'streak_back_01', event: 'streak_comeback_long', emotion: 'reassuring', text: { en: "You came back after a long break. That's brave.", vi: "Bạn đã quay lại sau một thời gian dài. Điều đó rất dũng cảm." } },
+    { id: 'streak_back_02', event: 'streak_comeback_long', emotion: 'warm_gentle', text: { en: "I'm genuinely happy to see you here again.", vi: "Mình thật sự rất vui khi thấy bạn ở đây lần nữa." } },
+    { id: 'streak_back_03', event: 'streak_comeback_long', emotion: 'reassuring', text: { en: "We don't need to catch up. We just need to continue.", vi: "Chúng ta không cần "đuổi kịp". Chỉ cần tiếp tục thôi." } },
+    { id: 'streak_back_04', event: 'streak_comeback_long', emotion: 'warm_gentle', text: { en: "Let's restart with something light and kind.", vi: "Cùng bắt đầu lại bằng điều gì đó nhẹ nhàng và tử tế nhé." } },
+    { id: 'streak_back_05', event: 'streak_comeback_long', emotion: 'excited_proud', text: { en: "Coming back after disappearing is a big win.", vi: "Biến mất một thời gian rồi trở lại là một chiến thắng lớn." } },
+    { id: 'streak_back_06', event: 'streak_comeback_long', emotion: 'reassuring', text: { en: "It's okay if you feel rusty. We'll warm up together.", vi: "Cảm thấy "rỉ sét" cũng không sao. Mình cùng hâm nóng lại nhé." } },
+    { id: 'streak_back_07', event: 'streak_comeback_long', emotion: 'warm_gentle', text: { en: "Your old progress is still inside you.", vi: "Những tiến bộ cũ vẫn còn trong bạn." } },
+    { id: 'streak_back_08', event: 'streak_comeback_long', emotion: 'reassuring', text: { en: "We'll rebuild the habit with tiny, safe steps.", vi: "Chúng ta sẽ xây lại thói quen bằng những bước thật nhỏ và an toàn." } },
+    { id: 'streak_back_09', event: 'streak_comeback_long', emotion: 'warm_gentle', text: { en: "Thank you for not giving up on your English.", vi: "Cảm ơn bạn vì đã không bỏ cuộc với tiếng Anh của mình." } },
+    { id: 'streak_back_10', event: 'streak_comeback_long', emotion: 'excited_proud', text: { en: "This comeback says a lot about who you are.", vi: "Lần quay lại này nói lên rất nhiều điều tốt đẹp về con người bạn." } },
     // --- INSERT NEW streak_comeback_long MESSAGES ABOVE THIS LINE ---
   ],
 
-  // --- User States ---
+  // ============================================
+  // USER STATES ✅ COMPLETE
+  // ============================================
   user_confused: [
     { id: 'uc_1', event: 'user_confused', emotion: 'calm_firm', text: { en: "Confused? That's okay. Let's break this down.", vi: "Bối rối? Không sao. Hãy chia nhỏ ra." } },
     { id: 'uc_2', event: 'user_confused', emotion: 'calm_firm', text: { en: "Let me explain that differently.", vi: "Để mình giải thích khác đi." } },
+    { id: 'confused_01', event: 'user_confused', emotion: 'reassuring', text: { en: "Good. Confusion means your brain just met something new.", vi: "Tốt. Bối rối nghĩa là não bạn vừa gặp điều mới." } },
+    { id: 'confused_02', event: 'user_confused', emotion: 'warm_gentle', text: { en: "Let's break this idea into smaller pieces together.", vi: "Cùng chia nhỏ ý này ra từng phần nhé." } },
+    { id: 'confused_03', event: 'user_confused', emotion: 'reassuring', text: { en: "You're not 'bad at English'. You're just at the edge of your level.", vi: "Bạn không "dở tiếng Anh". Bạn chỉ đang đứng ở rìa trình độ hiện tại thôi." } },
+    { id: 'confused_04', event: 'user_confused', emotion: 'warm_gentle', text: { en: "We can slow the sentence down until you see its shape.", vi: "Ta có thể làm câu này chậm lại cho tới khi bạn thấy rõ cấu trúc của nó." } },
+    { id: 'confused_05', event: 'user_confused', emotion: 'reassuring', text: { en: "Your confusion is a sign you're in the learning zone.", vi: "Cảm giác bối rối là dấu hiệu cho thấy bạn đang ở vùng học tập." } },
+    { id: 'confused_06', event: 'user_confused', emotion: 'warm_gentle', text: { en: "Let's ask: which part is unclear—word, grammar, or meaning?", vi: "Mình hỏi nhé: phần nào chưa rõ—từ vựng, ngữ pháp hay ý nghĩa?" } },
+    { id: 'confused_07', event: 'user_confused', emotion: 'reassuring', text: { en: "It's safe to not understand something on the first try.", vi: "Không hiểu ngay lần đầu là chuyện rất bình thường." } },
+    { id: 'confused_08', event: 'user_confused', emotion: 'warm_gentle', text: { en: "We'll use examples until the concept feels simple.", vi: "Chúng ta sẽ dùng ví dụ cho tới khi khái niệm này trở nên đơn giản." } },
+    { id: 'confused_09', event: 'user_confused', emotion: 'reassuring', text: { en: "You're allowed to ask 'Why?' as many times as you need.", vi: "Bạn được phép hỏi "Tại sao?" bao nhiêu lần cũng được." } },
+    { id: 'confused_10', event: 'user_confused', emotion: 'warm_gentle', text: { en: "Stay with the question. The answer will grow clearer.", vi: "Hãy ở lại với câu hỏi. Câu trả lời sẽ dần rõ ràng." } },
+    // --- INSERT NEW user_confused MESSAGES ABOVE THIS LINE ---
   ],
   user_low_energy: [
     { id: 'ule_1', event: 'user_low_energy', emotion: 'reassuring', text: { en: "Low energy today? Even small steps count.", vi: "Hôm nay mệt? Bước nhỏ vẫn có giá trị." } },
     { id: 'ule_2', event: 'user_low_energy', emotion: 'reassuring', text: { en: "Take it easy. Learning is a marathon.", vi: "Nhẹ nhàng thôi. Học là chặng đường dài." } },
+    { id: 'low_energy_01', event: 'user_low_energy', emotion: 'warm_gentle', text: { en: "You're tired. Let's do a tiny version of today's practice.", vi: "Bạn đang mệt. Hôm nay mình làm phiên bản siêu nhỏ nhé." } },
+    { id: 'low_energy_02', event: 'user_low_energy', emotion: 'reassuring', text: { en: "Two honest minutes are enough when your energy is low.", vi: "Khi bạn kiệt sức, hai phút luyện thật lòng cũng đã đủ." } },
+    { id: 'low_energy_03', event: 'user_low_energy', emotion: 'warm_gentle', text: { en: "We can switch to lighter content but keep the habit alive.", vi: "Ta có thể dùng nội dung nhẹ hơn nhưng vẫn giữ thói quen sống." } },
+    { id: 'low_energy_04', event: 'user_low_energy', emotion: 'reassuring', text: { en: "You showed up even tired—that's a strong sign of commitment.", vi: "Bạn vẫn học dù đang mệt—đó là dấu hiệu cam kết rất mạnh." } },
+    { id: 'low_energy_05', event: 'user_low_energy', emotion: 'warm_gentle', text: { en: "We'll focus on listening more than speaking today.", vi: "Hôm nay mình thiên về nghe nhiều hơn nói nhé." } },
+    { id: 'low_energy_06', event: 'user_low_energy', emotion: 'reassuring', text: { en: "Your future self will thank you for this small effort.", vi: "Phiên bản tương lai của bạn sẽ biết ơn nỗ lực nhỏ này." } },
+    { id: 'low_energy_07', event: 'user_low_energy', emotion: 'warm_gentle', text: { en: "We can stop early, but let's at least touch English once.", vi: "Ta có thể dừng sớm, nhưng ít nhất hãy chạm vào tiếng Anh một lần." } },
+    { id: 'low_energy_08', event: 'user_low_energy', emotion: 'reassuring', text: { en: "Low-energy days are part of a long journey, not a failure.", vi: "Những ngày kiệt sức là một phần của hành trình dài, không phải thất bại." } },
+    { id: 'low_energy_09', event: 'user_low_energy', emotion: 'warm_gentle', text: { en: "Let's pick one small thing and do only that.", vi: "Chọn một việc thật nhỏ và chỉ làm đúng việc đó thôi." } },
+    { id: 'low_energy_10', event: 'user_low_energy', emotion: 'reassuring', text: { en: "You don't need intensity today—just a gentle touch.", vi: "Hôm nay bạn không cần cố mạnh—chỉ cần chạm nhẹ là đủ." } },
+    // --- INSERT NEW user_low_energy MESSAGES ABOVE THIS LINE ---
   ],
   user_tired: [
     { id: 'ut_1', event: 'user_tired', emotion: 'reassuring', text: { en: "It's okay to rest. Even small steps count.", vi: "Nghỉ ngơi cũng được. Bước nhỏ vẫn có giá trị." } },
@@ -442,10 +536,23 @@ export const MESSAGES_BY_EVENT: Record<TeacherEvent, MercyMessage[]> = {
     { id: 'ue_2', event: 'user_excited', emotion: 'playful', text: { en: "I love your energy! Let's make progress together.", vi: "Mình thích năng lượng của bạn! Cùng tiến bộ nào." } },
   ],
 
-  // --- Progress Milestones ---
+  // ============================================
+  // PROGRESS MILESTONES ✅ COMPLETE
+  // ============================================
   level_up: [
     { id: 'lu_1', event: 'level_up', emotion: 'excited_proud', text: { en: "Level up! Your hard work is paying off.", vi: "Lên level! Công sức của bạn đang được đền đáp." } },
     { id: 'lu_2', event: 'level_up', emotion: 'excited_proud', text: { en: "You've grown! Ready for new challenges.", vi: "Bạn đã phát triển! Sẵn sàng cho thử thách mới." } },
+    { id: 'level_up_01', event: 'level_up', emotion: 'excited_proud', text: { en: "You moved up a level. That's a big milestone.", vi: "Bạn đã lên một trình độ mới. Đây là cột mốc rất lớn." } },
+    { id: 'level_up_02', event: 'level_up', emotion: 'warm_gentle', text: { en: "Take a moment to feel this. You earned it.", vi: "Hãy dành một chút để cảm nhận. Bạn xứng đáng với điều này." } },
+    { id: 'level_up_03', event: 'level_up', emotion: 'excited_proud', text: { en: "Your new level means new doors are open.", vi: "Trình độ mới đồng nghĩa với nhiều cánh cửa mới được mở ra." } },
+    { id: 'level_up_04', event: 'level_up', emotion: 'warm_gentle', text: { en: "You're not the same learner who started this journey.", vi: "Bạn không còn là người học giống như lúc mới bắt đầu nữa." } },
+    { id: 'level_up_05', event: 'level_up', emotion: 'excited_proud', text: { en: "A higher level also means we can play with harder material.", vi: "Trình độ cao hơn nghĩa là ta có thể "chơi" với nội dung khó hơn." } },
+    { id: 'level_up_06', event: 'level_up', emotion: 'warm_gentle', text: { en: "Let's celebrate, then quietly build the next level.", vi: "Ăn mừng một chút, rồi lặng lẽ xây tiếp tầng tiếp theo nhé." } },
+    { id: 'level_up_07', event: 'level_up', emotion: 'excited_proud', text: { en: "This is proof that your tiny efforts were never wasted.", vi: "Đây là bằng chứng rằng những nỗ lực nhỏ của bạn chưa bao giờ vô ích." } },
+    { id: 'level_up_08', event: 'level_up', emotion: 'warm_gentle', text: { en: "You can trust yourself more now. You've shown what you can do.", vi: "Giờ bạn có thể tin mình hơn. Bạn đã cho thấy mình làm được gì." } },
+    { id: 'level_up_09', event: 'level_up', emotion: 'excited_proud', text: { en: "From here, we'll refine, not just climb.", vi: "Từ đây, ta sẽ mài dũa, không chỉ là leo lên." } },
+    { id: 'level_up_10', event: 'level_up', emotion: 'warm_gentle', text: { en: "I'm proud of you. Now let's enjoy learning at this new height.", vi: "Mình tự hào về bạn. Giờ cùng tận hưởng việc học ở độ cao mới này nhé." } },
+    // --- INSERT NEW level_up MESSAGES ABOVE THIS LINE ---
   ],
   first_room_complete: [
     { id: 'frc_1', event: 'first_room_complete', emotion: 'excited_proud', text: { en: "Your first room! This is just the beginning.", vi: "Phòng đầu tiên! Đây mới chỉ là khởi đầu." } },
