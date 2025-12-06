@@ -43,17 +43,10 @@ const AdminManageAdmins = () => {
 
   const fetchAdmins = async () => {
     try {
-      const { data, error } = await supabase.functions.invoke('manage-admins', {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-        body: null,
-      });
+      const { data, error } = await supabase.functions.invoke('manage-admins?action=list');
 
-      // Use query params approach
-      const { data: result, error: fetchError } = await supabase.functions.invoke('manage-admins?action=list');
-
-      if (fetchError) throw fetchError;
-      setAdmins(result?.admins || []);
+      if (error) throw error;
+      setAdmins(data?.admins || []);
     } catch (error: any) {
       console.error('Error fetching admins:', error);
       toast({
