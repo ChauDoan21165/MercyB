@@ -84,6 +84,7 @@ const AdminSecurity = lazy(() => import("./pages/AdminSecurity"));
 const AuditLog = lazy(() => import("./pages/admin/AuditLog"));
 const AIUsage = lazy(() => import("./pages/admin/AIUsage"));
 const AdminGiftCodes = lazy(() => import("./pages/AdminGiftCodes"));
+const AdminManageAdmins = lazy(() => import("./pages/AdminManageAdmins"));
 const AdminSpecification = lazy(() => import("./pages/AdminSpecification"));
 const HealthDashboard = lazy(() => import("./pages/admin/HealthDashboard"));
 const RoomHealthDashboard = lazy(() => import("./pages/admin/RoomHealthDashboard"));
@@ -335,6 +336,7 @@ const App = () => {
                       <Route path="/admin/system-metrics" element={<AdminRoute><AdminSystemMetrics /></AdminRoute>} />
                       <Route path="/admin/payment-monitoring" element={<AdminRoute><PaymentMonitoring /></AdminRoute>} />
                       <Route path="/admin/gift-codes" element={<AdminRoute><AdminGiftCodes /></AdminRoute>} />
+                      <Route path="/admin/manage-admins" element={<AdminRoute><AdminManageAdmins /></AdminRoute>} />
                       <Route path="/admin/specification" element={<AdminRoute><AdminSpecification /></AdminRoute>} />
                       <Route path="/admin/room-specification" element={<AdminRoute><RoomSpecification /></AdminRoute>} />
                       
