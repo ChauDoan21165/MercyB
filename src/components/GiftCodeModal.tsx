@@ -62,9 +62,10 @@ export function GiftCodeModal({
       }
 
       if (data?.success) {
+        const duration = data.duration || '1 year';
         toast({
           title: "🎁 Access Activated! / Đã Kích Hoạt!",
-          description: `${data.tier} access granted for 1 year / Quyền truy cập ${data.tier} đã được mở trong 1 năm`,
+          description: `${data.tier} access granted for ${duration} / Quyền truy cập ${data.tier} đã được mở trong ${duration}`,
         });
 
         // Clear input and close modal
