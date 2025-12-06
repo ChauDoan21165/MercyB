@@ -99,7 +99,6 @@ const AdminGiftCodes = () => {
     try {
       const { data, error } = await supabase.functions.invoke('generate-gift-code', {
         body: { tier, count, duration, notes: notes || null },
-        body: { tier, count, notes: notes || null },
       });
 
       // Handle invoke errors (non-2xx responses)
