@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import { Gift, Loader2, Copy, Check, ArrowLeft } from "lucide-react";
+import { Gift, Loader2, Copy, Check, ArrowLeft, Calendar } from "lucide-react";
 import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
@@ -24,6 +24,14 @@ interface GiftCode {
 }
 
 type GiftTier = 'VIP1' | 'VIP2' | 'VIP3' | 'VIP4' | 'VIP5' | 'VIP6' | 'VIP7' | 'VIP8' | 'VIP9';
+type GiftDuration = '1_month' | '3_months' | '6_months' | '12_months';
+
+const DURATION_LABELS: Record<GiftDuration, string> = {
+  '1_month': '1 Month (30 days)',
+  '3_months': '3 Months (90 days)',
+  '6_months': '6 Months (180 days)',
+  '12_months': '12 Months (365 days)',
+};
 
 const TIER_COLORS: Record<GiftTier, string> = {
   VIP1: 'bg-slate-100 text-slate-700',
@@ -40,6 +48,7 @@ const TIER_COLORS: Record<GiftTier, string> = {
 const AdminGiftCodes = () => {
   const navigate = useNavigate();
   const [tier, setTier] = useState<GiftTier>('VIP1');
+  const [duration, setDuration] = useState<GiftDuration>('12_months');
   const [count, setCount] = useState(1);
   const [notes, setNotes] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
@@ -89,6 +98,7 @@ const AdminGiftCodes = () => {
 
     try {
       const { data, error } = await supabase.functions.invoke('generate-gift-code', {
+        body: { tier, count, duration, notes: notes || null },
         body: { tier, count, notes: notes || null },
       });
 
@@ -190,28 +200,45 @@ const AdminGiftCodes = () => {
                 Generate Gift Codes
               </CardTitle>
             <CardDescription>
-                Create new VIP gift codes (VIP1–VIP9) for 1-year access
+              Create new VIP gift codes (VIP1–VIP9) with custom duration
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="tier">Tier</Label>
-                <Select value={tier} onValueChange={(value) => setTier(value as GiftTier)}>
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="VIP1">VIP1</SelectItem>
-                    <SelectItem value="VIP2">VIP2</SelectItem>
-                    <SelectItem value="VIP3">VIP3</SelectItem>
-                    <SelectItem value="VIP4">VIP4</SelectItem>
-                    <SelectItem value="VIP5">VIP5</SelectItem>
-                    <SelectItem value="VIP6">VIP6</SelectItem>
-                    <SelectItem value="VIP7">VIP7</SelectItem>
-                    <SelectItem value="VIP8">VIP8</SelectItem>
-                    <SelectItem value="VIP9">VIP9</SelectItem>
-                  </SelectContent>
-                </Select>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="tier">Tier</Label>
+                  <Select value={tier} onValueChange={(value) => setTier(value as GiftTier)}>
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="VIP1">VIP1</SelectItem>
+                      <SelectItem value="VIP2">VIP2</SelectItem>
+                      <SelectItem value="VIP3">VIP3</SelectItem>
+                      <SelectItem value="VIP4">VIP4</SelectItem>
+                      <SelectItem value="VIP5">VIP5</SelectItem>
+                      <SelectItem value="VIP6">VIP6</SelectItem>
+                      <SelectItem value="VIP7">VIP7</SelectItem>
+                      <SelectItem value="VIP8">VIP8</SelectItem>
+                      <SelectItem value="VIP9">VIP9</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="duration">Duration</Label>
+                  <Select value={duration} onValueChange={(value) => setDuration(value as GiftDuration)}>
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="1_month">1 Month</SelectItem>
+                      <SelectItem value="3_months">3 Months</SelectItem>
+                      <SelectItem value="6_months">6 Months</SelectItem>
+                      <SelectItem value="12_months">12 Months</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
               </div>
 
               <div className="space-y-2">
@@ -341,6 +368,12 @@ const AdminGiftCodes = () => {
                         </div>
                         {giftCode.used_at && (
                           <div>Used: {new Date(giftCode.used_at).toLocaleDateString()}</div>
+                        )}
+                        {giftCode.code_expires_at && (
+                          <div className="flex items-center gap-1">
+                            <Calendar className="w-3 h-3" />
+                            Expires: {new Date(giftCode.code_expires_at).toLocaleDateString()}
+                          </div>
                         )}
                         {giftCode.notes && (
                           <div className="text-xs italic">Note: {giftCode.notes}</div>

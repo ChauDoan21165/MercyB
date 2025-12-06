@@ -19,6 +19,21 @@ function generateCodeSegment(length: number): string {
 type GiftTier = 'VIP1' | 'VIP2' | 'VIP3' | 'VIP4' | 'VIP5' | 'VIP6' | 'VIP7' | 'VIP8' | 'VIP9';
 const ALLOWED_TIERS: GiftTier[] = ['VIP1', 'VIP2', 'VIP3', 'VIP4', 'VIP5', 'VIP6', 'VIP7', 'VIP8', 'VIP9'];
 
+// Duration to days mapping
+const DURATION_DAYS: Record<string, number> = {
+  '1_month': 30,
+  '3_months': 90,
+  '6_months': 180,
+  '12_months': 365,
+};
+
+function getExpiryDate(duration?: string): string {
+  const now = new Date();
+  const days = DURATION_DAYS[duration || '12_months'] ?? 365;
+  now.setDate(now.getDate() + days);
+  return now.toISOString();
+}
+
 // Generate gift code in format VIPX-XXXX-XXXX-XXXX
 function generateGiftCode(tier: GiftTier): string {
   const segment1 = generateCodeSegment(4);
@@ -103,8 +118,8 @@ Deno.serve(async (req) => {
       );
     }
     
-    const { tier, count = 1, code_expires_at, notes } = body;
-    console.log('[generate-gift-code] Request body:', { tier, count, notes, code_expires_at });
+    const { tier, count = 1, duration, notes } = body;
+    console.log('[generate-gift-code] Request body:', { tier, count, duration, notes });
 
     if (!tier || !ALLOWED_TIERS.includes(tier as GiftTier)) {
       return new Response(
@@ -155,7 +170,7 @@ Deno.serve(async (req) => {
         .insert({
           code,
           tier,
-          code_expires_at: code_expires_at || null,
+          code_expires_at: getExpiryDate(duration),
           is_active: true,
           created_by: user.id,
           notes: notes || null,
