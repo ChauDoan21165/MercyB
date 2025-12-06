@@ -430,6 +430,12 @@ const AdminDashboard = () => {
               icon={Gift}
               onClick={() => navigate("/admin/gift-codes")}
             />
+            <SectionTile
+              title="Manage Admins"
+              description="Add or remove admin users"
+              icon={UserCog}
+              onClick={() => navigate("/admin/manage-admins")}
+            />
           </div>
         </section>
 
