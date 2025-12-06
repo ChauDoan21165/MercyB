@@ -78,18 +78,42 @@ const AdminGiftCodes = () => {
         body: { tier, count, notes: notes || null },
       });
 
-      if (error) throw error;
-
-      if (data.error) {
+      // Handle invoke errors (non-2xx responses)
+      if (error) {
+        // Try to extract error message from the response context
+        let errorMessage = "Failed to generate gift codes";
+        try {
+          // FunctionsHttpError has context.json() available
+          const errorContext = await (error as any).context?.json?.();
+          if (errorContext?.error) {
+            errorMessage = errorContext.error;
+          }
+        } catch {
+          // If context parsing fails, use the error message
+          if (error.message) {
+            errorMessage = error.message;
+          }
+        }
+        
         toast({
           title: "Generation Failed",
-          description: data.error,
+          description: errorMessage,
           variant: "destructive",
         });
         return;
       }
 
-      setGeneratedCodes(data.codes);
+      // Handle application-level errors in successful response
+      if (!data?.success) {
+        toast({
+          title: "Generation Failed",
+          description: data?.error || "Unknown error occurred",
+          variant: "destructive",
+        });
+        return;
+      }
+
+      setGeneratedCodes(data.codes || []);
       toast({
         title: "Success!",
         description: `Generated ${data.generated} gift code(s)`,
@@ -104,7 +128,7 @@ const AdminGiftCodes = () => {
       console.error('Error generating gift codes:', error);
       toast({
         title: "Error",
-        description: error.message || "Failed to generate gift codes",
+        description: "An unexpected error occurred. Please try again.",
         variant: "destructive",
       });
     } finally {
