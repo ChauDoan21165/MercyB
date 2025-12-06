@@ -24,6 +24,8 @@ function generateGiftCode(tier: 'VIP2' | 'VIP3'): string {
 }
 
 Deno.serve(async (req) => {
+  console.log('[generate-gift-code] Request received:', req.method);
+  
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
   }
@@ -41,6 +43,7 @@ Deno.serve(async (req) => {
 
     // Get user from auth
     const { data: { user }, error: authError } = await supabaseClient.auth.getUser();
+    console.log('[generate-gift-code] Auth result:', { userId: user?.id, authError: authError?.message });
     
     if (authError || !user) {
       return new Response(
@@ -64,7 +67,9 @@ Deno.serve(async (req) => {
       );
     }
 
-    const { tier, count = 1, code_expires_at, notes } = await req.json();
+    const body = await req.json();
+    const { tier, count = 1, code_expires_at, notes } = body;
+    console.log('[generate-gift-code] Request body:', { tier, count, notes, code_expires_at });
 
     if (!tier || !['VIP2', 'VIP3'].includes(tier)) {
       return new Response(
@@ -122,13 +127,15 @@ Deno.serve(async (req) => {
         });
 
       if (insertError) {
-        console.error('Insert error:', insertError);
+        console.error('[generate-gift-code] Insert error:', insertError);
         failedCodes.push(code);
       } else {
         generatedCodes.push(code);
       }
     }
 
+    console.log('[generate-gift-code] Generation complete:', { generated: generatedCodes.length, failed: failedCodes.length });
+    
     return new Response(
       JSON.stringify({
         success: true,

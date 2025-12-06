@@ -71,3 +71,6 @@ verify_jwt = false
 
 [functions.audio-storage-audit]
 verify_jwt = true
+
+[functions.generate-gift-code]
+verify_jwt = true
