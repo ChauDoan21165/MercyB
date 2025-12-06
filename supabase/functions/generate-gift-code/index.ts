@@ -63,21 +63,15 @@ Deno.serve(async (req) => {
       );
     }
 
-    // Use service role client for admin checks and inserts to bypass RLS
-    const supabaseAdmin = createClient(
-      Deno.env.get('SUPABASE_URL') ?? '',
-      Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
-    );
-
-    // Check if user is admin using service role
-    const { data: userRole, error: roleError } = await supabaseAdmin
+    // Check if user is admin using auth client (respects RLS)
+    const { data: userRole, error: roleError } = await supabaseClient
       .from('user_roles')
       .select('role')
       .eq('user_id', user.id)
       .eq('role', 'admin')
       .single();
 
-    console.log('[generate-gift-code] Role check:', { userRole, roleError: roleError?.message });
+    console.log('[generate-gift-code] Role check:', { userRole, roleError: (roleError as any)?.message });
 
     if (!userRole) {
       return new Response(
@@ -85,6 +79,12 @@ Deno.serve(async (req) => {
         { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 403 }
       );
     }
+
+    // Admin client for DB inserts (bypasses RLS)
+    const supabaseAdmin = createClient(
+      Deno.env.get('SUPABASE_URL') ?? '',
+      Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
+    );
 
     const body = await req.json();
     const { tier, count = 1, code_expires_at, notes } = body;
