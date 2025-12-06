@@ -104,6 +104,7 @@ const AudioCoverage = lazy(() => import("./pages/admin/AudioCoverage"));
 const AudioCrystal = lazy(() => import("./pages/admin/AudioCrystal"));
 const AudioAutopilot = lazy(() => import("./pages/admin/AudioAutopilot"));
 const RoomCoverage = lazy(() => import("./pages/admin/RoomCoverage"));
+const RoomAnalytics = lazy(() => import("./pages/admin/RoomAnalytics"));
 const AuditSafeShield = lazy(() => import("./components/admin/AuditSafeShield"));
 const SystemCodeFiles = lazy(() => import("./pages/admin/SystemCodeFiles"));
 const CodeViewer = lazy(() => import("./pages/admin/CodeViewer"));
@@ -325,6 +326,7 @@ const App = () => {
 <Route path="/admin/room-health" element={<AdminRoute><UnifiedRoomHealthCheck /></AdminRoute>} />
                       <Route path="/admin/room-health/:tier" element={<AdminRoute><UnifiedRoomHealthCheck /></AdminRoute>} />
                       <Route path="/admin/room-coverage" element={<AdminRoute><RoomCoverage /></AdminRoute>} />
+                      <Route path="/admin/room-analytics" element={<AdminRoute><RoomAnalytics /></AdminRoute>} />
                       <Route path="/admin/health-dashboard" element={<AdminRoute><HealthDashboard /></AdminRoute>} />
                       <Route path="/admin/room-health-dashboard" element={<AdminRoute><RoomHealthDashboard /></AdminRoute>} />
 <Route path="/admin/system-health" element={<AdminRoute><SystemHealth /></AdminRoute>} />
