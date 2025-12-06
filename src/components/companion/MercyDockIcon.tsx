@@ -19,10 +19,10 @@ export function MercyDockIcon({ visible, onClick, className }: MercyDockIconProp
       type="button"
       onClick={onClick}
       className={cn(
-        // Positioning: same area as bubble but smaller
-        'fixed z-40',
-        'bottom-28 right-4',
-        'md:bottom-8 md:right-[max(1rem,calc(50vw-360px+1rem))]',
+        // Positioning: above music player and iOS safe area
+        'fixed z-50',
+        'right-4',
+        'md:right-[max(1rem,calc(50vw-360px+1rem))]',
         // Appearance
         'group flex items-center gap-2 px-3 py-2 rounded-full',
         'bg-card/95 backdrop-blur-md shadow-lg border border-border/60',
@@ -30,6 +30,10 @@ export function MercyDockIcon({ visible, onClick, className }: MercyDockIconProp
         'cursor-pointer',
         className
       )}
+      style={{
+        // 100px for music player + safe area for iOS browser bar
+        bottom: 'calc(env(safe-area-inset-bottom, 0px) + 100px)',
+      }}
       aria-label="Show Mercy"
     >
       <MercyAvatar size={36} />

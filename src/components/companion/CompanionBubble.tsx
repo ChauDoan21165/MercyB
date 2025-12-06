@@ -63,10 +63,10 @@ export function CompanionBubble({
   return (
     <div 
       className={cn(
-        // Positioning: bottom-right inside 720px content, above bottom bar on mobile
-        'fixed z-40',
-        'bottom-28 right-4', // Mobile: above music bar
-        'md:bottom-8 md:right-[max(1rem,calc(50vw-360px+1rem))]', // Desktop: inside 720px
+        // Positioning: bottom-right, above music player and iOS safe area
+        'fixed z-50',
+        'right-4',
+        'md:right-[max(1rem,calc(50vw-360px+1rem))]', // Desktop: inside 720px
         // Size: bigger and clearer
         'w-[min(360px,calc(100vw-2rem))] max-w-sm',
         // Animation
@@ -75,7 +75,11 @@ export function CompanionBubble({
           ? 'opacity-100 translate-y-0 scale-100' 
           : 'opacity-0 translate-y-4 scale-95',
         className
-      )} 
+      )}
+      style={{
+        // Mobile: 100px for music player + safe area for iOS browser bar
+        bottom: 'calc(env(safe-area-inset-bottom, 0px) + 100px)',
+      }}
       role="dialog" 
       aria-live="polite"
       aria-label="Mercy companion"
