@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Lock, LogIn, Crown } from "lucide-react";
+import { Lock, LogIn, Crown, Gift } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import type { TierId } from "@/lib/constants/tiers";
@@ -47,12 +47,20 @@ export function LockedBanner({ roomTier, isLoggedIn = false }: LockedBannerProps
                   </Button>
                 </>
               ) : (
-                <Button asChild size="sm" variant="default">
-                  <Link to="/tiers">
-                    <Crown className="h-4 w-4 mr-2" />
-                    Upgrade to {tierLabel}
-                  </Link>
-                </Button>
+                <>
+                  <Button asChild size="sm" variant="default">
+                    <Link to="/tiers">
+                      <Crown className="h-4 w-4 mr-2" />
+                      Upgrade to {tierLabel}
+                    </Link>
+                  </Button>
+                  <Button asChild size="sm" variant="secondary">
+                    <Link to="/redeem">
+                      <Gift className="h-4 w-4 mr-2" />
+                      Redeem Gift Code
+                    </Link>
+                  </Button>
+                </>
               )}
             </div>
           </div>
@@ -61,7 +69,7 @@ export function LockedBanner({ roomTier, isLoggedIn = false }: LockedBannerProps
         {/* Vietnamese translation */}
         <div className="mt-3 pt-3 border-t border-amber-200 dark:border-amber-800">
           <p className="text-xs text-muted-foreground">
-            🇻🇳 Bạn đang xem bản xem trước của phòng này. Để mở khóa tất cả nội dung, hãy đăng nhập hoặc nâng cấp gói.
+            🇻🇳 Bạn đang xem bản xem trước của phòng này. Để mở khóa tất cả nội dung, hãy đăng nhập, nâng cấp gói, hoặc nhập mã quà tặng.
           </p>
         </div>
       </CardContent>

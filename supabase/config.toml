@@ -77,3 +77,6 @@ verify_jwt = true
 
 [functions.manage-admins]
 verify_jwt = true
+
+[functions.redeem-gift-code]
+verify_jwt = true
