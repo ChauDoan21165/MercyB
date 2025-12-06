@@ -1,0 +1,86 @@
+{
+  "id": "mens-mental-health-free",
+  "name": "Men's Mental Health",
+  "name_vi": "Sức Khỏe Tinh Thần Nam Giới",
+  "description": "Practical guidance for men's mental health with daily support",
+  "keywords_en": [
+    "men",
+    "mental health",
+    "stress",
+    "support"
+  ],
+  "keywords_vi": [
+    "nam giới",
+    "sức khỏe tinh thần",
+    "căng thẳng",
+    "hỗ trợ"
+  ],
+  "entries": [
+    {
+      "slug": "check-in",
+      "keywords_en": [
+        "check in",
+        "emotion",
+        "health"
+      ],
+      "keywords_vi": [
+        "kiểm tra",
+        "cảm xúc",
+        "sức khỏe"
+      ],
+      "copy": {
+        "en": "A daily check-in keeps you grounded and self-aware. Each morning or before bed, pause and ask yourself, \"How do I feel right now?\" Notice your energy, tension, and thoughts without judging them. Write one honest line in your journal — even two words can reveal a pattern. Share a reflection with a trusted friend or mentor once a week. Awareness grows through repetition; it helps you catch burnout early and name feelings before they spiral. Small daily honesty builds emotional strength over time, turning reflection into your quiet armor.",
+        "vi": "Kiểm tra cảm xúc mỗi ngày giúp bạn giữ vững và hiểu rõ bản thân. Mỗi sáng hoặc trước khi ngủ, hãy dừng lại và tự hỏi, \"Bây giờ tôi cảm thấy thế nào?\" Nhận ra năng lượng, căng thẳng và suy nghĩ của mình mà không phán xét. Viết một dòng trung thực vào nhật ký — dù chỉ hai từ cũng có thể hé lộ một khuôn mẫu. Mỗi tuần chia sẻ một suy nghĩ với người bạn tin cậy. Sự nhận thức đều đặn giúp bạn nhận ra kiệt sức sớm và nuôi dưỡng sức mạnh tinh thần bền vững."
+      },
+      "tags": [
+        "check",
+        "health"
+      ],
+      "audio": "mmh_free_1_en.mp3"
+    },
+    {
+      "slug": "walk-talk",
+      "keywords_en": [
+        "walk talk",
+        "friend",
+        "support"
+      ],
+      "keywords_vi": [
+        "đi bộ nói",
+        "bạn bè",
+        "hỗ trợ"
+      ],
+      "copy": {
+        "en": "Walk and talk with a mate — it's therapy without walls. Spend thirty minutes moving outdoors, breathing steadily, and sharing openly about what's been heavy on your mind. Let the rhythm of footsteps loosen guarded thoughts. Don't rush to solve or compare pain; just listen and stay present. Simple honesty builds real trust. Regular 'walk and talk' sessions ease isolation, lower stress hormones, and restore emotional balance. Nature plus connection is medicine for modern men who often carry silent burdens. Sometimes, just being heard is enough to heal what words can't fix.",
+        "vi": "Đi bộ và trò chuyện với bạn – đó là liệu pháp không tường ngăn. Dành ba mươi phút ngoài trời, hít thở đều và chia sẻ những điều khiến bạn nặng lòng. Nhịp bước giúp suy nghĩ mở ra. Đừng vội khuyên hay so sánh nỗi đau; chỉ cần lắng nghe và hiện diện. Sự trung thực giản dị tạo nên niềm tin thật. Các buổi \"đi và nói\" thường xuyên giúp giảm cô lập, hạ hormone căng thẳng và khôi phục cân bằng cảm xúc. Thiên nhiên và kết nối là liều thuốc cho những người đàn ông mang gánh nặng thầm lặng."
+      },
+      "tags": [
+        "talk",
+        "health"
+      ],
+      "audio": "mmh_free_2_en.mp3"
+    },
+    {
+      "slug": "ask-for-help",
+      "keywords_en": [
+        "help",
+        "therapy",
+        "courage"
+      ],
+      "keywords_vi": [
+        "giúp đỡ",
+        "trị liệu",
+        "can đảm"
+      ],
+      "copy": {
+        "en": "Asking for help is not weakness; it's training for courage. When stress or sadness lingers for weeks, reach out to someone — a close friend, counselor, or men's group. Speak plainly about what's happening, even if it feels awkward. Professionals can guide you through anxiety, anger, or numbness before they grow larger. Building a support system early protects your mental health the way exercise guards your heart. Remember, resilience is not doing everything alone; it's knowing when to lean. Every strong man has learned that true strength includes letting others in.",
+        "vi": "Việc xin giúp đỡ không phải yếu đuối mà là luyện tập lòng can đảm. Khi căng thẳng hay buồn bã kéo dài nhiều tuần, hãy tìm đến ai đó – một người bạn thân, chuyên viên tư vấn, hoặc nhóm nam giới. Hãy nói thẳng dù có thấy ngại. Người chuyên môn có thể giúp bạn nhận diện lo âu, giận dữ hay tê liệt cảm xúc trước khi chúng phình to. Xây dựng mạng lưới hỗ trợ sớm sẽ bảo vệ sức khỏe tinh thần như tập thể dục bảo vệ tim. Sức mạnh thật sự nằm ở việc dám dựa vào người khác khi cần."
+      },
+      "tags": [
+        "help",
+        "therapy"
+      ],
+      "audio": "mmh_free_3_en.mp3"
+    }
+  ]
+}

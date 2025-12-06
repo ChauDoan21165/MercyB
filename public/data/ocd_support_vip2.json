@@ -1,0 +1,165 @@
+{
+  "id": "ocd-support-vip2",
+  "tier": "VIP2 / VIP2",
+  "name": "OCD Support",
+  "name_vi": "Hỗ Trợ Rối Loạn Ám Ảnh Cưỡng Chế",
+  "description": "Advanced strategies for managing OCD with therapy and mindfulness",
+  "keywords_en": [
+    "OCD",
+    "ERP therapy",
+    "intrusive thoughts",
+    "support system",
+    "mindfulness"
+  ],
+  "keywords_vi": [
+    "rối loạn ám ảnh cưỡng chế",
+    "liệu pháp ERP",
+    "suy nghĩ xâm nhập",
+    "hệ thống hỗ trợ",
+    "chánh niệm"
+  ],
+  "entries": [
+    {
+      "slug": "erp-therapy",
+      "keywords_en": [
+        "ERP",
+        "therapy",
+        "coping"
+      ],
+      "keywords_vi": [
+        "ERP",
+        "liệu pháp",
+        "đối phó"
+      ],
+      "copy": {
+        "en": "Exposure and Response Prevention (ERP) therapy is a cornerstone for OCD management. Work with a therapist to face intrusive thoughts without acting on compulsions, starting with small exposures. Practice regularly to build confidence and reduce anxiety. Connect with a support group for encouragement and shared strategies. This approach fosters resilience, helping you regain control and manage OCD symptoms effectively with clarity and strength.",
+        "vi": "Liệu pháp Phơi nhiễm và Ngăn chặn Phản ứng (ERP) là nền tảng trong việc quản lý rối loạn ám ảnh cưỡng chế. Hãy hợp tác với chuyên gia để đối diện với các suy nghĩ xâm nhập mà không thực hiện hành vi cưỡng chế, bắt đầu từ những bước phơi nhiễm nhỏ. Việc thực hành đều đặn giúp bạn tăng tự tin, giảm lo âu và cải thiện khả năng kiểm soát. Kết nối với nhóm hỗ trợ để nhận động viên và chia sẻ kinh nghiệm. Cách tiếp cận này giúp xây dựng nghị lực, mang lại sự rõ ràng và sức mạnh nội tâm để quản lý triệu chứng hiệu quả."
+      },
+      "tags": [
+        "therapy",
+        "OCD"
+      ],
+      "audio": "ocd_support_vip2_erp_therapy.mp3"
+    },
+    {
+      "slug": "intrusive-thoughts",
+      "keywords_en": [
+        "intrusive thoughts",
+        "management",
+        "awareness"
+      ],
+      "keywords_vi": [
+        "suy nghĩ xâm nhập",
+        "quản lý",
+        "nhận thức"
+      ],
+      "copy": {
+        "en": "Managing intrusive thoughts is essential for OCD recovery. Acknowledge thoughts without judgment, letting them pass without engaging in compulsions. Practice mindfulness, like deep breathing, to stay present and reduce their intensity. Journaling helps track patterns and build self-awareness. Connect with a support group for empathy, fostering resilience to navigate OCD challenges with clarity and emotional strength.",
+        "vi": "Quản lý suy nghĩ xâm nhập là bước thiết yếu trong hành trình phục hồi rối loạn ám ảnh cưỡng chế. Hãy nhận diện suy nghĩ mà không phán xét, để chúng tự nhiên trôi qua mà không hành động theo thôi thúc cưỡng chế. Thực hành chánh niệm, như thở sâu, giúp bạn giữ tâm trí ở hiện tại và giảm cường độ ám ảnh. Việc ghi nhật ký giúp theo dõi mô hình suy nghĩ và tăng tự nhận thức. Kết nối với nhóm hỗ trợ để tìm sự đồng cảm và học hỏi chiến lược đối phó, từ đó nuôi dưỡng nghị lực và sự sáng suốt cảm xúc."
+      },
+      "tags": [
+        "intrusive thoughts",
+        "OCD"
+      ],
+      "audio": "ocd_support_vip2_intrusive_thoughts.mp3"
+    },
+    {
+      "slug": "support-system",
+      "keywords_en": [
+        "support system",
+        "community",
+        "empathy"
+      ],
+      "keywords_vi": [
+        "hệ thống hỗ trợ",
+        "cộng đồng",
+        "đồng cảm"
+      ],
+      "copy": {
+        "en": "A strong support system significantly enhances OCD management. Share your experiences with friends, family, or support groups to foster empathy and reduce isolation. Open communication helps loved ones understand your needs and triggers. Regular check-ins provide encouragement and practical strategies, building resilience to manage OCD symptoms effectively with strength and hope.",
+        "vi": "Hệ thống hỗ trợ vững chắc góp phần quan trọng trong việc quản lý rối loạn ám ảnh cưỡng chế. Hãy chia sẻ trải nghiệm của bạn với bạn bè, gia đình hoặc nhóm hỗ trợ để nuôi dưỡng sự đồng cảm và giảm cảm giác cô lập. Giao tiếp cởi mở giúp người thân hiểu rõ hơn nhu cầu và yếu tố kích hoạt của bạn. Việc duy trì liên lạc thường xuyên mang lại nguồn động viên và chiến lược thực tế, giúp bạn kiên cường, tự tin và duy trì hy vọng trong quá trình điều trị."
+      },
+      "tags": [
+        "support",
+        "OCD"
+      ],
+      "audio": "ocd_support_vip2_support_system.mp3"
+    },
+    {
+      "slug": "mindfulness",
+      "keywords_en": [
+        "mindfulness",
+        "calm",
+        "awareness"
+      ],
+      "keywords_vi": [
+        "chánh niệm",
+        "bình tĩnh",
+        "nhận thức"
+      ],
+      "copy": {
+        "en": "Mindfulness is a powerful tool for OCD management, fostering calm and clarity. Practice deep breathing or meditation daily to stay present, reducing the urge to act on compulsions. These techniques help manage intrusive thoughts effectively. Connect with a community to share mindfulness practices, building resilience and emotional balance for long-term symptom management.",
+        "vi": "Chánh niệm là công cụ mạnh mẽ trong việc kiểm soát rối loạn ám ảnh cưỡng chế, giúp nuôi dưỡng sự bình tĩnh và sáng suốt. Thực hành thở sâu hoặc thiền định mỗi ngày để duy trì sự hiện diện trong hiện tại, từ đó giảm thôi thúc thực hiện hành vi cưỡng chế. Các kỹ thuật này giúp bạn quản lý suy nghĩ xâm nhập hiệu quả hơn. Kết nối với cộng đồng để chia sẻ kinh nghiệm thực hành chánh niệm, củng cố nghị lực và cân bằng cảm xúc lâu dài."
+      },
+      "tags": [
+        "mindfulness",
+        "OCD"
+      ],
+      "audio": "ocd_support_vip2_mindfulness.mp3"
+    },
+    {
+      "slug": "coping-strategies",
+      "keywords_en": [
+        "coping strategies",
+        "resilience",
+        "management"
+      ],
+      "keywords_vi": [
+        "chiến lược đối phó",
+        "kiên cường",
+        "quản lý"
+      ],
+      "copy": {
+        "en": "Coping strategies are vital for OCD management. Practice ERP to face fears and mindfulness to stay grounded. Journaling helps track triggers and progress, fostering self-awareness. Connect with a support group for encouragement and shared techniques. These steps build resilience, helping you manage OCD symptoms with clarity, strength, and emotional balance daily.",
+        "vi": "Chiến lược đối phó đóng vai trò quan trọng trong quá trình kiểm soát rối loạn ám ảnh cưỡng chế. Hãy thực hành ERP để đối mặt với nỗi sợ và rèn luyện chánh niệm để giữ tâm an vững vàng. Việc ghi nhật ký giúp theo dõi các yếu tố kích hoạt và tiến trình hồi phục, đồng thời tăng khả năng tự nhận thức. Kết nối với nhóm hỗ trợ để nhận động viên và học hỏi kỹ thuật từ những người cùng trải nghiệm. Những bước này giúp bạn củng cố nghị lực, duy trì sự cân bằng cảm xúc và quản lý triệu chứng mỗi ngày một hiệu quả hơn."
+      },
+      "tags": [
+        "coping",
+        "OCD"
+      ],
+      "audio": "ocd_support_vip2_coping_strategies.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": [
+        "all",
+        "full sequence",
+        "combined",
+        "complete",
+        "OCD",
+        "support"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "chuỗi đầy đủ",
+        "kết hợp",
+        "hoàn chỉnh",
+        "rối loạn ám ảnh cưỡng chế",
+        "hỗ trợ"
+      ],
+      "copy": {
+        "en": "Exposure and Response Prevention (ERP) therapy is a cornerstone for OCD management. Work with a therapist to face intrusive thoughts without acting on compulsions, starting with small exposures. Practice regularly to build confidence and reduce anxiety. Connect with a support group for encouragement and shared strategies. This approach fosters resilience, helping you regain control and manage OCD symptoms effectively with clarity and strength. Managing intrusive thoughts is essential for OCD recovery. Acknowledge thoughts without judgment, letting them pass without engaging in compulsions. Practice mindfulness, like deep breathing, to stay present and reduce their intensity. Journaling helps track patterns and build self-awareness. Connect with a support group for empathy, fostering resilience to navigate OCD challenges with clarity and emotional strength. A strong support system significantly enhances OCD management. Share your experiences with friends, family, or support groups to foster empathy and reduce isolation. Open communication helps loved ones understand your needs and triggers. Regular check-ins provide encouragement and practical strategies, building resilience to manage OCD symptoms effectively with strength and hope. Mindfulness is a powerful tool for OCD management, fostering calm and clarity. Practice deep breathing or meditation daily to stay present, reducing the urge to act on compulsions. These techniques help manage intrusive thoughts effectively. Connect with a community to share mindfulness practices, building resilience and emotional balance for long-term symptom management. Coping strategies are vital for OCD management. Practice ERP to face fears and mindfulness to stay grounded. Journaling helps track triggers and progress, fostering self-awareness. Connect with a support group for encouragement and shared techniques. These steps build resilience, helping you manage OCD symptoms with clarity, strength, and emotional balance daily.",
+        "vi": "Liệu pháp Phơi nhiễm và Ngăn chặn Phản ứng (ERP) là nền tảng trong việc quản lý rối loạn ám ảnh cưỡng chế. Hãy hợp tác với chuyên gia để đối diện với các suy nghĩ xâm nhập mà không thực hiện hành vi cưỡng chế, bắt đầu từ những bước phơi nhiễm nhỏ. Việc thực hành đều đặn giúp bạn tăng tự tin, giảm lo âu và cải thiện khả năng kiểm soát. Kết nối với nhóm hỗ trợ để nhận động viên và chia sẻ kinh nghiệm. Cách tiếp cận này giúp xây dựng nghị lực, mang lại sự rõ ràng và sức mạnh nội tâm để quản lý triệu chứng hiệu quả. Quản lý suy nghĩ xâm nhập là bước thiết yếu trong hành trình phục hồi rối loạn ám ảnh cưỡng chế. Hãy nhận diện suy nghĩ mà không phán xét, để chúng tự nhiên trôi qua mà không hành động theo thôi thúc cưỡng chế. Thực hành chánh niệm, như thở sâu, giúp bạn giữ tâm trí ở hiện tại và giảm cường độ ám ảnh. Việc ghi nhật ký giúp theo dõi mô hình suy nghĩ và tăng tự nhận thức. Kết nối với nhóm hỗ trợ để tìm sự đồng cảm và học hỏi chiến lược đối phó, từ đó nuôi dưỡng nghị lực và sự sáng suốt cảm xúc. Hệ thống hỗ trợ vững chắc góp phần quan trọng trong việc quản lý rối loạn ám ảnh cưỡng chế. Hãy chia sẻ trải nghiệm của bạn với bạn bè, gia đình hoặc nhóm hỗ trợ để nuôi dưỡng sự đồng cảm và giảm cảm giác cô lập. Giao tiếp cởi mở giúp người thân hiểu rõ hơn nhu cầu và yếu tố kích hoạt của bạn. Việc duy trì liên lạc thường xuyên mang lại nguồn động viên và chiến lược thực tế, giúp bạn kiên cường, tự tin và duy trì hy vọng trong quá trình điều trị. Chánh niệm là công cụ mạnh mẽ trong việc kiểm soát rối loạn ám ảnh cưỡng chế, giúp nuôi dưỡng sự bình tĩnh và sáng suốt. Thực hành thở sâu hoặc thiền định mỗi ngày để duy trì sự hiện diện trong hiện tại, từ đó giảm thôi thúc thực hiện hành vi cưỡng chế. Các kỹ thuật này giúp bạn quản lý suy nghĩ xâm nhập hiệu quả hơn. Kết nối với cộng đồng để chia sẻ kinh nghiệm thực hành chánh niệm, củng cố nghị lực và cân bằng cảm xúc lâu dài. Chiến lược đối phó đóng vai trò quan trọng trong quá trình kiểm soát rối loạn ám ảnh cưỡng chế. Hãy thực hành ERP để đối mặt với nỗi sợ và rèn luyện chánh niệm để giữ tâm an vững vàng. Việc ghi nhật ký giúp theo dõi các yếu tố kích hoạt và tiến trình hồi phục, đồng thời tăng khả năng tự nhận thức. Kết nối với nhóm hỗ trợ để nhận động viên và học hỏi kỹ thuật từ những người cùng trải nghiệm. Những bước này giúp bạn củng cố nghị lực, duy trì sự cân bằng cảm xúc và quản lý triệu chứng mỗi ngày một hiệu quả hơn."
+      },
+      "tags": [
+        "all",
+        "combined",
+        "full",
+        "complete",
+        "OCD",
+        "support"
+      ],
+      "audio": "ocd_support_vip2_erp_therapy.mp3 ocd_support_vip2_intrusive_thoughts.mp3 ocd_support_vip2_support_system.mp3 ocd_support_vip2_mindfulness.mp3 ocd_support_vip2_coping_strategies.mp3"
+    }
+  ]
+}

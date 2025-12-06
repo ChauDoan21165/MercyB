@@ -1,0 +1,61 @@
+{
+  "id": "ai-vip1",
+  "tier": "VIP1 / VIP1",
+  "keywords_en": ["AI", "intelligence", "learning", "creativity", "future"],
+  "keywords_vi": ["AI", "trí tuệ", "học hỏi", "sáng tạo", "tương lai"],
+  "title": {
+    "en": "AI Advanced Techniques VIP1",
+    "vi": "Kỹ Thuật AI Nâng Cao VIP1"
+  },
+  "content": {
+    "en": "AI is one of the most exciting fields because it bridges imagination and intelligence. Machines that learn and create challenge us to rethink what being human means. This room explores the wonder of AI—how patterns, data, and logic merge to reveal something close to thought itself. Let curiosity guide you as you enter this evolving conversation between technology and consciousness.",
+    "vi": "AI là một trong những lĩnh vực thú vị nhất vì nó kết nối trí tưởng tượng và trí tuệ. Những cỗ máy biết học và sáng tạo khiến chúng ta suy ngẫm lại về ý nghĩa của con người. Phòng này khám phá sự kỳ diệu của AI — nơi mẫu, dữ liệu và logic hòa quyện để hé lộ điều gì đó gần với tư duy. Hãy để sự tò mò dẫn lối bạn trong cuộc đối thoại giữa công nghệ và ý thức.",
+    "audio": "ai_advanced_intro_vip1.mp3"
+  },
+  "entries": [
+    {
+      "slug": "curiosity-of-intelligence",
+      "keywords_en": ["curiosity", "intelligence", "learning"],
+      "keywords_vi": ["tò mò", "trí tuệ", "học hỏi"],
+      "copy": {
+        "en": "What makes AI fascinating is its ability to mirror human curiosity. Every model begins as a blank slate, learning patterns from data just as we do from experience. Watching machines make sense of the world reminds us that intelligence is not fixed—it grows, adapts, and surprises. AI becomes a reflection of our desire to understand and to create meaning from complexity.",
+        "vi": "Điều khiến AI hấp dẫn là khả năng phản chiếu sự tò mò của con người. Mỗi mô hình bắt đầu như một tờ giấy trắng, học các mẫu từ dữ liệu giống như chúng ta học từ trải nghiệm. Khi thấy máy móc hiểu thế giới, ta nhận ra trí tuệ không cố định — nó phát triển, thích nghi và luôn gây bất ngờ. AI trở thành tấm gương phản chiếu khát vọng hiểu biết và tìm ý nghĩa giữa phức tạp."
+      },
+      "tags": ["curiosity", "intelligence"],
+      "audio": "curiosity_of_intelligence_vip1.mp3"
+    },
+    {
+      "slug": "art-and-science-of-ai",
+      "keywords_en": ["art", "science", "creativity"],
+      "keywords_vi": ["nghệ thuật", "khoa học", "sáng tạo"],
+      "copy": {
+        "en": "AI blends art and science in a way no other field does. Behind algorithms and numbers lies creativity—the intuition to design systems that can paint, write, and dream. Engineers become artists, crafting intelligence that learns and expresses. AI teaches us that creativity is not limited to humans; it is the language of possibility that connects imagination with understanding.",
+        "vi": "AI hòa trộn nghệ thuật và khoa học theo cách không lĩnh vực nào khác làm được. Đằng sau các thuật toán và con số là sự sáng tạo — trực giác để thiết kế hệ thống có thể vẽ, viết và mơ. Các kỹ sư trở thành nghệ sĩ, nhào nặn trí tuệ biết học và biểu đạt. AI dạy ta rằng sáng tạo không chỉ của con người; đó là ngôn ngữ của khả năng, kết nối tưởng tượng với thấu hiểu."
+      },
+      "tags": ["creativity", "innovation"],
+      "audio": "art_and_science_of_ai_vip1.mp3"
+    },
+    {
+      "slug": "future-of-human-connection",
+      "keywords_en": ["future", "connection", "empathy"],
+      "keywords_vi": ["tương lai", "kết nối", "đồng cảm"],
+      "copy": {
+        "en": "The future of AI is not about replacing people but connecting them. As machines understand language, emotion, and intent, they can amplify human empathy rather than diminish it. Imagine an AI that listens deeply, supports mental health, or bridges cultures. Each breakthrough reminds us that technology’s highest purpose is not control—it’s connection, compassion, and shared understanding.",
+        "vi": "Tương lai của AI không phải là thay thế con người mà là kết nối họ. Khi máy móc hiểu ngôn ngữ, cảm xúc và ý định, chúng có thể khuếch đại lòng đồng cảm thay vì làm nó phai nhạt. Hãy tưởng tượng một AI biết lắng nghe sâu sắc, hỗ trợ sức khỏe tinh thần hoặc nối liền các nền văn hóa. Mỗi bước tiến đều nhắc ta rằng mục đích cao nhất của công nghệ không phải là kiểm soát — mà là kết nối, thấu cảm và chia sẻ."
+      },
+      "tags": ["empathy", "connection"],
+      "audio": "future_of_human_connection_vip1.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": ["all", "full sequence", "complete", "combined", "ai vip1"],
+      "keywords_vi": ["tất cả", "chuỗi đầy đủ", "hoàn chỉnh", "kết hợp", "ai vip1"],
+      "copy": {
+        "en": "What makes AI fascinating is its ability to mirror human curiosity. Every model begins as a blank slate, learning patterns from data just as we do from experience. Watching machines make sense of the world reminds us that intelligence is not fixed—it grows, adapts, and surprises. AI becomes a reflection of our desire to understand and to create meaning from complexity. AI blends art and science in a way no other field does. Behind algorithms and numbers lies creativity—the intuition to design systems that can paint, write, and dream. Engineers become artists, crafting intelligence that learns and expresses. AI teaches us that creativity is not limited to humans; it is the language of possibility that connects imagination with understanding. The future of AI is not about replacing people but connecting them. As machines understand language, emotion, and intent, they can amplify human empathy rather than diminish it. Imagine an AI that listens deeply, supports mental health, or bridges cultures. Each breakthrough reminds us that technology’s highest purpose is not control—it’s connection, compassion, and shared understanding.",
+        "vi": "Điều khiến AI hấp dẫn là khả năng phản chiếu sự tò mò của con người. Mỗi mô hình bắt đầu như một tờ giấy trắng, học các mẫu từ dữ liệu giống như chúng ta học từ trải nghiệm. Khi thấy máy móc hiểu thế giới, ta nhận ra trí tuệ không cố định — nó phát triển, thích nghi và luôn gây bất ngờ. AI trở thành tấm gương phản chiếu khát vọng hiểu biết và tìm ý nghĩa giữa phức tạp. AI hòa trộn nghệ thuật và khoa học theo cách không lĩnh vực nào khác làm được. Đằng sau các thuật toán và con số là sự sáng tạo — trực giác để thiết kế hệ thống có thể vẽ, viết và mơ. Các kỹ sư trở thành nghệ sĩ, nhào nặn trí tuệ biết học và biểu đạt. AI dạy ta rằng sáng tạo không chỉ của con người; đó là ngôn ngữ của khả năng, kết nối tưởng tượng với thấu hiểu. Tương lai của AI không phải là thay thế con người mà là kết nối họ. Khi máy móc hiểu ngôn ngữ, cảm xúc và ý định, chúng có thể khuếch đại lòng đồng cảm thay vì làm nó phai nhạt. Hãy tưởng tượng một AI biết lắng nghe sâu sắc, hỗ trợ sức khỏe tinh thần hoặc nối liền các nền văn hóa. Mỗi bước tiến đều nhắc ta rằng mục đích cao nhất của công nghệ không phải là kiểm soát — mà là kết nối, thấu cảm và chia sẻ."
+      },
+      "tags": ["all", "combined", "full sequence", "complete"],
+      "audio": "curiosity_of_intelligence_vip1.mp3 art_and_science_of_ai_vip1.mp3 future_of_human_connection_vip1.mp3"
+    }
+  ]
+}

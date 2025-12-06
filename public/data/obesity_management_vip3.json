@@ -1,0 +1,142 @@
+{
+  "name": "Obesity Management VIP3",
+  "name_vi": "Quản Lý Béo Phì VIP3",
+  "description": "Advanced, evidence-informed strategies for long-term obesity management with metabolic optimization, behavioral mastery, and sustainable lifestyle systems.",
+  "description_vi": "Các chiến lược nâng cao, dựa trên bằng chứng để quản lý béo phì lâu dài thông qua tối ưu hóa chuyển hóa, làm chủ hành vi và các hệ thống lối sống bền vững.",
+  "keywords_en": [
+    "obesity",
+    "metabolism",
+    "nutrition",
+    "behavior",
+    "fitness"
+  ],
+  "keywords_vi": [
+    "béo phì",
+    "chuyển hóa",
+    "dinh dưỡng",
+    "hành vi",
+    "thể chất"
+  ],
+  "entries": [
+    {
+      "slug": "metabolic-reboot",
+      "keywords_en": [
+        "metabolic reboot",
+        "insulin",
+        "energy"
+      ],
+      "keywords_vi": [
+        "tái thiết chuyển hóa",
+        "insulin",
+        "năng lượng"
+      ],
+      "copy": {
+        "en": "A metabolic reboot supports long-term obesity management by restoring balance to energy systems rather than focusing on short-term restriction. Begin by identifying patterns that influence glucose stability—late-night snacking, irregular meals, or high-glycemic foods. Shift toward structured eating windows, balancing proteins, fibers, and slow-digesting carbohydrates to reduce insulin spikes. Track morning energy, cravings, and hunger waves to read your metabolic signals. Pair this with two to three weekly strength sessions to increase lean mass, which naturally elevates resting metabolic rate. Consider working with a metabolic specialist to interpret biomarkers such as fasting insulin, HOMA-IR, and post-meal glucose curves. Small metabolic wins compound over time, building a foundation where weight loss becomes more steady, predictable, and sustainable.",
+        "vi": "Một quá trình tái thiết chuyển hóa hỗ trợ quản lý béo phì lâu dài bằng cách khôi phục sự cân bằng của hệ năng lượng thay vì tập trung vào kiêng khem ngắn hạn. Hãy bắt đầu bằng cách xác định các thói quen ảnh hưởng đến sự ổn định đường huyết—ăn khuya, bữa ăn thất thường hoặc thực phẩm có chỉ số đường cao. Chuyển sang khung giờ ăn có cấu trúc, cân bằng đạm, chất xơ và tinh bột tiêu hóa chậm để giảm dao động insulin. Theo dõi mức năng lượng buổi sáng, cơn thèm ăn và nhịp đói để đọc tín hiệu chuyển hóa. Kết hợp 2–3 buổi tập sức mạnh mỗi tuần để tăng khối cơ, giúp nâng tỷ lệ trao đổi chất khi nghỉ. Hãy cân nhắc làm việc với chuyên gia chuyển hóa để theo dõi insulin đói, HOMA-IR và biến động đường huyết sau ăn. Những tiến bộ nhỏ tích lũy dần tạo nền tảng để giảm cân ổn định và bền vững hơn."
+      },
+      "tags": [
+        "metabolism",
+        "nutrition",
+        "energy"
+      ],
+      "audio": "obm_vip3_1_en.mp3",
+      "essay_ref": "obm_vip3_1_essay.txt"
+    },
+    {
+      "slug": "behavioral-master-planning",
+      "keywords_en": [
+        "behavior design",
+        "habits",
+        "consistency"
+      ],
+      "keywords_vi": [
+        "thiết kế hành vi",
+        "thói quen",
+        "nhất quán"
+      ],
+      "copy": {
+        "en": "Obesity management succeeds when behavior design becomes intentional and structured. Instead of relying on motivation, build systems that guide automatic choices. Start by mapping your daily environment: identify cues that trigger overeating, impulse snacking, or skipped workouts. Replace friction with support—prepare visible meal-prep boxes, keep fruit on the counter, and store trigger foods out of sight. Use micro-commitments: five minutes of movement, one mindful bite, or a single food log entry. These tiny actions bypass overwhelm and build momentum. Track behavior success daily using a simple scoring system: 1 for completion, 0 for miss. After four weeks, review patterns and adjust your environment or schedule to support consistency. A behavioral master plan turns weight management into a predictable, repeatable process.",
+        "vi": "Quản lý béo phì thành công khi việc thiết kế hành vi trở nên có chủ đích và có cấu trúc. Thay vì dựa vào động lực, hãy xây dựng các hệ thống giúp lựa chọn tự động hơn. Hãy bắt đầu bằng cách quan sát môi trường hằng ngày: xác định các yếu tố kích hoạt ăn quá nhiều, ăn vặt theo cảm xúc hoặc bỏ tập. Thay thế rào cản bằng hỗ trợ—chuẩn bị hộp thức ăn đặt nơi dễ thấy, để trái cây trên bàn và cất đồ ăn kích thích khuất tầm mắt. Sử dụng cam kết vi mô: năm phút vận động, một miếng ăn chánh niệm hoặc một lần ghi chép thực phẩm. Những hành động nhỏ này giúp giảm quá tải và tạo đà tiến bộ. Theo dõi mức độ hoàn thành hành vi mỗi ngày bằng hệ thống điểm đơn giản: 1 khi hoàn thành, 0 khi bỏ lỡ. Sau bốn tuần, xem lại mô hình và điều chỉnh môi trường hoặc lịch trình để duy trì sự nhất quán. Một kế hoạch hành vi mạnh mẽ giúp quá trình quản lý cân nặng trở nên ổn định và có thể lặp lại."
+      },
+      "tags": [
+        "behavior",
+        "habits",
+        "planning"
+      ],
+      "audio": "obm_vip3_2_en.mp3",
+      "essay_ref": "obm_vip3_2_essay.txt"
+    },
+    {
+      "slug": "appetite-and-craving-regulation",
+      "keywords_en": [
+        "appetite control",
+        "cravings",
+        "hormones"
+      ],
+      "keywords_vi": [
+        "kiểm soát thèm ăn",
+        "cơn thèm",
+        "hormone"
+      ],
+      "copy": {
+        "en": "Appetite regulation is a core driver of long-term obesity management. Instead of battling cravings with willpower, learn to understand the hormonal signals behind them. Ghrelin rises when meals are skipped, so stabilize hunger by eating protein-centered breakfasts. Leptin resistance, common in obesity, improves through consistent sleep, reduced sugar intake, and strength training. When cravings appear, label the sensation—stress hunger, habit hunger, or physical hunger. Use the 10-minute pause strategy: hydrate, breathe deeply, and reassess. Keep a craving journal to track patterns tied to mood, fatigue, or environment. Introduce high-volume foods like vegetables, broth-based soups, and berries to create natural fullness without calorie overload. Over time, appetite becomes more predictable, reducing the emotional charge around eating.",
+        "vi": "Điều chỉnh thèm ăn là yếu tố cốt lõi trong quản lý béo phì lâu dài. Thay vì chống lại cơn thèm bằng ý chí, hãy hiểu các tín hiệu hormone phía sau chúng. Ghrelin tăng khi bỏ bữa, vì vậy hãy ổn định cảm giác đói bằng bữa sáng giàu đạm. Kháng leptin—phổ biến ở người béo phì—cải thiện nhờ giấc ngủ ổn định, giảm đường và tập sức mạnh. Khi cơn thèm xuất hiện, hãy gọi tên nó—đói do căng thẳng, đói theo thói quen hoặc đói sinh lý. Sử dụng chiến lược tạm dừng 10 phút: uống nước, thở sâu và đánh giá lại. Giữ nhật ký cơn thèm để theo dõi sự liên quan giữa tâm trạng, mệt mỏi hoặc môi trường. Tăng thực phẩm giàu thể tích như rau, súp loãng và quả mọng để tạo cảm giác no tự nhiên mà không thừa calo. Theo thời gian, cơn đói trở nên dễ dự đoán hơn, giảm áp lực cảm xúc trong việc ăn uống."
+      },
+      "tags": [
+        "nutrition",
+        "hormones",
+        "behavior"
+      ],
+      "audio": "obm_vip3_3_en.mp3",
+      "essay_ref": "obm_vip3_3_essay.txt"
+    },
+    {
+      "slug": "movement-optimization",
+      "keywords_en": [
+        "movement",
+        "fitness",
+        "fat loss"
+      ],
+      "keywords_vi": [
+        "vận động",
+        "thể chất",
+        "giảm mỡ"
+      ],
+      "copy": {
+        "en": "Optimizing movement means designing an activity system that improves metabolic conditioning without burnout. Combine three pillars: strength, cardio, and lifestyle movement. Aim for three strength sessions weekly using compound lifts to increase lean mass. Add two low-impact cardio days—zones 2–3—to enhance fat oxidation. Track steps and aim for steady daily movement between 8,000 and 12,000 for metabolic flexibility. Every Sunday, review your recovery markers: sleep quality, soreness, motivation, and mood. Adjust intensity accordingly. If progress stalls, introduce micro-periodization—lighter weeks followed by progressive ramping. Consider working with a movement specialist to refine technique and prevent injuries. Your goal is not exhaustion, but sustainable conditioning that supports long-term weight stability.",
+        "vi": "Tối ưu vận động nghĩa là xây dựng hệ thống hoạt động cải thiện điều hòa chuyển hóa mà không kiệt sức. Kết hợp ba trụ cột: sức mạnh, tim mạch và vận động lối sống. Mục tiêu gồm ba buổi tập sức mạnh mỗi tuần với các bài nâng đa khớp để tăng khối cơ. Thêm hai ngày cardio nhẹ—zone 2–3—để tăng khả năng đốt mỡ. Theo dõi số bước và duy trì mức vận động 8.000–12.000 bước/ngày để linh hoạt chuyển hóa. Mỗi Chủ nhật, xem lại dấu hiệu hồi phục: chất lượng ngủ, đau nhức, động lực và tâm trạng. Điều chỉnh cường độ tùy theo phản hồi cơ thể. Nếu tiến độ chững lại, hãy thử chu kỳ vi mô—tuần nhẹ xen kẽ tuần tăng dần. Cân nhắc làm việc với chuyên gia vận động để cải thiện kỹ thuật và tránh chấn thương. Mục tiêu không phải kiệt sức mà là điều hòa bền vững hỗ trợ ổn định cân nặng lâu dài."
+      },
+      "tags": [
+        "movement",
+        "fitness",
+        "endurance"
+      ],
+      "audio": "obm_vip3_4_en.mp3",
+      "essay_ref": "obm_vip3_4_essay.txt"
+    },
+    {
+      "slug": "long-term-weight-stability",
+      "keywords_en": [
+        "weight stability",
+        "maintenance",
+        "lifestyle"
+      ],
+      "keywords_vi": [
+        "ổn định cân nặng",
+        "duy trì",
+        "lối sống"
+      ],
+      "copy": {
+        "en": "Long-term weight stability requires shifting from short bursts of effort to predictable systems. Create a weekly rhythm that keeps obesity risk low: grocery planning every Friday, meal prep every Sunday, and a morning check-in ritual to assess energy and focus. Use monthly metrics—waist circumference, progress photos, strength PRs—to track meaningful changes beyond scale weight. Build a supportive social circle that reinforces healthy choices through shared activities like walking groups or meal-prep nights. Identify relapse patterns early by journaling emotional triggers and fatigue signals. When setbacks occur, respond gently and return to structure within 24 hours. Maintenance is not a passive phase—it is an active practice of alignment, compassion, and consistency.",
+        "vi": "Ổn định cân nặng lâu dài đòi hỏi chuyển từ nỗ lực ngắn hạn sang các hệ thống bền vững. Hãy tạo nhịp tuần giúp giảm nguy cơ béo phì: lập danh sách mua thực phẩm mỗi thứ Sáu, chuẩn bị bữa ăn vào Chủ nhật và thực hiện nghi thức buổi sáng để đánh giá năng lượng, sự tập trung. Sử dụng các chỉ số hàng tháng—vòng eo, ảnh tiến trình, chỉ số sức mạnh—để theo dõi thay đổi ý nghĩa ngoài số cân. Xây dựng vòng kết nối xã hội hỗ trợ các lựa chọn lành mạnh thông qua hoạt động chung như nhóm đi bộ hoặc buổi chuẩn bị bữa ăn. Nhận diện sớm dấu hiệu tái phát bằng cách ghi nhận yếu tố cảm xúc và tín hiệu mệt mỏi. Khi có trượt nhịp, hãy phản ứng nhẹ nhàng và quay lại cấu trúc trong 24 giờ. Duy trì không phải là giai đoạn thụ động—đó là thực hành chủ động của sự nhất quán, lòng trắc ẩn và định hướng rõ ràng."
+      },
+      "tags": [
+        "lifestyle",
+        "maintenance",
+        "habits"
+      ],
+      "audio": "obm_vip3_5_en.mp3",
+      "essay_ref": "obm_vip3_5_essay.txt"
+    }
+  ]
+}

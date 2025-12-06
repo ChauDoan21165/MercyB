@@ -1,0 +1,189 @@
+{
+  "id": "mens-mental-health-vip2",
+  "tier": "vip2",
+  "name": "Men’s Mental Health",
+  "name_vi": "Sức Khỏe Tinh Thần Nam Giới",
+  "description": "Advanced strategies for men’s mental health with systems",
+  "keywords_en": [
+    "men",
+    "mental health",
+    "stress",
+    "support",
+    "system"
+  ],
+  "keywords_vi": [
+    "nam giới",
+    "sức khỏe tinh thần",
+    "căng thẳng",
+    "hỗ trợ",
+    "hệ thống"
+  ],
+  "entries": [
+    {
+      "slug": "check-in",
+      "keywords_en": [
+        "check in",
+        "emotion",
+        "health"
+      ],
+      "keywords_vi": [
+        "kiểm tra",
+        "cảm xúc",
+        "sức khỏe"
+      ],
+      "copy": {
+        "en": "Use a structured mood tracking system. Record a daily 1–10 rating with trigger tags. Review patterns weekly using an app or journal. Share summaries in a men’s group to build emotional intelligence through data awareness and accountability.",
+        "vi": "Dùng hệ thống theo dõi tâm trạng có cấu trúc. Ghi điểm 1–10 hàng ngày với thẻ kích hoạt. Xem lại mẫu hình hàng tuần bằng ứng dụng hoặc sổ tay. Chia sẻ tóm tắt trong nhóm nam giới để xây dựng trí tuệ cảm xúc qua nhận thức dữ liệu và trách nhiệm."
+      },
+      "tags": [
+        "check",
+        "health"
+      ],
+      "audio": {
+        "en": "mmh_vip2_1_en.mp3"
+      }
+    },
+    {
+      "slug": "walk-talk",
+      "keywords_en": [
+        "walk talk",
+        "friend",
+        "support"
+      ],
+      "keywords_vi": [
+        "đi bộ nói",
+        "bạn bè",
+        "hỗ trợ"
+      ],
+      "copy": {
+        "en": "Follow the walk-talk protocol for openness. Take a 60-minute walk every two weeks using 'I feel' statements. Keep a no-judgment rule and track openness levels. Rotate partners in a men’s circle to cultivate trust and safety.",
+        "vi": "Thực hành giao thức đi bộ nói để cởi mở. Đi bộ 60 phút hai tuần một lần với câu 'Tôi cảm thấy'. Giữ quy tắc không phán xét và theo dõi mức độ cởi mở. Luân phiên bạn đồng hành trong vòng nam giới để nuôi dưỡng tin cậy và an toàn."
+      },
+      "tags": [
+        "talk",
+        "health"
+      ],
+      "audio": {
+        "en": "mmh_vip2_2_en.mp3"
+      }
+    },
+    {
+      "slug": "exercise",
+      "keywords_en": [
+        "exercise",
+        "mood",
+        "health"
+      ],
+      "keywords_vi": [
+        "tập luyện",
+        "tâm trạng",
+        "sức khỏe"
+      ],
+      "copy": {
+        "en": "Apply an exercise prescription for mental health: 150 minutes of moderate activity weekly including strength training for testosterone balance. Log sessions, monitor mood, and train with a partner for motivation and resilience.",
+        "vi": "Áp dụng đơn tập luyện cho sức khỏe tinh thần: 150 phút hoạt động vừa mỗi tuần gồm bài tập sức mạnh để cân bằng testosterone. Ghi lại buổi tập, theo dõi tâm trạng, và tập với bạn đồng hành để duy trì động lực và nghị lực."
+      },
+      "tags": [
+        "exercise",
+        "health"
+      ],
+      "audio": {
+        "en": "mmh_vip2_3_en.mp3"
+      }
+    },
+    {
+      "slug": "purpose",
+      "keywords_en": [
+        "purpose",
+        "goal",
+        "health"
+      ],
+      "keywords_vi": [
+        "mục đích",
+        "mục tiêu",
+        "sức khỏe"
+      ],
+      "copy": {
+        "en": "Map your purpose for direction. Audit core values and define a legacy goal. Take one purposeful action weekly and track fulfillment. Share within a men’s purpose group to stay aligned and inspired.",
+        "vi": "Lập bản đồ mục đích để có định hướng. Kiểm toán giá trị cốt lõi và xác định mục tiêu di sản. Thực hiện một hành động có ý nghĩa hàng tuần và theo dõi sự thỏa mãn. Chia sẻ trong nhóm mục đích nam giới để duy trì định hướng và cảm hứng."
+      },
+      "tags": [
+        "purpose",
+        "health"
+      ],
+      "audio": {
+        "en": "mmh_vip2_4_en.mp3"
+      }
+    },
+    {
+      "slug": "anger",
+      "keywords_en": [
+        "anger",
+        "control",
+        "health"
+      ],
+      "keywords_vi": [
+        "tức giận",
+        "kiểm soát",
+        "sức khỏe"
+      ],
+      "copy": {
+        "en": "Use an anger-channeling system. Keep a trigger log, take a ten-second pause, and release energy physically—push-ups or breathwork. Journal root causes and share techniques with a men’s group to transform anger into clarity.",
+        "vi": "Dùng hệ thống kênh hóa tức giận. Ghi nhật ký kích hoạt, dừng mười giây và giải phóng năng lượng bằng thể chất—chống đẩy hoặc hít thở sâu. Ghi nguyên nhân gốc và chia sẻ kỹ thuật trong nhóm nam giới để chuyển hóa tức giận thành sự rõ ràng."
+      },
+      "tags": [
+        "anger",
+        "health"
+      ],
+      "audio": {
+        "en": "mmh_vip2_5_en.mp3"
+      }
+    },
+    {
+      "slug": "fatherhood",
+      "keywords_en": [
+        "fatherhood",
+        "role",
+        "health"
+      ],
+      "keywords_vi": [
+        "làm cha",
+        "vai trò",
+        "sức khỏe"
+      ],
+      "copy": {
+        "en": "Integrate fatherhood as part of mental health. Set a weekly quality-time goal, check emotional connection with kids, and track progress. Join a fathers’ circle for peer support and balanced identity.",
+        "vi": "Tích hợp vai trò làm cha như một phần của sức khỏe tinh thần. Đặt mục tiêu thời gian chất lượng hàng tuần, kiểm tra kết nối cảm xúc với con và theo dõi tiến triển. Tham gia vòng cha để nhận hỗ trợ ngang hàng và cân bằng bản thân."
+      },
+      "tags": [
+        "fatherhood",
+        "health"
+      ],
+      "audio": {
+        "en": "mmh_vip2_6_en.mp3"
+      }
+    },
+    {
+      "slug": "all",
+      "keywords_en": [
+        "all",
+        "full sequence",
+        "combined"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "chuỗi đầy đủ",
+        "kết hợp"
+      ],
+      "copy": {
+        "en": "Use a structured mood tracking system. Record a daily 1–10 rating with trigger tags. Review patterns weekly using an app or journal. Share summaries in a men’s group to build emotional intelligence through data awareness and accountability.\n\nFollow the walk-talk protocol for openness. Take a 60-minute walk every two weeks using 'I feel' statements. Keep a no-judgment rule and track openness levels. Rotate partners in a men’s circle to cultivate trust and safety.\n\nApply an exercise prescription for mental health: 150 minutes of moderate activity weekly including strength training for testosterone balance. Log sessions, monitor mood, and train with a partner for motivation and resilience.\n\nMap your purpose for direction. Audit core values and define a legacy goal. Take one purposeful action weekly and track fulfillment. Share within a men’s purpose group to stay aligned and inspired.\n\nUse an anger-channeling system. Keep a trigger log, take a ten-second pause, and release energy physically—push-ups or breathwork. Journal root causes and share techniques with a men’s group to transform anger into clarity.\n\nIntegrate fatherhood as part of mental health. Set a weekly quality-time goal, check emotional connection with kids, and track progress. Join a fathers’ circle for peer support and balanced identity.",
+        "vi": "Dùng hệ thống theo dõi tâm trạng có cấu trúc. Ghi điểm 1–10 hàng ngày với thẻ kích hoạt. Xem lại mẫu hình hàng tuần bằng ứng dụng hoặc sổ tay. Chia sẻ tóm tắt trong nhóm nam giới để xây dựng trí tuệ cảm xúc qua nhận thức dữ liệu và trách nhiệm.\n\nThực hành giao thức đi bộ nói để cởi mở. Đi bộ 60 phút hai tuần một lần với câu 'Tôi cảm thấy'. Giữ quy tắc không phán xét và theo dõi mức độ cởi mở. Luân phiên bạn đồng hành trong vòng nam giới để nuôi dưỡng tin cậy và an toàn.\n\nÁp dụng đơn tập luyện cho sức khỏe tinh thần: 150 phút hoạt động vừa mỗi tuần gồm bài tập sức mạnh để cân bằng testosterone. Ghi lại buổi tập, theo dõi tâm trạng, và tập với bạn đồng hành để duy trì động lực và nghị lực.\n\nLập bản đồ mục đích để có định hướng. Kiểm toán giá trị cốt lõi và xác định mục tiêu di sản. Thực hiện một hành động có ý nghĩa hàng tuần và theo dõi sự thỏa mãn. Chia sẻ trong nhóm mục đích nam giới để duy trì định hướng và cảm hứng.\n\nDùng hệ thống kênh hóa tức giận. Ghi nhật ký kích hoạt, dừng mười giây và giải phóng năng lượng bằng thể chất—chống đẩy hoặc hít thở sâu. Ghi nguyên nhân gốc và chia sẻ kỹ thuật trong nhóm nam giới để chuyển hóa tức giận thành sự rõ ràng.\n\nTích hợp vai trò làm cha như một phần của sức khỏe tinh thần. Đặt mục tiêu thời gian chất lượng hàng tuần, kiểm tra kết nối cảm xúc với con và theo dõi tiến triển. Tham gia vòng cha để nhận hỗ trợ ngang hàng và cân bằng bản thân."
+      },
+      "tags": [
+        "all",
+        "combined"
+      ],
+      "audio": "mmh_vip2_1_en.mp3 mmh_vip2_2_en.mp3 mmh_vip2_3_en.mp3 mmh_vip2_4_en.mp3 mmh_vip2_5_en.mp3 mmh_vip2_6_en.mp3"
+    }
+  ]
+}

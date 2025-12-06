@@ -1,0 +1,256 @@
+{
+  "name": "Weight Loss & Fitness",
+  "name_vi": "Giảm Cân & Thể Dục",
+  "description": "Expert strategies for mastering weight loss and fitness with science",
+  "description_vi": "Chiến lược chuyên gia để làm chủ giảm cân và thể dục với khoa học",
+  "keywords_en": [
+    "weight loss",
+    "fitness",
+    "exercise",
+    "diet",
+    "science",
+    "tracking"
+  ],
+  "keywords_vi": [
+    "giảm cân",
+    "thể dục",
+    "tập luyện",
+    "chế độ ăn",
+    "khoa học",
+    "theo dõi"
+  ],
+  "entries": [
+    {
+      "slug": "calorie-deficit",
+      "keywords_en": [
+        "calorie deficit",
+        "weight loss",
+        "diet"
+      ],
+      "keywords_vi": [
+        "thiếu hụt calo",
+        "giảm cân",
+        "chế độ ăn"
+      ],
+      "copy": {
+        "en": "Scientific calorie cycling enhances fat loss efficiency. Alternate high- and low-calorie days based on training intensity. Use DEXA scans for body composition and adjust macros with RMR testing. Collaborate with a sports nutritionist for a lab-based plan that maximizes fat loss while preserving lean muscle.",
+        "vi": "Chu kỳ calo khoa học nâng cao hiệu quả giảm mỡ. Luân phiên các ngày calo cao và calo thấp dựa trên cường độ tập luyện. Sử dụng quét DEXA để đo thành phần cơ thể và điều chỉnh macros với kiểm tra RMR. Hợp tác với chuyên gia dinh dưỡng thể thao để có kế hoạch dựa trên phòng thí nghiệm tối ưu hóa giảm mỡ trong khi bảo tồn cơ bắp nạc."
+      },
+      "tags": [
+        "diet",
+        "weight loss"
+      ],
+      "audio": {
+        "en": "wlf_vip3_1_en.mp3",
+        "vi": "wlf_vip3_1_vi.mp3"
+      },
+      "essay_ref": "wlf_vip3_1_essay.txt"
+    },
+    {
+      "slug": "daily-walk",
+      "keywords_en": [
+        "walk",
+        "exercise",
+        "fitness"
+      ],
+      "keywords_vi": [
+        "đi bộ",
+        "tập luyện",
+        "thể dục"
+      ],
+      "copy": {
+        "en": "Boost calorie burn by optimizing NEAT—non-exercise activity thermogenesis. Aim for ten thousand steps daily plus small movements like standing and fidgeting. Track activity with an accelerometer or wearable. Try weighted walking or rucking for intensity and join NEAT research communities for best practices.",
+        "vi": "Tăng cường đốt calo bằng cách tối ưu hóa NEAT—nhiệt sinh hoạt không tập luyện. Nhắm đến mười nghìn bước mỗi ngày cộng với các chuyển động nhỏ như đứng và cử động không ngừng. Theo dõi hoạt động bằng máy đo gia tốc hoặc thiết bị đeo. Thử đi bộ có trọng lượng hoặc rucking để tăng cường độ và tham gia các cộng đồng nghiên cứu NEAT để có các thực hành tốt nhất."
+      },
+      "tags": [
+        "exercise",
+        "fitness"
+      ],
+      "audio": {
+        "en": "wlf_vip3_2_en.mp3",
+        "vi": "wlf_vip3_2_vi.mp3"
+      },
+      "essay_ref": "wlf_vip3_2_essay.txt"
+    },
+    {
+      "slug": "strength-training",
+      "keywords_en": [
+        "strength",
+        "muscle",
+        "fitness"
+      ],
+      "keywords_vi": [
+        "sức mạnh",
+        "cơ bắp",
+        "thể dục"
+      ],
+      "copy": {
+        "en": "A periodized strength plan builds lean mass efficiently. Follow four phases—hypertrophy, strength, power, and peaking. Test your one-rep max and monitor muscle activation with EMG feedback. Work with an exercise physiologist for an evidence-based program using lab precision and periodization science.",
+        "vi": "Một kế hoạch tăng cường sức mạnh theo chu kỳ xây dựng khối lượng nạc một cách hiệu quả. Theo dõi bốn giai đoạn—phì đại cơ, sức mạnh, sức mạnh bùng nổ, và đỉnh cao. Kiểm tra mức tối đa một lần lặp của bạn và theo dõi kích hoạt cơ với phản hồi EMG. Làm việc với một nhà sinh lý học tập luyện để có một chương trình dựa trên bằng chứng sử dụng độ chính xác phòng thí nghiệm và khoa học chu kỳ hóa."
+      },
+      "tags": [
+        "strength",
+        "fitness"
+      ],
+      "audio": {
+        "en": "wlf_vip3_3_en.mp3",
+        "vi": "wlf_vip3_3_vi.mp3"
+      },
+      "essay_ref": "wlf_vip3_3_essay.txt"
+    },
+    {
+      "slug": "hydration",
+      "keywords_en": [
+        "hydration",
+        "water",
+        "weight loss"
+      ],
+      "keywords_vi": [
+        "bù nước",
+        "nước",
+        "giảm cân"
+      ],
+      "copy": {
+        "en": "Follow a precision hydration protocol for peak performance. Drink roughly 0.03 liters per kilogram of body weight plus 500 milliliters per hour of exercise. Use sweat-rate testing and maintain sodium-potassium balance. Consult a sports scientist to fine-tune fluid plans for optimal fat oxidation and energy.",
+        "vi": "Theo dõi một giao thức hydrat hóa chính xác để đạt hiệu suất đỉnh cao. Uống khoảng 0,03 lít cho mỗi kilogram trọng lượng cơ thể cộng thêm 500 mililit mỗi giờ tập luyện. Sử dụng kiểm tra tỷ lệ mồ hôi và duy trì sự cân bằng natri-kali. Tham khảo ý kiến một nhà khoa học thể thao để tinh chỉnh kế hoạch chất lỏng cho sự oxy hóa chất béo và năng lượng tối ưu."
+      },
+      "tags": [
+        "hydration",
+        "weight loss"
+      ],
+      "audio": {
+        "en": "wlf_vip3_4_en.mp3",
+        "vi": "wlf_vip3_4_vi.mp3"
+      },
+      "essay_ref": "wlf_vip3_4_essay.txt"
+    },
+    {
+      "slug": "sleep",
+      "keywords_en": [
+        "sleep",
+        "recovery",
+        "weight loss"
+      ],
+      "keywords_vi": [
+        "ngủ",
+        "khôi phục",
+        "giảm cân"
+      ],
+      "copy": {
+        "en": "Engineered sleep enhances fat loss and recovery. Aim for 7.5 to 9 hours per night in 90-minute cycles. Keep your room dark and cool around 18°C. Track sleep with Oura or similar tools. Consult a sleep medicine doctor for advanced assessments like polysomnography to refine hormone balance and recovery.",
+        "vi": "Giấc ngủ được thiết kế tăng cường giảm mỡ và phục hồi. Hướng tới 7,5 đến 9 giờ mỗi đêm theo chu kỳ 90 phút. Giữ phòng tối và mát khoảng 18°C. Theo dõi giấc ngủ bằng Oura hoặc công cụ tương tự. Tham khảo bác sĩ y học giấc ngủ để đánh giá nâng cao như polysomnography nhằm tinh chỉnh sự cân bằng hormone và phục hồi."
+      },
+      "tags": [
+        "sleep",
+        "weight loss"
+      ],
+      "audio": {
+        "en": "wlf_vip3_5_en.mp3",
+        "vi": "wlf_vip3_5_vi.mp3"
+      },
+      "essay_ref": "wlf_vip3_5_essay.txt"
+    },
+    {
+      "slug": "tracking",
+      "keywords_en": [
+        "tracking",
+        "progress",
+        "fitness"
+      ],
+      "keywords_vi": [
+        "theo dõi",
+        "tiến bộ",
+        "thể dục"
+      ],
+      "copy": {
+        "en": "Use advanced biofeedback tracking for precision results. Combine DEXA, RMR, and blood panels weekly. Monitor body-fat distribution with InBody scans and use AI apps for predictive modeling. Partner with a data scientist for analytical dashboards that guide measurable, science-backed transformation.",
+        "vi": "Sử dụng theo dõi phản hồi sinh học tiên tiến để có kết quả chính xác. Kết hợp DEXA, RMR và bảng máu hàng tuần. Theo dõi phân bố mỡ cơ thể bằng cách quét InBody và sử dụng ứng dụng AI cho mô hình dự đoán. Hợp tác với nhà khoa học dữ liệu để có bảng điều khiển phân tích hướng dẫn sự chuyển đổi có thể đo lường được, dựa trên khoa học."
+      },
+      "tags": [
+        "tracking",
+        "fitness"
+      ],
+      "audio": {
+        "en": "wlf_vip3_6_en.mp3",
+        "vi": "wlf_vip3_6_vi.mp3"
+      },
+      "essay_ref": "wlf_vip3_6_essay.txt"
+    },
+    {
+      "slug": "hormones",
+      "keywords_en": [
+        "hormones",
+        "metabolism",
+        "weight loss"
+      ],
+      "keywords_vi": [
+        "hormone",
+        "trao đổi chất",
+        "giảm cân"
+      ],
+      "copy": {
+        "en": "Optimize hormonal balance to overcome stubborn fat. Test cortisol, thyroid, and insulin levels. Implement strategic fasting and carb cycling around workouts. Consult an endocrinologist for lab-based hormone management, restoring metabolic efficiency for long-term weight regulation.",
+        "vi": "Tối ưu hóa sự cân bằng hormone để vượt qua mỡ cứng đầu. Kiểm tra mức cortisol, tuyến giáp và insulin. Áp dụng nhịn ăn chiến lược và chu kỳ carb xung quanh các buổi tập luyện. Tham khảo ý kiến bác sĩ nội tiết để quản lý hormone dựa trên xét nghiệm, khôi phục hiệu quả trao đổi chất cho việc kiểm soát cân nặng lâu dài."
+      },
+      "tags": [
+        "hormones",
+        "weight loss"
+      ],
+      "audio": {
+        "en": "wlf_vip3_7_en.mp3",
+        "vi": "wlf_vip3_7_vi.mp3"
+      },
+      "essay_ref": "wlf_vip3_7_essay.txt"
+    },
+    {
+      "slug": "resilience",
+      "keywords_en": [
+        "resilience",
+        "consistency",
+        "fitness"
+      ],
+      "keywords_vi": [
+        "kiên cường",
+        "nhất quán",
+        "thể dục"
+      ],
+      "copy": {
+        "en": "Develop a resilience system for lifelong results. Apply habit stacking, environment design, and identity shifts to sustain behavior change. Track ninety-day adherence streaks and work with a behavioral psychologist for structured protocols. Build psychological endurance through evidence-based habit science.",
+        "vi": "Phát triển một hệ thống phục hồi cho kết quả suốt đời. Áp dụng xếp chồng thói quen, thiết kế môi trường, và thay đổi bản sắc để duy trì thay đổi hành vi. Theo dõi chuỗi tuân thủ chín mươi ngày và làm việc với một nhà tâm lý học hành vi cho các giao thức có cấu trúc. Xây dựng sức bền tâm lý thông qua khoa học thói quen dựa trên bằng chứng."
+      },
+      "tags": [
+        "resilience",
+        "fitness"
+      ],
+      "audio": {
+        "en": "wlf_vip3_8_en.mp3",
+        "vi": "wlf_vip3_8_vi.mp3"
+      },
+      "essay_ref": "wlf_vip3_8_essay.txt"
+    }
+  ],
+  "keywords": {
+    "expert_fitness": {
+      "en": [
+        "calorie cycling",
+        "DEXA scans",
+        "periodization training",
+        "NEAT optimization",
+        "biofeedback tracking",
+        "hormonal optimization",
+        "habit stacking",
+        "sports science"
+      ],
+      "vi": [
+        "chu kỳ calo",
+        "quét DEXA",
+        "đào tạo chu kỳ",
+        "tối ưu NEAT",
+        "theo dõi sinh học",
+        "tối ưu hormone",
+        "xếp chồng thói quen",
+        "khoa học thể thao"
+      ]
+    }
+  }
+}

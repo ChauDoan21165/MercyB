@@ -1,0 +1,47 @@
+{
+  "id": "stress-vip1",
+  "tier": "VIP1 / VIP1",
+  "title": {
+    "en": "Stress Management VIP1",
+    "vi": "Quản Lý Căng Thẳng VIP1"
+  },
+  "content": {
+    "en": "Practical techniques for managing stress effectively.",
+    "vi": "Kỹ thuật thực tế để quản lý căng thẳng hiệu quả."
+  },
+  "entries": [
+    {
+      "slug": "calming-the-body-first",
+      "keywords_en": ["stress", "body", "breathing", "calm"],
+      "keywords_vi": ["căng thẳng", "cơ thể", "hít thở", "bình tĩnh"],
+      "copy": {
+        "en": "The fastest way to break the cycle of stress is to calm the body first. Your nervous system reacts before your thoughts can reorganize themselves, so the first step is physical intervention. Slow, deep breathing—especially exhaling longer than inhaling—signals to the brain that you are safe. Relax your shoulders, unclench your jaw, and release the tension in your hands. When your body shifts out of a defensive state, your mind naturally follows. This technique is simple but powerful, and it works anywhere: in a crowded street, at your desk, or even during emotional conflict. The moment you bring your breath and body into awareness, stress loses its ability to dominate you.",
+        "vi": "Cách nhanh nhất để cắt đứt vòng xoáy căng thẳng là làm dịu cơ thể trước. Hệ thần kinh phản ứng trước khi suy nghĩ kịp sắp xếp lại, nên bước đầu tiên phải là can thiệp vào cơ thể. Hít thở chậm và sâu—đặc biệt là thở ra dài hơn hít vào—gửi tín hiệu lên não rằng bạn đang an toàn. Hãy thả lỏng vai, thư giãn hàm và buông lỏng bàn tay. Khi cơ thể thoát khỏi trạng thái phòng vệ, tâm trí sẽ tự nhiên ổn định. Kỹ thuật này đơn giản nhưng mạnh mẽ, và có thể làm ở mọi nơi: trên đường, tại bàn làm việc, hoặc ngay trong một cuộc xung đột cảm xúc. Chỉ cần bạn mang hơi thở và cơ thể vào sự chú ý, căng thẳng sẽ mất đi sức mạnh."
+      },
+      "tags": ["stress-relief", "breathing", "body-awareness", "calm"],
+      "audio": "stress-vip1-entry-1-en.mp3"
+    },
+    {
+      "slug": "interrupting-the-stress-loop",
+      "keywords_en": ["stress loop", "grounding", "5-4-3-2-1"],
+      "keywords_vi": ["vòng lặp căng thẳng", "neo đất", "5-4-3-2-1"],
+      "copy": {
+        "en": "Stress grows when the mind keeps replaying the same worry without resolution. This loop drains energy and makes small problems feel overwhelming. The key is to interrupt the loop by shifting your mental state. A simple technique is the 5-4-3-2-1 grounding exercise: identify five things you see, four you can touch, three you hear, two you smell, and one you taste. This pulls your attention back into the present moment and breaks the runaway train of anxious thinking. When your awareness returns to the body and the environment, your nervous system has a chance to reset. The loop loses momentum, and clarity slowly returns.",
+        "vi": "Căng thẳng tăng lên khi tâm trí liên tục lặp lại cùng một nỗi lo mà không tìm được lối thoát. Vòng lặp này hút cạn năng lượng và khiến vấn đề nhỏ trở nên áp đảo. Bí quyết là cắt đứt vòng lặp bằng cách chuyển trạng thái tinh thần. Một kỹ thuật hiệu quả là bài tập neo đất 5-4-3-2-1: xác định năm thứ bạn nhìn thấy, bốn thứ bạn chạm vào, ba âm thanh bạn nghe, hai mùi bạn ngửi, và một vị bạn cảm nhận được. Bài tập này kéo sự chú ý của bạn về hiện tại và phá vỡ chuỗi suy nghĩ lo âu. Khi nhận thức quay lại với cơ thể và môi trường, hệ thần kinh có cơ hội thiết lập lại. Vòng lặp suy nghĩ mất đà, và sự sáng suốt dần trở lại."
+      },
+      "tags": ["grounding", "anxiety", "present-moment", "reset"],
+      "audio": "stress-vip1-entry-2-en.mp3"
+    },
+    {
+      "slug": "restore-your-inner-resources",
+      "keywords_en": ["recovery", "restoration", "energy"],
+      "keywords_vi": ["phục hồi", "nạp lại", "năng lượng"],
+      "copy": {
+        "en": "Chronic stress often comes from depletion—the feeling that you are giving more than you can restore. To manage stress sustainably, you must refill your inner resources. Restoration can be physical, emotional, intellectual, or spiritual. A five-minute walk, a quiet cup of tea, writing down your thoughts, or speaking with a supportive friend can create powerful recovery effects. The goal is not escape but renewal. When you intentionally rebuild your inner reserves, you regain capacity: to think clearly, to make decisions, and to face challenges without collapsing. Stress becomes manageable not because it disappears, but because you have more strength to meet it.",
+        "vi": "Căng thẳng kéo dài thường bắt nguồn từ sự cạn kiệt—cảm giác rằng bạn cho đi nhiều hơn khả năng phục hồi. Để quản lý căng thẳng một cách bền vững, bạn cần nạp lại năng lượng bên trong. Việc hồi phục có thể mang tính thể chất, cảm xúc, trí tuệ hoặc tinh thần. Một cuộc đi bộ năm phút, một tách trà yên tĩnh, viết ra suy nghĩ, hoặc trò chuyện với một người bạn biết lắng nghe đều có thể tạo ra hiệu ứng hồi phục mạnh mẽ. Mục tiêu không phải là trốn chạy mà là làm mới bản thân. Khi bạn chủ động gây dựng lại nguồn lực nội tâm, bạn lấy lại khả năng suy nghĩ rõ ràng, đưa ra quyết định và đối mặt với khó khăn mà không bị gục ngã. Căng thẳng trở nên dễ kiểm soát không phải vì nó biến mất, mà vì bạn mạnh mẽ hơn để đối diện nó."
+      },
+      "tags": ["recovery", "self-care", "resilience", "renewal"],
+      "audio": "stress-vip1-entry-3-en.mp3"
+    }
+  ]
+}

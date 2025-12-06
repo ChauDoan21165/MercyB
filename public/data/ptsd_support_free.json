@@ -1,0 +1,105 @@
+{
+  "name": "PTSD Support",
+  "name_vi": "Hỗ Trợ Rối Loạn Căng Thẳng Sau Sang Chấn",
+  "description": "Practical guidance for managing PTSD with emotional and therapeutic support",
+  "keywords_en": [
+    "PTSD",
+    "recovery",
+    "therapy",
+    "support system"
+  ],
+  "keywords_vi": [
+    "rối loạn căng thẳng sau sang chấn",
+    "phục hồi",
+    "liệu pháp",
+    "hệ thống hỗ trợ"
+  ],
+  "entries": [
+    {
+      "slug": "recovery",
+      "keywords_en": [
+        "recovery",
+        "healing",
+        "trauma"
+      ],
+      "keywords_vi": [
+        "phục hồi",
+        "chữa lành",
+        "sang chấn"
+      ],
+      "copy": {
+        "en": "PTSD recovery begins with small, intentional steps. Acknowledge your triggers without shame and seek professional support. Therapies like EMDR can help process trauma. Practice self-care routines to build stability. Connect with trusted people for encouragement, fostering hope and resilience in your journey.",
+        "vi": "Phục hồi khỏi rối loạn căng thẳng sau sang chấn bắt đầu bằng những bước nhỏ và có chủ ý. Hãy nhận diện các yếu tố kích hoạt mà không tự trách và tìm sự hỗ trợ từ chuyên gia. Các liệu pháp như EMDR giúp xử lý sang chấn. Thực hành các thói quen tự chăm sóc để xây dựng sự ổn định. Kết nối với những người đáng tin cậy để được khích lệ, nuôi dưỡng hy vọng và nghị lực trong hành trình của bạn."
+      },
+      "tags": [
+        "recovery",
+        "PTSD"
+      ],
+      "audio": "ptsd_support_free_recovery.mp3"
+    },
+    {
+      "slug": "emdr-therapy",
+      "keywords_en": [
+        "EMDR",
+        "therapy",
+        "trauma processing"
+      ],
+      "keywords_vi": [
+        "EMDR",
+        "liệu pháp",
+        "xử lý sang chấn"
+      ],
+      "copy": {
+        "en": "Eye Movement Desensitization and Reprocessing (EMDR) helps manage PTSD by processing traumatic memories. Guided by a therapist, it reduces the intensity of triggers. Practice regular sessions to build coping skills. This therapy fosters healing, helping you regain control and emotional balance over time.",
+        "vi": "Liệu pháp EMDR giúp quản lý rối loạn căng thẳng sau sang chấn bằng cách xử lý ký ức đau thương. Dưới sự hướng dẫn của chuyên gia trị liệu, phương pháp này làm giảm cường độ của các yếu tố kích hoạt. Thực hành đều đặn giúp xây dựng kỹ năng đối phó. Liệu pháp này thúc đẩy quá trình chữa lành, giúp bạn lấy lại sự kiểm soát và cân bằng cảm xúc theo thời gian."
+      },
+      "tags": [
+        "therapy",
+        "PTSD"
+      ],
+      "audio": "ptsd_support_free_emdr_therapy.mp3"
+    },
+    {
+      "slug": "grounding-techniques",
+      "keywords_en": [
+        "grounding",
+        "calm",
+        "coping"
+      ],
+      "keywords_vi": [
+        "kỹ thuật tiếp đất",
+        "bình tĩnh",
+        "đối phó"
+      ],
+      "copy": {
+        "en": "Grounding techniques ease PTSD symptoms by anchoring you in the present. Try deep breathing or naming objects around you to reduce anxiety. Practice daily to manage triggers effectively. Connect with a support group for shared strategies. These steps build resilience, helping you navigate challenges with calm.",
+        "vi": "Kỹ thuật tiếp đất giúp làm dịu các triệu chứng rối loạn căng thẳng sau sang chấn bằng cách giữ bạn tập trung vào hiện tại. Hãy thử hít thở sâu hoặc gọi tên các đồ vật xung quanh để giảm lo âu. Thực hành hàng ngày để kiểm soát yếu tố kích hoạt hiệu quả hơn. Kết nối với nhóm hỗ trợ để chia sẻ chiến lược. Những bước này giúp xây dựng nghị lực, hỗ trợ bạn vượt qua thách thức với sự bình tĩnh."
+      },
+      "tags": [
+        "grounding",
+        "mental health"
+      ],
+      "audio": "ptsd_support_free_grounding_techniques.mp3"
+    }
+  ],
+  "keywords": {
+    "ptsd_support": {
+      "en": [
+        "PTSD",
+        "recovery",
+        "EMDR therapy",
+        "grounding techniques",
+        "trauma healing",
+        "support system"
+      ],
+      "vi": [
+        "rối loạn căng thẳng sau sang chấn",
+        "phục hồi",
+        "liệu pháp EMDR",
+        "kỹ thuật tiếp đất",
+        "chữa lành sang chấn",
+        "hệ thống hỗ trợ"
+      ]
+    }
+  }
+}

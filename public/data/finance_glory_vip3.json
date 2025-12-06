@@ -1,0 +1,36 @@
+{
+  "tier": "VIP 3",
+  "title": {
+    "en": "Finance Glory",
+    "vi": "Vinh Quang Tài Chính"
+  },
+  "content": {
+    "en": "An exclusive journey through wealth building, financial intelligence, and prosperity mindset. Master the art of money, investment, and financial freedom.",
+    "vi": "Hành trình độc quyền khám phá xây dựng tài sản, trí tuệ tài chính và tư duy thịnh vượng. Làm chủ nghệ thuật tiền bạc, đầu tư và tự do tài chính."
+  },
+  "entries": [],
+  "keywords": {
+    "personalized_finance_glory": {
+      "en": [
+        "finance",
+        "wealth",
+        "investment",
+        "prosperity",
+        "money",
+        "freedom",
+        "growth",
+        "success"
+      ],
+      "vi": [
+        "tài chính",
+        "giàu có",
+        "đầu tư",
+        "thịnh vượng",
+        "tiền bạc",
+        "tự do",
+        "tăng trưởng",
+        "thành công"
+      ]
+    }
+  }
+}

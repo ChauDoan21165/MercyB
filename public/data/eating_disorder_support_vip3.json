@@ -1,0 +1,155 @@
+{
+  "name": "Eating Disorder Support",
+  "name_vi": "Hỗ Trợ Rối Loạn Ăn Uống",
+  "description": "Expert strategies for comprehensive eating disorder recovery and resilience",
+  "keywords_en": [
+    "eating disorder",
+    "recovery",
+    "CBT-E",
+    "nutritional therapy",
+    "body positivity",
+    "resilience"
+  ],
+  "keywords_vi": [
+    "rối loạn ăn uống",
+    "phục hồi",
+    "CBT-E",
+    "liệu pháp dinh dưỡng",
+    "tích cực cơ thể",
+    "kiên cường"
+  ],
+  "entries": [
+    {
+      "slug": "recovery",
+      "keywords_en": [
+        "recovery",
+        "healing",
+        "self-compassion"
+      ],
+      "keywords_vi": [
+        "phục hồi",
+        "chữa lành",
+        "tự trắc ẩn"
+      ],
+      "copy": {
+        "en": "Eating disorder recovery is a journey of small, intentional steps rooted in self-compassion. Acknowledge your struggles without judgment, seeking support from professionals or loved ones. Family-Based Therapy fosters collaborative meal planning and emotional safety. Journaling helps identify triggers, enhancing self-awareness. Celebrate milestones, like enjoying meals freely, to build momentum. Surround yourself with positive influences to reinforce hope. This approach ensures lasting healing, empowering you to reclaim a healthy relationship with food and self through resilience and patience.",
+        "vi": "Phục hồi rối loạn ăn uống là hành trình của những bước nhỏ, có chủ ý, dựa trên lòng tự trắc ẩn. Thừa nhận khó khăn mà không phán xét, tìm hỗ trợ từ chuyên gia hoặc người thân. Liệu pháp dựa trên gia đình thúc đẩy lập kế hoạch bữa ăn chung và an toàn cảm xúc. Ghi nhật ký giúp nhận diện yếu tố kích hoạt, tăng tự nhận thức. Ăn mừng cột mốc, như thưởng thức bữa ăn tự do, để tạo đà. Hãy bao quanh mình bằng ảnh hưởng tích cực để củng cố hy vọng, đảm bảo chữa lành lâu dài."
+      },
+      "tags": [
+        "recovery",
+        "mental health"
+      ],
+      "audio": "eating_disorder_support_vip3_recovery.mp3"
+    },
+    {
+      "slug": "cbt-e",
+      "keywords_en": [
+        "therapy",
+        "CBT-E",
+        "coping skills"
+      ],
+      "keywords_vi": [
+        "liệu pháp",
+        "CBT-E",
+        "kỹ năng đối phó"
+      ],
+      "copy": {
+        "en": "Cognitive Behavioral Therapy-Enhanced (CBT-E) is a cornerstone of eating disorder recovery. It targets distorted thoughts about food and body image, guiding you to challenge negative patterns. Structured sessions teach coping skills, like mindfulness, to manage triggers effectively. Regular practice reduces impulsive behaviors, fostering a healthier mindset. CBT-E builds confidence in your ability to navigate challenges, creating a sustainable foundation for long-term recovery and a positive relationship with food and self.",
+        "vi": "Liệu pháp Nhận thức Hành vi Tăng cường (CBT-E) là nền tảng của phục hồi rối loạn ăn uống. Nó nhắm vào suy nghĩ méo mó về thực phẩm và hình ảnh cơ thể, hướng dẫn bạn thách thức các mô hình tiêu cực. Các buổi có cấu trúc dạy kỹ năng đối phó, như chánh niệm, để quản lý yếu tố kích hoạt hiệu quả. Thực hành thường xuyên giúp giảm hành vi bốc đồng, xây dựng tư duy lành mạnh và tạo nền tảng bền vững cho phục hồi lâu dài."
+      },
+      "tags": [
+        "therapy",
+        "mental health"
+      ],
+      "audio": "eating_disorder_support_vip3_cbt_e.mp3"
+    },
+    {
+      "slug": "family-support",
+      "keywords_en": [
+        "family support",
+        "communication",
+        "empathy"
+      ],
+      "keywords_vi": [
+        "hỗ trợ gia đình",
+        "giao tiếp",
+        "đồng cảm"
+      ],
+      "copy": {
+        "en": "Family support is a vital pillar in eating disorder recovery. Engage loved ones by openly sharing your needs and triggers to foster empathy. Family-Based Therapy encourages collaborative meal planning and emotional support, creating a safe space. Regular family check-ins build trust and understanding. Their encouragement strengthens your resilience, ensuring a supportive network that sustains progress and empowers you to navigate challenges throughout your healing journey.",
+        "vi": "Hỗ trợ gia đình là trụ cột quan trọng trong phục hồi rối loạn ăn uống. Kết nối người thân bằng cách chia sẻ nhu cầu và yếu tố kích hoạt một cách cởi mở để xây dựng sự đồng cảm. Liệu pháp dựa trên gia đình khuyến khích lập kế hoạch bữa ăn chung và hỗ trợ cảm xúc, tạo không gian an toàn. Các buổi kiểm tra định kỳ giúp xây dựng niềm tin và sự thấu hiểu, củng cố khả năng phục hồi và mạng lưới hỗ trợ lâu dài."
+      },
+      "tags": [
+        "support",
+        "recovery"
+      ],
+      "audio": "eating_disorder_support_vip3_family_support.mp3"
+    },
+    {
+      "slug": "nutritional-therapy",
+      "keywords_en": [
+        "nutritional therapy",
+        "healthy eating",
+        "recovery"
+      ],
+      "keywords_vi": [
+        "liệu pháp dinh dưỡng",
+        "ăn uống lành mạnh",
+        "phục hồi"
+      ],
+      "copy": {
+        "en": "Nutritional therapy supports eating disorder recovery by rebuilding balanced eating habits. Collaborate with a dietitian to design personalized meal plans that respect your body’s needs. Learn to recognize hunger and fullness cues, moving away from restrictive diets. Incorporate diverse foods to nourish body and mind. This approach restores physical health, boosts confidence, and fosters a positive relationship with food, ensuring sustained recovery and emotional well-being over time.",
+        "vi": "Liệu pháp dinh dưỡng hỗ trợ phục hồi rối loạn ăn uống bằng cách tái xây dựng thói quen ăn uống cân bằng. Hợp tác với chuyên gia dinh dưỡng để thiết kế kế hoạch bữa ăn cá nhân hóa, tôn trọng nhu cầu cơ thể. Nhận biết tín hiệu đói và no, tránh chế độ ăn kiêng hạn chế. Kết hợp thực phẩm đa dạng để nuôi dưỡng cơ thể và tâm trí. Cách tiếp cận này giúp phục hồi sức khỏe thể chất, tăng sự tự tin và nuôi dưỡng mối quan hệ tích cực với thực phẩm, đảm bảo phục hồi bền vững và sức khỏe cảm xúc theo thời gian."
+      },
+      "tags": [
+        "nutrition",
+        "recovery"
+      ],
+      "audio": "eating_disorder_support_vip3_nutritional_therapy.mp3"
+    },
+    {
+      "slug": "body-positivity",
+      "keywords_en": [
+        "body positivity",
+        "self-acceptance",
+        "confidence"
+      ],
+      "keywords_vi": [
+        "tích cực cơ thể",
+        "tự chấp nhận",
+        "tự tin"
+      ],
+      "copy": {
+        "en": "Body positivity is transformative in eating disorder recovery, fostering self-acceptance and confidence. Challenge societal beauty standards by embracing your body’s unique strengths. Use affirmations to counter negative self-talk, focusing on your body’s capabilities. Engage with communities that celebrate diversity to reduce shame. This mindset shift builds emotional resilience, empowering you to cultivate a healthier self-image and sustain recovery through a compassionate, positive approach to your body and well-being.",
+        "vi": "Tích cực cơ thể mang tính chuyển hóa trong phục hồi rối loạn ăn uống, thúc đẩy tự chấp nhận và tự tin. Thách thức các tiêu chuẩn vẻ đẹp xã hội bằng cách trân trọng sức mạnh độc đáo của cơ thể. Sử dụng các khẳng định tích cực để đối trọng với lời tự nói tiêu cực, tập trung vào khả năng của cơ thể. Kết nối với cộng đồng tôn vinh sự đa dạng để giảm bớt xấu hổ. Sự chuyển đổi tư duy này xây dựng khả năng phục hồi cảm xúc, giúp bạn nuôi dưỡng hình ảnh bản thân lành mạnh và duy trì phục hồi bằng cách tiếp cận tích cực, nhân ái với cơ thể."
+      },
+      "tags": [
+        "body image",
+        "recovery"
+      ],
+      "audio": "eating_disorder_support_vip3_body_positivity.mp3"
+    },
+    {
+      "slug": "emotional-resilience",
+      "keywords_en": [
+        "resilience",
+        "emotional strength",
+        "recovery"
+      ],
+      "keywords_vi": [
+        "kiên cường",
+        "sức mạnh cảm xúc",
+        "phục hồi"
+      ],
+      "copy": {
+        "en": "Emotional resilience is key to sustaining eating disorder recovery. Practice mindfulness to manage stress and emotional triggers effectively. Build a toolkit of coping strategies, like journaling or meditation, to navigate setbacks. Seek therapy to process underlying emotions driving disordered eating. Surround yourself with supportive communities that reinforce hope. This approach strengthens your ability to face challenges, ensuring a resilient mindset that supports long-term healing and a balanced relationship with food and self.",
+        "vi": "Kiên cường cảm xúc là chìa khóa để duy trì phục hồi rối loạn ăn uống. Thực hành chánh niệm để quản lý căng thẳng và các yếu tố kích hoạt cảm xúc một cách hiệu quả. Xây dựng bộ công cụ đối phó, như ghi nhật ký hoặc thiền, để vượt qua khó khăn. Tìm liệu pháp để xử lý các cảm xúc nền tảng thúc đẩy ăn uống rối loạn. Hãy bao quanh mình với cộng đồng hỗ trợ nhằm củng cố hy vọng. Cách tiếp cận này giúp tăng năng lực đối mặt thử thách, duy trì tư duy kiên cường và mối quan hệ cân bằng với thực phẩm và bản thân."
+      },
+      "tags": [
+        "resilience",
+        "mental health"
+      ],
+      "audio": "eating_disorder_support_vip3_emotional_resilience.mp3"
+    }
+  ]
+}

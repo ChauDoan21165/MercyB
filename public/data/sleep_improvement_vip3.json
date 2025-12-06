@@ -1,0 +1,245 @@
+{
+  "room_purpose": {
+    "en": "Advanced Sleep Improvement - Master comprehensive sleep strategies including schedule optimization, deep relaxation, nutrition timing, environment perfection, mindful activity, and pattern tracking for complete sleep wellness",
+    "vi": "Cải thiện giấc ngủ nâng cao - Làm chủ chiến lược giấc ngủ toàn diện bao gồm tối ưu hóa lịch trình, thư giãn sâu, thời điểm dinh dưỡng, môi trường hoàn hảo, hoạt động tỉnh táo và theo dõi mô hình cho sức khỏe giấc ngủ hoàn chỉnh"
+  },
+  "supported_languages": [
+    "en",
+    "vi"
+  ],
+  "enumerations": {
+    "tags": [
+      "sleep_schedule",
+      "relaxation",
+      "nutrition",
+      "environment",
+      "activity",
+      "tracking"
+    ],
+    "urgency_levels": [
+      "routine",
+      "moderate",
+      "high"
+    ],
+    "severity_scale": [
+      "mild",
+      "moderate",
+      "significant"
+    ],
+    "affected_systems": [
+      "circadian",
+      "nervous",
+      "digestive",
+      "sensory",
+      "musculoskeletal",
+      "cognitive"
+    ]
+  },
+  "keywords": {
+    "personalized_sleep_improvement": {
+      "en": [
+        "mastered sleep schedule",
+        "deep relaxation practices",
+        "optimized pre-bed nutrition",
+        "perfected sleep environment",
+        "mindful activity",
+        "sleep pattern tracking"
+      ],
+      "vi": [
+        "làm chủ lịch ngủ",
+        "thực hành thư giãn sâu sắc",
+        "dinh dưỡng trước giờ ngủ tối ưu",
+        "môi trường ngủ hoàn hảo",
+        "hoạt động tỉnh táo",
+        "theo dõi mô hình giấc ngủ"
+      ]
+    }
+  },
+  "room_essay": {
+    "en": "The Sleep Improvement VIP3 room represents the pinnacle of sleep wellness mastery. Here, you'll develop a comprehensive understanding of all factors affecting sleep quality—from circadian rhythm optimization and advanced relaxation techniques to nutritional timing, environmental perfection, mindful movement, and systematic pattern tracking. This advanced tier empowers you to take complete control of your sleep health through evidence-based strategies, personalized adjustments, and ongoing self-monitoring. By mastering these six interconnected pillars, you'll achieve consistent, restorative sleep that enhances every aspect of your physical and mental wellbeing.",
+    "vi": "Phòng Cải thiện Giấc ngủ VIP3 đại diện cho đỉnh cao của việc làm chủ sức khỏe giấc ngủ. Tại đây, bạn sẽ phát triển sự hiểu biết toàn diện về tất cả các yếu tố ảnh hưởng đến chất lượng giấc ngủ—từ tối ưu hóa nhịp sinh học và kỹ thuật thư giãn nâng cao đến thời điểm dinh dưỡng, môi trường hoàn hảo, chuyển động tỉnh táo và theo dõi mô hình có hệ thống. Tầng nâng cao này trao quyền cho bạn kiểm soát hoàn toàn sức khỏe giấc ngủ của mình thông qua các chiến lược dựa trên bằng chứng, điều chỉnh cá nhân hóa và tự giám sát liên tục. Bằng cách làm chủ sáu trụ cột kết nối này, bạn sẽ đạt được giấc ngủ nhất quán, phục hồi, tăng cường mọi khía cạnh của sức khỏe thể chất và tinh thần."
+  },
+  "entries": [
+    {
+      "artifact_id": "sleep_vip3_001",
+      "title": {
+        "en": "Mastering Your Sleep Schedule",
+        "vi": "Làm chủ lịch trình giấc ngủ của bạn"
+      },
+      "copy": {
+        "en": "Master your sleep schedule to achieve consistent, restorative rest. Choose a fixed bedtime and wake-up time that you maintain every day, including weekends. This regular rhythm anchors your body's natural circadian cycle, balancing hormones that control energy and alertness. Begin winding down ninety minutes before sleep by dimming lights, lowering volume, and slowing activity. Replace scrolling with soft music, light reading, or reflection. Journal weekly to track patterns of energy, mood, and focus, noting how consistency improves recovery. Ask a trusted peer for monthly accountability if routines slip. Over time, your body will fall asleep easily and awaken refreshed without alarms. Start tonight by choosing your bedtime and protecting it like a sacred promise to health. Ready to master restorative rhythm? Explore beyond VIP 3.",
+        "vi": "Làm chủ lịch trình giấc ngủ của bạn để đạt được giấc nghỉ nhất quán, phục hồi. Chọn thời gian đi ngủ và thức dậy cố định mà bạn duy trì mỗi ngày, bao gồm cả cuối tuần. Nhịp điệu đều đặn này neo giữ chu kỳ sinh học tự nhiên của cơ thể bạn, cân bằng hormone kiểm soát năng lượng và sự tỉnh táo. Bắt đầu thư giãn chín mươi phút trước khi ngủ bằng cách làm mờ đèn, giảm âm lượng và giảm hoạt động. Thay thế việc lướt điện thoại bằng nhạc nhẹ, đọc sách nhẹ hoặc suy ngẫm. Ghi nhật ký hàng tuần để theo dõi các mô hình năng lượng, tâm trạng và sự tập trung, ghi chú cách sự nhất quán cải thiện sự phục hồi. Nhờ một người bạn đáng tin cậy giúp bạn có trách nhiệm hàng tháng nếu thói quen trượt dốc. Theo thời gian, cơ thể bạn sẽ dễ dàng ngủ và thức dậy tươi tỉnh mà không cần báo thức. Bắt đầu tối nay bằng cách chọn giờ đi ngủ và bảo vệ nó như một lời hứa thiêng liêng với sức khỏe. Sẵn sàng làm chủ nhịp điệu phục hồi? Khám phá vượt qua VIP 3."
+      },
+      "attribution": "Sleep Medicine Research",
+      "tags": [
+        "sleep_schedule",
+        "circadian",
+        "consistency"
+      ],
+      "urgency": "routine",
+      "systems": [
+        "circadian",
+        "nervous",
+        "cognitive"
+      ],
+      "audio_file": "/audio/Mastering_Your_Sleep_Schedule_vip3.mp3",
+      "slug": "auto-1",
+      "keywords_en": [
+        "Auto 1"
+      ],
+      "keywords_vi": [
+        "Auto 1"
+      ]
+    },
+    {
+      "artifact_id": "sleep_vip3_002",
+      "title": {
+        "en": "Deepening Relaxation Practices",
+        "vi": "Thực hành thư giãn sâu sắc"
+      },
+      "copy": {
+        "en": "Deepen relaxation by training your body to release tension on command. Each night, find a quiet place and practice the 4-7-8 breathing rhythm—inhaling for four seconds, holding for seven, exhaling for eight—while focusing on your heartbeat. Add gentle stretches or meditation to enhance calm. This combination teaches the nervous system that it's safe to rest. Journal weekly to describe sensations and improvements in sleep depth. Share experiences monthly with a peer to refine your technique. When anxiety intrudes, return to breath and softness. Over time, relaxation becomes instinctive, lowering nighttime stress and reducing restlessness. One calm session before bed each evening strengthens both body and mind. Begin tonight with mindful breathing for peace that lasts through the night. Ready to breathe your way into deeper rest? Explore beyond VIP 3.",
+        "vi": "Thực hành thư giãn sâu sắc bằng cách huấn luyện cơ thể giải phóng căng thẳng theo lệnh. Mỗi đêm, tìm một nơi yên tĩnh và thực hành nhịp thở 4-7-8—hít vào trong bốn giây, giữ bảy giây, thở ra tám giây—trong khi tập trung vào nhịp tim của bạn. Thêm động tác kéo giãn nhẹ nhàng hoặc thiền định để tăng cường sự bình tĩnh. Sự kết hợp này dạy hệ thần kinh rằng việc nghỉ ngơi là an toàn. Ghi nhật ký hàng tuần để mô tả cảm giác và cải thiện độ sâu giấc ngủ. Chia sẻ trải nghiệm hàng tháng với một người bạn để tinh chỉnh kỹ thuật của bạn. Khi lo lắng xâm nhập, trở lại hơi thở và sự mềm mại. Theo thời gian, sự thư giãn trở nên bản năng, giảm căng thẳng ban đêm và giảm bồn chồn. Một buổi bình tĩnh trước giờ ngủ mỗi tối tăng cường cả thể chất lẫn tinh thần. Bắt đầu tối nay với hơi thở tỉnh táo để có sự bình yên kéo dài suốt đêm. Sẵn sàng thở để nghỉ ngơi sâu hơn? Khám phá vượt qua VIP 3."
+      },
+      "attribution": "Mindfulness & Sleep Research",
+      "tags": [
+        "relaxation",
+        "breathing",
+        "meditation"
+      ],
+      "urgency": "routine",
+      "systems": [
+        "nervous",
+        "cognitive"
+      ],
+      "audio_file": "/audio/Deepening_Relaxation_Practices_vip3.mp3",
+      "slug": "auto-2",
+      "keywords_en": [
+        "Auto 2"
+      ],
+      "keywords_vi": [
+        "Auto 2"
+      ]
+    },
+    {
+      "artifact_id": "sleep_vip3_003",
+      "title": {
+        "en": "Optimizing Pre-Bed Nutrition",
+        "vi": "Tối ưu hóa dinh dưỡng trước giờ ngủ"
+      },
+      "copy": {
+        "en": "Optimize pre-bed nutrition to support uninterrupted sleep. Eat your final meal at least three hours before bedtime, favoring balanced portions of lean protein, complex carbohydrates, and vegetables. Skip caffeine, alcohol, and heavy fried foods that raise heart rate or disturb digestion. If hunger appears late, choose a light snack such as yogurt, a banana, or a few almonds. Keep a weekly log of what and when you eat, noting how it influences energy and dreams. Review progress monthly and adjust timing gradually. Over time, these steady habits reduce bloating and midnight awakenings while improving overall metabolism. Pair mindful eating with gentle evening hydration—water or herbal tea, never sugar drinks. Begin tonight by ending eating earlier and feeling the quiet comfort that follows. Ready to nourish rest? Explore beyond VIP 3.",
+        "vi": "Tối ưu hóa dinh dưỡng trước giờ ngủ để hỗ trợ giấc ngủ không bị gián đoạn. Ăn bữa cuối cùng ít nhất ba giờ trước giờ đi ngủ, ưu tiên các phần cân đối của protein nạc, carbohydrate phức tạp và rau. Bỏ qua caffeine, rượu và thức ăn chiên nặng làm tăng nhịp tim hoặc làm rối loạn tiêu hóa. Nếu cảm thấy đói muộn, chọn một bữa ăn nhẹ như sữa chua, chuối hoặc một vài hạnh nhân. Giữ nhật ký hàng tuần về những gì và khi nào bạn ăn, ghi chú cách nó ảnh hưởng đến năng lượng và giấc mơ. Xem xét tiến độ hàng tháng và điều chỉnh thời gian dần dần. Theo thời gian, những thói quen ổn định này giảm đầy hơi và thức giấc nửa đêm trong khi cải thiện chuyển hóa tổng thể. Kết hợp ăn uống tỉnh táo với hydrat hóa nhẹ nhàng buổi tối—nước hoặc trà thảo mộc, không bao giờ uống đường. Bắt đầu tối nay bằng cách kết thúc ăn sớm hơn và cảm nhận sự thoải mái yên tĩnh theo sau. Sẵn sàng nuôi dưỡng sự nghỉ ngơi? Khám phá vượt qua VIP 3."
+      },
+      "attribution": "Nutritional Sleep Science",
+      "tags": [
+        "nutrition",
+        "timing",
+        "digestion"
+      ],
+      "urgency": "routine",
+      "systems": [
+        "digestive",
+        "nervous"
+      ],
+      "audio_file": "/audio/Optimizing_Pre-Bed_Nutrition_vip3.mp3",
+      "slug": "auto-3",
+      "keywords_en": [
+        "Auto 3"
+      ],
+      "keywords_vi": [
+        "Auto 3"
+      ]
+    },
+    {
+      "artifact_id": "sleep_vip3_004",
+      "title": {
+        "en": "Perfecting Your Sleep Environment",
+        "vi": "Hoàn thiện môi trường giấc ngủ của bạn"
+      },
+      "copy": {
+        "en": "Perfect your sleep environment so your senses associate it only with rest. Keep the bedroom dark, cool, and free of clutter—around 65 °F or 18 °C is ideal. Use blackout curtains, breathable sheets, and soft scents like lavender or chamomile. White noise, a fan, or earplugs can block distractions. Reserve your bed exclusively for sleep and intimacy to strengthen the brain's relaxation cue. Journal weekly about lighting, temperature, and comfort, adjusting one factor at a time. Once a month, evaluate progress and refresh linens or lighting if needed. These simple refinements train your body to relax immediately upon entering the room. Begin tonight by dimming lights, silencing devices, and letting calm fill the space. Ready to create your perfect sanctuary? Explore beyond VIP 3.",
+        "vi": "Hoàn thiện môi trường giấc ngủ của bạn để các giác quan chỉ liên kết nó với sự nghỉ ngơi. Giữ phòng ngủ tối, mát và không có lộn xộn—khoảng 65 °F hoặc 18 °C là lý tưởng. Sử dụng rèm cửa tối, ga giường thoáng khí và mùi hương nhẹ nhàng như hoa oải hương hoặc cúc la mã. Tiếng ồn trắng, quạt hoặc nút bịt tai có thể chặn phiền nhiễu. Dành giường của bạn độc quyền cho giấc ngủ và sự thân mật để tăng cường tín hiệu thư giãn của não. Ghi nhật ký hàng tuần về ánh sáng, nhiệt độ và sự thoải mái, điều chỉnh từng yếu tố một. Mỗi tháng một lần, đánh giá tiến độ và làm mới vải lanh hoặc ánh sáng nếu cần. Những tinh chỉnh đơn giản này huấn luyện cơ thể bạn thư giãn ngay khi bước vào phòng. Bắt đầu tối nay bằng cách làm mờ đèn, tắt thiết bị và để sự bình tĩnh lấp đầy không gian. Sẵn sàng tạo ra nơi thánh thiêng hoàn hảo của bạn? Khám phá vượt qua VIP 3."
+      },
+      "attribution": "Environmental Sleep Science",
+      "tags": [
+        "environment",
+        "sensory",
+        "comfort"
+      ],
+      "urgency": "routine",
+      "systems": [
+        "sensory",
+        "nervous"
+      ],
+      "audio_file": "/audio/Perfecting_Your_Sleep_Environment_vip3.mp3",
+      "slug": "auto-4",
+      "keywords_en": [
+        "Auto 4"
+      ],
+      "keywords_vi": [
+        "Auto 4"
+      ]
+    },
+    {
+      "artifact_id": "sleep_vip3_005",
+      "title": {
+        "en": "Incorporating Mindful Activity",
+        "vi": "Kết hợp hoạt động tỉnh táo"
+      },
+      "copy": {
+        "en": "Incorporate mindful movement to prepare the body for deeper sleep. Engage in one light physical activity daily—gentle yoga, evening stretching, or a relaxed walk—completed at least three hours before bed. This lowers cortisol, eases muscle tension, and stabilizes energy levels. Record activities weekly in a journal to note effects on mood and sleep quality. Once a month, join a group yoga or meditation class for variety and support. Remember, movement is medicine; overexertion close to bedtime can backfire by keeping adrenaline high. Instead, treat activity as a graceful bridge from daytime busyness to nighttime serenity. Start today with one calm, rhythmic session that invites peace into both body and mind. Ready to move mindfully toward rest? Explore beyond VIP 3.",
+        "vi": "Kết hợp chuyển động tỉnh táo để chuẩn bị cơ thể cho giấc ngủ sâu hơn. Tham gia một hoạt động thể chất nhẹ hàng ngày—yoga nhẹ nhàng, kéo giãn buổi tối hoặc đi bộ thư giãn—hoàn thành ít nhất ba giờ trước khi đi ngủ. Điều này giảm cortisol, giảm căng thẳng cơ bắp và ổn định mức năng lượng. Ghi lại hoạt động hàng tuần trong nhật ký để ghi chú ảnh hưởng đến tâm trạng và chất lượng giấc ngủ. Mỗi tháng một lần, tham gia lớp yoga hoặc thiền định nhóm để có sự đa dạng và hỗ trợ. Hãy nhớ, chuyển động là thuốc; gắng sức quá mức gần giờ ngủ có thể phản tác dụng bằng cách giữ adrenaline cao. Thay vào đó, coi hoạt động như một cầu nối duyên dáng từ sự bận rộn ban ngày đến sự thanh thản ban đêm. Bắt đầu hôm nay với một buổi bình tĩnh, nhịp nhàng mời gọi sự bình yên vào cả thể chất lẫn tinh thần. Sẵn sàng di chuyển tỉnh táo về phía nghỉ ngơi? Khám phá vượt qua VIP 3."
+      },
+      "attribution": "Exercise & Sleep Research",
+      "tags": [
+        "activity",
+        "movement",
+        "timing"
+      ],
+      "urgency": "routine",
+      "systems": [
+        "musculoskeletal",
+        "nervous"
+      ],
+      "audio_file": "/audio/Incorporating_Mindful_Activity_vip3.mp3",
+      "slug": "auto-5",
+      "keywords_en": [
+        "Auto 5"
+      ],
+      "keywords_vi": [
+        "Auto 5"
+      ]
+    },
+    {
+      "artifact_id": "sleep_vip3_006",
+      "title": {
+        "en": "Tracking Sleep Patterns",
+        "vi": "Theo dõi mô hình giấc ngủ"
+      },
+      "copy": {
+        "en": "Track your sleep patterns to refine your wellness strategy. Use a journal or digital app to log bedtime, wake-up time, perceived sleep quality, and daily mood. After two weeks, review for recurring patterns—perhaps late-night screens delay rest, or evening walks improve depth. Use these discoveries to adjust habits intentionally rather than guessing. Every month, share insights with a friend or coach for encouragement and accountability. Tracking transforms sleep from a mystery into a science of self-observation. It builds awareness, motivation, and control. Over time, you'll recognize subtle cues of fatigue and respond earlier with calm routines. Begin tonight by writing down the moment you close your eyes and the moment you wake. Ready to understand your body's rhythm fully? Explore beyond VIP 3.",
+        "vi": "Theo dõi mô hình giấc ngủ của bạn để tinh chỉnh chiến lược sức khỏe của bạn. Sử dụng nhật ký hoặc ứng dụng kỹ thuật số để ghi lại giờ đi ngủ, giờ thức dậy, chất lượng giấc ngủ cảm nhận và tâm trạng hàng ngày. Sau hai tuần, xem xét các mô hình lặp lại—có lẽ màn hình đêm khuya trì hoãn sự nghỉ ngơi, hoặc đi bộ buổi tối cải thiện độ sâu. Sử dụng những khám phá này để điều chỉnh thói quen có chủ ý thay vì đoán. Mỗi tháng, chia sẻ hiểu biết với bạn bè hoặc huấn luyện viên để khuyến khích và trách nhiệm. Theo dõi biến đổi giấc ngủ từ một bí ẩn thành khoa học tự quan sát. Nó xây dựng nhận thức, động lực và kiểm soát. Theo thời gian, bạn sẽ nhận ra các dấu hiệu tinh tế của mệt mỏi và phản ứng sớm hơn với các thói quen bình tĩnh. Bắt đầu tối nay bằng cách viết ra khoảnh khắc bạn nhắm mắt và khoảnh khắc bạn thức dậy. Sẵn sàng hiểu nhịp điệu cơ thể của bạn hoàn toàn? Khám phá vượt qua VIP 3."
+      },
+      "attribution": "Sleep Pattern Analysis",
+      "tags": [
+        "tracking",
+        "patterns",
+        "awareness"
+      ],
+      "urgency": "routine",
+      "systems": [
+        "cognitive",
+        "circadian"
+      ],
+      "audio_file": "/audio/Tracking_Sleep_Patterns_vip3.mp3",
+      "slug": "auto-6",
+      "keywords_en": [
+        "Auto 6"
+      ],
+      "keywords_vi": [
+        "Auto 6"
+      ]
+    }
+  ]
+}

@@ -1,110 +1,47 @@
 {
   "id": "stoicism_free",
-  "tier": "free",
-  "domain": "",
-  "description": {
+  "tier": "Free / Miễn phí",
+  "title": {
     "en": "Stoic Philosophy (Free)",
     "vi": "Triết Học Khắc Kỷ (Miễn Phí)"
   },
-  "keywords": [
-    "all",
-    "calm",
-    "combined",
-    "complete",
-    "control",
-    "direction",
-    "emotional control",
-    "emotions",
-    "firm purpose",
-    "full collection",
-    "meaning",
-    "purpose",
-    "resilience",
-    "values"
-  ],
+  "content": {
+    "en": "A quiet doorway into Stoic wisdom for everyday life. This room helps you steady your mind, clarify what truly matters, and respond to stress with more courage and less chaos. You will explore firm purpose and emotional control in simple, gentle language so Stoicism feels human and usable, not cold or extreme. Start here to build an inner compass you can trust, even when life becomes noisy and unpredictable. Let this room be your soft first step into living more bravely, one small Stoic practice at a time.",
+    "vi": "Một cánh cửa nhẹ nhàng bước vào trí tuệ Khắc Kỷ cho đời sống hằng ngày. Căn phòng này giúp bạn giữ vững tâm trí, làm rõ điều thật sự quan trọng và đối diện căng thẳng với nhiều can đảm hơn, ít hỗn loạn hơn. Bạn sẽ chạm vào chủ đề mục đích vững chắc và làm chủ cảm xúc bằng ngôn ngữ đơn giản, ấm áp, để Khắc Kỷ trở nên gần gũi, có thể áp dụng, không lạnh lùng hay cực đoan. Hãy bắt đầu từ đây để xây cho mình một chiếc la bàn nội tâm đáng tin, ngay cả khi cuộc đời ồn ào và khó đoán. Để căn phòng này trở thành bước chạm mềm mại giúp bạn sống can đảm hơn, từng thực hành Khắc Kỷ nhỏ mỗi ngày."
+  },
   "entries": [
     {
+      "slug": "firm-purpose",
+      "keywords_en": ["firm purpose", "purpose", "direction", "values", "meaning"],
+      "keywords_vi": ["mục đích vững chắc", "mục đích", "định hướng", "giá trị", "ý nghĩa"],
       "copy": {
         "en": "A life without purpose drifts like a ship without a compass, tossed by every wind. True direction begins with stillness, listening for what your heart quietly values. Reflect until clarity dawns. Let purpose become your anchor in both storm and calm. When you act from conviction, even chaos becomes a current guiding you home. Live each day with intention and courage, and meaning will unfold as naturally as dawn upon the sea.",
         "vi": "Cuộc đời thiếu mục đích trôi dạt như con tàu không la bàn, bị mọi cơn gió cuốn đi. Hướng đi thật sự bắt đầu từ sự tĩnh lặng, lắng nghe những điều trái tim bạn âm thầm trân trọng. Hãy suy ngẫm cho đến khi sự rõ ràng hé lộ. Hãy để mục đích trở thành chiếc neo của bạn trong cả bão tố lẫn bình yên. Khi bạn hành động từ niềm xác tín, ngay cả hỗn loạn cũng hóa thành dòng chảy dẫn bạn trở về nhà. Sống mỗi ngày với chủ ý và can đảm, ý nghĩa sẽ mở ra tự nhiên như bình minh trên mặt biển."
       },
-      "slug": "firm-purpose",
-      "tags": [
-        "stoicism",
-        "purpose",
-        "values"
-      ],
-      "audio": "firm_purpose_free.mp3",
-      "keywords_en": [
-        "firm purpose",
-        "purpose",
-        "direction",
-        "values",
-        "meaning"
-      ],
-      "keywords_vi": [
-        "mục đích vững chắc",
-        "mục đích",
-        "định hướng",
-        "giá trị",
-        "ý nghĩa"
-      ]
+      "tags": ["stoicism", "purpose", "values"],
+      "audio": "firm_purpose_free.mp3"
     },
     {
+      "slug": "emotional-control",
+      "keywords_en": ["emotional control", "emotions", "control", "calm", "resilience"],
+      "keywords_vi": ["làm chủ cảm xúc", "cảm xúc", "kiểm soát", "bình tĩnh", "kiên cường"],
       "copy": {
         "en": "Emotions rise not from events but from thoughts about them. To master emotion is to master meaning. Observe each feeling like a passing cloud, neither clinging nor fighting. Guard your peace from needless negativity. Let calm discernment guide your words and choices. When hurt appears, let it teach compassion, not bitterness. In patience and gentle awareness, you reclaim freedom over your own inner weather and remember that your response is always your power.",
         "vi": "Cảm xúc không sinh ra từ sự kiện, mà từ ý nghĩ về chúng. Làm chủ cảm xúc chính là làm chủ ý nghĩa. Hãy quan sát từng cảm xúc như một đám mây đi qua, không bám víu cũng không chống cự. Hãy bảo vệ sự bình an của bạn khỏi những nguồn tiêu cực không cần thiết. Để sự điềm tĩnh và sáng suốt dẫn dắt lời nói và lựa chọn của bạn. Khi tổn thương xuất hiện, hãy để nó dạy bạn lòng trắc ẩn thay vì cay đắng. Trong sự kiên nhẫn và tỉnh thức dịu dàng, bạn giành lại tự do đối với bầu trời nội tâm của chính mình và nhớ rằng phản ứng của bạn luôn là sức mạnh của bạn."
       },
-      "slug": "emotional-control",
-      "tags": [
-        "stoicism",
-        "emotional control",
-        "resilience"
-      ],
-      "audio": "emotional_control_free.mp3",
-      "keywords_en": [
-        "emotional control",
-        "emotions",
-        "control",
-        "calm",
-        "resilience"
-      ],
-      "keywords_vi": [
-        "làm chủ cảm xúc",
-        "cảm xúc",
-        "kiểm soát",
-        "bình tĩnh",
-        "kiên cường"
-      ]
+      "tags": ["stoicism", "emotional control", "resilience"],
+      "audio": "emotional_control_free.mp3"
     },
     {
+      "slug": "all",
+      "keywords_en": ["all", "full collection", "combined", "complete"],
+      "keywords_vi": ["tất cả", "kết hợp", "đầy đủ", "phiên bản gộp"],
       "copy": {
         "en": "A life without purpose drifts like a ship without a compass, tossed by every wind. True direction begins with stillness, listening for what your heart quietly values. Reflect until clarity dawns. Let purpose become your anchor in both storm and calm. When you act from conviction, even chaos becomes a current guiding you home. Live each day with intention and courage, and meaning will unfold as naturally as dawn upon the sea.\n\nEmotions rise not from events but from thoughts about them. To master emotion is to master meaning. Observe each feeling like a passing cloud, neither clinging nor fighting. Guard your peace from needless negativity. Let calm discernment guide your words and choices. When hurt appears, let it teach compassion, not bitterness. In patience and gentle awareness, you reclaim freedom over your own inner weather and remember that your response is always your power.",
         "vi": "Cuộc đời thiếu mục đích trôi dạt như con tàu không la bàn, bị mọi cơn gió cuốn đi. Hướng đi thật sự bắt đầu từ sự tĩnh lặng, lắng nghe những điều trái tim bạn âm thầm trân trọng. Hãy suy ngẫm cho đến khi sự rõ ràng hé lộ. Hãy để mục đích trở thành chiếc neo của bạn trong cả bão tố lẫn bình yên. Khi bạn hành động từ niềm xác tín, ngay cả hỗn loạn cũng hóa thành dòng chảy dẫn bạn trở về nhà. Sống mỗi ngày với chủ ý và can đảm, ý nghĩa sẽ mở ra tự nhiên như bình minh trên mặt biển.\n\nCảm xúc không sinh ra từ sự kiện, mà từ ý nghĩ về chúng. Làm chủ cảm xúc chính là làm chủ ý nghĩa. Hãy quan sát từng cảm xúc như một đám mây đi qua, không bám víu cũng không chống cự. Hãy bảo vệ sự bình an của bạn khỏi những nguồn tiêu cực không cần thiết. Để sự điềm tĩnh và sáng suốt dẫn dắt lời nói và lựa chọn của bạn. Khi tổn thương xuất hiện, hãy để nó dạy bạn lòng trắc ẩn thay vì cay đắng. Trong sự kiên nhẫn và tỉnh thức dịu dàng, bạn giành lại tự do đối với bầu trời nội tâm của chính mình và nhớ rằng phản ứng của bạn luôn là sức mạnh của bạn."
       },
-      "slug": "all",
-      "tags": [
-        "all",
-        "combined",
-        "full"
-      ],
-      "audio": "firm_purpose_free.mp3 emotional_control_free.mp3",
-      "keywords_en": [
-        "all",
-        "full collection",
-        "combined",
-        "complete"
-      ],
-      "keywords_vi": [
-        "tất cả",
-        "kết hợp",
-        "đầy đủ",
-        "phiên bản gộp"
-      ]
+      "tags": ["all", "combined", "full"],
+      "audio": "firm_purpose_free.mp3 emotional_control_free.mp3"
     }
-  ],
-  "room_essay": {
-    "en": "",
-    "vi": ""
-  }
+  ]
 }

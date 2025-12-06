@@ -1,0 +1,136 @@
+{
+  "id": "bipolar-support-vip1",
+  "name": "Bipolar Support",
+  "name_vi": "Hỗ Trợ Rối Loạn Lưỡng Cực",
+  "description": "In-depth strategies for managing bipolar disorder with therapy and support",
+  "keywords_en": [
+    "bipolar disorder",
+    "mood management",
+    "CBT",
+    "support system"
+  ],
+  "keywords_vi": [
+    "rối loạn lưỡng cực",
+    "quản lý tâm trạng",
+    "CBT",
+    "hệ thống hỗ trợ"
+  ],
+  "entries": [
+    {
+      "slug": "mood-management",
+      "keywords_en": [
+        "mood management",
+        "stability",
+        "coping"
+      ],
+      "keywords_vi": [
+        "quản lý tâm trạng",
+        "ổn định",
+        "đối phó"
+      ],
+      "copy": {
+        "en": "Managing bipolar disorder involves tracking mood changes daily. Use a journal to note triggers like stress, sleep disruptions, or diet. Consult a doctor to explore medication or therapy options tailored to you. Build a routine with consistent sleep, exercise, and healthy eating. Connect with supportive people for encouragement. These steps foster stability, helping you navigate mood swings with resilience and maintain a balanced life.",
+        "vi": "Quản lý rối loạn lưỡng cực cần theo dõi thay đổi tâm trạng hằng ngày. Sử dụng nhật ký để ghi lại các yếu tố kích hoạt như căng thẳng, gián đoạn giấc ngủ hoặc chế độ ăn uống. Tham khảo bác sĩ để tìm hiểu về thuốc hoặc liệu pháp phù hợp. Xây dựng thói quen với giấc ngủ đều đặn, tập luyện và ăn uống lành mạnh. Kết nối với những người hỗ trợ để nhận khích lệ, giúp bạn quản lý dao động tâm trạng với nghị lực và duy trì cuộc sống cân bằng."
+      },
+      "tags": [
+        "mood management",
+        "bipolar"
+      ],
+      "audio": "bipolar_support_vip1_mood_management.mp3"
+    },
+    {
+      "slug": "cbt",
+      "keywords_en": [
+        "therapy",
+        "CBT",
+        "coping skills"
+      ],
+      "keywords_vi": [
+        "liệu pháp",
+        "CBT",
+        "kỹ năng đối phó"
+      ],
+      "copy": {
+        "en": "Cognitive Behavioral Therapy (CBT) is effective for bipolar disorder management. Work with a therapist to identify triggers and develop coping skills for mood swings. Regular sessions help reframe negative thoughts, fostering emotional stability. Practice mindfulness to stay grounded. CBT builds resilience, supporting a balanced mindset and long-term well-being.",
+        "vi": "Liệu pháp Nhận thức Hành vi (CBT) rất hiệu quả trong quản lý rối loạn lưỡng cực. Hợp tác với chuyên gia để nhận diện các yếu tố kích hoạt và phát triển kỹ năng đối phó với dao động tâm trạng. Các buổi trị liệu thường xuyên giúp định hình lại suy nghĩ tiêu cực, nuôi dưỡng sự ổn định cảm xúc. Thực hành chánh niệm để giữ bình tĩnh, giúp xây dựng tư duy cân bằng và duy trì sức khỏe lâu dài."
+      },
+      "tags": [
+        "therapy",
+        "bipolar"
+      ],
+      "audio": "bipolar_support_vip1_cbt.mp3"
+    },
+    {
+      "slug": "support-system",
+      "keywords_en": [
+        "support system",
+        "community",
+        "empathy"
+      ],
+      "keywords_vi": [
+        "hệ thống hỗ trợ",
+        "cộng đồng",
+        "đồng cảm"
+      ],
+      "copy": {
+        "en": "A strong support system is crucial for managing bipolar disorder. Share your needs openly with friends, family, or support groups to foster empathy. Regular check-ins with a community provide encouragement and practical advice. This network helps you stay resilient, navigate mood challenges, and maintain emotional stability in your journey.",
+        "vi": "Hệ thống hỗ trợ vững chắc rất quan trọng trong việc quản lý rối loạn lưỡng cực. Hãy chia sẻ nhu cầu của bạn một cách cởi mở với bạn bè, gia đình hoặc nhóm hỗ trợ để xây dựng sự đồng cảm. Gặp gỡ định kỳ với cộng đồng mang lại sự khích lệ và lời khuyên thiết thực. Mạng lưới này giúp bạn duy trì nghị lực, vượt qua biến động tâm trạng và giữ vững sự ổn định cảm xúc trong hành trình của mình."
+      },
+      "tags": [
+        "support",
+        "bipolar"
+      ],
+      "audio": "bipolar_support_vip1_support_system.mp3"
+    },
+    {
+      "slug": "lifestyle-balance",
+      "keywords_en": [
+        "lifestyle",
+        "balance",
+        "stability"
+      ],
+      "keywords_vi": [
+        "lối sống",
+        "cân bằng",
+        "ổn định"
+      ],
+      "copy": {
+        "en": "Lifestyle balance supports bipolar disorder management. Maintain consistent sleep, exercise, and healthy eating to stabilize mood. Avoid caffeine or alcohol, which can trigger mood swings. Use a journal to track habits and identify patterns. Connect with supportive people for motivation. This approach fosters resilience, helping you maintain stability and well-being daily.",
+        "vi": "Cân bằng lối sống hỗ trợ quản lý rối loạn lưỡng cực. Duy trì giấc ngủ đều đặn, tập luyện và ăn uống lành mạnh để ổn định tâm trạng. Tránh caffeine hoặc rượu vì chúng có thể gây dao động cảm xúc. Sử dụng nhật ký để theo dõi thói quen và nhận diện mô hình. Kết nối với những người hỗ trợ để duy trì động lực, giúp bạn giữ sự ổn định và sức khỏe hằng ngày."
+      },
+      "tags": [
+        "lifestyle",
+        "bipolar"
+      ],
+      "audio": "bipolar_support_vip1_lifestyle_balance.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": [
+        "all",
+        "full sequence",
+        "complete",
+        "combined",
+        "bipolar support"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "chuỗi đầy đủ",
+        "hoàn chỉnh",
+        "kết hợp",
+        "hỗ trợ lưỡng cực"
+      ],
+      "copy": {
+        "en": "Managing bipolar disorder involves tracking mood changes daily. Use a journal to note triggers like stress, sleep disruptions, or diet. Consult a doctor to explore medication or therapy options tailored to you. Build a routine with consistent sleep, exercise, and healthy eating. Connect with supportive people for encouragement. These steps foster stability, helping you navigate mood swings with resilience and maintain a balanced life. Cognitive Behavioral Therapy (CBT) is effective for bipolar disorder management. Work with a therapist to identify triggers and develop coping skills for mood swings. Regular sessions help reframe negative thoughts, fostering emotional stability. Practice mindfulness to stay grounded. CBT builds resilience, supporting a balanced mindset and long-term well-being. A strong support system is crucial for managing bipolar disorder. Share your needs openly with friends, family, or support groups to foster empathy. Regular check-ins with a community provide encouragement and practical advice. This network helps you stay resilient, navigate mood challenges, and maintain emotional stability in your journey. Lifestyle balance supports bipolar disorder management. Maintain consistent sleep, exercise, and healthy eating to stabilize mood. Avoid caffeine or alcohol, which can trigger mood swings. Use a journal to track habits and identify patterns. Connect with supportive people for motivation. This approach fosters resilience, helping you maintain stability and well-being daily.",
+        "vi": "Quản lý rối loạn lưỡng cực cần theo dõi thay đổi tâm trạng hằng ngày. Sử dụng nhật ký để ghi lại các yếu tố kích hoạt như căng thẳng, gián đoạn giấc ngủ hoặc chế độ ăn uống. Tham khảo bác sĩ để tìm hiểu về thuốc hoặc liệu pháp phù hợp. Xây dựng thói quen với giấc ngủ đều đặn, tập luyện và ăn uống lành mạnh. Kết nối với những người hỗ trợ để nhận khích lệ, giúp bạn quản lý dao động tâm trạng với nghị lực và duy trì cuộc sống cân bằng. Liệu pháp Nhận thức Hành vi (CBT) rất hiệu quả trong quản lý rối loạn lưỡng cực. Hợp tác với chuyên gia để nhận diện các yếu tố kích hoạt và phát triển kỹ năng đối phó với dao động tâm trạng. Các buổi trị liệu thường xuyên giúp định hình lại suy nghĩ tiêu cực, nuôi dưỡng sự ổn định cảm xúc. Thực hành chánh niệm để giữ bình tĩnh, giúp xây dựng tư duy cân bằng và duy trì sức khỏe lâu dài. Hệ thống hỗ trợ vững chắc rất quan trọng trong việc quản lý rối loạn lưỡng cực. Hãy chia sẻ nhu cầu của bạn một cách cởi mở với bạn bè, gia đình hoặc nhóm hỗ trợ để xây dựng sự đồng cảm. Gặp gỡ định kỳ với cộng đồng mang lại sự khích lệ và lời khuyên thiết thực. Mạng lưới này giúp bạn duy trì nghị lực, vượt qua biến động tâm trạng và giữ vững sự ổn định cảm xúc trong hành trình của mình. Cân bằng lối sống hỗ trợ quản lý rối loạn lưỡng cực. Duy trì giấc ngủ đều đặn, tập luyện và ăn uống lành mạnh để ổn định tâm trạng. Tránh caffeine hoặc rượu vì chúng có thể gây dao động cảm xúc. Sử dụng nhật ký để theo dõi thói quen và nhận diện mô hình. Kết nối với những người hỗ trợ để duy trì động lực, giúp bạn giữ sự ổn định và sức khỏe hằng ngày."
+      },
+      "tags": [
+        "all",
+        "combined",
+        "full sequence",
+        "complete"
+      ],
+      "audio": "bipolar_support_vip1_mood_management.mp3 bipolar_support_vip1_cbt.mp3 bipolar_support_vip1_support_system.mp3 bipolar_support_vip1_lifestyle_balance.mp3"
+    }
+  ]
+}

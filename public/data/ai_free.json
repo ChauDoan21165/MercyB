@@ -1,0 +1,107 @@
+{
+  "id": "ai-free",
+  "tier": "free",
+  "domain": "",
+  "description": {
+    "en": "AI Fundamentals",
+    "vi": "Nền Tảng AI"
+  },
+  "keywords": [
+    "ai fundamentals",
+    "all",
+    "combined",
+    "complete",
+    "data",
+    "Ethical AI",
+    "fairness",
+    "full sequence",
+    "Machine learning",
+    "models",
+    "patterns",
+    "privacy",
+    "responsibility"
+  ],
+  "entries": [
+    {
+      "copy": {
+        "en": "Machine learning helps computers discover structure in raw data. By training models on labeled examples, we teach systems to predict outcomes, recognize speech, or detect images. Start by noticing how simple models—like linear regression—draw conclusions from numbers and trends. Then compare them with more flexible models that can capture curves and complex shapes. Pay attention to the ideas of training, validation, and overfitting: when a model memorizes instead of understanding. Every small experiment deepens your sense of how machines turn experience into knowledge and why good data matters more than fancy algorithms.",
+        "vi": "Học máy giúp máy tính khám phá cấu trúc trong dữ liệu thô. Bằng cách huấn luyện mô hình trên các ví dụ có nhãn, chúng ta dạy hệ thống dự đoán kết quả, nhận diện giọng nói hoặc hình ảnh. Hãy bắt đầu bằng việc quan sát cách các mô hình đơn giản — như hồi quy tuyến tính — rút ra kết luận từ con số và xu hướng. Sau đó so sánh với các mô hình linh hoạt hơn có thể nắm bắt đường cong và dạng phức tạp. Chú ý đến khái niệm huấn luyện, kiểm định và overfitting: khi mô hình chỉ ghi nhớ thay vì thật sự hiểu. Mỗi thí nghiệm nhỏ làm sâu sắc thêm cảm nhận của bạn về cách máy biến trải nghiệm thành tri thức và vì sao dữ liệu tốt quan trọng hơn thuật toán hào nhoáng."
+      },
+      "slug": "understanding-machine-learning",
+      "tags": [
+        "machine-learning",
+        "education"
+      ],
+      "audio": "ai_free_1_en.mp3",
+      "keywords_en": [
+        "Machine learning",
+        "data",
+        "patterns",
+        "models"
+      ],
+      "keywords_vi": [
+        "Học máy",
+        "dữ liệu",
+        "mẫu",
+        "mô hình"
+      ]
+    },
+    {
+      "copy": {
+        "en": "Building responsible AI means balancing innovation with human values. Every dataset reflects choices: what to include, what to protect, and whose voices are heard or ignored. Before deploying a model, learn to ask simple but powerful questions: Who might be harmed? Who benefits? What happens if the system is wrong? Practice checking for bias in examples, protecting sensitive information, and explaining decisions in clear language. Ethical AI is not just a safeguard at the end; it is a mindset you apply from the first line of code, so technology serves people with respect, dignity, and trust.",
+        "vi": "Xây dựng AI có trách nhiệm nghĩa là cân bằng đổi mới với giá trị con người. Mỗi bộ dữ liệu đều phản ánh lựa chọn: điều gì được đưa vào, điều gì cần bảo vệ và tiếng nói của ai được lắng nghe hay bị bỏ qua. Trước khi triển khai mô hình, hãy học cách đặt những câu hỏi đơn giản nhưng mạnh mẽ: Ai có thể bị tổn hại? Ai được lợi? Chuyện gì xảy ra nếu hệ thống sai? Hãy luyện tập kiểm tra thiên lệch trong ví dụ, bảo vệ thông tin nhạy cảm và giải thích quyết định bằng ngôn ngữ dễ hiểu. AI đạo đức không chỉ là lớp bảo vệ ở cuối; đó là tư duy bạn áp dụng từ dòng code đầu tiên, để công nghệ phục vụ con người với sự tôn trọng, phẩm giá và niềm tin."
+      },
+      "slug": "ethical-ai-foundations",
+      "tags": [
+        "ethics",
+        "responsibility"
+      ],
+      "audio": "ai_free_2_en.mp3",
+      "keywords_en": [
+        "Ethical AI",
+        "fairness",
+        "privacy",
+        "responsibility"
+      ],
+      "keywords_vi": [
+        "AI đạo đức",
+        "công bằng",
+        "riêng tư",
+        "trách nhiệm"
+      ]
+    },
+    {
+      "copy": {
+        "en": "Machine learning helps computers discover structure in raw data. By training models on labeled examples, we teach systems to predict outcomes, recognize speech, or detect images. Start by noticing how simple models—like linear regression—draw conclusions from numbers and trends. Then compare them with more flexible models that can capture curves and complex shapes. Pay attention to the ideas of training, validation, and overfitting: when a model memorizes instead of understanding. Every small experiment deepens your sense of how machines turn experience into knowledge and why good data matters more than fancy algorithms. Building responsible AI means balancing innovation with human values. Every dataset reflects choices: what to include, what to protect, and whose voices are heard or ignored. Before deploying a model, learn to ask simple but powerful questions: Who might be harmed? Who benefits? What happens if the system is wrong? Practice checking for bias in examples, protecting sensitive information, and explaining decisions in clear language. Ethical AI is not just a safeguard at the end; it is a mindset you apply from the first line of code, so technology serves people with respect, dignity, and trust.",
+        "vi": "Học máy giúp máy tính khám phá cấu trúc trong dữ liệu thô. Bằng cách huấn luyện mô hình trên các ví dụ có nhãn, chúng ta dạy hệ thống dự đoán kết quả, nhận diện giọng nói hoặc hình ảnh. Hãy bắt đầu bằng việc quan sát cách các mô hình đơn giản — như hồi quy tuyến tính — rút ra kết luận từ con số và xu hướng. Sau đó so sánh với các mô hình linh hoạt hơn có thể nắm bắt đường cong và dạng phức tạp. Chú ý đến khái niệm huấn luyện, kiểm định và overfitting: khi mô hình chỉ ghi nhớ thay vì thật sự hiểu. Mỗi thí nghiệm nhỏ làm sâu sắc thêm cảm nhận của bạn về cách máy biến trải nghiệm thành tri thức và vì sao dữ liệu tốt quan trọng hơn thuật toán hào nhoáng. Xây dựng AI có trách nhiệm nghĩa là cân bằng đổi mới với giá trị con người. Mỗi bộ dữ liệu đều phản ánh lựa chọn: điều gì được đưa vào, điều gì cần bảo vệ và tiếng nói của ai được lắng nghe hay bị bỏ qua. Trước khi triển khai mô hình, hãy học cách đặt những câu hỏi đơn giản nhưng mạnh mẽ: Ai có thể bị tổn hại? Ai được lợi? Chuyện gì xảy ra nếu hệ thống sai? Hãy luyện tập kiểm tra thiên lệch trong ví dụ, bảo vệ thông tin nhạy cảm và giải thích quyết định bằng ngôn ngữ dễ hiểu. AI đạo đức không chỉ là lớp bảo vệ ở cuối; đó là tư duy bạn áp dụng từ dòng code đầu tiên, để công nghệ phục vụ con người với sự tôn trọng, phẩm giá và niềm tin."
+      },
+      "slug": "all",
+      "tags": [
+        "all",
+        "combined",
+        "full",
+        "complete",
+        "ai"
+      ],
+      "audio": "ai_free_1_en.mp3 ai_free_2_en.mp3",
+      "keywords_en": [
+        "all",
+        "full sequence",
+        "combined",
+        "complete",
+        "ai fundamentals"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "chuỗi đầy đủ",
+        "kết hợp",
+        "hoàn chỉnh",
+        "nền tảng ai"
+      ]
+    }
+  ],
+  "room_essay": {
+    "en": "Artificial Intelligence begins with curiosity—how can machines learn, decide, and adapt like humans? This room introduces the essential ideas behind AI: pattern recognition, data training, and problem-solving. You’ll explore how algorithms find meaning in information, building systems that sense and respond intelligently. Instead of getting lost in jargon, you’ll focus on clear mental models: inputs, rules, feedback, and improvement. Start simple, observe patiently, and experiment boldly. Every small step in AI expands your ability to understand how logic meets creativity in the digital mind.",
+    "vi": "Trí tuệ Nhân tạo bắt đầu từ sự tò mò — làm thế nào máy móc có thể học hỏi, ra quyết định và thích ứng như con người? Phòng này giới thiệu những ý tưởng cốt lõi của AI: nhận dạng mẫu, huấn luyện dữ liệu và giải quyết vấn đề. Bạn sẽ khám phá cách thuật toán tìm ý nghĩa trong thông tin, xây dựng hệ thống biết cảm nhận và phản hồi thông minh. Thay vì lạc trong thuật ngữ, bạn sẽ tập trung vào các mô hình rõ ràng: đầu vào, quy tắc, phản hồi và cải thiện. Hãy bắt đầu đơn giản, quan sát kiên nhẫn và thử nghiệm táo bạo. Mỗi bước nhỏ trong AI đều mở rộng khả năng hiểu sự giao thoa giữa logic và sáng tạo của trí tuệ số."
+  }
+}

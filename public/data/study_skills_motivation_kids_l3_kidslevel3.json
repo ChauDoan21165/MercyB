@@ -1,0 +1,125 @@
+{
+  "id": "study_skills_motivation_kids_l3",
+  "tier": "Kids Level 3 / Trẻ Em Cấp 3",
+  "title": {
+    "en": "Study Skills & Motivation",
+    "vi": "Kỹ Năng Học Tập & Động Lực"
+  },
+  "intro": {
+    "en": "This room teaches kids simple study habits that build focus, confidence, and motivation. Children learn how to plan tasks, stay organized, avoid distractions, and stay positive while learning.",
+    "vi": "Phòng học này dạy trẻ các thói quen học tập đơn giản giúp tăng tập trung, tự tin và động lực. Trẻ học cách lập kế hoạch, giữ gọn gàng, tránh xao lãng và giữ tinh thần tích cực khi học."
+  },
+  "intro_audio": "study_skills_motivation_v1_intro.mp3",
+  "entries": [
+    {
+      "slug": "set-small-goals",
+      "keywords_en": [
+        "goals",
+        "study",
+        "motivation"
+      ],
+      "keywords_vi": [
+        "mục tiêu",
+        "học tập",
+        "động lực"
+      ],
+      "copy": {
+        "en": "Teach kids to set small, simple goals such as finishing one exercise or reading one page. Small goals feel easier and help children avoid feeling overwhelmed. Show them how to say: 'My goal today is…' Completing small tasks gives children a sense of progress, which naturally boosts motivation.",
+        "vi": "Hãy dạy trẻ đặt mục tiêu nhỏ và đơn giản như làm xong một bài tập hoặc đọc một trang. Mục tiêu nhỏ giúp trẻ không bị quá tải. Dạy trẻ nói: 'My goal today is…' Hoàn thành những nhiệm vụ nhỏ mang lại cảm giác tiến bộ, từ đó tăng động lực tự nhiên."
+      },
+      "tags": [
+        "goals",
+        "motivation"
+      ],
+      "audio": "study_skills_motivation_v1_set_small_goals.mp3"
+    },
+    {
+      "slug": "stay-organized",
+      "keywords_en": [
+        "organized",
+        "study",
+        "clean"
+      ],
+      "keywords_vi": [
+        "ngăn nắp",
+        "học tập",
+        "gọn gàng"
+      ],
+      "copy": {
+        "en": "Teach kids to keep their study space neat. Show them how to organize books, prepare pencils, and remove anything not needed. A clean space makes it easier to focus and lowers stress. Children learn that being organized helps them study faster and more happily.",
+        "vi": "Hãy dạy trẻ giữ bàn học gọn gàng. Chỉ trẻ cách sắp xếp sách, chuẩn bị bút và bỏ những đồ không cần thiết. Không gian sạch giúp trẻ tập trung tốt hơn và giảm căng thẳng. Trẻ học rằng ngăn nắp giúp việc học nhanh và vui hơn."
+      },
+      "tags": [
+        "organized",
+        "focus"
+      ],
+      "audio": "study_skills_motivation_v1_stay_organized.mp3"
+    },
+    {
+      "slug": "avoid-distractions",
+      "keywords_en": [
+        "focus",
+        "distractions",
+        "study"
+      ],
+      "keywords_vi": [
+        "tập trung",
+        "xao lãng",
+        "học"
+      ],
+      "copy": {
+        "en": "Teach kids to avoid distractions by turning off toys, notifications, or loud music during study time. Encourage a short study period of 10–15 minutes. Explain that the brain works better when it focuses on one thing at a time. Practicing this builds strong attention skills.",
+        "vi": "Hãy dạy trẻ tránh xao lãng bằng cách tắt đồ chơi, thông báo hoặc nhạc to khi học. Khuyến khích trẻ học trong 10–15 phút. Giải thích rằng não hoạt động tốt hơn khi tập trung vào một việc. Luyện tập cách này giúp trẻ phát triển khả năng chú ý."
+      },
+      "tags": [
+        "focus",
+        "attention"
+      ],
+      "audio": "study_skills_motivation_v1_avoid_distractions.mp3"
+    },
+    {
+      "slug": "take-short-breaks",
+      "keywords_en": [
+        "breaks",
+        "rest",
+        "study"
+      ],
+      "keywords_vi": [
+        "nghỉ ngơi",
+        "tạm nghỉ",
+        "học"
+      ],
+      "copy": {
+        "en": "Short breaks keep the mind fresh. Teach children to study for a short time, then rest for 2–3 minutes. They can stretch, drink water, or relax their eyes. Breaks help the brain reset, making learning easier and more enjoyable.",
+        "vi": "Nghỉ ngắn giúp tâm trí tươi mới. Hãy dạy trẻ học một lúc rồi nghỉ 2–3 phút. Trẻ có thể duỗi tay, uống nước hoặc thư giãn mắt. Nghỉ ngơi giúp não làm mới, khiến việc học dễ dàng và thú vị hơn."
+      },
+      "tags": [
+        "breaks",
+        "rest"
+      ],
+      "audio": "study_skills_motivation_v1_take_short_breaks.mp3"
+    },
+    {
+      "slug": "stay-positive",
+      "keywords_en": [
+        "positive",
+        "motivation",
+        "study"
+      ],
+      "keywords_vi": [
+        "tích cực",
+        "động lực",
+        "học"
+      ],
+      "copy": {
+        "en": "Teach kids to stay positive by celebrating small wins. Encourage phrases like 'I can try' or 'I'm getting better.' When children feel proud of small improvements, they build long-term motivation and confidence in their learning abilities.",
+        "vi": "Hãy dạy trẻ giữ tinh thần tích cực bằng cách ăn mừng những bước tiến nhỏ. Khuyến khích trẻ nói: 'I can try' hoặc 'I'm getting better.' Khi trẻ tự hào về sự tiến bộ, trẻ sẽ xây dựng động lực dài lâu và tự tin hơn trong việc học."
+      },
+      "tags": [
+        "positive",
+        "confidence"
+      ],
+      "audio": "study_skills_motivation_v1_stay_positive.mp3"
+    }
+  ]
+}

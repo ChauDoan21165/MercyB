@@ -1,0 +1,132 @@
+{
+  "id": "overcome-storm-vip3",
+  "tier": "VIP 3 / Cấp VIP 3",
+  "default_entry_id": "build_resilience_challenges",
+  "welcome": {
+    "en": "Hello! Welcome to Emotional Growth VIP3 room. How can I help you today?\n\nTopic keywords you can type are below:\n- build_resilience_challenges\n- seek_support_tough_times\n- cultivate_positive_mindset\n- emotional_flexibility\n- purpose_driven_resilience",
+    "vi": "Xin chào! Chào mừng bạn đến với phòng Phát Triển Cảm Xúc VIP3. Tôi có thể giúp gì cho bạn hôm nay?\n\nCác từ khóa bạn có thể nhập là:\n- xay_dung_suc_ben_noi_tam\n- tim_kiem_ho_tro\n- nuoi_duong_tu_duy_tich_cuc\n- linh_hoat_cam_xuc\n- suc_ben_dua_tren_muc_dich"
+  },
+  "search": {
+    "normalize_case": true,
+    "normalize_accents": true,
+    "tokenize_on": [
+      " ",
+      "_"
+    ]
+  },
+  "keyword_menu": {
+    "en": [
+      "build_resilience_challenges",
+      "seek_support_tough_times",
+      "cultivate_positive_mindset",
+      "emotional_flexibility",
+      "purpose_driven_resilience"
+    ],
+    "vi": [
+      "xay_dung_suc_ben_noi_tam",
+      "tim_kiem_ho_tro",
+      "nuoi_duong_tu_duy_tich_cuc",
+      "linh_hoat_cam_xuc",
+      "suc_ben_dua_tren_muc_dich"
+    ]
+  },
+  "keywords_dict": {
+    "en": {
+      "build_resilience_challenges": [
+        "resilience",
+        "challenges",
+        "gratitude",
+        "strength",
+        "growth",
+        "overcome",
+        "hardship",
+        "storm"
+      ],
+      "seek_support_tough_times": [
+        "support",
+        "tough times",
+        "connection",
+        "network",
+        "friends",
+        "crisis",
+        "help",
+        "reach out"
+      ],
+      "cultivate_positive_mindset": [
+        "positive",
+        "mindset",
+        "optimistic",
+        "reframe",
+        "lessons",
+        "growth",
+        "hope",
+        "visualization"
+      ],
+      "emotional_flexibility": [
+        "flexibility",
+        "adaptation",
+        "calm",
+        "regulation",
+        "shifts",
+        "emotions"
+      ],
+      "purpose_driven_resilience": [
+        "purpose",
+        "meaning",
+        "resilience",
+        "values",
+        "motivation",
+        "growth"
+      ]
+    },
+    "vi": {
+      "xay_dung_suc_ben_noi_tam": [
+        "sức bền",
+        "thử thách",
+        "biết ơn",
+        "sức mạnh",
+        "trưởng thành",
+        "vượt qua",
+        "khó khăn",
+        "giông bão"
+      ],
+      "tim_kiem_ho_tro": [
+        "hỗ trợ",
+        "khó khăn",
+        "giúp đỡ",
+        "kết nối",
+        "mạng lưới",
+        "bạn bè",
+        "khủng hoảng",
+        "chia sẻ"
+      ],
+      "nuoi_duong_tu_duy_tich_cuc": [
+        "tích cực",
+        "tư duy",
+        "lạc quan",
+        "nhìn lại",
+        "bài học",
+        "phát triển",
+        "hy vọng",
+        "hình dung"
+      ],
+      "linh_hoat_cam_xuc": [
+        "linh hoạt",
+        "thích nghi",
+        "bình tĩnh",
+        "điều hòa",
+        "chuyển hóa",
+        "cảm xúc"
+      ],
+      "suc_ben_dua_tren_muc_dich": [
+        "mục đích",
+        "ý nghĩa",
+        "sức bền",
+        "giá trị",
+        "động lực",
+        "phát triển"
+      ]
+    }
+  },
+  "entries": []
+}

@@ -1,0 +1,86 @@
+{
+  "id": "obesity-free",
+  "tier": "Free / Miễn phí",
+  "title": {
+    "en": "Obesity Management",
+    "vi": "Quản Lý Béo Phì"
+  },
+  "content": {
+    "en": "Managing obesity starts with gentle, judgment-free steps. This Free room gives you three simple, proven habits: healthier daily meals, easy movement, and mindful eating. No pressure, no shame — just small actions that add up. Begin with one change today and notice how you feel. These basics build real confidence and lasting progress.",
+    "vi": "Quản lý béo phì bắt đầu từ những bước nhẹ nhàng, không phán xét. Phòng Miễn phí này mang đến ba thói quen đơn giản, đã được chứng minh hiệu quả: bữa ăn lành mạnh hằng ngày, vận động nhẹ nhàng và ăn uống tỉnh thức. Không áp lực, không xấu hổ — chỉ là những hành động nhỏ tích lũy theo thời gian. Hãy bắt đầu một thay đổi hôm nay và cảm nhận sự khác biệt. Những nền tảng này nuôi dưỡng sự tự tin và tiến bộ lâu dài."
+  },
+  "entries": [
+    {
+      "slug": "starting-healthy-meal-choices",
+      "keywords_en": [
+        "healthy meal choices",
+        "balanced plate",
+        "weight management meals",
+        "simple eating habits"
+      ],
+      "keywords_vi": [
+        "lựa chọn bữa ăn lành mạnh",
+        "đĩa ăn cân bằng",
+        "bữa ăn quản lý cân nặng",
+        "thói quen ăn uống đơn giản"
+      ],
+      "copy": {
+        "en": "Begin managing obesity with healthy meal choices. Plan one daily meal using the simple plate method: half vegetables, one quarter lean protein, one quarter whole grains. Preparing balanced meals helps control hunger and keeps energy steady. Schedule a quick weekly prep to make good choices effortless. Small, realistic steps create lasting habits. Start today with one balanced meal and feel the difference it makes.",
+        "vi": "Hãy bắt đầu quản lý béo phì bằng những lựa chọn bữa ăn lành mạnh. Lên kế hoạch một bữa mỗi ngày theo phương pháp \"đĩa cân bằng\": một nửa là rau củ, một phần tư là protein nạc, một phần tư là ngũ cốc nguyên hạt. Chuẩn bị bữa ăn cân đối giúp kiểm soát cơn đói và giữ năng lượng ổn định. Hãy dành chút thời gian mỗi tuần để chuẩn bị trước, giúp việc lựa chọn tốt trở nên dễ dàng. Những bước nhỏ và thực tế sẽ tạo nên thói quen bền vững. Hãy bắt đầu hôm nay với một bữa ăn cân bằng và cảm nhận sự khác biệt."
+      },
+      "tags": [
+        "obesity",
+        "nutrition"
+      ],
+      "audio": "starting_healthy_meal_choices_free.mp3"
+    },
+    {
+      "slug": "trying-daily-movement",
+      "keywords_en": [
+        "daily movement",
+        "light exercise",
+        "walking habit",
+        "beginner activity"
+      ],
+      "keywords_vi": [
+        "vận động hằng ngày",
+        "tập luyện nhẹ",
+        "thói quen đi bộ",
+        "hoạt động cho người mới bắt đầu"
+      ],
+      "copy": {
+        "en": "Daily movement is one of the kindest things you can do for your body. Start with just ten minutes — walking, stretching, or dancing at home. Any movement counts and lifts your mood. Consistency matters more than intensity. Keep it gentle and regular, and energy naturally returns. Begin today with one short, enjoyable activity and celebrate showing up for yourself.",
+        "vi": "Vận động hằng ngày là một trong những điều tử tế nhất bạn có thể dành cho cơ thể. Hãy bắt đầu chỉ với mười phút — đi bộ, giãn cơ hoặc nhảy theo nhạc tại nhà. Mọi chuyển động đều có giá trị và giúp nâng đỡ tâm trạng. Sự đều đặn quan trọng hơn cường độ. Giữ cho việc vận động nhẹ nhàng và thường xuyên, năng lượng sẽ tự nhiên quay trở lại. Hãy bắt đầu hôm nay với một hoạt động ngắn và dễ chịu — và tự khen ngợi vì bạn đã hiện diện cho chính mình."
+      },
+      "tags": [
+        "obesity",
+        "movement"
+      ],
+      "audio": "trying_daily_movement_free.mp3"
+    },
+    {
+      "slug": "practicing-mindful-eating",
+      "keywords_en": [
+        "mindful eating",
+        "eating awareness",
+        "slow eating",
+        "hunger cues"
+      ],
+      "keywords_vi": [
+        "ăn uống tỉnh thức",
+        "nhận biết khi ăn",
+        "ăn chậm",
+        "tín hiệu đói"
+      ],
+      "copy": {
+        "en": "Mindful eating helps you reconnect with your body’s natural signals. Choose one meal today to eat without screens. Chew slowly, taste each bite, and notice when you feel satisfied. This gentle practice reduces overeating and brings peace around food. No rules — just awareness. Start with a single mindful meal and listen to what your body is quietly telling you.",
+        "vi": "Ăn uống tỉnh thức giúp bạn kết nối lại với những tín hiệu tự nhiên của cơ thể. Hãy chọn một bữa ăn hôm nay để thưởng thức mà không có màn hình. Nhai chậm, cảm nhận từng miếng và chú ý khoảnh khắc bạn thấy đủ. Thực hành nhẹ nhàng này giúp giảm ăn quá mức và mang đến sự bình yên với thức ăn. Không có quy tắc — chỉ có sự chú tâm. Hãy bắt đầu với một bữa ăn tỉnh thức và lắng nghe điều cơ thể đang nhẹ nhàng gửi gắm."
+      },
+      "tags": [
+        "obesity",
+        "mindfulness"
+      ],
+      "audio": "practicing_mindful_eating_free.mp3"
+    }
+  ]
+}
