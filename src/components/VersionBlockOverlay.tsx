@@ -12,7 +12,7 @@ export function VersionBlockOverlay({ visible, onReload, latestVersion }: Versio
 
   return (
     <div 
-      className="fixed inset-0 z-[200] bg-background/95 backdrop-blur-sm flex items-center justify-center p-4"
+      className="fixed inset-0 z-[200] bg-black/80 bg-background/95 backdrop-blur-sm flex items-center justify-center p-4 pt-[max(1rem,env(safe-area-inset-top))] pb-[max(1rem,env(safe-area-inset-bottom))]"
       role="alertdialog"
       aria-modal="true"
       aria-labelledby="version-block-title"
