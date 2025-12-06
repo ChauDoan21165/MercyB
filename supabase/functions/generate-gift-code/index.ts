@@ -15,8 +15,12 @@ function generateCodeSegment(length: number): string {
   return result;
 }
 
-// Generate gift code in format VIP2-XXXX-XXXX-XXXX or VIP3-XXXX-XXXX-XXXX
-function generateGiftCode(tier: 'VIP2' | 'VIP3'): string {
+// Valid gift code tiers
+type GiftTier = 'VIP1' | 'VIP2' | 'VIP3' | 'VIP4' | 'VIP5' | 'VIP6' | 'VIP7' | 'VIP8' | 'VIP9';
+const ALLOWED_TIERS: GiftTier[] = ['VIP1', 'VIP2', 'VIP3', 'VIP4', 'VIP5', 'VIP6', 'VIP7', 'VIP8', 'VIP9'];
+
+// Generate gift code in format VIPX-XXXX-XXXX-XXXX
+function generateGiftCode(tier: GiftTier): string {
   const segment1 = generateCodeSegment(4);
   const segment2 = generateCodeSegment(4);
   const segment3 = generateCodeSegment(4);
@@ -102,9 +106,9 @@ Deno.serve(async (req) => {
     const { tier, count = 1, code_expires_at, notes } = body;
     console.log('[generate-gift-code] Request body:', { tier, count, notes, code_expires_at });
 
-    if (!tier || !['VIP2', 'VIP3'].includes(tier)) {
+    if (!tier || !ALLOWED_TIERS.includes(tier as GiftTier)) {
       return new Response(
-        JSON.stringify({ error: 'Valid tier (VIP2 or VIP3) is required' }),
+        JSON.stringify({ error: 'Valid tier (VIP1–VIP9) is required' }),
         { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 400 }
       );
     }
