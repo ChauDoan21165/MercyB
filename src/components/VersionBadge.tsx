@@ -9,12 +9,22 @@ import {
 } from '@/components/ui/popover';
 import { Button } from '@/components/ui/button';
 
+/** Convert semver to a letter (A-Z based on patch number) */
+function versionToLetter(version: string): string {
+  const match = version.match(/(\d+)\.(\d+)\.(\d+)/);
+  if (!match) return 'A';
+  const patch = Number(match[3]);
+  const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  return alphabet[patch % alphabet.length];
+}
+
 export function VersionBadge() {
   const { currentVersion, checking, checkForUpdates, updateAvailable, applyUpdate } = useVersionCheck();
   const [open, setOpen] = useState(false);
 
   // Fallback version if not loaded yet
-  const displayVersion = currentVersion?.semver || '0.9.16';
+  const displayVersion = currentVersion?.semver || '0.9.17';
+  const versionLetter = versionToLetter(displayVersion);
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -37,7 +47,8 @@ export function VersionBadge() {
           }}
           aria-label="Version info"
         >
-          v{displayVersion}
+          <span className="font-bold mr-1">{versionLetter}</span>
+          <span className="opacity-70">v{displayVersion}</span>
           {updateAvailable && <span className="ml-1">•</span>}
         </button>
       </PopoverTrigger>
