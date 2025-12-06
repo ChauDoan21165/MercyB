@@ -6,11 +6,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Global B&W mode - applies grayscale filter to entire page */
-html.bw-mode {
-  filter: grayscale(1);
-  transition: filter 200ms ease-in-out;
-}
+/* B&W mode is now handled via [data-mb-theme="bw"] attribute - see line ~630 */
 
 /* ============================================
    MERCY HOST ANIMATIONS
@@ -627,7 +623,8 @@ All colors MUST be HSL.
   }
   
   /* Mercy Blade Theme System - Black & White Mode */
-  [data-mb-theme="bw"] {
+  /* Scoped to .mb-app-content to exclude admin pages */
+  [data-mb-theme="bw"] .mb-app-content {
     /* Desaturate everything to grayscale */
     --theme-text: 0 0% 10%;
     --theme-bg: 0 0% 100%;
@@ -648,9 +645,10 @@ All colors MUST be HSL.
     
     /* Filter images to grayscale */
     filter: grayscale(100%);
+    transition: filter 200ms ease-in-out;
   }
   
-  [data-mb-theme="bw"] .dark {
+  [data-mb-theme="bw"] .mb-app-content.dark {
     --theme-text: 0 0% 95%;
     --theme-bg: 0 0% 10%;
     --theme-card: 0 0% 12%;
