@@ -2,7 +2,7 @@ import { useHomepageConfig } from '@/hooks/useHomepageConfig';
 import { HomepageSection } from '@/components/homepage/HomepageSection';
 import { ColorfulMercyBladeHeader } from '@/components/ColorfulMercyBladeHeader';
 import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Gift } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { CalmMindWidget } from '@/components/paths/CalmMindWidget';
@@ -302,13 +302,24 @@ Kids English không chỉ là chương trình dành cho trẻ.
           <p className="text-sm text-gray-700">
             Sẵn sàng bắt đầu hành trình của bạn?
           </p>
-          <Button
-            size="lg"
-            onClick={() => navigate('/tiers')}
-            className="gap-2 bg-teal-600 hover:bg-teal-700 text-white"
-          >
-            Get Started <ArrowRight className="w-4 h-4" />
-          </Button>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <Button
+              size="lg"
+              onClick={() => navigate('/tiers')}
+              className="gap-2 bg-teal-600 hover:bg-teal-700 text-white"
+            >
+              Get Started <ArrowRight className="w-4 h-4" />
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              onClick={() => navigate('/redeem')}
+              className="gap-2 border-teal-600 text-teal-700 hover:bg-teal-50"
+            >
+              <Gift className="w-4 h-4" />
+              Redeem Gift Code / Nhập Mã Quà Tặng
+            </Button>
+          </div>
         </div>
       </footer>
 

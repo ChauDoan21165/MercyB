@@ -50,9 +50,13 @@ const RedeemGiftCode = () => {
       // Clear the input
       setCode("");
 
+      // Refresh the session to update user access
+      await supabase.auth.refreshSession();
+
       // Redirect to home after 2 seconds
       setTimeout(() => {
         navigate('/');
+        window.location.reload(); // Force reload to refresh all access states
       }, 2000);
 
     } catch (error: any) {
