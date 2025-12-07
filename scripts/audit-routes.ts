@@ -15,33 +15,55 @@ const APP_FILE = path.join(process.cwd(), "src", "App.tsx");
 const EXPECTED_ROUTES = [
   // Public routes
   "/",
-  "/login",
-  "/signup",
+  "/home",
+  "/onboarding",
   "/tiers",
-  "/tier-map",
+  "/welcome",
+  "/auth",
+  "/reset",
   
   // Room routes
+  "/rooms",
   "/room/:roomId",
-  "/free",
-  "/vip1",
-  "/vip2",
-  "/vip3",
-  "/vip4",
-  "/vip5",
-  "/vip6",
-  "/vip7",
-  "/vip8",
-  "/vip9",
+  "/all-rooms",
+  "/english-pathway",
+  
+  // VIP routes (both patterns)
+  "/rooms-vip1",
+  "/rooms-vip2",
+  "/rooms-vip3",
+  "/rooms-vip3ii",
+  "/rooms-vip4",
+  "/rooms-vip5",
+  "/rooms-vip6",
+  "/rooms-vip9",
+  "/vip/vip1",
+  "/vip/vip2",
+  "/vip/vip3",
+  "/vip/vip3ii",
+  "/vip/vip4",
+  "/vip/vip5",
+  "/vip/vip6",
+  "/vip/vip9",
   
   // Kids routes
-  "/kids",
+  "/kids-level1",
+  "/kids-level2",
+  "/kids-level3",
   "/kids-chat/:roomId",
+  
+  // Paths routes
+  "/paths/:slug",
+  "/paths/:slug/day/:day",
+  "/paths/:slug/completed",
   
   // Admin routes
   "/admin",
-  "/admin/users",
   "/admin/rooms",
+  "/admin/users",
   "/admin/payments",
+  "/admin/room-health",
+  "/admin/stats",
 ];
 
 interface RouteCheck {

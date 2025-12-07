@@ -196,7 +196,7 @@ const PaymentMonitoring = () => {
               Refresh
             </Button>
             <Button 
-              onClick={() => navigate('/admin-stats')}
+              onClick={() => navigate('/admin')}
               style={{ background: '#FFFFFF', color: '#000000', border: '1px solid #000000' }}
             >
               ← Back to Admin

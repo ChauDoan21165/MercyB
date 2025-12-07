@@ -241,7 +241,7 @@ export default function AdminRooms() {
               Import JSON
             </Button>
             <Button
-              onClick={() => navigate("/admin/rooms/health")}
+              onClick={() => navigate("/admin/room-health")}
               variant="outline"
               className="gap-2 border-black text-black hover:bg-gray-100"
             >
@@ -249,7 +249,7 @@ export default function AdminRooms() {
               Health Check
             </Button>
             <Button
-              onClick={() => navigate("/admin/rooms/data-health")}
+              onClick={() => navigate("/admin/room-health-dashboard")}
               variant="outline"
               className="gap-2 border-black text-black hover:bg-gray-100"
             >
