@@ -4,8 +4,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Table, TableRow, TableCell, TableBody, TableHead, TableHeader } from "@/components/ui/table";
 import { AdminLayout } from "@/components/admin/AdminLayout";
 import { AiControlPanel } from "@/components/admin/AiControlPanel";
-import { Cpu, DollarSign, BarChart3, TrendingUp, Clock, AlertCircle } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { Cpu, DollarSign, BarChart3, TrendingUp } from "lucide-react";
 
 interface AIUsageRecord {
   id: string;
@@ -14,10 +13,7 @@ interface AIUsageRecord {
   tokens_input: number;
   tokens_output: number;
   cost_usd: number;
-  status: string;
   endpoint: string | null;
-  request_duration_ms: number | null;
-  error_message: string | null;
   created_at: string;
 }
 
@@ -42,9 +38,9 @@ const AIUsage = () => {
     try {
       setLoading(true);
 
-      // Fetch recent usage records
+      // Fetch recent usage records from ai_usage_events table
       const { data: usageData, error: usageError } = await supabase
-        .from("ai_usage")
+        .from("ai_usage_events")
         .select("*")
         .order("created_at", { ascending: false })
         .limit(500);
@@ -64,19 +60,6 @@ const AIUsage = () => {
       console.error("Failed to fetch AI usage data:", error);
     } finally {
       setLoading(false);
-    }
-  };
-
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case "success":
-        return "default";
-      case "error":
-        return "destructive";
-      case "timeout":
-        return "secondary";
-      default:
-        return "outline";
     }
   };
 
@@ -249,8 +232,6 @@ const AIUsage = () => {
                       <TableHead>Tokens</TableHead>
                       <TableHead>Cost</TableHead>
                       <TableHead>Endpoint</TableHead>
-                      <TableHead>Duration</TableHead>
-                      <TableHead>Status</TableHead>
                       <TableHead className="w-[140px]">Time</TableHead>
                     </TableRow>
                   </TableHeader>
@@ -280,29 +261,6 @@ const AIUsage = () => {
 
                         <TableCell>
                           <div className="text-sm">{row.endpoint || "—"}</div>
-                        </TableCell>
-
-                        <TableCell>
-                          {row.request_duration_ms ? (
-                            <div className="flex items-center gap-1 text-xs">
-                              <Clock className="h-3 w-3" />
-                              {row.request_duration_ms}ms
-                            </div>
-                          ) : (
-                            <span className="text-xs text-muted-foreground">—</span>
-                          )}
-                        </TableCell>
-
-                        <TableCell>
-                          <Badge variant={getStatusColor(row.status)}>
-                            {row.status}
-                          </Badge>
-                          {row.error_message && (
-                            <div className="flex items-center gap-1 mt-1 text-xs text-destructive">
-                              <AlertCircle className="h-3 w-3" />
-                              {row.error_message.slice(0, 30)}...
-                            </div>
-                          )}
                         </TableCell>
 
                         <TableCell>
