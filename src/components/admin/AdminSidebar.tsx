@@ -114,14 +114,14 @@ export function AdminSidebar() {
   return (
     <Sidebar 
       collapsible="icon" 
-      className="!bg-[#F5F5F5] !text-[#000000]"
+      className="[&_[data-sidebar=sidebar]]:!bg-[#F5F5F5] !text-[#000000]"
       style={{ 
-        backgroundColor: '#F5F5F5 !important', 
+        backgroundColor: '#F5F5F5',
         borderRight: '1px solid #E0E0E0',
         color: '#000000'
       }}
     >
-      <SidebarContent className="py-4">
+      <SidebarContent className="py-4 bg-[#F5F5F5]" style={{ backgroundColor: '#F5F5F5' }}>
         {/* Main Navigation */}
         <SidebarGroup>
           {open && <SidebarGroupLabel style={{ color: '#666666', fontWeight: 'bold' }}>Main</SidebarGroupLabel>}

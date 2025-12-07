@@ -792,3 +792,14 @@ All colors MUST be HSL.
 }
 
 /* Admin pages use their own inline styles - no CSS overrides needed */
+
+/* CRITICAL: Force admin sidebar background to prevent white-on-white in preview */
+[data-sidebar="sidebar"] {
+  background-color: #F5F5F5 !important;
+}
+
+/* Admin pages - force readable colors */
+.admin-layout-force [data-sidebar] {
+  background-color: #F5F5F5 !important;
+  color: #000000 !important;
+}
