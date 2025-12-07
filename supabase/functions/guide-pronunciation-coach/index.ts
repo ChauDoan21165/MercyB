@@ -1,11 +1,15 @@
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.75.1";
+import { checkRateLimit, getClientIP, rateLimitResponse } from "../_shared/rateLimit.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
+
+// Rate limit: 10 requests per minute per IP (lower since audio processing is expensive)
+const RATE_LIMIT_CONFIG = { maxRequests: 10, windowMs: 60000 };
 
 const OPENAI_API_KEY = Deno.env.get('OPENAI_API_KEY');
 const SUPABASE_URL = Deno.env.get('SUPABASE_URL')!;
@@ -40,6 +44,14 @@ function containsCrisisContent(text: string): boolean {
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
+  }
+
+  // Rate limiting by IP
+  const clientIP = getClientIP(req);
+  const rateCheck = checkRateLimit(`guide-pronunciation-coach:${clientIP}`, RATE_LIMIT_CONFIG);
+  if (!rateCheck.allowed) {
+    console.warn(`Rate limit exceeded for IP: ${clientIP}`);
+    return rateLimitResponse(rateCheck.retryAfterSeconds!, corsHeaders);
   }
 
   try {
