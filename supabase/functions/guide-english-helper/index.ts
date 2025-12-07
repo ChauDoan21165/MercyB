@@ -1,10 +1,14 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { checkRateLimit, getClientIP, rateLimitResponse } from "../_shared/rateLimit.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
+
+// Rate limit: 20 requests per minute per IP
+const RATE_LIMIT_CONFIG = { maxRequests: 20, windowMs: 60000 };
 
 // Safety keywords that trigger templated response
 const CRISIS_KEYWORDS = [
@@ -58,6 +62,14 @@ function containsCrisisKeywords(text: string): boolean {
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
+  }
+
+  // Rate limiting by IP
+  const clientIP = getClientIP(req);
+  const rateCheck = checkRateLimit(`guide-english-helper:${clientIP}`, RATE_LIMIT_CONFIG);
+  if (!rateCheck.allowed) {
+    console.warn(`Rate limit exceeded for IP: ${clientIP}`);
+    return rateLimitResponse(rateCheck.retryAfterSeconds!, corsHeaders);
   }
 
   try {
