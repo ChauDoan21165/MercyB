@@ -1,7 +1,7 @@
 {
-  "version": "2024-12-07-01",
-  "hash": "ai-usage-fix",
-  "buildTime": "2024-12-07T03:35:00.000Z",
+  "version": "2024-12-07-02",
+  "hash": "force-deploy-fix",
+  "buildTime": "2024-12-07T05:00:00.000Z",
   "app": "mercy-blade",
-  "semver": "0.9.20"
+  "semver": "0.9.21"
 }

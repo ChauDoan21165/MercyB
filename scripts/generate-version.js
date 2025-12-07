@@ -28,7 +28,7 @@ const versionData = {
   hash: gitHash,
   buildTime: now.toISOString(),
   app: 'mercy-blade',
-  semver: '0.9.16'
+  semver: '0.9.21'
 };
 
 // Write to public folder so it's accessible at /version.json
