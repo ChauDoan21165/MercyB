@@ -186,15 +186,12 @@ const AdminGiftCodes = () => {
   const availableCodes = allCodes.filter(c => !c.used_by && c.is_active).length;
   const usedCodes = allCodes.filter(c => c.used_by).length;
 
-  // Debug: log render
-  console.log('[AdminGiftCodes] Rendering component, isLoading:', isLoading, 'allCodes:', allCodes.length);
-  
   return (
     <AdminLayout>
-      <div className="container mx-auto max-w-6xl space-y-6" style={{ backgroundColor: '#FFFFFF', minHeight: '100vh' }}>
-        <div style={{ backgroundColor: '#FFFFFF', padding: '1rem' }}>
-          <h1 className="text-3xl font-bold" style={{ color: '#000000' }}>Gift Codes</h1>
-          <p style={{ color: '#666666' }}>Generate and manage VIP gift codes</p>
+      <div className="container mx-auto max-w-6xl space-y-6">
+        <div>
+          <h1 className="text-3xl font-bold text-black">Gift Codes</h1>
+          <p className="text-gray-600">Generate and manage VIP gift codes</p>
         </div>
         
         <div className="grid gap-6 md:grid-cols-2">

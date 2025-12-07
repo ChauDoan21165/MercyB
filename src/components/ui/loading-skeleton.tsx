@@ -108,42 +108,16 @@ interface LoadingSkeletonProps {
 }
 
 export function LoadingSkeleton({ variant = 'page' }: LoadingSkeletonProps) {
-  // Check if we're on an admin route for explicit styling
-  const isAdmin = typeof window !== 'undefined' && window.location.pathname.startsWith('/admin');
-  
   if (variant === 'page') {
     return (
-      <div 
-        className="space-y-4 p-4 min-h-screen"
-        style={isAdmin ? { backgroundColor: '#FFFFFF' } : undefined}
-      >
-        <div 
-          className="h-8 w-1/3 rounded animate-pulse"
-          style={isAdmin ? { backgroundColor: '#E0E0E0' } : undefined}
-        />
-        <div 
-          className="h-4 w-2/3 rounded animate-pulse"
-          style={isAdmin ? { backgroundColor: '#E0E0E0' } : undefined}
-        />
+      <div className="space-y-4 p-4">
+        <Skeleton className="h-8 w-1/3" />
+        <Skeleton className="h-4 w-2/3" />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-          <div 
-            className="h-32 rounded animate-pulse"
-            style={isAdmin ? { backgroundColor: '#E0E0E0' } : undefined}
-          />
-          <div 
-            className="h-32 rounded animate-pulse"
-            style={isAdmin ? { backgroundColor: '#E0E0E0' } : undefined}
-          />
-          <div 
-            className="h-32 rounded animate-pulse"
-            style={isAdmin ? { backgroundColor: '#E0E0E0' } : undefined}
-          />
+          <Skeleton className="h-32" />
+          <Skeleton className="h-32" />
+          <Skeleton className="h-32" />
         </div>
-        {isAdmin && (
-          <p style={{ color: '#000000', textAlign: 'center', marginTop: '2rem' }}>
-            Loading admin page...
-          </p>
-        )}
       </div>
     );
   }
