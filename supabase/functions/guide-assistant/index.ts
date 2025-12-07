@@ -1,6 +1,7 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { checkRateLimit, getClientIP, rateLimitResponse } from "../_shared/rateLimit.ts";
+import { logAiUsage, isAiEnabled, isUserAiEnabled, aiDisabledResponse } from "../_shared/aiUsage.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -108,6 +109,30 @@ serve(async (req) => {
   }
 
   try {
+    // Check if AI is globally enabled
+    if (!await isAiEnabled()) {
+      return aiDisabledResponse('global', corsHeaders);
+    }
+
+    // Get user ID if authenticated
+    let userId: string | null = null;
+    const authHeader = req.headers.get('Authorization');
+    if (authHeader) {
+      const supabase = createClient(
+        Deno.env.get('SUPABASE_URL')!,
+        Deno.env.get('SUPABASE_ANON_KEY')!,
+        { global: { headers: { Authorization: authHeader } } }
+      );
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        userId = user.id;
+        // Check per-user AI setting
+        if (!await isUserAiEnabled(userId)) {
+          return aiDisabledResponse('user', corsHeaders);
+        }
+      }
+    }
+
     const { question, roomId, roomTitle, language = 'en', context } = await req.json();
 
     if (!question || typeof question !== 'string' || question.trim().length === 0) {
@@ -184,6 +209,18 @@ User question: ${question}`;
     const data = await response.json();
     const answer = data.choices?.[0]?.message?.content || 'I could not generate an answer. Please try again.';
 
+    // Log AI usage
+    const usage = data.usage;
+    if (usage) {
+      await logAiUsage({
+        userId,
+        model: 'gpt-4o-mini',
+        tokensInput: usage.prompt_tokens || 0,
+        tokensOutput: usage.completion_tokens || 0,
+        endpoint: 'guide-assistant',
+      });
+    }
+
     return new Response(
       JSON.stringify({ ok: true, answer }),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
@@ -192,7 +229,7 @@ User question: ${question}`;
   } catch (error) {
     console.error('Guide assistant error:', error);
     return new Response(
-      JSON.stringify({ ok: false, error: error instanceof Error ? error.message : 'Unknown error' }),
+      JSON.stringify({ ok: false, error: 'An error occurred. Please try again.' }),
       { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
   }
