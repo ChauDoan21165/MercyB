@@ -64,8 +64,8 @@ export const AdminRoute = ({ children }: Props) => {
   if (checking) {
     console.log('[AdminRoute] Still checking, showing loading state');
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-900 text-white">
-        <p className="text-lg font-medium">Checking admin access…</p>
+      <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#FFFFFF' }}>
+        <p className="text-lg font-medium" style={{ color: '#000000' }}>Checking admin access…</p>
       </div>
     );
   }
