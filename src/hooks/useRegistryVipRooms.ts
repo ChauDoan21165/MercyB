@@ -1,22 +1,20 @@
 /**
  * REGISTRY-FIRST VIP ROOM LOADER - Design System v1.1
  * 
- * Source of Truth: JSON registry (roomDataImports.ts)
+ * Source of Truth: JSON files via roomFetcher (runtime loaded)
  * Enhancement: Supabase rooms table (optional metadata)
  * 
  * Contract:
- * - All rooms in registry MUST appear in the grid
- * - DB is used ONLY for extra metadata (is_active, domain, etc.)
+ * - All rooms from roomFetcher MUST appear in the grid
+ * - DB is used ONLY for extra metadata (domain, etc.)
  * - Missing DB row does NOT hide a room
- * - is_active filter applies only if DB row exists
  * 
- * This replaces strict DB-only loading to prevent rooms from disappearing
- * when DB data is incomplete or inconsistent.
+ * This uses async runtime loading instead of static imports.
  */
 
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
-import { roomDataMap } from '@/lib/roomDataImports';
+import { getRoomsByTier as fetchRoomsByTier } from '@/lib/roomFetcher';
 import { TIER_ID_TO_LABEL, type TierId } from '@/lib/constants/tiers';
 
 export interface RegistryRoom {
@@ -27,28 +25,25 @@ export interface RegistryRoom {
   domain?: string;
   is_active: boolean;
   hasData: boolean;
-  entries?: any[]; // For compatibility with existing code
-  // Additional DB fields can be added as optional
+  entries?: any[];
 }
 
 /**
- * Fetch rooms from registry + enhance with DB metadata
+ * Fetch rooms from fetcher + enhance with DB metadata
  */
 async function fetchRegistryVipRooms(tierId: TierId): Promise<RegistryRoom[]> {
   // 1. Get canonical tier label for DB matching
   const tierLabel = TIER_ID_TO_LABEL[tierId];
 
-  // 2. Filter registry rooms by tier ID
-  const registryRooms = Object.values(roomDataMap).filter(
-    (room) => room.tier === tierId
-  );
+  // 2. Fetch rooms from runtime loader
+  const fetchedRooms = await fetchRoomsByTier(tierId);
 
   if (import.meta.env.DEV) {
-    console.log(`[RegistryVipRooms] ${tierId} → ${registryRooms.length} rooms in registry`);
+    console.log(`[RegistryVipRooms] ${tierId} → ${fetchedRooms.length} rooms from fetcher`);
   }
 
   // 3. Fetch DB metadata for all these rooms (optional enhancement)
-  const roomIds = registryRooms.map((r) => r.id);
+  const roomIds = fetchedRooms.map((r) => r.id);
   const { data: dbRooms, error } = await supabase
     .from('rooms')
     .select('id, tier, domain')
@@ -56,7 +51,7 @@ async function fetchRegistryVipRooms(tierId: TierId): Promise<RegistryRoom[]> {
 
   if (error) {
     console.warn(`[RegistryVipRooms] DB query warning for ${tierId}:`, error);
-    // Continue without DB data - registry is source of truth
+    // Continue without DB data - fetcher is source of truth
   }
 
   // 4. Build room map with DB metadata
@@ -64,19 +59,18 @@ async function fetchRegistryVipRooms(tierId: TierId): Promise<RegistryRoom[]> {
     (dbRooms || []).map((r) => [r.id, r])
   );
 
-  // 5. Merge registry + DB data (no is_active column in DB, all registry rooms are active)
-  const mergedRooms: RegistryRoom[] = registryRooms.map((registryRoom) => {
-    const dbRoom = dbRoomMap.get(registryRoom.id);
+  // 5. Merge fetcher + DB data
+  const mergedRooms: RegistryRoom[] = fetchedRooms.map((room) => {
+    const dbRoom = dbRoomMap.get(room.id);
 
     return {
-      id: registryRoom.id,
-      title_en: registryRoom.nameEn,
-      title_vi: registryRoom.nameVi,
-      tier: tierLabel, // Use canonical tier label
-      domain: dbRoom?.domain,
-      is_active: true, // Registry is source of truth - all rooms active
-      hasData: registryRoom.hasData !== false, // From registry - rooms in registry have data
-      entries: registryRoom.entries, // Pass through entries if available
+      id: room.id,
+      title_en: room.nameEn,
+      title_vi: room.nameVi,
+      tier: tierLabel,
+      domain: dbRoom?.domain || room.domain,
+      is_active: true,
+      hasData: room.hasData !== false,
     };
   });
 

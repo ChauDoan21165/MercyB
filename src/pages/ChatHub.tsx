@@ -37,7 +37,7 @@ import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
 import { AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogAction } from "@/components/ui/alert-dialog";
 import { messageSchema } from "@/lib/inputValidation";
 import { supabase } from "@/integrations/supabase/client";
-import { roomDataMap } from "@/lib/roomDataImports";
+// roomDataMap removed - use roomFetcher async API instead
 import { setCustomKeywordMappings, clearCustomKeywordMappings, loadRoomKeywords } from "@/lib/customKeywordLoader";
 import { buildAudioSrc } from "@/lib/audioHelpers";
 import { ProfileAvatarUpload } from "@/components/ProfileAvatarUpload";

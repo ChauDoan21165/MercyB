@@ -2,9 +2,10 @@
  * Centralized route helper to determine parent routes for rooms
  * Prevents 404s and navigation mismatches with TypeScript type safety
  * Uses canonical tier system from lib/constants/tiers.ts
+ * 
+ * Note: Now uses async roomFetcher - validation is best-effort sync
  */
 
-import { roomDataMap } from './roomDataImports';
 import { type VipTierId } from '@/lib/constants/tiers';
 
 /**
@@ -27,11 +28,12 @@ export type ParentRoute =
 export type RoomTier = 'free' | VipTierId;
 
 /**
- * Validates if a room ID exists in the system
+ * Validates if a room ID looks valid (format check only, no async lookup)
  */
 export function isValidRoomId(roomId: string | undefined): roomId is string {
   if (!roomId) return false;
-  return roomId in roomDataMap;
+  // Basic format validation - actual existence is checked at runtime
+  return typeof roomId === 'string' && roomId.length > 0 && roomId.length < 100;
 }
 
 /**
@@ -66,18 +68,12 @@ export function tierToRoute(tier: RoomTier): ParentRoute {
  * @returns The parent route path for navigation
  * 
  * @example
- * getParentRoute('adhd-support-vip3') // Returns: "/rooms-vip3"
+ * getParentRoute('adhd-support-vip3') // Returns: "/vip/vip3"
  * getParentRoute('sexuality-curiosity-vip3-sub1') // Returns: "/sexuality-culture"
  */
 export function getParentRoute(roomId: string | undefined): ParentRoute {
   // Handle undefined or empty room ID
   if (!roomId) return "/rooms";
-
-  // Validate room exists (log warning but don't throw)
-  if (!isValidRoomId(roomId)) {
-    console.warn(`[RouteHelper] Unknown room ID: ${roomId}. Defaulting to /rooms`);
-    return "/rooms";
-  }
 
   // Special handling for sexuality sub-rooms (all 6 sub-rooms)
   if (roomId.startsWith('sexuality-curiosity-vip3-sub')) {
@@ -112,6 +108,5 @@ export function getParentRoute(roomId: string | undefined): ParentRoute {
   }
 
   // Fallback for any room without a tier suffix
-  console.warn(`[RouteHelper] Could not determine tier for room: ${roomId}. Defaulting to /rooms`);
   return "/rooms";
 }

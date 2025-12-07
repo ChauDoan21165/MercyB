@@ -3,10 +3,12 @@
  * 
  * Provides comprehensive coverage analysis comparing JSON files on disk
  * with rooms loaded in the registry.
+ * 
+ * Now uses async roomFetcher instead of static roomDataImports.
  */
 
-import { getAllRooms, getRoomById, type RoomMeta } from './roomRegistry';
-import { roomDataMap } from '@/lib/roomDataImports';
+import { getAllRoomsAsync, getRoomByIdAsync, type RoomMeta } from './roomRegistry';
+import { getRoomList } from '@/lib/roomFetcher';
 import { PUBLIC_ROOM_MANIFEST } from '@/lib/roomManifest';
 import { normalizeTier, TierId, ALL_TIER_IDS } from '@/lib/constants/tiers';
 
@@ -17,7 +19,7 @@ export interface RoomCoverageReport {
   timestamp: string;
   totalManifestEntries: number;
   totalRegistryRooms: number;
-  totalDataMapEntries: number;
+  totalFetchedRooms: number;
   missingFromRegistry: MissingRoom[];
   missingFromManifest: MissingRoom[];
   duplicateIds: string[];
@@ -27,7 +29,7 @@ export interface RoomCoverageReport {
 
 export interface MissingRoom {
   id: string;
-  source: 'manifest' | 'registry' | 'datamap';
+  source: 'manifest' | 'registry' | 'fetched';
   expectedPath?: string;
   reason?: string;
 }
@@ -36,7 +38,7 @@ export interface TierCoverage {
   tier: TierId;
   manifestCount: number;
   registryCount: number;
-  dataMapCount: number;
+  fetchedCount: number;
   difference: number;
 }
 
@@ -68,15 +70,16 @@ function extractTierFromId(roomId: string): TierId {
 }
 
 /**
- * Get coverage report comparing manifest, registry, and datamap
+ * Get coverage report comparing manifest, registry, and fetched rooms (async)
  */
-export function getRoomCoverageReport(): RoomCoverageReport {
+export async function getRoomCoverageReportAsync(): Promise<RoomCoverageReport> {
   const manifestIds = new Set(Object.keys(PUBLIC_ROOM_MANIFEST));
-  const dataMapIds = new Set(Object.keys(roomDataMap));
-  const registryRooms = getAllRooms();
+  const fetchedRooms = await getRoomList();
+  const fetchedIds = new Set(fetchedRooms.map(r => r.id));
+  const registryRooms = await getAllRoomsAsync();
   const registryIds = new Set(registryRooms.map(r => r.id));
   
-  // Find rooms missing from registry that exist in manifest or datamap
+  // Find rooms missing from registry that exist in manifest or fetched
   const missingFromRegistry: MissingRoom[] = [];
   
   for (const id of manifestIds) {
@@ -90,12 +93,12 @@ export function getRoomCoverageReport(): RoomCoverageReport {
     }
   }
   
-  for (const id of dataMapIds) {
+  for (const id of fetchedIds) {
     if (!registryIds.has(id) && !manifestIds.has(id)) {
       missingFromRegistry.push({
         id,
-        source: 'datamap',
-        reason: 'In datamap but not in registry'
+        source: 'fetched',
+        reason: 'In fetched rooms but not in registry'
       });
     }
   }
@@ -113,19 +116,19 @@ export function getRoomCoverageReport(): RoomCoverageReport {
   }
   
   // Find duplicate IDs
-  const allIds = [...manifestIds, ...dataMapIds, ...registryIds];
+  const allIds = [...manifestIds, ...fetchedIds, ...registryIds];
   const idCounts = new Map<string, number>();
   for (const id of allIds) {
     idCounts.set(id, (idCounts.get(id) || 0) + 1);
   }
   const duplicateIds = Array.from(idCounts.entries())
-    .filter(([_, count]) => count > 3) // Would appear 3 times if in all sources
+    .filter(([_, count]) => count > 3)
     .map(([id]) => id);
   
   // Coverage by tier
-  const tierStats = new Map<TierId, { manifest: number; registry: number; datamap: number }>();
+  const tierStats = new Map<TierId, { manifest: number; registry: number; fetched: number }>();
   ALL_TIER_IDS.forEach(tier => {
-    tierStats.set(tier, { manifest: 0, registry: 0, datamap: 0 });
+    tierStats.set(tier, { manifest: 0, registry: 0, fetched: 0 });
   });
   
   for (const id of manifestIds) {
@@ -139,25 +142,25 @@ export function getRoomCoverageReport(): RoomCoverageReport {
     if (stats) stats.registry++;
   }
   
-  for (const id of dataMapIds) {
-    const tier = extractTierFromId(id);
+  for (const room of fetchedRooms) {
+    const tier = normalizeTier(room.tier);
     const stats = tierStats.get(tier);
-    if (stats) stats.datamap++;
+    if (stats) stats.fetched++;
   }
   
   const byTier: TierCoverage[] = Array.from(tierStats.entries())
-    .filter(([_, stats]) => stats.manifest > 0 || stats.registry > 0 || stats.datamap > 0)
+    .filter(([_, stats]) => stats.manifest > 0 || stats.registry > 0 || stats.fetched > 0)
     .map(([tier, stats]) => ({
       tier,
       manifestCount: stats.manifest,
       registryCount: stats.registry,
-      dataMapCount: stats.datamap,
+      fetchedCount: stats.fetched,
       difference: Math.abs(stats.manifest - stats.registry)
     }))
     .sort((a, b) => a.tier.localeCompare(b.tier));
   
   // Calculate health score
-  const totalExpected = Math.max(manifestIds.size, dataMapIds.size);
+  const totalExpected = Math.max(manifestIds.size, fetchedIds.size);
   const missingCount = missingFromRegistry.length + missingFromManifest.length;
   const healthScore = totalExpected > 0 
     ? Math.round(100 * (1 - missingCount / (totalExpected * 2)))
@@ -167,7 +170,7 @@ export function getRoomCoverageReport(): RoomCoverageReport {
     timestamp: new Date().toISOString(),
     totalManifestEntries: manifestIds.size,
     totalRegistryRooms: registryRooms.length,
-    totalDataMapEntries: dataMapIds.size,
+    totalFetchedRooms: fetchedRooms.length,
     missingFromRegistry,
     missingFromManifest,
     duplicateIds,
@@ -177,18 +180,18 @@ export function getRoomCoverageReport(): RoomCoverageReport {
 }
 
 /**
- * Quick check if registry is fully covered
+ * Quick check if registry is fully covered (async)
  */
-export function isRegistryFullyCovered(): boolean {
-  const report = getRoomCoverageReport();
+export async function isRegistryFullyCovered(): Promise<boolean> {
+  const report = await getRoomCoverageReportAsync();
   return report.missingFromRegistry.length === 0;
 }
 
 /**
- * Get coverage summary for logging
+ * Get coverage summary for logging (async)
  */
-export function getCoverageSummary(): string {
-  const report = getRoomCoverageReport();
+export async function getCoverageSummary(): Promise<string> {
+  const report = await getRoomCoverageReportAsync();
   const lines = [
     `=== Room Registry Coverage Report ===`,
     `Timestamp: ${report.timestamp}`,
@@ -197,7 +200,7 @@ export function getCoverageSummary(): string {
     `Counts:`,
     `  Manifest entries: ${report.totalManifestEntries}`,
     `  Registry rooms: ${report.totalRegistryRooms}`,
-    `  DataMap entries: ${report.totalDataMapEntries}`,
+    `  Fetched rooms: ${report.totalFetchedRooms}`,
     ``
   ];
   
@@ -224,32 +227,50 @@ export function getCoverageSummary(): string {
 }
 
 /**
- * Log coverage report to console (dev only)
+ * Log coverage report to console (dev only, async)
  */
-export function logCoverageReport(): RoomCoverageReport {
-  const report = getRoomCoverageReport();
+export async function logCoverageReport(): Promise<RoomCoverageReport> {
+  const report = await getRoomCoverageReportAsync();
   
   if (import.meta.env.DEV) {
-    console.log(getCoverageSummary());
+    console.log(await getCoverageSummary());
   }
   
   return report;
 }
 
 /**
- * Validate a specific room exists in registry
+ * Validate a specific room exists in registry (async)
  */
-export function validateRoomInRegistry(roomId: string): { 
+export async function validateRoomInRegistry(roomId: string): Promise<{ 
   exists: boolean; 
   room?: RoomMeta; 
   inManifest: boolean;
-  inDataMap: boolean;
-} {
-  const room = getRoomById(roomId);
+  inFetched: boolean;
+}> {
+  const room = await getRoomByIdAsync(roomId);
+  const fetchedRooms = await getRoomList();
+  const fetchedIds = new Set(fetchedRooms.map(r => r.id));
+  
   return {
     exists: !!room,
     room,
     inManifest: roomId in PUBLIC_ROOM_MANIFEST,
-    inDataMap: roomId in roomDataMap
+    inFetched: fetchedIds.has(roomId)
+  };
+}
+
+// Sync versions for backward compatibility (return empty/false if not loaded)
+export function getRoomCoverageReport(): RoomCoverageReport {
+  return {
+    timestamp: new Date().toISOString(),
+    totalManifestEntries: Object.keys(PUBLIC_ROOM_MANIFEST).length,
+    totalRegistryRooms: 0,
+    totalFetchedRooms: 0,
+    missingFromRegistry: [],
+    missingFromManifest: [],
+    duplicateIds: [],
+    byTier: [],
+    healthScore: 0
   };
 }
