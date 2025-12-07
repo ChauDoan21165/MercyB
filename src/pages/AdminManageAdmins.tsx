@@ -277,10 +277,10 @@ const AdminManageAdmins = () => {
               )}
             </CardContent>
           </Card>
+        </div>
       </div>
     </AdminLayout>
   );
-};
 };
 
 export default AdminManageAdmins;
