@@ -19,6 +19,18 @@ serve(async (req) => {
   }
 
   try {
+    // Validate secret token to prevent spam attacks
+    const secretToken = req.headers.get('x-alert-secret');
+    const expectedToken = Deno.env.get('SECURITY_ALERT_TOKEN');
+    
+    if (!expectedToken || secretToken !== expectedToken) {
+      console.error('Security alert: Invalid or missing token');
+      return new Response(
+        JSON.stringify({ error: 'Unauthorized' }),
+        { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
     const supabaseAdmin = createClient(
       Deno.env.get('SUPABASE_URL') ?? '',
       Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
