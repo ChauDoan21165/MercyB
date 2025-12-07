@@ -33,11 +33,11 @@ import {
 } from "@/components/ui/sidebar";
 
 /**
- * Modern Admin Sidebar V2.0
- * Organized into logical groups for better navigation
+ * Admin Sidebar - SIMPLE BLACK TEXT ON WHITE
+ * No CSS variables - direct hex colors for reliability
  */
 
-// Main navigation items (alphabetical)
+// Main navigation items
 const mainItems = [
   { title: "AI Usage & Costs", url: "/admin/ai-usage", icon: Activity, end: false },
   { title: "Dashboard", url: "/admin", icon: Home, end: true },
@@ -46,7 +46,7 @@ const mainItems = [
   { title: "Users", url: "/admin/users", icon: Users },
 ];
 
-// Room management tools (alphabetical)
+// Room management tools
 const roomItems = [
   { title: "Audio Management", url: "/admin/audio-upload", icon: Music },
   { title: "Audio Scanner", url: "/admin/audio-scanner", icon: Volume2 },
@@ -58,7 +58,7 @@ const roomItems = [
   { title: "VIP Rooms", url: "/admin/vip-rooms", icon: LayoutDashboard },
 ];
 
-// Monitoring & analytics (alphabetical)
+// Monitoring & analytics
 const monitoringItems = [
   { title: "App Metrics", url: "/admin/app-metrics", icon: BarChart3 },
   { title: "Reports", url: "/admin/reports", icon: FileText },
@@ -67,21 +67,21 @@ const monitoringItems = [
   { title: "System Metrics", url: "/admin/system-metrics", icon: Activity },
 ];
 
-// User management & requests (alphabetical)
+// User management
 const userManagementItems = [
   { title: "Gift Codes", url: "/admin/gift-codes", icon: Gift },
   { title: "Moderation", url: "/admin/moderation", icon: Shield },
   { title: "VIP Requests", url: "/vip-requests", icon: MessageSquare },
 ];
 
-// Developer tools (alphabetical)
+// Developer tools
 const devToolsItems = [
   { title: "Code Editor", url: "/admin/code-editor", icon: Code },
   { title: "Design Audit", url: "/admin/design-audit", icon: Palette },
   { title: "System Codes", url: "/admin/system-codes", icon: FileText },
 ];
 
-// System tools (alphabetical)
+// System tools
 const systemItems = [
   { title: "Logs", url: "/admin/logs", icon: AlertTriangle },
   { title: "Security", url: "/admin/security", icon: Shield },
@@ -99,11 +99,11 @@ export function AdminSidebar() {
             <NavLink
               to={item.url}
               end={item.end}
-              className="hover:bg-[hsl(var(--admin-bg))] text-[hsl(var(--admin-text))]"
-              activeClassName="bg-[hsl(var(--admin-accent))] text-[hsl(var(--admin-accent-foreground))] font-bold"
+              style={{ color: '#000000' }}
+              activeClassName="font-bold"
             >
-              <item.icon className="h-4 w-4 text-[hsl(var(--admin-text))]" />
-              {open && <span className="text-[hsl(var(--admin-text))]">{item.title}</span>}
+              <item.icon className="h-4 w-4" style={{ color: '#000000' }} />
+              {open && <span style={{ color: '#000000' }}>{item.title}</span>}
             </NavLink>
           </SidebarMenuButton>
         </SidebarMenuItem>
@@ -112,11 +112,17 @@ export function AdminSidebar() {
   );
 
   return (
-    <Sidebar collapsible="icon" className="border-r border-[hsl(var(--admin-card-border))] bg-[hsl(var(--admin-card-bg))]">
+    <Sidebar 
+      collapsible="icon" 
+      style={{ 
+        backgroundColor: '#F5F5F5', 
+        borderRight: '1px solid #E0E0E0' 
+      }}
+    >
       <SidebarContent className="py-4">
         {/* Main Navigation */}
         <SidebarGroup>
-          {open && <SidebarGroupLabel className="text-[hsl(var(--admin-text-muted))] font-bold">Main</SidebarGroupLabel>}
+          {open && <SidebarGroupLabel style={{ color: '#666666', fontWeight: 'bold' }}>Main</SidebarGroupLabel>}
           <SidebarGroupContent>
             {renderMenuItems(mainItems)}
           </SidebarGroupContent>
@@ -124,7 +130,7 @@ export function AdminSidebar() {
 
         {/* Room Management */}
         <SidebarGroup>
-          {open && <SidebarGroupLabel className="text-[hsl(var(--admin-text-muted))] font-bold">Rooms</SidebarGroupLabel>}
+          {open && <SidebarGroupLabel style={{ color: '#666666', fontWeight: 'bold' }}>Rooms</SidebarGroupLabel>}
           <SidebarGroupContent>
             {renderMenuItems(roomItems)}
           </SidebarGroupContent>
@@ -132,7 +138,7 @@ export function AdminSidebar() {
 
         {/* Monitoring & Analytics */}
         <SidebarGroup>
-          {open && <SidebarGroupLabel className="text-[hsl(var(--admin-text-muted))] font-bold">Monitoring</SidebarGroupLabel>}
+          {open && <SidebarGroupLabel style={{ color: '#666666', fontWeight: 'bold' }}>Monitoring</SidebarGroupLabel>}
           <SidebarGroupContent>
             {renderMenuItems(monitoringItems)}
           </SidebarGroupContent>
@@ -140,7 +146,7 @@ export function AdminSidebar() {
 
         {/* User Management */}
         <SidebarGroup>
-          {open && <SidebarGroupLabel className="text-[hsl(var(--admin-text-muted))] font-bold">Users</SidebarGroupLabel>}
+          {open && <SidebarGroupLabel style={{ color: '#666666', fontWeight: 'bold' }}>Users</SidebarGroupLabel>}
           <SidebarGroupContent>
             {renderMenuItems(userManagementItems)}
           </SidebarGroupContent>
@@ -148,7 +154,7 @@ export function AdminSidebar() {
 
         {/* Developer Tools */}
         <SidebarGroup>
-          {open && <SidebarGroupLabel className="text-[hsl(var(--admin-text-muted))] font-bold">Dev Tools</SidebarGroupLabel>}
+          {open && <SidebarGroupLabel style={{ color: '#666666', fontWeight: 'bold' }}>Dev Tools</SidebarGroupLabel>}
           <SidebarGroupContent>
             {renderMenuItems(devToolsItems)}
           </SidebarGroupContent>
@@ -156,7 +162,7 @@ export function AdminSidebar() {
 
         {/* System */}
         <SidebarGroup>
-          {open && <SidebarGroupLabel className="text-[hsl(var(--admin-text-muted))] font-bold">System</SidebarGroupLabel>}
+          {open && <SidebarGroupLabel style={{ color: '#666666', fontWeight: 'bold' }}>System</SidebarGroupLabel>}
           <SidebarGroupContent>
             {renderMenuItems(systemItems)}
           </SidebarGroupContent>
