@@ -796,26 +796,64 @@ All colors MUST be HSL.
    Forces black text on white background for admin pages
    ============================================ */
 .admin-layout {
-  --sidebar-background: 0 0% 96%;
-  --sidebar-foreground: 0 0% 0%;
-  --sidebar-primary: 0 0% 0%;
-  --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 0 0% 92%;
-  --sidebar-accent-foreground: 0 0% 0%;
-  --sidebar-border: 0 0% 88%;
-  --background: 0 0% 100%;
-  --foreground: 0 0% 0%;
-  --card: 0 0% 100%;
-  --card-foreground: 0 0% 0%;
-  --muted: 0 0% 96%;
-  --muted-foreground: 0 0% 40%;
+  --sidebar-background: 0 0% 96% !important;
+  --sidebar-foreground: 0 0% 0% !important;
+  --sidebar-primary: 0 0% 0% !important;
+  --sidebar-primary-foreground: 0 0% 100% !important;
+  --sidebar-accent: 0 0% 92% !important;
+  --sidebar-accent-foreground: 0 0% 0% !important;
+  --sidebar-border: 0 0% 88% !important;
+  --background: 0 0% 100% !important;
+  --foreground: 0 0% 0% !important;
+  --card: 0 0% 100% !important;
+  --card-foreground: 0 0% 0% !important;
+  --muted: 0 0% 96% !important;
+  --muted-foreground: 0 0% 40% !important;
+  --border: 0 0% 88% !important;
+  --input: 0 0% 100% !important;
+  --ring: 0 0% 0% !important;
+  --primary: 0 0% 0% !important;
+  --primary-foreground: 0 0% 100% !important;
+  --secondary: 0 0% 96% !important;
+  --secondary-foreground: 0 0% 0% !important;
+  --accent: 0 0% 96% !important;
+  --accent-foreground: 0 0% 0% !important;
+  --destructive: 0 84% 60% !important;
+  --destructive-foreground: 0 0% 100% !important;
+  --popover: 0 0% 100% !important;
+  --popover-foreground: 0 0% 0% !important;
 }
 
+.admin-layout,
 .admin-layout * {
-  color: inherit;
+  color: #000000;
+}
+
+.admin-layout .bg-card {
+  background-color: #FFFFFF !important;
+}
+
+.admin-layout .text-card-foreground {
+  color: #000000 !important;
+}
+
+.admin-layout .text-muted-foreground {
+  color: #666666 !important;
+}
+
+.admin-layout .bg-background {
+  background-color: #FFFFFF !important;
+}
+
+.admin-layout .text-foreground {
+  color: #000000 !important;
 }
 
 .admin-layout [data-sidebar="sidebar"] {
   background-color: #F5F5F5 !important;
   color: #000000 !important;
+}
+
+.admin-layout .border {
+  border-color: #E0E0E0 !important;
 }
