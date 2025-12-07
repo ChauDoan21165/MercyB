@@ -27,6 +27,22 @@ const RedeemGiftCode = () => {
     setIsRedeeming(true);
 
     try {
+      // CRITICAL: Check if user is logged in FIRST
+      const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+      
+      if (sessionError || !session) {
+        console.error('[redeem-gift-code] No active session:', sessionError);
+        toast({
+          title: "Login Required",
+          description: "Please log in to redeem your gift code",
+          variant: "destructive",
+        });
+        navigate('/auth?redirect=/redeem');
+        return;
+      }
+
+      console.log('[redeem-gift-code] Session valid, user:', session.user.id);
+      
       const { data, error } = await supabase.functions.invoke('redeem-gift-code', {
         body: { code: code.trim() },
       });

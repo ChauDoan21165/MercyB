@@ -30,18 +30,37 @@ Deno.serve(async (req) => {
       }
     );
 
-    // Get user from auth
-    const { data: { user }, error: authError } = await supabaseClient.auth.getUser();
+    // Get user from auth - check Authorization header first
+    const authHeader = req.headers.get('Authorization');
+    console.log('[redeem-gift-code] Auth header present:', !!authHeader);
     
-    if (authError || !user) {
-      console.error('[redeem-gift-code] Auth error:', authError);
+    if (!authHeader) {
+      console.error('[redeem-gift-code] No Authorization header');
       return new Response(
-        JSON.stringify({ error: 'Unauthorized - please log in again' }),
+        JSON.stringify({ error: 'Login required - please log in and try again' }),
         { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 401 }
       );
     }
 
-    console.log('[redeem-gift-code] User authenticated:', user.id);
+    const { data: { user }, error: authError } = await supabaseClient.auth.getUser();
+    
+    if (authError) {
+      console.error('[redeem-gift-code] Auth error:', authError.message, authError.name);
+      return new Response(
+        JSON.stringify({ error: 'Session expired - please log in again' }),
+        { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 401 }
+      );
+    }
+    
+    if (!user) {
+      console.error('[redeem-gift-code] No user found');
+      return new Response(
+        JSON.stringify({ error: 'Not authenticated - please log in' }),
+        { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 401 }
+      );
+    }
+
+    console.log('[redeem-gift-code] User authenticated:', user.id, user.email);
 
     const { code } = await req.json();
 

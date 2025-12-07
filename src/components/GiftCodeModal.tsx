@@ -44,6 +44,23 @@ export function GiftCodeModal({
     setError(null);
 
     try {
+      // CRITICAL: Check if user is logged in FIRST
+      const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+      
+      if (sessionError || !session) {
+        console.error('[redeem-gift-code] No active session:', sessionError);
+        toast({
+          title: "Login Required / Cần đăng nhập",
+          description: "Please log in to redeem your gift code / Vui lòng đăng nhập để sử dụng mã quà tặng",
+          variant: "destructive",
+        });
+        onOpenChange(false);
+        const redirectPath = encodeURIComponent(location.pathname);
+        navigate(`/auth?redirect=${redirectPath}`);
+        return;
+      }
+
+      console.log('[redeem-gift-code] Session valid, user:', session.user.id);
       console.log('[redeem-gift-code] Attempting to redeem:', code.trim());
       
       const { data, error: invokeError } = await supabase.functions.invoke('redeem-gift-code', {
