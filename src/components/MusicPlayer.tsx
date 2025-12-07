@@ -49,6 +49,8 @@ const MB_TRACKS = [
   { id: 'mb30', name: 'Bridge of Hearts (1)', url: '/audio/mercy_blade_bridge_of_hearts_1.mp3' },
   { id: 'mb31', name: 'Say My Name Mercy Blade', url: '/audio/say_my_name_mercy_blade.mp3' },
   { id: 'mb32', name: 'Say My Name Mercy Blade (1)', url: '/audio/say_my_name_mercy_blade_1.mp3' },
+  { id: 'mb33', name: 'Morning With You / Buổi Sáng Cùng Ngài', url: '/audio/morning_with_you_1.mp3' },
+  { id: 'mb34', name: 'Morning With You / Buổi Sáng Cùng Ngài (2)', url: '/audio/morning_with_you_2.mp3' },
 ];
 
 // Common background music (Fesliyan Studios etc)
