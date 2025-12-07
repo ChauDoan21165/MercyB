@@ -83,9 +83,10 @@ serve(async (req) => {
 
     // Parse request body
     const body = await req.json();
+    const { audioBase64, targetText, englishLevel = 'beginner', preferredName } = body;
 
     // Truncate target text if too long
-    const truncatedTarget = targetText.slice(0, 120);
+    const truncatedTarget = (targetText || '').slice(0, 120);
 
     // Safety check
     if (containsCrisisContent(truncatedTarget)) {
@@ -223,23 +224,31 @@ Please provide gentle pronunciation feedback.`;
       };
     }
 
+    // Log AI usage
+    const chatUsage = chatResult.usage;
+    if (chatUsage) {
+      await logAiUsage({
+        userId,
+        model: 'gpt-4o-mini',
+        tokensInput: chatUsage.prompt_tokens || 0,
+        tokensOutput: chatUsage.completion_tokens || 0,
+        endpoint: 'guide-pronunciation-coach'
+      });
+    }
+
     // Update last_english_activity if user is authenticated
-    const authHeader = req.headers.get('Authorization');
-    if (authHeader) {
+    if (userId) {
       try {
         const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
-          global: { headers: { Authorization: authHeader } }
+          global: { headers: { Authorization: authHeader! } }
         });
-        const { data: { user } } = await supabase.auth.getUser();
-        if (user) {
-          await supabase
-            .from('companion_state')
-            .upsert({
-              user_id: user.id,
-              last_english_activity: new Date().toISOString(),
-              last_active_at: new Date().toISOString(),
-            });
-        }
+        await supabase
+          .from('companion_state')
+          .upsert({
+            user_id: userId,
+            last_english_activity: new Date().toISOString(),
+            last_active_at: new Date().toISOString(),
+          });
       } catch (e) {
         console.error('Failed to update companion_state:', e);
       }
