@@ -38,21 +38,23 @@ export function AdminBreadcrumbs() {
     <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm">
       <Link 
         to="/"
-        className="text-white/60 hover:text-white transition-colors"
+        className="hover:opacity-70 transition-colors"
         aria-label="Home"
+        style={{ color: '#666666' }}
       >
         <Home className="h-4 w-4" />
       </Link>
 
       {breadcrumbs.map((crumb, index) => (
         <Fragment key={crumb.path}>
-          <ChevronRight className="h-4 w-4 text-white/40" />
+          <ChevronRight className="h-4 w-4" style={{ color: '#999999' }} />
           {index === breadcrumbs.length - 1 ? (
-            <span className="text-white font-medium">{crumb.name}</span>
+            <span className="font-medium" style={{ color: '#000000' }}>{crumb.name}</span>
           ) : (
             <Link
               to={crumb.path}
-              className="text-white/60 hover:text-white transition-colors"
+              className="hover:opacity-70 transition-colors"
+              style={{ color: '#666666' }}
             >
               {crumb.name}
             </Link>
