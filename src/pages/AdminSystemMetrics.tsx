@@ -175,7 +175,7 @@ const AdminSystemMetrics = () => {
               <h1 className="text-4xl font-bold mb-2">System Metrics</h1>
               <p className="text-muted-foreground">Internal analytics and readiness dashboard</p>
             </div>
-            <Button variant="outline" onClick={() => navigate('/admin-stats')}>
+            <Button variant="outline" onClick={() => navigate('/admin')}>
               ← Back to Admin
             </Button>
           </div>
@@ -238,7 +238,7 @@ const AdminSystemMetrics = () => {
               <Activity className="h-4 w-4 mr-2" />
               Refresh
             </Button>
-            <Button variant="outline" onClick={() => navigate('/admin-stats')}>
+            <Button variant="outline" onClick={() => navigate('/admin')}>
               ← Back to Admin
             </Button>
           </div>
