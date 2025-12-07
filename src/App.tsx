@@ -262,7 +262,15 @@ const App = () => {
                       <Route path="/all-rooms" element={<AllRooms />} />
                       <Route path="/room/:roomId" element={<ChatHub />} />
                       
-                      {/* VIP tier routes */}
+                      {/* VIP tier routes - both /rooms-vipX and /vip/vipX patterns */}
+                      <Route path="/rooms-vip1" element={<RoomGridVIP1 />} />
+                      <Route path="/rooms-vip2" element={<RoomGridVIP2 />} />
+                      <Route path="/rooms-vip3" element={<RoomGridVIP3 />} />
+                      <Route path="/rooms-vip3ii" element={<RoomGridVIP3II />} />
+                      <Route path="/rooms-vip4" element={<RoomGridVIP4 />} />
+                      <Route path="/rooms-vip5" element={<RoomGridVIP5 />} />
+                      <Route path="/rooms-vip6" element={<RoomGridVIP6 />} />
+                      <Route path="/rooms-vip9" element={<RoomsVIP9 />} />
                       <Route path="/vip/vip1" element={<RoomGridVIP1 />} />
                       <Route path="/vip/vip2" element={<RoomGridVIP2 />} />
                       <Route path="/vip/vip3" element={<RoomGridVIP3 />} />
