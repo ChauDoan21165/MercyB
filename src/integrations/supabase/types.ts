@@ -1794,6 +1794,73 @@ export type Database = {
           },
         ]
       }
+      room_entries: {
+        Row: {
+          audio: string | null
+          copy_en: string
+          copy_vi: string
+          created_at: string
+          id: string
+          index: number
+          metadata: Json | null
+          room_id: string
+          severity: number | null
+          slug: string
+          tags: string[] | null
+          updated_at: string
+        }
+        Insert: {
+          audio?: string | null
+          copy_en?: string
+          copy_vi?: string
+          created_at?: string
+          id?: string
+          index?: number
+          metadata?: Json | null
+          room_id: string
+          severity?: number | null
+          slug: string
+          tags?: string[] | null
+          updated_at?: string
+        }
+        Update: {
+          audio?: string | null
+          copy_en?: string
+          copy_vi?: string
+          created_at?: string
+          id?: string
+          index?: number
+          metadata?: Json | null
+          room_id?: string
+          severity?: number | null
+          slug?: string
+          tags?: string[] | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "room_entries_room_id_fkey"
+            columns: ["room_id"]
+            isOneToOne: false
+            referencedRelation: "room_health_view"
+            referencedColumns: ["room_id"]
+          },
+          {
+            foreignKeyName: "room_entries_room_id_fkey"
+            columns: ["room_id"]
+            isOneToOne: false
+            referencedRelation: "room_health_view"
+            referencedColumns: ["slug"]
+          },
+          {
+            foreignKeyName: "room_entries_room_id_fkey"
+            columns: ["room_id"]
+            isOneToOne: false
+            referencedRelation: "rooms"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       room_pins: {
         Row: {
           created_at: string
@@ -1943,12 +2010,16 @@ export type Database = {
       }
       rooms: {
         Row: {
+          content_audio: string | null
+          content_en: string | null
+          content_vi: string | null
           created_at: string | null
           crisis_footer_en: string | null
           crisis_footer_vi: string | null
           domain: string | null
           entries: Json | null
           id: string
+          is_active: boolean | null
           is_demo: boolean
           is_locked: boolean | null
           keywords: string[] | null
@@ -1957,6 +2028,7 @@ export type Database = {
           safety_disclaimer_en: string | null
           safety_disclaimer_vi: string | null
           schema_id: string
+          slug: string | null
           tier: string | null
           title_en: string
           title_vi: string
@@ -1964,12 +2036,16 @@ export type Database = {
           updated_at: string | null
         }
         Insert: {
+          content_audio?: string | null
+          content_en?: string | null
+          content_vi?: string | null
           created_at?: string | null
           crisis_footer_en?: string | null
           crisis_footer_vi?: string | null
           domain?: string | null
           entries?: Json | null
           id: string
+          is_active?: boolean | null
           is_demo?: boolean
           is_locked?: boolean | null
           keywords?: string[] | null
@@ -1978,6 +2054,7 @@ export type Database = {
           safety_disclaimer_en?: string | null
           safety_disclaimer_vi?: string | null
           schema_id: string
+          slug?: string | null
           tier?: string | null
           title_en: string
           title_vi: string
@@ -1985,12 +2062,16 @@ export type Database = {
           updated_at?: string | null
         }
         Update: {
+          content_audio?: string | null
+          content_en?: string | null
+          content_vi?: string | null
           created_at?: string | null
           crisis_footer_en?: string | null
           crisis_footer_vi?: string | null
           domain?: string | null
           entries?: Json | null
           id?: string
+          is_active?: boolean | null
           is_demo?: boolean
           is_locked?: boolean | null
           keywords?: string[] | null
@@ -1999,6 +2080,7 @@ export type Database = {
           safety_disclaimer_en?: string | null
           safety_disclaimer_vi?: string | null
           schema_id?: string
+          slug?: string | null
           tier?: string | null
           title_en?: string
           title_vi?: string
