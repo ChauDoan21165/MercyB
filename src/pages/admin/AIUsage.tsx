@@ -4,7 +4,8 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Table, TableRow, TableCell, TableBody, TableHead, TableHeader } from "@/components/ui/table";
 import { AdminLayout } from "@/components/admin/AdminLayout";
 import { AiControlPanel } from "@/components/admin/AiControlPanel";
-import { Cpu, DollarSign, BarChart3, TrendingUp } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Cpu, DollarSign, BarChart3, TrendingUp, Users, Wallet, RefreshCw } from "lucide-react";
 
 interface AIUsageRecord {
   id: string;
@@ -28,6 +29,7 @@ interface UsageSummary {
 const AIUsage = () => {
   const [usage, setUsage] = useState<AIUsageRecord[]>([]);
   const [summary, setSummary] = useState<UsageSummary | null>(null);
+  const [budget, setBudget] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -46,15 +48,30 @@ const AIUsage = () => {
         .limit(500);
 
       if (usageError) throw usageError;
-      setUsage(usageData || []);
+      setUsage((usageData as AIUsageRecord[]) || []);
 
       // Fetch summary statistics
       const { data: summaryData, error: summaryError } = await supabase
         .rpc("get_ai_usage_summary");
 
       if (summaryError) throw summaryError;
-      if (summaryData && summaryData.length > 0) {
-        setSummary(summaryData[0]);
+      // Handle both array and single object returns
+      if (summaryData) {
+        if (Array.isArray(summaryData) && summaryData.length > 0) {
+          setSummary(summaryData[0] as UsageSummary);
+        } else if (!Array.isArray(summaryData)) {
+          setSummary(summaryData as UsageSummary);
+        }
+      }
+
+      // Fetch budget from ai_settings
+      const { data: settingsData } = await supabase
+        .from("ai_settings")
+        .select("monthly_budget_usd")
+        .single();
+
+      if (settingsData) {
+        setBudget(settingsData.monthly_budget_usd);
       }
     } catch (error) {
       console.error("Failed to fetch AI usage data:", error);
@@ -78,22 +95,40 @@ const AIUsage = () => {
     .sort((a, b) => b[1].cost - a[1].cost)
     .slice(0, 5);
 
+  // Distinct users count
+  const distinctUsers = new Set(usage.map(u => u.user_id).filter(Boolean)).size;
+
+  // Remaining budget calculation
+  const totalSpent = summary?.total_cost || usage.reduce((sum, r) => sum + Number(r.cost_usd), 0);
+  const remaining = budget != null ? Math.max(budget - totalSpent, 0) : null;
+
   return (
     <AdminLayout>
       <div className="container mx-auto max-w-7xl px-4 py-6 space-y-6">
         {/* Header */}
-        <div>
-          <h1 className="text-3xl font-bold">AI Usage & Costs</h1>
-          <p className="text-muted-foreground mt-1">
-            Monitor AI model usage, tokens, and expenses
-          </p>
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold">AI Usage & Costs</h1>
+            <p className="text-muted-foreground mt-1">
+              Monitor AI model usage, tokens, and expenses
+            </p>
+          </div>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={fetchData}
+            disabled={loading}
+          >
+            <RefreshCw className={`h-4 w-4 mr-2 ${loading ? "animate-spin" : ""}`} />
+            Refresh
+          </Button>
         </div>
 
         {/* AI Control Panel - Global Toggle & Budget */}
         <AiControlPanel />
 
         {/* Summary Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-4">
           <Card>
             <CardHeader className="pb-3">
               <CardTitle className="text-sm font-medium flex items-center gap-2">
@@ -104,6 +139,20 @@ const AIUsage = () => {
             <CardContent>
               <div className="text-2xl font-bold">
                 {loading ? "—" : (summary?.total_requests || usage.length).toLocaleString()}
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader className="pb-3">
+              <CardTitle className="text-sm font-medium flex items-center gap-2">
+                <Users className="h-4 w-4" />
+                Distinct Users
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">
+                {loading ? "—" : distinctUsers}
               </div>
             </CardContent>
           </Card>
@@ -139,13 +188,7 @@ const AIUsage = () => {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">
-                $
-                {loading
-                  ? "—"
-                  : (
-                      summary?.total_cost ||
-                      usage.reduce((sum, r) => sum + Number(r.cost_usd), 0)
-                    ).toFixed(4)}
+                ${loading ? "—" : totalSpent.toFixed(4)}
               </div>
             </CardContent>
           </Card>
@@ -153,8 +196,25 @@ const AIUsage = () => {
           <Card>
             <CardHeader className="pb-3">
               <CardTitle className="text-sm font-medium flex items-center gap-2">
+                <Wallet className="h-4 w-4" />
+                Remaining Budget
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className={`text-2xl font-bold ${remaining != null && remaining < 10 ? "text-destructive" : ""}`}>
+                {loading ? "—" : remaining != null ? `$${remaining.toFixed(2)}` : "N/A"}
+              </div>
+              {budget != null && (
+                <div className="text-xs text-muted-foreground">of ${budget.toFixed(2)}</div>
+              )}
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader className="pb-3">
+              <CardTitle className="text-sm font-medium flex items-center gap-2">
                 <TrendingUp className="h-4 w-4" />
-                Avg Tokens/Request
+                Avg Tokens/Req
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -170,7 +230,7 @@ const AIUsage = () => {
             <CardHeader className="pb-3">
               <CardTitle className="text-sm font-medium flex items-center gap-2">
                 <DollarSign className="h-4 w-4" />
-                Avg Cost/Request
+                Avg Cost/Req
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -188,19 +248,23 @@ const AIUsage = () => {
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
-              {topModels.map(([model, stats]) => (
-                <div key={model} className="flex items-center justify-between">
-                  <div className="flex-1">
-                    <div className="font-medium">{model}</div>
-                    <div className="text-xs text-muted-foreground">
-                      {stats.count} requests • {stats.tokens.toLocaleString()} tokens
+              {topModels.length === 0 ? (
+                <p className="text-muted-foreground text-sm">No model data yet</p>
+              ) : (
+                topModels.map(([model, stats]) => (
+                  <div key={model} className="flex items-center justify-between">
+                    <div className="flex-1">
+                      <div className="font-medium">{model}</div>
+                      <div className="text-xs text-muted-foreground">
+                        {stats.count} requests • {stats.tokens.toLocaleString()} tokens
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="font-bold">${stats.cost.toFixed(4)}</div>
                     </div>
                   </div>
-                  <div className="text-right">
-                    <div className="font-bold">${stats.cost.toFixed(4)}</div>
-                  </div>
-                </div>
-              ))}
+                ))
+              )}
             </div>
           </CardContent>
         </Card>
