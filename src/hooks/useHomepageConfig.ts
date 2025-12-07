@@ -1,6 +1,4 @@
 import { useState, useEffect } from 'react';
-// Import bundled config directly - this will always work
-import bundledConfig from '@/data/homepage-config.json';
 
 interface HomepageSection {
   id: string;
@@ -33,6 +31,19 @@ interface HomepageConfig {
   sections: HomepageSection[];
 }
 
+// Default fallback config (minimal)
+const FALLBACK_CONFIG: HomepageConfig = {
+  id: 'default',
+  name: 'Mercy Blade',
+  name_vi: 'Mercy Blade',
+  layout: {
+    mobile_first: true,
+    section_spacing: '2rem',
+    max_width: '1200px'
+  },
+  sections: []
+};
+
 export const useHomepageConfig = () => {
   const [config, setConfig] = useState<HomepageConfig | null>(null);
   const [loading, setLoading] = useState(true);
@@ -47,29 +58,27 @@ export const useHomepageConfig = () => {
           localStorage.removeItem('pinnedHomepageConfig');
         }
 
-        // Try to fetch fresh config, but use bundled as fallback
-        try {
-          const response = await fetch(`/data/Mercy_Blade_home_page.json?t=${Date.now()}`, { 
-            cache: 'no-store',
-            headers: { 'Accept': 'application/json' }
-          });
-          if (!response.ok) {
-            throw new Error(`HTTP ${response.status}`);
-          }
-          const text = await response.text();
-          if (text.startsWith('<!') || text.startsWith('<html')) {
-            throw new Error('Response is HTML');
-          }
-          const data = JSON.parse(text);
-          setConfig(data);
-        } catch (fetchErr) {
-          console.warn('Using bundled homepage config:', fetchErr);
-          // Use bundled config - this will always work
-          setConfig(bundledConfig as HomepageConfig);
+        // Fetch config at runtime (not bundled)
+        const response = await fetch(`/data/Mercy_Blade_home_page.json?t=${Date.now()}`, { 
+          cache: 'no-store',
+          headers: { 'Accept': 'application/json' }
+        });
+        
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
         }
+        
+        const text = await response.text();
+        if (text.startsWith('<!') || text.startsWith('<html')) {
+          throw new Error('Response is HTML');
+        }
+        
+        const data = JSON.parse(text);
+        setConfig(data);
       } catch (err) {
+        console.warn('Using fallback homepage config:', err);
         setError(err instanceof Error ? err.message : 'Unknown error');
-        setConfig(bundledConfig as HomepageConfig);
+        setConfig(FALLBACK_CONFIG);
       } finally {
         setLoading(false);
       }
