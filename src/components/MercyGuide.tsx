@@ -313,9 +313,15 @@ export function MercyGuide({ roomId, roomTitle, tier, pathSlug, tags, contentEn 
 
   const handleAskQuestion = useCallback(async () => {
     const question = inputValue.trim();
-    if (!question || isAsking) return;
+    console.log('[MercyGuide] handleAskQuestion called, question:', question, 'isAsking:', isAsking);
+    
+    if (!question || isAsking) {
+      console.log('[MercyGuide] Early return - empty question or already asking');
+      return;
+    }
 
     if (!canAskQuestion()) {
+      console.log('[MercyGuide] Rate limit reached');
       setMessages(prev => [...prev.slice(-4), {
         id: `limit-${Date.now()}`,
         type: 'assistant',
@@ -334,6 +340,8 @@ export function MercyGuide({ roomId, roomTitle, tier, pathSlug, tags, contentEn 
     setInputValue('');
     setIsAsking(true);
 
+    console.log('[MercyGuide] Calling guide-assistant edge function...');
+    
     try {
       const { data, error } = await supabase.functions.invoke('guide-assistant', {
         body: {
@@ -351,21 +359,34 @@ export function MercyGuide({ roomId, roomTitle, tier, pathSlug, tags, contentEn 
         },
       });
 
+      console.log('[MercyGuide] Edge function response:', { data, error });
+
       incrementQuestionCount();
 
-      if (error || !data?.ok) {
+      if (error) {
+        console.error('[MercyGuide] Edge function error:', error);
+        throw new Error(error.message || 'Failed to get response');
+      }
+      
+      if (!data?.ok) {
+        console.error('[MercyGuide] Response not ok:', data);
         throw new Error(data?.error || 'Failed to get response');
       }
 
+      console.log('[MercyGuide] Adding assistant message:', data.answer);
+      
       const assistantMsg: Message = {
         id: `assistant-${Date.now()}`,
         type: 'assistant',
         content: data.answer,
       };
-      setMessages(prev => [...prev.slice(-4), assistantMsg]);
+      setMessages(prev => {
+        console.log('[MercyGuide] Previous messages:', prev.length, 'Adding new message');
+        return [...prev.slice(-4), assistantMsg];
+      });
 
     } catch (err) {
-      console.error('Guide assistant error:', err);
+      console.error('[MercyGuide] Error in handleAskQuestion:', err);
       setMessages(prev => [...prev.slice(-4), {
         id: `error-${Date.now()}`,
         type: 'assistant',
@@ -374,6 +395,7 @@ export function MercyGuide({ roomId, roomTitle, tier, pathSlug, tags, contentEn 
       }]);
     } finally {
       setIsAsking(false);
+      console.log('[MercyGuide] Finished, isAsking set to false');
     }
   }, [inputValue, isAsking, canAskQuestion, incrementQuestionCount, roomId, roomTitle, tier, pathSlug, tags, profile]);
 
@@ -530,8 +552,10 @@ export function MercyGuide({ roomId, roomTitle, tier, pathSlug, tags, contentEn 
   }, [recorder.audioBlob, targetPhrase, profile, speakAttempts]);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
+    console.log('[MercyGuide] handleKeyDown:', e.key);
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
+      console.log('[MercyGuide] Enter pressed, calling handleAskQuestion');
       handleAskQuestion();
     }
   };
