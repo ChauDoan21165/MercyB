@@ -11,6 +11,15 @@ Deno.serve(async (req) => {
   }
 
   try {
+    console.log('[redeem-gift-code] Starting redemption process');
+    
+    // Use service role key for database operations to bypass RLS
+    const supabaseAdmin = createClient(
+      Deno.env.get('SUPABASE_URL') ?? '',
+      Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? '',
+    );
+    
+    // Use anon key with user's auth for getting the user
     const supabaseClient = createClient(
       Deno.env.get('SUPABASE_URL') ?? '',
       Deno.env.get('SUPABASE_ANON_KEY') ?? '',
@@ -25,11 +34,14 @@ Deno.serve(async (req) => {
     const { data: { user }, error: authError } = await supabaseClient.auth.getUser();
     
     if (authError || !user) {
+      console.error('[redeem-gift-code] Auth error:', authError);
       return new Response(
         JSON.stringify({ error: 'Unauthorized - please log in again' }),
         { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 401 }
       );
     }
+
+    console.log('[redeem-gift-code] User authenticated:', user.id);
 
     const { code } = await req.json();
 
@@ -42,12 +54,10 @@ Deno.serve(async (req) => {
 
     // Normalize code to uppercase
     const normalizedCode = code.toUpperCase().trim();
+    console.log('[redeem-gift-code] Looking up code:', normalizedCode);
 
-    // Check if code exists and is valid with all conditions:
-    // - is_active = true
-    // - used_at IS NULL (not yet used)
-    // - code_expires_at IS NULL OR code_expires_at > now()
-    const { data: giftCode, error: codeError } = await supabaseClient
+    // Check if code exists and is valid - use admin client
+    const { data: giftCode, error: codeError } = await supabaseAdmin
       .from('gift_codes')
       .select('*')
       .eq('code', normalizedCode)
@@ -55,12 +65,23 @@ Deno.serve(async (req) => {
       .is('used_at', null)
       .single();
 
-    if (codeError || !giftCode) {
+    if (codeError) {
+      console.error('[redeem-gift-code] Code lookup error:', codeError);
       return new Response(
         JSON.stringify({ error: 'Invalid or already used gift code' }),
         { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 404 }
       );
     }
+
+    if (!giftCode) {
+      console.error('[redeem-gift-code] Code not found:', normalizedCode);
+      return new Response(
+        JSON.stringify({ error: 'Invalid or already used gift code' }),
+        { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 404 }
+      );
+    }
+
+    console.log('[redeem-gift-code] Found gift code:', giftCode.id, 'tier:', giftCode.tier);
 
     // Check if code has expired
     if (giftCode.code_expires_at && new Date(giftCode.code_expires_at) < new Date()) {
@@ -70,8 +91,8 @@ Deno.serve(async (req) => {
       );
     }
 
-    // Check if user already has this tier via a gift code
-    const { data: existingRedemption } = await supabaseClient
+    // Check if user already has this tier via a gift code - use admin client
+    const { data: existingRedemption } = await supabaseAdmin
       .from('gift_codes')
       .select('id')
       .eq('used_by', user.id)
@@ -85,26 +106,28 @@ Deno.serve(async (req) => {
       );
     }
 
-    // Get tier_id for the subscription
-    const { data: tier, error: tierError } = await supabaseClient
+    // Get tier_id for the subscription - use admin client
+    const { data: tier, error: tierError } = await supabaseAdmin
       .from('subscription_tiers')
       .select('id')
       .eq('name', giftCode.tier)
       .single();
 
     if (tierError || !tier) {
+      console.error('[redeem-gift-code] Tier lookup error:', tierError);
       return new Response(
         JSON.stringify({ error: 'Invalid tier configuration' }),
         { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 500 }
       );
     }
 
+    console.log('[redeem-gift-code] Found tier:', tier.id);
+
     const now = new Date();
     const subscriptionEnd = new Date(now);
     
     // Use the gift code's expiry date to calculate subscription duration
     if (giftCode.code_expires_at) {
-      // Calculate duration based on code creation + expiry
       const expiryDate = new Date(giftCode.code_expires_at);
       const createdDate = new Date(giftCode.created_at);
       const durationMs = expiryDate.getTime() - createdDate.getTime();
@@ -121,8 +144,8 @@ Deno.serve(async (req) => {
     else if (durationDays <= 100) durationLabel = '3 months';
     else if (durationDays <= 200) durationLabel = '6 months';
 
-    // Create subscription
-    const { error: subscriptionError } = await supabaseClient
+    // Create subscription - use admin client
+    const { error: subscriptionError } = await supabaseAdmin
       .from('user_subscriptions')
       .insert({
         user_id: user.id,
@@ -133,15 +156,17 @@ Deno.serve(async (req) => {
       });
 
     if (subscriptionError) {
-      console.error('Subscription creation error:', subscriptionError);
+      console.error('[redeem-gift-code] Subscription creation error:', subscriptionError);
       return new Response(
-        JSON.stringify({ error: 'Failed to create subscription' }),
+        JSON.stringify({ error: 'Failed to create subscription: ' + subscriptionError.message }),
         { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 500 }
       );
     }
 
-    // Mark code as used AND set is_active to false in one update
-    const { error: updateError } = await supabaseClient
+    console.log('[redeem-gift-code] Subscription created successfully');
+
+    // Mark code as used - use admin client
+    const { error: updateError } = await supabaseAdmin
       .from('gift_codes')
       .update({
         used_by: user.id,
@@ -151,9 +176,9 @@ Deno.serve(async (req) => {
       .eq('id', giftCode.id);
 
     if (updateError) {
-      console.error('Gift code update error:', updateError);
-      // Note: Subscription was created, but we couldn't mark the code as used
-      // This is acceptable as the code validation will still prevent reuse by checking used_at
+      console.error('[redeem-gift-code] Gift code update error:', updateError);
+    } else {
+      console.log('[redeem-gift-code] Gift code marked as used');
     }
 
     return new Response(
@@ -168,9 +193,9 @@ Deno.serve(async (req) => {
     );
 
   } catch (error) {
-    console.error('Error in redeem-gift-code:', error);
+    console.error('[redeem-gift-code] Error:', error);
     return new Response(
-      JSON.stringify({ error: 'Internal server error' }),
+      JSON.stringify({ error: 'Internal server error: ' + (error instanceof Error ? error.message : 'Unknown error') }),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 500 }
     );
   }
