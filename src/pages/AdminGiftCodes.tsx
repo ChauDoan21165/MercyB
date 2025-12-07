@@ -196,20 +196,20 @@ const AdminGiftCodes = () => {
         
         <div className="grid gap-6 md:grid-cols-2">
           {/* Generate Codes */}
-          <Card>
+          <Card style={{ backgroundColor: '#FFFFFF', border: '1px solid #E0E0E0' }}>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
+              <CardTitle className="flex items-center gap-2" style={{ color: '#000000' }}>
                 <Gift className="w-5 h-5" />
                 Generate Gift Codes
               </CardTitle>
-            <CardDescription>
-              Create new VIP gift codes (VIP1–VIP9) with custom duration
+              <CardDescription style={{ color: '#666666' }}>
+                Create new VIP gift codes (VIP1–VIP9) with custom duration
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="tier">Tier</Label>
+                  <Label htmlFor="tier" style={{ color: '#000000' }}>Tier</Label>
                   <Select value={tier} onValueChange={(value) => setTier(value as GiftTier)}>
                     <SelectTrigger>
                       <SelectValue />
@@ -229,7 +229,7 @@ const AdminGiftCodes = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="duration">Duration</Label>
+                  <Label htmlFor="duration" style={{ color: '#000000' }}>Duration</Label>
                   <Select value={duration} onValueChange={(value) => setDuration(value as GiftDuration)}>
                     <SelectTrigger>
                       <SelectValue />
@@ -245,7 +245,7 @@ const AdminGiftCodes = () => {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="count">Number of Codes (1-100)</Label>
+                <Label htmlFor="count" style={{ color: '#000000' }}>Number of Codes (1-100)</Label>
                 <Input
                   id="count"
                   type="number"
@@ -257,7 +257,7 @@ const AdminGiftCodes = () => {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="notes">Notes (Optional)</Label>
+                <Label htmlFor="notes" style={{ color: '#000000' }}>Notes (Optional)</Label>
                 <Textarea
                   id="notes"
                   placeholder="e.g., For students, family members, promotional campaign..."
@@ -313,10 +313,10 @@ const AdminGiftCodes = () => {
           </Card>
 
           {/* All Codes */}
-          <Card>
+          <Card style={{ backgroundColor: '#FFFFFF', border: '1px solid #E0E0E0' }}>
             <CardHeader>
-              <CardTitle>All Gift Codes</CardTitle>
-              <CardDescription>
+              <CardTitle style={{ color: '#000000' }}>All Gift Codes</CardTitle>
+              <CardDescription style={{ color: '#666666' }}>
                 View and manage all generated gift codes
               </CardDescription>
               {/* Debug summary */}
