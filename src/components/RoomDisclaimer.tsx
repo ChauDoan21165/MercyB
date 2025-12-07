@@ -1,5 +1,5 @@
-import { getRoomInfo } from "@/lib/roomData";
-import { roomDataMap } from "@/lib/roomDataImports";
+import { useEffect, useState } from "react";
+import { getRoom } from "@/lib/roomFetcher";
 import { AlertCircle } from "lucide-react";
 import { HighlightedContent } from "./HighlightedContent";
 
@@ -7,15 +7,39 @@ interface RoomDisclaimerProps {
   roomId: string;
 }
 
+interface DisclaimerData {
+  safetyEn?: string;
+  safetyVi?: string;
+  crisisEn?: string;
+  crisisVi?: string;
+}
+
 export const RoomDisclaimer = ({ roomId }: RoomDisclaimerProps) => {
-  const roomData = roomDataMap[roomId];
-  if (!roomData) return null;
+  const [data, setData] = useState<DisclaimerData | null>(null);
 
-  const safetyEn = (roomData as any).safety_disclaimer;
-  const safetyVi = (roomData as any).safety_disclaimer_vi;
-  const crisisEn = (roomData as any).crisis_footer?.en;
-  const crisisVi = (roomData as any).crisis_footer?.vi;
+  useEffect(() => {
+    if (!roomId) return;
+    
+    getRoom(roomId).then((room) => {
+      if (!room) {
+        setData(null);
+        return;
+      }
+      
+      // Extract disclaimer data from room
+      const rawRoom = room as any;
+      setData({
+        safetyEn: rawRoom.safety_disclaimer || rawRoom.content?.safety_en,
+        safetyVi: rawRoom.safety_disclaimer_vi || rawRoom.content?.safety_vi,
+        crisisEn: rawRoom.crisis_footer?.en,
+        crisisVi: rawRoom.crisis_footer?.vi,
+      });
+    }).catch(() => setData(null));
+  }, [roomId]);
 
+  if (!data) return null;
+  
+  const { safetyEn, safetyVi, crisisEn, crisisVi } = data;
   if (!safetyEn && !safetyVi && !crisisEn && !crisisVi) return null;
 
   return (
