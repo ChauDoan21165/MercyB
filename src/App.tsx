@@ -248,6 +248,7 @@ const App = () => {
                     <Routes>
                       {/* Public routes */}
                       <Route path="/" element={<Homepage />} />
+                      <Route path="/home" element={<Homepage />} />
                       <Route path="/onboarding" element={<OnboardingFlow />} />
                       <Route path="/tiers" element={<Tiers />} />
                       <Route path="/welcome" element={<Welcome />} />
