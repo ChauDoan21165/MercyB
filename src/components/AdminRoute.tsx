@@ -13,9 +13,13 @@ export const AdminRoute = ({ children }: Props) => {
   const [allowed, setAllowed] = useState(false);
   const isDev = import.meta.env.DEV;
 
+  console.log('[AdminRoute] Rendering, isDev:', isDev, 'checking:', checking, 'allowed:', allowed);
+
   useEffect(() => {
+    console.log('[AdminRoute] useEffect running, isDev:', isDev);
     // In DEV mode, allow access without admin check
     if (isDev) {
+      console.log('[AdminRoute] DEV mode detected, allowing access');
       setAllowed(true);
       setChecking(false);
       return;
@@ -58,9 +62,10 @@ export const AdminRoute = ({ children }: Props) => {
   }, [isDev]);
 
   if (checking) {
+    console.log('[AdminRoute] Still checking, showing loading state');
     return (
-      <div className="min-h-screen flex items-center justify-center text-muted-foreground">
-        Checking admin access…
+      <div className="min-h-screen flex items-center justify-center bg-slate-900 text-white">
+        <p className="text-lg font-medium">Checking admin access…</p>
       </div>
     );
   }

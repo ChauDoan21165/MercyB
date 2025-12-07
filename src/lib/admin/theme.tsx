@@ -22,8 +22,23 @@ const STORAGE_KEY = "admin_visual_mode";
  */
 export function AdminThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<AdminTheme>(() => {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    return (stored === "light" || stored === "dark") ? stored : "dark";
+    // Get stored theme or default to dark
+    const stored = typeof localStorage !== 'undefined' ? localStorage.getItem(STORAGE_KEY) : null;
+    const initialTheme = (stored === "light" || stored === "dark") ? stored : "dark";
+    
+    // Apply theme class immediately to prevent flash
+    if (typeof document !== 'undefined') {
+      const root = document.documentElement;
+      if (initialTheme === "dark") {
+        root.classList.add("admin-dark");
+        root.classList.remove("admin-light");
+      } else {
+        root.classList.add("admin-light");
+        root.classList.remove("admin-dark");
+      }
+    }
+    
+    return initialTheme;
   });
 
   useEffect(() => {

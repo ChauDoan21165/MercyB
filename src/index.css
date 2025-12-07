@@ -192,6 +192,16 @@
     --success: 142 76% 36%;
     --warning: 38 92% 50%;
     --info: 199 89% 48%;
+    
+    /* Admin theme defaults (fallback before JS applies theme class) */
+    --admin-bg: 220 15% 13%;
+    --admin-card-bg: 220 15% 20%;
+    --admin-card-border: 220 15% 30%;
+    --admin-text: 0 0% 95%;
+    --admin-text-muted: 0 0% 70%;
+    --admin-heading: 0 0% 100%;
+    --admin-accent: 220 80% 65%;
+    --admin-accent-foreground: 0 0% 10%;
   }
 
   .dark {
