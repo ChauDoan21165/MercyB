@@ -226,10 +226,10 @@ const AdminSpecification = () => {
             <li>• Click <strong>Edit</strong> to modify this document, then <strong>Save & Download</strong></li>
             <li>• After saving, manually replace the file in <code>docs/</code> and <code>public/docs/</code> folders</li>
           </ul>
+        </div>
       </div>
     </AdminLayout>
   );
-};
 };
 
 export default AdminSpecification;
