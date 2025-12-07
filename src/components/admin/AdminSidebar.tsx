@@ -37,53 +37,54 @@ import {
  * Organized into logical groups for better navigation
  */
 
-// Main navigation items
+// Main navigation items (alphabetical)
 const mainItems = [
+  { title: "AI Usage & Costs", url: "/admin/ai-usage", icon: Activity, end: false },
   { title: "Dashboard", url: "/admin", icon: Home, end: true },
+  { title: "Payments", url: "/admin/payments", icon: DollarSign },
   { title: "Room Health", url: "/admin/room-health-dashboard", icon: Activity },
   { title: "Users", url: "/admin/users", icon: Users },
-  { title: "Payments", url: "/admin/payments", icon: DollarSign },
 ];
 
-// Room management tools
+// Room management tools (alphabetical)
 const roomItems = [
-  { title: "Room Management", url: "/admin/rooms", icon: LayoutDashboard },
-  { title: "Room Health Check", url: "/admin/room-health", icon: Stethoscope },
-  { title: "Audit v4 Safe Shield", url: "/admin/audit-v4", icon: Shield },
-  { title: "VIP Rooms", url: "/admin/vip-rooms", icon: LayoutDashboard },
   { title: "Audio Management", url: "/admin/audio-upload", icon: Music },
-  { title: "Music Controller", url: "/admin/homepage-music", icon: Music },
   { title: "Audio Scanner", url: "/admin/audio-scanner", icon: Volume2 },
+  { title: "Audit v4 Safe Shield", url: "/admin/audit-v4", icon: Shield },
   { title: "Missing Audio", url: "/admin/missing-audio", icon: AlertTriangle },
+  { title: "Music Controller", url: "/admin/homepage-music", icon: Music },
+  { title: "Room Health Check", url: "/admin/room-health", icon: Stethoscope },
+  { title: "Room Management", url: "/admin/rooms", icon: LayoutDashboard },
+  { title: "VIP Rooms", url: "/admin/vip-rooms", icon: LayoutDashboard },
 ];
 
-// Monitoring & analytics
+// Monitoring & analytics (alphabetical)
 const monitoringItems = [
-  { title: "System Health", url: "/admin/system-health", icon: Activity },
-  { title: "Statistics", url: "/admin/stats", icon: TrendingUp },
-  { title: "System Metrics", url: "/admin/system-metrics", icon: Activity },
   { title: "App Metrics", url: "/admin/app-metrics", icon: BarChart3 },
   { title: "Reports", url: "/admin/reports", icon: FileText },
+  { title: "Statistics", url: "/admin/stats", icon: TrendingUp },
+  { title: "System Health", url: "/admin/system-health", icon: Activity },
+  { title: "System Metrics", url: "/admin/system-metrics", icon: Activity },
 ];
 
-// User management & requests
+// User management & requests (alphabetical)
 const userManagementItems = [
-  { title: "VIP Requests", url: "/vip-requests", icon: MessageSquare },
   { title: "Gift Codes", url: "/admin/gift-codes", icon: Gift },
   { title: "Moderation", url: "/admin/moderation", icon: Shield },
+  { title: "VIP Requests", url: "/vip-requests", icon: MessageSquare },
 ];
 
-// Developer tools
+// Developer tools (alphabetical)
 const devToolsItems = [
-  { title: "System Codes", url: "/admin/system-codes", icon: FileText },
   { title: "Code Editor", url: "/admin/code-editor", icon: Code },
   { title: "Design Audit", url: "/admin/design-audit", icon: Palette },
+  { title: "System Codes", url: "/admin/system-codes", icon: FileText },
 ];
 
-// System tools
+// System tools (alphabetical)
 const systemItems = [
-  { title: "Security", url: "/admin/security", icon: Shield },
   { title: "Logs", url: "/admin/logs", icon: AlertTriangle },
+  { title: "Security", url: "/admin/security", icon: Shield },
   { title: "Settings", url: "/admin/settings", icon: Settings },
 ];
 
