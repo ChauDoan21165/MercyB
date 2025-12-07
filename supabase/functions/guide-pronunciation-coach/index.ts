@@ -7,6 +7,7 @@ import { logAiUsage, isAiEnabled, isUserAiEnabled, aiDisabledResponse } from "..
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
 };
 
 // Rate limit: 10 requests per minute per IP (lower since audio processing is expensive)
@@ -85,8 +86,23 @@ serve(async (req) => {
     const body = await req.json();
     const { audioBase64, targetText, englishLevel = 'beginner', preferredName } = body;
 
+    // Validate required fields
+    if (!audioBase64) {
+      return new Response(
+        JSON.stringify({ ok: false, error: 'Missing audioBase64' }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    if (!targetText) {
+      return new Response(
+        JSON.stringify({ ok: false, error: 'Missing targetText' }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
     // Truncate target text if too long
-    const truncatedTarget = (targetText || '').slice(0, 120);
+    const truncatedTarget = targetText.slice(0, 120);
 
     // Safety check
     if (containsCrisisContent(truncatedTarget)) {
