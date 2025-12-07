@@ -3,6 +3,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Table, TableRow, TableCell, TableBody, TableHead, TableHeader } from "@/components/ui/table";
 import { AdminLayout } from "@/components/admin/AdminLayout";
+import { AiControlPanel } from "@/components/admin/AiControlPanel";
 import { Cpu, DollarSign, BarChart3, TrendingUp, Clock, AlertCircle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
@@ -104,6 +105,9 @@ const AIUsage = () => {
             Monitor AI model usage, tokens, and expenses
           </p>
         </div>
+
+        {/* AI Control Panel - Global Toggle & Budget */}
+        <AiControlPanel />
 
         {/* Summary Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
