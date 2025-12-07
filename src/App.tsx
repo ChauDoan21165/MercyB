@@ -292,9 +292,11 @@ const App = () => {
                       <Route path="/kids-level3" element={<KidsLevel3 />} />
                       <Route path="/kids-chat/:roomId" element={<KidsChat />} />
                       
-                      {/* Special rooms */}
+                      {/* Special rooms - support both kebab-case and legacy PascalCase URLs */}
                       <Route path="/sexuality-culture" element={<SexualityCultureRoom />} />
+                      <Route path="/SexualityCultureRoom" element={<SexualityCultureRoom />} />
                       <Route path="/finance-calm" element={<FinanceCalmRoom />} />
+                      <Route path="/FinanceCalmRoom" element={<FinanceCalmRoom />} />
                       
                       {/* User features */}
                       <Route path="/vip-request" element={<VIPRequestForm />} />
