@@ -1,5 +1,11 @@
-import { roomDataMap } from "@/lib/roomDataImports";
-import crossTopicData from "@/data/system/cross_topic_recommendations.json";
+/**
+ * Keyword responder - refactored to load data at runtime
+ * No static imports of large JSON files
+ */
+
+// Cache for loaded room data and cross-topic recommendations
+let crossTopicCache: any = null;
+let roomJsonCache: Record<string, any> = {};
 
 function normalize(text: unknown) {
   return String(text ?? "")
@@ -18,18 +24,12 @@ function getBilingual(obj: any, base: string): { en: string; vi: string } {
   return { en: String(obj?.[base] || ""), vi: String(obj?.[`${base}_vi`] || obj?.[`${base}Vi`] || "") };
 }
 
-// Extremely tolerant bilingual extractor across many schemas
 function getBilingualFlexible(entry: any): { en: string; vi: string } {
   const paths: Array<[string[], string[]]> = [
-    // essay object
     [["essay","en"],["essay","vi"]],
-    // copy object
     [["copy","en"],["copy","vi"]],
-    // content object
     [["content","en"],["content","vi"]],
-    // body object
     [["body","en"],["body","vi"]],
-    // description object
     [["description","en"],["description","vi"]],
   ];
 
@@ -49,7 +49,6 @@ function getBilingualFlexible(entry: any): { en: string; vi: string } {
     if (en || vi) return { en, vi };
   }
 
-  // Last resort: if entry has both en/vi at root
   if (typeof entry?.en === 'string' || typeof entry?.vi === 'string') {
     return { en: String(entry.en || ''), vi: String(entry.vi || '') };
   }
@@ -65,11 +64,10 @@ function findMatchingGroup(message: string, keywords: any): { groupKey: string; 
       ...(Array.isArray(g.en) ? g.en : []),
       ...(Array.isArray(g.vi) ? g.vi : []),
       ...(Array.isArray(g.slug_vi) ? g.slug_vi : []),
-      groupKey // allow matching by the slug key itself
+      groupKey
     ];
     for (const k of list) {
       const normalizedK = normalize(k);
-      // Exact or contains
       if (msg.includes(normalizedK) || normalizedK.includes(msg)) return { groupKey, matchedKeyword: normalize(k) };
     }
   }
@@ -129,15 +127,11 @@ function findEntryByKeyword(matchedKeyword: string | null, groupKey: string | nu
     const aTokens = audioTokens(entry);
 
     let score = 0;
-    // Title vs matched keyword
     score = Math.max(score, jaccard(tTokens, mkTokens));
-    // Title vs each group keyword
     for (const g of groupTokenSets) score = Math.max(score, jaccard(tTokens, g));
-    // Audio filename cue
     score = Math.max(score, jaccard(aTokens, mkTokens) * 0.9);
     for (const g of groupTokenSets) score = Math.max(score, jaccard(aTokens, g) * 0.9);
 
-    // Boost if title string contains matched keyword substring
     const titleStr = [...tTokens].join(' ');
     const mkStr = [...mkTokens].join(' ');
     if (mkStr && titleStr.includes(mkStr)) score += 0.2;
@@ -149,16 +143,43 @@ function findEntryByKeyword(matchedKeyword: string | null, groupKey: string | nu
   return null;
 }
 
-function findRelatedRooms(message: string, currentRoomId: string): string[] {
+async function loadCrossTopicData(): Promise<any> {
+  if (crossTopicCache) return crossTopicCache;
+  try {
+    const response = await fetch('/data/system/cross_topic_recommendations.json');
+    if (response.ok) {
+      crossTopicCache = await response.json();
+    }
+  } catch (e) {
+    console.warn('Failed to load cross-topic data:', e);
+  }
+  return crossTopicCache || { recommendations: [] };
+}
+
+async function loadRoomJson(roomId: string): Promise<any> {
+  if (roomJsonCache[roomId]) return roomJsonCache[roomId];
+  try {
+    const response = await fetch(`/data/${roomId}.json`);
+    if (response.ok) {
+      const data = await response.json();
+      roomJsonCache[roomId] = data;
+      return data;
+    }
+  } catch (e) {
+    console.warn(`Failed to load room ${roomId}:`, e);
+  }
+  return null;
+}
+
+async function findRelatedRooms(message: string, currentRoomId: string): Promise<string[]> {
   const msg = normalize(message);
   const relatedRooms = new Set<string>();
   
-  // Check cross-topic recommendations
+  const crossTopicData = await loadCrossTopicData();
   if (crossTopicData?.recommendations) {
     crossTopicData.recommendations.forEach((rec: any) => {
       const keyword = normalize(rec.keyword);
       if (msg.includes(keyword)) {
-        // Find rooms that are NOT the current room
         rec.rooms?.forEach((room: any) => {
           if (room.roomId !== currentRoomId && room.relevance === 'primary') {
             relatedRooms.add(`${room.roomNameEn} (${room.roomNameVi})`);
@@ -168,25 +189,27 @@ function findRelatedRooms(message: string, currentRoomId: string): string[] {
     });
   }
   
-  return Array.from(relatedRooms).slice(0, 3); // Top 3 related rooms
+  return Array.from(relatedRooms).slice(0, 3);
 }
 
-export function keywordRespond(roomId: string, message: string, noKeywordCount: number = 0, matchedEntryCount: number = 0): { text: string; matched: boolean; relatedRooms?: string[]; audioFile?: string; entryId?: string } {
-  const roomData = roomDataMap[roomId] as any;
+export async function keywordRespondAsync(
+  roomId: string, 
+  message: string, 
+  noKeywordCount: number = 0, 
+  matchedEntryCount: number = 0
+): Promise<{ text: string; matched: boolean; relatedRooms?: string[]; audioFile?: string; entryId?: string }> {
+  const roomData = await loadRoomJson(roomId);
   if (!roomData) throw new Error("Room data not found");
 
   const matchResult = findMatchingGroup(message, roomData.keywords || roomData.keywords_dict);
   const groupKey = matchResult?.groupKey || null;
   const matchedKeyword = matchResult?.matchedKeyword || null;
   
-  // Handle both old (array) and new (object) entry structures
   let matchedEntry = null;
   let audioFile: string | undefined;
   let entryId: string | undefined;
   
-  // Check if entries is an object (new structure) or array (old structure)
   if (roomData.entries && typeof roomData.entries === 'object' && !Array.isArray(roomData.entries)) {
-    // New structure: entries is an object with entry IDs as keys
     if (groupKey && roomData.entries[groupKey]) {
       matchedEntry = roomData.entries[groupKey];
     }
@@ -195,7 +218,6 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
       entryId = matchedEntry.id;
       const audio = matchedEntry.audio;
       if (typeof audio === 'string') {
-        // Files are in public/audio/, but served at /audio/
         let path = audio.replace(/^\/+/, '').replace(/^public\//, '').replace(/^audio\//, '');
         audioFile = `/audio/${path}`;
       } else if (audio && typeof audio === 'object') {
@@ -206,18 +228,13 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
         }
       }
     }
-    // No fallback: if no exact/best match, return unmatched state
   } else {
-    // Old structure: entries is an array
-    const keywordsSource: any = roomData.keywords || (roomData as any).keywords_dict || {};
+    const keywordsSource: any = roomData.keywords || roomData.keywords_dict || {};
     matchedEntry = findEntryByKeyword(matchedKeyword, groupKey, roomData.entries || [], keywordsSource);
 
-    // No fallback selection of first entry
     if (matchedEntry) {
-      // Support audio in various formats
       const audio = matchedEntry.audio || matchedEntry.audio_file || matchedEntry.meta?.audio_file || matchedEntry.audioEn || matchedEntry.audio_en;
       if (typeof audio === 'string') {
-        // Files are in public/audio/, but served at /audio/
         let path = audio.replace(/^\/+/, '').replace(/^public\//, '').replace(/^audio\//, '');
         audioFile = `/audio/${path}`;
       } else if (audio && typeof audio === 'object') {
@@ -231,13 +248,11 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
     }
   }
   
-  const relatedRooms = findRelatedRooms(message, roomId);
+  const relatedRooms = await findRelatedRooms(message, roomId);
 
   const buildEntryResponse = (entry: any) => {
-    // Tolerant bilingual extraction
     let { en: copyEn, vi: copyVi } = getBilingualFlexible(entry);
 
-    // If still empty, try legacy fields
     if (!copyEn) {
       copyEn = String(entry?.copy_en || entry?.content_en || entry?.body_en || "");
     }
@@ -245,42 +260,31 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
       copyVi = String(entry?.copy_vi || entry?.content_vi || entry?.body_vi || "");
     }
 
-    // Remove word count footers
     copyEn = String(copyEn || "").replace(/\*Word count: \d+\*\s*/g, '').trim();
     copyVi = String(copyVi || "").replace(/\*Số từ: \d+\*\s*/g, '').trim();
 
-    // Return only the languages that exist
     if (copyEn && copyVi) return `${copyEn}\n\n---\n\n${copyVi}`;
     return copyEn || copyVi || '';
   };
 
   if (matchedEntry) {
-    // Handle new entry structure with summary and essay
     let responseText: string;
     if (matchedEntry.summary && matchedEntry.essay) {
       const summary = getBilingual(matchedEntry, 'summary');
       let essay = getBilingual(matchedEntry, 'essay');
-      // Remove word count from essay
       essay.en = String(essay.en || '').replace(/\*Word count: \d+\*\s*/g, '').trim();
       essay.vi = String(essay.vi || '').replace(/\*Số từ: \d+\*\s*/g, '').trim();
-      // English first, Vietnamese below when available
       responseText = essay.vi ? `${essay.en}\n\n---\n\n${essay.vi}` : essay.en;
     } else {
       responseText = buildEntryResponse(matchedEntry);
     }
-    // Note: Disclaimer now displayed at bottom of chat, not per-entry
     return { text: responseText, matched: true, relatedRooms, audioFile, entryId };
   }
 
-  // No match: check if message is substantial before showing essay
   const raw = String(message || "");
   const messageLower = raw.toLowerCase();
   const messageWords = raw.trim().split(/\s+/).filter(Boolean);
 
-  // Consider it a real question if:
-  // - 3+ words, or
-  // - contains a question mark, or
-  // - starts with / equals a question word (exact token match), including VN multi-word forms
   const qTokens = new Set([
     'how','what','why','when','where','can','should','is','are','do','does','could','would','will',
     'làm','gì','khi','nào','đâu','có','nên','là'
@@ -294,7 +298,6 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
   const isQuestion = messageWords.length >= 3 || messageLower.includes('?') || startsWithQToken || hasExactQToken || hasMultiWordQ;
 
   if (isQuestion) {
-    // Only show essay after ~10 matched entries (reduced for faster access)
     if (matchedEntryCount >= 10) {
       const essay = getBilingual(roomData, "room_essay");
       const desc = getBilingual(roomData, "description");
@@ -306,12 +309,9 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
       return { text, matched: false };
     }
     
-    // Before 10 entries, give a helpful prompt
     const desc = getBilingual(roomData, "description");
     const keywordSource: any = roomData.keywords || roomData.keywords_dict || {};
     const keywordGroups = Object.values(keywordSource).slice(0, 3);
-    const topKeysEn = keywordGroups.flatMap((g: any) => (Array.isArray(g.en) ? g.en.slice(0, 2) : [])).join(', ');
-    const topKeysVi = keywordGroups.flatMap((g: any) => (Array.isArray(g.vi) ? g.vi.slice(0, 2) : [])).join(', ');
     const safeDescEn = desc.en || 'this topic';
     const safeDescVi = desc.vi || 'chủ đề này';
     const text = [
@@ -321,34 +321,16 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
     return { text, matched: false };
   }
   
-  // For short/unclear messages, use escalating friendly prompts
-  // After 2 non-matches, skip to "I am listening"
   const escalationPrompts = [
-    {
-      en: "Please tell me more.",
-      vi: "Vui lòng cho tôi biết thêm."
-    },
-    {
-      en: "Please tell me a bit more, my friend.",
-      vi: "Vui lòng cho tôi biết thêm một chút, bạn của tôi."
-    },
-    {
-      en: "Keep saying more, I am listening.",
-      vi: "Hãy nói thêm, tôi đang lắng nghe."
-    }
+    { en: "Please tell me more.", vi: "Vui lòng cho tôi biết thêm." },
+    { en: "Please tell me a bit more, my friend.", vi: "Vui lòng cho tôi biết thêm một chút, bạn của tôi." },
+    { en: "Keep saying more, I am listening.", vi: "Hãy nói thêm, tôi đang lắng nghe." }
   ];
   
-  // Use the listening prompt after 2 non-matches
   const promptIndex = noKeywordCount >= 2 ? 2 : noKeywordCount;
   const selectedPrompt = escalationPrompts[promptIndex];
   
   const desc = getBilingual(roomData, "description");
-  
-  // Extract actual keywords in both languages
-  const keywordSource: any = roomData.keywords || roomData.keywords_dict || {};
-  const keywordGroups = Object.values(keywordSource).slice(0, 3);
-  const topKeysEn = keywordGroups.flatMap((g: any) => (Array.isArray(g.en) ? g.en.slice(0, 2) : [])).join(', ');
-  const topKeysVi = keywordGroups.flatMap((g: any) => (Array.isArray(g.vi) ? g.vi.slice(0, 2) : [])).join(', ');
   
   const promptText = [
     selectedPrompt.en,
@@ -358,4 +340,19 @@ export function keywordRespond(roomId: string, message: string, noKeywordCount: 
   ].join("\n\n");
   
   return { text: promptText, matched: false };
+}
+
+// Legacy sync wrapper (deprecated - use keywordRespondAsync)
+export function keywordRespond(
+  roomId: string, 
+  message: string, 
+  noKeywordCount: number = 0, 
+  matchedEntryCount: number = 0
+): { text: string; matched: boolean; relatedRooms?: string[]; audioFile?: string; entryId?: string } {
+  // Return a placeholder - callers should migrate to async version
+  console.warn('keywordRespond is deprecated, use keywordRespondAsync');
+  return {
+    text: "Loading...",
+    matched: false
+  };
 }

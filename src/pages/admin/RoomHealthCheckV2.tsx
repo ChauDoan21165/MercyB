@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -13,13 +13,12 @@ import {
   Download,
   Upload,
   Loader2,
-  FileWarning,
-  Music
+  FileWarning
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
-// JSON-first types
+// Types
 type RoomJsonEntry = {
   slug?: string;
   audio?: string | { en?: string; vi?: string };
@@ -61,9 +60,6 @@ type SyncStatus = {
   totalDb: number;
 };
 
-// Import all JSON files from public/data
-const jsonModules = import.meta.glob('/public/data/*.json', { eager: true });
-
 export default function RoomHealthCheckV2() {
   const [loading, setLoading] = useState(false);
   const [jsonRooms, setJsonRooms] = useState<JsonRoomHealth[]>([]);
@@ -71,20 +67,53 @@ export default function RoomHealthCheckV2() {
   const [syncStatus, setSyncStatus] = useState<SyncStatus | null>(null);
   const [syncing, setSyncing] = useState(false);
   const [generating, setGenerating] = useState(false);
+  const [jsonModules, setJsonModules] = useState<Record<string, RoomJson>>({});
 
-  // Load data on mount
-  useEffect(() => {
-    runHealthCheck();
+  // Load JSON files lazily when scan runs
+  const loadJsonFiles = useCallback(async (): Promise<Record<string, RoomJson>> => {
+    try {
+      // Use lazy import.meta.glob - only loaded when this function runs
+      const modules = import.meta.glob('/public/data/*.json');
+      const loadedModules: Record<string, RoomJson> = {};
+      
+      const entries = await Promise.all(
+        Object.entries(modules).map(async ([path, loader]) => {
+          try {
+            const module = await (loader as () => Promise<{ default?: RoomJson } | RoomJson>)();
+            const data = (module as any).default || module;
+            return [path, data] as [string, RoomJson];
+          } catch (e) {
+            console.warn(`Failed to load ${path}:`, e);
+            return [path, null] as [string, null];
+          }
+        })
+      );
+
+      for (const [path, data] of entries) {
+        if (data) {
+          loadedModules[path] = data;
+        }
+      }
+
+      setJsonModules(loadedModules);
+      return loadedModules;
+    } catch (err) {
+      console.error('Failed to load JSON modules:', err);
+      return {};
+    }
   }, []);
 
   const runHealthCheck = async () => {
     setLoading(true);
     try {
-      // 1. Scan JSON files
-      const jsonResults = scanJsonFiles();
+      // 1. Load JSON files lazily
+      const modules = await loadJsonFiles();
+      
+      // 2. Scan JSON files
+      const jsonResults = scanJsonFiles(modules);
       setJsonRooms(jsonResults);
 
-      // 2. Fetch DB rooms
+      // 3. Fetch DB rooms
       const { data: rooms, error } = await supabase
         .from('rooms')
         .select('id, tier, title_en, entries');
@@ -92,7 +121,7 @@ export default function RoomHealthCheckV2() {
       if (error) throw error;
       setDbRooms(rooms || []);
 
-      // 3. Calculate sync status
+      // 4. Calculate sync status
       const jsonIds = new Set(jsonResults.map(r => r.id));
       const dbIds = new Set((rooms || []).map(r => r.id));
 
@@ -116,26 +145,20 @@ export default function RoomHealthCheckV2() {
     }
   };
 
-  const scanJsonFiles = (): JsonRoomHealth[] => {
+  const scanJsonFiles = (modules: Record<string, RoomJson>): JsonRoomHealth[] => {
     const results: JsonRoomHealth[] = [];
+    const skipFiles = ['components.json', 'Tiers.json', 'Tiers_.json', 'Package_Lock.json', 'Tsconfig_App.json', 'Tsconfig_Node.json'];
 
-    for (const [path, module] of Object.entries(jsonModules)) {
+    for (const [path, json] of Object.entries(modules)) {
       const filename = path.split('/').pop() || '';
       const id = filename.replace('.json', '');
       
-      // Skip non-room files
-      if (['components.json', 'Tiers.json', 'Tiers_.json', 'Package_Lock.json', 'Tsconfig_App.json', 'Tsconfig_Node.json'].includes(filename)) {
-        continue;
-      }
+      if (skipFiles.includes(filename)) continue;
 
       try {
-        const data = module as { default?: RoomJson } | RoomJson;
-        const json: RoomJson = (data as any).default || data;
-        
         const issues: string[] = [];
         const entries = Array.isArray(json.entries) ? json.entries : [];
         
-        // Check for common issues
         if (entries.length === 0) {
           issues.push('No entries in JSON');
         }
@@ -152,7 +175,6 @@ export default function RoomHealthCheckV2() {
           }
         });
 
-        // Calculate health score
         let healthScore = 100;
         if (entries.length === 0) healthScore -= 40;
         if (issues.length > 0) healthScore -= Math.min(issues.length * 5, 50);
@@ -165,7 +187,7 @@ export default function RoomHealthCheckV2() {
           validJson: true,
           issues,
           healthScore: Math.max(healthScore, 0),
-          inDatabase: false // Will be updated after DB check
+          inDatabase: false
         });
       } catch (err: any) {
         results.push({
@@ -199,15 +221,10 @@ export default function RoomHealthCheckV2() {
         const room = jsonRooms.find(r => r.id === id);
         if (!room) continue;
 
-        // Find the JSON data
         const path = `/public/data/${room.filename}`;
-        const module = jsonModules[path];
-        if (!module) continue;
+        const json = jsonModules[path];
+        if (!json) continue;
 
-        const data = module as { default?: RoomJson } | RoomJson;
-        const json: RoomJson = (data as any).default || data;
-
-        // Prepare room data for DB
         const title = typeof json.title === 'string' 
           ? json.title 
           : json.title?.en || room.filename.replace('.json', '');
@@ -236,7 +253,7 @@ export default function RoomHealthCheckV2() {
       }
 
       toast.success(`Synced ${synced} rooms to DB${failed > 0 ? `, ${failed} failed` : ''}`);
-      runHealthCheck(); // Refresh
+      runHealthCheck();
     } catch (err: any) {
       toast.error(`Sync failed: ${err.message}`);
     } finally {
@@ -252,7 +269,6 @@ export default function RoomHealthCheckV2() {
 
     setGenerating(true);
     
-    // Generate placeholder JSON for each DB-only room
     const placeholders: { id: string; json: RoomJson }[] = [];
     
     for (const id of syncStatus.dbOnly) {
@@ -273,13 +289,11 @@ export default function RoomHealthCheckV2() {
       placeholders.push({ id, json: placeholder });
     }
 
-    // Create downloadable JSON bundle
     const bundle = placeholders.reduce((acc, { id, json }) => {
       acc[`${id}.json`] = json;
       return acc;
     }, {} as Record<string, RoomJson>);
 
-    // Download as single file
     const blob = new Blob([JSON.stringify(bundle, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -310,7 +324,7 @@ export default function RoomHealthCheckV2() {
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-2xl font-bold">Room Health Check V2</h1>
-            <p className="text-gray-400">JSON-as-Source Architecture</p>
+            <p className="text-gray-400">JSON-as-Source Architecture (Lazy Loading)</p>
           </div>
           <Button 
             onClick={runHealthCheck} 
@@ -319,9 +333,20 @@ export default function RoomHealthCheckV2() {
             className="border-white text-white hover:bg-white hover:text-black"
           >
             {loading ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <RefreshCw className="w-4 h-4 mr-2" />}
-            Refresh
+            {jsonRooms.length === 0 ? 'Run Scan' : 'Refresh'}
           </Button>
         </div>
+
+        {/* Initial state - prompt to scan */}
+        {jsonRooms.length === 0 && !loading && (
+          <Card className="bg-zinc-900 border-zinc-800">
+            <CardContent className="p-8 text-center">
+              <FileJson className="w-16 h-16 mx-auto mb-4 text-gray-500" />
+              <h2 className="text-xl font-semibold mb-2">Click "Run Scan" to Start</h2>
+              <p className="text-gray-400">JSON files are loaded on-demand to reduce build time</p>
+            </CardContent>
+          </Card>
+        )}
 
         {/* Sync Status Summary */}
         {syncStatus && (
@@ -365,210 +390,200 @@ export default function RoomHealthCheckV2() {
         )}
 
         {/* Action Buttons */}
-        <div className="flex gap-4">
-          <Button 
-            onClick={syncJsonToDb}
-            disabled={syncing || !syncStatus?.jsonOnly.length}
-            className="bg-blue-600 hover:bg-blue-700"
-          >
-            {syncing ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Upload className="w-4 h-4 mr-2" />}
-            Sync JSON → DB ({syncStatus?.jsonOnly.length || 0})
-          </Button>
-          <Button 
-            onClick={generateMissingJson}
-            disabled={generating || !syncStatus?.dbOnly.length}
-            className="bg-purple-600 hover:bg-purple-700"
-          >
-            {generating ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Download className="w-4 h-4 mr-2" />}
-            Generate Missing JSON ({syncStatus?.dbOnly.length || 0})
-          </Button>
-        </div>
+        {syncStatus && (
+          <div className="flex gap-4">
+            <Button 
+              onClick={syncJsonToDb}
+              disabled={syncing || !syncStatus?.jsonOnly.length}
+              className="bg-blue-600 hover:bg-blue-700"
+            >
+              {syncing ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Upload className="w-4 h-4 mr-2" />}
+              Sync JSON → DB ({syncStatus?.jsonOnly.length || 0})
+            </Button>
+            <Button 
+              onClick={generateMissingJson}
+              disabled={generating || !syncStatus?.dbOnly.length}
+              className="bg-purple-600 hover:bg-purple-700"
+            >
+              {generating ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Download className="w-4 h-4 mr-2" />}
+              Generate Missing JSON ({syncStatus?.dbOnly.length || 0})
+            </Button>
+          </div>
+        )}
 
         {/* Tabs */}
-        <Tabs defaultValue="json" className="space-y-4">
-          <TabsList className="bg-zinc-900">
-            <TabsTrigger value="json" className="data-[state=active]:bg-zinc-700">
-              JSON Files ({jsonRooms.length})
-            </TabsTrigger>
-            <TabsTrigger value="json-only" className="data-[state=active]:bg-zinc-700">
-              JSON Only ({syncStatus?.jsonOnly.length || 0})
-            </TabsTrigger>
-            <TabsTrigger value="db-only" className="data-[state=active]:bg-zinc-700">
-              DB Only ({syncStatus?.dbOnly.length || 0})
-            </TabsTrigger>
-            <TabsTrigger value="issues" className="data-[state=active]:bg-zinc-700">
-              Issues ({criticalCount + warningCount})
-            </TabsTrigger>
-          </TabsList>
+        {jsonRooms.length > 0 && (
+          <Tabs defaultValue="json" className="space-y-4">
+            <TabsList className="bg-zinc-900">
+              <TabsTrigger value="json" className="data-[state=active]:bg-zinc-700">
+                JSON Files ({jsonRooms.length})
+              </TabsTrigger>
+              <TabsTrigger value="json-only" className="data-[state=active]:bg-zinc-700">
+                JSON Only ({syncStatus?.jsonOnly.length || 0})
+              </TabsTrigger>
+              <TabsTrigger value="db-only" className="data-[state=active]:bg-zinc-700">
+                DB Only ({syncStatus?.dbOnly.length || 0})
+              </TabsTrigger>
+              <TabsTrigger value="issues" className="data-[state=active]:bg-zinc-700">
+                Issues ({criticalCount + warningCount})
+              </TabsTrigger>
+            </TabsList>
 
-          {/* JSON Files Tab */}
-          <TabsContent value="json">
-            <Card className="bg-zinc-900 border-zinc-800">
-              <CardHeader>
-                <CardTitle className="text-lg flex items-center gap-2">
-                  <FileJson className="w-5 h-5" />
-                  All JSON Files (Source of Truth)
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex gap-4 mb-4 text-sm">
-                  <span className="text-green-400">✓ Healthy: {healthyCount}</span>
-                  <span className="text-yellow-400">⚠ Warning: {warningCount}</span>
-                  <span className="text-red-400">✗ Critical: {criticalCount}</span>
-                </div>
-                <ScrollArea className="h-[500px]">
-                  <div className="space-y-2">
-                    {jsonRooms
-                      .sort((a, b) => a.healthScore - b.healthScore)
-                      .map(room => (
-                        <div key={room.id} className="flex items-center justify-between p-3 bg-zinc-800 rounded-lg">
-                          <div className="flex-1">
-                            <div className="flex items-center gap-2">
-                              <span className="font-mono text-sm">{room.filename}</span>
-                              {getHealthBadge(room.healthScore)}
-                              {syncStatus?.synced.includes(room.id) && (
-                                <Badge variant="outline" className="text-green-400 border-green-400">In DB</Badge>
-                              )}
-                            </div>
-                            <div className="text-xs text-gray-500 mt-1">
-                              {room.tier || 'No tier'} • {room.entryCount} entries
-                              {room.issues.length > 0 && (
-                                <span className="text-yellow-400 ml-2">
-                                  {room.issues.length} issue(s)
-                                </span>
-                              )}
-                            </div>
-                          </div>
-                          <div className="text-2xl font-bold text-right w-16">
-                            {room.healthScore}%
-                          </div>
-                        </div>
-                      ))}
+            <TabsContent value="json">
+              <Card className="bg-zinc-900 border-zinc-800">
+                <CardHeader>
+                  <CardTitle className="text-lg flex items-center gap-2">
+                    <FileJson className="w-5 h-5" />
+                    All JSON Files (Source of Truth)
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex gap-4 mb-4 text-sm">
+                    <span className="text-green-400">✓ Healthy: {healthyCount}</span>
+                    <span className="text-yellow-400">⚠ Warning: {warningCount}</span>
+                    <span className="text-red-400">✗ Critical: {criticalCount}</span>
                   </div>
-                </ScrollArea>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          {/* JSON Only Tab */}
-          <TabsContent value="json-only">
-            <Card className="bg-zinc-900 border-zinc-800">
-              <CardHeader>
-                <CardTitle className="text-lg flex items-center gap-2">
-                  <FileWarning className="w-5 h-5 text-yellow-400" />
-                  JSON Files Not in Database
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                {syncStatus?.jsonOnly.length === 0 ? (
-                  <div className="text-center py-8 text-gray-400">
-                    <CheckCircle2 className="w-12 h-12 mx-auto mb-2 text-green-400" />
-                    <p>All JSON files are synced to database!</p>
-                  </div>
-                ) : (
-                  <ScrollArea className="h-[400px]">
+                  <ScrollArea className="h-[500px]">
                     <div className="space-y-2">
-                      {syncStatus?.jsonOnly.map(id => {
-                        const room = jsonRooms.find(r => r.id === id);
-                        return (
-                          <div key={id} className="p-3 bg-yellow-900/20 border border-yellow-600/30 rounded-lg">
-                            <div className="font-mono text-sm">{id}.json</div>
-                            <div className="text-xs text-gray-400 mt-1">
-                              {room?.tier || 'No tier'} • {room?.entryCount || 0} entries
+                      {jsonRooms
+                        .sort((a, b) => a.healthScore - b.healthScore)
+                        .map(room => (
+                          <div key={room.id} className="flex items-center justify-between p-3 bg-zinc-800 rounded-lg">
+                            <div className="flex-1">
+                              <div className="flex items-center gap-2">
+                                <span className="font-mono text-sm">{room.filename}</span>
+                                {getHealthBadge(room.healthScore)}
+                                {syncStatus?.synced.includes(room.id) && (
+                                  <Badge variant="outline" className="text-green-400 border-green-400">In DB</Badge>
+                                )}
+                              </div>
+                              <div className="text-xs text-gray-500 mt-1">
+                                {room.tier || 'No tier'} • {room.entryCount} entries
+                                {room.issues.length > 0 && (
+                                  <span className="text-yellow-400 ml-2">
+                                    {room.issues.length} issue(s)
+                                  </span>
+                                )}
+                              </div>
+                            </div>
+                            <div className="text-2xl font-bold text-right w-16">
+                              {room.healthScore}%
                             </div>
                           </div>
-                        );
-                      })}
+                        ))}
                     </div>
                   </ScrollArea>
-                )}
-              </CardContent>
-            </Card>
-          </TabsContent>
+                </CardContent>
+              </Card>
+            </TabsContent>
 
-          {/* DB Only Tab */}
-          <TabsContent value="db-only">
-            <Card className="bg-zinc-900 border-zinc-800">
-              <CardHeader>
-                <CardTitle className="text-lg flex items-center gap-2">
-                  <AlertTriangle className="w-5 h-5 text-red-400" />
-                  DB Rooms Without JSON (Need JSON Files)
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                {syncStatus?.dbOnly.length === 0 ? (
-                  <div className="text-center py-8 text-gray-400">
-                    <CheckCircle2 className="w-12 h-12 mx-auto mb-2 text-green-400" />
-                    <p>All DB rooms have JSON files!</p>
-                  </div>
-                ) : (
-                  <ScrollArea className="h-[400px]">
-                    <div className="space-y-2">
-                      {syncStatus?.dbOnly.map(id => {
-                        const room = dbRooms.find(r => r.id === id);
-                        const entriesCount = Array.isArray(room?.entries) ? room.entries.length : 0;
-                        return (
-                          <div key={id} className="p-3 bg-red-900/20 border border-red-600/30 rounded-lg">
-                            <div className="font-mono text-sm">{id}</div>
-                            <div className="text-xs text-gray-400 mt-1">
-                              {room?.tier || 'No tier'} • {entriesCount} entries in DB
-                            </div>
-                            <div className="text-xs text-red-400 mt-1">
-                              Missing: public/data/{id}.json
-                            </div>
-                          </div>
-                        );
-                      })}
+            <TabsContent value="json-only">
+              <Card className="bg-zinc-900 border-zinc-800">
+                <CardHeader>
+                  <CardTitle className="text-lg flex items-center gap-2">
+                    <FileWarning className="w-5 h-5 text-yellow-400" />
+                    JSON Files Not in Database
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  {syncStatus?.jsonOnly.length === 0 ? (
+                    <div className="text-center py-8 text-gray-400">
+                      <CheckCircle2 className="w-12 h-12 mx-auto mb-2 text-green-400" />
+                      <p>All JSON files are synced to database!</p>
                     </div>
-                  </ScrollArea>
-                )}
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          {/* Issues Tab */}
-          <TabsContent value="issues">
-            <Card className="bg-zinc-900 border-zinc-800">
-              <CardHeader>
-                <CardTitle className="text-lg flex items-center gap-2">
-                  <AlertTriangle className="w-5 h-5 text-orange-400" />
-                  Rooms with Issues
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ScrollArea className="h-[500px]">
-                  <div className="space-y-4">
-                    {jsonRooms
-                      .filter(r => r.issues.length > 0)
-                      .sort((a, b) => a.healthScore - b.healthScore)
-                      .map(room => (
-                        <div key={room.id} className="p-4 bg-zinc-800 rounded-lg">
-                          <div className="flex items-center justify-between mb-2">
-                            <span className="font-mono text-sm">{room.filename}</span>
-                            {getHealthBadge(room.healthScore)}
-                          </div>
-                          <ul className="space-y-1">
-                            {room.issues.map((issue, idx) => (
-                              <li key={idx} className="text-sm text-yellow-400 flex items-start gap-2">
-                                <AlertTriangle className="w-4 h-4 mt-0.5 shrink-0" />
-                                {issue}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      ))}
-                    {jsonRooms.filter(r => r.issues.length > 0).length === 0 && (
-                      <div className="text-center py-8 text-gray-400">
-                        <CheckCircle2 className="w-12 h-12 mx-auto mb-2 text-green-400" />
-                        <p>No issues found!</p>
+                  ) : (
+                    <ScrollArea className="h-[400px]">
+                      <div className="space-y-2">
+                        {syncStatus?.jsonOnly.map(id => {
+                          const room = jsonRooms.find(r => r.id === id);
+                          return (
+                            <div key={id} className="p-3 bg-yellow-900/20 border border-yellow-600/30 rounded-lg">
+                              <div className="font-mono text-sm">{id}.json</div>
+                              <div className="text-xs text-gray-400 mt-1">
+                                {room?.tier || 'No tier'} • {room?.entryCount || 0} entries
+                              </div>
+                            </div>
+                          );
+                        })}
                       </div>
-                    )}
-                  </div>
-                </ScrollArea>
-              </CardContent>
-            </Card>
-          </TabsContent>
-        </Tabs>
+                    </ScrollArea>
+                  )}
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            <TabsContent value="db-only">
+              <Card className="bg-zinc-900 border-zinc-800">
+                <CardHeader>
+                  <CardTitle className="text-lg flex items-center gap-2">
+                    <AlertTriangle className="w-5 h-5 text-red-400" />
+                    Database Rooms Without JSON
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  {syncStatus?.dbOnly.length === 0 ? (
+                    <div className="text-center py-8 text-gray-400">
+                      <CheckCircle2 className="w-12 h-12 mx-auto mb-2 text-green-400" />
+                      <p>All database rooms have JSON files!</p>
+                    </div>
+                  ) : (
+                    <ScrollArea className="h-[400px]">
+                      <div className="space-y-2">
+                        {syncStatus?.dbOnly.map(id => {
+                          const dbRoom = dbRooms.find(r => r.id === id);
+                          return (
+                            <div key={id} className="p-3 bg-red-900/20 border border-red-600/30 rounded-lg">
+                              <div className="font-mono text-sm">{id}</div>
+                              <div className="text-xs text-gray-400 mt-1">
+                                {dbRoom?.tier || 'No tier'} • {dbRoom?.title_en || 'No title'}
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </ScrollArea>
+                  )}
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            <TabsContent value="issues">
+              <Card className="bg-zinc-900 border-zinc-800">
+                <CardHeader>
+                  <CardTitle className="text-lg flex items-center gap-2">
+                    <AlertTriangle className="w-5 h-5 text-orange-400" />
+                    Rooms With Issues
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ScrollArea className="h-[500px]">
+                    <div className="space-y-4">
+                      {jsonRooms
+                        .filter(r => r.healthScore < 90)
+                        .sort((a, b) => a.healthScore - b.healthScore)
+                        .map(room => (
+                          <div key={room.id} className="p-4 bg-zinc-800 rounded-lg">
+                            <div className="flex items-center justify-between mb-2">
+                              <span className="font-mono">{room.filename}</span>
+                              {getHealthBadge(room.healthScore)}
+                            </div>
+                            <div className="text-xs text-gray-400 mb-2">
+                              {room.tier || 'No tier'} • {room.entryCount} entries
+                            </div>
+                            <div className="space-y-1">
+                              {room.issues.map((issue, idx) => (
+                                <div key={idx} className="text-sm text-yellow-400">• {issue}</div>
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+                    </div>
+                  </ScrollArea>
+                </CardContent>
+              </Card>
+            </TabsContent>
+          </Tabs>
+        )}
       </div>
     </div>
   );
