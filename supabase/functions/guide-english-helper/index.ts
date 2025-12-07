@@ -1,6 +1,7 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { checkRateLimit, getClientIP, rateLimitResponse } from "../_shared/rateLimit.ts";
+import { logAiUsage, isAiEnabled, isUserAiEnabled, aiDisabledResponse } from "../_shared/aiUsage.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -73,6 +74,29 @@ serve(async (req) => {
   }
 
   try {
+    // Check if AI is globally enabled
+    if (!await isAiEnabled()) {
+      return aiDisabledResponse('global', corsHeaders);
+    }
+
+    // Get user ID if authenticated
+    let userId: string | null = null;
+    const authHeader = req.headers.get('Authorization');
+    if (authHeader) {
+      const supabase = createClient(
+        Deno.env.get('SUPABASE_URL')!,
+        Deno.env.get('SUPABASE_ANON_KEY')!,
+        { global: { headers: { Authorization: authHeader } } }
+      );
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        userId = user.id;
+        if (!await isUserAiEnabled(userId)) {
+          return aiDisabledResponse('user', corsHeaders);
+        }
+      }
+    }
+
     const { 
       roomId, 
       roomTitle, 
@@ -158,31 +182,35 @@ Remember to return valid JSON only.`;
     const data = await response.json();
     const answer = data.choices?.[0]?.message?.content || '{}';
 
+    // Log AI usage
+    const usage = data.usage;
+    if (usage) {
+      await logAiUsage({
+        userId,
+        model: 'gpt-4o-mini',
+        tokensInput: usage.prompt_tokens || 0,
+        tokensOutput: usage.completion_tokens || 0,
+        endpoint: 'guide-english-helper',
+      });
+    }
+
     // Update last_english_activity for the user if authenticated
-    try {
-      const authHeader = req.headers.get('Authorization');
-      if (authHeader) {
+    if (userId) {
+      try {
         const supabaseAdmin = createClient(
           Deno.env.get('SUPABASE_URL')!,
           Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
         );
-        
-        const token = authHeader.replace('Bearer ', '');
-        const { data: { user } } = await supabaseAdmin.auth.getUser(token);
-        
-        if (user) {
-          await supabaseAdmin
-            .from('companion_state')
-            .upsert({
-              user_id: user.id,
-              last_english_activity: new Date().toISOString(),
-              last_active_at: new Date().toISOString(),
-            });
-        }
+        await supabaseAdmin
+          .from('companion_state')
+          .upsert({
+            user_id: userId,
+            last_english_activity: new Date().toISOString(),
+            last_active_at: new Date().toISOString(),
+          });
+      } catch (updateError) {
+        console.error('Failed to update last_english_activity:', updateError);
       }
-    } catch (updateError) {
-      console.error('Failed to update last_english_activity:', updateError);
-      // Don't fail the request for this
     }
 
     return new Response(
@@ -193,7 +221,7 @@ Remember to return valid JSON only.`;
   } catch (error) {
     console.error('English helper error:', error);
     return new Response(
-      JSON.stringify({ ok: false, error: error instanceof Error ? error.message : 'Unknown error' }),
+      JSON.stringify({ ok: false, error: 'An error occurred. Please try again.' }),
       { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
   }

@@ -238,6 +238,30 @@ export type Database = {
           },
         ]
       }
+      ai_settings: {
+        Row: {
+          created_at: string
+          id: string
+          is_ai_enabled: boolean
+          monthly_budget_usd: number
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          is_ai_enabled?: boolean
+          monthly_budget_usd?: number
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          is_ai_enabled?: boolean
+          monthly_budget_usd?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
       ai_usage: {
         Row: {
           cost_usd: number | null
@@ -279,6 +303,39 @@ export type Database = {
           status?: string | null
           tokens_input?: number | null
           tokens_output?: number | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      ai_usage_events: {
+        Row: {
+          cost_usd: number
+          created_at: string
+          endpoint: string | null
+          id: string
+          model: string
+          tokens_input: number
+          tokens_output: number
+          user_id: string | null
+        }
+        Insert: {
+          cost_usd?: number
+          created_at?: string
+          endpoint?: string | null
+          id?: string
+          model: string
+          tokens_input?: number
+          tokens_output?: number
+          user_id?: string | null
+        }
+        Update: {
+          cost_usd?: number
+          created_at?: string
+          endpoint?: string | null
+          id?: string
+          model?: string
+          tokens_input?: number
+          tokens_output?: number
           user_id?: string | null
         }
         Relationships: []
@@ -1509,6 +1566,7 @@ export type Database = {
       }
       profiles: {
         Row: {
+          ai_enabled: boolean
           avatar_url: string | null
           created_at: string | null
           email: string | null
@@ -1519,6 +1577,7 @@ export type Database = {
           username: string | null
         }
         Insert: {
+          ai_enabled?: boolean
           avatar_url?: string | null
           created_at?: string | null
           email?: string | null
@@ -1529,6 +1588,7 @@ export type Database = {
           username?: string | null
         }
         Update: {
+          ai_enabled?: boolean
           avatar_url?: string | null
           created_at?: string | null
           email?: string | null

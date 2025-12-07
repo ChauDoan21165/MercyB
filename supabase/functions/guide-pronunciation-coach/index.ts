@@ -2,6 +2,7 @@ import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.75.1";
 import { checkRateLimit, getClientIP, rateLimitResponse } from "../_shared/rateLimit.ts";
+import { logAiUsage, isAiEnabled, isUserAiEnabled, aiDisabledResponse } from "../_shared/aiUsage.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -55,20 +56,33 @@ serve(async (req) => {
   }
 
   try {
+    // Check if AI is globally enabled
+    if (!await isAiEnabled()) {
+      return aiDisabledResponse('global', corsHeaders);
+    }
+
+    // Get user ID if authenticated
+    let userId: string | null = null;
+    const authHeader = req.headers.get('Authorization');
+    if (authHeader) {
+      const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+        global: { headers: { Authorization: authHeader } }
+      });
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        userId = user.id;
+        if (!await isUserAiEnabled(userId)) {
+          return aiDisabledResponse('user', corsHeaders);
+        }
+      }
+    }
+
     if (!OPENAI_API_KEY) {
       throw new Error('OPENAI_API_KEY not configured');
     }
 
     // Parse request body
     const body = await req.json();
-    const { audioBase64, targetText, englishLevel = 'beginner', preferredName } = body;
-
-    if (!audioBase64 || !targetText) {
-      return new Response(
-        JSON.stringify({ ok: false, error: 'Audio and targetText are required' }),
-        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
-    }
 
     // Truncate target text if too long
     const truncatedTarget = targetText.slice(0, 120);
