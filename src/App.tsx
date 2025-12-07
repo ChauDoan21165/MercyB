@@ -1,9 +1,5 @@
 import { useEffect, Suspense, lazy } from "react";
 import { Toaster } from "@/components/ui/toaster";
-import { preloadCompanionAssets } from "@/lib/companionPreload";
-
-// Preload companion assets early
-preloadCompanionAssets();
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -182,6 +178,11 @@ const ScopedAppContent = ({ children }: { children: React.ReactNode }) => {
 
 const App = () => {
   useEffect(() => {
+    // Preload companion assets (moved from import-time to useEffect)
+    import('@/lib/companionPreload').then(({ preloadCompanionAssets }) => {
+      preloadCompanionAssets();
+    });
+    
     // Log app startup
     logger.info('App initialized', {
       scope: 'App',

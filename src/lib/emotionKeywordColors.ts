@@ -343,17 +343,25 @@ export const buildEmotionColorMap = (): Map<string, string> => {
   return colorMap;
 };
 
-// Create the color map once
-const emotionColorMap = buildEmotionColorMap();
+// Lazy-loaded color map (built on first use, not at import time)
+let emotionColorMap: Map<string, string> | null = null;
+
+const getEmotionColorMap = (): Map<string, string> => {
+  if (!emotionColorMap) {
+    emotionColorMap = buildEmotionColorMap();
+  }
+  return emotionColorMap;
+};
 
 /**
  * Get the color for a keyword based on its emotional meaning
  * Returns the emotion-based color or null if not found
  */
 export const getEmotionKeywordColor = (keyword: string): string | null => {
+  const colorMap = getEmotionColorMap();
   const normalizedNFC = normalizeText(keyword);
   const normalizedNFD = keyword.toLowerCase().trim().normalize('NFD');
-  return emotionColorMap.get(normalizedNFC) || emotionColorMap.get(normalizedNFD) || null;
+  return colorMap.get(normalizedNFC) || colorMap.get(normalizedNFD) || null;
 };
 
 /**

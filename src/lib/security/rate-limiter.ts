@@ -166,5 +166,11 @@ export function cleanupRateLimits(): void {
   }
 }
 
-// Clean up every 5 minutes
-setInterval(cleanupRateLimits, 300000);
+// Lazy cleanup - only starts when module is actively used
+let cleanupIntervalStarted = false;
+export function ensureRateLimitCleanup(): void {
+  if (typeof window !== 'undefined' && !cleanupIntervalStarted) {
+    cleanupIntervalStarted = true;
+    setInterval(cleanupRateLimits, 300000);
+  }
+}

@@ -160,5 +160,11 @@ export function cleanupMessageHistory(): void {
   }
 }
 
-// Clean up every minute
-setInterval(cleanupMessageHistory, 60000);
+// Lazy cleanup - only starts when module is used in browser
+let cleanupIntervalStarted = false;
+export function ensureCleanupInterval(): void {
+  if (typeof window !== 'undefined' && !cleanupIntervalStarted) {
+    cleanupIntervalStarted = true;
+    setInterval(cleanupMessageHistory, 60000);
+  }
+}

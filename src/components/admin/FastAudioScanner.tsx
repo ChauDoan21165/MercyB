@@ -24,8 +24,23 @@ interface ScanResult {
   missingByRoom: Record<string, MissingAudio[]>;
 }
 
-// Import all JSON files from public/data
-const dataModules = import.meta.glob('/public/data/*.json', { eager: true });
+// Lazy-loaded data modules (NOT eager - loaded on demand when scan runs)
+let dataModulesCache: Record<string, unknown> | null = null;
+
+async function getDataModules(): Promise<Record<string, unknown>> {
+  if (!dataModulesCache) {
+    // Use dynamic import pattern - modules loaded when function is called, not at import time
+    const modules = import.meta.glob('/public/data/*.json');
+    const entries = await Promise.all(
+      Object.entries(modules).map(async ([path, loader]) => {
+        const mod = await loader();
+        return [path, mod] as const;
+      })
+    );
+    dataModulesCache = Object.fromEntries(entries);
+  }
+  return dataModulesCache;
+}
 
 // Non-room files to exclude
 const EXCLUDED_FILES = new Set([
@@ -79,8 +94,10 @@ export function FastAudioScanner() {
     setScanning(true);
     setProgress(0);
     setResult(null);
-    setCurrentFile("");
+    setCurrentFile("Loading JSON files...");
 
+    // Load data modules on demand (not at import time)
+    const dataModules = await getDataModules();
     const jsonFiles = Object.entries(dataModules);
     const totalFiles = jsonFiles.length;
     

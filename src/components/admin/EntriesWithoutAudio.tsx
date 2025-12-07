@@ -37,14 +37,18 @@ export function EntriesWithoutAudio() {
     setEntriesWithoutAudio([]);
     
     try {
-      // Import all JSON files from public/data
-      const modules = import.meta.glob("/public/data/*.json", { eager: true });
+      // Lazy-load JSON files only when scan runs (not at import time)
+      const modules = import.meta.glob("/public/data/*.json");
+      const loadedModules: Record<string, unknown> = {};
+      for (const [path, loader] of Object.entries(modules)) {
+        loadedModules[path] = await loader();
+      }
       
       const missing: EntryWithoutAudio[] = [];
       let total = 0;
       let withAudio = 0;
 
-      for (const [path, module] of Object.entries(modules)) {
+      for (const [path, module] of Object.entries(loadedModules)) {
         const filename = path.split("/").pop() || "";
         
         // Skip non-room files

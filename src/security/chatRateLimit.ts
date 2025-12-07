@@ -115,7 +115,11 @@ export function cleanupChatRateLimits(): void {
   }
 }
 
-// Clean up every minute
-if (typeof window !== 'undefined') {
-  setInterval(cleanupChatRateLimits, 60000);
+// Lazy cleanup - only starts when module is actively used
+let cleanupIntervalStarted = false;
+export function ensureChatRateLimitCleanup(): void {
+  if (typeof window !== 'undefined' && !cleanupIntervalStarted) {
+    cleanupIntervalStarted = true;
+    setInterval(cleanupChatRateLimits, 60000);
+  }
 }
