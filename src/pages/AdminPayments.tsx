@@ -214,7 +214,20 @@ const AdminPayments = () => {
         <ColorfulMercyBladeHeader />
         
         <div className="mt-8">
-          <h1 className="text-3xl font-bold mb-6">Payment Management</h1>
+          <div className="flex items-center justify-between mb-6">
+            <h1 className="text-3xl font-bold">Payment Management</h1>
+            <Button 
+              variant="outline" 
+              onClick={() => {
+                fetchTiers();
+                fetchTransactions();
+                fetchAccessCodes();
+                toast({ title: "Data refreshed" });
+              }}
+            >
+              Refresh All
+            </Button>
+          </div>
           
           <Tabs defaultValue="generate" className="w-full">
             <TabsList className="grid w-full grid-cols-3">
