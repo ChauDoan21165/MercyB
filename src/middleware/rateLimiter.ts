@@ -60,11 +60,20 @@ export const RATE_LIMITS = {
 /**
  * Clean up expired entries
  */
-setInterval(() => {
+function cleanupExpiredEntries(): void {
   const now = Date.now();
   for (const [key, entry] of rateLimitStore.entries()) {
     if (now >= entry.resetAt) {
       rateLimitStore.delete(key);
     }
   }
-}, 60000); // Clean up every minute
+}
+
+// Lazy cleanup - only starts when module is actively used
+let cleanupIntervalStarted = false;
+export function ensureRateLimiterCleanup(): void {
+  if (typeof window !== 'undefined' && !cleanupIntervalStarted) {
+    cleanupIntervalStarted = true;
+    setInterval(cleanupExpiredEntries, 60000);
+  }
+}
