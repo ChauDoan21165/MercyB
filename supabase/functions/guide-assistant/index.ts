@@ -153,10 +153,13 @@ serve(async (req) => {
       );
     }
 
+    // Try Lovable AI Gateway first, fall back to OpenAI
+    const lovableKey = Deno.env.get('LOVABLE_API_KEY');
     const openaiKey = Deno.env.get('OPENAI_API_KEY');
-    if (!openaiKey) {
+    
+    if (!lovableKey && !openaiKey) {
       return new Response(
-        JSON.stringify({ ok: false, error: 'OpenAI API key not configured' }),
+        JSON.stringify({ ok: false, error: 'AI service not configured' }),
         { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
@@ -179,15 +182,24 @@ serve(async (req) => {
 ${contextInfo}
 User question: ${question}`;
 
-    // Call OpenAI
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    // Use Lovable AI Gateway if available, otherwise OpenAI
+    const apiUrl = lovableKey 
+      ? 'https://ai.gateway.lovable.dev/v1/chat/completions'
+      : 'https://api.openai.com/v1/chat/completions';
+    
+    const apiKey = lovableKey || openaiKey;
+    const model = lovableKey ? 'google/gemini-2.5-flash' : 'gpt-4o-mini';
+
+    console.log(`[guide-assistant] Using ${lovableKey ? 'Lovable AI Gateway' : 'OpenAI'} for request`);
+
+    const response = await fetch(apiUrl, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${openaiKey}`,
+        'Authorization': `Bearer ${apiKey}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gpt-4o-mini',
+        model,
         messages: [
           { role: 'system', content: SYSTEM_PROMPT },
           { role: 'user', content: userMessage }
@@ -199,7 +211,24 @@ User question: ${question}`;
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error('OpenAI API error:', response.status, errorText);
+      console.error('AI API error:', response.status, errorText);
+      
+      // Handle rate limit errors
+      if (response.status === 429) {
+        return new Response(
+          JSON.stringify({ ok: false, error: 'Mercy is taking a short break. Please try again in a moment.' }),
+          { status: 429, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
+      }
+      
+      // Handle payment required
+      if (response.status === 402) {
+        return new Response(
+          JSON.stringify({ ok: false, error: 'AI service temporarily unavailable. Please try again later.' }),
+          { status: 402, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
+      }
+      
       return new Response(
         JSON.stringify({ ok: false, error: 'Failed to get AI response' }),
         { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
@@ -214,7 +243,7 @@ User question: ${question}`;
     if (usage) {
       await logAiUsage({
         userId,
-        model: 'gpt-4o-mini',
+        model,
         tokensInput: usage.prompt_tokens || 0,
         tokensOutput: usage.completion_tokens || 0,
         endpoint: 'guide-assistant',

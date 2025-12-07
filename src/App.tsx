@@ -21,6 +21,7 @@ import { LoadingSkeleton } from "@/components/ui/loading-skeleton";
 import { preloadCriticalRoutes } from "@/lib/performance";
 import { DevObservabilityPanel } from "@/components/dev/DevObservabilityPanel";
 import { MercyToggle } from "@/components/companion/MercyToggle";
+import { MercyGuide } from "@/components/MercyGuide";
 // GlobalHeader removed from global render - individual pages handle their own headers
 import { GlobalNavigationBox } from "@/components/GlobalNavigationBox";
 import { AppVersionManager } from "@/components/AppVersionManager";
@@ -374,6 +375,9 @@ const App = () => {
                     </ScopedAppContent>
                   
                   <RouteAwareBottomBar />
+                  
+                  {/* Mercy Guide - global AI chat assistant */}
+                  <MercyGuide />
                   
                   {/* Mercy Toggle - shows when companion is disabled */}
                   <MercyToggle />
