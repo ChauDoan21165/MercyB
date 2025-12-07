@@ -6,8 +6,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import { Gift, Loader2, Copy, Check, ArrowLeft, Calendar } from "lucide-react";
-import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
+import { Gift, Loader2, Copy, Check, Calendar } from "lucide-react";
+import { AdminLayout } from "@/components/admin/AdminLayout";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 
@@ -187,18 +187,13 @@ const AdminGiftCodes = () => {
   const usedCodes = allCodes.filter(c => c.used_by).length;
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-purple-50 to-pink-50">
-      <ColorfulMercyBladeHeader subtitle="Manage Gift Codes" />
-      
-      <div className="container mx-auto px-4 py-12 max-w-6xl">
-        <Button 
-          onClick={() => navigate('/admin')} 
-          variant="outline" 
-          className="mb-6 gap-2"
-        >
-          <ArrowLeft className="h-4 w-4" />
-          Back to Admin Dashboard
-        </Button>
+    <AdminLayout>
+      <div className="container mx-auto max-w-6xl space-y-6">
+        <div>
+          <h1 className="text-3xl font-bold" style={{ color: '#000000' }}>Gift Codes</h1>
+          <p style={{ color: '#666666' }}>Generate and manage VIP gift codes</p>
+        </div>
+        
         <div className="grid gap-6 md:grid-cols-2">
           {/* Generate Codes */}
           <Card>
@@ -402,7 +397,7 @@ const AdminGiftCodes = () => {
           </Card>
         </div>
       </div>
-    </div>
+    </AdminLayout>
   );
 };
 

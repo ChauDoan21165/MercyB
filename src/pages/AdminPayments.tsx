@@ -12,7 +12,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/hooks/use-toast";
 import { Loader2, Copy, CheckCircle2, Plus, Search } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
+import { AdminLayout } from "@/components/admin/AdminLayout";
 
 interface SubscriptionTier {
   id: string;
@@ -209,25 +209,26 @@ const AdminPayments = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <ColorfulMercyBladeHeader />
-        
-        <div className="mt-8">
-          <div className="flex items-center justify-between mb-6">
-            <h1 className="text-3xl font-bold">Payment Management</h1>
-            <Button 
-              variant="outline" 
-              onClick={() => {
-                fetchTiers();
-                fetchTransactions();
-                fetchAccessCodes();
-                toast({ title: "Data refreshed" });
-              }}
-            >
-              Refresh All
-            </Button>
+    <AdminLayout>
+      <div className="container mx-auto max-w-7xl space-y-6">
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold" style={{ color: '#000000' }}>Payment Management</h1>
+            <p style={{ color: '#666666' }}>Manage transactions, tiers, and access codes</p>
           </div>
+          <Button 
+            variant="outline" 
+            onClick={() => {
+              fetchTiers();
+              fetchTransactions();
+              fetchAccessCodes();
+              toast({ title: "Data refreshed" });
+            }}
+            style={{ backgroundColor: '#FFFFFF', color: '#000000', border: '1px solid #000000' }}
+          >
+            Refresh All
+          </Button>
+        </div>
           
           <Tabs defaultValue="generate" className="w-full">
             <TabsList className="grid w-full grid-cols-3">
@@ -447,9 +448,8 @@ const AdminPayments = () => {
               </Card>
             </TabsContent>
           </Tabs>
-        </div>
       </div>
-    </div>
+    </AdminLayout>
   );
 };
 
