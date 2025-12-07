@@ -20,8 +20,8 @@ export const AdminLayout = ({ children }: AdminLayoutProps) => {
 
   return (
     <SidebarProvider defaultOpen={true}>
-      {/* SIMPLE: White background, black text */}
-      <div className="min-h-screen flex w-full" style={{
+      {/* SIMPLE: White background, black text with forced admin-layout class */}
+      <div className="admin-layout min-h-screen flex w-full bg-white text-black" style={{
         backgroundColor: '#FFFFFF',
         color: '#000000'
       }}>

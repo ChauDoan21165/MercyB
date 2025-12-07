@@ -790,3 +790,32 @@ All colors MUST be HSL.
     box-shadow: none !important;
   }
 }
+
+/* ============================================
+   ADMIN DASHBOARD FORCED STYLES
+   Forces black text on white background for admin pages
+   ============================================ */
+.admin-layout {
+  --sidebar-background: 0 0% 96%;
+  --sidebar-foreground: 0 0% 0%;
+  --sidebar-primary: 0 0% 0%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 0 0% 92%;
+  --sidebar-accent-foreground: 0 0% 0%;
+  --sidebar-border: 0 0% 88%;
+  --background: 0 0% 100%;
+  --foreground: 0 0% 0%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 0%;
+  --muted: 0 0% 96%;
+  --muted-foreground: 0 0% 40%;
+}
+
+.admin-layout * {
+  color: inherit;
+}
+
+.admin-layout [data-sidebar="sidebar"] {
+  background-color: #F5F5F5 !important;
+  color: #000000 !important;
+}
