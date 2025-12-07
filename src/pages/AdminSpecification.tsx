@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
-import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
+import { AdminLayout } from "@/components/admin/AdminLayout";
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { Download, ArrowLeft, Edit, Save, Eye } from "lucide-react";
+import { Download, Edit, Save, Eye } from "lucide-react";
 
 const AdminSpecification = () => {
   const navigate = useNavigate();
@@ -133,19 +133,13 @@ const AdminSpecification = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <ColorfulMercyBladeHeader subtitle="Room Specification Documentation" />
-      
-      <div className="container mx-auto px-4 py-8 max-w-7xl">
-        <div className="mb-6 flex items-center justify-between">
-          <Button
-            onClick={() => navigate("/admin")}
-            variant="outline"
-            className="gap-2"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back to Dashboard
-          </Button>
+    <AdminLayout>
+      <div className="container mx-auto max-w-7xl space-y-6">
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold" style={{ color: '#000000' }}>Room Specification</h1>
+            <p style={{ color: '#666666' }}>Documentation for room structure</p>
+          </div>
           
           <div className="flex gap-2">
             {!isEditing ? (
@@ -232,10 +226,10 @@ const AdminSpecification = () => {
             <li>• Click <strong>Edit</strong> to modify this document, then <strong>Save & Download</strong></li>
             <li>• After saving, manually replace the file in <code>docs/</code> and <code>public/docs/</code> folders</li>
           </ul>
-        </div>
       </div>
-    </div>
+    </AdminLayout>
   );
+};
 };
 
 export default AdminSpecification;

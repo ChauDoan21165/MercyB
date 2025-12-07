@@ -6,8 +6,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import { Shield, Loader2, ArrowLeft, UserPlus, Trash2, Users } from "lucide-react";
-import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
+import { Shield, Loader2, UserPlus, Trash2, Users } from "lucide-react";
+import { AdminLayout } from "@/components/admin/AdminLayout";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -140,24 +140,13 @@ const AdminManageAdmins = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <ColorfulMercyBladeHeader />
-      
-      <div className="container mx-auto p-6 max-w-4xl">
-        <Button
-          variant="ghost"
-          onClick={() => navigate('/admin')}
-          className="mb-6"
-        >
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          Back to Admin
-        </Button>
-
-        <div className="flex items-center gap-3 mb-8">
-          <Shield className="w-8 h-8 text-primary" />
+    <AdminLayout>
+      <div className="container mx-auto max-w-4xl space-y-6">
+        <div className="flex items-center gap-3">
+          <Shield className="w-8 h-8" style={{ color: '#000000' }} />
           <div>
-            <h1 className="text-3xl font-bold">Manage Admins</h1>
-            <p className="text-muted-foreground">Add or remove admin access for users</p>
+            <h1 className="text-3xl font-bold" style={{ color: '#000000' }}>Manage Admins</h1>
+            <p style={{ color: '#666666' }}>Add or remove admin access for users</p>
           </div>
         </div>
 
@@ -288,10 +277,10 @@ const AdminManageAdmins = () => {
               )}
             </CardContent>
           </Card>
-        </div>
       </div>
-    </div>
+    </AdminLayout>
   );
+};
 };
 
 export default AdminManageAdmins;
