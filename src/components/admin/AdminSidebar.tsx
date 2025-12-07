@@ -114,9 +114,11 @@ export function AdminSidebar() {
   return (
     <Sidebar 
       collapsible="icon" 
+      className="!bg-[#F5F5F5] !text-[#000000]"
       style={{ 
-        backgroundColor: '#F5F5F5', 
-        borderRight: '1px solid #E0E0E0' 
+        backgroundColor: '#F5F5F5 !important', 
+        borderRight: '1px solid #E0E0E0',
+        color: '#000000'
       }}
     >
       <SidebarContent className="py-4">
