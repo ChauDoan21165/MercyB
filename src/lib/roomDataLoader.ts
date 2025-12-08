@@ -1,8 +1,9 @@
 /**
- * Runtime room data loader - replaces static roomDataImports.ts
- * Loads room data via fetch at runtime instead of bundling at build time
+ * Runtime room data loader - SUPABASE IS NOW THE ONLY SOURCE OF TRUTH
+ * Loads room data directly from Supabase, not from JSON files
  */
 
+import { supabase } from "@/integrations/supabase/client";
 import { RoomData } from "@/lib/roomData";
 
 // Runtime cache - only populated when needed
@@ -10,8 +11,7 @@ let roomDataCache: Record<string, RoomData> | null = null;
 let loadingPromise: Promise<Record<string, RoomData>> | null = null;
 
 /**
- * Load room data map at runtime (not build time)
- * Uses fetch to load from public/data/ directory
+ * Load room data map from Supabase (not JSON files)
  */
 export async function loadRoomDataMap(): Promise<Record<string, RoomData>> {
   // Return cached data if available
@@ -24,57 +24,36 @@ export async function loadRoomDataMap(): Promise<Record<string, RoomData>> {
     return loadingPromise;
   }
 
-  // Start loading
+  // Start loading from Supabase
   loadingPromise = (async () => {
     try {
-      // Fetch the room registry/manifest if it exists
-      const manifestResponse = await fetch('/data/room-registry.json');
-      if (!manifestResponse.ok) {
-        console.warn('Room registry not found, returning empty map');
+      const { data: rooms, error } = await supabase
+        .from('rooms')
+        .select('id, title_en, title_vi, tier, domain')
+        .order('title_en');
+
+      if (error) {
+        console.error('[roomDataLoader] Supabase error:', error);
         roomDataCache = {};
         return roomDataCache;
       }
 
-      const manifest = await manifestResponse.json();
-      const roomIds: string[] = Array.isArray(manifest) 
-        ? manifest 
-        : (manifest.rooms || Object.keys(manifest));
-
-      // Load room data in parallel (batch of 10)
       const result: Record<string, RoomData> = {};
-      const batchSize = 10;
-
-      for (let i = 0; i < roomIds.length; i += batchSize) {
-        const batch = roomIds.slice(i, i + batchSize);
-        const batchResults = await Promise.allSettled(
-          batch.map(async (id) => {
-            const response = await fetch(`/data/${id}.json`);
-            if (!response.ok) return null;
-            const json = await response.json();
-            return {
-              id,
-              data: {
-                id: json.id || id,
-                nameEn: json.title?.en || json.title_en || id,
-                nameVi: json.title?.vi || json.title_vi || id,
-                tier: json.tier || 'free',
-                hasData: true
-              } as RoomData
-            };
-          })
-        );
-
-        for (const r of batchResults) {
-          if (r.status === 'fulfilled' && r.value) {
-            result[r.value.id] = r.value.data;
-          }
-        }
+      
+      for (const room of rooms || []) {
+        result[room.id] = {
+          id: room.id,
+          nameEn: room.title_en || room.id,
+          nameVi: room.title_vi || room.id,
+          tier: room.tier || 'free',
+          hasData: true
+        };
       }
 
       roomDataCache = result;
       return result;
     } catch (err) {
-      console.error('Failed to load room data map:', err);
+      console.error('[roomDataLoader] Failed to load room data map:', err);
       roomDataCache = {};
       return roomDataCache;
     } finally {

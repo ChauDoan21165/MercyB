@@ -11,14 +11,8 @@ export async function roomMasterLoader(
   mode: ValidationMode = { mode: 'relaxed', allowMissingFields: true, allowEmptyEntries: false, requireAudio: false, requireBilingualCopy: true, minEntries: 2, maxEntries: 8 }
 ): Promise<RoomMasterOutput> {
   try {
-    // Try loading from JSON first
-    const jsonData = await loadRoomJson(roomId);
-    
-    if (jsonData) {
-      return validateRoom(jsonData, mode);
-    }
-
-    // If JSON not found, try database
+    // SUPABASE IS NOW THE ONLY SOURCE OF TRUTH
+    // Try loading from database first (primary source)
     const dbData = await loadRoomFromDatabase(roomId);
     
     if (dbData) {
