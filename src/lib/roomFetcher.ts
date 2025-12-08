@@ -10,8 +10,9 @@ import { supabase } from "@/integrations/supabase/client";
 
 export type RoomSource = "json" | "supabase";
 
-const ROOM_SOURCE: RoomSource =
-  (import.meta.env.VITE_ROOM_SOURCE as RoomSource) || "json";
+// SUPABASE IS NOW THE ONLY SOURCE OF TRUTH
+// JSON files in public/data are deprecated and should be ignored
+const ROOM_SOURCE: RoomSource = "supabase";
 
 export interface RoomTitle {
   en: string;
