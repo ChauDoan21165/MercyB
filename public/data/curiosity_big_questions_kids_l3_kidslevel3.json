@@ -1,9 +1,14 @@
 {
   "id": "curiosity_big_questions_kids_l3",
-  "tier": "Kids Level 3 / Trẻ Em Cấp 3",
+  "tier": "Kids L3 / Trẻ Em Cấp 3",
+  "domain": "Kids",
   "title": {
     "en": "Curiosity & Big Questions",
     "vi": "Tò Mò & Câu Hỏi Lớn"
+  },
+  "content": {
+    "en": "Explore big questions and develop natural curiosity about the world. This room invites children to notice details, ask brave questions, and talk about meaning, kindness, and fairness in everyday life.",
+    "vi": "Khám phá những câu hỏi lớn và nuôi dưỡng sự tò mò tự nhiên về thế giới. Phòng này khuyến khích trẻ quan sát chi tiết, đặt câu hỏi táo bạo và suy nghĩ về ý nghĩa, lòng tốt và sự công bằng trong cuộc sống hằng ngày."
   },
   "intro": {
     "en": "Explore big questions and develop natural curiosity about the world.",
