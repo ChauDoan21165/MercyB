@@ -1,9 +1,10 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ColorfulMercyBladeHeader } from '@/components/ColorfulMercyBladeHeader';
 import { useUserAccess } from '@/hooks/useUserAccess';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { supabase } from '@/integrations/supabase/client';
 import { 
   Activity, 
   Users, 
@@ -17,15 +18,57 @@ import {
   Music
 } from 'lucide-react';
 
+interface DashboardStats {
+  totalUsers: number;
+  usersThisWeek: number;
+  totalRooms: number;
+  activeSubscriptions: number;
+}
+
 const AdminDashboard = () => {
   const navigate = useNavigate();
   const { isAdmin, isLoading } = useUserAccess();
+  const [stats, setStats] = useState<DashboardStats | null>(null);
+  const [statsLoading, setStatsLoading] = useState(true);
 
   useEffect(() => {
     if (!isLoading && !isAdmin) {
       navigate('/');
     }
   }, [isAdmin, isLoading, navigate]);
+
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        const [usersResult, roomsResult, subsResult] = await Promise.all([
+          supabase.from('profiles').select('created_at'),
+          supabase.from('rooms').select('id', { count: 'exact', head: true }).eq('is_active', true),
+          supabase.from('user_subscriptions').select('id', { count: 'exact', head: true })
+            .eq('status', 'active')
+            .gt('current_period_end', new Date().toISOString())
+        ]);
+
+        const users = usersResult.data || [];
+        const weekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+        const usersThisWeek = users.filter(u => new Date(u.created_at) >= weekAgo).length;
+
+        setStats({
+          totalUsers: users.length,
+          usersThisWeek,
+          totalRooms: roomsResult.count || 0,
+          activeSubscriptions: subsResult.count || 0
+        });
+      } catch (err) {
+        console.error('Failed to fetch dashboard stats:', err);
+      } finally {
+        setStatsLoading(false);
+      }
+    };
+
+    if (isAdmin) {
+      fetchStats();
+    }
+  }, [isAdmin]);
 
   if (isLoading) {
     return (
@@ -111,9 +154,11 @@ const AdminDashboard = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold admin-heading">—</div>
+              <div className="text-2xl font-bold admin-heading">
+                {statsLoading ? '—' : stats?.totalUsers ?? 0}
+              </div>
               <p className="text-xs admin-text-muted mt-1">
-                Loading...
+                {statsLoading ? 'Loading...' : `+${stats?.usersThisWeek ?? 0} this week`}
               </p>
             </CardContent>
           </Card>
@@ -122,13 +167,15 @@ const AdminDashboard = () => {
             <CardHeader className="pb-3">
               <CardTitle className="text-sm font-medium flex items-center gap-2 admin-text">
                 <Activity className="h-4 w-4" />
-                Active Today
+                Active Subscriptions
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold admin-heading">—</div>
+              <div className="text-2xl font-bold admin-heading">
+                {statsLoading ? '—' : stats?.activeSubscriptions ?? 0}
+              </div>
               <p className="text-xs admin-text-muted mt-1">
-                Loading...
+                {statsLoading ? 'Loading...' : 'Paid users'}
               </p>
             </CardContent>
           </Card>
@@ -141,9 +188,11 @@ const AdminDashboard = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold admin-heading">—</div>
+              <div className="text-2xl font-bold admin-heading">
+                {statsLoading ? '—' : stats?.totalRooms ?? 0}
+              </div>
               <p className="text-xs admin-text-muted mt-1">
-                Loading...
+                {statsLoading ? 'Loading...' : 'Active rooms'}
               </p>
             </CardContent>
           </Card>
@@ -158,7 +207,7 @@ const AdminDashboard = () => {
             <CardContent>
               <div className="text-2xl font-bold admin-heading">—</div>
               <p className="text-xs admin-text-muted mt-1">
-                Loading...
+                Coming soon
               </p>
             </CardContent>
           </Card>
