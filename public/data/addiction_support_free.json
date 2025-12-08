@@ -1,6 +1,13 @@
 {
   "id": "addiction_support_free",
   "tier": "Free / Miễn phí",
+  "domain": "Mental Health",
+  "name": "Addiction Support",
+  "name_vi": "Hỗ Trợ Cai Nghiện",
+  "description": "Practical guidance for overcoming addiction with emotional and therapeutic support. Start with small, intentional steps and build a strong support network. Discover deeper guidance in higher tiers.",
+  "description_vi": "Hướng dẫn thực tế để vượt qua nghiện ngập với sự hỗ trợ cảm xúc và trị liệu. Bắt đầu bằng những bước nhỏ, có chủ ý và xây dựng mạng lưới hỗ trợ vững chắc. Khám phá thêm ở cấp độ cao hơn.",
+  "keywords_en": ["addiction", "recovery", "healing", "sobriety", "therapy", "support system"],
+  "keywords_vi": ["nghiện", "phục hồi", "chữa lành", "tỉnh táo", "liệu pháp", "hệ thống hỗ trợ"],
   "title": {
     "en": "Addiction Support",
     "vi": "Hỗ Trợ Cai Nghiện"
