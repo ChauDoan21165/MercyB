@@ -1,28 +1,15 @@
 {
   "id": "soulmate_free",
-  "tier": "free",
-  "domain": "",
-  "description": {
-    "en": "Soulmate",
-    "vi": "Người Tri Kỷ"
-  },
-  "keywords": [
-    "affirmation",
-    "all",
-    "check-in",
-    "combined",
-    "confidence",
-    "connection",
-    "emotion",
-    "energy",
-    "full sequence",
-    "gratitude",
-    "heart",
-    "love",
-    "mirror",
-    "openness",
-    "self-love"
-  ],
+  "tier": "Free / Miễn phí",
+  "domain": "Relationships",
+  "name": "Soulmate",
+  "name_vi": "Người Tri Kỷ",
+  "description": "Simple daily steps to invite deeper connection and self-love on your soulmate journey.",
+  "description_vi": "Các bước đơn giản hàng ngày để mời gọi kết nối sâu sắc và tình yêu bản thân trên hành trình tri kỷ.",
+  "keywords_en": ["soulmate", "self-love", "connection", "gratitude", "heart"],
+  "keywords_vi": ["tri kỷ", "yêu bản thân", "kết nối", "biết ơn", "trái tim"],
+  "room_essay_en": "Simple daily steps to invite deeper connection and self-love on your soulmate journey",
+  "room_essay_vi": "Các bước đơn giản hàng ngày để mời gọi kết nối sâu sắc và tình yêu bản thân trên hành trình tri kỷ",
   "entries": [
     {
       "copy": {
@@ -30,23 +17,10 @@
         "vi": "Bắt đầu ngày mới bằng một câu nói tử tế trước gương. Nhìn vào mắt chính mình và nhắc lại rằng bạn xứng đáng được yêu thương đúng như con người bạn hiện tại. Cảm nhận lời nói lắng xuống trong ngực và để ý đôi vai dần mềm lại. Lặp lại nghi thức nhỏ này mỗi sáng, ngay cả khi bạn thấy mình rối bời hoặc thiếu tự tin. Bạn cũng có thể viết câu này vào sổ và đọc lại trước khi ngủ. Theo thời gian, thói quen yên lặng này thay đổi cách bạn nói với chính mình và củng cố giá trị bản thân. Một trái tim biết đối xử dịu dàng với mình sẽ trở thành nam châm thu hút một người tri kỷ trân trọng bạn thật lòng."
       },
       "slug": "daily-self-love",
-      "tags": [
-        "self-love",
-        "affirmation"
-      ],
+      "tags": ["self-love", "affirmation"],
       "audio": "soulmate/soulmate_free_daily_self_love.mp3",
-      "keywords_en": [
-        "self-love",
-        "mirror",
-        "affirmation",
-        "confidence"
-      ],
-      "keywords_vi": [
-        "yêu bản thân",
-        "gương",
-        "khẳng định",
-        "tự tin"
-      ]
+      "keywords_en": ["self-love", "mirror", "affirmation", "confidence"],
+      "keywords_vi": ["yêu bản thân", "gương", "khẳng định", "tự tin"]
     },
     {
       "copy": {
@@ -54,23 +28,10 @@
         "vi": "Mỗi ngày hãy dừng lại một lần và nhẹ nhàng tự hỏi xem trái tim mình đang mở hay đang phòng thủ. Đặt tay lên ngực, hít thở chậm và nhận biết bất kỳ cảm giác căng cứng, nặng nề hoặc tê dại nào. Nếu thấy có bức tường bên trong, hãy làm mềm nó bằng một hơi thở dài và một cử chỉ tử tế dành cho chính mình. Bạn có thể thì thầm rằng hôm nay mình cho phép bản thân cảm nhận thêm một chút. Bài kiểm tra nhỏ này giữ cho năng lượng của bạn ấm áp và chào đón thay vì khép kín phòng vệ. Một trái tim mở mà vẫn vững vàng sẽ tự nhiên trở nên cuốn hút và thu hút người tri kỷ phù hợp với sự sẵn sàng yêu và được yêu của bạn."
       },
       "slug": "open-heart-check-in",
-      "tags": [
-        "heart",
-        "openness"
-      ],
+      "tags": ["heart", "openness"],
       "audio": "soulmate/soulmate_free_open_heart_check_in.mp3",
-      "keywords_en": [
-        "heart",
-        "check-in",
-        "openness",
-        "emotion"
-      ],
-      "keywords_vi": [
-        "trái tim",
-        "kiểm tra",
-        "mở lòng",
-        "cảm xúc"
-      ]
+      "keywords_en": ["heart", "check-in", "openness", "emotion"],
+      "keywords_vi": ["trái tim", "kiểm tra", "mở lòng", "cảm xúc"]
     },
     {
       "copy": {
@@ -78,23 +39,10 @@
         "vi": "Kết thúc mỗi ngày bằng cách gọi tên ba khoảnh khắc khi tình yêu xuất hiện — một nụ cười từ người lạ, một tin nhắn tử tế hoặc chính sự kiên nhẫn của bạn. Lòng biết ơn chuyển sự chú ý của bạn từ thiếu thốn sang tràn đầy. Càng nhận ra tình yêu vốn đã bao quanh, trái tim bạn càng mở rộng để đón nhận. Bạn có thể đặt một cuốn sổ nhỏ bên giường và viết vài dòng trước khi ngủ. Nghi thức nhẹ nhàng này rèn luyện năng lượng để mong đợi sự ấm áp thay vì cô đơn. Theo thời gian, lòng biết ơn trở thành tín hiệu gửi đến vũ trụ rằng bạn đã sẵn sàng cho một kết nối bền vững và tương hỗ. Tình yêu lớn lên ở nơi lòng biết ơn được thực hành mỗi ngày."
       },
       "slug": "gratitude-for-love",
-      "tags": [
-        "gratitude",
-        "love"
-      ],
+      "tags": ["gratitude", "love"],
       "audio": "soulmate/soulmate_free_gratitude_for_love.mp3",
-      "keywords_en": [
-        "gratitude",
-        "love",
-        "connection",
-        "energy"
-      ],
-      "keywords_vi": [
-        "biết ơn",
-        "tình yêu",
-        "kết nối",
-        "năng lượng"
-      ]
+      "keywords_en": ["gratitude", "love", "connection", "energy"],
+      "keywords_vi": ["biết ơn", "tình yêu", "kết nối", "năng lượng"]
     },
     {
       "copy": {
@@ -102,25 +50,10 @@
         "vi": "Bắt đầu ngày mới bằng một câu nói tử tế trước gương. Nhìn vào mắt chính mình và nhắc lại rằng bạn xứng đáng được yêu thương đúng như con người bạn hiện tại. Cảm nhận lời nói lắng xuống trong ngực và để ý đôi vai dần mềm lại. Lặp lại nghi thức nhỏ này mỗi sáng, ngay cả khi bạn thấy mình rối bời hoặc thiếu tự tin. Bạn cũng có thể viết câu này vào sổ và đọc lại trước khi ngủ. Theo thời gian, thói quen yên lặng này thay đổi cách bạn nói với chính mình và củng cố giá trị bản thân. Một trái tim biết đối xử dịu dàng với mình sẽ trở thành nam châm thu hút một người tri kỷ trân trọng bạn thật lòng. Mỗi ngày hãy dừng lại một lần và nhẹ nhàng tự hỏi xem trái tim mình đang mở hay đang phòng thủ. Đặt tay lên ngực, hít thở chậm và nhận biết bất kỳ cảm giác căng cứng, nặng nề hoặc tê dại nào. Nếu thấy có bức tường bên trong, hãy làm mềm nó bằng một hơi thở dài và một cử chỉ tử tế dành cho chính mình. Bạn có thể thì thầm rằng hôm nay mình cho phép bản thân cảm nhận thêm một chút. Bài kiểm tra nhỏ này giữ cho năng lượng của bạn ấm áp và chào đón thay vì khép kín phòng vệ. Một trái tim mở mà vẫn vững vàng sẽ tự nhiên trở nên cuốn hút và thu hút người tri kỷ phù hợp với sự sẵn sàng yêu và được yêu của bạn. Kết thúc mỗi ngày bằng cách gọi tên ba khoảnh khắc khi tình yêu xuất hiện — một nụ cười từ người lạ, một tin nhắn tử tế hoặc chính sự kiên nhẫn của bạn. Lòng biết ơn chuyển sự chú ý của bạn từ thiếu thốn sang tràn đầy. Càng nhận ra tình yêu vốn đã bao quanh, trái tim bạn càng mở rộng để đón nhận. Bạn có thể đặt một cuốn sổ nhỏ bên giường và viết vài dòng trước khi ngủ. Nghi thức nhẹ nhàng này rèn luyện năng lượng để mong đợi sự ấm áp thay vì cô đơn. Theo thời gian, lòng biết ơn trở thành tín hiệu gửi đến vũ trụ rằng bạn đã sẵn sàng cho một kết nối bền vững và tương hỗ. Tình yêu lớn lên ở nơi lòng biết ơn được thực hành mỗi ngày."
       },
       "slug": "all",
-      "tags": [
-        "all",
-        "combined"
-      ],
+      "tags": ["all", "combined"],
       "audio": "soulmate/soulmate_free_daily_self_love.mp3 soulmate/soulmate_free_open_heart_check_in.mp3 soulmate/soulmate_free_gratitude_for_love.mp3",
-      "keywords_en": [
-        "all",
-        "full sequence",
-        "combined"
-      ],
-      "keywords_vi": [
-        "tất cả",
-        "chuỗi đầy đủ",
-        "kết hợp"
-      ]
+      "keywords_en": ["all", "full sequence", "combined"],
+      "keywords_vi": ["tất cả", "chuỗi đầy đủ", "kết hợp"]
     }
-  ],
-  "room_essay": {
-    "en": "Simple daily steps to invite deeper connection and self-love on your soulmate journey",
-    "vi": "Các bước đơn giản hàng ngày để mời gọi kết nối sâu sắc và tình yêu bản thân trên hành trình tri kỷ"
-  }
+  ]
 }

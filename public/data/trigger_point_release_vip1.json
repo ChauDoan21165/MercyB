@@ -1,6 +1,13 @@
 {
   "id": "trigger_point_release_vip1",
   "tier": "VIP1 / VIP1",
+  "domain": "Health",
+  "name": "Trigger Point Release",
+  "name_vi": "Giải Phóng Điểm Kích Hoạt",
+  "description": "Discover gentle ways to ease muscle tension at home with trigger point release. This approach focuses on finding and softening tight spots in your muscles.",
+  "description_vi": "Khám phá những cách nhẹ nhàng để giảm căng cơ tại nhà với giải phóng điểm kích hoạt. Phương pháp này tập trung vào việc tìm và làm mềm các điểm chặt trong cơ bắp.",
+  "keywords_en": ["trigger points", "muscle tension", "self-care", "relaxation"],
+  "keywords_vi": ["điểm kích hoạt", "căng cơ", "tự chăm sóc", "thư giãn"],
   "title": {
     "en": "Trigger Point Release",
     "vi": "Giải Phóng Điểm Kích Hoạt"

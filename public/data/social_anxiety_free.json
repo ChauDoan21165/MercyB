@@ -1,6 +1,13 @@
 {
   "id": "social_anxiety_free",
   "tier": "Free / Miễn phí",
+  "domain": "Mental Health",
+  "name": "Social Anxiety",
+  "name_vi": "Lo Âu Xã Hội",
+  "description": "Practical guidance for reducing social anxiety with simple steps",
+  "description_vi": "Hướng dẫn thực tế giúp giảm lo âu xã hội bằng các bước đơn giản",
+  "keywords_en": ["social anxiety", "small talk", "eye contact", "confidence"],
+  "keywords_vi": ["lo âu xã hội", "trò chuyện nhỏ", "giao tiếp mắt", "tự tin"],
   "title": {
     "en": "Social Anxiety",
     "vi": "Lo Âu Xã Hội"

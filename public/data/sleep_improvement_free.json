@@ -1,6 +1,13 @@
 {
   "id": "sleep_improvement_free",
   "tier": "Free / Miễn phí",
+  "domain": "Mental Health",
+  "name": "Sleep Improvement",
+  "name_vi": "Cải Thiện Giấc Ngủ",
+  "description": "Foundational steps for calmer nights and deeper rest. Learn simple routines, relaxation methods, and evening habits that help your body return to its natural rhythm.",
+  "description_vi": "Những bước nền tảng để có giấc ngủ yên bình và sâu hơn. Học các thói quen đơn giản, phương pháp thư giãn và điều chỉnh buổi tối giúp cơ thể trở về nhịp tự nhiên.",
+  "keywords_en": ["sleep", "bedtime routine", "relaxation", "rest"],
+  "keywords_vi": ["giấc ngủ", "thói quen trước giờ ngủ", "thư giãn", "nghỉ ngơi"],
   "title": {
     "en": "Sleep Improvement",
     "vi": "Cải Thiện Giấc Ngủ"
