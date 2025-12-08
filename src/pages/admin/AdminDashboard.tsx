@@ -1,3 +1,14 @@
+/**
+ * Admin Dashboard
+ * 
+ * ARCHITECTURE:
+ * - Lovable Cloud = auth + users (profiles) + payments + subscriptions
+ * - Supabase = content backend (rooms, room_entries only)
+ * - Stats are fetched from the admin-stats edge function which aggregates both sources
+ * 
+ * This dashboard displays live statistics from the admin-stats endpoint.
+ */
+
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ColorfulMercyBladeHeader } from '@/components/ColorfulMercyBladeHeader';
@@ -10,19 +21,20 @@ import {
   Users, 
   DollarSign, 
   FileText, 
-  Settings,
   CheckCircle2,
-  AlertTriangle,
-  TrendingUp,
   Database,
-  Music
+  Music,
+  RefreshCw,
+  AlertTriangle
 } from 'lucide-react';
 
 interface DashboardStats {
   totalUsers: number;
   usersThisWeek: number;
+  activeToday: number;
   totalRooms: number;
   activeSubscriptions: number;
+  revenueMonth: number;
 }
 
 const AdminDashboard = () => {
@@ -30,6 +42,7 @@ const AdminDashboard = () => {
   const { isAdmin, isLoading } = useUserAccess();
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [statsLoading, setStatsLoading] = useState(true);
+  const [statsError, setStatsError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!isLoading && !isAdmin) {
@@ -37,34 +50,38 @@ const AdminDashboard = () => {
     }
   }, [isAdmin, isLoading, navigate]);
 
-  useEffect(() => {
-    const fetchStats = async () => {
-      try {
-        const [usersResult, roomsResult, subsResult] = await Promise.all([
-          supabase.from('profiles').select('created_at'),
-          supabase.from('rooms').select('id', { count: 'exact', head: true }).eq('is_active', true),
-          supabase.from('user_subscriptions').select('id', { count: 'exact', head: true })
-            .eq('status', 'active')
-            .gt('current_period_end', new Date().toISOString())
-        ]);
-
-        const users = usersResult.data || [];
-        const weekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
-        const usersThisWeek = users.filter(u => new Date(u.created_at) >= weekAgo).length;
-
-        setStats({
-          totalUsers: users.length,
-          usersThisWeek,
-          totalRooms: roomsResult.count || 0,
-          activeSubscriptions: subsResult.count || 0
-        });
-      } catch (err) {
-        console.error('Failed to fetch dashboard stats:', err);
-      } finally {
-        setStatsLoading(false);
+  const fetchStats = async () => {
+    setStatsLoading(true);
+    setStatsError(null);
+    
+    try {
+      console.log('[AdminDashboard] Fetching stats from edge function...');
+      
+      const { data, error } = await supabase.functions.invoke('admin-stats');
+      
+      if (error) {
+        console.error('[AdminDashboard] Edge function error:', error);
+        setStatsError('Failed to load stats');
+        return;
       }
-    };
+      
+      if (!data?.ok) {
+        console.error('[AdminDashboard] Stats error:', data?.error);
+        setStatsError(data?.error || 'Unknown error');
+        return;
+      }
+      
+      console.log('[AdminDashboard] Stats received:', data.stats);
+      setStats(data.stats);
+    } catch (err) {
+      console.error('[AdminDashboard] Failed to fetch stats:', err);
+      setStatsError('Network error');
+    } finally {
+      setStatsLoading(false);
+    }
+  };
 
+  useEffect(() => {
     if (isAdmin) {
       fetchStats();
     }
@@ -134,14 +151,39 @@ const AdminDashboard = () => {
     }
   ];
 
+  const formatCurrency = (amount: number) => {
+    return amount > 0 ? `$${amount.toFixed(2)}` : '—';
+  };
+
   return (
     <div className="min-h-screen admin-bg">
       <ColorfulMercyBladeHeader subtitle="Admin Dashboard" />
       <div className="container mx-auto px-4 py-8 max-w-7xl">
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-2 admin-heading">Admin Dashboard</h1>
-          <p className="admin-text-muted">System overview and quick actions</p>
+        <div className="mb-8 flex items-center justify-between">
+          <div>
+            <h1 className="text-4xl font-bold mb-2 admin-heading">Admin Dashboard</h1>
+            <p className="admin-text-muted">
+              {statsError ? (
+                <span className="text-destructive flex items-center gap-1">
+                  <AlertTriangle className="h-4 w-4" />
+                  {statsError}
+                </span>
+              ) : (
+                'Live data from Lovable Cloud users & Supabase rooms'
+              )}
+            </p>
+          </div>
+          <Button 
+            variant="outline" 
+            size="sm"
+            onClick={fetchStats}
+            disabled={statsLoading}
+            className="flex items-center gap-2"
+          >
+            <RefreshCw className={`h-4 w-4 ${statsLoading ? 'animate-spin' : ''}`} />
+            Refresh
+          </Button>
         </div>
 
         {/* Quick Stats */}
@@ -175,7 +217,7 @@ const AdminDashboard = () => {
                 {statsLoading ? '—' : stats?.activeSubscriptions ?? 0}
               </div>
               <p className="text-xs admin-text-muted mt-1">
-                {statsLoading ? 'Loading...' : 'Paid users'}
+                {statsLoading ? 'Loading...' : 'Paid members'}
               </p>
             </CardContent>
           </Card>
@@ -192,7 +234,7 @@ const AdminDashboard = () => {
                 {statsLoading ? '—' : stats?.totalRooms ?? 0}
               </div>
               <p className="text-xs admin-text-muted mt-1">
-                {statsLoading ? 'Loading...' : 'Active rooms'}
+                {statsLoading ? 'Loading...' : 'Active in Supabase'}
               </p>
             </CardContent>
           </Card>
@@ -205,9 +247,11 @@ const AdminDashboard = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold admin-heading">—</div>
+              <div className="text-2xl font-bold admin-heading">
+                {statsLoading ? '—' : formatCurrency(stats?.revenueMonth ?? 0)}
+              </div>
               <p className="text-xs admin-text-muted mt-1">
-                Coming soon
+                {statsLoading ? 'Loading...' : 'This month'}
               </p>
             </CardContent>
           </Card>
