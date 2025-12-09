@@ -42,6 +42,7 @@ const mainItems = [
   { title: "AI Usage & Costs", url: "/admin/ai-usage", icon: Activity, end: false },
   { title: "Dashboard", url: "/admin", icon: Home, end: true },
   { title: "Payments", url: "/admin/payments", icon: DollarSign },
+  { title: "Bank Transfers", url: "/admin/bank-transfers", icon: DollarSign },
   { title: "Room Health", url: "/admin/room-health-dashboard", icon: Activity },
   { title: "Users", url: "/admin/users", icon: Users },
 ];
