@@ -30,24 +30,14 @@ export const GlobalFeedbackWidget = () => {
     setIsSubmitting(true);
 
     try {
-      // Check if user is logged in
-      const { data: { user }, error: authError } = await supabase.auth.getUser();
+      // Try to get user if logged in (optional - anonymous feedback allowed)
+      const { data: { user } } = await supabase.auth.getUser();
       
-      if (authError || !user) {
-        toast({
-          title: "Login required",
-          description: "Please log in to submit feedback.",
-          variant: "destructive",
-        });
-        setIsSubmitting(false);
-        return;
-      }
+      console.log('[feedback] Submitting feedback, user:', user?.id || 'anonymous');
 
-      console.log('[feedback] Submitting feedback for user:', user.id);
-
-      // Insert feedback directly into the database
+      // Insert feedback - user_id can be null for anonymous
       const { error: insertError } = await supabase.from('feedback').insert({
-        user_id: user.id,
+        user_id: user?.id || null,
         message: message.trim(),
         status: 'new',
         priority: 'normal',
