@@ -24,20 +24,20 @@ export type TierValue = (typeof TIERS)[TierKey];
 // Canonical TierId type - the single source of truth
 export type TierId =
   | 'free'
-  | 'vip1' | 'vip2' | 'vip3' | 'vip4' | 'vip5'
+  | 'vip1' | 'vip2' | 'vip3' | 'vip3ii' | 'vip4' | 'vip5'
   | 'vip6' | 'vip7' | 'vip8' | 'vip9'
   | 'kids_1' | 'kids_2' | 'kids_3';
 
 // Tier order for access control hierarchy
 export const TIER_ORDER: TierId[] = [
-  'free', 'vip1', 'vip2', 'vip3', 'vip4', 'vip5',
+  'free', 'vip1', 'vip2', 'vip3', 'vip3ii', 'vip4', 'vip5',
   'vip6', 'vip7', 'vip8', 'vip9',
   'kids_1', 'kids_2', 'kids_3',
 ];
 
 // Short, machine-friendly IDs used across the app
 export const VIP_TIER_IDS = [
-  "vip1", "vip2", "vip3", "vip4", "vip5",
+  "vip1", "vip2", "vip3", "vip3ii", "vip4", "vip5",
   "vip6", "vip7", "vip8", "vip9",
 ] as const;
 
@@ -45,7 +45,7 @@ export const KIDS_TIER_IDS: TierId[] = ['kids_1', 'kids_2', 'kids_3'];
 
 export const ALL_TIER_IDS: TierId[] = [
   'free',
-  'vip1', 'vip2', 'vip3', 'vip4', 'vip5',
+  'vip1', 'vip2', 'vip3', 'vip3ii', 'vip4', 'vip5',
   'vip6', 'vip7', 'vip8', 'vip9',
   'kids_1', 'kids_2', 'kids_3',
 ];
@@ -59,6 +59,7 @@ export const TIER_ID_TO_LABEL: Record<TierId, TierValue> = {
   vip1: TIERS.VIP1,
   vip2: TIERS.VIP2,
   vip3: TIERS.VIP3,
+  vip3ii: TIERS.VIP3, // VIP3II uses same label as VIP3
   vip4: TIERS.VIP4,
   vip5: TIERS.VIP5,
   vip6: TIERS.VIP6,
@@ -118,6 +119,8 @@ export function tierLabelToId(raw: string): TierId {
   if (s.includes("vip6") || s === "vip6") return "vip6";
   if (s.includes("vip5") || s === "vip5") return "vip5";
   if (s.includes("vip4") || s === "vip4") return "vip4";
+  // VIP3II must come before VIP3 to avoid false match
+  if (s.includes("vip3ii") || s.includes("vip3 ii") || s === "vip3ii") return "vip3ii";
   if (s.includes("vip3") || s === "vip3") return "vip3";
   if (s.includes("vip2") || s === "vip2") return "vip2";
   if (s.includes("vip1") || s === "vip1") return "vip1";
