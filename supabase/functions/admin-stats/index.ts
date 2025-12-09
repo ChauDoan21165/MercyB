@@ -1,18 +1,12 @@
 /**
  * Admin Stats Edge Function
  * 
- * ARCHITECTURE NOTE:
- * - Lovable Cloud = auth + users (profiles table) + payments + subscriptions
- * - Supabase = content backend (rooms, room_entries only)
- * - This function aggregates stats from both sources
+ * ARCHITECTURE:
+ * - Lovable Cloud = auth + users (profiles) + gift codes + user_tiers + payments
+ * - Supabase rooms table = content backend (rooms, room_entries)
+ * - This function aggregates stats from both sources using service role key
  * 
- * Returns live statistics for the admin dashboard:
- * - totalUsers: count from profiles table
- * - usersThisWeek: users created in last 7 days
- * - activeToday: users with recent activity (TODO: implement last_seen tracking)
- * - totalRooms: count from rooms table
- * - activeSubscriptions: count of active subscriptions
- * - revenueMonth: sum of completed transactions this month (TODO if payment_transactions has amount)
+ * Returns: AdminStatsResponse
  */
 
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.39.3';
@@ -26,14 +20,11 @@ interface AdminStatsResponse {
   ok: boolean;
   stats?: {
     totalUsers: number;
-    usersThisWeek: number;
     activeToday: number;
     totalRooms: number;
-    activeSubscriptions: number;
     revenueMonth: number;
   };
   error?: string;
-  source?: string;
 }
 
 Deno.serve(async (req) => {
@@ -44,13 +35,13 @@ Deno.serve(async (req) => {
   try {
     console.log('[admin-stats] Starting stats fetch');
 
-    // Use service role key to bypass RLS for accurate counts
+    // Service role client bypasses RLS for accurate counts
     const supabaseAdmin = createClient(
       Deno.env.get('SUPABASE_URL') ?? '',
       Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
     );
 
-    // Also create user client to verify admin access
+    // User client to verify authentication
     const supabaseClient = createClient(
       Deno.env.get('SUPABASE_URL') ?? '',
       Deno.env.get('SUPABASE_ANON_KEY') ?? '',
@@ -88,29 +79,22 @@ Deno.serve(async (req) => {
 
     console.log('[admin-stats] Admin verified:', user.id);
 
-    // Fetch all stats in parallel using service role (bypasses RLS)
+    // Calculate date ranges
     const now = new Date();
-    const weekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-    const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
     const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
 
+    // Fetch all stats in parallel
     const [
       usersResult,
       roomsResult,
-      subscriptionsResult,
       revenueResult
     ] = await Promise.all([
-      // Total users from profiles table
-      supabaseAdmin.from('profiles').select('id, created_at'),
+      // Total users from profiles table (Cloud Users)
+      supabaseAdmin.from('profiles').select('id', { count: 'exact', head: true }),
       
-      // Total active rooms
+      // Total active rooms from Supabase rooms table
       supabaseAdmin.from('rooms').select('id', { count: 'exact', head: true }).eq('is_active', true),
-      
-      // Active subscriptions (current period not ended)
-      supabaseAdmin.from('user_subscriptions')
-        .select('id', { count: 'exact', head: true })
-        .eq('status', 'active')
-        .gt('current_period_end', now.toISOString()),
       
       // Revenue this month from completed payment transactions
       supabaseAdmin.from('payment_transactions')
@@ -119,18 +103,15 @@ Deno.serve(async (req) => {
         .gte('created_at', monthStart.toISOString())
     ]);
 
-    // Calculate user stats
-    const users = usersResult.data || [];
-    const totalUsers = users.length;
-    const usersThisWeek = users.filter(u => 
-      u.created_at && new Date(u.created_at) >= weekAgo
-    ).length;
+    // Calculate total users
+    const totalUsers = usersResult.count || 0;
 
-    // Active today - TODO: implement proper last_seen tracking
-    // For now, just count users created today as a placeholder
-    const activeToday = users.filter(u => 
-      u.created_at && new Date(u.created_at) >= todayStart
-    ).length;
+    // Active today - TODO: implement last_sign_in_at tracking
+    // For MVP, return 0 as we don't have sign-in timestamps yet
+    const activeToday = 0;
+
+    // Total rooms
+    const totalRooms = roomsResult.count || 0;
 
     // Revenue calculation
     const revenueMonth = (revenueResult.data || []).reduce((sum, tx) => 
@@ -139,21 +120,15 @@ Deno.serve(async (req) => {
 
     const stats = {
       totalUsers,
-      usersThisWeek,
       activeToday,
-      totalRooms: roomsResult.count || 0,
-      activeSubscriptions: subscriptionsResult.count || 0,
-      revenueMonth: Math.round(revenueMonth * 100) / 100, // Round to 2 decimals
+      totalRooms,
+      revenueMonth: Math.round(revenueMonth * 100) / 100,
     };
 
     console.log('[admin-stats] Stats fetched:', stats);
 
     return new Response(
-      JSON.stringify({ 
-        ok: true, 
-        stats,
-        source: 'Lovable Cloud (users) + Supabase (rooms)'
-      } as AdminStatsResponse),
+      JSON.stringify({ ok: true, stats } as AdminStatsResponse),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 200 }
     );
 
@@ -162,7 +137,7 @@ Deno.serve(async (req) => {
     return new Response(
       JSON.stringify({ 
         ok: false, 
-        error: 'Failed to fetch stats: ' + (error instanceof Error ? error.message : 'Unknown error')
+        error: 'Failed to fetch stats'
       } as AdminStatsResponse),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 500 }
     );

@@ -2977,6 +2977,24 @@ export type Database = {
           },
         ]
       }
+      user_tiers: {
+        Row: {
+          tier: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          tier?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          tier?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       vip_room_requests: {
         Row: {
           admin_notes: string | null
