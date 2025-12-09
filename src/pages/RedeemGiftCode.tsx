@@ -5,7 +5,6 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import { FunctionsHttpError } from "@supabase/supabase-js";
 import { Gift, Loader2 } from "lucide-react";
 import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader";
 
@@ -53,35 +52,18 @@ const RedeemGiftCode = () => {
 
       console.log('[redeem-gift-code] Response:', { data, error });
 
-      // Handle SDK-level errors (network issues, non-2xx responses)
       if (error) {
-        console.error('[redeem-gift-code] Invoke error:', error);
-        
-        // Try to extract the JSON body from FunctionsHttpError
-        let errorMsg = "Could not reach the server. Please try again.";
-        if (error instanceof FunctionsHttpError) {
-          try {
-            const errorData = await error.context.json();
-            errorMsg = errorData?.error || errorMsg;
-          } catch {
-            errorMsg = error.message || errorMsg;
-          }
-        } else if (error.message) {
-          errorMsg = error.message;
-        }
-        
         toast({
           title: "Error",
-          description: errorMsg,
+          description: error.message,
           variant: "destructive",
         });
         return;
       }
 
-      // Handle application-level errors from the function (shouldn't happen with proper status codes)
       if (!data?.ok) {
         toast({
-          title: "Redemption Failed",
+          title: "Failed",
           description: data?.error || "Unknown error occurred",
           variant: "destructive",
         });
