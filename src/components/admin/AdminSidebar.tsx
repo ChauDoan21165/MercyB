@@ -17,6 +17,7 @@ import {
   Settings,
   AlertTriangle,
   Volume2,
+  Mail,
 } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 
@@ -62,6 +63,7 @@ const roomItems = [
 // Monitoring & analytics
 const monitoringItems = [
   { title: "App Metrics", url: "/admin/app-metrics", icon: BarChart3 },
+  { title: "Email Broadcast", url: "/admin/email-broadcast", icon: Mail },
   { title: "Reports", url: "/admin/reports", icon: FileText },
   { title: "Statistics", url: "/admin/stats", icon: TrendingUp },
   { title: "System Health", url: "/admin/system-health", icon: Activity },
