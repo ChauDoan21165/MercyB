@@ -114,11 +114,11 @@ export function GiftCodeModal({
         return;
       }
 
-      if (data?.success) {
-        const duration = data.duration || '1 year';
+      // Handle success (check both ok and success for backwards compatibility)
+      if (data?.ok || data?.success) {
         toast({
-          title: "🎁 Access Activated! / Đã Kích Hoạt!",
-          description: `${data.tier} access granted for ${duration} / Quyền truy cập ${data.tier} đã được mở trong ${duration}`,
+          title: "🎁 Gift code applied!",
+          description: data.message || `Welcome to your new tier: ${data.tier} 💛`,
         });
 
         // Clear input and close modal

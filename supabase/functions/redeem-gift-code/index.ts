@@ -1,3 +1,15 @@
+/**
+ * Redeem Gift Code Edge Function
+ * 
+ * ARCHITECTURE:
+ * - Uses Lovable Cloud auth for user verification
+ * - Updates user_tiers table with the redeemed tier
+ * - Also creates a user_subscription for access control compatibility
+ * 
+ * Request: POST { code: string }
+ * Response: { ok: boolean, tier?: string, message?: string, error?: string }
+ */
+
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.39.3';
 
 const corsHeaders = {
@@ -13,13 +25,13 @@ Deno.serve(async (req) => {
   try {
     console.log('[redeem-gift-code] Starting redemption process');
     
-    // Use service role key for database operations to bypass RLS
+    // Service role client for database operations (bypasses RLS)
     const supabaseAdmin = createClient(
       Deno.env.get('SUPABASE_URL') ?? '',
-      Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? '',
+      Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
     );
     
-    // Use anon key with user's auth for getting the user
+    // User client for authentication
     const supabaseClient = createClient(
       Deno.env.get('SUPABASE_URL') ?? '',
       Deno.env.get('SUPABASE_ANON_KEY') ?? '',
@@ -30,52 +42,43 @@ Deno.serve(async (req) => {
       }
     );
 
-    // Get user from auth - check Authorization header first
+    // Get authenticated user from Cloud auth
     const authHeader = req.headers.get('Authorization');
-    console.log('[redeem-gift-code] Auth header present:', !!authHeader);
-    
     if (!authHeader) {
       console.error('[redeem-gift-code] No Authorization header');
       return new Response(
-        JSON.stringify({ error: 'Login required - please log in and try again' }),
+        JSON.stringify({ ok: false, error: 'Please log in to redeem your gift code.' }),
         { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 401 }
       );
     }
 
     const { data: { user }, error: authError } = await supabaseClient.auth.getUser();
     
-    if (authError) {
-      console.error('[redeem-gift-code] Auth error:', authError.message, authError.name);
+    if (authError || !user) {
+      console.error('[redeem-gift-code] Auth error:', authError?.message);
       return new Response(
-        JSON.stringify({ error: 'Session expired - please log in again' }),
-        { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 401 }
-      );
-    }
-    
-    if (!user) {
-      console.error('[redeem-gift-code] No user found');
-      return new Response(
-        JSON.stringify({ error: 'Not authenticated - please log in' }),
+        JSON.stringify({ ok: false, error: 'Session expired. Please log in again.' }),
         { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 401 }
       );
     }
 
     console.log('[redeem-gift-code] User authenticated:', user.id, user.email);
 
+    // Parse request body
     const { code } = await req.json();
 
     if (!code || typeof code !== 'string') {
       return new Response(
-        JSON.stringify({ error: 'Gift code is required' }),
+        JSON.stringify({ ok: false, error: 'Please enter a gift code.' }),
         { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 400 }
       );
     }
 
-    // Normalize code to uppercase
-    const normalizedCode = code.toUpperCase().trim();
+    // Normalize code
+    const normalizedCode = code.trim().toUpperCase();
     console.log('[redeem-gift-code] Looking up code:', normalizedCode);
 
-    // Check if code exists and is valid - use admin client
+    // Look up gift code
     const { data: giftCode, error: codeError } = await supabaseAdmin
       .from('gift_codes')
       .select('*')
@@ -84,33 +87,31 @@ Deno.serve(async (req) => {
       .is('used_at', null)
       .single();
 
-    if (codeError) {
-      console.error('[redeem-gift-code] Code lookup error:', codeError);
+    if (codeError || !giftCode) {
+      console.error('[redeem-gift-code] Code not found:', normalizedCode, codeError);
       return new Response(
-        JSON.stringify({ error: 'Invalid or already used gift code' }),
-        { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 404 }
-      );
-    }
-
-    if (!giftCode) {
-      console.error('[redeem-gift-code] Code not found:', normalizedCode);
-      return new Response(
-        JSON.stringify({ error: 'Invalid or already used gift code' }),
-        { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 404 }
+        JSON.stringify({ 
+          ok: false, 
+          error: "I couldn't find that gift code. Check the spelling or send us a screenshot so we can help." 
+        }),
+        { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 400 }
       );
     }
 
     console.log('[redeem-gift-code] Found gift code:', giftCode.id, 'tier:', giftCode.tier);
 
-    // Check if code has expired
+    // Check if expired
     if (giftCode.code_expires_at && new Date(giftCode.code_expires_at) < new Date()) {
       return new Response(
-        JSON.stringify({ error: 'This gift code has expired' }),
+        JSON.stringify({ 
+          ok: false, 
+          error: "This gift code has expired. If you think this is a mistake, send us a screenshot and we'll check it manually." 
+        }),
         { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 400 }
       );
     }
 
-    // Check if user already has this tier via a gift code - use admin client
+    // Check if already used by this user
     const { data: existingRedemption } = await supabaseAdmin
       .from('gift_codes')
       .select('id')
@@ -120,72 +121,63 @@ Deno.serve(async (req) => {
 
     if (existingRedemption) {
       return new Response(
-        JSON.stringify({ error: `You have already redeemed a ${giftCode.tier} gift code` }),
+        JSON.stringify({ 
+          ok: false, 
+          error: `You've already redeemed a ${giftCode.tier} gift code.` 
+        }),
         { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 400 }
       );
     }
 
-    // Get tier_id for the subscription - use admin client
-    const { data: tier, error: tierError } = await supabaseAdmin
+    // Upsert user_tiers (the simple tier tracking table)
+    const now = new Date();
+    const { error: tierError } = await supabaseAdmin
+      .from('user_tiers')
+      .upsert({
+        user_id: user.id,
+        tier: giftCode.tier,
+        updated_at: now.toISOString(),
+      }, { onConflict: 'user_id' });
+
+    if (tierError) {
+      console.error('[redeem-gift-code] Tier upsert error:', tierError);
+      return new Response(
+        JSON.stringify({ 
+          ok: false, 
+          error: "Something went wrong while applying this gift. Please try again or send us a screenshot." 
+        }),
+        { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 500 }
+      );
+    }
+
+    console.log('[redeem-gift-code] User tier updated');
+
+    // Also create/update user_subscription for access control compatibility
+    const { data: tier } = await supabaseAdmin
       .from('subscription_tiers')
       .select('id')
       .eq('name', giftCode.tier)
       .single();
 
-    if (tierError || !tier) {
-      console.error('[redeem-gift-code] Tier lookup error:', tierError);
-      return new Response(
-        JSON.stringify({ error: 'Invalid tier configuration' }),
-        { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 500 }
-      );
+    if (tier) {
+      const subscriptionEnd = new Date(now);
+      subscriptionEnd.setFullYear(subscriptionEnd.getFullYear() + 1); // 1 year default
+
+      await supabaseAdmin
+        .from('user_subscriptions')
+        .upsert({
+          user_id: user.id,
+          tier_id: tier.id,
+          status: 'active',
+          current_period_start: now.toISOString(),
+          current_period_end: subscriptionEnd.toISOString(),
+        }, { onConflict: 'user_id' });
+
+      console.log('[redeem-gift-code] Subscription created');
     }
 
-    console.log('[redeem-gift-code] Found tier:', tier.id);
-
-    const now = new Date();
-    const subscriptionEnd = new Date(now);
-    
-    // Use the gift code's expiry date to calculate subscription duration
-    if (giftCode.code_expires_at) {
-      const expiryDate = new Date(giftCode.code_expires_at);
-      const createdDate = new Date(giftCode.created_at);
-      const durationMs = expiryDate.getTime() - createdDate.getTime();
-      subscriptionEnd.setTime(now.getTime() + durationMs);
-    } else {
-      // Default to 1 year
-      subscriptionEnd.setFullYear(subscriptionEnd.getFullYear() + 1);
-    }
-
-    // Format duration for user-friendly message
-    const durationDays = Math.round((subscriptionEnd.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
-    let durationLabel = '1 year';
-    if (durationDays <= 35) durationLabel = '1 month';
-    else if (durationDays <= 100) durationLabel = '3 months';
-    else if (durationDays <= 200) durationLabel = '6 months';
-
-    // Create subscription - use admin client
-    const { error: subscriptionError } = await supabaseAdmin
-      .from('user_subscriptions')
-      .insert({
-        user_id: user.id,
-        tier_id: tier.id,
-        status: 'active',
-        current_period_start: now.toISOString(),
-        current_period_end: subscriptionEnd.toISOString(),
-      });
-
-    if (subscriptionError) {
-      console.error('[redeem-gift-code] Subscription creation error:', subscriptionError);
-      return new Response(
-        JSON.stringify({ error: 'Failed to create subscription: ' + subscriptionError.message }),
-        { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 500 }
-      );
-    }
-
-    console.log('[redeem-gift-code] Subscription created successfully');
-
-    // Mark code as used - use admin client
-    const { error: updateError } = await supabaseAdmin
+    // Mark gift code as used
+    await supabaseAdmin
       .from('gift_codes')
       .update({
         used_by: user.id,
@@ -194,27 +186,24 @@ Deno.serve(async (req) => {
       })
       .eq('id', giftCode.id);
 
-    if (updateError) {
-      console.error('[redeem-gift-code] Gift code update error:', updateError);
-    } else {
-      console.log('[redeem-gift-code] Gift code marked as used');
-    }
+    console.log('[redeem-gift-code] Gift code marked as used');
 
     return new Response(
       JSON.stringify({ 
-        success: true,
-        message: `Successfully redeemed ${giftCode.tier} gift code! Access granted for ${durationLabel}.`,
+        ok: true,
         tier: giftCode.tier,
-        duration: durationLabel,
-        expires_at: subscriptionEnd.toISOString(),
+        message: `Gift code applied. Welcome to your new tier 💛`
       }),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 200 }
     );
 
   } catch (error) {
-    console.error('[redeem-gift-code] Error:', error);
+    console.error('[redeem-gift-code] Unexpected error:', error);
     return new Response(
-      JSON.stringify({ error: 'Internal server error: ' + (error instanceof Error ? error.message : 'Unknown error') }),
+      JSON.stringify({ 
+        ok: false, 
+        error: "Something went wrong while applying this gift. Please try again or send us a screenshot." 
+      }),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 500 }
     );
   }

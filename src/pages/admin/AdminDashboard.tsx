@@ -2,11 +2,9 @@
  * Admin Dashboard
  * 
  * ARCHITECTURE:
- * - Lovable Cloud = auth + users (profiles) + payments + subscriptions
+ * - Lovable Cloud = auth + users (profiles) + gift codes + user_tiers + payments
  * - Supabase = content backend (rooms, room_entries only)
- * - Stats are fetched from the admin-stats edge function which aggregates both sources
- * 
- * This dashboard displays live statistics from the admin-stats endpoint.
+ * - Stats are fetched from the admin-stats edge function
  */
 
 import { useEffect, useState } from 'react';
@@ -28,19 +26,23 @@ import {
   AlertTriangle
 } from 'lucide-react';
 
-interface DashboardStats {
+interface AdminStats {
   totalUsers: number;
-  usersThisWeek: number;
   activeToday: number;
   totalRooms: number;
-  activeSubscriptions: number;
   revenueMonth: number;
+}
+
+interface AdminStatsResponse {
+  ok: boolean;
+  stats?: AdminStats;
+  error?: string;
 }
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
   const { isAdmin, isLoading } = useUserAccess();
-  const [stats, setStats] = useState<DashboardStats | null>(null);
+  const [stats, setStats] = useState<AdminStats | null>(null);
   const [statsLoading, setStatsLoading] = useState(true);
   const [statsError, setStatsError] = useState<string | null>(null);
 
@@ -51,13 +53,15 @@ const AdminDashboard = () => {
   }, [isAdmin, isLoading, navigate]);
 
   const fetchStats = async () => {
+    if (!isAdmin || isLoading) return;
+
     setStatsLoading(true);
     setStatsError(null);
     
     try {
       console.log('[AdminDashboard] Fetching stats from edge function...');
       
-      const { data, error } = await supabase.functions.invoke('admin-stats');
+      const { data, error } = await supabase.functions.invoke<AdminStatsResponse>('admin-stats');
       
       if (error) {
         console.error('[AdminDashboard] Edge function error:', error);
@@ -65,9 +69,9 @@ const AdminDashboard = () => {
         return;
       }
       
-      if (!data?.ok) {
+      if (!data?.ok || !data?.stats) {
         console.error('[AdminDashboard] Stats error:', data?.error);
-        setStatsError(data?.error || 'Unknown error');
+        setStatsError(data?.error || 'Failed to load stats');
         return;
       }
       
@@ -82,10 +86,8 @@ const AdminDashboard = () => {
   };
 
   useEffect(() => {
-    if (isAdmin) {
-      fetchStats();
-    }
-  }, [isAdmin]);
+    fetchStats();
+  }, [isAdmin, isLoading]);
 
   if (isLoading) {
     return (
@@ -152,7 +154,7 @@ const AdminDashboard = () => {
   ];
 
   const formatCurrency = (amount: number) => {
-    return amount > 0 ? `$${amount.toFixed(2)}` : '—';
+    return amount > 0 ? `$${amount.toFixed(2)}` : '$0.00';
   };
 
   return (
@@ -170,7 +172,7 @@ const AdminDashboard = () => {
                   {statsError}
                 </span>
               ) : (
-                'Live data from Lovable Cloud users & Supabase rooms'
+                'Live data from Cloud users & Supabase rooms'
               )}
             </p>
           </div>
@@ -200,7 +202,7 @@ const AdminDashboard = () => {
                 {statsLoading ? '—' : stats?.totalUsers ?? 0}
               </div>
               <p className="text-xs admin-text-muted mt-1">
-                {statsLoading ? 'Loading...' : `+${stats?.usersThisWeek ?? 0} this week`}
+                {statsLoading ? 'Loading...' : 'From Cloud users'}
               </p>
             </CardContent>
           </Card>
@@ -209,15 +211,15 @@ const AdminDashboard = () => {
             <CardHeader className="pb-3">
               <CardTitle className="text-sm font-medium flex items-center gap-2 admin-text">
                 <Activity className="h-4 w-4" />
-                Active Subscriptions
+                Active Today
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold admin-heading">
-                {statsLoading ? '—' : stats?.activeSubscriptions ?? 0}
+                {statsLoading ? '—' : stats?.activeToday ?? 0}
               </div>
               <p className="text-xs admin-text-muted mt-1">
-                {statsLoading ? 'Loading...' : 'Paid members'}
+                {statsLoading ? 'Loading...' : 'TODO: implement tracking'}
               </p>
             </CardContent>
           </Card>
@@ -234,7 +236,7 @@ const AdminDashboard = () => {
                 {statsLoading ? '—' : stats?.totalRooms ?? 0}
               </div>
               <p className="text-xs admin-text-muted mt-1">
-                {statsLoading ? 'Loading...' : 'Active in Supabase'}
+                {statsLoading ? 'Loading...' : 'From Supabase rooms table'}
               </p>
             </CardContent>
           </Card>
@@ -251,7 +253,7 @@ const AdminDashboard = () => {
                 {statsLoading ? '—' : formatCurrency(stats?.revenueMonth ?? 0)}
               </div>
               <p className="text-xs admin-text-muted mt-1">
-                {statsLoading ? 'Loading...' : 'This month'}
+                {statsLoading ? 'Loading...' : 'From Cloud payments'}
               </p>
             </CardContent>
           </Card>
