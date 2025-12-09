@@ -61,11 +61,13 @@ const RoomGridVIP3 = () => {
     return <VIPLockedAccess tier="vip3" tierLabel="VIP3" backgroundColor="hsl(var(--page-vip3))" />;
   }
 
-  // VIP3 shows ALL VIP3 rooms EXCEPT VIP3II specialization rooms (those have "vip3ii" in ID)
-  // Structure: Core (health, AI, stress, philosophy) + English (B2/C1/C2) + Living skills
+  // VIP3 shows ALL VIP3 rooms:
+  // - Left: English (B2/C1/C2)
+  // - Core/Middle: AI, Philosophy, Health, Stress, God, Sleep
+  // - Right: Life skills
+  // Only exclude VIP3II specialization rooms (those go to /vip/vip3ii)
   const vip3Rooms = rooms.filter(r => {
     const id = r.id.toLowerCase();
-    // Exclude VIP3II specialization rooms (they go to /vip/vip3ii)
     return !id.includes('vip3ii') && !id.includes('vip3_ii') && !id.includes('vip3-ii');
   });
 
