@@ -27,20 +27,39 @@ Deno.serve(async (req) => {
     // --- AUTH CHECK ---
     const authHeader = req.headers.get("Authorization");
     console.log("[redeem-gift-code] Auth header present:", !!authHeader);
+    console.log("[redeem-gift-code] Auth header preview:", authHeader?.slice(0, 50));
+    
     if (!authHeader) {
       return send({ ok: false, error: "Please log in to redeem a gift code." });
     }
 
-    // Create user-level client
-    const supabaseClient = createClient(
-      Deno.env.get("SUPABASE_URL")!,
-      Deno.env.get("SUPABASE_ANON_KEY")!,
-      { global: { headers: { Authorization: authHeader } } }
-    );
+    // Extract token from "Bearer <token>"
+    const token = authHeader.replace("Bearer ", "");
+    
+    // Create client with service role to validate the user token
+    const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
+    const supabaseAnonKey = Deno.env.get("SUPABASE_ANON_KEY")!;
+    
+    console.log("[redeem-gift-code] SUPABASE_URL:", supabaseUrl);
+    console.log("[redeem-gift-code] Token length:", token.length);
 
-    const { data: { user }, error: authError } = await supabaseClient.auth.getUser();
-    console.log("[redeem-gift-code] auth user:", user?.id, "error:", authError?.message);
+    // Create user-level client with the token
+    const supabaseClient = createClient(supabaseUrl, supabaseAnonKey, {
+      global: { headers: { Authorization: authHeader } },
+      auth: {
+        autoRefreshToken: false,
+        persistSession: false,
+      },
+    });
+
+    // Get user from the provided token
+    const { data: { user }, error: authError } = await supabaseClient.auth.getUser(token);
+    
+    console.log("[redeem-gift-code] getUser result - user:", user?.id, user?.email);
+    console.log("[redeem-gift-code] getUser error:", authError?.message, authError?.status);
+    
     if (authError || !user) {
+      console.error("[redeem-gift-code] Auth failed:", authError);
       return send({ ok: false, error: "Session expired. Please log in again." });
     }
 
