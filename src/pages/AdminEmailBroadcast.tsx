@@ -354,7 +354,14 @@ export default function AdminEmailBroadcast() {
                 <Button
                   variant="destructive"
                   onClick={() => setConfirmDialogOpen(true)}
-                  disabled={!previewResult || previewResult.total_recipients === 0 || sendLoading}
+                  disabled={
+                    !previewResult || 
+                    previewResult.total_recipients === 0 || 
+                    sendLoading || 
+                    !adminInfo || 
+                    adminInfo.level < 9
+                  }
+                  title={adminInfo && adminInfo.level < 9 ? "Admin level 9+ required to send" : undefined}
                 >
                   {sendLoading ? (
                     <Loader2 className="h-4 w-4 mr-2 animate-spin" />
