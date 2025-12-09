@@ -51,6 +51,7 @@ const VIPRequests = lazy(() => import("@/pages/VIPRequests"));
 const MatchmakingHub = lazy(() => import("@/pages/MatchmakingHub"));
 const PaymentTest = lazy(() => import("@/pages/PaymentTest"));
 const ManualPayment = lazy(() => import("@/pages/ManualPayment"));
+const BankTransferPayment = lazy(() => import("@/pages/BankTransferPayment"));
 const PromoCode = lazy(() => import("@/pages/PromoCode"));
 const VIPTopicRequest = lazy(() => import("@/pages/VIPTopicRequest"));
 const ResetPassword = lazy(() => import("@/pages/ResetPassword"));
@@ -122,6 +123,7 @@ const AuditSafeShield = lazy(() => import("@/components/admin/AuditSafeShield"))
 const SystemCodeFiles = lazy(() => import("@/pages/admin/SystemCodeFiles"));
 const CodeViewer = lazy(() => import("@/pages/admin/CodeViewer"));
 const TestEmail = lazy(() => import("@/pages/admin/TestEmail"));
+const AdminBankTransfers = lazy(() => import("@/pages/AdminBankTransfers"));
 
 export function AppRouter() {
   return (
@@ -186,6 +188,7 @@ export function AppRouter() {
         <Route path="/subscribe" element={<PaymentTest />} />
         <Route path="/payment-test" element={<PaymentTest />} />
         <Route path="/manual-payment" element={<ManualPayment />} />
+        <Route path="/bank-transfer" element={<BankTransferPayment />} />
         <Route path="/promo-code" element={<PromoCode />} />
         <Route path="/vip-topic-request" element={<VIPTopicRequest />} />
         <Route path="/redeem-gift" element={<RedeemGiftCode />} />
@@ -255,6 +258,7 @@ export function AppRouter() {
         <Route path="/admin/code-files" element={<AdminRoute><SystemCodeFiles /></AdminRoute>} />
         <Route path="/admin/code-viewer/:filePath" element={<AdminRoute><CodeViewer /></AdminRoute>} />
         <Route path="/admin/test-email" element={<AdminRoute><TestEmail /></AdminRoute>} />
+        <Route path="/admin/bank-transfers" element={<AdminRoute><AdminBankTransfers /></AdminRoute>} />
         
         {/* 404 */}
         <Route path="*" element={<NotFound />} />
