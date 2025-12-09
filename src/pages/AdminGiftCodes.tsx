@@ -6,10 +6,12 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import { Gift, Loader2, Copy, Check, Calendar } from "lucide-react";
+import { Gift, Loader2, Copy, Check, Calendar, Filter } from "lucide-react";
 import { AdminLayout } from "@/components/admin/AdminLayout";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Badge } from "@/components/ui/badge";
 
 interface GiftCode {
   id: string;
@@ -17,6 +19,7 @@ interface GiftCode {
   tier: string;
   is_active: boolean;
   used_by: string | null;
+  used_by_email: string | null;
   used_at: string | null;
   code_expires_at: string | null;
   created_at: string;
@@ -25,13 +28,7 @@ interface GiftCode {
 
 type GiftTier = 'VIP1' | 'VIP2' | 'VIP3' | 'VIP4' | 'VIP5' | 'VIP6' | 'VIP7' | 'VIP8' | 'VIP9';
 type GiftDuration = '1_month' | '3_months' | '6_months' | '12_months';
-
-const DURATION_LABELS: Record<GiftDuration, string> = {
-  '1_month': '1 Month (30 days)',
-  '3_months': '3 Months (90 days)',
-  '6_months': '6 Months (180 days)',
-  '12_months': '12 Months (365 days)',
-};
+type UsageFilter = 'all' | 'used' | 'unused';
 
 const TIER_COLORS: Record<GiftTier, string> = {
   VIP1: 'bg-slate-100 text-slate-700',
@@ -56,6 +53,7 @@ const AdminGiftCodes = () => {
   const [allCodes, setAllCodes] = useState<GiftCode[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
+  const [usageFilter, setUsageFilter] = useState<UsageFilter>('all');
   const { toast } = useToast();
 
   useEffect(() => {
@@ -103,18 +101,14 @@ const AdminGiftCodes = () => {
         body: { tier, count, duration, notes: notes || null },
       });
 
-      // Handle invoke errors (non-2xx responses)
       if (error) {
-        // Try to extract error message from the response context
         let errorMessage = "Failed to generate gift codes";
         try {
-          // FunctionsHttpError has context.json() available
           const errorContext = await (error as any).context?.json?.();
           if (errorContext?.error) {
             errorMessage = errorContext.error;
           }
         } catch {
-          // If context parsing fails, use the error message
           if (error.message) {
             errorMessage = error.message;
           }
@@ -129,7 +123,6 @@ const AdminGiftCodes = () => {
         return;
       }
 
-      // Handle application-level errors in successful response
       if (!data?.success) {
         toast({
           title: "Generation Failed",
@@ -142,7 +135,6 @@ const AdminGiftCodes = () => {
 
       const generatedCount = data.codes?.length || data.generated || 0;
       
-      // Treat 0 generated as an error
       if (generatedCount === 0) {
         toast({
           title: "Generation Failed",
@@ -163,10 +155,7 @@ const AdminGiftCodes = () => {
           : `Generated ${generatedCount} gift codes`,
       });
 
-      // Refresh the codes list and wait for it to complete
       await fetchGiftCodes();
-
-      // Reset form
       setNotes("");
     } catch (error: any) {
       console.error('Error generating gift codes:', error);
@@ -198,71 +187,75 @@ const AdminGiftCodes = () => {
     }
   };
 
+  // Filter codes based on usage
+  const filteredCodes = allCodes.filter(code => {
+    if (usageFilter === 'used') return !!code.used_by;
+    if (usageFilter === 'unused') return !code.used_by;
+    return true;
+  });
+
   // Calculate summary stats
   const totalCodes = allCodes.length;
   const availableCodes = allCodes.filter(c => !c.used_by && c.is_active).length;
   const usedCodes = allCodes.filter(c => c.used_by).length;
 
+  const formatDate = (dateStr: string | null) => {
+    if (!dateStr) return '-';
+    return new Date(dateStr).toLocaleString();
+  };
+
   return (
     <AdminLayout>
-      <div className="container mx-auto max-w-6xl space-y-6">
+      <div className="container mx-auto max-w-7xl space-y-6">
         <div>
           <h1 className="text-3xl font-bold text-black">Gift Codes</h1>
           <p className="text-gray-600">Generate and manage VIP gift codes</p>
         </div>
         
-        <div className="grid gap-6 md:grid-cols-2">
-          {/* Generate Codes */}
-          <Card style={{ backgroundColor: '#FFFFFF', border: '1px solid #E0E0E0' }}>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2" style={{ color: '#000000' }}>
-                <Gift className="w-5 h-5" />
-                Generate Gift Codes
-              </CardTitle>
-              <CardDescription style={{ color: '#666666' }}>
-                Create new VIP gift codes (VIP1–VIP9) with custom duration
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="tier" style={{ color: '#000000' }}>Tier</Label>
-                  <Select value={tier} onValueChange={(value) => setTier(value as GiftTier)}>
-                    <SelectTrigger>
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="VIP1">VIP1</SelectItem>
-                      <SelectItem value="VIP2">VIP2</SelectItem>
-                      <SelectItem value="VIP3">VIP3</SelectItem>
-                      <SelectItem value="VIP4">VIP4</SelectItem>
-                      <SelectItem value="VIP5">VIP5</SelectItem>
-                      <SelectItem value="VIP6">VIP6</SelectItem>
-                      <SelectItem value="VIP7">VIP7</SelectItem>
-                      <SelectItem value="VIP8">VIP8</SelectItem>
-                      <SelectItem value="VIP9">VIP9</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="duration" style={{ color: '#000000' }}>Duration</Label>
-                  <Select value={duration} onValueChange={(value) => setDuration(value as GiftDuration)}>
-                    <SelectTrigger>
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="1_month">1 Month</SelectItem>
-                      <SelectItem value="3_months">3 Months</SelectItem>
-                      <SelectItem value="6_months">6 Months</SelectItem>
-                      <SelectItem value="12_months">12 Months</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
+        {/* Generate Codes Card */}
+        <Card style={{ backgroundColor: '#FFFFFF', border: '1px solid #E0E0E0' }}>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2" style={{ color: '#000000' }}>
+              <Gift className="w-5 h-5" />
+              Generate Gift Codes
+            </CardTitle>
+            <CardDescription style={{ color: '#666666' }}>
+              Create new VIP gift codes (VIP1–VIP9) with custom duration
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid gap-4 md:grid-cols-5">
+              <div className="space-y-2">
+                <Label htmlFor="tier" style={{ color: '#000000' }}>Tier</Label>
+                <Select value={tier} onValueChange={(value) => setTier(value as GiftTier)}>
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {(['VIP1', 'VIP2', 'VIP3', 'VIP4', 'VIP5', 'VIP6', 'VIP7', 'VIP8', 'VIP9'] as GiftTier[]).map(t => (
+                      <SelectItem key={t} value={t}>{t}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="count" style={{ color: '#000000' }}>Number of Codes (1-100)</Label>
+                <Label htmlFor="duration" style={{ color: '#000000' }}>Duration</Label>
+                <Select value={duration} onValueChange={(value) => setDuration(value as GiftDuration)}>
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="1_month">1 Month</SelectItem>
+                    <SelectItem value="3_months">3 Months</SelectItem>
+                    <SelectItem value="6_months">6 Months</SelectItem>
+                    <SelectItem value="12_months">12 Months</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="count" style={{ color: '#000000' }}>Count (1-100)</Label>
                 <Input
                   id="count"
                   type="number"
@@ -273,22 +266,22 @@ const AdminGiftCodes = () => {
                 />
               </div>
 
-              <div className="space-y-2">
+              <div className="space-y-2 md:col-span-2">
                 <Label htmlFor="notes" style={{ color: '#000000' }}>Notes (Optional)</Label>
-                <Textarea
+                <Input
                   id="notes"
-                  placeholder="e.g., For students, family members, promotional campaign..."
+                  placeholder="e.g., For students, family..."
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
-                  rows={3}
                 />
               </div>
+            </div>
 
+            <div className="mt-4 flex items-center gap-4">
               <Button
                 onClick={handleGenerate}
                 disabled={isGenerating}
-                className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
-                size="lg"
+                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
               >
                 {isGenerating ? (
                   <>
@@ -304,115 +297,134 @@ const AdminGiftCodes = () => {
               </Button>
 
               {generatedCodes.length > 0 && (
-                <div className="bg-green-50 border border-green-200 rounded-lg p-4 space-y-2">
-                  <h4 className="font-semibold text-green-900">Newly Generated Codes:</h4>
-                  <div className="space-y-2 max-h-60 overflow-y-auto">
-                    {generatedCodes.map((code) => (
-                      <div key={code} className="flex items-center gap-2 bg-white p-2 rounded border">
-                        <code className="flex-1 text-sm font-mono">{code}</code>
-                        <Button
-                          size="sm"
-                          variant="ghost"
-                          onClick={() => copyToClipboard(code)}
-                        >
-                          {copiedCode === code ? (
-                            <Check className="w-4 h-4 text-green-600" />
-                          ) : (
-                            <Copy className="w-4 h-4" />
-                          )}
-                        </Button>
-                      </div>
-                    ))}
-                  </div>
+                <div className="flex items-center gap-2 text-sm text-green-700">
+                  <Check className="w-4 h-4" />
+                  Generated {generatedCodes.length} code(s)
                 </div>
               )}
-            </CardContent>
-          </Card>
+            </div>
 
-          {/* All Codes */}
-          <Card style={{ backgroundColor: '#FFFFFF', border: '1px solid #E0E0E0' }}>
-            <CardHeader>
-              <CardTitle style={{ color: '#000000' }}>All Gift Codes</CardTitle>
-              <CardDescription style={{ color: '#666666' }}>
-                View and manage all generated gift codes
-              </CardDescription>
-              {/* Debug summary */}
-              <div className="mt-2 text-xs bg-muted/50 rounded p-2">
-                <span className="font-mono">
-                  Total: {totalCodes} | Available: {availableCodes} | Used: {usedCodes}
-                </span>
-                <span className="text-muted-foreground ml-2">(from DB)</span>
-              </div>
-            </CardHeader>
-            <CardContent>
-              {isLoading ? (
-                <div className="flex items-center justify-center py-8">
-                  <Loader2 className="w-6 h-6 animate-spin" />
-                </div>
-              ) : allCodes.length === 0 ? (
-                <div className="text-center py-8 text-muted-foreground">
-                  No gift codes generated yet
-                </div>
-              ) : (
-                <div className="space-y-2 max-h-[600px] overflow-y-auto">
-                  {allCodes.map((giftCode) => (
-                    <div
-                      key={giftCode.id}
-                      className={`p-3 rounded-lg border ${
-                        giftCode.used_by
-                          ? 'bg-gray-50 border-gray-200'
-                          : 'bg-white border-green-200'
-                      }`}
-                    >
-                      <div className="flex items-center justify-between mb-2">
-                        <code className="font-mono text-sm font-semibold">{giftCode.code}</code>
-                        {!giftCode.used_by && (
-                          <Button
-                            size="sm"
-                            variant="ghost"
-                            onClick={() => copyToClipboard(giftCode.code)}
-                          >
-                            {copiedCode === giftCode.code ? (
-                              <Check className="w-4 h-4 text-green-600" />
-                            ) : (
-                              <Copy className="w-4 h-4" />
-                            )}
-                          </Button>
-                        )}
-                      </div>
-                      <div className="text-xs space-y-1 text-muted-foreground">
-                        <div className="flex items-center gap-2">
-                          <span className={`px-2 py-0.5 rounded ${
-                            TIER_COLORS[giftCode.tier as GiftTier] || 'bg-gray-100 text-gray-700'
-                          }`}>
-                            {giftCode.tier}
-                          </span>
-                          <span className={`px-2 py-0.5 rounded ${
-                            giftCode.used_by ? 'bg-gray-100 text-gray-700' : 'bg-green-100 text-green-700'
-                          }`}>
-                            {giftCode.used_by ? 'Used' : 'Available'}
-                          </span>
-                        </div>
-                        {giftCode.used_at && (
-                          <div>Used: {new Date(giftCode.used_at).toLocaleDateString()}</div>
-                        )}
-                        {giftCode.code_expires_at && (
-                          <div className="flex items-center gap-1">
-                            <Calendar className="w-3 h-3" />
-                            Expires: {new Date(giftCode.code_expires_at).toLocaleDateString()}
-                          </div>
-                        )}
-                        {giftCode.notes && (
-                          <div className="text-xs italic">Note: {giftCode.notes}</div>
-                        )}
-                      </div>
+            {generatedCodes.length > 0 && (
+              <div className="mt-4 bg-green-50 border border-green-200 rounded-lg p-4">
+                <h4 className="font-semibold text-green-900 mb-2">Newly Generated:</h4>
+                <div className="flex flex-wrap gap-2">
+                  {generatedCodes.map((code) => (
+                    <div key={code} className="flex items-center gap-1 bg-white px-2 py-1 rounded border text-sm">
+                      <code className="font-mono">{code}</code>
+                      <Button size="sm" variant="ghost" className="h-6 w-6 p-0" onClick={() => copyToClipboard(code)}>
+                        {copiedCode === code ? <Check className="w-3 h-3 text-green-600" /> : <Copy className="w-3 h-3" />}
+                      </Button>
                     </div>
                   ))}
                 </div>
-              )}
-            </CardContent>
-          </Card>
-        </div>
+              </div>
+            )}
+          </CardContent>
+        </Card>
+
+        {/* All Codes Table */}
+        <Card style={{ backgroundColor: '#FFFFFF', border: '1px solid #E0E0E0' }}>
+          <CardHeader>
+            <div className="flex items-center justify-between">
+              <div>
+                <CardTitle style={{ color: '#000000' }}>All Gift Codes</CardTitle>
+                <CardDescription style={{ color: '#666666' }}>
+                  Total: {totalCodes} | Available: {availableCodes} | Used: {usedCodes}
+                </CardDescription>
+              </div>
+              <div className="flex items-center gap-2">
+                <Filter className="w-4 h-4 text-muted-foreground" />
+                <Select value={usageFilter} onValueChange={(v) => setUsageFilter(v as UsageFilter)}>
+                  <SelectTrigger className="w-32">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All</SelectItem>
+                    <SelectItem value="unused">Unused</SelectItem>
+                    <SelectItem value="used">Used</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent>
+            {isLoading ? (
+              <div className="flex items-center justify-center py-8">
+                <Loader2 className="w-6 h-6 animate-spin" />
+              </div>
+            ) : filteredCodes.length === 0 ? (
+              <div className="text-center py-8 text-muted-foreground">
+                No gift codes found
+              </div>
+            ) : (
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Code</TableHead>
+                      <TableHead>Tier</TableHead>
+                      <TableHead>Created At</TableHead>
+                      <TableHead>Status</TableHead>
+                      <TableHead>Used By</TableHead>
+                      <TableHead>Used At</TableHead>
+                      <TableHead>Expires</TableHead>
+                      <TableHead>Notes</TableHead>
+                      <TableHead></TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {filteredCodes.map((giftCode) => (
+                      <TableRow key={giftCode.id}>
+                        <TableCell>
+                          <code className="font-mono text-sm font-semibold">{giftCode.code}</code>
+                        </TableCell>
+                        <TableCell>
+                          <Badge className={TIER_COLORS[giftCode.tier as GiftTier] || 'bg-gray-100 text-gray-700'}>
+                            {giftCode.tier}
+                          </Badge>
+                        </TableCell>
+                        <TableCell className="text-xs text-muted-foreground">
+                          {formatDate(giftCode.created_at)}
+                        </TableCell>
+                        <TableCell>
+                          {giftCode.used_by ? (
+                            <Badge variant="secondary">Used</Badge>
+                          ) : (
+                            <Badge className="bg-green-100 text-green-700">Available</Badge>
+                          )}
+                        </TableCell>
+                        <TableCell className="text-xs">
+                          {giftCode.used_by_email || giftCode.used_by || '-'}
+                        </TableCell>
+                        <TableCell className="text-xs text-muted-foreground">
+                          {formatDate(giftCode.used_at)}
+                        </TableCell>
+                        <TableCell className="text-xs text-muted-foreground">
+                          {giftCode.code_expires_at ? (
+                            <span className="flex items-center gap-1">
+                              <Calendar className="w-3 h-3" />
+                              {new Date(giftCode.code_expires_at).toLocaleDateString()}
+                            </span>
+                          ) : '-'}
+                        </TableCell>
+                        <TableCell className="text-xs text-muted-foreground max-w-32 truncate">
+                          {giftCode.notes || '-'}
+                        </TableCell>
+                        <TableCell>
+                          {!giftCode.used_by && (
+                            <Button size="sm" variant="ghost" className="h-6 w-6 p-0" onClick={() => copyToClipboard(giftCode.code)}>
+                              {copiedCode === giftCode.code ? <Check className="w-3 h-3 text-green-600" /> : <Copy className="w-3 h-3" />}
+                            </Button>
+                          )}
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+            )}
+          </CardContent>
+        </Card>
       </div>
     </AdminLayout>
   );
