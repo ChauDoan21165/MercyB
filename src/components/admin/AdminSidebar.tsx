@@ -70,6 +70,7 @@ const monitoringItems = [
 // User management
 const userManagementItems = [
   { title: "Gift Codes", url: "/admin/gift-codes", icon: Gift },
+  { title: "Manage Admins", url: "/admin/manage-admins", icon: Shield },
   { title: "Moderation", url: "/admin/moderation", icon: Shield },
   { title: "VIP Requests", url: "/vip-requests", icon: MessageSquare },
 ];
