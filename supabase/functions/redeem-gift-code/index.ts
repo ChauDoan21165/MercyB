@@ -15,12 +15,18 @@ function send(data: object) {
 }
 
 Deno.serve(async (req) => {
+  console.log("[redeem-gift-code] Request received:", req.method);
+  
   // CORS preflight
-  if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
+  if (req.method === "OPTIONS") {
+    console.log("[redeem-gift-code] CORS preflight, returning 200");
+    return new Response(null, { headers: corsHeaders });
+  }
 
   try {
     // --- AUTH CHECK ---
     const authHeader = req.headers.get("Authorization");
+    console.log("[redeem-gift-code] Auth header present:", !!authHeader);
     if (!authHeader) {
       return send({ ok: false, error: "Please log in to redeem a gift code." });
     }
