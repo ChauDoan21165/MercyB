@@ -23,21 +23,26 @@ import { type TierId, isKidsTier, KIDS_TIER_IDS } from '@/lib/constants/tiers';
  * This is intentional - the numeric comparison only applies within the same family.
  * Do NOT "fix" this by giving kids tiers unique numbers.
  */
+/**
+ * Canonical tier levels per user's authoritative tier structure:
+ * FREE = 0, VIP1 = 1, VIP2 = 2, VIP3 = 3, VIP3II = 3 (same level, specialization), 
+ * VIP4 = 4, VIP5 = 5, VIP6 = 6, VIP7 = 7, VIP8 = 8, VIP9 = 9
+ */
 const TIER_HIERARCHY: Record<TierId, number> = {
-  free: 1,
-  vip1: 2,
-  vip2: 3,
-  vip3: 4,
-  vip3ii: 4, // VIP3II has same level as VIP3
-  vip4: 5,
-  vip5: 6,
-  vip6: 7,
-  vip7: 8,
-  vip8: 9,
-  vip9: 10, // Admins and VIP9 have full access to everything
-  kids_1: 2, // Kids tiers use same numeric scale but are blocked from VIP rooms
-  kids_2: 3, // Cross-family blocking happens BEFORE numeric comparison
-  kids_3: 4, // Only VIP9 bypasses the cross-family block
+  free: 0,
+  vip1: 1,  // English Foundation
+  vip2: 2,  // A2 + B1
+  vip3: 3,  // B2 + C1 + C2 core
+  vip3ii: 3, // VIP3 specialization (same level as VIP3 - unlocked by VIP3)
+  vip4: 4,  // CareerZ
+  vip5: 5,  // Writing
+  vip6: 6,  // Psychology
+  vip7: 7,  // Critical Thinking, Interpersonal Intelligence
+  vip8: 8,  // Coming soon
+  vip9: 9,  // Strategy Mindset - highest access
+  kids_1: 1, // Kids tiers use same numeric scale but are blocked from VIP rooms
+  kids_2: 2, // Cross-family blocking happens BEFORE numeric comparison
+  kids_3: 3, // Only VIP9 bypasses the cross-family block
 };
 
 /**
@@ -96,7 +101,10 @@ export function getAccessibleTiers(userTier: TierId): TierId[] {
   
   if (userLevel >= TIER_HIERARCHY.vip1) tiers.push('vip1');
   if (userLevel >= TIER_HIERARCHY.vip2) tiers.push('vip2');
-  if (userLevel >= TIER_HIERARCHY.vip3) tiers.push('vip3');
+  if (userLevel >= TIER_HIERARCHY.vip3) {
+    tiers.push('vip3');
+    tiers.push('vip3ii'); // VIP3 users get VIP3II access (same level)
+  }
   if (userLevel >= TIER_HIERARCHY.vip4) tiers.push('vip4');
   if (userLevel >= TIER_HIERARCHY.vip5) tiers.push('vip5');
   if (userLevel >= TIER_HIERARCHY.vip6) tiers.push('vip6');

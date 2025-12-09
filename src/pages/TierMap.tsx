@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { useUserAccess } from '@/hooks/useUserAccess';
 
 type TierRow = {
-  id: 'free' | 'vip1' | 'vip2' | 'vip3' | 'vip3ii' | 'vip4' | 'vip5' | 'vip6' | 'vip9';
+  id: 'free' | 'vip1' | 'vip2' | 'vip3' | 'vip3ii' | 'vip4' | 'vip5' | 'vip6' | 'vip7' | 'vip8' | 'vip9';
   label: string;
   core: {
     title: string;
@@ -31,7 +31,10 @@ const TierMap = () => {
   const { access } = useUserAccess();
   const isAdmin = access?.isAdmin || false;
 
+  // Canonical tier structure per user's authoritative tier map
+  // VIP3 and VIP3II are SAME level (3) - VIP3II is a specialization branch
   const tierRows: TierRow[] = [
+    // VIP9 - Level 9 - Strategy Mindset (highest)
     {
       id: 'vip9',
       label: 'VIP9',
@@ -42,6 +45,33 @@ const TierMap = () => {
         href: '/vip/vip9',
       },
     },
+    // VIP8 - Level 8 - Coming Soon
+    {
+      id: 'vip6', // Using vip6 as placeholder since type doesn't include vip7/vip8
+      label: 'VIP8',
+      core: {
+        title: 'Coming Soon',
+        titleVi: 'Sắp Ra Mắt',
+        subtitle: 'Advanced Strategy & Leadership',
+        href: '#',
+      },
+    },
+    // VIP7 - Level 7 - Critical Thinking, Interpersonal Intelligence, Life Competence
+    {
+      id: 'vip6',
+      label: 'VIP7',
+      core: {
+        title: 'Critical Thinking & Life Competence',
+        titleVi: 'Tư Duy Phản Biện & Năng Lực Sống',
+        href: '/vip/vip7',
+      },
+      other: {
+        title: 'Interpersonal Intelligence',
+        titleVi: 'Trí Tuệ Giao Tiếp',
+        href: '/vip/vip7',
+      },
+    },
+    // VIP6 - Level 6 - Psychology
     {
       id: 'vip6',
       label: 'VIP6',
@@ -51,12 +81,8 @@ const TierMap = () => {
         subtitle: 'Shadow Psychology & Mental Health',
         href: '/vip/vip6',
       },
-      other: {
-        title: 'Critical Thinking',
-        titleVi: 'Tư Duy Phản Biện',
-        href: '/vip/vip6',
-      },
     },
+    // VIP5 - Level 5 - Writing
     {
       id: 'vip5',
       label: 'VIP5',
@@ -66,12 +92,8 @@ const TierMap = () => {
         subtitle: 'Advanced Writing Skills',
         href: '/vip/vip5',
       },
-      other: {
-        title: 'Interpersonal Intelligence',
-        titleVi: 'Trí Tuệ Giao Tiếp',
-        href: '/vip/vip5',
-      },
     },
+    // VIP4 - Level 4 - CareerZ
     {
       id: 'vip4',
       label: 'VIP4',
@@ -81,32 +103,35 @@ const TierMap = () => {
         subtitle: 'Career Development',
         href: '/vip/vip4',
       },
-      other: {
-        title: 'Life Competence',
-        titleVi: 'Năng Lực Sống',
-        href: '/vip/vip4',
-      },
     },
+    // VIP3 II - Level 3 (Specialization branch - unlocked by VIP3)
     {
       id: 'vip3ii',
       label: 'VIP3 II',
       core: {
+        title: 'VIP3 Specialization',
+        titleVi: 'Chuyên Môn VIP3',
+        subtitle: 'Life Strategy, Finance, Sexuality, Martial Arts, Public Speaking, Debate',
+        href: '/vip/vip3ii',
+      },
+      english: {
         title: 'English Specialization',
         titleVi: 'Chuyên Môn Tiếng Anh',
         href: '/vip/vip3ii',
       },
-      english: {
-        title: 'VIP3 II – Advanced English',
-        titleVi: 'VIP3 II – Tiếng Anh Nâng Cao',
+      other: {
+        title: 'Productivity & Systems',
+        titleVi: 'Năng Suất & Hệ Thống',
         href: '/vip/vip3ii',
       },
     },
+    // VIP3 - Level 3 - B2 + C1 + C2 core
     {
       id: 'vip3',
       label: 'VIP3',
       core: {
-        title: 'Life Strategy, Finance, Sexuality',
-        titleVi: 'Chiến Lược Sống, Tài Chính, Tình Dục',
+        title: 'Advanced Core',
+        titleVi: 'Nội Dung Nâng Cao',
         href: '/vip/vip3',
       },
       english: {
@@ -121,12 +146,13 @@ const TierMap = () => {
         href: '/vip/vip3',
       },
     },
+    // VIP2 - Level 2 - A2 + B1
     {
       id: 'vip2',
       label: 'VIP2',
       core: {
-        title: 'Productivity & Systems',
-        titleVi: 'Năng Suất và Hệ Thống',
+        title: 'Intermediate Skills',
+        titleVi: 'Kỹ Năng Trung Cấp',
         href: '/vip/vip2',
       },
       english: {
@@ -141,6 +167,7 @@ const TierMap = () => {
         href: '/vip/vip2',
       },
     },
+    // VIP1 - Level 1 - English Foundation
     {
       id: 'vip1',
       label: 'VIP1',
@@ -157,6 +184,7 @@ const TierMap = () => {
         href: '/vip/vip1',
       },
     },
+    // Free - Level 0 - Foundations
     {
       id: 'free',
       label: 'Free',
