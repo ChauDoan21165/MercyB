@@ -17,13 +17,21 @@ import { Resend } from "https://esm.sh/resend@2.0.0";
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+  "Content-Type": "application/json",
+};
+
+// Email configuration - matches send-redeem-email exactly
+const EMAIL_CONFIG = {
+  from: "Mercy Blade <onboarding@resend.dev>",
+  bcc: "cd12536@gmail.com",
+  siteUrl: "https://mercyblade.com",
 };
 
 // Helper to always return HTTP 200 with JSON
 function send(data: Record<string, unknown>) {
   return new Response(JSON.stringify(data), {
     status: 200,
-    headers: { ...corsHeaders, "Content-Type": "application/json" },
+    headers: corsHeaders,
   });
 }
 
@@ -225,9 +233,10 @@ Deno.serve(async (req) => {
 
           // Send welcome email
           try {
-            const { error: sendError } = await resend.emails.send({
-              from: "Mercy Blade <onboarding@resend.dev>",
+            const { data: emailData, error: sendError } = await resend.emails.send({
+              from: EMAIL_CONFIG.from,
               to: [profile.email],
+              bcc: [EMAIL_CONFIG.bcc],
               subject: `Welcome to ${tierName} - Mercy Blade`,
               html: getWelcomeEmailHtml(tierName),
             });
@@ -327,9 +336,10 @@ Deno.serve(async (req) => {
         });
 
         try {
-          const { error: sendError } = await resend.emails.send({
-            from: "Mercy Blade <onboarding@resend.dev>",
+          const { data: emailData, error: sendError } = await resend.emails.send({
+            from: EMAIL_CONFIG.from,
             to: [profile.email],
+            bcc: [EMAIL_CONFIG.bcc],
             subject: `Your ${tierName} subscription expires in 7 days`,
             html: getExpiryWarningHtml(tierName, expiryDate),
           });
