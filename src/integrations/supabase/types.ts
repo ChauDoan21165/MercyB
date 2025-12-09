@@ -617,6 +617,59 @@ export type Database = {
         }
         Relationships: []
       }
+      bank_transfer_orders: {
+        Row: {
+          amount_vnd: number
+          approved_at: string | null
+          approved_by_admin_id: string | null
+          created_at: string
+          id: string
+          rejection_reason: string | null
+          screenshot_url: string | null
+          status: string
+          tier: string
+          transfer_note: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          amount_vnd: number
+          approved_at?: string | null
+          approved_by_admin_id?: string | null
+          created_at?: string
+          id?: string
+          rejection_reason?: string | null
+          screenshot_url?: string | null
+          status?: string
+          tier: string
+          transfer_note: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          amount_vnd?: number
+          approved_at?: string | null
+          approved_by_admin_id?: string | null
+          created_at?: string
+          id?: string
+          rejection_reason?: string | null
+          screenshot_url?: string | null
+          status?: string
+          tier?: string
+          transfer_note?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "bank_transfer_orders_approved_by_admin_id_fkey"
+            columns: ["approved_by_admin_id"]
+            isOneToOne: false
+            referencedRelation: "admin_users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       companion_events: {
         Row: {
           created_at: string | null
