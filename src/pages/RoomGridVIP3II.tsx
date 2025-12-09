@@ -51,20 +51,9 @@ const RoomGridVIP3II = () => {
     return <VIPLockedAccess tier="vip3ii" tierLabel="VIP3 II" backgroundColor="hsl(220, 70%, 95%)" />;
   }
 
-  // Filter VIP3 II rooms - match any of these patterns:
-  // - '-vip3-ii' (kebab case)
-  // - '_vip3_ii' (snake case)  
-  // - 'vip3ii' (no separator)
-  // - rooms with "vip3 ii" in tier field
-  const vip3IIRooms = (rooms || []).filter(r => {
-    const id = r.id.toLowerCase();
-    const tier = (r.tier || '').toLowerCase();
-    return id.includes('-vip3-ii') || 
-           id.includes('_vip3_ii') || 
-           id.includes('vip3ii') ||
-           tier.includes('vip3 ii') ||
-           tier.includes('vip3ii');
-  });
+  // Use all rooms returned by the registry hook - no double filtering needed
+  // The hook already filters by vip3ii tier
+  const vip3IIRooms = rooms || [];
 
   return (
     <div className="min-h-screen">

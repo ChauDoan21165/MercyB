@@ -7,6 +7,7 @@ export const TIERS = {
   VIP1: "VIP1 / VIP1",
   VIP2: "VIP2 / VIP2",
   VIP3: "VIP3 / VIP3",
+  VIP3II: "VIP3 II / VIP3 II", // Distinct label for VIP3II specialization
   VIP4: "VIP4 / VIP4",
   VIP5: "VIP5 / VIP5",
   VIP6: "VIP6 / VIP6",
@@ -59,7 +60,7 @@ export const TIER_ID_TO_LABEL: Record<TierId, TierValue> = {
   vip1: TIERS.VIP1,
   vip2: TIERS.VIP2,
   vip3: TIERS.VIP3,
-  vip3ii: TIERS.VIP3, // VIP3II uses same label as VIP3
+  vip3ii: TIERS.VIP3II, // VIP3II has distinct label for correct room filtering
   vip4: TIERS.VIP4,
   vip5: TIERS.VIP5,
   vip6: TIERS.VIP6,

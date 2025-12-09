@@ -69,6 +69,7 @@ export function isKidsTier(tier: TierId): boolean {
  * - "Free / Miễn phí" -> "free"
  * - "VIP1 / VIP1" -> "vip1"
  * - "VIP9 / Cấp VIP9" -> "vip9"
+ * - "VIP3 II / VIP3 II" -> "vip3ii"
  * - "Kids Level 1 / Trẻ em cấp 1" -> "kids_1"
  */
 export function normalizeTier(tier: string | null | undefined): TierId {
@@ -95,7 +96,7 @@ export function normalizeTier(tier: string | null | undefined): TierId {
   if (s.includes("vip5") || s === "vip5") return "vip5";
   if (s.includes("vip4") || s === "vip4") return "vip4";
   // VIP3II must come before VIP3 to avoid false match
-  if (s.includes("vip3ii") || s.includes("vip3 ii") || s === "vip3ii") return "vip3ii";
+  if (s.includes("vip3ii") || s.includes("vip3 ii") || s === "vip3ii" || s.includes("vip3 ii / vip3 ii")) return "vip3ii";
   if (s.includes("vip3") || s === "vip3") return "vip3";
   if (s.includes("vip2") || s === "vip2") return "vip2";
   if (s.includes("vip1") || s === "vip1") return "vip1";
