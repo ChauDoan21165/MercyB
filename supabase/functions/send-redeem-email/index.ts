@@ -9,9 +9,9 @@ const corsHeaders = {
 // Email configuration - easy to change later when domain is verified
 // For now, use Resend's default sender (onboarding@resend.dev) which works without domain verification
 const EMAIL_CONFIG = {
-  from: "Mercy Blade <onboarding@resend.dev>", // Change to no-reply@mercyblade.link after domain verification
+  from: "Mercy Blade <onboarding@resend.dev>", // Change to no-reply@mercyblade.com after domain verification
   bcc: "cd12536@gmail.com",
-  siteUrl: "https://mercyblade.link",
+  siteUrl: "https://mercyblade.com",
 };
 
 function send(data: object) {
