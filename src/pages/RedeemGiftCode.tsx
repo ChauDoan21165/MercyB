@@ -45,6 +45,9 @@ const RedeemGiftCode = () => {
       console.log('[redeem-gift-code] Session valid, user:', session.user.id);
       
       const { data, error } = await supabase.functions.invoke('redeem-gift-code', {
+        headers: {
+          Authorization: `Bearer ${session.access_token}`,
+        },
         body: { code: code.trim() },
       });
 
