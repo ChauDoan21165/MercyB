@@ -127,10 +127,17 @@ export const ACCESS_TEST_MATRIX = [
   { tier: 'vip2' as TierId, roomId: 'women-health', roomTier: 'free' as TierId, expected: true },
   { tier: 'vip2' as TierId, roomId: 'some_vip2_room', roomTier: 'vip2' as TierId, expected: true },
   { tier: 'vip2' as TierId, roomId: 'public_speaking_structure_vip3', roomTier: 'vip3' as TierId, expected: false },
+  { tier: 'vip2' as TierId, roomId: 'vip3ii_room', roomTier: 'vip3ii' as TierId, expected: false }, // VIP2 can't access VIP3II
   
-  // VIP3 tier
+  // VIP3 tier - should access both VIP3 and VIP3II (same level)
   { tier: 'vip3' as TierId, roomId: 'public_speaking_structure_vip3', roomTier: 'vip3' as TierId, expected: true },
+  { tier: 'vip3' as TierId, roomId: 'vip3ii_english_specialization', roomTier: 'vip3ii' as TierId, expected: true }, // VIP3 CAN access VIP3II
   { tier: 'vip3' as TierId, roomId: 'personal_safety_self_protection_vip4_bonus', roomTier: 'vip4' as TierId, expected: false },
+  
+  // VIP3II tier - same level as VIP3
+  { tier: 'vip3ii' as TierId, roomId: 'vip3_room', roomTier: 'vip3' as TierId, expected: true }, // VIP3II can access VIP3
+  { tier: 'vip3ii' as TierId, roomId: 'vip3ii_room', roomTier: 'vip3ii' as TierId, expected: true },
+  { tier: 'vip3ii' as TierId, roomId: 'vip4_room', roomTier: 'vip4' as TierId, expected: false },
   
   // VIP4 tier
   { tier: 'vip4' as TierId, roomId: 'personal_safety_self_protection_vip4_bonus', roomTier: 'vip4' as TierId, expected: true },
