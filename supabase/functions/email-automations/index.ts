@@ -134,6 +134,19 @@ Deno.serve(async (req) => {
   }
 
   try {
+    // Parse optional body for action (supports "run_daily" from cron)
+    let action = "run_daily";
+    try {
+      const body = await req.json();
+      if (body?.action) {
+        action = body.action;
+      }
+    } catch {
+      // No body or invalid JSON is fine, default to run_daily
+    }
+
+    console.log(`[email-automations] Starting with action: ${action}`);
+
     const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
     const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
     const resendApiKey = Deno.env.get("RESEND_API_KEY");
