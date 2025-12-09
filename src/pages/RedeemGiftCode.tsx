@@ -59,19 +59,30 @@ const RedeemGiftCode = () => {
     setIsRedeeming(true);
 
     try {
-      const { data: { session } } = await supabase.auth.getSession();
+      // Ensure access token is fresh
+      const { data: refreshed, error: refreshError } = await supabase.auth.refreshSession();
+      if (refreshError) {
+        console.error("[redeem-gift-code] refreshSession error:", refreshError);
+      }
+
+      const { data: { session: currentSession } } = await supabase.auth.getSession();
+      const activeSession = refreshed?.session ?? currentSession;
       
-      // This should rarely happen due to auth guard, but just in case
-      if (!session) {
+      if (!activeSession) {
+        toast({
+          title: "Login Required",
+          description: "Please log in to redeem your gift code.",
+          variant: "destructive",
+        });
         navigate("/auth?redirect=/redeem", { replace: true });
         return;
       }
 
-      console.log('[redeem-gift-code] Session valid, user:', session.user.id);
+      console.log('[redeem-gift-code] Session valid, user:', activeSession.user.id);
       
       const { data } = await supabase.functions.invoke("redeem-gift-code", {
         headers: {
-          Authorization: `Bearer ${session.access_token}`,
+          Authorization: `Bearer ${activeSession.access_token}`,
         },
         body: { code: code.trim() },
       });
