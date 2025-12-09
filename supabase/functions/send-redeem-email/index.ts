@@ -6,9 +6,10 @@ const corsHeaders = {
   "Content-Type": "application/json",
 };
 
-// Email configuration - easy to change later when moving to Zoho
+// Email configuration - easy to change later when domain is verified
+// For now, use Resend's default sender (onboarding@resend.dev) which works without domain verification
 const EMAIL_CONFIG = {
-  from: "Mercy Blade <no-reply@mercyblade.link>",
+  from: "Mercy Blade <onboarding@resend.dev>", // Change to no-reply@mercyblade.link after domain verification
   bcc: "cd12536@gmail.com",
   siteUrl: "https://mercyblade.link",
 };
