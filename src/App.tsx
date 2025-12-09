@@ -17,6 +17,7 @@ import { MercyToggle } from "@/components/companion/MercyToggle";
 import { MercyGuide } from "@/components/MercyGuide";
 import { GlobalNavigationBox } from "@/components/GlobalNavigationBox";
 import { AppVersionManager } from "@/components/AppVersionManager";
+import { GlobalFeedbackWidget } from "@/components/GlobalFeedbackWidget";
 import { logger } from "@/lib/logger";
 import EnvironmentBanner from "./components/admin/EnvironmentBanner";
 import { AppRouter } from "@/router/AppRouter";
@@ -109,6 +110,7 @@ const App = () => {
                     
                     <MercyToggle />
                     <MercyGuide />
+                    <GlobalFeedbackWidget />
                     <RouteAwareBottomBar />
                   </BrowserRouter>
                 </MusicPlayerProvider>
