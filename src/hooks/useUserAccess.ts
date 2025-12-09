@@ -5,6 +5,8 @@ import { canAccessVIPTier } from '@/lib/accessControl';
 
 export interface UserAccess {
   isAdmin: boolean;
+  isHighAdmin: boolean; // Level >= 9 in admin_users
+  adminLevel: number;
   isAuthenticated: boolean;
   isDemoMode: boolean;
   tier: TierId;
@@ -24,6 +26,8 @@ export interface UserAccess {
 export const useUserAccess = (): UserAccess => {
   const [access, setAccess] = useState<UserAccess>({
     isAdmin: false,
+    isHighAdmin: false,
+    adminLevel: 0,
     isAuthenticated: false,
     isDemoMode: true,
     tier: 'free',
@@ -51,6 +55,8 @@ export const useUserAccess = (): UserAccess => {
       if (!user) {
         const guestAccess: UserAccess = {
           isAdmin: false,
+          isHighAdmin: false,
+          adminLevel: 0,
           isAuthenticated: false,
           isDemoMode: true,
           tier: 'free',
@@ -70,7 +76,7 @@ export const useUserAccess = (): UserAccess => {
         return;
       }
 
-      // Check admin status via has_role() RPC to stay consistent with AdminRoute
+      // Check admin status via has_role() RPC (user_roles table)
       const { data: isAdminRpc, error: adminError } = await supabase.rpc('has_role', {
         _role: 'admin',
         _user_id: user.id,
@@ -80,7 +86,24 @@ export const useUserAccess = (): UserAccess => {
         console.error('Error checking admin role via has_role RPC:', adminError);
       }
 
-      const isAdmin = !!isAdminRpc;
+      // ALSO check admin_users table for high-level admins (level >= 9)
+      const { data: adminUserData } = await supabase
+        .from('admin_users')
+        .select('level')
+        .eq('user_id', user.id)
+        .maybeSingle();
+
+      const adminLevel = adminUserData?.level || 0;
+      const isHighAdmin = adminLevel >= 9;
+      const isAdmin = !!isAdminRpc || isHighAdmin; // Either user_roles admin OR high-level admin_users
+
+      console.log('[useUserAccess] Admin check:', { 
+        userId: user.id, 
+        isAdminRpc, 
+        adminLevel, 
+        isHighAdmin, 
+        isAdmin 
+      });
 
       // Check subscription tier
       const { data: subscription } = await supabase
@@ -92,15 +115,21 @@ export const useUserAccess = (): UserAccess => {
 
       const rawTierName = subscription?.subscription_tiers?.name || 'Free / Miễn phí';
       const tier: TierId = normalizeTier(rawTierName);
-      const finalTier: TierId = isAdmin ? 'vip9' : tier;
+      
+      // High-level admins (level >= 9) bypass all VIP gates
+      const finalTier: TierId = isHighAdmin ? 'vip9' : (isAdmin ? 'vip9' : tier);
 
       // Generic access checker - single source of truth
       const canAccessTier = (targetTier: TierId): boolean => {
+        // High-level admins can access everything
+        if (isHighAdmin) return true;
         return canAccessVIPTier(finalTier, targetTier);
       };
 
       const authenticatedAccess: UserAccess = {
         isAdmin,
+        isHighAdmin,
+        adminLevel,
         isAuthenticated: true,
         isDemoMode: false,
         tier: finalTier,
@@ -123,6 +152,8 @@ export const useUserAccess = (): UserAccess => {
       console.error('Error checking user access:', error);
       const errorAccess: UserAccess = {
         isAdmin: false,
+        isHighAdmin: false,
+        adminLevel: 0,
         isAuthenticated: false,
         isDemoMode: true,
         tier: 'free',
