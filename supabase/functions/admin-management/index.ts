@@ -1,39 +1,48 @@
-import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+  'Content-Type': 'application/json',
 };
 
-serve(async (req) => {
+function send(data: object) {
+  return new Response(JSON.stringify(data), { headers: corsHeaders, status: 200 });
+}
+
+Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') {
-    return new Response(null, { headers: corsHeaders });
+    return new Response(null, { headers: corsHeaders, status: 200 });
   }
 
   try {
     const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
+    const supabaseAnonKey = Deno.env.get('SUPABASE_ANON_KEY')!;
     const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
-    const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
-    // Get auth user
+    // Manual auth check
     const authHeader = req.headers.get('Authorization');
     if (!authHeader) {
-      return new Response(JSON.stringify({ ok: false, error: 'Unauthorized' }), {
-        status: 200,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-      });
+      console.log('[admin-management] No auth header');
+      return send({ ok: false, error: 'Not authenticated' });
     }
 
     const token = authHeader.replace('Bearer ', '');
-    const { data: { user }, error: authError } = await supabase.auth.getUser(token);
-    
-    if (authError || !user) {
-      return new Response(JSON.stringify({ ok: false, error: 'Invalid token' }), {
-        status: 200,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-      });
+    const supabaseAuth = createClient(supabaseUrl, supabaseAnonKey, {
+      global: { headers: { Authorization: `Bearer ${token}` } },
+    });
+
+    const { data: userData, error: authError } = await supabaseAuth.auth.getUser(token);
+    if (authError || !userData?.user) {
+      console.log('[admin-management] Auth failed:', authError?.message);
+      return send({ ok: false, error: 'Not authenticated' });
     }
+
+    const user = userData.user;
+    console.log(`[admin-management] User: ${user.email}`);
+
+    // Use service role for admin operations
+    const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
     // Get requestor's admin level
     const { data: requestorAdmin, error: adminError } = await supabase
@@ -43,97 +52,102 @@ serve(async (req) => {
       .single();
 
     if (adminError || !requestorAdmin) {
-      return new Response(JSON.stringify({ ok: false, error: 'Not an admin' }), {
-        status: 200,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-      });
+      console.log('[admin-management] Not an admin');
+      return send({ ok: false, error: 'Not an admin' });
     }
 
-    const { action, ...body } = await req.json();
+    console.log(`[admin-management] Admin level: ${requestorAdmin.level}`);
+
+    // Parse body
+    let body: Record<string, unknown> = {};
+    try {
+      body = await req.json();
+    } catch {
+      // Empty body OK for list
+    }
+
+    const action = body.action as string || 'list';
+    console.log(`[admin-management] Action: ${action}`);
 
     switch (action) {
       case 'list': {
-        // Return admins with level < requestor's level, plus self
         const { data: admins, error } = await supabase
           .from('admin_users')
           .select('*')
-          .or(`level.lt.${requestorAdmin.level},user_id.eq.${user.id}`)
           .order('level', { ascending: false });
 
         if (error) {
-          return new Response(JSON.stringify({ ok: false, error: error.message }), {
-            status: 200,
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-          });
+          return send({ ok: false, error: error.message });
         }
 
-        return new Response(JSON.stringify({ ok: true, admins, myLevel: requestorAdmin.level }), {
-          status: 200,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        // Filter to show admins at lower levels + self
+        const visibleAdmins = admins?.filter(a => a.level < requestorAdmin.level || a.user_id === user.id) || [];
+        
+        return send({
+          ok: true,
+          admins: visibleAdmins.map(a => ({
+            ...a,
+            is_current_user: a.user_id === user.id,
+            can_manage: a.level < requestorAdmin.level && a.level < 10,
+          })),
+          my_level: requestorAdmin.level,
         });
       }
 
       case 'my-role': {
-        // Return the requestor's admin info
-        return new Response(JSON.stringify({ 
-          ok: true, 
+        return send({
+          ok: true,
           admin: requestorAdmin,
           permissions: {
             canEditSystem: requestorAdmin.level >= 9,
             canCreateAdmins: requestorAdmin.level >= 9,
             canManageLevels: Array.from({ length: requestorAdmin.level - 1 }, (_, i) => i + 1),
           }
-        }), {
-          status: 200,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
         });
       }
 
       case 'create': {
-        const { email, level } = body;
-        
+        const email = body.email as string;
+        const level = (body.level as number) || 1;
+
+        if (!email) {
+          return send({ ok: false, error: 'Email is required' });
+        }
+
+        console.log(`[admin-management] Creating admin: ${email} at level ${level}`);
+
         // Only level 9+ can create admins
         if (requestorAdmin.level < 9) {
-          return new Response(JSON.stringify({ ok: false, error: 'Insufficient permissions. Only Level 9+ can create admins.' }), {
-            status: 200,
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-          });
+          return send({ ok: false, error: 'Only Level 9+ can create admins' });
         }
 
-        // Cannot create admin at or above own level (except Admin Master)
-        if (level >= requestorAdmin.level && requestorAdmin.level < 10) {
-          return new Response(JSON.stringify({ ok: false, error: 'Cannot create admin at or above your level' }), {
-            status: 200,
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-          });
+        // Cannot create at or above own level
+        if (level >= requestorAdmin.level) {
+          return send({ ok: false, error: 'Cannot create admin at or above your level' });
         }
 
-        // Find the user by email
-        const { data: targetUser, error: userError } = await supabase
-          .from('profiles')
-          .select('id, email')
-          .eq('email', email)
-          .single();
-
-        if (userError || !targetUser) {
-          return new Response(JSON.stringify({ ok: false, error: 'User not found with that email' }), {
-            status: 200,
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-          });
+        // Only Admin Master can create level 9
+        if (level === 9 && requestorAdmin.level !== 10) {
+          return send({ ok: false, error: 'Only Admin Master can create Level 9 admins' });
         }
 
         // Check if already an admin
-        const { data: existingAdmin } = await supabase
+        const { data: existing } = await supabase
           .from('admin_users')
           .select('id')
-          .eq('user_id', targetUser.id)
+          .eq('email', email)
           .single();
 
-        if (existingAdmin) {
-          return new Response(JSON.stringify({ ok: false, error: 'User is already an admin' }), {
-            status: 200,
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-          });
+        if (existing) {
+          return send({ ok: false, error: 'User is already an admin' });
+        }
+
+        // Find user by email using auth.admin.listUsers
+        const { data: authUsers } = await supabase.auth.admin.listUsers();
+        const targetUser = authUsers?.users?.find(u => u.email === email);
+
+        if (!targetUser) {
+          return send({ ok: false, error: 'User not found. They must sign up first.' });
         }
 
         // Create the admin
@@ -143,17 +157,20 @@ serve(async (req) => {
             user_id: targetUser.id,
             email: email,
             level: level,
-            created_by: user.id
+            created_by: requestorAdmin.id
           })
           .select()
           .single();
 
         if (createError) {
-          return new Response(JSON.stringify({ ok: false, error: createError.message }), {
-            status: 200,
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-          });
+          console.log('[admin-management] Create error:', createError.message);
+          return send({ ok: false, error: createError.message });
         }
+
+        // Also add to user_roles for has_role() compatibility
+        await supabase
+          .from('user_roles')
+          .upsert({ user_id: targetUser.id, role: 'admin' }, { onConflict: 'user_id,role' });
 
         // Log the action
         await supabase.from('admin_logs').insert({
@@ -164,227 +181,142 @@ serve(async (req) => {
           metadata: { email }
         });
 
-        return new Response(JSON.stringify({ ok: true, admin: newAdmin }), {
-          status: 200,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-        });
+        console.log(`[admin-management] Created admin ${email} at level ${level}`);
+        return send({ ok: true, message: `Admin ${email} created at level ${level}`, admin: newAdmin });
       }
 
-      case 'promote': {
-        const { adminId, newLevel } = body;
+      case 'update_level': {
+        const admin_id = body.admin_id as string;
+        const new_level = body.new_level as number;
+
+        if (!admin_id || new_level === undefined) {
+          return send({ ok: false, error: 'admin_id and new_level are required' });
+        }
+
+        console.log(`[admin-management] Updating admin ${admin_id} to level ${new_level}`);
 
         // Get target admin
         const { data: targetAdmin, error: targetError } = await supabase
           .from('admin_users')
           .select('*')
-          .eq('id', adminId)
+          .eq('id', admin_id)
           .single();
 
         if (targetError || !targetAdmin) {
-          return new Response(JSON.stringify({ ok: false, error: 'Admin not found' }), {
-            status: 200,
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-          });
+          return send({ ok: false, error: 'Admin not found' });
         }
 
-        // Cannot promote to level 9+ unless Admin Master
-        if (newLevel >= 9 && requestorAdmin.level < 10) {
-          return new Response(JSON.stringify({ ok: false, error: 'Only Admin Master can promote to Level 9+' }), {
-            status: 200,
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-          });
-        }
-
-        // Cannot promote to or above own level
-        if (newLevel >= requestorAdmin.level) {
-          return new Response(JSON.stringify({ ok: false, error: 'Cannot promote to or above your level' }), {
-            status: 200,
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-          });
-        }
-
-        // Must be higher level than target
-        if (requestorAdmin.level <= targetAdmin.level) {
-          return new Response(JSON.stringify({ ok: false, error: 'Cannot promote admin at or above your level' }), {
-            status: 200,
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-          });
-        }
-
-        const oldLevel = targetAdmin.level;
-
-        // Update the admin
-        const { error: updateError } = await supabase
-          .from('admin_users')
-          .update({ level: newLevel })
-          .eq('id', adminId);
-
-        if (updateError) {
-          return new Response(JSON.stringify({ ok: false, error: updateError.message }), {
-            status: 200,
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-          });
-        }
-
-        // Log the action
-        await supabase.from('admin_logs').insert({
-          actor_admin_id: requestorAdmin.id,
-          target_admin_id: adminId,
-          action: 'promote',
-          old_level: oldLevel,
-          new_level: newLevel
-        });
-
-        return new Response(JSON.stringify({ ok: true }), {
-          status: 200,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-        });
-      }
-
-      case 'demote': {
-        const { adminId, newLevel } = body;
-
-        // Get target admin
-        const { data: targetAdmin, error: targetError } = await supabase
-          .from('admin_users')
-          .select('*')
-          .eq('id', adminId)
-          .single();
-
-        if (targetError || !targetAdmin) {
-          return new Response(JSON.stringify({ ok: false, error: 'Admin not found' }), {
-            status: 200,
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-          });
-        }
-
-        // Cannot demote Admin Master
+        // Cannot modify Admin Master
         if (targetAdmin.level === 10) {
-          return new Response(JSON.stringify({ ok: false, error: 'Cannot demote Admin Master' }), {
-            status: 200,
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-          });
+          return send({ ok: false, error: 'Cannot modify Admin Master' });
         }
 
         // Must be higher level than target
         if (requestorAdmin.level <= targetAdmin.level) {
-          return new Response(JSON.stringify({ ok: false, error: 'Cannot demote admin at or above your level' }), {
-            status: 200,
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-          });
+          return send({ ok: false, error: 'Cannot modify admin at or above your level' });
         }
 
-        // New level must be less than current
-        if (newLevel >= targetAdmin.level) {
-          return new Response(JSON.stringify({ ok: false, error: 'New level must be lower than current level' }), {
-            status: 200,
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-          });
+        // Cannot set to or above own level
+        if (new_level >= requestorAdmin.level) {
+          return send({ ok: false, error: 'Cannot set level at or above your own' });
+        }
+
+        // Only Admin Master can set to level 9
+        if (new_level === 9 && requestorAdmin.level !== 10) {
+          return send({ ok: false, error: 'Only Admin Master can set Level 9' });
         }
 
         const oldLevel = targetAdmin.level;
 
-        // Update the admin
+        // Update
         const { error: updateError } = await supabase
           .from('admin_users')
-          .update({ level: newLevel })
-          .eq('id', adminId);
+          .update({ level: new_level })
+          .eq('id', admin_id);
 
         if (updateError) {
-          return new Response(JSON.stringify({ ok: false, error: updateError.message }), {
-            status: 200,
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-          });
+          return send({ ok: false, error: updateError.message });
         }
 
         // Log the action
         await supabase.from('admin_logs').insert({
           actor_admin_id: requestorAdmin.id,
-          target_admin_id: adminId,
-          action: 'demote',
+          target_admin_id: admin_id,
+          action: new_level > oldLevel ? 'promote' : 'demote',
           old_level: oldLevel,
-          new_level: newLevel
+          new_level: new_level
         });
 
-        return new Response(JSON.stringify({ ok: true }), {
-          status: 200,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-        });
+        console.log(`[admin-management] Updated ${targetAdmin.email} from level ${oldLevel} to ${new_level}`);
+        return send({ ok: true, message: `Level changed from ${oldLevel} to ${new_level}` });
       }
 
       case 'delete': {
-        const { adminId } = body;
+        const admin_id = body.admin_id as string;
+
+        if (!admin_id) {
+          return send({ ok: false, error: 'admin_id is required' });
+        }
+
+        console.log(`[admin-management] Deleting admin ${admin_id}`);
 
         // Get target admin
         const { data: targetAdmin, error: targetError } = await supabase
           .from('admin_users')
           .select('*')
-          .eq('id', adminId)
+          .eq('id', admin_id)
           .single();
 
         if (targetError || !targetAdmin) {
-          return new Response(JSON.stringify({ ok: false, error: 'Admin not found' }), {
-            status: 200,
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-          });
+          return send({ ok: false, error: 'Admin not found' });
         }
 
         // Cannot delete Admin Master
         if (targetAdmin.level === 10) {
-          return new Response(JSON.stringify({ ok: false, error: 'Cannot delete Admin Master' }), {
-            status: 200,
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-          });
+          return send({ ok: false, error: 'Cannot delete Admin Master' });
         }
 
         // Must be higher level than target
         if (requestorAdmin.level <= targetAdmin.level) {
-          return new Response(JSON.stringify({ ok: false, error: 'Cannot delete admin at or above your level' }), {
-            status: 200,
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-          });
+          return send({ ok: false, error: 'Cannot delete admin at or above your level' });
         }
 
         // Delete the admin
         const { error: deleteError } = await supabase
           .from('admin_users')
           .delete()
-          .eq('id', adminId);
+          .eq('id', admin_id);
 
         if (deleteError) {
-          return new Response(JSON.stringify({ ok: false, error: deleteError.message }), {
-            status: 200,
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-          });
+          return send({ ok: false, error: deleteError.message });
         }
+
+        // Also remove from user_roles
+        await supabase
+          .from('user_roles')
+          .delete()
+          .eq('user_id', targetAdmin.user_id)
+          .eq('role', 'admin');
 
         // Log the action
         await supabase.from('admin_logs').insert({
           actor_admin_id: requestorAdmin.id,
-          target_admin_id: adminId,
+          target_admin_id: admin_id,
           action: 'delete',
           old_level: targetAdmin.level,
           metadata: { email: targetAdmin.email }
         });
 
-        return new Response(JSON.stringify({ ok: true }), {
-          status: 200,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-        });
+        console.log(`[admin-management] Deleted admin ${targetAdmin.email}`);
+        return send({ ok: true, message: `Admin ${targetAdmin.email} removed` });
       }
 
       default:
-        return new Response(JSON.stringify({ ok: false, error: 'Unknown action' }), {
-          status: 200,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-        });
+        return send({ ok: false, error: `Unknown action: ${action}` });
     }
   } catch (error: unknown) {
-    console.error('Admin management error:', error);
+    console.error('[admin-management] Error:', error);
     const message = error instanceof Error ? error.message : 'Unknown error';
-    return new Response(JSON.stringify({ ok: false, error: message }), {
-      status: 200,
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-    });
+    return send({ ok: false, error: message });
   }
 });
