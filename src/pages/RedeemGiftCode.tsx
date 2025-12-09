@@ -18,12 +18,18 @@ const RedeemGiftCode = () => {
   // Auth guard - redirect to login if not authenticated
   useEffect(() => {
     const checkSession = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (!session) {
-        navigate("/auth?redirect=/redeem", { replace: true });
-        return;
+      try {
+        const { data: { session }, error } = await supabase.auth.getSession();
+        if (error) {
+          console.error("[redeem] getSession error:", error);
+        }
+        if (!session) {
+          navigate("/auth?redirect=/redeem", { replace: true });
+          return;
+        }
+      } finally {
+        setCheckingAuth(false);
       }
-      setCheckingAuth(false);
     };
     checkSession();
 
@@ -47,7 +53,9 @@ const RedeemGiftCode = () => {
   }
 
   const handleRedeem = async () => {
-    if (!code.trim()) {
+    const cleanedCode = code.trim().toUpperCase();
+    
+    if (!cleanedCode) {
       toast({
         title: "Error",
         description: "Please enter a gift code",
@@ -84,7 +92,7 @@ const RedeemGiftCode = () => {
         headers: {
           Authorization: `Bearer ${activeSession.access_token}`,
         },
-        body: { code: code.trim() },
+        body: { code: cleanedCode },
       });
 
       // SDK no longer throws because edge function always returns 200
