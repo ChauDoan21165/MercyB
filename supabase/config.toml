@@ -1,5 +1,11 @@
 project_id = "vpkchobbrennozdvhgaw"
 
+[functions.email-broadcast]
+verify_jwt = false
+
+[functions.email-automations]
+verify_jwt = false
+
 [functions.room-chat]
 verify_jwt = true
 
