@@ -155,6 +155,54 @@ export type Database = {
         }
         Relationships: []
       }
+      admin_logs: {
+        Row: {
+          action: string
+          actor_admin_id: string | null
+          created_at: string
+          id: string
+          metadata: Json | null
+          new_level: number | null
+          old_level: number | null
+          target_admin_id: string | null
+        }
+        Insert: {
+          action: string
+          actor_admin_id?: string | null
+          created_at?: string
+          id?: string
+          metadata?: Json | null
+          new_level?: number | null
+          old_level?: number | null
+          target_admin_id?: string | null
+        }
+        Update: {
+          action?: string
+          actor_admin_id?: string | null
+          created_at?: string
+          id?: string
+          metadata?: Json | null
+          new_level?: number | null
+          old_level?: number | null
+          target_admin_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "admin_logs_actor_admin_id_fkey"
+            columns: ["actor_admin_id"]
+            isOneToOne: false
+            referencedRelation: "admin_users"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "admin_logs_target_admin_id_fkey"
+            columns: ["target_admin_id"]
+            isOneToOne: false
+            referencedRelation: "admin_users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       admin_notification_preferences: {
         Row: {
           admin_user_id: string
@@ -237,6 +285,36 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      admin_users: {
+        Row: {
+          created_at: string
+          created_by: string | null
+          email: string
+          id: string
+          level: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          created_by?: string | null
+          email: string
+          id?: string
+          level: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string | null
+          email?: string
+          id?: string
+          level?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
       }
       ai_settings: {
         Row: {
@@ -3167,6 +3245,11 @@ export type Database = {
         }
         Returns: undefined
       }
+      can_edit_system: { Args: { _user_id: string }; Returns: boolean }
+      can_manage_admin: {
+        Args: { _requestor_id: string; _target_level: number }
+        Returns: boolean
+      }
       check_endpoint_rate_limit: {
         Args: { endpoint_name: string; user_uuid: string }
         Returns: boolean
@@ -3187,6 +3270,7 @@ export type Database = {
       clean_expired_responses: { Args: never; Returns: undefined }
       cleanup_rate_limits: { Args: never; Returns: undefined }
       generate_referral_code: { Args: never; Returns: string }
+      get_admin_level: { Args: { _user_id: string }; Returns: number }
       get_ai_usage_summary: {
         Args: { end_date?: string; start_date?: string }
         Returns: {
