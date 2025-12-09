@@ -121,6 +121,7 @@ const RoomAnalytics = lazy(() => import("@/pages/admin/RoomAnalytics"));
 const AuditSafeShield = lazy(() => import("@/components/admin/AuditSafeShield"));
 const SystemCodeFiles = lazy(() => import("@/pages/admin/SystemCodeFiles"));
 const CodeViewer = lazy(() => import("@/pages/admin/CodeViewer"));
+const TestEmail = lazy(() => import("@/pages/admin/TestEmail"));
 
 export function AppRouter() {
   return (
@@ -253,6 +254,7 @@ export function AppRouter() {
         <Route path="/admin/audit-v4" element={<AdminRoute><AuditSafeShield /></AdminRoute>} />
         <Route path="/admin/code-files" element={<AdminRoute><SystemCodeFiles /></AdminRoute>} />
         <Route path="/admin/code-viewer/:filePath" element={<AdminRoute><CodeViewer /></AdminRoute>} />
+        <Route path="/admin/test-email" element={<AdminRoute><TestEmail /></AdminRoute>} />
         
         {/* 404 */}
         <Route path="*" element={<NotFound />} />

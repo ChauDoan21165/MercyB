@@ -131,6 +131,35 @@ Deno.serve(async (req) => {
       })
       .eq("id", gift.id);
 
+    // --- SEND CONFIRMATION EMAIL (fire-and-forget, never fails redemption) ---
+    try {
+      const emailPayload = {
+        email: user.email,
+        tier: gift.tier,
+      };
+      console.log("[redeem-gift-code] Sending confirmation email:", emailPayload);
+      
+      const emailResponse = await fetch(
+        `${Deno.env.get("SUPABASE_URL")}/functions/v1/send-redeem-email`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${Deno.env.get("SUPABASE_ANON_KEY")}`,
+          },
+          body: JSON.stringify(emailPayload),
+        }
+      );
+      const emailResult = await emailResponse.json();
+      if (emailResult.ok) {
+        console.log("[redeem-gift-code] Email sent successfully:", emailResult.emailId);
+      } else {
+        console.error("[redeem-gift-code] Email failed:", emailResult.error);
+      }
+    } catch (emailErr) {
+      console.error("[redeem-gift-code] Email error (non-blocking):", emailErr);
+    }
+
     // SUCCESS RESPONSE
     return send({
       ok: true,
