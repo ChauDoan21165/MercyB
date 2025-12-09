@@ -3,6 +3,13 @@
  * 
  * Request: POST { code: string }
  * Response: { ok: boolean, tier?: string, message?: string, error?: string }
+ * 
+ * Status codes:
+ * - 200: Success
+ * - 400: Bad request (missing/invalid code, code not found, expired, already used)
+ * - 401: Not authenticated
+ * - 409: Already redeemed this tier
+ * - 500: Server error
  */
 
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.39.3';
@@ -12,6 +19,10 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
   'Content-Type': 'application/json',
 };
+
+function jsonResponse(data: object, status = 200) {
+  return new Response(JSON.stringify(data), { headers: corsHeaders, status });
+}
 
 Deno.serve(async (req) => {
   // Handle CORS preflight
@@ -23,10 +34,7 @@ Deno.serve(async (req) => {
     // Get authorization header
     const authHeader = req.headers.get('Authorization');
     if (!authHeader) {
-      return new Response(
-        JSON.stringify({ ok: false, error: 'Please log in to redeem your gift code.' }),
-        { headers: corsHeaders, status: 200 } // Return 200 so SDK parses the JSON
-      );
+      return jsonResponse({ ok: false, error: 'Please log in to redeem your gift code.' }, 401);
     }
 
     // Create clients
@@ -46,10 +54,7 @@ Deno.serve(async (req) => {
     
     if (authError || !user) {
       console.error('[redeem-gift-code] Auth error:', authError?.message);
-      return new Response(
-        JSON.stringify({ ok: false, error: 'Session expired. Please log in again.' }),
-        { headers: corsHeaders, status: 200 }
-      );
+      return jsonResponse({ ok: false, error: 'Session expired. Please log in again.' }, 401);
     }
 
     console.log('[redeem-gift-code] User:', user.id, user.email);
@@ -59,23 +64,17 @@ Deno.serve(async (req) => {
     try {
       body = await req.json();
     } catch {
-      return new Response(
-        JSON.stringify({ ok: false, error: 'Invalid request format.' }),
-        { headers: corsHeaders, status: 200 }
-      );
+      return jsonResponse({ ok: false, error: 'Invalid request format.' }, 400);
     }
 
     const code = body?.code?.trim()?.toUpperCase();
     if (!code) {
-      return new Response(
-        JSON.stringify({ ok: false, error: 'Please enter a gift code.' }),
-        { headers: corsHeaders, status: 200 }
-      );
+      return jsonResponse({ ok: false, error: 'Please enter a gift code.' }, 400);
     }
 
     console.log('[redeem-gift-code] Looking up code:', code);
 
-    // Look up gift code
+    // Look up gift code using admin client (bypasses RLS)
     const { data: giftCode, error: codeError } = await supabaseAdmin
       .from('gift_codes')
       .select('*')
@@ -86,23 +85,17 @@ Deno.serve(async (req) => {
 
     if (codeError || !giftCode) {
       console.log('[redeem-gift-code] Code not found:', code, codeError?.message);
-      return new Response(
-        JSON.stringify({ ok: false, error: "Gift code not found. Please check the spelling." }),
-        { headers: corsHeaders, status: 200 }
-      );
+      return jsonResponse({ ok: false, error: 'Gift code not found. Please check the spelling.' }, 400);
     }
 
     console.log('[redeem-gift-code] Found code:', giftCode.id, 'tier:', giftCode.tier);
 
     // Check if expired
     if (giftCode.code_expires_at && new Date(giftCode.code_expires_at) < new Date()) {
-      return new Response(
-        JSON.stringify({ ok: false, error: "This gift code has expired." }),
-        { headers: corsHeaders, status: 200 }
-      );
+      return jsonResponse({ ok: false, error: 'This gift code has expired.' }, 400);
     }
 
-    // Check if user already has this tier from a gift code
+    // Check if user already redeemed this tier
     const { data: existingRedemption } = await supabaseAdmin
       .from('gift_codes')
       .select('id')
@@ -111,10 +104,7 @@ Deno.serve(async (req) => {
       .single();
 
     if (existingRedemption) {
-      return new Response(
-        JSON.stringify({ ok: false, error: `You've already redeemed a ${giftCode.tier} gift code.` }),
-        { headers: corsHeaders, status: 200 }
-      );
+      return jsonResponse({ ok: false, error: `You've already redeemed a ${giftCode.tier} gift code.` }, 409);
     }
 
     const now = new Date().toISOString();
@@ -130,20 +120,17 @@ Deno.serve(async (req) => {
 
     if (tierError) {
       console.error('[redeem-gift-code] Tier upsert error:', tierError);
-      return new Response(
-        JSON.stringify({ ok: false, error: "Failed to apply gift code. Please try again." }),
-        { headers: corsHeaders, status: 200 }
-      );
+      return jsonResponse({ ok: false, error: 'Failed to apply gift code. Please try again.' }, 500);
     }
 
     // Update user_subscriptions for access control
-    const { data: tier } = await supabaseAdmin
+    const { data: tierData } = await supabaseAdmin
       .from('subscription_tiers')
       .select('id')
       .eq('name', giftCode.tier)
       .single();
 
-    if (tier) {
+    if (tierData) {
       const endDate = new Date();
       endDate.setFullYear(endDate.getFullYear() + 1);
 
@@ -151,7 +138,7 @@ Deno.serve(async (req) => {
         .from('user_subscriptions')
         .upsert({
           user_id: user.id,
-          tier_id: tier.id,
+          tier_id: tierData.id,
           status: 'active',
           current_period_start: now,
           current_period_end: endDate.toISOString(),
@@ -172,20 +159,14 @@ Deno.serve(async (req) => {
 
     console.log('[redeem-gift-code] Success for user:', user.id);
 
-    return new Response(
-      JSON.stringify({ 
-        ok: true, 
-        tier: giftCode.tier,
-        message: `Welcome to ${giftCode.tier}! Your access is now active.`
-      }),
-      { headers: corsHeaders, status: 200 }
-    );
+    return jsonResponse({ 
+      ok: true, 
+      tier: giftCode.tier,
+      message: `Welcome to ${giftCode.tier}! Your access is now active.`
+    }, 200);
 
   } catch (error) {
     console.error('[redeem-gift-code] Error:', error);
-    return new Response(
-      JSON.stringify({ ok: false, error: "Something went wrong. Please try again." }),
-      { headers: corsHeaders, status: 200 }
-    );
+    return jsonResponse({ ok: false, error: 'Something went wrong. Please try again.' }, 500);
   }
 });
