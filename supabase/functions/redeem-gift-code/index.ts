@@ -39,6 +39,7 @@ Deno.serve(async (req) => {
     );
 
     const { data: { user }, error: authError } = await supabaseClient.auth.getUser();
+    console.log("[redeem-gift-code] auth user:", user?.id, "error:", authError?.message);
     if (authError || !user) {
       return send({ ok: false, error: "Session expired. Please log in again." });
     }

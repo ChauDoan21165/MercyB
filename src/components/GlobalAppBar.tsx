@@ -8,7 +8,7 @@
 
 import { Button } from '@/components/ui/button';
 import { LogIn, Eye, ChevronRight, Home } from 'lucide-react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useLocation } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { useEffect, useState } from 'react';
 import { ThemeToggle } from '@/components/ThemeToggle';
@@ -30,7 +30,10 @@ export function GlobalAppBar({
   mode = "color" 
 }: GlobalAppBarProps) {
   const navigate = useNavigate();
+  const location = useLocation();
   const [user, setUser] = useState<any>(null);
+  
+  const redirectParam = encodeURIComponent(location.pathname + location.search);
 
   useEffect(() => {
     const checkUser = async () => {
@@ -97,7 +100,7 @@ export function GlobalAppBar({
             
             {!user ? (
               <Button
-                onClick={() => navigate('/auth')}
+                onClick={() => navigate(`/auth?redirect=${redirectParam}`)}
                 size="sm"
                 className="gap-1.5 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white shadow-sm h-8 px-3"
               >
