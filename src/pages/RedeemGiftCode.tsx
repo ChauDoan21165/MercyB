@@ -49,12 +49,14 @@ const RedeemGiftCode = () => {
 
       console.log('[redeem-gift-code] Response:', { data, error });
 
-      // Handle network/invocation errors
+      // Handle SDK-level errors (network issues, non-JSON responses)
       if (error) {
         console.error('[redeem-gift-code] Invoke error:', error);
+        // Try to extract message from error context
+        const errorMsg = error.message || error.context?.message || "Could not reach the server. Please try again.";
         toast({
-          title: "Connection Error",
-          description: "Could not reach the server. Please try again.",
+          title: "Error",
+          description: errorMsg,
           variant: "destructive",
         });
         return;
