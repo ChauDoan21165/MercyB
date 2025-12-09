@@ -27,8 +27,8 @@ const VIP3_SPECIAL_ROOMS: Record<string, string> = {
 
 const RoomGridVIP3 = () => {
   const navigate = useNavigate();
-  const { isAdmin, isLoading: accessLoading, canAccessTier } = useUserAccess();
-  const hasAccess = canAccessTier('vip3');
+  const { isAdmin, isHighAdmin, isLoading: accessLoading, canAccessTier } = useUserAccess();
+  const hasAccess = canAccessTier('vip3') || isHighAdmin; // Admin bypass
   const { toast } = useToast();
   const { data: allRooms, isLoading: loading, error, refetch: refresh } = useRegistryVipRooms('vip3');
   const rooms = allRooms || [];

@@ -28,6 +28,7 @@ const TIER_HIERARCHY: Record<TierId, number> = {
   vip1: 2,
   vip2: 3,
   vip3: 4,
+  vip3ii: 4, // VIP3II has same level as VIP3
   vip4: 5,
   vip5: 6,
   vip6: 7,

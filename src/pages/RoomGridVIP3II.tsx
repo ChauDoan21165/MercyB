@@ -18,7 +18,8 @@ import { VIPLockedAccess } from "@/components/VIPLockedAccess";
 
 const RoomGridVIP3II = () => {
   const navigate = useNavigate();
-  const { canAccessVIP3II, isAdmin, loading: accessLoading } = useUserAccess();
+  const { canAccessVIP3II, isAdmin, isHighAdmin, loading: accessLoading } = useUserAccess();
+  const hasAccess = canAccessVIP3II || isHighAdmin; // Admin bypass
   const { toast } = useToast();
   const [isIntroPlaying, setIsIntroPlaying] = useState(false);
   const { data: rooms, isLoading: loading, error, refetch: refresh } = useRegistryVipRooms('vip3ii');
@@ -46,7 +47,7 @@ const RoomGridVIP3II = () => {
     );
   }
 
-  if (!canAccessVIP3II) {
+  if (!hasAccess) {
     return <VIPLockedAccess tier="vip3ii" tierLabel="VIP3 II" backgroundColor="hsl(220, 70%, 95%)" />;
   }
 
