@@ -162,11 +162,30 @@ Deno.serve(async (req) => {
       .from("gift_codes")
       .update({
         used_by: user.id,
+        used_by_email: user.email,
         used_at: now,
         is_active: false,
         updated_at: now,
       })
       .eq("id", gift.id);
+
+    // --- LOG TO AUDIT ---
+    try {
+      await admin.from("audit_logs").insert({
+        admin_id: user.id,
+        action: "gift_code_redeemed",
+        target_id: gift.id,
+        target_type: "gift_code",
+        metadata: {
+          code: code,
+          tier: gift.tier,
+          user_email: user.email,
+        },
+      });
+      console.log("[redeem-gift-code] Audit log created");
+    } catch (auditErr) {
+      console.error("[redeem-gift-code] Audit log failed (non-blocking):", auditErr);
+    }
 
     // --- SEND CONFIRMATION EMAIL (fire-and-forget, never fails redemption) ---
     try {
