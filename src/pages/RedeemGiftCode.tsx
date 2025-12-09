@@ -47,12 +47,24 @@ const RedeemGiftCode = () => {
         body: { code: code.trim() },
       });
 
-      if (error) throw error;
+      console.log('[redeem-gift-code] Response:', { data, error });
 
-      if (data.error) {
+      // Handle network/invocation errors
+      if (error) {
+        console.error('[redeem-gift-code] Invoke error:', error);
+        toast({
+          title: "Connection Error",
+          description: "Could not reach the server. Please try again.",
+          variant: "destructive",
+        });
+        return;
+      }
+
+      // Handle application-level errors from the function
+      if (!data?.ok) {
         toast({
           title: "Redemption Failed",
-          description: data.error,
+          description: data?.error || "Unknown error occurred",
           variant: "destructive",
         });
         return;
