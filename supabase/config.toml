@@ -79,7 +79,7 @@ verify_jwt = true
 verify_jwt = true
 
 [functions.redeem-gift-code]
-verify_jwt = true
+verify_jwt = false
 
 [functions.ai-dashboard]
 verify_jwt = true
