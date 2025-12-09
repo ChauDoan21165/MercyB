@@ -7,7 +7,7 @@
  */
 
 import { Button } from '@/components/ui/button';
-import { UserPlus, Eye, ChevronRight, Home } from 'lucide-react';
+import { LogIn, Eye, ChevronRight, Home } from 'lucide-react';
 import { useNavigate, Link } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { useEffect, useState } from 'react';
@@ -99,10 +99,10 @@ export function GlobalAppBar({
               <Button
                 onClick={() => navigate('/auth')}
                 size="sm"
-                className="gap-1.5 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white shadow-sm h-8 px-3"
+                className="gap-1.5 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white shadow-sm h-8 px-3"
               >
-                <UserPlus className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline text-xs">Sign Up</span>
+                <LogIn className="w-3.5 h-3.5" />
+                <span className="text-xs">Login / Đăng nhập</span>
               </Button>
             ) : (
               <Button 

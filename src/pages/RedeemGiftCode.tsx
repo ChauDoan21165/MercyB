@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -11,8 +11,40 @@ import { ColorfulMercyBladeHeader } from "@/components/ColorfulMercyBladeHeader"
 const RedeemGiftCode = () => {
   const [code, setCode] = useState("");
   const [isRedeeming, setIsRedeeming] = useState(false);
+  const [checkingAuth, setCheckingAuth] = useState(true);
   const { toast } = useToast();
   const navigate = useNavigate();
+
+  // Auth guard - redirect to login if not authenticated
+  useEffect(() => {
+    const checkSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) {
+        navigate("/auth?redirect=/redeem", { replace: true });
+        return;
+      }
+      setCheckingAuth(false);
+    };
+    checkSession();
+
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (!session) {
+        navigate("/auth?redirect=/redeem", { replace: true });
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, [navigate]);
+
+  // Show nothing while checking auth (will redirect if not logged in)
+  if (checkingAuth) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-purple-50 to-pink-50 flex items-center justify-center">
+        <Loader2 className="w-8 h-8 animate-spin text-purple-600" />
+      </div>
+    );
+  }
 
   const handleRedeem = async () => {
     if (!code.trim()) {
@@ -27,17 +59,11 @@ const RedeemGiftCode = () => {
     setIsRedeeming(true);
 
     try {
-      // CRITICAL: Check if user is logged in FIRST
-      const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+      const { data: { session } } = await supabase.auth.getSession();
       
-      if (sessionError || !session) {
-        console.error('[redeem-gift-code] No active session:', sessionError);
-        toast({
-          title: "Login Required",
-          description: "Please log in to redeem your gift code",
-          variant: "destructive",
-        });
-        navigate('/auth?redirect=/redeem');
+      // This should rarely happen due to auth guard, but just in case
+      if (!session) {
+        navigate("/auth?redirect=/redeem", { replace: true });
         return;
       }
 
