@@ -20,8 +20,9 @@ const corsHeaders = {
   'Content-Type': 'application/json',
 };
 
-function jsonResponse(data: object, status = 200) {
-  return new Response(JSON.stringify(data), { headers: corsHeaders, status });
+function jsonResponse(data: object) {
+  // Always return 200 to avoid Supabase SDK throwing FunctionsHttpError
+  return new Response(JSON.stringify(data), { headers: corsHeaders, status: 200 });
 }
 
 Deno.serve(async (req) => {
@@ -34,7 +35,7 @@ Deno.serve(async (req) => {
     // Get authorization header
     const authHeader = req.headers.get('Authorization');
     if (!authHeader) {
-      return jsonResponse({ ok: false, error: 'Please log in to redeem your gift code.' }, 401);
+      return jsonResponse({ ok: false, error: 'Please log in to redeem your gift code.' });
     }
 
     // Create clients
@@ -54,7 +55,7 @@ Deno.serve(async (req) => {
     
     if (authError || !user) {
       console.error('[redeem-gift-code] Auth error:', authError?.message);
-      return jsonResponse({ ok: false, error: 'Session expired. Please log in again.' }, 401);
+      return jsonResponse({ ok: false, error: 'Session expired. Please log in again.' });
     }
 
     console.log('[redeem-gift-code] User:', user.id, user.email);
@@ -64,12 +65,12 @@ Deno.serve(async (req) => {
     try {
       body = await req.json();
     } catch {
-      return jsonResponse({ ok: false, error: 'Invalid request format.' }, 400);
+      return jsonResponse({ ok: false, error: 'Invalid request format.' });
     }
 
     const code = body?.code?.trim()?.toUpperCase();
     if (!code) {
-      return jsonResponse({ ok: false, error: 'Please enter a gift code.' }, 400);
+      return jsonResponse({ ok: false, error: 'Please enter a gift code.' });
     }
 
     console.log('[redeem-gift-code] Looking up code:', code);
@@ -85,14 +86,14 @@ Deno.serve(async (req) => {
 
     if (codeError || !giftCode) {
       console.log('[redeem-gift-code] Code not found:', code, codeError?.message);
-      return jsonResponse({ ok: false, error: 'Gift code not found. Please check the spelling.' }, 400);
+      return jsonResponse({ ok: false, error: 'Gift code not found. Please check the spelling.' });
     }
 
     console.log('[redeem-gift-code] Found code:', giftCode.id, 'tier:', giftCode.tier);
 
     // Check if expired
     if (giftCode.code_expires_at && new Date(giftCode.code_expires_at) < new Date()) {
-      return jsonResponse({ ok: false, error: 'This gift code has expired.' }, 400);
+      return jsonResponse({ ok: false, error: 'This gift code has expired.' });
     }
 
     // Check if user already redeemed this tier
@@ -104,7 +105,7 @@ Deno.serve(async (req) => {
       .single();
 
     if (existingRedemption) {
-      return jsonResponse({ ok: false, error: `You've already redeemed a ${giftCode.tier} gift code.` }, 409);
+      return jsonResponse({ ok: false, error: `You've already redeemed a ${giftCode.tier} gift code.` });
     }
 
     const now = new Date().toISOString();
@@ -120,7 +121,7 @@ Deno.serve(async (req) => {
 
     if (tierError) {
       console.error('[redeem-gift-code] Tier upsert error:', tierError);
-      return jsonResponse({ ok: false, error: 'Failed to apply gift code. Please try again.' }, 500);
+      return jsonResponse({ ok: false, error: 'Failed to apply gift code. Please try again.' });
     }
 
     // Update user_subscriptions for access control
@@ -163,10 +164,10 @@ Deno.serve(async (req) => {
       ok: true, 
       tier: giftCode.tier,
       message: `Welcome to ${giftCode.tier}! Your access is now active.`
-    }, 200);
+    });
 
   } catch (error) {
     console.error('[redeem-gift-code] Error:', error);
-    return jsonResponse({ ok: false, error: 'Something went wrong. Please try again.' }, 500);
+    return jsonResponse({ ok: false, error: 'Something went wrong. Please try again.' });
   }
 });
