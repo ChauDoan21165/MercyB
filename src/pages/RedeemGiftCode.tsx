@@ -65,6 +65,23 @@ const RedeemGiftCode = () => {
         description: data.message,
       });
 
+      // Send confirmation email (fire and forget - don't block success)
+      try {
+        const emailResult = await supabase.functions.invoke("send-redeem-email", {
+          body: {
+            email: session.user.email,
+            tier: data.tier,
+          },
+        });
+        if (emailResult.data?.ok) {
+          console.log("[redeem] Confirmation email sent");
+        } else {
+          console.error("[redeem] Email send failed:", emailResult.data?.error);
+        }
+      } catch (emailError) {
+        console.error("[redeem] Email error (non-blocking):", emailError);
+      }
+
       // Clear the input
       setCode("");
 
