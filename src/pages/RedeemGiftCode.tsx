@@ -43,28 +43,18 @@ const RedeemGiftCode = () => {
 
       console.log('[redeem-gift-code] Session valid, user:', session.user.id);
       
-      const { data, error } = await supabase.functions.invoke('redeem-gift-code', {
+      const { data } = await supabase.functions.invoke("redeem-gift-code", {
         headers: {
           Authorization: `Bearer ${session.access_token}`,
         },
         body: { code: code.trim() },
       });
 
-      console.log('[redeem-gift-code] Response:', { data, error });
-
-      if (error) {
-        toast({
-          title: "Error",
-          description: error.message,
-          variant: "destructive",
-        });
-        return;
-      }
-
+      // SDK no longer throws because edge function always returns 200
       if (!data?.ok) {
         toast({
-          title: "Failed",
-          description: data?.error || "Unknown error occurred",
+          title: "Redeem Failed",
+          description: data?.error || "Unknown error.",
           variant: "destructive",
         });
         return;
