@@ -381,24 +381,28 @@ export async function getRoomsByTier(tier: string): Promise<RoomMeta[]> {
   
   return rooms.filter((r) => {
     const roomTierLower = (r.tier || '').toLowerCase().trim();
+    const roomIdLower = r.id.toLowerCase();
+    
+    // VIP3II: Check room ID for "vip3ii", "vip3_ii", "vip3-ii" patterns
+    // These rooms have tier "VIP3 / VIP3" in DB but belong to VIP3II specialization
+    if (tierLower === 'vip3ii') {
+      return roomIdLower.includes('vip3ii') || 
+             roomIdLower.includes('vip3_ii') || 
+             roomIdLower.includes('vip3-ii') ||
+             roomTierLower.includes('vip3 ii');
+    }
+    
+    // VIP3: Match "vip3 / vip3" but EXCLUDE rooms with vip3ii in ID
+    if (tierLower === 'vip3') {
+      const isVip3Room = roomTierLower.includes('vip3') && !roomTierLower.includes('vip3 ii');
+      const isVip3IIById = roomIdLower.includes('vip3ii') || 
+                           roomIdLower.includes('vip3_ii') || 
+                           roomIdLower.includes('vip3-ii');
+      return isVip3Room && !isVip3IIById;
+    }
     
     // Exact match
     if (roomTierLower === tierLower) return true;
-    
-    // Handle vip3ii matching "vip3 ii", "vip3ii", "VIP3 II / VIP3 II"
-    if (tierLower === 'vip3ii') {
-      return roomTierLower.includes('vip3 ii') || 
-             roomTierLower.includes('vip3ii') ||
-             roomTierLower === 'vip3 ii / vip3 ii';
-    }
-    
-    // Handle vip3 matching "vip3 / vip3" but NOT "vip3 ii"
-    if (tierLower === 'vip3') {
-      // Must include "vip3" but NOT "vip3 ii" or "vip3ii"
-      return (roomTierLower.includes('vip3') && 
-              !roomTierLower.includes('vip3 ii') && 
-              !roomTierLower.includes('vip3ii'));
-    }
     
     // Handle other DB formats like "VIP2 / VIP2" matching "vip2"
     if (roomTierLower.includes(tierLower)) return true;
