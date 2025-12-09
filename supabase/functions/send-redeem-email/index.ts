@@ -113,12 +113,16 @@ Deno.serve(async (req) => {
     });
 
     if (emailError) {
-      console.error("[send-redeem-email] Resend error:", emailError);
-      return send({ ok: false, error: emailError.message || "Failed to send email" });
+      console.error("[send-redeem-email] Resend error:", JSON.stringify(emailError));
+      return send({ 
+        ok: false, 
+        error: emailError.message || "Failed to send email",
+        resend_error: emailError 
+      });
     }
 
     console.log("[send-redeem-email] Email sent successfully:", emailData?.id);
-    return send({ ok: true, emailId: emailData?.id });
+    return send({ ok: true, emailId: emailData?.id, resend_response: emailData });
 
   } catch (err) {
     console.error("[send-redeem-email] Unexpected error:", err);
