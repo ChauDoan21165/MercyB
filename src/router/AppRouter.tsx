@@ -124,6 +124,7 @@ const SystemCodeFiles = lazy(() => import("@/pages/admin/SystemCodeFiles"));
 const CodeViewer = lazy(() => import("@/pages/admin/CodeViewer"));
 const TestEmail = lazy(() => import("@/pages/admin/TestEmail"));
 const AdminBankTransfers = lazy(() => import("@/pages/AdminBankTransfers"));
+const AdminEmailBroadcast = lazy(() => import("@/pages/AdminEmailBroadcast"));
 
 export function AppRouter() {
   return (
@@ -259,6 +260,7 @@ export function AppRouter() {
         <Route path="/admin/code-viewer/:filePath" element={<AdminRoute><CodeViewer /></AdminRoute>} />
         <Route path="/admin/test-email" element={<AdminRoute><TestEmail /></AdminRoute>} />
         <Route path="/admin/bank-transfers" element={<AdminRoute><AdminBankTransfers /></AdminRoute>} />
+        <Route path="/admin/email-broadcast" element={<AdminRoute><AdminEmailBroadcast /></AdminRoute>} />
         
         {/* 404 */}
         <Route path="*" element={<NotFound />} />

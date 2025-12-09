@@ -739,6 +739,95 @@ export type Database = {
         }
         Relationships: []
       }
+      email_campaigns: {
+        Row: {
+          audience_type: string
+          body_html: string
+          created_at: string
+          created_by: string
+          error_message: string | null
+          id: string
+          manual_emails: string[] | null
+          sent_at: string | null
+          sent_count: number
+          status: string
+          subject: string
+          total_recipients: number
+        }
+        Insert: {
+          audience_type: string
+          body_html: string
+          created_at?: string
+          created_by: string
+          error_message?: string | null
+          id?: string
+          manual_emails?: string[] | null
+          sent_at?: string | null
+          sent_count?: number
+          status?: string
+          subject: string
+          total_recipients?: number
+        }
+        Update: {
+          audience_type?: string
+          body_html?: string
+          created_at?: string
+          created_by?: string
+          error_message?: string | null
+          id?: string
+          manual_emails?: string[] | null
+          sent_at?: string | null
+          sent_count?: number
+          status?: string
+          subject?: string
+          total_recipients?: number
+        }
+        Relationships: []
+      }
+      email_events: {
+        Row: {
+          campaign_id: string | null
+          created_at: string
+          email: string
+          error_message: string | null
+          id: string
+          status: string
+          tier: string | null
+          type: string
+          user_id: string | null
+        }
+        Insert: {
+          campaign_id?: string | null
+          created_at?: string
+          email: string
+          error_message?: string | null
+          id?: string
+          status: string
+          tier?: string | null
+          type: string
+          user_id?: string | null
+        }
+        Update: {
+          campaign_id?: string | null
+          created_at?: string
+          email?: string
+          error_message?: string | null
+          id?: string
+          status?: string
+          tier?: string | null
+          type?: string
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "email_events_campaign_id_fkey"
+            columns: ["campaign_id"]
+            isOneToOne: false
+            referencedRelation: "email_campaigns"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       favorite_rooms: {
         Row: {
           created_at: string
