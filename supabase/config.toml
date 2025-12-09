@@ -86,3 +86,6 @@ verify_jwt = true
 
 [functions.admin-stats]
 verify_jwt = true
+
+[functions.send-redeem-email]
+verify_jwt = false
