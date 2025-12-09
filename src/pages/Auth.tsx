@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { ColorfulMercyBladeHeader } from '@/components/ColorfulMercyBladeHeader';
 import { Button } from '@/components/ui/button';
@@ -21,6 +21,8 @@ import { Eye, EyeOff } from 'lucide-react';
 
 const Auth = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const redirectTo = searchParams.get('redirect') || '/';
   const { registerSession } = useSessionManagement();
   const [loading, setLoading] = useState(false);
   const [authTab, setAuthTab] = useState<'signin' | 'signup'>('signin');
@@ -51,11 +53,11 @@ const Auth = () => {
     const checkSession = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (session) {
-        navigate('/');
+        navigate(redirectTo, { replace: true });
       }
     };
     checkSession();
-  }, [navigate]);
+  }, [navigate, redirectTo]);
 
   // If the user lands on /auth with recovery/error in the URL hash, route to /reset
   useEffect(() => {
@@ -149,8 +151,10 @@ const Auth = () => {
       // Check if user has seen onboarding
       const hasSeenOnboarding = localStorage.getItem('mb_has_seen_onboarding');
       if (hasSeenOnboarding === 'true') {
-        navigate('/');
+        navigate(redirectTo, { replace: true });
       } else {
+        // Store redirect destination for after onboarding
+        localStorage.setItem('mb_redirect_after_onboarding', redirectTo);
         navigate('/onboarding');
       }
     } catch (error: any) {
