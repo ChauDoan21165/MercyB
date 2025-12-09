@@ -15,13 +15,21 @@ import { Resend } from "https://esm.sh/resend@2.0.0";
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+  "Content-Type": "application/json",
+};
+
+// Email configuration - matches send-redeem-email exactly
+const EMAIL_CONFIG = {
+  from: "Mercy Blade <onboarding@resend.dev>",
+  bcc: "cd12536@gmail.com",
+  siteUrl: "https://mercyblade.com",
 };
 
 // Helper to always return HTTP 200 with JSON
-function send(data: Record<string, unknown>, status = 200) {
+function send(data: Record<string, unknown>) {
   return new Response(JSON.stringify(data), {
-    status: 200, // Always 200 to avoid SDK hiding errors
-    headers: { ...corsHeaders, "Content-Type": "application/json" },
+    status: 200,
+    headers: corsHeaders,
   });
 }
 
@@ -214,18 +222,25 @@ Deno.serve(async (req) => {
     let sentCount = 0;
     let lastError: string | null = null;
 
+    console.log("[email-broadcast] Sending", {
+      subject,
+      audience_type,
+      recipients: targetEmails.length,
+    });
+
     for (const email of targetEmails) {
       try {
-        const { error: sendError } = await resend.emails.send({
-          from: "Mercy Blade <onboarding@resend.dev>",
+        const { data: emailData, error: sendError } = await resend.emails.send({
+          from: EMAIL_CONFIG.from,
           to: [email],
+          bcc: [EMAIL_CONFIG.bcc],
           subject: subject,
           html: body_html,
         });
 
         if (sendError) {
-          console.error(`Failed to send to ${email}:`, sendError);
-          lastError = sendError.message;
+          console.error("[email-broadcast] Resend error", { email, error: sendError });
+          lastError = sendError.message || "Resend error";
 
           // Log failed event
           await adminClient.from("email_events").insert({
@@ -237,6 +252,7 @@ Deno.serve(async (req) => {
           });
         } else {
           sentCount++;
+          console.log("[email-broadcast] Resend success", { email, id: emailData?.id });
 
           // Log success event
           await adminClient.from("email_events").insert({
@@ -247,7 +263,7 @@ Deno.serve(async (req) => {
           });
         }
       } catch (err) {
-        console.error(`Exception sending to ${email}:`, err);
+        console.error("[email-broadcast] Exception sending", { email, error: err });
         lastError = err instanceof Error ? err.message : "Unknown error";
 
         await adminClient.from("email_events").insert({

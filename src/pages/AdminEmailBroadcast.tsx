@@ -6,6 +6,7 @@
  * - Create broadcast with subject, body, and audience selection
  * - Preview recipients before sending
  * - View recent campaign history
+ * - Preset templates for common emails
  */
 
 import { useState, useEffect } from "react";
@@ -20,7 +21,53 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { toast } from "sonner";
-import { Mail, Send, Eye, Loader2, AlertTriangle } from "lucide-react";
+import { Mail, Send, Eye, Loader2, AlertTriangle, FileText } from "lucide-react";
+
+// Email presets for common campaigns
+const EMAIL_PRESETS: Record<string, { subject: string; body_html: string }> = {
+  vip3_welcome_v1: {
+    subject: "🎉 Chào mừng bạn đến VIP3 - Welcome to VIP3!",
+    body_html: `<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
+<body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f5f5f5;">
+<div style="background-color: #ffffff; border-radius: 12px; padding: 40px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+  <h1 style="color: #7c3aed; margin-bottom: 24px;">🎉 Chào mừng đến VIP3!</h1>
+  <p style="color: #333; font-size: 16px; line-height: 1.6;">Xin chào,</p>
+  <p style="color: #333; font-size: 16px; line-height: 1.6;">Cảm ơn bạn đã nâng cấp lên <strong>VIP3</strong> trên Mercy Blade! Bạn đã mở khóa những nội dung độc quyền nhất của chúng tôi.</p>
+  <hr style="border: none; border-top: 1px solid #eee; margin: 24px 0;">
+  <h2 style="color: #1a1a1a; font-size: 18px;">Welcome to VIP3!</h2>
+  <p style="color: #333; font-size: 16px; line-height: 1.6;">Thank you for upgrading to <strong>VIP3</strong> on Mercy Blade! You now have access to our most exclusive content.</p>
+  <div style="margin: 32px 0;">
+    <a href="https://mercyblade.link" style="display: inline-block; background-color: #7c3aed; color: #ffffff; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: 600;">Khám phá ngay / Start Exploring →</a>
+  </div>
+  <p style="color: #999; font-size: 12px;">Mercy Blade – Hành trình bình yên của bạn bắt đầu từ đây.</p>
+</div>
+</body>
+</html>`,
+  },
+  vip2_welcome_v1: {
+    subject: "🌟 Chào mừng bạn đến VIP2 - Welcome to VIP2!",
+    body_html: `<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
+<body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f5f5f5;">
+<div style="background-color: #ffffff; border-radius: 12px; padding: 40px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+  <h1 style="color: #2563eb; margin-bottom: 24px;">🌟 Chào mừng đến VIP2!</h1>
+  <p style="color: #333; font-size: 16px; line-height: 1.6;">Xin chào,</p>
+  <p style="color: #333; font-size: 16px; line-height: 1.6;">Cảm ơn bạn đã nâng cấp lên <strong>VIP2</strong> trên Mercy Blade!</p>
+  <hr style="border: none; border-top: 1px solid #eee; margin: 24px 0;">
+  <h2 style="color: #1a1a1a; font-size: 18px;">Welcome to VIP2!</h2>
+  <p style="color: #333; font-size: 16px; line-height: 1.6;">Thank you for upgrading to <strong>VIP2</strong> on Mercy Blade!</p>
+  <div style="margin: 32px 0;">
+    <a href="https://mercyblade.link" style="display: inline-block; background-color: #2563eb; color: #ffffff; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: 600;">Khám phá ngay / Start Exploring →</a>
+  </div>
+  <p style="color: #999; font-size: 12px;">Mercy Blade – Hành trình bình yên của bạn bắt đầu từ đây.</p>
+</div>
+</body>
+</html>`,
+  },
+};
 
 interface Campaign {
   id: string;
@@ -40,7 +87,7 @@ interface PreviewResult {
 
 export default function AdminEmailBroadcast() {
   const navigate = useNavigate();
-  const { loading: adminLoading, adminInfo, canEditSystem } = useAdminLevel();
+  const { loading: adminLoading, adminInfo } = useAdminLevel();
 
   // Form state
   const [subject, setSubject] = useState("");
@@ -56,6 +103,16 @@ export default function AdminEmailBroadcast() {
   const [campaigns, setCampaigns] = useState<Campaign[]>([]);
   const [campaignsLoading, setCampaignsLoading] = useState(true);
   const [selectedCampaign, setSelectedCampaign] = useState<Campaign | null>(null);
+
+  // Apply preset template
+  function applyPreset(presetKey: string) {
+    const preset = EMAIL_PRESETS[presetKey];
+    if (preset) {
+      setSubject(preset.subject);
+      setBodyHtml(preset.body_html);
+      toast.success(`Loaded preset: ${presetKey}`);
+    }
+  }
 
   // Check admin access
   useEffect(() => {
@@ -260,6 +317,31 @@ export default function AdminEmailBroadcast() {
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
+              {/* Preset Templates */}
+              <div>
+                <label className="text-sm font-medium text-foreground mb-2 block">
+                  Load Preset Template
+                </label>
+                <div className="flex gap-2 flex-wrap">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => applyPreset("vip3_welcome_v1")}
+                  >
+                    <FileText className="h-3 w-3 mr-1" />
+                    VIP3 Welcome
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => applyPreset("vip2_welcome_v1")}
+                  >
+                    <FileText className="h-3 w-3 mr-1" />
+                    VIP2 Welcome
+                  </Button>
+                </div>
+              </div>
+
               {/* Subject */}
               <div>
                 <label className="text-sm font-medium text-foreground mb-2 block">
