@@ -123,21 +123,38 @@ Deno.serve(async (req) => {
     const end = new Date();
     end.setFullYear(end.getFullYear() + 1);
 
-    const { data: tierRow } = await admin
+    const { data: tierRow, error: tierLookupError } = await admin
       .from("subscription_tiers")
       .select("id")
       .eq("name", gift.tier)
       .single();
 
-    if (tierRow) {
-      await admin.from("user_subscriptions").upsert({
-        user_id: user.id,
-        tier_id: tierRow.id,
-        status: "active",
-        current_period_start: now,
-        current_period_end: end.toISOString(),
-        updated_at: now,
-      });
+    console.log("[redeem-gift-code] Tier lookup:", gift.tier, "->", tierRow?.id, "error:", tierLookupError?.message);
+
+    if (!tierRow) {
+      console.error("[redeem-gift-code] Tier not found in subscription_tiers:", gift.tier);
+      return send({ ok: false, error: `Tier ${gift.tier} is not configured. Please contact support.` });
+    }
+
+    // Delete existing subscription first, then insert new one (to avoid upsert key issues)
+    await admin
+      .from("user_subscriptions")
+      .delete()
+      .eq("user_id", user.id);
+
+    const { error: subError } = await admin.from("user_subscriptions").insert({
+      user_id: user.id,
+      tier_id: tierRow.id,
+      status: "active",
+      current_period_start: now,
+      current_period_end: end.toISOString(),
+      updated_at: now,
+    });
+
+    if (subError) {
+      console.error("[redeem-gift-code] Subscription insert error:", subError);
+    } else {
+      console.log("[redeem-gift-code] Subscription created for tier:", gift.tier, tierRow.id);
     }
 
     // --- MARK CODE AS USED ---
