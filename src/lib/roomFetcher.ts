@@ -372,11 +372,29 @@ export async function getAllRooms(): Promise<RoomJson[]> {
 }
 
 /**
- * Get rooms filtered by tier
+ * Get rooms filtered by tier - normalizes tier comparison
+ * Handles both canonical IDs (vip3) and DB labels (VIP3 / VIP3)
  */
 export async function getRoomsByTier(tier: string): Promise<RoomMeta[]> {
   const rooms = await getRoomList();
-  return rooms.filter((r) => r.tier === tier);
+  const tierLower = tier.toLowerCase();
+  
+  return rooms.filter((r) => {
+    const roomTierLower = (r.tier || '').toLowerCase();
+    
+    // Exact match
+    if (roomTierLower === tierLower) return true;
+    
+    // Handle DB format "VIP3 / VIP3" or "VIP3 / Cấp VIP3" matching "vip3"
+    if (roomTierLower.includes(tierLower)) return true;
+    
+    // Handle vip3ii matching "vip3 ii" or "vip3ii"
+    if (tierLower === 'vip3ii') {
+      return roomTierLower.includes('vip3 ii') || roomTierLower.includes('vip3ii');
+    }
+    
+    return false;
+  });
 }
 
 /**

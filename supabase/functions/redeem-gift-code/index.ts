@@ -123,16 +123,36 @@ Deno.serve(async (req) => {
     const end = new Date();
     end.setFullYear(end.getFullYear() + 1);
 
-    const { data: tierRow, error: tierLookupError } = await admin
+    // Normalize tier name for lookup (gift codes use VIP3, VIP3II, etc. but table may have "VIP3" or "VIP3 II")
+    let tierLookupName = gift.tier.toUpperCase();
+    // Handle VIP3II -> "VIP3 II" mapping
+    if (tierLookupName === 'VIP3II') {
+      tierLookupName = 'VIP3 II';
+    }
+
+    // Try exact match first, then try with the normalized name
+    let tierRow = null;
+    const { data: exactMatch } = await admin
       .from("subscription_tiers")
       .select("id")
       .eq("name", gift.tier)
-      .single();
+      .maybeSingle();
 
-    console.log("[redeem-gift-code] Tier lookup:", gift.tier, "->", tierRow?.id, "error:", tierLookupError?.message);
+    if (exactMatch) {
+      tierRow = exactMatch;
+    } else {
+      const { data: normalizedMatch } = await admin
+        .from("subscription_tiers")
+        .select("id")
+        .eq("name", tierLookupName)
+        .maybeSingle();
+      tierRow = normalizedMatch;
+    }
+
+    console.log("[redeem-gift-code] Tier lookup:", gift.tier, "->", tierLookupName, "->", tierRow?.id);
 
     if (!tierRow) {
-      console.error("[redeem-gift-code] Tier not found in subscription_tiers:", gift.tier);
+      console.error("[redeem-gift-code] Tier not found in subscription_tiers:", gift.tier, tierLookupName);
       return send({ ok: false, error: `Tier ${gift.tier} is not configured. Please contact support.` });
     }
 
