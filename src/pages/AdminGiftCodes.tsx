@@ -140,10 +140,27 @@ const AdminGiftCodes = () => {
         return;
       }
 
+      const generatedCount = data.codes?.length || data.generated || 0;
+      
+      // Treat 0 generated as an error
+      if (generatedCount === 0) {
+        toast({
+          title: "Generation Failed",
+          description: data.failed > 0 
+            ? `All ${data.failed} code(s) failed to generate. Please try again.`
+            : "No codes were generated. Please try again.",
+          variant: "destructive",
+        });
+        setIsGenerating(false);
+        return;
+      }
+
       setGeneratedCodes(data.codes || []);
       toast({
         title: "Success!",
-        description: `Generated ${data.generated} gift code(s)`,
+        description: generatedCount === 1 
+          ? "Generated 1 gift code" 
+          : `Generated ${generatedCount} gift codes`,
       });
 
       // Refresh the codes list and wait for it to complete
