@@ -138,5 +138,14 @@
       "audio": "obm_vip3_5_en.mp3",
       "essay_ref": "obm_vip3_5_essay.txt"
     }
-  ]
+  ],
+  "id": "obesity_management_vip3",
+  "title": {
+    "en": "Obesity Management VIP3",
+    "vi": "Quản Lý Béo Phì VIP3"
+  },
+  "content": {
+    "en": "Advanced, evidence-informed strategies for long-term obesity management with metabolic optimization, behavioral mastery, and sustainable lifestyle systems.",
+    "vi": "Các chiến lược nâng cao, dựa trên bằng chứng để quản lý béo phì lâu dài thông qua tối ưu hóa chuyển hóa, làm chủ hành vi và các hệ thống lối sống bền vững."
+  }
 }

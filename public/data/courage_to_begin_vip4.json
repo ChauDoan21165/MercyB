@@ -100,5 +100,14 @@
       ],
       "audio": "rooms/begin_vip4_3_en.mp3"
     }
-  ]
+  ],
+  "id": "courage_to_begin_vip4",
+  "title": {
+    "en": "Courage to Begin",
+    "vi": "Dám Bắt Đầu"
+  },
+  "content": {
+    "en": "Inspire students to overcome fear, hesitation, and comparison, and take their first real step toward growth.",
+    "vi": "Truyền cảm hứng để sinh viên vượt qua sợ hãi, do dự và so sánh, và bước những bước đầu tiên thực sự hướng tới sự phát triển."
+  }
 }

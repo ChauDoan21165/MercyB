@@ -138,5 +138,14 @@
       "audio": "obm2_vip3_5_en.mp3",
       "essay_ref": "obm2_vip3_5_essay.txt"
     }
-  ]
+  ],
+  "id": "obesity_management_ii_vip3",
+  "title": {
+    "en": "Obesity Management II VIP3",
+    "vi": "Quản Lý Béo Phì II VIP3"
+  },
+  "content": {
+    "en": "High-level, evidence-informed strategies for advanced obesity management, integrating psychology, environment design, hormonal alignment, and long-term weight resilience.",
+    "vi": "Các chiến lược nâng cao, dựa trên bằng chứng cho quản lý béo phì cấp độ cao, kết hợp tâm lý, thiết kế môi trường, điều hòa hormone và khả năng duy trì cân nặng lâu dài."
+  }
 }

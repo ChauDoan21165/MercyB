@@ -197,5 +197,14 @@
       ],
       "audio": "rooms/legacy_vip4_long_01_en.mp3"
     }
-  ]
+  ],
+  "id": "mentors_who_light_the_way_vip4",
+  "title": {
+    "en": "Mentors Who Light the Way",
+    "vi": "Những Người Dẫn Đường Thắp Sáng"
+  },
+  "content": {
+    "en": "Long-form mentor essays on courage, purpose, and building a meaningful career",
+    "vi": "Bài văn dài từ người dẫn đường về dũng khí, mục đích và xây dựng sự nghiệp ý nghĩa"
+  }
 }

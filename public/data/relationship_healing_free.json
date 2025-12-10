@@ -101,5 +101,14 @@
         "gắn kết"
       ]
     }
+  },
+  "id": "relationship_healing_free",
+  "title": {
+    "en": "Relationship Healing",
+    "vi": "Hàn Gắn Mối Quan Hệ"
+  },
+  "content": {
+    "en": "Practical guidance for healing relationships through communication and trust",
+    "vi": ""
   }
 }

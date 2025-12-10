@@ -76,5 +76,14 @@
       ],
       "audio": "sexuality_vip3_overview_free_en.mp3"
     }
-  ]
+  ],
+  "id": "sexuality_curiosity_free",
+  "title": {
+    "en": "Sexuality & Curiosity",
+    "vi": "Tính Dục & Sự Tò Mò"
+  },
+  "content": {
+    "en": "A gentle introduction to why sexuality is such a deep, fascinating part of being human, and why the in-depth, adult-only explorations are available in the VIP3 tier.",
+    "vi": "Giới thiệu nhẹ nhàng về lý do tính dục là phần sâu sắc, thú vị của con người, và vì sao các nội dung chuyên sâu chỉ dành cho người trưởng thành sẽ có trong gói VIP3."
+  }
 }

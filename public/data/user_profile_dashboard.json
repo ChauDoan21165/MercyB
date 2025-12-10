@@ -224,5 +224,10 @@
         "pin_to_canvas": true
       }
     }
+  },
+  "id": "user_profile_dashboard",
+  "content": {
+    "en": "Echologic Mercy Blade room for user profile management and learning dashboard",
+    "vi": "Phòng Mercy Blade về quản lý hồ sơ người dùng và bảng điều khiển học tập"
   }
 }

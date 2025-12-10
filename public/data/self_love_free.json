@@ -81,5 +81,14 @@
       ],
       "audio": "self_love_free_self_care.mp3"
     }
-  ]
+  ],
+  "id": "self_love_free",
+  "title": {
+    "en": "Self Love",
+    "vi": "Yêu Thương Bản Thân"
+  },
+  "content": {
+    "en": "Gentle guidance for cultivating self-love, self-acceptance, and inner resilience",
+    "vi": ""
+  }
 }

@@ -219,5 +219,14 @@
       },
       "essay_ref": "dep_vip3_8_essay.txt"
     }
-  ]
+  ],
+  "id": "depression_support_vip3",
+  "title": {
+    "en": "Depression Support",
+    "vi": "Hỗ Trợ Trầm Cảm"
+  },
+  "content": {
+    "en": "Expert strategies for mastering depression with comprehensive tools",
+    "vi": ""
+  }
 }

@@ -151,5 +151,14 @@
       ],
       "audio": "adhd_support_vip3_resilience.mp3"
     }
-  ]
+  ],
+  "id": "adhd_support_vip3",
+  "title": {
+    "en": "ADHD Support",
+    "vi": "Hỗ Trợ Rối Loạn Tăng Động Giảm Chú Ý"
+  },
+  "content": {
+    "en": "Expert strategies for comprehensive ADHD management and resilience",
+    "vi": ""
+  }
 }

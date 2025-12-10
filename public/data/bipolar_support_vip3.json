@@ -151,5 +151,14 @@
       ],
       "audio": "bipolar_support_vip3_resilience.mp3"
     }
-  ]
+  ],
+  "id": "bipolar_support_vip3",
+  "title": {
+    "en": "Bipolar Support",
+    "vi": "Hỗ Trợ Rối Loạn Lưỡng Cực"
+  },
+  "content": {
+    "en": "Expert strategies for comprehensive bipolar disorder management and emotional resilience",
+    "vi": ""
+  }
 }

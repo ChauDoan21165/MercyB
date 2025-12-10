@@ -198,5 +198,14 @@
       "tags": []
     }
   ],
-  "audio": "mmh_vip3_8_en.mp3"
+  "audio": "mmh_vip3_8_en.mp3",
+  "id": "mens_mental_health_vip3",
+  "title": {
+    "en": "Men’s Mental Health",
+    "vi": "Sức Khỏe Tinh Thần Nam Giới"
+  },
+  "content": {
+    "en": "Advanced clinical systems for unbreakable male psyche",
+    "vi": ""
+  }
 }

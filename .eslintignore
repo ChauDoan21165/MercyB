@@ -1,0 +1,22 @@
+# Folders we never lint
+node_modules/
+dist/
+build/
+coverage/
+public/
+supabase/
+
+# Auto-generated audio & data
+audio/
+scripts/generate-audio-manifest.js
+scripts/generate-missing-audio.ts
+
+# Large validators (optional)
+validate-rooms.ts
+validate-room-integrity.ts
+
+# Ignore configs and output
+*.log
+*.tmp
+validate-rooms.ts
+validate-room-integrity.ts

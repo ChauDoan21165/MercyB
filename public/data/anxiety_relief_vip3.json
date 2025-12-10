@@ -219,5 +219,14 @@
       },
       "essay_ref": "anx_vip3_8_essay.txt"
     }
-  ]
+  ],
+  "id": "anxiety_relief_vip3",
+  "title": {
+    "en": "Anxiety Relief",
+    "vi": "Giảm Lo Âu"
+  },
+  "content": {
+    "en": "Expert strategies for mastering anxiety with comprehensive tools",
+    "vi": ""
+  }
 }

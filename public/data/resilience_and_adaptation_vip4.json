@@ -117,5 +117,14 @@
       ],
       "audio": "rooms/resil_v4_04_en.mp3"
     }
-  ]
+  ],
+  "id": "resilience_and_adaptation_vip4",
+  "title": {
+    "en": "Resilience and Adaptation",
+    "vi": "Khả Năng Phục Hồi và Thích Nghi"
+  },
+  "content": {
+    "en": "From rejection to renewal — a 4-step journey of self-trust",
+    "vi": ""
+  }
 }

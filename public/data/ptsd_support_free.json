@@ -101,5 +101,14 @@
         "hệ thống hỗ trợ"
       ]
     }
+  },
+  "id": "ptsd_support_free",
+  "title": {
+    "en": "PTSD Support",
+    "vi": "Hỗ Trợ Rối Loạn Căng Thẳng Sau Sang Chấn"
+  },
+  "content": {
+    "en": "Practical guidance for managing PTSD with emotional and therapeutic support",
+    "vi": ""
   }
 }

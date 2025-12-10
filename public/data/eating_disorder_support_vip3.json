@@ -151,5 +151,14 @@
       ],
       "audio": "eating_disorder_support_vip3_emotional_resilience.mp3"
     }
-  ]
+  ],
+  "id": "eating_disorder_support_vip3",
+  "title": {
+    "en": "Eating Disorder Support",
+    "vi": "Hỗ Trợ Rối Loạn Ăn Uống"
+  },
+  "content": {
+    "en": "Expert strategies for comprehensive eating disorder recovery and resilience",
+    "vi": ""
+  }
 }

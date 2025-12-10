@@ -151,5 +151,14 @@
       ],
       "audio": "ocd_support_vip3_resilience.mp3"
     }
-  ]
+  ],
+  "id": "ocd_support_vip3",
+  "title": {
+    "en": "OCD Support",
+    "vi": "Hỗ Trợ Rối Loạn Ám Ảnh Cưỡng Chế"
+  },
+  "content": {
+    "en": "Expert strategies for comprehensive OCD management and resilience",
+    "vi": ""
+  }
 }

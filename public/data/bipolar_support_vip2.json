@@ -127,5 +127,14 @@
       ],
       "audio": "bipolar_support_vip2_mindfulness.mp3"
     }
-  ]
+  ],
+  "id": "bipolar_support_vip2",
+  "title": {
+    "en": "Bipolar Support",
+    "vi": "Hỗ Trợ Rối Loạn Lưỡng Cực"
+  },
+  "content": {
+    "en": "Advanced strategies for managing bipolar disorder with therapy and balance",
+    "vi": ""
+  }
 }

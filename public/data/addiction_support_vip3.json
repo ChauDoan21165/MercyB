@@ -151,5 +151,14 @@
       ],
       "audio": "addiction_support_vip3_resilience.mp3"
     }
-  ]
+  ],
+  "id": "addiction_support_vip3",
+  "title": {
+    "en": "Addiction Support",
+    "vi": "Hỗ Trợ Cai Nghiện"
+  },
+  "content": {
+    "en": "Expert strategies for comprehensive addiction recovery and resilience",
+    "vi": ""
+  }
 }

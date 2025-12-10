@@ -1,3 +1,4 @@
+
 #!/usr/bin/env tsx
 /**
  * Auto-Fix Suite – Part 2: Entry count auditor

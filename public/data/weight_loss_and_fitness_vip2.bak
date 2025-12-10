@@ -1,0 +1,209 @@
+{ "id": "weight-loss-and-fitness-vip2", "tier": "VIP2 / VIP2", "name": "Weight Loss & 
+  Fitness", "name_vi": "Giảm Cân & Thể Dục", "description": "Advanced strategies for weight 
+  loss and fitness with tracking", "description_vi": "Chiến lược nâng cao để giảm cân và cải 
+  thiện thể lực với theo dõi dữ liệu chặt chẽ", "keywords_en": [
+cd /workspaces/MercyB "weight loss", "fitness", "exercise", "diet", "tracking" nano 
+scripts/patch-wlf-rooms.mjs ],
+  "keywords_vi": [ "giảm cân", "thể dục", "tập luyện", "chế độ ăn", "theo dõi"
+#!/usr/bin/env node ],
+import { readFileSync, writeFileSync } from "fs"; "entries": [ { "slug": "calorie-deficit", 
+      "keywords_en": [
+function patchRoom(path, overrides) { "calorie deficit", "weight loss", "diet" const raw = 
+  readFileSync(path, "utf8"); ], const data = JSON.parse(raw); "keywords_vi": [
+        "thiếu hụt calo", "giảm cân", "chế độ ăn" if (overrides.id) data.id = overrides.id; ], 
+  if (overrides.tier) data.tier = overrides.tier; "copy": { if (overrides.domain) data.domain 
+  = overrides.domain; "en": "A precision calorie deficit maximizes fat loss. Calculate your 
+  TDEE with an activity factor and create about a 20% deficit. Use a food scale for accuracy 
+  and adjust weekly based on your weight trend. Work with a macro coach to personalize ratios, 
+  achieving sustainable fat loss through data-driven nutrition and expert guidance.",
+        "vi": "Thiếu hụt calo được tính toán chính xác giúp tối ưu hóa việc giảm mỡ. Hãy tính 
+        TDEE của bạn với hệ số hoạt động và tạo mức thiếu hụt khoảng 20%. Sử dụng cân thực 
+        phẩm để đo lường chính xác và điều chỉnh hàng tuần dựa trên xu hướng cân nặng. Làm 
+        việc với một huấn luyện viên dinh dưỡng để cá nhân hóa tỷ lệ macro, từ đó đạt giảm mỡ 
+        bền vững dựa trên dữ liệu và sự hướng dẫn chuyên môn."
+  // upgrade name/description -> title/content if missing },
+  if (!data.title) { "tags": [ "diet", "weight loss" data.title = { ], en: data.name ?? 
+      "Weight Loss & Fitness", "audio": "wlf_vip2_1_en.mp3", "essay_ref": 
+      "wlf_vip2_1_essay.txt" vi: data.name_vi ?? "Giảm Cân & Thể Dục", },
+    };    {
+  }      "slug": "daily-walk",
+  if (!data.content) { "keywords_en": [ "walk", "exercise", "fitness" data.content = { ], en: 
+      "keywords_vi": [
+        data.description ??  "đi bộ", "tập luyện", "thể dục" "Advanced strategies for weight 
+        loss and fitness with tracking.", ],
+      vi: "copy": { "en": "An optimized walking plan enhances fat burn and stamina. Walk 
+        briskly for 45 to 60 minutes, adding short intervals to challenge endurance. Use a 
+        heart-rate monitor to stay in your fat-burn zone and track weekly distance gains. Join 
+        a walking challenge group to stay motivated and consistent.", "vi": "Một kế hoạch đi 
+        bộ tối ưu giúp tăng khả năng đốt mỡ và sức bền. Hãy đi bộ nhanh trong 45 đến 60 phút, 
+        thêm các đoạn ngắn tăng tốc để thử thách sức chịu đựng. Sử dụng thiết bị đo nhịp tim 
+        để giữ trong vùng đốt mỡ và theo dõi quãng đường tăng dần mỗi tuần. Tham gia nhóm thử 
+        thách đi bộ để duy trì động lực và sự đều đặn." data.description_vi ??  }, "Chiến lược 
+        nâng cao để giảm cân và cải thiện thể lực với theo dõi dữ liệu.", "tags": [ 
+        "exercise", "fitness"
+    };      ],
+  }      "audio": "wlf_vip2_2_en.mp3",
+      "essay_ref": "wlf_vip2_2_essay.txt" writeFileSync(path, JSON.stringify(data, null, 2)); 
+  },
+  console.log("✅ Patched", path, "-> id:", data.id); { "slug": "strength-training", 
+      "keywords_en": [
+}        "strength",
+        "muscle", "fitness"
+// Free room ],
+patchRoom("public/data/weight_loss_and_fitness_free.json", { "keywords_vi": [ "sức mạnh", "cơ 
+        bắp", "thể dục"
+  id: "weight_loss_and_fitness_free", ], "copy": { tier: "Free / Miễn phí", "en": "Progressive 
+  strength training builds lean muscle and metabolism. Train three to four times a week using 
+  compound lifts for 8–12 reps. Increase weight by about 5% once your form is solid. Track 
+  performance in a logbook and partner with a lifting buddy for safety and motivation.", 
+  domain: "Health", "vi": "Tập sức mạnh tiến bộ giúp xây dựng khối cơ nạc và tăng chuyển hóa. 
+  Hãy tập 3–4 buổi mỗi tuần với các bài compound từ 8–12 lần lặp. Tăng tạ khoảng 5% khi kỹ 
+  thuật đã vững. Ghi chép kết quả vào sổ theo dõi và tập cùng một người bạn đồng hành để đảm 
+  bảo an toàn và tăng động lực."
+}); },
+      "tags": [ "strength", "fitness"
+// VIP2 room ],
+patchRoom("public/data/weight_loss_and_fitness_vip2.json", { "audio": "wlf_vip2_3_en.mp3", 
+      "essay_ref": "wlf_vip2_3_essay.txt"
+  id: "weight_loss_and_fitness_vip2", }, { tier: "VIP2 / Cấp VIP2", "slug": "hydration", 
+  domain: "Health", "keywords_en": [
+}); "hydration",
+        "water", "weight loss" cd /workspaces/MercyB ], git restore 
+scripts/fix-legacy-room-ids.mjs "keywords_vi": [
+        "bù nước", "nước", "giảm cân" nano scripts/patch-wlf-rooms.mjs ], "copy": {
+        "en": "Strategic hydration supports fat loss and performance. Drink three to four liters of water daily—roughly half your body weight in ounces. Add electrolytes after workouts and monitor urine color to stay balanced. Use a hydration app or group for reminders and motivation.",
+        "vi": "Chiến lược bù nước hợp lý hỗ trợ giảm mỡ và hiệu suất tập luyện. Hãy uống khoảng 3–4 lít nước mỗi ngày—xấp xỉ một nửa cân nặng của bạn tính theo ounce. Bổ sung điện giải sau buổi tập và theo dõi màu nước tiểu để giữ cân bằng. Sử dụng ứng dụng hoặc nhóm nhắc nhở uống nước để duy trì thói quen và động lực."
+      },
+      "tags": [
+        "hydration",
+        "weight loss"
+      ],
+      "audio": "wlf_vip2_4_en.mp3",
+      "essay_ref": "wlf_vip2_4_essay.txt"
+    },
+    {
+      "slug": "sleep",
+      "keywords_en": [
+        "sleep",
+        "recovery",
+        "weight loss"
+      ],
+      "keywords_vi": [
+        "ngủ",
+        "khôi phục",
+        "giảm cân"
+      ],
+      "copy": {
+        "en": "Optimized sleep accelerates fat loss and recovery. Aim for seven to nine hours each night with a consistent bedtime. Keep your room cool and dark, and avoid screens an hour before bed. Track sleep with a wearable and consult a sleep coach to fine-tune recovery.",
+        "vi": "Giấc ngủ được tối ưu hóa giúp tăng tốc quá trình giảm mỡ và hồi phục. Hãy đặt mục tiêu ngủ 7–9 giờ mỗi đêm với giờ đi ngủ ổn định. Giữ phòng ngủ mát mẻ và tối, tránh màn hình ít nhất một giờ trước khi ngủ. Theo dõi giấc ngủ bằng thiết bị đeo và tham khảo chuyên gia về giấc ngủ để điều chỉnh chiến lược hồi phục."
+      },
+      "tags": [
+        "sleep",
+        "weight loss"
+      ],
+      "audio": "wlf_vip2_5_en.mp3",
+      "essay_ref": "wlf_vip2_5_essay.txt"
+    },
+    {
+      "slug": "tracking",
+      "keywords_en": [
+        "tracking",
+        "progress",
+        "fitness"
+      ],
+      "keywords_vi": [
+        "theo dõi",
+        "tiến bộ",
+        "thể dục"
+      ],
+      "copy": {
+        "en": "Data tracking ensures lasting success. Record your weight, measurements, and progress photos weekly. Use body-fat calipers or smart scales. Review monthly trends and adjust goals. Join a community for shared accountability and motivation through visible progress.",
+        "vi": "Theo dõi dữ liệu giúp đảm bảo thành công lâu dài. Hãy ghi lại cân nặng, số đo cơ thể và ảnh tiến bộ mỗi tuần. Sử dụng kẹp đo mỡ hoặc cân thông minh. Xem lại xu hướng theo tháng và điều chỉnh mục tiêu khi cần. Tham gia cộng đồng để có trách nhiệm chung và thêm động lực thông qua tiến bộ nhìn thấy được."
+      },
+      "tags": [
+        "tracking",
+        "fitness"
+      ],
+      "audio": "wlf_vip2_6_en.mp3",
+      "essay_ref": "wlf_vip2_6_essay.txt"
+    },
+    {
+      "slug": "all",
+      "keywords_en": [
+        "all",
+        "full sequence",
+        "combined",
+        "complete",
+        "weight loss",
+        "fitness"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "chuỗi đầy đủ",
+        "kết hợp",
+        "hoàn chỉnh",
+        "giảm cân",
+        "thể dục"
+      ],
+      "copy": {
+        "en": "A precision calorie deficit maximizes fat loss. Calculate your TDEE with an activity factor and create about a 20% deficit. Use a food scale for accuracy and adjust weekly based on your weight trend. Work with a macro coach to personalize ratios, achieving sustainable fat loss through data-driven nutrition and expert guidance. An optimized walking plan enhances fat burn and stamina. Walk briskly for 45 to 60 minutes, adding short intervals to challenge endurance. Use a heart-rate monitor to stay in your fat-burn zone and track weekly distance gains. Join a walking challenge group to stay motivated and consistent. Progressive strength training builds lean muscle and metabolism. Train three to four times a week using compound lifts for 8–12 reps. Increase weight by about 5% once your form is solid. Track performance in a logbook and partner with a lifting buddy for safety and motivation. Strategic hydration supports fat loss and performance. Drink three to four liters of water daily—roughly half your body weight in ounces. Add electrolytes after workouts and monitor urine color to stay balanced. Use a hydration app or group for reminders and motivation. Optimized sleep accelerates fat loss and recovery. Aim for seven to nine hours each night with a consistent bedtime. Keep your room cool and dark, and avoid screens an hour before bed. Track sleep with a wearable and consult a sleep coach to fine-tune recovery. Data tracking ensures lasting success. Record your weight, measurements, and progress photos weekly. Use body-fat calipers or smart scales. Review monthly trends and adjust goals. Join a community for shared accountability and motivation through visible progress.",
+        "vi": "Thiếu hụt calo được tính toán chính xác giúp tối ưu hóa việc giảm mỡ. Hãy tính TDEE của bạn với hệ số hoạt động và tạo mức thiếu hụt khoảng 20%. Sử dụng cân thực phẩm để đo lường chính xác và điều chỉnh hàng tuần dựa trên xu hướng cân nặng. Làm việc với một huấn luyện viên dinh dưỡng để cá nhân hóa tỷ lệ macro, từ đó đạt giảm mỡ bền vững dựa trên dữ liệu và sự hướng dẫn chuyên môn. Một kế hoạch đi bộ tối ưu giúp tăng khả năng đốt mỡ và sức bền. Hãy đi bộ nhanh trong 45 đến 60 phút, thêm các đoạn ngắn tăng tốc để thử thách sức chịu đựng. Sử dụng thiết bị đo nhịp tim để giữ trong vùng đốt mỡ và theo dõi quãng đường tăng dần mỗi tuần. Tham gia nhóm thử thách đi bộ để duy trì động lực và sự đều đặn. Tập sức mạnh tiến bộ giúp xây dựng khối cơ nạc và tăng chuyển hóa. Hãy tập 3–4 buổi mỗi tuần với các bài compound từ 8–12 lần lặp. Tăng tạ khoảng 5% khi kỹ thuật đã vững. Ghi chép kết quả vào sổ theo dõi và tập cùng một người bạn đồng hành để đảm bảo an toàn và tăng động lực. Chiến lược bù nước hợp lý hỗ trợ giảm mỡ và hiệu suất tập luyện. Hãy uống khoảng 3–4 lít nước mỗi ngày—xấp xỉ một nửa cân nặng của bạn tính theo ounce. Bổ sung điện giải sau buổi tập và theo dõi màu nước tiểu để giữ cân bằng. Sử dụng ứng dụng hoặc nhóm nhắc nhở uống nước để duy trì thói quen và động lực. Giấc ngủ được tối ưu hóa giúp tăng tốc quá trình giảm mỡ và hồi phục. Hãy đặt mục tiêu ngủ 7–9 giờ mỗi đêm với giờ đi ngủ ổn định. Giữ phòng ngủ mát mẻ và tối, tránh màn hình ít nhất một giờ trước khi ngủ. Theo dõi giấc ngủ bằng thiết bị đeo và tham khảo chuyên gia về giấc ngủ để điều chỉnh chiến lược hồi phục. Theo dõi dữ liệu giúp đảm bảo thành công lâu dài. Hãy ghi lại cân nặng, số đo cơ thể và ảnh tiến bộ mỗi tuần. Sử dụng kẹp đo mỡ hoặc cân thông minh. Xem lại xu hướng theo tháng và điều chỉnh mục tiêu khi cần. Tham gia cộng đồng để có trách nhiệm chung và thêm động lực thông qua tiến bộ nhìn thấy được."
+      },
+      "tags": [
+        "all",
+        "combined",
+        "full",
+        "complete",
+        "weight-loss-fitness"
+      ],
+      "audio": "wlf_vip2_1_en.mp3 wlf_vip2_2_en.mp3 wlf_vip2_3_en.mp3 wlf_vip2_4_en.mp3 wlf_vip2_5_en.mp3 wlf_vip2_6_en.mp3"
+    }
+  ]
+}
+#!/usr/bin/env node
+import { readFileSync, writeFileSync } from "fs";
+
+function patchRoom(path, overrides) {
+  const raw = readFileSync(path, "utf8");
+  const data = JSON.parse(raw);
+
+  if (overrides.id) data.id = overrides.id;
+  if (overrides.tier) data.tier = overrides.tier;
+  if (overrides.domain) data.domain = overrides.domain;
+
+  if (!data.title) {
+    data.title = {
+      en: data.name ?? "Weight Loss & Fitness",
+      vi: data.name_vi ?? "Giảm Cân & Thể Dục",
+    };
+  }
+
+  if (!data.content) {
+    data.content = {
+      en:
+        data.description ??
+        "Advanced strategies for weight loss and fitness with tracking.",
+      vi:
+        data.description_vi ??
+        "Chiến lược nâng cao để giảm cân và cải thiện thể lực với theo dõi dữ liệu.",
+    };
+  }
+
+  writeFileSync(path, JSON.stringify(data, null, 2));
+  console.log("✅ Patched", path, "-> id:", data.id);
+}
+
+// Free room
+patchRoom("public/data/weight_loss_and_fitness_free.json", {
+  id: "weight_loss_and_fitness_free",
+  tier: "Free / Miễn phí",
+  domain: "Health",
+});
+
+// VIP2 room
+patchRoom("public/data/weight_loss_and_fitness_vip2.json", {
+  id: "weight_loss_and_fitness_vip2",
+  tier: "VIP2 / Cấp VIP2",
+  domain: "Health",
+});
+

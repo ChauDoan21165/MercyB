@@ -213,5 +213,14 @@
       }
     }
   ],
-  "audio": "bur_vip3_8_en.mp3"
+  "audio": "bur_vip3_8_en.mp3",
+  "id": "burnout_recovery_vip3",
+  "title": {
+    "en": "Burnout Recovery",
+    "vi": "Phục Hồi Kiệt Sức"
+  },
+  "content": {
+    "en": "Expert strategies for mastering burnout recovery with science",
+    "vi": "Chiến lược chuyên sâu, dựa trên khoa học để giúp bạn phục hồi kiệt sức một cách hệ thống và bền vững."
+  }
 }

@@ -102,5 +102,14 @@
       ],
       "audio": "career_consultant_free.mp3"
     }
-  ]
+  ],
+  "id": "career_consultant_free",
+  "title": {
+    "en": "Career Consultant",
+    "vi": "Chuyên Gia Định Hướng Nghề Nghiệp"
+  },
+  "content": {
+    "en": "A life-changing invitation to discover your true calling — the first step toward VIP4's personalized career mastery.",
+    "vi": "Lời mời thay đổi cuộc đời: khám phá tiếng gọi thật sự của bạn — bước đầu tiến vào VIP4 với hành trình định hướng nghề nghiệp cá nhân hóa."
+  }
 }
