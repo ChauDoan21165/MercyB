@@ -1,4 +1,6 @@
-import { useEffect } from "react";
+// src/App.tsx
+
+import { useEffect, type ReactNode } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -20,7 +22,7 @@ import { AppVersionManager } from "@/components/AppVersionManager";
 import { GlobalFeedbackWidget } from "@/components/GlobalFeedbackWidget";
 import { logger } from "@/lib/logger";
 import EnvironmentBanner from "./components/admin/EnvironmentBanner";
-import { AppRouter } from "@/router/AppRouter";
+import AppRouter from "@/router/AppRouter";
 
 // Optimized QueryClient config
 const queryClient = new QueryClient({
@@ -34,18 +36,43 @@ const queryClient = new QueryClient({
   },
 });
 
-// Route-aware unified bottom bar
+// Route-aware bottom bar — hide on onboarding + admin
 const RouteAwareBottomBar = () => {
   const location = useLocation();
-  const hideOnRoutes = ['/onboarding'];
-  if (hideOnRoutes.includes(location.pathname)) return null;
+  const hideOnRoutes = ["/onboarding"];
+  const isAdmin = location.pathname.startsWith("/admin");
+
+  if (hideOnRoutes.includes(location.pathname) || isAdmin) return null;
   return <UnifiedBottomBar />;
 };
 
-// Content wrapper for B&W mode scoping
-const ScopedAppContent = ({ children }: { children: React.ReactNode }) => {
+// Route-aware global navigation — hide on admin
+const RouteAwareGlobalNav = () => {
   const location = useLocation();
-  const isAdminRoute = location.pathname.startsWith('/admin');
+  const isAdmin = location.pathname.startsWith("/admin");
+  if (isAdmin) return null;
+  return <GlobalNavigationBox />;
+};
+
+// Route-aware Mercy toggle & guide — hide on admin
+const RouteAwareMercyToggle = () => {
+  const location = useLocation();
+  const isAdmin = location.pathname.startsWith("/admin");
+  if (isAdmin) return null;
+  return <MercyToggle />;
+};
+
+const RouteAwareMercyGuide = () => {
+  const location = useLocation();
+  const isAdmin = location.pathname.startsWith("/admin");
+  if (isAdmin) return null;
+  return <MercyGuide />;
+};
+
+// Content wrapper for B&W mode scoping
+const ScopedAppContent = ({ children }: { children: ReactNode }) => {
+  const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith("/admin");
   if (isAdminRoute) return <>{children}</>;
   return <div className="mb-app-content">{children}</div>;
 };
@@ -53,34 +80,43 @@ const ScopedAppContent = ({ children }: { children: React.ReactNode }) => {
 const App = () => {
   useEffect(() => {
     // Lazy preload companion assets
-    import('@/lib/companionPreload').then(({ preloadCompanionAssets }) => {
+    import("@/lib/companionPreload").then(({ preloadCompanionAssets }) => {
       preloadCompanionAssets();
     });
-    
-    logger.info('App initialized', {
-      scope: 'App',
-      environment: import.meta.env.DEV ? 'development' : 'production',
+
+    logger.info("App initialized", {
+      scope: "App",
+      environment: import.meta.env.DEV ? "development" : "production",
     });
 
     // Remove tracking parameters
     const url = new URL(window.location.href);
-    const trackingParams = ['fbclid', 'gclid', 'msclkid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+    const trackingParams = [
+      "fbclid",
+      "gclid",
+      "msclkid",
+      "utm_source",
+      "utm_medium",
+      "utm_campaign",
+      "utm_term",
+      "utm_content",
+    ];
     let hasTrackingParams = false;
-    trackingParams.forEach(param => {
+    trackingParams.forEach((param) => {
       if (url.searchParams.has(param)) {
         url.searchParams.delete(param);
         hasTrackingParams = true;
       }
     });
     if (hasTrackingParams) {
-      window.history.replaceState({}, '', url.toString());
+      window.history.replaceState({}, "", url.toString());
     }
 
     // Lazy preload critical routes on idle
-    if ('requestIdleCallback' in window) {
+    if ("requestIdleCallback" in window) {
       requestIdleCallback(() => {
-        import('@/lib/performance').then(({ preloadCriticalRoutes }) => {
-          preloadCriticalRoutes(['/vip/vip1', '/vip/vip2', '/room']);
+        import("@/lib/performance").then(({ preloadCriticalRoutes }) => {
+          preloadCriticalRoutes(["/vip/vip1", "/vip/vip2", "/room"]);
         });
       });
     }
@@ -100,16 +136,16 @@ const App = () => {
                 <MusicPlayerProvider>
                   <BrowserRouter>
                     <EnvironmentBanner />
-                    <GlobalNavigationBox />
+                    <RouteAwareGlobalNav />
                     <AppVersionManager />
                     <PerformanceProfiler />
-                    
+
                     <ScopedAppContent>
                       <AppRouter />
                     </ScopedAppContent>
-                    
-                    <MercyToggle />
-                    <MercyGuide />
+
+                    <RouteAwareMercyToggle />
+                    <RouteAwareMercyGuide />
                     <GlobalFeedbackWidget />
                     <RouteAwareBottomBar />
                   </BrowserRouter>

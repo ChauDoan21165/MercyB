@@ -42,8 +42,6 @@ type TierMapRow = {
   layout_json: any;
 };
 
-type LaneKey = "english" | "core" | "life";
-
 // Canonical tiers
 const CANONICAL_TIERS: string[] = [
   "free",
@@ -59,7 +57,7 @@ const CANONICAL_TIERS: string[] = [
   "vip9",
 ];
 
-// Correct tier bucketing — handles all tiers properly
+// Tier bucket: which column (Free / VIP1 / VIP2 / …)
 const getTierBucket = (room: RoomRow): string => {
   const raw = room.tier ?? "";
   const key = raw.trim().toLowerCase();
@@ -82,15 +80,51 @@ const getTierBucket = (room: RoomRow): string => {
   return "Unknown / Broken";
 };
 
-// Lane logic based purely on domain column
-const getLane = (room: RoomRow): LaneKey => {
-  const d = (room.domain || "").trim().toLowerCase();
+// ---------- SAFE SORTING ----------
+const roomSortKey = (room: RoomRow) =>
+  (room.slug || room.title_en || "").toLowerCase();
 
+// ---------- LANE DETECTION (English / Core / Life) ----------
+const getLane = (room: RoomRow): "english" | "core" | "life" => {
+  const d = (room.domain || "").trim().toLowerCase();
+  const slug = (room.slug || "").trim().toLowerCase();
+  const title = (room.title_en || "").trim().toLowerCase();
+
+  // 1) Domain overrides everything
   if (d === "english") return "english";
   if (d === "life") return "life";
   if (d === "core") return "core";
 
-  // Anything else (null, empty, typo, etc.) → Core lane (safe default)
+  // 2) English detection
+  if (
+    slug.includes("english") ||
+    slug.includes("ielts") ||
+    slug.includes("toeic") ||
+    slug.includes("toefl") ||
+    slug.includes("grammar") ||
+    slug.startsWith("eng-") ||
+    title.includes("english")
+  ) {
+    return "english";
+  }
+
+  // 3) Life Skill detection — FIXED: removed stray ||
+  if (
+    slug.includes("safety") ||
+    slug.includes("survival") ||
+    slug.includes("life-skill") ||
+    slug.includes("life_skill") ||
+    slug.includes("emergency") ||
+    slug.includes("first-aid") ||
+    slug.includes("first_aid") ||
+    slug.includes("fire") ||
+    title.includes("survival") ||
+    title.includes("safety")
+  ) {
+    return "life";
+  }
+
+  // 4) Everything else → Core
   return "core";
 };
 
@@ -134,7 +168,7 @@ const TierInspectorPage: React.FC = () => {
     },
   });
 
-  // ---------- BUILD COLUMNS ----------
+  // ---------- BUILD COLUMNS WITH SAFE SORTING ----------
   useEffect(() => {
     if (!roomsQuery.data) return;
 
@@ -147,12 +181,19 @@ const TierInspectorPage: React.FC = () => {
       next[bucket].push(room);
     });
 
+    // Sort every tier column safely
+    for (const key of Object.keys(next)) {
+      next[key].sort((a, b) =>
+        roomSortKey(a).localeCompare(roomSortKey(b))
+      );
+    }
+
     setColumns(next);
   }, [roomsQuery.data]);
 
   const tierList = useMemo(() => {
     const base = [...CANONICAL_TIERS, "Unknown / Broken"];
-    return base.filter((t) => columns[t]?.length > 0);
+    return base.filter((t) => (columns[t] ?? []).length > 0);
   }, [columns]);
 
   const startDrag = (roomId: string, fromTier: string) => {
@@ -171,10 +212,23 @@ const TierInspectorPage: React.FC = () => {
 
     // Optimistic update
     setColumns((prev) => {
-      const next = { ...prev };
-      next[fromTier] = next[fromTier].filter((r) => r.id !== roomId);
-      const updated = { ...room, tier: targetTier };
-      next[targetTier] = [...(next[targetTier] || []), updated];
+      const next: TierColumns = {};
+      for (const [tierKey, rooms] of Object.entries(prev)) {
+        if (tierKey === fromTier) {
+          next[tierKey] = rooms.filter((r) => r.id !== roomId);
+        } else {
+          next[tierKey] = [...rooms];
+        }
+      }
+      const updated: RoomRow = { ...room, tier: targetTier };
+      if (!next[targetTier]) next[targetTier] = [];
+      next[targetTier].push(updated);
+
+      // Keep alphabetical order after drop
+      next[targetTier].sort((a, b) =>
+        roomSortKey(a).localeCompare(roomSortKey(b))
+      );
+
       return next;
     });
 
@@ -215,20 +269,6 @@ const TierInspectorPage: React.FC = () => {
     },
   });
 
-  // ---------- HELPER: LANE ROOMS SORTED A–Z ----------
-  const getLaneRooms = (tier: string, lane: LaneKey): RoomRow[] => {
-    const tierRooms = columns[tier] ?? [];
-
-    return tierRooms
-      .filter((r) => getLane(r) === lane)
-      .slice() // copy
-      .sort((a, b) => {
-        const labelA = (a.title_en || a.slug || "").toLowerCase();
-        const labelB = (b.title_en || b.slug || "").toLowerCase();
-        return labelA.localeCompare(labelB);
-      });
-  };
-
   // ---------- RENDER ----------
   if (roomsQuery.isLoading) return <div className="p-6">Loading rooms…</div>;
   if (roomsQuery.isError) return <div className="p-6 text-red-500">Failed to load rooms.</div>;
@@ -251,10 +291,12 @@ const TierInspectorPage: React.FC = () => {
           </div>
         </div>
         <div className="flex items-center gap-2">
-          <Badge variant="outline">
-            Total: {roomsQuery.data?.length ?? 0}
-          </Badge>
-          <Button size="icon" variant="outline" onClick={() => roomsQuery.refetch()}>
+          <Badge variant="outline">Total: {roomsQuery.data?.length ?? 0}</Badge>
+          <Button
+            size="icon"
+            variant="outline"
+            onClick={() => roomsQuery.refetch()}
+          >
             <RefreshCw className="h-4 w-4" />
           </Button>
         </div>
@@ -326,33 +368,39 @@ const TierInspectorPage: React.FC = () => {
                     { key: "core" as const, label: "Core (all topics)" },
                     { key: "life" as const, label: "Life Skill" },
                   ].map((lane) => {
-                    const laneRooms = getLaneRooms(tier, lane.key);
+                    let laneRooms = rooms.filter((r) => getLane(r) === lane.key);
+
+                    // SAFE SORTING inside each lane
+                    laneRooms = [...laneRooms].sort((a, b) =>
+                      roomSortKey(a).localeCompare(roomSortKey(b))
+                    );
 
                     return (
                       <div key={lane.key} className="flex flex-col min-w-0">
                         <div className="text-[10px] font-semibold text-muted-foreground mb-1 px-1 truncate">
                           {lane.label} ({laneRooms.length})
                         </div>
-                        <ScrollArea className="flex-1 pr-1">
+                        <ScrollArea className="h-[360px] overflow-y-auto pr-1">
                           <div className="space-y-1">
                             {laneRooms.map((room) => (
                               <div
                                 key={room.id}
-                                className="rounded-md border bg-background px-2 py-1.5 text-xs cursor-move hover:bg-muted flex flex-col"
+                                className="rounded-md border bg-background px-2 py-1.5 text-[11px] cursor-move hover:bg-muted flex flex-col"
                                 draggable
                                 onDragStart={() => startDrag(room.id, tier)}
                                 onDragEnd={cancelDrag}
                               >
                                 <span className="font-medium truncate">
-                                  {room.title_en || room.slug}
+                                  {room.slug}
                                 </span>
-                                {room.slug && (
-                                  <span className="text-[10px] text-muted-foreground truncate">
-                                    {room.slug}
+                                {room.title_en && (
+                                  <span className="text-[10px] text-muted-foreground">
+                                    {room.title_en}
                                   </span>
                                 )}
                                 {room.tier &&
-                                  room.tier.toLowerCase() !== tier.toLowerCase() && (
+                                  room.tier.toLowerCase() !==
+                                    tier.toLowerCase() && (
                                     <span className="mt-0.5 text-[9px] text-amber-600">
                                       DB tier: {room.tier}
                                     </span>

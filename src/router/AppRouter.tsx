@@ -44,7 +44,7 @@ const PathDayPage = lazy(() => import("@/pages/PathDayPage"));
 const PathCompleted = lazy(() => import("@/pages/PathCompleted"));
 
 // Other user pages
-const MeaningOfLife = lazy(() => import("@/pages/MeaningOfLife"));
+const MeaningOfLife = lazy(() => import("@/pages/MeaningOfLife")); // FIXED: correct path
 const AllRooms = lazy(() => import("@/pages/AllRooms"));
 const VIPRequestForm = lazy(() => import("@/pages/VIPRequestForm"));
 const VIPRequests = lazy(() => import("@/pages/VIPRequests"));
@@ -126,7 +126,10 @@ const TestEmail = lazy(() => import("@/pages/admin/TestEmail"));
 const AdminBankTransfers = lazy(() => import("@/pages/AdminBankTransfers"));
 const AdminEmailBroadcast = lazy(() => import("@/pages/AdminEmailBroadcast"));
 
-export function AppRouter() {
+// Tier Inspector — PROTECTED
+const TierInspectorPage = lazy(() => import("@/pages/admin/tier-inspector"));
+
+const AppRouter = () => {
   return (
     <Suspense fallback={<LoadingSkeleton variant="page" />}>
       <Routes>
@@ -206,6 +209,18 @@ export function AppRouter() {
         
         {/* Admin routes */}
         <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
+
+        {/* Tier Inspector — PROTECTED */}
+        <Route
+          path="/admin/tier-inspector"
+          element={
+            <AdminRoute>
+              <TierInspectorPage />
+            </AdminRoute>
+          }
+        />
+
+        {/* Other admin routes */}
         <Route path="/admin/vip-rooms" element={<AdminRoute><AdminVIPRooms /></AdminRoute>} />
         <Route path="/admin/design-audit" element={<AdminRoute><AdminDesignAudit /></AdminRoute>} />
         <Route path="/admin/app-metrics" element={<AdminRoute><AppMetrics /></AdminRoute>} />
@@ -268,3 +283,5 @@ export function AppRouter() {
     </Suspense>
   );
 }
+
+export default AppRouter;
