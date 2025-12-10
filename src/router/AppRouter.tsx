@@ -44,7 +44,7 @@ const PathDayPage = lazy(() => import("@/pages/PathDayPage"));
 const PathCompleted = lazy(() => import("@/pages/PathCompleted"));
 
 // Other user pages
-const MeaningOfLife = lazy(() => import("@/pages/MeaningOfLife")); // FIXED: correct path
+const MeaningOfLife = lazy(() => import("@/pages/MeaningOfLife"));
 const AllRooms = lazy(() => import("@/pages/AllRooms"));
 const VIPRequestForm = lazy(() => import("@/pages/VIPRequestForm"));
 const VIPRequests = lazy(() => import("@/pages/VIPRequests"));
