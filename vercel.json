@@ -1,10 +1,4 @@
 {
-  "routes": [
-    {
-      "src": "/public/data/(.*)",
-      "status": 404
-    }
-  ],
   "headers": [
     {
       "source": "/public/data/(.*)",
