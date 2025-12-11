@@ -598,6 +598,52 @@ serve(async (req) => {
     });
   }
 
+  // ============= ADMIN AUTH CHECK =============
+  // Only admins should access system health metrics
+  try {
+    const authHeader = req.headers.get('Authorization') || '';
+    const token = authHeader.replace('Bearer ', '').trim();
+    
+    if (!token) {
+      return new Response(
+        JSON.stringify({ error: 'Unauthorized', message: 'Missing authorization token' }),
+        { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+    
+    const { data: userData, error: authError } = await supabase.auth.getUser(token);
+    
+    if (authError || !userData?.user) {
+      return new Response(
+        JSON.stringify({ error: 'Unauthorized', message: 'Invalid or expired token' }),
+        { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+    
+    // Check if user is admin (level 1+ in admin_users table)
+    const { data: adminData, error: adminError } = await supabase
+      .from('admin_users')
+      .select('level')
+      .eq('user_id', userData.user.id)
+      .single();
+    
+    if (adminError || !adminData || adminData.level < 1) {
+      console.log(`[room-health-summary] Non-admin user ${userData.user.id} attempted access`);
+      return new Response(
+        JSON.stringify({ error: 'Forbidden', message: 'Admin access required' }),
+        { status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+    
+    console.log(`[room-health-summary] Admin user ${userData.user.id} (level ${adminData.level}) accessing health summary`);
+  } catch (authErr: any) {
+    console.error('[room-health-summary] Auth check failed:', authErr);
+    return new Response(
+      JSON.stringify({ error: 'Unauthorized', message: 'Authentication failed' }),
+      { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+    );
+  }
+
   // 🔹 Read body ONCE (POST only)
   let body: any = {};
   if (req.method === "POST") {
