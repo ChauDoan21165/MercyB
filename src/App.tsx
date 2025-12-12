@@ -1,6 +1,6 @@
 // src/App.tsx
 import React from "react";
-import { AppRouter } from "./AppRouter";
+import AppRouter from "./router/AppRouter";
 
 function App() {
   return <AppRouter />;
