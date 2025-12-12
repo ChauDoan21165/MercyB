@@ -7,6 +7,7 @@ import { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import { AdminRoute } from "@/components/AdminRoute";
 import { LoadingSkeleton } from "@/components/ui/loading-skeleton";
+import { AdminFloatingButton } from "@/components/AdminFloatingButton";
 
 // Critical pages - loaded immediately (small bundles)
 import Welcome from "@/pages/Welcome";
@@ -131,8 +132,12 @@ const TierInspectorPage = lazy(() => import("@/pages/admin/tier-inspector"));
 
 const AppRouter = () => {
   return (
-    <Suspense fallback={<LoadingSkeleton variant="page" />}>
-      <Routes>
+    <>
+      {/* Global Admin Floating Button - visible for admins/dev mode */}
+      <AdminFloatingButton />
+      
+      <Suspense fallback={<LoadingSkeleton variant="page" />}>
+        <Routes>
         {/* Public routes */}
         <Route path="/" element={<Homepage />} />
         <Route path="/home" element={<Homepage />} />
@@ -281,6 +286,7 @@ const AppRouter = () => {
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
+    </>
   );
 }
 
