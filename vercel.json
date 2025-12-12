@@ -1,17 +1,8 @@
 {
-  "headers": [
+  "rewrites": [
     {
-      "source": "/public/data/(.*)",
-      "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "noindex"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "private, no-cache, no-store, must-revalidate"
-        }
-      ]
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
