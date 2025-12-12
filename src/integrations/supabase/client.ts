@@ -1,18 +1,17 @@
 import { createClient } from '@supabase/supabase-js'
 import type { Database } from './types'
 
-// ✅ Your correct Supabase project URL
-const SUPABASE_URL = 'https://buemdfyxhuxnzgdoqjn.supabase.co'
+// ⚠️ MUST MATCH Supabase "Project URL" EXACTLY
+const SUPABASE_URL = 'https://buemdfyxhuxnzpgdoqin.supabase.co'
 
-// ⚠️ IMPORTANT: Use your actual public anon key (publishable key)
+// Public anon key from your "Mercy Blade Real" project
 const SUPABASE_PUBLISHABLE_KEY =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ1ZW1kZnh5aHh1bnpnZG9xam4iLCJyb2xlIjoiYW5vbiIsImlhdCI6MTc2NTE3NDkzNCwiZXhwIjoyMDgwNzUwOTM0fQ.u7MQmlz6HTt9Rrm99X9l6srVVdLqD7Yugi1UVGdxqR0'
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ1ZW1kZnh5aHh1bnpwZ2RvcWpuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUxNzQ5MzQsImV4cCI6MjA4MDc1MDkzNH0.u7MQmlz6HTt9Rrm99X9l6srVVdLqD7Yugi1UVGdxqR0'
 
-// Debug logs — helps verify at runtime
 console.log('SUPABASE CLIENT LOADED AT', new Date().toISOString())
 console.log('USING SUPABASE URL →', SUPABASE_URL)
+// CACHE BUSTER v1002-mercysync
 
-// Cache buster to force rebuild (manual version tag)
 export const supabase = createClient<Database>(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
   auth: {
     storage: typeof window !== 'undefined' ? localStorage : undefined,
