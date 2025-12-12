@@ -10,7 +10,7 @@ const SUPABASE_ANON_KEY =
 
 console.log('SUPABASE CLIENT LOADED AT', new Date().toISOString())
 console.log('USING SUPABASE URL →', SUPABASE_URL)
-// CACHE BUSTER v1010-clean
+// CACHE BUSTER v1011-clean-2
 
 export const supabase = createClient<Database>(SUPABASE_URL, SUPABASE_ANON_KEY, {
   auth: {
