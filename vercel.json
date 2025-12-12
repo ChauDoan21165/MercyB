@@ -10,6 +10,9 @@
     { "source": "/reset/**", "destination": "/index.html" },
 
     { "source": "/rooms", "destination": "/index.html" },
-    { "source": "/rooms/**", "destination": "/index.html" }
+    { "source": "/rooms/**", "destination": "/index.html" },
+
+    { "source": "/admin", "destination": "/index.html" },
+    { "source": "/admin/**", "destination": "/index.html" }
   ]
 }
