@@ -1,22 +1,35 @@
-import { createClient } from '@supabase/supabase-js'
-import type { Database } from './types'
+// src/integrations/supabase/client.ts
 
-// ✅ FINAL CORRECT SUPABASE PROJECT URL
-const SUPABASE_URL = 'https://buemdfxyhxunzpgdoqin.supabase.co'
+import { createClient } from "@supabase/supabase-js";
 
-// ✅ This is your anon public key (safe for frontend)
-const SUPABASE_ANON_KEY =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ1ZW1kZnh5aHh1bnpwZ2RvcWluIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUxNzQ5MzQsImV4cCI6MjA4MDc1MDkzNH0.u7MQmlz6HTt9Rrm99X9l6srVVdLqD7Yugi1UVGdxqR0'
+/**
+ * Support both Vite and Next.js style environment variables.
+ * This lets Mercy Blade run locally, in Codespaces, and on Vercel
+ * using the same client.
+ */
 
-console.log('SUPABASE CLIENT LOADED AT', new Date().toISOString())
-console.log('USING SUPABASE URL →', SUPABASE_URL)
-// CACHE BUSTER v1011-clean-2
+const supabaseUrl =
+  // Vite style:
+  (typeof import.meta !== "undefined" &&
+    (import.meta as any).env?.VITE_SUPABASE_URL) ||
+  // Next.js / Vercel style:
+  process.env.NEXT_PUBLIC_SUPABASE_URL;
 
-export const supabase = createClient<Database>(SUPABASE_URL, SUPABASE_ANON_KEY, {
-  auth: {
-    storage: typeof window !== 'undefined' ? localStorage : undefined,
-    autoRefreshToken: true,
-    persistSession: true,
-    detectSessionInUrl: true,
-  },
-})
+const supabaseAnonKey =
+  // Vite style:
+  (typeof import.meta !== "undefined" &&
+    (import.meta as any).env?.VITE_SUPABASE_ANON_KEY) ||
+  // Next.js / Vercel style:
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+// Safety check – if keys are missing, stop the app loudly
+if (!supabaseUrl || !supabaseAnonKey) {
+  console.error("❌ Missing Supabase environment variables.");
+  console.error("supabaseUrl =", supabaseUrl);
+  console.error("supabaseAnonKey =", supabaseAnonKey ? "[present]" : "undefined");
+  throw new Error(
+    "Supabase URL or anon key is missing. Check your .env file locally and your Vercel project environment variables."
+  );
+}
+
+export const supabase = createClient(supabaseUrl, supabaseAnonKey);
