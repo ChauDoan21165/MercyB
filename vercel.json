@@ -1,20 +1,15 @@
 {
   "rewrites": [
-    {
-      "source": "/auth",
-      "destination": "/"
-    },
-    {
-      "source": "/onboarding",
-      "destination": "/"
-    },
-    {
-      "source": "/reset",
-      "destination": "/"
-    },
-    {
-      "source": "/rooms/:path*",
-      "destination": "/"
-    }
+    { "source": "/auth", "destination": "/index.html" },
+    { "source": "/auth/**", "destination": "/index.html" },
+
+    { "source": "/onboarding", "destination": "/index.html" },
+    { "source": "/onboarding/**", "destination": "/index.html" },
+
+    { "source": "/reset", "destination": "/index.html" },
+    { "source": "/reset/**", "destination": "/index.html" },
+
+    { "source": "/rooms", "destination": "/index.html" },
+    { "source": "/rooms/**", "destination": "/index.html" }
   ]
 }
