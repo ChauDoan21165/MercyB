@@ -1,8 +1,20 @@
 {
-  "routes": [
+  "rewrites": [
     {
-      "src": "/(.*)",
-      "dest": "/"
+      "source": "/auth",
+      "destination": "/"
+    },
+    {
+      "source": "/onboarding",
+      "destination": "/"
+    },
+    {
+      "source": "/reset",
+      "destination": "/"
+    },
+    {
+      "source": "/rooms/:path*",
+      "destination": "/"
     }
   ]
 }
