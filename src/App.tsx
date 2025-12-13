@@ -1,18 +1,10 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import RoomGrid from "@/pages/RoomGrid";
 
-function App() {
+export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        {/* HOME */}
-        <Route path="/" element={<RoomGrid />} />
-
-        {/* FALLBACK */}
-        <Route path="*" element={<RoomGrid />} />
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route path="/" element={<RoomGrid />} />
+    </Routes>
   );
 }
-
-export default App;
