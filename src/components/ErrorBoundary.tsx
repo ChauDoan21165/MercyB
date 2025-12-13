@@ -1,75 +1,86 @@
 // src/components/ErrorBoundary.tsx — v2025-12-13-01
 import React from "react";
+import { Link } from "react-router-dom";
 
-type Props = {
-  children: React.ReactNode;
-};
+function normalizeError(err: unknown) {
+  if (err instanceof Error) {
+    return {
+      name: err.name,
+      message: err.message || "(empty message)",
+      stack: err.stack || "",
+      raw: err,
+    };
+  }
 
-type State = {
-  hasError: boolean;
-  error: unknown;
-  errorInfo?: React.ErrorInfo;
-};
-
-function safeStringify(x: unknown) {
+  // handle thrown strings / objects
   try {
-    if (x instanceof Error) {
-      return `${x.name}: ${x.message}\n${x.stack || ""}`;
-    }
-    if (typeof x === "string") return x;
-    return JSON.stringify(x, null, 2);
+    return {
+      name: "NonErrorThrown",
+      message:
+        typeof err === "string"
+          ? err
+          : err == null
+            ? "(null/undefined thrown)"
+            : JSON.stringify(err, null, 2),
+      stack: "",
+      raw: err,
+    };
   } catch {
-    return String(x);
+    return {
+      name: "NonErrorThrown",
+      message: String(err),
+      stack: "",
+      raw: err,
+    };
   }
 }
 
+type Props = { children: React.ReactNode };
+
+type State = {
+  hasError: boolean;
+  err?: ReturnType<typeof normalizeError>;
+};
+
 export class ErrorBoundary extends React.Component<Props, State> {
-  state: State = { hasError: false, error: null };
+  state: State = { hasError: false };
 
-  static getDerivedStateFromError(error: unknown): State {
-    return { hasError: true, error };
+  static getDerivedStateFromError(error: unknown) {
+    return { hasError: true, err: normalizeError(error) };
   }
 
-  componentDidCatch(error: unknown, errorInfo: React.ErrorInfo) {
-    // IMPORTANT: log the real error so you can see it in Vercel + browser
-    // eslint-disable-next-line no-console
-    console.error("❌ ErrorBoundary caught:", error);
-    // eslint-disable-next-line no-console
-    console.error("❌ Component stack:", errorInfo?.componentStack);
-
-    this.setState({ error, errorInfo });
+  componentDidCatch(error: unknown, info: unknown) {
+    const e = normalizeError(error);
+    // Always log a real payload to console
+    console.error("❌ ErrorBoundary caught:", e);
+    console.error("❌ Component stack:", info);
   }
-
-  handleTryAgain = () => {
-    this.setState({ hasError: false, error: null, errorInfo: undefined });
-  };
-
-  handleGoHome = () => {
-    window.location.href = "/";
-  };
 
   render() {
     if (!this.state.hasError) return this.props.children;
 
-    const errorText = safeStringify(this.state.error);
-    const stack = this.state.errorInfo?.componentStack || "";
+    const e = this.state.err;
 
     return (
-      <div className="min-h-screen bg-slate-900 text-slate-100 p-6">
-        <div className="max-w-3xl mx-auto space-y-4">
-          <h1 className="text-2xl font-semibold">Something went wrong</h1>
+      <div className="min-h-screen bg-slate-950 text-slate-100 p-6">
+        <div className="max-w-4xl mx-auto rounded-2xl border border-slate-700 bg-slate-900/40 p-6 space-y-4">
+          <h1 className="text-3xl font-semibold">Something went wrong</h1>
 
-          <div className="rounded-lg border border-slate-700 bg-slate-950 p-4">
-            <div className="text-sm text-slate-300 mb-2">Error:</div>
-            <pre className="whitespace-pre-wrap text-sm text-slate-100">
-              {errorText || "(empty error)"}
-            </pre>
+          <div className="rounded-xl bg-black/30 border border-slate-700 p-4 overflow-auto">
+            <p className="text-sm text-slate-300">
+              <span className="font-semibold">Name:</span> {e?.name}
+            </p>
+            <p className="text-sm text-slate-300 mt-1">
+              <span className="font-semibold">Message:</span> {e?.message}
+            </p>
 
-            {stack ? (
+            {e?.stack ? (
               <>
-                <div className="text-sm text-slate-300 mt-4 mb-2">Component stack:</div>
-                <pre className="whitespace-pre-wrap text-xs text-slate-200">
-                  {stack}
+                <p className="text-sm text-slate-300 mt-3 font-semibold">
+                  Stack:
+                </p>
+                <pre className="text-xs text-slate-200 whitespace-pre-wrap">
+                  {e.stack}
                 </pre>
               </>
             ) : null}
@@ -77,17 +88,19 @@ export class ErrorBoundary extends React.Component<Props, State> {
 
           <div className="flex gap-3">
             <button
-              className="px-4 py-2 rounded bg-slate-200 text-slate-900"
-              onClick={this.handleTryAgain}
+              className="px-4 py-2 rounded-lg bg-slate-200 text-slate-900"
+              onClick={() => window.location.reload()}
             >
               Try Again
             </button>
-            <button
-              className="px-4 py-2 rounded border border-slate-500"
-              onClick={this.handleGoHome}
+
+            <Link
+              className="px-4 py-2 rounded-lg border border-slate-500"
+              to="/"
+              onClick={() => this.setState({ hasError: false, err: undefined })}
             >
               Go Home
-            </button>
+            </Link>
           </div>
 
           <p className="text-xs text-slate-400">
