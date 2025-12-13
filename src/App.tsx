@@ -1,6 +1,6 @@
-// src/App.tsx — v2025-12-14-02
+// src/App.tsx — v2025-12-14-03
 import { useEffect } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ThemeProvider } from "next-themes";
 
@@ -15,14 +15,14 @@ import { MbThemeProvider } from "@/hooks/useMbTheme";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { OfflineDetector } from "@/components/OfflineDetector";
 
-import Home from "@/pages/Home";          // IMPORTANT: Home.tsx must exist
+import Home from "@/pages/Home";
 import RoomGrid from "@/pages/RoomGrid";
 
 const queryClient = new QueryClient();
 
 export default function App() {
   useEffect(() => {
-    console.log("App.tsx version: v2025-12-14-02");
+    console.log("App.tsx version: v2025-12-14-03");
   }, []);
 
   return (
@@ -35,13 +35,11 @@ export default function App() {
                 <TooltipProvider>
                   <OfflineDetector />
 
-                  <BrowserRouter>
-                    <Routes>
-                      <Route path="/" element={<Home />} />
-                      <Route path="/free" element={<RoomGrid />} />
-                      <Route path="*" element={<Navigate to="/" replace />} />
-                    </Routes>
-                  </BrowserRouter>
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/free" element={<RoomGrid />} />
+                    <Route path="*" element={<Navigate to="/" replace />} />
+                  </Routes>
 
                   <Toaster />
                   <Sonner />
