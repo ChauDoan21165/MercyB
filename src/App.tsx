@@ -11,14 +11,8 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <Routes>
-          {/* HOME FIRST */}
           <Route path="/" element={<Home />} />
-
-          {/* ROOMS */}
           <Route path="/rooms" element={<RoomGrid />} />
-
-          {/* fallback */}
-          <Route path="*" element={<Home />} />
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>
