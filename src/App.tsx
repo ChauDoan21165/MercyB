@@ -35,6 +35,8 @@ export default function App() {
                 <TooltipProvider>
                   <OfflineDetector />
 
+                  {/* IMPORTANT: NO <BrowserRouter> HERE.
+                      BrowserRouter stays in src/main.tsx only. */}
                   <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/free" element={<RoomGrid />} />
