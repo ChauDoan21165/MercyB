@@ -1,56 +1,32 @@
-// src/pages/Home.tsx — v2025-12-14-01
-import React from "react";
-import { useHomepageConfig } from "@/hooks/useHomepageConfig";
+// src/pages/Home.tsx — v2025-12-14-02
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 
-function SafeHome() {
-  let configResult;
+export default function Home() {
+  const navigate = useNavigate();
 
-  try {
-    configResult = useHomepageConfig();
-  } catch (e) {
-    console.error("❌ useHomepageConfig crashed:", e);
+  useEffect(() => {
+    console.log("Home.tsx version: v2025-12-14-02");
+  }, []);
 
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-950 text-white">
-        <div className="max-w-md p-6 rounded-xl border border-slate-700 bg-slate-900">
-          <h1 className="text-xl font-semibold mb-2">
-            Homepage temporarily unavailable
-          </h1>
-          <p className="text-sm text-slate-300">
-            The homepage configuration failed to load.
-          </p>
-          <p className="text-xs text-slate-500 mt-3">
-            Home.tsx v2025-12-14-01
-          </p>
-        </div>
-      </div>
-    );
-  }
-
-  const { config, loading, error } = configResult;
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        Loading homepage…
-      </div>
-    );
-  }
-
-  if (!config) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        Failed to load homepage config
-      </div>
-    );
-  }
-
-  // 👇 render your existing homepage JSX BELOW
   return (
-    <>
-      {/* KEEP ALL YOUR EXISTING HOMEPAGE JSX HERE */}
-    </>
+    <main className="min-h-screen flex items-center justify-center bg-gradient-to-b from-slate-50 to-slate-100">
+      <div className="w-full max-w-xl p-8 rounded-2xl border bg-white shadow-sm text-center space-y-4">
+        <h1 className="text-3xl font-bold">Mercy Blade</h1>
+        <p className="text-gray-600">
+          Home page placeholder (safe). We’ll re-enable the full homepage after the app is stable.
+        </p>
+
+        <div className="flex items-center justify-center gap-3">
+          <Button onClick={() => navigate("/free")} className="gap-2">
+            Go to Free Rooms <ArrowRight className="w-4 h-4" />
+          </Button>
+        </div>
+
+        <p className="text-xs text-gray-400">Home.tsx v2025-12-14-02</p>
+      </div>
+    </main>
   );
 }
-
-export default SafeHome;
