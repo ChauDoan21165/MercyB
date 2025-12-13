@@ -1,11 +1,18 @@
-// src/App.tsx
-import AppRouter from "./AppRouter";
-import { ErrorBoundary } from "@/components/ErrorBoundary";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import RoomGrid from "@/pages/RoomGrid";
 
-export default function App() {
+function App() {
   return (
-    <ErrorBoundary>
-      <AppRouter />
-    </ErrorBoundary>
+    <BrowserRouter>
+      <Routes>
+        {/* HOME */}
+        <Route path="/" element={<RoomGrid />} />
+
+        {/* FALLBACK */}
+        <Route path="*" element={<RoomGrid />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
+
+export default App;
