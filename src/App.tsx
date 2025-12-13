@@ -1,8 +1,7 @@
-// App.tsx — v2025-12-13-03
+// src/App.tsx — v2025-12-13-02
 import { useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ThemeProvider } from "next-themes";
 
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/toaster";
@@ -15,45 +14,40 @@ import { MbThemeProvider } from "@/hooks/useMbTheme";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { OfflineDetector } from "@/components/OfflineDetector";
 
-import Home from "@/pages/Home";
+import Home from "@/pages/Hom";       // correct filename
 import RoomGrid from "@/pages/RoomGrid";
 
 const queryClient = new QueryClient();
 
 export default function App() {
+  // version marker (you were right to ask for this 👍)
   useEffect(() => {
-    console.log("App.tsx version: v2025-12-13-03");
+    console.log("✅ App.tsx version: v2025-12-13-02 (next-themes removed)");
   }, []);
 
   return (
     <ErrorBoundary>
       <QueryClientProvider client={queryClient}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-          <MbThemeProvider>
-            <LowDataModeProvider>
-              <MusicPlayerProvider>
-                <TooltipProvider>
-                  <OfflineDetector />
+        <MbThemeProvider>
+          <LowDataModeProvider>
+            <MusicPlayerProvider>
+              <TooltipProvider>
+                <OfflineDetector />
 
-                  <BrowserRouter>
-                    <Routes>
-                      {/* TEMP: make sure app loads */}
-                      <Route path="/" element={<RoomGrid />} />
+                <BrowserRouter>
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/free" element={<RoomGrid />} />
+                    <Route path="*" element={<Navigate to="/" replace />} />
+                  </Routes>
+                </BrowserRouter>
 
-                      {/* Home moved here for debugging */}
-                      <Route path="/home" element={<Home />} />
-
-                      <Route path="*" element={<Navigate to="/" replace />} />
-                    </Routes>
-                  </BrowserRouter>
-
-                  <Toaster />
-                  <Sonner />
-                </TooltipProvider>
-              </MusicPlayerProvider>
-            </LowDataModeProvider>
-          </MbThemeProvider>
-        </ThemeProvider>
+                <Toaster />
+                <Sonner />
+              </TooltipProvider>
+            </MusicPlayerProvider>
+          </LowDataModeProvider>
+        </MbThemeProvider>
       </QueryClientProvider>
     </ErrorBoundary>
   );
