@@ -1,4 +1,4 @@
-// src/App.tsx — v2025-12-13-02
+// src/App.tsx — v2025-12-13-03
 import { useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -14,15 +14,14 @@ import { MbThemeProvider } from "@/hooks/useMbTheme";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { OfflineDetector } from "@/components/OfflineDetector";
 
-import Home from "@/pages/Hom";       // correct filename
+import Home from "@/pages/Home";     // ✅ after rename
 import RoomGrid from "@/pages/RoomGrid";
 
 const queryClient = new QueryClient();
 
 export default function App() {
-  // version marker (you were right to ask for this 👍)
   useEffect(() => {
-    console.log("✅ App.tsx version: v2025-12-13-02 (next-themes removed)");
+    console.log("✅ App.tsx version: v2025-12-13-03 (Home.tsx)");
   }, []);
 
   return (
