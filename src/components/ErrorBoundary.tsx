@@ -1,38 +1,61 @@
-// src/components/ErrorBoundary.tsx — v2025-12-13-01
+// src/components/ErrorBoundary.tsx — v2025-12-14-01
 import React from "react";
 import { Link } from "react-router-dom";
 
+function safeStringify(x: unknown) {
+  try {
+    return JSON.stringify(x, null, 2);
+  } catch {
+    try {
+      return String(x);
+    } catch {
+      return "[unstringifiable]";
+    }
+  }
+}
+
 function normalizeError(err: unknown) {
   if (err instanceof Error) {
+    // IMPORTANT: some libraries throw Error("") (empty message)
     return {
-      name: err.name,
-      message: err.message || "(empty message)",
-      stack: err.stack || "",
+      kind: "ErrorInstance" as const,
+      name: err.name || "Error",
+      message: err.message ?? "",
+      stack: err.stack ?? "",
       raw: err,
+      rawDump: {
+        // sometimes extra fields exist
+        ...Object.getOwnPropertyNames(err).reduce((acc: any, k) => {
+          (acc as any)[k] = (err as any)[k];
+          return acc;
+        }, {}),
+      },
     };
   }
 
-  // handle thrown strings / objects
-  try {
-    return {
-      name: "NonErrorThrown",
-      message:
-        typeof err === "string"
-          ? err
+  // thrown string/object/etc
+  const asAny = err as any;
+
+  return {
+    kind: "NonErrorThrown" as const,
+    name:
+      typeof asAny?.name === "string"
+        ? asAny.name
+        : typeof err === "string"
+          ? "StringThrown"
           : err == null
-            ? "(null/undefined thrown)"
-            : JSON.stringify(err, null, 2),
-      stack: "",
-      raw: err,
-    };
-  } catch {
-    return {
-      name: "NonErrorThrown",
-      message: String(err),
-      stack: "",
-      raw: err,
-    };
-  }
+            ? "NullOrUndefinedThrown"
+            : "NonErrorThrown",
+    message:
+      typeof asAny?.message === "string"
+        ? asAny.message
+        : typeof err === "string"
+          ? err
+          : "",
+    stack: typeof asAny?.stack === "string" ? asAny.stack : "",
+    raw: err,
+    rawDump: err,
+  };
 }
 
 type Props = { children: React.ReactNode };
@@ -50,28 +73,37 @@ export class ErrorBoundary extends React.Component<Props, State> {
   }
 
   componentDidCatch(error: unknown, info: unknown) {
-    const e = normalizeError(error);
-    // Always log a real payload to console
-    console.error("❌ ErrorBoundary caught:", e);
-    console.error("❌ Component stack:", info);
+    const n = normalizeError(error);
+
+    // Log BOTH raw + normalized so we can see what the app really threw.
+    console.group("❌ ErrorBoundary (v2025-12-14-01)");
+    console.error("RAW thrown value:", error);
+    console.error("Normalized:", n);
+    console.error("Component stack info:", info);
+    console.groupEnd();
   }
 
   render() {
     if (!this.state.hasError) return this.props.children;
 
     const e = this.state.err;
+    const msg = e?.message?.trim() ? e?.message : "(empty message)";
+    const rawPretty = safeStringify(e?.rawDump);
 
     return (
       <div className="min-h-screen bg-slate-950 text-slate-100 p-6">
-        <div className="max-w-4xl mx-auto rounded-2xl border border-slate-700 bg-slate-900/40 p-6 space-y-4">
+        <div className="max-w-5xl mx-auto rounded-2xl border border-slate-700 bg-slate-900/40 p-6 space-y-4">
           <h1 className="text-3xl font-semibold">Something went wrong</h1>
 
-          <div className="rounded-xl bg-black/30 border border-slate-700 p-4 overflow-auto">
+          <div className="rounded-xl bg-black/30 border border-slate-700 p-4 overflow-auto space-y-2">
+            <p className="text-sm text-slate-300">
+              <span className="font-semibold">Kind:</span> {e?.kind}
+            </p>
             <p className="text-sm text-slate-300">
               <span className="font-semibold">Name:</span> {e?.name}
             </p>
-            <p className="text-sm text-slate-300 mt-1">
-              <span className="font-semibold">Message:</span> {e?.message}
+            <p className="text-sm text-slate-300">
+              <span className="font-semibold">Message:</span> {msg}
             </p>
 
             {e?.stack ? (
@@ -84,6 +116,13 @@ export class ErrorBoundary extends React.Component<Props, State> {
                 </pre>
               </>
             ) : null}
+
+            <p className="text-sm text-slate-300 mt-3 font-semibold">
+              Raw thrown value (dump):
+            </p>
+            <pre className="text-xs text-slate-200 whitespace-pre-wrap">
+              {rawPretty}
+            </pre>
           </div>
 
           <div className="flex gap-3">
@@ -104,7 +143,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
           </div>
 
           <p className="text-xs text-slate-400">
-            ErrorBoundary version: v2025-12-13-01
+            ErrorBoundary version: v2025-12-14-01
           </p>
         </div>
       </div>
