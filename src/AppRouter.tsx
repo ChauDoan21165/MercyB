@@ -1,11 +1,10 @@
-// src/AppRouter.tsx
-import { BrowserRouter } from "react-router-dom";
-import { AppRoutes } from "./routes/AppRoutes";
+import { Routes, Route } from "react-router-dom";
+import RoomGrid from "@/pages/RoomGrid";
 
 export default function AppRouter() {
   return (
-    <BrowserRouter>
-      <AppRoutes />
-    </BrowserRouter>
+    <Routes>
+      <Route path="/" element={<RoomGrid />} />
+    </Routes>
   );
 }
