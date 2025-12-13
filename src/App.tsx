@@ -1,4 +1,4 @@
-// App.tsx — v2025-12-13-02
+// App.tsx — v2025-12-13-03
 import { useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -15,14 +15,14 @@ import { MbThemeProvider } from "@/hooks/useMbTheme";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { OfflineDetector } from "@/components/OfflineDetector";
 
-import Home from "@/pages/Home"; // ✅ FIXED (was Hom)
+import Home from "@/pages/Home";
 import RoomGrid from "@/pages/RoomGrid";
 
 const queryClient = new QueryClient();
 
 export default function App() {
   useEffect(() => {
-    console.log("App.tsx version: v2025-12-13-02");
+    console.log("App.tsx version: v2025-12-13-03");
   }, []);
 
   return (
@@ -37,13 +37,12 @@ export default function App() {
 
                   <BrowserRouter>
                     <Routes>
-                      {/* HOME FIRST */}
-                      <Route path="/" element={<Home />} />
+                      {/* TEMP: make sure app loads */}
+                      <Route path="/" element={<RoomGrid />} />
 
-                      {/* Free rooms grid */}
-                      <Route path="/free" element={<RoomGrid />} />
+                      {/* Home moved here for debugging */}
+                      <Route path="/home" element={<Home />} />
 
-                      {/* fallback */}
                       <Route path="*" element={<Navigate to="/" replace />} />
                     </Routes>
                   </BrowserRouter>
