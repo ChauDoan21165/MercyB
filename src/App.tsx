@@ -1,27 +1,26 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-import Homepage from "@/pages/Homepage";
+import Home from "@/pages/Home";
 import RoomGrid from "@/pages/RoomGrid";
-
-import { LowDataModeProvider } from "@/contexts/LowDataModeContext";
 
 const queryClient = new QueryClient();
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <LowDataModeProvider>
-        <BrowserRouter>
-          <Routes>
-            {/* HOME */}
-            <Route path="/" element={<Home />} />
+      <BrowserRouter>
+        <Routes>
+          {/* HOME FIRST */}
+          <Route path="/" element={<Home />} />
 
-            {/* ROOMS */}
-            <Route path="/rooms" element={<RoomGrid />} />
-          </Routes>
-        </BrowserRouter>
-      </LowDataModeProvider>
+          {/* ROOMS */}
+          <Route path="/rooms" element={<RoomGrid />} />
+
+          {/* fallback */}
+          <Route path="*" element={<Home />} />
+        </Routes>
+      </BrowserRouter>
     </QueryClientProvider>
   );
 }
