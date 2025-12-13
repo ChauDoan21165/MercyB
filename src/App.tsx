@@ -1,25 +1,62 @@
-// FILE: src/App.tsx
-// VERSION: 2025-12-13 v1 (router reset)
+// App.tsx — v2025-12-13-01
+import { useEffect } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ThemeProvider } from "next-themes";
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "@/pages/Home";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+
+import { MusicPlayerProvider } from "@/contexts/MusicPlayerContext";
+import { LowDataModeProvider } from "@/contexts/LowDataModeContext";
+import { MbThemeProvider } from "@/hooks/useMbTheme";
+
+import { ErrorBoundary } from "@/components/ErrorBoundary";
+import { OfflineDetector } from "@/components/OfflineDetector";
+
+import Home from "@/pages/Hom"; // <-- your real file name is Hom.tsx
 import RoomGrid from "@/pages/RoomGrid";
 
-function App() {
+const queryClient = new QueryClient();
+
+export default function App() {
+  // quick “version mark” you wanted (shows in Console)
+  useEffect(() => {
+    console.log("App.tsx version: v2025-12-13-01");
+  }, []);
+
   return (
-    <BrowserRouter>
-      <Routes>
-        {/* Home FIRST */}
-        <Route path="/" element={<Home />} />
+    <ErrorBoundary>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+          <MbThemeProvider>
+            <LowDataModeProvider>
+              <MusicPlayerProvider>
+                <TooltipProvider>
+                  <OfflineDetector />
 
-        {/* Rooms */}
-        <Route path="/rooms" element={<RoomGrid />} />
+                  <BrowserRouter>
+                    <Routes>
+                      {/* HOME FIRST */}
+                      <Route path="/" element={<Home />} />
 
-        {/* Fallback */}
-        <Route path="*" element={<Home />} />
-      </Routes>
-    </BrowserRouter>
+                      {/* Free rooms grid */}
+                      <Route path="/free" element={<RoomGrid />} />
+
+                      {/* fallback */}
+                      <Route path="*" element={<Navigate to="/" replace />} />
+                    </Routes>
+                  </BrowserRouter>
+
+                  <Toaster />
+                  <Sonner />
+                </TooltipProvider>
+              </MusicPlayerProvider>
+            </LowDataModeProvider>
+          </MbThemeProvider>
+        </ThemeProvider>
+      </QueryClientProvider>
+    </ErrorBoundary>
   );
 }
-
-export default App;
