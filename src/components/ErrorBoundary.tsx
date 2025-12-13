@@ -1,3 +1,4 @@
+// src/components/ErrorBoundary.tsx — v2025-12-13-01
 import React from "react";
 
 type Props = {
@@ -6,49 +7,92 @@ type Props = {
 
 type State = {
   hasError: boolean;
-  error?: Error;
+  error: unknown;
   errorInfo?: React.ErrorInfo;
 };
 
-export class ErrorBoundary extends React.Component<Props, State> {
-  state: State = { hasError: false };
+function safeStringify(x: unknown) {
+  try {
+    if (x instanceof Error) {
+      return `${x.name}: ${x.message}\n${x.stack || ""}`;
+    }
+    if (typeof x === "string") return x;
+    return JSON.stringify(x, null, 2);
+  } catch {
+    return String(x);
+  }
+}
 
-  static getDerivedStateFromError(error: Error): State {
+export class ErrorBoundary extends React.Component<Props, State> {
+  state: State = { hasError: false, error: null };
+
+  static getDerivedStateFromError(error: unknown): State {
     return { hasError: true, error };
   }
 
-  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-    // This is the important part — it logs the REAL error
-    console.error("[ErrorBoundary] caught:", error);
-    console.error("[ErrorBoundary] component stack:", errorInfo?.componentStack);
+  componentDidCatch(error: unknown, errorInfo: React.ErrorInfo) {
+    // IMPORTANT: log the real error so you can see it in Vercel + browser
+    // eslint-disable-next-line no-console
+    console.error("❌ ErrorBoundary caught:", error);
+    // eslint-disable-next-line no-console
+    console.error("❌ Component stack:", errorInfo?.componentStack);
+
     this.setState({ error, errorInfo });
   }
+
+  handleTryAgain = () => {
+    this.setState({ hasError: false, error: null, errorInfo: undefined });
+  };
+
+  handleGoHome = () => {
+    window.location.href = "/";
+  };
 
   render() {
     if (!this.state.hasError) return this.props.children;
 
-    const msg = this.state.error?.message || "(no error message)";
-    const stack = this.state.error?.stack || "";
-    const componentStack = this.state.errorInfo?.componentStack || "";
+    const errorText = safeStringify(this.state.error);
+    const stack = this.state.errorInfo?.componentStack || "";
 
     return (
-      <div style={{ padding: 24, fontFamily: "ui-sans-serif, system-ui" }}>
-        <h1 style={{ fontSize: 22, marginBottom: 8 }}>Something went wrong</h1>
-        <p style={{ marginBottom: 16 }}><b>Error:</b> {msg}</p>
+      <div className="min-h-screen bg-slate-900 text-slate-100 p-6">
+        <div className="max-w-3xl mx-auto space-y-4">
+          <h1 className="text-2xl font-semibold">Something went wrong</h1>
 
-        <details open style={{ marginBottom: 12 }}>
-          <summary><b>Stack</b></summary>
-          <pre style={{ whiteSpace: "pre-wrap" }}>{stack}</pre>
-        </details>
+          <div className="rounded-lg border border-slate-700 bg-slate-950 p-4">
+            <div className="text-sm text-slate-300 mb-2">Error:</div>
+            <pre className="whitespace-pre-wrap text-sm text-slate-100">
+              {errorText || "(empty error)"}
+            </pre>
 
-        <details>
-          <summary><b>Component stack</b></summary>
-          <pre style={{ whiteSpace: "pre-wrap" }}>{componentStack}</pre>
-        </details>
+            {stack ? (
+              <>
+                <div className="text-sm text-slate-300 mt-4 mb-2">Component stack:</div>
+                <pre className="whitespace-pre-wrap text-xs text-slate-200">
+                  {stack}
+                </pre>
+              </>
+            ) : null}
+          </div>
 
-        <div style={{ marginTop: 16, display: "flex", gap: 8 }}>
-          <button onClick={() => window.location.reload()}>Try Again</button>
-          <button onClick={() => (window.location.href = "/")}>Go Home</button>
+          <div className="flex gap-3">
+            <button
+              className="px-4 py-2 rounded bg-slate-200 text-slate-900"
+              onClick={this.handleTryAgain}
+            >
+              Try Again
+            </button>
+            <button
+              className="px-4 py-2 rounded border border-slate-500"
+              onClick={this.handleGoHome}
+            >
+              Go Home
+            </button>
+          </div>
+
+          <p className="text-xs text-slate-400">
+            ErrorBoundary version: v2025-12-13-01
+          </p>
         </div>
       </div>
     );
