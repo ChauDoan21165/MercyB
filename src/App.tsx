@@ -1,4 +1,4 @@
-// src/App.tsx — v2025-12-14-03
+// App.tsx — v2025-12-14-03
 import { useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -35,8 +35,6 @@ export default function App() {
                 <TooltipProvider>
                   <OfflineDetector />
 
-                  {/* IMPORTANT: NO <BrowserRouter> HERE.
-                      BrowserRouter stays in src/main.tsx only. */}
                   <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/free" element={<RoomGrid />} />
