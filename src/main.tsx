@@ -1,59 +1,37 @@
-// src/App.tsx — v2025-12-14-03
-// near the top of src/main.tsx
-console.log("main.tsx loaded: v2025-12-14-03");
-(window as any).__MB_MAIN_VERSION__ = "v2025-12-14-03";
+// src/main.tsx — v2025-12-14-04
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import App from "./App";
+import "./index.css";
 
-import { useEffect } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ThemeProvider } from "next-themes";
+console.log("main.tsx loaded: v2025-12-14-04");
+(window as any).__MB_MAIN_VERSION__ = "v2025-12-14-04";
 
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
+const rootEl = document.getElementById("root");
 
-import { MusicPlayerProvider } from "@/contexts/MusicPlayerContext";
-import { LowDataModeProvider } from "@/contexts/LowDataModeContext";
-import { MbThemeProvider } from "@/hooks/useMbTheme";
+if (!rootEl) {
+  // If this happens, your HTML is wrong.
+  throw new Error("Root element #root not found");
+}
 
-import { ErrorBoundary } from "@/components/ErrorBoundary";
-import { OfflineDetector } from "@/components/OfflineDetector";
-
-// ⚠️ CASE-SENSITIVE — file is Home.tsx
-import Home from "@/pages/Home";
-import RoomGrid from "@/pages/RoomGrid";
-
-const queryClient = new QueryClient();
-
-export default function App() {
-  useEffect(() => {
-    console.log("App.tsx version: v2025-12-14-03");
-  }, []);
-
-  return (
-    <ErrorBoundary>
-      <QueryClientProvider client={queryClient}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-          <MbThemeProvider>
-            <LowDataModeProvider>
-              <MusicPlayerProvider>
-                <TooltipProvider>
-                  <OfflineDetector />
-
-                  <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/free" element={<RoomGrid />} />
-                    <Route path="*" element={<Navigate to="/" replace />} />
-                  </Routes>
-
-                  <Toaster />
-                  <Sonner />
-                </TooltipProvider>
-              </MusicPlayerProvider>
-            </LowDataModeProvider>
-          </MbThemeProvider>
-        </ThemeProvider>
-      </QueryClientProvider>
-    </ErrorBoundary>
+try {
+  ReactDOM.createRoot(rootEl).render(
+    <React.StrictMode>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </React.StrictMode>
   );
+  console.log("React render() called OK");
+} catch (err) {
+  console.error("BOOT ERROR (main.tsx):", err);
+
+  // Force something visible even if React dies
+  const msg =
+    err instanceof Error
+      ? `${err.name}: ${err.message}\n\n${err.stack || ""}`
+      : `Non-Error thrown:\n${JSON.stringify(err, null, 2)}`;
+
+  rootEl.innerHTML = `<pre style="white-space:pre-wrap;padding:16px;font:14px/1.4 monospace;color:#b00020;">${msg}</pre>`;
 }
