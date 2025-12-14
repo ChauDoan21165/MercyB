@@ -1,4 +1,8 @@
 // src/App.tsx — v2025-12-14-03
+// near the top of src/main.tsx
+console.log("main.tsx loaded: v2025-12-14-03");
+(window as any).__MB_MAIN_VERSION__ = "v2025-12-14-03";
+
 import { useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
