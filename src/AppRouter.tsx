@@ -1,25 +1,21 @@
-// src/AppRouter.tsx — v2025-12-14-01
-
-import { Routes, Route } from "react-router-dom";
-
-import Home from "@/pages/Home";
+import { Routes, Route, Navigate } from "react-router-dom";
 import RoomGrid from "@/pages/RoomGrid";
 import ChatHub from "@/pages/ChatHub";
 
 export default function AppRouter() {
   return (
     <Routes>
-      {/* Home */}
-      <Route path="/" element={<Home />} />
+      {/* Home / Free rooms */}
+      <Route path="/" element={<RoomGrid />} />
 
-      {/* Free rooms grid */}
+      {/* Explicit free path (VERY IMPORTANT) */}
       <Route path="/free" element={<RoomGrid />} />
 
       {/* Chat room */}
       <Route path="/room/:roomId" element={<ChatHub />} />
 
-      {/* Fallback */}
-      <Route path="*" element={<Home />} />
+      {/* Catch-all MUST be last */}
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 }
