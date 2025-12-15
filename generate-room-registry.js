@@ -1,170 +1,236 @@
 /**
- * Auto-generate room registry from all JSON files in public directory
+ * Auto-generate room registry from all JSON files in public/data
  * Run with: node scripts/generate-room-registry.js
  */
 
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Get project root (one level up from scripts/)
-const projectRoot = path.resolve(__dirname, '..');
-const publicDir = path.join(projectRoot, 'public', 'data');
+// Project root (one level up from scripts/)
+const projectRoot = path.resolve(__dirname, "..");
+const publicDataDir = path.join(projectRoot, "public", "data");
 
-// Helper to convert filename to room ID (kebab-case with tier)
+/**
+ * Convert filename to roomId (kebab-case)
+ * english_writing_free.json → english-writing-free
+ */
 function filenameToRoomId(filename) {
-  // Remove .json extension
-  const base = filename.replace(/\.json$/i, '');
-  
-  // Convert to kebab-case and normalize tier suffix
+  const base = filename.replace(/\.json$/i, "");
+
   return base
     .toLowerCase()
-    .replace(/[_\s]+/g, '-') // underscores and spaces to hyphens
-    .replace(/-(free|vip1|vip2|vip3|vip3[-_]ii|vip4|vip5|vip6|vip9|kidslevel3)$/i, (match) => match.toLowerCase()); // normalize tier
+    .replace(/[_\s]+/g, "-")
+    .replace(
+      /-(free|vip1|vip2|vip3|vip3[-_]ii|vip4|vip5|vip6|vip9|kidslevel3)$/i,
+      (m) => m.toLowerCase()
+    );
 }
 
-// Helper to extract display names from JSON
+/**
+ * Extract display names from JSON (best-effort)
+ */
 function extractNames(jsonPath) {
   try {
-    const content = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
-    
-    // Try various name field patterns
-    const nameEn = content.name || content.nameEn || content.title?.en || 'Unknown Room';
-    const nameVi = content.name_vi || content.nameVi || content.title?.vi || nameEn;
-    
+    const content = JSON.parse(fs.readFileSync(jsonPath, "utf8"));
+
+    const nameEn =
+      content.name ||
+      content.nameEn ||
+      content.title?.en ||
+      "Unknown Room";
+
+    const nameVi =
+      content.name_vi ||
+      content.nameVi ||
+      content.title?.vi ||
+      nameEn;
+
     return { nameEn, nameVi };
   } catch (err) {
-    console.warn(`Warning: Could not parse ${jsonPath}:`, err.message);
+    console.warn(`⚠️  Could not parse ${jsonPath}: ${err.message}`);
     return null;
   }
 }
 
-// Scan public directory for JSON files
+/**
+ * Scan public/data for JSON room files
+ */
 function scanRoomFiles() {
-  const files = fs.readdirSync(publicDir);
-  const roomFiles = files.filter(f => f.endsWith('.json') && !f.startsWith('.'));
-  
+  if (!fs.existsSync(publicDataDir)) {
+    throw new Error(`public/data directory not found at ${publicDataDir}`);
+  }
+
+  const files = fs.readdirSync(publicDataDir);
+  const jsonFiles = files.filter(
+    (f) => f.endsWith(".json") && !f.startsWith(".")
+  );
+
   const manifest = {};
   const dataImports = {};
-  
-  for (const filename of roomFiles) {
+
+  for (const filename of jsonFiles) {
     const roomId = filenameToRoomId(filename);
-    const jsonPath = path.join(publicDir, filename);
+    const jsonPath = path.join(publicDataDir, filename);
     const names = extractNames(jsonPath);
-    
+
     if (!names) continue;
-    
-    // Extract tier from roomId
-    let tier = 'free';
-    if (roomId.endsWith('-vip3-ii')) tier = 'vip3_ii';
-    else if (roomId.endsWith('-vip9')) tier = 'vip9';
-    else if (roomId.endsWith('-vip6')) tier = 'vip6';
-    else if (roomId.endsWith('-vip5')) tier = 'vip5';
-    else if (roomId.endsWith('-vip4')) tier = 'vip4';
-    else if (roomId.endsWith('-vip3')) tier = 'vip3';
-    else if (roomId.endsWith('-vip2')) tier = 'vip2';
-    else if (roomId.endsWith('-vip1')) tier = 'vip1';
-    else if (roomId.endsWith('-kidslevel3')) tier = 'kidslevel3';
-    
-    // Add to manifest
-    manifest[roomId] = filename;
-    
-    // Add to dataImports
+
+    // Determine tier
+    let tier = "free";
+    if (roomId.endsWith("-vip3-ii")) tier = "vip3_ii";
+    else if (roomId.endsWith("-vip9")) tier = "vip9";
+    else if (roomId.endsWith("-vip6")) tier = "vip6";
+    else if (roomId.endsWith("-vip5")) tier = "vip5";
+    else if (roomId.endsWith("-vip4")) tier = "vip4";
+    else if (roomId.endsWith("-vip3")) tier = "vip3";
+    else if (roomId.endsWith("-vip2")) tier = "vip2";
+    else if (roomId.endsWith("-vip1")) tier = "vip1";
+    else if (roomId.endsWith("-kidslevel3")) tier = "kidslevel3";
+
+    /**
+     * 🔑 CRITICAL FIX
+     * Manifest values MUST include "data/"
+     * Runtime fetches from /data/*.json
+     */
+    manifest[roomId] = `data/${filename}`;
+
+    // Legacy support (will be removed later)
     dataImports[roomId] = {
       id: roomId,
       nameEn: names.nameEn,
       nameVi: names.nameVi,
       tier,
-      hasData: true
+      hasData: true,
     };
   }
-  
+
   return { manifest, dataImports };
 }
 
-// Generate manifest file
+/**
+ * Generate src/lib/roomManifest.ts
+ */
 function generateManifest(manifest) {
   const content = `/**
- * AUTO-GENERATED: Do not edit manually
+ * AUTO-GENERATED — DO NOT EDIT
  * Generated by: scripts/generate-room-registry.js
- * Run: node scripts/generate-room-registry.js
  */
-export const PUBLIC_ROOM_MANIFEST: Record<string, string> = ${JSON.stringify(manifest, null, 2)};
 
-/**
- * Get all unique room base names (without tier suffix)
- */
+export const PUBLIC_ROOM_MANIFEST: Record<string, string> = ${JSON.stringify(
+    manifest,
+    null,
+    2
+  )};
+
 export function getRoomBaseNames(): string[] {
   const baseNames = new Set<string>();
-  
+
   for (const roomId of Object.keys(PUBLIC_ROOM_MANIFEST)) {
-    const baseName = roomId.replace(/-(free|vip1|vip2|vip3|vip3[-_]ii|vip4|vip5|vip6|vip9|kidslevel3)$/, '');
+    const baseName = roomId.replace(
+      /-(free|vip1|vip2|vip3|vip3[-_]ii|vip4|vip5|vip6|vip9|kidslevel3)$/,
+      ""
+    );
     baseNames.add(baseName);
   }
-  
+
   return Array.from(baseNames).sort();
 }
 
-/**
- * Get all tiers available for a room base name
- */
 export function getAvailableTiers(roomBaseName: string): string[] {
   const tiers: string[] = [];
-  
-  for (const tier of ['free', 'vip1', 'vip2', 'vip3', 'vip3_ii', 'vip4', 'vip5', 'vip6', 'vip9', 'kidslevel3']) {
+
+  for (const tier of [
+    "free",
+    "vip1",
+    "vip2",
+    "vip3",
+    "vip3_ii",
+    "vip4",
+    "vip5",
+    "vip6",
+    "vip9",
+    "kidslevel3",
+  ]) {
     const roomId = \`\${roomBaseName}-\${tier}\`;
     if (PUBLIC_ROOM_MANIFEST[roomId]) {
       tiers.push(tier);
     }
   }
-  
+
   return tiers;
 }
 `;
-  
-  const manifestPath = path.join(projectRoot, 'src', 'lib', 'roomManifest.ts');
-  fs.writeFileSync(manifestPath, content, 'utf8');
-  console.log(`✅ Generated roomManifest.ts with ${Object.keys(manifest).length} rooms`);
+
+  const outputPath = path.join(
+    projectRoot,
+    "src",
+    "lib",
+    "roomManifest.ts"
+  );
+
+  fs.writeFileSync(outputPath, content, "utf8");
+  console.log(
+    `✅ Generated roomManifest.ts (${Object.keys(manifest).length} rooms)`
+  );
 }
 
-// Generate dataImports file
-function generateDataImports(dataImports) {
-  const entries = Object.entries(dataImports).map(([key, value]) => {
-    return `  "${key}": ${JSON.stringify(value, null, 4).replace(/\n/g, '\n  ')}`;
-  }).join(',\n');
-  
-  const content = `/**
- * AUTO-GENERATED: Do not edit manually
- * Generated by: scripts/generate-room-registry.js
- * Run: node scripts/generate-room-registry.js
+/**
+ * Generate legacy roomDataImports.ts (to be removed later)
  */
+function generateDataImports(dataImports) {
+  const entries = Object.entries(dataImports)
+    .map(
+      ([key, value]) =>
+        `  "${key}": ${JSON.stringify(value, null, 4).replace(
+          /\n/g,
+          "\n  "
+        )}`
+    )
+    .join(",\n");
+
+  const content = `/**
+ * AUTO-GENERATED — DO NOT EDIT
+ * Generated by: scripts/generate-room-registry.js
+ */
+
 import { RoomData } from "@/lib/roomData";
 
 export const roomDataMap: Record<string, RoomData> = {
 ${entries}
 };
 `;
-  
-  const importsPath = path.join(projectRoot, 'src', 'lib', 'roomDataImports.ts');
-  fs.writeFileSync(importsPath, content, 'utf8');
-  console.log(`✅ Generated roomDataImports.ts with ${Object.keys(dataImports).length} rooms`);
+
+  const outputPath = path.join(
+    projectRoot,
+    "src",
+    "lib",
+    "roomDataImports.ts"
+  );
+
+  fs.writeFileSync(outputPath, content, "utf8");
+  console.log(
+    `✅ Generated roomDataImports.ts (${Object.keys(dataImports).length} rooms)`
+  );
 }
 
-// Main execution
+/**
+ * Main
+ */
 try {
-  console.log('🔍 Scanning for room JSON files...');
+  console.log("🔍 Scanning public/data for room JSON files...");
   const { manifest, dataImports } = scanRoomFiles();
-  
-  console.log(`📦 Found ${Object.keys(manifest).length} room files`);
-  
+
+  console.log(`📦 Found ${Object.keys(manifest).length} rooms`);
+
   generateManifest(manifest);
   generateDataImports(dataImports);
-  
-  console.log('✨ Room registry generation complete!');
+
+  console.log("✨ Room registry generation complete");
 } catch (err) {
-  console.error('❌ Error generating room registry:', err);
+  console.error("❌ Failed to generate room registry:", err);
   process.exit(1);
 }
