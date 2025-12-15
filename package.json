@@ -5,11 +5,17 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+
+    "generate:room-registry": "node scripts/generate-room-registry.js",
     "generate:audio-manifest": "node scripts/generate-audio-manifest.js",
-    "build": "npm run generate:audio-manifest || true && node scripts/generate-room-registry.js && vite build",
+
+    "prebuild": "npm run generate:room-registry",
+    "build": "npm run generate:audio-manifest || true && vite build",
     "build:dev": "vite build --mode development",
+
     "lint": "eslint .",
     "preview": "vite preview",
+
     "system:check": "tsx scripts/check-system-health.ts",
     "audio:tts": "tsx scripts/generate-missing-audio.ts"
   },
