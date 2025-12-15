@@ -1,7 +1,7 @@
 // src/lib/roomData.ts
 // Room Data Management Utilities
 // This file provides helper functions for working with room data
-import { roomDataMap } from "./roomDataImports";
+import { roomDataMap } from "./roomDataLoader";
 import { tierFromRoomId } from "@/lib/tierFromRoomId";
 
 // Fallback Vietnamese names for rooms without name_vi in JSON
