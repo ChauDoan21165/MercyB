@@ -1,14 +1,18 @@
-{
-  "id": "English-Writing-free",
-  "tier": "free",
-  "title": {
-    "en": "English Writing Foundations",
-    "vi": "Nền Tảng Viết Tiếng Anh"
+"entries": [
+  {
+    "id": "basics",
+    "audio": "english_writing_basics.mp3",
+    "content": {
+      "en": "Clear writing starts with simple sentences and clear ideas.",
+      "vi": "Viết rõ ràng bắt đầu từ câu đơn giản và ý tưởng mạch lạc."
+    }
   },
-  "intro": {
-    "en": "Learn the basics of clear, effective English writing.",
-    "vi": "Học những điều cơ bản để viết tiếng Anh rõ ràng và hiệu quả."
-  },
-  "intro_audio": "",
-  "entries": []
-}
+  {
+    "id": "practice",
+    "audio": "english_writing_practice.mp3",
+    "content": {
+      "en": "Practice daily to improve structure and confidence in writing.",
+      "vi": "Luyện tập hàng ngày để cải thiện cấu trúc và sự tự tin khi viết."
+    }
+  }
+]
