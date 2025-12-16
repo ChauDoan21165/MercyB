@@ -106,10 +106,7 @@ const ChatHub = () => {
   const { toast } = useToast();
 
   // ✅ Canonical room id for JSON strict mode + consistent DB id
-  const canonicalRoomId = (roomId || "")
-    .trim()
-    .toLowerCase()
-    .replace(/-/g, "_");
+  const canonicalRoomId = (roomId || "").trim().toLowerCase().replace(/-/g, "_");
 
   // ✅ Auto-redirect old/non-canonical URLs to canonical route
   useEffect(() => {
@@ -397,11 +394,8 @@ const ChatHub = () => {
     }
   }, [roomLoading, roomError, canonicalRoomId]);
 
+  // ✅ FIX: allow keyword click for guests (no auth gate here)
   const handleKeywordClick = async (keyword: string) => {
-    if (!isAuthenticated) {
-      setShowSignupPrompt(true);
-      return;
-    }
     if (isLoading) return;
     setClickedKeyword(keyword);
     await sendEntryForKeyword(keyword);
@@ -976,7 +970,8 @@ const ChatHub = () => {
                             onClick={() => {
                               handleKeywordClick(keywordEn);
                             }}
-                            disabled={isLoading || !isAuthenticated}
+                            // ✅ FIX: keywords must work even for guests
+                            disabled={isLoading}
                           >
                             {isAdmin && (
                               <span
