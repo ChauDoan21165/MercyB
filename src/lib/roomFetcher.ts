@@ -1,429 +1,189 @@
 /**
- * Room Fetcher API - Single Entry Point for All Room Data
- * 
- * Provides unified runtime loading of room data from JSON or Supabase.
- * Uses in-memory caching to prevent redundant fetches.
- * Source configurable via VITE_ROOM_SOURCE env variable.
+ * roomFetcher.ts
+ * - Fetch room metadata list for search/keywords UI
+ * - Production: prefer Supabase
+ * - Dev / failure: fallback to local public/data via PUBLIC_ROOM_MANIFEST
  */
 
-import { supabase } from "@/integrations/supabase/client";
+import { PUBLIC_ROOM_MANIFEST } from "./roomManifest";
+import { loadRoomJson } from "./roomJsonResolver";
 
-export type RoomSource = "json" | "supabase";
-
-// SUPABASE IS NOW THE ONLY SOURCE OF TRUTH
-// JSON files in public/data are deprecated and should be ignored
-const ROOM_SOURCE: RoomSource = "supabase";
-
-export interface RoomTitle {
-  en: string;
-  vi: string;
-}
-
-export interface RoomContent {
-  en: string;
-  vi: string;
-  audio?: string;
-}
-
-export interface RoomEntryCopy {
-  en: string;
-  vi: string;
-}
-
-export interface RoomEntry {
-  slug: string;
-  copy: RoomEntryCopy;
-  audio?: string;
-  tags?: string[];
-  keywords_en?: string[];
-  keywords_vi?: string[];
-  [key: string]: unknown;
-}
-
-export interface RoomJson {
+/** Minimal shape used by UI search / lists */
+export type RoomMeta = {
   id: string;
-  tier: string;
-  title: RoomTitle;
-  content: RoomContent;
-  entries: RoomEntry[];
-  keywords_en?: string[];
-  keywords_vi?: string[];
-  domain?: string;
-  [key: string]: unknown;
+  tier?: string;
+  title_en?: string;
+  title_vi?: string;
+  intro_en?: string;
+  intro_vi?: string;
+  // optional tags/keywords if your UI uses them
+  keywords?: string[];
+};
+
+function pickBilingualTitle(data: any): { en?: string; vi?: string } {
+  if (data?.title?.en || data?.title?.vi) return { en: data.title.en, vi: data.title.vi };
+  if (data?.name || data?.name_vi) return { en: data.name, vi: data.name_vi };
+  return {};
+}
+
+function pickBilingualIntro(data: any): { en?: string; vi?: string } {
+  if (data?.intro?.en || data?.intro?.vi) return { en: data.intro.en, vi: data.intro.vi };
+  return {};
+}
+
+function extractKeywords(data: any): string[] {
+  // If your JSON has tags/keywords/categories, prefer them.
+  // Otherwise, return empty; your room page can still work.
+  const k =
+    data?.keywords ||
+    data?.tags ||
+    data?.categories ||
+    [];
+
+  if (Array.isArray(k)) return k.map(String).filter(Boolean);
+
+  // If it is an object, take keys
+  if (k && typeof k === "object") return Object.keys(k);
+
+  return [];
+}
+
+function toMeta(data: any): RoomMeta {
+  const title = pickBilingualTitle(data);
+  const intro = pickBilingualIntro(data);
+
+  return {
+    id: String(data?.id ?? ""),
+    tier: data?.tier ? String(data.tier) : undefined,
+    title_en: title.en,
+    title_vi: title.vi,
+    intro_en: intro.en,
+    intro_vi: intro.vi,
+    keywords: extractKeywords(data),
+  };
 }
 
 /**
- * Minimal room metadata for listing (lightweight)
+ * ✅ Local fallback: build meta list from manifest + public JSON.
+ * This keeps the app usable even when Supabase is blocked by CORS in dev.
  */
-export interface RoomMeta {
-  id: string;
-  tier: string;
-  nameEn: string;
-  nameVi: string;
-  domain?: string;
-  hasData: boolean;
-}
+async function fetchAllRoomsFromLocal(): Promise<RoomMeta[]> {
+  const roomIds = Object.keys(PUBLIC_ROOM_MANIFEST);
 
-// --------- Simple in-memory caches ---------
+  // keep it safe: if you have many rooms, don’t DDoS your own dev server
+  // fetch in small batches
+  const batchSize = 12;
+  const results: RoomMeta[] = [];
 
-const roomCache = new Map<string, Promise<RoomJson | null>>();
-const roomMetaCache = new Map<string, RoomMeta>();
-let roomListCache: Promise<RoomMeta[]> | null = null;
-let fullRoomListCache: Promise<RoomJson[]> | null = null;
-
-// --------- JSON helpers (from /public/data) ---------
-
-async function fetchRoomFromJson(roomId: string): Promise<RoomJson | null> {
-  try {
-    const res = await fetch(`/data/${roomId}.json`, { cache: "default" });
-    if (!res.ok) {
-      console.warn("[roomFetcher] JSON room not found:", roomId, res.status);
-      return null;
-    }
-    const json = await res.json();
-    
-    // Normalize to RoomJson structure
-    const room: RoomJson = {
-      id: json.id || roomId,
-      tier: json.tier || extractTierFromId(roomId),
-      title: {
-        en: json.title?.en || json.title_en || json.nameEn || roomId,
-        vi: json.title?.vi || json.title_vi || json.nameVi || roomId,
-      },
-      content: {
-        en: json.description?.en || json.room_essay?.en || "",
-        vi: json.description?.vi || json.room_essay?.vi || "",
-        audio: json.content_audio || undefined,
-      },
-      entries: normalizeEntries(json.entries || []),
-      keywords_en: extractKeywordsArray(json, "en"),
-      keywords_vi: extractKeywordsArray(json, "vi"),
-      domain: json.domain,
-    };
-    
-    return room;
-  } catch (err) {
-    console.error("[roomFetcher] JSON fetch error:", roomId, err);
-    return null;
-  }
-}
-
-function normalizeEntries(entries: any[]): RoomEntry[] {
-  if (!Array.isArray(entries)) return [];
-  
-  return entries.map((entry, index) => ({
-    slug: entry.slug || entry.artifact_id || entry.id || `entry-${index}`,
-    copy: {
-      en: entry.copy?.en || entry.content?.en || entry.title?.en || "",
-      vi: entry.copy?.vi || entry.content?.vi || entry.title?.vi || "",
-    },
-    audio: entry.audio || entry.audio_en || undefined,
-    tags: Array.isArray(entry.tags) ? entry.tags : [],
-    keywords_en: Array.isArray(entry.keywords_en) ? entry.keywords_en : [],
-    keywords_vi: Array.isArray(entry.keywords_vi) ? entry.keywords_vi : [],
-  }));
-}
-
-function extractKeywordsArray(json: any, lang: "en" | "vi"): string[] {
-  const keywords: string[] = [];
-  const key = `keywords_${lang}`;
-  
-  // From top-level keywords_en/keywords_vi
-  if (Array.isArray(json[key])) {
-    keywords.push(...json[key]);
-  }
-  
-  // From keywords object
-  if (json.keywords && typeof json.keywords === "object") {
-    Object.values(json.keywords).forEach((group: any) => {
-      if (group?.[lang] && Array.isArray(group[lang])) {
-        keywords.push(...group[lang]);
-      }
-    });
-  }
-  
-  return [...new Set(keywords.filter(k => typeof k === "string"))];
-}
-
-function extractTierFromId(roomId: string): string {
-  const match = roomId.match(/(vip\d+|free|kids_l?\d)/i);
-  return match ? match[1].toLowerCase() : "free";
-}
-
-async function fetchRoomListFromJson(): Promise<RoomMeta[]> {
-  try {
-    // Fetch the room registry manifest
-    const manifestRes = await fetch("/data/room-registry.json", {
-      cache: "default",
-    });
-
-    if (!manifestRes.ok) {
-      console.warn("[roomFetcher] room-registry.json not found, returning []");
-      return [];
-    }
-
-    const manifest = await manifestRes.json();
-    
-    // If manifest is already an object with room metadata
-    if (manifest && typeof manifest === "object" && !Array.isArray(manifest)) {
-      const rooms: RoomMeta[] = [];
-      
-      for (const [roomId, data] of Object.entries(manifest)) {
-        if (roomId === "rooms" && Array.isArray(data)) {
-          // manifest.rooms is an array of IDs
-          for (const id of data as string[]) {
-            rooms.push({
-              id,
-              tier: extractTierFromId(id),
-              nameEn: id,
-              nameVi: id,
-              hasData: true,
-            });
-          }
-        } else if (typeof data === "object" && data !== null) {
-          const d = data as any;
-          rooms.push({
-            id: roomId,
-            tier: d.tier || extractTierFromId(roomId),
-            nameEn: d.nameEn || d.title_en || roomId,
-            nameVi: d.nameVi || d.title_vi || roomId,
-            domain: d.domain,
-            hasData: true,
-          });
+  for (let i = 0; i < roomIds.length; i += batchSize) {
+    const batch = roomIds.slice(i, i + batchSize);
+    const metas = await Promise.all(
+      batch.map(async (roomId) => {
+        try {
+          // This uses your canonical resolver + strict validation
+          const data = await loadRoomJson(roomId);
+          return toMeta(data);
+        } catch (e) {
+          // If a single room fails validation, skip it (do NOT kill the whole UI)
+          console.warn("[roomFetcher] Local room load failed:", roomId, e);
+          return null;
         }
-      }
-      
+      })
+    );
+
+    for (const m of metas) if (m?.id) results.push(m);
+  }
+
+  return results;
+}
+
+/**
+ * Supabase list fetch (optional).
+ * NOTE: If your app uses supabase-js somewhere else, keep it.
+ * Here we do a plain REST fetch with apikey to avoid extra dependencies.
+ */
+async function fetchAllRoomsFromSupabase(): Promise<RoomMeta[]> {
+  const url = import.meta.env.VITE_SUPABASE_URL;
+  const anon = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+  if (!url || !anon) {
+    throw new Error("Missing VITE_SUPABASE_URL or VITE_SUPABASE_ANON_KEY");
+  }
+
+  const endpoint = `${url}/rest/v1/rooms?select=id,tier,title_en,title_vi,intro_en,intro_vi,keywords&order=title_en.asc`;
+
+  const res = await fetch(endpoint, {
+    headers: {
+      apikey: anon,
+      Authorization: `Bearer ${anon}`,
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (!res.ok) {
+    const text = await res.text().catch(() => "");
+    throw new Error(`Supabase rooms fetch failed: HTTP ${res.status} ${res.statusText}\n${text}`);
+  }
+
+  const rows = (await res.json()) as any[];
+  return (rows || [])
+    .map((r) => ({
+      id: String(r.id),
+      tier: r.tier ?? undefined,
+      title_en: r.title_en ?? undefined,
+      title_vi: r.title_vi ?? undefined,
+      intro_en: r.intro_en ?? undefined,
+      intro_vi: r.intro_vi ?? undefined,
+      keywords: Array.isArray(r.keywords) ? r.keywords : undefined,
+    }))
+    .filter((x) => x.id);
+}
+
+/**
+ * Public API used by the UI.
+ * - Production: prefer Supabase, but still fallback if it fails.
+ * - Dev: prefer local to avoid CORS pain.
+ */
+let _cache: { at: number; rooms: RoomMeta[] } | null = null;
+
+export async function fetchAllRoomsMeta(opts?: { force?: boolean }): Promise<RoomMeta[]> {
+  const force = !!opts?.force;
+  const now = Date.now();
+
+  // 60s cache
+  if (!force && _cache && now - _cache.at < 60_000) return _cache.rooms;
+
+  const mode = import.meta.env.MODE;
+
+  try {
+    if (mode === "production") {
+      const rooms = await fetchAllRoomsFromSupabase();
+      _cache = { at: now, rooms };
       return rooms;
     }
-    
-    // If manifest is an array of IDs
-    if (Array.isArray(manifest)) {
-      return manifest.map((id: string) => ({
-        id,
-        tier: extractTierFromId(id),
-        nameEn: id,
-        nameVi: id,
-        hasData: true,
-      }));
-    }
 
-    return [];
+    // dev: use local first
+    const rooms = await fetchAllRoomsFromLocal();
+    _cache = { at: now, rooms };
+    return rooms;
   } catch (err) {
-    console.error("[roomFetcher] fetchRoomListFromJson error:", err);
-    return [];
+    console.warn("[roomFetcher] Primary fetch failed, falling back to local:", err);
+    const rooms = await fetchAllRoomsFromLocal();
+    _cache = { at: now, rooms };
+    return rooms;
   }
 }
 
-async function fetchAllRoomsFromJson(): Promise<RoomJson[]> {
+/**
+ * Convenience: get a single room meta quickly (used by some pages).
+ */
+export async function fetchRoomMeta(roomId: string): Promise<RoomMeta | null> {
   try {
-    const roomList = await fetchRoomListFromJson();
-    const batchSize = 16;
-    const results: RoomJson[] = [];
-
-    for (let i = 0; i < roomList.length; i += batchSize) {
-      const batch = roomList.slice(i, i + batchSize);
-      const settled = await Promise.allSettled(
-        batch.map((meta) => fetchRoomFromJson(meta.id))
-      );
-      for (const r of settled) {
-        if (r.status === "fulfilled" && r.value) {
-          results.push(r.value);
-        }
-      }
-    }
-
-    return results;
-  } catch (err) {
-    console.error("[roomFetcher] fetchAllRoomsFromJson error:", err);
-    return [];
-  }
-}
-
-// --------- Supabase helpers ---------
-
-async function fetchRoomFromDb(roomId: string): Promise<RoomJson | null> {
-  const { data, error } = await supabase
-    .from("rooms")
-    .select("*")
-    .eq("id", roomId)
-    .maybeSingle();
-
-  if (error) {
-    console.error("[roomFetcher] Supabase room error:", roomId, error);
+    const data = await loadRoomJson(roomId);
+    const meta = toMeta(data);
+    return meta?.id ? meta : null;
+  } catch (e) {
+    console.warn("[roomFetcher] fetchRoomMeta failed:", roomId, e);
     return null;
   }
-  if (!data) return null;
-
-  const entries = Array.isArray(data.entries) ? data.entries : [];
-
-  const room: RoomJson = {
-    id: data.id,
-    tier: data.tier || "free",
-    title: {
-      en: data.title_en || data.id,
-      vi: data.title_vi || data.id,
-    },
-    content: {
-      en: data.room_essay_en || "",
-      vi: data.room_essay_vi || "",
-    },
-    entries: normalizeEntries(entries),
-    keywords_en: Array.isArray(data.keywords) ? data.keywords : [],
-    keywords_vi: [],
-    domain: data.domain,
-  };
-
-  return room;
-}
-
-async function fetchRoomListFromDb(): Promise<RoomMeta[]> {
-  const { data, error } = await supabase
-    .from("rooms")
-    .select("id, tier, title_en, title_vi, domain")
-    .order("title_en");
-
-  if (error) {
-    console.error("[roomFetcher] Supabase room list error:", error);
-    return [];
-  }
-
-  return (data || []).map((r) => ({
-    id: r.id,
-    tier: r.tier || "free",
-    nameEn: r.title_en || r.id,
-    nameVi: r.title_vi || r.id,
-    domain: r.domain || undefined,
-    hasData: true,
-  }));
-}
-
-async function fetchAllRoomsFromDb(): Promise<RoomJson[]> {
-  const { data, error } = await supabase
-    .from("rooms")
-    .select("*")
-    .order("title_en");
-
-  if (error) {
-    console.error("[roomFetcher] Supabase all rooms error:", error);
-    return [];
-  }
-
-  return (data || []).map((r) => ({
-    id: r.id,
-    tier: r.tier || "free",
-    title: {
-      en: r.title_en || r.id,
-      vi: r.title_vi || r.id,
-    },
-    content: {
-      en: r.room_essay_en || "",
-      vi: r.room_essay_vi || "",
-    },
-    entries: normalizeEntries(Array.isArray(r.entries) ? r.entries : []),
-    keywords_en: Array.isArray(r.keywords) ? r.keywords : [],
-    keywords_vi: [],
-    domain: r.domain,
-  }));
-}
-
-// --------- Public API ---------
-
-/**
- * Get a single room's full data (cached)
- */
-export async function getRoom(roomId: string): Promise<RoomJson | null> {
-  if (!roomId) return null;
-
-  if (!roomCache.has(roomId)) {
-    const p =
-      ROOM_SOURCE === "supabase"
-        ? fetchRoomFromDb(roomId)
-        : fetchRoomFromJson(roomId);
-    roomCache.set(roomId, p);
-  }
-
-  return roomCache.get(roomId)!;
-}
-
-/**
- * Get minimal room metadata list (lightweight, for listings)
- */
-export async function getRoomList(): Promise<RoomMeta[]> {
-  if (!roomListCache) {
-    roomListCache =
-      ROOM_SOURCE === "supabase"
-        ? fetchRoomListFromDb()
-        : fetchRoomListFromJson();
-  }
-  return roomListCache;
-}
-
-/**
- * Get all rooms with full data (heavy, use sparingly)
- */
-export async function getAllRooms(): Promise<RoomJson[]> {
-  if (!fullRoomListCache) {
-    fullRoomListCache =
-      ROOM_SOURCE === "supabase"
-        ? fetchAllRoomsFromDb()
-        : fetchAllRoomsFromJson();
-  }
-  return fullRoomListCache;
-}
-
-/**
- * Get rooms filtered by tier - normalizes tier comparison
- * Handles both canonical IDs (vip3) and DB labels (VIP3 / VIP3)
- */
-export async function getRoomsByTier(tier: string): Promise<RoomMeta[]> {
-  const rooms = await getRoomList();
-  const tierLower = tier.toLowerCase().trim();
-  
-  return rooms.filter((r) => {
-    const roomTierLower = (r.tier || '').toLowerCase().trim();
-    const roomIdLower = r.id.toLowerCase();
-    
-    // VIP3II: Check room ID for "vip3ii", "vip3_ii", "vip3-ii" patterns
-    // These rooms have tier "VIP3 / VIP3" in DB but belong to VIP3II specialization
-    if (tierLower === 'vip3ii') {
-      return roomIdLower.includes('vip3ii') || 
-             roomIdLower.includes('vip3_ii') || 
-             roomIdLower.includes('vip3-ii') ||
-             roomTierLower.includes('vip3 ii');
-    }
-    
-    // VIP3: Match "vip3 / vip3" but EXCLUDE rooms with vip3ii in ID
-    if (tierLower === 'vip3') {
-      const isVip3Room = roomTierLower.includes('vip3') && !roomTierLower.includes('vip3 ii');
-      const isVip3IIById = roomIdLower.includes('vip3ii') || 
-                           roomIdLower.includes('vip3_ii') || 
-                           roomIdLower.includes('vip3-ii');
-      return isVip3Room && !isVip3IIById;
-    }
-    
-    // Exact match
-    if (roomTierLower === tierLower) return true;
-    
-    // Handle other DB formats like "VIP2 / VIP2" matching "vip2"
-    if (roomTierLower.includes(tierLower)) return true;
-    
-    return false;
-  });
-}
-
-/**
- * Clear all caches (call after room updates)
- */
-export function clearRoomCache(): void {
-  roomCache.clear();
-  roomMetaCache.clear();
-  roomListCache = null;
-  fullRoomListCache = null;
-}
-
-/**
- * Get current room source
- */
-export function getRoomSource(): RoomSource {
-  return ROOM_SOURCE;
 }
