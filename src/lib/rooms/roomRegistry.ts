@@ -2,15 +2,12 @@
  * Room Registry - Single Source of Truth for All Room Metadata
  *
  * Uses async roomFetcher instead of static imports.
- * Defensive against mixed / legacy room schemas.
+ * Provides typed, normalized access to room metadata for search and discovery.
  */
 
-import {
-  getAllRooms as fetchAllRooms,
-  type RoomMeta as FetcherRoomMeta,
-} from '@/lib/roomFetcher';
-import { normalizeTier, TierId, ALL_TIER_IDS } from '@/lib/constants/tiers';
-import { getDomainCategory, type DomainCategory } from '@/lib/mercy-host/domainMap';
+import { getAllRooms as fetchAllRooms } from "@/lib/roomFetcher";
+import { normalizeTier, TierId, ALL_TIER_IDS } from "@/lib/constants/tiers";
+import { getDomainCategory, type DomainCategory } from "@/lib/mercy-host/domainMap";
 
 /**
  * Normalized room metadata for search and discovery
@@ -27,89 +24,88 @@ export interface RoomMeta {
   hasData: boolean;
 }
 
-// Caches
+// Cache for room registry
 let roomRegistryCache: RoomMeta[] | null = null;
 let roomRegistryPromise: Promise<RoomMeta[]> | null = null;
 let roomByIdCache: Map<string, RoomMeta> | null = null;
 
-/**
- * Safe helpers
- */
-function pickLang(
-  value: any,
-  lang: 'en' | 'vi',
-  fallback = ''
-): string {
-  if (typeof value === 'string') return value;
-  if (value && typeof value === 'object' && typeof value[lang] === 'string') {
-    return value[lang];
-  }
-  return fallback;
+function cleanList(values: any[]): string[] {
+  return [...new Set(values.map(v => String(v ?? "").trim().toLowerCase()).filter(Boolean))];
 }
 
-function pickKeywords(value: any): string[] {
-  if (Array.isArray(value)) return value;
-  if (value && typeof value === 'object' && Array.isArray(value.en)) return value.en;
-  return [];
+function pickTitles(roomData: any): { en: string; vi: string } {
+  // Supports BOTH formats:
+  // 1) title: { en, vi }
+  // 2) name + name_vi
+  const en = String(roomData?.title?.en ?? roomData?.name ?? "").trim();
+  const vi = String(roomData?.title?.vi ?? roomData?.name_vi ?? "").trim();
+  return { en, vi };
 }
 
 /**
- * Build the room registry
+ * Build the room registry from fetched rooms
  */
 async function buildRegistryAsync(): Promise<RoomMeta[]> {
   const fetchedRooms = await fetchAllRooms();
   const rooms: RoomMeta[] = [];
 
   if (!Array.isArray(fetchedRooms) || fetchedRooms.length === 0) {
-    console.warn('[RoomRegistry] No rooms found');
+    console.warn("[RoomRegistry] No rooms found from fetcher");
     return rooms;
   }
 
-  for (const roomData of fetchedRooms as FetcherRoomMeta[]) {
+  for (const roomData of fetchedRooms) {
     try {
-      const tier = normalizeTier(roomData.tier);
-      const domain = getDomainCategory(roomData.id, roomData.domain);
+      const id = String(roomData?.id ?? "").trim();
+      if (!id) continue;
 
-      // --- Titles (defensive) ---
-      const title_en = pickLang(roomData.title, 'en');
-      const title_vi = pickLang(roomData.title, 'vi', title_en);
+      const { en: title_en, vi: title_vi } = pickTitles(roomData);
 
-      // --- Keywords ---
-      const keywords_en: string[] = [];
-      const keywords_vi: string[] = [];
+      // If a room is missing titles, we don't crash — we just skip it
+      // (or you can keep it with placeholders; skipping is cleaner for keyword UX)
+      if (!title_en || !title_vi) {
+        console.warn(`[RoomRegistry] Skipping room "${id}" (missing bilingual titles)`);
+        continue;
+      }
 
-      keywords_en.push(...pickKeywords(roomData.keywords_en));
-      keywords_vi.push(...pickKeywords(roomData.keywords_vi));
+      // Normalize tier
+      const tier = normalizeTier(roomData?.tier);
 
-      // From entries
-      if (Array.isArray(roomData.entries)) {
+      // Domain category
+      const domain = getDomainCategory(id, roomData?.domain);
+
+      // Keywords
+      const keywords_en: string[] = Array.isArray(roomData?.keywords_en) ? [...roomData.keywords_en] : [];
+      const keywords_vi: string[] = Array.isArray(roomData?.keywords_vi) ? [...roomData.keywords_vi] : [];
+
+      if (Array.isArray(roomData?.entries)) {
         for (const entry of roomData.entries) {
-          if (Array.isArray(entry.keywords_en)) keywords_en.push(...entry.keywords_en);
-          if (Array.isArray(entry.keywords_vi)) keywords_vi.push(...entry.keywords_vi);
+          if (Array.isArray(entry?.keywords_en)) keywords_en.push(...entry.keywords_en);
+          if (Array.isArray(entry?.keywords_vi)) keywords_vi.push(...entry.keywords_vi);
         }
       }
 
-      // --- Tags ---
+      // Tags
       const tags: string[] = [];
-      if (Array.isArray(roomData.entries)) {
+      if (Array.isArray(roomData?.entries)) {
         for (const entry of roomData.entries) {
-          if (Array.isArray(entry.tags)) tags.push(...entry.tags);
+          if (Array.isArray(entry?.tags)) tags.push(...entry.tags);
         }
       }
 
       rooms.push({
-        id: roomData.id,
+        id,
         tier,
         domain,
         title_en,
         title_vi,
-        keywords_en: [...new Set(keywords_en.map(k => String(k).trim().toLowerCase()).filter(Boolean))],
-        keywords_vi: [...new Set(keywords_vi.map(k => String(k).trim().toLowerCase()).filter(Boolean))],
-        tags: [...new Set(tags.map(t => String(t).trim().toLowerCase()).filter(Boolean))],
+        keywords_en: cleanList(keywords_en),
+        keywords_vi: cleanList(keywords_vi),
+        tags: cleanList(tags),
         hasData: true,
       });
     } catch (error) {
-      console.error(`[RoomRegistry] Error processing room ${roomData?.id}`, error);
+      console.error(`[RoomRegistry] Error processing room ${String(roomData?.id ?? "(unknown)")}:`, error);
     }
   }
 
@@ -117,16 +113,15 @@ async function buildRegistryAsync(): Promise<RoomMeta[]> {
 }
 
 /**
- * Public APIs
+ * Get all rooms from the registry (async, cached)
  */
-
 export async function getAllRoomsAsync(): Promise<RoomMeta[]> {
   if (roomRegistryCache) return roomRegistryCache;
 
   if (!roomRegistryPromise) {
-    roomRegistryPromise = buildRegistryAsync().then(rooms => {
+    roomRegistryPromise = buildRegistryAsync().then((rooms) => {
       roomRegistryCache = rooms;
-      roomByIdCache = new Map(rooms.map(r => [r.id, r]));
+      roomByIdCache = new Map(rooms.map((room) => [room.id, room]));
       return rooms;
     });
   }
@@ -134,68 +129,106 @@ export async function getAllRoomsAsync(): Promise<RoomMeta[]> {
   return roomRegistryPromise;
 }
 
+/**
+ * Get all rooms (sync - returns cached or empty)
+ * @deprecated Use getAllRoomsAsync instead
+ */
 export function getAllRooms(): RoomMeta[] {
   if (!roomRegistryCache) {
+    // Trigger async load in background
     getAllRoomsAsync().catch(console.error);
     return [];
   }
   return roomRegistryCache;
 }
 
+/**
+ * Get rooms filtered by tier (async)
+ */
 export async function getRoomsByTierAsync(tierId: TierId): Promise<RoomMeta[]> {
   const rooms = await getAllRoomsAsync();
-  return rooms.filter(r => r.tier === tierId);
+  return rooms.filter((room) => room.tier === tierId);
 }
 
+/**
+ * Get rooms filtered by tier (sync)
+ */
 export function getRoomsByTier(tierId: TierId): RoomMeta[] {
-  return getAllRooms().filter(r => r.tier === tierId);
+  return getAllRooms().filter((room) => room.tier === tierId);
 }
 
+/**
+ * Get rooms filtered by domain
+ */
 export function getRoomsByDomain(domain: DomainCategory): RoomMeta[] {
-  return getAllRooms().filter(r => r.domain === domain);
+  return getAllRooms().filter((room) => room.domain === domain);
 }
 
+/**
+ * Get a room by ID (sync, cached lookup)
+ */
 export function getRoomById(id: string): RoomMeta | undefined {
   if (!roomByIdCache) {
+    // Trigger async load
     getAllRoomsAsync().catch(console.error);
     return undefined;
   }
   return roomByIdCache.get(id);
 }
 
+/**
+ * Get a room by ID (async)
+ */
 export async function getRoomByIdAsync(id: string): Promise<RoomMeta | undefined> {
   await getAllRoomsAsync();
   return roomByIdCache?.get(id);
 }
 
+/**
+ * Get room counts by tier
+ */
 export function getRoomCountsByTier(): Record<TierId, number> {
-  const counts = Object.fromEntries(
-    ALL_TIER_IDS.map(t => [t, 0])
-  ) as Record<TierId, number>;
+  const counts = Object.fromEntries(ALL_TIER_IDS.map((tier) => [tier, 0])) as Record<TierId, number>;
 
   for (const room of getAllRooms()) {
-    counts[room.tier]++;
+    if (counts[room.tier] !== undefined) counts[room.tier]++;
   }
+
   return counts;
 }
 
+/**
+ * Get room counts by domain
+ */
 export function getRoomCountsByDomain(): Record<DomainCategory, number> {
-  return {
-    english: getAllRooms().filter(r => r.domain === 'english').length,
-    health: getAllRooms().filter(r => r.domain === 'health').length,
-    strategy: getAllRooms().filter(r => r.domain === 'strategy').length,
-    kids: getAllRooms().filter(r => r.domain === 'kids').length,
-    martial: getAllRooms().filter(r => r.domain === 'martial').length,
-    other: getAllRooms().filter(r => r.domain === 'other').length,
+  const counts: Record<DomainCategory, number> = {
+    english: 0,
+    health: 0,
+    strategy: 0,
+    kids: 0,
+    martial: 0,
+    other: 0,
   };
+
+  for (const room of getAllRooms()) {
+    counts[room.domain]++;
+  }
+
+  return counts;
 }
 
+/**
+ * Refresh the registry cache (call after new rooms are added)
+ */
 export function refreshRegistry(): void {
   roomRegistryCache = null;
   roomByIdCache = null;
   roomRegistryPromise = null;
 }
 
+/**
+ * Get total room count
+ */
 export function getTotalRoomCount(): number {
   return getAllRooms().length;
 }
