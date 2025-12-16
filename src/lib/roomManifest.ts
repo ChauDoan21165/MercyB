@@ -51,7 +51,11 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "eating-disorder-support-vip1": "data/eating_disorder_support_vip1.json",
   "eating-disorder-support-vip2": "data/eating_disorder_support_vip2.json",
   "eating-disorder-support-vip3": "data/eating_disorder_support_vip3.json",
+
+  // ✅ FIX: support both hyphen + underscore room IDs
   "english-foundation-ef02": "data/english_foundation_ef02.json",
+  "english_foundation_ef02": "data/english_foundation_ef02.json",
+
   "english-writing-free": "data/english_writing_free.json",
   "execution-flow-and-momentum-vip2": "data/execution_flow_and_momentum_vip2.json",
   "executive-function-mastery-vip2": "data/executive_function_mastery_vip2.json",
