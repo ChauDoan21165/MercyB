@@ -1,12 +1,3 @@
-Ctrl + W
-
-disabled={isLoading || !isAuthenticated}
-
-disabled={isLoading}
-
-disabled={isLoading || !isAuthenticated}
-
-disabled={isLoading || !isAuthenticated}
 // src/pages/ChatHub.tsx
 import { useState, useRef, useEffect } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
@@ -115,10 +106,7 @@ const ChatHub = () => {
   const { toast } = useToast();
 
   // ✅ Canonical room id for JSON strict mode + consistent DB id
-  const canonicalRoomId = (roomId || "")
-    .trim()
-    .toLowerCase()
-    .replace(/-/g, "_");
+  const canonicalRoomId = (roomId || "").trim().toLowerCase().replace(/-/g, "_");
 
   // ✅ Auto-redirect old/non-canonical URLs to canonical route
   useEffect(() => {
@@ -207,8 +195,8 @@ const ChatHub = () => {
   const currentRoom = roomNameOverride
     ? { nameVi: roomNameOverride.nameVi, nameEn: roomNameOverride.nameEn }
     : info
-    ? { nameVi: info.nameVi, nameEn: info.nameEn }
-    : { nameVi: "Phòng không xác định", nameEn: "Unknown Room" };
+      ? { nameVi: info.nameVi, nameEn: info.nameEn }
+      : { nameVi: "Phòng không xác định", nameEn: "Unknown Room" };
 
   // Mercy Room Intro Flow
   const mercyIntro = useMercyRoomIntro({
@@ -406,13 +394,8 @@ const ChatHub = () => {
     }
   }, [roomLoading, roomError, canonicalRoomId]);
 
-  
-console.log("[KW CLICK]", keyword);
-const handleKeywordClick = async (keyword: string) => {
-    if (!isAuthenticated) {
-      setShowSignupPrompt(true);
-      return;
-    }
+  // ✅ FIX: keywords must work for guests (no auth gate here)
+  const handleKeywordClick = async (keyword: string) => {
     if (isLoading) return;
     setClickedKeyword(keyword);
     await sendEntryForKeyword(keyword);
@@ -616,7 +599,12 @@ const handleKeywordClick = async (keyword: string) => {
     const newCount = userMessageCount + 1;
     setUserMessageCount(newCount);
     if (newCount % 10 === 0) {
-      await awardPoints(10, "questions_completed", `Completed ${newCount} questions in ${currentRoom.nameEn}`, canonicalRoomId);
+      await awardPoints(
+        10,
+        "questions_completed",
+        `Completed ${newCount} questions in ${currentRoom.nameEn}`,
+        canonicalRoomId,
+      );
       toast({
         title: "Points Awarded! / Điểm Thưởng!",
         description: `You earned 10 points for completing ${newCount} questions! / Bạn nhận 10 điểm khi hoàn thành ${newCount} câu hỏi!`,
@@ -987,7 +975,8 @@ const handleKeywordClick = async (keyword: string) => {
                             onClick={() => {
                               handleKeywordClick(keywordEn);
                             }}
-                            disabled={isLoading || !isAuthenticated}
+                            // ✅ FIX: guests can click keywords; only block while loading
+                            disabled={isLoading}
                           >
                             {isAdmin && (
                               <span
@@ -1053,9 +1042,7 @@ const handleKeywordClick = async (keyword: string) => {
                   <MessageCircle className="w-4 h-4 text-secondary flex-shrink-0" />
                   <Input
                     placeholder={
-                      isAuthenticated
-                        ? "Feedback / Phản Hồi..."
-                        : "Sign up to send feedback / Đăng ký để gửi phản hồi..."
+                      isAuthenticated ? "Feedback / Phản Hồi..." : "Sign up to send feedback / Đăng ký để gửi phản hồi..."
                     }
                     value={feedbackInput}
                     onChange={(e) => setFeedbackInput(e.target.value)}
