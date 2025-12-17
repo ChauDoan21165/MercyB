@@ -335,13 +335,6 @@ export const roomDataMap: Record<string, RoomData> = {
       "tier": "vip3",
       "hasData": true
   },
-  "english-writing-free": {
-      "id": "english-writing-free",
-      "nameEn": "English Writing Foundations",
-      "nameVi": "Nền Tảng Viết Tiếng Anh",
-      "tier": "free",
-      "hasData": true
-  },
   "execution-flow-and-momentum-vip2": {
       "id": "execution-flow-and-momentum-vip2",
       "nameEn": "Execution Flow & Momentum — Room 5",
