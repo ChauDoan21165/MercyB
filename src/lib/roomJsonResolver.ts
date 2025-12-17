@@ -78,11 +78,8 @@ ${detail ? `detail: ${detail}` : ""}`);
  * This prevents wasted hours caused by underscores/casing/spaces in the URL.
  */
 export function normalizeRoomIdForManifest(input: string): string {
-  return (input || "")
-    .trim()
-    .toLowerCase()
-    .replace(/[_\s]+/g, "-")
-    .replace(/-+/g, "-");
+  // Manifest keys are canonical snake_case (underscore)
+  return normalizeRoomIdForCanonicalFile(input);
 }
 
 /**
