@@ -6,6 +6,8 @@
  */
 
 import { PUBLIC_ROOM_MANIFEST } from "./roomManifest";
+// ✅ NEW IMPORT
+import { normalizeRoomIdForCanonicalFile } from "./roomJsonResolver";
 
 const LOG_PREFIX = "[roomFetcher]";
 
@@ -34,7 +36,10 @@ type AnyRoomJson = {
  * Fetch a single room JSON via manifest path (local public/data).
  */
 export async function fetchRoomJsonById(roomId: string): Promise<AnyRoomJson | null> {
-  const path = PUBLIC_ROOM_MANIFEST[roomId];
+  // ✅ NEW: Normalize incoming roomId to match manifest keys (lowercase, no .json)
+  const canonicalRoomId = normalizeRoomIdForCanonicalFile(roomId);
+
+  const path = PUBLIC_ROOM_MANIFEST[canonicalRoomId];
   if (!path) return null;
 
   try {
