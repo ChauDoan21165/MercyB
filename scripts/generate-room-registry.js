@@ -1,10 +1,14 @@
 /**
- * Auto-generate room registry from all JSON files in /public/data
+ * Auto-generate room registry from all JSON files in public/data
  *
- * GOAL (Mercy Blade truth rule):
- * - Registry must reflect reality: include ALL /public/data/*.json rooms
- * - Canonical roomId = filename base (snake_case) = JSON.id (if present)
- * - No runtime hacks (no dual IDs). One canonical ID only.
+ * STRATEGY (IMPORTANT):
+ * - Registry must reflect reality FIRST: include ALL public/data/*.json (≈626).
+ * - Never "reject" a room because of content quality (entry count, missing fields, legacy formats).
+ * - Only WARN when something looks wrong. Fix data later, in bulk.
+ *
+ * Canonical ID rule used by this generator:
+ * - roomId is derived from the filename (without .json) -> normalized to lowercase snake_case.
+ * - The manifest maps that roomId to the ACTUAL filename path (preserves original filename).
  *
  * Run with: node scripts/generate-room-registry.js
  */
@@ -18,142 +22,148 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const projectRoot = path.resolve(__dirname, "..");
 const publicDir = path.join(projectRoot, "public");
-const dataDir = path.join(publicDir, "data");
 
-// ---------- Canonical rules ----------
-
-// Canonical: snake_case only
-function validateFilenameCanonical(filename) {
-  if (!filename.endsWith(".json")) return { valid: false, reason: "Must end with .json" };
-  if (filename.startsWith(".")) return { valid: false, reason: "Hidden file" };
-  if (filename !== filename.toLowerCase()) return { valid: false, reason: "Must be lowercase" };
-
-  const base = filename.replace(/\.json$/i, "");
-  if (base.includes("-")) return { valid: false, reason: "Must be snake_case only (no hyphens)" };
-  if (!/^[a-z0-9_]+$/.test(base)) return { valid: false, reason: "Only a-z, 0-9, underscore allowed" };
-
-  return { valid: true };
+/**
+ * Convert filename base -> canonical room id (lower snake_case).
+ * Keeps it deterministic and GitHub-friendly.
+ */
+function filenameBaseToCanonicalId(base) {
+  return String(base || "")
+    .trim()
+    .toLowerCase()
+    // replace anything not a-z0-9_ with underscore
+    .replace(/[^a-z0-9_]+/g, "_")
+    // collapse underscores
+    .replace(/_+/g, "_")
+    // trim underscores
+    .replace(/^_+|_+$/g, "");
 }
 
-// Canonical roomId is EXACT filename base (snake_case)
-function filenameToRoomId(filename) {
-  return filename.replace(/\.json$/i, "");
-}
+/**
+ * Best-effort name extraction. NEVER returns null.
+ * If JSON parsing fails, falls back to a title derived from filename.
+ */
+function extractNamesBestEffort(jsonPath, filename) {
+  const fallbackName = filename
+    .replace(/\.json$/i, "")
+    .replace(/[_-]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .split(" ")
+    .map((w) => (w ? w[0].toUpperCase() + w.slice(1).toLowerCase() : w))
+    .join(" ");
 
-// Normalize tier string from JSON into internal tier id
-function normalizeTier(raw) {
-  const s = String(raw || "").toLowerCase();
+  try {
+    const contentRaw = fs.readFileSync(jsonPath, "utf8");
+    const content = JSON.parse(contentRaw);
 
-  // common formats seen in data
-  if (s.includes("free") || s.includes("miễn")) return "free";
-  if (s.includes("vip 1") || s.includes("vip1")) return "vip1";
-  if (s.includes("vip 2") || s.includes("vip2")) return "vip2";
-  if (s.includes("vip 3") || s.includes("vip3")) return "vip3";
-  if (s.includes("vip 4") || s.includes("vip4")) return "vip4";
-  if (s.includes("vip 5") || s.includes("vip5")) return "vip5";
-  if (s.includes("vip 6") || s.includes("vip6")) return "vip6";
-  if (s.includes("vip 7") || s.includes("vip7")) return "vip7";
-  if (s.includes("vip 8") || s.includes("vip8")) return "vip8";
-  if (s.includes("vip 9") || s.includes("vip9")) return "vip9";
-  if (s.includes("kidslevel1")) return "kidslevel1";
-  if (s.includes("kidslevel2")) return "kidslevel2";
-  if (s.includes("kidslevel3")) return "kidslevel3";
+    // Prefer your new structure if present
+    let nameEn = content?.name || content?.nameEn || null;
+    let nameVi = content?.name_vi || content?.nameVi || null;
 
-  return "free";
-}
+    // Back-compat: title field
+    if (!nameEn && content?.title) nameEn = content.title?.en || content.title;
+    if (!nameVi && content?.title) nameVi = content.title?.vi || content.title;
 
-// Extract display names (best-effort; NEVER reject room if missing)
-function extractNamesBestEffort(content, filename) {
-  let nameEn = content?.name || content?.title_en || null;
-  let nameVi = content?.name_vi || content?.title_vi || null;
+    // Back-compat: description field
+    if (!nameEn && content?.description) nameEn = content.description?.en || content.description;
+    if (!nameVi && content?.description) nameVi = content.description?.vi || content.description;
 
-  if ((!nameEn || !nameVi) && content?.description && typeof content.description === "object") {
-    nameEn = nameEn || content.description.en || null;
-    nameVi = nameVi || content.description.vi || null;
+    nameEn = String(nameEn || fallbackName).trim();
+    nameVi = String(nameVi || nameEn).trim();
+
+    return { nameEn, nameVi, parsed: true, content };
+  } catch (err) {
+    console.warn(`⚠️  WARN: Could not parse JSON for "${filename}" (${err?.message || err}). Will still register.`);
+    return { nameEn: fallbackName, nameVi: fallbackName, parsed: false, content: null };
   }
-
-  if ((!nameEn || !nameVi) && content?.title) {
-    if (typeof content.title === "object") {
-      nameEn = nameEn || content.title.en || null;
-      nameVi = nameVi || content.title.vi || null;
-    } else {
-      nameEn = nameEn || content.title || null;
-      nameVi = nameVi || content.title || null;
-    }
-  }
-
-  // Fallback: from filename
-  if (!nameEn) {
-    nameEn = filename
-      .replace(/\.json$/i, "")
-      .replace(/_/g, " ")
-      .split(" ")
-      .filter(Boolean)
-      .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-      .join(" ");
-  }
-  if (!nameVi) nameVi = nameEn;
-
-  return { nameEn, nameVi };
 }
 
-// ---------- Scan & Generate ----------
+/**
+ * Infer tier from filename (best-effort).
+ * This is ONLY metadata (does not affect whether the file is registered).
+ */
+function inferTierFromFilename(baseLower) {
+  // typical endings: _free, _vip1.._vip9, _vip3_ii, _kidslevel1..3
+  const m =
+    baseLower.match(/_(vip3_ii)\b/) ||
+    baseLower.match(/_(vip[1-9])\b/) ||
+    baseLower.match(/_(free)\b/) ||
+    baseLower.match(/_(kidslevel[123])\b/);
 
+  if (!m) return "free";
+  return m[1];
+}
+
+/**
+ * Scan public/data for JSON files (flat). Include ALL *.json.
+ * Never exclude based on naming.
+ */
 function scanRoomFiles() {
+  const dataDir = path.join(publicDir, "data");
+
   if (!fs.existsSync(dataDir)) {
     console.error(`Error: Data directory not found: ${dataDir}`);
-    console.log("Creating data directory...");
-    fs.mkdirSync(dataDir, { recursive: true });
-    return { manifest: {}, dataImports: {} };
+    return { manifest: {}, dataImports: {}, stats: { total: 0, registered: 0, warned: 0 } };
   }
 
-  const files = fs.readdirSync(dataDir);
-  const jsonFiles = files.filter((f) => f.endsWith(".json") && !f.startsWith("."));
+  const files = fs
+    .readdirSync(dataDir)
+    .filter((f) => f.endsWith(".json") && !f.startsWith("."));
 
   const manifest = {};
   const dataImports = {};
+  let warned = 0;
 
-  console.log(`Found ${jsonFiles.length} JSON files in public/data`);
+  console.log(`Found ${files.length} JSON files in public/data`);
 
-  for (const filename of jsonFiles) {
-    const v = validateFilenameCanonical(filename);
-    if (!v.valid) {
-      // Canonical rule is strict: skip non-canonical filenames (but do not crash)
-      console.warn(`⚠️  Skipping non-canonical file: ${filename} — ${v.reason}`);
-      continue;
-    }
-
-    const roomId = filenameToRoomId(filename);
+  for (const filename of files) {
     const jsonPath = path.join(dataDir, filename);
+    const base = filename.replace(/\.json$/i, "");
+    const canonicalId = filenameBaseToCanonicalId(base);
+    const baseLower = String(base).toLowerCase();
 
-    let content = null;
-    try {
-      content = JSON.parse(fs.readFileSync(jsonPath, "utf8"));
-    } catch (err) {
-      console.warn(`⚠️  Skipping unreadable JSON: ${filename} — ${err.message}`);
-      continue;
+    // Always register manifest entry (key = canonicalId, value = actual filename)
+    manifest[canonicalId] = `data/${filename}`;
+
+    // Best-effort metadata
+    const names = extractNamesBestEffort(jsonPath, filename);
+    const tier = inferTierFromFilename(baseLower);
+
+    // WARN only (no reject)
+    if (names.parsed && names.content) {
+      const jsonId = names.content.id;
+      if (jsonId && String(jsonId) !== String(base)) {
+        warned++;
+        console.warn(
+          `⚠️  WARN: ${filename} JSON.id (${jsonId}) != filename base (${base}). Registered anyway.`,
+        );
+      }
+
+      const entries = names.content.entries;
+      if (!Array.isArray(entries)) {
+        warned++;
+        console.warn(`⚠️  WARN: ${filename} missing entries[] (or not array). Registered anyway.`);
+      } else if (entries.length === 0) {
+        warned++;
+        console.warn(`⚠️  WARN: ${filename} has 0 entries. Registered anyway.`);
+      }
+    } else {
+      warned++;
     }
 
-    // Enforce id consistency if JSON.id exists (skip if mismatch; no dual-ID hacks)
-    if (content?.id && String(content.id) !== roomId) {
-      console.warn(`⚠️  Skipping ID mismatch: ${filename} — JSON.id=${content.id} != filename=${roomId}`);
-      continue;
-    }
-
-    const { nameEn, nameVi } = extractNamesBestEffort(content, filename);
-    const tier = normalizeTier(content?.tier);
-
-    manifest[roomId] = `data/${filename}`;
-    dataImports[roomId] = {
-      id: roomId,
-      nameEn,
-      nameVi,
+    dataImports[canonicalId] = {
+      id: canonicalId,
+      nameEn: names.nameEn,
+      nameVi: names.nameVi,
       tier,
       hasData: true,
     };
+
+    console.log(`✓ Registered: ${canonicalId} → data/${filename}`);
   }
 
-  return { manifest, dataImports };
+  return { manifest, dataImports, stats: { total: files.length, registered: Object.keys(manifest).length, warned } };
 }
 
 function generateManifest(manifest) {
@@ -171,8 +181,8 @@ export function getRoomBaseNames(): string[] {
   const baseNames = new Set<string>();
 
   for (const roomId of Object.keys(PUBLIC_ROOM_MANIFEST)) {
-    // NOTE: we keep the old helper, but registry itself is canonical snake_case
-    const baseName = roomId.replace(/_(free|vip1|vip2|vip3|vip3_ii|vip4|vip5|vip6|vip7|vip8|vip9|kidslevel[123])$/, "");
+    // Keep conservative: strip common tier suffixes
+    const baseName = roomId.replace(/_(free|vip[1-9]|vip3_ii|kidslevel[123])$/, "");
     baseNames.add(baseName);
   }
 
@@ -189,6 +199,9 @@ export function getAvailableTiers(roomBaseName: string): string[] {
     const roomId = \`\${roomBaseName}_\${tier}\`;
     if (PUBLIC_ROOM_MANIFEST[roomId]) tiers.push(tier);
   }
+
+  // Also support rooms that have no tier suffix at all (base only)
+  if (PUBLIC_ROOM_MANIFEST[roomBaseName]) tiers.unshift("base");
 
   return tiers;
 }
@@ -223,10 +236,13 @@ ${entries}
 
 // Main
 try {
-  console.log("🔍 Scanning for room JSON files...");
-  const { manifest, dataImports } = scanRoomFiles();
+  console.log("🔍 Scanning public/data for room JSON files...");
+  const { manifest, dataImports, stats } = scanRoomFiles();
 
-  console.log(`📦 Rooms registered (canonical): ${Object.keys(manifest).length}`);
+  console.log(`📦 Total JSON files: ${stats.total}`);
+  console.log(`📌 Registered rooms: ${stats.registered}`);
+  console.log(`⚠️  Warnings (non-fatal): ${stats.warned}`);
+
   generateManifest(manifest);
   generateDataImports(dataImports);
 
