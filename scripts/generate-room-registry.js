@@ -1,253 +1,242 @@
 /**
- * Auto-generate room registry from all JSON files in public/data
+ * Auto-generate room registry from ALL JSON files in public/data
  *
- * STRATEGY (IMPORTANT):
- * - Registry must reflect reality FIRST: include ALL public/data/*.json (≈626).
- * - Never "reject" a room because of content quality (entry count, missing fields, legacy formats).
- * - Only WARN when something looks wrong. Fix data later, in bulk.
+ * GOAL (strategic):
+ * - NEVER reject rooms (register first, warn later)
+ * - ONE canonical ID format: snake_case (underscores)
+ * - Manifest paths must work in production fetch: "/data/<file>.json"
  *
- * Canonical ID rule used by this generator:
- * - roomId is derived from the filename (without .json) -> normalized to lowercase snake_case.
- * - The manifest maps that roomId to the ACTUAL filename path (preserves original filename).
+ * Generates:
+ * A) src/lib/roomManifest.ts        -> PUBLIC_ROOM_MANIFEST: id -> "/data/file.json"
+ * B) src/lib/roomDataImports.ts     -> roomDataMap: id -> { id, nameEn, nameVi, tier, hasData }
+ * C) src/lib/roomList.ts            -> ROOM_IDS: string[] (sorted)
  *
- * Run with: node scripts/generate-room-registry.js
+ * Run: node scripts/generate-room-registry.js
  */
 
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 
-// Get project root (one level up from scripts/)
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const projectRoot = path.resolve(__dirname, "..");
-const publicDir = path.join(projectRoot, "public");
 
-/**
- * Convert filename base -> canonical room id (lower snake_case).
- * Keeps it deterministic and GitHub-friendly.
- */
-function filenameBaseToCanonicalId(base) {
-  return String(base || "")
+const dataDir = path.join(projectRoot, "public", "data");
+
+// -------- Canonicalization (ONE TIME) --------
+function canonicalIdFromFilename(filename) {
+  const base = filename.replace(/\.json$/i, "");
+  return base
     .trim()
     .toLowerCase()
-    // replace anything not a-z0-9_ with underscore
-    .replace(/[^a-z0-9_]+/g, "_")
-    // collapse underscores
-    .replace(/_+/g, "_")
-    // trim underscores
-    .replace(/^_+|_+$/g, "");
+    .replace(/\s+/g, "_")
+    .replace(/-+/g, "_");
 }
 
-/**
- * Best-effort name extraction. NEVER returns null.
- * If JSON parsing fails, falls back to a title derived from filename.
- */
-function extractNamesBestEffort(jsonPath, filename) {
-  const fallbackName = filename
-    .replace(/\.json$/i, "")
-    .replace(/[_-]+/g, " ")
-    .replace(/\s+/g, " ")
-    .trim()
-    .split(" ")
-    .map((w) => (w ? w[0].toUpperCase() + w.slice(1).toLowerCase() : w))
-    .join(" ");
+function inferTierFromId(id) {
+  // keep flexible; do NOT reject unknown tiers
+  const m =
+    id.match(/_(free|vip\d+|vip3_ii|kidslevel[123])$/i) ||
+    id.match(/_(vip\d+_vol\d+)$/i); // optional patterns
+  return m ? m[1].toLowerCase() : "free";
+}
 
+function safeReadJson(jsonPath) {
   try {
-    const contentRaw = fs.readFileSync(jsonPath, "utf8");
-    const content = JSON.parse(contentRaw);
-
-    // Prefer your new structure if present
-    let nameEn = content?.name || content?.nameEn || null;
-    let nameVi = content?.name_vi || content?.nameVi || null;
-
-    // Back-compat: title field
-    if (!nameEn && content?.title) nameEn = content.title?.en || content.title;
-    if (!nameVi && content?.title) nameVi = content.title?.vi || content.title;
-
-    // Back-compat: description field
-    if (!nameEn && content?.description) nameEn = content.description?.en || content.description;
-    if (!nameVi && content?.description) nameVi = content.description?.vi || content.description;
-
-    nameEn = String(nameEn || fallbackName).trim();
-    nameVi = String(nameVi || nameEn).trim();
-
-    return { nameEn, nameVi, parsed: true, content };
-  } catch (err) {
-    console.warn(`⚠️  WARN: Could not parse JSON for "${filename}" (${err?.message || err}). Will still register.`);
-    return { nameEn: fallbackName, nameVi: fallbackName, parsed: false, content: null };
+    const raw = fs.readFileSync(jsonPath, "utf8");
+    return JSON.parse(raw);
+  } catch (e) {
+    return { __parse_error: String(e?.message || e) };
   }
 }
 
-/**
- * Infer tier from filename (best-effort).
- * This is ONLY metadata (does not affect whether the file is registered).
- */
-function inferTierFromFilename(baseLower) {
-  // typical endings: _free, _vip1.._vip9, _vip3_ii, _kidslevel1..3
-  const m =
-    baseLower.match(/_(vip3_ii)\b/) ||
-    baseLower.match(/_(vip[1-9])\b/) ||
-    baseLower.match(/_(free)\b/) ||
-    baseLower.match(/_(kidslevel[123])\b/);
-
-  if (!m) return "free";
-  return m[1];
+function titleCaseFromId(id) {
+  return id
+    .replace(/_(free|vip\d+|vip3_ii|kidslevel[123])$/i, "")
+    .split(/[_-]+/)
+    .filter(Boolean)
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ");
 }
 
-/**
- * Scan public/data for JSON files (flat). Include ALL *.json.
- * Never exclude based on naming.
- */
-function scanRoomFiles() {
-  const dataDir = path.join(publicDir, "data");
+function pickNameEn(obj, fallback) {
+  return (
+    obj?.name ||
+    obj?.nameEn ||
+    obj?.title_en ||
+    obj?.titleEn ||
+    obj?.description?.en ||
+    (typeof obj?.title === "string" ? obj.title : obj?.title?.en) ||
+    fallback
+  );
+}
 
+function pickNameVi(obj, fallback) {
+  return (
+    obj?.name_vi ||
+    obj?.nameVi ||
+    obj?.title_vi ||
+    obj?.titleVi ||
+    obj?.description?.vi ||
+    (typeof obj?.title === "object" ? obj?.title?.vi : null) ||
+    fallback
+  );
+}
+
+// -------- Scan & generate --------
+function scanAllRooms() {
   if (!fs.existsSync(dataDir)) {
-    console.error(`Error: Data directory not found: ${dataDir}`);
-    return { manifest: {}, dataImports: {}, stats: { total: 0, registered: 0, warned: 0 } };
+    throw new Error(`Missing folder: ${dataDir}`);
   }
 
   const files = fs
     .readdirSync(dataDir)
-    .filter((f) => f.endsWith(".json") && !f.startsWith("."));
+    .filter((f) => f.toLowerCase().endsWith(".json") && !f.startsWith("."))
+    .sort((a, b) => a.localeCompare(b));
 
   const manifest = {};
-  const dataImports = {};
-  let warned = 0;
+  const roomDataMap = {};
+  const warnings = [];
 
-  console.log(`Found ${files.length} JSON files in public/data`);
+  let registered = 0;
 
   for (const filename of files) {
     const jsonPath = path.join(dataDir, filename);
-    const base = filename.replace(/\.json$/i, "");
-    const canonicalId = filenameBaseToCanonicalId(base);
-    const baseLower = String(base).toLowerCase();
+    const json = safeReadJson(jsonPath);
 
-    // Always register manifest entry (key = canonicalId, value = actual filename)
-    manifest[canonicalId] = `data/${filename}`;
+    const canonicalId = canonicalIdFromFilename(filename);
 
-    // Best-effort metadata
-    const names = extractNamesBestEffort(jsonPath, filename);
-    const tier = inferTierFromFilename(baseLower);
+    // Path MUST be web-fetchable in prod: "/data/<filename>"
+    // (because public/ is served at site root)
+    manifest[canonicalId] = `/data/${filename}`;
 
-    // WARN only (no reject)
-    if (names.parsed && names.content) {
-      const jsonId = names.content.id;
-      if (jsonId && String(jsonId) !== String(base)) {
-        warned++;
-        console.warn(
-          `⚠️  WARN: ${filename} JSON.id (${jsonId}) != filename base (${base}). Registered anyway.`,
-        );
-      }
+    const tier = inferTierFromId(canonicalId);
 
-      const entries = names.content.entries;
-      if (!Array.isArray(entries)) {
-        warned++;
-        console.warn(`⚠️  WARN: ${filename} missing entries[] (or not array). Registered anyway.`);
-      } else if (entries.length === 0) {
-        warned++;
-        console.warn(`⚠️  WARN: ${filename} has 0 entries. Registered anyway.`);
-      }
-    } else {
-      warned++;
-    }
+    const fallbackTitle = titleCaseFromId(canonicalId);
+    const nameEn = pickNameEn(json, fallbackTitle);
+    const nameVi = pickNameVi(json, nameEn);
 
-    dataImports[canonicalId] = {
+    roomDataMap[canonicalId] = {
       id: canonicalId,
-      nameEn: names.nameEn,
-      nameVi: names.nameVi,
+      nameEn: String(nameEn || fallbackTitle),
+      nameVi: String(nameVi || nameEn || fallbackTitle),
       tier,
       hasData: true,
     };
 
-    console.log(`✓ Registered: ${canonicalId} → data/${filename}`);
+    // WARN ONLY (never reject)
+    if (json?.__parse_error) {
+      warnings.push(`PARSE_ERROR ${filename}: ${json.__parse_error}`);
+    } else {
+      const jsonId = String(json?.id || "");
+      if (jsonId && jsonId !== canonicalId) {
+        warnings.push(`ID_MISMATCH ${filename}: json.id="${jsonId}" != "${canonicalId}"`);
+      }
+      if (!Array.isArray(json?.entries)) {
+        warnings.push(`NO_ENTRIES_ARRAY ${filename}: entries missing or not array`);
+      }
+    }
+
+    registered++;
   }
 
-  return { manifest, dataImports, stats: { total: files.length, registered: Object.keys(manifest).length, warned } };
+  return { filesCount: files.length, registered, warnings, manifest, roomDataMap };
 }
 
-function generateManifest(manifest) {
-  const content = `/**
+function writeFile(filepath, content) {
+  fs.mkdirSync(path.dirname(filepath), { recursive: true });
+  fs.writeFileSync(filepath, content, "utf8");
+}
+
+// -------- Outputs --------
+function generateRoomManifestTs(manifest) {
+  return `/**
  * AUTO-GENERATED: Do not edit manually
  * Generated by: scripts/generate-room-registry.js
  * Run: node scripts/generate-room-registry.js
  */
 export const PUBLIC_ROOM_MANIFEST: Record<string, string> = ${JSON.stringify(manifest, null, 2)};
 
-/**
- * Get all unique room base names (without tier suffix)
- */
+/** Get all unique room base names (without tier suffix) */
 export function getRoomBaseNames(): string[] {
   const baseNames = new Set<string>();
-
   for (const roomId of Object.keys(PUBLIC_ROOM_MANIFEST)) {
-    // Keep conservative: strip common tier suffixes
-    const baseName = roomId.replace(/_(free|vip[1-9]|vip3_ii|kidslevel[123])$/, "");
+    const baseName = roomId.replace(/_(free|vip\\d+|vip3_ii|kidslevel[123])$/, "");
     baseNames.add(baseName);
   }
-
   return Array.from(baseNames).sort();
 }
 
-/**
- * Get all tiers available for a room base name
- */
+/** Get all tiers available for a room base name */
 export function getAvailableTiers(roomBaseName: string): string[] {
   const tiers: string[] = [];
-
   for (const tier of ["free","vip1","vip2","vip3","vip3_ii","vip4","vip5","vip6","vip7","vip8","vip9","kidslevel1","kidslevel2","kidslevel3"]) {
     const roomId = \`\${roomBaseName}_\${tier}\`;
     if (PUBLIC_ROOM_MANIFEST[roomId]) tiers.push(tier);
   }
-
-  // Also support rooms that have no tier suffix at all (base only)
-  if (PUBLIC_ROOM_MANIFEST[roomBaseName]) tiers.unshift("base");
-
   return tiers;
 }
 `;
-
-  const manifestPath = path.join(projectRoot, "src", "lib", "roomManifest.ts");
-  fs.writeFileSync(manifestPath, content, "utf8");
-  console.log(`✅ Generated roomManifest.ts with ${Object.keys(manifest).length} rooms`);
 }
 
-function generateDataImports(dataImports) {
-  const entries = Object.entries(dataImports)
-    .map(([key, value]) => `  "${key}": ${JSON.stringify(value, null, 4).replace(/\n/g, "\n  ")}`)
+function generateRoomDataImportsTs(roomDataMap) {
+  const entries = Object.entries(roomDataMap)
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([k, v]) => `  "${k}": ${JSON.stringify(v, null, 2).replace(/\n/g, "\n  ")}`)
     .join(",\n");
 
-  const content = `/**
+  return `/**
  * AUTO-GENERATED: Do not edit manually
  * Generated by: scripts/generate-room-registry.js
  * Run: node scripts/generate-room-registry.js
  */
-import { RoomData } from "@/lib/roomData";
+export type RoomData = {
+  id: string;
+  nameEn: string;
+  nameVi: string;
+  tier: string;
+  hasData: boolean;
+};
 
 export const roomDataMap: Record<string, RoomData> = {
 ${entries}
 };
 `;
-
-  const importsPath = path.join(projectRoot, "src", "lib", "roomDataImports.ts");
-  fs.writeFileSync(importsPath, content, "utf8");
-  console.log(`✅ Generated roomDataImports.ts with ${Object.keys(dataImports).length} rooms`);
 }
 
-// Main
+function generateRoomListTs(roomDataMap) {
+  const ids = Object.keys(roomDataMap).sort();
+  return `/**
+ * AUTO-GENERATED: Do not edit manually
+ * Generated by: scripts/generate-room-registry.js
+ * Run: node scripts/generate-room-registry.js
+ */
+export const ROOM_IDS: string[] = ${JSON.stringify(ids, null, 2)};
+`;
+}
+
+// -------- Main --------
 try {
-  console.log("🔍 Scanning public/data for room JSON files...");
-  const { manifest, dataImports, stats } = scanRoomFiles();
+  const { filesCount, registered, warnings, manifest, roomDataMap } = scanAllRooms();
 
-  console.log(`📦 Total JSON files: ${stats.total}`);
-  console.log(`📌 Registered rooms: ${stats.registered}`);
-  console.log(`⚠️  Warnings (non-fatal): ${stats.warned}`);
+  console.log(`📦 Total JSON files: ${filesCount}`);
+  console.log(`📌 Registered rooms: ${registered}`);
+  console.log(`⚠️  Warnings (non-fatal): ${warnings.length}`);
 
-  generateManifest(manifest);
-  generateDataImports(dataImports);
+  const outManifest = path.join(projectRoot, "src", "lib", "roomManifest.ts");
+  const outImports = path.join(projectRoot, "src", "lib", "roomDataImports.ts");
+  const outList = path.join(projectRoot, "src", "lib", "roomList.ts");
 
-  console.log("✨ Room registry generation complete!");
+  writeFile(outManifest, generateRoomManifestTs(manifest));
+  writeFile(outImports, generateRoomDataImportsTs(roomDataMap));
+  writeFile(outList, generateRoomListTs(roomDataMap));
+
+  console.log(`✅ Wrote: ${path.relative(projectRoot, outManifest)}`);
+  console.log(`✅ Wrote: ${path.relative(projectRoot, outImports)}`);
+  console.log(`✅ Wrote: ${path.relative(projectRoot, outList)}`);
+  console.log("✨ Done.");
 } catch (err) {
-  console.error("❌ Error generating room registry:", err);
+  console.error("❌ Generator failed:", err?.message || err);
   process.exit(1);
 }
