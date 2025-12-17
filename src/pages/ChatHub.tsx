@@ -1,15 +1,26 @@
+Ctrl + W
+
+disabled={isLoading || !isAuthenticated}
+
+disabled={isLoading}
+
+disabled={isLoading || !isAuthenticated}
+
+disabled={isLoading || !isAuthenticated}
 // src/pages/ChatHub.tsx
-import { useEffect, useRef, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useState, useRef, useEffect } from "react";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 
 import { GlobalAppBar } from "@/components/GlobalAppBar";
 import { RoomHeaderStandard } from "@/components/RoomHeaderStandard";
 
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
-import { Send, MessageCircle } from "lucide-react";
+import { Send, MessageCircle, RefreshCw, Heart, Star, History, Clock } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 
 import { getRoomInfo } from "@/lib/roomData";
@@ -33,12 +44,15 @@ import { CreditLimitModal } from "@/components/CreditLimitModal";
 
 import { AudioPlayer } from "@/components/AudioPlayer";
 import { HighlightedContent } from "@/components/HighlightedContent";
+import { KeywordAudioCopyDot } from "@/components/admin/KeywordAudioCopyDot";
 import { AdminRoomTools } from "@/components/admin/AdminCopyTools";
 import { PairedHighlightedContent } from "@/components/PairedHighlightedContent";
 
 import { CompanionBubble } from "@/components/companion/CompanionBubble";
+import { MercyDockIcon } from "@/components/companion/MercyDockIcon";
 
-import { useMercyRoomIntro } from "@/hooks/useMercyRoomIntro";
+import { useMercyRoomIntro, getRoomIntro } from "@/hooks/useMercyRoomIntro";
+import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
 
 import {
   AlertDialog,
@@ -47,14 +61,17 @@ import {
   AlertDialogTitle,
   AlertDialogDescription,
   AlertDialogFooter,
+  AlertDialogAction,
 } from "@/components/ui/alert-dialog";
 
 import { messageSchema } from "@/lib/inputValidation";
 import { supabase } from "@/integrations/supabase/client";
 
-import { clearCustomKeywordMappings } from "@/lib/customKeywordLoader";
+// roomDataMap removed - use roomFetcher async API instead
+import { setCustomKeywordMappings, clearCustomKeywordMappings, loadRoomKeywords } from "@/lib/customKeywordLoader";
 import { buildAudioSrc } from "@/lib/audioHelpers";
 
+import { ProfileAvatarUpload } from "@/components/ProfileAvatarUpload";
 import { getTierRoute } from "@/lib/tierRoutes";
 import { LockedBanner } from "@/components/room/LockedBanner";
 import { PrimaryHero } from "@/components/layout/PrimaryHero";
@@ -66,6 +83,18 @@ import { useRoomAudioPreload } from "@/hooks/useRoomAudioPreload";
 
 import { useMercyHost } from "@/hooks/useMercyHost";
 import { MercyHostGreeting, MercyColorModeToast } from "@/components/MercyHostGreeting";
+
+import { useMercyRoomComplete } from "@/components/mercy";
+
+// CornerTalker removed - talking mouth integrated into AudioPlayer
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 interface Message {
   id: string;
@@ -86,7 +115,10 @@ const ChatHub = () => {
   const { toast } = useToast();
 
   // ✅ Canonical room id for JSON strict mode + consistent DB id
-  const canonicalRoomId = (roomId || "").trim().toLowerCase().replace(/-/g, "_");
+  const canonicalRoomId = (roomId || "")
+    .trim()
+    .toLowerCase()
+    .replace(/-/g, "_");
 
   // ✅ Auto-redirect old/non-canonical URLs to canonical route
   useEffect(() => {
@@ -103,49 +135,64 @@ const ChatHub = () => {
   });
 
   const [mainMessages, setMainMessages] = useState<Message[]>([]);
+  const [mainInput, setMainInput] = useState("");
   const [feedbackInput, setFeedbackInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [roomLoading, setRoomLoading] = useState(true);
   const [roomError, setRoomError] = useState<{ kind: RoomErrorKind; message?: string } | null>(null);
   const [username, setUsername] = useState<string>("");
+  const [noKeywordCount, setNoKeywordCount] = useState(0);
+  const [matchedEntryCount, setMatchedEntryCount] = useState(0);
+  const [userMessageCount, setUserMessageCount] = useState(0);
 
   const mainScrollRef = useRef<HTMLDivElement>(null);
   const endRef = useRef<HTMLDivElement>(null);
   const audioPlayerRef = useRef<HTMLDivElement>(null);
+  const mainInputRef = useRef<HTMLInputElement>(null);
 
+  const scrollToBottom = () => {
+    endRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+  };
   const scrollToAudioPlayer = () => {
     audioPlayerRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
   };
 
   const progress = useRoomProgress(canonicalRoomId);
-  const { trackMessage, trackKeyword } = useBehaviorTracking(canonicalRoomId);
+  const { trackMessage, trackKeyword, trackCompletion } = useBehaviorTracking(canonicalRoomId);
   const { awardPoints } = usePoints();
+  const markRoomComplete = useMercyRoomComplete();
 
-  const { tier, isAdmin, isAuthenticated, isLoading: accessLoading } = useUserAccess();
+  const { tier, isAdmin, isAuthenticated, isLoading: accessLoading, canAccessTier } = useUserAccess();
   const { creditInfo, hasCreditsRemaining, incrementUsage, refreshCredits } = useCredits();
 
   const [showAccessDenied, setShowAccessDenied] = useState(false);
   const [showCreditLimit, setShowCreditLimit] = useState(false);
   const [showSignupPrompt, setShowSignupPrompt] = useState(false);
-  const [isPreviewMode, setIsPreviewMode] = useState(false);
-  const [loadedRoomTier, setLoadedRoomTier] = useState<string | null>(null);
+  const [isPreviewMode, setIsPreviewMode] = useState(false); // true when viewing locked room preview
+  const [loadedRoomTier, setLoadedRoomTier] = useState<string | null>(null); // tier from room loader
+
+  const contentMode = "keyword"; // Always use keyword mode
 
   const [currentAudio, setCurrentAudio] = useState<string | null>(null);
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+  const [audioLoading, setAudioLoading] = useState(false);
 
   const [keywordMenu, setKeywordMenu] = useState<{ en: string[]; vi: string[] } | null>(null);
   const [clickedKeyword, setClickedKeyword] = useState<string | null>(null);
   const [roomEssay, setRoomEssay] = useState<{ en: string; vi: string } | null>(null);
   const [mergedEntries, setMergedEntries] = useState<any[]>([]);
   const [audioBasePath, setAudioBasePath] = useState<string>("/");
-  const [, setMatchedEntryId] = useState<string | null>(null);
+  const [matchedEntryId, setMatchedEntryId] = useState<string | null>(null);
 
-  const { isFavorite: isRoomFavorite, toggleFavorite: toggleRoomFavorite } = useFavoriteRooms();
-  const { addRecentRoom } = useRecentRooms();
+  const { favoriteRooms, isFavorite: isRoomFavorite, toggleFavorite: toggleRoomFavorite } = useFavoriteRooms();
+  const { recentRooms, addRecentRoom, clearRecentRooms } = useRecentRooms();
 
+  const [favoriteSearch, setFavoriteSearch] = useState("");
+  const [recentSearch, setRecentSearch] = useState("");
   const [isRefreshing, setIsRefreshing] = useState(false);
 
   const [roomNameOverride, setRoomNameOverride] = useState<{ nameEn: string; nameVi: string } | null>(null);
+  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
 
   // Preload audio files for current room
   const audioFilesToPreload = mergedEntries
@@ -160,8 +207,8 @@ const ChatHub = () => {
   const currentRoom = roomNameOverride
     ? { nameVi: roomNameOverride.nameVi, nameEn: roomNameOverride.nameEn }
     : info
-      ? { nameVi: info.nameVi, nameEn: info.nameEn }
-      : { nameVi: "Phòng không xác định", nameEn: "Unknown Room" };
+    ? { nameVi: info.nameVi, nameEn: info.nameEn }
+    : { nameVi: "Phòng không xác định", nameEn: "Unknown Room" };
 
   // Mercy Room Intro Flow
   const mercyIntro = useMercyRoomIntro({
@@ -222,7 +269,7 @@ const ChatHub = () => {
     loadRoomTitle();
   }, [canonicalRoomId, info]);
 
-  // Fetch username
+  // Fetch username and avatar
   useEffect(() => {
     const fetchUsername = async () => {
       const {
@@ -232,11 +279,12 @@ const ChatHub = () => {
       if (user) {
         const { data: profile } = await supabase
           .from("profiles")
-          .select("username, email")
+          .select("username, email, avatar_url")
           .eq("id", user.id)
           .single();
 
         setUsername(profile?.username || user.email?.split("@")[0] || "User");
+        setAvatarUrl(profile?.avatar_url || null);
       }
     };
 
@@ -294,6 +342,10 @@ const ChatHub = () => {
           return;
         }
 
+        if (!result.merged || result.merged.length === 0) {
+          console.warn(`No merged entries for room ${canonicalRoomId} tier ${tier}`);
+        }
+
         setKeywordMenu(result.keywordMenu);
 
         // Load room essay from database
@@ -343,8 +395,24 @@ const ChatHub = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [canonicalRoomId]);
 
-  // ✅ FIX: allow keyword click for guests (no auth gate here)
-  const handleKeywordClick = async (keyword: string) => {
+  // Scroll to top and focus input when room loads
+  useEffect(() => {
+    if (!roomLoading && !roomError && mainScrollRef.current) {
+      mainScrollRef.current.scrollTo({ top: 0, behavior: "smooth" });
+
+      setTimeout(() => {
+        mainInputRef.current?.focus();
+      }, 300);
+    }
+  }, [roomLoading, roomError, canonicalRoomId]);
+
+  
+console.log("[KW CLICK]", keyword);
+const handleKeywordClick = async (keyword: string) => {
+    if (!isAuthenticated) {
+      setShowSignupPrompt(true);
+      return;
+    }
     if (isLoading) return;
     setClickedKeyword(keyword);
     await sendEntryForKeyword(keyword);
@@ -363,6 +431,28 @@ const ChatHub = () => {
       .replace(/[^\w\s]/g, "")
       .trim();
 
+  const extractBilingual = (entry: any) => {
+    const read = (obj: any, path: string[]) => path.reduce((acc, k) => (acc ? acc[k] : undefined), obj);
+    const candidates: Array<[string[], string[]]> = [
+      [["essay_en"], ["essay_vi"]],
+      [["essay", "en"], ["essay", "vi"]],
+      [["content_en"], ["content_vi"]],
+      [["content", "en"], ["content", "vi"]],
+      [["body_en"], ["body_vi"]],
+      [["body", "en"], ["body", "vi"]],
+      [["copy_en"], ["copy_vi"]],
+      [["copy", "en"], ["copy", "vi"]],
+      [["description", "en"], ["description", "vi"]],
+    ];
+    for (const [enP, viP] of candidates) {
+      const en = String(read(entry, enP) || "").trim();
+      const vi = String(read(entry, viP) || "").trim();
+      if (en || vi) return { en, vi };
+    }
+    const en = String(entry?.content || entry?.essay || "").trim();
+    return { en, vi: String(entry?.content_vi || entry?.essay_vi || "").trim() };
+  };
+
   // Find merged entry by keyword_en match (no fallback to first entry)
   const resolveEntryByKeyword = (keyword: string) => {
     const k = norm(keyword);
@@ -371,7 +461,7 @@ const ChatHub = () => {
     const by = (s: any) => norm(String(s || ""));
 
     // 0) Exact match on slug
-    let entry = mergedEntries.find((e: any) => by(e.slug) === k);
+    let entry = mergedEntries.find((e) => by(e.slug) === k);
     if (entry) {
       setMatchedEntryId(entry.slug || entry.keywordEn);
       return entry;
@@ -385,9 +475,9 @@ const ChatHub = () => {
     }
 
     // 2) Match against all keywords in keywords_en
-    entry = mergedEntries.find((e: any) => {
+    entry = mergedEntries.find((e) => {
       const keywords = Array.isArray(e.keywords_en) ? e.keywords_en : [];
-      return keywords.some((kw: any) => by(kw) === k);
+      return keywords.some((kw) => by(kw) === k);
     });
     if (entry) {
       setMatchedEntryId(entry.slug || entry.keywordEn);
@@ -395,16 +485,16 @@ const ChatHub = () => {
     }
 
     // 3) Contains either direction on keywordEn
-    entry = mergedEntries.find((e: any) => by(e.keywordEn).includes(k) || k.includes(by(e.keywordEn)));
+    entry = mergedEntries.find((e) => by(e.keywordEn).includes(k) || k.includes(by(e.keywordEn)));
     if (entry) {
       setMatchedEntryId(entry.slug || entry.keywordEn);
       return entry;
     }
 
     // 4) Contains match in any keyword
-    entry = mergedEntries.find((e: any) => {
+    entry = mergedEntries.find((e) => {
       const keywords = Array.isArray(e.keywords_en) ? e.keywords_en : [];
-      return keywords.some((kw: any) => {
+      return keywords.some((kw) => {
         const normalized = by(kw);
         return normalized.includes(k) || k.includes(normalized);
       });
@@ -415,7 +505,7 @@ const ChatHub = () => {
     }
 
     // 5) Match by slug/title
-    entry = mergedEntries.find((e: any) => {
+    entry = mergedEntries.find((e) => {
       const slug = by(e.slug);
       const title = typeof e.title === "object" ? by(e.title?.en) : by(e.title);
       return slug.includes(k) || k.includes(slug) || title.includes(k) || k.includes(title);
@@ -427,12 +517,13 @@ const ChatHub = () => {
 
     // 6) Token-overlap fallback
     const tokens = k.split(/\s+/).filter(Boolean);
-    entry = mergedEntries.find((e: any) => {
+    entry = mergedEntries.find((e) => {
       const target = [by(e.keywordEn), by(typeof e.title === "object" ? e.title?.en : e.title), by(e.slug)].join(" ");
-      return tokens.every((t: string) => target.includes(t));
+      return tokens.every((t) => target.includes(t));
     });
-
-    if (entry) setMatchedEntryId(entry.slug || entry.keywordEn);
+    if (entry) {
+      setMatchedEntryId(entry.slug || entry.keywordEn);
+    }
     return entry || null;
   };
 
@@ -467,7 +558,89 @@ const ChatHub = () => {
     }
   };
 
-  const sendMessage = async (input: string, setInput: (val: string) => void, callback: () => void, chatType: string) => {
+  const sendMainMessage = async (keywordText?: string) => {
+    const messageText = keywordText || mainInput.trim();
+    if (!messageText || isLoading) return;
+
+    if (!isAuthenticated) {
+      setShowSignupPrompt(true);
+      return;
+    }
+
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (!user) {
+      toast({
+        title: "Authentication Required",
+        description: "Please log in to send messages",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (!keywordText) {
+      const validation = messageSchema.safeParse({ text: mainInput });
+      if (!validation.success) {
+        toast({
+          title: "Invalid Input / Đầu Vào Không Hợp Lệ",
+          description: validation.error.issues[0].message,
+          variant: "destructive",
+        });
+        return;
+      }
+    }
+
+    if (!hasCreditsRemaining()) {
+      setShowCreditLimit(true);
+      return;
+    }
+
+    if (!keywordText) {
+      const userMessage: Message = {
+        id: Date.now().toString(),
+        text: messageText,
+        isUser: true,
+        timestamp: new Date(),
+      };
+      setMainMessages((prev) => [...prev, userMessage]);
+    }
+
+    const currentInput = messageText;
+    if (!keywordText) setMainInput("");
+    setIsLoading(true);
+
+    await incrementUsage();
+
+    const newCount = userMessageCount + 1;
+    setUserMessageCount(newCount);
+    if (newCount % 10 === 0) {
+      await awardPoints(10, "questions_completed", `Completed ${newCount} questions in ${currentRoom.nameEn}`, canonicalRoomId);
+      toast({
+        title: "Points Awarded! / Điểm Thưởng!",
+        description: `You earned 10 points for completing ${newCount} questions! / Bạn nhận 10 điểm khi hoàn thành ${newCount} câu hỏi!`,
+      });
+    }
+
+    trackMessage(currentInput);
+
+    try {
+      await sendEntryForKeyword(currentInput);
+    } catch (e) {
+      console.error("Error generating response:", e);
+      toast({ title: "Error", description: "Could not generate response", variant: "destructive" });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const sendMessage = async (
+    input: string,
+    setInput: (val: string) => void,
+    callback: () => void,
+    chatType: string,
+  ) => {
     if (!input.trim()) return;
     setInput("");
 
@@ -512,6 +685,8 @@ const ChatHub = () => {
   }, [mainMessages]);
 
   const MessageBubble = ({ message }: { message: Message }) => {
+    const [showVietnamese, setShowVietnamese] = useState(true);
+
     const parts = message.text.split(/\n+---\n+/);
     const englishContent = parts[0]?.trim() || message.text;
     const vietnameseContent = parts[1]?.trim() || "";
@@ -589,7 +764,11 @@ const ChatHub = () => {
               </>
             ) : (
               <>
-                <HighlightedContent content={message.text} className="w-full" />
+                <HighlightedContent
+                  content={message.text}
+                  className="w-full"
+                  showShadowingReminder={!!(message.audioFile && audioUrl)}
+                />
 
                 {!message.isUser && message.audioFile && audioUrl && (
                   <div className="mt-4 mb-3 flex items-center gap-2" ref={audioPlayerRef}>
@@ -793,8 +972,9 @@ const ChatHub = () => {
                         const keywordVi = keywordMenu.vi[idx] || "";
                         const isClicked = clickedKeyword === keywordEn || clickedKeyword === keywordVi;
                         const entry = mergedEntries.find(
-                          (e: any) =>
-                            e.keywordEn === keywordEn || (Array.isArray(e.keywords_en) && e.keywords_en.includes(keywordEn)),
+                          (e) =>
+                            e.keywordEn === keywordEn ||
+                            (Array.isArray(e.keywords_en) && e.keywords_en.includes(keywordEn)),
                         );
                         const audioFile = entry?.audio;
 
@@ -804,9 +984,10 @@ const ChatHub = () => {
                             variant={isClicked ? "default" : "outline"}
                             size="sm"
                             className="text-xs cursor-pointer"
-                            onClick={() => handleKeywordClick(keywordEn)}
-                            // ✅ FIX: keywords must work even for guests
-                            disabled={isLoading}
+                            onClick={() => {
+                              handleKeywordClick(keywordEn);
+                            }}
+                            disabled={isLoading || !isAuthenticated}
                           >
                             {isAdmin && (
                               <span
@@ -871,10 +1052,14 @@ const ChatHub = () => {
                 <div className="flex items-center gap-2">
                   <MessageCircle className="w-4 h-4 text-secondary flex-shrink-0" />
                   <Input
-                    placeholder={isAuthenticated ? "Feedback / Phản Hồi..." : "Sign up to send feedback / Đăng ký để gửi phản hồi..."}
+                    placeholder={
+                      isAuthenticated
+                        ? "Feedback / Phản Hồi..."
+                        : "Sign up to send feedback / Đăng ký để gửi phản hồi..."
+                    }
                     value={feedbackInput}
                     onChange={(e) => setFeedbackInput(e.target.value)}
-                    onKeyDown={(e) => {
+                    onKeyPress={(e) => {
                       if (e.key === "Enter" && isAuthenticated) {
                         sendMessage(
                           feedbackInput,
@@ -943,12 +1128,12 @@ const ChatHub = () => {
             <AlertDialogDescription asChild>
               <div className="space-y-3 pt-2">
                 <p className="text-base">
-                  You're viewing this room as a guest. Create a free account to interact with the content, track your progress,
-                  and unlock personalized features.
+                  You're viewing this room as a guest. Create a free account to interact with the content, track your
+                  progress, and unlock personalized features.
                 </p>
                 <p className="text-sm text-muted-foreground italic">
-                  Bạn đang xem phòng này với tư cách khách. Tạo tài khoản miễn phí để tương tác với nội dung, theo dõi tiến trình và
-                  mở khóa các tính năng cá nhân hóa.
+                  Bạn đang xem phòng này với tư cách khách. Tạo tài khoản miễn phí để tương tác với nội dung, theo dõi
+                  tiến trình và mở khóa các tính năng cá nhân hóa.
                 </p>
               </div>
             </AlertDialogDescription>
