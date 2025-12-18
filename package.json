@@ -9,8 +9,8 @@
     "generate:room-registry": "node scripts/generate-room-registry.js",
     "generate:audio-manifest": "node scripts/generate-audio-manifest.js",
 
-    "prebuild": "npm run generate:room-registry",
-    "build": "npm run generate:audio-manifest || true && vite build",
+    "prebuild": "npm run generate:room-registry && MB_VALIDATE_CORE_ONLY=1 npx -y tsx scripts/validate-rooms.ts",
+    "build": "npm run generate:audio-manifest && vite build",
     "build:dev": "vite build --mode development",
 
     "lint": "eslint .",

@@ -1,95 +1,137 @@
 {
-"id": "philosophy-of-everyday-vip3",
-"tier": "vip3",
-"room_welcome": {
-"en": "Hello! Welcome to Philosophy of Everyday VIP3 room. How can I help you today?\n\nTopic keywords you can type are below:",
-"vi": "Xin chào! Chào mừng bạn đến với phòng Triết Học Đời Thường VIP3. Tôi có thể giúp gì cho bạn hôm nay?\n\nCác từ khóa bạn có thể nhập là:"
-},
-"keyword_menu": {
-"en": ["meaning_of_life", "meaning of life", "life meaning", "purpose of life"],
-"vi": ["y_nghia_cuoc_song", "ý nghĩa cuộc sống", "muc_dich_cuoc_song", "mục đích cuộc sống"]
-},
-"default_entry_id": "meaning_of_life",
-"search": {
-"normalize_case": true,
-"normalize_accents": true,
-"tokenize_on": [" ", "_"]
-},
-"keywords_dict": {
-"meaning_of_life": {
-"en": ["meaning_of_life", "meaning of life", "life meaning", "purpose of life", "meaning", "purpose"],
-"vi": ["y_nghia_cuoc_song", "ý nghĩa cuộc sống", "y nghia cuoc song", "muc_dich_cuoc_song", "mục đích cuộc sống", "ban_chat_cuoc_song"]
-},
-"everyday_suffering": {
-"en": ["everyday_suffering", "everyday suffering", "daily suffering", "pain of life", "stress of life", "life pain"],
-"vi": ["noi_dau_hang_ngay", "nỗi đau hằng ngày", "doi_song_ap_luc", "áp lực cuộc sống", "dau_kho_thuong_nhat", "đau khổ thường nhật"]
-},
-"ordinary_joy": {
-"en": ["ordinary_joy", "ordinary joy", "simple joy", "small joys", "everyday joy", "gratitude"],
-"vi": ["niem_vui_binh_thuong", "niềm vui bình thường", "niem_vui_nho", "niềm vui nhỏ", "hanh_phuc_don_so", "hạnh phúc đơn sơ"]
-},
-"freedom_and_responsibility": {
-"en": ["freedom_and_responsibility", "freedom and responsibility", "freedom", "responsibility", "choice and consequence", "existential freedom"],
-"vi": ["tu_do_va_trach_nhiem", "tự do và trách nhiệm", "tu_do_ca_nhan", "tự do cá nhân", "chon_va_chiu", "chọn và chịu"]
-},
-"authentic_self": {
-"en": ["authentic_self", "authentic self", "true self", "being yourself", "roles and masks", "identity"],
-"vi": ["con_nguoi_chan_that", "con người chân thật", "chinh_minh", "chính mình", "mat_na_va_vai_dien", "mặt nạ và vai diễn"]
-}
-},
-  "entries": {
+  "id": "philosophy_of_everyday_vip3",
+  "tier": "vip3",
+  "room_welcome": {
+    "en": "Hello! Welcome to Philosophy of Everyday VIP3 room. How can I help you today?\n\nTopic keywords you can type are below:",
+    "vi": "Xin chào! Chào mừng bạn đến với phòng Triết Học Đời Thường VIP3. Tôi có thể giúp gì cho bạn hôm nay?\n\nCác từ khóa bạn có thể nhập là:"
+  },
+  "keyword_menu": {
+    "en": [
+      "meaning_of_life",
+      "meaning of life",
+      "life meaning",
+      "purpose of life"
+    ],
+    "vi": [
+      "y_nghia_cuoc_song",
+      "ý nghĩa cuộc sống",
+      "muc_dich_cuoc_song",
+      "mục đích cuộc sống"
+    ]
+  },
+  "default_entry_id": "meaning_of_life",
+  "search": {
+    "normalize_case": true,
+    "normalize_accents": true,
+    "tokenize_on": [
+      " ",
+      "_"
+    ]
+  },
+  "keywords_dict": {
     "meaning_of_life": {
-      "summary": {"en": "The question that haunts across cultures and time.", "vi": "Câu hỏi ám ảnh xuyên suốt văn hóa và thời gian."},
-      "essay": {"en": "The meaning of life is not a destination you discover by looking outward. It is a creation you forge by looking inward and making choices that reflect what you truly value. Some find meaning in service, others in art, knowledge, or love. The answer is not universal—it is personal. Your life's meaning emerges not from having all the right answers, but from asking the right questions and living deliberately with those answers.", "vi": "Ý nghĩa cuộc sống không phải điểm đến bạn khám phá bằng cách nhìn ra ngoài. Nó là sáng tạo bạn tạo ra bằng cách nhìn vào trong và đưa ra những lựa chọn phản ánh điều bạn thực sự coi trọng. Một số người tìm thấy ý nghĩa trong phục vụ, những người khác trong nghệ thuật, tri thức hay tình yêu. Câu trả lời không mang tính phổ quát—nó mang tính cá nhân. Ý nghĩa cuộc sống của bạn xuất hiện không phải từ việc có tất cả câu trả lời đúng, mà từ việc đặt ra những câu hỏi đúng và sống một cách có chủ đích với những câu trả lời đó."},
-      "author": "Philosophy Room",
-      "tags": ["life_meaning", "vip3"],
-      "keywords": ["meaning_of_life", "meaning of life", "purpose", "existence", "y_nghia_cuoc_song", "ý nghĩa cuộc sống"],
-      "audio": {"en": "meaning_of_life_vip3.mp3"}
+      "en": [
+        "meaning_of_life",
+        "meaning of life",
+        "life meaning",
+        "purpose of life",
+        "meaning",
+        "purpose"
+      ],
+      "vi": [
+        "y_nghia_cuoc_song",
+        "ý nghĩa cuộc sống",
+        "y nghia cuoc song",
+        "muc_dich_cuoc_song",
+        "mục đích cuộc sống",
+        "ban_chat_cuoc_song"
+      ]
     },
-"everyday_suffering": {
-"summary": {"en": "How everyday pain can become a teacher instead of just a weight.", "vi": "Cách nỗi đau thường nhật có thể trở thành người thầy thay vì chỉ là gánh nặng."},
-"essay": {"en": "Everyday suffering rarely announces itself with grand tragedy. It arrives quietly: the unfinished task, the tense message, the heavy silence at dinner. We often see these as errors in the system of life — proof that something is broken. But viewed from another angle, suffering is not a punishment; it is a signal. It shows us where we are attached, where we resist, where we still expect life to obey our plans. When you sit honestly with your discomfort instead of numbing it, you begin to hear its language. Fatigue says: you have crossed your own boundaries. Jealousy whispers: you have forgotten your own worth. Loneliness reveals: you are ready for deeper connection, perhaps first with yourself. To live wisely is not to erase pain but to give it a place — a chair at the table of your awareness. There, it can soften into understanding and quietly reshape the way you move through the world.", "vi": "Nỗi đau hằng ngày hiếm khi xuất hiện như một bi kịch lớn. Nó đến rất khẽ: việc còn dang dở, tin nhắn căng thẳng, bữa cơm im lặng nặng nề. Ta thường xem những điều đó như lỗi của cuộc đời — bằng chứng rằng có gì đó hỏng hóc. Nhưng nhìn từ một góc khác, đau khổ không phải là hình phạt; nó là tín hiệu. Nó chỉ vào nơi ta đang bám chặt, nơi ta chống cự, nơi ta vẫn mong đời phải nghe theo kế hoạch của mình. Khi bạn ngồi yên với khó chịu của mình thay vì vội vàng làm tê nó, bạn bắt đầu nghe được ngôn ngữ của nó. Mệt mỏi nói: bạn đã vượt qua ranh giới của chính mình. Ghen tị thì thầm: bạn quên mất giá trị của bản thân. Cô đơn hé lộ: bạn đã sẵn sàng cho kết nối sâu hơn, có lẽ trước hết với chính mình. Sống khôn ngoan không phải là xóa hết nỗi đau, mà là dành cho nó một chỗ ngồi — một chiếc ghế trong căn phòng nhận biết. Ở đó, nó có thể mềm ra thành hiểu biết và âm thầm chỉnh lại cách bạn bước đi giữa đời."},
-"author": "Philosophy Room",
-"tags": ["suffering", "vip3"],
-"keywords": ["everyday_suffering", "everyday suffering", "daily suffering", "pain of life", "noi_dau_hang_ngay", "nỗi đau hằng ngày"],
-"audio": {"en": "everyday_suffering_vip3.mp3"}
-},
-"ordinary_joy": {
-"summary": {"en": "A meditation on small joys as quiet anchors of a human life.", "vi": "Một suy niệm về những niềm vui nhỏ như neo tĩnh lặng của đời người."},
-"essay": {"en": "Ordinary joy rarely makes headlines, yet it quietly holds a life together. The warm cup between your hands, the shared joke that breaks a tense afternoon, the way light rests on a familiar wall — none of these solve your problems, but they remind you you are more than your problems. In a culture addicted to intensity, we are trained to dismiss small joys as 'not enough'. But spiritually, ordinary joy is not a distraction; it is a doorway. Each simple pleasure says: for this brief moment, nothing is missing. When you allow yourself to fully inhabit such moments, gratitude stops being a concept and becomes a physical experience: a softening in the chest, a loosening of the jaw, a breath that goes all the way down. Life will not always be gentle. Yet the practice of noticing ordinary joy is like collecting little candles; when the night comes, you already know how to make light from almost nothing.", "vi": "Niềm vui bình thường hiếm khi trở thành tiêu đề lớn, nhưng lặng lẽ giữ cho một đời người không đổ vỡ. Tách trà ấm trên tay, câu đùa phá tan một buổi chiều căng thẳng, vệt nắng nằm yên trên bức tường quen thuộc — chẳng điều nào giải quyết được mọi vấn đề, nhưng chúng nhắc bạn nhớ rằng bạn luôn lớn hơn những vấn đề của mình. Trong một nền văn hóa nghiện cảm xúc mạnh, ta được dạy xem thường những niềm vui nhỏ vì 'chưa đủ'. Nhưng trong chiều sâu tinh thần, niềm vui bình thường không phải là thứ gây xao lãng; nó là cánh cửa. Mỗi niềm vui giản dị nói rằng: trong khoảnh khắc này, không có gì thiếu. Khi cho phép mình sống trọn vẹn trong những khoảnh khắc ấy, lòng biết ơn không còn là khái niệm mà trở thành cảm giác cụ thể: lồng ngực mềm lại, quai hàm bớt căng, hơi thở đi hết xuống đáy bụng. Cuộc đời sẽ không phải lúc nào cũng dịu dàng. Nhưng thói quen nhận ra niềm vui bình thường giống như gom những ngọn nến nhỏ; đến khi đêm tối, bạn đã biết cách tạo ra ánh sáng từ gần như hư vô."},
-"author": "Philosophy Room",
-"tags": ["joy", "vip3"],
-"keywords": ["ordinary_joy", "ordinary joy", "simple joy", "small joys", "niem_vui_binh_thuong", "niềm vui bình thường"],
-"audio": {"en": "ordinary_joy_vip3.mp3"}
-},
-"freedom_and_responsibility": {
-"summary": {"en": "Looking at freedom not as escape, but as the courage to carry what you choose.", "vi": "Nhìn tự do không như trốn chạy, mà như can đảm gánh vác điều mình chọn."},
-"essay": {"en": "We often imagine freedom as the absence of limits: no rules, no expectations, no weight on the shoulders. But a life without any limits is not freedom; it is drifting. Real freedom is quieter and more demanding. It begins when you recognize that every choice is also a promise — to yourself, to others, to the future you are building. To commit to a path is to accept the responsibilities that come with it: if you choose honesty, you accept difficult conversations; if you choose love, you accept the risk of loss; if you choose growth, you accept the discomfort of change. This is not a punishment, it is the price of a meaningful life. When you stop fighting this link between freedom and responsibility, a strange peace appears. You no longer ask, 'How can I have everything without cost?' but instead, 'What am I willing to carry that is worthy of my one brief life?'.", "vi": "Ta thường hình dung tự do như sự vắng mặt của giới hạn: không luật lệ, không kỳ vọng, không gánh nặng trên vai. Nhưng một đời không giới hạn không phải là tự do; đó là trôi dạt. Tự do thật sự lặng lẽ và đòi hỏi hơn nhiều. Nó bắt đầu khi bạn nhận ra rằng mỗi lựa chọn cũng là một lời hứa — với chính mình, với người khác, với tương lai bạn đang xây. Chọn một con đường là chấp nhận những trách nhiệm đi kèm: nếu chọn sự trung thực, bạn chấp nhận những cuộc đối thoại khó; nếu chọn tình yêu, bạn chấp nhận rủi ro mất mát; nếu chọn trưởng thành, bạn chấp nhận sự khó chịu của thay đổi. Đó không phải là hình phạt, mà là cái giá của một cuộc đời có ý nghĩa. Khi không còn chống lại mối liên hệ giữa tự do và trách nhiệm, một sự bình an lạ lùng xuất hiện. Bạn không còn hỏi 'Làm sao để có tất cả mà không phải trả giá?' mà hỏi 'Tôi sẵn sàng gánh điều gì xứng đáng với một đời ngắn ngủi này?'."},
-"author": "Philosophy Room",
-"tags": ["freedom", "vip3"],
-"keywords": ["freedom_and_responsibility", "freedom and responsibility", "freedom", "responsibility", "tu_do_va_trach_nhiem", "tự do và trách nhiệm"],
-"audio": {"en": "freedom_responsibility_vip3.mp3"}
-},
-"authentic_self": {
-"summary": {"en": "On the gentle, lifelong work of becoming who you already are.", "vi": "Về hành trình mềm mại, suốt đời của việc trở thành chính người mà bạn vốn dĩ là."},
-"essay": {"en": "From childhood, we learn to wear masks: the good child, the reliable colleague, the strong one who never cries. These roles are not lies; they are survival strategies. But if you live only as your roles, a quiet ache grows underneath — a sense that your life is happening slightly to the side of where you really are. Authenticity is not the sudden decision to drop every mask and say everything you think. It is the gradual alignment between your inner world and your outer life. It begins with tiny acts of honesty: saying 'no' when you mean no, admitting 'I don't know', allowing your voice to tremble instead of forcing it to sound sure. As you do this, you may lose some forms of approval, but you gain something else: the feeling of coming home to yourself. To be authentic is not to be perfect; it is to be coherent. Your thoughts, feelings, and actions may still be messy, but at least they belong to the same person — and that person is you.", "vi": "Từ nhỏ, ta học cách đeo những chiếc mặt nạ: đứa con ngoan, đồng nghiệp đáng tin, người mạnh mẽ không bao giờ khóc. Những vai ấy không phải là dối trá; chúng là cách ta sinh tồn. Nhưng nếu chỉ sống như các vai diễn, bên dưới sẽ lớn dần một nỗi nhức nhẹ — cảm giác đời mình đang diễn ra hơi lệch sang một bên so với nơi mình thật sự hiện diện. Sống chân thật không phải là quyết định đột ngột bỏ hết mặt nạ và nói ra mọi thứ trong đầu. Đó là tiến trình dần dần đưa thế giới bên trong lại gần đời sống bên ngoài. Nó bắt đầu từ những hành động nhỏ của sự trung thực: dám nói 'không' khi bạn thật sự không, dám thừa nhận 'tôi không biết', cho phép giọng mình run lên thay vì cố tỏ ra chắc chắn. Khi làm vậy, bạn có thể mất đi vài dạng công nhận, nhưng nhận lại một điều khác: cảm giác được trở về nhà với chính mình. Là người chân thật không phải là người hoàn hảo; đó là người nhất quán. Suy nghĩ, cảm xúc và hành động của bạn vẫn có thể lộn xộn, nhưng ít nhất chúng thuộc về cùng một người — và người đó là bạn."},
-"author": "Philosophy Room",
-"tags": ["authenticity", "vip3"],
-"keywords": ["authentic_self", "authentic self", "true self", "being yourself", "con_nguoi_chan_that", "con người chân thật"],
-"audio": {"en": "authentic_self_vip3.mp3"}
-}
-},
-"ui_triggers": {
-"essay_offer": {
-"enabled": true,
-"criteria": {
-"min_entries_total": 1,
-"min_distinct_buckets": 1
-},
-"behavior": {
-"mode": "chip_suggest",
-"pin_to_canvas": true
-}
-}
-}
+    "everyday_suffering": {
+      "en": [
+        "everyday_suffering",
+        "everyday suffering",
+        "daily suffering",
+        "pain of life",
+        "stress of life",
+        "life pain"
+      ],
+      "vi": [
+        "noi_dau_hang_ngay",
+        "nỗi đau hằng ngày",
+        "doi_song_ap_luc",
+        "áp lực cuộc sống",
+        "dau_kho_thuong_nhat",
+        "đau khổ thường nhật"
+      ]
+    },
+    "ordinary_joy": {
+      "en": [
+        "ordinary_joy",
+        "ordinary joy",
+        "simple joy",
+        "small joys",
+        "everyday joy",
+        "gratitude"
+      ],
+      "vi": [
+        "niem_vui_binh_thuong",
+        "niềm vui bình thường",
+        "niem_vui_nho",
+        "niềm vui nhỏ",
+        "hanh_phuc_don_so",
+        "hạnh phúc đơn sơ"
+      ]
+    },
+    "freedom_and_responsibility": {
+      "en": [
+        "freedom_and_responsibility",
+        "freedom and responsibility",
+        "freedom",
+        "responsibility",
+        "choice and consequence",
+        "existential freedom"
+      ],
+      "vi": [
+        "tu_do_va_trach_nhiem",
+        "tự do và trách nhiệm",
+        "tu_do_ca_nhan",
+        "tự do cá nhân",
+        "chon_va_chiu",
+        "chọn và chịu"
+      ]
+    },
+    "authentic_self": {
+      "en": [
+        "authentic_self",
+        "authentic self",
+        "true self",
+        "being yourself",
+        "roles and masks",
+        "identity"
+      ],
+      "vi": [
+        "con_nguoi_chan_that",
+        "con người chân thật",
+        "chinh_minh",
+        "chính mình",
+        "mat_na_va_vai_dien",
+        "mặt nạ và vai diễn"
+      ]
+    }
+  },
+  "entries": [],
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 1,
+        "min_distinct_buckets": 1
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "pin_to_canvas": true
+      }
+    }
+  }
 }

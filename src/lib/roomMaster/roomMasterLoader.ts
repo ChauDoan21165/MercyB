@@ -1,3 +1,4 @@
+// MB-BLUE-14.4 — 2025-12-18
 // RoomMaster Loader - Unified loader for JSON and database rooms
 
 import type { RoomJson, RoomMasterOutput, ValidationMode } from './roomMasterTypes';
@@ -8,15 +9,28 @@ import { validateRoom } from './roomMaster';
  */
 export async function roomMasterLoader(
   roomId: string,
-  mode: ValidationMode = { mode: 'relaxed', allowMissingFields: true, allowEmptyEntries: false, requireAudio: false, requireBilingualCopy: true, minEntries: 2, maxEntries: 8 }
+  mode: ValidationMode = {
+    mode: 'relaxed',
+    allowMissingFields: true,
+    allowEmptyEntries: false,
+    requireAudio: false,
+    requireBilingualCopy: true,
+    minEntries: 2,
+    maxEntries: 8,
+  }
 ): Promise<RoomMasterOutput> {
   try {
-    // SUPABASE IS NOW THE ONLY SOURCE OF TRUTH
-    // Try loading from database first (primary source)
+    // Source of truth: GitHub /public/data (served at runtime as /data). Database is optional/secondary.
+    // For now we try DB first, then fall back to JSON (until we remove DB path completely).
     const dbData = await loadRoomFromDatabase(roomId);
-    
+
     if (dbData) {
       return validateRoom(dbData, mode);
+    }
+
+    const jsonData = await loadRoomJson(roomId);
+    if (jsonData) {
+      return validateRoom(jsonData, mode);
     }
 
     // Room not found
@@ -30,13 +44,15 @@ export async function roomMasterLoader(
         title: { en: 'Not Found', vi: 'Không Tìm Thấy' },
         entries: [],
       },
-      errors: [{
-        field: 'room',
-        rule: 'ROOM_NOT_FOUND',
-        severity: 'error',
-        message: error.message || 'Room not found',
-        autoFixable: false,
-      }],
+      errors: [
+        {
+          field: 'room',
+          rule: 'ROOM_NOT_FOUND',
+          severity: 'error',
+          message: error.message || 'Room not found',
+          autoFixable: false,
+        },
+      ],
       warnings: [],
       autofixed: false,
       crisisFlags: [],
@@ -46,15 +62,15 @@ export async function roomMasterLoader(
 }
 
 /**
- * Load room from JSON file at /public/data/{id}.json
+ * Load room from JSON served at /data/{id}.json (from /public/data in repo)
  */
 async function loadRoomJson(roomId: string): Promise<RoomJson | null> {
   try {
-    // Construct canonical path: /public/data/{id}.json
-    const path = `/public/data/${roomId}.json`;
-    
+    // Runtime path: /data/{id}.json
+    const path = `/data/${roomId}.json`;
+
     const response = await fetch(path);
-    
+
     if (!response.ok) {
       return null;
     }
@@ -75,7 +91,7 @@ async function loadRoomJson(roomId: string): Promise<RoomJson | null> {
 async function loadRoomFromDatabase(roomId: string): Promise<RoomJson | null> {
   try {
     const { supabase } = await import('@/integrations/supabase/client');
-    
+
     const { data: room, error } = await supabase
       .from('rooms')
       .select('*')
@@ -144,11 +160,16 @@ async function loadRoomFromDatabase(roomId: string): Promise<RoomJson | null> {
  */
 export async function roomMasterBatchLoader(
   roomIds: string[],
-  mode: ValidationMode = { mode: 'relaxed', allowMissingFields: true, allowEmptyEntries: false, requireAudio: false, requireBilingualCopy: true, minEntries: 2, maxEntries: 8 }
+  mode: ValidationMode = {
+    mode: 'relaxed',
+    allowMissingFields: true,
+    allowEmptyEntries: false,
+    requireAudio: false,
+    requireBilingualCopy: true,
+    minEntries: 2,
+    maxEntries: 8,
+  }
 ): Promise<RoomMasterOutput[]> {
-  const results = await Promise.all(
-    roomIds.map(id => roomMasterLoader(id, mode))
-  );
-  
+  const results = await Promise.all(roomIds.map((id) => roomMasterLoader(id, mode)));
   return results;
 }

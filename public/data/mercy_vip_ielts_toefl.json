@@ -87,5 +87,6 @@
     "audio_en": "/audio/mercy_vip_ielts/to_sum_up_en.mp3",
     "audio_vi": "/audio/mercy_vip_ielts/to_sum_up_vi.mp3"
   },
-  "id": "mercy_vip_ielts_toefl"
+  "id": "mercy_vip_ielts_toefl",
+  "entries": []
 }

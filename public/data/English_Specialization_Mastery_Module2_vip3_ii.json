@@ -1,5 +1,5 @@
 {
-  "id": "english_specialization_mastery_vip3_ii_module2",
+  "id": "english_specialization_mastery_module2_vip3_ii",
   "tier": "VIP3 II / VIP3 II",
   "title": {
     "en": "VIP3 II – English Specialization Mastery: Advanced Module",
@@ -12,112 +12,223 @@
   "entries": [
     {
       "slug": "cognitive-load-management",
-      "keywords_en": ["cognitive load", "processing", "fluency"],
-      "keywords_vi": ["tải nhận thức", "xử lý", "trôi chảy"],
+      "keywords_en": [
+        "cognitive load",
+        "processing",
+        "fluency"
+      ],
+      "keywords_vi": [
+        "tải nhận thức",
+        "xử lý",
+        "trôi chảy"
+      ],
       "copy": {
         "en": "High-level English performance depends less on vocabulary size and more on managing cognitive load, the mental effort needed...",
         "vi": "Hiệu suất tiếng Anh nâng cao phụ thuộc ít vào lượng từ vựng và nhiều hơn vào quản lý tải nhận thức..."
       },
-      "tags": ["cognition", "fluency", "advanced"],
+      "tags": [
+        "cognition",
+        "fluency",
+        "advanced"
+      ],
       "audio": "en_spe_v3ii_cog_load.mp3"
     },
     {
       "slug": "semantic-density-precision",
-      "keywords_en": ["semantic density", "precision", "word choice"],
-      "keywords_vi": ["mật độ nghĩa", "chính xác", "chọn từ"],
+      "keywords_en": [
+        "semantic density",
+        "precision",
+        "word choice"
+      ],
+      "keywords_vi": [
+        "mật độ nghĩa",
+        "chính xác",
+        "chọn từ"
+      ],
       "copy": {
         "en": "Semantic density is the ability to pack a lot of meaning into few words...",
         "vi": "Mật độ nghĩa là khả năng nén nhiều ý vào ít từ..."
       },
-      "tags": ["vocabulary", "precision"],
+      "tags": [
+        "vocabulary",
+        "precision"
+      ],
       "audio": "en_spe_v3ii_semantic_density.mp3"
     },
     {
       "slug": "expert-discourse-markers",
-      "keywords_en": ["discourse markers", "flow", "reasoning"],
-      "keywords_vi": ["liên từ diễn ngôn", "mạch ý", "lập luận"],
+      "keywords_en": [
+        "discourse markers",
+        "flow",
+        "reasoning"
+      ],
+      "keywords_vi": [
+        "liên từ diễn ngôn",
+        "mạch ý",
+        "lập luận"
+      ],
       "copy": {
         "en": "Discourse markers are the steering wheel of expert English...",
         "vi": "Liên từ diễn ngôn là tay lái của tiếng Anh ở mức chuyên sâu..."
       },
-      "tags": ["connectors", "reasoning"],
+      "tags": [
+        "connectors",
+        "reasoning"
+      ],
       "audio": "en_spe_v3ii_discourse_markers.mp3"
     },
     {
       "slug": "genre-based-mastery",
-      "keywords_en": ["genre", "adaptation", "flexibility"],
-      "keywords_vi": ["thể loại", "thích nghi", "linh hoạt"],
+      "keywords_en": [
+        "genre",
+        "adaptation",
+        "flexibility"
+      ],
+      "keywords_vi": [
+        "thể loại",
+        "thích nghi",
+        "linh hoạt"
+      ],
       "copy": {
         "en": "Different English genres follow different rules of expectation...",
         "vi": "Mỗi thể loại tiếng Anh có bộ quy ước riêng..."
       },
-      "tags": ["genre", "adaptation"],
+      "tags": [
+        "genre",
+        "adaptation"
+      ],
       "audio": "en_spe_v3ii_genre_mastery.mp3"
     },
     {
       "slug": "argumentation-frameworks",
-      "keywords_en": ["argumentation", "frameworks", "logic"],
-      "keywords_vi": ["lập luận", "khung", "logic"],
+      "keywords_en": [
+        "argumentation",
+        "frameworks",
+        "logic"
+      ],
+      "keywords_vi": [
+        "lập luận",
+        "khung",
+        "logic"
+      ],
       "copy": {
         "en": "Argumentation frameworks turn opinions into structured reasoning...",
         "vi": "Khung lập luận biến ý kiến thành lý lẽ có cấu trúc..."
       },
-      "tags": ["argumentation", "logic"],
+      "tags": [
+        "argumentation",
+        "logic"
+      ],
       "audio": "en_spe_v3ii_argumentation.mp3"
     },
     {
       "slug": "abstract-theoretical-processing",
-      "keywords_en": ["abstract", "theoretical", "comprehension"],
-      "keywords_vi": ["trừu tượng", "lý thuyết", "hiểu"],
+      "keywords_en": [
+        "abstract",
+        "theoretical",
+        "comprehension"
+      ],
+      "keywords_vi": [
+        "trừu tượng",
+        "lý thuyết",
+        "hiểu"
+      ],
       "copy": {
         "en": "Abstract and theoretical English often feels heavy...",
         "vi": "Tiếng Anh trừu tượng và lý thuyết thường nặng nề..."
       },
-      "tags": ["abstract", "reading"],
+      "tags": [
+        "abstract",
+        "reading"
+      ],
       "audio": "en_spe_v3ii_abstract_processing.mp3"
     },
     {
       "slug": "high-level-paraphrasing",
-      "keywords_en": ["paraphrasing", "reframing", "clarity"],
-      "keywords_vi": ["diễn đạt lại", "tái khung", "rõ ràng"],
+      "keywords_en": [
+        "paraphrasing",
+        "reframing",
+        "clarity"
+      ],
+      "keywords_vi": [
+        "diễn đạt lại",
+        "tái khung",
+        "rõ ràng"
+      ],
       "copy": {
         "en": "High-level paraphrasing is more than changing words...",
         "vi": "Diễn đạt lại nâng cao không chỉ là thay từ..."
       },
-      "tags": ["paraphrasing", "clarity"],
+      "tags": [
+        "paraphrasing",
+        "clarity"
+      ],
       "audio": "en_spe_v3ii_paraphrasing.mp3"
     },
     {
       "slug": "data-driven-expression",
-      "keywords_en": ["data", "numbers", "description"],
-      "keywords_vi": ["dữ liệu", "con số", "mô tả"],
+      "keywords_en": [
+        "data",
+        "numbers",
+        "description"
+      ],
+      "keywords_vi": [
+        "dữ liệu",
+        "con số",
+        "mô tả"
+      ],
       "copy": {
         "en": "Data-driven English is the skill of talking about numbers without drowning people...",
         "vi": "Tiếng Anh về dữ liệu là kỹ năng nói về con số mà không làm người nghe chìm trong chi tiết..."
       },
-      "tags": ["data", "speaking"],
+      "tags": [
+        "data",
+        "speaking"
+      ],
       "audio": "en_spe_v3ii_data_expression.mp3"
     },
     {
       "slug": "metacognitive-training",
-      "keywords_en": ["metacognition", "awareness", "learning"],
-      "keywords_vi": ["siêu nhận thức", "nhận biết", "học"],
+      "keywords_en": [
+        "metacognition",
+        "awareness",
+        "learning"
+      ],
+      "keywords_vi": [
+        "siêu nhận thức",
+        "nhận biết",
+        "học"
+      ],
       "copy": {
         "en": "Metacognitive training means watching how you use English while you use it...",
         "vi": "Luyện siêu nhận thức nghĩa là quan sát cách bạn dùng tiếng Anh ngay trong lúc dùng..."
       },
-      "tags": ["metacognition", "learning"],
+      "tags": [
+        "metacognition",
+        "learning"
+      ],
       "audio": "en_spe_v3ii_metacognitive.mp3"
     },
     {
       "slug": "register-shifting-style-control",
-      "keywords_en": ["register", "style", "context"],
-      "keywords_vi": ["sắc thái", "phong cách", "bối cảnh"],
+      "keywords_en": [
+        "register",
+        "style",
+        "context"
+      ],
+      "keywords_vi": [
+        "sắc thái",
+        "phong cách",
+        "bối cảnh"
+      ],
       "copy": {
         "en": "Register shifting is the art of adjusting formality and style...",
         "vi": "Chuyển đổi sắc thái là nghệ thuật thay đổi mức độ trang trọng..."
       },
-      "tags": ["register", "style"],
+      "tags": [
+        "register",
+        "style"
+      ],
       "audio": "en_spe_v3ii_register_shift.mp3"
     }
   ]

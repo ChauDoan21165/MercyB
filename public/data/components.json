@@ -17,5 +17,6 @@
     "lib": "@/lib",
     "hooks": "@/hooks"
   },
-  "id": "components"
+  "id": "components",
+  "entries": []
 }

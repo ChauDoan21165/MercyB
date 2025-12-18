@@ -1,7 +1,14 @@
+// MB-BLUE-7.2 — 2025-12-18
 /**
  * Room Validator (build-time)
  * - Reads JSON files directly from public/data (no fetch, no app runtime imports)
  * - Ensures: filename matches json.id, basic required structure exists
+ *
+ * Phase I rule (CORE ONLY):
+ *   MB_VALIDATE_CORE_ONLY=1 → validate only structural correctness:
+ *   - JSON parses
+ *   - id exists and matches filename
+ *   - entries exists and is an array
  *
  * Run:
  *   node scripts/validate-rooms.ts
@@ -10,6 +17,8 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+
+const CORE_ONLY = process.env.MB_VALIDATE_CORE_ONLY === "1";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -65,23 +74,7 @@ function validateRoomJsonFile(filename: string) {
     };
   }
 
-  // title bilingual OR name + name_vi
-  const hasTitleBilingual =
-    isObject(data.title) && typeof data.title.en === "string" && typeof data.title.vi === "string";
-  const hasNameBilingual =
-    typeof data.name === "string" && typeof data.name_vi === "string";
-
-  if (!hasTitleBilingual && !hasNameBilingual) {
-    return {
-      ok: false,
-      id: expectedId,
-      filename,
-      reason: "MISSING_BILINGUAL_TITLE",
-      detail: "Need title.en + title.vi OR name + name_vi",
-    };
-  }
-
-  // entries must be array
+  // entries must be array (core requirement)
   if (!Array.isArray(data.entries)) {
     return {
       ok: false,
@@ -92,29 +85,50 @@ function validateRoomJsonFile(filename: string) {
     };
   }
 
-  // soft rules: warn style but still fail if completely broken
-  if (data.entries.length < 1) {
-    return {
-      ok: false,
-      id: expectedId,
-      filename,
-      reason: "EMPTY_ENTRIES",
-      detail: "`entries` is empty",
-    };
-  }
+  // Phase II+ content rules (skip in CORE_ONLY)
+  if (!CORE_ONLY) {
+    // title bilingual OR name + name_vi
+    const hasTitleBilingual =
+      isObject(data.title) &&
+      typeof data.title.en === "string" &&
+      typeof data.title.vi === "string";
+    const hasNameBilingual =
+      typeof data.name === "string" && typeof data.name_vi === "string";
 
-  // entry basic fields
-  for (let i = 0; i < data.entries.length; i++) {
-    const entry = data.entries[i];
-    const hasIdentifier = !!(entry?.slug || entry?.artifact_id || entry?.id);
-    if (!hasIdentifier) {
+    if (!hasTitleBilingual && !hasNameBilingual) {
       return {
         ok: false,
         id: expectedId,
         filename,
-        reason: "ENTRY_MISSING_IDENTIFIER",
-        detail: `Entry ${i + 1} needs slug OR artifact_id OR id`,
+        reason: "MISSING_BILINGUAL_TITLE",
+        detail: "Need title.en + title.vi OR name + name_vi",
       };
+    }
+
+    // soft rules: warn style but still fail if completely broken
+    if (data.entries.length < 1) {
+      return {
+        ok: false,
+        id: expectedId,
+        filename,
+        reason: "EMPTY_ENTRIES",
+        detail: "`entries` is empty",
+      };
+    }
+
+    // entry basic fields
+    for (let i = 0; i < data.entries.length; i++) {
+      const entry = data.entries[i];
+      const hasIdentifier = !!(entry?.slug || entry?.artifact_id || entry?.id);
+      if (!hasIdentifier) {
+        return {
+          ok: false,
+          id: expectedId,
+          filename,
+          reason: "ENTRY_MISSING_IDENTIFIER",
+          detail: `Entry ${i + 1} needs slug OR artifact_id OR id`,
+        };
+      }
     }
   }
 
@@ -141,9 +155,10 @@ function main() {
   console.log(`📦 Total JSON files: ${files.length}`);
   console.log(`✅ Valid rooms: ${files.length - errors.length}`);
   console.log(`❌ Invalid rooms: ${errors.length}\n`);
+  console.log(`Mode: ${CORE_ONLY ? "CORE_ONLY" : "FULL"}`);
 
   if (errors.length) {
-    console.log("Top errors:");
+    console.log("\nTop errors:");
     for (const e of errors.slice(0, 10)) {
       console.log(`- ${e.filename} :: ${e.reason} :: ${e.detail}`);
     }
