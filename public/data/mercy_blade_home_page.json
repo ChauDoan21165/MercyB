@@ -26,7 +26,6 @@
         "vi": "homepage_1.mp3"
       }
     },
-
     {
       "id": "vip9_strategic",
       "background_color": "#1E293B",
@@ -37,7 +36,7 @@
         "vi": "⭐ VIP9 — Viện Tư Duy Chiến Lược"
       },
       "body": {
-        "en": "VIP9 is the highest tier inside Mercy Blade — a quiet, serious space for people who want to think in decades, not days. It is built for founders, executives, policymakers, and anyone who wants to master strategy at the level of personal life, organizations, and nations.",
+        "en": "VIP9 is the highest tier inside Mercy Blade — a quiet, serious space for people who want to think in decades, not days.",
         "vi": "VIP9 là tầng cao nhất trong Mercy Blade — một không gian trầm, nghiêm túc dành cho những người muốn suy nghĩ theo thập kỷ, không phải theo ngày."
       },
       "audio": {
@@ -46,7 +45,6 @@
       }
     }
   ],
-
   "entries": [
     {
       "id": "homepage_intro",
@@ -55,8 +53,8 @@
         "vi": "Chào mừng đến với Mercy Blade"
       },
       "body": {
-        "en": "This entry anchors the Mercy Blade homepage and ensures structural validity for the room system.",
-        "vi": "Mục này neo trang chủ Mercy Blade và đảm bảo cấu trúc hợp lệ cho hệ thống phòng."
+        "en": "Homepage anchor entry (structural).",
+        "vi": "Mục neo trang chủ (cấu trúc)."
       }
     }
   ]
