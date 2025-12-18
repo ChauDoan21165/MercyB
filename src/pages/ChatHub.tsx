@@ -1,8 +1,35 @@
-// src/pages/ChatHub.tsx
-// ... (all existing imports remain unchanged)
+  // Initialize room on load or when roomId changes
+  useEffect(() => {
+    let cancelled = false;
+
+    const loadRoomData = async () => {
+      setRoomLoading(true);
+      setRoomError(null);
+
+      // Reset state when switching rooms
+      setMainMessages([]);
+      setKeywordMenu(null);
+      setRoomEssay(null);
+      setCurrentAudio(null);
+      setIsAudioPlaying(false);
+      setMergedEntries([]);
+      setMatchedEntryId(null);
+
+      // Track this room visit
+      if (canonicalRoomId && info) {
+        addRecentRoom({
+          id: canonicalRoomId,
+          nameEn: currentRoom.nameEn,
+          nameVi: currentRoom.nameVi,
+          tier: info.tier || "free",
+        });
+      }
 
       try {
         const result = await loadMergedRoom(canonicalRoomId);
+
+        // Cancelled early return
+        if (cancelled) return;
 
         setMergedEntries(result.merged);
         setAudioBasePath(result.audioBasePath || "/");
@@ -11,7 +38,7 @@
         const isPreview = result.hasFullAccess === false && result.merged.length > 0;
         setIsPreviewMode(isPreview);
 
-        // ✅ NEW: Handle JSON_INVALID distinctly
+        // ✅ Handle JSON_INVALID distinctly
         if (result.errorCode === "JSON_INVALID") {
           setRoomError({ 
             kind: "json_invalid" as RoomErrorKind, 
@@ -22,7 +49,10 @@
         }
 
         if (result.errorCode === "ROOM_NOT_FOUND") {
-          setRoomError({ kind: "not_found", message: canonicalRoomId ? `Room ID: ${canonicalRoomId}` : undefined });
+          setRoomError({ 
+            kind: "not_found", 
+            message: canonicalRoomId ? `Room ID: ${canonicalRoomId}` : undefined 
+          });
           setRoomLoading(false);
           return;
         }
@@ -52,6 +82,8 @@
         setMainMessages([]);
         setRoomLoading(false);
       } catch (error: any) {
+        if (cancelled) return;
+
         console.error("Failed to load room data", error);
 
         const errorMessage = String(error?.message || error);
@@ -74,3 +106,11 @@
         setMainMessages([]);
         setRoomLoading(false);
       }
+    };
+
+    loadRoomData();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [canonicalRoomId]);

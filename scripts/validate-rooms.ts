@@ -1,3 +1,32 @@
+import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
+import { validateAllRooms } from "@/lib/roomJsonResolver";
+
+async function main() {
+  const roomIds = Object.keys(PUBLIC_ROOM_MANIFEST);
+
+  console.log(`Checking ${roomIds.length} rooms...`);
+
+  const { valid, errors } = await validateAllRooms(roomIds);
+
+  console.log(`Valid rooms: ${valid.length}`);
+  console.log(`Invalid rooms: ${errors.length}`);
+
+  if (errors.length > 0) {
+    console.log("\n--- First 10 errors ---");
+    errors.slice(0, 10).forEach((e, i) => {
+      console.log(
+        `${i + 1}. ${e.room_id}\n   reason: ${e.reason}\n   path: ${e.expected_path}`
+      );
+    });
+
+    // FAIL BUILD (this is the key)
+    process.exit(1);
+  }
+
+  console.log("All rooms are healthy");
+}
+
+main();
 #!/usr/bin/env ts-node
 /**
  * Mercy Blade – Room Validator (B)
@@ -273,7 +302,7 @@ function main() {
     },
   };
 
-  console.log(`🔍 Validating JSON under: ${ROOT_DIR}`);
+  console.log(`Validating JSON under: ${ROOT_DIR}`);
   console.log(`Found ${files.length} .json files\n`);
 
   for (const file of files) {
@@ -305,15 +334,15 @@ function main() {
     if (issues.length === 0) {
       report.validFiles += 1;
       report.stats.validRooms += 1;
-      console.log(`✅ ${file}`);
+      console.log(`${file}`);
     } else {
       report.filesWithIssues += 1;
       report.stats.roomsWithIssues += 1;
 
       const shortName = basename(file);
-      console.log(`\n⚠️  ${shortName}`);
+      console.log(`\n ${shortName}`);
       for (const iss of issues) {
-        const prefix = iss.severity === "error" ? "⛔" : "•";
+        const prefix = iss.severity === "error" ? "" : "•";
         console.log(`  ${prefix} ${iss.message}`);
       }
 
