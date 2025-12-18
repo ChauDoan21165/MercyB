@@ -66,17 +66,8 @@ export async function roomMasterLoader(
  */
 async function loadRoomJson(roomId: string): Promise<RoomJson | null> {
   try {
-    // Runtime path: /data/{id}.json
-    const path = `/data/${roomId}.json`;
-
-    const response = await fetch(path);
-
-    if (!response.ok) {
-      return null;
-    }
-
-    const data = await response.json();
-    return data as RoomJson;
+    const { loadRoomJson } = await import('@/lib/roomJsonResolver');
+    return await loadRoomJson(roomId);
   } catch (error) {
     if (import.meta.env.DEV) {
       console.warn(`[RoomMasterLoader] Failed to load JSON for ${roomId}:`, error);
@@ -84,7 +75,6 @@ async function loadRoomJson(roomId: string): Promise<RoomJson | null> {
     return null;
   }
 }
-
 /**
  * Load room from database
  */
