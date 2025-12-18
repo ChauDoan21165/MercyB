@@ -2267,7 +2267,9 @@ export default function UnifiedHealthCheck() {
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
         
-        const response = await fetch(`/data/${jsonFileName}`, { signal: controller.signal });
+        const { resolveRoomJsonPath } = await import('@/lib/roomJsonResolver');
+        const url = resolveRoomJsonPath(String(jsonFileName).replace(/\.json$/,'') );
+        const response = await fetch(url, { signal: controller.signal });
         clearTimeout(timeoutId);
 
         if (!response.ok) {
@@ -2363,7 +2365,9 @@ export default function UnifiedHealthCheck() {
     setFixing(roomId);
     try {
       const jsonFileName = getJsonFilenameForKidsRoom(roomId, levelId);
-      const response = await fetch(`/data/${jsonFileName}`);
+      const { resolveRoomJsonPath } = await import('@/lib/roomJsonResolver');
+      const url = resolveRoomJsonPath(String(jsonFileName).replace(/\.json$/,'') );
+      const response = await fetch(url);
       
       if (!response.ok) {
         throw new Error(`JSON file not found: /data/${jsonFileName}`);

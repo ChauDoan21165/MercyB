@@ -164,7 +164,8 @@ export default function RoomHealthCheck() {
             path: `data/${room.id}.json`,
           },
           {
-            url: `/data/${String(room.id).replace(/-/g, "_")}.json`,
+            // MB-BLUE-15.3 — no runtime swapping
+            url: resolveRoomJsonPath(room.id || ''),
             key: "fallback",
             path: `data/${String(room.id).replace(/-/g, "_")}.json`,
           },

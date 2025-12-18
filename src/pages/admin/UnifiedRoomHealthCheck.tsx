@@ -269,7 +269,9 @@ export default function UnifiedRoomHealthCheck() {
           const kidsMissingAudioFiles: string[] = [];
           
           try {
-            const response = await fetch(`/data/${jsonFileName}`);
+            const { resolveRoomJsonPath } = await import('@/lib/roomJsonResolver');
+            const url = resolveRoomJsonPath(String(jsonFileName).replace(/\.json$/,'') );
+            const response = await fetch(url);
             if (!response.ok) {
               issues.push({
                 code: 'missing_json',
