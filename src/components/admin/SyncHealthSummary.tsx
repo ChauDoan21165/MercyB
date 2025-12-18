@@ -49,7 +49,9 @@ export function SyncHealthSummary() {
       const jsonFileChecks = await Promise.all(
         (dbRooms || []).map(async (room) => {
           try {
-            const response = await fetch(`/data/${room.id}.json?t=${cacheBuster}`, { 
+            const { resolveRoomJsonPath } = await import('@/lib/roomJsonResolver');
+            const url = `${resolveRoomJsonPath(room.id || '')}?t=${cacheBuster}`;
+            const response = await fetch(url, { 
               method: 'HEAD',
               cache: 'no-store'
             });

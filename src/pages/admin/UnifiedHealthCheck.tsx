@@ -812,7 +812,8 @@ export default function UnifiedHealthCheck() {
         try {
           const { loadRoomJson, resolveRoomJsonPath } = await import('@/lib/roomJsonResolver');
           resolvedPath = await resolveRoomJsonPath(room.id || "");
-          fileUrl = `/public/data/${room.id}.json`;
+          const { resolveRoomJsonPath } = await import('@/lib/roomJsonResolver');
+          fileUrl = resolveRoomJsonPath(room.id || '');
           
           // First, check if the file exists and capture HTTP status
           try {
@@ -2075,7 +2076,7 @@ export default function UnifiedHealthCheck() {
       const pattern12 = `${schemaId}.json`;
 
       const fallbackCandidates: { url: string; key: string; path: string }[] = [
-        { url: `/data/${room.id}.json`, key: "fallback", path: `data/${room.id}.json` },
+        { url: resolveRoomJsonPath(room.id || ''), key: "fallback", path: resolveRoomJsonPath(room.id || '') },
         ...(pattern10 ? [{ url: `/data/${pattern10}`, key: "specific", path: `data/${pattern10}` }] : []),
         { url: `/data/${pattern1}`, key: "fallback", path: `data/${pattern1}` },
         { url: `/data/${pattern2}`, key: "fallback", path: `data/${pattern2}` },

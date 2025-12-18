@@ -59,7 +59,9 @@ export const useHomepageConfig = () => {
         }
 
         // Fetch config at runtime (not bundled)
-        const response = await fetch(`/data/Mercy_Blade_home_page.json?t=${Date.now()}`, { 
+        const { resolveRoomJsonPath } = await import('@/lib/roomJsonResolver');
+        const url = `${resolveRoomJsonPath('mercy_blade_home_page')}?t=${Date.now()}`;
+        const response = await fetch(url, { 
           cache: 'no-store',
           headers: { 'Accept': 'application/json' }
         });

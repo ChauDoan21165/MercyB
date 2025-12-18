@@ -58,6 +58,7 @@ export default function RoomHealthCheck() {
     setProgress(null);
 
     try {
+      const { resolveRoomJsonPath } = await import('@/lib/roomJsonResolver');
       let query = supabase
         .from("rooms")
         .select("*")
@@ -158,7 +159,7 @@ export default function RoomHealthCheck() {
 
         const fallbackCandidates: { url: string; key: string; path: string }[] = [
           {
-            url: `/data/${room.id}.json`,
+            url: resolveRoomJsonPath(room.id || ''),
             key: "fallback",
             path: `data/${room.id}.json`,
           },

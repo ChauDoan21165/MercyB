@@ -179,7 +179,8 @@ export default function UnifiedRoomHealthCheck() {
 
           // Check JSON file exists (try to fetch)
           try {
-            const jsonPath = `/data/${room.id}.json`;
+            const { resolveRoomJsonPath } = await import('@/lib/roomJsonResolver');
+            const jsonPath = resolveRoomJsonPath(room.id || '');
             const response = await fetch(jsonPath, { method: 'HEAD' });
             if (!response.ok) {
               issues.push({
