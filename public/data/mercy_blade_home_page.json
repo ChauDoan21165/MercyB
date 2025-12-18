@@ -18,194 +18,15 @@
         "vi": "Người Đồng Hành Nhẹ Nhàng Cho Cả Cuộc Đời Bạn"
       },
       "body": {
-        "en": "Mercy Blade is a bilingual (English–Vietnamese) companion for the real world: health, emotions, money, relationships, career, and meaning. Each topic is broken into calm, simple cards with audio you can listen to anywhere—on the bus, in bed, or between classes. No pressure. No judgment. Just clarity, compassion, and steps you can take today.\n\nAnd whenever life feels loud, there is something special inside the app: the Quiet Hour—a one-minute ritual where you read one bilingual card, breathe, and come back to yourself. Over time, these small moments become steady habits: clearer thinking, kinder inner talk, and English that grows naturally with your emotional understanding.",
-        "vi": "Mercy Blade là ứng dụng song ngữ (Anh–Việt) đồng hành cùng bạn trong đời sống thật: sức khỏe, cảm xúc, tiền bạc, mối quan hệ, công việc và ý nghĩa sống. Mỗi chủ đề được chia thành các thẻ nhỏ, nhẹ nhàng, kèm audio để bạn có thể nghe ở bất cứ đâu—trên xe buýt, trước khi ngủ, hay giữa giờ học. Không áp lực. Không phán xét. Chỉ là sự rõ ràng, dịu dàng và những bước bạn có thể làm ngay.\n\nVà khi cuộc sống trở nên quá ồn, ứng dụng có một điều đặc biệt: Giờ Lặng—nghi thức một phút, nơi bạn đọc một thẻ song ngữ, hít thở và trở về với chính mình. Theo thời gian, những khoảnh khắc nhỏ này trở thành thói quen vững vàng: suy nghĩ sáng hơn, cách tự nói với mình tử tế hơn và tiếng Anh phát triển tự nhiên cùng hiểu biết cảm xúc."
+        "en": "Mercy Blade is a bilingual (English–Vietnamese) companion for the real world: health, emotions, money, relationships, career, and meaning. Each topic is broken into calm, simple cards with audio you can listen to anywhere—on the bus, in bed, or between classes. No pressure. No judgment. Just clarity, compassion, and steps you can take today.\n\nAnd whenever life feels loud, there is something special inside the app: the Quiet Hour—a one-minute ritual where you read one bilingual card, breathe, and come back to yourself.",
+        "vi": "Mercy Blade là ứng dụng song ngữ (Anh–Việt) đồng hành cùng bạn trong đời sống thật: sức khỏe, cảm xúc, tiền bạc, mối quan hệ, công việc và ý nghĩa sống. Mỗi chủ đề được chia thành các thẻ nhỏ, nhẹ nhàng, kèm audio để bạn có thể nghe ở bất cứ đâu—trên xe buýt, trước khi ngủ, hay giữa giờ học. Không áp lực. Không phán xét. Chỉ là sự rõ ràng, dịu dàng và những bước bạn có thể làm ngay.\n\nVà khi cuộc sống trở nên quá ồn, ứng dụng có một điều đặc biệt: Giờ Lặng—nghi thức một phút, nơi bạn đọc một thẻ song ngữ, hít thở và trở về với chính mình."
       },
       "audio": {
         "en": "homepage_1.mp3",
         "vi": "homepage_1.mp3"
       }
     },
-    {
-      "id": "theme_song",
-      "background_color": "#F5F0FF",
-      "heading_color": "#4C1D95",
-      "accent_color": "#8B5CF6",
-      "title": {
-        "en": "A Quiet Song for Your Journey",
-        "vi": "Một Khúc Ca Cho Hành Trình Của Bạn"
-      },
-      "body": {
-        "en": "And for moments when words are not enough, Mercy Blade has a quiet song—a theme written to support your breathing, grounding, and emotional steadiness.",
-        "vi": "Và trong những khoảnh khắc khi lời nói thôi chưa đủ, Mercy Blade có một khúc ca riêng—bài nhạc được viết để nâng nhịp thở, tiếp đất và làm dịu cảm xúc của bạn."
-      },
-      "audio": {
-        "en": "homepage_song.mp3",
-        "vi": "homepage_song.mp3"
-      }
-    },
-    {
-      "id": "song_lyrics",
-      "background_color": "#EDE9FE",
-      "heading_color": "#5B21B6",
-      "accent_color": "#7C3AED",
-      "title": {
-        "en": "🎵 \"The Song of Mercy Blade\" — A Signature Anthem for Your Inner Life",
-        "vi": "🎵 \"Khúc Ca Mercy Blade\" — Bài Ca Dành Cho Thế Giới Bên Trong"
-      },
-      "body": {
-        "en": "**Verse 1**\nWhen the night is loud and heavy\nAnd your thoughts won't fall asleep,\nThere is a place inside your chest\nWhere a quiet river keeps.\nIt doesn't rush, it doesn't shout,\nIt simply waits for you to breathe —\nA softer world inside your world,\nA hidden room for peace.\n\n**Chorus**\nMercy Blade, gentle light,\nCut the noise but keep the sky.\nShow me how to stand again\nWhen I forget the reasons why.\nMercy Blade, steady hand,\nGuide me through the storms I make.\nTeach my heart the words to say\nSo I can heal, and bend, not break.\n\n**Verse 2**\nEvery sorrow has a language,\nEvery fear has a small name.\nWhen you write them in two voices,\nThey no longer burn the same.\nEnglish for the understanding,\nVietnamese for feeling whole —\nTwo soft wings upon your back\nWhen life is heavy on your soul.\n\n**Bridge**\nNo battles here, only breathing.\nNo judgment here, only ground.\nNo pretending to be stronger —\nJust a place where you are found.\n\n**Final Chorus**\nMercy Blade, quiet flame,\nShining where the shadows ache.\nTeach me how to walk again\nWith every gentle step I take.\nMercy Blade, calm and clear,\nStay with me when nights are long.\nTurn my trembling into strength,\nAnd let my life become a song.",
-        "vi": "**Đoạn 1**\nKhi đêm dài và ồn ã,\nKhi tâm trí chẳng thể yên,\nTrong lồng ngực luôn có chỗ\nNhư dòng nước rất dịu hiền.\nKhông vội vã, không gào thét,\nChỉ chờ bạn thở nhẹ thôi —\nMột thế giới mềm bên thế giới,\nMột căn phòng lặng giữa cuộc đời.\n\n**Điệp khúc**\nMercy Blade, ánh dịu dàng,\nCắt tiếng ồn, giữ trời trong.\nDạy tôi đứng dậy một lần nữa\nKhi chẳng biết vì sao mình mỏi lòng.\nMercy Blade, bàn tay vững,\nDẫn tôi qua bão do chính tôi gây.\nDạy tim biết lời cần nói\nĐể tôi lành lại — uốn, nhưng không gãy.\n\n**Đoạn 2**\nMỗi nỗi buồn đều có tiếng,\nMỗi nỗi sợ mang tên riêng.\nKhi viết chúng thành hai ngôn ngữ,\nNgọn lửa trong lòng thôi còn thiêu đốt mình.\nTiếng Anh để hiểu rõ ràng,\nTiếng Việt để thấy bình yên —\nNhư đôi cánh mềm phía sau\nGiữ tôi đứng vững giữa trăm miền.\n\n**Cao trào**\nKhông chiến đấu — chỉ hơi thở.\nKhông phán xét — chỉ mặt đất.\nKhông cần cố tỏ ra mạnh —\nChỉ cần một nơi để được thật.\n\n**Điệp khúc cuối**\nMercy Blade, ngọn lửa nhỏ,\nSoi vào chỗ tim tôi đau.\nDẫn tôi học từng bước chậm\nĐể ngày mai đi vững hơn hôm nào.\nMercy Blade, trong và lặng,\nỞ cùng tôi khi đêm dài.\nHóa run rẩy thành sức mạnh,\nVà cho đời tôi hóa thành một khúc ca."
-      },
-      "audio": {
-        "en": "song_of_mercy_blade.mp3",
-        "vi": "song_of_mercy_blade.mp3"
-      }
-    },
-    {
-      "id": "language_layer",
-      "background_color": "#E9F3FF",
-      "heading_color": "#1D4ED8",
-      "accent_color": "#0EA5E9",
-      "title": {
-        "en": "Learn English While You Heal and Grow",
-        "vi": "Học Tiếng Anh Trong Khi Chữa Lành Và Phát Triển"
-      },
-      "body": {
-        "en": "Every piece of content in Mercy Blade is both English and Vietnamese. You can: read English, check Vietnamese when you get stuck, tap to play audio, and repeat sentences out loud. Instead of memorizing random phrases, you learn the language of stress, health, relationships, work, and money—the topics you truly care about. This way, every minute you invest helps two things at once: your life becomes lighter and your English becomes stronger.",
-        "vi": "Mọi nội dung trong Mercy Blade đều có cả tiếng Anh và tiếng Việt. Bạn có thể: đọc tiếng Anh, xem tiếng Việt khi bí, bấm nghe audio và lặp lại thành tiếng. Thay vì học vẹt các câu rời rạc, bạn học ngôn ngữ của căng thẳng, sức khỏe, mối quan hệ, công việc và tiền bạc—những điều bạn thật sự quan tâm. Nhờ đó, mỗi phút bỏ ra đều nuôi dưỡng hai thứ cùng lúc: cuộc sống nhẹ hơn và tiếng Anh vững hơn."
-      },
-      "audio": {
-        "en": "homepage_language_en.mp3",
-        "vi": "homepage_language_vi.mp3"
-      }
-    },
-    {
-      "id": "mind_emotions",
-      "background_color": "#F1ECFF",
-      "heading_color": "#4C1D95",
-      "accent_color": "#7C3AED",
-      "title": {
-        "en": "Calmer Mind, Kinder Inner Voice",
-        "vi": "Tâm Trí Bình Hơn, Tiếng Nói Bên Trong Dịu Hơn"
-      },
-      "body": {
-        "en": "Stress, anxiety, burnout, overthinking—these are not 'weaknesses', they are signals. Mercy Blade gives you small, science-informed practices: breathing, grounding, CBT-style thought reframes, emotional regulation, and self-compassion micro-exercises. Each card explains the idea in simple English, with clear Vietnamese beside it, so you can understand deeply instead of guessing. Over time, you learn vocabulary for your inner world and build the skill to stay steady when life gets loud.",
-        "vi": "Căng thẳng, lo âu, kiệt sức, suy nghĩ quá mức—không phải là 'yếu đuối', mà là tín hiệu. Mercy Blade mang đến những thực hành nhỏ, dựa trên khoa học: bài tập thở, tiếp đất, nhìn lại suy nghĩ kiểu CBT, điều hòa cảm xúc và các bài luyện tự trắc ẩn rất ngắn. Mỗi thẻ giải thích ý tưởng bằng tiếng Anh đơn giản, kèm tiếng Việt rõ ràng, giúp bạn hiểu sâu thay vì đoán. Theo thời gian, bạn học được ngôn ngữ cho thế giới bên trong của mình và xây kỹ năng đứng vững khi cuộc đời ồn ào."
-      },
-      "audio": {
-        "en": "homepage_mind_en.mp3",
-        "vi": "homepage_mind_vi.mp3"
-      }
-    },
-    {
-      "id": "body_health",
-      "background_color": "#E9F9F0",
-      "heading_color": "#166534",
-      "accent_color": "#059669",
-      "title": {
-        "en": "Sleep, Weight, Pain, Energy—Handled Gently",
-        "vi": "Giấc Ngủ, Cân Nặng, Cơn Đau, Năng Lượng—Được Chăm Với Sự Dịu Dàng"
-      },
-      "body": {
-        "en": "Health is not just strict diets and perfect routines. Mercy Blade has rooms for sleep improvement, weight loss and obesity management, ADHD and focus, chronic pain relief, movement, and nutrition. Each entry gives one clear action, one gentle explanation, and optional VIP deep dives if you want more. You can follow step by step in Vietnamese first, then revisit in English with audio to build both understanding and language confidence.",
-        "vi": "Sức khỏe không chỉ là ăn kiêng khắc nghiệt và lịch trình hoàn hảo. Mercy Blade có những phòng dành cho cải thiện giấc ngủ, giảm cân và quản lý béo phì, ADHD và tập trung, giải tỏa cơn đau mạn, vận động và dinh dưỡng. Mỗi mục đưa ra một hành động rõ ràng, một giải thích dịu dàng và các tầng VIP sâu hơn nếu bạn muốn đào sâu. Bạn có thể làm theo từng bước bằng tiếng Việt trước, rồi quay lại với bản tiếng Anh và audio để vừa hiểu, vừa tự tin hơn với ngôn ngữ."
-      },
-      "audio": {
-        "en": "homepage_body_en.mp3",
-        "vi": "homepage_body_vi.mp3"
-      }
-    },
-    {
-      "id": "relationships_love",
-      "background_color": "#FFEFE9",
-      "heading_color": "#9F1239",
-      "accent_color": "#EC4899",
-      "title": {
-        "en": "Love, Boundaries, and Feeling Less Alone",
-        "vi": "Tình Yêu, Ranh Giới Và Bớt Cô Đơn"
-      },
-      "body": {
-        "en": "We rarely learn how to handle attachment, conflict, loneliness, or intimacy at school. Mercy Blade offers gentle rooms on relationships, social anxiety, self-love, sexuality and curiosity, and healing from past wounds. You can explore in private, at your own pace, in Vietnamese for safety and in English when you feel curious. Over time, you gain language for your needs and boundaries—and courage to ask for the kind of connection you truly want.",
-        "vi": "Ở trường, hiếm khi chúng ta được học cách xử lý gắn bó, mâu thuẫn, cô đơn hay sự thân mật. Mercy Blade có những phòng dịu dàng về mối quan hệ, lo âu xã hội, yêu bản thân, tình dục và sự tò mò, và chữa lành những vết thương cũ. Bạn có thể khám phá trong riêng tư, với nhịp độ của chính mình—bằng tiếng Việt để thấy an toàn, và tiếng Anh khi muốn khám phá. Dần dần, bạn có ngôn ngữ để gọi tên nhu cầu và ranh giới của mình—và đủ can đảm để tìm kiểu kết nối bạn thật sự mong muốn."
-      },
-      "audio": {
-        "en": "homepage_relationships_en.mp3",
-        "vi": "homepage_relationships_vi.mp3"
-      }
-    },
-    {
-      "id": "money_career",
-      "background_color": "#F7F3E8",
-      "heading_color": "#92400E",
-      "accent_color": "#D97706",
-      "title": {
-        "en": "Calmer Money, Clearer Career Direction",
-        "vi": "Tiền Bạc Bình Tĩnh Hơn, Hướng Đi Nghề Nghiệp Rõ Hơn"
-      },
-      "body": {
-        "en": "Money and work can be two of the loudest sources of stress. Mercy Blade has special rooms for calm money, debt and savings, simple investing, wealth and wisdom, and career exploration. You learn the English phrases people actually use when talking about finance and jobs—while getting practical guidance to steady your own situation. Instead of feeling behind, you build a step-by-step path that fits your reality, in both languages.",
-        "vi": "Tiền bạc và công việc thường là hai nguồn căng thẳng ồn ào nhất. Mercy Blade có các phòng chuyên về tiền bình an, nợ và tiết kiệm, đầu tư đơn giản, giàu có và trí tuệ, và khám phá nghề nghiệp. Bạn học được những cụm từ tiếng Anh người ta thật sự dùng khi nói về tài chính và công việc—đồng thời nhận được hướng dẫn thực tế để ổn định tình hình của chính mình. Thay vì cảm thấy tụt lại phía sau, bạn xây được lộ trình từng bước phù hợp với hoàn cảnh, trong cả hai ngôn ngữ."
-      },
-      "audio": {
-        "en": "homepage_money_en.mp3",
-        "vi": "homepage_money_vi.mp3"
-      }
-    },
-    {
-      "id": "meaning_inner_life",
-      "background_color": "#ECE8F4",
-      "heading_color": "#312E81",
-      "accent_color": "#6366F1",
-      "title": {
-        "en": "Meaning, Spiritual Growth, and Quiet Philosophy",
-        "vi": "Ý Nghĩa Sống, Tâm Linh Và Triết Lý Nhẹ Nhàng"
-      },
-      "body": {
-        "en": "Beyond fixing problems, many people quietly ask: What is my life for? Mercy Blade includes rooms on the meaning of life, philosophy of everyday moments, spiritual comfort, grief and loss, and long-term legacy. The tone is gentle, non-preachy, and inclusive. You can sit with big questions in short, digestible pieces—reflecting in Vietnamese when emotions are strong, then revisiting in English to grow your language for inner life too.",
-        "vi": "Vượt ra ngoài chuyện giải quyết vấn đề, nhiều người âm thầm tự hỏi: Cuộc đời mình để làm gì? Mercy Blade có những phòng về ý nghĩa cuộc sống, triết lý trong đời sống hằng ngày, an ủi tâm linh, mất mát và tang thương, và di sản dài lâu. Giọng điệu nhẹ nhàng, không giảng đạo, tôn trọng mọi niềm tin. Bạn có thể ngồi với những câu hỏi lớn trong các mẩu nội dung ngắn, dễ tiêu hóa—suy ngẫm bằng tiếng Việt khi cảm xúc dâng cao, rồi quay lại với tiếng Anh để nuôi dưỡng cả ngôn ngữ cho thế giới nội tâm."
-      },
-      "audio": {
-        "en": "homepage_meaning_en.mp3",
-        "vi": "homepage_meaning_vi.mp3"
-      }
-    },
-    {
-      "id": "cta_vip",
-      "background_color": "#D8F0EA",
-      "heading_color": "#115E59",
-      "accent_color": "#0F766E",
-      "title": {
-        "en": "Start Small, Grow Deeply—At Your Own Pace",
-        "vi": "Bắt Đầu Nhỏ, Lớn Lên Sâu—Theo Nhịp Của Riêng Bạn"
-      },
-      "body": {
-        "en": "You can begin with free rooms to feel the tone, try the bilingual cards, and get used to listening to short audios. When you're ready, VIP rooms open deeper paths: more topics, multi-layer guidance, and richer practice for both life and language. No algorithms shouting at you—just a quiet library of support you can visit whenever you need. Your life is complex and colorful; your app can be, too—gently.",
-        "vi": "Bạn có thể bắt đầu với các phòng miễn phí để cảm nhận giọng điệu, thử các thẻ song ngữ và làm quen với những đoạn audio ngắn. Khi sẵn sàng, các phòng VIP mở ra con đường sâu hơn: nhiều chủ đề hơn, hướng dẫn nhiều lớp và thực hành phong phú cho cả cuộc sống lẫn ngôn ngữ. Không có thuật toán la hét—chỉ là một thư viện lặng, luôn mở khi bạn cần. Cuộc đời bạn phức tạp và nhiều màu sắc; ứng dụng của bạn cũng có thể như vậy—một cách nhẹ nhàng."
-      },
-      "audio": {
-        "en": "homepage_cta_en.mp3",
-        "vi": "homepage_cta_vi.mp3"
-      }
-    },
-    {
-      "id": "survival_resilience_vip1",
-      "background_color": "#F0F4F0",
-      "heading_color": "#14532D",
-      "accent_color": "#16A34A",
-      "title": {
-        "en": "🛡️ Survival & Resilience — Essential Literacy (VIP1 Bonus)",
-        "vi": "🛡️ Sinh Tồn & Kiên Cường — Kiến Thức Thiết Yếu (Phần Thưởng VIP1)"
-      },
-      "body": {
-        "en": "Everyone deserves basic safety skills, especially now as weather becomes more unpredictable and disruptions happen without warning. This Survival & Resilience bonus for VIP1 gathers 100 simple, practical lessons anyone can learn — no special equipment, no complex training. Each room offers clear actions you can take today, deeper understanding for long-term confidence, and family-friendly guidance for children and elders. The goal is not fear, but calm readiness: helping more people stay safe, stay steady, and stay capable during difficult moments. For only a small upgrade, you gain lifetime skills that strengthen your independence and protect the people you love.",
-        "vi": "Ai cũng xứng đáng có những kỹ năng an toàn cơ bản, nhất là khi thời tiết ngày càng khó lường và các biến cố có thể xảy ra bất ngờ. Phần bổ sung \"Sinh Tồn & Kiên Cường\" dành cho VIP1 tập hợp 100 bài học đơn giản, thực tế mà bất cứ ai cũng có thể học — không cần dụng cụ đặc biệt, không cần huấn luyện phức tạp. Mỗi phòng cung cấp hành động rõ ràng có thể làm ngay, kiến thức sâu hơn để bạn tự tin lâu dài, và hướng dẫn thân thiện cho trẻ em lẫn người lớn tuổi. Mục tiêu không phải gieo sợ hãi, mà mang lại sự bình tĩnh và chủ động: giúp nhiều người hơn được an toàn, vững vàng và tự chủ trong lúc khó khăn. Chỉ với một khoản nâng cấp nhỏ, bạn nhận được những kỹ năng trọn đời để bảo vệ chính mình và những người bạn yêu thương."
-      },
-      "audio": {
-        "en": "survival_resilience_homepage_en.mp3",
-        "vi": "survival_resilience_homepage_vi.mp3"
-      }
-    },
+
     {
       "id": "vip9_strategic",
       "background_color": "#1E293B",
@@ -216,8 +37,8 @@
         "vi": "⭐ VIP9 — Viện Tư Duy Chiến Lược"
       },
       "body": {
-        "en": "VIP9 is the highest tier inside Mercy Blade — a quiet, serious space for people who want to think in decades, not days. It is built for founders, executives, policymakers, and anyone who wants to master strategy at the level of personal life, organizations, and nations. The tone is not loud or motivational; it is clear, disciplined, and deeply grounded in strategic thinking.\n\nInside VIP9, you explore 55 advanced rooms across three strategic layers: Individual Strategic Mastery, Corporate & Organizational Strategy, and National & Geostrategic Intelligence. Each room contains eight long-form entries (about 350 English words + 350 Vietnamese words), written with the depth of executive briefings but the clarity Mercy Blade is known for. You learn how to see patterns, anticipate long cycles, build systems, make calm decisions under pressure, and stay neutral when the world around you becomes noisy.\n\nVIP9 also includes distilled lessons from some of the greatest strategists in human history. The goal is not to memorize quotes, but to absorb the mental structures behind their decisions:\n\nSun Tzu – strategic clarity, deception, timing, advantage\nNiccolò Machiavelli – power, human nature, governing stability\nMiyamoto Musashi – precision, discipline, strategic rhythm\nHannah Arendt – political judgment, power vs. violence\nCarl von Clausewitz – friction, center of gravity, strategic landscapes\nPeter Drucker – organizational clarity, decision effectiveness\nJohn Boyd – OODA loops, agility, maneuver thinking\nMichael Porter – competitive advantage and strategic positioning\n\nThese thinkers shaped nations, influenced wars and markets, and defined how leaders make decisions across centuries. VIP9 brings their ideas into short, bilingual strategic cards you can absorb quietly — on a walk, on the train, or before bed. There is no ideology, no preaching, only clear frameworks you can apply to your own life and work.\n\nVIP9 is not about \"feeling powerful.\" It is about seeing clearly, acting deliberately, and designing a life and career with the judgment of a strategist. You move slowly but think sharply. You build resilience instead of chaos. You create leverage instead of noise. Over time, this tier becomes a private library where your discipline, worldview, and long-horizon confidence deepen continuously — in both languages.",
-        "vi": "VIP9 là tầng cao nhất trong Mercy Blade — một không gian trầm, nghiêm túc dành cho những người muốn suy nghĩ theo thập kỷ, không phải theo ngày. Đây là tầng dành cho nhà sáng lập, lãnh đạo, người làm chính sách, và bất kỳ ai mong muốn làm chủ tư duy chiến lược ở ba cấp độ: cá nhân, tổ chức và quốc gia. Giọng điệu không hô hào hay thúc ép; mà rõ ràng, kỷ luật và dựa trên tư duy chiến lược sâu sắc.\n\nBên trong VIP9, bạn khám phá 55 phòng nâng cao thuộc ba tầng chiến lược: Tư Duy Chiến Lược Cá Nhân, Chiến Lược Doanh Nghiệp & Tổ Chức, và Tình Báo Địa–Chiến Lược Quốc Gia. Mỗi phòng có tám bài dài (khoảng 350 từ tiếng Anh + 350 từ tiếng Việt), được viết với chiều sâu của bản phân tích điều hành nhưng vẫn giữ sự nhẹ nhàng của Mercy Blade. Bạn học cách nhận diện mô thức, dự đoán chu kỳ dài, xây dựng hệ thống, ra quyết định bình tĩnh dưới áp lực, và giữ trung lập trong khi thế giới xung quanh ồn ào.\n\nVIP9 còn chứa các bài học tinh gọn từ những chiến lược gia vĩ đại nhất trong lịch sử nhân loại, không phải để học thuộc câu nói, mà để thấm các cấu trúc tư duy đứng sau quyết định của họ:\n\nTôn Tử – sự rõ ràng chiến lược, thời điểm, ưu thế, nghi binh\nNiccolò Machiavelli – quyền lực, bản chất con người, ổn định chính trị\nMiyamoto Musashi – kỷ luật, nhịp điệu chiến lược, tính chính xác\nHannah Arendt – phán đoán chính trị, quyền lực và bạo lực\nCarl von Clausewitz – ma sát, trọng tâm chiến lược, thế trận\nPeter Drucker – quản trị tổ chức, hiệu quả ra quyết định\nJohn Boyd – vòng OODA, tính linh hoạt, chiến lược cơ động\nMichael Porter – lợi thế cạnh tranh và định vị chiến lược\n\nNhững tư tưởng này từng định hình quốc gia, ảnh hưởng chiến tranh, thị trường, và nền chính trị hiện đại. VIP9 chuyển hóa chúng thành các thẻ chiến lược song ngữ, ngắn gọn, bạn có thể tiếp thu một cách nhẹ nhàng — khi đi bộ, trên tàu, hoặc trước khi ngủ. Không giáo điều, không áp đặt; chỉ là các mô hình rõ ràng bạn có thể ứng dụng vào đời sống và công việc.\n\nVIP9 không dạy bạn \"cảm thấy mạnh mẽ.\" Nó giúp bạn nhìn rõ hơn, hành động chủ ý hơn và thiết kế cuộc sống với tư duy của một chiến lược gia. Bạn đi chậm nhưng nghĩ sắc. Bạn xây sự bền vững thay vì hỗn loạn. Bạn tạo đòn bẩy thay vì tiếng ồn. Theo thời gian, đây trở thành thư viện riêng nơi kỷ luật, tầm nhìn và sự tự tin dài hạn của bạn liên tục lớn lên — trong cả hai ngôn ngữ."
+        "en": "VIP9 is the highest tier inside Mercy Blade — a quiet, serious space for people who want to think in decades, not days. It is built for founders, executives, policymakers, and anyone who wants to master strategy at the level of personal life, organizations, and nations.",
+        "vi": "VIP9 là tầng cao nhất trong Mercy Blade — một không gian trầm, nghiêm túc dành cho những người muốn suy nghĩ theo thập kỷ, không phải theo ngày."
       },
       "audio": {
         "en": "VIP9_homepage.mp3",
@@ -225,5 +46,18 @@
       }
     }
   ],
-  "entries": []
+
+  "entries": [
+    {
+      "id": "homepage_intro",
+      "title": {
+        "en": "Welcome to Mercy Blade",
+        "vi": "Chào mừng đến với Mercy Blade"
+      },
+      "body": {
+        "en": "This entry anchors the Mercy Blade homepage and ensures structural validity for the room system.",
+        "vi": "Mục này neo trang chủ Mercy Blade và đảm bảo cấu trúc hợp lệ cho hệ thống phòng."
+      }
+    }
+  ]
 }
