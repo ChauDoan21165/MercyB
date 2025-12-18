@@ -1381,7 +1381,9 @@ export default function UnifiedHealthCheck() {
 
         try {
           // Try to load JSON file using canonical path
-          const response = await fetch(`/data/${room.id}.json`);
+          const { resolveRoomJsonPath } = await import('@/lib/roomJsonResolver');
+
+          const response = await fetch(resolveRoomJsonPath(room.id || ''));
           if (!response.ok) {
             console.error(`Failed to load JSON for ${room.id}`);
             failCount++;

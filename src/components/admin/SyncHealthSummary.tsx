@@ -396,7 +396,11 @@ export function SyncHealthSummary() {
       const jsonFileChecks = await Promise.all(
         (allRooms || []).map(async (room) => {
           try {
-            const response = await fetch(`/data/${room.id}.json`, { method: 'HEAD' });
+            const { resolveRoomJsonPath } = await import('@/lib/roomJsonResolver');
+
+            const url = resolveRoomJsonPath(room.id || '');
+
+            const response = await fetch(url, { method: 'HEAD' });
             return { roomId: room.id, hasJson: response.ok };
           } catch {
             return { roomId: room.id, hasJson: false };
