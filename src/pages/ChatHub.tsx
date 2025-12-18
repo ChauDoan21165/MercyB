@@ -1,7 +1,9 @@
+// src/pages/ChatHub.tsx
+// MB-BLUE-11.5 — 2025-12-19 — ChatHub uses canonical roomJsonResolver (single loader path)
+
 import { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
 import { getErrorMessage } from "@/lib/constants/uiText";
 
 type LoadState = "loading" | "ready" | "error";
@@ -19,36 +21,22 @@ function canonicalizeRoomId(input: string): string {
 }
 
 /**
- * Minimal, system-level room JSON loader
- * - Uses PUBLIC_ROOM_MANIFEST first
- * - Falls back to canonical path
- * - No guessing, no retries
+ * Single canonical loader path:
+ * - uses /src/lib/roomJsonResolver.ts (manifest + canonical rules)
+ * - no direct /data string building here
  */
-async function fetchRoomJsonBySystem(roomIdRaw: string): Promise<any> {
+async function fetchRoomJson(roomIdRaw: string): Promise<any> {
   const canonicalId = canonicalizeRoomId(roomIdRaw);
 
-  const manifestPath =
-    PUBLIC_ROOM_MANIFEST[canonicalId] || `data/${canonicalId}.json`;
+  const { loadRoomJson } = await import("@/lib/roomJsonResolver");
+  const data = await loadRoomJson(canonicalId);
 
-  const cacheBuster = Date.now();
-  const url = `/${manifestPath}?t=${cacheBuster}`;
-
-  const res = await fetch(url, { cache: "no-store" });
-
-  if (res.status === 404) {
+  if (!data) {
     const err = new Error("ROOM_NOT_FOUND");
     (err as any).kind = "not_found";
     throw err;
   }
 
-  if (!res.ok) {
-    const err = new Error(`HTTP_${res.status}`);
-    (err as any).kind = "server";
-    throw err;
-  }
-
-  // If JSON is invalid, this will throw
-  const data = await res.json();
   return data;
 }
 
@@ -77,20 +65,23 @@ export default function ChatHub() {
       setErrorKind(null);
 
       try {
-        await fetchRoomJsonBySystem(roomId);
+        await fetchRoomJson(roomId);
         if (!cancelled) setState("ready");
       } catch (err: any) {
         if (cancelled) return;
 
-        const kind: ErrorKind =
-          err?.kind ||
-          (err instanceof TypeError
-            ? "network"
-            : String(err?.message || "").includes("ROOM_NOT_FOUND")
-            ? "not_found"
-            : String(err?.message || "").includes("Unexpected token")
-            ? "json_invalid"
-            : "server");
+        let kind: ErrorKind = "server";
+
+        if (err?.kind) {
+          kind = err.kind;
+        } else if (err instanceof TypeError) {
+          // fetch failed / network / CORS / offline
+          kind = "network";
+        } else if (String(err?.message || "").includes("ROOM_NOT_FOUND")) {
+          kind = "not_found";
+        } else if (String(err?.message || "").includes("Unexpected token")) {
+          kind = "json_invalid";
+        }
 
         setErrorKind(kind);
         setState("error");
@@ -118,16 +109,14 @@ export default function ChatHub() {
         : errorKind === "json_invalid"
         ? "JSON_INVALID"
         : errorKind === "network"
-        ? "network_error"
-        : "server_error";
+        ? "NETWORK_ERROR"
+        : "SERVER_ERROR";
 
     return (
       <div className="flex h-full items-center justify-center text-center p-6">
         <div>
           <h2 className="text-lg font-semibold mb-2">Room error</h2>
-          <p className="text-muted-foreground">
-            {getErrorMessage(msgKey)}
-          </p>
+          <p className="text-muted-foreground">{getErrorMessage(msgKey)}</p>
           <p className="text-xs text-muted-foreground mt-3">
             roomId: <code>{roomId}</code> → <code>{canonicalId}</code>
           </p>
