@@ -408,4 +408,8 @@ const ChatHub = () => {
   );
 };
 
+<<<<<<< Updated upstream
 export default ChatHub;
+=======
+export default ChatHub;
+>>>>>>> Stashed changes
