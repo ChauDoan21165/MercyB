@@ -4,7 +4,7 @@
  * GOAL (strategic):
  * - NEVER reject rooms (register first, warn later)
  * - ONE canonical ID format: snake_case (underscores)
- * - Manifest paths must work in production fetch: "/data/<file>.json"
+ * - Manifest paths must work in production fetch: `/data/${roomId}.json`
  *
  * Generates:
  * A) src/lib/roomManifest.ts        -> PUBLIC_ROOM_MANIFEST: id -> "/data/file.json"
