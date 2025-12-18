@@ -7,6 +7,9 @@ import { getErrorMessage } from "@/lib/constants/uiText";
 type LoadState = "loading" | "ready" | "error";
 type ErrorKind = "not_found" | "json_invalid" | "network" | "server";
 
+/**
+ * Canonicalize roomId to snake_case (system-wide rule)
+ */
 function canonicalizeRoomId(input: string): string {
   return (input || "")
     .trim()
@@ -15,6 +18,12 @@ function canonicalizeRoomId(input: string): string {
     .replace(/_+/g, "_");
 }
 
+/**
+ * Minimal, system-level room JSON loader
+ * - Uses PUBLIC_ROOM_MANIFEST first
+ * - Falls back to canonical path
+ * - No guessing, no retries
+ */
 async function fetchRoomJsonBySystem(roomIdRaw: string): Promise<any> {
   const canonicalId = canonicalizeRoomId(roomIdRaw);
 
@@ -46,7 +55,10 @@ async function fetchRoomJsonBySystem(roomIdRaw: string): Promise<any> {
 export default function ChatHub() {
   const { roomId } = useParams<{ roomId: string }>();
 
-  const canonicalId = useMemo(() => canonicalizeRoomId(roomId || ""), [roomId]);
+  const canonicalId = useMemo(
+    () => canonicalizeRoomId(roomId || ""),
+    [roomId]
+  );
 
   const [state, setState] = useState<LoadState>("loading");
   const [errorKind, setErrorKind] = useState<ErrorKind | null>(null);
@@ -70,7 +82,6 @@ export default function ChatHub() {
       } catch (err: any) {
         if (cancelled) return;
 
-        // classify quickly + safely
         const kind: ErrorKind =
           err?.kind ||
           (err instanceof TypeError
@@ -114,7 +125,9 @@ export default function ChatHub() {
       <div className="flex h-full items-center justify-center text-center p-6">
         <div>
           <h2 className="text-lg font-semibold mb-2">Room error</h2>
-          <p className="text-muted-foreground">{getErrorMessage(msgKey)}</p>
+          <p className="text-muted-foreground">
+            {getErrorMessage(msgKey)}
+          </p>
           <p className="text-xs text-muted-foreground mt-3">
             roomId: <code>{roomId}</code> → <code>{canonicalId}</code>
           </p>
