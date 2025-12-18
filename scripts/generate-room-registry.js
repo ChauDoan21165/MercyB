@@ -109,7 +109,7 @@ function scanAllRooms() {
 
     // Path MUST be web-fetchable in prod: "/data/<filename>"
     // (because public/ is served at site root)
-    manifest[canonicalId] = `/data/${filename}`;
+    manifest[canonicalId] = `/data/${canonicalId}.json`;
 
     const tier = inferTierFromId(canonicalId);
 
