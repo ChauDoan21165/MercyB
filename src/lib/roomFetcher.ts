@@ -6,8 +6,17 @@
  */
 
 import { PUBLIC_ROOM_MANIFEST } from "./roomManifest";
-// ✅ NEW IMPORT
-import { normalizeRoomIdForCanonicalFile } from "./roomJsonResolver";
+
+/**
+ * Helper to normalize a room ID into the canonical form used as keys in the manifest.
+ */
+function normalizeRoomIdForCanonicalFile(input: string): string {
+  return (input || "")
+    .trim()
+    .toLowerCase()
+    .replace(/[-\s]+/g, "_")
+    .replace(/_+/g, "_");
+}
 
 const LOG_PREFIX = "[roomFetcher]";
 
@@ -36,7 +45,7 @@ type AnyRoomJson = {
  * Fetch a single room JSON via manifest path (local public/data).
  */
 export async function fetchRoomJsonById(roomId: string): Promise<AnyRoomJson | null> {
-  // ✅ NEW: Normalize incoming roomId to match manifest keys (lowercase, no .json)
+  // Normalize incoming roomId to match manifest keys (lowercase, no .json)
   const canonicalRoomId = normalizeRoomIdForCanonicalFile(roomId);
 
   const path = PUBLIC_ROOM_MANIFEST[canonicalRoomId];
@@ -115,7 +124,7 @@ export async function fetchAllRooms(): Promise<RoomSummary[]> {
 }
 
 /**
- * ✅ REQUIRED BY roomRegistry.ts right now
+ * REQUIRED BY roomRegistry.ts right now
  * Provide the named export that the app imports.
  */
 export async function getAllRooms(): Promise<RoomSummary[]> {
