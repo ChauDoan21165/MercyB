@@ -57,7 +57,7 @@ export function getKeywordColor(text: string): string | null {
  */
 export async function loadRoomKeywords(roomId: string): Promise<CustomKeywordMapping[]> {
   try {
-    const response = await fetch(`/data/${roomId}.json`);
+    const response = await (await import('@/lib/roomJsonResolver')).loadRoomJson(roomId);
     if (!response.ok) return [];
     
     const roomData = await response.json();

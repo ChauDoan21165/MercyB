@@ -406,7 +406,7 @@ const loadFromDatabase = async (dbRoomId: string) => {
 
 const loadFromJson = async (roomId: string) => {
   try {
-    const { loadRoomJson } = await import('./roomJsonResolver');
+    const { loadRoomJson } = await import('@/lib/roomJsonResolver');
     const jsonData = await loadRoomJson(roomId);
     if (!Array.isArray(jsonData?.entries) || jsonData.entries.length === 0) return null;
     const { keywordMenu, merged } = processEntriesOptimized(jsonData.entries, roomId);

@@ -159,7 +159,7 @@ async function loadCrossTopicData(): Promise<any> {
 async function loadRoomJson(roomId: string): Promise<any> {
   if (roomJsonCache[roomId]) return roomJsonCache[roomId];
   try {
-    const response = await fetch(`/data/${roomId}.json`);
+    const response = await (await import('@/lib/roomJsonResolver')).loadRoomJson(roomId);
     if (response.ok) {
       const data = await response.json();
       roomJsonCache[roomId] = data;

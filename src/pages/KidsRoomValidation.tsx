@@ -69,7 +69,7 @@ export default function KidsRoomValidation() {
       toast.info(`Fixing entries for room ${roomId}...`);
       
       // Fetch JSON data
-      const response = await fetch(`/data/${roomId}.json`);
+      const response = await (await import('@/lib/roomJsonResolver')).loadRoomJson(roomId);
       if (!response.ok) throw new Error("JSON file not found");
       
       const jsonData = await response.json();
@@ -225,7 +225,7 @@ export default function KidsRoomValidation() {
         
         try {
           // Try to fetch the JSON file
-          const response = await fetch(`/data/${room.id}.json`, { signal });
+          const response = await (await import('@/lib/roomJsonResolver')).loadRoomJson(room.id);
           
           if (response.ok) {
             const jsonData = await response.json();
