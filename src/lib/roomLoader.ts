@@ -12,12 +12,14 @@ import type { Database } from "@/integrations/supabase/types";
 import { logger } from "./logger";
 import { useSWR } from "./cache/swrCache";
 import { tierFromRoomId } from "@/lib/tierFromRoomId";
+// ✅ NEW IMPORT
+import { classifyRoomError } from "@/lib/errors/roomErrorKind";
 
 type RoomRow = Database["public"]["Tables"]["rooms"]["Row"];
 
 // Error codes for distinguishing room load failures
 // Note: AUTH_REQUIRED removed - guests get preview mode instead of blocking
-export type RoomLoadErrorCode = "ROOM_NOT_FOUND" | "ACCESS_DENIED";
+export type RoomLoadErrorCode = "ROOM_NOT_FOUND" | "ACCESS_DENIED" | "JSON_INVALID";
 
 // Return type for room loader
 export type LoadedRoomResult = {
@@ -359,11 +361,28 @@ const loadMergedRoomInternal = async (roomId: string): Promise<LoadedRoomResult>
           hasFullAccess: true,
         };
       }
-    } catch (error: any) {
-      logger.error("JSON load error", { scope: "roomLoader", roomId, error: error?.message });
+    } catch (jsonError: any) {
+      // ✅ Use classifier for JSON-specific errors
+      const kind = classifyRoomError(jsonError);
+      const errorCode = kind === "json_invalid" ? "JSON_INVALID" : "ROOM_NOT_FOUND";
+
+      logger.error("JSON load error", { scope: "roomLoader", roomId, error: jsonError?.message, classifiedKind: kind });
+
+      const duration = performance.now() - startTime;
+      logger.roomLoad(roomId, duration, false, { error: "Room load failed (JSON)", classifiedKind: kind });
+
+      return {
+        merged: [],
+        keywordMenu: { en: [], vi: [] },
+        audioBasePath: AUDIO_BASE_PATH,
+        roomTier: normalizedRoomTier,
+        errorCode,
+        error: jsonError,
+        hasFullAccess: false,
+      };
     }
 
-    // 8. Room not found
+    // 8. Room not found (neither DB nor JSON)
     const duration = performance.now() - startTime;
     logger.roomLoad(roomId, duration, false, { error: "Room not found in database or JSON" });
 
@@ -376,6 +395,10 @@ const loadMergedRoomInternal = async (roomId: string): Promise<LoadedRoomResult>
       hasFullAccess: false,
     };
   } catch (error: any) {
+    // ✅ Use classifier for top-level unexpected errors
+    const kind = classifyRoomError(error);
+    const errorCode = kind === "json_invalid" ? "JSON_INVALID" : "ROOM_NOT_FOUND";
+
     const duration = performance.now() - startTime;
     logger.error("Room load error", {
       scope: "roomLoader",
@@ -383,6 +406,7 @@ const loadMergedRoomInternal = async (roomId: string): Promise<LoadedRoomResult>
       duration_ms: duration,
       error: error.message,
       errorStack: error.stack,
+      classifiedKind: kind,
     });
 
     return {
@@ -390,7 +414,8 @@ const loadMergedRoomInternal = async (roomId: string): Promise<LoadedRoomResult>
       keywordMenu: { en: [], vi: [] },
       audioBasePath: AUDIO_BASE_PATH,
       roomTier: tierFromRoomId(normalizeRoomId(roomId)),
-      errorCode: "ROOM_NOT_FOUND",
+      errorCode,
+      error,
       hasFullAccess: false,
     };
   }
