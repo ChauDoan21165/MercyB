@@ -11,6 +11,12 @@ import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
 import { JsonEditorDialog } from "@/components/admin/JsonEditorDialog";
 import { normalizeTier, tierIdToLabel } from "@/lib/constants/tiers";
 
+
+// MB-BLUE-15.3 — 2025-12-18 — canonical room URL resolver
+async function _mbResolveRoomUrl(roomId: string): Promise<string> {
+  const { resolveRoomJsonPath } = await import('@/lib/roomJsonResolver');
+  return _mbResolveRoomUrl(roomId || '');
+}
 interface RoomIssue {
   roomId: string;
   roomTitle: string;
@@ -159,13 +165,13 @@ export default function RoomHealthCheck() {
 
         const fallbackCandidates: { url: string; key: string; path: string }[] = [
           {
-            url: resolveRoomJsonPath(room.id || ''),
+            url: _mbResolveRoomUrl(room.id || ''),
             key: "fallback",
             path: `data/${room.id}.json`,
           },
           {
             // MB-BLUE-15.3 — no runtime swapping
-            url: resolveRoomJsonPath(room.id || ''),
+            url: _mbResolveRoomUrl(room.id || ''),
             key: "fallback",
             path: `data/${String(room.id).replace(/-/g, "_")}.json`,
           },
