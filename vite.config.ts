@@ -2,15 +2,6 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
-let componentTagger: undefined | (() => any);
-try {
-  // Optional: only exists if lovable-tagger is installed
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  componentTagger = require("lovable-tagger").componentTagger;
-} catch {
-  componentTagger = undefined;
-}
-
 export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
@@ -18,8 +9,7 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     react(),
-    mode === "development" && componentTagger ? componentTagger() : undefined,
-  ].filter(Boolean),
+  ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
