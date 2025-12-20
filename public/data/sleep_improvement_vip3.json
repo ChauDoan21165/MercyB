@@ -242,5 +242,7 @@
       ]
     }
   ],
-  "id": "sleep_improvement_vip3"
+  "id": "sleep_improvement_vip3",
+  "tier": "VIP3",
+  "domain": "Mental Health"
 }

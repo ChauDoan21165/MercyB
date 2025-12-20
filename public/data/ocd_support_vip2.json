@@ -161,5 +161,6 @@
       ],
       "audio": "ocd_support_vip2_erp_therapy.mp3 ocd_support_vip2_intrusive_thoughts.mp3 ocd_support_vip2_support_system.mp3 ocd_support_vip2_mindfulness.mp3 ocd_support_vip2_coping_strategies.mp3"
     }
-  ]
+  ],
+  "domain": "General"
 }

@@ -141,5 +141,6 @@
       ],
       "audio": "simple_questions_v1_what_is_this.mp3 simple_questions_v1_who_is_this.mp3 simple_questions_v1_what_color.mp3 simple_questions_v1_what_do_you_see.mp3 simple_questions_v1_question_game.mp3"
     }
-  ]
+  ],
+  "domain": "Kids"
 }

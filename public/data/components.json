@@ -18,5 +18,7 @@
     "hooks": "@/hooks"
   },
   "id": "components",
-  "entries": []
+  "entries": [],
+  "tier": "Free / Miễn phí",
+  "domain": "General"
 }

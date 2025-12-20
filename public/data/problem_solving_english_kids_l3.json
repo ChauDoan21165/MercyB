@@ -133,5 +133,6 @@
       ],
       "audio": "problem_solving_english_v1_describe_the_problem.mp3 problem_solving_english_v1_suggest_ideas.mp3 problem_solving_english_v1_choose_a_solution.mp3 problem_solving_english_v1_try_and_adjust.mp3 problem_solving_english_v1_check_the_result.mp3"
     }
-  ]
+  ],
+  "domain": "English"
 }

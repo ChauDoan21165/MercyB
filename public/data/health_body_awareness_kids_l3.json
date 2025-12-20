@@ -133,5 +133,6 @@
       ],
       "audio": "health_body_awareness_v1_body_signals.mp3 health_body_awareness_v1_breathing_awareness.mp3 health_body_awareness_v1_movement_check.mp3 health_body_awareness_v1_energy_levels.mp3 health_body_awareness_v1_feeling_unwell.mp3"
     }
-  ]
+  ],
+  "domain": "Kids"
 }

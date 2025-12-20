@@ -144,5 +144,6 @@
       ],
       "audio": "travel_transport_v1_land.mp3 travel_transport_v1_air.mp3 travel_transport_v1_water.mp3 travel_transport_v1_places.mp3 travel_transport_v1_safety.mp3"
     }
-  ]
+  ],
+  "domain": "Kids"
 }

@@ -131,5 +131,7 @@
       ],
       "audio": "vip1_small_talk.mp3 vip1_eye_contact.mp3 vip1_deep_breath.mp3 vip1_body_scan.mp3"
     }
-  ]
+  ],
+  "tier": "VIP1",
+  "domain": "Mental Health"
 }

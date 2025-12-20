@@ -142,5 +142,6 @@
       ],
       "audio": "social_skills_v1_share.mp3 social_skills_v1_help.mp3 social_skills_v1_wait_turn.mp3 social_skills_v1_sorry.mp3 social_skills_v1_feelings.mp3"
     }
-  ]
+  ],
+  "domain": "Kids"
 }

@@ -136,5 +136,6 @@
       ],
       "audio": "bedtime_words_v1_goodnight.mp3 bedtime_words_v1_sleepy.mp3 bedtime_words_v1_blanket.mp3 bedtime_words_v1_story_time.mp3 bedtime_words_v1_lights_out.mp3"
     }
-  ]
+  ],
+  "domain": "Kids"
 }

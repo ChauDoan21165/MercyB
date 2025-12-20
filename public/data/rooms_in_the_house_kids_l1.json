@@ -143,5 +143,6 @@
       ],
       "audio": "rooms_house_v1_living_room.mp3 rooms_house_v1_bedroom.mp3 rooms_house_v1_kitchen.mp3 rooms_house_v1_bathroom.mp3 rooms_house_v1_house_walk_game.mp3"
     }
-  ]
+  ],
+  "domain": "Kids"
 }

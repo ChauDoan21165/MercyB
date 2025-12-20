@@ -145,5 +145,6 @@
       ],
       "audio": "weather_seasons_v1_sunny.mp3 weather_seasons_v1_rainy.mp3 weather_seasons_v1_windy.mp3 weather_seasons_v1_hot_cold.mp3 weather_seasons_v1_four_seasons.mp3"
     }
-  ]
+  ],
+  "domain": "Kids"
 }

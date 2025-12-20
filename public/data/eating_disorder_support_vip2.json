@@ -150,5 +150,7 @@
       ],
       "audio": "eating_disorder_support_vip2_recovery.mp3 eating_disorder_support_vip2_cbt_e.mp3 eating_disorder_support_vip2_family_support.mp3 eating_disorder_support_vip2_nutritional_therapy.mp3 eating_disorder_support_vip2_body_positivity.mp3"
     }
-  ]
+  ],
+  "tier": "VIP2",
+  "domain": "General"
 }

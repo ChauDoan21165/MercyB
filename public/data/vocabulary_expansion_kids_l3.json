@@ -138,5 +138,6 @@
       ],
       "audio": "vocabulary_expansion_v1_word_families.mp3 vocabulary_expansion_v1_synonyms_antonyms.mp3 vocabulary_expansion_v1_context_clues.mp3 vocabulary_expansion_v1_word_bank.mp3 vocabulary_expansion_v1_use_in_life.mp3"
     }
-  ]
+  ],
+  "domain": "English"
 }

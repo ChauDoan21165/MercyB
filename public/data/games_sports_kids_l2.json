@@ -142,5 +142,6 @@
       ],
       "audio": "games_sports_v1_running.mp3 games_sports_v1_jump.mp3 games_sports_v1_kick.mp3 games_sports_v1_throw_catch.mp3 games_sports_v1_teamplay.mp3"
     }
-  ]
+  ],
+  "domain": "Kids"
 }

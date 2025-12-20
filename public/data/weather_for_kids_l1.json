@@ -140,5 +140,6 @@
       ],
       "audio": "weather_for_kids_v1_sun.mp3 weather_for_kids_v1_rain.mp3 weather_for_kids_v1_wind.mp3 weather_for_kids_v1_cloud.mp3 weather_for_kids_v1_game.mp3"
     }
-  ]
+  ],
+  "domain": "Kids"
 }
