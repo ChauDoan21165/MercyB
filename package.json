@@ -5,11 +5,15 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-
     "generate:room-registry": "node scripts/generate-room-registry.js",
     "generate:audio-manifest": "node scripts/generate-audio-manifest.js",
 
-    "prebuild": "npm run generate:room-registry && MB_VALIDATE_CORE_ONLY=1 npx -y tsx scripts/validate-rooms.ts",
+    "validate-rooms": "node scripts/validate-rooms.js",
+    "validate-rooms:core": "MB_VALIDATE_CORE_ONLY=1 node scripts/validate-rooms.js",
+
+    "rooms:check": "npm run generate:room-registry && npm run validate-rooms:core",
+
+    "prebuild": "npm run rooms:check",
     "build": "npm run generate:audio-manifest && vite build",
     "build:dev": "vite build --mode development",
 
@@ -88,7 +92,6 @@
     "sonner": "^1.7.4",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7",
-    "tsx": "^4.20.6",
     "vaul": "^0.9.9",
     "vitest": "^4.0.7",
     "web-vitals": "^5.1.0",
@@ -109,6 +112,7 @@
     "lovable-tagger": "^1.1.11",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.17",
+    "tsx": "^4.21.0",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.38.0",
     "vite": "^5.4.19"
