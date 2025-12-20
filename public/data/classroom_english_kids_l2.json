@@ -140,5 +140,6 @@
       ],
       "audio": "classroom_english_v1_listen_repeat.mp3 classroom_english_v1_stand_sit.mp3 classroom_english_v1_open_book.mp3 classroom_english_v1_raise_hand.mp3 classroom_english_v1_canigoout.mp3"
     }
-  ]
+  ],
+  "domain": "English"
 }

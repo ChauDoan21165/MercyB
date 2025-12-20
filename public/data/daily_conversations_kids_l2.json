@@ -142,5 +142,6 @@
       ],
       "audio": "daily_conversations_v1_hello.mp3 daily_conversations_v1_thank_you.mp3 daily_conversations_v1_please.mp3 daily_conversations_v1_excuse_me.mp3 daily_conversations_v1_goodbye.mp3"
     }
-  ]
+  ],
+  "domain": "Kids"
 }

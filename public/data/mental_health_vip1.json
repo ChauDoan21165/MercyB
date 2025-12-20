@@ -121,5 +121,6 @@
       "audio": "mh_vip1_1_en.mp3 mh_vip1_2_en.mp3 mh_vip1_3_en.mp3 mh_vip1_4_en.mp3"
     }
   ],
-  "audio": "mh_vip1_intro_en.mp3"
+  "audio": "mh_vip1_intro_en.mp3",
+  "domain": "General"
 }

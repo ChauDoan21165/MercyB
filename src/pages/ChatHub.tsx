@@ -1,11 +1,13 @@
-// src/pages/ChatHub.tsx
-// MB-BLUE-15.2 — 2025-12-20 — ChatHub uses canonical roomJsonResolver (single loader path)
-
+// MB-BLUE-14.8 — 2025-12-20
 import { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { getErrorMessage } from "@/lib/constants/uiText";
-import { canonicalizeRoomId, loadRoomJson, type RoomJsonResolverErrorKind } from "@/lib/roomJsonResolver";
+import {
+  canonicalizeRoomId,
+  loadRoomJson,
+  type RoomJsonResolverErrorKind,
+} from "@/lib/roomJsonResolver";
 
 type LoadState = "loading" | "ready" | "error";
 type ErrorKind = RoomJsonResolverErrorKind;
@@ -32,18 +34,26 @@ export default function ChatHub() {
       setErrorKind(null);
 
       try {
+        // ← NEW: Use centralized resolver instead of manifest + fetch
         await loadRoomJson(roomId);
-        if (!cancelled) setState("ready");
+
+        if (!cancelled) {
+          setState("ready");
+        }
       } catch (err: any) {
         if (cancelled) return;
 
+        // Resolver throws errors with .kind when possible
         const kind: ErrorKind =
-          err?.kind === "not_found" ||
-          err?.kind === "json_invalid" ||
-          err?.kind === "network" ||
-          err?.kind === "server"
-            ? err.kind
-            : "server";
+          err?.kind ||
+          (err instanceof TypeError
+            ? "network"
+            : String(err?.message || "").includes("ROOM_NOT_FOUND")
+            ? "not_found"
+            : String(err?.message || "").includes("JSON_INVALID") ||
+              String(err?.message || "").includes("Unexpected token")
+            ? "json_invalid"
+            : "server");
 
         setErrorKind(kind);
         setState("error");
@@ -51,6 +61,7 @@ export default function ChatHub() {
     }
 
     run();
+
     return () => {
       cancelled = true;
     };
@@ -71,8 +82,8 @@ export default function ChatHub() {
         : errorKind === "json_invalid"
         ? "JSON_INVALID"
         : errorKind === "network"
-        ? "NETWORK_ERROR"
-        : "SERVER_ERROR";
+        ? "network_error"
+        : "server_error";
 
     return (
       <div className="flex h-full items-center justify-center text-center p-6">

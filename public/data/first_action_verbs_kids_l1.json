@@ -141,5 +141,6 @@
       ],
       "audio": "first_action_verbs_v1_jump.mp3 first_action_verbs_v1_run.mp3 first_action_verbs_v1_clap.mp3 first_action_verbs_v1_sit_stand.mp3 first_action_verbs_v1_action_game.mp3"
     }
-  ]
+  ],
+  "domain": "Kids"
 }

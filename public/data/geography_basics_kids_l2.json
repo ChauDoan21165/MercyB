@@ -142,5 +142,6 @@
       ],
       "audio": "geography_basics_v1_map_world.mp3 geography_basics_v1_land_water.mp3 geography_basics_v1_country_city.mp3 geography_basics_v1_near_far.mp3 geography_basics_v1_earth_home.mp3"
     }
-  ]
+  ],
+  "domain": "Kids"
 }

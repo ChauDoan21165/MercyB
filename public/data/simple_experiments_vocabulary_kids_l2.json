@@ -138,5 +138,6 @@
       ],
       "audio": "simple_experiments_v1_mix.mp3 simple_experiments_v1_test.mp3 simple_experiments_v1_change.mp3 simple_experiments_v1_record.mp3 simple_experiments_v1_observe_results.mp3"
     }
-  ]
+  ],
+  "domain": "English"
 }

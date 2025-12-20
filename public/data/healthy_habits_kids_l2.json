@@ -142,5 +142,6 @@
       ],
       "audio": "healthy_habits_v1_wash_hands.mp3 healthy_habits_v1_brush_teeth.mp3 healthy_habits_v1_eat_fruits.mp3 healthy_habits_v1_drink_water.mp3 healthy_habits_v1_sleep.mp3"
     }
-  ]
+  ],
+  "domain": "Kids"
 }

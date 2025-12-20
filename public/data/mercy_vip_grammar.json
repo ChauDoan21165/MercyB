@@ -120,5 +120,7 @@
     "audio_vi": "/audio/mercy_vip_grammar/modal_should_advice_vi.mp3"
   },
   "id": "mercy_vip_grammar",
-  "entries": []
+  "entries": [],
+  "tier": "Free / Miễn phí",
+  "domain": "English"
 }

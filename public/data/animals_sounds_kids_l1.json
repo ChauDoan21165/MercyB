@@ -141,5 +141,6 @@
       ],
       "audio": "animals_sounds_v1_dog_woof.mp3 animals_sounds_v1_cat_meow.mp3 animals_sounds_v1_bird_tweet.mp3 animals_sounds_v1_cow_moo.mp3 animals_sounds_v1_animal_game.mp3"
     }
-  ]
+  ],
+  "domain": "Kids"
 }

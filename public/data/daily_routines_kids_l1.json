@@ -141,5 +141,6 @@
       ],
       "audio": "daily_routines_v1_wake_up.mp3 daily_routines_v1_brush_teeth.mp3 daily_routines_v1_wash_hands.mp3 daily_routines_v1_get_dressed.mp3 daily_routines_v1_tidy_up.mp3"
     }
-  ]
+  ],
+  "domain": "Kids"
 }

@@ -137,5 +137,6 @@
       ],
       "audio": "adventure_discovery_v1_discover.mp3 adventure_discovery_v1_explore.mp3 adventure_discovery_v1_map.mp3 adventure_discovery_v1_trail.mp3 adventure_discovery_v1_treasure.mp3"
     }
-  ]
+  ],
+  "domain": "Kids"
 }

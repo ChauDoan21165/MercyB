@@ -142,5 +142,6 @@
       ],
       "audio": "community_helpers_v1_teacher.mp3 community_helpers_v1_doctor.mp3 community_helpers_v1_firefighter.mp3 community_helpers_v1_police.mp3 community_helpers_v1_delivery.mp3"
     }
-  ]
+  ],
+  "domain": "Kids"
 }

@@ -141,5 +141,6 @@
       ],
       "audio": "school_objects_v1_pencil.mp3 school_objects_v1_book.mp3 school_objects_v1_crayon.mp3 school_objects_v1_bag.mp3 school_objects_v1_school_game.mp3"
     }
-  ]
+  ],
+  "domain": "Kids"
 }

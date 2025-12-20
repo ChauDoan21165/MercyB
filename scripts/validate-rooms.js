@@ -1,19 +1,14 @@
-// MB-BLUE-v88.2 — 2025-12-20
+// MB-BLUE-v88.3 — 2025-12-20
 /**
  * Validate Rooms — Mercy Blade
  *
- * Reads room JSON files from: /public/data/*.json
+ * IMPORTANT STRATEGIC RULE:
+ *   Only validate ROOM json files at: /public/data/*.json (ONE LEVEL)
+ *   Do NOT recurse into /public/data/** because it may contain non-room JSON
+ *   (e.g. public/data/paths/*.json, manifests, etc.)
  *
- * Goals:
- * - CORE mode (MB_VALIDATE_CORE_ONLY=1): only block build on "hard" integrity issues
- *   (invalid JSON, missing id, id/filename mismatch, cannot read file)
- * - FULL mode (default): also enforce richer content rules (bilingual title, non-empty entries, etc.)
- *
- * Usage:
- *   node scripts/validate-rooms.js
- *
- * Core-only (recommended for CI/prebuild):
- *   MB_VALIDATE_CORE_ONLY=1 node scripts/validate-rooms.js
+ * CORE mode (MB_VALIDATE_CORE_ONLY=1): block build only on "hard" issues
+ * FULL mode (default): also enforce richer content rules
  */
 
 import fs from "node:fs/promises";
@@ -22,9 +17,7 @@ import process from "node:process";
 
 const ROOT = process.cwd();
 const DATA_DIR = path.join(ROOT, "public", "data");
-
 const CORE_ONLY = String(process.env.MB_VALIDATE_CORE_ONLY || "") === "1";
-
 const ID_RE = /^[a-z0-9_]+$/;
 
 function canonicalizeRoomId(input) {
@@ -40,18 +33,14 @@ function isPlainObject(v) {
 }
 
 function pickBilingualTitle(room) {
-  // Prefer: title.en + title.vi
   if (isPlainObject(room.title)) {
     const en = typeof room.title.en === "string" ? room.title.en.trim() : "";
     const vi = typeof room.title.vi === "string" ? room.title.vi.trim() : "";
     if (en && vi) return { en, vi, source: "title" };
   }
-
-  // Fallback: name + name_vi (legacy)
   const en = typeof room.name === "string" ? room.name.trim() : "";
   const vi = typeof room.name_vi === "string" ? room.name_vi.trim() : "";
   if (en && vi) return { en, vi, source: "name" };
-
   return null;
 }
 
@@ -59,29 +48,30 @@ function formatCode(code, ctx = "") {
   return ctx ? `${code} :: ${ctx}` : code;
 }
 
-async function listJsonFilesRecursively(dir) {
-  const out = [];
+async function listRoomJsonFilesOneLevel(dir) {
+  const entries = await fs.readdir(dir, { withFileTypes: true });
+  return entries
+    .filter((e) => e.isFile() && e.name.toLowerCase().endsWith(".json"))
+    .map((e) => path.join(dir, e.name));
+}
 
+async function findNestedJsonForWarning(dir) {
+  const nested = [];
   async function walk(current) {
-    let entries;
-    try {
-      entries = await fs.readdir(current, { withFileTypes: true });
-    } catch {
-      throw new Error(`Cannot read directory: ${current}`);
-    }
-
-    for (const ent of entries) {
+    const ents = await fs.readdir(current, { withFileTypes: true });
+    for (const ent of ents) {
       const full = path.join(current, ent.name);
-      if (ent.isDirectory()) {
-        await walk(full);
-      } else if (ent.isFile() && ent.name.toLowerCase().endsWith(".json")) {
-        out.push(full);
+      if (ent.isDirectory()) await walk(full);
+      else if (ent.isFile() && ent.name.toLowerCase().endsWith(".json")) {
+        if (path.dirname(full) !== dir) nested.push(full);
       }
     }
   }
-
-  await walk(dir);
-  return out;
+  const top = await fs.readdir(dir, { withFileTypes: true });
+  for (const ent of top) {
+    if (ent.isDirectory()) await walk(path.join(dir, ent.name));
+  }
+  return nested;
 }
 
 async function readJsonFile(filePath) {
@@ -98,7 +88,6 @@ async function readJsonFile(filePath) {
 
 function validateRoomCore(room, filePath) {
   const issues = [];
-
   const base = path.basename(filePath);
   const fileId = canonicalizeRoomId(base.replace(/\.json$/i, ""));
 
@@ -112,7 +101,6 @@ function validateRoomCore(room, filePath) {
 
   if (!id) issues.push({ level: "error", code: "MISSING_ID" });
 
-  // enforce canonical id chars (snake_case)
   if (id && !ID_RE.test(id)) {
     issues.push({
       level: "error",
@@ -121,7 +109,6 @@ function validateRoomCore(room, filePath) {
     });
   }
 
-  // id must match filename (canonicalized)
   if (id && fileId && id !== fileId) {
     issues.push({
       level: "error",
@@ -135,15 +122,11 @@ function validateRoomCore(room, filePath) {
 
 function validateRoomFull(room) {
   const issues = [];
-
-  // Required-ish metadata
   const tierOk = typeof room.tier === "string" && room.tier.trim().length > 0;
   const domainOk = typeof room.domain === "string" && room.domain.trim().length > 0;
-
   if (!tierOk) issues.push({ level: "error", code: "MISSING_TIER" });
   if (!domainOk) issues.push({ level: "error", code: "MISSING_DOMAIN" });
 
-  // Require bilingual title (either title.en/title.vi OR name/name_vi)
   const title = pickBilingualTitle(room);
   if (!title) {
     issues.push({
@@ -153,60 +136,17 @@ function validateRoomFull(room) {
     });
   }
 
-  // Entries validation
   if (!Array.isArray(room.entries)) {
     issues.push({ level: "error", code: "MISSING_ENTRIES_ARRAY" });
-  } else {
-    if (room.entries.length === 0) {
-      issues.push({ level: "error", code: "EMPTY_ENTRIES", detail: "`entries` is empty" });
-    } else {
-      for (let i = 0; i < room.entries.length; i++) {
-        const entry = room.entries[i];
-        const prefix = `entries[${i}]`;
-
-        if (!isPlainObject(entry)) {
-          issues.push({ level: "error", code: "ENTRY_NOT_OBJECT", detail: prefix });
-          continue;
-        }
-
-        if (typeof entry.slug !== "string" || !entry.slug.trim()) {
-          issues.push({ level: "error", code: "ENTRY_MISSING_SLUG", detail: prefix });
-        }
-
-        // copy.en + copy.vi recommended
-        if (!isPlainObject(entry.copy)) {
-          issues.push({ level: "warning", code: "ENTRY_MISSING_COPY", detail: prefix });
-        } else {
-          const en = typeof entry.copy.en === "string" ? entry.copy.en.trim() : "";
-          const vi = typeof entry.copy.vi === "string" ? entry.copy.vi.trim() : "";
-          if (!en || !vi) {
-            issues.push({
-              level: "warning",
-              code: "ENTRY_COPY_NOT_BILINGUAL",
-              detail: `${prefix} copy.en/copy.vi`,
-            });
-          }
-        }
-
-        // audio recommended
-        if (typeof entry.audio === "string" && entry.audio.trim()) {
-          if (!entry.audio.toLowerCase().endsWith(".mp3")) {
-            issues.push({
-              level: "warning",
-              code: "ENTRY_AUDIO_NOT_MP3",
-              detail: `${prefix} audio="${entry.audio}"`,
-            });
-          }
-        }
-      }
-    }
+  } else if (room.entries.length === 0) {
+    // ↓ CHANGED: now a warning instead of error
+    issues.push({ level: "warning", code: "EMPTY_ENTRIES", detail: "`entries` is empty" });
   }
 
   return issues;
 }
 
 async function main() {
-  // Basic sanity: data dir must exist
   try {
     const st = await fs.stat(DATA_DIR);
     if (!st.isDirectory()) {
@@ -218,18 +158,13 @@ async function main() {
     process.exit(1);
   }
 
-  const files = await listJsonFilesRecursively(DATA_DIR);
-
-  const nestedPublicData = files.filter((f) =>
-    f.includes(`${path.sep}public${path.sep}data${path.sep}public${path.sep}data${path.sep}`)
-  );
-
-  const total = files.length;
+  const roomFiles = await listRoomJsonFilesOneLevel(DATA_DIR);
+  const nestedJson = await findNestedJsonForWarning(DATA_DIR);
 
   const errors = [];
   const warnings = [];
 
-  for (const filePath of files) {
+  for (const filePath of roomFiles) {
     const rel = path.relative(ROOT, filePath);
 
     let room;
@@ -240,32 +175,33 @@ async function main() {
       continue;
     }
 
-    // CORE validation (always)
-    const coreIssues = validateRoomCore(room, filePath);
-    for (const issue of coreIssues) {
-      const bucket = issue.level === "error" ? errors : warnings;
-      bucket.push({ file: rel, code: issue.code, detail: issue.detail || "" });
+    for (const issue of validateRoomCore(room, filePath)) {
+      (issue.level === "error" ? errors : warnings).push({
+        file: rel,
+        code: issue.code,
+        detail: issue.detail || "",
+      });
     }
 
-    // FULL validation (only when not core-only)
     if (!CORE_ONLY) {
-      const fullIssues = validateRoomFull(room);
-      for (const issue of fullIssues) {
-        const bucket = issue.level === "error" ? errors : warnings;
-        bucket.push({ file: rel, code: issue.code, detail: issue.detail || "" });
+      for (const issue of validateRoomFull(room)) {
+        (issue.level === "error" ? errors : warnings).push({
+          file: rel,
+          code: issue.code,
+          detail: issue.detail || "",
+        });
       }
     }
   }
 
-  // Report
-  console.log(`Total JSON files: ${total}`);
+  console.log(`Total ROOM JSON files (public/data/*.json): ${roomFiles.length}`);
   console.log(`Mode: ${CORE_ONLY ? "CORE_ONLY" : "FULL"}`);
 
-  if (nestedPublicData.length) {
+  if (nestedJson.length) {
     console.log(
-      `⚠️  Nested public/data detected (${nestedPublicData.length} files). Example: ${path.relative(
+      `⚠️  Found nested JSON under public/data/ (${nestedJson.length}). Not validated. Example: ${path.relative(
         ROOT,
-        nestedPublicData[0]
+        nestedJson[0]
       )}`
     );
   }

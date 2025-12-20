@@ -133,5 +133,6 @@
       ],
       "audio": "reading_comprehension_v1_find_main_idea.mp3 reading_comprehension_v1_spot_details.mp3 reading_comprehension_v1_make_predictions.mp3 reading_comprehension_v1_character_feelings.mp3 reading_comprehension_v1_simple_summary.mp3"
     }
-  ]
+  ],
+  "domain": "English"
 }
