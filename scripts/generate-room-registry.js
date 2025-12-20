@@ -3,13 +3,13 @@
  *
  * GOAL (strategic):
  * - NEVER reject rooms (register first, warn later)
- * - ONE canonical ID format: snake_case (underscores)
- * - Manifest paths must work in production fetch: `/data/${roomId}.json`
+ * - ONE canonical ID format: snake_case (underscores only)
+ * - Manifest must point to the REAL filename in /public/data
  *
  * Generates:
- * A) src/lib/roomManifest.ts        -> PUBLIC_ROOM_MANIFEST: id -> "/data/file.json"
- * B) src/lib/roomDataImports.ts     -> roomDataMap: id -> { id, nameEn, nameVi, tier, hasData }
- * C) src/lib/roomList.ts            -> ROOM_IDS: string[] (sorted)
+ * A) src/lib/roomManifest.ts        -> PUBLIC_ROOM_MANIFEST: canonicalId -> "data/REAL_FILENAME.json"
+ * B) src/lib/roomDataImports.ts     -> roomDataMap
+ * C) src/lib/roomList.ts            -> ROOM_IDS
  *
  * Run: node scripts/generate-room-registry.js
  */
@@ -24,28 +24,29 @@ const projectRoot = path.resolve(__dirname, "..");
 
 const dataDir = path.join(projectRoot, "public", "data");
 
-// -------- Canonicalization (ONE TIME) --------
+/* ---------------- Canonicalization ---------------- */
+
 function canonicalIdFromFilename(filename) {
-  const base = filename.replace(/\.json$/i, "");
-  return base
+  return filename
+    .replace(/\.json$/i, "")
     .trim()
     .toLowerCase()
-    .replace(/\s+/g, "_")
-    .replace(/-+/g, "_");
+    // STRICT: keep only a-z0-9, convert everything else to "_"
+    .replace(/[^a-z0-9]+/g, "_")
+    .replace(/_+/g, "_")
+    .replace(/^_+|_+$/g, "");
 }
 
 function inferTierFromId(id) {
-  // keep flexible; do NOT reject unknown tiers
   const m =
     id.match(/_(free|vip\d+|vip3_ii|kidslevel[123])$/i) ||
-    id.match(/_(vip\d+_vol\d+)$/i); // optional patterns
+    id.match(/_(vip\d+_vol\d+)$/i);
   return m ? m[1].toLowerCase() : "free";
 }
 
-function safeReadJson(jsonPath) {
+function safeReadJson(filePath) {
   try {
-    const raw = fs.readFileSync(jsonPath, "utf8");
-    return JSON.parse(raw);
+    return JSON.parse(fs.readFileSync(filePath, "utf8"));
   } catch (e) {
     return { __parse_error: String(e?.message || e) };
   }
@@ -54,7 +55,7 @@ function safeReadJson(jsonPath) {
 function titleCaseFromId(id) {
   return id
     .replace(/_(free|vip\d+|vip3_ii|kidslevel[123])$/i, "")
-    .split(/[_-]+/)
+    .split("_")
     .filter(Boolean)
     .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
     .join(" ");
@@ -66,8 +67,7 @@ function pickNameEn(obj, fallback) {
     obj?.nameEn ||
     obj?.title_en ||
     obj?.titleEn ||
-    obj?.description?.en ||
-    (typeof obj?.title === "string" ? obj.title : obj?.title?.en) ||
+    obj?.title?.en ||
     fallback
   );
 }
@@ -78,165 +78,155 @@ function pickNameVi(obj, fallback) {
     obj?.nameVi ||
     obj?.title_vi ||
     obj?.titleVi ||
-    obj?.description?.vi ||
-    (typeof obj?.title === "object" ? obj?.title?.vi : null) ||
+    obj?.title?.vi ||
     fallback
   );
 }
 
-// -------- Scan & generate --------
+/* ---------------- Scan ---------------- */
+
 function scanAllRooms() {
   if (!fs.existsSync(dataDir)) {
-    throw new Error(`Missing folder: ${dataDir}`);
+    throw new Error("Missing folder: " + dataDir);
   }
 
   const files = fs
     .readdirSync(dataDir)
-    .filter((f) => f.toLowerCase().endsWith(".json") && !f.startsWith("."))
-    .sort((a, b) => a.localeCompare(b));
+    .filter((f) => f.endsWith(".json") && !f.startsWith("."))
+    .sort();
 
   const manifest = {};
   const roomDataMap = {};
   const warnings = [];
 
-  let registered = 0;
+  // Detect collisions: two different filenames map to same canonicalId
+  const seen = new Map();
 
   for (const filename of files) {
+    const canonicalId = canonicalIdFromFilename(filename);
+
+    if (!canonicalId) {
+      warnings.push("BAD_FILENAME " + filename);
+      continue;
+    }
+
+    if (seen.has(canonicalId) && seen.get(canonicalId) !== filename) {
+      warnings.push(
+        "COLLISION canonicalId=" +
+          canonicalId +
+          " :: " +
+          seen.get(canonicalId) +
+          " vs " +
+          filename
+      );
+      // keep the first one (register-first rule)
+      continue;
+    }
+    seen.set(canonicalId, filename);
+
     const jsonPath = path.join(dataDir, filename);
     const json = safeReadJson(jsonPath);
 
-    const canonicalId = canonicalIdFromFilename(filename);
-
-    // Path MUST be web-fetchable in prod: "/data/<filename>"
-    // (because public/ is served at site root)
-    manifest[canonicalId] = `/data/${canonicalId}.json`;
+    // ✅ CRITICAL: manifest points to REAL filename (case/symbols preserved)
+    // NO leading slash
+    manifest[canonicalId] = "data/" + filename;
 
     const tier = inferTierFromId(canonicalId);
-
     const fallbackTitle = titleCaseFromId(canonicalId);
+
     const nameEn = pickNameEn(json, fallbackTitle);
     const nameVi = pickNameVi(json, nameEn);
 
     roomDataMap[canonicalId] = {
       id: canonicalId,
-      nameEn: String(nameEn || fallbackTitle),
-      nameVi: String(nameVi || nameEn || fallbackTitle),
+      nameEn: String(nameEn),
+      nameVi: String(nameVi),
       tier,
       hasData: true,
     };
 
-    // WARN ONLY (never reject)
     if (json?.__parse_error) {
-      warnings.push(`PARSE_ERROR ${filename}: ${json.__parse_error}`);
-    } else {
-      const jsonId = String(json?.id || "");
-      if (jsonId && jsonId !== canonicalId) {
-        warnings.push(`ID_MISMATCH ${filename}: json.id="${jsonId}" != "${canonicalId}"`);
-      }
-      if (!Array.isArray(json?.entries)) {
-        warnings.push(`NO_ENTRIES_ARRAY ${filename}: entries missing or not array`);
-      }
+      warnings.push("PARSE_ERROR " + filename + ": " + json.__parse_error);
+    } else if (json?.id && String(json.id) !== canonicalId) {
+      warnings.push('ID_MISMATCH ' + filename + ': json.id="' + json.id + '"');
     }
-
-    registered++;
   }
 
-  return { filesCount: files.length, registered, warnings, manifest, roomDataMap };
+  return { filesCount: files.length, manifest, roomDataMap, warnings };
 }
 
-function writeFile(filepath, content) {
-  fs.mkdirSync(path.dirname(filepath), { recursive: true });
-  fs.writeFileSync(filepath, content, "utf8");
+/* ---------------- Writers ---------------- */
+
+function writeFile(filePath, content) {
+  fs.mkdirSync(path.dirname(filePath), { recursive: true });
+  fs.writeFileSync(filePath, content, "utf8");
 }
 
-// -------- Outputs --------
 function generateRoomManifestTs(manifest) {
   return `/**
- * AUTO-GENERATED: Do not edit manually
- * Generated by: scripts/generate-room-registry.js
- * Run: node scripts/generate-room-registry.js
+ * AUTO-GENERATED — DO NOT EDIT
  */
-export const PUBLIC_ROOM_MANIFEST: Record<string, string> = ${JSON.stringify(manifest, null, 2)};
-
-/** Get all unique room base names (without tier suffix) */
-export function getRoomBaseNames(): string[] {
-  const baseNames = new Set<string>();
-  for (const roomId of Object.keys(PUBLIC_ROOM_MANIFEST)) {
-    const baseName = roomId.replace(/_(free|vip\\d+|vip3_ii|kidslevel[123])$/, "");
-    baseNames.add(baseName);
-  }
-  return Array.from(baseNames).sort();
-}
-
-/** Get all tiers available for a room base name */
-export function getAvailableTiers(roomBaseName: string): string[] {
-  const tiers: string[] = [];
-  for (const tier of ["free","vip1","vip2","vip3","vip3_ii","vip4","vip5","vip6","vip7","vip8","vip9","kidslevel1","kidslevel2","kidslevel3"]) {
-    const roomId = \`\${roomBaseName}_\${tier}\`;
-    if (PUBLIC_ROOM_MANIFEST[roomId]) tiers.push(tier);
-  }
-  return tiers;
-}
+export const PUBLIC_ROOM_MANIFEST: Record<string, string> = ${JSON.stringify(
+    manifest,
+    null,
+    2
+  )};
 `;
 }
 
 function generateRoomDataImportsTs(roomDataMap) {
   const entries = Object.entries(roomDataMap)
     .sort(([a], [b]) => a.localeCompare(b))
-    .map(([k, v]) => `  "${k}": ${JSON.stringify(v, null, 2).replace(/\n/g, "\n  ")}`)
+    .map(
+      ([k, v]) =>
+        `  "${k}": ${JSON.stringify(v, null, 2).replace(/\n/g, "\n  ")}`
+    )
     .join(",\n");
 
   return `/**
- * AUTO-GENERATED: Do not edit manually
- * Generated by: scripts/generate-room-registry.js
- * Run: node scripts/generate-room-registry.js
+ * AUTO-GENERATED — DO NOT EDIT
  */
-export type RoomData = {
-  id: string;
-  nameEn: string;
-  nameVi: string;
-  tier: string;
-  hasData: boolean;
-};
-
-export const roomDataMap: Record<string, RoomData> = {
+export const roomDataMap = {
 ${entries}
 };
 `;
 }
 
 function generateRoomListTs(roomDataMap) {
-  const ids = Object.keys(roomDataMap).sort();
   return `/**
- * AUTO-GENERATED: Do not edit manually
- * Generated by: scripts/generate-room-registry.js
- * Run: node scripts/generate-room-registry.js
+ * AUTO-GENERATED — DO NOT EDIT
  */
-export const ROOM_IDS: string[] = ${JSON.stringify(ids, null, 2)};
+export const ROOM_IDS = ${JSON.stringify(
+    Object.keys(roomDataMap).sort(),
+    null,
+    2
+  )};
 `;
 }
 
-// -------- Main --------
+/* ---------------- Main ---------------- */
+
 try {
-  const { filesCount, registered, warnings, manifest, roomDataMap } = scanAllRooms();
+  const { filesCount, manifest, roomDataMap, warnings } = scanAllRooms();
 
-  console.log(`📦 Total JSON files: ${filesCount}`);
-  console.log(`📌 Registered rooms: ${registered}`);
-  console.log(`⚠️  Warnings (non-fatal): ${warnings.length}`);
+  console.log("Total JSON files: " + filesCount);
+  console.log("Warnings (non-fatal): " + warnings.length);
 
-  const outManifest = path.join(projectRoot, "src", "lib", "roomManifest.ts");
-  const outImports = path.join(projectRoot, "src", "lib", "roomDataImports.ts");
-  const outList = path.join(projectRoot, "src", "lib", "roomList.ts");
+  writeFile(
+    path.join(projectRoot, "src/lib/roomManifest.ts"),
+    generateRoomManifestTs(manifest)
+  );
+  writeFile(
+    path.join(projectRoot, "src/lib/roomDataImports.ts"),
+    generateRoomDataImportsTs(roomDataMap)
+  );
+  writeFile(
+    path.join(projectRoot, "src/lib/roomList.ts"),
+    generateRoomListTs(roomDataMap)
+  );
 
-  writeFile(outManifest, generateRoomManifestTs(manifest));
-  writeFile(outImports, generateRoomDataImportsTs(roomDataMap));
-  writeFile(outList, generateRoomListTs(roomDataMap));
-
-  console.log(`✅ Wrote: ${path.relative(projectRoot, outManifest)}`);
-  console.log(`✅ Wrote: ${path.relative(projectRoot, outImports)}`);
-  console.log(`✅ Wrote: ${path.relative(projectRoot, outList)}`);
-  console.log("✨ Done.");
+  console.log("Registry generated successfully");
 } catch (err) {
-  console.error("❌ Generator failed:", err?.message || err);
+  console.error("Generator failed:", err);
   process.exit(1);
 }
