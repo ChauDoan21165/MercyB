@@ -7,19 +7,14 @@
     "dev": "vite",
     "generate:room-registry": "node scripts/generate-room-registry.js",
     "generate:audio-manifest": "node scripts/generate-audio-manifest.js",
-
     "validate-rooms": "node scripts/validate-rooms.js",
     "validate-rooms:core": "MB_VALIDATE_CORE_ONLY=1 node scripts/validate-rooms.js",
-
     "rooms:check": "npm run generate:room-registry && npm run validate-rooms:core",
     "prebuild": "npm run rooms:check",
-
     "build": "npm run generate:audio-manifest && vite build",
     "build:dev": "vite build --mode development",
-
     "lint": "eslint .",
     "preview": "vite preview",
-
     "system:check": "tsx scripts/check-system-health.ts",
     "audio:tts": "tsx scripts/generate-missing-audio.ts"
   },
