@@ -1,0 +1,59 @@
+// src/pages/LoginPage.tsx — v2025-12-22-87.2-LOGIN-MAGICLINK
+import { useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { useNavigate } from "react-router-dom";
+
+export default function LoginPage() {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+  const nav = useNavigate();
+
+  const sendLink = async () => {
+    setLoading(true);
+    setStatus(null);
+    try {
+      const { error } = await supabase.auth.signInWithOtp({
+        email,
+        options: { emailRedirectTo: window.location.origin + "/admin" },
+      });
+      if (error) throw error;
+      setStatus("✅ Check your email for the magic link.");
+    } catch (e: any) {
+      setStatus("❌ " + (e?.message ?? "Failed to send link"));
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const goAdmin = async () => {
+    const { data } = await supabase.auth.getSession();
+    if (data.session) nav("/admin");
+    else setStatus("Not logged in yet.");
+  };
+
+  return (
+    <div style={{ padding: 24, maxWidth: 520 }}>
+      <h1>Login</h1>
+      <p>Enter your email. We’ll send a magic link.</p>
+
+      <input
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="you@email.com"
+        style={{ width: "100%", padding: 10, fontSize: 16 }}
+      />
+
+      <div style={{ display: "flex", gap: 12, marginTop: 12 }}>
+        <button onClick={sendLink} disabled={!email || loading} style={{ padding: 10 }}>
+          {loading ? "Sending..." : "Send magic link"}
+        </button>
+        <button onClick={goAdmin} style={{ padding: 10 }}>
+          Go /admin
+        </button>
+      </div>
+
+      {status && <p style={{ marginTop: 12 }}>{status}</p>}
+    </div>
+  );
+}

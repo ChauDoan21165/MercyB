@@ -1,9 +1,11 @@
 /**
- * MusicPlayer.tsx — v83.2
- * Generated: 2025-12-22 (+0700)
+ * MusicPlayer — v83.3
+ * Generated: 2025-12-22 14:14 (+0700)
  * Reporter: teacher GPT
  *
- * NOTE (LOCKED): Append-only mindset. Do not delete small details.
+ * Fix:
+ * - isPlaying is now driven by REAL audio events (onPlay/onPause/onEnded)
+ * - TalkingFaceButton only reflects isPlaying (fast UI like Lovable, but correct)
  */
 
 import { useState, useEffect, useRef } from 'react';
@@ -147,6 +149,7 @@ export const MusicPlayer = () => {
   const [isShuffle, setIsShuffle] = useState(false);
   const [shuffledTracks, setShuffledTracks] = useState<typeof ALL_TRACKS>([]);
   const { favoriteIds, toggleFavorite, isFavorite } = useFavoriteTracks();
+  const { updateFromPlayer } = useMusicPlayer();
 
   // Favorite tracks (filtered from ALL_TRACKS)
   const favoriteTracks = ALL_TRACKS.filter((t) => favoriteIds.includes(t.id));
@@ -166,22 +169,21 @@ export const MusicPlayer = () => {
 
   // Update audio element when track changes and auto-play if already playing
   useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.load();
-      if (isPlaying) {
-        audioRef.current.play().catch((err) => {
-          console.error('Error playing audio:', err);
-          setIsPlaying(false);
-        });
-      }
+    if (!audioRef.current) return;
+    audioRef.current.load();
+
+    if (isPlaying) {
+      audioRef.current.play().catch((err) => {
+        console.error('Error playing audio:', err);
+        setIsPlaying(false);
+      });
     }
-  }, [currentTrackId, isPlaying]);
+  }, [currentTrackId]); // NOTE: do not depend on isPlaying here (avoid loops)
 
   // Update audio volume
   useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.volume = volume / 100;
-    }
+    if (!audioRef.current) return;
+    audioRef.current.volume = volume / 100;
   }, [volume]);
 
   // Handle track change
@@ -249,23 +251,24 @@ export const MusicPlayer = () => {
     localStorage.setItem('musicPlayerTrackId', nextTrack.id);
   };
 
-  // Toggle play/pause
+  // Toggle play/pause (REAL audio, not guessing)
   const togglePlay = () => {
-    if (!audioRef.current) return;
+    const a = audioRef.current;
+    if (!a) return;
 
-    if (isPlaying) {
-      audioRef.current.pause();
+    if (!isPlaying) {
+      a.play().catch((err) => {
+        console.error('Error playing audio:', err);
+        setIsPlaying(false);
+      });
     } else {
-      audioRef.current.play();
+      a.pause();
     }
-    setIsPlaying(!isPlaying);
   };
 
   const currentTrack = ALL_TRACKS.find((t) => t.id === currentTrackId) || COMMON_TRACKS[0];
   const currentPlaylist = getCurrentPlaylist();
   const displayTracks = currentPlaylist;
-
-  const { updateFromPlayer } = useMusicPlayer();
 
   // Sync player state to context so GlobalPlayingIndicator can show it
   useEffect(() => {
@@ -286,7 +289,13 @@ export const MusicPlayer = () => {
     <div className="h-full w-full bg-card border border-border rounded-lg shadow-sm">
       <div className="h-full px-3 flex items-center gap-2">
         {/* Play/Pause Button (Talking Face Motif) */}
-        <TalkingFaceButton isPlaying={isPlaying} onClick={togglePlay} />
+        <TalkingFaceButton
+          isPlaying={isPlaying}
+          onClick={togglePlay}
+          size={32}
+          title={isPlaying ? "Pause music" : "Play music"}
+          aria-label={isPlaying ? "Pause music" : "Play music"}
+        />
 
         {/* Shuffle Button */}
         <Button
@@ -334,7 +343,6 @@ export const MusicPlayer = () => {
             onClick={() => {
               setMode('common');
               localStorage.setItem('musicPlayerMode', 'common');
-              // Switch to first track of common playlist if current track not in it
               const currentInCommon = COMMON_TRACKS.find((t) => t.id === currentTrackId);
               if (!currentInCommon && COMMON_TRACKS.length > 0) {
                 setCurrentTrackId(COMMON_TRACKS[0].id);
@@ -354,7 +362,6 @@ export const MusicPlayer = () => {
             onClick={() => {
               setMode('mercy');
               localStorage.setItem('musicPlayerMode', 'mercy');
-              // Switch to first track of MB playlist if current track not in it
               const currentInMB = MB_TRACKS.find((t) => t.id === currentTrackId);
               if (!currentInMB && MB_TRACKS.length > 0) {
                 setCurrentTrackId(MB_TRACKS[0].id);
@@ -375,7 +382,6 @@ export const MusicPlayer = () => {
               if (favoriteTracks.length > 0) {
                 setMode('favorites');
                 localStorage.setItem('musicPlayerMode', 'favorites');
-                // Switch to first favorite track if current track not in favorites
                 const currentInFavorites = favoriteTracks.find((t) => t.id === currentTrackId);
                 if (!currentInFavorites && favoriteTracks.length > 0) {
                   setCurrentTrackId(favoriteTracks[0].id);
@@ -438,7 +444,7 @@ export const MusicPlayer = () => {
           </DropdownMenuContent>
         </DropdownMenu>
 
-        {/* Track Selector - Using DropdownMenu for better reliability */}
+        {/* Track Selector */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" size="sm" className="w-[180px] h-8 text-xs justify-between">
@@ -452,8 +458,7 @@ export const MusicPlayer = () => {
             sideOffset={4}
           >
             <DropdownMenuLabel className="text-xs font-semibold sticky top-0 bg-popover">
-              {mode === 'mercy' ? 'MB Songs' : mode === 'favorites' ? 'My Favorites' : 'Common Tracks'} (
-              {displayTracks.length})
+              {mode === 'mercy' ? 'MB Songs' : mode === 'favorites' ? 'My Favorites' : 'Common Tracks'} ({displayTracks.length})
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             {displayTracks.length === 0 ? (
@@ -469,7 +474,9 @@ export const MusicPlayer = () => {
                 >
                   <div className="flex items-center justify-between w-full gap-2">
                     <span className="truncate flex-1">{track.name}</span>
-                    {isFavorite(track.id) && <Heart className="h-3 w-3 fill-red-500 text-red-500 shrink-0" />}
+                    {isFavorite(track.id) && (
+                      <Heart className="h-3 w-3 fill-red-500 text-red-500 shrink-0" />
+                    )}
                     {currentTrackId === track.id && <span className="text-primary shrink-0">▶</span>}
                   </div>
                 </DropdownMenuItem>
@@ -478,8 +485,18 @@ export const MusicPlayer = () => {
           </DropdownMenuContent>
         </DropdownMenu>
 
-        {/* Hidden Audio Element */}
-        <audio ref={audioRef} src={currentTrack.url} preload="none" onEnded={playNextTrack} />
+        {/* Hidden Audio Element (SOURCE OF TRUTH for isPlaying) */}
+        <audio
+          ref={audioRef}
+          src={currentTrack.url}
+          preload="none"
+          onPlay={() => setIsPlaying(true)}
+          onPause={() => setIsPlaying(false)}
+          onEnded={() => {
+            setIsPlaying(false);
+            playNextTrack();
+          }}
+        />
       </div>
     </div>
   );

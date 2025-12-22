@@ -1,209 +1,150 @@
-import { useEffect, useState } from "react";
-import { AdminLayout } from "@/components/admin/AdminLayout";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { supabase } from "@/integrations/supabase/client";
-import { useAdminLevel } from "@/hooks/useAdminLevel";
-import {
-  Users,
-  CreditCard,
-  KeyRound,
-  TrendingUp,
-  AlertCircle,
-  CheckCircle2,
-  Clock,
-} from "lucide-react";
-import { Skeleton } from "@/components/ui/skeleton";
+// src/pages/admin/AdminDashboard.tsx
+/**
+ * MercyBlade Blue Launch Map — v83.3 (AUTHORITATIVE)
+ * Generated: 2025-12-22 (+0700)
+ * Reporter: teacher GPT
+ *
+ * PURPOSE:
+ * Minimal Admin Dashboard (necessary only).
+ * Shows KPI cards sourced from Edge Function `admin-stats`.
+ * No Lovable bloat. No fake metrics. No extra panels.
+ */
 
-interface DashboardStats {
-  totalUsers: number;
-  activeSubscriptions: number;
-  pendingPayments: number;
-  activeAccessCodes: number;
-  recentTransactions: number;
-  pendingVerifications: number;
+import { useMemo } from "react";
+import { RefreshCw, Users, Home, DollarSign, Activity } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
+import { useAdminStats } from "@/hooks/admin/useAdminStats";
+
+function formatMoneyUSD(n: number): string {
+  // Keep predictable formatting; avoid locale surprises.
+  const safe = Number.isFinite(n) ? n : 0;
+  return `$${safe.toFixed(2)}`;
 }
 
 export default function AdminDashboard() {
-  const [stats, setStats] = useState<DashboardStats | null>(null);
-  const [loading, setLoading] = useState(true);
-  const { adminInfo, getLevelLabel } = useAdminLevel();
+  const { loading, error, stats, lastUpdatedAt, refresh } = useAdminStats();
 
-  useEffect(() => {
-    fetchStats();
-  }, []);
+  const cards = useMemo(() => {
+    const totalUsers = stats?.totalUsers ?? 0;
+    const activeToday = stats?.activeToday ?? 0;
+    const totalRooms = stats?.totalRooms ?? 0;
+    const revenueMonth = stats?.revenueMonth ?? 0;
 
-  async function fetchStats() {
-    try {
-      const [
-        usersResult,
-        subscriptionsResult,
-        pendingPaymentsResult,
-        accessCodesResult,
-        recentTransactionsResult,
-        pendingVerificationsResult,
-      ] = await Promise.all([
-        supabase.from("profiles").select("id", { count: "exact", head: true }),
-        supabase.from("user_subscriptions").select("id", { count: "exact", head: true }).eq("status", "active"),
-        supabase.from("bank_transfer_orders").select("id", { count: "exact", head: true }).eq("status", "pending"),
-        supabase.from("access_codes").select("id", { count: "exact", head: true }).eq("is_active", true),
-        supabase.from("payment_transactions").select("id", { count: "exact", head: true }).gte("created_at", new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString()),
-        supabase.from("payment_proof_submissions").select("id", { count: "exact", head: true }).eq("status", "pending"),
-      ]);
-
-      setStats({
-        totalUsers: usersResult.count ?? 0,
-        activeSubscriptions: subscriptionsResult.count ?? 0,
-        pendingPayments: pendingPaymentsResult.count ?? 0,
-        activeAccessCodes: accessCodesResult.count ?? 0,
-        recentTransactions: recentTransactionsResult.count ?? 0,
-        pendingVerifications: pendingVerificationsResult.count ?? 0,
-      });
-    } catch (error) {
-      console.error("Error fetching dashboard stats:", error);
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  const statCards = [
-    {
-      title: "Total Users",
-      value: stats?.totalUsers ?? 0,
-      icon: Users,
-      description: "Registered accounts",
-      color: "text-blue-500",
-    },
-    {
-      title: "Active Subscriptions",
-      value: stats?.activeSubscriptions ?? 0,
-      icon: CheckCircle2,
-      description: "Currently active",
-      color: "text-green-500",
-    },
-    {
-      title: "Pending Payments",
-      value: stats?.pendingPayments ?? 0,
-      icon: Clock,
-      description: "Awaiting approval",
-      color: "text-yellow-500",
-    },
-    {
-      title: "Active Access Codes",
-      value: stats?.activeAccessCodes ?? 0,
-      icon: KeyRound,
-      description: "Available for redemption",
-      color: "text-purple-500",
-    },
-    {
-      title: "Recent Transactions",
-      value: stats?.recentTransactions ?? 0,
-      icon: TrendingUp,
-      description: "Last 7 days",
-      color: "text-cyan-500",
-    },
-    {
-      title: "Pending Verifications",
-      value: stats?.pendingVerifications ?? 0,
-      icon: AlertCircle,
-      description: "Needs review",
-      color: "text-orange-500",
-    },
-  ];
+    return [
+      {
+        key: "totalUsers",
+        title: "Total Users",
+        value: String(totalUsers),
+        icon: Users,
+        hint: "profiles (count)",
+      },
+      {
+        key: "activeToday",
+        title: "Active Today",
+        value: String(activeToday),
+        icon: Activity,
+        hint: "MVP: may be 0 until tracked",
+      },
+      {
+        key: "totalRooms",
+        title: "Total Rooms",
+        value: String(totalRooms),
+        icon: Home,
+        hint: "rooms (is_active=true)",
+      },
+      {
+        key: "revenueMonth",
+        title: "Revenue (Month)",
+        value: formatMoneyUSD(revenueMonth),
+        icon: DollarSign,
+        hint: "payment_transactions (completed)",
+      },
+    ] as const;
+  }, [stats]);
 
   return (
-    <AdminLayout>
-      <div className="space-y-6">
-        {/* Welcome Section */}
-        <div>
-          <h1 className="text-3xl font-bold text-foreground">Welcome back</h1>
-          {adminInfo && (
-            <p className="text-muted-foreground">
-              Logged in as <span className="font-medium">{adminInfo.email}</span> •{" "}
-              <span className="text-primary">{getLevelLabel(adminInfo.level)}</span>
-            </p>
-          )}
+    <div className="p-4 md:p-6 space-y-4">
+      <div className="flex items-center justify-between gap-3">
+        <div className="min-w-0">
+          <h1 className="text-lg md:text-xl font-bold text-foreground truncate">Admin Dashboard</h1>
+          <p className="text-xs text-muted-foreground">
+            Source: Edge Function <span className="font-mono">admin-stats</span>
+            {lastUpdatedAt ? (
+              <>
+                {" "}
+                • Last updated: <span className="font-mono">{new Date(lastUpdatedAt).toLocaleString()}</span>
+              </>
+            ) : null}
+          </p>
         </div>
 
-        {/* Stats Grid */}
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {statCards.map((card) => {
-            const Icon = card.icon;
-            return (
-              <Card key={card.title}>
-                <CardHeader className="flex flex-row items-center justify-between pb-2">
-                  <CardTitle className="text-sm font-medium text-muted-foreground">
-                    {card.title}
-                  </CardTitle>
-                  <Icon className={`h-5 w-5 ${card.color}`} />
-                </CardHeader>
-                <CardContent>
-                  {loading ? (
-                    <Skeleton className="h-8 w-20" />
-                  ) : (
-                    <div className="text-2xl font-bold">{card.value.toLocaleString()}</div>
-                  )}
-                  <p className="text-xs text-muted-foreground">{card.description}</p>
-                </CardContent>
-              </Card>
-            );
-          })}
+        <div className="flex items-center gap-2">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => refresh()}
+            disabled={loading}
+            className="gap-2"
+            title="Refresh stats"
+          >
+            <RefreshCw className={`h-4 w-4 ${loading ? "animate-spin" : ""}`} />
+            Refresh
+          </Button>
         </div>
+      </div>
 
-        {/* Quick Actions */}
-        <Card>
+      {error ? (
+        <Card className="border-destructive/40">
           <CardHeader>
-            <CardTitle>Quick Actions</CardTitle>
-            <CardDescription>Common administrative tasks</CardDescription>
+            <CardTitle className="text-sm text-destructive">Admin stats error</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-              <a
-                href="/admin/payment-verification"
-                className="flex items-center gap-3 rounded-lg border border-border p-4 transition-colors hover:bg-accent"
-              >
-                <CreditCard className="h-5 w-5 text-primary" />
-                <div>
-                  <p className="font-medium">Verify Payments</p>
-                  <p className="text-sm text-muted-foreground">Review pending proofs</p>
-                </div>
-              </a>
-
-              <a
-                href="/admin/bank-transfers"
-                className="flex items-center gap-3 rounded-lg border border-border p-4 transition-colors hover:bg-accent"
-              >
-                <Clock className="h-5 w-5 text-primary" />
-                <div>
-                  <p className="font-medium">Bank Transfers</p>
-                  <p className="text-sm text-muted-foreground">Approve pending transfers</p>
-                </div>
-              </a>
-
-              <a
-                href="/admin/access-codes"
-                className="flex items-center gap-3 rounded-lg border border-border p-4 transition-colors hover:bg-accent"
-              >
-                <KeyRound className="h-5 w-5 text-primary" />
-                <div>
-                  <p className="font-medium">Access Codes</p>
-                  <p className="text-sm text-muted-foreground">Generate new codes</p>
-                </div>
-              </a>
-
-              <a
-                href="/admin/users"
-                className="flex items-center gap-3 rounded-lg border border-border p-4 transition-colors hover:bg-accent"
-              >
-                <Users className="h-5 w-5 text-primary" />
-                <div>
-                  <p className="font-medium">Manage Users</p>
-                  <p className="text-sm text-muted-foreground">View user accounts</p>
-                </div>
-              </a>
-            </div>
+            <p className="text-sm text-foreground whitespace-pre-wrap">{error}</p>
+            <p className="text-xs text-muted-foreground mt-2">
+              If this is 401/403: you are not logged in, or you are not an admin (has_role).
+            </p>
           </CardContent>
         </Card>
+      ) : null}
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3">
+        {cards.map((c) => {
+          const Icon = c.icon;
+          return (
+            <Card key={c.key} className="shadow-sm">
+              <CardHeader className="pb-2">
+                <div className="flex items-center justify-between gap-2">
+                  <CardTitle className="text-sm font-semibold">{c.title}</CardTitle>
+                  <Icon className="h-4 w-4 text-muted-foreground" />
+                </div>
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold">{loading && !stats ? "…" : c.value}</div>
+                <div className="text-xs text-muted-foreground mt-1">{c.hint}</div>
+              </CardContent>
+            </Card>
+          );
+        })}
       </div>
-    </AdminLayout>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-sm">Notes (truth)</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2">
+          <p className="text-sm text-foreground">
+            This dashboard is intentionally minimal. It exists to reduce operational risk, not to look “advanced”.
+          </p>
+          <ul className="text-xs text-muted-foreground list-disc pl-4 space-y-1">
+            <li>Active Today may stay 0 until sign-in/session tracking exists.</li>
+            <li>Revenue uses completed transactions only; keep idempotency in payment pipeline.</li>
+            <li>If numbers look wrong, trust DB tables first; UI is just an opinion.</li>
+          </ul>
+        </CardContent>
+      </Card>
+    </div>
   );
 }
