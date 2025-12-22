@@ -2,7 +2,7 @@
 
 import { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
-import { AdminRoute } from "@/components/AdminRoute";
+import { AdminRoute } from "@/components/admin/AdminRoute";
 import { LoadingSkeleton } from "@/components/ui/loading-skeleton";
 import { AdminLayout } from "@/components/admin/AdminLayout";
 import { AdminFloatingButton } from "@/components/AdminFloatingButton";
