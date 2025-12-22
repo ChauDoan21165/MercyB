@@ -11,7 +11,7 @@
 
 import { Suspense, lazy } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { AdminRoute } from "@/components/AdminRoute";
+import { AdminRoute } from "@/components/admin/AdminRoute";
 import { LoadingSkeleton } from "@/components/ui/loading-skeleton";
 import { AdminFloatingButton } from "@/components/AdminFloatingButton";
 
@@ -119,22 +119,19 @@ const AppRouter = () => {
           <Route path="/redeem/:code" element={<RedeemGiftCode />} />
           <Route path="/promo" element={<PromoCode />} />
 
-          {/* Admin: canonical entry */}
+          {/* Admin */}
           <Route path="/admin" element={guard(<AdminDashboard />)} />
 
-          {/* Admin: payments */}
           <Route path="/admin/payments" element={guard(<AdminPayments />)} />
           <Route path="/admin/bank-transfers" element={guard(<AdminBankTransfers />)} />
           <Route path="/admin/payment-verification" element={guard(<AdminPaymentVerification />)} />
           <Route path="/admin/payment-monitoring" element={guard(<PaymentMonitoring />)} />
 
-          {/* Admin: users */}
           <Route path="/admin/users" element={guard(<AdminUsers />)} />
           <Route path="/admin/users/:userId" element={guard(<AdminUserDetail />)} />
           <Route path="/admin/user-roles" element={guard(<AdminUserRoles />)} />
           <Route path="/admin/manage-admins" element={guard(<AdminManageAdmins />)} />
 
-          {/* Admin: rooms & quality */}
           <Route path="/admin/rooms" element={guard(<AdminRooms />)} />
           <Route path="/admin/room-editor" element={guard(<AdminRoomEditor />)} />
           <Route path="/admin/room-import" element={guard(<AdminRoomImport />)} />
@@ -145,7 +142,6 @@ const AppRouter = () => {
           <Route path="/admin/room-specification" element={guard(<RoomSpecification />)} />
           <Route path="/admin/specification" element={guard(<AdminSpecification />)} />
 
-          {/* Admin: health & monitoring */}
           <Route path="/admin/health" element={guard(<UnifiedRoomHealthCheck />)} />
           <Route path="/admin/health-dashboard" element={guard(<HealthDashboard />)} />
           <Route path="/admin/room-health-dashboard" element={guard(<RoomHealthDashboard />)} />
@@ -156,21 +152,17 @@ const AppRouter = () => {
           <Route path="/admin/stats" element={guard(<AdminStats />)} />
           <Route path="/admin/logs" element={guard(<SystemLogs />)} />
 
-          {/* Admin: moderation & security */}
           <Route path="/admin/moderation" element={guard(<AdminModeration />)} />
           <Route path="/admin/security" element={guard(<AdminSecurity />)} />
 
-          {/* Admin: feedback & reports */}
           <Route path="/admin/reports" element={guard(<AdminReports />)} />
           <Route path="/admin/feedback" element={guard(<FeedbackInbox />)} />
           <Route path="/admin/feedback-analytics" element={guard(<AdminFeedbackAnalytics />)} />
 
-          {/* Admin: audio */}
           <Route path="/admin/audio-upload" element={guard(<AdminAudioUpload />)} />
           <Route path="/admin/music-approval" element={guard(<MusicApproval />)} />
           <Route path="/admin/music-manager" element={guard(<MusicManager />)} />
 
-          {/* Admin: developer tools */}
           <Route path="/admin/code-editor" element={guard(<AdminCodeEditor />)} />
           <Route path="/admin/code-viewer" element={guard(<CodeViewer />)} />
           <Route path="/admin/edge-functions" element={guard(<EdgeFunctions />)} />
@@ -179,11 +171,9 @@ const AppRouter = () => {
           <Route path="/admin/audit-log" element={guard(<AuditLog />)} />
           <Route path="/admin/test-email" element={guard(<TestEmail />)} />
 
-          {/* Small convenience redirects (optional) */}
           <Route path="/security-dashboard" element={<Navigate to="/admin/security" replace />} />
           <Route path="/vip-requests" element={<Navigate to="/admin" replace />} />
 
-          {/* Not found */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
