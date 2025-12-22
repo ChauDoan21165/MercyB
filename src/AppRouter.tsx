@@ -1,6 +1,8 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import RoomGrid from "@/pages/RoomGrid";
-import ChatHub from "@/pages/ChatHub";
+
+// 🔒 Pages live here now (LOCKED)
+import RoomGrid from "@/_legacy_next_pages/RoomGrid";
+import ChatHub from "@/_legacy_next_pages/ChatHub";
 
 export default function AppRouter() {
   return (
@@ -11,7 +13,7 @@ export default function AppRouter() {
       {/* Explicit free path (VERY IMPORTANT) */}
       <Route path="/free" element={<RoomGrid />} />
 
-      {/* Chat room */}
+      {/* Room */}
       <Route path="/room/:roomId" element={<ChatHub />} />
 
       {/* Catch-all MUST be last */}

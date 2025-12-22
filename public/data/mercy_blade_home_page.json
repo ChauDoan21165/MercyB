@@ -18,8 +18,8 @@
         "vi": "Người Đồng Hành Nhẹ Nhàng Cho Cả Cuộc Đời Bạn"
       },
       "body": {
-        "en": "Mercy Blade is a bilingual (English–Vietnamese) companion for the real world: health, emotions, money, relationships, career, and meaning. Each topic is broken into calm, simple cards with audio you can listen to anywhere—on the bus, in bed, or between classes. No pressure. No judgment. Just clarity, compassion, and steps you can take today.\n\nAnd whenever life feels loud, there is something special inside the app: the Quiet Hour—a one-minute ritual where you read one bilingual card, breathe, and come back to yourself.",
-        "vi": "Mercy Blade là ứng dụng song ngữ (Anh–Việt) đồng hành cùng bạn trong đời sống thật: sức khỏe, cảm xúc, tiền bạc, mối quan hệ, công việc và ý nghĩa sống. Mỗi chủ đề được chia thành các thẻ nhỏ, nhẹ nhàng, kèm audio để bạn có thể nghe ở bất cứ đâu—trên xe buýt, trước khi ngủ, hay giữa giờ học. Không áp lực. Không phán xét. Chỉ là sự rõ ràng, dịu dàng và những bước bạn có thể làm ngay.\n\nVà khi cuộc sống trở nên quá ồn, ứng dụng có một điều đặc biệt: Giờ Lặng—nghi thức một phút, nơi bạn đọc một thẻ song ngữ, hít thở và trở về với chính mình."
+        "en": "Mercy Blade is a bilingual (English–Vietnamese) companion for the real world: health, emotions, money, relationships, career, and meaning. Each topic is broken into calm, simple cards with audio you can listen to anywhere. No pressure. No judgment. Just clarity, compassion, and steps you can take today.",
+        "vi": "Mercy Blade là ứng dụng song ngữ (Anh–Việt) đồng hành cùng bạn trong đời sống thật: sức khỏe, cảm xúc, tiền bạc, mối quan hệ, công việc và ý nghĩa sống. Mỗi chủ đề được chia thành các thẻ nhỏ, nhẹ nhàng, kèm audio để bạn có thể nghe ở bất cứ đâu. Không áp lực. Không phán xét. Chỉ là sự rõ ràng, dịu dàng và những bước bạn có thể làm ngay."
       },
       "audio": {
         "en": "homepage_1.mp3",
@@ -36,8 +36,8 @@
         "vi": "⭐ VIP9 — Viện Tư Duy Chiến Lược"
       },
       "body": {
-        "en": "VIP9 is the highest tier inside Mercy Blade — a quiet, serious space for people who want to think in decades, not days.",
-        "vi": "VIP9 là tầng cao nhất trong Mercy Blade — một không gian trầm, nghiêm túc dành cho những người muốn suy nghĩ theo thập kỷ, không phải theo ngày."
+        "en": "VIP9 is the highest tier inside Mercy Blade — a quiet, serious space for people who want to think in decades, not days. Built for founders, executives, and leaders who value clarity, discipline, and long-term judgment.",
+        "vi": "VIP9 là tầng cao nhất trong Mercy Blade — một không gian trầm, nghiêm túc dành cho những người muốn suy nghĩ theo thập kỷ, không phải theo ngày. Dành cho nhà sáng lập, lãnh đạo và những ai coi trọng sự rõ ràng, kỷ luật và tầm nhìn dài hạn."
       },
       "audio": {
         "en": "VIP9_homepage.mp3",
@@ -45,19 +45,6 @@
       }
     }
   ],
-  "entries": [
-    {
-      "id": "homepage_intro",
-      "title": {
-        "en": "Welcome to Mercy Blade",
-        "vi": "Chào mừng đến với Mercy Blade"
-      },
-      "body": {
-        "en": "Homepage anchor entry (structural).",
-        "vi": "Mục neo trang chủ (cấu trúc)."
-      }
-    }
-  ],
-  "tier": "Free / Miễn phí",
+  "tier": "Free",
   "domain": "General"
 }

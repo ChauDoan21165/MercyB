@@ -22,8 +22,8 @@
         "vi": "Mercy Blade là ứng dụng song ngữ (Anh–Việt) đồng hành cùng bạn trong đời sống thật: sức khỏe, cảm xúc, tiền bạc, mối quan hệ, công việc và ý nghĩa sống. Mỗi chủ đề được chia thành các thẻ nhỏ, nhẹ nhàng, kèm audio để bạn có thể nghe ở bất cứ đâu—trên xe buýt, trước khi ngủ, hay giữa giờ học. Không áp lực. Không phán xét. Chỉ là sự rõ ràng, dịu dàng và những bước bạn có thể làm ngay.\n\nVà khi cuộc sống trở nên quá ồn, ứng dụng có một điều đặc biệt: Giờ Lặng—nghi thức một phút, nơi bạn đọc một thẻ song ngữ, hít thở và trở về với chính mình. Theo thời gian, những khoảnh khắc nhỏ này trở thành thói quen vững vàng: suy nghĩ sáng hơn, cách tự nói với mình tử tế hơn và tiếng Anh phát triển tự nhiên cùng hiểu biết cảm xúc."
       },
       "audio": {
-        "en": "Homepage_1.mp3",
-        "vi": "Homepage_1.mp3"
+        "en": "homepage_1.mp3",
+        "vi": "homepage_1.mp3"
       }
     },
     {
@@ -40,8 +40,8 @@
         "vi": "Và trong những khoảnh khắc khi lời nói thôi chưa đủ, Mercy Blade có một khúc ca riêng—bài nhạc được viết để nâng nhịp thở, tiếp đất và làm dịu cảm xúc của bạn."
       },
       "audio": {
-        "en": "Homepage_song.mp3",
-        "vi": "Homepage_song.mp3"
+        "en": "homepage_song.mp3",
+        "vi": "homepage_song.mp3"
       }
     },
     {
@@ -220,8 +220,8 @@
         "vi": "VIP9 là tầng cao nhất trong Mercy Blade — một không gian trầm, nghiêm túc dành cho những người muốn suy nghĩ theo thập kỷ, không phải theo ngày. Đây là tầng dành cho nhà sáng lập, lãnh đạo, người làm chính sách, và bất kỳ ai mong muốn làm chủ tư duy chiến lược ở ba cấp độ: cá nhân, tổ chức và quốc gia. Giọng điệu không hô hào hay thúc ép; mà rõ ràng, kỷ luật và dựa trên tư duy chiến lược sâu sắc.\n\nBên trong VIP9, bạn khám phá 55 phòng nâng cao thuộc ba tầng chiến lược: Tư Duy Chiến Lược Cá Nhân, Chiến Lược Doanh Nghiệp & Tổ Chức, và Tình Báo Địa–Chiến Lược Quốc Gia. Mỗi phòng có tám bài dài (khoảng 350 từ tiếng Anh + 350 từ tiếng Việt), được viết với chiều sâu của bản phân tích điều hành nhưng vẫn giữ sự nhẹ nhàng của Mercy Blade. Bạn học cách nhận diện mô thức, dự đoán chu kỳ dài, xây dựng hệ thống, ra quyết định bình tĩnh dưới áp lực, và giữ trung lập trong khi thế giới xung quanh ồn ào.\n\nVIP9 còn chứa các bài học tinh gọn từ những chiến lược gia vĩ đại nhất trong lịch sử nhân loại, không phải để học thuộc câu nói, mà để thấm các cấu trúc tư duy đứng sau quyết định của họ:\n\nTôn Tử – sự rõ ràng chiến lược, thời điểm, ưu thế, nghi binh\nNiccolò Machiavelli – quyền lực, bản chất con người, ổn định chính trị\nMiyamoto Musashi – kỷ luật, nhịp điệu chiến lược, tính chính xác\nHannah Arendt – phán đoán chính trị, quyền lực và bạo lực\nCarl von Clausewitz – ma sát, trọng tâm chiến lược, thế trận\nPeter Drucker – quản trị tổ chức, hiệu quả ra quyết định\nJohn Boyd – vòng OODA, tính linh hoạt, chiến lược cơ động\nMichael Porter – lợi thế cạnh tranh và định vị chiến lược\n\nNhững tư tưởng này từng định hình quốc gia, ảnh hưởng chiến tranh, thị trường, và nền chính trị hiện đại. VIP9 chuyển hóa chúng thành các thẻ chiến lược song ngữ, ngắn gọn, bạn có thể tiếp thu một cách nhẹ nhàng — khi đi bộ, trên tàu, hoặc trước khi ngủ. Không giáo điều, không áp đặt; chỉ là các mô hình rõ ràng bạn có thể ứng dụng vào đời sống và công việc.\n\nVIP9 không dạy bạn \"cảm thấy mạnh mẽ.\" Nó giúp bạn nhìn rõ hơn, hành động chủ ý hơn và thiết kế cuộc sống với tư duy của một chiến lược gia. Bạn đi chậm nhưng nghĩ sắc. Bạn xây sự bền vững thay vì hỗn loạn. Bạn tạo đòn bẩy thay vì tiếng ồn. Theo thời gian, đây trở thành thư viện riêng nơi kỷ luật, tầm nhìn và sự tự tin dài hạn của bạn liên tục lớn lên — trong cả hai ngôn ngữ."
       },
       "audio": {
-        "en": "VIP9_homepage.mp3",
-        "vi": "VIP9_homepage.mp3"
+        "en": "vip9_homepage.mp3",
+        "vi": "vip9_homepage.mp3"
       }
     }
   ]
