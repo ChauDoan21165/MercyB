@@ -4,14 +4,12 @@ import path from "path";
 
 export default defineConfig(() => ({
   server: {
-    host: true,        // ✅ binds to 0.0.0.0 (IPv4 + IPv6 safe)
+    host: "127.0.0.1", // ✅ lock to localhost only (not IPv6 "::")
     port: 8080,
-    strictPort: true,  // 🔒 NEVER jump to 8081
-    open: false,       // 🔒 do not auto-open random tabs
+    strictPort: true, // 🔒 required: fail instead of auto-jump to 8081
+    open: false,
   },
-  plugins: [
-    react(),
-  ],
+  plugins: [react()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

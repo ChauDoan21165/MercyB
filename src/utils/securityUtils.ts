@@ -1,7 +1,7 @@
 /**
  * MercyBlade Blue — Security Utils (FAIL-OPEN + CANONICAL CLIENT)
  * File: src/utils/securityUtils.ts
- * Version: MB-BLUE-94.13.6 — 2025-12-25 (+0700)
+ * Version: MB-BLUE-94.15.2 — 2025-12-26 (+0700)
  *
  * LOCKED:
  * - Must import ONLY the canonical Supabase client:
@@ -13,6 +13,10 @@
  *
  * NOISE FIX:
  * - Avoid PostgREST PGRST116 by using maybeSingle() instead of single() where 0 rows is possible.
+ *
+ * FIX (94.15.2):
+ * - Prevent PostgREST 406 from maybeSingle() when duplicates exist by adding .limit(1)
+ * - Add timeout to getUserIP() so it never hangs login flows
  */
 
 import { supabase } from "@/lib/supabaseClient";
@@ -26,10 +30,18 @@ function devError(...args: any[]) {
   if (IS_DEV) console.error(...args);
 }
 
-// Get user's IP address (best effort)
+// Get user's IP address (best effort, never block)
 export const getUserIP = async (): Promise<string> => {
   try {
-    const response = await fetch("https://api.ipify.org?format=json");
+    const controller = new AbortController();
+    const t = window.setTimeout(() => controller.abort(), 2000); // ✅ hard timeout (fail-open)
+
+    const response = await fetch("https://api.ipify.org?format=json", {
+      signal: controller.signal,
+    });
+
+    window.clearTimeout(t);
+
     const data = await response.json();
     return data?.ip || "unknown";
   } catch {
@@ -87,7 +99,8 @@ export const trackLoginAttempt = async (
       failure_reason: failureReason,
     });
 
-    if (insertRes.error) devWarn("[security] insert login_attempts failed (fail-open)", insertRes.error);
+    if (insertRes.error)
+      devWarn("[security] insert login_attempts failed (fail-open)", insertRes.error);
 
     // Check for suspicious activity and send alert if needed (best effort)
     if (!success) {
@@ -99,7 +112,10 @@ export const trackLoginAttempt = async (
         .gte("created_at", new Date(Date.now() - 15 * 60 * 1000).toISOString());
 
       if (recentFailures.error) {
-        devWarn("[security] select login_attempts recentFailures failed (fail-open)", recentFailures.error);
+        devWarn(
+          "[security] select login_attempts recentFailures failed (fail-open)",
+          recentFailures.error
+        );
         return;
       }
 
@@ -118,7 +134,11 @@ export const trackLoginAttempt = async (
           },
         });
 
-        if ((fn as any)?.error) devWarn("[security] functions.invoke(security-alert) failed (fail-open)", (fn as any).error);
+        if ((fn as any)?.error)
+          devWarn(
+            "[security] functions.invoke(security-alert) failed (fail-open)",
+            (fn as any).error
+          );
       }
     }
   } catch (err) {
@@ -178,7 +198,8 @@ export const getSecurityDashboard = async () => {
       .order("created_at", { ascending: false })
       .limit(100);
 
-    if (recentAttemptsErr) devWarn("[security] getSecurityDashboard recentAttempts failed", recentAttemptsErr);
+    if (recentAttemptsErr)
+      devWarn("[security] getSecurityDashboard recentAttempts failed", recentAttemptsErr);
 
     const { data: recentFailures, error: recentFailuresErr } = await supabase
       .from("login_attempts")
@@ -187,7 +208,8 @@ export const getSecurityDashboard = async () => {
       .gte("created_at", new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString())
       .order("created_at", { ascending: false });
 
-    if (recentFailuresErr) devWarn("[security] getSecurityDashboard recentFailures failed", recentFailuresErr);
+    if (recentFailuresErr)
+      devWarn("[security] getSecurityDashboard recentFailures failed", recentFailuresErr);
 
     const { data: securityEvents, error: securityEventsErr } = await supabase
       .from("security_events")
@@ -195,7 +217,8 @@ export const getSecurityDashboard = async () => {
       .order("created_at", { ascending: false })
       .limit(100);
 
-    if (securityEventsErr) devWarn("[security] getSecurityDashboard securityEvents failed", securityEventsErr);
+    if (securityEventsErr)
+      devWarn("[security] getSecurityDashboard securityEvents failed", securityEventsErr);
 
     const { data: blockedUsers, error: blockedUsersErr } = await supabase
       .from("user_security_status")
@@ -203,7 +226,8 @@ export const getSecurityDashboard = async () => {
       .eq("is_blocked", true)
       .order("blocked_at", { ascending: false });
 
-    if (blockedUsersErr) devWarn("[security] getSecurityDashboard blockedUsers failed", blockedUsersErr);
+    if (blockedUsersErr)
+      devWarn("[security] getSecurityDashboard blockedUsers failed", blockedUsersErr);
 
     const { data: suspiciousUsers, error: suspiciousUsersErr } = await supabase
       .from("user_security_status")
@@ -212,7 +236,8 @@ export const getSecurityDashboard = async () => {
       .order("suspicious_activity_count", { ascending: false })
       .limit(50);
 
-    if (suspiciousUsersErr) devWarn("[security] getSecurityDashboard suspiciousUsers failed", suspiciousUsersErr);
+    if (suspiciousUsersErr)
+      devWarn("[security] getSecurityDashboard suspiciousUsers failed", suspiciousUsersErr);
 
     const { data: activeSessions, error: activeSessionsErr } = await supabase
       .from("user_sessions")
@@ -220,7 +245,8 @@ export const getSecurityDashboard = async () => {
       .gte("last_activity", new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString())
       .order("last_activity", { ascending: false });
 
-    if (activeSessionsErr) devWarn("[security] getSecurityDashboard activeSessions failed", activeSessionsErr);
+    if (activeSessionsErr)
+      devWarn("[security] getSecurityDashboard activeSessions failed", activeSessionsErr);
 
     return {
       recentAttempts: recentAttempts || [],
@@ -243,7 +269,7 @@ export const getSecurityDashboard = async () => {
   }
 };
 
-// Admin: Block user (best effort; still throws if the write fails since it's an explicit admin action)
+// Admin: Block user (explicit admin action: throws if write fails)
 export const blockUser = async (userId: string, reason: string) => {
   const {
     data: { user: admin },
@@ -265,13 +291,11 @@ export const blockUser = async (userId: string, reason: string) => {
 
   if (error) throw error;
 
-  // Best-effort logging
   await logSecurityEvent("user_blocked", "high", {
     blocked_user_id: userId,
     reason,
   });
 
-  // Revoke all sessions for the user (best effort)
   const del = await supabase.from("user_sessions").delete().eq("user_id", userId);
   if (del.error) devWarn("[security] blockUser revoke sessions failed", del.error);
 };
@@ -308,7 +332,10 @@ export const revokeUserSessions = async (userId: string) => {
 
 // Admin: Invalidate user's access codes
 export const invalidateUserAccessCodes = async (userId: string) => {
-  const { error } = await supabase.from("access_codes").update({ is_active: false }).eq("for_user_id", userId);
+  const { error } = await supabase
+    .from("access_codes")
+    .update({ is_active: false })
+    .eq("for_user_id", userId);
 
   if (error) throw error;
 
@@ -319,12 +346,13 @@ export const invalidateUserAccessCodes = async (userId: string) => {
 
 // Admin: Downgrade user tier
 export const downgradeUserTier = async (userId: string) => {
-  // Get free tier (0 rows should be treated as "not found", not PGRST116)
+  // 0 rows => null (OK). Multiple rows => avoid 406 by forcing <= 1 row.
   const { data: freeTier, error: tierErr } = await supabase
     .from("subscription_tiers")
     .select("id")
     .eq("name", "Free")
-    .maybeSingle(); // ✅ instead of single()
+    .limit(1) // ✅ prevents 406 if duplicates exist
+    .maybeSingle();
 
   if (tierErr) {
     devError("[security] downgradeUserTier: failed to fetch Free tier", tierErr);
@@ -335,7 +363,6 @@ export const downgradeUserTier = async (userId: string) => {
     throw new Error("Free tier not found");
   }
 
-  // Update subscription
   const { error } = await supabase
     .from("user_subscriptions")
     .update({
@@ -353,16 +380,12 @@ export const downgradeUserTier = async (userId: string) => {
 
 // Detect suspicious patterns
 export const detectSuspiciousActivity = (loginAttempts: any[], userId: string): boolean => {
-  // Multiple failed attempts from different IPs
   const uniqueIPs = new Set(
-    loginAttempts
-      .filter((a) => !a.success)
-      .map((a) => a.ip_address)
+    loginAttempts.filter((a) => !a.success).map((a) => a.ip_address)
   ).size;
 
   if (uniqueIPs > 3) return true;
 
-  // Multiple failed attempts in short time
   const recentFailures = loginAttempts.filter(
     (a) => !a.success && new Date(a.created_at).getTime() > Date.now() - 5 * 60 * 1000
   );
