@@ -9,7 +9,7 @@
 // - ALL routes live here
 //
 // FIX (94.15.4):
-// - HARD redirect "/login" -> "/auth" (never 404, never duplicate)
+// - HARD redirect "/login" -> "/auth"
 // - Keep "/all-rooms" alias -> RoomGrid
 // - Module-level proof: window.__MB_ROUTER_VERSION__
 
@@ -18,25 +18,16 @@ import { Routes, Route, Navigate, useLocation, useNavigate } from "react-router-
 
 import { AdminRoute } from "@/components/admin/AdminRoute";
 import { LoadingSkeleton } from "@/components/ui/loading-skeleton";
-
-// ✅ ALWAYS visible
 import AdminFloatingButton from "@/components/AdminFloatingButton";
-
-// ✅ Onboarding
 import { OnboardingIntro } from "@/components/mercy";
 
-// ✅ Current app page (not legacy)
 import AudioCoveragePage from "@/pages/admin/AudioCoveragePage";
-
-// Critical pages (small bundles)
 import Homepage from "@/_legacy_next_pages/Home";
 import NotFound from "@/_legacy_next_pages/NotFound";
-
-// ✅ IMPORTANT: Auth + ResetPassword NON-LAZY
 import Auth from "@/_legacy_next_pages/Auth";
 import ResetPassword from "@/_legacy_next_pages/ResetPassword";
 
-// ✅ Public/user pages (lazy OK)
+// Public pages
 const Tiers = lazy(() => import("@/_legacy_next_pages/Tiers"));
 const RoomGrid = lazy(() => import("@/_legacy_next_pages/RoomGrid"));
 const JoinCode = lazy(() => import("@/_legacy_next_pages/JoinCode"));
@@ -47,67 +38,10 @@ const Terms = lazy(() => import("@/_legacy_next_pages/Terms"));
 const Privacy = lazy(() => import("@/_legacy_next_pages/Privacy"));
 const Refund = lazy(() => import("@/_legacy_next_pages/Refund"));
 
-// ✅ CANONICAL ChatHub
 const ChatHub = lazy(() => import("@/pages/ChatHub"));
-
-// ✅ Logout
 const Logout = lazy(() => import("@/pages/Logout"));
 
-// Admin pages
 const AdminDashboard = lazy(() => import("@/_legacy_next_pages/AdminDashboard"));
-const AdminPayments = lazy(() => import("@/_legacy_next_pages/AdminPayments"));
-const AdminBankTransfers = lazy(() => import("@/_legacy_next_pages/AdminBankTransfers"));
-const AdminPaymentVerification = lazy(
-  () => import("@/_legacy_next_pages/AdminPaymentVerification")
-);
-
-const AdminVIPRooms = lazy(() => import("@/_legacy_next_pages/AdminVIPRooms"));
-const AdminDesignAudit = lazy(() => import("@/_legacy_next_pages/AdminDesignAudit"));
-const AppMetrics = lazy(() => import("@/_legacy_next_pages/admin/AppMetrics"));
-const AdminReports = lazy(() => import("@/_legacy_next_pages/AdminReports"));
-const FeedbackInbox = lazy(() => import("@/_legacy_next_pages/admin/FeedbackInbox"));
-const AdminStats = lazy(() => import("@/_legacy_next_pages/AdminStats"));
-const ContentQualityDashboard = lazy(
-  () => import("@/_legacy_next_pages/admin/ContentQualityDashboard")
-);
-const LaunchSimulationDashboard = lazy(
-  () => import("@/_legacy_next_pages/admin/LaunchSimulationDashboard")
-);
-const AdminSystemMetrics = lazy(() => import("@/_legacy_next_pages/AdminSystemMetrics"));
-const PaymentMonitoring = lazy(() => import("@/_legacy_next_pages/admin/PaymentMonitoring"));
-const AdminAudioUpload = lazy(() => import("@/_legacy_next_pages/AdminAudioUpload"));
-const AdminModeration = lazy(() => import("@/_legacy_next_pages/AdminModeration"));
-const AdminRooms = lazy(() => import("@/_legacy_next_pages/AdminRooms"));
-const AdminRoomEditor = lazy(() => import("@/_legacy_next_pages/AdminRoomEditor"));
-const AdminRoomImport = lazy(() => import("@/_legacy_next_pages/AdminRoomImport"));
-const AdminUserRoles = lazy(() => import("@/_legacy_next_pages/AdminUserRoles"));
-const AdminCodeEditor = lazy(() => import("@/_legacy_next_pages/AdminCodeEditor"));
-const AdminFeedbackAnalytics = lazy(
-  () => import("@/_legacy_next_pages/AdminFeedbackAnalytics")
-);
-const AdminUsers = lazy(() => import("@/_legacy_next_pages/AdminUsers"));
-const AdminUserDetail = lazy(() => import("@/_legacy_next_pages/AdminUserDetail"));
-const AdminSecurity = lazy(() => import("@/_legacy_next_pages/AdminSecurity"));
-const AuditLog = lazy(() => import("@/_legacy_next_pages/admin/AuditLog"));
-const AIUsage = lazy(() => import("@/_legacy_next_pages/admin/AIUsage"));
-const AdminGiftCodes = lazy(() => import("@/_legacy_next_pages/AdminGiftCodes"));
-const AdminManageAdmins = lazy(() => import("@/_legacy_next_pages/AdminManageAdmins"));
-const AdminSpecification = lazy(() => import("@/_legacy_next_pages/AdminSpecification"));
-const HealthDashboard = lazy(() => import("@/_legacy_next_pages/admin/HealthDashboard"));
-const RoomHealthDashboard = lazy(() => import("@/_legacy_next_pages/admin/RoomHealthDashboard"));
-const UnifiedRoomHealthCheck = lazy(
-  () => import("@/_legacy_next_pages/admin/UnifiedRoomHealthCheck")
-);
-const SystemHealth = lazy(() => import("@/_legacy_next_pages/admin/SystemHealth"));
-const SystemHealthLive = lazy(() => import("@/_legacy_next_pages/admin/SystemHealthLive"));
-const EdgeFunctions = lazy(() => import("@/_legacy_next_pages/admin/EdgeFunctions"));
-const RoomSpecification = lazy(() => import("@/_legacy_next_pages/admin/RoomSpecification"));
-const MusicApproval = lazy(() => import("@/_legacy_next_pages/admin/MusicApproval"));
-const MusicManager = lazy(() => import("@/_legacy_next_pages/admin/MusicManager"));
-const FeatureFlags = lazy(() => import("@/_legacy_next_pages/admin/FeatureFlags"));
-const SystemLogs = lazy(() => import("@/_legacy_next_pages/admin/SystemLogs"));
-const CodeViewer = lazy(() => import("@/_legacy_next_pages/admin/CodeViewer"));
-const TestEmail = lazy(() => import("@/_legacy_next_pages/admin/TestEmail"));
 
 const guard = (el: JSX.Element) => <AdminRoute>{el}</AdminRoute>;
 
@@ -119,7 +53,7 @@ export default function AppRouter() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Supabase recovery links
+  // ✅ Supabase recovery hash handling (STRICT + SAFE)
   useEffect(() => {
     const rawHash = window.location.hash;
     if (!rawHash) return;
@@ -130,7 +64,12 @@ export default function AppRouter() {
       params.get("access_token") &&
       params.get("refresh_token");
 
-    if (isRecovery && !location.pathname.startsWith("/reset")) {
+    if (!isRecovery) return;
+
+    if (
+      location.pathname !== "/reset" &&
+      location.pathname !== "/reset-password"
+    ) {
       navigate(`/reset-password${rawHash}`, { replace: true });
     }
   }, [navigate, location.pathname]);
@@ -143,30 +82,33 @@ export default function AppRouter() {
         <Routes>
           <Route path="/" element={<Homepage />} />
 
-          {/* AUTH (canonical + HARD redirect) */}
+          {/* AUTH */}
           <Route path="/auth" element={<Auth />} />
           <Route path="/login" element={<Navigate to="/auth" replace />} />
 
           <Route path="/onboarding" element={<OnboardingIntro />} />
           <Route path="/logout" element={<Logout />} />
 
-          <Route path="/tiers" element={<Tiers />} />
+          {/* ROOMS */}
           <Route path="/rooms" element={<RoomGrid />} />
           <Route path="/all-rooms" element={<RoomGrid />} />
 
+          <Route path="/tiers" element={<Tiers />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/refund" element={<Refund />} />
 
-          <Route path="/reset-password" element={<ResetPassword />} />
+          {/* RESET */}
           <Route path="/reset" element={<ResetPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
 
           <Route path="/room/:roomId" element={<ChatHub />} />
           <Route path="/join/:code" element={<JoinCode />} />
           <Route path="/redeem/:code" element={<RedeemGiftCode />} />
           <Route path="/promo" element={<PromoCode />} />
 
+          {/* ADMIN */}
           <Route path="/admin" element={guard(<AdminDashboard />)} />
           <Route path="/admin/audio-coverage" element={guard(<AudioCoveragePage />)} />
 
