@@ -100,5 +100,9 @@
       ],
       "audio": "anxiety_relief_free_breathing.mp3 anxiety_relief_free_grounding.mp3"
     }
-  ]
+  ],
+  "title": {
+    "en": "anxiety_relief_free",
+    "vi": "Giảm Lo Âu"
+  }
 }

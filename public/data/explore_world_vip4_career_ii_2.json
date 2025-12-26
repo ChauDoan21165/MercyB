@@ -2,5 +2,9 @@
   "entries": [],
   "id": "explore_world_vip4_career_ii_2",
   "tier": "VIP4",
-  "domain": "General"
+  "domain": "General",
+  "title": {
+    "en": "explore_world_vip4_career_ii_2",
+    "vi": "explore_world_vip4_career_ii_2"
+  }
 }

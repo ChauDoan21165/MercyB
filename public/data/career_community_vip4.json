@@ -2,5 +2,9 @@
   "entries": [],
   "id": "career_community_vip4",
   "tier": "VIP4",
-  "domain": "General"
+  "domain": "General",
+  "title": {
+    "en": "career_community_vip4",
+    "vi": "career_community_vip4"
+  }
 }

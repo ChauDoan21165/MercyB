@@ -32,5 +32,9 @@
   "id": "guide_articles_en_vi",
   "entries": [],
   "tier": "Free / Miễn phí",
-  "domain": "General"
+  "domain": "General",
+  "title": {
+    "en": "guide_articles_en_vi",
+    "vi": "guide_articles_en_vi"
+  }
 }

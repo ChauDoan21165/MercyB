@@ -89,5 +89,9 @@
   "id": "calm_mind_7",
   "entries": [],
   "tier": "Free / Miễn phí",
-  "domain": "General"
+  "domain": "General",
+  "title": {
+    "en": "calm_mind_7",
+    "vi": "calm_mind_7"
+  }
 }

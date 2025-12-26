@@ -20,5 +20,9 @@
   "id": "components",
   "entries": [],
   "tier": "Free / Miễn phí",
-  "domain": "General"
+  "domain": "General",
+  "title": {
+    "en": "components",
+    "vi": "components"
+  }
 }

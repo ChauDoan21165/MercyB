@@ -105,5 +105,9 @@
   ],
   "audio": "loneliness_comfort_free_community_engagement_en.mp3",
   "tier": "Free / Miễn phí",
-  "domain": "Health"
+  "domain": "Health",
+  "title": {
+    "en": "Practical guidance for finding comfort in loneliness through connection and compassion.",
+    "vi": "Hướng dẫn thực tế giúp bạn tìm sự an ủi trong nỗi cô đơn thông qua kết nối và lòng trắc ẩn."
+  }
 }

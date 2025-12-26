@@ -134,5 +134,9 @@
     }
   ],
   "tier": "VIP1",
-  "domain": "General"
+  "domain": "General",
+  "title": {
+    "en": "eating_disorder_support_vip1",
+    "vi": "Hỗ Trợ Rối Loạn Ăn Uống"
+  }
 }

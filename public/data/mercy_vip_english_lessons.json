@@ -182,5 +182,9 @@
   "id": "mercy_vip_english_lessons",
   "entries": [],
   "tier": "Free / Miễn phí",
-  "domain": "English"
+  "domain": "English",
+  "title": {
+    "en": "mercy_vip_english_lessons",
+    "vi": "mercy_vip_english_lessons"
+  }
 }

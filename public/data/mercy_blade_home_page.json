@@ -46,5 +46,9 @@
     }
   ],
   "tier": "Free",
-  "domain": "General"
+  "domain": "General",
+  "title": {
+    "en": "mercy_blade_home_page",
+    "vi": "Trang Chủ Mercy Blade"
+  }
 }

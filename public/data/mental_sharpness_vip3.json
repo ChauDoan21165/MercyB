@@ -88,5 +88,9 @@
   },
   "entries": [],
   "id": "mental_sharpness_vip3",
-  "domain": "General"
+  "domain": "General",
+  "title": {
+    "en": "mental_sharpness_vip3",
+    "vi": "mental_sharpness_vip3"
+  }
 }

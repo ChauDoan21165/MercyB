@@ -134,5 +134,9 @@
     }
   ],
   "tier": "VIP1",
-  "domain": "Mental Health"
+  "domain": "Mental Health",
+  "title": {
+    "en": "bipolar_support_vip1",
+    "vi": "Hỗ Trợ Rối Loạn Lưỡng Cực"
+  }
 }

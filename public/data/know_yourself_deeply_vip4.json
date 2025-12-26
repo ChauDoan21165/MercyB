@@ -2,5 +2,9 @@
   "entries": [],
   "id": "know_yourself_deeply_vip4",
   "tier": "VIP4",
-  "domain": "General"
+  "domain": "General",
+  "title": {
+    "en": "know_yourself_deeply_vip4",
+    "vi": "know_yourself_deeply_vip4"
+  }
 }

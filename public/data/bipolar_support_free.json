@@ -116,5 +116,9 @@
       ],
       "audio": "bipolar_support_free_mood_management.mp3 bipolar_support_free_therapy.mp3 bipolar_support_free_support_system.mp3"
     }
-  ]
+  ],
+  "title": {
+    "en": "bipolar_support_free",
+    "vi": "Hỗ Trợ Rối Loạn Lưỡng Cực"
+  }
 }

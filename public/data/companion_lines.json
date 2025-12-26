@@ -40,5 +40,9 @@
   "id": "companion_lines",
   "entries": [],
   "tier": "Free / Miễn phí",
-  "domain": "General"
+  "domain": "General",
+  "title": {
+    "en": "companion_lines",
+    "vi": "companion_lines"
+  }
 }

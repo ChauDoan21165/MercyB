@@ -112,5 +112,9 @@
   "id": "mercy_vip_ei_idioms",
   "entries": [],
   "tier": "Free / Miễn phí",
-  "domain": "General"
+  "domain": "General",
+  "title": {
+    "en": "mercy_vip_ei_idioms",
+    "vi": "mercy_vip_ei_idioms"
+  }
 }

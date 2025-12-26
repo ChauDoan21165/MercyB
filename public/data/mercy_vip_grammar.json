@@ -122,5 +122,9 @@
   "id": "mercy_vip_grammar",
   "entries": [],
   "tier": "Free / Miễn phí",
-  "domain": "English"
+  "domain": "English",
+  "title": {
+    "en": "mercy_vip_grammar",
+    "vi": "mercy_vip_grammar"
+  }
 }

@@ -139,5 +139,9 @@
       "audio": "why_ai_fascinates_us_vip2.mp3 ai_and_human_creativity_vip2.mp3 the_emotional_side_of_ai_vip2.mp3 ai_and_the_future_of_humanity_vip2.mp3"
     }
   ],
-  "domain": "General"
+  "domain": "General",
+  "title": {
+    "en": "ai_vip2",
+    "vi": "Thành Thạo AI"
+  }
 }

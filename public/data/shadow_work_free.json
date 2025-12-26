@@ -183,5 +183,9 @@
     }
   ],
   "tier": "Free / Miễn phí",
-  "domain": "General"
+  "domain": "General",
+  "title": {
+    "en": "Introductory shadow work: identifying hidden traits, integration, reflection, forgiveness, awareness, and inner wholeness.",
+    "vi": "Giới thiệu về làm việc với bóng tối: nhận diện đặc điểm ẩn giấu, hòa nhập, chiêm nghiệm, tha thứ, nhận thức, và sự toàn vẹn nội tâm."
+  }
 }

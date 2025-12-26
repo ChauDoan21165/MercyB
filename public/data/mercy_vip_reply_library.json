@@ -386,5 +386,9 @@
   "id": "mercy_vip_reply_library",
   "entries": [],
   "tier": "Free / Miễn phí",
-  "domain": "General"
+  "domain": "General",
+  "title": {
+    "en": "mercy_vip_reply_library",
+    "vi": "mercy_vip_reply_library"
+  }
 }

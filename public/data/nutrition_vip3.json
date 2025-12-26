@@ -40,5 +40,9 @@
     }
   },
   "id": "nutrition_vip3",
-  "domain": "Health"
+  "domain": "Health",
+  "title": {
+    "en": "nutrition_vip3",
+    "vi": "nutrition_vip3"
+  }
 }

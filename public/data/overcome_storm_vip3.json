@@ -129,5 +129,9 @@
     }
   },
   "entries": [],
-  "domain": "General"
+  "domain": "General",
+  "title": {
+    "en": "overcome_storm_vip3",
+    "vi": "overcome_storm_vip3"
+  }
 }

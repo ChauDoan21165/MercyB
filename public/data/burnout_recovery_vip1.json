@@ -142,5 +142,9 @@
     }
   ],
   "tier": "VIP1",
-  "domain": "General"
+  "domain": "General",
+  "title": {
+    "en": "burnout_recovery_vip1",
+    "vi": "Phục Hồi Kiệt Sức"
+  }
 }

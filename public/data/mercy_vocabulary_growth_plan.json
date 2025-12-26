@@ -86,5 +86,9 @@
   "id": "mercy_vocabulary_growth_plan",
   "entries": [],
   "tier": "Free / Miễn phí",
-  "domain": "English"
+  "domain": "English",
+  "title": {
+    "en": "mercy_vocabulary_growth_plan",
+    "vi": "mercy_vocabulary_growth_plan"
+  }
 }

@@ -224,5 +224,9 @@
   "room_essay": {
     "en": "",
     "vi": ""
+  },
+  "title": {
+    "en": "cyrus_v3",
+    "vi": "cyrus_v3"
   }
 }

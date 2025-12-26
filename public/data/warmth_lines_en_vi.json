@@ -144,5 +144,9 @@
   "id": "warmth_lines_en_vi",
   "entries": [],
   "tier": "Free / Miễn phí",
-  "domain": "General"
+  "domain": "General",
+  "title": {
+    "en": "warmth_lines_en_vi",
+    "vi": "warmth_lines_en_vi"
+  }
 }

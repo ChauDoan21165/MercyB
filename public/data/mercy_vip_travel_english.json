@@ -101,5 +101,9 @@
   "id": "mercy_vip_travel_english",
   "entries": [],
   "tier": "Free / Miễn phí",
-  "domain": "English"
+  "domain": "English",
+  "title": {
+    "en": "mercy_vip_travel_english",
+    "vi": "mercy_vip_travel_english"
+  }
 }

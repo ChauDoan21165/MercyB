@@ -2,5 +2,9 @@
   "entries": [],
   "id": "launch_career_vip4_career_4_ii",
   "tier": "VIP4",
-  "domain": "General"
+  "domain": "General",
+  "title": {
+    "en": "launch_career_vip4_career_4_ii",
+    "vi": "launch_career_vip4_career_4_ii"
+  }
 }

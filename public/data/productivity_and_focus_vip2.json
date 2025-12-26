@@ -201,5 +201,9 @@
     }
   ],
   "tier": "VIP2",
-  "domain": "General"
+  "domain": "General",
+  "title": {
+    "en": "productivity_and_focus_vip2",
+    "vi": "Năng Suất & Tập Trung"
+  }
 }

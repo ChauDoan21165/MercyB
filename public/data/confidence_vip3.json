@@ -22,5 +22,9 @@
     }
   },
   "id": "confidence_vip3",
-  "domain": "General"
+  "domain": "General",
+  "title": {
+    "en": "confidence_vip3",
+    "vi": "confidence_vip3"
+  }
 }

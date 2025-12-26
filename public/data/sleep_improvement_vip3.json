@@ -244,5 +244,9 @@
   ],
   "id": "sleep_improvement_vip3",
   "tier": "VIP3",
-  "domain": "Mental Health"
+  "domain": "Mental Health",
+  "title": {
+    "en": "sleep_improvement_vip3",
+    "vi": "sleep_improvement_vip3"
+  }
 }

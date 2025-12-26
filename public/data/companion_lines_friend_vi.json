@@ -57,5 +57,9 @@
   "id": "companion_lines_friend_vi",
   "entries": [],
   "tier": "Free / Miễn phí",
-  "domain": "General"
+  "domain": "General",
+  "title": {
+    "en": "companion_lines_friend_vi",
+    "vi": "companion_lines_friend_vi"
+  }
 }

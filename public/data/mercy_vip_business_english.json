@@ -101,5 +101,9 @@
   "id": "mercy_vip_business_english",
   "entries": [],
   "tier": "Free / Miễn phí",
-  "domain": "English"
+  "domain": "English",
+  "title": {
+    "en": "mercy_vip_business_english",
+    "vi": "mercy_vip_business_english"
+  }
 }

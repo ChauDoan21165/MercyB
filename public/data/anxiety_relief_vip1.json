@@ -133,5 +133,9 @@
     }
   ],
   "tier": "VIP1",
-  "domain": "Mental Health"
+  "domain": "Mental Health",
+  "title": {
+    "en": "anxiety_relief_vip1",
+    "vi": "Lo Âu Xã Hội"
+  }
 }

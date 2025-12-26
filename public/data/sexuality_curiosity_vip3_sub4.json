@@ -284,5 +284,9 @@
     }
   ],
   "tier": "VIP3",
-  "domain": "General"
+  "domain": "General",
+  "title": {
+    "en": "sexuality_curiosity_vip3_sub4",
+    "vi": "Sức Khỏe và An Toàn Tình Dục"
+  }
 }

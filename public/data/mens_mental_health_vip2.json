@@ -186,5 +186,9 @@
       "audio": "mmh_vip2_1_en.mp3 mmh_vip2_2_en.mp3 mmh_vip2_3_en.mp3 mmh_vip2_4_en.mp3 mmh_vip2_5_en.mp3 mmh_vip2_6_en.mp3"
     }
   ],
-  "domain": "General"
+  "domain": "General",
+  "title": {
+    "en": "mens_mental_health_vip2",
+    "vi": "Sức Khỏe Tinh Thần Nam Giới"
+  }
 }

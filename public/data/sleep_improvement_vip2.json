@@ -138,5 +138,9 @@
       "audio": "sleep_vip2_1_en.mp3 sleep_vip2_2_en.mp3 sleep_vip2_3_en.mp3 sleep_vip2_4_en.mp3"
     }
   ],
-  "domain": "Mental Health"
+  "domain": "Mental Health",
+  "title": {
+    "en": "sleep_improvement_vip2",
+    "vi": "Cải Thiện Giấc Ngủ Trung Cấp"
+  }
 }

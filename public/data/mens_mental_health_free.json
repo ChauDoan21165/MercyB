@@ -84,5 +84,9 @@
     }
   ],
   "tier": "Free / Miễn phí",
-  "domain": "General"
+  "domain": "General",
+  "title": {
+    "en": "mens_mental_health_free",
+    "vi": "Sức Khỏe Tinh Thần Nam Giới"
+  }
 }

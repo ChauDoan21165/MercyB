@@ -2,5 +2,9 @@
   "entries": [],
   "id": "grow_wealth_vip4_career_6",
   "tier": "VIP4",
-  "domain": "General"
+  "domain": "General",
+  "title": {
+    "en": "grow_wealth_vip4_career_6",
+    "vi": "grow_wealth_vip4_career_6"
+  }
 }
