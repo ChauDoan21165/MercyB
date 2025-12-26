@@ -1,4 +1,4 @@
-import { supabase } from '@/integrations/supabase/client';
+import { supabase } from '@/lib/supabaseClient';
 
 export type MoodKey = 'light' | 'ok' | 'heavy' | 'anxious';
 

@@ -5,7 +5,7 @@
 
 import { useState } from 'react';
 import { AlertTriangle, CheckCircle, FileText, Shield, Loader2 } from 'lucide-react';
-import { supabase } from '@/integrations/supabase/client';
+import { supabase } from '@/lib/supabaseClient';
 import { AdminButton } from '@/components/design-system/AdminButton';
 import { SeverityBadge } from '@/components/design-system/SeverityBadge';
 import { SectionHeader } from '@/design-system/components/SectionHeader';

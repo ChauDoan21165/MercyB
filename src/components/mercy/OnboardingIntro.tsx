@@ -1,206 +1,161 @@
+// src/components/mercy/OnboardingIntro.tsx — MB-BLUE-94.11 — 2025-12-24 (+0700)
 /**
- * Mercy Onboarding Intro
- * 
- * 3-step onboarding for first-time users.
+ * MercyBlade Blue — OnboardingIntro
+ * File: src/components/mercy/OnboardingIntro.tsx
+ * Version: MB-BLUE-94.11 — 2025-12-24 (+0700)
+ *
+ * LOCK:
+ * - MUST export: OnboardingIntro (named) because src/components/mercy/index.ts re-exports it.
+ * - Also export default for safety (some legacy imports may use default).
+ * - FAIL-OPEN: onboarding must not crash if Supabase/session calls fail.
  */
 
-import { useState, useEffect } from 'react';
-import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
-import { MercyAvatar } from './MercyAvatar';
-import { MercyAnimation } from './MercyAnimations';
-import { memory } from '@/lib/mercy-host/memory';
-import { X, ChevronRight, ChevronLeft, Sparkles } from 'lucide-react';
+import { useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-interface OnboardingStep {
-  titleEn: string;
-  titleVi: string;
-  contentEn: string;
-  contentVi: string;
-  animation: 'halo' | 'ripple' | 'shimmer';
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { supabase } from "@/lib/supabaseClient";
+
+type Step = {
+  id: string;
+  title: string;
+  body: string;
+};
+
+const STORAGE_HAS_SEEN = "mb_has_seen_onboarding";
+const STORAGE_REDIRECT = "mb_redirect_after_onboarding";
+
+const safeRedirectTarget = (raw: string | null | undefined) => {
+  const val = String(raw || "").trim();
+  if (!val) return "/";
+  if (!val.startsWith("/")) return "/";
+  if (val.startsWith("//")) return "/";
+  return val;
+};
+
+export function useOnboardingCheck() {
+  const hasSeen = useMemo(() => {
+    return localStorage.getItem(STORAGE_HAS_SEEN) === "true";
+  }, []);
+  return { hasSeen };
 }
 
-const ONBOARDING_STEPS: OnboardingStep[] = [
-  {
-    titleEn: "Meet Mercy, Your Guide",
-    titleVi: "Gặp Mercy, Người Hướng Dẫn Của Bạn",
-    contentEn: "Welcome! I'm Mercy, your personal host. I'll be here to guide you through your learning journey with warmth and encouragement.",
-    contentVi: "Chào mừng! Mình là Mercy, người đồng hành của bạn. Mình sẽ ở đây để hướng dẫn bạn trong hành trình học tập với sự ấm áp và khích lệ.",
-    animation: 'halo'
-  },
-  {
-    titleEn: "I Adapt To You",
-    titleVi: "Mình Thích Nghi Với Bạn",
-    contentEn: "As you grow, my guidance evolves. In higher tiers, I speak with more depth and vision. But always, I remain your steady companion.",
-    contentVi: "Khi bạn phát triển, sự hướng dẫn của mình cũng tiến hóa. Ở các tầng cao hơn, mình nói với chiều sâu và tầm nhìn hơn. Nhưng luôn luôn, mình vẫn là người bạn đồng hành vững vàng của bạn.",
-    animation: 'shimmer'
-  },
-  {
-    titleEn: "Let's Begin Together",
-    titleVi: "Hãy Bắt Đầu Cùng Nhau",
-    contentEn: "I'll greet you when you enter rooms, celebrate your progress, and offer gentle guidance. Press Shift+M anytime to toggle my presence.",
-    contentVi: "Mình sẽ chào bạn khi bạn vào phòng, ăn mừng tiến bộ của bạn, và đưa ra hướng dẫn nhẹ nhàng. Nhấn Shift+M bất cứ lúc nào để bật/tắt sự hiện diện của mình.",
-    animation: 'ripple'
-  }
-];
+export function OnboardingIntro() {
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+  const [authedEmail, setAuthedEmail] = useState<string | null>(null);
 
-interface OnboardingIntroProps {
-  language?: 'en' | 'vi';
-  onComplete?: () => void;
-  onSkip?: () => void;
-}
+  const steps: Step[] = useMemo(
+    () => [
+      {
+        id: "welcome",
+        title: "Welcome to Mercy Blade",
+        body: "This is room-based learning. You can go to /rooms or open a direct /room/{roomId} link.",
+      },
+      {
+        id: "audio",
+        title: "Audio-first UI",
+        body: "Guidance is delivered through audio. Tap the small face icon to play/pause.",
+      },
+      {
+        id: "privacy",
+        title: "Privacy & safety",
+        body: "Onboarding is fail-open: if any admin/security tables aren’t ready, you still proceed normally.",
+      },
+    ],
+    []
+  );
 
-export function OnboardingIntro({
-  language = 'en',
-  onComplete,
-  onSkip
-}: OnboardingIntroProps) {
-  const [currentStep, setCurrentStep] = useState(0);
-  const [isVisible, setIsVisible] = useState(true);
-  const [isAnimating, setIsAnimating] = useState(false);
-
-  // Check if onboarding needed
   useEffect(() => {
-    if (!memory.needsOnboarding()) {
-      setIsVisible(false);
+    let mounted = true;
+
+    async function boot() {
+      try {
+        const { data } = await supabase.auth.getSession();
+        if (!mounted) return;
+        setAuthedEmail(data?.session?.user?.email ?? null);
+      } catch {
+        if (!mounted) return;
+        setAuthedEmail(null);
+      } finally {
+        if (mounted) setLoading(false);
+      }
     }
+
+    boot();
+
+    return () => {
+      mounted = false;
+    };
   }, []);
 
-  const handleNext = () => {
-    if (currentStep < ONBOARDING_STEPS.length - 1) {
-      setIsAnimating(true);
-      setTimeout(() => {
-        setCurrentStep(prev => prev + 1);
-        setIsAnimating(false);
-      }, 200);
-    } else {
-      handleComplete();
-    }
+  const finish = () => {
+    try {
+      localStorage.setItem(STORAGE_HAS_SEEN, "true");
+    } catch {}
+
+    const rawTarget = localStorage.getItem(STORAGE_REDIRECT);
+    const target = safeRedirectTarget(rawTarget);
+
+    try {
+      localStorage.removeItem(STORAGE_REDIRECT);
+    } catch {}
+
+    navigate(target, { replace: true });
   };
 
-  const handleBack = () => {
-    if (currentStep > 0) {
-      setIsAnimating(true);
-      setTimeout(() => {
-        setCurrentStep(prev => prev - 1);
-        setIsAnimating(false);
-      }, 200);
-    }
-  };
-
-  const handleComplete = () => {
-    memory.completeOnboarding();
-    setIsVisible(false);
-    onComplete?.();
-  };
-
-  const handleSkip = () => {
-    memory.completeOnboarding();
-    setIsVisible(false);
-    onSkip?.();
-  };
-
-  if (!isVisible) return null;
-
-  const step = ONBOARDING_STEPS[currentStep];
-  const isLastStep = currentStep === ONBOARDING_STEPS.length - 1;
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center p-6 text-muted-foreground">
+        Preparing onboarding…
+      </div>
+    );
+  }
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-background/80 backdrop-blur-sm animate-fade-in">
-      <div className="relative w-full max-w-md mx-4">
-        {/* Skip button */}
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={handleSkip}
-          className="absolute -top-12 right-0 text-muted-foreground hover:text-foreground"
-        >
-          <X className="h-4 w-4 mr-1" />
-          {language === 'vi' ? 'Bỏ qua' : 'Skip'}
-        </Button>
-
-        {/* Main card */}
-        <div 
-          className={cn(
-            "bg-card border border-border rounded-2xl shadow-2xl overflow-hidden transition-all duration-200",
-            isAnimating && "opacity-50 scale-95"
-          )}
-        >
-          {/* Header with avatar */}
-          <div className="relative bg-gradient-to-br from-primary/10 to-primary/5 py-8 flex flex-col items-center">
-            <div className="relative">
-              <MercyAnimation variant={step.animation} size={100} className="absolute inset-0" />
-              <MercyAvatar size={80} style="angelic" animate />
+    <div className="min-h-screen p-4">
+      <div className="mx-auto w-full max-w-2xl space-y-4">
+        <Card className="p-5">
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <h1 className="text-2xl font-semibold">Onboarding</h1>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Quick setup so you can start rooms immediately.
+              </p>
+              {authedEmail ? (
+                <p className="mt-2 text-xs text-muted-foreground">
+                  Signed in as: <span className="font-medium">{authedEmail}</span>
+                </p>
+              ) : (
+                <p className="mt-2 text-xs text-muted-foreground">
+                  Not signed in (that’s okay — onboarding still works).
+                </p>
+              )}
             </div>
-            <div className="mt-4 flex items-center gap-1.5 text-primary">
-              <Sparkles className="h-4 w-4" />
-              <span className="text-sm font-medium">Mercy</span>
-            </div>
-          </div>
 
-          {/* Content */}
-          <div className="p-6">
-            <h2 className="text-xl font-semibold text-foreground text-center mb-3">
-              {language === 'vi' ? step.titleVi : step.titleEn}
-            </h2>
-            <p className="text-muted-foreground text-center leading-relaxed">
-              {language === 'vi' ? step.contentVi : step.contentEn}
-            </p>
+            <Button onClick={finish}>Finish</Button>
           </div>
+        </Card>
 
-          {/* Progress dots */}
-          <div className="flex justify-center gap-2 pb-4">
-            {ONBOARDING_STEPS.map((_, index) => (
-              <div
-                key={index}
-                className={cn(
-                  "h-2 rounded-full transition-all",
-                  index === currentStep 
-                    ? "w-6 bg-primary" 
-                    : "w-2 bg-muted-foreground/30"
-                )}
-              />
-            ))}
-          </div>
+        <div className="grid gap-3">
+          {steps.map((s) => (
+            <Card key={s.id} className="p-4">
+              <div className="font-semibold">{s.title}</div>
+              <div className="mt-1 text-sm text-muted-foreground">{s.body}</div>
+            </Card>
+          ))}
+        </div>
 
-          {/* Navigation */}
-          <div className="flex items-center justify-between p-4 border-t border-border">
-            <Button
-              variant="ghost"
-              onClick={handleBack}
-              disabled={currentStep === 0}
-              className="gap-1"
-            >
-              <ChevronLeft className="h-4 w-4" />
-              {language === 'vi' ? 'Quay lại' : 'Back'}
-            </Button>
-
-            <Button
-              onClick={handleNext}
-              className="gap-1"
-            >
-              {isLastStep 
-                ? (language === 'vi' ? 'Bắt đầu' : "Let's Go")
-                : (language === 'vi' ? 'Tiếp theo' : 'Next')
-              }
-              {!isLastStep && <ChevronRight className="h-4 w-4" />}
-            </Button>
-          </div>
+        <div className="flex items-center justify-between">
+          <Button variant="outline" onClick={() => navigate("/", { replace: true })}>
+            Back to Home
+          </Button>
+          <Button onClick={finish}>Finish</Button>
         </div>
       </div>
     </div>
   );
 }
 
-/**
- * Hook to check if onboarding should show
- */
-export function useOnboardingCheck(): boolean {
-  const [needsOnboarding, setNeedsOnboarding] = useState(false);
-
-  useEffect(() => {
-    setNeedsOnboarding(memory.needsOnboarding());
-  }, []);
-
-  return needsOnboarding;
-}
+export default OnboardingIntro;

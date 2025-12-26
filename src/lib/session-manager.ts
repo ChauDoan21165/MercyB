@@ -3,7 +3,7 @@
  * Auto-refresh Supabase session before expiry
  */
 
-import { supabase } from "@/integrations/supabase/client";
+import { supabase } from "@/lib/supabaseClient";
 import { logger } from "./logger";
 
 class SessionManager {

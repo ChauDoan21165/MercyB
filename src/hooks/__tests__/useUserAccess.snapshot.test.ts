@@ -7,7 +7,7 @@ import { normalizeTier } from "@/lib/constants/tiers";
 const mockGetUser = vi.fn();
 const mockFrom = vi.fn();
 
-vi.mock("@/integrations/supabase/client", () => ({
+vi.mock("@/lib/supabaseClient", () => ({
   supabase: {
     auth: {
       getUser: mockGetUser,

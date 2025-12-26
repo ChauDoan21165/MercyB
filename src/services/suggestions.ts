@@ -1,5 +1,5 @@
 import { CompanionProfile, EnglishLevel } from './companion';
-import { supabase } from '@/integrations/supabase/client';
+import { supabase } from '@/lib/supabaseClient';
 
 export interface SuggestedItem {
   type: 'room' | 'path';

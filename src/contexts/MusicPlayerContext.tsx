@@ -1,123 +1,143 @@
-// src/contexts/MusicPlayerContext.tsx — v2025-12-21-88.3-MUSIC-CONTEXT-HARDENED
+// src/contexts/MusicPlayerContext.tsx — MB-BLUE-94.3 — 2025-12-24 (+0700)
+/**
+ * MercyBlade Blue — MusicPlayerContext (GLOBAL SINGLE AUDIO OWNER)
+ *
+ * GOAL (LOCKED):
+ * - Only ONE audio plays at a time across the whole app.
+ * - Simple API for buttons: play(file), stop()
+ * - Audio files live in /public/audio and are referenced as filename only.
+ *
+ * Proof target:
+ * - EntryAudioButton calls play("english_writing_basics.mp3") and it plays /audio/english_writing_basics.mp3
+ *
+ * MB-BLUE-94.3 changes:
+ * - stop() clears audioRef to hard reset ownership
+ * - play() catches play() rejection (autoplay policy, navigation) to avoid unhandled promise
+ */
+
 import {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useRef,
   useState,
   type ReactNode,
 } from "react";
 
-/**
- * Snapshot sent from any AudioPlayer
- * Only ONE player is allowed to be "active" at a time
- */
-type MusicPlayerSnapshot = {
-  isPlaying: boolean;
-  currentTrackName?: string;
-};
-
-/**
- * Context value
- */
 type MusicPlayerContextValue = {
   isPlaying: boolean;
   currentTrackName?: string;
-  /**
-   * Called by AudioPlayer
-   * Returns true if caller is allowed to play
-   */
-  requestPlay: (snapshot: MusicPlayerSnapshot) => boolean;
-  /**
-   * Notify stop / pause
-   */
-  notifyStop: () => void;
+
+  /** Play a filename from /public/audio (filename only) */
+  play: (file: string) => Promise<void>;
+
+  /** Stop current playback (if any) */
+  stop: () => void;
 };
 
 const MusicPlayerContext =
   createContext<MusicPlayerContextValue | undefined>(undefined);
 
-/**
- * MusicPlayerProvider
- *
- * Guarantees:
- * - Only ONE audio plays at a time (global calm)
- * - Homepage sections do not overlap audio
- * - Safe for future rituals / background music
- */
-export const MusicPlayerProvider = ({
-  children,
-}: {
-  children: ReactNode;
-}) => {
+function normalizeAudioUrl(file: string): string {
+  const clean = String(file || "").trim().replace(/^\/+/, "");
+  // If caller accidentally passes "audio/x.mp3", normalize to "/audio/x.mp3"
+  if (clean.startsWith("audio/")) return `/${clean}`;
+  // Default: filename only
+  return `/audio/${clean}`;
+}
+
+export const MusicPlayerProvider = ({ children }: { children: ReactNode }) => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [currentTrackName, setCurrentTrackName] = useState<
-    string | undefined
-  >();
+  const [currentTrackName, setCurrentTrackName] = useState<string | undefined>();
 
-  // Track ownership (who is currently allowed to play)
-  const activeOwnerRef = useRef<string | null>(null);
+  // Single audio element for whole app
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  /**
-   * AudioPlayer calls this BEFORE playing
-   * If another track is active → deny
-   */
-  const requestPlay = useCallback(
-    (snapshot: MusicPlayerSnapshot): boolean => {
-      const name = snapshot.currentTrackName || "unknown";
-
-      // No one playing → grant
-      if (!activeOwnerRef.current) {
-        activeOwnerRef.current = name;
-        setIsPlaying(true);
-        setCurrentTrackName(name);
-        return true;
+  const stop = useCallback(() => {
+    const a = audioRef.current;
+    if (a) {
+      try {
+        a.pause();
+        a.currentTime = 0;
+      } catch {
+        // ignore
       }
-
-      // Same owner resumes → grant
-      if (activeOwnerRef.current === name) {
-        setIsPlaying(snapshot.isPlaying);
-        return true;
-      }
-
-      // Another audio is already playing → deny
-      return false;
-    },
-    []
-  );
-
-  /**
-   * AudioPlayer calls this when paused / ended
-   */
-  const notifyStop = useCallback(() => {
-    activeOwnerRef.current = null;
+    }
+    audioRef.current = null; // ✅ hard reset ownership
     setIsPlaying(false);
     setCurrentTrackName(undefined);
   }, []);
 
+  const play = useCallback(
+    async (file: string) => {
+      const name = String(file || "").trim();
+      if (!name) return;
+
+      // If same track is playing -> restart (predictable UX)
+      if (isPlaying && currentTrackName === name && audioRef.current) {
+        audioRef.current.currentTime = 0;
+        return;
+      }
+
+      // Stop anything else first (SINGLE OWNER rule)
+      stop();
+
+      const url = normalizeAudioUrl(name);
+      const a = new Audio(url);
+      a.preload = "metadata";
+
+      audioRef.current = a;
+      setCurrentTrackName(name);
+
+      a.onplay = () => setIsPlaying(true);
+
+      a.onended = () => {
+        setIsPlaying(false);
+        setCurrentTrackName(undefined);
+        audioRef.current = null;
+      };
+
+      a.onerror = () => {
+        setIsPlaying(false);
+        setCurrentTrackName(undefined);
+        audioRef.current = null;
+        // Keep this as warn (important for coverage)
+        console.warn("[MusicPlayer] audio load/play failed:", url);
+      };
+
+      // Must be user-gesture initiated in most cases; EntryAudioButton provides that.
+      try {
+        await a.play();
+      } catch (err) {
+        setIsPlaying(false);
+        setCurrentTrackName(undefined);
+        audioRef.current = null;
+        console.warn("[MusicPlayer] play() rejected:", url, err);
+      }
+    },
+    [stop, isPlaying, currentTrackName]
+  );
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      stop();
+      audioRef.current = null;
+    };
+  }, [stop]);
+
   return (
-    <MusicPlayerContext.Provider
-      value={{
-        isPlaying,
-        currentTrackName,
-        requestPlay,
-        notifyStop,
-      }}
-    >
+    <MusicPlayerContext.Provider value={{ isPlaying, currentTrackName, play, stop }}>
       {children}
     </MusicPlayerContext.Provider>
   );
 };
 
-/**
- * Hook
- */
 export const useMusicPlayer = () => {
   const ctx = useContext(MusicPlayerContext);
   if (!ctx) {
-    throw new Error(
-      "useMusicPlayer must be used within a MusicPlayerProvider"
-    );
+    throw new Error("useMusicPlayer must be used within a MusicPlayerProvider");
   }
   return ctx;
 };

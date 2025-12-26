@@ -4,7 +4,7 @@
  * Analyzes audio completeness across all rooms and tiers
  */
 
-import { supabase } from "@/integrations/supabase/client";
+import { supabase } from "@/lib/supabaseClient";
 import { normalizeTier, tierIdToLabel } from "@/lib/constants/tiers";
 
 export interface RoomAudioCoverage {

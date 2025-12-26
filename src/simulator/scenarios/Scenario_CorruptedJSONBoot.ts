@@ -56,7 +56,7 @@ export async function runScenario_CorruptedJSONBoot() {
 
 async function getSampleRoomIds(count: number): Promise<string[]> {
   try {
-    const { supabase } = await import('@/integrations/supabase/client');
+    const { supabase } = await import('@/lib/supabaseClient');
     const { data } = await supabase.from('rooms').select('id').limit(count);
     return data?.map(r => r.id) || [];
   } catch {

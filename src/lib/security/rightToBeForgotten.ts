@@ -3,7 +3,7 @@
  * Allows users to delete their account and all associated data
  */
 
-import { supabase } from '@/integrations/supabase/client';
+import { supabase } from '@/lib/supabaseClient';
 
 export interface DeletionResult {
   success: boolean;

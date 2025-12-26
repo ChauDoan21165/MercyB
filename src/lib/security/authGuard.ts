@@ -3,7 +3,7 @@
  * Centralized authentication and authorization checks
  */
 
-import { supabase } from '@/integrations/supabase/client';
+import { supabase } from '@/lib/supabaseClient';
 import { User } from '@supabase/supabase-js';
 
 export interface AuthContext {

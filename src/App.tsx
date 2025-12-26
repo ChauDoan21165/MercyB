@@ -1,12 +1,11 @@
 /**
- * MercyBlade Blue — APP SHELL (Providers-only)
+ * MercyBlade Blue — App (Providers Only)
  * File: src/App.tsx
- * Version: MB-BLUE-93.1 — 2025-12-23 (+0700)
+ * Version: MB-BLUE-94.14.24 — 2025-12-26 (+0700)
  *
- * Goal:
- * - App.tsx must be minimal (providers only)
- * - ALL routes must live in src/router/AppRouter.tsx
- * - Fix /admin bouncing back to / caused by old wildcard routes in App.tsx
+ * LOCKED:
+ * - App.tsx MUST NOT mount AuthProvider
+ * - AuthProvider lives ONLY in main.tsx
  */
 
 import { useEffect } from "react";
@@ -14,8 +13,8 @@ import AppRouter from "@/router/AppRouter";
 
 export default function App() {
   useEffect(() => {
-    console.log("App.tsx version: MB-BLUE-93.1 — 2025-12-23 (+0700)");
-    (window as any).__MB_APP_VERSION__ = "MB-BLUE-93.1";
+    console.log("App.tsx version: MB-BLUE-94.14.24");
+    (window as any).__MB_APP_VERSION__ = "MB-BLUE-94.14.24";
   }, []);
 
   return <AppRouter />;

@@ -10,7 +10,7 @@ import { useMercyBladeTheme } from '@/hooks/useMercyBladeTheme';
 import { Button } from "@/components/ui/button";
 import { Palette } from "lucide-react";
 import { useQuery } from '@tanstack/react-query';
-import { supabase } from '@/integrations/supabase/client';
+import { supabase } from '@/lib/supabaseClient';
 import { ROOMS_TABLE } from '@/lib/constants/rooms';
 
 const EnglishLearningPathway = () => {

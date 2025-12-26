@@ -331,7 +331,7 @@ export function estimateTtsCost(charCount: number): number {
 }`,
 
   "src/lib/roomLoader.ts": `// src/lib/roomLoader.ts
-import { supabase } from '@/integrations/supabase/client';
+import { supabase } from '@/lib/supabaseClient';
 import { processEntriesOptimized } from './roomLoaderHelpers';
 import { ROOMS_TABLE, AUDIO_FOLDER } from '@/lib/constants/rooms';
 import { normalizeTier, type TierId, isKidsTier } from '@/lib/constants/tiers';
@@ -650,7 +650,7 @@ const loadMergedRoomInternal = async (roomId: string): Promise<LoadedRoomResult>
 import { Button } from '@/components/ui/button';
 import { UserPlus, Eye, ChevronRight, Home } from 'lucide-react';
 import { useNavigate, Link } from 'react-router-dom';
-import { supabase } from '@/integrations/supabase/client';
+import { supabase } from '@/lib/supabaseClient';
 import { useEffect, useState } from 'react';
 import { ThemeToggle } from '@/components/ThemeToggle';
 

@@ -1,5 +1,5 @@
 import { useCallback, useRef } from 'react';
-import { supabase } from '@/integrations/supabase/client';
+import { supabase } from '@/lib/supabaseClient';
 
 type AlertTone = 'alert' | 'warning' | 'chime' | 'bell';
 

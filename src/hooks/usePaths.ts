@@ -1,5 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { supabase } from '@/integrations/supabase/client';
+import { supabase } from '@/lib/supabaseClient';
 import * as pathsService from '@/services/paths';
 import type { Path, PathDay, UserPathProgress, PathWithProgress } from '@/types/paths';
 

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Bell } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { supabase } from "@/integrations/supabase/client";
+import { supabase } from "@/lib/supabaseClient";
 import { useUserAccess } from "@/hooks/useUserAccess";
 
 export const FeedbackNotificationBadge = () => {

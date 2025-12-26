@@ -12,7 +12,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 // NOTE: Keep this import path aligned with your repo.
-import { supabase } from "@/integrations/supabase/client";
+import { supabase } from "@/lib/supabaseClient";
 
 export interface AdminStats {
   totalUsers: number;

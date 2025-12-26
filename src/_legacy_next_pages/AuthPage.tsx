@@ -1,8 +1,17 @@
+/**
+ * MercyBlade Blue — AuthPage (Legacy)
+ * File: src/_legacy_next_pages/AuthPage.tsx
+ * Version: MB-BLUE-93.7 — 2025-12-23 (+0700)
+ *
+ * PURPOSE:
+ * - Email/password login + register UI
+ * - Redirects user after successful auth
+ */
+
 import { useState } from "react";
-import {
-  signInWithEmail,
-  signUpWithEmail,
-} from "@/lib/authService"; // adjust path
+import type React from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { signInWithEmail, signUpWithEmail } from "@/lib/authService";
 
 export function AuthPage() {
   const [mode, setMode] = useState<"login" | "register">("login");
@@ -10,6 +19,13 @@ export function AuthPage() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // where to go after login
+  const redirectTo =
+    (location.state as any)?.from ?? "/";
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -19,15 +35,12 @@ export function AuthPage() {
     try {
       if (mode === "register") {
         await signUpWithEmail(email, password);
-        // If you use email confirmation:
-        // alert("Check your email to confirm your account");
-        // If not using confirmation, you may redirect to / after sign up
-        console.log("User registered");
       } else {
         await signInWithEmail(email, password);
-        console.log("User logged in");
-        // redirect user, e.g. navigate("/hub");
       }
+
+      // ✅ redirect after successful auth
+      navigate(redirectTo, { replace: true });
     } catch (err: any) {
       setErrorMsg(err?.message ?? "Authentication failed");
     } finally {
@@ -55,9 +68,7 @@ export function AuthPage() {
           Mật khẩu
           <input
             type="password"
-            autoComplete={
-              mode === "login" ? "current-password" : "new-password"
-            }
+            autoComplete={mode === "login" ? "current-password" : "new-password"}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -67,23 +78,15 @@ export function AuthPage() {
         {errorMsg && <p style={{ color: "red" }}>{errorMsg}</p>}
 
         <button type="submit" disabled={loading}>
-          {loading
-            ? "Đang xử lý..."
-            : mode === "login"
-            ? "Đăng nhập"
-            : "Tạo tài khoản"}
+          {loading ? "Đang xử lý..." : mode === "login" ? "Đăng nhập" : "Tạo tài khoản"}
         </button>
       </form>
 
       <button
         type="button"
-        onClick={() =>
-          setMode((m) => (m === "login" ? "register" : "login"))
-        }
+        onClick={() => setMode((m) => (m === "login" ? "register" : "login"))}
       >
-        {mode === "login"
-          ? "Chưa có tài khoản? Đăng ký"
-          : "Đã có tài khoản? Đăng nhập"}
+        {mode === "login" ? "Chưa có tài khoản? Đăng ký" : "Đã có tài khoản? Đăng nhập"}
       </button>
     </div>
   );

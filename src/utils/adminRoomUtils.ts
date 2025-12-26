@@ -1,4 +1,4 @@
-import { supabase } from '@/integrations/supabase/client';
+import { supabase } from '@/lib/supabaseClient';
 import { ROOMS_TABLE } from '@/lib/constants/rooms';
 
 // Toggle demo status for a room

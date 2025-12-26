@@ -7,7 +7,7 @@ import { AlertCircle, CheckCircle2, XCircle, Loader2, RefreshCw, Download } from
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { roomMasterBatchLoader } from '@/lib/roomMaster/roomMasterLoader';
 import type { RoomMasterOutput } from '@/lib/roomMaster/roomMasterTypes';
-import { supabase } from '@/integrations/supabase/client';
+import { supabase } from '@/lib/supabaseClient';
 import AdminButton from '@/components/design-system/AdminButton';
 
 interface RoomSummary {

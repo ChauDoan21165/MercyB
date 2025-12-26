@@ -1,3 +1,17 @@
+/**
+ * MercyBlade Blue — Admin Sidebar (SIMPLE BLACK TEXT ON WHITE)
+ * Path: src/components/admin/AdminSidebar.tsx
+ * Version: MB-BLUE-94.13.13 — 2025-12-25 (+0700)
+ *
+ * NOTES:
+ * - This file does NOT own auth state. It must not subscribe to Supabase.
+ * - Pure navigation UI only.
+ *
+ * CHANGE (94.13.13):
+ * - Add canonical header with PATH + version.
+ * - Fix typing: renderMenuItems now accepts a generic list with optional `end`.
+ */
+
 import {
   LayoutDashboard,
   Users,
@@ -38,8 +52,15 @@ import {
  * No CSS variables - direct hex colors for reliability
  */
 
+type AdminNavItem = {
+  title: string;
+  url: string;
+  icon: any; // lucide icon component
+  end?: boolean;
+};
+
 // Main navigation items
-const mainItems = [
+const mainItems: AdminNavItem[] = [
   { title: "AI Usage & Costs", url: "/admin/ai-usage", icon: Activity, end: false },
   { title: "Dashboard", url: "/admin", icon: Home, end: true },
   { title: "Payments", url: "/admin/payments", icon: DollarSign },
@@ -49,7 +70,7 @@ const mainItems = [
 ];
 
 // Room management tools
-const roomItems = [
+const roomItems: AdminNavItem[] = [
   { title: "Audio Management", url: "/admin/audio-upload", icon: Music },
   { title: "Audio Scanner", url: "/admin/audio-scanner", icon: Volume2 },
   { title: "Audit v4 Safe Shield", url: "/admin/audit-v4", icon: Shield },
@@ -61,7 +82,7 @@ const roomItems = [
 ];
 
 // Monitoring & analytics
-const monitoringItems = [
+const monitoringItems: AdminNavItem[] = [
   { title: "App Metrics", url: "/admin/app-metrics", icon: BarChart3 },
   { title: "Email Broadcast", url: "/admin/email-broadcast", icon: Mail },
   { title: "Reports", url: "/admin/reports", icon: FileText },
@@ -71,7 +92,7 @@ const monitoringItems = [
 ];
 
 // User management
-const userManagementItems = [
+const userManagementItems: AdminNavItem[] = [
   { title: "Gift Codes", url: "/admin/gift-codes", icon: Gift },
   { title: "Manage Admins", url: "/admin/manage-admins", icon: Shield },
   { title: "Moderation", url: "/admin/moderation", icon: Shield },
@@ -79,14 +100,14 @@ const userManagementItems = [
 ];
 
 // Developer tools
-const devToolsItems = [
+const devToolsItems: AdminNavItem[] = [
   { title: "Code Editor", url: "/admin/code-editor", icon: Code },
   { title: "Design Audit", url: "/admin/design-audit", icon: Palette },
   { title: "System Codes", url: "/admin/system-codes", icon: FileText },
 ];
 
 // System tools
-const systemItems = [
+const systemItems: AdminNavItem[] = [
   { title: "Logs", url: "/admin/logs", icon: AlertTriangle },
   { title: "Security", url: "/admin/security", icon: Shield },
   { title: "Settings", url: "/admin/settings", icon: Settings },
@@ -95,7 +116,7 @@ const systemItems = [
 export function AdminSidebar() {
   const { open } = useSidebar();
 
-  const renderMenuItems = (items: typeof mainItems) => (
+  const renderMenuItems = (items: AdminNavItem[]) => (
     <SidebarMenu>
       {items.map((item) => (
         <SidebarMenuItem key={item.title}>
@@ -103,11 +124,11 @@ export function AdminSidebar() {
             <NavLink
               to={item.url}
               end={item.end}
-              style={{ color: '#000000' }}
+              style={{ color: "#000000" }}
               activeClassName="font-bold"
             >
-              <item.icon className="h-4 w-4" style={{ color: '#000000' }} />
-              {open && <span style={{ color: '#000000' }}>{item.title}</span>}
+              <item.icon className="h-4 w-4" style={{ color: "#000000" }} />
+              {open && <span style={{ color: "#000000" }}>{item.title}</span>}
             </NavLink>
           </SidebarMenuButton>
         </SidebarMenuItem>
@@ -116,62 +137,74 @@ export function AdminSidebar() {
   );
 
   return (
-    <Sidebar 
-      collapsible="icon" 
+    <Sidebar
+      collapsible="icon"
       className="[&_[data-sidebar=sidebar]]:!bg-[#F5F5F5] !text-[#000000]"
-      style={{ 
-        backgroundColor: '#F5F5F5',
-        borderRight: '1px solid #E0E0E0',
-        color: '#000000'
+      style={{
+        backgroundColor: "#F5F5F5",
+        borderRight: "1px solid #E0E0E0",
+        color: "#000000",
       }}
     >
-      <SidebarContent className="py-4 bg-[#F5F5F5]" style={{ backgroundColor: '#F5F5F5' }}>
+      <SidebarContent className="py-4 bg-[#F5F5F5]" style={{ backgroundColor: "#F5F5F5" }}>
         {/* Main Navigation */}
         <SidebarGroup>
-          {open && <SidebarGroupLabel style={{ color: '#666666', fontWeight: 'bold' }}>Main</SidebarGroupLabel>}
-          <SidebarGroupContent>
-            {renderMenuItems(mainItems)}
-          </SidebarGroupContent>
+          {open && (
+            <SidebarGroupLabel style={{ color: "#666666", fontWeight: "bold" }}>
+              Main
+            </SidebarGroupLabel>
+          )}
+          <SidebarGroupContent>{renderMenuItems(mainItems)}</SidebarGroupContent>
         </SidebarGroup>
 
         {/* Room Management */}
         <SidebarGroup>
-          {open && <SidebarGroupLabel style={{ color: '#666666', fontWeight: 'bold' }}>Rooms</SidebarGroupLabel>}
-          <SidebarGroupContent>
-            {renderMenuItems(roomItems)}
-          </SidebarGroupContent>
+          {open && (
+            <SidebarGroupLabel style={{ color: "#666666", fontWeight: "bold" }}>
+              Rooms
+            </SidebarGroupLabel>
+          )}
+          <SidebarGroupContent>{renderMenuItems(roomItems)}</SidebarGroupContent>
         </SidebarGroup>
 
         {/* Monitoring & Analytics */}
         <SidebarGroup>
-          {open && <SidebarGroupLabel style={{ color: '#666666', fontWeight: 'bold' }}>Monitoring</SidebarGroupLabel>}
-          <SidebarGroupContent>
-            {renderMenuItems(monitoringItems)}
-          </SidebarGroupContent>
+          {open && (
+            <SidebarGroupLabel style={{ color: "#666666", fontWeight: "bold" }}>
+              Monitoring
+            </SidebarGroupLabel>
+          )}
+          <SidebarGroupContent>{renderMenuItems(monitoringItems)}</SidebarGroupContent>
         </SidebarGroup>
 
         {/* User Management */}
         <SidebarGroup>
-          {open && <SidebarGroupLabel style={{ color: '#666666', fontWeight: 'bold' }}>Users</SidebarGroupLabel>}
-          <SidebarGroupContent>
-            {renderMenuItems(userManagementItems)}
-          </SidebarGroupContent>
+          {open && (
+            <SidebarGroupLabel style={{ color: "#666666", fontWeight: "bold" }}>
+              Users
+            </SidebarGroupLabel>
+          )}
+          <SidebarGroupContent>{renderMenuItems(userManagementItems)}</SidebarGroupContent>
         </SidebarGroup>
 
         {/* Developer Tools */}
         <SidebarGroup>
-          {open && <SidebarGroupLabel style={{ color: '#666666', fontWeight: 'bold' }}>Dev Tools</SidebarGroupLabel>}
-          <SidebarGroupContent>
-            {renderMenuItems(devToolsItems)}
-          </SidebarGroupContent>
+          {open && (
+            <SidebarGroupLabel style={{ color: "#666666", fontWeight: "bold" }}>
+              Dev Tools
+            </SidebarGroupLabel>
+          )}
+          <SidebarGroupContent>{renderMenuItems(devToolsItems)}</SidebarGroupContent>
         </SidebarGroup>
 
         {/* System */}
         <SidebarGroup>
-          {open && <SidebarGroupLabel style={{ color: '#666666', fontWeight: 'bold' }}>System</SidebarGroupLabel>}
-          <SidebarGroupContent>
-            {renderMenuItems(systemItems)}
-          </SidebarGroupContent>
+          {open && (
+            <SidebarGroupLabel style={{ color: "#666666", fontWeight: "bold" }}>
+              System
+            </SidebarGroupLabel>
+          )}
+          <SidebarGroupContent>{renderMenuItems(systemItems)}</SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>

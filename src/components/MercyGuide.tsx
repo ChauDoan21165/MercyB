@@ -6,7 +6,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useMercyGuide, GuideArticle } from '@/hooks/useMercyGuide';
 import { usePronunciationRecorder } from '@/hooks/usePronunciationRecorder';
-import { supabase } from '@/integrations/supabase/client';
+import { supabase } from '@/lib/supabaseClient';
 import { cn } from '@/lib/utils';
 import { CompanionProfile, getCompanionProfile, markEnglishActivity } from '@/services/companion';
 import { getSuggestionsForUser, SuggestedItem } from '@/services/suggestions';

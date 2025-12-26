@@ -1,19 +1,26 @@
 /**
- * Global App Bar
+ * MercyBlade Blue — Global App Bar
+ * Path: src/components/GlobalAppBar.tsx
+ * Version: MB-BLUE-94.14.8 — 2025-12-25 (+0700)
+ *
  * Unified top navigation bar with:
  * - Left: Breadcrumb navigation
  * - Center: Mercy Blade logo (truly centered in viewport using absolute positioning)
  * - Right: Search, Theme toggle, Tier Map, User actions
+ *
+ * CHANGE (94.14.8):
+ * - Remove local Supabase auth reads/listeners (no duplicate timelines).
+ * - Use single source of truth: useAuth() from AuthProvider.
  */
 
-import { Button } from '@/components/ui/button';
-import { LogIn, Eye, ChevronRight, Home } from 'lucide-react';
-import { useNavigate, Link, useLocation } from 'react-router-dom';
-import { supabase } from '@/integrations/supabase/client';
-import { useEffect, useState } from 'react';
-import { ThemeToggle } from '@/components/ThemeToggle';
-import { RoomSearch } from '@/components/RoomSearch';
-import { ColorModeToggle } from '@/components/ColorModeToggle';
+import { Button } from "@/components/ui/button";
+import { LogIn, Eye, ChevronRight, Home } from "lucide-react";
+import { useNavigate, Link, useLocation } from "react-router-dom";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { RoomSearch } from "@/components/RoomSearch";
+import { ColorModeToggle } from "@/components/ColorModeToggle";
+
+import { useAuth } from "@/providers/AuthProvider";
 
 export interface BreadcrumbItem {
   label: string;
@@ -25,64 +32,45 @@ interface GlobalAppBarProps {
   mode?: "color" | "bw";
 }
 
-export function GlobalAppBar({ 
-  breadcrumbs = [],
-  mode = "color" 
-}: GlobalAppBarProps) {
+export function GlobalAppBar({ breadcrumbs = [], mode = "color" }: GlobalAppBarProps) {
   const navigate = useNavigate();
   const location = useLocation();
-  const [user, setUser] = useState<any>(null);
-  
+
+  // ✅ SINGLE SOURCE OF TRUTH
+  const { user, isLoading } = useAuth();
+
   const redirectParam = encodeURIComponent(location.pathname + location.search);
-
-  useEffect(() => {
-    const checkUser = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      setUser(user);
-    };
-    checkUser();
-
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null);
-    });
-
-    return () => subscription.unsubscribe();
-  }, []);
-
-  const headerBg = mode === "bw" 
-    ? "bg-white/95" 
-    : "bg-background/95";
+  const headerBg = mode === "bw" ? "bg-white/95" : "bg-background/95";
 
   return (
-    <header className={`sticky top-0 z-40 w-full ${headerBg} backdrop-blur-sm border-b border-border`}>
+    <header
+      className={`sticky top-0 z-40 w-full ${headerBg} backdrop-blur-sm border-b border-border`}
+    >
       <div className="relative w-full px-4 py-3">
         {/* 3-column flex layout for left/right balance */}
         <div className="flex items-center justify-between">
-          
           {/* Left: Breadcrumb - flex-1 to take equal space */}
           <nav className="flex-1 flex items-center gap-1.5 text-sm overflow-hidden">
-            <Link 
-              to="/" 
+            <Link
+              to="/"
               className="flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors shrink-0"
             >
               <Home className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">Home</span>
             </Link>
-            
+
             {breadcrumbs.map((item, index) => (
               <div key={index} className="flex items-center gap-1.5 min-w-0">
                 <ChevronRight className="w-3.5 h-3.5 text-muted-foreground/60 shrink-0" />
                 {item.href && index < breadcrumbs.length - 1 ? (
-                  <Link 
+                  <Link
                     to={item.href}
                     className="text-muted-foreground hover:text-foreground transition-colors truncate"
                   >
                     {item.label}
                   </Link>
                 ) : (
-                  <span className="text-foreground font-medium truncate">
-                    {item.label}
-                  </span>
+                  <span className="text-foreground font-medium truncate">{item.label}</span>
                 )}
               </div>
             ))}
@@ -94,11 +82,12 @@ export function GlobalAppBar({
             <div className="hidden sm:block w-48 lg:w-64">
               <RoomSearch />
             </div>
-            
+
             <ThemeToggle />
             <ColorModeToggle />
-            
-            {!user ? (
+
+            {/* Auth-dependent button */}
+            {!isLoading && !user ? (
               <Button
                 onClick={() => navigate(`/auth?redirect=${redirectParam}`)}
                 size="sm"
@@ -108,11 +97,12 @@ export function GlobalAppBar({
                 <span className="text-xs">Login / Đăng nhập</span>
               </Button>
             ) : (
-              <Button 
-                onClick={() => navigate('/tier-map')}
-                variant="outline" 
-                size="sm" 
+              <Button
+                onClick={() => navigate("/tier-map")}
+                variant="outline"
+                size="sm"
                 className="gap-1.5 h-8 px-3"
+                disabled={isLoading}
               >
                 <Eye className="w-3.5 h-3.5" />
                 <span className="hidden sm:inline text-xs">Tier Map</span>
@@ -127,17 +117,17 @@ export function GlobalAppBar({
             <h1 className="text-lg sm:text-xl font-bold tracking-tight whitespace-nowrap">
               {mode === "color" ? (
                 <>
-                  <span style={{ color: '#E91E63' }}>M</span>
-                  <span style={{ color: '#9C27B0' }}>e</span>
-                  <span style={{ color: '#3F51B5' }}>r</span>
-                  <span style={{ color: '#2196F3' }}>c</span>
-                  <span style={{ color: '#00BCD4' }}>y</span>
+                  <span style={{ color: "#E91E63" }}>M</span>
+                  <span style={{ color: "#9C27B0" }}>e</span>
+                  <span style={{ color: "#3F51B5" }}>r</span>
+                  <span style={{ color: "#2196F3" }}>c</span>
+                  <span style={{ color: "#00BCD4" }}>y</span>
                   <span className="mx-1"></span>
-                  <span style={{ color: '#009688' }}>B</span>
-                  <span style={{ color: '#4CAF50' }}>l</span>
-                  <span style={{ color: '#8BC34A' }}>a</span>
-                  <span style={{ color: '#FFC107' }}>d</span>
-                  <span style={{ color: '#FF9800' }}>e</span>
+                  <span style={{ color: "#009688" }}>B</span>
+                  <span style={{ color: "#4CAF50" }}>l</span>
+                  <span style={{ color: "#8BC34A" }}>a</span>
+                  <span style={{ color: "#FFC107" }}>d</span>
+                  <span style={{ color: "#FF9800" }}>e</span>
                 </>
               ) : (
                 <span className="text-foreground font-black">Mercy Blade</span>

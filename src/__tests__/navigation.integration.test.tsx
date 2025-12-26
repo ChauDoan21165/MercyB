@@ -17,7 +17,7 @@ vi.mock('react-router-dom', async () => {
 });
 
 // Mock Supabase client
-vi.mock('@/integrations/supabase/client', () => ({
+vi.mock('@/lib/supabaseClient', () => ({
   supabase: {
     auth: {
       getUser: vi.fn().mockResolvedValue({ data: { user: null }, error: null }),

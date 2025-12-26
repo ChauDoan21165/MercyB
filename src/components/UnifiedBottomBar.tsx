@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Settings, ZoomIn, ZoomOut, Copy, Circle, FileJson, Languages } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
+import { supabase } from "@/lib/supabaseClient";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { useToast } from "@/hooks/use-toast";
 import { MusicPlayer } from "@/components/MusicPlayer";

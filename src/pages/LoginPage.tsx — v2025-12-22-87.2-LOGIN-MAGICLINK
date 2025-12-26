@@ -1,6 +1,6 @@
 // src/pages/LoginPage.tsx — v2025-12-22-87.2-LOGIN-MAGICLINK
 import { useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
+import { supabase } from "@/lib/supabaseClient";
 import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {

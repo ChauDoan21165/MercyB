@@ -2,7 +2,7 @@
 // Room Data Validation Script
 // Run with: npx tsx src/lib/scripts/validateRoomData.ts
 
-import { supabase } from '@/integrations/supabase/client';
+import { supabase } from '@/lib/supabaseClient';
 import {
   generateValidationReport,
   logValidationReport,

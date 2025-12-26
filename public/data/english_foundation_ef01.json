@@ -1,43 +1,26 @@
 {
   "id": "english_foundation_ef01",
-  "tier": "Free / Miễn phí",
-  "domain": "English",
-  "description": {
+  "tier": "free",
+  "domain": "english",
+  "title": {
     "en": "EF-01 — Alphabet & True English Sounds",
     "vi": "EF-01 — Bảng Chữ Cái & Âm Chuẩn Tiếng Anh"
   },
-  "keywords": [
-    "alphabet",
-    "letters",
-    "beginner",
-    "consonants",
-    "sounds",
-    "pronunciation",
-    "vowels",
-    "sound",
-    "mistakes",
-    "Vietnamese learners",
-    "fix",
-    "practice words",
-    "habit",
-    "daily practice",
-    "bảng chữ cái",
-    "chữ cái",
-    "người mới",
-    "phụ âm",
-    "âm",
-    "phát âm",
-    "nguyên âm",
-    "lỗi",
-    "người Việt",
-    "sửa lỗi",
-    "từ luyện tập",
-    "thói quen",
-    "luyện tập"
-  ],
-  "entries": [],
   "room_essay": {
-    "en": "This first room helps absolute beginners start English safely and gently. You will read all letters from A to Z, learn how English sounds differ from Vietnamese, and practice slow, clear pronunciation. These six entries guide you step by step through reading letters, shaping consonant sounds, understanding basic vowel positions, and avoiding common mistakes such as dropping final sounds or adding extra vowels. Take it slowly. Breathe gently. Focus on feeling the sound, not forcing it. Small daily practice builds real confidence.",
-    "vi": "Phòng đầu tiên giúp người mới bắt đầu học tiếng Anh một cách an toàn và nhẹ nhàng. Bạn sẽ đọc toàn bộ chữ cái từ A đến Z, hiểu cách âm tiếng Anh khác tiếng Việt và luyện phát âm chậm, rõ ràng. Sáu mục nội dung hướng dẫn bạn từng bước: đọc chữ cái, tạo khẩu hình âm phụ, hiểu vị trí nguyên âm cơ bản và tránh các lỗi thường gặp như bỏ âm cuối hoặc thêm nguyên âm. Hãy học chậm rãi, thở nhẹ và tập trung vào cảm giác của âm. Luyện tập mỗi ngày một chút sẽ tạo nên sự tự tin thật sự."
-  }
+    "en": "This first room helps absolute beginners start English safely and gently. You will read all letters from A to Z, learn how English sounds differ from Vietnamese, and practice slow, clear pronunciation. Take it slowly. Breathe gently. Small daily practice builds real confidence.",
+    "vi": "Phòng đầu tiên giúp người mới bắt đầu học tiếng Anh một cách an toàn và nhẹ nhàng. Bạn sẽ đọc toàn bộ chữ cái từ A đến Z, hiểu sự khác biệt giữa âm tiếng Anh và tiếng Việt, và luyện phát âm chậm, rõ ràng. Hãy học chậm rãi, thở nhẹ. Luyện tập mỗi ngày sẽ tạo nên sự tự tin thật sự."
+  },
+  "entries": [
+    {
+      "id": "ef01_entry_01",
+      "title": {
+        "en": "The English Alphabet (A–Z)",
+        "vi": "Bảng Chữ Cái Tiếng Anh (A–Z)"
+      },
+      "content": {
+        "en": "English has 26 letters. Read them slowly from A to Z. Do not rush. Focus on clarity, not speed.",
+        "vi": "Tiếng Anh có 26 chữ cái. Hãy đọc chậm từ A đến Z. Đừng vội. Tập trung vào sự rõ ràng, không phải tốc độ."
+      }
+    }
+  ]
 }

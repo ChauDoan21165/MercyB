@@ -65,7 +65,7 @@ export async function runScenario_LoadAllRooms() {
 
 async function getAllRoomIds(): Promise<string[]> {
   try {
-    const { supabase } = await import('@/integrations/supabase/client');
+    const { supabase } = await import('@/lib/supabaseClient');
     const { data } = await supabase.from('rooms').select('id');
     return data?.map(r => r.id) || [];
   } catch {

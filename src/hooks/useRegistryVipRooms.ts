@@ -13,7 +13,7 @@
  */
 
 import { useQuery } from '@tanstack/react-query';
-import { supabase } from '@/integrations/supabase/client';
+import { supabase } from '@/lib/supabaseClient';
 import { getRoomsByTier as fetchRoomsByTier } from '@/lib/roomFetcher';
 import { TIER_ID_TO_LABEL, type TierId } from '@/lib/constants/tiers';
 

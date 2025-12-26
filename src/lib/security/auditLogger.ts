@@ -3,7 +3,7 @@
  * Tracks all admin operations and security events
  */
 
-import { supabase } from '@/integrations/supabase/client';
+import { supabase } from '@/lib/supabaseClient';
 import { maskUserId, maskEmail } from './piiProtection';
 
 export type AuditEventType = 

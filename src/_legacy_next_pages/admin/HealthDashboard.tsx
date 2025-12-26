@@ -3,7 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Activity, Shield, Zap, ArrowLeft, Settings, Baby, AlertTriangle } from "lucide-react";
 import { useEffect, useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
+import { supabase } from "@/lib/supabaseClient";
 
 const tiers = [
   { id: "free", name: "Free", icon: Zap, color: "text-black" },

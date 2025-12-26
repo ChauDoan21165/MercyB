@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { supabase } from '@/integrations/supabase/client';
+import { supabase } from '@/lib/supabaseClient';
 import { useAdminCheck } from './useAdminCheck';
 import { useFeatureFlag } from './useFeatureFlag';
 

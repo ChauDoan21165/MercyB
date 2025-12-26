@@ -80,7 +80,7 @@ async function loadRoomJson(roomId: string): Promise<RoomJson | null> {
  */
 async function loadRoomFromDatabase(roomId: string): Promise<RoomJson | null> {
   try {
-    const { supabase } = await import('@/integrations/supabase/client');
+    const { supabase } = await import('@/lib/supabaseClient');
 
     const { data: room, error } = await supabase
       .from('rooms')

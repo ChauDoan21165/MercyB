@@ -8,7 +8,7 @@ import { MessageSquare, X, Send, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
+import { supabase } from "@/lib/supabaseClient";
 import { cn } from "@/lib/utils";
 
 export const GlobalFeedbackWidget = () => {

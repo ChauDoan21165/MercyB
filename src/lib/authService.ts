@@ -1,5 +1,15 @@
-
 // src/lib/authService.ts
+// Version: MB-BLUE-93.6 — 2025-12-23 (+0700)
+//
+// PURPOSE:
+// - Centralized Supabase authentication helpers
+// - Email/password signup, signin, signout, current user fetch
+//
+// NOTES:
+// - User creation behavior depends on Supabase Dashboard setting:
+//   Confirm email ON  → user appears only after email confirmation
+//   Confirm email OFF → user appears immediately
+
 import { supabase } from "./supabaseClient";
 
 export async function signUpWithEmail(email: string, password: string) {
@@ -13,7 +23,7 @@ export async function signUpWithEmail(email: string, password: string) {
     throw error;
   }
 
-  return data; // contains user / session depending on email confirmation settings
+  return data;
 }
 
 export async function signInWithEmail(email: string, password: string) {
@@ -32,6 +42,7 @@ export async function signInWithEmail(email: string, password: string) {
 
 export async function signOut() {
   const { error } = await supabase.auth.signOut();
+
   if (error) {
     console.error("Sign out error:", error);
     throw error;

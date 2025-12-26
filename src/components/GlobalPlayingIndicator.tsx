@@ -4,7 +4,7 @@ import { useUserAccess } from "@/hooks/useUserAccess";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
+import { supabase } from "@/lib/supabaseClient";
 import { Badge } from "@/components/ui/badge";
 
 export const GlobalPlayingIndicator = () => {

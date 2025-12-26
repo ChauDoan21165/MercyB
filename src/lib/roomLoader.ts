@@ -1,5 +1,5 @@
 // src/lib/roomLoader.ts
-import { supabase } from "@/integrations/supabase/client";
+import { supabase } from "@/lib/supabaseClient";
 import { processEntriesOptimized } from "./roomLoaderHelpers";
 import { ROOMS_TABLE, AUDIO_FOLDER } from "@/lib/constants/rooms";
 import {

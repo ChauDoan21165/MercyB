@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { supabase } from '@/integrations/supabase/client';
+import { supabase } from '@/lib/supabaseClient';
 import { ROOMS_TABLE } from '@/lib/constants/rooms';
 
 export const useDemoMode = () => {

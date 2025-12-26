@@ -14,7 +14,7 @@ import {
   Clock, FileAudio, Trash2, Terminal, Download,
   BookOpen, Key, AlertCircle, Info, XCircle, ListTodo, Mic, HardDrive,
 } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
+import { supabase } from "@/lib/supabaseClient";
 import { useToast } from "@/hooks/use-toast";
 import type { AuditIssue, AuditSummary } from "@/lib/audit-v4-types";
 import { ISSUE_TYPE_LABELS, TASK_TYPE_LABELS } from "@/lib/audit-v4-types";

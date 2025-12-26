@@ -3,7 +3,7 @@
  * Manages conversation context, memory, and state across sessions
  */
 
-import { supabase } from "@/integrations/supabase/client";
+import { supabase } from "@/lib/supabaseClient";
 
 export interface Message {
   role: "system" | "user" | "assistant";

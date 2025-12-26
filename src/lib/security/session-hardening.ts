@@ -3,7 +3,7 @@
  * Enforces strict session policies and blocks multi-device logins
  */
 
-import { supabase } from '@/integrations/supabase/client';
+import { supabase } from '@/lib/supabaseClient';
 import { logger } from '@/lib/logger';
 
 const SESSION_STORAGE_KEY = 'mb_active_session';

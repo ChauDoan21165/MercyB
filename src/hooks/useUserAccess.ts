@@ -1,15 +1,37 @@
-import { useState, useEffect } from 'react';
-import { supabase } from '@/integrations/supabase/client';
-import { type TierId, normalizeTier } from '@/lib/constants/tiers';
-import { canAccessVIPTier } from '@/lib/accessControl';
+/**
+ * MercyBlade Blue — useUserAccess (AUTH-DRIVEN, NO DUPLICATE TIMELINES)
+ * Path: src/hooks/useUserAccess.ts
+ * Version: MB-BLUE-94.14.14 — 2025-12-25 (+0700)
+ *
+ * GOAL (LOCKED):
+ * - useUserAccess MUST NOT call supabase.auth.getUser() or subscribe to auth changes.
+ * - Auth timeline must come ONLY from AuthProvider via useAuth().
+ * - Supabase queries here are allowed ONLY for: roles, tiers, subscriptions, admin level, etc.
+ *
+ * CHANGE (94.14.14):
+ * - Ensure this hook exports ONLY the hook + types (NO UI components).
+ * - Use canonical client: "@/lib/supabaseClient"
+ * - Consume auth from useAuth() (single source of truth)
+ */
+
+import { useEffect, useMemo, useState } from "react";
+import type { TierId } from "@/lib/constants/tiers";
+import { normalizeTier } from "@/lib/constants/tiers";
+import { canAccessVIPTier } from "@/lib/accessControl";
+
+import { supabase } from "@/lib/supabaseClient";
+import { useAuth } from "@/providers/AuthProvider";
 
 export interface UserAccess {
   isAdmin: boolean;
   isHighAdmin: boolean; // Level >= 9 in admin_users
   adminLevel: number;
+
   isAuthenticated: boolean;
   isDemoMode: boolean;
+
   tier: TierId;
+
   canAccessVIP1: boolean;
   canAccessVIP2: boolean;
   canAccessVIP3: boolean;
@@ -18,19 +40,26 @@ export interface UserAccess {
   canAccessVIP5: boolean;
   canAccessVIP6: boolean;
   canAccessVIP9: boolean;
+
   loading: boolean;
-  isLoading: boolean; // Alias for loading (clearer name)
-  canAccessTier: (tierId: TierId) => boolean; // Generic tier access check
+  isLoading: boolean;
+
+  canAccessTier: (tierId: TierId) => boolean;
 }
 
-export const useUserAccess = (): UserAccess => {
-  const [access, setAccess] = useState<UserAccess>({
+const guestAccess = (): UserAccess => {
+  const canAccessTier = (tierId: TierId) => tierId === "free";
+
+  return {
     isAdmin: false,
     isHighAdmin: false,
     adminLevel: 0,
+
     isAuthenticated: false,
     isDemoMode: true,
-    tier: 'free',
+
+    tier: "free",
+
     canAccessVIP1: false,
     canAccessVIP2: false,
     canAccessVIP3: false,
@@ -39,139 +68,145 @@ export const useUserAccess = (): UserAccess => {
     canAccessVIP5: false,
     canAccessVIP6: false,
     canAccessVIP9: false,
+
+    loading: false,
+    isLoading: false,
+
+    canAccessTier,
+  };
+};
+
+export const useUserAccess = (): UserAccess => {
+  const { user, isLoading: authLoading } = useAuth();
+
+  const [access, setAccess] = useState<UserAccess>(() => ({
+    ...guestAccess(),
     loading: true,
     isLoading: true,
-    canAccessTier: () => false, // Default to no access while loading
-  });
+    isDemoMode: false,
+  }));
+
+  const userId = user?.id || null;
 
   useEffect(() => {
-    checkUserAccess();
-  }, []);
+    let alive = true;
 
-  const checkUserAccess = async () => {
-    try {
-      const { data: { user } } = await supabase.auth.getUser();
-      
-      if (!user) {
-        const guestAccess: UserAccess = {
-          isAdmin: false,
-          isHighAdmin: false,
-          adminLevel: 0,
+    const run = async () => {
+      // 1) Auth still loading → keep loading state
+      if (authLoading) {
+        if (!alive) return;
+        setAccess((prev) => ({
+          ...prev,
+          loading: true,
+          isLoading: true,
+          isDemoMode: false,
           isAuthenticated: false,
-          isDemoMode: true,
-          tier: 'free',
-          canAccessVIP1: false,
-          canAccessVIP2: false,
-          canAccessVIP3: false,
-          canAccessVIP3II: false,
-          canAccessVIP4: false,
-          canAccessVIP5: false,
-          canAccessVIP6: false,
-          canAccessVIP9: false,
-          loading: false,
-          isLoading: false,
-          canAccessTier: (tierId: TierId) => tierId === 'free',
-        };
-        setAccess(guestAccess);
+        }));
         return;
       }
 
-      // Check admin status via has_role() RPC (user_roles table)
-      const { data: isAdminRpc, error: adminError } = await supabase.rpc('has_role', {
-        _role: 'admin',
-        _user_id: user.id,
-      });
-
-      if (adminError) {
-        console.error('Error checking admin role via has_role RPC:', adminError);
+      // 2) Not logged in → guest access
+      if (!userId) {
+        if (!alive) return;
+        setAccess(guestAccess());
+        return;
       }
 
-      // ALSO check admin_users table for high-level admins (level >= 9)
-      const { data: adminUserData } = await supabase
-        .from('admin_users')
-        .select('level')
-        .eq('user_id', user.id)
-        .maybeSingle();
-
-      const adminLevel = adminUserData?.level || 0;
-      const isHighAdmin = adminLevel >= 9;
-      const isAdmin = !!isAdminRpc || isHighAdmin; // Either user_roles admin OR high-level admin_users
-
-      console.log('[useUserAccess] Admin check:', { 
-        userId: user.id, 
-        isAdminRpc, 
-        adminLevel, 
-        isHighAdmin, 
-        isAdmin 
-      });
-
-      // Check subscription tier
-      const { data: subscription } = await supabase
-        .from('user_subscriptions')
-        .select('*, subscription_tiers(*)')
-        .eq('user_id', user.id)
-        .eq('status', 'active')
-        .maybeSingle();
-
-      const rawTierName = subscription?.subscription_tiers?.name || 'Free / Miễn phí';
-      const tier: TierId = normalizeTier(rawTierName);
-      
-      // High-level admins (level >= 9) bypass all VIP gates
-      const finalTier: TierId = isHighAdmin ? 'vip9' : (isAdmin ? 'vip9' : tier);
-
-      // Generic access checker - single source of truth
-      const canAccessTier = (targetTier: TierId): boolean => {
-        // High-level admins can access everything
-        if (isHighAdmin) return true;
-        return canAccessVIPTier(finalTier, targetTier);
-      };
-
-      const authenticatedAccess: UserAccess = {
-        isAdmin,
-        isHighAdmin,
-        adminLevel,
-        isAuthenticated: true,
+      // 3) Logged in → compute access
+      if (!alive) return;
+      setAccess((prev) => ({
+        ...prev,
+        loading: true,
+        isLoading: true,
         isDemoMode: false,
-        tier: finalTier,
-        // Implement existing flags via canAccessTier for consistency
-        canAccessVIP1: canAccessTier('vip1'),
-        canAccessVIP2: canAccessTier('vip2'),
-        canAccessVIP3: canAccessTier('vip3'),
-        canAccessVIP3II: canAccessTier('vip3ii'),
-        canAccessVIP4: canAccessTier('vip4'),
-        canAccessVIP5: canAccessTier('vip5'),
-        canAccessVIP6: canAccessTier('vip6'),
-        canAccessVIP9: canAccessTier('vip9'),
-        loading: false,
-        isLoading: false,
-        canAccessTier, // Expose generic helper
-      };
-      
-      setAccess(authenticatedAccess);
-    } catch (error) {
-      console.error('Error checking user access:', error);
-      const errorAccess: UserAccess = {
-        isAdmin: false,
-        isHighAdmin: false,
-        adminLevel: 0,
-        isAuthenticated: false,
-        isDemoMode: true,
-        tier: 'free',
-        canAccessVIP1: false,
-        canAccessVIP2: false,
-        canAccessVIP3: false,
-        canAccessVIP3II: false,
-        canAccessVIP4: false,
-        canAccessVIP5: false,
-        canAccessVIP6: false,
-        canAccessVIP9: false,
-        loading: false,
-        isLoading: false,
-        canAccessTier: (tierId: TierId) => tierId === 'free',
-      };
-      setAccess(errorAccess);
-    }
-  };
+        isAuthenticated: true,
+      }));
 
-  return access;
+      try {
+        const { data: isAdminRpc, error: adminError } = await supabase.rpc("has_role", {
+          _role: "admin",
+          _user_id: userId,
+        });
+
+        if (adminError && import.meta.env.DEV) {
+          console.warn("[useUserAccess] has_role RPC error:", adminError);
+        }
+
+        const { data: adminUserData, error: adminUserErr } = await supabase
+          .from("admin_users")
+          .select("level")
+          .eq("user_id", userId)
+          .maybeSingle();
+
+        if (adminUserErr && import.meta.env.DEV) {
+          console.warn("[useUserAccess] admin_users lookup error:", adminUserErr);
+        }
+
+        const adminLevel = adminUserData?.level || 0;
+        const isHighAdmin = adminLevel >= 9;
+        const isAdmin = Boolean(isAdminRpc) || isHighAdmin;
+
+        const { data: subscription, error: subErr } = await supabase
+          .from("user_subscriptions")
+          .select("*, subscription_tiers(*)")
+          .eq("user_id", userId)
+          .eq("status", "active")
+          .maybeSingle();
+
+        if (subErr && import.meta.env.DEV) {
+          console.warn("[useUserAccess] subscription lookup error:", subErr);
+        }
+
+        const rawTierName = subscription?.subscription_tiers?.name || "Free / Miễn phí";
+        const tierFromDb: TierId = normalizeTier(rawTierName);
+
+        const finalTier: TierId = isAdmin ? "vip9" : tierFromDb;
+
+        const canAccessTier = (targetTier: TierId): boolean => {
+          if (isHighAdmin) return true;
+          return canAccessVIPTier(finalTier, targetTier);
+        };
+
+        const next: UserAccess = {
+          isAdmin,
+          isHighAdmin,
+          adminLevel,
+
+          isAuthenticated: true,
+          isDemoMode: false,
+
+          tier: finalTier,
+
+          canAccessVIP1: canAccessTier("vip1"),
+          canAccessVIP2: canAccessTier("vip2"),
+          canAccessVIP3: canAccessTier("vip3"),
+          canAccessVIP3II: canAccessTier("vip3ii"),
+          canAccessVIP4: canAccessTier("vip4"),
+          canAccessVIP5: canAccessTier("vip5"),
+          canAccessVIP6: canAccessTier("vip6"),
+          canAccessVIP9: canAccessTier("vip9"),
+
+          loading: false,
+          isLoading: false,
+
+          canAccessTier,
+        };
+
+        if (!alive) return;
+        setAccess(next);
+      } catch (err: any) {
+        if (import.meta.env.DEV) console.warn("[useUserAccess] crashed:", err);
+        if (!alive) return;
+        setAccess(guestAccess());
+      }
+    };
+
+    run();
+
+    return () => {
+      alive = false;
+    };
+  }, [authLoading, userId]);
+
+  return useMemo(() => access, [access]);
 };

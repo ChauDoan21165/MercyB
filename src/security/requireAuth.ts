@@ -1,6 +1,6 @@
 // Multi-Layer Auth Guards - Enforce authentication at multiple layers
 
-import { supabase } from '@/integrations/supabase/client';
+import { supabase } from '@/lib/supabaseClient';
 import type { User } from '@supabase/supabase-js';
 
 export interface AuthContext {

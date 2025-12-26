@@ -1,7 +1,7 @@
 // Kids rooms data hook following Mercy Blade Design System v1.1
 
 import { useState, useEffect, useCallback } from 'react';
-import { supabase } from '@/integrations/supabase/client';
+import { supabase } from '@/lib/supabaseClient';
 import { Database } from '@/integrations/supabase/types';
 import { KIDS_TABLE, KidsLevelId } from '@/lib/constants';
 

@@ -1,4 +1,4 @@
-import { supabase } from "@/integrations/supabase/client";
+import { supabase } from "@/lib/supabaseClient";
 import { validateAudioFilename, normalizeFilename } from "@/lib/audio/filenameValidator";
 
 export interface RoomAudioCoverage {

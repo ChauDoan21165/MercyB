@@ -21,7 +21,7 @@
  */
 
 import { useQuery } from '@tanstack/react-query';
-import { supabase } from '@/integrations/supabase/client';
+import { supabase } from '@/lib/supabaseClient';
 import { Database } from '@/integrations/supabase/types';
 import { ROOMS_TABLE, TierId, TIER_ID_TO_LABEL } from '@/lib/constants';
 

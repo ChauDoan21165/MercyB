@@ -3,7 +3,7 @@
  * Loads room data directly from Supabase, not from JSON files
  */
 
-import { supabase } from "@/integrations/supabase/client";
+import { supabase } from "@/lib/supabaseClient";
 import { RoomData } from "@/lib/roomData";
 
 // Runtime cache - only populated when needed

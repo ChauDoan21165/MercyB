@@ -3,7 +3,7 @@
  * Best practices for efficient database queries
  */
 
-import { supabase } from "@/integrations/supabase/client";
+import { supabase } from "@/lib/supabaseClient";
 
 /**
  * Optimized room fetch - only select needed columns

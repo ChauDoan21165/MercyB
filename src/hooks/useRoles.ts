@@ -1,7 +1,7 @@
 // Custom Role Loader - Load user roles from database
 
 import { useEffect, useState } from 'react';
-import { supabase } from '@/integrations/supabase/client';
+import { supabase } from '@/lib/supabaseClient';
 
 export interface UserRoles {
   isAdmin: boolean;

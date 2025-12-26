@@ -1,55 +1,69 @@
-import { useState, useEffect } from 'react';
+/**
+ * MercyBlade Blue — useFavoriteRooms (SAFE JSON)
+ * Path: src/hooks/useFavoriteRooms.tsx
+ * Version: MB-BLUE-94.14.20 — 2025-12-25 (+0700)
+ *
+ * GOAL:
+ * - Never crash due to corrupted localStorage
+ * - JSON.parse MUST be guarded
+ * - Fail-safe fallback to empty array
+ */
 
-export interface FavoriteRoom {
-  id: string;
-  nameEn: string;
-  nameVi: string;
-  tier: string;
-}
+import { useEffect, useState } from "react";
 
-const STORAGE_KEY = 'favoriteRooms';
+const STORAGE_KEY = "mb_favorite_rooms";
 
-export const useFavoriteRooms = () => {
-  const [favoriteRooms, setFavoriteRooms] = useState<FavoriteRoom[]>([]);
+export function useFavoriteRooms() {
+  const [favoriteRooms, setFavoriteRooms] = useState<string[]>([]);
 
   useEffect(() => {
     const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) {
-      try {
-        setFavoriteRooms(JSON.parse(saved));
-      } catch (e) {
-        console.error('Failed to parse favorite rooms', e);
+
+    if (!saved) {
+      // nothing saved yet
+      setFavoriteRooms([]);
+      return;
+    }
+
+    try {
+      const parsed = JSON.parse(saved);
+
+      // Extra safety: must be array
+      if (Array.isArray(parsed)) {
+        setFavoriteRooms(parsed);
+      } else {
+        console.warn("[useFavoriteRooms] invalid data shape, resetting");
+        setFavoriteRooms([]);
+        localStorage.removeItem(STORAGE_KEY);
       }
+    } catch (err) {
+      console.warn("[useFavoriteRooms] JSON parse failed, clearing storage", err);
+      setFavoriteRooms([]);
+      localStorage.removeItem(STORAGE_KEY);
     }
   }, []);
 
-  const addFavorite = (room: FavoriteRoom) => {
-    setFavoriteRooms(prev => {
-      const exists = prev.find(r => r.id === room.id);
-      if (exists) return prev;
-      const newFavorites = [...prev, room];
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(newFavorites));
-      return newFavorites;
+  const toggleFavorite = (roomId: string) => {
+    setFavoriteRooms((prev) => {
+      const next = prev.includes(roomId)
+        ? prev.filter((id) => id !== roomId)
+        : [...prev, roomId];
+
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+      } catch {
+        // fail silently — never block UI
+      }
+
+      return next;
     });
   };
 
-  const removeFavorite = (roomId: string) => {
-    setFavoriteRooms(prev => {
-      const newFavorites = prev.filter(r => r.id !== roomId);
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(newFavorites));
-      return newFavorites;
-    });
+  const isFavorite = (roomId: string) => favoriteRooms.includes(roomId);
+
+  return {
+    favoriteRooms,
+    toggleFavorite,
+    isFavorite,
   };
-
-  const isFavorite = (roomId: string) => favoriteRooms.some(r => r.id === roomId);
-
-  const toggleFavorite = (room: FavoriteRoom) => {
-    if (isFavorite(room.id)) {
-      removeFavorite(room.id);
-    } else {
-      addFavorite(room);
-    }
-  };
-
-  return { favoriteRooms, addFavorite, removeFavorite, isFavorite, toggleFavorite };
-};
+}
