@@ -1334,8 +1334,8 @@ export const roomDataMap = {
   },
   "english_foundation_ef01": {
     "id": "english_foundation_ef01",
-    "nameEn": "English Foundation Ef01",
-    "nameVi": "English Foundation Ef01",
+    "nameEn": "EF-01 — Alphabet & True English Sounds",
+    "nameVi": "EF-01 — Bảng Chữ Cái & Âm Chuẩn Tiếng Anh",
     "tier": "free",
     "hasData": true
   },
