@@ -1,30 +1,20 @@
 // src/router/AppRouter.tsx
-// MB-BLUE-94.14.22 — 2025-12-26 (+0700)
-// FIX: add /all-rooms alias -> RoomGrid + HARD PROOF module loaded
-
-/**
- * MercyBlade Blue — ROUTES (Single Source of Truth)
- * File: src/router/AppRouter.tsx
- * Version: MB-BLUE-94.14.22 — 2025-12-26 (+0700)
- *
- * LOCKED:
- * - main.tsx owns <BrowserRouter> exactly once
- * - App.tsx is providers-only
- * - ALL routes live here
- *
- * FIX (94.14.22):
- * - Add "/all-rooms" alias (legacy/dev convenience) -> RoomGrid
- * - Add module-level proof: window.__MB_ROUTER_VERSION__
- */
+// MercyBlade Blue — ROUTES (Single Source of Truth)
+// File: src/router/AppRouter.tsx
+// Version: MB-BLUE-94.15.1 — 2025-12-26 (+0700)
+//
+// LOCKED:
+// - main.tsx owns <BrowserRouter> exactly once
+// - App.tsx is providers-only
+// - ALL routes live here
+//
+// FIX (94.15.1):
+// - Add "/login" alias -> Auth (so /login never 404 again)
+// - Keep "/all-rooms" alias -> RoomGrid
+// - Module-level proof: window.__MB_ROUTER_VERSION__
 
 import { Suspense, lazy, useEffect } from "react";
-import {
-  Routes,
-  Route,
-  Navigate,
-  useLocation,
-  useNavigate,
-} from "react-router-dom";
+import { Routes, Route, Navigate, useLocation, useNavigate } from "react-router-dom";
 
 import { AdminRoute } from "@/components/admin/AdminRoute";
 import { LoadingSkeleton } from "@/components/ui/loading-skeleton";
@@ -123,8 +113,8 @@ const TestEmail = lazy(() => import("@/_legacy_next_pages/admin/TestEmail"));
 const guard = (element: JSX.Element) => <AdminRoute>{element}</AdminRoute>;
 
 // 🔥 Module-level proof (runs immediately when router module is imported)
-console.log("🔥 AppRouter MODULE LOADED: MB-BLUE-94.14.22");
-(window as any).__MB_ROUTER_VERSION__ = "MB-BLUE-94.14.22";
+console.log("🔥 AppRouter MODULE LOADED: MB-BLUE-94.15.1");
+(window as any).__MB_ROUTER_VERSION__ = "MB-BLUE-94.15.1";
 
 export default function AppRouter() {
   const navigate = useNavigate();
@@ -155,7 +145,10 @@ export default function AppRouter() {
       <Suspense fallback={<LoadingSkeleton variant="page" />}>
         <Routes>
           <Route path="/" element={<Homepage />} />
+
+          {/* ✅ AUTH (canonical + aliases) */}
           <Route path="/auth" element={<Auth />} />
+          <Route path="/login" element={<Auth />} />
 
           <Route path="/onboarding" element={<OnboardingIntro />} />
           <Route path="/logout" element={<Logout />} />
@@ -164,8 +157,7 @@ export default function AppRouter() {
 
           {/* ✅ canonical room list */}
           <Route path="/rooms" element={<RoomGrid />} />
-
-          {/* ✅ FIX: legacy/dev alias */}
+          {/* ✅ legacy/dev alias */}
           <Route path="/all-rooms" element={<RoomGrid />} />
 
           <Route path="/settings" element={<Settings />} />
