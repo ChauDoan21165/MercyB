@@ -1,17 +1,8 @@
 // src/lib/roomJsonResolver.ts
-// MB-BLUE-15.1 — 2025-12-20 — Canonical resolver + compat exports + DEV-only cache bust
-
-/**
- * Room JSON Resolver (Canonical)
- * Single source of truth for resolving + loading room JSON from /public/data
- *
- * Runtime fetch path: /data/{roomId}.json (or PUBLIC_ROOM_MANIFEST override)
- *
- * Rules:
- * - Canonical roomId is snake_case
- * - Prefer PUBLIC_ROOM_MANIFEST mapping when present
- * - No guessing beyond canonicalization
- */
+// MB-BLUE-95.7 — 2025-12-27 (+0700)
+// FIX: tolerate legacy roomId input that includes ".json" or "/data/" prefixes.
+// RULE: Canonical roomId is snake_case WITHOUT ".json".
+// Resolver remains the ONLY source of truth.
 
 import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
 
@@ -21,12 +12,44 @@ export type RoomJsonResolverErrorKind =
   | "network"
   | "server";
 
+function stripJsonSuffix(s: string): string {
+  // Remove ONLY a trailing ".json" (case-insensitive)
+  return s.replace(/\.json$/i, "");
+}
+
+function lastPathSegment(s: string): string {
+  const cleaned = (s || "").trim();
+  if (!cleaned) return "";
+  const withoutQuery = cleaned.split("?")[0] || cleaned;
+  const parts = withoutQuery.split("/").filter(Boolean);
+  return parts.length ? parts[parts.length - 1] : withoutQuery;
+}
+
 export function canonicalizeRoomId(input: string): string {
-  return (input || "")
+  // Accept roomId like:
+  // - "depression_support_vip1"
+  // - "depression_support_vip1.json"
+  // - "/data/depression_support_vip1.json"
+  // - "data/depression_support_vip1.json"
+  // - "/room/depression_support_vip1.json" (rare, but tolerate)
+  const seg = lastPathSegment(String(input || ""));
+
+  const noJson = stripJsonSuffix(seg)
+    .replace(/^data_/i, "data_") // no-op, just clarity
+    .replace(/^data$/i, "data") // no-op
+    .replace(/^data\./i, "data.") // no-op
+    .trim();
+
+  // If someone pasted "data/xxx" as the segment (because lastPathSegment),
+  // that would already be "xxx" — but keep safe:
+  const normalized = noJson
+    .replace(/^data_/, "data_") // no-op
     .trim()
     .toLowerCase()
     .replace(/[-\s]+/g, "_")
     .replace(/_+/g, "_");
+
+  return normalized;
 }
 
 /**
@@ -39,8 +62,15 @@ export function normalizeRoomIdForCanonicalFile(input: string): string {
 
 export function resolveRoomJsonPath(roomIdRaw: string): string {
   const id = canonicalizeRoomId(roomIdRaw);
+
   // Manifest stores paths like "data/xxx.json"
-  return PUBLIC_ROOM_MANIFEST[id] || `data/${id}.json`;
+  const fromManifest = PUBLIC_ROOM_MANIFEST[id];
+
+  // If manifest exists, trust it.
+  if (fromManifest) return fromManifest;
+
+  // Otherwise default to canonical:
+  return `data/${id}.json`;
 }
 
 export async function loadRoomJson(roomIdRaw: string): Promise<any> {

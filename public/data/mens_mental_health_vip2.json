@@ -39,9 +39,7 @@
         "check",
         "health"
       ],
-      "audio": {
-        "en": "mmh_vip2_1_en.mp3"
-      }
+      "audio": "mens_mental_health_vip2_check_in.mp3"
     },
     {
       "slug": "walk-talk",
@@ -63,9 +61,7 @@
         "talk",
         "health"
       ],
-      "audio": {
-        "en": "mmh_vip2_2_en.mp3"
-      }
+      "audio": "mens_mental_health_vip2_walk_talk.mp3"
     },
     {
       "slug": "exercise",
@@ -87,9 +83,7 @@
         "exercise",
         "health"
       ],
-      "audio": {
-        "en": "mmh_vip2_3_en.mp3"
-      }
+      "audio": "mens_mental_health_vip2_exercise.mp3"
     },
     {
       "slug": "purpose",
@@ -111,9 +105,7 @@
         "purpose",
         "health"
       ],
-      "audio": {
-        "en": "mmh_vip2_4_en.mp3"
-      }
+      "audio": "mens_mental_health_vip2_purpose.mp3"
     },
     {
       "slug": "anger",
@@ -135,9 +127,7 @@
         "anger",
         "health"
       ],
-      "audio": {
-        "en": "mmh_vip2_5_en.mp3"
-      }
+      "audio": "mens_mental_health_vip2_anger.mp3"
     },
     {
       "slug": "fatherhood",
@@ -159,9 +149,7 @@
         "fatherhood",
         "health"
       ],
-      "audio": {
-        "en": "mmh_vip2_6_en.mp3"
-      }
+      "audio": "mens_mental_health_vip2_fatherhood.mp3"
     },
     {
       "slug": "all",

@@ -230,7 +230,7 @@
     "en": "Echologic Mercy Blade room for user profile management and learning dashboard",
     "vi": "Phòng Mercy Blade về quản lý hồ sơ người dùng và bảng điều khiển học tập"
   },
-  "tier": "Free / Miễn phí",
+  "tier": "free",
   "domain": "General",
   "title": {
     "en": "user_profile_dashboard",

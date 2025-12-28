@@ -1,6 +1,6 @@
 {
   "id": "burnout_recovery_vip2",
-  "tier": "VIP1 / VIP1",
+  "tier": "vip2",
   "title": {
     "en": "Burnout Recovery",
     "vi": "Phục Hồi Kiệt Sức"
@@ -44,9 +44,7 @@
         "rest",
         "burnout"
       ],
-      "audio": {
-        "en": "bur_vip2_1_en.mp3"
-      }
+      "audio": "burnout_recovery_vip2_rest_day.mp3"
     },
     {
       "slug": "boundary",
@@ -68,9 +66,7 @@
         "boundary",
         "burnout"
       ],
-      "audio": {
-        "en": "bur_vip2_2_en.mp3"
-      }
+      "audio": "burnout_recovery_vip2_boundary.mp3"
     },
     {
       "slug": "micro-break",
@@ -92,9 +88,7 @@
         "break",
         "burnout"
       ],
-      "audio": {
-        "en": "bur_vip2_3_en.mp3"
-      }
+      "audio": "burnout_recovery_vip2_micro_break.mp3"
     },
     {
       "slug": "energy-audit",
@@ -116,9 +110,7 @@
         "energy",
         "burnout"
       ],
-      "audio": {
-        "en": "bur_vip2_4_en.mp3"
-      }
+      "audio": "burnout_recovery_vip2_energy_audit.mp3"
     },
     {
       "slug": "delegation",
@@ -140,9 +132,7 @@
         "delegation",
         "burnout"
       ],
-      "audio": {
-        "en": "bur_vip2_5_en.mp3"
-      }
+      "audio": "burnout_recovery_vip2_delegation.mp3"
     },
     {
       "slug": "purpose",
@@ -164,9 +154,7 @@
         "purpose",
         "burnout"
       ],
-      "audio": {
-        "en": "bur_vip2_6_en.mp3"
-      }
+      "audio": "burnout_recovery_vip2_purpose.mp3"
     },
     {
       "slug": "all",

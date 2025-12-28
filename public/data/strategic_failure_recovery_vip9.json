@@ -1,6 +1,6 @@
 {
   "id": "strategic_failure_recovery_vip9",
-  "tier": "VIP9 / Cấp VIP9",
+  "tier": "free",
   "domain": "Individual",
   "title": {
     "en": "Failure Recovery Mastery",
@@ -13,90 +13,210 @@
   "entries": [
     {
       "slug": "immediate-failure-response",
-      "keywords_en": ["immediate response", "failure", "containment", "emotions", "stabilization"],
-      "keywords_vi": ["phản ứng thất bại ngay", "kiềm chế", "cảm xúc", "ổn định"],
+      "keywords_en": [
+        "immediate response",
+        "failure",
+        "containment",
+        "emotions",
+        "stabilization"
+      ],
+      "keywords_vi": [
+        "phản ứng thất bại ngay",
+        "kiềm chế",
+        "cảm xúc",
+        "ổn định"
+      ],
       "copy": {
         "en": "Immediate failure response focuses on containment and stabilization to prevent escalation, using emotional regulation to maintain clarity. Resilience research shows quick containment limits damage, setting stage for recovery. Respond personally: pause to assess scope (what failed, impacts?), contain (stop bleeding, e.g., communicate transparently). Stabilize: ground with breathing, affirm control. Barriers: panic amplification or denial delay. Counter with pre-planned scripts: 'Assess, contain, plan.' Rituals: 5-minute stabilization routine post-failure. Strategically, response minimizes losses, integrating with emotional neutrality. VIP9 responds for swift mastery. Without, compounded damage; with, contained. Extend to teams: lead calm responses. In 2025's fast failures, response turns shocks absorbable. Over time, it builds reflex resilience, making recovery instinctive. (352 words)",
         "vi": "Phản ứng thất bại ngay tập trung kiềm chế và ổn định để ngừa leo thang, dùng điều tiết cảm xúc duy trì rõ. Nghiên cứu kiên cường cho kiềm nhanh giới hạn hại, đặt sân cho hồi phục. Phản ứng cá nhân: tạm đánh phạm vi (cái thất, tác động?), kiềm (dừng chảy máu, ví dụ giao tiếp minh bạch). Ổn định: neo với thở, khẳng định kiểm soát. Rào: hoảng khuếch hoặc phủ nhận trì. Chống với script trước: 'Đánh, kiềm, hoạch.' Nghi thức: Routine ổn 5 phút hậu thất. Chiến lược, phản ứng giảm mất, tích hợp với trung lập cảm xúc. VIP9 phản ứng cho làm chủ nhanh. Không có, hại tích; có nó, kiềm. Mở rộng sang đội: dẫn phản bình tĩnh. Trong thất nhanh 2025, phản ứng biến sốc hấp thụ. Qua thời gian, nó xây phản xạ kiên cường, làm hồi phục bản năng. (352 từ)"
       },
-      "tags": ["immediate", "response", "failure"],
+      "tags": [
+        "immediate",
+        "response",
+        "failure"
+      ],
       "audio": "strategic_failure_recovery_1_en.mp3"
     },
     {
       "slug": "failure-analysis-protocols",
-      "keywords_en": ["failure analysis", "protocols", "root cause", "lessons", "debrief"],
-      "keywords_vi": ["giao thức phân tích thất bại", "nguyên cốt", "bài học", "debrief"],
+      "keywords_en": [
+        "failure analysis",
+        "protocols",
+        "root cause",
+        "lessons",
+        "debrief"
+      ],
+      "keywords_vi": [
+        "giao thức phân tích thất bại",
+        "nguyên cốt",
+        "bài học",
+        "debrief"
+      ],
       "copy": {
         "en": "Failure analysis protocols dissect setbacks to extract lessons, using root cause methods like 5 Whys for deep understanding. Post-mortems in business reveal systemic issues beyond symptoms. Protocol personally: debrief systematically—what happened, why (chain causes), what learned? Use journals for objectivity. Protocols: Categorize failures (skill, process, external), prioritize fixes. Barriers: blame-shifting or superficial reviews missing roots. Focus facts, own accountability. Rituals: Weekly failure logs, monthly syntheses. Strategically, analysis turns failures educational, integrating with compounding learning. VIP9 protocols for insightful mastery. Without, repeated; with, evolved. Extend to projects: analyze terminations. In 2025's iterations, protocols accelerate growth, turning failure data. Over time, they pattern failures, making recovery preventive. (351 words)",
         "vi": "Giao thức phân tích thất bại mổ xẻ thất bại rút bài học, dùng phương nguyên cốt như 5 Whys cho hiểu sâu. Post-mortem kinh doanh lộ vấn đề hệ ngoài triệu chứng. Giao thức cá nhân: debrief hệ—what happened, why (chuỗi nguyên), what learned? Dùng nhật ký cho khách quan. Giao thức: Loại thất bại (kỹ năng, quy trình, ngoài), ưu sửa. Rào: đổ lỗi hoặc xem nông bỏ cốt. Tập sự kiện, sở hữu trách nhiệm. Nghi thức: Log thất tuần, tổng hợp tháng. Chiến lược, phân tích biến thất giáo dục, tích hợp với học tích lũy. VIP9 giao thức cho làm chủ insightful. Không có, lặp; có nó, tiến hóa. Mở rộng sang dự: phân chấm dứt. Trong lặp 2025, giao thức tăng tốc tăng, biến thất bại dữ liệu. Qua thời gian, chúng mẫu thất bại, làm hồi phục ngừa. (351 từ)"
       },
-      "tags": ["failure", "analysis", "protocols"],
+      "tags": [
+        "failure",
+        "analysis",
+        "protocols"
+      ],
       "audio": "strategic_failure_recovery_2_en.mp3"
     },
     {
       "slug": "emotional-recovery-rituals",
-      "keywords_en": ["emotional recovery", "rituals", "processing", "resilience", "growth mindset"],
-      "keywords_vi": ["nghi thức hồi cảm xúc", "xử lý", "kiên cường", "tư duy tăng trưởng"],
+      "keywords_en": [
+        "emotional recovery",
+        "rituals",
+        "processing",
+        "resilience",
+        "growth mindset"
+      ],
+      "keywords_vi": [
+        "nghi thức hồi cảm xúc",
+        "xử lý",
+        "kiên cường",
+        "tư duy tăng trưởng"
+      ],
       "copy": {
         "en": "Emotional recovery rituals process failure's psychological toll, rebuilding confidence with growth mindset practices. Seligman's learned optimism reframes failures as temporary, specific. Ritual personally: journal gratitudes post-failure, affirm strengths. Use visualization: imagine future successes. Rituals: Weekly resilience meditations. Barriers: rumination loops or avoidance suppressing. Face emotions, then reframe. Strategically, rituals sustain neutrality, integrating with antifragile. VIP9 rituals for emotional mastery. Without, lingering; with, bounced. Extend to losses: ritualize grief. In 2025's pressures, rituals prevent despair, turning recovery empowering. Over time, they condition positivity, making failure stepping stones. (350 words)",
         "vi": "Nghi thức hồi cảm xúc xử tải tâm lý thất bại, tái xây tự tin với thực hành tư duy tăng trưởng. Optimism học Seligman tái khung thất tạm, cụ thể. Nghi thức cá nhân: nhật ký biết ơn hậu thất, khẳng định sức mạnh. Dùng hình dung: tưởng thành công tương lai. Nghi thức: Thiền kiên cường tuần. Rào: vòng nhai lại hoặc né kìm nén. Đối cảm, rồi tái khung. Chiến lược, nghi thức duy trì trung lập, tích hợp với chống mong manh. VIP9 nghi thức cho làm chủ cảm xúc. Không có, kéo dài; có nó, bật lại. Mở rộng sang mất: ritualize grief. Trong áp 2025, nghi thức ngừa tuyệt vọng, biến hồi phục trao quyền. Qua thời gian, chúng điều tích cực, làm thất bại bậc thang. (350 từ)"
       },
-      "tags": ["emotional", "recovery", "rituals"],
+      "tags": [
+        "emotional",
+        "recovery",
+        "rituals"
+      ],
       "audio": "strategic_failure_recovery_3_en.mp3"
     },
     {
       "slug": "pivot-and-adaptation-plans",
-      "keywords_en": ["pivot adaptation", "plans", "flexibility", "opportunities", "execution"],
-      "keywords_vi": ["kế hoạch xoay thích ứng", "linh hoạt", "cơ hội", "thực thi"],
+      "keywords_en": [
+        "pivot adaptation",
+        "plans",
+        "flexibility",
+        "opportunities",
+        "execution"
+      ],
+      "keywords_vi": [
+        "kế hoạch xoay thích ứng",
+        "linh hoạt",
+        "cơ hội",
+        "thực thi"
+      ],
       "copy": {
         "en": "Pivot and adaptation plans redirect post-failure, capitalizing on new paths with flexibility. Agile pivots in startups model rapid course corrections. Plan personally: identify pivots (e.g., career shift from failure learnings), roadmap steps. Adaptation: Update skills, networks. Methods: Brainstorm options, prototype small. Barriers: attachment to sunk costs or fear paralyzing. Apply opportunity cost thinking. Strategically, plans turn failures opportunistic, integrating with adaptive intelligence. VIP9 plans for dynamic mastery. Without, stuck; with, agile. Extend to goals: pivot stalled ones. In 2025's changes, plans accelerate rebounds, turning recovery innovative. Over time, they build pivot muscle, making adaptation second nature. (350 words)",
         "vi": "Kế hoạch xoay và thích ứng định hướng hậu thất, tận mới đường với linh hoạt. Pivot agile startup mô sửa khóa nhanh. Kế cá nhân: xác xoay (ví dụ dịch sự nghiệp từ học thất bại), roadmap bước. Thích ứng: Cập kỹ năng, mạng. Phương: Brainstorm lựa, prototype nhỏ. Rào: bám chi phí chìm hoặc sợ tê. Áp suy chi phí cơ hội. Chiến lược, kế biến thất cơ hội, tích hợp với trí tuệ thích ứng. VIP9 kế cho làm chủ động. Không có, kẹt; có nó, agile. Mở rộng sang mục: xoay đình trệ. Trong thay 2025, kế tăng tốc rebound, biến hồi phục sáng tạo. Qua thời gian, chúng xây cơ xoay, làm thích ứng bản năng. (350 từ)"
       },
-      "tags": ["pivot", "adaptation", "plans"],
+      "tags": [
+        "pivot",
+        "adaptation",
+        "plans"
+      ],
       "audio": "strategic_failure_recovery_4_en.mp3"
     },
     {
       "slug": "network-support-utilization",
-      "keywords_en": ["network support", "utilization", "mentors", "accountability", "recovery"],
-      "keywords_vi": ["tận dụng hỗ trợ mạng", "mentor", "trách nhiệm", "hồi phục"],
+      "keywords_en": [
+        "network support",
+        "utilization",
+        "mentors",
+        "accountability",
+        "recovery"
+      ],
+      "keywords_vi": [
+        "tận dụng hỗ trợ mạng",
+        "mentor",
+        "trách nhiệm",
+        "hồi phục"
+      ],
       "copy": {
         "en": "Network support utilization leverages relationships for failure recovery, drawing wisdom and encouragement from mentors, peers. Social capital research shows networks buffer shocks, accelerating rebounds. Utilize personally: seek mentor debriefs, accountability groups for motivation. Utilization: Share vulnerabilities selectively, reciprocate. Methods: Schedule check-ins post-failure. Barriers: isolation pride or overburdening contacts. Balance asks with gives. Strategically, utilization integrates with resilience networks. VIP9 utilizes for supported mastery. Without, solo struggle; with, communal lift. Extend to communities: forums for advice. In 2025's connects, utilization multiplies recovery, turning failure shared learning. Over time, it strengthens bonds, making networks recovery safety nets. (350 words)",
         "vi": "Tận dụng hỗ trợ mạng tận quan hệ cho hồi phục thất bại, rút trí tuệ và khích từ mentor, đồng. Nghiên cứu vốn xã hội cho mạng đệm sốc, tăng tốc rebound. Tận cá nhân: tìm debrief mentor, nhóm trách nhiệm cho động lực. Tận: Chia yếu điểm chọn, reciprocal. Phương: Lên check-in hậu thất. Rào: cô lập kiêu hoặc quá tải liên lạc. Cân đòi với cho. Chiến lược, tận dụng tích hợp với mạng kiên cường. VIP9 tận cho làm chủ hỗ trợ. Không có, đấu solo; có nó, nâng cộng đồng. Mở rộng sang cộng: forum cho lời khuyên. Trong kết nối 2025, tận dụng nhân hồi phục, biến thất bại học chung. Qua thời gian, nó củng ràng buộc, làm mạng lưới an toàn hồi phục. (350 từ)"
       },
-      "tags": ["network", "support", "utilization"],
+      "tags": [
+        "network",
+        "support",
+        "utilization"
+      ],
       "audio": "strategic_failure_recovery_5_en.mp3"
     },
     {
       "slug": "growth-mindset-reinforcement",
-      "keywords_en": ["growth mindset", "reinforcement", "learning", "persistence", "transformation"],
-      "keywords_vi": ["củng cố tư duy tăng trưởng", "học hỏi", "kiên trì", "biến đổi"],
+      "keywords_en": [
+        "growth mindset",
+        "reinforcement",
+        "learning",
+        "persistence",
+        "transformation"
+      ],
+      "keywords_vi": [
+        "củng cố tư duy tăng trưởng",
+        "học hỏi",
+        "kiên trì",
+        "biến đổi"
+      ],
       "copy": {
         "en": "Growth mindset reinforcement views failures as growth opportunities, fostering persistence and transformation. Dweck's research contrasts fixed mindsets fearing failure with growth embracing it. Reinforce personally: reframe 'I failed' to 'I learned,' celebrate efforts. Reinforcement: Affirmations, success stories. Methods: Post-failure growth plans. Barriers: fixed self-talk or discouragement spirals. Challenge with evidence of past recoveries. Strategically, mindset fuels compounding, integrating with antifragile. VIP9 reinforces for transformative mastery. Without, defeated; with, empowered. Extend to challenges: mindset shifts. In 2025's failures, reinforcement builds unbreakable spirits, turning recovery motivational. Over time, it ingrains optimism, making mindset recovery catalyst. (350 words)",
         "vi": "Củng cố tư duy tăng trưởng coi thất bại cơ hội tăng, thúc kiên trì và biến đổi. Nghiên cứu Dweck đối mindset cố sợ thất với tăng ôm nó. Củng cố cá nhân: tái khung 'Tôi thất' thành 'Tôi học,' mừng nỗ lực. Củng cố: Khẳng định, chuyện thành công. Phương: Kế tăng hậu thất. Rào: tự thoại cố hoặc xoáy chán nản. Thách với bằng chứng hồi phục quá. Chiến lược, mindset nhiên liệu tích lũy, tích hợp với chống mong manh. VIP9 củng cố cho làm chủ biến đổi. Không có, bại; có nó, trao quyền. Mở rộng sang thách: dịch mindset. Trong thất bại 2025, củng cố xây tinh thần không phá, biến hồi phục động lực. Qua thời gian, nó khắc lạc quan, làm mindset xúc tác hồi phục. (350 từ)"
       },
-      "tags": ["growth", "mindset", "reinforcement"],
+      "tags": [
+        "growth",
+        "mindset",
+        "reinforcement"
+      ],
       "audio": "strategic_failure_recovery_6_en.mp3"
     },
     {
       "slug": "long-term-integration-practices",
-      "keywords_en": ["long-term integration", "practices", "habits", "systems", "evolution"],
-      "keywords_vi": ["thực hành tích hợp dài hạn", "thói quen", "hệ", "tiến hóa"],
+      "keywords_en": [
+        "long-term integration",
+        "practices",
+        "habits",
+        "systems",
+        "evolution"
+      ],
+      "keywords_vi": [
+        "thực hành tích hợp dài hạn",
+        "thói quen",
+        "hệ",
+        "tiến hóa"
+      ],
       "copy": {
         "en": "Long-term integration practices embed failure lessons into systems, ensuring evolutionary growth. Practices: Update personal protocols (e.g., risk checklists post-analysis). Integration: Habit revisions, mindset rituals. Practices: Annual failure retrospectives. Barriers: forgetting lessons or resistance to change. Anchor with trackers. Strategically, integration sustains mastery, integrating with personal systems. VIP9 integrates for perpetual evolution. Without, ephemeral; with, ingrained. Extend to life: integrate across domains. In 2025's cycles, practices make failures evolutionary steps, turning recovery systemic. Over time, they compound wisdom, making integration failure's gift. (350 words)",
         "vi": "Thực hành tích hợp dài hạn nhúng bài học thất bại vào hệ, đảm bảo tăng tiến hóa. Thực hành: Cập giao thức cá (ví dụ checklist rủi hậu phân). Tích hợp: Sửa thói, nghi thức mindset. Thực hành: Retrospective thất năm. Rào: quên bài hoặc kháng thay. Neo với tracker. Chiến lược, tích hợp duy trì làm chủ, tích hợp với hệ cá nhân. VIP9 tích hợp cho tiến hóa vĩnh cửu. Không có, phù du; có nó, khắc sâu. Mở rộng sang đời: tích hợp跨 lĩnh vực. Trong chu kỳ 2025, thực hành làm thất bại bước tiến hóa, biến hồi phục hệ thống. Qua thời gian, chúng tích trí tuệ, làm tích hợp quà thất bại. (350 từ)"
       },
-      "tags": ["long_term", "integration", "practices"],
+      "tags": [
+        "long_term",
+        "integration",
+        "practices"
+      ],
       "audio": "strategic_failure_recovery_7_en.mp3"
     },
     {
       "slug": "celebration-and-momentum-building",
-      "keywords_en": ["celebration", "momentum building", "wins", "motivation", "cycle"],
-      "keywords_vi": ["mừng và xây đà", "thắng", "động lực", "chu kỳ"],
+      "keywords_en": [
+        "celebration",
+        "momentum building",
+        "wins",
+        "motivation",
+        "cycle"
+      ],
+      "keywords_vi": [
+        "mừng và xây đà",
+        "thắng",
+        "động lực",
+        "chu kỳ"
+      ],
       "copy": {
         "en": "Celebration and momentum building mark recovery milestones, reinforcing positive cycles post-failure. Dopamine from wins motivates persistence. Build personally: celebrate small rebounds (e.g., lesson applied), ritualize (rewards). Momentum: Chain wins, track streaks. Methods: Gratitude for growth. Barriers: overlooking micro-wins or perfectionism dismissing. Acknowledge all progress. Strategically, building sustains drive, integrating with growth mindset. VIP9 celebrates for motivated mastery. Without, demotivated; with, propelled. Extend to teams: group celebrations. In 2025's grinds, building prevents fatigue, turning recovery celebratory. Over time, it creates upward spirals, making momentum recovery's reward. (350 words)",
         "vi": "Mừng và xây đà đánh dấu mốc hồi phục, củng cố chu kỳ tích cực hậu thất bại. Dopamine từ thắng động lực kiên trì. Xây cá nhân: mừng rebound nhỏ (ví dụ áp bài học), ritualize (thưởng). Đà: Chuỗi thắng, theo streak. Phương: Biết ơn cho tăng. Rào: bỏ micro-thắng hoặc cầu toàn bác. Thừa nhận mọi tiến. Chiến lược, xây duy trì drive, tích hợp với tư duy tăng trưởng. VIP9 mừng cho làm chủ động lực. Không có, mất động; có nó, đẩy. Mở rộng sang đội: mừng nhóm. Trong grind 2025, xây ngừa mệt, biến hồi phục mừng. Qua thời gian, nó tạo xoáy lên, làm đà thưởng hồi phục. (350 từ)"
       },
-      "tags": ["celebration", "momentum", "building"],
+      "tags": [
+        "celebration",
+        "momentum",
+        "building"
+      ],
       "audio": "strategic_failure_recovery_8_en.mp3"
     }
   ]

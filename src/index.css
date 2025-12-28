@@ -1,66 +1,212 @@
+/* src/index.css
+   MB-BLUE-97.4 — 2025-12-28 (+0700)
+
+   MERGED:
+   (A) Mercy Blade background modes (rainbow / bw)
+   (B) Mercy mouth + presence animations (SAFE)
+
+   LOCKED POLICY:
+   - Native <audio> UI must NEVER appear inside ROOM pages.
+   - Audio is rendered ONLY via TalkingFacePlayButton (core Mercy Blade motif).
+
+   CRITICAL FIX (97.4):
+   - The bug is: native audio UI is still rendering (mp3 filename + 0:00/1:01 + slider).
+   - That means some <audio> element still exists in the DOM.
+   - We do NOT disable audio playback logic.
+   - We hide native audio UI ONLY inside `.mb-room` scope.
+*/
+
 /* ===============================
-   Mercy Blade Talking Mouth
+   Mercy Blade — Global Media Policy (LOCKED)
+   =============================== */
+
+/*
+  Mercy Blade (LOCKED):
+  - Native audio UI is forbidden INSIDE ROOMS.
+  - Audio is rendered ONLY via TalkingFacePlayButton.
+  - We hide native UI while keeping JS audio usable.
+*/
+
+/* ===============================
+   ROOM-SCOPED AUDIO LOCK (THE LOOP BREAKER)
+   =============================== */
+
+/* 0) Scope marker: RoomRenderer uses `.mb-room`.
+      Only enforce inside rooms, not admin panels. */
+.mb-room audio {
+  /* Defensive: if ANY <audio> exists, make it non-visual but playable */
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* 1) If controls attribute exists, hide the visible player box */
+.mb-room audio[controls] {
+  display: none !important;
+}
+
+/* 2) WebKit native controls (Chrome/Safari) — extra defensive */
+.mb-room audio::-webkit-media-controls,
+.mb-room audio::-webkit-media-controls-enclosure,
+.mb-room audio::-webkit-media-controls-panel,
+.mb-room audio::-webkit-media-controls-play-button,
+.mb-room audio::-webkit-media-controls-timeline,
+.mb-room audio::-webkit-media-controls-current-time-display,
+.mb-room audio::-webkit-media-controls-time-remaining-display,
+.mb-room audio::-webkit-media-controls-mute-button,
+.mb-room audio::-webkit-media-controls-volume-slider {
+  display: none !important;
+}
+
+/* 3) If any renderer wraps audio in a container that has default margins,
+      make sure it doesn't produce visual gaps. */
+.mb-room audio,
+.mb-room audio[controls] {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+/* ===============================
+   Mercy Blade — Color Modes
+   =============================== */
+
+/* Default: Rainbow mode */
+:root[data-mb-mode="rainbow"] {
+  --mb-bg: radial-gradient(
+      1200px 600px at 10% 10%,
+      rgba(255, 0, 160, 0.10),
+      transparent 55%
+    ),
+    radial-gradient(
+      1200px 600px at 90% 20%,
+      rgba(0, 180, 255, 0.10),
+      transparent 55%
+    ),
+    radial-gradient(
+      1200px 600px at 40% 90%,
+      rgba(140, 255, 0, 0.10),
+      transparent 55%
+    ),
+    linear-gradient(180deg, rgba(250, 250, 252, 1), rgba(245, 246, 250, 1));
+}
+
+:root[data-mb-mode="bw"] {
+  --mb-bg: linear-gradient(180deg, #ffffff, #f4f4f4);
+}
+
+body {
+  background: var(--mb-bg);
+}
+
+/* optional: slightly richer card background in rainbow mode */
+:root[data-mb-mode="rainbow"] .bg-card {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+:root[data-mb-mode="bw"] .bg-card {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+/* ===============================
+   Mercy Blade Talking Mouth (SAFE)
+   - Works even if mouth is positioned with translateX(-50%)
    =============================== */
 
 @keyframes mb-mouth-talk {
-  0%, 100% { transform: scaleY(0.2); }
-  30% { transform: scaleY(1); }
-  60% { transform: scaleY(0.4); }
+  0%,
+  100% {
+    transform: translateX(-50%) scaleY(0.2);
+  }
+  30% {
+    transform: translateX(-50%) scaleY(1);
+  }
+  60% {
+    transform: translateX(-50%) scaleY(0.4);
+  }
 }
 
+/* Base mouth */
 .mb-mouth {
-  transform-origin: center center;
+  transform-origin: 50% 100%;
 }
 
-.mb-mouth-talking {
+/* Apply this when audio playing */
+.mb-mouth--talking {
   animation: mb-mouth-talk 0.35s ease-in-out infinite;
+  will-change: transform;
 }
 
+/* Backward compat alias (optional) */
 .animate-mouth-talk {
   animation: mb-mouth-talk 0.35s ease-in-out infinite;
+  will-change: transform;
 }
-
 
 /* ===============================
    Mercy Breathing (Presence)
    =============================== */
 
 @keyframes mercy-breathe {
-  0%, 100% { transform: scale(1); opacity: 0.9; }
-  50% { transform: scale(1.03); opacity: 1; }
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.03);
+    opacity: 1;
+  }
 }
 
 .animate-mercy-breathe {
   animation: mercy-breathe 4s ease-in-out infinite;
 }
 
-
 /* ===============================
    Halo Pulse (Reassurance)
    =============================== */
 
 @keyframes halo-pulse {
-  0%, 100% { transform: scale(1); opacity: 0.6; }
-  50% { transform: scale(1.15); opacity: 0.3; }
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.3;
+  }
 }
 
 .animate-halo-pulse {
   animation: halo-pulse 3s ease-in-out infinite;
 }
 
-
 /* ===============================
    Wing Flutter (Angelic)
    =============================== */
 
 @keyframes wing-flutter-left {
-  0%, 100% { transform: rotate(0deg); }
-  50% { transform: rotate(-5deg); }
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-5deg);
+  }
 }
 
 @keyframes wing-flutter-right {
-  0%, 100% { transform: rotate(0deg); }
-  50% { transform: rotate(5deg); }
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
 }
 
 .animate-wing-flutter-left {
@@ -71,16 +217,26 @@
   animation: wing-flutter-right 2s ease-in-out infinite;
 }
 
-
 /* ===============================
    Wave Expansion (Abstract)
    =============================== */
 
 @keyframes wave-expand {
-  0%, 100% { transform: scale(0.95); opacity: 0.8; }
-  50% { transform: scale(1.05); opacity: 0.4; }
+  0%,
+  100% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.4;
+  }
 }
 
 .animate-wave-expand {
   animation: wave-expand 3s ease-in-out infinite;
 }
+
+/* New thing to learn:
+   CSS scoping is a weapon: `.mb-room audio[controls]{display:none}` kills native players
+   even when another component accidentally renders them. */

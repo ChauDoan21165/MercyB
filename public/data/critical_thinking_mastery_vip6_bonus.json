@@ -1,6 +1,6 @@
 {
   "id": "critical_thinking_mastery_vip6_bonus",
-  "tier": "vip6",
+  "tier": "free",
   "domain": "Critical Thinking",
   "title": {
     "en": "Critical Thinking Mastery — VIP6 Bonus",
@@ -13,112 +13,222 @@
   "entries": [
     {
       "slug": "perception-vs-reality",
-      "keywords_en": ["perception", "reality", "separation"],
-      "keywords_vi": ["tri giác", "thực tại", "tách bạch"],
+      "keywords_en": [
+        "perception",
+        "reality",
+        "separation"
+      ],
+      "keywords_vi": [
+        "tri giác",
+        "thực tại",
+        "tách bạch"
+      ],
       "copy": {
         "en": "Your senses deliver raw data; your mind creates meaning. Most confusion in life comes from mixing what you saw with what you assumed. Critical thinking begins by separating observation from interpretation. When something happens, ask: What actually occurred? What did I add? What did I fear or hope? This pulls you out of emotional storytelling and back into objective clarity. Perception becomes cleaner, and reality becomes easier to work with.",
         "vi": "Giác quan đưa dữ liệu thô; tâm trí tạo ý nghĩa. Hầu hết rối rắm của đời là do trộn lẫn điều bạn thấy với điều bạn suy diễn. Tư duy phản biện bắt đầu bằng việc tách quan sát khỏi diễn giải. Khi điều gì xảy ra, hãy hỏi: Điều thật sự diễn ra là gì? Mình đã thêm gì? Mình đã sợ hay mong gì? Câu hỏi này kéo bạn ra khỏi câu chuyện cảm xúc và đưa bạn trở lại sự rõ ràng khách quan. Tri giác sạch hơn, thực tại dễ xử lý hơn."
       },
-      "tags": ["clarity", "objectivity"],
+      "tags": [
+        "clarity",
+        "objectivity"
+      ],
       "audio": "vip6_critical_01.mp3"
     },
     {
       "slug": "mental-filters-hidden-biases",
-      "keywords_en": ["bias", "mental filters", "distortion"],
-      "keywords_vi": ["thiên kiến", "bộ lọc tâm trí", "méo mó nhận thức"],
+      "keywords_en": [
+        "bias",
+        "mental filters",
+        "distortion"
+      ],
+      "keywords_vi": [
+        "thiên kiến",
+        "bộ lọc tâm trí",
+        "méo mó nhận thức"
+      ],
       "copy": {
         "en": "Cognitive biases are shortcuts that save time but distort truth. Confirmation bias, halo effect, optimism bias, loss aversion—they quietly shape your judgments. The goal is not to erase bias, but to notice it before it hijacks your reasoning. Ask: What bias benefits me here? What bias blinds me? Awareness dissolves distortion.",
         "vi": "Thiên kiến nhận thức là các lối tắt tiết kiệm thời gian nhưng làm méo sự thật. Thiên kiến xác nhận, hiệu ứng hào quang, thiên kiến lạc quan, ác cảm mất mát—chúng âm thầm định hình phán đoán của bạn. Mục tiêu không phải loại bỏ thiên kiến mà là nhận ra nó trước khi nó chiếm quyền suy nghĩ. Hãy hỏi: Thiên kiến nào lợi cho mình? Thiên kiến nào làm mình mù? Nhận diện làm tan biến méo mó."
       },
-      "tags": ["bias", "awareness"],
+      "tags": [
+        "bias",
+        "awareness"
+      ],
       "audio": "vip6_critical_02.mp3"
     },
     {
       "slug": "logical-structures",
-      "keywords_en": ["logic", "reasoning", "assumptions"],
-      "keywords_vi": ["logic", "lý luận", "giả định ẩn"],
+      "keywords_en": [
+        "logic",
+        "reasoning",
+        "assumptions"
+      ],
+      "keywords_vi": [
+        "logic",
+        "lý luận",
+        "giả định ẩn"
+      ],
       "copy": {
         "en": "Clear thinking has structure: premise → process → conclusion. Most flawed arguments break at hidden assumptions. When evaluating claims, ask: What is being assumed? Does the conclusion truly follow? Is the link strong or emotional? When structure is exposed, truth becomes visible.",
         "vi": "Tư duy rõ ràng có cấu trúc: tiền đề → xử lý → kết luận. Hầu hết lập luận sai hỏng ở các giả định ẩn. Khi đánh giá một khẳng định, hãy hỏi: Điều gì đang được giả định? Kết luận có thật sự theo sau không? Mối liên kết có vững hay chỉ là cảm xúc? Khi cấu trúc lộ ra, sự thật hiện hình."
       },
-      "tags": ["logic", "analysis"],
+      "tags": [
+        "logic",
+        "analysis"
+      ],
       "audio": "vip6_critical_03.mp3"
     },
     {
       "slug": "precision-questioning",
-      "keywords_en": ["questioning", "socratic", "clarity"],
-      "keywords_vi": ["đặt câu hỏi", "socratic", "làm rõ"],
+      "keywords_en": [
+        "questioning",
+        "socratic",
+        "clarity"
+      ],
+      "keywords_vi": [
+        "đặt câu hỏi",
+        "socratic",
+        "làm rõ"
+      ],
       "copy": {
         "en": "Precise questions cut deeper than strong opinions. Ask: What do you mean by that? How do you know? What would disprove this? What is missing? What is the opposite angle? Clean questions reveal truth quickly and expose weak reasoning without aggression.",
         "vi": "Câu hỏi chính xác sắc hơn ý kiến mạnh. Hãy hỏi: Ý bạn là gì? Bạn biết điều đó bằng cách nào? Điều gì có thể phản chứng? Điều gì còn thiếu? Góc nhìn ngược lại là gì? Câu hỏi sạch lộ sự thật nhanh và phơi bày lý luận yếu mà không cần gây căng thẳng."
       },
-      "tags": ["questioning", "clarity"],
+      "tags": [
+        "questioning",
+        "clarity"
+      ],
       "audio": "vip6_critical_04.mp3"
     },
     {
       "slug": "evidence-evaluation",
-      "keywords_en": ["evidence", "signal vs noise", "strength"],
-      "keywords_vi": ["bằng chứng", "tín hiệu và nhiễu", "độ mạnh"],
+      "keywords_en": [
+        "evidence",
+        "signal vs noise",
+        "strength"
+      ],
+      "keywords_vi": [
+        "bằng chứng",
+        "tín hiệu và nhiễu",
+        "độ mạnh"
+      ],
       "copy": {
         "en": "Not all evidence is equal. Good evidence is independent, verifiable, consistent, and proportional. Weak evidence is emotional, anecdotal, or convenient. Ask: What would a neutral observer think? What data contradicts this? Truth emerges when you stop accepting low-quality evidence.",
         "vi": "Không phải bằng chứng nào cũng như nhau. Bằng chứng tốt độc lập, kiểm chứng được, nhất quán và có tỷ trọng phù hợp. Bằng chứng yếu mang tính cảm xúc, giai thoại hoặc tiện lợi. Hãy hỏi: Người quan sát trung lập sẽ nghĩ gì? Dữ liệu nào phản lại điều này? Sự thật xuất hiện khi bạn ngừng chấp nhận bằng chứng kém."
       },
-      "tags": ["evidence", "evaluation"],
+      "tags": [
+        "evidence",
+        "evaluation"
+      ],
       "audio": "vip6_critical_05.mp3"
     },
     {
       "slug": "emotional-interference",
-      "keywords_en": ["emotion", "distortion", "self-regulation"],
-      "keywords_vi": ["cảm xúc", "méo mó", "tự điều chỉnh"],
+      "keywords_en": [
+        "emotion",
+        "distortion",
+        "self-regulation"
+      ],
+      "keywords_vi": [
+        "cảm xúc",
+        "méo mó",
+        "tự điều chỉnh"
+      ],
       "copy": {
         "en": "Emotion is the fastest distorting force in thinking. Fear exaggerates risk. Desire ignores red flags. Ego protects outdated beliefs. Before deciding, regulate your state. Breathe, pause, detach. A calm mind sees reality; an agitated mind sees its own reflection.",
         "vi": "Cảm xúc là lực méo mó nhanh nhất trong tư duy. Sợ làm phóng đại rủi ro. Ham muốn bỏ qua tín hiệu đỏ. Bản ngã bảo vệ niềm tin cũ. Trước khi quyết định, hãy điều chỉnh trạng thái. Thở, dừng, tách khỏi cảm xúc. Tâm trí yên thấy thực tại; tâm trí rối chỉ thấy chính nó."
       },
-      "tags": ["emotion", "regulation"],
+      "tags": [
+        "emotion",
+        "regulation"
+      ],
       "audio": "vip6_critical_06.mp3"
     },
     {
       "slug": "perspective-shifting",
-      "keywords_en": ["perspective", "inversion", "rotate"],
-      "keywords_vi": ["góc nhìn", "nghịch đảo", "xoay vấn đề"],
+      "keywords_en": [
+        "perspective",
+        "inversion",
+        "rotate"
+      ],
+      "keywords_vi": [
+        "góc nhìn",
+        "nghịch đảo",
+        "xoay vấn đề"
+      ],
       "copy": {
         "en": "Rotate problems deliberately: What if the opposite were true? What would my enemy say? What does this look like from above? From the future? From the worst-case? Perspective-shifting reveals blind spots and exposes weak assumptions. Truth survives rotation.",
         "vi": "Hãy xoay vấn đề có chủ đích: Nếu điều ngược lại đúng thì sao? Kẻ đối lập sẽ nói gì? Nhìn từ trên cao thì thế nào? Từ tương lai? Từ kịch bản xấu nhất? Đổi góc nhìn làm lộ điểm mù và giả định yếu. Sự thật tồn tại qua mọi góc."
       },
-      "tags": ["perspective", "analysis"],
+      "tags": [
+        "perspective",
+        "analysis"
+      ],
       "audio": "vip6_critical_07.mp3"
     },
     {
       "slug": "detecting-manipulation-fallacies",
-      "keywords_en": ["manipulation", "fallacy", "rhetoric"],
-      "keywords_vi": ["thao túng", "ngụy biện", "hùng biện"],
+      "keywords_en": [
+        "manipulation",
+        "fallacy",
+        "rhetoric"
+      ],
+      "keywords_vi": [
+        "thao túng",
+        "ngụy biện",
+        "hùng biện"
+      ],
       "copy": {
         "en": "Manipulators use emotion, urgency, flattery, false dichotomies, and moral pressure. Fallacies hide inside confident language. Learn to identify appeals to authority, strawman attacks, slippery slopes, and false cause. When you see the trick, the trick loses power.",
         "vi": "Người thao túng dùng cảm xúc, sự gấp gáp, lời khen, lựa chọn giả và áp lực đạo đức. Ngụy biện ẩn trong lời lẽ tự tin. Hãy học nhận diện viện dẫn quyền lực, dựng rơm, dốc trượt và nguyên nhân giả. Khi thấy mánh, mánh hết tác dụng."
       },
-      "tags": ["fallacy", "manipulation"],
+      "tags": [
+        "fallacy",
+        "manipulation"
+      ],
       "audio": "vip6_critical_08.mp3"
     },
     {
       "slug": "uncertainty-decision-making",
-      "keywords_en": ["uncertainty", "decisions", "probability"],
-      "keywords_vi": ["bất định", "quyết định", "xác suất"],
+      "keywords_en": [
+        "uncertainty",
+        "decisions",
+        "probability"
+      ],
+      "keywords_vi": [
+        "bất định",
+        "quyết định",
+        "xác suất"
+      ],
       "copy": {
         "en": "Most decisions happen under uncertainty. Think in probabilities, not absolutes. Ask: What are the odds? What is the worst loss? What is the upside? What is reversible? Good thinkers choose based on clarity, not fear.",
         "vi": "Đa phần quyết định diễn ra trong bất định. Hãy nghĩ theo xác suất, không phải tuyệt đối. Hỏi: Xác suất là bao nhiêu? Mất mát tệ nhất? Lợi ích tốt nhất? Có đảo ngược được không? Người tư duy tốt chọn dựa trên sự rõ ràng, không phải nỗi sợ."
       },
-      "tags": ["decision", "probability"],
+      "tags": [
+        "decision",
+        "probability"
+      ],
       "audio": "vip6_critical_09.mp3"
     },
     {
       "slug": "intellectual-integrity",
-      "keywords_en": ["integrity", "truth", "ego"],
-      "keywords_vi": ["liêm chính trí tuệ", "sự thật", "bản ngã"],
+      "keywords_en": [
+        "integrity",
+        "truth",
+        "ego"
+      ],
+      "keywords_vi": [
+        "liêm chính trí tuệ",
+        "sự thật",
+        "bản ngã"
+      ],
       "copy": {
         "en": "Intellectual integrity is the courage to update your beliefs when faced with truth. It requires admitting error, dropping ego, and choosing accuracy over pride. A mind that can update itself cannot be manipulated.",
         "vi": "Liêm chính trí tuệ là dũng khí sửa niềm tin khi gặp sự thật. Nó đòi bạn thừa nhận sai, bỏ bản ngã và chọn sự đúng thay vì kiêu hãnh. Một tâm trí có thể tự cập nhật thì không ai thao túng được."
       },
-      "tags": ["integrity", "truth"],
+      "tags": [
+        "integrity",
+        "truth"
+      ],
       "audio": "vip6_critical_10.mp3"
     }
   ]

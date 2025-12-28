@@ -1,6 +1,6 @@
 {
   "id": "overcome_storm_vip3",
-  "tier": "VIP 3 / Cấp VIP 3",
+  "tier": "vip3",
   "default_entry_id": "build_resilience_challenges",
   "welcome": {
     "en": "Hello! Welcome to Emotional Growth VIP3 room. How can I help you today?\n\nTopic keywords you can type are below:\n- build_resilience_challenges\n- seek_support_tough_times\n- cultivate_positive_mindset\n- emotional_flexibility\n- purpose_driven_resilience",

@@ -1,5 +1,7 @@
 /**
  * Auto-generate room registry from ALL JSON files in public/data
+ * File: scripts/generate-room-registry.js
+ * Version: MB-BLUE-97.7 — 2025-12-28 (+0700)
  *
  * GOAL (strategic):
  * - NEVER reject rooms (register first, warn later)
@@ -8,8 +10,8 @@
  *
  * Generates:
  * A) src/lib/roomManifest.ts        -> PUBLIC_ROOM_MANIFEST: canonicalId -> "data/REAL_FILENAME.json"
- * B) src/lib/roomDataImports.ts     -> roomDataMap
- * C) src/lib/roomList.ts            -> ROOM_IDS
+ * B) src/lib/roomDataImports.ts     -> roomDataMap (metadata)
+ * C) src/lib/roomList.ts            -> ROOM_IDS + getRoomList() (optional helper)
  *
  * Run: node scripts/generate-room-registry.js
  */
@@ -21,7 +23,6 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const projectRoot = path.resolve(__dirname, "..");
-
 const dataDir = path.join(projectRoot, "public", "data");
 
 /* ---------------- Canonicalization ---------------- */
@@ -37,11 +38,38 @@ function canonicalIdFromFilename(filename) {
     .replace(/^_+|_+$/g, "");
 }
 
+/**
+ * ✅ Tier inference (ROBUST)
+ * Works for:
+ * - *_vip9_vol1, *_vip5_bonus, *_vip4_vip4, vip9 anywhere
+ * - legacy: vip3_ii / vip3ii / vip3_ext -> vip3_ext
+ * - fallback: free
+ *
+ * IMPORTANT:
+ * - We infer from the CANONICAL ID, which is already snake_case.
+ */
 function inferTierFromId(id) {
-  const m =
-    id.match(/_(free|vip\d+|vip3_ii|kidslevel[123])$/i) ||
-    id.match(/_(vip\d+_vol\d+)$/i);
-  return m ? m[1].toLowerCase() : "free";
+  const s = String(id || "").toLowerCase();
+
+  // vip3 extension variants (treat as vip3_ext)
+  if (/(^|_)vip3(_?ii|_?ext)($|_)/.test(s)) return "vip3_ext";
+
+  // explicit free marker
+  if (/(^|_)free($|_)/.test(s)) return "free";
+
+  // ✅ find vip1..vip9 ANYWHERE (with or without underscores around it)
+  // examples it catches:
+  // - alexander_the_great_vip9_vol1
+  // - career_path_vip4
+  // - writing_vip5_bonus
+  // - somethingvip6something (rare but safe)
+  const m = s.match(/vip([1-9])/);
+  if (m) return `vip${m[1]}`;
+
+  // kids content defaults to free for now
+  if (/_kids_l[123]\b/.test(s)) return "free";
+
+  return "free";
 }
 
 function safeReadJson(filePath) {
@@ -53,32 +81,36 @@ function safeReadJson(filePath) {
 }
 
 function titleCaseFromId(id) {
-  return id
-    .replace(/_(free|vip\d+|vip3_ii|kidslevel[123])$/i, "")
+  return String(id || "")
+    .replace(/_(free|vip\d+|vip3_ext|vip3_ii|kids_l[123])$/i, "")
+    .replace(/_+/g, "_")
     .split("_")
     .filter(Boolean)
     .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
     .join(" ");
 }
 
-function pickNameEn(obj, fallback) {
+function pickTitleEn(obj, fallback) {
   return (
-    obj?.name ||
-    obj?.nameEn ||
+    obj?.title?.en ||
     obj?.title_en ||
     obj?.titleEn ||
-    obj?.title?.en ||
+    obj?.name?.en ||
+    obj?.name_en ||
+    obj?.nameEn ||
+    obj?.name ||
     fallback
   );
 }
 
-function pickNameVi(obj, fallback) {
+function pickTitleVi(obj, fallback) {
   return (
-    obj?.name_vi ||
-    obj?.nameVi ||
+    obj?.title?.vi ||
     obj?.title_vi ||
     obj?.titleVi ||
-    obj?.title?.vi ||
+    obj?.name?.vi ||
+    obj?.name_vi ||
+    obj?.nameVi ||
     fallback
   );
 }
@@ -86,9 +118,7 @@ function pickNameVi(obj, fallback) {
 /* ---------------- Scan ---------------- */
 
 function scanAllRooms() {
-  if (!fs.existsSync(dataDir)) {
-    throw new Error("Missing folder: " + dataDir);
-  }
+  if (!fs.existsSync(dataDir)) throw new Error("Missing folder: " + dataDir);
 
   const files = fs
     .readdirSync(dataDir)
@@ -128,19 +158,26 @@ function scanAllRooms() {
     const json = safeReadJson(jsonPath);
 
     // ✅ CRITICAL: manifest points to REAL filename (case/symbols preserved)
-    // NO leading slash
     manifest[canonicalId] = "data/" + filename;
 
-    const tier = inferTierFromId(canonicalId);
-    const fallbackTitle = titleCaseFromId(canonicalId);
+    // Tier: prefer json.tier ONLY IF it looks like free/vipN/vip3_ext
+    // Otherwise infer from ID (prevents vip9_vol1 poisoning the tier).
+    const jsonTierRaw = String(json?.tier || "").trim().toLowerCase();
+    const jsonTierOk =
+      jsonTierRaw === "free" ||
+      jsonTierRaw === "vip3_ext" ||
+      /^vip[1-9]$/.test(jsonTierRaw);
 
-    const nameEn = pickNameEn(json, fallbackTitle);
-    const nameVi = pickNameVi(json, nameEn);
+    const tier = jsonTierOk ? jsonTierRaw : inferTierFromId(canonicalId);
+
+    const fallbackTitle = titleCaseFromId(canonicalId);
+    const titleEn = pickTitleEn(json, fallbackTitle);
+    const titleVi = pickTitleVi(json, titleEn);
 
     roomDataMap[canonicalId] = {
       id: canonicalId,
-      nameEn: String(nameEn),
-      nameVi: String(nameVi),
+      title_en: String(titleEn),
+      title_vi: String(titleVi),
       tier,
       hasData: true,
     };
@@ -165,6 +202,7 @@ function writeFile(filePath, content) {
 function generateRoomManifestTs(manifest) {
   return `/**
  * AUTO-GENERATED — DO NOT EDIT
+ * Version: MB-BLUE-97.7
  */
 export const PUBLIC_ROOM_MANIFEST: Record<string, string> = ${JSON.stringify(
     manifest,
@@ -185,22 +223,38 @@ function generateRoomDataImportsTs(roomDataMap) {
 
   return `/**
  * AUTO-GENERATED — DO NOT EDIT
+ * Version: MB-BLUE-97.7
  */
 export const roomDataMap = {
 ${entries}
-};
+} as const;
 `;
 }
 
 function generateRoomListTs(roomDataMap) {
+  const ids = Object.keys(roomDataMap).sort();
+  const list = ids.map((id) => roomDataMap[id]);
+
   return `/**
  * AUTO-GENERATED — DO NOT EDIT
+ * Version: MB-BLUE-97.7
  */
-export const ROOM_IDS = ${JSON.stringify(
-    Object.keys(roomDataMap).sort(),
-    null,
-    2
-  )};
+
+export type RoomListItem = {
+  id: string;
+  title_en?: string;
+  title_vi?: string;
+  tier?: string;
+  hasData?: boolean;
+};
+
+export const ROOM_IDS = ${JSON.stringify(ids, null, 2)} as const;
+
+const __ROOM_LIST: RoomListItem[] = ${JSON.stringify(list, null, 2)};
+
+export function getRoomList(): RoomListItem[] {
+  return __ROOM_LIST.slice();
+}
 `;
 }
 

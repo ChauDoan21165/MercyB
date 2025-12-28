@@ -1,5 +1,6 @@
 /**
  * AUTO-GENERATED — DO NOT EDIT
+ * Version: MB-BLUE-97.7
  */
 export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "addiction_support_free": "data/addiction_support_free.json",

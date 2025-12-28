@@ -1,93 +1,52 @@
+// src/AppRouter.tsx
+// MB-BLUE-96.2 — 2025-12-28 (+0700)
+//
+// ROUTING RULES (LOCKED):
+// - Canonical room route: /room/:roomId
+// - Legacy/bad routes are redirected silently
+// - /room (no id) must NOT show NotFound
+// - No resolver logic here
+
+import { Routes, Route, Navigate, useParams } from "react-router-dom";
+
+import ChatHub from "@/pages/ChatHub";
+import AllRooms from "@/pages/AllRooms";
+import NotFound from "@/_legacy_next_pages/NotFound";
+
 /**
- * MercyBlade Blue — AdminVIPRooms (Legacy compatibility page)
- * File: src/_legacy_next_pages/AdminVIPRooms.tsx
- * Version: MB-BLUE-93.9 — 2025-12-23 (+0700)
- *
- * FIX:
- * - Remove ALL_ROOMS import (legacy)
- * - Use roomFetcher truth
+ * Legacy fix:
+ * /room/room/:roomId  →  /room/:roomId
  */
+function RoomRoomRedirect() {
+  const { roomId } = useParams<{ roomId: string }>();
+  return <Navigate to={roomId ? `/room/${roomId}` : "/"} replace />;
+}
 
-import { useEffect, useMemo, useState } from "react";
-import { getRoomList, type RoomMeta } from "@/lib/roomFetcher";
+/**
+ * Safety fix:
+ * /room  →  /
+ * (Important: must not render NotFound)
+ */
+function RoomIndexRedirect() {
+  return <Navigate to="/" replace />;
+}
 
-export default function AdminVIPRooms() {
-  const [rooms, setRooms] = useState<RoomMeta[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [errorMsg, setErrorMsg] = useState<string | null>(null);
-  const [q, setQ] = useState("");
-
-  useEffect(() => {
-    let alive = true;
-    (async () => {
-      try {
-        setLoading(true);
-        setErrorMsg(null);
-        const list = await getRoomList();
-        if (!alive) return;
-        setRooms(list);
-      } catch (err: any) {
-        if (!alive) return;
-        setErrorMsg(err?.message ?? "Failed to load rooms");
-      } finally {
-        if (!alive) return;
-        setLoading(false);
-      }
-    })();
-    return () => {
-      alive = false;
-    };
-  }, []);
-
-  const filtered = useMemo(() => {
-    const needle = q.trim().toLowerCase();
-    if (!needle) return rooms;
-    return rooms.filter((r) => {
-      const hay = [
-        r.id,
-        r.title_en,
-        r.title_vi,
-        ...(r.keywords_en ?? []),
-        ...(r.keywords_vi ?? []),
-        ...(r.tags ?? []),
-      ]
-        .join(" ")
-        .toLowerCase();
-      return hay.includes(needle);
-    });
-  }, [rooms, q]);
-
+export default function AppRouter() {
   return (
-    <div style={{ padding: 16 }}>
-      <h1 style={{ fontSize: 24, fontWeight: 800 }}>Admin — VIP Rooms</h1>
+    <Routes>
+      {/* Main landing */}
+      <Route path="/" element={<AllRooms />} />
 
-      <div style={{ marginTop: 16, display: "flex", gap: 8, alignItems: "center" }}>
-        <input
-          value={q}
-          onChange={(e) => setQ(e.target.value)}
-          placeholder="Search room id / title / keywords..."
-          style={{
-            width: "min(720px, 100%)",
-            padding: "10px 12px",
-            border: "1px solid #ccc",
-            borderRadius: 8,
-          }}
-        />
-        <span style={{ opacity: 0.7 }}>{filtered.length}</span>
-      </div>
+      {/* 🔁 Legacy fixes (explicit, silent) */}
+      <Route path="/room/room/:roomId" element={<RoomRoomRedirect />} />
+      <Route path="/room/" element={<RoomIndexRedirect />} />
+      <Route path="/room" element={<RoomIndexRedirect />} />
 
-      {loading && <p style={{ marginTop: 16 }}>Loading rooms…</p>}
-      {!loading && errorMsg && <p style={{ marginTop: 16, color: "crimson" }}>{errorMsg}</p>}
+      {/* ✅ Canonical room route */}
+      <Route path="/room/:roomId" element={<ChatHub />} />
 
-      {!loading && !errorMsg && (
-        <ul style={{ marginTop: 16, paddingLeft: 18 }}>
-          {filtered.slice(0, 200).map((r) => (
-            <li key={r.id} style={{ marginBottom: 6 }}>
-              <code>{r.id}</code> — {r.title_en || r.title_vi || "(no title)"}
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+      {/* Fallback */}
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 }

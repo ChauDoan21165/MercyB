@@ -1,5 +1,5 @@
 {
-  "tier": "VIP3 / VIP3",
+  "tier": "vip3",
   "title": {
     "en": "AI Frontier",
     "vi": "Biên Giới AI"
@@ -47,7 +47,8 @@
         "progress",
         "society",
         "innovation"
-      ]
+      ],
+      "audio": "ai_vip3_ai_transforming_human_progress.mp3"
     },
     {
       "slug": "the-power-of-ai-discovery",
@@ -71,7 +72,8 @@
       "tags": [
         "discovery",
         "science"
-      ]
+      ],
+      "audio": "ai_vip3_the_power_of_ai_discovery.mp3"
     },
     {
       "slug": "ai-reshaping-creativity",
@@ -95,7 +97,8 @@
       "tags": [
         "creativity",
         "art"
-      ]
+      ],
+      "audio": "ai_vip3_ai_reshaping_creativity.mp3"
     },
     {
       "slug": "ai-ethics-and-human-responsibility",
@@ -119,7 +122,8 @@
       "tags": [
         "ethics",
         "trust"
-      ]
+      ],
+      "audio": "ai_vip3_ai_ethics_and_human_responsibility.mp3"
     },
     {
       "slug": "the-ai-future-we-choose",
@@ -143,7 +147,8 @@
       "tags": [
         "future",
         "humanity"
-      ]
+      ],
+      "audio": "ai_vip3_the_ai_future_we_choose.mp3"
     }
   ],
   "id": "ai_vip3",
