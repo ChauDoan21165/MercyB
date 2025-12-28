@@ -18,10 +18,6 @@
     "system:check": "tsx scripts/check-system-health.ts",
     "audio:tts": "tsx scripts/generate-missing-audio.ts"
   },
-  "dependencies": {
-    "...": "UNCHANGED"
-  },
-  "devDependencies": {
-    "...": "UNCHANGED"
-  }
+  "dependencies": {},
+  "devDependencies": {}
 }
