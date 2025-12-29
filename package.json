@@ -3,39 +3,31 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-
   "scripts": {
     "dev": "vite --host 127.0.0.1 --port 3107 --strictPort",
-
     "generate:room-registry": "node scripts/generate-room-registry.js",
     "generate:audio-manifest": "node scripts/generate-audio-manifest.js",
-
     "validate-rooms": "node scripts/validate-rooms.js",
     "validate-rooms:core": "MB_VALIDATE_CORE_ONLY=1 node scripts/validate-rooms.js",
     "rooms:check": "npm run generate:room-registry && npm run validate-rooms:core",
-
     "prebuild": "npm run rooms:check",
     "build": "npm run generate:audio-manifest && vite build",
     "build:dev": "vite build --mode development",
-
     "lint": "eslint .",
     "preview": "vite preview --host 127.0.0.1 --port 3107 --strictPort",
-
     "system:check": "tsx scripts/check-system-health.ts",
     "audio:tts": "tsx scripts/generate-missing-audio.ts"
   },
-
   "dependencies": {
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.30.2"
   },
-
   "devDependencies": {
-    "vite": "5.4.21",
     "@vitejs/plugin-react": "^4.3.1",
-
-    "vitest": "1.6.0",
+    "eslint": "^8.57.0",
     "tsx": "^4.7.0",
-    "eslint": "^8.57.0"
+    "vite": "5.4.21",
+    "vitest": "1.6.0"
   }
 }
