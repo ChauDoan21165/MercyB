@@ -19,6 +19,7 @@
     "audio:tts": "tsx scripts/generate-missing-audio.ts"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.90.14",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.30.2"
