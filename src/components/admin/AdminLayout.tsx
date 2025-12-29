@@ -1,83 +1,44 @@
-import { ReactNode } from "react";
-import { useNavigate } from "react-router-dom";
-import { ArrowLeft, RefreshCw } from "lucide-react";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { Button } from "@/components/ui/button";
-import { AdminSidebar } from "./AdminSidebar";
-import { AdminBreadcrumbs } from "./AdminBreadcrumbs";
-import { AdminCommandPalette } from "./AdminCommandPalette";
+// src/components/admin/AdminLayout.tsx
+// MB-BLUE-98.2 — 2025-12-29 (+0700)
+//
+// PURPOSE (TEMPORARY):
+// - Keep admin route compiling
+// - Remove ALL Lovable / shadcn / command palette dependencies
+// - Zero external UI deps
+//
+// NOTE:
+// - Admin UI is NOT part of launch scope
+// - This file exists only to prevent broken imports
+// - Can be expanded later in Phase V+
+
+import React from "react";
 
 interface AdminLayoutProps {
-  children: ReactNode;
+  children?: React.ReactNode;
 }
 
-/**
- * Admin Dashboard Layout - SIMPLE BLACK TEXT ON WHITE
- * No CSS variables, no theme switching - just readable black on white.
- */
-export const AdminLayout = ({ children }: AdminLayoutProps) => {
-  const navigate = useNavigate();
-
+export default function AdminLayout({ children }: AdminLayoutProps) {
   return (
-    <SidebarProvider defaultOpen={true}>
-      <div className="min-h-screen flex w-full admin-layout-force" style={{ backgroundColor: '#FFFFFF', color: '#000000' }}>
-        <AdminSidebar />
-        
-        <div className="flex-1 flex flex-col">
-          {/* Header - light gray background */}
-          <header className="h-14 flex items-center justify-between px-4 sticky top-0 z-10" style={{
-            backgroundColor: '#F5F5F5',
-            borderBottom: '1px solid #E0E0E0'
-          }}>
-            <div className="flex items-center gap-4">
-              <SidebarTrigger style={{ color: '#000000' }} />
-              <AdminBreadcrumbs />
-            </div>
-            
-            <div className="flex items-center gap-2">
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => window.location.reload()}
-                className="gap-2"
-                style={{ 
-                  backgroundColor: '#FFFFFF', 
-                  color: '#000000', 
-                  border: '1px solid #000000' 
-                }}
-              >
-                <RefreshCw className="h-4 w-4" />
-                Refresh
-              </Button>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => navigate("/")}
-                className="gap-2"
-                style={{ 
-                  backgroundColor: '#FFFFFF', 
-                  color: '#000000', 
-                  border: '1px solid #000000' 
-                }}
-              >
-                <ArrowLeft className="h-4 w-4" />
-                Back to App
-              </Button>
-            </div>
-          </header>
+    <div
+      className="min-h-screen w-full bg-background text-foreground"
+      data-mb-scope="admin-layout"
+    >
+      <header className="border-b px-6 py-4">
+        <h1 className="text-lg font-semibold">Admin</h1>
+        <p className="text-sm text-muted-foreground">
+          Administrative tools (disabled in launch build)
+        </p>
+      </header>
 
-          {/* Main content - white background */}
-          <main className="flex-1 p-6 overflow-auto" style={{
-            backgroundColor: '#FFFFFF',
-            color: '#000000'
-          }}>
-            {children}
-          </main>
-        </div>
-
-        {/* Global command palette (Ctrl+K) */}
-        <AdminCommandPalette />
-      </div>
-    </SidebarProvider>
+      <main className="p-6">
+        {children ? (
+          children
+        ) : (
+          <div className="text-sm text-muted-foreground">
+            No admin content enabled.
+          </div>
+        )}
+      </main>
+    </div>
   );
-};
+}
