@@ -387,7 +387,6 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "ocd_support_vip3": "data/ocd_support_vip3.json",
   "opposites_matching_kids_l1": "data/opposites_matching_kids_l1.json",
   "overcome_storm_vip3": "data/overcome_storm_vip3.json",
-  "package": "data/package.json",
   "personal_operating_system_vip2": "data/personal_operating_system_vip2.json",
   "personal_safety_self_protection_vip4_bonus": "data/personal_safety_self_protection_vip4_bonus.json",
   "pets_caring_kids_l1": "data/pets_caring_kids_l1.json",

@@ -396,7 +396,6 @@ export const ROOM_IDS = [
   "ocd_support_vip3",
   "opposites_matching_kids_l1",
   "overcome_storm_vip3",
-  "package",
   "personal_operating_system_vip2",
   "personal_safety_self_protection_vip4_bonus",
   "pets_caring_kids_l1",
@@ -3293,13 +3292,6 @@ const __ROOM_LIST: RoomListItem[] = [
     "title_en": "overcome_storm_vip3",
     "title_vi": "overcome_storm_vip3",
     "tier": "vip3",
-    "hasData": true
-  },
-  {
-    "id": "package",
-    "title_en": "package",
-    "title_vi": "package",
-    "tier": "free",
     "hasData": true
   },
   {

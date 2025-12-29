@@ -2691,13 +2691,6 @@ export const roomDataMap = {
     "tier": "vip3",
     "hasData": true
   },
-  "package": {
-    "id": "package",
-    "title_en": "package",
-    "title_vi": "package",
-    "tier": "free",
-    "hasData": true
-  },
   "personal_operating_system_vip2": {
     "id": "personal_operating_system_vip2",
     "title_en": "Personal Operating System — Room 2",

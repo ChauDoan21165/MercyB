@@ -1,5 +1,5 @@
 // src/AppRouter.tsx
-// MB-BLUE-97.4 — 2025-12-28 (+0700)
+// MB-BLUE-97.8 — 2025-12-29 (+0700)
 //
 // ROUTING RULES (LOCKED):
 // - Canonical room route: /room/:roomId
@@ -8,7 +8,7 @@
 // - No resolver logic here
 //
 // Phase IV→V:
-// - Add Tier spine routes:
+// - Tier spine routes:
 //   /tiers
 //   /tiers/:tierId
 
@@ -16,11 +16,23 @@ import { Routes, Route, Navigate, useParams } from "react-router-dom";
 
 import ChatHub from "@/pages/ChatHub";
 import AllRooms from "@/pages/AllRooms";
-import NotFound from "@/_legacy_next_pages/NotFound";
 
-// ✅ NEW: Tier spine pages (NO FETCH)
+// ✅ Tier spine pages (NO FETCH)
 import TierIndex from "@/pages/TierIndex";
 import TierDetail from "@/pages/TierDetail";
+
+/**
+ * Local NotFound — ZERO dependencies
+ * (DO NOT import legacy pages here)
+ */
+function NotFound() {
+  return (
+    <div style={{ padding: 32 }}>
+      <h2>404</h2>
+      <p>Page not found.</p>
+    </div>
+  );
+}
 
 /**
  * Legacy fix:
