@@ -1,23 +1,22 @@
 // src/components/admin/AdminLayout.tsx
-// MB-BLUE-98.2 — 2025-12-29 (+0700)
+// MB-BLUE-98.3 — 2025-12-29 (+0700)
 //
 // PURPOSE (TEMPORARY):
-// - Keep admin route compiling
-// - Remove ALL Lovable / shadcn / command palette dependencies
-// - Zero external UI deps
+// - Keep admin routes compiling
+// - Remove ALL Lovable / shadcn / command palette deps
+// - Support BOTH named + default imports
 //
-// NOTE:
-// - Admin UI is NOT part of launch scope
-// - This file exists only to prevent broken imports
-// - Can be expanded later in Phase V+
+// Admin UI is NOT launch-critical.
+// This is a build-stabilizer only.
 
 import React from "react";
 
-interface AdminLayoutProps {
+export interface AdminLayoutProps {
   children?: React.ReactNode;
 }
 
-export default function AdminLayout({ children }: AdminLayoutProps) {
+/** ✅ Named export (for legacy imports) */
+export function AdminLayout({ children }: AdminLayoutProps) {
   return (
     <div
       className="min-h-screen w-full bg-background text-foreground"
@@ -42,3 +41,6 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
     </div>
   );
 }
+
+/** ✅ Default export (safe for future imports) */
+export default AdminLayout;
