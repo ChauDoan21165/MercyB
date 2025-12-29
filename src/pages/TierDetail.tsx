@@ -1,11 +1,16 @@
 // src/pages/TierDetail.tsx
-// MB-BLUE-97.4 — 2025-12-28 (+0700)
+// MB-BLUE-97.6 — 2025-12-29 (+0700)
 
 import { useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import { ALL_TIER_IDS, getTierLabel, type TierId } from "@/lib/tiers";
-import { ROOM_LIST } from "@/lib/roomList";
+import {
+  ALL_TIER_IDS,
+  tierIdToLabel,
+  type TierId,
+} from "@/lib/constants/tiers";
+
+import { getRoomList } from "@/lib/roomList";
 
 type RoomMetaLike = {
   id: string;
@@ -16,7 +21,7 @@ type RoomMetaLike = {
 };
 
 function isTierId(x: string): x is TierId {
-  return (ALL_TIER_IDS as string[]).includes(x);
+  return (ALL_TIER_IDS as readonly string[]).includes(x);
 }
 
 function pickTitle(r: RoomMetaLike) {
@@ -25,16 +30,21 @@ function pickTitle(r: RoomMetaLike) {
 
 export default function TierDetail() {
   const { tierId } = useParams<{ tierId: string }>();
+
   const tier = isTierId(String(tierId || "").toLowerCase())
     ? (String(tierId).toLowerCase() as TierId)
     : null;
 
-  const rooms = (ROOM_LIST as unknown as RoomMetaLike[]) || [];
+  // ✅ FIX: use function, not constant
+  const rooms = useMemo(
+    () => getRoomList() as unknown as RoomMetaLike[],
+    []
+  );
 
   const filtered = useMemo(() => {
     if (!tier) return [];
     return rooms.filter(
-      (r) => String((r as any)?.tier || "").toLowerCase().trim() === tier
+      (r) => String(r?.tier || "").toLowerCase().trim() === tier
     );
   }, [rooms, tier]);
 
@@ -54,7 +64,7 @@ export default function TierDetail() {
       <header className="space-y-2">
         <div className="flex items-center justify-between flex-wrap gap-3">
           <h1 className="text-3xl font-serif font-bold">
-            {getTierLabel(tier, "core")}
+            {tierIdToLabel(tier)}
           </h1>
           <Link className="underline text-sm" to="/tiers">
             Back to Tier Map

@@ -1,5 +1,5 @@
 // src/pages/TierIndex.tsx
-// MB-BLUE-97.4 — 2025-12-28 (+0700)
+// MB-BLUE-98.2 — 2025-12-29 (+0700)
 
 import { Link } from "react-router-dom";
 import {
@@ -9,10 +9,10 @@ import {
   getTierDescription,
   type TierColumn,
   type TierId,
-} from "@/lib/tiers";
+} from "@/lib/constants/tiers";
 
-// ✅ STATIC SOURCE OF TRUTH (generated)
-import { ROOM_LIST } from "@/lib/roomList";
+// ✅ STATIC SOURCE OF TRUTH (generated) — tolerate different export shapes
+import * as RoomListMod from "@/lib/roomList";
 
 type RoomMetaLike = {
   id: string;
@@ -24,12 +24,35 @@ type RoomMetaLike = {
 
 function safeTier(raw: any): TierId | "unknown" {
   const v = String(raw || "").toLowerCase().trim();
-  if ((ALL_TIER_IDS as string[]).includes(v)) return v as TierId;
+  if ((ALL_TIER_IDS as readonly string[]).includes(v)) return v as TierId;
   return "unknown";
 }
 
+function readRoomList(): RoomMetaLike[] {
+  const m: any = RoomListMod as any;
+
+  // prefer constant if present
+  if (Array.isArray(m.ROOM_LIST)) return m.ROOM_LIST as RoomMetaLike[];
+  if (Array.isArray(m.roomList)) return m.roomList as RoomMetaLike[];
+
+  // some generators export default array
+  if (Array.isArray(m.default)) return m.default as RoomMetaLike[];
+
+  // some code exports a getter
+  if (typeof m.getRoomList === "function") {
+    try {
+      const v = m.getRoomList();
+      if (Array.isArray(v)) return v as RoomMetaLike[];
+    } catch {
+      // ignore
+    }
+  }
+
+  return [];
+}
+
 export default function TierIndex() {
-  const rooms = (ROOM_LIST as unknown as RoomMetaLike[]) || [];
+  const rooms = readRoomList();
 
   const counts: Record<string, number> = {};
   for (const id of ALL_TIER_IDS) counts[id] = 0;
@@ -114,3 +137,5 @@ function TierColumnCard({
     </section>
   );
 }
+
+/** New thing to learn: In Vite/ESM, “does not provide an export named …” almost always means “wrong import shape”, not missing file. */
