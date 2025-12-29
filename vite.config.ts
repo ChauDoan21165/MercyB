@@ -1,18 +1,30 @@
 // vite.config.ts
-// MB-BLUE-95.8 — 2025-12-27 (+0700)
-// RULE: No port configuration here. Port is owned by package.json only.
+// MB-BLUE-97.6 — 2025-12-29 (+0700)
+//
+// RULES (LOCKED):
+// - No port configuration here (port lives in package.json scripts)
+// - No SWC (avoids native binding failures on Vercel / CI)
+// - Keep alias @ → src
+// - Stable, boring, deploy-safe config
 
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react-swc";
+import react from "@vitejs/plugin-react";
 import path from "path";
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react({
+      // explicit: avoid surprises
+      jsxRuntime: "automatic",
+    }),
+  ],
+
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
+
   build: {
     sourcemap: true,
   },
