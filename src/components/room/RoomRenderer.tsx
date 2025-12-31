@@ -1,23 +1,107 @@
 // src/components/room/RoomRenderer.tsx
-// MB-BLUE-97.8 — 2025-12-29 (+0700)
+// MB-BLUE-99.4 — 2025-12-31 (+0700)
+/**
+ * ROOM 5-BOX SPEC (LOCKED)
+ * BOX 2: Title row (tier left, title centered, fav+refresh right) — ONE ROW
+ * BOX 3: Welcome line (bilingual in ONE ROW separated by " / ") + keyword buttons
+ * BOX 4: EMPTY space until keyword chosen; then EN → TalkingFace → VI
+ * BOX 5: Feedback bar pushed to bottom of room (no header line)
+ *
+ * ✅ FIX (MB-BLUE-99.3):
+ * - Title HARDENING: ignore “bad” titles that look like room id (snake_case / _vipX / equals id)
+ * - Standardize welcome to use the same cleaned title (no “Topic:” line, no “mood-management” header spam)
+ *
+ * ✅ FIX (MB-BLUE-99.4):
+ * - HARD CLAMP the *ROOM ENTRY* TalkingFacePlayButton so it can NEVER paint past the card edge.
+ * - This is the “sticking out” you showed (range focus ring / inner control paint).
+ * - We do NOT touch BottomMusicBar here.
+ */
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { BilingualEssay } from "@/components/room/BilingualEssay";
-
-// ✅ TALKING FACE PLAY BUTTON (AUTHORITATIVE UI MOTIF)
 import TalkingFacePlayButton from "@/components/audio/TalkingFacePlayButton";
 
 type AnyRoom = any;
 
-function pickTitle(room: AnyRoom) {
+function asArray(x: any) {
+  return Array.isArray(x) ? x : [];
+}
+function firstNonEmptyArray(...candidates: any[]): any[] {
+  for (const c of candidates) {
+    const arr = asArray(c);
+    if (arr.length > 0) return arr;
+  }
+  return [];
+}
+
+function pickTitleENRaw(room: AnyRoom) {
   return (
     room?.title?.en ||
     room?.title_en ||
     room?.name?.en ||
     room?.name_en ||
-    room?.id ||
-    "Untitled room"
+    ""
   );
+}
+function pickTitleVIRaw(room: AnyRoom) {
+  return (
+    room?.title?.vi ||
+    room?.title_vi ||
+    room?.name?.vi ||
+    room?.name_vi ||
+    ""
+  );
+}
+
+/** Remove trailing tier markers: _vip1 ... _vip9, _free */
+function stripTierSuffix(id: string) {
+  let s = String(id || "").trim();
+  if (!s) return "";
+  s = s.replace(/_(vip[1-9]|free)\b/gi, "");
+  s = s.replace(/_+/g, "_").replace(/^_+|_+$/g, "");
+  return s;
+}
+
+/** bipolar_support_vip1 -> "Bipolar Support" */
+function prettifyRoomIdEN(id: string): string {
+  const core = stripTierSuffix(id).toLowerCase();
+  if (!core) return "Untitled room";
+  const words = core.split("_").filter(Boolean);
+  const titled = words
+    .map((w) => (w ? w[0].toUpperCase() + w.slice(1) : w))
+    .join(" ");
+  return titled || "Untitled room";
+}
+
+/**
+ * Detect “bad” titles:
+ * - equal to roomId (or equal after stripping tier suffix)
+ * - snake_case-ish: has "_" and no spaces, mostly lowercase
+ * - ends with _vipX/_free
+ */
+function isBadAutoTitle(raw: string, effectiveRoomId: string) {
+  const r = String(raw || "").trim();
+  if (!r) return true;
+
+  const rid = String(effectiveRoomId || "").trim();
+
+  const rLow = r.toLowerCase();
+  const ridLow = rid.toLowerCase();
+
+  if (rLow === ridLow) return true;
+
+  const rCore = stripTierSuffix(rLow);
+  const idCore = stripTierSuffix(ridLow);
+  if (rCore && idCore && rCore === idCore) return true;
+
+  const looksSnake =
+    /^[a-z0-9_]+$/.test(rLow) && rLow.includes("_") && !r.includes(" ");
+  const hasTierSuffix = /_(vip[1-9]|free)\b/i.test(r);
+
+  // if it looks like an id, we refuse it as a display title
+  if (looksSnake || hasTierSuffix) return true;
+
+  return false;
 }
 
 function pickIntroEN(room: AnyRoom) {
@@ -31,7 +115,6 @@ function pickIntroEN(room: AnyRoom) {
     ""
   );
 }
-
 function pickIntroVI(room: AnyRoom) {
   return (
     room?.intro?.vi ||
@@ -44,18 +127,6 @@ function pickIntroVI(room: AnyRoom) {
   );
 }
 
-function asArray(x: any) {
-  return Array.isArray(x) ? x : [];
-}
-
-function firstNonEmptyArray(...candidates: any[]): any[] {
-  for (const c of candidates) {
-    const arr = asArray(c);
-    if (arr.length > 0) return arr;
-  }
-  return [];
-}
-
 function resolveEntries(room: AnyRoom): any[] {
   return firstNonEmptyArray(
     room?.entries,
@@ -65,16 +136,9 @@ function resolveEntries(room: AnyRoom): any[] {
     room?.items,
     room?.cards,
     room?.blocks,
-    room?.steps,
-    room?.lessons,
-    room?.prompts,
-    room?.content?.items,
-    room?.content?.blocks,
-    room?.content?.cards,
-    room?.flatEntries
+    room?.steps
   );
 }
-
 function resolveSectionEntries(section: any): any[] {
   return firstNonEmptyArray(
     section?.entries,
@@ -85,7 +149,6 @@ function resolveSectionEntries(section: any): any[] {
     section?.steps
   );
 }
-
 function resolveKeywords(room: AnyRoom) {
   const en = firstNonEmptyArray(
     room?.keywords_en,
@@ -99,117 +162,76 @@ function resolveKeywords(room: AnyRoom) {
   );
   return { en, vi };
 }
-
 function resolveEssay(room: AnyRoom) {
   const en =
     room?.essay?.en ||
     room?.essay_en ||
     room?.content?.essay?.en ||
     room?.content?.essay_en ||
-    room?.essayText?.en ||
-    room?.essayText_en ||
     "";
   const vi =
     room?.essay?.vi ||
     room?.essay_vi ||
     room?.content?.essay?.vi ||
     room?.content?.essay_vi ||
-    room?.essayText?.vi ||
-    room?.essayText_vi ||
     "";
   return { en, vi };
 }
+function pickTier(room: AnyRoom): string {
+  return String(room?.tier || room?.meta?.tier || "free").toLowerCase();
+}
 
-/**
- * Normalize audio paths so we always feed TalkingFacePlayButton a valid URL.
- */
 function normalizeAudioSrc(src: string): string {
   const s = String(src || "").trim();
   if (!s) return "";
   if (s.startsWith("http://") || s.startsWith("https://")) return s;
-
   let p = s.replace(/^\/+/, "");
-
-  // If someone passed a weird path but ends with mp3, keep leaf.
-  if (
-    p.includes("/") &&
-    !p.startsWith("audio/") &&
-    p.toLowerCase().endsWith(".mp3")
-  ) {
-    const leaf = p.split("/").pop() || p;
-    p = leaf;
-  }
-
   if (p.startsWith("audio/")) return `/${p}`;
-  return `/audio/${p}`;
+  return `/audio/${p.split("/").pop() || p}`;
 }
-
-/**
- * Pick audio from MANY legacy schemas so TalkingFace appears everywhere.
- */
 function pickAudio(entry: any): string {
   const candidates: any[] = [];
-
-  candidates.push(entry?.audio);
-  candidates.push(entry?.audio_en, entry?.audio_vi);
+  candidates.push(entry?.audio, entry?.audio_en, entry?.audio_vi);
   candidates.push(entry?.audioRef, entry?.audio_ref);
   candidates.push(entry?.audioUrl, entry?.audio_url);
   candidates.push(entry?.mp3, entry?.mp3_en, entry?.mp3_vi);
 
   for (const c of candidates) {
     if (!c) continue;
-
     if (typeof c === "string") {
       const norm = normalizeAudioSrc(c);
       if (norm) return norm;
-      continue;
-    }
-
-    if (typeof c === "object") {
+    } else if (typeof c === "object") {
       const s = String(c?.en || c?.vi || c?.src || c?.url || "").trim();
       const norm = normalizeAudioSrc(s);
       if (norm) return norm;
     }
   }
-
   return "";
 }
-
 function audioLabelFromSrc(src: string): string {
   const s = String(src || "").trim();
-  if (!s) return "";
-  return s.split("/").pop() || s;
+  return s ? s.split("/").pop() || s : "";
 }
 
-/**
- * Remove ANY mp3 lines + common native-player artifact lines.
- */
 function stripImplicitAudioLines(text: string): string {
   if (!text) return "";
-
   const lines = String(text).split("\n");
   const out: string[] = [];
-
   const timeLine = /^\s*\d{1,2}:\d{2}\s*\/\s*\d{1,2}:\d{2}\s*$/;
 
   for (let i = 0; i < lines.length; i++) {
     const raw = lines[i] ?? "";
     const t = raw.trim();
-
     if (t.toLowerCase().includes(".mp3")) {
       const next = (lines[i + 1] ?? "").trim();
       if (timeLine.test(next)) i++;
       continue;
     }
-
     if (timeLine.test(t)) continue;
-
     out.push(raw);
   }
-
-  let joined = out.join("\n");
-  joined = joined.replace(/\n{3,}/g, "\n\n").trim();
-  return joined;
+  return out.join("\n").replace(/\n{3,}/g, "\n\n").trim();
 }
 
 function normalizeEntryTextEN(entry: any): string {
@@ -220,28 +242,22 @@ function normalizeEntryTextEN(entry: any): string {
     entry?.content?.en,
     entry?.description?.en,
     entry?.summary?.en,
-    entry?.markdown?.en,
     entry?.copy_en,
     entry?.text_en,
     entry?.body_en,
     entry?.content_en,
     entry?.description_en,
     entry?.summary_en,
-    entry?.markdown_en,
   ];
   for (const c of candidates) {
     if (typeof c === "string" && c.trim()) return stripImplicitAudioLines(c);
   }
-  // fallback (legacy single-field)
   if (typeof entry?.text === "string" && entry.text.trim())
     return stripImplicitAudioLines(entry.text);
-  if (typeof entry?.body === "string" && entry.body.trim())
-    return stripImplicitAudioLines(entry.body);
   if (typeof entry?.content === "string" && entry.content.trim())
     return stripImplicitAudioLines(entry.content);
   return "";
 }
-
 function normalizeEntryTextVI(entry: any): string {
   const candidates = [
     entry?.copy?.vi,
@@ -250,14 +266,12 @@ function normalizeEntryTextVI(entry: any): string {
     entry?.content?.vi,
     entry?.description?.vi,
     entry?.summary?.vi,
-    entry?.markdown?.vi,
     entry?.copy_vi,
     entry?.text_vi,
     entry?.body_vi,
     entry?.content_vi,
     entry?.description_vi,
     entry?.summary_vi,
-    entry?.markdown_vi,
   ];
   for (const c of candidates) {
     if (typeof c === "string" && c.trim()) return stripImplicitAudioLines(c);
@@ -265,11 +279,9 @@ function normalizeEntryTextVI(entry: any): string {
   return "";
 }
 
-/**
- * KEYWORD HIGHLIGHTING (ONLY important words)
- * - Color is deterministic by keyword index.
- * - Same index color used for EN & VI lists → correspondence.
- */
+function escapeRegExp(s: string) {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
 const KW_CLASSES = [
   "mb-kw-0",
   "mb-kw-1",
@@ -281,15 +293,10 @@ const KW_CLASSES = [
   "mb-kw-7",
 ] as const;
 
-function escapeRegExp(s: string) {
-  return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-}
-
 function highlightByKeywordList(text: string, keywords: string[]) {
   const t = String(text || "");
   if (!t.trim()) return t;
 
-  // Build: keyword -> class (first occurrence of keyword wins)
   const map = new Map<string, string>();
   keywords
     .map((k) => String(k || "").trim())
@@ -301,14 +308,12 @@ function highlightByKeywordList(text: string, keywords: string[]) {
 
   if (map.size === 0) return t;
 
-  // Replace longer keywords first to reduce partial overlaps
   const ordered = Array.from(map.keys()).sort((a, b) => b.length - a.length);
   const pattern = ordered.map((k) => escapeRegExp(k)).join("|");
   if (!pattern) return t;
 
   const re = new RegExp(`\\b(${pattern})\\b`, "gi");
   const parts: React.ReactNode[] = [];
-
   let last = 0;
   let m: RegExpExecArray | null;
 
@@ -331,10 +336,7 @@ function highlightByKeywordList(text: string, keywords: string[]) {
 
   if (last < t.length) parts.push(t.slice(last));
 
-  // Preserve newlines nicely
-  return (
-    <span className="whitespace-pre-line leading-relaxed">{parts}</span>
-  );
+  return <span className="whitespace-pre-line leading-relaxed">{parts}</span>;
 }
 
 function pickEntryHeading(entry: any, index: number) {
@@ -345,22 +347,83 @@ function pickEntryHeading(entry: any, index: number) {
     entry?.heading_en ||
     entry?.name?.en ||
     entry?.name_en ||
-    entry?.slug ||
-    entry?.id ||
+    "" ||
     `Entry ${index + 1}`
   );
+}
+
+/**
+ * Hide “ugly headings” like:
+ * - support-system
+ * - mood-management
+ * - bipolar_support_vip1_whatever
+ */
+function isUglyHeading(h: string) {
+  const s = String(h || "").trim();
+  if (!s) return true;
+  const looksSlug =
+    /^[a-z0-9_-]+$/.test(s) && (s.includes("-") || s.includes("_"));
+  const tooIdLike = /_(vip[1-9]|free)\b/i.test(s);
+  return looksSlug || tooIdLike;
+}
+
+function entryMatchesKeyword(entry: any, kw: string): boolean {
+  const k = String(kw || "").toLowerCase().trim();
+  if (!k) return false;
+
+  const title = String(
+    entry?.title?.en ||
+      entry?.title_en ||
+      entry?.heading?.en ||
+      entry?.heading_en ||
+      entry?.id ||
+      entry?.slug ||
+      ""
+  )
+    .toLowerCase()
+    .trim();
+
+  const en = normalizeEntryTextEN(entry).toLowerCase();
+  const vi = normalizeEntryTextVI(entry).toLowerCase();
+
+  return title.includes(k) || en.includes(k) || vi.includes(k);
 }
 
 export default function RoomRenderer({
   room,
   roomId,
+  roomSpec,
 }: {
   room: AnyRoom;
   roomId: string | undefined;
+  roomSpec?: { use_color_theme?: boolean };
 }) {
   const rootRef = useRef<HTMLDivElement | null>(null);
+  const useColorThemeSafe = roomSpec?.use_color_theme !== false;
 
-  // ✅ Safety net: if ANY native <audio controls> leaks into the room DOM, strip it.
+  // ✅ Zoom scale from global dock (default 1)
+  const [zoomScale, setZoomScale] = useState<number>(1);
+
+  useEffect(() => {
+    const readZoom = () => {
+      const v = Number(
+        document.documentElement.getAttribute("data-mb-zoom") || "100"
+      );
+      const scale = !Number.isFinite(v)
+        ? 1
+        : Math.max(0.75, Math.min(2, v / 100));
+      setZoomScale(scale);
+    };
+    readZoom();
+
+    const obs = new MutationObserver(() => readZoom());
+    obs.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-mb-zoom"],
+    });
+    return () => obs.disconnect();
+  }, []);
+
   useEffect(() => {
     const root = rootRef.current;
     if (!root) return;
@@ -372,7 +435,6 @@ export default function RoomRenderer({
     };
 
     killControls();
-
     const obs = new MutationObserver(() => killControls());
     obs.observe(root, {
       subtree: true,
@@ -384,80 +446,99 @@ export default function RoomRenderer({
     return () => obs.disconnect();
   }, []);
 
-  const title = useMemo(() => (room ? pickTitle(room) : ""), [room]);
-  const introEN = useMemo(() => (room ? pickIntroEN(room) : ""), [room]);
-  const introVI = useMemo(() => (room ? pickIntroVI(room) : ""), [room]);
-
   if (!room) {
     return (
       <div className="rounded-xl border p-6 text-muted-foreground">
         Room loaded state is empty.
-        <div className="mt-2 text-xs">
-          roomId: <code>{roomId || "missing"}</code>
-        </div>
       </div>
     );
   }
 
+  const tier = useMemo(() => pickTier(room), [room]);
+
+  const effectiveRoomId = String(room?.id || roomId || "");
+
+  // ✅ TITLE HARDENING
+  const rawEN = useMemo(() => String(pickTitleENRaw(room) || ""), [room]);
+  const rawVI = useMemo(() => String(pickTitleVIRaw(room) || ""), [room]);
+
+  const titleEN = useMemo(() => {
+    const r = rawEN.trim();
+    if (!r) return prettifyRoomIdEN(effectiveRoomId);
+    if (isBadAutoTitle(r, effectiveRoomId))
+      return prettifyRoomIdEN(effectiveRoomId);
+    return r;
+  }, [rawEN, effectiveRoomId]);
+
+  const titleVI = useMemo(() => {
+    const r = rawVI.trim();
+    // We do NOT auto-generate VI from id; only show if real VI exists.
+    return r;
+  }, [rawVI]);
+
+  const introEN = useMemo(() => pickIntroEN(room), [room]);
+  const introVI = useMemo(() => pickIntroVI(room), [room]);
+
+  const kw = useMemo(() => resolveKeywords(room), [room]);
+  const essay = useMemo(() => resolveEssay(room), [room]);
+
   const sections = asArray(room?.sections);
   const flatEntries = resolveEntries(room);
-  const kw = resolveKeywords(room);
-  const essay = resolveEssay(room);
 
-  // We show a single “active entry” only (per spec).
   const allEntries = useMemo(() => {
     if (sections.length > 0) {
-      // flatten but keep label (section title)
-      const out: { sectionTitle: string; entry: any; indexInSection: number }[] =
-        [];
+      const out: { entry: any }[] = [];
       sections.forEach((s: any) => {
-        const st =
-          s?.title?.en ||
-          s?.title_en ||
-          s?.name?.en ||
-          s?.name_en ||
-          s?.id ||
-          "Section";
         const sentries = resolveSectionEntries(s);
-        sentries.forEach((e: any, i: number) =>
-          out.push({ sectionTitle: st, entry: e, indexInSection: i })
-        );
+        sentries.forEach((e: any) => out.push({ entry: e }));
       });
       return out;
     }
-    return flatEntries.map((e: any, i: number) => ({
-      sectionTitle: "",
-      entry: e,
-      indexInSection: i,
-    }));
+    return flatEntries.map((e: any) => ({ entry: e }));
   }, [sections, flatEntries]);
 
-  const [activeIndex, setActiveIndex] = useState<number>(0);
-
-  useEffect(() => {
-    // reset active when room changes / entry list changes
-    setActiveIndex(0);
-  }, [roomId, allEntries.length]);
-
-  const active = allEntries[activeIndex]?.entry;
-
-  // “Corresponding” keyword highlighting:
-  // - Use EN keywords for EN text, VI keywords for VI text.
-  // - If one side missing, still highlight using the other side’s list (best effort).
   const enKeywords = (kw.en.length ? kw.en : kw.vi).map(String);
   const viKeywords = (kw.vi.length ? kw.vi : kw.en).map(String);
+
+  const [activeKeyword, setActiveKeyword] = useState<string | null>(null);
+
+  useEffect(() => {
+    setActiveKeyword(null);
+  }, [roomId]);
+
+  const activeEntry = useMemo(() => {
+    if (!activeKeyword) return null;
+    const found = allEntries.find((x) =>
+      entryMatchesKeyword(x.entry, activeKeyword)
+    );
+    return found?.entry || null;
+  }, [activeKeyword, allEntries]);
+
+  const activeEntryIndex = useMemo(() => {
+    if (!activeEntry) return -1;
+    return allEntries.findIndex((x) => x.entry === activeEntry);
+  }, [activeEntry, allEntries]);
+
+  // ✅ Standard welcome uses the same cleaned title (NOT roomId)
+  const welcomeEN =
+    introEN?.trim() || `Welcome to ${titleEN}, please click a keyword to start`;
+  const welcomeVI =
+    introVI?.trim() ||
+    `Chào mừng bạn đến với phòng ${
+      titleVI || titleEN
+    }, vui lòng nhấp vào từ khóa để bắt đầu`;
 
   return (
     <div
       ref={rootRef}
       className="mb-room w-full max-w-none"
       data-mb-scope="room"
+      data-mb-theme={useColorThemeSafe ? "color" : "bw"}
     >
       <style>{`
-        /* Background: gentle rainbow wash */
         [data-mb-scope="room"].mb-room{
           position: relative;
-          padding: 22px 14px 30px;
+          padding: 18px 14px 16px;
           border-radius: 24px;
           background:
             radial-gradient(1100px 650px at 10% 10%, rgba(255, 105, 180, 0.11), transparent 55%),
@@ -466,27 +547,114 @@ export default function RoomRenderer({
             linear-gradient(180deg, rgba(255,255,255,0.93), rgba(255,255,255,0.88));
           box-shadow: 0 18px 55px rgba(0,0,0,0.08);
           backdrop-filter: blur(8px);
+          display:flex;
+          flex-direction: column;
+          min-height: 72vh;
+        }
+        [data-mb-scope="room"][data-mb-theme="bw"].mb-room{
+          background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.92));
         }
 
-        /* Glass cards */
         [data-mb-scope="room"] .mb-card{
           border: 1px solid rgba(0,0,0,0.10);
-          background: rgba(255,255,255,0.72);
+          background: rgba(255,255,255,0.74);
           backdrop-filter: blur(10px);
           border-radius: 24px;
           box-shadow: 0 10px 30px rgba(0,0,0,0.06);
         }
 
-        [data-mb-scope="room"] .mb-meta{
-          color: rgba(0,0,0,0.60);
+        [data-mb-scope="room"] .mb-titleRow{
+          display:flex;
+          align-items:center;
+          justify-content:space-between;
+          gap: 10px;
+          flex-wrap: nowrap;
+          min-width:0;
+          margin-bottom: 10px;
+        }
+        [data-mb-scope="room"] .mb-titleLeft,
+        [data-mb-scope="room"] .mb-titleRight{
+          display:flex;
+          align-items:center;
+          gap: 8px;
+          flex: 0 0 auto;
+        }
+        [data-mb-scope="room"] .mb-titleCenter{
+          flex: 1 1 auto;
+          min-width: 0;
+          text-align:center;
+        }
+        [data-mb-scope="room"] .mb-tier{
+          font-size: 12px;
+          font-weight: 900;
+          padding: 6px 10px;
+          border-radius: 999px;
+          border: 1px solid rgba(0,0,0,0.14);
+          background: rgba(255,255,255,0.9);
+          text-transform: uppercase;
+        }
+        [data-mb-scope="room"] .mb-iconBtn{
+          width: 34px;
+          height: 34px;
+          border-radius: 12px;
+          border: 1px solid rgba(0,0,0,0.14);
+          background: rgba(255,255,255,0.9);
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          font-size: 14px;
+        }
+        [data-mb-scope="room"] .mb-roomTitle{
+          font-size: 38px;
+          line-height: 1.1;
+          font-weight: 900;
+          letter-spacing: -0.02em;
+          text-transform: none;
+        }
+        @media (max-width: 560px){
+          [data-mb-scope="room"] .mb-roomTitle{ font-size: 30px; }
         }
 
-        /* Keyword highlight palette (dark & readable) */
+        [data-mb-scope="room"] .mb-welcomeLine{
+          padding: 10px 12px;
+          font-size: 15px;
+          line-height: 1.45;
+          text-align: center;
+        }
+
+        [data-mb-scope="room"] .mb-keyRow{
+          display:flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          justify-content:center;
+          margin-top: 14px;
+          padding: 4px 10px 2px;
+        }
+        [data-mb-scope="room"] .mb-keyBtn{
+          border: 1px solid rgba(0,0,0,0.14);
+          background: rgba(255,255,255,0.78);
+          border-radius: 999px;
+          padding: 9px 14px;
+          font-weight: 850;
+          font-size: 14px;
+          transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease, border-color 120ms ease;
+        }
+        [data-mb-scope="room"] .mb-keyBtn:hover{
+          transform: translateY(-1px);
+          box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+          background: rgba(255,255,255,0.90);
+          border-color: rgba(0,0,0,0.22);
+        }
+        [data-mb-scope="room"] .mb-keyBtn[data-active="true"]{
+          background: rgba(255,255,255,0.98);
+          border-color: rgba(0,0,0,0.30);
+          box-shadow: 0 14px 30px rgba(0,0,0,0.08);
+        }
+
         [data-mb-scope="room"] .mb-kw{
           padding: 0 0.18rem;
           border-radius: 0.45rem;
-          font-weight: 700;
-          box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+          font-weight: 800;
         }
         [data-mb-scope="room"] .mb-kw-0{ background: rgba(255, 219, 88, 0.45); }
         [data-mb-scope="room"] .mb-kw-1{ background: rgba(120, 220, 255, 0.40); }
@@ -497,180 +665,174 @@ export default function RoomRenderer({
         [data-mb-scope="room"] .mb-kw-6{ background: rgba(120, 255, 210, 0.34); }
         [data-mb-scope="room"] .mb-kw-7{ background: rgba(255, 120, 120, 0.34); }
 
-        /* Entry selector buttons */
-        [data-mb-scope="room"] .mb-entry-btn{
-          text-align: left;
+        [data-mb-scope="room"] .mb-feedback{
+          border: 1px solid rgba(0,0,0,0.12);
+          background: rgba(255,255,255,0.70);
+          border-radius: 18px;
+          padding: 8px 10px;
+          display: flex;
+          gap: 10px;
+          align-items: center;
+        }
+        [data-mb-scope="room"] .mb-feedback input{
+          flex: 1 1 auto;
+          background: transparent;
+          outline: none;
+          font-size: 14px;
+        }
+        [data-mb-scope="room"] .mb-feedback button{
+          flex: 0 0 auto;
+          width: 38px;
+          height: 38px;
+          border-radius: 14px;
+          border: 1px solid rgba(0,0,0,0.14);
+          background: rgba(255,255,255,0.85);
+          display:flex;
+          align-items:center;
+          justify-content:center;
+        }
+
+        /* ✅ MB-BLUE-99.4 — HARD CLAMP FOR ROOM ENTRY AUDIO BAR (NO STICK-OUT) */
+        [data-mb-scope="room"] .mb-audioClamp{
           width: 100%;
-          border: 1px solid rgba(0,0,0,0.10);
-          background: rgba(255,255,255,0.75);
-          border-radius: 16px;
-          padding: 10px 12px;
-          transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+          max-width: 100%;
+          min-width: 0;
+          overflow: hidden;
+          border-radius: 18px;
+          clip-path: inset(0 round 18px); /* clips focus rings/outlines reliably */
         }
-        [data-mb-scope="room"] .mb-entry-btn:hover{
-          transform: translateY(-1px);
-          box-shadow: 0 10px 24px rgba(0,0,0,0.06);
-          border-color: rgba(0,0,0,0.18);
-        }
-        [data-mb-scope="room"] .mb-entry-btn[aria-current="true"]{
-          border-color: rgba(0,0,0,0.26);
-          box-shadow: 0 14px 30px rgba(0,0,0,0.08);
+        [data-mb-scope="room"] .mb-audioClamp *{
+          max-width: 100%;
+          box-sizing: border-box;
+          min-width: 0;
         }
       `}</style>
 
-      {/* BOX 1 (inside RoomPage header in your final layout) — Room title */}
-      <header className="text-center mb-4">
-        <h1 className="text-4xl md:text-5xl font-serif font-bold leading-tight">
-          {title}
-        </h1>
-        <div className="mt-2 text-xs mb-meta">
-          roomId: <code>{roomId}</code> • data.id: <code>{room?.id || "missing"}</code>
+      {/* BOX 2 */}
+      <div className="mb-titleRow">
+        <div className="mb-titleLeft">
+          <span className="mb-tier">{tier}</span>
         </div>
-      </header>
 
-      {/* BOX 2 — Intro + keyword list (BILINGUAL) */}
-      {(introEN || introVI || kw.en.length > 0 || kw.vi.length > 0) && (
-        <section className="mb-card p-4 md:p-6 mb-5">
-          <div className="flex items-start justify-between gap-4">
-            <div className="min-w-0">
-              <div className="text-xs font-semibold mb-2 mb-meta">
-                Introduction • Giới thiệu
-              </div>
-
-              {(introEN || introVI) && (
-                <div className="space-y-3">
-                  {introEN ? (
-                    <p className="text-[15px] md:text-base leading-relaxed">
-                      {highlightByKeywordList(introEN, enKeywords)}
-                    </p>
-                  ) : null}
-                  {introVI ? (
-                    <p className="text-[15px] md:text-base leading-relaxed">
-                      {highlightByKeywordList(introVI, viKeywords)}
-                    </p>
-                  ) : null}
-                </div>
-              )}
-            </div>
-
-            <div className="shrink-0 text-right">
-              <div className="text-xs mb-meta">
-                Entries: <b>{allEntries.length}</b>
-              </div>
-              <div className="text-xs mb-meta">
-                Keywords: <b>{Math.max(kw.en.length, kw.vi.length)}</b>
-              </div>
-              <div className="text-[11px] mb-meta mt-1">
-                Click an entry below • Chọn mục bên dưới
-              </div>
-            </div>
+        <div className="mb-titleCenter">
+          <div className="mb-roomTitle">
+            {titleVI ? `${titleEN} / ${titleVI}` : titleEN}
           </div>
+        </div>
 
-          {(kw.en.length > 0 || kw.vi.length > 0) && (
-            <div className="mt-4 grid gap-2">
-              <div className="text-xs font-semibold mb-meta">Keyword pairs</div>
+        <div className="mb-titleRight">
+          <button
+            type="button"
+            className="mb-iconBtn"
+            title="Favorite (UI shell)"
+            onClick={() => {}}
+          >
+            ♡
+          </button>
+          <button
+            type="button"
+            className="mb-iconBtn"
+            title="Refresh"
+            onClick={() => window.location.reload()}
+          >
+            ↻
+          </button>
+        </div>
+      </div>
 
-              {Array.from({
-                length: Math.max(kw.en.length, kw.vi.length),
-              }).map((_, i) => {
+      {/* BOX 3 */}
+      <section className="mb-card p-5 md:p-6 mb-5">
+        <div className="mb-welcomeLine">
+          <span>
+            {highlightByKeywordList(welcomeEN, enKeywords)} <b>/</b>{" "}
+            {highlightByKeywordList(welcomeVI, viKeywords)}
+          </span>
+        </div>
+
+        {Math.max(kw.en.length, kw.vi.length) > 0 ? (
+          <div className="mb-keyRow">
+            {Array.from({ length: Math.max(kw.en.length, kw.vi.length) }).map(
+              (_, i) => {
                 const en = String(kw.en[i] ?? "").trim();
                 const vi = String(kw.vi[i] ?? "").trim();
                 if (!en && !vi) return null;
 
-                const cls = KW_CLASSES[i % KW_CLASSES.length];
+                const label = en && vi ? `${en} / ${vi}` : en || vi;
+                const next = en || vi;
+                const isActive = activeKeyword === next;
 
-                return (
-                  <div
-                    key={`kw-${i}`}
-                    className="flex flex-wrap items-center gap-2 text-sm"
-                  >
-                    {en ? (
-                      <span className={`mb-kw ${cls}`}>{en}</span>
-                    ) : (
-                      <span className="text-xs mb-meta">(EN missing)</span>
-                    )}
-                    <span className="text-xs mb-meta">•</span>
-                    {vi ? (
-                      <span className={`mb-kw ${cls}`}>{vi}</span>
-                    ) : (
-                      <span className="text-xs mb-meta">(VI missing)</span>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-          )}
-        </section>
-      )}
-
-      {/* Essay stays bilingual; highlight only keywords (no rainbow-everything) */}
-      {(essay.en || essay.vi) && (
-        <div className="mb-card p-4 md:p-6 mb-5">
-          <BilingualEssay
-            title="Essay"
-            en={essay.en || ""}
-            vi={essay.vi || ""}
-          />
-          {/* NOTE: BilingualEssay internally renders text; keyword-only coloring is handled above for intro/entries.
-             If you want the SAME keyword highlighting inside BilingualEssay too, we should update BilingualEssay.tsx
-             to accept a "keywords" prop and apply highlight there. */}
-        </div>
-      )}
-
-      {/* BOX 3 — Entry selector + single active entry (only one visible) */}
-      {allEntries.length > 0 ? (
-        <section className="space-y-4">
-          <div className="mb-card p-4 md:p-6">
-            <div className="text-xs font-semibold mb-3 mb-meta">
-              Entries • Mục nội dung
-            </div>
-
-            <div className="grid gap-2">
-              {allEntries.map((x, i) => {
-                const heading = pickEntryHeading(x.entry, i);
-                const sectionPrefix = x.sectionTitle ? `${x.sectionTitle} • ` : "";
                 return (
                   <button
-                    key={x.entry?.id || x.entry?.slug || i}
+                    key={`kw-${i}`}
                     type="button"
-                    className="mb-entry-btn"
-                    onClick={() => setActiveIndex(i)}
-                    aria-current={i === activeIndex}
+                    className={`mb-keyBtn mb-kw ${KW_CLASSES[i % KW_CLASSES.length]}`}
+                    data-active={isActive ? "true" : "false"}
+                    onClick={() =>
+                      setActiveKeyword((cur) => (cur === next ? null : next))
+                    }
+                    title={label}
                   >
-                    <div className="text-xs mb-meta">#{i + 1}</div>
-                    <div className="font-semibold">
-                      {sectionPrefix}
-                      {heading}
-                    </div>
+                    {label}
                   </button>
                 );
-              })}
-            </div>
+              }
+            )}
           </div>
+        ) : null}
+      </section>
 
-          {active ? (
-            <ActiveEntry
-              entry={active}
-              index={activeIndex}
-              enKeywords={enKeywords}
-              viKeywords={viKeywords}
-            />
-          ) : (
-            <div className="mb-card p-6">
-              <p className="mb-meta">No active entry.</p>
-            </div>
-          )}
-        </section>
-      ) : (
-        <div className="mb-card p-6">
-          <p className="mb-meta">This room has no renderable entries.</p>
-          <p className="mt-1 text-xs mb-meta">
-            Essay-only room, landing room, or content pending.
-          </p>
+      {/* Optional essay block stays */}
+      {(essay.en || essay.vi) && (
+        <div className="mb-card p-4 md:p-6 mb-5">
+          <BilingualEssay title="Essay" en={essay.en || ""} vi={essay.vi || ""} />
         </div>
       )}
 
-      {/* BOX 4 / CHAT BAR are owned by the global page layout, not RoomRenderer. */}
+      {/* BOX 4 stage (scaled by zoom) */}
+      <section
+        className="mb-card p-5 md:p-6 mb-5"
+        style={{ flex: "1 1 auto", fontSize: `${zoomScale}em` }}
+      >
+        {!activeKeyword ? (
+          <div className="min-h-[420px]" />
+        ) : activeEntry ? (
+          <ActiveEntry
+            entry={activeEntry}
+            index={activeEntryIndex >= 0 ? activeEntryIndex : 0}
+            enKeywords={enKeywords}
+            viKeywords={viKeywords}
+          />
+        ) : (
+          <div className="min-h-[240px] flex items-center justify-center text-center">
+            <div>
+              <div className="text-sm opacity-70 font-semibold">
+                No entry matches keyword: <b>{activeKeyword}</b>
+              </div>
+              <div className="mt-2">
+                <button
+                  type="button"
+                  className="px-3 py-1.5 rounded-full text-sm font-bold border bg-white"
+                  onClick={() => setActiveKeyword(null)}
+                >
+                  Clear keyword
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+      </section>
+
+      {/* BOX 5 feedback pushed to bottom; no room-id header line */}
+      <div style={{ marginTop: "auto" }}>
+        <div className="mb-card p-3 md:p-4">
+          <div className="mb-feedback">
+            <input placeholder="Feedback / Phản Hồi…" aria-label="Feedback" />
+            <button type="button" title="Send feedback" onClick={() => {}}>
+              ➤
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
@@ -686,7 +848,8 @@ function ActiveEntry({
   enKeywords: string[];
   viKeywords: string[];
 }) {
-  const heading = pickEntryHeading(entry, index);
+  const rawHeading = pickEntryHeading(entry, index);
+  const heading = isUglyHeading(rawHeading) ? "" : rawHeading;
 
   const en = normalizeEntryTextEN(entry);
   const vi = normalizeEntryTextVI(entry);
@@ -695,42 +858,40 @@ function ActiveEntry({
   const audioLabel = audioLabelFromSrc(audioSrc);
 
   return (
-    <div className="mb-card p-4 md:p-6">
-      <div className="text-xs mb-meta">Active entry • Mục đang xem: #{index + 1}</div>
-      <h3 className="text-2xl font-serif font-bold mt-1">{heading}</h3>
+    <div>
+      {heading ? (
+        <h3 className="text-2xl md:text-3xl font-serif font-bold mt-1 leading-tight">
+          {heading}
+        </h3>
+      ) : null}
 
-      {/* EN (top) */}
       {en ? (
         <div className="mt-4 text-[15px] md:text-base">
           {highlightByKeywordList(en, enKeywords)}
         </div>
-      ) : (
-        <div className="mt-4 text-sm mb-meta">EN: no text.</div>
-      )}
+      ) : null}
 
-      {/* AUDIO (middle) */}
       {audioSrc ? (
-        <div className="mt-4 w-full max-w-none">
+        // ✅ CLAMP WRAPPER = carpenter’s “cut to the frame”
+        <div className="mt-4 mb-audioClamp">
           <TalkingFacePlayButton
             src={audioSrc}
             label={audioLabel}
-            className="w-full max-w-none"
+            className="w-full"
             fullWidthBar
           />
         </div>
       ) : null}
 
-      {/* VI (bottom) */}
       {vi ? (
         <div className="mt-4 text-[15px] md:text-base">
           {highlightByKeywordList(vi, viKeywords)}
         </div>
-      ) : (
-        <div className="mt-4 text-sm mb-meta">VI: chưa có.</div>
-      )}
+      ) : null}
     </div>
   );
 }
 
 /** New thing to learn:
- * “Only one entry visible” massively reduces cognitive load—your users stop scanning and start remembering. */
+ * When something “sticks out”, prefer a *hard clamp wrapper* (overflow + clip-path)
+ * instead of chasing every child’s width rule. */

@@ -1,5 +1,5 @@
 // src/components/audio/BottomMusicBar.tsx
-// MB-BLUE-100.3 — 2025-12-31 (+0700)
+// MB-BLUE-100.6 — 2025-12-31 (+0700)
 //
 // BOTTOM MUSIC BAR (LOCKED):
 // - Music bar is ALWAYS entertainment-only (no learning audio).
@@ -9,13 +9,25 @@
 // - Progress bar is the ONLY element allowed to stretch when bar width increases.
 // - Zoom MUST be global: set CSS var --mb-essay-zoom AND data-mb-zoom on :root, persist in localStorage.
 //
-// FIX (100.3):
-// - VISUAL ALIGNMENT: music bar now uses the same "page ruler" as rooms/feedback:
-//   max-w-[980px] + px-4 md:px-6.
-// - This stops the bottom bar from being wider than the feedback box and prevents stick-out.
-// - (Yes: we intentionally mount as fixed here to guarantee identical alignment everywhere.)
+// FIX (100.4):
+// - ✅ TRUE ALIGNMENT with top room chrome:
+//   We must NOT use inline padding on the ruler container because inline styles override Tailwind.
+//   Now ruler uses ONLY Tailwind: max-w-[980px] px-4 md:px-6.
+//   Result: top box and bottom box align perfectly.
+//
+// FIX (100.5):
+// - ✅ SECRET ADMIN DOT (first dot, top-right of bar):
+//   - Does NOT touch music logic.
+//   - Only visible to owner: localStorage.mb_admin === "1" OR localhost.
+//   - Navigates to /admin.
+//
+// FIX (100.6):
+// - ✅ TRUE OWNER-ONLY: no invisible clickable admin.
+//   - Admin dot is rendered ONLY when adminVisible === true.
+//   - Admin dot is the FIRST dot (not an extra top-right button).
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 type TabId = "all" | "mb" | "fav";
 
@@ -31,6 +43,9 @@ const LS_TRACK = "mb.music.trackId";
 const LS_VOL = "mb.music.vol";
 const LS_ZOOM = "mb.ui.zoom";
 const LS_FAV = "mb.music.fav";
+
+// ✅ owner flag for secret admin dot
+const LS_ADMIN = "mb_admin";
 
 function clamp(n: number, a: number, b: number) {
   return Math.max(a, Math.min(b, n));
@@ -182,6 +197,8 @@ function TalkingFaceIcon({ playing }: { playing: boolean }) {
 }
 
 export default function BottomMusicBar() {
+  const nav = useNavigate();
+
   // Tracks (UI is locked; you can swap sources/titles only)
   const tracks: Track[] = useMemo(
     () => [
@@ -215,7 +232,9 @@ export default function BottomMusicBar() {
     return v === "all" || v === "mb" || v === "fav" ? (v as TabId) : "all";
   });
 
-  const [favorites, setFavorites] = useState<Record<string, boolean>>(() => getInitialFav());
+  const [favorites, setFavorites] = useState<Record<string, boolean>>(() =>
+    getInitialFav()
+  );
 
   const visibleTracks = useMemo(() => {
     if (tab === "mb") return tracks.filter((t) => t.group === "mb");
@@ -228,14 +247,34 @@ export default function BottomMusicBar() {
     return tracks.some((t) => t.id === saved) ? saved : tracks[0]?.id ?? "";
   });
 
-  const track = useMemo(() => tracks.find((t) => t.id === trackId) ?? tracks[0], [tracks, trackId]);
+  const track = useMemo(
+    () => tracks.find((t) => t.id === trackId) ?? tracks[0],
+    [tracks, trackId]
+  );
 
   const [playing, setPlaying] = useState(false);
   const [duration, setDuration] = useState(0);
   const [current, setCurrent] = useState(0);
 
-  const [vol, setVol] = useState<number>(() => clamp(getInitialNumber(LS_VOL, 0.6), 0, 1));
-  const [zoomPct, setZoomPct] = useState<number>(() => clamp(getInitialNumber(LS_ZOOM, 100), 60, 140));
+  const [vol, setVol] = useState<number>(() =>
+    clamp(getInitialNumber(LS_VOL, 0.6), 0, 1)
+  );
+  const [zoomPct, setZoomPct] = useState<number>(() =>
+    clamp(getInitialNumber(LS_ZOOM, 100), 60, 140)
+  );
+
+  // ✅ owner-only visibility for secret admin dot
+  const [adminVisible, setAdminVisible] = useState(false);
+  useEffect(() => {
+    const host = String(window.location.hostname || "");
+    const isLocal =
+      host === "127.0.0.1" || host === "localhost" || host === "::1";
+    let flag = false;
+    try {
+      flag = localStorage.getItem(LS_ADMIN) === "1";
+    } catch {}
+    setAdminVisible(isLocal || flag);
+  }, []);
 
   // Init audio once
   useEffect(() => {
@@ -489,6 +528,15 @@ export default function BottomMusicBar() {
     background: "rgba(0,0,0,0.35)",
   };
 
+  const adminDotBtn: React.CSSProperties = {
+    ...dot,
+    border: "1px solid rgba(0,0,0,0.20)",
+    background: "rgba(0,0,0,0.30)",
+    padding: 0,
+    cursor: "pointer",
+    display: "block",
+  };
+
   const progressRatio = duration > 0 ? clamp(current / duration, 0, 1) : 0;
 
   return (
@@ -502,39 +550,42 @@ export default function BottomMusicBar() {
         right: 0,
         bottom: 0,
         zIndex: 50,
-        pointerEvents: "none", // ✅ only inner box receives input
+        pointerEvents: "none",
       }}
     >
-      {/* ✅ SAME RULER AS ROOM/FEEDBACK: max-w + padding */}
+      {/* ✅ SAME RULER AS TOP: max-w + responsive padding (NO INLINE PADDING) */}
       <div
-        style={{
-          width: "100%",
-          maxWidth: 980,
-          marginLeft: "auto",
-          marginRight: "auto",
-          paddingLeft: 16,
-          paddingRight: 16,
-          paddingBottom: 16,
-          pointerEvents: "none",
-        }}
-        className="md:px-6"
+        className="mx-auto w-full max-w-[980px] px-4 md:px-6 pb-4"
+        style={{ pointerEvents: "none" }}
       >
         <div style={{ pointerEvents: "auto" }}>
           <div style={box}>
             <div style={row}>
               {/* LEFT 3/4: MUSIC ONLY */}
               <div style={left}>
-                <button type="button" style={tab === "all" ? pillActive : pill} onClick={() => setTab("all")}>
+                <button
+                  type="button"
+                  style={tab === "all" ? pillActive : pill}
+                  onClick={() => setTab("all")}
+                >
                   All
                 </button>
 
-                <button type="button" style={tab === "mb" ? pillActive : pill} onClick={() => setTab("mb")}>
+                <button
+                  type="button"
+                  style={tab === "mb" ? pillActive : pill}
+                  onClick={() => setTab("mb")}
+                >
                   MB Songs
                 </button>
 
                 <button
                   type="button"
-                  style={tab === "fav" ? { ...iconPill, background: "rgba(184,77,255,0.12)" } : iconPill}
+                  style={
+                    tab === "fav"
+                      ? { ...iconPill, background: "rgba(184,77,255,0.12)" }
+                      : iconPill
+                  }
                   onClick={() => setTab("fav")}
                   aria-label="Favorites"
                   title="Favorites"
@@ -542,7 +593,12 @@ export default function BottomMusicBar() {
                   {tab === "fav" ? "♥" : "♡"}
                 </button>
 
-                <button type="button" style={iconPill} onClick={togglePlay} aria-label={playing ? "Pause" : "Play"}>
+                <button
+                  type="button"
+                  style={iconPill}
+                  onClick={togglePlay}
+                  aria-label={playing ? "Pause" : "Play"}
+                >
                   <TalkingFaceIcon playing={playing} />
                 </button>
 
@@ -565,7 +621,9 @@ export default function BottomMusicBar() {
                     min={0}
                     max={1000}
                     value={Math.round(progressRatio * 1000)}
-                    onChange={(e) => seekToRatio(Number(e.target.value) / 1000)}
+                    onChange={(e) =>
+                      seekToRatio(Number(e.target.value) / 1000)
+                    }
                     style={progressSlider}
                     aria-label="Progress"
                   />
@@ -589,13 +647,15 @@ export default function BottomMusicBar() {
                   min={0}
                   max={100}
                   value={Math.round(vol * 100)}
-                  onChange={(e) => setVol(clamp(Number(e.target.value) / 100, 0, 1))}
+                  onChange={(e) =>
+                    setVol(clamp(Number(e.target.value) / 100, 0, 1))
+                  }
                   style={volSlider}
                   aria-label="Volume"
                 />
               </div>
 
-              {/* RIGHT 1/4: ZOOM + dots ONLY (no labels) */}
+              {/* RIGHT 1/4: ZOOM + dots ONLY */}
               <div style={right}>
                 <input
                   type="range"
@@ -607,16 +667,27 @@ export default function BottomMusicBar() {
                   aria-label="Zoom"
                 />
 
-                <div style={tinyDots} aria-hidden="true">
-                  <div style={dot} />
-                  <div style={dot} />
-                  <div style={dot} />
+                <div style={tinyDots}>
+                  {/* ✅ SECRET ADMIN DOT = FIRST DOT (owner-only render) */}
+                  {adminVisible ? (
+                    <button
+                      type="button"
+                      aria-label="Admin"
+                      title="Admin"
+                      onClick={() => nav("/admin")}
+                      style={adminDotBtn}
+                    />
+                  ) : (
+                    <div style={dot} aria-hidden="true" />
+                  )}
+
+                  <div style={dot} aria-hidden="true" />
+                  <div style={dot} aria-hidden="true" />
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Scoped CSS hard clamps any global range rules leaking in */}
           <style>{`
             .mb-bottom-musicbar * { box-sizing: border-box; }
             .mb-bottom-musicbar { width: 100%; max-width: 100%; }
@@ -642,5 +713,4 @@ export default function BottomMusicBar() {
 }
 
 /* New thing to learn:
-   Fixed UI should use a viewport shell + an inner "ruler" (max-width + padding) so it aligns
-   perfectly with page content while staying globally mounted. */
+   If something is truly “owner-only”, don’t hide it with opacity—gate it by rendering (or disabling pointer events). */

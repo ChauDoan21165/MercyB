@@ -1,66 +1,77 @@
-/**
- * MercyBlade Blue — main.tsx (Single Router Owner + Single Auth Owner)
- * File: src/main.tsx
- * Version: MB-BLUE-96.4 — 2025-12-28 (+0700)
- *
- * LOCKED RULES:
- * - BrowserRouter is created ONLY here (exactly once)
- * - AuthProvider is created ONLY here (single auth source of truth)
- * - App.tsx must NOT create routers OR mount AuthProvider
- * - All global providers live ABOVE <App />
- * - "./index.css" must be imported here for Tailwind/UI visibility
- * - MbColorModeProvider is mounted here (global theme toggle)
- */
+// src/main.tsx
+// MB-BLUE-100.7 — 2025-12-31 (+0700)
+//
+// FIX (100.7):
+// - ✅ Wrap app in <AuthProvider> so AdminRoute/useAuth never crashes.
+// - Keep fatal overlay.
+// - Keep React.StrictMode OFF (avoid dev double-mount confusion).
 
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-import App from "./App";
-import "./index.css";
+import AppRouter from "@/router/AppRouter";
+import "@/index.css";
 
-// Providers
-import { LowDataModeProvider } from "@/contexts/LowDataModeContext";
-import { MercyHostProvider } from "@/components/mercy/MercyHostProvider";
-import { MbThemeProvider } from "@/hooks/useMbTheme";
-import { MusicPlayerProvider } from "@/contexts/MusicPlayerContext";
-import { MbColorModeProvider } from "@/contexts/MbColorModeContext";
-
-// ✅ SINGLE AUTH SOURCE OF TRUTH (must wrap everything that uses useAuth)
+// ✅ AUTH PROVIDER (required for /admin)
+// If this import path differs in your repo, change ONLY the import line.
 import { AuthProvider } from "@/providers/AuthProvider";
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      retry: 1,
-      refetchOnWindowFocus: false,
-    },
-  },
-});
+// ✅ MB FATAL OVERLAY — shows runtime errors on screen
+(function attachFatalErrorOverlay() {
+  const mount = (title: string, err: any) => {
+    try {
+      const rootEl = document.getElementById("root");
+      if (!rootEl) return;
 
-// 🔥 Module proof (helps diagnose “wrong entry file / double router” issues)
-console.log("🔥 main.tsx MODULE LOADED: MB-BLUE-96.4");
-(window as any).__MB_MAIN_VERSION__ = "MB-BLUE-96.4";
+      const msg =
+        `${title}\n\n` +
+        (err?.stack || err?.message || String(err)) +
+        `\n\nURL: ${location.href}`;
+
+      // Clear existing UI so overlay is visible even if CSS is broken
+      rootEl.innerHTML = "";
+
+      const wrap = document.createElement("div");
+      wrap.style.position = "fixed";
+      wrap.style.inset = "0";
+      wrap.style.zIndex = "2147483647";
+      wrap.style.background = "rgba(255,255,255,0.98)";
+      wrap.style.color = "rgba(0,0,0,0.88)";
+      wrap.style.padding = "16px";
+      wrap.style.fontFamily =
+        'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace';
+      wrap.style.fontSize = "12px";
+      wrap.style.lineHeight = "1.5";
+      wrap.style.overflow = "auto";
+
+      const pre = document.createElement("pre");
+      pre.style.whiteSpace = "pre-wrap";
+      pre.style.margin = "0";
+      pre.textContent = msg;
+
+      wrap.appendChild(pre);
+      rootEl.appendChild(wrap);
+    } catch {
+      // ignore
+    }
+  };
+
+  window.addEventListener("error", (e) =>
+    mount("[MB FATAL] window.error", (e as any).error || e)
+  );
+  window.addEventListener("unhandledrejection", (e) =>
+    mount("[MB FATAL] unhandledrejection", (e as any).reason || e)
+  );
+})();
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
+  <AuthProvider>
     <BrowserRouter>
-      <QueryClientProvider client={queryClient}>
-        <AuthProvider>
-          <MbThemeProvider>
-            <MbColorModeProvider>
-              <LowDataModeProvider>
-                <MercyHostProvider>
-                  <MusicPlayerProvider>
-                    <App />
-                  </MusicPlayerProvider>
-                </MercyHostProvider>
-              </LowDataModeProvider>
-            </MbColorModeProvider>
-          </MbThemeProvider>
-        </AuthProvider>
-      </QueryClientProvider>
+      <AppRouter />
     </BrowserRouter>
-  </React.StrictMode>
+  </AuthProvider>
 );
+
+/** New thing to learn:
+ * If a hook throws “must be used inside Provider”, the fix is always at app root, not inside the feature page. */

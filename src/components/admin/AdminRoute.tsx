@@ -1,69 +1,135 @@
-/**
- * MercyBlade Blue — AdminRoute (AUTH + ADMIN ROLE)
- * File: src/components/admin/AdminRoute.tsx
- * Version: MB-BLUE-94.14.2 — 2025-12-25 (+0700)
- *
- * PURPOSE (LOCKED):
- * - Guard all /admin routes
- * - Requires:
- *   (1) logged-in user (AuthProvider)
- *   (2) isAdmin === true (useUserAccess)
- *
- * RULES:
- * - No direct Supabase auth listeners here
- * - Consume AuthProvider + useUserAccess only
- */
+// src/components/admin/AdminRoute.tsx
+// MB-BLUE-100.10 — 2025-12-31 (+0700)
+//
+// ADMIN GUARD (LOCKED INTENT):
+// - User MUST be signed in to access /admin/*
+// - Admin is decided by allowlist email (fast + reliable)
+// - Optional: fallback to profiles.is_admin if you add it later
+//
+// NOTE:
+// - Set VITE_ADMIN_EMAILS="cd12536@gmail.com,another@email.com" in .env (and Vercel env)
 
-import { Navigate, useLocation } from "react-router-dom";
-import { useAuth } from "@/providers/AuthProvider";
-import { LoadingSkeleton } from "@/components/ui/loading-skeleton";
-import { Button } from "@/components/ui/button";
-import { useUserAccess } from "@/hooks/useUserAccess";
+import React, { useEffect, useMemo, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { supabase } from "@/lib/supabaseClient";
 
-export function AdminRoute({ children }: { children: JSX.Element }) {
-  const { user, isLoading } = useAuth();
-  const { isAdmin, isLoading: isAccessLoading } = useUserAccess(); // <-- we’ll ensure this exists in Step A2
-  const location = useLocation();
+function parseAllowlist(raw: string | undefined | null): string[] {
+  return (raw || "")
+    .split(",")
+    .map((s) => s.trim().toLowerCase())
+    .filter(Boolean);
+}
 
-  // 1) Auth resolving
-  if (isLoading) return <LoadingSkeleton variant="page" />;
+export function AdminRoute({ children }: { children: React.ReactNode }) {
+  const nav = useNavigate();
+  const loc = useLocation();
 
-  // 2) Not logged in → go login (preserve return path)
-  if (!user) {
-    return <Navigate to="/auth" replace state={{ from: location.pathname }} />;
-  }
+  const [loading, setLoading] = useState(true);
+  const [userEmail, setUserEmail] = useState<string | null>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
 
-  // 3) Logged in, but access checks still loading
-  if (isAccessLoading) return <LoadingSkeleton variant="page" />;
+  const allowlist = useMemo(() => {
+    // supports both Vite and older naming
+    const envList =
+      (import.meta as any)?.env?.VITE_ADMIN_EMAILS ??
+      (import.meta as any)?.env?.VITE_ADMIN_EMAIL ??
+      "";
+    return parseAllowlist(envList);
+  }, []);
 
-  // 4) Logged in but NOT admin → show explicit “Not Authorized”
-  if (!isAdmin) {
+  useEffect(() => {
+    let alive = true;
+
+    async function run() {
+      setLoading(true);
+      try {
+        const { data, error } = await supabase.auth.getUser();
+        const user = data?.user;
+
+        if (error || !user) {
+          // not signed in → go signin, preserve target
+          if (!alive) return;
+          setUserEmail(null);
+          setIsAdmin(false);
+          nav(`/signin`, { replace: true, state: { from: loc.pathname } });
+          return;
+        }
+
+        const email = (user.email || "").trim().toLowerCase();
+        if (!alive) return;
+        setUserEmail(email);
+
+        // ✅ Primary rule: allowlist by email
+        if (email && allowlist.includes(email)) {
+          setIsAdmin(true);
+          return;
+        }
+
+        // Optional fallback (only works if you add public.profiles.is_admin later)
+        try {
+          const { data: prof } = await supabase
+            .from("profiles")
+            .select("is_admin")
+            .eq("id", user.id)
+            .maybeSingle();
+
+          if (!alive) return;
+          setIsAdmin(Boolean((prof as any)?.is_admin));
+        } catch {
+          if (!alive) return;
+          setIsAdmin(false);
+        }
+      } finally {
+        if (alive) setLoading(false);
+      }
+    }
+
+    run();
+    return () => {
+      alive = false;
+    };
+  }, [allowlist, loc.pathname, nav]);
+
+  if (loading) {
     return (
-      <div className="mx-auto w-full max-w-xl p-6">
-        <h1 className="text-xl font-semibold">Not authorized</h1>
-        <p className="mt-2 text-muted-foreground">
-          Your account is signed in, but it does not have admin permissions.
-        </p>
-
-        <div className="mt-4 flex gap-2">
-          <Button variant="outline" onClick={() => (window.location.href = "/")}>
-            Go Home
-          </Button>
-          <Button variant="outline" onClick={() => (window.location.href = "/logout")}>
-            Logout
-          </Button>
-        </div>
-
-        <pre className="mt-4 rounded-md border bg-muted/30 p-3 text-xs overflow-auto">
-{`AdminRoute
-user: ${user?.email || user?.id}
-path: ${location.pathname}
-isAdmin: ${String(isAdmin)}`}
-        </pre>
+      <div style={{ padding: 24 }}>
+        <h2>Loading…</h2>
+        <div style={{ opacity: 0.7 }}>Checking admin session.</div>
       </div>
     );
   }
 
-  // 5) Admin OK
-  return children;
+  if (!isAdmin) {
+    return (
+      <div style={{ padding: 24 }}>
+        <h1>Not authorized</h1>
+        <p>Your account is signed in, but it does not have admin permissions.</p>
+
+        <div style={{ display: "flex", gap: 10, marginTop: 12 }}>
+          <button onClick={() => nav("/")} style={{ padding: "6px 10px" }}>
+            Go Home
+          </button>
+          <button
+            onClick={async () => {
+              await supabase.auth.signOut();
+              nav("/", { replace: true });
+            }}
+            style={{ padding: "6px 10px" }}
+          >
+            Logout
+          </button>
+        </div>
+
+        <div style={{ marginTop: 14, fontFamily: "monospace", fontSize: 12 }}>
+          <div>AdminRoute</div>
+          <div>user: {userEmail || "(none)"}</div>
+          <div>path: {loc.pathname}</div>
+          <div>isAdmin: {String(isAdmin)}</div>
+          <div>allowlist: {allowlist.length ? allowlist.join(", ") : "(empty)"}</div>
+        </div>
+      </div>
+    );
+  }
+
+  return <>{children}</>;
 }

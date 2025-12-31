@@ -1,150 +1,314 @@
-// src/pages/admin/AdminDashboard.tsx
-/**
- * MercyBlade Blue Launch Map — v83.3 (AUTHORITATIVE)
- * Generated: 2025-12-22 (+0700)
- * Reporter: teacher GPT
- *
- * PURPOSE:
- * Minimal Admin Dashboard (necessary only).
- * Shows KPI cards sourced from Edge Function `admin-stats`.
- * No Lovable bloat. No fake metrics. No extra panels.
- */
+// src/pages/admin/AdminHome.tsx
+// MB-BLUE-101.0 — 2025-12-31 (+0700)
+//
+// ADMIN HOME (UI ONLY):
+// - Reorganized into modern black/white "control board" layout.
+// - Keeps existing links + content intent (no new logic).
+// - Classy: typography, spacing, card grid, subtle borders.
 
-import { useMemo } from "react";
-import { RefreshCw, Users, Home, DollarSign, Activity } from "lucide-react";
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+type AdminTile = {
+  title: string;
+  desc: string;
+  href?: string; // internal route
+  badge?: string;
+  disabled?: boolean;
+};
 
-import { useAdminStats } from "@/hooks/admin/useAdminStats";
+export default function AdminHome() {
+  const nav = useNavigate();
 
-function formatMoneyUSD(n: number): string {
-  // Keep predictable formatting; avoid locale surprises.
-  const safe = Number.isFinite(n) ? n : 0;
-  return `$${safe.toFixed(2)}`;
-}
+  const wrap: React.CSSProperties = {
+    minHeight: "100vh",
+    background: "white",
+    color: "black",
+  };
 
-export default function AdminDashboard() {
-  const { loading, error, stats, lastUpdatedAt, refresh } = useAdminStats();
+  const frame: React.CSSProperties = {
+    maxWidth: 980,
+    margin: "0 auto",
+    padding: "28px 16px 80px",
+  };
 
-  const cards = useMemo(() => {
-    const totalUsers = stats?.totalUsers ?? 0;
-    const activeToday = stats?.activeToday ?? 0;
-    const totalRooms = stats?.totalRooms ?? 0;
-    const revenueMonth = stats?.revenueMonth ?? 0;
+  const topBar: React.CSSProperties = {
+    display: "flex",
+    alignItems: "flex-start",
+    justifyContent: "space-between",
+    gap: 12,
+    marginBottom: 18,
+  };
 
-    return [
-      {
-        key: "totalUsers",
-        title: "Total Users",
-        value: String(totalUsers),
-        icon: Users,
-        hint: "profiles (count)",
-      },
-      {
-        key: "activeToday",
-        title: "Active Today",
-        value: String(activeToday),
-        icon: Activity,
-        hint: "MVP: may be 0 until tracked",
-      },
-      {
-        key: "totalRooms",
-        title: "Total Rooms",
-        value: String(totalRooms),
-        icon: Home,
-        hint: "rooms (is_active=true)",
-      },
-      {
-        key: "revenueMonth",
-        title: "Revenue (Month)",
-        value: formatMoneyUSD(revenueMonth),
-        icon: DollarSign,
-        hint: "payment_transactions (completed)",
-      },
-    ] as const;
-  }, [stats]);
+  const title: React.CSSProperties = {
+    margin: 0,
+    fontSize: 44,
+    letterSpacing: -1.2,
+    fontWeight: 900,
+    lineHeight: 1.05,
+  };
+
+  const subtitle: React.CSSProperties = {
+    marginTop: 8,
+    marginBottom: 0,
+    fontSize: 15,
+    lineHeight: 1.6,
+    color: "rgba(0,0,0,0.70)",
+    maxWidth: 720,
+  };
+
+  const pillRow: React.CSSProperties = {
+    display: "flex",
+    gap: 10,
+    flexWrap: "wrap",
+    justifyContent: "flex-end",
+  };
+
+  const pill: React.CSSProperties = {
+    border: "1px solid rgba(0,0,0,0.14)",
+    borderRadius: 999,
+    padding: "10px 14px",
+    background: "white",
+    fontWeight: 800,
+    cursor: "pointer",
+    whiteSpace: "nowrap",
+  };
+
+  const smallTag: React.CSSProperties = {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: 8,
+    border: "1px solid rgba(0,0,0,0.10)",
+    borderRadius: 999,
+    padding: "6px 10px",
+    fontSize: 12,
+    fontWeight: 900,
+    letterSpacing: 0.6,
+    color: "rgba(0,0,0,0.72)",
+    background: "rgba(0,0,0,0.03)",
+  };
+
+  const sectionTitle: React.CSSProperties = {
+    margin: 0,
+    fontSize: 16,
+    fontWeight: 900,
+    letterSpacing: 0.2,
+  };
+
+  const hr: React.CSSProperties = {
+    height: 1,
+    border: 0,
+    background: "rgba(0,0,0,0.10)",
+    margin: "16px 0",
+  };
+
+  const grid: React.CSSProperties = {
+    display: "grid",
+    gridTemplateColumns: "repeat(12, 1fr)",
+    gap: 14,
+  };
+
+  const card: React.CSSProperties = {
+    border: "1px solid rgba(0,0,0,0.10)",
+    borderRadius: 18,
+    padding: 16,
+    background: "white",
+    boxShadow: "0 10px 24px rgba(0,0,0,0.04)",
+  };
+
+  const cardTitle: React.CSSProperties = {
+    margin: 0,
+    fontSize: 18,
+    fontWeight: 900,
+    letterSpacing: -0.2,
+  };
+
+  const cardDesc: React.CSSProperties = {
+    marginTop: 8,
+    marginBottom: 0,
+    fontSize: 14,
+    lineHeight: 1.6,
+    color: "rgba(0,0,0,0.68)",
+  };
+
+  const cardFooter: React.CSSProperties = {
+    marginTop: 14,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: 12,
+    flexWrap: "wrap",
+  };
+
+  const linkBtn: React.CSSProperties = {
+    border: "1px solid rgba(0,0,0,0.14)",
+    background: "white",
+    borderRadius: 12,
+    padding: "10px 12px",
+    fontWeight: 900,
+    cursor: "pointer",
+  };
+
+  const linkA: React.CSSProperties = {
+    textDecoration: "none",
+    color: "inherit",
+  };
+
+  const badge: React.CSSProperties = {
+    border: "1px solid rgba(0,0,0,0.14)",
+    borderRadius: 999,
+    padding: "6px 10px",
+    fontSize: 12,
+    fontWeight: 900,
+    background: "rgba(0,0,0,0.03)",
+    color: "rgba(0,0,0,0.72)",
+  };
+
+  const tiles: AdminTile[] = [
+    {
+      title: "Payments",
+      desc: "Inspect payments, Stripe test flows, and verification tools.",
+      href: "/admin/payments",
+      badge: "SAFE",
+    },
+    {
+      title: "Bank Transfers",
+      desc: "Manual transfer logs and reconciliation helpers.",
+      href: "/admin/bank-transfers",
+      badge: "SAFE",
+    },
+    {
+      title: "Audio Ops",
+      desc: "Coverage checks and scanner pages (no destructive actions).",
+      href: "/admin/audio",
+      badge: "READY",
+    },
+    {
+      title: "Room Health",
+      desc: "Room integrity & coverage diagnostics (read-only).",
+      href: "/admin/rooms",
+      badge: "SAFE",
+    },
+    {
+      title: "System Monitoring",
+      desc: "Surface operational signals. Anything marked “Soon” can be wired later without changing this board.",
+      href: "/admin/monitoring",
+      badge: "SOON",
+      disabled: true,
+    },
+  ];
+
+  function go(href?: string) {
+    if (!href) return;
+    nav(href);
+  }
 
   return (
-    <div className="p-4 md:p-6 space-y-4">
-      <div className="flex items-center justify-between gap-3">
-        <div className="min-w-0">
-          <h1 className="text-lg md:text-xl font-bold text-foreground truncate">Admin Dashboard</h1>
-          <p className="text-xs text-muted-foreground">
-            Source: Edge Function <span className="font-mono">admin-stats</span>
-            {lastUpdatedAt ? (
-              <>
-                {" "}
-                • Last updated: <span className="font-mono">{new Date(lastUpdatedAt).toLocaleString()}</span>
-              </>
-            ) : null}
-          </p>
-        </div>
-
-        <div className="flex items-center gap-2">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => refresh()}
-            disabled={loading}
-            className="gap-2"
-            title="Refresh stats"
-          >
-            <RefreshCw className={`h-4 w-4 ${loading ? "animate-spin" : ""}`} />
-            Refresh
-          </Button>
-        </div>
-      </div>
-
-      {error ? (
-        <Card className="border-destructive/40">
-          <CardHeader>
-            <CardTitle className="text-sm text-destructive">Admin stats error</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-sm text-foreground whitespace-pre-wrap">{error}</p>
-            <p className="text-xs text-muted-foreground mt-2">
-              If this is 401/403: you are not logged in, or you are not an admin (has_role).
+    <div style={wrap}>
+      <div style={frame}>
+        <div style={topBar}>
+          <div>
+            <div style={smallTag}>ADMIN • CONTROL BOARD</div>
+            <h1 style={title}>Admin</h1>
+            <p style={subtitle}>
+              One place to operate Mercy Blade: payments, audio coverage, room health, and system monitoring.
+              <br />
+              <span style={{ color: "rgba(0,0,0,0.55)" }}>
+                Administrative tools (disabled in launch build).
+              </span>
             </p>
-          </CardContent>
-        </Card>
-      ) : null}
+          </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3">
-        {cards.map((c) => {
-          const Icon = c.icon;
-          return (
-            <Card key={c.key} className="shadow-sm">
-              <CardHeader className="pb-2">
-                <div className="flex items-center justify-between gap-2">
-                  <CardTitle className="text-sm font-semibold">{c.title}</CardTitle>
-                  <Icon className="h-4 w-4 text-muted-foreground" />
+          <div style={pillRow}>
+            <Link to="/" style={linkA}>
+              <button type="button" style={pill}>Back to Home</button>
+            </Link>
+            <button
+              type="button"
+              style={pill}
+              onClick={() => nav("/rooms")}
+              aria-label="Open a room"
+            >
+              Open a Room
+            </button>
+          </div>
+        </div>
+
+        <hr style={hr} />
+
+        {/* Summary strip */}
+        <div style={{ ...card, padding: 14, marginBottom: 14 }}>
+          <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
+            <div>
+              <div style={sectionTitle}>Safety Notice</div>
+              <p style={{ ...cardDesc, marginTop: 6 }}>
+                This board links to panels. It does not assume payment/email is “done.” It’s an operator surface only.
+              </p>
+            </div>
+
+            <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
+              <span style={badge}>RISK MODE: SAFE</span>
+              <span style={badge}>NO DESTRUCTIVE ACTIONS</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Panels grid */}
+        <div style={grid}>
+          {tiles.map((t) => {
+            const span = t.title === "System Monitoring" ? 12 : 6; // nice layout
+            const isDisabled = !!t.disabled;
+
+            return (
+              <div
+                key={t.title}
+                style={{
+                  ...card,
+                  gridColumn: `span ${span}`,
+                  opacity: isDisabled ? 0.55 : 1,
+                }}
+              >
+                <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 10 }}>
+                  <h2 style={cardTitle}>{t.title}</h2>
+                  {t.badge && <span style={badge}>{t.badge}</span>}
                 </div>
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">{loading && !stats ? "…" : c.value}</div>
-                <div className="text-xs text-muted-foreground mt-1">{c.hint}</div>
-              </CardContent>
-            </Card>
-          );
-        })}
-      </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-sm">Notes (truth)</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-2">
-          <p className="text-sm text-foreground">
-            This dashboard is intentionally minimal. It exists to reduce operational risk, not to look “advanced”.
-          </p>
-          <ul className="text-xs text-muted-foreground list-disc pl-4 space-y-1">
-            <li>Active Today may stay 0 until sign-in/session tracking exists.</li>
-            <li>Revenue uses completed transactions only; keep idempotency in payment pipeline.</li>
-            <li>If numbers look wrong, trust DB tables first; UI is just an opinion.</li>
-          </ul>
-        </CardContent>
-      </Card>
+                <p style={cardDesc}>{t.desc}</p>
+
+                <div style={cardFooter}>
+                  <button
+                    type="button"
+                    style={{
+                      ...linkBtn,
+                      opacity: isDisabled ? 0.6 : 1,
+                      cursor: isDisabled ? "not-allowed" : "pointer",
+                    }}
+                    onClick={() => (!isDisabled ? go(t.href) : null)}
+                    disabled={isDisabled}
+                  >
+                    Open
+                  </button>
+
+                  <div style={{ fontSize: 12, color: "rgba(0,0,0,0.55)", fontWeight: 800 }}>
+                    {t.href ? `Route: ${t.href}` : "Route: —"}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <hr style={hr} />
+
+        {/* Footer */}
+        <div style={{ fontSize: 12, color: "rgba(0,0,0,0.55)", fontWeight: 800, lineHeight: 1.6 }}>
+          Tip: keep Admin pages minimal and operator-focused. Prefer read-only panels with explicit “Safe” labeling.
+        </div>
+      </div>
     </div>
   );
 }
+
+/* New thing to learn:
+   “Modern” admin UI is mostly spacing + hierarchy + consistency.
+   Black/white becomes classy when borders/shadows are subtle and typography is strong. */

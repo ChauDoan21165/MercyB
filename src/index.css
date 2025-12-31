@@ -1,5 +1,5 @@
 /* src/index.css
-   MB-BLUE-97.4 — 2025-12-28 (+0700)
+   MB-BLUE-100.3 — 2025-12-31 (+0700)
 
    MERGED:
    (A) Mercy Blade background modes (rainbow / bw)
@@ -10,10 +10,21 @@
    - Audio is rendered ONLY via TalkingFacePlayButton (core Mercy Blade motif).
 
    CRITICAL FIX (97.4):
-   - The bug is: native audio UI is still rendering (mp3 filename + 0:00/1:01 + slider).
-   - That means some <audio> element still exists in the DOM.
+   - Native audio UI still rendering meant <audio> existed in DOM.
    - We do NOT disable audio playback logic.
    - We hide native audio UI ONLY inside `.mb-room` scope.
+
+   FIX (100.2):
+   - The “sticking out” blue rectangle is focus ring/outline on range inputs.
+   - Remove outline/box-shadow focus rings for range inputs (safe, can style later).
+   - Custom range appearance in WebKit so UI obeys parent clipping.
+
+   FIX (100.3) — THE REAL OVERFLOW FIX FOR ROOM AUDIO BAR:
+   - The room audio bar overflow is caused by GLOBAL `input[type=range]{ width:100% }`.
+   - In a flex row (slider + time text), width:100% forces overflow to the right.
+   - So we DO NOT force width:100% globally.
+   - We clamp with max-width + min-width:0 + flex shrink safety instead.
+   - Components that need full-width sliders (BottomMusicBar) already set width via inline/scoped CSS.
 */
 
 /* ===============================
@@ -43,9 +54,11 @@
   pointer-events: none !important;
 }
 
-/* 1) If controls attribute exists, hide the visible player box */
+/* 1) If controls attribute exists:
+      DO NOT display:none (keeps DOM + avoids layout quirks).
+      Visual is already suppressed by `.mb-room audio` above. */
 .mb-room audio[controls] {
-  display: none !important;
+  display: block !important;
 }
 
 /* 2) WebKit native controls (Chrome/Safari) — extra defensive */
@@ -112,7 +125,6 @@ body {
 
 /* ===============================
    Mercy Blade Talking Mouth (SAFE)
-   - Works even if mouth is positioned with translateX(-50%)
    =============================== */
 
 @keyframes mb-mouth-talk {
@@ -237,6 +249,85 @@ body {
   animation: wave-expand 3s ease-in-out infinite;
 }
 
+/* ===============================
+   GLOBAL WIDTH CLAMPS (NO OVERFLOW)
+   =============================== */
+
+/* Prevent any media UI from exceeding its parent box. */
+audio {
+  display: block;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/*
+  ✅ IMPORTANT:
+  Do NOT force width:100% for all range inputs globally.
+  That breaks flex rows (slider + time) and causes right-edge stick-out.
+*/
+input[type="range"] {
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  /* lets it behave in flex rows: take remaining space, not overflow */
+  flex: 1 1 auto;
+}
+
+/* Flex/grid shrink safety: overflowing children is usually min-width:auto. */
+.mb-room,
+.mb-room * {
+  min-width: 0;
+}
+
+/* ===============================
+   RANGE FOCUS RING / OUTLINE CLIP FIX (THE STICK-OUT)
+   =============================== */
+
+/* The blue “sticking out” can be the focus outline/ring. */
+input[type="range"]:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* WebKit: force custom paint so it doesn't draw outside rounded parents. */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  margin: 0;
+  padding: 0;
+  height: 20px;
+}
+
+/* Track + thumb: neutral, safe */
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.18);
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.55);
+  margin-top: -4px;
+}
+
+/* Firefox */
+input[type="range"]::-moz-range-track {
+  height: 6px;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.18);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.55);
+  border: 0;
+}
+
 /* New thing to learn:
-   CSS scoping is a weapon: `.mb-room audio[controls]{display:none}` kills native players
-   even when another component accidentally renders them. */
+   A global `width:100%` on inputs is dangerous in flex rows.
+   Prefer `max-width:100% + min-width:0 + flex:1` so layouts can shrink safely. */
