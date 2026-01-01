@@ -1,27 +1,26 @@
 // src/pages/TierIndex.tsx
-// MB-BLUE-98.8 — 2025-12-30 (+0700)
+// MB-BLUE-98.9 — 2026-01-01 (+0700)
 //
 // TIER MAP (LOCKED CONCEPT):
 // - 3 columns (left / spine / right)
-// - Center = tier spine (Free → VIP9)
-// - Left = English Path (learn/skills on the way up)
-// - Right = Life Skills / real-world skills
-// - A horizontal “mid band” (psychology / critical thinking layer)
+// - Center = tier spine (Free → VIP9), rendered TOP→BOTTOM as VIP9→Free (visual)
+// - Left + Right blocks must sit HORIZONTALLY on the same row as the tier they belong to
+// - Free = ground (BOTTOM)
+// - VIP9 = above the head (TOP)
+// - God / Universe sits ABOVE VIP9
+//
+// DATA RULE (LOCKED):
+// - derive room counts from PUBLIC_ROOM_MANIFEST
+// - tier inferred from roomId/filename (vipN marker), never trusted from JSON fields
 //
 // NOTE:
 // - Inline styles (no Tailwind dependency)
-// - This is a VISUAL MAP page
+// - Visual map page
 // - Links go to /tiers/:tierId (existing routes)
-// - Counts are derived from getRoomList() (local registry), NOT resolver logic
-//
-// FIX 98.8:
-// - KEEP the long visual map + inline styles (no regression)
-// - Add room counts per tier + total + unknown tier count
-// - Show count pill next to each tier link
 
 import React, { useMemo } from "react";
 import { Link } from "react-router-dom";
-import { getRoomList } from "@/lib/roomList";
+import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
 
 type TierId =
   | "free"
@@ -41,26 +40,32 @@ type TierNode = {
   hint?: string;
 };
 
-type RoomMetaLike = { id: string; tier?: string };
-
 const rainbow =
   "linear-gradient(90deg,#ff4d4d 0%,#ffb84d 18%,#b6ff4d 36%,#4dffb8 54%,#4db8ff 72%,#b84dff 90%,#ff4dff 100%)";
 
-const spine: TierNode[] = [
-  { id: "free", label: "Free", hint: "Ground / basics" },
-  { id: "vip1", label: "VIP1", hint: "Build habit + foundation" },
-  { id: "vip2", label: "VIP2", hint: "Strengthen core skills" },
-  { id: "vip3", label: "VIP3", hint: "Bridge into the spine" },
-  { id: "vip4", label: "VIP4", hint: "Climb" },
-  { id: "vip5", label: "VIP5", hint: "Writing / deeper practice" },
-  { id: "vip6", label: "VIP6", hint: "Systems / strategy" },
-  { id: "vip7", label: "VIP7", hint: "Advanced" },
-  { id: "vip8", label: "VIP8", hint: "High mastery" },
+const TIERS_TOP_TO_BOTTOM: TierNode[] = [
   { id: "vip9", label: "VIP9", hint: "Top / near God–Universe" },
+  { id: "vip8", label: "VIP8", hint: "High mastery" },
+  { id: "vip7", label: "VIP7", hint: "Advanced" },
+  { id: "vip6", label: "VIP6", hint: "Systems / strategy" },
+  { id: "vip5", label: "VIP5", hint: "Writing / deeper practice" },
+  { id: "vip4", label: "VIP4", hint: "Climb" },
+  { id: "vip3", label: "VIP3", hint: "Bridge into the spine" },
+  { id: "vip2", label: "VIP2", hint: "Strengthen core skills" },
+  { id: "vip1", label: "VIP1", hint: "Build habit + foundation" },
+  { id: "free", label: "Free", hint: "Ground / basics" },
 ];
 
-function normTier(x: any): string {
-  return String(x || "").toLowerCase().trim();
+function inferTierFromRoomId(roomId: string): TierId | "unknown" {
+  const s = String(roomId || "").toLowerCase().trim();
+
+  // Strong match first: _vipN or -vipN or vipN_ etc.
+  const m = s.match(/\bvip([1-9])\b/);
+  if (m?.[1]) return (`vip${m[1]}` as TierId);
+
+  // Some IDs include vip6_vip6 etc; above regex already catches.
+  // If none, treat as free by data rule (many free rooms have no vip marker).
+  return "free";
 }
 
 function TierLink({
@@ -117,6 +122,63 @@ function TierLink({
   );
 }
 
+function AnchorCard({
+  title,
+  tierLabel,
+  body,
+}: {
+  title: string;
+  tierLabel: string;
+  body: string;
+}) {
+  const item: React.CSSProperties = {
+    borderRadius: 14,
+    border: "1px solid rgba(0,0,0,0.10)",
+    padding: "10px 12px",
+    background: "rgba(255,255,255,0.80)",
+  };
+
+  const itemTitle: React.CSSProperties = {
+    margin: 0,
+    fontSize: 14,
+    fontWeight: 900,
+    letterSpacing: -0.2,
+    color: "rgba(0,0,0,0.78)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: 10,
+  };
+
+  const pill: React.CSSProperties = {
+    fontSize: 12,
+    fontWeight: 900,
+    padding: "4px 10px",
+    borderRadius: 9999,
+    border: "1px solid rgba(0,0,0,0.12)",
+    background: "rgba(255,255,255,0.85)",
+    whiteSpace: "nowrap",
+    color: "rgba(0,0,0,0.70)",
+  };
+
+  const itemBody: React.CSSProperties = {
+    marginTop: 8,
+    marginBottom: 0,
+    fontSize: 14,
+    lineHeight: 1.6,
+    color: "rgba(0,0,0,0.66)",
+  };
+
+  return (
+    <div style={item}>
+      <div style={itemTitle}>
+        {title} <span style={pill}>{tierLabel}</span>
+      </div>
+      <p style={itemBody}>{body}</p>
+    </div>
+  );
+}
+
 export default function TierIndex() {
   const wrap: React.CSSProperties = {
     width: "100%",
@@ -167,50 +229,6 @@ export default function TierIndex() {
     whiteSpace: "nowrap",
   };
 
-  const grid: React.CSSProperties = {
-    marginTop: 18,
-    display: "grid",
-    gridTemplateColumns: "1fr 240px 1fr",
-    gap: 14,
-    alignItems: "start",
-  };
-
-  // Responsive: collapse to 1 column on narrow screens
-  const gridNarrow: React.CSSProperties = {
-    ...grid,
-    gridTemplateColumns: "1fr",
-  };
-
-  const isNarrow =
-    typeof window !== "undefined"
-      ? window.matchMedia("(max-width: 860px)").matches
-      : false;
-
-  const panel: React.CSSProperties = {
-    borderRadius: 18,
-    border: "1px solid rgba(0,0,0,0.10)",
-    background: "rgba(255,255,255,0.72)",
-    padding: "14px 14px",
-    boxShadow: "0 10px 30px rgba(0,0,0,0.05)",
-  };
-
-  const panelTitle: React.CSSProperties = {
-    margin: 0,
-    fontSize: 14,
-    fontWeight: 900,
-    letterSpacing: 0.6,
-    textTransform: "uppercase",
-    color: "rgba(0,0,0,0.55)",
-  };
-
-  const small: React.CSSProperties = {
-    marginTop: 10,
-    marginBottom: 0,
-    fontSize: 14,
-    lineHeight: 1.55,
-    color: "rgba(0,0,0,0.70)",
-  };
-
   const band: React.CSSProperties = {
     marginTop: 14,
     borderRadius: 18,
@@ -239,96 +257,103 @@ export default function TierIndex() {
     color: "rgba(0,0,0,0.62)",
   };
 
-  // Spine styles
-  const spineWrap: React.CSSProperties = {
-    ...panel,
-    background: "rgba(255,255,255,0.78)",
-    position: "relative",
-    overflow: "hidden",
+  // --- 3-column row grid (HORIZONTAL OWNERSHIP LOCK) ---
+  const rowGrid: React.CSSProperties = {
+    marginTop: 18,
+    display: "grid",
+    gridTemplateColumns: "1fr 260px 1fr",
+    gap: 14,
+    alignItems: "start",
   };
 
-  const spineLine: React.CSSProperties = {
-    position: "absolute",
-    left: "50%",
-    top: 56,
-    bottom: 18,
-    width: 6,
-    transform: "translateX(-50%)",
-    borderRadius: 9999,
-    background: "rgba(0,0,0,0.08)",
+  const isNarrow =
+    typeof window !== "undefined"
+      ? window.matchMedia("(max-width: 860px)").matches
+      : false;
+
+  const rowGridNarrow: React.CSSProperties = {
+    ...rowGrid,
+    gridTemplateColumns: "1fr",
   };
 
-  const spineLineFill: React.CSSProperties = {
-    position: "absolute",
-    left: "50%",
-    top: 56,
-    bottom: 18,
-    width: 6,
-    transform: "translateX(-50%)",
-    borderRadius: 9999,
-    background: rainbow,
-    opacity: 0.65,
+  const colBox: React.CSSProperties = {
+    borderRadius: 18,
+    border: "1px solid rgba(0,0,0,0.10)",
+    background: "rgba(255,255,255,0.72)",
+    padding: "12px 12px",
+    boxShadow: "0 10px 30px rgba(0,0,0,0.05)",
   };
 
-  const nodeRow: React.CSSProperties = {
+  const colTitle: React.CSSProperties = {
+    margin: 0,
+    fontSize: 14,
+    fontWeight: 900,
+    letterSpacing: 0.6,
+    textTransform: "uppercase",
+    color: "rgba(0,0,0,0.55)",
+  };
+
+  const small: React.CSSProperties = {
+    marginTop: 8,
+    marginBottom: 0,
+    fontSize: 14,
+    lineHeight: 1.55,
+    color: "rgba(0,0,0,0.70)",
+  };
+
+  const tierRow: React.CSSProperties = {
+    display: "contents", // important: each tier is ONE ROW across 3 columns
+  };
+
+  const cell: React.CSSProperties = {
+    minHeight: 84,
     display: "flex",
-    flexDirection: "column",
-    gap: 10,
-    marginTop: 12,
-    position: "relative",
-    zIndex: 2,
-  };
-
-  const node: React.CSSProperties = {
-    display: "flex",
-    flexDirection: "column",
     alignItems: "center",
-    gap: 6,
   };
 
-  const nodeHint: React.CSSProperties = {
+  const cellStack: React.CSSProperties = {
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    gap: 8,
+    justifyContent: "center",
+  };
+
+  const spineCell: React.CSSProperties = {
+    ...cell,
+    justifyContent: "center",
+  };
+
+  const spineHint: React.CSSProperties = {
+    marginTop: 6,
     fontSize: 12,
     color: "rgba(0,0,0,0.55)",
     textAlign: "center",
   };
 
-  // Left/right content blocks tied to tiers (simple + clear)
-  const item: React.CSSProperties = {
-    borderRadius: 14,
-    border: "1px solid rgba(0,0,0,0.10)",
+  const godNode: React.CSSProperties = {
+    width: "100%",
+    borderRadius: 9999,
     padding: "10px 12px",
-    background: "rgba(255,255,255,0.80)",
-    marginTop: 10,
-  };
-
-  const itemTitle: React.CSSProperties = {
-    margin: 0,
-    fontSize: 14,
-    fontWeight: 900,
+    border: "1px solid rgba(0,0,0,0.12)",
+    background: "rgba(255,255,255,0.92)",
+    textAlign: "center",
+    fontWeight: 950,
     letterSpacing: -0.2,
     color: "rgba(0,0,0,0.78)",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    gap: 10,
+    position: "relative",
   };
 
-  const pill: React.CSSProperties = {
-    fontSize: 12,
-    fontWeight: 900,
-    padding: "4px 10px",
+  const godGlow: React.CSSProperties = {
+    position: "absolute",
+    left: 16,
+    right: 16,
+    bottom: -8,
+    height: 10,
     borderRadius: 9999,
-    border: "1px solid rgba(0,0,0,0.12)",
-    background: "rgba(255,255,255,0.85)",
-    whiteSpace: "nowrap",
-  };
-
-  const itemBody: React.CSSProperties = {
-    marginTop: 8,
-    marginBottom: 0,
-    fontSize: 14,
-    lineHeight: 1.6,
-    color: "rgba(0,0,0,0.66)",
+    background: rainbow,
+    opacity: 0.22,
+    filter: "blur(6px)",
   };
 
   const footer: React.CSSProperties = {
@@ -338,9 +363,9 @@ export default function TierIndex() {
     lineHeight: 1.6,
   };
 
-  // ✅ counts (local registry)
+  // ✅ counts (PUBLIC_ROOM_MANIFEST) — tier inferred from roomId
   const counts = useMemo(() => {
-    const by: Record<string, number> = {
+    const by: Record<TierId, number> = {
       free: 0,
       vip1: 0,
       vip2: 0,
@@ -354,33 +379,95 @@ export default function TierIndex() {
     };
 
     let unknown = 0;
-    const list = getRoomList() as unknown as RoomMetaLike[];
 
-    for (const r of list) {
-      const t = normTier(r?.tier);
-      if (t in by) by[t] += 1;
-      else unknown += 1;
+    const ids = Object.keys(PUBLIC_ROOM_MANIFEST || {});
+    for (const id of ids) {
+      const t = inferTierFromRoomId(id);
+      if (t === "unknown") unknown += 1;
+      else by[t] += 1;
     }
 
-    return { total: list.length, unknown, byTier: by };
+    return { total: ids.length, unknown, byTier: by };
   }, []);
+
+  // --- BUCKET ANCHORING (FINAL) ---
+  // Each bucket appears EXACTLY ONCE at its anchored tier row.
+  const leftAnchors: Partial<Record<TierId, React.ReactNode>> = {
+    free: (
+      <AnchorCard
+        title="English Foundation"
+        tierLabel="Free"
+        body="Basic survival English + everyday phrases. Start on the ground."
+      />
+    ),
+    vip1: (
+      <AnchorCard
+        title="Building sentences"
+        tierLabel="VIP1"
+        body="Pronunciation + sentence patterns + listening repetition (audio-first)."
+      />
+    ),
+    vip3: (
+      <AnchorCard
+        title="Writing"
+        tierLabel="VIP3"
+        body="Short essays → structured writing → clear expression."
+      />
+    ),
+    vip6: (
+      <AnchorCard
+        title="Knowledge / Strategy mindset"
+        tierLabel="VIP6"
+        body="Higher-level thinking: systems, strategy, meaning."
+      />
+    ),
+  };
+
+  const rightAnchors: Partial<Record<TierId, React.ReactNode>> = {
+    free: (
+      <AnchorCard
+        title="Survival skills"
+        tierLabel="Free"
+        body="Basics for real life: calm down, simple habits, daily stability."
+      />
+    ),
+    vip1: (
+      <AnchorCard
+        title="Martial art / Discipline"
+        tierLabel="VIP1"
+        body="Body + mind training, consistency, courage."
+      />
+    ),
+    vip3: (
+      <AnchorCard
+        title="Public speaking / Social skill"
+        tierLabel="VIP3"
+        body="Communication, confidence, relationships, career readiness."
+      />
+    ),
+    vip6: (
+      <AnchorCard
+        title="Money / Trade / Decisions"
+        tierLabel="VIP6"
+        body="Decision-making, trade basics, long-term thinking."
+      />
+    ),
+  };
 
   return (
     <div style={wrap}>
       <div style={container}>
         <h1 style={title}>Tier Map</h1>
         <div style={sub}>
-          Three columns. One spine. This page is a <b>visual map</b> (your drawing): left = English Path, center = tier
-          spine, right = life skills. Click any tier to open its rooms.
+          Three columns. One spine. <b>Ownership is horizontal</b>. VIP9 is top, Free is ground.
+          God/Universe sits above the head. Click any tier to open its rooms.
         </div>
 
-        {/* quick stats */}
         <div style={metaRow} aria-label="Tier stats">
           <span style={metaPill}>Rooms: {counts.total}</span>
           <span style={metaPill}>Unknown tier: {counts.unknown}</span>
         </div>
 
-        {/* Mid horizontal band (your drawing) */}
         <div style={band} aria-label="Mid band">
           <div style={bandRow}>
             <div style={bandLeft}>Psychology / Tâm lý học</div>
@@ -388,101 +475,89 @@ export default function TierIndex() {
           </div>
         </div>
 
-        <div style={isNarrow ? gridNarrow : grid} aria-label="Three column tier map">
-          {/* LEFT COLUMN */}
-          <div style={panel} aria-label="Left column: English path">
-            <div style={panelTitle}>Left column</div>
+        {/* Column headers */}
+        <div style={isNarrow ? rowGridNarrow : rowGrid} aria-label="Tier rows grid">
+          {/* LEFT header */}
+          <div style={colBox} aria-label="Left column header">
+            <div style={colTitle}>Left</div>
             <p style={small}>
-              <b>English Path</b> — climb from basic English to writing, knowledge, and clear thinking.
+              <b>English Path</b> — anchored buckets (no repetition across tiers).
             </p>
-
-            <div style={item}>
-              <div style={itemTitle}>
-                English Foundation <span style={pill}>Free</span>
-              </div>
-              <p style={itemBody}>Basic survival English + everyday phrases. Start on the ground.</p>
-            </div>
-
-            <div style={item}>
-              <div style={itemTitle}>
-                Building sentences <span style={pill}>VIP1–VIP2</span>
-              </div>
-              <p style={itemBody}>Pronunciation + sentence patterns + listening repetition (audio-first).</p>
-            </div>
-
-            <div style={item}>
-              <div style={itemTitle}>
-                Writing <span style={pill}>VIP3–VIP5</span>
-              </div>
-              <p style={itemBody}>Short essays → structured writing → clear expression.</p>
-            </div>
-
-            <div style={item}>
-              <div style={itemTitle}>
-                Knowledge / Strategy mindset <span style={pill}>VIP6–VIP9</span>
-              </div>
-              <p style={itemBody}>Higher-level thinking: systems, strategy, meaning.</p>
-            </div>
           </div>
 
-          {/* CENTER SPINE */}
-          <div style={spineWrap} aria-label="Center column: tier spine">
-            <div style={panelTitle}>Spine</div>
+          {/* SPINE header */}
+          <div style={colBox} aria-label="Spine column header">
+            <div style={colTitle}>Spine</div>
+            <p style={small}>
+              Free at ground (bottom). VIP9 at top. Counts come from manifest.
+            </p>
+          </div>
 
-            {/* Vertical spine line */}
-            <div style={spineLine} />
-            <div style={spineLineFill} />
+          {/* RIGHT header */}
+          <div style={colBox} aria-label="Right column header">
+            <div style={colTitle}>Right</div>
+            <p style={small}>
+              <b>Life Skills</b> — anchored buckets (no repetition across tiers).
+            </p>
+          </div>
 
-            <div style={nodeRow}>
-              {spine.map((t) => (
-                <div key={t.id} style={node}>
-                  <TierLink id={t.id} label={t.label} count={counts.byTier[t.id]} />
-                  {t.hint ? <div style={nodeHint}>{t.hint}</div> : null}
+          {/* GOD / UNIVERSE ROW (ABOVE VIP9) */}
+          {!isNarrow ? (
+            <>
+              <div style={cell} />
+              <div style={spineCell}>
+                <div style={cellStack}>
+                  <div style={godNode}>
+                    God / Universe (Above the head)
+                    <div style={godGlow} />
+                  </div>
                 </div>
-              ))}
-            </div>
-          </div>
-
-          {/* RIGHT COLUMN */}
-          <div style={panel} aria-label="Right column: life skills">
-            <div style={panelTitle}>Right column</div>
-            <p style={small}>
-              <b>Life Skills</b> — practical strength: health, money, relationships, public speaking, survival skills.
-            </p>
-
-            <div style={item}>
-              <div style={itemTitle}>
-                Survival skills <span style={pill}>Free</span>
               </div>
-              <p style={itemBody}>Basics for real life: calm down, simple habits, daily stability.</p>
-            </div>
-
-            <div style={item}>
-              <div style={itemTitle}>
-                Martial art / Discipline <span style={pill}>VIP1–VIP2</span>
+              <div style={cell} />
+            </>
+          ) : (
+            <div style={colBox}>
+              <div style={godNode}>
+                God / Universe (Above the head)
+                <div style={godGlow} />
               </div>
-              <p style={itemBody}>Body + mind training, consistency, courage.</p>
             </div>
+          )}
 
-            <div style={item}>
-              <div style={itemTitle}>
-                Public speaking / Social skill <span style={pill}>VIP3–VIP5</span>
-              </div>
-              <p style={itemBody}>Communication, confidence, relationships, career readiness.</p>
-            </div>
+          {/* TIER ROWS (VIP9 → FREE) */}
+          {TIERS_TOP_TO_BOTTOM.map((t) => (
+            <React.Fragment key={t.id}>
+              <div style={tierRow}>
+                {/* LEFT cell for this tier (anchored only; otherwise empty) */}
+                <div style={cell} aria-label={`Left cell ${t.label}`}>
+                  <div style={cellStack}>{leftAnchors[t.id] ?? null}</div>
+                </div>
 
-            <div style={item}>
-              <div style={itemTitle}>
-                Money / Trade / Decisions <span style={pill}>VIP6–VIP9</span>
+                {/* SPINE cell */}
+                <div style={spineCell} aria-label={`Spine cell ${t.label}`}>
+                  <div style={cellStack}>
+                    <div style={{ display: "flex", justifyContent: "center" }}>
+                      <TierLink
+                        id={t.id}
+                        label={t.label}
+                        count={counts.byTier[t.id]}
+                      />
+                    </div>
+                    {t.hint ? <div style={spineHint}>{t.hint}</div> : null}
+                  </div>
+                </div>
+
+                {/* RIGHT cell for this tier (anchored only; otherwise empty) */}
+                <div style={cell} aria-label={`Right cell ${t.label}`}>
+                  <div style={cellStack}>{rightAnchors[t.id] ?? null}</div>
+                </div>
               </div>
-              <p style={itemBody}>Decision-making, trade basics, long-term thinking.</p>
-            </div>
-          </div>
+            </React.Fragment>
+          ))}
         </div>
 
         <div style={footer}>
-          Tip: if you want the center spine to visually “branch” at VIP3 like your sketch, we can add two diagonal
-          connectors from VIP3 into the left/right panels (pure CSS, still inline styles).
+          LOCK CHECK: Left/right cards only appear on their anchored tier row, so nothing can float above its tier.
         </div>
       </div>
     </div>

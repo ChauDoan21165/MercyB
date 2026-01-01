@@ -1,5 +1,5 @@
 // src/components/room/RoomRenderer.tsx
-// MB-BLUE-99.4 — 2025-12-31 (+0700)
+// MB-BLUE-99.6 — 2026-01-01 (+0700)
 /**
  * ROOM 5-BOX SPEC (LOCKED)
  * BOX 2: Title row (tier left, title centered, fav+refresh right) — ONE ROW
@@ -15,6 +15,11 @@
  * - HARD CLAMP the *ROOM ENTRY* TalkingFacePlayButton so it can NEVER paint past the card edge.
  * - This is the “sticking out” you showed (range focus ring / inner control paint).
  * - We do NOT touch BottomMusicBar here.
+ *
+ * ✅ FIX (MB-BLUE-99.6):
+ * - Zoom ACTUALLY works: Box 4 uses transform scale driven by --mb-essay-zoom.
+ *   Why: Tailwind font sizes are rem/px and ignore parent font-size scaling.
+ *   Transform scaling affects everything (rem/px included), without touching BottomMusicBar.
  */
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
@@ -98,9 +103,7 @@ function isBadAutoTitle(raw: string, effectiveRoomId: string) {
     /^[a-z0-9_]+$/.test(rLow) && rLow.includes("_") && !r.includes(" ");
   const hasTierSuffix = /_(vip[1-9]|free)\b/i.test(r);
 
-  // if it looks like an id, we refuse it as a display title
   if (looksSnake || hasTierSuffix) return true;
-
   return false;
 }
 
@@ -335,7 +338,6 @@ function highlightByKeywordList(text: string, keywords: string[]) {
   }
 
   if (last < t.length) parts.push(t.slice(last));
-
   return <span className="whitespace-pre-line leading-relaxed">{parts}</span>;
 }
 
@@ -352,12 +354,7 @@ function pickEntryHeading(entry: any, index: number) {
   );
 }
 
-/**
- * Hide “ugly headings” like:
- * - support-system
- * - mood-management
- * - bipolar_support_vip1_whatever
- */
+/** Hide “ugly headings” like slugs/ids */
 function isUglyHeading(h: string) {
   const s = String(h || "").trim();
   if (!s) return true;
@@ -401,29 +398,6 @@ export default function RoomRenderer({
   const rootRef = useRef<HTMLDivElement | null>(null);
   const useColorThemeSafe = roomSpec?.use_color_theme !== false;
 
-  // ✅ Zoom scale from global dock (default 1)
-  const [zoomScale, setZoomScale] = useState<number>(1);
-
-  useEffect(() => {
-    const readZoom = () => {
-      const v = Number(
-        document.documentElement.getAttribute("data-mb-zoom") || "100"
-      );
-      const scale = !Number.isFinite(v)
-        ? 1
-        : Math.max(0.75, Math.min(2, v / 100));
-      setZoomScale(scale);
-    };
-    readZoom();
-
-    const obs = new MutationObserver(() => readZoom());
-    obs.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["data-mb-zoom"],
-    });
-    return () => obs.disconnect();
-  }, []);
-
   useEffect(() => {
     const root = rootRef.current;
     if (!root) return;
@@ -455,7 +429,6 @@ export default function RoomRenderer({
   }
 
   const tier = useMemo(() => pickTier(room), [room]);
-
   const effectiveRoomId = String(room?.id || roomId || "");
 
   // ✅ TITLE HARDENING
@@ -470,11 +443,7 @@ export default function RoomRenderer({
     return r;
   }, [rawEN, effectiveRoomId]);
 
-  const titleVI = useMemo(() => {
-    const r = rawVI.trim();
-    // We do NOT auto-generate VI from id; only show if real VI exists.
-    return r;
-  }, [rawVI]);
+  const titleVI = useMemo(() => String(rawVI || "").trim(), [rawVI]);
 
   const introEN = useMemo(() => pickIntroEN(room), [room]);
   const introVI = useMemo(() => pickIntroVI(room), [room]);
@@ -519,7 +488,6 @@ export default function RoomRenderer({
     return allEntries.findIndex((x) => x.entry === activeEntry);
   }, [activeEntry, allEntries]);
 
-  // ✅ Standard welcome uses the same cleaned title (NOT roomId)
   const welcomeEN =
     introEN?.trim() || `Welcome to ${titleEN}, please click a keyword to start`;
   const welcomeVI =
@@ -528,6 +496,190 @@ export default function RoomRenderer({
       titleVI || titleEN
     }, vui lòng nhấp vào từ khóa để bắt đầu`;
 
+  const ROOM_CSS = useMemo(
+    () => `
+      [data-mb-scope="room"].mb-room{
+        position: relative;
+        padding: 18px 14px 16px;
+        border-radius: 24px;
+        background:
+          radial-gradient(1100px 650px at 10% 10%, rgba(255, 105, 180, 0.11), transparent 55%),
+          radial-gradient(900px 520px at 90% 25%, rgba(0, 200, 255, 0.11), transparent 55%),
+          radial-gradient(900px 520px at 30% 90%, rgba(140, 255, 120, 0.11), transparent 55%),
+          linear-gradient(180deg, rgba(255,255,255,0.93), rgba(255,255,255,0.88));
+        box-shadow: 0 18px 55px rgba(0,0,0,0.08);
+        backdrop-filter: blur(8px);
+        display:flex;
+        flex-direction: column;
+        min-height: 72vh;
+      }
+      [data-mb-scope="room"][data-mb-theme="bw"].mb-room{
+        background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.92));
+      }
+
+      [data-mb-scope="room"] .mb-card{
+        border: 1px solid rgba(0,0,0,0.10);
+        background: rgba(255,255,255,0.74);
+        backdrop-filter: blur(10px);
+        border-radius: 24px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      }
+
+      [data-mb-scope="room"] .mb-titleRow{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap: 10px;
+        flex-wrap: nowrap;
+        min-width:0;
+        margin-bottom: 10px;
+      }
+      [data-mb-scope="room"] .mb-titleLeft,
+      [data-mb-scope="room"] .mb-titleRight{
+        display:flex;
+        align-items:center;
+        gap: 8px;
+        flex: 0 0 auto;
+      }
+      [data-mb-scope="room"] .mb-titleCenter{
+        flex: 1 1 auto;
+        min-width: 0;
+        text-align:center;
+      }
+      [data-mb-scope="room"] .mb-tier{
+        font-size: 12px;
+        font-weight: 900;
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(0,0,0,0.14);
+        background: rgba(255,255,255,0.9);
+        text-transform: uppercase;
+      }
+      [data-mb-scope="room"] .mb-iconBtn{
+        width: 34px;
+        height: 34px;
+        border-radius: 12px;
+        border: 1px solid rgba(0,0,0,0.14);
+        background: rgba(255,255,255,0.9);
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-size: 14px;
+      }
+      [data-mb-scope="room"] .mb-roomTitle{
+        font-size: 38px;
+        line-height: 1.1;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+        text-transform: none;
+      }
+      @media (max-width: 560px){
+        [data-mb-scope="room"] .mb-roomTitle{ font-size: 30px; }
+      }
+
+      [data-mb-scope="room"] .mb-welcomeLine{
+        padding: 10px 12px;
+        font-size: 15px;
+        line-height: 1.45;
+        text-align: center;
+      }
+
+      [data-mb-scope="room"] .mb-keyRow{
+        display:flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content:center;
+        margin-top: 14px;
+        padding: 4px 10px 2px;
+      }
+      [data-mb-scope="room"] .mb-keyBtn{
+        border: 1px solid rgba(0,0,0,0.14);
+        background: rgba(255,255,255,0.78);
+        border-radius: 999px;
+        padding: 9px 14px;
+        font-weight: 850;
+        font-size: 14px;
+        transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease, border-color 120ms ease;
+      }
+      [data-mb-scope="room"] .mb-keyBtn:hover{
+        transform: translateY(-1px);
+        box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+        background: rgba(255,255,255,0.90);
+        border-color: rgba(0,0,0,0.22);
+      }
+      [data-mb-scope="room"] .mb-keyBtn[data-active="true"]{
+        background: rgba(255,255,255,0.98);
+        border-color: rgba(0,0,0,0.30);
+        box-shadow: 0 14px 30px rgba(0,0,0,0.08);
+      }
+
+      [data-mb-scope="room"] .mb-kw{
+        padding: 0 0.18rem;
+        border-radius: 0.45rem;
+        font-weight: 800;
+      }
+      [data-mb-scope="room"] .mb-kw-0{ background: rgba(255, 219, 88, 0.45); }
+      [data-mb-scope="room"] .mb-kw-1{ background: rgba(120, 220, 255, 0.40); }
+      [data-mb-scope="room"] .mb-kw-2{ background: rgba(180, 255, 140, 0.40); }
+      [data-mb-scope="room"] .mb-kw-3{ background: rgba(255, 140, 200, 0.38); }
+      [data-mb-scope="room"] .mb-kw-4{ background: rgba(170, 140, 255, 0.38); }
+      [data-mb-scope="room"] .mb-kw-5{ background: rgba(255, 170, 120, 0.38); }
+      [data-mb-scope="room"] .mb-kw-6{ background: rgba(120, 255, 210, 0.34); }
+      [data-mb-scope="room"] .mb-kw-7{ background: rgba(255, 120, 120, 0.34); }
+
+      [data-mb-scope="room"] .mb-feedback{
+        border: 1px solid rgba(0,0,0,0.12);
+        background: rgba(255,255,255,0.70);
+        border-radius: 18px;
+        padding: 8px 10px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      [data-mb-scope="room"] .mb-feedback input{
+        flex: 1 1 auto;
+        background: transparent;
+        outline: none;
+        font-size: 14px;
+      }
+      [data-mb-scope="room"] .mb-feedback button{
+        flex: 0 0 auto;
+        width: 38px;
+        height: 38px;
+        border-radius: 14px;
+        border: 1px solid rgba(0,0,0,0.14);
+        background: rgba(255,255,255,0.85);
+        display:flex;
+        align-items:center;
+        justify-content:center;
+      }
+
+      /* ✅ MB-BLUE-99.4 — HARD CLAMP FOR ROOM ENTRY AUDIO BAR (NO STICK-OUT) */
+      [data-mb-scope="room"] .mb-audioClamp{
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        overflow: hidden;
+        border-radius: 18px;
+        clip-path: inset(0 round 18px);
+      }
+      [data-mb-scope="room"] .mb-audioClamp *{
+        max-width: 100%;
+        box-sizing: border-box;
+        min-width: 0;
+      }
+
+      /* ✅ Zoom wrapper: scale content but preserve layout width (inverse width trick) */
+      [data-mb-scope="room"] .mb-zoomWrap{
+        --mbz: calc(var(--mb-essay-zoom, 100) / 100);
+        transform: scale(var(--mbz));
+        transform-origin: top left;
+        width: calc(100% / var(--mbz));
+      }
+    `,
+    []
+  );
+
   return (
     <div
       ref={rootRef}
@@ -535,178 +687,7 @@ export default function RoomRenderer({
       data-mb-scope="room"
       data-mb-theme={useColorThemeSafe ? "color" : "bw"}
     >
-      <style>{`
-        [data-mb-scope="room"].mb-room{
-          position: relative;
-          padding: 18px 14px 16px;
-          border-radius: 24px;
-          background:
-            radial-gradient(1100px 650px at 10% 10%, rgba(255, 105, 180, 0.11), transparent 55%),
-            radial-gradient(900px 520px at 90% 25%, rgba(0, 200, 255, 0.11), transparent 55%),
-            radial-gradient(900px 520px at 30% 90%, rgba(140, 255, 120, 0.11), transparent 55%),
-            linear-gradient(180deg, rgba(255,255,255,0.93), rgba(255,255,255,0.88));
-          box-shadow: 0 18px 55px rgba(0,0,0,0.08);
-          backdrop-filter: blur(8px);
-          display:flex;
-          flex-direction: column;
-          min-height: 72vh;
-        }
-        [data-mb-scope="room"][data-mb-theme="bw"].mb-room{
-          background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.92));
-        }
-
-        [data-mb-scope="room"] .mb-card{
-          border: 1px solid rgba(0,0,0,0.10);
-          background: rgba(255,255,255,0.74);
-          backdrop-filter: blur(10px);
-          border-radius: 24px;
-          box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-        }
-
-        [data-mb-scope="room"] .mb-titleRow{
-          display:flex;
-          align-items:center;
-          justify-content:space-between;
-          gap: 10px;
-          flex-wrap: nowrap;
-          min-width:0;
-          margin-bottom: 10px;
-        }
-        [data-mb-scope="room"] .mb-titleLeft,
-        [data-mb-scope="room"] .mb-titleRight{
-          display:flex;
-          align-items:center;
-          gap: 8px;
-          flex: 0 0 auto;
-        }
-        [data-mb-scope="room"] .mb-titleCenter{
-          flex: 1 1 auto;
-          min-width: 0;
-          text-align:center;
-        }
-        [data-mb-scope="room"] .mb-tier{
-          font-size: 12px;
-          font-weight: 900;
-          padding: 6px 10px;
-          border-radius: 999px;
-          border: 1px solid rgba(0,0,0,0.14);
-          background: rgba(255,255,255,0.9);
-          text-transform: uppercase;
-        }
-        [data-mb-scope="room"] .mb-iconBtn{
-          width: 34px;
-          height: 34px;
-          border-radius: 12px;
-          border: 1px solid rgba(0,0,0,0.14);
-          background: rgba(255,255,255,0.9);
-          display:flex;
-          align-items:center;
-          justify-content:center;
-          font-size: 14px;
-        }
-        [data-mb-scope="room"] .mb-roomTitle{
-          font-size: 38px;
-          line-height: 1.1;
-          font-weight: 900;
-          letter-spacing: -0.02em;
-          text-transform: none;
-        }
-        @media (max-width: 560px){
-          [data-mb-scope="room"] .mb-roomTitle{ font-size: 30px; }
-        }
-
-        [data-mb-scope="room"] .mb-welcomeLine{
-          padding: 10px 12px;
-          font-size: 15px;
-          line-height: 1.45;
-          text-align: center;
-        }
-
-        [data-mb-scope="room"] .mb-keyRow{
-          display:flex;
-          flex-wrap: wrap;
-          gap: 10px;
-          justify-content:center;
-          margin-top: 14px;
-          padding: 4px 10px 2px;
-        }
-        [data-mb-scope="room"] .mb-keyBtn{
-          border: 1px solid rgba(0,0,0,0.14);
-          background: rgba(255,255,255,0.78);
-          border-radius: 999px;
-          padding: 9px 14px;
-          font-weight: 850;
-          font-size: 14px;
-          transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease, border-color 120ms ease;
-        }
-        [data-mb-scope="room"] .mb-keyBtn:hover{
-          transform: translateY(-1px);
-          box-shadow: 0 10px 24px rgba(0,0,0,0.06);
-          background: rgba(255,255,255,0.90);
-          border-color: rgba(0,0,0,0.22);
-        }
-        [data-mb-scope="room"] .mb-keyBtn[data-active="true"]{
-          background: rgba(255,255,255,0.98);
-          border-color: rgba(0,0,0,0.30);
-          box-shadow: 0 14px 30px rgba(0,0,0,0.08);
-        }
-
-        [data-mb-scope="room"] .mb-kw{
-          padding: 0 0.18rem;
-          border-radius: 0.45rem;
-          font-weight: 800;
-        }
-        [data-mb-scope="room"] .mb-kw-0{ background: rgba(255, 219, 88, 0.45); }
-        [data-mb-scope="room"] .mb-kw-1{ background: rgba(120, 220, 255, 0.40); }
-        [data-mb-scope="room"] .mb-kw-2{ background: rgba(180, 255, 140, 0.40); }
-        [data-mb-scope="room"] .mb-kw-3{ background: rgba(255, 140, 200, 0.38); }
-        [data-mb-scope="room"] .mb-kw-4{ background: rgba(170, 140, 255, 0.38); }
-        [data-mb-scope="room"] .mb-kw-5{ background: rgba(255, 170, 120, 0.38); }
-        [data-mb-scope="room"] .mb-kw-6{ background: rgba(120, 255, 210, 0.34); }
-        [data-mb-scope="room"] .mb-kw-7{ background: rgba(255, 120, 120, 0.34); }
-
-        [data-mb-scope="room"] .mb-feedback{
-          border: 1px solid rgba(0,0,0,0.12);
-          background: rgba(255,255,255,0.70);
-          border-radius: 18px;
-          padding: 8px 10px;
-          display: flex;
-          gap: 10px;
-          align-items: center;
-        }
-        [data-mb-scope="room"] .mb-feedback input{
-          flex: 1 1 auto;
-          background: transparent;
-          outline: none;
-          font-size: 14px;
-        }
-        [data-mb-scope="room"] .mb-feedback button{
-          flex: 0 0 auto;
-          width: 38px;
-          height: 38px;
-          border-radius: 14px;
-          border: 1px solid rgba(0,0,0,0.14);
-          background: rgba(255,255,255,0.85);
-          display:flex;
-          align-items:center;
-          justify-content:center;
-        }
-
-        /* ✅ MB-BLUE-99.4 — HARD CLAMP FOR ROOM ENTRY AUDIO BAR (NO STICK-OUT) */
-        [data-mb-scope="room"] .mb-audioClamp{
-          width: 100%;
-          max-width: 100%;
-          min-width: 0;
-          overflow: hidden;
-          border-radius: 18px;
-          clip-path: inset(0 round 18px); /* clips focus rings/outlines reliably */
-        }
-        [data-mb-scope="room"] .mb-audioClamp *{
-          max-width: 100%;
-          box-sizing: border-box;
-          min-width: 0;
-        }
-      `}</style>
+      <style>{ROOM_CSS}</style>
 
       {/* BOX 2 */}
       <div className="mb-titleRow">
@@ -788,41 +769,40 @@ export default function RoomRenderer({
         </div>
       )}
 
-      {/* BOX 4 stage (scaled by zoom) */}
-      <section
-        className="mb-card p-5 md:p-6 mb-5"
-        style={{ flex: "1 1 auto", fontSize: `${zoomScale}em` }}
-      >
-        {!activeKeyword ? (
-          <div className="min-h-[420px]" />
-        ) : activeEntry ? (
-          <ActiveEntry
-            entry={activeEntry}
-            index={activeEntryIndex >= 0 ? activeEntryIndex : 0}
-            enKeywords={enKeywords}
-            viKeywords={viKeywords}
-          />
-        ) : (
-          <div className="min-h-[240px] flex items-center justify-center text-center">
-            <div>
-              <div className="text-sm opacity-70 font-semibold">
-                No entry matches keyword: <b>{activeKeyword}</b>
-              </div>
-              <div className="mt-2">
-                <button
-                  type="button"
-                  className="px-3 py-1.5 rounded-full text-sm font-bold border bg-white"
-                  onClick={() => setActiveKeyword(null)}
-                >
-                  Clear keyword
-                </button>
+      {/* BOX 4 stage (zoomed content wrapper) */}
+      <section className="mb-card p-5 md:p-6 mb-5" style={{ flex: "1 1 auto" }}>
+        <div className="mb-zoomWrap">
+          {!activeKeyword ? (
+            <div className="min-h-[420px]" />
+          ) : activeEntry ? (
+            <ActiveEntry
+              entry={activeEntry}
+              index={activeEntryIndex >= 0 ? activeEntryIndex : 0}
+              enKeywords={enKeywords}
+              viKeywords={viKeywords}
+            />
+          ) : (
+            <div className="min-h-[240px] flex items-center justify-center text-center">
+              <div>
+                <div className="text-sm opacity-70 font-semibold">
+                  No entry matches keyword: <b>{activeKeyword}</b>
+                </div>
+                <div className="mt-2">
+                  <button
+                    type="button"
+                    className="px-3 py-1.5 rounded-full text-sm font-bold border bg-white"
+                    onClick={() => setActiveKeyword(null)}
+                  >
+                    Clear keyword
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </section>
 
-      {/* BOX 5 feedback pushed to bottom; no room-id header line */}
+      {/* BOX 5 feedback pushed to bottom */}
       <div style={{ marginTop: "auto" }}>
         <div className="mb-card p-3 md:p-4">
           <div className="mb-feedback">
@@ -872,7 +852,6 @@ function ActiveEntry({
       ) : null}
 
       {audioSrc ? (
-        // ✅ CLAMP WRAPPER = carpenter’s “cut to the frame”
         <div className="mt-4 mb-audioClamp">
           <TalkingFacePlayButton
             src={audioSrc}
@@ -893,5 +872,5 @@ function ActiveEntry({
 }
 
 /** New thing to learn:
- * When something “sticks out”, prefer a *hard clamp wrapper* (overflow + clip-path)
- * instead of chasing every child’s width rule. */
+ * If your UI uses rem/px typography (Tailwind), scaling font-size won’t work.
+ * Use a zoom wrapper with transform: scale + inverse width to scale everything safely. */

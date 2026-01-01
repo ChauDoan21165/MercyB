@@ -339,6 +339,13 @@ export const roomDataMap = {
     "tier": "free",
     "hasData": true
   },
+  "calm_mind_7_audio": {
+    "id": "calm_mind_7_audio",
+    "title_en": "Calm Mind 7 Audio",
+    "title_vi": "Calm Mind 7 Audio",
+    "tier": "free",
+    "hasData": true
+  },
   "career_community_vip4": {
     "id": "career_community_vip4",
     "title_en": "career_community_vip4",
@@ -1895,13 +1902,6 @@ export const roomDataMap = {
   },
   "homepage_v1": {
     "id": "homepage_v1",
-    "title_en": "Mercy Blade Homepage",
-    "title_vi": "Trang Chủ Mercy Blade",
-    "tier": "free",
-    "hasData": true
-  },
-  "homepage_v1_free": {
-    "id": "homepage_v1_free",
     "title_en": "Mercy Blade Homepage",
     "title_vi": "Trang Chủ Mercy Blade",
     "tier": "free",

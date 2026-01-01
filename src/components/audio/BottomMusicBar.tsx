@@ -1,30 +1,22 @@
 // src/components/audio/BottomMusicBar.tsx
-// MB-BLUE-100.6 — 2025-12-31 (+0700)
+// MB-BLUE-100.8 — 2026-01-01 (+0700)
 //
 // BOTTOM MUSIC BAR (LOCKED):
 // - Music bar is ALWAYS entertainment-only (no learning audio).
 // - Bar layout: LEFT 3/4 = music controls, RIGHT 1/4 = zoom + future tiny dots.
-// - Music controls ONLY: All | MB Songs | ♥ | play face | track select | progress + time | volume
+// - Music controls ONLY: All | MB Songs | (Fav tab) | play face | track select | progress + time | volume
 // - NO extra words inside bar (no "Mercy Blade", no "Zoom", no labels).
 // - Progress bar is the ONLY element allowed to stretch when bar width increases.
 // - Zoom MUST be global: set CSS var --mb-essay-zoom AND data-mb-zoom on :root, persist in localStorage.
 //
-// FIX (100.4):
-// - ✅ TRUE ALIGNMENT with top room chrome:
-//   We must NOT use inline padding on the ruler container because inline styles override Tailwind.
-//   Now ruler uses ONLY Tailwind: max-w-[980px] px-4 md:px-6.
-//   Result: top box and bottom box align perfectly.
+// FIX (100.7):
+// - Bigger mouth, volume icon, zoom icon + percent
 //
-// FIX (100.5):
-// - ✅ SECRET ADMIN DOT (first dot, top-right of bar):
-//   - Does NOT touch music logic.
-//   - Only visible to owner: localStorage.mb_admin === "1" OR localhost.
-//   - Navigates to /admin.
-//
-// FIX (100.6):
-// - ✅ TRUE OWNER-ONLY: no invisible clickable admin.
-//   - Admin dot is rendered ONLY when adminVisible === true.
-//   - Admin dot is the FIRST dot (not an extra top-right button).
+// FIX (100.8):
+// - ✅ ALIGNMENT STABLE: BottomMusicBar is NO LONGER position:fixed.
+//   Pages (Home/ChatHub) own the fixed mount + ruler alignment.
+// - ✅ Remove redundant first heart (Fav tab) → use ★ / ☆
+//   Keep ♥ only for “favorite this track”.
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -116,31 +108,30 @@ function useRaf(active: boolean, cb: () => void) {
 }
 
 function TalkingFaceIcon({ playing }: { playing: boolean }) {
-  // Mouth opens while playing
   return (
     <div
       aria-hidden="true"
       style={{
-        width: 28,
-        height: 28,
+        width: 30,
+        height: 30,
         borderRadius: 9999,
-        border: "1px solid rgba(0,0,0,0.14)",
-        background: "rgba(255,255,255,0.92)",
+        border: "1px solid rgba(0,0,0,0.16)",
+        background: "rgba(255,255,255,0.94)",
         display: "grid",
         placeItems: "center",
       }}
     >
-      <div style={{ position: "relative", width: 18, height: 18 }}>
+      <div style={{ position: "relative", width: 20, height: 20 }}>
         {/* eyes */}
         <div
           style={{
             position: "absolute",
             left: 4,
             top: 6,
-            width: 2,
-            height: 2,
+            width: 2.4,
+            height: 2.4,
             borderRadius: 9999,
-            background: "rgba(0,0,0,0.55)",
+            background: "rgba(0,0,0,0.62)",
           }}
         />
         <div
@@ -148,10 +139,10 @@ function TalkingFaceIcon({ playing }: { playing: boolean }) {
             position: "absolute",
             right: 4,
             top: 6,
-            width: 2,
-            height: 2,
+            width: 2.4,
+            height: 2.4,
             borderRadius: 9999,
-            background: "rgba(0,0,0,0.55)",
+            background: "rgba(0,0,0,0.62)",
           }}
         />
         {/* cheeks */}
@@ -160,10 +151,10 @@ function TalkingFaceIcon({ playing }: { playing: boolean }) {
             position: "absolute",
             left: 1,
             top: 9,
-            width: 3,
-            height: 3,
+            width: 3.5,
+            height: 3.5,
             borderRadius: 9999,
-            background: "rgba(255, 120, 160, 0.28)",
+            background: "rgba(255, 120, 160, 0.30)",
           }}
         />
         <div
@@ -171,10 +162,10 @@ function TalkingFaceIcon({ playing }: { playing: boolean }) {
             position: "absolute",
             right: 1,
             top: 9,
-            width: 3,
-            height: 3,
+            width: 3.5,
+            height: 3.5,
             borderRadius: 9999,
-            background: "rgba(255, 120, 160, 0.28)",
+            background: "rgba(255, 120, 160, 0.30)",
           }}
         />
         {/* mouth */}
@@ -183,11 +174,12 @@ function TalkingFaceIcon({ playing }: { playing: boolean }) {
             position: "absolute",
             left: "50%",
             transform: "translateX(-50%)",
-            bottom: 3,
-            width: 9,
-            height: playing ? 6 : 2,
+            bottom: 2.5,
+            width: 11,
+            height: playing ? 8 : 3,
             borderRadius: 9999,
-            background: "rgba(0,0,0,0.45)",
+            background: "rgba(0,0,0,0.62)",
+            boxShadow: playing ? "0 2px 10px rgba(0,0,0,0.12)" : "none",
             transition: "height 120ms ease",
           }}
         />
@@ -199,7 +191,6 @@ function TalkingFaceIcon({ playing }: { playing: boolean }) {
 export default function BottomMusicBar() {
   const nav = useNavigate();
 
-  // Tracks (UI is locked; you can swap sources/titles only)
   const tracks: Track[] = useMemo(
     () => [
       {
@@ -214,7 +205,6 @@ export default function BottomMusicBar() {
         src: "/music/2019-01-10_-_Land_of_8_Bits_-_Stephen_Bennett_-_FesliyanStudios.com-2.mp3",
         group: "all",
       },
-      // MB songs subset
       {
         id: "mb_theme_1",
         title: "MB Theme 1",
@@ -226,6 +216,7 @@ export default function BottomMusicBar() {
   );
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const lastNonZeroVolRef = useRef<number>(0.6);
 
   const [tab, setTab] = useState<TabId>(() => {
     const v = getInitialString(LS_TAB, "all");
@@ -325,6 +316,7 @@ export default function BottomMusicBar() {
   useEffect(() => {
     const a = audioRef.current;
     if (a) a.volume = vol;
+    if (vol > 0.001) lastNonZeroVolRef.current = vol;
     try {
       localStorage.setItem(LS_VOL, String(vol));
     } catch {}
@@ -389,7 +381,15 @@ export default function BottomMusicBar() {
     applyGlobalZoom(safe);
   };
 
-  // ---------- INTERNAL NO-OVERFLOW GUARANTEE ----------
+  const toggleMute = () => {
+    if (vol > 0.001) {
+      setVol(0);
+      return;
+    }
+    const restore = clamp(lastNonZeroVolRef.current || 0.6, 0, 1);
+    setVol(restore);
+  };
+
   const box: React.CSSProperties = {
     width: "100%",
     border: "1px solid rgba(0,0,0,0.14)",
@@ -497,6 +497,14 @@ export default function BottomMusicBar() {
     flex: "0 0 auto",
   };
 
+  const volWrap: React.CSSProperties = {
+    display: "flex",
+    alignItems: "center",
+    gap: 8,
+    flex: "0 0 auto",
+    minWidth: 0,
+  };
+
   const volSlider: React.CSSProperties = {
     width: 120,
     maxWidth: 120,
@@ -504,13 +512,42 @@ export default function BottomMusicBar() {
     minWidth: 0,
   };
 
+  const zoomWrap: React.CSSProperties = {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-end",
+    gap: 8,
+    minWidth: 0,
+    flex: "1 1 auto",
+  };
+
+  const zoomIcon: React.CSSProperties = {
+    width: 34,
+    height: 34,
+    borderRadius: 9999,
+    border: "1px solid rgba(0,0,0,0.14)",
+    background: "rgba(255,255,255,0.90)",
+    display: "grid",
+    placeItems: "center",
+    flex: "0 0 auto",
+    userSelect: "none",
+  };
+
   const zoomSlider: React.CSSProperties = {
     width: "100%",
-    maxWidth: 220,
+    maxWidth: 180,
     minWidth: 0,
     flex: "1 1 auto",
     display: "block",
     boxSizing: "border-box",
+  };
+
+  const zoomText: React.CSSProperties = {
+    fontSize: 12,
+    fontWeight: 900,
+    color: "rgba(0,0,0,0.55)",
+    whiteSpace: "nowrap",
+    flex: "0 0 auto",
   };
 
   const tinyDots: React.CSSProperties = {
@@ -539,178 +576,186 @@ export default function BottomMusicBar() {
 
   const progressRatio = duration > 0 ? clamp(current / duration, 0, 1) : 0;
 
+  const speakerEmoji =
+    vol <= 0.001 ? "🔇" : vol < 0.35 ? "🔈" : vol < 0.7 ? "🔉" : "🔊";
+
+  const favTabIcon = tab === "fav" ? "★" : "☆";
+
   return (
-    <div
-      className="mb-bottom-musicbar"
-      role="region"
-      aria-label="Music bar"
-      style={{
-        position: "fixed",
-        left: 0,
-        right: 0,
-        bottom: 0,
-        zIndex: 50,
-        pointerEvents: "none",
-      }}
-    >
-      {/* ✅ SAME RULER AS TOP: max-w + responsive padding (NO INLINE PADDING) */}
-      <div
-        className="mx-auto w-full max-w-[980px] px-4 md:px-6 pb-4"
-        style={{ pointerEvents: "none" }}
-      >
-        <div style={{ pointerEvents: "auto" }}>
-          <div style={box}>
-            <div style={row}>
-              {/* LEFT 3/4: MUSIC ONLY */}
-              <div style={left}>
-                <button
-                  type="button"
-                  style={tab === "all" ? pillActive : pill}
-                  onClick={() => setTab("all")}
-                >
-                  All
-                </button>
+    <div className="mb-bottom-musicbar" role="region" aria-label="Music bar">
+      <div style={box}>
+        <div style={row}>
+          {/* LEFT 3/4: MUSIC ONLY */}
+          <div style={left}>
+            <button
+              type="button"
+              style={tab === "all" ? pillActive : pill}
+              onClick={() => setTab("all")}
+            >
+              All
+            </button>
 
-                <button
-                  type="button"
-                  style={tab === "mb" ? pillActive : pill}
-                  onClick={() => setTab("mb")}
-                >
-                  MB Songs
-                </button>
+            <button
+              type="button"
+              style={tab === "mb" ? pillActive : pill}
+              onClick={() => setTab("mb")}
+            >
+              MB Songs
+            </button>
 
-                <button
-                  type="button"
-                  style={
-                    tab === "fav"
-                      ? { ...iconPill, background: "rgba(184,77,255,0.12)" }
-                      : iconPill
-                  }
-                  onClick={() => setTab("fav")}
-                  aria-label="Favorites"
-                  title="Favorites"
-                >
-                  {tab === "fav" ? "♥" : "♡"}
-                </button>
+            {/* ✅ Favorites TAB (playlist filter) — no heart here */}
+            <button
+              type="button"
+              style={
+                tab === "fav"
+                  ? { ...iconPill, background: "rgba(184,77,255,0.12)" }
+                  : iconPill
+              }
+              onClick={() => setTab("fav")}
+              aria-label="Favorites tab"
+              title="Favorites"
+            >
+              {favTabIcon}
+            </button>
 
-                <button
-                  type="button"
-                  style={iconPill}
-                  onClick={togglePlay}
-                  aria-label={playing ? "Pause" : "Play"}
-                >
-                  <TalkingFaceIcon playing={playing} />
-                </button>
+            <button
+              type="button"
+              style={iconPill}
+              onClick={togglePlay}
+              aria-label={playing ? "Pause" : "Play"}
+            >
+              <TalkingFaceIcon playing={playing} />
+            </button>
 
-                <select
-                  value={track?.id ?? ""}
-                  onChange={(e) => setTrackId(e.target.value)}
-                  style={selectStyle}
-                  aria-label="Track"
-                >
-                  {visibleTracks.map((t) => (
-                    <option key={t.id} value={t.id}>
-                      {t.title}
-                    </option>
-                  ))}
-                </select>
+            <select
+              value={track?.id ?? ""}
+              onChange={(e) => setTrackId(e.target.value)}
+              style={selectStyle}
+              aria-label="Track"
+            >
+              {visibleTracks.map((t) => (
+                <option key={t.id} value={t.id}>
+                  {t.title}
+                </option>
+              ))}
+            </select>
 
-                <div style={progressWrap}>
-                  <input
-                    type="range"
-                    min={0}
-                    max={1000}
-                    value={Math.round(progressRatio * 1000)}
-                    onChange={(e) =>
-                      seekToRatio(Number(e.target.value) / 1000)
-                    }
-                    style={progressSlider}
-                    aria-label="Progress"
-                  />
-                  <div style={timeText}>
-                    {formatTime(current)} / {formatTime(duration)}
-                  </div>
-                </div>
-
-                <button
-                  type="button"
-                  style={iconPill}
-                  onClick={toggleFavCurrent}
-                  aria-label={isFav ? "Unfavorite" : "Favorite"}
-                  title={isFav ? "Unfavorite" : "Favorite"}
-                >
-                  {isFav ? "♥" : "♡"}
-                </button>
-
-                <input
-                  type="range"
-                  min={0}
-                  max={100}
-                  value={Math.round(vol * 100)}
-                  onChange={(e) =>
-                    setVol(clamp(Number(e.target.value) / 100, 0, 1))
-                  }
-                  style={volSlider}
-                  aria-label="Volume"
-                />
+            <div style={progressWrap}>
+              <input
+                type="range"
+                min={0}
+                max={1000}
+                value={Math.round(progressRatio * 1000)}
+                onChange={(e) => seekToRatio(Number(e.target.value) / 1000)}
+                style={progressSlider}
+                aria-label="Progress"
+              />
+              <div style={timeText}>
+                {formatTime(current)} / {formatTime(duration)}
               </div>
+            </div>
 
-              {/* RIGHT 1/4: ZOOM + dots ONLY */}
-              <div style={right}>
-                <input
-                  type="range"
-                  min={60}
-                  max={140}
-                  value={zoomPct}
-                  onChange={(e) => onZoomChange(Number(e.target.value))}
-                  style={zoomSlider}
-                  aria-label="Zoom"
-                />
+            {/* ✅ Heart ONLY for “favorite current track” */}
+            <button
+              type="button"
+              style={iconPill}
+              onClick={toggleFavCurrent}
+              aria-label={isFav ? "Unfavorite" : "Favorite"}
+              title={isFav ? "Unfavorite" : "Favorite"}
+            >
+              {isFav ? "♥" : "♡"}
+            </button>
 
-                <div style={tinyDots}>
-                  {/* ✅ SECRET ADMIN DOT = FIRST DOT (owner-only render) */}
-                  {adminVisible ? (
-                    <button
-                      type="button"
-                      aria-label="Admin"
-                      title="Admin"
-                      onClick={() => nav("/admin")}
-                      style={adminDotBtn}
-                    />
-                  ) : (
-                    <div style={dot} aria-hidden="true" />
-                  )}
+            {/* ✅ Volume: speaker icon + slider */}
+            <div style={volWrap}>
+              <button
+                type="button"
+                style={iconPill}
+                onClick={toggleMute}
+                aria-label="Volume toggle"
+                title="Volume"
+              >
+                {speakerEmoji}
+              </button>
 
-                  <div style={dot} aria-hidden="true" />
-                  <div style={dot} aria-hidden="true" />
-                </div>
-              </div>
+              <input
+                type="range"
+                min={0}
+                max={100}
+                value={Math.round(vol * 100)}
+                onChange={(e) =>
+                  setVol(clamp(Number(e.target.value) / 100, 0, 1))
+                }
+                style={volSlider}
+                aria-label="Volume"
+              />
             </div>
           </div>
 
-          <style>{`
-            .mb-bottom-musicbar * { box-sizing: border-box; }
-            .mb-bottom-musicbar { width: 100%; max-width: 100%; }
-            .mb-bottom-musicbar input[type="range"]{
-              width: 100%;
-              max-width: 100%;
-              min-width: 0;
-              display: block;
-            }
-            .mb-bottom-musicbar [aria-label="Track"]{
-              max-width: 220px;
-            }
-            @media (max-width: 640px){
-              .mb-bottom-musicbar [aria-label="Track"]{
-                max-width: 160px;
-              }
-            }
-          `}</style>
+          {/* RIGHT 1/4: ZOOM + dots ONLY */}
+          <div style={right}>
+            <div style={zoomWrap}>
+              <div style={zoomIcon} aria-hidden="true" title="Zoom">
+                🔎
+              </div>
+
+              <input
+                type="range"
+                min={60}
+                max={140}
+                value={zoomPct}
+                onChange={(e) => onZoomChange(Number(e.target.value))}
+                style={zoomSlider}
+                aria-label="Zoom"
+              />
+
+              <div style={zoomText} aria-label="Zoom percent">
+                {zoomPct}%
+              </div>
+            </div>
+
+            <div style={tinyDots}>
+              {adminVisible ? (
+                <button
+                  type="button"
+                  aria-label="Admin"
+                  title="Admin"
+                  onClick={() => nav("/admin")}
+                  style={adminDotBtn}
+                />
+              ) : (
+                <div style={dot} aria-hidden="true" />
+              )}
+
+              <div style={dot} aria-hidden="true" />
+              <div style={dot} aria-hidden="true" />
+            </div>
+          </div>
         </div>
       </div>
+
+      <style>{`
+        .mb-bottom-musicbar * { box-sizing: border-box; }
+        .mb-bottom-musicbar { width: 100%; max-width: 100%; }
+        .mb-bottom-musicbar input[type="range"]{
+          width: 100%;
+          max-width: 100%;
+          min-width: 0;
+          display: block;
+        }
+        .mb-bottom-musicbar [aria-label="Track"]{
+          max-width: 220px;
+        }
+        @media (max-width: 640px){
+          .mb-bottom-musicbar [aria-label="Track"]{
+            max-width: 160px;
+          }
+        }
+      `}</style>
     </div>
   );
 }
 
 /* New thing to learn:
-   If something is truly “owner-only”, don’t hide it with opacity—gate it by rendering (or disabling pointer events). */
+   If a component must align differently on different pages, it must NOT be “fixed” internally.
+   Let the page mount own position + ruler, and keep the component purely “content”. */

@@ -1,24 +1,102 @@
-// src/pages/admin/AdminHome.tsx
-// MB-BLUE-101.0 — 2025-12-31 (+0700)
+// src/pages/admin/AdminDashboard.tsx
+// MB-BLUE-101.6 — 2026-01-01 (+0700)
 //
-// ADMIN HOME (UI ONLY):
-// - Reorganized into modern black/white "control board" layout.
-// - Keeps existing links + content intent (no new logic).
-// - Classy: typography, spacing, card grid, subtle borders.
+// ADMIN DASHBOARD (UI ONLY, MULTI-APP READY):
+// - Modern black/white "control board" layout.
+// - Operator surface only (no business logic).
+// - Canonical /admin landing page.
+//
+// FIX (101.6):
+// - Multi-app context selector (persisted localStorage + optional URL ?app=...).
+// - Every admin link preserves app context (?app=...).
+// - Show current app_id prominently to prevent cross-app mistakes.
 
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useMemo, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 type AdminTile = {
   title: string;
   desc: string;
-  href?: string; // internal route
+  href?: string;
   badge?: string;
   disabled?: boolean;
 };
 
-export default function AdminHome() {
+const ADMIN_APP_ID_KEY = "mb_admin_app_id";
+
+function getAppFromUrl(search: string) {
+  try {
+    return (new URLSearchParams(search).get("app") || "").trim();
+  } catch {
+    return "";
+  }
+}
+
+function getAppFromStorage() {
+  try {
+    return (localStorage.getItem(ADMIN_APP_ID_KEY) || "").trim();
+  } catch {
+    return "";
+  }
+}
+
+function persistApp(appId: string) {
+  const cleaned = (appId || "").trim();
+  if (!cleaned) return;
+
+  try {
+    localStorage.setItem(ADMIN_APP_ID_KEY, cleaned);
+  } catch {
+    // ignore
+  }
+
+  // Keep URL shareable
+  try {
+    const url = new URL(window.location.href);
+    url.searchParams.set("app", cleaned);
+    window.history.replaceState({}, "", url.toString());
+  } catch {
+    // ignore
+  }
+}
+
+function withApp(href: string, appId: string) {
+  const cleaned = (appId || "").trim();
+  if (!cleaned) return href;
+  const sep = href.includes("?") ? "&" : "?";
+  return `${href}${sep}app=${encodeURIComponent(cleaned)}`;
+}
+
+export default function AdminDashboard() {
   const nav = useNavigate();
+  const location = useLocation();
+
+  const urlApp = useMemo(() => getAppFromUrl(location.search), [location.search]);
+
+  const [appId, setAppId] = useState<string>(() => {
+    const saved = getAppFromStorage();
+    return (urlApp || saved || "mercy_blade").trim() || "mercy_blade";
+  });
+
+  const [appIdDraft, setAppIdDraft] = useState<string>(appId);
+
+  // If URL app changes, respect it and persist.
+  useEffect(() => {
+    if (urlApp && urlApp !== appId) {
+      setAppId(urlApp);
+      setAppIdDraft(urlApp);
+      persistApp(urlApp);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [urlApp]);
+
+  function applyApp(next: string) {
+    const cleaned = (next || "").trim();
+    if (!cleaned) return;
+    setAppId(cleaned);
+    setAppIdDraft(cleaned);
+    persistApp(cleaned);
+  }
 
   const wrap: React.CSSProperties = {
     minHeight: "100vh",
@@ -72,6 +150,11 @@ export default function AdminHome() {
     fontWeight: 800,
     cursor: "pointer",
     whiteSpace: "nowrap",
+    textDecoration: "none",
+    color: "inherit",
+    display: "inline-flex",
+    alignItems: "center",
+    gap: 8,
   };
 
   const smallTag: React.CSSProperties = {
@@ -86,13 +169,6 @@ export default function AdminHome() {
     letterSpacing: 0.6,
     color: "rgba(0,0,0,0.72)",
     background: "rgba(0,0,0,0.03)",
-  };
-
-  const sectionTitle: React.CSSProperties = {
-    margin: 0,
-    fontSize: 16,
-    fontWeight: 900,
-    letterSpacing: 0.2,
   };
 
   const hr: React.CSSProperties = {
@@ -149,11 +225,6 @@ export default function AdminHome() {
     cursor: "pointer",
   };
 
-  const linkA: React.CSSProperties = {
-    textDecoration: "none",
-    color: "inherit",
-  };
-
   const badge: React.CSSProperties = {
     border: "1px solid rgba(0,0,0,0.14)",
     borderRadius: 999,
@@ -162,6 +233,22 @@ export default function AdminHome() {
     fontWeight: 900,
     background: "rgba(0,0,0,0.03)",
     color: "rgba(0,0,0,0.72)",
+  };
+
+  const mono: React.CSSProperties = {
+    fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
+    fontSize: 12,
+    color: "rgba(0,0,0,0.75)",
+  };
+
+  const input: React.CSSProperties = {
+    border: "1px solid rgba(0,0,0,0.14)",
+    borderRadius: 12,
+    padding: "10px 12px",
+    fontSize: 13,
+    fontWeight: 900,
+    minWidth: 260,
+    outline: "none",
   };
 
   const tiles: AdminTile[] = [
@@ -178,29 +265,40 @@ export default function AdminHome() {
       badge: "SAFE",
     },
     {
-      title: "Audio Ops",
-      desc: "Coverage checks and scanner pages (no destructive actions).",
-      href: "/admin/audio",
-      badge: "READY",
-    },
-    {
-      title: "Room Health",
-      desc: "Room integrity & coverage diagnostics (read-only).",
-      href: "/admin/rooms",
+      title: "Payment Verification",
+      desc: "Verification and review actions for manual approvals (keep safe).",
+      href: "/admin/payment-verification",
       badge: "SAFE",
     },
     {
+      title: "Access Codes",
+      desc: "Generate and manage redeem / access codes.",
+      href: "/admin/access-codes",
+      badge: "SAFE",
+    },
+    {
+      title: "Audio Coverage",
+      desc: "Coverage checks for room audio (read-only tools).",
+      href: "/admin/audio-coverage",
+      badge: "READY",
+    },
+    {
       title: "System Monitoring",
-      desc: "Surface operational signals. Anything marked “Soon” can be wired later without changing this board.",
+      desc: "Truth streams: latest feedback + sessions (read-only).",
       href: "/admin/monitoring",
-      badge: "SOON",
-      disabled: true,
+      badge: "READY",
+    },
+    {
+      title: "Metrics",
+      desc: "KPIs & distribution snapshots (read-only).",
+      href: "/admin/metrics",
+      badge: "READY",
     },
   ];
 
   function go(href?: string) {
     if (!href) return;
-    nav(href);
+    nav(withApp(href, appId));
   }
 
   return (
@@ -211,53 +309,87 @@ export default function AdminHome() {
             <div style={smallTag}>ADMIN • CONTROL BOARD</div>
             <h1 style={title}>Admin</h1>
             <p style={subtitle}>
-              One place to operate Mercy Blade: payments, audio coverage, room health, and system monitoring.
+              One place to operate your ecosystem: payments, access, audio coverage, and truth screens.
               <br />
               <span style={{ color: "rgba(0,0,0,0.55)" }}>
-                Administrative tools (disabled in launch build).
+                Operator UI only — keep actions safe & explicit.
               </span>
             </p>
           </div>
 
           <div style={pillRow}>
-            <Link to="/" style={linkA}>
-              <button type="button" style={pill}>Back to Home</button>
+            <Link to="/" style={pill}>
+              Back to Home
             </Link>
             <button
               type="button"
               style={pill}
               onClick={() => nav("/rooms")}
-              aria-label="Open a room"
+              aria-label="Open Rooms"
             >
-              Open a Room
+              Open Rooms
             </button>
+          </div>
+        </div>
+
+        {/* App context (multi-app) */}
+        <div style={{ ...card, padding: 14, marginBottom: 14 }}>
+          <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
+            <div>
+              <div style={{ fontWeight: 900, marginBottom: 6 }}>App Context</div>
+              <div style={{ fontSize: 13, color: "rgba(0,0,0,0.70)", lineHeight: 1.6 }}>
+                Every admin page must show and filter by <span style={mono}>app_id</span>. This prevents cross-app mistakes.
+              </div>
+              <div style={{ marginTop: 10, display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
+                <span style={badge}>
+                  APP: <span style={mono}>{appId}</span>
+                </span>
+                <span style={badge}>RISK MODE: SAFE</span>
+                <span style={badge}>NO DESTRUCTIVE ACTIONS</span>
+              </div>
+            </div>
+
+            <div style={{ minWidth: 320 }}>
+              <div style={{ fontWeight: 900, marginBottom: 6 }}>Switch App</div>
+              <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
+                <input
+                  value={appIdDraft}
+                  onChange={(e) => setAppIdDraft(e.target.value)}
+                  placeholder="app_id (e.g. mercy_blade)"
+                  style={input}
+                  aria-label="App ID"
+                />
+                <button
+                  type="button"
+                  style={{ ...linkBtn, padding: "10px 12px" }}
+                  onClick={() => applyApp(appIdDraft)}
+                  aria-label="Apply app id"
+                >
+                  Apply
+                </button>
+                <button
+                  type="button"
+                  style={pill}
+                  onClick={() => applyApp("mercy_blade")}
+                  aria-label="Switch to mercy_blade"
+                >
+                  mercy_blade
+                </button>
+              </div>
+              <div style={{ marginTop: 8, fontSize: 12, color: "rgba(0,0,0,0.55)", fontWeight: 900 }}>
+                Shareable links: <span style={mono}>/admin?app=your_app_id</span>
+              </div>
+            </div>
           </div>
         </div>
 
         <hr style={hr} />
 
-        {/* Summary strip */}
-        <div style={{ ...card, padding: 14, marginBottom: 14 }}>
-          <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
-            <div>
-              <div style={sectionTitle}>Safety Notice</div>
-              <p style={{ ...cardDesc, marginTop: 6 }}>
-                This board links to panels. It does not assume payment/email is “done.” It’s an operator surface only.
-              </p>
-            </div>
-
-            <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
-              <span style={badge}>RISK MODE: SAFE</span>
-              <span style={badge}>NO DESTRUCTIVE ACTIONS</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Panels grid */}
         <div style={grid}>
           {tiles.map((t) => {
-            const span = t.title === "System Monitoring" ? 12 : 6; // nice layout
+            const span = t.title === "System Monitoring" || t.title === "Metrics" ? 12 : 6;
             const isDisabled = !!t.disabled;
+            const hrefWithApp = t.href ? withApp(t.href, appId) : undefined;
 
             return (
               <div
@@ -285,12 +417,19 @@ export default function AdminHome() {
                     }}
                     onClick={() => (!isDisabled ? go(t.href) : null)}
                     disabled={isDisabled}
+                    aria-label={`Open ${t.title}`}
                   >
                     Open
                   </button>
 
                   <div style={{ fontSize: 12, color: "rgba(0,0,0,0.55)", fontWeight: 800 }}>
-                    {t.href ? `Route: ${t.href}` : "Route: —"}
+                    {hrefWithApp ? (
+                      <>
+                        Route: <span style={mono}>{hrefWithApp}</span>
+                      </>
+                    ) : (
+                      "Route: —"
+                    )}
                   </div>
                 </div>
               </div>
@@ -300,9 +439,8 @@ export default function AdminHome() {
 
         <hr style={hr} />
 
-        {/* Footer */}
         <div style={{ fontSize: 12, color: "rgba(0,0,0,0.55)", fontWeight: 800, lineHeight: 1.6 }}>
-          Tip: keep Admin pages minimal and operator-focused. Prefer read-only panels with explicit “Safe” labeling.
+          Tip: A strong admin console is mostly: context clarity, safety labeling, and fast navigation.
         </div>
       </div>
     </div>
@@ -310,5 +448,5 @@ export default function AdminHome() {
 }
 
 /* New thing to learn:
-   “Modern” admin UI is mostly spacing + hierarchy + consistency.
-   Black/white becomes classy when borders/shadows are subtle and typography is strong. */
+   The #1 multi-app admin bug is “wrong context.”
+   If app_id is not obvious on every screen, mistakes are guaranteed. */

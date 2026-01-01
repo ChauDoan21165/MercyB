@@ -1,86 +1,87 @@
 // src/components/admin/AdminRoute.tsx
-// MB-BLUE-100.10 — 2025-12-31 (+0700)
-//
-// ADMIN GUARD (LOCKED INTENT):
-// - User MUST be signed in to access /admin/*
-// - Admin is decided by allowlist email (fast + reliable)
-// - Optional: fallback to profiles.is_admin if you add it later
-//
-// NOTE:
-// - Set VITE_ADMIN_EMAILS="cd12536@gmail.com,another@email.com" in .env (and Vercel env)
+// MB-BLUE-101.7 — 2026-01-01 (+0700)
+/**
+ * ADMIN GUARD (LOCKED)
+ * - Authority comes ONLY from DB truth:
+ *   get_admin_level(auth.uid()) >= 9
+ * - If RPC fails => deny (fail-safe)
+ * - No env allowlists, no duplicated rules.
+ *
+ * FIX (101.7):
+ * - Prefer canonical no-arg RPC: get_admin_level()
+ * - If needed, fall back ONLY to the real policy-bound signature:
+ *   get_admin_level(_user_id uuid)
+ * - Treat non-numeric/NaN results as deny (fail-safe).
+ */
 
-import React, { useEffect, useMemo, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Navigate, useLocation } from "react-router-dom";
 import { supabase } from "@/lib/supabaseClient";
 
-function parseAllowlist(raw: string | undefined | null): string[] {
-  return (raw || "")
-    .split(",")
-    .map((s) => s.trim().toLowerCase())
-    .filter(Boolean);
-}
+type Props = {
+  children: React.ReactNode;
+};
 
-export function AdminRoute({ children }: { children: React.ReactNode }) {
-  const nav = useNavigate();
-  const loc = useLocation();
+type GuardState =
+  | { status: "checking" }
+  | { status: "allowed" }
+  | { status: "denied" };
 
-  const [loading, setLoading] = useState(true);
-  const [userEmail, setUserEmail] = useState<string | null>(null);
-  const [isAdmin, setIsAdmin] = useState(false);
-
-  const allowlist = useMemo(() => {
-    // supports both Vite and older naming
-    const envList =
-      (import.meta as any)?.env?.VITE_ADMIN_EMAILS ??
-      (import.meta as any)?.env?.VITE_ADMIN_EMAIL ??
-      "";
-    return parseAllowlist(envList);
-  }, []);
+export default function AdminRoute({ children }: Props) {
+  const location = useLocation();
+  const [state, setState] = useState<GuardState>({ status: "checking" });
 
   useEffect(() => {
     let alive = true;
 
     async function run() {
-      setLoading(true);
       try {
-        const { data, error } = await supabase.auth.getUser();
-        const user = data?.user;
+        const { data: authRes, error: authErr } = await supabase.auth.getUser();
+        const userId = authRes?.user?.id;
 
-        if (error || !user) {
-          // not signed in → go signin, preserve target
+        if (authErr || !userId) {
           if (!alive) return;
-          setUserEmail(null);
-          setIsAdmin(false);
-          nav(`/signin`, { replace: true, state: { from: loc.pathname } });
+          setState({ status: "denied" });
           return;
         }
 
-        const email = (user.email || "").trim().toLowerCase();
+        let levelData: unknown = null;
+
+        // ✅ Attempt A: canonical no-arg call (uses auth.uid() in SQL)
+        {
+          const { data, error } = await supabase.rpc("get_admin_level");
+          if (!error) levelData = data;
+        }
+
+        // ✅ Attempt B: fall back to policy-bound signature: (_user_id uuid)
+        if (levelData === null || levelData === undefined) {
+          const { data, error } = await supabase.rpc("get_admin_level", {
+            _user_id: userId,
+          });
+
+          if (error) {
+            if (!alive) return;
+            setState({ status: "denied" });
+            return;
+          }
+
+          levelData = data;
+        }
+
+        const level =
+          typeof levelData === "number" ? levelData : Number(levelData);
+
         if (!alive) return;
-        setUserEmail(email);
 
-        // ✅ Primary rule: allowlist by email
-        if (email && allowlist.includes(email)) {
-          setIsAdmin(true);
+        if (!Number.isFinite(level)) {
+          setState({ status: "denied" });
           return;
         }
 
-        // Optional fallback (only works if you add public.profiles.is_admin later)
-        try {
-          const { data: prof } = await supabase
-            .from("profiles")
-            .select("is_admin")
-            .eq("id", user.id)
-            .maybeSingle();
-
-          if (!alive) return;
-          setIsAdmin(Boolean((prof as any)?.is_admin));
-        } catch {
-          if (!alive) return;
-          setIsAdmin(false);
-        }
-      } finally {
-        if (alive) setLoading(false);
+        setState(level >= 9 ? { status: "allowed" } : { status: "denied" });
+      } catch {
+        if (!alive) return;
+        setState({ status: "denied" });
       }
     }
 
@@ -88,46 +89,25 @@ export function AdminRoute({ children }: { children: React.ReactNode }) {
     return () => {
       alive = false;
     };
-  }, [allowlist, loc.pathname, nav]);
+  }, []);
 
-  if (loading) {
+  if (state.status === "checking") {
     return (
       <div style={{ padding: 24 }}>
-        <h2>Loading…</h2>
-        <div style={{ opacity: 0.7 }}>Checking admin session.</div>
+        <div style={{ opacity: 0.75, fontSize: 14 }}>
+          Checking admin access…
+        </div>
       </div>
     );
   }
 
-  if (!isAdmin) {
+  if (state.status !== "allowed") {
     return (
-      <div style={{ padding: 24 }}>
-        <h1>Not authorized</h1>
-        <p>Your account is signed in, but it does not have admin permissions.</p>
-
-        <div style={{ display: "flex", gap: 10, marginTop: 12 }}>
-          <button onClick={() => nav("/")} style={{ padding: "6px 10px" }}>
-            Go Home
-          </button>
-          <button
-            onClick={async () => {
-              await supabase.auth.signOut();
-              nav("/", { replace: true });
-            }}
-            style={{ padding: "6px 10px" }}
-          >
-            Logout
-          </button>
-        </div>
-
-        <div style={{ marginTop: 14, fontFamily: "monospace", fontSize: 12 }}>
-          <div>AdminRoute</div>
-          <div>user: {userEmail || "(none)"}</div>
-          <div>path: {loc.pathname}</div>
-          <div>isAdmin: {String(isAdmin)}</div>
-          <div>allowlist: {allowlist.length ? allowlist.join(", ") : "(empty)"}</div>
-        </div>
-      </div>
+      <Navigate
+        to="/"
+        replace
+        state={{ from: location.pathname, reason: "admin_denied" }}
+      />
     );
   }
 

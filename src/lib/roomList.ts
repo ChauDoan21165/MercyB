@@ -60,6 +60,7 @@ export const ROOM_IDS = [
   "calm_body_calm_money_vip3_sub1",
   "calm_confident_sexual_health_vip3_sub3_sex",
   "calm_mind_7",
+  "calm_mind_7_audio",
   "career_community_vip4",
   "career_consultant_free",
   "charisma_mechanics_presence_engineering_vip5_bonus",
@@ -283,7 +284,6 @@ export const ROOM_IDS = [
   "high_value_boundaries_relationship_strategy_vip5_bonus",
   "hobbies_fun_activities_kids_l2",
   "homepage_v1",
-  "homepage_v1_free",
   "idioms_for_kids_kids_l3",
   "idioms_for_kids_kids_l3_kidslevel3",
   "individual_strategic_mastery_vip9",
@@ -939,6 +939,13 @@ const __ROOM_LIST: RoomListItem[] = [
     "id": "calm_mind_7",
     "title_en": "calm_mind_7",
     "title_vi": "calm_mind_7",
+    "tier": "free",
+    "hasData": true
+  },
+  {
+    "id": "calm_mind_7_audio",
+    "title_en": "Calm Mind 7 Audio",
+    "title_vi": "Calm Mind 7 Audio",
     "tier": "free",
     "hasData": true
   },
@@ -2498,13 +2505,6 @@ const __ROOM_LIST: RoomListItem[] = [
   },
   {
     "id": "homepage_v1",
-    "title_en": "Mercy Blade Homepage",
-    "title_vi": "Trang Chủ Mercy Blade",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "homepage_v1_free",
     "title_en": "Mercy Blade Homepage",
     "title_vi": "Trang Chủ Mercy Blade",
     "tier": "free",
