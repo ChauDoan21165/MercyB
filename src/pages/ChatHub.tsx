@@ -1,21 +1,21 @@
 // src/pages/ChatHub.tsx
-// MB-BLUE-100.6 — 2026-01-01 (+0700)
+// MB-BLUE-100.9 — 2026-01-02 (+0700)
 /**
  * ChatHub (Room Loader — THIN CONTROLLER)
  *
- * ✅ FIX (MB-BLUE-100.6):
- * 1) Hero band stays (src/components/HeroBand.tsx) → /hero/hero_band.jpg
- * 2) BottomMusicBar mount stays aligned to page ruler (max-w-[980px] + px)
- * 3) Zoom REALLY works (no feature loss):
- *    - still reads localStorage("mb_zoom")
- *    - BUT now also updates live when:
- *        a) window "mb-zoom-change" event fires
- *        b) tab regains focus
- *        c) storage changes (other tab)
+ * ✅ FIX (MB-BLUE-100.9):
+ * - STOP scaling the whole page with transform: scale(...).
+ *   That was the REAL reason the fixed BottomMusicBar looked like it “sticks out”:
+ *   content got scaled smaller, but the fixed dock stayed on the 980px ruler.
  *
- * IMPORTANT:
- * - Image file: public/hero/hero_band.jpg
- * - URL path: /hero/hero_band.jpg
+ * - BottomMusicBar mount stays fixed + aligned to PAGE_MAX=980.
+ * - Zoom stays live-refresh, but we only sync the ROOT zoom attributes/vars
+ *   (RoomRenderer consumes them inside BOX 4; we do NOT scale the page).
+ *
+ * ✅ Preserved:
+ * 1) HeroBand stays (src/components/HeroBand.tsx) → /hero/hero_band.jpg
+ * 2) BottomMusicBar mount aligned to page ruler (max-w-[980px] + px)
+ * 3) Top bar: Mercy Blade TRUE dead-center using grid 1fr auto 1fr
  */
 
 import { useEffect, useMemo, useState } from "react";
@@ -37,7 +37,7 @@ import { FEATURE_FLAGS } from "@/lib/featureFlags";
 // ✅ UNIVERSAL MUSIC BAR ONLY (ENTERTAINMENT)
 import BottomMusicBar from "@/components/audio/BottomMusicBar";
 
-// ✅ HERO BAND extracted to a text file (calls /hero/hero_band.jpg)
+// ✅ HERO BAND (background + centered slogan)
 import HeroBand from "@/components/HeroBand";
 
 type LoadState = "loading" | "ready" | "error";
@@ -74,7 +74,7 @@ function detectRoomUiKind(room: AnyRoom): "keyword_hub" | "content" {
   return "content";
 }
 
-/** BOX 1 — keep your existing one-row top bar */
+/** BOX 1 — one-row top bar (locked) */
 function RoomTopBar() {
   const nav = useNavigate();
   const [dark, setDark] = useState(false);
@@ -98,35 +98,40 @@ function RoomTopBar() {
           box-shadow: 0 10px 24px rgba(0,0,0,0.06);
           padding: 10px 12px;
         }
+
+        /* ✅ TRUE CENTER: left 1fr | brand auto | right 1fr */
         [data-mb-topbar] .mb-row{
-          position: relative;
-          display:flex;
+          display:grid;
+          grid-template-columns: 1fr auto 1fr;
           align-items:center;
-          justify-content:space-between;
           gap:10px;
-          flex-wrap:nowrap;
           min-width:0;
         }
-        [data-mb-topbar] .mb-left,
+
+        [data-mb-topbar] .mb-left{
+          display:flex;
+          align-items:center;
+          gap:8px;
+          justify-self:start;
+          min-width:0;
+          white-space:nowrap;
+        }
+
         [data-mb-topbar] .mb-right{
           display:flex;
           align-items:center;
           gap:8px;
-          flex: 0 0 auto;
-          z-index: 2;
-        }
-        [data-mb-topbar] .mb-brandCenter{
-          position:absolute;
-          left:50%;
-          top:50%;
-          translate:-50% -50%;
-          pointer-events:none;
-          max-width: 54%;
-          overflow:hidden;
-          text-overflow:ellipsis;
+          justify-self:end;
+          min-width:0;
           white-space:nowrap;
-          z-index:1;
         }
+
+        [data-mb-topbar] .mb-brandCenter{
+          justify-self:center;
+          pointer-events:none;
+          min-width:0;
+        }
+
         [data-mb-topbar] .mb-brand{
           font-weight: 900;
           letter-spacing: -0.02em;
@@ -135,7 +140,12 @@ function RoomTopBar() {
           color: transparent;
           font-size: 36px;
           line-height: 38px;
+          max-width: 52vw;
+          overflow:hidden;
+          text-overflow:ellipsis;
+          white-space:nowrap;
         }
+
         [data-mb-topbar] .mb-btn{
           height: 34px;
           padding: 0 12px;
@@ -145,7 +155,9 @@ function RoomTopBar() {
           font-size: 12px;
           font-weight: 800;
           white-space: nowrap;
+          flex: 0 0 auto;
         }
+
         [data-mb-topbar] .mb-iconbtn{
           width: 34px;
           height: 34px;
@@ -155,7 +167,9 @@ function RoomTopBar() {
           display:flex;
           align-items:center;
           justify-content:center;
+          flex: 0 0 auto;
         }
+
         [data-mb-topbar] .mb-search{
           height: 34px;
           border-radius: 12px;
@@ -163,8 +177,19 @@ function RoomTopBar() {
           background: rgba(255,255,255,0.94);
           padding: 0 10px;
           font-size: 12px;
-          width: clamp(140px, 26vw, 260px);
+          width: clamp(140px, 26vw, 320px);
           min-width: 0;
+        }
+
+        @media (max-width: 740px){
+          [data-mb-topbar] .mb-brand{
+            font-size: 28px;
+            line-height: 30px;
+            max-width: 44vw;
+          }
+          [data-mb-topbar] .mb-search{
+            width: clamp(120px, 22vw, 240px);
+          }
         }
       `}</style>
 
@@ -228,20 +253,30 @@ function KeywordHubRoom({
   return <RoomRenderer room={room} roomId={roomId} roomSpec={roomSpec} />;
 }
 
-function readZoomFromStorage(): number {
+/**
+ * Zoom sync (LOCKED):
+ * - Source of truth is BottomMusicBar (writes data-mb-zoom + --mb-essay-zoom + LS["mb.ui.zoom"])
+ * - ChatHub must NOT scale the page. We only mirror root attrs/vars for safety.
+ * - Back-compat: also accept legacy LS["mb_zoom"] (0.7–1.4 float).
+ */
+function syncRootZoomFromStorage() {
   try {
-    const raw = localStorage.getItem("mb_zoom");
-    const z = raw ? Number(raw) : 1;
-    const safe = Number.isFinite(z) ? Math.min(1.4, Math.max(0.7, z)) : 1;
-    return safe;
-  } catch {
-    return 1;
-  }
-}
+    // ✅ new canonical key (percent)
+    const rawPct = localStorage.getItem("mb.ui.zoom");
+    let pct = rawPct ? Number(rawPct) : NaN;
 
-function applyZoomCssVar(z: number) {
-  try {
-    document.documentElement.style.setProperty("--mb-zoom", String(z));
+    // legacy key (ratio)
+    if (!Number.isFinite(pct)) {
+      const rawLegacy = localStorage.getItem("mb_zoom");
+      const ratio = rawLegacy ? Number(rawLegacy) : NaN;
+      if (Number.isFinite(ratio)) pct = Math.round(ratio * 100);
+    }
+
+    if (!Number.isFinite(pct)) return;
+
+    const safe = Math.max(60, Math.min(140, Math.round(pct)));
+    document.documentElement.style.setProperty("--mb-essay-zoom", String(safe));
+    document.documentElement.setAttribute("data-mb-zoom", String(safe));
   } catch {
     // ignore
   }
@@ -256,28 +291,23 @@ export default function ChatHub() {
   const [room, setRoom] = useState<AnyRoom | null>(null);
   const [roomSpec, setRoomSpec] = useState<RoomSpec | null>(null);
 
-  // ✅ ZOOM: initial apply + live refresh hooks
+  // ✅ ZOOM: mirror root values on focus / storage / explicit event
   useEffect(() => {
-    const sync = () => applyZoomCssVar(readZoomFromStorage());
+    const sync = () => syncRootZoomFromStorage();
 
-    // initial
     sync();
-
-    // live updates (same-tab event)
     window.addEventListener("mb-zoom-change", sync as EventListener);
-
-    // regain focus (user returns to tab)
     window.addEventListener("focus", sync);
 
-    // other-tab updates
-    window.addEventListener("storage", (e) => {
-      if (e.key === "mb_zoom") sync();
-    });
+    const onStorage = (e: StorageEvent) => {
+      if (e.key === "mb.ui.zoom" || e.key === "mb_zoom") sync();
+    };
+    window.addEventListener("storage", onStorage);
 
     return () => {
       window.removeEventListener("mb-zoom-change", sync as EventListener);
       window.removeEventListener("focus", sync);
-      // storage listener is anonymous above; safe to leave it (or convert to named if you want)
+      window.removeEventListener("storage", onStorage);
     };
   }, []);
 
@@ -377,54 +407,41 @@ export default function ChatHub() {
 
   return (
     <>
-      {/* ✅ zoom applies ONLY to content; fixed music bar remains aligned */}
-      <div
-        style={{
-          transform: "scale(var(--mb-zoom, 1))",
-          transformOrigin: "top center",
-        }}
-      >
-        {/* pb-36 so content never hides behind fixed BottomMusicBar */}
-        <div className="mx-auto w-full max-w-[980px] px-4 md:px-6 py-6 pb-36">
-          <RoomTopBar />
+      {/* ✅ DO NOT SCALE PAGE (prevents “dock sticks out” illusion) */}
+      <div className="mx-auto w-full max-w-[980px] px-4 md:px-6 py-6 pb-36">
+        <RoomTopBar />
 
-          {/* ✅ HERO BAND (from src/components/HeroBand.tsx) */}
-          <HeroBand />
+        <HeroBand />
 
-          {FEATURE_FLAGS.MERCY_HOST_ENABLED && (
-            <MercyHostCorner
-              roomId={hostRoomId}
-              roomTitle={hostRoomTitle}
-              roomTier={hostTier}
-              language="en"
-            />
-          )}
+        {FEATURE_FLAGS.MERCY_HOST_ENABLED && (
+          <MercyHostCorner
+            roomId={hostRoomId}
+            roomTitle={hostRoomTitle}
+            roomTier={hostTier}
+            language="en"
+          />
+        )}
 
-          {uiKind === "keyword_hub" ? (
-            <KeywordHubRoom
-              room={room}
-              roomId={canonicalId || roomId || ""}
-              roomSpec={
-                roomSpec
-                  ? { use_color_theme: !!roomSpec.use_color_theme }
-                  : undefined
-              }
-            />
-          ) : (
-            <RoomRenderer
-              room={room}
-              roomId={canonicalId || roomId}
-              roomSpec={
-                roomSpec
-                  ? { use_color_theme: !!roomSpec.use_color_theme }
-                  : undefined
-              }
-            />
-          )}
-        </div>
+        {uiKind === "keyword_hub" ? (
+          <KeywordHubRoom
+            room={room}
+            roomId={canonicalId || roomId || ""}
+            roomSpec={
+              roomSpec ? { use_color_theme: !!roomSpec.use_color_theme } : undefined
+            }
+          />
+        ) : (
+          <RoomRenderer
+            room={room}
+            roomId={canonicalId || roomId}
+            roomSpec={
+              roomSpec ? { use_color_theme: !!roomSpec.use_color_theme } : undefined
+            }
+          />
+        )}
       </div>
 
-      {/* ✅ FIXED BOTTOM MOUNT: SAME RULER AS PAGE (matches content width) */}
+      {/* ✅ FIXED BOTTOM MOUNT: SAME RULER AS PAGE */}
       <div
         data-mb-music-mount
         className="fixed bottom-0 left-0 right-0 z-50"
@@ -440,3 +457,7 @@ export default function ChatHub() {
     </>
   );
 }
+
+/** New thing to learn:
+ * If you scale the page, fixed UI won’t scale with it — it will look “wrong width”.
+ * Keep zoom inside content areas (RoomRenderer BOX 4), not on the whole route. */

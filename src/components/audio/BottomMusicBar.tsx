@@ -1,5 +1,5 @@
 // src/components/audio/BottomMusicBar.tsx
-// MB-BLUE-100.8 — 2026-01-01 (+0700)
+// MB-BLUE-100.9 — 2026-01-02 (+0700)
 //
 // BOTTOM MUSIC BAR (LOCKED):
 // - Music bar is ALWAYS entertainment-only (no learning audio).
@@ -17,6 +17,11 @@
 //   Pages (Home/ChatHub) own the fixed mount + ruler alignment.
 // - ✅ Remove redundant first heart (Fav tab) → use ★ / ☆
 //   Keep ♥ only for “favorite this track”.
+//
+// FIX (100.9):
+// - ✅ HARD LAYOUT-NEUTRAL CLAMP: This component can NEVER exceed its parent width.
+//   (Prevents “sticking out” even if inner controls try to expand).
+// - ✅ Emits "mb-zoom-change" event on same-tab zoom updates (for live sync consumers).
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -79,13 +84,20 @@ function getInitialFav(): Record<string, boolean> {
   }
 }
 
-// ✅ Global zoom: BOTH mechanisms (RoomRenderer may listen to either)
+// ✅ Global zoom: BOTH mechanisms (RoomRenderer/ChatHub may listen to either)
 function applyGlobalZoom(pct: number) {
   const safe = clamp(Math.round(pct), 60, 140);
+
   document.documentElement.style.setProperty("--mb-essay-zoom", String(safe));
   document.documentElement.setAttribute("data-mb-zoom", String(safe));
+
   try {
     localStorage.setItem(LS_ZOOM, String(safe));
+  } catch {}
+
+  // ✅ same-tab live update hook (ChatHub listens to this)
+  try {
+    window.dispatchEvent(new Event("mb-zoom-change"));
   } catch {}
 }
 
@@ -390,8 +402,22 @@ export default function BottomMusicBar() {
     setVol(restore);
   };
 
+  // ✅ MB-BLUE-100.9 — HARD “NEVER STICK OUT” SHELL
+  // Root MUST be fully shrinkable inside any parent max-width mount.
+  const outer: React.CSSProperties = {
+    width: "100%",
+    maxWidth: "100%",
+    minWidth: 0,
+    display: "block",
+    overflow: "hidden",
+    pointerEvents: "auto",
+    contain: "layout paint",
+  };
+
   const box: React.CSSProperties = {
     width: "100%",
+    maxWidth: "100%",
+    minWidth: 0,
     border: "1px solid rgba(0,0,0,0.14)",
     background: "rgba(255,255,255,0.94)",
     backdropFilter: "blur(10px)",
@@ -408,8 +434,11 @@ export default function BottomMusicBar() {
     gap: 10,
     alignItems: "center",
     minWidth: 0,
+    width: "100%",
+    maxWidth: "100%",
   };
 
+  // IMPORTANT for CSS grid: allow children to shrink (prevents overflow)
   const left: React.CSSProperties = {
     display: "flex",
     alignItems: "center",
@@ -582,7 +611,12 @@ export default function BottomMusicBar() {
   const favTabIcon = tab === "fav" ? "★" : "☆";
 
   return (
-    <div className="mb-bottom-musicbar" role="region" aria-label="Music bar">
+    <div
+      className="mb-bottom-musicbar"
+      style={outer}
+      role="region"
+      aria-label="Music bar"
+    >
       <div style={box}>
         <div style={row}>
           {/* LEFT 3/4: MUSIC ONLY */}
@@ -735,17 +769,34 @@ export default function BottomMusicBar() {
       </div>
 
       <style>{`
+        .mb-bottom-musicbar,
         .mb-bottom-musicbar * { box-sizing: border-box; }
-        .mb-bottom-musicbar { width: 100%; max-width: 100%; }
+
+        /* ✅ NEVER exceed parent width */
+        .mb-bottom-musicbar{
+          width: 100%;
+          max-width: 100%;
+          min-width: 0;
+          overflow: hidden;
+        }
+
+        /* Allow grid/flex children to shrink instead of forcing overflow */
+        .mb-bottom-musicbar > div{
+          max-width: 100%;
+          min-width: 0;
+        }
+
         .mb-bottom-musicbar input[type="range"]{
           width: 100%;
           max-width: 100%;
           min-width: 0;
           display: block;
         }
+
         .mb-bottom-musicbar [aria-label="Track"]{
           max-width: 220px;
         }
+
         @media (max-width: 640px){
           .mb-bottom-musicbar [aria-label="Track"]{
             max-width: 160px;
@@ -757,5 +808,5 @@ export default function BottomMusicBar() {
 }
 
 /* New thing to learn:
-   If a component must align differently on different pages, it must NOT be “fixed” internally.
-   Let the page mount own position + ruler, and keep the component purely “content”. */
+   In CSS Grid/Flex, “overflow” often comes from default min-width behavior.
+   Setting minWidth: 0 (or overflow hidden) on grid children prevents layout blowouts. */

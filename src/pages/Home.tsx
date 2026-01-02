@@ -1,5 +1,5 @@
 // src/pages/Home.tsx
-// MB-BLUE-100.9 — 2026-01-01 (+0700)
+// MB-BLUE-100.8 — 2026-01-01 (+0700)
 //
 // HOME (LOCKED):
 // - Home page is TEXT-ONLY (no audio players, no songs, no lyrics).
@@ -18,11 +18,6 @@
 //   - Reads :root data-mb-zoom (percent) + localStorage("mb.ui.zoom") fallback
 //   - Applies zoom to HOME content ONLY (hero + body), NOT the fixed music bar
 //   - Header remains unscaled (sticky behavior preserved)
-//
-// FIX 100.9:
-// - ✅ HERO TEXT POSITION:
-//   - Move the hero words DOWN (bottom aligned) inside the hero image
-//   - Keep it centered horizontally, but sit near the bottom like your screenshot target
 
 import React, { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -358,16 +353,15 @@ export default function Home() {
     pointerEvents: "none",
   };
 
-  // ✅ 100.9: Bottom-align the hero text block (still centered horizontally)
+  // Center text exactly like old hero
   const heroCenter: React.CSSProperties = {
     position: "absolute",
     inset: 0,
     display: "flex",
-    alignItems: "flex-end", // ⬇️ move down
+    alignItems: "center",
     justifyContent: "center",
     textAlign: "center",
     padding: "18px",
-    paddingBottom: 34, // ⬇️ tune this number if you want even lower/higher
     pointerEvents: "none",
   };
 
@@ -442,7 +436,7 @@ export default function Home() {
           style={{
             // Chrome/Edge: zoom scales px-based design correctly
             // TS doesn’t include "zoom" in CSSProperties in strict mode → cast
-            ...({ zoom: zoomScale } as any),
+            ...( { zoom: zoomScale } as any ),
           }}
         >
           {/* BOX 2: HERO (REPLACED ONLY THIS BOX) */}
@@ -466,10 +460,10 @@ export default function Home() {
           <div style={band}>
             <h2 style={blockTitle}>A Gentle Companion for Your Whole Life</h2>
             <p style={p}>
-              Mercy Blade is a bilingual (English–Vietnamese) companion for real
-              life: health, emotions, money, relationships, career, and meaning.
-              It is designed to be calm, human, and practical — a place you
-              return to when life feels noisy.
+              Mercy Blade is a bilingual (English–Vietnamese) companion for real life:
+              health, emotions, money, relationships, career, and meaning. It is
+              designed to be calm, human, and practical — a place you return to when
+              life feels noisy.
             </p>
             <p style={p}>
               No pressure. No judgment. <br />
@@ -481,9 +475,9 @@ export default function Home() {
             <h2 style={blockTitle}>Người Đồng Hành Nhẹ Nhàng Cho Cả Cuộc Đời Bạn</h2>
             <p style={p}>
               Mercy Blade là ứng dụng song ngữ (Anh–Việt) đồng hành cùng bạn trong
-              đời sống thật: sức khỏe, cảm xúc, tiền bạc, mối quan hệ, công việc
-              và ý nghĩa sống. Đây là một không gian nhẹ nhàng, thực tế — nơi bạn
-              quay về khi cuộc sống trở nên ồn ào.
+              đời sống thật: sức khỏe, cảm xúc, tiền bạc, mối quan hệ, công việc và
+              ý nghĩa sống. Đây là một không gian nhẹ nhàng, thực tế — nơi bạn quay
+              về khi cuộc sống trở nên ồn ào.
             </p>
             <p style={p}>
               Không áp lực. Không phán xét. <br />
@@ -546,11 +540,7 @@ export default function Home() {
             <div style={ctaSub}>Sẵn sàng bắt đầu hành trình của bạn?</div>
 
             <div style={ctaRow}>
-              <button
-                type="button"
-                style={primaryBtn}
-                onClick={() => nav("/rooms")}
-              >
+              <button type="button" style={primaryBtn} onClick={() => nav("/rooms")}>
                 Get Started &nbsp; →
               </button>
 
@@ -577,5 +567,5 @@ export default function Home() {
 }
 
 /* New thing to learn:
-   If you want “move down” without changing layout size, keep the text centered (justifyContent)
-   but bottom-align the flex container (alignItems: flex-end) + paddingBottom. */
+   If a global control “moves” (CSS var / attribute changes) but UI doesn’t react,
+   the missing piece is almost always a *consumer* on that route/page. */

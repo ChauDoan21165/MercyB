@@ -1,117 +1,122 @@
+// src/components/HeroBand.tsx
+// MB-BLUE-100.9 — 2026-01-02 (+0700)
+/**
+ * HERO BAND (LOCKED VISUAL):
+ * - Background image: /hero/hero_band.jpg
+ * - NO left overlay card / NO extra UI blocks inside the band.
+ * - Center slogan (two lines):
+ *     English & Knowledge
+ *     Colors of Life
+ * - Keep rounded corners + soft border/shadow.
+ *
+ * This component controls ONLY the hero band layout + text.
+ * ChatHub/Home decide WHERE it is mounted (page ownership).
+ *
+ * ✅ FIX (100.9):
+ * - Lower the centered slogan slightly (more top padding, less bottom padding)
+ *   without breaking centering/responsiveness.
+ */
+
 import React from "react";
 
-/**
- * HeroBand — UI-only
- * Uses public asset: /hero/hero_band.jpg  (file: public/hero/hero_band.jpg)
- */
-export default function HeroBand({
-  title = "Mercy Blade",
-  subtitle = "Rooms • Audio-first • Free → VIP9",
-}: {
-  title?: string;
-  subtitle?: string;
-}) {
+export default function HeroBand() {
   return (
-    <div data-mb-hero className="mb-5">
+    <section data-mb-hero className="mb-6">
       <style>{`
-        [data-mb-hero] .hero{
+        [data-mb-hero]{
+          width: 100%;
+        }
+
+        [data-mb-hero] .mb-heroShell{
           position: relative;
           width: 100%;
-          border-radius: 18px;
           overflow: hidden;
+          border-radius: 26px;
           border: 1px solid rgba(0,0,0,0.10);
-          box-shadow: 0 16px 40px rgba(0,0,0,0.10);
-          background: rgba(255,255,255,0.6);
+          box-shadow: 0 14px 34px rgba(0,0,0,0.10);
+          background: rgba(255,255,255,0.60);
         }
-        [data-mb-hero] .img{
-          width: 100%;
-          height: clamp(130px, 22vw, 190px);
-          object-fit: cover;
-          display: block;
-        }
-        [data-mb-hero] .overlay{
-          position:absolute;
+
+        /* background image */
+        [data-mb-hero] .mb-heroBg{
+          position: absolute;
           inset: 0;
-          background: linear-gradient(180deg,
-            rgba(0,0,0,0.10) 0%,
-            rgba(0,0,0,0.22) 45%,
-            rgba(0,0,0,0.55) 100%);
+          background-image: url("/hero/hero_band.jpg");
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          transform: translateZ(0);
+          filter: saturate(1.04);
         }
-        [data-mb-hero] .text{
-          position:absolute;
-          left: 14px;
-          right: 14px;
-          bottom: 14px;
-          display:flex;
-          flex-direction: column;
-          gap: 6px;
-          align-items: flex-start;
+
+        /* subtle glass haze so text stays readable on all crops */
+        [data-mb-hero] .mb-heroHaze{
+          position: absolute;
+          inset: 0;
+          background:
+            radial-gradient(900px 420px at 50% 50%, rgba(255,255,255,0.28), rgba(255,255,255,0.05) 60%, rgba(255,255,255,0.00)),
+            linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.08));
+          pointer-events: none;
         }
-        [data-mb-hero] .plate{
-          display:inline-flex;
-          flex-direction: column;
-          gap: 6px;
-          padding: 10px 12px;
-          border-radius: 14px;
-          border: 1px solid rgba(255,255,255,0.22);
-          background: rgba(0,0,0,0.28);
-          backdrop-filter: blur(10px);
-          max-width: 92%;
+
+        /* content */
+        [data-mb-hero] .mb-heroInner{
+          position: relative;
+          display: grid;
+          place-items: center;
+          text-align: center;
+
+          /* ✅ push slogan slightly LOWER */
+          padding: 56px 18px 34px;
+
+          min-height: 168px;
         }
-        [data-mb-hero] .title{
-          color: rgba(255,255,255,0.98);
-          text-shadow: 0 6px 18px rgba(0,0,0,0.45);
-          font-weight: 950;
-          letter-spacing: -0.8px;
-          font-size: clamp(28px, 4.2vw, 44px);
-          line-height: 1.05;
-        }
-        [data-mb-hero] .sub{
-          color: rgba(255,255,255,0.92);
-          text-shadow: 0 6px 18px rgba(0,0,0,0.35);
-          font-weight: 850;
-          letter-spacing: -0.2px;
-          font-size: clamp(12px, 1.4vw, 14px);
-        }
-        [data-mb-hero] .badgeRow{
-          margin-top: 2px;
-          display:flex;
-          gap: 8px;
-          flex-wrap: wrap;
-          align-items: center;
-        }
-        [data-mb-hero] .badge{
-          font-size: 12px;
+
+        [data-mb-hero] .mb-heroTitle{
           font-weight: 900;
-          padding: 6px 10px;
-          border-radius: 9999px;
-          border: 1px solid rgba(255,255,255,0.26);
-          background: rgba(255,255,255,0.10);
-          color: rgba(255,255,255,0.92);
-          white-space: nowrap;
+          letter-spacing: -0.02em;
+          color: rgba(10, 18, 35, 0.92);
+          font-size: clamp(34px, 4.2vw, 56px);
+          line-height: 1.08;
+          margin: 0;
+        }
+
+        [data-mb-hero] .mb-heroSub{
+          margin-top: 14px;
+          font-weight: 800;
+          color: rgba(10, 18, 35, 0.78);
+          font-size: clamp(16px, 2.0vw, 28px);
+          line-height: 1.2;
+        }
+
+        @media (max-width: 640px){
+          [data-mb-hero] .mb-heroInner{
+            /* ✅ keep the same "lower" feeling on mobile */
+            padding: 42px 14px 24px;
+            min-height: 140px;
+          }
+          [data-mb-hero] .mb-heroSub{
+            margin-top: 10px;
+          }
         }
       `}</style>
 
-      <div className="hero" aria-label="Hero band">
-        <img
-          className="img"
-          src="/hero/hero_band.jpg"
-          alt="Hero band"
-          loading="eager"
-        />
-        <div className="overlay" />
-        <div className="text">
-          <div className="plate">
-            <div className="title">{title}</div>
-            <div className="sub">{subtitle}</div>
-            <div className="badgeRow">
-              <span className="badge">Audio-first</span>
-              <span className="badge">Rooms</span>
-              <span className="badge">Free → VIP9</span>
-            </div>
+      <div className="mb-heroShell">
+        <div className="mb-heroBg" aria-hidden="true" />
+        <div className="mb-heroHaze" aria-hidden="true" />
+
+        {/* ✅ Center slogan only (no left square / no extra blocks) */}
+        <div className="mb-heroInner">
+          <div>
+            <h2 className="mb-heroTitle">English &amp; Knowledge</h2>
+            <div className="mb-heroSub">Colors of Life</div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
+
+/* New thing to learn:
+   If a band is “brand only”, keep it pure: background + centered text.
+   Put all other UI (cards/controls) outside the band to avoid layout fights. */

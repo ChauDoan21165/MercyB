@@ -1,5 +1,5 @@
 // src/components/room/RoomRenderer.tsx
-// MB-BLUE-99.6 — 2026-01-01 (+0700)
+// MB-BLUE-99.8 — 2026-01-02 (+0700)
 /**
  * ROOM 5-BOX SPEC (LOCKED)
  * BOX 2: Title row (tier left, title centered, fav+refresh right) — ONE ROW
@@ -20,6 +20,14 @@
  * - Zoom ACTUALLY works: Box 4 uses transform scale driven by --mb-essay-zoom.
  *   Why: Tailwind font sizes are rem/px and ignore parent font-size scaling.
  *   Transform scaling affects everything (rem/px included), without touching BottomMusicBar.
+ *
+ * ✅ FIX (MB-BLUE-99.7):
+ * - KEYWORD FALLBACK: If room JSON has entries but no keywords_en/keywords_vi,
+ *   derive keyword buttons from entry.id / entry.slug / entry.title.
+ *
+ * ✅ FIX (MB-BLUE-99.8):
+ * - ENTRY HEADING RESTORE: if entry has no title/heading, use entry.id/slug as the heading
+ *   (so your english_writing_free shows "Basics" / "Practice" instead of "Entry 1/2").
  */
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
@@ -76,6 +84,23 @@ function prettifyRoomIdEN(id: string): string {
     .map((w) => (w ? w[0].toUpperCase() + w.slice(1) : w))
     .join(" ");
   return titled || "Untitled room";
+}
+
+/** ✅ MB-BLUE-99.8 — prettify simple entry ids like "practice" → "Practice" */
+function prettifyEntryId(id: string): string {
+  const s = String(id || "").trim();
+  if (!s) return "";
+  // if snake_case, make it readable
+  if (/^[a-z0-9_]+$/.test(s) && s.includes("_")) {
+    return s
+      .split("_")
+      .filter(Boolean)
+      .map((w) => (w ? w[0].toUpperCase() + w.slice(1) : w))
+      .join(" ");
+  }
+  // if single word, capitalize first letter
+  if (/^[a-z]+$/.test(s)) return s[0].toUpperCase() + s.slice(1);
+  return s;
 }
 
 /**
@@ -165,6 +190,37 @@ function resolveKeywords(room: AnyRoom) {
   );
   return { en, vi };
 }
+
+/** ✅ MB-BLUE-99.7 — fallback keywords from entries (id/slug/title) */
+function deriveKeywordsFromEntries(room: AnyRoom): { en: string[]; vi: string[] } {
+  const entries = asArray(room?.entries);
+  const raw: string[] = [];
+
+  for (const e of entries) {
+    const k =
+      e?.id ||
+      e?.slug ||
+      e?.title?.en ||
+      e?.heading?.en ||
+      e?.title_en ||
+      e?.heading_en ||
+      "";
+    const s = String(k || "").trim();
+    if (s) raw.push(s);
+  }
+
+  const seen = new Set<string>();
+  const out: string[] = [];
+  for (const s of raw) {
+    const low = s.toLowerCase();
+    if (seen.has(low)) continue;
+    seen.add(low);
+    out.push(s);
+  }
+
+  return { en: out, vi: out };
+}
+
 function resolveEssay(room: AnyRoom) {
   const en =
     room?.essay?.en ||
@@ -341,6 +397,7 @@ function highlightByKeywordList(text: string, keywords: string[]) {
   return <span className="whitespace-pre-line leading-relaxed">{parts}</span>;
 }
 
+/** ✅ MB-BLUE-99.8 — include entry.id/slug in heading fallback */
 function pickEntryHeading(entry: any, index: number) {
   return (
     entry?.title?.en ||
@@ -349,7 +406,7 @@ function pickEntryHeading(entry: any, index: number) {
     entry?.heading_en ||
     entry?.name?.en ||
     entry?.name_en ||
-    "" ||
+    prettifyEntryId(entry?.id || entry?.slug || "") ||
     `Entry ${index + 1}`
   );
 }
@@ -368,6 +425,8 @@ function entryMatchesKeyword(entry: any, kw: string): boolean {
   const k = String(kw || "").toLowerCase().trim();
   if (!k) return false;
 
+  const meta = String(entry?.id || entry?.slug || "").toLowerCase().trim();
+
   const title = String(
     entry?.title?.en ||
       entry?.title_en ||
@@ -383,7 +442,7 @@ function entryMatchesKeyword(entry: any, kw: string): boolean {
   const en = normalizeEntryTextEN(entry).toLowerCase();
   const vi = normalizeEntryTextVI(entry).toLowerCase();
 
-  return title.includes(k) || en.includes(k) || vi.includes(k);
+  return meta.includes(k) || title.includes(k) || en.includes(k) || vi.includes(k);
 }
 
 export default function RoomRenderer({
@@ -431,7 +490,6 @@ export default function RoomRenderer({
   const tier = useMemo(() => pickTier(room), [room]);
   const effectiveRoomId = String(room?.id || roomId || "");
 
-  // ✅ TITLE HARDENING
   const rawEN = useMemo(() => String(pickTitleENRaw(room) || ""), [room]);
   const rawVI = useMemo(() => String(pickTitleVIRaw(room) || ""), [room]);
 
@@ -448,7 +506,7 @@ export default function RoomRenderer({
   const introEN = useMemo(() => pickIntroEN(room), [room]);
   const introVI = useMemo(() => pickIntroVI(room), [room]);
 
-  const kw = useMemo(() => resolveKeywords(room), [room]);
+  const kwRaw = useMemo(() => resolveKeywords(room), [room]);
   const essay = useMemo(() => resolveEssay(room), [room]);
 
   const sections = asArray(room?.sections);
@@ -465,6 +523,13 @@ export default function RoomRenderer({
     }
     return flatEntries.map((e: any) => ({ entry: e }));
   }, [sections, flatEntries]);
+
+  const kw = useMemo(() => {
+    const hasReal =
+      (kwRaw?.en?.length || 0) > 0 || (kwRaw?.vi?.length || 0) > 0;
+    if (hasReal) return kwRaw;
+    return deriveKeywordsFromEntries(room);
+  }, [kwRaw, room]);
 
   const enKeywords = (kw.en.length ? kw.en : kw.vi).map(String);
   const viKeywords = (kw.vi.length ? kw.vi : kw.en).map(String);
@@ -872,5 +937,5 @@ function ActiveEntry({
 }
 
 /** New thing to learn:
- * If your UI uses rem/px typography (Tailwind), scaling font-size won’t work.
- * Use a zoom wrapper with transform: scale + inverse width to scale everything safely. */
+ * If your JSON entries only have "id" (no title), your renderer must use entry.id as the heading,
+ * otherwise the UI looks like content is missing even when it’s loaded correctly. */
