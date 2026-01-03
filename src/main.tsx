@@ -3,6 +3,7 @@
 //
 // FIX (100.7):
 // - ✅ Wrap app in <AuthProvider> so AdminRoute/useAuth never crashes.
+// - ✅ Remove all explicit `any` (lint clean).
 // - Keep fatal overlay.
 // - Keep React.StrictMode OFF (avoid dev double-mount confusion).
 
@@ -14,20 +15,26 @@ import AppRouter from "@/router/AppRouter";
 import "@/index.css";
 
 // ✅ AUTH PROVIDER (required for /admin)
-// If this import path differs in your repo, change ONLY the import line.
 import { AuthProvider } from "@/providers/AuthProvider";
 
 // ✅ MB FATAL OVERLAY — shows runtime errors on screen
 (function attachFatalErrorOverlay() {
-  const mount = (title: string, err: any) => {
+  const mount = (title: string, err: unknown) => {
     try {
       const rootEl = document.getElementById("root");
       if (!rootEl) return;
 
+      const message =
+        err instanceof Error
+          ? err.stack || err.message
+          : typeof err === "string"
+          ? err
+          : JSON.stringify(err, null, 2);
+
       const msg =
         `${title}\n\n` +
-        (err?.stack || err?.message || String(err)) +
-        `\n\nURL: ${location.href}`;
+        message +
+        `\n\nURL: ${window.location.href}`;
 
       // Clear existing UI so overlay is visible even if CSS is broken
       rootEl.innerHTML = "";
@@ -53,19 +60,29 @@ import { AuthProvider } from "@/providers/AuthProvider";
       wrap.appendChild(pre);
       rootEl.appendChild(wrap);
     } catch {
-      // ignore
+      // ignore overlay failures
     }
   };
 
-  window.addEventListener("error", (e) =>
-    mount("[MB FATAL] window.error", (e as any).error || e)
-  );
-  window.addEventListener("unhandledrejection", (e) =>
-    mount("[MB FATAL] unhandledrejection", (e as any).reason || e)
+  window.addEventListener("error", (e: ErrorEvent) => {
+    mount("[MB FATAL] window.error", e.error ?? e.message);
+  });
+
+  window.addEventListener(
+    "unhandledrejection",
+    (e: PromiseRejectionEvent) => {
+      mount("[MB FATAL] unhandledrejection", e.reason);
+    }
   );
 })();
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+const root = document.getElementById("root");
+
+if (!root) {
+  throw new Error("Root element #root not found");
+}
+
+ReactDOM.createRoot(root).render(
   <AuthProvider>
     <BrowserRouter>
       <AppRouter />
@@ -73,5 +90,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   </AuthProvider>
 );
 
-/** New thing to learn:
- * If a hook throws “must be used inside Provider”, the fix is always at app root, not inside the feature page. */
+/**
+ * New thing to learn:
+ * Browser error events already have strong DOM types — using them avoids `any`
+ * and gives safer, more debuggable crash handling.
+ */
