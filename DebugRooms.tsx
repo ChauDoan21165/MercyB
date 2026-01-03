@@ -1,53 +1,73 @@
 import { useEffect, useState } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { AlertCircle, CheckCircle, Music, FileText } from "lucide-react";
+
+interface AudioCheck {
+  path: string;
+  exists: boolean;
+}
 
 interface RoomIssue {
   roomFile: string;
   issues: string[];
   warnings: string[];
-  audioFiles: { path: string; exists: boolean }[];
+  audioFiles: AudioCheck[];
   hasKeywordsEn: boolean;
   hasKeywordsVi: boolean;
   entryCount: number;
 }
 
+interface RoomJson {
+  keywords_en?: string[];
+  keywords_vi?: string[];
+  entries?: Array<{
+    audio?: string | { en?: string };
+  }>;
+}
+
 export default function DebugRooms() {
   const [results, setResults] = useState<RoomIssue[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    checkAllRooms();
+    void checkAllRooms();
   }, []);
 
-  const checkAllRooms = async () => {
+  async function checkAllRooms(): Promise<void> {
     setLoading(true);
-    const roomFiles: string[] = [];
-    
-    // Scan public directory for JSON files
-    const tiers = ['free', 'vip1', 'vip2', 'vip3'];
+
+    const tiers = ["free", "vip1", "vip2", "vip3"];
     const roomBases = [
-      'philosophy_of_everyday', 'stoicism', 'women_health', 'meaning_of_life',
-      'God With Us', 'nutrition', 'obesity', 'stress', 'Sleep', 'sleep',
-      'confidence', 'soulmate', 'mental_health', 'AI', 'Human Right',
-      'Mental Health', 'Mental SharpnessVIP3', 'Shadow Work'
+      "philosophy_of_everyday",
+      "stoicism",
+      "women_health",
+      "meaning_of_life",
+      "nutrition",
+      "obesity",
+      "stress",
+      "sleep",
+      "confidence",
+      "soulmate",
+      "mental_health",
+      "shadow_work",
     ];
 
-    // Build list of expected files
+    const roomFiles: string[] = [];
+
     for (const base of roomBases) {
       for (const tier of tiers) {
-        const variants = [
-          `${base}_${tier}.json`,
-          `${base}_${tier.toUpperCase()}.json`,
-          `${base.replace(/_/g, ' ')}_${tier}.json`,
-          `${base.replace(/_/g, ' ')}_${tier === 'free' ? 'Free' : tier.toUpperCase()}.json`,
-        ];
-        roomFiles.push(...variants);
+        roomFiles.push(`${base}_${tier}.json`);
       }
     }
 
-    const uniqueFiles = [...new Set(roomFiles)];
+    const uniqueFiles = Array.from(new Set(roomFiles));
     const issuesFound: RoomIssue[] = [];
 
     for (const file of uniqueFiles) {
@@ -55,60 +75,60 @@ export default function DebugRooms() {
         const res = await fetch(`/${file}`);
         if (!res.ok) continue;
 
-        const data = await res.json();
+        const data = (await res.json()) as RoomJson;
+
         const issues: string[] = [];
         const warnings: string[] = [];
-        const audioFiles: { path: string; exists: boolean }[] = [];
+        const audioFiles: AudioCheck[] = [];
 
-        // Check for keywords
-        const hasKeywordsEn = !!(data.keywords_en && data.keywords_en.length > 0);
-        const hasKeywordsVi = !!(data.keywords_vi && data.keywords_vi.length > 0);
+        const hasKeywordsEn = Boolean(data.keywords_en?.length);
+        const hasKeywordsVi = Boolean(data.keywords_vi?.length);
 
         if (!hasKeywordsEn) {
-          issues.push('Missing keywords_en at top level');
+          issues.push("Missing keywords_en at top level");
         }
         if (!hasKeywordsVi) {
-          warnings.push('Missing keywords_vi at top level');
+          warnings.push("Missing keywords_vi at top level");
         }
 
-        // Check entries
-        const entries = data.entries || [];
+        const entries = data.entries ?? [];
+
         for (let i = 0; i < entries.length; i++) {
           const entry = entries[i];
-          
-          // Extract audio path
-          let audioPath = '';
-          if (typeof entry.audio === 'string') {
+
+          let audioPath = "";
+          if (typeof entry.audio === "string") {
             audioPath = entry.audio;
           } else if (entry.audio?.en) {
             audioPath = entry.audio.en;
           }
 
-          if (audioPath) {
-            // Normalize path
-            const normalizedPath = audioPath.startsWith('/') ? audioPath : `/${audioPath}`;
-            
-            // Check if audio file exists
-            try {
-              const audioRes = await fetch(normalizedPath, { method: 'HEAD' });
-              audioFiles.push({
-                path: normalizedPath,
-                exists: audioRes.ok
-              });
-              
-              if (!audioRes.ok) {
-                issues.push(`Audio not found: ${normalizedPath}`);
-              }
-            } catch {
-              audioFiles.push({ path: normalizedPath, exists: false });
-              issues.push(`Audio check failed: ${normalizedPath}`);
+          if (!audioPath) {
+            warnings.push(`Entry ${i} has no audio`);
+            continue;
+          }
+
+          const normalizedPath = audioPath.startsWith("/")
+            ? audioPath
+            : `/${audioPath}`;
+
+          try {
+            const audioRes = await fetch(normalizedPath, { method: "HEAD" });
+            audioFiles.push({
+              path: normalizedPath,
+              exists: audioRes.ok,
+            });
+
+            if (!audioRes.ok) {
+              issues.push(`Audio not found: ${normalizedPath}`);
             }
-          } else {
-            warnings.push(`Entry ${i} has no audio field`);
+          } catch {
+            audioFiles.push({ path: normalizedPath, exists: false });
+            issues.push(`Audio check failed: ${normalizedPath}`);
           }
         }
 
-        if (issues.length > 0 || warnings.length > 0 || !hasKeywordsEn || !hasKeywordsVi) {
+        if (issues.length || warnings.length) {
           issuesFound.push({
             roomFile: file,
             issues,
@@ -116,143 +136,89 @@ export default function DebugRooms() {
             audioFiles,
             hasKeywordsEn,
             hasKeywordsVi,
-            entryCount: entries.length
+            entryCount: entries.length,
           });
         }
-      } catch (error) {
-        // File doesn't exist or invalid JSON - skip silently
+      } catch {
+        // silently skip invalid JSON or missing files
       }
     }
 
     setResults(issuesFound);
     setLoading(false);
-  };
+  }
 
   return (
     <div className="container mx-auto p-8 space-y-6">
-      <div className="space-y-2">
+      <div>
         <h1 className="text-3xl font-bold">Room Health Check</h1>
         <p className="text-muted-foreground">
-          Automated scan of all room JSON files for audio and keyword issues
+          Automated scan of room JSON files
         </p>
       </div>
 
       {loading ? (
         <Card>
           <CardContent className="p-12 text-center">
-            <div className="animate-pulse">Scanning all rooms...</div>
+            Scanning rooms…
           </CardContent>
         </Card>
       ) : results.length === 0 ? (
         <Card>
           <CardContent className="p-12 text-center">
             <CheckCircle className="w-12 h-12 mx-auto mb-4 text-green-500" />
-            <p className="text-lg font-medium">All rooms are healthy!</p>
-            <p className="text-sm text-muted-foreground mt-2">
-              No missing audio files or keyword issues detected
-            </p>
+            All rooms are healthy.
           </CardContent>
         </Card>
       ) : (
-        <div className="space-y-4">
-          <div className="flex items-center gap-2 p-4 bg-orange-50 dark:bg-orange-950 rounded-lg">
-            <AlertCircle className="w-5 h-5 text-orange-600" />
-            <p className="text-sm font-medium">
-              Found {results.length} room(s) with issues
-            </p>
-          </div>
+        results.map((result) => (
+          <Card key={result.roomFile}>
+            <CardHeader>
+              <CardTitle>{result.roomFile}</CardTitle>
+              <CardDescription>
+                {result.entryCount} entries
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              {result.issues.map((issue) => (
+                <p key={issue} className="text-red-600 flex gap-2">
+                  <AlertCircle className="w-4 h-4" />
+                  {issue}
+                </p>
+              ))}
 
-          {results.map((result, idx) => (
-            <Card key={idx} className="border-orange-200 dark:border-orange-800">
-              <CardHeader>
-                <div className="flex items-start justify-between">
-                  <div>
-                    <CardTitle className="text-lg">{result.roomFile}</CardTitle>
-                    <CardDescription>
-                      {result.entryCount} entries • {result.audioFiles.length} audio files
-                    </CardDescription>
-                  </div>
-                  <div className="flex gap-2">
-                    {result.hasKeywordsEn ? (
-                      <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200">
-                        <FileText className="w-3 h-3 mr-1" />
-                        EN Keywords
-                      </Badge>
-                    ) : (
-                      <Badge variant="outline" className="bg-red-50 text-red-700 border-red-200">
-                        <FileText className="w-3 h-3 mr-1" />
-                        No EN Keywords
-                      </Badge>
-                    )}
-                    {result.hasKeywordsVi ? (
-                      <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200">
-                        <FileText className="w-3 h-3 mr-1" />
-                        VI Keywords
-                      </Badge>
-                    ) : (
-                      <Badge variant="outline" className="bg-orange-50 text-orange-700 border-orange-200">
-                        <FileText className="w-3 h-3 mr-1" />
-                        No VI Keywords
-                      </Badge>
-                    )}
-                  </div>
+              {result.warnings.map((warning) => (
+                <p key={warning} className="text-orange-600 flex gap-2">
+                  <AlertCircle className="w-4 h-4" />
+                  {warning}
+                </p>
+              ))}
+
+              <div className="flex gap-2">
+                <Badge variant="outline">
+                  <FileText className="w-3 h-3 mr-1" />
+                  EN keywords: {result.hasKeywordsEn ? "OK" : "Missing"}
+                </Badge>
+                <Badge variant="outline">
+                  <FileText className="w-3 h-3 mr-1" />
+                  VI keywords: {result.hasKeywordsVi ? "OK" : "Missing"}
+                </Badge>
+              </div>
+
+              {result.audioFiles.map((audio) => (
+                <div key={audio.path} className="flex items-center gap-2">
+                  {audio.exists ? (
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                  ) : (
+                    <AlertCircle className="w-4 h-4 text-red-500" />
+                  )}
+                  <Music className="w-4 h-4" />
+                  <code className="text-xs">{audio.path}</code>
                 </div>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {result.issues.length > 0 && (
-                  <div className="space-y-2">
-                    <h4 className="text-sm font-semibold text-red-600 flex items-center gap-2">
-                      <AlertCircle className="w-4 h-4" />
-                      Critical Issues ({result.issues.length})
-                    </h4>
-                    <ul className="space-y-1 text-sm">
-                      {result.issues.map((issue, i) => (
-                        <li key={i} className="pl-6 text-red-600">• {issue}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {result.warnings.length > 0 && (
-                  <div className="space-y-2">
-                    <h4 className="text-sm font-semibold text-orange-600 flex items-center gap-2">
-                      <AlertCircle className="w-4 h-4" />
-                      Warnings ({result.warnings.length})
-                    </h4>
-                    <ul className="space-y-1 text-sm">
-                      {result.warnings.map((warning, i) => (
-                        <li key={i} className="pl-6 text-orange-600">• {warning}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {result.audioFiles.length > 0 && (
-                  <div className="space-y-2">
-                    <h4 className="text-sm font-semibold flex items-center gap-2">
-                      <Music className="w-4 h-4" />
-                      Audio Files ({result.audioFiles.length})
-                    </h4>
-                    <div className="grid grid-cols-1 gap-1 text-xs">
-                      {result.audioFiles.map((audio, i) => (
-                        <div key={i} className="flex items-center gap-2 pl-6">
-                          {audio.exists ? (
-                            <CheckCircle className="w-3 h-3 text-green-500 flex-shrink-0" />
-                          ) : (
-                            <AlertCircle className="w-3 h-3 text-red-500 flex-shrink-0" />
-                          )}
-                          <code className={audio.exists ? 'text-green-700' : 'text-red-700'}>
-                            {audio.path}
-                          </code>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+              ))}
+            </CardContent>
+          </Card>
+        ))
       )}
     </div>
   );
