@@ -9,6 +9,6 @@ BEGIN
       ON public.kids_subscriptions(user_id, status)
     ';
   ELSE
-    RAISE NOTICE ''kids_subscriptions table missing; skipping indexes.'';
+    RAISE NOTICE 'kids_subscriptions table missing; skipping indexes.';
   END IF;
 END $$;
