@@ -1,5 +1,5 @@
 // src/components/room/RoomRenderer.tsx
-// MB-BLUE-99.8 — 2026-01-02 (+0700)
+// MB-BLUE-99.9 — 2026-01-03 (+0700)
 /**
  * ROOM 5-BOX SPEC (LOCKED)
  * BOX 2: Title row (tier left, title centered, fav+refresh right) — ONE ROW
@@ -28,11 +28,22 @@
  * ✅ FIX (MB-BLUE-99.8):
  * - ENTRY HEADING RESTORE: if entry has no title/heading, use entry.id/slug as the heading
  *   (so your english_writing_free shows "Basics" / "Practice" instead of "Entry 1/2").
+ *
+ * ✅ FIX (MB-BLUE-99.9):
+ * - DARK keyword highlights inside ENTRY text (and welcome line).
+ * - SAME color for the same EN/VI keyword pair.
+ * - Only highlight top 3–5 keyword pairs (default 5) to keep it readable.
+ *
+ * ✅ FIX (MB-BLUE-99.9a):
+ * - Hyphen/underscore/space tolerant matching:
+ *   "daily-walk" highlights "daily walk" in text (and vice versa)
  */
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { BilingualEssay } from "@/components/room/BilingualEssay";
 import TalkingFacePlayButton from "@/components/audio/TalkingFacePlayButton";
+import { getCurrentVipKey } from "@/lib/authService";
+import type { VipKey } from "@/lib/auth";
 
 type AnyRoom = any;
 
@@ -48,22 +59,10 @@ function firstNonEmptyArray(...candidates: any[]): any[] {
 }
 
 function pickTitleENRaw(room: AnyRoom) {
-  return (
-    room?.title?.en ||
-    room?.title_en ||
-    room?.name?.en ||
-    room?.name_en ||
-    ""
-  );
+  return room?.title?.en || room?.title_en || room?.name?.en || room?.name_en || "";
 }
 function pickTitleVIRaw(room: AnyRoom) {
-  return (
-    room?.title?.vi ||
-    room?.title_vi ||
-    room?.name?.vi ||
-    room?.name_vi ||
-    ""
-  );
+  return room?.title?.vi || room?.title_vi || room?.name?.vi || room?.name_vi || "";
 }
 
 /** Remove trailing tier markers: _vip1 ... _vip9, _free */
@@ -80,9 +79,7 @@ function prettifyRoomIdEN(id: string): string {
   const core = stripTierSuffix(id).toLowerCase();
   if (!core) return "Untitled room";
   const words = core.split("_").filter(Boolean);
-  const titled = words
-    .map((w) => (w ? w[0].toUpperCase() + w.slice(1) : w))
-    .join(" ");
+  const titled = words.map((w) => (w ? w[0].toUpperCase() + w.slice(1) : w)).join(" ");
   return titled || "Untitled room";
 }
 
@@ -124,8 +121,7 @@ function isBadAutoTitle(raw: string, effectiveRoomId: string) {
   const idCore = stripTierSuffix(ridLow);
   if (rCore && idCore && rCore === idCore) return true;
 
-  const looksSnake =
-    /^[a-z0-9_]+$/.test(rLow) && rLow.includes("_") && !r.includes(" ");
+  const looksSnake = /^[a-z0-9_]+$/.test(rLow) && rLow.includes("_") && !r.includes(" ");
   const hasTierSuffix = /_(vip[1-9]|free)\b/i.test(r);
 
   if (looksSnake || hasTierSuffix) return true;
@@ -164,7 +160,7 @@ function resolveEntries(room: AnyRoom): any[] {
     room?.items,
     room?.cards,
     room?.blocks,
-    room?.steps
+    room?.steps,
   );
 }
 function resolveSectionEntries(section: any): any[] {
@@ -174,20 +170,12 @@ function resolveSectionEntries(section: any): any[] {
     section?.items,
     section?.cards,
     section?.blocks,
-    section?.steps
+    section?.steps,
   );
 }
 function resolveKeywords(room: AnyRoom) {
-  const en = firstNonEmptyArray(
-    room?.keywords_en,
-    room?.keywords?.en,
-    room?.meta?.keywords_en
-  );
-  const vi = firstNonEmptyArray(
-    room?.keywords_vi,
-    room?.keywords?.vi,
-    room?.meta?.keywords_vi
-  );
+  const en = firstNonEmptyArray(room?.keywords_en, room?.keywords?.en, room?.meta?.keywords_en);
+  const vi = firstNonEmptyArray(room?.keywords_vi, room?.keywords?.vi, room?.meta?.keywords_vi);
   return { en, vi };
 }
 
@@ -239,6 +227,21 @@ function resolveEssay(room: AnyRoom) {
 function pickTier(room: AnyRoom): string {
   return String(room?.tier || room?.meta?.tier || "free").toLowerCase();
 }
+
+// ✅ Payment gate helpers (client compares DB vipKey vs room tier)
+function normalizeVipKeyFromTier(tier: string): VipKey {
+  const t = String(tier || "").toLowerCase();
+  if (t.includes("vip9")) return "vip9";
+  if (t.includes("vip3")) return "vip3";
+  if (t.includes("vip1")) return "vip1";
+  return "free";
+}
+const VIP_RANK: Record<VipKey, number> = {
+  free: 0,
+  vip1: 1,
+  vip3: 3,
+  vip9: 9,
+};
 
 function normalizeAudioSrc(src: string): string {
   const s = String(src || "").trim();
@@ -341,6 +344,7 @@ function normalizeEntryTextVI(entry: any): string {
 function escapeRegExp(s: string) {
   return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
+
 const KW_CLASSES = [
   "mb-kw-0",
   "mb-kw-1",
@@ -352,6 +356,106 @@ const KW_CLASSES = [
   "mb-kw-7",
 ] as const;
 
+type KeywordColorMap = Map<string, (typeof KW_CLASSES)[number]>;
+
+/**
+ * ✅ MB-BLUE-99.9a — canonical keyword key:
+ * "daily-walk" / "daily_walk" / "daily walk" -> "daily walk"
+ */
+function normalizeKwKey(s: string) {
+  return String(s || "")
+    .trim()
+    .toLowerCase()
+    .replace(/[\s\-_]+/g, " ");
+}
+
+/**
+ * ✅ MB-BLUE-99.9 — map EN/VI keyword pairs to the SAME class
+ * and limit to top N pairs (default 5).
+ */
+function buildKeywordColorMap(
+  enKeywords: string[],
+  viKeywords: string[],
+  maxPairs = 5,
+): KeywordColorMap {
+  const map: KeywordColorMap = new Map();
+
+  const maxLen = Math.max(enKeywords.length, viKeywords.length);
+  const n = Math.min(maxPairs, maxLen);
+
+  let colorIdx = 0;
+
+  for (let i = 0; i < n; i++) {
+    const en = String(enKeywords[i] ?? "").trim();
+    const vi = String(viKeywords[i] ?? "").trim();
+
+    if (!en && !vi) continue;
+
+    const cls = KW_CLASSES[colorIdx % KW_CLASSES.length];
+    colorIdx++;
+
+    if (en) map.set(normalizeKwKey(en), cls);
+    if (vi) map.set(normalizeKwKey(vi), cls);
+  }
+
+  return map;
+}
+
+function highlightByColorMap(text: string, colorMap: KeywordColorMap) {
+  const t = String(text || "");
+  if (!t.trim()) return t;
+
+  if (!colorMap || colorMap.size === 0) return t;
+
+  // Build pattern from keys (longest first so phrases win)
+  // Each key is normalized like: "daily walk"
+  // Convert to regex that matches "daily walk" OR "daily-walk" OR "daily_walk"
+  const ordered = Array.from(colorMap.keys()).sort((a, b) => b.length - a.length);
+
+  const keyToVariantPattern = (k: string) => {
+    const parts = k.split(" ").filter(Boolean).map(escapeRegExp);
+    if (parts.length === 0) return "";
+    if (parts.length === 1) return parts[0];
+    return parts.join("[\\s\\-_]+");
+  };
+
+  const pattern = ordered.map(keyToVariantPattern).filter(Boolean).join("|");
+  if (!pattern) return t;
+
+  // Unicode-safe boundary: avoid matching inside other words (works better for VI accents)
+  // group(1) = leading separator (kept), group(2) = actual match
+  const re = new RegExp(`(^|[^\\p{L}\\p{N}_])(${pattern})(?=[^\\p{L}\\p{N}_]|$)`, "giu");
+
+  const parts: React.ReactNode[] = [];
+  let last = 0;
+  let m: RegExpExecArray | null;
+
+  while ((m = re.exec(t))) {
+    const start = m.index;
+    const full = m[0] || "";
+    const prefix = m[1] || "";
+    const match = m[2] || "";
+    const end = start + full.length;
+
+    if (start > last) parts.push(t.slice(last, start));
+
+    if (prefix) parts.push(prefix);
+
+    const cls = colorMap.get(normalizeKwKey(match)) || KW_CLASSES[0];
+    parts.push(
+      <span key={`${start}-${end}`} className={`mb-kw ${cls}`}>
+        {match}
+      </span>,
+    );
+
+    last = end;
+  }
+
+  if (last < t.length) parts.push(t.slice(last));
+  return <span className="whitespace-pre-line leading-relaxed">{parts}</span>;
+}
+
+/** Backward compatible: if you want to use the old list-based highlight somewhere. */
 function highlightByKeywordList(text: string, keywords: string[]) {
   const t = String(text || "");
   if (!t.trim()) return t;
@@ -387,7 +491,7 @@ function highlightByKeywordList(text: string, keywords: string[]) {
     parts.push(
       <span key={`${start}-${end}`} className={`mb-kw ${cls}`}>
         {match}
-      </span>
+      </span>,
     );
 
     last = end;
@@ -415,8 +519,7 @@ function pickEntryHeading(entry: any, index: number) {
 function isUglyHeading(h: string) {
   const s = String(h || "").trim();
   if (!s) return true;
-  const looksSlug =
-    /^[a-z0-9_-]+$/.test(s) && (s.includes("-") || s.includes("_"));
+  const looksSlug = /^[a-z0-9_-]+$/.test(s) && (s.includes("-") || s.includes("_"));
   const tooIdLike = /_(vip[1-9]|free)\b/i.test(s);
   return looksSlug || tooIdLike;
 }
@@ -434,7 +537,7 @@ function entryMatchesKeyword(entry: any, kw: string): boolean {
       entry?.heading_en ||
       entry?.id ||
       entry?.slug ||
-      ""
+      "",
   )
     .toLowerCase()
     .trim();
@@ -479,6 +582,29 @@ export default function RoomRenderer({
     return () => obs.disconnect();
   }, []);
 
+  // ✅ Payment gate: DB source of truth (user_subscriptions → vipKey)
+  const [userVipKey, setUserVipKey] = useState<VipKey>("free");
+  const [vipLoaded, setVipLoaded] = useState(false);
+
+  useEffect(() => {
+    let alive = true;
+    (async () => {
+      try {
+        const vk = await getCurrentVipKey();
+        if (!alive) return;
+        setUserVipKey(vk);
+      } catch (e) {
+        // fail-safe: treat as free
+        console.warn("getCurrentVipKey failed; defaulting to free", e);
+      } finally {
+        if (alive) setVipLoaded(true);
+      }
+    })();
+    return () => {
+      alive = false;
+    };
+  }, []);
+
   if (!room) {
     return (
       <div className="rounded-xl border p-6 text-muted-foreground">
@@ -488,6 +614,13 @@ export default function RoomRenderer({
   }
 
   const tier = useMemo(() => pickTier(room), [room]);
+  const requiredVipKey = useMemo(() => normalizeVipKeyFromTier(tier), [tier]);
+  const isLocked = useMemo(() => {
+    // If we haven't loaded yet, be conservative: lock VIP rooms until we know.
+    if (!vipLoaded) return requiredVipKey !== "free";
+    return VIP_RANK[userVipKey] < VIP_RANK[requiredVipKey];
+  }, [vipLoaded, userVipKey, requiredVipKey]);
+
   const effectiveRoomId = String(room?.id || roomId || "");
 
   const rawEN = useMemo(() => String(pickTitleENRaw(room) || ""), [room]);
@@ -496,8 +629,7 @@ export default function RoomRenderer({
   const titleEN = useMemo(() => {
     const r = rawEN.trim();
     if (!r) return prettifyRoomIdEN(effectiveRoomId);
-    if (isBadAutoTitle(r, effectiveRoomId))
-      return prettifyRoomIdEN(effectiveRoomId);
+    if (isBadAutoTitle(r, effectiveRoomId)) return prettifyRoomIdEN(effectiveRoomId);
     return r;
   }, [rawEN, effectiveRoomId]);
 
@@ -525,14 +657,19 @@ export default function RoomRenderer({
   }, [sections, flatEntries]);
 
   const kw = useMemo(() => {
-    const hasReal =
-      (kwRaw?.en?.length || 0) > 0 || (kwRaw?.vi?.length || 0) > 0;
+    const hasReal = (kwRaw?.en?.length || 0) > 0 || (kwRaw?.vi?.length || 0) > 0;
     if (hasReal) return kwRaw;
     return deriveKeywordsFromEntries(room);
   }, [kwRaw, room]);
 
   const enKeywords = (kw.en.length ? kw.en : kw.vi).map(String);
   const viKeywords = (kw.vi.length ? kw.vi : kw.en).map(String);
+
+  // ✅ MB-BLUE-99.9 — color map shared for EN/VI (used for welcome line)
+  const kwColorMap = useMemo(() => buildKeywordColorMap(enKeywords, viKeywords, 5), [
+    enKeywords,
+    viKeywords,
+  ]);
 
   const [activeKeyword, setActiveKeyword] = useState<string | null>(null);
 
@@ -542,9 +679,7 @@ export default function RoomRenderer({
 
   const activeEntry = useMemo(() => {
     if (!activeKeyword) return null;
-    const found = allEntries.find((x) =>
-      entryMatchesKeyword(x.entry, activeKeyword)
-    );
+    const found = allEntries.find((x) => entryMatchesKeyword(x.entry, activeKeyword));
     return found?.entry || null;
   }, [activeKeyword, allEntries]);
 
@@ -557,9 +692,7 @@ export default function RoomRenderer({
     introEN?.trim() || `Welcome to ${titleEN}, please click a keyword to start`;
   const welcomeVI =
     introVI?.trim() ||
-    `Chào mừng bạn đến với phòng ${
-      titleVI || titleEN
-    }, vui lòng nhấp vào từ khóa để bắt đầu`;
+    `Chào mừng bạn đến với phòng ${titleVI || titleEN}, vui lòng nhấp vào từ khóa để bắt đầu`;
 
   const ROOM_CSS = useMemo(
     () => `
@@ -677,20 +810,46 @@ export default function RoomRenderer({
         border-color: rgba(0,0,0,0.30);
         box-shadow: 0 14px 30px rgba(0,0,0,0.08);
       }
+      [data-mb-scope="room"] .mb-keyBtn:disabled{
+        opacity: 0.55;
+        cursor: not-allowed;
+        transform: none !important;
+        box-shadow: none !important;
+      }
 
+      /* Base token */
       [data-mb-scope="room"] .mb-kw{
         padding: 0 0.18rem;
         border-radius: 0.45rem;
         font-weight: 800;
       }
-      [data-mb-scope="room"] .mb-kw-0{ background: rgba(255, 219, 88, 0.45); }
-      [data-mb-scope="room"] .mb-kw-1{ background: rgba(120, 220, 255, 0.40); }
-      [data-mb-scope="room"] .mb-kw-2{ background: rgba(180, 255, 140, 0.40); }
-      [data-mb-scope="room"] .mb-kw-3{ background: rgba(255, 140, 200, 0.38); }
-      [data-mb-scope="room"] .mb-kw-4{ background: rgba(170, 140, 255, 0.38); }
-      [data-mb-scope="room"] .mb-kw-5{ background: rgba(255, 170, 120, 0.38); }
-      [data-mb-scope="room"] .mb-kw-6{ background: rgba(120, 255, 210, 0.34); }
-      [data-mb-scope="room"] .mb-kw-7{ background: rgba(255, 120, 120, 0.34); }
+
+      /* ✅ MB-BLUE-99.9 — DARK highlight ONLY inside welcome+entry text blocks */
+      [data-mb-scope="room"] .mb-entryText .mb-kw,
+      [data-mb-scope="room"] .mb-welcomeLine .mb-kw{
+        color: rgba(255,255,255,0.95);
+        text-shadow: 0 1px 0 rgba(0,0,0,0.28);
+        padding: 0.04rem 0.22rem;
+        border-radius: 0.55rem;
+      }
+
+      /* Dark palette (distinct but all "dark") */
+      [data-mb-scope="room"] .mb-entryText .mb-kw-0,
+      [data-mb-scope="room"] .mb-welcomeLine .mb-kw-0{ background: rgba(17, 24, 39, 0.78); }
+      [data-mb-scope="room"] .mb-entryText .mb-kw-1,
+      [data-mb-scope="room"] .mb-welcomeLine .mb-kw-1{ background: rgba(12, 74, 110, 0.78); }
+      [data-mb-scope="room"] .mb-entryText .mb-kw-2,
+      [data-mb-scope="room"] .mb-welcomeLine .mb-kw-2{ background: rgba(22, 101, 52, 0.78); }
+      [data-mb-scope="room"] .mb-entryText .mb-kw-3,
+      [data-mb-scope="room"] .mb-welcomeLine .mb-kw-3{ background: rgba(131, 24, 67, 0.78); }
+      [data-mb-scope="room"] .mb-entryText .mb-kw-4,
+      [data-mb-scope="room"] .mb-welcomeLine .mb-kw-4{ background: rgba(88, 28, 135, 0.78); }
+      [data-mb-scope="room"] .mb-entryText .mb-kw-5,
+      [data-mb-scope="room"] .mb-welcomeLine .mb-kw-5{ background: rgba(124, 45, 18, 0.78); }
+      [data-mb-scope="room"] .mb-entryText .mb-kw-6,
+      [data-mb-scope="room"] .mb-welcomeLine .mb-kw-6{ background: rgba(17, 94, 89, 0.78); }
+      [data-mb-scope="room"] .mb-entryText .mb-kw-7,
+      [data-mb-scope="room"] .mb-welcomeLine .mb-kw-7{ background: rgba(127, 29, 29, 0.78); }
 
       [data-mb-scope="room"] .mb-feedback{
         border: 1px solid rgba(0,0,0,0.12);
@@ -742,7 +901,7 @@ export default function RoomRenderer({
         width: calc(100% / var(--mbz));
       }
     `,
-    []
+    [],
   );
 
   return (
@@ -761,18 +920,11 @@ export default function RoomRenderer({
         </div>
 
         <div className="mb-titleCenter">
-          <div className="mb-roomTitle">
-            {titleVI ? `${titleEN} / ${titleVI}` : titleEN}
-          </div>
+          <div className="mb-roomTitle">{titleVI ? `${titleEN} / ${titleVI}` : titleEN}</div>
         </div>
 
         <div className="mb-titleRight">
-          <button
-            type="button"
-            className="mb-iconBtn"
-            title="Favorite (UI shell)"
-            onClick={() => {}}
-          >
+          <button type="button" className="mb-iconBtn" title="Favorite (UI shell)" onClick={() => {}}>
             ♡
           </button>
           <button
@@ -790,39 +942,36 @@ export default function RoomRenderer({
       <section className="mb-card p-5 md:p-6 mb-5">
         <div className="mb-welcomeLine">
           <span>
-            {highlightByKeywordList(welcomeEN, enKeywords)} <b>/</b>{" "}
-            {highlightByKeywordList(welcomeVI, viKeywords)}
+            {highlightByColorMap(welcomeEN, kwColorMap)} <b>/</b>{" "}
+            {highlightByColorMap(welcomeVI, kwColorMap)}
           </span>
         </div>
 
         {Math.max(kw.en.length, kw.vi.length) > 0 ? (
           <div className="mb-keyRow">
-            {Array.from({ length: Math.max(kw.en.length, kw.vi.length) }).map(
-              (_, i) => {
-                const en = String(kw.en[i] ?? "").trim();
-                const vi = String(kw.vi[i] ?? "").trim();
-                if (!en && !vi) return null;
+            {Array.from({ length: Math.max(kw.en.length, kw.vi.length) }).map((_, i) => {
+              const en = String(kw.en[i] ?? "").trim();
+              const vi = String(kw.vi[i] ?? "").trim();
+              if (!en && !vi) return null;
 
-                const label = en && vi ? `${en} / ${vi}` : en || vi;
-                const next = en || vi;
-                const isActive = activeKeyword === next;
+              const label = en && vi ? `${en} / ${vi}` : en || vi;
+              const next = en || vi;
+              const isActive = activeKeyword === next;
 
-                return (
-                  <button
-                    key={`kw-${i}`}
-                    type="button"
-                    className={`mb-keyBtn mb-kw ${KW_CLASSES[i % KW_CLASSES.length]}`}
-                    data-active={isActive ? "true" : "false"}
-                    onClick={() =>
-                      setActiveKeyword((cur) => (cur === next ? null : next))
-                    }
-                    title={label}
-                  >
-                    {label}
-                  </button>
-                );
-              }
-            )}
+              return (
+                <button
+                  key={`kw-${i}`}
+                  type="button"
+                  className={`mb-keyBtn mb-kw ${KW_CLASSES[i % KW_CLASSES.length]}`}
+                  data-active={isActive ? "true" : "false"}
+                  disabled={isLocked}
+                  onClick={() => setActiveKeyword((cur) => (cur === next ? null : next))}
+                  title={label}
+                >
+                  {label}
+                </button>
+              );
+            })}
           </div>
         ) : null}
       </section>
@@ -837,12 +986,31 @@ export default function RoomRenderer({
       {/* BOX 4 stage (zoomed content wrapper) */}
       <section className="mb-card p-5 md:p-6 mb-5" style={{ flex: "1 1 auto" }}>
         <div className="mb-zoomWrap">
-          {!activeKeyword ? (
+          {isLocked ? (
+            <div className="min-h-[260px] flex items-center justify-center text-center">
+              <div>
+                <div className="text-sm opacity-70 font-semibold">
+                  {vipLoaded ? (
+                    <>
+                      Locked: requires <b>{requiredVipKey.toUpperCase()}</b> (you are{" "}
+                      <b>{userVipKey.toUpperCase()}</b>)
+                    </>
+                  ) : (
+                    <>Checking access…</>
+                  )}
+                </div>
+                <div className="mt-3 text-sm opacity-70">
+                  Complete checkout and refresh. If already paid, wait for webhook tier sync.
+                </div>
+              </div>
+            </div>
+          ) : !activeKeyword ? (
             <div className="min-h-[420px]" />
           ) : activeEntry ? (
             <ActiveEntry
               entry={activeEntry}
               index={activeEntryIndex >= 0 ? activeEntryIndex : 0}
+              kwColorMap={kwColorMap}
               enKeywords={enKeywords}
               viKeywords={viKeywords}
             />
@@ -885,11 +1053,13 @@ export default function RoomRenderer({
 function ActiveEntry({
   entry,
   index,
+  kwColorMap,
   enKeywords,
   viKeywords,
 }: {
   entry: any;
   index: number;
+  kwColorMap: KeywordColorMap; // kept for backward compatibility / future use
   enKeywords: string[];
   viKeywords: string[];
 }) {
@@ -899,37 +1069,54 @@ function ActiveEntry({
   const en = normalizeEntryTextEN(entry);
   const vi = normalizeEntryTextVI(entry);
 
+  // ✅ Per-entry: highlight only 3–5 keyword pairs that actually appear in THIS entry
+  const entryKwColorMap = useMemo(() => {
+    const pairs: { en: string; vi: string }[] = [];
+    const maxLen = Math.max(enKeywords.length, viKeywords.length);
+
+    for (let i = 0; i < maxLen; i++) {
+      const enK = String(enKeywords[i] ?? "").trim();
+      const viK = String(viKeywords[i] ?? "").trim();
+      if (!enK && !viK) continue;
+
+      const hit =
+        (enK && entryMatchesKeyword(entry, enK)) || (viK && entryMatchesKeyword(entry, viK));
+      if (!hit) continue;
+
+      pairs.push({ en: enK, vi: viK });
+      if (pairs.length >= 5) break;
+    }
+
+    const enTop = pairs.map((p) => p.en).filter(Boolean);
+    const viTop = pairs.map((p) => p.vi).filter(Boolean);
+
+    return buildKeywordColorMap(enTop, viTop, 5);
+  }, [entry, enKeywords, viKeywords]);
+
   const audioSrc = pickAudio(entry);
   const audioLabel = audioLabelFromSrc(audioSrc);
 
   return (
     <div>
       {heading ? (
-        <h3 className="text-2xl md:text-3xl font-serif font-bold mt-1 leading-tight">
-          {heading}
-        </h3>
+        <h3 className="text-2xl md:text-3xl font-serif font-bold mt-1 leading-tight">{heading}</h3>
       ) : null}
 
       {en ? (
-        <div className="mt-4 text-[15px] md:text-base">
-          {highlightByKeywordList(en, enKeywords)}
+        <div className="mt-4 text-[15px] md:text-base mb-entryText">
+          {highlightByColorMap(en, entryKwColorMap)}
         </div>
       ) : null}
 
       {audioSrc ? (
         <div className="mt-4 mb-audioClamp">
-          <TalkingFacePlayButton
-            src={audioSrc}
-            label={audioLabel}
-            className="w-full"
-            fullWidthBar
-          />
+          <TalkingFacePlayButton src={audioSrc} label={audioLabel} className="w-full" fullWidthBar />
         </div>
       ) : null}
 
       {vi ? (
-        <div className="mt-4 text-[15px] md:text-base">
-          {highlightByKeywordList(vi, viKeywords)}
+        <div className="mt-4 text-[15px] md:text-base mb-entryText">
+          {highlightByColorMap(vi, entryKwColorMap)}
         </div>
       ) : null}
     </div>
@@ -937,5 +1124,5 @@ function ActiveEntry({
 }
 
 /** New thing to learn:
- * If your JSON entries only have "id" (no title), your renderer must use entry.id as the heading,
- * otherwise the UI looks like content is missing even when it’s loaded correctly. */
+ * If your keywords come from slugs (daily-walk) but your text uses spaces (daily walk),
+ * normalize separators and match variants (space/-/_) so highlights actually appear. */
