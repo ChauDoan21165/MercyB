@@ -1,11 +1,7 @@
 {
-  "redirects": [
-    {
-      "source": "/(.*)",
-      "has": [{ "type": "host", "value": "www.mercyblade.com" }],
-      "destination": "https://mercyblade.com/$1",
-      "permanent": true
-    }
-  ],
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "version": 2,
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
 }
