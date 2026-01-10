@@ -1,0 +1,13 @@
+Subject: VIP access granted
+
+Hello,
+
+Your VIP access to Mercy Blade is now active.
+
+Tier: {{vip_tier}}
+Effective: {{effective_date}}
+
+You can continue where you left off.
+
+— Mercy Blade
+Calm systems, built to last.

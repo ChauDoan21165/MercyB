@@ -1,0 +1,42 @@
+function TalkingFaceIcon({ playing }: { playing: boolean }) {
+  return (
+    <svg
+      viewBox="0 0 64 64"
+      width="26"
+      height="26"
+      aria-hidden="true"
+      focusable="false"
+      style={{ display: "block" }}
+    >
+      {/* face */}
+      <circle cx="32" cy="32" r="28" fill="currentColor" opacity="0.12" />
+      <circle cx="32" cy="32" r="26" fill="currentColor" opacity="0.18" />
+      <circle cx="32" cy="32" r="24" fill="white" opacity="0.92" />
+
+      {/* eyes */}
+      <circle cx="24" cy="28" r="3.2" fill="currentColor" opacity="0.8" />
+      <circle cx="40" cy="28" r="3.2" fill="currentColor" opacity="0.8" />
+
+      {/* mouth (closed vs open) */}
+      {playing ? (
+        <>
+          {/* open mouth */}
+          <ellipse cx="32" cy="41" rx="8.5" ry="6.5" fill="currentColor" opacity="0.85" />
+          <ellipse cx="32" cy="42" rx="5.5" ry="3.5" fill="white" opacity="0.15" />
+        </>
+      ) : (
+        <>
+          {/* closed mouth */}
+          <path
+            d="M24 41c4 3 12 3 16 0"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="3.5"
+            strokeLinecap="round"
+            opacity="0.85"
+          />
+        </>
+      )}
+    </svg>
+  );
+}
