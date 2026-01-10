@@ -42,7 +42,7 @@ const TIERS: { id: TierId; label: string; hint?: string }[] = [
   { id: "vip9", label: "VIP9", hint: "Strategy mindset" },
 ];
 
-function normTier(t: any): TierId {
+function normTier(t: unknown): TierId {
   const x = String(t || "free").toLowerCase().trim();
   if (x === "free") return "free";
   if (x === "vip1") return "vip1";
@@ -64,6 +64,7 @@ function titleOf(r: any) {
 function matchRoom(r: FetcherRoomMeta, qRaw: string) {
   const q = String(qRaw || "").trim().toLowerCase();
   if (!q) return true;
+
   const hay = [
     String((r as any)?.id || ""),
     String(titleOf(r)),
@@ -74,6 +75,7 @@ function matchRoom(r: FetcherRoomMeta, qRaw: string) {
   ]
     .join(" • ")
     .toLowerCase();
+
   return hay.includes(q);
 }
 
@@ -107,6 +109,7 @@ export default function TierMapPage() {
         if (!cancelled) setLoading(false);
       }
     })();
+
     return () => {
       cancelled = true;
     };
@@ -181,23 +184,13 @@ export default function TierMapPage() {
           box-shadow: 0 20px 60px rgba(0,0,0,0.08);
           backdrop-filter: blur(10px);
         }
-        .mb-hero-inner{
-          padding: 26px 18px;
-        }
-        @media (min-width: 768px){
-          .mb-hero-inner{ padding: 34px 26px; }
-        }
+        .mb-hero-inner{ padding: 26px 18px; }
+        @media (min-width: 768px){ .mb-hero-inner{ padding: 34px 26px; } }
         .mb-hero-title{
-          font-size: 34px;
-          line-height: 1.05;
-          letter-spacing: -0.02em;
+          font-size: 34px; line-height: 1.05; letter-spacing: -0.02em;
         }
-        @media (min-width: 768px){
-          .mb-hero-title{ font-size: 46px; }
-        }
-        .mb-hero-sub{
-          color: rgba(0,0,0,0.60);
-        }
+        @media (min-width: 768px){ .mb-hero-title{ font-size: 46px; } }
+        .mb-hero-sub{ color: rgba(0,0,0,0.60); }
 
         /* CONTROL STRIP */
         .mb-controls{
@@ -274,9 +267,7 @@ export default function TierMapPage() {
           color: rgba(0,0,0,0.55);
           margin-top: 1px;
         }
-        .mb-tier-body{
-          padding: 0 14px 14px;
-        }
+        .mb-tier-body{ padding: 0 14px 14px; }
         .mb-room-link{
           display: block;
           border-radius: 18px;
@@ -309,7 +300,6 @@ export default function TierMapPage() {
               </p>
             </div>
 
-            {/* Keep your existing toggle (top-right vibe) */}
             <ThemeToggle />
           </div>
 
@@ -323,8 +313,7 @@ export default function TierMapPage() {
             />
 
             <span className="mb-pill">
-              Showing <b>{loading ? "…" : totalVisible}</b> room
-              {totalVisible === 1 ? "" : "s"}
+              Showing <b>{loading ? "…" : totalVisible}</b> room{totalVisible === 1 ? "" : "s"}
             </span>
 
             <button
@@ -333,4 +322,108 @@ export default function TierMapPage() {
               onClick={() =>
                 setExpanded((prev) => {
                   const next: Record<TierId, boolean> = { ...prev };
-                  for (const
+                  for (const t of TIERS) next[t.id] = true;
+                  return next;
+                })
+              }
+            >
+              Expand all
+            </button>
+
+            <button
+              type="button"
+              className="mb-btn"
+              onClick={() =>
+                setExpanded((prev) => {
+                  const next: Record<TierId, boolean> = { ...prev };
+                  for (const t of TIERS) next[t.id] = false;
+                  return next;
+                })
+              }
+            >
+              Collapse all
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* CONTENT */}
+      <div className="mt-8 grid grid-cols-1 gap-5">
+        {TIERS.map((t) => {
+          const list = filteredGrouped[t.id] || [];
+          const isOpen = !!expanded[t.id];
+
+          return (
+            <div key={t.id} className="mb-tier-card">
+              <div className="mb-tier-head">
+                <button
+                  type="button"
+                  className="text-left min-w-0"
+                  onClick={() =>
+                    setExpanded((prev) => ({
+                      ...prev,
+                      [t.id]: !prev[t.id],
+                    }))
+                  }
+                  aria-expanded={isOpen}
+                >
+                  <div className="mb-tier-title">
+                    <div className="text-base font-bold">{t.label}</div>
+                    <div className="mb-tier-count">
+                      {loading ? "…" : `${list.length} room${list.length === 1 ? "" : "s"}`}
+                    </div>
+                  </div>
+                  {t.hint ? <div className="mb-tier-hint">{t.hint}</div> : null}
+                </button>
+
+                <button
+                  type="button"
+                  className="mb-btn"
+                  onClick={() =>
+                    setExpanded((prev) => ({
+                      ...prev,
+                      [t.id]: !prev[t.id],
+                    }))
+                  }
+                >
+                  {isOpen ? "Hide" : "Show"}
+                </button>
+              </div>
+
+              {isOpen ? (
+                <div className="mb-tier-body">
+                  {loading ? (
+                    <div className="text-sm text-muted-foreground py-2">Loading…</div>
+                  ) : list.length === 0 ? (
+                    <div className="text-sm text-muted-foreground py-2">
+                      No rooms match this tier (or your search).
+                    </div>
+                  ) : (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      {list.map((r) => {
+                        const id = String((r as any)?.id || "");
+                        const title = String(titleOf(r));
+                        return (
+                          <Link
+                            key={id || title}
+                            to={id ? `/room/${id}` : "#"}
+                            className="mb-room-link"
+                          >
+                            <div className="text-sm font-semibold truncate">{title}</div>
+                            <div className="text-xs text-muted-foreground mt-1 truncate">
+                              {id ? `/${id}` : "Missing room id"}
+                            </div>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              ) : null}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}

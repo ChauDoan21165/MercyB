@@ -1,57 +1,63 @@
 project_id = "vpkchobbrennozdvhgaw"
 
+# =========================
+# EMAIL
+# =========================
 [functions.email-broadcast]
 verify_jwt = false
 
 [functions.email-automations]
 verify_jwt = false
 
+[functions.send-redeem-email]
+verify_jwt = false
+
+[functions.send-pending-emails]
+verify_jwt = false
+
+
+# =========================
+# CHAT / AI
+# =========================
 [functions.room-chat]
 verify_jwt = true
 
 [functions.ai-chat]
 verify_jwt = true
 
+[functions.ai-reasoning]
+verify_jwt = true
+
+[functions.ai-dashboard]
+verify_jwt = true
+
 [functions.generate-matches]
 verify_jwt = true
 
+
+# =========================
+# PAYMENTS
+# =========================
 [functions.paypal-payment]
 verify_jwt = true
 
-[functions.text-to-speech]
-verify_jwt = true
-
-[functions.dictionary-tts]
-verify_jwt = true
+[functions.bank-transfer-orders]
+verify_jwt = false
 
 [functions.verify-payment-screenshot]
 verify_jwt = true
 
-[functions.room-sync-health]
+[functions.generate-gift-code]
 verify_jwt = true
 
-[functions.room-health-summary]
-verify_jwt = true
-
-[functions.security-alert]
+[functions.redeem-gift-code]
 verify_jwt = false
 
-[functions.uptime-monitor]
-verify_jwt = false
 
-[functions.health-check]
-verify_jwt = false
-
-[functions.ai-reasoning]
-verify_jwt = true
-
-[functions.audit-v4-safe-shield]
-verify_jwt = true
-
-[functions.audit-audio-health]
-verify_jwt = true
-
-[functions.audit-db-health]
+# =========================
+# AUDIO
+# =========================
+[functions.text-to-speech]
 verify_jwt = true
 
 [functions.generate-room-audio]
@@ -66,6 +72,16 @@ verify_jwt = false
 [functions.audio-batch-generate]
 verify_jwt = false
 
+[functions.audio-storage-audit]
+verify_jwt = true
+
+[functions.audit-audio-health]
+verify_jwt = true
+
+
+# =========================
+# GUIDES
+# =========================
 [functions.guide-assistant]
 verify_jwt = false
 
@@ -75,29 +91,47 @@ verify_jwt = false
 [functions.guide-pronunciation-coach]
 verify_jwt = false
 
-[functions.audio-storage-audit]
-verify_jwt = true
 
-[functions.generate-gift-code]
-verify_jwt = true
-
-[functions.manage-admins]
-verify_jwt = true
-
-[functions.redeem-gift-code]
+# =========================
+# ADMIN / SECURITY
+# =========================
+[functions.admin-management]
 verify_jwt = false
 
-[functions.ai-dashboard]
+[functions.manage-admins]
 verify_jwt = true
 
 [functions.admin-stats]
 verify_jwt = true
 
-[functions.send-redeem-email]
+[functions.security-alert]
 verify_jwt = false
 
-[functions.admin-management]
+[functions.audit-v4-safe-shield]
+verify_jwt = true
+
+[functions.audit-db-health]
+verify_jwt = true
+
+
+# =========================
+# HEALTH / MONITORING
+# =========================
+[functions.health-check]
 verify_jwt = false
 
-[functions.bank-transfer-orders]
+[functions.uptime-monitor]
 verify_jwt = false
+
+[functions.room-health-summary]
+verify_jwt = true
+
+
+# =========================
+# STRIPE WEBHOOK
+# =========================
+[functions.stripe-webhook]
+enabled = true
+verify_jwt = true
+import_map = "./functions/stripe-webhook/deno.json"
+entrypoint = "./functions/stripe-webhook/index.ts"

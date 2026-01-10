@@ -1,9 +1,76 @@
 // src/AppRouter.tsx
-// MB-BLUE-101.1 — 2025-12-31 (+0700)
+// MB-BLUE-100.4 — 2025-12-31 (+0700)
 //
-// LEGACY SHIM (LOCKED):
-// - DO NOT define <Routes> here.
-// - Single source of truth router lives at: src/router/AppRouter.tsx
-// - This file exists only to prevent “wrong import” regressions.
+// ROUTING RULES (LOCKED):
+// - Canonical room route: /room/:roomId
+// - Legacy/bad routes are redirected silently
+// - /room (no id) must NOT show NotFound
+// - No resolver logic here
+//
+// FIX (100.4):
+// - Mount BottomMusicBar ONCE at app-shell level
+// - Remove it from ChatHub
+// - Guarantees identical alignment with room content
+// - Stops layout fights / overflow forever
 
-export { default } from "@/router/AppRouter";
+import type { ReactNode } from "react";
+import { Routes, Route, Navigate, useParams } from "react-router-dom";
+
+import ChatHub from "@/pages/ChatHub";
+import AllRooms from "@/pages/AllRooms";
+import NotFound from "@/_legacy_next_pages/NotFound";
+import BottomMusicBar from "@/components/audio/BottomMusicBar";
+
+/**
+ * Legacy fix:
+ * /room/room/:roomId  →  /room/:roomId
+ */
+function RoomRoomRedirect() {
+  const { roomId } = useParams<{ roomId: string }>();
+  return <Navigate to={roomId ? `/room/${roomId}` : "/"} replace />;
+}
+
+/**
+ * Safety fix:
+ * /room  →  /
+ * (Important: must not render NotFound)
+ */
+function RoomIndexRedirect() {
+  return <Navigate to="/" replace />;
+}
+
+/**
+ * GLOBAL APP SHELL (LOCKED)
+ * - Owns BottomMusicBar
+ * - Routes render INSIDE this shell
+ */
+function AppShell({ children }: { children: ReactNode }) {
+  return (
+    <>
+      {children}
+      <BottomMusicBar />
+    </>
+  );
+}
+
+export default function AppRouter() {
+  return (
+    <AppShell>
+      <Routes>
+        {/* Main landing */}
+        <Route path="/" element={<AllRooms />} />
+
+        {/* 🔁 Legacy fixes (explicit, silent) */}
+        <Route path="/room/room/:roomId" element={<RoomRoomRedirect />} />
+        <Route path="/room/" element={<RoomIndexRedirect />} />
+        <Route path="/room" element={<RoomIndexRedirect />} />
+
+        {/* ✅ Canonical room route */}
+        <Route path="/room/:roomId" element={<ChatHub />} />
+
+        {/* Fallback */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </AppShell>
+  );
+}

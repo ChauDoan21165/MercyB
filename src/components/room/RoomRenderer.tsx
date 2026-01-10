@@ -1,5 +1,3 @@
-// src/components/room/RoomRenderer.tsx
-// MB-BLUE-99.9 — 2026-01-03 (+0700)
 /**
  * ROOM 5-BOX SPEC (LOCKED)
  * BOX 2: Title row (tier left, title centered, fav+refresh right) — ONE ROW
@@ -7,43 +5,34 @@
  * BOX 4: EMPTY space until keyword chosen; then EN → TalkingFace → VI
  * BOX 5: Feedback bar pushed to bottom of room (no header line)
  *
- * ✅ FIX (MB-BLUE-99.3):
- * - Title HARDENING: ignore “bad” titles that look like room id (snake_case / _vipX / equals id)
- * - Standardize welcome to use the same cleaned title (no “Topic:” line, no “mood-management” header spam)
- *
- * ✅ FIX (MB-BLUE-99.4):
- * - HARD CLAMP the *ROOM ENTRY* TalkingFacePlayButton so it can NEVER paint past the card edge.
- * - This is the “sticking out” you showed (range focus ring / inner control paint).
- * - We do NOT touch BottomMusicBar here.
- *
- * ✅ FIX (MB-BLUE-99.6):
- * - Zoom ACTUALLY works: Box 4 uses transform scale driven by --mb-essay-zoom.
- *   Why: Tailwind font sizes are rem/px and ignore parent font-size scaling.
- *   Transform scaling affects everything (rem/px included), without touching BottomMusicBar.
- *
- * ✅ FIX (MB-BLUE-99.7):
- * - KEYWORD FALLBACK: If room JSON has entries but no keywords_en/keywords_vi,
- *   derive keyword buttons from entry.id / entry.slug / entry.title.
- *
- * ✅ FIX (MB-BLUE-99.8):
- * - ENTRY HEADING RESTORE: if entry has no title/heading, use entry.id/slug as the heading
- *   (so your english_writing_free shows "Basics" / "Practice" instead of "Entry 1/2").
- *
- * ✅ FIX (MB-BLUE-99.9):
- * - DARK keyword highlights inside ENTRY text (and welcome line).
- * - SAME color for the same EN/VI keyword pair.
- * - Only highlight top 3–5 keyword pairs (default 5) to keep it readable.
- *
- * ✅ FIX (MB-BLUE-99.9a):
- * - Hyphen/underscore/space tolerant matching:
- *   "daily-walk" highlights "daily walk" in text (and vice versa)
+ * ✅ FIX (MB-BLUE-99.10):
+ * - REAL gate fix: STOP using JWT / getCurrentVipKey.
+ * - Gate uses useUserAccess() which now reads public.profiles (tier, is_admin, admin_level).
+ * - Admin/high-admin bypass stays (hook returns isHighAdmin => access all).
  */
+
+// FILE: src/components/room/RoomRenderer.tsx
+// MB-BLUE-99.10e → MB-BLUE-99.11a — 2026-01-10 (+0700)
+//
+// ✅ 99.11a FIX (DB ENTRIES):
+// - Entries now come from DB: public.room_entries (RLS via has_vip_rank(required_rank))
+// - Filter: room_id = effectiveRoomId
+// - Prefer DB entries for allEntries + keyword fallback
+// - Keep JSON deepFind fallback for weird schemas
+// - Keep ROOM 5-BOX SPEC + useUserAccess gate EXACTLY (no JWT/getCurrentVipKey)
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { BilingualEssay } from "@/components/room/BilingualEssay";
 import TalkingFacePlayButton from "@/components/audio/TalkingFacePlayButton";
-import { getCurrentVipKey } from "@/lib/authService";
-import type { VipKey } from "@/lib/auth";
+import { useUserAccess } from "@/hooks/useUserAccess";
+import type { TierId } from "@/lib/constants/tiers";
+import { normalizeTier } from "@/lib/constants/tiers";
+
+// ✅ IMPORTANT: adjust this import to your project’s supabase client export if needed.
+// Common patterns:
+// - import { supabase } from "@/lib/supabaseClient";
+// - import supabase from "@/lib/supabaseClient";
+import { supabase } from "@/lib/supabaseClient";
 
 type AnyRoom = any;
 
@@ -151,18 +140,173 @@ function pickIntroVI(room: AnyRoom) {
   );
 }
 
+/* ----------------------------------------------------- */
+/* ✅ MB-BLUE-99.10e — Deep fallback for unknown schemas  */
+/* ----------------------------------------------------- */
+
+function isPlainObject(x: any) {
+  return !!x && typeof x === "object" && !Array.isArray(x);
+}
+
+/**
+ * Find the FIRST array that looks like it contains room entries (array of objects),
+ * anywhere inside the room object, depth-limited, cycle-safe.
+ */
+function deepFindFirstObjectArray(root: any, maxDepth = 6): any[] {
+  const seen = new WeakSet<object>();
+
+  const looksUsefulArray = (arr: any[]) => {
+    if (!Array.isArray(arr) || arr.length === 0) return false;
+    // must contain objects (not all strings/numbers)
+    const objCount = arr.slice(0, 8).filter((x) => x && typeof x === "object").length;
+    if (objCount === 0) return false;
+
+    // bonus signals: entry-like keys
+    const sample = arr.find((x) => x && typeof x === "object") || {};
+    const hasSignals =
+      !!(sample?.audio || sample?.mp3 || sample?.text || sample?.content || sample?.title || sample?.id || sample?.slug);
+    return hasSignals;
+  };
+
+  const visit = (node: any, depth: number): any[] => {
+    if (!node || depth > maxDepth) return [];
+
+    if (Array.isArray(node)) {
+      if (looksUsefulArray(node)) return node;
+
+      for (const item of node) {
+        const found = visit(item, depth + 1);
+        if (found.length) return found;
+      }
+      return [];
+    }
+
+    if (isPlainObject(node)) {
+      if (seen.has(node)) return [];
+      seen.add(node);
+
+      // Try common “container-ish” keys first for speed
+      const preferredKeys = [
+        "entries",
+        "items",
+        "cards",
+        "blocks",
+        "sections",
+        "steps",
+        "children",
+        "nodes",
+        "rows",
+        "cols",
+        "data",
+        "payload",
+        "content",
+      ];
+
+      for (const k of preferredKeys) {
+        if (k in node) {
+          const found = visit((node as any)[k], depth + 1);
+          if (found.length) return found;
+        }
+      }
+
+      // Then scan the rest
+      for (const k of Object.keys(node)) {
+        if (preferredKeys.includes(k)) continue;
+        const v = (node as any)[k];
+        if (!v || typeof v !== "object") continue;
+        const found = visit(v, depth + 1);
+        if (found.length) return found;
+      }
+    }
+
+    return [];
+  };
+
+  return visit(root, 0);
+}
+
+/**
+ * ✅ MB-BLUE-99.10d — resolve possible “top containers”
+ * Some rooms are shaped like:
+ * - room.sections[]
+ * - room.entries[]
+ * - room.content.sections[]
+ * - room.content.blocks[]
+ * - room.blocks[] / room.items[]
+ * - ✅ room.content.data.*
+ * - ✅ room.content.payload.*
+ *
+ * We feed these wrappers to flattenToLeafEntries (it will drill down).
+ */
+function resolveTopContainers(room: AnyRoom): any[] {
+  const direct = firstNonEmptyArray(
+    // top-level
+    room?.sections,
+    room?.blocks,
+    room?.items,
+    room?.cards,
+    room?.entries,
+
+    // content.*
+    room?.content?.sections,
+    room?.content?.blocks,
+    room?.content?.items,
+    room?.content?.cards,
+    room?.content?.entries,
+
+    // ✅ NEW: content.data.*
+    room?.content?.data?.sections,
+    room?.content?.data?.blocks,
+    room?.content?.data?.items,
+    room?.content?.data?.cards,
+    room?.content?.data?.entries,
+
+    // ✅ NEW: content.payload.*
+    room?.content?.payload?.sections,
+    room?.content?.payload?.blocks,
+    room?.content?.payload?.items,
+    room?.content?.payload?.cards,
+    room?.content?.payload?.entries,
+
+    // legacy room.data / room.payload
+    room?.data?.sections,
+    room?.data?.blocks,
+    room?.data?.items,
+    room?.data?.cards,
+    room?.data?.entries,
+
+    room?.payload?.sections,
+    room?.payload?.blocks,
+    room?.payload?.items,
+    room?.payload?.cards,
+    room?.payload?.entries,
+  );
+
+  // ✅ last-resort: unknown schema (your screenshot)
+  if (direct.length) return direct;
+  return deepFindFirstObjectArray(room, 6);
+}
+
 function resolveEntries(room: AnyRoom): any[] {
+  // Keep old behavior, but broaden: if sections/blocks exist, treat as entries to flatten.
   return firstNonEmptyArray(
     room?.entries,
     room?.content?.entries,
     room?.data?.entries,
     room?.payload?.entries,
-    room?.items,
-    room?.cards,
+
+    // ✅ broaden for “container-first” rooms
+    room?.sections,
+    room?.content?.sections,
+    room?.content?.blocks,
     room?.blocks,
-    room?.steps,
+    room?.items,
+    room?.content?.items,
+    room?.cards,
+    room?.content?.cards,
   );
 }
+
 function resolveSectionEntries(section: any): any[] {
   return firstNonEmptyArray(
     section?.entries,
@@ -171,20 +315,233 @@ function resolveSectionEntries(section: any): any[] {
     section?.cards,
     section?.blocks,
     section?.steps,
+
+    // ✅ sometimes nested sections/children are used
+    section?.sections,
+    section?.children,
+    section?.nodes,
+    section?.rows,
+    section?.cols,
+
+    section?.content?.items,
+    section?.content?.cards,
+    section?.content?.blocks,
+    section?.content?.steps,
+    section?.content?.children,
+    section?.content?.nodes,
+    section?.content?.rows,
+    section?.content?.cols,
   );
 }
+
 function resolveKeywords(room: AnyRoom) {
   const en = firstNonEmptyArray(room?.keywords_en, room?.keywords?.en, room?.meta?.keywords_en);
   const vi = firstNonEmptyArray(room?.keywords_vi, room?.keywords?.vi, room?.meta?.keywords_vi);
   return { en, vi };
 }
 
-/** ✅ MB-BLUE-99.7 — fallback keywords from entries (id/slug/title) */
-function deriveKeywordsFromEntries(room: AnyRoom): { en: string[]; vi: string[] } {
-  const entries = asArray(room?.entries);
-  const raw: string[] = [];
+/* ----------------------------------------------------- */
+/* ✅ MB-BLUE-99.10b — FLATTEN wrappers -> leaf entries   */
+/* Fix: wrapper-aware. If node has child arrays,          */
+/* it is NOT a leaf even if it has id/title. Drill down.  */
+/* ----------------------------------------------------- */
 
-  for (const e of entries) {
+function hasAnyChildArrays(node: any): boolean {
+  if (!node || typeof node !== "object") return false;
+
+  const buckets = [
+    node?.entries,
+    node?.items,
+    node?.cards,
+    node?.blocks,
+    node?.steps,
+    node?.children,
+    node?.nodes,
+    node?.rows,
+    node?.cols,
+    node?.sections,
+
+    node?.content?.entries,
+    node?.content?.items,
+    node?.content?.cards,
+    node?.content?.blocks,
+    node?.content?.steps,
+    node?.content?.children,
+    node?.content?.nodes,
+    node?.content?.rows,
+    node?.content?.cols,
+    node?.content?.sections,
+
+    // ✅ NEW: content.data.*
+    node?.content?.data?.entries,
+    node?.content?.data?.items,
+    node?.content?.data?.cards,
+    node?.content?.data?.blocks,
+    node?.content?.data?.steps,
+    node?.content?.data?.sections,
+
+    // ✅ NEW: content.payload.*
+    node?.content?.payload?.entries,
+    node?.content?.payload?.items,
+    node?.content?.payload?.cards,
+    node?.content?.payload?.blocks,
+    node?.content?.payload?.steps,
+    node?.content?.payload?.sections,
+
+    node?.payload?.entries,
+    node?.payload?.items,
+    node?.payload?.cards,
+    node?.payload?.blocks,
+    node?.payload?.steps,
+    node?.payload?.sections,
+
+    node?.data?.entries,
+    node?.data?.items,
+    node?.data?.cards,
+    node?.data?.blocks,
+    node?.data?.steps,
+    node?.data?.sections,
+  ];
+
+  return buckets.some((b) => Array.isArray(b) && b.length > 0);
+}
+
+function looksLikeLeafEntry(x: any): boolean {
+  if (!x || typeof x !== "object") return false;
+
+  // ✅ KEY RULE: wrappers are never leaf
+  if (hasAnyChildArrays(x)) return false;
+
+  // Audio usually only exists on leaf entries
+  if (x.audio || x.audio_en || x.audio_vi || x.mp3 || x.mp3_en || x.mp3_vi) return true;
+
+  const hasText =
+    typeof x.text === "string" ||
+    typeof x.content === "string" ||
+    typeof x.copy?.en === "string" ||
+    typeof x.text?.en === "string" ||
+    typeof x.body?.en === "string" ||
+    typeof x.content?.en === "string" ||
+    typeof x.description?.en === "string" ||
+    typeof x.summary?.en === "string" ||
+    typeof x.copy_en === "string" ||
+    typeof x.text_en === "string" ||
+    typeof x.body_en === "string" ||
+    typeof x.content_en === "string" ||
+    typeof x.description_en === "string" ||
+    typeof x.summary_en === "string" ||
+    typeof x.copy?.vi === "string" ||
+    typeof x.text?.vi === "string" ||
+    typeof x.body?.vi === "string" ||
+    typeof x.content?.vi === "string" ||
+    typeof x.description?.vi === "string" ||
+    typeof x.summary?.vi === "string" ||
+    typeof x.copy_vi === "string" ||
+    typeof x.text_vi === "string" ||
+    typeof x.body_vi === "string" ||
+    typeof x.content_vi === "string" ||
+    typeof x.description_vi === "string" ||
+    typeof x.summary_vi === "string";
+
+  if (hasText) return true;
+
+  // Minimal “card” leafs sometimes only have meta/title
+  const hasTitle = !!(x.title?.en || x.title_en || x.heading?.en || x.heading_en || x.name?.en || x.name_en);
+  const hasMeta = !!(x.id || x.slug);
+
+  return hasTitle || hasMeta;
+}
+
+function collectChildEntryArrays(node: any): any[][] {
+  if (!node || typeof node !== "object") return [];
+
+  const buckets = [
+    asArray(node?.entries),
+    asArray(node?.items),
+    asArray(node?.cards),
+    asArray(node?.blocks),
+    asArray(node?.steps),
+    asArray(node?.children),
+    asArray(node?.nodes),
+    asArray(node?.rows),
+    asArray(node?.cols),
+    asArray(node?.sections),
+
+    asArray(node?.content?.entries),
+    asArray(node?.content?.items),
+    asArray(node?.content?.cards),
+    asArray(node?.content?.blocks),
+    asArray(node?.content?.steps),
+    asArray(node?.content?.children),
+    asArray(node?.content?.nodes),
+    asArray(node?.content?.rows),
+    asArray(node?.content?.cols),
+    asArray(node?.content?.sections),
+
+    // ✅ NEW: content.data.*
+    asArray(node?.content?.data?.entries),
+    asArray(node?.content?.data?.items),
+    asArray(node?.content?.data?.cards),
+    asArray(node?.content?.data?.blocks),
+    asArray(node?.content?.data?.steps),
+    asArray(node?.content?.data?.sections),
+
+    // ✅ NEW: content.payload.*
+    asArray(node?.content?.payload?.entries),
+    asArray(node?.content?.payload?.items),
+    asArray(node?.content?.payload?.cards),
+    asArray(node?.content?.payload?.blocks),
+    asArray(node?.content?.payload?.steps),
+    asArray(node?.content?.payload?.sections),
+
+    asArray(node?.payload?.entries),
+    asArray(node?.payload?.items),
+    asArray(node?.payload?.cards),
+    asArray(node?.payload?.blocks),
+    asArray(node?.payload?.steps),
+    asArray(node?.payload?.sections),
+
+    asArray(node?.data?.entries),
+    asArray(node?.data?.items),
+    asArray(node?.data?.cards),
+    asArray(node?.data?.blocks),
+    asArray(node?.data?.steps),
+    asArray(node?.data?.sections),
+  ];
+
+  return buckets.filter((a) => Array.isArray(a) && a.length > 0);
+}
+
+/**
+ * Flatten wrappers (sections/blocks/cards) into leaf entries.
+ * Depth-limited to avoid weird cycles.
+ */
+function flattenToLeafEntries(input: any[], maxDepth = 6): any[] {
+  const out: any[] = [];
+
+  const visit = (arr: any[], depth: number) => {
+    for (const x of asArray(arr)) {
+      if (!x || typeof x !== "object") continue;
+
+      // ✅ Drill down first if wrapper has children arrays.
+      const children = collectChildEntryArrays(x);
+      if (children.length && depth < maxDepth) {
+        for (const c of children) visit(c, depth + 1);
+        continue;
+      }
+
+      if (looksLikeLeafEntry(x)) out.push(x);
+    }
+  };
+
+  visit(input, 0);
+  return out;
+}
+
+/** ✅ MB-BLUE-99.7 — fallback keywords from entries (id/slug/title) */
+function deriveKeywordsFromEntryList(entries: any[]): { en: string[]; vi: string[] } {
+  const raw: string[] = [];
+  for (const e of asArray(entries)) {
     const k =
       e?.id ||
       e?.slug ||
@@ -193,8 +550,8 @@ function deriveKeywordsFromEntries(room: AnyRoom): { en: string[]; vi: string[] 
       e?.title_en ||
       e?.heading_en ||
       "";
-    const s = String(k || "").trim();
-    if (s) raw.push(s);
+    const txt = String(k || "").trim();
+    if (txt) raw.push(txt);
   }
 
   const seen = new Set<string>();
@@ -209,45 +566,37 @@ function deriveKeywordsFromEntries(room: AnyRoom): { en: string[]; vi: string[] 
   return { en: out, vi: out };
 }
 
+/** ✅ MB-BLUE-99.7 — fallback keywords from entries (id/slug/title) */
+function deriveKeywordsFromEntries(room: AnyRoom): { en: string[]; vi: string[] } {
+  // ✅ pull from the broad top containers (now includes deep fallback)
+  const tops = resolveTopContainers(room);
+  if (tops.length === 0) return { en: [], vi: [] };
+
+  const leaf = flattenToLeafEntries(tops, 6);
+  return deriveKeywordsFromEntryList(leaf);
+}
+
 function resolveEssay(room: AnyRoom) {
-  const en =
-    room?.essay?.en ||
-    room?.essay_en ||
-    room?.content?.essay?.en ||
-    room?.content?.essay_en ||
-    "";
-  const vi =
-    room?.essay?.vi ||
-    room?.essay_vi ||
-    room?.content?.essay?.vi ||
-    room?.content?.essay_vi ||
-    "";
+  const en = room?.essay?.en || room?.essay_en || room?.content?.essay?.en || room?.content?.essay_en || "";
+  const vi = room?.essay?.vi || room?.essay_vi || room?.content?.essay?.vi || room?.content?.essay_vi || "";
   return { en, vi };
 }
 function pickTier(room: AnyRoom): string {
   return String(room?.tier || room?.meta?.tier || "free").toLowerCase();
 }
 
-// ✅ Payment gate helpers (client compares DB vipKey vs room tier)
-function normalizeVipKeyFromTier(tier: string): VipKey {
-  const t = String(tier || "").toLowerCase();
-  if (t.includes("vip9")) return "vip9";
-  if (t.includes("vip3")) return "vip3";
-  if (t.includes("vip1")) return "vip1";
-  return "free";
+/** ✅ MB-BLUE-99.10 — normalize room tier -> TierId (for useUserAccess.canAccessTier) */
+function normalizeRoomTierToTierId(roomTier: string): TierId {
+  const t = String(roomTier || "").trim();
+  if (!t) return "free";
+  return normalizeTier(t);
 }
-const VIP_RANK: Record<VipKey, number> = {
-  free: 0,
-  vip1: 1,
-  vip3: 3,
-  vip9: 9,
-};
 
 function normalizeAudioSrc(src: string): string {
   const s = String(src || "").trim();
   if (!s) return "";
   if (s.startsWith("http://") || s.startsWith("https://")) return s;
-  let p = s.replace(/^\/+/, "");
+  const p = s.replace(/^\/+/, "");
   if (p.startsWith("audio/")) return `/${p}`;
   return `/audio/${p.split("/").pop() || p}`;
 }
@@ -314,10 +663,8 @@ function normalizeEntryTextEN(entry: any): string {
   for (const c of candidates) {
     if (typeof c === "string" && c.trim()) return stripImplicitAudioLines(c);
   }
-  if (typeof entry?.text === "string" && entry.text.trim())
-    return stripImplicitAudioLines(entry.text);
-  if (typeof entry?.content === "string" && entry.content.trim())
-    return stripImplicitAudioLines(entry.content);
+  if (typeof entry?.text === "string" && entry.text.trim()) return stripImplicitAudioLines(entry.text);
+  if (typeof entry?.content === "string" && entry.content.trim()) return stripImplicitAudioLines(entry.content);
   return "";
 }
 function normalizeEntryTextVI(entry: any): string {
@@ -345,16 +692,7 @@ function escapeRegExp(s: string) {
   return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-const KW_CLASSES = [
-  "mb-kw-0",
-  "mb-kw-1",
-  "mb-kw-2",
-  "mb-kw-3",
-  "mb-kw-4",
-  "mb-kw-5",
-  "mb-kw-6",
-  "mb-kw-7",
-] as const;
+const KW_CLASSES = ["mb-kw-0", "mb-kw-1", "mb-kw-2", "mb-kw-3", "mb-kw-4", "mb-kw-5", "mb-kw-6", "mb-kw-7"] as const;
 
 type KeywordColorMap = Map<string, (typeof KW_CLASSES)[number]>;
 
@@ -369,15 +707,44 @@ function normalizeKwKey(s: string) {
     .replace(/[\s\-_]+/g, " ");
 }
 
+/** ✅ MB-BLUE-99.10a — normalize arbitrary text for tolerant keyword matching (+ simple plurals) */
+function normalizeTextForKwMatch(s: string) {
+  const base = String(s || "")
+    .toLowerCase()
+    .trim()
+    // normalize separators
+    .replace(/[\s\-_]+/g, " ")
+    // drop most punctuation (keep letters/numbers/space)
+    .replace(/[^\p{L}\p{N}\s]/gu, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  if (!base) return "";
+
+  // tiny stemming: foods -> food, strategies -> strategy, boxes -> box
+  const words = base.split(" ").map((w) => {
+    if (w.length < 4) return w;
+
+    if (w.endsWith("ies") && w.length >= 5) return w.slice(0, -3) + "y";
+
+    if (w.endsWith("es") && w.length >= 5) {
+      const root = w.slice(0, -2);
+      if (/(s|x|z|ch|sh)$/.test(root)) return root;
+    }
+
+    if (w.endsWith("s") && !w.endsWith("ss")) return w.slice(0, -1);
+
+    return w;
+  });
+
+  return words.join(" ");
+}
+
 /**
  * ✅ MB-BLUE-99.9 — map EN/VI keyword pairs to the SAME class
  * and limit to top N pairs (default 5).
  */
-function buildKeywordColorMap(
-  enKeywords: string[],
-  viKeywords: string[],
-  maxPairs = 5,
-): KeywordColorMap {
+function buildKeywordColorMap(enKeywords: string[], viKeywords: string[], maxPairs = 5): KeywordColorMap {
   const map: KeywordColorMap = new Map();
 
   const maxLen = Math.max(enKeywords.length, viKeywords.length);
@@ -407,9 +774,6 @@ function highlightByColorMap(text: string, colorMap: KeywordColorMap) {
 
   if (!colorMap || colorMap.size === 0) return t;
 
-  // Build pattern from keys (longest first so phrases win)
-  // Each key is normalized like: "daily walk"
-  // Convert to regex that matches "daily walk" OR "daily-walk" OR "daily_walk"
   const ordered = Array.from(colorMap.keys()).sort((a, b) => b.length - a.length);
 
   const keyToVariantPattern = (k: string) => {
@@ -422,8 +786,6 @@ function highlightByColorMap(text: string, colorMap: KeywordColorMap) {
   const pattern = ordered.map(keyToVariantPattern).filter(Boolean).join("|");
   if (!pattern) return t;
 
-  // Unicode-safe boundary: avoid matching inside other words (works better for VI accents)
-  // group(1) = leading separator (kept), group(2) = actual match
   const re = new RegExp(`(^|[^\\p{L}\\p{N}_])(${pattern})(?=[^\\p{L}\\p{N}_]|$)`, "giu");
 
   const parts: React.ReactNode[] = [];
@@ -438,56 +800,9 @@ function highlightByColorMap(text: string, colorMap: KeywordColorMap) {
     const end = start + full.length;
 
     if (start > last) parts.push(t.slice(last, start));
-
     if (prefix) parts.push(prefix);
 
     const cls = colorMap.get(normalizeKwKey(match)) || KW_CLASSES[0];
-    parts.push(
-      <span key={`${start}-${end}`} className={`mb-kw ${cls}`}>
-        {match}
-      </span>,
-    );
-
-    last = end;
-  }
-
-  if (last < t.length) parts.push(t.slice(last));
-  return <span className="whitespace-pre-line leading-relaxed">{parts}</span>;
-}
-
-/** Backward compatible: if you want to use the old list-based highlight somewhere. */
-function highlightByKeywordList(text: string, keywords: string[]) {
-  const t = String(text || "");
-  if (!t.trim()) return t;
-
-  const map = new Map<string, string>();
-  keywords
-    .map((k) => String(k || "").trim())
-    .filter(Boolean)
-    .forEach((k, idx) => {
-      const key = k.toLowerCase();
-      if (!map.has(key)) map.set(key, KW_CLASSES[idx % KW_CLASSES.length]);
-    });
-
-  if (map.size === 0) return t;
-
-  const ordered = Array.from(map.keys()).sort((a, b) => b.length - a.length);
-  const pattern = ordered.map((k) => escapeRegExp(k)).join("|");
-  if (!pattern) return t;
-
-  const re = new RegExp(`\\b(${pattern})\\b`, "gi");
-  const parts: React.ReactNode[] = [];
-  let last = 0;
-  let m: RegExpExecArray | null;
-
-  while ((m = re.exec(t))) {
-    const start = m.index;
-    const match = m[0] || "";
-    const end = start + match.length;
-
-    if (start > last) parts.push(t.slice(last, start));
-
-    const cls = map.get(match.toLowerCase()) || KW_CLASSES[0];
     parts.push(
       <span key={`${start}-${end}`} className={`mb-kw ${cls}`}>
         {match}
@@ -524,28 +839,153 @@ function isUglyHeading(h: string) {
   return looksSlug || tooIdLike;
 }
 
+/** ✅ MB-BLUE-99.9a — tolerant matching for entry selection */
 function entryMatchesKeyword(entry: any, kw: string): boolean {
-  const k = String(kw || "").toLowerCase().trim();
-  if (!k) return false;
+  const kRaw = String(kw || "").trim();
+  if (!kRaw) return false;
 
-  const meta = String(entry?.id || entry?.slug || "").toLowerCase().trim();
+  const k = normalizeTextForKwMatch(kRaw);
 
-  const title = String(
-    entry?.title?.en ||
-      entry?.title_en ||
-      entry?.heading?.en ||
-      entry?.heading_en ||
-      entry?.id ||
-      entry?.slug ||
-      "",
-  )
-    .toLowerCase()
-    .trim();
+  const meta = normalizeTextForKwMatch(String(entry?.id || entry?.slug || ""));
 
-  const en = normalizeEntryTextEN(entry).toLowerCase();
-  const vi = normalizeEntryTextVI(entry).toLowerCase();
+  const title = normalizeTextForKwMatch(
+    String(entry?.title?.en || entry?.title_en || entry?.heading?.en || entry?.heading_en || entry?.id || entry?.slug || ""),
+  );
+
+  const en = normalizeTextForKwMatch(normalizeEntryTextEN(entry));
+  const vi = normalizeTextForKwMatch(normalizeEntryTextVI(entry));
 
   return meta.includes(k) || title.includes(k) || en.includes(k) || vi.includes(k);
+}
+
+/* ----------------------------------------------------- */
+/* ✅ MB-BLUE-99.9b/100.0 — Mercy Guide (UI shell, NO API) */
+/* ----------------------------------------------------- */
+function MercyGuideCorner({
+  disabled,
+  roomTitle,
+  activeKeyword,
+  onClearKeyword,
+  onScrollToAudio,
+}: {
+  disabled: boolean;
+  roomTitle: string;
+  activeKeyword: string | null;
+  onClearKeyword?: () => void;
+  onScrollToAudio?: () => void;
+}) {
+  const [open, setOpen] = useState(false);
+
+  if (disabled) return null;
+
+  const hasStep = !!(activeKeyword && String(activeKeyword).trim());
+
+  return (
+    <div className="mb-guideCorner">
+      <button type="button" className="mb-guideBtn" onClick={() => setOpen((v) => !v)} title="Mercy Guide (UI shell)">
+        🙂 <span className="hidden sm:inline">Guide</span>
+      </button>
+
+      {open && (
+        <div className="mb-guidePanel" role="dialog" aria-label="Mercy Guide">
+          <div className="mb-guideTitle">
+            Mercy Guide
+            <button type="button" className="mb-guideClose" onClick={() => setOpen(false)}>
+              ✕
+            </button>
+          </div>
+
+          <div className="mb-guideBody">
+            <div className="mb-guideLine">
+              <b>Room:</b> {roomTitle || "Room"}
+            </div>
+
+            <div className="mb-guideLine">
+              <b>Step:</b>{" "}
+              {hasStep ? (
+                <>
+                  You chose <b>{activeKeyword}</b> — read EN → listen → compare VI.
+                </>
+              ) : (
+                <>Click a keyword to start. Then you’ll see EN → audio → VI.</>
+              )}
+            </div>
+
+            {hasStep ? (
+              <div className="mb-guideActions" role="group" aria-label="Guide actions">
+                <button
+                  type="button"
+                  className="mb-guideActionBtn"
+                  onClick={onScrollToAudio}
+                  disabled={!onScrollToAudio}
+                  title="Scroll to the audio player"
+                >
+                  🔊 Audio
+                </button>
+                <button type="button" className="mb-guideActionBtn" onClick={onClearKeyword} disabled={!onClearKeyword} title="Clear keyword">
+                  ⟲ Clear
+                </button>
+              </div>
+            ) : null}
+
+            <div className="mb-guideHint">(Later we can connect this panel to the real “teacher GPT” API behind one button.)</div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ----------------------------------------------------- */
+/* ✅ MB-BLUE-101.x — Mercy AI Host context bridge (NO API) */
+/* ----------------------------------------------------- */
+function dispatchHostContext(detail: Record<string, any>) {
+  try {
+    if (typeof window === "undefined") return;
+    window.dispatchEvent(new CustomEvent("mb:host-context", { detail }));
+  } catch {
+    // ignore
+  }
+}
+
+/* ----------------------------------------------------- */
+/* ✅ MB-BLUE-99.11a — DB room_entries helpers             */
+/* ----------------------------------------------------- */
+
+function coerceRoomEntryRowToEntry(row: any): any {
+  // Prefer structured payload columns if they exist.
+  // This lets your DB store the "real entry object" in jsonb while keeping metadata columns.
+  const v =
+    row?.entry ??
+    row?.payload ??
+    row?.data ??
+    row?.content ??
+    row?.room_entry ??
+    row?.roomEntry ??
+    null;
+
+  if (v && typeof v === "object") return v;
+  // fallback: use the row itself (works if columns are named like "text_en", "audio_url", etc.)
+  return row;
+}
+
+function sortRoomEntryRows(rows: any[]): any[] {
+  const arr = asArray(rows).slice();
+  // stable sort: sort_order first, then created_at, then id
+  arr.sort((a, b) => {
+    const ao = Number.isFinite(Number(a?.sort_order)) ? Number(a.sort_order) : Number.POSITIVE_INFINITY;
+    const bo = Number.isFinite(Number(b?.sort_order)) ? Number(b.sort_order) : Number.POSITIVE_INFINITY;
+    if (ao !== bo) return ao - bo;
+
+    const at = a?.created_at ? new Date(a.created_at).getTime() : 0;
+    const bt = b?.created_at ? new Date(b.created_at).getTime() : 0;
+    if (at !== bt) return at - bt;
+
+    const aid = String(a?.id ?? "");
+    const bid = String(b?.id ?? "");
+    return aid.localeCompare(bid);
+  });
+  return arr;
 }
 
 export default function RoomRenderer({
@@ -558,7 +998,21 @@ export default function RoomRenderer({
   roomSpec?: { use_color_theme?: boolean };
 }) {
   const rootRef = useRef<HTMLDivElement | null>(null);
+  const audioAnchorRef = useRef<HTMLDivElement | null>(null);
+
   const useColorThemeSafe = roomSpec?.use_color_theme !== false;
+
+  const access = useUserAccess();
+  const accessLoading = access.loading || access.isLoading;
+
+  const safeRoom = (room ?? {}) as AnyRoom;
+  const effectiveRoomId = String(safeRoom?.id || roomId || "");
+
+  const scrollToAudio = () => {
+    const el = audioAnchorRef.current;
+    if (!el) return;
+    el.scrollIntoView({ behavior: "smooth", block: "center" });
+  };
 
   useEffect(() => {
     const root = rootRef.current;
@@ -572,59 +1026,76 @@ export default function RoomRenderer({
 
     killControls();
     const obs = new MutationObserver(() => killControls());
-    obs.observe(root, {
-      subtree: true,
-      childList: true,
-      attributes: true,
-      attributeFilter: ["controls"],
-    });
+    obs.observe(root, { subtree: true, childList: true, attributes: true, attributeFilter: ["controls"] });
 
     return () => obs.disconnect();
   }, []);
 
-  // ✅ Payment gate: DB source of truth (user_subscriptions → vipKey)
-  const [userVipKey, setUserVipKey] = useState<VipKey>("free");
-  const [vipLoaded, setVipLoaded] = useState(false);
+  const tier = useMemo(() => pickTier(safeRoom), [safeRoom]);
+  const requiredTierId = useMemo<TierId>(() => normalizeRoomTierToTierId(tier), [tier]);
+
+  const isLocked = useMemo(() => {
+    if (accessLoading) return requiredTierId !== "free";
+    return !access.canAccessTier(requiredTierId);
+  }, [accessLoading, access, requiredTierId]);
+
+  // -------------------------
+  // ✅ DB fetch: public.room_entries (RLS gated)
+  // -------------------------
+  const [dbRows, setDbRows] = useState<any[] | null>(null);
+  const [dbLoading, setDbLoading] = useState(false);
+  const [dbError, setDbError] = useState<string | null>(null);
 
   useEffect(() => {
-    let alive = true;
-    (async () => {
-      try {
-        const vk = await getCurrentVipKey();
-        if (!alive) return;
-        setUserVipKey(vk);
-      } catch (e) {
-        // fail-safe: treat as free
-        console.warn("getCurrentVipKey failed; defaulting to free", e);
-      } finally {
-        if (alive) setVipLoaded(true);
+    let cancelled = false;
+
+    async function load() {
+      const rid = String(effectiveRoomId || "").trim();
+      if (!rid) {
+        setDbRows(null);
+        setDbError(null);
+        setDbLoading(false);
+        return;
       }
-    })();
+
+      setDbLoading(true);
+      setDbError(null);
+
+      try {
+        // NOTE: RLS policy should enforce has_vip_rank(required_rank) on these rows.
+        const { data, error } = await supabase
+          .from("room_entries")
+          .select("*")
+          .eq("room_id", rid)
+          .order("sort_order", { ascending: true })
+          .order("created_at", { ascending: true });
+
+        if (cancelled) return;
+
+        if (error) {
+          setDbRows(null);
+          setDbError(error.message || "DB error");
+        } else {
+          setDbRows(sortRoomEntryRows(Array.isArray(data) ? data : []));
+          setDbError(null);
+        }
+      } catch (e: any) {
+        if (cancelled) return;
+        setDbRows(null);
+        setDbError(String(e?.message || e || "DB error"));
+      } finally {
+        if (!cancelled) setDbLoading(false);
+      }
+    }
+
+    load();
     return () => {
-      alive = false;
+      cancelled = true;
     };
-  }, []);
+  }, [effectiveRoomId]);
 
-  if (!room) {
-    return (
-      <div className="rounded-xl border p-6 text-muted-foreground">
-        Room loaded state is empty.
-      </div>
-    );
-  }
-
-  const tier = useMemo(() => pickTier(room), [room]);
-  const requiredVipKey = useMemo(() => normalizeVipKeyFromTier(tier), [tier]);
-  const isLocked = useMemo(() => {
-    // If we haven't loaded yet, be conservative: lock VIP rooms until we know.
-    if (!vipLoaded) return requiredVipKey !== "free";
-    return VIP_RANK[userVipKey] < VIP_RANK[requiredVipKey];
-  }, [vipLoaded, userVipKey, requiredVipKey]);
-
-  const effectiveRoomId = String(room?.id || roomId || "");
-
-  const rawEN = useMemo(() => String(pickTitleENRaw(room) || ""), [room]);
-  const rawVI = useMemo(() => String(pickTitleVIRaw(room) || ""), [room]);
+  const rawEN = useMemo(() => String(pickTitleENRaw(safeRoom) || ""), [safeRoom]);
+  const rawVI = useMemo(() => String(pickTitleVIRaw(safeRoom) || ""), [safeRoom]);
 
   const titleEN = useMemo(() => {
     const r = rawEN.trim();
@@ -635,47 +1106,62 @@ export default function RoomRenderer({
 
   const titleVI = useMemo(() => String(rawVI || "").trim(), [rawVI]);
 
-  const introEN = useMemo(() => pickIntroEN(room), [room]);
-  const introVI = useMemo(() => pickIntroVI(room), [room]);
+  const introEN = useMemo(() => pickIntroEN(safeRoom), [safeRoom]);
+  const introVI = useMemo(() => pickIntroVI(safeRoom), [safeRoom]);
 
-  const kwRaw = useMemo(() => resolveKeywords(room), [room]);
-  const essay = useMemo(() => resolveEssay(room), [room]);
+  const kwRaw = useMemo(() => resolveKeywords(safeRoom), [safeRoom]);
+  const essay = useMemo(() => resolveEssay(safeRoom), [safeRoom]);
 
-  const sections = asArray(room?.sections);
-  const flatEntries = resolveEntries(room);
+  // JSON fallback (keep exactly)
+  const topContainers = useMemo(() => resolveTopContainers(safeRoom), [safeRoom]);
+  const flatEntries = useMemo(() => resolveEntries(safeRoom), [safeRoom]);
 
+  // ✅ DB leaf entries (preferred)
+  const dbLeafEntries = useMemo(() => {
+    if (!Array.isArray(dbRows) || dbRows.length === 0) return [];
+    const extracted = dbRows.map(coerceRoomEntryRowToEntry).filter((x) => x && typeof x === "object");
+    // Support wrapper-ish entries stored in DB too
+    return flattenToLeafEntries(extracted, 6);
+  }, [dbRows]);
+
+  const jsonLeafEntries = useMemo(() => {
+    const seed = topContainers.length ? topContainers : flatEntries;
+    const leaf = flattenToLeafEntries(seed, 6);
+    return leaf;
+  }, [topContainers, flatEntries]);
+
+  // ✅ Prefer DB entries for allEntries + keep JSON deepFind fallback
   const allEntries = useMemo(() => {
-    if (sections.length > 0) {
-      const out: { entry: any }[] = [];
-      sections.forEach((s: any) => {
-        const sentries = resolveSectionEntries(s);
-        sentries.forEach((e: any) => out.push({ entry: e }));
-      });
-      return out;
-    }
-    return flatEntries.map((e: any) => ({ entry: e }));
-  }, [sections, flatEntries]);
+    const leaf = dbLeafEntries.length > 0 ? dbLeafEntries : jsonLeafEntries;
+    return leaf.map((e: any) => ({ entry: e }));
+  }, [dbLeafEntries, jsonLeafEntries]);
 
+  // ✅ Keyword resolution: prefer DB entries if room has no explicit keywords
   const kw = useMemo(() => {
     const hasReal = (kwRaw?.en?.length || 0) > 0 || (kwRaw?.vi?.length || 0) > 0;
     if (hasReal) return kwRaw;
-    return deriveKeywordsFromEntries(room);
-  }, [kwRaw, room]);
+
+    if (dbLeafEntries.length > 0) return deriveKeywordsFromEntryList(dbLeafEntries);
+
+    // fallback: JSON deepFind
+    return deriveKeywordsFromEntries(safeRoom);
+  }, [kwRaw, safeRoom, dbLeafEntries]);
 
   const enKeywords = (kw.en.length ? kw.en : kw.vi).map(String);
   const viKeywords = (kw.vi.length ? kw.vi : kw.en).map(String);
 
-  // ✅ MB-BLUE-99.9 — color map shared for EN/VI (used for welcome line)
-  const kwColorMap = useMemo(() => buildKeywordColorMap(enKeywords, viKeywords, 5), [
-    enKeywords,
-    viKeywords,
-  ]);
+  const kwColorMap = useMemo(() => buildKeywordColorMap(enKeywords, viKeywords, 5), [enKeywords, viKeywords]);
 
   const [activeKeyword, setActiveKeyword] = useState<string | null>(null);
 
   useEffect(() => {
     setActiveKeyword(null);
   }, [roomId]);
+
+  // ✅ also reset when effectiveRoomId changes (covers cases where roomId prop is undefined but safeRoom.id changes)
+  useEffect(() => {
+    setActiveKeyword(null);
+  }, [effectiveRoomId]);
 
   const activeEntry = useMemo(() => {
     if (!activeKeyword) return null;
@@ -688,11 +1174,24 @@ export default function RoomRenderer({
     return allEntries.findIndex((x) => x.entry === activeEntry);
   }, [activeEntry, allEntries]);
 
-  const welcomeEN =
-    introEN?.trim() || `Welcome to ${titleEN}, please click a keyword to start`;
-  const welcomeVI =
-    introVI?.trim() ||
-    `Chào mừng bạn đến với phòng ${titleVI || titleEN}, vui lòng nhấp vào từ khóa để bắt đầu`;
+  const welcomeEN = introEN?.trim() || `Welcome to ${titleEN}, please click a keyword to start`;
+  const welcomeVI = introVI?.trim() || `Chào mừng bạn đến với phòng ${titleVI || titleEN}, vui lòng nhấp vào từ khóa để bắt đầu`;
+
+  const clearKeyword = () => setActiveKeyword(null);
+
+  useEffect(() => {
+    if (!effectiveRoomId) return;
+    dispatchHostContext({ page: "room", roomId: effectiveRoomId });
+  }, [effectiveRoomId]);
+
+  useEffect(() => {
+    if (!effectiveRoomId) return;
+
+    const entryId = String(activeEntry?.id || activeEntry?.slug || "").trim() || null;
+    const keyword = activeKeyword ? String(activeKeyword).trim() : null;
+
+    dispatchHostContext({ page: "room", roomId: effectiveRoomId, keyword, entryId });
+  }, [effectiveRoomId, activeKeyword, activeEntry]);
 
   const ROOM_CSS = useMemo(
     () => `
@@ -824,7 +1323,7 @@ export default function RoomRenderer({
         font-weight: 800;
       }
 
-      /* ✅ MB-BLUE-99.9 — DARK highlight ONLY inside welcome+entry text blocks */
+      /* ✅ DARK highlight ONLY inside welcome+entry text blocks */
       [data-mb-scope="room"] .mb-entryText .mb-kw,
       [data-mb-scope="room"] .mb-welcomeLine .mb-kw{
         color: rgba(255,255,255,0.95);
@@ -833,7 +1332,7 @@ export default function RoomRenderer({
         border-radius: 0.55rem;
       }
 
-      /* Dark palette (distinct but all "dark") */
+      /* Dark palette */
       [data-mb-scope="room"] .mb-entryText .mb-kw-0,
       [data-mb-scope="room"] .mb-welcomeLine .mb-kw-0{ background: rgba(17, 24, 39, 0.78); }
       [data-mb-scope="room"] .mb-entryText .mb-kw-1,
@@ -878,7 +1377,7 @@ export default function RoomRenderer({
         justify-content:center;
       }
 
-      /* ✅ MB-BLUE-99.4 — HARD CLAMP FOR ROOM ENTRY AUDIO BAR (NO STICK-OUT) */
+      /* ✅ HARD CLAMP FOR ROOM ENTRY AUDIO BAR (NO STICK-OUT) */
       [data-mb-scope="room"] .mb-audioClamp{
         width: 100%;
         max-width: 100%;
@@ -893,159 +1392,252 @@ export default function RoomRenderer({
         min-width: 0;
       }
 
-      /* ✅ Zoom wrapper: scale content but preserve layout width (inverse width trick) */
+      /* ✅ Zoom wrapper */
       [data-mb-scope="room"] .mb-zoomWrap{
         --mbz: calc(var(--mb-essay-zoom, 100) / 100);
         transform: scale(var(--mbz));
         transform-origin: top left;
         width: calc(100% / var(--mbz));
       }
+
+      /* ✅ guide button + panel */
+      [data-mb-scope="room"] .mb-guideCorner{
+        position:absolute;
+        top: 14px;
+        right: 14px;
+        z-index: 5;
+        display:flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 10px;
+        pointer-events: auto;
+      }
+      [data-mb-scope="room"] .mb-guideBtn{
+        height: 34px;
+        padding: 0 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(0,0,0,0.14);
+        background: rgba(255,255,255,0.92);
+        font-size: 12px;
+        font-weight: 900;
+        box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+      }
+      [data-mb-scope="room"] .mb-guidePanel{
+        width: min(360px, calc(100vw - 48px));
+        border-radius: 16px;
+        border: 1px solid rgba(0,0,0,0.14);
+        background: rgba(255,255,255,0.96);
+        box-shadow: 0 18px 55px rgba(0,0,0,0.12);
+        overflow: hidden;
+      }
+      [data-mb-scope="room"] .mb-guideTitle{
+        display:flex;
+        align-items:center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 10px 12px;
+        font-weight: 950;
+        border-bottom: 1px solid rgba(0,0,0,0.10);
+      }
+      [data-mb-scope="room"] .mb-guideClose{
+        width: 30px;
+        height: 30px;
+        border-radius: 12px;
+        border: 1px solid rgba(0,0,0,0.12);
+        background: rgba(255,255,255,0.90);
+        font-weight: 900;
+      }
+      [data-mb-scope="room"] .mb-guideBody{
+        padding: 10px 12px 12px;
+        font-size: 13px;
+        line-height: 1.4;
+      }
+      [data-mb-scope="room"] .mb-guideLine{ margin: 6px 0; }
+      [data-mb-scope="room"] .mb-guideHint{
+        margin-top: 10px;
+        font-size: 12px;
+        opacity: 0.70;
+      }
+      /* ✅ guide actions */
+      [data-mb-scope="room"] .mb-guideActions{
+        margin-top: 10px;
+        display:flex;
+        gap: 8px;
+        justify-content:flex-end;
+        flex-wrap: wrap;
+      }
+      [data-mb-scope="room"] .mb-guideActionBtn{
+        height: 32px;
+        padding: 0 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(0,0,0,0.12);
+        background: rgba(255,255,255,0.92);
+        font-size: 12px;
+        font-weight: 900;
+      }
+      [data-mb-scope="room"] .mb-guideActionBtn:disabled{
+        opacity: 0.55;
+        cursor: not-allowed;
+      }
     `,
     [],
   );
 
+  // ✅ IMPORTANT: never return early before hooks.
+  const roomIsEmpty = !room;
+
   return (
-    <div
-      ref={rootRef}
-      className="mb-room w-full max-w-none"
-      data-mb-scope="room"
-      data-mb-theme={useColorThemeSafe ? "color" : "bw"}
-    >
+    <div ref={rootRef} className="mb-room w-full max-w-none" data-mb-scope="room" data-mb-theme={useColorThemeSafe ? "color" : "bw"}>
       <style>{ROOM_CSS}</style>
 
-      {/* BOX 2 */}
-      <div className="mb-titleRow">
-        <div className="mb-titleLeft">
-          <span className="mb-tier">{tier}</span>
-        </div>
+      {roomIsEmpty ? (
+        <div className="rounded-xl border p-6 text-muted-foreground">Room loaded state is empty.</div>
+      ) : (
+        <>
+          <MercyGuideCorner
+            disabled={isLocked}
+            roomTitle={titleVI ? `${titleEN} / ${titleVI}` : titleEN}
+            activeKeyword={activeKeyword}
+            onClearKeyword={clearKeyword}
+            onScrollToAudio={scrollToAudio}
+          />
 
-        <div className="mb-titleCenter">
-          <div className="mb-roomTitle">{titleVI ? `${titleEN} / ${titleVI}` : titleEN}</div>
-        </div>
-
-        <div className="mb-titleRight">
-          <button type="button" className="mb-iconBtn" title="Favorite (UI shell)" onClick={() => {}}>
-            ♡
-          </button>
-          <button
-            type="button"
-            className="mb-iconBtn"
-            title="Refresh"
-            onClick={() => window.location.reload()}
-          >
-            ↻
-          </button>
-        </div>
-      </div>
-
-      {/* BOX 3 */}
-      <section className="mb-card p-5 md:p-6 mb-5">
-        <div className="mb-welcomeLine">
-          <span>
-            {highlightByColorMap(welcomeEN, kwColorMap)} <b>/</b>{" "}
-            {highlightByColorMap(welcomeVI, kwColorMap)}
-          </span>
-        </div>
-
-        {Math.max(kw.en.length, kw.vi.length) > 0 ? (
-          <div className="mb-keyRow">
-            {Array.from({ length: Math.max(kw.en.length, kw.vi.length) }).map((_, i) => {
-              const en = String(kw.en[i] ?? "").trim();
-              const vi = String(kw.vi[i] ?? "").trim();
-              if (!en && !vi) return null;
-
-              const label = en && vi ? `${en} / ${vi}` : en || vi;
-              const next = en || vi;
-              const isActive = activeKeyword === next;
-
-              return (
-                <button
-                  key={`kw-${i}`}
-                  type="button"
-                  className={`mb-keyBtn mb-kw ${KW_CLASSES[i % KW_CLASSES.length]}`}
-                  data-active={isActive ? "true" : "false"}
-                  disabled={isLocked}
-                  onClick={() => setActiveKeyword((cur) => (cur === next ? null : next))}
-                  title={label}
-                >
-                  {label}
-                </button>
-              );
-            })}
-          </div>
-        ) : null}
-      </section>
-
-      {/* Optional essay block stays */}
-      {(essay.en || essay.vi) && (
-        <div className="mb-card p-4 md:p-6 mb-5">
-          <BilingualEssay title="Essay" en={essay.en || ""} vi={essay.vi || ""} />
-        </div>
-      )}
-
-      {/* BOX 4 stage (zoomed content wrapper) */}
-      <section className="mb-card p-5 md:p-6 mb-5" style={{ flex: "1 1 auto" }}>
-        <div className="mb-zoomWrap">
-          {isLocked ? (
-            <div className="min-h-[260px] flex items-center justify-center text-center">
-              <div>
-                <div className="text-sm opacity-70 font-semibold">
-                  {vipLoaded ? (
-                    <>
-                      Locked: requires <b>{requiredVipKey.toUpperCase()}</b> (you are{" "}
-                      <b>{userVipKey.toUpperCase()}</b>)
-                    </>
-                  ) : (
-                    <>Checking access…</>
-                  )}
-                </div>
-                <div className="mt-3 text-sm opacity-70">
-                  Complete checkout and refresh. If already paid, wait for webhook tier sync.
-                </div>
-              </div>
+          {/* BOX 2 */}
+          <div className="mb-titleRow">
+            <div className="mb-titleLeft">
+              <span className="mb-tier">{tier}</span>
             </div>
-          ) : !activeKeyword ? (
-            <div className="min-h-[420px]" />
-          ) : activeEntry ? (
-            <ActiveEntry
-              entry={activeEntry}
-              index={activeEntryIndex >= 0 ? activeEntryIndex : 0}
-              kwColorMap={kwColorMap}
-              enKeywords={enKeywords}
-              viKeywords={viKeywords}
-            />
-          ) : (
-            <div className="min-h-[240px] flex items-center justify-center text-center">
-              <div>
-                <div className="text-sm opacity-70 font-semibold">
-                  No entry matches keyword: <b>{activeKeyword}</b>
-                </div>
-                <div className="mt-2">
-                  <button
-                    type="button"
-                    className="px-3 py-1.5 rounded-full text-sm font-bold border bg-white"
-                    onClick={() => setActiveKeyword(null)}
-                  >
-                    Clear keyword
-                  </button>
-                </div>
+
+            <div className="mb-titleCenter">
+              <div className="mb-roomTitle">{titleVI ? `${titleEN} / ${titleVI}` : titleEN}</div>
+            </div>
+
+            <div className="mb-titleRight">
+              <button type="button" className="mb-iconBtn" title="Favorite (UI shell)" onClick={() => {}}>
+                ♡
+              </button>
+              <button type="button" className="mb-iconBtn" title="Refresh" onClick={() => window.location.reload()}>
+                ↻
+              </button>
+            </div>
+          </div>
+
+          {/* BOX 3 */}
+          <section className="mb-card p-5 md:p-6 mb-5">
+            <div className="mb-welcomeLine">
+              <span>
+                {highlightByColorMap(welcomeEN, kwColorMap)} <b>/</b> {highlightByColorMap(welcomeVI, kwColorMap)}
+              </span>
+            </div>
+
+            {Math.max(kw.en.length, kw.vi.length) > 0 ? (
+              <div className="mb-keyRow">
+                {Array.from({ length: Math.max(kw.en.length, kw.vi.length) }).map((_, i) => {
+                  const en = String(kw.en[i] ?? "").trim();
+                  const vi = String(kw.vi[i] ?? "").trim();
+                  if (!en && !vi) return null;
+
+                  const label = en && vi ? `${en} / ${vi}` : en || vi;
+                  const next = en || vi;
+
+                  const isActive = normalizeTextForKwMatch(activeKeyword || "") === normalizeTextForKwMatch(next || "");
+
+                  return (
+                    <button
+                      key={`kw-${i}`}
+                      type="button"
+                      className={`mb-keyBtn mb-kw ${KW_CLASSES[i % KW_CLASSES.length]}`}
+                      data-active={isActive ? "true" : "false"}
+                      disabled={isLocked}
+                      onClick={() =>
+                        setActiveKeyword((cur) => {
+                          const curKey = normalizeTextForKwMatch(cur || "");
+                          const nextKey = normalizeTextForKwMatch(next || "");
+                          return curKey && curKey === nextKey ? null : next;
+                        })
+                      }
+                      title={label}
+                    >
+                      {label}
+                    </button>
+                  );
+                })}
               </div>
+            ) : null}
+          </section>
+
+          {(essay.en || essay.vi) && (
+            <div className="mb-card p-4 md:p-6 mb-5">
+              <BilingualEssay title="Essay" en={essay.en || ""} vi={essay.vi || ""} />
             </div>
           )}
-        </div>
-      </section>
 
-      {/* BOX 5 feedback pushed to bottom */}
-      <div style={{ marginTop: "auto" }}>
-        <div className="mb-card p-3 md:p-4">
-          <div className="mb-feedback">
-            <input placeholder="Feedback / Phản Hồi…" aria-label="Feedback" />
-            <button type="button" title="Send feedback" onClick={() => {}}>
-              ➤
-            </button>
+          {/* BOX 4 stage */}
+          <section className="mb-card p-5 md:p-6 mb-5" style={{ flex: "1 1 auto" }}>
+            <div className="mb-zoomWrap">
+              {isLocked ? (
+                <div className="min-h-[260px] flex items-center justify-center text-center">
+                  <div>
+                    <div className="text-sm opacity-70 font-semibold">
+                      {accessLoading ? (
+                        <>Checking access…</>
+                      ) : (
+                        <>
+                          Locked: requires <b>{requiredTierId.toUpperCase()}</b> (you are <b>{String(access.tier || "free").toUpperCase()}</b>)
+                        </>
+                      )}
+                    </div>
+                    <div className="mt-3 text-sm opacity-70">Complete checkout and refresh. If already paid, wait for webhook tier sync.</div>
+                  </div>
+                </div>
+              ) : !activeKeyword ? (
+                <div className="min-h-[420px]" />
+              ) : activeEntry ? (
+                <ActiveEntry
+                  entry={activeEntry}
+                  index={activeEntryIndex >= 0 ? activeEntryIndex : 0}
+                  kwColorMap={kwColorMap}
+                  enKeywords={enKeywords}
+                  viKeywords={viKeywords}
+                  audioAnchorRef={audioAnchorRef}
+                />
+              ) : (
+                <div className="min-h-[240px] flex items-center justify-center text-center">
+                  <div>
+                    <div className="text-sm opacity-70 font-semibold">
+                      No entry matches keyword: <b>{activeKeyword}</b>
+                    </div>
+                    <div className="mt-2">
+                      <button
+                        type="button"
+                        className="px-3 py-1.5 rounded-full text-sm font-bold border bg-white"
+                        onClick={() => setActiveKeyword(null)}
+                      >
+                        Clear keyword
+                      </button>
+                    </div>
+
+                    {dbError ? <div className="mt-2 text-xs opacity-60">DB: {dbError}</div> : null}
+                    {dbLoading ? <div className="mt-2 text-xs opacity-60">Loading entries…</div> : null}
+                  </div>
+                </div>
+              )}
+            </div>
+          </section>
+
+          {/* BOX 5 */}
+          <div style={{ marginTop: "auto" }}>
+            <div className="mb-card p-3 md:p-4">
+              <div className="mb-feedback">
+                <input placeholder="Feedback / Phản Hồi…" aria-label="Feedback" />
+                <button type="button" title="Send feedback" onClick={() => {}}>
+                  ➤
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        </>
+      )}
     </div>
   );
 }
@@ -1056,12 +1648,14 @@ function ActiveEntry({
   kwColorMap,
   enKeywords,
   viKeywords,
+  audioAnchorRef,
 }: {
   entry: any;
   index: number;
-  kwColorMap: KeywordColorMap; // kept for backward compatibility / future use
+  kwColorMap: KeywordColorMap;
   enKeywords: string[];
   viKeywords: string[];
+  audioAnchorRef?: React.RefObject<HTMLDivElement>;
 }) {
   const rawHeading = pickEntryHeading(entry, index);
   const heading = isUglyHeading(rawHeading) ? "" : rawHeading;
@@ -1069,7 +1663,6 @@ function ActiveEntry({
   const en = normalizeEntryTextEN(entry);
   const vi = normalizeEntryTextVI(entry);
 
-  // ✅ Per-entry: highlight only 3–5 keyword pairs that actually appear in THIS entry
   const entryKwColorMap = useMemo(() => {
     const pairs: { en: string; vi: string }[] = [];
     const maxLen = Math.max(enKeywords.length, viKeywords.length);
@@ -1079,8 +1672,7 @@ function ActiveEntry({
       const viK = String(viKeywords[i] ?? "").trim();
       if (!enK && !viK) continue;
 
-      const hit =
-        (enK && entryMatchesKeyword(entry, enK)) || (viK && entryMatchesKeyword(entry, viK));
+      const hit = (enK && entryMatchesKeyword(entry, enK)) || (viK && entryMatchesKeyword(entry, viK));
       if (!hit) continue;
 
       pairs.push({ en: enK, vi: viK });
@@ -1098,31 +1690,20 @@ function ActiveEntry({
 
   return (
     <div>
-      {heading ? (
-        <h3 className="text-2xl md:text-3xl font-serif font-bold mt-1 leading-tight">{heading}</h3>
-      ) : null}
+      {heading ? <h3 className="text-2xl md:text-3xl font-serif font-bold mt-1 leading-tight">{heading}</h3> : null}
 
-      {en ? (
-        <div className="mt-4 text-[15px] md:text-base mb-entryText">
-          {highlightByColorMap(en, entryKwColorMap)}
-        </div>
-      ) : null}
+      {en ? <div className="mt-4 text-[15px] md:text-base mb-entryText">{highlightByColorMap(en, entryKwColorMap)}</div> : null}
 
       {audioSrc ? (
-        <div className="mt-4 mb-audioClamp">
+        <div ref={audioAnchorRef} className="mt-4 mb-audioClamp">
           <TalkingFacePlayButton src={audioSrc} label={audioLabel} className="w-full" fullWidthBar />
         </div>
       ) : null}
 
-      {vi ? (
-        <div className="mt-4 text-[15px] md:text-base mb-entryText">
-          {highlightByColorMap(vi, entryKwColorMap)}
-        </div>
-      ) : null}
+      {vi ? <div className="mt-4 text-[15px] md:text-base mb-entryText">{highlightByColorMap(vi, entryKwColorMap)}</div> : null}
     </div>
   );
 }
 
 /** New thing to learn:
- * If your keywords come from slugs (daily-walk) but your text uses spaces (daily walk),
- * normalize separators and match variants (space/-/_) so highlights actually appear. */
+ * In React, returning early before calling hooks can break builds—render conditionally inside JSX instead. */

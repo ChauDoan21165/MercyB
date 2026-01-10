@@ -36,7 +36,6 @@ export const ROOM_IDS = [
   "anxiety_relief_vip1",
   "anxiety_relief_vip2",
   "anxiety_relief_vip3",
-  "anxiety_relief_vip4_vip4",
   "art_creativity_words_kids_l2",
   "bathroom_hygiene_kids_l1",
   "bedtime_words_kids_l1",
@@ -45,26 +44,17 @@ export const ROOM_IDS = [
   "bipolar_support_vip1",
   "bipolar_support_vip2",
   "bipolar_support_vip3",
-  "bipolar_support_vip4_vip4",
   "bismarck_vip9_vol1",
   "bismarck_vip9_vol2",
   "bismarck_vip9_vol3",
   "body_parts_movement_kids_l1",
-  "bridge_to_reality_vip4",
-  "build_skills_vip4_career_3",
-  "build_skills_vip4_career_3_ii",
   "burnout_recovery_free",
   "burnout_recovery_vip1",
   "burnout_recovery_vip2",
   "burnout_recovery_vip3",
-  "calm_body_calm_money_vip3_sub1",
   "calm_confident_sexual_health_vip3_sub3_sex",
-  "calm_mind_7",
-  "calm_mind_7_audio",
-  "career_community_vip4",
   "career_consultant_free",
   "charisma_mechanics_presence_engineering_vip5_bonus",
-  "choosing_your_path_vip4",
   "classroom_english_kids_l2",
   "clausewitz_grand_strategy_vip9_vol1",
   "clausewitz_grand_strategy_vip9_vol2",
@@ -79,8 +69,6 @@ export const ROOM_IDS = [
   "companion_lines_friend_vi",
   "components",
   "confidence_building_vip2",
-  "confidence_vip1_vip1",
-  "confidence_vip3",
   "conflict_navigation_emotional_deescalation_vip5_bonus",
   "conversation_starters_kids_l3",
   "conversational_influence_social_framing_vip5_bonus",
@@ -116,14 +104,10 @@ export const ROOM_IDS = [
   "daily_routines_kids_l1",
   "debate_basics_kids_l3",
   "debate_fallacies_vip2",
-  "debate_skill_vip2_bonus",
   "deep_work_and_focus_vip2",
   "depression_support_vip1",
   "depression_support_vip3",
   "digital_literacy_words_kids_l3",
-  "discover_self_vip4_career_1",
-  "diverse_desires_and_belonging_vip3_sub5_sex",
-  "diverse_desires_vip3_sub5_vip3",
   "drinks_treats_kids_l1",
   "early_phonics_sounds_kids_l1",
   "earth_environment_kids_l3",
@@ -131,7 +115,6 @@ export const ROOM_IDS = [
   "eating_disorder_support_vip1",
   "eating_disorder_support_vip2",
   "eating_disorder_support_vip3",
-  "emotional_growth_vip3_vip3",
   "emotions_self_expression_kids_l3",
   "english_a1_a101",
   "english_a1_a102",
@@ -204,37 +187,18 @@ export const ROOM_IDS = [
   "english_c2_c213",
   "english_c2_c214",
   "english_foundation_ef01",
-  "english_foundation_ef02",
-  "english_foundation_ef03",
-  "english_foundation_ef04",
-  "english_foundation_ef05",
-  "english_foundation_ef06",
-  "english_foundation_ef07",
-  "english_foundation_ef08",
-  "english_foundation_ef09",
-  "english_foundation_ef10",
   "english_foundation_ef11",
-  "english_foundation_ef12",
-  "english_foundation_ef13",
-  "english_foundation_ef14",
   "english_specialization_mastery_module2_vip3_ii",
   "english_specialization_mastery_vip3_ii",
-  "english_specialization_mastery_vip3_ii_module2_vip3",
-  "english_writing_deepdive_part5_vip3ii_vip3",
-  "english_writing_deepdive_part8_vip3ii_vip3",
   "english_writing_free",
-  "english_writing_mastery_vip3_vip3",
   "environment_nature_kids_l2",
   "epaminondas_vip9_vol1",
   "epaminondas_vip9_vol2",
   "epaminondas_vip9_vol3",
-  "erotic_wisdom_for_life_vip3_sub_6_sex",
   "essential_money_risk_management_vip4_bonus",
   "everyday_survival_thinking_vip4_bonus",
   "execution_flow_and_momentum_vip2",
   "executive_function_mastery_vip2",
-  "explore_world_vip4_career_i_2",
-  "explore_world_vip4_career_ii_2",
   "family_home_words_kids_l1",
   "farm_animals_kids_l1",
   "feelings_emotions_kids_l1",
@@ -243,11 +207,8 @@ export const ROOM_IDS = [
   "finance_calm_money_sub1_nervous_system_vip3",
   "finance_calm_money_sub2_money_basics_vip3",
   "finance_calm_money_sub3_growing_money_vip3",
-  "finance_calm_money_sub4_vip3",
   "finance_calm_money_sub5_growing_bigger_vip3",
   "finance_calm_money_sub6_legacy_peace_vip3",
-  "finance_glory_vip3",
-  "find_what_you_love_vip4",
   "finding_gods_peace_free",
   "first_action_verbs_kids_l1",
   "food_snacks_kids_l1",
@@ -257,7 +218,6 @@ export const ROOM_IDS = [
   "frederick_the_great_vip9_vol2",
   "frederick_the_great_vip9_vol3",
   "friendship_kindness_kids_l2",
-  "future_skills_kids_l3_kidslevel3",
   "games_sports_kids_l2",
   "genghis_khan_vip9_vol1",
   "genghis_khan_vip9_vol1_p3",
@@ -265,16 +225,11 @@ export const ROOM_IDS = [
   "genghis_khan_vip9_vol3",
   "geography_basics_kids_l2",
   "geography_for_tweens_kids_l3",
-  "god_with_us_vip1_vip1",
-  "god_with_us_vip3_vip3",
   "grammar_accelerator_vip1",
   "grammar_fluency_structure_vip2",
   "grammar_foundations_free",
   "grammar_native_logic_vip3_ii",
   "grief_healing_free",
-  "grow_wealth_vip4_career_6",
-  "growing_bigger_vip3_5_vip3",
-  "growing_bigger_when_ready_vip3_5_finance",
   "guide_articles_en_vi",
   "hannibal_barca_grand_strategy_vip9_vol1",
   "hannibal_barca_grand_strategy_vip9_vol2",
@@ -285,7 +240,6 @@ export const ROOM_IDS = [
   "hobbies_fun_activities_kids_l2",
   "homepage_v1",
   "idioms_for_kids_kids_l3",
-  "idioms_for_kids_kids_l3_kidslevel3",
   "individual_strategic_mastery_vip9",
   "internet_vocabulary_kids_l3",
   "interpersonal_intelligence_mastery_vip5",
@@ -297,12 +251,6 @@ export const ROOM_IDS = [
   "kautilya_grand_strategy_vip9_vol1",
   "kautilya_grand_strategy_vip9_vol2",
   "kautilya_vip9_vol3",
-  "keep_soul_calm_vip3_vip3",
-  "know_yourself_deeply_vip4",
-  "launch_career_vip4_career_4_ii",
-  "legacy_and_impact_vip4",
-  "legacy_and_long_term_peace_vip3_6_finance",
-  "legacy_peace_vip3_6_vip3",
   "life_logistics_adulting_skills_vip4_bonus",
   "life_systems_and_stability_vip2",
   "little_scientist_kids_l2",
@@ -327,37 +275,19 @@ export const ROOM_IDS = [
   "math_words_kids_l2",
   "meaning_of_life_free",
   "meaning_of_life_vip1_vip1",
-  "meaning_of_life_vip2_vip2",
   "meaning_of_life_vip3",
-  "meaning_of_life_vip4_vip4",
-  "meaning_of_life_vip5_vip5",
-  "meaning_of_life_vip6_vip6",
-  "meaning_of_life_vip7_vip7",
   "mens_mental_health_free",
   "mens_mental_health_vip1",
   "mens_mental_health_vip2",
   "mens_mental_health_vip3",
   "mental_health_vip1",
-  "mental_sharpness_vip3",
   "mentors_who_light_the_way_vip4",
   "mercy_blade_bridge_of_hearts_free",
-  "mercy_blade_english_free",
-  "mercy_blade_english_vip3",
-  "mercy_blade_home_free",
   "mercy_blade_home_page",
-  "mercy_blade_room_v1_vip3",
   "mercy_reply_library",
-  "mercy_vip_business_english",
-  "mercy_vip_ei_idioms",
-  "mercy_vip_english_lessons",
-  "mercy_vip_grammar",
-  "mercy_vip_ielts_toefl",
   "mercy_vip_reply_library",
-  "mercy_vip_travel_english",
-  "mercy_vocabulary_growth_plan",
   "mindfulness_vip1",
   "mini_projects_presentations_kids_l3",
-  "mini_projects_presentations_kids_l3_kidslevel3",
   "musashi_grand_strategy_vip9_vol1",
   "musashi_grand_strategy_vip9_vol2",
   "musashi_grand_strategy_vip9_vol3",
@@ -383,10 +313,7 @@ export const ROOM_IDS = [
   "numbers_counting_kids_l1",
   "nutrition_basics_kids_l3",
   "nutrition_free",
-  "nutrition_vip1_vip1",
   "nutrition_vip2",
-  "nutrition_vip3",
-  "obesity",
   "obesity_free",
   "obesity_management_ii_vip3",
   "obesity_management_vip3",
@@ -395,14 +322,11 @@ export const ROOM_IDS = [
   "ocd_support_vip2",
   "ocd_support_vip3",
   "opposites_matching_kids_l1",
-  "overcome_storm_vip3",
   "personal_operating_system_vip2",
   "personal_safety_self_protection_vip4_bonus",
   "pets_caring_kids_l1",
   "philosophy_of_everyday_free",
   "philosophy_of_everyday_life_vip2",
-  "philosophy_of_everyday_vip1_vip1",
-  "philosophy_of_everyday_vip3",
   "physical_fitness_and_nutrition_free",
   "playground_words_kids_l1",
   "problem_solving_english_kids_l3",
@@ -414,7 +338,6 @@ export const ROOM_IDS = [
   "productivity_systems_all_entries_vip2",
   "project_english_kids_l3",
   "project_vocabulary_kids_l2",
-  "protecting_what_matters_vip3_4_finance",
   "psychological_self_mastery_vip6_bonus",
   "psychology_of_power_inner_authority_vip6_bonus",
   "ptsd_support_free",
@@ -423,13 +346,9 @@ export const ROOM_IDS = [
   "public_speaking_delivery_vip3",
   "public_speaking_foundations_vip3",
   "public_speaking_kids_l3",
-  "public_speaking_kids_l3_kidslevel3",
   "public_speaking_structure_vip3",
-  "quiet_growth_simple_investing_vip3_3_finance",
-  "quiet_growth_vip3_3_vip3",
   "reading_comprehension_kids_l3",
   "reading_skills_kids_l2",
-  "relational_erotic_vip3_sub2_vip3",
   "relational_intelligence_erotic_communication_vip3_sub2_sex",
   "relationship_healing_free",
   "research_skills_kids_l3",
@@ -440,7 +359,6 @@ export const ROOM_IDS = [
   "saladin_vip9_vol2",
   "saladin_vip9_vol3",
   "say_my_name_mercy_blade_vip1",
-  "schizophrenia_understanding_vip1_vip1",
   "school_life_vocabulary_kids_l2",
   "school_objects_kids_l1",
   "science_basics_kids_l2",
@@ -448,11 +366,8 @@ export const ROOM_IDS = [
   "scipio_africanus_vip9_vol1",
   "scipio_africanus_vip9_vol2",
   "scipio_africanus_vip9_vol3",
-  "see_your_money_clearly_vip3_2_finance",
   "self_love_free",
-  "sexuality_culture_vip3_vip3",
   "sexuality_curiosity_culture_vip3",
-  "sexuality_curiosity_culture_vip3_vip3",
   "sexuality_curiosity_free",
   "sexuality_curiosity_vip3_sub4",
   "shadow_work_free",
@@ -475,10 +390,7 @@ export const ROOM_IDS = [
   "space_astronomy_kids_l3",
   "space_planets_kids_l2",
   "spelling_patterns_kids_l2",
-  "stoicism",
   "stoicism_free",
-  "stoicism_vip1_vip1",
-  "stoicism_vip3_vip3",
   "story_builder_kids_l2",
   "strategic_adaptive_intelligence_vip9",
   "strategic_antifragile_growth_vip9",
@@ -503,15 +415,8 @@ export const ROOM_IDS = [
   "strategic_signal_detection_vip9",
   "strategy_in_life_1_vip3",
   "strategy_in_life_2_vip3",
-  "strategy_in_life_3_vip3",
   "strategy_in_life_advanced_tactics_ii_vip3",
   "strategy_in_life_foundations_ii_vip3",
-  "strategy_in_life_mastery_legacy_vip3",
-  "strategy_in_life_mastery_legacy_vip3_ii",
-  "strategy_life_advanced_tactics_ii_vip3_vip3",
-  "strategy_life_advanced_tactics_vip3_vip3",
-  "strategy_life_foundations_vip3_vip3",
-  "strategy_tactics_ii_vip3_vip3",
   "stress_free",
   "stress_vip1_vip1",
   "stress_vip2",
@@ -538,9 +443,7 @@ export const ROOM_IDS = [
   "survival_resilience_vip1_srs14",
   "survival_resilience_vip1_srs15",
   "teamwork_leadership_kids_l3",
-  "teamwork_leadership_kids_l3_kidslevel3",
   "technology_robots_kids_l3",
-  "technology_robots_kids_l3_kidslevel3",
   "thucydides_vip9_vol1",
   "thucydides_vip9_vol2",
   "thucydides_vip9_vol3",
@@ -595,9 +498,7 @@ export const ROOM_IDS = [
   "weight_loss_and_fitness_free",
   "weight_loss_and_fitness_vip2",
   "weight_loss_and_fitness_vip3",
-  "weight_loss_fitness_vip3",
   "wild_animals_kids_l1",
-  "women_health_free",
   "world_cultures_kids_l2",
   "writing_basics_kids_l2",
   "zhuge_liang_grand_strategy_vip9_vol2",
@@ -775,13 +676,6 @@ const __ROOM_LIST: RoomListItem[] = [
     "hasData": true
   },
   {
-    "id": "anxiety_relief_vip4_vip4",
-    "title_en": "Anxiety Relief VIP4",
-    "title_vi": "Giảm Lo Âu VIP4",
-    "tier": "free",
-    "hasData": true
-  },
-  {
     "id": "art_creativity_words_kids_l2",
     "title_en": "Art & Creativity Words",
     "title_vi": "Từ Vựng Nghệ Thuật & Sáng Tạo",
@@ -838,13 +732,6 @@ const __ROOM_LIST: RoomListItem[] = [
     "hasData": true
   },
   {
-    "id": "bipolar_support_vip4_vip4",
-    "title_en": "Bipolar Support VIP4",
-    "title_vi": "Hỗ Trợ Rối Loạn Lưỡng Cực VIP4",
-    "tier": "free",
-    "hasData": true
-  },
-  {
     "id": "bismarck_vip9_vol1",
     "title_en": "Otto von Bismarck — Volume I",
     "title_vi": "Otto von Bismarck — Tập I",
@@ -869,27 +756,6 @@ const __ROOM_LIST: RoomListItem[] = [
     "id": "body_parts_movement_kids_l1",
     "title_en": "Body Parts & Movement",
     "title_vi": "Bộ Phận Cơ Thể & Chuyển Động",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "bridge_to_reality_vip4",
-    "title_en": "bridge_to_reality_vip4",
-    "title_vi": "bridge_to_reality_vip4",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "build_skills_vip4_career_3",
-    "title_en": "build_skills_vip4_career_3",
-    "title_vi": "build_skills_vip4_career_3",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "build_skills_vip4_career_3_ii",
-    "title_en": "build_skills_vip4_career_3_ii",
-    "title_vi": "build_skills_vip4_career_3_ii",
     "tier": "free",
     "hasData": true
   },
@@ -922,38 +788,10 @@ const __ROOM_LIST: RoomListItem[] = [
     "hasData": true
   },
   {
-    "id": "calm_body_calm_money_vip3_sub1",
-    "title_en": "Money & Your Nervous System",
-    "title_vi": "Tiền & Hệ Thống Thần Kinh",
-    "tier": "vip3",
-    "hasData": true
-  },
-  {
     "id": "calm_confident_sexual_health_vip3_sub3_sex",
     "title_en": "Calm Confident Sexual Health",
     "title_vi": "Sức Khỏe Tình Dục Bình Tĩnh & Tự Tin",
     "tier": "vip3",
-    "hasData": true
-  },
-  {
-    "id": "calm_mind_7",
-    "title_en": "calm_mind_7",
-    "title_vi": "calm_mind_7",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "calm_mind_7_audio",
-    "title_en": "Calm Mind 7 Audio",
-    "title_vi": "Calm Mind 7 Audio",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "career_community_vip4",
-    "title_en": "career_community_vip4",
-    "title_vi": "career_community_vip4",
-    "tier": "free",
     "hasData": true
   },
   {
@@ -967,13 +805,6 @@ const __ROOM_LIST: RoomListItem[] = [
     "id": "charisma_mechanics_presence_engineering_vip5_bonus",
     "title_en": "Charisma Mechanics & Presence Engineering — VIP5 Bonus",
     "title_vi": "Cơ Chế Hấp Dẫn & Kỹ Thuật Hiện Diện — Phần Thưởng VIP5",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "choosing_your_path_vip4",
-    "title_en": "Choosing Your Path",
-    "title_vi": "Chọn Con Đường Của Bạn",
     "tier": "free",
     "hasData": true
   },
@@ -1073,20 +904,6 @@ const __ROOM_LIST: RoomListItem[] = [
     "title_en": "Advanced Confidence Building",
     "title_vi": "Xây Dựng Tự Tin Nâng Cao",
     "tier": "vip2",
-    "hasData": true
-  },
-  {
-    "id": "confidence_vip1_vip1",
-    "title_en": "Confidence Building VIP1",
-    "title_vi": "Xây Dựng Tự Tin VIP1",
-    "tier": "vip1",
-    "hasData": true
-  },
-  {
-    "id": "confidence_vip3",
-    "title_en": "confidence_vip3",
-    "title_vi": "confidence_vip3",
-    "tier": "vip3",
     "hasData": true
   },
   {
@@ -1335,13 +1152,6 @@ const __ROOM_LIST: RoomListItem[] = [
     "hasData": true
   },
   {
-    "id": "debate_skill_vip2_bonus",
-    "title_en": "Debate Mastery — VIP2 Bonus Room",
-    "title_vi": "Làm Chủ Tranh Luận — Phòng Thưởng VIP2",
-    "tier": "vip2",
-    "hasData": true
-  },
-  {
     "id": "deep_work_and_focus_vip2",
     "title_en": "Deep Work & Focus Architecture — Room 3",
     "title_vi": "Làm Việc Sâu & Kiến Trúc Tập Trung — Phòng 3",
@@ -1367,27 +1177,6 @@ const __ROOM_LIST: RoomListItem[] = [
     "title_en": "Digital Literacy Words",
     "title_vi": "Từ Vựng Công Nghệ Cơ Bản",
     "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "discover_self_vip4_career_1",
-    "title_en": "discover_self_vip4_career_1",
-    "title_vi": "discover_self_vip4_career_1",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "diverse_desires_and_belonging_vip3_sub5_sex",
-    "title_en": "Diverse Desires & Belonging",
-    "title_vi": "Khao Khát Đa Dạng & Thuộc Về",
-    "tier": "vip3",
-    "hasData": true
-  },
-  {
-    "id": "diverse_desires_vip3_sub5_vip3",
-    "title_en": "Diverse Desires & Belonging",
-    "title_vi": "Khát Vọng Đa Dạng & Thuộc Về",
-    "tier": "vip3",
     "hasData": true
   },
   {
@@ -1436,13 +1225,6 @@ const __ROOM_LIST: RoomListItem[] = [
     "id": "eating_disorder_support_vip3",
     "title_en": "Eating Disorder Support",
     "title_vi": "Hỗ Trợ Rối Loạn Ăn Uống",
-    "tier": "vip3",
-    "hasData": true
-  },
-  {
-    "id": "emotional_growth_vip3_vip3",
-    "title_en": "emotional-growth-vip3",
-    "title_vi": "phát-triển-cảm-xúc-vip3",
     "tier": "vip3",
     "hasData": true
   },
@@ -1951,93 +1733,9 @@ const __ROOM_LIST: RoomListItem[] = [
     "hasData": true
   },
   {
-    "id": "english_foundation_ef02",
-    "title_en": "EF-02 — Vowels & Ending Consonants",
-    "title_vi": "EF-02 — Nguyên Âm & Giữ Âm Cuối",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "english_foundation_ef03",
-    "title_en": "EF-03 — First 50 Survival Words",
-    "title_vi": "EF-03 — 50 Từ Vựng Sinh Tồn Đầu Tiên",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "english_foundation_ef04",
-    "title_en": "EF-04 — First Survival Sentences",
-    "title_vi": "EF-04 — Những Câu Giao Tiếp Cơ Bản",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "english_foundation_ef05",
-    "title_en": "EF-05 — Numbers, Time, Days & Dates",
-    "title_vi": "EF-05 — Số Đếm, Giờ Giấc, Thứ & Ngày Tháng",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "english_foundation_ef06",
-    "title_en": "EF-06 — Fixing the 6 Biggest Vietnamese Pronunciation Errors",
-    "title_vi": "EF-06 — Sửa 6 Lỗi Phát Âm Lớn Nhất Của Người Việt",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "english_foundation_ef07",
-    "title_en": "EF-07 — Simple Present: I go / He goes",
-    "title_vi": "EF-07 — Thì Hiện Tại Đơn: I go / He goes",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "english_foundation_ef08",
-    "title_en": "EF-08 — Be + Feelings & Descriptions",
-    "title_vi": "EF-08 — Động Từ Be + Cảm Xúc & Miêu Tả",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "english_foundation_ef09",
-    "title_en": "EF-09 — There Is / There Are",
-    "title_vi": "EF-09 — There Is / There Are",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "english_foundation_ef10",
-    "title_en": "EF-10 — Slow & Clear Listening Practice",
-    "title_vi": "EF-10 — Luyện Nghe Chậm & Rõ",
-    "tier": "free",
-    "hasData": true
-  },
-  {
     "id": "english_foundation_ef11",
     "title_en": "EF-11 — Real-Life Mini Conversations",
     "title_vi": "EF-11 — Hội Thoại Ngắn Trong Đời Sống",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "english_foundation_ef12",
-    "title_en": "EF-12 — First Short Stories",
-    "title_vi": "EF-12 — Những Câu Chuyện Ngắn Đầu Tiên",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "english_foundation_ef13",
-    "title_en": "EF-13 — Daily Speaking Routine",
-    "title_vi": "EF-13 — Thói Quen Nói Tiếng Anh Mỗi Ngày",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "english_foundation_ef14",
-    "title_en": "EF-14 — Final Check & Graduation",
-    "title_vi": "EF-14 — Kiểm Tra Cuối & Tốt Nghiệp",
     "tier": "free",
     "hasData": true
   },
@@ -2056,38 +1754,10 @@ const __ROOM_LIST: RoomListItem[] = [
     "hasData": true
   },
   {
-    "id": "english_specialization_mastery_vip3_ii_module2_vip3",
-    "title_en": "VIP3 II – English Specialization Mastery: Advanced Module",
-    "title_vi": "VIP3 II – Thành Thạo Chuyên Môn Tiếng Anh: Module Nâng Cao",
-    "tier": "vip3",
-    "hasData": true
-  },
-  {
-    "id": "english_writing_deepdive_part5_vip3ii_vip3",
-    "title_en": "Writing Deep-Dive: Part V — Elite Writing Psychology",
-    "title_vi": "Chuyên Sâu Viết: Phần V — Tâm Lý Viết Tinh Hoa",
-    "tier": "vip3",
-    "hasData": true
-  },
-  {
-    "id": "english_writing_deepdive_part8_vip3ii_vip3",
-    "title_en": "Writing Deep-Dive: Part VIII — Narrative Flow Systems",
-    "title_vi": "Chuyên Sâu Viết: Phần VIII — Hệ Thống Dòng Chảy Tường Thuật",
-    "tier": "vip3",
-    "hasData": true
-  },
-  {
     "id": "english_writing_free",
     "title_en": "English Writing Foundations",
     "title_vi": "Nền Tảng Viết Tiếng Anh",
     "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "english_writing_mastery_vip3_vip3",
-    "title_en": "Writing Mastery",
-    "title_vi": "Thành Thạo Viết",
-    "tier": "vip3",
     "hasData": true
   },
   {
@@ -2119,13 +1789,6 @@ const __ROOM_LIST: RoomListItem[] = [
     "hasData": true
   },
   {
-    "id": "erotic_wisdom_for_life_vip3_sub_6_sex",
-    "title_en": "Erotic Wisdom for Life",
-    "title_vi": "Trí Tuệ Gợi Cảm Trọn Đời",
-    "tier": "vip3",
-    "hasData": true
-  },
-  {
     "id": "essential_money_risk_management_vip4_bonus",
     "title_en": "Essential Money & Personal Risk Management — VIP4 Bonus",
     "title_vi": "Tài Chính Cốt Lõi & Quản Lý Rủi Ro Cá Nhân — Phần Thưởng VIP4",
@@ -2151,20 +1814,6 @@ const __ROOM_LIST: RoomListItem[] = [
     "title_en": "Executive Function Mastery — Room 8",
     "title_vi": "Làm Chủ Chức Năng Điều Hành — Phòng 8",
     "tier": "vip2",
-    "hasData": true
-  },
-  {
-    "id": "explore_world_vip4_career_i_2",
-    "title_en": "explore_world_vip4_career_i_2",
-    "title_vi": "explore_world_vip4_career_i_2",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "explore_world_vip4_career_ii_2",
-    "title_en": "explore_world_vip4_career_ii_2",
-    "title_vi": "explore_world_vip4_career_ii_2",
-    "tier": "free",
     "hasData": true
   },
   {
@@ -2224,13 +1873,6 @@ const __ROOM_LIST: RoomListItem[] = [
     "hasData": true
   },
   {
-    "id": "finance_calm_money_sub4_vip3",
-    "title_en": "Protecting What Matters",
-    "title_vi": "Bảo Vệ Điều Quan Trọng",
-    "tier": "vip3",
-    "hasData": true
-  },
-  {
     "id": "finance_calm_money_sub5_growing_bigger_vip3",
     "title_en": "Growing Bigger (When Ready)",
     "title_vi": "Phát Triển Lớn Hơn (Khi Sẵn Sàng)",
@@ -2242,20 +1884,6 @@ const __ROOM_LIST: RoomListItem[] = [
     "title_en": "Legacy & Long-Term Peace",
     "title_vi": "Di Sản & Bình An Lâu Dài",
     "tier": "vip3",
-    "hasData": true
-  },
-  {
-    "id": "finance_glory_vip3",
-    "title_en": "Finance Glory",
-    "title_vi": "Vinh Quang Tài Chính",
-    "tier": "vip3",
-    "hasData": true
-  },
-  {
-    "id": "find_what_you_love_vip4",
-    "title_en": "Find What You Love",
-    "title_vi": "Tìm Điều Bạn Yêu",
-    "tier": "free",
     "hasData": true
   },
   {
@@ -2322,13 +1950,6 @@ const __ROOM_LIST: RoomListItem[] = [
     "hasData": true
   },
   {
-    "id": "future_skills_kids_l3_kidslevel3",
-    "title_en": "Future Skills",
-    "title_vi": "Kỹ Năng Tương Lai",
-    "tier": "free",
-    "hasData": true
-  },
-  {
     "id": "games_sports_kids_l2",
     "title_en": "Games & Sports",
     "title_vi": "Trò Chơi & Thể Thao",
@@ -2378,20 +1999,6 @@ const __ROOM_LIST: RoomListItem[] = [
     "hasData": true
   },
   {
-    "id": "god_with_us_vip1_vip1",
-    "title_en": "God With Us VIP1",
-    "title_vi": "Chúa Ở Cùng Chúng Ta VIP1",
-    "tier": "vip1",
-    "hasData": true
-  },
-  {
-    "id": "god_with_us_vip3_vip3",
-    "title_en": "God With Us VIP3",
-    "title_vi": "Chúa Ở Cùng Chúng Ta VIP3",
-    "tier": "vip3",
-    "hasData": true
-  },
-  {
     "id": "grammar_accelerator_vip1",
     "title_en": "Grammar Accelerator: Fast, Clear, Automatic",
     "title_vi": "Tăng Tốc Ngữ Pháp: Nhanh, Rõ, Tự Động",
@@ -2424,27 +2031,6 @@ const __ROOM_LIST: RoomListItem[] = [
     "title_en": "grief_healing_free",
     "title_vi": "Chữa Lành Nỗi Đau Mất Mát",
     "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "grow_wealth_vip4_career_6",
-    "title_en": "grow_wealth_vip4_career_6",
-    "title_vi": "grow_wealth_vip4_career_6",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "growing_bigger_vip3_5_vip3",
-    "title_en": "Growing Bigger When Ready",
-    "title_vi": "Phát Triển Lớn Hơn Khi Sẵn Sàng",
-    "tier": "vip3",
-    "hasData": true
-  },
-  {
-    "id": "growing_bigger_when_ready_vip3_5_finance",
-    "title_en": "Protecting What Matters",
-    "title_vi": "Bảo Vệ Điều Quan Trọng",
-    "tier": "vip3",
     "hasData": true
   },
   {
@@ -2514,13 +2100,6 @@ const __ROOM_LIST: RoomListItem[] = [
     "id": "idioms_for_kids_kids_l3",
     "title_en": "Idioms for Kids",
     "title_vi": "Thành Ngữ Dễ Hiểu Cho Trẻ",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "idioms_for_kids_kids_l3_kidslevel3",
-    "title_en": "Idioms for Kids",
-    "title_vi": "Thành Ngữ Cho Trẻ Em",
     "tier": "free",
     "hasData": true
   },
@@ -2599,48 +2178,6 @@ const __ROOM_LIST: RoomListItem[] = [
     "title_en": "Kautilya — Volume III: The Deep Architecture of Empire",
     "title_vi": "Kautilya — Tập III: Kiến Trúc Sâu Của Đế Chế",
     "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "keep_soul_calm_vip3_vip3",
-    "title_en": "Keep Soul Calm VIP3",
-    "title_vi": "Giữ Tâm Hồn Bình Yên VIP3",
-    "tier": "vip3",
-    "hasData": true
-  },
-  {
-    "id": "know_yourself_deeply_vip4",
-    "title_en": "know_yourself_deeply_vip4",
-    "title_vi": "know_yourself_deeply_vip4",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "launch_career_vip4_career_4_ii",
-    "title_en": "launch_career_vip4_career_4_ii",
-    "title_vi": "launch_career_vip4_career_4_ii",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "legacy_and_impact_vip4",
-    "title_en": "Legacy and Impact",
-    "title_vi": "Di Sản Và Ảnh Hưởng",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "legacy_and_long_term_peace_vip3_6_finance",
-    "title_en": "Legacy & Long-Term Peace",
-    "title_vi": "Di Sản & Bình Yên Dài Hạn",
-    "tier": "vip3",
-    "hasData": true
-  },
-  {
-    "id": "legacy_peace_vip3_6_vip3",
-    "title_en": "Legacy Long Term Peace",
-    "title_vi": "Di Sản Bình An Lâu Dài",
-    "tier": "vip3",
     "hasData": true
   },
   {
@@ -2812,45 +2349,10 @@ const __ROOM_LIST: RoomListItem[] = [
     "hasData": true
   },
   {
-    "id": "meaning_of_life_vip2_vip2",
-    "title_en": "The Meaning of Life: Flow of Connection",
-    "title_vi": "Ý Nghĩa Cuộc Sống: Dòng Chảy Kết Nối",
-    "tier": "vip2",
-    "hasData": true
-  },
-  {
     "id": "meaning_of_life_vip3",
     "title_en": "The Meaning of Life: Harmony of Being",
     "title_vi": "Ý Nghĩa Của Cuộc Sống: Hòa Điệu Của Tồn Tại",
     "tier": "vip3",
-    "hasData": true
-  },
-  {
-    "id": "meaning_of_life_vip4_vip4",
-    "title_en": "Stillness as the Teacher",
-    "title_vi": "Sự Tĩnh Lặng Như Người Thầy",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "meaning_of_life_vip5_vip5",
-    "title_en": "The Courage to Be Vulnerable",
-    "title_vi": "Can Đảm Để Dễ Bị Tổn Thương",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "meaning_of_life_vip6_vip6",
-    "title_en": "Living the Inner and Outer Journey",
-    "title_vi": "Sống Hành Trình Bên Trong và Bên Ngoài",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "meaning_of_life_vip7_vip7",
-    "title_en": "Purpose Through Service",
-    "title_vi": "Mục Đích Qua Phục Vụ",
-    "tier": "free",
     "hasData": true
   },
   {
@@ -2889,13 +2391,6 @@ const __ROOM_LIST: RoomListItem[] = [
     "hasData": true
   },
   {
-    "id": "mental_sharpness_vip3",
-    "title_en": "mental_sharpness_vip3",
-    "title_vi": "mental_sharpness_vip3",
-    "tier": "vip3",
-    "hasData": true
-  },
-  {
     "id": "mentors_who_light_the_way_vip4",
     "title_en": "Mentors Who Light the Way",
     "title_vi": "Những Người Dẫn Đường Thắp Sáng",
@@ -2910,38 +2405,10 @@ const __ROOM_LIST: RoomListItem[] = [
     "hasData": true
   },
   {
-    "id": "mercy_blade_english_free",
-    "title_en": "Mercy Blade Method",
-    "title_vi": "Phương Pháp Mercy Blade",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "mercy_blade_english_vip3",
-    "title_en": "Mercy Blade Method of Learning English",
-    "title_vi": "Phương Pháp Mercy Blade Học Tiếng Anh",
-    "tier": "vip3",
-    "hasData": true
-  },
-  {
-    "id": "mercy_blade_home_free",
-    "title_en": "Mercy Blade Home",
-    "title_vi": "Trang Chủ Mercy Blade",
-    "tier": "free",
-    "hasData": true
-  },
-  {
     "id": "mercy_blade_home_page",
     "title_en": "mercy_blade_home_page",
     "title_vi": "Trang Chủ Mercy Blade",
     "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "mercy_blade_room_v1_vip3",
-    "title_en": "Sexuality & Curiosity & Culture",
-    "title_vi": "Tình Dục & Tò Mò & Văn Hóa",
-    "tier": "vip3",
     "hasData": true
   },
   {
@@ -2952,58 +2419,9 @@ const __ROOM_LIST: RoomListItem[] = [
     "hasData": true
   },
   {
-    "id": "mercy_vip_business_english",
-    "title_en": "mercy_vip_business_english",
-    "title_vi": "mercy_vip_business_english",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "mercy_vip_ei_idioms",
-    "title_en": "mercy_vip_ei_idioms",
-    "title_vi": "mercy_vip_ei_idioms",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "mercy_vip_english_lessons",
-    "title_en": "mercy_vip_english_lessons",
-    "title_vi": "mercy_vip_english_lessons",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "mercy_vip_grammar",
-    "title_en": "mercy_vip_grammar",
-    "title_vi": "mercy_vip_grammar",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "mercy_vip_ielts_toefl",
-    "title_en": "mercy_vip_ielts_toefl",
-    "title_vi": "mercy_vip_ielts_toefl",
-    "tier": "free",
-    "hasData": true
-  },
-  {
     "id": "mercy_vip_reply_library",
     "title_en": "mercy_vip_reply_library",
     "title_vi": "mercy_vip_reply_library",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "mercy_vip_travel_english",
-    "title_en": "mercy_vip_travel_english",
-    "title_vi": "mercy_vip_travel_english",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "mercy_vocabulary_growth_plan",
-    "title_en": "mercy_vocabulary_growth_plan",
-    "title_vi": "mercy_vocabulary_growth_plan",
     "tier": "free",
     "hasData": true
   },
@@ -3016,13 +2434,6 @@ const __ROOM_LIST: RoomListItem[] = [
   },
   {
     "id": "mini_projects_presentations_kids_l3",
-    "title_en": "Mini Projects & Presentations",
-    "title_vi": "Dự Án Nhỏ & Thuyết Trình",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "mini_projects_presentations_kids_l3_kidslevel3",
     "title_en": "Mini Projects & Presentations",
     "title_vi": "Dự Án Nhỏ & Thuyết Trình",
     "tier": "free",
@@ -3204,31 +2615,10 @@ const __ROOM_LIST: RoomListItem[] = [
     "hasData": true
   },
   {
-    "id": "nutrition_vip1_vip1",
-    "title_en": "Nutrition VIP1",
-    "title_vi": "Dinh Dưỡng VIP1",
-    "tier": "vip1",
-    "hasData": true
-  },
-  {
     "id": "nutrition_vip2",
     "title_en": "nutrition_vip2",
     "title_vi": "Chiến Lược Dinh Dưỡng Nâng Cao",
     "tier": "vip2",
-    "hasData": true
-  },
-  {
-    "id": "nutrition_vip3",
-    "title_en": "nutrition_vip3",
-    "title_vi": "nutrition_vip3",
-    "tier": "vip3",
-    "hasData": true
-  },
-  {
-    "id": "obesity",
-    "title_en": "Obesity Management",
-    "title_vi": "Quản Lý Béo Phì",
-    "tier": "free",
     "hasData": true
   },
   {
@@ -3288,13 +2678,6 @@ const __ROOM_LIST: RoomListItem[] = [
     "hasData": true
   },
   {
-    "id": "overcome_storm_vip3",
-    "title_en": "overcome_storm_vip3",
-    "title_vi": "overcome_storm_vip3",
-    "tier": "vip3",
-    "hasData": true
-  },
-  {
     "id": "personal_operating_system_vip2",
     "title_en": "Personal Operating System — Room 2",
     "title_vi": "Hệ Điều Hành Cá Nhân — Phòng 2",
@@ -3327,20 +2710,6 @@ const __ROOM_LIST: RoomListItem[] = [
     "title_en": "Philosophy of Everyday Life",
     "title_vi": "Triết Lý Cuộc Sống Hằng Ngày",
     "tier": "vip2",
-    "hasData": true
-  },
-  {
-    "id": "philosophy_of_everyday_vip1_vip1",
-    "title_en": "Philosophy VIP1",
-    "title_vi": "Triết Học VIP1",
-    "tier": "vip1",
-    "hasData": true
-  },
-  {
-    "id": "philosophy_of_everyday_vip3",
-    "title_en": "philosophy_of_everyday_vip3",
-    "title_vi": "philosophy_of_everyday_vip3",
-    "tier": "vip3",
     "hasData": true
   },
   {
@@ -3421,13 +2790,6 @@ const __ROOM_LIST: RoomListItem[] = [
     "hasData": true
   },
   {
-    "id": "protecting_what_matters_vip3_4_finance",
-    "title_en": "Protecting What Matters",
-    "title_vi": "Bảo Vệ Điều Quan Trọng",
-    "tier": "vip3",
-    "hasData": true
-  },
-  {
     "id": "psychological_self_mastery_vip6_bonus",
     "title_en": "Psychological Self-Mastery — VIP6 Bonus",
     "title_vi": "Làm Chủ Tâm Lý — Phần Thưởng VIP6",
@@ -3484,30 +2846,9 @@ const __ROOM_LIST: RoomListItem[] = [
     "hasData": true
   },
   {
-    "id": "public_speaking_kids_l3_kidslevel3",
-    "title_en": "Public Speaking",
-    "title_vi": "Nói Trước Công Chúng",
-    "tier": "free",
-    "hasData": true
-  },
-  {
     "id": "public_speaking_structure_vip3",
     "title_en": "Structuring Your Message — Room 2",
     "title_vi": "Cấu Trúc Thông Điệp — Phòng 2",
-    "tier": "vip3",
-    "hasData": true
-  },
-  {
-    "id": "quiet_growth_simple_investing_vip3_3_finance",
-    "title_en": "Quiet Growth: Simple Investing",
-    "title_vi": "Tăng Trưởng Lặng Lẽ: Đầu Tư Đơn Giản",
-    "tier": "vip3",
-    "hasData": true
-  },
-  {
-    "id": "quiet_growth_vip3_3_vip3",
-    "title_en": "Quiet Growth Simple Investing",
-    "title_vi": "Tăng Trưởng Êm Đềm Đầu Tư Đơn Giản",
     "tier": "vip3",
     "hasData": true
   },
@@ -3523,13 +2864,6 @@ const __ROOM_LIST: RoomListItem[] = [
     "title_en": "Reading Skills",
     "title_vi": "Kỹ Năng Đọc",
     "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "relational_erotic_vip3_sub2_vip3",
-    "title_en": "Relational Intelligence & Erotic Communication",
-    "title_vi": "Trí Tuệ Quan Hệ & Giao Tiếp Tình Dục",
-    "tier": "vip3",
     "hasData": true
   },
   {
@@ -3603,13 +2937,6 @@ const __ROOM_LIST: RoomListItem[] = [
     "hasData": true
   },
   {
-    "id": "schizophrenia_understanding_vip1_vip1",
-    "title_en": "Understanding Schizophrenia",
-    "title_vi": "Hiểu Về Tâm Thần Phân Liệt",
-    "tier": "vip1",
-    "hasData": true
-  },
-  {
     "id": "school_life_vocabulary_kids_l2",
     "title_en": "School Life Vocabulary",
     "title_vi": "Từ Vựng Cuộc Sống Học Đường",
@@ -3659,13 +2986,6 @@ const __ROOM_LIST: RoomListItem[] = [
     "hasData": true
   },
   {
-    "id": "see_your_money_clearly_vip3_2_finance",
-    "title_en": "Money Basics You Should’ve Learned",
-    "title_vi": "Kiến Thức Tiền Bạc Nên Được Dạy",
-    "tier": "vip3",
-    "hasData": true
-  },
-  {
     "id": "self_love_free",
     "title_en": "Self Love",
     "title_vi": "Yêu Thương Bản Thân",
@@ -3673,23 +2993,9 @@ const __ROOM_LIST: RoomListItem[] = [
     "hasData": true
   },
   {
-    "id": "sexuality_culture_vip3_vip3",
-    "title_en": "Sexuality & Curiosity & Culture",
-    "title_vi": "Tình Dục & Tò Mò & Văn Hóa",
-    "tier": "vip3",
-    "hasData": true
-  },
-  {
     "id": "sexuality_curiosity_culture_vip3",
     "title_en": "Sexuality & Curiosity & Culture",
     "title_vi": "Tính Dục, Sự Tò Mò & Văn Hóa",
-    "tier": "vip3",
-    "hasData": true
-  },
-  {
-    "id": "sexuality_curiosity_culture_vip3_vip3",
-    "title_en": "Sexuality & Curiosity & Culture",
-    "title_vi": "Tình Dục & Tò Mò & Văn Hóa",
     "tier": "vip3",
     "hasData": true
   },
@@ -3848,31 +3154,10 @@ const __ROOM_LIST: RoomListItem[] = [
     "hasData": true
   },
   {
-    "id": "stoicism",
-    "title_en": "Stoic Philosophy",
-    "title_vi": "Triết Học Stoic",
-    "tier": "free",
-    "hasData": true
-  },
-  {
     "id": "stoicism_free",
     "title_en": "Stoic Philosophy (Free)",
     "title_vi": "Triết Học Khắc Kỷ (Miễn Phí)",
     "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "stoicism_vip1_vip1",
-    "title_en": "Stoic Philosophy VIP1",
-    "title_vi": "Triết Học Khắc Kỷ VIP1",
-    "tier": "vip1",
-    "hasData": true
-  },
-  {
-    "id": "stoicism_vip3_vip3",
-    "title_en": "Stoic Philosophy VIP3",
-    "title_vi": "Triết Học Khắc Kỷ VIP3",
-    "tier": "vip3",
     "hasData": true
   },
   {
@@ -4044,13 +3329,6 @@ const __ROOM_LIST: RoomListItem[] = [
     "hasData": true
   },
   {
-    "id": "strategy_in_life_3_vip3",
-    "title_en": "Strategy in Life - Mastery & Legacy",
-    "title_vi": "Chiến Lược Cuộc Sống - Tinh Thông & Di Sản",
-    "tier": "vip3",
-    "hasData": true
-  },
-  {
     "id": "strategy_in_life_advanced_tactics_ii_vip3",
     "title_en": "Strategy in Life - Advanced Tactics II",
     "title_vi": "Chiến Lược Cuộc Sống - Chiến Thuật Nâng Cao II",
@@ -4061,48 +3339,6 @@ const __ROOM_LIST: RoomListItem[] = [
     "id": "strategy_in_life_foundations_ii_vip3",
     "title_en": "Strategy in Life - Foundations II",
     "title_vi": "Chiến Lược Cuộc Sống - Nền Tảng II",
-    "tier": "vip3",
-    "hasData": true
-  },
-  {
-    "id": "strategy_in_life_mastery_legacy_vip3",
-    "title_en": "Strategy in Life - Mastery & Legacy",
-    "title_vi": "Chiến Lược Trong Cuộc Sống - Thành Thạo & Di Sản",
-    "tier": "vip3",
-    "hasData": true
-  },
-  {
-    "id": "strategy_in_life_mastery_legacy_vip3_ii",
-    "title_en": "Strategy in Life - Mastery & Legacy II",
-    "title_vi": "Chiến Lược Cuộc Sống - Tinh Thông & Di Sản II",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "strategy_life_advanced_tactics_ii_vip3_vip3",
-    "title_en": "Strategy in Life - Advanced Tactics II",
-    "title_vi": "Chiến Lược Cuộc Sống - Chiến Thuật Nâng Cao II",
-    "tier": "vip3",
-    "hasData": true
-  },
-  {
-    "id": "strategy_life_advanced_tactics_vip3_vip3",
-    "title_en": "Strategy in Life - Advanced Tactics",
-    "title_vi": "Chiến Lược Cuộc Sống - Chiến Thuật Nâng Cao",
-    "tier": "vip3",
-    "hasData": true
-  },
-  {
-    "id": "strategy_life_foundations_vip3_vip3",
-    "title_en": "Strategy in Life - Foundations",
-    "title_vi": "Chiến Lược Cuộc Sống - Nền Tảng",
-    "tier": "vip3",
-    "hasData": true
-  },
-  {
-    "id": "strategy_tactics_ii_vip3_vip3",
-    "title_en": "Strategy Advanced Tactics II",
-    "title_vi": "Chiến Thuật Nâng Cao II",
     "tier": "vip3",
     "hasData": true
   },
@@ -4289,21 +3525,7 @@ const __ROOM_LIST: RoomListItem[] = [
     "hasData": true
   },
   {
-    "id": "teamwork_leadership_kids_l3_kidslevel3",
-    "title_en": "Teamwork & Leadership",
-    "title_vi": "Làm Việc Nhóm & Lãnh Đạo",
-    "tier": "free",
-    "hasData": true
-  },
-  {
     "id": "technology_robots_kids_l3",
-    "title_en": "Technology & Robots",
-    "title_vi": "Công Nghệ & Robot",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "technology_robots_kids_l3_kidslevel3",
     "title_en": "Technology & Robots",
     "title_vi": "Công Nghệ & Robot",
     "tier": "free",
@@ -4688,23 +3910,9 @@ const __ROOM_LIST: RoomListItem[] = [
     "hasData": true
   },
   {
-    "id": "weight_loss_fitness_vip3",
-    "title_en": "Weight Loss & Fitness",
-    "title_vi": "Giảm Cân & Thể Dục",
-    "tier": "vip3",
-    "hasData": true
-  },
-  {
     "id": "wild_animals_kids_l1",
     "title_en": "Wild Animals",
     "title_vi": "Động Vật Hoang Dã",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "women_health_free",
-    "title_en": "Women Health",
-    "title_vi": "Sức Khỏe Phụ Nữ",
     "tier": "free",
     "hasData": true
   },

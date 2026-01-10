@@ -1,9 +1,14 @@
+-- supabase/migrations/20251121033216_fcf0aa0a-1ca2-4211-9056-1611f575d635.sql
+-- MB-BLUE-KIDS-SEED-20251121033216 v2
+--
 -- Kids seed (replay-safe):
 -- - Runs ONLY if kids tables exist
--- - Uses dynamic SQL so we can "skip" cleanly
+-- - Uses dynamic SQL so we can "skip" cleanly (DO block RETURN)
+-- - TRUNCATE + INSERT are inside the guarded block, so missing tables never crash reset
 
 DO $$
 BEGIN
+  -- Guard: skip kids seed if kids tables are not present in this schema
   IF to_regclass('public.kids_levels') IS NULL
      OR to_regclass('public.kids_rooms') IS NULL
      OR to_regclass('public.kids_entries') IS NULL THEN
@@ -29,9 +34,7 @@ BEGIN
     ('level3', 'Level 3', 'Cấp 3', '10-13', 'Advanced learning and expression', 'Học tập và diễn đạt nâng cao', 3, 199000, 'hsl(271, 91%, 65%)', true);
   $seed$;
 
-  -- Insert Kids Rooms (LEVEL 1 sample shown)
-  -- IMPORTANT: continue this pattern for LEVEL 1/2/3 by wrapping each INSERT in EXECUTE $seed$ ... $seed$;
-
+  -- Insert Kids Rooms (LEVEL 1)
   EXECUTE $seed$
     INSERT INTO public.kids_rooms (
       id, level_id, title_en, title_vi,
@@ -69,5 +72,9 @@ BEGIN
     ('magic-story', 'level1', 'Magic Story Words', 'Từ Vựng Câu Chuyện Kỳ Diệu', 'Learn storytelling words', 'Học từ kể chuyện', 29, 'Sparkles', true),
     ('make-believe', 'level1', 'Make-Believe & Imagination', 'Tưởng Tượng', 'Use your imagination', 'Dùng trí tưởng tượng', 30, 'Wand2', true);
   $seed$;
+
+  -- NOTE:
+  -- If you later add Level 2 + Level 3 here, keep them inside this DO block
+  -- and wrap each INSERT in EXECUTE $seed$ ... $seed$;
 
 END $$;

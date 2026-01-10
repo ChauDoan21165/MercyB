@@ -1,9 +1,10 @@
 /* src/index.css
-   MB-BLUE-100.3 — 2025-12-31 (+0700)
+   MB-BLUE-100.4 — 2026-01-03 (+0700)
 
    MERGED:
    (A) Mercy Blade background modes (rainbow / bw)
    (B) Mercy mouth + presence animations (SAFE)
+   (C) Keyword highlights via data-hl (EN/VI same colors)
 
    LOCKED POLICY:
    - Native <audio> UI must NEVER appear inside ROOM pages.
@@ -14,29 +15,19 @@
    - We do NOT disable audio playback logic.
    - We hide native audio UI ONLY inside `.mb-room` scope.
 
-   FIX (100.2):
-   - The “sticking out” blue rectangle is focus ring/outline on range inputs.
-   - Remove outline/box-shadow focus rings for range inputs (safe, can style later).
-   - Custom range appearance in WebKit so UI obeys parent clipping.
+   FIX (100.3):
+   - Global `input[type=range]{ width:100% }` causes overflow in flex rows.
+   - Do NOT force width:100% globally.
+   - Use max-width + min-width:0 + flex shrink safety instead.
 
-   FIX (100.3) — THE REAL OVERFLOW FIX FOR ROOM AUDIO BAR:
-   - The room audio bar overflow is caused by GLOBAL `input[type=range]{ width:100% }`.
-   - In a flex row (slider + time text), width:100% forces overflow to the right.
-   - So we DO NOT force width:100% globally.
-   - We clamp with max-width + min-width:0 + flex shrink safety instead.
-   - Components that need full-width sliders (BottomMusicBar) already set width via inline/scoped CSS.
+   NEW (100.4):
+   - data-hl keyword highlighting: same concept => same color across languages.
+   - Dark, readable colors (no neon).
 */
 
 /* ===============================
    Mercy Blade — Global Media Policy (LOCKED)
    =============================== */
-
-/*
-  Mercy Blade (LOCKED):
-  - Native audio UI is forbidden INSIDE ROOMS.
-  - Audio is rendered ONLY via TalkingFacePlayButton.
-  - We hide native UI while keeping JS audio usable.
-*/
 
 /* ===============================
    ROOM-SCOPED AUDIO LOCK (THE LOOP BREAKER)
@@ -55,8 +46,7 @@
 }
 
 /* 1) If controls attribute exists:
-      DO NOT display:none (keeps DOM + avoids layout quirks).
-      Visual is already suppressed by `.mb-room audio` above. */
+      DO NOT display:none (keeps DOM + avoids layout quirks). */
 .mb-room audio[controls] {
   display: block !important;
 }
@@ -74,8 +64,7 @@
   display: none !important;
 }
 
-/* 3) If any renderer wraps audio in a container that has default margins,
-      make sure it doesn't produce visual gaps. */
+/* 3) Ensure no visual gaps/margins */
 .mb-room audio,
 .mb-room audio[controls] {
   margin: 0 !important;
@@ -121,6 +110,37 @@ body {
 }
 :root[data-mb-mode="bw"] .bg-card {
   background-color: rgba(255, 255, 255, 1);
+}
+
+/* ===============================
+   Keyword Highlight System (data-hl)
+   =============================== */
+
+/*
+  Usage in content:
+    <span data-hl="calorie_deficit">calorie deficit</span>
+    <span data-hl="calorie_deficit">thiếu hụt calo</span>
+
+  Policy:
+  - 3–5 highlights per entry max.
+  - Same data-hl token => same color in both languages.
+  - Dark colors only; readable on light backgrounds.
+*/
+
+[data-hl] {
+  font-weight: 650;
+  text-decoration: none;
+}
+
+[data-hl="calorie_deficit"] { color: #1f2937; } /* slate-800 */
+[data-hl="daily_walk"]      { color: #0f766e; } /* teal-700 */
+[data-hl="consistency"]     { color: #7c2d12; } /* amber-800 */
+[data-hl="nutrition"]       { color: #365314; } /* olive-800 */
+[data-hl="habit"]           { color: #312e81; } /* indigo-800 */
+
+/* optional: reduce harshness in bw mode */
+:root[data-mb-mode="bw"] [data-hl] {
+  opacity: 0.95;
 }
 
 /* ===============================
@@ -269,11 +289,10 @@ input[type="range"] {
   max-width: 100%;
   min-width: 0;
   box-sizing: border-box;
-  /* lets it behave in flex rows: take remaining space, not overflow */
   flex: 1 1 auto;
 }
 
-/* Flex/grid shrink safety: overflowing children is usually min-width:auto. */
+/* Flex/grid shrink safety */
 .mb-room,
 .mb-room * {
   min-width: 0;
@@ -283,13 +302,13 @@ input[type="range"] {
    RANGE FOCUS RING / OUTLINE CLIP FIX (THE STICK-OUT)
    =============================== */
 
-/* The blue “sticking out” can be the focus outline/ring. */
+/* Remove the blue “sticking out” focus outline/ring. */
 input[type="range"]:focus {
   outline: none !important;
   box-shadow: none !important;
 }
 
-/* WebKit: force custom paint so it doesn't draw outside rounded parents. */
+/* WebKit: custom paint so it doesn't draw outside rounded parents. */
 input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
@@ -299,7 +318,7 @@ input[type="range"] {
   height: 20px;
 }
 
-/* Track + thumb: neutral, safe */
+/* Track + thumb */
 input[type="range"]::-webkit-slider-runnable-track {
   height: 6px;
   border-radius: 9999px;
@@ -329,5 +348,5 @@ input[type="range"]::-moz-range-thumb {
 }
 
 /* New thing to learn:
-   A global `width:100%` on inputs is dangerous in flex rows.
-   Prefer `max-width:100% + min-width:0 + flex:1` so layouts can shrink safely. */
+   If you want “same meaning = same color” across languages,
+   don’t color words—color concepts (data-hl tokens). */

@@ -43,6 +43,9 @@ import TierDetail from "@/pages/TierDetail";
 // ✅ Auth / Signin
 import LoginPage from "@/pages/LoginPage";
 
+// ✅ Ecosystem auth gate (Mercy Core → redirect to canonical login)
+import RequireMercyAuth from "@/components/auth/RequireMercyAuth";
+
 // ✅ Admin guard + layout + control board
 import AdminRoute from "@/components/admin/AdminRoute";
 import AdminLayout from "@/components/admin/AdminLayout";
@@ -58,6 +61,9 @@ import AudioCoveragePage from "@/pages/admin/AudioCoveragePage";
 // ✅ Monitoring + Metrics
 import AdminMonitoring from "@/pages/admin/AdminMonitoring";
 import AdminMetrics from "@/pages/admin/AdminMetrics";
+
+// ✅ Mercy AI Host (global floating guide)
+import MercyAIHost from "@/components/guide/MercyAIHost";
 
 /**
  * Local NotFound — ZERO dependencies
@@ -117,123 +123,145 @@ function AuthRedirect() {
 
 export default function AppRouter() {
   return (
-    <Routes>
-      {/* ✅ HOME (curated front door) */}
-      <Route path="/" element={<Home />} />
+    <>
+      <Routes>
+        {/* ✅ HOME (curated front door) */}
+        <Route path="/" element={<Home />} />
 
-      {/* ✅ Auth */}
-      <Route path="/signin" element={<LoginPage />} />
-      <Route path="/auth" element={<AuthRedirect />} />
+        {/* ✅ Auth */}
+        <Route path="/signin" element={<LoginPage />} />
+        <Route path="/auth" element={<AuthRedirect />} />
 
-      {/* Rooms list */}
-      <Route path="/rooms" element={<AllRooms />} />
+        {/* Rooms list */}
+        <Route path="/rooms" element={<AllRooms />} />
 
-      {/* ✅ Tier Spine */}
-      <Route path="/tiers" element={<TierIndex />} />
-      <Route path="/tiers/:tierId" element={<TierDetail />} />
+        {/* ✅ Tier Spine */}
+        <Route path="/tiers" element={<TierIndex />} />
+        <Route path="/tiers/:tierId" element={<TierDetail />} />
 
-      {/* ✅ TEMP: keep Home CTA safe */}
-      <Route path="/redeem" element={<RedeemRedirect />} />
+        {/* ✅ TEMP: keep Home CTA safe */}
+        <Route path="/redeem" element={<RedeemRedirect />} />
 
-      {/* 🔁 Legacy fixes (explicit, silent) */}
-      <Route path="/room/room/:roomId" element={<RoomRoomRedirect />} />
-      <Route path="/room" element={<RoomIndexRedirect />} />
-      <Route path="/rooms/room/:roomId" element={<RoomsRoomRedirect />} />
+        {/* 🔁 Legacy fixes (explicit, silent) */}
+        <Route path="/room/room/:roomId" element={<RoomRoomRedirect />} />
+        <Route path="/room" element={<RoomIndexRedirect />} />
+        <Route path="/rooms/room/:roomId" element={<RoomsRoomRedirect />} />
 
-      {/* ✅ Canonical room route */}
-      <Route path="/room/:roomId" element={<ChatHub />} />
+        {/* ✅ Canonical room route */}
+        <Route path="/room/:roomId" element={<ChatHub />} />
 
-      {/* =========================
-          ✅ ADMIN (GUARDED)
-         ========================= */}
-      <Route
-        path="/admin"
-        element={
-          <AdminRoute>
-            <AdminLayout>
-              <AdminDashboard />
-            </AdminLayout>
-          </AdminRoute>
-        }
-      />
-      <Route
-        path="/admin/payments"
-        element={
-          <AdminRoute>
-            <AdminLayout>
-              <AdminPayments />
-            </AdminLayout>
-          </AdminRoute>
-        }
-      />
-      <Route
-        path="/admin/bank-transfers"
-        element={
-          <AdminRoute>
-            <AdminLayout>
-              <AdminBankTransfers />
-            </AdminLayout>
-          </AdminRoute>
-        }
-      />
-      <Route
-        path="/admin/payment-verification"
-        element={
-          <AdminRoute>
-            <AdminLayout>
-              <AdminPaymentVerification />
-            </AdminLayout>
-          </AdminRoute>
-        }
-      />
-      <Route
-        path="/admin/access-codes"
-        element={
-          <AdminRoute>
-            <AdminLayout>
-              <AdminAccessCodes />
-            </AdminLayout>
-          </AdminRoute>
-        }
-      />
-      <Route
-        path="/admin/audio-coverage"
-        element={
-          <AdminRoute>
-            <AdminLayout>
-              <AudioCoveragePage />
-            </AdminLayout>
-          </AdminRoute>
-        }
-      />
+        {/* =========================
+            ✅ ADMIN (GUARDED)
+            ✅ ALSO: Ecosystem auth gate first (redirect to Mercy canonical login)
+           ========================= */}
+        <Route
+          path="/admin"
+          element={
+            <RequireMercyAuth>
+              <AdminRoute>
+                <AdminLayout>
+                  <AdminDashboard />
+                </AdminLayout>
+              </AdminRoute>
+            </RequireMercyAuth>
+          }
+        />
+        <Route
+          path="/admin/payments"
+          element={
+            <RequireMercyAuth>
+              <AdminRoute>
+                <AdminLayout>
+                  <AdminPayments />
+                </AdminLayout>
+              </AdminRoute>
+            </RequireMercyAuth>
+          }
+        />
+        <Route
+          path="/admin/bank-transfers"
+          element={
+            <RequireMercyAuth>
+              <AdminRoute>
+                <AdminLayout>
+                  <AdminBankTransfers />
+                </AdminLayout>
+              </AdminRoute>
+            </RequireMercyAuth>
+          }
+        />
+        <Route
+          path="/admin/payment-verification"
+          element={
+            <RequireMercyAuth>
+              <AdminRoute>
+                <AdminLayout>
+                  <AdminPaymentVerification />
+                </AdminLayout>
+              </AdminRoute>
+            </RequireMercyAuth>
+          }
+        />
+        <Route
+          path="/admin/access-codes"
+          element={
+            <RequireMercyAuth>
+              <AdminRoute>
+                <AdminLayout>
+                  <AdminAccessCodes />
+                </AdminLayout>
+              </AdminRoute>
+            </RequireMercyAuth>
+          }
+        />
+        <Route
+          path="/admin/audio-coverage"
+          element={
+            <RequireMercyAuth>
+              <AdminRoute>
+                <AdminLayout>
+                  <AudioCoveragePage />
+                </AdminLayout>
+              </AdminRoute>
+            </RequireMercyAuth>
+          }
+        />
 
-      {/* ✅ Monitoring (guarded) */}
-      <Route
-        path="/admin/monitoring"
-        element={
-          <AdminRoute>
-            <AdminLayout>
-              <AdminMonitoring />
-            </AdminLayout>
-          </AdminRoute>
-        }
-      />
+        {/* ✅ Monitoring (guarded) */}
+        <Route
+          path="/admin/monitoring"
+          element={
+            <RequireMercyAuth>
+              <AdminRoute>
+                <AdminLayout>
+                  <AdminMonitoring />
+                </AdminLayout>
+              </AdminRoute>
+            </RequireMercyAuth>
+          }
+        />
 
-      {/* ✅ Metrics (guarded) */}
-      <Route
-        path="/admin/metrics"
-        element={
-          <AdminRoute>
-            <AdminLayout>
-              <AdminMetrics />
-            </AdminLayout>
-          </AdminRoute>
-        }
-      />
+        {/* ✅ Metrics (guarded) */}
+        <Route
+          path="/admin/metrics"
+          element={
+            <RequireMercyAuth>
+              <AdminRoute>
+                <AdminLayout>
+                  <AdminMetrics />
+                </AdminLayout>
+              </AdminRoute>
+            </RequireMercyAuth>
+          }
+        />
 
-      {/* Fallback */}
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+        {/* Fallback */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+
+      {/* Mercy AI Host — global floating guide (must be inside Router context) */}
+      <MercyAIHost />
+    </>
   );
 }
 

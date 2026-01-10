@@ -5,17 +5,16 @@
  *
  * ✅ FIX (MB-BLUE-100.9):
  * - STOP scaling the whole page with transform: scale(...).
- *   That was the REAL reason the fixed BottomMusicBar looked like it “sticks out”:
- *   content got scaled smaller, but the fixed dock stayed on the 980px ruler.
- *
  * - BottomMusicBar mount stays fixed + aligned to PAGE_MAX=980.
- * - Zoom stays live-refresh, but we only sync the ROOT zoom attributes/vars
- *   (RoomRenderer consumes them inside BOX 4; we do NOT scale the page).
+ * - Zoom stays live-refresh, but only via ROOT vars (no page scale).
  *
- * ✅ Preserved:
- * 1) HeroBand stays (src/components/HeroBand.tsx) → /hero/hero_band.jpg
- * 2) BottomMusicBar mount aligned to page ruler (max-w-[980px] + px)
- * 3) Top bar: Mercy Blade TRUE dead-center using grid 1fr auto 1fr
+ * ✅ DEV ADDITION:
+ * - DebugJWT button (DEV only) to safely log Supabase access_token
+ *
+ * RULES PRESERVED:
+ * - SINGLE AuthProvider source of truth
+ * - No window.supabase
+ * - No terminal execution of React code
  */
 
 import { useEffect, useMemo, useState } from "react";
@@ -34,16 +33,19 @@ import { getEffectiveRoomSpec, type RoomSpec } from "@/lib/roomSpecification";
 import MercyHostCorner from "@/components/mercy/MercyHostCorner";
 import { FEATURE_FLAGS } from "@/lib/featureFlags";
 
-// ✅ UNIVERSAL MUSIC BAR ONLY (ENTERTAINMENT)
 import BottomMusicBar from "@/components/audio/BottomMusicBar";
-
-// ✅ HERO BAND (background + centered slogan)
 import HeroBand from "@/components/HeroBand";
+
+// ✅ DEV JWT logger
+import DebugJWT from "@/debug/DebugJWT";
 
 type LoadState = "loading" | "ready" | "error";
 type ErrorKind = RoomJsonResolverErrorKind;
 type AnyRoom = any;
 
+/* ----------------------------------------------------- */
+/* helpers                                               */
+/* ----------------------------------------------------- */
 function asArray(x: any) {
   return Array.isArray(x) ? x : [];
 }
@@ -58,137 +60,106 @@ function resolveKeywords(room: AnyRoom) {
   const en = firstNonEmptyArray(
     room?.keywords_en,
     room?.keywords?.en,
-    room?.meta?.keywords_en
+    room?.meta?.keywords_en,
   );
   const vi = firstNonEmptyArray(
     room?.keywords_vi,
     room?.keywords?.vi,
-    room?.meta?.keywords_vi
+    room?.meta?.keywords_vi,
   );
   return { en, vi };
 }
 function detectRoomUiKind(room: AnyRoom): "keyword_hub" | "content" {
   const kw = resolveKeywords(room);
-  const kwCount = Math.max(kw.en.length, kw.vi.length);
-  if (kwCount > 0) return "keyword_hub";
-  return "content";
+  return Math.max(kw.en.length, kw.vi.length) > 0 ? "keyword_hub" : "content";
 }
 
-/** BOX 1 — one-row top bar (locked) */
+/* ----------------------------------------------------- */
+/* TOP BAR (LOCKED)                                      */
+/* ----------------------------------------------------- */
 function RoomTopBar() {
   const nav = useNavigate();
   const [dark, setDark] = useState(false);
   const [q, setQ] = useState("");
 
   useEffect(() => {
-    document.documentElement.setAttribute(
-      "data-mb-mode",
-      dark ? "dark" : "light"
-    );
+    document.documentElement.setAttribute("data-mb-mode", dark ? "dark" : "light");
   }, [dark]);
 
   return (
     <div data-mb-topbar className="mb-5">
       <style>{`
         [data-mb-topbar] .mb-shell{
-          border: 1px solid rgba(0,0,0,0.10);
-          background: rgba(255,255,255,0.86);
-          backdrop-filter: blur(10px);
-          border-radius: 18px;
-          box-shadow: 0 10px 24px rgba(0,0,0,0.06);
-          padding: 10px 12px;
+          border:1px solid rgba(0,0,0,0.10);
+          background:rgba(255,255,255,0.86);
+          backdrop-filter:blur(10px);
+          border-radius:18px;
+          box-shadow:0 10px 24px rgba(0,0,0,0.06);
+          padding:10px 12px;
         }
-
-        /* ✅ TRUE CENTER: left 1fr | brand auto | right 1fr */
         [data-mb-topbar] .mb-row{
           display:grid;
-          grid-template-columns: 1fr auto 1fr;
+          grid-template-columns:1fr auto 1fr;
           align-items:center;
           gap:10px;
-          min-width:0;
         }
-
-        [data-mb-topbar] .mb-left{
-          display:flex;
-          align-items:center;
-          gap:8px;
-          justify-self:start;
-          min-width:0;
-          white-space:nowrap;
-        }
-
+        [data-mb-topbar] .mb-left,
         [data-mb-topbar] .mb-right{
           display:flex;
           align-items:center;
           gap:8px;
-          justify-self:end;
-          min-width:0;
           white-space:nowrap;
-        }
-
-        [data-mb-topbar] .mb-brandCenter{
-          justify-self:center;
-          pointer-events:none;
           min-width:0;
         }
-
         [data-mb-topbar] .mb-brand{
-          font-weight: 900;
-          letter-spacing: -0.02em;
-          background: linear-gradient(90deg,#ff4d6d,#ffbe0b,#3a86ff,#8338ec,#06d6a0);
-          -webkit-background-clip: text;
-          color: transparent;
-          font-size: 36px;
-          line-height: 38px;
-          max-width: 52vw;
+          font-weight:900;
+          font-size:36px;
+          line-height:38px;
+          letter-spacing:-0.02em;
+          background:linear-gradient(90deg,#ff4d6d,#ffbe0b,#3a86ff,#8338ec,#06d6a0);
+          -webkit-background-clip:text;
+          color:transparent;
+          max-width:52vw;
           overflow:hidden;
           text-overflow:ellipsis;
           white-space:nowrap;
         }
-
-        [data-mb-topbar] .mb-btn{
-          height: 34px;
-          padding: 0 12px;
-          border-radius: 12px;
-          border: 1px solid rgba(0,0,0,0.16);
-          background: rgba(255,255,255,0.94);
-          font-size: 12px;
-          font-weight: 800;
-          white-space: nowrap;
-          flex: 0 0 auto;
-        }
-
+        [data-mb-topbar] .mb-btn,
         [data-mb-topbar] .mb-iconbtn{
-          width: 34px;
-          height: 34px;
-          border-radius: 12px;
-          border: 1px solid rgba(0,0,0,0.16);
-          background: rgba(255,255,255,0.94);
+          height:34px;
+          padding:0 12px;
+          border-radius:12px;
+          border:1px solid rgba(0,0,0,0.16);
+          background:rgba(255,255,255,0.94);
+          font-size:12px;
+          font-weight:800;
+        }
+        [data-mb-topbar] .mb-iconbtn{
+          width:34px;
+          padding:0;
           display:flex;
           align-items:center;
           justify-content:center;
-          flex: 0 0 auto;
+          flex:0 0 auto;
         }
-
         [data-mb-topbar] .mb-search{
-          height: 34px;
-          border-radius: 12px;
-          border: 1px solid rgba(0,0,0,0.16);
-          background: rgba(255,255,255,0.94);
-          padding: 0 10px;
-          font-size: 12px;
-          width: clamp(140px, 26vw, 320px);
-          min-width: 0;
+          height:34px;
+          border-radius:12px;
+          border:1px solid rgba(0,0,0,0.16);
+          padding:0 10px;
+          font-size:12px;
+          width:clamp(140px,26vw,320px);
+          min-width:0;
+          background:rgba(255,255,255,0.94);
         }
-
         @media (max-width: 740px){
           [data-mb-topbar] .mb-brand{
-            font-size: 28px;
-            line-height: 30px;
-            max-width: 44vw;
+            font-size:28px;
+            line-height:30px;
+            max-width:44vw;
           }
           [data-mb-topbar] .mb-search{
-            width: clamp(120px, 22vw, 240px);
+            width:clamp(120px,22vw,240px);
           }
         }
       `}</style>
@@ -204,11 +175,11 @@ function RoomTopBar() {
             </button>
           </div>
 
-          <div className="mb-brandCenter" aria-hidden="true">
+          <div aria-hidden className="pointer-events-none justify-self-center min-w-0">
             <span className="mb-brand">Mercy Blade</span>
           </div>
 
-          <div className="mb-right">
+          <div className="mb-right justify-self-end">
             <input
               value={q}
               onChange={(e) => setQ(e.target.value)}
@@ -218,20 +189,20 @@ function RoomTopBar() {
               placeholder="Search rooms..."
               className="mb-search"
             />
+
+            {/* ✅ DEV ONLY JWT LOGGER */}
+            {import.meta.env.DEV && <DebugJWT />}
+
             <button
               type="button"
+              className="mb-iconbtn"
               onClick={() => setDark((v) => !v)}
               title="Day / Night"
-              className="mb-iconbtn"
             >
               {dark ? "🌙" : "☀️"}
             </button>
-            <button
-              type="button"
-              onClick={() => nav("/tiers")}
-              title="Tier Map"
-              className="mb-btn"
-            >
+
+            <button type="button" onClick={() => nav("/tiers")} className="mb-btn" title="Tier Map">
               👁 <span className="hidden sm:inline">Tier Map</span>
             </button>
           </div>
@@ -241,35 +212,18 @@ function RoomTopBar() {
   );
 }
 
-function KeywordHubRoom({
-  room,
-  roomId,
-  roomSpec,
-}: {
-  room: AnyRoom;
-  roomId: string;
-  roomSpec?: { use_color_theme?: boolean };
-}) {
-  return <RoomRenderer room={room} roomId={roomId} roomSpec={roomSpec} />;
-}
-
-/**
- * Zoom sync (LOCKED):
- * - Source of truth is BottomMusicBar (writes data-mb-zoom + --mb-essay-zoom + LS["mb.ui.zoom"])
- * - ChatHub must NOT scale the page. We only mirror root attrs/vars for safety.
- * - Back-compat: also accept legacy LS["mb_zoom"] (0.7–1.4 float).
- */
+/* ----------------------------------------------------- */
+/* ZOOM SYNC (LOCKED)                                    */
+/* ----------------------------------------------------- */
 function syncRootZoomFromStorage() {
   try {
-    // ✅ new canonical key (percent)
     const rawPct = localStorage.getItem("mb.ui.zoom");
     let pct = rawPct ? Number(rawPct) : NaN;
 
-    // legacy key (ratio)
     if (!Number.isFinite(pct)) {
       const rawLegacy = localStorage.getItem("mb_zoom");
-      const ratio = rawLegacy ? Number(rawLegacy) : NaN;
-      if (Number.isFinite(ratio)) pct = Math.round(ratio * 100);
+      const legacy = rawLegacy ? Number(rawLegacy) : NaN;
+      if (Number.isFinite(legacy)) pct = Math.round(legacy * 100);
     }
 
     if (!Number.isFinite(pct)) return;
@@ -282,6 +236,9 @@ function syncRootZoomFromStorage() {
   }
 }
 
+/* ----------------------------------------------------- */
+/* MAIN                                                  */
+/* ----------------------------------------------------- */
 export default function ChatHub() {
   const { roomId } = useParams<{ roomId: string }>();
   const canonicalId = useMemo(() => canonicalizeRoomId(roomId || ""), [roomId]);
@@ -291,7 +248,6 @@ export default function ChatHub() {
   const [room, setRoom] = useState<AnyRoom | null>(null);
   const [roomSpec, setRoomSpec] = useState<RoomSpec | null>(null);
 
-  // ✅ ZOOM: mirror root values on focus / storage / explicit event
   useEffect(() => {
     const sync = () => syncRootZoomFromStorage();
 
@@ -330,16 +286,11 @@ export default function ChatHub() {
         const data = await loadRoomJson(canonicalId);
         const tier = (data?.tier || "free") as string;
 
-        let resolved: RoomSpec | null = null;
-        try {
-          resolved = await getEffectiveRoomSpec(canonicalId, tier);
-        } catch (e: any) {
-          console.warn("[ChatHub] roomSpec resolver failed:", e?.message || e);
-        }
+        const spec = await getEffectiveRoomSpec(canonicalId, tier).catch(() => null);
 
         if (!cancelled) {
           setRoom(data);
-          setRoomSpec(resolved);
+          setRoomSpec(spec);
           setState("ready");
         }
       } catch (err: any) {
@@ -347,9 +298,7 @@ export default function ChatHub() {
 
         const kind: ErrorKind =
           err?.kind ||
-          (err instanceof TypeError
-            ? "network"
-            : String(err?.message || "").includes("ROOM_NOT_FOUND")
+          (err instanceof TypeError ? "network" : String(err?.message || "").includes("ROOM_NOT_FOUND")
             ? "not_found"
             : String(err?.message || "").includes("JSON_INVALID") ||
               String(err?.message || "").includes("Unexpected token")
@@ -380,10 +329,10 @@ export default function ChatHub() {
       errorKind === "not_found"
         ? "ROOM_NOT_FOUND"
         : errorKind === "json_invalid"
-        ? "JSON_INVALID"
-        : errorKind === "network"
-        ? "network_error"
-        : "server_error";
+          ? "JSON_INVALID"
+          : errorKind === "network"
+            ? "network_error"
+            : "server_error";
 
     return (
       <div className="min-h-[40vh] flex items-center justify-center text-center p-6">
@@ -398,19 +347,16 @@ export default function ChatHub() {
     );
   }
 
-  const hostRoomId = room?.id || canonicalId || roomId || "unknown_room";
-  const hostRoomTitle =
-    room?.title?.en || room?.description?.en || canonicalId || "Room";
-  const hostTier = (room?.tier || "free") as "free" | "vip1" | "vip2" | "vip3";
-
   const uiKind = detectRoomUiKind(room);
+
+  const hostRoomId = room?.id || canonicalId || roomId || "unknown_room";
+  const hostRoomTitle = room?.title?.en || room?.description?.en || canonicalId || "Room";
+  const hostTier = (room?.tier || "free") as "free" | "vip1" | "vip2" | "vip3";
 
   return (
     <>
-      {/* ✅ DO NOT SCALE PAGE (prevents “dock sticks out” illusion) */}
       <div className="mx-auto w-full max-w-[980px] px-4 md:px-6 py-6 pb-36">
         <RoomTopBar />
-
         <HeroBand />
 
         {FEATURE_FLAGS.MERCY_HOST_ENABLED && (
@@ -422,22 +368,11 @@ export default function ChatHub() {
           />
         )}
 
+        {/* NOTE: keyword_hub currently uses same renderer; kind is kept for future branching */}
         {uiKind === "keyword_hub" ? (
-          <KeywordHubRoom
-            room={room}
-            roomId={canonicalId || roomId || ""}
-            roomSpec={
-              roomSpec ? { use_color_theme: !!roomSpec.use_color_theme } : undefined
-            }
-          />
+          <RoomRenderer room={room} roomId={canonicalId} roomSpec={roomSpec || undefined} />
         ) : (
-          <RoomRenderer
-            room={room}
-            roomId={canonicalId || roomId}
-            roomSpec={
-              roomSpec ? { use_color_theme: !!roomSpec.use_color_theme } : undefined
-            }
-          />
+          <RoomRenderer room={room} roomId={canonicalId} roomSpec={roomSpec || undefined} />
         )}
       </div>
 
@@ -457,7 +392,3 @@ export default function ChatHub() {
     </>
   );
 }
-
-/** New thing to learn:
- * If you scale the page, fixed UI won’t scale with it — it will look “wrong width”.
- * Keep zoom inside content areas (RoomRenderer BOX 4), not on the whole route. */

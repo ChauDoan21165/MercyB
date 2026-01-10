@@ -89,7 +89,8 @@ const loadFromDatabase = async (dbRoomId: string) => {
 
   // If no entries, check for room-level keywords
   if (!hasEntries) {
-    const hasRoomKeywords = Array.isArray(dbRoom.keywords) && dbRoom.keywords.length > 0;
+    const hasRoomKeywords =
+      Array.isArray(dbRoom.keywords) && dbRoom.keywords.length > 0;
     if (!hasRoomKeywords) return null;
 
     return {
@@ -151,8 +152,12 @@ const checkIsKidsTier = (tier: TierId | null | undefined): boolean => {
 
 /**
  * Main room loader with SWR caching - returns cached data instantly, revalidates in background
+ *
+ * ✅ IMPORTANT:
+ * - Hooks must be called inside a React component or a custom hook (name starts with "use").
+ * - This function IS the hook.
  */
-export const loadMergedRoom = async (roomId: string): Promise<LoadedRoomResult> => {
+export const useMergedRoom = (roomId: string): LoadedRoomResult => {
   const cacheKey = `room:${roomId}`;
 
   return useSWR({
@@ -161,6 +166,13 @@ export const loadMergedRoom = async (roomId: string): Promise<LoadedRoomResult> 
     ttl: 5 * 60 * 1000, // 5 minutes
   });
 };
+
+/**
+ * Legacy alias (hook-safe name).
+ * If anything previously imported `loadMergedRoom`, update it to import `useMergedRoom`.
+ * This alias exists only to ease transition, but stays hook-compliant.
+ */
+export const useLoadMergedRoom = useMergedRoom;
 
 /**
  * Internal room loader - optimized for fast loading with tier-based access control
@@ -191,7 +203,10 @@ const loadMergedRoomInternal = async (roomId: string): Promise<LoadedRoomResult>
       });
 
       if (adminError) {
-        logger.error("Error checking admin role", { scope: "roomLoader", error: adminError.message });
+        logger.error("Error checking admin role", {
+          scope: "roomLoader",
+          error: adminError.message,
+        });
       }
 
       isAdmin = !!isAdminRpc;
@@ -301,7 +316,11 @@ const loadMergedRoomInternal = async (roomId: string): Promise<LoadedRoomResult>
       }
     } catch (dbError: any) {
       // Database load failed, continue to JSON fallback
-      logger.error("Database load error", { scope: "roomLoader", roomId, error: dbError?.message });
+      logger.error("Database load error", {
+        scope: "roomLoader",
+        roomId,
+        error: dbError?.message,
+      });
     }
 
     // 7. Fallback to JSON files (with same preview logic)
@@ -353,7 +372,10 @@ const loadMergedRoomInternal = async (roomId: string): Promise<LoadedRoomResult>
 
         // Full access
         const duration = performance.now() - startTime;
-        logger.roomLoad(roomId, duration, true, { source: "json", entryCount: jsonResult.merged.length });
+        logger.roomLoad(roomId, duration, true, {
+          source: "json",
+          entryCount: jsonResult.merged.length,
+        });
 
         return {
           ...jsonResult,
@@ -366,10 +388,18 @@ const loadMergedRoomInternal = async (roomId: string): Promise<LoadedRoomResult>
       const kind = classifyRoomError(jsonError);
       const errorCode = kind === "json_invalid" ? "JSON_INVALID" : "ROOM_NOT_FOUND";
 
-      logger.error("JSON load error", { scope: "roomLoader", roomId, error: jsonError?.message, classifiedKind: kind });
+      logger.error("JSON load error", {
+        scope: "roomLoader",
+        roomId,
+        error: jsonError?.message,
+        classifiedKind: kind,
+      });
 
       const duration = performance.now() - startTime;
-      logger.roomLoad(roomId, duration, false, { error: "Room load failed (JSON)", classifiedKind: kind });
+      logger.roomLoad(roomId, duration, false, {
+        error: "Room load failed (JSON)",
+        classifiedKind: kind,
+      });
 
       return {
         merged: [],
@@ -377,14 +407,18 @@ const loadMergedRoomInternal = async (roomId: string): Promise<LoadedRoomResult>
         audioBasePath: AUDIO_BASE_PATH,
         roomTier: normalizedRoomTier,
         errorCode,
-        error: jsonError,
+        // NOTE: keep legacy field if callers expect it
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        error: jsonError as any,
         hasFullAccess: false,
-      };
+      } as any;
     }
 
     // 8. Room not found (neither DB nor JSON)
     const duration = performance.now() - startTime;
-    logger.roomLoad(roomId, duration, false, { error: "Room not found in database or JSON" });
+    logger.roomLoad(roomId, duration, false, {
+      error: "Room not found in database or JSON",
+    });
 
     return {
       merged: [],
@@ -415,7 +449,9 @@ const loadMergedRoomInternal = async (roomId: string): Promise<LoadedRoomResult>
       audioBasePath: AUDIO_BASE_PATH,
       roomTier: tierFromRoomId(normalizeRoomId(roomId)),
       errorCode,
-      error,
+      // NOTE: keep legacy field if callers expect it
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      error: error as any,
       hasFullAccess: false,
     };
   }

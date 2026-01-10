@@ -6,6 +6,10 @@
 // - ✅ Remove all explicit `any` (lint clean).
 // - Keep fatal overlay.
 // - Keep React.StrictMode OFF (avoid dev double-mount confusion).
+//
+// ✅ SPA Deep-Link Handoff (Vercel 404 fallback):
+// - If host served / (or 404.html redirected), restore the intended path from sessionStorage.redirect
+// - This pairs with public/404.html that saves location.href then refreshes to "/"
 
 import React from "react";
 import ReactDOM from "react-dom/client";
@@ -31,10 +35,7 @@ import { AuthProvider } from "@/providers/AuthProvider";
           ? err
           : JSON.stringify(err, null, 2);
 
-      const msg =
-        `${title}\n\n` +
-        message +
-        `\n\nURL: ${window.location.href}`;
+      const msg = `${title}\n\n` + message + `\n\nURL: ${window.location.href}`;
 
       // Clear existing UI so overlay is visible even if CSS is broken
       rootEl.innerHTML = "";
@@ -68,12 +69,33 @@ import { AuthProvider } from "@/providers/AuthProvider";
     mount("[MB FATAL] window.error", e.error ?? e.message);
   });
 
-  window.addEventListener(
-    "unhandledrejection",
-    (e: PromiseRejectionEvent) => {
-      mount("[MB FATAL] unhandledrejection", e.reason);
+  window.addEventListener("unhandledrejection", (e: PromiseRejectionEvent) => {
+    mount("[MB FATAL] unhandledrejection", e.reason);
+  });
+})();
+
+/**
+ * ✅ SPA deep-link restore:
+ * If public/404.html set sessionStorage.redirect to the original deep URL,
+ * restore it before React Router mounts.
+ */
+(function restoreDeepLinkFromSessionStorage() {
+  try {
+    const redirect = sessionStorage.getItem("redirect");
+    if (!redirect) return;
+
+    sessionStorage.removeItem("redirect");
+
+    const url = new URL(redirect);
+    const next = `${url.pathname}${url.search}${url.hash}`;
+
+    // Avoid looping if already at the same path
+    if (window.location.pathname + window.location.search + window.location.hash !== next) {
+      window.history.replaceState(null, "", next);
     }
-  );
+  } catch {
+    // ignore
+  }
 })();
 
 const root = document.getElementById("root");
@@ -87,7 +109,7 @@ ReactDOM.createRoot(root).render(
     <BrowserRouter>
       <AppRouter />
     </BrowserRouter>
-  </AuthProvider>
+  </AuthProvider>,
 );
 
 /**
