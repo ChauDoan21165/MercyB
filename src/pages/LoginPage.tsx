@@ -1,26 +1,19 @@
 // src/pages/LoginPage.tsx
-// MB-BLUE-101.3 — 2026-01-07 (+0700)
+// MB-BLUE-101.3f — 2026-01-11 (+0700)
 //
-// LOGIN (POLISHED, USER-FACING):
-// - Supabase-style wide layout ✅ (left auth, right story panel)
-// - Methods: Email / Phone (+ Google only when enabled) ✅
-// - Email always includes Sign in + Sign up pair ✅
-// - Phone OTP send + verify ✅
-// - Redirect: `${origin}/admin` ✅
-// - 👁 show/hide password ✅
-// - No GitHub. No dev-only warnings in UI ✅
-// - ✅ Forgot password is the *common* recovery (bigger + clearer than Magic Link)
-// - ✅ Reset link opens a REAL “Set new password” screen (not homepage)
+// FIX:
+// - STOP forcing everyone to /admin after sign-in.
+// - OAuth redirect returns to /signin (not /admin), then we route based on profile admin flags.
+// - After sign-in/session established: admin -> /admin, normal -> returnTo (safe) or /
 //
-// Flags:
-// - VITE_AUTH_GOOGLE_ENABLED=true    -> show Google option in UI (still must enable provider in Supabase)
-// - VITE_AUTH_FACEBOOK_ENABLED=true  -> show Facebook option in UI (still must enable provider in Supabase)
+// NOTE:
+// - This relies on public.profiles having is_admin/admin_level (your useUserAccess does).
+// - If profiles row doesn't exist yet for a new OAuth user, we treat them as non-admin.
 //
-// ADD (2026-01-10):
-// - Trust UX for ecosystem redirect:
-//   - Show “Mercy Account” context
-//   - If returnTo present, show “You’re signing in to continue to <App>”
-//   - For now list: Mercy AI Builder + Mercy Signal
+// PATCH (MB-BLUE-101.3g):
+// - Add visible "Sign out" button when session exists (so admin can log out & test OAuth).
+// - Make OAuth never "silent": if signInWithOAuth returns data.url, force window.location.assign(data.url).
+// - Fix typo: disdisabled -> disabled.
 
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -39,7 +32,9 @@ function readBoolEnv(key: string): boolean {
 /**
  * Trust UX helper:
  * - returnTo can be absolute (https://...) or relative (/...)
- * - We never *enforce* anything here; we only display a calm hint.
+ * - For redirect, we ONLY allow:
+ *   - relative path starting with "/"
+ *   - OR same-origin absolute URL (converted to pathname+search+hash)
  */
 function safeParseReturnTo(search: string): string | null {
   try {
@@ -50,12 +45,29 @@ function safeParseReturnTo(search: string): string | null {
     const trimmed = raw.trim();
     if (!trimmed) return null;
 
-    // relative is fine
     if (trimmed.startsWith("/")) return trimmed;
 
-    // absolute
     const u = new URL(trimmed);
     return u.href;
+  } catch {
+    return null;
+  }
+}
+
+function toSafeAppPath(returnTo: string | null): string | null {
+  if (!returnTo) return null;
+  const trimmed = returnTo.trim();
+  if (!trimmed) return null;
+
+  // relative allowed
+  if (trimmed.startsWith("/")) return trimmed;
+
+  // absolute allowed only if same origin
+  try {
+    const u = new URL(trimmed);
+    if (u.origin !== window.location.origin) return null;
+    const path = `${u.pathname}${u.search}${u.hash}`;
+    return path.startsWith("/") ? path : null;
   } catch {
     return null;
   }
@@ -78,7 +90,6 @@ function resolveAppFromReturnTo(returnTo: string | null): { key: string; label: 
 }
 
 const UI = {
-  // ✅ Wide layout container (2 columns on desktop, stacked on mobile)
   page: {
     minHeight: "100vh",
     display: "grid",
@@ -98,7 +109,6 @@ const UI = {
     justifyContent: "center",
   } as React.CSSProperties,
 
-  // Left column card
   card: {
     width: "100%",
     maxWidth: 520,
@@ -110,7 +120,6 @@ const UI = {
     backdropFilter: "blur(8px)",
   } as React.CSSProperties,
 
-  // Right column marketing
   right: {
     position: "relative",
     overflow: "hidden",
@@ -153,7 +162,6 @@ const UI = {
     lineHeight: 1.5,
   } as React.CSSProperties,
 
-  // Trust UX block (calm, minimal, non-marketing)
   ecosystemBlock: {
     marginTop: 12,
     padding: 12,
@@ -276,7 +284,6 @@ const UI = {
     fontSize: 13,
   } as React.CSSProperties,
 
-  // Right panel typography
   quoteMark: {
     fontSize: 60,
     lineHeight: 1,
@@ -370,6 +377,18 @@ function clearRecoveryFromUrl() {
   }
 }
 
+function readOAuthErrorFromSearch(search: string): { error: string; desc: string } | null {
+  try {
+    const sp = new URLSearchParams(search || "");
+    const e = (sp.get("error") || "").trim();
+    const d = (sp.get("error_description") || "").trim();
+    if (!e && !d) return null;
+    return { error: e, desc: d };
+  } catch {
+    return null;
+  }
+}
+
 function MarketingPanel() {
   return (
     <div style={UI.right}>
@@ -408,7 +427,13 @@ function MarketingPanel() {
   );
 }
 
-function RecoverySetPassword({ busyParent, onDone }: { busyParent: boolean; onDone: () => void }) {
+function RecoverySetPassword({
+  busyParent,
+  onDone,
+}: {
+  busyParent: boolean;
+  onDone: () => void;
+}) {
   const [pw1, setPw1] = useState("");
   const [pw2, setPw2] = useState("");
   const [show, setShow] = useState(false);
@@ -509,8 +534,32 @@ function RecoverySetPassword({ busyParent, onDone }: { busyParent: boolean; onDo
   );
 }
 
-function PhoneOtp({ redirectTo, busyParent }: { redirectTo: string; busyParent: boolean }) {
-  const nav = useNavigate();
+async function fetchAdminFlagsSafe(userId: string): Promise<{ isAdmin: boolean }> {
+  try {
+    const { data, error } = await supabase
+      .from("profiles")
+      .select("is_admin, admin_level")
+      .eq("id", userId)
+      .maybeSingle();
+
+    if (error) return { isAdmin: false };
+
+    const isAdmin = Boolean((data as any)?.is_admin) || Number((data as any)?.admin_level ?? 0) >= 1;
+    return { isAdmin };
+  } catch {
+    return { isAdmin: false };
+  }
+}
+
+function PhoneOtp({
+  redirectToOAuthReturn,
+  busyParent,
+  onAuthed,
+}: {
+  redirectToOAuthReturn: string;
+  busyParent: boolean;
+  onAuthed: () => Promise<void>;
+}) {
   const [phone, setPhone] = React.useState("");
   const [token, setToken] = React.useState("");
   const [sent, setSent] = React.useState(false);
@@ -532,7 +581,7 @@ function PhoneOtp({ redirectTo, busyParent }: { redirectTo: string; busyParent: 
 
       const { error } = await supabase.auth.signInWithOtp({
         phone: p,
-        options: { redirectTo },
+        options: { redirectTo: redirectToOAuthReturn },
       });
 
       if (error) {
@@ -571,7 +620,7 @@ function PhoneOtp({ redirectTo, busyParent }: { redirectTo: string; busyParent: 
       }
 
       await ensureSessionOrThrow();
-      nav("/admin");
+      await onAuthed();
     } catch (e: any) {
       setMsg(e?.message || "Unknown error");
     } finally {
@@ -646,16 +695,16 @@ function PhoneOtp({ redirectTo, busyParent }: { redirectTo: string; busyParent: 
 }
 
 function EmailBlock({
-  redirectToAdmin,
+  emailRedirectTo,
   redirectToRecovery,
   busyParent,
+  onAuthed,
 }: {
-  redirectToAdmin: string;
+  emailRedirectTo: string;
   redirectToRecovery: string;
   busyParent: boolean;
+  onAuthed: () => Promise<void>;
 }) {
-  const nav = useNavigate();
-
   const [mode, setMode] = useState<EmailMode>("password_signin");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -676,7 +725,7 @@ function EmailBlock({
 
       const { error } = await supabase.auth.signInWithOtp({
         email: clean,
-        options: { emailRedirectTo: redirectToAdmin },
+        options: { emailRedirectTo },
       });
 
       if (error) return setStatus(humanizeAuthError(error, mode));
@@ -701,7 +750,7 @@ function EmailBlock({
       if (error) return setStatus(humanizeAuthError(error, mode));
 
       await ensureSessionOrThrow();
-      nav("/admin");
+      await onAuthed();
     } catch (e: any) {
       setStatus(humanizeAuthError(e, mode));
     } finally {
@@ -721,7 +770,7 @@ function EmailBlock({
       const { data, error } = await supabase.auth.signUp({
         email: clean,
         password,
-        options: { emailRedirectTo: redirectToAdmin },
+        options: { emailRedirectTo },
       });
 
       if (error) return setStatus(humanizeAuthError(error, mode));
@@ -732,7 +781,7 @@ function EmailBlock({
       }
 
       await ensureSessionOrThrow();
-      nav("/admin");
+      await onAuthed();
     } catch (e: any) {
       setStatus(humanizeAuthError(e, mode));
     } finally {
@@ -797,11 +846,7 @@ function EmailBlock({
         >
           Sign up
         </button>
-        <button
-          onClick={() => setMode("reset")}
-          disabled={disabled}
-          style={UI.segBtn(mode === "reset", disabled)}
-        >
+        <button onClick={() => setMode("reset")} disabled={disabled} style={UI.segBtn(mode === "reset", disabled)}>
           Forgot password
         </button>
         <button
@@ -870,12 +915,7 @@ function EmailBlock({
 
           {mode === "password_signin" && (
             <div style={{ marginTop: 10, ...UI.small }}>
-              <button
-                type="button"
-                onClick={() => setMode("reset")}
-                disabled={disabled}
-                style={UI.linkBtn(disabled)}
-              >
+              <button type="button" onClick={() => setMode("reset")} disabled={disabled} style={UI.linkBtn(disabled)}>
                 Forgot password?
               </button>
             </div>
@@ -920,20 +960,6 @@ function EmailBlock({
       </div>
 
       {status && <div style={UI.status}>{status}</div>}
-
-      {status && mode === "password_signin" && (
-        <div style={{ marginTop: 10 }}>
-          <button
-            type="button"
-            disabled={disabled}
-            onClick={() => setMode("reset")}
-            style={UI.primaryBtn(disabled)}
-          >
-            {disabled ? "Please wait..." : "Forgot password? Send reset email"}
-          </button>
-          <div style={{ marginTop: 8, ...UI.small }}>We’ll email you a reset link.</div>
-        </div>
-      )}
     </div>
   );
 }
@@ -942,20 +968,16 @@ export default function LoginPage() {
   const nav = useNavigate();
 
   // ✅ Trust UX: show where user came from (Builder / Signal) if returnTo present
-  const returnTo = useMemo(() => safeParseReturnTo(window.location.search || ""), []);
-  const fromApp = useMemo(() => resolveAppFromReturnTo(returnTo), [returnTo]);
+  const returnToRaw = useMemo(() => safeParseReturnTo(window.location.search || ""), []);
+  const fromApp = useMemo(() => resolveAppFromReturnTo(returnToRaw), [returnToRaw]);
 
-  // ✅ Vite truth: VITE_* are strings; DEV is boolean
+  // ✅ Vite truth
   const AUTH_GOOGLE_ENABLED = useMemo(() => import.meta.env.VITE_AUTH_GOOGLE_ENABLED === "true", []);
-  const AUTH_FACEBOOK_ENABLED = useMemo(
-    () => import.meta.env.VITE_AUTH_FACEBOOK_ENABLED === "true",
-    []
-  );
+  const AUTH_FACEBOOK_ENABLED = useMemo(() => import.meta.env.VITE_AUTH_FACEBOOK_ENABLED === "true", []);
   const IS_DEV = import.meta.env.DEV;
 
   useEffect(() => {
     if (!IS_DEV) return;
-    // Dev-only proof (runs inside app, not DevTools console)
     // eslint-disable-next-line no-console
     console.log("[MB] OAuth flags from import.meta.env:", {
       google: import.meta.env.VITE_AUTH_GOOGLE_ENABLED,
@@ -965,8 +987,26 @@ export default function LoginPage() {
     });
   }, [IS_DEV]);
 
-  const redirectToAdmin = useMemo(() => `${window.location.origin}/admin`, []);
+  // IMPORTANT:
+  // - OAuth must return to /signin so we can route based on admin/non-admin.
+  const redirectToOAuthReturn = useMemo(() => `${window.location.origin}/signin`, []);
   const redirectToRecovery = useMemo(() => `${window.location.origin}/signin?recovery=1`, []);
+
+  // App routes
+  const DEFAULT_USER_ROUTE = "/"; // change to "/rooms" if you want
+  const ADMIN_ROUTE = "/admin";
+
+  const safeReturnPath = useMemo(() => toSafeAppPath(returnToRaw), [returnToRaw]);
+
+  async function routeAfterAuth() {
+    const session = await ensureSessionOrThrow();
+    const userId = session.user.id;
+
+    const { isAdmin } = await fetchAdminFlagsSafe(userId);
+
+    const target = isAdmin ? ADMIN_ROUTE : safeReturnPath || DEFAULT_USER_ROUTE;
+    nav(target, { replace: true });
+  }
 
   const [topMode, setTopMode] = useState<TopMode>("email");
   const [busy, setBusy] = useState(false);
@@ -976,6 +1016,11 @@ export default function LoginPage() {
   const [recoveryMsg, setRecoveryMsg] = useState<string | null>(null);
 
   const [isNarrow, setIsNarrow] = useState(false);
+
+  // Session flag for "Sign out" button
+  const [hasSession, setHasSession] = useState(false);
+  const [sessionEmail, setSessionEmail] = useState<string | null>(null);
+
   useEffect(() => {
     function onResize() {
       setIsNarrow(window.innerWidth < 980);
@@ -985,6 +1030,60 @@ export default function LoginPage() {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
+  // Keep session flag updated
+  useEffect(() => {
+    let alive = true;
+
+    async function bootSessionFlag() {
+      const { data } = await supabase.auth.getSession();
+      if (!alive) return;
+      const s = data?.session;
+      setHasSession(Boolean(s));
+      setSessionEmail((s?.user?.email as string) || null);
+    }
+
+    bootSessionFlag();
+
+    const { data: sub } = supabase.auth.onAuthStateChange((_evt, session) => {
+      if (!alive) return;
+      setHasSession(Boolean(session));
+      setSessionEmail((session?.user?.email as string) || null);
+    });
+
+    return () => {
+      alive = false;
+      sub?.subscription?.unsubscribe();
+    };
+  }, []);
+
+  async function signOutNow() {
+    setBusy(true);
+    setStatus(null);
+    try {
+      await supabase.auth.signOut();
+      nav("/signin", { replace: true });
+    } catch (e: any) {
+      setStatus(e?.message || "Sign out failed");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  // Show OAuth errors that come back to /signin
+  useEffect(() => {
+    const oauthErr = readOAuthErrorFromSearch(window.location.search || "");
+    if (!oauthErr) return;
+
+    const lines = [
+      "OAuth sign-in failed.",
+      oauthErr.error ? `error: ${oauthErr.error}` : "",
+      oauthErr.desc ? `details: ${oauthErr.desc}` : "",
+    ].filter(Boolean);
+
+    setStatus(lines.join("\n"));
+  }, []);
+
+  // Recovery boot (password reset flow)
   useEffect(() => {
     let cancelled = false;
 
@@ -996,11 +1095,7 @@ export default function LoginPage() {
         const h = parseHashParams(window.location.hash || "");
         const isRecoveryHash = h.type === "recovery" || h.type === "signup";
 
-        if (
-          h.access_token &&
-          h.refresh_token &&
-          (h.type === "recovery" || wantRecovery || isRecoveryHash)
-        ) {
+        if (h.access_token && h.refresh_token && (h.type === "recovery" || wantRecovery || isRecoveryHash)) {
           const { error } = await supabase.auth.setSession({
             access_token: h.access_token,
             refresh_token: h.refresh_token,
@@ -1025,15 +1120,46 @@ export default function LoginPage() {
     };
   }, []);
 
+  // If user already has a session and visits /signin, route them.
+  useEffect(() => {
+    let alive = true;
+
+    async function bootIfAlreadySignedIn() {
+      try {
+        const { data } = await supabase.auth.getSession();
+        if (!alive) return;
+        if (data?.session?.user?.id) {
+          await routeAfterAuth();
+        }
+      } catch {
+        // ignore
+      }
+    }
+
+    bootIfAlreadySignedIn();
+    return () => {
+      alive = false;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   async function signInGoogle() {
     setBusy(true);
     setStatus(null);
     try {
-      const { error } = await supabase.auth.signInWithOAuth({
+      const { data, error } = await supabase.auth.signInWithOAuth({
         provider: "google",
-        options: { redirectTo: redirectToAdmin },
+        options: { redirectTo: redirectToOAuthReturn },
       });
-      if (error) setStatus(humanizeAuthError(error, "password_signin"));
+
+      if (error) {
+        setStatus(humanizeAuthError(error, "password_signin"));
+        return;
+      }
+
+      // Safari/strict browsers may not auto-redirect; force it if we have a URL.
+      if (data?.url) window.location.assign(data.url);
+      else setStatus("Google sign-in did not return a redirect URL.");
     } catch (e: any) {
       setStatus(humanizeAuthError(e, "password_signin"));
     } finally {
@@ -1045,11 +1171,18 @@ export default function LoginPage() {
     setBusy(true);
     setStatus(null);
     try {
-      const { error } = await supabase.auth.signInWithOAuth({
+      const { data, error } = await supabase.auth.signInWithOAuth({
         provider: "facebook",
-        options: { redirectTo: redirectToAdmin },
+        options: { redirectTo: redirectToOAuthReturn },
       });
-      if (error) setStatus(humanizeAuthError(error, "password_signin"));
+
+      if (error) {
+        setStatus(humanizeAuthError(error, "password_signin"));
+        return;
+      }
+
+      if (data?.url) window.location.assign(data.url);
+      else setStatus("Facebook sign-in did not return a redirect URL.");
     } catch (e: any) {
       setStatus(humanizeAuthError(e, "password_signin"));
     } finally {
@@ -1057,9 +1190,7 @@ export default function LoginPage() {
     }
   }
 
-  const pageStyle: React.CSSProperties = isNarrow
-    ? { ...UI.page, gridTemplateColumns: "1fr" }
-    : UI.page;
+  const pageStyle: React.CSSProperties = isNarrow ? { ...UI.page, gridTemplateColumns: "1fr" } : UI.page;
 
   const anyOAuthEnabled = AUTH_GOOGLE_ENABLED || AUTH_FACEBOOK_ENABLED;
 
@@ -1068,9 +1199,23 @@ export default function LoginPage() {
       <div style={UI.left}>
         <div style={UI.card}>
           <h1 style={UI.title}>Sign in</h1>
-          <p style={UI.subtitle}>Choose a sign-in method. After signing in, you’ll go to Admin.</p>
+          <p style={UI.subtitle}>
+            Choose a sign-in method. After signing in, we’ll take you to the right place.
+          </p>
 
-          {/* ✅ Ecosystem trust block (calm, minimal) */}
+          {/* ✅ Sign out (visible when already signed in) */}
+          {hasSession && (
+            <div style={UI.block}>
+              <div style={{ fontWeight: 900, fontSize: 13, marginBottom: 8 }}>
+                You are signed in{sessionEmail ? ` as ${sessionEmail}` : ""}.
+              </div>
+              <button onClick={signOutNow} disabled={busy} style={UI.primaryBtn(busy)}>
+                {busy ? "Please wait..." : "Sign out"}
+              </button>
+            </div>
+          )}
+
+          {/* ✅ Ecosystem trust block */}
           <div style={UI.ecosystemBlock}>
             <p style={UI.ecosystemTitle}>Mercy Account</p>
             <p style={UI.ecosystemText}>One sign-in for all Mercy apps.</p>
@@ -1081,7 +1226,6 @@ export default function LoginPage() {
               </p>
             ) : null}
 
-            {/* NOTE: do not nest <ul> inside <p> (invalid HTML). Keep list separate. */}
             <div style={UI.ecosystemText as React.CSSProperties}>
               Apps in the Mercy ecosystem (for now):
               <ul style={{ margin: "6px 0 0 18px" }}>
@@ -1089,13 +1233,18 @@ export default function LoginPage() {
                 <li>Mercy Signal</li>
               </ul>
             </div>
+
+            {safeReturnPath ? (
+              <div style={{ marginTop: 8, ...UI.small }}>
+                After sign-in you’ll continue to: <code>{safeReturnPath}</code>
+              </div>
+            ) : null}
           </div>
 
           {/* DEV-only proof line */}
           {IS_DEV && (
             <div style={{ marginTop: 8, ...UI.small }}>
-              OAuth flags: Google={<b>{String(AUTH_GOOGLE_ENABLED)}</b>} • Facebook=
-              <b>{String(AUTH_FACEBOOK_ENABLED)}</b>
+              OAuth flags: Google={<b>{String(AUTH_GOOGLE_ENABLED)}</b>} • Facebook=<b>{String(AUTH_FACEBOOK_ENABLED)}</b>
             </div>
           )}
 
@@ -1106,7 +1255,7 @@ export default function LoginPage() {
                 onDone={async () => {
                   try {
                     await ensureSessionOrThrow();
-                    nav("/admin");
+                    await routeAfterAuth();
                   } catch {
                     // keep user on page
                   }
@@ -1147,30 +1296,26 @@ export default function LoginPage() {
               </div>
 
               <div style={UI.segRow}>
-                <button
-                  onClick={() => setTopMode("email")}
-                  disabled={busy}
-                  style={UI.segBtn(topMode === "email", busy)}
-                >
+                <button onClick={() => setTopMode("email")} disabled={busy} style={UI.segBtn(topMode === "email", busy)}>
                   ✉️ Email
                 </button>
-                <button
-                  onClick={() => setTopMode("phone")}
-                  disabled={busy}
-                  style={UI.segBtn(topMode === "phone", busy)}
-                >
+                <button onClick={() => setTopMode("phone")} disabled={busy} style={UI.segBtn(topMode === "phone", busy)}>
                   📱 Phone
                 </button>
               </div>
 
               {topMode === "email" && (
                 <EmailBlock
-                  redirectToAdmin={redirectToAdmin}
+                  emailRedirectTo={redirectToOAuthReturn}
                   redirectToRecovery={redirectToRecovery}
                   busyParent={busy}
+                  onAuthed={routeAfterAuth}
                 />
               )}
-              {topMode === "phone" && <PhoneOtp redirectTo={redirectToAdmin} busyParent={busy} />}
+
+              {topMode === "phone" && (
+                <PhoneOtp redirectToOAuthReturn={redirectToOAuthReturn} busyParent={busy} onAuthed={routeAfterAuth} />
+              )}
 
               {status && <div style={UI.status}>{status}</div>}
             </>
@@ -1190,7 +1335,7 @@ export default function LoginPage() {
             </button>
 
             <div style={UI.small}>
-              Redirect: <code>{redirectToAdmin}</code>
+              OAuth return: <code>{redirectToOAuthReturn}</code>
             </div>
           </div>
         </div>
@@ -1202,5 +1347,5 @@ export default function LoginPage() {
 }
 
 /** New thing to learn:
- * In Vite, `import.meta.env.DEV` is a boolean, but `VITE_*` env values are strings.
- * So you compare `VITE_AUTH_GOOGLE_ENABLED === "true"` and use `import.meta.env.DEV` directly. */
+ * OAuth “redirectTo” should usually land on a neutral route (like /signin),
+ * then your app decides where to send the user based on role/profile. */

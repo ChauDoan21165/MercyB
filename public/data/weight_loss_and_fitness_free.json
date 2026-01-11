@@ -41,7 +41,8 @@
         "vi": "Giảm cân bắt đầu từ việc thiếu hụt calo. Ăn ít hơn khoảng 500 calo so với mức duy trì mỗi ngày. Theo dõi bữa ăn bằng ứng dụng và chọn thực phẩm nguyên hạt, giàu dinh dưỡng. Hợp tác với bạn để tăng trách nhiệm, tạo thói quen bền vững và tiến bộ lâu dài.\n\nĐi bộ hàng ngày cải thiện thể lực và hỗ trợ giảm cân. Nhắm đến 30 phút với tốc độ nhanh. Dùng máy đếm bước để duy trì đều đặn và tăng khoảng cách hàng tuần. Đi cùng bạn để có động lực và tận hưởng việc đốt calo ổn định cùng tâm trạng tốt hơn mỗi ngày."
       },
       "tags": ["all"],
-      "audio": ""
+      "audio": "wlf_free_1_en.mp3",
+      "audio_playlist": ["wlf_free_1_en.mp3", "wlf_free_2_en.mp3"]
     }
   ],
   "domain": "Health"
