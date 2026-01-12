@@ -1,34 +1,25 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-
-node_modules
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-*.save
-supabase/.temp/
-tmp_audio_*.txt
-
-# macOS
-.DS_Store
-
 # secrets
-.env
-.env.*
+.env*
+ANON_KEY*
+*.key
+*.pem
+
+# build
+dist/
+.vite/
+.next/
+.turbo/
+.parcel-cache/
+
+# deps
+node_modules/
+
+# OS / editor
+.DS_Store
+.eslintcache
+
+# local scratch
+scripts/_scratch/
+docs/*_LOG.md
+bad.txt
+room_scan_report.json
