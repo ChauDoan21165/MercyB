@@ -1,7 +1,11 @@
 /**
  * MercyBlade Blue — Auth Provider (SINGLE SESSION SOURCE OF TRUTH)
  * Path: src/providers/AuthProvider.tsx
- * Version: MB-BLUE-94.13.18 — 2026-01-04 (+0700)
+ * Version: MB-BLUE-94.13.19 — 2026-01-11 (+0700)
+ *
+ * CHANGE (94.13.19):
+ * - Add signOut() to the Auth context (still single listener).
+ * - UI should call ctx.signOut(), not supabase.auth.signOut() directly.
  *
  * GOAL:
  * - One Supabase auth listener for the whole app.
@@ -27,6 +31,7 @@ type AuthContextValue = {
   user: User | null;
   isLoading: boolean;
   refreshSession: () => Promise<void>;
+  signOut: () => Promise<void>;
 };
 
 const AuthContext = createContext<AuthContextValue | undefined>(undefined);
@@ -41,6 +46,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       if (error && import.meta.env.DEV) {
         console.warn("[auth] getSession failed:", error.message);
       }
+
       setSession(data?.session ?? null);
 
       // 🔑 DEV ONLY: explicit JWT visibility
@@ -51,6 +57,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       if (import.meta.env.DEV) {
         console.warn("[auth] refreshSession crashed:", err);
       }
+      setSession(null);
+    }
+  };
+
+  const signOut = async () => {
+    try {
+      await supabase.auth.signOut();
+    } finally {
+      // Immediate UI update even if provider cleanup is slow
       setSession(null);
     }
   };
@@ -98,12 +113,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       user: session?.user ?? null,
       isLoading,
       refreshSession,
+      signOut,
     }),
     [session, isLoading]
   );
 
   return (
-    <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={value}>
+      {children}
+    </AuthContext.Provider>
   );
 }
 

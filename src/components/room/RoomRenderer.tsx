@@ -12,7 +12,7 @@
  */
 
 // FILE: src/components/room/RoomRenderer.tsx
-// MB-BLUE-99.10e → MB-BLUE-99.11c — 2026-01-11 (+0700)
+// MB-BLUE-99.10e → MB-BLUE-99.11d — 2026-01-11 (+0700)
 //
 // ✅ 99.11a FIX (DB ENTRIES):
 // - Entries now come from DB: public.room_entries (RLS via has_vip_rank(required_rank))
@@ -33,6 +33,11 @@
 // - Show signed-in indicator + Sign out button in BOX 2 (title row)
 // - Do NOT show "FREE" badge for VIP rooms when room metadata is missing
 //   (infer vip tier from room id suffix _vip1.._vip9 for DISPLAY only)
+//
+// ✅ 99.11d FIX (SECURITY / REAL GATE):
+// - If room metadata is missing (tier reads as "free") BUT room id ends with _vipX,
+//   then gate requires that inferred vip tier.
+//   This closes the hole where normal accounts can view VIP rooms.
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { BilingualEssay } from "@/components/room/BilingualEssay";
@@ -86,7 +91,6 @@ function prettifyRoomIdEN(id: string): string {
 function prettifyEntryId(id: string): string {
   const s = String(id || "").trim();
   if (!s) return "";
-  // if snake_case, make it readable
   if (/^[a-z0-9_]+$/.test(s) && s.includes("_")) {
     return s
       .split("_")
@@ -94,7 +98,6 @@ function prettifyEntryId(id: string): string {
       .map((w) => (w ? w[0].toUpperCase() + w.slice(1) : w))
       .join(" ");
   }
-  // if single word, capitalize first letter
   if (/^[a-z]+$/.test(s)) return s[0].toUpperCase() + s.slice(1);
   return s;
 }
@@ -167,11 +170,9 @@ function deepFindFirstObjectArray(root: any, maxDepth = 6): any[] {
 
   const looksUsefulArray = (arr: any[]) => {
     if (!Array.isArray(arr) || arr.length === 0) return false;
-    // must contain objects (not all strings/numbers)
     const objCount = arr.slice(0, 8).filter((x) => x && typeof x === "object").length;
     if (objCount === 0) return false;
 
-    // bonus signals: entry-like keys
     const sample = arr.find((x) => x && typeof x === "object") || {};
     const hasSignals = !!(
       sample?.audio ||
@@ -202,7 +203,6 @@ function deepFindFirstObjectArray(root: any, maxDepth = 6): any[] {
       if (seen.has(node)) return [];
       seen.add(node);
 
-      // Try common “container-ish” keys first for speed
       const preferredKeys = [
         "entries",
         "items",
@@ -226,7 +226,6 @@ function deepFindFirstObjectArray(root: any, maxDepth = 6): any[] {
         }
       }
 
-      // Then scan the rest
       for (const k of Object.keys(node)) {
         if (preferredKeys.includes(k)) continue;
         const v = (node as any)[k];
@@ -242,41 +241,32 @@ function deepFindFirstObjectArray(root: any, maxDepth = 6): any[] {
   return visit(root, 0);
 }
 
-/**
- * ✅ MB-BLUE-99.10d — resolve possible “top containers”
- * We feed these wrappers to flattenToLeafEntries (it will drill down).
- */
 function resolveTopContainers(room: AnyRoom): any[] {
   const direct = firstNonEmptyArray(
-    // top-level
     room?.sections,
     room?.blocks,
     room?.items,
     room?.cards,
     room?.entries,
 
-    // content.*
     room?.content?.sections,
     room?.content?.blocks,
     room?.content?.items,
     room?.content?.cards,
     room?.content?.entries,
 
-    // ✅ NEW: content.data.*
     room?.content?.data?.sections,
     room?.content?.data?.blocks,
     room?.content?.data?.items,
     room?.content?.data?.cards,
     room?.content?.data?.entries,
 
-    // ✅ NEW: content.payload.*
     room?.content?.payload?.sections,
     room?.content?.payload?.blocks,
     room?.content?.payload?.items,
     room?.content?.payload?.cards,
     room?.content?.payload?.entries,
 
-    // legacy room.data / room.payload
     room?.data?.sections,
     room?.data?.blocks,
     room?.data?.items,
@@ -301,7 +291,6 @@ function resolveEntries(room: AnyRoom): any[] {
     room?.data?.entries,
     room?.payload?.entries,
 
-    // ✅ broaden for “container-first” rooms
     room?.sections,
     room?.content?.sections,
     room?.content?.blocks,
@@ -349,7 +338,6 @@ function hasAnyChildArrays(node: any): boolean {
     node?.content?.cols,
     node?.content?.sections,
 
-    // ✅ NEW: content.data.*
     node?.content?.data?.entries,
     node?.content?.data?.items,
     node?.content?.data?.cards,
@@ -357,7 +345,6 @@ function hasAnyChildArrays(node: any): boolean {
     node?.content?.data?.steps,
     node?.content?.data?.sections,
 
-    // ✅ NEW: content.payload.*
     node?.content?.payload?.entries,
     node?.content?.payload?.items,
     node?.content?.payload?.cards,
@@ -470,7 +457,6 @@ function collectChildEntryArrays(node: any): any[][] {
     asArray(node?.content?.cols),
     asArray(node?.content?.sections),
 
-    // ✅ NEW: content.data.*
     asArray(node?.content?.data?.entries),
     asArray(node?.content?.data?.items),
     asArray(node?.content?.data?.cards),
@@ -478,7 +464,6 @@ function collectChildEntryArrays(node: any): any[][] {
     asArray(node?.content?.data?.steps),
     asArray(node?.content?.data?.sections),
 
-    // ✅ NEW: content.payload.*
     asArray(node?.content?.payload?.entries),
     asArray(node?.content?.payload?.items),
     asArray(node?.content?.payload?.cards),
@@ -586,7 +571,7 @@ function normalizeRoomTierToTierId(roomTier: string): TierId {
   return normalizeTier(t);
 }
 
-/** ✅ Display-only inference: room id suffix _vip1.._vip9 / _free */
+/** ✅ Infer tier from room id suffix _vip1.._vip9 / _free */
 function inferTierIdFromRoomId(effectiveRoomId: string): TierId | null {
   const s = String(effectiveRoomId || "").toLowerCase().trim();
   const m = s.match(/_(vip[1-9])\b/);
@@ -786,16 +771,12 @@ function normalizeTextForKwMatch(s: string) {
 
   const words = base.split(" ").map((w) => {
     if (w.length < 4) return w;
-
     if (w.endsWith("ies") && w.length >= 5) return w.slice(0, -3) + "y";
-
     if (w.endsWith("es") && w.length >= 5) {
       const root = w.slice(0, -2);
       if (/(s|x|z|ch|sh)$/.test(root)) return root;
     }
-
     if (w.endsWith("s") && !w.endsWith("ss")) return w.slice(0, -1);
-
     return w;
   });
 
@@ -1067,6 +1048,15 @@ function sortRoomEntryRows(rows: any[]): any[] {
   return arr;
 }
 
+function shortEmailLabel(email: string) {
+  const e = String(email || "").trim();
+  if (!e) return "Signed in";
+  const [name, domain] = e.split("@");
+  if (!domain) return e;
+  const head = name.length <= 3 ? name : `${name.slice(0, 3)}…`;
+  return `${head}@${domain}`.toUpperCase();
+}
+
 export default function RoomRenderer({
   room,
   roomId,
@@ -1116,18 +1106,24 @@ export default function RoomRenderer({
   }, []);
 
   const tier = useMemo(() => pickTier(safeRoom), [safeRoom]);
-  const requiredTierId = useMemo<TierId>(() => normalizeRoomTierToTierId(tier), [tier]);
+  const requiredTierIdFromMeta = useMemo<TierId>(() => normalizeRoomTierToTierId(tier), [tier]);
 
-  // ✅ Display tier (DISPLAY ONLY):
-  // - If room metadata says vipX, show it.
-  // - Else infer from effectiveRoomId suffix _vip1.._vip9.
-  // - Else show nothing (never show FREE badge).
-  const displayTierId = useMemo<TierId | null>(() => {
-    if (requiredTierId !== "free") return requiredTierId;
-    const inferred = inferTierIdFromRoomId(effectiveRoomId);
-    if (inferred && inferred !== "free") return inferred;
-    return null;
-  }, [requiredTierId, effectiveRoomId]);
+  // ✅ Infer tier from roomId suffix
+  const inferredTierId = useMemo<TierId | null>(() => inferTierIdFromRoomId(effectiveRoomId), [effectiveRoomId]);
+
+  // ✅ REAL GATE tier:
+  // If meta says free but id says vipX → treat as vipX for gating.
+  const requiredTierId = useMemo<TierId>(() => {
+    if (requiredTierIdFromMeta !== "free") return requiredTierIdFromMeta;
+    if (inferredTierId && inferredTierId !== "free") return inferredTierId;
+    return "free";
+  }, [requiredTierIdFromMeta, inferredTierId]);
+
+  // ✅ Display tier: show non-free tier when known (meta or inferred)
+  const displayTierId = useMemo<TierId>(() => {
+    if (requiredTierIdFromMeta !== "free") return requiredTierIdFromMeta;
+    return inferredTierId ?? "free";
+  }, [requiredTierIdFromMeta, inferredTierId]);
 
   const isLocked = useMemo(() => {
     if (accessLoading) return requiredTierId !== "free";
@@ -1167,7 +1163,8 @@ export default function RoomRenderer({
     try {
       await supabase.auth.signOut();
     } finally {
-      window.location.reload();
+      // simple + reliable
+      window.location.href = "/signin";
     }
   }
 
@@ -1283,6 +1280,10 @@ export default function RoomRenderer({
 
   useEffect(() => {
     setActiveKeyword(null);
+  }, [roomId]);
+
+  useEffect(() => {
+    setActiveKeyword(null);
   }, [effectiveRoomId]);
 
   const activeEntry = useMemo(() => {
@@ -1375,6 +1376,10 @@ export default function RoomRenderer({
         border: 1px solid rgba(0,0,0,0.14);
         background: rgba(255,255,255,0.9);
         text-transform: uppercase;
+        max-width: 240px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
       [data-mb-scope="room"] .mb-iconBtn{
         width: 34px;
@@ -1440,14 +1445,12 @@ export default function RoomRenderer({
         box-shadow: none !important;
       }
 
-      /* Base token */
       [data-mb-scope="room"] .mb-kw{
         padding: 0 0.18rem;
         border-radius: 0.45rem;
         font-weight: 800;
       }
 
-      /* ✅ DARK highlight ONLY inside welcome+entry text blocks */
       [data-mb-scope="room"] .mb-entryText .mb-kw,
       [data-mb-scope="room"] .mb-welcomeLine .mb-kw{
         color: rgba(255,255,255,0.95);
@@ -1456,7 +1459,6 @@ export default function RoomRenderer({
         border-radius: 0.55rem;
       }
 
-      /* Dark palette */
       [data-mb-scope="room"] .mb-entryText .mb-kw-0,
       [data-mb-scope="room"] .mb-welcomeLine .mb-kw-0{ background: rgba(17, 24, 39, 0.78); }
       [data-mb-scope="room"] .mb-entryText .mb-kw-1,
@@ -1501,7 +1503,6 @@ export default function RoomRenderer({
         justify-content:center;
       }
 
-      /* ✅ HARD CLAMP FOR ROOM ENTRY AUDIO BAR (NO STICK-OUT) */
       [data-mb-scope="room"] .mb-audioClamp{
         width: 100%;
         max-width: 100%;
@@ -1516,7 +1517,6 @@ export default function RoomRenderer({
         min-width: 0;
       }
 
-      /* ✅ Zoom wrapper */
       [data-mb-scope="room"] .mb-zoomWrap{
         --mbz: calc(var(--mb-essay-zoom, 100) / 100);
         transform: scale(var(--mbz));
@@ -1524,7 +1524,6 @@ export default function RoomRenderer({
         width: calc(100% / var(--mbz));
       }
 
-      /* ✅ guide button + panel */
       [data-mb-scope="room"] .mb-guideCorner{
         position:absolute;
         top: 14px;
@@ -1582,7 +1581,6 @@ export default function RoomRenderer({
         font-size: 12px;
         opacity: 0.70;
       }
-      /* ✅ guide actions */
       [data-mb-scope="room"] .mb-guideActions{
         margin-top: 10px;
         display:flex;
@@ -1633,13 +1631,24 @@ export default function RoomRenderer({
           {/* BOX 2 */}
           <div className="mb-titleRow">
             <div className="mb-titleLeft">
-              {/* ✅ DISPLAY ONLY tier badge: infer vip from roomId, never show FREE */}
-              {displayTierId ? <span className="mb-tier">{displayTierId}</span> : null}
+              {/* ✅ Tier badge (never show FREE for vip rooms) */}
+              {displayTierId !== "free" ? <span className="mb-tier">{displayTierId}</span> : null}
 
-              {/* ✅ Signed-in indicator */}
+              {/* ✅ Auth state always visible */}
               {authUser ? (
                 <span className="mb-tier" title={String(authUser.email || authUser.id || "")}>
-                  ✓ Signed in
+                  ✓ {shortEmailLabel(String(authUser.email || ""))}
+                </span>
+              ) : (
+                <a className="mb-tier" href="/signin" title="Sign in">
+                  ⟶ SIGN IN
+                </a>
+              )}
+
+              {/* ✅ Current access tier (what you ARE), helps debugging confusion */}
+              {!accessLoading ? (
+                <span className="mb-tier" title="Your current tier from public.profiles">
+                  TIER: {String(access.tier || "free").toUpperCase()}
                 </span>
               ) : null}
             </div>
@@ -1649,10 +1658,10 @@ export default function RoomRenderer({
             </div>
 
             <div className="mb-titleRight">
-              {/* ✅ Sign out (only when signed in) */}
+              {/* ✅ Sign out (visible + obvious) */}
               {authUser ? (
-                <button type="button" className="mb-iconBtn" title="Sign out" onClick={signOut}>
-                  ⎋
+                <button type="button" className="mb-tier" title="Sign out" onClick={signOut}>
+                  SIGN OUT
                 </button>
               ) : null}
 
@@ -1837,9 +1846,7 @@ function ActiveEntry({
 
   return (
     <div>
-      {heading ? (
-        <h3 className="text-2xl md:text-3xl font-serif font-bold mt-1 leading-tight">{heading}</h3>
-      ) : null}
+      {heading ? <h3 className="text-2xl md:text-3xl font-serif font-bold mt-1 leading-tight">{heading}</h3> : null}
 
       {en ? (
         <div className="mt-4 text-[15px] md:text-base mb-entryText">
@@ -1854,13 +1861,7 @@ function ActiveEntry({
               const base = audioLabelFromSrc(src);
               const label = audioList.length > 1 ? `${base} (${i + 1}/${audioList.length})` : base;
               return (
-                <TalkingFacePlayButton
-                  key={`${src}-${i}`}
-                  src={src}
-                  label={label}
-                  className="w-full"
-                  fullWidthBar
-                />
+                <TalkingFacePlayButton key={`${src}-${i}`} src={src} label={label} className="w-full" fullWidthBar />
               );
             })}
           </div>
@@ -1877,5 +1878,5 @@ function ActiveEntry({
 }
 
 /** New thing to learn:
- * Display can be “best-effort” (infer from stable ID suffix like _vip9),
- * but authorization must stay strict (RLS + useUserAccess). */
+ * If metadata can be missing, your UI must have a “fallback truth” (like id conventions) for BOTH display and gating—
+ * otherwise you accidentally create a security hole while everything “looks fine.” */

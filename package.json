@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 127.0.0.1 --port 3107 --strictPort",
+
     "generate:room-registry": "node scripts/generate-room-registry.js",
     "generate:audio-manifest": "node scripts/generate-audio-manifest.js",
     "validate-rooms": "node scripts/validate-rooms.js",
@@ -12,14 +13,26 @@
     "check:tiers": "node scripts/check-room-tiers.js",
     "check:empty-entries": "node scripts/check-rooms-empty-entries.js",
     "check:empty-rooms": "node scripts/check-empty-rooms.js",
+
     "rooms:check": "npm run generate:room-registry && npm run validate-rooms:core",
     "prebuild": "npm run rooms:check",
+
     "build": "npm run generate:audio-manifest && vite build",
     "build:dev": "vite build --mode development",
+
     "lint": "eslint .",
+
     "preview": "vite preview --host 127.0.0.1 --port 3107 --strictPort",
+
     "system:check": "tsx scripts/check-system-health.ts",
-    "audio:tts": "tsx scripts/generate-missing-audio.ts"
+    "audio:tts": "tsx scripts/generate-missing-audio.ts",
+
+    "typecheck": "npm run typecheck:app",
+    "typecheck:app": "tsc -p tsconfig.json --noEmit",
+    "typecheck:scripts": "node -e \"const fs=require('fs'); if(!fs.existsSync('tsconfig.scripts.json')) { console.log('[skip] tsconfig.scripts.json not found'); process.exit(0);} process.exit(0);\" && tsc -p tsconfig.scripts.json --noEmit",
+
+    "test": "vitest run",
+    "test:ci": "vitest run --reporter=verbose"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.12",

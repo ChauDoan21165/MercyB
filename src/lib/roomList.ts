@@ -64,10 +64,6 @@ export const ROOM_IDS = [
   "colors_nature_kids_l1",
   "colors_shapes_kids_l1",
   "community_helpers_kids_l2",
-  "companion_lines",
-  "companion_lines_friend_en",
-  "companion_lines_friend_vi",
-  "components",
   "confidence_building_vip2",
   "conflict_navigation_emotional_deescalation_vip5_bonus",
   "conversation_starters_kids_l3",
@@ -230,7 +226,6 @@ export const ROOM_IDS = [
   "grammar_foundations_free",
   "grammar_native_logic_vip3_ii",
   "grief_healing_free",
-  "guide_articles_en_vi",
   "hannibal_barca_grand_strategy_vip9_vol1",
   "hannibal_barca_grand_strategy_vip9_vol2",
   "hannibal_barca_grand_strategy_vip9_vol3",
@@ -238,7 +233,6 @@ export const ROOM_IDS = [
   "healthy_habits_kids_l2",
   "high_value_boundaries_relationship_strategy_vip5_bonus",
   "hobbies_fun_activities_kids_l2",
-  "homepage_v1",
   "idioms_for_kids_kids_l3",
   "individual_strategic_mastery_vip9",
   "internet_vocabulary_kids_l3",
@@ -283,9 +277,6 @@ export const ROOM_IDS = [
   "mental_health_vip1",
   "mentors_who_light_the_way_vip4",
   "mercy_blade_bridge_of_hearts_free",
-  "mercy_blade_home_page",
-  "mercy_reply_library",
-  "mercy_vip_reply_library",
   "mindfulness_vip1",
   "mini_projects_presentations_kids_l3",
   "musashi_grand_strategy_vip9_vol1",
@@ -491,7 +482,6 @@ export const ROOM_IDS = [
   "vip6_shadow_self",
   "vip6_suppressed_rage",
   "vocabulary_expansion_kids_l3",
-  "warmth_lines_en_vi",
   "wealth_wisdom_vip3_preview_free",
   "weather_for_kids_l1",
   "weather_seasons_kids_l2",
@@ -868,34 +858,6 @@ const __ROOM_LIST: RoomListItem[] = [
     "id": "community_helpers_kids_l2",
     "title_en": "Community Helpers",
     "title_vi": "Những Người Giúp Đỡ Cộng Đồng",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "companion_lines",
-    "title_en": "companion_lines",
-    "title_vi": "companion_lines",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "companion_lines_friend_en",
-    "title_en": "companion_lines_friend_en",
-    "title_vi": "companion_lines_friend_en",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "companion_lines_friend_vi",
-    "title_en": "companion_lines_friend_vi",
-    "title_vi": "companion_lines_friend_vi",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "components",
-    "title_en": "components",
-    "title_vi": "components",
     "tier": "free",
     "hasData": true
   },
@@ -2034,13 +1996,6 @@ const __ROOM_LIST: RoomListItem[] = [
     "hasData": true
   },
   {
-    "id": "guide_articles_en_vi",
-    "title_en": "guide_articles_en_vi",
-    "title_vi": "guide_articles_en_vi",
-    "tier": "free",
-    "hasData": true
-  },
-  {
     "id": "hannibal_barca_grand_strategy_vip9_vol1",
     "title_en": "Hannibal Barca Grand Strategy — Volume I (The Oath Against Rome)",
     "title_vi": "Đại Chiến Lược Hannibal Barca — Tập I (Lời Thề Chống Rome)",
@@ -2086,13 +2041,6 @@ const __ROOM_LIST: RoomListItem[] = [
     "id": "hobbies_fun_activities_kids_l2",
     "title_en": "Hobbies & Fun Activities",
     "title_vi": "Sở Thích & Hoạt Động Vui",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "homepage_v1",
-    "title_en": "Mercy Blade Homepage",
-    "title_vi": "Trang Chủ Mercy Blade",
     "tier": "free",
     "hasData": true
   },
@@ -2401,27 +2349,6 @@ const __ROOM_LIST: RoomListItem[] = [
     "id": "mercy_blade_bridge_of_hearts_free",
     "title_en": "Mercy Blade — Bridge of Hearts",
     "title_vi": "Mercy Blade — Nhịp Cầu Trái Tim",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "mercy_blade_home_page",
-    "title_en": "mercy_blade_home_page",
-    "title_vi": "Trang Chủ Mercy Blade",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "mercy_reply_library",
-    "title_en": "mercy_reply_library",
-    "title_vi": "mercy_reply_library",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "mercy_vip_reply_library",
-    "title_en": "mercy_vip_reply_library",
-    "title_vi": "mercy_vip_reply_library",
     "tier": "free",
     "hasData": true
   },
@@ -3857,13 +3784,6 @@ const __ROOM_LIST: RoomListItem[] = [
     "id": "vocabulary_expansion_kids_l3",
     "title_en": "Vocabulary Expansion",
     "title_vi": "Mở Rộng Từ Vựng",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "warmth_lines_en_vi",
-    "title_en": "warmth_lines_en_vi",
-    "title_vi": "warmth_lines_en_vi",
     "tier": "free",
     "hasData": true
   },

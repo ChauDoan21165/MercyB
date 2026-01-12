@@ -367,34 +367,6 @@ export const roomDataMap = {
     "tier": "free",
     "hasData": true
   },
-  "companion_lines": {
-    "id": "companion_lines",
-    "title_en": "companion_lines",
-    "title_vi": "companion_lines",
-    "tier": "free",
-    "hasData": true
-  },
-  "companion_lines_friend_en": {
-    "id": "companion_lines_friend_en",
-    "title_en": "companion_lines_friend_en",
-    "title_vi": "companion_lines_friend_en",
-    "tier": "free",
-    "hasData": true
-  },
-  "companion_lines_friend_vi": {
-    "id": "companion_lines_friend_vi",
-    "title_en": "companion_lines_friend_vi",
-    "title_vi": "companion_lines_friend_vi",
-    "tier": "free",
-    "hasData": true
-  },
-  "components": {
-    "id": "components",
-    "title_en": "components",
-    "title_vi": "components",
-    "tier": "free",
-    "hasData": true
-  },
   "confidence_building_vip2": {
     "id": "confidence_building_vip2",
     "title_en": "Advanced Confidence Building",
@@ -1529,13 +1501,6 @@ export const roomDataMap = {
     "tier": "free",
     "hasData": true
   },
-  "guide_articles_en_vi": {
-    "id": "guide_articles_en_vi",
-    "title_en": "guide_articles_en_vi",
-    "title_vi": "guide_articles_en_vi",
-    "tier": "free",
-    "hasData": true
-  },
   "hannibal_barca_grand_strategy_vip9_vol1": {
     "id": "hannibal_barca_grand_strategy_vip9_vol1",
     "title_en": "Hannibal Barca Grand Strategy — Volume I (The Oath Against Rome)",
@@ -1582,13 +1547,6 @@ export const roomDataMap = {
     "id": "hobbies_fun_activities_kids_l2",
     "title_en": "Hobbies & Fun Activities",
     "title_vi": "Sở Thích & Hoạt Động Vui",
-    "tier": "free",
-    "hasData": true
-  },
-  "homepage_v1": {
-    "id": "homepage_v1",
-    "title_en": "Mercy Blade Homepage",
-    "title_vi": "Trang Chủ Mercy Blade",
     "tier": "free",
     "hasData": true
   },
@@ -1897,27 +1855,6 @@ export const roomDataMap = {
     "id": "mercy_blade_bridge_of_hearts_free",
     "title_en": "Mercy Blade — Bridge of Hearts",
     "title_vi": "Mercy Blade — Nhịp Cầu Trái Tim",
-    "tier": "free",
-    "hasData": true
-  },
-  "mercy_blade_home_page": {
-    "id": "mercy_blade_home_page",
-    "title_en": "mercy_blade_home_page",
-    "title_vi": "Trang Chủ Mercy Blade",
-    "tier": "free",
-    "hasData": true
-  },
-  "mercy_reply_library": {
-    "id": "mercy_reply_library",
-    "title_en": "mercy_reply_library",
-    "title_vi": "mercy_reply_library",
-    "tier": "free",
-    "hasData": true
-  },
-  "mercy_vip_reply_library": {
-    "id": "mercy_vip_reply_library",
-    "title_en": "mercy_vip_reply_library",
-    "title_vi": "mercy_vip_reply_library",
     "tier": "free",
     "hasData": true
   },
@@ -3353,13 +3290,6 @@ export const roomDataMap = {
     "id": "vocabulary_expansion_kids_l3",
     "title_en": "Vocabulary Expansion",
     "title_vi": "Mở Rộng Từ Vựng",
-    "tier": "free",
-    "hasData": true
-  },
-  "warmth_lines_en_vi": {
-    "id": "warmth_lines_en_vi",
-    "title_en": "warmth_lines_en_vi",
-    "title_vi": "warmth_lines_en_vi",
     "tier": "free",
     "hasData": true
   },

@@ -1,4 +1,3 @@
-
 #!/usr/bin/env tsx
 /**
  * Auto-Fix Suite – Part 2: Entry count auditor
@@ -24,16 +23,33 @@ type Problem = {
 
 function main() {
   console.log("🔍 Auditing room entry counts in", DATA_DIR);
-  const files = readdirSync(DATA_DIR).filter((f) => f.endsWith(".json") && f !== "room-metrics.json");
+
+  let files: string[] = [];
+  try {
+    files = readdirSync(DATA_DIR).filter(
+      (f) => f.endsWith(".json") && f !== "room-metrics.json",
+    );
+  } catch (e) {
+    console.error("❌ Cannot read data dir:", DATA_DIR);
+    console.error(e);
+    process.exitCode = 2;
+    return;
+  }
 
   const problems: Problem[] = [];
 
   for (const file of files) {
     const full = join(DATA_DIR, file);
+
     let raw: string;
     try {
       raw = readFileSync(full, "utf8");
     } catch {
+      problems.push({
+        file,
+        count: null,
+        reason: "file read error",
+      });
       continue;
     }
 
@@ -76,17 +92,17 @@ function main() {
   console.log("");
   if (!problems.length) {
     console.log("✅ All rooms have valid entry counts (2–8).");
+    process.exitCode = 0;
     return;
   }
 
   console.log(`⚠️ Found ${problems.length} rooms with invalid entry counts:\n`);
   for (const p of problems) {
-    console.log(
-      `• ${p.file}` +
-        (p.id ? `  [id: ${p.id}]` : "") +
-        ` → ${p.reason}`
-    );
+    console.log(`• ${p.file}${p.id ? `  [id: ${p.id}]` : ""} → ${p.reason}`);
   }
+
+  // Non-zero so CI can flag it if you want.
+  process.exitCode = 1;
 }
 
 main();

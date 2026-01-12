@@ -1,20 +1,22 @@
 /**
  * MercyBlade Blue — Global App Bar
  * Path: src/components/GlobalAppBar.tsx
- * Version: MB-BLUE-94.14.8 — 2025-12-25 (+0700)
+ * Version: MB-BLUE-94.14.10 — 2026-01-11 (+0700)
  *
  * Unified top navigation bar with:
  * - Left: Breadcrumb navigation
- * - Center: Mercy Blade logo (truly centered in viewport using absolute positioning)
+ * - Center: Mercy Blade logo (true centered)
  * - Right: Search, Theme toggle, Tier Map, User actions
  *
- * CHANGE (94.14.8):
- * - Remove local Supabase auth reads/listeners (no duplicate timelines).
- * - Use single source of truth: useAuth() from AuthProvider.
+ * FIX (94.14.10):
+ * - CRITICAL: Stop routing to legacy /auth (causes blink + bounce).
+ * - Login now ALWAYS routes to: /signin?returnTo=...
+ * - Keep "Sign out / Đăng xuất" when signed in (uses SINGLE SOURCE: useAuth()).
+ * - After signOut, navigate to /signin (no hard redirect).
  */
 
 import { Button } from "@/components/ui/button";
-import { LogIn, Eye, ChevronRight, Home } from "lucide-react";
+import { LogIn, Eye, ChevronRight, Home, LogOut } from "lucide-react";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { RoomSearch } from "@/components/RoomSearch";
@@ -37,19 +39,32 @@ export function GlobalAppBar({ breadcrumbs = [], mode = "color" }: GlobalAppBarP
   const location = useLocation();
 
   // ✅ SINGLE SOURCE OF TRUTH
-  const { user, isLoading } = useAuth();
+  const { user, isLoading, signOut } = useAuth();
 
-  const redirectParam = encodeURIComponent(location.pathname + location.search);
   const headerBg = mode === "bw" ? "bg-white/95" : "bg-background/95";
 
+  // ✅ your LoginPage reads: returnTo=...
+  const returnTo = encodeURIComponent(location.pathname + location.search);
+
+  const handleGoSignin = () => {
+    navigate(`/signin?returnTo=${returnTo}`);
+  };
+
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+    } finally {
+      // normal SPA navigate (no hard redirect)
+      navigate("/signin?returnTo=%2F", { replace: true });
+    }
+  };
+
   return (
-    <header
-      className={`sticky top-0 z-40 w-full ${headerBg} backdrop-blur-sm border-b border-border`}
-    >
+    <header className={`sticky top-0 z-40 w-full ${headerBg} backdrop-blur-sm border-b border-border`}>
       <div className="relative w-full px-4 py-3">
         {/* 3-column flex layout for left/right balance */}
         <div className="flex items-center justify-between">
-          {/* Left: Breadcrumb - flex-1 to take equal space */}
+          {/* Left: Breadcrumb */}
           <nav className="flex-1 flex items-center gap-1.5 text-sm overflow-hidden">
             <Link
               to="/"
@@ -63,10 +78,7 @@ export function GlobalAppBar({ breadcrumbs = [], mode = "color" }: GlobalAppBarP
               <div key={index} className="flex items-center gap-1.5 min-w-0">
                 <ChevronRight className="w-3.5 h-3.5 text-muted-foreground/60 shrink-0" />
                 {item.href && index < breadcrumbs.length - 1 ? (
-                  <Link
-                    to={item.href}
-                    className="text-muted-foreground hover:text-foreground transition-colors truncate"
-                  >
+                  <Link to={item.href} className="text-muted-foreground hover:text-foreground transition-colors truncate">
                     {item.label}
                   </Link>
                 ) : (
@@ -76,9 +88,8 @@ export function GlobalAppBar({ breadcrumbs = [], mode = "color" }: GlobalAppBarP
             ))}
           </nav>
 
-          {/* Right: Controls - flex-1 to take equal space */}
+          {/* Right: Controls */}
           <div className="flex-1 flex items-center justify-end gap-2">
-            {/* Global Room Search */}
             <div className="hidden sm:block w-48 lg:w-64">
               <RoomSearch />
             </div>
@@ -86,10 +97,10 @@ export function GlobalAppBar({ breadcrumbs = [], mode = "color" }: GlobalAppBarP
             <ThemeToggle />
             <ColorModeToggle />
 
-            {/* Auth-dependent button */}
+            {/* Auth-dependent actions */}
             {!isLoading && !user ? (
               <Button
-                onClick={() => navigate(`/auth?redirect=${redirectParam}`)}
+                onClick={handleGoSignin}
                 size="sm"
                 className="gap-1.5 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white shadow-sm h-8 px-3"
               >
@@ -97,21 +108,37 @@ export function GlobalAppBar({ breadcrumbs = [], mode = "color" }: GlobalAppBarP
                 <span className="text-xs">Login / Đăng nhập</span>
               </Button>
             ) : (
-              <Button
-                onClick={() => navigate("/tier-map")}
-                variant="outline"
-                size="sm"
-                className="gap-1.5 h-8 px-3"
-                disabled={isLoading}
-              >
-                <Eye className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline text-xs">Tier Map</span>
-              </Button>
+              <>
+                <Button
+                  onClick={() => navigate("/tier-map")}
+                  variant="outline"
+                  size="sm"
+                  className="gap-1.5 h-8 px-3"
+                  disabled={isLoading}
+                >
+                  <Eye className="w-3.5 h-3.5" />
+                  <span className="hidden sm:inline text-xs">Tier Map</span>
+                </Button>
+
+                {!isLoading && user && (
+                  <Button
+                    onClick={handleSignOut}
+                    variant="outline"
+                    size="sm"
+                    className="gap-1.5 h-8 px-3"
+                    title={user.email ? `Signed in as ${user.email}` : "Signed in"}
+                  >
+                    <LogOut className="w-3.5 h-3.5" />
+                    <span className="hidden sm:inline text-xs">Sign out / Đăng xuất</span>
+                    <span className="sm:hidden text-xs">Out</span>
+                  </Button>
+                )}
+              </>
             )}
           </div>
         </div>
 
-        {/* Center: Logo - absolutely positioned for true viewport centering */}
+        {/* Center: Logo */}
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-auto">
           <Link to="/" className="inline-block">
             <h1 className="text-lg sm:text-xl font-bold tracking-tight whitespace-nowrap">

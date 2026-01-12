@@ -10,14 +10,35 @@
 // - This relies on public.profiles having is_admin/admin_level (your useUserAccess does).
 // - If profiles row doesn't exist yet for a new OAuth user, we treat them as non-admin.
 //
-// PATCH (MB-BLUE-101.3g):
-// - Add visible "Sign out" button when session exists (so admin can log out & test OAuth).
-// - Make OAuth never "silent": if signInWithOAuth returns data.url, force window.location.assign(data.url).
+// PATCH (MB-BLUE-101.3g → MB-BLUE-101.3h):
+// - Add ALWAYS-visible Session Status bar (Signed in / Signed out) + User ID for debugging.
+// - Keep "Sign out" action.
+// - Add "Log session" helper button (prints session to console).
+// - Fix returnTo security: absolute URLs allowed ONLY if same-origin.
+// - Keep OAuth non-silent: if signInWithOAuth returns data.url, force window.location.assign(data.url).
 // - Fix typo: disdisabled -> disabled.
+//
+// PATCH (MB-BLUE-101.3h → MB-BLUE-101.3i):
+// - Mount right-panel brand overlay from separate component (keep file sane).
+// - Overlay sits in the EMPTY TOP SPACE above the rightInner card; high contrast; zIndex-proof.
+//
+// PATCH (MB-BLUE-101.3i → MB-BLUE-101.3j):
+// - Fix password-eye “sticking out bar” by:
+//   - Using a SINGLE border on the wrapper (input border removed)
+//   - Clipping the wrapper (borderRadius + overflow hidden)
+//   - Making the eye button transparent + borderless (no white pill extending past input)
+//
+// PATCH (MB-BLUE-101.3j → MB-BLUE-101.3k):
+// - Fix remaining Safari/Chrome “eye pill / misalignment” by hard-resetting button appearance
+//   + enforcing consistent input height (minHeight) so Password matches Email box.
+//
+// PATCH (MB-BLUE-101.3k → MB-BLUE-101.3k.1):
+// - Use readBoolEnv() for OAuth flags (prevents unused helper + consistent parsing).
 
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/lib/supabaseClient";
+import MercyRightBrandOverlay from "@/components/auth/MercyRightBrandOverlay";
 
 type TopMode = "email" | "phone" | "google" | "facebook";
 type EmailMode = "password_signin" | "password_signup" | "magic" | "reset";
@@ -47,8 +68,10 @@ function safeParseReturnTo(search: string): string | null {
 
     if (trimmed.startsWith("/")) return trimmed;
 
+    // ✅ absolute allowed only if same origin
     const u = new URL(trimmed);
-    return u.href;
+    if (u.origin !== window.location.origin) return null;
+    return `${u.pathname}${u.search}${u.hash}`;
   } catch {
     return null;
   }
@@ -226,6 +249,8 @@ const UI = {
       borderRadius: 12,
       outline: "none",
       opacity: disabled ? 0.7 : 1,
+      boxSizing: "border-box",
+      minHeight: 46, // keep consistent box height
     }) as React.CSSProperties,
 
   primaryBtn: (disabled: boolean) =>
@@ -392,6 +417,8 @@ function readOAuthErrorFromSearch(search: string): { error: string; desc: string
 function MarketingPanel() {
   return (
     <div style={UI.right}>
+      <MercyRightBrandOverlay />
+
       <div style={UI.rightInner}>
         <div style={UI.quoteMark}>“</div>
 
@@ -400,8 +427,8 @@ function MarketingPanel() {
         <p style={UI.rightText}>
           Mercy Blade is part of the <b>Mercy — Serving Humanity App Ecosystem</b>.
           <br />
-          We walk with you through health, emotions, money, relationships, work, and meaning — with calm
-          clarity and practical steps you can use today.
+          We walk with you through health, emotions, money, relationships, work, and meaning — with calm clarity and
+          practical steps you can use today.
           <br />
           <br />
           No pressure. No judgment. Just a steady companion that helps you move forward.
@@ -414,8 +441,8 @@ function MarketingPanel() {
         <p style={UI.rightText}>
           Mercy Blade là một phần của <b>Hệ sinh thái ứng dụng Mercy — Phục vụ Nhân loại</b>.
           <br />
-          Chúng tôi đồng hành cùng bạn trong sức khỏe, cảm xúc, tiền bạc, mối quan hệ, công việc và ý
-          nghĩa sống — bằng sự bình tĩnh, rõ ràng và những bước đi thực tế bạn có thể làm ngay hôm nay.
+          Chúng tôi đồng hành cùng bạn trong sức khỏe, cảm xúc, tiền bạc, mối quan hệ, công việc và ý nghĩa sống — bằng
+          sự bình tĩnh, rõ ràng và những bước đi thực tế bạn có thể làm ngay hôm nay.
           <br />
           <br />
           Không áp lực. Không phán xét. Chỉ là một người bạn đồng hành vững chãi giúp bạn tiến lên.
@@ -427,13 +454,7 @@ function MarketingPanel() {
   );
 }
 
-function RecoverySetPassword({
-  busyParent,
-  onDone,
-}: {
-  busyParent: boolean;
-  onDone: () => void;
-}) {
+function RecoverySetPassword({ busyParent, onDone }: { busyParent: boolean; onDone: () => void }) {
   const [pw1, setPw1] = useState("");
   const [pw2, setPw2] = useState("");
   const [show, setShow] = useState(false);
@@ -473,36 +494,71 @@ function RecoverySetPassword({
 
       <div style={{ marginTop: 12 }}>
         <label style={UI.label}>New password</label>
-        <div style={{ position: "relative" }}>
+
+        <div
+          style={{
+            position: "relative",
+            width: "100%",
+            borderRadius: 12,
+            border: "1px solid rgba(0,0,0,0.14)",
+            background: "white",
+            overflow: "hidden",
+            opacity: disabled ? 0.7 : 1,
+            boxSizing: "border-box",
+            minHeight: 46,
+          }}
+        >
           <input
             value={pw1}
             onChange={(e) => setPw1(e.target.value)}
             placeholder="••••••••"
             type={show ? "text" : "password"}
             autoComplete="new-password"
-            style={{ ...UI.input(disabled), paddingRight: 46 }}
             disabled={disabled}
+            style={{
+              width: "100%",
+              boxSizing: "border-box",
+              minHeight: 46,
+              padding: "11px 52px 11px 11px",
+              fontSize: 16,
+              border: "none",
+              outline: "none",
+              background: "transparent",
+              margin: 0,
+            }}
           />
+
           <button
             type="button"
             onClick={() => setShow((v) => !v)}
             disabled={disabled}
-            style={{
-              position: "absolute",
-              right: 12,
-              top: "50%",
-              transform: "translateY(-50%)",
-              border: "1px solid rgba(0,0,0,0.12)",
-              background: "white",
-              borderRadius: 12,
-              width: 34,
-              height: 34,
-              cursor: disabled ? "not-allowed" : "pointer",
-              fontSize: 14,
-              opacity: 0.9,
-            }}
             aria-label={show ? "Hide password" : "Show password"}
             title={show ? "Hide password" : "Show password"}
+            style={{
+              position: "absolute",
+              right: 10,
+              top: "50%",
+              transform: "translateY(-50%)",
+              width: 36,
+              height: 36,
+              border: "none",
+              background: "transparent",
+              borderRadius: 9999,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: disabled ? "not-allowed" : "pointer",
+              opacity: 0.75,
+              padding: 0,
+              lineHeight: 1,
+              fontSize: 18,
+
+              // ✅ kill browser “button chrome”
+              appearance: "none",
+              WebkitAppearance: "none",
+              outline: "none",
+              boxShadow: "none",
+            }}
           >
             {show ? "🙈" : "👁️"}
           </button>
@@ -536,11 +592,7 @@ function RecoverySetPassword({
 
 async function fetchAdminFlagsSafe(userId: string): Promise<{ isAdmin: boolean }> {
   try {
-    const { data, error } = await supabase
-      .from("profiles")
-      .select("is_admin, admin_level")
-      .eq("id", userId)
-      .maybeSingle();
+    const { data, error } = await supabase.from("profiles").select("is_admin, admin_level").eq("id", userId).maybeSingle();
 
     if (error) return { isAdmin: false };
 
@@ -649,9 +701,7 @@ function PhoneOtp({
           <button onClick={sendCode} disabled={disabled} style={UI.primaryBtn(disabled)}>
             {disabled ? "Please wait..." : "Send SMS code"}
           </button>
-          <div style={{ marginTop: 8, ...UI.small }}>
-            Tip: always include country code (+66 / +84 / +1 …).
-          </div>
+          <div style={{ marginTop: 8, ...UI.small }}>Tip: always include country code (+66 / +84 / +1 …).</div>
         </div>
       ) : (
         <div style={{ marginTop: 12 }}>
@@ -666,11 +716,7 @@ function PhoneOtp({
           />
 
           <div style={{ marginTop: 12, display: "flex", gap: 10, flexWrap: "wrap" }}>
-            <button
-              onClick={verifyCode}
-              disabled={disabled}
-              style={{ ...UI.primaryBtn(disabled), flex: "1 1 auto" }}
-            >
+            <button onClick={verifyCode} disabled={disabled} style={{ ...UI.primaryBtn(disabled), flex: "1 1 auto" }}>
               {disabled ? "Please wait..." : "Verify & sign in"}
             </button>
             <button
@@ -743,8 +789,7 @@ function EmailBlock({
     try {
       const clean = cleanEmail();
       if (!clean || !clean.includes("@")) return setStatus("Please enter a valid email.");
-      if (!password || password.length < 6)
-        return setStatus("Password must be at least 6 characters.");
+      if (!password || password.length < 6) return setStatus("Password must be at least 6 characters.");
 
       const { error } = await supabase.auth.signInWithPassword({ email: clean, password });
       if (error) return setStatus(humanizeAuthError(error, mode));
@@ -764,8 +809,7 @@ function EmailBlock({
     try {
       const clean = cleanEmail();
       if (!clean || !clean.includes("@")) return setStatus("Please enter a valid email.");
-      if (!password || password.length < 6)
-        return setStatus("Password must be at least 6 characters.");
+      if (!password || password.length < 6) return setStatus("Password must be at least 6 characters.");
 
       const { data, error } = await supabase.auth.signUp({
         email: clean,
@@ -815,35 +859,27 @@ function EmailBlock({
     mode === "password_signin"
       ? "Sign in"
       : mode === "password_signup"
-      ? "Create account"
-      : mode === "magic"
-      ? "Send email link"
-      : "Send reset email";
+        ? "Create account"
+        : mode === "magic"
+          ? "Send email link"
+          : "Send reset email";
 
   const onPrimary =
     mode === "password_signin"
       ? signInWithPassword
       : mode === "password_signup"
-      ? signUpWithPassword
-      : mode === "magic"
-      ? sendMagicLink
-      : sendResetPasswordEmail;
+        ? signUpWithPassword
+        : mode === "magic"
+          ? sendMagicLink
+          : sendResetPasswordEmail;
 
   return (
     <div style={UI.block}>
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-        <button
-          onClick={() => setMode("password_signin")}
-          disabled={disabled}
-          style={UI.segBtn(mode === "password_signin", disabled)}
-        >
+        <button onClick={() => setMode("password_signin")} disabled={disabled} style={UI.segBtn(mode === "password_signin", disabled)}>
           Sign in
         </button>
-        <button
-          onClick={() => setMode("password_signup")}
-          disabled={disabled}
-          style={UI.segBtn(mode === "password_signup", disabled)}
-        >
+        <button onClick={() => setMode("password_signup")} disabled={disabled} style={UI.segBtn(mode === "password_signup", disabled)}>
           Sign up
         </button>
         <button onClick={() => setMode("reset")} disabled={disabled} style={UI.segBtn(mode === "reset", disabled)}>
@@ -875,15 +911,37 @@ function EmailBlock({
         <div style={{ marginTop: 12 }}>
           <label style={UI.label}>Password</label>
 
-          <div style={{ position: "relative" }}>
+          <div
+            style={{
+              position: "relative",
+              width: "100%",
+              borderRadius: 12,
+              border: "1px solid rgba(0,0,0,0.14)",
+              background: "white",
+              overflow: "hidden",
+              opacity: disabled ? 0.7 : 1,
+              boxSizing: "border-box",
+              minHeight: 46,
+            }}
+          >
             <input
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••"
               type={showPw ? "text" : "password"}
               autoComplete={mode === "password_signup" ? "new-password" : "current-password"}
-              style={{ ...UI.input(disabled), paddingRight: 46 }}
               disabled={disabled}
+              style={{
+                width: "100%",
+                boxSizing: "border-box",
+                minHeight: 46,
+                padding: "11px 52px 11px 11px",
+                fontSize: 16,
+                border: "none",
+                outline: "none",
+                background: "transparent",
+                margin: 0,
+              }}
             />
 
             <button
@@ -891,21 +949,32 @@ function EmailBlock({
               onClick={() => setShowPw((v) => !v)}
               aria-label={showPw ? "Hide password" : "Show password"}
               disabled={disabled}
+              title={showPw ? "Hide password" : "Show password"}
               style={{
                 position: "absolute",
-                right: 12,
+                right: 10,
                 top: "50%",
                 transform: "translateY(-50%)",
-                border: "1px solid rgba(0,0,0,0.12)",
-                background: "white",
-                borderRadius: 12,
-                width: 34,
-                height: 34,
+                width: 36,
+                height: 36,
+                border: "none",
+                background: "transparent",
+                borderRadius: 9999,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
                 cursor: disabled ? "not-allowed" : "pointer",
-                fontSize: 14,
-                opacity: 0.9,
+                opacity: 0.75,
+                padding: 0,
+                lineHeight: 1,
+                fontSize: 18,
+
+                // ✅ kill browser “button chrome”
+                appearance: "none",
+                WebkitAppearance: "none",
+                outline: "none",
+                boxShadow: "none",
               }}
-              title={showPw ? "Hide password" : "Show password"}
             >
               {showPw ? "🙈" : "👁️"}
             </button>
@@ -933,12 +1002,7 @@ function EmailBlock({
         {mode === "password_signin" ? (
           <>
             New here?{" "}
-            <button
-              type="button"
-              onClick={() => setMode("password_signup")}
-              disabled={disabled}
-              style={UI.linkBtn(disabled)}
-            >
+            <button type="button" onClick={() => setMode("password_signup")} disabled={disabled} style={UI.linkBtn(disabled)}>
               Create an account
             </button>
             .
@@ -946,12 +1010,7 @@ function EmailBlock({
         ) : mode === "password_signup" ? (
           <>
             Already have an account?{" "}
-            <button
-              type="button"
-              onClick={() => setMode("password_signin")}
-              disabled={disabled}
-              style={UI.linkBtn(disabled)}
-            >
+            <button type="button" onClick={() => setMode("password_signin")} disabled={disabled} style={UI.linkBtn(disabled)}>
               Sign in
             </button>
             .
@@ -967,13 +1026,12 @@ function EmailBlock({
 export default function LoginPage() {
   const nav = useNavigate();
 
-  // ✅ Trust UX: show where user came from (Builder / Signal) if returnTo present
   const returnToRaw = useMemo(() => safeParseReturnTo(window.location.search || ""), []);
   const fromApp = useMemo(() => resolveAppFromReturnTo(returnToRaw), [returnToRaw]);
 
-  // ✅ Vite truth
-  const AUTH_GOOGLE_ENABLED = useMemo(() => import.meta.env.VITE_AUTH_GOOGLE_ENABLED === "true", []);
-  const AUTH_FACEBOOK_ENABLED = useMemo(() => import.meta.env.VITE_AUTH_FACEBOOK_ENABLED === "true", []);
+  // ✅ use helper (also prevents unused readBoolEnv)
+  const AUTH_GOOGLE_ENABLED = useMemo(() => readBoolEnv("VITE_AUTH_GOOGLE_ENABLED"), []);
+  const AUTH_FACEBOOK_ENABLED = useMemo(() => readBoolEnv("VITE_AUTH_FACEBOOK_ENABLED"), []);
   const IS_DEV = import.meta.env.DEV;
 
   useEffect(() => {
@@ -987,13 +1045,10 @@ export default function LoginPage() {
     });
   }, [IS_DEV]);
 
-  // IMPORTANT:
-  // - OAuth must return to /signin so we can route based on admin/non-admin.
   const redirectToOAuthReturn = useMemo(() => `${window.location.origin}/signin`, []);
   const redirectToRecovery = useMemo(() => `${window.location.origin}/signin?recovery=1`, []);
 
-  // App routes
-  const DEFAULT_USER_ROUTE = "/"; // change to "/rooms" if you want
+  const DEFAULT_USER_ROUTE = "/";
   const ADMIN_ROUTE = "/admin";
 
   const safeReturnPath = useMemo(() => toSafeAppPath(returnToRaw), [returnToRaw]);
@@ -1017,9 +1072,9 @@ export default function LoginPage() {
 
   const [isNarrow, setIsNarrow] = useState(false);
 
-  // Session flag for "Sign out" button
   const [hasSession, setHasSession] = useState(false);
   const [sessionEmail, setSessionEmail] = useState<string | null>(null);
+  const [sessionUserId, setSessionUserId] = useState<string | null>(null);
 
   useEffect(() => {
     function onResize() {
@@ -1030,7 +1085,6 @@ export default function LoginPage() {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
-  // Keep session flag updated
   useEffect(() => {
     let alive = true;
 
@@ -1040,6 +1094,7 @@ export default function LoginPage() {
       const s = data?.session;
       setHasSession(Boolean(s));
       setSessionEmail((s?.user?.email as string) || null);
+      setSessionUserId((s?.user?.id as string) || null);
     }
 
     bootSessionFlag();
@@ -1048,6 +1103,7 @@ export default function LoginPage() {
       if (!alive) return;
       setHasSession(Boolean(session));
       setSessionEmail((session?.user?.email as string) || null);
+      setSessionUserId((session?.user?.id as string) || null);
     });
 
     return () => {
@@ -1069,21 +1125,17 @@ export default function LoginPage() {
     }
   }
 
-  // Show OAuth errors that come back to /signin
   useEffect(() => {
     const oauthErr = readOAuthErrorFromSearch(window.location.search || "");
     if (!oauthErr) return;
 
-    const lines = [
-      "OAuth sign-in failed.",
-      oauthErr.error ? `error: ${oauthErr.error}` : "",
-      oauthErr.desc ? `details: ${oauthErr.desc}` : "",
-    ].filter(Boolean);
+    const lines = ["OAuth sign-in failed.", oauthErr.error ? `error: ${oauthErr.error}` : "", oauthErr.desc ? `details: ${oauthErr.desc}` : ""].filter(
+      Boolean,
+    );
 
     setStatus(lines.join("\n"));
   }, []);
 
-  // Recovery boot (password reset flow)
   useEffect(() => {
     let cancelled = false;
 
@@ -1120,7 +1172,6 @@ export default function LoginPage() {
     };
   }, []);
 
-  // If user already has a session and visits /signin, route them.
   useEffect(() => {
     let alive = true;
 
@@ -1157,7 +1208,6 @@ export default function LoginPage() {
         return;
       }
 
-      // Safari/strict browsers may not auto-redirect; force it if we have a URL.
       if (data?.url) window.location.assign(data.url);
       else setStatus("Google sign-in did not return a redirect URL.");
     } catch (e: any) {
@@ -1191,7 +1241,6 @@ export default function LoginPage() {
   }
 
   const pageStyle: React.CSSProperties = isNarrow ? { ...UI.page, gridTemplateColumns: "1fr" } : UI.page;
-
   const anyOAuthEnabled = AUTH_GOOGLE_ENABLED || AUTH_FACEBOOK_ENABLED;
 
   return (
@@ -1199,23 +1248,50 @@ export default function LoginPage() {
       <div style={UI.left}>
         <div style={UI.card}>
           <h1 style={UI.title}>Sign in</h1>
-          <p style={UI.subtitle}>
-            Choose a sign-in method. After signing in, we’ll take you to the right place.
-          </p>
+          <p style={UI.subtitle}>Choose a sign-in method. After signing in, we’ll take you to the right place.</p>
 
-          {/* ✅ Sign out (visible when already signed in) */}
-          {hasSession && (
-            <div style={UI.block}>
-              <div style={{ fontWeight: 900, fontSize: 13, marginBottom: 8 }}>
-                You are signed in{sessionEmail ? ` as ${sessionEmail}` : ""}.
-              </div>
-              <button onClick={signOutNow} disabled={busy} style={UI.primaryBtn(busy)}>
-                {busy ? "Please wait..." : "Sign out"}
-              </button>
-            </div>
-          )}
+          <div style={UI.block}>
+            {hasSession ? (
+              <>
+                <div style={{ fontWeight: 950, fontSize: 13, marginBottom: 6 }}>
+                  ✅ Signed in{sessionEmail ? ` as ${sessionEmail}` : ""}.
+                </div>
 
-          {/* ✅ Ecosystem trust block */}
+                {sessionUserId && (
+                  <div style={{ ...UI.small, marginBottom: 10 }}>
+                    User ID: <code>{sessionUserId}</code>
+                  </div>
+                )}
+
+                <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                  <button
+                    onClick={signOutNow}
+                    disabled={busy}
+                    style={{ ...UI.primaryBtn(busy), width: "auto", flex: "1 1 180px" }}
+                  >
+                    {busy ? "Please wait..." : "Sign out"}
+                  </button>
+
+                  <button
+                    type="button"
+                    disabled={busy}
+                    onClick={async () => {
+                      const { data } = await supabase.auth.getSession();
+                      // eslint-disable-next-line no-console
+                      console.log("[MB] session:", data?.session);
+                    }}
+                    style={{ ...UI.ghostBtn(busy), flex: "1 1 180px" }}
+                    title="Print session object in DevTools"
+                  >
+                    Log session
+                  </button>
+                </div>
+              </>
+            ) : (
+              <div style={{ fontWeight: 950, fontSize: 13 }}>🔒 Signed out — please sign in.</div>
+            )}
+          </div>
+
           <div style={UI.ecosystemBlock}>
             <p style={UI.ecosystemTitle}>Mercy Account</p>
             <p style={UI.ecosystemText}>One sign-in for all Mercy apps.</p>
@@ -1241,10 +1317,9 @@ export default function LoginPage() {
             ) : null}
           </div>
 
-          {/* DEV-only proof line */}
           {IS_DEV && (
             <div style={{ marginTop: 8, ...UI.small }}>
-              OAuth flags: Google={<b>{String(AUTH_GOOGLE_ENABLED)}</b>} • Facebook=<b>{String(AUTH_FACEBOOK_ENABLED)}</b>
+              OAuth flags: Google=<b>{String(AUTH_GOOGLE_ENABLED)}</b> • Facebook=<b>{String(AUTH_FACEBOOK_ENABLED)}</b>
             </div>
           )}
 
@@ -1347,5 +1422,5 @@ export default function LoginPage() {
 }
 
 /** New thing to learn:
- * OAuth “redirectTo” should usually land on a neutral route (like /signin),
- * then your app decides where to send the user based on role/profile. */
+ * Browser default button styling can reappear even with border/background removed.
+ * `appearance: none` (and WebkitAppearance) is the “real off switch”. */

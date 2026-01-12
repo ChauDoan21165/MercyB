@@ -1,5 +1,5 @@
 // src/pages/Home.tsx
-// MB-BLUE-100.8 — 2026-01-01 (+0700)
+// MB-BLUE-100.9 — 2026-01-11 (+0700)
 //
 // HOME (LOCKED):
 // - Home page is TEXT-ONLY (no audio players, no songs, no lyrics).
@@ -18,10 +18,17 @@
 //   - Reads :root data-mb-zoom (percent) + localStorage("mb.ui.zoom") fallback
 //   - Applies zoom to HOME content ONLY (hero + body), NOT the fixed music bar
 //   - Header remains unscaled (sticky behavior preserved)
+//
+// FIX 100.9:
+// - ✅ Header shows auth state:
+//   - Signed out: "Sign in / Đăng nhập"
+//   - Signed in: shows user label + "Sign out / Đăng xuất" (calls useAuth().signOut())
+// - NO CHANGES to zoom wrapper or content blocks below.
 
 import React, { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import BottomMusicBar from "@/components/audio/BottomMusicBar";
+import { useAuth } from "@/providers/AuthProvider";
 
 const PAGE_MAX = 980;
 
@@ -59,8 +66,28 @@ function readZoomPct(): number {
   return 100;
 }
 
+function shortEmail(email?: string | null) {
+  if (!email) return null;
+  const s = email.trim();
+  if (!s) return null;
+  if (s.length <= 26) return s;
+  return `${s.slice(0, 12)}…${s.slice(-10)}`;
+}
+
 export default function Home() {
   const nav = useNavigate();
+
+  // ✅ SINGLE SOURCE OF TRUTH (AuthProvider)
+  const { user, isLoading, signOut } = useAuth();
+
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+    } finally {
+      // hard reset local state / routing
+      nav("/signin", { replace: true });
+    }
+  };
 
   // ✅ HOME zoom consumer (content only)
   const [zoomPct, setZoomPct] = useState<number>(100);
@@ -137,13 +164,19 @@ export default function Home() {
   };
 
   // ✅ doubled visual size vs old header
+  // ✅ RESTORE: flat rainbow Mercy (DO NOT change again)
   const brandMercy: React.CSSProperties = {
     fontSize: 44,
     background: rainbow,
     WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
     color: "transparent",
     whiteSpace: "nowrap",
     lineHeight: 1,
+    // ✅ calm Mercy Blade rainbow (flat + modern, NOT embossed)
+    // One tiny shape shadow only (no stroke, no stacked shadows).
+    filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.10))",
+    WebkitFontSmoothing: "antialiased",
   };
 
   const brandBlade: React.CSSProperties = {
@@ -384,6 +417,8 @@ export default function Home() {
     textShadow: "0 2px 12px rgba(255,255,255,0.55)",
   };
 
+  const signedLabel = useMemo(() => shortEmail(user?.email), [user?.email]);
+
   return (
     <div style={wrap}>
       <div style={frame}>
@@ -401,14 +436,48 @@ export default function Home() {
               </Link>
 
               <div style={headerRight}>
-                <button
-                  type="button"
-                  style={btn}
-                  onClick={() => nav("/signin")}
-                  aria-label="Sign in"
-                >
-                  Sign in / Đăng nhập
-                </button>
+                {/* ✅ Auth state pill */}
+                {!isLoading && user ? (
+                  <>
+                    {signedLabel && (
+                      <span
+                        style={{
+                          fontSize: 12,
+                          fontWeight: 900,
+                          color: "rgba(0,0,0,0.55)",
+                          maxWidth: 220,
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                          whiteSpace: "nowrap",
+                        }}
+                        title={user.email ?? undefined}
+                      >
+                        {signedLabel}
+                      </span>
+                    )}
+
+                    <button
+                      type="button"
+                      style={btn}
+                      onClick={handleSignOut}
+                      aria-label="Sign out"
+                      title={user.email ? `Signed in as ${user.email}` : "Signed in"}
+                    >
+                      Sign out / Đăng xuất
+                    </button>
+                  </>
+                ) : (
+                  <button
+                    type="button"
+                    style={btn}
+                    onClick={() => nav("/signin")}
+                    aria-label="Sign in"
+                    disabled={isLoading}
+                    title={isLoading ? "Loading..." : undefined}
+                  >
+                    Sign in / Đăng nhập
+                  </button>
+                )}
 
                 <button
                   type="button"
@@ -436,7 +505,7 @@ export default function Home() {
           style={{
             // Chrome/Edge: zoom scales px-based design correctly
             // TS doesn’t include "zoom" in CSSProperties in strict mode → cast
-            ...( { zoom: zoomScale } as any ),
+            ...({ zoom: zoomScale } as any),
           }}
         >
           {/* BOX 2: HERO (REPLACED ONLY THIS BOX) */}
@@ -567,5 +636,5 @@ export default function Home() {
 }
 
 /* New thing to learn:
-   If a global control “moves” (CSS var / attribute changes) but UI doesn’t react,
-   the missing piece is almost always a *consumer* on that route/page. */
+   If gradient text “randomly becomes solid”, it’s usually missing WebkitTextFillColor: transparent.
+   That’s the Safari/Chrome engine rule, not your CSS logic. */
