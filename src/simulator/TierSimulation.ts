@@ -1,4 +1,13 @@
-// Tier Simulation - Mock user tiers for testing
+// FILE: TierSimulation.ts
+// PATH: src/simulator/TierSimulation.ts
+// VERSION: MB-BLUE-97.9d — 2026-01-18 (+0700)
+//
+// FIX:
+// - vip3ii is DELETED. Remove it from mock users.
+// - Keep simulator tiers aligned with TierId union (canonical only).
+//
+// NOTE:
+// - This file imports TierId from roomMasterTypes; we must not introduce non-TierId strings.
 
 import type { TierId } from '@/lib/roomMaster/roomMasterTypes';
 
@@ -54,18 +63,6 @@ const MOCK_USERS: Record<TierId | 'admin', MockUser> = {
     isAdmin: false,
     subscription: {
       tier_id: 'vip3',
-      status: 'active',
-      current_period_start: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000).toISOString(),
-      current_period_end: new Date(Date.now() + 20 * 24 * 60 * 60 * 1000).toISOString(),
-    },
-  },
-  vip3ii: {
-    id: 'sim-user-vip3ii',
-    email: 'sim-vip3ii@mercyblade.test',
-    tier: 'vip3ii',
-    isAdmin: false,
-    subscription: {
-      tier_id: 'vip3ii',
       status: 'active',
       current_period_start: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000).toISOString(),
       current_period_end: new Date(Date.now() + 20 * 24 * 60 * 60 * 1000).toISOString(),
@@ -232,3 +229,7 @@ export function mockSupabaseAuth(user: MockUser) {
     },
   };
 }
+
+/* teacher GPT — new thing to learn (2 lines):
+   When a union type (TierId) changes, your mock data must change first or tests will “resurrect” old states.
+   Keep mocks canonical; handle legacy aliases in loaders, not in TierId. */

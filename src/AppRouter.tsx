@@ -18,7 +18,7 @@ import { Routes, Route, Navigate, useParams } from "react-router-dom";
 
 import ChatHub from "@/pages/ChatHub";
 import AllRooms from "@/pages/AllRooms";
-import NotFound from "@/_legacy_next_pages/NotFound";
+import NotFound from "@/pages/NotFound";
 import BottomMusicBar from "@/components/audio/BottomMusicBar";
 
 /**
@@ -74,3 +74,6 @@ export default function AppRouter() {
     </AppShell>
   );
 }
+
+/** New thing to learn:
+ * In router cleanups, “delete legacy” fails unless you also delete the LAST import edge that still references it. */

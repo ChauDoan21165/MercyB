@@ -1,192 +1,186 @@
-// src/pages/Tiers.tsx
-// MB-BLUE-97.1 — 2025-12-28 (+0700)
-/**
- * Tiers (READ-ONLY INDEX)
- * - 3 columns: English | Core | Living
- * - Uses room registry/manifest (no JSON fetch)
- * - Shows tier cards + room counts + expandable list
- */
+// FILE: Tiers.tsx
+// PATH: src/pages/Tiers.tsx
+// VERSION: MB-BLUE-97.9e → MB-BLUE-97.9f — 2026-01-17 (+0700)
+//
+// FIX (DELETE VIP3 II from UI):
+// - Remove vip3ii from this page’s Tier UI (no pill, no counter, no link).
+// - Keep counting strict; anything that used to show as vip3ii will now fall into "unknown"
+//   unless your upstream tiering maps it to vip3.
+//
+// NOTE:
+// - This is UI-only. Source-of-truth tier inference remains elsewhere.
+// - If you truly want vip3ii rooms to become vip3, do it upstream (tierFromRoomId / DB tier).
 
-import { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 
-import { CORE_TIERS, type TierId } from "@/lib/tiers";
-import { getRoomList } from "@/lib/roomFetcher";
+import type { TierId } from "@/lib/constants/tiers";
+import { TIER_ID_TO_LABEL, normalizeTierOrUndefined } from "@/lib/constants/tiers";
+import { getAllRooms, type RoomInfo } from "@/lib/roomData";
+import { cn } from "@/lib/utils";
 
-type RoomMeta = {
-  id: string;
-  title_en?: string;
-  title_vi?: string;
-  tier?: string;
+// ✅ Local UI tier list (vip3ii removed)
+const UI_TIER_IDS: TierId[] = [
+  "free",
+  "vip1",
+  "vip2",
+  "vip3",
+  "vip4",
+  "vip5",
+  "vip6",
+  "vip7",
+  "vip8",
+  "vip9",
+  "kids_1",
+  "kids_2",
+  "kids_3",
+];
+
+// Keep your real mapping if you have one elsewhere; this fallback keeps UI stable.
+const TIER_COLORS: Record<string, string> = {
+  free: "bg-zinc-100 text-zinc-800",
+  vip1: "bg-zinc-100 text-zinc-800",
+  vip2: "bg-zinc-100 text-zinc-800",
+  vip3: "bg-zinc-100 text-zinc-800",
+  vip4: "bg-zinc-100 text-zinc-800",
+  vip5: "bg-zinc-100 text-zinc-800",
+  vip6: "bg-zinc-100 text-zinc-800",
+  vip7: "bg-zinc-100 text-zinc-800",
+  vip8: "bg-zinc-100 text-zinc-800",
+  vip9: "bg-zinc-100 text-zinc-800",
+  kids_1: "bg-zinc-100 text-zinc-800",
+  kids_2: "bg-zinc-100 text-zinc-800",
+  kids_3: "bg-zinc-100 text-zinc-800",
+  unknown: "bg-zinc-100 text-zinc-800",
 };
 
-function normalizeTier(t: any): TierId | "unknown" {
-  const s = String(t || "").trim().toLowerCase();
-  if (
-    s === "free" ||
-    s === "vip1" ||
-    s === "vip2" ||
-    s === "vip3" ||
-    s === "vip3_ext" ||
-    s === "vip4" ||
-    s === "vip5" ||
-    s === "vip6" ||
-    s === "vip7" ||
-    s === "vip8" ||
-    s === "vip9"
-  ) return s;
-  return "unknown";
-}
+type TierBucket = TierId | "unknown";
 
-export default function TiersPage() {
-  const [openTier, setOpenTier] = useState<string | null>(null);
+type TierRow = {
+  tier: TierBucket;
+  count: number;
+};
 
-  const rooms = useMemo(() => {
-    // getRoomList() is our authoritative discovery layer
-    // If it ever changes shape, we adjust here—NOT by adding fetch hacks.
-    const list = (getRoomList() as any[]) || [];
-    return list.map((r: any) => ({
-      id: r.id,
-      title_en: r.title_en || r.title?.en,
-      title_vi: r.title_vi || r.title?.vi,
-      tier: r.tier,
-    })) as RoomMeta[];
+export default function Tiers() {
+  const [rooms, setRooms] = useState<RoomInfo[]>([]);
+  const [loadError, setLoadError] = useState<string | null>(null);
+
+  useEffect(() => {
+    let alive = true;
+
+    (async () => {
+      try {
+        const all = await getAllRooms();
+        if (!alive) return;
+        setRooms(all);
+        setLoadError(null);
+      } catch (e: any) {
+        if (!alive) return;
+        setRooms([]);
+        setLoadError(e?.message ? String(e.message) : "Failed to load rooms");
+      }
+    })();
+
+    return () => {
+      alive = false;
+    };
   }, []);
 
-  const roomsByTier = useMemo(() => {
-    const map = new Map<string, RoomMeta[]>();
+  const tierCounts: TierRow[] = useMemo(() => {
+    const counts: Record<TierBucket, number> = {
+      unknown: 0,
+      free: 0,
+      vip1: 0,
+      vip2: 0,
+      vip3: 0,
+      vip4: 0,
+      vip5: 0,
+      vip6: 0,
+      vip7: 0,
+      vip8: 0,
+      vip9: 0,
+      kids_1: 0,
+      kids_2: 0,
+      kids_3: 0,
+    };
+
     for (const r of rooms) {
-      const t = normalizeTier(r.tier);
-      const key = t === "unknown" ? "unknown" : t;
-      if (!map.has(key)) map.set(key, []);
-      map.get(key)!.push(r);
+      // ✅ STRICT: returns TierId | undefined (never defaults)
+      // NOTE: roomData.ts may expose "unknown" as a literal tier; treat it as unknown here.
+      const rawTier = (r as any)?.tier;
+      if (rawTier === "unknown") {
+        counts.unknown = (counts.unknown ?? 0) + 1;
+        continue;
+      }
+
+      const tierId = normalizeTierOrUndefined(rawTier);
+
+      // ✅ vip3ii is not displayed; bucket it as unknown unless upstream maps it to vip3
+      if (tierId === ("vip3ii" as any)) {
+        counts.unknown = (counts.unknown ?? 0) + 1;
+        continue;
+      }
+
+      const bucket: TierBucket = tierId ?? "unknown";
+      counts[bucket] = (counts[bucket] ?? 0) + 1;
     }
-    // stable sort inside each tier
-    for (const [k, arr] of map.entries()) {
-      arr.sort((a, b) => (a.id || "").localeCompare(b.id || ""));
-      map.set(k, arr);
-    }
-    return map;
+
+    return [
+      ...UI_TIER_IDS.map((t) => ({ tier: t, count: counts[t] ?? 0 })),
+      { tier: "unknown", count: counts.unknown ?? 0 },
+    ];
   }, [rooms]);
 
   return (
-    <div className="mx-auto w-full max-w-6xl px-6 py-10">
-      <header className="mb-8 space-y-2">
-        <h1 className="text-3xl font-serif font-bold">Tiers</h1>
-        <p className="text-muted-foreground">
-          Read-only structural map (English | Core | Living). This page is built from the room registry — no fragile JSON fetch.
-        </p>
-      </header>
-
-      <div className="grid gap-6 md:grid-cols-3">
-        <Column title="English (mirror)" subtitle="Auto-mapped later" />
-        <CoreColumn
-          tiers={CORE_TIERS}
-          roomsByTier={roomsByTier}
-          openTier={openTier}
-          setOpenTier={setOpenTier}
-        />
-        <Column title="Living skills (mirror)" subtitle="Auto-mapped later" />
-      </div>
-
-      <div className="mt-10 rounded-2xl border bg-card p-5">
-        <div className="text-sm font-semibold">Diagnostics</div>
-        <div className="mt-2 text-xs text-muted-foreground">
-          Total rooms discovered: <code>{rooms.length}</code> • Unknown tier rooms:{" "}
-          <code>{(roomsByTier.get("unknown") || []).length}</code>
+    <div className="w-full max-w-6xl mx-auto p-6">
+      <div className="mb-4 flex items-center justify-between">
+        <h1 className="text-xl font-semibold">Tiers</h1>
+        <div className="text-xs text-zinc-500">
+          Rooms: {rooms.length}
+          {loadError ? <span className="ml-2 text-red-600">({loadError})</span> : null}
         </div>
-
-        {(roomsByTier.get("unknown") || []).length > 0 && (
-          <details className="mt-3">
-            <summary className="cursor-pointer text-xs">Show unknown-tier room IDs</summary>
-            <pre className="mt-2 max-h-56 overflow-auto rounded-xl bg-muted p-3 text-xs">
-              {(roomsByTier.get("unknown") || []).map((r) => r.id).join("\n")}
-            </pre>
-          </details>
-        )}
       </div>
-    </div>
-  );
-}
 
-function Column({ title, subtitle }: { title: string; subtitle: string }) {
-  return (
-    <div className="rounded-2xl border bg-card p-5">
-      <div className="text-sm font-semibold">{title}</div>
-      <div className="mt-1 text-xs text-muted-foreground">{subtitle}</div>
-      <div className="mt-6 text-sm text-muted-foreground">
-        (Reserved column — we’ll mirror Core tiers here after Core spine is stable.)
-      </div>
-    </div>
-  );
-}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {tierCounts.map((row) => {
+          const tier = row.tier;
 
-function CoreColumn({
-  tiers,
-  roomsByTier,
-  openTier,
-  setOpenTier,
-}: {
-  tiers: { id: string; label: string; description: string }[];
-  roomsByTier: Map<string, RoomMeta[]>;
-  openTier: string | null;
-  setOpenTier: (x: string | null) => void;
-}) {
-  return (
-    <div className="rounded-2xl border bg-card p-5">
-      <div className="text-sm font-semibold">Core</div>
-      <div className="mt-1 text-xs text-muted-foreground">Free → VIP9</div>
+          const label = tier === "unknown" ? "Unknown / Chưa rõ" : TIER_ID_TO_LABEL[tier];
 
-      <div className="mt-4 space-y-3">
-        {tiers.map((t) => {
-          const list = roomsByTier.get(t.id) || [];
-          const isOpen = openTier === t.id;
+          const href = tier === "unknown" ? "/tiers/unknown" : `/tiers/${tier}`;
 
           return (
-            <div key={t.id} className="rounded-xl border p-4">
-              <button
-                className="w-full text-left"
-                onClick={() => setOpenTier(isOpen ? null : t.id)}
-              >
-                <div className="flex items-center justify-between gap-3">
-                  <div>
-                    <div className="font-semibold">{t.label}</div>
-                    <div className="text-xs text-muted-foreground">{t.description}</div>
-                  </div>
-                  <div className="text-xs text-muted-foreground">
-                    <span className="rounded-full border px-2 py-1">{list.length} rooms</span>
-                  </div>
-                </div>
-              </button>
-
-              {isOpen && (
-                <div className="mt-3 space-y-2">
-                  {list.length === 0 ? (
-                    <div className="text-sm text-muted-foreground">No rooms tagged for this tier yet.</div>
-                  ) : (
-                    <ul className="space-y-1">
-                      {list.slice(0, 60).map((r) => (
-                        <li key={r.id} className="text-sm">
-                          <Link className="underline decoration-dotted" to={`/room/${r.id}`}>
-                            {r.title_en || r.title_vi || r.id}
-                          </Link>
-                          <span className="ml-2 text-xs text-muted-foreground">
-                            <code>{r.id}</code>
-                          </span>
-                        </li>
-                      ))}
-                      {list.length > 60 && (
-                        <li className="text-xs text-muted-foreground">
-                          Showing first 60. (We’ll add search/filter next.)
-                        </li>
-                      )}
-                    </ul>
-                  )}
-                </div>
+            <Link
+              key={tier}
+              to={href}
+              className={cn(
+                "rounded-xl border bg-white px-4 py-3 hover:shadow-sm transition",
+                "flex items-center justify-between"
               )}
-            </div>
+            >
+              <div className="flex items-center gap-2">
+                <span
+                  className={cn(
+                    "inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm font-medium",
+                    TIER_COLORS[tier] || TIER_COLORS.free
+                  )}
+                >
+                  <span className="inline-block h-2.5 w-2.5 rounded-full bg-zinc-500" />
+                  <span>{tier === "unknown" ? "Unknown" : tier.toUpperCase()}</span>
+                </span>
+                <span className="text-sm text-zinc-700">{label}</span>
+              </div>
+
+              <span className="inline-flex items-center rounded-full border px-3 py-1 text-sm font-semibold text-zinc-800">
+                {row.count}
+              </span>
+            </Link>
           );
         })}
+      </div>
+
+      <div className="mt-4 text-xs text-zinc-500">
+        Source: getAllRooms() (runtime room loader). Unknown is shown explicitly (never silently counted as Free).
       </div>
     </div>
   );

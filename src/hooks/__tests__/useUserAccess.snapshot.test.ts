@@ -1,20 +1,68 @@
+// src/hooks/__tests__/useUserAccess.snapshot.test.ts
+//
+// FIX: Vitest hoists vi.mock() to the top of the file.
+// Your `mockGetUser` / `mockFrom` were declared AFTER vi.mock,
+// so the factory ran before initialization → TDZ error.
+// Solution: declare the spies INSIDE the vi.mock factory, then
+// export small helpers to access them in tests.
+//
+// ALSO FIX (MB-BLUE-102.3a — 2026-01-15):
+// - useUserAccess uses useAuth() which normally requires <AuthProvider>.
+// - In hook unit tests, we mock useAuth() so tests don't crash with:
+//   "useAuth must be used inside <AuthProvider>".
+
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { renderHook, waitFor } from "@testing-library/react";
 import { useUserAccess } from "../useUserAccess";
 import { normalizeTier } from "@/lib/constants/tiers";
 
-// Mock Supabase client
-const mockGetUser = vi.fn();
-const mockFrom = vi.fn();
+// ---- AuthProvider mock (hook-safe) ----
+// useUserAccess calls useAuth(); in tests we don't mount <AuthProvider>,
+// so we mock the hook to avoid context errors.
+vi.mock("@/providers/AuthProvider", () => {
+  return {
+    useAuth: () => ({
+      user: { id: "test-user" },
+      session: { user: { id: "test-user" } },
+      loading: false,
+      // present in real provider; not used in these snapshots
+      signOut: vi.fn(),
+      signInWithOAuth: vi.fn(),
+      signInWithPassword: vi.fn(),
+      signUpWithPassword: vi.fn(),
+      resetPassword: vi.fn(),
+    }),
+  };
+});
 
-vi.mock("@/lib/supabaseClient", () => ({
-  supabase: {
-    auth: {
-      getUser: mockGetUser,
+// ---- hoist-safe mocks (defined inside factory) ----
+vi.mock("@/lib/supabaseClient", () => {
+  const mockGetUser = vi.fn();
+  const mockFrom = vi.fn();
+
+  return {
+    supabase: {
+      auth: {
+        getUser: mockGetUser,
+      },
+      from: mockFrom,
     },
-    from: mockFrom,
-  },
-}));
+
+    // Test-only accessors (not used by prod code)
+    __mock: {
+      mockGetUser,
+      mockFrom,
+    },
+  };
+});
+
+// Pull the mock fns back out AFTER the mock is registered
+// (safe because import is evaluated after vi.mock hoisting).
+import { __mock } from "@/lib/supabaseClient";
+const { mockGetUser, mockFrom } = __mock as {
+  mockGetUser: ReturnType<typeof vi.fn>;
+  mockFrom: ReturnType<typeof vi.fn>;
+};
 
 describe("useUserAccess snapshots - tier access logic", () => {
   beforeEach(() => {

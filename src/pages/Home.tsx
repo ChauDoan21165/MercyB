@@ -22,23 +22,27 @@
 // FIX 100.9:
 // - ✅ Header shows auth state:
 //   - Signed out: "Sign in / Đăng nhập"
-//   - Signed in: shows user label + "Sign out / Đăng xuất" (calls useAuth().signOut())
+//   - Signed in: shows "Sign out / Đăng xuất" (calls useAuth().signOut())
 // - NO CHANGES to zoom wrapper or content blocks below.
+//
+// NEW (MB-BLUE-100.9g):
+// - BOX 1 header is THIN (no "Home" button, no email text).
+// - BOX 2 hero uses ONE brand image that already includes "Mercy Blade" + tagline.
+// - DO NOT put logo in header. DO NOT put any text overlay in hero.
+//
+// NEW (MB-BLUE-100.9i):
+// - Hero path mismatch hardening:
+//   - Try BOTH /hero/<file> and /<file> (common mistake when copying to /public)
+//   - Try jpg/jpeg/png + case variants
+//   - If all fail, fallback to existing /hero/hero_band.jpg so you never see blank.
+// - Hero full-bleed inside frame (touch both sides).
 
 import React, { useEffect, useMemo, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import BottomMusicBar from "@/components/audio/BottomMusicBar";
 import { useAuth } from "@/providers/AuthProvider";
 
 const PAGE_MAX = 980;
-
-const rainbow =
-  "linear-gradient(90deg,#ff4d4d 0%,#ffb84d 18%,#b6ff4d 36%,#4dffb8 54%,#4db8ff 72%,#b84dff 90%,#ff4dff 100%)";
-
-const heroBg =
-  "radial-gradient(900px 260px at 50% 40%, rgba(255,255,255,0.80) 0%, rgba(255,255,255,0.50) 50%, rgba(255,255,255,0.10) 100%), " +
-  "linear-gradient(120deg, rgba(255,77,77,0.20), rgba(184,77,255,0.18), rgba(77,184,255,0.18), rgba(77,255,184,0.18), rgba(182,255,77,0.18), rgba(255,184,77,0.18))";
-
 const softPanel = "rgba(230, 244, 255, 0.85)";
 
 // ✅ must match BottomMusicBar key (LOCKED)
@@ -64,14 +68,6 @@ function readZoomPct(): number {
   } catch {}
 
   return 100;
-}
-
-function shortEmail(email?: string | null) {
-  if (!email) return null;
-  const s = email.trim();
-  if (!s) return null;
-  if (s.length <= 26) return s;
-  return `${s.slice(0, 12)}…${s.slice(-10)}`;
 }
 
 export default function Home() {
@@ -108,6 +104,42 @@ export default function Home() {
 
   const zoomScale = useMemo(() => clamp(zoomPct / 100, 0.6, 1.4), [zoomPct]);
 
+  // ✅ HERO brand image fallback chain (prevents blank hero if filename/path changes)
+  // Put the intended file in ONE of these:
+  // - public/hero/hero_mercyblade_brand.jpg
+  // - public/hero_mercyblade_brand.jpg
+  // - public/hero/hero_mercyblade_brand.png (etc)
+  const heroFallbacks = useMemo(
+    () => [
+      // Preferred (folder)
+      "/hero/hero_mercyblade_brand.jpg",
+      "/hero/hero_mercyblade_brand.jpeg",
+      "/hero/hero_mercyblade_brand.png",
+      "/hero/hero_mercyblade_brand.JPG",
+      "/hero/hero_mercyblade_brand.JPEG",
+      "/hero/hero_mercyblade_brand.PNG",
+
+      // Common mistake (no /hero folder)
+      "/hero_mercyblade_brand.jpg",
+      "/hero_mercyblade_brand.jpeg",
+      "/hero_mercyblade_brand.png",
+      "/hero_mercyblade_brand.JPG",
+      "/hero_mercyblade_brand.JPEG",
+      "/hero_mercyblade_brand.PNG",
+
+      // Safety net: old working hero (never blank)
+      "/hero/hero_band.jpg",
+    ],
+    []
+  );
+
+  const [heroIdx, setHeroIdx] = useState(0);
+  const heroSrc = heroFallbacks[heroIdx] ?? heroFallbacks[0];
+
+  useEffect(() => {
+    setHeroIdx(0);
+  }, [heroFallbacks]);
+
   const wrap: React.CSSProperties = {
     width: "100%",
     minHeight: "100vh",
@@ -118,76 +150,36 @@ export default function Home() {
   const frame: React.CSSProperties = {
     maxWidth: PAGE_MAX,
     margin: "0 auto",
-    padding: "16px 16px 220px", // space for fixed BottomMusicBar
+    padding: "12px 16px 220px", // space for fixed BottomMusicBar
   };
 
   const headerSticky: React.CSSProperties = {
     position: "sticky",
-    top: 12,
+    top: 10,
     zIndex: 40,
-    marginBottom: 16,
+    marginBottom: 12,
   };
 
-  // ✅ Header is a BOX (not full-bleed)
+  // ✅ Header is THIN (no Home button, no email text)
   const headerBox: React.CSSProperties = {
-    borderRadius: 18,
+    borderRadius: 16,
     border: "1px solid rgba(0,0,0,0.08)",
     background: "rgba(255,255,255,0.90)",
     backdropFilter: "blur(10px)",
-    boxShadow: "0 10px 24px rgba(0,0,0,0.06)",
-    padding: "12px 12px",
+    boxShadow: "0 10px 22px rgba(0,0,0,0.05)",
+    padding: "8px 10px",
   };
 
-  // ✅ TRUE CENTER header: 3-column grid (left spacer | centered brand | right buttons)
+  // ✅ Simple header grid: left spacer | right actions (keeps it thin)
   const headerGrid: React.CSSProperties = {
     display: "grid",
-    gridTemplateColumns: "1fr auto 1fr",
+    gridTemplateColumns: "1fr auto",
     alignItems: "center",
-    gap: 12,
-    minWidth: 0,
-  };
-
-  const headerLeftSpacer: React.CSSProperties = {
-    gridColumn: 1,
-    minWidth: 0,
-  };
-
-  const brandCenter: React.CSSProperties = {
-    gridColumn: 2,
-    fontWeight: 900,
-    letterSpacing: -0.8,
-    display: "flex",
-    alignItems: "baseline",
     gap: 10,
-    userSelect: "none",
     minWidth: 0,
-  };
-
-  // ✅ doubled visual size vs old header
-  // ✅ RESTORE: flat rainbow Mercy (DO NOT change again)
-  const brandMercy: React.CSSProperties = {
-    fontSize: 44,
-    background: rainbow,
-    WebkitBackgroundClip: "text",
-    WebkitTextFillColor: "transparent",
-    color: "transparent",
-    whiteSpace: "nowrap",
-    lineHeight: 1,
-    // ✅ calm Mercy Blade rainbow (flat + modern, NOT embossed)
-    // One tiny shape shadow only (no stroke, no stacked shadows).
-    filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.10))",
-    WebkitFontSmoothing: "antialiased",
-  };
-
-  const brandBlade: React.CSSProperties = {
-    fontSize: 44,
-    color: "rgba(0,0,0,0.72)",
-    whiteSpace: "nowrap",
-    lineHeight: 1,
   };
 
   const headerRight: React.CSSProperties = {
-    gridColumn: 3,
     display: "flex",
     alignItems: "center",
     justifyContent: "flex-end",
@@ -210,33 +202,33 @@ export default function Home() {
     whiteSpace: "nowrap",
   };
 
-  const hero: React.CSSProperties = {
+  // ✅ HERO WRAP — FULL BLEED INSIDE FRAME (touch both sides)
+  const heroImgWrap: React.CSSProperties = {
     marginTop: 0,
+
+    // Full-bleed (cancel frame padding)
+    marginLeft: -16,
+    marginRight: -16,
+    width: "calc(100% + 32px)",
+
     borderRadius: 18,
     border: "1px solid rgba(0,0,0,0.08)",
-    background: heroBg,
     overflow: "hidden",
+    position: "relative",
+    boxShadow: "0 16px 40px rgba(0,0,0,0.10)",
+    background: "white",
   };
 
-  const heroInner: React.CSSProperties = {
-    padding: "70px 16px",
-    textAlign: "center",
-  };
-
-  const heroTitle: React.CSSProperties = {
-    fontSize: 58,
-    lineHeight: 1.05,
-    margin: 0,
-    fontWeight: 900,
-    letterSpacing: -1.2,
-    color: "rgba(0,0,0,0.82)",
-  };
-
-  const heroSub: React.CSSProperties = {
-    marginTop: 12,
-    fontSize: 22,
-    color: "rgba(0,0,0,0.62)",
-    fontWeight: 700,
+  // ✅ IMPORTANT:
+  // - Hero image already contains "Mercy Blade / English & Knowledge / Colors of Life"
+  // - objectFit: "contain" to NEVER cut words
+  // - background white for clean letterbox if aspect ratio differs
+  const heroImg: React.CSSProperties = {
+    width: "100%",
+    height: "clamp(260px, 30vw, 420px)",
+    objectFit: "contain",
+    display: "block",
+    background: "white",
   };
 
   const band: React.CSSProperties = {
@@ -359,113 +351,25 @@ export default function Home() {
     pointerEvents: "auto", // inner receives clicks
   };
 
-  // ✅ HERO (IMAGE + CENTERED WORDS) — NO BOX / NO PLATE / NO BADGES
-  const heroImgWrap: React.CSSProperties = {
-    marginTop: 0,
-    borderRadius: 18,
-    border: "1px solid rgba(0,0,0,0.08)",
-    overflow: "hidden",
-    position: "relative",
-    boxShadow: "0 16px 40px rgba(0,0,0,0.10)",
-    background: "rgba(255,255,255,0.6)",
-  };
-
-  const heroImg: React.CSSProperties = {
-    width: "100%",
-    height: "clamp(170px, 22vw, 240px)",
-    objectFit: "cover",
-    display: "block",
-  };
-
-  // very light vignette so black text stays readable without looking like a box
-  const heroOverlay: React.CSSProperties = {
-    position: "absolute",
-    inset: 0,
-    background:
-      "radial-gradient(650px 220px at 50% 45%, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.10) 45%, rgba(0,0,0,0.14) 100%)",
-    pointerEvents: "none",
-  };
-
-  // Center text exactly like old hero
-  const heroCenter: React.CSSProperties = {
-    position: "absolute",
-    inset: 0,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    textAlign: "center",
-    padding: "18px",
-    pointerEvents: "none",
-  };
-
-  // BLACK text, no plate; soft glow for readability
-  const heroImgTitle: React.CSSProperties = {
-    fontSize: 58,
-    lineHeight: 1.05,
-    margin: 0,
-    fontWeight: 900,
-    letterSpacing: -1.2,
-    color: "rgba(0,0,0,0.78)",
-    textShadow: "0 2px 14px rgba(255,255,255,0.55)",
-  };
-
-  const heroImgSub: React.CSSProperties = {
-    marginTop: 12,
-    fontSize: 22,
-    color: "rgba(0,0,0,0.60)",
-    fontWeight: 700,
-    textShadow: "0 2px 12px rgba(255,255,255,0.55)",
-  };
-
-  const signedLabel = useMemo(() => shortEmail(user?.email), [user?.email]);
-
   return (
     <div style={wrap}>
       <div style={frame}>
-        {/* BOX 1: HEADER (inside frame, no stick-out) */}
+        {/* BOX 1: HEADER (THIN, NO HOME BUTTON, NO EMAIL TEXT) */}
         <div style={headerSticky}>
           <div style={headerBox}>
             <div style={headerGrid}>
-              <div style={headerLeftSpacer} />
-
-              <Link to="/" style={{ textDecoration: "none" }}>
-                <div style={brandCenter}>
-                  <span style={brandMercy}>Mercy</span>
-                  <span style={brandBlade}>Blade</span>
-                </div>
-              </Link>
+              <div /> {/* left spacer */}
 
               <div style={headerRight}>
-                {/* ✅ Auth state pill */}
                 {!isLoading && user ? (
-                  <>
-                    {signedLabel && (
-                      <span
-                        style={{
-                          fontSize: 12,
-                          fontWeight: 900,
-                          color: "rgba(0,0,0,0.55)",
-                          maxWidth: 220,
-                          overflow: "hidden",
-                          textOverflow: "ellipsis",
-                          whiteSpace: "nowrap",
-                        }}
-                        title={user.email ?? undefined}
-                      >
-                        {signedLabel}
-                      </span>
-                    )}
-
-                    <button
-                      type="button"
-                      style={btn}
-                      onClick={handleSignOut}
-                      aria-label="Sign out"
-                      title={user.email ? `Signed in as ${user.email}` : "Signed in"}
-                    >
-                      Sign out / Đăng xuất
-                    </button>
-                  </>
+                  <button
+                    type="button"
+                    style={btn}
+                    onClick={handleSignOut}
+                    aria-label="Sign out"
+                  >
+                    Sign out / Đăng xuất
+                  </button>
                 ) : (
                   <button
                     type="button"
@@ -501,38 +405,32 @@ export default function Home() {
         </div>
 
         {/* ✅ CONTENT ZOOM WRAPPER (NOT header, NOT BottomMusicBar) */}
-        <div
-          style={{
-            // Chrome/Edge: zoom scales px-based design correctly
-            // TS doesn’t include "zoom" in CSSProperties in strict mode → cast
-            ...({ zoom: zoomScale } as any),
-          }}
-        >
-          {/* BOX 2: HERO (REPLACED ONLY THIS BOX) */}
+        <div style={{ ...({ zoom: zoomScale } as any) }}>
+          {/* BOX 2: HERO (BRAND IMAGE ONLY — NO OVERLAY TEXT) */}
           <div style={heroImgWrap} aria-label="Hero band">
             <img
-              src="/hero/hero_band.jpg"
-              alt="Hero band"
+              src={heroSrc}
+              alt="Mercy Blade — English & Knowledge — Colors of Life"
               style={heroImg}
               loading="eager"
+              decoding="async"
+              onError={() => {
+                setHeroIdx((i) => {
+                  const next = i + 1;
+                  return next < heroFallbacks.length ? next : i;
+                });
+              }}
             />
-            <div style={heroOverlay} />
-            <div style={heroCenter}>
-              <div>
-                <h1 style={heroImgTitle}>English &amp; Knowledge</h1>
-                <div style={heroImgSub}>Colors of Life</div>
-              </div>
-            </div>
           </div>
 
           {/* BOX 3: CONTENT (TEXT-ONLY) */}
           <div style={band}>
             <h2 style={blockTitle}>A Gentle Companion for Your Whole Life</h2>
             <p style={p}>
-              Mercy Blade is a bilingual (English–Vietnamese) companion for real life:
-              health, emotions, money, relationships, career, and meaning. It is
-              designed to be calm, human, and practical — a place you return to when
-              life feels noisy.
+              Mercy Blade is a bilingual (English–Vietnamese) companion for real
+              life: health, emotions, money, relationships, career, and meaning. It
+              is designed to be calm, human, and practical — a place you return to
+              when life feels noisy.
             </p>
             <p style={p}>
               No pressure. No judgment. <br />
@@ -636,5 +534,5 @@ export default function Home() {
 }
 
 /* New thing to learn:
-   If gradient text “randomly becomes solid”, it’s usually missing WebkitTextFillColor: transparent.
-   That’s the Safari/Chrome engine rule, not your CSS logic. */
+   If you see broken-icon + alt text, it’s a 404 path. This file auto-tries a list of common paths,
+   and ALWAYS falls back to /hero/hero_band.jpg so you never get a blank hero. */

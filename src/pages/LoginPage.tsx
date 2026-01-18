@@ -34,11 +34,15 @@
 //
 // PATCH (MB-BLUE-101.3k → MB-BLUE-101.3k.1):
 // - Use readBoolEnv() for OAuth flags (prevents unused helper + consistent parsing).
+//
+// PATCH (MB-BLUE-101.3k.1 → MB-BLUE-101.3k.2):
+// - Replace MercyRightBrandOverlay text "Mercy" with an IMAGE wordmark.
+// - Image name: public/brand/mercy_wordmark.png  (src="/brand/mercy_wordmark.png")
+// - IMPORTANT: NO TEXT FALLBACK (per your request). If image missing, overlay shows nothing.
 
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/lib/supabaseClient";
-import MercyRightBrandOverlay from "@/components/auth/MercyRightBrandOverlay";
 
 type TopMode = "email" | "phone" | "google" | "facebook";
 type EmailMode = "password_signin" | "password_signup" | "magic" | "reset";
@@ -414,10 +418,69 @@ function readOAuthErrorFromSearch(search: string): { error: string; desc: string
   }
 }
 
+// ✅ INLINE brand overlay (IMAGE ONLY — NO TEXT)
+//
+// Image file name I want you to use:
+//   public/brand/mercy_wordmark.png
+// Then reference it like:
+//   src="/brand/mercy_wordmark.png"
+function MercyRightBrandOverlayInline() {
+  return (
+    <div
+      aria-label="Mercy brand overlay"
+      style={{
+        position: "absolute",
+        top: 18,
+        left: 18,
+        right: 18,
+        zIndex: 20,
+        pointerEvents: "none",
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
+      <div
+        style={{
+          pointerEvents: "none",
+          borderRadius: 22,
+          border: "1px solid rgba(0,0,0,0.10)",
+          background: "rgba(255,255,255,0.78)",
+          backdropFilter: "blur(10px)",
+          boxShadow: "0 22px 70px rgba(0,0,0,0.10)",
+          padding: "14px 18px",
+          maxWidth: 720,
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <img
+          src="/brand/mercy_wordmark.png"
+          alt="Mercy"
+          decoding="async"
+          loading="eager"
+          style={{
+            display: "block",
+            height: 46,
+            width: "auto",
+            maxWidth: "min(520px, 80vw)",
+            objectFit: "contain",
+          }}
+          onError={(e) => {
+            // NO TEXT FALLBACK (per user). If missing, hide the img so the overlay stays clean.
+            e.currentTarget.style.display = "none";
+          }}
+        />
+      </div>
+    </div>
+  );
+}
+
 function MarketingPanel() {
   return (
     <div style={UI.right}>
-      <MercyRightBrandOverlay />
+      <MercyRightBrandOverlayInline />
 
       <div style={UI.rightInner}>
         <div style={UI.quoteMark}>“</div>
@@ -592,7 +655,11 @@ function RecoverySetPassword({ busyParent, onDone }: { busyParent: boolean; onDo
 
 async function fetchAdminFlagsSafe(userId: string): Promise<{ isAdmin: boolean }> {
   try {
-    const { data, error } = await supabase.from("profiles").select("is_admin, admin_level").eq("id", userId).maybeSingle();
+    const { data, error } = await supabase
+      .from("profiles")
+      .select("is_admin, admin_level")
+      .eq("id", userId)
+      .maybeSingle();
 
     if (error) return { isAdmin: false };
 
@@ -876,10 +943,18 @@ function EmailBlock({
   return (
     <div style={UI.block}>
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-        <button onClick={() => setMode("password_signin")} disabled={disabled} style={UI.segBtn(mode === "password_signin", disabled)}>
+        <button
+          onClick={() => setMode("password_signin")}
+          disabled={disabled}
+          style={UI.segBtn(mode === "password_signin", disabled)}
+        >
           Sign in
         </button>
-        <button onClick={() => setMode("password_signup")} disabled={disabled} style={UI.segBtn(mode === "password_signup", disabled)}>
+        <button
+          onClick={() => setMode("password_signup")}
+          disabled={disabled}
+          style={UI.segBtn(mode === "password_signup", disabled)}
+        >
           Sign up
         </button>
         <button onClick={() => setMode("reset")} disabled={disabled} style={UI.segBtn(mode === "reset", disabled)}>
@@ -1002,7 +1077,12 @@ function EmailBlock({
         {mode === "password_signin" ? (
           <>
             New here?{" "}
-            <button type="button" onClick={() => setMode("password_signup")} disabled={disabled} style={UI.linkBtn(disabled)}>
+            <button
+              type="button"
+              onClick={() => setMode("password_signup")}
+              disabled={disabled}
+              style={UI.linkBtn(disabled)}
+            >
               Create an account
             </button>
             .
@@ -1010,7 +1090,12 @@ function EmailBlock({
         ) : mode === "password_signup" ? (
           <>
             Already have an account?{" "}
-            <button type="button" onClick={() => setMode("password_signin")} disabled={disabled} style={UI.linkBtn(disabled)}>
+            <button
+              type="button"
+              onClick={() => setMode("password_signin")}
+              disabled={disabled}
+              style={UI.linkBtn(disabled)}
+            >
               Sign in
             </button>
             .
@@ -1129,9 +1214,11 @@ export default function LoginPage() {
     const oauthErr = readOAuthErrorFromSearch(window.location.search || "");
     if (!oauthErr) return;
 
-    const lines = ["OAuth sign-in failed.", oauthErr.error ? `error: ${oauthErr.error}` : "", oauthErr.desc ? `details: ${oauthErr.desc}` : ""].filter(
-      Boolean,
-    );
+    const lines = [
+      "OAuth sign-in failed.",
+      oauthErr.error ? `error: ${oauthErr.error}` : "",
+      oauthErr.desc ? `details: ${oauthErr.desc}` : "",
+    ].filter(Boolean);
 
     setStatus(lines.join("\n"));
   }, []);
@@ -1422,5 +1509,6 @@ export default function LoginPage() {
 }
 
 /** New thing to learn:
- * Browser default button styling can reappear even with border/background removed.
- * `appearance: none` (and WebkitAppearance) is the “real off switch”. */
+ * Anything inside /public is served from "/".
+ * So: public/brand/mercy_wordmark.png  →  /brand/mercy_wordmark.png
+ */

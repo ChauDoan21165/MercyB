@@ -1,20 +1,41 @@
-// src/lib/__tests__/roomLoader.snapshot.test.ts
+// FILE: roomLoader.snapshot.test.ts
+// PATH: src/lib/__tests__/roomLoader.snapshot.test.ts
+// VERSION: MB-BLUE-ROOMLOADER-SNAP-1.0.2 — 2026-01-15 (+0700)
+//
+// FIX: vitest hoists vi.mock() factories to the top.
+// Define spies INSIDE the mock factory and export __mock handles.
+//
+// FIX (2026-01-15):
+// roomLoader dynamically imports determineAccess from ./accessControl.
+// The mock MUST export determineAccess (and we keep a spy handle for it).
+
 import { describe, it, expect, vi, beforeEach } from "vitest";
 
-// --- Mocks ---
+// --------------------
+// Supabase mock (hoist-safe)
+// --------------------
+vi.mock("@/lib/supabaseClient", () => {
+  const mockGetUser = vi.fn();
+  const mockFrom = vi.fn();
 
-const mockGetUser = vi.fn();
-const mockFrom = vi.fn();
-
-vi.mock("@/lib/supabaseClient", () => ({
-  supabase: {
-    auth: {
-      getUser: mockGetUser,
+  return {
+    supabase: {
+      auth: { getUser: mockGetUser },
+      from: mockFrom,
     },
-    from: mockFrom,
-  },
-}));
+    __mock: { mockGetUser, mockFrom },
+  };
+});
 
+import { __mock as supaMock } from "@/lib/supabaseClient";
+const { mockGetUser, mockFrom } = supaMock as {
+  mockGetUser: ReturnType<typeof vi.fn>;
+  mockFrom: ReturnType<typeof vi.fn>;
+};
+
+// --------------------
+// roomLoaderHelpers mock
+// --------------------
 vi.mock("../roomLoaderHelpers", () => ({
   processEntriesOptimized: vi.fn(() => ({
     merged: [{ slug: "dummy-entry", copy: { en: "EN", vi: "VI" } }],
@@ -22,21 +43,57 @@ vi.mock("../roomLoaderHelpers", () => ({
   })),
 }));
 
-const mockCanUserAccessRoom = vi.fn();
-vi.mock("../accessControl", () => ({
-  canUserAccessRoom: mockCanUserAccessRoom,
-}));
+// --------------------
+// accessControl mock (hoist-safe handle)
+// --------------------
+vi.mock("../accessControl", () => {
+  const mockCanUserAccessRoom = vi.fn();
 
+  // IMPORTANT: roomLoader uses determineAccess via dynamic import("./accessControl")
+  // so we MUST export it in the mock.
+  const mockDetermineAccess = vi.fn(() => ({
+    hasFullAccess: true,
+    isPreview: false,
+  }));
+
+  return {
+    canUserAccessRoom: mockCanUserAccessRoom,
+    determineAccess: mockDetermineAccess,
+    __mock: { mockCanUserAccessRoom, mockDetermineAccess },
+  };
+});
+
+import { __mock as accessMock } from "../accessControl";
+const { mockCanUserAccessRoom, mockDetermineAccess } = accessMock as {
+  mockCanUserAccessRoom: ReturnType<typeof vi.fn>;
+  mockDetermineAccess: ReturnType<typeof vi.fn>;
+};
+
+// --------------------
+// constants mock
+// --------------------
 vi.mock("@/lib/constants/rooms", () => ({
   ROOMS_TABLE: "rooms",
   AUDIO_FOLDER: "audio",
 }));
 
-const mockLoadRoomJson = vi.fn();
-vi.mock("../roomJsonResolver", () => ({
-  loadRoomJson: mockLoadRoomJson,
-}));
+// --------------------
+// roomJsonResolver mock (hoist-safe handle)
+// --------------------
+vi.mock("../roomJsonResolver", () => {
+  const mockLoadRoomJson = vi.fn();
+  return {
+    loadRoomJson: mockLoadRoomJson,
+    __mock: { mockLoadRoomJson },
+  };
+});
 
+import { __mock as jsonMock } from "../roomJsonResolver";
+const { mockLoadRoomJson } = jsonMock as {
+  mockLoadRoomJson: ReturnType<typeof vi.fn>;
+};
+
+// IMPORTANT: import AFTER mocks
 import { loadMergedRoom } from "../roomLoader";
 
 describe("loadMergedRoom snapshots", () => {
@@ -89,13 +146,13 @@ describe("loadMergedRoom snapshots", () => {
     });
 
     mockCanUserAccessRoom.mockReturnValue(true);
+    mockDetermineAccess.mockReturnValue({ hasFullAccess: true, isPreview: false });
     mockLoadRoomJson.mockResolvedValue(null);
   });
 
   it("DB room → stable merged structure snapshot", async () => {
     const result = await loadMergedRoom("test-room");
 
-    // We only snapshot the public shape that ChatHub cares about
     expect(result).toMatchInlineSnapshot(`
       {
         "audioBasePath": "audio/",
@@ -129,9 +186,7 @@ describe("loadMergedRoom snapshots", () => {
           select: vi.fn().mockReturnThis(),
           eq: vi.fn().mockReturnThis(),
           maybeSingle: vi.fn().mockResolvedValue({
-            data: {
-              subscription_tiers: { name: "Free / Miễn phí" },
-            },
+            data: { subscription_tiers: { name: "Free / Miễn phí" } },
             error: null,
           }),
         };

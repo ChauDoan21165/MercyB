@@ -1,11 +1,16 @@
 // FILE: MercyAIHost.tsx
 // PATH: src/components/guide/MercyAIHost.tsx
-// VERSION: MB-BLUE-102.3 — 2026-01-08 (+0700)
+// VERSION: MB-BLUE-102.4 — 2026-01-14 (+0700)
 // PURPOSE:
 // - Mercy Blade Guide Host (NO AI CALLS)
 // - Real typing indicator (dots) + delayed feel
+// - Host-like: calm, contextual, says ONE good line (or silence)
 // - Bulletproof: typing triggers on ANY open
-// - Removes hardcoded "(Typing UI coming soon)" placeholder
+// - Auto-open once per session (NOT on /signin), unless hint dismissed
+//
+// NOTE:
+// - Surgical patch: preserve structure; no big rewrites
+// - Admin pages hidden; /signin stays clean
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
@@ -20,6 +25,19 @@ type QuickAction = {
 };
 
 type PanelMode = "home" | "email" | "billing" | "about";
+
+type HostPage = "home" | "room" | "signin" | "other";
+type HostMode =
+  | "silent"
+  | "welcome_home"
+  | "room_pick_keyword"
+  | "room_after_keyword"
+  | "idle_nudge";
+
+type HostState = {
+  mode: HostMode;
+  line?: string; // ONE line only
+};
 
 function isTruthyString(v: string | null | undefined) {
   return (v ?? "").trim().toLowerCase() === "true";
@@ -46,6 +64,73 @@ function TypingIndicator() {
   );
 }
 
+// Small idle detector (host-like nudge). No dependencies.
+function useIdleFlag(ms = 12000) {
+  const [isIdle, setIsIdle] = useState(false);
+  useEffect(() => {
+    let t: number | null = null;
+
+    const bump = () => {
+      setIsIdle(false);
+      if (t) window.clearTimeout(t);
+      t = window.setTimeout(() => setIsIdle(true), ms);
+    };
+
+    bump();
+
+    window.addEventListener("mousemove", bump, { passive: true });
+    window.addEventListener("keydown", bump);
+    window.addEventListener("pointerdown", bump);
+    window.addEventListener("scroll", bump, { passive: true });
+
+    return () => {
+      if (t) window.clearTimeout(t);
+      window.removeEventListener("mousemove", bump);
+      window.removeEventListener("keydown", bump);
+      window.removeEventListener("pointerdown", bump);
+      window.removeEventListener("scroll", bump);
+    };
+  }, [ms]);
+
+  return isIdle;
+}
+
+function deriveHostState(args: {
+  page: HostPage;
+  hasKeyword: boolean;
+  isIdle: boolean;
+}): HostState {
+  // Silence wins by default.
+  if (args.page === "signin") return { mode: "silent" };
+
+  // Contextual welcome guidance (ONE line).
+  if (args.page === "home") {
+    return {
+      mode: "welcome_home",
+      line: "Welcome. Explore freely — nothing auto-plays.",
+    };
+  }
+
+  if (args.page === "room") {
+    if (!args.hasKeyword) {
+      return {
+        mode: "room_pick_keyword",
+        line: "Pick one idea. I’ll guide you step by step.",
+      };
+    }
+    return {
+      mode: "room_after_keyword",
+      line: "Listen first. Meaning comes after.",
+    };
+  }
+
+  if (args.isIdle) {
+    return { mode: "idle_nudge", line: "Take your time. No rush." };
+  }
+
+  return { mode: "silent" };
+}
+
 export default function MercyAIHost() {
   const [open, setOpen] = useState(false);
   const [hintDismissed, setHintDismissed] = useState(false);
@@ -62,8 +147,12 @@ export default function MercyAIHost() {
 
   const panelRef = useRef<HTMLDivElement | null>(null);
 
-  const isSignin = location.pathname.startsWith("/signin");
-  const isAdmin = location.pathname.startsWith("/admin");
+  const pathname = location.pathname || "/";
+  const isSignin = pathname.startsWith("/signin");
+  const isAdmin = pathname.startsWith("/admin");
+
+  // Idle nudge (only matters when panel is open and we're in "home" mode)
+  const isIdle = useIdleFlag(12000);
 
   // Keep admin UI clean
   if (isAdmin) return null;
@@ -120,15 +209,29 @@ export default function MercyAIHost() {
     if (typingTimerRef.current) window.clearTimeout(typingTimerRef.current);
   }
 
-  // Auto-open once on /signin
+  // ✅ Auto-open ONCE per session (NOT on /signin), unless user dismissed hint.
   useEffect(() => {
-    if (!isSignin) return;
     if (hintDismissed) return;
-    setMode("home");
-    setOpen(true);
-  }, [isSignin, hintDismissed]);
+    if (isSignin) return;
 
-  // ✅ BULLETPROOF: whenever panel opens, show typing once (covers auto-open path)
+    try {
+      const k = "mb_ai_host_autopen_done";
+      const done = sessionStorage.getItem(k);
+      if (done === "true") return;
+
+      // Only auto-open on meaningful pages: home or room.
+      const should = pathname === "/" || pathname.startsWith("/room/");
+      if (!should) return;
+
+      sessionStorage.setItem(k, "true");
+      setMode("home");
+      setOpen(true);
+    } catch {
+      // If sessionStorage fails, do nothing (stay calm)
+    }
+  }, [hintDismissed, isSignin, pathname]);
+
+  // ✅ BULLETPROOF: whenever panel opens, show typing once
   useEffect(() => {
     if (!open) return;
     if (openedTypingOnceRef.current) return;
@@ -159,11 +262,10 @@ export default function MercyAIHost() {
   }, [open]);
 
   const pageHint = useMemo(() => {
-    const p = location.pathname || "/";
-    if (p.startsWith("/signin")) return "Login help";
-    if (p.startsWith("/room/")) return "Room help";
+    if (pathname.startsWith("/signin")) return "Login help";
+    if (pathname.startsWith("/room/")) return "Room help";
     return "Help";
-  }, [location.pathname]);
+  }, [pathname]);
 
   const headerSubtitle = useMemo(() => {
     switch (mode) {
@@ -178,7 +280,38 @@ export default function MercyAIHost() {
     }
   }, [mode, pageHint]);
 
+  // Host context (lightweight, no dependencies)
+  const hostPage: HostPage = useMemo(() => {
+    if (pathname.startsWith("/signin")) return "signin";
+    if (pathname === "/") return "home";
+    if (pathname.startsWith("/room/")) return "room";
+    return "other";
+  }, [pathname]);
+
+  // Best-effort "keyword chosen" signal (no big wiring):
+  // - If URL has ?k=... or ?keyword=... treat as chosen.
+  // - If later you pass real selectedKeyword state, we’ll replace this.
+  const hasKeyword = useMemo(() => {
+    try {
+      const sp = new URLSearchParams(location.search || "");
+      const k = (sp.get("k") || sp.get("keyword") || "").trim();
+      return k.length > 0;
+    } catch {
+      return false;
+    }
+  }, [location.search]);
+
+  const hostState = useMemo(() => {
+    return deriveHostState({
+      page: hostPage,
+      hasKeyword,
+      // Idle nudge only when panel open; otherwise don't “nag”
+      isIdle: open && mode === "home" ? isIdle : false,
+    });
+  }, [hostPage, hasKeyword, isIdle, open, mode]);
+
   const assistantMessage = useMemo(() => {
+    // Mode-specific help stays as-is (structured).
     if (mode === "email") {
       return `If email isn’t arriving:
 • Check spam/junk and search “Mercy”
@@ -195,9 +328,15 @@ export default function MercyAIHost() {
 • Rooms have short bilingual learning + audio
 • Admin is for creators/operators`;
     }
-    return `Hi. I’m here if you need help.
-What are you trying to do right now?`;
-  }, [mode]);
+
+    // HOME mode: be a host — ONE line or silence.
+    if (hostState.mode !== "silent" && hostState.line) {
+      return hostState.line;
+    }
+
+    // Fallback (rare)
+    return "I’m here if you need help.";
+  }, [mode, hostState]);
 
   const actions: QuickAction[] = useMemo(
     () => [
@@ -278,10 +417,11 @@ What are you trying to do right now?`;
             >
               <div className="flex items-center gap-2">
                 <div className="h-9 w-9 rounded-full bg-black/5 flex items-center justify-center">
+                  {/* talking only when typing; calm otherwise */}
                   <TalkingFaceIcon size={26} isTalking={isTyping} />
                 </div>
                 <div className="leading-tight">
-                  <div className="text-sm font-semibold">Mercy AI Host</div>
+                  <div className="text-sm font-semibold">Mercy Host</div>
                   <div className="text-xs text-black/60">{headerSubtitle}</div>
                 </div>
               </div>
@@ -356,16 +496,7 @@ What are you trying to do right now?`;
                 </div>
               </div>
 
-              {/* ✅ REPLACES the hardcoded "(Typing UI coming soon)" line */}
-              <div className="mt-3 text-xs text-black/50">
-                {isTyping ? (
-                  <span className="inline-flex items-center gap-2">
-                    <TypingIndicator />
-                    <span>Typing…</span>
-                  </span>
-                ) : null}
-              </div>
-
+              {/* Keep footer clean: remove redundant “Typing…” line (it looked noisy) */}
               <div className="mt-3 flex items-center justify-between">
                 <button
                   type="button"
@@ -407,14 +538,15 @@ What are you trying to do right now?`;
           type="button"
           onClick={openPanel}
           className="mt-3 h-12 w-12 rounded-full shadow-lg border border-black/10 bg-white hover:bg-black/5 flex items-center justify-center"
-          aria-label="Open Mercy AI Host"
-          title="Mercy AI Host"
+          aria-label="Open Mercy Host"
+          title="Mercy Host"
         >
-          <TalkingFaceIcon size={28} isTalking={open || isTyping} />
+          {/* Only “talk” when typing — otherwise it should feel calm. */}
+          <TalkingFaceIcon size={28} isTalking={isTyping} />
         </button>
 
         {/* Hint bubble */}
-        {!hintDismissed && !open ? (
+        {!hintDismissed && !open && !isSignin ? (
           <button
             type="button"
             onClick={openPanel}

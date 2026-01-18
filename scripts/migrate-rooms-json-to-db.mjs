@@ -1,6 +1,15 @@
 #!/usr/bin/env node
 /**
+ * FILE: migrate-rooms-json-to-db.mjs
+ * PATH: scripts/migrate-rooms-json-to-db.mjs
+ * VERSION: MB-BLUE-97.9c — 2026-01-15 (+0700)
+ *
  * MIGRATE JSON ROOMS → SUPABASE DATABASE
+ *
+ * ✅ FIX (Free 482 bug — SOURCE POISON):
+ * - NEVER default missing/unknown tier to "free".
+ * - Store tier as NULL when missing/empty, so UI can bucket "unknown".
+ * - Keep existing behavior otherwise.
  *
  * Usage:
  *   export SUPABASE_URL="https://xxxx.supabase.co"
@@ -93,14 +102,24 @@ function normalizeEntries(entries) {
 
   return entries.map((e, index) => ({
     index,
-    slug: e.slug || `entry-${index}`,
-    copy_en: e.copy?.en || "",
-    copy_vi: e.copy?.vi || "",
-    audio: e.audio || null,
-    tags: Array.isArray(e.tags) ? e.tags : [],
-    severity: typeof e.severity === "number" ? e.severity : null,
+    slug: e?.slug || `entry-${index}`,
+    copy_en: e?.copy?.en || "",
+    copy_vi: e?.copy?.vi || "",
+    audio: e?.audio || null,
+    tags: Array.isArray(e?.tags) ? e.tags : [],
+    severity: typeof e?.severity === "number" ? e.severity : null,
     metadata: e || {},
   }));
+}
+
+// ------------------------------------------------------------
+// Tier helper (STRICT)
+// ------------------------------------------------------------
+function coerceTierNullable(rawTier) {
+  // ✅ do NOT default to free
+  if (rawTier == null) return null;
+  const s = String(rawTier).trim();
+  return s.length ? s : null;
 }
 
 // ------------------------------------------------------------
@@ -109,16 +128,19 @@ function normalizeEntries(entries) {
 async function saveRoom(roomId, json) {
   console.log(`\n➡️  Migrating room: ${roomId}`);
 
+  const resolvedRoomId = json?.id || roomId;
+
   const roomPayload = {
-    id: json.id || roomId,
-    tier: json.tier || "free",
-    title_en: json.title?.en || "",
-    title_vi: json.title?.vi || "",
-    content_en: json.content?.en || "",
-    content_vi: json.content?.vi || "",
-    content_audio: json.content?.audio || null,
-    domain: json.domain || null,
-    keywords: json.keywords_en || [],
+    id: resolvedRoomId,
+    // ✅ CRITICAL FIX:
+    tier: coerceTierNullable(json?.tier), // null when missing/empty
+    title_en: json?.title?.en || "",
+    title_vi: json?.title?.vi || "",
+    content_en: json?.content?.en || "",
+    content_vi: json?.content?.vi || "",
+    content_audio: json?.content?.audio || null,
+    domain: json?.domain || null,
+    keywords: json?.keywords_en || [],
     is_active: true,
   };
 
@@ -132,14 +154,22 @@ async function saveRoom(roomId, json) {
     return { ok: false, err: roomErr };
   }
 
-  // Delete old entries
-  await supabase.from("room_entries").delete().eq("room_id", roomId);
+  // Delete old entries (use resolved id, not filename id)
+  const { error: delErr } = await supabase
+    .from("room_entries")
+    .delete()
+    .eq("room_id", resolvedRoomId);
+
+  if (delErr) {
+    console.error("❌ Entry delete failed:", delErr);
+    return { ok: false, err: delErr };
+  }
 
   // Insert new entries
-  const entries = normalizeEntries(json.entries);
+  const entries = normalizeEntries(json?.entries);
   if (entries.length) {
     const payload = entries.map((e) => ({
-      room_id: roomId,
+      room_id: resolvedRoomId,
       index: e.index,
       slug: e.slug,
       copy_en: e.copy_en,
@@ -150,9 +180,7 @@ async function saveRoom(roomId, json) {
       metadata: e.metadata,
     }));
 
-    const { error: entryErr } = await supabase
-      .from("room_entries")
-      .insert(payload);
+    const { error: entryErr } = await supabase.from("room_entries").insert(payload);
 
     if (entryErr) {
       console.error("❌ Entry insert failed:", entryErr);
@@ -160,7 +188,7 @@ async function saveRoom(roomId, json) {
     }
   }
 
-  console.log(`✅ Room saved: ${roomId}  (entries: ${entries.length})`);
+  console.log(`✅ Room saved: ${resolvedRoomId}  (entries: ${entries.length})`);
   return { ok: true };
 }
 
@@ -188,7 +216,7 @@ async function main() {
   }
 
   console.log("\n===============================");
-  console.log(`🏁 Migration complete`);
+  console.log("🏁 Migration complete");
   console.log(`   ✓ Migrated: ${migrated}`);
   console.log(`   ✗ Failed:   ${failed}`);
   console.log("===============================\n");

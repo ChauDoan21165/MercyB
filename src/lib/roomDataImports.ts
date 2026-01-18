@@ -1,6 +1,8 @@
+// FILE: roomDataImports.ts
+// PATH: src/lib/roomDataImports.ts
+// VERSION: MB-BLUE-97.9c — 2026-01-15 (+0700)
 /**
  * AUTO-GENERATED — DO NOT EDIT
- * Version: MB-BLUE-97.7
  */
 export const roomDataMap = {
   "addiction_support_free": {

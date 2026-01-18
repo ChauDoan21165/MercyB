@@ -1,6 +1,15 @@
 #!/usr/bin/env ts-node
 /**
+ * FILE: migrate-rooms-json-to-db.ts
+ * PATH: scripts/migrate-rooms-json-to-db.ts
+ * VERSION: MB-BLUE-97.9c — 2026-01-15 (+0700)
+ *
  * Migrate JSON rooms → Supabase (rooms + room_entries)
+ *
+ * ✅ FIX (Free 482 bug — SOURCE POISON):
+ * - DO NOT default missing room.tier to Free.
+ * - Preserve unknown as NULL in DB (tier: null) so UI can bucket "unknown".
+ * - If you want inference, do it explicitly (and safely) — NOT as a silent default.
  *
  * Usage:
  *   SUPABASE_URL=... SUPABASE_SERVICE_ROLE_KEY=... npx tsx scripts/migrate-rooms-json-to-db.ts
@@ -16,7 +25,7 @@ import { createClient, SupabaseClient } from "@supabase/supabase-js";
 
 type JsonRoom = {
   id?: string;
-  tier?: string;
+  tier?: string | null;
   slug?: string;
   title?: { en?: string; vi?: string };
   title_en?: string;
@@ -50,9 +59,7 @@ const SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 const DATA_DIR = resolve(process.cwd(), "public", "data");
 
 if (!SUPABASE_URL || !SERVICE_ROLE_KEY) {
-  console.error(
-    "[migrate] Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY in env"
-  );
+  console.error("[migrate] Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY in env");
   process.exit(1);
 }
 
@@ -67,9 +74,20 @@ function loadJsonFile(path: string): any {
   return JSON.parse(raw);
 }
 
+function safeSlugify(input: string): string {
+  return String(input)
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
+
 async function upsertRoom(room: JsonRoom, fileName: string) {
   const baseId = room.id || basename(fileName, extname(fileName));
-  const tier = room.tier || "Free / Miễn phí";
+
+  // ✅ CRITICAL: never default missing tier to "Free / Miễn phí"
+  // If tier missing or empty -> store NULL (unknown)
+  const tierRaw = room.tier;
+  const tier = typeof tierRaw === "string" && tierRaw.trim().length ? tierRaw.trim() : null;
 
   const title_en = room.title?.en ?? room.title_en ?? baseId;
   const title_vi = room.title?.vi ?? room.title_vi ?? baseId;
@@ -78,20 +96,14 @@ async function upsertRoom(room: JsonRoom, fileName: string) {
   const content_vi = room.content?.vi ?? room.content_vi ?? "";
   const content_audio = room.content?.audio ?? room.content_audio ?? null;
 
-  const slug =
-    room.slug ??
-    baseId
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/(^-|-$)/g, "");
+  const slug = room.slug ?? safeSlugify(baseId);
 
   const tags = (room as any).tags ?? null;
-  const is_active =
-    typeof room.is_active === "boolean" ? room.is_active : true;
+  const is_active = typeof room.is_active === "boolean" ? room.is_active : true;
 
   const row = {
     id: baseId,
-    tier,
+    tier, // ✅ null allowed → preserves unknown
     slug,
     title_en,
     title_vi,
@@ -107,9 +119,7 @@ async function upsertRoom(room: JsonRoom, fileName: string) {
   });
 
   if (error) {
-    throw new Error(
-      `[migrate] rooms upsert failed for ${baseId}: ${error.message}`
-    );
+    throw new Error(`[migrate] rooms upsert failed for ${baseId}: ${error.message}`);
   }
 
   return baseId;
@@ -117,26 +127,17 @@ async function upsertRoom(room: JsonRoom, fileName: string) {
 
 async function replaceRoomEntries(roomId: string, entries: JsonEntry[] = []) {
   // Clear old entries for this room
-  const { error: delError } = await supabase
-    .from("room_entries")
-    .delete()
-    .eq("room_id", roomId);
+  const { error: delError } = await supabase.from("room_entries").delete().eq("room_id", roomId);
 
   if (delError) {
-    throw new Error(
-      `[migrate] room_entries delete failed for ${roomId}: ${delError.message}`
-    );
+    throw new Error(`[migrate] room_entries delete failed for ${roomId}: ${delError.message}`);
   }
 
   if (!entries.length) return;
 
   const rows = entries.map((entry, index) => {
     const slugBase = entry.slug || `entry-${index + 1}`;
-    const slug = slugBase
-      .toString()
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/(^-|-$)/g, "");
+    const slug = safeSlugify(String(slugBase));
 
     const copy_en =
       entry.copy?.en ??
@@ -164,9 +165,7 @@ async function replaceRoomEntries(roomId: string, entries: JsonEntry[] = []) {
   const batchSize = 100;
   for (let i = 0; i < rows.length; i += batchSize) {
     const batch = rows.slice(i, i + batchSize);
-    const { error: insError } = await supabase
-      .from("room_entries")
-      .insert(batch);
+    const { error: insError } = await supabase.from("room_entries").insert(batch);
 
     if (insError) {
       throw new Error(
@@ -182,9 +181,7 @@ async function main() {
   console.log("[migrate] Starting JSON → Supabase migration...");
   console.log("[migrate] Reading from:", DATA_DIR);
 
-  const files = readdirSync(DATA_DIR).filter(
-    (f) => extname(f).toLowerCase() === ".json"
-  );
+  const files = readdirSync(DATA_DIR).filter((f) => extname(f).toLowerCase() === ".json");
 
   console.log(`[migrate] Found ${files.length} JSON files`);
 
@@ -214,9 +211,7 @@ async function main() {
       await replaceRoomEntries(roomId, json.entries || []);
 
       successCount++;
-      console.log(
-        `[migrate] ✓ ${file} → ${roomId} (${(json.entries || []).length} entries)`
-      );
+      console.log(`[migrate] ✓ ${file} → ${roomId} (${(json.entries || []).length} entries)`);
     } catch (err: any) {
       errorCount++;
       const msg = `${file}: ${err.message}`;

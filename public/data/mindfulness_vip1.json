@@ -67,28 +67,6 @@
       "audio": "mindfulness_vip1_breathing_exercises.mp3"
     },
     {
-      "slug": "breathing-exercises",
-      "keywords_en": [
-        "breathing",
-        "relaxation",
-        "stress relief"
-      ],
-      "keywords_vi": [
-        "hơi thở",
-        "thư giãn",
-        "giảm căng thẳng"
-      ],
-      "copy": {
-        "en": "Breathing exercises are a cornerstone of mindfulness. Inhale deeply for 4 seconds, hold for 4, exhale for 6. Repeat 5 times to calm your mind. Use this daily to manage stress and stay grounded. Share techniques with a community to deepen your practice, fostering peace and emotional balance.",
-        "vi": "Bài tập thở là nền tảng của chánh niệm. Hít sâu 4 giây, giữ 4 giây, thở ra 6 giây. Lặp lại 5 lần để làm dịu tâm trí. Thực hành hàng ngày giúp bạn quản lý căng thẳng và giữ sự vững vàng. Chia sẻ kỹ thuật với cộng đồng để làm sâu sắc thực hành, nuôi dưỡng sự an yên và cân bằng cảm xúc."
-      },
-      "tags": [
-        "breathing",
-        "mindfulness"
-      ],
-      "audio": "mindfulness_vip1_breathing_exercises.mp3"
-    },
-    {
       "slug": "awareness",
       "keywords_en": [
         "awareness",

@@ -1,20 +1,26 @@
 /**
- * Integrity Map v2.0
+ * Integrity Map v2.1
  * Phase 4: Full GCE Integration
- * 
+ *
  * Uses GCE internally as the single consistency model.
  * Provides comprehensive room-to-storage integrity mapping.
+ *
+ * FIXES (v2.1):
+ * - Numeric slug/index handling: use nullish coalescing (0 is valid).
+ * - Avoid unused imports (TS/ESLint/test build failures).
+ * - Score logic: score can now reach 100 when all expected files are present and no issues.
+ * - Track originals + normalized filenames separately:
+ *   - missing uses normalized set (case-insensitive)
+ *   - duplicates report actual filenames (not just normalized lowercase)
  */
 
-import { 
-  getCanonicalAudioForRoom, 
-  getCanonicalAudioForEntireRoom,
-  normalizeRoomId, 
+import {
+  getCanonicalAudioForRoom,
+  normalizeRoomId,
   extractLanguage,
   MIN_CONFIDENCE_FOR_AUTO_FIX,
-  type GCERoomResult,
-} from './globalConsistencyEngine';
-import { similarityScore } from './filenameValidator';
+} from "./globalConsistencyEngine";
+import { similarityScore } from "./filenameValidator";
 
 // ============================================
 // Types
@@ -54,7 +60,7 @@ export interface IntegritySummary {
 export interface RoomEntry {
   slug?: string | number;
   id?: string | number;
-  artifact_id?: string;
+  artifact_id?: string | number;
   audio?: { en?: string; vi?: string } | string;
 }
 
@@ -75,7 +81,8 @@ export function buildRoomIntegrity(
   entries: RoomEntry[],
   storageFiles: Set<string>
 ): RoomIntegrity {
-  const normalizedRoomId = normalizeRoomId(roomId);
+  const normalizedRoomId = normalizeRoomId(roomId).toLowerCase();
+
   const expected: string[] = [];
   const found: string[] = [];
   const missing: string[] = [];
@@ -83,71 +90,97 @@ export function buildRoomIntegrity(
   const mismatchedLang: string[] = [];
   const duplicates: string[] = [];
   const unrepairable: string[] = [];
-  
+
+  // expectedSet: normalized(expected filename) -> membership
   const expectedSet = new Set<string>();
-  const foundForRoom = new Set<string>();
-  
+
+  // track all files in storage that belong to this room (prefix match), normalized
+  const roomFilesNormalized = new Set<string>();
+
+  // normalized -> list of original filenames (for duplicate reporting)
+  const normalizedToOriginals = new Map<string, string[]>();
+
+  // ----------------------------
   // Build expected list using GCE
+  // ----------------------------
   for (let i = 0; i < entries.length; i++) {
     const entry = entries[i];
-    const slug = entry.slug || entry.artifact_id || entry.id || i;
+
+    // IMPORTANT: numeric 0 is a valid slug/id, so use nullish coalescing not ||
+    const slug =
+      entry.slug ?? entry.artifact_id ?? entry.id ?? i;
+
     const canonical = getCanonicalAudioForRoom(roomId, slug);
-    
+
     expected.push(canonical.en, canonical.vi);
+
     expectedSet.add(canonical.en.toLowerCase());
     expectedSet.add(canonical.vi.toLowerCase());
   }
-  
-  // Check storage files
+
+  // ----------------------------
+  // Scan storage files for this room
+  // ----------------------------
   for (const file of storageFiles) {
-    const normalizedFile = file.toLowerCase();
-    
-    if (!normalizedFile.startsWith(normalizedRoomId + '-')) {
+    const normalizedFileLower = file.toLowerCase();
+
+    // room prefix check (case-insensitive)
+    if (!normalizedFileLower.startsWith(normalizedRoomId + "-")) continue;
+
+    roomFilesNormalized.add(normalizedFileLower);
+
+    // build duplicate index using a stricter normalizer (handles underscores/spaces/etc.)
+    const dupKey = normalizeFilename(normalizedFileLower);
+    const list = normalizedToOriginals.get(dupKey) ?? [];
+    list.push(file);
+    normalizedToOriginals.set(dupKey, list);
+
+    // exact expected hit?
+    if (expectedSet.has(normalizedFileLower)) {
+      found.push(file);
       continue;
     }
-    
-    foundForRoom.add(normalizedFile);
-    
-    if (expectedSet.has(normalizedFile)) {
-      found.push(file);
+
+    // not expected: classify
+    const lang = extractLanguage(file);
+    if (!lang) {
+      unrepairable.push(file);
+      continue;
+    }
+
+    const potentialMatch = findBestMatch(file, expected);
+
+    // "mismatchedLang" here really means: strongly resembles an expected file,
+    // so it is likely a naming/lang/index drift rather than a true orphan.
+    if (potentialMatch && potentialMatch.confidence >= MIN_CONFIDENCE_FOR_AUTO_FIX) {
+      mismatchedLang.push(file);
     } else {
-      const lang = extractLanguage(file);
-      if (lang) {
-        const potentialMatch = findBestMatch(file, expected);
-        if (potentialMatch && potentialMatch.confidence > MIN_CONFIDENCE_FOR_AUTO_FIX) {
-          mismatchedLang.push(file);
-        } else {
-          orphans.push(file);
-        }
-      } else {
-        unrepairable.push(file);
-      }
+      orphans.push(file);
     }
   }
-  
-  // Find missing files
+
+  // ----------------------------
+  // Missing expected files (case-insensitive compare)
+  // ----------------------------
   for (const exp of expected) {
-    if (!foundForRoom.has(exp.toLowerCase())) {
+    if (!roomFilesNormalized.has(exp.toLowerCase())) {
       missing.push(exp);
     }
   }
-  
-  // Detect duplicates
-  const normalizedMap = new Map<string, string[]>();
-  for (const file of foundForRoom) {
-    const normalized = normalizeFilename(file);
-    const existing = normalizedMap.get(normalized) || [];
-    existing.push(file);
-    normalizedMap.set(normalized, existing);
-  }
-  
-  for (const [, files] of normalizedMap) {
-    if (files.length > 1) {
-      duplicates.push(...files.slice(1));
+
+  // ----------------------------
+  // Detect duplicates (report "extra" originals beyond the first)
+  // ----------------------------
+  for (const [, originals] of normalizedToOriginals) {
+    if (originals.length > 1) {
+      // keep first as "primary", mark the rest as duplicates
+      duplicates.push(...originals.slice(1));
     }
   }
-  
+
+  // ----------------------------
   // Calculate score
+  // ----------------------------
   const score = calculateIntegrityScore({
     expected: expected.length,
     found: found.length,
@@ -157,7 +190,7 @@ export function buildRoomIntegrity(
     duplicates: duplicates.length,
     unrepairable: unrepairable.length,
   });
-  
+
   return {
     roomId,
     expected,
@@ -180,11 +213,11 @@ export function buildIntegrityMap(
   storageFiles: Set<string>
 ): IntegrityMap {
   const map: IntegrityMap = {};
-  
+
   for (const room of rooms) {
     map[room.roomId] = buildRoomIntegrity(room.roomId, room.entries, storageFiles);
   }
-  
+
   return map;
 }
 
@@ -203,7 +236,7 @@ export function getIntegrityMap(
  */
 export function generateIntegritySummary(map: IntegrityMap): IntegritySummary {
   const rooms = Object.values(map);
-  
+
   let totalExpected = 0;
   let totalFound = 0;
   let totalMissing = 0;
@@ -212,7 +245,7 @@ export function generateIntegritySummary(map: IntegrityMap): IntegritySummary {
   let totalUnrepairable = 0;
   let totalScore = 0;
   let healthyRooms = 0;
-  
+
   for (const room of rooms) {
     totalExpected += room.expected.length;
     totalFound += room.found.length;
@@ -221,12 +254,10 @@ export function generateIntegritySummary(map: IntegrityMap): IntegritySummary {
     totalDuplicates += room.duplicates.length;
     totalUnrepairable += room.unrepairable.length;
     totalScore += room.score;
-    
-    if (room.score === 100) {
-      healthyRooms++;
-    }
+
+    if (room.score === 100) healthyRooms++;
   }
-  
+
   return {
     totalRooms: rooms.length,
     healthyRooms,
@@ -252,14 +283,14 @@ function findBestMatch(
 ): { file: string; confidence: number } | null {
   const normalizedFilename = normalizeFilename(filename);
   let best: { file: string; confidence: number } | null = null;
-  
+
   for (const expected of expectedFiles) {
     const score = similarityScore(normalizedFilename, expected.toLowerCase());
     if (!best || score > best.confidence) {
       best = { file: expected, confidence: score };
     }
   }
-  
+
   return best;
 }
 
@@ -272,25 +303,36 @@ function calculateIntegrityScore(metrics: {
   duplicates: number;
   unrepairable: number;
 }): number {
+  // No expectations => nothing can be wrong
   if (metrics.expected === 0) return 100;
-  
-  const coverageScore = (metrics.found / metrics.expected) * 60;
-  const missingPenalty = (metrics.missing / metrics.expected) * 20;
-  const orphanPenalty = Math.min(10, metrics.orphans * 2);
-  const duplicatePenalty = Math.min(5, metrics.duplicates * 1);
-  const unrepairablePenalty = Math.min(5, metrics.unrepairable * 2);
-  
-  const score = 100 - (100 - coverageScore) - missingPenalty - orphanPenalty - duplicatePenalty - unrepairablePenalty;
-  
-  return Math.max(0, Math.min(100, Math.round(score)));
+
+  // Base coverage (0..100) using FOUND that are exact expected hits.
+  const coverage = metrics.found / metrics.expected;
+  let score = Math.round(coverage * 100);
+
+  // Penalties (cap them so they don't nuke everything for noisy storage)
+  // Missing is already reflected in coverage, so keep its penalty light.
+  const missingPenalty = Math.min(20, Math.round((metrics.missing / metrics.expected) * 20));
+  const orphanPenalty = Math.min(15, metrics.orphans * 2);
+  const mismatchedPenalty = Math.min(10, metrics.mismatchedLang * 2);
+  const duplicatePenalty = Math.min(10, metrics.duplicates * 1);
+  const unrepairablePenalty = Math.min(15, metrics.unrepairable * 3);
+
+  score -= missingPenalty;
+  score -= orphanPenalty;
+  score -= mismatchedPenalty;
+  score -= duplicatePenalty;
+  score -= unrepairablePenalty;
+
+  return Math.max(0, Math.min(100, score));
 }
 
 function normalizeFilename(filename: string): string {
   return filename
     .toLowerCase()
-    .replace(/[_\s]+/g, '-')
-    .replace(/[^a-z0-9\-\.]/g, '')
-    .replace(/-+/g, '-');
+    .replace(/[_\s]+/g, "-")
+    .replace(/[^a-z0-9\-\.]/g, "")
+    .replace(/-+/g, "-");
 }
 
 // ============================================
@@ -308,9 +350,9 @@ export function getLowestIntegrityRooms(
 
 export function getRoomsWithIssues(
   map: IntegrityMap,
-  issueType: 'missing' | 'orphans' | 'duplicates' | 'unrepairable' | 'mismatchedLang'
+  issueType: "missing" | "orphans" | "duplicates" | "unrepairable" | "mismatchedLang"
 ): RoomIntegrity[] {
-  return Object.values(map).filter(room => room[issueType].length > 0);
+  return Object.values(map).filter((room) => room[issueType].length > 0);
 }
 
 // ============================================
@@ -318,28 +360,32 @@ export function getRoomsWithIssues(
 // ============================================
 
 export function exportIntegrityMapJSON(map: IntegrityMap): string {
-  return JSON.stringify({
-    summary: generateIntegritySummary(map),
-    rooms: map,
-  }, null, 2);
+  return JSON.stringify(
+    {
+      summary: generateIntegritySummary(map),
+      rooms: map,
+    },
+    null,
+    2
+  );
 }
 
 export function exportIntegrityMapCSV(map: IntegrityMap): string {
   const headers = [
-    'roomId',
-    'score',
-    'expectedCount',
-    'foundCount',
-    'missingCount',
-    'orphanCount',
-    'duplicateCount',
-    'unrepairableCount',
-    'missingFiles',
-    'orphanFiles',
-    'lastChecked',
+    "roomId",
+    "score",
+    "expectedCount",
+    "foundCount",
+    "missingCount",
+    "orphanCount",
+    "duplicateCount",
+    "unrepairableCount",
+    "missingFiles",
+    "orphanFiles",
+    "lastChecked",
   ];
-  
-  const rows = Object.values(map).map(room => [
+
+  const rows = Object.values(map).map((room) => [
     room.roomId,
     room.score.toString(),
     room.expected.length.toString(),
@@ -348,13 +394,13 @@ export function exportIntegrityMapCSV(map: IntegrityMap): string {
     room.orphans.length.toString(),
     room.duplicates.length.toString(),
     room.unrepairable.length.toString(),
-    room.missing.join(';'),
-    room.orphans.join(';'),
+    room.missing.join(";"),
+    room.orphans.join(";"),
     room.lastChecked,
   ]);
-  
+
   return [
-    headers.join(','),
-    ...rows.map(row => row.map(cell => `"${cell.replace(/"/g, '""')}"`).join(',')),
-  ].join('\n');
+    headers.join(","),
+    ...rows.map((row) => row.map((cell) => `"${String(cell).replace(/"/g, '""')}"`).join(",")),
+  ].join("\n");
 }

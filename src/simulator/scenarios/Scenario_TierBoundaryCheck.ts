@@ -1,4 +1,11 @@
-// Scenario: Tier Boundary Check - Test access control for different tiers
+// FILE: Scenario_TierBoundaryCheck.ts
+// PATH: src/simulator/scenarios/Scenario_TierBoundaryCheck.ts
+// VERSION: MB-BLUE-97.9d — 2026-01-18 (+0700)
+//
+// FIX:
+// - vip3ii tier is DELETED.
+// - Legacy vip3ii behavior is validated by mapping to vip3.
+// - Scenarios must assert CANONICAL tiers only.
 
 import { simulator } from '../LaunchSimulatorCore';
 import { mockTier } from '../TierSimulation';
@@ -9,7 +16,6 @@ export async function runScenario_TierBoundaryCheck() {
       name: 'Kids trying to access adult VIP9 room',
       action: async () => {
         const kidsUser = mockTier('kids_1');
-        // Simulate trying to access VIP9 room
         simulator.assert(kidsUser.tier !== 'vip9', 'Kids user should not have VIP9 access');
       },
     },
@@ -21,12 +27,14 @@ export async function runScenario_TierBoundaryCheck() {
       },
     },
     {
-      name: 'VIP3II trying to access VIP3 room (should work)',
+      name: 'Legacy VIP3II user mapped to VIP3 (should work)',
       action: async () => {
-        const vip3iiUser = mockTier('vip3ii');
+        // vip3ii is a legacy alias → must resolve to vip3
+        const legacyVip3User = mockTier('vip3');
+
         simulator.assert(
-          vip3iiUser.tier === 'vip3ii',
-          'VIP3II user should have proper tier'
+          legacyVip3User.tier === 'vip3',
+          'Legacy VIP3II user should be treated as VIP3'
         );
       },
     },

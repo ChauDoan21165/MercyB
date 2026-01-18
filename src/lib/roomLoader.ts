@@ -456,3 +456,17 @@ const loadMergedRoomInternal = async (roomId: string): Promise<LoadedRoomResult>
     };
   }
 };
+
+//
+// ✅ EXPORT FOR TESTS + NON-REACT CALLERS
+// - Tests snapshot the merged structure without React hooks.
+// - This keeps backwards compatibility with older imports.
+//
+// IMPORTANT: This is NOT a hook. Safe to call anywhere.
+//
+export const loadMergedRoom = async (roomId: string): Promise<LoadedRoomResult> => {
+  return loadMergedRoomInternal(roomId);
+};
+
+// ✅ DEFAULT EXPORT (optional compatibility)
+export default loadMergedRoom;

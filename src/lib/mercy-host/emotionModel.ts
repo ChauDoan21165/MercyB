@@ -1,32 +1,44 @@
+// FILE: emotionModel.ts
+// PATH: src/lib/mercy-host/emotionModel.ts
+// VERSION: MB-BLUE-EMOTION-5.0.1 — 2026-01-15 (+0700)
+//
+// Mercy Emotion Model - Phase 5
+//
+// FIX (test-backed):
+// - error_seen should quickly move away from neutral.
+// - BUT: respect the existing cooldown rule for MOST transitions.
+// - For error_seen we allow escalation within the cooldown window by forcing
+//   the engine to re-evaluate (so 2–3 errors can become confused/stressed).
+
 /**
  * Mercy Emotion Model - Phase 5
- * 
+ *
  * Emotion-aware engine that adapts Mercy's responses based on user behavior.
  */
 
-export type EmotionState = 
-  | 'neutral' 
-  | 'focused' 
-  | 'confused' 
-  | 'low_mood' 
-  | 'stressed' 
-  | 'celebrating' 
-  | 'returning_after_gap';
+export type EmotionState =
+  | "neutral"
+  | "focused"
+  | "confused"
+  | "low_mood"
+  | "stressed"
+  | "celebrating"
+  | "returning_after_gap";
 
-export type EmotionInput = 
-  | 'room_enter'
-  | 'entry_complete'
-  | 'long_scroll'
-  | 'rapid_clicks'
-  | 'idle_too_long'
-  | 'error_seen'
-  | 'milestone_complete'
-  | 'return_after_7_days'
-  | 'tier_unlock'
-  | 'vip_upgrade'
-  | 'color_toggle'
-  | 'audio_complete'
-  | 'favorite_add';
+export type EmotionInput =
+  | "room_enter"
+  | "entry_complete"
+  | "long_scroll"
+  | "rapid_clicks"
+  | "idle_too_long"
+  | "error_seen"
+  | "milestone_complete"
+  | "return_after_7_days"
+  | "tier_unlock"
+  | "vip_upgrade"
+  | "color_toggle"
+  | "audio_complete"
+  | "favorite_add";
 
 interface EmotionContext {
   roomTags?: string[];
@@ -55,7 +67,7 @@ const EMOTION_WEIGHTS: Record<EmotionInput, Partial<Record<EmotionState, number>
   vip_upgrade: { celebrating: 0.8 },
   color_toggle: { neutral: 0.1 },
   audio_complete: { focused: 0.2, neutral: 0.1 },
-  favorite_add: { focused: 0.2 }
+  favorite_add: { focused: 0.2 },
 };
 
 // Emotion decay rates (how fast emotions return to neutral)
@@ -66,7 +78,7 @@ const EMOTION_DECAY: Record<EmotionState, number> = {
   low_mood: 0.08,
   stressed: 0.12,
   celebrating: 0.2,
-  returning_after_gap: 0.3
+  returning_after_gap: 0.3,
 };
 
 const ROLLING_WINDOW_SIZE = 10;
@@ -77,8 +89,12 @@ const MIN_TRANSITION_INTERVAL_MS = 10000; // 10 seconds between emotion changes
  */
 export class EmotionEngine {
   private eventHistory: EmotionEvent[] = [];
-  private currentEmotion: EmotionState = 'neutral';
+  private currentEmotion: EmotionState = "neutral";
   private lastTransitionTime: number = 0;
+
+  // NEW: track consecutive recent error events to allow fast escalation away from neutral
+  private recentErrorBurstCount: number = 0;
+
   private emotionScores: Record<EmotionState, number> = {
     neutral: 1,
     focused: 0,
@@ -86,7 +102,7 @@ export class EmotionEngine {
     low_mood: 0,
     stressed: 0,
     celebrating: 0,
-    returning_after_gap: 0
+    returning_after_gap: 0,
   };
 
   constructor() {
@@ -98,10 +114,10 @@ export class EmotionEngine {
    */
   recordEvent(input: EmotionInput, context: EmotionContext = {}): EmotionState {
     const now = Date.now();
-    
+
     // Add to history
     this.eventHistory.push({ input, timestamp: now });
-    
+
     // Trim to rolling window
     if (this.eventHistory.length > ROLLING_WINDOW_SIZE) {
       this.eventHistory = this.eventHistory.slice(-ROLLING_WINDOW_SIZE);
@@ -112,30 +128,66 @@ export class EmotionEngine {
 
     // Get weights for this input
     const weights = EMOTION_WEIGHTS[input] || {};
-    
+
     // Apply weights to scores
     for (const [emotion, weight] of Object.entries(weights)) {
       this.emotionScores[emotion as EmotionState] += weight;
     }
 
     // Check for context-based overrides
-    if (context.hoursSinceLastVisit && context.hoursSinceLastVisit > 168) { // 7 days
+    if (context.hoursSinceLastVisit && context.hoursSinceLastVisit > 168) {
+      // 7 days
       this.emotionScores.returning_after_gap = 1;
     }
 
     // Check for rapid negative events
-    const recentErrorEvents = this.eventHistory
-      .filter(e => e.input === 'error_seen' && now - e.timestamp < 60000)
-      .length;
+    const recentErrorEvents = this.eventHistory.filter(
+      (e) => e.input === "error_seen" && now - e.timestamp < 60000
+    ).length;
+
     if (recentErrorEvents >= 3) {
       this.emotionScores.stressed += 0.3;
+    }
+
+    // ----------------------------
+    // FIX: error_seen escalation must not get stuck on neutral due to cooldown.
+    // We keep cooldown for normal events, but allow error_seen to update emotion
+    // within the cooldown window so repeated errors quickly reflect user state.
+    // ----------------------------
+    if (input === "error_seen") {
+      // treat closely spaced errors as a burst; reset if last error was long ago
+      const lastErrorTs = [...this.eventHistory]
+        .reverse()
+        .find((e) => e.input === "error_seen" && e.timestamp !== now)?.timestamp;
+
+      if (!lastErrorTs || now - lastErrorTs > 60000) {
+        this.recentErrorBurstCount = 0;
+      }
+      this.recentErrorBurstCount += 1;
+
+      // Ensure we leave neutral quickly:
+      // 1st error => confused, 2nd+ => stressed (stronger than weights alone)
+      if (this.recentErrorBurstCount >= 2) {
+        this.emotionScores.stressed += 0.6;
+        this.emotionScores.confused += 0.2;
+      } else {
+        this.emotionScores.confused += 0.6;
+      }
+    } else {
+      // non-error event resets burst count
+      this.recentErrorBurstCount = 0;
     }
 
     // Infer new emotion
     const newEmotion = this.inferEmotion();
 
     // Apply cool-down: can't jump more than one step per interval
-    if (now - this.lastTransitionTime >= MIN_TRANSITION_INTERVAL_MS) {
+    // EXCEPTION: allow error_seen to transition even during cooldown
+    // so tests and UX don't get stuck on neutral when errors happen rapidly.
+    const cooldownReady = now - this.lastTransitionTime >= MIN_TRANSITION_INTERVAL_MS;
+    const allowBypassCooldown = input === "error_seen";
+
+    if (cooldownReady || allowBypassCooldown) {
       if (newEmotion !== this.currentEmotion) {
         this.currentEmotion = newEmotion;
         this.lastTransitionTime = now;
@@ -151,7 +203,7 @@ export class EmotionEngine {
    */
   private inferEmotion(): EmotionState {
     let maxScore = 0;
-    let maxEmotion: EmotionState = 'neutral';
+    let maxEmotion: EmotionState = "neutral";
 
     for (const [emotion, score] of Object.entries(this.emotionScores)) {
       if (score > maxScore) {
@@ -210,7 +262,7 @@ export class EmotionEngine {
    * Reset emotion to neutral
    */
   reset(): void {
-    this.currentEmotion = 'neutral';
+    this.currentEmotion = "neutral";
     this.emotionScores = {
       neutral: 1,
       focused: 0,
@@ -218,10 +270,11 @@ export class EmotionEngine {
       low_mood: 0,
       stressed: 0,
       celebrating: 0,
-      returning_after_gap: 0
+      returning_after_gap: 0,
     };
     this.eventHistory = [];
     this.lastTransitionTime = 0;
+    this.recentErrorBurstCount = 0;
     this.saveToStorage();
   }
 
@@ -230,11 +283,14 @@ export class EmotionEngine {
    */
   private saveToStorage(): void {
     try {
-      localStorage.setItem('mercy_emotion_state', JSON.stringify({
-        emotion: this.currentEmotion,
-        scores: this.emotionScores,
-        lastTransition: this.lastTransitionTime
-      }));
+      localStorage.setItem(
+        "mercy_emotion_state",
+        JSON.stringify({
+          emotion: this.currentEmotion,
+          scores: this.emotionScores,
+          lastTransition: this.lastTransitionTime,
+        })
+      );
     } catch {
       // ignore storage errors
     }
@@ -245,10 +301,10 @@ export class EmotionEngine {
    */
   private loadFromStorage(): void {
     try {
-      const stored = localStorage.getItem('mercy_emotion_state');
+      const stored = localStorage.getItem("mercy_emotion_state");
       if (stored) {
         const data = JSON.parse(stored);
-        this.currentEmotion = data.emotion || 'neutral';
+        this.currentEmotion = data.emotion || "neutral";
         this.emotionScores = { ...this.emotionScores, ...data.scores };
         this.lastTransitionTime = data.lastTransition || 0;
       }
@@ -280,22 +336,22 @@ export function getCurrentEmotion(): EmotionState {
  */
 export function getEmotionFromOnboardingAnswer(answer: string): EmotionState {
   const answerLower = answer.toLowerCase();
-  
-  if (answerLower.includes('lost') || answerLower.includes('confused') || answerLower.includes('mất')) {
-    return 'confused';
+
+  if (answerLower.includes("lost") || answerLower.includes("confused") || answerLower.includes("mất")) {
+    return "confused";
   }
-  if (answerLower.includes('tired') || answerLower.includes('sad') || answerLower.includes('mệt')) {
-    return 'low_mood';
+  if (answerLower.includes("tired") || answerLower.includes("sad") || answerLower.includes("mệt")) {
+    return "low_mood";
   }
-  if (answerLower.includes('stressed') || answerLower.includes('anxious') || answerLower.includes('lo')) {
-    return 'stressed';
+  if (answerLower.includes("stressed") || answerLower.includes("anxious") || answerLower.includes("lo")) {
+    return "stressed";
   }
-  if (answerLower.includes('excited') || answerLower.includes('happy') || answerLower.includes('vui')) {
-    return 'celebrating';
+  if (answerLower.includes("excited") || answerLower.includes("happy") || answerLower.includes("vui")) {
+    return "celebrating";
   }
-  if (answerLower.includes('focused') || answerLower.includes('ready') || answerLower.includes('sẵn')) {
-    return 'focused';
+  if (answerLower.includes("focused") || answerLower.includes("ready") || answerLower.includes("sẵn")) {
+    return "focused";
   }
-  
-  return 'neutral';
+
+  return "neutral";
 }

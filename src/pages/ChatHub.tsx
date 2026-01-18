@@ -1,7 +1,11 @@
 // src/pages/ChatHub.tsx
-// MB-BLUE-100.9 — 2026-01-02 (+0700)
+// MB-BLUE-100.9 → MB-BLUE-101.NO-HERO-ROOMS — 2026-01-14 (+0700)
 /**
  * ChatHub (Room Loader — THIN CONTROLLER)
+ *
+ * ✅ FIX (MB-BLUE-101.NO-HERO-ROOMS):
+ * - KEEP RoomTopBar (Mercy Blade stays on top bar) ✅
+ * - REMOVE HeroBand from normal room pages ✅
  *
  * ✅ FIX (MB-BLUE-100.9):
  * - STOP scaling the whole page with transform: scale(...).
@@ -34,7 +38,6 @@ import MercyHostCorner from "@/components/mercy/MercyHostCorner";
 import { FEATURE_FLAGS } from "@/lib/featureFlags";
 
 import BottomMusicBar from "@/components/audio/BottomMusicBar";
-import HeroBand from "@/components/HeroBand";
 
 // ✅ DEV JWT logger
 import DebugJWT from "@/debug/DebugJWT";
@@ -357,7 +360,8 @@ export default function ChatHub() {
     <>
       <div className="mx-auto w-full max-w-[980px] px-4 md:px-6 py-6 pb-36">
         <RoomTopBar />
-        <HeroBand />
+
+        {/* ✅ NO HERO BAND ON ROOM PAGES (Home keeps hero) */}
 
         {FEATURE_FLAGS.MERCY_HOST_ENABLED && (
           <MercyHostCorner
@@ -392,3 +396,7 @@ export default function ChatHub() {
     </>
   );
 }
+
+/** New thing to learn:
+ * If a layout element won’t go away, search for where it’s rendered (rg).
+ * Fix the *caller* (ChatHub) first, not the shared component. */

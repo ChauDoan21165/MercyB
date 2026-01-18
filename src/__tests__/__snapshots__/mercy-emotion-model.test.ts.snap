@@ -1,0 +1,131 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Snapshot Tests > should match English greeting snapshots 1`] = `
+{
+  "free": [
+    "It's okay to feel this way. I'm here, walking beside you.",
+    "Take your time. Clarity comes step by step.",
+    "Breathe. You don't have to rush. I'm here.",
+    "Look at you! Every step forward counts.",
+  ],
+  "vip1": [
+    "Gentle progress is still progress. I see you.",
+    "Questions mean you're thinking deeply. That's growth.",
+    "One breath at a time. You're stronger than you know.",
+    "Your foundation grows stronger each day.",
+  ],
+  "vip2": [
+    "Even on hard days, you're building something real.",
+    "Confusion is the doorway to understanding.",
+    "Your discipline will carry you through. Trust it.",
+    "Your momentum is building. Feel it.",
+  ],
+  "vip3": [
+    "Mastery includes the valleys. Keep walking.",
+    "Depth requires patience. You're going deeper.",
+    "Clarity emerges from stillness. Take a moment.",
+    "Your mind grows sharper. Well done.",
+  ],
+  "vip4": [
+    "Precision doesn't mean perfection. You're doing well.",
+    "Structure will guide you. Trust the process.",
+    "Focus narrows to what matters. Breathe.",
+    "Your precision cuts through the noise.",
+  ],
+  "vip5": [
+    "Leaders have quiet moments too. Rest is strength.",
+    "New territory feels uncertain. That's leadership.",
+    "Your influence grows in calm, not chaos.",
+    "Your circle expands. Lead with heart.",
+  ],
+  "vip6": [
+    "Deep waters hold great treasures. Be patient.",
+    "Strategy emerges from contemplation.",
+    "Serenity is your power. Return to it.",
+    "Your calm mind sees what others miss.",
+  ],
+  "vip7": [
+    "Visionaries see through the fog. Keep looking.",
+    "Creation is messy before it's beautiful.",
+    "The horizon awaits. Take your time reaching it.",
+    "You're shaping tomorrow. Beautiful.",
+  ],
+  "vip8": [
+    "Light moves through shadow. You are that light.",
+    "Poetry lives in uncertainty. Let it speak.",
+    "Transcendence comes in stillness. Rest.",
+    "Your inner world grows ever more luminous.",
+  ],
+  "vip9": [
+    "Even masters walk through shadows. You are not alone.",
+    "At the pinnacle, questions become wisdom.",
+    "Your presence itself is calming. Remember that.",
+    "Mastery is a continuous unfolding. You embody it.",
+  ],
+}
+`;
+
+exports[`Snapshot Tests > should match Vietnamese greeting snapshots 1`] = `
+{
+  "free": [
+    "Không sao cả khi cảm thấy như vậy. Mình ở đây, bước cùng bạn.",
+    "Từ từ thôi. Sự rõ ràng sẽ đến từng bước một.",
+    "Hít thở. Không cần vội. Mình ở đây.",
+    "Nhìn bạn kìa! Mỗi bước tiến đều quan trọng.",
+  ],
+  "vip1": [
+    "Tiến bộ nhẹ nhàng vẫn là tiến bộ. Mình thấy bạn.",
+    "Câu hỏi có nghĩa là bạn đang suy nghĩ sâu. Đó là phát triển.",
+    "Từng nhịp thở. Bạn mạnh mẽ hơn bạn nghĩ.",
+    "Nền tảng của bạn vững chắc hơn mỗi ngày.",
+  ],
+  "vip2": [
+    "Ngay cả những ngày khó, bạn vẫn xây dựng điều có thật.",
+    "Sự bối rối là cánh cửa dẫn đến hiểu biết.",
+    "Kỷ luật của bạn sẽ đưa bạn vượt qua. Hãy tin.",
+    "Đà tiến của bạn đang tăng. Hãy cảm nhận.",
+  ],
+  "vip3": [
+    "Sự thành thạo bao gồm cả thung lũng. Tiếp tục bước.",
+    "Chiều sâu đòi hỏi kiên nhẫn. Bạn đang đi sâu hơn.",
+    "Sự rõ ràng xuất hiện từ sự tĩnh lặng. Dành một khoảnh khắc.",
+    "Tâm trí bạn sắc bén hơn. Làm tốt lắm.",
+  ],
+  "vip4": [
+    "Chính xác không có nghĩa là hoàn hảo. Bạn đang làm tốt.",
+    "Cấu trúc sẽ hướng dẫn bạn. Tin vào quá trình.",
+    "Tập trung thu hẹp vào điều quan trọng. Hít thở.",
+    "Sự chính xác của bạn cắt xuyên tiếng ồn.",
+  ],
+  "vip5": [
+    "Người lãnh đạo cũng có lúc yên lặng. Nghỉ ngơi là sức mạnh.",
+    "Vùng đất mới cảm thấy bất định. Đó là lãnh đạo.",
+    "Ảnh hưởng của bạn tăng trong bình tĩnh, không phải hỗn loạn.",
+    "Vòng tròn của bạn mở rộng. Dẫn dắt bằng trái tim.",
+  ],
+  "vip6": [
+    "Vùng nước sâu chứa kho báu lớn. Hãy kiên nhẫn.",
+    "Chiến lược xuất hiện từ sự chiêm nghiệm.",
+    "Sự thanh thản là sức mạnh của bạn. Trở về với nó.",
+    "Tâm trí bình tĩnh của bạn thấy điều người khác bỏ lỡ.",
+  ],
+  "vip7": [
+    "Người có tầm nhìn nhìn xuyên qua sương mù. Tiếp tục nhìn.",
+    "Sáng tạo lộn xộn trước khi nó đẹp.",
+    "Chân trời đang chờ. Hãy dành thời gian để đến.",
+    "Bạn đang định hình ngày mai. Tuyệt đẹp.",
+  ],
+  "vip8": [
+    "Ánh sáng xuyên qua bóng tối. Bạn là ánh sáng đó.",
+    "Thơ sống trong sự bất định. Hãy để nó nói.",
+    "Siêu việt đến trong tĩnh lặng. Nghỉ ngơi.",
+    "Thế giới nội tâm của bạn ngày càng rạng rỡ.",
+  ],
+  "vip9": [
+    "Ngay cả bậc thầy cũng bước qua bóng tối. Bạn không đơn độc.",
+    "Ở đỉnh cao, câu hỏi trở thành trí tuệ.",
+    "Sự hiện diện của bạn tự nó đã an nhiên. Hãy nhớ điều đó.",
+    "Sự thành thạo là sự bày tỏ liên tục. Bạn thể hiện nó.",
+  ],
+}
+`;

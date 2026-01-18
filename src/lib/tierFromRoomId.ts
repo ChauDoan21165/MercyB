@@ -1,34 +1,105 @@
-// src/lib/tierFromRoomId.ts
+// FILE: tierFromRoomId.ts
+// PATH: src/lib/tierFromRoomId.ts
+//
+// SIMPLE APP MODE (FINAL):
+// - VIP3 II is NOT a real tier anymore → always maps to VIP3
+// - strictTierFromRoomId(): returns TierId ONLY when confidently detected
+// - tierFromRoomId(): legacy wrapper defaults to "free"
+// - NO DB migration needed
+// - Stops Free from becoming a garbage can
+// - Kids mapping preserved so /tiers/kids_* still works
+
 import type { TierId } from "@/lib/constants/tiers";
 
 /**
- * Single source of truth:
- * If roomId contains vipN, the room is vipN. If it contains free, it's free.
+ * STRICT inference:
+ * Returns TierId only when confidently recognized from the room id/path.
+ * Otherwise returns undefined (caller may bucket as "unknown").
  */
-export function tierFromRoomId(id: string): TierId {
-  const s = String(id || "").toLowerCase();
+export function strictTierFromRoomId(id: string): TierId | undefined {
+  const s = String(id || "").toLowerCase().trim();
+  if (!s) return undefined;
 
-  // VIP9..VIP1 (check high -> low)
+  // Boundary-aware token matcher (prevents vip3 matching vip30, etc.)
+  const hasToken = (token: string) => {
+    const re = new RegExp(`(^|[^a-z0-9])${token}([^a-z0-9]|$)`, "i");
+    return re.test(s);
+  };
+
+  // ---------------------------------------------------------------------------
+  // VIP3 II — COLLAPSED INTO VIP3 (simple app mode)
+  // ---------------------------------------------------------------------------
+  if (
+    hasToken("vip3ii") ||
+    hasToken("vip3_ii") ||
+    /(^|[^a-z0-9])vip3[\s_-]*ii([^a-z0-9]|$)/i.test(s)
+  ) {
+    return "vip3";
+  }
+
+  // ---------------------------------------------------------------------------
+  // Kids tiers (explicit only)
+  // ---------------------------------------------------------------------------
+  if (
+    /(^|[^a-z0-9])kids[\s_-]*l[\s_-]*1([^a-z0-9]|$)/i.test(s) ||
+    /(^|[^a-z0-9])kids[\s_-]*level[\s_-]*1([^a-z0-9]|$)/i.test(s) ||
+    /(^|[^a-z0-9])kids[\s_-]*1([^a-z0-9]|$)/i.test(s)
+  ) {
+    return "kids_1";
+  }
+
+  if (
+    /(^|[^a-z0-9])kids[\s_-]*l[\s_-]*2([^a-z0-9]|$)/i.test(s) ||
+    /(^|[^a-z0-9])kids[\s_-]*level[\s_-]*2([^a-z0-9]|$)/i.test(s) ||
+    /(^|[^a-z0-9])kids[\s_-]*2([^a-z0-9]|$)/i.test(s)
+  ) {
+    return "kids_2";
+  }
+
+  if (
+    /(^|[^a-z0-9])kids[\s_-]*l[\s_-]*3([^a-z0-9]|$)/i.test(s) ||
+    /(^|[^a-z0-9])kids[\s_-]*level[\s_-]*3([^a-z0-9]|$)/i.test(s) ||
+    /(^|[^a-z0-9])kids[\s_-]*3([^a-z0-9]|$)/i.test(s)
+  ) {
+    return "kids_3";
+  }
+
+  // ---------------------------------------------------------------------------
+  // VIP tiers (high → low, after vip3ii collapse)
+  // ---------------------------------------------------------------------------
   for (let n = 9; n >= 1; n--) {
     if (
-      s.includes(`vip${n}`) ||
+      hasToken(`vip${n}`) ||
       s.includes(`_vip${n}`) ||
-      s.includes(`-vip${n}`)
+      s.includes(`-vip${n}`) ||
+      s.includes(`/vip${n}/`)
     ) {
       return `vip${n}` as TierId;
     }
   }
 
-  // FREE patterns
+  // ---------------------------------------------------------------------------
+  // FREE (ONLY when explicit)
+  // ---------------------------------------------------------------------------
   if (
+    hasToken("free") ||
     s.endsWith("_free") ||
     s.endsWith("-free") ||
     s.includes("_free_") ||
     s.includes("-free-") ||
-    s.includes("free")
+    s.includes("/free/")
   ) {
     return "free";
   }
 
-  return "free";
+  // Not confidently inferred
+  return undefined;
+}
+
+/**
+ * Legacy wrapper (kept for backward compatibility):
+ * Defaults to "free" when not confidently inferred.
+ */
+export function tierFromRoomId(id: string): TierId {
+  return (strictTierFromRoomId(id) ?? "free") as TierId;
 }

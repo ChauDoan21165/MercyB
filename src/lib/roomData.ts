@@ -1,5 +1,17 @@
-// src/lib/roomData.ts
+// FILE: roomData.ts
+// PATH: src/lib/roomData.ts
 // Room Data Management Utilities (Supabase-first, no build-time roomDataImports)
+//
+// FIX (Free 482 bug — REAL SOURCE):
+// - tierFromRoomId() is a fallback that *defaults unknown/missing to "free"*.
+// - For counting/registry listing we must NOT lie.
+// - Add a STRICT tier parser that returns undefined for unknown.
+// - Store unknown as "unknown" (local-only) so Free cannot absorb everything.
+//
+// NOTE:
+// - This file is "Supabase-first" (runtime loadRoomDataMap), so we implement strict parsing locally
+//   to avoid importing build-time helpers.
+// - If you later expand TierId set, update STRICT_TIER_IDS below.
 
 import { tierFromRoomId } from "@/lib/tierFromRoomId";
 import type { RoomData } from "./roomDataLoader";
@@ -16,12 +28,46 @@ export interface RoomInfo {
     | "vip1"
     | "vip2"
     | "vip3"
+    | "vip3ii"
     | "vip4"
     | "vip5"
     | "vip6"
     | "vip7"
     | "vip8"
-    | "vip9";
+    | "vip9"
+    | "kids_1"
+    | "kids_2"
+    | "kids_3"
+    | "unknown";
+}
+
+const STRICT_TIER_IDS = new Set<RoomInfo["tier"]>([
+  "free",
+  "vip1",
+  "vip2",
+  "vip3",
+  "vip3ii",
+  "vip4",
+  "vip5",
+  "vip6",
+  "vip7",
+  "vip8",
+  "vip9",
+  "kids_1",
+  "kids_2",
+  "kids_3",
+]);
+
+function strictTierFromRoomId(roomId: string): RoomInfo["tier"] {
+  // Your tierFromRoomId() helper is allowed to be permissive.
+  // We wrap it and refuse to accept "free" as a default for unknown shapes.
+  const t = String(tierFromRoomId(roomId) ?? "").trim().toLowerCase();
+
+  // If it returns a known tier, accept it.
+  if (STRICT_TIER_IDS.has(t as RoomInfo["tier"])) return t as RoomInfo["tier"];
+
+  // Otherwise: UNKNOWN stays unknown.
+  return "unknown";
 }
 
 // Normalize room name extraction (supports older schemas)
@@ -54,7 +100,8 @@ export async function getAllRooms(): Promise<RoomInfo[]> {
   const roomDataMap: Record<string, RoomData> = await loadRoomDataMap();
 
   const rooms: RoomInfo[] = Object.entries(roomDataMap).map(([roomId, roomData]) => {
-    const tier = tierFromRoomId(roomId) as RoomInfo["tier"];
+    // ✅ STRICT: never let unknown collapse into free
+    const tier = strictTierFromRoomId(roomId);
     const nameEn = getEnglishName(roomId, roomData);
     const nameVi = getVietnameseName(roomId, roomData);
 
@@ -63,7 +110,10 @@ export async function getAllRooms(): Promise<RoomInfo[]> {
       nameEn,
       nameVi,
       tier,
-      hasData: !!(roomData?.hasData || (Array.isArray((roomData as any)?.entries) && (roomData as any).entries.length > 0)),
+      hasData: !!(
+        roomData?.hasData ||
+        (Array.isArray((roomData as any)?.entries) && (roomData as any).entries.length > 0)
+      ),
     };
   });
 

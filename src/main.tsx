@@ -1,4 +1,3 @@
-// src/main.tsx
 // MB-BLUE-100.7 — 2025-12-31 (+0700)
 //
 // FIX (100.7):
@@ -10,6 +9,11 @@
 // ✅ SPA Deep-Link Handoff (Vercel 404 fallback):
 // - If host served / (or 404.html redirected), restore the intended path from sessionStorage.redirect
 // - This pairs with public/404.html that saves location.href then refreshes to "/"
+//
+// ✅ DEV DEBUG (2026-01-18):
+// - Expose Supabase client for console debugging:
+//   window.supabase.auth.getSession()
+//   window.supabase.from("community_messages").select("*").limit(3)
 
 import React from "react";
 import ReactDOM from "react-dom/client";
@@ -20,6 +24,15 @@ import "@/index.css";
 
 // ✅ AUTH PROVIDER (required for /admin)
 import { AuthProvider } from "@/providers/AuthProvider";
+
+// ✅ Supabase client (DEV console debugging)
+import { supabase } from "@/lib/supabaseClient";
+
+declare global {
+  interface Window {
+    supabase?: typeof supabase;
+  }
+}
 
 // ✅ MB FATAL OVERLAY — shows runtime errors on screen
 (function attachFatalErrorOverlay() {
@@ -32,8 +45,8 @@ import { AuthProvider } from "@/providers/AuthProvider";
         err instanceof Error
           ? err.stack || err.message
           : typeof err === "string"
-          ? err
-          : JSON.stringify(err, null, 2);
+            ? err
+            : JSON.stringify(err, null, 2);
 
       const msg = `${title}\n\n` + message + `\n\nURL: ${window.location.href}`;
 
@@ -98,6 +111,16 @@ import { AuthProvider } from "@/providers/AuthProvider";
   }
 })();
 
+// ✅ DEV: expose supabase to window for console debugging
+(function exposeSupabaseForDebug() {
+  try {
+    if (!import.meta.env.DEV) return;
+    window.supabase = supabase;
+  } catch {
+    // ignore
+  }
+})();
+
 const root = document.getElementById("root");
 
 if (!root) {
@@ -105,15 +128,15 @@ if (!root) {
 }
 
 ReactDOM.createRoot(root).render(
-  <AuthProvider>
-    <BrowserRouter>
+  <BrowserRouter>
+    <AuthProvider>
       <AppRouter />
-    </BrowserRouter>
-  </AuthProvider>,
+    </AuthProvider>
+  </BrowserRouter>,
 );
 
 /**
  * New thing to learn:
- * Browser error events already have strong DOM types — using them avoids `any`
- * and gives safer, more debuggable crash handling.
+ * When debugging RLS, putting your client on window lets you test SELECT/INSERT
+ * from the same authenticated session as the UI.
  */

@@ -1,18 +1,15 @@
 // src/pages/admin/AdminDashboard.tsx
-// MB-BLUE-101.6 — 2026-01-01 (+0700)
+// MB-BLUE-101.6 → MB-BLUE-101.6a — 2026-01-14 (+0700)
 //
-// ADMIN DASHBOARD (UI ONLY, MULTI-APP READY):
-// - Modern black/white "control board" layout.
-// - Operator surface only (no business logic).
-// - Canonical /admin landing page.
-//
-// FIX (101.6):
-// - Multi-app context selector (persisted localStorage + optional URL ?app=...).
-// - Every admin link preserves app context (?app=...).
-// - Show current app_id prominently to prevent cross-app mistakes.
+// ✅ FIX (101.6a):
+// - Stop blank /admin page.
+// - Gate admin dashboard UI by useUserAccess().
+// - If not admin: show clear message + sign-in link (never return null).
+// - Keep existing multi-app context behavior unchanged.
 
 import React, { useEffect, useMemo, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useUserAccess } from "@/hooks/useUserAccess";
 
 type AdminTile = {
   title: string;
@@ -70,6 +67,11 @@ function withApp(href: string, appId: string) {
 export default function AdminDashboard() {
   const nav = useNavigate();
   const location = useLocation();
+
+  // ✅ REAL admin gate (same source of truth as Room gating)
+  const access = useUserAccess();
+  const accessLoading = access.loading || access.isLoading;
+  const isAdmin = !!(access.isAdmin || access.isHighAdmin || (access.adminLevel ?? 0) >= 9);
 
   const urlApp = useMemo(() => getAppFromUrl(location.search), [location.search]);
 
@@ -294,6 +296,12 @@ export default function AdminDashboard() {
       href: "/admin/metrics",
       badge: "READY",
     },
+    {
+      title: "Feedback",
+      desc: "Read user feedback from rooms (read-only).",
+      href: "/admin/feedback",
+      badge: "READY",
+    },
   ];
 
   function go(href?: string) {
@@ -304,144 +312,169 @@ export default function AdminDashboard() {
   return (
     <div style={wrap}>
       <div style={frame}>
-        <div style={topBar}>
-          <div>
-            <div style={smallTag}>ADMIN • CONTROL BOARD</div>
-            <h1 style={title}>Admin</h1>
+        {/* ✅ Never blank */}
+        {accessLoading ? (
+          <div style={{ ...card, padding: 18 }}>
+            <div style={{ fontWeight: 950, fontSize: 18 }}>Admin</div>
+            <div style={{ marginTop: 8, opacity: 0.75, fontWeight: 800 }}>Checking access…</div>
+          </div>
+        ) : !isAdmin ? (
+          <div style={{ ...card, padding: 18 }}>
+            <div style={smallTag}>ADMIN • ACCESS REQUIRED</div>
+            <h1 style={{ ...title, marginTop: 10 }}>Not admin</h1>
             <p style={subtitle}>
-              One place to operate your ecosystem: payments, access, audio coverage, and truth screens.
+              This account does not have admin permissions.
               <br />
-              <span style={{ color: "rgba(0,0,0,0.55)" }}>
-                Operator UI only — keep actions safe & explicit.
-              </span>
+              Sign in as <b>cd12536@gmail.com</b> (admin_level = 9) and refresh.
             </p>
-          </div>
 
-          <div style={pillRow}>
-            <Link to="/" style={pill}>
-              Back to Home
-            </Link>
-            <button
-              type="button"
-              style={pill}
-              onClick={() => nav("/rooms")}
-              aria-label="Open Rooms"
-            >
-              Open Rooms
-            </button>
-          </div>
-        </div>
+            <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
+              <Link to="/signin" style={pill}>
+                Go to Sign In
+              </Link>
+              <Link to="/" style={pill}>
+                Back to Home
+              </Link>
+            </div>
 
-        {/* App context (multi-app) */}
-        <div style={{ ...card, padding: 14, marginBottom: 14 }}>
-          <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
-            <div>
-              <div style={{ fontWeight: 900, marginBottom: 6 }}>App Context</div>
-              <div style={{ fontSize: 13, color: "rgba(0,0,0,0.70)", lineHeight: 1.6 }}>
-                Every admin page must show and filter by <span style={mono}>app_id</span>. This prevents cross-app mistakes.
+            <div style={{ marginTop: 12, fontSize: 12, color: "rgba(0,0,0,0.60)", fontWeight: 900 }}>
+              Your tier: <span style={mono}>{String(access.tier || "free")}</span> • admin_level:{" "}
+              <span style={mono}>{String(access.adminLevel ?? 0)}</span>
+            </div>
+          </div>
+        ) : (
+          <>
+            <div style={topBar}>
+              <div>
+                <div style={smallTag}>ADMIN • CONTROL BOARD</div>
+                <h1 style={title}>Admin</h1>
+                <p style={subtitle}>
+                  One place to operate your ecosystem: payments, access, audio coverage, and truth screens.
+                  <br />
+                  <span style={{ color: "rgba(0,0,0,0.55)" }}>
+                    Operator UI only — keep actions safe & explicit.
+                  </span>
+                </p>
               </div>
-              <div style={{ marginTop: 10, display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
-                <span style={badge}>
-                  APP: <span style={mono}>{appId}</span>
-                </span>
-                <span style={badge}>RISK MODE: SAFE</span>
-                <span style={badge}>NO DESTRUCTIVE ACTIONS</span>
+
+              <div style={pillRow}>
+                <Link to="/" style={pill}>
+                  Back to Home
+                </Link>
+                <button type="button" style={pill} onClick={() => nav("/rooms")} aria-label="Open Rooms">
+                  Open Rooms
+                </button>
               </div>
             </div>
 
-            <div style={{ minWidth: 320 }}>
-              <div style={{ fontWeight: 900, marginBottom: 6 }}>Switch App</div>
-              <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
-                <input
-                  value={appIdDraft}
-                  onChange={(e) => setAppIdDraft(e.target.value)}
-                  placeholder="app_id (e.g. mercy_blade)"
-                  style={input}
-                  aria-label="App ID"
-                />
-                <button
-                  type="button"
-                  style={{ ...linkBtn, padding: "10px 12px" }}
-                  onClick={() => applyApp(appIdDraft)}
-                  aria-label="Apply app id"
-                >
-                  Apply
-                </button>
-                <button
-                  type="button"
-                  style={pill}
-                  onClick={() => applyApp("mercy_blade")}
-                  aria-label="Switch to mercy_blade"
-                >
-                  mercy_blade
-                </button>
-              </div>
-              <div style={{ marginTop: 8, fontSize: 12, color: "rgba(0,0,0,0.55)", fontWeight: 900 }}>
-                Shareable links: <span style={mono}>/admin?app=your_app_id</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <hr style={hr} />
-
-        <div style={grid}>
-          {tiles.map((t) => {
-            const span = t.title === "System Monitoring" || t.title === "Metrics" ? 12 : 6;
-            const isDisabled = !!t.disabled;
-            const hrefWithApp = t.href ? withApp(t.href, appId) : undefined;
-
-            return (
-              <div
-                key={t.title}
-                style={{
-                  ...card,
-                  gridColumn: `span ${span}`,
-                  opacity: isDisabled ? 0.55 : 1,
-                }}
-              >
-                <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 10 }}>
-                  <h2 style={cardTitle}>{t.title}</h2>
-                  {t.badge && <span style={badge}>{t.badge}</span>}
+            {/* App context (multi-app) */}
+            <div style={{ ...card, padding: 14, marginBottom: 14 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
+                <div>
+                  <div style={{ fontWeight: 900, marginBottom: 6 }}>App Context</div>
+                  <div style={{ fontSize: 13, color: "rgba(0,0,0,0.70)", lineHeight: 1.6 }}>
+                    Every admin page must show and filter by <span style={mono}>app_id</span>. This prevents
+                    cross-app mistakes.
+                  </div>
+                  <div style={{ marginTop: 10, display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
+                    <span style={badge}>
+                      APP: <span style={mono}>{appId}</span>
+                    </span>
+                    <span style={badge}>RISK MODE: SAFE</span>
+                    <span style={badge}>NO DESTRUCTIVE ACTIONS</span>
+                  </div>
                 </div>
 
-                <p style={cardDesc}>{t.desc}</p>
-
-                <div style={cardFooter}>
-                  <button
-                    type="button"
-                    style={{
-                      ...linkBtn,
-                      opacity: isDisabled ? 0.6 : 1,
-                      cursor: isDisabled ? "not-allowed" : "pointer",
-                    }}
-                    onClick={() => (!isDisabled ? go(t.href) : null)}
-                    disabled={isDisabled}
-                    aria-label={`Open ${t.title}`}
-                  >
-                    Open
-                  </button>
-
-                  <div style={{ fontSize: 12, color: "rgba(0,0,0,0.55)", fontWeight: 800 }}>
-                    {hrefWithApp ? (
-                      <>
-                        Route: <span style={mono}>{hrefWithApp}</span>
-                      </>
-                    ) : (
-                      "Route: —"
-                    )}
+                <div style={{ minWidth: 320 }}>
+                  <div style={{ fontWeight: 900, marginBottom: 6 }}>Switch App</div>
+                  <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
+                    <input
+                      value={appIdDraft}
+                      onChange={(e) => setAppIdDraft(e.target.value)}
+                      placeholder="app_id (e.g. mercy_blade)"
+                      style={input}
+                      aria-label="App ID"
+                    />
+                    <button
+                      type="button"
+                      style={{ ...linkBtn, padding: "10px 12px" }}
+                      onClick={() => applyApp(appIdDraft)}
+                      aria-label="Apply app id"
+                    >
+                      Apply
+                    </button>
+                    <button type="button" style={pill} onClick={() => applyApp("mercy_blade")} aria-label="Switch to mercy_blade">
+                      mercy_blade
+                    </button>
+                  </div>
+                  <div style={{ marginTop: 8, fontSize: 12, color: "rgba(0,0,0,0.55)", fontWeight: 900 }}>
+                    Shareable links: <span style={mono}>/admin?app=your_app_id</span>
                   </div>
                 </div>
               </div>
-            );
-          })}
-        </div>
+            </div>
 
-        <hr style={hr} />
+            <hr style={hr} />
 
-        <div style={{ fontSize: 12, color: "rgba(0,0,0,0.55)", fontWeight: 800, lineHeight: 1.6 }}>
-          Tip: A strong admin console is mostly: context clarity, safety labeling, and fast navigation.
-        </div>
+            <div style={grid}>
+              {tiles.map((t) => {
+                const span = t.title === "System Monitoring" || t.title === "Metrics" ? 12 : 6;
+                const isDisabled = !!t.disabled;
+                const hrefWithApp = t.href ? withApp(t.href, appId) : undefined;
+
+                return (
+                  <div
+                    key={t.title}
+                    style={{
+                      ...card,
+                      gridColumn: `span ${span}`,
+                      opacity: isDisabled ? 0.55 : 1,
+                    }}
+                  >
+                    <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 10 }}>
+                      <h2 style={cardTitle}>{t.title}</h2>
+                      {t.badge && <span style={badge}>{t.badge}</span>}
+                    </div>
+
+                    <p style={cardDesc}>{t.desc}</p>
+
+                    <div style={cardFooter}>
+                      <button
+                        type="button"
+                        style={{
+                          ...linkBtn,
+                          opacity: isDisabled ? 0.6 : 1,
+                          cursor: isDisabled ? "not-allowed" : "pointer",
+                        }}
+                        onClick={() => (!isDisabled ? go(t.href) : null)}
+                        disabled={isDisabled}
+                        aria-label={`Open ${t.title}`}
+                      >
+                        Open
+                      </button>
+
+                      <div style={{ fontSize: 12, color: "rgba(0,0,0,0.55)", fontWeight: 800 }}>
+                        {hrefWithApp ? (
+                          <>
+                            Route: <span style={mono}>{hrefWithApp}</span>
+                          </>
+                        ) : (
+                          "Route: —"
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            <hr style={hr} />
+
+            <div style={{ fontSize: 12, color: "rgba(0,0,0,0.55)", fontWeight: 800, lineHeight: 1.6 }}>
+              Tip: A strong admin console is mostly: context clarity, safety labeling, and fast navigation.
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

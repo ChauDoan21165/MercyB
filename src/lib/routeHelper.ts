@@ -1,112 +1,89 @@
-/**
- * Centralized route helper to determine parent routes for rooms
- * Prevents 404s and navigation mismatches with TypeScript type safety
- * Uses canonical tier system from lib/constants/tiers.ts
- * 
- * Note: Now uses async roomFetcher - validation is best-effort sync
- */
+// src/lib/routeHelper.ts
+// MB-BLUE-ROUTE-1.0 — Production-only route helpers
+// IMPORTANT:
+// - NO test code in here (no describe/it/expect).
+// - Keep helpers deterministic.
+// - Tests live in src/lib/__tests__/routeHelper.test.ts
 
-import { type VipTierId } from '@/lib/constants/tiers';
+export type RoomRouteKind = "room" | "tiers" | "home" | "signin" | "admin";
 
-/**
- * Valid parent route paths in the application
- */
-export type ParentRoute = 
-  | "/rooms"           // Free tier rooms
-  | "/vip/vip1"        // VIP1 tier rooms
-  | "/vip/vip2"        // VIP2 tier rooms
-  | "/vip/vip3"        // VIP3 tier rooms
-  | "/vip/vip4"        // VIP4 tier rooms
-  | "/vip/vip6"        // VIP6 tier rooms
-  | "/vip/vip9"        // VIP9 tier rooms
-  | "/sexuality-culture" // Sexuality sub-rooms parent
-  | "/finance-calm";   // Finance sub-rooms parent
+export const ROUTES = {
+  home: "/",
+  signin: "/signin",
+  admin: "/admin",
+  tiers: "/tiers",
+  room: (roomId: string) => `/room/${encodeURIComponent(roomId)}`,
+} as const;
 
-/**
- * Room tier type for routing (subset of canonical TierId, excludes kids tiers)
- */
-export type RoomTier = 'free' | VipTierId;
-
-/**
- * Validates if a room ID looks valid (format check only, no async lookup)
- */
-export function isValidRoomId(roomId: string | undefined): roomId is string {
-  if (!roomId) return false;
-  // Basic format validation - actual existence is checked at runtime
-  return typeof roomId === 'string' && roomId.length > 0 && roomId.length < 100;
+export function normalizeRoomId(roomId: string): string {
+  const id = (roomId ?? "").trim();
+  if (!id) return "";
+  return id.replace(/^\/+/, "").replace(/\/+$/, "");
 }
 
-/**
- * Gets the tier from a room ID
- */
-export function getRoomTier(roomId: string): RoomTier | null {
-  // Detect tier segment anywhere in the ID (supports -, _, . separators)
-  const match = roomId.match(/(?:^|[._-])(free|vip1|vip2|vip3|vip4|vip6|vip9)(?:$|[._-])/i);
-  return match ? (match[1].toLowerCase() as RoomTier) : null;
+export function stripRoomAccessSuffix(roomId: string): string {
+  const id = normalizeRoomId(roomId);
+  return id.replace(/_(vip|free)$/i, "");
 }
 
-/**
- * Converts a room tier to its corresponding parent route
- */
-export function tierToRoute(tier: RoomTier): ParentRoute {
-  const tierRouteMap: Record<RoomTier, ParentRoute> = {
-    'free': "/rooms",
-    'vip1': "/vip/vip1",
-    'vip2': "/vip/vip2",
-    'vip3': "/vip/vip3",
-    'vip4': "/vip/vip4",
-    'vip6': "/vip/vip6",
-    'vip9': "/vip/vip9"
-  };
-  return tierRouteMap[tier];
+export function isSafeInternalPath(path: string | null | undefined): boolean {
+  if (!path) return false;
+  const p = path.trim();
+  if (!p.startsWith("/")) return false;
+  if (p.startsWith("//")) return false;
+  if (/^[a-zA-Z][a-zA-Z0-9+.-]*:/.test(p)) return false;
+  if (p.includes("\n") || p.includes("\r")) return false;
+  return true;
 }
 
-/**
- * Gets the parent route for a given room ID with full type safety
- * 
- * @param roomId - The room identifier (e.g., 'adhd-support-vip3')
- * @returns The parent route path for navigation
- * 
- * @example
- * getParentRoute('adhd-support-vip3') // Returns: "/vip/vip3"
- * getParentRoute('sexuality-curiosity-vip3-sub1') // Returns: "/sexuality-culture"
- */
-export function getParentRoute(roomId: string | undefined): ParentRoute {
-  // Handle undefined or empty room ID
-  if (!roomId) return "/rooms";
+export function sanitizeReturnTo(
+  returnTo: string | null | undefined,
+  fallback: string = ROUTES.home
+): string {
+  if (!returnTo) return fallback;
+  const trimmed = returnTo.trim();
+  return isSafeInternalPath(trimmed) ? trimmed : fallback;
+}
 
-  // Special handling for sexuality sub-rooms (all 6 sub-rooms)
-  if (roomId.startsWith('sexuality-curiosity-vip3-sub')) {
-    return "/sexuality-culture";
+export function withReturnTo(path: string, returnTo: string): string {
+  const base = path || ROUTES.home;
+  const rt = sanitizeReturnTo(returnTo, ROUTES.home);
+  const sep = base.includes("?") ? "&" : "?";
+  return `${base}${sep}returnTo=${encodeURIComponent(rt)}`;
+}
+
+export function readReturnTo(
+  searchParams: { get: (k: string) => string | null } | null | undefined,
+  fallback: string = ROUTES.home
+): string {
+  const raw = searchParams?.get?.("returnTo") ?? null;
+  return sanitizeReturnTo(raw, fallback);
+}
+
+export function roomPath(roomId: string): string {
+  const id = normalizeRoomId(roomId);
+  return ROUTES.room(id);
+}
+
+export function classifyRoute(pathname: string): RoomRouteKind {
+  const p = (pathname ?? "").trim();
+  if (p === ROUTES.home) return "home";
+  if (p.startsWith(ROUTES.signin)) return "signin";
+  if (p.startsWith(ROUTES.admin)) return "admin";
+  if (p.startsWith(ROUTES.tiers)) return "tiers";
+  if (p.startsWith("/room/")) return "room";
+  return "home";
+}
+
+export function extractRoomIdFromPath(pathname: string): string {
+  const p = (pathname ?? "").trim();
+  const prefix = "/room/";
+  if (!p.startsWith(prefix)) return "";
+  const rest = p.slice(prefix.length);
+  const seg = rest.split("/")[0] ?? "";
+  try {
+    return decodeURIComponent(seg);
+  } catch {
+    return seg;
   }
-
-  // Special handling for finance sub-rooms (all 6 sub-rooms)
-  if (roomId.startsWith('finance-calm-money-sub')) {
-    return "/finance-calm";
-  }
-
-  // Special handling for sexuality parent room
-  if (roomId === 'sexuality-and-curiosity-and-culture-vip3') {
-    return "/vip/vip3";
-  }
-
-  // Special handling for finance parent room
-  if (roomId === 'finance-glory-vip3') {
-    return "/vip/vip3";
-  }
-
-  // Special handling for strategy in life series (multi-part VIP3 rooms)
-  if (roomId.startsWith('strategy-in-life-')) {
-    return "/vip/vip3";
-  }
-
-  // Standard tier-based routing for all other rooms
-  const tier = getRoomTier(roomId);
-  
-  if (tier) {
-    return tierToRoute(tier);
-  }
-
-  // Fallback for any room without a tier suffix
-  return "/rooms";
 }

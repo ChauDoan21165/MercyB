@@ -1,6 +1,8 @@
+// FILE: roomManifest.ts
+// PATH: src/lib/roomManifest.ts
+// VERSION: MB-BLUE-97.9c — 2026-01-15 (+0700)
 /**
  * AUTO-GENERATED — DO NOT EDIT
- * Version: MB-BLUE-97.7
  */
 export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "addiction_support_free": "data/addiction_support_free.json",

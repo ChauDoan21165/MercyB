@@ -6,37 +6,23 @@
   "keywords_en": [
     "sexuality",
     "curiosity",
-    "relationships",
-    "intimacy",
-    "vip3",
-    "education",
-    "body",
-    "consent"
+    "vip3"
   ],
   "keywords_vi": [
     "tính dục",
     "tò mò",
-    "mối quan hệ",
-    "thân mật",
-    "vip3",
-    "giáo dục",
-    "cơ thể",
-    "đồng thuận"
+    "vip3"
   ],
   "entries": [
     {
       "slug": "sexuality-intro",
       "keywords_en": [
         "sexuality",
-        "curiosity",
-        "relationships",
-        "vip3"
+        "curiosity"
       ],
       "keywords_vi": [
         "tính dục",
-        "tò mò",
-        "mối quan hệ",
-        "vip3"
+        "tò mò"
       ],
       "copy": {
         "en": "Sexuality is fascinating because it sits at the crossroads of body, emotion, identity, culture, and spirit. It shapes how we see ourselves, how we connect with others, and how we experience pleasure, boundaries, and safety. Yet most of us grew up with silence, shame, or confusing messages. A mature conversation about sex isn’t about gossip or fantasy; it’s about understanding consent, desire, communication, and respect. In the VIP3 tier, you can explore adult-only essays that go deeper into real questions—around relationships, intimacy after heartbreak, mismatched desire, faith and sexuality, or simply how to feel at home in your own body. You can even request specific topics from the admin when you’re curious or “thirsty” to learn more. Think of it as a private library for grown-ups: a safe, thoughtful place to explore one of the most human parts of your life. The goal is guidance, not judgment or pressure.",
@@ -44,25 +30,18 @@
       },
       "tags": [
         "sexuality",
-        "education",
-        "vip3",
         "intro"
       ],
-      "audio": "sexuality_fascination_free.mp3"
+      "audio": "sexuality_fascination_free.mp3",
+      "audio_en": "sexuality_fascination_free.mp3"
     },
     {
       "slug": "vip3-overview",
       "keywords_en": [
-        "vip3",
-        "sexuality & curiosity",
-        "overview",
-        "advanced"
+        "vip3"
       ],
       "keywords_vi": [
-        "vip3",
-        "tính dục & tò mò",
-        "tổng quan",
-        "nâng cao"
+        "vip3"
       ],
       "copy": {
         "en": "The VIP3 “Sexuality & Curiosity” series is a rare space for adults who want to explore one of life’s deepest energies with honesty, safety, and wonder. Across six subrooms, it guides you through everything that standard education never dared to cover—how curiosity, consent, pleasure, and identity intertwine to shape who we are. You’ll start from self-discovery and body awareness, then move into communication and relationships, learning to express desire and boundaries with clarity. Later sections dive into advanced topics like pleasure anatomy, mindful kink, diversity, and aging with vitality. You’ll also find essays on inclusion—LGBTQ+, disability, culture, and spirituality—because sexuality is never one-size-fits-all. Every entry is research-based, compassionate, and written to spark reflection rather than judgment. The tone is grown-up, mindful, and humane: this is not pornography or fantasy—it’s emotional intelligence in action. You’ll gain practical insight for intimacy, mental balance, and self-confidence, turning curiosity into courage. With over 70 entries and hours of guided audio, this VIP3 room is both a personal retreat and an education in empathy. It’s for those who want to love better, feel deeper, and live with integrity.",
@@ -71,10 +50,10 @@
       "tags": [
         "vip3",
         "overview",
-        "promotion",
-        "sexuality"
+        "promotion"
       ],
-      "audio": "sexuality_vip3_overview_free_en.mp3"
+      "audio": "sexuality_vip3_overview_free_en.mp3",
+      "audio_en": "sexuality_vip3_overview_free_en.mp3"
     }
   ],
   "id": "sexuality_curiosity_free",

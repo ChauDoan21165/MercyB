@@ -1,234 +1,134 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+// src/lib/__tests__/routeHelper.test.ts
+import { describe, it, expect } from "vitest";
 import {
-  getParentRoute,
-  isValidRoomId,
-  getRoomTier,
-  tierToRoute,
-  type ParentRoute,
-  type RoomTier,
-} from '../routeHelper';
+  ROUTES,
+  normalizeRoomId,
+  stripRoomAccessSuffix,
+  isSafeInternalPath,
+  sanitizeReturnTo,
+  withReturnTo,
+  readReturnTo,
+  roomPath,
+  classifyRoute,
+  extractRoomIdFromPath,
+} from "@/lib/routeHelper";
 
-describe('routeHelper', () => {
-  let consoleWarnSpy: ReturnType<typeof vi.spyOn>;
-
-  beforeEach(() => {
-    consoleWarnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
-  });
-
-  afterEach(() => {
-    consoleWarnSpy.mockRestore();
-  });
-
-  describe('isValidRoomId', () => {
-    it('should return false for undefined', () => {
-      expect(isValidRoomId(undefined)).toBe(false);
+describe("routeHelper", () => {
+  describe("normalizeRoomId", () => {
+    it("trims and removes leading/trailing slashes", () => {
+      expect(normalizeRoomId("  /abc/  ")).toBe("abc");
+      expect(normalizeRoomId("///abc///")).toBe("abc");
     });
 
-    it('should return false for empty string', () => {
-      expect(isValidRoomId('')).toBe(false);
-    });
-
-    it('should return true for valid room IDs', () => {
-      expect(isValidRoomId('adhd-support-free')).toBe(true);
-      expect(isValidRoomId('adhd-support-vip1')).toBe(true);
-      expect(isValidRoomId('adhd-support-vip2')).toBe(true);
-      expect(isValidRoomId('adhd-support-vip3')).toBe(true);
-    });
-
-    it('should return true for sexuality sub-rooms', () => {
-      expect(isValidRoomId('sexuality-curiosity-vip3-sub1')).toBe(true);
-      expect(isValidRoomId('sexuality-curiosity-vip3-sub2')).toBe(true);
-      expect(isValidRoomId('sexuality-curiosity-vip3-sub3')).toBe(true);
-      expect(isValidRoomId('sexuality-curiosity-vip3-sub4')).toBe(true);
-      expect(isValidRoomId('sexuality-curiosity-vip3-sub5')).toBe(true);
-      expect(isValidRoomId('sexuality-curiosity-vip3-sub6')).toBe(true);
-    });
-
-    it('should return true for special VIP3 rooms', () => {
-      expect(isValidRoomId('sexuality-and-curiosity-and-culture-vip3')).toBe(true);
-      expect(isValidRoomId('strategy-in-life-1-vip3')).toBe(true);
-      expect(isValidRoomId('strategy-in-life-2-vip3')).toBe(true);
-      expect(isValidRoomId('strategy-in-life-3-vip3')).toBe(true);
-      expect(isValidRoomId('finance-glory-vip3')).toBe(true);
-    });
-
-    it('should return false for invalid room IDs', () => {
-      expect(isValidRoomId('nonexistent-room')).toBe(false);
-      expect(isValidRoomId('fake-room-vip1')).toBe(false);
+    it("returns empty string for empty input", () => {
+      expect(normalizeRoomId("")).toBe("");
+      expect(normalizeRoomId("   ")).toBe("");
     });
   });
 
-  describe('getRoomTier', () => {
-    it('should extract tier from standard room IDs', () => {
-      expect(getRoomTier('adhd-support-free')).toBe('free');
-      expect(getRoomTier('adhd-support-vip1')).toBe('vip1');
-      expect(getRoomTier('adhd-support-vip2')).toBe('vip2');
-      expect(getRoomTier('adhd-support-vip3')).toBe('vip3');
+  describe("stripRoomAccessSuffix", () => {
+    it("strips _vip and _free suffixes", () => {
+      expect(stripRoomAccessSuffix("room_one_vip")).toBe("room_one");
+      expect(stripRoomAccessSuffix("room_one_free")).toBe("room_one");
+      expect(stripRoomAccessSuffix("room_one_VIP")).toBe("room_one");
     });
 
-    it('should return null for room IDs without tier suffix', () => {
-      expect(getRoomTier('sexuality-curiosity-vip3-sub1')).toBe(null);
-      expect(getRoomTier('invalid-room')).toBe(null);
-    });
-
-    it('should handle special VIP3 rooms with tier suffix', () => {
-      expect(getRoomTier('strategy-in-life-1-vip3')).toBe('vip3');
-      expect(getRoomTier('finance-glory-vip3')).toBe('vip3');
+    it("leaves other ids untouched", () => {
+      expect(stripRoomAccessSuffix("room_one")).toBe("room_one");
+      expect(stripRoomAccessSuffix("room_vipness")).toBe("room_vipness");
     });
   });
 
-  describe('tierToRoute', () => {
-    it('should map tiers to correct routes', () => {
-      expect(tierToRoute('free')).toBe('/rooms');
-      expect(tierToRoute('vip1')).toBe('/rooms-vip1');
-      expect(tierToRoute('vip2')).toBe('/rooms-vip2');
-      expect(tierToRoute('vip3')).toBe('/rooms-vip3');
+  describe("isSafeInternalPath", () => {
+    it("accepts normal internal paths", () => {
+      expect(isSafeInternalPath("/")).toBe(true);
+      expect(isSafeInternalPath("/room/abc")).toBe(true);
+      expect(isSafeInternalPath("/signin?x=1")).toBe(true);
     });
 
-    it('should return correct type', () => {
-      const route: ParentRoute = tierToRoute('vip3');
-      expect(route).toBe('/rooms-vip3');
+    it("rejects non-internal or dangerous paths", () => {
+      expect(isSafeInternalPath("http://evil.com")).toBe(false);
+      expect(isSafeInternalPath("//evil.com")).toBe(false);
+      expect(isSafeInternalPath("javascript:alert(1)")).toBe(false);
+      expect(isSafeInternalPath("room/abc")).toBe(false); // must start with /
+      expect(isSafeInternalPath("/\n/admin")).toBe(false);
     });
   });
 
-  describe('getParentRoute', () => {
-    describe('Edge Cases', () => {
-      it('should return /rooms for undefined', () => {
-        expect(getParentRoute(undefined)).toBe('/rooms');
-      });
-
-      it('should return /rooms for empty string', () => {
-        expect(getParentRoute('')).toBe('/rooms');
-      });
-
-      it('should warn and return /rooms for invalid room ID', () => {
-        const result = getParentRoute('nonexistent-room-vip1');
-        expect(result).toBe('/rooms');
-        expect(consoleWarnSpy).toHaveBeenCalledWith(
-          expect.stringContaining('Unknown room ID: nonexistent-room-vip1')
-        );
-      });
-
-      it('should warn when room has no tier suffix', () => {
-        // This will be an invalid room since our rooms always have tier suffixes
-        const result = getParentRoute('room-without-tier');
-        expect(result).toBe('/rooms');
-        expect(consoleWarnSpy).toHaveBeenCalled();
-      });
+  describe("sanitizeReturnTo", () => {
+    it("returns fallback when unsafe", () => {
+      expect(sanitizeReturnTo("http://evil.com", "/x")).toBe("/x");
+      expect(sanitizeReturnTo("//evil.com", "/x")).toBe("/x");
+      expect(sanitizeReturnTo("javascript:1", "/x")).toBe("/x");
+      expect(sanitizeReturnTo("room/abc", "/x")).toBe("/x");
     });
 
-    describe('Sexuality Sub-Rooms', () => {
-      it('should route all sexuality sub-rooms to /sexuality-culture', () => {
-        expect(getParentRoute('sexuality-curiosity-vip3-sub1')).toBe('/sexuality-culture');
-        expect(getParentRoute('sexuality-curiosity-vip3-sub2')).toBe('/sexuality-culture');
-        expect(getParentRoute('sexuality-curiosity-vip3-sub3')).toBe('/sexuality-culture');
-        expect(getParentRoute('sexuality-curiosity-vip3-sub4')).toBe('/sexuality-culture');
-        expect(getParentRoute('sexuality-curiosity-vip3-sub5')).toBe('/sexuality-culture');
-        expect(getParentRoute('sexuality-curiosity-vip3-sub6')).toBe('/sexuality-culture');
-      });
+    it("returns path when safe", () => {
+      expect(sanitizeReturnTo("/room/abc", "/x")).toBe("/room/abc");
+      expect(sanitizeReturnTo("/", "/x")).toBe("/");
+    });
+  });
 
-      it('should route sexuality parent room to /rooms-vip3', () => {
-        expect(getParentRoute('sexuality-and-curiosity-and-culture-vip3')).toBe('/rooms-vip3');
-      });
+  describe("withReturnTo / readReturnTo", () => {
+    it("adds encoded returnTo param", () => {
+      const url = withReturnTo("/signin", "/room/abc?x=1");
+      expect(url.startsWith("/signin?returnTo=")).toBe(true);
+      expect(url).toContain(encodeURIComponent("/room/abc?x=1"));
     });
 
-    describe('Strategy in Life Series', () => {
-      it('should route all strategy rooms to /rooms-vip3', () => {
-        expect(getParentRoute('strategy-in-life-1-vip3')).toBe('/rooms-vip3');
-        expect(getParentRoute('strategy-in-life-2-vip3')).toBe('/rooms-vip3');
-        expect(getParentRoute('strategy-in-life-3-vip3')).toBe('/rooms-vip3');
-      });
+    it("reads returnTo safely from params", () => {
+      const params = new URLSearchParams("returnTo=%2Froom%2Fabc");
+      expect(readReturnTo(params, "/fallback")).toBe("/room/abc");
+
+      const bad = new URLSearchParams("returnTo=http%3A%2F%2Fevil.com");
+      expect(readReturnTo(bad, "/fallback")).toBe("/fallback");
+    });
+  });
+
+  describe("roomPath", () => {
+    it("builds /room/:roomId", () => {
+      expect(roomPath("abc")).toBe("/room/abc");
+      expect(roomPath("/abc/")).toBe("/room/abc");
+    });
+  });
+
+  describe("classifyRoute", () => {
+    it("classifies basic routes", () => {
+      expect(classifyRoute("/")).toBe("home");
+      expect(classifyRoute("/signin")).toBe("signin");
+      expect(classifyRoute("/admin")).toBe("admin");
+      expect(classifyRoute("/tiers")).toBe("tiers");
+      expect(classifyRoute("/room/abc")).toBe("room");
     });
 
-    describe('Special VIP3 Rooms', () => {
-      it('should route finance glory to /rooms-vip3', () => {
-        expect(getParentRoute('finance-glory-vip3')).toBe('/rooms-vip3');
-      });
+    it("treats unknown as home (safe default)", () => {
+      expect(classifyRoute("/something-else")).toBe("home");
+    });
+  });
+
+  describe("extractRoomIdFromPath", () => {
+    it("extracts roomId from /room/:id", () => {
+      expect(extractRoomIdFromPath("/room/abc")).toBe("abc");
+      expect(extractRoomIdFromPath("/room/abc/extra")).toBe("abc");
     });
 
-    describe('Standard Tier-Based Rooms', () => {
-      it('should route free tier rooms to /rooms', () => {
-        expect(getParentRoute('adhd-support-free')).toBe('/rooms');
-        expect(getParentRoute('anxiety-relief-free')).toBe('/rooms');
-        expect(getParentRoute('mental-health-free')).toBe('/rooms');
-        expect(getParentRoute('mindfulness-free')).toBe('/rooms');
-      });
-
-      it('should route VIP1 rooms to /rooms-vip1', () => {
-        expect(getParentRoute('adhd-support-vip1')).toBe('/rooms-vip1');
-        expect(getParentRoute('anxiety-relief-vip1')).toBe('/rooms-vip1');
-        expect(getParentRoute('mental-health-vip1')).toBe('/rooms-vip1');
-      });
-
-      it('should route VIP2 rooms to /rooms-vip2', () => {
-        expect(getParentRoute('adhd-support-vip2')).toBe('/rooms-vip2');
-        expect(getParentRoute('anxiety-relief-vip2')).toBe('/rooms-vip2');
-        expect(getParentRoute('burnout-recovery-vip2')).toBe('/rooms-vip2');
-      });
-
-      it('should route VIP3 rooms to /rooms-vip3', () => {
-        expect(getParentRoute('adhd-support-vip3')).toBe('/rooms-vip3');
-        expect(getParentRoute('anxiety-relief-vip3')).toBe('/rooms-vip3');
-        expect(getParentRoute('mental-health-vip3')).toBe('/rooms-vip3');
-        expect(getParentRoute('mindfulness-vip3')).toBe('/rooms-vip3');
-      });
+    it("decodes encoded ids", () => {
+      expect(extractRoomIdFromPath("/room/a%20b")).toBe("a b");
     });
 
-    describe('All Room Categories', () => {
-      it('should handle ADHD support rooms across all tiers', () => {
-        expect(getParentRoute('adhd-support-free')).toBe('/rooms');
-        expect(getParentRoute('adhd-support-vip1')).toBe('/rooms-vip1');
-        expect(getParentRoute('adhd-support-vip2')).toBe('/rooms-vip2');
-        expect(getParentRoute('adhd-support-vip3')).toBe('/rooms-vip3');
-      });
-
-      it('should handle depression support rooms across all tiers', () => {
-        expect(getParentRoute('depression-support-free')).toBe('/rooms');
-        expect(getParentRoute('depression-support-vip1')).toBe('/rooms-vip1');
-        expect(getParentRoute('depression-support-vip2')).toBe('/rooms-vip2');
-        expect(getParentRoute('depression-support-vip3')).toBe('/rooms-vip3');
-      });
-
-      it('should handle confidence rooms across all tiers', () => {
-        expect(getParentRoute('confidence-free')).toBe('/rooms');
-        expect(getParentRoute('confidence-vip1')).toBe('/rooms-vip1');
-        expect(getParentRoute('confidence-vip2')).toBe('/rooms-vip2');
-        expect(getParentRoute('confidence-vip3')).toBe('/rooms-vip3');
-      });
-
-      it('should handle nutrition rooms across all tiers', () => {
-        expect(getParentRoute('nutrition-free')).toBe('/rooms');
-        expect(getParentRoute('nutrition-vip1')).toBe('/rooms-vip1');
-        expect(getParentRoute('nutrition-vip2')).toBe('/rooms-vip2');
-        expect(getParentRoute('nutrition-vip3')).toBe('/rooms-vip3');
-      });
+    it("returns empty for non-room routes", () => {
+      expect(extractRoomIdFromPath("/tiers")).toBe("");
+      expect(extractRoomIdFromPath("/")).toBe("");
     });
+  });
 
-    describe('Type Safety', () => {
-      it('should return ParentRoute type', () => {
-        const route: ParentRoute = getParentRoute('adhd-support-vip3');
-        expect(['/rooms', '/rooms-vip1', '/rooms-vip2', '/rooms-vip3', '/sexuality-culture']).toContain(route);
-      });
-
-      it('should accept string or undefined', () => {
-        const route1: ParentRoute = getParentRoute('adhd-support-free');
-        const route2: ParentRoute = getParentRoute(undefined);
-        expect(route1).toBe('/rooms');
-        expect(route2).toBe('/rooms');
-      });
-    });
-
-    describe('Pattern Matching Priority', () => {
-      it('should prioritize sexuality sub-room pattern over tier pattern', () => {
-        // Even though it ends with a tier-like pattern, the prefix should match first
-        expect(getParentRoute('sexuality-curiosity-vip3-sub1')).toBe('/sexuality-culture');
-      });
-
-      it('should check special rooms before tier-based routing', () => {
-        expect(getParentRoute('sexuality-and-curiosity-and-culture-vip3')).toBe('/rooms-vip3');
-        expect(getParentRoute('strategy-in-life-1-vip3')).toBe('/rooms-vip3');
-        expect(getParentRoute('finance-glory-vip3')).toBe('/rooms-vip3');
-      });
+  describe("ROUTES", () => {
+    it("has stable base routes", () => {
+      expect(ROUTES.home).toBe("/");
+      expect(ROUTES.signin).toBe("/signin");
+      expect(ROUTES.admin).toBe("/admin");
+      expect(ROUTES.tiers).toBe("/tiers");
+      expect(ROUTES.room("abc")).toBe("/room/abc");
     });
   });
 });

@@ -1,36 +1,35 @@
 {
+  "_meta": {
+    "file": "package.json",
+    "version": "MB-BLUE-101.12c",
+    "date": "2026-01-15 (+0700)",
+    "note": "Add check:kw-coverage script. Keep _meta. Vitest config must not import @vitejs/plugin-react-swc unless installed."
+  },
   "name": "vite_react_shadcn_ts",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite --host 127.0.0.1 --port 3107 --strictPort",
-
-    "generate:room-registry": "node scripts/generate-room-registry.js",
-    "generate:audio-manifest": "node scripts/generate-audio-manifest.js",
-    "validate-rooms": "node scripts/validate-rooms.js",
-    "validate-rooms:core": "MB_VALIDATE_CORE_ONLY=1 node scripts/validate-rooms.js",
-    "check:tiers": "node scripts/check-room-tiers.js",
-    "check:empty-entries": "node scripts/check-rooms-empty-entries.js",
-    "check:empty-rooms": "node scripts/check-empty-rooms.js",
-
+    "generate:room-registry": "node scripts/generate-room-registry.mjs",
+    "generate:audio-manifest": "node scripts/generate-audio-manifest.mjs",
+    "validate-rooms": "node scripts/validate-rooms.mjs",
+    "validate-rooms:core": "MB_VALIDATE_CORE_ONLY=1 node scripts/validate-rooms.mjs",
+    "check:tiers": "node scripts/check-room-tiers.cjs",
+    "check:empty-entries": "node scripts/check-rooms-empty-entries.mjs",
+    "check:empty-rooms": "node scripts/check-empty-rooms.cjs",
+    "check:kw-coverage": "node scripts/check-rooms-keyword-coverage.mjs",
     "rooms:check": "npm run generate:room-registry && npm run validate-rooms:core",
     "prebuild": "npm run rooms:check",
-
     "build": "npm run generate:audio-manifest && vite build",
     "build:dev": "vite build --mode development",
-
     "lint": "eslint .",
-
     "preview": "vite preview --host 127.0.0.1 --port 3107 --strictPort",
-
     "system:check": "tsx scripts/check-system-health.ts",
     "audio:tts": "tsx scripts/generate-missing-audio.ts",
-
     "typecheck": "npm run typecheck:app",
-    "typecheck:app": "tsc -p tsconfig.json --noEmit",
+    "typecheck:app": "tsc -p tsconfig.typecheck.json --noEmit",
     "typecheck:scripts": "node -e \"const fs=require('fs'); if(!fs.existsSync('tsconfig.scripts.json')) { console.log('[skip] tsconfig.scripts.json not found'); process.exit(0);} process.exit(0);\" && tsc -p tsconfig.scripts.json --noEmit",
-
     "test": "vitest run",
     "test:ci": "vitest run --reporter=verbose"
   },
@@ -79,14 +78,18 @@
     "zod": "^4.2.1"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.1",
+    "@testing-library/user-event": "^14.6.1",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "@typescript-eslint/eslint-plugin": "^8.51.0",
     "@typescript-eslint/parser": "^8.51.0",
-    "@vitejs/plugin-react": "^4.3.1",
+    "@vitejs/plugin-react": "^4.7.0",
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.26",
+    "jsdom": "^27.4.0",
     "tsx": "^4.7.0",
     "typescript-eslint": "^8.51.0",
     "vite": "5.4.21",

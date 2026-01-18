@@ -14,21 +14,26 @@ function normalizeRoomIdForCanonicalFile(input: string): string {
   return (input || "")
     .trim()
     .toLowerCase()
+    .replace(/\.json$/i, "")
     .replace(/[-\s]+/g, "_")
     .replace(/_+/g, "_");
 }
 
 const LOG_PREFIX = "[roomFetcher]";
 
-export type RoomSummary = {
+// Some legacy tests/pages import RoomMeta.
+// Keep it minimal + compatible.
+export type RoomMeta = {
   id: string;
   tier?: string;
   title_en?: string;
   title_vi?: string;
   intro_en?: string;
   intro_vi?: string;
-  path?: string; // data/<file>.json (optional convenience)
+  path?: string; // data/<file>.json
 };
+
+export type RoomSummary = RoomMeta;
 
 type AnyRoomJson = {
   id?: string;
@@ -39,16 +44,16 @@ type AnyRoomJson = {
   name_vi?: string;
   intro_text?: string;
   intro_vi?: string;
+  description?: string;
+  description_vi?: string;
 };
 
 /**
  * Fetch a single room JSON via manifest path (local public/data).
  */
 export async function fetchRoomJsonById(roomId: string): Promise<AnyRoomJson | null> {
-  // Normalize incoming roomId to match manifest keys (lowercase, no .json)
   const canonicalRoomId = normalizeRoomIdForCanonicalFile(roomId);
-
-  const path = PUBLIC_ROOM_MANIFEST[canonicalRoomId];
+  const path = (PUBLIC_ROOM_MANIFEST as Record<string, string>)[canonicalRoomId];
   if (!path) return null;
 
   try {
@@ -56,6 +61,7 @@ export async function fetchRoomJsonById(roomId: string): Promise<AnyRoomJson | n
     if (!res.ok) return null;
     return (await res.json()) as AnyRoomJson;
   } catch (err) {
+    // eslint-disable-next-line no-console
     console.warn(`${LOG_PREFIX} fetchRoomJsonById error:`, err);
     return null;
   }
@@ -65,29 +71,32 @@ export async function fetchRoomJsonById(roomId: string): Promise<AnyRoomJson | n
  * Build all room summaries from local manifest (no Supabase needed).
  */
 export async function fetchAllRoomSummaries(): Promise<RoomSummary[]> {
-  const ids = Object.keys(PUBLIC_ROOM_MANIFEST);
+  const ids = Object.keys(PUBLIC_ROOM_MANIFEST as Record<string, string>);
 
-  // Try to read JSON for each room (best), but never fail the whole list.
   const results = await Promise.all(
     ids.map(async (id) => {
       const json = await fetchRoomJsonById(id);
 
-      // If JSON fails, still return a minimal summary so UI can render list.
       if (!json) {
         return {
           id,
-          path: PUBLIC_ROOM_MANIFEST[id],
+          path: (PUBLIC_ROOM_MANIFEST as Record<string, string>)[id],
         } satisfies RoomSummary;
       }
 
+      const introEN =
+        json.intro?.en ?? (json as any).intro_text ?? json.description ?? "";
+      const introVI =
+        json.intro?.vi ?? (json as any).intro_vi ?? json.description_vi ?? "";
+
       return {
-        id,
+        id: json.id ?? id,
         tier: json.tier,
         title_en: json.title?.en ?? json.name,
         title_vi: json.title?.vi ?? json.name_vi,
-        intro_en: json.intro?.en ?? (json as any).intro_text,
-        intro_vi: json.intro?.vi ?? (json as any).intro_vi,
-        path: PUBLIC_ROOM_MANIFEST[id],
+        intro_en: introEN,
+        intro_vi: introVI,
+        path: (PUBLIC_ROOM_MANIFEST as Record<string, string>)[id],
       } satisfies RoomSummary;
     })
   );
@@ -97,14 +106,12 @@ export async function fetchAllRoomSummaries(): Promise<RoomSummary[]> {
 
 /**
  * Optional: Try Supabase in the background, never blocks UI.
- * Keep this only if other legacy code expects it.
  */
 async function tryFetchRoomsFromSupabaseNonBlocking(): Promise<void> {
   try {
-    // If you later want this, implement with your supabase client here.
-    // IMPORTANT: Must not throw or block.
     return;
   } catch (err) {
+    // eslint-disable-next-line no-console
     console.warn(`${LOG_PREFIX} Supabase all rooms error:`, err);
     return;
   }
@@ -112,21 +119,24 @@ async function tryFetchRoomsFromSupabaseNonBlocking(): Promise<void> {
 
 /**
  * Legacy-compatible export: some UI might still call fetchAllRooms().
- * Always returns local summaries first and never blocks.
  */
 export async function fetchAllRooms(): Promise<RoomSummary[]> {
   const local = await fetchAllRoomSummaries();
-
-  // Fire and forget (do not await)
   void tryFetchRoomsFromSupabaseNonBlocking();
-
   return local;
 }
 
 /**
- * REQUIRED BY roomRegistry.ts right now
- * Provide the named export that the app imports.
+ * REQUIRED BY some diagnostics code.
  */
 export async function getAllRooms(): Promise<RoomSummary[]> {
+  return fetchAllRooms();
+}
+
+/**
+ * ✅ REQUIRED BY tests/diagnostics:
+ * - getRoomList(): returns array of rooms (meta)
+ */
+export async function getRoomList(): Promise<RoomMeta[]> {
   return fetchAllRooms();
 }

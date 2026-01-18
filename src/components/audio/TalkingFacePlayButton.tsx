@@ -1,5 +1,5 @@
 // src/components/audio/TalkingFacePlayButton.tsx
-// MB-BLUE-99.3 — 2025-12-30 (+0700)
+// MB-BLUE-99.3 → MB-BLUE-99.3-host-repeat-target — 2026-01-18 (+0700)
 /**
  * TalkingFacePlayButton (AUTHORITATIVE UI MOTIF)
  * - Small round face with eyes + cheeks
@@ -10,6 +10,12 @@
  * LOCKED:
  * - No global audio state assumptions here
  * - Safe standalone Audio() per instance (current architecture)
+ *
+ * NEW (Mercy Host repeat loop, NO AI):
+ * - On actual audio "play" event, dispatch `mb:host-repeat-target`
+ * - Payload: { audioUrl, label, startedAt, srcKey }
+ * - Room/entry context is OPTIONAL and can be attached by the caller via data attrs later,
+ *   but we keep this component safe/standalone.
  */
 
 import React, { useEffect, useId, useMemo, useRef, useState } from "react";
@@ -21,17 +27,33 @@ function fmtTime(n: number) {
   return `${m}:${String(s).padStart(2, "0")}`;
 }
 
+type Props = {
+  src: string;
+  label?: string;
+  className?: string;
+  fullWidthBar?: boolean;
+
+  /**
+   * OPTIONAL: If caller knows room/entry context, pass it through.
+   * This keeps TalkingFacePlayButton standalone, but allows RoomRenderer
+   * to wire room-aware repeat coaching without coupling.
+   */
+  hostContext?: {
+    roomId?: string;
+    entryId?: string;
+    text_en?: string;
+    text_vi?: string;
+    keyword?: string;
+  };
+};
+
 export default function TalkingFacePlayButton({
   src,
   label,
   className,
   fullWidthBar,
-}: {
-  src: string;
-  label?: string;
-  className?: string;
-  fullWidthBar?: boolean;
-}) {
+  hostContext,
+}: Props) {
   const uid = useId().replace(/[:]/g, "");
   const gradId = `mbFaceGrad_${uid}`;
 
@@ -50,6 +72,25 @@ export default function TalkingFacePlayButton({
     return Math.max(0, Math.min(1, t / dur));
   }, [t, dur]);
 
+  // Dispatch repeat-target to Mercy Host on actual "play"
+  const dispatchHostRepeatTarget = (audioUrl: string) => {
+    try {
+      if (typeof window === "undefined") return;
+
+      const detail = {
+        audioUrl,
+        label: shownLabel || undefined,
+        startedAt: new Date().toISOString(),
+        srcKey: audioUrl,
+        hostContext: hostContext ?? undefined,
+      };
+
+      window.dispatchEvent(new CustomEvent("mb:host-repeat-target", { detail }));
+    } catch {
+      // Never crash because of host dispatch
+    }
+  };
+
   useEffect(() => {
     setReady(false);
     setPlaying(false);
@@ -67,7 +108,12 @@ export default function TalkingFacePlayButton({
       setDur(Number.isFinite(a.duration) ? a.duration : 0);
     };
     const onTime = () => setT(a.currentTime || 0);
-    const onPlay = () => setPlaying(true);
+    const onPlay = () => {
+      setPlaying(true);
+      // IMPORTANT: dispatch on the real play event (not on click),
+      // so it reflects actual playback start.
+      if (safeSrc) dispatchHostRepeatTarget(safeSrc);
+    };
     const onPause = () => setPlaying(false);
     const onEnded = () => {
       setPlaying(false);
@@ -89,7 +135,7 @@ export default function TalkingFacePlayButton({
       a.removeEventListener("ended", onEnded);
       audioRef.current = null;
     };
-  }, [safeSrc]);
+  }, [safeSrc, hostContext, shownLabel]);
 
   const toggle = () => {
     const a = audioRef.current;
@@ -275,5 +321,6 @@ export default function TalkingFacePlayButton({
   );
 }
 
-/** New thing to learn:
- * SVG ids must be unique per component instance (useId) or gradients will “fight” across the page. */
+/** teacher GPT — new thing to learn (2 lines):
+ * If you want Mercy Host to “know” learning started, dispatch on the real `audio.play` event, not on click.
+ * Keep context optional: players emit signals; rooms add meaning. */

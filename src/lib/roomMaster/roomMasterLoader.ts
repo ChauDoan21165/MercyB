@@ -1,165 +1,102 @@
-// MB-BLUE-14.4 — 2025-12-18
-// RoomMaster Loader - Unified loader for JSON and database rooms
+// FILE: roomMasterLoader.ts
+// PATH: src/lib/roomMaster/roomMasterLoader.ts
+// VERSION: MB-BLUE-97.9d — 2026-01-18 (+0700)
+//
+// FIX (vip3ii burial + export):
+// - vip3ii is DELETED as a tier. Treat legacy room ids containing "vip3ii" as vip3.
+// - Add named export roomMasterLoader for backward-compat with simulator imports.
+// - Keep strict: never default unknown → free.
 
-import type { RoomJson, RoomMasterOutput, ValidationMode } from './roomMasterTypes';
-import { validateRoom } from './roomMaster';
+import type { TierId } from "@/lib/constants/tiers";
+import { isValidTierId, tierLabelToId } from "@/lib/constants/tiers";
 
-/**
- * Load room from JSON file or database and run through RoomMaster validation
- */
-export async function roomMasterLoader(
-  roomId: string,
-  mode: ValidationMode = {
-    mode: 'relaxed',
-    allowMissingFields: true,
-    allowEmptyEntries: false,
-    requireAudio: false,
-    requireBilingualCopy: true,
-    minEntries: 2,
-    maxEntries: 8,
+type AnyRoom = {
+  id: string;
+  tier?: string | null;
+  [k: string]: any;
+};
+
+function inferTierFromRoomId(roomId: string): TierId | undefined {
+  const s = String(roomId || "").toLowerCase();
+
+  // kids first
+  if (s.includes("kids_1") || s.includes("_kids_1")) return "kids_1";
+  if (s.includes("kids_2") || s.includes("_kids_2")) return "kids_2";
+  if (s.includes("kids_3") || s.includes("_kids_3")) return "kids_3";
+
+  // vip3ii is DELETED → map legacy ids to vip3
+  if (s.includes("vip3ii") || s.includes("_vip3ii")) return "vip3";
+
+  // vipN suffixes (common: _vip3, _vip4_bonus, etc.)
+  const m = s.match(/_vip([1-9])\b/);
+  if (m?.[1]) return `vip${m[1]}` as TierId;
+
+  // explicit free suffix
+  if (s.includes("_free")) return "free";
+
+  return undefined;
+}
+
+function parseTierStrict(room: AnyRoom): TierId | undefined {
+  // 1) infer from id (most reliable when tiers are missing)
+  const inferred = inferTierFromRoomId(room.id);
+  if (inferred) return inferred;
+
+  // 2) parse provided tier string if present
+  const raw = room.tier;
+  if (raw == null) return undefined;
+
+  const s = String(raw).trim();
+  if (!s) return undefined;
+
+  const lower = s.toLowerCase().trim();
+
+  // If already canonical id
+  if (isValidTierId(lower)) return lower as TierId;
+
+  // Only attempt tierLabelToId if it actually looks like a tier string.
+  // Otherwise tierLabelToId() may default unknown → "free".
+  const looksLikeTier =
+    /vip\s*\d/i.test(s) ||
+    /vip\d/i.test(s) ||
+    /vip\s*3\s*ii/i.test(s) ||
+    /vip3ii/i.test(s) ||
+    /kids/i.test(s) ||
+    /trẻ em/i.test(s) ||
+    /mien phi|miễn phí|free/i.test(s);
+
+  if (!looksLikeTier) return undefined;
+
+  // If old UI label still says VIP3II -> treat as vip3 (vip3ii is deleted)
+  if (/vip\s*3\s*ii/i.test(s) || /vip3ii/i.test(s)) return "vip3";
+
+  const mapped = tierLabelToId(s);
+
+  // Guard: tierLabelToId() falls back to "free" when unrecognized.
+  // Only accept "free" if the raw string actually indicates free.
+  if (mapped === "free") {
+    const isReallyFree = /mien phi|miễn phí|free/i.test(s);
+    return isReallyFree ? "free" : undefined;
   }
-): Promise<RoomMasterOutput> {
-  try {
-    // Source of truth: GitHub /public/data (served at runtime as /data). Database is optional/secondary.
-    // For now we try DB first, then fall back to JSON (until we remove DB path completely).
-    const dbData = await loadRoomFromDatabase(roomId);
 
-    if (dbData) {
-      return validateRoom(dbData, mode);
-    }
+  return mapped;
+}
 
-    const jsonData = await loadRoomJson(roomId);
-    if (jsonData) {
-      return validateRoom(jsonData, mode);
-    }
+// ---- Your existing loader export should call this coercion ----
+export function coerceRoomMaster(room: AnyRoom): AnyRoom & { tier?: TierId } {
+  const tierId = parseTierStrict(room);
 
-    // Room not found
-    throw new Error(`Room not found: ${roomId}`);
-  } catch (error: any) {
-    // Return error output
-    return {
-      cleanedRoom: {
-        id: roomId,
-        tier: 'free',
-        title: { en: 'Not Found', vi: 'Không Tìm Thấy' },
-        entries: [],
-      },
-      errors: [
-        {
-          field: 'room',
-          rule: 'ROOM_NOT_FOUND',
-          severity: 'error',
-          message: error.message || 'Room not found',
-          autoFixable: false,
-        },
-      ],
-      warnings: [],
-      autofixed: false,
-      crisisFlags: [],
-      validationMode: mode.mode,
-    };
-  }
+  return {
+    ...room,
+    tier: tierId, // ✅ no default-to-free
+  };
 }
 
 /**
- * Load room from JSON served at /data/{id}.json (from /public/data in repo)
+ * Backward-compat named export:
+ * Some simulator code imports { roomMasterLoader } from this file.
+ * We keep it as a thin wrapper around the strict coercion.
  */
-async function loadRoomJson(roomId: string): Promise<RoomJson | null> {
-  try {
-    const { loadRoomJson } = await import('@/lib/roomJsonResolver');
-    return await loadRoomJson(roomId);
-  } catch (error) {
-    if (import.meta.env.DEV) {
-      console.warn(`[RoomMasterLoader] Failed to load JSON for ${roomId}:`, error);
-    }
-    return null;
-  }
-}
-/**
- * Load room from database
- */
-async function loadRoomFromDatabase(roomId: string): Promise<RoomJson | null> {
-  try {
-    const { supabase } = await import('@/lib/supabaseClient');
-
-    const { data: room, error } = await supabase
-      .from('rooms')
-      .select('*')
-      .eq('id', roomId)
-      .maybeSingle();
-
-    if (error || !room) {
-      return null;
-    }
-
-    // Transform database row to RoomJson format
-    const roomJson: RoomJson = {
-      id: room.id,
-      tier: room.tier || 'free',
-      title: {
-        en: room.title_en || room.id,
-        vi: room.title_vi || room.title_en || room.id,
-      },
-      entries: Array.isArray(room.entries) ? room.entries : [],
-    };
-
-    if (room.room_essay_en || room.room_essay_vi) {
-      roomJson.content = {
-        en: room.room_essay_en || '',
-        vi: room.room_essay_vi || '',
-      };
-    }
-
-    if (Array.isArray(room.keywords) && room.keywords.length > 0) {
-      roomJson.keywords = room.keywords;
-    }
-
-    if (room.domain) {
-      roomJson.domain = room.domain;
-    }
-
-    if (room.schema_id) {
-      roomJson.schema_id = room.schema_id;
-    }
-
-    if (room.safety_disclaimer_en || room.safety_disclaimer_vi) {
-      roomJson.safety_disclaimer = {
-        en: room.safety_disclaimer_en || '',
-        vi: room.safety_disclaimer_vi || '',
-      };
-    }
-
-    if (room.crisis_footer_en || room.crisis_footer_vi) {
-      roomJson.crisis_footer = {
-        en: room.crisis_footer_en || '',
-        vi: room.crisis_footer_vi || '',
-      };
-    }
-
-    return roomJson;
-  } catch (error) {
-    if (import.meta.env.DEV) {
-      console.warn(`[RoomMasterLoader] Failed to load from database for ${roomId}:`, error);
-    }
-    return null;
-  }
-}
-
-/**
- * Batch load multiple rooms
- */
-export async function roomMasterBatchLoader(
-  roomIds: string[],
-  mode: ValidationMode = {
-    mode: 'relaxed',
-    allowMissingFields: true,
-    allowEmptyEntries: false,
-    requireAudio: false,
-    requireBilingualCopy: true,
-    minEntries: 2,
-    maxEntries: 8,
-  }
-): Promise<RoomMasterOutput[]> {
-  const results = await Promise.all(roomIds.map((id) => roomMasterLoader(id, mode)));
-  return results;
+export function roomMasterLoader(room: AnyRoom): AnyRoom & { tier?: TierId } {
+  return coerceRoomMaster(room);
 }

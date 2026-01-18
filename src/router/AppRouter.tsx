@@ -1,5 +1,5 @@
 // src/router/AppRouter.tsx
-// MB-BLUE-101.5 — 2026-01-01 (+0700)
+// MB-BLUE-101.5 → MB-BLUE-101.5b — 2026-01-14 (+0700)
 //
 // ROUTING RULES (LOCKED):
 // - Home route: /
@@ -28,9 +28,25 @@
 // FIX (101.5):
 // - Standardize AdminRoute import to DEFAULT export (no braces).
 // - Remove legacy NotFound import; use local NotFound to avoid dependency loops.
+//
+// ✅ FIX (101.5a):
+// - Add AdminVIPRooms import + guarded route: /admin/vip-rooms
+//
+// ✅ CRITICAL FIX (admin blank page):
+// - Use nested routing under "/admin/*" so dashboard is the INDEX route.
+// - Wrap AdminLayout/AdminRoute ONCE at the parent.
+// - TEMP: Remove RequireMercyAuth wrapper from admin routes because it can return null (blank page).
+//   AdminRoute + useUserAccess is the real gate here.
+//
+// 🔒 ADMIN ROUTING CONTRACT (LOCKED):
+// - Admin routes MUST be nested under "/admin/*".
+// - AdminRoute + AdminLayout MUST appear ONCE (in AdminShell only).
+// - AdminDashboard MUST be the index route.
+// - Do NOT wrap individual admin pages with AdminLayout/AdminRoute.
+// - Unknown /admin/* subpaths must land safely (dashboard).
 
 import React from "react";
-import { Routes, Route, Navigate, useParams } from "react-router-dom";
+import { Routes, Route, Navigate, useParams, Outlet } from "react-router-dom";
 
 import ChatHub from "@/pages/ChatHub";
 import AllRooms from "@/pages/AllRooms";
@@ -42,9 +58,6 @@ import TierDetail from "@/pages/TierDetail";
 
 // ✅ Auth / Signin
 import LoginPage from "@/pages/LoginPage";
-
-// ✅ Ecosystem auth gate (Mercy Core → redirect to canonical login)
-import RequireMercyAuth from "@/components/auth/RequireMercyAuth";
 
 // ✅ Admin guard + layout + control board
 import AdminRoute from "@/components/admin/AdminRoute";
@@ -61,6 +74,9 @@ import AudioCoveragePage from "@/pages/admin/AudioCoveragePage";
 // ✅ Monitoring + Metrics
 import AdminMonitoring from "@/pages/admin/AdminMonitoring";
 import AdminMetrics from "@/pages/admin/AdminMetrics";
+
+// ✅ VIP Rooms
+import AdminVIPRooms from "@/pages/admin/AdminVIPRooms";
 
 // ✅ Mercy AI Host (global floating guide)
 import MercyAIHost from "@/components/guide/MercyAIHost";
@@ -121,6 +137,22 @@ function AuthRedirect() {
   return <Navigate to="/signin" replace />;
 }
 
+/**
+ * ADMIN SHELL (nested routes) — LOCKED
+ * - Guards ONCE
+ * - Layout ONCE
+ * - Child pages render via <Outlet />
+ */
+function AdminShell() {
+  return (
+    <AdminRoute>
+      <AdminLayout>
+        <Outlet />
+      </AdminLayout>
+    </AdminRoute>
+  );
+}
+
 export default function AppRouter() {
   return (
     <>
@@ -151,109 +183,26 @@ export default function AppRouter() {
         <Route path="/room/:roomId" element={<ChatHub />} />
 
         {/* =========================
-            ✅ ADMIN (GUARDED)
-            ✅ ALSO: Ecosystem auth gate first (redirect to Mercy canonical login)
+            ✅ ADMIN (GUARDED) — LOCKED
+            ✅ Parent is /admin/* with INDEX dashboard
            ========================= */}
-        <Route
-          path="/admin"
-          element={
-            <RequireMercyAuth>
-              <AdminRoute>
-                <AdminLayout>
-                  <AdminDashboard />
-                </AdminLayout>
-              </AdminRoute>
-            </RequireMercyAuth>
-          }
-        />
-        <Route
-          path="/admin/payments"
-          element={
-            <RequireMercyAuth>
-              <AdminRoute>
-                <AdminLayout>
-                  <AdminPayments />
-                </AdminLayout>
-              </AdminRoute>
-            </RequireMercyAuth>
-          }
-        />
-        <Route
-          path="/admin/bank-transfers"
-          element={
-            <RequireMercyAuth>
-              <AdminRoute>
-                <AdminLayout>
-                  <AdminBankTransfers />
-                </AdminLayout>
-              </AdminRoute>
-            </RequireMercyAuth>
-          }
-        />
-        <Route
-          path="/admin/payment-verification"
-          element={
-            <RequireMercyAuth>
-              <AdminRoute>
-                <AdminLayout>
-                  <AdminPaymentVerification />
-                </AdminLayout>
-              </AdminRoute>
-            </RequireMercyAuth>
-          }
-        />
-        <Route
-          path="/admin/access-codes"
-          element={
-            <RequireMercyAuth>
-              <AdminRoute>
-                <AdminLayout>
-                  <AdminAccessCodes />
-                </AdminLayout>
-              </AdminRoute>
-            </RequireMercyAuth>
-          }
-        />
-        <Route
-          path="/admin/audio-coverage"
-          element={
-            <RequireMercyAuth>
-              <AdminRoute>
-                <AdminLayout>
-                  <AudioCoveragePage />
-                </AdminLayout>
-              </AdminRoute>
-            </RequireMercyAuth>
-          }
-        />
+        <Route path="/admin/*" element={<AdminShell />}>
+          {/* Dashboard */}
+          <Route index element={<AdminDashboard />} />
 
-        {/* ✅ Monitoring (guarded) */}
-        <Route
-          path="/admin/monitoring"
-          element={
-            <RequireMercyAuth>
-              <AdminRoute>
-                <AdminLayout>
-                  <AdminMonitoring />
-                </AdminLayout>
-              </AdminRoute>
-            </RequireMercyAuth>
-          }
-        />
+          {/* Pages */}
+          <Route path="payments" element={<AdminPayments />} />
+          <Route path="bank-transfers" element={<AdminBankTransfers />} />
+          <Route path="payment-verification" element={<AdminPaymentVerification />} />
+          <Route path="access-codes" element={<AdminAccessCodes />} />
+          <Route path="audio-coverage" element={<AudioCoveragePage />} />
+          <Route path="monitoring" element={<AdminMonitoring />} />
+          <Route path="metrics" element={<AdminMetrics />} />
+          <Route path="vip-rooms" element={<AdminVIPRooms />} />
 
-        {/* ✅ Metrics (guarded) */}
-        <Route
-          path="/admin/metrics"
-          element={
-            <RequireMercyAuth>
-              <AdminRoute>
-                <AdminLayout>
-                  <AdminMetrics />
-                </AdminLayout>
-              </AdminRoute>
-            </RequireMercyAuth>
-          }
-        />
+          {/* Unknown admin subpath → dashboard (safe default) */}
+          <Route path="*" element={<AdminDashboard />} />
+        </Route>
 
         {/* Fallback */}
         <Route path="*" element={<NotFound />} />
@@ -266,5 +215,5 @@ export default function AppRouter() {
 }
 
 /* New thing to learn:
-   Keep “Monitoring” (streams) and “Metrics” (KPIs) separate pages:
-   streams explain “what happened”, metrics answer “how big is it”. */
+   In React Router v6, "/admin/*" should usually be a parent route with nested children + an index route.
+   If you put the dashboard directly on "/admin/*" without nesting, you can get confusing “blank page” behavior. */
