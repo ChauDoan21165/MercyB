@@ -87,7 +87,12 @@ export function setupSessionMonitoring(
       if (!session) {
         onExpired();
       }
-    }});
+    }
+    
+    if (event === 'USER_DELETED') {
+      onExpired();
+    }
+  });
 
   return () => subscription.unsubscribe();
 }

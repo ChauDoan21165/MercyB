@@ -7,7 +7,7 @@ const VALID_TIERS: TierId[] = [
   'vip1',
   'vip2',
   'vip3',
-  'vip3',
+  'vip3ii',
   'vip4',
   'vip5',
   'vip6',
@@ -107,12 +107,12 @@ export function detectTierSpoofing(clientTier: TierId, serverTier: TierId): bool
  * Get tier level for comparison (higher = more access)
  */
 export function getTierLevel(tier: TierId): number {
-  const tierLevels: Partial<Record<TierId, number>> = {
+  const tierLevels: Record<TierId, number> = {
     free: 0,
     vip1: 1,
     vip2: 2,
     vip3: 3,
-    vip3: 3,
+    vip3ii: 3,
     vip4: 4,
     vip5: 5,
     vip6: 6,

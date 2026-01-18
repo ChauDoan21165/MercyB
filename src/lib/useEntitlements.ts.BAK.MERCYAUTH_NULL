@@ -18,12 +18,6 @@ export function useEntitlements() {
 
     (async () => {
       setLoading(true);
-      if (!mercyAuth) {
-
-        return { data: null, error: new Error("mercyAuth is null") } as any;
-
-      }
-
       const { data, error } = await mercyAuth
         .from("my_entitlements")
         .select("vip_tier,vip_rank,features,updated_at")

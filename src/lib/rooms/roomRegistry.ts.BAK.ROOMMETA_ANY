@@ -72,14 +72,14 @@ async function buildRegistryAsync(): Promise<RoomMeta[]> {
       const tier = normalizeTier(roomData?.tier);
 
       // Domain category
-      const domain = getDomainCategory(id, (roomData as any)?.domain);
+      const domain = getDomainCategory(id, roomData?.domain);
 
       // Keywords
-      const keywords_en: string[] = Array.isArray((roomData as any)?.keywords_en) ? [...(roomData as any).keywords_en] : [];
-      const keywords_vi: string[] = Array.isArray((roomData as any)?.keywords_vi) ? [...(roomData as any).keywords_vi] : [];
+      const keywords_en: string[] = Array.isArray(roomData?.keywords_en) ? [...roomData.keywords_en] : [];
+      const keywords_vi: string[] = Array.isArray(roomData?.keywords_vi) ? [...roomData.keywords_vi] : [];
 
-      if (Array.isArray((roomData as any)?.entries)) {
-        for (const entry of (roomData as any).entries) {
+      if (Array.isArray(roomData?.entries)) {
+        for (const entry of roomData.entries) {
           if (Array.isArray(entry?.keywords_en)) keywords_en.push(...entry.keywords_en);
           if (Array.isArray(entry?.keywords_vi)) keywords_vi.push(...entry.keywords_vi);
         }
@@ -87,8 +87,8 @@ async function buildRegistryAsync(): Promise<RoomMeta[]> {
 
       // Tags
       const tags: string[] = [];
-      if (Array.isArray((roomData as any)?.entries)) {
-        for (const entry of (roomData as any).entries) {
+      if (Array.isArray(roomData?.entries)) {
+        for (const entry of roomData.entries) {
           if (Array.isArray(entry?.tags)) tags.push(...entry.tags);
         }
       }

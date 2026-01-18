@@ -147,7 +147,7 @@ const captureChatStick = () => {
     };
   }, [canonicalChatRoomId, supabase]);
 
-  async function sendChatInline() {
+  const sendChatInline = useCallback(async () => {
     const msg = String(chatTextRef.current || "").trim();
     if (!msg) return;
 
@@ -207,7 +207,7 @@ const captureChatStick = () => {
       setChatError(`Send exception: ${e?.message || String(e)}`);
       setChatSending(false);
     }
-  }
+  }, [args.limit]);
 
   function formatWho(m: any) {
     const isMe = String(m?.user_id || "") === String(authUserIdRef.current || "");

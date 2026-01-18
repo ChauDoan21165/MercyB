@@ -698,7 +698,10 @@ function PhoneOtp({
         return;
       }
 
-      const { error } = await supabase.auth.signInWithOtp({phone: p,});
+      const { error } = await supabase.auth.signInWithOtp({
+        phone: p,
+        options: { redirectTo: redirectToOAuthReturn },
+      });
 
       if (error) {
         setMsg(error.message);

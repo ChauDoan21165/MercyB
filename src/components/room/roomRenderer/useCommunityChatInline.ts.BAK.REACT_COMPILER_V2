@@ -32,19 +32,7 @@ export function useCommunityChatInline(args: {
   const chatListRef = useRef<HTMLDivElement | null>(null);
   const stickToBottomRef = useRef(true);
 
-  
-  // ---- React Compiler safe refs (avoid capturing changing values in callbacks) ----
-  const authUserIdRef = useRef<string>("");
-  const chatTextRef = useRef<string>("");
-
-  useEffect(() => {
-    authUserIdRef.current = String(authUser?.id || "");
-  }, [authUser?.id]);
-
-  useEffect(() => {
-    chatTextRef.current = String(chatText || "");
-  }, [chatText]);
-const captureChatStick = () => {
+  const captureChatStick = () => {
     const el = chatListRef.current;
     if (!el) return;
     stickToBottomRef.current = el.scrollHeight - el.scrollTop - el.clientHeight < 24;
@@ -147,8 +135,8 @@ const captureChatStick = () => {
     };
   }, [canonicalChatRoomId, supabase]);
 
-  async function sendChatInline() {
-    const msg = String(chatTextRef.current || "").trim();
+  const sendChatInline = useCallback(async () => {
+    const msg = String(chatText || "").trim();
     if (!msg) return;
 
     if (!authUser?.id) {
@@ -207,10 +195,10 @@ const captureChatStick = () => {
       setChatError(`Send exception: ${e?.message || String(e)}`);
       setChatSending(false);
     }
-  }
+  }, [authUser?.id, canonicalChatRoomId, chatText, loadChatInline, supabase]);
 
   function formatWho(m: any) {
-    const isMe = String(m?.user_id || "") === String(authUserIdRef.current || "");
+    const isMe = authUser ? String(m?.user_id || "") === String(authUser?.id || "") : false;
 
     const who = isMe
       ? shortEmailLabel(String((authUser as any)?.email || "")) || "ME"

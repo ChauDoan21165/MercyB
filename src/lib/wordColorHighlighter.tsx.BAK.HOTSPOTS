@@ -1,4 +1,3 @@
-import React from "react";
 // Darker, bolder color palette for better visibility on white background
 const COLORS = [
   '#D9185F', '#E66B2F', '#E5B800', '#4FA865', '#2BA89F', '#6BC4BC',
@@ -17,7 +16,7 @@ const FILLER_WORDS = new Set([
 ]);
 
 
-export function highlightTextByRules(text: string, isVietnamese: boolean = false): React.ReactElement[] {
+export function highlightTextByRules(text: string, isVietnamese: boolean = false): JSX.Element[] {
   // Treat each sentence as a "line" so essays get multiple groups of colored words
   const sentenceLines: string[] = [];
   const rawLines = text.split('\n');
@@ -32,7 +31,7 @@ export function highlightTextByRules(text: string, isVietnamese: boolean = false
   });
 
   const lines = sentenceLines;
-  const result: React.ReactElement[] = [];
+  const result: JSX.Element[] = [];
   let globalIndex = 0;
   let globalColorIndex = 0;
   const totalLines = lines.length || 1;
@@ -130,13 +129,13 @@ export function highlightShortTitle(
   text: string,
   titleIndex: number = 0,
   isVietnamese: boolean = false
-): React.ReactElement[] {
+): JSX.Element[] {
   if (!text) {
     return [<span key="empty-title">Untitled</span>];
   }
   
   const segments = text.split(/(\s+)/);
-  const result: React.ReactElement[] = [];
+  const result: JSX.Element[] = [];
   const keywordIndices: number[] = [];
 
   segments.forEach((seg, idx) => {
@@ -188,8 +187,8 @@ export function highlightShortTitle(
 }
 
 export function highlightPairedText(enText: string, viText: string): {
-  enHighlighted: React.ReactElement[];
-  viHighlighted: React.ReactElement[];
+  enHighlighted: JSX.Element[];
+  viHighlighted: JSX.Element[];
 } {
   return {
     enHighlighted: highlightTextByRules(enText, false),

@@ -154,7 +154,7 @@ export default function TierDetail() {
   const tierAreaCounts = useMemo(() => {
     if (!tier) return { core: 0, kids: 0, english: 0, life: 0 };
 
-    const out: Record<RoomArea, number> = { core: 0, kids: 0, english: 0, life: 0, unknown: 0 };
+    const out: Record<RoomArea, number> = { core: 0, kids: 0, english: 0, life: 0 };
 
     if (tier === "free") {
       // Effective split for Free:

@@ -107,7 +107,7 @@ export function detectTierSpoofing(clientTier: TierId, serverTier: TierId): bool
  * Get tier level for comparison (higher = more access)
  */
 export function getTierLevel(tier: TierId): number {
-  const tierLevels: Partial<Record<TierId, number>> = {
+  const tierLevels: Record<TierId, number> = {
     free: 0,
     vip1: 1,
     vip2: 2,

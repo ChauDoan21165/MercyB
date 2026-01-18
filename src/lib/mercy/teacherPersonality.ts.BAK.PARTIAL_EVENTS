@@ -203,7 +203,7 @@ export function getEmotionForEvent(
  * BATCH INSERTION POINT: Add new messages at the end of each array,
  * before the closing bracket. The structure supports 400+ total lines.
  */
-export const MESSAGES_BY_EVENT: Partial<Record<TeacherEvent, MercyMessage[]>> = {
+export const MESSAGES_BY_EVENT: Record<TeacherEvent, MercyMessage[]> = {
   // ============================================
   // APP OPEN - FIRST TIME (10 lines)
   // ============================================

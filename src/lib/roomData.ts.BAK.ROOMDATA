@@ -1,5 +1,3 @@
-const loadRoomDataMap: any = undefined;
-type RoomData = any;
 // FILE: roomData.ts
 // PATH: src/lib/roomData.ts
 // Room Data Management Utilities (Supabase-first, no build-time roomDataImports)
@@ -16,8 +14,11 @@ type RoomData = any;
 // - If you later expand TierId set, update STRICT_TIER_IDS below.
 
 import { tierFromRoomId } from "@/lib/tierFromRoomId";
+import type { RoomData } from "./roomDataLoader";
+import { loadRoomDataMap } from "./roomDataLoader";
+
 // Metadata interface for room listing
-interface RoomInfo {
+export interface RoomInfo {
   id: string;
   nameVi: string;
   nameEn: string;

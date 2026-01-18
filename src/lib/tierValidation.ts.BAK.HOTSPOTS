@@ -70,7 +70,7 @@ export function tierIdToDbLabel(tierId: TierId): TierValue {
  */
 export function verifyTierAccess(userTierId: TierId, roomTierId: TierId): boolean {
   const tierOrder: TierId[] = [
-    'free', 'vip1', 'vip2', 'vip3', 'vip3', 'vip4', 'vip5', 'vip6', 'vip9'
+    'free', 'vip1', 'vip2', 'vip3', 'vip3ii', 'vip4', 'vip5', 'vip6', 'vip9'
   ];
   
   // VIP9 has full access

@@ -237,7 +237,7 @@ export function createMercyEngine(
         
         setState(s => ({
           ...s,
-          lastRitualId: ((ritual as any).tier ?? (ritual as any).id),
+          lastRitualId: ritual.tier || (ritual as RitualSpec).id,
           lastRitualText: text,
           isRitualBannerVisible: true
         }));
@@ -253,7 +253,7 @@ export function createMercyEngine(
 
     setState(s => ({
       ...s,
-      lastRitualId: ((ritual as any).tier ?? (ritual as any).id),
+      lastRitualId: ritual.tier || (ritual as RitualSpec).id,
       lastRitualText: text,
       lastCeremonyTier: isCeremony ? (ritual as VipCeremonySpec).tier : s.lastCeremonyTier,
       currentAnimation: ritual.animation,
