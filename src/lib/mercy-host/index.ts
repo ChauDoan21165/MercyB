@@ -22,8 +22,8 @@ export * from './hostSignal';
 export * from './validation';
 export * from './heartbeat';
 export * from './eventLimiter';
-export * from './guard';
-export * from './memorySchema';
+// export * from "./guard";
+// export * from "./memorySchema";
 
 // Phase 5: Emotion Engine
 export * from './emotionModel';

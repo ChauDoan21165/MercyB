@@ -238,10 +238,10 @@ export const UnifiedBottomBar = () => {
 
             {/* Status Dots */}
             <div className="flex items-center gap-1 px-1">
-              <Circle className="h-2 w-2 fill-emerald-500 text-emerald-500" title="Online" />
-              <Circle className="h-2 w-2 fill-blue-500 text-blue-500" title="Synced" />
+              <span title="Online"><Circle className="h-2 w-2 fill-emerald-500 text-emerald-500" /></span>
+              <span title="Synced"><Circle className="h-2 w-2 fill-blue-500 text-blue-500" /></span>
               {unreadCount > 0 && (
-                <Circle className="h-2 w-2 fill-red-500 text-red-500" title="Alerts" />
+                <span title="Alerts"><Circle className="h-2 w-2 fill-red-500 text-red-500" /></span>
               )}
             </div>
 

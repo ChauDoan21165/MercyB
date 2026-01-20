@@ -11,7 +11,7 @@ import {
 import type { VipTierId } from "@/lib/constants/tiers";
 
 interface VIPNavigationProps {
-  currentPage?: VipTierId; // "vip1" | "vip2" | "vip3" | "vip3ii" | "vip4" | "vip5" | "vip6" | "vip9"
+  currentPage?: VipTierId; // "vip1" | "vip2" | "vip3" | "vip3" | "vip4" | "vip5" | "vip6" | "vip9"
 }
 
 type VipNavItem = {
@@ -38,12 +38,6 @@ export const VIPNavigation = ({ currentPage }: VIPNavigationProps) => {
     { id: "vip1", path: "/vip/vip1", label: "VIP1", canAccess: canAccessVIP1 },
     { id: "vip2", path: "/vip/vip2", label: "VIP2", canAccess: canAccessVIP2 },
     { id: "vip3", path: "/vip/vip3", label: "VIP3", canAccess: canAccessVIP3 },
-    {
-      id: "vip3ii",
-      path: "/vip/vip3ii",
-      label: "VIP3 II",
-      canAccess: canAccessVIP3II,
-    },
     {
       id: "vip4",
       path: "/vip/vip4",

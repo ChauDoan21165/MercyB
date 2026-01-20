@@ -13,7 +13,6 @@ const TIER_OPTIONS = [
   { value: "vip1", label: "VIP1" },
   { value: "vip2", label: "VIP2" },
   { value: "vip3", label: "VIP3" },
-  { value: "vip3ii", label: "VIP3 II" },
   { value: "vip4", label: "VIP4" },
   { value: "vip5", label: "VIP5" },
   { value: "vip6", label: "VIP6" },

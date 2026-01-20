@@ -1,6 +1,6 @@
 // FILE: tiers.ts
 // PATH: src/lib/constants/tiers.ts
-// VERSION: MB-BLUE-97.9d — 2026-01-17 (+0700)
+// VERSION: MB-BLUE-97.9e — 2026-01-19 (+0700)
 //
 // Tier constants following Mercy Blade Design System v1.1
 //
@@ -9,6 +9,10 @@
 // - normalizeTierOrUndefined(): strict tier parsing (unknown stays undefined).
 // - parseTierString(): alias for normalizeTierOrUndefined (back-compat).
 // - KEEP normalizeTier() legacy behavior (defaults to "free") for display paths.
+//
+// FIX (Type correctness):
+// - Remove accidental duplicate union member: | 'vip3'
+// - Normalize case before isValidTierId checks (so "VIP3" doesn't fail strict paths).
 
 export const TIERS = {
   FREE: "Free / Miễn phí",
@@ -161,7 +165,10 @@ export function tierIdToLabel(id: TierId): TierValue {
  * Use normalizeTierOrUndefined() for strict counting.
  */
 export function tierLabelToId(raw: string): TierId {
-  const s = raw.toLowerCase().trim();
+  const s = String(raw).toLowerCase().trim();
+
+  // Free (explicit)
+  if (s.includes("free") || s.includes("miễn phí")) return "free";
 
   // Kids
   if (s.includes("kids") && s.includes("1")) return "kids_1";
@@ -176,9 +183,6 @@ export function tierLabelToId(raw: string): TierId {
     if (s.includes(`vip${n}`)) return `vip${n}` as TierId;
   }
 
-  // Free
-  if (s.includes("free") || s.includes("miễn phí")) return "free";
-
   return "free";
 }
 
@@ -188,8 +192,12 @@ export function tierLabelToId(raw: string): TierId {
  */
 export function normalizeTier(tier: string | null | undefined): TierId {
   if (!tier) return "free";
-  if (isValidTierId(tier)) return tier;
-  return tierLabelToId(tier);
+
+  const s = String(tier).toLowerCase().trim();
+  if (!s) return "free";
+
+  if (isValidTierId(s)) return s;
+  return tierLabelToId(s);
 }
 
 /**
@@ -207,6 +215,9 @@ export function normalizeTierOrUndefined(
 
   if (isValidTierId(s)) return s;
 
+  // Free (explicit only)
+  if (s.includes("free") || s.includes("miễn phí")) return "free";
+
   // Kids
   if (s.includes("kids")) {
     if (s.includes("1")) return "kids_1";
@@ -220,13 +231,10 @@ export function normalizeTierOrUndefined(
   }
 
   // VIP
-  if (s.includes("vip")) {
-    const m = s.match(/vip\s*([1-9])/);
-    if (m?.[1]) return `vip${m[1]}` as TierId;
-  }
-
-  // Free (explicit only)
-  if (s.includes("free") || s.includes("miễn phí")) return "free";
+  // - strict: only accept vip[1-9] patterns
+  // - allows "vip 3", "vip3", "VIP3 / VIP3", etc.
+  const m = s.match(/(^|[^a-z0-9])vip\s*([1-9])([^a-z0-9]|$)/);
+  if (m?.[2]) return `vip${m[2]}` as TierId;
 
   return undefined;
 }

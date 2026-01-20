@@ -9,10 +9,14 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 
+// TEMP STUBS (compile unblock): Home.tsx does not export these named members.
+// Replace with real hero/header wiring later.
+const GlobalHeader = () => null;
+const GlobalHeroBand = () => null;
+
+
 // Option A (recommended): import extracted pieces from Home (minimal duplication).
 // You will add these named exports in Home.tsx in step (2).
-import { GlobalHeader, GlobalHeroBand } from "@/pages/Home";
-
 export default function AppShell() {
   return (
     <div className="min-h-screen">

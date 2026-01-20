@@ -1,7 +1,7 @@
 // Tamper Detection - Detect and prevent path traversal and injection attacks
 
 const ROOM_ID_PATTERN = /^[a-z0-9_]+$/;
-const TIER_ID_PATTERN = /^(free|vip[1-9]|vip3ii|kids_[1-3])$/;
+const TIER_ID_PATTERN = /^(free|vip[1-9]|kids_[1-3])$/;
 
 export class TamperError extends Error {
   constructor(message: string, public field: string) {

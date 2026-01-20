@@ -98,9 +98,8 @@ function withApp(href: string, appId: string) {
   return `${href}${sep}app=${encodeURIComponent(cleaned)}`;
 }
 
-async function withOptionalAppIdFilter<T extends { error?: any }>(
-  queryWithAppId: Promise<T>,
-  queryWithoutAppId: Promise<T>
+async function withOptionalAppIdFilter<T extends { error?: any }>(queryWithAppId: PromiseLike<T>,
+  queryWithoutAppId: PromiseLike<T>
 ): Promise<T> {
   const res = await queryWithAppId;
   if (!res?.error) return res;

@@ -22,7 +22,7 @@ type CompanionLinesData = Record<CompanionCategory, string[]>;
 
 // Cache for both languages
 const cachedLines: Record<string, CompanionLinesData> = {};
-const loadPromises: Record<string, Promise<CompanionLinesData>> = {};
+const loadPromises: Record<string, Promise<CompanionLinesData> | undefined> = {};
 
 /**
  * Get current app language from localStorage or default to 'en'

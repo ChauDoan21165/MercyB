@@ -6,7 +6,7 @@
  * - Uses URL-based paths (required for Supabase Edge bundling)
  */
 export async function loadEmailTemplate(templateUrl: URL) {
-  const text = await Deno.readTextFile(templateUrl);
+  const text = await fetch(templateUrl).then((r) => r.text());
 
   const [firstLine, ...rest] = text.split("\n");
 

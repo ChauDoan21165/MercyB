@@ -13,9 +13,12 @@
  *
  * NEW (Mercy Host repeat loop, NO AI):
  * - On actual audio "play" event, dispatch `mb:host-repeat-target`
- * - Payload: { audioUrl, label, startedAt, srcKey }
- * - Room/entry context is OPTIONAL and can be attached by the caller via data attrs later,
- *   but we keep this component safe/standalone.
+ * - On actual audio "ended" event, dispatch `mb:host-repeat-target` again (phase="end")
+ * - Payload: { phase, audioUrl, label, startedAt, endedAt, srcKey, hostContext? }
+ * - Room/entry context is OPTIONAL and can be attached by the caller.
+ *
+ * OPTIONAL (Host-controlled replay):
+ * - Listen for `mb:host-repeat-play` and replay if srcKey matches.
  */
 
 import React, { useEffect, useId, useMemo, useRef, useState } from "react";
@@ -59,6 +62,9 @@ export default function TalkingFacePlayButton({
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
+  // Used to stamp start/end times consistently for host dispatch.
+  const startedAtRef = useRef<string | null>(null);
+
   const [ready, setReady] = useState(false);
   const [playing, setPlaying] = useState(false);
   const [t, setT] = useState(0);
@@ -72,15 +78,20 @@ export default function TalkingFacePlayButton({
     return Math.max(0, Math.min(1, t / dur));
   }, [t, dur]);
 
-  // Dispatch repeat-target to Mercy Host on actual "play"
-  const dispatchHostRepeatTarget = (audioUrl: string) => {
+  // Dispatch repeat-target to Mercy Host on actual play/ended
+  const dispatchHostRepeatTarget = (phase: "start" | "end", audioUrl: string) => {
     try {
       if (typeof window === "undefined") return;
 
+      const nowIso = new Date().toISOString();
+      if (phase === "start") startedAtRef.current = nowIso;
+
       const detail = {
+        phase,
         audioUrl,
         label: shownLabel || undefined,
-        startedAt: new Date().toISOString(),
+        startedAt: startedAtRef.current ?? (phase === "start" ? nowIso : undefined),
+        endedAt: phase === "end" ? nowIso : undefined,
         srcKey: audioUrl,
         hostContext: hostContext ?? undefined,
       };
@@ -91,11 +102,40 @@ export default function TalkingFacePlayButton({
     }
   };
 
+  // OPTIONAL: Host requests replay (no coupling)
+  useEffect(() => {
+    function onHostRepeatPlay(e: any) {
+      try {
+        const d = e?.detail;
+        const key = d?.srcKey ?? d?.audioUrl ?? null;
+        if (!key) return;
+        if (!safeSrc) return;
+        if (String(key) !== safeSrc) return;
+
+        const a = audioRef.current;
+        if (!a) return;
+
+        // If ended earlier, start again from 0
+        if (!Number.isFinite(a.currentTime) || a.currentTime >= (a.duration || 0)) {
+          a.currentTime = 0;
+        }
+        a.play().catch(() => {});
+      } catch {
+        // ignore
+      }
+    }
+
+    if (typeof window === "undefined") return;
+    window.addEventListener("mb:host-repeat-play", onHostRepeatPlay as any);
+    return () => window.removeEventListener("mb:host-repeat-play", onHostRepeatPlay as any);
+  }, [safeSrc]);
+
   useEffect(() => {
     setReady(false);
     setPlaying(false);
     setT(0);
     setDur(0);
+    startedAtRef.current = null;
 
     const a = new Audio();
     a.preload = "metadata";
@@ -112,12 +152,14 @@ export default function TalkingFacePlayButton({
       setPlaying(true);
       // IMPORTANT: dispatch on the real play event (not on click),
       // so it reflects actual playback start.
-      if (safeSrc) dispatchHostRepeatTarget(safeSrc);
+      if (safeSrc) dispatchHostRepeatTarget("start", safeSrc);
     };
     const onPause = () => setPlaying(false);
     const onEnded = () => {
       setPlaying(false);
       setT(0);
+      // IMPORTANT: dispatch end signal so Host can open "Repeat after me"
+      if (safeSrc) dispatchHostRepeatTarget("end", safeSrc);
     };
 
     a.addEventListener("loadedmetadata", onLoaded);

@@ -18,7 +18,7 @@ export function useOptimizedRoomQuery<T>(
     queryKey,
     queryFn,
     staleTime: 5 * 60 * 1000, // 5 minutes - data stays fresh
-    cacheTime: 30 * 60 * 1000, // 30 minutes - cache persists
+    gcTime: 30 * 60 * 1000, // 30 minutes - cache persists
     refetchOnWindowFocus: false, // Don't refetch on tab focus
     retry: 3, // Retry failed requests 3 times
     retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000), // Exponential backoff

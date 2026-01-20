@@ -7,7 +7,6 @@ export const TIER_ROUTES: Record<TierId | string, { path: string; name: string; 
   'vip1': { path: '/vip/vip1', name: 'VIP1', nameVi: 'VIP1' },
   'vip2': { path: '/vip/vip2', name: 'VIP2', nameVi: 'VIP2' },
   'vip3': { path: '/vip/vip3', name: 'VIP3', nameVi: 'VIP3' },
-  'vip3ii': { path: '/vip/vip3ii', name: 'VIP3 II', nameVi: 'VIP3 II' },
   'vip4': { path: '/vip/vip4', name: 'VIP4 CareerZ', nameVi: 'VIP4 CareerZ' },
   'vip5': { path: '/vip/vip5', name: 'VIP5 Writing', nameVi: 'VIP5 Viết' },
   'vip6': { path: '/vip/vip6', name: 'VIP6 Psychology', nameVi: 'VIP6 Tâm Lý' },

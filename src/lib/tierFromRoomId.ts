@@ -30,7 +30,6 @@ export function strictTierFromRoomId(id: string): TierId | undefined {
   // VIP3 II — COLLAPSED INTO VIP3 (simple app mode)
   // ---------------------------------------------------------------------------
   if (
-    hasToken("vip3ii") ||
     hasToken("vip3_ii") ||
     /(^|[^a-z0-9])vip3[\s_-]*ii([^a-z0-9]|$)/i.test(s)
   ) {
@@ -65,7 +64,7 @@ export function strictTierFromRoomId(id: string): TierId | undefined {
   }
 
   // ---------------------------------------------------------------------------
-  // VIP tiers (high → low, after vip3ii collapse)
+  // VIP tiers (high → low, after vip3 collapse)
   // ---------------------------------------------------------------------------
   for (let n = 9; n >= 1; n--) {
     if (

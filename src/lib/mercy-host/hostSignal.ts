@@ -5,8 +5,7 @@
  * Admin UI can trigger commands like SEND_GREETING, PLAY_VOICE, FORCE_ANIMATION.
  */
 
-export type HostSignalType = 
-  | 'SEND_GREETING'
+export type HostSignalType = | 'SEND_GREETING'
   | 'PLAY_VOICE'
   | 'FORCE_ANIMATION'
   | 'DISMISS_HOST'
@@ -15,7 +14,7 @@ export type HostSignalType =
   | 'CHANGE_LANGUAGE'
   | 'TOGGLE_ENABLED'
   | 'TRIGGER_ONBOARDING'
-  | 'RESET_MEMORY';
+  | 'RESET_MEMORY' | 'ritual_trigger';
 
 export interface HostSignalPayload {
   type: HostSignalType;
@@ -28,6 +27,7 @@ export interface HostSignalPayload {
     roomId?: string;
     roomTitle?: string;
     tier?: string;
+  meta?: Record<string, unknown>;
   };
   source?: 'admin' | 'system' | 'user';
   timestamp?: number;

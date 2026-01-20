@@ -20,9 +20,7 @@ export type TierId =
   | "free"
   | "vip1"
   | "vip2"
-  | "vip3"
-  | "vip3ii"
-  | "vip4"
+  | "vip3"| "vip4"
   | "vip5"
   | "vip6"
   | "vip7"
@@ -57,8 +55,7 @@ export function isTierId(x: any): x is TierId {
     x === "free" ||
     x === "vip1" ||
     x === "vip2" ||
-    x === "vip3" ||
-    x === "vip3ii" ||
+    x === "vip3"||
     x === "vip4" ||
     x === "vip5" ||
     x === "vip6" ||
@@ -134,7 +131,7 @@ export function strictTierFromIdOrPath(idOrPath: string): TierId | "unknown" {
   if (/(^|[_-])vip6($|[_-])/.test(idLower)) return "vip6";
   if (/(^|[_-])vip5($|[_-])/.test(idLower)) return "vip5";
   if (/(^|[_-])vip4($|[_-])/.test(idLower)) return "vip4";
-  if (/(^|[_-])vip3ii($|[_-])/.test(idLower)) return "vip3ii";
+  if (/(^|[_-])vip3ii($|[_-])/.test(idLower)) return "vip3"; // legacy vip3ii -> vip3
   if (/(^|[_-])vip3($|[_-])/.test(idLower)) return "vip3";
   if (/(^|[_-])vip2($|[_-])/.test(idLower)) return "vip2";
   if (/(^|[_-])vip1($|[_-])/.test(idLower)) return "vip1";

@@ -19,7 +19,7 @@ export function usePerformanceMonitor(
   context?: PerformanceContext,
   slowThreshold = 100 // ms
 ) {
-  const renderStart = useRef<number>();
+  const renderStart = useRef<number | null>(null);
   const renderCount = useRef(0);
 
   useEffect(() => {

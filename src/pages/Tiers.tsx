@@ -3,13 +3,13 @@
 // VERSION: MB-BLUE-97.9e → MB-BLUE-97.9f — 2026-01-17 (+0700)
 //
 // FIX (DELETE VIP3 II from UI):
-// - Remove vip3ii from this page’s Tier UI (no pill, no counter, no link).
-// - Keep counting strict; anything that used to show as vip3ii will now fall into "unknown"
+// - Remove vip3 from this page’s Tier UI (no pill, no counter, no link).
+// - Keep counting strict; anything that used to show as vip3 will now fall into "unknown"
 //   unless your upstream tiering maps it to vip3.
 //
 // NOTE:
 // - This is UI-only. Source-of-truth tier inference remains elsewhere.
-// - If you truly want vip3ii rooms to become vip3, do it upstream (tierFromRoomId / DB tier).
+// - If you truly want vip3 rooms to become vip3, do it upstream (tierFromRoomId / DB tier).
 
 import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
@@ -19,7 +19,7 @@ import { TIER_ID_TO_LABEL, normalizeTierOrUndefined } from "@/lib/constants/tier
 import { getAllRooms, type RoomInfo } from "@/lib/roomData";
 import { cn } from "@/lib/utils";
 
-// ✅ Local UI tier list (vip3ii removed)
+// ✅ Local UI tier list (vip3 removed)
 const UI_TIER_IDS: TierId[] = [
   "free",
   "vip1",
@@ -115,8 +115,8 @@ export default function Tiers() {
 
       const tierId = normalizeTierOrUndefined(rawTier);
 
-      // ✅ vip3ii is not displayed; bucket it as unknown unless upstream maps it to vip3
-      if (tierId === ("vip3ii" as any)) {
+      // ✅ vip3 is not displayed; bucket it as unknown unless upstream maps it to vip3
+      if (tierId === ("vip3" as any)) {
         counts.unknown = (counts.unknown ?? 0) + 1;
         continue;
       }

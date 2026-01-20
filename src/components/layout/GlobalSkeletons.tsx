@@ -3,9 +3,9 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useMercyBladeTheme } from "@/hooks/useMercyBladeTheme";
 
 export const RoomGridSkeleton = () => {
-  const { isColorMode } = useMercyBladeTheme();
-  
-  return (
+  const __mbTheme = useMercyBladeTheme();
+  const isColorMode = ( (__mbTheme as any).isColorMode ?? (((__mbTheme as any).mode ? (__mbTheme as any).mode === "color" : true)) );
+return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4 p-6">
       {Array.from({ length: 12 }).map((_, i) => (
         <Card key={i} className="p-4 space-y-3">
@@ -19,9 +19,9 @@ export const RoomGridSkeleton = () => {
 };
 
 export const ChatSkeleton = () => {
-  const { isColorMode } = useMercyBladeTheme();
-  
-  return (
+  const __mbTheme = useMercyBladeTheme();
+  const isColorMode = ( (__mbTheme as any).isColorMode ?? (((__mbTheme as any).mode ? (__mbTheme as any).mode === "color" : true)) );
+return (
     <div className="flex flex-col h-full p-6 space-y-6">
       <div className="space-y-2">
         <Skeleton className={`h-8 w-2/3 ${isColorMode ? 'bg-muted' : 'bg-muted'}`} />
@@ -40,9 +40,9 @@ export const ChatSkeleton = () => {
 };
 
 export const KidsRoomSkeleton = () => {
-  const { isColorMode } = useMercyBladeTheme();
-  
-  return (
+  const __mbTheme = useMercyBladeTheme();
+  const isColorMode = ( (__mbTheme as any).isColorMode ?? (((__mbTheme as any).mode ? (__mbTheme as any).mode === "color" : true)) );
+return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-6">
       {Array.from({ length: 8 }).map((_, i) => (
         <Card key={i} className="p-6 space-y-4">

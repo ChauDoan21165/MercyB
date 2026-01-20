@@ -9,7 +9,7 @@
  */
 
 // FILE: src/components/room/RoomRenderer.tsx
-// VERSION: MB-BLUE-99.11v-keyword-bilingual — 2026-01-18 (+0700)
+// VERSION: MB-BLUE-99.11w-host-repeat-target — 2026-01-19 (+0700)
 //
 // FIXES INCLUDED (kept, but file shortened):
 // - DB fetch tries effectiveRoomId THEN coreRoomId (suffix-free) if needed.
@@ -17,6 +17,9 @@
 // - Coerce legacy JSON entries (copy->content, audio->audio_en, merge keywords).
 // - Keyword pills: 1 per entry when entry keyword fields exist; no fake EN/EN.
 // - Chat: canonical room_id = effectiveRoomId only (load/write/realtime).
+//
+// NEW (99.11w):
+// - Dispatch mb:host-repeat-target when activeEntry becomes known (repeat loop wiring).
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
@@ -107,6 +110,17 @@ function dispatchHostContext(detail: Record<string, any>) {
     // ignore
   }
 }
+
+// NEW: repeat target event for Mercy Host
+function dispatchHostRepeatTarget(detail: Record<string, any>) {
+  try {
+    if (typeof window === "undefined") return;
+    window.dispatchEvent(new CustomEvent("mb:host-repeat-target", { detail }));
+  } catch {
+    // ignore
+  }
+}
+
 function coreRoomIdFromEffective(effectiveRoomId: string) {
   const id = String(effectiveRoomId || "").trim();
   if (!id) return id;
@@ -267,6 +281,19 @@ function pickOneKeywordPairForEntry(
   }
 
   return null;
+}
+
+// NEW: extract repeat-target texts/audio from an entry without depending on exact schema
+function pickRepeatTargetFromEntry(entry: any): { text_en: string; text_vi: string; audio_url: string } {
+  const en =
+    String(entry?.text_en ?? entry?.content_en ?? entry?.content?.en ?? entry?.copy?.en ?? entry?.en ?? "").trim() ||
+    "";
+  const vi =
+    String(entry?.text_vi ?? entry?.content_vi ?? entry?.content?.vi ?? entry?.copy?.vi ?? entry?.vi ?? "").trim() ||
+    "";
+  const audio =
+    String(entry?.audio_url ?? entry?.audio_en ?? entry?.audio ?? entry?.audioEn ?? entry?.audioEN ?? "").trim() || "";
+  return { text_en: en, text_vi: vi, audio_url: audio };
 }
 
 export default function RoomRenderer({
@@ -560,7 +587,31 @@ export default function RoomRenderer({
     dispatchHostContext({ page: "room", roomId: effectiveRoomId, keyword, entryId });
   }, [effectiveRoomId, activeKeyword, activeEntry]);
 
-  // ---- BOX 5: CHAT (canonical = effectiveRoomId) ----
+  // NEW: when repeat target becomes known, signal Mercy Host
+  useEffect(() => {
+    if (!effectiveRoomId) return;
+    if (!activeKeyword) return;
+    if (!activeEntry) return;
+
+    // Even if locked UI disables clicks, be defensive:
+    if (isLocked) return;
+
+    const entryId = String(activeEntry?.id || activeEntry?.slug || "").trim() || null;
+    const { text_en, text_vi, audio_url } = pickRepeatTargetFromEntry(activeEntry);
+
+    // Don’t dispatch empty targets
+    if (!text_en && !text_vi) return;
+
+    dispatchHostRepeatTarget({
+      roomId: effectiveRoomId,
+      entryId,
+      text_en,
+      text_vi,
+      audio_url,
+      pace: "normal",
+    });
+  }, [effectiveRoomId, activeKeyword, activeEntry, isLocked]);
+// ---- BOX 5: CHAT (canonical = effectiveRoomId) ----
   type ChatRow = { id: any; room_id?: string; user_id?: string; message?: string; created_at?: string };
 
   const canonicalChatRoomId = String(effectiveRoomId || "").trim();
@@ -827,7 +878,8 @@ export default function RoomRenderer({
           <section className="mb-card p-5 md:p-6 mb-5" data-room-box="3">
             <div className="mb-welcomeLine">
               <span>
-                {highlightByColorMap(welcomeEN, kwColorMap)} <b>/</b> {highlightByColorMap(welcomeVI, kwColorMap)}
+                {highlightByColorMap(welcomeEN, kwColorMap)} <b>/</b>{" "}
+                {highlightByColorMap(welcomeVI, kwColorMap)}
               </span>
             </div>
 

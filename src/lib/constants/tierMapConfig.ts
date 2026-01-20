@@ -128,7 +128,7 @@ export function categorizeRoom(roomId: string, titleEn?: string): "english" | "c
  */
 export function isVip3IIRoom(roomId: string): boolean {
   const id = roomId.toLowerCase();
-  return id.includes("vip3ii") || id.includes("vip3_ii") || id.includes("vip3-ii");
+  return id.includes("vip3") || id.includes("vip3_ii") || id.includes("vip3-ii");
 }
 
 /**
@@ -153,14 +153,7 @@ export const COLUMN_LABELS = {
  * Tier-specific content descriptions for the Tier Map
  * Maps each tier to what content belongs in each column
  */
-export const TIER_CONTENT_MAP: Record<
-  TierId,
-  {
-    english: { title: string; titleVi: string; subtitle?: string };
-    core: { title: string; titleVi: string; subtitle?: string };
-    skills: { title: string; titleVi: string; subtitle?: string };
-  }
-> = {
+export const TIER_CONTENT_MAP = {
   free: {
     english: {
       title: "English Foundation",
@@ -232,15 +225,6 @@ export const TIER_CONTENT_MAP: Record<
     },
   },
 
-  vip3ii: {
-    english: { title: "—", titleVi: "—" },
-    core: {
-      title: "Core Specialization",
-      titleVi: "Chuyên Biệt Cốt Lõi",
-      subtitle: "Sexuality, Finance, Schizophrenia, Heavy Psychology",
-    },
-    skills: { title: "—", titleVi: "—" },
-  },
 
   vip4: {
     english: { title: "Career English", titleVi: "Tiếng Anh Nghề Nghiệp" },
@@ -254,10 +238,27 @@ export const TIER_CONTENT_MAP: Record<
     skills: { title: "Professional Communication", titleVi: "Giao Tiếp Chuyên Nghiệp" },
   },
 
+  
   vip6: {
     english: { title: "—", titleVi: "—" },
-    core: { title: "Psychology", titleVi: "Tâm Lý Học", subtitle: "Shadow Psychology & Mental Health" },
+    core: {
+      title: "Psychology",
+      titleVi: "Tâm Lý Học",
+      subtitle: "Shadow Psychology & Mental Health",
+    },
     skills: { title: "—", titleVi: "—" },
+  },
+
+  vip7: {
+    english: { title: "VIP7", titleVi: "VIP7" },
+    core: { title: "VIP7", titleVi: "VIP7" },
+    skills: { title: "VIP7", titleVi: "VIP7" },
+  },
+
+  vip8: {
+    english: { title: "VIP8", titleVi: "VIP8" },
+    core: { title: "VIP8", titleVi: "VIP8" },
+    skills: { title: "VIP8", titleVi: "VIP8" },
   },
 
   vip9: {
@@ -287,7 +288,12 @@ export const TIER_CONTENT_MAP: Record<
     core: { title: "Kids Advanced", titleVi: "Trẻ Em Nâng Cao" },
     skills: { title: "Pre-Teen Skills", titleVi: "Kỹ Năng Tiền Thiếu Niên" },
   },
-};
+} satisfies Record<TierId, {
+  english: { title: string; titleVi: string; subtitle?: string };
+  core: { title: string; titleVi: string; subtitle?: string };
+  skills: { title: string; titleVi: string; subtitle?: string };
+}>;
+
 
 /**
  * VIP3II is a CORE SPECIALIZATION block, NOT a separate tier
@@ -301,7 +307,7 @@ export const VIP3II_DESCRIPTION = {
 /**
  * Tier display order for the Tier Map (top to bottom = highest to lowest)
  */
-export const TIER_MAP_ORDER: TierId[] = ["vip9", "vip6", "vip5", "vip4", "vip3ii", "vip3", "vip2", "vip1", "free"];
+export const TIER_MAP_ORDER: TierId[] = ["vip9", "vip8", "vip7", "vip6", "vip5", "vip4", "vip3", "vip2", "vip1", "free"];
 
 /**
  * Get the route path for a tier
@@ -316,14 +322,16 @@ export function getTierPath(tierId: TierId): string {
       return "/vip/vip2";
     case "vip3":
       return "/vip/vip3";
-    case "vip3ii":
-      return "/vip/vip3ii";
     case "vip4":
       return "/vip/vip4";
     case "vip5":
       return "/vip/vip5";
     case "vip6":
       return "/vip/vip6";
+    case "vip7":
+      return "/vip/vip7";
+    case "vip8":
+      return "/vip/vip8";
     case "vip9":
       return "/vip/vip9";
     case "kids_1":
@@ -348,16 +356,16 @@ export function getTierLabel(tierId: TierId): string {
       return "VIP1";
     case "vip2":
       return "VIP2";
-    case "vip3":
-      return "VIP3";
-    case "vip3ii":
-      return "VIP3 II";
     case "vip4":
       return "VIP4";
     case "vip5":
       return "VIP5";
     case "vip6":
       return "VIP6";
+    case "vip7":
+      return "VIP7";
+    case "vip8":
+      return "VIP8";
     case "vip9":
       return "VIP9";
     case "kids_1":

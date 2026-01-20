@@ -94,7 +94,7 @@ export function useTimerManager() {
  * React hook for abort controller with auto-cleanup
  */
 export function useAbortController() {
-  const controller = useRef<AbortController>();
+  const controller = useRef<AbortController | null>(null);
 
   useEffect(() => {
     controller.current = new AbortController();

@@ -112,7 +112,7 @@ export function getTierLevel(tier: TierId): number {
     vip1: 1,
     vip2: 2,
     vip3: 3,
-    vip3: 3,
+
     vip4: 4,
     vip5: 5,
     vip6: 6,

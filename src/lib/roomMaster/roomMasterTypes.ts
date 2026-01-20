@@ -1,3 +1,4 @@
+import type { TierId } from "@/lib/constants/tiers";
 // RoomMaster Types - Shared type definitions for the RoomMaster engine
 
 // Re-export canonical TierId from the single source of truth

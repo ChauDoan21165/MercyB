@@ -28,7 +28,7 @@ export function tierFromRoomId(id: string): TierId {
     s.includes("_vip3_ii") ||
     /(^|[^a-z0-9])vip3[\s_-]*ii([^a-z0-9]|$)/i.test(s)
   ) {
-    return "vip3ii" as TierId;
+    return "vip3" as TierId; // legacy vip3ii -> vip3
   }
 
   // --- Kids tiers (only if your TierId supports these) ---

@@ -17,7 +17,7 @@ type RoomData = any;
 
 import { tierFromRoomId } from "@/lib/tierFromRoomId";
 // Metadata interface for room listing
-interface RoomInfo {
+export interface RoomInfo {
   id: string;
   nameVi: string;
   nameEn: string;

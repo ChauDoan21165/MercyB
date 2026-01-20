@@ -1,5 +1,5 @@
 // PATH: supabase/functions/stripe-webhook/index.ts
-// VERSION: v2026-01-06.9 (bulletproof emails: allow resend-on-retry via outbox; keep FAST EXIT for DB writes)
+// VERSION: v2026-01-06.10 (fail-fast env guards; keep bulletproof email retry via outbox; keep FAST EXIT for DB writes)
 //
 // Stripe Webhook — Supabase Edge Function (Deno)
 // JWT DISABLED — Stripe signature ONLY
@@ -195,7 +195,10 @@ async function outboxAlreadySent(
       .limit(1);
 
     if (error) {
-      console.warn("[stripe-webhook] email_outbox read failed (ignored):", error.message);
+      console.warn(
+        "[stripe-webhook] email_outbox read failed (ignored):",
+        error.message,
+      );
       return false;
     }
     return (data?.length ?? 0) > 0;
@@ -212,7 +215,11 @@ async function sendEmailOnce(params: {
   templateKey: string;
   variables: Record<string, string>;
 }) {
-  const already = await outboxAlreadySent(params.supabase, params.correlationId, params.templateKey);
+  const already = await outboxAlreadySent(
+    params.supabase,
+    params.correlationId,
+    params.templateKey,
+  );
   if (already) {
     console.log("[stripe-webhook] email already sent; skipping:", params.templateKey);
     return;
@@ -234,7 +241,22 @@ Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return ok200();
   if (req.method !== "POST") return json({ error: "Method not allowed" }, 405);
 
-  const stripe = new Stripe(env("STRIPE_SECRET_KEY"), {
+  // ✅ Fail-fast env guards (prevents "ghost" empty handler behavior)
+  const stripeKey = env("STRIPE_SECRET_KEY");
+  const webhookSecret = env("STRIPE_WEBHOOK_SECRET");
+  const supabaseUrl = env("SUPABASE_URL");
+  const serviceKey = env("SUPABASE_SERVICE_ROLE_KEY");
+
+  if (!stripeKey) return json({ error: "Missing STRIPE_SECRET_KEY" }, 500);
+  if (!webhookSecret) return json({ error: "Missing STRIPE_WEBHOOK_SECRET" }, 500);
+  if (!supabaseUrl || !serviceKey) {
+    return json(
+      { error: "Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY" },
+      500,
+    );
+  }
+
+  const stripe = new Stripe(stripeKey, {
     apiVersion: "2023-10-16",
     httpClient: Stripe.createFetchHttpClient(),
   });
@@ -246,11 +268,7 @@ Deno.serve(async (req) => {
 
   let event: any;
   try {
-    event = await stripe.webhooks.constructEventAsync(
-      raw,
-      sig,
-      env("STRIPE_WEBHOOK_SECRET"),
-    );
+    event = await stripe.webhooks.constructEventAsync(raw, sig, webhookSecret);
   } catch {
     return json({ error: "Invalid signature" }, 400);
   }
@@ -266,11 +284,9 @@ Deno.serve(async (req) => {
     return ok200();
   }
 
-  const supabase = createClient(
-    env("SUPABASE_URL"),
-    env("SUPABASE_SERVICE_ROLE_KEY"),
-    { auth: { persistSession: false } },
-  );
+  const supabase = createClient(supabaseUrl, serviceKey, {
+    auth: { persistSession: false },
+  });
 
   try {
     const processed = await isEventProcessed(supabase, event.id);
@@ -299,8 +315,7 @@ Deno.serve(async (req) => {
       }
 
       const vipKey =
-        priceIdToVipKey(priceId) ??
-        normalizeMetaVip(s.metadata?.vip_key);
+        priceIdToVipKey(priceId) ?? normalizeMetaVip(s.metadata?.vip_key);
 
       if (!vipKey) throw new Error("vipKey unresolved");
 
@@ -355,7 +370,10 @@ Deno.serve(async (req) => {
           });
 
           if (insErr) {
-            console.log("[stripe-webhook] payment_transactions insert skipped:", insErr.message);
+            console.log(
+              "[stripe-webhook] payment_transactions insert skipped:",
+              insErr.message,
+            );
           }
         }
 
@@ -371,7 +389,9 @@ Deno.serve(async (req) => {
           { onConflict: "user_id,product_key" },
         );
       } else {
-        console.log("[stripe-webhook] event already processed; skipping DB writes, allowing email retry");
+        console.log(
+          "[stripe-webhook] event already processed; skipping DB writes, allowing email retry",
+        );
       }
 
       // ✅ Email send (retryable, idempotent via outbox)

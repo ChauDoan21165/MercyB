@@ -3,7 +3,7 @@
  * Centralized metrics tracking and event emission
  */
 
-import { logger } from '@/lib/logger';
+import { logger } from "@/lib/logger";
 
 export interface RoomLoadMetric {
   roomId: string;
@@ -13,7 +13,7 @@ export interface RoomLoadMetric {
 }
 
 export interface AudioMetric {
-  eventType: 'play_start' | 'play_error' | 'play_success';
+  eventType: "play_start" | "play_error" | "play_success";
   roomId?: string;
   entrySlug?: string;
   filename?: string;
@@ -39,7 +39,7 @@ export function emitRoomLoadMetric(metric: RoomLoadMetric) {
   // Emit custom event for dev panel
   if (import.meta.env.DEV) {
     window.dispatchEvent(
-      new CustomEvent('room:load:complete', { detail: metric })
+      new CustomEvent("room:load:complete", { detail: metric })
     );
   }
 }
@@ -51,7 +51,7 @@ export function trackAudioEvent(metric: AudioMetric) {
   const { eventType, roomId, entrySlug, filename, durationMs, error } = metric;
 
   logger.info(`Audio: ${eventType}`, {
-    scope: 'AudioMetrics',
+    scope: "AudioMetrics",
     eventType,
     roomId,
     entrySlug,
@@ -61,9 +61,9 @@ export function trackAudioEvent(metric: AudioMetric) {
   });
 
   // For audio errors, log with higher severity
-  if (eventType === 'play_error') {
-    logger.error('Audio playback failed', {
-      scope: 'AudioMetrics',
+  if (eventType === "play_error") {
+    logger.error("Audio playback failed", {
+      scope: "AudioMetrics",
       filename,
       roomId,
       error,
@@ -75,8 +75,8 @@ export function trackAudioEvent(metric: AudioMetric) {
  * Track validation results
  */
 export function trackValidationMetrics(metric: ValidationMetric) {
-  logger.info('Validation completed', {
-    scope: 'ValidationMetrics',
+  logger.info("Validation completed", {
+    scope: "ValidationMetrics",
     mode: metric.mode,
     roomsChecked: metric.roomsChecked,
     errorsCount: metric.errorsCount,
@@ -88,8 +88,8 @@ export function trackValidationMetrics(metric: ValidationMetric) {
  * Emit app-level error for dev panel
  */
 export function emitAppError(kind: string, details?: Record<string, any>) {
-  logger.error('App error', {
-    scope: 'AppError',
+  logger.error("App error", {
+    scope: "AppError",
     kind,
     ...details,
   });
@@ -97,7 +97,7 @@ export function emitAppError(kind: string, details?: Record<string, any>) {
   // Emit custom event for dev panel
   if (import.meta.env.DEV) {
     window.dispatchEvent(
-      new CustomEvent('app:error', { detail: { kind, ...details } })
+      new CustomEvent("app:error", { detail: { kind, ...details } })
     );
   }
 }
@@ -112,9 +112,9 @@ export function trackDeepScan(params: {
   durationMs: number;
   actorId: string;
 }) {
-  logger.info('Deep scan completed', {
-    scope: 'DeepScanMetrics',
-    kind: 'deep_scan_run',
+  logger.info("Deep scan completed", {
+    scope: "DeepScanMetrics",
+    kind: "deep_scan_run",
     ...params,
   });
 }
@@ -124,31 +124,34 @@ export function trackDeepScan(params: {
  */
 export function trackRoomSpecCreation(params: {
   targetId: string;
-  scope: string;
+  scope: string; // caller-provided scope for the spec itself (NOT the logger scope)
   actorId: string;
   success: boolean;
 }) {
-  logger.info('Room specification created', {
-    scope: 'RoomSpecMetrics',
-    kind: 'room_spec_created',
-    ...params,
+  // IMPORTANT:
+  // params has a `scope` field; if we spread it after `scope: "RoomSpecMetrics"`,
+  // it would overwrite the logger scope and trigger TS2783.
+  const { scope: specScope, ...rest } = params;
+
+  logger.info("Room specification created", {
+    ...rest,
+    specScope,
+    scope: "RoomSpecMetrics",
+    kind: "room_spec_created",
   });
 }
 
 /**
  * Sample performance data (only log a percentage of events)
  */
-export function samplePerformance<T>(
-  fn: () => T,
-  sampleRate: number = 0.1
-): T {
+export function samplePerformance<T>(fn: () => T, sampleRate: number = 0.1): T {
   const startTime = performance.now();
   const result = fn();
   const duration = performance.now() - startTime;
 
   // Only log if random sample hits
   if (Math.random() < sampleRate) {
-    logger.performance('sampled_operation', duration, {
+    logger.performance("sampled_operation", duration, {
       sampleRate,
     });
   }

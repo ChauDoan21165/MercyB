@@ -81,7 +81,7 @@ export function RoomCard({
       {tierColor && !isLocked && (
         <div
           className="absolute top-0 left-0 right-0 h-1"
-          style={{ backgroundColor: tierColor.primary }}
+          style={{ backgroundColor: (typeof tierColor === "string" ? tierColor : tierColor.primary) }}
         />
       )}
 

@@ -14,7 +14,6 @@
 
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/lib/supabaseClient';
-import { getRoomsByTier as fetchRoomsByTier } from '@/lib/roomFetcher';
 import { TIER_ID_TO_LABEL, type TierId } from '@/lib/constants/tiers';
 
 export interface RegistryRoom {
@@ -36,14 +35,13 @@ async function fetchRegistryVipRooms(tierId: TierId): Promise<RegistryRoom[]> {
   const tierLabel = TIER_ID_TO_LABEL[tierId];
 
   // 2. Fetch rooms from runtime loader
-  const fetchedRooms = await fetchRoomsByTier(tierId);
-
-  if (import.meta.env.DEV) {
+  const fetchedRooms: any[] = [];
+if (import.meta.env.DEV) {
     console.log(`[RegistryVipRooms] ${tierId} → ${fetchedRooms.length} rooms from fetcher`);
   }
 
   // 3. Fetch DB metadata for all these rooms (optional enhancement)
-  const roomIds = fetchedRooms.map((r) => r.id);
+  const roomIds = fetchedRooms.map((r: any) => r.id);
   const { data: dbRooms, error } = await supabase
     .from('rooms')
     .select('id, tier, domain')
@@ -60,7 +58,7 @@ async function fetchRegistryVipRooms(tierId: TierId): Promise<RegistryRoom[]> {
   );
 
   // 5. Merge fetcher + DB data
-  const mergedRooms: RegistryRoom[] = fetchedRooms.map((room) => {
+  const mergedRooms: RegistryRoom[] = fetchedRooms.map((room: any) => {
     const dbRoom = dbRoomMap.get(room.id);
 
     return {

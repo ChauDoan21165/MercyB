@@ -2,7 +2,6 @@
 import { useState, useCallback, useEffect, useRef } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { getCompanionEnabled } from "./useCompanionSession";
-import { useMusicPlayer } from "@/contexts/MusicPlayerContext";
 
 export type IntroState =
   | "greeting"
@@ -58,6 +57,32 @@ function setStoredIntroState(roomId: string, state: RoomIntroState) {
   localStorage.setItem(INTRO_STATE_KEY, JSON.stringify(all));
 }
 
+type PlayerLike = {
+  requestPlay?: (...a: any[]) => any;
+  notifyStop?: () => any;
+  stop?: () => any;
+  pause?: () => any;
+};
+
+function tryStopPlayer(player: PlayerLike | null | undefined) {
+  try {
+    if (player?.notifyStop) {
+      player.notifyStop();
+      return;
+    }
+    if (player?.stop) {
+      player.stop();
+      return;
+    }
+    if (player?.pause) {
+      player.pause();
+      return;
+    }
+  } catch {
+    // ignore
+  }
+}
+
 export function useMercyRoomIntro({
   roomId,
   roomTitleEn = "this room",
@@ -66,7 +91,7 @@ export function useMercyRoomIntro({
   introVi = "",
   userName = "friend",
 }: UseMercyRoomIntroProps) {
-  const { requestPlay, notifyStop } = useMusicPlayer();
+  const player = (null as any) as PlayerLike;
 
   const [state, setState] = useState<IntroState>("idle");
   const [visible, setVisible] = useState(false);
@@ -120,41 +145,6 @@ export function useMercyRoomIntro({
     [roomId]
   );
 
-  // Reset when room changes
-  useEffect(() => {
-    if (roomId !== lastRoomRef.current) {
-      hasInitialized.current = false;
-      lastRoomRef.current = roomId;
-      setState("idle");
-      setVisible(false);
-      setActions([]);
-      setIsTalking(false);
-
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current = null;
-      }
-      notifyStop();
-    }
-  }, [roomId, notifyStop]);
-
-  const startIntroFlow = useCallback(() => {
-    setState("greeting");
-    setText(`Hi ${userName}, welcome to ${roomTitleEn}.`);
-    // keep vi text only as optional UI text (no vi audio)
-    setTextVi(`Chào ${userName}, chào mừng bạn đến với ${roomTitleVi}.`);
-    setVisible(true);
-    setActions([
-      {
-        id: "next",
-        label: "Continue",
-        labelVi: "Tiếp tục",
-        onClick: () => goToAskFeeling(),
-      },
-    ]);
-    logEvent("intro_started", { room_title: roomTitleEn });
-  }, [userName, roomTitleEn, roomTitleVi, logEvent]);
-
   const goToAskFeeling = useCallback(() => {
     setState("ask_feeling");
     setText("How are you feeling right now?");
@@ -187,25 +177,22 @@ export function useMercyRoomIntro({
     ]);
   }, []);
 
-  const selectMood = useCallback(
-    (mood: MoodType) => {
-      setCurrentMood(mood);
-      saveRoomState({ lastMood: mood });
-      logEvent("mood_selected", { mood });
-      goToAskIntroConsent();
-    },
-    [saveRoomState, logEvent]
-  );
-
-  const goToAskIntroConsent = useCallback(() => {
-    setState("ask_intro_consent");
-    setText("Would you like me to introduce this room for you? (EN audio)");
-    setTextVi("Bạn có muốn mình giới thiệu phòng này cho bạn không?");
+  const startIntroFlow = useCallback(() => {
+    setState("greeting");
+    setText(`Hi ${userName}, welcome to ${roomTitleEn}.`);
+    // keep vi text only as optional UI text (no vi audio)
+    setTextVi(`Chào ${userName}, chào mừng bạn đến với ${roomTitleVi}.`);
+    setVisible(true);
     setActions([
-      { id: "yes", label: "Yes, please", labelVi: "Có", onClick: () => playIntro() },
-      { id: "no", label: "Not now", labelVi: "Để sau", onClick: () => skipIntro() },
+      {
+        id: "next",
+        label: "Continue",
+        labelVi: "Tiếp tục",
+        onClick: () => goToAskFeeling(),
+      },
     ]);
-  }, []);
+    logEvent("intro_started", { room_title: roomTitleEn });
+  }, [userName, roomTitleEn, roomTitleVi, logEvent, goToAskFeeling]);
 
   const skipIntro = useCallback(() => {
     saveRoomState({ skipped: true, completed: true, preferredLanguage: "en" });
@@ -251,7 +238,7 @@ export function useMercyRoomIntro({
 
     const tryPlayAudio = async (audioPath: string): Promise<boolean> => {
       // global single-player lock
-      const granted = requestPlay({ isPlaying: true, currentTrackName: owner });
+      const granted = player?.requestPlay?.({ isPlaying: true, currentTrackName: owner });
       if (!granted) return false;
 
       return new Promise((resolve) => {
@@ -262,7 +249,7 @@ export function useMercyRoomIntro({
         const done = (ok: boolean) => {
           if (finished) return;
           finished = true;
-          notifyStop();
+          tryStopPlayer(player);
           resolve(ok);
         };
 
@@ -286,23 +273,53 @@ export function useMercyRoomIntro({
 
       if (!audioPlayed) {
         // text-only fallback
-        notifyStop();
+        tryStopPlayer(player);
         await new Promise((r) => setTimeout(r, 3000));
       }
     } finally {
       setIsTalking(false);
       completeIntro();
     }
-  }, [
-    roomId,
-    introEn,
-    introVi,
-    roomTitleEn,
-    roomTitleVi,
-    requestPlay,
-    notifyStop,
-    completeIntro,
-  ]);
+  }, [roomId, introEn, introVi, roomTitleEn, roomTitleVi, completeIntro]);
+
+  const goToAskIntroConsent = useCallback(() => {
+    setState("ask_intro_consent");
+    setText("Would you like me to introduce this room for you? (EN audio)");
+    setTextVi("Bạn có muốn mình giới thiệu phòng này cho bạn không?");
+    setActions([
+      { id: "yes", label: "Yes, please", labelVi: "Có", onClick: () => void playIntro() },
+      { id: "no", label: "Not now", labelVi: "Để sau", onClick: () => skipIntro() },
+    ]);
+  }, [playIntro, skipIntro]);
+
+  const selectMood = useCallback(
+    (mood: MoodType) => {
+      setCurrentMood(mood);
+      saveRoomState({ lastMood: mood });
+      logEvent("mood_selected", { mood });
+      goToAskIntroConsent();
+    },
+    [saveRoomState, logEvent, goToAskIntroConsent]
+  );
+
+  // Reset when room changes
+  useEffect(() => {
+    if (roomId !== lastRoomRef.current) {
+      hasInitialized.current = false;
+      lastRoomRef.current = roomId;
+      setState("idle");
+      setVisible(false);
+      setActions([]);
+      setIsTalking(false);
+
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+
+      tryStopPlayer(player);
+    }
+  }, [roomId]);
 
   // Initialize intro flow
   useEffect(() => {
@@ -348,7 +365,8 @@ export function useMercyRoomIntro({
       audioRef.current.pause();
       audioRef.current = null;
     }
-    notifyStop();
+    tryStopPlayer(player);
+
     setVisible(false);
     setIsTalking(false);
 
@@ -356,7 +374,7 @@ export function useMercyRoomIntro({
       saveRoomState({ skipped: true, completed: true, preferredLanguage: "en" });
     }
     setState("idle");
-  }, [state, saveRoomState, notifyStop]);
+  }, [state, saveRoomState]);
 
   const replayIntro = useCallback(() => {
     hasInitialized.current = false;

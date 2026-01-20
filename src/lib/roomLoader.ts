@@ -104,7 +104,7 @@ const loadFromDatabase = async (dbRoomId: string) => {
     };
   }
 
-  const { keywordMenu, merged } = processEntriesOptimized(dbRoom.entries, dbRoomId);
+  const { keywordMenu, merged } = processEntriesOptimized((dbRoom as any).entries ?? [], dbRoomId);
 
   return {
     merged,
@@ -160,11 +160,12 @@ const checkIsKidsTier = (tier: TierId | null | undefined): boolean => {
 export const useMergedRoom = (roomId: string): LoadedRoomResult => {
   const cacheKey = `room:${roomId}`;
 
-  return useSWR({
+  return (useSWR({
     key: cacheKey,
     fetcher: () => loadMergedRoomInternal(roomId),
     ttl: 5 * 60 * 1000, // 5 minutes
-  });
+  }) as any);
+
 };
 
 /**
@@ -451,7 +452,6 @@ const loadMergedRoomInternal = async (roomId: string): Promise<LoadedRoomResult>
       errorCode,
       // NOTE: keep legacy field if callers expect it
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      error: error as any,
       hasFullAccess: false,
     };
   }

@@ -70,7 +70,8 @@ export function MercyDebugPanel({ isAdmin = false }: MercyDebugPanelProps) {
       // Trigger via signal
       hostSignal.emit({
         type: 'ritual_trigger',
-        source: 'debug_panel',
+        source: 'admin',
+        meta: { debug_origin: 'debug_panel' },
         payload: { ritual }
       });
     }
@@ -85,7 +86,8 @@ export function MercyDebugPanel({ isAdmin = false }: MercyDebugPanelProps) {
     if (ritual) {
       hostSignal.emit({
         type: 'ritual_trigger',
-        source: 'debug_panel',
+        source: 'admin',
+        meta: { debug_origin: 'debug_panel' },
         payload: { ritual }
       });
     }

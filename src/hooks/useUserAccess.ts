@@ -1,15 +1,15 @@
 /**
  * MercyBlade Blue — useUserAccess (AUTH-DRIVEN, NO DUPLICATE TIMELINES)
  * Path: src/hooks/useUserAccess.ts
- * Version: MB-BLUE-94.14.15 — 2026-01-09 (+0700)
+ * Version: MB-BLUE-94.14.16 — 2026-01-19 (+0700)
  *
  * GOAL (LOCKED):
  * - useUserAccess MUST NOT call supabase.auth.getUser() or subscribe to auth changes.
  * - Auth timeline must come ONLY from AuthProvider via useAuth().
  * - Supabase queries here are allowed ONLY for: roles, tiers, subscriptions, admin level, etc.
  *
- * CHANGE (94.14.15):
- * - FIX gate source of truth: read access from public.profiles (tier, is_admin, admin_level)
+ * CHANGE (94.14.16):
+ * - FIX profiles lookup: use email (NOT user.id) and expect 200 OK under RLS
  * - Keep auth from useAuth() only (no supabase auth calls)
  * - Keep a safe fallback path if profiles row is missing
  */
@@ -143,7 +143,7 @@ export const useUserAccess = (): UserAccess => {
     isDemoMode: false,
   }));
 
-  const userId = user?.id || null;
+  const userEmail = (user?.email || "").trim() || null;
 
   useEffect(() => {
     let alive = true;
@@ -162,8 +162,8 @@ export const useUserAccess = (): UserAccess => {
         return;
       }
 
-      // 2) Not logged in → guest access
-      if (!userId) {
+      // 2) Not logged in (or no email) → guest access
+      if (!userEmail) {
         if (!alive) return;
         setAccess(guestAccess());
         return;
@@ -180,11 +180,11 @@ export const useUserAccess = (): UserAccess => {
       }));
 
       try {
-        // SOURCE OF TRUTH: profiles
+        // SOURCE OF TRUTH: profiles (lookup by email, NOT user.id)
         const { data: profile, error: profileErr } = await supabase
           .from("profiles")
-          .select("tier, is_admin, admin_level")
-          .eq("id", userId)
+          .select("email, tier, is_admin, admin_level")
+          .eq("email", userEmail)
           .maybeSingle();
 
         if (profileErr && import.meta.env.DEV) {
@@ -244,7 +244,7 @@ export const useUserAccess = (): UserAccess => {
     return () => {
       alive = false;
     };
-  }, [authLoading, userId]);
+  }, [authLoading, userEmail]);
 
   return useMemo(() => access, [access]);
 };

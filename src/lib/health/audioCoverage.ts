@@ -81,7 +81,7 @@ function analyzeRoom(room: any): RoomAudioCoverage {
   const missingAudioSlugs: string[] = [];
   let audioEntries = 0;
   
-  entries.forEach((entry, index) => {
+  entries.forEach((entry: any, index: number) => {
     if (hasValidAudio(entry)) {
       audioEntries++;
     } else {

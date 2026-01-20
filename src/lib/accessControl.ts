@@ -28,7 +28,6 @@ const TIER_HIERARCHY: Record<TierId, number> = {
   vip1: 1, // English Foundation
   vip2: 2, // A2 + B1
   vip3: 3, // B2 + C1 + C2 core
-  vip3ii: 3, // VIP3 specialization (same numeric level, but access is NOT implied from vip3)
   vip4: 4, // CareerZ
   vip5: 5, // Writing
   vip6: 6, // Psychology
@@ -51,9 +50,9 @@ function tierLevel(tier: TierId): number {
  * Enforces kids/vip family separation except VIP9.
  *
  * SPECIAL RULE (unit-test backed):
- * - vip3 does NOT automatically access vip3ii rooms.
- * - vip3ii CAN access vip3 rooms (same numeric level).
- * - vip4+ CAN access vip3ii rooms (higher level).
+ * - vip3 does NOT automatically access vip3 rooms.
+ * - vip3 CAN access vip3 rooms (same numeric level).
+ * - vip4+ CAN access vip3 rooms (higher level).
  */
 export function canUserAccessRoom(userTier: TierId, roomTier: TierId): boolean {
   const userIsKids = isKidsTier(userTier);
@@ -65,10 +64,6 @@ export function canUserAccessRoom(userTier: TierId, roomTier: TierId): boolean {
   }
 
   // VIP3II specialization gate: VIP3 cannot access VIP3II rooms
-  if (roomTier === "vip3ii" && userTier === "vip3") {
-    return false;
-  }
-
   return tierLevel(userTier) >= tierLevel(roomTier);
 }
 
@@ -98,7 +93,7 @@ export function canAccessVIPTier(userTier: TierId, targetTier: TierId): boolean 
  * Get all VIP tiers a user can access (excludes kids tiers).
  *
  * NOTE:
- * vip3 does NOT automatically include vip3ii (unit-test backed).
+ * vip3 does NOT automatically include vip3 (unit-test backed).
  */
 export function getAccessibleTiers(userTier: TierId): TierId[] {
   const userLevel = tierLevel(userTier);
@@ -108,10 +103,8 @@ export function getAccessibleTiers(userTier: TierId): TierId[] {
   if (userLevel >= tierLevel("vip2")) tiers.push("vip2");
   if (userLevel >= tierLevel("vip3")) tiers.push("vip3");
 
-  // vip3ii requires vip3ii specifically, or higher tiers (vip4+)
-  if (userTier === "vip3ii" || userLevel >= tierLevel("vip4")) {
-    tiers.push("vip3ii");
-  }
+  // vip3 requires vip3 specifically, or higher tiers (vip4+)
+  if (userTier === "vip3" || userLevel >= tierLevel("vip4")) {}
 
   if (userLevel >= tierLevel("vip4")) tiers.push("vip4");
   if (userLevel >= tierLevel("vip5")) tiers.push("vip5");
@@ -136,22 +129,22 @@ export const ACCESS_TEST_MATRIX = [
   { tier: "vip2" as TierId, roomId: "women-health", roomTier: "free" as TierId, expected: true },
   { tier: "vip2" as TierId, roomId: "some_vip2_room", roomTier: "vip2" as TierId, expected: true },
   { tier: "vip2" as TierId, roomId: "public_speaking_structure_vip3", roomTier: "vip3" as TierId, expected: false },
-  { tier: "vip2" as TierId, roomId: "vip3ii_room", roomTier: "vip3ii" as TierId, expected: false }, // VIP2 can't access VIP3II
+  { tier: "vip2" as TierId, roomId: "vip3_room", roomTier: "vip3" as TierId, expected: false }, // VIP2 can't access VIP3II
 
   // VIP3 tier
   { tier: "vip3" as TierId, roomId: "public_speaking_structure_vip3", roomTier: "vip3" as TierId, expected: true },
-  { tier: "vip3" as TierId, roomId: "vip3ii_english_specialization", roomTier: "vip3ii" as TierId, expected: false }, // ✅ FIX: VIP3 does NOT access VIP3II
+  { tier: "vip3" as TierId, roomId: "vip3_english_specialization", roomTier: "vip3" as TierId, expected: false }, // ✅ FIX: VIP3 does NOT access VIP3II
   { tier: "vip3" as TierId, roomId: "personal_safety_self_protection_vip4_bonus", roomTier: "vip4" as TierId, expected: false },
 
   // VIP3II tier - same level as VIP3, but special track
-  { tier: "vip3ii" as TierId, roomId: "vip3_room", roomTier: "vip3" as TierId, expected: true }, // VIP3II can access VIP3
-  { tier: "vip3ii" as TierId, roomId: "vip3ii_room", roomTier: "vip3ii" as TierId, expected: true },
-  { tier: "vip3ii" as TierId, roomId: "vip4_room", roomTier: "vip4" as TierId, expected: false },
+  { tier: "vip3" as TierId, roomId: "vip3_room", roomTier: "vip3" as TierId, expected: true }, // VIP3II can access VIP3
+  { tier: "vip3" as TierId, roomId: "vip3_room", roomTier: "vip3" as TierId, expected: true },
+  { tier: "vip3" as TierId, roomId: "vip4_room", roomTier: "vip4" as TierId, expected: false },
 
   // VIP4 tier
   { tier: "vip4" as TierId, roomId: "personal_safety_self_protection_vip4_bonus", roomTier: "vip4" as TierId, expected: true },
   { tier: "vip4" as TierId, roomId: "essential_money_risk_management_vip4_bonus", roomTier: "vip4" as TierId, expected: true },
-  { tier: "vip4" as TierId, roomId: "vip3ii_room", roomTier: "vip3ii" as TierId, expected: true }, // VIP4+ can access VIP3II
+  { tier: "vip4" as TierId, roomId: "vip3_room", roomTier: "vip3" as TierId, expected: true }, // VIP4+ can access VIP3II
   { tier: "vip4" as TierId, roomId: "some_vip5_room", roomTier: "vip5" as TierId, expected: false },
 
   // VIP5-8 tiers
