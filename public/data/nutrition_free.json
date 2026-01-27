@@ -20,34 +20,7 @@
     "mindful eating",
     "stay hydrated"
   ],
-  "entries": [
-    {
-      "copy": {
-        "en": "Healthy eating begins with one balanced plate. Each meal is a chance to care for your body’s energy and focus. Picture your plate: half colorful vegetables, one quarter lean protein, one quarter whole grains. Add a small portion of healthy fat, like olive oil or avocado. Prepare one meal ahead each week so good choices feel effortless. Keep it simple and consistent rather than perfect. Balanced meals bring steady energy and calm clarity. Start planning today with one mindful lunch, and notice how nourishment changes your day.",
-        "vi": "Ăn uống lành mạnh bắt đầu từ một đĩa ăn cân bằng. Mỗi bữa ăn là cơ hội để chăm sóc năng lượng và sự tập trung của cơ thể bạn. Hãy hình dung đĩa ăn của bạn: một nửa là rau củ đầy màu sắc, một phần tư là protein nạc, một phần tư là ngũ cốc nguyên hạt. Thêm một phần nhỏ chất béo lành mạnh, như dầu ô liu hoặc bơ. Chuẩn bị trước một bữa ăn mỗi tuần để các lựa chọn tốt trở nên dễ dàng. Giữ cho nó đơn giản và nhất quán thay vì hoàn hảo. Bữa ăn cân bằng mang lại năng lượng ổn định và sự rõ ràng bình tĩnh. Bắt đầu lập kế hoạch hôm nay với một bữa trưa chánh niệm, và chú ý cách dinh dưỡng thay đổi ngày của bạn."
-      },
-      "slug": "starting-balanced-meal-planning",
-      "tags": [
-        "nutrition",
-        "meal-planning"
-      ],
-      "audio": {
-        "en": "nutrition/starting_balanced_meal_planning_en.mp3"
-      },
-      "keywords_en": [
-        "balanced meal",
-        "meal planning",
-        "healthy plate",
-        "beginner nutrition"
-      ],
-      "keywords_vi": [
-        "bữa ăn cân bằng",
-        "lập kế hoạch bữa ăn",
-        "đĩa ăn lành mạnh",
-        "dinh dưỡng cơ bản"
-      ]
-    }
-  ],
+  "entries": [],
   "room_essay": {
     "en": "",
     "vi": ""

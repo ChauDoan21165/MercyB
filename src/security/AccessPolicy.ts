@@ -1,9 +1,9 @@
 // Global Access Policy - Central access control rules
 
-import { type TierId, ALL_TIER_IDS } from '@/lib/constants/tiers';
-import type { AppRole } from './typeGuards';
-import { getTierLevel } from './typeGuards';
-import { isKidsTier, canKidsAccessAdult } from './kidsAccess';
+import { type TierId, ALL_TIER_IDS } from "@/lib/constants/tiers";
+import type { AppRole } from "./typeGuards";
+import { getTierLevel } from "./typeGuards";
+import { isKidsTier, canKidsAccessAdult } from "./kidsAccess";
 
 export interface AccessRule {
   allowedRoles: AppRole[];
@@ -13,132 +13,143 @@ export interface AccessRule {
 }
 
 // All tiers for pages accessible to everyone
-const ALL_TIERS: TierId[] = ALL_TIER_IDS;
+const ALL_TIERS: TierId[] = [...ALL_TIER_IDS];
 
 // Adult tiers only (no kids)
-const ADULT_TIERS: TierId[] = ['free', 'vip1', 'vip2', 'vip3', 'vip4', 'vip5', 'vip6', 'vip7', 'vip8', 'vip9'];
+const ADULT_TIERS: TierId[] = [
+  "free",
+  "vip1",
+  "vip2",
+  "vip3",
+  "vip4",
+  "vip5",
+  "vip6",
+  "vip7",
+  "vip8",
+  "vip9",
+];
 
 // Kids + adult tiers that can access kids content
-const KIDS_ACCESSIBLE_TIERS: TierId[] = ['kids_1', 'kids_2', 'kids_3', ...ADULT_TIERS];
+const KIDS_ACCESSIBLE_TIERS: TierId[] = ["kids_1", "kids_2", "kids_3", ...ADULT_TIERS];
 
 export const ACCESS_POLICIES: Record<string, AccessRule> = {
   // Public pages
   homepage: {
-    allowedRoles: ['user', 'moderator', 'admin'],
+    allowedRoles: ["user", "moderator", "admin"],
     allowedTiers: ALL_TIERS,
     requireAuth: false,
-    description: 'Public homepage - accessible to all',
+    description: "Public homepage - accessible to all",
   },
 
   pricing: {
-    allowedRoles: ['user', 'moderator', 'admin'],
+    allowedRoles: ["user", "moderator", "admin"],
     allowedTiers: ALL_TIERS,
     requireAuth: false,
-    description: 'Pricing page - accessible to all',
+    description: "Pricing page - accessible to all",
   },
 
   // Free tier
   free_rooms: {
-    allowedRoles: ['user', 'moderator', 'admin'],
+    allowedRoles: ["user", "moderator", "admin"],
     allowedTiers: ADULT_TIERS,
     requireAuth: true,
-    description: 'Free rooms - accessible to all authenticated users except kids',
+    description: "Free rooms - accessible to all authenticated users except kids",
   },
 
   // VIP tiers
   vip1_rooms: {
-    allowedRoles: ['user', 'moderator', 'admin'],
-    allowedTiers: ['vip1', 'vip2', 'vip3', 'vip4', 'vip5', 'vip6', 'vip7', 'vip8', 'vip9'],
+    allowedRoles: ["user", "moderator", "admin"],
+    allowedTiers: ["vip1", "vip2", "vip3", "vip4", "vip5", "vip6", "vip7", "vip8", "vip9"],
     requireAuth: true,
-    description: 'VIP1 rooms - requires VIP1 or higher',
+    description: "VIP1 rooms - requires VIP1 or higher",
   },
 
   vip2_rooms: {
-    allowedRoles: ['user', 'moderator', 'admin'],
-    allowedTiers: ['vip2', 'vip3', 'vip4', 'vip5', 'vip6', 'vip7', 'vip8', 'vip9'],
+    allowedRoles: ["user", "moderator", "admin"],
+    allowedTiers: ["vip2", "vip3", "vip4", "vip5", "vip6", "vip7", "vip8", "vip9"],
     requireAuth: true,
-    description: 'VIP2 rooms - requires VIP2 or higher',
+    description: "VIP2 rooms - requires VIP2 or higher",
   },
 
   vip3_rooms: {
-    allowedRoles: ['user', 'moderator', 'admin'],
-    allowedTiers: ['vip3', 'vip4', 'vip5', 'vip6', 'vip7', 'vip8', 'vip9'],
+    allowedRoles: ["user", "moderator", "admin"],
+    allowedTiers: ["vip3", "vip4", "vip5", "vip6", "vip7", "vip8", "vip9"],
     requireAuth: true,
-    description: 'VIP3 rooms - requires VIP3 or higher',
+    description: "VIP3 rooms - requires VIP3 or higher",
   },
 
   vip4_rooms: {
-    allowedRoles: ['user', 'moderator', 'admin'],
-    allowedTiers: ['vip4', 'vip5', 'vip6', 'vip7', 'vip8', 'vip9'],
+    allowedRoles: ["user", "moderator", "admin"],
+    allowedTiers: ["vip4", "vip5", "vip6", "vip7", "vip8", "vip9"],
     requireAuth: true,
-    description: 'VIP4 rooms - requires VIP4 or higher',
+    description: "VIP4 rooms - requires VIP4 or higher",
   },
 
   vip5_rooms: {
-    allowedRoles: ['user', 'moderator', 'admin'],
-    allowedTiers: ['vip5', 'vip6', 'vip7', 'vip8', 'vip9'],
+    allowedRoles: ["user", "moderator", "admin"],
+    allowedTiers: ["vip5", "vip6", "vip7", "vip8", "vip9"],
     requireAuth: true,
-    description: 'VIP5 rooms - requires VIP5 or higher',
+    description: "VIP5 rooms - requires VIP5 or higher",
   },
 
   vip6_rooms: {
-    allowedRoles: ['user', 'moderator', 'admin'],
-    allowedTiers: ['vip6', 'vip7', 'vip8', 'vip9'],
+    allowedRoles: ["user", "moderator", "admin"],
+    allowedTiers: ["vip6", "vip7", "vip8", "vip9"],
     requireAuth: true,
-    description: 'VIP6 rooms - requires VIP6 or higher',
+    description: "VIP6 rooms - requires VIP6 or higher",
   },
 
   vip7_rooms: {
-    allowedRoles: ['user', 'moderator', 'admin'],
-    allowedTiers: ['vip7', 'vip8', 'vip9'],
+    allowedRoles: ["user", "moderator", "admin"],
+    allowedTiers: ["vip7", "vip8", "vip9"],
     requireAuth: true,
-    description: 'VIP7 rooms - requires VIP7 or higher',
+    description: "VIP7 rooms - requires VIP7 or higher",
   },
 
   vip8_rooms: {
-    allowedRoles: ['user', 'moderator', 'admin'],
-    allowedTiers: ['vip8', 'vip9'],
+    allowedRoles: ["user", "moderator", "admin"],
+    allowedTiers: ["vip8", "vip9"],
     requireAuth: true,
-    description: 'VIP8 rooms - requires VIP8 or higher',
+    description: "VIP8 rooms - requires VIP8 or higher",
   },
 
   vip9_rooms: {
-    allowedRoles: ['user', 'moderator', 'admin'],
-    allowedTiers: ['vip9'],
+    allowedRoles: ["user", "moderator", "admin"],
+    allowedTiers: ["vip9"],
     requireAuth: true,
-    description: 'VIP9 rooms - requires VIP9 tier',
+    description: "VIP9 rooms - requires VIP9 tier",
   },
 
   // Kids content
   kids_rooms: {
-    allowedRoles: ['user', 'moderator', 'admin'],
+    allowedRoles: ["user", "moderator", "admin"],
     allowedTiers: KIDS_ACCESSIBLE_TIERS,
     requireAuth: true,
-    description: 'Kids rooms - accessible to kids tiers and all adult tiers',
+    description: "Kids rooms - accessible to kids tiers and all adult tiers",
   },
 
   // Admin pages
   admin_dashboard: {
-    allowedRoles: ['admin'],
+    allowedRoles: ["admin"],
     allowedTiers: ALL_TIERS,
     requireAuth: true,
-    description: 'Admin dashboard - requires admin role',
+    description: "Admin dashboard - requires admin role",
   },
 
   // Moderator pages
   mod_dashboard: {
-    allowedRoles: ['moderator', 'admin'],
+    allowedRoles: ["moderator", "admin"],
     allowedTiers: ALL_TIERS,
     requireAuth: true,
-    description: 'Moderator dashboard - requires moderator or admin role',
+    description: "Moderator dashboard - requires moderator or admin role",
   },
 
   // Profile & settings
   profile: {
-    allowedRoles: ['user', 'moderator', 'admin'],
+    allowedRoles: ["user", "moderator", "admin"],
     allowedTiers: ALL_TIERS,
     requireAuth: true,
-    description: 'User profile - accessible to all authenticated users',
+    description: "User profile - accessible to all authenticated users",
   },
 };
 
@@ -148,22 +159,34 @@ export const ACCESS_POLICIES: Record<string, AccessRule> = {
 export function checkPageAccess(
   pageId: string,
   userRole: AppRole,
-  userTier: TierId
+  userTier: TierId,
+  isAuthed: boolean = true
 ): { allowed: boolean; reason?: string } {
   const policy = ACCESS_POLICIES[pageId];
 
   if (!policy) {
-    return { allowed: false, reason: 'Unknown page' };
+    return { allowed: false, reason: "Unknown page" };
+  }
+
+  // Auth gate (policy-driven). Defaults to "true" for backward compatibility.
+  if (policy.requireAuth && !isAuthed) {
+    return { allowed: false, reason: "Please sign in to access this page" };
   }
 
   // Check role
   if (!policy.allowedRoles.includes(userRole)) {
-    return { allowed: false, reason: `This page requires ${policy.allowedRoles.join(' or ')} role` };
+    return {
+      allowed: false,
+      reason: `This page requires ${policy.allowedRoles.join(" or ")} role`,
+    };
   }
 
   // Check tier
   if (!policy.allowedTiers.includes(userTier)) {
-    return { allowed: false, reason: `This page requires ${policy.allowedTiers.join(', ')} tier` };
+    return {
+      allowed: false,
+      reason: `This page requires ${policy.allowedTiers.join(", ")} tier`,
+    };
   }
 
   return { allowed: true };
@@ -176,14 +199,14 @@ export function checkRoomAccess(
   userTier: TierId,
   roomTier: TierId
 ): { allowed: boolean; reason?: string } {
-  // Kids tier users can only access kids content
+  // Kids tier users can only access kids content (or whatever your kidsAccess allows)
   if (isKidsTier(userTier)) {
     if (!canKidsAccessAdult(userTier, roomTier)) {
-      return { allowed: false, reason: 'Kids accounts can only access Kids Level content' };
+      return { allowed: false, reason: "Kids accounts can only access Kids Level content" };
     }
   }
 
-  // Check tier level
+  // Tier level comparison
   const userLevel = getTierLevel(userTier);
   const roomLevel = getTierLevel(roomTier);
 

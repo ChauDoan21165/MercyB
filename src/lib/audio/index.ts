@@ -1,7 +1,7 @@
 /**
  * Audio utilities barrel export
  * Chief Automation Engineer: Audio System v5.0 - Zero-Friction Ecosystem
- * 
+ *
  * Phase 5 Zero-Friction Audio System:
  * ✓ No missing files
  * ✓ No broken names
@@ -43,7 +43,7 @@ export {
   type GCEEntryResult,
   type GCEIssue,
   type GCERoomResult,
-} from './globalConsistencyEngine';
+} from "./globalConsistencyEngine";
 
 // Audio Governance Engine (AGE) - AUTOPILOT CONTROL
 export {
@@ -59,8 +59,9 @@ export {
   verifyEnViParity,
   // Multi-pass verification
   runMultiPassVerification,
-  // Autopilot
-  getAutopilotStatus,
+  // Autopilot (GOVERNANCE LAYER)
+  // TS2300 fix: avoid name collision with audioAutopilot.getAutopilotStatus
+  getAutopilotStatus as getGovernanceAutopilotStatus,
   updateAutopilotStatus,
   setAutopilotEnabled,
   // Report generation
@@ -78,7 +79,7 @@ export {
   type ChangeSet,
   type AutopilotStatus,
   type DecisionType,
-} from './audioGovernanceEngine';
+} from "./audioGovernanceEngine";
 
 // Core validator (v3.0 APIs)
 export {
@@ -101,7 +102,7 @@ export {
   type CrossRoomIssue,
   type RoomCompletenessScore,
   type FixReport,
-} from './filenameValidator';
+} from "./filenameValidator";
 
 // Auto-repair engine (v3.0)
 export {
@@ -118,7 +119,7 @@ export {
   type RepairBatch,
   type NamingViolation,
   type RoomAudioData,
-} from './autoRepair';
+} from "./autoRepair";
 
 // Integrity Mapping
 export {
@@ -133,7 +134,7 @@ export {
   type RoomIntegrity,
   type IntegrityMap,
   type IntegritySummary,
-} from './integrityMap';
+} from "./integrityMap";
 
 // Semantic Matcher
 export {
@@ -142,7 +143,7 @@ export {
   validateRoomAudioConsistency,
   getMatchConfidence,
   type SemanticMatch,
-} from './semanticMatcher';
+} from "./semanticMatcher";
 
 // TTS Generator (Phase 5)
 export {
@@ -154,7 +155,7 @@ export {
   type TTSResult,
   type MissingAudioEntry,
   type AudioGenerationPlan,
-} from './ttsGenerator';
+} from "./ttsGenerator";
 
 // Audio Lifecycle Database (Phase 5)
 export {
@@ -175,7 +176,7 @@ export {
   type AudioLifecycleEntry,
   type AudioLifecycleDB,
   type LifecycleStats,
-} from './audioLifecycle';
+} from "./audioLifecycle";
 
 // Phase 4 Types (Audio Generation)
 export type {
@@ -191,7 +192,7 @@ export type {
   AudioConflict,
   RepairLogEntry,
   AudioSystemHealth,
-} from './types';
+} from "./types";
 
 // Autopilot Engine (Phase 4.6 - Full Integration with History & Governance)
 export {
@@ -231,17 +232,13 @@ export {
   type AutopilotHistory,
   type PendingGovernanceReview,
   type PendingGovernanceDB,
-} from './audioAutopilot';
+} from "./audioAutopilot";
 
-// Re-export unified types for CLI/CI consumption
-export type {
-  AudioChangeSet,
-  AudioChange,
-  AutopilotStatusStore,
-} from './types';
-
-// Export default governance config
-export { DEFAULT_GOVERNANCE_CONFIG } from './audioGovernanceEngine';
+// NOTE (TS2300 fix):
+// - AudioChangeSet / AudioChange / AutopilotStatusStore are already exported above (Phase 4 Types).
+// - Do NOT re-export them again here (duplicate identifier).
+//
+// export type { AudioChangeSet, AudioChange, AutopilotStatusStore } from "./types";
 
 // CLI Helpers (Phase 4.7 - testable pure functions)
 export {
@@ -252,4 +249,4 @@ export {
   type RunMode,
   type GovernanceMode,
   type ParsedCliOptions,
-} from './cliHelpers';
+} from "./cliHelpers";

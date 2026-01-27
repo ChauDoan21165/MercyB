@@ -1,13 +1,17 @@
-import React from "react";
-import { createClient } from "@supabase/supabase-js";
-import { getUserTierContext, type VipKey } from "@/lib/auth";
+// PATH: src/components/billing/UpgradeButtons.tsx
+//
+// FIX:
+// - Do NOT create a second Supabase client here (keeps auth/session consistent).
+// - Use supabase.functions.invoke("create-checkout-session") so apikey header is included.
+// - Send { tier: "vip1"|"vip3"|"vip9" } (your function accepts tier or tier_id; NOT vip_key).
+// - Better error surfacing (shows status + message).
 
-// If you already have a shared supabase client, use that instead.
-// This is safe for Vite if you have VITE_SUPABASE_URL + VITE_SUPABASE_ANON_KEY.
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL!,
-  import.meta.env.VITE_SUPABASE_ANON_KEY!,
-);
+import React from "react";
+import type { VipKey } from "@/lib/auth";
+import { getUserTierContext } from "@/lib/auth";
+
+// ✅ Use the shared client (single source of truth for auth/session)
+import { supabase } from "@/lib/supabaseClient";
 
 type Plan = { vipKey: Exclude<VipKey, "free">; label: string; blurb: string };
 
@@ -53,31 +57,39 @@ export function UpgradeButtons() {
       const token = sess?.session?.access_token;
       if (!token) throw new Error("Not signed in");
 
-      const url = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/create-checkout-session`;
-
-      const res = await fetch(url, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
+      // ✅ IMPORTANT: use invoke (adds apikey header automatically)
+      const { data, error } = await supabase.functions.invoke(
+        "create-checkout-session",
+        {
+          headers: {
+            // Explicit Authorization avoids regressions if supabase-js changes behavior
+            Authorization: `Bearer ${token}`,
+          },
+          body: {
+            tier: targetVip, // ✅ correct field
+            period: "monthly",
+            success_url: window.location.origin + "/billing/success",
+            cancel_url: window.location.origin + "/billing/cancel",
+          },
         },
-        body: JSON.stringify({
-          vip_key: targetVip, // ✅ keep payload tiny + stable
-          period: "monthly",  // optional; safe if your function ignores it
-          success_url: window.location.origin + "/billing/success",
-          cancel_url: window.location.origin + "/billing/cancel",
-        }),
-      });
+      );
 
-      const j = await res.json().catch(() => ({}));
-      if (!res.ok) throw new Error(j?.error || j?.message || `Checkout failed (${res.status})`);
+      if (error) {
+        const status = (error as any)?.status;
+        const msg =
+          (error as any)?.message ||
+          (error as any)?.context?.message ||
+          "Edge Function returned an error";
+        throw new Error(status ? `${msg} (${status})` : msg);
+      }
 
-      const checkoutUrl = j?.checkout_url;
+      const checkoutUrl = (data as any)?.checkout_url;
       if (!checkoutUrl) throw new Error("Missing checkout_url");
 
       window.location.href = checkoutUrl;
     } catch (e: any) {
       setErr(e?.message ?? "Checkout failed");
+    } finally {
       setLoadingKey(null);
     }
   }
@@ -88,7 +100,13 @@ export function UpgradeButtons() {
         Current: <b>{vipKey.toUpperCase()}</b>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: 12 }}>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+          gap: 12,
+        }}
+      >
         {PLANS.map((p) => {
           const isCurrent = p.vipKey === vipKey;
           const isDowngradeOrSame = rankOf(p.vipKey) <= rankOf(vipKey);
@@ -110,24 +128,24 @@ export function UpgradeButtons() {
                 style={{ marginTop: 10, width: "100%" }}
                 disabled={disabled || isDowngradeOrSame}
                 onClick={() => startCheckout(p.vipKey)}
-                title={isDowngradeOrSame ? "Downgrades are handled in Stripe portal" : ""}
+                title={
+                  isDowngradeOrSame
+                    ? "Downgrades are handled in Stripe portal"
+                    : ""
+                }
               >
                 {isCurrent
                   ? "Current"
                   : loadingKey === p.vipKey
-                    ? "Redirecting…"
-                    : "Upgrade"}
+                  ? "Redirecting…"
+                  : "Upgrade"}
               </button>
             </div>
           );
         })}
       </div>
 
-      {err ? (
-        <div style={{ color: "tomato", marginTop: 8 }}>
-          {err}
-        </div>
-      ) : null}
+      {err ? <div style={{ color: "tomato", marginTop: 8 }}>{err}</div> : null}
     </div>
   );
 }

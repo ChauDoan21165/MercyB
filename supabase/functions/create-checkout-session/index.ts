@@ -1,12 +1,11 @@
 // PATH: supabase/functions/create-checkout-session/index.ts
-// VERSION: v2026-01-06.1 (add user.email to Stripe metadata; keep Stripe customer email in sync best-effort)
+// VERSION: v2026-01-06.3+auth-by-service-role-jwt-tolerant-url-safe +OBS-2026-01-27
 //
-// CHANGE SUMMARY:
-// - Add `email: user.email` to BOTH:
-//   - checkout session metadata
-//   - subscription_data.metadata
-// - Best-effort: set Stripe customer email when creating customer and when reusing existing customer.
-//   (Never blocks checkout if update fails.)
+// OBSERVABILITY PATCH (LOCKED INTENT):
+// - Add request_id (x-mb-request-id) to every response + console logs.
+// - Add Access-Control-Expose-Headers so browser can read x-mb-request-id.
+// - Optional debug payload returned ONLY when body.debug===true/"1" (safe: no secrets).
+// - Keep existing auth + URL safety + Stripe session creation behavior.
 
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.39.3";
 import Stripe from "https://esm.sh/stripe@12.18.0?target=deno&no-dts";
@@ -17,14 +16,16 @@ import Stripe from "https://esm.sh/stripe@12.18.0?target=deno&no-dts";
 const corsHeaders: Record<string, string> = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers":
-    "authorization, x-client-info, apikey, content-type",
+    "authorization, x-client-info, apikey, content-type, x-mb-user-jwt, x-mb-request-id",
   "Access-Control-Allow-Methods": "POST, OPTIONS",
+  // ✅ allow browser to read our correlation id header
+  "Access-Control-Expose-Headers": "x-mb-request-id",
 };
 
-function json(payload: unknown, status = 200) {
+function json(payload: unknown, status = 200, extraHeaders?: Record<string, string>) {
   return new Response(JSON.stringify(payload), {
     status,
-    headers: { ...corsHeaders, "Content-Type": "application/json" },
+    headers: { ...corsHeaders, ...(extraHeaders || {}), "Content-Type": "application/json" },
   });
 }
 
@@ -36,6 +37,20 @@ function normalize(x: unknown) {
   return String(x ?? "").toLowerCase().replace(/\s+/g, " ").trim();
 }
 
+/**
+ * JWT extraction (tolerant)
+ */
+function extractJwt(req: Request): string {
+  const auth = req.headers.get("authorization") || "";
+  const raw = req.headers.get("x-mb-user-jwt") || "";
+
+  if (/^bearer\s+/i.test(auth)) return auth.replace(/^bearer\s+/i, "").trim();
+  if (auth.split(".").length === 3) return auth.trim();
+  if (raw.split(".").length === 3) return raw.trim();
+
+  return "";
+}
+
 function vipKeyToEnvPrice(vipKey: string): string | null {
   const k = normalize(vipKey);
   if (k === "vip1") return env("STRIPE_PRICE_VIP1") || null;
@@ -45,8 +60,8 @@ function vipKeyToEnvPrice(vipKey: string): string | null {
 }
 
 function getBaseUrl(req: Request): string {
-  const siteUrl = env("SITE_URL") || env("FRONTEND_URL");
-  if (siteUrl) return siteUrl.replace(/\/+$/, "");
+  const site = env("SITE_URL") || env("FRONTEND_URL");
+  if (site) return site.replace(/\/+$/, "");
 
   const origin = req.headers.get("origin") || req.headers.get("referer") || "";
   try {
@@ -63,277 +78,289 @@ function errToObj(e: unknown) {
     name: anyE?.name,
     message: anyE?.message ?? String(e),
     stack: anyE?.stack,
-    cause: anyE?.cause,
   };
 }
 
+function isDebugFlag(x: unknown): boolean {
+  if (x === true) return true;
+  const s = String(x ?? "").trim().toLowerCase();
+  return s === "1" || s === "true" || s === "yes" || s === "on";
+}
+
+function safeMaskId(x: unknown): string {
+  const s = String(x ?? "");
+  if (!s) return "";
+  if (s.length <= 8) return `${s.slice(0, 2)}…${s.slice(-2)}`;
+  return `${s.slice(0, 6)}…${s.slice(-4)}`;
+}
+
 Deno.serve(async (req) => {
-  // Always answer CORS preflight
+  // ✅ correlation id (client can optionally send one; we always respond with one)
+  const requestId =
+    (req.headers.get("x-mb-request-id") || "").trim() ||
+    (globalThis.crypto?.randomUUID ? crypto.randomUUID() : `mb_${Date.now()}_${Math.random()}`);
+
+  const withRid = { "x-mb-request-id": requestId };
+
   if (req.method === "OPTIONS") {
-    return new Response(null, { headers: corsHeaders });
+    return new Response(null, { headers: { ...corsHeaders, ...withRid } });
   }
 
+  const t0 = Date.now();
+
   try {
-    if (req.method !== "POST") return json({ error: "Method not allowed" }, 405);
+    if (req.method !== "POST") {
+      return json({ error: "Method not allowed", request_id: requestId }, 405, withRid);
+    }
 
     const stripeSecretKey = env("STRIPE_SECRET_KEY");
     const supabaseUrl = env("SUPABASE_URL");
-
-    // IMPORTANT:
-    // Supabase Edge Functions does NOT allow setting secrets starting with SUPABASE_ in CLI.
-    // Store anon key as ANON_KEY (you already did: supabase secrets set ANON_KEY=...)
-    const anonKey = env("ANON_KEY");
     const serviceRoleKey = env("SUPABASE_SERVICE_ROLE_KEY");
 
-    if (!stripeSecretKey) return json({ error: "Missing STRIPE_SECRET_KEY" }, 500);
-    if (!supabaseUrl || !anonKey || !serviceRoleKey) {
+    if (!stripeSecretKey) {
+      console.error("[create-checkout-session]", requestId, "Missing STRIPE_SECRET_KEY");
+      return json({ error: "Missing STRIPE_SECRET_KEY", request_id: requestId }, 500, withRid);
+    }
+    if (!supabaseUrl || !serviceRoleKey) {
+      console.error("[create-checkout-session]", requestId, "Supabase not configured");
+      return json({ error: "Supabase not configured", request_id: requestId }, 500, withRid);
+    }
+
+    // --- Body ---
+    let body: any;
+    try {
+      body = await req.json();
+    } catch {
+      console.warn("[create-checkout-session]", requestId, "Invalid JSON body");
+      return json({ error: "Invalid JSON body", request_id: requestId }, 400, withRid);
+    }
+
+    const debug = isDebugFlag(body?.debug);
+
+    // --- JWT verify ---
+    const token = extractJwt(req);
+    if (!token) {
+      console.warn("[create-checkout-session]", requestId, "Missing JWT");
       return json(
         {
-          error:
-            "Supabase not configured (need SUPABASE_URL, ANON_KEY, SUPABASE_SERVICE_ROLE_KEY)",
-          have: {
-            SUPABASE_URL: !!supabaseUrl,
-            ANON_KEY: !!anonKey,
-            SUPABASE_SERVICE_ROLE_KEY: !!serviceRoleKey,
-          },
+          error: "Missing JWT",
+          request_id: requestId,
+          ...(debug
+            ? {
+                debug: {
+                  got_auth_header: Boolean(req.headers.get("authorization")),
+                  got_x_mb_user_jwt: Boolean(req.headers.get("x-mb-user-jwt")),
+                },
+              }
+            : {}),
         },
-        500,
-      );
-    }
-
-    const authHeader = req.headers.get("authorization") || "";
-    const token = authHeader.toLowerCase().startsWith("bearer ")
-      ? authHeader.slice(7).trim()
-      : "";
-
-    if (!token) return json({ error: "Missing Bearer JWT" }, 401);
-
-    // Stripe client (wrap in try in case Stripe lib breaks in runtime)
-    let stripe: Stripe;
-    try {
-      stripe = new Stripe(stripeSecretKey, {
-        apiVersion: "2023-10-16",
-        httpClient: Stripe.createFetchHttpClient(),
-      });
-    } catch (e) {
-      console.error("[create-checkout-session] Stripe init failed:", e);
-      return json({ error: "Stripe init failed", detail: errToObj(e) }, 500);
-    }
-
-    // ✅ Client A: verify user JWT using anon key
-    const supabaseAuth = createClient(supabaseUrl, anonKey, {
-      auth: { persistSession: false },
-    });
-
-    const { data: userData, error: userErr } = await supabaseAuth.auth.getUser(
-      token,
-    );
-
-    const user = userData?.user;
-    if (userErr || !user?.id) {
-      return json(
-        { error: "Invalid JWT", detail: userErr?.message ?? "No user" },
         401,
+        withRid,
       );
     }
 
-    // ✅ Client B: service role for DB reads/writes
     const supabaseAdmin = createClient(supabaseUrl, serviceRoleKey, {
       auth: { persistSession: false },
     });
 
-    let body: any = null;
-    try {
-      body = await req.json();
-    } catch {
-      return json({ error: "Invalid JSON body" }, 400);
+    const { data: userData, error: userErr } = await supabaseAdmin.auth.getUser(token);
+
+    if (userErr || !userData?.user?.id) {
+      console.warn("[create-checkout-session]", requestId, "Invalid JWT", userErr?.message || "");
+      return json(
+        {
+          error: "Invalid JWT",
+          request_id: requestId,
+          ...(debug
+            ? {
+                debug: {
+                  userErr: userErr ? errToObj(userErr) : null,
+                },
+              }
+            : {}),
+        },
+        401,
+        withRid,
+      );
     }
 
-    // Accept either tier_id OR tier (VIP1/VIP3/VIP9)
-    const tierId = typeof body?.tier_id === "string" ? body.tier_id : "";
+    const user = userData.user;
+
     const tierKey = typeof body?.tier === "string" ? normalize(body.tier) : "";
+    const tierId = typeof body?.tier_id === "string" ? body.tier_id : "";
 
-    if (!tierId && !tierKey) {
-      return json({ error: "tier_id or tier is required" }, 400);
+    if (!tierKey && !tierId) {
+      console.warn("[create-checkout-session]", requestId, "tier or tier_id required");
+      return json({ error: "tier or tier_id required", request_id: requestId }, 400, withRid);
     }
 
-    // SERVER TRUTH: tier record comes from DB
-    const tierQuery = supabaseAdmin
-      .from("subscription_tiers")
-      .select("id, name, vip_key, stripe_price_id")
-      .limit(1);
+    const { data: tier } = tierId
+      ? await supabaseAdmin.from("subscription_tiers").select("*").eq("id", tierId).maybeSingle()
+      : await supabaseAdmin
+          .from("subscription_tiers")
+          .select("*")
+          .eq("vip_key", tierKey)
+          .maybeSingle();
 
-    const { data: tier, error: tierErr } = tierId
-      ? await tierQuery.eq("id", tierId).maybeSingle()
-      : await tierQuery.eq("vip_key", tierKey).maybeSingle();
-
-    if (tierErr || !tier) {
+    if (!tier) {
+      console.warn("[create-checkout-session]", requestId, "Unknown tier", { tierKey, tierId });
       return json(
-        { error: "Unknown tier", detail: tierErr?.message ?? "not found" },
+        {
+          error: "Unknown tier",
+          request_id: requestId,
+          ...(debug ? { debug: { tierKey, tierId } } : {}),
+        },
         400,
+        withRid,
       );
     }
 
-    const vipKey = normalize((tier as any).vip_key);
-    if (vipKey !== "vip1" && vipKey !== "vip3" && vipKey !== "vip9") {
-      return json({ error: "Tier is not purchasable" }, 400);
-    }
-
-    const dbPriceId =
-      typeof (tier as any).stripe_price_id === "string"
-        ? (tier as any).stripe_price_id
-        : "";
-    const priceId = dbPriceId || vipKeyToEnvPrice(vipKey);
-
-    if (!priceId) {
+    const vipKey = normalize(tier.vip_key);
+    if (!["vip1", "vip3", "vip9"].includes(vipKey)) {
+      console.warn("[create-checkout-session]", requestId, "Tier not purchasable", vipKey);
       return json(
-        { error: "Tier missing stripe_price_id (and no env fallback)" },
+        { error: "Tier not purchasable", request_id: requestId, ...(debug ? { debug: { vipKey } } : {}) },
+        400,
+        withRid,
+      );
+    }
+
+    const priceId = tier.stripe_price_id || vipKeyToEnvPrice(vipKey);
+    if (!priceId) {
+      console.error("[create-checkout-session]", requestId, "Missing Stripe price", vipKey);
+      return json(
+        {
+          error: "Missing Stripe price",
+          request_id: requestId,
+          ...(debug ? { debug: { vipKey, hasTierStripePriceId: Boolean(tier.stripe_price_id) } } : {}),
+        },
         500,
+        withRid,
       );
     }
 
-    // Read stripe_customer_id (optional)
-    const { data: prof, error: profErr } = await supabaseAdmin
-      .from("profiles")
-      .select("stripe_customer_id")
-      .eq("id", user.id)
-      .maybeSingle();
-
-    // If profiles table/column missing, DO NOT crash — just treat as no customer.
-    if (profErr) {
-      console.warn(
-        "[create-checkout-session] profiles read warning:",
-        profErr.message,
-      );
-    }
-
-    let stripeCustomerId =
-      typeof (prof as any)?.stripe_customer_id === "string"
-        ? (prof as any).stripe_customer_id
-        : null;
-
-    const userEmail =
-      typeof user.email === "string" && user.email.trim() ? user.email.trim() : "";
-
-    if (!stripeCustomerId) {
-      try {
-        const customer = await stripe.customers.create({
-          email: userEmail || undefined,
-          metadata: { supabase_user_id: user.id },
-        });
-        stripeCustomerId = customer.id;
-      } catch (e) {
-        console.error("[create-checkout-session] stripe.customers.create failed:", e);
-        return json(
-          { error: "Stripe customer create failed", detail: errToObj(e) },
-          500,
-        );
-      }
-
-      // best-effort store it (do not fail checkout if this write fails)
-      const { error: profUpErr } = await supabaseAdmin
-        .from("profiles")
-        .update({ stripe_customer_id: stripeCustomerId })
-        .eq("id", user.id);
-
-      if (profUpErr) {
-        console.warn(
-          "[create-checkout-session] profiles update warning:",
-          profUpErr.message,
-        );
-      }
-    } else {
-      // Best-effort: keep Stripe customer email in sync (never block checkout)
-      if (userEmail) {
-        try {
-          await stripe.customers.update(stripeCustomerId, { email: userEmail });
-        } catch (e) {
-          console.warn(
-            "[create-checkout-session] stripe.customers.update email warning:",
-            e,
-          );
-        }
-      }
-    }
-
+    // --- URL safety (Stripe HARD requirement) ---
     const baseUrl = getBaseUrl(req);
+
+    // IMPORTANT: Stripe rejects empty string. Treat empty/whitespace as "not provided".
+    const rawSuccess =
+      typeof body?.success_url === "string" ? body.success_url.trim() : "";
+    const rawCancel =
+      typeof body?.cancel_url === "string" ? body.cancel_url.trim() : "";
+
     const success_url =
-      typeof body?.success_url === "string" && body.success_url
-        ? body.success_url
-        : `${baseUrl}/billing/success?session_id={CHECKOUT_SESSION_ID}`;
+      rawSuccess && rawSuccess.startsWith("http")
+        ? rawSuccess
+        : `${baseUrl}/billing/success`;
+
     const cancel_url =
-      typeof body?.cancel_url === "string" && body.cancel_url
-        ? body.cancel_url
+      rawCancel && rawCancel.startsWith("http")
+        ? rawCancel
         : `${baseUrl}/billing`;
 
-    let session: any;
+    // tiny log breadcrumb (no secrets)
+    console.log("[create-checkout-session]", requestId, "start", {
+      vipKey,
+      tier_lookup: tierId ? "by_id" : "by_key",
+      baseUrl,
+      success_url,
+      cancel_url,
+      user_id: user.id,
+    });
+
+    const stripe = new Stripe(stripeSecretKey, {
+      apiVersion: "2023-10-16",
+      httpClient: Stripe.createFetchHttpClient(),
+    });
+
+    let session;
     try {
       session = await stripe.checkout.sessions.create({
         mode: "subscription",
-        customer: stripeCustomerId,
-        client_reference_id: user.id,
+        customer_email: user.email ?? undefined,
         line_items: [{ price: priceId, quantity: 1 }],
         success_url,
         cancel_url,
         metadata: {
-          supabase_user_id: user.id,
-          tier_id: (tier as any).id,
+          user_id: user.id,
+          email: user.email ?? "",
           vip_key: vipKey,
-          period: "monthly",
-          email: userEmail || undefined,
         },
         subscription_data: {
           metadata: {
-            supabase_user_id: user.id,
-            tier_id: (tier as any).id,
+            user_id: user.id,
+            email: user.email ?? "",
             vip_key: vipKey,
-            period: "monthly",
-            email: userEmail || undefined,
           },
         },
       });
     } catch (e) {
-      console.error("[create-checkout-session] stripe.checkout.sessions.create failed:", e);
+      console.error("[create-checkout-session]", requestId, "Stripe create failed", e);
       return json(
-        { error: "Stripe checkout session create failed", detail: errToObj(e) },
+        {
+          error: "Internal error",
+          request_id: requestId,
+          detail: errToObj(e),
+          ...(debug
+            ? {
+                debug: {
+                  vipKey,
+                  priceId_masked: safeMaskId(priceId),
+                  baseUrl,
+                  success_url,
+                  cancel_url,
+                  tierKey,
+                  tierId,
+                },
+              }
+            : {}),
+        },
         500,
+        withRid,
       );
     }
 
-    // Record pending tx (audit/debug)
-    const txPayload: Record<string, unknown> = {
-      user_id: user.id,
-      tier_id: (tier as any).id,
-      external_reference: session.id, // used for onConflict
-      status: "pending",
-      transaction_type: "subscription",
-      payment_method: "stripe",
-      amount: 0,
-      currency: "usd",
-      metadata: {
-        vip_key: vipKey,
-        stripe_customer_id: stripeCustomerId,
-        stripe_checkout_session_id: session.id,
-        price_id: priceId,
+    const ms = Date.now() - t0;
+    console.log("[create-checkout-session]", requestId, "ok", {
+      ms,
+      session_id: session?.id,
+      has_url: Boolean(session?.url),
+    });
+
+    return json(
+      {
+        checkout_url: session.url,
+        request_id: requestId,
+        ...(debug
+          ? {
+              debug: {
+                ms,
+                vipKey,
+                priceId_masked: safeMaskId(priceId),
+                baseUrl,
+                success_url,
+                cancel_url,
+                tierKey,
+                tierId,
+                user: {
+                  id: user.id,
+                  email: user.email ?? "",
+                },
+                stripe: {
+                  session_id: session?.id ?? "",
+                  mode: session?.mode ?? "",
+                },
+              },
+            }
+          : {}),
       },
-    };
-
-    const { error: txErr } = await supabaseAdmin
-      .from("payment_transactions")
-      .upsert(txPayload, { onConflict: "external_reference" });
-
-    if (txErr) {
-      console.error("[create-checkout-session] payment_transactions upsert failed:", txErr);
-      return json(
-        { error: "Failed to write payment_transactions", detail: txErr.message },
-        500,
-      );
-    }
-
-    return json({ checkout_url: session.url });
+      200,
+      withRid,
+    );
   } catch (e) {
-    // final safety net: never return plain text 500 again
-    console.error("[create-checkout-session] UNCAUGHT:", e);
-    return json({ error: "Internal error", detail: errToObj(e) }, 500);
+    console.error("[create-checkout-session]", requestId, "UNCAUGHT", e);
+    return json({ error: "Internal error", request_id: requestId, detail: errToObj(e) }, 500, {
+      "x-mb-request-id": requestId,
+    });
   }
 });

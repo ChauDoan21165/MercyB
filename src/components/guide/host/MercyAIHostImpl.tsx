@@ -1,5 +1,5 @@
-// FILE: MercyAIHost.tsx
-// PATH: src/components/guide/MercyAIHost.tsx
+// FILE: MercyAIHostImpl.tsx
+// PATH: src/components/guide/host/MercyAIHostImpl.tsx
 // VERSION: MB-BLUE-101.7e — 2026-01-14 (+0700)
 // NOTE: ADD "CARE LOOP" (NO AI):
 // - Loads user display name (from profiles best-effort) + last progress snapshot (mercy_host_notes note_type='progress')
@@ -14,12 +14,19 @@
 // - Listens to window "mb:host-progress" to persist progress notes (RoomRenderer will emit later)
 // KEEP: big face (~3x), REAL typing, rule-based chat, assistant typing dots.
 // KEEP: closed state does NOT block page clicks (no fullscreen overlay when closed).
+//
+// ✅ FIX (2026-01-23):
+// - Host MUST NOT run its own auth timeline.
+// - Auth source of truth: AuthProvider via useAuth().
+// - Remove supabase.auth.getSession / onAuthStateChange in Host.
+// - Keep Supabase usage ONLY for DB reads/writes (profiles, mercy_host_notes).
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import TalkingFaceIcon from "@/components/guide/TalkingFaceIcon";
 import { supabase } from "@/lib/supabaseClient";
+import { useAuth } from "@/providers/AuthProvider";
 
 type QuickAction = {
   id: string;
@@ -47,6 +54,13 @@ type HostLang = "en" | "vi";
 type HostNoteType = "question" | "progress" | "fault" | "feedback";
 type HostCategory = "ui" | "content" | "audio" | "billing" | "auth" | "performance" | "other";
 type HostRowType = "user_report" | "host_auto" | "admin_note";
+
+// 🔒 Host Flow States (LOCKED):
+// - Host must not “talk” unless:
+//   - user_input: user explicitly typed and pressed send
+//   - guided: Host is running a guided flow (mini test / mode transitions)
+// - Anything else: no assistantRespond() output.
+type HostFlow = "idle" | "user_input" | "guided" | "voice_only";
 
 function isTruthyString(v: string | null | undefined) {
   return (v ?? "").trim().toLowerCase() === "true";
@@ -77,6 +91,20 @@ function uid(prefix = "m") {
   return `${prefix}_${Math.random().toString(16).slice(2)}_${Date.now().toString(16)}`;
 }
 
+async function safeCopy(text: string) {
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const nav: any = (globalThis as any)?.navigator;
+    if (nav?.clipboard?.writeText) {
+      await nav.clipboard.writeText(text);
+      return true;
+    }
+  } catch {
+    // ignore
+  }
+  return false;
+}
+
 /**
  * Typing dots (bulletproof)
  * - No <style>
@@ -85,14 +113,7 @@ function uid(prefix = "m") {
  */
 function TypingIndicator() {
   return (
-    <svg
-      width="28"
-      height="10"
-      viewBox="0 0 28 10"
-      role="img"
-      aria-label="Typing"
-      style={{ display: "block" }}
-    >
+    <svg width="28" height="10" viewBox="0 0 28 10" role="img" aria-label="Typing" style={{ display: "block" }}>
       <circle cx="6" cy="5" r="2" fill="rgba(0,0,0,0.55)">
         <animate attributeName="opacity" values="0.25;0.9;0.25" dur="1s" repeatCount="indefinite" begin="0s" />
       </circle>
@@ -125,7 +146,7 @@ function normalizeOneLetterAnswer(s: string): "a" | "b" | "c" | null {
   return null;
 }
 
-export default function MercyAIHost() {
+export default function MercyAIHostImpl() {
   const [open, setOpen] = useState(false);
 
   // mode = destination (header subtitle)
@@ -137,6 +158,9 @@ export default function MercyAIHost() {
   // Language toggle
   const [lang, setLang] = useState<HostLang>(safeLang());
 
+  // 🔒 Flow lock
+  const [hostFlow, setHostFlow] = useState<HostFlow>("idle");
+
   // Typing state (assistant typing)
   const [isTyping, setIsTyping] = useState(false);
   const typingTimerRef = useRef<number | null>(null);
@@ -147,9 +171,10 @@ export default function MercyAIHost() {
   const inputRef = useRef<HTMLTextAreaElement | null>(null);
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
-  // Auth snapshot (best-effort; Host must not crash)
-  const [authUserId, setAuthUserId] = useState<string | null>(null);
-  const [authEmail, setAuthEmail] = useState<string>("");
+  // ✅ SINGLE SOURCE OF TRUTH (AuthProvider)
+  const { user } = useAuth();
+  const authUserId = user?.id ?? null;
+  const authEmail = user?.email ?? "";
 
   // Identity / care
   const [displayName, setDisplayName] = useState<string>("");
@@ -172,6 +197,9 @@ export default function MercyAIHost() {
   const [testStep, setTestStep] = useState<0 | 1 | 2 | 3>(0);
   const [testScore, setTestScore] = useState(0);
 
+  // Pending confirm (tiny “yes” handler)
+  const pendingConfirmRef = useRef<null | "go_tiers">(null);
+
   const location = useLocation();
   const navigate = useNavigate();
   const params = useParams<{ roomId?: string }>();
@@ -185,38 +213,6 @@ export default function MercyAIHost() {
 
   useEffect(() => {
     setMounted(true);
-  }, []);
-
-  // Keep auth snapshot current (best-effort)
-  useEffect(() => {
-    let alive = true;
-
-    const sync = async () => {
-      try {
-        const { data } = await supabase.auth.getSession();
-        const u = data?.session?.user ?? null;
-        if (!alive) return;
-        setAuthUserId(u?.id ?? null);
-        setAuthEmail(u?.email ?? "");
-      } catch {
-        if (!alive) return;
-        setAuthUserId(null);
-        setAuthEmail("");
-      }
-    };
-
-    void sync();
-
-    const { data: sub } = supabase.auth.onAuthStateChange((_evt, session) => {
-      const u = session?.user ?? null;
-      setAuthUserId(u?.id ?? null);
-      setAuthEmail(u?.email ?? "");
-    });
-
-    return () => {
-      alive = false;
-      sub?.subscription?.unsubscribe();
-    };
   }, []);
 
   const toggleLang = useCallback(() => {
@@ -246,6 +242,7 @@ export default function MercyAIHost() {
       // ignore
     } finally {
       setIsSpeaking(false);
+      setHostFlow("idle");
     }
   }, []);
 
@@ -257,19 +254,28 @@ export default function MercyAIHost() {
 
         stopVoice();
 
+        setHostFlow("voice_only");
+
         const u = new SpeechSynthesisUtterance(text);
         u.lang = lang === "vi" ? "vi-VN" : "en-US";
         u.rate = 1;
         u.pitch = 1;
 
         u.onstart = () => setIsSpeaking(true);
-        u.onend = () => setIsSpeaking(false);
-        u.onerror = () => setIsSpeaking(false);
+        u.onend = () => {
+          setIsSpeaking(false);
+          setHostFlow("idle");
+        };
+        u.onerror = () => {
+          setIsSpeaking(false);
+          setHostFlow("idle");
+        };
 
         window.speechSynthesis.speak(u);
         return true;
       } catch {
         setIsSpeaking(false);
+        setHostFlow("idle");
         return false;
       }
     },
@@ -359,13 +365,14 @@ export default function MercyAIHost() {
 
   const loadMyDisplayName = useCallback(async () => {
     try {
-      const { data: s } = await supabase.auth.getSession();
-      const uidUser = s?.session?.user?.id;
-      const email = s?.session?.user?.email ?? "";
-      if (!uidUser) return;
+      const uidUser = authUserId;
+      const email = authEmail ?? "";
+      if (!uidUser) {
+        setDisplayName("");
+        setCanVoiceTest(false);
+        return;
+      }
 
-      // Best-effort: don't assume exact schema. If these columns don't exist,
-      // Supabase will error — we swallow, and fallback to email.
       const { data: p, error } = await supabase
         .from("profiles")
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -403,12 +410,11 @@ export default function MercyAIHost() {
     } catch {
       // ignore
     }
-  }, []);
+  }, [authUserId, authEmail]);
 
   const loadLastProgress = useCallback(async () => {
     try {
-      const { data: s } = await supabase.auth.getSession();
-      const uidUser = s?.session?.user?.id;
+      const uidUser = authUserId;
       if (!uidUser) return;
 
       const { data, error } = await supabase
@@ -445,7 +451,7 @@ export default function MercyAIHost() {
     } catch {
       // ignore
     }
-  }, []);
+  }, [authUserId]);
 
   const logHostNote = useCallback(
     async (args: {
@@ -459,23 +465,18 @@ export default function MercyAIHost() {
       details?: Record<string, unknown>;
     }) => {
       try {
-        const { data: s } = await supabase.auth.getSession();
-        const uidUser = s?.session?.user?.id;
+        const uidUser = authUserId;
         if (!uidUser) return;
 
         const rid = ctx.roomId ?? roomIdFromUrl ?? null;
 
-        // client_version: best-effort (optional)
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const v = (import.meta as any)?.env?.VITE_APP_VERSION;
         const clientVersion = typeof v === "string" && v.trim().length ? v.trim() : null;
 
-        // IMPORTANT:
-        // - meta/details in DB are jsonb NOT NULL (default {}), so never send null.
-        // - severity has default; if we don't have a number, omit it (don’t send null).
         const payload: Record<string, unknown> = {
           user_id: uidUser,
-          user_email: s?.session?.user?.email ?? null,
+          user_email: authEmail || null,
           app_key: appKey,
           page_path: location.pathname ?? null,
 
@@ -505,10 +506,10 @@ export default function MercyAIHost() {
 
         await supabase.from("mercy_host_notes").insert(payload);
       } catch {
-        // ignore: app must never crash because logging failed
+        // ignore
       }
     },
-    [ctx.entryId, ctx.keyword, ctx.roomId, roomIdFromUrl, location.pathname, mode, contextLine, lang]
+    [authUserId, authEmail, ctx.entryId, ctx.keyword, ctx.roomId, roomIdFromUrl, location.pathname, mode, contextLine, lang]
   );
 
   // Load identity + last progress when panel opens (care)
@@ -523,8 +524,6 @@ export default function MercyAIHost() {
   useEffect(() => {
     if (isAdmin) return;
 
-    // RoomRenderer should dispatch:
-    // window.dispatchEvent(new CustomEvent("mb:host-progress", { detail: { roomId, keyword, entryId, next } }))
     const onProgress = (e: Event) => {
       const ce = e as CustomEvent<{ roomId?: string; keyword?: string; entryId?: string; next?: string }>;
       const d = ce.detail;
@@ -559,6 +558,7 @@ export default function MercyAIHost() {
   }, [ctx.roomId, roomIdFromUrl, location.pathname, navigate]);
 
   const startQuickTest = useCallback(() => {
+    setHostFlow("guided");
     setTestActive(true);
     setTestStep(1);
     setTestScore(0);
@@ -590,7 +590,6 @@ export default function MercyAIHost() {
       setTestActive(false);
       setTestStep(0);
 
-      // Very rough mapping (good enough for onboarding)
       const level = finalScore <= 1 ? "beginner" : finalScore === 2 ? "intermediate" : "advanced";
 
       const recEn =
@@ -617,6 +616,8 @@ export default function MercyAIHost() {
         message: `Quick test result: ${level} (${finalScore}/3)`,
         details: { level, score: finalScore },
       });
+
+      setHostFlow("idle");
     },
     [addMsg, lang, logHostNote]
   );
@@ -662,6 +663,19 @@ export default function MercyAIHost() {
       const userText = userTextRaw.toLowerCase();
       const rid = ctx.roomId ?? roomIdFromUrl;
 
+      // If we asked “open /tiers now?” and user replies yes -> point to button (no surprise redirect)
+      if (pendingConfirmRef.current === "go_tiers") {
+        const isYes = containsAny(userText, ["yes", "ok", "okay", "sure", "yep", "được", "ừ", "u", "vâng", "đồng ý"]);
+        const isNo = containsAny(userText, ["no", "not", "nope", "không", "thôi"]);
+        if (isYes || isNo) pendingConfirmRef.current = null;
+
+        if (isYes) {
+          return lang === "vi"
+            ? "OK. Bấm nút “Chọn gói (Pay)” bên dưới để mở /tiers."
+            : "OK. Tap “Choose tier” below to open /tiers.";
+        }
+      }
+
       // QUICK TEST handling (NO AI)
       if (testActive) {
         const ans = normalizeOneLetterAnswer(userTextRaw);
@@ -669,12 +683,7 @@ export default function MercyAIHost() {
           return lang === "vi" ? "Bạn trả lời A / B / C nhé." : "Please answer A / B / C.";
         }
 
-        // Correct answers:
-        // Q1: A (am)
-        // Q2: B (goes)
-        // Q3: A (Yesterday)
         let add = 0;
-
         if (testStep === 1 && ans === "a") add = 1;
         if (testStep === 2 && ans === "b") add = 1;
         if (testStep === 3 && ans === "a") add = 1;
@@ -696,7 +705,6 @@ export default function MercyAIHost() {
             : `Q3) Choose: “___ I watched a movie.”\nA) Yesterday  B) Tomorrow  C) Now\nReply: A / B / C`;
         }
 
-        // step 3 -> finish
         setTestStep(0);
         window.setTimeout(() => {
           finishQuickTest(nextScore);
@@ -730,6 +738,9 @@ export default function MercyAIHost() {
             ? `Để thanh toán và mở VIP, bạn cần đăng nhập trước.\n• Bấm “Login help” hoặc vào /signin\nSau đó vào /tiers để chọn gói.`
             : `To pay and unlock VIP, please sign in first.\n• Tap “Login help” or go to /signin\nThen go to /tiers to choose a plan.`;
         }
+
+        // mark pending confirm (so “yes” alone works)
+        pendingConfirmRef.current = "go_tiers";
 
         return lang === "vi"
           ? `Mình sẽ dẫn bạn theo 3 bước:\n1) Vào /tiers chọn gói (VIP1/VIP3/VIP9)\n2) Thanh toán\n3) Quay lại phòng học và bắt đầu\nBạn muốn mình mở trang /tiers không?`
@@ -768,10 +779,7 @@ Bạn mua gói nào (VIP1/VIP3/VIP9) và hiện đang thấy gì?`
 Tell me: which tier (VIP1/VIP3/VIP9) and what you see now?`;
       }
 
-      if (
-        currentMode === "about" ||
-        containsAny(userText, ["how", "works", "what is", "about", "guide", "là gì", "hoạt động"])
-      ) {
+      if (currentMode === "about" || containsAny(userText, ["how", "works", "what is", "about", "guide", "là gì", "hoạt động"])) {
         return lang === "vi"
           ? `Mercy Blade:
 • Rooms = học song ngữ ngắn + audio
@@ -822,22 +830,22 @@ Bạn muốn nâng cấp không? Bấm “Chọn gói (Pay)” để vào /tiers
 Want it? Tap “Choose tier” to open /tiers.`;
       }
 
-      // Room/audio complaints -> log fault
+      // Room/audio complaints -> log fault (smarter title/code)
       if (
         rid &&
         containsAny(userText, ["room", "audio", "sound", "play", "cannot hear", "can't hear", "progress", "không nghe", "âm thanh", "phòng"])
       ) {
+        const isAudio = containsAny(userText, ["audio", "sound", "play", "can't hear", "cannot hear", "không nghe", "âm thanh"]);
+        const title = isAudio ? `Audio issue: ${rid}` : `Room/UI issue: ${rid}`;
+        const faultCode = isAudio ? "AUDIO_PLAY_FAIL" : "ROOM_ISSUE";
+
         void logHostNote({
           note_type: "fault",
-          category: containsAny(userText, ["audio", "sound", "play", "can't hear", "cannot hear", "không nghe", "âm thanh"])
-            ? "audio"
-            : "ui",
+          category: isAudio ? "audio" : "ui",
           type: "user_report",
-          title: "Room/audio issue",
+          title,
           message: userTextRaw,
-          fault_code: containsAny(userText, ["audio", "sound", "play", "can't hear", "cannot hear", "không nghe", "âm thanh"])
-            ? "AUDIO_PLAY_FAIL"
-            : "ROOM_ISSUE",
+          fault_code: faultCode,
           severity: 2,
           details: { room_id: rid, ctx },
         });
@@ -880,6 +888,9 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
 
   const assistantRespond = useCallback(
     (userText: string, currentMode: PanelMode) => {
+      // 🔒 HARD LOCK: no unsolicited replies
+      if (hostFlow !== "user_input" && hostFlow !== "guided") return;
+
       clearTypingTimer();
       setIsTyping(true);
 
@@ -887,13 +898,19 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
         setIsTyping(false);
         typingTimerRef.current = null;
         addMsg("assistant", makeReply(userText, currentMode));
+        setHostFlow("idle"); // 🔒 always reset
       }, 650);
     },
-    [addMsg, clearTypingTimer, makeReply]
+    [addMsg, clearTypingTimer, makeReply, hostFlow]
   );
 
   const transitionToMode = useCallback(
     (nextMode: PanelMode) => {
+      pendingConfirmRef.current = null;
+
+      // guided system prompt
+      setHostFlow("guided");
+
       setMode(nextMode);
       seedIfEmpty(nextMode);
       clearTypingTimer();
@@ -911,20 +928,31 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
               : "Okay — email not arriving. What type (verification / reset / receipt)?"
           );
         else if (nextMode === "billing")
-          addMsg("assistant", lang === "vi" ? "OK — thanh toán/VIP. Bạn đang ở gói nào và lỗi gì?" : "Okay — billing/VIP. Which tier and what’s wrong?");
+          addMsg(
+            "assistant",
+            lang === "vi" ? "OK — thanh toán/VIP. Bạn đang ở gói nào và lỗi gì?" : "Okay — billing/VIP. Which tier and what’s wrong?"
+          );
         else if (nextMode === "about")
-          addMsg("assistant", lang === "vi" ? "OK — Mercy Blade hoạt động thế nào. Bạn đang muốn làm gì?" : "Okay — here’s how Mercy Blade works. What are you trying to do?");
+          addMsg(
+            "assistant",
+            lang === "vi" ? "OK — Mercy Blade hoạt động thế nào. Bạn đang muốn làm gì?" : "Okay — here’s how Mercy Blade works. What are you trying to do?"
+          );
         else addMsg("assistant", baseAssistantHome);
+
+        setHostFlow("idle");
       }, 500);
     },
     [addMsg, baseAssistantHome, clearTypingTimer, seedIfEmpty, lang]
   );
 
   const openPanel = useCallback(() => {
+    pendingConfirmRef.current = null;
+
     setOpen(true);
     seedIfEmpty(mode);
     clearTypingTimer();
     setIsTyping(true);
+
     typingTimerRef.current = window.setTimeout(() => {
       setIsTyping(false);
       typingTimerRef.current = null;
@@ -933,10 +961,13 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
   }, [clearTypingTimer, mode, seedIfEmpty]);
 
   const closePanel = useCallback(() => {
+    pendingConfirmRef.current = null;
+
     setOpen(false);
     setIsTyping(false);
     clearTypingTimer();
     stopVoice();
+    setHostFlow("idle");
   }, [clearTypingTimer, stopVoice]);
 
   // Auto-open on /signin — ONCE per browser
@@ -970,8 +1001,47 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [isAdmin, open, closePanel]);
 
-  const actions: QuickAction[] = useMemo(
-    () => [
+  const actions: QuickAction[] = useMemo(() => {
+    const resumeAction: QuickAction[] = lastProgress?.roomId
+      ? [
+          {
+            id: "resume",
+            label: lang === "vi" ? "Tiếp tục học" : "Resume",
+            description: lang === "vi" ? `Quay lại phòng: ${lastProgress.roomId}` : `Go back to: ${lastProgress.roomId}`,
+            onClick: () => {
+              closePanel();
+              navigate(`/room/${lastProgress.roomId}`);
+            },
+          },
+        ]
+      : [];
+
+    const copyAction: QuickAction[] = [
+      {
+        id: "copy",
+        label: "Copy debug",
+        description: lang === "vi" ? "Chép thông tin để báo lỗi" : "Copy context for bug reports",
+        onClick: () => {
+          const rid = ctx.roomId ?? roomIdFromUrl ?? "";
+          const txt =
+            `page=${location.pathname}\n` +
+            `room=${rid}\n` +
+            `keyword=${ctx.keyword ?? ""}\n` +
+            `entry=${ctx.entryId ?? ""}\n` +
+            `mode=${mode}\n` +
+            `ctx=${contextLine ?? ""}`;
+
+          void safeCopy(txt).then((ok) => {
+            addMsg(
+              "assistant",
+              ok ? (lang === "vi" ? "Đã copy ✅" : "Copied ✅") : lang === "vi" ? "Copy thất bại ❌" : "Copy failed ❌"
+            );
+          });
+        },
+      },
+    ];
+
+    return [
       {
         id: "tiers",
         label: lang === "vi" ? "Chọn gói (Pay)" : "Choose tier",
@@ -980,6 +1050,9 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
           goTiers();
         },
       },
+
+      ...resumeAction,
+
       {
         id: "voice",
         label: canVoiceTest
@@ -997,7 +1070,6 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
           ? "Chỉ dành cho VIP9"
           : "VIP9 only",
         onClick: () => {
-          // If not signed in -> signin
           if (!authUserId) {
             closePanel();
             navigate("/signin");
@@ -1033,11 +1105,13 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
         label: lang === "vi" ? "Mini test" : "Mini test",
         description: lang === "vi" ? "Đo nhanh trình độ để gợi ý nơi bắt đầu" : "Quick level check to recommend where to start",
         onClick: () => {
-          if (!open) openPanel();
           seedIfEmpty(mode);
           startQuickTest();
         },
       },
+
+      ...copyAction,
+
       {
         id: "login",
         label: lang === "vi" ? "Hỗ trợ đăng nhập" : "Login help",
@@ -1065,24 +1139,25 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
         description: lang === "vi" ? "Giới thiệu nhanh & dẫn đường" : "Quick explanation & navigation",
         onClick: () => transitionToMode("about"),
       },
-    ],
-    [
-      addMsg,
-      authUserId,
-      canVoiceTest,
-      closePanel,
-      goTiers,
-      lang,
-      mode,
-      navigate,
-      open,
-      openPanel,
-      seedIfEmpty,
-      speak,
-      startQuickTest,
-      transitionToMode,
-    ]
-  );
+    ];
+  }, [
+    addMsg,
+    authUserId,
+    canVoiceTest,
+    closePanel,
+    goTiers,
+    lang,
+    mode,
+    navigate,
+    speak,
+    startQuickTest,
+    transitionToMode,
+    lastProgress,
+    ctx,
+    roomIdFromUrl,
+    location.pathname,
+    contextLine,
+  ]);
 
   const onSend = useCallback(() => {
     const text = clampText(draft);
@@ -1092,7 +1167,9 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
     seedIfEmpty(mode);
     addMsg("user", text);
 
-    // Log every user message as a 'question' note (best effort)
+    // 🔒 explicit intent
+    setHostFlow("user_input");
+
     void logHostNote({
       note_type: "question",
       category: "other",
@@ -1145,6 +1222,7 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
       appKey,
       canVoiceTest,
       isSpeaking,
+      hostFlow,
     };
   }, [
     open,
@@ -1165,6 +1243,7 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
     testScore,
     canVoiceTest,
     isSpeaking,
+    hostFlow,
   ]);
 
   if (!mounted || typeof document === "undefined" || !document.body) return null;
@@ -1346,14 +1425,7 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
             {messages.map((m) => {
               const isUser = m.role === "user";
               return (
-                <div
-                  key={m.id}
-                  style={{
-                    display: "flex",
-                    justifyContent: isUser ? "flex-end" : "flex-start",
-                    marginTop: 10,
-                  }}
-                >
+                <div key={m.id} style={{ display: "flex", justifyContent: isUser ? "flex-end" : "flex-start", marginTop: 10 }}>
                   <div
                     style={{
                       borderRadius: 16,
@@ -1412,17 +1484,8 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
               ))}
             </div>
 
-            <div
-              style={{
-                marginTop: 14,
-                borderRadius: 14,
-                background: "rgba(0,0,0,0.06)",
-                padding: 12,
-              }}
-            >
-              <div style={{ fontSize: 11, fontWeight: 700, color: "rgba(0,0,0,0.70)" }}>
-                {lang === "vi" ? "Gợi ý nhanh" : "Care loop"}
-              </div>
+            <div style={{ marginTop: 14, borderRadius: 14, background: "rgba(0,0,0,0.06)", padding: 12 }}>
+              <div style={{ fontSize: 11, fontWeight: 700, color: "rgba(0,0,0,0.70)" }}>{lang === "vi" ? "Gợi ý nhanh" : "Care loop"}</div>
               <div style={{ fontSize: 11, color: "rgba(0,0,0,0.60)", marginTop: 6 }}>
                 {lang === "vi"
                   ? `Mình ghi nhận câu hỏi/lỗi để đội dev sửa sau. Nếu bạn muốn mở VIP, vào /tiers.`
@@ -1456,11 +1519,7 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
                 value={draft}
                 onChange={(e) => setDraft(e.target.value)}
                 onKeyDown={onInputKeyDown}
-                placeholder={
-                  lang === "vi"
-                    ? "Gõ ở đây… (Enter để gửi, Shift+Enter xuống dòng)"
-                    : "Type here… (Enter to send, Shift+Enter newline)"
-                }
+                placeholder={lang === "vi" ? "Gõ ở đây… (Enter để gửi, Shift+Enter xuống dòng)" : "Type here… (Enter to send, Shift+Enter newline)"}
                 rows={1}
                 style={{
                   width: "100%",
@@ -1535,5 +1594,5 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
 }
 
 /* teacher GPT — new thing to learn (2 lines):
-   If a DB column has a NOT NULL default (like jsonb default {}), don’t send null — omit it or send {}.
-   Browser Text-to-Speech is a free way to prototype “Mercy Voice” UX before paying for real AI voice. */
+   If two places “own” auth state, you’ll eventually see ghost bugs (especially with hot reload).
+   One auth source (AuthProvider) + DB queries elsewhere is how you keep Mercy Host stable. */

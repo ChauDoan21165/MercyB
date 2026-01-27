@@ -2,7 +2,6 @@ import { AlertCircle, Lock, LogIn } from "lucide-react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { normalizeRoomError, type RoomErrorPayload } from "@/lib/errors";
-import { useMercyBladeTheme } from "@/hooks/useMercyBladeTheme";
 import { getErrorMessage, BUTTON_LABELS } from "@/lib/constants/uiText";
 import { logger } from "@/lib/logger";
 import { fadeInScale, shakeError, getVariants } from "@/lib/motion";
@@ -18,20 +17,23 @@ type RoomErrorStateProps = RoomErrorPayload & {
  */
 export function RoomErrorState(props: RoomErrorStateProps) {
   const navigate = useNavigate();
-  const { mode } = useMercyBladeTheme();
-  
-  const { code, roomId, kind, message, onBack } = normalizeRoomError(props);
+
+  // ✅ FIX: normalize only error fields; keep onBack from props (normalizeRoomError does not return it)
+  const normalized = normalizeRoomError(props);
+  const { code, roomId, kind, message } = normalized;
+  const onBack = props.onBack;
+
   const errorKind = kind!;
-  
+
   // Log all room errors for analytics
-  logger.error('Room load error', {
-    scope: 'RoomErrorState',
+  logger.error("Room load error", {
+    scope: "RoomErrorState",
     kind: errorKind,
     code,
     roomId,
     message,
   });
-  
+
   // Default back behavior
   const handleBack = onBack || (() => navigate("/"));
 
@@ -41,10 +43,10 @@ export function RoomErrorState(props: RoomErrorStateProps) {
         <LogIn className="w-16 h-16 text-muted-foreground transition-colors duration-200" />
         <div className="text-center space-y-2">
           <h2 className="text-2xl font-bold transition-colors duration-200">
-            {getErrorMessage('auth_required', 'en')}
+            {getErrorMessage("auth_required", "en")}
           </h2>
           <p className="text-muted-foreground transition-colors duration-200">
-            {getErrorMessage('auth_required', 'vi')}
+            {getErrorMessage("auth_required", "vi")}
           </p>
         </div>
         <a
@@ -63,10 +65,10 @@ export function RoomErrorState(props: RoomErrorStateProps) {
         <Lock className="w-16 h-16 text-muted-foreground transition-colors duration-200" />
         <div className="text-center space-y-2">
           <h2 className="text-2xl font-bold transition-colors duration-200">
-            {getErrorMessage('access_denied', 'en')}
+            {getErrorMessage("access_denied", "en")}
           </h2>
           <p className="text-muted-foreground transition-colors duration-200">
-            {getErrorMessage('access_denied', 'vi')}
+            {getErrorMessage("access_denied", "vi")}
           </p>
         </div>
         <button
@@ -85,10 +87,10 @@ export function RoomErrorState(props: RoomErrorStateProps) {
         <AlertCircle className="w-16 h-16 text-muted-foreground transition-colors duration-200" />
         <div className="text-center space-y-2">
           <h2 className="text-2xl font-bold transition-colors duration-200">
-            {getErrorMessage('room_not_found', 'en')}
+            {getErrorMessage("room_not_found", "en")}
           </h2>
           <p className="text-muted-foreground transition-colors duration-200">
-            {getErrorMessage('room_not_found', 'vi')}
+            {getErrorMessage("room_not_found", "vi")}
           </p>
         </div>
         <button
@@ -109,18 +111,15 @@ export function RoomErrorState(props: RoomErrorStateProps) {
       animate="visible"
       className="flex flex-col items-center justify-center min-h-[400px] gap-4 p-6 transition-colors duration-200"
     >
-      <motion.div
-        animate="shake"
-        variants={shakeError}
-      >
+      <motion.div animate="shake" variants={shakeError}>
         <AlertCircle className="w-16 h-16 text-destructive transition-colors duration-200" />
       </motion.div>
       <div className="text-center space-y-2">
         <h2 className="text-2xl font-bold transition-colors duration-200">
-          {getErrorMessage('generic', 'en')}
+          {getErrorMessage("generic", "en")}
         </h2>
         <p className="text-muted-foreground transition-colors duration-200">
-          {message || getErrorMessage('generic', 'vi')}
+          {message || getErrorMessage("generic", "vi")}
         </p>
       </div>
       <motion.button

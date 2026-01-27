@@ -36,6 +36,14 @@
 //   - Try jpg/jpeg/png + case variants
 //   - If all fail, fallback to existing /hero/hero_band.jpg so you never see blank.
 // - Hero full-bleed inside frame (touch both sides).
+//
+// ✅ FIX (MB-BLUE-100.9j — 2026-01-21):
+// - Tier Map button MUST go to /tier-map (NOT /tiers).
+// - Use hard link (<a href>) to avoid any router confusion during hot reload.
+//
+// ✅ FIX (MB-BLUE-100.9k — 2026-01-23):
+// - Prevent "giant blank white hero" when ALL hero image fallbacks fail (404).
+// - If all fallbacks fail, render a neutral placeholder band (NO TEXT) instead of broken <img> alt text.
 
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -134,10 +142,13 @@ export default function Home() {
   );
 
   const [heroIdx, setHeroIdx] = useState(0);
+  const [heroExhausted, setHeroExhausted] = useState(false);
+
   const heroSrc = heroFallbacks[heroIdx] ?? heroFallbacks[0];
 
   useEffect(() => {
     setHeroIdx(0);
+    setHeroExhausted(false);
   }, [heroFallbacks]);
 
   const wrap: React.CSSProperties = {
@@ -229,6 +240,16 @@ export default function Home() {
     objectFit: "contain",
     display: "block",
     background: "white",
+  };
+
+  // ✅ If ALL fallbacks fail, show a neutral (non-blank, non-text) band
+  // so the UI never looks "broken icon + alt text".
+  const heroPlaceholder: React.CSSProperties = {
+    width: "100%",
+    height: "clamp(220px, 28vw, 380px)",
+    display: "block",
+    background:
+      "linear-gradient(90deg, rgba(230,244,255,0.85), rgba(255,255,255,0.92), rgba(230,244,255,0.85))",
   };
 
   const band: React.CSSProperties = {
@@ -383,10 +404,11 @@ export default function Home() {
                   </button>
                 )}
 
-                <button
-                  type="button"
-                  style={btn}
-                  onClick={() => nav("/tiers")}
+                {/* ✅ FIX: Tier Map is /tier-map (Pricing is /tiers).
+                    Use <a href> to avoid any router confusion during hot reload. */}
+                <a
+                  href="/tier-map"
+                  style={{ ...btn, textDecoration: "none", color: "inherit" }}
                   aria-label="Tier Map"
                 >
                   <span
@@ -398,7 +420,7 @@ export default function Home() {
                     }}
                   />
                   Tier Map / Bản đồ app
-                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -408,19 +430,26 @@ export default function Home() {
         <div style={{ ...({ zoom: zoomScale } as any) }}>
           {/* BOX 2: HERO (BRAND IMAGE ONLY — NO OVERLAY TEXT) */}
           <div style={heroImgWrap} aria-label="Hero band">
-            <img
-              src={heroSrc}
-              alt="Mercy Blade — English & Knowledge — Colors of Life"
-              style={heroImg}
-              loading="eager"
-              decoding="async"
-              onError={() => {
-                setHeroIdx((i) => {
-                  const next = i + 1;
-                  return next < heroFallbacks.length ? next : i;
-                });
-              }}
-            />
+            {heroExhausted ? (
+              <div style={heroPlaceholder} />
+            ) : (
+              <img
+                src={heroSrc}
+                alt="Mercy Blade — English & Knowledge — Colors of Life"
+                style={heroImg}
+                loading="eager"
+                decoding="async"
+                onError={() => {
+                  setHeroIdx((i) => {
+                    const next = i + 1;
+                    if (next < heroFallbacks.length) return next;
+                    // Exhausted → swap to neutral placeholder (NO broken icon, NO alt text)
+                    setHeroExhausted(true);
+                    return i;
+                  });
+                }}
+              />
+            )}
           </div>
 
           {/* BOX 3: CONTENT (TEXT-ONLY) */}
@@ -533,6 +562,6 @@ export default function Home() {
   );
 }
 
-/* New thing to learn:
-   If you see broken-icon + alt text, it’s a 404 path. This file auto-tries a list of common paths,
-   and ALWAYS falls back to /hero/hero_band.jpg so you never get a blank hero. */
+/* teacher GPT — new thing to learn (2 lines):
+   A broken <img> can still reserve height, creating a “giant blank block.”
+   When all fallbacks fail, render a non-text placeholder instead of showing broken-icon + alt text. */

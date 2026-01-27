@@ -1,3 +1,4 @@
+// FILE: src/main.tsx
 // MB-BLUE-100.7 — 2025-12-31 (+0700)
 //
 // FIX (100.7):
@@ -15,7 +16,6 @@
 //   window.supabase.auth.getSession()
 //   window.supabase.from("community_messages").select("*").limit(3)
 
-import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 
@@ -110,6 +110,8 @@ declare global {
     // ignore
   }
 })();
+
+
 
 // ✅ DEV: expose supabase to window for console debugging
 (function exposeSupabaseForDebug() {

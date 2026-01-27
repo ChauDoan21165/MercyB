@@ -18,33 +18,7 @@
     "kiên cường",
     "cbt"
   ],
-  "entries": [
-    {
-      "slug": "breathing",
-      "keywords_en": [
-        "breathing",
-        "calm",
-        "anxiety"
-      ],
-      "keywords_vi": [
-        "thở",
-        "bình tĩnh",
-        "lo âu"
-      ],
-      "copy": {
-        "en": "Master breathing for robust anxiety control. Combine 4-7-8 with box breathing—four in, four hold, four out, four hold. Use during high stress for quick regulation. Integrate morning and evening sessions. Track heart-rate variability to measure progress. Work with a biofeedback coach or peer group to refine technique and build durable resilience over time.",
-        "vi": "Làm chủ hơi thở để kiểm soát lo âu hiệu quả. Kết hợp kỹ thuật 4-7-8 với box breathing—hít bốn giây, giữ bốn giây, thở bốn giây, giữ bốn giây. Sử dụng trong lúc căng thẳng cao để điều hòa nhanh. Tích hợp các buổi sáng và tối để tạo nhịp ổn định. Theo dõi HRV để đánh giá tiến triển. Làm việc với chuyên gia phản hồi sinh học hoặc nhóm hỗ trợ để hoàn thiện kỹ thuật và xây dựng khả năng kiên cường lâu dài."
-      },
-      "tags": [
-        "breathing",
-        "anxiety"
-      ],
-      "audio": {
-        "en": "anx_vip3_1_en.mp3"
-      },
-      "essay_ref": "anx_vip3_1_essay.txt"
-    }
-  ],
+  "entries": [],
   "id": "anxiety_relief_vip3",
   "title": {
     "en": "Anxiety Relief",

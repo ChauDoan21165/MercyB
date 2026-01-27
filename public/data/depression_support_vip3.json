@@ -18,33 +18,7 @@
     "kiên cường",
     "cbt"
   ],
-  "entries": [
-    {
-      "slug": "routine",
-      "keywords_en": [
-        "routine",
-        "structure",
-        "depression"
-      ],
-      "keywords_vi": [
-        "thói quen",
-        "cấu trúc",
-        "trầm cảm"
-      ],
-      "copy": {
-        "en": "Designing a scientific routine helps prevent depression recurrence. Align your schedule with natural circadian rhythms, light exposure, and meal timing. Consider polyphasic sleep only under guidance. Track patterns using wearables. Work with a behavioral activation specialist to build a personalized, data-driven structure for sustained remission.",
-        "vi": "Designing a scientific routine helps prevent depression recurrence. Align your schedule with natural circadian rhythms, light exposure, and meal timing. Consider polyphasic sleep only under guidance. Track patterns using wearables. Work with a behavioral activation specialist to build a personalized, data-driven structure for sustained remission."
-      },
-      "tags": [
-        "routine",
-        "depression"
-      ],
-      "audio": {
-        "en": "dep_vip3_1_en.mp3"
-      },
-      "essay_ref": "dep_vip3_1_essay.txt"
-    }
-  ],
+  "entries": [],
   "id": "depression_support_vip3",
   "title": {
     "en": "Depression Support",

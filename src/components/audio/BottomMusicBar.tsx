@@ -85,10 +85,14 @@ function getInitialFav(): Record<string, boolean> {
 }
 
 // ✅ Global zoom: BOTH mechanisms (RoomRenderer/ChatHub may listen to either)
+// IMPORTANT: set --mb-essay-zoom in a CSS-friendly way (percentage),
+// while keeping data-mb-zoom as numeric string.
 function applyGlobalZoom(pct: number) {
   const safe = clamp(Math.round(pct), 60, 140);
 
-  document.documentElement.style.setProperty("--mb-essay-zoom", String(safe));
+  // ✅ CSS-friendly: use percent for direct font-size usage, AND expose numeric for calc() users.
+  document.documentElement.style.setProperty("--mb-essay-zoom", `${safe}%`);
+  document.documentElement.style.setProperty("--mb-essay-zoom-num", String(safe));
   document.documentElement.setAttribute("data-mb-zoom", String(safe));
 
   try {
@@ -279,7 +283,7 @@ export default function BottomMusicBar() {
     setAdminVisible(isLocal || flag);
   }, []);
 
-  // Init audio once
+  // Init audio once + init global zoom + keep in sync with other tabs
   useEffect(() => {
     const a = new Audio();
     a.preload = "metadata";
@@ -298,7 +302,20 @@ export default function BottomMusicBar() {
 
     applyGlobalZoom(zoomPct);
 
+    // ✅ cross-tab sync (storage only fires on OTHER tabs)
+    const onStorage = (e: StorageEvent) => {
+      if (e.key !== LS_ZOOM) return;
+      const n = Number(e.newValue);
+      if (!isFinite(n)) return;
+      const safe = clamp(Math.round(n), 60, 140);
+      setZoomPct(safe);
+      applyGlobalZoom(safe);
+    };
+    window.addEventListener("storage", onStorage);
+
     return () => {
+      window.removeEventListener("storage", onStorage);
+
       a.pause();
       a.src = "";
       a.removeEventListener("loadedmetadata", onLoaded);

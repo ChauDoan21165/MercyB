@@ -107,21 +107,21 @@ export const roomDataMap = {
     "id": "alexander_the_great_vip9_vol1",
     "title_en": "Alexander the Great — Volume I",
     "title_vi": "Alexander Đại Đế — Tập I",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "alexander_the_great_vip9_vol2": {
     "id": "alexander_the_great_vip9_vol2",
     "title_en": "Alexander the Great — Volume II (The Architecture of a World Empire)",
     "title_vi": "Alexander Đại Đế — Tập II (Kiến Trúc của một Đế Chế Thế Giới)",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "alexander_the_great_vip9_vol3": {
     "id": "alexander_the_great_vip9_vol3",
     "title_en": "Alexander the Great — Volume III",
     "title_vi": "Alexander Đại Đế — Tập III",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "alphabet_adventure_kids_l1": {
@@ -233,21 +233,21 @@ export const roomDataMap = {
     "id": "bismarck_vip9_vol1",
     "title_en": "Otto von Bismarck — Volume I",
     "title_vi": "Otto von Bismarck — Tập I",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "bismarck_vip9_vol2": {
     "id": "bismarck_vip9_vol2",
     "title_en": "Otto von Bismarck — Volume II",
     "title_vi": "Otto von Bismarck — Tập II",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "bismarck_vip9_vol3": {
     "id": "bismarck_vip9_vol3",
     "title_en": "Otto von Bismarck — Volume III",
     "title_vi": "Otto von Bismarck — Tập III",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "body_parts_movement_kids_l1": {
@@ -317,21 +317,21 @@ export const roomDataMap = {
     "id": "clausewitz_grand_strategy_vip9_vol1",
     "title_en": "Clausewitz Grand Strategy — Volume I",
     "title_vi": "Đại Chiến Lược Clausewitz — Tập I",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "clausewitz_grand_strategy_vip9_vol2": {
     "id": "clausewitz_grand_strategy_vip9_vol2",
     "title_en": "Clausewitz Grand Strategy — Volume II",
     "title_vi": "Đại Chiến Lược Clausewitz — Tập II",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "clausewitz_grand_strategy_vip9_vol3": {
     "id": "clausewitz_grand_strategy_vip9_vol3",
     "title_en": "Clausewitz Grand Strategy — Volume III",
     "title_vi": "Đại Chiến Lược Clausewitz — Tập III",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "clothes_dressing_kids_l1": {
@@ -401,119 +401,119 @@ export const roomDataMap = {
     "id": "corporate_analytics_strategy_vip9",
     "title_en": "Corporate Analytics Strategy",
     "title_vi": "Chiến Lược Phân Tích Doanh Nghiệp",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "corporate_conflict_navigation_vip9": {
     "id": "corporate_conflict_navigation_vip9",
     "title_en": "Corporate Conflict Navigation",
     "title_vi": "Điều Hướng Xung Đột Doanh Nghiệp",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "corporate_crisis_strategy_vip9": {
     "id": "corporate_crisis_strategy_vip9",
     "title_en": "Corporate Crisis Strategy",
     "title_vi": "Chiến Lược Ứng Phó Khủng Hoảng Doanh Nghiệp",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "corporate_cross_functional_vip9": {
     "id": "corporate_cross_functional_vip9",
     "title_en": "Corporate Cross-Functional Collaboration",
     "title_vi": "Hợp Tác Chức Năng Chéo Doanh Nghiệp",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "corporate_execution_systems_vip9": {
     "id": "corporate_execution_systems_vip9",
     "title_en": "Corporate Execution Systems",
     "title_vi": "Hệ Thống Thực Thi Doanh Nghiệp",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "corporate_foresight_vip9": {
     "id": "corporate_foresight_vip9",
     "title_en": "Corporate Strategic Foresight",
     "title_vi": "Dự Báo Chiến Lược Doanh Nghiệp",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "corporate_global_strategy_vip9": {
     "id": "corporate_global_strategy_vip9",
     "title_en": "Corporate Global Strategy",
     "title_vi": "Chiến Lược Toàn Cầu Doanh Nghiệp",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "corporate_governance_vip9": {
     "id": "corporate_governance_vip9",
     "title_en": "Corporate Governance",
     "title_vi": "Quản Trị Doanh Nghiệp",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "corporate_innovation_engines_vip9": {
     "id": "corporate_innovation_engines_vip9",
     "title_en": "Corporate Innovation Engines",
     "title_vi": "Động Cơ Sáng Tạo Doanh Nghiệp",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "corporate_leadership_leverage_vip9": {
     "id": "corporate_leadership_leverage_vip9",
     "title_en": "Corporate Leadership Leverage",
     "title_vi": "Đòn Bẩy Lãnh Đạo Doanh Nghiệp",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "corporate_long_cycle_planning_vip9": {
     "id": "corporate_long_cycle_planning_vip9",
     "title_en": "Corporate Long Cycle Planning",
     "title_vi": "Hoạch Định Chu Kỳ Dài Doanh Nghiệp",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "corporate_negotiation_vip9": {
     "id": "corporate_negotiation_vip9",
     "title_en": "Corporate Negotiation",
     "title_vi": "Đàm Phán Doanh Nghiệp",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "corporate_positioning_vip9": {
     "id": "corporate_positioning_vip9",
     "title_en": "Corporate Positioning",
     "title_vi": "Định Vị Doanh Nghiệp",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "corporate_resource_allocation_vip9": {
     "id": "corporate_resource_allocation_vip9",
     "title_en": "Corporate Resource Allocation",
     "title_vi": "Phân Bổ Nguồn Lực Doanh Nghiệp",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "corporate_scaling_strategy_vip9": {
     "id": "corporate_scaling_strategy_vip9",
     "title_en": "Corporate Scaling Strategy",
     "title_vi": "Chiến Lược Mở Rộng Doanh Nghiệp",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "corporate_talent_architecture_vip9": {
     "id": "corporate_talent_architecture_vip9",
     "title_en": "Corporate Talent Architecture",
     "title_vi": "Kiến Trúc Tài Năng Doanh Nghiệp",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "corporate_team_culture_vip9": {
     "id": "corporate_team_culture_vip9",
     "title_en": "Corporate Team Culture",
     "title_vi": "Văn Hóa Đội Nhóm Doanh Nghiệp",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "countries_cultures_kids_l3": {
@@ -569,21 +569,21 @@ export const roomDataMap = {
     "id": "cyrus_the_great_vip9_vol2",
     "title_en": "Cyrus the Great — Volume II",
     "title_vi": "Cyrus Đại Đế — Tập II",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "cyrus_the_great_vip9_vol3": {
     "id": "cyrus_the_great_vip9_vol3",
     "title_en": "Cyrus the Great — Volume III",
     "title_vi": "Cyrus Đại Đế — Tập III",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "cyrus_v1": {
     "id": "cyrus_v1",
     "title_en": "Cyrus the Great — Volume I: The Architecture of Humane Empire",
     "title_vi": "Cyrus Đại Đế — Tập I: Kiến Trúc Đế Chế Nhân Bản",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "cyrus_v3": {
@@ -1223,13 +1223,6 @@ export const roomDataMap = {
     "tier": "free",
     "hasData": true
   },
-  "english_writing_free": {
-    "id": "english_writing_free",
-    "title_en": "English Writing Foundations",
-    "title_vi": "Nền Tảng Viết Tiếng Anh",
-    "tier": "free",
-    "hasData": true
-  },
   "environment_nature_kids_l2": {
     "id": "environment_nature_kids_l2",
     "title_en": "Environment & Nature",
@@ -1241,21 +1234,21 @@ export const roomDataMap = {
     "id": "epaminondas_vip9_vol1",
     "title_en": "Epaminondas — Volume I",
     "title_vi": "Epaminondas — Tập I",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "epaminondas_vip9_vol2": {
     "id": "epaminondas_vip9_vol2",
     "title_en": "Epaminondas — Volume II",
     "title_vi": "Epaminondas — Tập II",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "epaminondas_vip9_vol3": {
     "id": "epaminondas_vip9_vol3",
     "title_en": "Epaminondas — Volume III",
     "title_vi": "Epaminondas — Tập III",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "essential_money_risk_management_vip4_bonus": {
@@ -1388,28 +1381,28 @@ export const roomDataMap = {
     "id": "frederick_bismarck_comparison_vip9",
     "title_en": "Frederick the Great vs Otto von Bismarck — Comparative Strategy",
     "title_vi": "Frederick Đại đế và Otto von Bismarck — So Sánh Chiến Lược",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "frederick_the_great_vip9_vol1": {
     "id": "frederick_the_great_vip9_vol1",
     "title_en": "Frederick the Great — Volume I",
     "title_vi": "Frederick Đại Đế — Tập I",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "frederick_the_great_vip9_vol2": {
     "id": "frederick_the_great_vip9_vol2",
     "title_en": "Frederick the Great — Volume II",
     "title_vi": "Frederick Đại Đế — Tập II",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "frederick_the_great_vip9_vol3": {
     "id": "frederick_the_great_vip9_vol3",
     "title_en": "Frederick the Great — Volume III",
     "title_vi": "Frederick Đại Đế — Tập III",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "friendship_kindness_kids_l2": {
@@ -1430,28 +1423,28 @@ export const roomDataMap = {
     "id": "genghis_khan_vip9_vol1",
     "title_en": "Genghis Khan — Volume I",
     "title_vi": "Thành Cát Tư Hãn — Tập I",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "genghis_khan_vip9_vol1_p3": {
     "id": "genghis_khan_vip9_vol1_p3",
     "title_en": "Genghis Khan — Volume I (Piece 3)",
     "title_vi": "Thành Cát Tư Hãn — Tập I (Phần 3)",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "genghis_khan_vip9_vol2": {
     "id": "genghis_khan_vip9_vol2",
     "title_en": "Genghis Khan — Volume II",
     "title_vi": "Thành Cát Tư Hãn — Tập II",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "genghis_khan_vip9_vol3": {
     "id": "genghis_khan_vip9_vol3",
     "title_en": "Genghis Khan — Volume III",
     "title_vi": "Thành Cát Tư Hãn — Tập III",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "geography_basics_kids_l2": {
@@ -1507,21 +1500,21 @@ export const roomDataMap = {
     "id": "hannibal_barca_grand_strategy_vip9_vol1",
     "title_en": "Hannibal Barca Grand Strategy — Volume I (The Oath Against Rome)",
     "title_vi": "Đại Chiến Lược Hannibal Barca — Tập I (Lời Thề Chống Rome)",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "hannibal_barca_grand_strategy_vip9_vol2": {
     "id": "hannibal_barca_grand_strategy_vip9_vol2",
     "title_en": "Hannibal Barca Grand Strategy — Volume II",
     "title_vi": "Đại Chiến Lược Hannibal Barca — Tập II",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "hannibal_barca_grand_strategy_vip9_vol3": {
     "id": "hannibal_barca_grand_strategy_vip9_vol3",
     "title_en": "Hannibal Barca — Volume III",
     "title_vi": "Hannibal Barca — Tập III",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "health_body_awareness_kids_l3": {
@@ -1563,7 +1556,7 @@ export const roomDataMap = {
     "id": "individual_strategic_mastery_vip9",
     "title_en": "Individual Strategic Mastery",
     "title_vi": "Làm Chủ Chiến Lược Cá Nhân",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "internet_vocabulary_kids_l3": {
@@ -1591,49 +1584,49 @@ export const roomDataMap = {
     "id": "julius_caesar_vip9_vol1",
     "title_en": "Julius Caesar — Volume I",
     "title_vi": "Julius Caesar — Tập I",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "julius_caesar_vip9_vol1_copy": {
     "id": "julius_caesar_vip9_vol1_copy",
     "title_en": "Julius Caesar — Volume I",
     "title_vi": "Julius Caesar — Tập I",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "julius_caesar_vip9_vol2": {
     "id": "julius_caesar_vip9_vol2",
     "title_en": "Julius Caesar — Volume II (The Making of the Roman Empire)",
     "title_vi": "Julius Caesar — Tập II (Kiến Tạo Đế Chế La Mã)",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "julius_caesar_vip9_vol3": {
     "id": "julius_caesar_vip9_vol3",
     "title_en": "Genghis Khan — Volume I (Piece 3)",
     "title_vi": "Thành Cát Tư Hãn — Tập I (Phần 3)",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "kautilya_grand_strategy_vip9_vol1": {
     "id": "kautilya_grand_strategy_vip9_vol1",
     "title_en": "Kautilya Grand Strategy — Volume I (The Architecture of Power)",
     "title_vi": "Đại Chiến Lược Kautilya — Tập I (Kiến Trúc Quyền Lực)",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "kautilya_grand_strategy_vip9_vol2": {
     "id": "kautilya_grand_strategy_vip9_vol2",
     "title_en": "Kautilya Grand Strategy — Volume II",
     "title_vi": "Đại Chiến Lược Kautilya — Tập II",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "kautilya_vip9_vol3": {
     "id": "kautilya_vip9_vol3",
     "title_en": "Kautilya — Volume III: The Deep Architecture of Empire",
     "title_vi": "Kautilya — Tập III: Kiến Trúc Sâu Của Đế Chế",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "life_logistics_adulting_skills_vip4_bonus": {
@@ -1682,49 +1675,49 @@ export const roomDataMap = {
     "id": "machiavelli_grand_strategy_vip9",
     "title_en": "Machiavelli Grand Strategy",
     "title_vi": "Đại Chiến Lược Machiavelli",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "machiavelli_strategy_1_vip9": {
     "id": "machiavelli_strategy_1_vip9",
     "title_en": "Machiavellian Strategy – Volume I",
     "title_vi": "Chiến Lược Machiavelli – Tập I",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "machiavelli_strategy_2_vip9": {
     "id": "machiavelli_strategy_2_vip9",
     "title_en": "Machiavellian Strategy – Volume II",
     "title_vi": "Chiến Lược Machiavelli – Tập II",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "machiavelli_strategy_3_vip9": {
     "id": "machiavelli_strategy_3_vip9",
     "title_en": "Machiavellian Strategy – Volume III",
     "title_vi": "Chiến Lược Machiavelli – Tập III",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "machiavelli_strategy_4_vip9": {
     "id": "machiavelli_strategy_4_vip9",
     "title_en": "Machiavellian Strategy – Volume IV",
     "title_vi": "Chiến Lược Machiavelli – Tập IV",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "machiavelli_strategy_5_vip9": {
     "id": "machiavelli_strategy_5_vip9",
     "title_en": "Machiavellian Strategy – Volume V",
     "title_vi": "Chiến Lược Machiavelli – Tập V",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "machiavelli_strategy_vip9_vol1": {
     "id": "machiavelli_strategy_vip9_vol1",
     "title_en": "Machiavelli Strategic Doctrine – Volume I",
     "title_vi": "Học Thuyết Chiến Lược Machiavelli – Tập I",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "magic_story_words_kids_l1": {
@@ -1878,147 +1871,147 @@ export const roomDataMap = {
     "id": "musashi_grand_strategy_vip9_vol1",
     "title_en": "Miyamoto Musashi Grand Strategy — Volume I",
     "title_vi": "Đại Chiến Lược Miyamoto Musashi — Tập I",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "musashi_grand_strategy_vip9_vol2": {
     "id": "musashi_grand_strategy_vip9_vol2",
     "title_en": "Miyamoto Musashi Grand Strategy — Volume II",
     "title_vi": "Đại Chiến Lược Miyamoto Musashi — Tập II",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "musashi_grand_strategy_vip9_vol3": {
     "id": "musashi_grand_strategy_vip9_vol3",
     "title_en": "Miyamoto Musashi Grand Strategy — Volume III (Meta-Strategist)",
     "title_vi": "Đại Chiến Lược Miyamoto Musashi — Tập III (Siêu Chiến Lược Gia)",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "napoleon_vip9_vol1": {
     "id": "napoleon_vip9_vol1",
     "title_en": "Napoleon — Volume I",
     "title_vi": "Napoléon — Tập I",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "napoleon_vip9_vol2": {
     "id": "napoleon_vip9_vol2",
     "title_en": "Napoleon — Volume II",
     "title_vi": "Napoléon — Tập II",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "napoleon_vip9_vol3": {
     "id": "napoleon_vip9_vol3",
     "title_en": "Napoleon — Volume III",
     "title_vi": "Napoléon — Tập III",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "national_civilization_cycles_vip9": {
     "id": "national_civilization_cycles_vip9",
     "title_en": "National Civilization Cycles",
     "title_vi": "Chu Kỳ Văn Minh Quốc Gia",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "national_culture_power_vip9": {
     "id": "national_culture_power_vip9",
     "title_en": "National Culture Power",
     "title_vi": "Sức Mạnh Văn Hóa Quốc Gia",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "national_cyber_strategy_vip9": {
     "id": "national_cyber_strategy_vip9",
     "title_en": "National Cyber Strategy",
     "title_vi": "Chiến Lược An Ninh Mạng Quốc Gia",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "national_diplomacy_vip9": {
     "id": "national_diplomacy_vip9",
     "title_en": "National Diplomacy Strategy",
     "title_vi": "Chiến Lược Ngoại Giao Quốc Gia",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "national_economic_strategy_vip9": {
     "id": "national_economic_strategy_vip9",
     "title_en": "National Economic Strategy",
     "title_vi": "Chiến Lược Kinh Tế Quốc Gia",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "national_energy_security_vip9": {
     "id": "national_energy_security_vip9",
     "title_en": "National Energy Security",
     "title_vi": "An Ninh Năng Lượng Quốc Gia",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "national_geopolitical_mapping_vip9": {
     "id": "national_geopolitical_mapping_vip9",
     "title_en": "National Geopolitical Mapping",
     "title_vi": "Bản Đồ Địa Chính Trị Quốc Gia",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "national_identity_strategy_vip9": {
     "id": "national_identity_strategy_vip9",
     "title_en": "National Identity Strategy",
     "title_vi": "Chiến Lược Bản Sắc Quốc Gia",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "national_megatrends_vip9": {
     "id": "national_megatrends_vip9",
     "title_en": "National Megatrends Strategy",
     "title_vi": "Chiến Lược Megatrend Quốc Gia",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "national_military_strategy_vip9": {
     "id": "national_military_strategy_vip9",
     "title_en": "National Military Strategy",
     "title_vi": "Chiến Lược Quân Sự Quốc Gia",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "national_power_capability_vip9": {
     "id": "national_power_capability_vip9",
     "title_en": "National Power Capability",
     "title_vi": "Năng Lực Quyền Lực Quốc Gia",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "national_resilience_systems_vip9": {
     "id": "national_resilience_systems_vip9",
     "title_en": "National Resilience Systems",
     "title_vi": "Hệ Thống Chống Chịu Quốc Gia",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "national_risk_intelligence_vip9": {
     "id": "national_risk_intelligence_vip9",
     "title_en": "National Risk & Intelligence Strategy",
     "title_vi": "Chiến Lược Rủi Ro & Tình Báo Quốc Gia",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "national_space_strategy_vip9": {
     "id": "national_space_strategy_vip9",
     "title_en": "National Space Strategy",
     "title_vi": "Chiến Lược Không Gian Quốc Gia",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "national_strategy_foundations_vip9": {
     "id": "national_strategy_foundations_vip9",
     "title_en": "National Strategy Foundations",
     "title_vi": "Nền Tảng Chiến Lược Quốc Gia",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "nature_explorers_kids_l1": {
@@ -2354,14 +2347,14 @@ export const roomDataMap = {
     "id": "saladin_vip9_vol2",
     "title_en": "Saladin — Volume II",
     "title_vi": "Saladin — Tập II",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "saladin_vip9_vol3": {
     "id": "saladin_vip9_vol3",
     "title_en": "Saladin — Volume III",
     "title_vi": "Saladin — Tập III",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "say_my_name_mercy_blade_vip1": {
@@ -2403,21 +2396,21 @@ export const roomDataMap = {
     "id": "scipio_africanus_vip9_vol1",
     "title_en": "Scipio Africanus — Volume I",
     "title_vi": "Scipio Africanus — Tập I",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "scipio_africanus_vip9_vol2": {
     "id": "scipio_africanus_vip9_vol2",
     "title_en": "Scipio Africanus — Volume II",
     "title_vi": "Scipio Africanus — Tập II",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "scipio_africanus_vip9_vol3": {
     "id": "scipio_africanus_vip9_vol3",
     "title_en": "Scipio Africanus — Volume III",
     "title_vi": "Scipio Africanus — Tập III",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "self_love_free": {
@@ -2606,21 +2599,21 @@ export const roomDataMap = {
     "id": "strategic_adaptive_intelligence_vip9",
     "title_en": "Strategic Adaptive Intelligence",
     "title_vi": "Trí Tuệ Thích Ứng Chiến Lược",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "strategic_antifragile_growth_vip9": {
     "id": "strategic_antifragile_growth_vip9",
     "title_en": "Antifragile Growth Mastery",
     "title_vi": "Làm Chủ Tăng Trưởng Chống Mong Manh",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "strategic_cognitive_models_vip9": {
     "id": "strategic_cognitive_models_vip9",
     "title_en": "Cognitive Precision & Mental Models",
     "title_vi": "Độ Chính Xác Nhận Thức & Mô Hình Tư Duy",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "strategic_decision_making_vip6_bonus": {
@@ -2634,14 +2627,14 @@ export const roomDataMap = {
     "id": "strategic_deep_work_vip9",
     "title_en": "Deep Work Mastery",
     "title_vi": "Làm Chủ Công Việc Sâu",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "strategic_emotional_neutrality_vip9": {
     "id": "strategic_emotional_neutrality_vip9",
     "title_en": "Strategic Emotional Neutrality",
     "title_vi": "Trung Lập Cảm Xúc Chiến Lược",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "strategic_emotional_reading_hidden_signals_vip6_bonus": {
@@ -2655,98 +2648,98 @@ export const roomDataMap = {
     "id": "strategic_failure_recovery_vip9",
     "title_en": "Failure Recovery Mastery",
     "title_vi": "Làm Chủ Hồi Phục Thất Bại",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "strategic_foundations_vip9": {
     "id": "strategic_foundations_vip9",
     "title_en": "Foundations of Strategic Thinking",
     "title_vi": "Nền Tảng Tư Duy Chiến Lược",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "strategic_identity_vip9": {
     "id": "strategic_identity_vip9",
     "title_en": "Strategic Identity Mastery",
     "title_vi": "Làm Chủ Bản Sắc Chiến Lược",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "strategic_influence_individual_vip9": {
     "id": "strategic_influence_individual_vip9",
     "title_en": "Individual Influence Mastery",
     "title_vi": "Làm Chủ Ảnh Hưởng Cá Nhân",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "strategic_lifelong_fitness_vip9": {
     "id": "strategic_lifelong_fitness_vip9",
     "title_en": "Lifelong Fitness Mastery",
     "title_vi": "Làm Chủ Thể Lực Suốt Đời",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "strategic_long_horizon_vip9": {
     "id": "strategic_long_horizon_vip9",
     "title_en": "Long Horizon Mastery",
     "title_vi": "Làm Chủ Chân Trời Dài",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "strategic_negotiation_individual_vip9": {
     "id": "strategic_negotiation_individual_vip9",
     "title_en": "Individual Negotiation Mastery",
     "title_vi": "Làm Chủ Đàm Phán Cá Nhân",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "strategic_pattern_recognition_vip9": {
     "id": "strategic_pattern_recognition_vip9",
     "title_en": "Pattern Recognition Mastery",
     "title_vi": "Làm Chủ Nhận Diện Mẫu Hình",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "strategic_personal_systems_vip9": {
     "id": "strategic_personal_systems_vip9",
     "title_en": "Personal Systems Mastery",
     "title_vi": "Làm Chủ Hệ Thống Cá Nhân",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "strategic_reputation_individual_vip9": {
     "id": "strategic_reputation_individual_vip9",
     "title_en": "Individual Reputation Mastery",
     "title_vi": "Làm Chủ Danh Tiếng Cá Nhân",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "strategic_risk_calibration_vip9": {
     "id": "strategic_risk_calibration_vip9",
     "title_en": "Risk Calibration Mastery",
     "title_vi": "Làm Chủ Hiệu Chỉnh Rủi Ro",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "strategic_scenario_thinking_vip9": {
     "id": "strategic_scenario_thinking_vip9",
     "title_en": "Scenario Thinking Mastery",
     "title_vi": "Làm Chủ Tư Duy Kịch Bản",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "strategic_self_governance_vip9": {
     "id": "strategic_self_governance_vip9",
     "title_en": "Self-Governance Mastery",
     "title_vi": "Làm Chủ Tự Quản Trị",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "strategic_signal_detection_vip9": {
     "id": "strategic_signal_detection_vip9",
     "title_en": "Signal Detection Mastery",
     "title_vi": "Làm Chủ Phát Hiện Tín Hiệu",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "strategy_in_life_1_vip3": {
@@ -2816,35 +2809,35 @@ export const roomDataMap = {
     "id": "sun_tzu_grand_strategy_vip9_vol1",
     "title_en": "Sun Tzu Grand Strategy — Volume I",
     "title_vi": "Đại Chiến Lược Tôn Tử — Tập I",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "sun_tzu_strategy_vip9": {
     "id": "sun_tzu_strategy_vip9",
     "title_en": "Sun Tzu – Strategic Foundations",
     "title_vi": "Tôn Tử – Nền Tảng Chiến Lược",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "sun_tzu_strategy_vip9_vol2": {
     "id": "sun_tzu_strategy_vip9_vol2",
     "title_en": "Sun Tzu Strategic Foundations – Volume II",
     "title_vi": "Tôn Tử – Nền Tảng Chiến Lược – Tập II",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "sun_tzu_strategy_vip9_vol3": {
     "id": "sun_tzu_strategy_vip9_vol3",
     "title_en": "Sun Tzu Strategic Foundations – Volume III",
     "title_vi": "Tôn Tử – Nền Tảng Chiến Lược – Tập III",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "sun_tzu_strategy_vip9_vol4": {
     "id": "sun_tzu_strategy_vip9_vol4",
     "title_en": "Sun Tzu Strategic Foundations – Volume IV",
     "title_vi": "Tôn Tử – Nền Tảng Chiến Lược – Tập IV",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "survival_resilience_vip1_srs01": {
@@ -2970,49 +2963,49 @@ export const roomDataMap = {
     "id": "thucydides_vip9_vol1",
     "title_en": "Thucydides — Volume I",
     "title_vi": "Thucydides — Tập I",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "thucydides_vip9_vol2": {
     "id": "thucydides_vip9_vol2",
     "title_en": "Thucydides — Volume II",
     "title_vi": "Thucydides — Tập II",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "thucydides_vip9_vol3": {
     "id": "thucydides_vip9_vol3",
     "title_en": "Thucydides — Volume III",
     "title_vi": "Thucydides — Tập III",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "tokugawa_ieyasu_vip9_vol1": {
     "id": "tokugawa_ieyasu_vip9_vol1",
     "title_en": "Tokugawa Ieyasu — Volume I",
     "title_vi": "Tokugawa Ieyasu — Tập I",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "tokugawa_ieyasu_vip9_vol2": {
     "id": "tokugawa_ieyasu_vip9_vol2",
     "title_en": "Tokugawa Ieyasu — Volume II",
     "title_vi": "Tokugawa Ieyasu — Tập II",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "tokugawa_ieyasu_vip9_vol3": {
     "id": "tokugawa_ieyasu_vip9_vol3",
     "title_en": "Tokugawa Ieyasu — Volume III",
     "title_vi": "Tokugawa Ieyasu — Tập III",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "tokugawa_ieyasu_vip9_vol4": {
     "id": "tokugawa_ieyasu_vip9_vol4",
     "title_en": "Tokugawa Ieyasu — Volume IV",
     "title_vi": "Tokugawa Ieyasu — Tập IV",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "toys_playtime_kids_l1": {
@@ -3362,21 +3355,21 @@ export const roomDataMap = {
     "id": "zhuge_liang_grand_strategy_vip9_vol2",
     "title_en": "Zhuge Liang Grand Strategy — Volume II (The Way of the Regent)",
     "title_vi": "Đại Chiến Lược Gia Cát Lượng — Tập II (Đạo của Thừa Tướng)",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "zhuge_liang_grand_strategy_vip9_vol3": {
     "id": "zhuge_liang_grand_strategy_vip9_vol3",
     "title_en": "Zhuge Liang Grand Strategy — Volume III",
     "title_vi": "Đại Chiến Lược Gia Cát Lượng — Tập III",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   },
   "zhuge_liang_vip9_vols": {
     "id": "zhuge_liang_vip9_vols",
     "title_en": "Zhuge Liang — Volume III",
     "title_vi": "Gia Cát Lượng — Tập III",
-    "tier": "free",
+    "tier": "vip9",
     "hasData": true
   }
 } as const;

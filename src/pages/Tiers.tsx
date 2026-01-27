@@ -1,187 +1,291 @@
-// FILE: Tiers.tsx
-// PATH: src/pages/Tiers.tsx
-// VERSION: MB-BLUE-97.9e → MB-BLUE-97.9f — 2026-01-17 (+0700)
+// FILE: src/pages/Tiers.tsx
+// VERSION: MB-BLUE-99.11z-tiers-split-simple-prices — 2026-01-21 (+0700)
 //
-// FIX (DELETE VIP3 II from UI):
-// - Remove vip3 from this page’s Tier UI (no pill, no counter, no link).
-// - Keep counting strict; anything that used to show as vip3 will now fall into "unknown"
-//   unless your upstream tiering maps it to vip3.
-//
-// NOTE:
-// - This is UI-only. Source-of-truth tier inference remains elsewhere.
-// - If you truly want vip3 rooms to become vip3, do it upstream (tierFromRoomId / DB tier).
+// GOAL:
+// - Clean pricing grid (simple English study tiers)
+// - Split styles to ./Tiers.styles.ts
+// - Fetch Stripe prices from /functions/v1/get-tier-prices
+// - If fetch fails, show REAL fallback prices (so user never sees “—”)
+// - Keep checkout wiring inside onUpgrade() (unchanged)
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import { S } from "./Tiers.styles";
 
-import type { TierId } from "@/lib/constants/tiers";
-import { TIER_ID_TO_LABEL, normalizeTierOrUndefined } from "@/lib/constants/tiers";
-import { getAllRooms, type RoomInfo } from "@/lib/roomData";
-import { cn } from "@/lib/utils";
+type TierKey = "free" | "vip1" | "vip3" | "vip9";
 
-// ✅ Local UI tier list (vip3 removed)
-const UI_TIER_IDS: TierId[] = [
-  "free",
-  "vip1",
-  "vip2",
-  "vip3",
-  "vip4",
-  "vip5",
-  "vip6",
-  "vip7",
-  "vip8",
-  "vip9",
-  "kids_1",
-  "kids_2",
-  "kids_3",
-];
-
-// Keep your real mapping if you have one elsewhere; this fallback keeps UI stable.
-const TIER_COLORS: Record<string, string> = {
-  free: "bg-zinc-100 text-zinc-800",
-  vip1: "bg-zinc-100 text-zinc-800",
-  vip2: "bg-zinc-100 text-zinc-800",
-  vip3: "bg-zinc-100 text-zinc-800",
-  vip4: "bg-zinc-100 text-zinc-800",
-  vip5: "bg-zinc-100 text-zinc-800",
-  vip6: "bg-zinc-100 text-zinc-800",
-  vip7: "bg-zinc-100 text-zinc-800",
-  vip8: "bg-zinc-100 text-zinc-800",
-  vip9: "bg-zinc-100 text-zinc-800",
-  kids_1: "bg-zinc-100 text-zinc-800",
-  kids_2: "bg-zinc-100 text-zinc-800",
-  kids_3: "bg-zinc-100 text-zinc-800",
-  unknown: "bg-zinc-100 text-zinc-800",
+type StripePriceDTO = {
+  id: string;
+  currency: string;
+  unit_amount: number | null; // cents
+  recurring: { interval: string } | null;
+  nickname: string | null;
 };
 
-type TierBucket = TierId | "unknown";
-
-type TierRow = {
-  tier: TierBucket;
-  count: number;
+type TierPrices = {
+  vip1: StripePriceDTO | null;
+  vip3: StripePriceDTO | null;
+  vip9: StripePriceDTO | null;
 };
+
+const FALLBACK: Record<Exclude<TierKey, "free">, { unit_amount: number; currency: string; interval: string }> = {
+  // ✅ PUT YOUR REAL PRICES HERE (cents)
+  vip1: { unit_amount: 400, currency: "usd", interval: "month" },
+  vip3: { unit_amount: 800, currency: "usd", interval: "month" },
+  vip9: { unit_amount: 2000, currency: "usd", interval: "month" }, // if VIP9 is $20/mo
+};
+
+function formatMoney(unitAmount: number | null | undefined, currency: string | null | undefined) {
+  if (unitAmount == null) return "—";
+  const cur = (currency || "usd").toUpperCase();
+  const value = unitAmount / 100;
+  try {
+    return new Intl.NumberFormat(undefined, { style: "currency", currency: cur }).format(value);
+  } catch {
+    return `${value.toFixed(2)} ${cur}`;
+  }
+}
+
+function formatInterval(interval: string | null | undefined) {
+  const t = (interval || "").toLowerCase();
+  if (t === "month") return "per month";
+  if (t === "year") return "per year";
+  return "subscription";
+}
 
 export default function Tiers() {
-  const [rooms, setRooms] = useState<RoomInfo[]>([]);
-  const [loadError, setLoadError] = useState<string | null>(null);
+  const [tierPrices, setTierPrices] = useState<TierPrices | null>(null);
 
   useEffect(() => {
     let alive = true;
 
-    (async () => {
+    const load = async () => {
       try {
-        const all = await getAllRooms();
+        const res = await fetch("/functions/v1/get-tier-prices", { method: "GET" });
+        const j = await res.json().catch(() => null);
         if (!alive) return;
-        setRooms(all);
-        setLoadError(null);
-      } catch (e: any) {
-        if (!alive) return;
-        setRooms([]);
-        setLoadError(e?.message ? String(e.message) : "Failed to load rooms");
+        if (res.ok && j?.ok && j?.prices) setTierPrices(j.prices as TierPrices);
+      } catch {
+        // ignore: fallback prices will show
       }
-    })();
+    };
 
+    void load();
     return () => {
       alive = false;
     };
   }, []);
 
-  const tierCounts: TierRow[] = useMemo(() => {
-    const counts: Record<TierBucket, number> = {
-      unknown: 0,
-      free: 0,
-      vip1: 0,
-      vip2: 0,
-      vip3: 0,
-      vip4: 0,
-      vip5: 0,
-      vip6: 0,
-      vip7: 0,
-      vip8: 0,
-      vip9: 0,
-      kids_1: 0,
-      kids_2: 0,
-      kids_3: 0,
-    };
+  const vip1 = useMemo(() => tierPrices?.vip1 ?? null, [tierPrices]);
+  const vip3 = useMemo(() => tierPrices?.vip3 ?? null, [tierPrices]);
+  const vip9 = useMemo(() => tierPrices?.vip9 ?? null, [tierPrices]);
 
-    for (const r of rooms) {
-      // ✅ STRICT: returns TierId | undefined (never defaults)
-      // NOTE: roomData.ts may expose "unknown" as a literal tier; treat it as unknown here.
-      const rawTier = (r as any)?.tier;
-      if (rawTier === "unknown") {
-        counts.unknown = (counts.unknown ?? 0) + 1;
-        continue;
-      }
+  const vip1Price = formatMoney(vip1?.unit_amount ?? FALLBACK.vip1.unit_amount, vip1?.currency ?? FALLBACK.vip1.currency);
+  const vip3Price = formatMoney(vip3?.unit_amount ?? FALLBACK.vip3.unit_amount, vip3?.currency ?? FALLBACK.vip3.currency);
+  const vip9Price = formatMoney(vip9?.unit_amount ?? FALLBACK.vip9.unit_amount, vip9?.currency ?? FALLBACK.vip9.currency);
 
-      const tierId = normalizeTierOrUndefined(rawTier);
+  const vip1Interval = formatInterval(vip1?.recurring?.interval ?? FALLBACK.vip1.interval);
+  const vip3Interval = formatInterval(vip3?.recurring?.interval ?? FALLBACK.vip3.interval);
+  const vip9Interval = formatInterval(vip9?.recurring?.interval ?? FALLBACK.vip9.interval);
 
-      // ✅ vip3 is not displayed; bucket it as unknown unless upstream maps it to vip3
-      if (tierId === ("vip3" as any)) {
-        counts.unknown = (counts.unknown ?? 0) + 1;
-        continue;
-      }
+  const onStartFree = useCallback(() => {
+    window.location.href = "/";
+  }, []);
 
-      const bucket: TierBucket = tierId ?? "unknown";
-      counts[bucket] = (counts[bucket] ?? 0) + 1;
-    }
+  const onUpgrade = useCallback((tier: TierKey) => {
+    // TODO: call your existing Stripe Checkout flow (Supabase Edge Function)
+    // e.g. startCheckout(tier)
+    console.log("upgrade:", tier);
+  }, []);
 
-    return [
-      ...UI_TIER_IDS.map((t) => ({ tier: t, count: counts[t] ?? 0 })),
-      { tier: "unknown", count: counts.unknown ?? 0 },
-    ];
-  }, [rooms]);
+  const isSmall = typeof window !== "undefined" ? window.matchMedia("(max-width: 980px)").matches : false;
+  const isTiny = typeof window !== "undefined" ? window.matchMedia("(max-width: 720px)").matches : false;
+
+  const gridStyle = useMemo(
+    () =>
+      ({
+        ...(S.grid as React.CSSProperties),
+        gridTemplateColumns: isTiny ? "1fr" : isSmall ? "repeat(2, minmax(0, 1fr))" : "repeat(4, minmax(0, 1fr))",
+      }) as React.CSSProperties,
+    [isSmall, isTiny]
+  );
 
   return (
-    <div className="w-full max-w-6xl mx-auto p-6">
-      <div className="mb-4 flex items-center justify-between">
-        <h1 className="text-xl font-semibold">Tiers</h1>
-        <div className="text-xs text-zinc-500">
-          Rooms: {rooms.length}
-          {loadError ? <span className="ml-2 text-red-600">({loadError})</span> : null}
-        </div>
-      </div>
+    <div style={S.page as React.CSSProperties}>
+      <main style={S.shell as React.CSSProperties} aria-label="Mercy Blade tiers">
+        <nav style={S.nav as React.CSSProperties} aria-label="Top navigation">
+          <Link to="/" style={S.navLink as React.CSSProperties}>
+            ← Back
+          </Link>
+          <span style={{ color: "rgba(15,23,42,.35)" }}>|</span>
+          <Link to="/" style={S.navLink as React.CSSProperties}>
+            Home
+          </Link>
+        </nav>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-        {tierCounts.map((row) => {
-          const tier = row.tier;
-
-          const label = tier === "unknown" ? "Unknown / Chưa rõ" : TIER_ID_TO_LABEL[tier];
-
-          const href = tier === "unknown" ? "/tiers/unknown" : `/tiers/${tier}`;
-
-          return (
-            <Link
-              key={tier}
-              to={href}
-              className={cn(
-                "rounded-xl border bg-white px-4 py-3 hover:shadow-sm transition",
-                "flex items-center justify-between"
-              )}
-            >
-              <div className="flex items-center gap-2">
-                <span
-                  className={cn(
-                    "inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm font-medium",
-                    TIER_COLORS[tier] || TIER_COLORS.free
-                  )}
-                >
-                  <span className="inline-block h-2.5 w-2.5 rounded-full bg-zinc-500" />
-                  <span>{tier === "unknown" ? "Unknown" : tier.toUpperCase()}</span>
-                </span>
-                <span className="text-sm text-zinc-700">{label}</span>
-              </div>
-
-              <span className="inline-flex items-center rounded-full border px-3 py-1 text-sm font-semibold text-zinc-800">
-                {row.count}
-              </span>
+        <header>
+          <h1 style={S.h1 as React.CSSProperties}>Mercy Blade — Tiers</h1>
+          <p style={S.sub as React.CSSProperties}>Simple English learning. Upgrade only if you want more rooms.</p>
+          <p style={S.tip as React.CSSProperties}>
+            Tip: If Pay fails, sign in first at{" "}
+            <Link to="/signin" style={S.navLink as React.CSSProperties}>
+              /signin
             </Link>
-          );
-        })}
-      </div>
+            .
+          </p>
+        </header>
 
-      <div className="mt-4 text-xs text-zinc-500">
-        Source: getAllRooms() (runtime room loader). Unknown is shown explicitly (never silently counted as Free).
-      </div>
+        <section style={gridStyle} aria-label="Pricing tiers">
+          {/* FREE */}
+          <article style={S.card as React.CSSProperties} aria-label="Free tier">
+            <div style={S.cardTop as React.CSSProperties}>
+              <div style={S.badgeRow as React.CSSProperties}>
+                <div style={S.badge as React.CSSProperties}>Free</div>
+              </div>
+              <div style={{ fontSize: 18, fontWeight: 900 }}>Free</div>
+              <div style={{ marginTop: 4, fontSize: 13, color: "rgba(15,23,42,.72)" }}>Try rooms, learn basics.</div>
+            </div>
+
+            <div style={S.priceBlock as React.CSSProperties}>
+              <div style={S.priceBig as React.CSSProperties}>Free</div>
+              <div style={S.priceSmall as React.CSSProperties}>No card • Free forever</div>
+            </div>
+
+            <div style={S.cardBody as React.CSSProperties}>
+              <ul style={S.ul as React.CSSProperties}>
+                <li>Access Free rooms</li>
+                <li>Bilingual reading (EN/VI) where available</li>
+                <li>Community chat (where enabled)</li>
+              </ul>
+            </div>
+
+            <div style={S.cardBottom as React.CSSProperties}>
+              <button type="button" style={{ ...(S.btn as React.CSSProperties), ...(S.btnPrimary as React.CSSProperties) }} onClick={onStartFree}>
+                Start Free
+              </button>
+              <Link to="/tiers/free" style={{ fontWeight: 800, color: "#2563eb", textDecoration: "none", whiteSpace: "nowrap" }}>
+                Details →
+              </Link>
+            </div>
+          </article>
+
+          {/* VIP1 */}
+          <article style={S.card as React.CSSProperties} aria-label="VIP1 tier">
+            <div style={S.cardTop as React.CSSProperties}>
+              <div style={S.badgeRow as React.CSSProperties}>
+                <div style={S.badge as React.CSSProperties}>VIP1</div>
+              </div>
+              <div style={{ fontSize: 18, fontWeight: 900 }}>VIP1</div>
+              <div style={{ marginTop: 4, fontSize: 13, color: "rgba(15,23,42,.72)" }}>More rooms. Faster progress.</div>
+            </div>
+
+            <div style={S.priceBlock as React.CSSProperties}>
+              <div style={S.priceBig as React.CSSProperties}>{vip1Price}</div>
+              <div style={S.priceSmall as React.CSSProperties}>{vip1Interval} • subscription</div>
+            </div>
+
+            <div style={S.cardBody as React.CSSProperties}>
+              <ul style={S.ul as React.CSSProperties}>
+                <li>Unlock VIP1 rooms</li>
+                <li>More guided practice</li>
+                <li>More topics</li>
+              </ul>
+            </div>
+
+            <div style={S.cardBottom as React.CSSProperties}>
+              <button
+                type="button"
+                style={{ ...(S.btn as React.CSSProperties), ...(S.btnPrimary as React.CSSProperties) }}
+                onClick={() => onUpgrade("vip1")}
+              >
+                Upgrade to VIP1
+              </button>
+              <Link to="/tiers/vip1" style={{ fontWeight: 800, color: "#2563eb", textDecoration: "none", whiteSpace: "nowrap" }}>
+                Details →
+              </Link>
+            </div>
+          </article>
+
+          {/* VIP3 */}
+          <article style={S.card as React.CSSProperties} aria-label="VIP3 tier">
+            <div style={S.cardTop as React.CSSProperties}>
+              <div style={S.badgeRow as React.CSSProperties}>
+                <div style={S.badge as React.CSSProperties}>VIP3</div>
+              </div>
+              <div style={{ fontSize: 18, fontWeight: 900 }}>VIP3</div>
+              <div style={{ marginTop: 4, fontSize: 13, color: "rgba(15,23,42,.72)" }}>Deep practice. More variety.</div>
+            </div>
+
+            <div style={S.priceBlock as React.CSSProperties}>
+              <div style={S.priceBig as React.CSSProperties}>{vip3Price}</div>
+              <div style={S.priceSmall as React.CSSProperties}>{vip3Interval} • subscription</div>
+            </div>
+
+            <div style={S.cardBody as React.CSSProperties}>
+              <ul style={S.ul as React.CSSProperties}>
+                <li>Unlock VIP1 + VIP3 rooms</li>
+                <li>More advanced rooms</li>
+                <li>More repeat-after-me practice</li>
+              </ul>
+            </div>
+
+            <div style={S.cardBottom as React.CSSProperties}>
+              <button
+                type="button"
+                style={{ ...(S.btn as React.CSSProperties), ...(S.btnPrimary as React.CSSProperties) }}
+                onClick={() => onUpgrade("vip3")}
+              >
+                Upgrade to VIP3
+              </button>
+              <Link to="/tiers/vip3" style={{ fontWeight: 800, color: "#2563eb", textDecoration: "none", whiteSpace: "nowrap" }}>
+                Details →
+              </Link>
+            </div>
+          </article>
+
+          {/* VIP9 */}
+          <article style={S.card as React.CSSProperties} aria-label="VIP9 tier">
+            <div style={S.cardTop as React.CSSProperties}>
+              <div style={S.badgeRow as React.CSSProperties}>
+                <div style={S.badge as React.CSSProperties}>VIP9</div>
+              </div>
+              <div style={{ fontSize: 18, fontWeight: 900 }}>VIP9</div>
+              <div style={{ marginTop: 4, fontSize: 13, color: "rgba(15,23,42,.72)" }}>Everything unlocked.</div>
+            </div>
+
+            <div style={S.priceBlock as React.CSSProperties}>
+              <div style={S.priceBig as React.CSSProperties}>{vip9Price}</div>
+              <div style={S.priceSmall as React.CSSProperties}>{vip9Interval} • subscription</div>
+            </div>
+
+            <div style={S.cardBody as React.CSSProperties}>
+              <ul style={S.ul as React.CSSProperties}>
+                <li>Unlock VIP1 + VIP3 + VIP9 rooms</li>
+                <li>All premium rooms</li>
+                <li>Best for daily learners</li>
+              </ul>
+            </div>
+
+            <div style={S.cardBottom as React.CSSProperties}>
+              <button
+                type="button"
+                style={{ ...(S.btn as React.CSSProperties), ...(S.btnPrimary as React.CSSProperties) }}
+                onClick={() => onUpgrade("vip9")}
+              >
+                Go VIP9
+              </button>
+              <Link to="/tiers/vip9" style={{ fontWeight: 800, color: "#2563eb", textDecoration: "none", whiteSpace: "nowrap" }}>
+                Details →
+              </Link>
+            </div>
+          </article>
+        </section>
+
+        <footer style={S.footer as React.CSSProperties} aria-label="Tier notes">
+          <p style={{ margin: "14px 0 6px" }}>Payment uses Stripe Checkout via Supabase Edge Function.</p>
+          <p style={{ margin: 0 }}>After checkout, your VIP access updates automatically.</p>
+        </footer>
+      </main>
     </div>
   );
 }

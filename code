@@ -12,6 +12,9 @@
 // - Remove it from ChatHub
 // - Guarantees identical alignment with room content
 // - Stops layout fights / overflow forever
+//
+// ENHANCE (100.4a — 2026-01-25):
+// - Force ChatHub remount on roomId change (prevents stale per-room styling/highlights sticking)
 
 import { Routes, Route, Navigate, useParams } from "react-router-dom";
 
@@ -36,6 +39,15 @@ function RoomRoomRedirect() {
  */
 function RoomIndexRedirect() {
   return <Navigate to="/" replace />;
+}
+
+/**
+ * Canonical room route wrapper:
+ * Force remount when roomId changes so per-room UI (keywords/highlights/styles) can’t get “stuck”.
+ */
+function RoomRoute() {
+  const { roomId } = useParams<{ roomId: string }>();
+  return <ChatHub key={roomId || "room"} />;
 }
 
 /**
@@ -65,7 +77,7 @@ export default function AppRouter() {
         <Route path="/room" element={<RoomIndexRedirect />} />
 
         {/* ✅ Canonical room route */}
-        <Route path="/room/:roomId" element={<ChatHub />} />
+        <Route path="/room/:roomId" element={<RoomRoute />} />
 
         {/* Fallback */}
         <Route path="*" element={<NotFound />} />
@@ -73,3 +85,7 @@ export default function AppRouter() {
     </AppShell>
   );
 }
+
+/* teacher GPT — new thing to learn:
+   When UI depends on route params (room keywords/styles), remount-by-key prevents “sticky” state.
+   It’s a safe fix because it doesn’t change logic—only resets per-room component state. */

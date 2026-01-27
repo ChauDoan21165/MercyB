@@ -20,7 +20,8 @@ export type TierId =
   | "free"
   | "vip1"
   | "vip2"
-  | "vip3"| "vip4"
+  | "vip3"
+  | "vip4"
   | "vip5"
   | "vip6"
   | "vip7"
@@ -55,7 +56,7 @@ export function isTierId(x: any): x is TierId {
     x === "free" ||
     x === "vip1" ||
     x === "vip2" ||
-    x === "vip3"||
+    x === "vip3" ||
     x === "vip4" ||
     x === "vip5" ||
     x === "vip6" ||
@@ -84,6 +85,16 @@ function normalizeLeafId(x: string): string {
  * CRITICAL FIX:
  * - Kids lesson ids are often ..._kids_l1/_kids_l2/_kids_l3 (NOT kids_1/2/3)
  * - Map those to kids_1/2/3 so kids tier pages don't show empty.
+ *
+ * IMPORTANT (VIP FIX):
+ * - VIP markers may appear in the MIDDLE of ids (e.g. survival_resilience_vip1_srs02),
+ *   so we must match vip tokens as bounded by separators, not suffix-only.
+ *
+ * EXTRA HARDEN (VIP4–VIP8 “0 outside but present inside”):
+ * - Some ids are NOT cleanly separated (example patterns: "...vip6bonus", "...vip5bonus", "...vip4bonus")
+ * - TierDetail can still show rooms (it filters by a different path),
+ *   but TierMap’s counters rely on THIS function.
+ * - Add a conservative “loose” match: vipN not followed by another digit.
  */
 export function strictTierFromIdOrPath(idOrPath: string): TierId | "unknown" {
   const raw = String(idOrPath || "").trim();
@@ -92,8 +103,14 @@ export function strictTierFromIdOrPath(idOrPath: string): TierId | "unknown" {
   const leaf = normalizeLeafId(raw);
   const idLower = leaf.toLowerCase();
 
+  // Helper: token match bounded by start/end or _/-
+  const hasTok = (tok: string) => new RegExp(`(^|[_-])${tok}([_-]|$)`).test(idLower);
+
+  // Helper: loose match for ids that contain "vip6bonus" (no separators).
+  // IMPORTANT: ensure we do NOT match vip60/vip600 etc.
+  const hasVipLoose = (n: number) => new RegExp(`vip${n}(?!\\d)`).test(idLower);
+
   // --- KIDS tiers (explicit + lesson id forms) ---
-  // Accept: kids_1 / kids-1 / ..._kids_l1 / ..._kidslevel1
   if (
     idLower === "kids_1" ||
     idLower === "kids-1" ||
@@ -124,20 +141,32 @@ export function strictTierFromIdOrPath(idOrPath: string): TierId | "unknown" {
     return "kids_3";
   }
 
-  // --- VIP tiers (explicit) ---
-  if (/(^|[_-])vip9($|[_-])/.test(idLower)) return "vip9";
-  if (/(^|[_-])vip8($|[_-])/.test(idLower)) return "vip8";
-  if (/(^|[_-])vip7($|[_-])/.test(idLower)) return "vip7";
-  if (/(^|[_-])vip6($|[_-])/.test(idLower)) return "vip6";
-  if (/(^|[_-])vip5($|[_-])/.test(idLower)) return "vip5";
-  if (/(^|[_-])vip4($|[_-])/.test(idLower)) return "vip4";
-  if (/(^|[_-])vip3ii($|[_-])/.test(idLower)) return "vip3"; // legacy vip3ii -> vip3
-  if (/(^|[_-])vip3($|[_-])/.test(idLower)) return "vip3";
-  if (/(^|[_-])vip2($|[_-])/.test(idLower)) return "vip2";
-  if (/(^|[_-])vip1($|[_-])/.test(idLower)) return "vip1";
+  // --- VIP tiers (explicit tokens anywhere) ---
+  if (hasTok("vip9")) return "vip9";
+  if (hasTok("vip8")) return "vip8";
+  if (hasTok("vip7")) return "vip7";
+  if (hasTok("vip6")) return "vip6";
+  if (hasTok("vip5")) return "vip5";
+  if (hasTok("vip4")) return "vip4";
+  if (hasTok("vip3ii")) return "vip3"; // legacy vip3ii -> vip3
+  if (hasTok("vip3")) return "vip3";
+  if (hasTok("vip2")) return "vip2";
+  if (hasTok("vip1")) return "vip1";
+
+  // --- VIP tiers (LOOSE, separator-less forms) ---
+  // Keep order high -> low
+  if (hasVipLoose(9)) return "vip9";
+  if (hasVipLoose(8)) return "vip8";
+  if (hasVipLoose(7)) return "vip7";
+  if (hasVipLoose(6)) return "vip6";
+  if (hasVipLoose(5)) return "vip5";
+  if (hasVipLoose(4)) return "vip4";
+  if (hasVipLoose(3)) return "vip3";
+  if (hasVipLoose(2)) return "vip2";
+  if (hasVipLoose(1)) return "vip1";
 
   // --- Free (explicit only) ---
-  if (/(^|[_-])free($|[_-])/.test(idLower)) return "free";
+  if (hasTok("free")) return "free";
 
   // --- Fallback to existing helper ONLY if it returns a tier AND it's not the "free default" case ---
   const t = String(tierFromRoomId(leaf) ?? "").trim().toLowerCase();
@@ -154,10 +183,6 @@ function inferAreaFromIdHeuristics(idLower: string, titleLower: string): RoomAre
   // 1) LIFE (right) must override everything
   // 2) KIDS (explicit kids + kids lesson ids) MUST come before ENGLISH
   // 3) ENGLISH (left)
-  //
-  // Key bug fix:
-  // - ids like *_kids_l1/2/3 were incorrectly classified as ENGLISH before.
-  // - Those should be KIDS area.
 
   // ✅ LIFE (right) explicit markers
   if (
@@ -398,23 +423,97 @@ function loadFromManifest(): { rooms: TierRoom[]; debug: string } {
   return { rooms, debug: `manifest ids=${ids.length}` };
 }
 
+function normalizeTierFromDbValue(x: any): TierId | null {
+  const t = String(x ?? "").trim().toLowerCase();
+  if (!t) return null;
+  if (isTierId(t)) return t;
+  return null;
+}
+
 async function tryLoadFromDb(): Promise<{ rooms: TierRoom[]; debug: string } | null> {
+  // We try SELECT with "tier" column first (best-effort).
+  // If the column doesn't exist, fallback to the old select without breaking the pipeline.
   try {
+    // Attempt 1: with tier
+    type RowWithTier = {
+      id: string;
+      title_en: string | null;
+      title_vi: string | null;
+      domain: string | null;
+      track: string | null;
+      tier?: any;
+    };
+
     const { data, error } = await supabase
       .from(ROOMS_TABLE)
-      .select("id, title_en, title_vi, domain, track")
-      .returns<
-        { id: string; title_en: string | null; title_vi: string | null; domain: string | null; track: string | null }[]
-      >();
+      .select("id, title_en, title_vi, domain, track, tier")
+      .returns<RowWithTier[]>();
 
-    if (error) return { rooms: [], debug: `DB error: ${String((error as any)?.message || error)}` };
+    if (error) {
+      // If "tier" doesn't exist, retry old select.
+      const msg = String((error as any)?.message || error);
+      const looksLikeMissingColumn = msg.toLowerCase().includes("column") && msg.toLowerCase().includes("tier");
+
+      if (!looksLikeMissingColumn) {
+        return { rooms: [], debug: `DB error: ${msg}` };
+      }
+
+      // Attempt 2: without tier (legacy)
+      type RowLegacy = {
+        id: string;
+        title_en: string | null;
+        title_vi: string | null;
+        domain: string | null;
+        track: string | null;
+      };
+
+      const legacy = await supabase.from(ROOMS_TABLE).select("id, title_en, title_vi, domain, track").returns<RowLegacy[]>();
+
+      if (legacy.error) {
+        return {
+          rooms: [],
+          debug: `DB error(legacy): ${String((legacy.error as any)?.message || legacy.error)}`,
+        };
+      }
+
+      const rows = (legacy.data || [])
+        .map((r) => {
+          const id = String(r?.id || "").trim();
+          if (!id) return null;
+
+          const tier = strictTierFromIdOrPath(id);
+          const area = inferAreaFromMetaAndId({
+            id,
+            domain: r.domain,
+            track: r.track,
+            title_en: r.title_en,
+            title_vi: r.title_vi,
+          });
+
+          return {
+            id,
+            title_en: r.title_en ?? undefined,
+            title_vi: r.title_vi ?? undefined,
+            domain: r.domain ?? undefined,
+            track: r.track ?? undefined,
+            tier,
+            area,
+          } as TierRoom;
+        })
+        .filter(Boolean) as TierRoom[];
+
+      return { rooms: rows, debug: `DB rooms=${rows.length} (legacy select: no tier col)` };
+    }
 
     const rows = (data || [])
       .map((r) => {
         const id = String(r?.id || "").trim();
         if (!id) return null;
 
-        const tier = strictTierFromIdOrPath(id);
+        // ✅ Prefer DB tier if present & valid; otherwise infer strictly from id.
+        const tierFromDb = normalizeTierFromDbValue((r as any).tier);
+        const tier = tierFromDb ?? strictTierFromIdOrPath(id);
+
         const area = inferAreaFromMetaAndId({
           id,
           domain: r.domain,
@@ -435,7 +534,7 @@ async function tryLoadFromDb(): Promise<{ rooms: TierRoom[]; debug: string } | n
       })
       .filter(Boolean) as TierRoom[];
 
-    return { rooms: rows, debug: `DB rooms=${rows.length}` };
+    return { rooms: rows, debug: `DB rooms=${rows.length} (tier col preferred when valid)` };
   } catch (e: any) {
     return { rooms: [], debug: `DB exception: ${String(e?.message || e)}` };
   }
@@ -472,8 +571,15 @@ export function computeCoreSpineCounts(
   for (const r of rooms) {
     if (r.area !== "core") continue;
     totalCore += 1;
-    if (r.tier === "unknown") unknownTier += 1;
-    else if (byTier[r.tier] !== undefined) byTier[r.tier] += 1;
+
+    if (r.tier === "unknown") {
+      unknownTier += 1;
+      continue;
+    }
+
+    const key = String(r.tier);
+    if (byTier[key] === undefined) byTier[key] = 0;
+    byTier[key] += 1;
   }
 
   return { totalCore, unknownTier, byTier };

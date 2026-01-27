@@ -1,58 +1,38 @@
 /**
  * Autopilot Engine v4.4
  * "Full Autonomous Audio Autopilot"
- * 
+ *
  * THE COMPLETE AUTONOMOUS CYCLE:
- * scan → repair → generate-missing → semantic-attach → rebuild manifest → 
+ * scan → repair → generate-missing → semantic-attach → rebuild manifest →
  * integrity-eval → governance-eval → report
  */
 
 import {
   getCanonicalAudioForEntireRoom,
-  normalizeRoomId,
   extractLanguage,
   getCanonicalAudioForRoom,
   MIN_CONFIDENCE_FOR_AUTO_FIX,
   type GCERoomResult,
   type GCEOperation,
-  type GCEIssue,
-} from './globalConsistencyEngine';
+} from "./globalConsistencyEngine";
 import {
   buildIntegrityMap,
   generateIntegritySummary,
   getLowestIntegrityRooms,
-  type IntegrityMap,
-  type IntegritySummary,
   type RoomData,
-} from './integrityMap';
+} from "./integrityMap";
+import { batchMatchOrphans } from "./semanticMatcher";
 import {
-  matchAudioToEntry,
-  batchMatchOrphans,
-  type SemanticMatch,
-} from './semanticMatcher';
-import {
-  evaluateChangeSet,
   evaluateOperation,
   shouldAutoApply,
   blockCriticalChanges,
   getSystemIntegrity,
-  meetsIntegrityThreshold,
   detectCrossRoomPollution,
   verifyEnViParity,
-  runMultiPassVerification,
-  getGovernanceConfig,
   type GovernanceDecision,
   type GovernanceOperation,
-  type GovernanceReport,
   type GovernanceViolation,
-  type ChangeSet,
-} from './audioGovernanceEngine';
-import {
-  upsertLifecycleEntry,
-  markVerified,
-  markFixed,
-  type AudioLifecycleEntry,
-} from './audioLifecycle';
+} from "./audioGovernanceEngine";
 
 // ============================================
 // Types
@@ -98,7 +78,7 @@ export interface AutopilotResult {
 
 export interface AutopilotStageResult {
   stage: AutopilotStage;
-  status: 'success' | 'partial' | 'failed' | 'skipped';
+  status: "success" | "partial" | "failed" | "skipped";
   startedAt: string;
   completedAt: string;
   durationMs: number;
@@ -108,15 +88,15 @@ export interface AutopilotStageResult {
   details: Record<string, any>;
 }
 
-export type AutopilotStage = 
-  | 'scan'
-  | 'repair'
-  | 'generate-missing'
-  | 'semantic-attach'
-  | 'rebuild-manifest'
-  | 'integrity-eval'
-  | 'governance-eval'
-  | 'report';
+export type AutopilotStage =
+  | "scan"
+  | "repair"
+  | "generate-missing"
+  | "semantic-attach"
+  | "rebuild-manifest"
+  | "integrity-eval"
+  | "governance-eval"
+  | "report";
 
 export interface StructuredChangeSet {
   id: string;
@@ -140,13 +120,13 @@ export interface StructuredChangeSet {
 
 export interface ChangeSetOperation {
   id: string;
-  type: GCEOperation['type'];
+  type: GCEOperation["type"];
   source: string;
   target: string;
   roomId?: string;
   confidence: number;
   reason: string;
-  governanceDecision: GovernanceDecision['decision'];
+  governanceDecision: GovernanceDecision["decision"];
   appliedAt?: string;
 }
 
@@ -178,7 +158,7 @@ export interface AutopilotReport {
 export interface AutopilotStatusStore {
   lastRun: string | null;
   lastCycleId: string | null;
-  lastResult: 'success' | 'partial' | 'failed' | null;
+  lastResult: "success" | "partial" | "failed" | null;
   fixesApplied: number;
   blockedChanges: number;
   integrityBefore: number;
@@ -204,7 +184,7 @@ let autopilotStatusStore: AutopilotStatusStore = {
   governanceDecisions: [],
   autopilotCycleLengthMs: 0,
   enabled: true,
-  version: '4.4.0',
+  version: "4.4.0",
 };
 
 export function getAutopilotStatusStore(): AutopilotStatusStore {
@@ -215,8 +195,11 @@ export function updateAutopilotStatusStore(result: AutopilotResult): void {
   autopilotStatusStore = {
     lastRun: result.completedAt,
     lastCycleId: result.cycleId,
-    lastResult: result.success ? 'success' : 
-                result.integrityAfter > result.integrityBefore ? 'partial' : 'failed',
+    lastResult: result.success
+      ? "success"
+      : result.integrityAfter > result.integrityBefore
+        ? "partial"
+        : "failed",
     fixesApplied: result.appliedOperations,
     blockedChanges: result.blockedOperations,
     integrityBefore: result.integrityBefore,
@@ -224,7 +207,7 @@ export function updateAutopilotStatusStore(result: AutopilotResult): void {
     governanceDecisions: result.governanceDecisions,
     autopilotCycleLengthMs: result.durationMs,
     enabled: autopilotStatusStore.enabled,
-    version: '4.4.0',
+    version: "4.4.0",
   };
 }
 
@@ -240,6 +223,25 @@ export function serializeAutopilotStatus(): string {
 // Core Autopilot Functions
 // ============================================
 
+function safeNumber(v: any, fallback = 0): number {
+  const n = typeof v === "number" ? v : Number(v);
+  return Number.isFinite(n) ? n : fallback;
+}
+
+/**
+ * Coerce entry slugs to string at subsystem boundaries.
+ * This prevents TS/type drift when some data sources use numeric slugs.
+ */
+type AnyEntryLike = { slug?: unknown; id?: unknown; artifact_id?: unknown; audio?: unknown };
+function coerceEntries<T extends AnyEntryLike>(entries: T[]): Array<T & { slug?: string }> {
+  return (entries || []).map((e) => {
+    const raw = (e as any).slug;
+    const coerced =
+      typeof raw === "number" ? String(raw) : typeof raw === "string" ? raw : undefined;
+    return { ...(e as any), slug: coerced };
+  });
+}
+
 /**
  * Run the complete autopilot cycle
  */
@@ -251,34 +253,37 @@ export async function runAutopilotCycle(
   const fullConfig = { ...DEFAULT_AUTOPILOT_CONFIG, ...config };
   const cycleId = `autopilot-${Date.now()}`;
   const startedAt = new Date().toISOString();
-  const startTime = performance.now();
-  
+
+  // Safer for node/vitest (performance may exist, but Date.now is universal)
+  const startTime = Date.now();
+
   const stages: AutopilotStageResult[] = [];
   const allOperations: GCEOperation[] = [];
   const appliedOperations: GCEOperation[] = [];
   const blockedOperations: GCEOperation[] = [];
   const governanceDecisions: GovernanceDecision[] = [];
-  
+
   // Calculate initial integrity
   const integrityBefore = getSystemIntegrity(rooms, storageFiles);
-  
+
   // Stage 1: SCAN
   const scanResult = await runScanStage(rooms, storageFiles, fullConfig);
   stages.push(scanResult);
-  allOperations.push(...(scanResult.details.operations || []));
-  
+
   // Stage 2: REPAIR
   const repairResult = await runRepairStage(
-    rooms, 
-    storageFiles, 
+    rooms,
+    storageFiles,
     scanResult.details.roomResults || [],
     fullConfig
   );
   stages.push(repairResult);
-  
+  allOperations.push(...(repairResult.details.operations || []));
+
   // Process governance for repair operations
   for (const op of repairResult.details.operations || []) {
     const govOp: GovernanceOperation = {
+      // governance engine should be prepared to receive core operation types used in this system
       type: op.type,
       source: op.source,
       target: op.target,
@@ -287,17 +292,17 @@ export async function runAutopilotCycle(
       language: op.metadata?.language,
       metadata: op.metadata || {},
     };
-    
+
     const decision = evaluateOperation(govOp);
     governanceDecisions.push(decision);
-    
-    if (decision.decision === 'block') {
+
+    if (decision.decision === "block") {
       blockedOperations.push(op);
     } else if (!fullConfig.dryRun && shouldAutoApply(govOp)) {
       appliedOperations.push(op);
     }
   }
-  
+
   // Stage 3: GENERATE MISSING (stub for now)
   const generateResult = await runGenerateMissingStage(
     rooms,
@@ -306,7 +311,8 @@ export async function runAutopilotCycle(
     fullConfig
   );
   stages.push(generateResult);
-  
+  allOperations.push(...(generateResult.details.operations || []));
+
   // Stage 4: SEMANTIC ATTACH
   const attachResult = await runSemanticAttachStage(
     rooms,
@@ -315,10 +321,12 @@ export async function runAutopilotCycle(
     fullConfig
   );
   stages.push(attachResult);
-  
+  allOperations.push(...(attachResult.details.operations || []));
+
   for (const op of attachResult.details.operations || []) {
     const govOp: GovernanceOperation = {
-      type: 'attach-orphan',
+      // IMPORTANT: governance should evaluate intent; source/target carry the real rename/attach payload
+      type: "attach-orphan",
       source: op.source,
       target: op.target,
       roomId: op.metadata?.roomId,
@@ -326,35 +334,40 @@ export async function runAutopilotCycle(
       language: op.metadata?.language,
       metadata: op.metadata || {},
     };
-    
+
     const decision = evaluateOperation(govOp);
-    governanceDecisions.push(decision);
-    
-    // Cross-room protection
+
+    // Cross-room protection (avoid mutating possibly-readonly decision objects)
+    let finalDecision = decision;
     if (fullConfig.enableCrossRoomProtection) {
       const blockCheck = blockCriticalChanges(govOp);
       if (blockCheck.blocked) {
-        decision.decision = 'block';
-        decision.reason = blockCheck.reason;
+        finalDecision = {
+          ...decision,
+          decision: "block",
+          reason: blockCheck.reason,
+        } as GovernanceDecision;
       }
     }
-    
-    if (decision.decision === 'block') {
+
+    governanceDecisions.push(finalDecision);
+
+    if (finalDecision.decision === "block") {
       blockedOperations.push(op);
     } else if (!fullConfig.dryRun && shouldAutoApply(govOp)) {
       appliedOperations.push(op);
     }
   }
-  
+
   // Stage 5: REBUILD MANIFEST
   const manifestResult = await runRebuildManifestStage(storageFiles, fullConfig);
   stages.push(manifestResult);
-  
+
   // Stage 6: INTEGRITY EVAL
   const integrityResult = await runIntegrityEvalStage(rooms, storageFiles, fullConfig);
   stages.push(integrityResult);
-  const integrityAfter = integrityResult.details.integrityScore || integrityBefore;
-  
+  const integrityAfter = safeNumber(integrityResult.details.integrityScore, integrityBefore);
+
   // Stage 7: GOVERNANCE EVAL
   const governanceResult = await runGovernanceEvalStage(
     governanceDecisions,
@@ -363,8 +376,8 @@ export async function runAutopilotCycle(
     fullConfig
   );
   stages.push(governanceResult);
-  
-  // Stage 8: REPORT
+
+  // Stage 8: REPORT  ✅ FIX: correct argument order (applied, blocked, config)
   const reportResult = await runReportStage(
     cycleId,
     stages,
@@ -373,20 +386,22 @@ export async function runAutopilotCycle(
     integrityAfter,
     rooms,
     storageFiles,
+    appliedOperations.length,
+    blockedOperations.length,
     fullConfig
   );
   stages.push(reportResult);
-  
-  const endTime = performance.now();
+
+  const endTime = Date.now();
   const completedAt = new Date().toISOString();
-  
-  // Build structured changeset
+
+  // Build structured changeset (only ops we evaluated)
   const changeSet = buildStructuredChangeSet(
     cycleId,
     [...appliedOperations, ...blockedOperations],
     governanceDecisions
   );
-  
+
   // Build report
   const report = buildAutopilotReport(
     cycleId,
@@ -399,7 +414,7 @@ export async function runAutopilotCycle(
     appliedOperations.length,
     blockedOperations.length
   );
-  
+
   const result: AutopilotResult = {
     success: integrityAfter >= fullConfig.minIntegrityTarget,
     cycleId,
@@ -410,19 +425,17 @@ export async function runAutopilotCycle(
     integrityAfter,
     integrityDelta: integrityAfter - integrityBefore,
     stages,
-    totalOperations: allOperations.length + 
-                     (repairResult.details.operations?.length || 0) +
-                     (attachResult.details.operations?.length || 0),
+    totalOperations: allOperations.length,
     appliedOperations: appliedOperations.length,
     blockedOperations: blockedOperations.length,
     governanceDecisions,
     changeSet,
     report,
   };
-  
+
   // Update status store
   updateAutopilotStatusStore(result);
-  
+
   return result;
 }
 
@@ -436,44 +449,47 @@ async function runScanStage(
   config: AutopilotConfig
 ): Promise<AutopilotStageResult> {
   const startedAt = new Date().toISOString();
-  const startTime = performance.now();
-  
+  const startTime = Date.now();
+
   const roomResults: GCERoomResult[] = [];
-  const allOperations: GCEOperation[] = [];
-  const missingAudio: { roomId: string; entrySlug: string; lang: 'en' | 'vi' }[] = [];
+  const missingAudio: { roomId: string; entrySlug: string; lang: "en" | "vi" }[] = [];
   const orphans: { roomId: string; file: string }[] = [];
-  
+
   for (const room of rooms) {
-    const result = getCanonicalAudioForEntireRoom(
-      room.roomId,
-      room.entries,
-      storageFiles
-    );
+    const result = getCanonicalAudioForEntireRoom(room.roomId, coerceEntries(room.entries as any), storageFiles);
     roomResults.push(result);
-    
+
     // Collect missing audio
     for (const entry of result.entries) {
       if (!entry.storageMatchesEn) {
-        missingAudio.push({ roomId: room.roomId, entrySlug: entry.entrySlug, lang: 'en' });
+        missingAudio.push({
+          roomId: room.roomId,
+          entrySlug: entry.entrySlug,
+          lang: "en",
+        });
       }
       if (!entry.storageMatchesVi) {
-        missingAudio.push({ roomId: room.roomId, entrySlug: entry.entrySlug, lang: 'vi' });
+        missingAudio.push({
+          roomId: room.roomId,
+          entrySlug: entry.entrySlug,
+          lang: "vi",
+        });
       }
     }
-    
+
     // Collect orphans
     for (const issue of result.allIssues) {
-      if (issue.type === 'orphan-candidate' && issue.filename) {
+      if (issue.type === "orphan-candidate" && issue.filename) {
         orphans.push({ roomId: room.roomId, file: issue.filename });
       }
     }
   }
-  
-  const endTime = performance.now();
-  
+
+  const endTime = Date.now();
+
   return {
-    stage: 'scan',
-    status: 'success',
+    stage: "scan",
+    status: "success",
     startedAt,
     completedAt: new Date().toISOString(),
     durationMs: Math.round(endTime - startTime),
@@ -482,7 +498,8 @@ async function runScanStage(
     operationsBlocked: 0,
     details: {
       roomResults,
-      operations: allOperations,
+      // NOTE: scan does not emit operations; downstream stages create concrete ops
+      operations: [],
       missingAudio,
       orphans,
       totalRooms: rooms.length,
@@ -498,43 +515,44 @@ async function runRepairStage(
   config: AutopilotConfig
 ): Promise<AutopilotStageResult> {
   const startedAt = new Date().toISOString();
-  const startTime = performance.now();
-  
+  const startTime = Date.now();
+
   const operations: GCEOperation[] = [];
-  let applied = 0;
-  let blocked = 0;
-  
+
   for (const result of roomResults) {
     for (const issue of result.allIssues) {
       if (!issue.autoFixable) continue;
-      
+
       const op: GCEOperation = {
-        type: issue.type === 'non-canonical' || issue.type === 'reversed-lang' ? 'update-json' : 'rename',
-        source: issue.filename || '',
-        target: issue.suggestedFix || '',
+        type:
+          issue.type === "non-canonical" || issue.type === "reversed-lang"
+            ? "update-json"
+            : "rename",
+        source: issue.filename || "",
+        target: issue.suggestedFix || "",
         metadata: {
           roomId: result.roomId,
           reason: issue.description,
-          confidence: issue.type === 'reversed-lang' ? 95 : 85,
+          confidence: issue.type === "reversed-lang" ? 95 : 85,
           reversible: true,
         },
       };
-      
+
       operations.push(op);
     }
   }
-  
-  const endTime = performance.now();
-  
+
+  const endTime = Date.now();
+
   return {
-    stage: 'repair',
-    status: operations.length > 0 ? 'success' : 'skipped',
+    stage: "repair",
+    status: operations.length > 0 ? "success" : "skipped",
     startedAt,
     completedAt: new Date().toISOString(),
     durationMs: Math.round(endTime - startTime),
     operationsFound: operations.length,
-    operationsApplied: applied,
-    operationsBlocked: blocked,
+    operationsApplied: 0, // actual apply happens after governance (outside stage)
+    operationsBlocked: 0, // actual blocking happens after governance (outside stage)
     details: {
       operations,
       repairsFound: operations.length,
@@ -545,22 +563,22 @@ async function runRepairStage(
 async function runGenerateMissingStage(
   rooms: RoomData[],
   storageFiles: Set<string>,
-  missingAudio: { roomId: string; entrySlug: string; lang: 'en' | 'vi' }[],
+  missingAudio: { roomId: string; entrySlug: string; lang: "en" | "vi" }[],
   config: AutopilotConfig
 ): Promise<AutopilotStageResult> {
   const startedAt = new Date().toISOString();
-  const startTime = performance.now();
-  
+  const startTime = Date.now();
+
   // TTS generation is stubbed - will be implemented in Phase 5
   const operations: GCEOperation[] = [];
-  
+
   if (config.enableTtsGeneration && missingAudio.length > 0) {
     for (const missing of missingAudio.slice(0, config.maxOperationsPerRun)) {
       const canonical = getCanonicalAudioForRoom(missing.roomId, missing.entrySlug);
       operations.push({
-        type: 'create-ref',
-        source: 'tts-stub',
-        target: canonical[missing.lang],
+        type: "create-ref",
+        source: "tts-stub",
+        target: (canonical as any)[missing.lang],
         metadata: {
           roomId: missing.roomId,
           entrySlug: missing.entrySlug,
@@ -572,23 +590,23 @@ async function runGenerateMissingStage(
       });
     }
   }
-  
-  const endTime = performance.now();
-  
+
+  const endTime = Date.now();
+
   return {
-    stage: 'generate-missing',
-    status: config.enableTtsGeneration ? 'success' : 'skipped',
+    stage: "generate-missing",
+    status: config.enableTtsGeneration ? "success" : "skipped",
     startedAt,
     completedAt: new Date().toISOString(),
     durationMs: Math.round(endTime - startTime),
     operationsFound: missingAudio.length,
-    operationsApplied: 0, // TTS is stubbed
+    operationsApplied: 0, // stubbed
     operationsBlocked: 0,
     details: {
       missingCount: missingAudio.length,
       operations,
       ttsEnabled: config.enableTtsGeneration,
-      note: 'TTS generation is stubbed - full implementation in Phase 5',
+      note: "TTS generation is stubbed - full implementation in Phase 5",
     },
   };
 }
@@ -600,12 +618,11 @@ async function runSemanticAttachStage(
   config: AutopilotConfig
 ): Promise<AutopilotStageResult> {
   const startedAt = new Date().toISOString();
-  const startTime = performance.now();
-  
+  const startTime = Date.now();
+
   const operations: GCEOperation[] = [];
-  let applied = 0;
   let blocked = 0;
-  
+
   if (config.enableOrphanAttachment) {
     // Group orphans by room
     const orphansByRoom = new Map<string, string[]>();
@@ -614,23 +631,30 @@ async function runSemanticAttachStage(
       existing.push(orphan.file);
       orphansByRoom.set(orphan.roomId, existing);
     }
-    
+
     // Match orphans for each room
     for (const room of rooms) {
       const roomOrphans = orphansByRoom.get(room.roomId) || [];
       if (roomOrphans.length === 0) continue;
-      
-      const { autoRepairs, humanReview } = batchMatchOrphans(roomOrphans, room.roomId, room.entries);
-      
+
+      const { autoRepairs, humanReview } = batchMatchOrphans(
+        roomOrphans,
+        room.roomId,
+        coerceEntries(room.entries as any)
+      );
+
       for (const match of autoRepairs) {
-        if (match.suggestedCanonical && match.confidence >= MIN_CONFIDENCE_FOR_AUTO_FIX * 100) {
+        if (
+          match.suggestedCanonical &&
+          match.confidence >= MIN_CONFIDENCE_FOR_AUTO_FIX * 100
+        ) {
           operations.push({
-            type: 'rename',
+            type: "rename",
             source: match.filename,
             target: match.suggestedCanonical,
             metadata: {
               roomId: room.roomId,
-              entrySlug: String(match.matchedEntry?.slug || ''),
+              entrySlug: String((match.matchedEntry as any)?.slug ?? ""),
               language: extractLanguage(match.filename) || undefined,
               reason: `Semantic match (${match.matchType}) with ${match.confidence}% confidence`,
               confidence: match.confidence,
@@ -639,25 +663,23 @@ async function runSemanticAttachStage(
           });
         }
       }
-      
-      // Block low-confidence matches
-      for (const match of humanReview) {
-        blocked++;
-      }
+
+      // Count low-confidence matches (go to human review)
+      blocked += humanReview.length;
     }
   }
-  
-  const endTime = performance.now();
-  
+
+  const endTime = Date.now();
+
   return {
-    stage: 'semantic-attach',
-    status: config.enableOrphanAttachment ? 'success' : 'skipped',
+    stage: "semantic-attach",
+    status: config.enableOrphanAttachment ? "success" : "skipped",
     startedAt,
     completedAt: new Date().toISOString(),
     durationMs: Math.round(endTime - startTime),
     operationsFound: orphans.length,
-    operationsApplied: applied,
-    operationsBlocked: blocked,
+    operationsApplied: 0, // apply happens after governance
+    operationsBlocked: blocked, // informational: humanReview count
     details: {
       operations,
       orphansProcessed: orphans.length,
@@ -672,14 +694,14 @@ async function runRebuildManifestStage(
   config: AutopilotConfig
 ): Promise<AutopilotStageResult> {
   const startedAt = new Date().toISOString();
-  const startTime = performance.now();
-  
+  const startTime = Date.now();
+
   // Manifest rebuild is handled by external script
-  const endTime = performance.now();
-  
+  const endTime = Date.now();
+
   return {
-    stage: 'rebuild-manifest',
-    status: 'success',
+    stage: "rebuild-manifest",
+    status: "success",
     startedAt,
     completedAt: new Date().toISOString(),
     durationMs: Math.round(endTime - startTime),
@@ -688,7 +710,7 @@ async function runRebuildManifestStage(
     operationsBlocked: 0,
     details: {
       filesInManifest: storageFiles.size,
-      note: 'Manifest rebuild delegated to generate-audio-manifest.js',
+      note: "Manifest rebuild delegated to generate-audio-manifest.js",
     },
   };
 }
@@ -699,19 +721,19 @@ async function runIntegrityEvalStage(
   config: AutopilotConfig
 ): Promise<AutopilotStageResult> {
   const startedAt = new Date().toISOString();
-  const startTime = performance.now();
-  
+  const startTime = Date.now();
+
   const integrityMap = buildIntegrityMap(rooms, storageFiles);
   const summary = generateIntegritySummary(integrityMap);
   const lowestRooms = getLowestIntegrityRooms(integrityMap, 10);
   const crossRoomViolations = detectCrossRoomPollution(rooms, storageFiles);
   const parityViolations = verifyEnViParity(rooms, storageFiles);
-  
-  const endTime = performance.now();
-  
+
+  const endTime = Date.now();
+
   return {
-    stage: 'integrity-eval',
-    status: summary.averageScore >= config.minIntegrityTarget ? 'success' : 'partial',
+    stage: "integrity-eval",
+    status: summary.averageScore >= config.minIntegrityTarget ? "success" : "partial",
     startedAt,
     completedAt: new Date().toISOString(),
     durationMs: Math.round(endTime - startTime),
@@ -721,7 +743,7 @@ async function runIntegrityEvalStage(
     details: {
       integrityScore: summary.averageScore,
       summary,
-      lowestRooms: lowestRooms.map(r => ({ roomId: r.roomId, score: r.score })),
+      lowestRooms: lowestRooms.map((r) => ({ roomId: r.roomId, score: r.score })),
       crossRoomViolations: crossRoomViolations.length,
       parityViolations: parityViolations.length,
     },
@@ -735,19 +757,21 @@ async function runGovernanceEvalStage(
   config: AutopilotConfig
 ): Promise<AutopilotStageResult> {
   const startedAt = new Date().toISOString();
-  const startTime = performance.now();
-  
-  const approved = decisions.filter(d => d.decision === 'auto-approve' || d.decision === 'governance-approve');
-  const blocked = decisions.filter(d => d.decision === 'block');
-  const humanReview = decisions.filter(d => d.decision === 'human-review');
-  
+  const startTime = Date.now();
+
+  const approved = decisions.filter(
+    (d) => d.decision === "auto-approve" || d.decision === "governance-approve"
+  );
+  const blocked = decisions.filter((d) => d.decision === "block");
+  const humanReview = decisions.filter((d) => d.decision === "human-review");
+
   const passed = blocked.length === 0 && integrityAfter >= config.minIntegrityTarget;
-  
-  const endTime = performance.now();
-  
+
+  const endTime = Date.now();
+
   return {
-    stage: 'governance-eval',
-    status: passed ? 'success' : blocked.length > 0 ? 'partial' : 'failed',
+    stage: "governance-eval",
+    status: passed ? "success" : blocked.length > 0 ? "partial" : "failed",
     startedAt,
     completedAt: new Date().toISOString(),
     durationMs: Math.round(endTime - startTime),
@@ -756,8 +780,8 @@ async function runGovernanceEvalStage(
     operationsBlocked: blocked.length,
     details: {
       totalDecisions: decisions.length,
-      autoApproved: decisions.filter(d => d.decision === 'auto-approve').length,
-      governanceApproved: decisions.filter(d => d.decision === 'governance-approve').length,
+      autoApproved: decisions.filter((d) => d.decision === "auto-approve").length,
+      governanceApproved: decisions.filter((d) => d.decision === "governance-approve").length,
       blocked: blocked.length,
       humanReview: humanReview.length,
       passed,
@@ -778,16 +802,16 @@ async function runReportStage(
   config?: AutopilotConfig
 ): Promise<AutopilotStageResult> {
   const startedAt = new Date().toISOString();
-  const startTime = performance.now();
-  
+  const startTime = Date.now();
+
   const integrityMap = buildIntegrityMap(rooms, storageFiles);
   const lowestRooms = getLowestIntegrityRooms(integrityMap, 5);
-  
-  const endTime = performance.now();
-  
+
+  const endTime = Date.now();
+
   return {
-    stage: 'report',
-    status: 'success',
+    stage: "report",
+    status: "success",
     startedAt,
     completedAt: new Date().toISOString(),
     durationMs: Math.round(endTime - startTime),
@@ -800,7 +824,9 @@ async function runReportStage(
       integrityAfter,
       integrityDelta: integrityAfter - integrityBefore,
       totalStages: stages.length,
-      lowestRooms: lowestRooms.map(r => ({ roomId: r.roomId, score: r.score })),
+      appliedOperations: applied,
+      blockedOperations: blocked,
+      lowestRooms: lowestRooms.map((r) => ({ roomId: r.roomId, score: r.score })),
     },
   };
 }
@@ -814,47 +840,64 @@ function buildStructuredChangeSet(
   operations: GCEOperation[],
   decisions: GovernanceDecision[]
 ): StructuredChangeSet {
-  const categories: StructuredChangeSet['categories'] = {
+  const categories: StructuredChangeSet["categories"] = {
     critical: [],
     structural: [],
     lowConfidence: [],
     blocked: [],
     cleanup: [],
   };
-  
+
+  // Best-effort mapping: include a few keys so rename-vs-attach decisions still map.
   const decisionMap = new Map<string, GovernanceDecision>();
   for (const d of decisions) {
-    decisionMap.set(`${d.operation.type}-${d.operation.source}`, d);
+    const type = String(d.operation.type || "");
+    const src = String(d.operation.source || "");
+    const tgt = String(d.operation.target || "");
+    const roomId = String((d.operation as any).roomId || "");
+    decisionMap.set(`${type}|${src}`, d);
+    decisionMap.set(`${type}|${tgt}`, d);
+    if (roomId) {
+      decisionMap.set(`${roomId}|${src}`, d);
+      decisionMap.set(`${roomId}|${tgt}`, d);
+    }
   }
-  
+
   for (const op of operations) {
-    const decision = decisionMap.get(`${op.type}-${op.source}`);
-    const confidence = op.metadata.confidence;
-    
+    const roomId = String(op.metadata?.roomId || "");
+    const decision =
+      decisionMap.get(`${op.type}|${op.source}`) ||
+      decisionMap.get(`${op.type}|${op.target}`) ||
+      (roomId ? decisionMap.get(`${roomId}|${op.source}`) : undefined) ||
+      (roomId ? decisionMap.get(`${roomId}|${op.target}`) : undefined);
+
+    const confidence = safeNumber(op.metadata?.confidence, 0);
+    const reason = String(op.metadata?.reason || "");
+
     const changeOp: ChangeSetOperation = {
-      id: `${op.type}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+      id: `${op.type}-${Date.now()}-${Math.random().toString(36).slice(2, 11)}`,
       type: op.type,
       source: op.source,
       target: op.target,
-      roomId: op.metadata.roomId,
+      roomId: op.metadata?.roomId,
       confidence,
-      reason: op.metadata.reason,
-      governanceDecision: decision?.decision || 'auto-approve',
+      reason,
+      governanceDecision: decision?.decision || "auto-approve",
     };
-    
-    if (decision?.decision === 'block') {
+
+    if (decision?.decision === "block") {
       categories.blocked.push(changeOp);
-    } else if (confidence < 70) {
+    } else if (confidence > 0 && confidence < 70) {
       categories.lowConfidence.push(changeOp);
-    } else if (op.type === 'update-json' && op.metadata.reason?.includes('reversed')) {
+    } else if (op.type === "update-json" && reason.includes("reversed")) {
       categories.critical.push(changeOp);
-    } else if (op.type === 'rename' || op.type === 'update-json') {
+    } else if (op.type === "rename" || op.type === "update-json") {
       categories.structural.push(changeOp);
     } else {
       categories.cleanup.push(changeOp);
     }
   }
-  
+
   return {
     id: cycleId,
     timestamp: new Date().toISOString(),
@@ -888,37 +931,38 @@ function buildAutopilotReport(
   const integrityMap = buildIntegrityMap(rooms, storageFiles);
   const lowestRooms = getLowestIntegrityRooms(integrityMap, 10);
   const violations: GovernanceViolation[] = [];
-  
+
   for (const d of decisions) {
     if (d.violations.length > 0) {
       violations.push({
-        code: 'GOVERNANCE_VIOLATION',
-        severity: d.decision === 'block' ? 'critical' : 'warning',
-        message: d.violations.join('; '),
+        code: "GOVERNANCE_VIOLATION",
+        severity: d.decision === "block" ? "critical" : "warning",
+        message: d.violations.join("; "),
         operation: d.operation,
         resolution: d.reason,
       });
     }
   }
-  
+
+  // NOTE: stages don't actually apply ops; applied count is tracked at cycle level
   const roomsFixed = stages
-    .filter(s => s.stage === 'repair' || s.stage === 'semantic-attach')
-    .reduce((sum, s) => sum + s.operationsApplied, 0);
-  
+    .filter((s) => s.stage === "repair" || s.stage === "semantic-attach")
+    .reduce((sum, s) => sum + safeNumber(s.operationsApplied, 0), 0);
+
   const recommendations: string[] = [];
-  
+
   if (integrityAfter < 99) {
     recommendations.push(`System integrity (${integrityAfter}%) is below 99% target`);
   }
-  
+
   if (blocked > 0) {
     recommendations.push(`${blocked} operations were blocked by governance - review manually`);
   }
-  
-  if (lowestRooms.some(r => r.score < 80)) {
-    recommendations.push('Some rooms have critically low integrity scores - prioritize these');
+
+  if (lowestRooms.some((r) => r.score < 80)) {
+    recommendations.push("Some rooms have critically low integrity scores - prioritize these");
   }
-  
+
   return {
     cycleId,
     timestamp: new Date().toISOString(),
@@ -933,13 +977,13 @@ function buildAutopilotReport(
       blockedOperations: blocked,
       passedGovernance: blocked === 0,
     },
-    stages: stages.map(s => ({
+    stages: stages.map((s) => ({
       name: s.stage,
       status: s.status,
       duration: `${s.durationMs}ms`,
       details: JSON.stringify(s.details).slice(0, 200),
     })),
-    lowestIntegrityRooms: lowestRooms.map(r => ({ roomId: r.roomId, score: r.score })),
+    lowestIntegrityRooms: lowestRooms.map((r) => ({ roomId: r.roomId, score: r.score })),
     violations,
     recommendations,
   };
@@ -960,60 +1004,60 @@ export function serializeAutopilotReport(report: AutopilotReport): string {
 export function generateMarkdownReport(report: AutopilotReport): string {
   const lines: string[] = [
     `# Autopilot Report: ${report.cycleId}`,
-    '',
+    "",
     `Generated: ${report.timestamp}`,
-    '',
-    '## Summary',
-    '',
+    "",
+    "## Summary",
+    "",
     `| Metric | Value |`,
     `|--------|-------|`,
     `| Integrity Before | ${report.summary.integrityBefore}% |`,
     `| Integrity After | ${report.summary.integrityAfter}% |`,
-    `| Delta | ${report.summary.integrityDelta >= 0 ? '+' : ''}${report.summary.integrityDelta}% |`,
+    `| Delta | ${report.summary.integrityDelta >= 0 ? "+" : ""}${report.summary.integrityDelta}% |`,
     `| Total Rooms | ${report.summary.totalRooms} |`,
     `| Rooms Fixed | ${report.summary.roomsFixed} |`,
     `| Operations Applied | ${report.summary.appliedOperations} |`,
     `| Operations Blocked | ${report.summary.blockedOperations} |`,
-    `| Passed Governance | ${report.summary.passedGovernance ? '✅' : '❌'} |`,
-    '',
-    '## Stages',
-    '',
+    `| Passed Governance | ${report.summary.passedGovernance ? "✅" : "❌"} |`,
+    "",
+    "## Stages",
+    "",
   ];
-  
+
   for (const stage of report.stages) {
     lines.push(`### ${stage.name}`);
     lines.push(`- Status: ${stage.status}`);
     lines.push(`- Duration: ${stage.duration}`);
-    lines.push('');
+    lines.push("");
   }
-  
+
   if (report.lowestIntegrityRooms.length > 0) {
-    lines.push('## Lowest Integrity Rooms');
-    lines.push('');
-    lines.push('| Room ID | Score |');
-    lines.push('|---------|-------|');
+    lines.push("## Lowest Integrity Rooms");
+    lines.push("");
+    lines.push("| Room ID | Score |");
+    lines.push("|---------|-------|");
     for (const room of report.lowestIntegrityRooms) {
       lines.push(`| ${room.roomId} | ${room.score}% |`);
     }
-    lines.push('');
+    lines.push("");
   }
-  
+
   if (report.violations.length > 0) {
-    lines.push('## Violations');
-    lines.push('');
+    lines.push("## Violations");
+    lines.push("");
     for (const v of report.violations) {
       lines.push(`- **${v.severity.toUpperCase()}**: ${v.message}`);
     }
-    lines.push('');
+    lines.push("");
   }
-  
+
   if (report.recommendations.length > 0) {
-    lines.push('## Recommendations');
-    lines.push('');
+    lines.push("## Recommendations");
+    lines.push("");
     for (const r of report.recommendations) {
       lines.push(`- ${r}`);
     }
   }
-  
-  return lines.join('\n');
+
+  return lines.join("\n");
 }

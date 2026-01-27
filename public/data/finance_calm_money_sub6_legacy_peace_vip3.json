@@ -27,31 +27,7 @@
     "tuyên ngôn",
     "hoạch định tương lai"
   ],
-  "entries": [
-    {
-      "slug": "money-life-manifesto",
-      "keywords_en": [
-        "manifesto",
-        "values",
-        "purpose",
-        "vision"
-      ],
-      "keywords_vi": [
-        "tuyên ngôn",
-        "giá trị",
-        "mục đích",
-        "tầm nhìn"
-      ],
-      "audio": {
-        "en": "calm_vip3_11_en.mp3"
-      },
-      "copy": {
-        "en": "Your Money & Life Manifesto (1–2 Pages): What do you stand for? What won't you compromise? How will you use money as a tool for good? Write it. Revisit yearly. It becomes your compass.",
-        "vi": "Tuyên Ngôn Tiền & Cuộc Sống Của Bạn (1–2 Trang): Bạn đại diện cho điều gì? Bạn sẽ không thỏa hiệp điều gì? Bạn sẽ sử dụng tiền như công cụ cho điều tốt như thế nào? Viết nó. Xem xét hàng năm. Nó trở thành la bàn của bạn."
-      },
-      "tags": []
-    }
-  ],
+  "entries": [],
   "id": "finance_calm_money_sub6_legacy_peace_vip3",
   "title": {
     "en": "Legacy & Long-Term Peace",

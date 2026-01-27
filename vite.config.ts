@@ -10,19 +10,29 @@
 // FIX 97.7:
 // - Prevent "Circular chunk: vendor-react -> vendor -> vendor-react"
 // - Use mutually-exclusive manualChunks buckets: react / supabase / ui / vendor
+//
+// PATCH 2026-01-24:
+// - FIX: envDir mismatch caused import.meta.env.VITE_AUTH_* to be undefined,
+//   hiding Google/Facebook buttons behind flags.
+// - Add envDir: __dirname (surgical, no behavior change besides env loading).
+
+import path from "path";
+import { fileURLToPath } from "url";
 
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import path from "path";
 
-// ESM-safe __dirname
-const __dirname = path.dirname(new URL(import.meta.url).pathname);
+// ESM-safe __dirname (robust across mac/linux/windows; avoids %20 / leading-slash issues)
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 function normalizeId(id: string) {
   return id.replace(/\\/g, "/");
 }
 
 export default defineConfig({
+  // ✅ CRITICAL: ensure Vite reads .env, .env.local, .env.development.local from repo root
+  envDir: __dirname,
+
   plugins: [
     react({
       jsxRuntime: "automatic",
@@ -46,12 +56,14 @@ export default defineConfig({
           if (!s.includes("/node_modules/")) return;
 
           // 1) React ecosystem (ONLY here)
+          // include react-router deps that sometimes live outside react-router-dom
           if (
             s.includes("/node_modules/react/") ||
             s.includes("/node_modules/react-dom/") ||
             s.includes("/node_modules/scheduler/") ||
             s.includes("/node_modules/react-router/") ||
-            s.includes("/node_modules/react-router-dom/")
+            s.includes("/node_modules/react-router-dom/") ||
+            s.includes("/node_modules/@remix-run/router/")
           ) {
             return "vendor-react";
           }
@@ -80,3 +92,7 @@ export default defineConfig({
     },
   },
 });
+
+/* teacher GPT — new thing to learn:
+   When a feature disappears, don’t “fix UI first”.
+   First confirm the config layer: envDir decides whether import.meta.env has your flags. */

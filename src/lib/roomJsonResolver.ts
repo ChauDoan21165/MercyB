@@ -1,8 +1,12 @@
 // src/lib/roomJsonResolver.ts
-// MB-BLUE-95.7 — 2025-12-27 (+0700)
+// MB-BLUE-95.7a — 2026-01-22 (+0700)
 // FIX: tolerate legacy roomId input that includes ".json" or "/data/" prefixes.
 // RULE: Canonical roomId is snake_case WITHOUT ".json".
 // Resolver remains the ONLY source of truth.
+//
+// TEST FIX (95.7a):
+// - Export __mock for vitest snapshot tests that import it.
+// - NO runtime behavior changes.
 
 import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
 
@@ -112,3 +116,15 @@ export async function loadRoomJson(roomIdRaw: string): Promise<any> {
     throw err;
   }
 }
+
+/**
+ * TEST HOOK (Vitest):
+ * Some snapshot/unit tests import { __mock } from this module.
+ * Keep it tiny and stable.
+ */
+export const __mock = {
+  canonicalizeRoomId,
+  normalizeRoomIdForCanonicalFile,
+  resolveRoomJsonPath,
+  loadRoomJson,
+};

@@ -20,30 +20,7 @@
     "lab",
     "khắc kỷ"
   ],
-  "entries": [
-    {
-      "slug": "neuro-track",
-      "keywords_en": [
-        "biometrics",
-        "mood tracking",
-        "neurochemistry"
-      ],
-      "keywords_vi": [
-        "sinh trắc học",
-        "theo dõi tâm trạng",
-        "hóa học thần kinh"
-      ],
-      "copy": {
-        "en": "Biometric-emotional dashboard with predictive analytics masters mood. Daily 1-10 mood log, wearable HRV, Oura sleep stages. Weekly lab: cortisol rhythm, free/total T, full thyroid. AI forecasts dips 72h ahead via pattern recognition. Pre/post metrics gauge interventions. Quarterly psychiatrist sync for micro-dosing meds. This protocol secures neurochemical stability via real-time clinical data, algorithmic therapy tweaks, and precision supplements, delivering peak cognition, stress armor, and zero depressive crashes for enduring dominance.",
-        "vi": "Bảng điều khiển cảm xúc sinh trắc với phân tích dự đoán làm chủ tâm trạng. Ghi mood 1-10 hàng ngày, HRV đeo tay, giai đoạn ngủ Oura. Lab tuần: nhịp cortisol, T tự do/tổng, tuyến giáp đầy đủ. AI dự báo giảm 72h trước qua nhận diện mẫu. Chỉ số trước/sau đo can thiệp. Đồng bộ tâm thần quý cho liều thuốc vi mô. Giao thức này khóa ổn định hóa thần kinh qua dữ liệu lâm sàng thời gian thực, tinh chỉnh trị liệu thuật toán và bổ sung chính xác, mang nhận thức đỉnh, giáp căng thẳng và không sụp trầm cảm cho thống trị bền vững."
-      },
-      "audio": {
-        "en": "mmh_vip3_1_en.mp3",
-        "vi": "mmh_vip3_1_vi.mp3"
-      },
-      "tags": []
-    }
-  ],
+  "entries": [],
   "audio": "mmh_vip3_8_en.mp3",
   "id": "mens_mental_health_vip3",
   "title": {

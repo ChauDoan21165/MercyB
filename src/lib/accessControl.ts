@@ -1,12 +1,12 @@
 // FILE: accessControl.ts
 // PATH: src/lib/accessControl.ts
-// VERSION: MB-BLUE-AC-1.1.3 — 2026-01-15 (+0700)
+// VERSION: MB-BLUE-AC-1.1.5 — 2026-01-22 (+0700)
 //
 // Centralized VIP Access Control
 //
 // IMPORTANT:
 // - Room access (canUserAccessRoom) enforces FAMILY separation (Kids vs VIP) except VIP9.
-// - VIP3II is a specialization track: VIP3 does NOT automatically access VIP3II (unit-test backed).
+// - VIP3II is removed from the product (no TierId, no UI, no counters).
 // - Generic tier comparisons (canAccessVIPTier) are numeric-level comparisons only
 //   (used by tests/spec like "kids_2 same level as vip2").
 // - RoomLoader must ALWAYS load the room; denied access means PREVIEW, never empty.
@@ -48,11 +48,6 @@ function tierLevel(tier: TierId): number {
 /**
  * Determines if a user can access a specific room based on tier (FULL access).
  * Enforces kids/vip family separation except VIP9.
- *
- * SPECIAL RULE (unit-test backed):
- * - vip3 does NOT automatically access vip3 rooms.
- * - vip3 CAN access vip3 rooms (same numeric level).
- * - vip4+ CAN access vip3 rooms (higher level).
  */
 export function canUserAccessRoom(userTier: TierId, roomTier: TierId): boolean {
   const userIsKids = isKidsTier(userTier);
@@ -63,7 +58,6 @@ export function canUserAccessRoom(userTier: TierId, roomTier: TierId): boolean {
     return false;
   }
 
-  // VIP3II specialization gate: VIP3 cannot access VIP3II rooms
   return tierLevel(userTier) >= tierLevel(roomTier);
 }
 
@@ -82,8 +76,7 @@ export function determineAccess(userTier: TierId, roomTier: TierId) {
  * Generic tier comparison (numeric-level comparison only).
  *
  * IMPORTANT:
- * This does NOT enforce kids/vip family separation,
- * and does NOT apply the VIP3→VIP3II room-specialization restriction.
+ * This does NOT enforce kids/vip family separation.
  */
 export function canAccessVIPTier(userTier: TierId, targetTier: TierId): boolean {
   return tierLevel(userTier) >= tierLevel(targetTier);
@@ -91,9 +84,6 @@ export function canAccessVIPTier(userTier: TierId, targetTier: TierId): boolean 
 
 /**
  * Get all VIP tiers a user can access (excludes kids tiers).
- *
- * NOTE:
- * vip3 does NOT automatically include vip3 (unit-test backed).
  */
 export function getAccessibleTiers(userTier: TierId): TierId[] {
   const userLevel = tierLevel(userTier);
@@ -102,10 +92,6 @@ export function getAccessibleTiers(userTier: TierId): TierId[] {
   if (userLevel >= tierLevel("vip1")) tiers.push("vip1");
   if (userLevel >= tierLevel("vip2")) tiers.push("vip2");
   if (userLevel >= tierLevel("vip3")) tiers.push("vip3");
-
-  // vip3 requires vip3 specifically, or higher tiers (vip4+)
-  if (userTier === "vip3" || userLevel >= tierLevel("vip4")) {}
-
   if (userLevel >= tierLevel("vip4")) tiers.push("vip4");
   if (userLevel >= tierLevel("vip5")) tiers.push("vip5");
   if (userLevel >= tierLevel("vip6")) tiers.push("vip6");
@@ -129,22 +115,15 @@ export const ACCESS_TEST_MATRIX = [
   { tier: "vip2" as TierId, roomId: "women-health", roomTier: "free" as TierId, expected: true },
   { tier: "vip2" as TierId, roomId: "some_vip2_room", roomTier: "vip2" as TierId, expected: true },
   { tier: "vip2" as TierId, roomId: "public_speaking_structure_vip3", roomTier: "vip3" as TierId, expected: false },
-  { tier: "vip2" as TierId, roomId: "vip3_room", roomTier: "vip3" as TierId, expected: false }, // VIP2 can't access VIP3II
 
   // VIP3 tier
   { tier: "vip3" as TierId, roomId: "public_speaking_structure_vip3", roomTier: "vip3" as TierId, expected: true },
-  { tier: "vip3" as TierId, roomId: "vip3_english_specialization", roomTier: "vip3" as TierId, expected: false }, // ✅ FIX: VIP3 does NOT access VIP3II
   { tier: "vip3" as TierId, roomId: "personal_safety_self_protection_vip4_bonus", roomTier: "vip4" as TierId, expected: false },
-
-  // VIP3II tier - same level as VIP3, but special track
-  { tier: "vip3" as TierId, roomId: "vip3_room", roomTier: "vip3" as TierId, expected: true }, // VIP3II can access VIP3
-  { tier: "vip3" as TierId, roomId: "vip3_room", roomTier: "vip3" as TierId, expected: true },
-  { tier: "vip3" as TierId, roomId: "vip4_room", roomTier: "vip4" as TierId, expected: false },
 
   // VIP4 tier
   { tier: "vip4" as TierId, roomId: "personal_safety_self_protection_vip4_bonus", roomTier: "vip4" as TierId, expected: true },
   { tier: "vip4" as TierId, roomId: "essential_money_risk_management_vip4_bonus", roomTier: "vip4" as TierId, expected: true },
-  { tier: "vip4" as TierId, roomId: "vip3_room", roomTier: "vip3" as TierId, expected: true }, // VIP4+ can access VIP3II
+  { tier: "vip4" as TierId, roomId: "vip3_room", roomTier: "vip3" as TierId, expected: true },
   { tier: "vip4" as TierId, roomId: "some_vip5_room", roomTier: "vip5" as TierId, expected: false },
 
   // VIP5-8 tiers
@@ -186,3 +165,15 @@ export function validateAccessControl(): { passed: number; failed: number; failu
 
   return { passed, failed, failures };
 }
+
+/**
+ * TEST HOOK (Vitest):
+ * Some snapshot/unit tests import { __mock } from this module.
+ * Keep it tiny and stable; do NOT add runtime behavior.
+ */
+export const __mock = {
+  canUserAccessRoom,
+  canAccessVIPTier,
+  determineAccess,
+  getAccessibleTiers,
+};
