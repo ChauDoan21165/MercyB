@@ -12,11 +12,6 @@
  * - Track originals + normalized filenames separately:
  *   - missing uses normalized set (case-insensitive)
  *   - duplicates report actual filenames (not just normalized lowercase)
- *
- * FIX (v2.1a — TS type unification):
- * - RoomEntry.slug MUST be string (other audio modules expect string).
- * - Coerce any numeric ids to string at the boundary (String()).
- * - IntegritySummary adds optional roomsBelow80 for legacy callers.
  */
 
 import {
@@ -60,20 +55,13 @@ export interface IntegritySummary {
   totalUnrepairable: number;
   averageScore: number;
   generatedAt: string;
-
-  // Legacy field some callers still set. Keep optional to avoid breaking others.
-  roomsBelow80?: number;
 }
 
 export interface RoomEntry {
-  // IMPORTANT: unify to string (other modules expect string).
-  slug?: string;
-  id?: string;
-  artifact_id?: string;
+  slug?: string | number;
+  id?: string | number;
+  artifact_id?: string | number;
   audio?: { en?: string; vi?: string } | string;
-
-  // allow extra fields without fighting TS
-  [k: string]: unknown;
 }
 
 export interface RoomData {
@@ -84,12 +72,6 @@ export interface RoomData {
 // ============================================
 // Core Functions
 // ============================================
-
-function coerceEntryKeyToSlug(entry: any, fallbackIndex: number): string {
-  // IMPORTANT: numeric 0 is valid — use nullish coalescing not ||
-  const raw = entry?.slug ?? entry?.artifact_id ?? entry?.id ?? fallbackIndex;
-  return String(raw);
-}
 
 /**
  * Build integrity map for a single room using GCE
@@ -122,9 +104,12 @@ export function buildRoomIntegrity(
   // Build expected list using GCE
   // ----------------------------
   for (let i = 0; i < entries.length; i++) {
-    const entry = entries[i] as any;
+    const entry = entries[i];
 
-    const slug = coerceEntryKeyToSlug(entry, i);
+    // IMPORTANT: numeric 0 is a valid slug/id, so use nullish coalescing not ||
+    const slug =
+      entry.slug ?? entry.artifact_id ?? entry.id ?? i;
+
     const canonical = getCanonicalAudioForRoom(roomId, slug);
 
     expected.push(canonical.en, canonical.vi);
@@ -260,7 +245,6 @@ export function generateIntegritySummary(map: IntegrityMap): IntegritySummary {
   let totalUnrepairable = 0;
   let totalScore = 0;
   let healthyRooms = 0;
-  let roomsBelow80 = 0;
 
   for (const room of rooms) {
     totalExpected += room.expected.length;
@@ -272,7 +256,6 @@ export function generateIntegritySummary(map: IntegrityMap): IntegritySummary {
     totalScore += room.score;
 
     if (room.score === 100) healthyRooms++;
-    if (room.score < 80) roomsBelow80++;
   }
 
   return {
@@ -287,9 +270,6 @@ export function generateIntegritySummary(map: IntegrityMap): IntegritySummary {
     totalUnrepairable,
     averageScore: rooms.length > 0 ? Math.round(totalScore / rooms.length) : 100,
     generatedAt: new Date().toISOString(),
-
-    // optional legacy convenience
-    roomsBelow80,
   };
 }
 

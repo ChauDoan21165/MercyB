@@ -18,7 +18,32 @@
     "hệ thống",
     "khoa học"
   ],
-  "entries": [],
+  "entries": [
+    {
+      "slug": "task-list",
+      "keywords_en": [
+        "task list",
+        "priority",
+        "productivity"
+      ],
+      "keywords_vi": [
+        "danh sách nhiệm vụ",
+        "ưu tiên",
+        "năng suất"
+      ],
+      "copy": {
+        "en": "The PARA system revolutionizes organization by separating Projects, Areas, Resources, and Archives. Use Notion or Obsidian with bi-directional links to maintain clarity. Review weekly using velocity metrics and track completion rates. Consult a knowledge-management expert for a customized second-brain setup to achieve seamless execution and elite productivity.",
+        "vi": "The PARA system revolutionizes organization by separating Projects, Areas, Resources, and Archives. Use Notion or Obsidian with bi-directional links to maintain clarity. Review weekly using velocity metrics and track completion rates. Consult a knowledge-management expert for a customized second-brain setup to achieve seamless execution and elite productivity."
+      },
+      "tags": [
+        "task",
+        "productivity"
+      ],
+      "audio": {
+        "en": "paf_vip3_1_en.mp3"
+      }
+    }
+  ],
   "keywords": {
     "expert_productivity": {
       "en": [

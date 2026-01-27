@@ -1,5 +1,13 @@
 // src/pages/Billing.tsx
 // Mercy Blade — Billing / Upgrade UI (minimal, wired to Supabase Edge Function)
+//
+// Requires env:
+// - VITE_SUPABASE_URL
+// - VITE_SUPABASE_ANON_KEY
+//
+// Edge Function:
+// - create-checkout-session
+//   returns: { checkout_url: string }
 
 import { useEffect, useMemo, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
@@ -60,7 +68,6 @@ export default function Billing() {
   async function startCheckout(vipKey: CheckoutVipKey) {
     setError(null);
     setBusyVip(vipKey);
-
     try {
       const {
         data: { session },
@@ -72,31 +79,19 @@ export default function Billing() {
         throw new Error("Please sign in before upgrading.");
       }
 
-      // ✅ FIX: use plain fetch (NO supabase.functions.invoke)
-      const res = await fetch(
-        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/create-checkout-session`,
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${session.access_token}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ tier: vipKey }),
-        },
-      );
+      // Optional: pass extra metadata (keep minimal)
+      const { data, error } = await supabase.functions.invoke("create-checkout-session", {
+        body: { vip_key: vipKey }, // match what your Edge function expects (vip_key)
+      });
 
-      if (!res.ok) {
-        const text = await res.text();
-        throw new Error(text || "Checkout failed");
-      }
+      if (error) throw error;
 
-      const data = await res.json();
-      const checkoutUrl = data?.checkout_url;
-
+      const checkoutUrl = (data as any)?.checkout_url;
       if (!checkoutUrl || typeof checkoutUrl !== "string") {
         throw new Error("Missing checkout_url from create-checkout-session");
       }
 
+      // Redirect to Stripe Checkout
       window.location.assign(checkoutUrl);
     } catch (e: any) {
       setError(e?.message ?? "Checkout failed");
@@ -186,6 +181,11 @@ export default function Billing() {
             </div>
           );
         })}
+      </div>
+
+      <div style={{ marginTop: 14, opacity: 0.7, fontSize: 12, lineHeight: 1.4 }}>
+        Tip: after payment completes, Stripe calls your webhook → webhook upserts{" "}
+        <code>user_subscriptions</code> → app reads tier from DB.
       </div>
     </div>
   );

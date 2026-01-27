@@ -27,7 +27,31 @@
     "quỹ khẩn cấp",
     "nền tảng tài chính"
   ],
-  "entries": [],
+  "entries": [
+    {
+      "slug": "credit-scores-matter",
+      "keywords_en": [
+        "credit score",
+        "credit report",
+        "FICO",
+        "financial health"
+      ],
+      "keywords_vi": [
+        "điểm tín dụng",
+        "báo cáo tín dụng",
+        "FICO",
+        "sức khỏe tài chính"
+      ],
+      "audio": {
+        "en": "calm_vip3_15_en.mp3"
+      },
+      "copy": {
+        "en": "Credit Scores—what actually matters: Pay on time (35%), keep balances low (30%), don't open too many accounts. That's 65% of your score. Start there. Check it free once a year.",
+        "vi": "Điểm Tín Dụng—điều thực sự quan trọng: Thanh toán đúng hạn (35%), giữ số dư thấp (30%), không mở quá nhiều tài khoản. Đó là 65% điểm của bạn. Bắt đầu từ đó. Kiểm tra miễn phí mỗi năm một lần."
+      },
+      "tags": []
+    }
+  ],
   "id": "finance_calm_money_sub2_money_basics_vip3",
   "title": {
     "en": "Money Basics You Should've Learned",

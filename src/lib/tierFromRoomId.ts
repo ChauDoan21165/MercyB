@@ -1,52 +1,104 @@
 // FILE: tierFromRoomId.ts
 // PATH: src/lib/tierFromRoomId.ts
-// MB-BLUE-98.9n-tierFromRoomId-vipN-strict — 2026-01-25 (+0700)
 //
-// PURPOSE (LOCKED):
-// - Infer tier from room id string.
-// - Used as a *safety net* when registry tier fields are wrong.
-// - Mercy Blade sells VIP1 / VIP3 / VIP9 only.
-//
-// FIX (2026-01-25):
-// - Recognize vipN patterns like *_vip5_bonus.
-// - Any vip number NOT in {1,3,9} is treated as vip9 (safest lock).
-// - Keep kids_* detection.
+// SIMPLE APP MODE (FINAL):
+// - VIP3 II is NOT a real tier anymore → always maps to VIP3
+// - strictTierFromRoomId(): returns TierId ONLY when confidently detected
+// - tierFromRoomId(): legacy wrapper defaults to "free"
+// - NO DB migration needed
+// - Stops Free from becoming a garbage can
+// - Kids mapping preserved so /tiers/kids_* still works
 
-import type { TierId } from "@/lib/tierRoomSource";
+import type { TierId } from "@/lib/constants/tiers";
 
-function norm(id: string): string {
-  return String(id || "")
-    .trim()
-    .toLowerCase()
-    .replace(/\s+/g, "_")
-    .replace(/-+/g, "_");
-}
+/**
+ * STRICT inference:
+ * Returns TierId only when confidently recognized from the room id/path.
+ * Otherwise returns undefined (caller may bucket as "unknown").
+ */
+export function strictTierFromRoomId(id: string): TierId | undefined {
+  const s = String(id || "").toLowerCase().trim();
+  if (!s) return undefined;
 
-export function tierFromRoomId(roomId: string): TierId {
-  const s = norm(roomId);
+  // Boundary-aware token matcher (prevents vip3 matching vip30, etc.)
+  const hasToken = (token: string) => {
+    const re = new RegExp(`(^|[^a-z0-9])${token}([^a-z0-9]|$)`, "i");
+    return re.test(s);
+  };
 
-  // Kids tiers (support a few historical patterns)
-  // Examples: kids_1_..., ..._kids_l1, ..._kids_l2, ..._kids_l3
-  const kidsDirect = s.match(/(?:^|_)kids_?([123])(?:_|$)/);
-  if (kidsDirect) return (`kids_${Number(kidsDirect[1])}` as unknown) as TierId;
-
-  const kidsL = s.match(/(?:^|_)kids_l([123])(?:_|$)/);
-  if (kidsL) return (`kids_${Number(kidsL[1])}` as unknown) as TierId;
-
-  // VIP tiers: match vipN with or without underscore: vip9, vip_9, _vip5_bonus
-  const vip = s.match(/(?:^|_)vip_?(\d+)(?:_|$)/);
-  if (vip) {
-    const n = Number(vip[1]);
-
-    // Mercy Blade product ladder
-    if (n === 1) return ("vip1" as unknown) as TierId;
-    if (n === 3) return ("vip3" as unknown) as TierId;
-    if (n === 9) return ("vip9" as unknown) as TierId;
-
-    // SAFETY: unknown vip numbers are treated as vip9 (locked),
-    // because we do not sell vip2/vip4/vip5/vip6/vip7/vip8.
-    if (Number.isFinite(n) && n > 0) return ("vip9" as unknown) as TierId;
+  // ---------------------------------------------------------------------------
+  // VIP3 II — COLLAPSED INTO VIP3 (simple app mode)
+  // ---------------------------------------------------------------------------
+  if (
+    hasToken("vip3_ii") ||
+    /(^|[^a-z0-9])vip3[\s_-]*ii([^a-z0-9]|$)/i.test(s)
+  ) {
+    return "vip3";
   }
 
-  return ("free" as unknown) as TierId;
+  // ---------------------------------------------------------------------------
+  // Kids tiers (explicit only)
+  // ---------------------------------------------------------------------------
+  if (
+    /(^|[^a-z0-9])kids[\s_-]*l[\s_-]*1([^a-z0-9]|$)/i.test(s) ||
+    /(^|[^a-z0-9])kids[\s_-]*level[\s_-]*1([^a-z0-9]|$)/i.test(s) ||
+    /(^|[^a-z0-9])kids[\s_-]*1([^a-z0-9]|$)/i.test(s)
+  ) {
+    return "kids_1";
+  }
+
+  if (
+    /(^|[^a-z0-9])kids[\s_-]*l[\s_-]*2([^a-z0-9]|$)/i.test(s) ||
+    /(^|[^a-z0-9])kids[\s_-]*level[\s_-]*2([^a-z0-9]|$)/i.test(s) ||
+    /(^|[^a-z0-9])kids[\s_-]*2([^a-z0-9]|$)/i.test(s)
+  ) {
+    return "kids_2";
+  }
+
+  if (
+    /(^|[^a-z0-9])kids[\s_-]*l[\s_-]*3([^a-z0-9]|$)/i.test(s) ||
+    /(^|[^a-z0-9])kids[\s_-]*level[\s_-]*3([^a-z0-9]|$)/i.test(s) ||
+    /(^|[^a-z0-9])kids[\s_-]*3([^a-z0-9]|$)/i.test(s)
+  ) {
+    return "kids_3";
+  }
+
+  // ---------------------------------------------------------------------------
+  // VIP tiers (high → low, after vip3 collapse)
+  // ---------------------------------------------------------------------------
+  for (let n = 9; n >= 1; n--) {
+    if (
+      hasToken(`vip${n}`) ||
+      s.includes(`_vip${n}`) ||
+      s.includes(`-vip${n}`) ||
+      s.includes(`/vip${n}/`)
+    ) {
+      return `vip${n}` as TierId;
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // FREE (ONLY when explicit)
+  // ---------------------------------------------------------------------------
+  if (
+    hasToken("free") ||
+    s.endsWith("_free") ||
+    s.endsWith("-free") ||
+    s.includes("_free_") ||
+    s.includes("-free-") ||
+    s.includes("/free/")
+  ) {
+    return "free";
+  }
+
+  // Not confidently inferred
+  return undefined;
+}
+
+/**
+ * Legacy wrapper (kept for backward compatibility):
+ * Defaults to "free" when not confidently inferred.
+ */
+export function tierFromRoomId(id: string): TierId {
+  return (strictTierFromRoomId(id) ?? "free") as TierId;
 }

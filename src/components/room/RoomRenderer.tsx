@@ -9,25 +9,17 @@
  */
 
 // FILE: src/components/room/RoomRenderer.tsx
-// VERSION: MB-BLUE-99.11x-split-boxes+dbin-kwfix — 2026-01-25 (+0700)
+// VERSION: MB-BLUE-99.11w-host-repeat-target — 2026-01-19 (+0700)
 //
-// Split more (ROI):
-// - BOX 2 → RoomBoxTitleRow.tsx
-// - BOX 3 → RoomBoxWelcomeKeywords.tsx
-// - BOX 4 → RoomBoxContent.tsx
-// - BOX 5 → RoomBoxChatFeedback.tsx
+// FIXES INCLUDED (kept, but file shortened):
+// - DB fetch tries effectiveRoomId THEN coreRoomId (suffix-free) if needed.
+// - Ignore DB if only __legacy stub rows; fallback to JSON.
+// - Coerce legacy JSON entries (copy->content, audio->audio_en, merge keywords).
+// - Keyword pills: 1 per entry when entry keyword fields exist; no fake EN/EN.
+// - Chat: canonical room_id = effectiveRoomId only (load/write/realtime).
 //
-// HARDEN (99.11x):
-// - DB load queries BOTH effectiveRoomId + coreRoomId in ONE query (some rooms exist only as *_vipX).
-// - Keyword pills: force readable foreground on dark backgrounds (light text).
-//
-// FIX (99.11x+rank-tier):
-// - If room.id has NO *_vipX suffix (ex: "cyrus_v1") but DB marks it as VIP (required_rank / vip_rank / tier_rank),
-//   DO NOT infer "free". Prefer rank-based tier mapping BEFORE tierFromRoomId().
-//
-// FIX (99.11x+meta-free-override):
-// - If room.meta tier says "free" BUT the id/rank implies VIP, DO NOT let "free" override.
-//   This is the root cause of free users seeing vip rooms like *_vip5_bonus (shown as TIER: FREE).
+// NEW (99.11w):
+// - Dispatch mb:host-repeat-target when activeEntry becomes known (repeat loop wiring).
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
@@ -38,8 +30,11 @@ import { normalizeTier } from "@/lib/constants/tiers";
 import { tierFromRoomId } from "@/lib/tierFromRoomId";
 
 import {
+  ActiveEntry,
   MercyGuideCorner,
+  KW_CLASSES,
   buildKeywordColorMap,
+  highlightByColorMap,
   entryMatchesKeyword,
   normalizeTextForKwMatch,
 } from "@/components/room/RoomRendererUI";
@@ -48,7 +43,7 @@ import { ROOM_CSS } from "@/components/room/roomRendererStyles";
 import { supabase } from "@/lib/supabaseClient";
 
 import { prettifyRoomIdEN, isBadAutoTitle } from "@/components/room/roomIdUtils";
-import { coerceRoomEntryRowToEntry } from "@/components/room/roomEntriesDb";
+import { fetchRoomEntriesDb, coerceRoomEntryRowToEntry } from "@/components/room/roomEntriesDb";
 import {
   resolveKeywords,
   resolveEssay,
@@ -58,21 +53,6 @@ import {
 
 import { useAuthUser } from "@/components/room/hooks/useAuthUser";
 import { useRoomFeedback } from "@/components/room/hooks/useRoomFeedback";
-import { useCommunityChat } from "@/components/room/hooks/useCommunityChat";
-
-import { dispatchHostContext, dispatchHostRepeatTarget } from "@/components/room/roomHostDispatch";
-import {
-  coreRoomIdFromEffective,
-  coerceLegacyEntryShape,
-  isMeaningfulEntry,
-  pickRepeatTargetFromEntry,
-} from "@/components/room/roomEntryCoercion";
-import { buildKeywordLookupFromEntries, pickOneKeywordPairForEntry } from "@/components/room/roomKeywordMap";
-
-import { RoomBoxTitleRow } from "@/components/room/RoomBoxTitleRow";
-import { RoomBoxWelcomeKeywords } from "@/components/room/RoomBoxWelcomeKeywords";
-import { RoomBoxContent } from "@/components/room/RoomBoxContent";
-import { RoomBoxChatFeedback } from "@/components/room/RoomBoxChatFeedback";
 
 type AnyRoom = any;
 
@@ -109,50 +89,211 @@ function normalizeRoomTierToTierId(roomTier: string): TierId | null {
   return normalizeTier(t);
 }
 
-// ✅ NEW: rank-based tier inference for rooms whose ids don't include *_vipX suffix
-function pickRequiredRank(room: AnyRoom): number | null {
-  // accept several common column names / shapes
-  const candidates = [
-    room?.required_rank,
-    room?.requiredRank,
-    room?.required_vip_rank,
-    room?.requiredVipRank,
-    room?.vip_rank,
-    room?.vipRank,
-    room?.tier_rank,
-    room?.tierRank,
-    room?.meta?.required_rank,
-    room?.meta?.vip_rank,
-    room?.meta?.tier_rank,
-  ];
-
-  for (const v of candidates) {
-    const n = Number(v);
-    if (Number.isFinite(n) && n >= 0) return n;
+function shortEmailLabel(email: string) {
+  const e = String(email || "").trim();
+  if (!e) return "SIGNED IN";
+  const [name, domain] = e.split("@");
+  if (!domain) return e.toUpperCase();
+  const head = name.length <= 3 ? name : `${name.slice(0, 3)}…`;
+  return `${head}@${domain}`.toUpperCase();
+}
+function shortUserId(id: string) {
+  const s = String(id || "").trim();
+  if (!s) return "USER";
+  return (s.slice(0, 6) + "…" + s.slice(-4)).toUpperCase();
+}
+function dispatchHostContext(detail: Record<string, any>) {
+  try {
+    if (typeof window === "undefined") return;
+    window.dispatchEvent(new CustomEvent("mb:host-context", { detail }));
+  } catch {
+    // ignore
   }
+}
+
+// NEW: repeat target event for Mercy Host
+function dispatchHostRepeatTarget(detail: Record<string, any>) {
+  try {
+    if (typeof window === "undefined") return;
+    window.dispatchEvent(new CustomEvent("mb:host-repeat-target", { detail }));
+  } catch {
+    // ignore
+  }
+}
+
+function coreRoomIdFromEffective(effectiveRoomId: string) {
+  const id = String(effectiveRoomId || "").trim();
+  if (!id) return id;
+  return id.replace(/_(vip[1-9]|free)$/i, "");
+}
+
+// ----- “meaningful” entry + legacy coercion -----
+function isLegacyStubEntry(e: any) {
+  const slug = String(e?.slug ?? "").trim();
+  const id = String(e?.id ?? "").trim();
+  return slug.includes("__legacy") || id.includes("__legacy");
+}
+function hasMeaningfulText(e: any) {
+  const en = String(e?.content?.en ?? "").trim();
+  const vi = String(e?.content?.vi ?? "").trim();
+  const en2 = String(e?.copy?.en ?? "").trim();
+  const vi2 = String(e?.copy?.vi ?? "").trim();
+  return en.length + vi.length + en2.length + vi2.length > 0;
+}
+function hasMeaningfulAudio(e: any) {
+  const a = String(e?.audio_en ?? e?.audio ?? "").trim();
+  return !!a;
+}
+function isMeaningfulEntry(e: any) {
+  if (!e || typeof e !== "object") return false;
+  if (isLegacyStubEntry(e)) return false;
+  return (
+    hasMeaningfulText(e) ||
+    hasMeaningfulAudio(e) ||
+    Array.isArray(e?.keywords_en) ||
+    Array.isArray(e?.keywords_vi) ||
+    Array.isArray(e?.keywords) ||
+    Array.isArray(e?.tags)
+  );
+}
+
+function coerceLegacyEntryShape(entry: any) {
+  if (!entry || typeof entry !== "object") return entry;
+  const e: any = { ...entry };
+
+  if (!e.content && e.copy && typeof e.copy === "object") e.content = e.copy;
+
+  if (typeof e.audio === "string" && e.audio.trim() && !e.audio_en) e.audio_en = e.audio.trim();
+
+  if (typeof e.audio_en === "string" && e.audio_en.trim()) {
+    const a = e.audio_en.trim();
+    const isUrl = /^https?:\/\//i.test(a);
+    if (!isUrl) {
+      if (a.startsWith("/")) {
+        // ok
+      } else if (a.startsWith("audio/")) {
+        e.audio_en = `/${a}`;
+      } else if (!a.includes("/")) {
+        e.audio_en = `/audio/${a}`;
+      }
+    }
+  }
+
+  const bag: string[] = [];
+  const pushMany = (arr: any) => {
+    if (!Array.isArray(arr)) return;
+    for (const x of arr) {
+      const s = String(x ?? "").trim();
+      if (s) bag.push(s);
+    }
+  };
+
+  pushMany(e.keywords);
+  pushMany(e.keywords_en);
+  pushMany(e.keywords_vi);
+  pushMany(e.tags);
+
+  const slug = String(e.slug ?? "").trim();
+  if (slug) bag.push(slug);
+
+  const title = String(e.title ?? "").trim();
+  if (title) bag.push(title);
+
+  const seen = new Set<string>();
+  const merged = bag
+    .map((s) => normalizeTextForKwMatch(s))
+    .filter(Boolean)
+    .filter((s) => {
+      if (seen.has(s)) return false;
+      seen.add(s);
+      return true;
+    });
+
+  if (merged.length) e.keywords = merged;
+
+  return e;
+}
+
+// ----- keyword bilingual lookup + per-entry keyword selection -----
+function buildKeywordLookupFromEntries(entries: any[]) {
+  const viByEn = new Map<string, string>();
+  const enByVi = new Map<string, string>();
+
+  const putPair = (enRaw: any, viRaw: any) => {
+    const en = String(enRaw ?? "").trim();
+    const vi = String(viRaw ?? "").trim();
+    if (!en || !vi) return;
+
+    const enN = normalizeTextForKwMatch(en);
+    const viN = normalizeTextForKwMatch(vi);
+    if (!enN || !viN) return;
+    if (enN === viN) return;
+
+    if (!viByEn.has(enN)) viByEn.set(enN, vi);
+    if (!enByVi.has(viN)) enByVi.set(viN, en);
+  };
+
+  for (const e of entries || []) {
+    const enArr = Array.isArray(e?.keywords_en) ? e.keywords_en : [];
+    const viArr = Array.isArray(e?.keywords_vi) ? e.keywords_vi : [];
+    const n = Math.min(enArr.length, viArr.length);
+    for (let i = 0; i < n; i++) putPair(enArr[i], viArr[i]);
+  }
+
+  return { viByEn, enByVi };
+}
+
+function pickOneKeywordPairForEntry(
+  entry: any,
+  lookup: { viByEn: Map<string, string>; enByVi: Map<string, string> },
+): { en: string; vi: string } | null {
+  const enArr = Array.isArray(entry?.keywords_en) ? entry.keywords_en : [];
+  const viArr = Array.isArray(entry?.keywords_vi) ? entry.keywords_vi : [];
+
+  // Prefer paired index i↔i
+  {
+    const n = Math.min(enArr.length, viArr.length);
+    for (let i = 0; i < n; i++) {
+      const en = String(enArr[i] ?? "").trim();
+      const vi = String(viArr[i] ?? "").trim();
+      if (!en || !vi) continue;
+      if (normalizeTextForKwMatch(en) === normalizeTextForKwMatch(vi)) continue;
+      return { en, vi };
+    }
+  }
+
+  // EN-only -> try lookup
+  if (enArr.length > 0) {
+    const en = String(enArr[0] ?? "").trim();
+    if (!en) return null;
+    let vi = String(lookup.viByEn.get(normalizeTextForKwMatch(en)) ?? "").trim();
+    if (vi && normalizeTextForKwMatch(vi) === normalizeTextForKwMatch(en)) vi = "";
+    return { en, vi };
+  }
+
+  // VI-only -> try lookup
+  if (viArr.length > 0) {
+    const vi = String(viArr[0] ?? "").trim();
+    if (!vi) return null;
+    let en = String(lookup.enByVi.get(normalizeTextForKwMatch(vi)) ?? "").trim();
+    if (en && normalizeTextForKwMatch(en) === normalizeTextForKwMatch(vi)) en = "";
+    return { en, vi };
+  }
+
   return null;
 }
 
-function tierIdFromRequiredRank(rank: number | null): TierId | null {
-  if (rank == null) return null;
-
-  // Mercy Blade tiers that exist today
-  // (Keep conservative: never invent vip4..vip8)
-  if (rank >= 9) return "vip9";
-  if (rank >= 3) return "vip3";
-  // NOTE: Mercy Blade has no VIP2 product; treat rank>=2 as vip3 (lock, safe)
-  if (rank >= 2) return "vip3";
-  if (rank >= 1) return "vip1";
-  return "free";
-}
-
-function preferNonFreeTier(meta: TierId | null, rank: TierId | null, inferred: TierId): TierId {
-  // If meta says FREE but rank/id imply VIP, do NOT let FREE override.
-  if (meta === "free" && (rank && rank !== "free")) return rank;
-  if (meta === "free" && inferred !== "free") return inferred;
-
-  // Otherwise keep the normal precedence.
-  return meta ?? rank ?? inferred;
+// NEW: extract repeat-target texts/audio from an entry without depending on exact schema
+function pickRepeatTargetFromEntry(entry: any): { text_en: string; text_vi: string; audio_url: string } {
+  const en =
+    String(entry?.text_en ?? entry?.content_en ?? entry?.content?.en ?? entry?.copy?.en ?? entry?.en ?? "").trim() ||
+    "";
+  const vi =
+    String(entry?.text_vi ?? entry?.content_vi ?? entry?.content?.vi ?? entry?.copy?.vi ?? entry?.vi ?? "").trim() ||
+    "";
+  const audio =
+    String(entry?.audio_url ?? entry?.audio_en ?? entry?.audio ?? entry?.audioEn ?? entry?.audioEN ?? "").trim() || "";
+  return { text_en: en, text_vi: vi, audio_url: audio };
 }
 
 export default function RoomRenderer({
@@ -209,58 +350,64 @@ export default function RoomRenderer({
 
     killControls();
     const obs = new MutationObserver(() => killControls());
-    obs.observe(root, { subtree: true, childList: true, attributes: true, attributeFilter: ["controls"] });
+    obs.observe(root, {
+      subtree: true,
+      childList: true,
+      attributes: true,
+      attributeFilter: ["controls"],
+    });
     return () => obs.disconnect();
   }, []);
 
+  // Spec asserts (DEV only)
+  useEffect(() => {
+    if (!isDev) return;
+    const root = rootRef.current;
+    if (!root) return;
+
+    const boxes = ["2", "3", "4", "5"].map((n) => root.querySelector(`[data-room-box="${n}"]`));
+    if (!boxes.every(Boolean)) {
+      // eslint-disable-next-line no-console
+      console.error("ROOM 5-BOX SPEC VIOLATION: missing data-room-box=2/3/4/5");
+      return;
+    }
+    const idx = boxes.map((el) => Array.prototype.indexOf.call(root.children, el));
+    if (!(idx[0] < idx[1] && idx[1] < idx[2] && idx[2] < idx[3])) {
+      // eslint-disable-next-line no-console
+      console.error("ROOM 5-BOX SPEC VIOLATION: boxes not ordered 2→3→4→5. Indexes:", idx);
+    }
+  }, [effectiveRoomId, isDev]);
+
   const tier = useMemo(() => pickTier(safeRoom), [safeRoom]);
   const requiredTierIdFromMeta = useMemo<TierId | null>(() => normalizeRoomTierToTierId(tier), [tier]);
-
-  // ✅ NEW: if DB/room payload includes required rank, trust it (fixes "cyrus_v1" showing free)
-  const requiredRank = useMemo<number | null>(() => pickRequiredRank(safeRoom), [safeRoom]);
-  const requiredTierIdFromRank = useMemo<TierId | null>(() => tierIdFromRequiredRank(requiredRank), [requiredRank]);
-
   const inferredTierId = useMemo<TierId>(() => tierFromRoomId(effectiveRoomId), [effectiveRoomId]);
 
-  const requiredTierId = useMemo<TierId>(() => {
-    // priority: explicit tier string > rank > id inference
-    // BUT: never allow meta "free" to override rank/id VIP
-    return preferNonFreeTier(requiredTierIdFromMeta, requiredTierIdFromRank, inferredTierId);
-  }, [requiredTierIdFromMeta, requiredTierIdFromRank, inferredTierId]);
-
-  const displayTierId = useMemo<TierId>(() => {
-    // same as required, because the tier pill MUST reflect real gating
-    // BUT: never allow meta "free" to override rank/id VIP
-    return preferNonFreeTier(requiredTierIdFromMeta, requiredTierIdFromRank, inferredTierId);
-  }, [requiredTierIdFromMeta, requiredTierIdFromRank, inferredTierId]);
+  const requiredTierId = useMemo<TierId>(() => requiredTierIdFromMeta ?? inferredTierId, [
+    requiredTierIdFromMeta,
+    inferredTierId,
+  ]);
+  const displayTierId = useMemo<TierId>(() => requiredTierIdFromMeta ?? inferredTierId, [
+    requiredTierIdFromMeta,
+    inferredTierId,
+  ]);
 
   const isLocked = useMemo(() => {
     if (accessLoading) return requiredTierId !== "free";
     return !access.canAccessTier(requiredTierId);
   }, [accessLoading, access, requiredTierId]);
 
-  const signOut = useCallback(async () => {
+  async function signOut() {
     try {
       await supabase.auth.signOut();
     } finally {
       window.location.href = "/signin";
     }
-  }, []);
+  }
 
   // ---- DB entries (RLS) ----
   const [dbRows, setDbRows] = useState<any[] | null>(null);
   const [dbLoading, setDbLoading] = useState(false);
   const [dbError, setDbError] = useState<string | null>(null);
-  const [dbSourceRoomId, setDbSourceRoomId] = useState<string | null>(null); // ✅ DEV: which id actually produced rows
-
-  // Optional dev: show which ids we *intended* to query (effective + core)
-  const dbQueriedIds = useMemo(() => {
-    if (!effectiveRoomId) return "";
-    const e = String(effectiveRoomId);
-    const c = String(coreRoomId || "");
-    if (c && c !== e) return `${e} OR ${c}`;
-    return e;
-  }, [effectiveRoomId, coreRoomId]);
 
   useEffect(() => {
     let cancelled = false;
@@ -269,69 +416,31 @@ export default function RoomRenderer({
       if (!effectiveRoomId) {
         setDbRows(null);
         setDbError(null);
-        setDbSourceRoomId(null);
         setDbLoading(false);
         return;
       }
 
       setDbLoading(true);
       setDbError(null);
-      setDbSourceRoomId(null);
 
-      // ✅ HARDEN: query BOTH effective + core in ONE query.
-      // Some rooms only exist as *_vipX (no core rows), others only exist as core (no suffix rows).
-      const ids: string[] = [];
-      const e = String(effectiveRoomId || "").trim();
-      const c = String(coreRoomId || "").trim();
-      if (e) ids.push(e);
-      if (c && c !== e) ids.push(c);
+      // ✅ FIX: try effective first, then coreRoomId if no useful rows
+      const r1 = await fetchRoomEntriesDb(supabase, effectiveRoomId);
+      let rows = Array.isArray(r1?.rows) ? r1.rows : [];
+      let error = r1?.error ?? null;
 
-      try {
-        const q = supabase
-          .from("room_entries")
-          .select("*")
-          .in("room_id", ids)
-          // safest ordering that won't explode if sort_order doesn't exist
-          .order("created_at", { ascending: true })
-          .limit(500);
-
-        const { data, error } = await q;
-        if (cancelled) return;
-
-        const rows = Array.isArray(data) ? data : [];
-        setDbRows(rows);
-
-        if (error) {
-          setDbError(error.message || String(error));
-          setDbSourceRoomId(null);
-        } else {
-          setDbError(null);
-
-          // dev helper: which key actually has rows (pick the most frequent room_id)
-          if (rows.length > 0) {
-            const counts = new Map<string, number>();
-            for (const r of rows) {
-              const rid = String((r as any)?.room_id || "").trim();
-              if (!rid) continue;
-              counts.set(rid, (counts.get(rid) || 0) + 1);
-            }
-            let best: { id: string; n: number } | null = null;
-            for (const [id, n] of counts.entries()) {
-              if (!best || n > best.n) best = { id, n };
-            }
-            setDbSourceRoomId(best?.id ?? null);
-          } else {
-            setDbSourceRoomId(null);
-          }
+      if (rows.length === 0 && coreRoomId && coreRoomId !== effectiveRoomId) {
+        const r2 = await fetchRoomEntriesDb(supabase, coreRoomId);
+        const rows2 = Array.isArray(r2?.rows) ? r2.rows : [];
+        if (rows2.length > 0) {
+          rows = rows2;
+          error = r2?.error ?? null;
         }
-      } catch (err: any) {
-        if (cancelled) return;
-        setDbRows([]);
-        setDbError(String(err?.message || err || "DB load failed"));
-        setDbSourceRoomId(null);
-      } finally {
-        if (!cancelled) setDbLoading(false);
       }
+
+      if (cancelled) return;
+      setDbRows(rows);
+      setDbError(error);
+      setDbLoading(false);
     }
 
     load();
@@ -367,14 +476,18 @@ export default function RoomRenderer({
   const kwRaw = useMemo(() => resolveKeywords(safeRoom), [safeRoom]);
   const essay = useMemo(() => resolveEssay(safeRoom), [safeRoom]);
 
-  const dbLeafEntries = useMemo(() => {
+  const dbLeafEntriesRaw = useMemo(() => {
     if (!Array.isArray(dbRows) || dbRows.length === 0) return [];
     return dbRows
       .map(coerceRoomEntryRowToEntry)
       .map(coerceLegacyEntryShape)
-      .filter((x) => x && typeof x === "object")
-      .filter(isMeaningfulEntry);
+      .filter((x) => x && typeof x === "object");
   }, [dbRows]);
+
+  const dbLeafEntries = useMemo(() => {
+    if (dbLeafEntriesRaw.length === 0) return [];
+    return dbLeafEntriesRaw.filter(isMeaningfulEntry);
+  }, [dbLeafEntriesRaw]);
 
   const jsonLeafEntries = useMemo(() => {
     const extracted = extractJsonLeafEntries(safeRoom);
@@ -395,6 +508,7 @@ export default function RoomRenderer({
     const entryCount = entries.length;
     const lookup = buildKeywordLookupFromEntries(entries);
 
+    // Prefer ONE keyword per entry when entry keyword fields exist
     if (entryCount > 0) {
       const perEntry = entries
         .map((e) => pickOneKeywordPairForEntry(e, lookup))
@@ -413,9 +527,11 @@ export default function RoomRenderer({
       }
     }
 
+    // fallback: room keywords if present else derived
     const hasReal = (kwRaw?.en?.length || 0) > 0 || (kwRaw?.vi?.length || 0) > 0;
     const base = hasReal ? kwRaw : entryCount > 0 ? deriveKeywordsFromEntryList(entries) : { en: [], vi: [] };
 
+    // final: enforce no fake EN/EN display by blanking VI when same
     const maxLen = Math.max(base.en.length, base.vi.length);
     return {
       en: Array.from({ length: maxLen }).map((_, i) => String(base.en[i] ?? "").trim()),
@@ -431,9 +547,13 @@ export default function RoomRenderer({
   const enKeywords = (kw.en.length ? kw.en : kw.vi).map(String);
   const viKeywords = (kw.vi.length ? kw.vi : kw.en).map(String);
 
-  const kwColorMap = useMemo(() => buildKeywordColorMap(enKeywords, viKeywords, 5), [enKeywords, viKeywords]);
+  const kwColorMap = useMemo(() => buildKeywordColorMap(enKeywords, viKeywords, 5), [
+    enKeywords,
+    viKeywords,
+  ]);
 
   const [activeKeyword, setActiveKeyword] = useState<string | null>(null);
+
   useEffect(() => setActiveKeyword(null), [roomId]);
   useEffect(() => setActiveKeyword(null), [effectiveRoomId]);
 
@@ -450,17 +570,11 @@ export default function RoomRenderer({
 
   const welcomeEN = introEN?.trim() || `Welcome to ${titleEN}, please click a keyword to start`;
   const welcomeVI =
-    introVI?.trim() || `Chào mừng bạn đến với phòng ${titleVI || titleEN}, vui lòng nhấp vào từ khóa để bắt đầu`;
+    introVI?.trim() ||
+    `Chào mừng bạn đến với phòng ${titleVI || titleEN}, vui lòng nhấp vào từ khóa để bắt đầu`;
 
-  const toggleKeyword = useCallback((next: string) => {
-    setActiveKeyword((cur) => {
-      const curKey = normalizeTextForKwMatch(cur || "");
-      const nextKey = normalizeTextForKwMatch(next || "");
-      return curKey && curKey === nextKey ? null : next;
-    });
-  }, []);
+  const clearKeyword = () => setActiveKeyword(null);
 
-  // Host context
   useEffect(() => {
     if (!effectiveRoomId) return;
     dispatchHostContext({ page: "room", roomId: effectiveRoomId });
@@ -473,57 +587,222 @@ export default function RoomRenderer({
     dispatchHostContext({ page: "room", roomId: effectiveRoomId, keyword, entryId });
   }, [effectiveRoomId, activeKeyword, activeEntry]);
 
-  // Repeat target
+  // NEW: when repeat target becomes known, signal Mercy Host
   useEffect(() => {
     if (!effectiveRoomId) return;
     if (!activeKeyword) return;
     if (!activeEntry) return;
+
+    // Even if locked UI disables clicks, be defensive:
     if (isLocked) return;
 
     const entryId = String(activeEntry?.id || activeEntry?.slug || "").trim() || null;
     const { text_en, text_vi, audio_url } = pickRepeatTargetFromEntry(activeEntry);
+
+    // Don’t dispatch empty targets
     if (!text_en && !text_vi) return;
 
-    dispatchHostRepeatTarget({ roomId: effectiveRoomId, entryId, text_en, text_vi, audio_url, pace: "normal" });
+    dispatchHostRepeatTarget({
+      roomId: effectiveRoomId,
+      entryId,
+      text_en,
+      text_vi,
+      audio_url,
+      pace: "normal",
+    });
   }, [effectiveRoomId, activeKeyword, activeEntry, isLocked]);
+// ---- BOX 5: CHAT (canonical = effectiveRoomId) ----
+  type ChatRow = { id: any; room_id?: string; user_id?: string; message?: string; created_at?: string };
 
-  // Chat + feedback
-  // ✅ FIX: load chat history across both effective + core ids (canonical write stays effectiveRoomId because it's first).
-  const chatRoomIds = useMemo(() => {
-    const ids: string[] = [];
-    const e = String(effectiveRoomId || "").trim();
-    const c = String(coreRoomId || "").trim();
-    if (e) ids.push(e);
-    if (c && c !== e) ids.push(c);
-    return ids.length > 0 ? ids : [e];
-  }, [effectiveRoomId, coreRoomId]);
+  const canonicalChatRoomId = String(effectiveRoomId || "").trim();
 
-  const chat = useCommunityChat(supabase, chatRoomIds, authUser);
+  const [chatRows, setChatRows] = useState<ChatRow[]>([]);
+  const [chatLoading, setChatLoading] = useState(false);
+  const [chatSending, setChatSending] = useState(false);
+  const [chatError, setChatError] = useState<string | null>(null);
+  const [chatText, setChatText] = useState("");
+  const chatListRef = useRef<HTMLDivElement | null>(null);
+  const stickToBottomRef = useRef(true);
 
-  const [chatCollapsed, setChatCollapsed] = useState(false);
-  useEffect(() => setChatCollapsed(false), [chat.canonicalRoomId]);
+  const captureChatStick = () => {
+    const el = chatListRef.current;
+    if (!el) return;
+    stickToBottomRef.current = el.scrollHeight - el.scrollTop - el.clientHeight < 24;
+  };
+  const scrollToBottomIfSticky = () => {
+    const el = chatListRef.current;
+    if (!el || !stickToBottomRef.current) return;
+    try {
+      el.scrollTop = el.scrollHeight;
+    } catch {
+      // ignore
+    }
+  };
+
+  const loadChatInline = useCallback(
+    async (limit = 60) => {
+      if (!canonicalChatRoomId) {
+        setChatRows([]);
+        setChatError("Chat room key missing.");
+        setChatLoading(false);
+        return;
+      }
+
+      setChatLoading(true);
+      setChatError(null);
+
+      try {
+        const { data, error } = await supabase
+          .from("community_messages")
+          .select("id, room_id, user_id, message, created_at")
+          .eq("room_id", canonicalChatRoomId)
+          .order("created_at", { ascending: false })
+          .limit(Math.max(1, Math.min(200, limit)));
+
+        if (error) {
+          setChatRows([]);
+          setChatError(`Load failed: ${error.message || String(error)}`);
+          setChatLoading(false);
+          return;
+        }
+
+        const rows = Array.isArray(data) ? (data as ChatRow[]) : [];
+        rows.reverse();
+        setChatRows(rows);
+        setChatLoading(false);
+        setTimeout(() => scrollToBottomIfSticky(), 0);
+      } catch (e: any) {
+        setChatRows([]);
+        setChatError(`Load exception: ${e?.message || String(e)}`);
+        setChatLoading(false);
+      }
+    },
+    [canonicalChatRoomId],
+  );
+
+  useEffect(() => {
+    loadChatInline(60);
+  }, [loadChatInline]);
+
+  useEffect(() => {
+    if (!canonicalChatRoomId) return;
+
+    const channel = supabase.channel(`mb-chat-rebuild:${canonicalChatRoomId}`);
+    channel.on(
+      "postgres_changes",
+      { event: "INSERT", schema: "public", table: "community_messages" },
+      (payload: any) => {
+        const row = (payload?.new || null) as ChatRow | null;
+        if (!row) return;
+        if (String(row.room_id || "") !== canonicalChatRoomId) return;
+
+        setChatRows((cur) => {
+          const id = String((row as any)?.id ?? "");
+          if (id && cur.some((r) => String((r as any)?.id ?? "") === id)) return cur;
+          return [...cur, row];
+        });
+
+        setTimeout(() => scrollToBottomIfSticky(), 0);
+      },
+    );
+
+    channel.subscribe();
+    return () => {
+      try {
+        supabase.removeChannel(channel);
+      } catch {
+        // ignore
+      }
+    };
+  }, [canonicalChatRoomId]);
+
+  const sendChatInline = useCallback(async () => {
+    const msg = String(chatText || "").trim();
+    if (!msg) return;
+
+    if (!authUser?.id) {
+      setChatError("Please sign in to post messages.");
+      return;
+    }
+    if (!canonicalChatRoomId) {
+      setChatError("Chat room key missing.");
+      return;
+    }
+
+    setChatSending(true);
+    setChatError(null);
+
+    try {
+      let res = await supabase
+        .from("community_messages")
+        .insert({ room_id: canonicalChatRoomId, message: msg })
+        .select("id, room_id, user_id, message, created_at")
+        .single();
+
+      if (res?.error) {
+        const em = String(res.error?.message || "").toLowerCase();
+        if (em.includes("user_id")) {
+          res = await supabase
+            .from("community_messages")
+            .insert({ room_id: canonicalChatRoomId, message: msg, user_id: authUser.id })
+            .select("id, room_id, user_id, message, created_at")
+            .single();
+        }
+      }
+
+      if (res?.error) {
+        setChatError(`Send failed: ${String(res.error?.message || res.error)}`);
+        setChatSending(false);
+        return;
+      }
+
+      const data = res?.data as any;
+      if (data) {
+        setChatRows((cur) => {
+          const id = String(data?.id ?? "");
+          if (id && cur.some((r) => String((r as any)?.id ?? "") === id)) return cur;
+          return [...cur, data];
+        });
+      } else {
+        await loadChatInline(60);
+      }
+
+      setChatText("");
+      setChatSending(false);
+      stickToBottomRef.current = true;
+      setTimeout(() => scrollToBottomIfSticky(), 0);
+    } catch (e: any) {
+      setChatError(`Send exception: ${e?.message || String(e)}`);
+      setChatSending(false);
+    }
+  }, [authUser?.id, canonicalChatRoomId, chatText, loadChatInline]);
 
   const feedback = useRoomFeedback(supabase, coreRoomId, authUser);
 
+  const [chatCollapsed, setChatCollapsed] = useState(false);
+  useEffect(() => setChatCollapsed(false), [canonicalChatRoomId]);
+
+  const chatListMaxH = activeEntry ? 140 : 220;
   const roomIsEmpty = !room;
 
-  const devLine = showDev
-    ? `DEV room="${effectiveRoomId}" | coreRoomId="${coreRoomId}" | tier(meta)="${tier || ""}" | rank=${
-        requiredRank ?? ""
-      } | requiredTier="${requiredTierId}" | displayTier="${displayTierId}" | dbQuery="${dbQueriedIds}" | dbSource="${
-        dbSourceRoomId ?? ""
-      }" | chatRoomId="${chat.canonicalRoomId}" | chatRows=${chat.chatRows.length} ${
-        chat.chatLoading ? "(loading)" : ""
-      } ${chat.chatError ? `chatError="${chat.chatError}"` : ""} | dbRows=${
-        Array.isArray(dbRows) ? dbRows.length : "null"
-      } ${dbLoading ? "(loading)" : ""} ${dbError ? `dbError="${dbError}"` : ""} | dbLeafEntries(real)=${
-        dbLeafEntries.length
-      } | jsonLeafEntries=${jsonLeafEntries.length} | chosen=${chosenEntries.source} | allEntries=${
-        allEntries.length
-      } | kwButtons=${Math.max(kw.en.length, kw.vi.length)} | activeKeyword=${
-        activeKeyword ? `"${activeKeyword}"` : "null"
-      }`
-    : "";
+  const titleStyle: React.CSSProperties = useMemo(
+    () => ({
+      fontSize: isNarrow ? 22 : 28,
+      fontWeight: 950,
+      letterSpacing: -0.6,
+      lineHeight: 1.08,
+      minWidth: 0,
+      whiteSpace: "normal",
+      overflow: "hidden",
+      textOverflow: "clip",
+      overflowWrap: "anywhere",
+      wordBreak: "break-word",
+      display: "-webkit-box",
+      WebkitLineClamp: 2 as any,
+      WebkitBoxOrient: "vertical" as any,
+    }),
+    [isNarrow],
+  );
 
   return (
     <div
@@ -532,31 +811,7 @@ export default function RoomRenderer({
       data-mb-scope="room"
       data-mb-theme={useColorThemeSafe ? "color" : "bw"}
     >
-      <style>
-        {ROOM_CSS +
-          `
-/* HARDEN: keyword pill text must stay readable (fix "black on dark")
-   IMPORTANT: scope this ONLY to the keyword PILLS / BUTTONS,
-   do NOT affect essay highlight spans (.mb-entryText) */
-.mb-room .mb-kw-row .mb-kw,
-.mb-room .mb-kw-row [data-mb-kw],
-.mb-room .mb-welcomeLine .mb-kw,
-.mb-room .mb-welcomeLine [data-mb-kw],
-.mb-room button.mb-kw,
-.mb-room button[data-mb-kw]{
-  color:#fff !important;
-}
-/* Keep descendants readable ONLY inside the pill/button, not inside essay */
-.mb-room .mb-kw-row .mb-kw *,
-.mb-room .mb-kw-row [data-mb-kw] *,
-.mb-room .mb-welcomeLine .mb-kw *,
-.mb-room .mb-welcomeLine [data-mb-kw] *,
-.mb-room button.mb-kw *,
-.mb-room button[data-mb-kw] *{
-  color:inherit !important;
-}
-`}
-      </style>
+      <style>{ROOM_CSS}</style>
 
       {roomIsEmpty ? (
         <div className="rounded-xl border p-6 text-muted-foreground">Room loaded state is empty.</div>
@@ -566,70 +821,330 @@ export default function RoomRenderer({
             disabled={isLocked}
             roomTitle={roomTitleBilingual}
             activeKeyword={activeKeyword}
-            onClearKeyword={() => setActiveKeyword(null)}
+            onClearKeyword={clearKeyword}
             onScrollToAudio={scrollToAudio}
           />
 
-          <RoomBoxTitleRow
-            isNarrow={isNarrow}
-            roomTitleBilingual={roomTitleBilingual}
-            displayTierId={displayTierId}
-            authUser={authUser}
-            accessLoading={accessLoading}
-            accessTier={access.tier}
-            onSignOut={signOut}
-            onRefresh={() => window.location.reload()}
-          />
+          {/* BOX 2 */}
+          <div className="mb-titleRow" data-room-box="2">
+            <div className="mb-titleLeft">
+              {displayTierId !== "free" ? <span className="mb-tier">{displayTierId}</span> : null}
 
-          <RoomBoxWelcomeKeywords
-            welcomeEN={welcomeEN}
-            welcomeVI={welcomeVI}
-            kwColorMap={kwColorMap}
-            kw={kw}
-            activeKeyword={activeKeyword}
-            isLocked={isLocked}
-            showDev={showDev}
-            devLine={devLine}
-            onToggleKeyword={toggleKeyword}
-          />
+              {authUser ? (
+                <span className="mb-tier" title={String(authUser.email || authUser.id || "")}>
+                  ✓ {shortEmailLabel(String((authUser as any).email || ""))}
+                </span>
+              ) : (
+                <a className="mb-tier" href="/signin" title="Sign in">
+                  ⟶ SIGN IN
+                </a>
+              )}
 
-          {(essay.en || essay.vi) ? (
+              {!accessLoading ? (
+                <span className="mb-tier" title="Your current tier from public.profiles">
+                  TIER: {String(access.tier || "free").toUpperCase()}
+                </span>
+              ) : null}
+            </div>
+
+            <div className="mb-titleCenter" style={{ minWidth: 0 }}>
+              <div className="mb-roomTitle" title={roomTitleBilingual} style={titleStyle}>
+                {roomTitleBilingual}
+              </div>
+            </div>
+
+            <div className="mb-titleRight">
+              {authUser ? (
+                <button type="button" className="mb-tier" title="Sign out" onClick={signOut}>
+                  SIGN OUT
+                </button>
+              ) : null}
+
+              <button type="button" className="mb-iconBtn" title="Favorite (UI shell)" onClick={() => {}}>
+                ♡
+              </button>
+              <button
+                type="button"
+                className="mb-iconBtn"
+                title="Refresh"
+                onClick={() => window.location.reload()}
+              >
+                ↻
+              </button>
+            </div>
+          </div>
+
+          {/* BOX 3 */}
+          <section className="mb-card p-5 md:p-6 mb-5" data-room-box="3">
+            <div className="mb-welcomeLine">
+              <span>
+                {highlightByColorMap(welcomeEN, kwColorMap)} <b>/</b>{" "}
+                {highlightByColorMap(welcomeVI, kwColorMap)}
+              </span>
+            </div>
+
+            {showDev ? (
+              <div className="mt-2 text-[11px] opacity-70">
+                <b>DEV</b> room="{effectiveRoomId}" | coreRoomId="{coreRoomId}" | chatRoomId="{canonicalChatRoomId}" |
+                chatRows={chatRows.length} {chatLoading ? "(loading)" : ""}{" "}
+                {chatError ? `chatError="${chatError}"` : ""} | dbRows={Array.isArray(dbRows) ? dbRows.length : "null"}{" "}
+                {dbLoading ? "(loading)" : ""} {dbError ? `dbError="${dbError}"` : ""} | dbLeafEntries(real)=
+                {dbLeafEntries.length} | jsonLeafEntries={jsonLeafEntries.length} | chosen={chosenEntries.source} |
+                allEntries={allEntries.length} | kwButtons={Math.max(kw.en.length, kw.vi.length)} | activeKeyword=
+                {activeKeyword ? `"${activeKeyword}"` : "null"}
+              </div>
+            ) : null}
+
+            {Math.max(kw.en.length, kw.vi.length) > 0 ? (
+              <div className="mb-keyRow">
+                {Array.from({ length: Math.max(kw.en.length, kw.vi.length) }).map((_, i) => {
+                  const en = String(kw.en[i] ?? "").trim();
+                  let vi = String(kw.vi[i] ?? "").trim();
+                  if (!en && !vi) return null;
+
+                  // never show fake EN/EN
+                  if (!vi || normalizeTextForKwMatch(vi) === normalizeTextForKwMatch(en)) vi = "";
+
+                  const label = en && vi ? `${en} / ${vi}` : en || vi;
+                  const next = (en || vi).trim();
+                  const isActive =
+                    normalizeTextForKwMatch(activeKeyword || "") === normalizeTextForKwMatch(next || "");
+
+                  return (
+                    <button
+                      key={`kw-${i}`}
+                      type="button"
+                      className={`mb-keyBtn mb-kw ${KW_CLASSES[i % KW_CLASSES.length]}`}
+                      data-active={isActive ? "true" : "false"}
+                      disabled={isLocked}
+                      onClick={() =>
+                        setActiveKeyword((cur) => {
+                          const curKey = normalizeTextForKwMatch(cur || "");
+                          const nextKey = normalizeTextForKwMatch(next || "");
+                          return curKey && curKey === nextKey ? null : next;
+                        })
+                      }
+                      title={label}
+                    >
+                      {label}
+                    </button>
+                  );
+                })}
+              </div>
+            ) : null}
+          </section>
+
+          {(essay.en || essay.vi) && (
             <div className="mb-card p-4 md:p-6 mb-5">
               <BilingualEssay title="Essay" en={essay.en || ""} vi={essay.vi || ""} />
             </div>
-          ) : null}
+          )}
 
-          <RoomBoxContent
-            isLocked={isLocked}
-            accessLoading={accessLoading}
-            requiredTierId={requiredTierId}
-            accessTier={access.tier}
-            activeKeyword={activeKeyword}
-            activeEntry={activeEntry}
-            activeEntryIndex={activeEntryIndex}
-            enKeywords={enKeywords}
-            viKeywords={viKeywords}
-            // ✅ keep your cast (safe + zero runtime effect)
-            audioAnchorRef={audioAnchorRef as React.RefObject<HTMLDivElement>}
-            dbError={dbError}
-            dbLoading={dbLoading}
-            onClearKeyword={() => setActiveKeyword(null)}
-          />
+          {/* BOX 4 */}
+          <section className="mb-card p-5 md:p-6 mb-5 mb-box4" data-room-box="4">
+            <div className="mb-zoomWrap">
+              {isLocked ? (
+                <div className="min-h-[260px] flex items-center justify-center text-center">
+                  <div>
+                    <div className="text-sm opacity-70 font-semibold">
+                      {accessLoading ? (
+                        <>Checking access…</>
+                      ) : (
+                        <>
+                          Locked: requires <b>{requiredTierId.toUpperCase()}</b> (you are{" "}
+                          <b>{String(access.tier || "free").toUpperCase()}</b>)
+                        </>
+                      )}
+                    </div>
+                    <div className="mt-3 text-sm opacity-70">
+                      Complete checkout and refresh. If already paid, wait for webhook tier sync.
+                    </div>
+                  </div>
+                </div>
+              ) : !activeKeyword ? (
+                <div className="min-h-[460px]" />
+              ) : activeEntry ? (
+                <ActiveEntry
+                  entry={activeEntry}
+                  index={activeEntryIndex >= 0 ? activeEntryIndex : 0}
+                  enKeywords={enKeywords}
+                  viKeywords={viKeywords}
+                  audioAnchorRef={audioAnchorRef}
+                />
+              ) : (
+                <div className="min-h-[240px] flex items-center justify-center text-center">
+                  <div>
+                    <div className="text-sm opacity-70 font-semibold">
+                      No entry matches keyword: <b>{activeKeyword}</b>
+                    </div>
+                    <div className="mt-2">
+                      <button
+                        type="button"
+                        className="px-3 py-1.5 rounded-full text-sm font-bold border bg-white"
+                        onClick={() => setActiveKeyword(null)}
+                      >
+                        Clear keyword
+                      </button>
+                    </div>
+                    {dbError ? <div className="mt-2 text-xs opacity-60">DB: {dbError}</div> : null}
+                    {dbLoading ? <div className="mt-2 text-xs opacity-60">Loading entries…</div> : null}
+                  </div>
+                </div>
+              )}
+            </div>
+          </section>
 
-          <RoomBoxChatFeedback
-            authUser={authUser}
-            activeEntry={activeEntry}
-            chat={chat}
-            chatCollapsed={chatCollapsed}
-            setChatCollapsed={setChatCollapsed}
-            feedback={feedback}
-          />
+          {/* BOX 5 */}
+          <div style={{ marginTop: "auto" }} data-room-box="5">
+            <div className="mb-card p-3 md:p-4">
+              <div className="mb-chatWrap mb-4">
+                <div className="mb-chatHeader" style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <span>Community Chat</span>
+
+                  <div style={{ marginLeft: "auto", display: "flex", gap: 8, alignItems: "center" }}>
+                    <button
+                      type="button"
+                      className="mb-tier"
+                      onClick={() => setChatCollapsed((v) => !v)}
+                      title={chatCollapsed ? "Expand chat" : "Collapse chat"}
+                    >
+                      {chatCollapsed ? "▸" : "▾"}
+                    </button>
+
+                    <button
+                      type="button"
+                      className="mb-tier"
+                      onClick={() => loadChatInline(60)}
+                      disabled={chatLoading}
+                      title="Refresh chat"
+                    >
+                      ↻
+                    </button>
+                  </div>
+                </div>
+
+                {chatCollapsed ? (
+                  <div className="mb-chatTiny" style={{ padding: "6px 2px" }}>
+                    Chat collapsed (still here). Click <b>▸</b> to expand.
+                  </div>
+                ) : (
+                  <>
+                    <div
+                      className="mb-chatList"
+                      style={{ maxHeight: chatListMaxH, overflow: "auto" }}
+                      ref={chatListRef}
+                      onScroll={captureChatStick}
+                      onWheel={captureChatStick}
+                      onTouchMove={captureChatStick}
+                    >
+                      {chatRows.length === 0 ? (
+                        <div className="text-xs opacity-70">
+                          No messages under this room key yet.
+                          <span style={{ opacity: 0.7 }}> (room_id="{canonicalChatRoomId}")</span>
+                        </div>
+                      ) : (
+                        chatRows.map((m: any) => {
+                          const isMe = authUser
+                            ? String(m?.user_id || "") === String((authUser as any)?.id || "")
+                            : false;
+
+                          const who = isMe
+                            ? shortEmailLabel(String((authUser as any)?.email || "")) || "ME"
+                            : shortUserId(String(m?.user_id || "user"));
+
+                          const when = m?.created_at ? new Date(m.created_at).toLocaleString() : "";
+                          const text = String(m?.message || "").trim();
+
+                          return (
+                            <div key={String(m?.id)} className="mb-chatMsg">
+                              <div className="mb-chatMeta">
+                                {who} {when ? `• ${when}` : ""}
+                              </div>
+                              <div className="whitespace-pre-wrap">{text || "[empty]"}</div>
+                            </div>
+                          );
+                        })
+                      )}
+                    </div>
+
+                    {!authUser ? (
+                      <div className="mb-chatTiny">
+                        <a className="underline font-bold" href="/signin">
+                          Sign in
+                        </a>{" "}
+                        to post messages.
+                        <span style={{ opacity: 0.7 }}> (room_id="{canonicalChatRoomId}")</span>
+                      </div>
+                    ) : (
+                      <div className="mb-chatComposer">
+                        <input
+                          value={chatText}
+                          onChange={(e) => setChatText(e.target.value)}
+                          onKeyDown={(e) => {
+                            if (e.key === "Enter") {
+                              e.preventDefault();
+                              sendChatInline();
+                            }
+                          }}
+                          placeholder="Say something… (max 500 chars)"
+                          disabled={chatSending}
+                          maxLength={500}
+                        />
+                        <button
+                          type="button"
+                          onClick={sendChatInline}
+                          disabled={chatSending || !chatText.trim()}
+                          title="Send"
+                        >
+                          ➤
+                        </button>
+                      </div>
+                    )}
+
+                    {chatError ? <div className="mb-chatTiny">⚠ {chatError}</div> : null}
+                    {chatLoading ? <div className="mb-chatTiny">Loading…</div> : null}
+                  </>
+                )}
+              </div>
+
+              <div className="mb-feedback">
+                <input
+                  value={feedback.feedbackText}
+                  onChange={(e) => {
+                    feedback.setFeedbackText(e.target.value);
+                    if (feedback.feedbackError) feedback.setFeedbackError(null);
+                    if (feedback.feedbackSent) feedback.setFeedbackSent(false);
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      e.preventDefault();
+                      feedback.sendFeedback();
+                    }
+                  }}
+                  placeholder="Feedback to admin / Góp ý cho admin…"
+                  aria-label="Feedback to admin"
+                  disabled={feedback.feedbackSending}
+                  maxLength={500}
+                />
+                <button
+                  type="button"
+                  title={authUser ? "Send feedback" : "Sign in to send feedback"}
+                  onClick={feedback.sendFeedback}
+                  disabled={feedback.feedbackSending || !feedback.feedbackText.trim()}
+                >
+                  ➤
+                </button>
+              </div>
+
+              {feedback.feedbackError || feedback.feedbackSent ? (
+                <div className="mt-2 text-xs opacity-70">
+                  {feedback.feedbackError ? `⚠ ${feedback.feedbackError}` : "✓ Sent to admin"}
+                </div>
+              ) : null}
+            </div>
+          </div>
         </>
       )}
     </div>
   );
 }
-
-/* teacher GPT — new thing to learn:
-   Never trust a “free” tier label from content payloads.
-   If ID/rank implies VIP, let that win — otherwise you create accidental leaks. */

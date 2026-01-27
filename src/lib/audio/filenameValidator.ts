@@ -23,10 +23,6 @@
  * FIX (MB-BLUE-102.2z — 2026-01-15):
  * - normalizeFilename() MUST keep ".mp3" because tests expect it.
  * - Internal normalizeKey() strips extension and is used for comparisons/deduping.
- *
- * FIX (MB-BLUE-102.3a — 2026-01-22):
- * - RULE 4 is CRITICAL: when entryMatch fails, severity must become "critical".
- * - Add __mock export for vitest snapshot/unit tests.
  */
 
 export interface ValidationResult {
@@ -274,19 +270,14 @@ export function validateWithRoomContext(
           entrySlugs,
           lang
         );
-
         if (closestSlug != null) {
           const suggestedName = generateCanonicalFilename(roomId, closestSlug, lang);
           if (score > 0.7) {
             suggestions.push(`Close match (${Math.round(score * 100)}%): ${suggestedName}`);
             confidenceScore += Math.round(score * 10);
           } else {
-            errors.push(`CRITICAL: Filename does not match any entry in room JSON`);
-            severity = "critical";
+            errors.push(`WARNING: Filename does not match any entry in room JSON`);
           }
-        } else {
-          errors.push(`CRITICAL: Filename does not match any entry in room JSON`);
-          severity = "critical";
         }
       }
     }
@@ -752,25 +743,3 @@ export function batchValidate(
     },
   };
 }
-
-/**
- * TEST HOOK (Vitest):
- * Some snapshot/unit tests import { __mock } from this module.
- * Keep it tiny and stable; do NOT add runtime behavior.
- */
-export const __mock = {
-  levenshteinDistance,
-  similarityScore,
-  validateAudioFilename,
-  validateWithRoomContext,
-  detectDuplicates,
-  detectCrossRoomIssues,
-  calculateRoomCompletenessScore,
-  generateRoomFixReport,
-  generateCanonicalFilename,
-  getCanonicalAudioPair,
-  normalizeFilename,
-  extractLanguage,
-  findOrphanMatch,
-  batchValidate,
-};

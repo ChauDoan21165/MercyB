@@ -19,7 +19,34 @@
     "khoa học",
     "theo dõi"
   ],
-  "entries": [],
+  "entries": [
+    {
+      "slug": "strength-training",
+      "keywords_en": [
+        "strength",
+        "muscle",
+        "fitness"
+      ],
+      "keywords_vi": [
+        "sức mạnh",
+        "cơ bắp",
+        "thể dục"
+      ],
+      "copy": {
+        "en": "A periodized strength plan builds lean mass efficiently. Follow four phases—hypertrophy, strength, power, and peaking. Test your one-rep max and monitor muscle activation with EMG feedback. Work with an exercise physiologist for an evidence-based program using lab precision and periodization science.",
+        "vi": "Một kế hoạch tăng cường sức mạnh theo chu kỳ xây dựng khối lượng nạc một cách hiệu quả. Theo dõi bốn giai đoạn—phì đại cơ, sức mạnh, sức mạnh bùng nổ, và đỉnh cao. Kiểm tra mức tối đa một lần lặp của bạn và theo dõi kích hoạt cơ với phản hồi EMG. Làm việc với một nhà sinh lý học tập luyện để có một chương trình dựa trên bằng chứng sử dụng độ chính xác phòng thí nghiệm và khoa học chu kỳ hóa."
+      },
+      "tags": [
+        "strength",
+        "fitness"
+      ],
+      "audio": {
+        "en": "wlf_vip3_3_en.mp3",
+        "vi": "wlf_vip3_3_vi.mp3"
+      },
+      "essay_ref": "wlf_vip3_3_essay.txt"
+    }
+  ],
   "keywords": {
     "expert_fitness": {
       "en": [

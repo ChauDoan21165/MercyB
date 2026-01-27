@@ -18,7 +18,32 @@
     "cbt",
     "trị liệu"
   ],
-  "entries": [],
+  "entries": [
+    {
+      "slug": "resilience",
+      "keywords_en": [
+        "resilience",
+        "rejection",
+        "anxiety"
+      ],
+      "keywords_vi": [
+        "kiên cường",
+        "từ chối",
+        "lo âu"
+      ],
+      "copy": {
+        "en": "Build social resilience with a 100-day rejection challenge. Seek feedback after each exposure and reframe outcomes cognitively. Track resilience scores and consult a coach to reinforce emotional hardiness. Each rejection becomes proof of unbreakable confidence.",
+        "vi": "Xây dựng sức bền xã hội bằng thử thách 100 ngày “đón nhận từ chối”. Mỗi ngày, chủ động tạo một tình huống nhỏ có khả năng bị từ chối (xin giảm giá, hỏi đường, đề nghị hỗ trợ...), sau đó ghi lại kết quả và cảm xúc. Sau mỗi lần, hỏi phản hồi nếu phù hợp và tập nhìn lại sự việc bằng góc nhìn nhận thức: mình học được gì, nỗi sợ đã giảm bao nhiêu, điều tệ nhất thực sự có xảy ra không. Theo dõi mức độ kiên cường của bản thân theo thời gian, và nếu có thể, làm việc với một coach để củng cố kỹ năng tự an ủi và phục hồi sau thất bại. Mỗi lần bị từ chối dần trở thành bằng chứng rằng bạn vẫn đứng vững, thay vì là lý do để rút lui."
+      },
+      "tags": [
+        "resilience",
+        "anxiety"
+      ],
+      "audio": {
+        "en": "soc_vip3_8_en.mp3"
+      }
+    }
+  ],
   "keywords": {
     "expert_social_anxiety": {
       "en": [

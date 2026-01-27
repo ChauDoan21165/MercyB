@@ -3,14 +3,16 @@
  * Reduces memory usage and prevents leaks
  */
 
-import { useEffect, useRef, useCallback, useMemo } from "react";
+import { useEffect, useRef, useCallback, useMemo } from 'react';
 
 /**
  * Throttle function calls
  */
-export function throttle<T extends (...args: any[]) => any>(func: T, wait: number): (...args: Parameters<T>) => void {
-  // In Vite/browser builds, NodeJS.Timeout is not guaranteed. Use ReturnType<typeof setTimeout>.
-  let timeout: ReturnType<typeof setTimeout> | null = null;
+export function throttle<T extends (...args: any[]) => any>(
+  func: T,
+  wait: number
+): (...args: Parameters<T>) => void {
+  let timeout: NodeJS.Timeout | null = null;
   let previous = 0;
 
   return function (this: any, ...args: Parameters<T>) {
@@ -37,8 +39,11 @@ export function throttle<T extends (...args: any[]) => any>(func: T, wait: numbe
 /**
  * Debounce function calls
  */
-export function debounce<T extends (...args: any[]) => any>(func: T, wait: number): (...args: Parameters<T>) => void {
-  let timeout: ReturnType<typeof setTimeout> | null = null;
+export function debounce<T extends (...args: any[]) => any>(
+  func: T,
+  wait: number
+): (...args: Parameters<T>) => void {
+  let timeout: NodeJS.Timeout | null = null;
 
   return function (this: any, ...args: Parameters<T>) {
     if (timeout) clearTimeout(timeout);
@@ -49,12 +54,15 @@ export function debounce<T extends (...args: any[]) => any>(func: T, wait: numbe
 /**
  * Hook for throttled callbacks
  */
-export function useThrottle<T extends (...args: any[]) => any>(callback: T, delay: number): (...args: Parameters<T>) => void {
+export function useThrottle<T extends (...args: any[]) => any>(
+  callback: T,
+  delay: number
+): (...args: Parameters<T>) => void {
   const throttledFn = useMemo(() => throttle(callback, delay), [callback, delay]);
-
+  
   useEffect(() => {
     return () => {
-      // Cleanup on unmount (no-op: throttle uses internal timer)
+      // Cleanup on unmount
     };
   }, []);
 
@@ -64,12 +72,15 @@ export function useThrottle<T extends (...args: any[]) => any>(callback: T, dela
 /**
  * Hook for debounced callbacks
  */
-export function useDebounce<T extends (...args: any[]) => any>(callback: T, delay: number): (...args: Parameters<T>) => void {
+export function useDebounce<T extends (...args: any[]) => any>(
+  callback: T,
+  delay: number
+): (...args: Parameters<T>) => void {
   const debouncedFn = useMemo(() => debounce(callback, delay), [callback, delay]);
 
   useEffect(() => {
     return () => {
-      // Cleanup on unmount (no-op: debounce uses internal timer)
+      // Cleanup on unmount
     };
   }, []);
 
@@ -82,13 +93,13 @@ export function useDebounce<T extends (...args: any[]) => any>(callback: T, dela
 export function useCleanupTimers() {
   const timers = useRef<Set<number>>(new Set());
 
-  const setTimeoutSafe = useCallback((callback: () => void, delay: number) => {
+  const setTimeout = useCallback((callback: () => void, delay: number) => {
     const id = window.setTimeout(callback, delay);
     timers.current.add(id);
     return id;
   }, []);
 
-  const setIntervalSafe = useCallback((callback: () => void, delay: number) => {
+  const setInterval = useCallback((callback: () => void, delay: number) => {
     const id = window.setInterval(callback, delay);
     timers.current.add(id);
     return id;
@@ -102,7 +113,7 @@ export function useCleanupTimers() {
 
   useEffect(() => {
     return () => {
-      timers.current.forEach((id) => {
+      timers.current.forEach(id => {
         window.clearTimeout(id);
         window.clearInterval(id);
       });
@@ -110,8 +121,7 @@ export function useCleanupTimers() {
     };
   }, []);
 
-  // Keep external API names stable (callers may import { setTimeout, setInterval }).
-  return { setTimeout: setTimeoutSafe, setInterval: setIntervalSafe, clearTimer };
+  return { setTimeout, setInterval, clearTimer };
 }
 
 /**
@@ -119,15 +129,13 @@ export function useCleanupTimers() {
  */
 export function useVisibilityPause(callback: (visible: boolean) => void) {
   useEffect(() => {
-    if (typeof document === "undefined") return;
-
     const handleVisibilityChange = () => {
       callback(!document.hidden);
     };
 
-    document.addEventListener("visibilitychange", handleVisibilityChange);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
     return () => {
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
   }, [callback]);
 }
@@ -146,7 +154,7 @@ export class LRUCache<K, V> {
 
   get(key: K): V | undefined {
     if (!this.cache.has(key)) return undefined;
-
+    
     // Move to end (most recently used)
     const value = this.cache.get(key)!;
     this.cache.delete(key);
@@ -159,17 +167,13 @@ export class LRUCache<K, V> {
     if (this.cache.has(key)) {
       this.cache.delete(key);
     }
-
     // Add to end
     this.cache.set(key, value);
-
+    
     // Remove oldest if over limit
     if (this.cache.size > this.maxSize) {
-      // TS fix: keys().next().value can be undefined if map is empty (even if unlikely).
-      const first = this.cache.keys().next();
-      if (!first.done) {
-        this.cache.delete(first.value);
-      }
+      const firstKey = this.cache.keys().next().value;
+      this.cache.delete(firstKey);
     }
   }
 

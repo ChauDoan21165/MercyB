@@ -1,17 +1,17 @@
 /**
  * MercyBlade Blue — useUserAccess (AUTH-DRIVEN, NO DUPLICATE TIMELINES)
  * Path: src/hooks/useUserAccess.ts
- * Version: MB-BLUE-94.14.17 — 2026-01-22 (+0700)
+ * Version: MB-BLUE-94.14.16 — 2026-01-19 (+0700)
  *
  * GOAL (LOCKED):
  * - useUserAccess MUST NOT call supabase.auth.getUser() or subscribe to auth changes.
  * - Auth timeline must come ONLY from AuthProvider via useAuth().
  * - Supabase queries here are allowed ONLY for: roles, tiers, subscriptions, admin level, etc.
  *
- * CHANGE (94.14.17):
- * - REMOVE VIP3II everywhere (TierId no longer includes vip3ii)
- * - Legacy "vip3ii" from profiles/labels now normalizes to "vip3"
- * - Remove canAccessVIP3II field + remove any "vip3ii" tier checks
+ * CHANGE (94.14.16):
+ * - FIX profiles lookup: use email (NOT user.id) and expect 200 OK under RLS
+ * - Keep auth from useAuth() only (no supabase auth calls)
+ * - Keep a safe fallback path if profiles row is missing
  */
 
 import { useEffect, useMemo, useState } from "react";
@@ -33,6 +33,7 @@ export interface UserAccess {
   canAccessVIP1: boolean;
   canAccessVIP2: boolean;
   canAccessVIP3: boolean;
+  canAccessVIP3II: boolean;
   canAccessVIP4: boolean;
   canAccessVIP5: boolean;
   canAccessVIP6: boolean;
@@ -46,11 +47,13 @@ export interface UserAccess {
 
 /**
  * Local tier gate (NO dependency on missing exports).
+ * Rule: VIP3 grants VIP3II (vip3ii treated as level 3).
  */
 function tierToLevel(t: TierId): number {
   const s = String(t || "free").toLowerCase();
 
   if (s === "free") return 0;
+  if (s === "vip3ii") return 3;
 
   const m = s.match(/^vip(\d+)$/);
   if (!m) return 0;
@@ -79,6 +82,7 @@ const guestAccess = (): UserAccess => {
     canAccessVIP1: false,
     canAccessVIP2: false,
     canAccessVIP3: false,
+    canAccessVIP3II: false,
     canAccessVIP4: false,
     canAccessVIP5: false,
     canAccessVIP6: false,
@@ -93,35 +97,29 @@ const guestAccess = (): UserAccess => {
 
 function normalizeProfileTier(v: unknown): TierId {
   // Accept direct TierId values, plus common variants like "VIP3", "vip3", "Free", "FREE"
-  // Legacy "vip3ii" is mapped to "vip3".
   const raw = String(v ?? "").trim();
   if (!raw) return "free";
 
   const lower = raw.toLowerCase();
 
-  // direct match (TierId only)
+  // direct match
   if (
     lower === "free" ||
     lower === "vip1" ||
     lower === "vip2" ||
     lower === "vip3" ||
+    lower === "vip3ii" ||
     lower === "vip4" ||
     lower === "vip5" ||
     lower === "vip6" ||
-    lower === "vip9" ||
-    lower === "kids_1" ||
-    lower === "kids_2" ||
-    lower === "kids_3"
+    lower === "vip9"
   ) {
     return lower as TierId;
   }
 
   // common "VIP 3" / "VIP-3" / "VIP_3"
   const compact = lower.replace(/[\s_-]/g, "");
-
-  // legacy VIP3II -> VIP3
-  if (compact === "vip3ii") return "vip3";
-
+  if (compact === "vip3ii") return "vip3ii";
   if (compact === "vip1") return "vip1";
   if (compact === "vip2") return "vip2";
   if (compact === "vip3") return "vip3";
@@ -131,13 +129,7 @@ function normalizeProfileTier(v: unknown): TierId {
   if (compact === "vip9") return "vip9";
   if (compact === "free") return "free";
 
-  // kids compact forms
-  if (compact === "kids1" || compact === "kidslevel1") return "kids_1";
-  if (compact === "kids2" || compact === "kidslevel2") return "kids_2";
-  if (compact === "kids3" || compact === "kidslevel3") return "kids_3";
-
   // fallback to existing normalizeTier (handles "Free / Miễn phí", etc.)
-  // NOTE: normalizeTier is permissive and defaults unknown to "free" (by design).
   return normalizeTier(raw);
 }
 
@@ -226,6 +218,7 @@ export const useUserAccess = (): UserAccess => {
           canAccessVIP1: canAccessTier("vip1"),
           canAccessVIP2: canAccessTier("vip2"),
           canAccessVIP3: canAccessTier("vip3"),
+          canAccessVIP3II: canAccessTier("vip3ii"),
           canAccessVIP4: canAccessTier("vip4"),
           canAccessVIP5: canAccessTier("vip5"),
           canAccessVIP6: canAccessTier("vip6"),

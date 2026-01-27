@@ -17,6 +17,30 @@
   ],
   "entries": [
     {
+      "slug": "rest-day",
+      "keywords_en": [
+        "rest day",
+        "recovery",
+        "burnout"
+      ],
+      "keywords_vi": [
+        "ngày nghỉ",
+        "phục hồi",
+        "kiệt sức"
+      ],
+      "copy": {
+        "en": "A structured rest day accelerates recovery. Unplug fully once a week—no screens after 8 p.m. the night before. Take a nature walk, read a book, and note your energy before and after. Pair with a recovery buddy to design a shared rest plan that builds a lasting recharge routine.",
+        "vi": "A structured rest day accelerates recovery. Unplug fully once a week—no screens after 8 p.m. the night before. Take a nature walk, read a book, and note your energy before and after. Pair with a recovery buddy to design a shared rest plan that builds a lasting recharge routine."
+      },
+      "tags": [
+        "rest",
+        "burnout"
+      ],
+      "audio": {
+        "en": "bur_vip1_1_en.mp3"
+      }
+    },
+    {
       "slug": "all",
       "keywords_en": [
         "all",

@@ -35,7 +35,7 @@ export type RoomMeta = {
 
 export type RoomSummary = RoomMeta;
 
-export type AnyRoomJson = {
+type AnyRoomJson = {
   id?: string;
   tier?: string;
   title?: { en?: string; vi?: string };
@@ -46,9 +46,6 @@ export type AnyRoomJson = {
   intro_vi?: string;
   description?: string;
   description_vi?: string;
-
-  // allow extra room fields (disclaimers, entries, etc.)
-  [k: string]: any;
 };
 
 /**
@@ -71,14 +68,6 @@ export async function fetchRoomJsonById(roomId: string): Promise<AnyRoomJson | n
 }
 
 /**
- * ✅ Legacy/API-compatible single-room getter
- * Used by RoomDisclaimer and older UI.
- */
-export async function getRoom(roomId: string): Promise<AnyRoomJson | null> {
-  return fetchRoomJsonById(roomId);
-}
-
-/**
  * Build all room summaries from local manifest (no Supabase needed).
  */
 export async function fetchAllRoomSummaries(): Promise<RoomSummary[]> {
@@ -95,8 +84,10 @@ export async function fetchAllRoomSummaries(): Promise<RoomSummary[]> {
         } satisfies RoomSummary;
       }
 
-      const introEN = json.intro?.en ?? (json as any).intro_text ?? json.description ?? "";
-      const introVI = json.intro?.vi ?? (json as any).intro_vi ?? json.description_vi ?? "";
+      const introEN =
+        json.intro?.en ?? (json as any).intro_text ?? json.description ?? "";
+      const introVI =
+        json.intro?.vi ?? (json as any).intro_vi ?? json.description_vi ?? "";
 
       return {
         id: json.id ?? id,
@@ -149,7 +140,3 @@ export async function getAllRooms(): Promise<RoomSummary[]> {
 export async function getRoomList(): Promise<RoomMeta[]> {
   return fetchAllRooms();
 }
-
-/* teacher GPT — new thing to learn:
-   When a component needs “room data”, expose ONE tiny getter (getRoom)
-   that wraps your local-first loader, so UI never reaches into manifests directly. */

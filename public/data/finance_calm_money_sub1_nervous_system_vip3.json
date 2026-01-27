@@ -27,7 +27,31 @@
     "bình an tài chính",
     "tư duy tiền bạc"
   ],
-  "entries": [],
+  "entries": [
+    {
+      "slug": "safe-money-moment",
+      "keywords_en": [
+        "ritual",
+        "safety",
+        "money routine",
+        "grounding"
+      ],
+      "keywords_vi": [
+        "nghi thức",
+        "an toàn",
+        "thói quen tiền",
+        "định tâm"
+      ],
+      "audio": {
+        "en": "calm_vip3_3_en.mp3"
+      },
+      "copy": {
+        "en": "Imagine having a tiny island of safety you visit before touching anything money related. 2 minutes, no more. Same chair, same cup of tea or water, same song or familiar silence.\nYou sit, feel the support of the chair, take a few slow breaths and let your body know this moment is safe. Over time, your nervous system starts to recognize the pattern.\nWhen you enter this ritual, it prepares for calm instead of panic. You don't need incense, crystals, or perfect posture.\nWhat matters is repetition, not performance. This is not about becoming a new person overnight. It's about teaching your body that money time can come wrapped in gentleness.\nYou are training calm, not chasing perfection, and every short ritual is one more vote for a kinder future with money.",
+        "vi": "Hãy tưởng tượng có một hòn đảo an toàn nhỏ bé bạn ghé thăm trước khi chạm vào bất kỳ thứ gì liên quan đến tiền. 2 phút, không hơn. Cùng ghế, cùng tách trà hoặc nước, cùng bài hát hoặc sự im lặng quen thuộc.\nBạn ngồi, cảm nhận sự nâng đỡ của ghế, hít vài hơi chậm và cho cơ thể biết khoảnh khắc này an toàn. Theo thời gian, hệ thần kinh bắt đầu nhận ra mô hình.\nKhi bước vào nghi thức này, nó chuẩn bị cho bình tĩnh thay vì hoảng loạn. Bạn không cần nhang, pha lê hay tư thế hoàn hảo.\nĐiều quan trọng là lặp lại, không phải biểu diễn. Đây không phải trở thành người mới qua một đêm. Đây là dạy cơ thể rằng thời gian tiền bạc có thể được bọc trong sự dịu dàng.\nBạn đang rèn luyện bình tĩnh, không đuổi theo hoàn hảo, và mỗi nghi thức ngắn là một phiếu bầu cho tương lai tử tế hơn với tiền."
+      },
+      "tags": []
+    }
+  ],
   "id": "finance_calm_money_sub1_nervous_system_vip3",
   "title": {
     "en": "Money & Your Nervous System",

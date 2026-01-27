@@ -27,7 +27,33 @@
     "phát triển sự nghiệp",
     "thu nhập bổ sung"
   ],
-  "entries": [],
+  "entries": [
+    {
+      "slug": "asking-raise-script",
+      "keywords_en": [
+        "raise",
+        "negotiation",
+        "salary",
+        "asking",
+        "script"
+      ],
+      "keywords_vi": [
+        "tăng lương",
+        "đàm phán",
+        "lương",
+        "yêu cầu",
+        "kịch bản"
+      ],
+      "audio": {
+        "en": "calm_vip3_13_en.mp3"
+      },
+      "copy": {
+        "en": "Asking for a Raise (Script Included): 'I'd like to discuss my compensation. Here's what I've delivered. Here's market rate. Can we align?' Prepare. Practice. Ask. The worst they say is 'not yet.'",
+        "vi": "Yêu Cầu Tăng Lương (Có Kịch Bản): 'Tôi muốn thảo luận về lương của tôi. Đây là những gì tôi đã làm. Đây là mức thị trường. Chúng ta có thể điều chỉnh không?' Chuẩn bị. Luyện tập. Yêu cầu. Điều tồi tệ nhất họ nói là 'chưa phải lúc.'"
+      },
+      "tags": []
+    }
+  ],
   "id": "finance_calm_money_sub5_growing_bigger_vip3",
   "title": {
     "en": "Growing Bigger (When Ready)",

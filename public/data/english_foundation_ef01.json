@@ -10,5 +10,17 @@
     "en": "This first room helps absolute beginners start English safely and gently. You will read all letters from A to Z, learn how English sounds differ from Vietnamese, and practice slow, clear pronunciation. Take it slowly. Breathe gently. Small daily practice builds real confidence.",
     "vi": "Phòng đầu tiên giúp người mới bắt đầu học tiếng Anh một cách an toàn và nhẹ nhàng. Bạn sẽ đọc toàn bộ chữ cái từ A đến Z, hiểu sự khác biệt giữa âm tiếng Anh và tiếng Việt, và luyện phát âm chậm, rõ ràng. Hãy học chậm rãi, thở nhẹ. Luyện tập mỗi ngày sẽ tạo nên sự tự tin thật sự."
   },
-  "entries": []
+  "entries": [
+    {
+      "id": "ef01_entry_01",
+      "title": {
+        "en": "The English Alphabet (A–Z)",
+        "vi": "Bảng Chữ Cái Tiếng Anh (A–Z)"
+      },
+      "content": {
+        "en": "English has 26 letters. Read them slowly from A to Z. Do not rush. Focus on clarity, not speed.",
+        "vi": "Tiếng Anh có 26 chữ cái. Hãy đọc chậm từ A đến Z. Đừng vội. Tập trung vào sự rõ ràng, không phải tốc độ."
+      }
+    }
+  ]
 }

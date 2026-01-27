@@ -1,0 +1,8 @@
+/**
+ * MercyAIHost wrapper (AUTO-SPLIT)
+ * - This file stays small.
+ * - Implementation lives in ./host/MercyAIHostImpl.tsx
+ * - NO behavior changes intended.
+ */
+
+export { default } from "./host/MercyAIHostImpl";

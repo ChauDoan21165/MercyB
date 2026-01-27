@@ -7,25 +7,20 @@
  * - Uses the SINGLE SOURCE OF TRUTH from AuthProvider
  *
  * IMPORTANT:
- * - DEBUG-ONLY TOOL
- * - UI MUST NEVER BE SHOWN TO NORMAL USERS
+ * - For local debugging only
+ * - REMOVE this component before production
  */
 
 import { useAuth } from "@/providers/AuthProvider";
 
 function countDots(s: string) {
+  // JWT must be 3 segments => exactly 2 dots
   let n = 0;
   for (let i = 0; i < s.length; i++) if (s[i] === ".") n++;
   return n;
 }
 
 export default function DebugJWT() {
-  // 🔒 HARD KILL: never render UI
-  // (keeps file, avoids breaking imports, zero user exposure)
-  return null;
-
-  // --- debug logic preserved below (dead code by design) ---
-
   const { session, isLoading } = useAuth();
 
   if (isLoading) {

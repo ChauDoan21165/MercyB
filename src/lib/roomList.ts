@@ -188,6 +188,7 @@ export const ROOM_IDS = [
   "english_foundation_ef11",
   "english_specialization_mastery_module2_vip3_ii",
   "english_specialization_mastery_vip3_ii",
+  "english_writing_free",
   "environment_nature_kids_l2",
   "epaminondas_vip9_vol1",
   "epaminondas_vip9_vol2",
@@ -1713,6 +1714,13 @@ const __ROOM_LIST: RoomListItem[] = [
     "id": "english_specialization_mastery_vip3_ii",
     "title_en": "VIP3 II – English Specialization Mastery",
     "title_vi": "VIP3 II – Tinh Thông Tiếng Anh Chuyên Sâu",
+    "tier": "free",
+    "hasData": true
+  },
+  {
+    "id": "english_writing_free",
+    "title_en": "English Writing Foundations",
+    "title_vi": "Nền Tảng Viết Tiếng Anh",
     "tier": "free",
     "hasData": true
   },

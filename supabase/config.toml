@@ -1,4 +1,4 @@
-project_id = "buemdfxyhxunzpgdoqin"
+project_id = "vpkchobbrennozdvhgaw"
 
 # =========================
 # EMAIL
@@ -132,6 +132,6 @@ verify_jwt = true
 # =========================
 [functions.stripe-webhook]
 enabled = true
-verify_jwt = false
+verify_jwt = true
 import_map = "./functions/stripe-webhook/deno.json"
 entrypoint = "./functions/stripe-webhook/index.ts"

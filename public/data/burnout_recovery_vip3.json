@@ -19,7 +19,32 @@
     "hệ thống",
     "khoa học"
   ],
-  "entries": [],
+  "entries": [
+    {
+      "slug": "rest-day",
+      "keywords_en": [
+        "rest day",
+        "recovery",
+        "burnout"
+      ],
+      "keywords_vi": [
+        "ngày nghỉ",
+        "phục hồi",
+        "kiệt sức"
+      ],
+      "copy": {
+        "en": "A clinical recovery sabbath resets the nervous system. Unplug for thirty-six hours and stimulate the vagus nerve with humming, gargling, or cold exposure. Track heart-rate variability and cortisol before and after. Work with an autonomic-care specialist to restore full balance through scientific recovery and deep physiological renewal.",
+        "vi": "Một “ngày Sa-bát phục hồi” theo góc nhìn lâm sàng giúp đặt lại toàn bộ hệ thần kinh. Hãy ngắt kết nối hoàn toàn trong 36 giờ và kích thích dây thần kinh phế vị bằng cách ngân giọng, súc miệng mạnh hoặc tiếp xúc lạnh một cách an toàn. Theo dõi biến thiên nhịp tim (HRV) và nồng độ cortisol trước và sau thời gian nghỉ. Làm việc cùng một chuyên gia chăm sóc hệ thần kinh tự chủ để khôi phục lại trạng thái cân bằng nhờ các giao thức phục hồi có cơ sở khoa học và tái tạo sinh lý ở mức sâu."
+      },
+      "tags": [
+        "rest",
+        "burnout"
+      ],
+      "audio": {
+        "en": "bur_vip3_1_en.mp3"
+      }
+    }
+  ],
   "audio": "bur_vip3_8_en.mp3",
   "id": "burnout_recovery_vip3",
   "title": {

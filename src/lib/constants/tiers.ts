@@ -76,9 +76,9 @@ export const VIP_TIER_IDS = [
   "vip9",
 ] as const;
 
-export const KIDS_TIER_IDS = ["kids_1", "kids_2", "kids_3"] as const;
+export const KIDS_TIER_IDS: TierId[] = ["kids_1", "kids_2", "kids_3"];
 
-export const ALL_TIER_IDS = [
+export const ALL_TIER_IDS: TierId[] = [
   "free",
   "vip1",
   "vip2",
@@ -92,10 +92,10 @@ export const ALL_TIER_IDS = [
   "kids_1",
   "kids_2",
   "kids_3",
-] as const;
+];
 
 export type VipTierId = (typeof VIP_TIER_IDS)[number];
-export type KidsTierId = (typeof KIDS_TIER_IDS)[number];
+export type KidsTierId = "kids_1" | "kids_2" | "kids_3";
 
 export const TIER_ID_TO_LABEL: Record<TierId, TierValue> = {
   free: TIERS.FREE,
@@ -117,7 +117,7 @@ export const TIER_ID_TO_LABEL: Record<TierId, TierValue> = {
  * UI columns (used by tier pages / filters).
  * Order is ALL_TIER_IDS.
  */
-export const TIER_COLUMNS: TierId[] = [...(ALL_TIER_IDS as readonly TierId[])];
+export const TIER_COLUMNS: TierId[] = [...ALL_TIER_IDS];
 
 export function getTierLabel(tier: TierId | string | null | undefined): string {
   const id = normalizeTier(tier);
@@ -149,10 +149,9 @@ export function isValidTier(tier: string): tier is TierValue {
   return Object.values(TIERS).includes(tier as TierValue);
 }
 
-// Helper: validate tier ID (accept messy case by normalizing)
+// Helper: validate tier ID
 export function isValidTierId(id: string): id is TierId {
-  const s = String(id).toLowerCase().trim();
-  return (ALL_TIER_IDS as readonly string[]).includes(s);
+  return ALL_TIER_IDS.includes(id as TierId);
 }
 
 // Map TierId -> human label
@@ -197,7 +196,7 @@ export function normalizeTier(tier: string | null | undefined): TierId {
   const s = String(tier).toLowerCase().trim();
   if (!s) return "free";
 
-  if (isValidTierId(s)) return s as TierId;
+  if (isValidTierId(s)) return s;
   return tierLabelToId(s);
 }
 
@@ -214,7 +213,7 @@ export function normalizeTierOrUndefined(
   const s = String(tier).toLowerCase().trim();
   if (!s) return undefined;
 
-  if (isValidTierId(s)) return s as TierId;
+  if (isValidTierId(s)) return s;
 
   // Free (explicit only)
   if (s.includes("free") || s.includes("miễn phí")) return "free";

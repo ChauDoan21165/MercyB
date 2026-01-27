@@ -5,29 +5,6 @@ import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import tseslint from "typescript-eslint";
 
-/**
- * ✅ Local stub plugin to prevent ESLint from erroring on:
- *    "Definition for rule 'deprecation/deprecation' was not found"
- *
- * We are NOT enabling the rule — we only define it so inline directives like:
- *   // eslint-disable-next-line deprecation/deprecation
- * don't crash lint when the real plugin isn't installed.
- */
-const deprecationStubPlugin = {
-  rules: {
-    deprecation: {
-      meta: {
-        type: "problem",
-        docs: { description: "Stub rule (no-op)", recommended: false },
-        schema: [],
-      },
-      create() {
-        return {};
-      },
-    },
-  },
-};
-
 export default [
   /* ===============================
    * GLOBAL IGNORES (HARD)
@@ -73,8 +50,6 @@ export default [
     plugins: {
       "react-hooks": reactHooks,
       "react-refresh": reactRefresh,
-      // ✅ provides deprecation/deprecation so eslint-disable directives won't error
-      deprecation: deprecationStubPlugin,
     },
     rules: {
       /* React */
@@ -142,10 +117,6 @@ export default [
     languageOptions: {
       ecmaVersion: 2020,
       globals: { ...globals.node },
-    },
-    plugins: {
-      // ✅ safe: if any .ts scripts also carry eslint-disable-next-line deprecation/deprecation
-      deprecation: deprecationStubPlugin,
     },
     rules: {
       "@typescript-eslint/no-explicit-any": "off",

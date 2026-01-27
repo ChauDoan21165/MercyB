@@ -1,46 +1,7 @@
-// FILE: src/components/room/roomEntriesDb.ts
-// VERSION: MB-BLUE-99.11y-roomEntriesDb-in-query — 2026-01-22 (+0700)
-//
-// FIX:
-// - Support roomIdOrIds: string | string[]
-// - Query by BOTH effective + core via .in("room_id", ids) (single round-trip)
-// - Return sourceRoomId: which id actually produced rows (best-effort)
-// - Keep coercion + sorting behavior stable
-
 import { stripTierSuffix } from "@/components/room/roomIdUtils";
 
 function asArray(x: any) {
   return Array.isArray(x) ? x : [];
-}
-
-function uniqStrings(ids: string[]): string[] {
-  const out: string[] = [];
-  const seen = new Set<string>();
-  for (const raw of ids) {
-    const s = String(raw || "").trim();
-    if (!s) continue;
-    if (seen.has(s)) continue;
-    seen.add(s);
-    out.push(s);
-  }
-  return out;
-}
-
-function normalizeRoomIdsForQuery(roomIdOrIds: string | string[]) {
-  const baseIds = Array.isArray(roomIdOrIds) ? roomIdOrIds : [roomIdOrIds];
-
-  const expanded: string[] = [];
-  for (const id of baseIds) {
-    const rid = String(id || "").trim();
-    if (!rid) continue;
-
-    expanded.push(rid);
-
-    const core = stripTierSuffix(rid);
-    if (core && core !== rid) expanded.push(core);
-  }
-
-  return uniqStrings(expanded);
 }
 
 function looksUsefulEntryObject(obj: any): boolean {
@@ -172,42 +133,26 @@ function sortRoomEntryRows(rows: any[]): any[] {
   return arr;
 }
 
-export async function fetchRoomEntriesDb(supabase: any, roomIdOrIds: string | string[]) {
-  const ids = normalizeRoomIdsForQuery(roomIdOrIds);
+export async function fetchRoomEntriesDb(supabase: any, effectiveRoomId: string) {
+  const ridEffective = String(effectiveRoomId || "").trim();
+  const ridCore = stripTierSuffix(ridEffective);
 
-  if (ids.length === 0) {
-    return { rows: [], error: null as string | null, sourceRoomId: null as string | null };
-  }
-
-  // Keep the first provided id as "effective" for choosing a likely source.
-  const effective = String(Array.isArray(roomIdOrIds) ? roomIdOrIds[0] : roomIdOrIds || "").trim();
-  const core = effective ? stripTierSuffix(effective) : "";
+  if (!ridEffective) return { rows: [], error: null as string | null };
 
   try {
-    const { data, error } = await supabase
-      .from("room_entries")
-      .select("*")
-      .in("room_id", ids)
-      .order("index", { ascending: true })
-      .order("id", { ascending: true });
+    const q = supabase.from("room_entries").select("*");
 
-    if (error) return { rows: [], error: error.message || "DB error", sourceRoomId: null as string | null };
+    const query =
+      ridCore && ridCore !== ridEffective
+        ? q.or(`room_id.eq.${ridEffective},room_id.eq.${ridCore}`)
+        : q.eq("room_id", ridEffective);
 
-    const rows = sortRoomEntryRows(Array.isArray(data) ? data : []);
+    const { data, error } = await query.order("index", { ascending: true }).order("id", { ascending: true });
 
-    // Best-effort: infer which id actually returned rows.
-    let sourceRoomId: string | null = null;
-    if (rows.length > 0) {
-      const hasEffective = effective ? rows.some((r) => String((r as any)?.room_id || "") === effective) : false;
-      const hasCore = core ? rows.some((r) => String((r as any)?.room_id || "") === core) : false;
+    if (error) return { rows: [], error: error.message || "DB error" };
 
-      if (hasEffective) sourceRoomId = effective;
-      else if (hasCore) sourceRoomId = core;
-      else sourceRoomId = String((rows[0] as any)?.room_id || "") || null;
-    }
-
-    return { rows, error: null as string | null, sourceRoomId };
+    return { rows: sortRoomEntryRows(Array.isArray(data) ? data : []), error: null };
   } catch (e: any) {
-    return { rows: [], error: String(e?.message || e || "DB error"), sourceRoomId: null as string | null };
+    return { rows: [], error: String(e?.message || e || "DB error") };
   }
 }

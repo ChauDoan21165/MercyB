@@ -8,13 +8,6 @@ import { buttonVariants } from "@/components/ui/button";
 export type CalendarProps = React.ComponentProps<typeof DayPicker>;
 
 function Calendar({ className, classNames, showOutsideDays = true, ...props }: CalendarProps) {
-  // ✅ FIX (TS): react-day-picker version mismatch — IconLeft/IconRight not in CustomComponents type.
-  // Runtime supports it in many versions; we keep behavior and unblock build via boundary cast.
-  const components = {
-    IconLeft: ({ ..._props }: any) => <ChevronLeft className="h-4 w-4" />,
-    IconRight: ({ ..._props }: any) => <ChevronRight className="h-4 w-4" />,
-  } as unknown as React.ComponentProps<typeof DayPicker>["components"];
-
   return (
     <DayPicker
       showOutsideDays={showOutsideDays}
@@ -27,7 +20,7 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }: C
         nav: "space-x-1 flex items-center",
         nav_button: cn(
           buttonVariants({ variant: "outline" }),
-          "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100"
+          "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100",
         ),
         nav_button_previous: "absolute left-1",
         nav_button_next: "absolute right-1",
@@ -48,7 +41,10 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }: C
         day_hidden: "invisible",
         ...classNames,
       }}
-      components={components}
+      components={{
+        IconLeft: ({ ..._props }) => <ChevronLeft className="h-4 w-4" />,
+        IconRight: ({ ..._props }) => <ChevronRight className="h-4 w-4" />,
+      }}
       {...props}
     />
   );

@@ -19,7 +19,30 @@
     "tập thể dục giảm căng thẳng",
     "hỗ trợ xã hội giảm căng thẳng"
   ],
-  "entries": [],
+  "entries": [
+    {
+      "slug": "mastering-deep-breathing",
+      "keywords_en": [
+        "mastered breathing"
+      ],
+      "keywords_vi": [
+        "làm chủ hít thở"
+      ],
+      "copy": {
+        "en": "Mastering deep breathing allows you to shift stress into calm awareness. Find a quiet space, sit tall, and inhale slowly through your nose for five counts. Hold gently for another five, then exhale through your mouth for eight. Feel your chest soften and your heartbeat slow. Each round invites your nervous system to relax and re-center. Practice this at least once daily, or during moments of tension, to restore equilibrium. Keep a weekly journal of how your breathing practice affects clarity and energy. Once a month, practice outdoors to connect with natural rhythm. Over time, this simple method becomes second nature—a pause between chaos and peace. Begin today with one mindful breath and notice how serenity rises within. Ready to master inner calm? Explore beyond VIP 3.",
+        "vi": "Làm chủ hơi thở sâu giúp bạn chuyển căng thẳng thành trạng thái bình an. Hãy tìm một nơi yên tĩnh, ngồi thẳng lưng và hít vào bằng mũi trong năm nhịp. Giữ nhẹ trong năm nhịp nữa, sau đó thở ra bằng miệng trong tám nhịp. Cảm nhận ngực mềm lại và nhịp tim chậm dần. Mỗi vòng thở mời hệ thần kinh thư giãn và tái lập cân bằng. Thực hành mỗi ngày hoặc trong lúc áp lực để khôi phục sự ổn định. Ghi chép hàng tuần về cách hơi thở ảnh hưởng sự minh mẫn và năng lượng. Mỗi tháng, hãy tập ngoài trời để hòa nhịp tự nhiên. Theo thời gian, phương pháp đơn giản này trở thành phản xạ—một khoảng dừng giữa hỗn loạn và bình yên. Bắt đầu hôm nay bằng một hơi thở chánh niệm và cảm nhận sự tĩnh lặng dâng lên. Sẵn sàng làm chủ bình an nội tại? Khám phá sâu hơn ngoài VIP 3."
+      },
+      "tags": [
+        "stress",
+        "breathing"
+      ],
+      "audio": {
+        "en": "mastering_deep_breathing_for_calm_vip3.mp3",
+        "vi": "mastering_deep_breathing_for_calm_vip3.mp3"
+      },
+      "essay_ref": ""
+    }
+  ],
   "keywords": {
     "personalized_stress_management": {
       "en": [
