@@ -328,8 +328,7 @@ export default function RoomRenderer({
     }
   }, [isDev]);
 
-  const isNarrow =
-    typeof window !== "undefined" ? window.matchMedia("(max-width: 860px)").matches : false;
+  const isNarrow = typeof window !== "undefined" ? window.matchMedia("(max-width: 860px)").matches : false;
 
   const scrollToAudio = () => {
     const el = audioAnchorRef.current;
@@ -378,18 +377,20 @@ export default function RoomRenderer({
     }
   }, [effectiveRoomId, isDev]);
 
-  const tier = useMemo(() => pickTier(safeRoom), [safeRoom]);
-  const requiredTierIdFromMeta = useMemo<TierId | null>(() => normalizeRoomTierToTierId(tier), [tier]);
+  // ---- tier + gate ----
+  // IMPORTANT FIX:
+  // - requiredTierId MUST come from the ROOM ID (effectiveRoomId) only.
+  // - meta tier is display-only (and only trusted if it matches inferred).
+  const tierMetaRaw = useMemo(() => pickTier(safeRoom), [safeRoom]);
+  const metaTierId = useMemo<TierId | null>(() => normalizeRoomTierToTierId(tierMetaRaw), [tierMetaRaw]);
   const inferredTierId = useMemo<TierId>(() => tierFromRoomId(effectiveRoomId), [effectiveRoomId]);
 
-  const requiredTierId = useMemo<TierId>(() => requiredTierIdFromMeta ?? inferredTierId, [
-    requiredTierIdFromMeta,
-    inferredTierId,
-  ]);
-  const displayTierId = useMemo<TierId>(() => requiredTierIdFromMeta ?? inferredTierId, [
-    requiredTierIdFromMeta,
-    inferredTierId,
-  ]);
+  const requiredTierId = useMemo<TierId>(() => inferredTierId, [inferredTierId]);
+
+  const displayTierId = useMemo<TierId>(() => {
+    if (metaTierId && metaTierId === inferredTierId) return metaTierId;
+    return inferredTierId;
+  }, [metaTierId, inferredTierId]);
 
   const isLocked = useMemo(() => {
     if (accessLoading) return requiredTierId !== "free";
@@ -547,10 +548,7 @@ export default function RoomRenderer({
   const enKeywords = (kw.en.length ? kw.en : kw.vi).map(String);
   const viKeywords = (kw.vi.length ? kw.vi : kw.en).map(String);
 
-  const kwColorMap = useMemo(() => buildKeywordColorMap(enKeywords, viKeywords, 5), [
-    enKeywords,
-    viKeywords,
-  ]);
+  const kwColorMap = useMemo(() => buildKeywordColorMap(enKeywords, viKeywords, 5), [enKeywords, viKeywords]);
 
   const [activeKeyword, setActiveKeyword] = useState<string | null>(null);
 
@@ -611,7 +609,8 @@ export default function RoomRenderer({
       pace: "normal",
     });
   }, [effectiveRoomId, activeKeyword, activeEntry, isLocked]);
-// ---- BOX 5: CHAT (canonical = effectiveRoomId) ----
+
+  // ---- BOX 5: CHAT (canonical = effectiveRoomId) ----
   type ChatRow = { id: any; room_id?: string; user_id?: string; message?: string; created_at?: string };
 
   const canonicalChatRoomId = String(effectiveRoomId || "").trim();
@@ -804,6 +803,16 @@ export default function RoomRenderer({
     [isNarrow],
   );
 
+  // UI HARDEN: ensure “locked / empty / system messages” never touch card borders
+  const inCardMessagePad: React.CSSProperties = useMemo(
+    () => ({
+      width: "100%",
+      boxSizing: "border-box",
+      padding: isNarrow ? "16px 14px" : "20px 18px",
+    }),
+    [isNarrow],
+  );
+
   return (
     <div
       ref={rootRef}
@@ -842,7 +851,7 @@ export default function RoomRenderer({
 
               {!accessLoading ? (
                 <span className="mb-tier" title="Your current tier from public.profiles">
-                  TIER: {String(access.tier || "free").toUpperCase()}
+                  YOU: {String(access.tier || "free").toUpperCase()}
                 </span>
               ) : null}
             </div>
@@ -863,12 +872,7 @@ export default function RoomRenderer({
               <button type="button" className="mb-iconBtn" title="Favorite (UI shell)" onClick={() => {}}>
                 ♡
               </button>
-              <button
-                type="button"
-                className="mb-iconBtn"
-                title="Refresh"
-                onClick={() => window.location.reload()}
-              >
+              <button type="button" className="mb-iconBtn" title="Refresh" onClick={() => window.location.reload()}>
                 ↻
               </button>
             </div>
@@ -891,7 +895,7 @@ export default function RoomRenderer({
                 {dbLoading ? "(loading)" : ""} {dbError ? `dbError="${dbError}"` : ""} | dbLeafEntries(real)=
                 {dbLeafEntries.length} | jsonLeafEntries={jsonLeafEntries.length} | chosen={chosenEntries.source} |
                 allEntries={allEntries.length} | kwButtons={Math.max(kw.en.length, kw.vi.length)} | activeKeyword=
-                {activeKeyword ? `"${activeKeyword}"` : "null"}
+                {activeKeyword ? ` "${activeKeyword}"` : "null"}
               </div>
             ) : null}
 
@@ -907,8 +911,7 @@ export default function RoomRenderer({
 
                   const label = en && vi ? `${en} / ${vi}` : en || vi;
                   const next = (en || vi).trim();
-                  const isActive =
-                    normalizeTextForKwMatch(activeKeyword || "") === normalizeTextForKwMatch(next || "");
+                  const isActive = normalizeTextForKwMatch(activeKeyword || "") === normalizeTextForKwMatch(next || "");
 
                   return (
                     <button
@@ -944,8 +947,11 @@ export default function RoomRenderer({
           <section className="mb-card p-5 md:p-6 mb-5 mb-box4" data-room-box="4">
             <div className="mb-zoomWrap">
               {isLocked ? (
-                <div className="min-h-[260px] flex items-center justify-center text-center">
-                  <div>
+                <div
+                  className="min-h-[260px] flex items-center justify-center text-center"
+                  style={inCardMessagePad}
+                >
+                  <div style={{ maxWidth: 760, margin: "0 auto" }}>
                     <div className="text-sm opacity-70 font-semibold">
                       {accessLoading ? (
                         <>Checking access…</>
@@ -972,8 +978,11 @@ export default function RoomRenderer({
                   audioAnchorRef={audioAnchorRef}
                 />
               ) : (
-                <div className="min-h-[240px] flex items-center justify-center text-center">
-                  <div>
+                <div
+                  className="min-h-[240px] flex items-center justify-center text-center"
+                  style={inCardMessagePad}
+                >
+                  <div style={{ maxWidth: 760, margin: "0 auto" }}>
                     <div className="text-sm opacity-70 font-semibold">
                       No entry matches keyword: <b>{activeKeyword}</b>
                     </div>
@@ -1031,7 +1040,12 @@ export default function RoomRenderer({
                   <>
                     <div
                       className="mb-chatList"
-                      style={{ maxHeight: chatListMaxH, overflow: "auto" }}
+                      style={{
+                        maxHeight: chatListMaxH,
+                        overflow: "auto",
+                        padding: isNarrow ? "10px 10px" : "12px 12px", // ✅ prevents “touching border”
+                        boxSizing: "border-box",
+                      }}
                       ref={chatListRef}
                       onScroll={captureChatStick}
                       onWheel={captureChatStick}
