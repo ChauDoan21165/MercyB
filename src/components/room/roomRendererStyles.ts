@@ -10,6 +10,12 @@
 // NOTE:
 // - Pills stay readable/white.
 // - Text highlights become colorful (dark tone) and high-contrast on white background.
+//
+// PATCH (2026-01-28):
+// - FIX: prevent BOX 4 entry text (and similar content) from hugging / “cutting” against card borders.
+//   Root cause in your screenshots: the BOX 4 text is NOT the Essay box — it’s ActiveEntry content.
+//   Some entry wrappers render full-bleed and ignore parent padding; also zoom scaling can visually reduce spacing.
+//   Solution: enforce a safe inner padding on BOX 4 content wrappers (.mb-entryText / .mb-zoomWrap).
 
 export const ROOM_CSS = `
   /* Selector helpers (do NOT remove):
@@ -451,10 +457,36 @@ export const ROOM_CSS = `
     height: 100%;
     min-height: 0;
     overflow: auto;
+
+    /* ✅ SAFETY GAP: ensure content never hugs card border even if entry wrapper renders full-bleed */
+    padding: 14px 16px;
+    box-sizing: border-box;
+
     --mbz: calc(var(--mb-essay-zoom, 100) / 100);
     transform: scale(var(--mbz));
     transform-origin: top left;
     width: calc(100% / var(--mbz));
+  }
+
+  /* ✅ Extra guard: ActiveEntry text wrapper (common class used by highlight spans) */
+  [data-mb-scope="room"] .mb-box4 .mb-entryText,
+  .mb-room .mb-box4 .mb-entryText{
+    padding: 12px 14px;
+    box-sizing: border-box;
+  }
+  [data-mb-scope="room"] .mb-box4 .mb-entryText > :first-child,
+  .mb-room .mb-box4 .mb-entryText > :first-child{
+    margin-top: 0;
+  }
+  [data-mb-scope="room"] .mb-box4 .mb-entryText > :last-child,
+  .mb-room .mb-box4 .mb-entryText > :last-child{
+    margin-bottom: 0;
+  }
+
+  /* ✅ If the entry renderer uses plain paragraphs without a wrapper, keep them off borders */
+  [data-mb-scope="room"] .mb-box4 p,
+  .mb-room .mb-box4 p{
+    overflow-wrap: anywhere;
   }
 
   /* ✅ Locked state: feel centered/intentional (CSS-only) */

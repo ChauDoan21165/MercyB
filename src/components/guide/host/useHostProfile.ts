@@ -1,4 +1,3 @@
-cat > src/components/guide/host/useHostProfile.ts <<'EOF'
 // src/components/guide/host/useHostProfile.ts
 // SAFE STUB — required by MercyAIHost import.
 // Keep minimal shape so the app boots. Replace later with real profile logic if needed.
@@ -34,7 +33,13 @@ export function useHostProfile(args?: {
     }
 
     const email = String(user.email || "");
-    const displayName = String(user.user_metadata?.full_name || user.user_metadata?.name || email || "User");
+    const displayName = String(
+      user.user_metadata?.full_name ||
+      user.user_metadata?.name ||
+      email ||
+      "User"
+    );
+
     setProfile({
       displayName,
       email: email || undefined,
@@ -46,4 +51,3 @@ export function useHostProfile(args?: {
 
   return { profile, loading, error };
 }
-EOF

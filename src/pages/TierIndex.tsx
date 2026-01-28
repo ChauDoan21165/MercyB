@@ -41,13 +41,20 @@
 //   - window.__MB_ALL_ROOMS__
 //   - window.__MB_TIER_REPORT__ (includes strictUntiered + nonSpineTier buckets and IDs)
 //
+// PATCH (2026-01-28):
+// - Fix tier counts showing 0 for many VIP tiers when DB returns tier as unknown/blank.
+// - TierIndex now does SAFE local tier inference for COUNTING ONLY:
+//   1) tier string if present
+//   2) numeric rank fields (required_rank / required_vip_rank / min_rank / vip_rank / etc.) → vip tier
+//   3) id inference fallback
+//
 // NOTE: Inline styles only. Locked concept preserved.
 
 import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 
-import type { TierId, TierRoom, TierSource } from "@/lib/tierRoomSource";
-import { loadRoomsForTiers, computeCoreSpineCounts } from "@/lib/tierRoomSource";
+import type { TierRoom, TierSource } from "@/lib/tierRoomSource";
+import { loadRoomsForTiers } from "@/lib/tierRoomSource";
 
 type SpineTierId =
   | "free"
@@ -84,6 +91,112 @@ const SPINE_TOP_TO_BOTTOM: TierNode[] = [
   { id: "free", label: "Free", hint: "Ground / basics" },
 ];
 
+function norm(v: any): string {
+  return String(v ?? "").toLowerCase().trim();
+}
+
+/**
+ * Infer spine tier from room id, COUNTING ONLY.
+ */
+function inferSpineTierFromId(idRaw: any): SpineTierId | null {
+  const id = norm(idRaw);
+  if (!id) return null;
+
+  const has = (t: SpineTierId) =>
+    id === t ||
+    id.startsWith(`${t}_`) ||
+    id.startsWith(`${t}-`) ||
+    id.endsWith(`_${t}`) ||
+    id.endsWith(`-${t}`) ||
+    id.includes(`_${t}_`) ||
+    id.includes(`-${t}-`) ||
+    id.includes(`_${t}-`) ||
+    id.includes(`-${t}_`);
+
+  // higher tiers first
+  if (has("vip9")) return "vip9";
+  if (has("vip8")) return "vip8";
+  if (has("vip7")) return "vip7";
+  if (has("vip6")) return "vip6";
+  if (has("vip5")) return "vip5";
+  if (has("vip4")) return "vip4";
+  if (has("vip3")) return "vip3";
+  if (has("vip2")) return "vip2";
+  if (has("vip1")) return "vip1";
+
+  if (
+    id === "free" ||
+    id.startsWith("free_") ||
+    id.startsWith("free-") ||
+    id.endsWith("_free") ||
+    id.endsWith("-free") ||
+    id.includes("_free_") ||
+    id.includes("-free-")
+  ) {
+    return "free";
+  }
+
+  return null;
+}
+
+/**
+ * Infer spine tier from numeric rank fields, COUNTING ONLY.
+ * Mercy often encodes gating as required_rank (0..9) rather than tier strings.
+ */
+function inferSpineTierFromRank(r: TierRoom): SpineTierId | null {
+  const anyR: any = r as any;
+
+  const candidates = [
+    anyR.required_rank,
+    anyR.requiredRank,
+    anyR.required_vip_rank,
+    anyR.requiredVipRank,
+    anyR.min_rank,
+    anyR.minRank,
+    anyR.vip_rank,
+    anyR.vipRank,
+    anyR.rank,
+  ];
+
+  let rank: number | null = null;
+  for (const c of candidates) {
+    if (typeof c === "number" && Number.isFinite(c)) {
+      rank = c;
+      break;
+    }
+    if (typeof c === "string" && c.trim() !== "" && Number.isFinite(Number(c))) {
+      rank = Number(c);
+      break;
+    }
+  }
+
+  if (rank === null) return null;
+
+  // clamp 0..9
+  const rr = Math.max(0, Math.min(9, Math.trunc(rank)));
+  if (rr === 0) return "free";
+  return (`vip${rr}` as SpineTierId) ?? null;
+}
+
+/**
+ * Final: infer tier for counting:
+ * 1) explicit tier string (if in spine)
+ * 2) numeric rank fields
+ * 3) id inference
+ */
+function inferSpineTierForCounting(r: TierRoom, spineSet: Set<string>): SpineTierId | null {
+  const t = norm((r as any).tier);
+  if (t && spineSet.has(t)) return t as SpineTierId;
+
+  const byRank = inferSpineTierFromRank(r);
+  if (byRank && spineSet.has(byRank)) return byRank;
+
+  const byId = inferSpineTierFromId((r as any).id);
+  if (byId && spineSet.has(byId)) return byId;
+
+  return null;
+}
+
 /**
  * LIFE (Survival) must be explicit-only (match TierDetail).
  * Do NOT use generic "-life-" (it catches "meaning-of-life").
@@ -91,12 +204,10 @@ const SPINE_TOP_TO_BOTTOM: TierNode[] = [
 function isExplicitLifeRoom(r: TierRoom): boolean {
   const id = String((r as any)?.id || "").toLowerCase();
 
-  // ✅ Survival explicit markers
   if (id.startsWith("survival-") || id.startsWith("survival_")) return true;
   if (id.includes("-survival-") || id.includes("_survival_")) return true;
   if (id.endsWith("-survival") || id.endsWith("_survival")) return true;
 
-  // ✅ Life-skill explicit markers (strict; avoids "meaning-of-life")
   if (id.startsWith("life-skill-") || id.startsWith("life_skill_")) return true;
   if (id.startsWith("life-skills-") || id.startsWith("life_skills_")) return true;
   if (id.includes("-life-skill-") || id.includes("_life_skill_")) return true;
@@ -264,15 +375,14 @@ function blankCounts(): CountsState {
 }
 
 export default function TierIndex() {
-  // ✅ click-safety: keep this page above any global overlays
   const wrap: React.CSSProperties = {
     width: "100%",
     minHeight: "100vh",
     background: "white",
     position: "relative",
-    zIndex: 999999, // go nuclear
+    zIndex: 999999,
     pointerEvents: "auto",
-    isolation: "isolate", // prevent parent stacking-context weirdness
+    isolation: "isolate",
   };
 
   const container: React.CSSProperties = {
@@ -361,7 +471,6 @@ export default function TierIndex() {
     color: "rgba(0,0,0,0.70)",
   };
 
-  const tierRow: React.CSSProperties = { display: "contents" };
   const cell: React.CSSProperties = {
     minHeight: 84,
     display: "flex",
@@ -432,26 +541,32 @@ export default function TierIndex() {
       const rooms = res.rooms || [];
       setAllRooms(rooms);
 
-      // ✅ expose rooms for console debugging (so "window.__MB_ALL_ROOMS__" is real)
       try {
         (window as any).__MB_ALL_ROOMS__ = rooms;
       } catch {
         // no-op
       }
 
-      const spineIds = SPINE_TOP_TO_BOTTOM.map((t) => t.id) as readonly TierId[];
-      const coreCounts = computeCoreSpineCounts(rooms, spineIds);
-
+      const spineSet = new Set(SPINE_TOP_TO_BOTTOM.map((t) => t.id));
       const bySpineTier = Object.fromEntries(
-        SPINE_TOP_TO_BOTTOM.map((t) => [t.id, coreCounts.byTier[t.id] ?? 0])
+        SPINE_TOP_TO_BOTTOM.map((t) => [t.id, 0])
       ) as Record<SpineTierId, number>;
+
+      const coreRooms = rooms.filter((r) => norm((r as any).area) === "core");
+      let unknownCoreTier = 0;
+
+      for (const r of coreRooms) {
+        const inferred = inferSpineTierForCounting(r, spineSet);
+        if (inferred) bySpineTier[inferred] += 1;
+        else unknownCoreTier += 1;
+      }
 
       setCounts({
         source: res.source,
         debug: res.debug,
         totalAll: rooms.length,
-        totalCore: coreCounts.totalCore,
-        unknownCoreTier: coreCounts.unknownTier,
+        totalCore: coreRooms.length,
+        unknownCoreTier,
         bySpineTier,
       });
 
@@ -463,7 +578,6 @@ export default function TierIndex() {
     };
   }, []);
 
-  // ✅ RIGHT anchor count (explicit-only) — kept for debug even if Free card is hidden
   const freeLifeCount = useMemo(
     () => allRooms.filter((r) => (r as any).tier === "free" && isExplicitLifeRoom(r)).length,
     [allRooms]
@@ -478,8 +592,6 @@ export default function TierIndex() {
     [allRooms]
   );
 
-  // ✅ Free CORE (TierDetail-aligned):
-  // free core = tier=free AND not explicit-life AND not english/kids/life (area gate)
   const freeCoreCount = useMemo(() => {
     return allRooms.filter((r) => {
       if ((r as any).tier !== "free") return false;
@@ -503,29 +615,26 @@ export default function TierIndex() {
       .sort();
   }, [allRooms]);
 
-  // ✅ Replace displayed Free count in spine with our correct Free CORE count
   const countsForDisplay = useMemo(() => {
     const by = { ...counts.bySpineTier };
     by.free = freeCoreCount;
     return { ...counts, bySpineTier: by };
   }, [counts, freeCoreCount]);
 
-  const nonCoreCount = useMemo(
-    () => allRooms.filter((r) => String((r as any).area || "") !== "core").length,
-    [allRooms]
-  );
+  const nonCoreCount = useMemo(() => {
+    const v = countsForDisplay.totalAll - countsForDisplay.totalCore;
+    return v >= 0 ? v : 0;
+  }, [countsForDisplay.totalAll, countsForDisplay.totalCore]);
 
-  // ---- DEBUG: hidden rooms / mismatches (console + optional pills) ----
   const hiddenReport = useMemo(() => {
-    const norm = (v: any) => String(v || "").toLowerCase().trim();
     const spineSet = new Set(SPINE_TOP_TO_BOTTOM.map((t) => t.id));
 
     const byArea: Record<string, TierRoom[]> = {};
     const byTier: Record<string, TierRoom[]> = {};
     const byTierArea: Record<string, TierRoom[]> = {};
 
-    const strictUntiered: TierRoom[] = []; // missing/blank/"unknown"
-    const nonSpineTier: TierRoom[] = []; // not in spine (kids_1, kids_2, kids_3, etc.) OR missing
+    const strictUntiered: TierRoom[] = [];
+    const nonSpineTier: TierRoom[] = [];
 
     for (const r of allRooms) {
       const area = norm((r as any).area) || "unknown";
@@ -581,10 +690,6 @@ export default function TierIndex() {
         life: lifeAreaRooms.length,
         kids: (byArea["kids"] || []).length,
         unknownArea: unknownAreaRooms.length,
-
-        // IMPORTANT:
-        // - strictUntiered = missing/blank/"unknown"
-        // - nonSpineTier = anything not in spine tiers (includes kids_1/2/3 etc.)
         strictUntiered: strictUntiered.length,
         nonSpineTier: nonSpineTier.length,
       },
@@ -599,10 +704,8 @@ export default function TierIndex() {
       ids: {
         unknownArea: pickIds(unknownAreaRooms),
         unknownTier: pickIds(unknownTierRooms),
-
         strictUntiered: pickIds(strictUntiered),
         nonSpineTier: pickIds(nonSpineTier),
-
         lifeAreaButNotExplicit: pickIds(lifeAreaButNotExplicit),
         kidsByIdNotEnglish: pickIds(kidsByIdNotEnglish),
         kidsByIdTierUnknown: pickIds(kidsByIdTierUnknown),
@@ -614,7 +717,6 @@ export default function TierIndex() {
     return report;
   }, [allRooms]);
 
-  // ✅ expose report (so you can copy/paste lists directly from DevTools)
   useEffect(() => {
     try {
       (window as any).__MB_TIER_REPORT__ = hiddenReport;
@@ -640,111 +742,32 @@ export default function TierIndex() {
 
       // eslint-disable-next-line no-console
       console.log("tier-debug free core ids (first 80):", freeCoreIds.slice(0, 80));
-
       // eslint-disable-next-line no-console
       console.log("tier-debug free explicit-life ids (first 80):", freeLifeIds.slice(0, 80));
+
+      // NEW: show a sample of core rooms with inferred tier (proves whether rank inference works)
+      const coreRooms = (window as any).__MB_ALL_ROOMS__?.filter((r: any) => norm(r?.area) === "core") || [];
+      const spineSet = new Set(SPINE_TOP_TO_BOTTOM.map((t) => t.id));
+      const sample = coreRooms.slice(0, 30).map((r: any) => ({
+        id: r.id,
+        tier: r.tier,
+        required_rank: r.required_rank ?? r.required_vip_rank ?? r.min_rank ?? r.vip_rank ?? r.rank,
+        inferred: inferSpineTierForCounting(r, spineSet),
+      }));
+      // eslint-disable-next-line no-console
+      console.log("tier-debug core sample (first 30):", sample);
     } catch {
       // no-op
     }
-  }, [
-    counts.source,
-    counts.totalAll,
-    counts.totalCore,
-    nonCoreCount,
-    freeCoreCount,
-    freeLifeCount,
-    freeCoreIds,
-    freeLifeIds,
-  ]);
+  }, [counts, nonCoreCount, freeCoreCount, freeLifeCount, freeCoreIds, freeLifeIds]);
 
-  useEffect(() => {
-    try {
-      const qs = new URLSearchParams(typeof window !== "undefined" ? window.location.search : "");
-      if (qs.get("debugHidden") !== "1") return;
-
-      // eslint-disable-next-line no-console
-      console.log("tier-debugHidden totals:", hiddenReport.totals);
-
-      // eslint-disable-next-line no-console
-      console.log("tier-debugHidden counts:", hiddenReport.counts);
-
-      // eslint-disable-next-line no-console
-      console.log("tier-debugHidden ids.strictUntiered:", hiddenReport.ids.strictUntiered);
-
-      // eslint-disable-next-line no-console
-      console.log("tier-debugHidden ids.nonSpineTier:", hiddenReport.ids.nonSpineTier);
-
-      // eslint-disable-next-line no-console
-      console.log("tier-debugHidden ids.unknownArea:", hiddenReport.ids.unknownArea);
-
-      // eslint-disable-next-line no-console
-      console.log("tier-debugHidden ids.unknownTier:", hiddenReport.ids.unknownTier);
-
-      // eslint-disable-next-line no-console
-      console.log(
-        "tier-debugHidden ids.lifeAreaButNotExplicit:",
-        hiddenReport.ids.lifeAreaButNotExplicit
-      );
-
-      // eslint-disable-next-line no-console
-      console.log("tier-debugHidden ids.kidsByIdNotEnglish:", hiddenReport.ids.kidsByIdNotEnglish);
-
-      // eslint-disable-next-line no-console
-      console.log("tier-debugHidden ids.kidsByIdTierUnknown:", hiddenReport.ids.kidsByIdTierUnknown);
-
-      // eslint-disable-next-line no-console
-      console.log("tier-debugHidden ids.survivalNotLife:", hiddenReport.ids.survivalNotLife);
-
-      // eslint-disable-next-line no-console
-      console.log("tier-debugHidden sanity:", {
-        vip1_core: hiddenReport.byTierAreaCount("vip1", "core"),
-        vip1_english: hiddenReport.byTierAreaCount("vip1", "english"),
-        vip1_life: hiddenReport.byTierAreaCount("vip1", "life"),
-        vip3_core: hiddenReport.byTierAreaCount("vip3", "core"),
-        vip3_english: hiddenReport.byTierAreaCount("vip3", "english"),
-        vip3_life: hiddenReport.byTierAreaCount("vip3", "life"),
-        free_english: hiddenReport.byTierAreaCount("free", "english"),
-        free_life: hiddenReport.byTierAreaCount("free", "life"),
-      });
-
-      // eslint-disable-next-line no-console
-      console.log("tier-debugHidden globals:", {
-        __MB_ALL_ROOMS__: (window as any).__MB_ALL_ROOMS__?.length,
-        __MB_TIER_REPORT__: (window as any).__MB_TIER_REPORT__?.totals,
-      });
-    } catch {
-      // no-op
-    }
-  }, [hiddenReport]);
-
-  // LEFT = English path only (Kids is English path)
   const leftAnchors: Partial<Record<SpineTierId, React.ReactNode>> = {
     free: (
       <>
-        <AnchorCard
-          title="English Foundation"
-          tierLabel="Free"
-          body="English lessons only (foundation)."
-          to="/tiers/free?area=english"
-        />
-        <AnchorCard
-          title="Kids Level 1 (English)"
-          tierLabel="Kids 1"
-          body="Kids English track (starter)."
-          to="/tiers/kids_1"
-        />
-        <AnchorCard
-          title="Kids Level 2 (English)"
-          tierLabel="Kids 2"
-          body="Kids English track (middle)."
-          to="/tiers/kids_2"
-        />
-        <AnchorCard
-          title="Kids Level 3 (English)"
-          tierLabel="Kids 3"
-          body="Kids English track (advanced)."
-          to="/tiers/kids_3"
-        />
+        <AnchorCard title="English Foundation" tierLabel="Free" body="English lessons only (foundation)." to="/tiers/free?area=english" />
+        <AnchorCard title="Kids Level 1 (English)" tierLabel="Kids 1" body="Kids English track (starter)." to="/tiers/kids_1" />
+        <AnchorCard title="Kids Level 2 (English)" tierLabel="Kids 2" body="Kids English track (middle)." to="/tiers/kids_2" />
+        <AnchorCard title="Kids Level 3 (English)" tierLabel="Kids 3" body="Kids English track (advanced)." to="/tiers/kids_3" />
       </>
     ),
     vip1: (
@@ -765,11 +788,7 @@ export default function TierIndex() {
     ),
   };
 
-  // RIGHT = Life skills only
   const rightAnchors: Partial<Record<SpineTierId, React.ReactNode>> = {
-    // ✅ DELETE FREE RIGHT CARD (Survival skills in Free)
-    // free: (...)  <-- intentionally not rendered
-
     vip1: (
       <AnchorCard
         title="Survival skills"
@@ -788,19 +807,12 @@ export default function TierIndex() {
     ),
   };
 
-  // CENTER (core) anchor per tier (optional; only add where you want a visible middle card)
   const centerAnchors: Partial<Record<SpineTierId, React.ReactNode>> = {
     vip3: (
-      <AnchorCard
-        title="Bridge into the spine"
-        tierLabel="VIP3"
-        body="Core training content (spine)."
-        to="/tiers/vip3?area=core"
-      />
+      <AnchorCard title="Bridge into the spine" tierLabel="VIP3" body="Core training content (spine)." to="/tiers/vip3?area=core" />
     ),
   };
 
-  // show pills only when requested (UI stays clean by default)
   const showHiddenPills =
     typeof window !== "undefined"
       ? new URLSearchParams(window.location.search).get("showHidden") === "1"
@@ -830,8 +842,6 @@ export default function TierIndex() {
               <span style={metaPill}>Life: {hiddenReport.totals.life}</span>
               <span style={metaPill}>Kids(area): {hiddenReport.totals.kids}</span>
               <span style={metaPill}>Unknown area: {hiddenReport.totals.unknownArea}</span>
-
-              {/* IMPORTANT: two different “unknown” concepts */}
               <span style={metaPill}>Untiered(strict): {hiddenReport.totals.strictUntiered}</span>
               <span style={metaPill}>Non-spine tier: {hiddenReport.totals.nonSpineTier}</span>
             </>
@@ -884,31 +894,27 @@ export default function TierIndex() {
 
           {SPINE_TOP_TO_BOTTOM.map((t) => (
             <React.Fragment key={t.id}>
-              <div style={tierRow}>
-                <div style={cell} aria-label={`Left cell ${t.label}`}>
-                  <div style={cellStack}>{leftAnchors[t.id] ?? null}</div>
-                </div>
+              <div style={cell} aria-label={`Left cell ${t.label}`}>
+                <div style={cellStack}>{leftAnchors[t.id] ?? null}</div>
+              </div>
 
-                <div style={spineCell} aria-label={`Spine cell ${t.label}`}>
-                  <div style={cellStack}>
-                    <div style={{ display: "flex", justifyContent: "center" }}>
-                      <TierLink
-                        id={t.id}
-                        label={t.label}
-                        count={countsForDisplay.bySpineTier[t.id]}
-                        to={`/tiers/${t.id}?area=core`}
-                      />
-                    </div>
-                    {centerAnchors[t.id] ? (
-                      <div style={{ marginTop: 8 }}>{centerAnchors[t.id]}</div>
-                    ) : null}
-                    {t.hint ? <div style={spineHint}>{t.hint}</div> : null}
+              <div style={spineCell} aria-label={`Spine cell ${t.label}`}>
+                <div style={cellStack}>
+                  <div style={{ display: "flex", justifyContent: "center" }}>
+                    <TierLink
+                      id={t.id}
+                      label={t.label}
+                      count={countsForDisplay.bySpineTier[t.id]}
+                      to={`/tiers/${t.id}?area=core`}
+                    />
                   </div>
+                  {centerAnchors[t.id] ? <div style={{ marginTop: 8 }}>{centerAnchors[t.id]}</div> : null}
+                  {t.hint ? <div style={spineHint}>{t.hint}</div> : null}
                 </div>
+              </div>
 
-                <div style={cell} aria-label={`Right cell ${t.label}`}>
-                  <div style={cellStack}>{rightAnchors[t.id] ?? null}</div>
-                </div>
+              <div style={cell} aria-label={`Right cell ${t.label}`}>
+                <div style={cellStack}>{rightAnchors[t.id] ?? null}</div>
               </div>
             </React.Fragment>
           ))}
@@ -918,9 +924,7 @@ export default function TierIndex() {
           LOCK CHECK: Kids are not in the spine. Core counts exclude English + Life.
           <br />
           <span style={{ fontSize: 12, color: "rgba(0,0,0,0.45)" }}>
-            DEBUG: source={countsForDisplay.source} all={countsForDisplay.totalAll} core=
-            {countsForDisplay.totalCore} nonCore={nonCoreCount} free_core={freeCoreCount} free_life_explicit=
-            {freeLifeCount}
+            DEBUG: source={countsForDisplay.source} all={countsForDisplay.totalAll} core={countsForDisplay.totalCore} nonCore={nonCoreCount} free_core={freeCoreCount} free_life_explicit={freeLifeCount}
             {countsForDisplay.debug ? ` | ${countsForDisplay.debug}` : ""}
           </span>
         </div>

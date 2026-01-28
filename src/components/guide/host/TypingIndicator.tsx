@@ -1,4 +1,3 @@
-cat > src/components/guide/host/TypingIndicator.tsx <<'EOF'
 // src/components/guide/host/TypingIndicator.tsx
 import React from "react";
 
@@ -22,4 +21,3 @@ export default function TypingIndicator({ show }: { show?: boolean }) {
     </span>
   );
 }
-EOF

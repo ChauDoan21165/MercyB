@@ -1,4 +1,3 @@
-cat > src/components/guide/host/buildActions.ts <<'EOF'
 // src/components/guide/host/buildActions.ts
 // SAFE STUB — required by MercyAIHost import.
 // Provides a minimal actions API with no side effects.
@@ -17,4 +16,3 @@ export function useHostActions(_opts?: any): HostActions {
     setLang: () => {},
   };
 }
-EOF

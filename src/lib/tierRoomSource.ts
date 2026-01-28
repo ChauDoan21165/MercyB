@@ -2,9 +2,9 @@
 // PATH: src/lib/tierRoomSource.ts
 //
 // ONE truth pipeline for Tier pages:
-// - Prefer DB rooms list (id + domain + track + titles) if available
-// - Fallback: /room-registry.json (various shapes)
+// - Prefer /room-registry.json (various shapes) for display consistency (NOT gated by RLS)
 // - Fallback: PUBLIC_ROOM_MANIFEST
+// - DB LAST (debug / fallback only; may be RLS-limited)
 // - Tier is inferred STRICT from id/path (unknown stays unknown)
 // - Area (core/english/life/kids) inferred with HARD OVERRIDES:
 //   - If ID clearly indicates english/kids/life => that wins (even if DB says track="core").
@@ -20,7 +20,8 @@ export type TierId =
   | "free"
   | "vip1"
   | "vip2"
-  | "vip3"| "vip4"
+  | "vip3"
+  | "vip4"
   | "vip5"
   | "vip6"
   | "vip7"
@@ -55,7 +56,7 @@ export function isTierId(x: any): x is TierId {
     x === "free" ||
     x === "vip1" ||
     x === "vip2" ||
-    x === "vip3"||
+    x === "vip3" ||
     x === "vip4" ||
     x === "vip5" ||
     x === "vip6" ||
@@ -147,6 +148,22 @@ export function strictTierFromIdOrPath(idOrPath: string): TierId | "unknown" {
   }
 
   return "unknown";
+}
+
+/**
+ * DB FALLBACK tier inference:
+ * - When DB is the source, many ids may not contain explicit "_vipX" markers.
+ * - We still want reasonable tier counts, using the existing tierFromRoomId() mapping.
+ * - MUST NOT let anything "default" to free.
+ */
+function inferTierFromIdFallback(idOrPath: string): TierId | "unknown" {
+  const leaf = normalizeLeafId(String(idOrPath || "").trim());
+  if (!leaf) return "unknown";
+
+  const t = String(tierFromRoomId(leaf) ?? "").trim().toLowerCase();
+  if (!t || !isTierId(t)) return "unknown";
+  if (t === "free") return "unknown"; // never default unknown -> free
+  return t;
 }
 
 function inferAreaFromIdHeuristics(idLower: string, titleLower: string): RoomArea {
@@ -264,12 +281,7 @@ function inferAreaFromMetaAndId(meta: {
   // ✅ Only trust DB when explicitly english/kids/life
   if (domain.includes("english")) return "english";
   if (domain.includes("kids") || domain.includes("children")) return "kids";
-  if (
-    domain.includes("life") ||
-    domain.includes("survival") ||
-    domain.includes("public speaking") ||
-    domain.includes("debate")
-  )
+  if (domain.includes("life") || domain.includes("survival") || domain.includes("public speaking") || domain.includes("debate"))
     return "life";
 
   if (track === "english") return "english";
@@ -414,7 +426,10 @@ async function tryLoadFromDb(): Promise<{ rooms: TierRoom[]; debug: string } | n
         const id = String(r?.id || "").trim();
         if (!id) return null;
 
-        const tier = strictTierFromIdOrPath(id);
+        // ✅ tier: strict first; if unknown (common for DB ids), fallback to mapping helper
+        let tier = strictTierFromIdOrPath(id);
+        if (tier === "unknown") tier = inferTierFromIdFallback(id);
+
         const area = inferAreaFromMetaAndId({
           id,
           domain: r.domain,
@@ -442,17 +457,20 @@ async function tryLoadFromDb(): Promise<{ rooms: TierRoom[]; debug: string } | n
 }
 
 export async function loadRoomsForTiers(): Promise<TierLoadResult> {
-  const db = await tryLoadFromDb();
-  if (db && db.rooms.length) return { rooms: db.rooms, source: "DB", debug: db.debug };
-
+  // ✅ REGISTRY FIRST — display truth (not gated by RLS)
   const reg = await tryLoadFromRegistry();
   if (reg && reg.rooms.length) return { rooms: reg.rooms, source: "room-registry.json", debug: reg.debug };
   if (reg && reg.rooms.length === 0) return { rooms: [], source: "room-registry.json", debug: reg.debug };
 
+  // ✅ Manifest second
   const man = loadFromManifest();
   if (man.rooms.length) return { rooms: man.rooms, source: "PUBLIC_ROOM_MANIFEST", debug: man.debug };
 
-  return { rooms: [], source: "none", debug: "DB empty, registry not found, manifest empty" };
+  // ✅ DB LAST (debug / fallback only; may be RLS-limited)
+  const db = await tryLoadFromDb();
+  if (db && db.rooms.length) return { rooms: db.rooms, source: "DB", debug: db.debug };
+
+  return { rooms: [], source: "none", debug: "registry not found, manifest empty, DB empty" };
 }
 
 export function filterRoomsByTierAndArea(rooms: TierRoom[], tier: TierId, area: RoomArea): TierRoom[] {

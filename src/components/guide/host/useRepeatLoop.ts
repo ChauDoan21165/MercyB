@@ -1,4 +1,3 @@
-cat > src/components/guide/host/useRepeatLoop.ts <<'EOF'
 // src/components/guide/host/useRepeatLoop.ts
 // SAFE STUB — required by MercyAIHost import.
 // Minimal API so app boots; no audio side effects here.
@@ -54,4 +53,3 @@ export function useRepeatLoop(_args?: any) {
 
   return api;
 }
-EOF

@@ -1,4 +1,3 @@
-cat > src/components/guide/host/makeReply.ts <<'EOF'
 // src/components/guide/host/makeReply.ts
 // SAFE STUB — required by MercyAIHost import.
 // Returns a simple host reply object/string without side effects.
@@ -33,4 +32,5 @@ export function makeReply(input: any): HostReply {
 
   return { text_en, text_vi, tone };
 }
-EOF
+
+export { makeReply as useMakeReply };
