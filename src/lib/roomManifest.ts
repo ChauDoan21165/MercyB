@@ -179,7 +179,6 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "english_foundation_ef11": "data/english_foundation_ef11.json",
   "english_specialization_mastery_module2_vip3_ii": "data/english_specialization_mastery_module2_vip3_ii.json",
   "english_specialization_mastery_vip3_ii": "data/english_specialization_mastery_vip3_ii.json",
-  "english_writing_free": "data/english_writing_free.json",
   "environment_nature_kids_l2": "data/environment_nature_kids_l2.json",
   "epaminondas_vip9_vol1": "data/epaminondas_vip9_vol1.json",
   "epaminondas_vip9_vol2": "data/epaminondas_vip9_vol2.json",

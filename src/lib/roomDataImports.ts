@@ -1223,13 +1223,6 @@ export const roomDataMap = {
     "tier": "free",
     "hasData": true
   },
-  "english_writing_free": {
-    "id": "english_writing_free",
-    "title_en": "English Writing Foundations",
-    "title_vi": "Nền Tảng Viết Tiếng Anh",
-    "tier": "free",
-    "hasData": true
-  },
   "environment_nature_kids_l2": {
     "id": "environment_nature_kids_l2",
     "title_en": "Environment & Nature",
