@@ -2,7 +2,7 @@
 // MB-BLUE-99.11m → MB-BLUE-99.11m-kwtext-rainbow — 2026-01-18 (+0700)
 //
 // FIX (NO COLOR IN TEXT HIGHLIGHTS):
-// - Root cause: a late CSS block forced `.mb-kw { background:#fff; color:black !important; }`
+// - Root cause: a late CSS block forced '.mb-kw { background:#fff; color:black !important; }'
 //   which nuked all highlight colors.
 // - Keep keyword PILLS white (mb-keyBtn), BUT allow text highlights (.mb-entryText .mb-kw, .mb-welcomeLine .mb-kw)
 //   to render with dark rainbow colors.
@@ -16,7 +16,7 @@
 // - FIX: Community Chat must NOT overlay/cut off the essay. Box 5 must be normal-flow (flex) and collapsible.
 //   We harden Box 5 container so it never “floats” over Box 4 even if a sticky/absolute style sneaks in.
 
-export const ROOM_CSS = `
+export const ROOM_CSS = String.raw`
   /* Selector helpers (do NOT remove):
      A) scope + class on same node:   [data-mb-scope="room"].mb-room
      B) scope on parent wrapper:      [data-mb-scope="room"] .mb-room
@@ -178,9 +178,10 @@ export const ROOM_CSS = `
     font-weight: 900;
     letter-spacing: -0.02em;
     text-transform: none;
-    white-space: nowrap;
+    white-space: normal; /* ✅ IMPORTANT: allow RoomRenderer 2-line clamp to work */
     overflow: hidden;
     text-overflow: ellipsis;
+    min-width: 0; /* ✅ flex-safe */
   }
   @media (max-width: 560px){
     [data-mb-scope="room"] .mb-roomTitle,
@@ -252,7 +253,6 @@ export const ROOM_CSS = `
   /* =============================
      TEXT HIGHLIGHTS (EN/VI)
      ============================= */
-
   [data-mb-scope="room"] .mb-entryText .mb-kw,
   [data-mb-scope="room"] .mb-welcomeLine .mb-kw,
   .mb-room .mb-entryText .mb-kw,
@@ -320,6 +320,7 @@ export const ROOM_CSS = `
   .mb-room .mb-chatComposer{
     position: static !important;
   }
+
   /* =============================
      Audio clamp
      ============================= */
@@ -380,6 +381,9 @@ export const ROOM_CSS = `
   /* =============================
      🔒 BOX 5: must be normal-flow (NO OVERLAY)
      ============================= */
+  /* RoomRenderer uses data-room-box="5" (no mb-box5 class), so target both */
+  [data-mb-scope="room"] [data-room-box="5"],
+  .mb-room [data-room-box="5"],
   [data-mb-scope="room"] .mb-box5,
   .mb-room .mb-box5{
     flex: 0 0 auto;
@@ -560,11 +564,30 @@ export const ROOM_CSS = `
   .mb-room .mb-keyBtn,
   [data-mb-scope="room"] .mb-keyBtn{
     background: #ffffff !important;
-    color: rgba(0, 0, 0, 0.88) !important;
+    /* ✅ allow class-based colors to show on pills */
+    color: inherit !important;
     border: 1px solid rgba(0, 0, 0, 0.14) !important;
     box-shadow: none !important;
     text-shadow: none !important;
   }
+
+  /* ✅ match the essay highlight colors on the keyword list */
+  .mb-room .mb-keyBtn.mb-kw-0,
+  [data-mb-scope="room"] .mb-keyBtn.mb-kw-0{ color: #B91C1C !important; }
+  .mb-room .mb-keyBtn.mb-kw-1,
+  [data-mb-scope="room"] .mb-keyBtn.mb-kw-1{ color: #C2410C !important; }
+  .mb-room .mb-keyBtn.mb-kw-2,
+  [data-mb-scope="room"] .mb-keyBtn.mb-kw-2{ color: #A16207 !important; }
+  .mb-room .mb-keyBtn.mb-kw-3,
+  [data-mb-scope="room"] .mb-keyBtn.mb-kw-3{ color: #047857 !important; }
+  .mb-room .mb-keyBtn.mb-kw-4,
+  [data-mb-scope="room"] .mb-keyBtn.mb-kw-4{ color: #0F766E !important; }
+  .mb-room .mb-keyBtn.mb-kw-5,
+  [data-mb-scope="room"] .mb-keyBtn.mb-kw-5{ color: #1D4ED8 !important; }
+  .mb-room .mb-keyBtn.mb-kw-6,
+  [data-mb-scope="room"] .mb-keyBtn.mb-kw-6{ color: #6D28D9 !important; }
+  .mb-room .mb-keyBtn.mb-kw-7,
+  [data-mb-scope="room"] .mb-keyBtn.mb-kw-7{ color: #BE185D !important; }
 
   .mb-room .mb-keyBtn:hover,
   [data-mb-scope="room"] .mb-keyBtn:hover{
@@ -581,3 +604,9 @@ export const ROOM_CSS = `
     opacity: 0.55 !important;
   }
 `;
+
+/**
+ * New thing to learn:
+ * `color: black !important` on a base button rule will defeat all your per-keyword classes.
+ * Fix it by using `color: inherit` + explicit `.mb-keyBtn.mb-kw-* { color: ... !important }` overrides.
+ */
