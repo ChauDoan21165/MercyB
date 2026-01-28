@@ -31,15 +31,53 @@ import { supabase } from "@/lib/supabaseClient";
 declare global {
   interface Window {
     supabase?: typeof supabase;
+
+    // ✅ HMR-safe singleton root (prevents double createRoot → removeChild NotFoundError)
+    __MB_REACT_ROOT__?: ReactDOM.Root;
+    __MB_REACT_ROOT_EL__?: HTMLElement;
+
+    // ✅ Fatal overlay singleton state (prevents DOM races + duplicate overlays)
+    __MB_FATAL_OVERLAY_EL__?: HTMLDivElement;
+    __MB_FATAL_OVERLAY_SHOWN__?: boolean;
   }
 }
 
 // ✅ MB FATAL OVERLAY — shows runtime errors on screen
 (function attachFatalErrorOverlay() {
+  const getOverlayRoot = (): HTMLDivElement | null => {
+    try {
+      if (typeof document === "undefined" || !document.body) return null;
+
+      // Prefer window-stored node (HMR-safe)
+      if (window.__MB_FATAL_OVERLAY_EL__ && document.body.contains(window.__MB_FATAL_OVERLAY_EL__)) {
+        return window.__MB_FATAL_OVERLAY_EL__;
+      }
+
+      // Reuse existing DOM node if present
+      const existing = document.querySelector<HTMLDivElement>('[data-mb-fatal-overlay="1"]');
+      if (existing) {
+        window.__MB_FATAL_OVERLAY_EL__ = existing;
+        return existing;
+      }
+
+      // Create once
+      const el = document.createElement("div");
+      el.setAttribute("data-mb-fatal-overlay", "1");
+      document.body.appendChild(el);
+      window.__MB_FATAL_OVERLAY_EL__ = el;
+      return el;
+    } catch {
+      return null;
+    }
+  };
+
   const mount = (title: string, err: unknown) => {
     try {
-      const rootEl = document.getElementById("root");
-      if (!rootEl) return;
+      // IMPORTANT:
+      // Do NOT touch #root (no innerHTML="") — that can race React and *cause* removeChild NotFoundError.
+      // Render overlay into its own DOM node attached to body.
+      const overlayRoot = getOverlayRoot();
+      if (!overlayRoot) return;
 
       const message =
         err instanceof Error
@@ -50,8 +88,8 @@ declare global {
 
       const msg = `${title}\n\n` + message + `\n\nURL: ${window.location.href}`;
 
-      // Clear existing UI so overlay is visible even if CSS is broken
-      rootEl.innerHTML = "";
+      // Ensure visible + topmost
+      overlayRoot.innerHTML = "";
 
       const wrap = document.createElement("div");
       wrap.style.position = "fixed";
@@ -72,17 +110,23 @@ declare global {
       pre.textContent = msg;
 
       wrap.appendChild(pre);
-      rootEl.appendChild(wrap);
+      overlayRoot.appendChild(wrap);
+
+      // mark shown (avoid re-entrant spam loops)
+      window.__MB_FATAL_OVERLAY_SHOWN__ = true;
     } catch {
       // ignore overlay failures
     }
   };
 
   window.addEventListener("error", (e: ErrorEvent) => {
+    // Allow first render; after that, avoid re-entrant storms.
+    if (window.__MB_FATAL_OVERLAY_SHOWN__) return;
     mount("[MB FATAL] window.error", e.error ?? e.message);
   });
 
   window.addEventListener("unhandledrejection", (e: PromiseRejectionEvent) => {
+    if (window.__MB_FATAL_OVERLAY_SHOWN__) return;
     mount("[MB FATAL] unhandledrejection", e.reason);
   });
 })();
@@ -127,7 +171,19 @@ if (!root) {
   throw new Error("Root element #root not found");
 }
 
-ReactDOM.createRoot(root).render(
+// ✅ HMR-safe singleton root
+// Vite HMR can re-run this module; creating a second root on the same container
+// triggers React DOM reconciliation races (removeChild NotFoundError).
+const w = window;
+
+// If the root element was replaced (rare), recreate the root once for the new element.
+// Otherwise reuse the existing root instance.
+if (!w.__MB_REACT_ROOT__ || w.__MB_REACT_ROOT_EL__ !== root) {
+  w.__MB_REACT_ROOT__ = ReactDOM.createRoot(root);
+  w.__MB_REACT_ROOT_EL__ = root;
+}
+
+w.__MB_REACT_ROOT__.render(
   <BrowserRouter>
     <AuthProvider>
       <AppRouter />
@@ -137,6 +193,6 @@ ReactDOM.createRoot(root).render(
 
 /**
  * New thing to learn:
- * When debugging RLS, putting your client on window lets you test SELECT/INSERT
- * from the same authenticated session as the UI.
+ * If your global error overlay mutates #root (innerHTML=""), it can *create* React’s
+ * removeChild NotFoundError by racing React’s commit/unmount logic in dev.
  */

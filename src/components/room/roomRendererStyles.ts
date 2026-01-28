@@ -12,10 +12,9 @@
 // - Text highlights become colorful (dark tone) and high-contrast on white background.
 //
 // PATCH (2026-01-28):
-// - FIX: prevent BOX 4 entry text (and similar content) from hugging / “cutting” against card borders.
-//   Root cause in your screenshots: the BOX 4 text is NOT the Essay box — it’s ActiveEntry content.
-//   Some entry wrappers render full-bleed and ignore parent padding; also zoom scaling can visually reduce spacing.
-//   Solution: enforce a safe inner padding on BOX 4 content wrappers (.mb-entryText / .mb-zoomWrap).
+// - FIX: prevent BOX 4 entry text from hugging / “cutting” against card borders.
+// - FIX: Community Chat must NOT overlay/cut off the essay. Box 5 must be normal-flow (flex) and collapsible.
+//   We harden Box 5 container so it never “floats” over Box 4 even if a sticky/absolute style sneaks in.
 
 export const ROOM_CSS = `
   /* Selector helpers (do NOT remove):
@@ -252,11 +251,8 @@ export const ROOM_CSS = `
 
   /* =============================
      TEXT HIGHLIGHTS (EN/VI)
-     - Used by highlightByColorMap spans: <span class="mb-kw mb-kw-#">...</span>
-     - MUST be colorful (dark rainbow) on white backgrounds
      ============================= */
 
-  /* Base style for highlighted tokens in text */
   [data-mb-scope="room"] .mb-entryText .mb-kw,
   [data-mb-scope="room"] .mb-welcomeLine .mb-kw,
   .mb-room .mb-entryText .mb-kw,
@@ -268,7 +264,6 @@ export const ROOM_CSS = `
     text-shadow: none;
   }
 
-  /* Dark rainbow colors (echo Mercy Blade, not exact) */
   [data-mb-scope="room"] .mb-entryText .mb-kw-0,
   [data-mb-scope="room"] .mb-welcomeLine .mb-kw-0,
   .mb-room .mb-entryText .mb-kw-0,
@@ -310,6 +305,104 @@ export const ROOM_CSS = `
   .mb-room .mb-welcomeLine .mb-kw-7{ color: #BE185D; }
 
   /* =============================
+     PATCH: Essay safety spacing + prevent chat overlay
+     (Use !important here because later CSS may introduce sticky/fixed by accident)
+     ============================= */
+  [data-mb-scope="room"] .mb-box4 .mb-zoomWrap,
+  .mb-room .mb-box4 .mb-zoomWrap{
+    padding-bottom: 320px !important; /* room for chat+composer so VI text never gets covered */
+    scroll-padding-bottom: 320px !important;
+  }
+
+  [data-mb-scope="room"] .mb-chatWrap,
+  .mb-room .mb-chatWrap,
+  [data-mb-scope="room"] .mb-chatComposer,
+  .mb-room .mb-chatComposer{
+    position: static !important;
+  }
+  /* =============================
+     Audio clamp
+     ============================= */
+  [data-mb-scope="room"] .mb-audioClamp,
+  .mb-room .mb-audioClamp{
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow: hidden;
+    border-radius: 18px;
+    clip-path: inset(0 round 18px);
+  }
+  [data-mb-scope="room"] .mb-audioClamp *,
+  .mb-room .mb-audioClamp *{
+    max-width: 100%;
+    box-sizing: border-box;
+    min-width: 0;
+  }
+
+  /* =============================
+     BOX 4: ONLY grow/scroll area
+     ============================= */
+  [data-mb-scope="room"] .mb-box4,
+  .mb-room .mb-box4{
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 0;
+  }
+
+  [data-mb-scope="room"] .mb-zoomWrap,
+  .mb-room .mb-zoomWrap{
+    height: 100%;
+    min-height: 0;
+    overflow: auto;
+
+    /* ✅ SAFETY GAP: keep text off borders */
+    padding: 14px 16px;
+    box-sizing: border-box;
+
+    --mbz: calc(var(--mb-essay-zoom, 100) / 100);
+    transform: scale(var(--mbz));
+    transform-origin: top left;
+    width: calc(100% / var(--mbz));
+  }
+
+  [data-mb-scope="room"] .mb-box4 .mb-entryText,
+  .mb-room .mb-box4 .mb-entryText{
+    padding: 12px 14px;
+    box-sizing: border-box;
+  }
+  [data-mb-scope="room"] .mb-box4 p,
+  .mb-room .mb-box4 p{
+    overflow-wrap: anywhere;
+  }
+
+  /* =============================
+     🔒 BOX 5: must be normal-flow (NO OVERLAY)
+     ============================= */
+  [data-mb-scope="room"] .mb-box5,
+  .mb-room .mb-box5{
+    flex: 0 0 auto;
+    min-height: 0;
+    margin-top: 10px;
+
+    /* ✅ kill any accidental overlay behavior */
+    position: relative !important;
+    bottom: auto !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+    z-index: 1;
+  }
+
+  /* If the chat wrapper itself got made sticky/absolute somewhere, hard-reset it */
+  [data-mb-scope="room"] .mb-chatWrap,
+  .mb-room .mb-chatWrap{
+    position: relative !important;
+  }
+
+  /* =============================
      BOX 5 (Community Chat)
      ============================= */
   [data-mb-scope="room"] .mb-chatWrap,
@@ -328,12 +421,12 @@ export const ROOM_CSS = `
     gap: 10px;
     margin-bottom: 8px;
     font-weight: 950;
-    font-size: 14px; /* ✅ bump */
+    font-size: 14px;
     opacity: 0.92;
   }
   [data-mb-scope="room"] .mb-chatList,
   .mb-room .mb-chatList{
-    height: 220px; /* ✅ restore normal chat size */
+    height: 220px;
     overflow: auto;
     border: 1px solid rgba(15,23,42,0.08);
     background: rgba(255,255,255,0.52);
@@ -347,14 +440,14 @@ export const ROOM_CSS = `
     background: rgba(255,255,255,0.72);
     border: 1px solid rgba(15,23,42,0.06);
     margin-bottom: 8px;
-    font-size: 15px; /* ✅ bump */
+    font-size: 15px;
     line-height: 1.45;
     overflow-wrap: anywhere;
     word-break: break-word;
   }
   [data-mb-scope="room"] .mb-chatMeta,
   .mb-room .mb-chatMeta{
-    font-size: 12px; /* ✅ bump */
+    font-size: 12px;
     opacity: 0.70;
     margin-bottom: 2px;
     font-weight: 850;
@@ -374,7 +467,7 @@ export const ROOM_CSS = `
     background: rgba(255,255,255,0.82);
     border-radius: 14px;
     padding: 10px 12px;
-    font-size: 15px; /* ✅ bump */
+    font-size: 15px;
     outline: none;
   }
   [data-mb-scope="room"] .mb-chatComposer button,
@@ -409,7 +502,7 @@ export const ROOM_CSS = `
     min-width: 0;
     background: transparent;
     outline: none;
-    font-size: 15px; /* ✅ bump */
+    font-size: 15px;
   }
   [data-mb-scope="room"] .mb-feedback button,
   .mb-room .mb-feedback button{
@@ -422,81 +515,6 @@ export const ROOM_CSS = `
     display:flex;
     align-items:center;
     justify-content:center;
-  }
-
-  /* =============================
-     Audio clamp
-     ============================= */
-  [data-mb-scope="room"] .mb-audioClamp,
-  .mb-room .mb-audioClamp{
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    overflow: hidden;
-    border-radius: 18px;
-    clip-path: inset(0 round 18px);
-  }
-  [data-mb-scope="room"] .mb-audioClamp *,
-  .mb-room .mb-audioClamp *{
-    max-width: 100%;
-    box-sizing: border-box;
-    min-width: 0;
-  }
-
-  /* =============================
-     BOX 4: ONLY grow/scroll area
-     ============================= */
-  [data-mb-scope="room"] .mb-box4,
-  .mb-room .mb-box4{
-    flex: 1 1 auto;
-    min-height: 0;
-    overflow: hidden;
-  }
-  [data-mb-scope="room"] .mb-zoomWrap,
-  .mb-room .mb-zoomWrap{
-    height: 100%;
-    min-height: 0;
-    overflow: auto;
-
-    /* ✅ SAFETY GAP: ensure content never hugs card border even if entry wrapper renders full-bleed */
-    padding: 14px 16px;
-    box-sizing: border-box;
-
-    --mbz: calc(var(--mb-essay-zoom, 100) / 100);
-    transform: scale(var(--mbz));
-    transform-origin: top left;
-    width: calc(100% / var(--mbz));
-  }
-
-  /* ✅ Extra guard: ActiveEntry text wrapper (common class used by highlight spans) */
-  [data-mb-scope="room"] .mb-box4 .mb-entryText,
-  .mb-room .mb-box4 .mb-entryText{
-    padding: 12px 14px;
-    box-sizing: border-box;
-  }
-  [data-mb-scope="room"] .mb-box4 .mb-entryText > :first-child,
-  .mb-room .mb-box4 .mb-entryText > :first-child{
-    margin-top: 0;
-  }
-  [data-mb-scope="room"] .mb-box4 .mb-entryText > :last-child,
-  .mb-room .mb-box4 .mb-entryText > :last-child{
-    margin-bottom: 0;
-  }
-
-  /* ✅ If the entry renderer uses plain paragraphs without a wrapper, keep them off borders */
-  [data-mb-scope="room"] .mb-box4 p,
-  .mb-room .mb-box4 p{
-    overflow-wrap: anywhere;
-  }
-
-  /* ✅ Locked state: feel centered/intentional (CSS-only) */
-  [data-mb-scope="room"] .mb-box4 .mb-zoomWrap,
-  .mb-room .mb-box4 .mb-zoomWrap{
-    display: block;
-  }
-  [data-mb-scope="room"] .mb-box4 .mb-zoomWrap > div,
-  .mb-room .mb-box4 .mb-zoomWrap > div{
-    margin: 0 auto;
   }
 
   /* =============================
@@ -521,7 +539,7 @@ export const ROOM_CSS = `
     border-radius: 999px;
     border: 1px solid rgba(15,23,42,0.12);
     background: rgba(255,255,255,0.92);
-    font-size: 14px; /* ✅ bump */
+    font-size: 14px;
     font-weight: 900;
     box-shadow: 0 10px 22px rgba(0,0,0,0.06);
     opacity: 0.95;
@@ -538,8 +556,6 @@ export const ROOM_CSS = `
 
   /* =============================
      KEYWORD PILL UX (PILLS ONLY)
-     - Pills are WHITE for readability
-     - Color stays ONLY in text highlight spans
      ============================= */
   .mb-room .mb-keyBtn,
   [data-mb-scope="room"] .mb-keyBtn{

@@ -10,9 +10,12 @@
 // NEW (host hearts):
 // - repeatCount increments on explicit user “repeat ack” while repeatStep==="your_turn"
 // - trigger heartBurst when repeatCount === 3 (UI render later in Part 2)
+//
+// PATCH (2026-01-29):
+// - Remove React portal usage to eliminate dev/StrictMode/HMR NotFoundError(removeChild) crashes.
+//   (Render inline in the React tree; UI is fixed-position anyway.)
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { createPortal } from "react-dom";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import TalkingFaceIcon from "@/components/guide/TalkingFaceIcon";
 import { useAuth } from "@/providers/AuthProvider";
@@ -142,14 +145,15 @@ export default function MercyAIHost() {
   }, [mode, pageHint, lang]);
 
   const contextLine = useMemo(() => {
-    const rid = (ctx as HostContext)?.roomId ?? roomIdFromUrl;
+    const c = (ctx as HostContext | null | undefined) ?? null;
+    const rid = c?.roomId ?? roomIdFromUrl;
     const parts: string[] = [];
-    if (ctx.roomTitle) parts.push(ctx.roomTitle);
+    if (c?.roomTitle) parts.push(c.roomTitle);
     else if (rid) parts.push(rid);
-    if (ctx.entryId) parts.push(`entry:${ctx.entryId}`);
-    if (ctx.keyword) parts.push(`kw:${ctx.keyword}`);
+    if (c?.entryId) parts.push(`entry:${c.entryId}`);
+    if (c?.keyword) parts.push(`kw:${c.keyword}`);
     return parts.length ? parts.join(" • ") : null;
-  }, [ctx.roomId, ctx.roomTitle, ctx.entryId, ctx.keyword, roomIdFromUrl]);
+  }, [ctx, roomIdFromUrl]);
 
   const scrollToBottom = useCallback(() => {
     const el = scrollRef.current;
@@ -173,10 +177,11 @@ export default function MercyAIHost() {
   }, [isAdmin, messages, open, scrollToBottom]);
 
   const goTiers = useCallback(() => {
-    const rid = ctx.roomId ?? roomIdFromUrl;
+    const c = (ctx as HostContext | null | undefined) ?? null;
+    const rid = c?.roomId ?? roomIdFromUrl;
     const returnTo = rid ? `/room/${rid}` : location.pathname || "/";
     navigate(`/tiers?returnTo=${encodeURIComponent(returnTo)}`);
-  }, [ctx.roomId, roomIdFromUrl, location.pathname, navigate]);
+  }, [ctx, roomIdFromUrl, location.pathname, navigate]);
 
   const baseAssistantHome = useMemo(() => {
     const name = displayName ? ` ${displayName}` : "";
@@ -213,7 +218,6 @@ export default function MercyAIHost() {
     },
     [baseAssistantHome, lang]
   );
-
   /* =========================
      Repeat loop (events + hearts)
      - MUST match host/useRepeatLoop.ts API
@@ -251,7 +255,16 @@ export default function MercyAIHost() {
      Reply function (pure)
      - MUST match host/makeReply.ts API
   ========================= */
-  const makeReplyFn = useMakeReply();
+  const makeReplyRaw = useMakeReply();
+
+  // ✅ HARDEN: tolerate hook returning fn OR { makeReply: fn } during HMR/refactors
+  const makeReplyFn = useMemo(() => {
+    if (typeof makeReplyRaw === "function") return makeReplyRaw as any;
+    const maybe = makeReplyRaw as any;
+    if (typeof maybe?.makeReply === "function") return maybe.makeReply as any;
+    if (typeof maybe?.default === "function") return maybe.default as any;
+    return null;
+  }, [makeReplyRaw]);
 
   const assistantRespond = useCallback(
     (userText: string, currentMode: PanelMode) => {
@@ -270,6 +283,16 @@ export default function MercyAIHost() {
         }
 
         // 2) Normal reply (pure)
+        if (typeof makeReplyFn !== "function") {
+          addMsg(
+            "assistant",
+            lang === "vi"
+              ? "Host đang lỗi (makeReply). Bạn refresh trang (Cmd+R) giúp mình nhé."
+              : "Host is in a bad state (makeReply). Please refresh (Cmd+R)."
+          );
+          return;
+        }
+
         const reply = makeReplyFn(userText, {
           isAdmin,
           locationPath: location.pathname,
@@ -406,11 +429,14 @@ export default function MercyAIHost() {
     speak,
   });
 
+  // ✅ HARDEN: never crash if hook returns non-array (dev/HMR/state mismatch)
+  const safeActions = Array.isArray(actions) ? actions : [];
+
   useDevHostState({
     open,
     mode,
     page: location.pathname,
-    roomId: ctx.roomId ?? roomIdFromUrl,
+    roomId: (ctx as any)?.roomId ?? roomIdFromUrl,
     ctx,
     isTyping,
     messagesCount: messages.length,
@@ -433,7 +459,8 @@ export default function MercyAIHost() {
     heartBurst,
   });
 
-  if (!mounted || typeof document === "undefined" || !document.body) return null;
+  if (!mounted || typeof document === "undefined") return null;
+
 
   // ✅ IMPORTANT: hide UI on admin AFTER hooks (no early return before hooks)
   if (isAdmin) return null;
@@ -779,7 +806,7 @@ export default function MercyAIHost() {
             ) : null}
 
             <div style={{ marginTop: 12, display: "flex", flexWrap: "wrap", gap: 8 }}>
-              {actions.map((a) => (
+              {safeActions.map((a) => (
                 <button
                   key={a.id}
                   type="button"
@@ -919,5 +946,5 @@ export default function MercyAIHost() {
     </div>
   );
 
-  return createPortal(ui, document.body);
+  return ui;
 }
