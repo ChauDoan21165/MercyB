@@ -62,4 +62,49 @@ export default defineConfig({
 
   resolve: {
     // IMPORTANT: ensure Vite never bundles a second copy of React/ReactDOM
-    dedupe: ["react", "
+    // (Your build failed because this line was cut into: ["react", "  <-- unterminated string)
+    dedupe: ["react", "react-dom", "react-router", "react-router-dom"],
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+      // Hard pinning React entrypoints helps when monorepo/lockfile weirdness causes duplicate React.
+      react: REACT_ENTRY,
+      "react-dom": REACT_DOM_ENTRY,
+      "react/jsx-runtime": REACT_JSX_RUNTIME,
+      "react/jsx-dev-runtime": REACT_JSX_DEV_RUNTIME,
+    },
+  },
+
+  build: {
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        // Prevent circular vendor chunking by using mutually-exclusive buckets.
+        manualChunks(id) {
+          const s = normalizeId(id);
+
+          if (isReactPath(s)) return "react";
+
+          // Supabase bucket
+          if (s.includes("/node_modules/@supabase/")) return "supabase";
+
+          // UI bucket (common UI libs; keep conservative)
+          if (
+            s.includes("/node_modules/@radix-ui/") ||
+            s.includes("/node_modules/lucide-react/") ||
+            s.includes("/node_modules/class-variance-authority/") ||
+            s.includes("/node_modules/clsx/") ||
+            s.includes("/node_modules/tailwind-merge/")
+          ) {
+            return "ui";
+          }
+
+          // Everything else in node_modules -> vendor
+          if (s.includes("/node_modules/")) return "vendor";
+
+          // app code: let Rollup decide
+          return undefined;
+        },
+      },
+    },
+  },
+});
