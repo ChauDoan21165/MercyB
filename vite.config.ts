@@ -36,8 +36,17 @@ export default defineConfig({
     // IMPORTANT: ensure Vite never bundles a second copy of React/ReactDOM
     // (fixes runtime "useLayoutEffect" undefined / blank page)
     dedupe: ["react", "react-dom"],
+
     alias: {
       "@": path.resolve(__dirname, "./src"),
+
+      // PATCH 2026-01-29:
+      // Hard-pin React entrypoints to THIS repo's node_modules.
+      // This prevents "React is undefined" / hook crashes caused by multi-react resolution.
+      react: path.resolve(__dirname, "./node_modules/react"),
+      "react-dom": path.resolve(__dirname, "./node_modules/react-dom"),
+      "react/jsx-runtime": path.resolve(__dirname, "./node_modules/react/jsx-runtime"),
+      "react/jsx-dev-runtime": path.resolve(__dirname, "./node_modules/react/jsx-dev-runtime"),
     },
   },
 
