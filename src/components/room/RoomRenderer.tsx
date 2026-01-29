@@ -1065,7 +1065,6 @@ export default function RoomRenderer({
               )}
             </div>
           </section>
-
           {/* BOX 5 */}
           <div style={{ marginTop: "auto" }} data-room-box="5">
             <div className="mb-card p-3 md:p-4">
@@ -1106,7 +1105,7 @@ export default function RoomRenderer({
                       style={{
                         maxHeight: chatListMaxH,
                         overflow: "auto",
-                        padding: isNarrow ? "10px 10px" : "12px 12px", // ✅ prevents “touching border”
+                        padding: isNarrow ? "10px 10px" : "12px 12px",
                         boxSizing: "border-box",
                       }}
                       ref={chatListRef}
@@ -1213,14 +1212,15 @@ export default function RoomRenderer({
                 </button>
               </div>
 
-              {feedback.feedbackError || feedback.feedbackSent ? (
+              {(feedback.feedbackError || feedback.feedbackSent) && (
                 <div className="mt-2 text-xs opacity-70">
                   {feedback.feedbackError ? `⚠ ${feedback.feedbackError}` : "✓ Sent to admin"}
                 </div>
-              ) : null}
+              )}
             </div>
           </div>
         </>
       )}
     </div>
   );
+}
