@@ -36,15 +36,6 @@ function normalizeId(id: string) {
 }
 
 function isReactPath(s: string) {
-  // IMPORTANT: do NOT rely on "/react/" (trailing slash)
-  // Vite/rollup often sees:
-  // - .../node_modules/react/index.js
-  // - .../node_modules/react/jsx-runtime.js
-  // - .../node_modules/react/cjs/react.production.js
-  // - .../node_modules/react-dom/client.js
-  // - .../node_modules/react-dom/cjs/...
-  // - .../node_modules/scheduler/...
-  // - .../node_modules/react-is/...
   return (
     s.includes("/node_modules/react/") ||
     s.includes("/node_modules/react-dom/") ||
@@ -52,7 +43,7 @@ function isReactPath(s: string) {
     s.includes("/node_modules/scheduler/") ||
     s.includes("/node_modules/react-router/") ||
     s.includes("/node_modules/react-router-dom/") ||
-    // Catch the non-trailing-slash forms:
+    // catch non-trailing-slash forms
     s.includes("/node_modules/react/jsx-runtime") ||
     s.includes("/node_modules/react/jsx-dev-runtime") ||
     s.includes("/node_modules/react-dom/client") ||
@@ -70,55 +61,5 @@ export default defineConfig({
   ],
 
   resolve: {
-    dedupe: ["react", "react-dom"],
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-
-      // ✅ hard pin to exactly one resolved install (prevents weird resolution paths)
-      react: REACT_ENTRY,
-      "react-dom": REACT_DOM_ENTRY,
-      "react/jsx-runtime": REACT_JSX_RUNTIME,
-      "react/jsx-dev-runtime": REACT_JSX_DEV_RUNTIME,
-    },
-  },
-
-  optimizeDeps: {
-    include: ["react", "react-dom", "react/jsx-runtime", "react/jsx-dev-runtime"],
-  },
-
-  build: {
-    sourcemap: true,
-
-    rollupOptions: {
-      output: {
-        manualChunks(id) {
-          const s = normalizeId(id);
-          if (!s.includes("/node_modules/")) return;
-
-          // 1) React ecosystem (ONLY here)
-          if (isReactPath(s)) return "vendor-react";
-
-          // 2) Supabase (ONLY here)
-          if (s.includes("/node_modules/@supabase/") || s.includes("/node_modules/ws/")) {
-            return "vendor-supabase";
-          }
-
-          // 3) UI / icons / helpers (ONLY here)
-          if (
-            s.includes("/node_modules/@radix-ui/") ||
-            s.includes("/node_modules/lucide-react/") ||
-            s.includes("/node_modules/class-variance-authority/") ||
-            s.includes("/node_modules/clsx/") ||
-            s.includes("/node_modules/tailwind-merge/") ||
-            s.includes("/node_modules/cmdk/")
-          ) {
-            return "vendor-ui";
-          }
-
-          // 4) Everything else
-          return "vendor";
-        },
-      },
-    },
-  },
-});
+    // IMPORTANT: ensure Vite never bundles a second copy of React/ReactDOM
+    dedupe: ["react", "
