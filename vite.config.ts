@@ -25,6 +25,9 @@ function normalizeId(id: string) {
   return id.replace(/\\/g, "/");
 }
 
+const REACT_PATH = path.resolve(__dirname, "./node_modules/react");
+const REACT_DOM_PATH = path.resolve(__dirname, "./node_modules/react-dom");
+
 export default defineConfig({
   plugins: [
     react({
@@ -40,14 +43,19 @@ export default defineConfig({
     alias: {
       "@": path.resolve(__dirname, "./src"),
 
-      // PATCH 2026-01-29:
-      // Hard-pin React entrypoints to THIS repo's node_modules.
-      // This prevents "React is undefined" / hook crashes caused by multi-react resolution.
-      react: path.resolve(__dirname, "./node_modules/react"),
-      "react-dom": path.resolve(__dirname, "./node_modules/react-dom"),
-      "react/jsx-runtime": path.resolve(__dirname, "./node_modules/react/jsx-runtime"),
-      "react/jsx-dev-runtime": path.resolve(__dirname, "./node_modules/react/jsx-dev-runtime"),
+      // ✅ HARD PIN: all React entrypoints must resolve to the SAME physical package
+      react: REACT_PATH,
+      "react-dom": REACT_DOM_PATH,
+
+      // ✅ also pin jsx runtimes (some libs import these directly)
+      "react/jsx-runtime": path.resolve(REACT_PATH, "./jsx-runtime.js"),
+      "react/jsx-dev-runtime": path.resolve(REACT_PATH, "./jsx-dev-runtime.js"),
     },
+  },
+
+  optimizeDeps: {
+    // Helps Vite prebundle consistently (dev + prod parity)
+    include: ["react", "react-dom", "react/jsx-runtime", "react/jsx-dev-runtime"],
   },
 
   build: {
