@@ -24,7 +24,7 @@ import { createRequire } from "module";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Node-style resolver that matches the actual installed packages (Vercel-safe)
+// Resolver that matches installed packages (Vercel-safe)
 const require = createRequire(import.meta.url);
 const REACT_ENTRY = require.resolve("react");
 const REACT_DOM_ENTRY = require.resolve("react-dom");
@@ -35,6 +35,33 @@ function normalizeId(id: string) {
   return id.replace(/\\/g, "/");
 }
 
+function isReactPath(s: string) {
+  // IMPORTANT: do NOT rely on "/react/" (trailing slash)
+  // Vite/rollup often sees:
+  // - .../node_modules/react/index.js
+  // - .../node_modules/react/jsx-runtime.js
+  // - .../node_modules/react/cjs/react.production.js
+  // - .../node_modules/react-dom/client.js
+  // - .../node_modules/react-dom/cjs/...
+  // - .../node_modules/scheduler/...
+  // - .../node_modules/react-is/...
+  return (
+    s.includes("/node_modules/react/") ||
+    s.includes("/node_modules/react-dom/") ||
+    s.includes("/node_modules/react-is/") ||
+    s.includes("/node_modules/scheduler/") ||
+    s.includes("/node_modules/react-router/") ||
+    s.includes("/node_modules/react-router-dom/") ||
+    // Catch the non-trailing-slash forms:
+    s.includes("/node_modules/react/jsx-runtime") ||
+    s.includes("/node_modules/react/jsx-dev-runtime") ||
+    s.includes("/node_modules/react-dom/client") ||
+    s.includes("/node_modules/react-dom/server") ||
+    s.includes("/node_modules/react-dom/index") ||
+    s.includes("/node_modules/react/index")
+  );
+}
+
 export default defineConfig({
   plugins: [
     react({
@@ -43,13 +70,11 @@ export default defineConfig({
   ],
 
   resolve: {
-    // IMPORTANT: ensure Vite never bundles a second copy of React/ReactDOM
     dedupe: ["react", "react-dom"],
-
     alias: {
       "@": path.resolve(__dirname, "./src"),
 
-      // ✅ HARD PIN: force all imports to the exact same resolved files
+      // ✅ hard pin to exactly one resolved install (prevents weird resolution paths)
       react: REACT_ENTRY,
       "react-dom": REACT_DOM_ENTRY,
       "react/jsx-runtime": REACT_JSX_RUNTIME,
@@ -71,15 +96,7 @@ export default defineConfig({
           if (!s.includes("/node_modules/")) return;
 
           // 1) React ecosystem (ONLY here)
-          if (
-            s.includes("/node_modules/react/") ||
-            s.includes("/node_modules/react-dom/") ||
-            s.includes("/node_modules/scheduler/") ||
-            s.includes("/node_modules/react-router/") ||
-            s.includes("/node_modules/react-router-dom/")
-          ) {
-            return "vendor-react";
-          }
+          if (isReactPath(s)) return "vendor-react";
 
           // 2) Supabase (ONLY here)
           if (s.includes("/node_modules/@supabase/") || s.includes("/node_modules/ws/")) {
