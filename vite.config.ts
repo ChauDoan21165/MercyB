@@ -17,16 +17,23 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
+import { fileURLToPath } from "url";
+import { createRequire } from "module";
 
-// ESM-safe __dirname
-const __dirname = path.dirname(new URL(import.meta.url).pathname);
+// ESM-safe __dirname (portable)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Node-style resolver that matches the actual installed packages (Vercel-safe)
+const require = createRequire(import.meta.url);
+const REACT_ENTRY = require.resolve("react");
+const REACT_DOM_ENTRY = require.resolve("react-dom");
+const REACT_JSX_RUNTIME = require.resolve("react/jsx-runtime");
+const REACT_JSX_DEV_RUNTIME = require.resolve("react/jsx-dev-runtime");
 
 function normalizeId(id: string) {
   return id.replace(/\\/g, "/");
 }
-
-const REACT_PATH = path.resolve(__dirname, "./node_modules/react");
-const REACT_DOM_PATH = path.resolve(__dirname, "./node_modules/react-dom");
 
 export default defineConfig({
   plugins: [
@@ -37,24 +44,20 @@ export default defineConfig({
 
   resolve: {
     // IMPORTANT: ensure Vite never bundles a second copy of React/ReactDOM
-    // (fixes runtime "useLayoutEffect" undefined / blank page)
     dedupe: ["react", "react-dom"],
 
     alias: {
       "@": path.resolve(__dirname, "./src"),
 
-      // ✅ HARD PIN: all React entrypoints must resolve to the SAME physical package
-      react: REACT_PATH,
-      "react-dom": REACT_DOM_PATH,
-
-      // ✅ also pin jsx runtimes (some libs import these directly)
-      "react/jsx-runtime": path.resolve(REACT_PATH, "./jsx-runtime.js"),
-      "react/jsx-dev-runtime": path.resolve(REACT_PATH, "./jsx-dev-runtime.js"),
+      // ✅ HARD PIN: force all imports to the exact same resolved files
+      react: REACT_ENTRY,
+      "react-dom": REACT_DOM_ENTRY,
+      "react/jsx-runtime": REACT_JSX_RUNTIME,
+      "react/jsx-dev-runtime": REACT_JSX_DEV_RUNTIME,
     },
   },
 
   optimizeDeps: {
-    // Helps Vite prebundle consistently (dev + prod parity)
     include: ["react", "react-dom", "react/jsx-runtime", "react/jsx-dev-runtime"],
   },
 
@@ -63,7 +66,6 @@ export default defineConfig({
 
     rollupOptions: {
       output: {
-        // IMPORTANT: buckets must be mutually exclusive (no overlaps), or Rollup can warn cycles.
         manualChunks(id) {
           const s = normalizeId(id);
           if (!s.includes("/node_modules/")) return;
