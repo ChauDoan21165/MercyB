@@ -11,9 +11,8 @@
 // - Prevent "Circular chunk: vendor-react -> vendor -> vendor-react"
 // - Use mutually-exclusive manualChunks buckets: react / supabase / ui / vendor
 //
-// PATCH 2026-01-29 (safe):
-// - REMOVE react/react-dom path pinning (it caused runtime React=undefined in vendor chunk)
-// - Keep dedupe only (the correct Vite-native way)
+// PATCH 2026-01-29:
+// - Force single React instance in prod (fixes "Cannot read properties of undefined (reading 'useLayoutEffect')")
 
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
@@ -29,13 +28,15 @@ function normalizeId(id: string) {
 }
 
 function isReactPath(s: string) {
+  // IMPORTANT:
+  // Keep this ONLY to core React packages. Do NOT include react-router here.
+  // Router in the "react" bucket has been a common trigger for subtle runtime mismatches.
   return (
     s.includes("/node_modules/react/") ||
     s.includes("/node_modules/react-dom/") ||
     s.includes("/node_modules/react-is/") ||
     s.includes("/node_modules/scheduler/") ||
-    s.includes("/node_modules/react-router/") ||
-    s.includes("/node_modules/react-router-dom/") ||
+    // catch non-trailing-slash forms
     s.includes("/node_modules/react/jsx-runtime") ||
     s.includes("/node_modules/react/jsx-dev-runtime") ||
     s.includes("/node_modules/react-dom/client") ||
@@ -53,10 +54,13 @@ export default defineConfig({
   ],
 
   resolve: {
-    // Vite-native way to keep ONE React instance.
+    // IMPORTANT: ensure Vite never bundles a second copy of React/ReactDOM
+    // ✅ This is the correct, Vite-native way.
     dedupe: ["react", "react-dom", "react-router", "react-router-dom"],
     alias: {
       "@": path.resolve(__dirname, "./src"),
+      // ❌ DO NOT hard-pin react/react-dom/jsx-runtime via require.resolve.
+      // It can create a second import graph in production builds and lead to undefined hooks.
     },
   },
 
@@ -64,12 +68,17 @@ export default defineConfig({
     sourcemap: false,
     rollupOptions: {
       output: {
+        // Prevent circular vendor chunking by using mutually-exclusive buckets.
         manualChunks(id) {
           const s = normalizeId(id);
 
+          // Keep react core isolated (optional). Safe as long as it stays core-only.
           if (isReactPath(s)) return "react";
+
+          // Supabase bucket
           if (s.includes("/node_modules/@supabase/")) return "supabase";
 
+          // UI bucket (common UI libs; keep conservative)
           if (
             s.includes("/node_modules/@radix-ui/") ||
             s.includes("/node_modules/lucide-react/") ||
@@ -80,7 +89,10 @@ export default defineConfig({
             return "ui";
           }
 
+          // Everything else in node_modules -> vendor
           if (s.includes("/node_modules/")) return "vendor";
+
+          // app code: let Rollup decide
           return undefined;
         },
       },
