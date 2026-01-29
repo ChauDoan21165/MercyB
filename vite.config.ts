@@ -11,26 +11,18 @@
 // - Prevent "Circular chunk: vendor-react -> vendor -> vendor-react"
 // - Use mutually-exclusive manualChunks buckets: react / supabase / ui / vendor
 //
-// PATCH 2026-01-29:
-// - Force single React instance in prod WITHOUT breaking react/jsx-runtime subpath imports
+// PATCH 2026-01-29 (safe):
+// - REMOVE react/react-dom path pinning (it caused runtime React=undefined in vendor chunk)
+// - Keep dedupe only (the correct Vite-native way)
 
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
 import { fileURLToPath } from "url";
-import { createRequire } from "module";
 
 // ESM-safe __dirname (portable)
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-// Resolver that matches installed packages (Vercel-safe)
-const require = createRequire(import.meta.url);
-
-// ✅ IMPORTANT: alias React to its *package directory*, not to index.js
-// This preserves subpath imports like "react/jsx-runtime".
-const REACT_PKG_DIR = path.dirname(require.resolve("react/package.json"));
-const REACT_DOM_PKG_DIR = path.dirname(require.resolve("react-dom/package.json"));
 
 function normalizeId(id: string) {
   return id.replace(/\\/g, "/");
@@ -61,14 +53,10 @@ export default defineConfig({
   ],
 
   resolve: {
-    // IMPORTANT: ensure Vite never bundles a second copy of React/ReactDOM
+    // Vite-native way to keep ONE React instance.
     dedupe: ["react", "react-dom", "react-router", "react-router-dom"],
     alias: {
       "@": path.resolve(__dirname, "./src"),
-
-      // ✅ Safe “single React” hardening (package dir, keeps subpaths working)
-      react: REACT_PKG_DIR,
-      "react-dom": REACT_DOM_PKG_DIR,
     },
   },
 
@@ -76,16 +64,12 @@ export default defineConfig({
     sourcemap: false,
     rollupOptions: {
       output: {
-        // Prevent circular vendor chunking by using mutually-exclusive buckets.
         manualChunks(id) {
           const s = normalizeId(id);
 
           if (isReactPath(s)) return "react";
-
-          // Supabase bucket
           if (s.includes("/node_modules/@supabase/")) return "supabase";
 
-          // UI bucket (common UI libs; keep conservative)
           if (
             s.includes("/node_modules/@radix-ui/") ||
             s.includes("/node_modules/lucide-react/") ||
@@ -96,10 +80,7 @@ export default defineConfig({
             return "ui";
           }
 
-          // Everything else in node_modules -> vendor
           if (s.includes("/node_modules/")) return "vendor";
-
-          // app code: let Rollup decide
           return undefined;
         },
       },
