@@ -21,7 +21,10 @@ import TalkingFaceIcon from "@/components/guide/TalkingFaceIcon";
 import { useAuth } from "@/providers/AuthProvider";
 
 import type { HostContext, PanelMode } from "@/components/guide/host/types";
-import { safeSetLS, safeLang } from "@/components/guide/host/utils";
+
+// ✅ FIX (prod parity): import explicit file so Vercel/Linux resolver can’t “miss” it.
+import { safeSetLS, safeLang } from "@/components/guide/host/utils.ts";
+
 import { useHostContextSync } from "@/components/guide/host/useHostContext";
 import { useHostProfile } from "@/components/guide/host/useHostProfile";
 import { useRepeatLoop } from "@/components/guide/host/useRepeatLoop";
@@ -213,11 +216,18 @@ export default function MercyAIHost() {
             : lang === "vi"
             ? `Chào. Hỏi mình về ${nextMode}.`
             : `Hi. Ask me anything about ${nextMode}.`;
-        return [{ id: `a_${Math.random().toString(16).slice(2)}_${Date.now().toString(16)}`, role: "assistant", text: first }];
+        return [
+          {
+            id: `a_${Math.random().toString(16).slice(2)}_${Date.now().toString(16)}`,
+            role: "assistant",
+            text: first,
+          },
+        ];
       });
     },
-    [baseAssistantHome, lang]
+    [baseAssistantHome, lang],
   );
+
   /* =========================
      Repeat loop (events + hearts)
      - MUST match host/useRepeatLoop.ts API
