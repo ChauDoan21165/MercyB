@@ -15,9 +15,12 @@
 //
 // PATCH (99.4d hardening):
 // - Catch loadRoomsForTiers() errors so TierDetail doesn't crash the whole page.
+//
+// PATCH (2026-01-29):
+// - Add HOME + BACK (history) buttons at top, like Tier Map UX.
 
 import React, { useEffect, useMemo, useState } from "react";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 
 import { ALL_TIER_IDS, tierIdToLabel, type TierId } from "@/lib/constants/tiers";
 import type { TierRoom, TierSource, RoomArea } from "@/lib/tierRoomSource";
@@ -71,9 +74,12 @@ function isExplicitLifeRoom(r: TierRoom): boolean {
   return false;
 }
 
+type TierAreaCounts = { core: number; kids: number; english: number; life: number };
+
 export default function TierDetail() {
   const { tierId } = useParams<{ tierId: string }>();
   const location = useLocation();
+  const navigate = useNavigate();
 
   const tier = isTierId(String(tierId || "").toLowerCase())
     ? (String(tierId).toLowerCase() as TierId)
@@ -84,6 +90,19 @@ export default function TierDetail() {
   const [rooms, setRooms] = useState<TierRoom[]>([]);
   const [source, setSource] = useState<TierSource>("none");
   const [debug, setDebug] = useState<string | undefined>(undefined);
+
+  // ✅ Debug-only visibility flag (keeps diagnostics out of normal UI)
+  // - Supports existing ?debugTier=1
+  // - Also supports ?debug=1
+  // - Always true in DEV
+  const showDebug = useMemo(() => {
+    try {
+      const qs = new URLSearchParams(location.search);
+      return import.meta.env.DEV || qs.get("debugTier") === "1" || qs.get("debug") === "1";
+    } catch {
+      return Boolean(import.meta.env.DEV);
+    }
+  }, [location.search]);
 
   useEffect(() => {
     let alive = true;
@@ -136,25 +155,17 @@ export default function TierDetail() {
         });
       }
       // forced english/kids views
-      return rooms.filter(
-        (r) =>
-          r.tier === "free" &&
-          String((r as any).area || "").toLowerCase() === areaToShow
-      );
+      return rooms.filter((r) => r.tier === "free" && String((r as any).area || "").toLowerCase() === areaToShow);
     }
 
     // non-free tiers: normal filter
-    return rooms.filter(
-      (r) =>
-        r.tier === tier &&
-        String((r as any).area || "").toLowerCase() === areaToShow
-    );
+    return rooms.filter((r) => r.tier === tier && String((r as any).area || "").toLowerCase() === areaToShow);
   }, [rooms, tier, areaToShow]);
 
-  const tierAreaCounts = useMemo(() => {
+  const tierAreaCounts = useMemo<TierAreaCounts>(() => {
     if (!tier) return { core: 0, kids: 0, english: 0, life: 0 };
 
-    const out: Record<RoomArea, number> = { core: 0, kids: 0, english: 0, life: 0, unknown: 0 };
+    const out: TierAreaCounts = { core: 0, kids: 0, english: 0, life: 0 };
 
     if (tier === "free") {
       // Effective split for Free:
@@ -182,64 +193,13 @@ export default function TierDetail() {
     for (const r of rooms) {
       if (r.tier !== tier) continue;
       const a = String((r as any).area || "").toLowerCase();
-      if (a === "core" || a === "kids" || a === "english" || a === "life") {
-        out[a as RoomArea] += 1;
-      }
+      if (a === "core") out.core += 1;
+      else if (a === "kids") out.kids += 1;
+      else if (a === "english") out.english += 1;
+      else if (a === "life") out.life += 1;
     }
     return out;
   }, [rooms, tier]);
-
-  useEffect(() => {
-    if (!tier) return;
-    try {
-      const qs = new URLSearchParams(location.search);
-      const dbg = qs.get("debugTier") === "1";
-      if (!dbg) return;
-
-      // eslint-disable-next-line no-console
-      console.log("tier-debug:", {
-        pageTier: tier,
-        isKidsTier,
-        areaToShow,
-        totalRoomsAll: rooms.length,
-        totalInTierArea: filtered.length,
-        tierAreaCounts,
-        source,
-        debug,
-      });
-
-      const otherAreas = rooms
-        .filter(
-          (r) =>
-            r.tier === tier &&
-            String((r as any).area || "").toLowerCase() !== areaToShow
-        )
-        .slice(0, 12)
-        .map((r) => ({
-          id: r.id,
-          area: (r as any).area,
-          domain: (r as any).domain,
-          track: (r as any).track,
-        }));
-
-      if (otherAreas.length) {
-        // eslint-disable-next-line no-console
-        console.log("tier-debug excluded by area:", otherAreas);
-      }
-
-      if (tier === "free") {
-        const lifeMatches = rooms
-          .filter((r) => r.tier === "free" && isExplicitLifeRoom(r))
-          .map((r) => r.id)
-          .slice(0, 80);
-
-        // eslint-disable-next-line no-console
-        console.log("tier-debug free explicit-life ids (first 80):", lifeMatches);
-      }
-    } catch {
-      // no-op
-    }
-  }, [tier, rooms, filtered.length, source, debug, areaToShow, location.search, isKidsTier, tierAreaCounts]);
 
   const rainbow =
     "linear-gradient(90deg,#ff4d4d 0%,#ffb84d 18%,#b6ff4d 36%,#4dffb8 54%,#4db8ff 72%,#b84dff 90%,#ff4dff 100%)";
@@ -282,12 +242,14 @@ export default function TierDetail() {
     background: rainbow,
     WebkitBackgroundClip: "text",
     color: "transparent",
+    lineHeight: 1.05,
   };
 
   const sub: React.CSSProperties = {
     marginTop: 6,
     color: "rgba(0,0,0,0.62)",
     fontWeight: 700,
+    fontSize: 16,
   };
 
   const back: React.CSSProperties = {
@@ -297,12 +259,22 @@ export default function TierDetail() {
     textDecoration: "underline",
   };
 
+  const debugLine: React.CSSProperties = {
+    marginTop: 6,
+    fontSize: 12,
+    fontWeight: 600,
+    color: "rgba(0,0,0,0.50)",
+    fontFamily:
+      'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+  };
+
   const grid: React.CSSProperties = {
     marginTop: 14,
     display: "grid",
-    gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))",
-    gap: 12,
+    gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
+    gap: 14,
     pointerEvents: "auto",
+    alignItems: "stretch",
   };
 
   const cardBase: React.CSSProperties = {
@@ -310,24 +282,35 @@ export default function TierDetail() {
     border: "1px solid rgba(0,0,0,0.10)",
     background: "rgba(255,255,255,0.86)",
     boxShadow: "0 8px 18px rgba(0,0,0,0.08)",
-    padding: "14px 14px",
+    padding: "14px 14px 12px",
     textDecoration: "none",
     color: "inherit",
     transition: "transform 120ms ease, box-shadow 120ms ease",
-    display: "block",
+    display: "flex",
+    flexDirection: "column",
     pointerEvents: "auto",
+    minHeight: 112, // ✅ consistent rhythm
   };
 
+  // ✅ 2-line clamp for long slugs; keeps cards calm
   const cardTitle: React.CSSProperties = {
     fontSize: 16,
-    fontWeight: 900,
+    fontWeight: 800,
     color: "rgba(0,0,0,0.78)",
     letterSpacing: -0.2,
     margin: 0,
+    lineHeight: 1.2,
+    display: "-webkit-box",
+    WebkitLineClamp: 2,
+    WebkitBoxOrient: "vertical",
+    overflow: "hidden",
+    overflowWrap: "anywhere",
+    wordBreak: "break-word",
   };
 
   const codeRow: React.CSSProperties = {
-    marginTop: 8,
+    marginTop: "auto", // ✅ pins actions to bottom
+    paddingTop: 10,
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
@@ -342,20 +325,23 @@ export default function TierDetail() {
     borderRadius: 9999,
     border: "1px solid rgba(0,0,0,0.10)",
     background: "rgba(255,255,255,0.80)",
-    fontSize: 12,
-    fontWeight: 900,
-    color: "rgba(0,0,0,0.62)",
+    fontSize: 12.5,
+    fontWeight: 800,
+    color: "rgba(0,0,0,0.58)",
     whiteSpace: "nowrap",
+    opacity: 0.92,
   };
 
   const tinyCode: React.CSSProperties = {
     fontFamily:
       'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
     fontSize: 11,
-    color: "rgba(0,0,0,0.62)",
+    fontWeight: 600,
+    color: "rgba(0,0,0,0.55)",
     overflow: "hidden",
     textOverflow: "ellipsis",
     whiteSpace: "nowrap",
+    maxWidth: "58%",
   };
 
   const emptyCard: React.CSSProperties = {
@@ -376,10 +362,54 @@ export default function TierDetail() {
     color: "rgba(0,0,0,0.78)",
   };
 
+  // NEW: top nav buttons (home + browser back)
+  const navRow: React.CSSProperties = {
+    display: "flex",
+    gap: 10,
+    alignItems: "center",
+    marginBottom: 12,
+    pointerEvents: "auto",
+  };
+
+  const navBtn: React.CSSProperties = {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: 8,
+    height: 28,
+    padding: "0 10px",
+    borderRadius: 9999,
+    border: "1px solid rgba(0,0,0,0.14)",
+    background: "rgba(255,255,255,0.86)",
+    color: "rgba(0,0,0,0.70)",
+    fontSize: 12.5,
+    fontWeight: 800,
+    textDecoration: "none",
+    boxShadow: "0 6px 14px rgba(0,0,0,0.06)",
+  };
+
+  const navBtnGhost: React.CSSProperties = {
+    ...navBtn,
+    background: "rgba(255,255,255,0.72)",
+  };
+
   if (!tier) {
     return (
       <div style={page}>
         <div style={container}>
+          <div style={navRow}>
+            <Link to="/" style={navBtn} aria-label="Home">
+              ⌂ Home
+            </Link>
+            <button
+              type="button"
+              style={navBtnGhost}
+              onClick={() => navigate(-1)}
+              aria-label="Back"
+            >
+              ← Back
+            </button>
+          </div>
+
           <div style={headerCard}>
             <h1 style={{ ...titleStyle, fontSize: 26 }}>Tier not found</h1>
             <div style={{ marginTop: 10 }}>
@@ -387,6 +417,12 @@ export default function TierDetail() {
                 Back to Tier Map
               </Link>
             </div>
+            {showDebug ? (
+              <div style={debugLine}>
+                source={source}
+                {debug ? ` | ${debug}` : ""}
+              </div>
+            ) : null}
           </div>
         </div>
       </div>
@@ -396,6 +432,15 @@ export default function TierDetail() {
   return (
     <div style={page}>
       <div style={container}>
+        <div style={navRow}>
+          <Link to="/" style={navBtn} aria-label="Home">
+            ⌂ Home
+          </Link>
+          <button type="button" style={navBtnGhost} onClick={() => navigate(-1)} aria-label="Back">
+            ← Back
+          </button>
+        </div>
+
         <div style={headerCard}>
           <div
             style={{
@@ -416,11 +461,14 @@ export default function TierDetail() {
             Rooms in this tier ({areaToShow.toUpperCase()}): <b>{filtered.length}</b>
           </div>
 
-          <div style={{ marginTop: 6, fontSize: 12, fontWeight: 800, color: "rgba(0,0,0,0.45)" }}>
-            source={source}
-            {debug ? ` | ${debug}` : ""}
-            {` | tier-area counts: core=${tierAreaCounts.core}, kids=${tierAreaCounts.kids}, english=${tierAreaCounts.english}, life=${tierAreaCounts.life}`}
-          </div>
+          {/* ✅ Debug-only diagnostics (keeps premium UI clean) */}
+          {showDebug ? (
+            <div style={debugLine}>
+              source={source}
+              {debug ? ` | ${debug}` : ""}
+              {` | tier-area counts: core=${tierAreaCounts.core}, kids=${tierAreaCounts.kids}, english=${tierAreaCounts.english}, life=${tierAreaCounts.life}`}
+            </div>
+          ) : null}
         </div>
 
         {filtered.length === 0 ? (
@@ -436,8 +484,8 @@ export default function TierDetail() {
 
                 {isKidsTier ? (
                   <li>
-                    For kids tiers: try <b>?debugTier=1</b> and check “excluded by area”.
-                    You can also override with <b>?area=kids</b> / <b>?area=core</b>.
+                    For kids tiers: try <b>?debug=1</b> or <b>?debugTier=1</b> and check “excluded by area”. You can
+                    also override with <b>?area=kids</b> / <b>?area=core</b>.
                   </li>
                 ) : tier === "free" && areaToShow === "life" ? (
                   <li>
@@ -447,11 +495,17 @@ export default function TierDetail() {
                 ) : (
                   <li>
                     Spine tiers default to CORE. For debugging you can try <b>?area=kids</b> / <b>?area=english</b> /{" "}
-                    <b>?area=life</b> / <b>?debugTier=1</b>.
+                    <b>?area=life</b> / <b>?debug=1</b>.
                   </li>
                 )}
               </ul>
             </div>
+
+            {showDebug ? (
+              <div style={{ marginTop: 10, ...debugLine }}>
+                tip: add <b>?debug=1</b> to show diagnostics on this page.
+              </div>
+            ) : null}
           </div>
         ) : null}
 
@@ -475,7 +529,7 @@ export default function TierDetail() {
 
               <div style={codeRow}>
                 <span style={pill}>OPEN</span>
-                <span style={tinyCode}>id: {r.id}</span>
+                {showDebug ? <span style={tinyCode}>id: {r.id}</span> : null}
               </div>
             </Link>
           ))}

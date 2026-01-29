@@ -1,5 +1,5 @@
 // src/router/AppRouter.tsx
-// MB-BLUE-101.5 → MB-BLUE-101.5b — 2026-01-14 (+0700)
+// MB-BLUE-101.5 → MB-BLUE-101.5c — 2026-01-29 (+0700)
 //
 // ROUTING RULES (LOCKED):
 // - Home route: /
@@ -38,15 +38,15 @@
 // - TEMP: Remove RequireMercyAuth wrapper from admin routes because it can return null (blank page).
 //   AdminRoute + useUserAccess is the real gate here.
 //
-// 🔒 ADMIN ROUTING CONTRACT (LOCKED):
-// - Admin routes MUST be nested under "/admin/*".
-// - AdminRoute + AdminLayout MUST appear ONCE (in AdminShell only).
-// - AdminDashboard MUST be the index route.
-// - Do NOT wrap individual admin pages with AdminLayout/AdminRoute.
-// - Unknown /admin/* subpaths must land safely (dashboard).
+// ✅ HARDEN (101.5c — global hero shell, no new file):
+// - Add AppHeroShell INSIDE this file (no AppHeroLayout.tsx required).
+// - Exclude only /signin (and keep /auth redirect outside).
+// - Add global Home+Back + Mercy Blade rainbow band for all non-admin pages.
+// - Keep admin clean: AppHeroShell auto-disables band on /admin/*.
+// - Add click-safety containment (isolation + pointerEvents + high zIndex).
 
 import React from "react";
-import { Routes, Route, Navigate, useParams, Outlet } from "react-router-dom";
+import { Routes, Route, Navigate, useParams, Outlet, Link, useLocation, useNavigate } from "react-router-dom";
 
 import ChatHub from "@/pages/ChatHub";
 import AllRooms from "@/pages/AllRooms";
@@ -90,6 +90,116 @@ function NotFound() {
     <div style={{ padding: 32 }}>
       <h2>404</h2>
       <p>Page not found.</p>
+    </div>
+  );
+}
+
+/**
+ * Global shell (NO new file).
+ * - Excludes /signin by routing (see Routes below).
+ * - Auto-disables band on /admin/* to avoid messing with AdminLayout.
+ * - Adds click-safety containment so pages don’t go “dead”.
+ */
+function AppHeroShell() {
+  const nav = useNavigate();
+  const loc = useLocation();
+
+  const isAdmin = String(loc.pathname || "").startsWith("/admin");
+
+  const rainbow =
+    "linear-gradient(90deg,#ff4d4d 0%,#ffb84d 18%,#b6ff4d 36%,#4dffb8 54%,#4db8ff 72%,#b84dff 90%,#ff4dff 100%)";
+
+  // click-safety containment (prevents random fixed overlays from eating clicks)
+  const shell: React.CSSProperties = {
+    minHeight: "100vh",
+    width: "100%",
+    position: "relative",
+    zIndex: 999999,
+    pointerEvents: "auto",
+    isolation: "isolate",
+  };
+
+  const band: React.CSSProperties = {
+    position: "sticky",
+    top: 0,
+    zIndex: 999999,
+    pointerEvents: "auto",
+    background: "rgba(255,255,255,0.92)",
+    backdropFilter: "blur(10px)",
+    borderBottom: "1px solid rgba(0,0,0,0.08)",
+  };
+
+  const bandInner: React.CSSProperties = {
+    maxWidth: 1100,
+    margin: "0 auto",
+    padding: "10px 14px",
+    display: "flex",
+    alignItems: "center",
+    gap: 10,
+  };
+
+  const navBtn: React.CSSProperties = {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: 8,
+    padding: "8px 12px",
+    borderRadius: 9999,
+    border: "1px solid rgba(0,0,0,0.12)",
+    background: "rgba(255,255,255,0.90)",
+    color: "rgba(0,0,0,0.78)",
+    textDecoration: "none",
+    fontWeight: 900,
+    fontSize: 13,
+    lineHeight: 1,
+    cursor: "pointer",
+    pointerEvents: "auto",
+  };
+
+  const brand: React.CSSProperties = {
+    marginLeft: 6,
+    fontWeight: 950,
+    letterSpacing: -0.6,
+    background: rainbow,
+    WebkitBackgroundClip: "text",
+    color: "transparent",
+    fontSize: 18,
+    lineHeight: 1,
+    whiteSpace: "nowrap",
+  };
+
+  return (
+    <div style={shell}>
+      {/* Keep Admin clean: no band, just outlet */}
+      {isAdmin ? (
+        <Outlet />
+      ) : (
+        <>
+          <div style={band} aria-label="Mercy global hero band">
+            <div style={bandInner}>
+              <Link to="/" style={navBtn} aria-label="Go Home">
+                ⌂ Home
+              </Link>
+              <button
+                type="button"
+                style={navBtn}
+                onClick={() => nav(-1)}
+                aria-label="Go Back"
+                title="Back"
+              >
+                ← Back
+              </button>
+
+              <div style={{ flex: 1 }} />
+
+              <div style={brand} title="Mercy Blade">
+                Mercy Blade
+              </div>
+            </div>
+          </div>
+
+          <Outlet />
+        </>
+      )}
     </div>
   );
 }
@@ -157,55 +267,60 @@ export default function AppRouter() {
   return (
     <>
       <Routes>
-        {/* ✅ HOME (curated front door) */}
-        <Route path="/" element={<Home />} />
-
-        {/* ✅ Auth */}
+        {/* ✅ NO HERO on sign-in */}
         <Route path="/signin" element={<LoginPage />} />
+
+        {/* ✅ Keep /auth redirect outside shell (still “no UI”) */}
         <Route path="/auth" element={<AuthRedirect />} />
 
-        {/* Rooms list */}
-        <Route path="/rooms" element={<AllRooms />} />
+        {/* ✅ HERO (global shell) on everything else */}
+        <Route element={<AppHeroShell />}>
+          {/* ✅ HOME (curated front door) */}
+          <Route path="/" element={<Home />} />
 
-        {/* ✅ Tier Spine */}
-        <Route path="/tiers" element={<TierIndex />} />
-        <Route path="/tiers/:tierId" element={<TierDetail />} />
+          {/* Rooms list */}
+          <Route path="/rooms" element={<AllRooms />} />
 
-        {/* ✅ TEMP: keep Home CTA safe */}
-        <Route path="/redeem" element={<RedeemRedirect />} />
+          {/* ✅ Tier Spine */}
+          <Route path="/tiers" element={<TierIndex />} />
+          <Route path="/tiers/:tierId" element={<TierDetail />} />
 
-        {/* 🔁 Legacy fixes (explicit, silent) */}
-        <Route path="/room/room/:roomId" element={<RoomRoomRedirect />} />
-        <Route path="/room" element={<RoomIndexRedirect />} />
-        <Route path="/rooms/room/:roomId" element={<RoomsRoomRedirect />} />
+          {/* ✅ TEMP: keep Home CTA safe */}
+          <Route path="/redeem" element={<RedeemRedirect />} />
 
-        {/* ✅ Canonical room route */}
-        <Route path="/room/:roomId" element={<ChatHub />} />
+          {/* 🔁 Legacy fixes (explicit, silent) */}
+          <Route path="/room/room/:roomId" element={<RoomRoomRedirect />} />
+          <Route path="/room" element={<RoomIndexRedirect />} />
+          <Route path="/rooms/room/:roomId" element={<RoomsRoomRedirect />} />
 
-        {/* =========================
-            ✅ ADMIN (GUARDED) — LOCKED
-            ✅ Parent is /admin/* with INDEX dashboard
-           ========================= */}
-        <Route path="/admin/*" element={<AdminShell />}>
-          {/* Dashboard */}
-          <Route index element={<AdminDashboard />} />
+          {/* ✅ Canonical room route */}
+          <Route path="/room/:roomId" element={<ChatHub />} />
 
-          {/* Pages */}
-          <Route path="payments" element={<AdminPayments />} />
-          <Route path="bank-transfers" element={<AdminBankTransfers />} />
-          <Route path="payment-verification" element={<AdminPaymentVerification />} />
-          <Route path="access-codes" element={<AdminAccessCodes />} />
-          <Route path="audio-coverage" element={<AudioCoveragePage />} />
-          <Route path="monitoring" element={<AdminMonitoring />} />
-          <Route path="metrics" element={<AdminMetrics />} />
-          <Route path="vip-rooms" element={<AdminVIPRooms />} />
+          {/* =========================
+              ✅ ADMIN (GUARDED) — LOCKED
+              ✅ Parent is /admin/* with INDEX dashboard
+             ========================= */}
+          <Route path="/admin/*" element={<AdminShell />}>
+            {/* Dashboard */}
+            <Route index element={<AdminDashboard />} />
 
-          {/* Unknown admin subpath → dashboard (safe default) */}
-          <Route path="*" element={<AdminDashboard />} />
+            {/* Pages */}
+            <Route path="payments" element={<AdminPayments />} />
+            <Route path="bank-transfers" element={<AdminBankTransfers />} />
+            <Route path="payment-verification" element={<AdminPaymentVerification />} />
+            <Route path="access-codes" element={<AdminAccessCodes />} />
+            <Route path="audio-coverage" element={<AudioCoveragePage />} />
+            <Route path="monitoring" element={<AdminMonitoring />} />
+            <Route path="metrics" element={<AdminMetrics />} />
+            <Route path="vip-rooms" element={<AdminVIPRooms />} />
+
+            {/* Unknown admin subpath → dashboard (safe default) */}
+            <Route path="*" element={<AdminDashboard />} />
+          </Route>
+
+          {/* Fallback (hero applies) */}
+          <Route path="*" element={<NotFound />} />
         </Route>
-
-        {/* Fallback */}
-        <Route path="*" element={<NotFound />} />
       </Routes>
 
       {/* Mercy AI Host — global floating guide (must be inside Router context) */}
@@ -215,5 +330,5 @@ export default function AppRouter() {
 }
 
 /* New thing to learn:
-   In React Router v6, "/admin/*" should usually be a parent route with nested children + an index route.
-   If you put the dashboard directly on "/admin/*" without nesting, you can get confusing “blank page” behavior. */
+   If multiple pages each add “Home/Back” independently, you’ll keep re-fighting z-index and click bugs.
+   One shell + Outlet is the cleanest way to make the whole app feel “one system”. */

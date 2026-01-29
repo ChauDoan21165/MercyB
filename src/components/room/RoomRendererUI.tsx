@@ -26,6 +26,11 @@ function normalizeKwKey(s: string) {
     .replace(/[\s\-_]+/g, " ");
 }
 
+// ✅ NEW: export the SAME key normalizer used by buildKeywordColorMap/highlightByColorMap
+export function normalizeKwKeyForColorMap(s: string) {
+  return normalizeKwKey(s);
+}
+
 export function normalizeTextForKwMatch(s: string) {
   const base = String(s || "")
     .toLowerCase()
