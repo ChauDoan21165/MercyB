@@ -10,6 +10,9 @@
 // FIX 97.7:
 // - Prevent "Circular chunk: vendor-react -> vendor -> vendor-react"
 // - Use mutually-exclusive manualChunks buckets: react / supabase / ui / vendor
+//
+// PATCH 2026-01-29:
+// - Force single React instance in prod (fixes "Cannot read properties of undefined (reading 'useLayoutEffect')")
 
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
@@ -30,6 +33,9 @@ export default defineConfig({
   ],
 
   resolve: {
+    // IMPORTANT: ensure Vite never bundles a second copy of React/ReactDOM
+    // (fixes runtime "useLayoutEffect" undefined / blank page)
+    dedupe: ["react", "react-dom"],
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
