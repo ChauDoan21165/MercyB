@@ -1,53 +1,74 @@
 // src/components/guide/host/useHostProfile.ts
 // SAFE STUB — required by MercyAIHost import.
-// Keep minimal shape so the app boots. Replace later with real profile logic if needed.
+// PURPOSE: match MercyAIHost expected return shape (no DB, no side effects).
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
-export type HostProfile = {
-  displayName?: string;
-  email?: string;
-  userId?: string;
-  isAdmin?: boolean;
-  adminLevel?: number;
+export type HostLastProgress = {
+  roomId?: string;
+  keyword?: string;
+  next?: string;
 };
 
-export function useHostProfile(args?: {
-  user?: any;
-  supabase?: any;
+export function useHostProfile(args: {
+  isAdmin?: boolean;
+  open?: boolean;
+  lang?: "en" | "vi";
+  authUserId?: string | null;
+  authEmail?: string;
 }) {
-  const user = args?.user ?? null;
+  const authEmail = String(args?.authEmail ?? "");
+  const [isSpeaking, setIsSpeaking] = useState(false);
 
-  const [profile, setProfile] = useState<HostProfile | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  // Keep stable refs for safe no-op audio/voice.
+  const speakingTimerRef = useRef<number | null>(null);
+
+  const displayName = useMemo(() => {
+    // very safe: prefer email prefix
+    const e = authEmail.trim();
+    if (!e) return "";
+    const at = e.indexOf("@");
+    return at > 0 ? e.slice(0, at) : e;
+  }, [authEmail]);
+
+  const canVoiceTest = false;
+
+  // Minimal "progress": none (safe stub). Keep shape MercyAIHost expects.
+  const lastProgress: HostLastProgress | null = null;
+
+  const clearSpeakingTimer = useCallback(() => {
+    if (speakingTimerRef.current !== null) window.clearTimeout(speakingTimerRef.current);
+    speakingTimerRef.current = null;
+  }, []);
 
   useEffect(() => {
-    // Minimal local derivation only (no DB query here to avoid side effects).
-    setLoading(false);
-    setError(null);
+    return () => clearSpeakingTimer();
+  }, [clearSpeakingTimer]);
 
-    if (!user) {
-      setProfile(null);
-      return;
-    }
+  const speak = useCallback(
+    (_text: string) => {
+      // SAFE STUB: no TTS; just simulate “speaking” briefly so UI doesn’t break.
+      clearSpeakingTimer();
+      setIsSpeaking(true);
+      speakingTimerRef.current = window.setTimeout(() => {
+        setIsSpeaking(false);
+        speakingTimerRef.current = null;
+      }, 600);
+    },
+    [clearSpeakingTimer]
+  );
 
-    const email = String(user.email || "");
-    const displayName = String(
-      user.user_metadata?.full_name ||
-      user.user_metadata?.name ||
-      email ||
-      "User"
-    );
+  const stopVoice = useCallback(() => {
+    clearSpeakingTimer();
+    setIsSpeaking(false);
+  }, [clearSpeakingTimer]);
 
-    setProfile({
-      displayName,
-      email: email || undefined,
-      userId: String(user.id || ""),
-      isAdmin: false,
-      adminLevel: 0,
-    });
-  }, [user]);
-
-  return { profile, loading, error };
+  return {
+    displayName,
+    canVoiceTest,
+    lastProgress,
+    speak,
+    stopVoice,
+    isSpeaking,
+  };
 }

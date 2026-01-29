@@ -48,10 +48,13 @@
 //   2) numeric rank fields (required_rank / required_vip_rank / min_rank / vip_rank / etc.) → vip tier
 //   3) id inference fallback
 //
+// PATCH (2026-01-29):
+// - Add "Home" + "Back" buttons at top-left for UX. (No changes to tier logic.)
+//
 // NOTE: Inline styles only. Locked concept preserved.
 
 import React, { useEffect, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import type { TierRoom, TierSource } from "@/lib/tierRoomSource";
 import { loadRoomsForTiers } from "@/lib/tierRoomSource";
@@ -375,6 +378,8 @@ function blankCounts(): CountsState {
 }
 
 export default function TierIndex() {
+  const navigate = useNavigate();
+
   const wrap: React.CSSProperties = {
     width: "100%",
     minHeight: "100vh",
@@ -392,6 +397,30 @@ export default function TierIndex() {
     position: "relative",
     zIndex: 999999,
     pointerEvents: "auto",
+  };
+
+  // NEW: top nav (Home + Back)
+  const topNav: React.CSSProperties = {
+    display: "flex",
+    alignItems: "center",
+    gap: 10,
+    marginBottom: 10,
+    pointerEvents: "auto",
+  };
+  const navBtn: React.CSSProperties = {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: 8,
+    padding: "8px 12px",
+    borderRadius: 9999,
+    border: "1px solid rgba(0,0,0,0.12)",
+    background: "rgba(255,255,255,0.90)",
+    color: "rgba(0,0,0,0.78)",
+    textDecoration: "none",
+    fontWeight: 900,
+    fontSize: 13,
+    lineHeight: 1,
+    cursor: "pointer",
   };
 
   const title: React.CSSProperties = {
@@ -746,12 +775,14 @@ export default function TierIndex() {
       console.log("tier-debug free explicit-life ids (first 80):", freeLifeIds.slice(0, 80));
 
       // NEW: show a sample of core rooms with inferred tier (proves whether rank inference works)
-      const coreRooms = (window as any).__MB_ALL_ROOMS__?.filter((r: any) => norm(r?.area) === "core") || [];
+      const coreRooms =
+        (window as any).__MB_ALL_ROOMS__?.filter((r: any) => norm(r?.area) === "core") || [];
       const spineSet = new Set(SPINE_TOP_TO_BOTTOM.map((t) => t.id));
       const sample = coreRooms.slice(0, 30).map((r: any) => ({
         id: r.id,
         tier: r.tier,
-        required_rank: r.required_rank ?? r.required_vip_rank ?? r.min_rank ?? r.vip_rank ?? r.rank,
+        required_rank:
+          r.required_rank ?? r.required_vip_rank ?? r.min_rank ?? r.vip_rank ?? r.rank,
         inferred: inferSpineTierForCounting(r, spineSet),
       }));
       // eslint-disable-next-line no-console
@@ -764,10 +795,30 @@ export default function TierIndex() {
   const leftAnchors: Partial<Record<SpineTierId, React.ReactNode>> = {
     free: (
       <>
-        <AnchorCard title="English Foundation" tierLabel="Free" body="English lessons only (foundation)." to="/tiers/free?area=english" />
-        <AnchorCard title="Kids Level 1 (English)" tierLabel="Kids 1" body="Kids English track (starter)." to="/tiers/kids_1" />
-        <AnchorCard title="Kids Level 2 (English)" tierLabel="Kids 2" body="Kids English track (middle)." to="/tiers/kids_2" />
-        <AnchorCard title="Kids Level 3 (English)" tierLabel="Kids 3" body="Kids English track (advanced)." to="/tiers/kids_3" />
+        <AnchorCard
+          title="English Foundation"
+          tierLabel="Free"
+          body="English lessons only (foundation)."
+          to="/tiers/free?area=english"
+        />
+        <AnchorCard
+          title="Kids Level 1 (English)"
+          tierLabel="Kids 1"
+          body="Kids English track (starter)."
+          to="/tiers/kids_1"
+        />
+        <AnchorCard
+          title="Kids Level 2 (English)"
+          tierLabel="Kids 2"
+          body="Kids English track (middle)."
+          to="/tiers/kids_2"
+        />
+        <AnchorCard
+          title="Kids Level 3 (English)"
+          tierLabel="Kids 3"
+          body="Kids English track (advanced)."
+          to="/tiers/kids_3"
+        />
       </>
     ),
     vip1: (
@@ -809,7 +860,12 @@ export default function TierIndex() {
 
   const centerAnchors: Partial<Record<SpineTierId, React.ReactNode>> = {
     vip3: (
-      <AnchorCard title="Bridge into the spine" tierLabel="VIP3" body="Core training content (spine)." to="/tiers/vip3?area=core" />
+      <AnchorCard
+        title="Bridge into the spine"
+        tierLabel="VIP3"
+        body="Core training content (spine)."
+        to="/tiers/vip3?area=core"
+      />
     ),
   };
 
@@ -821,6 +877,22 @@ export default function TierIndex() {
   return (
     <div style={wrap}>
       <div style={container}>
+        {/* NEW: Home + Back */}
+        <div style={topNav} aria-label="Tier Map navigation">
+          <Link to="/" style={navBtn} aria-label="Go Home">
+            ⌂ Home
+          </Link>
+          <button
+            type="button"
+            style={navBtn}
+            onClick={() => navigate(-1)}
+            aria-label="Go Back"
+            title="Back"
+          >
+            ← Back
+          </button>
+        </div>
+
         <h1 style={title}>Tier Map</h1>
 
         <div style={sub}>
@@ -908,7 +980,9 @@ export default function TierIndex() {
                       to={`/tiers/${t.id}?area=core`}
                     />
                   </div>
-                  {centerAnchors[t.id] ? <div style={{ marginTop: 8 }}>{centerAnchors[t.id]}</div> : null}
+                  {centerAnchors[t.id] ? (
+                    <div style={{ marginTop: 8 }}>{centerAnchors[t.id]}</div>
+                  ) : null}
                   {t.hint ? <div style={spineHint}>{t.hint}</div> : null}
                 </div>
               </div>
@@ -924,7 +998,9 @@ export default function TierIndex() {
           LOCK CHECK: Kids are not in the spine. Core counts exclude English + Life.
           <br />
           <span style={{ fontSize: 12, color: "rgba(0,0,0,0.45)" }}>
-            DEBUG: source={countsForDisplay.source} all={countsForDisplay.totalAll} core={countsForDisplay.totalCore} nonCore={nonCoreCount} free_core={freeCoreCount} free_life_explicit={freeLifeCount}
+            DEBUG: source={countsForDisplay.source} all={countsForDisplay.totalAll} core=
+            {countsForDisplay.totalCore} nonCore={nonCoreCount} free_core={freeCoreCount} free_life_explicit=
+            {freeLifeCount}
             {countsForDisplay.debug ? ` | ${countsForDisplay.debug}` : ""}
           </span>
         </div>

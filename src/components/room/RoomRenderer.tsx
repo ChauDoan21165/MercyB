@@ -127,6 +127,14 @@ function coreRoomIdFromEffective(effectiveRoomId: string) {
   return id.replace(/_(vip[1-9]|free)$/i, "");
 }
 
+// ✅ NEW: UUID guard (prevents DB ids/slugs becoming “keywords”)
+function looksUuidLike(s: any) {
+  const t = String(s ?? "").trim();
+  if (!t) return false;
+  // canonical UUID v4-ish (but accept any UUID shape)
+  return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(t);
+}
+
 // ----- “meaningful” entry + legacy coercion -----
 function isLegacyStubEntry(e: any) {
   const slug = String(e?.slug ?? "").trim();
@@ -193,16 +201,19 @@ function coerceLegacyEntryShape(entry: any) {
   pushMany(e.keywords_vi);
   pushMany(e.tags);
 
+  // ✅ IMPORTANT: never treat UUID ids/slugs/titles as keywords
   const slug = String(e.slug ?? "").trim();
-  if (slug) bag.push(slug);
+  if (slug && !looksUuidLike(slug)) bag.push(slug);
 
   const title = String(e.title ?? "").trim();
-  if (title) bag.push(title);
+  if (title && !looksUuidLike(title)) bag.push(title);
 
   const seen = new Set<string>();
   const merged = bag
     .map((s) => normalizeTextForKwMatch(s))
     .filter(Boolean)
+    // ✅ Drop UUID-like tokens after normalization too (paranoia-safe)
+    .filter((s) => !looksUuidLike(s))
     .filter((s) => {
       if (seen.has(s)) return false;
       seen.add(s);
@@ -504,6 +515,22 @@ export default function RoomRenderer({
 
   const allEntries = useMemo(() => chosenEntries.list.map((e: any) => ({ entry: e })), [chosenEntries]);
 
+  // ✅ SAFETY: never allow UUID-like junk into keyword pills (prod data can differ)
+  const looksUuidLike = useCallback((s: any) => {
+    const t = String(s ?? "").trim();
+    if (!t) return false;
+    return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(t);
+  }, []);
+
+  const cleanKwArr = useCallback(
+    (arr: any[]) =>
+      (Array.isArray(arr) ? arr : [])
+        .map((x) => String(x ?? "").trim())
+        .filter(Boolean)
+        .filter((x) => !looksUuidLike(x)),
+    [looksUuidLike],
+  );
+
   const kw = useMemo(() => {
     const entries = chosenEntries.list;
     const entryCount = entries.length;
@@ -513,24 +540,43 @@ export default function RoomRenderer({
     if (entryCount > 0) {
       const perEntry = entries
         .map((e) => pickOneKeywordPairForEntry(e, lookup))
-        .filter(Boolean) as Array<{ en: string; vi: string }>;
+        .filter(Boolean)
+        .filter((p: any) => {
+          const en = String(p?.en ?? "").trim();
+          const vi = String(p?.vi ?? "").trim();
+          // drop UUID-like garbage in either slot
+          if (looksUuidLike(en)) return false;
+          if (looksUuidLike(vi)) return false;
+          // also drop completely empty pairs
+          return !!(en || vi);
+        }) as Array<{ en: string; vi: string }>;
 
       if (perEntry.length > 0) {
         const trimmed = perEntry.slice(0, Math.max(1, entryCount));
-        return {
-          en: trimmed.map((p) => String(p.en || "").trim()),
-          vi: trimmed.map((p) => {
-            const vi = String(p.vi || "").trim();
-            const en = String(p.en || "").trim();
-            return vi && normalizeTextForKwMatch(vi) !== normalizeTextForKwMatch(en) ? vi : "";
-          }),
-        };
+        const en = trimmed.map((p) => String(p.en || "").trim()).filter(Boolean).filter((x) => !looksUuidLike(x));
+        const vi = trimmed
+          .map((p) => {
+            const v = String(p.vi || "").trim();
+            const e = String(p.en || "").trim();
+            if (!v) return "";
+            if (looksUuidLike(v)) return "";
+            return v && normalizeTextForKwMatch(v) !== normalizeTextForKwMatch(e) ? v : "";
+          })
+          .filter((x) => !looksUuidLike(x));
+
+        return { en, vi };
       }
     }
 
     // fallback: room keywords if present else derived
     const hasReal = (kwRaw?.en?.length || 0) > 0 || (kwRaw?.vi?.length || 0) > 0;
-    const base = hasReal ? kwRaw : entryCount > 0 ? deriveKeywordsFromEntryList(entries) : { en: [], vi: [] };
+    const base0 = hasReal ? kwRaw : entryCount > 0 ? deriveKeywordsFromEntryList(entries) : { en: [], vi: [] };
+
+    // ✅ clean UUID-like junk from both arrays
+    const base = {
+      en: cleanKwArr(base0.en || []),
+      vi: cleanKwArr(base0.vi || []),
+    };
 
     // final: enforce no fake EN/EN display by blanking VI when same
     const maxLen = Math.max(base.en.length, base.vi.length);
@@ -543,12 +589,25 @@ export default function RoomRenderer({
         return normalizeTextForKwMatch(vi) === normalizeTextForKwMatch(en) ? "" : vi;
       }),
     };
-  }, [kwRaw, chosenEntries]);
+  }, [kwRaw, chosenEntries, looksUuidLike, cleanKwArr]);
 
-  const enKeywords = (kw.en.length ? kw.en : kw.vi).map(String);
-  const viKeywords = (kw.vi.length ? kw.vi : kw.en).map(String);
+  const enKeywords = (kw.en.length ? kw.en : kw.vi).map(String).filter((x) => !looksUuidLike(x));
+  const viKeywords = (kw.vi.length ? kw.vi : kw.en).map(String).filter((x) => !looksUuidLike(x));
 
-  const kwColorMap = useMemo(() => buildKeywordColorMap(enKeywords, viKeywords, 5), [enKeywords, viKeywords]);
+  // ✅ NEW: highlight count rule (3 → 5 → 7) based on text length (no schema dependency)
+  const highlightN = useMemo(() => {
+    const base =
+      `${String(introEN || "")} ${String(introVI || "")} ${String(essay?.en || "")} ${String(essay?.vi || "")}`.trim();
+    const len = base.length;
+    if (len >= 1200) return 7;
+    if (len >= 600) return 5;
+    return 3;
+  }, [introEN, introVI, essay?.en, essay?.vi]);
+
+  const kwColorMap = useMemo(
+    () => buildKeywordColorMap(enKeywords, viKeywords, highlightN),
+    [enKeywords, viKeywords, highlightN],
+  );
 
   const [activeKeyword, setActiveKeyword] = useState<string | null>(null);
 
@@ -911,6 +970,10 @@ export default function RoomRenderer({
 
                   const label = en && vi ? `${en} / ${vi}` : en || vi;
                   const next = (en || vi).trim();
+
+                  // ✅ absolute safety: never render UUID-like pills
+                  if (looksUuidLike(next) || looksUuidLike(label)) return null;
+
                   const isActive = normalizeTextForKwMatch(activeKeyword || "") === normalizeTextForKwMatch(next || "");
 
                   return (
@@ -1161,4 +1224,3 @@ export default function RoomRenderer({
       )}
     </div>
   );
-}
