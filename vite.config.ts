@@ -12,7 +12,7 @@
 // - Use mutually-exclusive manualChunks buckets: react / supabase / ui / vendor
 //
 // PATCH 2026-01-29:
-// - Force single React instance in prod (fixes "Cannot read properties of undefined (reading 'useLayoutEffect')")
+// - Force single React instance in prod WITHOUT breaking react/jsx-runtime subpath imports
 
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
@@ -26,10 +26,11 @@ const __dirname = path.dirname(__filename);
 
 // Resolver that matches installed packages (Vercel-safe)
 const require = createRequire(import.meta.url);
-const REACT_ENTRY = require.resolve("react");
-const REACT_DOM_ENTRY = require.resolve("react-dom");
-const REACT_JSX_RUNTIME = require.resolve("react/jsx-runtime");
-const REACT_JSX_DEV_RUNTIME = require.resolve("react/jsx-dev-runtime");
+
+// ✅ IMPORTANT: alias React to its *package directory*, not to index.js
+// This preserves subpath imports like "react/jsx-runtime".
+const REACT_PKG_DIR = path.dirname(require.resolve("react/package.json"));
+const REACT_DOM_PKG_DIR = path.dirname(require.resolve("react-dom/package.json"));
 
 function normalizeId(id: string) {
   return id.replace(/\\/g, "/");
@@ -43,7 +44,6 @@ function isReactPath(s: string) {
     s.includes("/node_modules/scheduler/") ||
     s.includes("/node_modules/react-router/") ||
     s.includes("/node_modules/react-router-dom/") ||
-    // catch non-trailing-slash forms
     s.includes("/node_modules/react/jsx-runtime") ||
     s.includes("/node_modules/react/jsx-dev-runtime") ||
     s.includes("/node_modules/react-dom/client") ||
@@ -62,15 +62,13 @@ export default defineConfig({
 
   resolve: {
     // IMPORTANT: ensure Vite never bundles a second copy of React/ReactDOM
-    // (Your build failed because this line was cut into: ["react", "  <-- unterminated string)
     dedupe: ["react", "react-dom", "react-router", "react-router-dom"],
     alias: {
       "@": path.resolve(__dirname, "./src"),
-      // Hard pinning React entrypoints helps when monorepo/lockfile weirdness causes duplicate React.
-      react: REACT_ENTRY,
-      "react-dom": REACT_DOM_ENTRY,
-      "react/jsx-runtime": REACT_JSX_RUNTIME,
-      "react/jsx-dev-runtime": REACT_JSX_DEV_RUNTIME,
+
+      // ✅ Safe “single React” hardening (package dir, keeps subpaths working)
+      react: REACT_PKG_DIR,
+      "react-dom": REACT_DOM_PKG_DIR,
     },
   },
 
