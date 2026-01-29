@@ -1144,7 +1144,7 @@ export default function RoomRenderer({
                       )}
                     </div>
 
-                    {!authUser ? (
+                                        {!authUser ? (
                       <div className="mb-chatTiny">
                         <a className="underline font-bold" href="/signin">
                           Sign in
@@ -1224,3 +1224,4 @@ export default function RoomRenderer({
       )}
     </div>
   );
+}
