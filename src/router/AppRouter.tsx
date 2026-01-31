@@ -44,6 +44,10 @@
 // - Add global Home+Back + Mercy Blade rainbow band for all non-admin pages.
 // - Keep admin clean: AppHeroShell auto-disables band on /admin/*.
 // - Add click-safety containment (isolation + pointerEvents + high zIndex).
+//
+// ✅ PATCH (2026-01-31d):
+// - UNIVERSAL WIDTH FIX: wrap Outlet in the SAME 980px frame as the hero band.
+//   This makes ALL pages (rooms/tiers/rooms list/home) share the same width baseline.
 
 import React from "react";
 import { Routes, Route, Navigate, useParams, Outlet, Link, useLocation, useNavigate } from "react-router-dom";
@@ -99,6 +103,13 @@ function NotFound() {
  * - Excludes /signin by routing (see Routes below).
  * - Auto-disables band on /admin/* to avoid messing with AdminLayout.
  * - Adds click-safety containment so pages don’t go “dead”.
+ *
+ * PATCH (2026-01-31):
+ * - UNIFY the global top band frame with the app-wide PAGE_MAX=980 + px-4 (16px).
+ * - This fixes the “sticking out” vs “shrinks inside border” mismatch.
+ *
+ * PATCH (2026-01-31d):
+ * - UNIVERSAL WIDTH FIX: constrain ALL non-admin pages under the same 980px frame.
  */
 function AppHeroShell() {
   const nav = useNavigate();
@@ -108,6 +119,12 @@ function AppHeroShell() {
 
   const rainbow =
     "linear-gradient(90deg,#ff4d4d 0%,#ffb84d 18%,#b6ff4d 36%,#4dffb8 54%,#4db8ff 72%,#b84dff 90%,#ff4dff 100%)";
+
+  // ✅ SINGLE SOURCE OF TRUTH for frame sizing
+  // Match Home/ChatHub/etc: max-w-[980px] px-4
+  const PAGE_MAX = 980;
+  const FRAME_PAD_X = 16; // px-4 (band uses this)
+  const FRAME_MAX = PAGE_MAX;
 
   // click-safety containment (prevents random fixed overlays from eating clicks)
   const shell: React.CSSProperties = {
@@ -129,10 +146,12 @@ function AppHeroShell() {
     borderBottom: "1px solid rgba(0,0,0,0.08)",
   };
 
+  // ✅ FIX: was maxWidth:1100 and padding 14px → mismatch
+  // Now EXACTLY matches app frame: max 980 + 16px horizontal padding
   const bandInner: React.CSSProperties = {
-    maxWidth: 1100,
+    maxWidth: FRAME_MAX,
     margin: "0 auto",
-    padding: "10px 14px",
+    padding: `10px ${FRAME_PAD_X}px`,
     display: "flex",
     alignItems: "center",
     gap: 10,
@@ -167,6 +186,16 @@ function AppHeroShell() {
     whiteSpace: "nowrap",
   };
 
+  // ✅ UNIVERSAL CONTENT FRAME (the actual fix)
+  // - Forces every page under this shell to render within 980px max width.
+  // - Padding is intentionally 0 here to avoid “double px-4” on pages like Home
+  //   that already apply their own px-4 container.
+  const contentFrame: React.CSSProperties = {
+    maxWidth: FRAME_MAX,
+    margin: "0 auto",
+    width: "100%",
+  };
+
   return (
     <div style={shell}>
       {/* Keep Admin clean: no band, just outlet */}
@@ -179,13 +208,7 @@ function AppHeroShell() {
               <Link to="/" style={navBtn} aria-label="Go Home">
                 ⌂ Home
               </Link>
-              <button
-                type="button"
-                style={navBtn}
-                onClick={() => nav(-1)}
-                aria-label="Go Back"
-                title="Back"
-              >
+              <button type="button" style={navBtn} onClick={() => nav(-1)} aria-label="Go Back" title="Back">
                 ← Back
               </button>
 
@@ -197,7 +220,10 @@ function AppHeroShell() {
             </div>
           </div>
 
-          <Outlet />
+          {/* ✅ KEY: constrain every non-admin page to the same frame */}
+          <div style={contentFrame}>
+            <Outlet />
+          </div>
         </>
       )}
     </div>
@@ -329,6 +355,5 @@ export default function AppRouter() {
   );
 }
 
-/* New thing to learn:
-   If multiple pages each add “Home/Back” independently, you’ll keep re-fighting z-index and click bugs.
-   One shell + Outlet is the cleanest way to make the whole app feel “one system”. */
+/* Teacher GPT – new thing to learn:
+   Universal width problems are solved by ONE router shell frame around <Outlet />. */
