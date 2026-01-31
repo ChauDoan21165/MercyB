@@ -2,6 +2,8 @@ import { Routes, Route } from "react-router-dom";
 import AppHeroLayout from "@/components/layout/AppHeroLayout";
 import LoginPage from "@/pages/LoginPage";
 import Home from "@/pages/Home";
+import AccountPage from "@/pages/AccountPage";
+import UpgradePage from "@/pages/UpgradePage";
 // import your other pages...
 
 export default function App() {
@@ -13,6 +15,11 @@ export default function App() {
       {/* ✅ HERO on everything else */}
       <Route element={<AppHeroLayout />}>
         <Route path="/" element={<Home />} />
+
+        {/* ✅ Billing / Account */}
+        <Route path="/account" element={<AccountPage />} />
+        <Route path="/upgrade" element={<UpgradePage />} />
+
         {/* <Route path="/room/:roomId" element={<RoomPage />} /> */}
         {/* <Route path="/tiers" element={<TiersPage />} /> */}
         {/* ...all other routes... */}

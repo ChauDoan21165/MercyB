@@ -18,6 +18,10 @@
 //
 // PATCH (2026-01-29):
 // - Add HOME + BACK (history) buttons at top, like Tier Map UX.
+//
+// PATCH (2026-01-31):
+// - REMOVE local Home/Back top nav to avoid duplicates.
+//   GlobalHeader/AppShell now owns Home+Back across pages.
 
 import React, { useEffect, useMemo, useState } from "react";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
@@ -362,54 +366,10 @@ export default function TierDetail() {
     color: "rgba(0,0,0,0.78)",
   };
 
-  // NEW: top nav buttons (home + browser back)
-  const navRow: React.CSSProperties = {
-    display: "flex",
-    gap: 10,
-    alignItems: "center",
-    marginBottom: 12,
-    pointerEvents: "auto",
-  };
-
-  const navBtn: React.CSSProperties = {
-    display: "inline-flex",
-    alignItems: "center",
-    gap: 8,
-    height: 28,
-    padding: "0 10px",
-    borderRadius: 9999,
-    border: "1px solid rgba(0,0,0,0.14)",
-    background: "rgba(255,255,255,0.86)",
-    color: "rgba(0,0,0,0.70)",
-    fontSize: 12.5,
-    fontWeight: 800,
-    textDecoration: "none",
-    boxShadow: "0 6px 14px rgba(0,0,0,0.06)",
-  };
-
-  const navBtnGhost: React.CSSProperties = {
-    ...navBtn,
-    background: "rgba(255,255,255,0.72)",
-  };
-
   if (!tier) {
     return (
       <div style={page}>
         <div style={container}>
-          <div style={navRow}>
-            <Link to="/" style={navBtn} aria-label="Home">
-              ⌂ Home
-            </Link>
-            <button
-              type="button"
-              style={navBtnGhost}
-              onClick={() => navigate(-1)}
-              aria-label="Back"
-            >
-              ← Back
-            </button>
-          </div>
-
           <div style={headerCard}>
             <h1 style={{ ...titleStyle, fontSize: 26 }}>Tier not found</h1>
             <div style={{ marginTop: 10 }}>
@@ -432,15 +392,6 @@ export default function TierDetail() {
   return (
     <div style={page}>
       <div style={container}>
-        <div style={navRow}>
-          <Link to="/" style={navBtn} aria-label="Home">
-            ⌂ Home
-          </Link>
-          <button type="button" style={navBtnGhost} onClick={() => navigate(-1)} aria-label="Back">
-            ← Back
-          </button>
-        </div>
-
         <div style={headerCard}>
           <div
             style={{

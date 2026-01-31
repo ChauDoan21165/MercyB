@@ -67,21 +67,17 @@ export const ColorfulMercyBladeHeader = ({
   };
 
   return (
-    <header
-      className={`sticky top-0 z-40 ${headerBg} backdrop-blur-sm border-b border-border py-4`}
-    >
-      <div className="mx-auto max-w-screen-xl px-4">
+    <header className={`sticky top-0 z-40 ${headerBg} backdrop-blur-sm border-b border-border py-4`}>
+      {/* ✅ IMPORTANT:
+          Align header content to the SAME frame as the app "box" (PAGE_MAX=980).
+          This fixes Home/Back + Mercy Blade wordmark not lining up with the centered content below.
+      */}
+      <div className="mx-auto w-full max-w-[980px] px-4">
         <div className="grid grid-cols-3 items-center">
           {/* Left column - back button (optional) */}
           <div className="flex items-center">
             {showBackButton ? (
-              <Button
-                onClick={handleBack}
-                variant="outline"
-                size="sm"
-                className="gap-2"
-                title="Back"
-              >
+              <Button onClick={handleBack} variant="outline" size="sm" className="gap-2" title="Back">
                 <ArrowLeft className="w-4 h-4" />
                 <span className="hidden sm:inline">Back</span>
               </Button>
@@ -94,65 +90,35 @@ export const ColorfulMercyBladeHeader = ({
               <h1 className="text-2xl font-bold tracking-tight text-center">
                 {mode === "color" ? (
                   <>
-                    <span
-                      className="inline-block animate-fade-in"
-                      style={{ color: "#E91E63" }}
-                    >
+                    <span className="inline-block animate-fade-in" style={{ color: "#E91E63" }}>
                       M
                     </span>
-                    <span
-                      className="inline-block animate-fade-in"
-                      style={{ color: "#9C27B0", animationDelay: "0.1s" }}
-                    >
+                    <span className="inline-block animate-fade-in" style={{ color: "#9C27B0", animationDelay: "0.1s" }}>
                       e
                     </span>
-                    <span
-                      className="inline-block animate-fade-in"
-                      style={{ color: "#3F51B5", animationDelay: "0.2s" }}
-                    >
+                    <span className="inline-block animate-fade-in" style={{ color: "#3F51B5", animationDelay: "0.2s" }}>
                       r
                     </span>
-                    <span
-                      className="inline-block animate-fade-in"
-                      style={{ color: "#2196F3", animationDelay: "0.3s" }}
-                    >
+                    <span className="inline-block animate-fade-in" style={{ color: "#2196F3", animationDelay: "0.3s" }}>
                       c
                     </span>
-                    <span
-                      className="inline-block animate-fade-in"
-                      style={{ color: "#00BCD4", animationDelay: "0.4s" }}
-                    >
+                    <span className="inline-block animate-fade-in" style={{ color: "#00BCD4", animationDelay: "0.4s" }}>
                       y
                     </span>
                     <span className="inline-block mx-2"></span>
-                    <span
-                      className="inline-block animate-fade-in"
-                      style={{ color: "#009688", animationDelay: "0.5s" }}
-                    >
+                    <span className="inline-block animate-fade-in" style={{ color: "#009688", animationDelay: "0.5s" }}>
                       B
                     </span>
-                    <span
-                      className="inline-block animate-fade-in"
-                      style={{ color: "#4CAF50", animationDelay: "0.6s" }}
-                    >
+                    <span className="inline-block animate-fade-in" style={{ color: "#4CAF50", animationDelay: "0.6s" }}>
                       l
                     </span>
-                    <span
-                      className="inline-block animate-fade-in"
-                      style={{ color: "#8BC34A", animationDelay: "0.7s" }}
-                    >
+                    <span className="inline-block animate-fade-in" style={{ color: "#8BC34A", animationDelay: "0.7s" }}>
                       a
                     </span>
-                    <span
-                      className="inline-block animate-fade-in"
-                      style={{ color: "#FFC107", animationDelay: "0.8s" }}
-                    >
+                    <span className="inline-block animate-fade-in" style={{ color: "#FFC107", animationDelay: "0.8s" }}>
                       d
                     </span>
-                    <span
-                      className="inline-block animate-fade-in"
-                      style={{ color: "#FF9800", animationDelay: "0.9s" }}
-                    >
+                    <span className="inline-block animate-fade-in" style={{ color: "#FF9800", animationDelay: "0.9s" }}>
                       e
                     </span>
                   </>
@@ -162,9 +128,7 @@ export const ColorfulMercyBladeHeader = ({
               </h1>
 
               {subtitle ? (
-                <p className="text-center text-base text-gray-600 mt-3 max-w-3xl mx-auto">
-                  {subtitle}
-                </p>
+                <p className="text-center text-base text-gray-600 mt-3 max-w-3xl mx-auto">{subtitle}</p>
               ) : null}
             </div>
           </div>

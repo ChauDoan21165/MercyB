@@ -13,8 +13,13 @@
  * - Login now ALWAYS routes to: /signin?returnTo=...
  * - Keep "Sign out / Đăng xuất" when signed in (uses SINGLE SOURCE: useAuth()).
  * - After signOut, navigate to /signin (no hard redirect).
+ *
+ * PATCH (2026-01-31):
+ * - ✅ Constrain inner bar to Home frame: max-w-[980px] + px-4
+ *   (Prevents the “top box sticks out” issue vs page content frame.)
  */
 
+import React from "react";
 import { Button } from "@/components/ui/button";
 import { LogIn, Eye, ChevronRight, Home, LogOut } from "lucide-react";
 import { useNavigate, Link, useLocation } from "react-router-dom";
@@ -61,7 +66,8 @@ export function GlobalAppBar({ breadcrumbs = [], mode = "color" }: GlobalAppBarP
 
   return (
     <header className={`sticky top-0 z-40 w-full ${headerBg} backdrop-blur-sm border-b border-border`}>
-      <div className="relative w-full px-4 py-3">
+      {/* ✅ IMPORTANT: constrain inner content to Home frame */}
+      <div className="relative mx-auto w-full max-w-[980px] px-4 py-3">
         {/* 3-column flex layout for left/right balance */}
         <div className="flex items-center justify-between">
           {/* Left: Breadcrumb */}

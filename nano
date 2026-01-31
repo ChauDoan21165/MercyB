@@ -1,0 +1,102 @@
+import { createClient } from "@supabase/supabase-js";
+import path from "path";
+
+const SUPABASE_URL = process.env.SUPABASE_URL;
+const SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+if (!SUPABASE_URL || !SERVICE_KEY) {
+  console.error("Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY");
+  process.exit(1);
+}
+
+const supabase = createClient(SUPABASE_URL, SERVICE_KEY, {
+  auth: { persistSession: false },
+});
+
+const BUCKET = "public";
+const TARGET_DIR = "audio";
+
+function normalize(p) {
+  return p.replace(/^\/+/, "");
+}
+
+function targetPath(original) {
+  const filename = path.basename(original);
+  return `${TARGET_DIR}/${filename}`;
+}
+
+async function main() {
+  console.log("🔍 Loading room audio references…");
+
+  const { data: rows, error } = await supabase
+    .from("room_entries")
+    .select("id, audio")
+    .not("audio", "is", null);
+
+  if (error) throw error;
+
+  const files = [
+    ...new Set(
+      rows
+        .map(r => r.audio)
+        .filter(a => typeof a === "string" && a.toLowerCase().endsWith(".mp3"))
+        .map(normalize)
+    ),
+  ];
+
+  console.log(`🎧 Found ${files.length} audio files`);
+
+  for (const src of files) {
+    if (src.startsWith(`${TARGET_DIR}/`)) {
+      continue; // already moved
+    }
+
+    const dest = targetPath(src);
+
+    console.log(`➡️  ${src} → ${dest}`);
+
+    // 1) copy
+    const { error: copyErr } = await supabase
+      .storage
+      .from(BUCKET)
+      .copy(src, dest);
+
+    if (copyErr && !copyErr.message.includes("already exists")) {
+      console.error("❌ copy failed:", src, copyErr.message);
+      continue;
+    }
+
+    // 2) verify
+    const { data: stat, error: statErr } = await supabase
+      .storage
+      .from(BUCKET)
+      .list(TARGET_DIR, {
+        search: path.basename(dest),
+      });
+
+    if (statErr || !stat?.length) {
+      console.error("❌ verification failed:", dest);
+      continue;
+    }
+
+    // 3) delete original
+    const { error: delErr } = await supabase
+      .storage
+      .from(BUCKET)
+      .remove([src]);
+
+    if (delErr) {
+      console.error("⚠️  delete failed:", src, delErr.message);
+      continue;
+    }
+
+    console.log("✅ moved");
+  }
+
+  console.log("🎉 Done");
+}
+
+main().catch(e => {
+  console.error(e);
+  process.exit(1);
+});

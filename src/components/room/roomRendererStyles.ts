@@ -204,14 +204,26 @@ export const ROOM_CSS = String.raw`
     margin: 0 auto;
   }
 
+  /* ✅ SAFETY: Box 3 content should never bias left */
+  [data-mb-scope="room"] [data-room-box="3"],
+  .mb-room [data-room-box="3"]{
+    text-align: center;
+  }
+
   [data-mb-scope="room"] .mb-keyRow,
-  .mb-room .mb-keyRow{
-    display:flex;
+  .mb-room .mb-keyRow,
+  /* ✅ fallback names (in case RoomRenderer uses a slightly different class) */
+  [data-mb-scope="room"] .mb-keywordsRow,
+  .mb-room .mb-keywordsRow{
+    display:flex !important;
     flex-wrap: wrap;
     gap: 10px;
-    justify-content:center;
-    margin-top: 10px;
-    padding: 2px 6px 0;
+    justify-content: center !important;  /* ✅ FORCE center */
+    align-items: center !important;
+    width: 100% !important;              /* ✅ take full row width */
+    margin: 10px auto 0 !important;      /* ✅ center the row itself */
+    padding: 2px 12px 0 !important;      /* ✅ equal left/right */
+    box-sizing: border-box;
   }
 
   [data-mb-scope="room"] .mb-keyBtn,
@@ -607,6 +619,6 @@ export const ROOM_CSS = String.raw`
 
 /**
  * New thing to learn:
- * `color: black !important` on a base button rule will defeat all your per-keyword classes.
- * Fix it by using `color: inherit` + explicit `.mb-keyBtn.mb-kw-* { color: ... !important }` overrides.
+ * If a flex row “looks left”, it’s usually not full width or it’s being overridden.
+ * Force centering with `justify-content:center !important` + `width:100%`.
  */

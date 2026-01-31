@@ -20,6 +20,10 @@
 //
 // NEW (99.11w):
 // - Dispatch mb:host-repeat-target when activeEntry becomes known (repeat loop wiring).
+//
+// PATCH (2026-01-31):
+// - Tidy alignment: Box 2 now has its own border/card baseline; Box 3 welcome + keywords align to border baseline.
+// - No layout refactor; CSS-only overrides appended after ROOM_CSS.
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
@@ -133,6 +137,13 @@ function looksUuidLike(s: any) {
   if (!t) return false;
   // canonical UUID v4-ish (but accept any UUID shape)
   return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(t);
+}
+
+// ✅ NEW: strict TierId normalizer at runtime (prevents "FREE"/"Free " from leaking into UI)
+function normalizeTierIdRuntime(x: any): TierId {
+  const t = String(x ?? "").trim().toLowerCase();
+  const n = normalizeTier(t);
+  return (n || "free") as TierId;
 }
 
 // ----- “meaningful” entry + legacy coercion -----
@@ -307,6 +318,142 @@ function pickRepeatTargetFromEntry(entry: any): { text_en: string; text_vi: stri
   return { text_en: en, text_vi: vi, audio_url: audio };
 }
 
+/** PATCH: alignment tidy CSS appended after ROOM_CSS (keeps ROOM 5-BOX spec intact). */
+const ROOM_CSS_TIDY = `
+/* === MB: tidy alignment (Box 2 + Box 3) — use card border as the grid standard === */
+[data-mb-scope="room"]{
+  --mb-box-pad-x: 18px;
+  --mb-box-pad-y: 14px;
+  --mb-row-min: 46px;
+  --mb-gap: 10px;
+  --mb-icon: 34px;
+  --mb-pill-h: 32px;
+
+  /* border style fallback (works even if theme vars missing) */
+  --mb-border: rgba(0,0,0,0.08);
+  --mb-card-bg: rgba(255,255,255,0.78);
+}
+
+/* === MB: ROOM WIDTH FRAME (FIX) ===
+   Room pages must use the SAME max-width frame as Home (980px).
+   We clamp at the React wrapper (see return JSX), so here we only ensure
+   boxes fill the *container*, not the viewport. */
+[data-mb-scope="room"] [data-room-box]{
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* ---------- BOX 2: give it a real border baseline + align to it ---------- */
+[data-mb-scope="room"] .mb-titleRow{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: var(--mb-gap);
+  min-height: var(--mb-row-min);
+  padding: var(--mb-box-pad-y) var(--mb-box-pad-x);
+  box-sizing:border-box;
+
+  /* THIS is the missing part: Box 2 must have the same “card border line” standard */
+  border: 1px solid var(--mb-border);
+  border-radius: 16px;
+  background: var(--mb-card-bg);
+}
+
+/* Keep Box 2 snug to Box 3 (less floaty space) */
+[data-mb-scope="room"] [data-room-box="2"]{
+  margin-bottom: 14px;
+}
+
+[data-mb-scope="room"] .mb-titleLeft,
+[data-mb-scope="room"] .mb-titleRight{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  min-width: 0;
+}
+
+[data-mb-scope="room"] .mb-titleCenter{
+  flex: 1 1 auto;
+  min-width: 0;
+  display:flex;
+  justify-content:center;
+}
+
+/* Tier pill / small chips in header */
+[data-mb-scope="room"] .mb-titleRow .mb-tier{
+  height: var(--mb-pill-h);
+  padding: 0 12px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius: 999px;
+  line-height: 1;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+/* Icon buttons right side: consistent circle/size */
+[data-mb-scope="room"] .mb-titleRow .mb-iconBtn{
+  width: var(--mb-icon);
+  min-width: var(--mb-icon);
+  height: var(--mb-icon);
+  padding: 0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius: 999px;
+  line-height: 1;
+  box-sizing: border-box;
+}
+
+/* Prevent title from pushing controls off baseline */
+[data-mb-scope="room"] .mb-roomTitle{
+  margin: 0;
+}
+
+/* ---------- BOX 3: stop “center-floating”; align to border rhythm ---------- */
+[data-mb-scope="room"] .mb-welcomeLine{
+  text-align: left;           /* key: border-aligned, not floating center */
+  margin: 0;
+}
+
+/* Keyword row: left aligned, wraps cleanly, uses the card padding as baseline */
+[data-mb-scope="room"] .mb-keyRow{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* key: align to the border baseline */
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  width: 100%;
+}
+
+/* Keyword pills: consistent height & baseline */
+[data-mb-scope="room"] .mb-keyRow .mb-keyBtn{
+  height: var(--mb-pill-h);
+  padding: 0 12px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius: 999px;
+  line-height: 1;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+/* Make active state not jump layout (no scale/border surprises) */
+[data-mb-scope="room"] .mb-keyRow .mb-keyBtn[data-active="true"]{
+  transform: none;
+}
+
+/* Ensure buttons never “stick out” due to default button styles */
+[data-mb-scope="room"] .mb-titleRow button,
+[data-mb-scope="room"] .mb-keyRow button{
+  box-sizing: border-box;
+}
+`;
+
 export default function RoomRenderer({
   room,
   roomId,
@@ -394,7 +541,9 @@ export default function RoomRenderer({
   // - meta tier is display-only (and only trusted if it matches inferred).
   const tierMetaRaw = useMemo(() => pickTier(safeRoom), [safeRoom]);
   const metaTierId = useMemo<TierId | null>(() => normalizeRoomTierToTierId(tierMetaRaw), [tierMetaRaw]);
-  const inferredTierId = useMemo<TierId>(() => tierFromRoomId(effectiveRoomId), [effectiveRoomId]);
+
+  // ✅ runtime-hard normalize (prevents "FREE"/"Free " leaks)
+  const inferredTierId = useMemo<TierId>(() => normalizeTierIdRuntime(tierFromRoomId(effectiveRoomId)), [effectiveRoomId]);
 
   const requiredTierId = useMemo<TierId>(() => inferredTierId, [inferredTierId]);
 
@@ -408,6 +557,8 @@ export default function RoomRenderer({
     return !access.canAccessTier(requiredTierId);
   }, [accessLoading, access, requiredTierId]);
 
+  // NOTE: room pages no longer own sign-out UI (GlobalHeader/AppHeader do).
+  // Keep this function for safety but DO NOT render a sign-out button here.
   async function signOut() {
     try {
       await supabase.auth.signOut();
@@ -516,7 +667,7 @@ export default function RoomRenderer({
   const allEntries = useMemo(() => chosenEntries.list.map((e: any) => ({ entry: e })), [chosenEntries]);
 
   // ✅ SAFETY: never allow UUID-like junk into keyword pills (prod data can differ)
-  const looksUuidLike = useCallback((s: any) => {
+  const looksUuidLikeCb = useCallback((s: any) => {
     const t = String(s ?? "").trim();
     if (!t) return false;
     return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(t);
@@ -527,8 +678,8 @@ export default function RoomRenderer({
       (Array.isArray(arr) ? arr : [])
         .map((x) => String(x ?? "").trim())
         .filter(Boolean)
-        .filter((x) => !looksUuidLike(x)),
-    [looksUuidLike],
+        .filter((x) => !looksUuidLikeCb(x)),
+    [looksUuidLikeCb],
   );
 
   const kw = useMemo(() => {
@@ -545,24 +696,24 @@ export default function RoomRenderer({
           const en = String(p?.en ?? "").trim();
           const vi = String(p?.vi ?? "").trim();
           // drop UUID-like garbage in either slot
-          if (looksUuidLike(en)) return false;
-          if (looksUuidLike(vi)) return false;
+          if (looksUuidLikeCb(en)) return false;
+          if (looksUuidLikeCb(vi)) return false;
           // also drop completely empty pairs
           return !!(en || vi);
         }) as Array<{ en: string; vi: string }>;
 
       if (perEntry.length > 0) {
         const trimmed = perEntry.slice(0, Math.max(1, entryCount));
-        const en = trimmed.map((p) => String(p.en || "").trim()).filter(Boolean).filter((x) => !looksUuidLike(x));
+        const en = trimmed.map((p) => String(p.en || "").trim()).filter(Boolean).filter((x) => !looksUuidLikeCb(x));
         const vi = trimmed
           .map((p) => {
             const v = String(p.vi || "").trim();
             const e = String(p.en || "").trim();
             if (!v) return "";
-            if (looksUuidLike(v)) return "";
+            if (looksUuidLikeCb(v)) return "";
             return v && normalizeTextForKwMatch(v) !== normalizeTextForKwMatch(e) ? v : "";
           })
-          .filter((x) => !looksUuidLike(x));
+          .filter((x) => !looksUuidLikeCb(x));
 
         return { en, vi };
       }
@@ -589,10 +740,10 @@ export default function RoomRenderer({
         return normalizeTextForKwMatch(vi) === normalizeTextForKwMatch(en) ? "" : vi;
       }),
     };
-  }, [kwRaw, chosenEntries, looksUuidLike, cleanKwArr]);
+  }, [kwRaw, chosenEntries, looksUuidLikeCb, cleanKwArr]);
 
-  const enKeywords = (kw.en.length ? kw.en : kw.vi).map(String).filter((x) => !looksUuidLike(x));
-  const viKeywords = (kw.vi.length ? kw.vi : kw.en).map(String).filter((x) => !looksUuidLike(x));
+  const enKeywords = (kw.en.length ? kw.en : kw.vi).map(String).filter((x) => !looksUuidLikeCb(x));
+  const viKeywords = (kw.vi.length ? kw.vi : kw.en).map(String).filter((x) => !looksUuidLikeCb(x));
 
   // ✅ NEW: highlight count rule (3 → 5 → 7) based on text length (no schema dependency)
   const highlightN = useMemo(() => {
@@ -658,6 +809,11 @@ export default function RoomRenderer({
 
     // Don’t dispatch empty targets
     if (!text_en && !text_vi) return;
+
+    // ✅ NEW: idempotency guard (avoid repeat spam on re-render)
+    const repeatKey = `${effectiveRoomId}|${entryId}|${activeKeyword ?? ""}`;
+    if ((window as any).__mb_last_repeat_key === repeatKey) return;
+    (window as any).__mb_last_repeat_key = repeatKey;
 
     dispatchHostRepeatTarget({
       roomId: effectiveRoomId,
@@ -872,355 +1028,361 @@ export default function RoomRenderer({
     [isNarrow],
   );
 
+  // ✅ NEW: display tier pill only when VIP (no FREE pill in rooms; global header owns tier/account UI)
+  const displayTierForPill = useMemo(() => {
+    const t = normalizeTierIdRuntime(displayTierId);
+    return t !== "free" ? t.toUpperCase() : "";
+  }, [displayTierId]);
+
   return (
-    <div
-      ref={rootRef}
-      className="mb-room w-full max-w-none"
-      data-mb-scope="room"
-      data-mb-theme={useColorThemeSafe ? "color" : "bw"}
-    >
-      <style>{ROOM_CSS}</style>
+    // ✅ FIX: clamp ALL room pages to the same frame as Home (980px)
+    <div className="mx-auto w-full max-w-[980px] px-4">
+      <div
+        ref={rootRef}
+        className="mb-room w-full"
+        data-mb-scope="room"
+        data-mb-theme={useColorThemeSafe ? "color" : "bw"}
+      >
+        <style>{`${ROOM_CSS}\n${ROOM_CSS_TIDY}`}</style>
 
-      {roomIsEmpty ? (
-        <div className="rounded-xl border p-6 text-muted-foreground">Room loaded state is empty.</div>
-      ) : (
-        <>
-          <MercyGuideCorner
-            disabled={isLocked}
-            roomTitle={roomTitleBilingual}
-            activeKeyword={activeKeyword}
-            onClearKeyword={clearKeyword}
-            onScrollToAudio={scrollToAudio}
-          />
+        {roomIsEmpty ? (
+          <div className="rounded-xl border p-6 text-muted-foreground">Room loaded state is empty.</div>
+        ) : (
+          <>
+            {/* ✅ IMPORTANT: Room pages no longer render an extra "Guide" pill here.
+              Global Host/Guide is already mounted app-wide. */}
+            {false && (
+              <MercyGuideCorner
+                disabled={isLocked}
+                roomTitle={roomTitleBilingual}
+                activeKeyword={activeKeyword}
+                onClearKeyword={clearKeyword}
+                onScrollToAudio={scrollToAudio}
+              />
+            )}
 
-          {/* BOX 2 */}
-          <div className="mb-titleRow" data-room-box="2">
-            <div className="mb-titleLeft">
-              {displayTierId !== "free" ? <span className="mb-tier">{displayTierId}</span> : null}
+            {/* BOX 2 */}
+            <div className="mb-titleRow" data-room-box="2">
+              <div className="mb-titleLeft">
+                {/* VIP only (no FREE pill) */}
+                {displayTierForPill ? <span className="mb-tier">{displayTierForPill}</span> : null}
 
-              {authUser ? (
-                <span className="mb-tier" title={String(authUser.email || authUser.id || "")}>
-                  ✓ {shortEmailLabel(String((authUser as any).email || ""))}
-                </span>
-              ) : (
-                <a className="mb-tier" href="/signin" title="Sign in">
-                  ⟶ SIGN IN
-                </a>
-              )}
-
-              {!accessLoading ? (
-                <span className="mb-tier" title="Your current tier from public.profiles">
-                  YOU: {String(access.tier || "free").toUpperCase()}
-                </span>
-              ) : null}
-            </div>
-
-            <div className="mb-titleCenter" style={{ minWidth: 0 }}>
-              <div className="mb-roomTitle" title={roomTitleBilingual} style={titleStyle}>
-                {roomTitleBilingual}
+                {/* NOTE: account + signout are owned by GlobalHeader/AppHeader now.
+                 Keep authUser for chat attribution only. */}
+                {showDev ? (
+                  <span className="mb-tier" title={String(authUser?.email || authUser?.id || "")}>
+                    DEV: {authUser ? shortEmailLabel(String((authUser as any).email || "")) : "NOAUTH"}
+                  </span>
+                ) : null}
               </div>
-            </div>
 
-            <div className="mb-titleRight">
-              {authUser ? (
-                <button type="button" className="mb-tier" title="Sign out" onClick={signOut}>
-                  SIGN OUT
+              <div className="mb-titleCenter" style={{ minWidth: 0 }}>
+                <div className="mb-roomTitle" title={roomTitleBilingual} style={titleStyle}>
+                  {roomTitleBilingual}
+                </div>
+              </div>
+
+              <div className="mb-titleRight">
+                {/* Keep only harmless UI-shell buttons in the room header */}
+                <button type="button" className="mb-iconBtn" title="Favorite (UI shell)" onClick={() => {}}>
+                  ♡
                 </button>
+                <button type="button" className="mb-iconBtn" title="Refresh" onClick={() => window.location.reload()}>
+                  ↻
+                </button>
+
+                {/* DEV-only quick sign-out (hidden) */}
+                {false && authUser ? (
+                  <button type="button" className="mb-tier" title="Sign out" onClick={signOut}>
+                    SIGN OUT
+                  </button>
+                ) : null}
+              </div>
+            </div>
+
+            {/* BOX 3 */}
+            <section className="mb-card p-5 md:p-6 mb-5" data-room-box="3">
+              <div className="mb-welcomeLine">
+                <span>
+                  {highlightByColorMap(welcomeEN, kwColorMap)} <b>/</b>{" "}
+                  {highlightByColorMap(welcomeVI, kwColorMap)}
+                </span>
+              </div>
+
+              {showDev ? (
+                <div className="mt-2 text-[11px] opacity-70">
+                  <b>DEV</b> room="{effectiveRoomId}" | coreRoomId="{coreRoomId}" | chatRoomId="{canonicalChatRoomId}" |
+                  chatRows={chatRows.length} {chatLoading ? "(loading)" : ""}{" "}
+                  {chatError ? `chatError="${chatError}"` : ""} | dbRows={Array.isArray(dbRows) ? dbRows.length : "null"}{" "}
+                  {dbLoading ? "(loading)" : ""} {dbError ? `dbError="${dbError}"` : ""} | dbLeafEntries(real)=
+                  {dbLeafEntries.length} | jsonLeafEntries={jsonLeafEntries.length} | chosen={chosenEntries.source} |
+                  allEntries={allEntries.length} | kwButtons={Math.max(kw.en.length, kw.vi.length)} | activeKeyword=
+                  {activeKeyword ? ` "${activeKeyword}"` : "null"}
+                </div>
               ) : null}
 
-              <button type="button" className="mb-iconBtn" title="Favorite (UI shell)" onClick={() => {}}>
-                ♡
-              </button>
-              <button type="button" className="mb-iconBtn" title="Refresh" onClick={() => window.location.reload()}>
-                ↻
-              </button>
-            </div>
-          </div>
+              {Math.max(kw.en.length, kw.vi.length) > 0 ? (
+                <div className="mb-keyRow">
+                  {Array.from({ length: Math.max(kw.en.length, kw.vi.length) }).map((_, i) => {
+                    const en = String(kw.en[i] ?? "").trim();
+                    let vi = String(kw.vi[i] ?? "").trim();
+                    if (!en && !vi) return null;
 
-          {/* BOX 3 */}
-          <section className="mb-card p-5 md:p-6 mb-5" data-room-box="3">
-            <div className="mb-welcomeLine">
-              <span>
-                {highlightByColorMap(welcomeEN, kwColorMap)} <b>/</b>{" "}
-                {highlightByColorMap(welcomeVI, kwColorMap)}
-              </span>
-            </div>
+                    // never show fake EN/EN
+                    if (!vi || normalizeTextForKwMatch(vi) === normalizeTextForKwMatch(en)) vi = "";
 
-            {showDev ? (
-              <div className="mt-2 text-[11px] opacity-70">
-                <b>DEV</b> room="{effectiveRoomId}" | coreRoomId="{coreRoomId}" | chatRoomId="{canonicalChatRoomId}" |
-                chatRows={chatRows.length} {chatLoading ? "(loading)" : ""}{" "}
-                {chatError ? `chatError="${chatError}"` : ""} | dbRows={Array.isArray(dbRows) ? dbRows.length : "null"}{" "}
-                {dbLoading ? "(loading)" : ""} {dbError ? `dbError="${dbError}"` : ""} | dbLeafEntries(real)=
-                {dbLeafEntries.length} | jsonLeafEntries={jsonLeafEntries.length} | chosen={chosenEntries.source} |
-                allEntries={allEntries.length} | kwButtons={Math.max(kw.en.length, kw.vi.length)} | activeKeyword=
-                {activeKeyword ? ` "${activeKeyword}"` : "null"}
+                    const label = en && vi ? `${en} / ${vi}` : en || vi;
+                    const next = (en || vi).trim();
+
+                    // ✅ absolute safety: never render UUID-like pills
+                    if (looksUuidLike(next) || looksUuidLike(label)) return null;
+
+                    const isActive = normalizeTextForKwMatch(activeKeyword || "") === normalizeTextForKwMatch(next || "");
+
+                    return (
+                      <button
+                        key={`kw-${i}`}
+                        type="button"
+                        className={`mb-keyBtn mb-kw ${KW_CLASSES[i % KW_CLASSES.length]}`}
+                        data-active={isActive ? "true" : "false"}
+                        disabled={isLocked}
+                        onClick={() =>
+                          setActiveKeyword((cur) => {
+                            const curKey = normalizeTextForKwMatch(cur || "");
+                            const nextKey = normalizeTextForKwMatch(next || "");
+                            return curKey && curKey === nextKey ? null : next;
+                          })
+                        }
+                        title={label}
+                      >
+                        {label}
+                      </button>
+                    );
+                  })}
+                </div>
+              ) : null}
+            </section>
+
+            {(essay.en || essay.vi) && (
+              <div className="mb-card p-4 md:p-6 mb-5">
+                <BilingualEssay title="Essay" en={essay.en || ""} vi={essay.vi || ""} />
               </div>
-            ) : null}
+            )}
 
-            {Math.max(kw.en.length, kw.vi.length) > 0 ? (
-              <div className="mb-keyRow">
-                {Array.from({ length: Math.max(kw.en.length, kw.vi.length) }).map((_, i) => {
-                  const en = String(kw.en[i] ?? "").trim();
-                  let vi = String(kw.vi[i] ?? "").trim();
-                  if (!en && !vi) return null;
-
-                  // never show fake EN/EN
-                  if (!vi || normalizeTextForKwMatch(vi) === normalizeTextForKwMatch(en)) vi = "";
-
-                  const label = en && vi ? `${en} / ${vi}` : en || vi;
-                  const next = (en || vi).trim();
-
-                  // ✅ absolute safety: never render UUID-like pills
-                  if (looksUuidLike(next) || looksUuidLike(label)) return null;
-
-                  const isActive = normalizeTextForKwMatch(activeKeyword || "") === normalizeTextForKwMatch(next || "");
-
-                  return (
-                    <button
-                      key={`kw-${i}`}
-                      type="button"
-                      className={`mb-keyBtn mb-kw ${KW_CLASSES[i % KW_CLASSES.length]}`}
-                      data-active={isActive ? "true" : "false"}
-                      disabled={isLocked}
-                      onClick={() =>
-                        setActiveKeyword((cur) => {
-                          const curKey = normalizeTextForKwMatch(cur || "");
-                          const nextKey = normalizeTextForKwMatch(next || "");
-                          return curKey && curKey === nextKey ? null : next;
-                        })
-                      }
-                      title={label}
-                    >
-                      {label}
-                    </button>
-                  );
-                })}
-              </div>
-            ) : null}
-          </section>
-
-          {(essay.en || essay.vi) && (
-            <div className="mb-card p-4 md:p-6 mb-5">
-              <BilingualEssay title="Essay" en={essay.en || ""} vi={essay.vi || ""} />
-            </div>
-          )}
-
-          {/* BOX 4 */}
-          <section className="mb-card p-5 md:p-6 mb-5 mb-box4" data-room-box="4">
-            <div className="mb-zoomWrap">
-              {isLocked ? (
-                <div
-                  className="min-h-[260px] flex items-center justify-center text-center"
-                  style={inCardMessagePad}
-                >
-                  <div style={{ maxWidth: 760, margin: "0 auto" }}>
-                    <div className="text-sm opacity-70 font-semibold">
-                      {accessLoading ? (
-                        <>Checking access…</>
-                      ) : (
-                        <>
-                          Locked: requires <b>{requiredTierId.toUpperCase()}</b> (you are{" "}
-                          <b>{String(access.tier || "free").toUpperCase()}</b>)
-                        </>
-                      )}
-                    </div>
-                    <div className="mt-3 text-sm opacity-70">
-                      Complete checkout and refresh. If already paid, wait for webhook tier sync.
+            {/* BOX 4 */}
+            <section className="mb-card p-5 md:p-6 mb-5 mb-box4" data-room-box="4">
+              <div className="mb-zoomWrap">
+                {isLocked ? (
+                  <div className="min-h-[260px] flex items-center justify-center text-center" style={inCardMessagePad}>
+                    <div style={{ maxWidth: 760, margin: "0 auto" }}>
+                      <div className="text-sm opacity-70 font-semibold">
+                        {accessLoading ? (
+                          <>Checking access…</>
+                        ) : (
+                          <>
+                            Locked: requires <b>{requiredTierId.toUpperCase()}</b>
+                          </>
+                        )}
+                      </div>
+                      <div className="mt-3 text-sm opacity-70">
+                        Complete checkout and refresh. If already paid, wait for webhook tier sync.
+                      </div>
                     </div>
                   </div>
-                </div>
-              ) : !activeKeyword ? (
-                <div className="min-h-[460px]" />
-              ) : activeEntry ? (
-                <ActiveEntry
-                  entry={activeEntry}
-                  index={activeEntryIndex >= 0 ? activeEntryIndex : 0}
-                  enKeywords={enKeywords}
-                  viKeywords={viKeywords}
-                  audioAnchorRef={audioAnchorRef}
-                />
-              ) : (
-                <div
-                  className="min-h-[240px] flex items-center justify-center text-center"
-                  style={inCardMessagePad}
-                >
-                  <div style={{ maxWidth: 760, margin: "0 auto" }}>
-                    <div className="text-sm opacity-70 font-semibold">
-                      No entry matches keyword: <b>{activeKeyword}</b>
+                ) : !activeKeyword ? (
+                  <div className="min-h-[460px]" />
+                ) : activeEntry ? (
+                  <ActiveEntry
+                    entry={activeEntry}
+                    index={activeEntryIndex >= 0 ? activeEntryIndex : 0}
+                    enKeywords={enKeywords}
+                    viKeywords={viKeywords}
+                    audioAnchorRef={audioAnchorRef}
+                  />
+                ) : (
+                  <div className="min-h-[240px] flex items-center justify-center text-center" style={inCardMessagePad}>
+                    <div style={{ maxWidth: 760, margin: "0 auto" }}>
+                      <div className="text-sm opacity-70 font-semibold">
+                        No entry matches keyword: <b>{activeKeyword}</b>
+                      </div>
+                      <div className="mt-2">
+                        <button
+                          type="button"
+                          className="px-3 py-1.5 rounded-full text-sm font-bold border bg-white"
+                          onClick={() => setActiveKeyword(null)}
+                        >
+                          Clear keyword
+                        </button>
+                      </div>
+                      {dbError ? <div className="mt-2 text-xs opacity-60">DB: {dbError}</div> : null}
+                      {dbLoading ? <div className="mt-2 text-xs opacity-60">Loading entries…</div> : null}
                     </div>
-                    <div className="mt-2">
+                  </div>
+                )}
+              </div>
+            </section>
+
+            {/* BOX 5 */}
+            <div style={{ marginTop: "auto" }} data-room-box="5">
+              <div className="mb-card p-3 md:p-4">
+                <div className="mb-chatWrap mb-4">
+                  <div className="mb-chatHeader" style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                    <span>Community Chat</span>
+
+                    <div style={{ marginLeft: "auto", display: "flex", gap: 8, alignItems: "center" }}>
                       <button
                         type="button"
-                        className="px-3 py-1.5 rounded-full text-sm font-bold border bg-white"
-                        onClick={() => setActiveKeyword(null)}
+                        className="mb-tier"
+                        onClick={() => setChatCollapsed((v) => !v)}
+                        title={chatCollapsed ? "Expand chat" : "Collapse chat"}
                       >
-                        Clear keyword
+                        {chatCollapsed ? "▸" : "▾"}
+                      </button>
+
+                      <button
+                        type="button"
+                        className="mb-tier"
+                        onClick={() => loadChatInline(60)}
+                        disabled={chatLoading}
+                        title="Refresh chat"
+                      >
+                        ↻
                       </button>
                     </div>
-                    {dbError ? <div className="mt-2 text-xs opacity-60">DB: {dbError}</div> : null}
-                    {dbLoading ? <div className="mt-2 text-xs opacity-60">Loading entries…</div> : null}
                   </div>
-                </div>
-              )}
-            </div>
-          </section>
-          {/* BOX 5 */}
-          <div style={{ marginTop: "auto" }} data-room-box="5">
-            <div className="mb-card p-3 md:p-4">
-              <div className="mb-chatWrap mb-4">
-                <div className="mb-chatHeader" style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                  <span>Community Chat</span>
 
-                  <div style={{ marginLeft: "auto", display: "flex", gap: 8, alignItems: "center" }}>
-                    <button
-                      type="button"
-                      className="mb-tier"
-                      onClick={() => setChatCollapsed((v) => !v)}
-                      title={chatCollapsed ? "Expand chat" : "Collapse chat"}
-                    >
-                      {chatCollapsed ? "▸" : "▾"}
-                    </button>
+                  {chatCollapsed ? (
+                    <div className="mb-chatTiny" style={{ padding: "6px 2px" }}>
+                      Chat collapsed (still here). Click <b>▸</b> to expand.
+                    </div>
+                  ) : (
+                    <>
+                      <div
+                        className="mb-chatList"
+                        style={{
+                          maxHeight: chatListMaxH,
+                          overflow: "auto",
+                          padding: isNarrow ? "10px 10px" : "12px 12px",
+                          boxSizing: "border-box",
+                        }}
+                        ref={chatListRef}
+                        onScroll={captureChatStick}
+                        onWheel={captureChatStick}
+                        onTouchMove={captureChatStick}
+                      >
+                        {chatRows.length === 0 ? (
+                          <div className="text-xs opacity-70">
+                            No messages under this room key yet.
+                            <span style={{ opacity: 0.7 }}> (room_id="{canonicalChatRoomId}")</span>
+                          </div>
+                        ) : (
+                          chatRows.map((m: any) => {
+                            const isMe = authUser
+                              ? String(m?.user_id || "") === String((authUser as any)?.id || "")
+                              : false;
 
-                    <button
-                      type="button"
-                      className="mb-tier"
-                      onClick={() => loadChatInline(60)}
-                      disabled={chatLoading}
-                      title="Refresh chat"
-                    >
-                      ↻
-                    </button>
-                  </div>
-                </div>
+                            const who = isMe
+                              ? shortEmailLabel(String((authUser as any)?.email || "")) || "ME"
+                              : shortUserId(String(m?.user_id || "user"));
 
-                {chatCollapsed ? (
-                  <div className="mb-chatTiny" style={{ padding: "6px 2px" }}>
-                    Chat collapsed (still here). Click <b>▸</b> to expand.
-                  </div>
-                ) : (
-                  <>
-                    <div
-                      className="mb-chatList"
-                      style={{
-                        maxHeight: chatListMaxH,
-                        overflow: "auto",
-                        padding: isNarrow ? "10px 10px" : "12px 12px",
-                        boxSizing: "border-box",
-                      }}
-                      ref={chatListRef}
-                      onScroll={captureChatStick}
-                      onWheel={captureChatStick}
-                      onTouchMove={captureChatStick}
-                    >
-                      {chatRows.length === 0 ? (
-                        <div className="text-xs opacity-70">
-                          No messages under this room key yet.
+                            const when = m?.created_at ? new Date(m.created_at).toLocaleString() : "";
+                            const text = String(m?.message || "").trim();
+
+                            return (
+                              <div key={String(m?.id)} className="mb-chatMsg">
+                                <div className="mb-chatMeta">
+                                  {who} {when ? `• ${when}` : ""}
+                                </div>
+                                <div className="whitespace-pre-wrap">{text || "[empty]"}</div>
+                              </div>
+                            );
+                          })
+                        )}
+                      </div>
+
+                      {!authUser ? (
+                        <div className="mb-chatTiny">
+                          <a className="underline font-bold" href="/signin">
+                            Sign in
+                          </a>{" "}
+                          to post messages.
                           <span style={{ opacity: 0.7 }}> (room_id="{canonicalChatRoomId}")</span>
                         </div>
                       ) : (
-                        chatRows.map((m: any) => {
-                          const isMe = authUser
-                            ? String(m?.user_id || "") === String((authUser as any)?.id || "")
-                            : false;
-
-                          const who = isMe
-                            ? shortEmailLabel(String((authUser as any)?.email || "")) || "ME"
-                            : shortUserId(String(m?.user_id || "user"));
-
-                          const when = m?.created_at ? new Date(m.created_at).toLocaleString() : "";
-                          const text = String(m?.message || "").trim();
-
-                          return (
-                            <div key={String(m?.id)} className="mb-chatMsg">
-                              <div className="mb-chatMeta">
-                                {who} {when ? `• ${when}` : ""}
-                              </div>
-                              <div className="whitespace-pre-wrap">{text || "[empty]"}</div>
-                            </div>
-                          );
-                        })
+                        <div className="mb-chatComposer">
+                          <input
+                            value={chatText}
+                            onChange={(e) => setChatText(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                sendChatInline();
+                              }
+                            }}
+                            placeholder="Say something… (max 500 chars)"
+                            disabled={chatSending}
+                            maxLength={500}
+                          />
+                          <button
+                            type="button"
+                            onClick={sendChatInline}
+                            disabled={chatSending || !chatText.trim()}
+                            title="Send"
+                          >
+                            ➤
+                          </button>
+                        </div>
                       )}
-                    </div>
 
-                    {!authUser ? (
-                      <div className="mb-chatTiny">
-                        <a className="underline font-bold" href="/signin">
-                          Sign in
-                        </a>{" "}
-                        to post messages.
-                        <span style={{ opacity: 0.7 }}> (room_id="{canonicalChatRoomId}")</span>
-                      </div>
-                    ) : (
-                      <div className="mb-chatComposer">
-                        <input
-                          value={chatText}
-                          onChange={(e) => setChatText(e.target.value)}
-                          onKeyDown={(e) => {
-                            if (e.key === "Enter") {
-                              e.preventDefault();
-                              sendChatInline();
-                            }
-                          }}
-                          placeholder="Say something… (max 500 chars)"
-                          disabled={chatSending}
-                          maxLength={500}
-                        />
-                        <button
-                          type="button"
-                          onClick={sendChatInline}
-                          disabled={chatSending || !chatText.trim()}
-                          title="Send"
-                        >
-                          ➤
-                        </button>
-                      </div>
-                    )}
+                      {chatError ? <div className="mb-chatTiny">⚠ {chatError}</div> : null}
+                      {chatLoading ? <div className="mb-chatTiny">Loading…</div> : null}
+                    </>
+                  )}
+                </div>
 
-                    {chatError ? <div className="mb-chatTiny">⚠ {chatError}</div> : null}
-                    {chatLoading ? <div className="mb-chatTiny">Loading…</div> : null}
-                  </>
+                <div className="mb-feedback">
+                  <input
+                    value={feedback.feedbackText}
+                    onChange={(e) => {
+                      feedback.setFeedbackText(e.target.value);
+                      if (feedback.feedbackError) feedback.setFeedbackError(null);
+                      if (feedback.feedbackSent) feedback.setFeedbackSent(false);
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        e.preventDefault();
+                        feedback.sendFeedback();
+                      }
+                    }}
+                    placeholder="Feedback to admin / Góp ý cho admin…"
+                    aria-label="Feedback to admin"
+                    disabled={feedback.feedbackSending}
+                    maxLength={500}
+                  />
+                  <button
+                    type="button"
+                    title={authUser ? "Send feedback" : "Sign in to send feedback"}
+                    onClick={feedback.sendFeedback}
+                    disabled={feedback.feedbackSending || !feedback.feedbackText.trim()}
+                  >
+                    ➤
+                  </button>
+                </div>
+
+                {(feedback.feedbackError || feedback.feedbackSent) && (
+                  <div className="mt-2 text-xs opacity-70">
+                    {feedback.feedbackError ? `⚠ ${feedback.feedbackError}` : "✓ Sent to admin"}
+                  </div>
                 )}
               </div>
-
-              <div className="mb-feedback">
-                <input
-                  value={feedback.feedbackText}
-                  onChange={(e) => {
-                    feedback.setFeedbackText(e.target.value);
-                    if (feedback.feedbackError) feedback.setFeedbackError(null);
-                    if (feedback.feedbackSent) feedback.setFeedbackSent(false);
-                  }}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") {
-                      e.preventDefault();
-                      feedback.sendFeedback();
-                    }
-                  }}
-                  placeholder="Feedback to admin / Góp ý cho admin…"
-                  aria-label="Feedback to admin"
-                  disabled={feedback.feedbackSending}
-                  maxLength={500}
-                />
-                <button
-                  type="button"
-                  title={authUser ? "Send feedback" : "Sign in to send feedback"}
-                  onClick={feedback.sendFeedback}
-                  disabled={feedback.feedbackSending || !feedback.feedbackText.trim()}
-                >
-                  ➤
-                </button>
-              </div>
-
-              {(feedback.feedbackError || feedback.feedbackSent) && (
-                <div className="mt-2 text-xs opacity-70">
-                  {feedback.feedbackError ? `⚠ ${feedback.feedbackError}` : "✓ Sent to admin"}
-                </div>
-              )}
             </div>
-          </div>
-        </>
-      )}
+          </>
+        )}
+      </div>
     </div>
   );
 }
+
+/** New thing to learn:
+ * If the border is your “grid”, then every row (title, welcome, keywords) must either
+ * (1) be inside a bordered card or (2) visually match the same border + padding baseline. */

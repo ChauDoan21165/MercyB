@@ -711,8 +711,22 @@ export function MercyGuideCorner({
   onClearKeyword?: () => void;
   onScrollToAudio?: () => void;
 }) {
-  const [open, setOpen] = useState(false);
+  // ✅ PATCH: this room-level Guide is deprecated (global Host/Guide owns the UI now).
+  // Keep code for DEV debugging only, OFF by default.
+  const isDev = typeof import.meta !== "undefined" && (import.meta as any).env?.DEV;
+  let allow = false;
+  try {
+    if (isDev && typeof window !== "undefined") {
+      allow = new URLSearchParams(window.location.search).get("roomGuide") === "1";
+    }
+  } catch {
+    allow = false;
+  }
+
+  if (!allow) return null;
   if (disabled) return null;
+
+  const [open, setOpen] = useState(false);
 
   const hasStep = !!(activeKeyword && String(activeKeyword).trim());
 

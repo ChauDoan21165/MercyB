@@ -1,0 +1,21 @@
+import fs from "fs";
+import path from "path";
+
+const DATA_DIR = "./public/data";
+const files = fs.readdirSync(DATA_DIR).filter(f => f.endsWith(".json"));
+
+console.log("Rooms with JSON entries (local source):\n");
+
+for (const f of files) {
+  const full = path.join(DATA_DIR, f);
+  const json = JSON.parse(fs.readFileSync(full, "utf8"));
+  const n = (json.entries || []).length;
+
+  if (n > 0) {
+    console.log(
+      `${json.id || f.replace(".json","")}`.padEnd(40),
+      `entries:${n}`.padEnd(12),
+      full
+    );
+  }
+}

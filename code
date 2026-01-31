@@ -1,75 +1,131 @@
-// src/AppRouter.tsx
-// MB-BLUE-100.4 — 2025-12-31 (+0700)
-//
-// ROUTING RULES (LOCKED):
-// - Canonical room route: /room/:roomId
-// - Legacy/bad routes are redirected silently
-// - /room (no id) must NOT show NotFound
-// - No resolver logic here
-//
-// FIX (100.4):
-// - Mount BottomMusicBar ONCE at app-shell level
-// - Remove it from ChatHub
-// - Guarantees identical alignment with room content
-// - Stops layout fights / overflow forever
+import React from "react";
+import { HomeButton } from "@/components/HomeButton";
+import { BackButton } from "@/components/BackButton";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { Link } from "react-router-dom";
+import { Map } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { MercyGuide } from "@/components/MercyGuide";
 
-import { Routes, Route, Navigate, useParams } from "react-router-dom";
-
-import ChatHub from "@/pages/ChatHub";
-import AllRooms from "@/pages/AllRooms";
-import NotFound from "@/_legacy_next_pages/NotFound";
-import BottomMusicBar from "@/components/audio/BottomMusicBar";
-
-/**
- * Legacy fix:
- * /room/room/:roomId  →  /room/:roomId
- */
-function RoomRoomRedirect() {
-  const { roomId } = useParams<{ roomId: string }>();
-  return <Navigate to={roomId ? `/room/${roomId}` : "/"} replace />;
+interface AppShellProps {
+  children: React.ReactNode;
+  /** Custom bottom bar content */
+  bottomBar?: React.ReactNode;
+  /** If true, hides the global header (for pages with custom headers) */
+  hideHeader?: boolean;
+  /** Custom class for main content area */
+  mainClassName?: string;
 }
 
 /**
- * Safety fix:
- * /room  →  /
- * (Important: must not render NotFound)
+ * AppShell - Centered layout container for room pages
+ *
+ * - Single "Mercy Blade" logo in header (no duplicates)
+ * - max-width: 980px centered content (CANONICAL)
+ * - 2-row bottom bar: Row 1 controls, Row 2 audio
  */
-function RoomIndexRedirect() {
-  return <Navigate to="/" replace />;
-}
-
-/**
- * GLOBAL APP SHELL (LOCKED)
- * - Owns BottomMusicBar
- * - Routes render INSIDE this shell
- */
-function AppShell({ children }: { children: React.ReactNode }) {
+export function AppShell({
+  children,
+  bottomBar,
+  hideHeader = false,
+  mainClassName = "",
+}: AppShellProps) {
   return (
-    <>
+    <div className="min-h-screen flex flex-col bg-background">
+      {/* UNIVERSAL WIDTH CLAMP:
+          Anything rendered under AppShell must respect the same frame as Home.
+          Rooms are especially defensive-clamped here (data-mb-scope="room"). */}
+      <style>{`
+        :root{
+          --mb-page-max: 980px;
+        }
+        [data-mb-frame]{
+          width: 100%;
+          max-width: var(--mb-page-max);
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        /* Hard clamp for RoomRenderer scopes (prevents “escaped” max-width/100vw layouts) */
+        [data-mb-frame] [data-mb-scope="room"]{
+          width: 100% !important;
+          max-width: 100% !important;
+          margin-left: 0 !important;
+          margin-right: 0 !important;
+        }
+        [data-mb-frame] [data-mb-scope="room"] [data-room-box]{
+          width: 100% !important;
+          max-width: 100% !important;
+          margin-left: 0 !important;
+          margin-right: 0 !important;
+        }
+      `}</style>
+
+      {!hideHeader && (
+        <header className="sticky top-0 z-40 w-full border-b border-border/40 bg-background/80 backdrop-blur-sm">
+          <div className="mx-auto max-w-[980px] h-12 px-4 grid grid-cols-[auto,1fr,auto] items-center">
+            {/* Left: navigation */}
+            <div className="flex items-center gap-2">
+              <HomeButton />
+              <BackButton />
+            </div>
+
+            {/* Center: Mercy Blade logo - perfectly centered in column 2 */}
+            <div className="flex justify-center">
+              <Link
+                to="/"
+                className="font-semibold text-lg tracking-tight bg-gradient-to-r from-[hsl(var(--rainbow-magenta))] via-[hsl(var(--rainbow-purple))] to-[hsl(var(--rainbow-cyan))] bg-clip-text text-transparent hover:opacity-80 transition-opacity"
+              >
+                Mercy Blade
+              </Link>
+            </div>
+
+            {/* Right: controls */}
+            <div className="flex items-center gap-2 justify-end">
+              <ThemeToggle />
+              <Button variant="ghost" size="sm" className="h-8 w-8 p-0" asChild>
+                <Link to="/tier-map" title="Tier Map">
+                  <Map className="h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </header>
+      )}
+
+      {/* Main content - UNIVERSAL canonical frame */}
+      <main className={`flex-1 ${mainClassName}`}>
+        <div data-mb-frame className="px-4 py-4">
+          {children}
+        </div>
+      </main>
+
+      {/* Bottom bar - stays as-is (it can be fixed-position / full width if needed) */}
+      {bottomBar}
+
+      {/* Mercy Guide assistant */}
+      <MercyGuide />
+    </div>
+  );
+}
+
+/**
+ * AppShellContent - For pages using global header but wanting centered content
+ */
+export function AppShellContent({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <div data-mb-frame className={`px-4 py-4 ${className}`}>
       {children}
-      <BottomMusicBar />
-    </>
+    </div>
   );
 }
 
-export default function AppRouter() {
-  return (
-    <AppShell>
-      <Routes>
-        {/* Main landing */}
-        <Route path="/" element={<AllRooms />} />
-
-        {/* 🔁 Legacy fixes (explicit, silent) */}
-        <Route path="/room/room/:roomId" element={<RoomRoomRedirect />} />
-        <Route path="/room/" element={<RoomIndexRedirect />} />
-        <Route path="/room" element={<RoomIndexRedirect />} />
-
-        {/* ✅ Canonical room route */}
-        <Route path="/room/:roomId" element={<ChatHub />} />
-
-        {/* Fallback */}
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </AppShell>
-  );
-}
+/* Teacher GPT – new thing to learn:
+   Universal alignment comes from ONE shared frame.
+   Fix the frame once; every page inherits it. */

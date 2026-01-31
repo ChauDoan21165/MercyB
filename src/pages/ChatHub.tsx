@@ -19,10 +19,21 @@
  * - SINGLE AuthProvider source of truth
  * - No window.supabase
  * - No terminal execution of React code
+ *
+ * PATCH (2026-01-31):
+ * - The “top box” (RoomTopBar) caused a DOUBLE HEADER when GlobalHeader/AppHeader are present.
+ * - ChatHub must be THIN: DO NOT render a second header here.
+ * - Room pages now rely on the global header(s) from the app shell.
+ *
+ * PATCH (2026-01-31b):
+ * - ALIGN RULER WITH GLOBAL HEADER:
+ *   GlobalHeader/AppHeader use: max-w-[980px] px-4
+ *   ChatHub previously used:     max-w-[980px] px-4 md:px-6  (mismatch at md breakpoint)
+ *   Fix: remove md:px-6 in BOTH wrappers so borders/boxes line up across pages.
  */
 
 import { useEffect, useMemo, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import {
   canonicalizeRoomId,
@@ -38,9 +49,6 @@ import MercyHostCorner from "@/components/mercy/MercyHostCorner";
 import { FEATURE_FLAGS } from "@/lib/featureFlags";
 
 import BottomMusicBar from "@/components/audio/BottomMusicBar";
-
-// ✅ DEV JWT logger
-import DebugJWT from "@/debug/DebugJWT";
 
 type LoadState = "loading" | "ready" | "error";
 type ErrorKind = RoomJsonResolverErrorKind;
@@ -60,159 +68,13 @@ function firstNonEmptyArray(...candidates: any[]): any[] {
   return [];
 }
 function resolveKeywords(room: AnyRoom) {
-  const en = firstNonEmptyArray(
-    room?.keywords_en,
-    room?.keywords?.en,
-    room?.meta?.keywords_en,
-  );
-  const vi = firstNonEmptyArray(
-    room?.keywords_vi,
-    room?.keywords?.vi,
-    room?.meta?.keywords_vi,
-  );
+  const en = firstNonEmptyArray(room?.keywords_en, room?.keywords?.en, room?.meta?.keywords_en);
+  const vi = firstNonEmptyArray(room?.keywords_vi, room?.keywords?.vi, room?.meta?.keywords_vi);
   return { en, vi };
 }
 function detectRoomUiKind(room: AnyRoom): "keyword_hub" | "content" {
   const kw = resolveKeywords(room);
   return Math.max(kw.en.length, kw.vi.length) > 0 ? "keyword_hub" : "content";
-}
-
-/* ----------------------------------------------------- */
-/* TOP BAR (LOCKED)                                      */
-/* ----------------------------------------------------- */
-function RoomTopBar() {
-  const nav = useNavigate();
-  const [dark, setDark] = useState(false);
-  const [q, setQ] = useState("");
-
-  useEffect(() => {
-    document.documentElement.setAttribute("data-mb-mode", dark ? "dark" : "light");
-  }, [dark]);
-
-  return (
-    <div data-mb-topbar className="mb-5">
-      <style>{`
-        [data-mb-topbar] .mb-shell{
-          border:1px solid rgba(0,0,0,0.10);
-          background:rgba(255,255,255,0.86);
-          backdrop-filter:blur(10px);
-          border-radius:18px;
-          box-shadow:0 10px 24px rgba(0,0,0,0.06);
-          padding:10px 12px;
-        }
-        [data-mb-topbar] .mb-row{
-          display:grid;
-          grid-template-columns:1fr auto 1fr;
-          align-items:center;
-          gap:10px;
-        }
-        [data-mb-topbar] .mb-left,
-        [data-mb-topbar] .mb-right{
-          display:flex;
-          align-items:center;
-          gap:8px;
-          white-space:nowrap;
-          min-width:0;
-        }
-        [data-mb-topbar] .mb-brand{
-          font-weight:900;
-          font-size:36px;
-          line-height:38px;
-          letter-spacing:-0.02em;
-          background:linear-gradient(90deg,#ff4d6d,#ffbe0b,#3a86ff,#8338ec,#06d6a0);
-          -webkit-background-clip:text;
-          color:transparent;
-          max-width:52vw;
-          overflow:hidden;
-          text-overflow:ellipsis;
-          white-space:nowrap;
-        }
-        [data-mb-topbar] .mb-btn,
-        [data-mb-topbar] .mb-iconbtn{
-          height:34px;
-          padding:0 12px;
-          border-radius:12px;
-          border:1px solid rgba(0,0,0,0.16);
-          background:rgba(255,255,255,0.94);
-          font-size:12px;
-          font-weight:800;
-        }
-        [data-mb-topbar] .mb-iconbtn{
-          width:34px;
-          padding:0;
-          display:flex;
-          align-items:center;
-          justify-content:center;
-          flex:0 0 auto;
-        }
-        [data-mb-topbar] .mb-search{
-          height:34px;
-          border-radius:12px;
-          border:1px solid rgba(0,0,0,0.16);
-          padding:0 10px;
-          font-size:12px;
-          width:clamp(140px,26vw,320px);
-          min-width:0;
-          background:rgba(255,255,255,0.94);
-        }
-        @media (max-width: 740px){
-          [data-mb-topbar] .mb-brand{
-            font-size:28px;
-            line-height:30px;
-            max-width:44vw;
-          }
-          [data-mb-topbar] .mb-search{
-            width:clamp(120px,22vw,240px);
-          }
-        }
-      `}</style>
-
-      <div className="mb-shell">
-        <div className="mb-row">
-          <div className="mb-left">
-            <button type="button" onClick={() => nav("/")} className="mb-btn">
-              Home
-            </button>
-            <button type="button" onClick={() => nav(-1)} className="mb-btn">
-              Back
-            </button>
-          </div>
-
-          <div aria-hidden className="pointer-events-none justify-self-center min-w-0">
-            <span className="mb-brand">Mercy Blade</span>
-          </div>
-
-          <div className="mb-right justify-self-end">
-            <input
-              value={q}
-              onChange={(e) => setQ(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") setQ("");
-              }}
-              placeholder="Search rooms..."
-              className="mb-search"
-            />
-
-            {/* ✅ DEV ONLY JWT LOGGER */}
-            {import.meta.env.DEV && <DebugJWT />}
-
-            <button
-              type="button"
-              className="mb-iconbtn"
-              onClick={() => setDark((v) => !v)}
-              title="Day / Night"
-            >
-              {dark ? "🌙" : "☀️"}
-            </button>
-
-            <button type="button" onClick={() => nav("/tiers")} className="mb-btn" title="Tier Map">
-              👁 <span className="hidden sm:inline">Tier Map</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
 }
 
 /* ----------------------------------------------------- */
@@ -301,12 +163,14 @@ export default function ChatHub() {
 
         const kind: ErrorKind =
           err?.kind ||
-          (err instanceof TypeError ? "network" : String(err?.message || "").includes("ROOM_NOT_FOUND")
-            ? "not_found"
-            : String(err?.message || "").includes("JSON_INVALID") ||
-              String(err?.message || "").includes("Unexpected token")
-            ? "json_invalid"
-            : "server");
+          (err instanceof TypeError
+            ? "network"
+            : String(err?.message || "").includes("ROOM_NOT_FOUND")
+              ? "not_found"
+              : String(err?.message || "").includes("JSON_INVALID") ||
+                  String(err?.message || "").includes("Unexpected token")
+                ? "json_invalid"
+                : "server");
 
         setErrorKind(kind);
         setState("error");
@@ -320,11 +184,7 @@ export default function ChatHub() {
   }, [roomId, canonicalId]);
 
   if (state === "loading") {
-    return (
-      <div className="min-h-[40vh] flex items-center justify-center text-muted-foreground">
-        Loading…
-      </div>
-    );
+    return <div className="min-h-[40vh] flex items-center justify-center text-muted-foreground">Loading…</div>;
   }
 
   if (state === "error") {
@@ -358,18 +218,16 @@ export default function ChatHub() {
 
   return (
     <>
-      <div className="mx-auto w-full max-w-[980px] px-4 md:px-6 py-6 pb-36">
-        <RoomTopBar />
+      {/* ✅ RULER MUST MATCH GLOBAL HEADER: max-w-[980px] px-4 (NO md:px-6) */}
+      <div className="mx-auto w-full max-w-[980px] px-4 py-6 pb-36">
+        {/* PATCH (2026-01-31):
+            ChatHub MUST NOT render a second header/topbox.
+            GlobalHeader/AppHeader belong to the app shell. */}
 
         {/* ✅ NO HERO BAND ON ROOM PAGES (Home keeps hero) */}
 
         {FEATURE_FLAGS.MERCY_HOST_ENABLED && (
-          <MercyHostCorner
-            roomId={hostRoomId}
-            roomTitle={hostRoomTitle}
-            roomTier={hostTier}
-            language="en"
-          />
+          <MercyHostCorner roomId={hostRoomId} roomTitle={hostRoomTitle} roomTier={hostTier} language="en" />
         )}
 
         {/* NOTE: keyword_hub currently uses same renderer; kind is kept for future branching */}
@@ -380,16 +238,9 @@ export default function ChatHub() {
         )}
       </div>
 
-      {/* ✅ FIXED BOTTOM MOUNT: SAME RULER AS PAGE */}
-      <div
-        data-mb-music-mount
-        className="fixed bottom-0 left-0 right-0 z-50"
-        style={{ pointerEvents: "none" }}
-      >
-        <div
-          className="mx-auto w-full max-w-[980px] px-4 md:px-6 pb-4"
-          style={{ pointerEvents: "auto" }}
-        >
+      {/* ✅ FIXED BOTTOM MOUNT: SAME RULER AS PAGE (NO md:px-6) */}
+      <div data-mb-music-mount className="fixed bottom-0 left-0 right-0 z-50" style={{ pointerEvents: "none" }}>
+        <div className="mx-auto w-full max-w-[980px] px-4 pb-4" style={{ pointerEvents: "auto" }}>
           <BottomMusicBar />
         </div>
       </div>
@@ -398,5 +249,5 @@ export default function ChatHub() {
 }
 
 /** New thing to learn:
- * If a layout element won’t go away, search for where it’s rendered (rg).
- * Fix the *caller* (ChatHub) first, not the shared component. */
+ * If two pages “almost align” but differ on desktop, check breakpoint padding:
+ * px-4 vs md:px-6 will quietly break your global ruler. */

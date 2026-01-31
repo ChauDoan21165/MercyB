@@ -150,11 +150,20 @@ Deno.serve(async (req) => {
     }
 
     // Accept either tier_id OR tier (VIP1/VIP3/VIP9)
+    // PATCH: also accept tier_key / vip_key (common client payloads)
     const tierId = typeof body?.tier_id === "string" ? body.tier_id : "";
-    const tierKey = typeof body?.tier === "string" ? normalize(body.tier) : "";
+
+    const tierKey =
+      typeof body?.tier === "string"
+        ? normalize(body.tier)
+        : typeof body?.tier_key === "string"
+          ? normalize(body.tier_key)
+          : typeof body?.vip_key === "string"
+            ? normalize(body.vip_key)
+            : "";
 
     if (!tierId && !tierKey) {
-      return json({ error: "tier_id or tier is required" }, 400);
+      return json({ error: "tier_id or tier/tier_key/vip_key is required" }, 400);
     }
 
     // SERVER TRUTH: tier record comes from DB
@@ -193,10 +202,12 @@ Deno.serve(async (req) => {
     }
 
     // Read stripe_customer_id (optional)
+    // PATCH: profiles can key by id OR user_id depending on legacy rows
     const { data: prof, error: profErr } = await supabaseAdmin
       .from("profiles")
       .select("stripe_customer_id")
-      .eq("id", user.id)
+      .or(`id.eq.${user.id},user_id.eq.${user.id}`)
+      .limit(1)
       .maybeSingle();
 
     // If profiles table/column missing, DO NOT crash — just treat as no customer.
@@ -231,10 +242,11 @@ Deno.serve(async (req) => {
       }
 
       // best-effort store it (do not fail checkout if this write fails)
+      // PATCH: update row regardless of whether it’s keyed by id or user_id
       const { error: profUpErr } = await supabaseAdmin
         .from("profiles")
         .update({ stripe_customer_id: stripeCustomerId })
-        .eq("id", user.id);
+        .or(`id.eq.${user.id},user_id.eq.${user.id}`);
 
       if (profUpErr) {
         console.warn(
@@ -330,7 +342,13 @@ Deno.serve(async (req) => {
       );
     }
 
-    return json({ checkout_url: session.url });
+    // PATCH: include ok + some useful echo fields, but keep checkout_url for existing clients
+    return json({
+      ok: true,
+      checkout_url: session.url,
+      tier_id: (tier as any).id,
+      vip_key: vipKey,
+    });
   } catch (e) {
     // final safety net: never return plain text 500 again
     console.error("[create-checkout-session] UNCAUGHT:", e);

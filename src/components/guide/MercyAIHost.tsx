@@ -33,6 +33,132 @@ import { useHostActions } from "@/components/guide/host/buildActions";
 import { useDevHostState } from "@/components/guide/host/useDevState";
 import TypingIndicator from "@/components/guide/host/TypingIndicator";
 
+type TierKey = "free" | "vip1" | "vip3" | "vip9";
+
+function safeGetLS(key: string): string | null {
+  try {
+    return window.localStorage.getItem(key);
+  } catch {
+    return null;
+  }
+}
+
+function safeSetLSRaw(key: string, val: string) {
+  try {
+    window.localStorage.setItem(key, val);
+  } catch {
+    // ignore
+  }
+}
+
+function todayKeyLocal(): string {
+  // YYYY-MM-DD in local time
+  const d = new Date();
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+}
+
+function parseIntLoose(v: any): number | null {
+  const n = Number.parseInt(String(v ?? ""), 10);
+  return Number.isFinite(n) ? n : null;
+}
+
+function guessVipRankFromEnv(args: { authUserId: string | null; canVoiceTest?: boolean; ctx?: any }): number {
+  // Best-effort, non-breaking heuristic:
+  // 1) Known localStorage keys (if your app sets any of them)
+  // 2) ctx.vipRank / ctx.userVipRank (if present)
+  // 3) canVoiceTest -> treat as high tier hint
+  const ctx = args.ctx ?? null;
+
+  const candidates: Array<string | number | null | undefined> = [
+    ctx?.vipRank,
+    ctx?.userVipRank,
+    ctx?.accessRank,
+    ctx?.vip_rank,
+    safeGetLS("mb.vip_rank"),
+    safeGetLS("mb.user.vip_rank"),
+    safeGetLS("mb.access.rank"),
+    safeGetLS("mb.user_access.rank"),
+    safeGetLS("mb.profile.vip_rank"),
+  ];
+
+  for (const c of candidates) {
+    const n = parseIntLoose(c);
+    if (typeof n === "number") return n;
+  }
+
+  // Optional hint: voice test is typically paid/high tier.
+  if (args.canVoiceTest) return 9;
+
+  // If logged-in but we cannot detect rank, assume VIP1 (marketing-friendly, but safe quota still applies).
+  if (args.authUserId) return 1;
+
+  // Anonymous => free
+  return 0;
+}
+
+function tierFromRank(rank: number): TierKey {
+  if (rank >= 9) return "vip9";
+  if (rank >= 3) return "vip3";
+  if (rank >= 1) return "vip1";
+  return "free";
+}
+
+function tierLabel(tier: TierKey): string {
+  if (tier === "vip9") return "VIP9";
+  if (tier === "vip3") return "VIP3";
+  if (tier === "vip1") return "VIP1";
+  return "Free";
+}
+
+function tierNextUpgrade(tier: TierKey): TierKey {
+  if (tier === "free") return "vip1";
+  if (tier === "vip1") return "vip3";
+  if (tier === "vip3") return "vip9";
+  return "vip9";
+}
+
+function dailyAiLimitForTier(tier: TierKey): number {
+  // Marketing-friendly default caps
+  if (tier === "free") return 3;
+  if (tier === "vip1") return 30;
+  if (tier === "vip3") return 200;
+  return 2000; // vip9 effectively unlimited
+}
+
+function shouldCountAsAiMessage(userText: string, currentMode: PanelMode): boolean {
+  const t = (userText ?? "").trim();
+  if (!t) return false;
+  const lower = t.toLowerCase();
+
+  // Commands shouldn't consume AI quota
+  if (lower.startsWith("/")) return false;
+
+  // Pure navigation prompts shouldn't consume AI quota
+  if (currentMode === "home" && (lower === "tiers" || lower === "pricing")) return false;
+
+  return true;
+}
+
+function getAiUsageKey(appKey: string, tier: TierKey): string {
+  // per-day, per-app, per-user-tier bucket (simple)
+  return `mb.host.ai.${appKey}.${tier}.${todayKeyLocal()}`;
+}
+
+function readAiUsed(appKey: string, tier: TierKey): number {
+  const key = getAiUsageKey(appKey, tier);
+  const raw = safeGetLS(key);
+  const n = parseIntLoose(raw);
+  return typeof n === "number" && n >= 0 ? n : 0;
+}
+
+function writeAiUsed(appKey: string, tier: TierKey, used: number) {
+  const key = getAiUsageKey(appKey, tier);
+  safeSetLSRaw(key, String(Math.max(0, used | 0)));
+}
+
 export default function MercyAIHost() {
   const { user } = useAuth();
 
@@ -69,6 +195,10 @@ export default function MercyAIHost() {
 
   const appKey = "mercy_blade";
 
+  // Host gentle nudges / “stuck” rescue (local only)
+  const repeatNudgeTimerRef = useRef<number | null>(null);
+  const repeatNudgedKeyRef = useRef<string>("");
+
   useEffect(() => setMounted(true), []);
 
   /* =========================
@@ -93,9 +223,17 @@ export default function MercyAIHost() {
     typingTimerRef.current = null;
   }, []);
 
+  const clearRepeatNudgeTimer = useCallback(() => {
+    if (repeatNudgeTimerRef.current !== null) window.clearTimeout(repeatNudgeTimerRef.current);
+    repeatNudgeTimerRef.current = null;
+  }, []);
+
   useEffect(() => {
-    return () => clearTypingTimer();
-  }, [clearTypingTimer]);
+    return () => {
+      clearTypingTimer();
+      clearRepeatNudgeTimer();
+    };
+  }, [clearTypingTimer, clearRepeatNudgeTimer]);
 
   const addMsg = useCallback((role: "assistant" | "user", text: string) => {
     setMessages((prev) => {
@@ -105,6 +243,20 @@ export default function MercyAIHost() {
       return [...prev, { id, role, text: clean.length > 1200 ? `${clean.slice(0, 1200)}…` : clean }];
     });
   }, []);
+
+  const scheduleAssistantMsg = useCallback(
+    (text: string, delayMs: number) => {
+      // Deterministic, calm timing (no AI)
+      clearTypingTimer();
+      setIsTyping(true);
+      typingTimerRef.current = window.setTimeout(() => {
+        setIsTyping(false);
+        typingTimerRef.current = null;
+        addMsg("assistant", text);
+      }, Math.max(0, delayMs | 0));
+    },
+    [addMsg, clearTypingTimer],
+  );
 
   /* =========================
      Host Context (window event + route sync)
@@ -125,6 +277,32 @@ export default function MercyAIHost() {
     authUserId,
     authEmail,
   });
+
+  // ✅ Tier + AI quota (best-effort)
+  const vipRankGuess = useMemo(() => {
+    return guessVipRankFromEnv({ authUserId, canVoiceTest, ctx });
+  }, [authUserId, canVoiceTest, ctx]);
+
+  const tierKey = useMemo<TierKey>(() => tierFromRank(vipRankGuess), [vipRankGuess]);
+
+  const aiDailyLimit = useMemo(() => dailyAiLimitForTier(tierKey), [tierKey]);
+
+  const [aiUsedToday, setAiUsedToday] = useState(0);
+
+  useEffect(() => {
+    // Refresh usage when panel opens or tier changes or day changes
+    if (!mounted) return;
+    const used = readAiUsed(appKey, tierKey);
+    setAiUsedToday(used);
+  }, [mounted, appKey, tierKey, open]);
+
+  const bumpAiUsed = useCallback(
+    (nextUsed: number) => {
+      setAiUsedToday(nextUsed);
+      writeAiUsed(appKey, tierKey, nextUsed);
+    },
+    [appKey, tierKey],
+  );
 
   const pageHint = useMemo(() => {
     const p = location.pathname || "/";
@@ -199,12 +377,22 @@ export default function MercyAIHost() {
             }`
         : "";
 
+    const aiLine =
+      lang === "vi"
+        ? `AI hôm nay: ${Math.min(aiUsedToday, aiDailyLimit)}/${aiDailyLimit} • Gợi ý: gõ “fix grammar:” để sửa ngữ pháp.`
+        : `AI today: ${Math.min(aiUsedToday, aiDailyLimit)}/${aiDailyLimit} • Tip: type “fix grammar:” to correct grammar.`;
+
+    const pronLine =
+      lang === "vi"
+        ? "Luyện phát âm (đọc to và được góp ý) sẽ có sớm."
+        : "Pronunciation coaching (read aloud + corrections) is coming soon.";
+
     if (lang === "vi") {
-      return `Chào${name}. Mình là Mercy Host.\n${p ? p + "\n" : ""}Bạn muốn làm gì ngay bây giờ?\n• Chọn gói VIP (/tiers)\n• Làm mini test\n• Vào phòng học\n• Báo lỗi (audio/UI)`;
+      return `Chào${name}. Mình là Mercy Host.\n${p ? p + "\n" : ""}${aiLine}\n${pronLine}\nBạn muốn làm gì ngay bây giờ?\n• Chọn gói VIP (/tiers)\n• Làm mini test\n• Vào phòng học\n• Báo lỗi (audio/UI)`;
     }
 
-    return `Hi${name}. I’m Mercy Host.\n${p ? p + "\n" : ""}What do you need right now?\n• Choose a VIP tier (/tiers)\n• Take a mini test\n• Start learning in a room\n• Report a problem (audio/UI)`;
-  }, [displayName, lastProgress, isSignin, lang]);
+    return `Hi${name}. I’m Mercy Host.\n${p ? p + "\n" : ""}${aiLine}\n${pronLine}\nWhat do you need right now?\n• Choose a VIP tier (/tiers)\n• Take a mini test\n• Start learning in a room\n• Report a problem (audio/UI)`;
+  }, [displayName, lastProgress, isSignin, lang, aiUsedToday, aiDailyLimit]);
 
   const seedIfEmpty = useCallback(
     (nextMode: PanelMode) => {
@@ -261,6 +449,73 @@ export default function MercyAIHost() {
     },
   });
 
+  // Deterministic, calm coaching (no AI, no questions)
+  const repeatCoach = useMemo(() => {
+    if (!repeatTarget) return null;
+
+    const en = (repeatTarget.text_en ?? "").trim();
+    const vi = (repeatTarget.text_vi ?? "").trim();
+    const keyword = (repeatTarget.keyword ?? "").trim();
+
+    const words = en ? en.split(/\s+/).filter(Boolean).length : 0;
+    const bucket: "short" | "medium" | "long" = words > 14 ? "long" : words > 7 ? "medium" : "short";
+
+    const goal = lang === "vi" ? "Mục tiêu: nói trơn tru 3 lần." : "Goal: say it smoothly 3 times.";
+
+    const calmLine =
+      lang === "vi"
+        ? repeatStep === "play"
+          ? "Bước 1: nghe một lần."
+          : repeatStep === "your_turn"
+          ? "Bước 2: đến lượt bạn."
+          : "Bước 3: nghe lại để so nhịp."
+        : repeatStep === "play"
+        ? "Step 1: listen once."
+        : repeatStep === "your_turn"
+        ? "Step 2: your turn."
+        : "Step 3: listen again for rhythm.";
+
+    const micro =
+      lang === "vi"
+        ? bucket === "long"
+          ? "Tập trung nhịp điệu, không cần hoàn hảo."
+          : bucket === "medium"
+          ? "Chia 2 nhịp. Nói chậm và rõ."
+          : "Một hơi. Âm cuối rõ."
+        : bucket === "long"
+        ? "Focus on rhythm, not perfection."
+        : bucket === "medium"
+        ? "Two chunks. Slow and clear."
+        : "One breath. Clear endings.";
+
+    const kwHint = keyword && lang === "vi" ? `Từ khóa: ${keyword}` : keyword ? `Keyword: ${keyword}` : null;
+
+    const showEn = en || null;
+    const showVi = vi || null;
+
+    return { goal, calmLine, micro, kwHint, showEn, showVi, bucket };
+  }, [repeatTarget, repeatStep, lang]);
+
+  // Failure-aware gentle nudge (only once per target+step)
+  useEffect(() => {
+    clearRepeatNudgeTimer();
+    if (!open) return;
+    if (!repeatTarget) return;
+    if (repeatStep !== "your_turn") return;
+
+    const key = `${repeatTarget.roomId ?? ""}|${repeatTarget.entryId ?? ""}|${repeatTarget.keyword ?? ""}|${repeatSeenAt ?? ""}|your_turn`;
+    if (repeatNudgedKeyRef.current === key) return;
+
+    // Nudge after a calm delay (no nagging)
+    repeatNudgeTimerRef.current = window.setTimeout(() => {
+      repeatNudgeTimerRef.current = null;
+      repeatNudgedKeyRef.current = key;
+
+      // One calm sentence, no emoji, no exclamation.
+      scheduleAssistantMsg(lang === "vi" ? "Không sao. Thử lại chậm hơn một chút." : "That is fine. Try once more, a little slower.", 0);
+    }, 12000);
+  }, [open, repeatTarget, repeatStep, repeatSeenAt, clearRepeatNudgeTimer, scheduleAssistantMsg, lang]);
+
   /* =========================
      Reply function (pure)
      - MUST match host/makeReply.ts API
@@ -276,10 +531,82 @@ export default function MercyAIHost() {
     return null;
   }, [makeReplyRaw]);
 
+  const pickPraise = useCallback(() => {
+    // Neutral, calm, one sentence. No emoji. No exclamation.
+    const en = ["Good. Keep it relaxed.", "That was clear.", "Yes. Keep the rhythm.", "Nice. One more time.", "Good. Same pace."];
+    const vi = ["Tốt. Giữ thư thái.", "Rõ rồi.", "Đúng. Giữ nhịp.", "Ổn. Thêm một lần.", "Tốt. Giữ tốc độ."];
+    const arr = lang === "vi" ? vi : en;
+    const idx = Math.floor(Math.random() * arr.length);
+    return arr[idx] ?? (lang === "vi" ? "Tốt." : "Good.");
+  }, [lang]);
+
+  const quotaBlockMessage = useCallback(
+    (tier: TierKey, used: number, limit: number) => {
+      const next = tierNextUpgrade(tier);
+      const nextLabel = tierLabel(next);
+
+      if (lang === "vi") {
+        return `Bạn đã dùng hết lượt AI hôm nay (${Math.min(used, limit)}/${limit}).\n${nextLabel} giúp bạn luyện tiếp mượt hơn.\nGõ /tiers để nâng cấp.`;
+      }
+      return `You’ve used today’s AI messages (${Math.min(used, limit)}/${limit}).\n${nextLabel} gives you more practice with less friction.\nType /tiers to upgrade.`;
+    },
+    [lang],
+  );
+
+  const tryConsumeAiQuota = useCallback(
+    (userText: string, currentMode: PanelMode): { allowed: boolean; used: number; limit: number } => {
+      const limit = aiDailyLimit;
+
+      // VIP9: practically unlimited (still tracked)
+      const usedNow = readAiUsed(appKey, tierKey);
+
+      if (!shouldCountAsAiMessage(userText, currentMode)) {
+        return { allowed: true, used: usedNow, limit };
+      }
+
+      if (usedNow >= limit) {
+        return { allowed: false, used: usedNow, limit };
+      }
+
+      const nextUsed = usedNow + 1;
+      writeAiUsed(appKey, tierKey, nextUsed);
+      setAiUsedToday(nextUsed);
+      return { allowed: true, used: nextUsed, limit };
+    },
+    [aiDailyLimit, appKey, tierKey],
+  );
+
   const assistantRespond = useCallback(
     (userText: string, currentMode: PanelMode) => {
+      const textTrim = (userText ?? "").trim();
+
+      // Repeat ACK should never consume AI quota
+      const looksLikeRepeatAck =
+        repeatTarget && repeatStep === "your_turn" ? /(i\s*repeated|repeated|done|ok|okay|again|repeat)/i.test(textTrim) : false;
+
+      // Commands should not consume AI quota (but can still respond)
+      const lower = textTrim.toLowerCase();
+      const isCommand = lower.startsWith("/");
+
+      // ✅ QUOTA GUARD (before typing starts, calm + clear)
+      if (!looksLikeRepeatAck && !isCommand) {
+        const q = tryConsumeAiQuota(textTrim, currentMode);
+        if (!q.allowed) {
+          clearTypingTimer();
+          setIsTyping(false);
+
+          // One calm message, then one next action hint
+          addMsg("assistant", quotaBlockMessage(tierKey, q.used, q.limit));
+          setMode("billing");
+          return;
+        }
+      }
+
       clearTypingTimer();
       setIsTyping(true);
+
+      // Micro-timing: shorter for repeat acknowledgements, longer for normal replies
+      const delayMs = looksLikeRepeatAck ? 220 : 520;
 
       typingTimerRef.current = window.setTimeout(() => {
         setIsTyping(false);
@@ -288,7 +615,22 @@ export default function MercyAIHost() {
         // 1) Repeat ACK has priority (STRICT + local)
         const ack = tryAcknowledgeRepeat ? tryAcknowledgeRepeat(userText) : null;
         if (ack?.handled) {
-          addMsg("assistant", ack.replyText);
+          // Calm praise rotation (one sentence)
+          addMsg("assistant", pickPraise());
+
+          // After praise, give next micro-instruction if still in repeat mode (small breath)
+          if (repeatTarget) {
+            const follow =
+              lang === "vi"
+                ? repeatCount + 1 >= 3
+                  ? "Tốt. Bạn có thể chuyển sang câu tiếp theo."
+                  : "Giờ nghe lại một lần, rồi nói lại."
+                : repeatCount + 1 >= 3
+                ? "Good. You can move on."
+                : "Now listen once more, then repeat.";
+            scheduleAssistantMsg(follow, 600);
+          }
+
           return;
         }
 
@@ -298,7 +640,7 @@ export default function MercyAIHost() {
             "assistant",
             lang === "vi"
               ? "Host đang lỗi (makeReply). Bạn refresh trang (Cmd+R) giúp mình nhé."
-              : "Host is in a bad state (makeReply). Please refresh (Cmd+R)."
+              : "Host is in a bad state (makeReply). Please refresh (Cmd+R).",
           );
           return;
         }
@@ -337,7 +679,7 @@ export default function MercyAIHost() {
         });
 
         addMsg("assistant", reply);
-      }, 650);
+      }, delayMs);
     },
     [
       addMsg,
@@ -363,7 +705,12 @@ export default function MercyAIHost() {
       setRepeatStep,
       triggerHeart,
       clearHeart,
-    ]
+      scheduleAssistantMsg,
+      pickPraise,
+      tryConsumeAiQuota,
+      quotaBlockMessage,
+      tierKey,
+    ],
   );
 
   const openPanel = useCallback(() => {
@@ -374,9 +721,10 @@ export default function MercyAIHost() {
   const closePanel = useCallback(() => {
     setOpen(false);
     clearTypingTimer();
+    clearRepeatNudgeTimer();
     setIsTyping(false);
     stopVoice();
-  }, [clearTypingTimer, stopVoice]);
+  }, [clearTypingTimer, clearRepeatNudgeTimer, stopVoice]);
 
   const onSend = useCallback(() => {
     const text = (draft ?? "").trim();
@@ -389,7 +737,8 @@ export default function MercyAIHost() {
     const lower = text.toLowerCase().trim();
     if (lower === "/tiers") {
       goTiers();
-      assistantRespond(text, mode);
+      // Deterministic acknowledgement (no AI quota)
+      addMsg("assistant", lang === "vi" ? "OK. Mở trang /tiers." : "OK. Opening /tiers.");
       return;
     }
     if (lower === "/email") setMode("email");
@@ -397,8 +746,15 @@ export default function MercyAIHost() {
     if (lower === "/about") setMode("about");
     if (lower === "/home") setMode("home");
 
+    // Optional: allow clearing repeat without extra UI buttons (keeps “one action button” in repeat card)
+    if (lower === "/repeat clear") {
+      clearRepeat();
+      addMsg("assistant", lang === "vi" ? "Đã xóa repeat." : "Repeat cleared.");
+      return;
+    }
+
     assistantRespond(text, mode);
-  }, [draft, addMsg, assistantRespond, mode, goTiers]);
+  }, [draft, addMsg, assistantRespond, mode, goTiers, clearRepeat, lang]);
 
   const onInputKeyDown = useCallback(
     (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -411,7 +767,7 @@ export default function MercyAIHost() {
         closePanel();
       }
     },
-    [onSend, closePanel]
+    [onSend, closePanel],
   );
 
   /* =========================
@@ -432,7 +788,7 @@ export default function MercyAIHost() {
         "assistant",
         lang === "vi"
           ? `OK. Mini test (3 câu).\nQ1) “I ___ coffee.”\nA) like  B) likes  C) liking`
-          : `OK. Mini test (3 questions).\nQ1) “I ___ coffee.”\nA) like  B) likes  C) liking`
+          : `OK. Mini test (3 questions).\nQ1) “I ___ coffee.”\nA) like  B) likes  C) liking`,
       );
     },
     canVoiceTest,
@@ -469,14 +825,68 @@ export default function MercyAIHost() {
     heartBurst,
   });
 
-  if (!mounted || typeof document === "undefined") return null;
-
-
-  // ✅ IMPORTANT: hide UI on admin AFTER hooks (no early return before hooks)
-  if (isAdmin) return null;
+  const isBrowser = typeof document !== "undefined";
 
   const fontStack =
     'ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"';
+
+  // “One next-action button” contract for repeatTarget card:
+  // - We keep header controls (close/lang/voice) globally.
+  // - Inside the repeat card itself, we render exactly ONE primary action button.
+  const repeatPrimaryAction = useMemo(() => {
+    if (!repeatTarget) return null;
+
+    const hasAudio = Boolean(repeatTarget.audio_url);
+    const step = repeatStep;
+
+    if (step === "play") {
+      return {
+        id: "play",
+        label: "Play",
+        onClick: () => {
+          if (hasAudio) requestPlayRepeat();
+          // Move to your_turn even if audio is missing; user can still practice.
+          setRepeatStep("your_turn");
+        },
+      };
+    }
+
+    if (step === "your_turn") {
+      return {
+        id: "ack",
+        label: lang === "vi" ? "Tôi đã nhại lại" : "I repeated it",
+        onClick: () => {
+          // Deterministic ack (no AI quota).
+          const userText = lang === "vi" ? "ok" : "ok";
+          addMsg("user", userText);
+          assistantRespond(userText, mode);
+          // After ack, go to compare step for a brief loop
+          setRepeatStep("compare");
+        },
+      };
+    }
+
+    // compare or idle: play again if possible, else go back to your_turn
+    return {
+      id: "again",
+      label: hasAudio ? (lang === "vi" ? "Nghe lại" : "Play again") : lang === "vi" ? "Đến lượt tôi" : "My turn",
+      onClick: () => {
+        if (hasAudio) requestPlayRepeat();
+        setRepeatStep("your_turn");
+      },
+    };
+  }, [repeatTarget, repeatStep, requestPlayRepeat, setRepeatStep, lang, addMsg, assistantRespond, mode]);
+
+  const quotaBadge = useMemo(() => {
+    const used = aiUsedToday;
+    const limit = aiDailyLimit;
+    const tier = tierLabel(tierKey);
+
+    // Keep it short; VIP9 still shows count but not scary
+    const text = `${tier} • AI ${Math.min(used, limit)}/${limit}`;
+    const warn = used >= limit;
+    return { text, warn };
+  }, [aiUsedToday, aiDailyLimit, tierKey]);
 
   // ✅ closed state must not cover the screen (so OAuth buttons work)
   const ui = open ? (
@@ -489,6 +899,61 @@ export default function MercyAIHost() {
         fontFamily: fontStack,
       }}
     >
+      {/* ✅ HeartBurst (inline, no portal) */}
+      {heartBurst ? (
+        <div
+          data-mb-host-heartwrap
+          aria-hidden="true"
+          style={{
+            position: "fixed",
+            right: 24,
+            bottom: 24,
+            width: 460,
+            maxWidth: "92vw",
+            height: 220,
+            pointerEvents: "none",
+            zIndex: 2147483001,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            animation: "mbHostBurstWrap 920ms ease-out forwards",
+          }}
+        >
+          <style>{`
+            @keyframes mbHostBurstWrap{
+              0% { opacity: 1; }
+              100% { opacity: 0; }
+            }
+            @keyframes mbHostHeart{
+              0%   { opacity: 0; transform: translate(0,0) scale(0.65); }
+              18%  { opacity: 0.95; transform: translate(0,-6px) scale(1.0); }
+              100% { opacity: 0; transform: translate(0,-52px) scale(1.1); }
+            }
+          `}</style>
+          {Array.from({ length: 7 }).map((_, i) => {
+            const dx = [-88, -54, -22, 0, 22, 54, 88][i] ?? 0;
+            const delay = i * 45;
+            const size = i % 2 === 0 ? 18 : 16;
+            return (
+              <div
+                key={i}
+                style={{
+                  position: "absolute",
+                  fontSize: size,
+                  opacity: 0,
+                  transform: "translate(0,0) scale(0.65)",
+                  animation: `mbHostHeart 880ms ease-out ${delay}ms forwards`,
+                  left: `calc(50% + ${dx}px)`,
+                  top: "48%",
+                }}
+              >
+                ♥
+              </div>
+            );
+          })}
+        </div>
+      ) : null}
+
       {/* Backdrop (click to close) */}
       <div
         onMouseDown={closePanel}
@@ -564,6 +1029,24 @@ export default function MercyAIHost() {
                   title={contextLine ?? headerSubtitle}
                 >
                   {contextLine ?? headerSubtitle}
+                </div>
+
+                <div
+                  style={{
+                    marginTop: 6,
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 8,
+                    fontSize: 11,
+                    fontWeight: 800,
+                    color: quotaBadge.warn ? "rgba(0,0,0,0.82)" : "rgba(0,0,0,0.60)",
+                    background: quotaBadge.warn ? "rgba(0,0,0,0.10)" : "rgba(0,0,0,0.06)",
+                    borderRadius: 999,
+                    padding: "4px 10px",
+                  }}
+                  title={lang === "vi" ? "Giới hạn AI theo ngày" : "Daily AI limit"}
+                >
+                  {quotaBadge.text}
                 </div>
               </div>
             </div>
@@ -647,7 +1130,7 @@ export default function MercyAIHost() {
             }}
           >
             {/* Repeat card */}
-            {repeatTarget ? (
+            {repeatTarget && repeatCoach ? (
               <div
                 style={{
                   borderRadius: 14,
@@ -657,113 +1140,65 @@ export default function MercyAIHost() {
                   marginBottom: 12,
                 }}
               >
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
-                  <div style={{ fontSize: 12, fontWeight: 800, color: "#111" }}>
-                    {lang === "vi" ? "Repeat (lặp lại)" : "Repeat"}
-                  </div>
-                  <button
-                    type="button"
-                    onClick={clearRepeat}
-                    style={{
-                      borderRadius: 999,
-                      border: "1px solid rgba(0,0,0,0.12)",
-                      background: "#fff",
-                      padding: "4px 10px",
-                      fontSize: 11,
-                      fontWeight: 800,
-                      cursor: "pointer",
-                      color: "rgba(0,0,0,0.70)",
-                    }}
-                  >
-                    {lang === "vi" ? "Xóa" : "Clear"}
-                  </button>
-                </div>
+                {/* 3-line Host contract: calm line, goal line, micro-instruction */}
+                <div style={{ fontSize: 12, fontWeight: 800, color: "#111" }}>{repeatCoach.calmLine}</div>
+
+                <div style={{ fontSize: 11, color: "rgba(0,0,0,0.70)", marginTop: 6 }}>{repeatCoach.goal}</div>
 
                 <div style={{ fontSize: 11, color: "rgba(0,0,0,0.60)", marginTop: 6 }}>
-                  {lang === "vi"
-                    ? repeatStep === "play"
-                      ? "Bấm Play → nghe 1 lần → rồi nhại lại."
-                      : "Đến lượt bạn. Nói to, rõ, chậm."
-                    : repeatStep === "play"
-                    ? "Tap Play → listen once → then repeat."
-                    : "Your turn. Speak clearly and slowly."}
+                  {repeatCoach.micro}
+                  {repeatCoach.kwHint ? ` • ${repeatCoach.kwHint}` : ""}
+                  {typeof repeatCount === "number" ? ` • ${Math.min(3, repeatCount)}/3` : ""}
                   {repeatSeenAt ? ` • ${new Date(repeatSeenAt).toLocaleTimeString()}` : ""}
                 </div>
 
-                {repeatTarget.text_en ? (
-                  <div style={{ marginTop: 8, fontSize: 12, fontWeight: 700, color: "#111", whiteSpace: "pre-line" }}>
-                    {repeatTarget.text_en}
+                {repeatCoach.showEn ? (
+                  <div style={{ marginTop: 10, fontSize: 12, fontWeight: 700, color: "#111", whiteSpace: "pre-line" }}>
+                    {repeatCoach.showEn}
                   </div>
                 ) : null}
 
-                {repeatTarget.text_vi ? (
+                {repeatCoach.showVi ? (
                   <div style={{ marginTop: 6, fontSize: 12, color: "rgba(0,0,0,0.78)", whiteSpace: "pre-line" }}>
-                    {repeatTarget.text_vi}
+                    {repeatCoach.showVi}
                   </div>
                 ) : null}
 
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 10 }}>
-                  {repeatTarget.audio_url ? (
+                {/* Exactly ONE next-action button */}
+                {repeatPrimaryAction ? (
+                  <div style={{ marginTop: 12, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
                     <button
                       type="button"
-                      onClick={requestPlayRepeat}
+                      onClick={repeatPrimaryAction.onClick}
                       style={{
                         borderRadius: 999,
                         border: "1px solid rgba(0,0,0,0.12)",
                         background: "#111",
-                        padding: "6px 10px",
+                        padding: "8px 12px",
                         fontSize: 12,
-                        fontWeight: 800,
+                        fontWeight: 900,
                         cursor: "pointer",
                         color: "rgba(255,255,255,0.92)",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 8,
                       }}
                     >
-                      {lang === "vi" ? "Play" : "Play"}
+                      {/* Small face motif near play actions */}
+                      {repeatPrimaryAction.id === "play" || repeatPrimaryAction.id === "again" ? (
+                        <span aria-hidden="true" style={{ display: "inline-flex", alignItems: "center" }}>
+                          <TalkingFaceIcon size={18} isTalking={false} />
+                        </span>
+                      ) : null}
+                      {repeatPrimaryAction.label}
                     </button>
-                  ) : null}
 
-                  <button
-                    type="button"
-                    onClick={() => setRepeatStep("your_turn")}
-                    style={{
-                      borderRadius: 999,
-                      border: "1px solid rgba(0,0,0,0.12)",
-                      background: "#fff",
-                      padding: "6px 10px",
-                      fontSize: 12,
-                      fontWeight: 800,
-                      cursor: "pointer",
-                      color: "rgba(0,0,0,0.82)",
-                    }}
-                  >
-                    {lang === "vi" ? "Đến lượt tôi" : "My turn"}
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setRepeatStep("idle");
-                      addMsg(
-                        "assistant",
-                        lang === "vi"
-                          ? "OK. Khi muốn lặp lại, chọn keyword/entry trong room nhé."
-                          : "Okay. Pick a keyword/entry in a room when you want another repeat."
-                      );
-                    }}
-                    style={{
-                      borderRadius: 999,
-                      border: "1px solid rgba(0,0,0,0.12)",
-                      background: "#fff",
-                      padding: "6px 10px",
-                      fontSize: 12,
-                      fontWeight: 800,
-                      cursor: "pointer",
-                      color: "rgba(0,0,0,0.82)",
-                    }}
-                  >
-                    {lang === "vi" ? "Xong" : "Done"}
-                  </button>
-                </div>
+                    {/* Quiet rescue hint (no extra buttons) */}
+                    <div style={{ fontSize: 11, color: "rgba(0,0,0,0.55)", textAlign: "right" }}>
+                      {lang === "vi" ? "Gõ /repeat clear để xóa." : "Type /repeat clear to clear."}
+                    </div>
+                  </div>
+                ) : null}
               </div>
             ) : null}
 
@@ -815,6 +1250,7 @@ export default function MercyAIHost() {
               </div>
             ) : null}
 
+            {/* Quick actions (kept). When repeatTarget is active, keep them visible but calm. */}
             <div style={{ marginTop: 12, display: "flex", flexWrap: "wrap", gap: 8 }}>
               {safeActions.map((a) => (
                 <button
@@ -850,8 +1286,8 @@ export default function MercyAIHost() {
               </div>
               <div style={{ fontSize: 11, color: "rgba(0,0,0,0.60)", marginTop: 6 }}>
                 {lang === "vi"
-                  ? `Mình ghi nhận câu hỏi/lỗi để đội dev sửa sau. Nếu bạn muốn mở VIP, vào /tiers.`
-                  : `I record questions/faults so we can fix bugs later. If you want VIP access, go to /tiers.`}
+                  ? `Gợi ý: gõ “fix grammar:” để sửa ngữ pháp. Luyện phát âm (đọc to và được góp ý) sẽ có sớm. Nếu muốn mở VIP, vào /tiers.`
+                  : `Tip: type “fix grammar:” to correct grammar. Pronunciation coaching (read aloud + corrections) is coming soon. For VIP access, go to /tiers.`}
               </div>
             </div>
           </div>
@@ -881,11 +1317,7 @@ export default function MercyAIHost() {
                 value={draft}
                 onChange={(e) => setDraft(e.target.value)}
                 onKeyDown={onInputKeyDown}
-                placeholder={
-                  lang === "vi"
-                    ? "Gõ ở đây… (Enter để gửi, Shift+Enter xuống dòng)"
-                    : "Type here… (Enter to send, Shift+Enter newline)"
-                }
+                placeholder={lang === "vi" ? "Gõ ở đây… (Enter để gửi, Shift+Enter xuống dòng)" : "Type here… (Enter to send, Shift+Enter newline)"}
                 rows={1}
                 style={{
                   width: "100%",
@@ -955,6 +1387,10 @@ export default function MercyAIHost() {
       </button>
     </div>
   );
+
+  // ✅ FINAL GUARD: must be AFTER all hooks (prevents hook-order mismatch on mount/admin/SSR)
+  if (!mounted || !isBrowser) return null;
+  if (isAdmin) return null;
 
   return ui;
 }

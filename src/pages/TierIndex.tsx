@@ -51,10 +51,14 @@
 // PATCH (2026-01-29):
 // - Add "Home" + "Back" buttons at top-left for UX. (No changes to tier logic.)
 //
+// PATCH (2026-01-31):
+// - Remove local Home/Back row to prevent duplicate buttons.
+//   GlobalHeader/AppShell owns Home+Back + Mercy Blade wordmark consistently.
+//
 // NOTE: Inline styles only. Locked concept preserved.
 
 import React, { useEffect, useMemo, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import type { TierRoom, TierSource } from "@/lib/tierRoomSource";
 import { loadRoomsForTiers } from "@/lib/tierRoomSource";
@@ -378,8 +382,6 @@ function blankCounts(): CountsState {
 }
 
 export default function TierIndex() {
-  const navigate = useNavigate();
-
   const wrap: React.CSSProperties = {
     width: "100%",
     minHeight: "100vh",
@@ -397,30 +399,6 @@ export default function TierIndex() {
     position: "relative",
     zIndex: 999999,
     pointerEvents: "auto",
-  };
-
-  // NEW: top nav (Home + Back)
-  const topNav: React.CSSProperties = {
-    display: "flex",
-    alignItems: "center",
-    gap: 10,
-    marginBottom: 10,
-    pointerEvents: "auto",
-  };
-  const navBtn: React.CSSProperties = {
-    display: "inline-flex",
-    alignItems: "center",
-    gap: 8,
-    padding: "8px 12px",
-    borderRadius: 9999,
-    border: "1px solid rgba(0,0,0,0.12)",
-    background: "rgba(255,255,255,0.90)",
-    color: "rgba(0,0,0,0.78)",
-    textDecoration: "none",
-    fontWeight: 900,
-    fontSize: 13,
-    lineHeight: 1,
-    cursor: "pointer",
   };
 
   const title: React.CSSProperties = {
@@ -877,22 +855,6 @@ export default function TierIndex() {
   return (
     <div style={wrap}>
       <div style={container}>
-        {/* NEW: Home + Back */}
-        <div style={topNav} aria-label="Tier Map navigation">
-          <Link to="/" style={navBtn} aria-label="Go Home">
-            ⌂ Home
-          </Link>
-          <button
-            type="button"
-            style={navBtn}
-            onClick={() => navigate(-1)}
-            aria-label="Go Back"
-            title="Back"
-          >
-            ← Back
-          </button>
-        </div>
-
         <h1 style={title}>Tier Map</h1>
 
         <div style={sub}>

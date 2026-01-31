@@ -1,30 +1,22 @@
-// src/layouts/AppShell.tsx
-// MB-BLUE-101.HERO-SHELL — 2026-01-13 (+0700)
+// FILE: AppShell.tsx
+// PATH: src/layouts/AppShell.tsx
 //
-// GLOBAL LAYOUT SHELL (LOCKED INTENT):
-// - Reuse Home header + hero band across ALL pages
-// - EXCEPT /signin (signin stays standalone)
-// - Pages should NOT render their own header/hero anymore
+// FIX (2026-01-31):
+// - DO NOT wrap the global header inside the 980px frame.
+// - Header must be full-width so Home/Back can reach viewport edge.
+// - Content stays constrained to PAGE_MAX=980 + px-4.
 
 import React from "react";
-import { Outlet } from "react-router-dom";
+import AppHeader from "@/components/layout/AppHeader";
 
-// TEMP STUBS (compile unblock): Home.tsx does not export these named members.
-// Replace with real hero/header wiring later.
-const GlobalHeader = () => null;
-const GlobalHeroBand = () => null;
-
-
-// Option A (recommended): import extracted pieces from Home (minimal duplication).
-// You will add these named exports in Home.tsx in step (2).
-export default function AppShell() {
+export default function AppShell({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen">
-      <GlobalHeader />
-      <GlobalHeroBand />
-      <main>
-        <Outlet />
-      </main>
+    <div className="min-h-screen w-full">
+      {/* ✅ FULL-WIDTH HEADER (NOT inside max-w frame) */}
+      <AppHeader />
+
+      {/* ✅ Content frame matches Home: PAGE_MAX=980 + 16px padding */}
+      <div className="mx-auto max-w-[980px] px-4 py-4">{children}</div>
     </div>
   );
 }
