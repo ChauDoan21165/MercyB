@@ -28,9 +28,16 @@ import { AuthProvider } from "@/providers/AuthProvider";
 // ✅ Supabase client (DEV console debugging)
 import { supabase } from "@/lib/supabaseClient";
 
+// ✅ Private audio seam (optional resolver installer)
+import { installDefaultPrivateAudioResolver } from "@/lib/privateAudioResolver";
+
 declare global {
   interface Window {
     supabase?: typeof supabase;
+
+    // ✅ Optional private-audio resolver hook (TalkingFacePlayButton seam)
+    // Installed by installDefaultPrivateAudioResolver().
+    __mbResolveAudioSrc?: (srcKey: string) => Promise<string | null> | string | null;
 
     // ✅ HMR-safe singleton root (prevents double createRoot → removeChild NotFoundError)
     __MB_REACT_ROOT__?: ReactDOM.Root;
@@ -162,6 +169,17 @@ declare global {
     window.supabase = supabase;
   } catch {
     // ignore
+  }
+})();
+
+// ✅ Install private-audio resolver seam (safe / optional)
+// - If Edge function isn't deployed yet, private: keys will remain "Locked" in UI.
+// - Public /audio/... continues unchanged.
+(function installPrivateAudioSeam() {
+  try {
+    installDefaultPrivateAudioResolver();
+  } catch {
+    // never block boot
   }
 })();
 

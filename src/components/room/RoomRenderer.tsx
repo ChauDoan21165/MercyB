@@ -46,6 +46,9 @@ import {
 import { ROOM_CSS } from "@/components/room/roomRendererStyles";
 import { supabase } from "@/lib/supabaseClient";
 
+// ✅ NEW: signed-audio seam (TalkingFacePlayButton must only receive signed URL)
+import { getSignedAudio } from "@/lib/audio/getSignedAudio";
+
 import { prettifyRoomIdEN, isBadAutoTitle } from "@/components/room/roomIdUtils";
 import { fetchRoomEntriesDb, coerceRoomEntryRowToEntry } from "@/components/room/roomEntriesDb";
 import {
@@ -80,7 +83,7 @@ const pickIntroVI = (r: AnyRoom) =>
   r?.description_vi ||
   r?.summary?.vi ||
   r?.summary_vi ||
-  r?.description_vi ||
+  r?.description || // ✅ FIX: fallback should be r.description (not description_vi again)
   "";
 
 function pickTier(room: AnyRoom): string {
@@ -144,6 +147,26 @@ function normalizeTierIdRuntime(x: any): TierId {
   const t = String(x ?? "").trim().toLowerCase();
   const n = normalizeTier(t);
   return (n || "free") as TierId;
+}
+
+// ✅ NEW: signed-audio helpers (Room-level seam; TalkingFacePlayButton NEVER sees bucket paths)
+function isHttpUrl(s: string) {
+  return /^https?:\/\//i.test(String(s || ""));
+}
+function isPublicAudioPath(s: string) {
+  const p = String(s || "").trim();
+  if (!p) return false;
+  // existing public patterns used across the app
+  return p.startsWith("/audio/") || p.startsWith("audio/") || p.startsWith("/music/") || p.startsWith("music/");
+}
+function looksBucketObjectPath(s: string) {
+  const p = String(s || "").trim();
+  if (!p) return false;
+  // "vip3/test_private.mp3" (no leading slash), can include folders, ends with .mp3
+  if (p.startsWith("/")) return false;
+  if (isHttpUrl(p)) return false;
+  if (isPublicAudioPath(p)) return false;
+  return /\.mp3(\?.*)?$/i.test(p);
 }
 
 // ----- “meaningful” entry + legacy coercion -----
@@ -466,6 +489,9 @@ export default function RoomRenderer({
   const rootRef = useRef<HTMLDivElement | null>(null);
   const audioAnchorRef = useRef<HTMLDivElement | null>(null);
 
+  // ✅ SIGNED AUDIO (Room layer) — cache by raw path/url (DECLARE ONCE)
+  const signedAudioCacheRef = useRef<Map<string, string>>(new Map());
+
   const useColorThemeSafe = roomSpec?.use_color_theme !== false;
   const safeRoom = (room ?? {}) as AnyRoom;
   const effectiveRoomId = String(safeRoom?.id || roomId || "");
@@ -493,6 +519,37 @@ export default function RoomRenderer({
     if (!el) return;
     el.scrollIntoView({ behavior: "smooth", block: "center" });
   };
+
+  // ✅ NEW: resolve audio into a safe URL for players (signed if bucket path)
+  const resolveAudioUrl = useCallback(
+    async (raw: string): Promise<string> => {
+      const s = String(raw || "").trim();
+      if (!s) return "";
+
+      // Already a full URL
+      if (isHttpUrl(s)) return s;
+
+      // Existing public patterns (do not sign)
+      if (isPublicAudioPath(s)) {
+        return s.startsWith("/") ? s : `/${s}`;
+      }
+
+      // Bucket object path => sign (cache by object path)
+      if (looksBucketObjectPath(s)) {
+        const cached = signedAudioCacheRef.current.get(s);
+        if (cached) return cached;
+
+        const url = await getSignedAudio(s);
+        const safe = String(url || "").trim();
+        if (safe) signedAudioCacheRef.current.set(s, safe);
+        return safe || "";
+      }
+
+      // Fallback: keep as-is
+      return s;
+    },
+    [signedAudioCacheRef],
+  );
 
   // kill native audio controls (locked rule)
   useEffect(() => {
@@ -543,7 +600,10 @@ export default function RoomRenderer({
   const metaTierId = useMemo<TierId | null>(() => normalizeRoomTierToTierId(tierMetaRaw), [tierMetaRaw]);
 
   // ✅ runtime-hard normalize (prevents "FREE"/"Free " leaks)
-  const inferredTierId = useMemo<TierId>(() => normalizeTierIdRuntime(tierFromRoomId(effectiveRoomId)), [effectiveRoomId]);
+  const inferredTierId = useMemo<TierId>(
+    () => normalizeTierIdRuntime(tierFromRoomId(effectiveRoomId)),
+    [effectiveRoomId],
+  );
 
   const requiredTierId = useMemo<TierId>(() => inferredTierId, [inferredTierId]);
 
@@ -795,6 +855,36 @@ export default function RoomRenderer({
     dispatchHostContext({ page: "room", roomId: effectiveRoomId, keyword, entryId });
   }, [effectiveRoomId, activeKeyword, activeEntry]);
 
+  // ✅ SIGNED AUDIO (active entry)
+  const [activeAudioUrl, setActiveAudioUrl] = useState<string>("");
+
+  useEffect(() => {
+    let alive = true;
+
+    (async () => {
+      try {
+        if (!activeEntry) {
+          if (alive) setActiveAudioUrl("");
+          return;
+        }
+        const { audio_url } = pickRepeatTargetFromEntry(activeEntry);
+        const raw = String(audio_url || "").trim();
+        if (!raw) {
+          if (alive) setActiveAudioUrl("");
+          return;
+        }
+        const url = await resolveAudioUrl(raw);
+        if (alive) setActiveAudioUrl(url);
+      } catch {
+        if (alive) setActiveAudioUrl("");
+      }
+    })();
+
+    return () => {
+      alive = false;
+    };
+  }, [activeEntry, resolveAudioUrl]);
+
   // NEW: when repeat target becomes known, signal Mercy Host
   useEffect(() => {
     if (!effectiveRoomId) return;
@@ -805,7 +895,7 @@ export default function RoomRenderer({
     if (isLocked) return;
 
     const entryId = String(activeEntry?.id || activeEntry?.slug || "").trim() || null;
-    const { text_en, text_vi, audio_url } = pickRepeatTargetFromEntry(activeEntry);
+    const { text_en, text_vi } = pickRepeatTargetFromEntry(activeEntry);
 
     // Don’t dispatch empty targets
     if (!text_en && !text_vi) return;
@@ -815,15 +905,16 @@ export default function RoomRenderer({
     if ((window as any).__mb_last_repeat_key === repeatKey) return;
     (window as any).__mb_last_repeat_key = repeatKey;
 
+    // ✅ IMPORTANT: Host should also receive SIGNED audio (never bucket path)
     dispatchHostRepeatTarget({
       roomId: effectiveRoomId,
       entryId,
       text_en,
       text_vi,
-      audio_url,
+      audio_url: String(activeAudioUrl || "").trim(),
       pace: "normal",
     });
-  }, [effectiveRoomId, activeKeyword, activeEntry, isLocked]);
+  }, [effectiveRoomId, activeKeyword, activeEntry, isLocked, activeAudioUrl]);
 
   // ---- BOX 5: CHAT (canonical = effectiveRoomId) ----
   type ChatRow = { id: any; room_id?: string; user_id?: string; message?: string; created_at?: string };
@@ -1193,7 +1284,19 @@ export default function RoomRenderer({
                   <div className="min-h-[460px]" />
                 ) : activeEntry ? (
                   <ActiveEntry
-                    entry={activeEntry}
+                    // ✅ IMPORTANT:
+                    // TalkingFacePlayButton must NEVER see bucket paths.
+                    // We override audio fields here so ActiveEntry/TFPB only receives signed URL.
+                    entry={{
+                      ...activeEntry,
+                      ...(activeAudioUrl
+                        ? {
+                            audio_url: activeAudioUrl,
+                            audio_en: activeAudioUrl,
+                            audio: activeAudioUrl,
+                          }
+                        : null),
+                    }}
                     index={activeEntryIndex >= 0 ? activeEntryIndex : 0}
                     enKeywords={enKeywords}
                     viKeywords={viKeywords}

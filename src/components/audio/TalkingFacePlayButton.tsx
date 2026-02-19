@@ -30,6 +30,44 @@ function fmtTime(n: number) {
   return `${m}:${String(s).padStart(2, "0")}`;
 }
 
+/**
+ * AUDIO SEAM (NO REFACTOR):
+ * - Public paths keep working as-is.
+ * - Future private audio can be expressed as: "private:<path-or-key>"
+ *   Example: "private:vip3/depression_support/vip3_ds_01.mp3"
+ *
+ * - If a resolver is not installed yet, private audio will show as "locked"
+ *   and will NOT attempt playback.
+ *
+ * - Optional resolver hook:
+ *   window.__mbResolveAudioSrc = async (srcKey: string) => string | null
+ *   It should return a signed URL for "private:..." keys.
+ */
+function normalizePublicAudioSrc(s: string) {
+  const p = String(s || "").trim();
+  if (!p) return "";
+
+  // Absolute URLs (CDN, Supabase public, etc.)
+  if (/^https?:\/\//i.test(p)) return p;
+
+  // Already absolute path
+  if (p.startsWith("/")) return p;
+
+  // Explicit audio/ prefix without leading slash
+  if (p.startsWith("audio/")) return `/${p}`;
+
+  // Plain filename -> /audio/filename
+  if (!p.includes("/") && p.toLowerCase().endsWith(".mp3")) return `/audio/${p}`;
+
+  // Relative path -> make it absolute
+  return `/${p}`;
+}
+
+function isPrivateAudioKey(s: string) {
+  const p = String(s || "").trim();
+  return p.startsWith("private:");
+}
+
 type Props = {
   src: string;
   label?: string;
@@ -70,6 +108,10 @@ export default function TalkingFacePlayButton({
   const [t, setT] = useState(0);
   const [dur, setDur] = useState(0);
 
+  // Private-audio seam state
+  const [resolvedSrc, setResolvedSrc] = useState<string>("");
+  const [isLocked, setIsLocked] = useState(false);
+
   const safeSrc = String(src || "").trim();
   const shownLabel = String(label || "").trim();
 
@@ -77,6 +119,62 @@ export default function TalkingFacePlayButton({
     if (!dur || dur <= 0) return 0;
     return Math.max(0, Math.min(1, t / dur));
   }, [t, dur]);
+
+  // Resolve audio src (public immediately, private via optional resolver)
+  useEffect(() => {
+    let alive = true;
+
+    const run = async () => {
+      const key = safeSrc;
+
+      // Default reset
+      setResolvedSrc("");
+      setIsLocked(false);
+
+      if (!key) {
+        setIsLocked(true);
+        return;
+      }
+
+      if (!isPrivateAudioKey(key)) {
+        const pub = normalizePublicAudioSrc(key);
+        if (!alive) return;
+        setResolvedSrc(pub);
+        setIsLocked(!pub);
+        return;
+      }
+
+      // Private key requires resolver
+      try {
+        const w: any = typeof window !== "undefined" ? (window as any) : null;
+        const resolver: undefined | ((srcKey: string) => Promise<string | null> | (string | null)) =
+          w?.__mbResolveAudioSrc;
+
+        if (!resolver) {
+          if (!alive) return;
+          setResolvedSrc("");
+          setIsLocked(true);
+          return;
+        }
+
+        const out = await Promise.resolve(resolver(key));
+        const next = String(out || "").trim();
+
+        if (!alive) return;
+        setResolvedSrc(next);
+        setIsLocked(!next);
+      } catch {
+        if (!alive) return;
+        setResolvedSrc("");
+        setIsLocked(true);
+      }
+    };
+
+    run();
+    return () => {
+      alive = false;
+    };
+  }, [safeSrc]);
 
   // Dispatch repeat-target to Mercy Host on actual play/ended
   const dispatchHostRepeatTarget = (phase: "start" | "end", audioUrl: string) => {
@@ -92,7 +190,9 @@ export default function TalkingFacePlayButton({
         label: shownLabel || undefined,
         startedAt: startedAtRef.current ?? (phase === "start" ? nowIso : undefined),
         endedAt: phase === "end" ? nowIso : undefined,
-        srcKey: audioUrl,
+        // IMPORTANT: srcKey should remain the stable key (may be "private:..."),
+        // so Host can request replay by key even if audioUrl is a signed URL.
+        srcKey: safeSrc,
         hostContext: hostContext ?? undefined,
       };
 
@@ -137,9 +237,15 @@ export default function TalkingFacePlayButton({
     setDur(0);
     startedAtRef.current = null;
 
+    // If locked or unresolved, don't create an audio element.
+    if (isLocked || !resolvedSrc) {
+      audioRef.current = null;
+      return;
+    }
+
     const a = new Audio();
     a.preload = "metadata";
-    a.src = safeSrc;
+    a.src = resolvedSrc;
 
     audioRef.current = a;
 
@@ -152,14 +258,14 @@ export default function TalkingFacePlayButton({
       setPlaying(true);
       // IMPORTANT: dispatch on the real play event (not on click),
       // so it reflects actual playback start.
-      if (safeSrc) dispatchHostRepeatTarget("start", safeSrc);
+      dispatchHostRepeatTarget("start", resolvedSrc);
     };
     const onPause = () => setPlaying(false);
     const onEnded = () => {
       setPlaying(false);
       setT(0);
       // IMPORTANT: dispatch end signal so Host can open "Repeat after me"
-      if (safeSrc) dispatchHostRepeatTarget("end", safeSrc);
+      dispatchHostRepeatTarget("end", resolvedSrc);
     };
 
     a.addEventListener("loadedmetadata", onLoaded);
@@ -177,7 +283,7 @@ export default function TalkingFacePlayButton({
       a.removeEventListener("ended", onEnded);
       audioRef.current = null;
     };
-  }, [safeSrc, hostContext, shownLabel]);
+  }, [resolvedSrc, isLocked, hostContext, shownLabel, safeSrc]);
 
   const toggle = () => {
     const a = audioRef.current;
@@ -198,6 +304,7 @@ export default function TalkingFacePlayButton({
       data-mb-talkingface
       data-playing={playing ? "true" : "false"}
       data-fullwidth={fullWidthBar ? "true" : "false"}
+      data-locked={isLocked ? "true" : "false"}
     >
       <style>{`
         [data-mb-talkingface]{ width: 100%; }
@@ -213,6 +320,10 @@ export default function TalkingFacePlayButton({
           padding: 10px 12px;
         }
 
+        [data-mb-talkingface][data-locked="true"] .mb-row{
+          opacity: 0.78;
+        }
+
         [data-mb-talkingface] .mb-faceBtn{
           width: 44px;
           height: 44px;
@@ -223,6 +334,11 @@ export default function TalkingFacePlayButton({
           align-items:center;
           justify-content:center;
           flex: 0 0 auto;
+        }
+
+        [data-mb-talkingface][data-locked="true"] .mb-faceBtn{
+          cursor: not-allowed;
+          opacity: 0.75;
         }
 
         [data-mb-talkingface] .mb-mid{
@@ -294,9 +410,10 @@ export default function TalkingFacePlayButton({
         <button
           type="button"
           className="mb-faceBtn"
-          onClick={toggle}
-          title={playing ? "Pause" : "Play"}
-          aria-label={playing ? "Pause audio" : "Play audio"}
+          onClick={isLocked ? undefined : toggle}
+          title={isLocked ? "Locked" : playing ? "Pause" : "Play"}
+          aria-label={isLocked ? "Audio locked" : playing ? "Pause audio" : "Play audio"}
+          disabled={isLocked}
         >
           {/* Face icon */}
           <svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true">
@@ -351,7 +468,7 @@ export default function TalkingFacePlayButton({
               value={Math.round(pct * 1000)}
               onChange={(e) => seek(Number(e.target.value) / 1000)}
               aria-label="Seek audio"
-              disabled={!ready || !dur}
+              disabled={!ready || !dur || isLocked}
             />
             <div className="mb-time">
               {fmtTime(t)} / {fmtTime(dur)}
@@ -364,5 +481,5 @@ export default function TalkingFacePlayButton({
 }
 
 /** teacher GPT — new thing to learn (2 lines):
- * If you want Mercy Host to “know” learning started, dispatch on the real `audio.play` event, not on click.
- * Keep context optional: players emit signals; rooms add meaning. */
+ * Signed URLs change, but keys should not — keep a stable `srcKey` and a separate `audioUrl`.
+ * That’s the whole “seam”: UI stays the same while security upgrades underneath. */

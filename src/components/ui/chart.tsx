@@ -107,30 +107,29 @@ const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
     return null;
   }
 
-  return (
-    <style
-      dangerouslySetInnerHTML={{
-        __html: Object.entries(THEMES)
-          .map(
-            ([theme, prefix]) => `
+  // Avoid dangerouslySetInnerHTML: render CSS text as a normal <style> child.
+  const cssText = Object.entries(THEMES)
+    .map(([theme, prefix]) => {
+      const vars = colorConfig
+        .map(([key, itemConfig]) => {
+          const cfg: any = itemConfig as any;
+          const t = cfg.theme as Record<string, string> | undefined;
+          const color =
+            (t ? t[theme as keyof typeof THEMES] : undefined) ?? cfg.color;
+          return color ? `  --color-${key}: ${color};` : null;
+        })
+        .filter(Boolean)
+        .join("\n");
+
+      return `
 ${prefix} [data-chart=${id}] {
-${colorConfig
-  .map(([key, itemConfig]) => {
-    const cfg: any = itemConfig as any;
-    const t = cfg.theme as Record<string, string> | undefined;
-    const color =
-      (t ? t[theme as keyof typeof THEMES] : undefined) ?? cfg.color;
-    return color ? `  --color-${key}: ${color};` : null;
-  })
-  .filter(Boolean)
-  .join("\n")}
+${vars}
 }
-`
-          )
-          .join("\n"),
-      }}
-    />
-  );
+`;
+    })
+    .join("\n");
+
+  return <style>{cssText}</style>;
 };
 
 const ChartTooltip = RechartsPrimitive.Tooltip;
