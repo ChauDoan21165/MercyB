@@ -48,6 +48,9 @@
 // ✅ PATCH (2026-01-31d):
 // - UNIVERSAL WIDTH FIX: wrap Outlet in the SAME 980px frame as the hero band.
 //   This makes ALL pages (rooms/tiers/rooms list/home) share the same width baseline.
+//
+// ✅ PATCH (2026-02-19):
+// - Add /account and /upgrade routes inside AppHeroShell (non-admin) so they never 404 in prod.
 
 import React from "react";
 import { Routes, Route, Navigate, useParams, Outlet, Link, useLocation, useNavigate } from "react-router-dom";
@@ -55,6 +58,10 @@ import { Routes, Route, Navigate, useParams, Outlet, Link, useLocation, useNavig
 import ChatHub from "@/pages/ChatHub";
 import AllRooms from "@/pages/AllRooms";
 import Home from "@/pages/Home";
+
+// ✅ Billing / Account
+import AccountPage from "@/pages/AccountPage";
+import UpgradePage from "@/pages/UpgradePage";
 
 // ✅ Tier spine pages (NO FETCH)
 import TierIndex from "@/pages/TierIndex";
@@ -85,6 +92,10 @@ import AdminVIPRooms from "@/pages/admin/AdminVIPRooms";
 // ✅ Mercy AI Host (global floating guide)
 import MercyAIHost from "@/components/guide/MercyAIHost";
 
+// ✅ DEPLOYMENT TRUTH BEACON (PATCH 2026-02-19)
+// If you don’t see this in Prod console + NotFound footer, Prod is not running this file.
+const MB_ROUTER_VERSION = "2026-02-19-app-router-account-v1";
+
 /**
  * Local NotFound — ZERO dependencies
  * (Do not import legacy Next-era NotFound here)
@@ -94,6 +105,9 @@ function NotFound() {
     <div style={{ padding: 32 }}>
       <h2>404</h2>
       <p>Page not found.</p>
+      <div style={{ marginTop: 16, opacity: 0.6, fontSize: 12 }}>
+        Router: {MB_ROUTER_VERSION}
+      </div>
     </div>
   );
 }
@@ -290,6 +304,10 @@ function AdminShell() {
 }
 
 export default function AppRouter() {
+  // ✅ beacon log (helps confirm prod is running THIS file)
+  // eslint-disable-next-line no-console
+  console.log("MB_ROUTER_VERSION", MB_ROUTER_VERSION);
+
   return (
     <>
       <Routes>
@@ -303,6 +321,10 @@ export default function AppRouter() {
         <Route element={<AppHeroShell />}>
           {/* ✅ HOME (curated front door) */}
           <Route path="/" element={<Home />} />
+
+          {/* ✅ Billing / Account (must be in the REAL router, not src/App.tsx) */}
+          <Route path="/account" element={<AccountPage />} />
+          <Route path="/upgrade" element={<UpgradePage />} />
 
           {/* Rooms list */}
           <Route path="/rooms" element={<AllRooms />} />
@@ -356,4 +378,4 @@ export default function AppRouter() {
 }
 
 /* Teacher GPT – new thing to learn:
-   Universal width problems are solved by ONE router shell frame around <Outlet />. */
+   If a route works locally but 404s in prod, first confirm you edited the router that main.tsx imports. */
