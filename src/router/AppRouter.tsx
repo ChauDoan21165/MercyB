@@ -55,6 +55,8 @@
 // ✅ PATCH (2026-02-20):
 // - Deployment truth beacon is now ALSO exposed on window.MB_ROUTER_VERSION
 //   + documentElement data-mb-router-version (easy to verify in prod).
+// - IMPORTANT: Do NOT rely on top-level IIFE for beacon; it can be tree-shaken in prod builds.
+//   Beacon is now stamped inside AppRouter() (never tree-shaken).
 
 import React from "react";
 import { Routes, Route, Navigate, useParams, Outlet, Link, useLocation, useNavigate } from "react-router-dom";
@@ -99,20 +101,6 @@ import MercyAIHost from "@/components/guide/MercyAIHost";
 // ✅ DEPLOYMENT TRUTH BEACON (PATCH 2026-02-19)
 // If you don’t see this in Prod console + window.MB_ROUTER_VERSION, Prod is not running this file.
 const MB_ROUTER_VERSION = "2026-02-19-app-router-account-v1";
-
-// Expose beacon for prod verification (console + window + DOM attribute)
-(function exposeRouterBeacon() {
-  try {
-    if (typeof window !== "undefined") {
-      (window as any).MB_ROUTER_VERSION = MB_ROUTER_VERSION;
-    }
-    if (typeof document !== "undefined" && document.documentElement) {
-      document.documentElement.setAttribute("data-mb-router-version", MB_ROUTER_VERSION);
-    }
-  } catch {
-    // ignore
-  }
-})();
 
 /**
  * Local NotFound — ZERO dependencies
@@ -359,6 +347,18 @@ export default function AppRouter() {
   // eslint-disable-next-line no-console
   console.log("MB_ROUTER_VERSION", MB_ROUTER_VERSION);
 
+  // ✅ PATCH (2026-02-20): ALWAYS stamp beacon here (never tree-shaken)
+  try {
+    if (typeof window !== "undefined") {
+      (window as any).MB_ROUTER_VERSION = MB_ROUTER_VERSION;
+    }
+    if (typeof document !== "undefined" && document.documentElement) {
+      document.documentElement.setAttribute("data-mb-router-version", MB_ROUTER_VERSION);
+    }
+  } catch {
+    // ignore
+  }
+
   return (
     <>
       <Routes>
@@ -429,5 +429,5 @@ export default function AppRouter() {
 }
 
 /* Teacher GPT – new thing to learn:
-   For a “prod truth beacon”, log it, expose it on window, and stamp it on <html data-…>.
-   Then you can verify in Console even when the page has no visible footer. */
+   Top-level “IIFE side effects” can get tree-shaken in prod builds.
+   Put your truth beacons inside a React component body to guarantee execution. */
