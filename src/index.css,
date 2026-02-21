@@ -1,0 +1,359 @@
+/* src/index.css
+   MB-BLUE-100.4 — 2026-01-03 (+0700)
+
+   MERGED:
+   (A) Mercy Blade background modes (rainbow / bw)
+   (B) Mercy mouth + presence animations (SAFE)
+   (C) Keyword highlights via data-hl (EN/VI same colors)
+
+   LOCKED POLICY:
+   - Native <audio> UI must NEVER appear inside ROOM pages.
+   - Audio is rendered ONLY via TalkingFacePlayButton (core Mercy Blade motif).
+
+   CRITICAL FIX (97.4):
+   - Native audio UI still rendering meant <audio> existed in DOM.
+   - We do NOT disable audio playback logic.
+   - We hide native audio UI ONLY inside `.mb-room` scope.
+
+   FIX (100.3):
+   - Global `input[type=range]{ width:100% }` causes overflow in flex rows.
+   - Do NOT force width:100% globally.
+   - Use max-width + min-width:0 + flex shrink safety instead.
+
+   NEW (100.4):
+   - data-hl keyword highlighting: same concept => same color across languages.
+   - Dark, readable colors (no neon).
+*/
+
+/* ===============================
+   Tailwind Directives (REQUIRED)
+   =============================== */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===============================
+   Mercy Blade — Global Media Policy (LOCKED)
+   =============================== */
+
+/* ===============================
+   ROOM-SCOPED AUDIO LOCK (THE LOOP BREAKER)
+   =============================== */
+
+/* 0) Scope marker: RoomRenderer uses `.mb-room`.
+      Only enforce inside rooms, not admin panels. */
+.mb-room audio {
+  /* Defensive: if ANY <audio> exists, make it non-visual but playable */
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* 1) If controls attribute exists:
+      DO NOT display:none (keeps DOM + avoids layout quirks). */
+.mb-room audio[controls] {
+  display: block !important;
+}
+
+/* 2) WebKit native controls (Chrome/Safari) — extra defensive */
+.mb-room audio::-webkit-media-controls,
+.mb-room audio::-webkit-media-controls-enclosure,
+.mb-room audio::-webkit-media-controls-panel,
+.mb-room audio::-webkit-media-controls-play-button,
+.mb-room audio::-webkit-media-controls-timeline,
+.mb-room audio::-webkit-media-controls-current-time-display,
+.mb-room audio::-webkit-media-controls-time-remaining-display,
+.mb-room audio::-webkit-media-controls-mute-button,
+.mb-room audio::-webkit-media-controls-volume-slider {
+  display: none !important;
+}
+
+/* 3) Ensure no visual gaps/margins */
+.mb-room audio,
+.mb-room audio[controls] {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+/* ===============================
+   Mercy Blade — Color Modes
+   =============================== */
+
+/* Default: Rainbow mode */
+:root[data-mb-mode="rainbow"] {
+  --mb-bg: radial-gradient(
+      1200px 600px at 10% 10%,
+      rgba(255, 0, 160, 0.10),
+      transparent 55%
+    ),
+    radial-gradient(
+      1200px 600px at 90% 20%,
+      rgba(0, 180, 255, 0.10),
+      transparent 55%
+    ),
+    radial-gradient(
+      1200px 600px at 40% 90%,
+      rgba(140, 255, 0, 0.10),
+      transparent 55%
+    ),
+    linear-gradient(180deg, rgba(250, 250, 252, 1), rgba(245, 246, 250, 1));
+}
+
+:root[data-mb-mode="bw"] {
+  --mb-bg: linear-gradient(180deg, #ffffff, #f4f4f4);
+}
+
+body {
+  background: var(--mb-bg);
+}
+
+/* optional: slightly richer card background in rainbow mode */
+:root[data-mb-mode="rainbow"] .bg-card {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+:root[data-mb-mode="bw"] .bg-card {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+/* ===============================
+   Keyword Highlight System (data-hl)
+   =============================== */
+
+/*
+  Usage in content:
+    <span data-hl="calorie_deficit">calorie deficit</span>
+    <span data-hl="calorie_deficit">thiếu hụt calo</span>
+
+  Policy:
+  - 3–5 highlights per entry max.
+  - Same data-hl token => same color in both languages.
+  - Dark colors only; readable on light backgrounds.
+*/
+
+[data-hl] {
+  font-weight: 650;
+  text-decoration: none;
+}
+
+[data-hl="calorie_deficit"] { color: #1f2937; } /* slate-800 */
+[data-hl="daily_walk"]      { color: #0f766e; } /* teal-700 */
+[data-hl="consistency"]     { color: #7c2d12; } /* amber-800 */
+[data-hl="nutrition"]       { color: #365314; } /* olive-800 */
+[data-hl="habit"]           { color: #312e81; } /* indigo-800 */
+
+/* optional: reduce harshness in bw mode */
+:root[data-mb-mode="bw"] [data-hl] {
+  opacity: 0.95;
+}
+
+/* ===============================
+   Mercy Blade Talking Mouth (SAFE)
+   =============================== */
+
+@keyframes mb-mouth-talk {
+  0%,
+  100% {
+    transform: translateX(-50%) scaleY(0.2);
+  }
+  30% {
+    transform: translateX(-50%) scaleY(1);
+  }
+  60% {
+    transform: translateX(-50%) scaleY(0.4);
+  }
+}
+
+/* Base mouth */
+.mb-mouth {
+  transform-origin: 50% 100%;
+}
+
+/* Apply this when audio playing */
+.mb-mouth--talking {
+  animation: mb-mouth-talk 0.35s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Backward compat alias (optional) */
+.animate-mouth-talk {
+  animation: mb-mouth-talk 0.35s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* ===============================
+   Mercy Breathing (Presence)
+   =============================== */
+
+@keyframes mercy-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.03);
+    opacity: 1;
+  }
+}
+
+.animate-mercy-breathe {
+  animation: mercy-breathe 4s ease-in-out infinite;
+}
+
+/* ===============================
+   Halo Pulse (Reassurance)
+   =============================== */
+
+@keyframes halo-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.3;
+  }
+}
+
+.animate-halo-pulse {
+  animation: halo-pulse 3s ease-in-out infinite;
+}
+
+/* ===============================
+   Wing Flutter (Angelic)
+   =============================== */
+
+@keyframes wing-flutter-left {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-5deg);
+  }
+}
+
+@keyframes wing-flutter-right {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+}
+
+.animate-wing-flutter-left {
+  animation: wing-flutter-left 2s ease-in-out infinite;
+}
+
+.animate-wing-flutter-right {
+  animation: wing-flutter-right 2s ease-in-out infinite;
+}
+
+/* ===============================
+   Wave Expansion (Abstract)
+   =============================== */
+
+@keyframes wave-expand {
+  0%,
+  100% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.4;
+  }
+}
+
+.animate-wave-expand {
+  animation: wave-expand 3s ease-in-out infinite;
+}
+
+/* ===============================
+   GLOBAL WIDTH CLAMPS (NO OVERFLOW)
+   =============================== */
+
+/* Prevent any media UI from exceeding its parent box. */
+audio {
+  display: block;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/*
+  ✅ IMPORTANT:
+  Do NOT force width:100% for all range inputs globally.
+  That breaks flex rows (slider + time) and causes right-edge stick-out.
+*/
+input[type="range"] {
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  flex: 1 1 auto;
+}
+
+/* Flex/grid shrink safety */
+.mb-room,
+.mb-room * {
+  min-width: 0;
+}
+
+/* ===============================
+   RANGE FOCUS RING / OUTLINE CLIP FIX (THE STICK-OUT)
+   =============================== */
+
+/* Remove the blue “sticking out” focus outline/ring. */
+input[type="range"]:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* WebKit: custom paint so it doesn't draw outside rounded parents. */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  margin: 0;
+  padding: 0;
+  height: 20px;
+}
+
+/* Track + thumb */
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.18);
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.55);
+  margin-top: -4px;
+}
+
+/* Firefox */
+input[type="range"]::-moz-range-track {
+  height: 6px;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.18);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.55);
+  border: 0;
+}
+
+/* New thing to learn:
+   If you want “same meaning = same color” across languages,
+   don’t color words—color concepts (data-hl tokens). */
