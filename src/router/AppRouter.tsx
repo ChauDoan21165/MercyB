@@ -51,6 +51,10 @@
 //
 // ✅ PATCH (2026-02-19):
 // - Add /account and /upgrade routes inside AppHeroShell (non-admin) so they never 404 in prod.
+//
+// ✅ PATCH (2026-02-20):
+// - Deployment truth beacon is now ALSO exposed on window.MB_ROUTER_VERSION
+//   + documentElement data-mb-router-version (easy to verify in prod).
 
 import React from "react";
 import { Routes, Route, Navigate, useParams, Outlet, Link, useLocation, useNavigate } from "react-router-dom";
@@ -93,8 +97,22 @@ import AdminVIPRooms from "@/pages/admin/AdminVIPRooms";
 import MercyAIHost from "@/components/guide/MercyAIHost";
 
 // ✅ DEPLOYMENT TRUTH BEACON (PATCH 2026-02-19)
-// If you don’t see this in Prod console + NotFound footer, Prod is not running this file.
+// If you don’t see this in Prod console + window.MB_ROUTER_VERSION, Prod is not running this file.
 const MB_ROUTER_VERSION = "2026-02-19-app-router-account-v1";
+
+// Expose beacon for prod verification (console + window + DOM attribute)
+(function exposeRouterBeacon() {
+  try {
+    if (typeof window !== "undefined") {
+      (window as any).MB_ROUTER_VERSION = MB_ROUTER_VERSION;
+    }
+    if (typeof document !== "undefined" && document.documentElement) {
+      document.documentElement.setAttribute("data-mb-router-version", MB_ROUTER_VERSION);
+    }
+  } catch {
+    // ignore
+  }
+})();
 
 /**
  * Local NotFound — ZERO dependencies
@@ -124,6 +142,10 @@ function NotFound() {
  *
  * PATCH (2026-01-31d):
  * - UNIVERSAL WIDTH FIX: constrain ALL non-admin pages under the same 980px frame.
+ *
+ * PATCH (2026-02-20):
+ * - Center brand correctly using 3-column grid (true center, independent of left buttons width)
+ * - Back button safety: if no history, go Home
  */
 function AppHeroShell() {
   const nav = useNavigate();
@@ -160,15 +182,27 @@ function AppHeroShell() {
     borderBottom: "1px solid rgba(0,0,0,0.08)",
   };
 
-  // ✅ FIX: was maxWidth:1100 and padding 14px → mismatch
-  // Now EXACTLY matches app frame: max 980 + 16px horizontal padding
+  // ✅ true center layout (3 columns)
   const bandInner: React.CSSProperties = {
     maxWidth: FRAME_MAX,
     margin: "0 auto",
     padding: `10px ${FRAME_PAD_X}px`,
+    display: "grid",
+    gridTemplateColumns: "1fr auto 1fr",
+    alignItems: "center",
+    gap: 10,
+  };
+
+  const leftNavWrap: React.CSSProperties = {
     display: "flex",
     alignItems: "center",
     gap: 10,
+    justifyContent: "flex-start",
+  };
+
+  const rightSpacer: React.CSSProperties = {
+    display: "flex",
+    justifyContent: "flex-end",
   };
 
   const navBtn: React.CSSProperties = {
@@ -189,7 +223,6 @@ function AppHeroShell() {
   };
 
   const brand: React.CSSProperties = {
-    marginLeft: 6,
     fontWeight: 950,
     letterSpacing: -0.6,
     background: rainbow,
@@ -198,6 +231,19 @@ function AppHeroShell() {
     fontSize: 18,
     lineHeight: 1,
     whiteSpace: "nowrap",
+    justifySelf: "center",
+  };
+
+  const onBack = () => {
+    try {
+      if (typeof window !== "undefined" && window.history && window.history.length <= 1) {
+        nav("/");
+      } else {
+        nav(-1);
+      }
+    } catch {
+      nav("/");
+    }
   };
 
   // ✅ UNIVERSAL CONTENT FRAME (the actual fix)
@@ -219,18 +265,23 @@ function AppHeroShell() {
         <>
           <div style={band} aria-label="Mercy global hero band">
             <div style={bandInner}>
-              <Link to="/" style={navBtn} aria-label="Go Home">
-                ⌂ Home
-              </Link>
-              <button type="button" style={navBtn} onClick={() => nav(-1)} aria-label="Go Back" title="Back">
-                ← Back
-              </button>
+              {/* Left */}
+              <div style={leftNavWrap}>
+                <Link to="/" style={navBtn} aria-label="Go Home">
+                  ⌂ Home
+                </Link>
+                <button type="button" style={navBtn} onClick={onBack} aria-label="Go Back" title="Back">
+                  ← Back
+                </button>
+              </div>
 
-              <div style={{ flex: 1 }} />
-
+              {/* Center */}
               <div style={brand} title="Mercy Blade">
                 Mercy Blade
               </div>
+
+              {/* Right (spacer keeps center truly centered) */}
+              <div style={rightSpacer} aria-hidden="true" />
             </div>
           </div>
 
@@ -378,4 +429,5 @@ export default function AppRouter() {
 }
 
 /* Teacher GPT – new thing to learn:
-   If a route works locally but 404s in prod, first confirm you edited the router that main.tsx imports. */
+   For a “prod truth beacon”, log it, expose it on window, and stamp it on <html data-…>.
+   Then you can verify in Console even when the page has no visible footer. */
