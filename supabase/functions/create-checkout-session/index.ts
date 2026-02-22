@@ -7,6 +7,13 @@
 //   - subscription_data.metadata
 // - Best-effort: set Stripe customer email when creating customer and when reusing existing customer.
 //   (Never blocks checkout if update fails.)
+//
+// PATCH (2026-02-21):
+// - ✅ DB-FIRST price mapping for stability:
+//   - Prefer subscription_tiers.stripe_price_id IF the column exists & is populated
+//   - Otherwise fallback to STRIPE_PRICE_VIP1/3/9 secrets (since your current schema does NOT expose stripe_price_id)
+// - Avoid selecting non-existent columns (vip_key / stripe_price_id) which hard-fail in PostgREST.
+// - Stronger error messages + logs when no usable price id can be resolved.
 
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.39.3";
 import Stripe from "https://esm.sh/stripe@12.18.0?target=deno&no-dts";
@@ -36,6 +43,9 @@ function normalize(x: unknown) {
   return String(x ?? "").toLowerCase().replace(/\s+/g, " ").trim();
 }
 
+/**
+ * Env mapping (used as fallback when DB does not contain stripe_price_id).
+ */
 function vipKeyToEnvPrice(vipKey: string): string | null {
   const k = normalize(vipKey);
   if (k === "vip1") return env("STRIPE_PRICE_VIP1") || null;
@@ -65,6 +75,43 @@ function errToObj(e: unknown) {
     stack: anyE?.stack,
     cause: anyE?.cause,
   };
+}
+
+function inferVipKeyFromTierRow(tier: any): "vip1" | "vip3" | "vip9" | null {
+  // 1) name-based inference (most stable)
+  const name = String(tier?.name ?? "").toLowerCase();
+  const m = name.match(/\bvip\s*([139])\b/);
+  if (m?.[1] === "1") return "vip1";
+  if (m?.[1] === "3") return "vip3";
+  if (m?.[1] === "9") return "vip9";
+
+  // 2) price-based inference (works with your current visible schema)
+  const pm = tier?.price_monthly;
+  const n =
+    typeof pm === "number"
+      ? pm
+      : typeof pm === "string"
+        ? Number(pm)
+        : NaN;
+  if (Number.isFinite(n)) {
+    // these match your working Stripe checkouts: VIP1=$5, VIP3=$12, VIP9=$25
+    if (n === 5) return "vip1";
+    if (n === 12) return "vip3";
+    if (n === 25) return "vip9";
+  }
+
+  // 3) display order heuristic (last resort)
+  const d = tier?.display_order;
+  const di =
+    typeof d === "number" ? d : typeof d === "string" ? Number(d) : NaN;
+  if (Number.isFinite(di)) {
+    // If you ever used 1/3/9 as display_order
+    if (di === 1) return "vip1";
+    if (di === 3) return "vip3";
+    if (di === 9) return "vip9";
+  }
+
+  return null;
 }
 
 Deno.serve(async (req) => {
@@ -153,7 +200,7 @@ Deno.serve(async (req) => {
     // PATCH: also accept tier_key / vip_key (common client payloads)
     const tierId = typeof body?.tier_id === "string" ? body.tier_id : "";
 
-    const tierKey =
+    const tierKeyRaw =
       typeof body?.tier === "string"
         ? normalize(body.tier)
         : typeof body?.tier_key === "string"
@@ -162,41 +209,122 @@ Deno.serve(async (req) => {
             ? normalize(body.vip_key)
             : "";
 
-    if (!tierId && !tierKey) {
+    if (!tierId && !tierKeyRaw) {
       return json({ error: "tier_id or tier/tier_key/vip_key is required" }, 400);
     }
 
+    // Normalize tierKey to vip1/vip3/vip9 if provided
+    let vipKey: "vip1" | "vip3" | "vip9" | "" = "";
+    if (tierKeyRaw) {
+      const k = tierKeyRaw.replace(/^vip\s*/i, "vip");
+      if (k === "vip1" || k === "vip3" || k === "vip9") vipKey = k as any;
+      else return json({ error: "Tier is not purchasable" }, 400);
+    }
+
     // SERVER TRUTH: tier record comes from DB
-    const tierQuery = supabaseAdmin
-      .from("subscription_tiers")
-      .select("id, name, vip_key, stripe_price_id")
-      .limit(1);
+    // IMPORTANT: your current schema does NOT include vip_key/stripe_price_id, so do NOT select them.
+    // Use select("*") so we can feature-detect optional fields safely across environments.
+    const tierQuery = supabaseAdmin.from("subscription_tiers").select("*").limit(1);
 
     const { data: tier, error: tierErr } = tierId
       ? await tierQuery.eq("id", tierId).maybeSingle()
-      : await tierQuery.eq("vip_key", tierKey).maybeSingle();
+      : // If client only sends vip_key, we cannot DB-filter by vip_key unless the column exists.
+        // So we fall back to matching by name heuristics after fetching active tiers.
+        await supabaseAdmin
+          .from("subscription_tiers")
+          .select("*")
+          .eq("is_active", true)
+          .order("display_order", { ascending: true })
+          .limit(50);
 
-    if (tierErr || !tier) {
+    if (tierErr) {
       return json(
-        { error: "Unknown tier", detail: tierErr?.message ?? "not found" },
-        400,
+        { error: "Tier lookup failed", detail: tierErr?.message ?? "query error" },
+        500,
       );
     }
 
-    const vipKey = normalize((tier as any).vip_key);
-    if (vipKey !== "vip1" && vipKey !== "vip3" && vipKey !== "vip9") {
-      return json({ error: "Tier is not purchasable" }, 400);
+    let tierRow: any = null;
+    if (tierId) {
+      tierRow = tier;
+      if (!tierRow) {
+        return json({ error: "Unknown tier", detail: "not found" }, 400);
+      }
+    } else {
+      // We have a list of tiers; pick best match by vipKey inference.
+      const rows = Array.isArray(tier) ? tier : [];
+      const matches = rows
+        .map((r) => ({ r, inferred: inferVipKeyFromTierRow(r) }))
+        .filter((x) => x.inferred === vipKey);
+
+      tierRow = matches[0]?.r ?? null;
+
+      if (!tierRow) {
+        return json(
+          {
+            error: "Unknown tier",
+            detail:
+              "Could not match vip_key to a DB tier row (check subscription_tiers.name/price_monthly/display_order)",
+          },
+          400,
+        );
+      }
     }
 
+    // If vipKey not provided by client, infer it from DB tier row
+    if (!vipKey) {
+      const inferred = inferVipKeyFromTierRow(tierRow);
+      if (!inferred) {
+        return json(
+          {
+            error: "Tier is not purchasable",
+            detail:
+              "Unable to infer vip_key from subscription_tiers row (need VIP1/VIP3/VIP9 name, or price_monthly 5/12/25)",
+          },
+          400,
+        );
+      }
+      vipKey = inferred;
+    }
+
+    // ✅ Price resolution:
+    // - Prefer DB field stripe_price_id IF present (some environments may have it)
+    // - Fallback to env mapping (current production behavior that we proved works)
     const dbPriceId =
-      typeof (tier as any).stripe_price_id === "string"
-        ? (tier as any).stripe_price_id
+      typeof (tierRow as any)?.stripe_price_id === "string"
+        ? (tierRow as any).stripe_price_id.trim()
         : "";
-    const priceId = dbPriceId || vipKeyToEnvPrice(vipKey);
+
+    const envPriceId = vipKeyToEnvPrice(vipKey);
+
+    const priceId = dbPriceId || envPriceId || "";
 
     if (!priceId) {
+      console.error("[create-checkout-session] Missing price id", {
+        tier_id: (tierRow as any).id,
+        tier_name: (tierRow as any).name,
+        vip_key: vipKey,
+        db_has_stripe_price_id: "stripe_price_id" in (tierRow as any),
+        env_have: {
+          STRIPE_PRICE_VIP1: !!env("STRIPE_PRICE_VIP1"),
+          STRIPE_PRICE_VIP3: !!env("STRIPE_PRICE_VIP3"),
+          STRIPE_PRICE_VIP9: !!env("STRIPE_PRICE_VIP9"),
+        },
+      });
       return json(
-        { error: "Tier missing stripe_price_id (and no env fallback)" },
+        {
+          error: "Missing Stripe price id",
+          detail: {
+            tier_id: (tierRow as any).id,
+            vip_key: vipKey,
+            db_has_stripe_price_id: "stripe_price_id" in (tierRow as any),
+            have_env_prices: {
+              vip1: !!env("STRIPE_PRICE_VIP1"),
+              vip3: !!env("STRIPE_PRICE_VIP3"),
+              vip9: !!env("STRIPE_PRICE_VIP9"),
+            },
+          },
+        },
         500,
       );
     }
@@ -289,7 +417,7 @@ Deno.serve(async (req) => {
         cancel_url,
         metadata: {
           supabase_user_id: user.id,
-          tier_id: (tier as any).id,
+          tier_id: (tierRow as any).id,
           vip_key: vipKey,
           period: "monthly",
           email: userEmail || undefined,
@@ -297,7 +425,7 @@ Deno.serve(async (req) => {
         subscription_data: {
           metadata: {
             supabase_user_id: user.id,
-            tier_id: (tier as any).id,
+            tier_id: (tierRow as any).id,
             vip_key: vipKey,
             period: "monthly",
             email: userEmail || undefined,
@@ -305,7 +433,10 @@ Deno.serve(async (req) => {
         },
       });
     } catch (e) {
-      console.error("[create-checkout-session] stripe.checkout.sessions.create failed:", e);
+      console.error(
+        "[create-checkout-session] stripe.checkout.sessions.create failed:",
+        e,
+      );
       return json(
         { error: "Stripe checkout session create failed", detail: errToObj(e) },
         500,
@@ -315,7 +446,7 @@ Deno.serve(async (req) => {
     // Record pending tx (audit/debug)
     const txPayload: Record<string, unknown> = {
       user_id: user.id,
-      tier_id: (tier as any).id,
+      tier_id: (tierRow as any).id,
       external_reference: session.id, // used for onConflict
       status: "pending",
       transaction_type: "subscription",
@@ -335,7 +466,10 @@ Deno.serve(async (req) => {
       .upsert(txPayload, { onConflict: "external_reference" });
 
     if (txErr) {
-      console.error("[create-checkout-session] payment_transactions upsert failed:", txErr);
+      console.error(
+        "[create-checkout-session] payment_transactions upsert failed:",
+        txErr,
+      );
       return json(
         { error: "Failed to write payment_transactions", detail: txErr.message },
         500,
@@ -346,7 +480,7 @@ Deno.serve(async (req) => {
     return json({
       ok: true,
       checkout_url: session.url,
-      tier_id: (tier as any).id,
+      tier_id: (tierRow as any).id,
       vip_key: vipKey,
     });
   } catch (e) {

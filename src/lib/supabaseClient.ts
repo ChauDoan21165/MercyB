@@ -18,4 +18,20 @@ if (!supabaseUrl || !supabaseAnonKey) {
   });
 }
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+  auth: {
+    persistSession: true,
+    autoRefreshToken: true,
+    detectSessionInUrl: true,
+  },
+});
+
+// Debug hook (safe): lets you run auth commands in DevTools.
+// NOTE: DevTools is JS, so use globalThis.__MB_SUPABASE__ (no TS casts).
+try {
+  (globalThis as any).__MB_SUPABASE__ = supabase;
+  // eslint-disable-next-line no-console
+  console.log("[MB] __MB_SUPABASE__ attached");
+} catch {
+  // ignore
+}

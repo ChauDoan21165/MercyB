@@ -1,16 +1,74 @@
 // FILE: src/pages/AccountPage.tsx
 // PURPOSE: Account page UI (Tailwind).
 // NOTE: Keep auth access flexible (auth.user OR auth.session.user) for legacy compatibility.
+// FIX: show real plan (VIP rank) by reading public.mb_user_effective_rank.
 
-import React, { useCallback, useMemo } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@/providers/AuthProvider";
+
+type EffectiveRankRow = {
+  user_id: string;
+  vip_rank: number;
+};
 
 export default function AccountPage() {
   const nav = useNavigate();
   const auth = useAuth() as any;
 
   const user = auth?.user ?? auth?.session?.user ?? null;
+
+  // Try common client names. (We’ll harden AuthProvider if none exists.)
+  const supabase =
+    auth?.supabase ?? auth?.client ?? auth?.sb ?? auth?.supabaseClient ?? null;
+
+  const [vipRank, setVipRank] = useState<number | null>(null);
+  const [rankLoading, setRankLoading] = useState(false);
+
+  useEffect(() => {
+    let alive = true;
+
+    async function loadRank() {
+      if (!user?.id || !supabase) {
+        setVipRank(null);
+        return;
+      }
+
+      setRankLoading(true);
+      try {
+        const { data, error } = await supabase
+          .from("mb_user_effective_rank")
+          .select("user_id,vip_rank")
+          .eq("user_id", user.id)
+          .maybeSingle();
+
+        if (!alive) return;
+
+        if (error) {
+          // Don’t crash Account page; just fall back.
+          setVipRank(null);
+          return;
+        }
+
+        const row = data as EffectiveRankRow | null;
+        const rank =
+          row && typeof row.vip_rank === "number" ? row.vip_rank : null;
+
+        setVipRank(rank);
+      } catch {
+        if (!alive) return;
+        setVipRank(null);
+      } finally {
+        if (!alive) return;
+        setRankLoading(false);
+      }
+    }
+
+    loadRank();
+    return () => {
+      alive = false;
+    };
+  }, [supabase, user?.id]);
 
   const email = useMemo(() => {
     const e = user?.email;
@@ -31,8 +89,18 @@ export default function AccountPage() {
     }
   }, [auth, nav]);
 
-  const planLabel = user ? "Free" : "Signed out";
-  const statusLabel = user ? "Active" : "Not signed in";
+  const planLabel = useMemo(() => {
+    if (!user) return "Signed out";
+    if (rankLoading) return "Checking…";
+    const r = typeof vipRank === "number" ? vipRank : 0;
+    return r >= 1 ? `VIP ${r}` : "Free";
+  }, [user, rankLoading, vipRank]);
+
+  const statusLabel = useMemo(() => {
+    if (!user) return "Not signed in";
+    const r = typeof vipRank === "number" ? vipRank : 0;
+    return r >= 1 ? "Active (VIP)" : "Active";
+  }, [user, vipRank]);
 
   const pill =
     "px-4 py-2 rounded-full border border-black/15 font-semibold text-sm hover:bg-black/5 active:bg-black/10 transition";
@@ -77,8 +145,18 @@ export default function AccountPage() {
               </div>
               <div className="mt-2 text-lg font-semibold">{planLabel}</div>
               <div className="mt-2 text-sm opacity-70">
-                Keep it simple. Upgrade anytime.
+                {planLabel.startsWith("VIP")
+                  ? "Your VIP access is active."
+                  : "Keep it simple. Upgrade anytime."}
               </div>
+
+              {/* Optional tiny debug hint if client missing */}
+              {user && !supabase ? (
+                <div className="mt-3 text-xs text-red-600/80">
+                  Note: Supabase client not found in AuthProvider — plan may not
+                  auto-refresh.
+                </div>
+              ) : null}
             </div>
 
             <div className="rounded-xl border border-black/10 bg-white/70 p-5">

@@ -1,7 +1,7 @@
 // PATH: supabase/functions/_shared/sendEmail.ts
-// VERSION: v2026-01-06.prod.3+patch1 (DB schema compatible: email_outbox has to_email/template_key/variables/attempts/last_error/sent_at/error_message; no provider column)
+// VERSION: v2026-01-06.prod.3+patch3 (store correlation_id safely; retry insert if column missing)
+// DB schema compatible: email_outbox has to_email/template_key/variables/attempts/last_error/sent_at/error_message; correlation_id is optional
 
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2.39.3";
 import { renderEmailTemplate } from "./emailTemplates.ts";
 
 export type SendEmailArgs = {
@@ -52,8 +52,8 @@ function resolveProvider(): Provider {
 }
 
 function resolveFrom(_appKey: string) {
-  // PATCH: support your actual secret names
-  const fromEmail = env("EMAIL_FROM") || env("POSTMARK_FROM") || "no-reply@mercyblade.com";
+  const fromEmail =
+    env("EMAIL_FROM") || env("POSTMARK_FROM") || "no-reply@mercyblade.com";
   const fromLabel = env("EMAIL_FROM_LABEL") || "Mercy";
   return { fromEmail, fromLabel };
 }
@@ -67,31 +67,75 @@ function subjectWithPrefix(subject: string, localPort: number) {
 }
 
 // ---------------------------
-// Outbox (best-effort) — matches CURRENT DB schema
+// Outbox (best-effort) — avoid supabase-js in Edge
+// Use PostgREST directly.
 // ---------------------------
-function getSupabaseAdminForOutbox() {
+function getOutboxRestConfig() {
   const url = env("SUPABASE_URL");
   const key = env("SUPABASE_SERVICE_ROLE_KEY");
   if (!url || !key) return null;
-  return createClient(url, key, { auth: { persistSession: false } });
+
+  const base = url.replace(/\/+$/, "");
+  return {
+    restBase: `${base}/rest/v1`,
+    serviceKey: key,
+  };
+}
+
+async function postgrestInsertEmailOutbox(payload: Record<string, unknown>) {
+  const cfg = getOutboxRestConfig();
+  if (!cfg) return { ok: false as const, status: 0, text: "missing cfg", row: null };
+
+  const resp = await fetch(`${cfg.restBase}/email_outbox`, {
+    method: "POST",
+    headers: {
+      apikey: cfg.serviceKey,
+      Authorization: `Bearer ${cfg.serviceKey}`,
+      "Content-Type": "application/json",
+      Prefer: "return=representation",
+    },
+    body: JSON.stringify(payload),
+  });
+
+  const text = await resp.text().catch(() => "");
+  if (!resp.ok) return { ok: false as const, status: resp.status, text, row: null };
+
+  const data = (text ? JSON.parse(text) : null) as any;
+  const row = Array.isArray(data) ? data[0] : data;
+  return { ok: true as const, status: resp.status, text, row };
 }
 
 async function outboxInsertBestEffort(payload: Record<string, unknown>) {
   try {
-    const sb = getSupabaseAdminForOutbox();
-    if (!sb) return null;
+    // 1) First attempt: insert as-is (may include correlation_id)
+    const r1 = await postgrestInsertEmailOutbox(payload);
+    if (r1.ok) return r1.row?.id ?? null;
 
-    const { data, error } = await sb
-      .from("email_outbox")
-      .insert(payload)
-      .select("id")
-      .maybeSingle();
+    // 2) If schema rejects unknown column (common across envs), retry WITHOUT correlation_id
+    const msg = (r1.text || "").toLowerCase();
+    const looksLikeUnknownColumn =
+      r1.status === 400 &&
+      (msg.includes("column") && (msg.includes("does not exist") || msg.includes("unknown")));
 
-    if (error) {
-      console.warn("[sendEmail] email_outbox insert failed (ignored):", error.message);
+    if (looksLikeUnknownColumn && "correlation_id" in payload) {
+      const { correlation_id, ...rest } = payload as any;
+      const r2 = await postgrestInsertEmailOutbox(rest);
+      if (r2.ok) return r2.row?.id ?? null;
+
+      console.warn(
+        "[sendEmail] email_outbox insert retry failed (ignored):",
+        r2.status,
+        r2.text,
+      );
       return null;
     }
-    return (data as any)?.id ?? null;
+
+    console.warn(
+      "[sendEmail] email_outbox insert failed (ignored):",
+      r1.status,
+      r1.text,
+    );
+    return null;
   } catch (e) {
     console.warn("[sendEmail] email_outbox insert threw (ignored):", e);
     return null;
@@ -103,18 +147,33 @@ async function outboxUpdateBestEffort(id: unknown, patch: Record<string, unknown
     const outboxId = typeof id === "string" ? id : null;
     if (!outboxId) return;
 
-    const sb = getSupabaseAdminForOutbox();
-    if (!sb) return;
+    const cfg = getOutboxRestConfig();
+    if (!cfg) return;
 
-    const { error } = await sb.from("email_outbox").update(patch).eq("id", outboxId);
-    if (error) console.warn("[sendEmail] email_outbox update failed (ignored):", error.message);
+    const url = `${cfg.restBase}/email_outbox?id=eq.${encodeURIComponent(outboxId)}`;
+
+    const resp = await fetch(url, {
+      method: "PATCH",
+      headers: {
+        apikey: cfg.serviceKey,
+        Authorization: `Bearer ${cfg.serviceKey}`,
+        "Content-Type": "application/json",
+        Prefer: "return=minimal",
+      },
+      body: JSON.stringify(patch),
+    });
+
+    if (!resp.ok) {
+      const t = await resp.text().catch(() => "");
+      console.warn("[sendEmail] email_outbox update failed (ignored):", resp.status, t);
+    }
   } catch (e) {
     console.warn("[sendEmail] email_outbox update threw (ignored):", e);
   }
 }
 
 // ---------------------------
-// Provider: Postmark
+// Provider: Postmark (PURE fetch — NO SDK)
 // ---------------------------
 async function sendViaPostmark(args: {
   to: string;
@@ -124,9 +183,15 @@ async function sendViaPostmark(args: {
   fromLabel: string;
   headers: Record<string, string>;
 }) {
-  // PATCH: support POSTMARK_API_KEY (your secret name) + fallback POSTMARK_TOKEN
-  const token = getEnv("POSTMARK_API_KEY") || getEnv("POSTMARK_TOKEN");
-  if (!token) throw new Error("Missing POSTMARK_API_KEY (or POSTMARK_TOKEN)");
+  const token =
+    getEnv("POSTMARK_SERVER_TOKEN") ||
+    getEnv("POSTMARK_API_KEY") ||
+    getEnv("POSTMARK_TOKEN");
+  if (!token) {
+    throw new Error(
+      "Missing POSTMARK_SERVER_TOKEN (or POSTMARK_API_KEY / POSTMARK_TOKEN)",
+    );
+  }
 
   const resp = await fetch("https://api.postmarkapp.com/email", {
     method: "POST",
@@ -151,7 +216,7 @@ async function sendViaPostmark(args: {
 }
 
 // ---------------------------
-// Provider: SendGrid
+// Provider: SendGrid (PURE fetch — NO SDK)
 // ---------------------------
 async function sendViaSendGrid(args: {
   to: string;
@@ -234,7 +299,6 @@ async function sendViaLocalRawSmtp(args: {
   fromLabel: string;
   extraHeaders: string[];
 }) {
-  // Intentionally ignore SMTP_USER / SMTP_PASS for LOCAL
   if (getEnv("SMTP_USER") || getEnv("SMTP_PASS")) {
     console.log("[sendEmail] SMTP_USER / SMTP_PASS detected but intentionally ignored");
   }
@@ -293,10 +357,14 @@ export async function sendEmail({
 }: SendEmailArgs) {
   const provider = resolveProvider();
 
-  // Safety: force all emails if configured
   const forceTo = getEnv("EMAIL_FORCE_TO");
   const originalTo = to;
   const finalTo = forceTo && forceTo.trim() ? forceTo.trim() : to;
+
+  const bad = /(^|\b)(your@email\.com|you@your-real-domain\.com)\b/i;
+  if (bad.test(finalTo)) {
+    throw new Error(`Refusing to send to placeholder recipient: ${finalTo}`);
+  }
 
   const rendered = renderEmailTemplate({
     appKey,
@@ -314,7 +382,9 @@ export async function sendEmail({
     "X-App-Key": norm(appKey) || "mercy_blade",
     "X-Template-Key": norm(templateKey ?? "notification"),
   };
-  if (correlationId && correlationId.trim()) headersObj["X-Correlation-Id"] = correlationId.trim();
+  if (correlationId && correlationId.trim()) {
+    headersObj["X-Correlation-Id"] = correlationId.trim();
+  }
   if (forceTo && forceTo.trim() && originalTo && originalTo !== forceTo.trim()) {
     headersObj["X-Original-To"] = originalTo;
   }
@@ -338,13 +408,14 @@ export async function sendEmail({
     forceTo ? ` (forced; original=${originalTo})` : "",
   );
 
-  // Insert row using ONLY existing DB columns
+  // Insert row (TRY with correlation_id; fallback without)
   const outboxId = await outboxInsertBestEffort({
     created_at: nowIso(),
     status: "sending",
     to_email: finalTo,
     template_key: templateKey ?? "notification",
     variables,
+    correlation_id: correlationId?.trim() || null,
     attempts: 0,
     last_error: null,
     error_message: null,
@@ -377,8 +448,12 @@ export async function sendEmail({
       const extraHeaders: string[] = [];
       extraHeaders.push(`X-App-Key: ${headersObj["X-App-Key"]}`);
       extraHeaders.push(`X-Template-Key: ${headersObj["X-Template-Key"]}`);
-      if (headersObj["X-Correlation-Id"]) extraHeaders.push(`X-Correlation-Id: ${headersObj["X-Correlation-Id"]}`);
-      if (headersObj["X-Original-To"]) extraHeaders.push(`X-Original-To: <${headersObj["X-Original-To"]}>`);
+      if (headersObj["X-Correlation-Id"]) {
+        extraHeaders.push(`X-Correlation-Id: ${headersObj["X-Correlation-Id"]}`);
+      }
+      if (headersObj["X-Original-To"]) {
+        extraHeaders.push(`X-Original-To: <${headersObj["X-Original-To"]}>`);
+      }
 
       await sendViaLocalRawSmtp({
         host,
@@ -399,7 +474,13 @@ export async function sendEmail({
       error_message: null,
     });
 
-    return { ok: true, emailed: true, forced_to: forceTo ?? null, outbox_id: outboxId, provider };
+    return {
+      ok: true,
+      emailed: true,
+      forced_to: forceTo ?? null,
+      outbox_id: outboxId,
+      provider,
+    };
   } catch (e: any) {
     const msg = e?.message ?? String(e);
 
