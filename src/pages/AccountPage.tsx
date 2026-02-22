@@ -1,35 +1,40 @@
 // FILE: src/pages/AccountPage.tsx
 // PURPOSE: Account page UI (Tailwind).
 // NOTE: Keep auth access flexible (auth.user OR auth.session.user) for legacy compatibility.
-// FIX: show real plan (VIP rank) by reading public.mb_user_effective_rank.
+// STABLE FIX: do NOT depend on AuthProvider for a Supabase client.
+// - Query public.mb_user_effective_rank using the app Supabase client singleton.
+// - Fallbacks keep the page usable even if RLS/network fails.
 
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@/providers/AuthProvider";
 
-type EffectiveRankRow = {
-  user_id: string;
-  vip_rank: number;
-};
+// ✅ CHANGE THIS PATH if your supabase client lives elsewhere.
+import { supabase } from "@/lib/supabaseClient";
 
 export default function AccountPage() {
   const nav = useNavigate();
   const auth = useAuth() as any;
 
   const user = auth?.user ?? auth?.session?.user ?? null;
-
-  // Try common client names. (We’ll harden AuthProvider if none exists.)
-  const supabase =
-    auth?.supabase ?? auth?.client ?? auth?.sb ?? auth?.supabaseClient ?? null;
+  const userId: string | null =
+    typeof user?.id === "string" && user.id ? user.id : null;
 
   const [vipRank, setVipRank] = useState<number | null>(null);
-  const [rankLoading, setRankLoading] = useState(false);
+  const [rankLoading, setRankLoading] = useState<boolean>(false);
 
+  const email = useMemo(() => {
+    const e = user?.email;
+    if (typeof e === "string" && e.trim()) return e.trim();
+    return user ? "Signed in" : "—";
+  }, [user]);
+
+  // ✅ Fetch effective VIP rank from DB view (canonical).
   useEffect(() => {
-    let alive = true;
+    let cancelled = false;
 
-    async function loadRank() {
-      if (!user?.id || !supabase) {
+    async function run() {
+      if (!userId) {
         setVipRank(null);
         return;
       }
@@ -38,49 +43,46 @@ export default function AccountPage() {
       try {
         const { data, error } = await supabase
           .from("mb_user_effective_rank")
-          .select("user_id,vip_rank")
-          .eq("user_id", user.id)
+          .select("vip_rank")
+          .eq("user_id", userId)
           .maybeSingle();
 
-        if (!alive) return;
+        if (cancelled) return;
 
         if (error) {
-          // Don’t crash Account page; just fall back.
+          // silent fail → fallback below
           setVipRank(null);
           return;
         }
 
-        const row = data as EffectiveRankRow | null;
-        const rank =
-          row && typeof row.vip_rank === "number" ? row.vip_rank : null;
-
-        setVipRank(rank);
+        const r = (data as any)?.vip_rank;
+        if (typeof r === "number" && Number.isFinite(r)) setVipRank(r);
+        else setVipRank(null);
       } catch {
-        if (!alive) return;
-        setVipRank(null);
+        if (!cancelled) setVipRank(null);
       } finally {
-        if (!alive) return;
-        setRankLoading(false);
+        if (!cancelled) setRankLoading(false);
       }
     }
 
-    loadRank();
+    run();
     return () => {
-      alive = false;
+      cancelled = true;
     };
-  }, [supabase, user?.id]);
-
-  const email = useMemo(() => {
-    const e = user?.email;
-    if (typeof e === "string" && e.trim()) return e.trim();
-    return user ? "Signed in" : "—";
-  }, [user]);
+  }, [userId]);
 
   const onSignOut = useCallback(async () => {
     try {
       const fn = auth?.signOut ?? auth?.logout;
       if (typeof fn === "function") {
         await fn();
+      } else {
+        // extra safety: try supabase signOut directly
+        try {
+          await supabase.auth.signOut();
+        } catch {
+          // ignore
+        }
       }
     } catch {
       // ignore
@@ -92,15 +94,16 @@ export default function AccountPage() {
   const planLabel = useMemo(() => {
     if (!user) return "Signed out";
     if (rankLoading) return "Checking…";
-    const r = typeof vipRank === "number" ? vipRank : 0;
-    return r >= 1 ? `VIP ${r}` : "Free";
-  }, [user, rankLoading, vipRank]);
+    if (typeof vipRank === "number" && vipRank > 0) return `VIP ${vipRank}`;
+    return "Free";
+  }, [user, vipRank, rankLoading]);
 
   const statusLabel = useMemo(() => {
     if (!user) return "Not signed in";
-    const r = typeof vipRank === "number" ? vipRank : 0;
-    return r >= 1 ? "Active (VIP)" : "Active";
-  }, [user, vipRank]);
+    if (rankLoading) return "Checking…";
+    if (typeof vipRank === "number" && vipRank > 0) return "Active (VIP)";
+    return "Active";
+  }, [user, vipRank, rankLoading]);
 
   const pill =
     "px-4 py-2 rounded-full border border-black/15 font-semibold text-sm hover:bg-black/5 active:bg-black/10 transition";
@@ -145,18 +148,10 @@ export default function AccountPage() {
               </div>
               <div className="mt-2 text-lg font-semibold">{planLabel}</div>
               <div className="mt-2 text-sm opacity-70">
-                {planLabel.startsWith("VIP")
-                  ? "Your VIP access is active."
+                {typeof vipRank === "number" && vipRank > 0
+                  ? "You have VIP access."
                   : "Keep it simple. Upgrade anytime."}
               </div>
-
-              {/* Optional tiny debug hint if client missing */}
-              {user && !supabase ? (
-                <div className="mt-3 text-xs text-red-600/80">
-                  Note: Supabase client not found in AuthProvider — plan may not
-                  auto-refresh.
-                </div>
-              ) : null}
             </div>
 
             <div className="rounded-xl border border-black/10 bg-white/70 p-5">
