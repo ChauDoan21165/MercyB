@@ -227,12 +227,14 @@ function formatMoney(amountMinor: number, currency?: string | null): string {
 
 // Do NOT call Stripe API in webhook. Only use metadata + session fields.
 async function resolveCustomerEmail(session: any): Promise<string | null> {
-  const metaEmail = session?.metadata?.email ?? null;
-  if (typeof metaEmail === "string" && metaEmail.trim()) return metaEmail.trim();
-
+  // ✅ FIX: prefer Stripe-provided customer email first (more trustworthy than metadata)
   const direct =
     session?.customer_details?.email ?? session?.customer_email ?? null;
   if (typeof direct === "string" && direct.trim()) return direct.trim();
+
+  // metadata is fallback only (can be wrong / stale / miswired)
+  const metaEmail = session?.metadata?.email ?? null;
+  if (typeof metaEmail === "string" && metaEmail.trim()) return metaEmail.trim();
 
   return null;
 }
@@ -451,6 +453,7 @@ async function outboxAlreadySent(
   supabase: ReturnType<typeof createClient>,
   correlationId: string,
   templateKey: string,
+  toEmail: string,
 ): Promise<boolean> {
   try {
     const { data, error } = await supabase
@@ -458,6 +461,7 @@ async function outboxAlreadySent(
       .select("id,status")
       .eq("correlation_id", correlationId)
       .eq("template_key", templateKey)
+      .eq("to_email", toEmail)
       .eq("status", "sent")
       .limit(1);
 
@@ -475,6 +479,79 @@ async function outboxAlreadySent(
   }
 }
 
+// ✅ NEW: force an outbox row to exist even if sendEmail implementation doesn’t log.
+// This fixes: “email_outbox empty” while payments succeed.
+async function outboxUpsertQueued(params: {
+  supabase: ReturnType<typeof createClient>;
+  correlationId: string;
+  to: string;
+  templateKey: string;
+  variables: Record<string, string>;
+}) {
+  try {
+    const provider = env("EMAIL_PROVIDER") || null;
+
+    // Best-effort: if schema differs, this MUST NOT break the webhook.
+    const { error } = await params.supabase.from("email_outbox").upsert(
+      {
+        app_key: "mercy_blade",
+        correlation_id: params.correlationId,
+        template_key: params.templateKey,
+        to_email: params.to,
+        status: "queued",
+        provider,
+        variables: params.variables,
+        last_error: null,
+      },
+      // If you don’t have this constraint, Supabase will error; we swallow it below.
+      { onConflict: "correlation_id,template_key,to_email" },
+    );
+
+    if (error) {
+      console.warn(
+        "[stripe-webhook] email_outbox upsert queued failed (ignored):",
+        error.message,
+      );
+    }
+  } catch (e) {
+    console.warn("[stripe-webhook] email_outbox upsert queued threw (ignored):", e);
+  }
+}
+
+async function outboxMark(params: {
+  supabase: ReturnType<typeof createClient>;
+  correlationId: string;
+  to: string;
+  templateKey: string;
+  status: "sent" | "failed";
+  lastError?: string | null;
+}) {
+  try {
+    const provider = env("EMAIL_PROVIDER") || null;
+
+    const { error } = await params.supabase
+      .from("email_outbox")
+      .update({
+        status: params.status,
+        provider,
+        last_error: params.lastError ?? null,
+        updated_at: new Date().toISOString(),
+      })
+      .eq("correlation_id", params.correlationId)
+      .eq("template_key", params.templateKey)
+      .eq("to_email", params.to);
+
+    if (error) {
+      console.warn(
+        "[stripe-webhook] email_outbox mark failed (ignored):",
+        error.message,
+      );
+    }
+  } catch (e) {
+    console.warn("[stripe-webhook] email_outbox mark threw (ignored):", e);
+  }
+}
+
 async function sendEmailOnce(params: {
   supabase: ReturnType<typeof createClient>;
   correlationId: string;
@@ -486,6 +563,7 @@ async function sendEmailOnce(params: {
     params.supabase,
     params.correlationId,
     params.templateKey,
+    params.to,
   );
   if (already) {
     console.log(
@@ -495,13 +573,45 @@ async function sendEmailOnce(params: {
     return;
   }
 
-  await sendEmail({
+  // ✅ Ensure an outbox row exists even if provider/sendEmail doesn’t write it.
+  await outboxUpsertQueued({
+    supabase: params.supabase,
+    correlationId: params.correlationId,
     to: params.to,
     templateKey: params.templateKey,
     variables: params.variables,
-    appKey: "mercy_blade",
-    correlationId: params.correlationId,
   });
+
+  try {
+    await sendEmail({
+      to: params.to,
+      templateKey: params.templateKey,
+      variables: params.variables,
+      appKey: "mercy_blade",
+      correlationId: params.correlationId,
+    });
+
+    // Mark as sent (best-effort)
+    await outboxMark({
+      supabase: params.supabase,
+      correlationId: params.correlationId,
+      to: params.to,
+      templateKey: params.templateKey,
+      status: "sent",
+      lastError: null,
+    });
+  } catch (e: any) {
+    // Mark as failed (best-effort) then rethrow so webhook logs show it.
+    await outboxMark({
+      supabase: params.supabase,
+      correlationId: params.correlationId,
+      to: params.to,
+      templateKey: params.templateKey,
+      status: "failed",
+      lastError: e?.message ? String(e.message) : String(e),
+    });
+    throw e;
+  }
 }
 
 // ---------------------------
@@ -847,21 +957,23 @@ Deno.serve(async (req) => {
 
       if (!processed) {
         // Record the money event as a transaction (external_reference = invoice id)
-        const { error: insErr } = await supabase.from("payment_transactions").insert({
-          user_id: userId,
-          tier_id: tierId,
-          external_reference: stripeInvoiceId,
-          status: "completed",
-          amount: amountMinor,
-          currency,
-          payment_method: "stripe",
-          transaction_type: "invoice",
-          metadata: {
-            product_key,
-            stripe_invoice_id: stripeInvoiceId,
-            stripe_subscription_id: stripeSubscriptionId,
-          },
-        });
+        const { error: insErr } = await supabase
+          .from("payment_transactions")
+          .insert({
+            user_id: userId,
+            tier_id: tierId,
+            external_reference: stripeInvoiceId,
+            status: "completed",
+            amount: amountMinor,
+            currency,
+            payment_method: "stripe",
+            transaction_type: "invoice",
+            metadata: {
+              product_key,
+              stripe_invoice_id: stripeInvoiceId,
+              stripe_subscription_id: stripeSubscriptionId,
+            },
+          });
 
         if (insErr) {
           // If you later add a unique constraint on external_reference, this becomes safe-idempotent.
