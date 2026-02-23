@@ -837,17 +837,19 @@ function isAlreadyRegisteredAuthError(err: any) {
   if (msg.includes("already exists")) return true;
   if (msg.includes("email already")) return true;
 
-  async function signUpWithPassword() {
+  // Fallback for some structured errors
+  if (code === "user_already_exists") return true;
+
+  return false;
+}
+
+async function signUpWithPassword() {
   setBusy(true);
   setStatus(null);
-
   try {
     const clean = cleanEmail();
-    if (!clean || !clean.includes("@"))
-      return setStatus("Please enter a valid email.");
-
-    if (!password || password.length < 6)
-      return setStatus("Password must be at least 6 characters.");
+    if (!clean || !clean.includes("@")) return setStatus("Please enter a valid email.");
+    if (!password || password.length < 6) return setStatus("Password must be at least 6 characters.");
 
     const { data, error } = await supabase.auth.signUp({
       email: clean,
@@ -855,12 +857,9 @@ function isAlreadyRegisteredAuthError(err: any) {
       options: { emailRedirectTo },
     });
 
-    // 🔎 Detect "already registered" in BOTH Supabase behaviors
+    // ✅ Detect "already registered" even when Supabase returns no error
     const errMsg =
-      typeof (error as any)?.message === "string"
-        ? (error as any).message
-        : "";
-
+      typeof (error as any)?.message === "string" ? (error as any).message : "";
     const identities = (data as any)?.user?.identities;
 
     const alreadyRegistered =
@@ -868,22 +867,15 @@ function isAlreadyRegisteredAuthError(err: any) {
       (Array.isArray(identities) && identities.length === 0);
 
     if (alreadyRegistered) {
-      setStatus(
-        "⚠️ This email is already registered. Please sign in or reset your password."
-      );
+      setStatus("⚠️ This email is already registered. Please sign in or reset your password.");
       setMode("password_signin");
       return;
     }
 
-    if (error) {
-      return setStatus(humanizeAuthError(error, mode));
-    }
+    if (error) return setStatus(humanizeAuthError(error, mode));
 
-    // Email confirmation flow
-    if (!data?.session) {
-      setStatus(
-        "✅ Account created.\n\nPlease check your email to confirm, then sign in."
-      );
+    if (!data.session) {
+      setStatus("✅ Account created.\n\nPlease check your email to confirm, then sign in.");
       return;
     }
 
@@ -895,6 +887,49 @@ function isAlreadyRegisteredAuthError(err: any) {
     setBusy(false);
   }
 }
+
+    if (error) return setStatus(humanizeAuthError(error, mode));
+    setStatus("✅ Email link sent. Open your email and click the link.");
+  } catch (e: any) {
+    setStatus(humanizeAuthError(e, mode));
+  } finally {
+    setBusy(false);
+  }
+}
+
+async function signInWithPassword() {
+  setBusy(true);
+  setStatus(null);
+  try {
+    const clean = cleanEmail();
+    if (!clean || !clean.includes("@")) return setStatus("Please enter a valid email.");
+    if (!password || password.length < 6) return setStatus("Password must be at least 6 characters.");
+
+    const { error } = await supabase.auth.signInWithPassword({ email: clean, password });
+    if (error) return setStatus(humanizeAuthError(error, mode));
+
+    await ensureSessionOrThrow();
+    await onAuthed();
+  } catch (e: any) {
+    setStatus(humanizeAuthError(e, mode));
+  } finally {
+    setBusy(false);
+  }
+}
+
+async function signUpWithPassword() {
+  setBusy(true);
+  setStatus(null);
+  try {
+    const clean = cleanEmail();
+    if (!clean || !clean.includes("@")) return setStatus("Please enter a valid email.");
+    if (!password || password.length < 6) return setStatus("Password must be at least 6 characters.");
+
+    const { data, error } = await supabase.auth.signUp({
+      email: clean,
+      password,
+      options: { emailRedirectTo },
+    });
 
     // ✅ If this email is already registered, show a clear message (EN + VI) and guide to Sign in.
     if (error) {
