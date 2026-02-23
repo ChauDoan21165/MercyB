@@ -1,5 +1,5 @@
 // src/pages/LoginPage.tsx
-// MB-BLUE-101.3f — 2026-01-11 (+0700)
+// MB-BLUE-102.3f — 2026-01-11 (+0700)
 //
 // FIX:
 // - STOP forcing everyone to /admin after sign-in.
@@ -45,8 +45,12 @@
 //   for BOTH cases:
 //   (1) Supabase error.code/message indicates user already exists
 //   (2) Supabase returns data.user.identities.length === 0 (silent “already registered” behavior)
+//
+// PATCH (MB-BLUE-101.3k.3 → MB-BLUE-101.3k.4):
+// - Make Session Status bar truly ALWAYS-visible (sticky).
+// - Make EmailBlock status auto-scroll into view so it never feels “no reaction”.
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/lib/supabaseClient";
 
@@ -853,6 +857,13 @@ function EmailBlock({
   const [status, setStatus] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
 
+  // ✅ auto-scroll status into view so user never thinks “no reaction”
+  const statusRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    if (!status) return;
+    statusRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }, [status]);
+
   const disabled = busyParent || busy;
   const cleanEmail = () => email.trim().toLowerCase();
 
@@ -989,10 +1000,18 @@ function EmailBlock({
   return (
     <div style={UI.block}>
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-        <button onClick={() => setMode("password_signin")} disabled={disabled} style={UI.segBtn(mode === "password_signin", disabled)}>
+        <button
+          onClick={() => setMode("password_signin")}
+          disabled={disabled}
+          style={UI.segBtn(mode === "password_signin", disabled)}
+        >
           Sign in
         </button>
-        <button onClick={() => setMode("password_signup")} disabled={disabled} style={UI.segBtn(mode === "password_signup", disabled)}>
+        <button
+          onClick={() => setMode("password_signup")}
+          disabled={disabled}
+          style={UI.segBtn(mode === "password_signup", disabled)}
+        >
           Sign up
         </button>
         <button onClick={() => setMode("reset")} disabled={disabled} style={UI.segBtn(mode === "reset", disabled)}>
@@ -1115,7 +1134,12 @@ function EmailBlock({
         {mode === "password_signin" ? (
           <>
             New here?{" "}
-            <button type="button" onClick={() => setMode("password_signup")} disabled={disabled} style={UI.linkBtn(disabled)}>
+            <button
+              type="button"
+              onClick={() => setMode("password_signup")}
+              disabled={disabled}
+              style={UI.linkBtn(disabled)}
+            >
               Create an account
             </button>
             .
@@ -1123,7 +1147,12 @@ function EmailBlock({
         ) : mode === "password_signup" ? (
           <>
             Already have an account?{" "}
-            <button type="button" onClick={() => setMode("password_signin")} disabled={disabled} style={UI.linkBtn(disabled)}>
+            <button
+              type="button"
+              onClick={() => setMode("password_signin")}
+              disabled={disabled}
+              style={UI.linkBtn(disabled)}
+            >
               Sign in
             </button>
             .
@@ -1131,7 +1160,11 @@ function EmailBlock({
         ) : null}
       </div>
 
-      {status && <div style={UI.status}>{status}</div>}
+      {status && (
+        <div ref={statusRef} style={UI.status}>
+          {status}
+        </div>
+      )}
     </div>
   );
 }
@@ -1365,7 +1398,17 @@ export default function LoginPage() {
           <h1 style={UI.title}>Sign in</h1>
           <p style={UI.subtitle}>Choose a sign-in method. After signing in, we’ll take you to the right place.</p>
 
-          <div style={UI.block}>
+          {/* ✅ ALWAYS-visible Session Status bar (sticky) */}
+          <div
+            style={{
+              ...UI.block,
+              position: "sticky",
+              top: 12,
+              zIndex: 50,
+              background: "rgba(255,255,255,0.92)",
+              backdropFilter: "blur(8px)",
+            }}
+          >
             {hasSession ? (
               <>
                 <div style={{ fontWeight: 950, fontSize: 13, marginBottom: 6 }}>
@@ -1379,7 +1422,11 @@ export default function LoginPage() {
                 )}
 
                 <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-                  <button onClick={signOutNow} disabled={busy} style={{ ...UI.primaryBtn(busy), width: "auto", flex: "1 1 180px" }}>
+                  <button
+                    onClick={signOutNow}
+                    disabled={busy}
+                    style={{ ...UI.primaryBtn(busy), width: "auto", flex: "1 1 180px" }}
+                  >
                     {busy ? "Please wait..." : "Sign out"}
                   </button>
 
@@ -1454,7 +1501,11 @@ export default function LoginPage() {
               {anyOAuthEnabled && (
                 <div style={{ marginTop: 16, display: "flex", gap: 10, flexWrap: "wrap" }}>
                   {AUTH_GOOGLE_ENABLED && (
-                    <button onClick={signInGoogle} disabled={busy} style={{ ...UI.primaryBtn(busy), width: "auto", flex: "1 1 200px" }}>
+                    <button
+                      onClick={signInGoogle}
+                      disabled={busy}
+                      style={{ ...UI.primaryBtn(busy), width: "auto", flex: "1 1 200px" }}
+                    >
                       {busy ? "Please wait..." : "Continue with Google"}
                     </button>
                   )}
@@ -1487,10 +1538,17 @@ export default function LoginPage() {
               </div>
 
               {topMode === "email" && (
-                <EmailBlock emailRedirectTo={redirectToOAuthReturn} redirectToRecovery={redirectToRecovery} busyParent={busy} onAuthed={routeAfterAuth} />
+                <EmailBlock
+                  emailRedirectTo={redirectToOAuthReturn}
+                  redirectToRecovery={redirectToRecovery}
+                  busyParent={busy}
+                  onAuthed={routeAfterAuth}
+                />
               )}
 
-              {topMode === "phone" && <PhoneOtp redirectToOAuthReturn={redirectToOAuthReturn} busyParent={busy} onAuthed={routeAfterAuth} />}
+              {topMode === "phone" && (
+                <PhoneOtp redirectToOAuthReturn={redirectToOAuthReturn} busyParent={busy} onAuthed={routeAfterAuth} />
+              )}
 
               {status && <div style={UI.status}>{status}</div>}
             </>
