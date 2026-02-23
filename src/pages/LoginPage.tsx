@@ -1,5 +1,5 @@
 // src/pages/LoginPage.tsx
-// MB-BLUE-102.3f — 2026-01-11 (+0700)
+// MB-BLUE-101.3f — 2026-01-11 (+0700)
 //
 // FIX:
 // - STOP forcing everyone to /admin after sign-in.
@@ -49,6 +49,13 @@
 // PATCH (MB-BLUE-101.3k.3 → MB-BLUE-101.3k.4):
 // - Make Session Status bar truly ALWAYS-visible (sticky).
 // - Make EmailBlock status auto-scroll into view so it never feels “no reaction”.
+//
+// PATCH (MB-BLUE-101.3k.4 → MB-BLUE-101.3k.5):
+// - Fix “old email sign-up shows no ‘already registered’ anymore” by:
+//   If signUp returns no error but no session, we probe signInWithPassword(email+password):
+//     - "email not confirmed" => treat as new signup (tell user to confirm email)
+//     - "invalid login credentials" => treat as already registered (old account / different password)
+//   This catches Supabase edge cases where identities is missing/changed.
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -370,6 +377,7 @@ function isUserAlreadyRegisteredError(e: any): boolean {
   if (msg.includes("already registered")) return true;
   if (msg.includes("already exists")) return true;
   if (msg.includes("user already exists")) return true;
+  if (msg.includes("email address already") && msg.includes("exists")) return true;
 
   // Supabase structured codes we’ve seen in the wild
   if (code === "user_already_exists") return true;
@@ -938,8 +946,36 @@ function EmailBlock({
         return;
       }
 
+      // ✅ If no session, Supabase can be in a few states.
+      // We PROBE sign-in with the same email+password to disambiguate:
+      // - Email not confirmed => new signup (tell user to confirm)
+      // - Invalid login creds => most likely existing email (different password) => “already registered”
       if (!data?.session) {
-        setStatus("✅ Account created.\n\nPlease check your email to confirm, then sign in.");
+        const { error: siErr } = await supabase.auth.signInWithPassword({ email: clean, password });
+
+        if (siErr) {
+          const m = String(siErr?.message ?? "").toLowerCase();
+
+          if (m.includes("email not confirmed")) {
+            setStatus("✅ Account created.\n\nPlease check your email to confirm, then sign in.");
+            return;
+          }
+
+          if (m.includes("invalid login credentials")) {
+            setStatus(alreadyRegisteredStatusText());
+            return;
+          }
+
+          // Fallback: keep it actionable (never silent)
+          setStatus(
+            "✅ Signup request received.\n\nIf you already have an account, switch to Sign in.\nOtherwise, check your email for confirmation."
+          );
+          return;
+        }
+
+        // If probe sign-in succeeded, we have a session now.
+        await ensureSessionOrThrow();
+        await onAuthed();
         return;
       }
 
@@ -1134,12 +1170,7 @@ function EmailBlock({
         {mode === "password_signin" ? (
           <>
             New here?{" "}
-            <button
-              type="button"
-              onClick={() => setMode("password_signup")}
-              disabled={disabled}
-              style={UI.linkBtn(disabled)}
-            >
+            <button type="button" onClick={() => setMode("password_signup")} disabled={disabled} style={UI.linkBtn(disabled)}>
               Create an account
             </button>
             .
@@ -1147,12 +1178,7 @@ function EmailBlock({
         ) : mode === "password_signup" ? (
           <>
             Already have an account?{" "}
-            <button
-              type="button"
-              onClick={() => setMode("password_signin")}
-              disabled={disabled}
-              style={UI.linkBtn(disabled)}
-            >
+            <button type="button" onClick={() => setMode("password_signin")} disabled={disabled} style={UI.linkBtn(disabled)}>
               Sign in
             </button>
             .
@@ -1580,6 +1606,6 @@ export default function LoginPage() {
 }
 
 /** New thing to learn:
- * Anything inside /public is served from "/".
- * So: public/brand/mercy_wordmark.png  →  /brand/mercy_wordmark.png
+ * Auth edge cases happen: sometimes “signup” doesn’t error, but also doesn’t create a session.
+ * A tiny “probe sign-in” is a practical way to tell “new unconfirmed” vs “already existed”.
  */
