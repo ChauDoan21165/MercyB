@@ -93,7 +93,7 @@ function timingSafeEqual(a: Uint8Array, b: Uint8Array): boolean {
 }
 
 function hexToBytes(hex: string): Uint8Array {
-  const s = hex.trim();
+  const s = String(hex ?? "").trim();
   if (!/^[0-9a-f]+$/i.test(s) || s.length % 2 !== 0) return new Uint8Array();
   const out = new Uint8Array(s.length / 2);
   for (let i = 0; i < out.length; i++) {
@@ -277,6 +277,29 @@ async function resolveInvoiceEmail(params: {
   return null;
 }
 
+/**
+ * ✅ Email routing for audit integrity
+ * - sendEmail.ts may override recipient using FORCE_EMAIL_TO
+ * - webhook must compute finalTo and store original/forced in outbox variables
+ */
+function resolveEmailRoute(originalTo: string | null): {
+  originalTo: string;
+  forcedTo: string | null;
+  finalTo: string;
+} | null {
+  const o = typeof originalTo === "string" ? originalTo.trim() : "";
+  if (!o) return null;
+
+  const forced = env("FORCE_EMAIL_TO");
+  const forcedTo = forced ? forced : null;
+
+  return {
+    originalTo: o,
+    forcedTo,
+    finalTo: forcedTo ?? o,
+  };
+}
+
 // ---------------------------
 // Tier helpers
 // ---------------------------
@@ -449,6 +472,16 @@ async function writeLedger({
 // ---------------------------
 // Email outbox idempotency (best-effort)
 // ---------------------------
+
+/**
+ * Patch (email audit integrity):
+ * - If sendEmail.ts can override recipient (FORCE_EMAIL_TO), then the webhook must:
+ *   - decide `finalTo` upstream
+ *   - store `original_to`, `forced_to`, `correlation_id`, `user_email` in variables
+ * - Also: treat BOTH "sent" and "delivered" as terminal success states.
+ */
+const OUTBOX_SUCCESS_STATUSES = ["sent", "delivered"] as const;
+
 async function outboxAlreadySent(
   supabase: ReturnType<typeof createClient>,
   correlationId: string,
@@ -462,7 +495,7 @@ async function outboxAlreadySent(
       .eq("correlation_id", correlationId)
       .eq("template_key", templateKey)
       .eq("to_email", toEmail)
-      .eq("status", "sent")
+      .in("status", [...OUTBOX_SUCCESS_STATUSES])
       .limit(1);
 
     if (error) {
@@ -768,8 +801,11 @@ Deno.serve(async (req) => {
 
       const vipKeyFromPrice = priceIdToVipKey(priceId);
       const metaVipKey = normalizeMetaVip(s.metadata?.vip_key);
-      const metaTierId =
+
+      // Only accept a real UUID tier_id from metadata (optional)
+      const metaTierIdRaw =
         typeof s.metadata?.tier_id === "string" ? s.metadata.tier_id : null;
+      const metaTierId = isUuid(metaTierIdRaw) ? metaTierIdRaw : null;
 
       const resolvedTier = await resolveTierFromCheckoutContext({
         supabase,
@@ -778,13 +814,19 @@ Deno.serve(async (req) => {
         metaTierId,
       });
 
-      if (!resolvedTier) {
-        throw new Error(
-          "tierId/vipKey unresolved (expected metadata.tier_id and/or metadata.vip_key)",
-        );
+      // ✅ DO NOT 500: missing tier metadata happens in real Stripe flows (esp. cancellations/deletes).
+      // We log and ACK so Stripe stops retrying; the canonical money event is invoice.* anyway.
+      if (!resolvedTier?.tierId || !isUuid(resolvedTier.tierId)) {
+        console.log("[stripe-webhook] checkout tier unresolved; acking", {
+          stripe_session_id: stripeSessionId,
+          metaVipKey,
+          metaTierId,
+          vipKeyFromPrice,
+        });
+        return ok200();
       }
 
-      const { tierId } = resolvedTier;
+      const tierId: string = resolvedTier.tierId;
       const vipKey: VipKey = resolvedTier.vipKey;
 
       const amount = typeof s.amount_total === "number" ? s.amount_total : 0;
@@ -861,6 +903,14 @@ Deno.serve(async (req) => {
 
       // Emails (retryable; idempotent if correlation_id is stored in outbox)
       if (customerEmail) {
+        const route = resolveEmailRoute(customerEmail);
+        if (!route) {
+          console.log("[stripe-webhook] customerEmail invalid; skipping emails");
+          return ok200();
+        }
+
+        const { originalTo, forcedTo, finalTo } = route;
+
         const prettyAmount = formatMoney(amount, currency);
         const period = "Monthly";
         const tierLabel = vipKey.toUpperCase();
@@ -870,9 +920,19 @@ Deno.serve(async (req) => {
           await sendEmailOnce({
             supabase,
             correlationId,
-            to: customerEmail,
+            to: finalTo,
             templateKey: "receipt_subscription",
             variables: {
+              // ✅ REQUIRED for audit integrity
+              user_email: originalTo,
+              original_to: originalTo,
+              forced_to: forcedTo ?? "",
+              correlation_id: correlationId,
+
+              // keep legacy/debug-friendly fields
+              email: originalTo,
+              supabase_user_id: userId,
+
               amount: prettyAmount,
               period,
               tier: tierLabel,
@@ -890,9 +950,19 @@ Deno.serve(async (req) => {
           await sendEmailOnce({
             supabase,
             correlationId,
-            to: customerEmail,
+            to: finalTo,
             templateKey: "welcome_vip",
             variables: {
+              // ✅ REQUIRED for audit integrity
+              user_email: originalTo,
+              original_to: originalTo,
+              forced_to: forcedTo ?? "",
+              correlation_id: correlationId,
+
+              // keep legacy/debug-friendly fields
+              email: originalTo,
+              supabase_user_id: userId,
+
               tier: tierLabel,
               stripe_session_id: stripeSessionId,
               stripe_subscription_id: stripeSubscriptionId ?? "",
@@ -1021,6 +1091,16 @@ Deno.serve(async (req) => {
       });
 
       if (customerEmail) {
+        const route = resolveEmailRoute(customerEmail);
+        if (!route) {
+          console.log(
+            "[stripe-webhook] invoice customerEmail invalid; skipping email",
+          );
+          return ok200();
+        }
+
+        const { originalTo, forcedTo, finalTo } = route;
+
         const prettyAmount = formatMoney(amountMinor, currency);
         const period = "Monthly"; // keep your template expectation
         const correlationId = event.id;
@@ -1029,9 +1109,19 @@ Deno.serve(async (req) => {
           await sendEmailOnce({
             supabase,
             correlationId,
-            to: customerEmail,
+            to: finalTo,
             templateKey: "receipt_subscription",
             variables: {
+              // ✅ REQUIRED for audit integrity
+              user_email: originalTo,
+              original_to: originalTo,
+              forced_to: forcedTo ?? "",
+              correlation_id: correlationId,
+
+              // keep legacy/debug-friendly fields
+              email: originalTo,
+              supabase_user_id: userId,
+
               amount: prettyAmount,
               period,
               tier: tierId ? "VIP" : "VIP", // template requires tier; keep generic if unknown
@@ -1042,10 +1132,15 @@ Deno.serve(async (req) => {
             },
           });
         } catch (e) {
-          console.warn("[stripe-webhook] invoice receipt email failed (ignored)", e);
+          console.warn(
+            "[stripe-webhook] invoice receipt email failed (ignored)",
+            e,
+          );
         }
       } else {
-        console.log("[stripe-webhook] invoice customerEmail missing; skipping email");
+        console.log(
+          "[stripe-webhook] invoice customerEmail missing; skipping email",
+        );
       }
 
       return ok200();
@@ -1077,11 +1172,34 @@ Deno.serve(async (req) => {
       userId = isUuid(metaUserId) ? metaUserId : null;
     }
 
-    if (!isUuid(userId)) {
-      throw new Error(
-        "userId unresolved (expected existing row or subscription metadata.supabase_user_id)",
-      );
+    // ✅ NEW: fallback lookup by stripe_customer_id (covers cases where subscription_id was never stored)
+    if (!isUuid(userId) && stripeCustomerId) {
+      const { data: byCustomer } = await supabase
+        .from("user_subscriptions")
+        .select("user_id,tier_id")
+        .eq("stripe_customer_id", stripeCustomerId)
+        .eq("product_key", product_key)
+        .order("updated_at", { ascending: false })
+        .limit(1)
+        .maybeSingle();
+
+      const candidate = (byCustomer?.user_id as string | undefined) ?? null;
+      if (isUuid(candidate)) userId = candidate;
     }
+// ✅ DO NOT 500: deletions/updates can arrive without any linkable metadata.
+// Stripe will retry forever if we 500; this path is not revenue-critical.
+if (!isUuid(userId)) {
+  console.log("[stripe-webhook] userId unresolved for sub event; acking", {
+    type,
+    stripe_subscription_id: stripeSubscriptionId ?? null,
+    stripe_customer_id: stripeCustomerId ?? null,
+    meta_supabase_user_id: (sub as any)?.metadata?.supabase_user_id ?? null,
+    meta_user_id: (sub as any)?.metadata?.user_id ?? null,
+    meta_tier_id: (sub as any)?.metadata?.tier_id ?? null,
+    meta_vip_key: (sub as any)?.metadata?.vip_key ?? null,
+  });
+  return ok200();
+}
 
     let nextTierId: string | null =
       (existing?.tier_id as string | undefined) ?? null;

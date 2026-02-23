@@ -1,5 +1,5 @@
 // PATH: supabase/functions/_shared/sendEmail.ts
-// VERSION: v2026-01-06.prod.3+patch3 (store correlation_id safely; retry insert if column missing)
+// VERSION: v2026-01-06.prod.3+patch3 + PATCH v2026-02-22.07 (preserve original recipient in variables when EMAIL_FORCE_TO is used)
 // DB schema compatible: email_outbox has to_email/template_key/variables/attempts/last_error/sent_at/error_message; correlation_id is optional
 
 import { renderEmailTemplate } from "./emailTemplates.ts";
@@ -84,7 +84,9 @@ function getOutboxRestConfig() {
 
 async function postgrestInsertEmailOutbox(payload: Record<string, unknown>) {
   const cfg = getOutboxRestConfig();
-  if (!cfg) return { ok: false as const, status: 0, text: "missing cfg", row: null };
+  if (!cfg) {
+    return { ok: false as const, status: 0, text: "missing cfg", row: null };
+  }
 
   const resp = await fetch(`${cfg.restBase}/email_outbox`, {
     method: "POST",
@@ -366,10 +368,31 @@ export async function sendEmail({
     throw new Error(`Refusing to send to placeholder recipient: ${finalTo}`);
   }
 
+  // ✅ PATCH: Preserve the *real* intended recipient even when EMAIL_FORCE_TO is used.
+  // This fixes: email_outbox shows only admin@... and var_user_email / var_email are NULL.
+  // We store the original recipient in variables so DB inspection + templates can see it.
+  const safeVars: Record<string, string> = { ...(variables ?? {}) };
+
+  // Always record intended recipient context (no schema changes required)
+  if (originalTo && originalTo.trim()) {
+    if (!safeVars.user_email) safeVars.user_email = originalTo.trim();
+    if (!safeVars.email) safeVars.email = originalTo.trim();
+    if (!safeVars.original_to) safeVars.original_to = originalTo.trim();
+  }
+  if (finalTo && finalTo.trim()) {
+    if (!safeVars.final_to) safeVars.final_to = finalTo.trim();
+  }
+  if (forceTo && forceTo.trim() && originalTo && originalTo.trim() !== forceTo.trim()) {
+    if (!safeVars.forced_to) safeVars.forced_to = forceTo.trim();
+  }
+  if (correlationId && correlationId.trim()) {
+    if (!safeVars.correlation_id) safeVars.correlation_id = correlationId.trim();
+  }
+
   const rendered = renderEmailTemplate({
     appKey,
     templateKey,
-    variables,
+    variables: safeVars,
     env,
   });
 
@@ -414,7 +437,7 @@ export async function sendEmail({
     status: "sending",
     to_email: finalTo,
     template_key: templateKey ?? "notification",
-    variables,
+    variables: safeVars,
     correlation_id: correlationId?.trim() || null,
     attempts: 0,
     last_error: null,

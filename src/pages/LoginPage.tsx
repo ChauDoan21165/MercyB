@@ -816,301 +816,326 @@ function EmailBlock({
   onAuthed: () => Promise<void>;
 }) {
   const [mode, setMode] = useState<EmailMode>("password_signin");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [showPw, setShowPw] = useState(false);
+const [email, setEmail] = useState("");
+const [password, setPassword] = useState("");
+const [showPw, setShowPw] = useState(false);
 
-  const [status, setStatus] = useState<string | null>(null);
-  const [busy, setBusy] = useState(false);
+const [status, setStatus] = useState<string | null>(null);
+const [busy, setBusy] = useState(false);
 
-  const disabled = busyParent || busy;
-  const cleanEmail = () => email.trim().toLowerCase();
+const disabled = busyParent || busy;
+const cleanEmail = () => email.trim().toLowerCase();
 
-  async function sendMagicLink() {
-    setBusy(true);
-    setStatus(null);
-    try {
-      const clean = cleanEmail();
-      if (!clean || !clean.includes("@")) return setStatus("Please enter a valid email.");
+/** ✅ Detect “already registered” across common Supabase messages/codes */
+function isAlreadyRegisteredAuthError(err: any) {
+  const msg = String(err?.message || err?.error_description || err?.error || "").toLowerCase();
+  const code = String(err?.code || err?.status || "").toLowerCase();
 
-      const { error } = await supabase.auth.signInWithOtp({
-        email: clean,
-        options: { emailRedirectTo },
-      });
-
-      if (error) return setStatus(humanizeAuthError(error, mode));
-      setStatus("✅ Email link sent. Open your email and click the link.");
-    } catch (e: any) {
-      setStatus(humanizeAuthError(e, mode));
-    } finally {
-      setBusy(false);
-    }
-  }
-
-  async function signInWithPassword() {
-    setBusy(true);
-    setStatus(null);
-    try {
-      const clean = cleanEmail();
-      if (!clean || !clean.includes("@")) return setStatus("Please enter a valid email.");
-      if (!password || password.length < 6) return setStatus("Password must be at least 6 characters.");
-
-      const { error } = await supabase.auth.signInWithPassword({ email: clean, password });
-      if (error) return setStatus(humanizeAuthError(error, mode));
-
-      await ensureSessionOrThrow();
-      await onAuthed();
-    } catch (e: any) {
-      setStatus(humanizeAuthError(e, mode));
-    } finally {
-      setBusy(false);
-    }
-  }
+  // Supabase/GoTrue commonly uses these phrases depending on settings
+  if (msg.includes("user already registered")) return true;
+  if (msg.includes("already registered")) return true;
+  if (msg.includes("already exists")) return true;
+  if (msg.includes("email already")) return true;
 
   async function signUpWithPassword() {
-    setBusy(true);
-    setStatus(null);
-    try {
-      const clean = cleanEmail();
-      if (!clean || !clean.includes("@")) return setStatus("Please enter a valid email.");
-      if (!password || password.length < 6) return setStatus("Password must be at least 6 characters.");
+  setBusy(true);
+  setStatus(null);
 
-      const { data, error } = await supabase.auth.signUp({
-        email: clean,
-        password,
-        options: { emailRedirectTo },
-      });
+  try {
+    const clean = cleanEmail();
+    if (!clean || !clean.includes("@"))
+      return setStatus("Please enter a valid email.");
 
-      if (error) return setStatus(humanizeAuthError(error, mode));
+    if (!password || password.length < 6)
+      return setStatus("Password must be at least 6 characters.");
 
-      if (!data.session) {
-        setStatus("✅ Account created.\n\nPlease check your email to confirm, then sign in.");
-        return;
-      }
+    const { data, error } = await supabase.auth.signUp({
+      email: clean,
+      password,
+      options: { emailRedirectTo },
+    });
 
-      await ensureSessionOrThrow();
-      await onAuthed();
-    } catch (e: any) {
-      setStatus(humanizeAuthError(e, mode));
-    } finally {
-      setBusy(false);
+    // 🔎 Detect "already registered" in BOTH Supabase behaviors
+    const errMsg =
+      typeof (error as any)?.message === "string"
+        ? (error as any).message
+        : "";
+
+    const identities = (data as any)?.user?.identities;
+
+    const alreadyRegistered =
+      /already registered|user already exists/i.test(errMsg) ||
+      (Array.isArray(identities) && identities.length === 0);
+
+    if (alreadyRegistered) {
+      setStatus(
+        "⚠️ This email is already registered. Please sign in or reset your password."
+      );
+      setMode("password_signin");
+      return;
     }
-  }
 
-  async function sendResetPasswordEmail() {
-    setBusy(true);
-    setStatus(null);
-    try {
-      const clean = cleanEmail();
-      if (!clean || !clean.includes("@")) return setStatus("Please enter a valid email.");
-
-      const { error } = await supabase.auth.resetPasswordForEmail(clean, {
-        redirectTo: redirectToRecovery,
-      });
-      if (error) return setStatus(humanizeAuthError(error, mode));
-
-      setStatus("✅ Password reset email sent.\n\nOpen your email and follow the link.");
-    } catch (e: any) {
-      setStatus(humanizeAuthError(e, mode));
-    } finally {
-      setBusy(false);
+    if (error) {
+      return setStatus(humanizeAuthError(error, mode));
     }
+
+    // Email confirmation flow
+    if (!data?.session) {
+      setStatus(
+        "✅ Account created.\n\nPlease check your email to confirm, then sign in."
+      );
+      return;
+    }
+
+    await ensureSessionOrThrow();
+    await onAuthed();
+  } catch (e: any) {
+    setStatus(humanizeAuthError(e, mode));
+  } finally {
+    setBusy(false);
   }
-
-  const showPasswordField = mode === "password_signin" || mode === "password_signup";
-
-  const primaryActionLabel =
-    mode === "password_signin"
-      ? "Sign in"
-      : mode === "password_signup"
-        ? "Create account"
-        : mode === "magic"
-          ? "Send email link"
-          : "Send reset email";
-
-  const onPrimary =
-    mode === "password_signin"
-      ? signInWithPassword
-      : mode === "password_signup"
-        ? signUpWithPassword
-        : mode === "magic"
-          ? sendMagicLink
-          : sendResetPasswordEmail;
-
-  return (
-    <div style={UI.block}>
-      <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-        <button
-          onClick={() => setMode("password_signin")}
-          disabled={disabled}
-          style={UI.segBtn(mode === "password_signin", disabled)}
-        >
-          Sign in
-        </button>
-        <button
-          onClick={() => setMode("password_signup")}
-          disabled={disabled}
-          style={UI.segBtn(mode === "password_signup", disabled)}
-        >
-          Sign up
-        </button>
-        <button onClick={() => setMode("reset")} disabled={disabled} style={UI.segBtn(mode === "reset", disabled)}>
-          Forgot password
-        </button>
-        <button
-          onClick={() => setMode("magic")}
-          disabled={disabled}
-          style={UI.segBtn(mode === "magic", disabled)}
-          title="Optional: sign in without password"
-        >
-          Email link
-        </button>
-      </div>
-
-      <div style={{ marginTop: 12 }}>
-        <label style={UI.label}>Email</label>
-        <input
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="you@email.com"
-          autoComplete="email"
-          style={UI.input(disabled)}
-          disabled={disabled}
-        />
-      </div>
-
-      {showPasswordField && (
-        <div style={{ marginTop: 12 }}>
-          <label style={UI.label}>Password</label>
-
-          <div
-            style={{
-              position: "relative",
-              width: "100%",
-              borderRadius: 12,
-              border: "1px solid rgba(0,0,0,0.14)",
-              background: "white",
-              overflow: "hidden",
-              opacity: disabled ? 0.7 : 1,
-              boxSizing: "border-box",
-              minHeight: 46,
-            }}
-          >
-            <input
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="••••••••"
-              type={showPw ? "text" : "password"}
-              autoComplete={mode === "password_signup" ? "new-password" : "current-password"}
-              disabled={disabled}
-              style={{
-                width: "100%",
-                boxSizing: "border-box",
-                minHeight: 46,
-                padding: "11px 52px 11px 11px",
-                fontSize: 16,
-                border: "none",
-                outline: "none",
-                background: "transparent",
-                margin: 0,
-              }}
-            />
-
-            <button
-              type="button"
-              onClick={() => setShowPw((v) => !v)}
-              aria-label={showPw ? "Hide password" : "Show password"}
-              disabled={disabled}
-              title={showPw ? "Hide password" : "Show password"}
-              style={{
-                position: "absolute",
-                right: 10,
-                top: "50%",
-                transform: "translateY(-50%)",
-                width: 36,
-                height: 36,
-                border: "none",
-                background: "transparent",
-                borderRadius: 9999,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                cursor: disabled ? "not-allowed" : "pointer",
-                opacity: 0.75,
-                padding: 0,
-                lineHeight: 1,
-                fontSize: 18,
-
-                // ✅ kill browser “button chrome”
-                appearance: "none",
-                WebkitAppearance: "none",
-                outline: "none",
-                boxShadow: "none",
-              }}
-            >
-              {showPw ? "🙈" : "👁️"}
-            </button>
-          </div>
-
-          <div style={{ marginTop: 8, ...UI.small }}>Minimum 6 characters.</div>
-
-          {mode === "password_signin" && (
-            <div style={{ marginTop: 10, ...UI.small }}>
-              <button type="button" onClick={() => setMode("reset")} disabled={disabled} style={UI.linkBtn(disabled)}>
-                Forgot password?
-              </button>
-            </div>
-          )}
-        </div>
-      )}
-
-      <div style={{ marginTop: 12 }}>
-        <button onClick={onPrimary} disabled={disabled} style={UI.primaryBtn(disabled)}>
-          {disabled ? "Please wait..." : primaryActionLabel}
-        </button>
-      </div>
-
-      <div style={{ marginTop: 10, ...UI.small }}>
-        {mode === "password_signin" ? (
-          <>
-            New here?{" "}
-            <button
-              type="button"
-              onClick={() => setMode("password_signup")}
-              disabled={disabled}
-              style={UI.linkBtn(disabled)}
-            >
-              Create an account
-            </button>
-            .
-          </>
-        ) : mode === "password_signup" ? (
-          <>
-            Already have an account?{" "}
-            <button
-              type="button"
-              onClick={() => setMode("password_signin")}
-              disabled={disabled}
-              style={UI.linkBtn(disabled)}
-            >
-              Sign in
-            </button>
-            .
-          </>
-        ) : null}
-      </div>
-
-      {status && <div style={UI.status}>{status}</div>}
-    </div>
-  );
 }
 
-export default function LoginPage() {
-  const nav = useNavigate();
+    // ✅ If this email is already registered, show a clear message (EN + VI) and guide to Sign in.
+    if (error) {
+      if (isAlreadyRegisteredAuthError(error)) {
+        setMode("password_signin");
+        return setStatus(
+          "⚠️ This email is already registered. Please sign in instead.\n\n⚠️ Email này đã được đăng ký. Vui lòng đăng nhập.",
+        );
+      }
+      return setStatus(humanizeAuthError(error, mode));
+    }
 
-  const returnToRaw = useMemo(() => safeParseReturnTo(window.location.search || ""), []);
-  const fromApp = useMemo(() => resolveAppFromReturnTo(returnToRaw), [returnToRaw]);
+    if (!data.session) {
+      setStatus("✅ Account created.\n\nPlease check your email to confirm, then sign in.");
+      return;
+    }
 
+    await ensureSessionOrThrow();
+    await onAuthed();
+  } catch (e: any) {
+    // ✅ Same detection for thrown errors
+    if (isAlreadyRegisteredAuthError(e)) {
+      setMode("password_signin");
+      setStatus(
+        "⚠️ This email is already registered. Please sign in instead.\n\n⚠️ Email này đã được đăng ký. Vui lòng đăng nhập.",
+      );
+    } else {
+      setStatus(humanizeAuthError(e, mode));
+    }
+  } finally {
+    setBusy(false);
+  }
+}
+
+async function sendResetPasswordEmail() {
+  setBusy(true);
+  setStatus(null);
+  try {
+    const clean = cleanEmail();
+    if (!clean || !clean.includes("@")) return setStatus("Please enter a valid email.");
+
+    const { error } = await supabase.auth.resetPasswordForEmail(clean, {
+      redirectTo: redirectToRecovery,
+    });
+    if (error) return setStatus(humanizeAuthError(error, mode));
+
+    setStatus("✅ Password reset email sent.\n\nOpen your email and follow the link.");
+  } catch (e: any) {
+    setStatus(humanizeAuthError(e, mode));
+  } finally {
+    setBusy(false);
+  }
+}
+
+const showPasswordField = mode === "password_signin" || mode === "password_signup";
+
+const primaryActionLabel =
+  mode === "password_signin"
+    ? "Sign in"
+    : mode === "password_signup"
+      ? "Create account"
+      : mode === "magic"
+        ? "Send email link"
+        : "Send reset email";
+
+const onPrimary =
+  mode === "password_signin"
+    ? signInWithPassword
+    : mode === "password_signup"
+      ? signUpWithPassword
+      : mode === "magic"
+        ? sendMagicLink
+        : sendResetPasswordEmail;
+
+return (
+  <div style={UI.block}>
+    <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+      <button
+        onClick={() => setMode("password_signin")}
+        disabled={disabled}
+        style={UI.segBtn(mode === "password_signin", disabled)}
+      >
+        Sign in
+      </button>
+      <button
+        onClick={() => setMode("password_signup")}
+        disabled={disabled}
+        style={UI.segBtn(mode === "password_signup", disabled)}
+      >
+        Sign up
+      </button>
+      <button onClick={() => setMode("reset")} disabled={disabled} style={UI.segBtn(mode === "reset", disabled)}>
+        Forgot password
+      </button>
+      <button
+        onClick={() => setMode("magic")}
+        disabled={disabled}
+        style={UI.segBtn(mode === "magic", disabled)}
+        title="Optional: sign in without password"
+      >
+        Email link
+      </button>
+    </div>
+
+    <div style={{ marginTop: 12 }}>
+      <label style={UI.label}>Email</label>
+      <input
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="you@email.com"
+        autoComplete="email"
+        style={UI.input(disabled)}
+        disabled={disabled}
+      />
+    </div>
+
+    {showPasswordField && (
+      <div style={{ marginTop: 12 }}>
+        <label style={UI.label}>Password</label>
+
+        <div
+          style={{
+            position: "relative",
+            width: "100%",
+            borderRadius: 12,
+            border: "1px solid rgba(0,0,0,0.14)",
+            background: "white",
+            overflow: "hidden",
+            opacity: disabled ? 0.7 : 1,
+            boxSizing: "border-box",
+            minHeight: 46,
+          }}
+        >
+          <input
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="••••••••"
+            type={showPw ? "text" : "password"}
+            autoComplete={mode === "password_signup" ? "new-password" : "current-password"}
+            disabled={disabled}
+            style={{
+              width: "100%",
+              boxSizing: "border-box",
+              minHeight: 46,
+              padding: "11px 52px 11px 11px",
+              fontSize: 16,
+              border: "none",
+              outline: "none",
+              background: "transparent",
+              margin: 0,
+            }}
+          />
+
+          <button
+            type="button"
+            onClick={() => setShowPw((v) => !v)}
+            aria-label={showPw ? "Hide password" : "Show password"}
+            disabled={disabled}
+            title={showPw ? "Hide password" : "Show password"}
+            style={{
+              position: "absolute",
+              right: 10,
+              top: "50%",
+              transform: "translateY(-50%)",
+              width: 36,
+              height: 36,
+              border: "none",
+              background: "transparent",
+              borderRadius: 9999,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: disabled ? "not-allowed" : "pointer",
+              opacity: 0.75,
+              padding: 0,
+              lineHeight: 1,
+              fontSize: 18,
+
+              // ✅ kill browser “button chrome”
+              appearance: "none",
+              WebkitAppearance: "none",
+              outline: "none",
+              boxShadow: "none",
+            }}
+          >
+            {showPw ? "🙈" : "👁️"}
+          </button>
+        </div>
+
+        <div style={{ marginTop: 8, ...UI.small }}>Minimum 6 characters.</div>
+
+        {mode === "password_signin" && (
+          <div style={{ marginTop: 10, ...UI.small }}>
+            <button type="button" onClick={() => setMode("reset")} disabled={disabled} style={UI.linkBtn(disabled)}>
+              Forgot password?
+            </button>
+          </div>
+        )}
+      </div>
+    )}
+
+    <div style={{ marginTop: 12 }}>
+      <button onClick={onPrimary} disabled={disabled} style={UI.primaryBtn(disabled)}>
+        {disabled ? "Please wait..." : primaryActionLabel}
+      </button>
+    </div>
+
+    <div style={{ marginTop: 10, ...UI.small }}>
+      {mode === "password_signin" ? (
+        <>
+          New here?{" "}
+          <button
+            type="button"
+            onClick={() => setMode("password_signup")}
+            disabled={disabled}
+            style={UI.linkBtn(disabled)}
+          >
+            Create an account
+          </button>
+          .
+        </>
+      ) : mode === "password_signup" ? (
+        <>
+          Already have an account?{" "}
+          <button
+            type="button"
+            onClick={() => setMode("password_signin")}
+            disabled={disabled}
+            style={UI.linkBtn(disabled)}
+          >
+            Sign in
+          </button>
+          .
+        </>
+      ) : null}
+    </div>
+
+    {status && <div style={UI.status}>{status}</div>}
+  </div>
+);
+}
   // ✅ use helper (also prevents unused readBoolEnv)
   const AUTH_GOOGLE_ENABLED = useMemo(() => readBoolEnv("VITE_AUTH_GOOGLE_ENABLED"), []);
   const AUTH_FACEBOOK_ENABLED = useMemo(() => readBoolEnv("VITE_AUTH_FACEBOOK_ENABLED"), []);
