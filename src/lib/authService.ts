@@ -9,12 +9,39 @@
 import { supabase } from "./supabaseClient";
 import type { VipKey } from "./auth";
 
+function isAlreadyRegisteredAuthError(err: any) {
+  const msg = String(err?.message || err?.error_description || err?.error || "").toLowerCase();
+  const code = String(err?.code || err?.status || "").toLowerCase();
+
+  // Supabase/GoTrue commonly uses these phrases depending on settings
+  if (msg.includes("user already registered")) return true;
+  if (msg.includes("already registered")) return true;
+  if (msg.includes("already exists")) return true;
+  if (msg.includes("email already")) return true;
+
+  // Some structured variants
+  if (code === "user_already_exists") return true;
+
+  return false;
+}
+
 export async function signUpWithEmail(email: string, password: string) {
   const { data, error } = await supabase.auth.signUp({ email, password });
+
   if (error) {
+    // ✅ Give callers a clear, consistent message to show in UI
+    if (isAlreadyRegisteredAuthError(error)) {
+      const e: any = new Error("This email is already registered. Please sign in instead.");
+      e.code = "email_already_registered";
+      e.cause = error;
+      console.error("Sign up error (already registered):", error);
+      throw e;
+    }
+
     console.error("Sign up error:", error);
     throw error;
   }
+
   return data;
 }
 
