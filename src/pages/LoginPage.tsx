@@ -39,6 +39,12 @@
 // - Replace MercyRightBrandOverlay text "Mercy" with an IMAGE wordmark.
 // - Image name: public/brand/mercy_wordmark.png  (src="/brand/mercy_wordmark.png")
 // - IMPORTANT: NO TEXT FALLBACK (per your request). If image missing, overlay shows nothing.
+//
+// PATCH (MB-BLUE-101.3k.2 → MB-BLUE-101.3k.3):
+// - Email/password signup: show explicit “This email is already registered”
+//   for BOTH cases:
+//   (1) Supabase error.code/message indicates user already exists
+//   (2) Supabase returns data.user.identities.length === 0 (silent “already registered” behavior)
 
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -351,6 +357,33 @@ const UI = {
   } as React.CSSProperties,
 };
 
+function isUserAlreadyRegisteredError(e: any): boolean {
+  const msg = String(e?.message ?? "").toLowerCase();
+  const code = String(e?.code ?? e?.error_code ?? e?.error ?? "").toLowerCase();
+
+  // Common message variants
+  if (msg.includes("user already registered")) return true;
+  if (msg.includes("already registered")) return true;
+  if (msg.includes("already exists")) return true;
+  if (msg.includes("user already exists")) return true;
+
+  // Supabase structured codes we’ve seen in the wild
+  if (code === "user_already_exists") return true;
+  if (code === "user_already_registered") return true;
+
+  return false;
+}
+
+function isSilentAlreadyRegisteredSignUp(data: any): boolean {
+  // Supabase can return NO error, but identities === [] when email already exists.
+  const ids = (data as any)?.user?.identities;
+  return Array.isArray(ids) && ids.length === 0;
+}
+
+function alreadyRegisteredStatusText() {
+  return "This email is already registered.\n\nSwitch to Sign in (or click “Forgot password” to reset).";
+}
+
 function humanizeAuthError(e: any, mode: EmailMode) {
   const raw = String(e?.message || "");
   const msg = raw.toLowerCase();
@@ -365,8 +398,9 @@ function humanizeAuthError(e: any, mode: EmailMode) {
     return "Your email is not confirmed yet.\n\nPlease check your inbox for the confirmation email.";
   }
 
-  if (msg.includes("user already registered")) {
-    return "This email is already registered.\n\nSwitch to Sign in (or click “Forgot password” to reset).";
+  // More robust: message OR code style
+  if (isUserAlreadyRegisteredError(e) || msg.includes("user_already_exists") || msg.includes("user_already_registered")) {
+    return alreadyRegisteredStatusText();
   }
 
   if (msg.includes("provider is not enabled") || msg.includes("unsupported provider")) {
@@ -655,11 +689,7 @@ function RecoverySetPassword({ busyParent, onDone }: { busyParent: boolean; onDo
 
 async function fetchAdminFlagsSafe(userId: string): Promise<{ isAdmin: boolean }> {
   try {
-    const { data, error } = await supabase
-      .from("profiles")
-      .select("is_admin, admin_level")
-      .eq("id", userId)
-      .maybeSingle();
+    const { data, error } = await supabase.from("profiles").select("is_admin, admin_level").eq("id", userId).maybeSingle();
 
     if (error) return { isAdmin: false };
 
@@ -698,7 +728,7 @@ function PhoneOtp({
         return;
       }
 
-      const { error } = await supabase.auth.signInWithOtp({phone: p,});
+      const { error } = await supabase.auth.signInWithOtp({ phone: p });
 
       if (error) {
         setMsg(error.message);
@@ -816,361 +846,302 @@ function EmailBlock({
   onAuthed: () => Promise<void>;
 }) {
   const [mode, setMode] = useState<EmailMode>("password_signin");
-const [email, setEmail] = useState("");
-const [password, setPassword] = useState("");
-const [showPw, setShowPw] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPw, setShowPw] = useState(false);
 
-const [status, setStatus] = useState<string | null>(null);
-const [busy, setBusy] = useState(false);
+  const [status, setStatus] = useState<string | null>(null);
+  const [busy, setBusy] = useState(false);
 
-const disabled = busyParent || busy;
-const cleanEmail = () => email.trim().toLowerCase();
+  const disabled = busyParent || busy;
+  const cleanEmail = () => email.trim().toLowerCase();
 
-/** ✅ Detect “already registered” across common Supabase messages/codes */
-function isAlreadyRegisteredAuthError(err: any) {
-  const msg = String(err?.message || err?.error_description || err?.error || "").toLowerCase();
-  const code = String(err?.code || err?.status || "").toLowerCase();
+  async function sendMagicLink() {
+    setBusy(true);
+    setStatus(null);
+    try {
+      const clean = cleanEmail();
+      if (!clean || !clean.includes("@")) return setStatus("Please enter a valid email.");
 
-  // Supabase/GoTrue commonly uses these phrases depending on settings
-  if (msg.includes("user already registered")) return true;
-  if (msg.includes("already registered")) return true;
-  if (msg.includes("already exists")) return true;
-  if (msg.includes("email already")) return true;
+      const { error } = await supabase.auth.signInWithOtp({
+        email: clean,
+        options: { emailRedirectTo },
+      });
 
-  // Fallback for some structured errors
-  if (code === "user_already_exists") return true;
-
-  return false;
-}
-
-async function signUpWithPassword() {
-  setBusy(true);
-  setStatus(null);
-  try {
-    const clean = cleanEmail();
-    if (!clean || !clean.includes("@")) return setStatus("Please enter a valid email.");
-    if (!password || password.length < 6) return setStatus("Password must be at least 6 characters.");
-
-    const { data, error } = await supabase.auth.signUp({
-      email: clean,
-      password,
-      options: { emailRedirectTo },
-    });
-
-    // ✅ Detect "already registered" even when Supabase returns no error
-    const errMsg =
-      typeof (error as any)?.message === "string" ? (error as any).message : "";
-    const identities = (data as any)?.user?.identities;
-
-    const alreadyRegistered =
-      /already registered|user already exists/i.test(errMsg) ||
-      (Array.isArray(identities) && identities.length === 0);
-
-    if (alreadyRegistered) {
-      setStatus("⚠️ This email is already registered. Please sign in or reset your password.");
-      setMode("password_signin");
-      return;
-    }
-
-    if (error) return setStatus(humanizeAuthError(error, mode));
-
-    if (!data.session) {
-      setStatus("✅ Account created.\n\nPlease check your email to confirm, then sign in.");
-      return;
-    }
-
-    await ensureSessionOrThrow();
-    await onAuthed();
-  } catch (e: any) {
-    setStatus(humanizeAuthError(e, mode));
-  } finally {
-    setBusy(false);
-  }
-}
-
-    if (error) return setStatus(humanizeAuthError(error, mode));
-    setStatus("✅ Email link sent. Open your email and click the link.");
-  } catch (e: any) {
-    setStatus(humanizeAuthError(e, mode));
-  } finally {
-    setBusy(false);
-  }
-}
-
-async function signInWithPassword() {
-  setBusy(true);
-  setStatus(null);
-  try {
-    const clean = cleanEmail();
-    if (!clean || !clean.includes("@")) return setStatus("Please enter a valid email.");
-    if (!password || password.length < 6) return setStatus("Password must be at least 6 characters.");
-
-    const { error } = await supabase.auth.signInWithPassword({ email: clean, password });
-    if (error) return setStatus(humanizeAuthError(error, mode));
-
-    await ensureSessionOrThrow();
-    await onAuthed();
-  } catch (e: any) {
-    setStatus(humanizeAuthError(e, mode));
-  } finally {
-    setBusy(false);
-  }
-}
-
-async function signUpWithPassword() {
-  setBusy(true);
-  setStatus(null);
-  try {
-    const clean = cleanEmail();
-    if (!clean || !clean.includes("@")) return setStatus("Please enter a valid email.");
-    if (!password || password.length < 6) return setStatus("Password must be at least 6 characters.");
-
-    const { data, error } = await supabase.auth.signUp({
-      email: clean,
-      password,
-      options: { emailRedirectTo },
-    });
-
-    // ✅ If this email is already registered, show a clear message (EN + VI) and guide to Sign in.
-    if (error) {
-      if (isAlreadyRegisteredAuthError(error)) {
-        setMode("password_signin");
-        return setStatus(
-          "⚠️ This email is already registered. Please sign in instead.\n\n⚠️ Email này đã được đăng ký. Vui lòng đăng nhập.",
-        );
-      }
-      return setStatus(humanizeAuthError(error, mode));
-    }
-
-    if (!data.session) {
-      setStatus("✅ Account created.\n\nPlease check your email to confirm, then sign in.");
-      return;
-    }
-
-    await ensureSessionOrThrow();
-    await onAuthed();
-  } catch (e: any) {
-    // ✅ Same detection for thrown errors
-    if (isAlreadyRegisteredAuthError(e)) {
-      setMode("password_signin");
-      setStatus(
-        "⚠️ This email is already registered. Please sign in instead.\n\n⚠️ Email này đã được đăng ký. Vui lòng đăng nhập.",
-      );
-    } else {
+      if (error) return setStatus(humanizeAuthError(error, mode));
+      setStatus("✅ Email link sent. Open your email and click the link.");
+    } catch (e: any) {
       setStatus(humanizeAuthError(e, mode));
+    } finally {
+      setBusy(false);
     }
-  } finally {
-    setBusy(false);
   }
-}
 
-async function sendResetPasswordEmail() {
-  setBusy(true);
-  setStatus(null);
-  try {
-    const clean = cleanEmail();
-    if (!clean || !clean.includes("@")) return setStatus("Please enter a valid email.");
+  async function signInWithPassword() {
+    setBusy(true);
+    setStatus(null);
+    try {
+      const clean = cleanEmail();
+      if (!clean || !clean.includes("@")) return setStatus("Please enter a valid email.");
+      if (!password || password.length < 6) return setStatus("Password must be at least 6 characters.");
 
-    const { error } = await supabase.auth.resetPasswordForEmail(clean, {
-      redirectTo: redirectToRecovery,
-    });
-    if (error) return setStatus(humanizeAuthError(error, mode));
+      const { error } = await supabase.auth.signInWithPassword({ email: clean, password });
+      if (error) return setStatus(humanizeAuthError(error, mode));
 
-    setStatus("✅ Password reset email sent.\n\nOpen your email and follow the link.");
-  } catch (e: any) {
-    setStatus(humanizeAuthError(e, mode));
-  } finally {
-    setBusy(false);
+      await ensureSessionOrThrow();
+      await onAuthed();
+    } catch (e: any) {
+      setStatus(humanizeAuthError(e, mode));
+    } finally {
+      setBusy(false);
+    }
   }
-}
 
-const showPasswordField = mode === "password_signin" || mode === "password_signup";
+  async function signUpWithPassword() {
+    setBusy(true);
+    setStatus(null);
+    try {
+      const clean = cleanEmail();
+      if (!clean || !clean.includes("@")) return setStatus("Please enter a valid email.");
+      if (!password || password.length < 6) return setStatus("Password must be at least 6 characters.");
 
-const primaryActionLabel =
-  mode === "password_signin"
-    ? "Sign in"
-    : mode === "password_signup"
-      ? "Create account"
-      : mode === "magic"
-        ? "Send email link"
-        : "Send reset email";
+      const { data, error } = await supabase.auth.signUp({
+        email: clean,
+        password,
+        options: { emailRedirectTo },
+      });
 
-const onPrimary =
-  mode === "password_signin"
-    ? signInWithPassword
-    : mode === "password_signup"
-      ? signUpWithPassword
-      : mode === "magic"
-        ? sendMagicLink
-        : sendResetPasswordEmail;
+      // ✅ Case (1): explicit error
+      if (error) {
+        if (isUserAlreadyRegisteredError(error)) {
+          setStatus(alreadyRegisteredStatusText());
+          return;
+        }
+        setStatus(humanizeAuthError(error, mode));
+        return;
+      }
 
-return (
-  <div style={UI.block}>
-    <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-      <button
-        onClick={() => setMode("password_signin")}
-        disabled={disabled}
-        style={UI.segBtn(mode === "password_signin", disabled)}
-      >
-        Sign in
-      </button>
-      <button
-        onClick={() => setMode("password_signup")}
-        disabled={disabled}
-        style={UI.segBtn(mode === "password_signup", disabled)}
-      >
-        Sign up
-      </button>
-      <button onClick={() => setMode("reset")} disabled={disabled} style={UI.segBtn(mode === "reset", disabled)}>
-        Forgot password
-      </button>
-      <button
-        onClick={() => setMode("magic")}
-        disabled={disabled}
-        style={UI.segBtn(mode === "magic", disabled)}
-        title="Optional: sign in without password"
-      >
-        Email link
-      </button>
-    </div>
+      // ✅ Case (2): silent “already registered” (identities === [])
+      if (isSilentAlreadyRegisteredSignUp(data)) {
+        setStatus(alreadyRegisteredStatusText());
+        return;
+      }
 
-    <div style={{ marginTop: 12 }}>
-      <label style={UI.label}>Email</label>
-      <input
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="you@email.com"
-        autoComplete="email"
-        style={UI.input(disabled)}
-        disabled={disabled}
-      />
-    </div>
+      if (!data?.session) {
+        setStatus("✅ Account created.\n\nPlease check your email to confirm, then sign in.");
+        return;
+      }
 
-    {showPasswordField && (
-      <div style={{ marginTop: 12 }}>
-        <label style={UI.label}>Password</label>
+      await ensureSessionOrThrow();
+      await onAuthed();
+    } catch (e: any) {
+      // Extra guard: if something throws a structured error
+      if (isUserAlreadyRegisteredError(e)) {
+        setStatus(alreadyRegisteredStatusText());
+        return;
+      }
+      setStatus(humanizeAuthError(e, mode));
+    } finally {
+      setBusy(false);
+    }
+  }
 
-        <div
-          style={{
-            position: "relative",
-            width: "100%",
-            borderRadius: 12,
-            border: "1px solid rgba(0,0,0,0.14)",
-            background: "white",
-            overflow: "hidden",
-            opacity: disabled ? 0.7 : 1,
-            boxSizing: "border-box",
-            minHeight: 46,
-          }}
+  async function sendResetPasswordEmail() {
+    setBusy(true);
+    setStatus(null);
+    try {
+      const clean = cleanEmail();
+      if (!clean || !clean.includes("@")) return setStatus("Please enter a valid email.");
+
+      const { error } = await supabase.auth.resetPasswordForEmail(clean, {
+        redirectTo: redirectToRecovery,
+      });
+      if (error) return setStatus(humanizeAuthError(error, mode));
+
+      setStatus("✅ Password reset email sent.\n\nOpen your email and follow the link.");
+    } catch (e: any) {
+      setStatus(humanizeAuthError(e, mode));
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  const showPasswordField = mode === "password_signin" || mode === "password_signup";
+
+  const primaryActionLabel =
+    mode === "password_signin"
+      ? "Sign in"
+      : mode === "password_signup"
+        ? "Create account"
+        : mode === "magic"
+          ? "Send email link"
+          : "Send reset email";
+
+  const onPrimary =
+    mode === "password_signin"
+      ? signInWithPassword
+      : mode === "password_signup"
+        ? signUpWithPassword
+        : mode === "magic"
+          ? sendMagicLink
+          : sendResetPasswordEmail;
+
+  return (
+    <div style={UI.block}>
+      <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+        <button onClick={() => setMode("password_signin")} disabled={disabled} style={UI.segBtn(mode === "password_signin", disabled)}>
+          Sign in
+        </button>
+        <button onClick={() => setMode("password_signup")} disabled={disabled} style={UI.segBtn(mode === "password_signup", disabled)}>
+          Sign up
+        </button>
+        <button onClick={() => setMode("reset")} disabled={disabled} style={UI.segBtn(mode === "reset", disabled)}>
+          Forgot password
+        </button>
+        <button
+          onClick={() => setMode("magic")}
+          disabled={disabled}
+          style={UI.segBtn(mode === "magic", disabled)}
+          title="Optional: sign in without password"
         >
-          <input
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="••••••••"
-            type={showPw ? "text" : "password"}
-            autoComplete={mode === "password_signup" ? "new-password" : "current-password"}
-            disabled={disabled}
+          Email link
+        </button>
+      </div>
+
+      <div style={{ marginTop: 12 }}>
+        <label style={UI.label}>Email</label>
+        <input
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="you@email.com"
+          autoComplete="email"
+          style={UI.input(disabled)}
+          disabled={disabled}
+        />
+      </div>
+
+      {showPasswordField && (
+        <div style={{ marginTop: 12 }}>
+          <label style={UI.label}>Password</label>
+
+          <div
             style={{
+              position: "relative",
               width: "100%",
+              borderRadius: 12,
+              border: "1px solid rgba(0,0,0,0.14)",
+              background: "white",
+              overflow: "hidden",
+              opacity: disabled ? 0.7 : 1,
               boxSizing: "border-box",
               minHeight: 46,
-              padding: "11px 52px 11px 11px",
-              fontSize: 16,
-              border: "none",
-              outline: "none",
-              background: "transparent",
-              margin: 0,
-            }}
-          />
-
-          <button
-            type="button"
-            onClick={() => setShowPw((v) => !v)}
-            aria-label={showPw ? "Hide password" : "Show password"}
-            disabled={disabled}
-            title={showPw ? "Hide password" : "Show password"}
-            style={{
-              position: "absolute",
-              right: 10,
-              top: "50%",
-              transform: "translateY(-50%)",
-              width: 36,
-              height: 36,
-              border: "none",
-              background: "transparent",
-              borderRadius: 9999,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              cursor: disabled ? "not-allowed" : "pointer",
-              opacity: 0.75,
-              padding: 0,
-              lineHeight: 1,
-              fontSize: 18,
-
-              // ✅ kill browser “button chrome”
-              appearance: "none",
-              WebkitAppearance: "none",
-              outline: "none",
-              boxShadow: "none",
             }}
           >
-            {showPw ? "🙈" : "👁️"}
-          </button>
-        </div>
+            <input
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="••••••••"
+              type={showPw ? "text" : "password"}
+              autoComplete={mode === "password_signup" ? "new-password" : "current-password"}
+              disabled={disabled}
+              style={{
+                width: "100%",
+                boxSizing: "border-box",
+                minHeight: 46,
+                padding: "11px 52px 11px 11px",
+                fontSize: 16,
+                border: "none",
+                outline: "none",
+                background: "transparent",
+                margin: 0,
+              }}
+            />
 
-        <div style={{ marginTop: 8, ...UI.small }}>Minimum 6 characters.</div>
+            <button
+              type="button"
+              onClick={() => setShowPw((v) => !v)}
+              aria-label={showPw ? "Hide password" : "Show password"}
+              disabled={disabled}
+              title={showPw ? "Hide password" : "Show password"}
+              style={{
+                position: "absolute",
+                right: 10,
+                top: "50%",
+                transform: "translateY(-50%)",
+                width: 36,
+                height: 36,
+                border: "none",
+                background: "transparent",
+                borderRadius: 9999,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                cursor: disabled ? "not-allowed" : "pointer",
+                opacity: 0.75,
+                padding: 0,
+                lineHeight: 1,
+                fontSize: 18,
 
-        {mode === "password_signin" && (
-          <div style={{ marginTop: 10, ...UI.small }}>
-            <button type="button" onClick={() => setMode("reset")} disabled={disabled} style={UI.linkBtn(disabled)}>
-              Forgot password?
+                // ✅ kill browser “button chrome”
+                appearance: "none",
+                WebkitAppearance: "none",
+                outline: "none",
+                boxShadow: "none",
+              }}
+            >
+              {showPw ? "🙈" : "👁️"}
             </button>
           </div>
-        )}
+
+          <div style={{ marginTop: 8, ...UI.small }}>Minimum 6 characters.</div>
+
+          {mode === "password_signin" && (
+            <div style={{ marginTop: 10, ...UI.small }}>
+              <button type="button" onClick={() => setMode("reset")} disabled={disabled} style={UI.linkBtn(disabled)}>
+                Forgot password?
+              </button>
+            </div>
+          )}
+        </div>
+      )}
+
+      <div style={{ marginTop: 12 }}>
+        <button onClick={onPrimary} disabled={disabled} style={UI.primaryBtn(disabled)}>
+          {disabled ? "Please wait..." : primaryActionLabel}
+        </button>
       </div>
-    )}
 
-    <div style={{ marginTop: 12 }}>
-      <button onClick={onPrimary} disabled={disabled} style={UI.primaryBtn(disabled)}>
-        {disabled ? "Please wait..." : primaryActionLabel}
-      </button>
+      <div style={{ marginTop: 10, ...UI.small }}>
+        {mode === "password_signin" ? (
+          <>
+            New here?{" "}
+            <button type="button" onClick={() => setMode("password_signup")} disabled={disabled} style={UI.linkBtn(disabled)}>
+              Create an account
+            </button>
+            .
+          </>
+        ) : mode === "password_signup" ? (
+          <>
+            Already have an account?{" "}
+            <button type="button" onClick={() => setMode("password_signin")} disabled={disabled} style={UI.linkBtn(disabled)}>
+              Sign in
+            </button>
+            .
+          </>
+        ) : null}
+      </div>
+
+      {status && <div style={UI.status}>{status}</div>}
     </div>
-
-    <div style={{ marginTop: 10, ...UI.small }}>
-      {mode === "password_signin" ? (
-        <>
-          New here?{" "}
-          <button
-            type="button"
-            onClick={() => setMode("password_signup")}
-            disabled={disabled}
-            style={UI.linkBtn(disabled)}
-          >
-            Create an account
-          </button>
-          .
-        </>
-      ) : mode === "password_signup" ? (
-        <>
-          Already have an account?{" "}
-          <button
-            type="button"
-            onClick={() => setMode("password_signin")}
-            disabled={disabled}
-            style={UI.linkBtn(disabled)}
-          >
-            Sign in
-          </button>
-          .
-        </>
-      ) : null}
-    </div>
-
-    {status && <div style={UI.status}>{status}</div>}
-  </div>
-);
+  );
 }
+
+export default function LoginPage() {
+  const nav = useNavigate();
+
+  const returnToRaw = useMemo(() => safeParseReturnTo(window.location.search || ""), []);
+  const fromApp = useMemo(() => resolveAppFromReturnTo(returnToRaw), [returnToRaw]);
+
   // ✅ use helper (also prevents unused readBoolEnv)
   const AUTH_GOOGLE_ENABLED = useMemo(() => readBoolEnv("VITE_AUTH_GOOGLE_ENABLED"), []);
   const AUTH_FACEBOOK_ENABLED = useMemo(() => readBoolEnv("VITE_AUTH_FACEBOOK_ENABLED"), []);
@@ -1408,11 +1379,7 @@ return (
                 )}
 
                 <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-                  <button
-                    onClick={signOutNow}
-                    disabled={busy}
-                    style={{ ...UI.primaryBtn(busy), width: "auto", flex: "1 1 180px" }}
-                  >
+                  <button onClick={signOutNow} disabled={busy} style={{ ...UI.primaryBtn(busy), width: "auto", flex: "1 1 180px" }}>
                     {busy ? "Please wait..." : "Sign out"}
                   </button>
 
@@ -1487,11 +1454,7 @@ return (
               {anyOAuthEnabled && (
                 <div style={{ marginTop: 16, display: "flex", gap: 10, flexWrap: "wrap" }}>
                   {AUTH_GOOGLE_ENABLED && (
-                    <button
-                      onClick={signInGoogle}
-                      disabled={busy}
-                      style={{ ...UI.primaryBtn(busy), width: "auto", flex: "1 1 200px" }}
-                    >
+                    <button onClick={signInGoogle} disabled={busy} style={{ ...UI.primaryBtn(busy), width: "auto", flex: "1 1 200px" }}>
                       {busy ? "Please wait..." : "Continue with Google"}
                     </button>
                   )}
@@ -1524,17 +1487,10 @@ return (
               </div>
 
               {topMode === "email" && (
-                <EmailBlock
-                  emailRedirectTo={redirectToOAuthReturn}
-                  redirectToRecovery={redirectToRecovery}
-                  busyParent={busy}
-                  onAuthed={routeAfterAuth}
-                />
+                <EmailBlock emailRedirectTo={redirectToOAuthReturn} redirectToRecovery={redirectToRecovery} busyParent={busy} onAuthed={routeAfterAuth} />
               )}
 
-              {topMode === "phone" && (
-                <PhoneOtp redirectToOAuthReturn={redirectToOAuthReturn} busyParent={busy} onAuthed={routeAfterAuth} />
-              )}
+              {topMode === "phone" && <PhoneOtp redirectToOAuthReturn={redirectToOAuthReturn} busyParent={busy} onAuthed={routeAfterAuth} />}
 
               {status && <div style={UI.status}>{status}</div>}
             </>
