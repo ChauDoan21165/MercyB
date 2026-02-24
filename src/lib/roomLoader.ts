@@ -16,6 +16,10 @@ import { tierFromRoomId } from "@/lib/tierFromRoomId";
 import { classifyRoomError } from "@/lib/errors/roomErrorKind";
 
 type RoomRow = Database["public"]["Tables"]["rooms"]["Row"];
+type RoomEntryRow = Database["public"]["Tables"]["room_entries"]["Row"];
+
+// ✅ DB source of truth for entries (NOT rooms.entries)
+const ROOM_ENTRIES_TABLE = "room_entries";
 
 // Error codes for distinguishing room load failures
 // Note: AUTH_REQUIRED removed - guests get preview mode instead of blocking
@@ -71,44 +75,62 @@ const buildPreviewEntries = (entries: any[]): any[] => {
 
 /**
  * Load room from database
+ *
+ * ✅ IMPORTANT (2026-02):
+ * Entries live in public.room_entries (room_id, index, copy_en, copy_vi, ...)
+ * NOT in public.rooms.entries.
  */
 const loadFromDatabase = async (dbRoomId: string) => {
-  const { data: dbRoom, error } = await supabase
-    .from(ROOMS_TABLE)
-    .select("*")
-    .eq("id", dbRoomId)
-    .maybeSingle<RoomRow>();
-
-  if (error) return null;
-  if (!dbRoom) return null;
-
-  const hasEntries = Array.isArray(dbRoom.entries) && dbRoom.entries.length > 0;
-
   // ✅ IMPORTANT: tier MUST come from roomId (DB tier is not trusted)
   const roomTier: TierId = tierFromRoomId(dbRoomId);
 
-  // If no entries, check for room-level keywords
-  if (!hasEntries) {
-    const hasRoomKeywords =
-      Array.isArray(dbRoom.keywords) && dbRoom.keywords.length > 0;
-    if (!hasRoomKeywords) return null;
+  // 1) Load entries from room_entries (source of truth)
+  const { data: entryRows, error: entriesError } = await supabase
+    .from(ROOM_ENTRIES_TABLE)
+    .select("*")
+    .eq("room_id", dbRoomId)
+    .order("index", { ascending: true })
+    .returns<RoomEntryRow[]>();
+
+  if (entriesError) return null;
+
+  const hasEntries = Array.isArray(entryRows) && entryRows.length > 0;
+
+  if (hasEntries) {
+    const { keywordMenu, merged } = processEntriesOptimized(
+      (entryRows as any[]) ?? [],
+      dbRoomId
+    );
 
     return {
-      merged: [],
-      keywordMenu: {
-        en: dbRoom.keywords || [],
-        vi: dbRoom.keywords || [],
-      },
+      merged,
+      keywordMenu,
       audioBasePath: AUDIO_BASE_PATH,
       roomTier,
     };
   }
 
-  const { keywordMenu, merged } = processEntriesOptimized((dbRoom as any).entries ?? [], dbRoomId);
+  // 2) No entries — optional: fall back to room-level keywords if present
+  const { data: dbRoom, error: roomError } = await supabase
+    .from(ROOMS_TABLE)
+    .select("*")
+    .eq("id", dbRoomId)
+    .maybeSingle<RoomRow>();
+
+  if (roomError) return null;
+  if (!dbRoom) return null;
+
+  const hasRoomKeywords =
+    Array.isArray((dbRoom as any).keywords) && (dbRoom as any).keywords.length > 0;
+
+  if (!hasRoomKeywords) return null;
 
   return {
-    merged,
-    keywordMenu,
+    merged: [],
+    keywordMenu: {
+      en: (dbRoom as any).keywords || [],
+      vi: (dbRoom as any).keywords || [],
+    },
     audioBasePath: AUDIO_BASE_PATH,
     roomTier,
   };
@@ -123,11 +145,14 @@ const loadFromJson = async (roomId: string) => {
     const { loadRoomJson } = await import("./roomJsonResolver");
     const jsonData = await loadRoomJson(roomId);
 
-    if (!Array.isArray(jsonData?.entries) || jsonData.entries.length === 0) {
+    // ✅ Missing JSON OR “200 HTML pretending to be JSON” should behave like missing
+    if (!jsonData || typeof jsonData !== "object") return null;
+
+    if (!Array.isArray((jsonData as any)?.entries) || (jsonData as any).entries.length === 0) {
       return null;
     }
 
-    const { keywordMenu, merged } = processEntriesOptimized(jsonData.entries, roomId);
+    const { keywordMenu, merged } = processEntriesOptimized((jsonData as any).entries, roomId);
 
     // ✅ IMPORTANT: tier MUST come from roomId (JSON tier is not trusted)
     const roomTier: TierId = tierFromRoomId(roomId);
