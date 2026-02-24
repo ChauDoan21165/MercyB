@@ -55,6 +55,10 @@
 // - Remove local Home/Back row to prevent duplicate buttons.
 //   GlobalHeader/AppShell owns Home+Back + Mercy Blade wordmark consistently.
 //
+// PATCH (2026-02-23):
+// - Display launch pricing on Tier Map spine pills (UI-only):
+//   VIP1=$5/mo, VIP3=$12/mo, VIP9=$29/mo (no changes to billing logic).
+//
 // NOTE: Inline styles only. Locked concept preserved.
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -101,6 +105,16 @@ const SPINE_TOP_TO_BOTTOM: TierNode[] = [
 function norm(v: any): string {
   return String(v ?? "").toLowerCase().trim();
 }
+
+/**
+ * UI-only displayed prices (does NOT affect billing).
+ * Keep blank for tiers you don't want to promise publicly yet.
+ */
+const DISPLAY_PRICE: Partial<Record<SpineTierId, string>> = {
+  vip1: "$5/mo",
+  vip3: "$12/mo",
+  vip9: "$29/mo",
+};
 
 /**
  * Infer spine tier from room id, COUNTING ONLY.
@@ -260,6 +274,17 @@ function TierLink({
     flex: "0 0 auto",
   };
 
+  const pricePill: React.CSSProperties = {
+    marginLeft: 2,
+    fontSize: 12,
+    fontWeight: 900,
+    padding: "3px 9px",
+    borderRadius: 9999,
+    border: "1px solid rgba(0,0,0,0.12)",
+    background: "rgba(255,255,255,0.92)",
+    color: "rgba(0,0,0,0.70)",
+  };
+
   const countPill: React.CSSProperties = {
     marginLeft: 6,
     fontSize: 12,
@@ -271,10 +296,13 @@ function TierLink({
     color: "rgba(0,0,0,0.70)",
   };
 
+  const price = DISPLAY_PRICE[id];
+
   return (
     <Link to={to ?? `/tiers/${id}`} style={a} aria-label={`Open ${label}`}>
       <span style={dot} />
       <span>{label}</span>
+      {price ? <span style={pricePill}>{price}</span> : null}
       {typeof count === "number" ? <span style={countPill}>{count}</span> : null}
     </Link>
   );
