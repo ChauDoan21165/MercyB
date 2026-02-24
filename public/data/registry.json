@@ -1,0 +1,27 @@
+node - <<'NODE'
+const fs = require('fs');
+const path = require('path');
+
+const dir = path.join(process.cwd(), 'public', 'data');
+if (!fs.existsSync(dir)) {
+  console.error('Missing folder:', dir);
+  process.exit(1);
+}
+
+const files = fs.readdirSync(dir)
+  .filter(f => f.toLowerCase().endsWith('.json'))
+  .filter(f => f !== 'registry.json');
+
+files.sort((a,b)=>a.localeCompare(b));
+
+const registry = {
+  version: new Date().toISOString(),
+  count: files.length,
+  rooms: files.map(f => f.replace(/\.json$/i, "")),
+  paths: Object.fromEntries(files.map(f => [f.replace(/\.json$/i, ""), `/data/${f}`])),
+};
+
+const outPath = path.join(dir, 'registry.json');
+fs.writeFileSync(outPath, JSON.stringify(registry, null, 2) + "\n", 'utf8');
+console.log('Wrote', outPath, 'rooms:', files.length);
+NODE
