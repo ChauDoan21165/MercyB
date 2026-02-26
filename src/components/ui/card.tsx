@@ -1,80 +1,54 @@
-// FILE: Card.tsx
-// PATH: src/components/ui/Card.tsx
+// FILE: card.tsx
+// PATH: src/components/ui/card.tsx
 //
-// Merge notes:
-// - Keeps the shadcn-style component API: Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter
-// - React Native implementation (View/Text), not web div/className.
-// - Uses theme tokens for consistent Mercy Blade look.
+// Web (shadcn-style) Card components.
+// IMPORTANT: This file must NOT import from "react-native" because Vite web build will fail.
 
-import React from "react";
-import { View, Text, StyleSheet, ViewProps, TextProps } from "react-native";
-import { theme } from "../../core/ui/theme";
+import * as React from "react";
+import { cn } from "@/lib/utils";
 
-type BoxProps = ViewProps & { children?: React.ReactNode };
-type TxtProps = TextProps & { children?: React.ReactNode };
-
-export const Card = React.forwardRef<View, BoxProps>(({ style, ...props }, ref) => (
-  <View ref={ref} style={[styles.card, style]} {...props} />
-));
+const Card = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+  ({ className, ...props }, ref) => (
+    <div
+      ref={ref}
+      className={cn("rounded-lg border bg-card text-card-foreground shadow-sm", className)}
+      {...props}
+    />
+  )
+);
 Card.displayName = "Card";
 
-export const CardHeader = React.forwardRef<View, BoxProps>(({ style, ...props }, ref) => (
-  <View ref={ref} style={[styles.header, style]} {...props} />
-));
+const CardHeader = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+  ({ className, ...props }, ref) => (
+    <div ref={ref} className={cn("flex flex-col space-y-1.5 p-6", className)} {...props} />
+  )
+);
 CardHeader.displayName = "CardHeader";
 
-export const CardTitle = React.forwardRef<Text, TxtProps>(({ style, ...props }, ref) => (
-  <Text ref={ref} style={[styles.title, style]} {...props} />
-));
+const CardTitle = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLHeadingElement>>(
+  ({ className, ...props }, ref) => (
+    <h3 ref={ref} className={cn("text-2xl font-semibold leading-none tracking-tight", className)} {...props} />
+  )
+);
 CardTitle.displayName = "CardTitle";
 
-export const CardDescription = React.forwardRef<Text, TxtProps>(({ style, ...props }, ref) => (
-  <Text ref={ref} style={[styles.description, style]} {...props} />
-));
+const CardDescription = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLParagraphElement>>(
+  ({ className, ...props }, ref) => (
+    <p ref={ref} className={cn("text-sm text-muted-foreground", className)} {...props} />
+  )
+);
 CardDescription.displayName = "CardDescription";
 
-export const CardContent = React.forwardRef<View, BoxProps>(({ style, ...props }, ref) => (
-  <View ref={ref} style={[styles.content, style]} {...props} />
-));
+const CardContent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+  ({ className, ...props }, ref) => <div ref={ref} className={cn("p-6 pt-0", className)} {...props} />
+);
 CardContent.displayName = "CardContent";
 
-export const CardFooter = React.forwardRef<View, BoxProps>(({ style, ...props }, ref) => (
-  <View ref={ref} style={[styles.footer, style]} {...props} />
-));
+const CardFooter = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+  ({ className, ...props }, ref) => (
+    <div ref={ref} className={cn("flex items-center p-6 pt-0", className)} {...props} />
+  )
+);
 CardFooter.displayName = "CardFooter";
 
-const styles = StyleSheet.create({
-  card: {
-    backgroundColor: theme.color.card,
-    borderColor: theme.color.border,
-    borderWidth: 1,
-    borderRadius: theme.radius.lg,
-    padding: theme.space.md,
-    ...theme.shadow.card,
-  },
-  header: {
-    paddingBottom: theme.space.sm,
-  },
-  title: {
-    fontSize: 18,
-    fontWeight: "800",
-    color: theme.color.text,
-    letterSpacing: 0.2,
-  },
-  description: {
-    marginTop: 6,
-    fontSize: 13,
-    lineHeight: 18,
-    color: theme.color.muted,
-  },
-  content: {
-    paddingTop: theme.space.sm,
-  },
-  footer: {
-    paddingTop: theme.space.sm,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "flex-start",
-    gap: theme.space.sm,
-  },
-});
+export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent };
