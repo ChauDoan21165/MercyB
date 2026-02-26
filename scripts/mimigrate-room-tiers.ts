@@ -5,7 +5,7 @@
  * - Detect TierId from id/tier text
  * - Rewrite tier to canonical label, e.g.:
  *   vip3  → "VIP3 / VIP3"
- *   vip3ii → "VIP3 II / VIP3 II"
+ *   vip3 → "VIP3 II / VIP3 II"
  *
  * RUN:
  * SUPABASE_SERVICE_ROLE_KEY=xxx ts-node scripts/migrate-room-tiers.ts
@@ -30,7 +30,7 @@ type TierId =
   | "vip1"
   | "vip2"
   | "vip3"
-  | "vip3ii"
+  | "vip3"
   | "vip4"
   | "vip5"
   | "vip6"
@@ -46,7 +46,7 @@ const TIER_ID_TO_LABEL: Record<TierId, string> = {
   vip1: "VIP1 / VIP1",
   vip2: "VIP2 / VIP2",
   vip3: "VIP3 / VIP3",
-  vip3ii: "VIP3 II / VIP3 II",
+  vip3: "VIP3 II / VIP3 II",
   vip4: "VIP4 / VIP4",
   vip5: "VIP5 / VIP5",
   vip6: "VIP6 / VIP6",
@@ -62,8 +62,8 @@ function inferTierId(id: string, tier: string | null): TierId {
   const idLower = id.toLowerCase();
   const tierLower = (tier || "").toLowerCase();
 
-  // VIP3II: id or tier mentions vip3ii or "vip3 ii"
-  if (idLower.includes("vip3ii") || tierLower.includes("vip3 ii")) return "vip3ii";
+  // VIP3: id or tier mentions vip3 or "vip3 ii"
+  if (idLower.includes("vip3") || tierLower.includes("vip3 ii")) return "vip3";
 
   // VIP3: id or tier mentions vip3
   if (idLower.includes("vip3") || tierLower.includes("vip3")) return "vip3";

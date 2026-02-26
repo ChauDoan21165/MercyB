@@ -99,7 +99,7 @@ export function validateRoomSize(entriesCount: number): void {
 }
 
 // ============= TIER VALIDATION =============
-const VALID_TIERS = ['free', 'vip1', 'vip2', 'vip3', 'vip3ii', 'vip4', 'vip5', 'vip6', 'vip7', 'vip8', 'vip9', 'kids_1', 'kids_2', 'kids_3'];
+const VALID_TIERS = ['free', 'vip1', 'vip2', 'vip3', 'vip3', 'vip4', 'vip5', 'vip6', 'vip7', 'vip8', 'vip9', 'kids_1', 'kids_2', 'kids_3'];
 
 export function validateTier(tier: string): string {
   if (!tier || typeof tier !== 'string') {

@@ -2,7 +2,7 @@
 // PATH: src/lib/tierFromRoomId.ts
 //
 // SIMPLE APP MODE (FINAL):
-// - VIP3 II is NOT a real tier anymore → always maps to VIP3
+// - VIP3 II (and other VIP3 roman variants) are NOT real tiers anymore → always maps to VIP3
 // - strictTierFromRoomId(): returns TierId ONLY when confidently detected
 // - tierFromRoomId(): legacy wrapper defaults to "free"
 // - NO DB migration needed
@@ -27,11 +27,25 @@ export function strictTierFromRoomId(id: string): TierId | undefined {
   };
 
   // ---------------------------------------------------------------------------
-  // VIP3 II — COLLAPSED INTO VIP3 (simple app mode)
+  // VIP3 ROMAN VARIANTS — COLLAPSED INTO VIP3 (simple app mode)
+  //
+  // Examples that must map to "vip3":
+  // - ...-vip3ii
+  // - ...-vip3-ii
+  // - ...-vip3ii-ii
+  // - ...-vip3iii
+  // - ...-vip3-iv
+  // - ...-vip3v (if it ever exists)
+  //
+  // IMPORTANT:
+  // - We DO NOT want "vip3" alone to match unless it is a proper token boundary.
+  // - We DO want vip3 + roman numerals stuck together (vip3ii) to match.
   // ---------------------------------------------------------------------------
   if (
+    // explicit vip3_ii token
     hasToken("vip3_ii") ||
-    /(^|[^a-z0-9])vip3[\s_-]*ii([^a-z0-9]|$)/i.test(s)
+    // vip3 + roman numerals (ii/iii/iv/...) with optional separators OR none
+    /(^|[^a-z0-9])vip3[\s_-]*([ivx]+)([^a-z0-9]|$)/i.test(s)
   ) {
     return "vip3";
   }
@@ -64,7 +78,8 @@ export function strictTierFromRoomId(id: string): TierId | undefined {
   }
 
   // ---------------------------------------------------------------------------
-  // VIP tiers (high → low, after vip3 collapse)
+  // VIP tiers (high → low, after vip3 roman collapse)
+  // NOTE: This only matches "vipN" when it is a token boundary.
   // ---------------------------------------------------------------------------
   for (let n = 9; n >= 1; n--) {
     if (

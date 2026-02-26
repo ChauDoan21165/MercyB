@@ -9,8 +9,8 @@
  * CRITICAL RULES:
  * 1. Same 3-column structure for every tier (FREE → VIP9)
  * 2. Only content difficulty climbs with tiers, not the structure
- * 3. VIP3II is CORE SPECIALIZATION (center column only) - contains sensitive/heavy topics
- * 4. VIP3II is NOT a separate tier - VIP3 users have full access to VIP3II
+ * 3. VIP3 is CORE SPECIALIZATION (center column only) - contains sensitive/heavy topics
+ * 4. VIP3 is NOT a separate tier - VIP3 users have full access to VIP3
  * 5. Never auto-mix rooms - use ONLY this explicit config
  */
 
@@ -123,8 +123,8 @@ export function categorizeRoom(roomId: string, titleEn?: string): "english" | "c
 }
 
 /**
- * Check if a room belongs to VIP3II specialization (by ID pattern)
- * VIP3II rooms are CORE specialization containing sensitive/heavy topics
+ * Check if a room belongs to VIP3 specialization (by ID pattern)
+ * VIP3 rooms are CORE specialization containing sensitive/heavy topics
  */
 export function isVip3IIRoom(roomId: string): boolean {
   const id = roomId.toLowerCase();
@@ -296,10 +296,10 @@ export const TIER_CONTENT_MAP = {
 
 
 /**
- * VIP3II is a CORE SPECIALIZATION block, NOT a separate tier
- * VIP3 users MUST see VIP3II rooms (same access level = 3)
+ * VIP3 is a CORE SPECIALIZATION block, NOT a separate tier
+ * VIP3 users MUST see VIP3 rooms (same access level = 3)
  */
-export const VIP3II_DESCRIPTION = {
+export const VIP3_DESCRIPTION = {
   en: "Core Specialization — Sensitive & Advanced Topics",
   vi: "Chuyên Biệt Cốt Lõi — Chủ Đề Nhạy Cảm & Nâng Cao",
 };

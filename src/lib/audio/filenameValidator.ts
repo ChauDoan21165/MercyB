@@ -1,3 +1,10 @@
+// FILE: filenameValidator.ts
+// PATH: src/lib/audio/filenameValidator.ts
+// NOTE (end-of-project safe patch):
+// - Do NOT change runtime behavior.
+// - Fix TS error: `"confidenceScore" in result` narrows to `unknown`.
+//   => Use an explicit type guard so `confidenceScore` is `number`.
+
 /**
  * Audio Filename Validator v3.0 - Full Expanded Version
  * Chief Automation Engineer: Complete Phase 2-4 Implementation
@@ -75,6 +82,16 @@ export interface FixReport {
   orphans: string[];
   recommendedFixes: string[];
   completenessScore: number;
+}
+
+/**
+ * TS-only helper: explicit type guard so confidenceScore is `number`.
+ * (Using `"confidenceScore" in result` can narrow to `unknown`.)
+ */
+function hasConfidenceScore(
+  r: ValidationResult | RoomAwareValidationResult
+): r is RoomAwareValidationResult {
+  return typeof (r as any)?.confidenceScore === "number";
 }
 
 /**
@@ -723,7 +740,8 @@ export function batchValidate(
     else if (result.severity === "warning") warnings++;
     else if (result.severity === "critical") critical++;
 
-    if ("confidenceScore" in result) {
+    // ✅ FIX: explicit guard avoids `unknown` confidenceScore narrowing.
+    if (hasConfidenceScore(result)) {
       totalConfidence += result.confidenceScore;
     } else {
       totalConfidence += result.isValid ? 100 : 50;

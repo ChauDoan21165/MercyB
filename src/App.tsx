@@ -1,10 +1,21 @@
-import { Routes, Route } from "react-router-dom";
-import AppHeroLayout from "@/components/layout/AppHeroLayout";
+// src/App.tsx
+import React from "react";
+import { Routes, Route, Outlet } from "react-router-dom";
+
 import LoginPage from "@/pages/LoginPage";
 import Home from "@/pages/Home";
 import AccountPage from "@/pages/AccountPage";
 import UpgradePage from "@/pages/UpgradePage";
-// import your other pages...
+
+/**
+ * TEMP FIX (build unblocker):
+ * The previous import `@/components/layout/AppHeroLayout` is missing, causing TS2307.
+ * This local layout keeps the routing structure identical (layout route + Outlet)
+ * so you can later move it back into `src/components/layout/AppHeroLayout.tsx`.
+ */
+function AppHeroLayout() {
+  return <Outlet />;
+}
 
 export default function App() {
   return (

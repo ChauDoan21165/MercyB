@@ -3,8 +3,8 @@
 // VERSION: MB-BLUE-97.9d — 2026-01-18 (+0700)
 //
 // FIX:
-// - vip3ii tier is DELETED.
-// - Legacy vip3ii behavior is validated by mapping to vip3.
+// - vip3 tier is DELETED.
+// - Legacy vip3 behavior is validated by mapping to vip3.
 // - Scenarios must assert CANONICAL tiers only.
 
 import { simulator } from '../LaunchSimulatorCore';
@@ -27,14 +27,14 @@ export async function runScenario_TierBoundaryCheck() {
       },
     },
     {
-      name: 'Legacy VIP3II user mapped to VIP3 (should work)',
+      name: 'Legacy VIP3 user mapped to VIP3 (should work)',
       action: async () => {
-        // vip3ii is a legacy alias → must resolve to vip3
+        // vip3 is a legacy alias → must resolve to vip3
         const legacyVip3User = mockTier('vip3');
 
         simulator.assert(
           legacyVip3User.tier === 'vip3',
-          'Legacy VIP3II user should be treated as VIP3'
+          'Legacy VIP3 user should be treated as VIP3'
         );
       },
     },

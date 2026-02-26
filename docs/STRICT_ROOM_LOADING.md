@@ -38,7 +38,7 @@ All pages now use strict loader:
 - `src/pages/RoomGridVIP1.tsx` → `useVipRooms('vip1')`
 - `src/pages/RoomGridVIP2.tsx` → `useVipRooms('vip2')`
 - `src/pages/RoomGridVIP3.tsx` → `useVipRooms('vip3')`
-- `src/pages/RoomGridVIP3II.tsx` → `useVipRooms('vip3ii')`
+- `src/pages/RoomGridVIP3II.tsx` → `useVipRooms('vip3')`
 - `src/pages/RoomGridVIP4.tsx` → `useVipRooms('vip4')`
 - `src/pages/RoomGridVIP5.tsx` → `useVipRooms('vip5')`
 - `src/pages/RoomGridVIP6.tsx` → `useVipRooms('vip6')`

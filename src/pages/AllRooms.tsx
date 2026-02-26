@@ -100,9 +100,7 @@ export default function AllRooms() {
           <div className="mt-3 text-sm opacity-80">Home v2025-12-25-BASELINE</div>
 
           <div className="mt-5 flex flex-wrap gap-2">
-            <Link className="mb-btn" to="/room/english_writing_free">
-              Try a room
-            </Link>
+            {/* NOTE: Removed broken room link (english_writing_free deleted) */}
             <Link className="mb-btn" to="/tiers">
               Explore tiers
             </Link>

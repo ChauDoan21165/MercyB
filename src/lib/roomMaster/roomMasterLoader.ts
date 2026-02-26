@@ -2,8 +2,8 @@
 // PATH: src/lib/roomMaster/roomMasterLoader.ts
 // VERSION: MB-BLUE-97.9d — 2026-01-18 (+0700)
 //
-// FIX (vip3ii burial + export):
-// - vip3ii is DELETED as a tier. Treat legacy room ids containing "vip3ii" as vip3.
+// FIX (vip3 burial + export):
+// - vip3 is DELETED as a tier. Treat legacy room ids containing "vip3" as vip3.
 // - Add named export roomMasterLoader for backward-compat with simulator imports.
 // - Keep strict: never default unknown → free.
 
@@ -24,8 +24,8 @@ function inferTierFromRoomId(roomId: string): TierId | undefined {
   if (s.includes("kids_2") || s.includes("_kids_2")) return "kids_2";
   if (s.includes("kids_3") || s.includes("_kids_3")) return "kids_3";
 
-  // vip3ii is DELETED → map legacy ids to vip3
-  if (s.includes("vip3ii") || s.includes("_vip3ii")) return "vip3";
+  // vip3 is DELETED → map legacy ids to vip3
+  if (s.includes("vip3") || s.includes("_vip3")) return "vip3";
 
   // vipN suffixes (common: _vip3, _vip4_bonus, etc.)
   const m = s.match(/_vip([1-9])\b/);
@@ -60,15 +60,15 @@ function parseTierStrict(room: AnyRoom): TierId | undefined {
     /vip\s*\d/i.test(s) ||
     /vip\d/i.test(s) ||
     /vip\s*3\s*ii/i.test(s) ||
-    /vip3ii/i.test(s) ||
+    /vip3/i.test(s) ||
     /kids/i.test(s) ||
     /trẻ em/i.test(s) ||
     /mien phi|miễn phí|free/i.test(s);
 
   if (!looksLikeTier) return undefined;
 
-  // If old UI label still says VIP3II -> treat as vip3 (vip3ii is deleted)
-  if (/vip\s*3\s*ii/i.test(s) || /vip3ii/i.test(s)) return "vip3";
+  // If old UI label still says VIP3 -> treat as vip3 (vip3 is deleted)
+  if (/vip\s*3\s*ii/i.test(s) || /vip3/i.test(s)) return "vip3";
 
   const mapped = tierLabelToId(s);
 

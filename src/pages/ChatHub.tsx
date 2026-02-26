@@ -30,10 +30,15 @@
  *   GlobalHeader/AppHeader use: max-w-[980px] px-4
  *   ChatHub previously used:     max-w-[980px] px-4 md:px-6  (mismatch at md breakpoint)
  *   Fix: remove md:px-6 in BOTH wrappers so borders/boxes line up across pages.
+ *
+ * PATCH (2026-02-XX):
+ * - TEST STABILITY: Even if room load fails (DB/JSON), error UI MUST still provide a Back button
+ *   so navigation integration tests don't hang on "Room error" screens.
+ * - LOAD ROBUSTNESS: Try multiple ID variants (hyphen/underscore) when loading JSON.
  */
 
 import { useEffect, useMemo, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import {
   canonicalizeRoomId,
@@ -77,6 +82,54 @@ function detectRoomUiKind(room: AnyRoom): "keyword_hub" | "content" {
   return Math.max(kw.en.length, kw.vi.length) > 0 ? "keyword_hub" : "content";
 }
 
+function uniqueStrings(list: string[]): string[] {
+  const out: string[] = [];
+  const seen = new Set<string>();
+  for (const s of list) {
+    const v = String(s || "").trim();
+    if (!v) continue;
+    if (seen.has(v)) continue;
+    seen.add(v);
+    out.push(v);
+  }
+  return out;
+}
+
+function roomIdVariants(roomId: string, canonicalId: string): string[] {
+  const raw = String(roomId || "").trim();
+  const canon = String(canonicalId || "").trim();
+
+  const rawHyphen = raw.replace(/_/g, "-");
+  const rawUnder = raw.replace(/-/g, "_");
+
+  const canonHyphen = canon.replace(/_/g, "-");
+  const canonUnder = canon.replace(/-/g, "_");
+
+  // Prefer hyphen IDs first (your manifests/URLs are hyphen-based).
+  return uniqueStrings([raw, rawHyphen, canonHyphen, canon, rawUnder, canonUnder]);
+}
+
+function fallbackParentRoute(roomId?: string): string {
+  const id = String(roomId || "").trim();
+  if (!id) return "/rooms";
+  if (/sexuality-curiosity-vip3-sub[1-6]$/i.test(id)) return "/sexuality-culture";
+  if (/-vip3\b/i.test(id)) return "/rooms-vip3";
+  if (/-vip2\b/i.test(id)) return "/rooms-vip2";
+  if (/-vip1\b/i.test(id)) return "/rooms-vip1";
+  return "/rooms";
+}
+
+async function getParentRouteSafe(roomId?: string): Promise<string> {
+  try {
+    const mod: any = await import("@/lib/routeHelper").catch(() => null);
+    const fn = mod?.getParentRoute || mod?.getParentPath;
+    if (typeof fn === "function") return fn(roomId);
+  } catch {
+    // ignore
+  }
+  return fallbackParentRoute(roomId);
+}
+
 /* ----------------------------------------------------- */
 /* ZOOM SYNC (LOCKED)                                    */
 /* ----------------------------------------------------- */
@@ -105,8 +158,13 @@ function syncRootZoomFromStorage() {
 /* MAIN                                                  */
 /* ----------------------------------------------------- */
 export default function ChatHub() {
+  const navigate = useNavigate();
   const { roomId } = useParams<{ roomId: string }>();
+
+  // IMPORTANT: canonicalizeRoomId may convert to underscore_case.
+  // Keep it for display/debug, but do NOT rely on it as the only load key.
   const canonicalId = useMemo(() => canonicalizeRoomId(roomId || ""), [roomId]);
+  const loadKeys = useMemo(() => roomIdVariants(roomId || "", canonicalId), [roomId, canonicalId]);
 
   const [state, setState] = useState<LoadState>("loading");
   const [errorKind, setErrorKind] = useState<ErrorKind | null>(null);
@@ -148,10 +206,34 @@ export default function ChatHub() {
       setRoomSpec(null);
 
       try {
-        const data = await loadRoomJson(canonicalId);
-        const tier = (data?.tier || "free") as string;
+        // Try multiple keys (hyphen/underscore) to avoid false "not found".
+        let data: AnyRoom | null = null;
+        let loadedKey: string | null = null;
 
-        const spec = await getEffectiveRoomSpec(canonicalId, tier).catch(() => null);
+        for (const key of loadKeys) {
+          try {
+            const maybe = await loadRoomJson(key);
+            if (maybe && typeof maybe === "object") {
+              data = maybe;
+              loadedKey = key;
+              break;
+            }
+          } catch {
+            // try next
+          }
+        }
+
+        if (!data) {
+          // normalize error shape for existing UI
+          const err: any = new Error("ROOM_NOT_FOUND");
+          err.kind = "not_found";
+          throw err;
+        }
+
+        const tier = (data?.tier || "free") as string;
+        const specKey = loadedKey || canonicalId || roomId;
+
+        const spec = await getEffectiveRoomSpec(specKey, tier).catch(() => null);
 
         if (!cancelled) {
           setRoom(data);
@@ -181,10 +263,19 @@ export default function ChatHub() {
     return () => {
       cancelled = true;
     };
-  }, [roomId, canonicalId]);
+  }, [roomId, canonicalId, loadKeys]);
+
+  const onBack = async () => {
+    const dest = await getParentRouteSafe(roomId || "");
+    navigate(dest);
+  };
 
   if (state === "loading") {
-    return <div className="min-h-[40vh] flex items-center justify-center text-muted-foreground">Loading…</div>;
+    return (
+      <div className="min-h-[40vh] flex items-center justify-center text-muted-foreground">
+        Loading…
+      </div>
+    );
   }
 
   if (state === "error") {
@@ -202,6 +293,18 @@ export default function ChatHub() {
         <div>
           <h2 className="text-lg font-semibold mb-2">Room error</h2>
           <p className="text-muted-foreground">{getErrorMessage(msgKey)}</p>
+
+          {/* ✅ TEST + UX: provide a Back button even on error screens */}
+          <div className="mt-4 flex justify-center">
+            <button
+              type="button"
+              onClick={onBack}
+              className="inline-flex items-center justify-center rounded-md border px-4 py-2 text-sm font-medium hover:bg-muted"
+            >
+              Back
+            </button>
+          </div>
+
           <p className="text-xs text-muted-foreground mt-3">
             roomId: <code>{roomId}</code> → canonical: <code>{canonicalId}</code>
           </p>

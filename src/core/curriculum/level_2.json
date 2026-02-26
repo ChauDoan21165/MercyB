@@ -1,0 +1,21 @@
+{
+  "level": 2,
+  "focus": "Longer answers with structure: opener → detail → close.",
+  "targets": { "mastery": 62, "minimums": { "pressure": 50, "accuracy": 55 }, "sessions": 4 },
+  "modules": [
+    {
+      "moduleKey": "timed_speaking",
+      "title": "Timed Speaking — Structured Answers",
+      "durationSec": 75,
+      "prompts": [
+        { "id": "L2_TS_001", "text": "Answer: What is a skill you’re proud of? Use opener → detail → close.", "constraints": ["3_part_structure"] },
+        { "id": "L2_TS_002", "text": "Explain a problem you solved. Use: First / Then / Finally.", "constraints": ["sequence_words"] }
+      ],
+      "scoringProfile": { "targetWords": 55 }
+    }
+  ],
+  "mercyHostRules": [
+    { "if": "fluency < 45", "diagnosis": "Your structure is fine, but too short.", "prescription": "Add one detail sentence in the middle." },
+    { "if": "accuracy < 55", "diagnosis": "Errors rise when you extend answers.", "prescription": "Use simpler clauses. No long chains." }
+  ]
+}

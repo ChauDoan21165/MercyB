@@ -104,8 +104,19 @@ export async function loadRoomJson(roomIdRaw: string): Promise<any> {
     throw err;
   }
 
+  // ✅ Guard: Vercel SPA fallback can return 200 + HTML (index.html) for missing JSON
+  const ct = (res.headers.get("content-type") || "").toLowerCase();
+  const text = await res.text();
+
+  // If it's clearly HTML, treat as not_found so callers can fallback to DB
+  if (!ct.includes("application/json") && /^\s*<!doctype html>|^\s*<html/i.test(text)) {
+    const err = new Error("ROOM_NOT_FOUND");
+    (err as any).kind = "not_found" satisfies RoomJsonResolverErrorKind;
+    throw err;
+  }
+
   try {
-    return await res.json();
+    return JSON.parse(text);
   } catch {
     const err = new Error("JSON_INVALID");
     (err as any).kind = "json_invalid" satisfies RoomJsonResolverErrorKind;

@@ -81,7 +81,7 @@ supabase/
 
 **Tier Hierarchy**:
 ```
-free (1) → vip1 (2) → vip2 (3) → vip3 (4) → vip3ii (4.5) → 
+free (1) → vip1 (2) → vip2 (3) → vip3 (4) → vip3 (4.5) → 
 vip4 (5) → vip5 (6) → vip6 (7) → vip9 (10)
 
 Kids tiers: kids_1 (2), kids_2 (3), kids_3 (4)

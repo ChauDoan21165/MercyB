@@ -3,9 +3,17 @@
  * Measure and log Core Web Vitals in production
  */
 
-import { onCLS, onFID, onLCP, onFCP, onTTFB, Metric } from 'web-vitals';
+import {
+  onCLS,
+  onINP,
+  onLCP,
+  onFCP,
+  onTTFB,
+  type Metric,
+} from 'web-vitals';
 
-const isDev = process.env.NODE_ENV !== 'production';
+// Vite-safe environment detection
+const isDev = !import.meta.env.PROD;
 
 interface VitalsData {
   name: string;
@@ -18,20 +26,24 @@ interface VitalsData {
 const vitalsData: VitalsData[] = [];
 
 /**
- * Get rating based on thresholds
+ * Get rating based on official thresholds
  */
 function getRating(metric: Metric): 'good' | 'needs-improvement' | 'poor' {
   const { name, value } = metric;
 
   const thresholds: Record<string, [number, number]> = {
     CLS: [0.1, 0.25],
-    FID: [100, 300],
+    INP: [200, 500],          // Replaces FID
     LCP: [2500, 4000],
     FCP: [1800, 3000],
     TTFB: [800, 1800],
   };
 
-  const [good, poor] = thresholds[name] || [0, 0];
+  const threshold = thresholds[name];
+
+  if (!threshold) return 'good'; // unknown metric fallback
+
+  const [good, poor] = threshold;
 
   if (value <= good) return 'good';
   if (value <= poor) return 'needs-improvement';
@@ -52,13 +64,16 @@ function sendToAnalytics(metric: Metric) {
 
   vitalsData.push(data);
 
-  // Log in dev
+  // Log in development
   if (isDev) {
-    console.log(`[Web Vitals] ${data.name}: ${data.value.toFixed(2)}ms (${data.rating})`);
+    console.log(
+      `[Web Vitals] ${data.name}: ${data.value.toFixed(2)} (${data.rating})`
+    );
   }
 
   // TODO: Send to analytics service in production
-  // Example: analytics.track('web_vital', data);
+  // Example:
+  // if (!isDev) analytics.track('web_vital', data);
 }
 
 /**
@@ -68,7 +83,7 @@ export function initWebVitals() {
   if (typeof window === 'undefined') return;
 
   onCLS(sendToAnalytics);
-  onFID(sendToAnalytics);
+  onINP(sendToAnalytics); // Modern replacement for FID
   onLCP(sendToAnalytics);
   onFCP(sendToAnalytics);
   onTTFB(sendToAnalytics);
@@ -78,20 +93,18 @@ export function initWebVitals() {
  * Get current vitals data
  */
 export function getVitalsData(): VitalsData[] {
-  return vitalsData;
+  return [...vitalsData];
 }
 
 /**
  * Get vitals summary
  */
 export function getVitalsSummary() {
-  const summary = {
+  return {
     CLS: vitalsData.find(v => v.name === 'CLS'),
-    FID: vitalsData.find(v => v.name === 'FID'),
+    INP: vitalsData.find(v => v.name === 'INP'),
     LCP: vitalsData.find(v => v.name === 'LCP'),
     FCP: vitalsData.find(v => v.name === 'FCP'),
     TTFB: vitalsData.find(v => v.name === 'TTFB'),
   };
-
-  return summary;
 }

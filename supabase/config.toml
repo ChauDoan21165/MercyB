@@ -42,7 +42,7 @@ verify_jwt = true
 verify_jwt = true
 
 [functions.bank-transfer-orders]
-verify_jwt = false
+verify_jwt = false   # safe only if fully server-validated inside function
 
 [functions.verify-payment-screenshot]
 verify_jwt = true
@@ -51,7 +51,7 @@ verify_jwt = true
 verify_jwt = true
 
 [functions.redeem-gift-code]
-verify_jwt = false
+verify_jwt = false   # OK if gift code itself is securely validated
 
 
 # =========================
@@ -61,7 +61,7 @@ verify_jwt = false
 verify_jwt = true
 
 [functions.generate-room-audio]
-verify_jwt = false
+verify_jwt = false   # OK if internal use only (admin/server triggered)
 
 [functions.generate-warmth-audio]
 verify_jwt = false
@@ -80,23 +80,23 @@ verify_jwt = true
 
 
 # =========================
-# GUIDES
+# GUIDES  (SECURED)
 # =========================
 [functions.guide-assistant]
-verify_jwt = false
+verify_jwt = true
 
 [functions.guide-english-helper]
-verify_jwt = false
+verify_jwt = true
 
 [functions.guide-pronunciation-coach]
-verify_jwt = false
+verify_jwt = true
 
 
 # =========================
-# ADMIN / SECURITY
+# ADMIN / SECURITY  (SECURED)
 # =========================
 [functions.admin-management]
-verify_jwt = false
+verify_jwt = true
 
 [functions.manage-admins]
 verify_jwt = true
@@ -105,7 +105,7 @@ verify_jwt = true
 verify_jwt = true
 
 [functions.security-alert]
-verify_jwt = false
+verify_jwt = false   # only safe if server-triggered
 
 [functions.audit-v4-safe-shield]
 verify_jwt = true
@@ -136,13 +136,11 @@ verify_jwt = false
 import_map = "./functions/stripe-webhook/deno.json"
 entrypoint = "./functions/stripe-webhook/index.ts"
 
+# =========================
+# ADMIN DAILY DIGEST
+# =========================
 [functions.admin-daily-digest]
 enabled = true
 verify_jwt = true
 import_map = "./functions/admin-daily-digest/deno.json"
-# Uncomment to specify a custom file path to the entrypoint.
-# Supported file extensions are: .ts, .js, .mjs, .jsx, .tsx
 entrypoint = "./functions/admin-daily-digest/index.ts"
-# Specifies static files to be bundled with the function. Supports glob patterns.
-# For example, if you want to serve static HTML pages in your function:
-# static_files = [ "./functions/admin-daily-digest/*.html" ]

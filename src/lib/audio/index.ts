@@ -197,7 +197,7 @@ export type {
 export {
   // Core autopilot functions
   runAutopilotCycle,
-  getAutopilotStatus,
+  getAutopilotStatus as getAutopilotEngineStatus,
   saveAutopilotStatus,
   // History functions (Phase 4.6)
   getAutopilotHistory,
@@ -232,16 +232,6 @@ export {
   type PendingGovernanceReview,
   type PendingGovernanceDB,
 } from './audioAutopilot';
-
-// Re-export unified types for CLI/CI consumption
-export type {
-  AudioChangeSet,
-  AudioChange,
-  AutopilotStatusStore,
-} from './types';
-
-// Export default governance config
-export { DEFAULT_GOVERNANCE_CONFIG } from './audioGovernanceEngine';
 
 // CLI Helpers (Phase 4.7 - testable pure functions)
 export {

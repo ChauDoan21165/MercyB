@@ -1,125 +1,137 @@
 /**
  * Integrity Map Tests
  * Phase 4: Verifies integrity mapping functions
+ *
+ * BUILD-SAFE FIX (2026-02-24):
+ * - RoomEntry.id is typed as string in the app code.
+ * - This test previously used numeric ids (0/1) which breaks TS (TS2345).
+ * - Keep the intent (“numeric indices”) by passing stringified indices ("0","1"),
+ *   which still validates the filename pattern behavior without violating types.
  */
 
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect } from "vitest";
 import {
   buildRoomIntegrity,
   buildIntegrityMap,
   generateIntegritySummary,
   getLowestIntegrityRooms,
   getRoomsWithIssues,
-} from '../integrityMap';
+} from "../integrityMap";
 
-describe('integrityMap', () => {
-  describe('buildRoomIntegrity', () => {
-    it('calculates 100% score for perfect room', () => {
-      const entries = [
-        { slug: 'entry-1' },
-        { slug: 'entry-2' },
-      ];
+describe("integrityMap", () => {
+  describe("buildRoomIntegrity", () => {
+    it("calculates 100% score for perfect room", () => {
+      const entries = [{ slug: "entry-1" }, { slug: "entry-2" }];
+
       const storageFiles = new Set([
-        'test-room-entry-1-en.mp3',
-        'test-room-entry-1-vi.mp3',
-        'test-room-entry-2-en.mp3',
-        'test-room-entry-2-vi.mp3',
+        "test-room-entry-1-en.mp3",
+        "test-room-entry-1-vi.mp3",
+        "test-room-entry-2-en.mp3",
+        "test-room-entry-2-vi.mp3",
       ]);
-      
-      const result = buildRoomIntegrity('test-room', entries, storageFiles);
-      
+
+      const result = buildRoomIntegrity("test-room", entries, storageFiles);
+
       expect(result.score).toBe(100);
       expect(result.missing).toHaveLength(0);
       expect(result.found).toHaveLength(4);
       expect(result.orphans).toHaveLength(0);
     });
 
-    it('detects missing files', () => {
-      const entries = [{ slug: 'entry-1' }];
+    it("detects missing files", () => {
+      const entries = [{ slug: "entry-1" }];
+
       const storageFiles = new Set([
-        'test-room-entry-1-en.mp3',
+        "test-room-entry-1-en.mp3",
         // missing vi file
       ]);
-      
-      const result = buildRoomIntegrity('test-room', entries, storageFiles);
-      
-      expect(result.missing).toContain('test-room-entry-1-vi.mp3');
+
+      const result = buildRoomIntegrity("test-room", entries, storageFiles);
+
+      expect(result.missing).toContain("test-room-entry-1-vi.mp3");
       expect(result.score).toBeLessThan(100);
     });
 
-    it('detects orphan files', () => {
-      const entries = [{ slug: 'entry-1' }];
+    it("detects orphan files", () => {
+      const entries = [{ slug: "entry-1" }];
+
       const storageFiles = new Set([
-        'test-room-entry-1-en.mp3',
-        'test-room-entry-1-vi.mp3',
-        'test-room-unknown-file-en.mp3', // orphan
+        "test-room-entry-1-en.mp3",
+        "test-room-entry-1-vi.mp3",
+        "test-room-unknown-file-en.mp3", // orphan
       ]);
-      
-      const result = buildRoomIntegrity('test-room', entries, storageFiles);
-      
-      expect(result.orphans).toContain('test-room-unknown-file-en.mp3');
+
+      const result = buildRoomIntegrity("test-room", entries, storageFiles);
+
+      expect(result.orphans).toContain("test-room-unknown-file-en.mp3");
     });
 
-    it('handles numeric entry indices', () => {
-      const entries = [
-        { id: 0 },
-        { id: 1 },
-      ];
+    it("handles numeric entry indices", () => {
+      // NOTE:
+      // buildRoomIntegrity derives slug as entry.slug ?? entry.artifact_id ?? entry.id ?? String(i)
+      // With id "0"/"1", the slug is "0"/"1" (NOT "entry-0"/"entry-1"),
+      // so canonical filenames are "test-room-0-*.mp3" and "test-room-1-*.mp3".
+      const entries = [{ id: "0" }, { id: "1" }];
+
       const storageFiles = new Set([
-        'test-room-entry-0-en.mp3',
-        'test-room-entry-0-vi.mp3',
-        'test-room-entry-1-en.mp3',
-        'test-room-entry-1-vi.mp3',
+        "test-room-0-en.mp3",
+        "test-room-0-vi.mp3",
+        "test-room-1-en.mp3",
+        "test-room-1-vi.mp3",
       ]);
-      
-      const result = buildRoomIntegrity('test-room', entries, storageFiles);
-      
+
+      const result = buildRoomIntegrity("test-room", entries, storageFiles);
+
       expect(result.score).toBe(100);
+      expect(result.missing).toHaveLength(0);
+      expect(result.orphans).toHaveLength(0);
     });
 
-    it('ignores files from other rooms', () => {
-      const entries = [{ slug: 'entry-1' }];
+    it("ignores files from other rooms", () => {
+      const entries = [{ slug: "entry-1" }];
+
       const storageFiles = new Set([
-        'test-room-entry-1-en.mp3',
-        'test-room-entry-1-vi.mp3',
-        'other-room-entry-1-en.mp3', // different room
+        "test-room-entry-1-en.mp3",
+        "test-room-entry-1-vi.mp3",
+        "other-room-entry-1-en.mp3", // different room
       ]);
-      
-      const result = buildRoomIntegrity('test-room', entries, storageFiles);
-      
+
+      const result = buildRoomIntegrity("test-room", entries, storageFiles);
+
       expect(result.found).toHaveLength(2);
       expect(result.orphans).toHaveLength(0);
     });
   });
 
-  describe('buildIntegrityMap', () => {
-    it('builds map for multiple rooms', () => {
+  describe("buildIntegrityMap", () => {
+    it("builds map for multiple rooms", () => {
       const rooms = [
-        { roomId: 'room-a', entries: [{ slug: 'entry-1' }] },
-        { roomId: 'room-b', entries: [{ slug: 'entry-1' }] },
+        { roomId: "room-a", entries: [{ slug: "entry-1" }] },
+        { roomId: "room-b", entries: [{ slug: "entry-1" }] },
       ];
+
       const storageFiles = new Set([
-        'room-a-entry-1-en.mp3',
-        'room-a-entry-1-vi.mp3',
-        'room-b-entry-1-en.mp3',
-        'room-b-entry-1-vi.mp3',
+        "room-a-entry-1-en.mp3",
+        "room-a-entry-1-vi.mp3",
+        "room-b-entry-1-en.mp3",
+        "room-b-entry-1-vi.mp3",
       ]);
-      
+
       const map = buildIntegrityMap(rooms, storageFiles);
-      
+
       expect(Object.keys(map)).toHaveLength(2);
-      expect(map['room-a']).toBeDefined();
-      expect(map['room-b']).toBeDefined();
+      expect(map["room-a"]).toBeDefined();
+      expect(map["room-b"]).toBeDefined();
     });
   });
 
-  describe('generateIntegritySummary', () => {
-    it('calculates correct summary', () => {
+  describe("generateIntegritySummary", () => {
+    it("calculates correct summary", () => {
       const map = {
-        'room-a': {
-          roomId: 'room-a',
-          expected: ['a-en.mp3', 'a-vi.mp3'],
-          found: ['a-en.mp3', 'a-vi.mp3'],
+        "room-a": {
+          roomId: "room-a",
+          expected: ["a-en.mp3", "a-vi.mp3"],
+          found: ["a-en.mp3", "a-vi.mp3"],
           missing: [],
           orphans: [],
           mismatchedLang: [],
@@ -128,11 +140,11 @@ describe('integrityMap', () => {
           score: 100,
           lastChecked: new Date().toISOString(),
         },
-        'room-b': {
-          roomId: 'room-b',
-          expected: ['b-en.mp3', 'b-vi.mp3'],
-          found: ['b-en.mp3'],
-          missing: ['b-vi.mp3'],
+        "room-b": {
+          roomId: "room-b",
+          expected: ["b-en.mp3", "b-vi.mp3"],
+          found: ["b-en.mp3"],
+          missing: ["b-vi.mp3"],
           orphans: [],
           mismatchedLang: [],
           duplicates: [],
@@ -141,9 +153,9 @@ describe('integrityMap', () => {
           lastChecked: new Date().toISOString(),
         },
       };
-      
+
       const summary = generateIntegritySummary(map);
-      
+
       expect(summary.totalRooms).toBe(2);
       expect(summary.healthyRooms).toBe(1);
       expect(summary.roomsWithIssues).toBe(1);
@@ -154,11 +166,11 @@ describe('integrityMap', () => {
     });
   });
 
-  describe('getLowestIntegrityRooms', () => {
-    it('returns rooms sorted by score ascending', () => {
+  describe("getLowestIntegrityRooms", () => {
+    it("returns rooms sorted by score ascending", () => {
       const map = {
-        'good-room': {
-          roomId: 'good-room',
+        "good-room": {
+          roomId: "good-room",
           expected: [],
           found: [],
           missing: [],
@@ -167,10 +179,10 @@ describe('integrityMap', () => {
           duplicates: [],
           unrepairable: [],
           score: 100,
-          lastChecked: '',
+          lastChecked: "",
         },
-        'bad-room': {
-          roomId: 'bad-room',
+        "bad-room": {
+          roomId: "bad-room",
           expected: [],
           found: [],
           missing: [],
@@ -179,10 +191,10 @@ describe('integrityMap', () => {
           duplicates: [],
           unrepairable: [],
           score: 50,
-          lastChecked: '',
+          lastChecked: "",
         },
-        'medium-room': {
-          roomId: 'medium-room',
+        "medium-room": {
+          roomId: "medium-room",
           expected: [],
           found: [],
           missing: [],
@@ -191,35 +203,35 @@ describe('integrityMap', () => {
           duplicates: [],
           unrepairable: [],
           score: 75,
-          lastChecked: '',
+          lastChecked: "",
         },
       };
-      
+
       const lowest = getLowestIntegrityRooms(map, 2);
-      
+
       expect(lowest).toHaveLength(2);
-      expect(lowest[0].roomId).toBe('bad-room');
-      expect(lowest[1].roomId).toBe('medium-room');
+      expect(lowest[0].roomId).toBe("bad-room");
+      expect(lowest[1].roomId).toBe("medium-room");
     });
   });
 
-  describe('getRoomsWithIssues', () => {
-    it('filters rooms with missing files', () => {
+  describe("getRoomsWithIssues", () => {
+    it("filters rooms with missing files", () => {
       const map = {
-        'has-missing': {
-          roomId: 'has-missing',
+        "has-missing": {
+          roomId: "has-missing",
           expected: [],
           found: [],
-          missing: ['file.mp3'],
+          missing: ["file.mp3"],
           orphans: [],
           mismatchedLang: [],
           duplicates: [],
           unrepairable: [],
           score: 80,
-          lastChecked: '',
+          lastChecked: "",
         },
-        'no-missing': {
-          roomId: 'no-missing',
+        "no-missing": {
+          roomId: "no-missing",
           expected: [],
           found: [],
           missing: [],
@@ -228,14 +240,14 @@ describe('integrityMap', () => {
           duplicates: [],
           unrepairable: [],
           score: 100,
-          lastChecked: '',
+          lastChecked: "",
         },
       };
-      
-      const withMissing = getRoomsWithIssues(map, 'missing');
-      
+
+      const withMissing = getRoomsWithIssues(map, "missing");
+
       expect(withMissing).toHaveLength(1);
-      expect(withMissing[0].roomId).toBe('has-missing');
+      expect(withMissing[0].roomId).toBe("has-missing");
     });
   });
 });

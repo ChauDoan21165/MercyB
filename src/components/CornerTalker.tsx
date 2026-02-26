@@ -42,7 +42,9 @@ const toFilename = (input?: string): string | null => {
 export function CornerTalker({ roomId, introAudioEn, introAudioVi }: CornerTalkerProps) {
   const [enabled, setEnabled] = useState(true);
 
-  const { isPlaying, currentTrackName, toggle, stop } = useMusicPlayer();
+  // ✅ Fix: MusicPlayerContextValue does not expose `toggle` / `stop`
+  // Use the methods that exist on the context: `play`, `pause`, `stop`, etc.
+  const { isPlaying, currentTrackName, play, stop } = useMusicPlayer();
 
   const enFile = useMemo(() => toFilename(introAudioEn), [introAudioEn]);
   const viFile = useMemo(() => toFilename(introAudioVi), [introAudioVi]);
@@ -93,8 +95,13 @@ export function CornerTalker({ roomId, introAudioEn, introAudioVi }: CornerTalke
       }
     }
 
-    // Toggle only this track
-    await toggle(primaryFile);
+    // ✅ Fix: implement toggle behavior locally using available APIs
+    if (isPlaying && currentTrackName === primaryFile) {
+      stop();
+      return;
+    }
+
+    await play(primaryFile);
   };
 
   return (

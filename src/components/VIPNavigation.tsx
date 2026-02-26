@@ -2,16 +2,11 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "./ui/button";
 import { useNavigate } from "react-router-dom";
 import { useUserAccess } from "@/hooks/useUserAccess";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "./ui/tooltip";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip";
 import type { VipTierId } from "@/lib/constants/tiers";
 
 interface VIPNavigationProps {
-  currentPage?: VipTierId; // "vip1" | "vip2" | "vip3" | "vip3" | "vip4" | "vip5" | "vip6" | "vip9"
+  currentPage?: VipTierId; // "vip1" | "vip2" | "vip3" | "vip4" | "vip5" | "vip6" | "vip9"
 }
 
 type VipNavItem = {
@@ -28,7 +23,6 @@ export const VIPNavigation = ({ currentPage }: VIPNavigationProps) => {
     canAccessVIP1,
     canAccessVIP2,
     canAccessVIP3,
-    canAccessVIP3II,
     canAccessVIP4,
     canAccessVIP5,
     canAccessVIP6,
@@ -58,15 +52,10 @@ export const VIPNavigation = ({ currentPage }: VIPNavigationProps) => {
     },
   ];
 
-  const currentIndex = currentPage
-    ? pages.findIndex((p) => p.id === currentPage)
-    : -1;
+  const currentIndex = currentPage ? pages.findIndex((p) => p.id === currentPage) : -1;
 
   const prevPage = currentIndex > 0 ? pages[currentIndex - 1] : null;
-  const nextPage =
-    currentIndex >= 0 && currentIndex < pages.length - 1
-      ? pages[currentIndex + 1]
-      : null;
+  const nextPage = currentIndex >= 0 && currentIndex < pages.length - 1 ? pages[currentIndex + 1] : null;
 
   const handleNavigation = (page: VipNavItem | null) => {
     if (!page) return;

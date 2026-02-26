@@ -1,7 +1,15 @@
 import Stripe from "stripe";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
-  apiVersion: "2023-10-16",
+const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+if (!stripeSecretKey) {
+  // Fail fast in server logs; handler will still return 500 if called.
+  // eslint-disable-next-line no-console
+  console.error("[stripe] Missing STRIPE_SECRET_KEY");
+}
+
+const stripe = new Stripe(String(stripeSecretKey || ""), {
+  // ✅ FIX: align with installed Stripe types (your build expects this literal)
+  apiVersion: "2026-01-28.clover",
 });
 
 export default async function handler(req: Request): Promise<Response> {
@@ -18,6 +26,11 @@ export default async function handler(req: Request): Promise<Response> {
 
     if (!user_id || !tier) {
       return new Response("Missing user_id or tier", { status: 400 });
+    }
+
+    const appUrl = process.env.APP_URL;
+    if (!appUrl) {
+      return new Response("Missing APP_URL", { status: 500 });
     }
 
     let priceId: string | undefined;
@@ -41,19 +54,20 @@ export default async function handler(req: Request): Promise<Response> {
           quantity: 1,
         },
       ],
-      success_url: `${process.env.APP_URL}/billing/success`,
-      cancel_url: `${process.env.APP_URL}/billing/cancel`,
+      success_url: `${appUrl}/billing/success`,
+      cancel_url: `${appUrl}/billing/cancel`,
       metadata: {
         user_id,
         tier,
       },
     });
 
-    return new Response(
-      JSON.stringify({ checkout_url: session.url }),
-      { status: 200, headers: { "Content-Type": "application/json" } }
-    );
+    return new Response(JSON.stringify({ checkout_url: session.url }), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
   } catch (err) {
+    // eslint-disable-next-line no-console
     console.error("Stripe checkout error:", err);
     return new Response("Internal Server Error", { status: 500 });
   }

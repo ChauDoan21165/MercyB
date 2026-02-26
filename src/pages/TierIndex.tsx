@@ -3,9 +3,9 @@
 // MB-BLUE-98.9j → MB-BLUE-98.9n — 2026-01-18 (+0700)
 //
 // FIX (98.9k — DELETE VIP3 II from Tier Map UI):
-// - Remove vip3ii from SpineTierId + SPINE_TOP_TO_BOTTOM so the pill disappears.
+// - Remove vip3 from SpineTierId + SPINE_TOP_TO_BOTTOM so the pill disappears.
 // - Keep all tier loading/counting logic stable.
-// - Any core rooms that would have been classified as vip3ii are now treated as "unknown core tier"
+// - Any core rooms that would have been classified as vip3 are now treated as "unknown core tier"
 //   unless upstream mapping converts them to vip3.
 //
 // FIX (98.9k+ — VIP1 RIGHT CARD):
@@ -95,7 +95,7 @@ const SPINE_TOP_TO_BOTTOM: TierNode[] = [
   { id: "vip6", label: "VIP6", hint: "Systems / strategy" },
   { id: "vip5", label: "VIP5", hint: "Writing / deeper practice" },
   { id: "vip4", label: "VIP4", hint: "Climb" },
-  // ✅ removed vip3ii node
+  // ✅ removed vip3 node
   { id: "vip3", label: "VIP3", hint: "Bridge into the spine" },
   { id: "vip2", label: "VIP2", hint: "Strengthen core skills" },
   { id: "vip1", label: "VIP1", hint: "Build habit + foundation + survival basics" },
@@ -196,7 +196,9 @@ function inferSpineTierFromRank(r: TierRoom): SpineTierId | null {
   // clamp 0..9
   const rr = Math.max(0, Math.min(9, Math.trunc(rank)));
   if (rr === 0) return "free";
-  return (`vip${rr}` as SpineTierId) ?? null;
+
+  // ✅ FIX: TS2869 (?? null unreachable)
+  return `vip${rr}` as SpineTierId;
 }
 
 /**

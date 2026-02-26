@@ -10,13 +10,30 @@ export default function AdminRoute({ children }: Props) {
   const location = useLocation();
 
   const loading = !!(access.loading || access.isLoading);
-  const isAdmin = !!(access.isAdmin || access.isHighAdmin || (access.adminLevel ?? 0) >= 1);
+  const isAdmin = !!(
+    access.isAdmin ||
+    access.isHighAdmin ||
+    (access.adminLevel ?? 0) >= 1
+  );
+
+  // Safely derive identity fields without assuming specific properties exist
+  const email =
+    (access as any)?.email ??
+    (access as any)?.user?.email ??
+    undefined;
+
+  const userId =
+    (access as any)?.userId ??
+    (access as any)?.user?.id ??
+    undefined;
 
   if (loading) {
     return (
       <div style={{ padding: 18, fontFamily: "system-ui" }}>
         <div style={{ fontWeight: 900 }}>Loading…</div>
-        <div style={{ opacity: 0.7, marginTop: 8 }}>Checking admin access…</div>
+        <div style={{ opacity: 0.7, marginTop: 8 }}>
+          Checking admin access…
+        </div>
       </div>
     );
   }
@@ -25,13 +42,26 @@ export default function AdminRoute({ children }: Props) {
     return (
       <div style={{ padding: 18, fontFamily: "system-ui" }}>
         <div style={{ fontWeight: 900, fontSize: 18 }}>Admin only</div>
-        <div style={{ opacity: 0.75, marginTop: 8, lineHeight: 1.6 }}>
-          Signed in as: <b>{String(access.email || access.userId || "unknown")}</b>
+        <div
+          style={{
+            opacity: 0.75,
+            marginTop: 8,
+            lineHeight: 1.6,
+          }}
+        >
+          Signed in as: <b>{String(email || userId || "unknown")}</b>
           <br />
           Admin level: <b>{Number(access.adminLevel ?? 0)}</b>
         </div>
 
-        <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
+        <div
+          style={{
+            marginTop: 14,
+            display: "flex",
+            gap: 10,
+            flexWrap: "wrap",
+          }}
+        >
           <Link
             to="/"
             style={{

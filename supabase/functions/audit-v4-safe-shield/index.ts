@@ -217,7 +217,7 @@ const TIER_PRIORITY: Array<{ pattern: string; tier: string; label: string }> = [
   { pattern: "vip6", tier: "vip6", label: "VIP6 / VIP6" },
   { pattern: "vip5", tier: "vip5", label: "VIP5 / VIP5" },
   { pattern: "vip4", tier: "vip4", label: "VIP4 / VIP4" },
-  { pattern: "vip3ii", tier: "vip3ii", label: "VIP3 II / VIP3 II" },
+  { pattern: "vip3", tier: "vip3", label: "VIP3 II / VIP3 II" },
   { pattern: "vip3", tier: "vip3", label: "VIP3 / VIP3" },
   { pattern: "vip2", tier: "vip2", label: "VIP2 / VIP2" },
   { pattern: "vip1", tier: "vip1", label: "VIP1 / VIP1" },
@@ -346,7 +346,7 @@ function inferDomainFromTier(tier: string): string {
   if (t.includes("vip6")) return "Deep Psychology";
   if (t.includes("vip5")) return "Creative Writing";
   if (t.includes("vip4")) return "CareerZ";
-  if (t.includes("vip3ii")) return "VIP English Learning";
+  if (t.includes("vip3")) return "VIP English Learning";
   if (t.includes("vip3")) return "VIP English Learning";
   if (t.includes("vip2")) return "VIP English Learning";
   if (t.includes("vip1")) return "VIP English Learning";

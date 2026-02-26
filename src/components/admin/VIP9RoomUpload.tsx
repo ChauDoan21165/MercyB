@@ -147,12 +147,7 @@ export const VIP9RoomUpload = () => {
       }
 
       toast({
-        title: (
-          <div className="flex items-center gap-2">
-            <CheckCircle2 className="h-5 w-5 text-green-500" />
-            <span>Registered & Synced</span>
-          </div>
-        ),
+        title: "Registered & Synced",
         description: `Room "${roomData.title.en}" successfully registered with ${roomData.entries.length} entries and ${keywords.length} keywords.`,
       });
 

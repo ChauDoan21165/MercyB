@@ -1,6 +1,7 @@
 import { Crown, Sparkles, Zap, Star } from "lucide-react";
-import { UserTier } from "@/lib/accessControl";
 import { cn } from "@/lib/utils";
+
+type UserTier = "demo" | "free" | "vip1" | "vip2" | "vip3" | "vip3_ii" | "vip4" | "vip5" | "vip6";
 
 interface AnimatedTierBadgeProps {
   tier: UserTier;

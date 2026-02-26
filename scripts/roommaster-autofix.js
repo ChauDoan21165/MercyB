@@ -60,7 +60,7 @@ function autoFixRoomSimple(room) {
     'VIP1': 'vip1',
     'VIP2': 'vip2',
     'VIP3': 'vip3',
-    'VIP3II': 'vip3ii',
+    'VIP3': 'vip3',
     'VIP4': 'vip4',
     'VIP5': 'vip5',
     'VIP6': 'vip6',

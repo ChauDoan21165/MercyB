@@ -1,113 +1,164 @@
 // src/hooks/__tests__/useUserAccess.snapshot.test.ts
 //
-// FIX: Vitest hoists vi.mock() to the top of the file.
-// Your `mockGetUser` / `mockFrom` were declared AFTER vi.mock,
-// so the factory ran before initialization → TDZ error.
-// Solution: declare the spies INSIDE the vi.mock factory, then
-// export small helpers to access them in tests.
+// MB-BLUE alignment (AUTH-DRIVEN, NO DUPLICATE TIMELINES)
 //
-// ALSO FIX (MB-BLUE-102.3a — 2026-01-15):
-// - useUserAccess uses useAuth() which normally requires <AuthProvider>.
-// - In hook unit tests, we mock useAuth() so tests don't crash with:
-//   "useAuth must be used inside <AuthProvider>".
+// IMPORTANT UPDATES vs old tests:
+// - useUserAccess NO LONGER calls supabase.auth.getUser() or listens to auth events.
+// - It ONLY reads auth state from useAuth() (AuthProvider).
+// - It queries ONLY: supabase.from("profiles") by email.
+// - Therefore, these tests must mock:
+//   1) "@/providers/AuthProvider"  (user + isLoading)
+//   2) "@/lib/supabaseClient"      (from("profiles")... chain)
+//
+// BUILD-SAFE / HOIST-SAFE FIXES:
+// 1) Vitest hoists vi.mock() to top-of-file. Any variables referenced inside
+//    the mock factory must be declared inside the factory (TDZ-safe).
+// 2) useUserAccess depends on useAuth() context. In hook unit tests, mock
+//    useAuth() so tests don't crash without <AuthProvider>.
+// 3) TypeScript: the real "@/lib/supabaseClient" module does NOT export __mock.
+//    So we must NOT `import { __mock } ...` (TS2305). Instead import as namespace
+//    and cast to `any` to read the test-only export from the mocked module.
+// 4) Snapshots should not include functions (canAccessTier). Snapshot only a
+//    stable subset of fields.
 
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { renderHook, waitFor } from "@testing-library/react";
 import { useUserAccess } from "../useUserAccess";
 import { normalizeTier } from "@/lib/constants/tiers";
+import type { TierId } from "@/lib/constants/tiers";
+import type { UserAccess } from "../useUserAccess";
 
 // ---- AuthProvider mock (hook-safe) ----
-// useUserAccess calls useAuth(); in tests we don't mount <AuthProvider>,
-// so we mock the hook to avoid context errors.
+//
+// We want to vary auth per test, so we expose a test-only setter.
 vi.mock("@/providers/AuthProvider", () => {
+  // HOIST-SAFE: declare inside factory
+  let state: { user: any; isLoading: boolean } = {
+    user: null,
+    isLoading: false,
+  };
+
+  const __setAuth = (next: Partial<typeof state>) => {
+    state = { ...state, ...next };
+  };
+
   return {
     useAuth: () => ({
-      user: { id: "test-user" },
-      session: { user: { id: "test-user" } },
-      loading: false,
-      // present in real provider; not used in these snapshots
+      user: state.user,
+      isLoading: state.isLoading,
+      // extra fns sometimes exist in real provider, not used here
       signOut: vi.fn(),
       signInWithOAuth: vi.fn(),
       signInWithPassword: vi.fn(),
       signUpWithPassword: vi.fn(),
       resetPassword: vi.fn(),
     }),
+    __mock: { __setAuth },
   };
 });
 
-// ---- hoist-safe mocks (defined inside factory) ----
+// ---- Supabase mock (profiles-only) ----
+//
+// useUserAccess calls:
+// supabase.from("profiles").select(...).eq("email", userEmail).maybeSingle()
 vi.mock("@/lib/supabaseClient", () => {
-  const mockGetUser = vi.fn();
-  const mockFrom = vi.fn();
+  // HOIST-SAFE: declare inside factory
+  let nextProfileResult: { data: any; error: any } = { data: null, error: null };
+
+  const __setProfilesResult = (r: { data: any; error: any }) => {
+    nextProfileResult = r;
+  };
+
+  const mockFrom = vi.fn((table: string) => {
+    if (table !== "profiles") {
+      throw new Error(`Unexpected table in useUserAccess test: ${table}`);
+    }
+
+    const chain = {
+      select: vi.fn().mockReturnThis(),
+      eq: vi.fn().mockReturnThis(),
+      maybeSingle: vi.fn().mockImplementation(async () => nextProfileResult),
+    };
+
+    return chain;
+  });
 
   return {
     supabase: {
-      auth: {
-        getUser: mockGetUser,
-      },
       from: mockFrom,
     },
-
-    // Test-only accessors (not used by prod code)
     __mock: {
-      mockGetUser,
       mockFrom,
+      __setProfilesResult,
     },
   };
 });
 
-// Pull the mock fns back out AFTER the mock is registered
-// (safe because import is evaluated after vi.mock hoisting).
-import { __mock } from "@/lib/supabaseClient";
-const { mockGetUser, mockFrom } = __mock as {
-  mockGetUser: ReturnType<typeof vi.fn>;
-  mockFrom: ReturnType<typeof vi.fn>;
+// Pull the mock helpers back out AFTER mocks are registered.
+import * as AuthMod from "@/providers/AuthProvider";
+const { __setAuth } = ((AuthMod as any).__mock ?? {}) as {
+  __setAuth: (next: { user?: any; isLoading?: boolean }) => void;
 };
 
-describe("useUserAccess snapshots - tier access logic", () => {
+import * as SupaMod from "@/lib/supabaseClient";
+const { mockFrom, __setProfilesResult } = ((SupaMod as any).__mock ?? {}) as {
+  mockFrom: ReturnType<typeof vi.fn>;
+  __setProfilesResult: (r: { data: any; error: any }) => void;
+};
+
+// Snapshot only stable, serializable fields (no functions).
+function stableSnapshot(a: UserAccess) {
+  return {
+    isAdmin: a.isAdmin,
+    isHighAdmin: a.isHighAdmin,
+    adminLevel: a.adminLevel,
+
+    isAuthenticated: a.isAuthenticated,
+    isDemoMode: a.isDemoMode,
+
+    tier: a.tier,
+
+    canAccessVIP1: a.canAccessVIP1,
+    canAccessVIP2: a.canAccessVIP2,
+    canAccessVIP3: a.canAccessVIP3,
+    canAccessVIP4: a.canAccessVIP4,
+    canAccessVIP5: a.canAccessVIP5,
+    canAccessVIP6: a.canAccessVIP6,
+    canAccessVIP9: a.canAccessVIP9,
+
+    loading: a.loading,
+    isLoading: a.isLoading,
+  };
+}
+
+describe("useUserAccess snapshots - tier access logic (MB-BLUE)", () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    __setAuth({ user: null, isLoading: false });
+    __setProfilesResult({ data: null, error: null });
   });
 
   it("Free tier user access snapshot", async () => {
-    mockGetUser.mockResolvedValue({
-      data: { user: { id: "user-123" } },
-      error: null,
-    });
+    __setAuth({ user: { email: "free@example.com" }, isLoading: false });
 
-    mockFrom.mockImplementation((table: string) => {
-      if (table === "user_roles") {
-        return {
-          select: vi.fn().mockReturnThis(),
-          eq: vi.fn().mockReturnThis(),
-          maybeSingle: vi.fn().mockResolvedValue({ data: null, error: null }),
-        };
-      }
-      if (table === "user_subscriptions") {
-        return {
-          select: vi.fn().mockReturnThis(),
-          eq: vi.fn().mockReturnThis(),
-          maybeSingle: vi.fn().mockResolvedValue({
-            data: { subscription_tiers: { name: "Free / Miễn phí" } },
-            error: null,
-          }),
-        };
-      }
-      throw new Error(`Unexpected table: ${table}`);
+    __setProfilesResult({
+      data: { email: "free@example.com", tier: "Free / Miễn phí", is_admin: false, admin_level: 0 },
+      error: null,
     });
 
     const { result } = renderHook(() => useUserAccess());
 
     await waitFor(() => {
       expect(result.current.isAuthenticated).toBe(true);
+      expect(result.current.isLoading).toBe(false);
     });
 
-    expect(result.current).toMatchInlineSnapshot(`
+    expect(stableSnapshot(result.current)).toMatchInlineSnapshot(`
       {
+        "adminLevel": 0,
         "canAccessVIP1": false,
         "canAccessVIP2": false,
         "canAccessVIP3": false,
-        "canAccessVIP3II": false,
         "canAccessVIP4": false,
         "canAccessVIP5": false,
         "canAccessVIP6": false,
@@ -115,50 +166,35 @@ describe("useUserAccess snapshots - tier access logic", () => {
         "isAdmin": false,
         "isAuthenticated": true,
         "isDemoMode": false,
+        "isHighAdmin": false,
+        "isLoading": false,
+        "loading": false,
         "tier": "free",
       }
     `);
   });
 
   it("VIP1 tier user access snapshot", async () => {
-    mockGetUser.mockResolvedValue({
-      data: { user: { id: "user-vip1" } },
-      error: null,
-    });
+    __setAuth({ user: { email: "vip1@example.com" }, isLoading: false });
 
-    mockFrom.mockImplementation((table: string) => {
-      if (table === "user_roles") {
-        return {
-          select: vi.fn().mockReturnThis(),
-          eq: vi.fn().mockReturnThis(),
-          maybeSingle: vi.fn().mockResolvedValue({ data: null, error: null }),
-        };
-      }
-      if (table === "user_subscriptions") {
-        return {
-          select: vi.fn().mockReturnThis(),
-          eq: vi.fn().mockReturnThis(),
-          maybeSingle: vi.fn().mockResolvedValue({
-            data: { subscription_tiers: { name: "VIP1 / VIP1" } },
-            error: null,
-          }),
-        };
-      }
-      throw new Error(`Unexpected table: ${table}`);
+    __setProfilesResult({
+      data: { email: "vip1@example.com", tier: "VIP1 / VIP1", is_admin: false, admin_level: 0 },
+      error: null,
     });
 
     const { result } = renderHook(() => useUserAccess());
 
     await waitFor(() => {
       expect(result.current.tier).toBe("vip1");
+      expect(result.current.isLoading).toBe(false);
     });
 
-    expect(result.current).toMatchInlineSnapshot(`
+    expect(stableSnapshot(result.current)).toMatchInlineSnapshot(`
       {
+        "adminLevel": 0,
         "canAccessVIP1": true,
         "canAccessVIP2": false,
         "canAccessVIP3": false,
-        "canAccessVIP3II": false,
         "canAccessVIP4": false,
         "canAccessVIP5": false,
         "canAccessVIP6": false,
@@ -166,50 +202,35 @@ describe("useUserAccess snapshots - tier access logic", () => {
         "isAdmin": false,
         "isAuthenticated": true,
         "isDemoMode": false,
+        "isHighAdmin": false,
+        "isLoading": false,
+        "loading": false,
         "tier": "vip1",
       }
     `);
   });
 
-  it("VIP3II tier user access snapshot", async () => {
-    mockGetUser.mockResolvedValue({
-      data: { user: { id: "user-vip3ii" } },
-      error: null,
-    });
+  it("VIP3 tier user access snapshot", async () => {
+    __setAuth({ user: { email: "vip3@example.com" }, isLoading: false });
 
-    mockFrom.mockImplementation((table: string) => {
-      if (table === "user_roles") {
-        return {
-          select: vi.fn().mockReturnThis(),
-          eq: vi.fn().mockReturnThis(),
-          maybeSingle: vi.fn().mockResolvedValue({ data: null, error: null }),
-        };
-      }
-      if (table === "user_subscriptions") {
-        return {
-          select: vi.fn().mockReturnThis(),
-          eq: vi.fn().mockReturnThis(),
-          maybeSingle: vi.fn().mockResolvedValue({
-            data: { subscription_tiers: { name: "VIP3 II / VIP3 II" } },
-            error: null,
-          }),
-        };
-      }
-      throw new Error(`Unexpected table: ${table}`);
+    __setProfilesResult({
+      data: { email: "vip3@example.com", tier: "VIP3 II / VIP3 II", is_admin: false, admin_level: 0 },
+      error: null,
     });
 
     const { result } = renderHook(() => useUserAccess());
 
     await waitFor(() => {
-      expect(result.current.tier).toBe("vip3ii");
+      expect(result.current.tier).toBe("vip3");
+      expect(result.current.isLoading).toBe(false);
     });
 
-    expect(result.current).toMatchInlineSnapshot(`
+    expect(stableSnapshot(result.current)).toMatchInlineSnapshot(`
       {
+        "adminLevel": 0,
         "canAccessVIP1": true,
         "canAccessVIP2": true,
         "canAccessVIP3": true,
-        "canAccessVIP3II": true,
         "canAccessVIP4": false,
         "canAccessVIP5": false,
         "canAccessVIP6": false,
@@ -217,50 +238,35 @@ describe("useUserAccess snapshots - tier access logic", () => {
         "isAdmin": false,
         "isAuthenticated": true,
         "isDemoMode": false,
-        "tier": "vip3ii",
+        "isHighAdmin": false,
+        "isLoading": false,
+        "loading": false,
+        "tier": "vip3",
       }
     `);
   });
 
   it("VIP6 tier user access snapshot", async () => {
-    mockGetUser.mockResolvedValue({
-      data: { user: { id: "user-vip6" } },
-      error: null,
-    });
+    __setAuth({ user: { email: "vip6@example.com" }, isLoading: false });
 
-    mockFrom.mockImplementation((table: string) => {
-      if (table === "user_roles") {
-        return {
-          select: vi.fn().mockReturnThis(),
-          eq: vi.fn().mockReturnThis(),
-          maybeSingle: vi.fn().mockResolvedValue({ data: null, error: null }),
-        };
-      }
-      if (table === "user_subscriptions") {
-        return {
-          select: vi.fn().mockReturnThis(),
-          eq: vi.fn().mockReturnThis(),
-          maybeSingle: vi.fn().mockResolvedValue({
-            data: { subscription_tiers: { name: "VIP6 / VIP6" } },
-            error: null,
-          }),
-        };
-      }
-      throw new Error(`Unexpected table: ${table}`);
+    __setProfilesResult({
+      data: { email: "vip6@example.com", tier: "VIP6 / VIP6", is_admin: false, admin_level: 0 },
+      error: null,
     });
 
     const { result } = renderHook(() => useUserAccess());
 
     await waitFor(() => {
       expect(result.current.tier).toBe("vip6");
+      expect(result.current.isLoading).toBe(false);
     });
 
-    expect(result.current).toMatchInlineSnapshot(`
+    expect(stableSnapshot(result.current)).toMatchInlineSnapshot(`
       {
+        "adminLevel": 0,
         "canAccessVIP1": true,
         "canAccessVIP2": true,
         "canAccessVIP3": true,
-        "canAccessVIP3II": true,
         "canAccessVIP4": true,
         "canAccessVIP5": true,
         "canAccessVIP6": true,
@@ -268,53 +274,40 @@ describe("useUserAccess snapshots - tier access logic", () => {
         "isAdmin": false,
         "isAuthenticated": true,
         "isDemoMode": false,
+        "isHighAdmin": false,
+        "isLoading": false,
+        "loading": false,
         "tier": "vip6",
       }
     `);
   });
 
-  it("Admin user access snapshot (full VIP9 access)", async () => {
-    mockGetUser.mockResolvedValue({
-      data: { user: { id: "admin-user" } },
-      error: null,
-    });
+  it("Admin user access snapshot (high admin => vip9)", async () => {
+    __setAuth({ user: { email: "admin@example.com" }, isLoading: false });
 
-    mockFrom.mockImplementation((table: string) => {
-      if (table === "user_roles") {
-        return {
-          select: vi.fn().mockReturnThis(),
-          eq: vi.fn().mockReturnThis(),
-          maybeSingle: vi.fn().mockResolvedValue({
-            data: { role: "admin" },
-            error: null,
-          }),
-        };
-      }
-      if (table === "user_subscriptions") {
-        return {
-          select: vi.fn().mockReturnThis(),
-          eq: vi.fn().mockReturnThis(),
-          maybeSingle: vi.fn().mockResolvedValue({
-            data: { subscription_tiers: { name: "Free / Miễn phí" } },
-            error: null,
-          }),
-        };
-      }
-      throw new Error(`Unexpected table: ${table}`);
+    // MB-BLUE: high admin is determined by admin_level >= 9
+    __setProfilesResult({
+      data: { email: "admin@example.com", tier: "Free / Miễn phí", is_admin: true, admin_level: 9 },
+      error: null,
     });
 
     const { result } = renderHook(() => useUserAccess());
 
     await waitFor(() => {
-      expect(result.current.isAdmin).toBe(true);
+      expect(result.current.isHighAdmin).toBe(true);
+      expect(result.current.tier).toBe("vip9");
+      expect(result.current.isLoading).toBe(false);
     });
 
-    expect(result.current).toMatchInlineSnapshot(`
+    // High admin: all tiers accessible
+    expect(result.current.canAccessTier("vip9")).toBe(true);
+
+    expect(stableSnapshot(result.current)).toMatchInlineSnapshot(`
       {
+        "adminLevel": 9,
         "canAccessVIP1": true,
         "canAccessVIP2": true,
         "canAccessVIP3": true,
-        "canAccessVIP3II": true,
         "canAccessVIP4": true,
         "canAccessVIP5": true,
         "canAccessVIP6": true,
@@ -322,29 +315,33 @@ describe("useUserAccess snapshots - tier access logic", () => {
         "isAdmin": true,
         "isAuthenticated": true,
         "isDemoMode": false,
+        "isHighAdmin": true,
+        "isLoading": false,
+        "loading": false,
         "tier": "vip9",
       }
     `);
   });
 
   it("Unauthenticated user access snapshot (demo mode)", async () => {
-    mockGetUser.mockResolvedValue({
-      data: { user: null },
-      error: null,
-    });
+    __setAuth({ user: null, isLoading: false });
 
     const { result } = renderHook(() => useUserAccess());
 
     await waitFor(() => {
       expect(result.current.isDemoMode).toBe(true);
+      expect(result.current.isAuthenticated).toBe(false);
     });
 
-    expect(result.current).toMatchInlineSnapshot(`
+    // In demo mode, the hook should not query profiles.
+    expect(mockFrom).not.toHaveBeenCalled();
+
+    expect(stableSnapshot(result.current)).toMatchInlineSnapshot(`
       {
+        "adminLevel": 0,
         "canAccessVIP1": false,
         "canAccessVIP2": false,
         "canAccessVIP3": false,
-        "canAccessVIP3II": false,
         "canAccessVIP4": false,
         "canAccessVIP5": false,
         "canAccessVIP6": false,
@@ -352,9 +349,48 @@ describe("useUserAccess snapshots - tier access logic", () => {
         "isAdmin": false,
         "isAuthenticated": false,
         "isDemoMode": true,
+        "isHighAdmin": false,
+        "isLoading": false,
+        "loading": false,
         "tier": "free",
       }
     `);
+  });
+
+  it("Auth loading: stays loading until auth resolves", async () => {
+    __setAuth({ user: null, isLoading: true });
+
+    const { result, rerender } = renderHook(() => useUserAccess());
+
+    // Immediately: loading state
+    expect(result.current.isLoading).toBe(true);
+    expect(result.current.loading).toBe(true);
+    expect(result.current.isAuthenticated).toBe(false);
+
+    // Resolve auth to unauthenticated
+    __setAuth({ user: null, isLoading: false });
+    rerender();
+
+    await waitFor(() => {
+      expect(result.current.isLoading).toBe(false);
+      expect(result.current.isDemoMode).toBe(true);
+    });
+  });
+
+  it("Missing profiles row: falls back to FREE (no silent grant)", async () => {
+    __setAuth({ user: { email: "missing@example.com" }, isLoading: false });
+
+    __setProfilesResult({ data: null, error: null });
+
+    const { result } = renderHook(() => useUserAccess());
+
+    await waitFor(() => {
+      expect(result.current.isAuthenticated).toBe(true);
+      expect(result.current.isLoading).toBe(false);
+    });
+
+    expect(result.current.tier).toBe("free");
+    expect(result.current.canAccessVIP1).toBe(false);
   });
 });
 
@@ -364,14 +400,14 @@ describe("normalizeTier canon tests", () => {
     expect(normalizeTier("VIP1 / VIP1")).toBe("vip1");
     expect(normalizeTier("VIP2 / VIP2")).toBe("vip2");
     expect(normalizeTier("VIP3 / VIP3")).toBe("vip3");
-    expect(normalizeTier("VIP3 II / VIP3 II")).toBe("vip3ii");
+    expect(normalizeTier("VIP3 II / VIP3 II")).toBe("vip3");
     expect(normalizeTier("VIP4 / VIP4")).toBe("vip4");
     expect(normalizeTier("VIP5 / VIP5")).toBe("vip5");
     expect(normalizeTier("VIP6 / VIP6")).toBe("vip6");
     expect(normalizeTier("VIP9 / Cấp VIP9")).toBe("vip9");
-    expect(normalizeTier("Kids Level 1 / Trẻ em cấp 1")).toBe("kids_1");
-    expect(normalizeTier("Kids Level 2 / Trẻ em cấp 2")).toBe("kids_2");
-    expect(normalizeTier("Kids Level 3 / Trẻ em cấp 3")).toBe("kids_3");
+    expect(normalizeTier("Kids Level 1 / Trẻ em cấp 1")).toBe("kids_1" as TierId);
+    expect(normalizeTier("Kids Level 2 / Trẻ em cấp 2")).toBe("kids_2" as TierId);
+    expect(normalizeTier("Kids Level 3 / Trẻ em cấp 3")).toBe("kids_3" as TierId);
   });
 
   it("handles null/undefined as free tier", () => {

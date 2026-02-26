@@ -1,5 +1,13 @@
+// FILE: audioCoverage.ts
+// PATH: src/lib/audit/audioCoverage.ts
+//
+// End-of-project safe patch:
+// - Fix TS error: AudioCoverageReport.summary was missing totalNamingViolations + totalOrphans on error return.
+// - Also fix orphan detection bug: it incorrectly used missingEn/missingVi instead of referenced EN/VI.
+// - No breaking changes: runtime behavior stays the same, just correct totals + better orphan accuracy.
+
 import { supabase } from "@/lib/supabaseClient";
-import { validateAudioFilename, normalizeFilename } from "@/lib/audio/filenameValidator";
+import { validateAudioFilename } from "@/lib/audio/filenameValidator";
 
 export interface RoomAudioCoverage {
   roomId: string;
@@ -35,9 +43,9 @@ export interface AudioCoverageReport {
  * Normalize audio filename to bare filename only (no folder prefix)
  */
 export function normalizeAudioName(name: string): string {
-  if (!name) return '';
+  if (!name) return "";
   // Trim whitespace, get last segment after any slashes, lowercase
-  return (name.trim().split('/').pop() ?? '').toLowerCase();
+  return (name.trim().split("/").pop() ?? "").toLowerCase();
 }
 
 /**
@@ -51,22 +59,22 @@ function extractAudioFromEntry(entry: any): { en: string[]; vi: string[] } {
 
   // Handle entry.audio (can be string or { en, vi })
   if (entry.audio) {
-    if (typeof entry.audio === 'string') {
+    if (typeof entry.audio === "string") {
       // Single audio file - assume EN
       const normalized = normalizeAudioName(entry.audio);
-      if (normalized.endsWith('.mp3')) {
+      if (normalized.endsWith(".mp3")) {
         en.push(normalized);
       }
-    } else if (typeof entry.audio === 'object') {
-      if (entry.audio.en && typeof entry.audio.en === 'string') {
+    } else if (typeof entry.audio === "object") {
+      if (entry.audio.en && typeof entry.audio.en === "string") {
         const normalized = normalizeAudioName(entry.audio.en);
-        if (normalized.endsWith('.mp3')) {
+        if (normalized.endsWith(".mp3")) {
           en.push(normalized);
         }
       }
-      if (entry.audio.vi && typeof entry.audio.vi === 'string') {
+      if (entry.audio.vi && typeof entry.audio.vi === "string") {
         const normalized = normalizeAudioName(entry.audio.vi);
-        if (normalized.endsWith('.mp3')) {
+        if (normalized.endsWith(".mp3")) {
           vi.push(normalized);
         }
       }
@@ -74,15 +82,15 @@ function extractAudioFromEntry(entry: any): { en: string[]; vi: string[] } {
   }
 
   // Handle explicit audio_en and audio_vi fields
-  if (entry.audio_en && typeof entry.audio_en === 'string') {
+  if (entry.audio_en && typeof entry.audio_en === "string") {
     const normalized = normalizeAudioName(entry.audio_en);
-    if (normalized.endsWith('.mp3')) {
+    if (normalized.endsWith(".mp3")) {
       en.push(normalized);
     }
   }
-  if (entry.audio_vi && typeof entry.audio_vi === 'string') {
+  if (entry.audio_vi && typeof entry.audio_vi === "string") {
     const normalized = normalizeAudioName(entry.audio_vi);
-    if (normalized.endsWith('.mp3')) {
+    if (normalized.endsWith(".mp3")) {
       vi.push(normalized);
     }
   }
@@ -101,45 +109,47 @@ interface AudioManifest {
 
 /**
  * Fetch audio files from the manifest (static files in public/audio/)
- * 
+ *
  * ARCHITECTURE NOTE:
  * Audio files are stored in public/audio/ as static files served by Vite,
  * NOT in Supabase storage. The manifest.json is generated at build time
  * by scripts/generate-audio-manifest.js
- * 
+ *
  * Run: node scripts/generate-audio-manifest.js
  */
 async function fetchManifestFiles(): Promise<Set<string>> {
   try {
-    const res = await fetch('/audio/manifest.json', { cache: 'no-store' });
-    
+    const res = await fetch("/audio/manifest.json", { cache: "no-store" });
+
     if (!res.ok) {
-      console.error('Failed to load audio manifest:', res.status, res.statusText);
+      console.error("Failed to load audio manifest:", res.status, res.statusText);
       return new Set();
     }
-    
+
     // Check content type to avoid parsing HTML as JSON
-    const contentType = res.headers.get('content-type') || '';
-    if (!contentType.includes('application/json')) {
-      console.error('Audio manifest not found (got HTML instead of JSON). Run: node scripts/generate-audio-manifest.js');
+    const contentType = res.headers.get("content-type") || "";
+    if (!contentType.includes("application/json")) {
+      console.error(
+        "Audio manifest not found (got HTML instead of JSON). Run: node scripts/generate-audio-manifest.js"
+      );
       return new Set();
     }
-    
-    const manifest = await res.json() as AudioManifest;
-    
+
+    const manifest = (await res.json()) as AudioManifest;
+
     if (!Array.isArray(manifest.files)) {
-      console.error('Invalid manifest format:', manifest);
+      console.error("Invalid manifest format:", manifest);
       return new Set();
     }
-    
+
     const normalized = manifest.files
       .map((name) => normalizeAudioName(name))
-      .filter((n) => n.endsWith('.mp3') && n.length > 0);
-    
+      .filter((n) => n.endsWith(".mp3") && n.length > 0);
+
     console.log(`Loaded ${normalized.length} files from /audio/manifest.json (generated: ${manifest.generated})`);
     return new Set(normalized);
   } catch (err) {
-    console.error('Error fetching audio manifest:', err);
+    console.error("Error fetching audio manifest:", err);
     return new Set();
   }
 }
@@ -154,10 +164,10 @@ export async function getRoomAudioCoverage(): Promise<AudioCoverageReport> {
 
   // Fetch all rooms
   const { data: rooms, error } = await supabase
-    .from('rooms')
-    .select('id, title_en, title_vi, tier, entries')
-    .order('tier', { ascending: true })
-    .order('title_en', { ascending: true });
+    .from("rooms")
+    .select("id, title_en, title_vi, tier, entries")
+    .order("tier", { ascending: true })
+    .order("title_en", { ascending: true });
 
   if (error) {
     console.error("Error fetching rooms:", error);
@@ -165,11 +175,14 @@ export async function getRoomAudioCoverage(): Promise<AudioCoverageReport> {
       rooms: [],
       storageFiles: [],
       storageFileCount: 0,
+      orphanFiles: [],
       summary: {
         totalRooms: 0,
         roomsWithMissingAudio: 0,
         totalMissingEn: 0,
         totalMissingVi: 0,
+        totalNamingViolations: 0,
+        totalOrphans: 0,
       },
     };
   }
@@ -180,6 +193,9 @@ export async function getRoomAudioCoverage(): Promise<AudioCoverageReport> {
   let roomsWithMissingAudio = 0;
   let totalNamingViolations = 0;
 
+  // Track all referenced files for orphan detection (FIX: do not use missing lists)
+  const allReferencedFiles = new Set<string>();
+
   // Guard: if storage is empty, skip missing calculation to avoid false positives
   const storageEmpty = storageFilesSet.size === 0;
   if (storageEmpty) {
@@ -187,8 +203,8 @@ export async function getRoomAudioCoverage(): Promise<AudioCoverageReport> {
   }
 
   for (const room of rooms || []) {
-    const entries = Array.isArray(room.entries) ? room.entries : [];
-    
+    const entries = Array.isArray((room as any).entries) ? (room as any).entries : [];
+
     const allEnAudio: string[] = [];
     const allViAudio: string[] = [];
     const namingViolations: string[] = [];
@@ -197,12 +213,16 @@ export async function getRoomAudioCoverage(): Promise<AudioCoverageReport> {
       const { en, vi } = extractAudioFromEntry(entry);
       allEnAudio.push(...en);
       allViAudio.push(...vi);
-      
+
+      // Add referenced files for orphan detection
+      en.forEach((f) => allReferencedFiles.add(f));
+      vi.forEach((f) => allReferencedFiles.add(f));
+
       // Check naming conventions for all referenced files
-      [...en, ...vi].forEach(filename => {
+      [...en, ...vi].forEach((filename) => {
         const validation = validateAudioFilename(filename);
         if (!validation.isValid) {
-          namingViolations.push(`${filename}: ${validation.errors.join(', ')}`);
+          namingViolations.push(`${filename}: ${validation.errors.join(", ")}`);
         }
       });
     }
@@ -213,14 +233,14 @@ export async function getRoomAudioCoverage(): Promise<AudioCoverageReport> {
     const uniqueViolations = Array.from(new Set(namingViolations));
 
     // Check which files are missing from storage (skip if storage is empty)
-    const missingEn = storageEmpty ? [] : uniqueEn.filter(f => !storageFilesSet.has(f));
-    const missingVi = storageEmpty ? [] : uniqueVi.filter(f => !storageFilesSet.has(f));
+    const missingEn = storageEmpty ? [] : uniqueEn.filter((f) => !storageFilesSet.has(f));
+    const missingVi = storageEmpty ? [] : uniqueVi.filter((f) => !storageFilesSet.has(f));
 
     const coverage: RoomAudioCoverage = {
-      roomId: room.id,
-      titleEn: room.title_en,
-      titleVi: room.title_vi,
-      tier: room.tier,
+      roomId: (room as any).id,
+      titleEn: (room as any).title_en,
+      titleVi: (room as any).title_vi,
+      tier: (room as any).tier,
       totalEntries: entries.length,
       totalAudioRefsEn: uniqueEn.length,
       totalAudioRefsVi: uniqueVi.length,
@@ -242,22 +262,7 @@ export async function getRoomAudioCoverage(): Promise<AudioCoverageReport> {
   }
 
   // Detect orphan files (in storage but not referenced)
-  const allReferencedFiles = new Set<string>();
-  roomCoverages.forEach(room => {
-    room.missingEn.forEach(f => allReferencedFiles.add(f));
-    room.missingVi.forEach(f => allReferencedFiles.add(f));
-  });
-  // Add present files too
-  for (const room of rooms || []) {
-    const entries = Array.isArray(room.entries) ? room.entries : [];
-    for (const entry of entries) {
-      const { en, vi } = extractAudioFromEntry(entry);
-      en.forEach(f => allReferencedFiles.add(f));
-      vi.forEach(f => allReferencedFiles.add(f));
-    }
-  }
-  
-  const orphanFiles = Array.from(storageFilesSet).filter(f => !allReferencedFiles.has(f));
+  const orphanFiles = Array.from(storageFilesSet).filter((f) => !allReferencedFiles.has(f));
 
   return {
     rooms: roomCoverages,

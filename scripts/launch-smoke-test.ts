@@ -21,7 +21,7 @@ const ROUTES: RouteCheck[] = [
   { path: "/vip/vip1", label: "VIP1 Grid" },
   { path: "/vip/vip2", label: "VIP2 Grid" },
   { path: "/vip/vip3", label: "VIP3 Grid" },
-  { path: "/vip/vip3ii", label: "VIP3 II Grid" },
+  { path: "/vip/vip3", label: "VIP3 II Grid" },
   { path: "/vip/vip4", label: "VIP4 Grid" },
   { path: "/vip/vip5", label: "VIP5 Grid" },
   { path: "/vip/vip6", label: "VIP6 Grid" },

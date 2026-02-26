@@ -6,7 +6,7 @@ const TIERS = {
   VIP1: "VIP1 / VIP1",
   VIP2: "VIP2 / VIP2",
   VIP3: "VIP3 / VIP3",
-  VIP3II: "VIP3 II / VIP3 II",
+  VIP3: "VIP3 II / VIP3 II",
   VIP4: "VIP4 / VIP4",
   VIP5: "VIP5 / VIP5",
   VIP6: "VIP6 / VIP6",

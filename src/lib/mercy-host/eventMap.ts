@@ -1,71 +1,66 @@
+// src/lib/mercy-host/eventMap.ts
 /**
  * Mercy Host Event Map
- * 
+ *
  * Maps engine events to animations and behaviors.
  */
 
-export type MercyEventType = 
-  | 'room_enter'
-  | 'room_exit'
-  | 'entry_click'
-  | 'entry_complete'
-  | 'color_toggle'
-  | 'tier_unlock'
-  | 'vip_upgrade'
-  | 'achievement'
-  | 'first_visit'
-  | 'return_inactive'
-  | 'scroll_reflection'
-  | 'favorite_add'
-  | 'audio_play'
-  | 'audio_complete';
+export type MercyEventType =
+  | "room_enter"
+  | "room_exit"
+  | "entry_click"
+  | "entry_complete"
+  | "color_toggle"
+  | "tier_unlock"
+  | "vip_upgrade"
+  | "achievement"
+  | "first_visit"
+  | "return_inactive"
+  | "scroll_reflection"
+  | "favorite_add"
+  | "audio_play"
+  | "audio_complete";
 
 /**
  * Array of all Mercy event types for validation
  */
 export const MERCY_EVENTS: MercyEventType[] = [
-  'room_enter',
-  'room_exit',
-  'entry_click',
-  'entry_complete',
-  'color_toggle',
-  'tier_unlock',
-  'vip_upgrade',
-  'achievement',
-  'first_visit',
-  'return_inactive',
-  'scroll_reflection',
-  'favorite_add',
-  'audio_play',
-  'audio_complete'
+  "room_enter",
+  "room_exit",
+  "entry_click",
+  "entry_complete",
+  "color_toggle",
+  "tier_unlock",
+  "vip_upgrade",
+  "achievement",
+  "first_visit",
+  "return_inactive",
+  "scroll_reflection",
+  "favorite_add",
+  "audio_play",
+  "audio_complete",
 ];
 
-export type MercyAnimationType = 
-  | 'halo'
-  | 'shimmer'
-  | 'spark'
-  | 'ripple'
-  | 'glow'
-  | null;
+export type MercyAnimationType = "halo" | "shimmer" | "spark" | "ripple" | "glow" | null;
 
 /**
  * Event to Animation mapping
  */
 const EVENT_ANIMATION_MAP: Record<MercyEventType, MercyAnimationType> = {
-  room_enter: 'halo',
+  room_enter: "halo",
   room_exit: null,
-  entry_click: 'spark',
-  entry_complete: 'shimmer',
-  color_toggle: 'glow',
-  tier_unlock: 'spark',
-  vip_upgrade: 'shimmer',
-  achievement: 'spark',
-  first_visit: 'glow',
-  return_inactive: 'ripple',
-  scroll_reflection: 'halo',
-  favorite_add: 'spark',
-  audio_play: 'halo',
-  audio_complete: 'shimmer'
+  entry_click: "spark",
+  entry_complete: "shimmer",
+  color_toggle: "glow",
+  tier_unlock: "spark",
+  vip_upgrade: "shimmer",
+  achievement: "spark",
+  first_visit: "glow",
+  return_inactive: "ripple",
+  scroll_reflection: "halo",
+  favorite_add: "spark",
+  audio_play: "halo",
+  audio_complete: "shimmer",
 };
 
 /**
@@ -75,10 +70,11 @@ export function getAnimationForEvent(event: MercyEventType | string): MercyAnima
   if (event in EVENT_ANIMATION_MAP) {
     return EVENT_ANIMATION_MAP[event as MercyEventType];
   }
-  
+
   // Log unrecognized event
+  // eslint-disable-next-line no-console
   console.warn(`[MercyEventMap] Unrecognized event: ${event}, using fallback animation`);
-  return 'halo'; // Fallback animation
+  return "halo";
 }
 
 /**
@@ -98,16 +94,13 @@ const EVENT_PRIORITY: Record<MercyEventType, number> = {
   audio_play: 1,
   scroll_reflection: 1,
   favorite_add: 1,
-  room_exit: 0
+  room_exit: 0,
 };
 
 /**
  * Get higher priority event
  */
-export function getHigherPriorityEvent(
-  eventA: MercyEventType,
-  eventB: MercyEventType
-): MercyEventType {
+export function getHigherPriorityEvent(eventA: MercyEventType, eventB: MercyEventType): MercyEventType {
   return EVENT_PRIORITY[eventA] >= EVENT_PRIORITY[eventB] ? eventA : eventB;
 }
 
@@ -116,41 +109,61 @@ export function getHigherPriorityEvent(
  */
 export function shouldTriggerVoice(event: MercyEventType): boolean {
   return [
-    'room_enter',
-    'entry_complete',
-    'color_toggle',
-    'tier_unlock',
-    'vip_upgrade',
-    'return_inactive'
+    "room_enter",
+    "entry_complete",
+    "color_toggle",
+    "tier_unlock",
+    "vip_upgrade",
+    "return_inactive",
   ].includes(event);
 }
 
 /**
- * Get voice trigger type for event (with fallback for unrecognized)
+ * Get voice trigger type for event
+ *
+ * IMPORTANT:
+ * - Non-voice events MUST return null (tests expect entry_click → null).
+ * - Unknown/unrecognized events should return null (not encouragement),
+ *   otherwise Mercy speaks unexpectedly and breaks integration tests.
  */
 export function getVoiceTriggerForEvent(
   event: MercyEventType | string
-): 'room_enter' | 'entry_complete' | 'color_toggle' | 'return_inactive' | 'encouragement' | null {
+): "room_enter" | "entry_complete" | "color_toggle" | "return_inactive" | "encouragement" | null {
   switch (event) {
-    case 'room_enter':
-    case 'first_visit':
-      return 'room_enter';
-    case 'entry_complete':
-    case 'audio_complete':
-      return 'entry_complete';
-    case 'color_toggle':
-      return 'color_toggle';
-    case 'return_inactive':
-      return 'return_inactive';
-    case 'tier_unlock':
-    case 'vip_upgrade':
-    case 'achievement':
-      return 'encouragement';
-    default:
-      // Log unrecognized event
-      if (typeof event === 'string' && !Object.keys(EVENT_ANIMATION_MAP).includes(event)) {
-        console.warn(`[MercyEventMap] Unrecognized event for voice: ${event}, using comfort fallback`);
+    case "room_enter":
+    case "first_visit":
+      return "room_enter";
+
+    case "entry_complete":
+    case "audio_complete":
+      return "entry_complete";
+
+    case "color_toggle":
+      return "color_toggle";
+
+    case "return_inactive":
+      return "return_inactive";
+
+    case "tier_unlock":
+    case "vip_upgrade":
+    case "achievement":
+      return "encouragement";
+
+    // Explicit non-voice events
+    case "entry_click":
+    case "room_exit":
+    case "scroll_reflection":
+    case "favorite_add":
+    case "audio_play":
+      return null;
+
+    default: {
+      // Only warn for truly unknown strings
+      if (typeof event === "string" && !(event in EVENT_ANIMATION_MAP)) {
+        // eslint-disable-next-line no-console
+        console.warn(`[MercyEventMap] Unrecognized event for voice: ${event} → null`);
       }
-      return 'encouragement'; // Fallback to comfort/encouragement
+      return null;
+    }
   }
 }

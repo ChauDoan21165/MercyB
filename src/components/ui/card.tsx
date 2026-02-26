@@ -1,43 +1,80 @@
-import * as React from "react";
+// FILE: Card.tsx
+// PATH: src/components/ui/Card.tsx
+//
+// Merge notes:
+// - Keeps the shadcn-style component API: Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter
+// - React Native implementation (View/Text), not web div/className.
+// - Uses theme tokens for consistent Mercy Blade look.
 
-import { cn } from "@/lib/utils";
+import React from "react";
+import { View, Text, StyleSheet, ViewProps, TextProps } from "react-native";
+import { theme } from "../../core/ui/theme";
 
-const Card = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("rounded-lg border bg-card text-card-foreground shadow-sm", className)} {...props} />
+type BoxProps = ViewProps & { children?: React.ReactNode };
+type TxtProps = TextProps & { children?: React.ReactNode };
+
+export const Card = React.forwardRef<View, BoxProps>(({ style, ...props }, ref) => (
+  <View ref={ref} style={[styles.card, style]} {...props} />
 ));
 Card.displayName = "Card";
 
-const CardHeader = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
-  ({ className, ...props }, ref) => (
-    <div ref={ref} className={cn("flex flex-col space-y-1.5 p-6", className)} {...props} />
-  ),
-);
+export const CardHeader = React.forwardRef<View, BoxProps>(({ style, ...props }, ref) => (
+  <View ref={ref} style={[styles.header, style]} {...props} />
+));
 CardHeader.displayName = "CardHeader";
 
-const CardTitle = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLHeadingElement>>(
-  ({ className, ...props }, ref) => (
-    <h3 ref={ref} className={cn("text-2xl font-semibold leading-none tracking-tight", className)} {...props} />
-  ),
-);
+export const CardTitle = React.forwardRef<Text, TxtProps>(({ style, ...props }, ref) => (
+  <Text ref={ref} style={[styles.title, style]} {...props} />
+));
 CardTitle.displayName = "CardTitle";
 
-const CardDescription = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLParagraphElement>>(
-  ({ className, ...props }, ref) => (
-    <p ref={ref} className={cn("text-sm text-muted-foreground", className)} {...props} />
-  ),
-);
+export const CardDescription = React.forwardRef<Text, TxtProps>(({ style, ...props }, ref) => (
+  <Text ref={ref} style={[styles.description, style]} {...props} />
+));
 CardDescription.displayName = "CardDescription";
 
-const CardContent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
-  ({ className, ...props }, ref) => <div ref={ref} className={cn("p-6 pt-0", className)} {...props} />,
-);
+export const CardContent = React.forwardRef<View, BoxProps>(({ style, ...props }, ref) => (
+  <View ref={ref} style={[styles.content, style]} {...props} />
+));
 CardContent.displayName = "CardContent";
 
-const CardFooter = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
-  ({ className, ...props }, ref) => (
-    <div ref={ref} className={cn("flex items-center p-6 pt-0", className)} {...props} />
-  ),
-);
+export const CardFooter = React.forwardRef<View, BoxProps>(({ style, ...props }, ref) => (
+  <View ref={ref} style={[styles.footer, style]} {...props} />
+));
 CardFooter.displayName = "CardFooter";
 
-export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent };
+const styles = StyleSheet.create({
+  card: {
+    backgroundColor: theme.color.card,
+    borderColor: theme.color.border,
+    borderWidth: 1,
+    borderRadius: theme.radius.lg,
+    padding: theme.space.md,
+    ...theme.shadow.card,
+  },
+  header: {
+    paddingBottom: theme.space.sm,
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: "800",
+    color: theme.color.text,
+    letterSpacing: 0.2,
+  },
+  description: {
+    marginTop: 6,
+    fontSize: 13,
+    lineHeight: 18,
+    color: theme.color.muted,
+  },
+  content: {
+    paddingTop: theme.space.sm,
+  },
+  footer: {
+    paddingTop: theme.space.sm,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    gap: theme.space.sm,
+  },
+});

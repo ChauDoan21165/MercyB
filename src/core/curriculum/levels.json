@@ -1,0 +1,13 @@
+{
+  "levels": [
+    { "level": 1, "name": "Foundation Clarity", "unlock": "start" },
+    { "level": 2, "name": "Structured Expression", "unlock": "gate_from_1" },
+    { "level": 3, "name": "Speed & Control", "unlock": "gate_from_2" },
+    { "level": 4, "name": "Argument & Precision", "unlock": "gate_from_3" },
+    { "level": 5, "name": "Professional Fluency", "unlock": "gate_from_4" },
+    { "level": 6, "name": "Advanced Range", "unlock": "gate_from_5" },
+    { "level": 7, "name": "Elite Writing & Speech", "unlock": "gate_from_6" },
+    { "level": 8, "name": "C2 Composure", "unlock": "gate_from_7" },
+    { "level": 9, "name": "Mastery Protocol", "unlock": "gate_from_8" }
+  ]
+}

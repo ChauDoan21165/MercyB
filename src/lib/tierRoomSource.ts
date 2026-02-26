@@ -132,7 +132,7 @@ export function strictTierFromIdOrPath(idOrPath: string): TierId | "unknown" {
   if (/(^|[_-])vip6($|[_-])/.test(idLower)) return "vip6";
   if (/(^|[_-])vip5($|[_-])/.test(idLower)) return "vip5";
   if (/(^|[_-])vip4($|[_-])/.test(idLower)) return "vip4";
-  if (/(^|[_-])vip3ii($|[_-])/.test(idLower)) return "vip3"; // legacy vip3ii -> vip3
+  if (/(^|[_-])vip3($|[_-])/.test(idLower)) return "vip3"; // legacy vip3 -> vip3
   if (/(^|[_-])vip3($|[_-])/.test(idLower)) return "vip3";
   if (/(^|[_-])vip2($|[_-])/.test(idLower)) return "vip2";
   if (/(^|[_-])vip1($|[_-])/.test(idLower)) return "vip1";

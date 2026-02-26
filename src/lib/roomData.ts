@@ -27,7 +27,7 @@ export interface RoomInfo {
     | "vip1"
     | "vip2"
     | "vip3"
-    | "vip3ii"
+    | "vip3"
     | "vip4"
     | "vip5"
     | "vip6"
@@ -45,7 +45,7 @@ const STRICT_TIER_IDS = new Set<RoomInfo["tier"]>([
   "vip1",
   "vip2",
   "vip3",
-  "vip3ii",
+  "vip3",
   "vip4",
   "vip5",
   "vip6",

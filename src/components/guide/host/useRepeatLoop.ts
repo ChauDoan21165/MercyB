@@ -4,16 +4,25 @@
 
 import { useCallback, useMemo, useState } from "react";
 
-export type RepeatStep = "idle" | "listen" | "your_turn";
+export type RepeatStep = "idle" | "listen" | "play" | "your_turn" | "compare" | "done";
 
 export type RepeatTarget = {
+  // content
   text_en?: string;
   text_vi?: string;
   audio_url?: string;
+
+  // identifiers (snake_case is canonical)
   room_id?: string;
+  entry_id?: string;
+  keyword?: string;
+
+  // aliases (camelCase) — MercyAIHost uses these in a few places
+  roomId?: string;
+  entryId?: string;
 };
 
-export function useRepeatLoop(_args?: any) {
+export function useRepeatLoop(_args?: unknown) {
   const [repeatTarget, setRepeatTarget] = useState<RepeatTarget | null>(null);
   const [repeatStep, setRepeatStep] = useState<RepeatStep>("idle");
   const [repeatCount, setRepeatCount] = useState(0);
@@ -26,6 +35,7 @@ export function useRepeatLoop(_args?: any) {
 
   const startRepeat = useCallback((target: RepeatTarget) => {
     setRepeatTarget(target || null);
+    // MercyAIHost expects a "listen" phase before play/your_turn
     setRepeatStep("listen");
     setRepeatCount(0);
   }, []);
@@ -41,9 +51,11 @@ export function useRepeatLoop(_args?: any) {
       repeatTarget,
       repeatStep,
       repeatCount,
+
       setRepeatTarget,
       setRepeatStep,
       setRepeatCount,
+
       clearRepeat,
       startRepeat,
       ackRepeat,

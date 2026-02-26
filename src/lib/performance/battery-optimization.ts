@@ -3,7 +3,7 @@
  * Reduces CPU usage and battery drain
  */
 
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback } from "react";
 
 /**
  * Detect if user is on low battery
@@ -14,24 +14,38 @@ export function useBatteryStatus() {
   const [isCharging, setIsCharging] = useState(true);
 
   useEffect(() => {
-    if ('getBattery' in navigator) {
-      (navigator as any).getBattery().then((battery: any) => {
-        const updateBatteryStatus = () => {
-          setBatteryLevel(battery.level * 100);
-          setIsCharging(battery.charging);
-          setIsLowBattery(battery.level < 0.2 && !battery.charging);
-        };
+    // SSR / non-browser guard
+    if (typeof navigator === "undefined") return;
 
-        updateBatteryStatus();
-        battery.addEventListener('levelchange', updateBatteryStatus);
-        battery.addEventListener('chargingchange', updateBatteryStatus);
+    let cleanup: (() => void) | undefined;
 
-        return () => {
-          battery.removeEventListener('levelchange', updateBatteryStatus);
-          battery.removeEventListener('chargingchange', updateBatteryStatus);
-        };
-      });
+    if ("getBattery" in navigator) {
+      (navigator as any)
+        .getBattery()
+        .then((battery: any) => {
+          const updateBatteryStatus = () => {
+            setBatteryLevel(battery.level * 100);
+            setIsCharging(Boolean(battery.charging));
+            setIsLowBattery(battery.level < 0.2 && !battery.charging);
+          };
+
+          updateBatteryStatus();
+          battery.addEventListener("levelchange", updateBatteryStatus);
+          battery.addEventListener("chargingchange", updateBatteryStatus);
+
+          cleanup = () => {
+            battery.removeEventListener("levelchange", updateBatteryStatus);
+            battery.removeEventListener("chargingchange", updateBatteryStatus);
+          };
+        })
+        .catch(() => {
+          // ignore: Battery API not available / permission denied
+        });
     }
+
+    return () => {
+      cleanup?.();
+    };
   }, []);
 
   return { isLowBattery, batteryLevel, isCharging };
@@ -56,16 +70,21 @@ export const passiveEventOptions = { passive: true };
  * Pause timers when page is hidden
  */
 export function useBackgroundPause() {
-  const [isVisible, setIsVisible] = useState(!document.hidden);
+  const [isVisible, setIsVisible] = useState(() => {
+    if (typeof document === "undefined") return true;
+    return !document.hidden;
+  });
 
   useEffect(() => {
+    if (typeof document === "undefined") return;
+
     const handleVisibilityChange = () => {
       setIsVisible(!document.hidden);
     };
 
-    document.addEventListener('visibilitychange', handleVisibilityChange);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
     return () => {
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, []);
 
@@ -76,8 +95,13 @@ export function useBackgroundPause() {
  * Request idle callback polyfill
  */
 export function requestIdleCallbackPolyfill(callback: () => void, timeout = 1000) {
-  if ('requestIdleCallback' in window) {
-    return requestIdleCallback(callback, { timeout });
+  if (typeof window === "undefined") {
+    // SSR fallback
+    return setTimeout(callback, 1) as any;
+  }
+
+  if ("requestIdleCallback" in window) {
+    return (window as any).requestIdleCallback(callback, { timeout });
   } else {
     return setTimeout(callback, 1) as any;
   }
@@ -87,8 +111,13 @@ export function requestIdleCallbackPolyfill(callback: () => void, timeout = 1000
  * Cancel idle callback polyfill
  */
 export function cancelIdleCallbackPolyfill(id: number) {
-  if ('cancelIdleCallback' in window) {
-    cancelIdleCallback(id);
+  if (typeof window === "undefined") {
+    clearTimeout(id);
+    return;
+  }
+
+  if ("cancelIdleCallback" in window) {
+    (window as any).cancelIdleCallback(id);
   } else {
     clearTimeout(id);
   }
@@ -98,10 +127,12 @@ export function cancelIdleCallbackPolyfill(id: number) {
  * Prefetch resources on idle
  */
 export function prefetchOnIdle(urls: string[]) {
+  if (typeof document === "undefined") return;
+
   requestIdleCallbackPolyfill(() => {
-    urls.forEach(url => {
-      const link = document.createElement('link');
-      link.rel = 'prefetch';
+    urls.forEach((url) => {
+      const link = document.createElement("link");
+      link.rel = "prefetch";
       link.href = url;
       document.head.appendChild(link);
     });
@@ -116,9 +147,15 @@ export function useLowPowerMode() {
   const [isLowPowerMode, setIsLowPowerMode] = useState(false);
 
   useEffect(() => {
+    if (typeof navigator === "undefined") {
+      setIsLowPowerMode(isLowBattery);
+      return;
+    }
+
     // Enable low power mode if battery is low or device is slow
-    const isSlowDevice = navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2;
-    setIsLowPowerMode(isLowBattery || isSlowDevice);
+    const hc = navigator.hardwareConcurrency ?? 0;
+    const isSlowDevice = hc > 0 && hc <= 2; // ✅ always boolean
+    setIsLowPowerMode(Boolean(isLowBattery || isSlowDevice));
   }, [isLowBattery]);
 
   return isLowPowerMode;
@@ -130,6 +167,7 @@ export function useLowPowerMode() {
 export function useAdaptiveRendering() {
   const isLowPowerMode = useLowPowerMode();
   const [shouldSkipRender, setShouldSkipRender] = useState(false);
+
   const renderCount = useCallback(() => {
     let count = 0;
     return () => {

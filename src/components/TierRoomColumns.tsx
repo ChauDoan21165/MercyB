@@ -43,7 +43,7 @@ export function TierRoomColumns({
   const navigate = useNavigate();
   const { isColor } = useMercyBladeTheme();
 
-  // Filter out VIP3II rooms if requested
+  // Filter out VIP3 rooms if requested
   const filteredRooms = excludeVip3II 
     ? rooms.filter(r => !isVip3IIRoom(r.id))
     : rooms;

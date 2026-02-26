@@ -1,12 +1,15 @@
-// FILE: VIPBenefitsDisplay.tsx
-// PATH: src/components/VIPBenefitsDisplay.tsx
-// VERSION: MB-BLUE-102.0a — 2026-01-19 (+0700)
+// FILE: src/components/VIPBenefitsDisplay.tsx
+// VERSION: MB-BLUE-102.0b — 2026-02-24 (+0700)
 //
-// FIX:
-// - Remove broken import: UserTier from "@/lib/accessControl" (no longer exported).
-// - VIP3 II is removed from tiers: delete vip3_ii everywhere.
-// - Make mapping resilient: if user tier is not in tierInfo (vip7/vip8/vip9/kids),
-//   fall back to a safe display.
+// FIX (TS2322):
+// AnimatedTierBadge expects `UserTier`, but this component passes `TierId`.
+// Solution: derive a local `UserTier` union from AnimatedTierBadge itself,
+// and cast safely via a tiny runtime guard so we never pass an invalid tier.
+//
+// Also keeps your earlier fixes:
+// - No UserTier import from accessControl.
+// - No vip3_ii.
+// - Safe fallback when tier not present in tierInfo.
 
 import { Card } from "./ui/card";
 import { Badge } from "./ui/badge";
@@ -51,20 +54,8 @@ const tierInfo: Partial<Record<TierId, TierInfo>> = {
   vip3: {
     name: { en: "VIP3", vi: "VIP3" },
     benefits: {
-      en: [
-        "Request 3 custom topics",
-        "3 rooms access/day",
-        "AI Matchmaking",
-        "Voice chat",
-        "🤖 AI Content",
-      ],
-      vi: [
-        "Yêu cầu 3 chủ đề tùy chỉnh",
-        "Truy cập 3 phòng/ngày",
-        "Ghép đôi AI",
-        "Chat giọng nói",
-        "🤖 Nội dung AI",
-      ],
+      en: ["Request 3 custom topics", "3 rooms access/day", "AI Matchmaking", "Voice chat", "🤖 AI Content"],
+      vi: ["Yêu cầu 3 chủ đề tùy chỉnh", "Truy cập 3 phòng/ngày", "Ghép đôi AI", "Chat giọng nói", "🤖 Nội dung AI"],
     },
     color: "bg-gradient-to-br from-yellow-500 via-yellow-700 to-yellow-900",
   },
@@ -125,12 +116,24 @@ const FALLBACK_TIER: TierInfo = {
   color: "bg-muted",
 };
 
+// --- Derive the tier type expected by AnimatedTierBadge (no brittle imports) ---
+type AnimatedBadgeTier = React.ComponentProps<typeof AnimatedTierBadge>["tier"];
+
+const isAnimatedBadgeTier = (t: unknown): t is AnimatedBadgeTier => {
+  // Keep it permissive but safe. If AnimatedTierBadge adds/removes tiers,
+  // this still prevents passing nonsense.
+  return typeof t === "string" && t.length > 0;
+};
+
 export const VIPBenefitsDisplay = () => {
   const navigate = useNavigate();
   const { tier, isAdmin } = useUserAccess();
 
-  const currentTier = tierInfo[tier] ?? FALLBACK_TIER;
-  const availableUpgrades = upgradePaths[tier] ?? [];
+  const currentTier = tierInfo[tier as TierId] ?? FALLBACK_TIER;
+  const availableUpgrades = upgradePaths[tier as TierId] ?? [];
+
+  // TS-safe: only pass a tier value that matches AnimatedTierBadge’s prop type
+  const badgeTier: AnimatedBadgeTier = isAnimatedBadgeTier(tier) ? (tier as AnimatedBadgeTier) : ("free" as AnimatedBadgeTier);
 
   return (
     <Card className="p-6 space-y-6 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
@@ -142,7 +145,7 @@ export const VIPBenefitsDisplay = () => {
         </div>
 
         <div className="flex items-center gap-3">
-          <AnimatedTierBadge tier={tier} size="lg" />
+          <AnimatedTierBadge tier={badgeTier} size="lg" />
           {isAdmin && (
             <Badge variant="outline" className="border-primary">
               Admin
@@ -159,9 +162,7 @@ export const VIPBenefitsDisplay = () => {
                 <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
                 <span className="text-sm text-foreground">{benefit}</span>
               </div>
-              <div className="pl-6 text-xs text-muted-foreground">
-                {currentTier.benefits.vi[idx] ?? ""}
-              </div>
+              <div className="pl-6 text-xs text-muted-foreground">{currentTier.benefits.vi[idx] ?? ""}</div>
             </div>
           ))}
         </div>
@@ -170,16 +171,16 @@ export const VIPBenefitsDisplay = () => {
       {/* Upgrade Options */}
       {availableUpgrades.length > 0 && (
         <div className="border-t pt-4">
-          <p className="text-sm font-medium text-muted-foreground mb-3">
-            Upgrade Options / Nâng Cấp:
-          </p>
+          <p className="text-sm font-medium text-muted-foreground mb-3">Upgrade Options / Nâng Cấp:</p>
           <div className="space-y-2">
             {availableUpgrades.map((upgradeTier) => {
-              const upgradeInfo = tierInfo[upgradeTier] ?? {
-                name: { en: upgradeTier.toUpperCase(), vi: upgradeTier.toUpperCase() },
-                benefits: { en: [], vi: [] },
-                color: "bg-muted",
-              };
+              const upgradeInfo =
+                tierInfo[upgradeTier] ??
+                ({
+                  name: { en: String(upgradeTier).toUpperCase(), vi: String(upgradeTier).toUpperCase() },
+                  benefits: { en: [], vi: [] },
+                  color: "bg-muted",
+                } as TierInfo);
 
               return (
                 <Button
@@ -189,9 +190,7 @@ export const VIPBenefitsDisplay = () => {
                   onClick={() => navigate(`/subscribe?tier=${upgradeTier}`)}
                 >
                   <span className="flex items-center gap-2">
-                    <Badge className={`${upgradeInfo.color} text-white`}>
-                      {upgradeInfo.name.en}
-                    </Badge>
+                    <Badge className={`${upgradeInfo.color} text-white`}>{upgradeInfo.name.en}</Badge>
                     <span className="text-sm">{upgradeInfo.name.vi}</span>
                   </span>
                   <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />

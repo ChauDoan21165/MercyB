@@ -105,7 +105,7 @@ async function main() {
   );
 
   // 10) ROUTE COMPLETENESS
-  //  - smoke tests /, /tier-map, /free, /vip1..vip9, /vip3ii, /kids, /room-map, /admin/*
+  //  - smoke tests /, /tier-map, /free, /vip1..vip9, /vip3, /kids, /room-map, /admin/*
   results.push(
     runCmd("10. Route Completeness Audit", "npx", ["tsx", "scripts/audit-routes.ts"]),
   );

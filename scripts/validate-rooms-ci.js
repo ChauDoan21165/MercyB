@@ -153,7 +153,7 @@ function validateRoomJson(data, roomId, filename) {
   });
 
   // Validate tier if present
-  const validTiers = ['free', 'vip1', 'vip2', 'vip3', 'vip3ii', 'vip4', 'vip5', 'vip6', 'vip7', 'vip8', 'vip9'];
+  const validTiers = ['free', 'vip1', 'vip2', 'vip3', 'vip3', 'vip4', 'vip5', 'vip6', 'vip7', 'vip8', 'vip9'];
   if (data.tier && !validTiers.includes(data.tier.toLowerCase().replace(/\s*\/.*$/, '').replace(/\s+/g, ''))) {
     console.warn(`⚠️  Unusual tier value: ${data.tier}`);
   }

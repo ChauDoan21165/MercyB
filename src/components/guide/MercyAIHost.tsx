@@ -23,7 +23,8 @@ import { useAuth } from "@/providers/AuthProvider";
 import type { HostContext, PanelMode } from "@/components/guide/host/types";
 
 // ✅ FIX (prod parity): import explicit file so Vercel/Linux resolver can’t “miss” it.
-import { safeSetLS, safeLang } from "@/components/guide/host/utils.ts";
+// NOTE: Do NOT use ".ts" extension unless tsconfig allows it.
+import { safeSetLS, safeLang } from "@/components/guide/host/utils";
 
 import { useHostContextSync } from "@/components/guide/host/useHostContext";
 import { useHostProfile } from "@/components/guide/host/useHostProfile";
@@ -159,6 +160,14 @@ function writeAiUsed(appKey: string, tier: TierKey, used: number) {
   safeSetLSRaw(key, String(Math.max(0, used | 0)));
 }
 
+type LastProgress = {
+  roomId?: string;
+  keyword?: string;
+  next?: string;
+};
+
+type RepeatAckResult = { handled: boolean };
+
 export default function MercyAIHost() {
   const { user } = useAuth();
 
@@ -270,13 +279,20 @@ export default function MercyAIHost() {
   /* =========================
      Profile + progress (Supabase reads)
   ========================= */
-  const { displayName, canVoiceTest, lastProgress, speak, stopVoice, isSpeaking } = useHostProfile({
+  const profileAny = useHostProfile({
     isAdmin,
     open,
     lang,
     authUserId,
     authEmail,
-  });
+  }) as any;
+
+  const displayName: string = profileAny?.displayName ?? "";
+  const canVoiceTest: boolean = Boolean(profileAny?.canVoiceTest);
+  const lastProgress: LastProgress | null = (profileAny?.lastProgress ?? null) as any;
+  const speak: any = profileAny?.speak;
+  const stopVoice: any = profileAny?.stopVoice;
+  const isSpeaking: boolean = Boolean(profileAny?.isSpeaking);
 
   // ✅ Tier + AI quota (best-effort)
   const vipRankGuess = useMemo(() => {
@@ -418,36 +434,118 @@ export default function MercyAIHost() {
 
   /* =========================
      Repeat loop (events + hearts)
-     - MUST match host/useRepeatLoop.ts API
+     - MUST be safe with stub host/useRepeatLoop.ts
   ========================= */
-  const {
-    repeatTarget,
-    repeatStep,
-    setRepeatStep,
-    repeatSeenAt,
-    repeatCount,
-    heartBurst,
-    requestPlayRepeat,
-    clearRepeat,
-    clearHeart,
-    triggerHeart,
-    tryAcknowledgeRepeat,
-  } = useRepeatLoop({
-    isAdmin,
-    onOpen: () => setOpen(true),
-    onSeedIfEmpty: () => seedIfEmpty(mode),
-    onTarget: (t) => {
-      // Best-effort context update — never clear existing ctx
-      setCtx((prev) => ({
-        ...prev,
-        roomId: t.roomId ?? prev.roomId,
-        entryId: (t.entryId ?? prev.entryId) as any,
-        keyword: (t.keyword ?? prev.keyword) as any,
-        focus_en: ((t.text_en ?? "").trim() || (prev as any)?.focus_en) as any,
-        focus_vi: ((t.text_vi ?? "").trim() || (prev as any)?.focus_vi) as any,
-      }));
+  const repeatApi: any = useRepeatLoop();
+  const repeatTarget = repeatApi?.repeatTarget ?? null;
+  const repeatStep = repeatApi?.repeatStep ?? "idle";
+  const repeatCount = repeatApi?.repeatCount ?? 0;
+
+  const setRepeatTarget = repeatApi?.setRepeatTarget ?? (() => {});
+  const setRepeatStep = repeatApi?.setRepeatStep ?? (() => {});
+  const clearRepeatBase = repeatApi?.clearRepeat ?? (() => {});
+  const startRepeat = repeatApi?.startRepeat ?? (() => {});
+  const ackRepeat = repeatApi?.ackRepeat ?? (() => {});
+
+  const [repeatSeenAt, setRepeatSeenAt] = useState<number | null>(null);
+  const [heartBurst, setHeartBurst] = useState(false);
+  const heartTimerRef = useRef<number | null>(null);
+
+  const clearHeart = useCallback(() => {
+    if (heartTimerRef.current !== null) window.clearTimeout(heartTimerRef.current);
+    heartTimerRef.current = null;
+    setHeartBurst(false);
+  }, []);
+
+  const triggerHeart = useCallback(
+    (_k?: string) => {
+      clearHeart();
+      setHeartBurst(true);
+      heartTimerRef.current = window.setTimeout(() => {
+        heartTimerRef.current = null;
+        setHeartBurst(false);
+      }, 920);
     },
-  });
+    [clearHeart],
+  );
+
+  const clearRepeat = useCallback(() => {
+    clearRepeatBase();
+    setRepeatSeenAt(null);
+    clearHeart();
+  }, [clearRepeatBase, clearHeart]);
+
+  // Request audio play for repeat: SAFE (no audio side effects here).
+  // We only flip step and let the UI/other modules actually play audio.
+  const requestPlayRepeat = useCallback(() => {
+    setRepeatStep("play");
+  }, [setRepeatStep]);
+
+  const tryAcknowledgeRepeat = useCallback(
+    (userText: string): RepeatAckResult | null => {
+      if (!repeatTarget) return null;
+      if (repeatStep !== "your_turn") return null;
+
+      const t = (userText ?? "").trim().toLowerCase();
+      const ok = t === "ok" || t === "okay" || t === "done" || t === "repeated" || t === "i repeated it" || t === "xong";
+
+      if (!ok) return null;
+
+      ackRepeat();
+      // hearts at 3 (best-effort: using current count + 1)
+      if (typeof repeatCount === "number" && repeatCount + 1 === 3) triggerHeart("repeat3");
+
+      return { handled: true };
+    },
+    [repeatTarget, repeatStep, ackRepeat, repeatCount, triggerHeart],
+  );
+
+  // mb:host-repeat-target listener (LOCKED behavior: opens host + sets target)
+  useEffect(() => {
+    if (isAdmin) return;
+
+    const onEvt = (evt: Event) => {
+      const ce = evt as CustomEvent<any>;
+      const detail = ce?.detail ?? null;
+      if (!detail) return;
+
+      // Ensure panel is open + seeded
+      setOpen(true);
+      seedIfEmpty(mode);
+
+      // Write target into repeat loop
+      const target = {
+        text_en: detail.text_en ?? detail.textEn ?? "",
+        text_vi: detail.text_vi ?? detail.textVi ?? "",
+        audio_url: detail.audio_url ?? detail.audioUrl ?? "",
+        room_id: detail.room_id ?? detail.roomId ?? "",
+        entry_id: detail.entry_id ?? detail.entryId ?? "",
+        keyword: detail.keyword ?? "",
+        roomId: detail.roomId ?? detail.room_id ?? "",
+        entryId: detail.entryId ?? detail.entry_id ?? "",
+      };
+
+      startRepeat(target);
+      setRepeatSeenAt(Date.now());
+
+      // Keep context synced (best-effort)
+      setCtx((prev) => ({
+        ...(prev as any),
+        roomId: target.roomId || (prev as any)?.roomId,
+        entryId: target.entryId || (prev as any)?.entryId,
+        keyword: target.keyword || (prev as any)?.keyword,
+        focus_en: (String(target.text_en ?? "").trim() || (prev as any)?.focus_en) as any,
+        focus_vi: (String(target.text_vi ?? "").trim() || (prev as any)?.focus_vi) as any,
+      }));
+
+      // If we have audio, guide through "play" first; else straight to "your_turn"
+      if (target.audio_url) setRepeatStep("play");
+      else setRepeatStep("your_turn");
+    };
+
+    window.addEventListener("mb:host-repeat-target", onEvt as EventListener);
+    return () => window.removeEventListener("mb:host-repeat-target", onEvt as EventListener);
+  }, [isAdmin, seedIfEmpty, mode, startRepeat, setRepeatStep, setCtx]);
 
   // Deterministic, calm coaching (no AI, no questions)
   const repeatCoach = useMemo(() => {
@@ -503,7 +601,9 @@ export default function MercyAIHost() {
     if (!repeatTarget) return;
     if (repeatStep !== "your_turn") return;
 
-    const key = `${repeatTarget.roomId ?? ""}|${repeatTarget.entryId ?? ""}|${repeatTarget.keyword ?? ""}|${repeatSeenAt ?? ""}|your_turn`;
+    const key = `${repeatTarget.roomId ?? repeatTarget.room_id ?? ""}|${repeatTarget.entryId ?? repeatTarget.entry_id ?? ""}|${
+      repeatTarget.keyword ?? ""
+    }|${repeatSeenAt ?? ""}|your_turn`;
     if (repeatNudgedKeyRef.current === key) return;
 
     // Nudge after a calm delay (no nagging)
@@ -582,7 +682,7 @@ export default function MercyAIHost() {
 
       // Repeat ACK should never consume AI quota
       const looksLikeRepeatAck =
-        repeatTarget && repeatStep === "your_turn" ? /(i\s*repeated|repeated|done|ok|okay|again|repeat)/i.test(textTrim) : false;
+        repeatTarget && repeatStep === "your_turn" ? /(i\s*repeated|repeated|done|ok|okay|again|repeat|xong)/i.test(textTrim) : false;
 
       // Commands should not consume AI quota (but can still respond)
       const lower = textTrim.toLowerCase();
@@ -666,15 +766,15 @@ export default function MercyAIHost() {
           testActive,
           testStep,
           testScore,
-          onTestUpdate: (next) => {
+          onTestUpdate: (next: { active?: boolean; step?: number; score?: number }) => {
             if (typeof next.active === "boolean") setTestActive(next.active);
             if (typeof next.step === "number") setTestStep(next.step as 0 | 1 | 2 | 3);
             if (typeof next.score === "number") setTestScore(next.score);
           },
 
           // optional hooks for side effects (safe)
-          onSetRepeatStep: (s) => setRepeatStep(s),
-          onTriggerHeart: (k) => triggerHeart(k),
+          onSetRepeatStep: (s: any) => setRepeatStep(s),
+          onTriggerHeart: (k: any) => triggerHeart(String(k)),
           onClearHeart: () => clearHeart(),
         });
 
@@ -723,7 +823,7 @@ export default function MercyAIHost() {
     clearTypingTimer();
     clearRepeatNudgeTimer();
     setIsTyping(false);
-    stopVoice();
+    stopVoice?.();
   }, [clearTypingTimer, clearRepeatNudgeTimer, stopVoice]);
 
   const onSend = useCallback(() => {
@@ -777,7 +877,7 @@ export default function MercyAIHost() {
   const actions = useHostActions({
     lang,
     onGoTiers: goTiers,
-    addAssistantMsg: (t) => addMsg("assistant", t),
+    addAssistantMsg: (t: string) => addMsg("assistant", t),
     clearChat: () => setMessages([]),
     setMode,
     startMiniTest: () => {
@@ -798,7 +898,8 @@ export default function MercyAIHost() {
   // ✅ HARDEN: never crash if hook returns non-array (dev/HMR/state mismatch)
   const safeActions = Array.isArray(actions) ? actions : [];
 
-  useDevHostState({
+  // Some branches have useDevHostState typed as 0-arg. Keep prod behavior but silence TS.
+  (useDevHostState as any)({
     open,
     mode,
     page: location.pathname,
@@ -1055,7 +1156,7 @@ export default function MercyAIHost() {
               {isSpeaking ? (
                 <button
                   type="button"
-                  onClick={stopVoice}
+                  onClick={() => stopVoice?.()}
                   title={lang === "vi" ? "Dừng giọng" : "Stop voice"}
                   style={{
                     border: "1px solid rgba(0,0,0,0.10)",
@@ -1252,7 +1353,7 @@ export default function MercyAIHost() {
 
             {/* Quick actions (kept). When repeatTarget is active, keep them visible but calm. */}
             <div style={{ marginTop: 12, display: "flex", flexWrap: "wrap", gap: 8 }}>
-              {safeActions.map((a) => (
+              {safeActions.map((a: any) => (
                 <button
                   key={a.id}
                   type="button"
@@ -1281,9 +1382,7 @@ export default function MercyAIHost() {
                 padding: 12,
               }}
             >
-              <div style={{ fontSize: 11, fontWeight: 700, color: "rgba(0,0,0,0.70)" }}>
-                {lang === "vi" ? "Gợi ý nhanh" : "Care loop"}
-              </div>
+              <div style={{ fontSize: 11, fontWeight: 700, color: "rgba(0,0,0,0.70)" }}>{lang === "vi" ? "Gợi ý nhanh" : "Care loop"}</div>
               <div style={{ fontSize: 11, color: "rgba(0,0,0,0.60)", marginTop: 6 }}>
                 {lang === "vi"
                   ? `Gợi ý: gõ “fix grammar:” để sửa ngữ pháp. Luyện phát âm (đọc to và được góp ý) sẽ có sớm. Nếu muốn mở VIP, vào /tiers.`

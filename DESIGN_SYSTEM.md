@@ -35,7 +35,7 @@ All solid colors must be defined as HSL semantic tokens in `index.css` and used 
   --page-vip1-bg: 280 60% 96%;
   --page-vip2-bg: 200 65% 95%;
   --page-vip3-bg: 330 55% 96%;
-  --page-vip3ii-bg: 260 50% 94%;
+  --page-vip3-bg: 260 50% 94%;
   --page-vip4-bg: 180 50% 96%;
   --page-vip5-bg: 40 70% 96%;
   --page-vip6-bg: 300 45% 95%;
@@ -62,7 +62,7 @@ All solid colors must be defined as HSL semantic tokens in `index.css` and used 
   --page-vip1-bg: 280 15% 10%;
   --page-vip2-bg: 200 20% 12%;
   --page-vip3-bg: 330 15% 10%;
-  --page-vip3ii-bg: 260 15% 12%;
+  --page-vip3-bg: 260 15% 12%;
   --page-vip4-bg: 180 15% 12%;
   --page-vip5-bg: 40 20% 10%;
   --page-vip6-bg: 300 15% 10%;
@@ -194,7 +194,7 @@ All VIP tier listing pages must be clones of the canonical VIP template. Only ti
 ```tsx
 interface VipRoom {
   id: string;
-  tier_id: "vip1" | "vip2" | "vip3" | "vip3ii" | "vip4" | "vip5" | "vip6" | "vip9";
+  tier_id: "vip1" | "vip2" | "vip3" | "vip3" | "vip4" | "vip5" | "vip6" | "vip9";
   title_en: string;
   title_vi: string;
 }
@@ -457,7 +457,7 @@ export const TIERS = {
   VIP1: "VIP1 / VIP1",
   VIP2: "VIP2 / VIP2",
   VIP3: "VIP3 / VIP3",
-  VIP3II: "VIP3 II / VIP3 II",
+  VIP3: "VIP3 II / VIP3 II",
   VIP4: "VIP4 / VIP4",
   VIP5: "VIP5 / VIP5",
   VIP6: "VIP6 / VIP6",
@@ -536,7 +536,7 @@ interface UseKidsRoomsResult {
 declare function useKidsRooms(levelId: KidsLevelId): UseKidsRoomsResult;
 
 // VIP
-type VipTierId = "vip1" | "vip2" | "vip3" | "vip3ii" | "vip4" | "vip5" | "vip6" | "vip9";
+type VipTierId = "vip1" | "vip2" | "vip3" | "vip3" | "vip4" | "vip5" | "vip6" | "vip9";
 
 interface UseVipRoomsResult {
   rooms: VipRoom[];

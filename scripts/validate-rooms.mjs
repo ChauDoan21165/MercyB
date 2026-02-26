@@ -52,6 +52,8 @@ async function listRoomJsonFilesOneLevel(dir) {
   const entries = await fs.readdir(dir, { withFileTypes: true });
   return entries
     .filter((e) => e.isFile() && e.name.toLowerCase().endsWith(".json"))
+    // ✅ CRITICAL: registry.json is NOT a room JSON (generated index / debug artifact)
+    .filter((e) => e.name !== "registry.json")
     .map((e) => path.join(dir, e.name));
 }
 

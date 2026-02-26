@@ -33,12 +33,12 @@ export interface UserAccess {
   canAccessVIP1: boolean;
   canAccessVIP2: boolean;
   canAccessVIP3: boolean;
-  canAccessVIP3II: boolean;
   canAccessVIP4: boolean;
   canAccessVIP5: boolean;
   canAccessVIP6: boolean;
   canAccessVIP9: boolean;
 
+  // Some older code/tests look for either name. Keep both for stability.
   loading: boolean;
   isLoading: boolean;
 
@@ -47,13 +47,13 @@ export interface UserAccess {
 
 /**
  * Local tier gate (NO dependency on missing exports).
- * Rule: VIP3 grants VIP3II (vip3ii treated as level 3).
+ * Rule: VIP3 grants VIP3 (vip3 treated as level 3).
  */
-function tierToLevel(t: TierId): number {
+export function tierToLevel(t: TierId): number {
   const s = String(t || "free").toLowerCase();
 
   if (s === "free") return 0;
-  if (s === "vip3ii") return 3;
+  if (s === "vip3") return 3;
 
   const m = s.match(/^vip(\d+)$/);
   if (!m) return 0;
@@ -62,11 +62,11 @@ function tierToLevel(t: TierId): number {
   return Number.isFinite(n) ? n : 0;
 }
 
-function canAccessByTier(userTier: TierId, required: TierId): boolean {
+export function canAccessByTier(userTier: TierId, required: TierId): boolean {
   return tierToLevel(userTier) >= tierToLevel(required);
 }
 
-const guestAccess = (): UserAccess => {
+export const guestAccess = (): UserAccess => {
   const canAccessTier = (tierId: TierId) => tierId === "free";
 
   return {
@@ -82,7 +82,6 @@ const guestAccess = (): UserAccess => {
     canAccessVIP1: false,
     canAccessVIP2: false,
     canAccessVIP3: false,
-    canAccessVIP3II: false,
     canAccessVIP4: false,
     canAccessVIP5: false,
     canAccessVIP6: false,
@@ -95,7 +94,7 @@ const guestAccess = (): UserAccess => {
   };
 };
 
-function normalizeProfileTier(v: unknown): TierId {
+export function normalizeProfileTier(v: unknown): TierId {
   // Accept direct TierId values, plus common variants like "VIP3", "vip3", "Free", "FREE"
   const raw = String(v ?? "").trim();
   if (!raw) return "free";
@@ -108,7 +107,6 @@ function normalizeProfileTier(v: unknown): TierId {
     lower === "vip1" ||
     lower === "vip2" ||
     lower === "vip3" ||
-    lower === "vip3ii" ||
     lower === "vip4" ||
     lower === "vip5" ||
     lower === "vip6" ||
@@ -119,18 +117,31 @@ function normalizeProfileTier(v: unknown): TierId {
 
   // common "VIP 3" / "VIP-3" / "VIP_3"
   const compact = lower.replace(/[\s_-]/g, "");
-  if (compact === "vip3ii") return "vip3ii";
-  if (compact === "vip1") return "vip1";
-  if (compact === "vip2") return "vip2";
-  if (compact === "vip3") return "vip3";
-  if (compact === "vip4") return "vip4";
-  if (compact === "vip5") return "vip5";
-  if (compact === "vip6") return "vip6";
-  if (compact === "vip9") return "vip9";
-  if (compact === "free") return "free";
+  if (
+    compact === "free" ||
+    compact === "vip1" ||
+    compact === "vip2" ||
+    compact === "vip3" ||
+    compact === "vip4" ||
+    compact === "vip5" ||
+    compact === "vip6" ||
+    compact === "vip9"
+  ) {
+    return compact as TierId;
+  }
 
   // fallback to existing normalizeTier (handles "Free / Miễn phí", etc.)
   return normalizeTier(raw);
+}
+
+// Avoid crashing in non-Vite test environments (import.meta may not exist in some runners)
+function isDev(): boolean {
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return Boolean((import.meta as any)?.env?.DEV);
+  } catch {
+    return false;
+  }
 }
 
 export const useUserAccess = (): UserAccess => {
@@ -187,7 +198,7 @@ export const useUserAccess = (): UserAccess => {
           .eq("email", userEmail)
           .maybeSingle();
 
-        if (profileErr && import.meta.env.DEV) {
+        if (profileErr && isDev()) {
           console.warn("[useUserAccess] profiles lookup error:", profileErr);
         }
 
@@ -218,7 +229,6 @@ export const useUserAccess = (): UserAccess => {
           canAccessVIP1: canAccessTier("vip1"),
           canAccessVIP2: canAccessTier("vip2"),
           canAccessVIP3: canAccessTier("vip3"),
-          canAccessVIP3II: canAccessTier("vip3ii"),
           canAccessVIP4: canAccessTier("vip4"),
           canAccessVIP5: canAccessTier("vip5"),
           canAccessVIP6: canAccessTier("vip6"),
@@ -233,18 +243,19 @@ export const useUserAccess = (): UserAccess => {
         if (!alive) return;
         setAccess(next);
       } catch (err: unknown) {
-        if (import.meta.env.DEV) console.warn("[useUserAccess] crashed:", err);
+        if (isDev()) console.warn("[useUserAccess] crashed:", err);
         if (!alive) return;
         setAccess(guestAccess());
       }
     };
 
-    run();
+    void run();
 
     return () => {
       alive = false;
     };
   }, [authLoading, userEmail]);
 
+  // Memo is fine, but returning `access` directly is also fine.
   return useMemo(() => access, [access]);
 };

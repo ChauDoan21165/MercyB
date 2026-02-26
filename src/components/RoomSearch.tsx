@@ -1,11 +1,11 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
-import { Search, X } from 'lucide-react';
-import { Input } from '@/components/ui/input';
-import { Card } from '@/components/ui/card';
-import { useNavigate } from 'react-router-dom';
-import { cn } from '@/lib/utils';
-import { searchRooms, type RoomSearchResult } from '@/lib/search/roomSearch';
-import { useAllRooms } from '@/hooks/useRooms';
+import { useState, useEffect, useRef, useCallback } from "react";
+import { Search, X } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Card } from "@/components/ui/card";
+import { useNavigate } from "react-router-dom";
+import { cn } from "@/lib/utils";
+import { searchRooms, type RoomSearchResult } from "@/lib/search/roomSearch";
+import { useAllRooms } from "@/hooks/useRooms";
 
 // Tier badge colors
 const TIER_COLORS: Record<string, string> = {
@@ -33,13 +33,16 @@ const DOMAIN_COLORS: Record<string, string> = {
 };
 
 export const RoomSearch = () => {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const [results, setResults] = useState<RoomSearchResult[]>([]);
   const [isOpen, setIsOpen] = useState(false);
-  const searchRef = useRef<HTMLDivElement>(null);
+  const searchRef = useRef<HTMLDivElement | null>(null);
   const navigate = useNavigate();
-  const debounceRef = useRef<NodeJS.Timeout>();
-  
+
+  // ✅ FIX: React typings require an initial value for useRef.
+  // ✅ FIX: Avoid NodeJS.Timeout in browser builds; use ReturnType<typeof setTimeout>.
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   // Pre-load rooms registry
   const { loading: roomsLoading } = useAllRooms();
 
@@ -49,23 +52,25 @@ export const RoomSearch = () => {
       setResults([]);
       return;
     }
-    
+
     const searchResults = searchRooms(searchQuery, { limit: 20 });
     setResults(searchResults);
   }, []);
 
   useEffect(() => {
-    if (debounceRef.current) {
+    if (debounceRef.current !== null) {
       clearTimeout(debounceRef.current);
+      debounceRef.current = null;
     }
-    
+
     debounceRef.current = setTimeout(() => {
       performSearch(query);
     }, 300);
 
     return () => {
-      if (debounceRef.current) {
+      if (debounceRef.current !== null) {
         clearTimeout(debounceRef.current);
+        debounceRef.current = null;
       }
     };
   }, [query, performSearch]);
@@ -73,24 +78,25 @@ export const RoomSearch = () => {
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
+      const root = searchRef.current;
+      if (root && !root.contains(event.target as Node)) {
         setIsOpen(false);
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   const handleRoomClick = (roomId: string) => {
     navigate(`/room/${roomId}`);
-    setQuery('');
+    setQuery("");
     setResults([]);
     setIsOpen(false);
   };
 
   const handleClear = () => {
-    setQuery('');
+    setQuery("");
     setResults([]);
   };
 
@@ -108,8 +114,10 @@ export const RoomSearch = () => {
         />
         {query && (
           <button
+            type="button"
             onClick={handleClear}
             className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+            aria-label="Clear search"
           >
             <X className="h-4 w-4" />
           </button>
@@ -123,39 +131,42 @@ export const RoomSearch = () => {
             {roomsLoading ? (
               <div className="px-4 py-3 text-sm text-muted-foreground">Loading rooms...</div>
             ) : results.length > 0 ? (
-              results.map((room) => (
-                <button
-                  key={room.id}
-                  onClick={() => handleRoomClick(room.id)}
-                  className={cn(
-                    "w-full px-4 py-3 text-left hover:bg-muted/50 transition-colors",
-                    "border-b border-border last:border-b-0"
-                  )}
-                >
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="flex-1 min-w-0">
-                      <p className="font-medium text-sm text-foreground truncate">
-                        {room.title_en}
-                      </p>
-                      <p className="text-xs text-muted-foreground truncate">
-                        {room.title_vi}
-                      </p>
+              results.map((room) => {
+                // Safe access if RoomSearchResult shape changes late-stage
+                const domain = (room as any)?.domain ?? "other";
+                const tier = (room as any)?.tier ?? "free";
+
+                return (
+                  <button
+                    key={room.id}
+                    type="button"
+                    onClick={() => handleRoomClick(room.id)}
+                    className={cn(
+                      "w-full px-4 py-3 text-left hover:bg-muted/50 transition-colors",
+                      "border-b border-border last:border-b-0"
+                    )}
+                  >
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="flex-1 min-w-0">
+                        <p className="font-medium text-sm text-foreground truncate">{room.title_en}</p>
+                        <p className="text-xs text-muted-foreground truncate">{room.title_vi}</p>
+                      </div>
+
+                      <div className="flex items-center gap-1.5 flex-shrink-0">
+                        <span className={cn("px-1.5 py-0.5 text-[10px] rounded", DOMAIN_COLORS[domain] || DOMAIN_COLORS.other)}>
+                          {String(domain)}
+                        </span>
+
+                        <span className={cn("px-2 py-0.5 text-xs rounded-full", TIER_COLORS[tier] || TIER_COLORS.free)}>
+                          {String(tier).toUpperCase().replace("_", " ")}
+                        </span>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-1.5 flex-shrink-0">
-                      <span className={cn("px-1.5 py-0.5 text-[10px] rounded", DOMAIN_COLORS[room.domain] || DOMAIN_COLORS.other)}>
-                        {room.domain}
-                      </span>
-                      <span className={cn("px-2 py-0.5 text-xs rounded-full", TIER_COLORS[room.tier] || TIER_COLORS.free)}>
-                        {room.tier.toUpperCase().replace('_', ' ')}
-                      </span>
-                    </div>
-                  </div>
-                </button>
-              ))
+                  </button>
+                );
+              })
             ) : (
-              <div className="px-4 py-3 text-center text-sm text-muted-foreground">
-                No rooms found for "{query}"
-              </div>
+              <div className="px-4 py-3 text-center text-sm text-muted-foreground">No rooms found for "{query}"</div>
             )}
           </div>
         </Card>

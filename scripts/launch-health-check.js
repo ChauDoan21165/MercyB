@@ -32,7 +32,7 @@ const CANONICAL_TIERS = {
   vip1: "VIP1 / VIP1",
   vip2: "VIP2 / VIP2",
   vip3: "VIP3 / VIP3",
-  vip3ii: "VIP3 II / VIP3 II",
+  vip3: "VIP3 II / VIP3 II",
   vip4: "VIP4 / VIP4",
   vip5: "VIP5 / VIP5",
   vip6: "VIP6 / VIP6",

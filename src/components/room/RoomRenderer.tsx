@@ -487,7 +487,10 @@ export default function RoomRenderer({
   roomSpec?: { use_color_theme?: boolean };
 }) {
   const rootRef = useRef<HTMLDivElement | null>(null);
-  const audioAnchorRef = useRef<HTMLDivElement | null>(null);
+
+  // ✅ FIX: RoomRendererUI expects RefObject<HTMLDivElement> (not HTMLDivElement | null).
+  // useRef<HTMLDivElement>(null!) keeps type compatible while runtime remains safe.
+  const audioAnchorRef = useRef<HTMLDivElement>(null!);
 
   // ✅ SIGNED AUDIO (Room layer) — cache by raw path/url (DECLARE ONCE)
   const signedAudioCacheRef = useRef<Map<string, string>>(new Map());
@@ -521,35 +524,32 @@ export default function RoomRenderer({
   };
 
   // ✅ NEW: resolve audio into a safe URL for players (signed if bucket path)
-  const resolveAudioUrl = useCallback(
-    async (raw: string): Promise<string> => {
-      const s = String(raw || "").trim();
-      if (!s) return "";
+  const resolveAudioUrl = useCallback(async (raw: string): Promise<string> => {
+    const s = String(raw || "").trim();
+    if (!s) return "";
 
-      // Already a full URL
-      if (isHttpUrl(s)) return s;
+    // Already a full URL
+    if (isHttpUrl(s)) return s;
 
-      // Existing public patterns (do not sign)
-      if (isPublicAudioPath(s)) {
-        return s.startsWith("/") ? s : `/${s}`;
-      }
+    // Existing public patterns (do not sign)
+    if (isPublicAudioPath(s)) {
+      return s.startsWith("/") ? s : `/${s}`;
+    }
 
-      // Bucket object path => sign (cache by object path)
-      if (looksBucketObjectPath(s)) {
-        const cached = signedAudioCacheRef.current.get(s);
-        if (cached) return cached;
+    // Bucket object path => sign (cache by object path)
+    if (looksBucketObjectPath(s)) {
+      const cached = signedAudioCacheRef.current.get(s);
+      if (cached) return cached;
 
-        const url = await getSignedAudio(s);
-        const safe = String(url || "").trim();
-        if (safe) signedAudioCacheRef.current.set(s, safe);
-        return safe || "";
-      }
+      const url = await getSignedAudio(s);
+      const safe = String(url || "").trim();
+      if (safe) signedAudioCacheRef.current.set(s, safe);
+      return safe || "";
+    }
 
-      // Fallback: keep as-is
-      return s;
-    },
-    [signedAudioCacheRef],
-  );
+    // Fallback: keep as-is
+    return s;
+  }, []);
 
   // kill native audio controls (locked rule)
   useEffect(() => {
@@ -600,10 +600,7 @@ export default function RoomRenderer({
   const metaTierId = useMemo<TierId | null>(() => normalizeRoomTierToTierId(tierMetaRaw), [tierMetaRaw]);
 
   // ✅ runtime-hard normalize (prevents "FREE"/"Free " leaks)
-  const inferredTierId = useMemo<TierId>(
-    () => normalizeTierIdRuntime(tierFromRoomId(effectiveRoomId)),
-    [effectiveRoomId],
-  );
+  const inferredTierId = useMemo<TierId>(() => normalizeTierIdRuntime(tierFromRoomId(effectiveRoomId)), [effectiveRoomId]);
 
   const requiredTierId = useMemo<TierId>(() => inferredTierId, [inferredTierId]);
 
@@ -807,8 +804,9 @@ export default function RoomRenderer({
 
   // ✅ NEW: highlight count rule (3 → 5 → 7) based on text length (no schema dependency)
   const highlightN = useMemo(() => {
-    const base =
-      `${String(introEN || "")} ${String(introVI || "")} ${String(essay?.en || "")} ${String(essay?.vi || "")}`.trim();
+    const base = `${String(introEN || "")} ${String(introVI || "")} ${String(essay?.en || "")} ${String(
+      essay?.vi || "",
+    )}`.trim();
     const len = base.length;
     if (len >= 1200) return 7;
     if (len >= 600) return 5;
@@ -838,8 +836,7 @@ export default function RoomRenderer({
 
   const welcomeEN = introEN?.trim() || `Welcome to ${titleEN}, please click a keyword to start`;
   const welcomeVI =
-    introVI?.trim() ||
-    `Chào mừng bạn đến với phòng ${titleVI || titleEN}, vui lòng nhấp vào từ khóa để bắt đầu`;
+    introVI?.trim() || `Chào mừng bạn đến với phòng ${titleVI || titleEN}, vui lòng nhấp vào từ khóa để bắt đầu`;
 
   const clearKeyword = () => setActiveKeyword(null);
 
@@ -900,10 +897,12 @@ export default function RoomRenderer({
     // Don’t dispatch empty targets
     if (!text_en && !text_vi) return;
 
-    // ✅ NEW: idempotency guard (avoid repeat spam on re-render)
+    // ✅ FIX: SSR-safe idempotency guard (avoid repeat spam on re-render)
     const repeatKey = `${effectiveRoomId}|${entryId}|${activeKeyword ?? ""}`;
-    if ((window as any).__mb_last_repeat_key === repeatKey) return;
-    (window as any).__mb_last_repeat_key = repeatKey;
+    if (typeof window !== "undefined") {
+      if ((window as any).__mb_last_repeat_key === repeatKey) return;
+      (window as any).__mb_last_repeat_key = repeatKey;
+    }
 
     // ✅ IMPORTANT: Host should also receive SIGNED audio (never bucket path)
     dispatchHostRepeatTarget({
@@ -1195,8 +1194,7 @@ export default function RoomRenderer({
             <section className="mb-card p-5 md:p-6 mb-5" data-room-box="3">
               <div className="mb-welcomeLine">
                 <span>
-                  {highlightByColorMap(welcomeEN, kwColorMap)} <b>/</b>{" "}
-                  {highlightByColorMap(welcomeVI, kwColorMap)}
+                  {highlightByColorMap(welcomeEN, kwColorMap)} <b>/</b> {highlightByColorMap(welcomeVI, kwColorMap)}
                 </span>
               </div>
 

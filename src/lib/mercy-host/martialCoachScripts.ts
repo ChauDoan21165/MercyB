@@ -1,19 +1,19 @@
 /**
  * Mercy Martial Coach Scripts - Phase 8
- * 
+ *
  * Martial arts coaching with mindset, discipline, and safety focus.
  * All lines ≤140 chars, calm and disciplined tone, no violent language.
  */
 
-export type MartialCoachLevel = 'off' | 'gentle' | 'focused' | 'dojo';
+export type MartialCoachLevel = "off" | "gentle" | "focused" | "dojo";
 
-export type MartialContext = 
-  | 'martial_room_enter'
-  | 'martial_entry_complete'
-  | 'martial_low_mood'
-  | 'martial_stressed'
-  | 'martial_failure_reframe'
-  | 'martial_victory';
+export type MartialContext =
+  | "martial_room_enter"
+  | "martial_entry_complete"
+  | "martial_low_mood"
+  | "martial_stressed"
+  | "martial_failure_reframe"
+  | "martial_victory";
 
 export interface MartialCoachTip {
   id: string;
@@ -23,6 +23,162 @@ export interface MartialCoachTip {
   vi: string;
 }
 
+export type DomainCategory = "martial" | "general";
+
+// -----------------------------
+// Domain detection (test-backed)
+// -----------------------------
+
+function normalizeText(input: string): string {
+  return input
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "") // strip diacritics
+    .replace(/[_\s]+/g, " ")
+    .trim();
+}
+
+function includesAny(haystack: string, needles: string[]): boolean {
+  for (const n of needles) {
+    if (haystack.includes(n)) return true;
+  }
+  return false;
+}
+
+const MARTIAL_DOMAIN_KEYWORDS = [
+  // general
+  "martial",
+  "martial arts",
+  "combat",
+  "dojo",
+  "academy",
+  "self defense",
+  "self-defence",
+  "self defence",
+  "self-protection",
+  "self protection",
+  "sparring",
+
+  // ✅ test-backed: "Kung Fu Academy"
+  "kung fu",
+  "kungfu",
+  "wushu",
+
+  // common disciplines
+  "karate",
+  "taekwondo",
+  "tkd",
+  "muay thai",
+  "kickboxing",
+  "kick boxing",
+  "boxing",
+  "jiu jitsu",
+  "jiujitsu",
+  "bjj",
+  "brazilian jiu jitsu",
+  "grappling",
+  "wrestling",
+  "judo",
+  "aikido",
+  "krav maga",
+  "kendo",
+  "fencing",
+  "sword",
+  "swords",
+];
+
+const MARTIAL_TAG_KEYWORDS = [
+  "martial",
+  "combat",
+  "dojo",
+  "academy",
+  "kungfu",
+  "kung fu",
+  "wushu",
+  "karate",
+  "taekwondo",
+  "boxing",
+  "bjj",
+  "jiu-jitsu",
+  "jiu jitsu",
+  "muaythai",
+  "muay thai",
+  "self-defense",
+  "self defence",
+  "self defense",
+  "krav",
+  "judo",
+  "fencing",
+  "sword",
+];
+
+/**
+ * Detect if the content belongs to the martial domain.
+ * Supports detection by roomId, roomDomain (title/category), and tags.
+ *
+ * ✅ Test-backed requirement: roomDomain strings must match "Kung Fu Academy".
+ */
+export function isMartialDomain(
+  roomId?: string | null,
+  roomDomain?: string | null,
+  tags?: string[] | null
+): boolean {
+  const idNorm = roomId ? normalizeText(roomId).replace(/\s+/g, "_") : "";
+  const domainNorm = roomDomain ? normalizeText(roomDomain) : "";
+
+  if (idNorm) {
+    // fast path for ids that often contain category tokens
+    if (
+      includesAny(idNorm, [
+        "martial",
+        "combat",
+        "dojo",
+        "kung_fu",
+        "kungfu",
+        "wushu",
+        "karate",
+        "taekwondo",
+        "boxing",
+        "bjj",
+        "jiu",
+        "muay_thai",
+        "krav",
+        "judo",
+        "kendo",
+        "fencing",
+        "sword",
+      ])
+    ) {
+      return true;
+    }
+  }
+
+  if (domainNorm) {
+    // ✅ this is where "Kung Fu Academy" must match
+    if (includesAny(domainNorm, MARTIAL_DOMAIN_KEYWORDS)) return true;
+  }
+
+  if (tags && tags.length > 0) {
+    for (const t of tags) {
+      const tagNorm = normalizeText(String(t));
+      if (includesAny(tagNorm, MARTIAL_TAG_KEYWORDS)) return true;
+    }
+  }
+
+  return false;
+}
+
+/**
+ * Higher-level category helper used by the host.
+ */
+export function getDomainCategory(
+  roomId?: string | null,
+  roomDomain?: string | null,
+  tags?: string[] | null
+): DomainCategory {
+  return isMartialDomain(roomId, roomDomain, tags) ? "martial" : "general";
+}
+
 /**
  * Martial coach tips organized by level and context
  */
@@ -30,187 +186,187 @@ const MARTIAL_TIPS: MartialCoachTip[] = [
   // === GENTLE LEVEL ===
   // Room enter
   {
-    id: 'gentle_enter_1',
-    level: 'gentle',
-    context: 'martial_room_enter',
+    id: "gentle_enter_1",
+    level: "gentle",
+    context: "martial_room_enter",
     en: "Welcome to the dojo. Move at your own pace.",
-    vi: "Chào mừng đến dojo. Di chuyển theo nhịp riêng của bạn."
+    vi: "Chào mừng đến dojo. Di chuyển theo nhịp riêng của bạn.",
   },
   {
-    id: 'gentle_enter_2',
-    level: 'gentle',
-    context: 'martial_room_enter',
+    id: "gentle_enter_2",
+    level: "gentle",
+    context: "martial_room_enter",
     en: "Breathe first. The path unfolds naturally.",
-    vi: "Hít thở trước. Con đường sẽ tự mở ra."
+    vi: "Hít thở trước. Con đường sẽ tự mở ra.",
   },
   // Entry complete
   {
-    id: 'gentle_complete_1',
-    level: 'gentle',
-    context: 'martial_entry_complete',
+    id: "gentle_complete_1",
+    level: "gentle",
+    context: "martial_entry_complete",
     en: "One step completed. Each step matters.",
-    vi: "Một bước hoàn thành. Mỗi bước đều quan trọng."
+    vi: "Một bước hoàn thành. Mỗi bước đều quan trọng.",
   },
   // Low mood
   {
-    id: 'gentle_low_1',
-    level: 'gentle',
-    context: 'martial_low_mood',
+    id: "gentle_low_1",
+    level: "gentle",
+    context: "martial_low_mood",
     en: "Even the greatest warriors rest. Your stillness is strength.",
-    vi: "Ngay cả chiến binh vĩ đại nhất cũng nghỉ ngơi. Sự tĩnh lặng của bạn là sức mạnh."
+    vi: "Ngay cả chiến binh vĩ đại nhất cũng nghỉ ngơi. Sự tĩnh lặng của bạn là sức mạnh.",
   },
   // Stressed
   {
-    id: 'gentle_stressed_1',
-    level: 'gentle',
-    context: 'martial_stressed',
+    id: "gentle_stressed_1",
+    level: "gentle",
+    context: "martial_stressed",
     en: "Center yourself. The dojo is a place of peace.",
-    vi: "Tập trung vào bản thân. Dojo là nơi yên bình."
+    vi: "Tập trung vào bản thân. Dojo là nơi yên bình.",
   },
   // Failure reframe
   {
-    id: 'gentle_failure_1',
-    level: 'gentle',
-    context: 'martial_failure_reframe',
+    id: "gentle_failure_1",
+    level: "gentle",
+    context: "martial_failure_reframe",
     en: "Every fall teaches balance. Rest and return.",
-    vi: "Mỗi lần ngã đều dạy cách giữ thăng bằng. Nghỉ ngơi và quay lại."
+    vi: "Mỗi lần ngã đều dạy cách giữ thăng bằng. Nghỉ ngơi và quay lại.",
   },
   // Victory
   {
-    id: 'gentle_victory_1',
-    level: 'gentle',
-    context: 'martial_victory',
+    id: "gentle_victory_1",
+    level: "gentle",
+    context: "martial_victory",
     en: "Well done. Progress flows from consistency.",
-    vi: "Làm tốt lắm. Tiến bộ đến từ sự kiên định."
+    vi: "Làm tốt lắm. Tiến bộ đến từ sự kiên định.",
   },
 
   // === FOCUSED LEVEL ===
   // Room enter
   {
-    id: 'focused_enter_1',
-    level: 'focused',
-    context: 'martial_room_enter',
+    id: "focused_enter_1",
+    level: "focused",
+    context: "martial_room_enter",
     en: "Clear your mind. Training begins with focus.",
-    vi: "Tĩnh tâm. Tập luyện bắt đầu từ sự tập trung."
+    vi: "Tĩnh tâm. Tập luyện bắt đầu từ sự tập trung.",
   },
   {
-    id: 'focused_enter_2',
-    level: 'focused',
-    context: 'martial_room_enter',
+    id: "focused_enter_2",
+    level: "focused",
+    context: "martial_room_enter",
     en: "Discipline is the bridge between goals and results.",
-    vi: "Kỷ luật là cầu nối giữa mục tiêu và kết quả."
+    vi: "Kỷ luật là cầu nối giữa mục tiêu và kết quả.",
   },
   // Entry complete
   {
-    id: 'focused_complete_1',
-    level: 'focused',
-    context: 'martial_entry_complete',
+    id: "focused_complete_1",
+    level: "focused",
+    context: "martial_entry_complete",
     en: "Technique refined. Continue your practice.",
-    vi: "Kỹ thuật được trau dồi. Tiếp tục luyện tập."
+    vi: "Kỹ thuật được trau dồi. Tiếp tục luyện tập.",
   },
   {
-    id: 'focused_complete_2',
-    level: 'focused',
-    context: 'martial_entry_complete',
+    id: "focused_complete_2",
+    level: "focused",
+    context: "martial_entry_complete",
     en: "Good form. Now repeat until it becomes natural.",
-    vi: "Tư thế tốt. Bây giờ lặp lại cho đến khi trở nên tự nhiên."
+    vi: "Tư thế tốt. Bây giờ lặp lại cho đến khi trở nên tự nhiên.",
   },
   // Low mood
   {
-    id: 'focused_low_1',
-    level: 'focused',
-    context: 'martial_low_mood',
+    id: "focused_low_1",
+    level: "focused",
+    context: "martial_low_mood",
     en: "The warrior's path includes valleys. Keep breathing.",
-    vi: "Con đường chiến binh có cả thung lũng. Tiếp tục hít thở."
+    vi: "Con đường chiến binh có cả thung lũng. Tiếp tục hít thở.",
   },
   // Stressed
   {
-    id: 'focused_stressed_1',
-    level: 'focused',
-    context: 'martial_stressed',
+    id: "focused_stressed_1",
+    level: "focused",
+    context: "martial_stressed",
     en: "Tension blocks flow. Exhale fully. Begin again.",
-    vi: "Căng thẳng chặn dòng chảy. Thở ra hoàn toàn. Bắt đầu lại."
+    vi: "Căng thẳng chặn dòng chảy. Thở ra hoàn toàn. Bắt đầu lại.",
   },
   // Failure reframe
   {
-    id: 'focused_failure_1',
-    level: 'focused',
-    context: 'martial_failure_reframe',
+    id: "focused_failure_1",
+    level: "focused",
+    context: "martial_failure_reframe",
     en: "Setbacks sharpen focus. Analyze, adapt, advance.",
-    vi: "Thất bại mài sắc sự tập trung. Phân tích, thích nghi, tiến lên."
+    vi: "Thất bại mài sắc sự tập trung. Phân tích, thích nghi, tiến lên.",
   },
   // Victory
   {
-    id: 'focused_victory_1',
-    level: 'focused',
-    context: 'martial_victory',
+    id: "focused_victory_1",
+    level: "focused",
+    context: "martial_victory",
     en: "Victory earned through practice. Celebrate quietly, then prepare.",
-    vi: "Chiến thắng có được qua luyện tập. Ăn mừng nhẹ nhàng, rồi chuẩn bị."
+    vi: "Chiến thắng có được qua luyện tập. Ăn mừng nhẹ nhàng, rồi chuẩn bị.",
   },
 
   // === DOJO LEVEL ===
   // Room enter
   {
-    id: 'dojo_enter_1',
-    level: 'dojo',
-    context: 'martial_room_enter',
+    id: "dojo_enter_1",
+    level: "dojo",
+    context: "martial_room_enter",
     en: "Bow in. Train with intention. Every session builds mastery.",
-    vi: "Cúi chào. Tập luyện có chủ đích. Mỗi buổi tập xây dựng sự thành thạo."
+    vi: "Cúi chào. Tập luyện có chủ đích. Mỗi buổi tập xây dựng sự thành thạo.",
   },
   {
-    id: 'dojo_enter_2',
-    level: 'dojo',
-    context: 'martial_room_enter',
+    id: "dojo_enter_2",
+    level: "dojo",
+    context: "martial_room_enter",
     en: "The dojo awaits. Show up. Execute. Grow.",
-    vi: "Dojo đang chờ. Xuất hiện. Thực hiện. Phát triển."
+    vi: "Dojo đang chờ. Xuất hiện. Thực hiện. Phát triển.",
   },
   // Entry complete
   {
-    id: 'dojo_complete_1',
-    level: 'dojo',
-    context: 'martial_entry_complete',
+    id: "dojo_complete_1",
+    level: "dojo",
+    context: "martial_entry_complete",
     en: "Strong execution. Log this and review tomorrow.",
-    vi: "Thực hiện mạnh mẽ. Ghi lại và xem lại ngày mai."
+    vi: "Thực hiện mạnh mẽ. Ghi lại và xem lại ngày mai.",
   },
   {
-    id: 'dojo_complete_2',
-    level: 'dojo',
-    context: 'martial_entry_complete',
+    id: "dojo_complete_2",
+    level: "dojo",
+    context: "martial_entry_complete",
     en: "Movement recorded. Next: apply under pressure.",
-    vi: "Động tác đã ghi nhận. Tiếp theo: áp dụng dưới áp lực."
+    vi: "Động tác đã ghi nhận. Tiếp theo: áp dụng dưới áp lực.",
   },
   // Low mood
   {
-    id: 'dojo_low_1',
-    level: 'dojo',
-    context: 'martial_low_mood',
+    id: "dojo_low_1",
+    level: "dojo",
+    context: "martial_low_mood",
     en: "Even in low energy, show up. Light training still builds.",
-    vi: "Ngay cả khi năng lượng thấp, hãy xuất hiện. Tập nhẹ vẫn xây dựng."
+    vi: "Ngay cả khi năng lượng thấp, hãy xuất hiện. Tập nhẹ vẫn xây dựng.",
   },
   // Stressed
   {
-    id: 'dojo_stressed_1',
-    level: 'dojo',
-    context: 'martial_stressed',
+    id: "dojo_stressed_1",
+    level: "dojo",
+    context: "martial_stressed",
     en: "Use this tension. Channel it into controlled movement.",
-    vi: "Sử dụng căng thẳng này. Hướng nó vào chuyển động có kiểm soát."
+    vi: "Sử dụng căng thẳng này. Hướng nó vào chuyển động có kiểm soát.",
   },
   // Failure reframe
   {
-    id: 'dojo_failure_1',
-    level: 'dojo',
-    context: 'martial_failure_reframe',
+    id: "dojo_failure_1",
+    level: "dojo",
+    context: "martial_failure_reframe",
     en: "Failure is data. Adjust your stance and try again.",
-    vi: "Thất bại là dữ liệu. Điều chỉnh tư thế và thử lại."
+    vi: "Thất bại là dữ liệu. Điều chỉnh tư thế và thử lại.",
   },
   // Victory
   {
-    id: 'dojo_victory_1',
-    level: 'dojo',
-    context: 'martial_victory',
+    id: "dojo_victory_1",
+    level: "dojo",
+    context: "martial_victory",
     en: "Bow out. You showed discipline today. Return stronger.",
-    vi: "Cúi chào ra. Bạn đã thể hiện kỷ luật hôm nay. Trở lại mạnh mẽ hơn."
-  }
+    vi: "Cúi chào ra. Bạn đã thể hiện kỷ luật hôm nay. Trở lại mạnh mẽ hơn.",
+  },
 ];
 
 /**
@@ -224,22 +380,25 @@ export function getMartialCoachTip(args: {
   const { level, context, userName } = args;
 
   // 'off' level returns empty tip
-  if (level === 'off') {
-    return { id: 'martial_off', en: '', vi: '' };
+  if (level === "off") {
+    return { id: "martial_off", en: "", vi: "" };
   }
 
   // Filter tips by level and context
-  const matchingTips = MARTIAL_TIPS.filter(
-    tip => tip.level === level && tip.context === context
-  );
+  const matchingTips = MARTIAL_TIPS.filter((tip) => tip.level === level && tip.context === context);
 
   // Fallback to room enter if no matching context
-  const tips = matchingTips.length > 0 
-    ? matchingTips 
-    : MARTIAL_TIPS.filter(tip => tip.level === level && tip.context === 'martial_room_enter');
+  const tips =
+    matchingTips.length > 0
+      ? matchingTips
+      : MARTIAL_TIPS.filter((tip) => tip.level === level && tip.context === "martial_room_enter");
 
   if (tips.length === 0) {
-    return { id: 'martial_default', en: 'Focus. Breathe. Train.', vi: 'Tập trung. Hít thở. Luyện tập.' };
+    return {
+      id: "martial_default",
+      en: "Focus. Breathe. Train.",
+      vi: "Tập trung. Hít thở. Luyện tập.",
+    };
   }
 
   // Pick random tip
@@ -248,14 +407,14 @@ export function getMartialCoachTip(args: {
   // Replace {{name}} placeholder if userName provided
   let en = tip.en;
   let vi = tip.vi;
-  
+
   if (userName) {
     en = en.replace(/\{\{name\}\}/g, userName);
     vi = vi.replace(/\{\{name\}\}/g, userName);
   } else {
     // Remove placeholder cleanly if no name
-    en = en.replace(/\{\{name\}\},?\s*/g, '').replace(/\s+/g, ' ').trim();
-    vi = vi.replace(/\{\{name\}\},?\s*/g, '').replace(/\s+/g, ' ').trim();
+    en = en.replace(/\{\{name\}\},?\s*/g, "").replace(/\s+/g, " ").trim();
+    vi = vi.replace(/\{\{name\}\},?\s*/g, "").replace(/\s+/g, " ").trim();
   }
 
   return { id: tip.id, en, vi };
@@ -267,7 +426,7 @@ export function getMartialCoachTip(args: {
 export function validateMartialCoachTips(): { valid: boolean; errors: string[] } {
   const errors: string[] = [];
   const MAX_LENGTH = 140;
-  const activeLevels: MartialCoachLevel[] = ['gentle', 'focused', 'dojo'];
+  const activeLevels: MartialCoachLevel[] = ["gentle", "focused", "dojo"];
 
   for (const tip of MARTIAL_TIPS) {
     // Check length
@@ -300,20 +459,26 @@ export function getAllMartialTips(): MartialCoachTip[] {
 }
 
 /**
- * Infer martial discipline from room ID
+ * Infer martial discipline from room metadata.
+ * (Extra args are optional; tests may pass only roomId.)
  */
-export function inferMartialDiscipline(roomId: string): string {
-  const id = roomId.toLowerCase();
-  
-  if (id.includes('sword') || id.includes('samurai') || id.includes('kendo')) return 'sword';
-  if (id.includes('boxing')) return 'boxing';
-  if (id.includes('karate')) return 'karate';
-  if (id.includes('judo')) return 'judo';
-  if (id.includes('aikido')) return 'aikido';
-  if (id.includes('muay') || id.includes('thai')) return 'muay_thai';
-  if (id.includes('bjj') || id.includes('jiu')) return 'bjj';
-  if (id.includes('kung') || id.includes('wushu')) return 'kung_fu';
-  if (id.includes('taekwondo') || id.includes('tkd')) return 'taekwondo';
-  
-  return 'martial';
+export function inferMartialDiscipline(roomId: string, roomDomain?: string | null, tags?: string[] | null): string {
+  const parts: string[] = [];
+  if (roomId) parts.push(roomId);
+  if (roomDomain) parts.push(roomDomain);
+  if (tags?.length) parts.push(tags.join(" "));
+
+  const text = normalizeText(parts.join(" ")).replace(/\s+/g, " ");
+
+  if (includesAny(text, ["fencing", "kendo", "sword", "swords", "samurai"])) return "sword";
+  if (includesAny(text, ["boxing", "kickboxing", "kick boxing"])) return "boxing";
+  if (includesAny(text, ["bjj", "brazilian jiu jitsu", "jiu jitsu", "jiujitsu", "grappling"])) return "bjj";
+  if (includesAny(text, ["karate"])) return "karate";
+  if (includesAny(text, ["taekwondo", "tkd"])) return "taekwondo";
+  if (includesAny(text, ["muay thai"])) return "muay_thai";
+  if (includesAny(text, ["judo"])) return "judo";
+  if (includesAny(text, ["aikido"])) return "aikido";
+  if (includesAny(text, ["kung fu", "kungfu", "wushu"])) return "kung_fu";
+
+  return "martial";
 }

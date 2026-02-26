@@ -39,31 +39,117 @@ const ROOM_ID_OVERRIDES: Record<string, string> = {
   // VIP3 II Writing Deep-Dive rooms - map URL IDs to canonical DB IDs
   "english-writing-deep-dive-vip3-ii": "english-writing-deep-dive-vip3II",
   "english-writing-deep-dive-vip3-ii-ii": "english-writing-deep-dive-vip3II-II",
-  "english-writing-deep-dive-vip3-iii": "english-writing-deep-dive-vip3ii-III",
-};
-
-const normalizeRoomId = (roomId: string): string => {
-  // 1. Explicit overrides first
-  if (ROOM_ID_OVERRIDES[roomId]) {
-    return ROOM_ID_OVERRIDES[roomId];
-  }
-
-  // 2. Kids rooms: strip suffix and kebab-case
-  if (roomId.endsWith("_kids_l1")) {
-    return roomId.replace("_kids_l1", "").replace(/_/g, "-");
-  }
-
-  // 3. Handle VIP3II / Roman numeral suffixes (case-insensitive -> uppercase)
-  const romanNumeralPattern = /-(i+|ii|iii|iv|v|vi|vii|viii|ix|x)$/i;
-  if (romanNumeralPattern.test(roomId)) {
-    return roomId.replace(romanNumeralPattern, (match) => match.toUpperCase());
-  }
-
-  // 4. Regular rooms: use as-is (database uses kebab/hyphen IDs)
-  return roomId;
+  "english-writing-deep-dive-vip3-iii": "english-writing-deep-dive-vip3-III",
 };
 
 const AUDIO_BASE_PATH = `${AUDIO_FOLDER}/`;
+
+/**
+ * Normalize/transform room IDs across the app:
+ * - Some parts of the app treat "canonical" as underscore_case (e.g. adhd-support-vip3 → adhd_support_vip3)
+ * - Some DB rows (legacy) may still use kebab-case or custom IDs (overrides)
+ *
+ * To avoid "ROOM_NOT_FOUND" flakes in tests and integration navigation,
+ * we try multiple candidate IDs in priority order.
+ */
+
+// Uppercase roman suffixes (e.g. -ii → -II). Only affects trailing suffix.
+const applyRomanSuffixUpper = (s: string): string => {
+  const romanNumeralPattern = /-(i+|ii|iii|iv|v|vi|vii|viii|ix|x)$/i;
+  if (!romanNumeralPattern.test(s)) return s;
+  return s.replace(romanNumeralPattern, (m) => m.toUpperCase());
+};
+
+// Kids rooms: strip _kids_l1 and convert underscores to hyphens (legacy behavior)
+const applyKidsNormalization = (s: string): string => {
+  if (!s.endsWith("_kids_l1")) return s;
+  return s.replace("_kids_l1", "").replace(/_/g, "-");
+};
+
+const toUnderscoreCanonical = (s: string): string => {
+  return (s || "")
+    .trim()
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/_/g, "_")
+    .replace(/-/g, "_");
+};
+
+const toKebab = (s: string): string => {
+  return (s || "")
+    .trim()
+    .replace(/\s+/g, "-")
+    .replace(/_+/g, "_")
+    .replace(/_/g, "-");
+};
+
+const uniq = <T,>(arr: T[]): T[] => {
+  const seen = new Set<T>();
+  const out: T[] = [];
+  for (const v of arr) {
+    if (!seen.has(v)) {
+      seen.add(v);
+      out.push(v);
+    }
+  }
+  return out;
+};
+
+const normalizeRoomIdPrimary = (roomId: string): string => {
+  const raw = (roomId || "").trim();
+  if (!raw) return raw;
+
+  // 1) explicit overrides (input could be any case)
+  const lower = raw.toLowerCase();
+  if (ROOM_ID_OVERRIDES[lower]) return ROOM_ID_OVERRIDES[lower];
+
+  // 2) kids rule
+  const kids = applyKidsNormalization(raw);
+  if (kids !== raw) return kids;
+
+  // 3) roman suffix rule
+  const roman = applyRomanSuffixUpper(raw);
+  if (roman !== raw) return roman;
+
+  // 4) as-is
+  return raw;
+};
+
+const buildRoomIdCandidates = (roomId: string): string[] => {
+  const raw = (roomId || "").trim();
+  const primary = normalizeRoomIdPrimary(raw);
+
+  // Produce both underscore-canonical and kebab variations for robust lookup
+  const underscoreFromRaw = toUnderscoreCanonical(raw);
+  const underscoreFromPrimary = toUnderscoreCanonical(primary);
+
+  const kebabFromRaw = toKebab(raw);
+  const kebabFromPrimary = toKebab(primary);
+
+  // ✅ FIX: Prefer `primary` (overrides/normalization) before `raw`
+  // This prevents trying a "wrong" raw ID first when an override exists.
+  const variants = [
+    primary,
+    raw,
+
+    applyRomanSuffixUpper(primary),
+    applyRomanSuffixUpper(raw),
+
+    underscoreFromPrimary,
+    underscoreFromRaw,
+    applyRomanSuffixUpper(underscoreFromPrimary),
+    applyRomanSuffixUpper(underscoreFromRaw),
+
+    kebabFromPrimary,
+    kebabFromRaw,
+    applyRomanSuffixUpper(kebabFromPrimary),
+    applyRomanSuffixUpper(kebabFromRaw),
+  ]
+    .map((s) => (s || "").trim())
+    .filter(Boolean);
+
+  return uniq(variants);
+};
 
 /**
  * Build preview entries - show first 2 entries as a "shop window" preview
@@ -73,30 +159,45 @@ const buildPreviewEntries = (entries: any[]): any[] => {
   return entries.slice(0, 2);
 };
 
+// Helper to check kids tier with null safety
+const checkIsKidsTier = (tier: TierId | null | undefined): boolean => {
+  if (!tier) return false;
+  return KIDS_TIER_IDS.includes(tier);
+};
+
 /**
  * Load room from database
  *
  * ✅ IMPORTANT (2026-02):
  * Entries live in public.room_entries (room_id, index, copy_en, copy_vi, ...)
  * NOT in public.rooms.entries.
+ *
+ * We try multiple candidate IDs to avoid ID-format mismatches.
  */
-const loadFromDatabase = async (dbRoomId: string) => {
+const loadFromDatabase = async (
+  candidateIds: string[],
+  canonicalTierSourceId: string
+) => {
   // ✅ IMPORTANT: tier MUST come from roomId (DB tier is not trusted)
-  const roomTier: TierId = tierFromRoomId(dbRoomId);
+  const roomTier: TierId = tierFromRoomId(canonicalTierSourceId);
 
   // 1) Load entries from room_entries (source of truth)
-  const { data: entryRows, error: entriesError } = await supabase
-    .from(ROOM_ENTRIES_TABLE)
-    .select("*")
-    .eq("room_id", dbRoomId)
-    .order("index", { ascending: true })
-    .returns<RoomEntryRow[]>();
+  for (const dbRoomId of candidateIds) {
+    const { data: entryRows, error: entriesError } = await supabase
+      .from(ROOM_ENTRIES_TABLE)
+      .select("*")
+      .eq("room_id", dbRoomId)
+      .order("index", { ascending: true })
+      .returns<RoomEntryRow[]>();
 
-  if (entriesError) return null;
+    if (entriesError) {
+      // Try next candidate (don’t hard-fail on one)
+      continue;
+    }
 
-  const hasEntries = Array.isArray(entryRows) && entryRows.length > 0;
+    const hasEntries = Array.isArray(entryRows) && entryRows.length > 0;
+    if (!hasEntries) continue;
 
-  if (hasEntries) {
     const { keywordMenu, merged } = processEntriesOptimized(
       (entryRows as any[]) ?? [],
       dbRoomId
@@ -111,68 +212,83 @@ const loadFromDatabase = async (dbRoomId: string) => {
   }
 
   // 2) No entries — optional: fall back to room-level keywords if present
-  const { data: dbRoom, error: roomError } = await supabase
-    .from(ROOMS_TABLE)
-    .select("*")
-    .eq("id", dbRoomId)
-    .maybeSingle<RoomRow>();
+  for (const dbRoomId of candidateIds) {
+    const { data: dbRoom, error: roomError } = await supabase
+      .from(ROOMS_TABLE)
+      .select("*")
+      .eq("id", dbRoomId)
+      .maybeSingle<RoomRow>();
 
-  if (roomError) return null;
-  if (!dbRoom) return null;
+    if (roomError) continue;
+    if (!dbRoom) continue;
 
-  const hasRoomKeywords =
-    Array.isArray((dbRoom as any).keywords) && (dbRoom as any).keywords.length > 0;
+    const hasRoomKeywords =
+      Array.isArray((dbRoom as any).keywords) &&
+      (dbRoom as any).keywords.length > 0;
 
-  if (!hasRoomKeywords) return null;
+    if (!hasRoomKeywords) continue;
 
-  return {
-    merged: [],
-    keywordMenu: {
-      en: (dbRoom as any).keywords || [],
-      vi: (dbRoom as any).keywords || [],
-    },
-    audioBasePath: AUDIO_BASE_PATH,
-    roomTier,
-  };
+    return {
+      merged: [],
+      keywordMenu: {
+        en: (dbRoom as any).keywords || [],
+        vi: (dbRoom as any).keywords || [],
+      },
+      audioBasePath: AUDIO_BASE_PATH,
+      roomTier,
+    };
+  }
+
+  return null;
 };
 
 /**
  * Load room from static JSON files (fallback)
  * NOTE: should be phased out. Tier enforcement here is best-effort.
+ *
+ * We try multiple candidate IDs to avoid ID-format mismatches.
  */
-const loadFromJson = async (roomId: string) => {
+const loadFromJson = async (
+  candidateIds: string[],
+  canonicalTierSourceId: string
+) => {
   try {
     const { loadRoomJson } = await import("./roomJsonResolver");
-    const jsonData = await loadRoomJson(roomId);
 
-    // ✅ Missing JSON OR “200 HTML pretending to be JSON” should behave like missing
-    if (!jsonData || typeof jsonData !== "object") return null;
+    for (const id of candidateIds) {
+      const jsonData = await loadRoomJson(id);
 
-    if (!Array.isArray((jsonData as any)?.entries) || (jsonData as any).entries.length === 0) {
-      return null;
+      // ✅ Missing JSON OR “200 HTML pretending to be JSON” should behave like missing
+      if (!jsonData || typeof jsonData !== "object") continue;
+
+      if (
+        !Array.isArray((jsonData as any)?.entries) ||
+        (jsonData as any).entries.length === 0
+      ) {
+        continue;
+      }
+
+      const { keywordMenu, merged } = processEntriesOptimized(
+        (jsonData as any).entries,
+        id
+      );
+
+      // ✅ IMPORTANT: tier MUST come from roomId (JSON tier is not trusted)
+      const roomTier: TierId = tierFromRoomId(canonicalTierSourceId);
+
+      return {
+        merged,
+        keywordMenu,
+        audioBasePath: AUDIO_BASE_PATH,
+        roomTier,
+      };
     }
 
-    const { keywordMenu, merged } = processEntriesOptimized((jsonData as any).entries, roomId);
-
-    // ✅ IMPORTANT: tier MUST come from roomId (JSON tier is not trusted)
-    const roomTier: TierId = tierFromRoomId(roomId);
-
-    return {
-      merged,
-      keywordMenu,
-      audioBasePath: AUDIO_BASE_PATH,
-      roomTier,
-    };
+    return null;
   } catch (error) {
     console.error("Failed to load room from JSON:", error);
     return null;
   }
-};
-
-// Helper to check kids tier with null safety
-const checkIsKidsTier = (tier: TierId | null | undefined): boolean => {
-  if (!tier) return false;
-  return KIDS_TIER_IDS.includes(tier);
 };
 
 /**
@@ -185,12 +301,11 @@ const checkIsKidsTier = (tier: TierId | null | undefined): boolean => {
 export const useMergedRoom = (roomId: string): LoadedRoomResult => {
   const cacheKey = `room:${roomId}`;
 
-  return (useSWR({
+  return useSWR({
     key: cacheKey,
     fetcher: () => loadMergedRoomInternal(roomId),
     ttl: 5 * 60 * 1000, // 5 minutes
-  }) as any);
-
+  }) as any;
 };
 
 /**
@@ -208,9 +323,18 @@ export const useLoadMergedRoom = useMergedRoom;
  * - Full access requires correct tier subscription
  * - Never returns empty room just because of tier mismatch
  */
-const loadMergedRoomInternal = async (roomId: string): Promise<LoadedRoomResult> => {
+const loadMergedRoomInternal = async (
+  roomId: string
+): Promise<LoadedRoomResult> => {
   const startTime = performance.now();
   const { determineAccess } = await import("./accessControl");
+
+  // Canonical tier source: underscore form tends to match the rest of the app ("canonical:")
+  // but we still try many candidates for actual lookups.
+  const canonicalTierSourceId = toUnderscoreCanonical(
+    normalizeRoomIdPrimary(roomId)
+  );
+  const candidateIds = buildRoomIdCandidates(roomId);
 
   try {
     // 1. Get authenticated user (guests treated as free tier)
@@ -223,10 +347,13 @@ const loadMergedRoomInternal = async (roomId: string): Promise<LoadedRoomResult>
 
     if (user) {
       // 2. Check admin status via has_role RPC
-      const { data: isAdminRpc, error: adminError } = await supabase.rpc("has_role", {
-        _role: "admin",
-        _user_id: user.id,
-      });
+      const { data: isAdminRpc, error: adminError } = await supabase.rpc(
+        "has_role",
+        {
+          _role: "admin",
+          _user_id: user.id,
+        }
+      );
 
       if (adminError) {
         logger.error("Error checking admin role", {
@@ -245,23 +372,24 @@ const loadMergedRoomInternal = async (roomId: string): Promise<LoadedRoomResult>
         .eq("status", "active")
         .maybeSingle();
 
-      const rawUserTier = (subscription?.subscription_tiers as any)?.name || TIERS.FREE;
+      const rawUserTier =
+        (subscription?.subscription_tiers as any)?.name || TIERS.FREE;
       baseTier = normalizeTier(rawUserTier);
     }
 
     const normalizedUserTier: TierId = isAdmin ? "vip9" : baseTier;
     const isUserKidsTier = checkIsKidsTier(baseTier);
 
-    // 4. Normalize room ID
-    const dbRoomId = normalizeRoomId(roomId);
-
     // ✅ IMPORTANT: room tier MUST come from roomId (ALWAYS)
-    const normalizedRoomTier: TierId = tierFromRoomId(dbRoomId);
+    const normalizedRoomTier: TierId = tierFromRoomId(canonicalTierSourceId);
     const isRoomKidsTier = checkIsKidsTier(normalizedRoomTier);
 
-    // 5. Try database first
+    // 5. Try database first (multi-candidate)
     try {
-      const dbResult = await loadFromDatabase(dbRoomId);
+      const dbResult = await loadFromDatabase(
+        candidateIds,
+        canonicalTierSourceId
+      );
 
       if (dbResult) {
         // Safety net: if keyword menu is empty but merged entries exist,
@@ -276,8 +404,12 @@ const loadMergedRoomInternal = async (roomId: string): Promise<LoadedRoomResult>
           const fallbackVi: string[] = [];
 
           (dbResult.merged as any[]).forEach((entry) => {
-            const en = String(entry.keywordEn || entry.slug || entry.identifier || "").trim();
-            const vi = String(entry.keywordVi || entry.keywordEn || entry.slug || "").trim();
+            const en = String(
+              entry.keywordEn || entry.slug || entry.identifier || ""
+            ).trim();
+            const vi = String(
+              entry.keywordVi || entry.keywordEn || entry.slug || ""
+            ).trim();
 
             if (en) {
               fallbackEn.push(en);
@@ -299,7 +431,10 @@ const loadMergedRoomInternal = async (roomId: string): Promise<LoadedRoomResult>
           if (isUserKidsTier && !isRoomKidsTier) {
             hasFullAccess = false;
           } else {
-            const access = determineAccess(normalizedUserTier, normalizedRoomTier);
+            const access = determineAccess(
+              normalizedUserTier,
+              normalizedRoomTier
+            );
             hasFullAccess = access.hasFullAccess;
           }
         }
@@ -349,14 +484,12 @@ const loadMergedRoomInternal = async (roomId: string): Promise<LoadedRoomResult>
       });
     }
 
-    // 7. Fallback to JSON files (with same preview logic)
+    // 7. Fallback to JSON files (with same preview logic, multi-candidate)
     try {
-      let jsonResult = await loadFromJson(dbRoomId);
-
-      // Extra safety: if normalized ID didn't find it, try original
-      if (!jsonResult && dbRoomId !== roomId) {
-        jsonResult = await loadFromJson(roomId);
-      }
+      const jsonResult = await loadFromJson(
+        candidateIds,
+        canonicalTierSourceId
+      );
 
       if (jsonResult) {
         const isRoomKidsTierJson = checkIsKidsTier(normalizedRoomTier);
@@ -368,7 +501,10 @@ const loadMergedRoomInternal = async (roomId: string): Promise<LoadedRoomResult>
           if (isUserKidsTier && !isRoomKidsTierJson) {
             hasFullAccess = false;
           } else {
-            const access = determineAccess(normalizedUserTier, normalizedRoomTier);
+            const access = determineAccess(
+              normalizedUserTier,
+              normalizedRoomTier
+            );
             hasFullAccess = access.hasFullAccess;
           }
         }
@@ -473,10 +609,8 @@ const loadMergedRoomInternal = async (roomId: string): Promise<LoadedRoomResult>
       merged: [],
       keywordMenu: { en: [], vi: [] },
       audioBasePath: AUDIO_BASE_PATH,
-      roomTier: tierFromRoomId(normalizeRoomId(roomId)),
+      roomTier: tierFromRoomId(canonicalTierSourceId),
       errorCode,
-      // NOTE: keep legacy field if callers expect it
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       hasFullAccess: false,
     };
   }
@@ -489,7 +623,9 @@ const loadMergedRoomInternal = async (roomId: string): Promise<LoadedRoomResult>
 //
 // IMPORTANT: This is NOT a hook. Safe to call anywhere.
 //
-export const loadMergedRoom = async (roomId: string): Promise<LoadedRoomResult> => {
+export const loadMergedRoom = async (
+  roomId: string
+): Promise<LoadedRoomResult> => {
   return loadMergedRoomInternal(roomId);
 };
 

@@ -3,7 +3,7 @@
  * Reduces memory usage and prevents leaks
  */
 
-import { useEffect, useRef, useCallback, useMemo } from 'react';
+import { useEffect, useRef, useCallback, useMemo } from "react";
 
 /**
  * Throttle function calls
@@ -12,7 +12,7 @@ export function throttle<T extends (...args: any[]) => any>(
   func: T,
   wait: number
 ): (...args: Parameters<T>) => void {
-  let timeout: NodeJS.Timeout | null = null;
+  let timeout: ReturnType<typeof setTimeout> | null = null;
   let previous = 0;
 
   return function (this: any, ...args: Parameters<T>) {
@@ -43,7 +43,7 @@ export function debounce<T extends (...args: any[]) => any>(
   func: T,
   wait: number
 ): (...args: Parameters<T>) => void {
-  let timeout: NodeJS.Timeout | null = null;
+  let timeout: ReturnType<typeof setTimeout> | null = null;
 
   return function (this: any, ...args: Parameters<T>) {
     if (timeout) clearTimeout(timeout);
@@ -59,10 +59,10 @@ export function useThrottle<T extends (...args: any[]) => any>(
   delay: number
 ): (...args: Parameters<T>) => void {
   const throttledFn = useMemo(() => throttle(callback, delay), [callback, delay]);
-  
+
   useEffect(() => {
     return () => {
-      // Cleanup on unmount
+      // Cleanup on unmount (no timers persisted outside closure)
     };
   }, []);
 
@@ -80,7 +80,7 @@ export function useDebounce<T extends (...args: any[]) => any>(
 
   useEffect(() => {
     return () => {
-      // Cleanup on unmount
+      // Cleanup on unmount (no timers persisted outside closure)
     };
   }, []);
 
@@ -93,13 +93,13 @@ export function useDebounce<T extends (...args: any[]) => any>(
 export function useCleanupTimers() {
   const timers = useRef<Set<number>>(new Set());
 
-  const setTimeout = useCallback((callback: () => void, delay: number) => {
+  const setTimeoutSafe = useCallback((callback: () => void, delay: number) => {
     const id = window.setTimeout(callback, delay);
     timers.current.add(id);
     return id;
   }, []);
 
-  const setInterval = useCallback((callback: () => void, delay: number) => {
+  const setIntervalSafe = useCallback((callback: () => void, delay: number) => {
     const id = window.setInterval(callback, delay);
     timers.current.add(id);
     return id;
@@ -113,7 +113,7 @@ export function useCleanupTimers() {
 
   useEffect(() => {
     return () => {
-      timers.current.forEach(id => {
+      timers.current.forEach((id) => {
         window.clearTimeout(id);
         window.clearInterval(id);
       });
@@ -121,7 +121,7 @@ export function useCleanupTimers() {
     };
   }, []);
 
-  return { setTimeout, setInterval, clearTimer };
+  return { setTimeout: setTimeoutSafe, setInterval: setIntervalSafe, clearTimer };
 }
 
 /**
@@ -133,9 +133,9 @@ export function useVisibilityPause(callback: (visible: boolean) => void) {
       callback(!document.hidden);
     };
 
-    document.addEventListener('visibilitychange', handleVisibilityChange);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
     return () => {
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, [callback]);
 }
@@ -154,7 +154,7 @@ export class LRUCache<K, V> {
 
   get(key: K): V | undefined {
     if (!this.cache.has(key)) return undefined;
-    
+
     // Move to end (most recently used)
     const value = this.cache.get(key)!;
     this.cache.delete(key);
@@ -167,13 +167,16 @@ export class LRUCache<K, V> {
     if (this.cache.has(key)) {
       this.cache.delete(key);
     }
+
     // Add to end
     this.cache.set(key, value);
-    
+
     // Remove oldest if over limit
     if (this.cache.size > this.maxSize) {
-      const firstKey = this.cache.keys().next().value;
-      this.cache.delete(firstKey);
+      const first = this.cache.keys().next().value as K | undefined;
+      if (first !== undefined) {
+        this.cache.delete(first);
+      }
     }
   }
 

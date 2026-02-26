@@ -265,22 +265,29 @@ export const MusicPlayer = () => {
   const currentPlaylist = getCurrentPlaylist();
   const displayTracks = currentPlaylist;
 
-  const { updateFromPlayer } = useMusicPlayer();
+  /**
+   * ✅ Typecheck fix:
+   * MusicPlayerContextValue no longer guarantees `updateFromPlayer`.
+   * Keep behavior if it exists, without breaking builds.
+   */
+  const musicPlayerCtx = useMusicPlayer() as unknown as {
+    updateFromPlayer?: (payload: { isPlaying: boolean; currentTrackName?: string }) => void;
+  };
 
-  // Sync player state to context so GlobalPlayingIndicator can show it
+  // Sync player state to context so GlobalPlayingIndicator can show it (if supported)
   useEffect(() => {
-    updateFromPlayer({
+    musicPlayerCtx.updateFromPlayer?.({
       isPlaying,
       currentTrackName: isPlaying ? currentTrack?.name : undefined,
     });
-  }, [isPlaying, currentTrack?.name, updateFromPlayer]);
+  }, [isPlaying, currentTrack?.name, musicPlayerCtx]);
 
-  // Reset state on unmount only
+  // Reset state on unmount only (if supported)
   useEffect(() => {
     return () => {
-      updateFromPlayer({ isPlaying: false, currentTrackName: undefined });
+      musicPlayerCtx.updateFromPlayer?.({ isPlaying: false, currentTrackName: undefined });
     };
-  }, [updateFromPlayer]);
+  }, [musicPlayerCtx]);
 
   return (
     <div className="h-full w-full bg-card border border-border rounded-lg shadow-sm">

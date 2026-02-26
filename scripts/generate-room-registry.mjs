@@ -52,7 +52,7 @@ function canonicalIdFromFilename(filename) {
  * Supported inferred tiers (canonical):
  * - free
  * - vip1..vip9
- * - vip3ii
+ * - vip3
  * - kids_1..kids_3
  */
 function inferTierFromId(id) {
@@ -63,8 +63,8 @@ function inferTierFromId(id) {
   if (/(^|_)kids_2($|_)/.test(s)) return "kids_2";
   if (/(^|_)kids_3($|_)/.test(s)) return "kids_3";
 
-  // vip3ii specialization marker
-  if (/(^|_)vip3ii($|_)/.test(s) || /(^|_)vip3_ii($|_)/.test(s)) return "vip3ii";
+  // vip3 specialization marker
+  if (/(^|_)vip3($|_)/.test(s) || /(^|_)vip3_ii($|_)/.test(s)) return "vip3";
 
   // explicit free marker
   if (/(^|_)free($|_)/.test(s)) return "free";
@@ -86,10 +86,10 @@ function inferTierFromId(id) {
  * Returns undefined if it doesn't look like a known tier.
  *
  * Accepts:
- * - "free", "vip3", "vip9", "vip3ii"
+ * - "free", "vip3", "vip9", "vip3"
  * - "Free / Miễn phí"
  * - "VIP3 / VIP3", "VIP9 / Cấp VIP9"
- * - "VIP3 II / VIP3 II" -> vip3ii
+ * - "VIP3 II / VIP3 II" -> vip3
  * - "kids_1", "Kids Level 1 / Trẻ em cấp 1" (best-effort)
  */
 function normalizeJsonTier(raw) {
@@ -101,13 +101,13 @@ function normalizeJsonTier(raw) {
   // canonical ids already
   if (low === "free") return "free";
   if (/^vip[1-9]$/.test(low)) return low;
-  if (low === "vip3ii" || low === "vip3_ii") return "vip3ii";
+  if (low === "vip3" || low === "vip3_ii") return "vip3";
   if (low === "kids_1" || low === "kids_2" || low === "kids_3") return low;
 
   // human labels
   if (low.includes("miễn phí") || low.includes("free")) return "free";
 
-  if (low.includes("vip3ii") || low.includes("vip3 ii")) return "vip3ii";
+  if (low.includes("vip3") || low.includes("vip3 ii")) return "vip3";
 
   const m = low.match(/vip\s*([1-9])/);
   if (m) return `vip${m[1]}`;
@@ -133,7 +133,7 @@ function safeReadJson(filePath) {
 
 function titleCaseFromId(id) {
   return String(id || "")
-    .replace(/_(free|vip\d+|vip3ii|vip3_ii|kids_1|kids_2|kids_3)$/i, "")
+    .replace(/_(free|vip\d+|vip3|vip3_ii|kids_1|kids_2|kids_3)$/i, "")
     .replace(/_+/g, "_")
     .split("_")
     .filter(Boolean)
@@ -174,6 +174,8 @@ function scanAllRooms() {
   const files = fs
     .readdirSync(dataDir)
     .filter((f) => f.endsWith(".json") && !f.startsWith("."))
+    // ✅ CRITICAL: never treat registry.json as a room file (it may be generated or missing tier by design)
+    .filter((f) => f !== "registry.json")
     .sort();
 
   const manifest = {};

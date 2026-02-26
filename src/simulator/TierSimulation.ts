@@ -3,7 +3,7 @@
 // VERSION: MB-BLUE-97.9d — 2026-01-18 (+0700)
 //
 // FIX:
-// - vip3ii is DELETED. Remove it from mock users.
+// - vip3 is DELETED. Remove it from mock users.
 // - Keep simulator tiers aligned with TierId union (canonical only).
 //
 // NOTE:

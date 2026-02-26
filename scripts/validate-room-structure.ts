@@ -10,7 +10,7 @@
  *
  * This script:
  *  - Assigns each room to a column based on domain + id patterns
- *  - Ensures VIP3/VIP3II follow correct rules
+ *  - Ensures VIP3/VIP3 follow correct rules
  *  - Prints anomalies for manual review
  */
 
@@ -106,7 +106,7 @@ function classifyColumn(room: any): Column {
 
 function inferTierIdFromLabel(tier: string | null): string {
   const t = (tier || "").toLowerCase();
-  if (t.includes("vip3 ii")) return "vip3ii";
+  if (t.includes("vip3 ii")) return "vip3";
   if (t.includes("vip3")) return "vip3";
   if (t.includes("vip1")) return "vip1";
   if (t.includes("vip2")) return "vip2";
@@ -146,13 +146,13 @@ async function run() {
     }
     byTier[tierId][column]++;
 
-    // VIP3II rules: must be core
-    if (tierId === "vip3ii" && column !== "core") {
+    // VIP3 rules: must be core
+    if (tierId === "vip3" && column !== "core") {
       anomalies.push({
         id: r.id,
         tier: r.tier,
         domain: r.domain,
-        issue: "VIP3II room is not in CORE column",
+        issue: "VIP3 room is not in CORE column",
         column,
       });
     }

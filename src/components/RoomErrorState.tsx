@@ -1,8 +1,21 @@
+// FILE: src/components/room/RoomErrorState.tsx
+// MercyBlade Blue — RoomErrorState (FIXED / STABLE)
+//
+// FIXES (TS2339 build-safe):
+// - `normalizeRoomError()` returns `RoomErrorPayload` (no `onBack`), so do NOT destructure `onBack` from `normalized`.
+//   Instead, take `onBack` from `props` (RoomErrorStateProps) and keep the rest normalized.
+// - Avoid logging on every render (useEffect + de-dupe key).
+// - Prefer react-router navigate for auth CTA (no full page reload).
+// - Keep animations only on generic error (as before), but keep UI consistent.
+// - Harden kind normalization fallback.
+//
+// NOTE: Keeps your existing API: normalizeRoomError, getErrorMessage, BUTTON_LABELS, logger, motion helpers.
+
+import { useEffect, useMemo } from "react";
 import { AlertCircle, Lock, LogIn } from "lucide-react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { normalizeRoomError, type RoomErrorPayload } from "@/lib/errors";
-import { useMercyBladeTheme } from "@/hooks/useMercyBladeTheme";
 import { getErrorMessage, BUTTON_LABELS } from "@/lib/constants/uiText";
 import { logger } from "@/lib/logger";
 import { fadeInScale, shakeError, getVariants } from "@/lib/motion";
@@ -11,29 +24,63 @@ type RoomErrorStateProps = RoomErrorPayload & {
   onBack?: () => void;
 };
 
-/**
- * Consistent error UI for room loading failures
- * Shows user-friendly bilingual messages based on error code or kind
- * Theme-aware and logs all errors for analytics
- */
+type SafeKind = "auth" | "access" | "not_found" | "unknown";
+
+function normalizeKind(kind: unknown): SafeKind {
+  const k = String(kind ?? "").trim().toLowerCase();
+  if (k === "auth") return "auth";
+  if (k === "access") return "access";
+  if (k === "not_found" || k === "notfound" || k === "404") return "not_found";
+  return "unknown";
+}
+
 export function RoomErrorState(props: RoomErrorStateProps) {
   const navigate = useNavigate();
-  const { mode } = useMercyBladeTheme();
-  
-  const { code, roomId, kind, message, onBack } = normalizeRoomError(props);
-  const errorKind = kind!;
-  
-  // Log all room errors for analytics
-  logger.error('Room load error', {
-    scope: 'RoomErrorState',
-    kind: errorKind,
-    code,
-    roomId,
-    message,
-  });
-  
+
+  // IMPORTANT: onBack belongs to RoomErrorStateProps, not RoomErrorPayload returned by normalizeRoomError
+  const onBack = props.onBack;
+
+  const normalized = useMemo(() => normalizeRoomError(props), [props]);
+  const { code, roomId, kind, message } = normalized;
+
+  const errorKind = useMemo<SafeKind>(() => normalizeKind(kind), [kind]);
+
   // Default back behavior
-  const handleBack = onBack || (() => navigate("/"));
+  const handleBack = useMemo(() => onBack || (() => navigate("/")), [onBack, navigate]);
+
+  // Log all room errors for analytics (but only when the error identity changes)
+  const logKey = useMemo(() => {
+    return [
+      "RoomErrorState",
+      String(errorKind || "unknown"),
+      String(code || ""),
+      String(roomId || ""),
+      String(message || ""),
+    ].join("|");
+  }, [errorKind, code, roomId, message]);
+
+  useEffect(() => {
+    try {
+      // de-dupe within a session to avoid spam on re-renders
+      if (typeof window !== "undefined") {
+        const w = window as any;
+        if (!w.__mb_room_error_log_seen) w.__mb_room_error_log_seen = new Set<string>();
+        const seen: Set<string> = w.__mb_room_error_log_seen;
+        if (seen.has(logKey)) return;
+        seen.add(logKey);
+      }
+
+      logger.error("Room load error", {
+        scope: "RoomErrorState",
+        kind: errorKind,
+        code,
+        roomId,
+        message,
+      });
+    } catch {
+      // ignore logging errors
+    }
+  }, [logKey, errorKind, code, roomId, message]);
 
   if (errorKind === "auth") {
     return (
@@ -41,18 +88,20 @@ export function RoomErrorState(props: RoomErrorStateProps) {
         <LogIn className="w-16 h-16 text-muted-foreground transition-colors duration-200" />
         <div className="text-center space-y-2">
           <h2 className="text-2xl font-bold transition-colors duration-200">
-            {getErrorMessage('auth_required', 'en')}
+            {getErrorMessage("auth_required", "en")}
           </h2>
           <p className="text-muted-foreground transition-colors duration-200">
-            {getErrorMessage('auth_required', 'vi')}
+            {getErrorMessage("auth_required", "vi")}
           </p>
         </div>
-        <a
-          href="/auth"
+
+        <button
+          type="button"
+          onClick={() => navigate("/auth")}
           className="px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all duration-200"
         >
           {BUTTON_LABELS.en.continue} / {BUTTON_LABELS.vi.continue}
-        </a>
+        </button>
       </div>
     );
   }
@@ -63,13 +112,14 @@ export function RoomErrorState(props: RoomErrorStateProps) {
         <Lock className="w-16 h-16 text-muted-foreground transition-colors duration-200" />
         <div className="text-center space-y-2">
           <h2 className="text-2xl font-bold transition-colors duration-200">
-            {getErrorMessage('access_denied', 'en')}
+            {getErrorMessage("access_denied", "en")}
           </h2>
           <p className="text-muted-foreground transition-colors duration-200">
-            {getErrorMessage('access_denied', 'vi')}
+            {getErrorMessage("access_denied", "vi")}
           </p>
         </div>
         <button
+          type="button"
           onClick={handleBack}
           className="px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all duration-200"
         >
@@ -85,13 +135,14 @@ export function RoomErrorState(props: RoomErrorStateProps) {
         <AlertCircle className="w-16 h-16 text-muted-foreground transition-colors duration-200" />
         <div className="text-center space-y-2">
           <h2 className="text-2xl font-bold transition-colors duration-200">
-            {getErrorMessage('room_not_found', 'en')}
+            {getErrorMessage("room_not_found", "en")}
           </h2>
           <p className="text-muted-foreground transition-colors duration-200">
-            {getErrorMessage('room_not_found', 'vi')}
+            {getErrorMessage("room_not_found", "vi")}
           </p>
         </div>
         <button
+          type="button"
           onClick={handleBack}
           className="px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all duration-200"
         >
@@ -109,21 +160,21 @@ export function RoomErrorState(props: RoomErrorStateProps) {
       animate="visible"
       className="flex flex-col items-center justify-center min-h-[400px] gap-4 p-6 transition-colors duration-200"
     >
-      <motion.div
-        animate="shake"
-        variants={shakeError}
-      >
+      <motion.div animate="shake" variants={shakeError}>
         <AlertCircle className="w-16 h-16 text-destructive transition-colors duration-200" />
       </motion.div>
+
       <div className="text-center space-y-2">
         <h2 className="text-2xl font-bold transition-colors duration-200">
-          {getErrorMessage('generic', 'en')}
+          {getErrorMessage("generic", "en")}
         </h2>
         <p className="text-muted-foreground transition-colors duration-200">
-          {message || getErrorMessage('generic', 'vi')}
+          {message || getErrorMessage("generic", "vi")}
         </p>
       </div>
+
       <motion.button
+        type="button"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={handleBack}

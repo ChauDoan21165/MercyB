@@ -25,7 +25,7 @@ for (const f of files) {
   backup(f, src);
   let out = src;
 
-  // 1) vip3ii -> vip3 (string literals and object keys)
+  // 1) vip3 -> vip3 (string literals and object keys)
   out = out.replace(/\bvip3ii\b/g, "vip3");
 
   // 2) JSX namespace errors in wordColorHighlighter.tsx:

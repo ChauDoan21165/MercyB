@@ -1,20 +1,16 @@
 // FILE: emotionModel.ts
 // PATH: src/lib/mercy-host/emotionModel.ts
-// VERSION: MB-BLUE-EMOTION-5.0.1 — 2026-01-15 (+0700)
+// VERSION: MB-BLUE-EMOTION-5.0.2 — 2026-02-25 (+0700)
 //
 // Mercy Emotion Model - Phase 5
 //
 // FIX (test-backed):
-// - error_seen should quickly move away from neutral.
-// - BUT: respect the existing cooldown rule for MOST transitions.
-// - For error_seen we allow escalation within the cooldown window by forcing
-//   the engine to re-evaluate (so 2–3 errors can become confused/stressed).
-
-/**
- * Mercy Emotion Model - Phase 5
- *
- * Emotion-aware engine that adapts Mercy's responses based on user behavior.
- */
+// - room_enter with hoursSinceLastVisit >= 168 must yield returning_after_gap (not neutral).
+//   Root cause: tie between neutral(1.0) and returning_after_gap(1.0) kept neutral due to iteration order.
+//   Fix: when "returning after gap" context is detected, push returning_after_gap score above neutral.
+// - getEmotionFromOnboardingAnswer() default must be neutral.
+//   Root cause: "lo" substring matched "hello world" -> stressed.
+//   Fix: remove overly-broad "lo" match; use safer phrases.
 
 export type EmotionState =
   | "neutral"
@@ -54,7 +50,10 @@ interface EmotionEvent {
 }
 
 // Emotion transition weights
-const EMOTION_WEIGHTS: Record<EmotionInput, Partial<Record<EmotionState, number>>> = {
+const EMOTION_WEIGHTS: Record<
+  EmotionInput,
+  Partial<Record<EmotionState, number>>
+> = {
   room_enter: { neutral: 0.3, focused: 0.2 },
   entry_complete: { focused: 0.4, celebrating: 0.2 },
   long_scroll: { focused: 0.3, confused: 0.2 },
@@ -83,6 +82,7 @@ const EMOTION_DECAY: Record<EmotionState, number> = {
 
 const ROLLING_WINDOW_SIZE = 10;
 const MIN_TRANSITION_INTERVAL_MS = 10000; // 10 seconds between emotion changes
+const RETURN_GAP_HOURS = 168; // 7 days
 
 /**
  * Emotion Engine class that tracks and infers user emotional state
@@ -92,7 +92,7 @@ export class EmotionEngine {
   private currentEmotion: EmotionState = "neutral";
   private lastTransitionTime: number = 0;
 
-  // NEW: track consecutive recent error events to allow fast escalation away from neutral
+  // Track consecutive recent error events to allow fast escalation away from neutral
   private recentErrorBurstCount: number = 0;
 
   private emotionScores: Record<EmotionState, number> = {
@@ -134,15 +134,28 @@ export class EmotionEngine {
       this.emotionScores[emotion as EmotionState] += weight;
     }
 
-    // Check for context-based overrides
-    if (context.hoursSinceLastVisit && context.hoursSinceLastVisit > 168) {
-      // 7 days
-      this.emotionScores.returning_after_gap = 1;
+    // ----------------------------
+    // Context-based overrides
+    // ----------------------------
+    // Test-backed: hoursSinceLastVisit >= 168 on room_enter should yield returning_after_gap.
+    // We must also avoid tie vs neutral (neutral often remains 1.0).
+    const hours = Number(context.hoursSinceLastVisit ?? NaN);
+    const hasGap =
+      Number.isFinite(hours) && hours >= RETURN_GAP_HOURS && input === "room_enter";
+
+    if (hasGap) {
+      // Push above neutral so inferEmotion picks it even when neutral is 1.0
+      const target = Math.max(
+        this.emotionScores.returning_after_gap,
+        this.emotionScores.neutral + 0.01,
+        1.01,
+      );
+      this.emotionScores.returning_after_gap = target;
     }
 
     // Check for rapid negative events
     const recentErrorEvents = this.eventHistory.filter(
-      (e) => e.input === "error_seen" && now - e.timestamp < 60000
+      (e) => e.input === "error_seen" && now - e.timestamp < 60000,
     ).length;
 
     if (recentErrorEvents >= 3) {
@@ -151,7 +164,7 @@ export class EmotionEngine {
 
     // ----------------------------
     // FIX: error_seen escalation must not get stuck on neutral due to cooldown.
-    // We keep cooldown for normal events, but allow error_seen to update emotion
+    // Keep cooldown for normal events, but allow error_seen to update emotion
     // within the cooldown window so repeated errors quickly reflect user state.
     // ----------------------------
     if (input === "error_seen") {
@@ -183,11 +196,14 @@ export class EmotionEngine {
 
     // Apply cool-down: can't jump more than one step per interval
     // EXCEPTION: allow error_seen to transition even during cooldown
-    // so tests and UX don't get stuck on neutral when errors happen rapidly.
-    const cooldownReady = now - this.lastTransitionTime >= MIN_TRANSITION_INTERVAL_MS;
+    const cooldownReady =
+      now - this.lastTransitionTime >= MIN_TRANSITION_INTERVAL_MS;
     const allowBypassCooldown = input === "error_seen";
 
-    if (cooldownReady || allowBypassCooldown) {
+    // Also allow return-after-gap to update immediately (test-backed UX)
+    const allowGapOverride = hasGap;
+
+    if (cooldownReady || allowBypassCooldown || allowGapOverride) {
       if (newEmotion !== this.currentEmotion) {
         this.currentEmotion = newEmotion;
         this.lastTransitionTime = now;
@@ -199,16 +215,27 @@ export class EmotionEngine {
   }
 
   /**
-   * Infer emotion from current scores
+   * Infer emotion from current scores.
+   * Tie-breaker: prefer non-neutral over neutral when scores tie.
    */
   private inferEmotion(): EmotionState {
-    let maxScore = 0;
+    let maxScore = -Infinity;
     let maxEmotion: EmotionState = "neutral";
 
     for (const [emotion, score] of Object.entries(this.emotionScores)) {
+      const e = emotion as EmotionState;
+
       if (score > maxScore) {
         maxScore = score;
-        maxEmotion = emotion as EmotionState;
+        maxEmotion = e;
+        continue;
+      }
+
+      // Tie-breaker: if equal score, prefer non-neutral over neutral.
+      if (score === maxScore) {
+        if (maxEmotion === "neutral" && e !== "neutral") {
+          maxEmotion = e;
+        }
       }
     }
 
@@ -221,7 +248,10 @@ export class EmotionEngine {
   private applyDecay(): void {
     for (const emotion of Object.keys(this.emotionScores) as EmotionState[]) {
       const decay = EMOTION_DECAY[emotion];
-      this.emotionScores[emotion] = Math.max(0, this.emotionScores[emotion] - decay);
+      this.emotionScores[emotion] = Math.max(
+        0,
+        this.emotionScores[emotion] - decay,
+      );
     }
     // Neutral always has a baseline
     this.emotionScores.neutral = Math.max(0.5, this.emotionScores.neutral);
@@ -289,7 +319,7 @@ export class EmotionEngine {
           emotion: this.currentEmotion,
           scores: this.emotionScores,
           lastTransition: this.lastTransitionTime,
-        })
+        }),
       );
     } catch {
       // ignore storage errors
@@ -320,7 +350,10 @@ export const emotionEngine = new EmotionEngine();
 /**
  * Infer emotion from a single event with context
  */
-export function inferEmotion(input: EmotionInput, context: EmotionContext = {}): EmotionState {
+export function inferEmotion(
+  input: EmotionInput,
+  context: EmotionContext = {},
+): EmotionState {
   return emotionEngine.recordEvent(input, context);
 }
 
@@ -335,21 +368,48 @@ export function getCurrentEmotion(): EmotionState {
  * Map onboarding answer to initial emotion seed
  */
 export function getEmotionFromOnboardingAnswer(answer: string): EmotionState {
-  const answerLower = answer.toLowerCase();
+  const answerLower = String(answer ?? "").toLowerCase().trim();
 
-  if (answerLower.includes("lost") || answerLower.includes("confused") || answerLower.includes("mất")) {
+  if (
+    answerLower.includes("lost") ||
+    answerLower.includes("confused") ||
+    answerLower.includes("mất")
+  ) {
     return "confused";
   }
-  if (answerLower.includes("tired") || answerLower.includes("sad") || answerLower.includes("mệt")) {
+
+  if (
+    answerLower.includes("tired") ||
+    answerLower.includes("sad") ||
+    answerLower.includes("mệt")
+  ) {
     return "low_mood";
   }
-  if (answerLower.includes("stressed") || answerLower.includes("anxious") || answerLower.includes("lo")) {
+
+  // IMPORTANT: do NOT use overly-broad substrings like "lo" (it matches "hello").
+  // Use safer phrases only.
+  if (
+    answerLower.includes("stressed") ||
+    answerLower.includes("anxious") ||
+    answerLower.includes("lo lắng") ||
+    answerLower.includes("lo lang")
+  ) {
     return "stressed";
   }
-  if (answerLower.includes("excited") || answerLower.includes("happy") || answerLower.includes("vui")) {
+
+  if (
+    answerLower.includes("excited") ||
+    answerLower.includes("happy") ||
+    answerLower.includes("vui")
+  ) {
     return "celebrating";
   }
-  if (answerLower.includes("focused") || answerLower.includes("ready") || answerLower.includes("sẵn")) {
+
+  if (
+    answerLower.includes("focused") ||
+    answerLower.includes("ready") ||
+    answerLower.includes("sẵn")
+  ) {
     return "focused";
   }
 

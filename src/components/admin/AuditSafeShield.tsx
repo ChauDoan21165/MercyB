@@ -316,7 +316,7 @@ export default function AuditSafeShield() {
         {summary && (
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-3">
             <Card className="border"><CardContent className="py-3 text-center"><div className="text-xl font-bold">{summary.totalRooms}</div><div className="text-xs text-gray-500">Rooms</div></CardContent></Card>
-            <Card className="border"><CardContent className="py-3 text-center"><div className="text-xl font-bold">{summary.totalEntries || 0}</div><div className="text-xs text-gray-500">Entries</div></CardContent></Card>
+            <Card className="border"><CardContent className="py-3 text-center"><div className="text-xl font-bold">{(summary as any).totalEntries || 0}</div><div className="text-xs text-gray-500">Entries</div></CardContent></Card>
             <Card className="border"><CardContent className="py-3 text-center"><div className="text-xl font-bold text-red-600">{summary.errors}</div><div className="text-xs text-gray-500">Errors</div></CardContent></Card>
             <Card className="border"><CardContent className="py-3 text-center"><div className="text-xl font-bold text-amber-600">{summary.warnings}</div><div className="text-xs text-gray-500">Warnings</div></CardContent></Card>
             <Card className="border"><CardContent className="py-3 text-center"><div className={`text-xl font-bold ${audioStats?.coverage === 100 ? 'text-green-600' : audioStats?.coverage && audioStats.coverage < 50 ? 'text-red-600' : ''}`}>{audioStats?.coverage ?? summary.audioCoveragePercent ?? 0}%</div><div className="text-xs text-gray-500">Audio Coverage</div></CardContent></Card>
