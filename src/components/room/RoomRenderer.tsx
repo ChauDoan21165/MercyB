@@ -610,28 +610,906 @@ export default function RoomRenderer({
   }, [metaTierId, inferredTierId]);
 
   const isLocked = useMemo(() => {
-    const requiredRank =
-      requiredTierId === "vip9" ? 9 :
-      requiredTierId === "vip3" ? 3 :
-      requiredTierId === "vip1" ? 1 : 0;
+  // required tier -> numeric rank
+  const requiredRank =
+    requiredTierId === "vip9" ? 9 :
+    requiredTierId === "vip3" ? 3 :
+    requiredTierId === "vip1" ? 1 : 0;
 
-    if (requiredRank <= 0) return false;
+  if (requiredRank <= 0) return false;
 
-    const raw =
-      (typeof window !== "undefined" && (
-        window.localStorage.getItem("mb.vip_rank") ??
-        window.localStorage.getItem("mb.user.vip_rank") ??
-        window.localStorage.getItem("mb.profile.vip_rank")
-      )) ?? null;
+  // read current user rank from LS (your app already uses these keys elsewhere)
+  const raw =
+    (typeof window !== "undefined" && (
+      window.localStorage.getItem("mb.vip_rank") ??
+      window.localStorage.getItem("mb.user.vip_rank") ??
+      window.localStorage.getItem("mb.profile.vip_rank")
+    )) ?? null;
 
-    const userRank = (() => {
-      const n = Number(raw);
-      return Number.isFinite(n) ? n : 0;
+  const userRank = (() => {
+    const n = Number(raw);
+    return Number.isFinite(n) ? n : 0;
+  })();
+
+  // If we have a rank, trust it even if accessLoading is true
+  if (userRank > 0) return userRank < requiredRank;
+
+  // If no rank yet, fall back to access policy (when ready)
+  if (accessLoading) return true;
+
+  return !access.canAccessTier(requiredTierId);
+}, [requiredTierId, accessLoading, access]);
+
+  // NOTE: room pages no longer own sign-out UI (GlobalHeader/AppHeader do).
+  // Keep this function for safety but DO NOT render a sign-out button here.
+  async function signOut() {
+    try {
+      await supabase.auth.signOut();
+    } finally {
+      window.location.href = "/signin";
+    }
+  }
+
+  // ---- DB entries (RLS) ----
+  const [dbRows, setDbRows] = useState<any[] | null>(null);
+  const [dbLoading, setDbLoading] = useState(false);
+  const [dbError, setDbError] = useState<string | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function load() {
+      if (!effectiveRoomId) {
+        setDbRows(null);
+        setDbError(null);
+        setDbLoading(false);
+        return;
+      }
+
+      setDbLoading(true);
+      setDbError(null);
+
+      // ✅ FIX: try effective first, then coreRoomId if no useful rows
+      const r1 = await fetchRoomEntriesDb(supabase, effectiveRoomId);
+      let rows = Array.isArray(r1?.rows) ? r1.rows : [];
+      let error = r1?.error ?? null;
+
+      if (rows.length === 0 && coreRoomId && coreRoomId !== effectiveRoomId) {
+        const r2 = await fetchRoomEntriesDb(supabase, coreRoomId);
+        const rows2 = Array.isArray(r2?.rows) ? r2.rows : [];
+        if (rows2.length > 0) {
+          rows = rows2;
+          error = r2?.error ?? null;
+        }
+      }
+
+      if (cancelled) return;
+      setDbRows(rows);
+      setDbError(error);
+      setDbLoading(false);
+    }
+
+    load();
+    return () => {
+      cancelled = true;
+    };
+  }, [effectiveRoomId, coreRoomId]);
+
+  // ---- titles / intros ----
+  const rawEN = useMemo(() => String(pickTitleENRaw(safeRoom) || ""), [safeRoom]);
+  const rawVI = useMemo(() => String(pickTitleVIRaw(safeRoom) || ""), [safeRoom]);
+
+  const titleEN = useMemo(() => {
+    const r = rawEN.trim();
+    if (!r) return prettifyRoomIdEN(effectiveRoomId);
+    if (isBadAutoTitle(r, effectiveRoomId)) return prettifyRoomIdEN(effectiveRoomId);
+    return r;
+  }, [rawEN, effectiveRoomId]);
+
+  const titleVI = useMemo(() => String(rawVI || "").trim(), [rawVI]);
+
+  const roomTitleBilingual = useMemo(() => {
+    const en = String(titleEN || "").trim();
+    const vi = String(titleVI || "").trim();
+    if (en && vi) return `${en} / ${vi}`;
+    return en || vi || "Untitled Room";
+  }, [titleEN, titleVI]);
+
+  const introEN = useMemo(() => pickIntroEN(safeRoom), [safeRoom]);
+  const introVI = useMemo(() => pickIntroVI(safeRoom), [safeRoom]);
+
+  // ---- keywords + entries (DB preferred, JSON fallback) ----
+  const kwRaw = useMemo(() => resolveKeywords(safeRoom), [safeRoom]);
+  const essay = useMemo(() => resolveEssay(safeRoom), [safeRoom]);
+
+  const dbLeafEntriesRaw = useMemo(() => {
+    if (!Array.isArray(dbRows) || dbRows.length === 0) return [];
+    return dbRows
+      .map(coerceRoomEntryRowToEntry)
+      .map(coerceLegacyEntryShape)
+      .filter((x) => x && typeof x === "object");
+  }, [dbRows]);
+
+  const dbLeafEntries = useMemo(() => {
+    if (dbLeafEntriesRaw.length === 0) return [];
+    return dbLeafEntriesRaw.filter(isMeaningfulEntry);
+  }, [dbLeafEntriesRaw]);
+
+  const jsonLeafEntries = useMemo(() => {
+    const extracted = extractJsonLeafEntries(safeRoom);
+    const fallback = Array.isArray((safeRoom as any)?.entries) ? (safeRoom as any).entries : [];
+    const leaf = (Array.isArray(extracted) && extracted.length > 0 ? extracted : fallback) as any[];
+    return leaf.map(coerceLegacyEntryShape).filter((x) => x && typeof x === "object");
+  }, [safeRoom]);
+
+  const chosenEntries = useMemo(() => {
+    if (dbLeafEntries.length > 0) return { source: "DB" as const, list: dbLeafEntries };
+    return { source: "JSON" as const, list: jsonLeafEntries };
+  }, [dbLeafEntries, jsonLeafEntries]);
+
+  const allEntries = useMemo(() => chosenEntries.list.map((e: any) => ({ entry: e })), [chosenEntries]);
+
+  // ✅ SAFETY: never allow UUID-like junk into keyword pills (prod data can differ)
+  const looksUuidLikeCb = useCallback((s: any) => {
+    const t = String(s ?? "").trim();
+    if (!t) return false;
+    return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(t);
+  }, []);
+
+  const cleanKwArr = useCallback(
+    (arr: any[]) =>
+      (Array.isArray(arr) ? arr : [])
+        .map((x) => String(x ?? "").trim())
+        .filter(Boolean)
+        .filter((x) => !looksUuidLikeCb(x)),
+    [looksUuidLikeCb],
+  );
+
+  const kw = useMemo(() => {
+    const entries = chosenEntries.list;
+    const entryCount = entries.length;
+    const lookup = buildKeywordLookupFromEntries(entries);
+
+    // Prefer ONE keyword per entry when entry keyword fields exist
+    if (entryCount > 0) {
+      const perEntry = entries
+        .map((e) => pickOneKeywordPairForEntry(e, lookup))
+        .filter(Boolean)
+        .filter((p: any) => {
+          const en = String(p?.en ?? "").trim();
+          const vi = String(p?.vi ?? "").trim();
+          // drop UUID-like garbage in either slot
+          if (looksUuidLikeCb(en)) return false;
+          if (looksUuidLikeCb(vi)) return false;
+          // also drop completely empty pairs
+          return !!(en || vi);
+        }) as Array<{ en: string; vi: string }>;
+
+      if (perEntry.length > 0) {
+        const trimmed = perEntry.slice(0, Math.max(1, entryCount));
+        const en = trimmed.map((p) => String(p.en || "").trim()).filter(Boolean).filter((x) => !looksUuidLikeCb(x));
+        const vi = trimmed
+          .map((p) => {
+            const v = String(p.vi || "").trim();
+            const e = String(p.en || "").trim();
+            if (!v) return "";
+            if (looksUuidLikeCb(v)) return "";
+            return v && normalizeTextForKwMatch(v) !== normalizeTextForKwMatch(e) ? v : "";
+          })
+          .filter((x) => !looksUuidLikeCb(x));
+
+        return { en, vi };
+      }
+    }
+
+    // fallback: room keywords if present else derived
+    const hasReal = (kwRaw?.en?.length || 0) > 0 || (kwRaw?.vi?.length || 0) > 0;
+    const base0 = hasReal ? kwRaw : entryCount > 0 ? deriveKeywordsFromEntryList(entries) : { en: [], vi: [] };
+
+    // ✅ clean UUID-like junk from both arrays
+    const base = {
+      en: cleanKwArr(base0.en || []),
+      vi: cleanKwArr(base0.vi || []),
+    };
+
+    // final: enforce no fake EN/EN display by blanking VI when same
+    const maxLen = Math.max(base.en.length, base.vi.length);
+    return {
+      en: Array.from({ length: maxLen }).map((_, i) => String(base.en[i] ?? "").trim()),
+      vi: Array.from({ length: maxLen }).map((_, i) => {
+        const en = String(base.en[i] ?? "").trim();
+        const vi = String(base.vi[i] ?? "").trim();
+        if (!vi) return "";
+        return normalizeTextForKwMatch(vi) === normalizeTextForKwMatch(en) ? "" : vi;
+      }),
+    };
+  }, [kwRaw, chosenEntries, looksUuidLikeCb, cleanKwArr]);
+
+  const enKeywords = (kw.en.length ? kw.en : kw.vi).map(String).filter((x) => !looksUuidLikeCb(x));
+  const viKeywords = (kw.vi.length ? kw.vi : kw.en).map(String).filter((x) => !looksUuidLikeCb(x));
+
+  // ✅ NEW: highlight count rule (3 → 5 → 7) based on text length (no schema dependency)
+  const highlightN = useMemo(() => {
+    const base = `${String(introEN || "")} ${String(introVI || "")} ${String(essay?.en || "")} ${String(
+      essay?.vi || "",
+    )}`.trim();
+    const len = base.length;
+    if (len >= 1200) return 7;
+    if (len >= 600) return 5;
+    return 3;
+  }, [introEN, introVI, essay?.en, essay?.vi]);
+
+  const kwColorMap = useMemo(
+    () => buildKeywordColorMap(enKeywords, viKeywords, highlightN),
+    [enKeywords, viKeywords, highlightN],
+  );
+
+  const [activeKeyword, setActiveKeyword] = useState<string | null>(null);
+
+  useEffect(() => setActiveKeyword(null), [roomId]);
+  useEffect(() => setActiveKeyword(null), [effectiveRoomId]);
+
+  const activeEntry = useMemo(() => {
+    if (!activeKeyword) return null;
+    const found = allEntries.find((x) => entryMatchesKeyword(x.entry, activeKeyword));
+    return found?.entry || null;
+  }, [activeKeyword, allEntries]);
+
+  const activeEntryIndex = useMemo(() => {
+    if (!activeEntry) return -1;
+    return allEntries.findIndex((x) => x.entry === activeEntry);
+  }, [activeEntry, allEntries]);
+
+  const welcomeEN = introEN?.trim() || `Welcome to ${titleEN}, please click a keyword to start`;
+  const welcomeVI =
+    introVI?.trim() || `Chào mừng bạn đến với phòng ${titleVI || titleEN}, vui lòng nhấp vào từ khóa để bắt đầu`;
+
+  const clearKeyword = () => setActiveKeyword(null);
+
+  useEffect(() => {
+    if (!effectiveRoomId) return;
+    dispatchHostContext({ page: "room", roomId: effectiveRoomId });
+  }, [effectiveRoomId]);
+
+  useEffect(() => {
+    if (!effectiveRoomId) return;
+    const entryId = String(activeEntry?.id || activeEntry?.slug || "").trim() || null;
+    const keyword = activeKeyword ? String(activeKeyword).trim() : null;
+    dispatchHostContext({ page: "room", roomId: effectiveRoomId, keyword, entryId });
+  }, [effectiveRoomId, activeKeyword, activeEntry]);
+
+  // ✅ SIGNED AUDIO (active entry)
+  const [activeAudioUrl, setActiveAudioUrl] = useState<string>("");
+
+  useEffect(() => {
+    let alive = true;
+
+    (async () => {
+      try {
+        if (!activeEntry) {
+          if (alive) setActiveAudioUrl("");
+          return;
+        }
+        const { audio_url } = pickRepeatTargetFromEntry(activeEntry);
+        const raw = String(audio_url || "").trim();
+        if (!raw) {
+          if (alive) setActiveAudioUrl("");
+          return;
+        }
+        const url = await resolveAudioUrl(raw);
+        if (alive) setActiveAudioUrl(url);
+      } catch {
+        if (alive) setActiveAudioUrl("");
+      }
     })();
 
-    if (userRank > 0) return userRank < requiredRank;
+    return () => {
+      alive = false;
+    };
+  }, [activeEntry, resolveAudioUrl]);
 
-    if (accessLoading) return true;
+  // NEW: when repeat target becomes known, signal Mercy Host
+  useEffect(() => {
+    if (!effectiveRoomId) return;
+    if (!activeKeyword) return;
+    if (!activeEntry) return;
 
-    return !access.canAccessTier(requiredTierId);
-  }, [requiredTierId, accessLoading, access]);
+    // Even if locked UI disables clicks, be defensive:
+    if (isLocked) return;
+
+    const entryId = String(activeEntry?.id || activeEntry?.slug || "").trim() || null;
+    const { text_en, text_vi } = pickRepeatTargetFromEntry(activeEntry);
+
+    // Don’t dispatch empty targets
+    if (!text_en && !text_vi) return;
+
+    // ✅ FIX: SSR-safe idempotency guard (avoid repeat spam on re-render)
+    const repeatKey = `${effectiveRoomId}|${entryId}|${activeKeyword ?? ""}`;
+    if (typeof window !== "undefined") {
+      if ((window as any).__mb_last_repeat_key === repeatKey) return;
+      (window as any).__mb_last_repeat_key = repeatKey;
+    }
+
+    // ✅ IMPORTANT: Host should also receive SIGNED audio (never bucket path)
+    dispatchHostRepeatTarget({
+      roomId: effectiveRoomId,
+      entryId,
+      text_en,
+      text_vi,
+      audio_url: String(activeAudioUrl || "").trim(),
+      pace: "normal",
+    });
+  }, [effectiveRoomId, activeKeyword, activeEntry, isLocked, activeAudioUrl]);
+
+  // ---- BOX 5: CHAT (canonical = effectiveRoomId) ----
+  type ChatRow = { id: any; room_id?: string; user_id?: string; message?: string; created_at?: string };
+
+  const canonicalChatRoomId = String(effectiveRoomId || "").trim();
+
+  const [chatRows, setChatRows] = useState<ChatRow[]>([]);
+  const [chatLoading, setChatLoading] = useState(false);
+  const [chatSending, setChatSending] = useState(false);
+  const [chatError, setChatError] = useState<string | null>(null);
+  const [chatText, setChatText] = useState("");
+  const chatListRef = useRef<HTMLDivElement | null>(null);
+  const stickToBottomRef = useRef(true);
+
+  const captureChatStick = () => {
+    const el = chatListRef.current;
+    if (!el) return;
+    stickToBottomRef.current = el.scrollHeight - el.scrollTop - el.clientHeight < 24;
+  };
+  const scrollToBottomIfSticky = () => {
+    const el = chatListRef.current;
+    if (!el || !stickToBottomRef.current) return;
+    try {
+      el.scrollTop = el.scrollHeight;
+    } catch {
+      // ignore
+    }
+  };
+
+  const loadChatInline = useCallback(
+    async (limit = 60) => {
+      if (!canonicalChatRoomId) {
+        setChatRows([]);
+        setChatError("Chat room key missing.");
+        setChatLoading(false);
+        return;
+      }
+
+      setChatLoading(true);
+      setChatError(null);
+
+      try {
+        const { data, error } = await supabase
+          .from("community_messages")
+          .select("id, room_id, user_id, message, created_at")
+          .eq("room_id", canonicalChatRoomId)
+          .order("created_at", { ascending: false })
+          .limit(Math.max(1, Math.min(200, limit)));
+
+        if (error) {
+          setChatRows([]);
+          setChatError(`Load failed: ${error.message || String(error)}`);
+          setChatLoading(false);
+          return;
+        }
+
+        const rows = Array.isArray(data) ? (data as ChatRow[]) : [];
+        rows.reverse();
+        setChatRows(rows);
+        setChatLoading(false);
+        setTimeout(() => scrollToBottomIfSticky(), 0);
+      } catch (e: any) {
+        setChatRows([]);
+        setChatError(`Load exception: ${e?.message || String(e)}`);
+        setChatLoading(false);
+      }
+    },
+    [canonicalChatRoomId],
+  );
+
+  useEffect(() => {
+    loadChatInline(60);
+  }, [loadChatInline]);
+
+  useEffect(() => {
+    if (!canonicalChatRoomId) return;
+
+    const channel = supabase.channel(`mb-chat-rebuild:${canonicalChatRoomId}`);
+    channel.on(
+      "postgres_changes",
+      { event: "INSERT", schema: "public", table: "community_messages" },
+      (payload: any) => {
+        const row = (payload?.new || null) as ChatRow | null;
+        if (!row) return;
+        if (String(row.room_id || "") !== canonicalChatRoomId) return;
+
+        setChatRows((cur) => {
+          const id = String((row as any)?.id ?? "");
+          if (id && cur.some((r) => String((r as any)?.id ?? "") === id)) return cur;
+          return [...cur, row];
+        });
+
+        setTimeout(() => scrollToBottomIfSticky(), 0);
+      },
+    );
+
+    channel.subscribe();
+    return () => {
+      try {
+        supabase.removeChannel(channel);
+      } catch {
+        // ignore
+      }
+    };
+  }, [canonicalChatRoomId]);
+
+  const sendChatInline = useCallback(async () => {
+    const msg = String(chatText || "").trim();
+    if (!msg) return;
+
+    if (!authUser?.id) {
+      setChatError("Please sign in to post messages.");
+      return;
+    }
+    if (!canonicalChatRoomId) {
+      setChatError("Chat room key missing.");
+      return;
+    }
+
+    setChatSending(true);
+    setChatError(null);
+
+    try {
+      let res = await supabase
+        .from("community_messages")
+        .insert({ room_id: canonicalChatRoomId, message: msg })
+        .select("id, room_id, user_id, message, created_at")
+        .single();
+
+      if (res?.error) {
+        const em = String(res.error?.message || "").toLowerCase();
+        if (em.includes("user_id")) {
+          res = await supabase
+            .from("community_messages")
+            .insert({ room_id: canonicalChatRoomId, message: msg, user_id: authUser.id })
+            .select("id, room_id, user_id, message, created_at")
+            .single();
+        }
+      }
+
+      if (res?.error) {
+        setChatError(`Send failed: ${String(res.error?.message || res.error)}`);
+        setChatSending(false);
+        return;
+      }
+
+      const data = res?.data as any;
+      if (data) {
+        setChatRows((cur) => {
+          const id = String(data?.id ?? "");
+          if (id && cur.some((r) => String((r as any)?.id ?? "") === id)) return cur;
+          return [...cur, data];
+        });
+      } else {
+        await loadChatInline(60);
+      }
+
+      setChatText("");
+      setChatSending(false);
+      stickToBottomRef.current = true;
+      setTimeout(() => scrollToBottomIfSticky(), 0);
+    } catch (e: any) {
+      setChatError(`Send exception: ${e?.message || String(e)}`);
+      setChatSending(false);
+    }
+  }, [authUser?.id, canonicalChatRoomId, chatText, loadChatInline]);
+
+  const feedback = useRoomFeedback(supabase, coreRoomId, authUser);
+
+  const [chatCollapsed, setChatCollapsed] = useState(false);
+  useEffect(() => setChatCollapsed(false), [canonicalChatRoomId]);
+
+  const chatListMaxH = activeEntry ? 140 : 220;
+  const roomIsEmpty = !room;
+
+  const titleStyle: React.CSSProperties = useMemo(
+    () => ({
+      fontSize: isNarrow ? 22 : 28,
+      fontWeight: 950,
+      letterSpacing: -0.6,
+      lineHeight: 1.08,
+      minWidth: 0,
+      whiteSpace: "normal",
+      overflow: "hidden",
+      textOverflow: "clip",
+      overflowWrap: "anywhere",
+      wordBreak: "break-word",
+      display: "-webkit-box",
+      WebkitLineClamp: 2 as any,
+      WebkitBoxOrient: "vertical" as any,
+    }),
+    [isNarrow],
+  );
+
+  // UI HARDEN: ensure “locked / empty / system messages” never touch card borders
+  const inCardMessagePad: React.CSSProperties = useMemo(
+    () => ({
+      width: "100%",
+      boxSizing: "border-box",
+      padding: isNarrow ? "16px 14px" : "20px 18px",
+    }),
+    [isNarrow],
+  );
+
+  // ✅ NEW: display tier pill only when VIP (no FREE pill in rooms; global header owns tier/account UI)
+  const displayTierForPill = useMemo(() => {
+    const t = normalizeTierIdRuntime(displayTierId);
+    return t !== "free" ? t.toUpperCase() : "";
+  }, [displayTierId]);
+
+  return (
+    // ✅ FIX: clamp ALL room pages to the same frame as Home (980px)
+    <div className="mx-auto w-full max-w-[980px] px-4">
+      <div
+        ref={rootRef}
+        className="mb-room w-full"
+        data-mb-scope="room"
+        data-mb-theme={useColorThemeSafe ? "color" : "bw"}
+      >
+        <style>{`${ROOM_CSS}\n${ROOM_CSS_TIDY}`}</style>
+
+        {roomIsEmpty ? (
+          <div className="rounded-xl border p-6 text-muted-foreground">Room loaded state is empty.</div>
+        ) : (
+          <>
+            {/* ✅ IMPORTANT: Room pages no longer render an extra "Guide" pill here.
+              Global Host/Guide is already mounted app-wide. */}
+            {false && (
+              <MercyGuideCorner
+                disabled={isLocked}
+                roomTitle={roomTitleBilingual}
+                activeKeyword={activeKeyword}
+                onClearKeyword={clearKeyword}
+                onScrollToAudio={scrollToAudio}
+              />
+            )}
+
+            {/* BOX 2 */}
+            <div className="mb-titleRow" data-room-box="2">
+              <div className="mb-titleLeft">
+                {/* VIP only (no FREE pill) */}
+                {displayTierForPill ? <span className="mb-tier">{displayTierForPill}</span> : null}
+
+                {/* NOTE: account + signout are owned by GlobalHeader/AppHeader now.
+                 Keep authUser for chat attribution only. */}
+                {showDev ? (
+                  <span className="mb-tier" title={String(authUser?.email || authUser?.id || "")}>
+                    DEV: {authUser ? shortEmailLabel(String((authUser as any).email || "")) : "NOAUTH"}
+                  </span>
+                ) : null}
+              </div>
+
+              <div className="mb-titleCenter" style={{ minWidth: 0 }}>
+                <div className="mb-roomTitle" title={roomTitleBilingual} style={titleStyle}>
+                  {roomTitleBilingual}
+                </div>
+              </div>
+
+              <div className="mb-titleRight">
+                {/* Keep only harmless UI-shell buttons in the room header */}
+                <button type="button" className="mb-iconBtn" title="Favorite (UI shell)" onClick={() => {}}>
+                  ♡
+                </button>
+                <button type="button" className="mb-iconBtn" title="Refresh" onClick={() => window.location.reload()}>
+                  ↻
+                </button>
+
+                {/* DEV-only quick sign-out (hidden) */}
+                {false && authUser ? (
+                  <button type="button" className="mb-tier" title="Sign out" onClick={signOut}>
+                    SIGN OUT
+                  </button>
+                ) : null}
+              </div>
+            </div>
+
+            {/* BOX 3 */}
+            <section className="mb-card p-5 md:p-6 mb-5" data-room-box="3">
+              <div className="mb-welcomeLine">
+                <span>
+                  {highlightByColorMap(welcomeEN, kwColorMap)} <b>/</b> {highlightByColorMap(welcomeVI, kwColorMap)}
+                </span>
+              </div>
+
+              {showDev ? (
+                <div className="mt-2 text-[11px] opacity-70">
+                  <b>DEV</b> room="{effectiveRoomId}" | coreRoomId="{coreRoomId}" | chatRoomId="{canonicalChatRoomId}" |
+                  chatRows={chatRows.length} {chatLoading ? "(loading)" : ""}{" "}
+                  {chatError ? `chatError="${chatError}"` : ""} | dbRows={Array.isArray(dbRows) ? dbRows.length : "null"}{" "}
+                  {dbLoading ? "(loading)" : ""} {dbError ? `dbError="${dbError}"` : ""} | dbLeafEntries(real)=
+                  {dbLeafEntries.length} | jsonLeafEntries={jsonLeafEntries.length} | chosen={chosenEntries.source} |
+                  allEntries={allEntries.length} | kwButtons={Math.max(kw.en.length, kw.vi.length)} | activeKeyword=
+                  {activeKeyword ? ` "${activeKeyword}"` : "null"}
+                </div>
+              ) : null}
+
+              {Math.max(kw.en.length, kw.vi.length) > 0 ? (
+                <div className="mb-keyRow">
+                  {Array.from({ length: Math.max(kw.en.length, kw.vi.length) }).map((_, i) => {
+                    const en = String(kw.en[i] ?? "").trim();
+                    let vi = String(kw.vi[i] ?? "").trim();
+                    if (!en && !vi) return null;
+
+                    // never show fake EN/EN
+                    if (!vi || normalizeTextForKwMatch(vi) === normalizeTextForKwMatch(en)) vi = "";
+
+                    const label = en && vi ? `${en} / ${vi}` : en || vi;
+                    const next = (en || vi).trim();
+
+                    // ✅ absolute safety: never render UUID-like pills
+                    if (looksUuidLike(next) || looksUuidLike(label)) return null;
+
+                    const isActive = normalizeTextForKwMatch(activeKeyword || "") === normalizeTextForKwMatch(next || "");
+
+                    return (
+                      <button
+                        key={`kw-${i}`}
+                        type="button"
+                        className={`mb-keyBtn mb-kw ${KW_CLASSES[i % KW_CLASSES.length]}`}
+                        data-active={isActive ? "true" : "false"}
+                        disabled={isLocked}
+                        onClick={() =>
+                          setActiveKeyword((cur) => {
+                            const curKey = normalizeTextForKwMatch(cur || "");
+                            const nextKey = normalizeTextForKwMatch(next || "");
+                            return curKey && curKey === nextKey ? null : next;
+                          })
+                        }
+                        title={label}
+                      >
+                        {label}
+                      </button>
+                    );
+                  })}
+                </div>
+              ) : null}
+            </section>
+
+            {(essay.en || essay.vi) && (
+              <div className="mb-card p-4 md:p-6 mb-5">
+                <BilingualEssay title="Essay" en={essay.en || ""} vi={essay.vi || ""} />
+              </div>
+            )}
+
+            {/* BOX 4 */}
+            <section className="mb-card p-5 md:p-6 mb-5 mb-box4" data-room-box="4">
+              <div className="mb-zoomWrap">
+                {isLocked ? (
+                  <div className="min-h-[260px] flex items-center justify-center text-center" style={inCardMessagePad}>
+                    <div style={{ maxWidth: 760, margin: "0 auto" }}>
+                      <div className="text-sm opacity-70 font-semibold">
+                        {accessLoading ? (
+                          <>Checking access…</>
+                        ) : (
+                          <>
+                            Locked: requires <b>{requiredTierId.toUpperCase()}</b>
+                          </>
+                        )}
+                      </div>
+                      <div className="mt-3 text-sm opacity-70">
+                        Complete checkout and refresh. If already paid, wait for webhook tier sync.
+                      </div>
+                    </div>
+                  </div>
+                ) : !activeKeyword ? (
+                  <div className="min-h-[460px]" />
+                ) : activeEntry ? (
+                  <ActiveEntry
+                    // ✅ IMPORTANT:
+                    // TalkingFacePlayButton must NEVER see bucket paths.
+                    // We override audio fields here so ActiveEntry/TFPB only receives signed URL.
+                    entry={{
+                      ...activeEntry,
+                      ...(activeAudioUrl
+                        ? {
+                            audio_url: activeAudioUrl,
+                            audio_en: activeAudioUrl,
+                            audio: activeAudioUrl,
+                          }
+                        : null),
+                    }}
+                    index={activeEntryIndex >= 0 ? activeEntryIndex : 0}
+                    enKeywords={enKeywords}
+                    viKeywords={viKeywords}
+                    audioAnchorRef={audioAnchorRef}
+                  />
+                ) : (
+                  <div className="min-h-[240px] flex items-center justify-center text-center" style={inCardMessagePad}>
+                    <div style={{ maxWidth: 760, margin: "0 auto" }}>
+                      <div className="text-sm opacity-70 font-semibold">
+                        No entry matches keyword: <b>{activeKeyword}</b>
+                      </div>
+                      <div className="mt-2">
+                        <button
+                          type="button"
+                          className="px-3 py-1.5 rounded-full text-sm font-bold border bg-white"
+                          onClick={() => setActiveKeyword(null)}
+                        >
+                          Clear keyword
+                        </button>
+                      </div>
+                      {dbError ? <div className="mt-2 text-xs opacity-60">DB: {dbError}</div> : null}
+                      {dbLoading ? <div className="mt-2 text-xs opacity-60">Loading entries…</div> : null}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </section>
+
+            {/* BOX 5 */}
+            <div style={{ marginTop: "auto" }} data-room-box="5">
+              <div className="mb-card p-3 md:p-4">
+                <div className="mb-chatWrap mb-4">
+                  <div className="mb-chatHeader" style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                    <span>Community Chat</span>
+
+                    <div style={{ marginLeft: "auto", display: "flex", gap: 8, alignItems: "center" }}>
+                      <button
+                        type="button"
+                        className="mb-tier"
+                        onClick={() => setChatCollapsed((v) => !v)}
+                        title={chatCollapsed ? "Expand chat" : "Collapse chat"}
+                      >
+                        {chatCollapsed ? "▸" : "▾"}
+                      </button>
+
+                      <button
+                        type="button"
+                        className="mb-tier"
+                        onClick={() => loadChatInline(60)}
+                        disabled={chatLoading}
+                        title="Refresh chat"
+                      >
+                        ↻
+                      </button>
+                    </div>
+                  </div>
+
+                  {chatCollapsed ? (
+                    <div className="mb-chatTiny" style={{ padding: "6px 2px" }}>
+                      Chat collapsed (still here). Click <b>▸</b> to expand.
+                    </div>
+                  ) : (
+                    <>
+                      <div
+                        className="mb-chatList"
+                        style={{
+                          maxHeight: chatListMaxH,
+                          overflow: "auto",
+                          padding: isNarrow ? "10px 10px" : "12px 12px",
+                          boxSizing: "border-box",
+                        }}
+                        ref={chatListRef}
+                        onScroll={captureChatStick}
+                        onWheel={captureChatStick}
+                        onTouchMove={captureChatStick}
+                      >
+                        {chatRows.length === 0 ? (
+                          <div className="text-xs opacity-70">
+                            No messages under this room key yet.
+                            <span style={{ opacity: 0.7 }}> (room_id="{canonicalChatRoomId}")</span>
+                          </div>
+                        ) : (
+                          chatRows.map((m: any) => {
+                            const isMe = authUser
+                              ? String(m?.user_id || "") === String((authUser as any)?.id || "")
+                              : false;
+
+                            const who = isMe
+                              ? shortEmailLabel(String((authUser as any)?.email || "")) || "ME"
+                              : shortUserId(String(m?.user_id || "user"));
+
+                            const when = m?.created_at ? new Date(m.created_at).toLocaleString() : "";
+                            const text = String(m?.message || "").trim();
+
+                            return (
+                              <div key={String(m?.id)} className="mb-chatMsg">
+                                <div className="mb-chatMeta">
+                                  {who} {when ? `• ${when}` : ""}
+                                </div>
+                                <div className="whitespace-pre-wrap">{text || "[empty]"}</div>
+                              </div>
+                            );
+                          })
+                        )}
+                      </div>
+
+                      {!authUser ? (
+                        <div className="mb-chatTiny">
+                          <a className="underline font-bold" href="/signin">
+                            Sign in
+                          </a>{" "}
+                          to post messages.
+                          <span style={{ opacity: 0.7 }}> (room_id="{canonicalChatRoomId}")</span>
+                        </div>
+                      ) : (
+                        <div className="mb-chatComposer">
+                          <input
+                            value={chatText}
+                            onChange={(e) => setChatText(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                sendChatInline();
+                              }
+                            }}
+                            placeholder="Say something… (max 500 chars)"
+                            disabled={chatSending}
+                            maxLength={500}
+                          />
+                          <button
+                            type="button"
+                            onClick={sendChatInline}
+                            disabled={chatSending || !chatText.trim()}
+                            title="Send"
+                          >
+                            ➤
+                          </button>
+                        </div>
+                      )}
+
+                      {chatError ? <div className="mb-chatTiny">⚠ {chatError}</div> : null}
+                      {chatLoading ? <div className="mb-chatTiny">Loading…</div> : null}
+                    </>
+                  )}
+                </div>
+
+                <div className="mb-feedback">
+                  <input
+                    value={feedback.feedbackText}
+                    onChange={(e) => {
+                      feedback.setFeedbackText(e.target.value);
+                      if (feedback.feedbackError) feedback.setFeedbackError(null);
+                      if (feedback.feedbackSent) feedback.setFeedbackSent(false);
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        e.preventDefault();
+                        feedback.sendFeedback();
+                      }
+                    }}
+                    placeholder="Feedback to admin / Góp ý cho admin…"
+                    aria-label="Feedback to admin"
+                    disabled={feedback.feedbackSending}
+                    maxLength={500}
+                  />
+                  <button
+                    type="button"
+                    title={authUser ? "Send feedback" : "Sign in to send feedback"}
+                    onClick={feedback.sendFeedback}
+                    disabled={feedback.feedbackSending || !feedback.feedbackText.trim()}
+                  >
+                    ➤
+                  </button>
+                </div>
+
+                {(feedback.feedbackError || feedback.feedbackSent) && (
+                  <div className="mt-2 text-xs opacity-70">
+                    {feedback.feedbackError ? `⚠ ${feedback.feedbackError}` : "✓ Sent to admin"}
+                  </div>
+                )}
+              </div>
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
+/** New thing to learn:
+ * If the border is your “grid”, then every row (title, welcome, keywords) must either
+ * (1) be inside a bordered card or (2) visually match the same border + padding baseline. */
