@@ -3,6 +3,7 @@
 // NOTE: Keep auth access flexible (auth.user OR auth.session.user) for legacy compatibility.
 // STABLE FIX: do NOT depend on AuthProvider for a Supabase client.
 // - Query public.mb_user_effective_rank using the app Supabase client singleton.
+// - Use .maybeSingle() so the response is an OBJECT (not an array), avoiding vip_rank parsing bugs.
 // - Fallbacks keep the page usable even if RLS/network fails.
 
 import React, { useCallback, useEffect, useMemo, useState } from "react";
@@ -45,16 +46,17 @@ export default function AccountPage() {
           .from("mb_user_effective_rank")
           .select("vip_rank")
           .eq("user_id", userId)
+          // ✅ KEY FIX: ensures `data` is an object (or null), not an array
           .maybeSingle();
 
         if (cancelled) return;
 
         if (error) {
-          // silent fail → fallback below
           setVipRank(null);
           return;
         }
 
+        // ✅ Because of maybeSingle(), `data` is { vip_rank: number } | null
         const r = (data as any)?.vip_rank;
         if (typeof r === "number" && Number.isFinite(r)) setVipRank(r);
         else setVipRank(null);
