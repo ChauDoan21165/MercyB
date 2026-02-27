@@ -609,36 +609,79 @@ export default function RoomRenderer({
     return inferredTierId;
   }, [metaTierId, inferredTierId]);
 
+  // ✅ FIX: room route must not depend on localStorage being written.
+  // Fetch vip_rank once from mb_user_effective_rank and gate off that.
+  const [vipRank, setVipRank] = useState<number | null>(null);
+  const [vipRankLoading, setVipRankLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadVipRank() {
+      setVipRankLoading(true);
+      try {
+        const { data: userRes, error: userErr } = await supabase.auth.getUser();
+        const userId = userRes?.user?.id;
+
+        if (userErr || !userId) {
+          if (!cancelled) setVipRank(0);
+          return;
+        }
+
+        const { data, error } = await supabase
+          .from("mb_user_effective_rank")
+          .select("vip_rank")
+          .eq("user_id", userId)
+          .order("vip_rank", { ascending: false })
+          .limit(1);
+
+        if (cancelled) return;
+
+        if (error) {
+          setVipRank(0);
+          return;
+        }
+
+        const r = Array.isArray(data) ? (data[0] as any)?.vip_rank : (data as any)?.vip_rank;
+        const n = Number(r);
+        const safe = Number.isFinite(n) ? n : 0;
+        setVipRank(safe);
+
+        // optional cache to help other routes (not required for gating anymore)
+        try {
+          if (typeof window !== "undefined") window.localStorage.setItem("mb.vip_rank", String(safe));
+        } catch {
+          // ignore
+        }
+      } finally {
+        if (!cancelled) setVipRankLoading(false);
+      }
+    }
+
+    loadVipRank();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   const isLocked = useMemo(() => {
-  // required tier -> numeric rank
-  const requiredRank =
-    requiredTierId === "vip9" ? 9 :
-    requiredTierId === "vip3" ? 3 :
-    requiredTierId === "vip1" ? 1 : 0;
+    const requiredRank =
+      requiredTierId === "vip9" ? 9 :
+      requiredTierId === "vip3" ? 3 :
+      requiredTierId === "vip1" ? 1 : 0;
 
-  if (requiredRank <= 0) return false;
+    if (requiredRank <= 0) return false;
 
-  // read current user rank from LS (your app already uses these keys elsewhere)
-  const raw =
-    (typeof window !== "undefined" && (
-      window.localStorage.getItem("mb.vip_rank") ??
-      window.localStorage.getItem("mb.user.vip_rank") ??
-      window.localStorage.getItem("mb.profile.vip_rank")
-    )) ?? null;
+    // If we fetched rank, trust it.
+    if (typeof vipRank === "number") return vipRank < requiredRank;
 
-  const userRank = (() => {
-    const n = Number(raw);
-    return Number.isFinite(n) ? n : 0;
-  })();
+    // While fetching vip rank, keep VIP tiers locked.
+    if (vipRankLoading) return true;
 
-  // If we have a rank, trust it even if accessLoading is true
-  if (userRank > 0) return userRank < requiredRank;
-
-  // If no rank yet, fall back to access policy (when ready)
-  if (accessLoading) return true;
-
-  return !access.canAccessTier(requiredTierId);
-}, [requiredTierId, accessLoading, access]);
+    // Fallback (should be rare now)
+    if (accessLoading) return true;
+    return !access.canAccessTier(requiredTierId);
+  }, [requiredTierId, vipRank, vipRankLoading, accessLoading, access]);
 
   // NOTE: room pages no longer own sign-out UI (GlobalHeader/AppHeader do).
   // Keep this function for safety but DO NOT render a sign-out button here.
@@ -1232,7 +1275,8 @@ export default function RoomRenderer({
                   {dbLoading ? "(loading)" : ""} {dbError ? `dbError="${dbError}"` : ""} | dbLeafEntries(real)=
                   {dbLeafEntries.length} | jsonLeafEntries={jsonLeafEntries.length} | chosen={chosenEntries.source} |
                   allEntries={allEntries.length} | kwButtons={Math.max(kw.en.length, kw.vi.length)} | activeKeyword=
-                  {activeKeyword ? ` "${activeKeyword}"` : "null"}
+                  {activeKeyword ? ` "${activeKeyword}"` : "null"} | vipRank=
+                  {typeof vipRank === "number" ? vipRank : "null"} {vipRankLoading ? "(vip loading)" : ""}
                 </div>
               ) : null}
 
@@ -1291,7 +1335,7 @@ export default function RoomRenderer({
                   <div className="min-h-[260px] flex items-center justify-center text-center" style={inCardMessagePad}>
                     <div style={{ maxWidth: 760, margin: "0 auto" }}>
                       <div className="text-sm opacity-70 font-semibold">
-                        {accessLoading ? (
+                        {vipRankLoading || accessLoading ? (
                           <>Checking access…</>
                         ) : (
                           <>
