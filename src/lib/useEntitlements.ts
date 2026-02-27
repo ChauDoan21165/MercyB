@@ -1,4 +1,4 @@
-// FILE: src/lib/useEntitlements.ts
+// src/lib/useEntitlements.ts
 import { useEffect, useMemo, useState } from "react";
 import { mercyAuth } from "@/lib/mercyAuth";
 
@@ -8,6 +8,21 @@ type Ent = {
   features: Record<string, any>;
   updated_at: string;
 };
+
+function tierFromRank(rank: number): string {
+  if (rank >= 9) return "vip9";
+  if (rank >= 3) return "vip3";
+  if (rank >= 1) return "vip1";
+  return "free";
+}
+
+function safeSetLS(key: string, value: string) {
+  try {
+    window.localStorage.setItem(key, value);
+  } catch {
+    // ignore
+  }
+}
 
 export function useEntitlements() {
   const [data, setData] = useState<Ent | null>(null);
@@ -19,8 +34,6 @@ export function useEntitlements() {
     (async () => {
       setLoading(true);
 
-      // ✅ FIX: don't "return an object" from inside the effect (it does nothing).
-      // Just set state and exit.
       if (!mercyAuth) {
         if (!alive) return;
         setData(null);
@@ -28,23 +41,66 @@ export function useEntitlements() {
         return;
       }
 
-      const { data: raw, error } = await mercyAuth
-        .from("my_entitlements")
-        .select("vip_tier,vip_rank,features,updated_at")
-        .maybeSingle(); // ✅ object-or-null; avoids array shape surprises
+      // 1) Get authed user id (needed for mb_user_effective_rank)
+      const {
+        data: userRes,
+        error: userErr,
+      } = await mercyAuth.auth.getUser();
 
-      if (!alive) return;
+      const userId = userRes?.user?.id ?? null;
 
-      if (error) {
-        setData(null);
-        setLoading(false);
-        return;
+      // 2) Fetch canonical vip_rank from the view
+      let vipRank = 0;
+      if (!userErr && userId) {
+        const { data: rankData, error: rankErr } = await mercyAuth
+          .from("mb_user_effective_rank")
+          .select("vip_rank")
+          .eq("user_id", userId);
+
+        // rankData might be array (normal) or object (if you later switch to single/maybeSingle)
+        const r =
+          Array.isArray(rankData)
+            ? (rankData?.[0] as any)?.vip_rank
+            : (rankData as any)?.vip_rank;
+
+        if (!rankErr && typeof r === "number" && Number.isFinite(r)) {
+          vipRank = r;
+        }
       }
 
-      // ✅ Defensive: if backend ever returns array, normalize to first row.
-      const normalized = Array.isArray(raw) ? (raw[0] ?? null) : raw;
+      // 3) Best-effort fetch features from my_entitlements (if exists)
+      let features: Record<string, any> = {};
+      let updatedAt = new Date().toISOString();
+      try {
+        const { data: entData, error: entErr } = await mercyAuth
+          .from("my_entitlements")
+          .select("features,updated_at")
+          .single();
 
-      setData((normalized as any) ?? null);
+        if (!entErr && entData) {
+          const f = (entData as any)?.features;
+          if (f && typeof f === "object") features = f;
+          const ua = (entData as any)?.updated_at;
+          if (typeof ua === "string" && ua) updatedAt = ua;
+        }
+      } catch {
+        // ignore
+      }
+
+      const ent: Ent = {
+        vip_rank: vipRank,
+        vip_tier: tierFromRank(vipRank),
+        features,
+        updated_at: updatedAt,
+      };
+
+      // 4) IMPORTANT: persist so your existing room gate logic sees it
+      safeSetLS("mb.vip_rank", String(vipRank));
+      safeSetLS("mb.user.vip_rank", String(vipRank));
+      safeSetLS("mb.profile.vip_rank", String(vipRank));
+
+      if (!alive) return;
+      setData(ent);
       setLoading(false);
     })();
 
