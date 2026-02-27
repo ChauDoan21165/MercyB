@@ -143,10 +143,13 @@ function looksUuidLike(s: any) {
 }
 
 // ✅ NEW: strict TierId normalizer at runtime (prevents "FREE"/"Free " from leaking into UI)
-function normalizeTierIdRuntime(x: any): TierId {
+// ✅ FIX: support vip2 at runtime (so vip1 cannot access vip2 rooms).
+type TierIdRuntime = TierId | "vip2";
+function normalizeTierIdRuntime(x: any): TierIdRuntime {
   const t = String(x ?? "").trim().toLowerCase();
+  if (t === "vip2") return "vip2";
   const n = normalizeTier(t);
-  return (n || "free") as TierId;
+  return (n || "free") as TierIdRuntime;
 }
 
 // ✅ NEW: signed-audio helpers (Room-level seam; TalkingFacePlayButton NEVER sees bucket paths)
@@ -600,12 +603,15 @@ export default function RoomRenderer({
   const metaTierId = useMemo<TierId | null>(() => normalizeRoomTierToTierId(tierMetaRaw), [tierMetaRaw]);
 
   // ✅ runtime-hard normalize (prevents "FREE"/"Free " leaks)
-  const inferredTierId = useMemo<TierId>(() => normalizeTierIdRuntime(tierFromRoomId(effectiveRoomId)), [effectiveRoomId]);
+  const inferredTierId = useMemo<TierIdRuntime>(
+    () => normalizeTierIdRuntime(tierFromRoomId(effectiveRoomId)),
+    [effectiveRoomId],
+  );
 
-  const requiredTierId = useMemo<TierId>(() => inferredTierId, [inferredTierId]);
+  const requiredTierId = useMemo<TierIdRuntime>(() => inferredTierId, [inferredTierId]);
 
-  const displayTierId = useMemo<TierId>(() => {
-    if (metaTierId && metaTierId === inferredTierId) return metaTierId;
+  const displayTierId = useMemo<TierIdRuntime>(() => {
+    if (metaTierId && (metaTierId as any) === inferredTierId) return metaTierId as any;
     return inferredTierId;
   }, [metaTierId, inferredTierId]);
 
@@ -668,6 +674,7 @@ export default function RoomRenderer({
     const requiredRank =
       requiredTierId === "vip9" ? 9 :
       requiredTierId === "vip3" ? 3 :
+      requiredTierId === "vip2" ? 2 :
       requiredTierId === "vip1" ? 1 : 0;
 
     if (requiredRank <= 0) return false;
@@ -680,7 +687,7 @@ export default function RoomRenderer({
 
     // Fallback (should be rare now)
     if (accessLoading) return true;
-    return !access.canAccessTier(requiredTierId);
+    return !access.canAccessTier(requiredTierId as any);
   }, [requiredTierId, vipRank, vipRankLoading, accessLoading, access]);
 
   // NOTE: room pages no longer own sign-out UI (GlobalHeader/AppHeader do).
@@ -1190,7 +1197,7 @@ export default function RoomRenderer({
   // ✅ NEW: display tier pill only when VIP (no FREE pill in rooms; global header owns tier/account UI)
   const displayTierForPill = useMemo(() => {
     const t = normalizeTierIdRuntime(displayTierId);
-    return t !== "free" ? t.toUpperCase() : "";
+    return t !== "free" ? String(t).toUpperCase() : "";
   }, [displayTierId]);
 
   return (
@@ -1339,7 +1346,7 @@ export default function RoomRenderer({
                           <>Checking access…</>
                         ) : (
                           <>
-                            Locked: requires <b>{requiredTierId.toUpperCase()}</b>
+                            Locked: requires <b>{String(requiredTierId).toUpperCase()}</b>
                           </>
                         )}
                       </div>
