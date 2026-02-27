@@ -1,265 +1,487 @@
-import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
-import { checkRateLimit, getClientIP, rateLimitResponse } from "../_shared/rateLimit.ts";
-import { logAiUsage, isAiEnabled, isUserAiEnabled, aiDisabledResponse } from "../_shared/aiUsage.ts";
+// supabase/functions/guide-assistant/index.ts
+import { serve } from "https://deno.land/std@0.224.0/http/server.ts";
+import OpenAI from "https://esm.sh/openai@4.56.0";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.4";
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+type TierDepth = "short" | "medium" | "high";
+
+type PronunciationJSON = {
+  type: "pronunciation_feedback";
+  tier_depth: TierDepth;
+  sentence: string;
+  ipa: string | null;
+  stress_pattern: string | null;
+  intonation: string | null;
+  key_corrections: Array<{ issue: string; fix: string }>;
+  sound_breakdown: Array<{ sound: string; word: string; description: string }>;
+  mouth_guidance: Array<{ sound: string; tip: string }>;
+  common_accent_notes: string[];
+  minimal_pairs: Array<{ word1: string; word2: string }>;
+  drills: string[];
+  next_action: string;
 };
 
-// Rate limit: 20 requests per minute per IP
-const RATE_LIMIT_CONFIG = { maxRequests: 20, windowMs: 60000 };
+const PRONUNCIATION_JSON_CONTRACT = `
+Return ONLY valid JSON using this exact structure:
 
-// Safety keywords that trigger templated response
-const CRISIS_KEYWORDS = [
-  'suicide', 'kill myself', 'want to die', 'end my life', 'self-harm', 'hurt myself',
-  'tự tử', 'muốn chết', 'kết thúc cuộc sống', 'tự làm hại',
-  'medication', 'diagnosis', 'prescribe', 'thuốc', 'chẩn đoán', 'kê đơn'
-];
-
-const SAFE_RESPONSE = {
-  en: "I'm not able to help with medical or emergency situations. Please contact a local doctor, therapist, or emergency service in your area.",
-  vi: "Mình không thể hỗ trợ các tình huống y khoa khẩn cấp. Bạn hãy liên hệ bác sĩ, chuyên gia trị liệu hoặc số khẩn cấp tại nơi bạn sống nhé."
-};
-
-// Static articles for context injection
-const GUIDE_ARTICLES: Record<string, { title_en: string; title_vi: string; body_en: string; body_vi: string }> = {
-  "what_is_room": {
-    "title_en": "What is a room?",
-    "title_vi": "Phòng là gì?",
-    "body_en": "A room is a focused space around one topic: calm, self-worth, heartbreak, learning English and more. You can read, listen to audio, and write short reflections.",
-    "body_vi": "Một phòng là một không gian tập trung vào một chủ đề: bình yên, giá trị bản thân, tan vỡ, học tiếng Anh và nhiều nữa."
-  },
-  "how_to_use_room": {
-    "title_en": "How do I use a room?",
-    "title_vi": "Sử dụng một phòng như thế nào?",
-    "body_en": "Start by taking a breath. Listen to audio or read text. Scroll down to reflection and write one honest sentence.",
-    "body_vi": "Hãy bắt đầu bằng một hơi thở. Nghe audio hoặc đọc chữ. Cuộn xuống ô reflection và viết một câu chân thật."
-  },
-  "how_to_use_paths": {
-    "title_en": "What is a path?",
-    "title_vi": "Path là gì?",
-    "body_en": "A path is a gentle sequence of days around one healing theme. Each day has text, audio, reflection, and a dare.",
-    "body_vi": "Path là một chuỗi ngày nhẹ nhàng xoay quanh một chủ đề hồi phục."
-  },
-  "language_switch": {
-    "title_en": "How do English and Vietnamese work together?",
-    "title_vi": "Tiếng Anh và tiếng Việt hoạt động cùng nhau thế nào?",
-    "body_en": "Most rooms are bilingual. Switch to English for learning, Vietnamese for comfort.",
-    "body_vi": "Hầu hết các phòng đều song ngữ."
-  },
-  "where_to_start": {
-    "title_en": "Where should I start?",
-    "title_vi": "Mình nên bắt đầu từ đâu?",
-    "body_en": "If overwhelmed, start with Calm Mind 7 Days. For heartache, choose a healing room. For English, open a learning room.",
-    "body_vi": "Nếu quá tải, hãy bắt đầu với Bình Tâm 7 Ngày."
-  }
-};
-
-const SYSTEM_PROMPT = `You are Mercy Guide, a warm in-app assistant for the Mercy Blade application.
-Your job:
-- Help users understand how to use the app, rooms, paths, audio, reflections, languages, and progress.
-- Be gentle, short, and clear.
-- You may explain what a room is, how to move through a path, how to combine English and Vietnamese, how to build a habit, how to come back after a break.
-- You can offer emotional validation in soft, general terms (e.g. "It is okay to go slowly."), but you MUST NOT:
-  - give medical, diagnostic, or crisis advice,
-  - tell people what treatment or medication they should use,
-  - replace a doctor, therapist, or emergency service.
-- If user asks for medical or crisis help, gently tell them that Mercy Blade cannot provide medical or emergency support and encourage them to contact local professionals or emergency services.
-- Prefer bilingual answers when helpful: start in the user's selected language, then optionally add a short line in the other language.
-- Keep answers under 150 words.`;
-
-function containsCrisisKeywords(text: string): boolean {
-  const lower = text.toLowerCase();
-  return CRISIS_KEYWORDS.some(keyword => lower.includes(keyword));
+{
+  "type": "pronunciation_feedback",
+  "tier_depth": "short" | "medium" | "high",
+  "sentence": string,
+  "ipa": string | null,
+  "stress_pattern": string | null,
+  "intonation": string | null,
+  "key_corrections": [
+    { "issue": string, "fix": string }
+  ],
+  "sound_breakdown": [
+    { "sound": string, "word": string, "description": string }
+  ],
+  "mouth_guidance": [
+    { "sound": string, "tip": string }
+  ],
+  "common_accent_notes": string[],
+  "minimal_pairs": [
+    { "word1": string, "word2": string }
+  ],
+  "drills": string[],
+  "next_action": string
 }
 
-function findRelevantArticle(question: string): string | null {
-  const lower = question.toLowerCase();
-  if (lower.includes('room') || lower.includes('phòng')) {
-    if (lower.includes('how') || lower.includes('use') || lower.includes('cách') || lower.includes('sử dụng')) {
-      return 'how_to_use_room';
+Rules:
+- Do NOT include any explanation outside JSON.
+- Do NOT wrap in markdown.
+- Always include ALL keys.
+- All unused arrays must be empty arrays.
+- Never include code fences.
+`;
+
+function json(data: unknown, status = 200) {
+  return new Response(JSON.stringify(data), {
+    status,
+    headers: { "content-type": "application/json; charset=utf-8" },
+  });
+}
+
+function makeRequestId() {
+  try {
+    return crypto.randomUUID();
+  } catch {
+    return `req_${Date.now()}_${Math.random().toString(16).slice(2)}`;
+  }
+}
+
+function stripMarkdownCodeFences(s: string) {
+  const t = String(s || "").trim();
+  if (!t) return "";
+  if (t.startsWith("```")) {
+    return t.replace(/^```(?:json)?/i, "").replace(/```$/i, "").trim();
+  }
+  return t;
+}
+
+function safeJsonParse(raw: string): any | null {
+  const cleaned = stripMarkdownCodeFences(raw);
+  try {
+    return JSON.parse(cleaned);
+  } catch {
+    const first = cleaned.indexOf("{");
+    const last = cleaned.lastIndexOf("}");
+    if (first >= 0 && last > first) {
+      const slice = cleaned.slice(first, last + 1);
+      try {
+        return JSON.parse(slice);
+      } catch {
+        return null;
+      }
     }
-    return 'what_is_room';
+    return null;
   }
-  if (lower.includes('path') || lower.includes('calm mind') || lower.includes('bình tâm') || lower.includes('7 day') || lower.includes('7 ngày')) {
-    return 'how_to_use_paths';
+}
+
+function normalizePronunciationJson(parsed: any, tierDepth: TierDepth): PronunciationJSON {
+  const obj = parsed && typeof parsed === "object" ? parsed : {};
+
+  const scrub = (v: any) => {
+    if (v === null || v === undefined) return v;
+    const s = String(v);
+    return s.replace(/```/g, "").trim();
+  };
+
+  return {
+    type: "pronunciation_feedback",
+    tier_depth: (obj.tier_depth ?? tierDepth) as TierDepth,
+    sentence: scrub(obj.sentence ?? "") ?? "",
+    ipa: obj.ipa === null || obj.ipa === undefined ? null : scrub(obj.ipa),
+    stress_pattern: obj.stress_pattern === null || obj.stress_pattern === undefined ? null : scrub(obj.stress_pattern),
+    intonation: obj.intonation === null || obj.intonation === undefined ? null : scrub(obj.intonation),
+    key_corrections: Array.isArray(obj.key_corrections)
+      ? obj.key_corrections
+          .map((x: any) => ({ issue: scrub(x?.issue ?? "") ?? "", fix: scrub(x?.fix ?? "") ?? "" }))
+          .filter((x: any) => x.issue || x.fix)
+      : [],
+    sound_breakdown: Array.isArray(obj.sound_breakdown)
+      ? obj.sound_breakdown
+          .map((x: any) => ({
+            sound: scrub(x?.sound ?? "") ?? "",
+            word: scrub(x?.word ?? "") ?? "",
+            description: scrub(x?.description ?? "") ?? "",
+          }))
+          .filter((x: any) => x.sound || x.word || x.description)
+      : [],
+    mouth_guidance: Array.isArray(obj.mouth_guidance)
+      ? obj.mouth_guidance
+          .map((x: any) => ({ sound: scrub(x?.sound ?? "") ?? "", tip: scrub(x?.tip ?? "") ?? "" }))
+          .filter((x: any) => x.sound || x.tip)
+      : [],
+    common_accent_notes: Array.isArray(obj.common_accent_notes)
+      ? obj.common_accent_notes.map((x: any) => scrub(x ?? "") ?? "").filter(Boolean)
+      : [],
+    minimal_pairs: Array.isArray(obj.minimal_pairs)
+      ? obj.minimal_pairs
+          .map((x: any) => ({ word1: scrub(x?.word1 ?? "") ?? "", word2: scrub(x?.word2 ?? "") ?? "" }))
+          .filter((x: any) => x.word1 || x.word2)
+      : [],
+    drills: Array.isArray(obj.drills) ? obj.drills.map((x: any) => scrub(x ?? "") ?? "").filter(Boolean) : [],
+    next_action: scrub(obj.next_action ?? "") ?? "",
+  };
+}
+
+// Weakness extraction (simple, grows over time)
+type Weakness = { category: string; pattern: string; weight: number };
+
+function extractWeaknesses(p: PronunciationJSON): Weakness[] {
+  const bag: Weakness[] = [];
+  for (const c of p.key_corrections || []) {
+    const issue = String(c?.issue || "");
+    if (issue.includes("/ð/") || issue.toLowerCase().includes("th sound")) bag.push({ category: "pronunciation", pattern: "/ð/", weight: 1 });
+    if (issue.includes("/θ/")) bag.push({ category: "pronunciation", pattern: "/θ/", weight: 1 });
+    if (issue.toLowerCase().includes("stress")) bag.push({ category: "pronunciation", pattern: "stress_flat", weight: 1 });
+    if (issue.toLowerCase().includes("intonation")) bag.push({ category: "pronunciation", pattern: "intonation", weight: 1 });
+    if (issue.toLowerCase().includes("ending") || issue.toLowerCase().includes("final consonant")) bag.push({ category: "pronunciation", pattern: "final_consonant", weight: 1 });
   }
-  if (lower.includes('english') || lower.includes('vietnamese') || lower.includes('tiếng') || lower.includes('language') || lower.includes('ngôn ngữ')) {
-    return 'language_switch';
+  const map = new Map<string, Weakness>();
+  for (const w of bag) {
+    const k = `${w.category}|||${w.pattern}`;
+    const prev = map.get(k);
+    map.set(k, prev ? { ...prev, weight: prev.weight + w.weight } : w);
   }
-  if (lower.includes('start') || lower.includes('begin') || lower.includes('bắt đầu') || lower.includes('where')) {
-    return 'where_to_start';
+  return Array.from(map.values());
+}
+
+async function upsertWeaknessIncrement(supabaseAdmin: any, userId: string, weaknesses: Weakness[]) {
+  const now = new Date().toISOString();
+  for (const w of weaknesses) {
+    const category = String(w.category || "").trim();
+    const key_pattern = String(w.pattern || "").trim();
+    const inc = Number(w.weight || 1);
+    if (!category || !key_pattern || !Number.isFinite(inc) || inc <= 0) continue;
+
+    const { data: existing } = await supabaseAdmin
+      .from("mb_user_weakness_profile")
+      .select("frequency")
+      .eq("user_id", userId)
+      .eq("category", category)
+      .eq("key_pattern", key_pattern)
+      .maybeSingle();
+
+    if (!existing) {
+      await supabaseAdmin.from("mb_user_weakness_profile").insert({
+        user_id: userId,
+        category,
+        key_pattern,
+        frequency: inc,
+        last_seen: now,
+      });
+    } else {
+      const current = Number((existing as any)?.frequency ?? 0);
+      await supabaseAdmin
+        .from("mb_user_weakness_profile")
+        .update({ frequency: (Number.isFinite(current) ? current : 0) + inc, last_seen: now })
+        .eq("user_id", userId)
+        .eq("category", category)
+        .eq("key_pattern", key_pattern);
+    }
   }
-  return null;
+}
+
+async function logUsage(supabaseAdmin: any, payload: any) {
+  try {
+    await supabaseAdmin.from("mb_ai_usage_logs").insert(payload);
+  } catch {
+    // ignore
+  }
+}
+
+async function logPronAttempt(supabaseAdmin: any, payload: any) {
+  try {
+    await supabaseAdmin.from("mb_pronunciation_attempts").insert(payload);
+  } catch {
+    // ignore
+  }
+}
+
+function tierPolicyForVip(vip: number): { depth: TierDepth; max_items: number } {
+  if (vip <= 1) return { depth: "short", max_items: 2 };
+  if (vip === 2) return { depth: "medium", max_items: 4 };
+  return { depth: "high", max_items: 8 };
 }
 
 serve(async (req) => {
-  if (req.method === 'OPTIONS') {
-    return new Response(null, { headers: corsHeaders });
+  if (req.method !== "POST") return json({ error: "Method not allowed" }, 405);
+
+  const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
+  const ANON_KEY = Deno.env.get("SUPABASE_ANON_KEY")!;
+  const SERVICE_ROLE = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+  const OPENAI_KEY = Deno.env.get("OPENAI_KEY") || Deno.env.get("OPENAI_API_KEY")!;
+
+  if (!SUPABASE_URL || !ANON_KEY || !SERVICE_ROLE || !OPENAI_KEY) {
+    return json({ error: "Missing env vars (SUPABASE_URL/ANON_KEY/SERVICE_ROLE/OPENAI_KEY)" }, 500);
   }
 
-  // Rate limiting by IP
-  const clientIP = getClientIP(req);
-  const rateCheck = checkRateLimit(`guide-assistant:${clientIP}`, RATE_LIMIT_CONFIG);
-  if (!rateCheck.allowed) {
-    console.warn(`Rate limit exceeded for IP: ${clientIP}`);
-    return rateLimitResponse(rateCheck.retryAfterSeconds!, corsHeaders);
-  }
+  const authHeader = req.headers.get("Authorization") || "";
 
+  // User-scoped client (for auth check)
+  const supabaseUser = createClient(SUPABASE_URL, ANON_KEY, {
+    global: { headers: { Authorization: authHeader } },
+  });
+
+  const { data: userRes, error: userErr } = await supabaseUser.auth.getUser();
+  const user = userRes?.user;
+
+  if (userErr || !user) return json({ error: "Unauthorized" }, 401);
+
+  // Admin client (for inserts/updates)
+  const supabaseAdmin = createClient(SUPABASE_URL, SERVICE_ROLE);
+
+  let body: any = null;
   try {
-    // Check if AI is globally enabled
-    if (!await isAiEnabled()) {
-      return aiDisabledResponse('global', corsHeaders);
-    }
+    body = await req.json();
+  } catch {
+    return json({ error: "Invalid JSON body" }, 400);
+  }
 
-    // Get user ID if authenticated
-    let userId: string | null = null;
-    const authHeader = req.headers.get('Authorization');
-    if (authHeader) {
-      const supabase = createClient(
-        Deno.env.get('SUPABASE_URL')!,
-        Deno.env.get('SUPABASE_ANON_KEY')!,
-        { global: { headers: { Authorization: authHeader } } }
-      );
-      const { data: { user } } = await supabase.auth.getUser();
-      if (user) {
-        userId = user.id;
-        // Check per-user AI setting
-        if (!await isUserAiEnabled(userId)) {
-          return aiDisabledResponse('user', corsHeaders);
-        }
-      }
-    }
+  const userMessage = String(body?.userMessage ?? "").trim();
+  const room_id = String(body?.room_id ?? "").trim();
+  const conversationHistory = Array.isArray(body?.conversationHistory) ? body.conversationHistory : [];
+  const requestId = String(body?.request_id ?? "") || makeRequestId();
 
-    const { question, roomId, roomTitle, language = 'en', context } = await req.json();
+  if (!userMessage) return json({ error: "Missing userMessage" }, 400);
+  if (!room_id) return json({ error: "Missing room_id" }, 400);
 
-    if (!question || typeof question !== 'string' || question.trim().length === 0) {
-      return new Response(
-        JSON.stringify({ ok: false, error: 'Question is required' }),
-        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
-    }
+  // Load VIP rank (use your mb_user_effective_rank view/table if it exists)
+  let vip_rank = 1;
+  try {
+    const { data } = await supabaseAdmin
+      .from("mb_user_effective_rank")
+      .select("vip_rank")
+      .eq("user_id", user.id)
+      .order("vip_rank", { ascending: false })
+      .limit(1);
+    const r = Array.isArray(data) ? (data[0] as any)?.vip_rank : (data as any)?.vip_rank;
+    const n = Number(r);
+    if (Number.isFinite(n)) vip_rank = n;
+  } catch {
+    // default vip1
+  }
 
-    // Safety check - return templated response for crisis keywords
-    if (containsCrisisKeywords(question)) {
-      const answer = language === 'vi' 
-        ? `${SAFE_RESPONSE.vi}\n\n${SAFE_RESPONSE.en}`
-        : `${SAFE_RESPONSE.en}\n\n${SAFE_RESPONSE.vi}`;
-      return new Response(
-        JSON.stringify({ ok: true, answer }),
-        { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
-    }
+  const tierPolicy = tierPolicyForVip(vip_rank);
 
-    // Try Lovable AI Gateway first, fall back to OpenAI
-    const lovableKey = Deno.env.get('LOVABLE_API_KEY');
-    const openaiKey = Deno.env.get('OPENAI_API_KEY');
-    
-    if (!lovableKey && !openaiKey) {
-      return new Response(
-        JSON.stringify({ ok: false, error: 'AI service not configured' }),
-        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
-    }
+  const isPronunciation =
+    /pronoun|pronunciation|say it|how to pronounce|correct my accent|ipa|stress|intonation/i.test(userMessage);
 
-    // Build context for the AI
-    let contextInfo = '';
-    if (roomTitle) contextInfo += `Current room: ${roomTitle}\n`;
-    if (context?.tier) contextInfo += `User tier: ${context.tier}\n`;
-    if (context?.pathSlug) contextInfo += `Current path: ${context.pathSlug}\n`;
-    if (context?.tags?.length) contextInfo += `Room tags: ${context.tags.join(', ')}\n`;
+  const plan = isPronunciation
+    ? { type: "pronunciation", tierPolicy }
+    : { type: "default", tierPolicy };
 
-    // Find relevant article
-    const articleKey = findRelevantArticle(question);
-    if (articleKey && GUIDE_ARTICLES[articleKey]) {
-      const article = GUIDE_ARTICLES[articleKey];
-      contextInfo += `\nRelevant guide article:\nEN: ${article.body_en}\nVI: ${article.body_vi}\n`;
-    }
+  // Minimal system prompt (Edge). Your Next.js route can use the full systemPromptBase.
+  const systemPrompt = [
+    "You are Mercy Host, a strict, kind teacher.",
+    "Always do what the user asked.",
+    "If plan.type is pronunciation: return JSON ONLY following the required contract.",
+    "",
+    "ROOM_CONTEXT:",
+    JSON.stringify({ room_id }, null, 2),
+    "",
+    "STUDENT_CONTEXT:",
+    JSON.stringify({ user_id: user.id, vip_rank, tier_depth_policy: tierPolicy }, null, 2),
+  ].join("\n");
 
-    const userMessage = `User's preferred language: ${language === 'vi' ? 'Vietnamese' : 'English'}
-${contextInfo}
-User question: ${question}`;
+  const openai = new OpenAI({ apiKey: OPENAI_KEY });
 
-    // Use Lovable AI Gateway if available, otherwise OpenAI
-    const apiUrl = lovableKey 
-      ? 'https://ai.gateway.lovable.dev/v1/chat/completions'
-      : 'https://api.openai.com/v1/chat/completions';
-    
-    const apiKey = lovableKey || openaiKey;
-    const model = lovableKey ? 'google/gemini-2.5-flash' : 'gpt-4o-mini';
+  const model = "gpt-4o-mini";
 
-    console.log(`[guide-assistant] Using ${lovableKey ? 'Lovable AI Gateway' : 'OpenAI'} for request`);
+  const planningInstruction = isPronunciation
+    ? `
+Teaching Plan:
+${JSON.stringify(plan, null, 2)}
 
-    const response = await fetch(apiUrl, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${apiKey}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model,
-        messages: [
-          { role: 'system', content: SYSTEM_PROMPT },
-          { role: 'user', content: userMessage }
-        ],
-        max_tokens: 300,
-        temperature: 0.7,
-      }),
+${PRONUNCIATION_JSON_CONTRACT}
+
+Also:
+- Respect tier_depth="${tierPolicy.depth}"
+- If short: key_corrections<=2 drills<=2 minimal_pairs<=1 mouth_guidance<=1
+- If medium: key_corrections<=4 drills<=4 minimal_pairs<=2 mouth_guidance<=3
+`
+    : `
+Follow this teaching plan:
+${JSON.stringify(plan, null, 2)}
+`;
+
+  if (isPronunciation) {
+    // Attempt 1 (strict JSON object)
+    const first = await openai.chat.completions.create({
+      model,
+      temperature: 0.2,
+      response_format: { type: "json_object" } as any,
+      messages: [
+        { role: "system", content: systemPrompt },
+        ...conversationHistory,
+        { role: "system", content: planningInstruction },
+        { role: "system", content: "STRICT OUTPUT: Return ONLY a JSON object. No markdown. No commentary." },
+      ],
     });
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error('AI API error:', response.status, errorText);
-      
-      // Handle rate limit errors
-      if (response.status === 429) {
-        return new Response(
-          JSON.stringify({ ok: false, error: 'Mercy is taking a short break. Please try again in a moment.' }),
-          { status: 429, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-        );
-      }
-      
-      // Handle payment required
-      if (response.status === 402) {
-        return new Response(
-          JSON.stringify({ ok: false, error: 'AI service temporarily unavailable. Please try again later.' }),
-          { status: 402, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-        );
-      }
-      
-      return new Response(
-        JSON.stringify({ ok: false, error: 'Failed to get AI response' }),
-        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
-    }
+    const content1 = first.choices?.[0]?.message?.content ?? "";
+    const parsed1 = safeJsonParse(content1);
 
-    const data = await response.json();
-    const answer = data.choices?.[0]?.message?.content || 'I could not generate an answer. Please try again.';
+    await logUsage(supabaseAdmin, {
+      user_id: user.id,
+      vip_rank,
+      mode: "pronunciation",
+      model,
+      prompt_tokens: first.usage?.prompt_tokens ?? 0,
+      completion_tokens: first.usage?.completion_tokens ?? 0,
+      total_tokens: first.usage?.total_tokens ?? 0,
+      room_id,
+      request_id: requestId,
+    });
 
-    // Log AI usage
-    const usage = data.usage;
-    if (usage) {
-      await logAiUsage({
-        userId,
-        model,
-        tokensInput: usage.prompt_tokens || 0,
-        tokensOutput: usage.completion_tokens || 0,
-        endpoint: 'guide-assistant',
+    if (parsed1) {
+      const normalized = normalizePronunciationJson(parsed1, tierPolicy.depth);
+      const weaknesses = extractWeaknesses(normalized);
+      await upsertWeaknessIncrement(supabaseAdmin, user.id, weaknesses);
+
+      await logPronAttempt(supabaseAdmin, {
+        user_id: user.id,
+        room_id,
+        sentence: normalized.sentence,
+        corrections_count: normalized.key_corrections.length,
+        notes: null,
+        request_id: requestId,
       });
+
+      return json({ request_id: requestId, response: normalized }, 200);
     }
 
-    return new Response(
-      JSON.stringify({ ok: true, answer }),
-      { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+    // Repair attempt 2
+    const repairInstruction = `
+Your previous output was invalid JSON.
+
+Return ONLY a valid JSON object matching the required structure exactly.
+
+INVALID_OUTPUT:
+${stripMarkdownCodeFences(content1).slice(0, 6000)}
+`;
+
+    const second = await openai.chat.completions.create({
+      model,
+      temperature: 0.1,
+      response_format: { type: "json_object" } as any,
+      messages: [
+        { role: "system", content: systemPrompt },
+        ...conversationHistory,
+        { role: "system", content: `${planningInstruction}\n\n${repairInstruction}` },
+        { role: "system", content: "STRICT OUTPUT: Return ONLY a JSON object. No markdown. No commentary." },
+      ],
+    });
+
+    const content2 = second.choices?.[0]?.message?.content ?? "";
+    const parsed2 = safeJsonParse(content2);
+
+    await logUsage(supabaseAdmin, {
+      user_id: user.id,
+      vip_rank,
+      mode: "pronunciation_repair",
+      model,
+      prompt_tokens: second.usage?.prompt_tokens ?? 0,
+      completion_tokens: second.usage?.completion_tokens ?? 0,
+      total_tokens: second.usage?.total_tokens ?? 0,
+      room_id,
+      request_id: requestId,
+    });
+
+    if (parsed2) {
+      const normalized = normalizePronunciationJson(parsed2, tierPolicy.depth);
+      const weaknesses = extractWeaknesses(normalized);
+      await upsertWeaknessIncrement(supabaseAdmin, user.id, weaknesses);
+
+      await logPronAttempt(supabaseAdmin, {
+        user_id: user.id,
+        room_id,
+        sentence: normalized.sentence,
+        corrections_count: normalized.key_corrections.length,
+        notes: "repair_retry",
+        request_id: requestId,
+      });
+
+      return json({ request_id: requestId, response: normalized }, 200);
+    }
+
+    // Fallback
+    const fallback: PronunciationJSON = normalizePronunciationJson(
+      {
+        type: "pronunciation_feedback",
+        tier_depth: tierPolicy.depth,
+        sentence: "",
+        ipa: null,
+        stress_pattern: null,
+        intonation: null,
+        key_corrections: [],
+        sound_breakdown: [],
+        mouth_guidance: [],
+        common_accent_notes: [],
+        minimal_pairs: [],
+        drills: [],
+        next_action: "Internal formatting issue. Please try again and paste the exact sentence you want to practice.",
+      },
+      tierPolicy.depth,
     );
 
-  } catch (error) {
-    console.error('Guide assistant error:', error);
-    return new Response(
-      JSON.stringify({ ok: false, error: 'An error occurred. Please try again.' }),
-      { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-    );
+    await logPronAttempt(supabaseAdmin, {
+      user_id: user.id,
+      room_id,
+      sentence: "",
+      corrections_count: 0,
+      notes: "fallback",
+      request_id: requestId,
+    });
+
+    return json({ request_id: requestId, response: fallback }, 200);
   }
+
+  // Default mode (text)
+  const normal = await openai.chat.completions.create({
+    model,
+    temperature: 0.5,
+    messages: [
+      { role: "system", content: systemPrompt },
+      ...conversationHistory,
+      { role: "system", content: planningInstruction },
+    ],
+  });
+
+  await logUsage(supabaseAdmin, {
+    user_id: user.id,
+    vip_rank,
+    mode: "default",
+    model,
+    prompt_tokens: normal.usage?.prompt_tokens ?? 0,
+    completion_tokens: normal.usage?.completion_tokens ?? 0,
+    total_tokens: normal.usage?.total_tokens ?? 0,
+    room_id,
+    request_id: requestId,
+  });
+
+  return json({ request_id: requestId, response: normal.choices?.[0]?.message?.content ?? "" }, 200);
 });

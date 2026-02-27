@@ -49,6 +49,11 @@ declare global {
   }
 }
 
+/** ✅ DEV-only logger (keeps production console clean) */
+const devLog = (...args: unknown[]) => {
+  if (import.meta.env.DEV) console.log(...args);
+};
+
 // ✅ MB FATAL OVERLAY — shows runtime errors on screen
 (function attachFatalErrorOverlay() {
   const getOverlayRoot = (): HTMLDivElement | null => {
@@ -56,7 +61,10 @@ declare global {
       if (typeof document === "undefined" || !document.body) return null;
 
       // Prefer window-stored node (HMR-safe)
-      if (window.__MB_FATAL_OVERLAY_EL__ && document.body.contains(window.__MB_FATAL_OVERLAY_EL__)) {
+      if (
+        window.__MB_FATAL_OVERLAY_EL__ &&
+        document.body.contains(window.__MB_FATAL_OVERLAY_EL__)
+      ) {
         return window.__MB_FATAL_OVERLAY_EL__;
       }
 
@@ -93,7 +101,7 @@ declare global {
             ? err
             : JSON.stringify(err, null, 2);
 
-      const msg = `${title}\n\n` + message + `\n\nURL: ${window.location.href}`;
+      const msg = `${title}\n\n${message}\n\nURL: ${window.location.href}`;
 
       // Ensure visible + topmost
       overlayRoot.innerHTML = "";
@@ -167,6 +175,7 @@ declare global {
   try {
     if (!import.meta.env.DEV) return;
     window.supabase = supabase;
+    devLog("[MB DEV] window.supabase attached");
   } catch {
     // ignore
   }
@@ -208,9 +217,3 @@ w.__MB_REACT_ROOT__.render(
     </AuthProvider>
   </BrowserRouter>,
 );
-
-/**
- * New thing to learn:
- * If your global error overlay mutates #root (innerHTML=""), it can *create* React’s
- * removeChild NotFoundError by racing React’s commit/unmount logic in dev.
- */
