@@ -1,3 +1,4 @@
+// src/screens/Pricing.tsx
 import React, { useEffect } from "react";
 
 declare global {
@@ -9,14 +10,20 @@ declare global {
       > & {
         "pricing-table-id"?: string;
         "publishable-key"?: string;
-        "client-reference-id"?: string;
       };
     }
   }
 }
 
 export default function Pricing() {
-  // If you're using Stripe pricing table, the script must exist once.
+  // These should be set in your env (Vercel / .env)
+  const STRIPE_PRICING_TABLE_ID = (import.meta as any).env?.VITE_STRIPE_PRICING_TABLE_ID as
+    | string
+    | undefined;
+  const STRIPE_PUBLISHABLE_KEY = (import.meta as any).env?.VITE_STRIPE_PUBLISHABLE_KEY as
+    | string
+    | undefined;
+
   useEffect(() => {
     const id = "stripe-pricing-table-js";
     if (document.getElementById(id)) return;
@@ -25,83 +32,144 @@ export default function Pricing() {
     s.id = id;
     s.async = true;
     s.src = "https://js.stripe.com/v3/pricing-table.js";
-    document.head.appendChild(s);
+    document.body.appendChild(s);
   }, []);
 
-  const wrap: React.CSSProperties = {
-    padding: 24,
+  const page: React.CSSProperties = {
     maxWidth: 980,
     margin: "0 auto",
+    padding: "24px 16px 80px",
   };
 
-  const card: React.CSSProperties = {
-    border: "1px solid rgba(0,0,0,0.08)",
-    borderRadius: 16,
-    padding: 16,
-    background: "rgba(255,255,255,0.9)",
-    boxShadow: "0 10px 30px rgba(0,0,0,0.06)",
+  const h1: React.CSSProperties = {
+    fontSize: 34,
+    lineHeight: 1.15,
+    margin: "8px 0 8px",
+    fontWeight: 800,
   };
 
-  const h1: React.CSSProperties = { fontSize: 28, fontWeight: 900, margin: 0 };
-  const sub: React.CSSProperties = { marginTop: 8, opacity: 0.8, lineHeight: 1.5 };
+  const sub: React.CSSProperties = {
+    opacity: 0.85,
+    margin: "0 0 18px",
+    fontSize: 15,
+    lineHeight: 1.5,
+  };
 
   const grid: React.CSSProperties = {
     display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-    gap: 12,
-    marginTop: 16,
+    gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+    gap: 14,
+    margin: "18px 0 18px",
   };
 
-  const tierTitle: React.CSSProperties = { fontSize: 18, fontWeight: 800, margin: 0 };
-  const tierBody: React.CSSProperties = { marginTop: 8, opacity: 0.85, lineHeight: 1.5 };
+  const card: React.CSSProperties = {
+    border: "1px solid rgba(255,255,255,0.12)",
+    borderRadius: 14,
+    padding: 16,
+    background: "rgba(255,255,255,0.03)",
+  };
 
-  // TODO: set these from env or constants if you have them
-  const STRIPE_PRICING_TABLE_ID = (import.meta as any).env?.VITE_STRIPE_PRICING_TABLE_ID || "";
-  const STRIPE_PUBLISHABLE_KEY = (import.meta as any).env?.VITE_STRIPE_PUBLISHABLE_KEY || "";
+  const tierTitle: React.CSSProperties = {
+    fontSize: 18,
+    margin: 0,
+    fontWeight: 800,
+    display: "flex",
+    alignItems: "baseline",
+    justifyContent: "space-between",
+    gap: 10,
+  };
+
+  const price: React.CSSProperties = {
+    fontSize: 20,
+    fontWeight: 900,
+    letterSpacing: 0.2,
+    whiteSpace: "nowrap",
+  };
+
+  const small: React.CSSProperties = {
+    marginTop: 8,
+    opacity: 0.9,
+    lineHeight: 1.6,
+    fontSize: 14,
+  };
+
+  const note: React.CSSProperties = {
+    marginTop: 10,
+    fontSize: 13,
+    opacity: 0.75,
+    lineHeight: 1.55,
+  };
+
+  const warn: React.CSSProperties = {
+    marginTop: 12,
+    padding: 12,
+    borderRadius: 12,
+    border: "1px solid rgba(255, 180, 0, 0.35)",
+    background: "rgba(255, 180, 0, 0.08)",
+    fontSize: 13,
+    lineHeight: 1.55,
+  };
 
   return (
-    <div style={wrap}>
-      <div style={card}>
-        <h1 style={h1}>Pricing / Bảng giá</h1>
-        <p style={sub}>
-          Choose the plan that matches your pace. <br />
-          Chọn gói phù hợp với nhịp tiến bộ của bạn.
-        </p>
+    <div style={page}>
+      <h1 style={h1}>Pricing / Bảng giá</h1>
 
-        <div style={grid}>
-          <div style={card}>
-            <h2 style={tierTitle}>Pro / Chuyên nghiệp</h2>
-            <p style={tierBody}>
-              For consistent progress and deeper practice. <br />
-              Dành cho luyện tập đều đặn và đào sâu kỹ năng.
-            </p>
-          </div>
+      <p style={sub}>
+        Two simple plans. Click below to checkout with Stripe.
+        <br />
+        Hai gói đơn giản. Bấm bên dưới để thanh toán qua Stripe.
+      </p>
 
-          <div style={card}>
-            <h2 style={tierTitle}>Elite / Tinh hoa</h2>
-            <p style={tierBody}>
-              For high mastery, advanced guidance, and priority features. <br />
-              Dành cho bậc cao, hướng dẫn nâng cao và tính năng ưu tiên.
-            </p>
+      {/* ✅ Only Pro + Elite (remove old $5 / $12 / $29 and remove "God / Universe" text) */}
+      <div style={grid}>
+        <div style={card}>
+          <h2 style={tierTitle}>
+            <span>Pro / Chuyên nghiệp</span>
+            <span style={price}>CA$17</span>
+          </h2>
+          <div style={small}>
+            VIP3 equivalent / Tương đương VIP3
+            <br />
+            Monthly / Hàng tháng
           </div>
         </div>
 
-        {/* Stripe pricing table embed (optional) */}
-        {STRIPE_PRICING_TABLE_ID && STRIPE_PUBLISHABLE_KEY ? (
-          <div style={{ marginTop: 16 }}>
-            <stripe-pricing-table
-              pricing-table-id={STRIPE_PRICING_TABLE_ID}
-              publishable-key={STRIPE_PUBLISHABLE_KEY}
-            />
+        <div style={card}>
+          <h2 style={tierTitle}>
+            <span>Elite / Tinh hoa</span>
+            <span style={price}>CA$39</span>
+          </h2>
+          <div style={small}>
+            VIP9 equivalent / Tương đương VIP9
+            <br />
+            Monthly / Hàng tháng
           </div>
-        ) : (
-          <p style={{ marginTop: 16, opacity: 0.7 }}>
-            Stripe pricing-table env vars missing. Set
-            <code> VITE_STRIPE_PRICING_TABLE_ID</code> and
-            <code> VITE_STRIPE_PUBLISHABLE_KEY</code> to enable the embed.
-          </p>
-        )}
+        </div>
       </div>
+
+      <div style={note}>
+        Prices shown here are in CAD for clarity. Final amount is always confirmed in Stripe checkout.
+        <br />
+        Giá hiển thị là CAD cho dễ hiểu. Số tiền cuối cùng luôn được xác nhận trong trang thanh toán Stripe.
+      </div>
+
+      {/* Stripe pricing table embed */}
+      {STRIPE_PRICING_TABLE_ID && STRIPE_PUBLISHABLE_KEY ? (
+        <div style={{ marginTop: 18 }}>
+          <stripe-pricing-table
+            pricing-table-id={STRIPE_PRICING_TABLE_ID}
+            publishable-key={STRIPE_PUBLISHABLE_KEY}
+          />
+        </div>
+      ) : (
+        <div style={warn}>
+          Stripe pricing-table env vars missing.
+          <br />
+          Set:
+          <br />
+          <code>VITE_STRIPE_PRICING_TABLE_ID</code> and <code>VITE_STRIPE_PUBLISHABLE_KEY</code>
+        </div>
+      )}
     </div>
   );
 }
