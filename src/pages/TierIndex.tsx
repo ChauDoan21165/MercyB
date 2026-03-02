@@ -55,16 +55,10 @@
 // - Remove local Home/Back row to prevent duplicate buttons.
 //   GlobalHeader/AppShell owns Home+Back + Mercy Blade wordmark consistently.
 //
-// PATCH (2026-02-23):
-// - Display launch pricing on Tier Map spine pills (UI-only):
-//   VIP1=$5/mo, VIP3=$12/mo, VIP9=$29/mo (no changes to billing logic).
-//
 // PATCH (2026-03-02):
-// - Remove "God / Universe (Above the head)" label row.
-// - Remove old USD prices; show ONLY:
-//   - Pro (VIP3): 17 CAD
-//   - Elite (VIP9): 39 CAD
-// - Clicking VIP3/VIP9 spine pills routes to /pricing (Stripe page).
+// - Remove "God / Universe (Above the head)" decorative node.
+// - Remove ALL displayed VIP prices from Tier Map UI.
+// - Add top "Pricing" CTA button linking to /pricing (Stripe pricing table page).
 //
 // NOTE: Inline styles only. Locked concept preserved.
 
@@ -96,7 +90,7 @@ const rainbow =
   "linear-gradient(90deg,#ff4d4d 0%,#ffb84d 18%,#b6ff4d 36%,#4dffb8 54%,#4db8ff 72%,#b84dff 90%,#ff4dff 100%)";
 
 const SPINE_TOP_TO_BOTTOM: TierNode[] = [
-  { id: "vip9", label: "VIP9", hint: "Top / mastery" },
+  { id: "vip9", label: "VIP9", hint: "Top" },
   { id: "vip8", label: "VIP8", hint: "High mastery" },
   { id: "vip7", label: "VIP7", hint: "Advanced" },
   { id: "vip6", label: "VIP6", hint: "Systems / strategy" },
@@ -110,19 +104,6 @@ const SPINE_TOP_TO_BOTTOM: TierNode[] = [
 
 function norm(v: any): string {
   return String(v ?? "").toLowerCase().trim();
-}
-
-/**
- * UI-only displayed prices (does NOT affect billing).
- * Show only tiers you want public.
- */
-const DISPLAY_PRICE: Partial<Record<SpineTierId, string>> = {
-  vip3: "17 CAD",
-  vip9: "39 CAD",
-};
-
-function isStripeTier(id: SpineTierId): boolean {
-  return id === "vip3" || id === "vip9";
 }
 
 /**
@@ -284,17 +265,6 @@ function TierLink({
     flex: "0 0 auto",
   };
 
-  const pricePill: React.CSSProperties = {
-    marginLeft: 2,
-    fontSize: 12,
-    fontWeight: 900,
-    padding: "3px 9px",
-    borderRadius: 9999,
-    border: "1px solid rgba(0,0,0,0.12)",
-    background: "rgba(255,255,255,0.92)",
-    color: "rgba(0,0,0,0.70)",
-  };
-
   const countPill: React.CSSProperties = {
     marginLeft: 6,
     fontSize: 12,
@@ -306,13 +276,10 @@ function TierLink({
     color: "rgba(0,0,0,0.70)",
   };
 
-  const price = DISPLAY_PRICE[id];
-
   return (
     <Link to={to ?? `/tiers/${id}`} style={a} aria-label={`Open ${label}`}>
       <span style={dot} />
       <span>{label}</span>
-      {price ? <span style={pricePill}>{price}</span> : null}
       {typeof count === "number" ? <span style={countPill}>{count}</span> : null}
     </Link>
   );
@@ -447,6 +414,35 @@ export default function TierIndex() {
     background: rainbow,
     WebkitBackgroundClip: "text",
     color: "transparent",
+  };
+
+  const topActions: React.CSSProperties = {
+    marginTop: 12,
+    display: "flex",
+    gap: 10,
+    alignItems: "center",
+    flexWrap: "wrap",
+  };
+
+  const ctaBtn: React.CSSProperties = {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: 10,
+    padding: "10px 14px",
+    borderRadius: 9999,
+    background: "rgba(0,0,0,0.92)",
+    color: "white",
+    textDecoration: "none",
+    fontWeight: 950,
+    letterSpacing: -0.2,
+    border: "1px solid rgba(0,0,0,0.10)",
+    boxShadow: "0 10px 24px rgba(0,0,0,0.10)",
+  };
+
+  const ctaSub: React.CSSProperties = {
+    fontSize: 13,
+    color: "rgba(0,0,0,0.55)",
+    fontWeight: 700,
   };
 
   const sub: React.CSSProperties = {
@@ -867,6 +863,14 @@ export default function TierIndex() {
       <div style={container}>
         <h1 style={title}>Tier Map</h1>
 
+        {/* ✅ Pricing CTA (Stripe) */}
+        <div style={topActions}>
+          <Link to="/pricing" style={ctaBtn} aria-label="Open pricing">
+            Pricing / Upgrade
+          </Link>
+          <span style={ctaSub}>Opens Stripe checkout (Pro / Elite).</span>
+        </div>
+
         <div style={sub}>
           Three columns. One spine. <b>Core</b> is the spine reality.
           <br />
@@ -914,6 +918,8 @@ export default function TierIndex() {
             </p>
           </div>
 
+          {/* ✅ Removed "God / Universe (Above the head)" block completely */}
+
           {SPINE_TOP_TO_BOTTOM.map((t) => (
             <React.Fragment key={t.id}>
               <div style={cell} aria-label={`Left cell ${t.label}`}>
@@ -927,11 +933,7 @@ export default function TierIndex() {
                       id={t.id}
                       label={t.label}
                       count={countsForDisplay.bySpineTier[t.id]}
-                      to={
-                        isStripeTier(t.id)
-                          ? "/pricing"
-                          : `/tiers/${t.id}?area=core`
-                      }
+                      to={`/tiers/${t.id}?area=core`}
                     />
                   </div>
                   {centerAnchors[t.id] ? (
