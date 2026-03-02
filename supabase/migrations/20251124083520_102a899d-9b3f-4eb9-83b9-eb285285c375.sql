@@ -7,28 +7,28 @@
 DROP POLICY IF EXISTS "vip3_view_other_vip3_profiles" ON public.profiles;
 
 -- CREATE new restricted policy that only shows username and avatar
-CREATE POLICY "vip3_view_other_vip3_public_info" 
-ON public.profiles 
-FOR SELECT 
+CREATE POLICY "vip3_view_other_vip3_public_info"
+ON public.profiles
+FOR SELECT
 USING (
   -- Users can see their own full profile
-  (auth.uid() = id) 
+  (auth.uid() = id)
   OR
-  -- VIP3 users can only see username and avatar of other VIP3 users (handled in app layer)
+  -- VIP3 users can view other VIP3 users' profiles (column restriction handled in app layer)
   (
     EXISTS (
       SELECT 1
-      FROM user_subscriptions us1
-      JOIN subscription_tiers st1 ON us1.tier_id = st1.id
-      WHERE us1.user_id = auth.uid() 
+      FROM public.user_subscriptions us1
+      JOIN public.subscription_tiers st1 ON us1.tier_id = st1.id
+      WHERE us1.user_id = auth.uid()
         AND st1.name = 'VIP3'
         AND us1.status = 'active'
     )
     AND id IN (
       SELECT us2.user_id
-      FROM user_subscriptions us2
-      JOIN subscription_tiers st2 ON us2.tier_id = st2.id
-      WHERE st2.name = 'VIP3' 
+      FROM public.user_subscriptions us2
+      JOIN public.subscription_tiers st2 ON us2.tier_id = st2.id
+      WHERE st2.name = 'VIP3'
         AND us2.status = 'active'
     )
   )
@@ -36,10 +36,10 @@ USING (
   -- Admins can view all profiles
   (
     EXISTS (
-      SELECT 1 
-      FROM user_roles
-      WHERE user_roles.user_id = auth.uid() 
-        AND user_roles.role = 'admin'::app_role
+      SELECT 1
+      FROM public.user_roles
+      WHERE public.user_roles.user_id = auth.uid()
+        AND public.user_roles.role = 'admin'::app_role
     )
   )
 );
@@ -63,9 +63,9 @@ ALTER TABLE public.admin_access_audit ENABLE ROW LEVEL SECURITY;
 CREATE POLICY "Admins can view audit logs"
 ON public.admin_access_audit
 FOR SELECT
-USING (has_role(auth.uid(), 'admin'));
+USING (public.has_role(auth.uid(), 'admin'::app_role));
 
--- System can insert audit logs
+-- System can insert audit logs (only as self)
 CREATE POLICY "System can insert audit logs"
 ON public.admin_access_audit
 FOR INSERT
@@ -80,13 +80,13 @@ FOR SELECT
 USING (
   (auth.uid() = sender_id OR auth.uid() = receiver_id)
   AND EXISTS (
-    SELECT 1 
+    SELECT 1
     FROM public.private_chat_requests
-    WHERE private_chat_requests.id = private_messages.request_id
-      AND private_chat_requests.status = 'accepted'
+    WHERE public.private_chat_requests.id = public.private_messages.request_id
+      AND public.private_chat_requests.status = 'accepted'
       AND (
-        private_chat_requests.sender_id = auth.uid() 
-        OR private_chat_requests.receiver_id = auth.uid()
+        public.private_chat_requests.sender_id = auth.uid()
+        OR public.private_chat_requests.receiver_id = auth.uid()
       )
   )
 );
@@ -153,7 +153,7 @@ STABLE
 SECURITY DEFINER
 SET search_path = public
 AS $$
-  SELECT 
+  SELECT
     t.name,
     t.room_access_per_day,
     t.custom_topics_allowed,
@@ -222,24 +222,24 @@ DECLARE
   blocked BOOLEAN;
 BEGIN
   SELECT id INTO user_uuid FROM auth.users WHERE email = user_email;
-  
+
   IF user_uuid IS NULL THEN
     RETURN false;
   END IF;
-  
-  SELECT is_blocked INTO blocked 
-  FROM public.user_security_status 
+
+  SELECT is_blocked INTO blocked
+  FROM public.user_security_status
   WHERE user_id = user_uuid;
-  
+
   RETURN COALESCE(blocked, false);
 END;
 $$;
 
 -- Fix check_rate_limit function
 CREATE OR REPLACE FUNCTION public.check_rate_limit(
-  check_email text, 
-  check_ip text, 
-  time_window_minutes integer DEFAULT 15, 
+  check_email text,
+  check_ip text,
+  time_window_minutes integer DEFAULT 15,
   max_attempts integer DEFAULT 5
 )
 RETURNS boolean
@@ -255,7 +255,7 @@ BEGIN
   WHERE (email = check_email OR ip_address = check_ip)
     AND success = false
     AND created_at > now() - (time_window_minutes || ' minutes')::INTERVAL;
-  
+
   RETURN attempt_count >= max_attempts;
 END;
 $$;
@@ -274,19 +274,19 @@ BEGIN
   SELECT max_requests, window_seconds INTO config_record
   FROM public.rate_limit_config
   WHERE endpoint = endpoint_name;
-  
+
   IF NOT FOUND THEN
     config_record.max_requests := 100;
     config_record.window_seconds := 3600;
   END IF;
-  
+
   SELECT COUNT(*) INTO request_count
   FROM public.security_events
   WHERE user_id = user_uuid
     AND event_type = 'rate_limit_check'
     AND metadata->>'endpoint' = endpoint_name
     AND created_at > now() - (config_record.window_seconds || ' seconds')::INTERVAL;
-  
+
   RETURN request_count >= config_record.max_requests;
 END;
 $$;
@@ -325,7 +325,7 @@ BEGIN
     _metadata
   )
   RETURNING id INTO event_id;
-  
+
   RETURN event_id;
 END;
 $$;
@@ -346,7 +346,7 @@ AS $$
 BEGIN
   INSERT INTO public.point_transactions (user_id, points, transaction_type, description, room_id)
   VALUES (_user_id, _points, _transaction_type, _description, _room_id);
-  
+
   INSERT INTO public.user_points (user_id, total_points, updated_at)
   VALUES (_user_id, _points, now())
   ON CONFLICT (user_id)
@@ -356,48 +356,71 @@ BEGIN
 END;
 $$;
 
--- 6. FIX: Add user knowledge profile privacy controls
-ALTER TABLE public.user_knowledge_profile 
-ADD COLUMN IF NOT EXISTS profile_visibility text DEFAULT 'vip3_only' 
-CHECK (profile_visibility IN ('private', 'vip3_only', 'public'));
+-- 6. FIX: Add user knowledge profile privacy controls (SAFE if table missing)
+DO $$
+BEGIN
+  IF to_regclass('public.user_knowledge_profile') IS NOT NULL THEN
 
--- Update VIP3 knowledge profile policy to respect privacy settings
-DROP POLICY IF EXISTS "VIP3 users can view other VIP3 knowledge profiles" ON public.user_knowledge_profile;
+    -- Ensure RLS is on (safe to run repeatedly)
+    ALTER TABLE public.user_knowledge_profile ENABLE ROW LEVEL SECURITY;
 
-CREATE POLICY "VIP3 users can view permitted knowledge profiles"
-ON public.user_knowledge_profile
-FOR SELECT
-USING (
-  -- Users can always see their own profile
-  (auth.uid() = user_id)
-  OR
-  -- VIP3 users can see other VIP3 profiles if visibility allows
-  (
-    profile_visibility IN ('vip3_only', 'public')
-    AND EXISTS (
-      SELECT 1
-      FROM user_subscriptions us1
-      JOIN subscription_tiers st1 ON us1.tier_id = st1.id
-      WHERE us1.user_id = auth.uid()
-        AND st1.name = 'VIP3'
-        AND us1.status = 'active'
-    )
-    AND user_id IN (
-      SELECT us2.user_id
-      FROM user_subscriptions us2
-      JOIN subscription_tiers st2 ON us2.tier_id = st2.id
-      WHERE st2.name = 'VIP3'
-        AND us2.status = 'active'
-    )
-  )
-  OR
-  -- Admins can view all profiles
-  has_role(auth.uid(), 'admin')
-);
+    -- Add column safely (DEFAULT should be 'private' for user privacy)
+    ALTER TABLE public.user_knowledge_profile
+    ADD COLUMN IF NOT EXISTS profile_visibility text DEFAULT 'private';
+
+    -- Ensure default is private (prevents db reset crash when table exists, and enforces privacy)
+    ALTER TABLE public.user_knowledge_profile
+      ALTER COLUMN profile_visibility SET DEFAULT 'private';
+
+    -- Add/replace CHECK constraint safely
+    ALTER TABLE public.user_knowledge_profile
+    DROP CONSTRAINT IF EXISTS user_knowledge_profile_profile_visibility_check;
+
+    ALTER TABLE public.user_knowledge_profile
+    ADD CONSTRAINT user_knowledge_profile_profile_visibility_check
+    CHECK (profile_visibility IN ('private', 'vip3_only', 'public'));
+
+    -- Update VIP3 knowledge profile policy to respect privacy settings
+    DROP POLICY IF EXISTS "VIP3 users can view other VIP3 knowledge profiles" ON public.user_knowledge_profile;
+    DROP POLICY IF EXISTS "VIP3 users can view permitted knowledge profiles" ON public.user_knowledge_profile;
+
+    CREATE POLICY "VIP3 users can view permitted knowledge profiles"
+    ON public.user_knowledge_profile
+    FOR SELECT
+    USING (
+      -- Users can always see their own profile
+      (auth.uid() = user_id)
+      OR
+      -- VIP3 users can see other VIP3 profiles if visibility allows
+      (
+        profile_visibility IN ('vip3_only', 'public')
+        AND EXISTS (
+          SELECT 1
+          FROM public.user_subscriptions us1
+          JOIN public.subscription_tiers st1 ON us1.tier_id = st1.id
+          WHERE us1.user_id = auth.uid()
+            AND st1.name = 'VIP3'
+            AND us1.status = 'active'
+        )
+        AND user_id IN (
+          SELECT us2.user_id
+          FROM public.user_subscriptions us2
+          JOIN public.subscription_tiers st2 ON us2.tier_id = st2.id
+          WHERE st2.name = 'VIP3'
+            AND us2.status = 'active'
+        )
+      )
+      OR
+      -- Admins can view all profiles
+      public.has_role(auth.uid(), 'admin'::app_role)
+    );
+
+  END IF;
+END $$;
 
 -- 7. CREATE index for performance on audit logs
-CREATE INDEX IF NOT EXISTS idx_admin_access_audit_admin_user 
+CREATE INDEX IF NOT EXISTS idx_admin_access_audit_admin_user
 ON public.admin_access_audit(admin_user_id, created_at DESC);
 
-CREATE INDEX IF NOT EXISTS idx_admin_access_audit_table 
+CREATE INDEX IF NOT EXISTS idx_admin_access_audit_table
 ON public.admin_access_audit(accessed_table, created_at DESC);

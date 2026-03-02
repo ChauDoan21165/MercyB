@@ -34,6 +34,20 @@ create table if not exists public.user_roles (
   unique (user_id, role)
 );
 
+-- NEW: If user_roles existed already, ensure created_by exists (CREATE TABLE IF NOT EXISTS won't add it)
+do $$
+begin
+  if to_regclass('public.user_roles') is not null then
+    if not exists (
+      select 1 from information_schema.columns
+      where table_schema = 'public' and table_name = 'user_roles' and column_name = 'created_by'
+    ) then
+      alter table public.user_roles
+        add column created_by uuid references auth.users(id) on delete set null;
+    end if;
+  end if;
+end $$;
+
 -- helpful indexes
 create index if not exists user_roles_user_id_idx on public.user_roles(user_id);
 create index if not exists user_roles_role_idx on public.user_roles(role);
@@ -57,6 +71,31 @@ as $$
   );
 $$;
 
+-- NEW: Ensure created_by is set on insert (so clients don't have to send it)
+create or replace function public.handle_user_roles_created_by()
+returns trigger
+language plpgsql
+security definer
+set search_path = public
+as $$
+begin
+  if tg_op = 'INSERT' then
+    if new.created_by is null then
+      new.created_by := auth.uid();
+    end if;
+    return new;
+  end if;
+
+  return new;
+end;
+$$;
+
+drop trigger if exists set_user_roles_created_by on public.user_roles;
+create trigger set_user_roles_created_by
+before insert on public.user_roles
+for each row
+execute function public.handle_user_roles_created_by();
+
 -- Remove old policies if they exist (idempotent)
 drop policy if exists "Users can view their own roles" on public.user_roles;
 drop policy if exists "Admins can view all roles" on public.user_roles;
@@ -76,7 +115,7 @@ create policy "Admins can view all roles"
   on public.user_roles
   for select
   to authenticated
-  using (public.has_role(auth.uid(), 'admin'));
+  using (public.has_role(auth.uid(), 'admin'::public.app_role));
 
 -- Write: only admins can insert/update/delete roles
 create policy "Admins can insert roles"
@@ -84,22 +123,23 @@ create policy "Admins can insert roles"
   for insert
   to authenticated
   with check (
-    public.has_role(auth.uid(), 'admin')
-    and created_by = auth.uid()
+    public.has_role(auth.uid(), 'admin'::public.app_role)
+    -- NEW: allow NULL because trigger will set it; still allow explicit self-set
+    and (created_by is null or created_by = auth.uid())
   );
 
 create policy "Admins can update roles"
   on public.user_roles
   for update
   to authenticated
-  using (public.has_role(auth.uid(), 'admin'))
-  with check (public.has_role(auth.uid(), 'admin'));
+  using (public.has_role(auth.uid(), 'admin'::public.app_role))
+  with check (public.has_role(auth.uid(), 'admin'::public.app_role));
 
 create policy "Admins can delete roles"
   on public.user_roles
   for delete
   to authenticated
-  using (public.has_role(auth.uid(), 'admin'));
+  using (public.has_role(auth.uid(), 'admin'::public.app_role));
 
 -- Guardrails:
 --  - Users cannot delete their own admin role (even if they are admin).
@@ -166,7 +206,7 @@ create policy "Admins can view role audit logs"
   on public.role_audit_log
   for select
   to authenticated
-  using (public.has_role(auth.uid(), 'admin'));
+  using (public.has_role(auth.uid(), 'admin'::public.app_role));
 
 -- No one should write directly; only trigger (SECURITY DEFINER) writes
 revoke insert, update, delete on public.role_audit_log from anon, authenticated;
@@ -320,8 +360,9 @@ create policy "Users can insert their own feedback"
   for insert
   to authenticated
   with check (
-    auth.uid() = user_id
-    and created_by = auth.uid()
+    -- NEW: allow NULL because trigger sets it; still allow explicit self-set
+    (user_id is null or auth.uid() = user_id)
+    and (created_by is null or created_by = auth.uid())
   );
 
 create policy "Users can view their own feedback"
@@ -334,14 +375,14 @@ create policy "Admins can view all feedback"
   on public.feedback
   for select
   to authenticated
-  using (public.has_role(auth.uid(), 'admin'));
+  using (public.has_role(auth.uid(), 'admin'::public.app_role));
 
 create policy "Admins can update all feedback"
   on public.feedback
   for update
   to authenticated
-  using (public.has_role(auth.uid(), 'admin'))
-  with check (public.has_role(auth.uid(), 'admin'));
+  using (public.has_role(auth.uid(), 'admin'::public.app_role))
+  with check (public.has_role(auth.uid(), 'admin'::public.app_role));
 
 --------------------------------------------------------------------------------
 -- 4) Admin-only summary "view" (safe)
@@ -358,7 +399,7 @@ select
   count(*) filter (where priority = 'low') as low_priority,
   count(*) filter (where status = 'new') as new_feedback
 from public.feedback
-where public.has_role(auth.uid(), 'admin')
+where public.has_role(auth.uid(), 'admin'::public.app_role)
 group by date(created_at)
 order by feedback_date desc;
 
@@ -388,8 +429,8 @@ create policy "Admins can manage admin allowlist"
   on public.admin_allowlist
   for all
   to authenticated
-  using (public.has_role(auth.uid(), 'admin'))
-  with check (public.has_role(auth.uid(), 'admin'));
+  using (public.has_role(auth.uid(), 'admin'::public.app_role))
+  with check (public.has_role(auth.uid(), 'admin'::public.app_role));
 
 -- Trigger: when a user signs up and their email is in allowlist, grant admin
 create or replace function public.handle_new_auth_user()
@@ -404,12 +445,12 @@ begin
     where a.email = new.email::citext
   ) then
     insert into public.user_roles(user_id, role, created_by)
-    values (new.id, 'admin', new.id)
+    values (new.id, 'admin'::public.app_role, new.id)
     on conflict (user_id, role) do nothing;
   else
     -- optional: default role row
     insert into public.user_roles(user_id, role, created_by)
-    values (new.id, 'user', new.id)
+    values (new.id, 'user'::public.app_role, new.id)
     on conflict (user_id, role) do nothing;
   end if;
 
@@ -463,7 +504,7 @@ begin
   end if;
 
   insert into public.user_roles(user_id, role, created_by)
-  values (v_user_id, 'admin', v_user_id)
+  values (v_user_id, 'admin'::public.app_role, v_user_id)
   on conflict (user_id, role) do nothing;
 end;
 $$;

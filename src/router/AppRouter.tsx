@@ -57,6 +57,10 @@
 //   + documentElement data-mb-router-version (easy to verify in prod).
 // - IMPORTANT: Do NOT rely on top-level IIFE for beacon; it can be tree-shaken in prod builds.
 //   Beacon is now stamped inside AppRouter() (never tree-shaken).
+//
+// ✅ PATCH (2026-03-01):
+// - Add /pricing route (Stripe pricing table page)
+// - Import Pricing from ../screens/Pricing
 
 import React from "react";
 import { Routes, Route, Navigate, useParams, Outlet, Link, useLocation, useNavigate } from "react-router-dom";
@@ -68,6 +72,9 @@ import Home from "@/pages/Home";
 // ✅ Billing / Account
 import AccountPage from "@/pages/AccountPage";
 import UpgradePage from "@/pages/UpgradePage";
+
+// ✅ Stripe pricing page (your Stripe pricing-table embed)
+import Pricing from "../screens/Pricing";
 
 // ✅ Tier spine pages (NO FETCH)
 import TierIndex from "@/pages/TierIndex";
@@ -372,6 +379,9 @@ export default function AppRouter() {
         <Route element={<AppHeroShell />}>
           {/* ✅ HOME (curated front door) */}
           <Route path="/" element={<Home />} />
+
+          {/* ✅ Stripe Pricing page (pricing table embed lives here) */}
+          <Route path="/pricing" element={<Pricing />} />
 
           {/* ✅ Billing / Account (must be in the REAL router, not src/App.tsx) */}
           <Route path="/account" element={<AccountPage />} />

@@ -2,64 +2,11 @@
 // PATH: src/pages/TierIndex.tsx
 // MB-BLUE-98.9j → MB-BLUE-98.9n — 2026-01-18 (+0700)
 //
-// FIX (98.9k — DELETE VIP3 II from Tier Map UI):
-// - Remove vip3 from SpineTierId + SPINE_TOP_TO_BOTTOM so the pill disappears.
-// - Keep all tier loading/counting logic stable.
-// - Any core rooms that would have been classified as vip3 are now treated as "unknown core tier"
-//   unless upstream mapping converts them to vip3.
-//
-// FIX (98.9k+ — VIP1 RIGHT CARD):
-// - Change VIP1 right anchor from "Martial art / Discipline" → "Survival skills"
-// - Route to LIFE area explicitly: /tiers/vip1?area=life
-//
-// FIX (98.9l — AREA-SAFE ROUTING, ALL TIERS):
-// - Problem: left + spine + right often landed in the same default (core) because links lacked ?area=...
-// - Solution: keep ALL features, only make routing explicit:
-//   - LEFT anchors use ?area=english where applicable
-//   - SPINE pills always go to ?area=core
-//   - RIGHT anchors use ?area=life
-// - Do NOT touch tierRoomSource pipeline. UI routing only.
-//
-// FIX (98.9m — REMOVE CONFUSING MID BAND LABELS):
-// - "Psychology / Tâm lý học" and "Critical thinking / Tư duy phản biện" sat in a decorative band
-//   with no navigation/filter meaning.
-// - Remove the whole mid-band block (and its styles) to reduce UI noise.
-//
-// FIX (98.9m+ — REMOVE FREE RIGHT CARD):
-// - Delete "Survival skills" card from Free row on the RIGHT.
-// - Keep counts/debug logic intact; just do not render the Free right anchor.
-//
-// FIX (98.9m++ — HUNT HIDDEN ROOMS, SAFE DEBUG):
-// - Add area/tier breakdown + “hidden bucket” detection using already-loaded allRooms.
-// - Console-only unless ?debugHidden=1.
-// - Add meta pills for English/Life/Kids/Unknown area/tier so totals can be compared quickly.
-// - NO changes to tierRoomSource pipeline; UI/report only.
-//
-// FIX (98.9n — EXPOSE LOADED ROOMS FOR CONSOLE DEBUG):
-// - The UI has rooms in React state; console scripts using window.__MB_ALL_ROOMS__ saw [].
-// - Export safe globals AFTER DB load:
-//   - window.__MB_ALL_ROOMS__
-//   - window.__MB_TIER_REPORT__ (includes strictUntiered + nonSpineTier buckets and IDs)
-//
-// PATCH (2026-01-28):
-// - Fix tier counts showing 0 for many VIP tiers when DB returns tier as unknown/blank.
-// - TierIndex now does SAFE local tier inference for COUNTING ONLY:
-//   1) tier string if present
-//   2) numeric rank fields (required_rank / required_vip_rank / min_rank / vip_rank / etc.) → vip tier
-//   3) id inference fallback
-//
-// PATCH (2026-01-29):
-// - Add "Home" + "Back" buttons at top-left for UX. (No changes to tier logic.)
-//
-// PATCH (2026-01-31):
-// - Remove local Home/Back row to prevent duplicate buttons.
-//   GlobalHeader/AppShell owns Home+Back + Mercy Blade wordmark consistently.
-//
-// PATCH (2026-02-23):
-// - Display launch pricing on Tier Map spine pills (UI-only):
-//   VIP1=$5/mo, VIP3=$12/mo, VIP9=$29/mo (no changes to billing logic).
-//
-// NOTE: Inline styles only. Locked concept preserved.
+// PATCH (2026-03-01):
+// - REMOVE old displayed tier prices ($5/$12/$29) from Tier Map UI.
+// - Add a clear link to the real pricing page (/pricing) instead.
+// - REMOVE "God / Universe" decoration entirely.
+// - Make Pricing button less harsh (softer, readable).
 
 import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
@@ -89,13 +36,12 @@ const rainbow =
   "linear-gradient(90deg,#ff4d4d 0%,#ffb84d 18%,#b6ff4d 36%,#4dffb8 54%,#4db8ff 72%,#b84dff 90%,#ff4dff 100%)";
 
 const SPINE_TOP_TO_BOTTOM: TierNode[] = [
-  { id: "vip9", label: "VIP9", hint: "Top / near God–Universe" },
+  { id: "vip9", label: "VIP9", hint: "Top level" },
   { id: "vip8", label: "VIP8", hint: "High mastery" },
   { id: "vip7", label: "VIP7", hint: "Advanced" },
   { id: "vip6", label: "VIP6", hint: "Systems / strategy" },
   { id: "vip5", label: "VIP5", hint: "Writing / deeper practice" },
   { id: "vip4", label: "VIP4", hint: "Climb" },
-  // ✅ removed vip3 node
   { id: "vip3", label: "VIP3", hint: "Bridge into the spine" },
   { id: "vip2", label: "VIP2", hint: "Strengthen core skills" },
   { id: "vip1", label: "VIP1", hint: "Build habit + foundation + survival basics" },
@@ -105,16 +51,6 @@ const SPINE_TOP_TO_BOTTOM: TierNode[] = [
 function norm(v: any): string {
   return String(v ?? "").toLowerCase().trim();
 }
-
-/**
- * UI-only displayed prices (does NOT affect billing).
- * Keep blank for tiers you don't want to promise publicly yet.
- */
-const DISPLAY_PRICE: Partial<Record<SpineTierId, string>> = {
-  vip1: "$5/mo",
-  vip3: "$12/mo",
-  vip9: "$29/mo",
-};
 
 /**
  * Infer spine tier from room id, COUNTING ONLY.
@@ -134,7 +70,6 @@ function inferSpineTierFromId(idRaw: any): SpineTierId | null {
     id.includes(`_${t}-`) ||
     id.includes(`-${t}_`);
 
-  // higher tiers first
   if (has("vip9")) return "vip9";
   if (has("vip8")) return "vip8";
   if (has("vip7")) return "vip7";
@@ -162,7 +97,6 @@ function inferSpineTierFromId(idRaw: any): SpineTierId | null {
 
 /**
  * Infer spine tier from numeric rank fields, COUNTING ONLY.
- * Mercy often encodes gating as required_rank (0..9) rather than tier strings.
  */
 function inferSpineTierFromRank(r: TierRoom): SpineTierId | null {
   const anyR: any = r as any;
@@ -193,11 +127,8 @@ function inferSpineTierFromRank(r: TierRoom): SpineTierId | null {
 
   if (rank === null) return null;
 
-  // clamp 0..9
   const rr = Math.max(0, Math.min(9, Math.trunc(rank)));
   if (rr === 0) return "free";
-
-  // ✅ FIX: TS2869 (?? null unreachable)
   return `vip${rr}` as SpineTierId;
 }
 
@@ -222,7 +153,6 @@ function inferSpineTierForCounting(r: TierRoom, spineSet: Set<string>): SpineTie
 
 /**
  * LIFE (Survival) must be explicit-only (match TierDetail).
- * Do NOT use generic "-life-" (it catches "meaning-of-life").
  */
 function isExplicitLifeRoom(r: TierRoom): boolean {
   const id = String((r as any)?.id || "").toLowerCase();
@@ -276,17 +206,6 @@ function TierLink({
     flex: "0 0 auto",
   };
 
-  const pricePill: React.CSSProperties = {
-    marginLeft: 2,
-    fontSize: 12,
-    fontWeight: 900,
-    padding: "3px 9px",
-    borderRadius: 9999,
-    border: "1px solid rgba(0,0,0,0.12)",
-    background: "rgba(255,255,255,0.92)",
-    color: "rgba(0,0,0,0.70)",
-  };
-
   const countPill: React.CSSProperties = {
     marginLeft: 6,
     fontSize: 12,
@@ -298,13 +217,10 @@ function TierLink({
     color: "rgba(0,0,0,0.70)",
   };
 
-  const price = DISPLAY_PRICE[id];
-
   return (
     <Link to={to ?? `/tiers/${id}`} style={a} aria-label={`Open ${label}`}>
       <span style={dot} />
       <span>{label}</span>
-      {price ? <span style={pricePill}>{price}</span> : null}
       {typeof count === "number" ? <span style={countPill}>{count}</span> : null}
     </Link>
   );
@@ -469,6 +385,60 @@ export default function TierIndex() {
     pointerEvents: "auto",
   };
 
+  // ✅ Pricing CTA — softer (not neon), still clearly visible
+  const cta: React.CSSProperties = {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: 12,
+    textDecoration: "none",
+    padding: "10px 14px",
+    borderRadius: 9999,
+    border: "1px solid rgba(0,0,0,0.12)",
+    background: "linear-gradient(180deg, rgba(255,255,255,0.98), rgba(245,247,250,0.98))",
+    color: "rgba(0,0,0,0.86)",
+    fontWeight: 950,
+    letterSpacing: -0.2,
+    boxShadow: "0 10px 22px rgba(0,0,0,0.10)",
+    transform: "translateY(0px)",
+    transition: "transform 120ms ease, box-shadow 120ms ease, filter 120ms ease",
+    pointerEvents: "auto",
+  };
+
+  const ctaIcon: React.CSSProperties = {
+    width: 28,
+    height: 28,
+    borderRadius: 9999,
+    display: "grid",
+    placeItems: "center",
+    background: "rgba(0,0,0,0.06)",
+    border: "1px solid rgba(0,0,0,0.10)",
+    flex: "0 0 auto",
+    fontSize: 14,
+    lineHeight: 1,
+    color: "rgba(0,0,0,0.78)",
+  };
+
+  const ctaTextWrap: React.CSSProperties = {
+    display: "flex",
+    flexDirection: "column",
+    lineHeight: 1.1,
+  };
+
+  const ctaTitle: React.CSSProperties = {
+    fontSize: 13,
+    fontWeight: 950,
+    color: "rgba(0,0,0,0.88)",
+    whiteSpace: "nowrap",
+  };
+
+  const ctaSub: React.CSSProperties = {
+    fontSize: 11,
+    fontWeight: 900,
+    color: "rgba(0,0,0,0.62)",
+    whiteSpace: "nowrap",
+    marginTop: 2,
+  };
+
   const rowGrid: React.CSSProperties = {
     marginTop: 18,
     display: "grid",
@@ -514,6 +484,7 @@ export default function TierIndex() {
     alignItems: "center",
     pointerEvents: "auto",
   };
+
   const cellStack: React.CSSProperties = {
     width: "100%",
     display: "flex",
@@ -522,39 +493,14 @@ export default function TierIndex() {
     justifyContent: "center",
     pointerEvents: "auto",
   };
+
   const spineCell: React.CSSProperties = { ...cell, justifyContent: "center" };
+
   const spineHint: React.CSSProperties = {
     marginTop: 6,
     fontSize: 12,
     color: "rgba(0,0,0,0.55)",
     textAlign: "center",
-  };
-
-  const godNode: React.CSSProperties = {
-    width: "100%",
-    borderRadius: 9999,
-    padding: "10px 12px",
-    border: "1px solid rgba(0,0,0,0.12)",
-    background: "rgba(255,255,255,0.92)",
-    textAlign: "center",
-    fontWeight: 950,
-    letterSpacing: -0.2,
-    color: "rgba(0,0,0,0.78)",
-    position: "relative",
-    pointerEvents: "none",
-  };
-
-  const godGlow: React.CSSProperties = {
-    position: "absolute",
-    left: 16,
-    right: 16,
-    bottom: -8,
-    height: 10,
-    borderRadius: 9999,
-    background: rainbow,
-    opacity: 0.22,
-    filter: "blur(6px)",
-    pointerEvents: "none",
   };
 
   const footer: React.CSSProperties = {
@@ -782,7 +728,6 @@ export default function TierIndex() {
       // eslint-disable-next-line no-console
       console.log("tier-debug free explicit-life ids (first 80):", freeLifeIds.slice(0, 80));
 
-      // NEW: show a sample of core rooms with inferred tier (proves whether rank inference works)
       const coreRooms =
         (window as any).__MB_ALL_ROOMS__?.filter((r: any) => norm(r?.area) === "core") || [];
       const spineSet = new Set(SPINE_TOP_TO_BOTTOM.map((t) => t.id));
@@ -900,6 +845,29 @@ export default function TierIndex() {
           <span style={metaPill}>Unknown core tier: {countsForDisplay.unknownCoreTier}</span>
           <span style={metaPill}>Source: {countsForDisplay.source}</span>
 
+          {/* ✅ REAL pricing lives on /pricing */}
+          <Link
+            to="/pricing"
+            style={cta}
+            aria-label="Open pricing page"
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "translateY(-1px)";
+              e.currentTarget.style.boxShadow = "0 14px 28px rgba(0,0,0,0.14)";
+              e.currentTarget.style.filter = "contrast(1.02)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "translateY(0px)";
+              e.currentTarget.style.boxShadow = "0 10px 22px rgba(0,0,0,0.10)";
+              e.currentTarget.style.filter = "none";
+            }}
+          >
+            <span style={ctaIcon}>$</span>
+            <span style={ctaTextWrap}>
+              <span style={ctaTitle}>Pricing</span>
+              <span style={ctaSub}>Xem giá & đăng ký • CA$17 / CA$39</span>
+            </span>
+          </Link>
+
           {showHiddenPills ? (
             <>
               <span style={metaPill}>English: {hiddenReport.totals.english}</span>
@@ -933,28 +901,6 @@ export default function TierIndex() {
               <b>Life Skills</b> — survival, public speaking, debate, discipline.
             </p>
           </div>
-
-          {!isNarrow ? (
-            <>
-              <div style={cell} />
-              <div style={spineCell}>
-                <div style={cellStack}>
-                  <div style={godNode}>
-                    God / Universe (Above the head)
-                    <div style={godGlow} />
-                  </div>
-                </div>
-              </div>
-              <div style={cell} />
-            </>
-          ) : (
-            <div style={colBox}>
-              <div style={godNode}>
-                God / Universe (Above the head)
-                <div style={godGlow} />
-              </div>
-            </div>
-          )}
 
           {SPINE_TOP_TO_BOTTOM.map((t) => (
             <React.Fragment key={t.id}>
