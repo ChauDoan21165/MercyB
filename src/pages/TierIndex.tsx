@@ -59,6 +59,13 @@
 // - Display launch pricing on Tier Map spine pills (UI-only):
 //   VIP1=$5/mo, VIP3=$12/mo, VIP9=$29/mo (no changes to billing logic).
 //
+// PATCH (2026-03-02):
+// - Remove "God / Universe (Above the head)" label row.
+// - Remove old USD prices; show ONLY:
+//   - Pro (VIP3): 17 CAD
+//   - Elite (VIP9): 39 CAD
+// - Clicking VIP3/VIP9 spine pills routes to /pricing (Stripe page).
+//
 // NOTE: Inline styles only. Locked concept preserved.
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -89,13 +96,12 @@ const rainbow =
   "linear-gradient(90deg,#ff4d4d 0%,#ffb84d 18%,#b6ff4d 36%,#4dffb8 54%,#4db8ff 72%,#b84dff 90%,#ff4dff 100%)";
 
 const SPINE_TOP_TO_BOTTOM: TierNode[] = [
-  { id: "vip9", label: "VIP9", hint: "Top / near God–Universe" },
+  { id: "vip9", label: "VIP9", hint: "Top / mastery" },
   { id: "vip8", label: "VIP8", hint: "High mastery" },
   { id: "vip7", label: "VIP7", hint: "Advanced" },
   { id: "vip6", label: "VIP6", hint: "Systems / strategy" },
   { id: "vip5", label: "VIP5", hint: "Writing / deeper practice" },
   { id: "vip4", label: "VIP4", hint: "Climb" },
-  // ✅ removed vip3 node
   { id: "vip3", label: "VIP3", hint: "Bridge into the spine" },
   { id: "vip2", label: "VIP2", hint: "Strengthen core skills" },
   { id: "vip1", label: "VIP1", hint: "Build habit + foundation + survival basics" },
@@ -108,13 +114,16 @@ function norm(v: any): string {
 
 /**
  * UI-only displayed prices (does NOT affect billing).
- * Keep blank for tiers you don't want to promise publicly yet.
+ * Show only tiers you want public.
  */
 const DISPLAY_PRICE: Partial<Record<SpineTierId, string>> = {
-  vip1: "$5/mo",
-  vip3: "$12/mo",
-  vip9: "$29/mo",
+  vip3: "17 CAD",
+  vip9: "39 CAD",
 };
+
+function isStripeTier(id: SpineTierId): boolean {
+  return id === "vip3" || id === "vip9";
+}
 
 /**
  * Infer spine tier from room id, COUNTING ONLY.
@@ -197,7 +206,6 @@ function inferSpineTierFromRank(r: TierRoom): SpineTierId | null {
   const rr = Math.max(0, Math.min(9, Math.trunc(rank)));
   if (rr === 0) return "free";
 
-  // ✅ FIX: TS2869 (?? null unreachable)
   return `vip${rr}` as SpineTierId;
 }
 
@@ -530,33 +538,6 @@ export default function TierIndex() {
     textAlign: "center",
   };
 
-  const godNode: React.CSSProperties = {
-    width: "100%",
-    borderRadius: 9999,
-    padding: "10px 12px",
-    border: "1px solid rgba(0,0,0,0.12)",
-    background: "rgba(255,255,255,0.92)",
-    textAlign: "center",
-    fontWeight: 950,
-    letterSpacing: -0.2,
-    color: "rgba(0,0,0,0.78)",
-    position: "relative",
-    pointerEvents: "none",
-  };
-
-  const godGlow: React.CSSProperties = {
-    position: "absolute",
-    left: 16,
-    right: 16,
-    bottom: -8,
-    height: 10,
-    borderRadius: 9999,
-    background: rainbow,
-    opacity: 0.22,
-    filter: "blur(6px)",
-    pointerEvents: "none",
-  };
-
   const footer: React.CSSProperties = {
     marginTop: 18,
     color: "rgba(0,0,0,0.55)",
@@ -782,7 +763,6 @@ export default function TierIndex() {
       // eslint-disable-next-line no-console
       console.log("tier-debug free explicit-life ids (first 80):", freeLifeIds.slice(0, 80));
 
-      // NEW: show a sample of core rooms with inferred tier (proves whether rank inference works)
       const coreRooms =
         (window as any).__MB_ALL_ROOMS__?.filter((r: any) => norm(r?.area) === "core") || [];
       const spineSet = new Set(SPINE_TOP_TO_BOTTOM.map((t) => t.id));
@@ -934,28 +914,6 @@ export default function TierIndex() {
             </p>
           </div>
 
-          {!isNarrow ? (
-            <>
-              <div style={cell} />
-              <div style={spineCell}>
-                <div style={cellStack}>
-                  <div style={godNode}>
-                    God / Universe (Above the head)
-                    <div style={godGlow} />
-                  </div>
-                </div>
-              </div>
-              <div style={cell} />
-            </>
-          ) : (
-            <div style={colBox}>
-              <div style={godNode}>
-                God / Universe (Above the head)
-                <div style={godGlow} />
-              </div>
-            </div>
-          )}
-
           {SPINE_TOP_TO_BOTTOM.map((t) => (
             <React.Fragment key={t.id}>
               <div style={cell} aria-label={`Left cell ${t.label}`}>
@@ -969,7 +927,11 @@ export default function TierIndex() {
                       id={t.id}
                       label={t.label}
                       count={countsForDisplay.bySpineTier[t.id]}
-                      to={`/tiers/${t.id}?area=core`}
+                      to={
+                        isStripeTier(t.id)
+                          ? "/pricing"
+                          : `/tiers/${t.id}?area=core`
+                      }
                     />
                   </div>
                   {centerAnchors[t.id] ? (
