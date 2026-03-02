@@ -57,9 +57,21 @@
 //   + documentElement data-mb-router-version (easy to verify in prod).
 // - IMPORTANT: Do NOT rely on top-level IIFE for beacon; it can be tree-shaken in prod builds.
 //   Beacon is now stamped inside AppRouter() (never tree-shaken).
+//
+// ✅ PATCH (2026-03-02):
+// - Add /pricing route (Stripe pricing-table page) so Tier Map CTA never 404s.
 
 import React from "react";
-import { Routes, Route, Navigate, useParams, Outlet, Link, useLocation, useNavigate } from "react-router-dom";
+import {
+  Routes,
+  Route,
+  Navigate,
+  useParams,
+  Outlet,
+  Link,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 
 import ChatHub from "@/pages/ChatHub";
 import AllRooms from "@/pages/AllRooms";
@@ -68,6 +80,9 @@ import Home from "@/pages/Home";
 // ✅ Billing / Account
 import AccountPage from "@/pages/AccountPage";
 import UpgradePage from "@/pages/UpgradePage";
+
+// ✅ Stripe pricing page (pricing-table embed)
+import Pricing from "../screens/Pricing";
 
 // ✅ Tier spine pages (NO FETCH)
 import TierIndex from "@/pages/TierIndex";
@@ -258,7 +273,13 @@ function AppHeroShell() {
                 <Link to="/" style={navBtn} aria-label="Go Home">
                   ⌂ Home
                 </Link>
-                <button type="button" style={navBtn} onClick={onBack} aria-label="Go Back" title="Back">
+                <button
+                  type="button"
+                  style={navBtn}
+                  onClick={onBack}
+                  aria-label="Go Back"
+                  title="Back"
+                >
                   ← Back
                 </button>
               </div>
@@ -376,6 +397,9 @@ export default function AppRouter() {
           {/* ✅ Billing / Account (must be in the REAL router, not src/App.tsx) */}
           <Route path="/account" element={<AccountPage />} />
           <Route path="/upgrade" element={<UpgradePage />} />
+
+          {/* ✅ Stripe pricing table page */}
+          <Route path="/pricing" element={<Pricing />} />
 
           {/* Rooms list */}
           <Route path="/rooms" element={<AllRooms />} />
