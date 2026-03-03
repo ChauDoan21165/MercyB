@@ -55,8 +55,9 @@
 // ✅ PATCH (2026-03-02):
 // - Add /pricing route (Stripe pricing table page)
 //
-// ✅ PATCH (2026-03-02d):
-// - Keep /upgrade as redirect → /pricing so any old link or 403 redirect never lands on 404.
+// ✅ PATCH (2026-03-02e):
+// - Keep /upgrade route BUT render UpgradePage (which renders the SAME Pricing table UI).
+//   This avoids 404 loops even if old links or 403 redirects still go to /upgrade.
 
 import React from "react";
 import {
@@ -76,6 +77,9 @@ import Home from "@/pages/Home";
 
 // ✅ Billing / Account
 import AccountPage from "@/pages/AccountPage";
+
+// ✅ Upgrade (legacy route) — shows Pricing UI
+import UpgradePage from "@/pages/UpgradePage";
 
 // ✅ Tier spine pages (NO FETCH)
 import TierIndex from "@/pages/TierIndex";
@@ -110,7 +114,7 @@ import AdminVIPRooms from "@/pages/admin/AdminVIPRooms";
 import MercyAIHost from "@/components/guide/MercyAIHost";
 
 // ✅ DEPLOYMENT TRUTH BEACON
-const MB_ROUTER_VERSION = "2026-03-02-app-router-pricing-v3.1";
+const MB_ROUTER_VERSION = "2026-03-02-app-router-pricing-v3.2";
 
 /**
  * Local NotFound — ZERO dependencies
@@ -334,8 +338,8 @@ export default function AppRouter() {
           {/* ✅ canonical pricing */}
           <Route path="/pricing" element={<Pricing />} />
 
-          {/* ✅ keep old links + edge redirects working */}
-          <Route path="/upgrade" element={<Navigate to="/pricing" replace />} />
+          {/* ✅ legacy upgrade route renders the same Stripe pricing table UI */}
+          <Route path="/upgrade" element={<UpgradePage />} />
 
           <Route path="/account" element={<AccountPage />} />
 
