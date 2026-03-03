@@ -112,7 +112,8 @@ import AdminVIPRooms from "@/pages/admin/AdminVIPRooms";
 import MercyAIHost from "@/components/guide/MercyAIHost";
 
 // ✅ DEPLOYMENT TRUTH BEACON
-const MB_ROUTER_VERSION = "2026-03-02-app-router-pricing-v3.1";
+// Bump this whenever you deploy a router change so you can confirm what's running in prod.
+const MB_ROUTER_VERSION = "2026-03-02-app-router-pricing-v3.2";
 
 /**
  * Local NotFound — ZERO dependencies
@@ -190,7 +191,7 @@ function AppHeroShell() {
     padding: "8px 12px",
     borderRadius: 9999,
     border: "1px solid rgba(0,0,0,0.12)",
-    background: "rgba(255,255,255,0.90)",
+    background: "rgba(255,255,255,0.9)",
     color: "rgba(0,0,0,0.78)",
     textDecoration: "none",
     fontWeight: 900,
@@ -336,7 +337,7 @@ export default function AppRouter() {
           {/* ✅ canonical pricing */}
           <Route path="/pricing" element={<Pricing />} />
 
-          {/* ✅ keep old links working */}
+          {/* ✅ legacy /upgrade must never 404 */}
           <Route path="/upgrade" element={<Navigate to="/pricing" replace />} />
 
           <Route path="/account" element={<AccountPage />} />
