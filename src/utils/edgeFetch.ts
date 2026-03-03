@@ -2,11 +2,29 @@
  * Central fetch wrapper for Supabase edge functions
  * Handles 401/403 responses consistently across the app
  *
- * ROUTES (canonical):
- * - Sign-in:  /signin
- * - Pricing:  /pricing
- * - Legacy:   /upgrade (should redirect to /pricing at router level)
+ * 2026-03-02:
+ * - 401 -> /signin (not /login)
+ * - 403 -> /pricing (not /upgrade)
+ * - include `next=` so user can come back after signing in
  */
+
+function currentPathWithQueryAndHash(): string {
+  try {
+    return `${window.location.pathname}${window.location.search}${window.location.hash}`;
+  } catch {
+    return "/";
+  }
+}
+
+function hardRedirect(to: string) {
+  // replace() prevents a "back button loop"
+  try {
+    window.location.replace(to);
+  } catch {
+    window.location.href = to;
+  }
+}
+
 export async function callEdge<T>(
   path: string,
   options: RequestInit = {}
@@ -22,22 +40,16 @@ export async function callEdge<T>(
   // Session expired or not authenticated
   if (res.status === 401) {
     console.warn("⚠️ Session expired (401), redirecting to /signin...");
-    try {
-      window.location.assign("/signin?reason=expired");
-    } catch {
-      window.location.href = "/signin?reason=expired";
-    }
+    const next = encodeURIComponent(currentPathWithQueryAndHash());
+    hardRedirect(`/signin?reason=expired&next=${next}`);
     throw new Error("UNAUTHENTICATED");
   }
 
   // Forbidden - insufficient tier/permissions
   if (res.status === 403) {
     console.warn("⚠️ Access forbidden (403), redirecting to /pricing...");
-    try {
-      window.location.assign("/pricing?reason=forbidden");
-    } catch {
-      window.location.href = "/pricing?reason=forbidden";
-    }
+    const next = encodeURIComponent(currentPathWithQueryAndHash());
+    hardRedirect(`/pricing?reason=forbidden&next=${next}`);
     throw new Error("FORBIDDEN");
   }
 
@@ -57,27 +69,18 @@ export async function callEdge<T>(
  */
 export function handleEdgeResponse<T>(data: any, error: any): T {
   if (error) {
-    // Normalize status if available
-    const status = (error?.status ?? error?.code) as number | undefined;
     const msg = String(error?.message || "");
+    const status = Number(error?.status || 0);
 
     if (msg.includes("401") || status === 401) {
-      console.warn("⚠️ Session expired (401), redirecting to /signin...");
-      try {
-        window.location.assign("/signin?reason=expired");
-      } catch {
-        window.location.href = "/signin?reason=expired";
-      }
+      const next = encodeURIComponent(currentPathWithQueryAndHash());
+      hardRedirect(`/signin?reason=expired&next=${next}`);
       throw new Error("UNAUTHENTICATED");
     }
 
     if (msg.includes("403") || status === 403) {
-      console.warn("⚠️ Access forbidden (403), redirecting to /pricing...");
-      try {
-        window.location.assign("/pricing?reason=forbidden");
-      } catch {
-        window.location.href = "/pricing?reason=forbidden";
-      }
+      const next = encodeURIComponent(currentPathWithQueryAndHash());
+      hardRedirect(`/pricing?reason=forbidden&next=${next}`);
       throw new Error("FORBIDDEN");
     }
 
