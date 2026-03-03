@@ -58,7 +58,7 @@
 // PATCH (2026-03-02):
 // - Remove "God / Universe (Above the head)" decorative node.
 // - Remove ALL displayed VIP prices from Tier Map UI.
-// - Add top "Pricing" CTA button linking to /pricing (Stripe pricing table page).
+// - Add top "Pricing" CTA button linking to /upgrade (Stripe upgrade page).
 //
 // NOTE: Inline styles only. Locked concept preserved.
 
@@ -865,10 +865,11 @@ export default function TierIndex() {
 
         {/* ✅ Pricing CTA (Stripe) */}
         <div style={topActions}>
-          <Link to="/pricing" style={ctaBtn} aria-label="Open pricing">
+          {/* IMPORTANT: /pricing was 404 in prod; /upgrade is a real route in AppRouter.tsx */}
+          <Link to="/upgrade" style={ctaBtn} aria-label="Open pricing / upgrade">
             Pricing / Upgrade
           </Link>
-          <span style={ctaSub}>Opens Stripe checkout (Pro / Elite).</span>
+          <span style={ctaSub}>Opens Stripe upgrade (Pro / Elite).</span>
         </div>
 
         <div style={sub}>
