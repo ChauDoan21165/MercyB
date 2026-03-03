@@ -214,11 +214,7 @@ function AppHeroShell() {
 
   const onBack = () => {
     try {
-      if (
-        typeof window !== "undefined" &&
-        window.history &&
-        window.history.length <= 1
-      ) {
+      if (typeof window !== "undefined" && window.history && window.history.length <= 1) {
         nav("/");
       } else {
         nav(-1);
@@ -315,10 +311,7 @@ export default function AppRouter() {
       (window as any).MB_ROUTER_VERSION = MB_ROUTER_VERSION;
     }
     if (typeof document !== "undefined" && document.documentElement) {
-      document.documentElement.setAttribute(
-        "data-mb-router-version",
-        MB_ROUTER_VERSION
-      );
+      document.documentElement.setAttribute("data-mb-router-version", MB_ROUTER_VERSION);
     }
   } catch {
     // ignore
@@ -358,10 +351,7 @@ export default function AppRouter() {
             <Route index element={<AdminDashboard />} />
             <Route path="payments" element={<AdminPayments />} />
             <Route path="bank-transfers" element={<AdminBankTransfers />} />
-            <Route
-              path="payment-verification"
-              element={<AdminPaymentVerification />}
-            />
+            <Route path="payment-verification" element={<AdminPaymentVerification />} />
             <Route path="access-codes" element={<AdminAccessCodes />} />
             <Route path="audio-coverage" element={<AudioCoveragePage />} />
             <Route path="monitoring" element={<AdminMonitoring />} />
