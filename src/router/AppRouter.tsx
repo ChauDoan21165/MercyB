@@ -56,11 +56,9 @@
 // - Add /pricing route (Stripe pricing table page)
 //
 // ✅ PATCH (2026-03-02c):
-// - REMOVE /upgrade route entirely (broken Supabase view); /pricing is canonical.
-//
-// ✅ PATCH (2026-03-02d):
-// - Keep /upgrade as a silent redirect → /pricing for backwards compatibility
-//   (so old buttons/links never 404).
+// - REMOVE UpgradePage usage (broken Supabase view).
+// - /pricing is canonical.
+// - Keep /upgrade as redirect → /pricing so old buttons/links never 404.
 
 import React from "react";
 import {
@@ -114,7 +112,7 @@ import AdminVIPRooms from "@/pages/admin/AdminVIPRooms";
 import MercyAIHost from "@/components/guide/MercyAIHost";
 
 // ✅ DEPLOYMENT TRUTH BEACON
-const MB_ROUTER_VERSION = "2026-03-02-app-router-pricing-v4";
+const MB_ROUTER_VERSION = "2026-03-02-app-router-pricing-v3.1";
 
 /**
  * Local NotFound — ZERO dependencies
@@ -335,15 +333,13 @@ export default function AppRouter() {
         <Route element={<AppHeroShell />}>
           <Route path="/" element={<Home />} />
 
+          {/* ✅ canonical pricing */}
           <Route path="/pricing" element={<Pricing />} />
 
-          <Route path="/account" element={<AccountPage />} />
+          {/* ✅ keep old links working */}
+          <Route path="/upgrade" element={<Navigate to="/pricing" replace />} />
 
-          {/* ✅ Back-compat: /upgrade → /pricing (silent) */}
-          <Route
-            path="/upgrade"
-            element={<Navigate to="/pricing" replace />}
-          />
+          <Route path="/account" element={<AccountPage />} />
 
           <Route path="/rooms" element={<AllRooms />} />
 
