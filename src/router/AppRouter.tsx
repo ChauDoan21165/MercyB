@@ -55,10 +55,8 @@
 // ✅ PATCH (2026-03-02):
 // - Add /pricing route (Stripe pricing table page)
 //
-// ✅ PATCH (2026-03-02c):
-// - REMOVE UpgradePage usage (broken Supabase view).
-// - /pricing is canonical.
-// - Keep /upgrade as redirect → /pricing so old buttons/links never 404.
+// ✅ PATCH (2026-03-02d):
+// - Keep /upgrade as redirect → /pricing so any old link or 403 redirect never lands on 404.
 
 import React from "react";
 import {
@@ -112,8 +110,7 @@ import AdminVIPRooms from "@/pages/admin/AdminVIPRooms";
 import MercyAIHost from "@/components/guide/MercyAIHost";
 
 // ✅ DEPLOYMENT TRUTH BEACON
-// Bump this whenever you deploy a router change so you can confirm what's running in prod.
-const MB_ROUTER_VERSION = "2026-03-02-app-router-pricing-v3.2";
+const MB_ROUTER_VERSION = "2026-03-02-app-router-pricing-v3.1";
 
 /**
  * Local NotFound — ZERO dependencies
@@ -191,7 +188,7 @@ function AppHeroShell() {
     padding: "8px 12px",
     borderRadius: 9999,
     border: "1px solid rgba(0,0,0,0.12)",
-    background: "rgba(255,255,255,0.9)",
+    background: "rgba(255,255,255,0.90)",
     color: "rgba(0,0,0,0.78)",
     textDecoration: "none",
     fontWeight: 900,
@@ -337,7 +334,7 @@ export default function AppRouter() {
           {/* ✅ canonical pricing */}
           <Route path="/pricing" element={<Pricing />} />
 
-          {/* ✅ legacy /upgrade must never 404 */}
+          {/* ✅ keep old links + edge redirects working */}
           <Route path="/upgrade" element={<Navigate to="/pricing" replace />} />
 
           <Route path="/account" element={<AccountPage />} />
