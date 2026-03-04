@@ -52,24 +52,18 @@
 // ✅ PATCH (2026-02-19):
 // - Add /account route inside AppHeroShell (non-admin) so it never 404 in prod.
 //
-<<<<<<< HEAD
 // ✅ PATCH (2026-02-20):
 // - Deployment truth beacon is now ALSO exposed on window.MB_ROUTER_VERSION
 //   + documentElement data-mb-router-version (easy to verify in prod).
 // - IMPORTANT: Do NOT rely on top-level IIFE for beacon; it can be tree-shaken in prod builds.
 //   Beacon is now stamped inside AppRouter() (never tree-shaken).
 //
-// ✅ PATCH (2026-03-01):
-// - Add /pricing route (Stripe pricing table page)
-// - Import Pricing from ../screens/Pricing
-=======
 // ✅ PATCH (2026-03-02):
 // - Add /pricing route (Stripe pricing table page)
 //
 // ✅ PATCH (2026-03-02e):
 // - Keep /upgrade route BUT render UpgradePage (which renders the SAME Pricing table UI).
 //   This avoids 404 loops even if old links or 403 redirects still go to /upgrade.
->>>>>>> origin/vercel-current
 
 import React from "react";
 import {
@@ -102,9 +96,6 @@ import TierDetail from "@/pages/TierDetail";
 
 // ✅ Auth / Signin
 import LoginPage from "@/pages/LoginPage";
-
-// ✅ Stripe pricing page (pricing-table embed)
-import Pricing from "../screens/Pricing";
 
 // ✅ Admin guard + layout + control board
 import AdminRoute from "@/components/admin/AdminRoute";
@@ -350,20 +341,13 @@ export default function AppRouter() {
         <Route element={<AppHeroShell />}>
           <Route path="/" element={<Home />} />
 
-<<<<<<< HEAD
-          {/* ✅ Stripe Pricing page (pricing table embed lives here) */}
-          <Route path="/pricing" element={<Pricing />} />
-
-          {/* ✅ Billing / Account (must be in the REAL router, not src/App.tsx) */}
-          <Route path="/account" element={<AccountPage />} />
-=======
           {/* ✅ canonical pricing */}
           <Route path="/pricing" element={<Pricing />} />
 
           {/* ✅ legacy upgrade route renders the same Stripe pricing table UI */}
->>>>>>> origin/vercel-current
           <Route path="/upgrade" element={<UpgradePage />} />
 
+          {/* ✅ Billing / Account (must be in the REAL router, not src/App.tsx) */}
           <Route path="/account" element={<AccountPage />} />
 
           <Route path="/rooms" element={<AllRooms />} />
