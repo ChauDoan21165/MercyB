@@ -1,5 +1,5 @@
 // src/pages/AllRooms.tsx
-// MB-BLUE-98.3 — 2025-12-30 (+0700)
+// MB-BLUE-98.4 — 2025-12-30 (+0700)
 //
 // ROLE (LOCKED):
 // - This is /rooms (browse rooms / utility page)
