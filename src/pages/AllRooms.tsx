@@ -7,7 +7,7 @@
 // 2) Bilingual EN / VI copy throughout.
 
 import React, { useCallback } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 type CardProps = {
   titleEN: string;
@@ -49,13 +49,7 @@ function DualText({
   );
 }
 
-function ActionButton({
-  labelEN,
-  labelVI,
-}: {
-  labelEN: string;
-  labelVI: string;
-}) {
+function ActionButton({ labelEN, labelVI }: { labelEN: string; labelVI: string }) {
   return (
     <div
       style={{
@@ -131,28 +125,28 @@ function QuickCard({
         <DualText en={titleEN} vi={titleVI} strong />
         {rightSlot ? <div>{rightSlot}</div> : null}
       </div>
+
       <p style={bodyStyle}>
         <span style={{ display: "block" }}>{bodyEN}</span>
         <span style={{ display: "block" }}>{bodyVI}</span>
       </p>
+
       <div style={{ marginTop: 8 }}>
         <ActionButton labelEN={actionEN} labelVI={actionVI} />
       </div>
     </div>
   );
 
+  // If it's a link, wrap in Link (keeps right-click/open-in-new-tab behavior)
   if (to) {
     return (
-      <Link
-        to={to}
-        style={{ textDecoration: "none", color: "inherit" }}
-        onClick={onClick}
-      >
+      <Link to={to} style={{ textDecoration: "none", color: "inherit" }} onClick={onClick}>
         {inner}
       </Link>
     );
   }
 
+  // Otherwise clickable card (refresh action)
   return (
     <div
       role="button"
@@ -162,6 +156,7 @@ function QuickCard({
         if (e.key === "Enter" || e.key === " ") onClick?.();
       }}
       style={{ outline: "none" }}
+      aria-label={`${titleEN} / ${titleVI}`}
     >
       {inner}
     </div>
@@ -259,13 +254,13 @@ export default function AllRooms() {
 
   // ✅ FIX: Refresh must do something even if already on /rooms
   const onRefreshRooms = useCallback(() => {
+    // Preferred: React Router v6.4+ supports navigate(0) to reload.
     try {
-      // React Router v6.4+ supports navigate(0) to reload current route.
-      // This re-runs loaders and re-mounts in many setups.
+      // @ts-expect-error - navigate(0) is allowed in RR v6.4+, TS types vary by version.
       navigate(0);
       return;
     } catch {
-      // Fallback #1: force a route change by adding a timestamp query
+      // Fallback #1: force a re-render/re-mount by changing query string
       try {
         const qs = new URLSearchParams(loc.search || "");
         qs.set("ts", String(Date.now()));
@@ -291,7 +286,9 @@ export default function AllRooms() {
             <span style={{ marginLeft: 10, opacity: 0.6 }}>•</span>
             <span style={{ marginLeft: 10, opacity: 0.85 }}>Công cụ nhanh</span>
           </div>
+
           <h1 style={title}>Rooms</h1>
+
           <p style={kicker}>
             <span style={{ display: "block" }}>Browse / debug / quick entry points.</span>
             <span style={{ display: "block" }}>Duyệt / debug / lối vào nhanh.</span>
@@ -299,13 +296,13 @@ export default function AllRooms() {
         </div>
 
         <div style={topButtons} aria-label="Top quick buttons">
-          <Link to="/" style={pillBtn} aria-label="Home">
+          <Link to="/" style={pillBtn} aria-label="Home / Trang chủ">
             <DualText en="Home" vi="Trang chủ" strong />
           </Link>
-          <Link to="/pricing" style={pillBtn} aria-label="Pricing">
+          <Link to="/pricing" style={pillBtn} aria-label="Pricing / Bảng giá">
             <DualText en="Pricing" vi="Bảng giá" strong />
           </Link>
-          <Link to="/tiers" style={pillBtn} aria-label="Tier Map">
+          <Link to="/tiers" style={pillBtn} aria-label="Tier Map / Bản đồ Tier">
             <DualText en="Tier Map" vi="Bản đồ Tier" strong />
           </Link>
         </div>
@@ -313,11 +310,8 @@ export default function AllRooms() {
 
       <div style={grid} aria-label="Quick links panel">
         <div style={{ display: "flex", justifyContent: "space-between", gap: 10, flexWrap: "wrap" }}>
-          <DualText
-            en="Quick links"
-            vi="Liên kết nhanh"
-            strong
-          />
+          <DualText en="Quick links" vi="Liên kết nhanh" strong />
+
           <Link
             to="/signin"
             style={{
@@ -325,6 +319,7 @@ export default function AllRooms() {
               fontWeight: 900,
               color: "rgba(0,0,0,0.72)",
             }}
+            aria-label="Sign in / Đăng nhập"
           >
             <DualText en="Sign in" vi="Đăng nhập" strong />
           </Link>
@@ -374,7 +369,7 @@ export default function AllRooms() {
             titleVI="Tất cả rooms"
             bodyEN="Main browsing page (when room list UI is enabled)."
             bodyVI="Trang duyệt chính (khi UI danh sách room bật)."
-            actionEN="Refresh /rooms"
+            actionEN="Reload /rooms"
             actionVI="Tải lại /rooms"
             onClick={onRefreshRooms}
             rightSlot={
