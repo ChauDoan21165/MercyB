@@ -9,8 +9,8 @@
 // UI-only. No new deps. No data fetch (for now).
 //
 // PATCH (2026-03-03):
-// - Remove confusing "HOME OK (moved to /rooms)" message.
-// - This page is /rooms utility, so label it clearly as ROOMS / Utility.
+// - Remove "HOME OK (moved to /rooms)" baseline debug message.
+// - Keep /rooms as a simple utility page with quick links (no fetch).
 
 import React from "react";
 import { Link } from "react-router-dom";
@@ -61,6 +61,31 @@ export default function AllRooms() {
           transform: translateY(-1px);
           box-shadow: 0 14px 30px rgba(0,0,0,0.10);
         }
+
+        [data-mb-scope="rooms"] .mb-grid{
+          display:grid;
+          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+          gap: 12px;
+          margin-top: 14px;
+        }
+
+        [data-mb-scope="rooms"] .mb-item{
+          border-radius: 18px;
+          border: 1px solid rgba(0,0,0,0.10);
+          background: rgba(255,255,255,0.85);
+          padding: 14px 14px;
+        }
+
+        [data-mb-scope="rooms"] .mb-itemTitle{
+          font-weight: 800;
+        }
+
+        [data-mb-scope="rooms"] .mb-itemDesc{
+          margin-top: 6px;
+          font-size: 13px;
+          opacity: 0.78;
+          line-height: 1.45;
+        }
       `}</style>
 
       <div className="mb-shell">
@@ -75,33 +100,71 @@ export default function AllRooms() {
             <Link className="mb-btn" to="/">
               Home
             </Link>
+            <Link className="mb-btn" to="/pricing">
+              Pricing
+            </Link>
             <Link className="mb-btn" to="/tiers">
               Tier Map
             </Link>
           </div>
         </div>
 
-        {/* Keep your baseline debug card (sanity-check routing fast) */}
         <div className="mb-card">
-          <a href="/signin" className="text-sm underline">
-            Sign in
-          </a>
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <div className="text-sm font-semibold opacity-80">Quick links</div>
+              <div className="text-xs opacity-70 mt-1">This page is UI-only (no room fetch yet).</div>
+            </div>
 
-          <h2 className="text-3xl md:text-4xl font-serif font-bold mt-3">Mercy Blade — Rooms (Utility)</h2>
+            <a href="/signin" className="text-sm underline">
+              Sign in
+            </a>
+          </div>
 
-          <p className="mt-2 text-base">If you see this page at /rooms, React + routing are stable.</p>
+          <div className="mb-grid">
+            <div className="mb-item">
+              <div className="mb-itemTitle">Go to Home</div>
+              <div className="mb-itemDesc">Front door page (/) with hero + progress cards.</div>
+              <div className="mt-3">
+                <Link className="mb-btn" to="/">
+                  Open Home →
+                </Link>
+              </div>
+            </div>
 
-          <div className="mt-3 text-sm opacity-80">Rooms v2025-12-25-BASELINE</div>
+            <div className="mb-item">
+              <div className="mb-itemTitle">Pricing</div>
+              <div className="mb-itemDesc">See subscription tiers and upgrade options.</div>
+              <div className="mt-3">
+                <Link className="mb-btn" to="/pricing">
+                  Open Pricing →
+                </Link>
+              </div>
+            </div>
 
-          <div className="mt-5 flex flex-wrap gap-2">
-            {/* NOTE: Removed broken room link (english_writing_free deleted) */}
-            <Link className="mb-btn" to="/tiers">
-              Explore tiers
-            </Link>
+            <div className="mb-item">
+              <div className="mb-itemTitle">Tier Map</div>
+              <div className="mb-itemDesc">Learning paths / tiers overview.</div>
+              <div className="mt-3">
+                <Link className="mb-btn" to="/tiers">
+                  Explore tiers →
+                </Link>
+              </div>
+            </div>
 
-            <Link className="mb-btn" to="/">
-              Go to Home
-            </Link>
+            <div className="mb-item">
+              <div className="mb-itemTitle">All rooms</div>
+              <div className="mb-itemDesc">Main browsing page (when room list UI is enabled).</div>
+              <div className="mt-3">
+                <Link className="mb-btn" to="/rooms">
+                  Refresh /rooms →
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-4 text-xs opacity-70">
+            Note: the old “HOME OK (moved to /rooms)” debug banner was removed.
           </div>
         </div>
       </div>

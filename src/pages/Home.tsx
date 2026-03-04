@@ -166,7 +166,7 @@ function isKidsRoomId(id: string) {
 
 // Some legacy/hybrid rows look like vip6_freeze_response (tier=free but vip* prefix)
 function isVipHybridId(id: string) {
-  return /^vip\d+_/.test(id) || /^vip\d+-/.test(id);
+  return /^vip\\d+_/.test(id) || /^vip\\d+-/.test(id);
 }
 
 export default function Home() {
@@ -245,7 +245,7 @@ export default function Home() {
       // Safety net: old working hero (never blank)
       "/hero/hero_band.jpg",
     ],
-    [],
+    []
   );
 
   const [heroIdx, setHeroIdx] = useState(0);
@@ -445,8 +445,7 @@ export default function Home() {
         const pickEarliest = clean[0]?.id ?? null;
 
         // If DB failed or empty, fallback.
-        const pick =
-          (!error ? pickRanked || pickEarliest : null) || FIRST_ROOM_FALLBACKS[0] || "sleep_basics";
+        const pick = (!error ? pickRanked || pickEarliest : null) || FIRST_ROOM_FALLBACKS[0] || "sleep_basics";
 
         setFirstRoomId(pick);
       } catch {
@@ -470,11 +469,9 @@ export default function Home() {
   // ---------------------------
   const phase0New = !user?.id || !progressSummary.lastStudyAt || fmtInt(progressSummary.active30d) === 0;
 
-  const phase2Collapse =
-    !phase0New && (fmtInt(progressSummary.active30d) >= 5 || fmtInt(progressSummary.streak) >= 3);
+  const phase2Collapse = !phase0New && (fmtInt(progressSummary.active30d) >= 5 || fmtInt(progressSummary.streak) >= 3);
 
-  const phase3Hide =
-    !phase0New && fmtInt(progressSummary.active30d) >= 10 && fmtInt(progressSummary.streak) >= 7;
+  const phase3Hide = !phase0New && fmtInt(progressSummary.active30d) >= 10 && fmtInt(progressSummary.streak) >= 7;
 
   const [howOpen, setHowOpen] = useState<boolean>(true);
 
@@ -804,8 +801,7 @@ export default function Home() {
                 {/* ✅ Streak badge (soft) */}
                 {user?.id ? (
                   <div style={progBadge} aria-label="Streak badge">
-                    🔥 Streak:{" "}
-                    {streakDays === null ? "—" : `${streakDays} ${plural(streakDays, "day", "days")}`}
+                    🔥 Streak: {streakDays === null ? "—" : `${streakDays} ${plural(streakDays, "day", "days")}`}
                   </div>
                 ) : null}
               </div>
