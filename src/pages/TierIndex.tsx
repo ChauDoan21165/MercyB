@@ -18,7 +18,7 @@
 // - Change VIP1 right anchor from "Martial art / Discipline" → "Survival skills"
 // - Route to LIFE area explicitly: /tiers/vip1?area=life
 //
-// FIX (98.92 — AREA-SAFE ROUTING, ALL TIERS):
+// FIX (98.9l — AREA-SAFE ROUTING, ALL TIERS):
 // - Problem: left + spine + right often landed in the same default (core) because links lacked ?area=...
 // - Solution: keep ALL features, only make routing explicit:
 //   - LEFT anchors use ?area=english where applicable
