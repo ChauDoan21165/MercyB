@@ -85,7 +85,7 @@ export function AppShell({
               <ThemeToggle />
               <Button variant="ghost" size="sm" className="h-8 w-8 p-0" asChild>
                 {/* FIX: Tier Map page is /tiers (not /tier-map) */}
-                <Link to="/tiers" title="Tier Map">
+                <Link to="/tiers" title="Tier Map" aria-label="Tier Map">
                   <Map className="h-4 w-4" />
                 </Link>
               </Button>
@@ -126,7 +126,3 @@ export function AppShellContent({
     </div>
   );
 }
-
-/* Teacher GPT – new thing to learn:
-   Universal alignment comes from ONE shared frame.
-   Fix the frame once; every page inherits it. */

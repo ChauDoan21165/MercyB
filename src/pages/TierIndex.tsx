@@ -2,13 +2,12 @@
 // PATH: src/pages/TierIndex.tsx
 // MB-BLUE-98.9j → MB-BLUE-98.9n — 2026-01-18 (+0700)
 //
-<<<<<<< HEAD
 // PATCH (2026-03-01):
 // - REMOVE old displayed tier prices ($5/$12/$29) from Tier Map UI.
 // - Add a clear link to the real pricing page (/pricing) instead.
 // - REMOVE "God / Universe" decoration entirely.
 // - Make Pricing button less harsh (softer, readable).
-=======
+//
 // FIX (98.9k — DELETE VIP3 II from Tier Map UI):
 // - Remove vip3 from SpineTierId + SPINE_TOP_TO_BOTTOM so the pill disappears.
 // - Keep all tier loading/counting logic stable.
@@ -19,7 +18,7 @@
 // - Change VIP1 right anchor from "Martial art / Discipline" → "Survival skills"
 // - Route to LIFE area explicitly: /tiers/vip1?area=life
 //
-// FIX (98.9l — AREA-SAFE ROUTING, ALL TIERS):
+// FIX (98.92 — AREA-SAFE ROUTING, ALL TIERS):
 // - Problem: left + spine + right often landed in the same default (core) because links lacked ?area=...
 // - Solution: keep ALL features, only make routing explicit:
 //   - LEFT anchors use ?area=english where applicable
@@ -68,7 +67,6 @@
 // - Add top "Pricing" CTA button linking to /upgrade (Stripe upgrade page).
 //
 // NOTE: Inline styles only. Locked concept preserved.
->>>>>>> origin/vercel-current
 
 import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
@@ -98,11 +96,7 @@ const rainbow =
   "linear-gradient(90deg,#ff4d4d 0%,#ffb84d 18%,#b6ff4d 36%,#4dffb8 54%,#4db8ff 72%,#b84dff 90%,#ff4dff 100%)";
 
 const SPINE_TOP_TO_BOTTOM: TierNode[] = [
-<<<<<<< HEAD
   { id: "vip9", label: "VIP9", hint: "Top level" },
-=======
-  { id: "vip9", label: "VIP9", hint: "Top" },
->>>>>>> origin/vercel-current
   { id: "vip8", label: "VIP8", hint: "High mastery" },
   { id: "vip7", label: "VIP7", hint: "Advanced" },
   { id: "vip6", label: "VIP6", hint: "Systems / strategy" },
@@ -195,10 +189,6 @@ function inferSpineTierFromRank(r: TierRoom): SpineTierId | null {
 
   const rr = Math.max(0, Math.min(9, Math.trunc(rank)));
   if (rr === 0) return "free";
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/vercel-current
   return `vip${rr}` as SpineTierId;
 }
 
@@ -530,7 +520,7 @@ export default function TierIndex() {
     whiteSpace: "nowrap",
   };
 
-  const ctaSub: React.CSSProperties = {
+  const ctaSub2: React.CSSProperties = {
     fontSize: 11,
     fontWeight: 900,
     color: "rgba(0,0,0,0.62)",
@@ -793,7 +783,8 @@ export default function TierIndex() {
         kidsByIdTierUnknown: pickIds(kidsByIdTierUnknown),
         survivalNotLife: pickIds(survivalNotLife),
       },
-      byTierAreaCount: (tier: string, area: string) => (byTierArea[`${tier}__${area}`] || []).length,
+      byTierAreaCount: (tier: string, area: string) =>
+        (byTierArea[`${tier}__${area}`] || []).length,
     };
 
     return report;
@@ -833,8 +824,7 @@ export default function TierIndex() {
       const sample = coreRooms.slice(0, 30).map((r: any) => ({
         id: r.id,
         tier: r.tier,
-        required_rank:
-          r.required_rank ?? r.required_vip_rank ?? r.min_rank ?? r.vip_rank ?? r.rank,
+        required_rank: r.required_rank ?? r.required_vip_rank ?? r.min_rank ?? r.vip_rank ?? r.rank,
         inferred: inferSpineTierForCounting(r, spineSet),
       }));
       // eslint-disable-next-line no-console
@@ -972,7 +962,7 @@ export default function TierIndex() {
             <span style={ctaIcon}>$</span>
             <span style={ctaTextWrap}>
               <span style={ctaTitle}>Pricing</span>
-              <span style={ctaSub}>Xem giá & đăng ký • CA$17 / CA$39</span>
+              <span style={ctaSub2}>Xem giá & đăng ký • CA$17 / CA$39</span>
             </span>
           </Link>
 
@@ -1010,11 +1000,8 @@ export default function TierIndex() {
             </p>
           </div>
 
-<<<<<<< HEAD
-=======
           {/* ✅ Removed "God / Universe (Above the head)" block completely */}
 
->>>>>>> origin/vercel-current
           {SPINE_TOP_TO_BOTTOM.map((t) => (
             <React.Fragment key={t.id}>
               <div style={cell} aria-label={`Left cell ${t.label}`}>
