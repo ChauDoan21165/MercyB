@@ -54,7 +54,6 @@ export const ROOM_IDS = [
   "burnout_recovery_vip1",
   "burnout_recovery_vip2",
   "burnout_recovery_vip3",
-  "calm_confident_sexual_health_vip3_sub3_sex",
   "career_consultant_free",
   "charisma_mechanics_presence_engineering_vip5_bonus",
   "classroom_english_kids_l2",
@@ -341,12 +340,10 @@ export const ROOM_IDS = [
   "public_speaking_structure_vip3",
   "reading_comprehension_kids_l3",
   "reading_skills_kids_l2",
-  "relational_intelligence_erotic_communication_vip3_sub2_sex",
   "relationship_healing_free",
   "research_skills_kids_l3",
   "resilience_and_adaptation_vip4",
   "rooms_in_the_house_kids_l1",
-  "sacred_body_curious_self_vip3_sub2_sex",
   "safety_rules_kids_l2",
   "saladin_vip9_vol2",
   "saladin_vip9_vol3",
@@ -359,9 +356,6 @@ export const ROOM_IDS = [
   "scipio_africanus_vip9_vol2",
   "scipio_africanus_vip9_vol3",
   "self_love_free",
-  "sexuality_curiosity_culture_vip3",
-  "sexuality_curiosity_free",
-  "sexuality_curiosity_vip3_sub4",
   "shadow_work_free",
   "shadow_work_vip1",
   "shadow_work_vip2",
@@ -775,13 +769,6 @@ const __ROOM_LIST: RoomListItem[] = [
     "id": "burnout_recovery_vip3",
     "title_en": "Burnout Recovery",
     "title_vi": "Phục Hồi Kiệt Sức",
-    "tier": "vip3",
-    "hasData": true
-  },
-  {
-    "id": "calm_confident_sexual_health_vip3_sub3_sex",
-    "title_en": "Calm Confident Sexual Health",
-    "title_vi": "Sức Khỏe Tình Dục Bình Tĩnh & Tự Tin",
     "tier": "vip3",
     "hasData": true
   },
@@ -2788,13 +2775,6 @@ const __ROOM_LIST: RoomListItem[] = [
     "hasData": true
   },
   {
-    "id": "relational_intelligence_erotic_communication_vip3_sub2_sex",
-    "title_en": "Relational Intelligence & Erotic Communication",
-    "title_vi": "Thông Minh Quan Hệ & Giao Tiếp Gợi Cảm",
-    "tier": "vip3",
-    "hasData": true
-  },
-  {
     "id": "relationship_healing_free",
     "title_en": "Relationship Healing",
     "title_vi": "Hàn Gắn Mối Quan Hệ",
@@ -2820,13 +2800,6 @@ const __ROOM_LIST: RoomListItem[] = [
     "title_en": "Rooms in the House",
     "title_vi": "Các Phòng Trong Nhà",
     "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "sacred_body_curious_self_vip3_sub2_sex",
-    "title_en": "Sacred Body, Curious Self",
-    "title_vi": "Thân Thể Linh Thiêng, Bản Ngã Tò Mò",
-    "tier": "vip3",
     "hasData": true
   },
   {
@@ -2911,27 +2884,6 @@ const __ROOM_LIST: RoomListItem[] = [
     "title_en": "Self Love",
     "title_vi": "Yêu Thương Bản Thân",
     "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "sexuality_curiosity_culture_vip3",
-    "title_en": "Sexuality & Curiosity & Culture",
-    "title_vi": "Tính Dục, Sự Tò Mò & Văn Hóa",
-    "tier": "vip3",
-    "hasData": true
-  },
-  {
-    "id": "sexuality_curiosity_free",
-    "title_en": "Sexuality & Curiosity",
-    "title_vi": "Tính Dục & Sự Tò Mò",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "sexuality_curiosity_vip3_sub4",
-    "title_en": "sexuality_curiosity_vip3_sub4",
-    "title_vi": "Sức Khỏe và An Toàn Tình Dục",
-    "tier": "vip3",
     "hasData": true
   },
   {

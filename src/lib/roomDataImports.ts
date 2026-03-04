@@ -285,13 +285,6 @@ export const roomDataMap = {
     "tier": "vip3",
     "hasData": true
   },
-  "calm_confident_sexual_health_vip3_sub3_sex": {
-    "id": "calm_confident_sexual_health_vip3_sub3_sex",
-    "title_en": "Calm Confident Sexual Health",
-    "title_vi": "Sức Khỏe Tình Dục Bình Tĩnh & Tự Tin",
-    "tier": "vip3",
-    "hasData": true
-  },
   "career_consultant_free": {
     "id": "career_consultant_free",
     "title_en": "Career Consultant",
@@ -2294,13 +2287,6 @@ export const roomDataMap = {
     "tier": "free",
     "hasData": true
   },
-  "relational_intelligence_erotic_communication_vip3_sub2_sex": {
-    "id": "relational_intelligence_erotic_communication_vip3_sub2_sex",
-    "title_en": "Relational Intelligence & Erotic Communication",
-    "title_vi": "Thông Minh Quan Hệ & Giao Tiếp Gợi Cảm",
-    "tier": "vip3",
-    "hasData": true
-  },
   "relationship_healing_free": {
     "id": "relationship_healing_free",
     "title_en": "Relationship Healing",
@@ -2327,13 +2313,6 @@ export const roomDataMap = {
     "title_en": "Rooms in the House",
     "title_vi": "Các Phòng Trong Nhà",
     "tier": "free",
-    "hasData": true
-  },
-  "sacred_body_curious_self_vip3_sub2_sex": {
-    "id": "sacred_body_curious_self_vip3_sub2_sex",
-    "title_en": "Sacred Body, Curious Self",
-    "title_vi": "Thân Thể Linh Thiêng, Bản Ngã Tò Mò",
-    "tier": "vip3",
     "hasData": true
   },
   "safety_rules_kids_l2": {
@@ -2418,27 +2397,6 @@ export const roomDataMap = {
     "title_en": "Self Love",
     "title_vi": "Yêu Thương Bản Thân",
     "tier": "free",
-    "hasData": true
-  },
-  "sexuality_curiosity_culture_vip3": {
-    "id": "sexuality_curiosity_culture_vip3",
-    "title_en": "Sexuality & Curiosity & Culture",
-    "title_vi": "Tính Dục, Sự Tò Mò & Văn Hóa",
-    "tier": "vip3",
-    "hasData": true
-  },
-  "sexuality_curiosity_free": {
-    "id": "sexuality_curiosity_free",
-    "title_en": "Sexuality & Curiosity",
-    "title_vi": "Tính Dục & Sự Tò Mò",
-    "tier": "free",
-    "hasData": true
-  },
-  "sexuality_curiosity_vip3_sub4": {
-    "id": "sexuality_curiosity_vip3_sub4",
-    "title_en": "sexuality_curiosity_vip3_sub4",
-    "title_vi": "Sức Khỏe và An Toàn Tình Dục",
-    "tier": "vip3",
     "hasData": true
   },
   "shadow_work_free": {
