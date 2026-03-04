@@ -14,6 +14,11 @@
 // - Expose Supabase client for console debugging:
 //   window.supabase.auth.getSession()
 //   window.supabase.from("community_messages").select("*").limit(3)
+//
+// ✅ PATCH (2026-03-02):
+// - Canonical pricing route is /pricing.
+// - /upgrade is deprecated: hard-normalize it to /pricing BEFORE React Router mounts.
+//   (This avoids 404 loops if any code/edge redirects still send users to /upgrade.)
 
 import React from "react";
 import ReactDOM from "react-dom/client";
@@ -46,7 +51,18 @@ declare global {
     // ✅ Fatal overlay singleton state (prevents DOM races + duplicate overlays)
     __MB_FATAL_OVERLAY_EL__?: HTMLDivElement;
     __MB_FATAL_OVERLAY_SHOWN__?: boolean;
+
+    // ✅ Optional entry truth beacon (helps debug which bundle is running)
+    __MB_ENTRY_VERSION__?: string;
   }
+}
+
+// ✅ ENTRY TRUTH BEACON (debug)
+const MB_ENTRY_VERSION = "2026-03-02-main-upgrade-to-pricing-v1";
+try {
+  window.__MB_ENTRY_VERSION__ = MB_ENTRY_VERSION;
+} catch {
+  // ignore
 }
 
 /** ✅ DEV-only logger (keeps production console clean) */
@@ -147,6 +163,22 @@ const devLog = (...args: unknown[]) => {
 })();
 
 /**
+ * ✅ Canonicalize legacy paths BEFORE router mounts.
+ * - /upgrade is deprecated -> /pricing
+ */
+(function normalizeLegacyPaths() {
+  try {
+    const path = window.location.pathname || "/";
+    if (path === "/upgrade") {
+      const next = `/pricing${window.location.search || ""}${window.location.hash || ""}`;
+      window.history.replaceState(null, "", next);
+    }
+  } catch {
+    // ignore
+  }
+})();
+
+/**
  * ✅ SPA deep-link restore:
  * If public/404.html set sessionStorage.redirect to the original deep URL,
  * restore it before React Router mounts.
@@ -159,7 +191,12 @@ const devLog = (...args: unknown[]) => {
     sessionStorage.removeItem("redirect");
 
     const url = new URL(redirect);
-    const next = `${url.pathname}${url.search}${url.hash}`;
+    let next = `${url.pathname}${url.search}${url.hash}`;
+
+    // ✅ Normalize legacy /upgrade deep links to canonical /pricing
+    if (url.pathname === "/upgrade") {
+      next = `/pricing${url.search}${url.hash}`;
+    }
 
     // Avoid looping if already at the same path
     if (window.location.pathname + window.location.search + window.location.hash !== next) {

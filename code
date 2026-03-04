@@ -84,7 +84,8 @@ export function AppShell({
             <div className="flex items-center gap-2 justify-end">
               <ThemeToggle />
               <Button variant="ghost" size="sm" className="h-8 w-8 p-0" asChild>
-                <Link to="/tier-map" title="Tier Map">
+                {/* FIX: Tier Map page is /tiers (not /tier-map) */}
+                <Link to="/tiers" title="Tier Map">
                   <Map className="h-4 w-4" />
                 </Link>
               </Button>

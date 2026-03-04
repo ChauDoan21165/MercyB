@@ -1,11 +1,11 @@
 // src/App.tsx
 import React from "react";
-import { Routes, Route, Outlet } from "react-router-dom";
+import { Routes, Route, Outlet, Navigate } from "react-router-dom";
 
 import LoginPage from "@/pages/LoginPage";
 import Home from "@/pages/Home";
 import AccountPage from "@/pages/AccountPage";
-import UpgradePage from "@/pages/UpgradePage";
+import Pricing from "@/screens/Pricing"; // or "../screens/Pricing" depending on your alias setup
 
 /**
  * TEMP FIX (build unblocker):
@@ -29,7 +29,12 @@ export default function App() {
 
         {/* ✅ Billing / Account */}
         <Route path="/account" element={<AccountPage />} />
-        <Route path="/upgrade" element={<UpgradePage />} />
+
+        {/* ✅ Pricing is canonical */}
+        <Route path="/pricing" element={<Pricing />} />
+
+        {/* ✅ Upgrade removed; keep old URL working */}
+        <Route path="/upgrade" element={<Navigate to="/pricing" replace />} />
 
         {/* <Route path="/room/:roomId" element={<RoomPage />} /> */}
         {/* <Route path="/tiers" element={<TiersPage />} /> */}

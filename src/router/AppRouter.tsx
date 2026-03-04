@@ -50,8 +50,9 @@
 //   This makes ALL pages (rooms/tiers/rooms list/home) share the same width baseline.
 //
 // ✅ PATCH (2026-02-19):
-// - Add /account and /upgrade routes inside AppHeroShell (non-admin) so they never 404 in prod.
+// - Add /account route inside AppHeroShell (non-admin) so it never 404 in prod.
 //
+<<<<<<< HEAD
 // ✅ PATCH (2026-02-20):
 // - Deployment truth beacon is now ALSO exposed on window.MB_ROUTER_VERSION
 //   + documentElement data-mb-router-version (easy to verify in prod).
@@ -61,9 +62,26 @@
 // ✅ PATCH (2026-03-01):
 // - Add /pricing route (Stripe pricing table page)
 // - Import Pricing from ../screens/Pricing
+=======
+// ✅ PATCH (2026-03-02):
+// - Add /pricing route (Stripe pricing table page)
+//
+// ✅ PATCH (2026-03-02e):
+// - Keep /upgrade route BUT render UpgradePage (which renders the SAME Pricing table UI).
+//   This avoids 404 loops even if old links or 403 redirects still go to /upgrade.
+>>>>>>> origin/vercel-current
 
 import React from "react";
-import { Routes, Route, Navigate, useParams, Outlet, Link, useLocation, useNavigate } from "react-router-dom";
+import {
+  Routes,
+  Route,
+  Navigate,
+  useParams,
+  Outlet,
+  Link,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 
 import ChatHub from "@/pages/ChatHub";
 import AllRooms from "@/pages/AllRooms";
@@ -71,6 +89,8 @@ import Home from "@/pages/Home";
 
 // ✅ Billing / Account
 import AccountPage from "@/pages/AccountPage";
+
+// ✅ Upgrade (legacy route) — shows Pricing UI
 import UpgradePage from "@/pages/UpgradePage";
 
 // ✅ Stripe pricing page (your Stripe pricing-table embed)
@@ -82,6 +102,9 @@ import TierDetail from "@/pages/TierDetail";
 
 // ✅ Auth / Signin
 import LoginPage from "@/pages/LoginPage";
+
+// ✅ Stripe pricing page (pricing-table embed)
+import Pricing from "../screens/Pricing";
 
 // ✅ Admin guard + layout + control board
 import AdminRoute from "@/components/admin/AdminRoute";
@@ -105,13 +128,11 @@ import AdminVIPRooms from "@/pages/admin/AdminVIPRooms";
 // ✅ Mercy AI Host (global floating guide)
 import MercyAIHost from "@/components/guide/MercyAIHost";
 
-// ✅ DEPLOYMENT TRUTH BEACON (PATCH 2026-02-19)
-// If you don’t see this in Prod console + window.MB_ROUTER_VERSION, Prod is not running this file.
-const MB_ROUTER_VERSION = "2026-02-19-app-router-account-v1";
+// ✅ DEPLOYMENT TRUTH BEACON
+const MB_ROUTER_VERSION = "2026-03-02-app-router-pricing-v3.2";
 
 /**
  * Local NotFound — ZERO dependencies
- * (Do not import legacy Next-era NotFound here)
  */
 function NotFound() {
   return (
@@ -125,23 +146,6 @@ function NotFound() {
   );
 }
 
-/**
- * Global shell (NO new file).
- * - Excludes /signin by routing (see Routes below).
- * - Auto-disables band on /admin/* to avoid messing with AdminLayout.
- * - Adds click-safety containment so pages don’t go “dead”.
- *
- * PATCH (2026-01-31):
- * - UNIFY the global top band frame with the app-wide PAGE_MAX=980 + px-4 (16px).
- * - This fixes the “sticking out” vs “shrinks inside border” mismatch.
- *
- * PATCH (2026-01-31d):
- * - UNIVERSAL WIDTH FIX: constrain ALL non-admin pages under the same 980px frame.
- *
- * PATCH (2026-02-20):
- * - Center brand correctly using 3-column grid (true center, independent of left buttons width)
- * - Back button safety: if no history, go Home
- */
 function AppHeroShell() {
   const nav = useNavigate();
   const loc = useLocation();
@@ -151,13 +155,10 @@ function AppHeroShell() {
   const rainbow =
     "linear-gradient(90deg,#ff4d4d 0%,#ffb84d 18%,#b6ff4d 36%,#4dffb8 54%,#4db8ff 72%,#b84dff 90%,#ff4dff 100%)";
 
-  // ✅ SINGLE SOURCE OF TRUTH for frame sizing
-  // Match Home/ChatHub/etc: max-w-[980px] px-4
   const PAGE_MAX = 980;
-  const FRAME_PAD_X = 16; // px-4 (band uses this)
+  const FRAME_PAD_X = 16;
   const FRAME_MAX = PAGE_MAX;
 
-  // click-safety containment (prevents random fixed overlays from eating clicks)
   const shell: React.CSSProperties = {
     minHeight: "100vh",
     width: "100%",
@@ -177,7 +178,6 @@ function AppHeroShell() {
     borderBottom: "1px solid rgba(0,0,0,0.08)",
   };
 
-  // ✅ true center layout (3 columns)
   const bandInner: React.CSSProperties = {
     maxWidth: FRAME_MAX,
     margin: "0 auto",
@@ -231,7 +231,11 @@ function AppHeroShell() {
 
   const onBack = () => {
     try {
-      if (typeof window !== "undefined" && window.history && window.history.length <= 1) {
+      if (
+        typeof window !== "undefined" &&
+        window.history &&
+        window.history.length <= 1
+      ) {
         nav("/");
       } else {
         nav(-1);
@@ -241,10 +245,6 @@ function AppHeroShell() {
     }
   };
 
-  // ✅ UNIVERSAL CONTENT FRAME (the actual fix)
-  // - Forces every page under this shell to render within 980px max width.
-  // - Padding is intentionally 0 here to avoid “double px-4” on pages like Home
-  //   that already apply their own px-4 container.
   const contentFrame: React.CSSProperties = {
     maxWidth: FRAME_MAX,
     margin: "0 auto",
@@ -253,34 +253,35 @@ function AppHeroShell() {
 
   return (
     <div style={shell}>
-      {/* Keep Admin clean: no band, just outlet */}
       {isAdmin ? (
         <Outlet />
       ) : (
         <>
           <div style={band} aria-label="Mercy global hero band">
             <div style={bandInner}>
-              {/* Left */}
               <div style={leftNavWrap}>
                 <Link to="/" style={navBtn} aria-label="Go Home">
                   ⌂ Home
                 </Link>
-                <button type="button" style={navBtn} onClick={onBack} aria-label="Go Back" title="Back">
+                <button
+                  type="button"
+                  style={navBtn}
+                  onClick={onBack}
+                  aria-label="Go Back"
+                  title="Back"
+                >
                   ← Back
                 </button>
               </div>
 
-              {/* Center */}
               <div style={brand} title="Mercy Blade">
                 Mercy Blade
               </div>
 
-              {/* Right (spacer keeps center truly centered) */}
               <div style={rightSpacer} aria-hidden="true" />
             </div>
           </div>
 
-          {/* ✅ KEY: constrain every non-admin page to the same frame */}
           <div style={contentFrame}>
             <Outlet />
           </div>
@@ -290,55 +291,28 @@ function AppHeroShell() {
   );
 }
 
-/**
- * Legacy fix:
- * /room/room/:roomId  →  /room/:roomId
- */
 function RoomRoomRedirect() {
   const { roomId } = useParams<{ roomId: string }>();
   return <Navigate to={roomId ? `/room/${roomId}` : "/"} replace />;
 }
 
-/**
- * Safety fix:
- * /room  →  /
- */
 function RoomIndexRedirect() {
   return <Navigate to="/" replace />;
 }
 
-/**
- * Safety fix:
- * /rooms/room/:roomId → /room/:roomId
- */
 function RoomsRoomRedirect() {
   const { roomId } = useParams<{ roomId: string }>();
   return <Navigate to={roomId ? `/room/${roomId}` : "/rooms"} replace />;
 }
 
-/**
- * TEMP:
- * /redeem → /
- * (prevents Home CTA from hitting NotFound)
- */
 function RedeemRedirect() {
   return <Navigate to="/" replace />;
 }
 
-/**
- * FIX (100.8):
- * /auth → /signin
- */
 function AuthRedirect() {
   return <Navigate to="/signin" replace />;
 }
 
-/**
- * ADMIN SHELL (nested routes) — LOCKED
- * - Guards ONCE
- * - Layout ONCE
- * - Child pages render via <Outlet />
- */
 function AdminShell() {
   return (
     <AdminRoute>
@@ -350,17 +324,18 @@ function AdminShell() {
 }
 
 export default function AppRouter() {
-  // ✅ beacon log (helps confirm prod is running THIS file)
   // eslint-disable-next-line no-console
   console.log("MB_ROUTER_VERSION", MB_ROUTER_VERSION);
 
-  // ✅ PATCH (2026-02-20): ALWAYS stamp beacon here (never tree-shaken)
   try {
     if (typeof window !== "undefined") {
       (window as any).MB_ROUTER_VERSION = MB_ROUTER_VERSION;
     }
     if (typeof document !== "undefined" && document.documentElement) {
-      document.documentElement.setAttribute("data-mb-router-version", MB_ROUTER_VERSION);
+      document.documentElement.setAttribute(
+        "data-mb-router-version",
+        MB_ROUTER_VERSION
+      );
     }
   } catch {
     // ignore
@@ -369,75 +344,62 @@ export default function AppRouter() {
   return (
     <>
       <Routes>
-        {/* ✅ NO HERO on sign-in */}
         <Route path="/signin" element={<LoginPage />} />
-
-        {/* ✅ Keep /auth redirect outside shell (still “no UI”) */}
         <Route path="/auth" element={<AuthRedirect />} />
 
-        {/* ✅ HERO (global shell) on everything else */}
         <Route element={<AppHeroShell />}>
-          {/* ✅ HOME (curated front door) */}
           <Route path="/" element={<Home />} />
 
+<<<<<<< HEAD
           {/* ✅ Stripe Pricing page (pricing table embed lives here) */}
           <Route path="/pricing" element={<Pricing />} />
 
           {/* ✅ Billing / Account (must be in the REAL router, not src/App.tsx) */}
           <Route path="/account" element={<AccountPage />} />
+=======
+          {/* ✅ canonical pricing */}
+          <Route path="/pricing" element={<Pricing />} />
+
+          {/* ✅ legacy upgrade route renders the same Stripe pricing table UI */}
+>>>>>>> origin/vercel-current
           <Route path="/upgrade" element={<UpgradePage />} />
 
-          {/* Rooms list */}
+          <Route path="/account" element={<AccountPage />} />
+
           <Route path="/rooms" element={<AllRooms />} />
 
-          {/* ✅ Tier Spine */}
           <Route path="/tiers" element={<TierIndex />} />
           <Route path="/tiers/:tierId" element={<TierDetail />} />
 
-          {/* ✅ TEMP: keep Home CTA safe */}
           <Route path="/redeem" element={<RedeemRedirect />} />
 
-          {/* 🔁 Legacy fixes (explicit, silent) */}
           <Route path="/room/room/:roomId" element={<RoomRoomRedirect />} />
           <Route path="/room" element={<RoomIndexRedirect />} />
           <Route path="/rooms/room/:roomId" element={<RoomsRoomRedirect />} />
 
-          {/* ✅ Canonical room route */}
           <Route path="/room/:roomId" element={<ChatHub />} />
 
-          {/* =========================
-              ✅ ADMIN (GUARDED) — LOCKED
-              ✅ Parent is /admin/* with INDEX dashboard
-             ========================= */}
           <Route path="/admin/*" element={<AdminShell />}>
-            {/* Dashboard */}
             <Route index element={<AdminDashboard />} />
-
-            {/* Pages */}
             <Route path="payments" element={<AdminPayments />} />
             <Route path="bank-transfers" element={<AdminBankTransfers />} />
-            <Route path="payment-verification" element={<AdminPaymentVerification />} />
+            <Route
+              path="payment-verification"
+              element={<AdminPaymentVerification />}
+            />
             <Route path="access-codes" element={<AdminAccessCodes />} />
             <Route path="audio-coverage" element={<AudioCoveragePage />} />
             <Route path="monitoring" element={<AdminMonitoring />} />
             <Route path="metrics" element={<AdminMetrics />} />
             <Route path="vip-rooms" element={<AdminVIPRooms />} />
-
-            {/* Unknown admin subpath → dashboard (safe default) */}
             <Route path="*" element={<AdminDashboard />} />
           </Route>
 
-          {/* Fallback (hero applies) */}
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
 
-      {/* Mercy AI Host — global floating guide (must be inside Router context) */}
       <MercyAIHost />
     </>
   );
 }
-
-/* Teacher GPT – new thing to learn:
-   Top-level “IIFE side effects” can get tree-shaken in prod builds.
-   Put your truth beacons inside a React component body to guarantee execution. */

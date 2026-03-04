@@ -2,11 +2,73 @@
 // PATH: src/pages/TierIndex.tsx
 // MB-BLUE-98.9j → MB-BLUE-98.9n — 2026-01-18 (+0700)
 //
+<<<<<<< HEAD
 // PATCH (2026-03-01):
 // - REMOVE old displayed tier prices ($5/$12/$29) from Tier Map UI.
 // - Add a clear link to the real pricing page (/pricing) instead.
 // - REMOVE "God / Universe" decoration entirely.
 // - Make Pricing button less harsh (softer, readable).
+=======
+// FIX (98.9k — DELETE VIP3 II from Tier Map UI):
+// - Remove vip3 from SpineTierId + SPINE_TOP_TO_BOTTOM so the pill disappears.
+// - Keep all tier loading/counting logic stable.
+// - Any core rooms that would have been classified as vip3 are now treated as "unknown core tier"
+//   unless upstream mapping converts them to vip3.
+//
+// FIX (98.9k+ — VIP1 RIGHT CARD):
+// - Change VIP1 right anchor from "Martial art / Discipline" → "Survival skills"
+// - Route to LIFE area explicitly: /tiers/vip1?area=life
+//
+// FIX (98.9l — AREA-SAFE ROUTING, ALL TIERS):
+// - Problem: left + spine + right often landed in the same default (core) because links lacked ?area=...
+// - Solution: keep ALL features, only make routing explicit:
+//   - LEFT anchors use ?area=english where applicable
+//   - SPINE pills always go to ?area=core
+//   - RIGHT anchors use ?area=life
+// - Do NOT touch tierRoomSource pipeline. UI routing only.
+//
+// FIX (98.9m — REMOVE CONFUSING MID BAND LABELS):
+// - "Psychology / Tâm lý học" and "Critical thinking / Tư duy phản biện" sat in a decorative band
+//   with no navigation/filter meaning.
+// - Remove the whole mid-band block (and its styles) to reduce UI noise.
+//
+// FIX (98.9m+ — REMOVE FREE RIGHT CARD):
+// - Delete "Survival skills" card from Free row on the RIGHT.
+// - Keep counts/debug logic intact; just do not render the Free right anchor.
+//
+// FIX (98.9m++ — HUNT HIDDEN ROOMS, SAFE DEBUG):
+// - Add area/tier breakdown + “hidden bucket” detection using already-loaded allRooms.
+// - Console-only unless ?debugHidden=1.
+// - Add meta pills for English/Life/Kids/Unknown area/tier so totals can be compared quickly.
+// - NO changes to tierRoomSource pipeline; UI/report only.
+//
+// FIX (98.9n — EXPOSE LOADED ROOMS FOR CONSOLE DEBUG):
+// - The UI has rooms in React state; console scripts using window.__MB_ALL_ROOMS__ saw [].
+// - Export safe globals AFTER DB load:
+//   - window.__MB_ALL_ROOMS__
+//   - window.__MB_TIER_REPORT__ (includes strictUntiered + nonSpineTier buckets and IDs)
+//
+// PATCH (2026-01-28):
+// - Fix tier counts showing 0 for many VIP tiers when DB returns tier as unknown/blank.
+// - TierIndex now does SAFE local tier inference for COUNTING ONLY:
+//   1) tier string if present
+//   2) numeric rank fields (required_rank / required_vip_rank / min_rank / vip_rank / etc.) → vip tier
+//   3) id inference fallback
+//
+// PATCH (2026-01-29):
+// - Add "Home" + "Back" buttons at top-left for UX. (No changes to tier logic.)
+//
+// PATCH (2026-01-31):
+// - Remove local Home/Back row to prevent duplicate buttons.
+//   GlobalHeader/AppShell owns Home+Back + Mercy Blade wordmark consistently.
+//
+// PATCH (2026-03-02):
+// - Remove "God / Universe (Above the head)" decorative node.
+// - Remove ALL displayed VIP prices from Tier Map UI.
+// - Add top "Pricing" CTA button linking to /upgrade (Stripe upgrade page).
+//
+// NOTE: Inline styles only. Locked concept preserved.
+>>>>>>> origin/vercel-current
 
 import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
@@ -36,7 +98,11 @@ const rainbow =
   "linear-gradient(90deg,#ff4d4d 0%,#ffb84d 18%,#b6ff4d 36%,#4dffb8 54%,#4db8ff 72%,#b84dff 90%,#ff4dff 100%)";
 
 const SPINE_TOP_TO_BOTTOM: TierNode[] = [
+<<<<<<< HEAD
   { id: "vip9", label: "VIP9", hint: "Top level" },
+=======
+  { id: "vip9", label: "VIP9", hint: "Top" },
+>>>>>>> origin/vercel-current
   { id: "vip8", label: "VIP8", hint: "High mastery" },
   { id: "vip7", label: "VIP7", hint: "Advanced" },
   { id: "vip6", label: "VIP6", hint: "Systems / strategy" },
@@ -129,6 +195,10 @@ function inferSpineTierFromRank(r: TierRoom): SpineTierId | null {
 
   const rr = Math.max(0, Math.min(9, Math.trunc(rank)));
   if (rr === 0) return "free";
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/vercel-current
   return `vip${rr}` as SpineTierId;
 }
 
@@ -355,6 +425,35 @@ export default function TierIndex() {
     background: rainbow,
     WebkitBackgroundClip: "text",
     color: "transparent",
+  };
+
+  const topActions: React.CSSProperties = {
+    marginTop: 12,
+    display: "flex",
+    gap: 10,
+    alignItems: "center",
+    flexWrap: "wrap",
+  };
+
+  const ctaBtn: React.CSSProperties = {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: 10,
+    padding: "10px 14px",
+    borderRadius: 9999,
+    background: "rgba(0,0,0,0.92)",
+    color: "white",
+    textDecoration: "none",
+    fontWeight: 950,
+    letterSpacing: -0.2,
+    border: "1px solid rgba(0,0,0,0.10)",
+    boxShadow: "0 10px 24px rgba(0,0,0,0.10)",
+  };
+
+  const ctaSub: React.CSSProperties = {
+    fontSize: 13,
+    color: "rgba(0,0,0,0.55)",
+    fontWeight: 700,
   };
 
   const sub: React.CSSProperties = {
@@ -832,6 +931,15 @@ export default function TierIndex() {
       <div style={container}>
         <h1 style={title}>Tier Map</h1>
 
+        {/* ✅ Pricing CTA (Stripe) */}
+        <div style={topActions}>
+          {/* IMPORTANT: /pricing was 404 in prod; /upgrade is a real route in AppRouter.tsx */}
+          <Link to="/upgrade" style={ctaBtn} aria-label="Open pricing / upgrade">
+            Pricing / Upgrade
+          </Link>
+          <span style={ctaSub}>Opens Stripe upgrade (Pro / Elite).</span>
+        </div>
+
         <div style={sub}>
           Three columns. One spine. <b>Core</b> is the spine reality.
           <br />
@@ -902,6 +1010,11 @@ export default function TierIndex() {
             </p>
           </div>
 
+<<<<<<< HEAD
+=======
+          {/* ✅ Removed "God / Universe (Above the head)" block completely */}
+
+>>>>>>> origin/vercel-current
           {SPINE_TOP_TO_BOTTOM.map((t) => (
             <React.Fragment key={t.id}>
               <div style={cell} aria-label={`Left cell ${t.label}`}>
