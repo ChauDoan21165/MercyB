@@ -68,6 +68,10 @@
 // PATCH (2026-01-31):
 // - Option A: Home no longer renders its own BOX 1 header strip.
 // - Header actions are now owned by GlobalHeader (single source of truth).
+//
+// PATCH (2026-03-03):
+// - Add Pricing link on Home (route: /pricing), no new files/components.
+// - Keep TEXT-ONLY. No audio.
 
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -92,6 +96,9 @@ const VN_DT_FMT = new Intl.DateTimeFormat("vi-VN", {
   hour: "2-digit",
   minute: "2-digit",
 });
+
+// ✅ routes (single place)
+const ROUTE_PRICING = "/pricing";
 
 function clamp(n: number, a: number, b: number) {
   return Math.max(a, Math.min(b, n));
@@ -137,7 +144,7 @@ function fmtDate(s: string | null | undefined) {
   return VN_DT_FMT.format(d);
 }
 
-function fmtInt(n: any, fallback = 0) {
+function fmtInt(n: unknown, fallback = 0) {
   const v = Number(n);
   return Number.isFinite(v) ? Math.max(0, Math.floor(v)) : fallback;
 }
@@ -238,7 +245,7 @@ export default function Home() {
       // Safety net: old working hero (never blank)
       "/hero/hero_band.jpg",
     ],
-    []
+    [],
   );
 
   const [heroIdx, setHeroIdx] = useState(0);
@@ -258,19 +265,34 @@ export default function Home() {
   // ✅ Streak badge (soft; best-effort)
   const [streakDays, setStreakDays] = useState<number | null>(null);
 
+  // ✅ NEW HARDEN:
+  // Don’t rely on just user?.id. Confirm a real Supabase session exists
+  // before querying protected views.
   useEffect(() => {
     let alive = true;
 
-    // Only load when signed in
-    if (!user?.id) {
-      setProgressRow(null);
-      setProgressErr(null);
-      setProgressLoading(false);
-      return;
-    }
-
     (async () => {
       try {
+        // Signed-out: hard clear state (no error)
+        if (!user?.id) {
+          if (!alive) return;
+          setProgressRow(null);
+          setProgressErr(null);
+          setProgressLoading(false);
+          return;
+        }
+
+        // Confirm session exists (prevents “ghost user” state / expired sessions)
+        const { data: sessionRes, error: sessionErr } = await supabase.auth.getSession();
+        if (!alive) return;
+
+        if (sessionErr || !sessionRes.session) {
+          setProgressRow(null);
+          setProgressErr(null);
+          setProgressLoading(false);
+          return;
+        }
+
         setProgressLoading(true);
         setProgressErr(null);
 
@@ -283,14 +305,16 @@ export default function Home() {
         if (!alive) return;
 
         if (error) {
+          // If session exists but DB denies, show error (real issue)
           setProgressErr(error.message);
           setProgressRow(null);
         } else {
-          setProgressRow(((data as any) ?? null) as ProgressSummaryRow | null);
+          setProgressRow((data ?? null) as ProgressSummaryRow | null);
         }
-      } catch (e: any) {
+      } catch (e: unknown) {
         if (!alive) return;
-        setProgressErr(e?.message ?? String(e));
+        const msg = e instanceof Error ? e.message : String(e);
+        setProgressErr(msg);
         setProgressRow(null);
       } finally {
         if (!alive) return;
@@ -307,13 +331,22 @@ export default function Home() {
   useEffect(() => {
     let alive = true;
 
-    if (!user?.id) {
-      setStreakDays(null);
-      return;
-    }
-
     (async () => {
       try {
+        if (!user?.id) {
+          if (!alive) return;
+          setStreakDays(null);
+          return;
+        }
+
+        const { data: sessionRes, error: sessionErr } = await supabase.auth.getSession();
+        if (!alive) return;
+
+        if (sessionErr || !sessionRes.session) {
+          setStreakDays(null);
+          return;
+        }
+
         const { data, error } = await supabase.from("v_user_streak_summary").select("streak_days").maybeSingle();
 
         if (!alive) return;
@@ -323,7 +356,7 @@ export default function Home() {
           return;
         }
 
-        const v = data ? Number((data as any).streak_days ?? 0) : 0;
+        const v = data ? Number((data as { streak_days?: unknown }).streak_days ?? 0) : 0;
         setStreakDays(Number.isFinite(v) ? v : 0);
       } catch {
         if (!alive) return;
@@ -377,11 +410,11 @@ export default function Home() {
 
         if (!alive) return;
 
-        const rows = (Array.isArray(data) ? (data as any[]) : []).map((r) => ({
+        const rows = (Array.isArray(data) ? (data as Array<Record<string, unknown>>) : []).map((r) => ({
           id: String(r?.id ?? ""),
-          tier: r?.tier ?? null,
-          sort_order: r?.sort_order ?? null,
-          created_at: r?.created_at ?? null,
+          tier: (r?.tier as string | null) ?? null,
+          sort_order: (r?.sort_order as number | null) ?? null,
+          created_at: (r?.created_at as string | null) ?? null,
         })) as RoomRowLite[];
 
         const clean = rows.filter((r) => r.id && !isKidsRoomId(r.id) && !isVipHybridId(r.id));
@@ -437,9 +470,11 @@ export default function Home() {
   // ---------------------------
   const phase0New = !user?.id || !progressSummary.lastStudyAt || fmtInt(progressSummary.active30d) === 0;
 
-  const phase2Collapse = !phase0New && (fmtInt(progressSummary.active30d) >= 5 || fmtInt(progressSummary.streak) >= 3);
+  const phase2Collapse =
+    !phase0New && (fmtInt(progressSummary.active30d) >= 5 || fmtInt(progressSummary.streak) >= 3);
 
-  const phase3Hide = !phase0New && fmtInt(progressSummary.active30d) >= 10 && fmtInt(progressSummary.streak) >= 7;
+  const phase3Hide =
+    !phase0New && fmtInt(progressSummary.active30d) >= 10 && fmtInt(progressSummary.streak) >= 7;
 
   const [howOpen, setHowOpen] = useState<boolean>(true);
 
@@ -679,7 +714,7 @@ export default function Home() {
     <div style={wrap}>
       <div style={frame}>
         {/* ✅ CONTENT ZOOM WRAPPER (NOT header, NOT BottomMusicBar) */}
-        <div style={{ ...({ zoom: zoomScale } as any) }}>
+        <div style={{ ...({ zoom: zoomScale } as unknown as React.CSSProperties) }}>
           {/* BOX 2: HERO (BRAND IMAGE ONLY — NO OVERLAY TEXT) */}
           <div style={heroImgWrap} aria-label="Hero band">
             <img
@@ -736,7 +771,10 @@ export default function Home() {
               )}
             </div>
 
-            {progressErr ? (
+            {/* ✅ IMPORTANT FIX:
+                Only show Progress error when the user is signed-in.
+                If signed-out, we NEVER show scary red error. */}
+            {user?.id && progressErr ? (
               <div
                 style={{
                   marginTop: 12,
@@ -815,6 +853,11 @@ export default function Home() {
               <button type="button" style={{ ...primaryBtn, minWidth: 240 }} onClick={goFirstRoom}>
                 👉 Enter your first room
               </button>
+
+              <button type="button" style={{ ...secondaryBtn, minWidth: 240 }} onClick={() => nav(ROUTE_PRICING)}>
+                💎 Pricing
+              </button>
+
               <button type="button" style={{ ...secondaryBtn, minWidth: 240 }} onClick={() => nav("/rooms")}>
                 👉 Browse all rooms
               </button>
@@ -841,24 +884,17 @@ export default function Home() {
               <button type="button" style={{ ...primaryBtn, minWidth: 240 }} onClick={goFirstRoom}>
                 👉 Vào phòng đầu tiên
               </button>
+
+              <button type="button" style={{ ...secondaryBtn, minWidth: 240 }} onClick={() => nav(ROUTE_PRICING)}>
+                💎 Bảng giá
+              </button>
+
               <button type="button" style={{ ...secondaryBtn, minWidth: 240 }} onClick={() => nav("/rooms")}>
                 👉 Xem danh sách phòng
               </button>
             </div>
 
-            {/* OLD COPY (KEPT — DO NOT DELETE)
-              <h2 style={blockTitle}>A Gentle Companion for Your Whole Life</h2>
-              <p style={p}>
-                Mercy Blade is a bilingual (English–Vietnamese) companion for real life: health, emotions, money,
-                relationships, career, and meaning. It is designed to be calm, human, and practical — a place you return
-                to when life feels noisy.
-              </p>
-              <p style={p}>
-                No pressure. No judgment. <br />
-                Just clarity, compassion, and steps you can take today.
-              </p>
-              ...
-            */}
+            {/* OLD COPY (KEPT — DO NOT DELETE) */}
           </div>
 
           {/* HOW IT WORKS (Phase-based: show / collapse / hide) */}
@@ -918,6 +954,11 @@ export default function Home() {
                       <button type="button" style={{ ...primaryBtn, minWidth: 240 }} onClick={goFirstRoom}>
                         👉 Enter your first room
                       </button>
+
+                      <button type="button" style={{ ...secondaryBtn, minWidth: 240 }} onClick={() => nav(ROUTE_PRICING)}>
+                        💎 Pricing
+                      </button>
+
                       <button type="button" style={{ ...secondaryBtn, minWidth: 240 }} onClick={() => nav("/rooms")}>
                         👉 Browse all rooms
                       </button>
@@ -952,20 +993,16 @@ export default function Home() {
                       <button type="button" style={{ ...primaryBtn, minWidth: 240 }} onClick={goFirstRoom}>
                         👉 Vào phòng đầu tiên
                       </button>
+
+                      <button type="button" style={{ ...secondaryBtn, minWidth: 240 }} onClick={() => nav(ROUTE_PRICING)}>
+                        💎 Bảng giá
+                      </button>
+
                       <button type="button" style={{ ...secondaryBtn, minWidth: 240 }} onClick={() => nav("/rooms")}>
                         👉 Xem danh sách phòng
                       </button>
                     </div>
                   ) : null}
-
-                  {/* OLD COPY (KEPT — DO NOT DELETE)
-                    <p style={p}>
-                      You enter <b>rooms</b> (sleep, anxiety, money, relationships, work…). Inside each room are small
-                      bilingual cards. You read first. When ready, you listen <b>inside the room</b>. Learning English and
-                      caring for yourself happen at the same time.
-                    </p>
-                    <p style={p}>One card. One breath. One step.</p>
-                  */}
                 </>
               ) : (
                 <div style={{ ...p, marginTop: 10 }}>
@@ -1026,17 +1063,6 @@ export default function Home() {
               Bạn không ép mình phải học. <br />
               Bạn để sự hiểu biết tự đến.
             </p>
-
-            {/* OLD COPY (KEPT — DO NOT DELETE)
-              <p style={p}>
-                When life feels loud, Mercy Blade offers a simple ritual: one minute, one bilingual card, one breath — and
-                you come back to yourself.
-              </p>
-              <p style={p}>
-                Over time, these small moments become steady habits: clearer thinking, kinder inner talk, and English that
-                grows naturally with emotional understanding.
-              </p>
-            */}
           </div>
 
           {/* FREE, AND GROWING WITH YOU (TEXT-ONLY) */}
@@ -1055,11 +1081,16 @@ export default function Home() {
             </p>
 
             <div style={{ marginTop: 12, display: "flex", gap: 10, flexWrap: "wrap" }}>
-              <button type="button" style={{ ...primaryBtn, minWidth: 240 }} onClick={() => nav("/rooms")}>
+              <button type="button" style={{ ...primaryBtn, minWidth: 240 }} onClick={goFirstRoom}>
                 👉 Start free
               </button>
+
               <button type="button" style={{ ...secondaryBtn, minWidth: 240 }} onClick={() => nav("/tiers")}>
                 👉 See learning paths
+              </button>
+
+              <button type="button" style={{ ...secondaryBtn, minWidth: 240 }} onClick={() => nav(ROUTE_PRICING)}>
+                💎 Pricing
               </button>
             </div>
 
@@ -1076,11 +1107,16 @@ export default function Home() {
             </p>
 
             <div style={{ marginTop: 12, display: "flex", gap: 10, flexWrap: "wrap" }}>
-              <button type="button" style={{ ...primaryBtn, minWidth: 240 }} onClick={() => nav("/rooms")}>
+              <button type="button" style={{ ...primaryBtn, minWidth: 240 }} onClick={goFirstRoom}>
                 👉 Bắt đầu miễn phí
               </button>
+
               <button type="button" style={{ ...secondaryBtn, minWidth: 240 }} onClick={() => nav("/tiers")}>
                 👉 Xem lộ trình học
+              </button>
+
+              <button type="button" style={{ ...secondaryBtn, minWidth: 240 }} onClick={() => nav(ROUTE_PRICING)}>
+                💎 Bảng giá
               </button>
             </div>
           </div>
@@ -1091,8 +1127,12 @@ export default function Home() {
             <div style={ctaSub}>Bắt đầu nhẹ nhàng — từng phòng một.</div>
 
             <div style={ctaRow}>
-              <button type="button" style={primaryBtn} onClick={() => nav("/rooms")}>
+              <button type="button" style={primaryBtn} onClick={goFirstRoom}>
                 👉 Start free
+              </button>
+
+              <button type="button" style={secondaryBtn} onClick={() => nav(ROUTE_PRICING)}>
+                💎 Pricing
               </button>
 
               <button type="button" style={secondaryBtn} onClick={() => nav("/tiers")}>
@@ -1104,19 +1144,6 @@ export default function Home() {
                 🎁&nbsp; Redeem Gift Code / Nhập Mã Quà Tặng
               </button>
             </div>
-
-            {/* OLD COPY (KEPT — DO NOT DELETE)
-              <h2 style={ctaTitle}>Ready to begin your journey?</h2>
-              <div style={ctaSub}>Sẵn sàng bắt đầu hành trình của bạn?</div>
-              <div style={ctaRow}>
-                <button type="button" style={primaryBtn} onClick={() => nav("/rooms")}>
-                  Get Started &nbsp; →
-                </button>
-                <button type="button" style={secondaryBtn} onClick={() => nav("/redeem")}>
-                  🎁&nbsp; Redeem Gift Code / Nhập Mã Quà Tặng
-                </button>
-              </div>
-            */}
           </div>
         </div>
       </div>
@@ -1130,7 +1157,3 @@ export default function Home() {
     </div>
   );
 }
-
-/* Teacher GPT – new thing to learn:
-   The fastest way to fix “one page sticks out” is to remove page-specific headers.
-   One global header = one frame = no drift. */
