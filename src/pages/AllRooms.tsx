@@ -7,6 +7,10 @@
 //
 // NOTE:
 // UI-only. No new deps. No data fetch (for now).
+//
+// PATCH (2026-03-03):
+// - Remove confusing "HOME OK (moved to /rooms)" message.
+// - This page is /rooms utility, so label it clearly as ROOMS / Utility.
 
 import React from "react";
 import { Link } from "react-router-dom";
@@ -62,15 +66,9 @@ export default function AllRooms() {
       <div className="mb-shell">
         <div className="mb-top">
           <div>
-            <div className="text-xs text-muted-foreground font-semibold">
-              Mercy Blade • Utility
-            </div>
-            <h1 className="text-2xl md:text-3xl font-serif font-bold">
-              Rooms
-            </h1>
-            <div className="text-sm text-muted-foreground mt-1">
-              Browse / debug / quick entry points.
-            </div>
+            <div className="text-xs text-muted-foreground font-semibold">Mercy Blade • Utility</div>
+            <h1 className="text-2xl md:text-3xl font-serif font-bold">Rooms</h1>
+            <div className="text-sm text-muted-foreground mt-1">Browse / debug / quick entry points.</div>
           </div>
 
           <div className="flex gap-2">
@@ -89,20 +87,20 @@ export default function AllRooms() {
             Sign in
           </a>
 
-          <h2 className="text-3xl md:text-4xl font-serif font-bold mt-3">
-            Mercy Blade — HOME OK (moved to /rooms)
-          </h2>
+          <h2 className="text-3xl md:text-4xl font-serif font-bold mt-3">Mercy Blade — Rooms (Utility)</h2>
 
-          <p className="mt-2 text-base">
-            If you see this, React + routing are stable.
-          </p>
+          <p className="mt-2 text-base">If you see this page at /rooms, React + routing are stable.</p>
 
-          <div className="mt-3 text-sm opacity-80">Home v2025-12-25-BASELINE</div>
+          <div className="mt-3 text-sm opacity-80">Rooms v2025-12-25-BASELINE</div>
 
           <div className="mt-5 flex flex-wrap gap-2">
             {/* NOTE: Removed broken room link (english_writing_free deleted) */}
             <Link className="mb-btn" to="/tiers">
               Explore tiers
+            </Link>
+
+            <Link className="mb-btn" to="/">
+              Go to Home
             </Link>
           </div>
         </div>
