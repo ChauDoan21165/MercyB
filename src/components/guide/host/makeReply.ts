@@ -42,7 +42,11 @@ export function makeReply(input: any): HostReply {
  *   const makeReplyFn = useMakeReply();
  *   const reply = makeReplyFn(userText, opts);
  *
- * So useMakeReply MUST return a function, not a HostReply object.
+ * So useMakeReply MUST return a function.
+ *
+ * NOTE:
+ * - We return a STRING (not HostReply) because MercyAIHost’s current UI renders a single text bubble.
+ * - To make the host bilingual, we embed both EN + VI in that single string.
  */
 export function useMakeReply() {
   // ---- tiny helpers (all local, deterministic, no side effects) ----
@@ -59,17 +63,30 @@ export function useMakeReply() {
     return p.startsWith("/signin");
   };
 
-  const getRoomId = (opts: any) => norm(opts?.ctx?.roomId) || norm(opts?.roomIdFromUrl);
+  const getRoomId = (opts: any) =>
+    norm(opts?.ctx?.roomId) || norm(opts?.roomIdFromUrl);
   const getRoomTitle = (opts: any) => norm(opts?.ctx?.roomTitle);
-  const getKw = (opts: any) => norm(opts?.ctx?.keyword) || norm(opts?.repeatTarget?.keyword);
+  const getKw = (opts: any) =>
+    norm(opts?.ctx?.keyword) || norm(opts?.repeatTarget?.keyword);
   const getEntryId = (opts: any) => norm(opts?.ctx?.entryId);
 
   const hasRepeat = (opts: any) => !!opts?.repeatTarget;
   const repeatStep = (opts: any) => norm(opts?.repeatStep) || "idle";
 
-  const lines = (...xs: Array<string | null | undefined>) => xs.filter(Boolean).join("\n");
+  const lines = (...xs: Array<string | null | undefined>) =>
+    xs.filter(Boolean).join("\n");
 
-  // bilingual micro-copy (NO translation attempt; just curated pairs)
+  // Bilingual rendering helper: always returns EN + VI inside one string bubble.
+  const bi = (enBlock: string | null | undefined, viBlock: string | null | undefined) => {
+    const en = norm(enBlock);
+    const vi = norm(viBlock);
+    if (en && vi) return `EN:\n${en}\n\nVI:\n${vi}`;
+    if (en) return `EN:\n${en}`;
+    if (vi) return `VI:\n${vi}`;
+    return "…";
+  };
+
+  // bilingual micro-copy (curated pairs; deterministic)
   const T = {
     en: {
       ask: "What do you need right now?",
@@ -100,6 +117,16 @@ export function useMakeReply() {
       signin1: "Login help:",
       signin2: "If buttons don’t respond, close Host and try again.",
       signin3: "If still stuck, refresh (Cmd+R).",
+      gotIt: "Got it.",
+      fastStart: "Fast start: open a room and pick a keyword.",
+      vipHint: "If you need VIP: open /tiers.",
+      ctxSignin: "You’re on the sign-in page.",
+      ctxPrefix: "Context:",
+      selectedKw: "Selected keyword:",
+      currentKw: "Current keyword:",
+      youAreOn: "You’re on:",
+      nowPlay: "Right now: Play step.",
+      nowYourTurn: "Right now: Your turn.",
     },
     vi: {
       ask: "Bạn cần gì ngay bây giờ?",
@@ -130,6 +157,16 @@ export function useMakeReply() {
       signin1: "Hỗ trợ đăng nhập:",
       signin2: "Nếu nút không bấm được, đóng Host rồi thử lại.",
       signin3: "Nếu vẫn kẹt, refresh (Cmd+R).",
+      gotIt: "Mình hiểu.",
+      fastStart: "Bắt đầu nhanh: vào một room và chọn keyword.",
+      vipHint: "Nếu cần VIP: mở /tiers.",
+      ctxSignin: "Bạn đang ở trang đăng nhập.",
+      ctxPrefix: "Ngữ cảnh:",
+      selectedKw: "Keyword đã chọn:",
+      currentKw: "Keyword hiện tại:",
+      youAreOn: "Bạn đang ở:",
+      nowPlay: "Hiện tại: bước Play.",
+      nowYourTurn: "Hiện tại: đến lượt bạn.",
     },
   } as const;
 
@@ -156,8 +193,18 @@ export function useMakeReply() {
     if (uL === "/bug") return "bug";
 
     // keywords
-    const wantsHow = uL.includes("how do i") || uL.includes("how to") || uL.includes("use this app") || uL.includes("start");
-    const talksVip = uL.includes("vip") || uL.includes("subscribe") || uL.includes("checkout") || uL.includes("payment");
+    const wantsHow =
+      uL.includes("how do i") ||
+      uL.includes("how to") ||
+      uL.includes("use this app") ||
+      uL.includes("start");
+
+    const talksVip =
+      uL.includes("vip") ||
+      uL.includes("subscribe") ||
+      uL.includes("checkout") ||
+      uL.includes("payment");
+
     const claimsPaid =
       uL.includes("i'm vip") ||
       uL.includes("i am vip") ||
@@ -166,8 +213,19 @@ export function useMakeReply() {
       uL.includes("completed checkout");
 
     const repeatWords = uL.includes("repeat") || uL.includes("my turn") || uL.includes("play");
-    const bugWords = uL.includes("bug") || uL.includes("error") || uL.includes("crash") || uL.includes("audio") || uL.includes("ui");
-    const roomWords = uL.includes("keyword") || uL.includes("entry") || uL.includes("room") || uL.includes("stuck") || uL.includes("can't");
+    const bugWords =
+      uL.includes("bug") ||
+      uL.includes("error") ||
+      uL.includes("crash") ||
+      uL.includes("audio") ||
+      uL.includes("ui");
+
+    const roomWords =
+      uL.includes("keyword") ||
+      uL.includes("entry") ||
+      uL.includes("room") ||
+      uL.includes("stuck") ||
+      uL.includes("can't");
 
     if (claimsPaid && talksVip) return "vip_paid";
     if (talksVip) return "vip_checkout";
@@ -179,122 +237,255 @@ export function useMakeReply() {
     return "unknown";
   };
 
-  // ---- returned function (what MercyAIHost calls) ----
-  return (userText: string, opts: any): string => {
-    const clean = norm(userText);
-    const lang: "en" | "vi" = opts?.lang === "vi" ? "vi" : "en";
-    const t = T[lang];
-
-    if (!clean) return lines(t.ask, t.empty);
-
-    const intent = detectIntent(clean, opts);
-
-    // context header line (small, calm, useful)
+  // Build a bilingual context header (kept small, calm)
+  const buildWhere = (opts: any) => {
     const rid = getRoomId(opts);
     const title = getRoomTitle(opts);
     const kw = getKw(opts);
     const eid = getEntryId(opts);
 
-    const where = (() => {
-      if (isSigninPath(opts)) return lang === "vi" ? "Bạn đang ở trang đăng nhập." : "You’re on the sign-in page.";
+    const whereEn = (() => {
+      if (isSigninPath(opts)) return T.en.ctxSignin;
       if (isRoomPath(opts)) {
         const label = title || rid || "room";
         const bits: string[] = [];
         bits.push(label);
         if (eid) bits.push(`entry:${eid}`);
         if (kw) bits.push(`kw:${kw}`);
-        return bits.length ? (lang === "vi" ? `Ngữ cảnh: ${bits.join(" • ")}` : `Context: ${bits.join(" • ")}`) : null;
+        return bits.length ? `${T.en.ctxPrefix} ${bits.join(" • ")}` : null;
       }
       return null;
     })();
 
-    // strict 3-line “next-step” style
-    const three = (l1: string, l2: string, l3: string, extra?: string | null) =>
-      lines(where, l1, l2, l3, extra ? extra : undefined);
+    const whereVi = (() => {
+      if (isSigninPath(opts)) return T.vi.ctxSignin;
+      if (isRoomPath(opts)) {
+        const label = title || rid || "room";
+        const bits: string[] = [];
+        bits.push(label);
+        if (eid) bits.push(`entry:${eid}`);
+        if (kw) bits.push(`kw:${kw}`);
+        return bits.length ? `${T.vi.ctxPrefix} ${bits.join(" • ")}` : null;
+      }
+      return null;
+    })();
+
+    return { whereEn, whereVi, rid, title, kw, eid };
+  };
+
+  const three = (
+    whereEn: string | null | undefined,
+    whereVi: string | null | undefined,
+    en1: string,
+    en2: string,
+    en3: string,
+    vi1: string,
+    vi2: string,
+    vi3: string,
+    enExtra?: string | null,
+    viExtra?: string | null
+  ) => {
+    const enBlock = lines(whereEn, en1, en2, en3, enExtra || undefined);
+    const viBlock = lines(whereVi, vi1, vi2, vi3, viExtra || undefined);
+    return bi(enBlock, viBlock);
+  };
+
+  // ---- returned function (what MercyAIHost calls) ----
+  return (userText: string, opts: any): string => {
+    const clean = norm(userText);
+    const { whereEn, whereVi, kw } = buildWhere(opts);
+
+    if (!clean) {
+      const enBlock = lines(whereEn, T.en.ask, T.en.empty);
+      const viBlock = lines(whereVi, T.vi.ask, T.vi.empty);
+      return bi(enBlock, viBlock);
+    }
+
+    const intent = detectIntent(clean, opts);
 
     if (intent === "reset") {
-      // Caller may actually clear chat elsewhere; keep reply simple.
-      return lines(where, t.reset);
+      const enBlock = lines(whereEn, T.en.reset);
+      const viBlock = lines(whereVi, T.vi.reset);
+      return bi(enBlock, viBlock);
     }
 
     if (intent === "help") {
-      return three(t.help1, t.help2, t.help3, null);
+      return three(
+        whereEn,
+        whereVi,
+        T.en.help1,
+        T.en.help2,
+        T.en.help3,
+        T.vi.help1,
+        T.vi.help2,
+        T.vi.help3
+      );
     }
 
     if (intent === "tiers" || intent === "vip_checkout") {
-      return three(t.vipCheckout1, t.vipCheckout2, t.vipCheckout3, null);
+      return three(
+        whereEn,
+        whereVi,
+        T.en.vipCheckout1,
+        T.en.vipCheckout2,
+        T.en.vipCheckout3,
+        T.vi.vipCheckout1,
+        T.vi.vipCheckout2,
+        T.vi.vipCheckout3
+      );
     }
 
     if (intent === "vip_paid") {
-      return three(t.vipPaid1, t.vipPaid2, t.vipPaid3, null);
+      return three(
+        whereEn,
+        whereVi,
+        T.en.vipPaid1,
+        T.en.vipPaid2,
+        T.en.vipPaid3,
+        T.vi.vipPaid1,
+        T.vi.vipPaid2,
+        T.vi.vipPaid3
+      );
     }
 
     if (intent === "repeat") {
       const step = repeatStep(opts);
-      const stepLine =
-        step === "play"
-          ? lang === "vi"
-            ? "Hiện tại: bước Play."
-            : "Right now: Play step."
-          : step === "your_turn"
-            ? lang === "vi"
-              ? "Hiện tại: đến lượt bạn."
-              : "Right now: Your turn."
-            : null;
+      const enStepLine =
+        step === "play" ? T.en.nowPlay : step === "your_turn" ? T.en.nowYourTurn : null;
+      const viStepLine =
+        step === "play" ? T.vi.nowPlay : step === "your_turn" ? T.vi.nowYourTurn : null;
 
-      return three(t.repeat1, t.repeat2, t.repeat3, stepLine);
+      return three(
+        whereEn,
+        whereVi,
+        T.en.repeat1,
+        T.en.repeat2,
+        T.en.repeat3,
+        T.vi.repeat1,
+        T.vi.repeat2,
+        T.vi.repeat3,
+        enStepLine,
+        viStepLine
+      );
     }
 
     if (intent === "bug") {
-      return three(t.bug1, t.bug2, t.bug3, null);
+      return three(
+        whereEn,
+        whereVi,
+        T.en.bug1,
+        T.en.bug2,
+        T.en.bug3,
+        T.vi.bug1,
+        T.vi.bug2,
+        T.vi.bug3
+      );
     }
 
     if (intent === "how_to_use") {
       if (isSigninPath(opts)) {
-        return three(t.signin1, t.signin2, t.signin3, null);
+        return three(
+          whereEn,
+          whereVi,
+          T.en.signin1,
+          T.en.signin2,
+          T.en.signin3,
+          T.vi.signin1,
+          T.vi.signin2,
+          T.vi.signin3
+        );
       }
+
       if (isRoomPath(opts)) {
-        const extra = kw
-          ? lang === "vi"
-            ? `Bạn đang chọn: ${kw}.`
-            : `Selected keyword: ${kw}.`
-          : null;
-        return three(t.howUseRoom1, t.howUseRoom2, t.howUseRoom3, extra || t.howUseRoomStuck);
+        const enExtra = kw ? `${T.en.selectedKw} ${kw}.` : T.en.howUseRoomStuck;
+        const viExtra = kw ? `${T.vi.selectedKw} ${kw}.` : T.vi.howUseRoomStuck;
+
+        return three(
+          whereEn,
+          whereVi,
+          T.en.howUseRoom1,
+          T.en.howUseRoom2,
+          T.en.howUseRoom3,
+          T.vi.howUseRoom1,
+          T.vi.howUseRoom2,
+          T.vi.howUseRoom3,
+          enExtra,
+          viExtra
+        );
       }
-      return three(t.howUseHome1, t.howUseHome2, t.howUseHome3, null);
+
+      return three(
+        whereEn,
+        whereVi,
+        T.en.howUseHome1,
+        T.en.howUseHome2,
+        T.en.howUseHome3,
+        T.vi.howUseHome1,
+        T.vi.howUseHome2,
+        T.vi.howUseHome3
+      );
     }
 
     if (intent === "room_help") {
       if (isRoomPath(opts)) {
-        const extra = kw
-          ? lang === "vi"
-            ? `Keyword hiện tại: ${kw}.`
-            : `Current keyword: ${kw}.`
-          : null;
-        return three(t.howUseRoom1, t.howUseRoom2, t.howUseRoom3, extra || t.howUseRoomStuck);
-      }
-      return three(t.howUseHome1, t.howUseHome2, t.howUseHome3, null);
-    }
+        const enExtra = kw ? `${T.en.currentKw} ${kw}.` : T.en.howUseRoomStuck;
+        const viExtra = kw ? `${T.vi.currentKw} ${kw}.` : T.vi.howUseRoomStuck;
 
-    // unknown: gentle routing + give 1 best next action based on page
-    if (isRoomPath(opts)) {
+        return three(
+          whereEn,
+          whereVi,
+          T.en.howUseRoom1,
+          T.en.howUseRoom2,
+          T.en.howUseRoom3,
+          T.vi.howUseRoom1,
+          T.vi.howUseRoom2,
+          T.vi.howUseRoom3,
+          enExtra,
+          viExtra
+        );
+      }
+
       return three(
-        lang === "vi" ? "Mình hiểu." : "Got it.",
-        t.howUseRoom2,
-        t.howUseRoom3,
-        kw
-          ? lang === "vi"
-            ? `Bạn đang xem: ${kw}.`
-            : `You’re on: ${kw}.`
-          : t.howUseRoomStuck
+        whereEn,
+        whereVi,
+        T.en.howUseHome1,
+        T.en.howUseHome2,
+        T.en.howUseHome3,
+        T.vi.howUseHome1,
+        T.vi.howUseHome2,
+        T.vi.howUseHome3
       );
     }
 
+    // unknown: gentle routing + 1 best next action based on page
+    if (isRoomPath(opts)) {
+      const enExtra = kw ? `${T.en.youAreOn} ${kw}.` : T.en.howUseRoomStuck;
+      const viExtra = kw ? `${T.vi.youAreOn} ${kw}.` : T.vi.howUseRoomStuck;
+
+      return three(
+        whereEn,
+        whereVi,
+        T.en.gotIt,
+        T.en.howUseRoom2,
+        T.en.howUseRoom3,
+        T.vi.gotIt,
+        T.vi.howUseRoom2,
+        T.vi.howUseRoom3,
+        enExtra,
+        viExtra
+      );
+    }
+
+    // home/other pages
     return three(
-      lang === "vi" ? "Mình hiểu." : "Got it.",
-      lang === "vi" ? "Muốn bắt đầu nhanh: vào một room và chọn keyword." : "Fast start: open a room and pick a keyword.",
-      lang === "vi" ? "Nếu cần VIP: mở /tiers." : "If you need VIP: open /tiers.",
-      null
+      whereEn,
+      whereVi,
+      T.en.gotIt,
+      T.en.fastStart,
+      T.en.vipHint,
+      T.vi.gotIt,
+      T.vi.fastStart,
+      T.vi.vipHint
     );
   };
 }
