@@ -15,6 +15,11 @@
  *   2) if that fails due to Invalid URL, retry absolute
  *   3) if fetch fails, read from disk (Node) across multiple likely roots
  *   4) if manifest does not contain the roomId, try filesystem guesses
+ *
+ * NEW (Adult/VIP private rooms):
+ * - If manifestPath starts with "private:", we do NOT fetch from /public.
+ * - Instead we call Supabase Edge Function "adult-content-url" which returns a signed URL.
+ * - Then we fetch JSON from that signed URL.
  */
 
 import { PUBLIC_ROOM_MANIFEST } from "./roomManifest";
@@ -42,7 +47,7 @@ export type RoomMeta = {
   title_vi?: string;
   intro_en?: string;
   intro_vi?: string;
-  path?: string; // data/<file>.json
+  path?: string; // data/<file>.json OR private:<key>
 };
 
 export type RoomSummary = RoomMeta;
@@ -59,6 +64,18 @@ type AnyRoomJson = {
   description?: string;
   description_vi?: string;
 };
+
+/**
+ * Error codes that the UI can react to (upgrade modal, adult confirm modal, signin redirect).
+ */
+export type RoomAccessErrorCode =
+  | "not_logged_in"
+  | "adult_not_confirmed"
+  | "not_entitled"
+  | "missing_functions_url"
+  | "signed_url_failed"
+  | "private_room_fetch_failed"
+  | "room_fetch_failed";
 
 function hasNodeProcess(): boolean {
   return typeof process !== "undefined" && !!(process as any).versions?.node;
@@ -81,12 +98,7 @@ function getCandidateRoots(): string[] {
   // - some setups keep assets in src/public
   // - some tests run with cwd already at repo root (so <root>/data might exist)
   // - some repos keep data under src/data
-  return [
-    "public",
-    "src/public",
-    "", // repo root
-    "src",
-  ];
+  return ["public", "src/public", "", "src"];
 }
 
 async function readJsonFileAbsolutePath(absPath: string): Promise<AnyRoomJson | null> {
@@ -186,10 +198,85 @@ async function fetchJsonUrl(url: string): Promise<AnyRoomJson | null> {
 }
 
 /**
- * Fetch a single room JSON via manifest path (local public/data),
- * with robust fallbacks for tests.
+ * Dynamically load Supabase client in a way that doesn't explode Node/Vitest
+ * if the module path differs.
+ *
+ * Try a few common import paths. Adjust/add if your supabase client lives elsewhere.
  */
-export async function fetchRoomJsonById(roomId: string): Promise<AnyRoomJson | null> {
+async function getSupabaseClientOrNull(): Promise<any | null> {
+  const candidates = [
+    "@/lib/supabaseClient",
+    "./supabaseClient",
+    "../lib/supabaseClient",
+    "../supabaseClient",
+  ] as const;
+
+  for (const p of candidates) {
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      const mod = await import(/* @vite-ignore */ p);
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      if (mod?.supabase) return mod.supabase;
+    } catch {
+      // try next
+    }
+  }
+  return null;
+}
+
+function getFunctionsBaseUrl(): string | null {
+  const base = (import.meta as any)?.env?.VITE_SUPABASE_FUNCTIONS_URL;
+  return typeof base === "string" && base.length > 0 ? base.replace(/\/+$/, "") : null;
+}
+
+async function fetchPrivateRoomJsonByKeyOrThrow(key: string): Promise<AnyRoomJson> {
+  // In pure Node test contexts, we usually can't do auth/session anyway.
+  // Allow tests to continue without breaking by throwing a clear code.
+  const supabase = await getSupabaseClientOrNull();
+  if (!supabase) {
+    throw new Error("not_logged_in");
+  }
+
+  const { data } = await supabase.auth.getSession();
+  const session = data?.session;
+  if (!session) throw new Error("not_logged_in");
+
+  const base = getFunctionsBaseUrl();
+  if (!base) throw new Error("missing_functions_url");
+
+  // Call your deployed edge function: adult-content-url?key=...
+  const res = await fetch(`${base}/adult-content-url?key=${encodeURIComponent(key)}`, {
+    headers: {
+      Authorization: `Bearer ${session.access_token}`,
+    },
+  });
+
+  const payload = await res.json().catch(() => ({} as any));
+  if (!res.ok) {
+    // Expect payload.error like: adult_not_confirmed / not_entitled
+    const code =
+      (payload as any)?.error ||
+      (payload as any)?.message ||
+      "signed_url_failed";
+    throw new Error(String(code));
+  }
+
+  const signedUrl = (payload as any)?.signedUrl;
+  if (!signedUrl) throw new Error("signed_url_failed");
+
+  const jsonRes = await fetch(String(signedUrl), { cache: "no-store" });
+  if (!jsonRes.ok) throw new Error("private_room_fetch_failed");
+
+  return (await jsonRes.json()) as AnyRoomJson;
+}
+
+/**
+ * NEW: Like fetchRoomJsonById, but throws typed-ish errors you can catch in UI:
+ * - "not_logged_in" → redirect /signin
+ * - "adult_not_confirmed" → show 18+ confirm modal
+ * - "not_entitled" → show upgrade/pricing
+ */
+export async function fetchRoomJsonByIdOrThrow(roomId: string): Promise<AnyRoomJson> {
   const canonicalRoomId = normalizeRoomIdForCanonicalFile(roomId);
 
   // 1) Find path from manifest
@@ -198,32 +285,54 @@ export async function fetchRoomJsonById(roomId: string): Promise<AnyRoomJson | n
   // 2) If not in manifest, try fs guesses (useful for unit test fixtures)
   if (!manifestPath) {
     const guessed = await tryFsGuessesForRoomId(roomId);
-    return guessed?.json ?? null;
+    if (guessed?.json) return guessed.json;
+    throw new Error("room_fetch_failed");
   }
 
+  // 3) Private path support
+  if (manifestPath.startsWith("private:")) {
+    const key = manifestPath.slice("private:".length);
+    if (!key) throw new Error("room_fetch_failed");
+    return await fetchPrivateRoomJsonByKeyOrThrow(key);
+  }
+
+  // 4) Public path (existing behavior)
   const relUrl = `/${manifestPath}?t=${Date.now()}`;
 
-  // 3) Try relative fetch first (keeps fetch mocks working)
+  // Try relative fetch first (keeps fetch mocks working)
   const relAttempt = await fetchJsonUrl(relUrl);
   if (relAttempt) return relAttempt;
 
-  // 4) Retry absolute URL (needed for Node/undici)
+  // Retry absolute URL (needed for Node/undici)
   const absUrl = new URL(relUrl, getBaseOrigin()).toString();
   const absAttempt = await fetchJsonUrl(absUrl);
   if (absAttempt) return absAttempt;
 
-  // 5) Fallback to disk read from multiple roots (public/, src/public/, etc.)
+  // Fallback to disk read from multiple roots (public/, src/public/, etc.)
   const diskAttempt = await readJsonFromDiskByPathLike(manifestPath);
   if (diskAttempt) return diskAttempt.json;
 
-  // eslint-disable-next-line no-console
-  console.warn(`${LOG_PREFIX} fetchRoomJsonById: could not load`, {
-    roomId,
-    canonicalRoomId,
-    manifestPath,
-  });
+  throw new Error("room_fetch_failed");
+}
 
-  return null;
+/**
+ * Fetch a single room JSON via manifest path (local public/data),
+ * with robust fallbacks for tests.
+ *
+ * Back-compat: returns null on any failure.
+ */
+export async function fetchRoomJsonById(roomId: string): Promise<AnyRoomJson | null> {
+  try {
+    return await fetchRoomJsonByIdOrThrow(roomId);
+  } catch (err: any) {
+    // eslint-disable-next-line no-console
+    console.warn(`${LOG_PREFIX} fetchRoomJsonById: could not load`, {
+      roomId,
+      canonicalRoomId: normalizeRoomIdForCanonicalFile(roomId),
+      error: String(err?.message ?? err),
+    });
+    return null;
+  }
 }
 
 /**

@@ -23,3 +23,6 @@ scripts/_scratch/
 docs/*_LOG.md
 bad.txt
 room_scan_report.json
+
+# local staging (do not ship)
+private-content/
