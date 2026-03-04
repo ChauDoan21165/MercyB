@@ -617,6 +617,7 @@ export default function RoomRenderer({
 
   // ✅ FIX: room route must not depend on localStorage being written.
   // Fetch vip_rank once from mb_user_effective_rank and gate off that.
+  // ✅ NEW (403 spam fix): ONLY query mb_user_effective_rank when a real session exists (auth.getSession()).
   const [vipRank, setVipRank] = useState<number | null>(null);
   const [vipRankLoading, setVipRankLoading] = useState<boolean>(false);
 
@@ -626,13 +627,16 @@ export default function RoomRenderer({
     async function loadVipRank() {
       setVipRankLoading(true);
       try {
-        const { data: userRes, error: userErr } = await supabase.auth.getUser();
-        const userId = userRes?.user?.id;
+        // ✅ Gate behind real session (prevents 403 spam when logged out)
+        const { data: sessData, error: sessErr } = await supabase.auth.getSession();
+        const session = sessData?.session ?? null;
 
-        if (userErr || !userId) {
+        if (sessErr || !session?.user?.id) {
           if (!cancelled) setVipRank(0);
           return;
         }
+
+        const userId = session.user.id;
 
         const { data, error } = await supabase
           .from("mb_user_effective_rank")
@@ -672,10 +676,7 @@ export default function RoomRenderer({
 
   const isLocked = useMemo(() => {
     const requiredRank =
-      requiredTierId === "vip9" ? 9 :
-      requiredTierId === "vip3" ? 3 :
-      requiredTierId === "vip2" ? 2 :
-      requiredTierId === "vip1" ? 1 : 0;
+      requiredTierId === "vip9" ? 9 : requiredTierId === "vip3" ? 3 : requiredTierId === "vip2" ? 2 : requiredTierId === "vip1" ? 1 : 0;
 
     if (requiredRank <= 0) return false;
 
@@ -1560,7 +1561,3 @@ export default function RoomRenderer({
     </div>
   );
 }
-
-/** New thing to learn:
- * If the border is your “grid”, then every row (title, welcome, keywords) must either
- * (1) be inside a bordered card or (2) visually match the same border + padding baseline. */
