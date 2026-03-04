@@ -45,11 +45,7 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "burnout_recovery_vip1": "data/burnout_recovery_vip1.json",
   "burnout_recovery_vip2": "data/burnout_recovery_vip2.json",
   "burnout_recovery_vip3": "data/burnout_recovery_vip3.json",
-
-  // ✅ MOVED TO SUPABASE PRIVATE BUCKET (adult-content) + fetched via Edge Function
-  // NOTE: You uploaded these files at the bucket ROOT (no folders), so keys have no prefix folders.
   "calm_confident_sexual_health_vip3_sub3_sex": "private:calm_confident_sexual_health_vip3_sub3_sex.json",
-
   "career_consultant_free": "data/career_consultant_free.json",
   "charisma_mechanics_presence_engineering_vip5_bonus": "data/charisma_mechanics_presence_engineering_vip5_bonus.json",
   "classroom_english_kids_l2": "data/classroom_english_kids_l2.json",
@@ -336,18 +332,12 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "public_speaking_structure_vip3": "data/public_speaking_structure_vip3.json",
   "reading_comprehension_kids_l3": "data/reading_comprehension_kids_l3.json",
   "reading_skills_kids_l2": "data/reading_skills_kids_l2.json",
-
-  // ✅ MOVED TO SUPABASE PRIVATE BUCKET (adult-content) + fetched via Edge Function
   "relational_intelligence_erotic_communication_vip3_sub2_sex": "private:relational_intelligence_erotic_communication_vip3_sub2_sex.json",
-
   "relationship_healing_free": "data/relationship_healing_free.json",
   "research_skills_kids_l3": "data/research_skills_kids_l3.json",
   "resilience_and_adaptation_vip4": "data/resilience_and_adaptation_vip4.json",
   "rooms_in_the_house_kids_l1": "data/rooms_in_the_house_kids_l1.json",
-
-  // ✅ MOVED TO SUPABASE PRIVATE BUCKET (adult-content) + fetched via Edge Function
   "sacred_body_curious_self_vip3_sub2_sex": "private:sacred_body_curious_self_vip3_sub2_sex.json",
-
   "safety_rules_kids_l2": "data/safety_rules_kids_l2.json",
   "saladin_vip9_vol2": "data/saladin_vip9_vol2.json",
   "saladin_vip9_vol3": "data/saladin_vip9_vol3.json",
@@ -360,12 +350,9 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "scipio_africanus_vip9_vol2": "data/scipio_africanus_vip9_vol2.json",
   "scipio_africanus_vip9_vol3": "data/scipio_africanus_vip9_vol3.json",
   "self_love_free": "data/self_love_free.json",
-
-  // ✅ MOVED TO SUPABASE PRIVATE BUCKET (adult-content) + fetched via Edge Function
   "sexuality_curiosity_culture_vip3": "private:sexuality_curiosity_culture_vip3.json",
   "sexuality_curiosity_free": "private:sexuality_curiosity_free.json",
   "sexuality_curiosity_vip3_sub4": "private:sexuality_curiosity_vip3_sub4.json",
-
   "shadow_work_free": "data/shadow_work_free.json",
   "shadow_work_vip1": "data/shadow_work_vip1.json",
   "shadow_work_vip2": "data/shadow_work_vip2.json",

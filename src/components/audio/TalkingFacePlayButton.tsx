@@ -34,7 +34,7 @@ function fmtTime(n: number) {
  * AUDIO SEAM (NO REFACTOR):
  * - Public paths keep working as-is.
  * - Future private audio can be expressed as: "private:<path-or-key>"
- *   Example: "private:vip3/depression_support/vip3_ds_01.mp3"
+ *   Example: "private:depression_support/vip3_ds_01.mp3"
  *
  * - If a resolver is not installed yet, private audio will show as "locked"
  *   and will NOT attempt playback.
