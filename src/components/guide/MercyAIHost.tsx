@@ -14,6 +14,10 @@
 // PATCH (2026-01-29):
 // - Remove React portal usage to eliminate dev/StrictMode/HMR NotFoundError(removeChild) crashes.
 //   (Render inline in the React tree; UI is fixed-position anyway.)
+//
+// PATCH (2026-03-04):
+// - Add optional AI brain via /api/mercy-ai (gpt-4o-mini) with quota guard.
+// - Add polite greeting for hello/hi/xin chào without spending AI.
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
@@ -168,6 +172,46 @@ type LastProgress = {
 
 type RepeatAckResult = { handled: boolean };
 
+function norm(s: any) {
+  return typeof s === "string" ? s.trim() : "";
+}
+
+function looksLikeHello(s: string) {
+  const t = s.trim().toLowerCase();
+  return (
+    t === "hi" ||
+    t === "hello" ||
+    t === "hey" ||
+    t === "yo" ||
+    t === "xin chào" ||
+    t === "xin chao" ||
+    t === "chào" ||
+    t === "chao" ||
+    t === "hello mercy" ||
+    t === "hi mercy"
+  );
+}
+
+function shouldUseAiBrain(userText: string) {
+  const t = userText.trim();
+  if (!t) return false;
+  const low = t.toLowerCase();
+
+  // Do NOT call AI for commands or tiny acknowledgements
+  if (low.startsWith("/")) return false;
+  if (looksLikeHello(t)) return false;
+
+  // Use AI for “smart” intents
+  if (low.startsWith("fix grammar:")) return true;
+  if (/[?？]$/.test(t)) return true;
+  if (low.includes("why") || low.includes("how") || low.includes("what")) return true;
+  if (low.includes("explain") || low.includes("summarize") || low.includes("compare")) return true;
+  if (t.length >= 80) return true;
+
+  // Otherwise deterministic is fine
+  return false;
+}
+
 export default function MercyAIHost() {
   const { user } = useAuth();
 
@@ -249,7 +293,7 @@ export default function MercyAIHost() {
       const clean = (text ?? "").trim();
       if (!clean) return prev;
       const id = `${role === "user" ? "u" : "a"}_${Math.random().toString(16).slice(2)}_${Date.now().toString(16)}`;
-      return [...prev, { id, role, text: clean.length > 1200 ? `${clean.slice(0, 1200)}…` : clean }];
+      return [...prev, { id, role, text: clean.length > 1800 ? `${clean.slice(0, 1800)}…` : clean }];
     });
   }, []);
 
@@ -676,16 +720,56 @@ export default function MercyAIHost() {
     [aiDailyLimit, appKey, tierKey],
   );
 
+  // ---- AI brain call (gpt-4o-mini) via /api/mercy-ai ----
+  const callMercyAi = useCallback(
+    async (userText: string) => {
+      const payload = {
+        userText,
+        lang,
+        context: {
+          roomId: (ctx as any)?.roomId ?? roomIdFromUrl ?? "",
+          roomTitle: (ctx as any)?.roomTitle ?? "",
+          keyword: (ctx as any)?.keyword ?? "",
+          entryId: (ctx as any)?.entryId ?? "",
+        },
+        history: messages.slice(-6).map((m) => ({ role: m.role, text: m.text })),
+      };
+
+      const r = await fetch("/api/mercy-ai", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!r.ok) throw new Error(`mercy-ai http ${r.status}`);
+      const j = await r.json();
+      const text = norm(j?.text);
+      return text || null;
+    },
+    [lang, ctx, roomIdFromUrl, messages],
+  );
+
   const assistantRespond = useCallback(
     (userText: string, currentMode: PanelMode) => {
       const textTrim = (userText ?? "").trim();
+      const lower = textTrim.toLowerCase();
+
+      // 0) Polite greeting (FREE, no AI)
+      if (looksLikeHello(textTrim)) {
+        clearTypingTimer();
+        setIsTyping(false);
+
+        const name = displayName ? ` ${displayName}` : "";
+        const en = `EN:\nHello${name}. Good to see you.\nWhat do you want to do right now?\n\nVI:\nChào${name}. Rất vui gặp bạn.\nBạn muốn làm gì ngay bây giờ?`;
+        addMsg("assistant", en);
+        return;
+      }
 
       // Repeat ACK should never consume AI quota
       const looksLikeRepeatAck =
         repeatTarget && repeatStep === "your_turn" ? /(i\s*repeated|repeated|done|ok|okay|again|repeat|xong)/i.test(textTrim) : false;
 
       // Commands should not consume AI quota (but can still respond)
-      const lower = textTrim.toLowerCase();
       const isCommand = lower.startsWith("/");
 
       // ✅ QUOTA GUARD (before typing starts, calm + clear)
@@ -708,7 +792,7 @@ export default function MercyAIHost() {
       // Micro-timing: shorter for repeat acknowledgements, longer for normal replies
       const delayMs = looksLikeRepeatAck ? 220 : 520;
 
-      typingTimerRef.current = window.setTimeout(() => {
+      typingTimerRef.current = window.setTimeout(async () => {
         setIsTyping(false);
         typingTimerRef.current = null;
 
@@ -734,7 +818,22 @@ export default function MercyAIHost() {
           return;
         }
 
-        // 2) Normal reply (pure)
+        // 2) AI brain path (only when it truly helps)
+        //    If the endpoint fails, we fall back to deterministic makeReply.
+        const wantsAi = !isCommand && shouldUseAiBrain(textTrim);
+        if (wantsAi) {
+          try {
+            const aiText = await callMercyAi(textTrim);
+            if (aiText) {
+              addMsg("assistant", aiText);
+              return;
+            }
+          } catch {
+            // fall through to deterministic reply
+          }
+        }
+
+        // 3) Deterministic reply (pure)
         if (typeof makeReplyFn !== "function") {
           addMsg(
             "assistant",
@@ -810,6 +909,8 @@ export default function MercyAIHost() {
       tryConsumeAiQuota,
       quotaBlockMessage,
       tierKey,
+      displayName,
+      callMercyAi,
     ],
   );
 
@@ -958,7 +1059,7 @@ export default function MercyAIHost() {
         label: lang === "vi" ? "Tôi đã nhại lại" : "I repeated it",
         onClick: () => {
           // Deterministic ack (no AI quota).
-          const userText = lang === "vi" ? "ok" : "ok";
+          const userText = "ok";
           addMsg("user", userText);
           assistantRespond(userText, mode);
           // After ack, go to compare step for a brief loop
@@ -1351,7 +1452,7 @@ export default function MercyAIHost() {
               </div>
             ) : null}
 
-            {/* Quick actions (kept). When repeatTarget is active, keep them visible but calm. */}
+            {/* Quick actions */}
             <div style={{ marginTop: 12, display: "flex", flexWrap: "wrap", gap: 8 }}>
               {safeActions.map((a: any) => (
                 <button
@@ -1391,7 +1492,7 @@ export default function MercyAIHost() {
             </div>
           </div>
 
-          {/* Input bar (REAL typing) */}
+          {/* Input bar */}
           <div
             style={{
               borderTop: "1px solid rgba(0,0,0,0.10)",

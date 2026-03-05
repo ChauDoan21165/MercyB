@@ -1,121 +1,115 @@
-// /api/mercy-ai.ts
+// FILE: mercy-ai.ts
+// PATH: api/mercy-ai.ts
+//
+// Vercel Serverless Function (Node/TS).
+// - Receives: { userText, lang, context?, history? }
+// - Returns: { text }
+//
+// ENV required (in Vercel + local):
+//   OPENAI_API_KEY=...
+//
+// Uses OpenAI Node SDK:
+//   npm i openai
+//   import OpenAI from "openai";
+//   const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+// :contentReference[oaicite:1]{index=1}
+
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import OpenAI from "openai";
 
-// IMPORTANT
-// - Set OPENAI_API_KEY in Vercel Project → Settings → Environment Variables
-// - DO NOT put the key in frontend code.
-
-const openai = new OpenAI({
+const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-function setCors(req: VercelRequest, res: VercelResponse) {
-  const origin = req.headers.origin || "*";
-  res.setHeader("Access-Control-Allow-Origin", origin);
-  res.setHeader("Vary", "Origin");
-  res.setHeader("Access-Control-Allow-Methods", "POST,OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+function norm(s: any) {
+  return typeof s === "string" ? s.trim() : "";
 }
 
-type MercyAIRequest = {
-  userText: string;
-  // optional context your UI can send
-  lang?: "en" | "vi" | "bi";
-  locationPath?: string;
-  roomId?: string;
-  roomTitle?: string;
-  keyword?: string;
-  entryId?: string;
-  tier?: string; // free/vip1/vip2/vip3 etc
-  // optional short chat history (keep tiny to control cost)
-  history?: Array<{ role: "user" | "assistant"; content: string }>;
-};
+function safeJson(res: VercelResponse, status: number, obj: any) {
+  res.status(status);
+  res.setHeader("Content-Type", "application/json; charset=utf-8");
+  res.send(JSON.stringify(obj));
+}
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
-    setCors(req, res);
-
-    if (req.method === "OPTIONS") {
-      return res.status(204).end();
-    }
-
     if (req.method !== "POST") {
-      return res.status(405).json({ error: "Method not allowed. Use POST." });
+      res.setHeader("Allow", "POST");
+      return safeJson(res, 405, { error: "Method Not Allowed" });
     }
 
-    if (!process.env.OPENAI_API_KEY) {
-      return res.status(500).json({ error: "Missing OPENAI_API_KEY on server." });
-    }
+    const key = process.env.OPENAI_API_KEY;
+    if (!key) return safeJson(res, 500, { error: "Missing OPENAI_API_KEY" });
 
-    const body = (req.body || {}) as MercyAIRequest;
-    const userText = String(body.userText || "").trim();
+    const body: any = req.body ?? {};
+    const userText = norm(body.userText);
+    const lang = body.lang === "vi" ? "vi" : "en";
 
-    if (!userText) {
-      return res.status(400).json({ error: "Missing userText." });
-    }
+    if (!userText) return safeJson(res, 400, { error: "Missing userText" });
 
-    // Keep context small + safe
-    const ctxBits: string[] = [];
-    if (body.locationPath) ctxBits.push(`path=${body.locationPath}`);
-    if (body.roomTitle) ctxBits.push(`roomTitle=${body.roomTitle}`);
-    if (body.roomId) ctxBits.push(`roomId=${body.roomId}`);
-    if (body.keyword) ctxBits.push(`keyword=${body.keyword}`);
-    if (body.entryId) ctxBits.push(`entryId=${body.entryId}`);
-    if (body.tier) ctxBits.push(`tier=${body.tier}`);
-    const contextLine = ctxBits.length ? `Context: ${ctxBits.join(" | ")}` : "";
+    const context = body.context ?? {};
+    const roomTitle = norm(context.roomTitle);
+    const roomId = norm(context.roomId);
+    const keyword = norm(context.keyword);
+    const entryId = norm(context.entryId);
 
-    const system = `
-You are Mercy Host inside the MercyBlade app.
-Be calm, warm, and helpful. Never be rude or dismissive.
-If the user says hello (hi/hello/xin chào/chào), greet them back politely before anything else.
+    // Keep cost bounded:
+    // - short max_tokens
+    // - single response
+    // - small history (optional)
+    const history: Array<{ role: "user" | "assistant"; text: string }> = Array.isArray(body.history)
+      ? body.history.slice(-6).map((m: any) => ({
+          role: m?.role === "assistant" ? "assistant" : "user",
+          text: norm(m?.text),
+        }))
+      : [];
 
-STYLE RULES:
-- Keep answers short and actionable (max ~6 lines per language).
-- Always output bilingual: English first, then Vietnamese.
-- Format EXACTLY like:
+    const ctxLine = [roomTitle || roomId ? `room=${roomTitle || roomId}` : null, keyword ? `kw=${keyword}` : null, entryId ? `entry=${entryId}` : null]
+      .filter(Boolean)
+      .join(" • ");
+
+    // “Mercy” style: concise, warm, practical, bilingual in one bubble.
+    // IMPORTANT: We instruct the model to ALWAYS return the EN/VI blocks.
+    const system = `You are Mercy Host inside a learning app.
+Tone: calm, warm, practical. No hype. No emojis. No long essays.
+Always output EXACTLY this format:
 
 EN:
-<English>
+<2-6 short lines>
 
 VI:
-<Vietnamese>
+<2-6 short lines>
 
-CONTENT RULES:
-- Prefer concrete next steps inside the app (rooms, keywords, /tiers, /pricing).
-- If the user asks for VIP/payment: explain clearly and briefly.
-- If you don't know something, say what to do next (where to click / what page).
-- Do NOT mention internal policies, tokens, or OpenAI.
-${contextLine ? "\n" + contextLine : ""}
-`.trim();
+Rules:
+- If user says hello/hi/xin chào: greet back politely and ask 1 short question.
+- If user is vague: ask 1 clarifying question + give 1 next step.
+- If user asks about VIP/tiers/pricing: say go to /tiers.
+- If user asks "fix grammar:" then correct grammar + explain 1 rule briefly.
+- Keep answers compact.`;
 
-    // Tiny history (optional) to make it feel coherent without blowing cost
-    const history = Array.isArray(body.history) ? body.history.slice(-6) : [];
+    const messages: any[] = [
+      { role: "developer", content: system },
+      ...(ctxLine ? [{ role: "developer", content: `Context: ${ctxLine}` }] : []),
+      ...history
+        .filter((h) => h.text)
+        .map((h) => ({
+          role: h.role,
+          content: h.text,
+        })),
+      { role: "user", content: userText },
+    ];
 
-    // Call model
-    const completion = await openai.chat.completions.create({
+    // Chat Completions usage (supported indefinitely). :contentReference[oaicite:2]{index=2}
+    const completion = await client.chat.completions.create({
       model: "gpt-4o-mini",
+      messages,
       temperature: 0.4,
-      max_tokens: 280,
-      messages: [
-        { role: "system", content: system },
-        ...history.map((m) => ({ role: m.role, content: String(m.content || "") })),
-        { role: "user", content: userText },
-      ],
+      max_tokens: 220,
     });
 
-    const text = completion.choices?.[0]?.message?.content?.trim() || "";
-
-    return res.status(200).json({
-      ok: true,
-      text,
-    });
-  } catch (err: any) {
-    // Never leak secrets
-    return res.status(500).json({
-      ok: false,
-      error: "Mercy AI request failed.",
-      detail: String(err?.message || err || "unknown_error"),
-    });
+    const text = completion.choices?.[0]?.message?.content ?? "";
+    return safeJson(res, 200, { text });
+  } catch (e: any) {
+    return safeJson(res, 500, { error: String(e?.message || e || "unknown_error") });
   }
 }
