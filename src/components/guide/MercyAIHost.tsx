@@ -18,6 +18,10 @@
 // PATCH (2026-03-04):
 // - Add optional AI brain via /api/mercy-ai (gpt-4o-mini) with quota guard.
 // - Add polite greeting for hello/hi/xin chào without spending AI.
+//
+// PATCH (2026-03-04b):
+// - IMPORTANT: Do NOT spend AI quota unless the AI endpoint actually returns a usable reply.
+//   (Previous logic could spend quota even when we fell back to deterministic makeReply.)
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
@@ -697,29 +701,6 @@ export default function MercyAIHost() {
     [lang],
   );
 
-  const tryConsumeAiQuota = useCallback(
-    (userText: string, currentMode: PanelMode): { allowed: boolean; used: number; limit: number } => {
-      const limit = aiDailyLimit;
-
-      // VIP9: practically unlimited (still tracked)
-      const usedNow = readAiUsed(appKey, tierKey);
-
-      if (!shouldCountAsAiMessage(userText, currentMode)) {
-        return { allowed: true, used: usedNow, limit };
-      }
-
-      if (usedNow >= limit) {
-        return { allowed: false, used: usedNow, limit };
-      }
-
-      const nextUsed = usedNow + 1;
-      writeAiUsed(appKey, tierKey, nextUsed);
-      setAiUsedToday(nextUsed);
-      return { allowed: true, used: nextUsed, limit };
-    },
-    [aiDailyLimit, appKey, tierKey],
-  );
-
   // ---- AI brain call (gpt-4o-mini) via /api/mercy-ai ----
   const callMercyAi = useCallback(
     async (userText: string) => {
@@ -772,20 +753,6 @@ export default function MercyAIHost() {
       // Commands should not consume AI quota (but can still respond)
       const isCommand = lower.startsWith("/");
 
-      // ✅ QUOTA GUARD (before typing starts, calm + clear)
-      if (!looksLikeRepeatAck && !isCommand) {
-        const q = tryConsumeAiQuota(textTrim, currentMode);
-        if (!q.allowed) {
-          clearTypingTimer();
-          setIsTyping(false);
-
-          // One calm message, then one next action hint
-          addMsg("assistant", quotaBlockMessage(tierKey, q.used, q.limit));
-          setMode("billing");
-          return;
-        }
-      }
-
       clearTypingTimer();
       setIsTyping(true);
 
@@ -819,17 +786,29 @@ export default function MercyAIHost() {
         }
 
         // 2) AI brain path (only when it truly helps)
-        //    If the endpoint fails, we fall back to deterministic makeReply.
+        //    Quota is checked BEFORE calling AI,
+        //    and ONLY consumed AFTER we successfully get a usable aiText.
         const wantsAi = !isCommand && shouldUseAiBrain(textTrim);
         if (wantsAi) {
+          const shouldCount = shouldCountAsAiMessage(textTrim, currentMode);
+          const usedNow = readAiUsed(appKey, tierKey);
+          const limit = aiDailyLimit;
+
+          if (shouldCount && usedNow >= limit) {
+            addMsg("assistant", quotaBlockMessage(tierKey, usedNow, limit));
+            setMode("billing");
+            return;
+          }
+
           try {
             const aiText = await callMercyAi(textTrim);
             if (aiText) {
+              if (shouldCount) bumpAiUsed(usedNow + 1);
               addMsg("assistant", aiText);
               return;
             }
           } catch {
-            // fall through to deterministic reply
+            // fall through to deterministic reply (no quota consumed)
           }
         }
 
@@ -906,11 +885,12 @@ export default function MercyAIHost() {
       clearHeart,
       scheduleAssistantMsg,
       pickPraise,
-      tryConsumeAiQuota,
-      quotaBlockMessage,
       tierKey,
       displayName,
       callMercyAi,
+      aiDailyLimit,
+      quotaBlockMessage,
+      bumpAiUsed,
     ],
   );
 
