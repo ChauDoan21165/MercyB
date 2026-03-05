@@ -77,7 +77,10 @@ export function useMakeReply() {
     xs.filter(Boolean).join("\n");
 
   // Bilingual rendering helper: always returns EN + VI inside one string bubble.
-  const bi = (enBlock: string | null | undefined, viBlock: string | null | undefined) => {
+  const bi = (
+    enBlock: string | null | undefined,
+    viBlock: string | null | undefined
+  ) => {
     const en = norm(enBlock);
     const vi = norm(viBlock);
     if (en && vi) return `EN:\n${en}\n\nVI:\n${vi}`;
@@ -89,12 +92,19 @@ export function useMakeReply() {
   // bilingual micro-copy (curated pairs; deterministic)
   const T = {
     en: {
+      // greetings
+      hello1: "Hello! 👋",
+      hello2: "Nice to see you.",
+      hello3: "Do you want to start with a room, or tell me your goal?",
+
       ask: "What do you need right now?",
-      empty: "Type a short question, or use a command: /help /tiers /repeat /bug /reset",
+      empty:
+        "Type a short question, or use a command: /help /tiers /repeat /bug /reset",
       howUseRoom1: "You’re in a room.",
       howUseRoom2: "Tap a keyword pill to begin.",
       howUseRoom3: "Then: EN → tap the face to play → read VI.",
-      howUseRoomStuck: "If you don’t see keywords, refresh (Cmd+R) or try another room.",
+      howUseRoomStuck:
+        "If you don’t see keywords, refresh (Cmd+R) or try another room.",
       howUseHome1: "Start with a room, then pick a keyword.",
       howUseHome2: "Use /tiers to see VIP options (even if you’re already VIP).",
       howUseHome3: "Come back here anytime for next steps.",
@@ -102,11 +112,13 @@ export function useMakeReply() {
       vipPaid2: "Go back to your room and try opening a VIP room again.",
       vipPaid3: "If still locked: sign out/in once, then check /tiers to verify.",
       vipCheckout1: "To subscribe:",
-      vipCheckout2: "Open /tiers → choose VIP1/VIP3/VIP9 → complete checkout.",
+      vipCheckout2:
+        "Open /tiers → choose VIP1/VIP3/VIP9 → complete checkout.",
       vipCheckout3: "After payment, return to your room.",
       repeat1: "Repeat mode:",
       repeat2: "Tap Play → listen once → then press “My turn” and speak.",
-      repeat3: "If you want a new repeat target, pick a keyword/entry in the room.",
+      repeat3:
+        "If you want a new repeat target, pick a keyword/entry in the room.",
       bug1: "Report a bug:",
       bug2: "Send: roomId + keyword + what happened (audio/UI) + screenshot.",
       bug3: "If the page is stuck, refresh (Cmd+R).",
@@ -129,18 +141,27 @@ export function useMakeReply() {
       nowYourTurn: "Right now: Your turn.",
     },
     vi: {
+      // greetings
+      hello1: "Chào bạn! 👋",
+      hello2: "Rất vui gặp bạn.",
+      hello3: "Bạn muốn bắt đầu bằng một room, hay nói mục tiêu của bạn?",
+
       ask: "Bạn cần gì ngay bây giờ?",
       empty: "Gõ câu hỏi ngắn, hoặc dùng lệnh: /help /tiers /repeat /bug /reset",
       howUseRoom1: "Bạn đang ở trong một room.",
       howUseRoom2: "Chạm vào keyword để bắt đầu.",
       howUseRoom3: "Sau đó: EN → bấm mặt để nghe → đọc VI.",
-      howUseRoomStuck: "Nếu không thấy keyword, refresh (Cmd+R) hoặc thử room khác.",
+      howUseRoomStuck:
+        "Nếu không thấy keyword, refresh (Cmd+R) hoặc thử room khác.",
       howUseHome1: "Bắt đầu bằng một room, rồi chọn keyword.",
-      howUseHome2: "Dùng /tiers để xem các gói VIP (kể cả khi bạn đã là VIP).",
-      howUseHome3: "Bạn có thể quay lại đây bất kỳ lúc nào để hỏi bước tiếp theo.",
+      howUseHome2:
+        "Dùng /tiers để xem các gói VIP (kể cả khi bạn đã là VIP).",
+      howUseHome3:
+        "Bạn có thể quay lại đây bất kỳ lúc nào để hỏi bước tiếp theo.",
       vipPaid1: "Nếu bạn đã thanh toán:",
       vipPaid2: "Quay lại room và thử mở lại một room VIP.",
-      vipPaid3: "Nếu vẫn bị khóa: đăng xuất/đăng nhập lại 1 lần, rồi vào /tiers để kiểm tra.",
+      vipPaid3:
+        "Nếu vẫn bị khóa: đăng xuất/đăng nhập lại 1 lần, rồi vào /tiers để kiểm tra.",
       vipCheckout1: "Để đăng ký VIP:",
       vipCheckout2: "Mở /tiers → chọn VIP1/VIP3/VIP9 → thanh toán.",
       vipCheckout3: "Xong thì quay lại room.",
@@ -171,6 +192,7 @@ export function useMakeReply() {
   } as const;
 
   type Intent =
+    | "greeting"
     | "help"
     | "reset"
     | "tiers"
@@ -182,8 +204,49 @@ export function useMakeReply() {
     | "room_help"
     | "unknown";
 
+  const isGreeting = (u: string) => {
+    const s = lower(u);
+    // English
+    if (
+      s === "hi" ||
+      s === "hello" ||
+      s === "hey" ||
+      s === "yo" ||
+      s.startsWith("hi ") ||
+      s.startsWith("hello ") ||
+      s.startsWith("hey ") ||
+      s.includes("good morning") ||
+      s.includes("good afternoon") ||
+      s.includes("good evening")
+    )
+      return true;
+
+    // Vietnamese
+    if (
+      s === "chào" ||
+      s === "xin chào" ||
+      s === "chao" ||
+      s === "xin chao" ||
+      s.startsWith("chào ") ||
+      s.startsWith("xin chào ") ||
+      s.startsWith("chao ") ||
+      s.startsWith("xin chao ") ||
+      s.includes("chào bạn") ||
+      s.includes("xin chào bạn")
+    )
+      return true;
+
+    // common emoji-only greeting
+    if (s === "👋" || s === "🙏" || s === "❤️") return true;
+
+    return false;
+  };
+
   const detectIntent = (u: string, opts: any): Intent => {
-    const uL = u.toLowerCase();
+    const uL = lower(u);
+
+    // greeting first (so "hello" doesn't fall through to unknown)
+    if (isGreeting(uL)) return "greeting";
 
     // commands first
     if (uL === "/help") return "help";
@@ -197,35 +260,61 @@ export function useMakeReply() {
       uL.includes("how do i") ||
       uL.includes("how to") ||
       uL.includes("use this app") ||
-      uL.includes("start");
+      uL.includes("start") ||
+      uL.includes("làm sao") ||
+      uL.includes("cách") ||
+      uL.includes("bắt đầu");
 
     const talksVip =
       uL.includes("vip") ||
       uL.includes("subscribe") ||
       uL.includes("checkout") ||
-      uL.includes("payment");
+      uL.includes("payment") ||
+      uL.includes("thanh toán") ||
+      uL.includes("đăng ký") ||
+      uL.includes("dang ky");
 
     const claimsPaid =
       uL.includes("i'm vip") ||
       uL.includes("i am vip") ||
       uL.includes("already paid") ||
       uL.includes("subscribed") ||
-      uL.includes("completed checkout");
+      uL.includes("completed checkout") ||
+      uL.includes("mình đã trả") ||
+      uL.includes("toi da tra") ||
+      uL.includes("đã thanh toán") ||
+      uL.includes("da thanh toan");
 
-    const repeatWords = uL.includes("repeat") || uL.includes("my turn") || uL.includes("play");
+    const repeatWords =
+      uL.includes("repeat") ||
+      uL.includes("my turn") ||
+      uL.includes("play") ||
+      uL.includes("lặp") ||
+      uL.includes("lap") ||
+      uL.includes("đến lượt") ||
+      uL.includes("den luot");
+
     const bugWords =
       uL.includes("bug") ||
       uL.includes("error") ||
       uL.includes("crash") ||
       uL.includes("audio") ||
-      uL.includes("ui");
+      uL.includes("ui") ||
+      uL.includes("lỗi") ||
+      uL.includes("loi") ||
+      uL.includes("đơ") ||
+      uL.includes("do");
 
     const roomWords =
       uL.includes("keyword") ||
       uL.includes("entry") ||
       uL.includes("room") ||
       uL.includes("stuck") ||
-      uL.includes("can't");
+      uL.includes("can't") ||
+      uL.includes("không thấy") ||
+      uL.includes("khong thay") ||
+      uL.includes("kẹt") ||
+      uL.includes("ket");
 
     if (claimsPaid && talksVip) return "vip_paid";
     if (talksVip) return "vip_checkout";
@@ -303,6 +392,13 @@ export function useMakeReply() {
 
     const intent = detectIntent(clean, opts);
 
+    if (intent === "greeting") {
+      // Warm, polite, short. No upsell.
+      const enBlock = lines(whereEn, T.en.hello1, T.en.hello2, T.en.hello3);
+      const viBlock = lines(whereVi, T.vi.hello1, T.vi.hello2, T.vi.hello3);
+      return bi(enBlock, viBlock);
+    }
+
     if (intent === "reset") {
       const enBlock = lines(whereEn, T.en.reset);
       const viBlock = lines(whereVi, T.vi.reset);
@@ -351,9 +447,17 @@ export function useMakeReply() {
     if (intent === "repeat") {
       const step = repeatStep(opts);
       const enStepLine =
-        step === "play" ? T.en.nowPlay : step === "your_turn" ? T.en.nowYourTurn : null;
+        step === "play"
+          ? T.en.nowPlay
+          : step === "your_turn"
+            ? T.en.nowYourTurn
+            : null;
       const viStepLine =
-        step === "play" ? T.vi.nowPlay : step === "your_turn" ? T.vi.nowYourTurn : null;
+        step === "play"
+          ? T.vi.nowPlay
+          : step === "your_turn"
+            ? T.vi.nowYourTurn
+            : null;
 
       return three(
         whereEn,
