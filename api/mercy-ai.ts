@@ -1,19 +1,13 @@
 // FILE: mercy-ai.ts
 // PATH: api/mercy-ai.ts
-//
-// Fix: remove `openai` npm dependency (was missing on Vercel) and call OpenAI via fetch.
-// Accepts POST JSON:
-//   { userText?: string, message?: string, lang?: "en"|"vi", context?: {...}, history?: [...] }
-// Returns:
-//   { text: string }
-//
-// ENV:
-//   OPENAI_API_KEY=...
 
 import type { VercelRequest, VercelResponse } from "@vercel/node";
+import OpenAI from "openai";
 
-function norm(v: any) {
-  return typeof v === "string" ? v.trim() : "";
+const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+
+function norm(s: any) {
+  return typeof s === "string" ? s.trim() : "";
 }
 
 function safeJson(res: VercelResponse, status: number, obj: any) {
@@ -22,40 +16,41 @@ function safeJson(res: VercelResponse, status: number, obj: any) {
   res.send(JSON.stringify(obj));
 }
 
-function pickUserText(body: any) {
-  // support both {userText} and {message} because your curl used "message"
-  return norm(body?.userText) || norm(body?.message);
-}
-
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
+    // Allow GET for quick health check (helps debugging without curl POST)
+    if (req.method === "GET") {
+      return safeJson(res, 200, { ok: true, hint: "POST { userText }" });
+    }
+
     if (req.method !== "POST") {
-      res.setHeader("Allow", "POST");
+      res.setHeader("Allow", "POST, GET");
       return safeJson(res, 405, { error: "Method Not Allowed" });
     }
 
-    const key = process.env.OPENAI_API_KEY;
-    if (!key) return safeJson(res, 500, { error: "Missing OPENAI_API_KEY" });
+    if (!process.env.OPENAI_API_KEY) {
+      return safeJson(res, 500, { error: "Missing OPENAI_API_KEY" });
+    }
 
     const body: any = req.body ?? {};
-    const userText = pickUserText(body);
-    const lang = body?.lang === "vi" ? "vi" : "en";
+
+    // ✅ accept multiple keys to avoid client mismatch
+    const userText = norm(body.userText || body.message || body.text || body.prompt);
+    const lang = body.lang === "vi" ? "vi" : "en";
+
     if (!userText) return safeJson(res, 400, { error: "Missing userText" });
 
-    const context = body?.context ?? {};
-    const roomTitle = norm(context?.roomTitle);
-    const roomId = norm(context?.roomId);
-    const keyword = norm(context?.keyword);
-    const entryId = norm(context?.entryId);
+    const context = body.context ?? {};
+    const roomTitle = norm(context.roomTitle);
+    const roomId = norm(context.roomId);
+    const keyword = norm(context.keyword);
+    const entryId = norm(context.entryId);
 
-    const history: Array<{ role: "user" | "assistant"; text: string }> = Array.isArray(body?.history)
-      ? body.history
-          .slice(-6)
-          .map((m: any) => ({
-            role: m?.role === "assistant" ? "assistant" : "user",
-            text: norm(m?.text ?? m?.content ?? ""),
-          }))
-          .filter((m) => m.text)
+    const history: Array<{ role: "user" | "assistant"; text: string }> = Array.isArray(body.history)
+      ? body.history.slice(-6).map((m: any) => ({
+          role: m?.role === "assistant" ? "assistant" : "user",
+          text: norm(m?.text),
+        }))
       : [];
 
     const ctxLine = [
@@ -80,49 +75,27 @@ Rules:
 - If user says hello/hi/xin chào: greet back politely and ask 1 short question.
 - If user is vague: ask 1 clarifying question + give 1 next step.
 - If user asks about VIP/tiers/pricing: say go to /tiers.
-- If user starts with "fix grammar:" then correct grammar + 1 short rule.
+- If user asks "fix grammar:" then correct grammar + explain 1 rule briefly.
 - Keep answers compact.`;
 
-    // OpenAI "Responses" API payload
-    const input: Array<{ role: "system" | "developer" | "user" | "assistant"; content: string }> = [
+    const messages: any[] = [
       { role: "developer", content: system },
-      ...(ctxLine ? [{ role: "developer" as const, content: `Context: ${ctxLine}` }] : []),
-      ...history.map((h) => ({ role: h.role, content: h.text })),
+      ...(ctxLine ? [{ role: "developer", content: `Context: ${ctxLine}` }] : []),
+      ...history
+        .filter((h) => h.text)
+        .map((h) => ({ role: h.role, content: h.text })),
       { role: "user", content: userText },
     ];
 
-    const r = await fetch("https://api.openai.com/v1/responses", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${key}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: "gpt-4o-mini",
-        input,
-        temperature: 0.4,
-        max_output_tokens: 220,
-      }),
+    const completion = await client.chat.completions.create({
+      model: "gpt-4o-mini",
+      messages,
+      temperature: 0.4,
+      max_tokens: 220,
     });
 
-    const data: any = await r.json().catch(() => null);
-
-    if (!r.ok) {
-      const msg =
-        norm(data?.error?.message) ||
-        norm(data?.message) ||
-        `OpenAI error (${r.status})`;
-      return safeJson(res, 500, { error: msg, status: r.status });
-    }
-
-    // responses API: best-effort text extraction
-    const text =
-      norm(data?.output_text) ||
-      norm(data?.output?.[0]?.content?.[0]?.text) ||
-      norm(data?.output?.[0]?.content?.[0]?.content) ||
-      "";
-
-    return safeJson(res, 200, { text: text || "EN:\n…\n\nVI:\n…" });
+    const text = completion.choices?.[0]?.message?.content ?? "";
+    return safeJson(res, 200, { text });
   } catch (e: any) {
     return safeJson(res, 500, { error: String(e?.message || e || "unknown_error") });
   }
