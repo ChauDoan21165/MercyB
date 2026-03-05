@@ -180,6 +180,23 @@ function norm(s: any) {
   return typeof s === "string" ? s.trim() : "";
 }
 
+function isBilingualBlock(s: string) {
+  const t = (s ?? "").trim();
+  return /(^|\n)EN:\s*\n/.test(t) && /(^|\n)VI:\s*\n/.test(t);
+}
+
+function bi(en: string, vi: string) {
+  return `EN:\n${(en ?? "").trim()}\n\nVI:\n${(vi ?? "").trim()}`;
+}
+
+// If something (like makeReply / AI) returns single-language, force it into EN+VI
+function ensureBilingual(text: string) {
+  const t = (text ?? "").trim();
+  if (!t) return "";
+  if (isBilingualBlock(t)) return t;
+  return bi(t, t); // safe fallback (no translation step)
+}
+
 function looksLikeHello(s: string) {
   const t = s.trim().toLowerCase();
   return (
@@ -430,33 +447,33 @@ export default function MercyAIHost() {
 
   const baseAssistantHome = useMemo(() => {
     const name = displayName ? ` ${displayName}` : "";
-    const p =
+
+    const p_en =
       lastProgress?.roomId && !isSignin
-        ? lang === "vi"
-          ? `Lần trước: ${lastProgress.roomId}${lastProgress.keyword ? ` • kw:${lastProgress.keyword}` : ""}${
-              lastProgress.next ? `\nBước tiếp: ${lastProgress.next}` : ""
-            }`
-          : `Last time: ${lastProgress.roomId}${lastProgress.keyword ? ` • kw:${lastProgress.keyword}` : ""}${
-              lastProgress.next ? `\nNext: ${lastProgress.next}` : ""
-            }`
+        ? `Last time: ${lastProgress.roomId}${lastProgress.keyword ? ` • kw:${lastProgress.keyword}` : ""}${
+            lastProgress.next ? `\nNext: ${lastProgress.next}` : ""
+          }`
         : "";
 
-    const aiLine =
-      lang === "vi"
-        ? `AI hôm nay: ${Math.min(aiUsedToday, aiDailyLimit)}/${aiDailyLimit} • Gợi ý: gõ “fix grammar:” để sửa ngữ pháp.`
-        : `AI today: ${Math.min(aiUsedToday, aiDailyLimit)}/${aiDailyLimit} • Tip: type “fix grammar:” to correct grammar.`;
+    const p_vi =
+      lastProgress?.roomId && !isSignin
+        ? `Lần trước: ${lastProgress.roomId}${lastProgress.keyword ? ` • kw:${lastProgress.keyword}` : ""}${
+            lastProgress.next ? `\nBước tiếp: ${lastProgress.next}` : ""
+          }`
+        : "";
 
-    const pronLine =
-      lang === "vi"
-        ? "Luyện phát âm (đọc to và được góp ý) sẽ có sớm."
-        : "Pronunciation coaching (read aloud + corrections) is coming soon.";
+    const aiLine_en = `AI today: ${Math.min(aiUsedToday, aiDailyLimit)}/${aiDailyLimit} • Tip: type “fix grammar:” to correct grammar.`;
+    const aiLine_vi = `AI hôm nay: ${Math.min(aiUsedToday, aiDailyLimit)}/${aiDailyLimit} • Gợi ý: gõ “fix grammar:” để sửa ngữ pháp.`;
 
-    if (lang === "vi") {
-      return `Chào${name}. Mình là Mercy Host.\n${p ? p + "\n" : ""}${aiLine}\n${pronLine}\nBạn muốn làm gì ngay bây giờ?\n• Chọn gói VIP (/tiers)\n• Làm mini test\n• Vào phòng học\n• Báo lỗi (audio/UI)`;
-    }
+    const pronLine_en = "Pronunciation coaching (read aloud + corrections) is coming soon.";
+    const pronLine_vi = "Luyện phát âm (đọc to và được góp ý) sẽ có sớm.";
 
-    return `Hi${name}. I’m Mercy Host.\n${p ? p + "\n" : ""}${aiLine}\n${pronLine}\nWhat do you need right now?\n• Choose a VIP tier (/tiers)\n• Take a mini test\n• Start learning in a room\n• Report a problem (audio/UI)`;
-  }, [displayName, lastProgress, isSignin, lang, aiUsedToday, aiDailyLimit]);
+    const enText = `Hi${name}. I’m Mercy Host.\n${p_en ? p_en + "\n" : ""}${aiLine_en}\n${pronLine_en}\nWhat do you need right now?\n• Choose a VIP tier (/tiers)\n• Take a mini test\n• Start learning in a room\n• Report a problem (audio/UI)`;
+
+    const viText = `Chào${name}. Mình là Mercy Host.\n${p_vi ? p_vi + "\n" : ""}${aiLine_vi}\n${pronLine_vi}\nBạn muốn làm gì ngay bây giờ?\n• Chọn gói VIP (/tiers)\n• Làm mini test\n• Vào phòng học\n• Báo lỗi (audio/UI)`;
+
+    return bi(enText, viText);
+  }, [displayName, lastProgress, isSignin, aiUsedToday, aiDailyLimit]);
 
   const seedIfEmpty = useCallback(
     (nextMode: PanelMode) => {
@@ -465,9 +482,7 @@ export default function MercyAIHost() {
         const first =
           nextMode === "home"
             ? baseAssistantHome
-            : lang === "vi"
-            ? `Chào. Hỏi mình về ${nextMode}.`
-            : `Hi. Ask me anything about ${nextMode}.`;
+            : bi(`Hi. Ask me anything about ${nextMode}.`, `Chào. Hỏi mình về ${nextMode}.`);
         return [
           {
             id: `a_${Math.random().toString(16).slice(2)}_${Date.now().toString(16)}`,
@@ -477,7 +492,7 @@ export default function MercyAIHost() {
         ];
       });
     },
-    [baseAssistantHome, lang],
+    [baseAssistantHome],
   );
 
   /* =========================
@@ -660,9 +675,9 @@ export default function MercyAIHost() {
       repeatNudgedKeyRef.current = key;
 
       // One calm sentence, no emoji, no exclamation.
-      scheduleAssistantMsg(lang === "vi" ? "Không sao. Thử lại chậm hơn một chút." : "That is fine. Try once more, a little slower.", 0);
+      scheduleAssistantMsg(bi("That is fine. Try once more, a little slower.", "Không sao. Thử lại chậm hơn một chút."), 0);
     }, 12000);
-  }, [open, repeatTarget, repeatStep, repeatSeenAt, clearRepeatNudgeTimer, scheduleAssistantMsg, lang]);
+  }, [open, repeatTarget, repeatStep, repeatSeenAt, clearRepeatNudgeTimer, scheduleAssistantMsg]);
 
   /* =========================
      Reply function (pure)
@@ -683,23 +698,19 @@ export default function MercyAIHost() {
     // Neutral, calm, one sentence. No emoji. No exclamation.
     const en = ["Good. Keep it relaxed.", "That was clear.", "Yes. Keep the rhythm.", "Nice. One more time.", "Good. Same pace."];
     const vi = ["Tốt. Giữ thư thái.", "Rõ rồi.", "Đúng. Giữ nhịp.", "Ổn. Thêm một lần.", "Tốt. Giữ tốc độ."];
-    const arr = lang === "vi" ? vi : en;
-    const idx = Math.floor(Math.random() * arr.length);
-    return arr[idx] ?? (lang === "vi" ? "Tốt." : "Good.");
-  }, [lang]);
+    const idx = Math.floor(Math.random() * en.length);
+    return bi(en[idx] ?? "Good.", vi[idx] ?? "Tốt.");
+  }, []);
 
-  const quotaBlockMessage = useCallback(
-    (tier: TierKey, used: number, limit: number) => {
-      const next = tierNextUpgrade(tier);
-      const nextLabel = tierLabel(next);
+  const quotaBlockMessage = useCallback((tier: TierKey, used: number, limit: number) => {
+    const next = tierNextUpgrade(tier);
+    const nextLabel = tierLabel(next);
 
-      if (lang === "vi") {
-        return `Bạn đã dùng hết lượt AI hôm nay (${Math.min(used, limit)}/${limit}).\n${nextLabel} giúp bạn luyện tiếp mượt hơn.\nGõ /tiers để nâng cấp.`;
-      }
-      return `You’ve used today’s AI messages (${Math.min(used, limit)}/${limit}).\n${nextLabel} gives you more practice with less friction.\nType /tiers to upgrade.`;
-    },
-    [lang],
-  );
+    const en = `You’ve used today’s AI messages (${Math.min(used, limit)}/${limit}).\n${nextLabel} gives you more practice with less friction.\nType /tiers to upgrade.`;
+    const vi = `Bạn đã dùng hết lượt AI hôm nay (${Math.min(used, limit)}/${limit}).\n${nextLabel} giúp bạn luyện tiếp mượt hơn.\nGõ /tiers để nâng cấp.`;
+
+    return bi(en, vi);
+  }, []);
 
   // ---- AI brain call (gpt-4o-mini) via /api/mercy-ai ----
   const callMercyAi = useCallback(
@@ -741,8 +752,13 @@ export default function MercyAIHost() {
         setIsTyping(false);
 
         const name = displayName ? ` ${displayName}` : "";
-        const en = `EN:\nHello${name}. Good to see you.\nWhat do you want to do right now?\n\nVI:\nChào${name}. Rất vui gặp bạn.\nBạn muốn làm gì ngay bây giờ?`;
-        addMsg("assistant", en);
+        addMsg(
+          "assistant",
+          bi(
+            `Hello${name}. Good to see you.\nWhat do you want to do right now?`,
+            `Chào${name}. Rất vui gặp bạn.\nBạn muốn làm gì ngay bây giờ?`,
+          ),
+        );
         return;
       }
 
@@ -771,14 +787,10 @@ export default function MercyAIHost() {
 
           // After praise, give next micro-instruction if still in repeat mode (small breath)
           if (repeatTarget) {
-            const follow =
-              lang === "vi"
-                ? repeatCount + 1 >= 3
-                  ? "Tốt. Bạn có thể chuyển sang câu tiếp theo."
-                  : "Giờ nghe lại một lần, rồi nói lại."
-                : repeatCount + 1 >= 3
-                ? "Good. You can move on."
-                : "Now listen once more, then repeat.";
+            const follow = bi(
+              repeatCount + 1 >= 3 ? "Good. You can move on." : "Now listen once more, then repeat.",
+              repeatCount + 1 >= 3 ? "Tốt. Bạn có thể chuyển sang câu tiếp theo." : "Giờ nghe lại một lần, rồi nói lại.",
+            );
             scheduleAssistantMsg(follow, 600);
           }
 
@@ -804,7 +816,7 @@ export default function MercyAIHost() {
             const aiText = await callMercyAi(textTrim);
             if (aiText) {
               if (shouldCount) bumpAiUsed(usedNow + 1);
-              addMsg("assistant", aiText);
+              addMsg("assistant", ensureBilingual(aiText));
               return;
             }
           } catch {
@@ -816,9 +828,10 @@ export default function MercyAIHost() {
         if (typeof makeReplyFn !== "function") {
           addMsg(
             "assistant",
-            lang === "vi"
-              ? "Host đang lỗi (makeReply). Bạn refresh trang (Cmd+R) giúp mình nhé."
-              : "Host is in a bad state (makeReply). Please refresh (Cmd+R).",
+            bi(
+              "Host is in a bad state (makeReply). Please refresh (Cmd+R).",
+              "Host đang lỗi (makeReply). Bạn refresh trang (Cmd+R) giúp mình nhé.",
+            ),
           );
           return;
         }
@@ -856,7 +869,7 @@ export default function MercyAIHost() {
           onClearHeart: () => clearHeart(),
         });
 
-        addMsg("assistant", reply);
+        addMsg("assistant", ensureBilingual(reply));
       }, delayMs);
     },
     [
@@ -919,7 +932,7 @@ export default function MercyAIHost() {
     if (lower === "/tiers") {
       goTiers();
       // Deterministic acknowledgement (no AI quota)
-      addMsg("assistant", lang === "vi" ? "OK. Mở trang /tiers." : "OK. Opening /tiers.");
+      addMsg("assistant", bi("OK. Opening /tiers.", "OK. Mở trang /tiers."));
       return;
     }
     if (lower === "/email") setMode("email");
@@ -930,12 +943,12 @@ export default function MercyAIHost() {
     // Optional: allow clearing repeat without extra UI buttons (keeps “one action button” in repeat card)
     if (lower === "/repeat clear") {
       clearRepeat();
-      addMsg("assistant", lang === "vi" ? "Đã xóa repeat." : "Repeat cleared.");
+      addMsg("assistant", bi("Repeat cleared.", "Đã xóa repeat."));
       return;
     }
 
     assistantRespond(text, mode);
-  }, [draft, addMsg, assistantRespond, mode, goTiers, clearRepeat, lang]);
+  }, [draft, addMsg, assistantRespond, mode, goTiers, clearRepeat]);
 
   const onInputKeyDown = useCallback(
     (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -958,7 +971,7 @@ export default function MercyAIHost() {
   const actions = useHostActions({
     lang,
     onGoTiers: goTiers,
-    addAssistantMsg: (t: string) => addMsg("assistant", t),
+    addAssistantMsg: (t: string) => addMsg("assistant", ensureBilingual(t)),
     clearChat: () => setMessages([]),
     setMode,
     startMiniTest: () => {
@@ -967,9 +980,10 @@ export default function MercyAIHost() {
       setTestScore(0);
       addMsg(
         "assistant",
-        lang === "vi"
-          ? `OK. Mini test (3 câu).\nQ1) “I ___ coffee.”\nA) like  B) likes  C) liking`
-          : `OK. Mini test (3 questions).\nQ1) “I ___ coffee.”\nA) like  B) likes  C) liking`,
+        bi(
+          `OK. Mini test (3 questions).\nQ1) “I ___ coffee.”\nA) like  B) likes  C) liking`,
+          `OK. Mini test (3 câu).\nQ1) “I ___ coffee.”\nA) like  B) likes  C) liking`,
+        ),
       );
     },
     canVoiceTest,
