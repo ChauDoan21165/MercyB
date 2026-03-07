@@ -1,17 +1,19 @@
 /**
  * Mercy Voice Pack - Phase 5 Enhanced
- * 
+ *
  * Voice line definitions for EN + VI with emotion triggers.
  * Audio files stored in /public/mercy-voice/
  */
 
 import type { EmotionState } from './emotionModel';
+import type { MercyPersonalityContext } from './personalityRules';
+import { applyPersonality } from './personalityRules';
 
-export type VoiceTrigger = 
-  | 'room_enter' 
-  | 'entry_complete' 
-  | 'color_toggle' 
-  | 'return_inactive' 
+export type VoiceTrigger =
+  | 'room_enter'
+  | 'entry_complete'
+  | 'color_toggle'
+  | 'return_inactive'
   | 'encouragement'
   | 'onboarding'
   | 'onboarding_complete'
@@ -310,57 +312,106 @@ export const MERCY_VOICE_LINES: VoiceLine[] = [
 ];
 
 /**
+ * Map voice trigger to Mercy personality context
+ */
+function getPersonalityContextForTrigger(trigger: VoiceTrigger): MercyPersonalityContext {
+  switch (trigger) {
+    case 'room_enter':
+    case 'onboarding':
+    case 'onboarding_complete':
+    case 'return_inactive':
+    case 'returning_after_gap':
+      return 'greeting';
+
+    case 'entry_complete':
+    case 'encouragement':
+    case 'celebration':
+    case 'ef_entry_complete':
+    case 'ef_streak':
+      return 'encouragement';
+
+    case 'confusion':
+      return 'confused_user';
+
+    case 'low_mood':
+    case 'stress_release':
+      return 'gentle_authority';
+
+    case 'ef_pronunciation_focus':
+      return 'teacher_wit';
+
+    case 'ef_room_enter':
+      return 'greeting';
+
+    case 'color_toggle':
+    default:
+      return 'default';
+  }
+}
+
+function applyNamePlaceholders(text: string, name?: string): string {
+  if (name) {
+    return text.replace(/\{\{name\}\}/g, name).replace(/\s+/g, " ").trim();
+  }
+
+  return text
+    .replace(/\{\{name\}\},?\s*/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function personalizeVoiceLine(line: VoiceLine, name?: string): VoiceLine {
+  const en = applyNamePlaceholders(line.en, name);
+  const vi = applyNamePlaceholders(line.vi, name);
+  const context = getPersonalityContextForTrigger(line.trigger);
+  const styled = applyPersonality(en, vi, context);
+
+  return {
+    ...line,
+    en: styled.en,
+    vi: styled.vi,
+  };
+}
+
+/**
  * Get random voice line by trigger type
  */
 export function getVoiceLineByTrigger(
   trigger: VoiceTrigger,
   name?: string
 ): VoiceLine {
-  const lines = MERCY_VOICE_LINES.filter(l => l.trigger === trigger);
-  
+  const lines = MERCY_VOICE_LINES.filter((l) => l.trigger === trigger);
+
   // Fallback to encouragement if no lines for trigger
-  const fallbackLines = lines.length > 0 
-    ? lines 
-    : MERCY_VOICE_LINES.filter(l => l.trigger === 'encouragement');
-  
+  const fallbackLines = lines.length > 0
+    ? lines
+    : MERCY_VOICE_LINES.filter((l) => l.trigger === 'encouragement');
+
   const line = fallbackLines[Math.floor(Math.random() * fallbackLines.length)];
-  
+
   if (!line) {
     // Ultimate fallback - text only
-    return {
-      id: 'fallback',
-      en: "I'm here with you.",
-      vi: "Mình ở đây với bạn.",
-      trigger: 'encouragement'
-    };
+    return personalizeVoiceLine(
+      {
+        id: 'fallback',
+        en: "I'm here with you.",
+        vi: "Mình ở đây với bạn.",
+        trigger: 'encouragement'
+      },
+      name
+    );
   }
-  
-  if (name) {
-    return {
-      ...line,
-      en: line.en.replace(/\{\{name\}\}/g, name),
-      vi: line.vi.replace(/\{\{name\}\}/g, name)
-    };
-  }
-  
-  return line;
+
+  return personalizeVoiceLine(line, name);
 }
 
 /**
  * Get voice line by ID
  */
 export function getVoiceLineById(id: string, name?: string): VoiceLine | undefined {
-  const line = MERCY_VOICE_LINES.find(l => l.id === id);
-  
-  if (line && name) {
-    return {
-      ...line,
-      en: line.en.replace(/\{\{name\}\}/g, name),
-      vi: line.vi.replace(/\{\{name\}\}/g, name)
-    };
-  }
-  
-  return line;
+  const line = MERCY_VOICE_LINES.find((l) => l.id === id);
+  if (!line) return undefined;
+  return personalizeVoiceLine(line, name);
 }
 
 /**

@@ -1,8 +1,10 @@
 /**
  * Mercy Engine Guard Wrapper
- * 
+ *
  * Wraps engine actions with error handling and retry logic.
  */
+
+import { applyPersonality } from './personalityRules';
 
 const MAX_RETRIES = 2;
 const RETRY_DELAY_MS = 100;
@@ -22,6 +24,29 @@ export const FALLBACK_MESSAGES = {
   vi: "Mình ở đây. Có gì đó không tải được, nhưng mình sẽ tiếp tục hướng dẫn bạn."
 };
 
+function toError(error: unknown): Error {
+  return error instanceof Error ? error : new Error(String(error));
+}
+
+function wait(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+/**
+ * Get a Mercy-styled soft fallback message
+ */
+export function getFallbackMessage(
+  language: 'en' | 'vi' = 'en'
+): string {
+  const styled = applyPersonality(
+    FALLBACK_MESSAGES.en,
+    FALLBACK_MESSAGES.vi,
+    'gentle_authority'
+  );
+
+  return language === 'vi' ? styled.vi : styled.en;
+}
+
 /**
  * Wrap an async action with retry logic
  */
@@ -38,12 +63,12 @@ export async function guardAsync<T>(
       const result = await action();
       return { success: true, result, retries };
     } catch (error) {
-      lastError = error instanceof Error ? error : new Error(String(error));
+      lastError = toError(error);
       retries++;
 
       if (retries <= maxRetries) {
         console.warn(`[MercyGuard] ${actionName} failed, retry ${retries}/${maxRetries}`);
-        await new Promise(resolve => setTimeout(resolve, RETRY_DELAY_MS * retries));
+        await wait(RETRY_DELAY_MS * retries);
       }
     }
   }
@@ -64,13 +89,13 @@ export function guard<T>(
     const result = action();
     return { success: true, result, retries: 0 };
   } catch (error) {
-    const err = error instanceof Error ? error : new Error(String(error));
+    const err = toError(error);
     console.error(`[MercyGuard] ${actionName} failed:`, err);
-    
+
     if (fallback !== undefined) {
       return { success: true, result: fallback, retries: 0 };
     }
-    
+
     return { success: false, error: err, retries: 0 };
   }
 }
@@ -97,7 +122,7 @@ export function logSoftFallback(
   language: 'en' | 'vi' = 'en'
 ): string {
   console.info(`[MercyGuard] Using soft fallback for ${actionName}`);
-  return FALLBACK_MESSAGES[language];
+  return getFallbackMessage(language);
 }
 
 /**
@@ -133,6 +158,8 @@ export function safeLocalStorage<T>(
         localStorage.removeItem(key);
         return null;
       }
+      default:
+        return null;
     }
   } catch (error) {
     console.warn(`[MercyGuard] localStorage ${action} failed for ${key}:`, error);
@@ -166,6 +193,8 @@ export function safeSessionStorage<T>(
         sessionStorage.removeItem(key);
         return null;
       }
+      default:
+        return null;
     }
   } catch (error) {
     console.warn(`[MercyGuard] sessionStorage ${action} failed for ${key}:`, error);

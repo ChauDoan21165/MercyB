@@ -3,6 +3,10 @@
  *
  * Martial arts coaching with mindset, discipline, and safety focus.
  * All lines ≤140 chars, calm and disciplined tone, no violent language.
+ *
+ * NOTE:
+ * - This file remains the RAW content source for martial coaching.
+ * - Personality styling is applied later in engine.ts to avoid double-styling.
  */
 
 export type MartialCoachLevel = "off" | "gentle" | "focused" | "dojo";
@@ -30,7 +34,7 @@ export type DomainCategory = "martial" | "general";
 // -----------------------------
 
 function normalizeText(input: string): string {
-  return input
+  return String(input ?? "")
     .toLowerCase()
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "") // strip diacritics
@@ -43,6 +47,21 @@ function includesAny(haystack: string, needles: string[]): boolean {
     if (haystack.includes(n)) return true;
   }
   return false;
+}
+
+function pickRandom<T>(arr: T[]): T {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+function cleanPlaceholder(text: string, userName?: string | null): string {
+  if (userName) {
+    return text.replace(/\{\{name\}\}/g, userName).replace(/\s+/g, " ").trim();
+  }
+
+  return text
+    .replace(/\{\{name\}\},?\s*/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 const MARTIAL_DOMAIN_KEYWORDS = [
@@ -402,20 +421,11 @@ export function getMartialCoachTip(args: {
   }
 
   // Pick random tip
-  const tip = tips[Math.floor(Math.random() * tips.length)];
+  const tip = pickRandom(tips);
 
   // Replace {{name}} placeholder if userName provided
-  let en = tip.en;
-  let vi = tip.vi;
-
-  if (userName) {
-    en = en.replace(/\{\{name\}\}/g, userName);
-    vi = vi.replace(/\{\{name\}\}/g, userName);
-  } else {
-    // Remove placeholder cleanly if no name
-    en = en.replace(/\{\{name\}\},?\s*/g, "").replace(/\s+/g, " ").trim();
-    vi = vi.replace(/\{\{name\}\},?\s*/g, "").replace(/\s+/g, " ").trim();
-  }
+  const en = cleanPlaceholder(tip.en, userName);
+  const vi = cleanPlaceholder(tip.vi, userName);
 
   return { id: tip.id, en, vi };
 }
@@ -462,7 +472,11 @@ export function getAllMartialTips(): MartialCoachTip[] {
  * Infer martial discipline from room metadata.
  * (Extra args are optional; tests may pass only roomId.)
  */
-export function inferMartialDiscipline(roomId: string, roomDomain?: string | null, tags?: string[] | null): string {
+export function inferMartialDiscipline(
+  roomId: string,
+  roomDomain?: string | null,
+  tags?: string[] | null
+): string {
   const parts: string[] = [];
   if (roomId) parts.push(roomId);
   if (roomDomain) parts.push(roomDomain);

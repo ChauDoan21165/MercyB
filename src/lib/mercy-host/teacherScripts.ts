@@ -1,15 +1,19 @@
 /**
  * Mercy Teacher Scripts - Phase 7
- * 
+ *
  * English teacher mode with micro-tips and pronunciation nudges.
  * All lines ≤120 chars, warm tone, no "AI" language.
  */
 
 import type { TeacherLevel } from './memorySchema';
+import {
+  applyPersonalityWithFlavor,
+  type MercyPersonalityContext,
+} from './personalityRules';
 
 export type { TeacherLevel };
 
-export type TeacherContext = 
+export type TeacherContext =
   | 'ef_room_enter'
   | 'ef_entry_complete'
   | 'ef_streak'
@@ -78,6 +82,7 @@ const TEACHER_TIPS: Record<TeacherLevel, Record<TeacherContext, TeacherTip[]>> =
       }
     ]
   },
+
   normal: {
     ef_room_enter: [
       {
@@ -145,6 +150,7 @@ const TEACHER_TIPS: Record<TeacherLevel, Record<TeacherContext, TeacherTip[]>> =
       }
     ]
   },
+
   intense: {
     ef_room_enter: [
       {
@@ -195,6 +201,34 @@ const TEACHER_TIPS: Record<TeacherLevel, Record<TeacherContext, TeacherTip[]>> =
 };
 
 /**
+ * Map teacher contexts to Mercy personality contexts
+ */
+function mapTeacherContextToPersonalityContext(
+  context: TeacherContext,
+  level: TeacherLevel
+): MercyPersonalityContext {
+  switch (context) {
+    case 'ef_room_enter':
+      return level === 'intense' ? 'gentle_authority' : 'greeting';
+
+    case 'ef_entry_complete':
+      return level === 'intense' ? 'teacher_wit' : 'encouragement';
+
+    case 'ef_streak':
+      return 'encouragement';
+
+    case 'ef_return_after_gap':
+      return 'returning_user';
+
+    case 'ef_pronunciation_focus':
+      return level === 'gentle' ? 'encouragement' : 'teacher_wit';
+
+    default:
+      return 'default';
+  }
+}
+
+/**
  * Get a teacher tip for the given context
  */
 export function getTeacherTip(params: {
@@ -212,15 +246,31 @@ export function getTeacherTip(params: {
   const tip = tipsForContext[Math.floor(Math.random() * tipsForContext.length)];
 
   // Replace name placeholder if present
-  if (userName) {
-    return {
-      ...tip,
-      en: tip.en.replace(/\{\{name\}\}/g, userName),
-      vi: tip.vi.replace(/\{\{name\}\}/g, userName)
-    };
-  }
+  const baseTip = userName
+    ? {
+        ...tip,
+        en: tip.en.replace(/\{\{name\}\}/g, userName),
+        vi: tip.vi.replace(/\{\{name\}\}/g, userName),
+      }
+    : tip;
 
-  return tip;
+  // Apply Mercy Host personality layer
+  const personalityContext = mapTeacherContextToPersonalityContext(context, teacherLevel);
+  const flavored = applyPersonalityWithFlavor(
+    baseTip.en,
+    baseTip.vi,
+    personalityContext,
+    {
+      addPrefix: false,
+      addSuffix: false,
+    }
+  );
+
+  return {
+    ...baseTip,
+    en: flavored.en,
+    vi: flavored.vi,
+  };
 }
 
 /**

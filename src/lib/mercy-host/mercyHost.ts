@@ -1,16 +1,17 @@
 /**
  * Mercy Host - Main Module
- * 
+ *
  * Central logic for Mercy's hosting behavior across all rooms.
  */
 
 import { FALLBACK_NAMES } from './persona';
-import { 
-  getGreetingByTier, 
-  formatGreeting, 
+import { applyPersonality } from './personalityRules';
+import {
+  getGreetingByTier,
+  formatGreeting,
   getRandomGreeting,
   COLOR_MODE_RESPONSES,
-  type GreetingTemplate 
+  type GreetingTemplate
 } from './greetings';
 
 export interface MercyHostContext {
@@ -28,24 +29,48 @@ export interface MercyGreeting {
 }
 
 /**
+ * Map greeting situations to Mercy personality contexts
+ */
+function getGreetingPersonalityContext(
+  userTier: string
+): 'greeting' | 'encouragement' {
+  return ['vip3', 'vip4', 'vip5', 'vip6', 'vip7', 'vip8', 'vip9'].includes(userTier)
+    ? 'encouragement'
+    : 'greeting';
+}
+
+/**
  * Generate room entry greeting
  */
 export function generateRoomGreeting(context: MercyHostContext): MercyGreeting {
   const { userName, userTier, roomTitle, language } = context;
-  
+
   // Use fallback if no name
   const name = userName || (language === 'vi' ? FALLBACK_NAMES.vi : FALLBACK_NAMES.en);
   const altName = userName || (language === 'vi' ? FALLBACK_NAMES.en : FALLBACK_NAMES.vi);
-  
+
   // Get tier-appropriate greeting
   const template = getGreetingByTier(userTier);
-  
-  // Format for both languages
-  const text = formatGreeting(template, name, roomTitle, language);
-  const textAlt = formatGreeting(template, altName, roomTitle, language === 'vi' ? 'en' : 'vi');
-  
+
+  // Format raw text for both languages
+  const rawText = formatGreeting(template, name, roomTitle, language);
+  const rawTextAlt = formatGreeting(
+    template,
+    altName,
+    roomTitle,
+    language === 'vi' ? 'en' : 'vi'
+  );
+
+  // Apply Mercy personality consistently
+  const styled = language === 'vi'
+    ? applyPersonality(rawTextAlt, rawText, getGreetingPersonalityContext(userTier))
+    : applyPersonality(rawText, rawTextAlt, getGreetingPersonalityContext(userTier));
+
+  const text = language === 'vi' ? styled.vi : styled.en;
+  const textAlt = language === 'vi' ? styled.en : styled.vi;
+
   const isVip = ['vip3', 'vip4', 'vip5', 'vip6', 'vip7', 'vip8', 'vip9'].includes(userTier);
-  
+
   return { text, textAlt, isVip };
 }
 
@@ -58,9 +83,11 @@ export function generateColorModeResponse(language: 'en' | 'vi'): string | null 
   if (Math.random() > 0.3) {
     return null;
   }
-  
+
   const template = getRandomGreeting(COLOR_MODE_RESPONSES);
-  return language === 'vi' ? template.vi : template.en;
+  const styled = applyPersonality(template.en, template.vi, 'default');
+
+  return language === 'vi' ? styled.vi : styled.en;
 }
 
 /**
