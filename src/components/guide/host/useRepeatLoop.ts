@@ -1,6 +1,7 @@
 // src/components/guide/host/useRepeatLoop.ts
 // SAFE STUB — required by MercyAIHost import.
 // Minimal API so app boots; no audio side effects here.
+// Improved for Mercy Host repeat coaching.
 
 import { useCallback, useMemo, useState } from "react";
 
@@ -12,38 +13,75 @@ export type RepeatTarget = {
   text_vi?: string;
   audio_url?: string;
 
-  // identifiers (snake_case is canonical)
+  // identifiers (snake_case canonical)
   room_id?: string;
   entry_id?: string;
   keyword?: string;
 
-  // aliases (camelCase) — MercyAIHost uses these in a few places
+  // aliases (camelCase) — MercyAIHost uses these in places
   roomId?: string;
   entryId?: string;
 };
 
+function normalizeTarget(t?: RepeatTarget | null): RepeatTarget | null {
+  if (!t) return null;
+
+  const roomId = t.roomId ?? t.room_id;
+  const entryId = t.entryId ?? t.entry_id;
+
+  return {
+    ...t,
+    roomId,
+    entryId,
+    room_id: roomId,
+    entry_id: entryId,
+  };
+}
+
 export function useRepeatLoop(_args?: unknown) {
-  const [repeatTarget, setRepeatTarget] = useState<RepeatTarget | null>(null);
+  const [repeatTarget, setRepeatTargetRaw] = useState<RepeatTarget | null>(null);
   const [repeatStep, setRepeatStep] = useState<RepeatStep>("idle");
   const [repeatCount, setRepeatCount] = useState(0);
 
+  const setRepeatTarget = useCallback((t: RepeatTarget | null) => {
+    setRepeatTargetRaw(normalizeTarget(t));
+  }, []);
+
   const clearRepeat = useCallback(() => {
-    setRepeatTarget(null);
+    setRepeatTargetRaw(null);
     setRepeatStep("idle");
     setRepeatCount(0);
   }, []);
 
   const startRepeat = useCallback((target: RepeatTarget) => {
-    setRepeatTarget(target || null);
-    // MercyAIHost expects a "listen" phase before play/your_turn
+    const t = normalizeTarget(target);
+
+    setRepeatTargetRaw(t);
+
+    // MercyHost expects a listen phase first
     setRepeatStep("listen");
+
     setRepeatCount(0);
   }, []);
 
   const ackRepeat = useCallback(() => {
-    // Host may call this when user confirms they repeated.
-    setRepeatCount((c) => c + 1);
+    setRepeatCount((c) => {
+      const next = Math.min(3, c + 1);
+      return next;
+    });
+
     setRepeatStep("your_turn");
+  }, []);
+
+  // Optional helper for future lesson / coaching logic
+  const nextRepeatStep = useCallback(() => {
+    setRepeatStep((s) => {
+      if (s === "listen") return "play";
+      if (s === "play") return "your_turn";
+      if (s === "your_turn") return "compare";
+      if (s === "compare") return "your_turn";
+      return s;
+    });
   }, []);
 
   const api = useMemo(
@@ -59,8 +97,18 @@ export function useRepeatLoop(_args?: unknown) {
       clearRepeat,
       startRepeat,
       ackRepeat,
+      nextRepeatStep,
     }),
-    [repeatTarget, repeatStep, repeatCount, clearRepeat, startRepeat, ackRepeat]
+    [
+      repeatTarget,
+      repeatStep,
+      repeatCount,
+      setRepeatTarget,
+      clearRepeat,
+      startRepeat,
+      ackRepeat,
+      nextRepeatStep,
+    ]
   );
 
   return api;

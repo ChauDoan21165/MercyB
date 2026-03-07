@@ -22,6 +22,34 @@
 // PATCH (2026-03-04b):
 // - IMPORTANT: Do NOT spend AI quota unless the AI endpoint actually returns a usable reply.
 //   (Previous logic could spend quota even when we fell back to deterministic makeReply.)
+//
+// PATCH (2026-03-04c):
+// - Replace legacy VIP tiers with Free / Pro / Elite
+// - Promo-friendly daily limits
+// - Auto voice: speak assistant replies (toggle in header, default ON)
+// - Browser TTS fallback: if speak() is missing, use window.speechSynthesis (free)
+//
+// PATCH (2026-03-04d):
+// - Speak the very first welcome message immediately when opening host (lively teacher feel).
+// - Stop voice button also cancels browser TTS.
+//
+// PATCH (2026-03-04e):
+// - Add “I’m stuck / help / start” teacher shortcut (FREE, no AI).
+//
+// PATCH (2026-03-04f):
+// - Add deterministic rolling context summary (FREE) to make AI feel smarter with fewer tokens.
+//   (We send a short summary + a smaller history window to /api/mercy-ai.)
+//
+// PATCH (2026-03-04g):
+// - Add feedback UI (👍/👎 + reason chips) and local queue in localStorage (FREE, no server required).
+//
+// PATCH (2026-03-05):
+// - Add best-effort feedback drain to /api/mercy-feedback (batch + retry/backoff).
+// - IMPORTANT: queue remains source of truth; never blocks UI; never crashes if offline.
+//
+// FIX (2026-03-05a):
+// - Fix TDZ/runtime crash: feedback drain deps referenced repeatTarget/repeatStep before they were declared.
+//   (Repeat loop is now initialized before feedback drain hooks.)
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
@@ -42,7 +70,7 @@ import { useHostActions } from "@/components/guide/host/buildActions";
 import { useDevHostState } from "@/components/guide/host/useDevState";
 import TypingIndicator from "@/components/guide/host/TypingIndicator";
 
-type TierKey = "free" | "vip1" | "vip3" | "vip9";
+type TierKey = "free" | "pro" | "elite";
 
 function safeGetLS(key: string): string | null {
   try {
@@ -55,6 +83,25 @@ function safeGetLS(key: string): string | null {
 function safeSetLSRaw(key: string, val: string) {
   try {
     window.localStorage.setItem(key, val);
+  } catch {
+    // ignore
+  }
+}
+
+function safeGetLSJson<T>(key: string, fallback: T): T {
+  try {
+    const raw = window.localStorage.getItem(key);
+    if (!raw) return fallback;
+    const j = JSON.parse(raw);
+    return (j as T) ?? fallback;
+  } catch {
+    return fallback;
+  }
+}
+
+function safeSetLSJson(key: string, val: any) {
+  try {
+    window.localStorage.setItem(key, JSON.stringify(val));
   } catch {
     // ignore
   }
@@ -99,9 +146,10 @@ function guessVipRankFromEnv(args: { authUserId: string | null; canVoiceTest?: b
   }
 
   // Optional hint: voice test is typically paid/high tier.
-  if (args.canVoiceTest) return 9;
+  // Map this into "elite" by returning >=3.
+  if (args.canVoiceTest) return 3;
 
-  // If logged-in but we cannot detect rank, assume VIP1 (marketing-friendly, but safe quota still applies).
+  // If logged-in but we cannot detect rank, assume Pro (marketing-friendly).
   if (args.authUserId) return 1;
 
   // Anonymous => free
@@ -109,32 +157,30 @@ function guessVipRankFromEnv(args: { authUserId: string | null; canVoiceTest?: b
 }
 
 function tierFromRank(rank: number): TierKey {
-  if (rank >= 9) return "vip9";
-  if (rank >= 3) return "vip3";
-  if (rank >= 1) return "vip1";
+  // Map heuristic ranks to real product tiers
+  if (rank >= 3) return "elite";
+  if (rank >= 1) return "pro";
   return "free";
 }
 
 function tierLabel(tier: TierKey): string {
-  if (tier === "vip9") return "VIP9";
-  if (tier === "vip3") return "VIP3";
-  if (tier === "vip1") return "VIP1";
+  if (tier === "elite") return "Elite";
+  if (tier === "pro") return "Pro";
   return "Free";
 }
 
 function tierNextUpgrade(tier: TierKey): TierKey {
-  if (tier === "free") return "vip1";
-  if (tier === "vip1") return "vip3";
-  if (tier === "vip3") return "vip9";
-  return "vip9";
+  if (tier === "free") return "pro";
+  if (tier === "pro") return "elite";
+  return "elite";
 }
 
 function dailyAiLimitForTier(tier: TierKey): number {
-  // Marketing-friendly default caps
-  if (tier === "free") return 3;
-  if (tier === "vip1") return 30;
-  if (tier === "vip3") return 200;
-  return 2000; // vip9 effectively unlimited
+  // PROMO PHASE (first months): generous limits for word-of-mouth growth
+  // NOTE: Only AI calls cost money. Voice can be free via browser TTS.
+  if (tier === "free") return 30;
+  if (tier === "pro") return 300;
+  return 2000; // elite
 }
 
 function shouldCountAsAiMessage(userText: string, currentMode: PanelMode): boolean {
@@ -197,8 +243,61 @@ function ensureBilingual(text: string) {
   return bi(t, t); // safe fallback (no translation step)
 }
 
+function extractLangFromBilingualBlock(text: string, lang: "en" | "vi") {
+  const t = (text ?? "").trim();
+  if (!isBilingualBlock(t)) return t;
+
+  // Robust extraction:
+  // EN:\n ... \n\nVI:\n ...
+  const m = t.match(/(?:^|\n)EN:\s*\n([\s\S]*?)\n\nVI:\s*\n([\s\S]*)$/);
+  if (!m) return t;
+
+  const enPart = (m[1] ?? "").trim();
+  const viPart = (m[2] ?? "").trim();
+  return lang === "vi" ? viPart : enPart;
+}
+
+/* =========================
+   Browser TTS fallback (FREE)
+   - Works for visitors + Free users with no backend TTS.
+   - Browsers may require a user gesture before speaking.
+========================= */
+function canBrowserSpeak(): boolean {
+  return typeof window !== "undefined" && "speechSynthesis" in window && typeof (window as any).SpeechSynthesisUtterance !== "undefined";
+}
+
+function stopBrowserTTS() {
+  try {
+    if (canBrowserSpeak()) window.speechSynthesis.cancel();
+  } catch {
+    // ignore
+  }
+}
+
+function speakBrowserTTS(text: string, lang: "en" | "vi") {
+  if (!canBrowserSpeak()) return;
+
+  const clean = (text ?? "").trim();
+  if (!clean) return;
+
+  // Stop any current speech
+  stopBrowserTTS();
+
+  try {
+    const Utter = (window as any).SpeechSynthesisUtterance as any;
+    const u = new Utter(clean);
+    u.lang = lang === "vi" ? "vi-VN" : "en-US";
+    u.rate = 1.0;
+    u.pitch = 1.0;
+    u.volume = 1.0;
+    window.speechSynthesis.speak(u);
+  } catch {
+    // ignore
+  }
+}
+
 function looksLikeHello(s: string) {
-  const t = s.trim().toLowerCase();
+  const t = (s ?? "").trim().toLowerCase();
   return (
     t === "hi" ||
     t === "hello" ||
@@ -213,14 +312,51 @@ function looksLikeHello(s: string) {
   );
 }
 
+// “I’m stuck / help / start” => give a teacher-style next step (FREE, no AI).
+function looksLikeStuck(s: string) {
+  const t = (s ?? "").trim().toLowerCase();
+  if (!t) return false;
+
+  // ultra-short nudges
+  if (t === "help" || t === "start" || t === "go" || t === "begin" || t === "what now" || t === "now what") return true;
+
+  // common stuck phrases
+  if (t === "i don't know" || t === "idk" || t === "im stuck" || t === "i am stuck") return true;
+
+  // “how to use / where do i begin”
+  if (t.includes("where do i begin")) return true;
+  if (t.includes("how do i start")) return true;
+  if (t.includes("how to use")) return true;
+  if (t.includes("what should i do")) return true;
+
+  // vietnamese quick
+  if (t === "giúp" || t === "giup" || t === "bắt đầu" || t === "bat dau" || t === "em không biết" || t === "không biết") return true;
+  if (t.includes("bắt đầu từ đâu") || t.includes("bat dau tu dau")) return true;
+
+  return false;
+}
+
+function teacherNextStep(args: { lang: "en" | "vi"; hasProgress: boolean }) {
+  const { hasProgress } = args;
+
+  const enProgress = hasProgress ? "• Continue your last room\n" : "";
+  const viProgress = hasProgress ? "• Vào lại phòng gần nhất\n" : "";
+
+  const en = `No problem. Here is the next step.\n${enProgress}• Take a mini test\n• Practice repeat (3 times)\n• See plans: type /tiers`;
+  const vi = `Không sao. Đây là bước tiếp theo.\n${viProgress}• Làm mini test\n• Luyện nhại (3 lần)\n• Xem gói: gõ /tiers`;
+
+  return bi(en, vi);
+}
+
 function shouldUseAiBrain(userText: string) {
-  const t = userText.trim();
+  const t = (userText ?? "").trim();
   if (!t) return false;
   const low = t.toLowerCase();
 
   // Do NOT call AI for commands or tiny acknowledgements
   if (low.startsWith("/")) return false;
   if (looksLikeHello(t)) return false;
+  if (looksLikeStuck(t)) return false;
 
   // Use AI for “smart” intents
   if (low.startsWith("fix grammar:")) return true;
@@ -233,6 +369,236 @@ function shouldUseAiBrain(userText: string) {
   return false;
 }
 
+/* =========================
+   Deterministic rolling summary (FREE)
+   - Keeps AI context “smart” with fewer tokens.
+   - Avoids sending long history; we send summary + last few turns.
+========================= */
+function stripBilingualToLang(text: string, lang: "en" | "vi") {
+  const t = (text ?? "").trim();
+  if (!t) return "";
+  return extractLangFromBilingualBlock(t, lang).replace(/\s+/g, " ").trim();
+}
+
+function buildRollingSummary(args: {
+  lang: "en" | "vi";
+  mode: PanelMode;
+  contextLine: string | null;
+  roomId: string | undefined;
+  keyword: string | undefined;
+  repeatActive: boolean;
+  repeatStep: string;
+  messages: Array<{ role: "assistant" | "user"; text: string }>;
+}) {
+  const { lang, mode, contextLine, roomId, keyword, repeatActive, repeatStep, messages } = args;
+
+  // take last 2 user messages (most predictive)
+  const lastUsers = messages
+    .slice()
+    .reverse()
+    .filter((m) => m.role === "user")
+    .slice(0, 2)
+    .reverse()
+    .map((m) => stripBilingualToLang(m.text, lang))
+    .filter(Boolean);
+
+  // tiny “state” line
+  const parts: string[] = [];
+  parts.push(`mode:${mode}`);
+  if (contextLine) parts.push(`ctx:${contextLine}`);
+  else if (roomId) parts.push(`room:${roomId}`);
+  if (keyword) parts.push(`kw:${keyword}`);
+  if (repeatActive) parts.push(`repeat:${repeatStep}`);
+
+  const stateLine = parts.join(" | ");
+  const userLine = lastUsers.length ? `last_user: ${lastUsers.join(" / ")}` : "";
+
+  const raw = [stateLine, userLine].filter(Boolean).join("\n");
+  // keep it short for tokens + privacy
+  return raw.length > 420 ? raw.slice(0, 420) + "…" : raw;
+}
+
+/* =========================
+   Feedback (FREE): UI + local queue
+========================= */
+type FeedbackVote = "up" | "down";
+type FeedbackReason =
+  | "helpful"
+  | "clear"
+  | "friendly"
+  | "fixed_it"
+  | "wrong"
+  | "too_long"
+  | "not_relevant"
+  | "confusing"
+  | "audio_ui"
+  | "other";
+
+type HostFeedbackEvent = {
+  v: 1;
+  ts: number;
+  appKey: string;
+
+  // context (avoid PII; no email)
+  authUserId: string | null;
+  tier: TierKey;
+  lang: "en" | "vi";
+  mode: PanelMode;
+  path: string;
+
+  roomId?: string;
+  entryId?: string;
+  keyword?: string;
+  contextLine?: string | null;
+
+  // the rated assistant message
+  msgId: string;
+  vote: FeedbackVote;
+  reason?: FeedbackReason;
+
+  // small snippets only
+  assistantSnippet?: string;
+  lastUserSnippet?: string;
+
+  // optional flags
+  repeatStep?: string;
+  repeatCount?: number;
+};
+
+function feedbackQueueKey(appKey: string) {
+  return `mb.host.feedback.q.${appKey}.v1`;
+}
+function feedbackStateKey(appKey: string) {
+  return `mb.host.feedback.state.${appKey}.v1`;
+}
+
+// ---- Feedback drain (best-effort) ----
+function feedbackDrainStateKey(appKey: string) {
+  return `mb.host.feedback.drain.${appKey}.v1`;
+}
+
+type FeedbackDrainState = {
+  nextAttemptAt: number; // epoch ms
+  backoffMs: number;
+  failCount: number;
+  lastOkAt: number;
+};
+
+const FEEDBACK_DRAIN_DEFAULT: FeedbackDrainState = {
+  nextAttemptAt: 0,
+  backoffMs: 0,
+  failCount: 0,
+  lastOkAt: 0,
+};
+
+function clamp(n: number, lo: number, hi: number) {
+  return Math.max(lo, Math.min(hi, n));
+}
+
+function nextBackoffMs(prev: number) {
+  // 1s -> 2s -> 4s ... capped at 10 min, with light jitter
+  const base = prev > 0 ? Math.min(prev * 2, 10 * 60 * 1000) : 1000;
+  const jitter = Math.floor(Math.random() * 350); // 0..349ms
+  return base + jitter;
+}
+
+function safeGetNavLocale(): string {
+  try {
+    return (navigator as any)?.language || "en-US";
+  } catch {
+    return "en-US";
+  }
+}
+
+function tzOffsetMinLocal(): number {
+  // JS Date.getTimezoneOffset() is minutes behind UTC; invert sign to match +0700 => 420
+  try {
+    return new Date().getTimezoneOffset() * -1;
+  } catch {
+    return 0;
+  }
+}
+
+function getOrCreateAnonId(): string {
+  const key = "mb.anon_id";
+  const existing = safeGetLS(key);
+  if (existing) return existing;
+
+  const next = `mb_anon_${Math.random().toString(16).slice(2)}_${Date.now().toString(16)}`;
+  safeSetLSRaw(key, next);
+  return next;
+}
+
+function toFeedbackPayload(args: {
+  appKey: string;
+  client: { version: string; buildTime: string };
+  actor: { authUserId?: string; authEmail?: string; anonId: string };
+  context: {
+    pagePath: string;
+    mode: PanelMode;
+    contextLine?: string | null;
+    roomId?: string;
+    entryId?: string;
+    keyword?: string;
+    repeat?: { active: boolean; step: string; count: number };
+  };
+  items: HostFeedbackEvent[];
+  signals: { aiUsedToday: number; aiDailyLimit: number; tier: TierKey; autoVoice: boolean };
+}) {
+  const { appKey, client, actor, context, items, signals } = args;
+
+  return {
+    schema: "mb.feedback.v1" as const,
+    appKey,
+    client: {
+      version: client.version,
+      buildTime: client.buildTime,
+      platform: "web" as const,
+      locale: safeGetNavLocale(),
+      tzOffsetMin: tzOffsetMinLocal(),
+    },
+    actor: {
+      authUserId: actor.authUserId ?? undefined,
+      authEmail: actor.authEmail ?? undefined,
+      anonId: actor.anonId,
+    },
+    context: {
+      pagePath: context.pagePath,
+      mode: context.mode,
+      contextLine: context.contextLine ?? null,
+      roomId: context.roomId ?? undefined,
+      entryId: context.entryId ?? undefined,
+      keyword: context.keyword ?? undefined,
+      repeat: context.repeat ?? undefined,
+    },
+    items: items.map((ev) => ({
+      eventId: `${ev.ts}_${ev.msgId}`,
+      ts: new Date(ev.ts).toISOString(),
+      type: "vote",
+      vote: ev.vote,
+      reasonCode: ev.reason ?? undefined,
+      reasonText: "",
+      target: { messageId: ev.msgId, role: "assistant" as const },
+      signals: {
+        aiUsedToday: signals.aiUsedToday,
+        aiDailyLimit: signals.aiDailyLimit,
+        tier: signals.tier,
+        autoVoice: signals.autoVoice,
+      },
+      safety: {
+        containsUserText: Boolean(ev.lastUserSnippet),
+        includeText: Boolean(ev.assistantSnippet || ev.lastUserSnippet),
+      },
+    })),
+  };
+}
+
+function clip(s: any, max: number) {
+  const t = typeof s === "string" ? s.trim() : "";
+  if (!t) return "";
+  return t.length > max ? t.slice(0, max) + "…" : t;
+}
+
 export default function MercyAIHost() {
   const { user } = useAuth();
 
@@ -241,6 +607,14 @@ export default function MercyAIHost() {
   const [mounted, setMounted] = useState(false);
 
   const [lang, setLang] = useState(safeLang());
+
+  // Auto voice (promo default ON)
+  const [autoVoice, setAutoVoice] = useState<boolean>(() => {
+    const raw = safeGetLS("mb.host.auto_voice");
+    if (raw === "0") return false;
+    if (raw === "false") return false;
+    return true;
+  });
 
   const [isTyping, setIsTyping] = useState(false);
   const typingTimerRef = useRef<number | null>(null);
@@ -291,6 +665,14 @@ export default function MercyAIHost() {
     });
   }, []);
 
+  const toggleAutoVoice = useCallback(() => {
+    setAutoVoice((prev) => {
+      const next = !prev;
+      safeSetLSRaw("mb.host.auto_voice", next ? "1" : "0");
+      return next;
+    });
+  }, []);
+
   const clearTypingTimer = useCallback(() => {
     // IMPORTANT: timer id can be 0 in some environments — check against null, not truthy.
     if (typingTimerRef.current !== null) window.clearTimeout(typingTimerRef.current);
@@ -308,29 +690,6 @@ export default function MercyAIHost() {
       clearRepeatNudgeTimer();
     };
   }, [clearTypingTimer, clearRepeatNudgeTimer]);
-
-  const addMsg = useCallback((role: "assistant" | "user", text: string) => {
-    setMessages((prev) => {
-      const clean = (text ?? "").trim();
-      if (!clean) return prev;
-      const id = `${role === "user" ? "u" : "a"}_${Math.random().toString(16).slice(2)}_${Date.now().toString(16)}`;
-      return [...prev, { id, role, text: clean.length > 1800 ? `${clean.slice(0, 1800)}…` : clean }];
-    });
-  }, []);
-
-  const scheduleAssistantMsg = useCallback(
-    (text: string, delayMs: number) => {
-      // Deterministic, calm timing (no AI)
-      clearTypingTimer();
-      setIsTyping(true);
-      typingTimerRef.current = window.setTimeout(() => {
-        setIsTyping(false);
-        typingTimerRef.current = null;
-        addMsg("assistant", text);
-      }, Math.max(0, delayMs | 0));
-    },
-    [addMsg, clearTypingTimer],
-  );
 
   /* =========================
      Host Context (window event + route sync)
@@ -359,13 +718,92 @@ export default function MercyAIHost() {
   const stopVoice: any = profileAny?.stopVoice;
   const isSpeaking: boolean = Boolean(profileAny?.isSpeaking);
 
+  const maybeSpeakAssistant = useCallback(
+    (assistantText: string) => {
+      if (!autoVoice) return;
+
+      const clean = (assistantText ?? "").trim();
+      if (!clean) return;
+
+      // Speak only the current language section (EN or VI) if bilingual
+      const toSpeak = extractLangFromBilingualBlock(clean, lang);
+
+      // Prefer app-provided speak() if available, else fallback to browser TTS.
+      const hasAppSpeak = typeof speak === "function";
+
+      // Stop current voice before speaking new
+      try {
+        if (hasAppSpeak && isSpeaking) stopVoice?.();
+      } catch {
+        // ignore
+      }
+      // Also stop browser TTS so they don't overlap
+      stopBrowserTTS();
+
+      if (hasAppSpeak) {
+        try {
+          // speak() signature varies across builds; keep it tolerant
+          // Try (text, lang) first, fall back to (text)
+          const r = speak(toSpeak, lang);
+          if (typeof (r as any)?.catch === "function") (r as any).catch(() => {});
+          return;
+        } catch {
+          try {
+            const r2 = speak(toSpeak);
+            if (typeof (r2 as any)?.catch === "function") (r2 as any).catch(() => {});
+            return;
+          } catch {
+            // fall through to browser
+          }
+        }
+      }
+
+      // Browser fallback (free)
+      speakBrowserTTS(toSpeak, lang);
+    },
+    [autoVoice, speak, lang, isSpeaking, stopVoice],
+  );
+
+  const addMsg = useCallback(
+    (role: "assistant" | "user", text: string) => {
+      const clean = (text ?? "").trim();
+      if (!clean) return;
+
+      const stored = clean.length > 1800 ? `${clean.slice(0, 1800)}…` : clean;
+
+      setMessages((prev) => {
+        const id = `${role === "user" ? "u" : "a"}_${Math.random().toString(16).slice(2)}_${Date.now().toString(16)}`;
+        return [...prev, { id, role, text: stored }];
+      });
+
+      // Auto-voice for assistant
+      if (role === "assistant") {
+        maybeSpeakAssistant(stored);
+      }
+    },
+    [maybeSpeakAssistant],
+  );
+
+  const scheduleAssistantMsg = useCallback(
+    (text: string, delayMs: number) => {
+      // Deterministic, calm timing (no AI)
+      clearTypingTimer();
+      setIsTyping(true);
+      typingTimerRef.current = window.setTimeout(() => {
+        setIsTyping(false);
+        typingTimerRef.current = null;
+        addMsg("assistant", text);
+      }, Math.max(0, delayMs | 0));
+    },
+    [addMsg, clearTypingTimer],
+  );
+
   // ✅ Tier + AI quota (best-effort)
   const vipRankGuess = useMemo(() => {
     return guessVipRankFromEnv({ authUserId, canVoiceTest, ctx });
   }, [authUserId, canVoiceTest, ctx]);
 
   const tierKey = useMemo<TierKey>(() => tierFromRank(vipRankGuess), [vipRankGuess]);
-
   const aiDailyLimit = useMemo(() => dailyAiLimitForTier(tierKey), [tierKey]);
 
   const [aiUsedToday, setAiUsedToday] = useState(0);
@@ -389,7 +827,7 @@ export default function MercyAIHost() {
     const p = location.pathname || "/";
     if (p.startsWith("/signin")) return lang === "vi" ? "Hỗ trợ đăng nhập" : "Login help";
     if (p.startsWith("/room/")) return lang === "vi" ? "Hỗ trợ phòng học" : "Room help";
-    if (p.startsWith("/tiers")) return lang === "vi" ? "Chọn gói VIP" : "Choose VIP tier";
+    if (p.startsWith("/tiers")) return lang === "vi" ? "Chọn gói" : "Choose a plan";
     return lang === "vi" ? "Hỗ trợ" : "Help";
   }, [location.pathname, lang]);
 
@@ -398,7 +836,7 @@ export default function MercyAIHost() {
       case "email":
         return lang === "vi" ? "Hỗ trợ email" : "Email help";
       case "billing":
-        return lang === "vi" ? "Hỗ trợ thanh toán/VIP" : "Subscription help";
+        return lang === "vi" ? "Hỗ trợ gói / thanh toán" : "Plan & billing help";
       case "about":
         return lang === "vi" ? "Giới thiệu" : "About";
       default:
@@ -468,9 +906,9 @@ export default function MercyAIHost() {
     const pronLine_en = "Pronunciation coaching (read aloud + corrections) is coming soon.";
     const pronLine_vi = "Luyện phát âm (đọc to và được góp ý) sẽ có sớm.";
 
-    const enText = `Hi${name}. I’m Mercy Host.\n${p_en ? p_en + "\n" : ""}${aiLine_en}\n${pronLine_en}\nWhat do you need right now?\n• Choose a VIP tier (/tiers)\n• Take a mini test\n• Start learning in a room\n• Report a problem (audio/UI)`;
+    const enText = `Hi${name}. I’m Mercy Host.\n${p_en ? p_en + "\n" : ""}${aiLine_en}\n${pronLine_en}\nWhat do you need right now?\n• Choose a plan (/tiers)\n• Take a mini test\n• Start learning in a room\n• Report a problem (audio/UI)`;
 
-    const viText = `Chào${name}. Mình là Mercy Host.\n${p_vi ? p_vi + "\n" : ""}${aiLine_vi}\n${pronLine_vi}\nBạn muốn làm gì ngay bây giờ?\n• Chọn gói VIP (/tiers)\n• Làm mini test\n• Vào phòng học\n• Báo lỗi (audio/UI)`;
+    const viText = `Chào${name}. Mình là Mercy Host.\n${p_vi ? p_vi + "\n" : ""}${aiLine_vi}\n${pronLine_vi}\nBạn muốn làm gì ngay bây giờ?\n• Chọn gói (/tiers)\n• Làm mini test\n• Vào phòng học\n• Báo lỗi (audio/UI)`;
 
     return bi(enText, viText);
   }, [displayName, lastProgress, isSignin, aiUsedToday, aiDailyLimit]);
@@ -479,10 +917,7 @@ export default function MercyAIHost() {
     (nextMode: PanelMode) => {
       setMessages((prev) => {
         if (prev.length) return prev;
-        const first =
-          nextMode === "home"
-            ? baseAssistantHome
-            : bi(`Hi. Ask me anything about ${nextMode}.`, `Chào. Hỏi mình về ${nextMode}.`);
+        const first = nextMode === "home" ? baseAssistantHome : bi(`Hi. Ask me anything about ${nextMode}.`, `Chào. Hỏi mình về ${nextMode}.`);
         return [
           {
             id: `a_${Math.random().toString(16).slice(2)}_${Date.now().toString(16)}`,
@@ -498,13 +933,13 @@ export default function MercyAIHost() {
   /* =========================
      Repeat loop (events + hearts)
      - MUST be safe with stub host/useRepeatLoop.ts
+     - IMPORTANT: declared BEFORE feedback drain hooks to avoid TDZ.
   ========================= */
   const repeatApi: any = useRepeatLoop();
   const repeatTarget = repeatApi?.repeatTarget ?? null;
   const repeatStep = repeatApi?.repeatStep ?? "idle";
   const repeatCount = repeatApi?.repeatCount ?? 0;
 
-  const setRepeatTarget = repeatApi?.setRepeatTarget ?? (() => {});
   const setRepeatStep = repeatApi?.setRepeatStep ?? (() => {});
   const clearRepeatBase = repeatApi?.clearRepeat ?? (() => {});
   const startRepeat = repeatApi?.startRepeat ?? (() => {});
@@ -551,16 +986,335 @@ export default function MercyAIHost() {
 
       const t = (userText ?? "").trim().toLowerCase();
       const ok = t === "ok" || t === "okay" || t === "done" || t === "repeated" || t === "i repeated it" || t === "xong";
-
       if (!ok) return null;
 
       ackRepeat();
+
       // hearts at 3 (best-effort: using current count + 1)
       if (typeof repeatCount === "number" && repeatCount + 1 === 3) triggerHeart("repeat3");
 
       return { handled: true };
     },
     [repeatTarget, repeatStep, ackRepeat, repeatCount, triggerHeart],
+  );
+
+  /* =========================
+     Feedback state + queue (FREE)
+  ========================= */
+  const [feedbackState, setFeedbackState] = useState<Record<string, { vote: FeedbackVote; reason?: FeedbackReason }>>(() =>
+    safeGetLSJson<Record<string, { vote: FeedbackVote; reason?: FeedbackReason }>>(feedbackStateKey(appKey), {}),
+  );
+
+  useEffect(() => {
+    // Keep tiny state persisted (which messages were rated) so UI remains stable on reload.
+    safeSetLSJson(feedbackStateKey(appKey), feedbackState);
+  }, [feedbackState, appKey]);
+
+  // ---- Feedback drain state/timers ----
+  const anonId = useMemo(() => getOrCreateAnonId(), []);
+  const [fbDrain, setFbDrain] = useState<FeedbackDrainState>(() =>
+    safeGetLSJson<FeedbackDrainState>(feedbackDrainStateKey(appKey), FEEDBACK_DRAIN_DEFAULT),
+  );
+
+  useEffect(() => {
+    safeSetLSJson(feedbackDrainStateKey(appKey), fbDrain);
+  }, [fbDrain, appKey]);
+
+  const fbDrainInFlightRef = useRef(false);
+  const fbDrainTimerRef = useRef<number | null>(null);
+  const drainFeedbackQueueRef = useRef<((why: "open" | "enqueue" | "timer" | "visibility" | "online") => void) | null>(null);
+
+  const clearFbDrainTimer = useCallback(() => {
+    if (fbDrainTimerRef.current !== null) window.clearTimeout(fbDrainTimerRef.current);
+    fbDrainTimerRef.current = null;
+  }, []);
+
+  const scheduleFbDrain = useCallback(
+    (delayMs: number, why: "timer" | "enqueue" = "timer") => {
+      clearFbDrainTimer();
+      fbDrainTimerRef.current = window.setTimeout(() => {
+        fbDrainTimerRef.current = null;
+        try {
+          drainFeedbackQueueRef.current?.(why);
+        } catch {
+          // ignore
+        }
+      }, Math.max(0, delayMs | 0));
+    },
+    [clearFbDrainTimer],
+  );
+
+  const drainFeedbackQueue = useCallback(
+    async (_why: "open" | "enqueue" | "timer" | "visibility" | "online") => {
+      if (fbDrainInFlightRef.current) return;
+
+      // Offline => keep queue local
+      try {
+        if (typeof navigator !== "undefined" && "onLine" in navigator && (navigator as any).onLine === false) return;
+      } catch {
+        // ignore
+      }
+
+      const now = Date.now();
+      const st = safeGetLSJson<FeedbackDrainState>(feedbackDrainStateKey(appKey), FEEDBACK_DRAIN_DEFAULT);
+      if (st.nextAttemptAt && now < st.nextAttemptAt) return;
+
+      const qKey = feedbackQueueKey(appKey);
+      const qAll = safeGetLSJson<HostFeedbackEvent[]>(qKey, []);
+      if (!qAll.length) {
+        setFbDrain((prev) => ({ ...prev, nextAttemptAt: 0, backoffMs: 0, failCount: 0 }));
+        return;
+      }
+
+      const BATCH_SIZE = 10;
+      const batch = qAll.slice(0, BATCH_SIZE);
+
+      const c = (ctx as any) ?? {};
+      const rid = c?.roomId ?? roomIdFromUrl ?? undefined;
+
+      const payload = toFeedbackPayload({
+        appKey,
+        client: {
+          version: "MB-BLUE-101.7h",
+          buildTime: "2026-03-05T00:00:00.000Z",
+        },
+        actor: {
+          authUserId: authUserId ?? undefined,
+          // NOTE: schema allows authEmail, but the original local event avoids email.
+          // Keep it opt-in: comment out next line if you want strict "never send email".
+          authEmail: authEmail || undefined,
+          anonId,
+        },
+        context: {
+          pagePath: location.pathname || "/",
+          mode,
+          contextLine,
+          roomId: rid,
+          entryId: c?.entryId ?? undefined,
+          keyword: c?.keyword ?? undefined,
+          repeat: {
+            active: Boolean(repeatTarget),
+            step: String(repeatStep ?? "idle"),
+            count: typeof repeatCount === "number" ? repeatCount : 0,
+          },
+        },
+        items: batch,
+        signals: {
+          aiUsedToday,
+          aiDailyLimit,
+          tier: tierKey,
+          autoVoice,
+        },
+      });
+
+      fbDrainInFlightRef.current = true;
+      try {
+        const r = await fetch("/api/mercy-feedback", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+
+        // Retryable: 429/5xx
+        if (r.status === 429 || r.status >= 500) {
+          const retryAfterSec = parseIntLoose(r.headers.get("retry-after")) ?? null;
+          const base = retryAfterSec !== null ? clamp(retryAfterSec * 1000, 1000, 10 * 60 * 1000) : nextBackoffMs(st.backoffMs);
+          const nextAttemptAt = Date.now() + base;
+
+          setFbDrain({ nextAttemptAt, backoffMs: base, failCount: (st.failCount ?? 0) + 1, lastOkAt: st.lastOkAt ?? 0 });
+          scheduleFbDrain(base, "timer");
+          return;
+        }
+
+        // Non-retryable: keep queue, stop hammering for a while
+        if (!r.ok) {
+          const base = 60 * 60 * 1000; // 1 hour
+          setFbDrain({ nextAttemptAt: Date.now() + base, backoffMs: base, failCount: (st.failCount ?? 0) + 1, lastOkAt: st.lastOkAt ?? 0 });
+          return;
+        }
+
+        // Success: drop accepted events from local queue
+        let acceptedCount = batch.length;
+        try {
+          const j = await r.json();
+          if (typeof j?.acceptedCount === "number") acceptedCount = Math.max(0, Math.min(batch.length, j.acceptedCount));
+        } catch {
+          // ignore
+        }
+
+        const remaining = qAll.slice(acceptedCount);
+        safeSetLSJson(qKey, remaining);
+
+        setFbDrain({ nextAttemptAt: 0, backoffMs: 0, failCount: 0, lastOkAt: Date.now() });
+
+        // Drain more soon if needed
+        if (remaining.length) scheduleFbDrain(120, "timer");
+      } catch {
+        const base = nextBackoffMs(st.backoffMs);
+        const nextAttemptAt = Date.now() + base;
+        setFbDrain({ nextAttemptAt, backoffMs: base, failCount: (st.failCount ?? 0) + 1, lastOkAt: st.lastOkAt ?? 0 });
+        scheduleFbDrain(base, "timer");
+      } finally {
+        fbDrainInFlightRef.current = false;
+      }
+    },
+    [
+      appKey,
+      anonId,
+      authUserId,
+      authEmail,
+      location.pathname,
+      mode,
+      contextLine,
+      ctx,
+      roomIdFromUrl,
+      repeatTarget,
+      repeatStep,
+      repeatCount,
+      aiUsedToday,
+      aiDailyLimit,
+      tierKey,
+      autoVoice,
+      scheduleFbDrain,
+    ],
+  );
+
+  useEffect(() => {
+    drainFeedbackQueueRef.current = (why) => {
+      void drainFeedbackQueue(why);
+    };
+    return () => {
+      drainFeedbackQueueRef.current = null;
+    };
+  }, [drainFeedbackQueue]);
+
+  useEffect(() => {
+    if (!open) return;
+    void drainFeedbackQueue("open");
+  }, [open, drainFeedbackQueue]);
+
+  useEffect(() => {
+    const onVis = () => {
+      try {
+        if (document.visibilityState === "visible") void drainFeedbackQueue("visibility");
+      } catch {
+        // ignore
+      }
+    };
+    document.addEventListener("visibilitychange", onVis);
+    return () => document.removeEventListener("visibilitychange", onVis);
+  }, [drainFeedbackQueue]);
+
+  useEffect(() => {
+    const onOnline = () => void drainFeedbackQueue("online");
+    window.addEventListener("online", onOnline);
+    return () => window.removeEventListener("online", onOnline);
+  }, [drainFeedbackQueue]);
+
+  useEffect(() => {
+    return () => {
+      clearFbDrainTimer();
+    };
+  }, [clearFbDrainTimer]);
+
+  const pushFeedback = useCallback(
+    (ev: HostFeedbackEvent) => {
+      const key = feedbackQueueKey(appKey);
+      const q = safeGetLSJson<HostFeedbackEvent[]>(key, []);
+      const next = [...q, ev];
+      // cap so LS doesn't blow up
+      const capped = next.length > 200 ? next.slice(next.length - 200) : next;
+      safeSetLSJson(key, capped);
+
+      // Best-effort drain shortly after enqueue (never blocks UI)
+      scheduleFbDrain(250, "enqueue");
+    },
+    [appKey, scheduleFbDrain],
+  );
+
+  const setFeedbackForMsg = useCallback(
+    (args: { msgId: string; vote: FeedbackVote; reason?: FeedbackReason; assistantText?: string }) => {
+      const { msgId, vote, reason, assistantText } = args;
+
+      // Determine last user snippet (helps debugging, but keep tiny and local)
+      const lastUser = [...messages].reverse().find((m) => m.role === "user")?.text ?? "";
+      const c = (ctx as any) ?? {};
+
+      setFeedbackState((prev) => {
+        const existing = prev[msgId];
+        // toggle off if clicking same vote again AND no reason selected
+        const shouldClear = existing?.vote === vote && !reason && !existing?.reason;
+        if (shouldClear) {
+          const copy = { ...prev };
+          delete copy[msgId];
+          return copy;
+        }
+        return { ...prev, [msgId]: { vote, reason: reason ?? existing?.reason } };
+      });
+
+      const event: HostFeedbackEvent = {
+        v: 1,
+        ts: Date.now(),
+        appKey,
+        authUserId,
+        tier: tierKey,
+        lang,
+        mode,
+        path: location.pathname || "/",
+        roomId: c?.roomId ?? roomIdFromUrl ?? undefined,
+        entryId: c?.entryId ?? undefined,
+        keyword: c?.keyword ?? undefined,
+        contextLine,
+        msgId,
+        vote,
+        reason,
+        assistantSnippet: clip(assistantText ?? "", 280),
+        lastUserSnippet: clip(lastUser, 180),
+        repeatStep: typeof repeatApi?.repeatStep === "string" ? repeatApi.repeatStep : String(repeatStep ?? ""),
+        repeatCount: typeof repeatCount === "number" ? repeatCount : undefined,
+      };
+
+      pushFeedback(event);
+    },
+    [
+      appKey,
+      authUserId,
+      tierKey,
+      lang,
+      mode,
+      location.pathname,
+      ctx,
+      roomIdFromUrl,
+      contextLine,
+      messages,
+      pushFeedback,
+      repeatApi,
+      repeatStep,
+      repeatCount,
+    ],
+  );
+
+  const upReasons = useMemo(
+    () =>
+      [
+        { id: "helpful" as const, en: "Helpful", vi: "Hữu ích" },
+        { id: "clear" as const, en: "Clear", vi: "Rõ ràng" },
+        { id: "friendly" as const, en: "Friendly", vi: "Dễ chịu" },
+        { id: "fixed_it" as const, en: "Fixed it", vi: "Sửa đúng" },
+      ] as const,
+    [],
+  );
+  const downReasons = useMemo(
+    () =>
+      [
+        { id: "wrong" as const, en: "Wrong", vi: "Sai" },
+        { id: "not_relevant" as const, en: "Not relevant", vi: "Không đúng ý" },
+        { id: "confusing" as const, en: "Confusing", vi: "Khó hiểu" },
+        { id: "too_long" as const, en: "Too long", vi: "Dài quá" },
+        { id: "audio_ui" as const, en: "Audio/UI", vi: "Âm thanh/UI" },
+        { id: "other" as const, en: "Other", vi: "Khác" },
+      ] as const,
+    [],
   );
 
   // mb:host-repeat-target listener (LOCKED behavior: opens host + sets target)
@@ -712,19 +1466,39 @@ export default function MercyAIHost() {
     return bi(en, vi);
   }, []);
 
+  // FREE: rolling summary for AI brain (computed from current state)
+  const rollingSummary = useMemo(() => {
+    const c = (ctx as any) ?? {};
+    const rid = c?.roomId ?? roomIdFromUrl;
+    const kw = c?.keyword ?? "";
+    return buildRollingSummary({
+      lang,
+      mode,
+      contextLine,
+      roomId: rid,
+      keyword: kw,
+      repeatActive: Boolean(repeatTarget),
+      repeatStep: String(repeatStep ?? "idle"),
+      messages: messages.map((m) => ({ role: m.role, text: m.text })),
+    });
+  }, [ctx, roomIdFromUrl, lang, mode, contextLine, repeatTarget, repeatStep, messages]);
+
   // ---- AI brain call (gpt-4o-mini) via /api/mercy-ai ----
   const callMercyAi = useCallback(
     async (userText: string) => {
+      const c = (ctx as any) ?? {};
       const payload = {
         userText,
         lang,
+        summary: rollingSummary, // ✅ short deterministic summary
         context: {
-          roomId: (ctx as any)?.roomId ?? roomIdFromUrl ?? "",
-          roomTitle: (ctx as any)?.roomTitle ?? "",
-          keyword: (ctx as any)?.keyword ?? "",
-          entryId: (ctx as any)?.entryId ?? "",
+          roomId: c?.roomId ?? roomIdFromUrl ?? "",
+          roomTitle: c?.roomTitle ?? "",
+          keyword: c?.keyword ?? "",
+          entryId: c?.entryId ?? "",
         },
-        history: messages.slice(-6).map((m) => ({ role: m.role, text: m.text })),
+        // ✅ Send fewer turns (summary does the heavy lifting)
+        history: messages.slice(-4).map((m) => ({ role: m.role, text: m.text })),
       };
 
       const r = await fetch("/api/mercy-ai", {
@@ -738,7 +1512,7 @@ export default function MercyAIHost() {
       const text = norm(j?.text);
       return text || null;
     },
-    [lang, ctx, roomIdFromUrl, messages],
+    [lang, ctx, roomIdFromUrl, messages, rollingSummary],
   );
 
   const assistantRespond = useCallback(
@@ -754,10 +1528,22 @@ export default function MercyAIHost() {
         const name = displayName ? ` ${displayName}` : "";
         addMsg(
           "assistant",
-          bi(
-            `Hello${name}. Good to see you.\nWhat do you want to do right now?`,
-            `Chào${name}. Rất vui gặp bạn.\nBạn muốn làm gì ngay bây giờ?`,
-          ),
+          bi(`Hello${name}. Good to see you.\nWhat do you want to do right now?`, `Chào${name}. Rất vui gặp bạn.\nBạn muốn làm gì ngay bây giờ?`),
+        );
+        return;
+      }
+
+      // 0b) “I’m stuck / help / start” shortcut (FREE, teacher-like, no AI)
+      if (looksLikeStuck(textTrim)) {
+        clearTypingTimer();
+        setIsTyping(false);
+
+        addMsg(
+          "assistant",
+          teacherNextStep({
+            lang,
+            hasProgress: Boolean(lastProgress?.roomId) && !isSignin,
+          }),
         );
         return;
       }
@@ -828,10 +1614,7 @@ export default function MercyAIHost() {
         if (typeof makeReplyFn !== "function") {
           addMsg(
             "assistant",
-            bi(
-              "Host is in a bad state (makeReply). Please refresh (Cmd+R).",
-              "Host đang lỗi (makeReply). Bạn refresh trang (Cmd+R) giúp mình nhé.",
-            ),
+            bi("Host is in a bad state (makeReply). Please refresh (Cmd+R).", "Host đang lỗi (makeReply). Bạn refresh trang (Cmd+R) giúp mình nhé."),
           );
           return;
         }
@@ -848,6 +1631,9 @@ export default function MercyAIHost() {
           appKey,
           contextLine,
           headerSubtitle,
+
+          // Optional: deterministic summary (safe to ignore in makeReply)
+          chatSummary: rollingSummary,
 
           repeatTarget,
           repeatStep,
@@ -904,20 +1690,38 @@ export default function MercyAIHost() {
       aiDailyLimit,
       quotaBlockMessage,
       bumpAiUsed,
+      lastProgress?.roomId,
+      isSignin,
+      rollingSummary,
     ],
   );
 
   const openPanel = useCallback(() => {
     setOpen(true);
+
+    // Seed first message (welcome)
+    const wasEmpty = messages.length === 0;
     seedIfEmpty(mode);
-  }, [seedIfEmpty, mode]);
+
+    // Speak the first welcome immediately (for the “teacher enters the room” feel).
+    // NOTE: Most browsers require a user gesture; this is called by a click, so it should work.
+    if (wasEmpty) {
+      const first = mode === "home" ? baseAssistantHome : bi(`Hi. Ask me anything about ${mode}.`, `Chào. Hỏi mình về ${mode}.`);
+      window.setTimeout(() => {
+        maybeSpeakAssistant(first);
+      }, 60);
+    }
+  }, [messages.length, seedIfEmpty, mode, baseAssistantHome, maybeSpeakAssistant]);
 
   const closePanel = useCallback(() => {
     setOpen(false);
     clearTypingTimer();
     clearRepeatNudgeTimer();
     setIsTyping(false);
+
+    // Stop both app voice (if any) and browser fallback voice
     stopVoice?.();
+    stopBrowserTTS();
   }, [clearTypingTimer, clearRepeatNudgeTimer, stopVoice]);
 
   const onSend = useCallback(() => {
@@ -1019,6 +1823,8 @@ export default function MercyAIHost() {
     repeatSeenAt,
     repeatCount,
     heartBurst,
+    autoVoice,
+    rollingSummary,
   });
 
   const isBrowser = typeof document !== "undefined";
@@ -1078,11 +1884,23 @@ export default function MercyAIHost() {
     const limit = aiDailyLimit;
     const tier = tierLabel(tierKey);
 
-    // Keep it short; VIP9 still shows count but not scary
     const text = `${tier} • AI ${Math.min(used, limit)}/${limit}`;
     const warn = used >= limit;
     return { text, warn };
   }, [aiUsedToday, aiDailyLimit, tierKey]);
+
+  const hasAnyVoice = typeof speak === "function" || canBrowserSpeak();
+
+  const chipStyle = {
+    borderRadius: 999,
+    border: "1px solid rgba(0,0,0,0.12)",
+    background: "#fff",
+    padding: "5px 8px",
+    fontSize: 11,
+    fontWeight: 800,
+    cursor: "pointer",
+    color: "rgba(0,0,0,0.78)",
+  } as React.CSSProperties;
 
   // ✅ closed state must not cover the screen (so OAuth buttons work)
   const ui = open ? (
@@ -1248,10 +2066,38 @@ export default function MercyAIHost() {
             </div>
 
             <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-              {isSpeaking ? (
+              {/* Auto voice toggle */}
+              <button
+                type="button"
+                onClick={toggleAutoVoice}
+                title={autoVoice ? (lang === "vi" ? "Tắt giọng" : "Mute voice") : lang === "vi" ? "Bật giọng" : "Enable voice"}
+                style={{
+                  border: "1px solid rgba(0,0,0,0.10)",
+                  background: "#fff",
+                  borderRadius: 999,
+                  height: 32,
+                  padding: "0 10px",
+                  fontSize: 12,
+                  fontWeight: 900,
+                  cursor: "pointer",
+                  color: "rgba(0,0,0,0.70)",
+                }}
+              >
+                {autoVoice ? "🔊" : "🔇"}
+              </button>
+
+              {/* Stop voice (always cancels browser TTS too) */}
+              {hasAnyVoice ? (
                 <button
                   type="button"
-                  onClick={() => stopVoice?.()}
+                  onClick={() => {
+                    try {
+                      stopVoice?.();
+                    } catch {
+                      // ignore
+                    }
+                    stopBrowserTTS();
+                  }}
                   title={lang === "vi" ? "Dừng giọng" : "Stop voice"}
                   style={{
                     border: "1px solid rgba(0,0,0,0.10)",
@@ -1263,6 +2109,7 @@ export default function MercyAIHost() {
                     fontWeight: 800,
                     cursor: "pointer",
                     color: "rgba(0,0,0,0.70)",
+                    opacity: isSpeaking ? 1 : 0.9,
                   }}
                 >
                   ■
@@ -1400,12 +2247,17 @@ export default function MercyAIHost() {
 
             {messages.map((m) => {
               const isUser = m.role === "user";
+              const fb = !isUser ? feedbackState[m.id] : undefined;
+              const showReasons = Boolean(fb?.vote);
+              const reasons = fb?.vote === "down" ? downReasons : upReasons;
+
               return (
                 <div
                   key={m.id}
                   style={{
                     display: "flex",
-                    justifyContent: isUser ? "flex-end" : "flex-start",
+                    flexDirection: "column",
+                    alignItems: isUser ? "flex-end" : "flex-start",
                     marginTop: 10,
                   }}
                 >
@@ -1422,6 +2274,78 @@ export default function MercyAIHost() {
                   >
                     {m.text}
                   </div>
+
+                  {/* Feedback UI (assistant messages only) */}
+                  {!isUser ? (
+                    <div style={{ marginTop: 6, display: "flex", flexDirection: "column", gap: 6, maxWidth: "86%" }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                        <button
+                          type="button"
+                          onClick={() => setFeedbackForMsg({ msgId: m.id, vote: "up", assistantText: m.text })}
+                          title={lang === "vi" ? "Hữu ích" : "Helpful"}
+                          style={{
+                            borderRadius: 999,
+                            border: "1px solid rgba(0,0,0,0.12)",
+                            background: fb?.vote === "up" ? "rgba(0,0,0,0.08)" : "#fff",
+                            padding: "4px 9px",
+                            fontSize: 12,
+                            fontWeight: 900,
+                            cursor: "pointer",
+                            color: "rgba(0,0,0,0.75)",
+                          }}
+                        >
+                          👍
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={() => setFeedbackForMsg({ msgId: m.id, vote: "down", assistantText: m.text })}
+                          title={lang === "vi" ? "Không hữu ích" : "Not helpful"}
+                          style={{
+                            borderRadius: 999,
+                            border: "1px solid rgba(0,0,0,0.12)",
+                            background: fb?.vote === "down" ? "rgba(0,0,0,0.08)" : "#fff",
+                            padding: "4px 9px",
+                            fontSize: 12,
+                            fontWeight: 900,
+                            cursor: "pointer",
+                            color: "rgba(0,0,0,0.75)",
+                          }}
+                        >
+                          👎
+                        </button>
+
+                        {fb?.vote ? (
+                          <div style={{ fontSize: 11, color: "rgba(0,0,0,0.55)" }}>{lang === "vi" ? "Cảm ơn." : "Thanks."}</div>
+                        ) : (
+                          <div style={{ fontSize: 11, color: "rgba(0,0,0,0.45)" }}>{lang === "vi" ? "Phản hồi" : "Feedback"}</div>
+                        )}
+                      </div>
+
+                      {showReasons ? (
+                        <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                          {reasons.map((r) => {
+                            const label = lang === "vi" ? r.vi : r.en;
+                            const active = fb?.reason === r.id;
+                            return (
+                              <button
+                                key={r.id}
+                                type="button"
+                                onClick={() => setFeedbackForMsg({ msgId: m.id, vote: fb!.vote, reason: r.id, assistantText: m.text })}
+                                style={{
+                                  ...chipStyle,
+                                  background: active ? "rgba(0,0,0,0.08)" : "#fff",
+                                }}
+                                title={label}
+                              >
+                                {label}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      ) : null}
+                    </div>
+                  ) : null}
                 </div>
               );
             })}
@@ -1480,8 +2404,8 @@ export default function MercyAIHost() {
               <div style={{ fontSize: 11, fontWeight: 700, color: "rgba(0,0,0,0.70)" }}>{lang === "vi" ? "Gợi ý nhanh" : "Care loop"}</div>
               <div style={{ fontSize: 11, color: "rgba(0,0,0,0.60)", marginTop: 6 }}>
                 {lang === "vi"
-                  ? `Gợi ý: gõ “fix grammar:” để sửa ngữ pháp. Luyện phát âm (đọc to và được góp ý) sẽ có sớm. Nếu muốn mở VIP, vào /tiers.`
-                  : `Tip: type “fix grammar:” to correct grammar. Pronunciation coaching (read aloud + corrections) is coming soon. For VIP access, go to /tiers.`}
+                  ? `Gợi ý: gõ “fix grammar:” để sửa ngữ pháp. Luyện phát âm (đọc to và được góp ý) sẽ có sớm. Nếu muốn mở gói, vào /tiers.`
+                  : `Tip: type “fix grammar:” to correct grammar. Pronunciation coaching (read aloud + corrections) is coming soon. For plans, go to /tiers.`}
               </div>
             </div>
           </div>
