@@ -2,6 +2,12 @@
  * Mercy Host - Main Module
  *
  * Central logic for Mercy's hosting behavior across all rooms.
+ *
+ * Upgrade goals:
+ * - calmer, more teacher-like room greetings
+ * - support teacher-mode planning without breaking existing callers
+ * - keep personality as a rendering layer, not the decision layer
+ * - orchestrate Mercy's teaching pipeline in one place
  */
 
 import { FALLBACK_NAMES } from './persona';
@@ -11,8 +17,50 @@ import {
   formatGreeting,
   getRandomGreeting,
   COLOR_MODE_RESPONSES,
-  type GreetingTemplate
+  type GreetingTemplate,
 } from './greetings';
+import {
+  getTeacherTip,
+  buildTeacherPlan,
+  renderTeacherResponse,
+  type TeacherContext,
+  type TeacherLevel,
+} from './teacherScripts';
+import { inferLearnerState, type LearnerState } from './learnerState';
+import {
+  buildResponsePlan,
+  type ResponsePlan,
+  type ToneStyle,
+} from './responsePlanner';
+import { calibrateTone, type ToneCalibrationResult } from './toneCalibration';
+import {
+  buildTeachingStrategy,
+  buildCorrectionStrategy,
+  renderTeachingStrategy,
+  type TeachingStrategyResult,
+} from './teachingStrategies';
+import { getTeachingModeProfile, type TeachingMode } from './teachingModes';
+import {
+  loadLessonMemory,
+  updateLessonMemory,
+  isRepeatedMistake,
+  shouldReviewConcept,
+  type LessonMemoryState,
+} from './lessonMemory';
+import {
+  loadCurriculumState,
+  updateCurriculumTopic,
+  getCurriculumRecommendation,
+  type CurriculumRecommendation,
+  type CurriculumState,
+} from './curriculumTracker';
+import {
+  getRecommendedDifficulty,
+  type DifficultyLevel,
+  type DifficultySnapshot,
+} from './difficultyScaler';
+import { appendHumor, detectBossJoke, type HumorStyle } from './humorEngine';
+import { inferGuardToneSignals, type GuardToneSignals } from './guard';
 
 export interface MercyHostContext {
   userName: string | null;
@@ -24,35 +72,220 @@ export interface MercyHostContext {
 
 export interface MercyGreeting {
   text: string;
-  textAlt: string; // alternate language
+  textAlt: string;
   isVip: boolean;
 }
 
-/**
- * Map greeting situations to Mercy personality contexts
- */
+export interface MercyTeacherReply {
+  text: string;
+  textAlt: string;
+  move: string;
+  tone: string;
+}
+
+export interface MercyTeacherReplyInput {
+  userName?: string | null;
+  language: 'en' | 'vi';
+  teacherLevel: TeacherLevel;
+  context?: TeacherContext;
+  learnerText?: string;
+  correction?: {
+    mistake: string;
+    fix: string;
+  };
+  explanation?: string;
+  nextPrompt?: string;
+  repeatedMistake?: boolean;
+  wantsChallenge?: boolean;
+  wantsExplanation?: boolean;
+}
+
+export interface MercyTeachingTurnInput {
+  userId?: string | null;
+  userName?: string | null;
+  userTier?: string;
+  language: 'en' | 'vi';
+  learnerText: string;
+  correction?: {
+    mistake: string;
+    fix: string;
+  };
+  explanation?: string;
+  nextPrompt?: string;
+  concept?: string;
+  summary?: string;
+  example?: string;
+  currentDifficulty?: DifficultyLevel;
+  isCorrectiveTurn?: boolean;
+  wantsChallenge?: boolean;
+  wantsExplanation?: boolean;
+  wantsDrill?: boolean;
+  wantsRecap?: boolean;
+  repeatedMistake?: boolean;
+  teacherLevel?: TeacherLevel;
+  suppressHumor?: boolean;
+  requireDirectness?: boolean;
+  softenTone?: boolean;
+  humorStyle?: HumorStyle;
+  specificPraise?: string;
+}
+
+export interface MercyTeachingTurnResult {
+  text: string;
+  textAlt: string;
+  learnerState: LearnerState;
+  plan: ResponsePlan;
+  tone: ToneCalibrationResult;
+  strategy: TeachingStrategyResult;
+  memory: LessonMemoryState;
+  curriculum: CurriculumState;
+  curriculumRecommendation: CurriculumRecommendation;
+  difficulty: DifficultySnapshot;
+  guardSignals: GuardToneSignals;
+  repeatedMistake: boolean;
+  shouldReviewConcept: boolean;
+}
+
+const VIP_TIERS = new Set([
+  'vip3',
+  'vip4',
+  'vip5',
+  'vip6',
+  'vip7',
+  'vip8',
+  'vip9',
+]);
+
+/* -------------------------------------------------------------------------- */
+/* Core helpers                                                               */
+/* -------------------------------------------------------------------------- */
+
 function getGreetingPersonalityContext(
   userTier: string
 ): 'greeting' | 'encouragement' {
-  return ['vip3', 'vip4', 'vip5', 'vip6', 'vip7', 'vip8', 'vip9'].includes(userTier)
-    ? 'encouragement'
-    : 'greeting';
+  return VIP_TIERS.has(userTier) ? 'encouragement' : 'greeting';
 }
 
-/**
- * Generate room entry greeting
- */
+function cleanText(text: string): string {
+  return String(text ?? '')
+    .replace(/\s+/g, ' ')
+    .replace(/\s([,.!?;:])/g, '$1')
+    .trim();
+}
+
+function getResolvedName(
+  userName: string | null | undefined,
+  language: 'en' | 'vi'
+): string {
+  return userName || (language === 'vi' ? FALLBACK_NAMES.vi : FALLBACK_NAMES.en);
+}
+
+function getAltResolvedName(
+  userName: string | null | undefined,
+  language: 'en' | 'vi'
+): string {
+  return userName || (language === 'vi' ? FALLBACK_NAMES.en : FALLBACK_NAMES.vi);
+}
+
+function resolveTeacherLevel(
+  explicitLevel: TeacherLevel | undefined,
+  userTier: string | undefined
+): TeacherLevel {
+  if (explicitLevel) return explicitLevel;
+  return mapTierToTeacherLevel(userTier || 'free');
+}
+
+function resolveDifficulty(
+  currentDifficulty?: DifficultyLevel
+): DifficultyLevel {
+  return currentDifficulty || 'medium';
+}
+
+function resolveSuccess(input: MercyTeachingTurnInput): boolean {
+  return !(input.isCorrectiveTurn || input.correction);
+}
+
+function resolveConceptKey(input: MercyTeachingTurnInput): string | undefined {
+  return input.concept || input.correction?.mistake || undefined;
+}
+
+function deriveHumorStyle(input: MercyTeachingTurnInput): HumorStyle {
+  const resolvedTeacherLevel = resolveTeacherLevel(input.teacherLevel, input.userTier);
+
+  if (input.humorStyle) return input.humorStyle;
+  if (detectBossJoke(input.learnerText)) return 'teacher_wit';
+  if (resolvedTeacherLevel === 'intense') return 'dry';
+  return 'teacher_wit';
+}
+
+function getHumorContext(plan: ResponsePlan, difficulty: DifficultySnapshot) {
+  if (plan.teachingMode === 'challenge') return 'challenge';
+  if (plan.teachingMode === 'correct') return 'correction';
+  if (plan.teachingMode === 'drill') return 'pronunciation';
+  if (difficulty.direction === 'up') return 'streak';
+  return 'success';
+}
+
+function getPersonalityContextForMode(mode: TeachingMode) {
+  switch (mode) {
+    case 'challenge':
+      return 'gentle_authority';
+    case 'encourage':
+      return 'encouragement';
+    case 'explain':
+    case 'correct':
+      return 'teacher_wit';
+    default:
+      return 'default';
+  }
+}
+
+function applyFinalVoiceAndPersonality(args: {
+  en: string;
+  vi: string;
+  language: 'en' | 'vi';
+  mode: TeachingMode;
+  tone: ToneStyle;
+}): { text: string; textAlt: string } {
+  const styled = applyPersonality(
+    args.en,
+    args.vi,
+    getPersonalityContextForMode(args.mode)
+  );
+
+  return {
+    text: args.language === 'vi' ? cleanText(styled.vi) : cleanText(styled.en),
+    textAlt: args.language === 'vi' ? cleanText(styled.en) : cleanText(styled.vi),
+  };
+}
+
+/* -------------------------------------------------------------------------- */
+/* Tier mapping                                                               */
+/* -------------------------------------------------------------------------- */
+
+export function mapTierToTeacherLevel(userTier: string): TeacherLevel {
+  if (VIP_TIERS.has(userTier)) {
+    return 'intense';
+  }
+
+  if (userTier === 'vip1' || userTier === 'vip2') {
+    return 'normal';
+  }
+
+  return 'gentle';
+}
+
+/* -------------------------------------------------------------------------- */
+/* Greeting generation                                                        */
+/* -------------------------------------------------------------------------- */
+
 export function generateRoomGreeting(context: MercyHostContext): MercyGreeting {
   const { userName, userTier, roomTitle, language } = context;
 
-  // Use fallback if no name
-  const name = userName || (language === 'vi' ? FALLBACK_NAMES.vi : FALLBACK_NAMES.en);
-  const altName = userName || (language === 'vi' ? FALLBACK_NAMES.en : FALLBACK_NAMES.vi);
-
-  // Get tier-appropriate greeting
+  const name = getResolvedName(userName, language);
+  const altName = getAltResolvedName(userName, language);
   const template = getGreetingByTier(userTier);
 
-  // Format raw text for both languages
   const rawText = formatGreeting(template, name, roomTitle, language);
   const rawTextAlt = formatGreeting(
     template,
@@ -61,25 +294,315 @@ export function generateRoomGreeting(context: MercyHostContext): MercyGreeting {
     language === 'vi' ? 'en' : 'vi'
   );
 
-  // Apply Mercy personality consistently
-  const styled = language === 'vi'
-    ? applyPersonality(rawTextAlt, rawText, getGreetingPersonalityContext(userTier))
-    : applyPersonality(rawText, rawTextAlt, getGreetingPersonalityContext(userTier));
+  const styled =
+    language === 'vi'
+      ? applyPersonality(rawTextAlt, rawText, getGreetingPersonalityContext(userTier))
+      : applyPersonality(rawText, rawTextAlt, getGreetingPersonalityContext(userTier));
 
-  const text = language === 'vi' ? styled.vi : styled.en;
-  const textAlt = language === 'vi' ? styled.en : styled.vi;
+  return {
+    text: language === 'vi' ? cleanText(styled.vi) : cleanText(styled.en),
+    textAlt: language === 'vi' ? cleanText(styled.en) : cleanText(styled.vi),
+    isVip: VIP_TIERS.has(userTier),
+  };
+}
 
-  const isVip = ['vip3', 'vip4', 'vip5', 'vip6', 'vip7', 'vip8', 'vip9'].includes(userTier);
+export function generateTeacherGreeting(
+  context: MercyHostContext,
+  teacherLevel?: TeacherLevel
+): MercyGreeting {
+  const { userName, userTier, language } = context;
+  const resolvedLevel = teacherLevel || mapTierToTeacherLevel(userTier);
 
-  return { text, textAlt, isVip };
+  const tip = getTeacherTip({
+    teacherLevel: resolvedLevel,
+    context: 'ef_room_enter',
+    userName: userName || undefined,
+  });
+
+  return {
+    text: language === 'vi' ? cleanText(tip.vi) : cleanText(tip.en),
+    textAlt: language === 'vi' ? cleanText(tip.en) : cleanText(tip.vi),
+    isVip: VIP_TIERS.has(userTier),
+  };
+}
+
+export function generateTeacherTip(params: {
+  language: 'en' | 'vi';
+  teacherLevel: TeacherLevel;
+  context: TeacherContext;
+  userName?: string | null;
+}): MercyGreeting {
+  const tip = getTeacherTip({
+    teacherLevel: params.teacherLevel,
+    context: params.context,
+    userName: params.userName || undefined,
+  });
+
+  return {
+    text: params.language === 'vi' ? cleanText(tip.vi) : cleanText(tip.en),
+    textAlt: params.language === 'vi' ? cleanText(tip.en) : cleanText(tip.vi),
+    isVip: false,
+  };
+}
+
+/* -------------------------------------------------------------------------- */
+/* Legacy teacher-mode reply                                                  */
+/* -------------------------------------------------------------------------- */
+
+export function generateTeacherReply(
+  input: MercyTeacherReplyInput
+): MercyTeacherReply {
+  const {
+    language,
+    teacherLevel,
+    context,
+    learnerText,
+    correction,
+    explanation,
+    nextPrompt,
+    repeatedMistake,
+    wantsChallenge,
+    wantsExplanation,
+  } = input;
+
+  const plan = buildTeacherPlan({
+    teacherLevel,
+    context,
+    learnerText,
+    correction,
+    explanation,
+    nextPrompt,
+    repeatedMistake,
+    wantsChallenge,
+    wantsExplanation,
+    userName: input.userName || undefined,
+  });
+
+  const rendered = renderTeacherResponse({
+    teacherLevel,
+    context,
+    learnerText,
+    correction,
+    explanation,
+    nextPrompt,
+    repeatedMistake,
+    wantsChallenge,
+    wantsExplanation,
+    userName: input.userName || undefined,
+  });
+
+  return {
+    text: language === 'vi' ? cleanText(rendered.vi) : cleanText(rendered.en),
+    textAlt: language === 'vi' ? cleanText(rendered.en) : cleanText(rendered.vi),
+    move: plan.move,
+    tone: plan.tone,
+  };
+}
+
+/* -------------------------------------------------------------------------- */
+/* New orchestration pipeline                                                 */
+/* -------------------------------------------------------------------------- */
+
+export function generateTeachingTurn(
+  input: MercyTeachingTurnInput
+): MercyTeachingTurnResult {
+  const userId = input.userId || 'default';
+  const learnerState = inferLearnerState(input.learnerText);
+  const guardSignals = inferGuardToneSignals(input.learnerText);
+  const conceptKey = resolveConceptKey(input);
+  const success = resolveSuccess(input);
+
+  const repeatedMistake = input.correction?.mistake
+    ? isRepeatedMistake(input.correction.mistake, userId)
+    : !!input.repeatedMistake;
+
+  const shouldReview = conceptKey
+    ? shouldReviewConcept(conceptKey, userId)
+    : false;
+
+  const memoryBefore = loadLessonMemory(userId);
+  const curriculumBefore = loadCurriculumState();
+
+  const difficulty = getRecommendedDifficulty({
+    current: resolveDifficulty(input.currentDifficulty),
+    memory: memoryBefore,
+    repeatedMistake,
+    recentCorrect: success,
+    lowConfidence: learnerState.confidence === 'low',
+    confused: learnerState.clarity === 'lost',
+  });
+
+  const plan = buildResponsePlan({
+    learnerState,
+    isCorrectiveTurn: input.isCorrectiveTurn || !!input.correction,
+    wantsChallenge: input.wantsChallenge,
+    wantsExplanation: input.wantsExplanation || !!input.explanation,
+    wantsDrill: input.wantsDrill,
+    wantsRecap: input.wantsRecap,
+    repeatedMistake,
+    shouldReviewConcept: shouldReview,
+    difficultyDirection: difficulty.direction,
+    suppressHumor: input.suppressHumor ?? guardSignals.suppressHumor,
+    requireDirectness: input.requireDirectness ?? guardSignals.requireDirectness,
+    softenTone: input.softenTone ?? guardSignals.softenTone,
+  });
+
+  const calibrated = calibrateTone({
+    learnerState,
+    plan,
+    suppressHumor: input.suppressHumor ?? guardSignals.suppressHumor,
+    requireDirectness: input.requireDirectness ?? guardSignals.requireDirectness,
+    softenTone: input.softenTone ?? guardSignals.softenTone,
+    repeatedMistake,
+    shouldReviewConcept: shouldReview,
+    wantsExplanation: input.wantsExplanation || !!input.explanation,
+    wantsRecap: input.wantsRecap,
+    wantsDrill: input.wantsDrill,
+  });
+
+  const strategy =
+    plan.teachingMode === 'correct' && input.correction
+      ? buildCorrectionStrategy(calibrated.correctionStyle, input.correction, {
+          tone: calibrated.tone,
+          nextPrompt: input.nextPrompt,
+          learnerName: input.userName || undefined,
+          concept: input.concept,
+          example: input.example,
+          specificPraise: input.specificPraise,
+        })
+      : buildTeachingStrategy({
+          mode: plan.teachingMode,
+          tone: calibrated.tone,
+          correction: input.correction,
+          summary: input.summary,
+          explanation: input.explanation,
+          example: input.example,
+          concept: input.concept,
+          cue: input.nextPrompt,
+          nextPrompt: input.nextPrompt,
+          specificPraise: input.specificPraise,
+          learnerName: input.userName || undefined,
+        });
+
+  const renderedStrategy = renderTeachingStrategy(strategy);
+
+  const humorApplied = appendHumor(
+    {
+      en: renderedStrategy.en,
+      vi: renderedStrategy.vi,
+    },
+    {
+      style: deriveHumorStyle(input),
+      context: getHumorContext(plan, difficulty),
+      learnerText: input.learnerText,
+      isConfused: learnerState.clarity === 'lost',
+      isFrustrated: learnerState.affect === 'frustrated',
+      isSensitiveMoment:
+        learnerState.affect === 'frustrated' || learnerState.confidence === 'low',
+      repeatedMistake,
+      allowBossJoke: detectBossJoke(input.learnerText),
+      userName: input.userName || undefined,
+    }
+  );
+
+  const finalText = applyFinalVoiceAndPersonality({
+    en: humorApplied.en,
+    vi: humorApplied.vi,
+    language: input.language,
+    mode: plan.teachingMode,
+    tone: calibrated.tone,
+  });
+
+  const memory = updateLessonMemory(
+    {
+      correct: success,
+      mistake: input.correction?.mistake,
+      concept: conceptKey,
+    },
+    userId
+  );
+
+  const curriculum = conceptKey
+    ? updateCurriculumTopic({
+        topic: conceptKey,
+        correct: success,
+      })
+    : curriculumBefore;
+
+  const curriculumRecommendation = getCurriculumRecommendation();
+
+  return {
+    text: finalText.text,
+    textAlt: finalText.textAlt,
+    learnerState,
+    plan,
+    tone: calibrated,
+    strategy,
+    memory,
+    curriculum,
+    curriculumRecommendation,
+    difficulty,
+    guardSignals,
+    repeatedMistake,
+    shouldReviewConcept: shouldReview,
+  };
 }
 
 /**
- * Generate color mode switch response
- * Returns null 70% of the time to avoid being overwhelming
+ * Convenience helper for English Foundation style teaching turns.
  */
+export function generateEnglishFoundationReply(input: {
+  userId?: string | null;
+  userName?: string | null;
+  userTier?: string;
+  language: 'en' | 'vi';
+  learnerText: string;
+  correction?: {
+    mistake: string;
+    fix: string;
+  };
+  explanation?: string;
+  nextPrompt?: string;
+  concept?: string;
+  summary?: string;
+  example?: string;
+  currentDifficulty?: DifficultyLevel;
+  wantsChallenge?: boolean;
+  wantsExplanation?: boolean;
+  wantsDrill?: boolean;
+  wantsRecap?: boolean;
+  specificPraise?: string;
+}): MercyTeachingTurnResult {
+  return generateTeachingTurn({
+    ...input,
+    teacherLevel: resolveTeacherLevel(undefined, input.userTier),
+    isCorrectiveTurn: !!input.correction,
+  });
+}
+
+/**
+ * Explain the current teaching state in a compact debug-friendly form.
+ */
+export function summarizeTeachingTurn(result: MercyTeachingTurnResult): string {
+  const modeProfile = getTeachingModeProfile(result.plan.teachingMode);
+
+  return cleanText(
+    [
+      `mode=${modeProfile.mode}`,
+      `tone=${result.tone.tone}`,
+      `reason=${result.plan.reason}`,
+      `difficulty=${result.difficulty.direction}`,
+      `repeat=${String(result.repeatedMistake)}`,
+      `review=${String(result.shouldReviewConcept)}`,
+    ].join(' | ')
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Color mode response                                                        */
+/* -------------------------------------------------------------------------- */
+
 export function generateColorModeResponse(language: 'en' | 'vi'): string | null {
-  // Only respond 30% of the time
   if (Math.random() > 0.3) {
     return null;
   }
@@ -87,19 +610,17 @@ export function generateColorModeResponse(language: 'en' | 'vi'): string | null 
   const template = getRandomGreeting(COLOR_MODE_RESPONSES);
   const styled = applyPersonality(template.en, template.vi, 'default');
 
-  return language === 'vi' ? styled.vi : styled.en;
+  return language === 'vi' ? cleanText(styled.vi) : cleanText(styled.en);
 }
 
-/**
- * Get session key for tracking greeting shown state
- */
+/* -------------------------------------------------------------------------- */
+/* Session helpers                                                            */
+/* -------------------------------------------------------------------------- */
+
 export function getGreetingSessionKey(roomId: string): string {
   return `mercy_greeting_shown_${roomId}`;
 }
 
-/**
- * Check if greeting was already shown for this room in current session
- */
 export function wasGreetingShown(roomId: string): boolean {
   try {
     return sessionStorage.getItem(getGreetingSessionKey(roomId)) === 'true';
@@ -108,9 +629,6 @@ export function wasGreetingShown(roomId: string): boolean {
   }
 }
 
-/**
- * Mark greeting as shown for this room
- */
 export function markGreetingShown(roomId: string): void {
   try {
     sessionStorage.setItem(getGreetingSessionKey(roomId), 'true');
@@ -120,5 +638,5 @@ export function markGreetingShown(roomId: string): void {
 }
 
 // Re-export types and utilities
-export type { GreetingTemplate };
+export type { GreetingTemplate, TeacherContext, TeacherLevel };
 export { FALLBACK_NAMES };

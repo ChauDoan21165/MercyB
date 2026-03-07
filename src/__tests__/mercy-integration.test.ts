@@ -4,8 +4,7 @@
  * Tests ChatHub + MercyHostProvider interplay.
  *
  * MB-BLUE NOTE (2026-02-25):
- * - Tier greeting script import must work in CJS require() tests. This is now handled
- *   by src/test/setup.ts (adds TS/TSX extension fallback).
+ * - Tier greeting script import must work in tests.
  * - Memory schema version may evolve (e.g., v6). Tests should assert migration adds fields
  *   and preserves data, not pin an old version number unless the version is locked.
  * - Tier-change animation may be updated by design (halo vs shimmer). This suite expects HALO.
@@ -98,7 +97,6 @@ describe("Mercy Integration Tests", () => {
 
       engine.onEnterRoom("test-room", "Test Room");
 
-      // Should have triggered state updates
       expect(setState).toHaveBeenCalled();
     });
 
@@ -108,7 +106,6 @@ describe("Mercy Integration Tests", () => {
 
       engine.onEnterRoom("test-room", "Test Room");
 
-      // Greeting should not be visible
       expect(state.isGreetingVisible).toBe(false);
     });
   });
@@ -131,7 +128,6 @@ describe("Mercy Integration Tests", () => {
 
       engine.onTierChange("vip5");
 
-      // Current engine behavior: tier change produces halo (not shimmer).
       expect(state.currentAnimation).toBe("halo");
     });
   });
@@ -157,7 +153,6 @@ describe("Mercy Integration Tests", () => {
     });
 
     it("should migrate old memory versions", () => {
-      // Legacy v1 payload
       localStorage.setItem(
         "mercy_host_memory",
         JSON.stringify({
@@ -169,8 +164,6 @@ describe("Mercy Integration Tests", () => {
 
       const loaded = loadValidatedMemory();
 
-      // Don't pin a specific version unless schema version is LOCKED.
-      // We assert: migration happened AND new fields exist.
       expect(typeof loaded.version).toBe("number");
       expect(loaded.version).toBeGreaterThanOrEqual(2);
 
@@ -188,12 +181,10 @@ describe("Mercy Integration Tests", () => {
         processed.push(event);
       });
 
-      // Submit multiple events rapidly
       eventLimiter.submit("room_enter");
       eventLimiter.submit("entry_click");
       eventLimiter.submit("color_toggle");
 
-      // Only first should process immediately
       expect(processed.length).toBe(1);
       expect(processed[0]).toBe("room_enter");
     });
@@ -204,9 +195,7 @@ describe("Mercy Integration Tests", () => {
       const status1 = eventLimiter.getStatus();
       expect(status1.queueLength).toBe(0);
 
-      // Submit one that processes
       eventLimiter.submit("room_enter");
-      // Submit more that get queued
       eventLimiter.submit("entry_click");
       eventLimiter.submit("color_toggle");
 
@@ -260,10 +249,8 @@ describe("Mercy Integration Tests", () => {
   });
 
   describe("Greeting Snapshots", () => {
-    it("should have consistent greeting text for free tier", () => {
-      // CJS require in legacy tests; setup.ts makes "@/..." resolvable.
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
-      const { getTierGreeting } = require("@/lib/mercy-host/tierScripts");
+    it("should have consistent greeting text for free tier", async () => {
+      const { getTierGreeting } = await import("@/lib/mercy-host/tierScripts");
 
       const greeting = getTierGreeting("free", "TestUser");
 
@@ -273,13 +260,11 @@ describe("Mercy Integration Tests", () => {
       expect(greeting.vi.length).toBeGreaterThan(0);
     });
 
-    it("should include user name in greeting", () => {
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
-      const { getTierGreeting } = require("@/lib/mercy-host/tierScripts");
+    it("should include user name in greeting", async () => {
+      const { getTierGreeting } = await import("@/lib/mercy-host/tierScripts");
 
       const greeting = getTierGreeting("free", "Alice");
 
-      // At least one greeting should contain the name OR the template token has been fully resolved.
       expect(
         greeting.en.includes("Alice") || !greeting.en.includes("{{name}}"),
       ).toBe(true);

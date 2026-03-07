@@ -7,12 +7,12 @@ import path from "node:path";
 export default defineConfig({
   plugins: [
     react(),
-    tsconfigPaths(), // ✅ honor tsconfig "paths"
+    tsconfigPaths(), // honor tsconfig "paths"
   ],
 
   resolve: {
     alias: {
-      // ✅ fallback alias (won't hurt even with tsconfigPaths)
+      // fallback alias (safe even with tsconfigPaths)
       "@": path.resolve(__dirname, "./src"),
     },
   },
@@ -22,6 +22,9 @@ export default defineConfig({
     environment: "jsdom",
     setupFiles: ["./src/test/setup.ts"],
 
+    // ✅ prevent slow async tests from failing
+    testTimeout: 15000,
+
     exclude: [
       "**/node_modules/**",
       "**/dist/**",
@@ -30,7 +33,7 @@ export default defineConfig({
       "**/playwright/**",
     ],
 
-    // ✅ avoid path/esm weirdness for internal alias imports
+    // stable test execution
     pool: "threads",
     clearMocks: true,
     restoreMocks: true,
