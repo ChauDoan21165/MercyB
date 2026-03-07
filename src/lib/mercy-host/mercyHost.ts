@@ -8,6 +8,8 @@
  * - support teacher-mode planning without breaking existing callers
  * - keep personality as a rendering layer, not the decision layer
  * - orchestrate Mercy's teaching pipeline in one place
+ * - apply teacher rhythm before humor/personality rendering
+ * - centralize final dialogue assembly through teacherDialogueBuilder
  */
 
 import { FALLBACK_NAMES } from './persona';
@@ -36,10 +38,9 @@ import { calibrateTone, type ToneCalibrationResult } from './toneCalibration';
 import {
   buildTeachingStrategy,
   buildCorrectionStrategy,
-  renderTeachingStrategy,
   type TeachingStrategyResult,
 } from './teachingStrategies';
-import { getTeachingModeProfile, type TeachingMode } from './teachingModes';
+import { getTeachingModeProfile } from './teachingModes';
 import {
   loadLessonMemory,
   updateLessonMemory,
@@ -59,8 +60,9 @@ import {
   type DifficultyLevel,
   type DifficultySnapshot,
 } from './difficultyScaler';
-import { appendHumor, detectBossJoke, type HumorStyle } from './humorEngine';
+import { detectBossJoke, type HumorStyle } from './humorEngine';
 import { inferGuardToneSignals, type GuardToneSignals } from './guard';
+import { buildTeacherDialogue } from './teacherDialogueBuilder';
 
 export interface MercyHostContext {
   userName: string | null;
@@ -121,13 +123,11 @@ export interface MercyTeachingTurnInput {
   wantsExplanation?: boolean;
   wantsDrill?: boolean;
   wantsRecap?: boolean;
-  repeatedMistake?: boolean;
   teacherLevel?: TeacherLevel;
   suppressHumor?: boolean;
   requireDirectness?: boolean;
   softenTone?: boolean;
   humorStyle?: HumorStyle;
-  specificPraise?: string;
 }
 
 export interface MercyTeachingTurnResult {
@@ -155,10 +155,6 @@ const VIP_TIERS = new Set([
   'vip8',
   'vip9',
 ]);
-
-/* -------------------------------------------------------------------------- */
-/* Core helpers                                                               */
-/* -------------------------------------------------------------------------- */
 
 function getGreetingPersonalityContext(
   userTier: string
@@ -201,67 +197,12 @@ function resolveDifficulty(
   return currentDifficulty || 'medium';
 }
 
-function resolveSuccess(input: MercyTeachingTurnInput): boolean {
-  return !(input.isCorrectiveTurn || input.correction);
-}
-
-function resolveConceptKey(input: MercyTeachingTurnInput): string | undefined {
-  return input.concept || input.correction?.mistake || undefined;
-}
-
 function deriveHumorStyle(input: MercyTeachingTurnInput): HumorStyle {
-  const resolvedTeacherLevel = resolveTeacherLevel(input.teacherLevel, input.userTier);
-
   if (input.humorStyle) return input.humorStyle;
   if (detectBossJoke(input.learnerText)) return 'teacher_wit';
-  if (resolvedTeacherLevel === 'intense') return 'dry';
+  if (input.teacherLevel === 'intense') return 'dry';
   return 'teacher_wit';
 }
-
-function getHumorContext(plan: ResponsePlan, difficulty: DifficultySnapshot) {
-  if (plan.teachingMode === 'challenge') return 'challenge';
-  if (plan.teachingMode === 'correct') return 'correction';
-  if (plan.teachingMode === 'drill') return 'pronunciation';
-  if (difficulty.direction === 'up') return 'streak';
-  return 'success';
-}
-
-function getPersonalityContextForMode(mode: TeachingMode) {
-  switch (mode) {
-    case 'challenge':
-      return 'gentle_authority';
-    case 'encourage':
-      return 'encouragement';
-    case 'explain':
-    case 'correct':
-      return 'teacher_wit';
-    default:
-      return 'default';
-  }
-}
-
-function applyFinalVoiceAndPersonality(args: {
-  en: string;
-  vi: string;
-  language: 'en' | 'vi';
-  mode: TeachingMode;
-  tone: ToneStyle;
-}): { text: string; textAlt: string } {
-  const styled = applyPersonality(
-    args.en,
-    args.vi,
-    getPersonalityContextForMode(args.mode)
-  );
-
-  return {
-    text: args.language === 'vi' ? cleanText(styled.vi) : cleanText(styled.en),
-    textAlt: args.language === 'vi' ? cleanText(styled.en) : cleanText(styled.vi),
-  };
-}
-
-/* -------------------------------------------------------------------------- */
-/* Tier mapping                                                               */
-/* -------------------------------------------------------------------------- */
 
 export function mapTierToTeacherLevel(userTier: string): TeacherLevel {
   if (VIP_TIERS.has(userTier)) {
@@ -275,15 +216,12 @@ export function mapTierToTeacherLevel(userTier: string): TeacherLevel {
   return 'gentle';
 }
 
-/* -------------------------------------------------------------------------- */
-/* Greeting generation                                                        */
-/* -------------------------------------------------------------------------- */
-
 export function generateRoomGreeting(context: MercyHostContext): MercyGreeting {
   const { userName, userTier, roomTitle, language } = context;
 
   const name = getResolvedName(userName, language);
   const altName = getAltResolvedName(userName, language);
+
   const template = getGreetingByTier(userTier);
 
   const rawText = formatGreeting(template, name, roomTitle, language);
@@ -345,10 +283,6 @@ export function generateTeacherTip(params: {
   };
 }
 
-/* -------------------------------------------------------------------------- */
-/* Legacy teacher-mode reply                                                  */
-/* -------------------------------------------------------------------------- */
-
 export function generateTeacherReply(
   input: MercyTeacherReplyInput
 ): MercyTeacherReply {
@@ -399,19 +333,14 @@ export function generateTeacherReply(
   };
 }
 
-/* -------------------------------------------------------------------------- */
-/* New orchestration pipeline                                                 */
-/* -------------------------------------------------------------------------- */
-
 export function generateTeachingTurn(
   input: MercyTeachingTurnInput
 ): MercyTeachingTurnResult {
   const userId = input.userId || 'default';
   const learnerState = inferLearnerState(input.learnerText);
   const guardSignals = inferGuardToneSignals(input.learnerText);
-  const conceptKey = resolveConceptKey(input);
-  const success = resolveSuccess(input);
 
+  const conceptKey = input.concept || input.correction?.mistake || undefined;
   const repeatedMistake = input.correction?.mistake
     ? isRepeatedMistake(input.correction.mistake, userId)
     : !!input.repeatedMistake;
@@ -427,7 +356,7 @@ export function generateTeachingTurn(
     current: resolveDifficulty(input.currentDifficulty),
     memory: memoryBefore,
     repeatedMistake,
-    recentCorrect: success,
+    recentCorrect: !input.isCorrectiveTurn && !input.correction,
     lowConfidence: learnerState.confidence === 'low',
     confused: learnerState.clarity === 'lost',
   });
@@ -468,7 +397,6 @@ export function generateTeachingTurn(
           learnerName: input.userName || undefined,
           concept: input.concept,
           example: input.example,
-          specificPraise: input.specificPraise,
         })
       : buildTeachingStrategy({
           mode: plan.teachingMode,
@@ -480,60 +408,62 @@ export function generateTeachingTurn(
           concept: input.concept,
           cue: input.nextPrompt,
           nextPrompt: input.nextPrompt,
-          specificPraise: input.specificPraise,
+          specificPraise: undefined,
           learnerName: input.userName || undefined,
         });
 
-  const renderedStrategy = renderTeachingStrategy(strategy);
-
-  const humorApplied = appendHumor(
-    {
-      en: renderedStrategy.en,
-      vi: renderedStrategy.vi,
-    },
-    {
-      style: deriveHumorStyle(input),
-      context: getHumorContext(plan, difficulty),
-      learnerText: input.learnerText,
-      isConfused: learnerState.clarity === 'lost',
-      isFrustrated: learnerState.affect === 'frustrated',
-      isSensitiveMoment:
-        learnerState.affect === 'frustrated' || learnerState.confidence === 'low',
-      repeatedMistake,
-      allowBossJoke: detectBossJoke(input.learnerText),
-      userName: input.userName || undefined,
-    }
-  );
-
-  const finalText = applyFinalVoiceAndPersonality({
-    en: humorApplied.en,
-    vi: humorApplied.vi,
+  const dialogue = buildTeacherDialogue({
+    userId,
+    userName: input.userName,
     language: input.language,
-    mode: plan.teachingMode,
-    tone: calibrated.tone,
+    learnerText: input.learnerText,
+    concept: input.concept,
+    mistake: input.correction?.mistake,
+    plan,
+    tone: calibrated,
+    strategy,
+    humorStyle: deriveHumorStyle(input),
+    allowHumor: calibrated.shouldUseHumor,
+    humorContext:
+      plan.teachingMode === 'challenge'
+        ? 'challenge'
+        : plan.teachingMode === 'correct'
+          ? 'correction'
+          : plan.teachingMode === 'drill'
+            ? 'pronunciation'
+            : difficulty.direction === 'up'
+              ? 'streak'
+              : 'success',
+    isConfused: learnerState.clarity === 'lost',
+    isFrustrated: learnerState.affect === 'frustrated',
+    isSensitiveMoment:
+      learnerState.affect === 'frustrated' || learnerState.confidence === 'low',
+    repeatedMistake,
+    allowBossJoke: detectBossJoke(input.learnerText),
   });
 
   const memory = updateLessonMemory(
     {
-      correct: success,
+      correct: !(input.isCorrectiveTurn || input.correction),
       mistake: input.correction?.mistake,
       concept: conceptKey,
     },
     userId
   );
 
-  const curriculum = conceptKey
-    ? updateCurriculumTopic({
-        topic: conceptKey,
-        correct: success,
-      })
-    : curriculumBefore;
+  const curriculum =
+    conceptKey
+      ? updateCurriculumTopic({
+          topic: conceptKey,
+          correct: !(input.isCorrectiveTurn || input.correction),
+        })
+      : curriculumBefore;
 
   const curriculumRecommendation = getCurriculumRecommendation();
 
   return {
-    text: finalText.text,
-    textAlt: finalText.textAlt,
+    text: dialogue.text,
+    textAlt: dialogue.textAlt,
     learnerState,
     plan,
     tone: calibrated,
@@ -548,9 +478,6 @@ export function generateTeachingTurn(
   };
 }
 
-/**
- * Convenience helper for English Foundation style teaching turns.
- */
 export function generateEnglishFoundationReply(input: {
   userId?: string | null;
   userName?: string | null;
@@ -571,7 +498,6 @@ export function generateEnglishFoundationReply(input: {
   wantsExplanation?: boolean;
   wantsDrill?: boolean;
   wantsRecap?: boolean;
-  specificPraise?: string;
 }): MercyTeachingTurnResult {
   return generateTeachingTurn({
     ...input,
@@ -580,9 +506,6 @@ export function generateEnglishFoundationReply(input: {
   });
 }
 
-/**
- * Explain the current teaching state in a compact debug-friendly form.
- */
 export function summarizeTeachingTurn(result: MercyTeachingTurnResult): string {
   const modeProfile = getTeachingModeProfile(result.plan.teachingMode);
 
@@ -598,10 +521,6 @@ export function summarizeTeachingTurn(result: MercyTeachingTurnResult): string {
   );
 }
 
-/* -------------------------------------------------------------------------- */
-/* Color mode response                                                        */
-/* -------------------------------------------------------------------------- */
-
 export function generateColorModeResponse(language: 'en' | 'vi'): string | null {
   if (Math.random() > 0.3) {
     return null;
@@ -612,10 +531,6 @@ export function generateColorModeResponse(language: 'en' | 'vi'): string | null 
 
   return language === 'vi' ? cleanText(styled.vi) : cleanText(styled.en);
 }
-
-/* -------------------------------------------------------------------------- */
-/* Session helpers                                                            */
-/* -------------------------------------------------------------------------- */
 
 export function getGreetingSessionKey(roomId: string): string {
   return `mercy_greeting_shown_${roomId}`;
@@ -637,6 +552,5 @@ export function markGreetingShown(roomId: string): void {
   }
 }
 
-// Re-export types and utilities
 export type { GreetingTemplate, TeacherContext, TeacherLevel };
 export { FALLBACK_NAMES };
