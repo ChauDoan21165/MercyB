@@ -72,6 +72,12 @@
 // PATCH (2026-03-03):
 // - Add Pricing link on Home (route: /pricing), no new files/components.
 // - Keep TEXT-ONLY. No audio.
+//
+// PATCH (2026-03-06):
+// - Hero simplified to ONE canonical path only: /hero/hero_band.jpg
+// - Removes brittle runtime probing / fallback cycling.
+// - If hero is broken in production, the issue is deployment/static asset serving,
+//   not Home render logic.
 
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -99,20 +105,19 @@ const VN_DT_FMT = new Intl.DateTimeFormat("vi-VN", {
 
 // ✅ routes (single place)
 const ROUTE_PRICING = "/pricing";
+const HERO_SRC = "/hero/hero_band.jpg";
 
 function clamp(n: number, a: number, b: number) {
   return Math.max(a, Math.min(b, n));
 }
 
 function readZoomPct(): number {
-  // Prefer :root attribute (live updates)
   try {
     const attr = document.documentElement.getAttribute("data-mb-zoom");
     const fromAttr = attr ? Number(attr) : NaN;
     if (Number.isFinite(fromAttr)) return clamp(Math.round(fromAttr), 60, 140);
   } catch {}
 
-  // Fallback: localStorage
   try {
     const raw = localStorage.getItem(LS_ZOOM);
     const n = raw ? Number(raw) : NaN;
@@ -122,19 +127,11 @@ function readZoomPct(): number {
   return 100;
 }
 
-// ---------------------------
-// HOME Progress (read-only)
-// ---------------------------
-// ✅ Match REAL view columns (authoritative):
-// user_id uuid
-// streak_days bigint
-// days_active_30d bigint
-// last_study_at timestamptz
 type ProgressSummaryRow = {
   user_id: string | null;
   streak_days: number | null;
   days_active_30d: number | null;
-  last_study_at: string | null; // timestamptz in view
+  last_study_at: string | null;
 };
 
 function fmtDate(s: string | null | undefined) {
@@ -164,27 +161,22 @@ function isKidsRoomId(id: string) {
   return id.includes("_kids_") || id.includes("-kids-");
 }
 
-// Some legacy/hybrid rows look like vip6_freeze_response (tier=free but vip* prefix)
 function isVipHybridId(id: string) {
-  return /^vip\\d+_/.test(id) || /^vip\\d+-/.test(id);
+  return /^vip\d+_/.test(id) || /^vip\d+-/.test(id);
 }
 
 export default function Home() {
   const nav = useNavigate();
-
-  // ✅ SINGLE SOURCE OF TRUTH (AuthProvider)
-  const { user, isLoading, signOut } = useAuth();
+  const { user, signOut } = useAuth();
 
   const handleSignOut = async () => {
     try {
       await signOut();
     } finally {
-      // hard reset local state / routing
       nav("/signin", { replace: true });
     }
   };
 
-  // ✅ In-app UUID reveal + copy (NO console)
   const userUuid = user?.id ?? "";
   const [uuidCopied, setUuidCopied] = useState(false);
 
@@ -195,7 +187,6 @@ export default function Home() {
       setUuidCopied(true);
       window.setTimeout(() => setUuidCopied(false), 1200);
     } catch {
-      // fallback if clipboard blocked
       const ok = window.prompt("Copy your UUID:", userUuid);
       if (ok !== null) {
         setUuidCopied(true);
@@ -204,14 +195,12 @@ export default function Home() {
     }
   };
 
-  // ✅ HOME zoom consumer (content only)
   const [zoomPct, setZoomPct] = useState<number>(100);
 
   useEffect(() => {
     const apply = () => setZoomPct(readZoomPct());
     apply();
 
-    // Live follow BottomMusicBar updates
     const obs = new MutationObserver(() => apply());
     obs.observe(document.documentElement, {
       attributes: true,
@@ -223,57 +212,16 @@ export default function Home() {
 
   const zoomScale = useMemo(() => clamp(zoomPct / 100, 0.6, 1.4), [zoomPct]);
 
-  // ✅ HERO brand image fallback chain (prevents blank hero if filename/path changes)
-  const heroFallbacks = useMemo(
-    () => [
-      // Preferred (folder)
-      "/hero/hero_mercyblade_brand.jpg",
-      "/hero/hero_mercyblade_brand.jpeg",
-      "/hero/hero_mercyblade_brand.png",
-      "/hero/hero_mercyblade_brand.JPG",
-      "/hero/hero_mercyblade_brand.JPEG",
-      "/hero/hero_mercyblade_brand.PNG",
-
-      // Common mistake (no /hero folder)
-      "/hero_mercyblade_brand.jpg",
-      "/hero_mercyblade_brand.jpeg",
-      "/hero_mercyblade_brand.png",
-      "/hero_mercyblade_brand.JPG",
-      "/hero_mercyblade_brand.JPEG",
-      "/hero_mercyblade_brand.PNG",
-
-      // Safety net: old working hero (never blank)
-      "/hero/hero_band.jpg",
-    ],
-    []
-  );
-
-  const [heroIdx, setHeroIdx] = useState(0);
-  const heroSrc = heroFallbacks[heroIdx] ?? heroFallbacks[0];
-
-  useEffect(() => {
-    setHeroIdx(0);
-  }, [heroFallbacks]);
-
-  // ---------------------------
-  // Progress load (read-only)
-  // ---------------------------
   const [progressLoading, setProgressLoading] = useState(false);
   const [progressErr, setProgressErr] = useState<string | null>(null);
   const [progressRow, setProgressRow] = useState<ProgressSummaryRow | null>(null);
-
-  // ✅ Streak badge (soft; best-effort)
   const [streakDays, setStreakDays] = useState<number | null>(null);
 
-  // ✅ NEW HARDEN:
-  // Don’t rely on just user?.id. Confirm a real Supabase session exists
-  // before querying protected views.
   useEffect(() => {
     let alive = true;
 
     (async () => {
       try {
-        // Signed-out: hard clear state (no error)
         if (!user?.id) {
           if (!alive) return;
           setProgressRow(null);
@@ -282,7 +230,6 @@ export default function Home() {
           return;
         }
 
-        // Confirm session exists (prevents “ghost user” state / expired sessions)
         const { data: sessionRes, error: sessionErr } = await supabase.auth.getSession();
         if (!alive) return;
 
@@ -305,7 +252,6 @@ export default function Home() {
         if (!alive) return;
 
         if (error) {
-          // If session exists but DB denies, show error (real issue)
           setProgressErr(error.message);
           setProgressRow(null);
         } else {
@@ -327,7 +273,6 @@ export default function Home() {
     };
   }, [user?.id]);
 
-  // ✅ streak read (DB-side; no study_log fetch)
   useEffect(() => {
     let alive = true;
 
@@ -347,7 +292,10 @@ export default function Home() {
           return;
         }
 
-        const { data, error } = await supabase.from("v_user_streak_summary").select("streak_days").maybeSingle();
+        const { data, error } = await supabase
+          .from("v_user_streak_summary")
+          .select("streak_days")
+          .maybeSingle();
 
         if (!alive) return;
 
@@ -381,10 +329,6 @@ export default function Home() {
     };
   }, [progressRow, streakDays]);
 
-  // ---------------------------
-  // First room target (DB-first, schema-safe preference)
-  // ---------------------------
-  // ✅ FIX: useMemo dependency list must be a single [] (your error was duplicate commas)
   const FIRST_ROOM_FALLBACKS = useMemo(() => ["sleep_basics", "anxiety_intro"], []);
   const [firstRoomId, setFirstRoomId] = useState<string | null>(null);
 
@@ -393,13 +337,10 @@ export default function Home() {
 
     (async () => {
       try {
-        // Pull a small window of “best free rooms” by sort_order,
-        // then pick a good “core-ish” first room by ranked IDs.
         const { data, error } = await supabase
           .from("rooms")
           .select("id, tier, sort_order, created_at")
           .eq("tier", "free")
-          // ✅ exclude kids + vip hybrids using id patterns (since schema has no area/is_published)
           .not("id", "like", "%_kids_%")
           .not("id", "like", "%-kids-%")
           .not("id", "like", "vip%_%")
@@ -419,32 +360,18 @@ export default function Home() {
 
         const clean = rows.filter((r) => r.id && !isKidsRoomId(r.id) && !isVipHybridId(r.id));
 
-        // ✅ Your DB sample says the earliest “adult free” is career_consultant_free,
-        // but we still prefer a gentle universal first room if it exists.
         const rankedPrefer = [
-          // Universal, calm entry points (if present in DB)
           "sleep_basics",
           "anxiety_intro",
-
-          // Strong “begin learning” vibes if sleep/anxiety rooms are not free / not present
           "english_foundation_ef11",
           "grammar_foundations_free",
-
-          // Brand-intro room (nice onboarding)
           "mercy_blade_bridge_of_hearts_free",
-
-          // Practical adult room (your current earliest by sort_order)
           "career_consultant_free",
         ];
 
         const byId = new Map(clean.map((r) => [r.id, r]));
-
         const pickRanked = rankedPrefer.find((id) => byId.has(id)) ?? null;
-
-        // If none of our ranked IDs exist, take the earliest clean row.
         const pickEarliest = clean[0]?.id ?? null;
-
-        // If DB failed or empty, fallback.
         const pick = (!error ? pickRanked || pickEarliest : null) || FIRST_ROOM_FALLBACKS[0] || "sleep_basics";
 
         setFirstRoomId(pick);
@@ -464,9 +391,6 @@ export default function Home() {
     else nav("/rooms");
   };
 
-  // ---------------------------
-  // Onboarding visibility (How it works)
-  // ---------------------------
   const phase0New = !user?.id || !progressSummary.lastStudyAt || fmtInt(progressSummary.active30d) === 0;
 
   const phase2Collapse = !phase0New && (fmtInt(progressSummary.active30d) >= 5 || fmtInt(progressSummary.streak) >= 3);
@@ -485,22 +409,17 @@ export default function Home() {
     background: "white",
   };
 
-  // ✅ ONE centered frame: EVERYTHING must align to this
   const frame: React.CSSProperties = {
     maxWidth: PAGE_MAX,
     margin: "0 auto",
-    padding: "12px 16px 220px", // space for fixed BottomMusicBar
+    padding: "12px 16px 220px",
   };
 
-  // ✅ HERO WRAP — FULL BLEED INSIDE FRAME (touch both sides)
   const heroImgWrap: React.CSSProperties = {
     marginTop: 0,
-
-    // Full-bleed (cancel frame padding)
     marginLeft: -16,
     marginRight: -16,
     width: "calc(100% + 32px)",
-
     borderRadius: 18,
     border: "1px solid rgba(0,0,0,0.08)",
     overflow: "hidden",
@@ -509,9 +428,6 @@ export default function Home() {
     background: "white",
   };
 
-  // ✅ IMPORTANT:
-  // - objectFit: "contain" to NEVER cut words
-  // - background white for clean letterbox if aspect ratio differs
   const heroImg: React.CSSProperties = {
     width: "100%",
     height: "clamp(260px, 30vw, 420px)",
@@ -623,7 +539,6 @@ export default function Home() {
     minWidth: 320,
   };
 
-  // ✅ Bottom dock mount responsibility (aligned to frame width)
   const bottomDockOuter: React.CSSProperties = {
     position: "fixed",
     left: 0,
@@ -631,18 +546,15 @@ export default function Home() {
     bottom: 12,
     zIndex: 80,
     padding: "0 16px",
-    pointerEvents: "none", // outer ignores clicks
+    pointerEvents: "none",
   };
 
   const bottomDockInner: React.CSSProperties = {
     maxWidth: PAGE_MAX,
     margin: "0 auto",
-    pointerEvents: "auto", // inner receives clicks
+    pointerEvents: "auto",
   };
 
-  // ---------------------------
-  // Progress card styles (text-only)
-  // ---------------------------
   const progGrid: React.CSSProperties = {
     marginTop: 18,
     display: "grid",
@@ -710,26 +622,17 @@ export default function Home() {
   return (
     <div style={wrap}>
       <div style={frame}>
-        {/* ✅ CONTENT ZOOM WRAPPER (NOT header, NOT BottomMusicBar) */}
         <div style={{ ...({ zoom: zoomScale } as unknown as React.CSSProperties) }}>
-          {/* BOX 2: HERO (BRAND IMAGE ONLY — NO OVERLAY TEXT) */}
           <div style={heroImgWrap} aria-label="Hero band">
             <img
-              src={heroSrc}
+              src={HERO_SRC}
               alt="Mercy Blade — English & Knowledge — Colors of Life"
               style={heroImg}
               loading="eager"
               decoding="async"
-              onError={() => {
-                setHeroIdx((i) => {
-                  const next = i + 1;
-                  return next < heroFallbacks.length ? next : i;
-                });
-              }}
             />
           </div>
 
-          {/* ✅ HOME PROGRESS (TEXT ONLY; read-only view) */}
           <div style={section} aria-label="Your progress">
             <div
               style={{
@@ -768,9 +671,6 @@ export default function Home() {
               )}
             </div>
 
-            {/* ✅ IMPORTANT FIX:
-                Only show Progress error when the user is signed-in.
-                If signed-out, we NEVER show scary red error. */}
             {user?.id && progressErr ? (
               <div
                 style={{
@@ -798,7 +698,6 @@ export default function Home() {
                   {user?.id ? "How many days in a row you’ve studied." : "Sign in to track your streak."}
                 </div>
 
-                {/* ✅ Streak badge (soft) */}
                 {user?.id ? (
                   <div style={progBadge} aria-label="Streak badge">
                     🔥 Streak: {streakDays === null ? "—" : `${streakDays} ${plural(streakDays, "day", "days")}`}
@@ -828,7 +727,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* BOX 3: CONTENT (TEXT-ONLY) */}
           <div style={band}>
             <h2 style={blockTitle}>A Gentle Companion for Your Whole Life</h2>
             <p style={p}>
@@ -889,11 +787,8 @@ export default function Home() {
                 👉 Xem danh sách phòng
               </button>
             </div>
-
-            {/* OLD COPY (KEPT — DO NOT DELETE) */}
           </div>
 
-          {/* HOW IT WORKS (Phase-based: show / collapse / hide) */}
           {!phase3Hide ? (
             <div style={section}>
               <div
@@ -1009,7 +904,6 @@ export default function Home() {
             </div>
           ) : null}
 
-          {/* MERCY HOST (TEXT-ONLY) */}
           <div style={section}>
             <div style={langTag}>EN</div>
             <h3 style={h3}>Mercy Host — A Caring Presence</h3>
@@ -1032,7 +926,6 @@ export default function Home() {
             <p style={p}>Theo thời gian, Mercy Host ghi nhớ hành trình của bạn và nâng đỡ sự tiến bộ của bạn.</p>
           </div>
 
-          {/* THE QUIET HOUR (TEXT-ONLY) */}
           <div style={section}>
             <div style={langTag}>EN</div>
             <h3 style={h3}>The Quiet Hour</h3>
@@ -1061,7 +954,6 @@ export default function Home() {
             </p>
           </div>
 
-          {/* FREE, AND GROWING WITH YOU (TEXT-ONLY) */}
           <div style={section}>
             <div style={langTag}>EN</div>
             <h3 style={h3}>Free, and Growing With You</h3>
@@ -1117,7 +1009,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* CTA BAND */}
           <div style={ctaBand}>
             <h2 style={ctaTitle}>Start gently — one room at a time.</h2>
             <div style={ctaSub}>Bắt đầu nhẹ nhàng — từng phòng một.</div>
@@ -1135,7 +1026,6 @@ export default function Home() {
                 👉 See learning paths
               </button>
 
-              {/* Existing CTA (KEPT) */}
               <button type="button" style={secondaryBtn} onClick={() => nav("/redeem")}>
                 🎁&nbsp; Redeem Gift Code / Nhập Mã Quà Tặng
               </button>
@@ -1144,7 +1034,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ✅ MUSIC (ENTERTAINMENT) — mounted FIXED but aligned to the same frame width */}
       <div style={bottomDockOuter} aria-label="Bottom music dock">
         <div style={bottomDockInner}>
           <BottomMusicBar />

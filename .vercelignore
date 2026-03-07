@@ -10,8 +10,5 @@ out
 coverage
 .vite
 
-# huge static assets (must ignore)
-public
-
 # misc
 .DS_Store
