@@ -1,6 +1,6 @@
 /**
  * Mercy Host Engine - Core Implementation
- * 
+ *
  * Full engine with init, greet, events, state management.
  * Phase 6: Added rituals, ceremonies, streaks.
  * Phase 7: Added English teacher mode and logging.
@@ -11,18 +11,18 @@ import { getVoiceLineByTrigger, getVoiceLineById, type VoiceLine } from './voice
 import { getSavedAvatarStyle, saveAvatarStyle, type MercyAvatarStyle } from './avatarStyles';
 import { FALLBACK_NAMES } from './persona';
 import { getAnimationForEvent, type MercyEventType, type MercyAnimationType } from './eventMap';
-import { 
-  getRitualForEvent, 
-  getRitualText, 
-  computeVisitStreak, 
+import {
+  getRitualForEvent,
+  getRitualText,
+  computeVisitStreak,
   checkStreakMilestone,
   updateStreak,
   type RitualSpec
 } from './rituals';
-import { 
-  executeVipCeremony, 
-  getCeremonyText, 
-  type VipCeremonySpec 
+import {
+  executeVipCeremony,
+  getCeremonyText,
+  type VipCeremonySpec
 } from './vipCeremonies';
 import { isCrisisRoom, isSafeTrigger, enforceSafeEmotion } from './safetyRails';
 import { memory } from './memory';
@@ -31,12 +31,19 @@ import { getDomainCategory, isEnglishDomain, isMartialDomain, type DomainCategor
 import { getTeacherTip, type TeacherLevel, type TeacherContext } from './teacherScripts';
 import { getMartialCoachTip, inferMartialDiscipline, type MartialCoachLevel, type MartialContext } from './martialCoachScripts';
 import { logEvent } from './logs';
-import { 
-  getEffectiveBudget, 
-  isInGrowthMode, 
+import {
+  applyPersonality,
+  detectFriendOfBossJoke,
+  detectPronunciationRequest,
+  detectUserFrustration,
+  getPersonalityLine,
+} from './personalityRules';
+import {
+  getEffectiveBudget,
+  isInGrowthMode,
   normalizeTierId,
   formatCharCount,
-  type TierId 
+  type TierId
 } from './talkBudget';
 
 // Storage keys
@@ -171,6 +178,27 @@ export function createMercyEngine(
     return text.slice(0, MAX_SPEECH_LENGTH - 3) + '...';
   };
 
+  // Helper: apply Mercy personality consistently
+  const styleText = (
+    text: { en: string; vi: string },
+    context:
+      | 'default'
+      | 'greeting'
+      | 'encouragement'
+      | 'correction'
+      | 'confused_user'
+      | 'user_frustrated'
+      | 'user_lazy'
+      | 'user_improving'
+      | 'friend_of_boss'
+      | 'returning_user'
+      | 'pronunciation_not_ready'
+      | 'teacher_wit'
+      | 'gentle_authority' = 'default'
+  ): { en: string; vi: string } => {
+    return applyPersonality(text.en, text.vi, context);
+  };
+
   // Helper: check if should greet (session + cooldown rules)
   const shouldGreet = (roomId: string): boolean => {
     try {
@@ -204,9 +232,9 @@ export function createMercyEngine(
   // Helper: reset idle timer
   const resetIdleTimer = () => {
     if (idleTimeout) clearTimeout(idleTimeout);
-    
+
     idleTimeout = setTimeout(() => {
-      setState(s => ({ ...s, presenceState: 'idle' }));
+      setState((s) => ({ ...s, presenceState: 'idle' }));
     }, IDLE_TIMEOUT_MS);
   };
 
@@ -226,34 +254,38 @@ export function createMercyEngine(
   // Helper: show ritual banner
   const showRitualBanner = (ritual: RitualSpec | VipCeremonySpec, isCeremony = false) => {
     const state = getState();
-    
+
     // Respect silence mode - no voice or large animations
     if (state.silenceMode) {
       // Still show text banner if not completely off
       if (state.ritualIntensity !== 'off') {
-        const text = isCeremony 
+        const rawText = isCeremony
           ? { en: (ritual as VipCeremonySpec).textEn, vi: (ritual as VipCeremonySpec).textVi }
           : { en: (ritual as RitualSpec).textEn, vi: (ritual as RitualSpec).textVi };
-        
-        setState(s => ({
+
+        const text = styleText(rawText, 'gentle_authority');
+
+        setState((s) => ({
           ...s,
-          lastRitualId: ((ritual as any).tier ?? (ritual as any).id),
+          lastRitualId: (ritual as any).tier ?? (ritual as any).id,
           lastRitualText: text,
           isRitualBannerVisible: true
         }));
-        
+
         scheduleRitualBannerDismiss();
       }
       return;
     }
 
-    const text = isCeremony 
+    const rawText = isCeremony
       ? { en: (ritual as VipCeremonySpec).textEn, vi: (ritual as VipCeremonySpec).textVi }
       : { en: (ritual as RitualSpec).textEn, vi: (ritual as RitualSpec).textVi };
 
-    setState(s => ({
+    const text = styleText(rawText, 'gentle_authority');
+
+    setState((s) => ({
       ...s,
-      lastRitualId: ((ritual as any).tier ?? (ritual as any).id),
+      lastRitualId: (ritual as any).tier ?? (ritual as any).id,
       lastRitualText: text,
       lastCeremonyTier: isCeremony ? (ritual as VipCeremonySpec).tier : s.lastCeremonyTier,
       currentAnimation: ritual.animation,
@@ -265,7 +297,7 @@ export function createMercyEngine(
     if (ritual.voiceTrigger && !state.silenceMode) {
       const voiceLine = getVoiceLineByTrigger(ritual.voiceTrigger, getDisplayName(state));
       if (voiceLine) {
-        setState(s => ({ ...s, currentVoiceLine: voiceLine }));
+        setState((s) => ({ ...s, currentVoiceLine: voiceLine }));
       }
     }
 
@@ -275,10 +307,10 @@ export function createMercyEngine(
   // Helper: schedule banner dismissal
   const scheduleRitualBannerDismiss = () => {
     if (ritualBannerTimeout) clearTimeout(ritualBannerTimeout);
-    
+
     ritualBannerTimeout = setTimeout(() => {
-      setState(s => ({ 
-        ...s, 
+      setState((s) => ({
+        ...s,
         isRitualBannerVisible: false,
         currentAnimation: 'halo'
       }));
@@ -290,20 +322,38 @@ export function createMercyEngine(
   const MARTIAL_HINT_DURATION_MS = 12000;
 
   // Helper: show teacher hint bubble
-  const showTeacherHint = (tip: { en: string; vi: string }) => {
+  const showTeacherHint = (
+    tip: { en: string; vi: string },
+    context:
+      | 'default'
+      | 'greeting'
+      | 'encouragement'
+      | 'correction'
+      | 'confused_user'
+      | 'user_frustrated'
+      | 'user_lazy'
+      | 'user_improving'
+      | 'friend_of_boss'
+      | 'returning_user'
+      | 'pronunciation_not_ready'
+      | 'teacher_wit'
+      | 'gentle_authority' = 'teacher_wit'
+  ) => {
     const state = getState();
     if (state.silenceMode || state.ritualIntensity === 'off') return;
 
-    setState(s => ({
+    const styledTip = styleText(tip, context);
+
+    setState((s) => ({
       ...s,
-      lastEnglishTip: tip,
+      lastEnglishTip: styledTip,
       isTeacherHintVisible: true
     }));
 
     // Auto-dismiss after timeout
     if (teacherHintTimeout) clearTimeout(teacherHintTimeout);
     teacherHintTimeout = setTimeout(() => {
-      setState(s => ({ ...s, isTeacherHintVisible: false }));
+      setState((s) => ({ ...s, isTeacherHintVisible: false }));
     }, TEACHER_HINT_DURATION_MS);
   };
 
@@ -313,17 +363,19 @@ export function createMercyEngine(
     if (state.silenceMode || state.ritualIntensity === 'off') return;
     if (!tip.en && !tip.vi) return; // Skip empty tips (off mode)
 
-    setState(s => ({
+    const styledTip = styleText({ en: tip.en, vi: tip.vi }, 'gentle_authority');
+
+    setState((s) => ({
       ...s,
       lastMartialTipId: tip.id,
-      lastMartialTip: { en: tip.en, vi: tip.vi },
+      lastMartialTip: { en: styledTip.en, vi: styledTip.vi },
       isMartialHintVisible: true
     }));
 
     // Auto-dismiss after timeout
     if (martialHintTimeout) clearTimeout(martialHintTimeout);
     martialHintTimeout = setTimeout(() => {
-      setState(s => ({ ...s, isMartialHintVisible: false }));
+      setState((s) => ({ ...s, isMartialHintVisible: false }));
     }, MARTIAL_HINT_DURATION_MS);
   };
 
@@ -343,7 +395,7 @@ export function createMercyEngine(
       const budget = getEffectiveBudget(tierId, mem.totalVisits);
       const growthActive = isInGrowthMode(tierId, mem.totalVisits);
 
-      setState(s => ({
+      setState((s) => ({
         ...s,
         isEnabled: savedEnabled !== 'false',
         language: savedLang || config.language || 'en',
@@ -385,19 +437,18 @@ export function createMercyEngine(
 
       const tier = context?.tier || state.currentTier;
       const mem = memory.get();
-      const previousStreak = (mem as any).streakDays || 0;
-      
+
       // Update streak
       const { streak, milestone } = updateStreak();
 
-      setState(s => ({
+      setState((s) => ({
         ...s,
         visitStreak: streak,
         lastVisitISO: new Date().toISOString()
       }));
 
       // Check for comeback after gap (7+ days)
-      const daysSinceLastVisit = mem.lastVisitISO 
+      const daysSinceLastVisit = mem.lastVisitISO
         ? Math.floor((Date.now() - new Date(mem.lastVisitISO).getTime()) / (1000 * 60 * 60 * 24))
         : 0;
 
@@ -436,11 +487,12 @@ export function createMercyEngine(
       if (state.silenceMode) return; // Respect silence mode
 
       const displayName = getDisplayName(state);
-      const greeting = getTierGreeting(state.currentTier, displayName);
+      const rawGreeting = getTierGreeting(state.currentTier, displayName);
+      const greeting = styleText(rawGreeting, 'greeting');
       const voiceLine = getVoiceLineByTrigger('room_enter', displayName);
       const animation = getAnimationForEvent('room_enter');
 
-      setState(s => ({
+      setState((s) => ({
         ...s,
         greetingText: {
           en: truncateSpeech(greeting.en),
@@ -456,7 +508,7 @@ export function createMercyEngine(
       resetIdleTimer();
 
       setTimeout(() => {
-        setState(s => ({ ...s, isBubbleVisible: false }));
+        setState((s) => ({ ...s, isBubbleVisible: false }));
       }, 5000 + jitter());
     },
 
@@ -466,9 +518,9 @@ export function createMercyEngine(
 
       // Determine domain category
       const domain = getDomainCategory(roomId, roomTitle);
-      
+
       // Update current room state
-      setState(s => ({
+      setState((s) => ({
         ...s,
         currentRoomId: roomId,
         currentRoomDomain: domain
@@ -485,18 +537,22 @@ export function createMercyEngine(
       });
 
       const isFirstTime = shouldGreet(roomId);
-      
+
       if (isFirstTime && !state.silenceMode) {
         const displayName = getDisplayName(state);
-        const greeting = getTierGreeting(state.currentTier, displayName);
+        const rawGreeting = getTierGreeting(state.currentTier, displayName);
+        const greeting = styleText({
+          en: rawGreeting.en.replace('{{roomTitle}}', roomTitle),
+          vi: rawGreeting.vi.replace('{{roomTitle}}', roomTitle)
+        }, 'greeting');
         const voiceLine = getVoiceLineByTrigger('room_enter', displayName);
 
         setTimeout(() => {
-          setState(s => ({
+          setState((s) => ({
             ...s,
             greetingText: {
-              en: truncateSpeech(greeting.en.replace('{{roomTitle}}', roomTitle)),
-              vi: truncateSpeech(greeting.vi.replace('{{roomTitle}}', roomTitle))
+              en: truncateSpeech(greeting.en),
+              vi: truncateSpeech(greeting.vi)
             },
             currentVoiceLine: voiceLine,
             currentAnimation: 'glow',
@@ -506,7 +562,7 @@ export function createMercyEngine(
           }));
 
           markGreeted(roomId);
-          
+
           createMercyEngine(setState, getState).trackAnalytics('mercy_host_greeted_room', {
             roomId,
             tier: state.currentTier
@@ -515,7 +571,7 @@ export function createMercyEngine(
           resetIdleTimer();
 
           setTimeout(() => {
-            setState(s => ({ ...s, isBubbleVisible: false, currentAnimation: 'halo' }));
+            setState((s) => ({ ...s, isBubbleVisible: false, currentAnimation: 'halo' }));
           }, 5000 + jitter());
         }, jitter());
       }
@@ -532,12 +588,12 @@ export function createMercyEngine(
             context: martialContext,
             userName: state.userName
           });
-          
+
           // Show martial hint after greeting fades
           setTimeout(() => {
             showMartialHint(tip);
           }, isFirstTime ? 6000 : 1000);
-          
+
           // Log martial room enter
           logEvent({
             type: 'martial_room_enter',
@@ -556,10 +612,10 @@ export function createMercyEngine(
           context: 'ef_room_enter',
           userName: state.userName || undefined
         });
-        
+
         // Show teacher hint after greeting fades
         setTimeout(() => {
-          showTeacherHint({ en: tip.en, vi: tip.vi });
+          showTeacherHint({ en: tip.en, vi: tip.vi }, 'teacher_wit');
         }, isFirstTime ? 6000 : 1000);
       }
     },
@@ -572,7 +628,7 @@ export function createMercyEngine(
       const voiceLine = getVoiceLineByTrigger('return_inactive', displayName);
 
       setTimeout(() => {
-        setState(s => ({
+        setState((s) => ({
           ...s,
           currentVoiceLine: voiceLine,
           currentAnimation: 'ripple',
@@ -583,7 +639,7 @@ export function createMercyEngine(
         resetIdleTimer();
 
         setTimeout(() => {
-          setState(s => ({ ...s, isBubbleVisible: false, currentAnimation: 'halo' }));
+          setState((s) => ({ ...s, isBubbleVisible: false, currentAnimation: 'halo' }));
         }, 4000 + jitter());
       }, jitter());
     },
@@ -593,7 +649,7 @@ export function createMercyEngine(
       const prevTier = state.currentTier;
       const tierScript = getTierScript(newTier);
 
-      setState(s => ({
+      setState((s) => ({
         ...s,
         currentTier: newTier,
         currentTone: tierScript.tone,
@@ -602,7 +658,7 @@ export function createMercyEngine(
 
       // Check for VIP ceremony
       const ceremony = executeVipCeremony(newTier, prevTier);
-      
+
       if (ceremony) {
         // VIP upgrade ceremony
         setTimeout(() => {
@@ -610,9 +666,10 @@ export function createMercyEngine(
         }, jitter());
       } else if (newTier.startsWith('vip') && !state.silenceMode) {
         // Generic VIP encouragement
-        const encouragement = getTierEncouragement(newTier);
+        const rawEncouragement = getTierEncouragement(newTier);
+        const encouragement = styleText(rawEncouragement, 'encouragement');
         setTimeout(() => {
-          setState(s => ({
+          setState((s) => ({
             ...s,
             greetingText: encouragement,
             isBubbleVisible: true,
@@ -620,7 +677,7 @@ export function createMercyEngine(
           }));
 
           setTimeout(() => {
-            setState(s => ({ ...s, isBubbleVisible: false }));
+            setState((s) => ({ ...s, isBubbleVisible: false }));
           }, 4000);
         }, jitter());
       }
@@ -634,10 +691,84 @@ export function createMercyEngine(
       const canProcess = submitThrottledEvent(event, payload);
       if (!canProcess) return;
 
+      const userText = typeof payload?.userText === 'string' ? payload.userText : '';
+
+      // Friend-of-the-boss joke handling
+      if (userText && detectFriendOfBossJoke(userText) && !state.silenceMode) {
+        const line = getPersonalityLine('friend_of_boss');
+
+        setState((s) => ({
+          ...s,
+          currentAnimation: 'glow',
+          presenceState: 'active'
+        }));
+
+        showTeacherHint(line, 'friend_of_boss');
+        resetIdleTimer();
+
+        logEvent({
+          type: 'chat_message',
+          extra: {
+            personalityIntent: 'friend_of_boss',
+            userText
+          }
+        });
+
+        return;
+      }
+
+      // Pronunciation request handling (honest capability response)
+      if (userText && detectPronunciationRequest(userText) && !state.silenceMode) {
+        const line = getPersonalityLine('pronunciation_not_ready');
+
+        setState((s) => ({
+          ...s,
+          currentAnimation: 'glow',
+          presenceState: 'active'
+        }));
+
+        showTeacherHint(line, 'pronunciation_not_ready');
+        resetIdleTimer();
+
+        logEvent({
+          type: 'chat_message',
+          extra: {
+            personalityIntent: 'pronunciation_not_ready',
+            userText
+          }
+        });
+
+        return;
+      }
+
+      // Frustration handling
+      if (userText && detectUserFrustration(userText) && !state.silenceMode) {
+        const line = getPersonalityLine('user_frustrated');
+
+        setState((s) => ({
+          ...s,
+          currentAnimation: 'ripple',
+          presenceState: 'active'
+        }));
+
+        showTeacherHint(line, 'user_frustrated');
+        resetIdleTimer();
+
+        logEvent({
+          type: 'chat_message',
+          extra: {
+            personalityIntent: 'user_frustrated',
+            userText
+          }
+        });
+
+        return;
+      }
+
       const animation = getAnimationForEvent(event);
       const displayName = getDisplayName(state);
 
-      setState(s => ({
+      setState((s) => ({
         ...s,
         currentAnimation: animation,
         presenceState: 'active'
@@ -671,27 +802,27 @@ export function createMercyEngine(
       if (!state.silenceMode) {
         if (event === 'entry_complete' && Math.random() > 0.6) {
           const voiceLine = getVoiceLineByTrigger('entry_complete', displayName);
-          setState(s => ({
+          setState((s) => ({
             ...s,
             currentVoiceLine: voiceLine,
             isBubbleVisible: true
           }));
 
           setTimeout(() => {
-            setState(s => ({ ...s, isBubbleVisible: false }));
+            setState((s) => ({ ...s, isBubbleVisible: false }));
           }, 3000 + jitter());
         }
 
         if (event === 'color_toggle' && Math.random() > 0.7) {
           const voiceLine = getVoiceLineByTrigger('color_toggle', displayName);
-          setState(s => ({
+          setState((s) => ({
             ...s,
             currentVoiceLine: voiceLine,
             isBubbleVisible: true
           }));
 
           setTimeout(() => {
-            setState(s => ({ ...s, isBubbleVisible: false }));
+            setState((s) => ({ ...s, isBubbleVisible: false }));
           }, 3000);
         }
       }
@@ -751,17 +882,17 @@ export function createMercyEngine(
           context: 'ef_entry_complete',
           userName: state.userName || undefined
         });
-        
+
         // Show teacher tip after ritual fades
         setTimeout(() => {
-          showTeacherHint({ en: tip.en, vi: tip.vi });
+          showTeacherHint({ en: tip.en, vi: tip.vi }, 'encouragement');
         }, ritual ? RITUAL_BANNER_DURATION_MS + 1000 : 1000);
       }
     },
 
     setEnabled: (enabled) => {
       localStorage.setItem(STORAGE_KEYS.HOST_ENABLED, String(enabled));
-      setState(s => ({
+      setState((s) => ({
         ...s,
         isEnabled: enabled,
         presenceState: enabled ? 'active' : 'hidden'
@@ -770,22 +901,22 @@ export function createMercyEngine(
 
     setAvatarStyle: (style) => {
       saveAvatarStyle(style);
-      setState(s => ({ ...s, avatarStyle: style }));
+      setState((s) => ({ ...s, avatarStyle: style }));
     },
 
     setLanguage: (lang) => {
       localStorage.setItem(STORAGE_KEYS.LANGUAGE, lang);
-      setState(s => ({ ...s, language: lang }));
+      setState((s) => ({ ...s, language: lang }));
     },
 
     setUserName: (name) => {
-      setState(s => ({ ...s, userName: name }));
+      setState((s) => ({ ...s, userName: name }));
     },
 
     setRitualIntensity: (intensity) => {
       const mem = memory.get();
       memory.update({ ...mem, ritualIntensity: intensity } as any);
-      setState(s => ({ ...s, ritualIntensity: intensity }));
+      setState((s) => ({ ...s, ritualIntensity: intensity }));
     },
 
     setSilenceMode: (silent) => {
@@ -794,44 +925,44 @@ export function createMercyEngine(
         ...mem,
         hostPreferences: { ...mem.hostPreferences, silenceMode: silent }
       });
-      setState(s => ({ ...s, silenceMode: silent }));
+      setState((s) => ({ ...s, silenceMode: silent }));
     },
 
     setTeacherLevel: (level) => {
       const mem = memory.get();
       memory.update({ ...mem, teacherLevel: level } as any);
-      setState(s => ({ ...s, teacherLevel: level }));
+      setState((s) => ({ ...s, teacherLevel: level }));
     },
 
     dismissTeacherHint: () => {
       if (teacherHintTimeout) clearTimeout(teacherHintTimeout);
-      setState(s => ({ ...s, isTeacherHintVisible: false }));
+      setState((s) => ({ ...s, isTeacherHintVisible: false }));
     },
 
     // Phase 8: Martial Coach actions
     setMartialCoachLevel: (level) => {
       const mem = memory.get();
       memory.update({ ...mem, martialCoachLevel: level } as any);
-      setState(s => ({ ...s, martialCoachLevel: level }));
+      setState((s) => ({ ...s, martialCoachLevel: level }));
     },
 
     dismissMartialHint: () => {
       if (martialHintTimeout) clearTimeout(martialHintTimeout);
-      setState(s => ({ ...s, isMartialHintVisible: false }));
+      setState((s) => ({ ...s, isMartialHintVisible: false }));
     },
 
     recordMartialPractice: (context) => {
       const mem = memory.get();
       const practiceCount = ((mem as any).martialPracticeCount || 0) + 1;
       const discipline = context?.discipline || getState().currentMartialDiscipline;
-      
-      memory.update({ 
-        ...mem, 
+
+      memory.update({
+        ...mem,
         martialPracticeCount: practiceCount,
         lastMartialDiscipline: discipline
       } as any);
-      
-      setState(s => ({
+
+      setState((s) => ({
         ...s,
         currentMartialDiscipline: discipline
       }));
@@ -845,11 +976,11 @@ export function createMercyEngine(
 
     dismissRitualBanner: () => {
       if (ritualBannerTimeout) clearTimeout(ritualBannerTimeout);
-      setState(s => ({ ...s, isRitualBannerVisible: false }));
+      setState((s) => ({ ...s, isRitualBannerVisible: false }));
     },
 
     dismiss: () => {
-      setState(s => ({
+      setState((s) => ({
         ...s,
         isGreetingVisible: false,
         isBubbleVisible: false,
@@ -861,7 +992,7 @@ export function createMercyEngine(
     },
 
     show: () => {
-      setState(s => ({
+      setState((s) => ({
         ...s,
         isGreetingVisible: true,
         presenceState: 'active'
@@ -875,11 +1006,13 @@ export function createMercyEngine(
         type: 'chat_message',
         extra: { analyticsEvent: event, ...data }
       });
-      
+
       if (typeof window !== 'undefined') {
-        window.dispatchEvent(new CustomEvent('mercy_analytics', {
-          detail: { event, data, timestamp: Date.now() }
-        }));
+        window.dispatchEvent(
+          new CustomEvent('mercy_analytics', {
+            detail: { event, data, timestamp: Date.now() }
+          })
+        );
       }
     }
   };
