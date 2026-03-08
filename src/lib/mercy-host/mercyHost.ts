@@ -1,15 +1,9 @@
 /**
+ * VERSION: mercyHost.ts v6.7
+ *
  * Mercy Host - Main Module
  *
  * Central logic for Mercy's hosting behavior across all rooms.
- *
- * Upgrade goals:
- * - calmer, more teacher-like room greetings
- * - support teacher-mode planning without breaking existing callers
- * - keep personality as a rendering layer, not the decision layer
- * - orchestrate Mercy's teaching pipeline in one place
- * - apply teacher rhythm before humor/personality rendering
- * - centralize final dialogue assembly through teacherDialogueBuilder
  */
 
 import { FALLBACK_NAMES } from './persona';
@@ -28,13 +22,9 @@ import {
   type TeacherContext,
   type TeacherLevel,
 } from './teacherScripts';
-import { inferLearnerState, type LearnerState } from './learnerState';
-import {
-  buildResponsePlan,
-  type ResponsePlan,
-  type ToneStyle,
-} from './responsePlanner';
-import { calibrateTone, type ToneCalibrationResult } from './toneCalibration';
+import type { LearnerState } from './learnerState';
+import type { ResponsePlan } from './responsePlanner';
+import type { ToneCalibrationResult } from './toneCalibration';
 import {
   buildTeachingStrategy,
   buildCorrectionStrategy,
@@ -44,8 +34,6 @@ import { getTeachingModeProfile } from './teachingModes';
 import {
   loadLessonMemory,
   updateLessonMemory,
-  isRepeatedMistake,
-  shouldReviewConcept,
   type LessonMemoryState,
 } from './lessonMemory';
 import {
@@ -55,14 +43,16 @@ import {
   type CurriculumRecommendation,
   type CurriculumState,
 } from './curriculumTracker';
-import {
-  getRecommendedDifficulty,
-  type DifficultyLevel,
-  type DifficultySnapshot,
-} from './difficultyScaler';
+import type { DifficultyLevel, DifficultySnapshot } from './difficultyScaler';
 import { detectBossJoke, type HumorStyle } from './humorEngine';
-import { inferGuardToneSignals, type GuardToneSignals } from './guard';
+import type { GuardToneSignals } from './guard';
 import { buildTeacherDialogue } from './teacherDialogueBuilder';
+import type { TeacherEmotionState } from './teacherEmotionModel';
+import type { AdaptiveTeachingAdjustment } from './adaptiveTeachingIntelligence';
+import { getSpecificPraiseText } from './specificPraise';
+import { getTeacherMemoryInsight } from './teacherMemoryEngine';
+import { buildTeachingSignals } from './host/buildTeachingSignals';
+import buildTeachingPlan from './host/buildTeachingPlan';
 
 export interface MercyHostContext {
   userName: string | null;
@@ -128,12 +118,15 @@ export interface MercyTeachingTurnInput {
   requireDirectness?: boolean;
   softenTone?: boolean;
   humorStyle?: HumorStyle;
+  repeatedMistake?: boolean;
 }
 
 export interface MercyTeachingTurnResult {
   text: string;
   textAlt: string;
   learnerState: LearnerState;
+  emotion: TeacherEmotionState;
+  adaptive: AdaptiveTeachingAdjustment;
   plan: ResponsePlan;
   tone: ToneCalibrationResult;
   strategy: TeachingStrategyResult;
@@ -147,6 +140,8 @@ export interface MercyTeachingTurnResult {
 }
 
 const VIP_TIERS = new Set([
+  'vip1',
+  'vip2',
   'vip3',
   'vip4',
   'vip5',
@@ -167,6 +162,10 @@ function cleanText(text: string): string {
     .replace(/\s+/g, ' ')
     .replace(/\s([,.!?;:])/g, '$1')
     .trim();
+}
+
+function lower(text?: string): string {
+  return cleanText(text || '').toLowerCase();
 }
 
 function getResolvedName(
@@ -191,12 +190,6 @@ function resolveTeacherLevel(
   return mapTierToTeacherLevel(userTier || 'free');
 }
 
-function resolveDifficulty(
-  currentDifficulty?: DifficultyLevel
-): DifficultyLevel {
-  return currentDifficulty || 'medium';
-}
-
 function deriveHumorStyle(input: MercyTeachingTurnInput): HumorStyle {
   if (input.humorStyle) return input.humorStyle;
   if (detectBossJoke(input.learnerText)) return 'teacher_wit';
@@ -204,8 +197,131 @@ function deriveHumorStyle(input: MercyTeachingTurnInput): HumorStyle {
   return 'teacher_wit';
 }
 
+function inferPraiseImprovementType(args: {
+  learnerState: LearnerState;
+  concept?: string;
+  mistake?: string;
+  repeatedMistake: boolean;
+  isCorrectiveTurn: boolean;
+  wantsChallenge?: boolean;
+}):
+  | 'accuracy'
+  | 'clarity'
+  | 'confidence'
+  | 'consistency'
+  | 'retry_success'
+  | 'rule_use'
+  | 'pronunciation'
+  | 'structure'
+  | 'momentum'
+  | undefined {
+  const {
+    learnerState,
+    concept,
+    mistake,
+    repeatedMistake,
+    isCorrectiveTurn,
+    wantsChallenge,
+  } = args;
+
+  const conceptText = lower(concept);
+  const mistakeText = lower(mistake);
+  const hay = `${conceptText} ${mistakeText}`;
+
+  if (repeatedMistake && isCorrectiveTurn) return 'retry_success';
+  if (wantsChallenge || learnerState.momentum === 'flowing') return 'momentum';
+  if (learnerState.clarity === 'clear') return 'clarity';
+
+  if (
+    hay.includes('pronunciation') ||
+    hay.includes('stress') ||
+    hay.includes('sound') ||
+    hay.includes('intonation') ||
+    hay.includes('accent')
+  ) {
+    return 'pronunciation';
+  }
+
+  if (
+    hay.includes('structure') ||
+    hay.includes('grammar') ||
+    hay.includes('tense') ||
+    hay.includes('word order') ||
+    hay.includes('sentence')
+  ) {
+    return 'structure';
+  }
+
+  if (conceptText) return 'rule_use';
+  if (mistakeText) return 'accuracy';
+
+  return undefined;
+}
+
+function isPastTenseLike(input: MercyTeachingTurnInput): boolean {
+  const concept = lower(input.concept);
+  const mistake = lower(input.correction?.mistake);
+  const learnerText = lower(input.learnerText);
+
+  return (
+    concept.includes('past') ||
+    concept.includes('tense') ||
+    mistake.includes('go') ||
+    mistake.includes('went') ||
+    learnerText.includes('yesterday') ||
+    learnerText.includes('i go') ||
+    learnerText.includes('go ')
+  );
+}
+
+function buildPastTenseFallbackText(args: {
+  input: MercyTeachingTurnInput;
+  teachingMode: ResponsePlan['teachingMode'];
+  repeatedMistake: boolean;
+}): { text: string; textAlt: string } | null {
+  const { input, teachingMode, repeatedMistake } = args;
+
+  if (!isPastTenseLike(input)) {
+    return null;
+  }
+
+  const shortFix = input.correction?.fix || 'Say "went to school yesterday".';
+  const nextPrompt = cleanText(input.nextPrompt || '');
+  const tryLine = 'Try: I went there yesterday.';
+
+  if (teachingMode === 'correct') {
+    if (repeatedMistake) {
+      return {
+        text: `Let's review this once more. Pause here. Focus on past tense. ${tryLine} Keep it simple and clear.`,
+        textAlt: `Hãy ôn lại phần này thêm một lần nữa. Dừng lại ở đây nhé. Tập trung vào thì quá khứ. ${tryLine} Giữ cho thật đơn giản và rõ ràng.`,
+      };
+    }
+
+    const opener = input.userName ? `${input.userName}, you're close.` : "You're close.";
+    const promptLine = nextPrompt || tryLine;
+
+    return {
+      text: `${opener} Small fix: ${shortFix} ${promptLine}`,
+      textAlt: `Nhẹ nhàng thôi, bạn gần đúng rồi. Sửa nhẹ: ${shortFix} ${promptLine}`,
+    };
+  }
+
+  if (teachingMode === 'review') {
+    const prefix = repeatedMistake
+      ? `Let's review this once more.`
+      : `Good. Let’s stay with this idea one more round.`;
+
+    return {
+      text: `${prefix} Focus on past tense. ${tryLine}`,
+      textAlt: `${repeatedMistake ? 'Hãy ôn lại phần này thêm một lần nữa.' : 'Tốt. Mình ở lại với ý này thêm một vòng nữa nhé.'} Tập trung vào thì quá khứ. ${tryLine}`,
+    };
+  }
+
+  return null;
+}
+
 export function mapTierToTeacherLevel(userTier: string): TeacherLevel {
-  if (VIP_TIERS.has(userTier)) {
+  if (userTier === 'vip3' || userTier === 'vip4' || userTier === 'vip5') {
     return 'intense';
   }
 
@@ -336,71 +452,166 @@ export function generateTeacherReply(
 export function generateTeachingTurn(
   input: MercyTeachingTurnInput
 ): MercyTeachingTurnResult {
-  const userId = input.userId || 'default';
-  const learnerState = inferLearnerState(input.learnerText);
-  const guardSignals = inferGuardToneSignals(input.learnerText);
+  const signals = buildTeachingSignals({
+    userId: input.userId,
+    language: input.language,
+    learnerText: input.learnerText,
+    concept: input.concept,
+    correction: input.correction,
+    explanation: input.explanation,
+    isCorrectiveTurn: input.isCorrectiveTurn,
+    wantsChallenge: input.wantsChallenge,
+    wantsExplanation: input.wantsExplanation,
+    wantsDrill: input.wantsDrill,
+    wantsRecap: input.wantsRecap,
+    suppressHumor: input.suppressHumor,
+    requireDirectness: input.requireDirectness,
+    softenTone: input.softenTone,
+    repeatedMistake: input.repeatedMistake,
+  });
 
-  const conceptKey = input.concept || input.correction?.mistake || undefined;
-  const repeatedMistake = input.correction?.mistake
-    ? isRepeatedMistake(input.correction.mistake, userId)
-    : !!input.repeatedMistake;
-
-  const shouldReview = conceptKey
-    ? shouldReviewConcept(conceptKey, userId)
-    : false;
-
-  const memoryBefore = loadLessonMemory(userId);
+  const memoryBefore = loadLessonMemory(signals.userId);
   const curriculumBefore = loadCurriculumState();
 
-  const difficulty = getRecommendedDifficulty({
-    current: resolveDifficulty(input.currentDifficulty),
-    memory: memoryBefore,
-    repeatedMistake,
-    recentCorrect: !input.isCorrectiveTurn && !input.correction,
-    lowConfidence: learnerState.confidence === 'low',
-    confused: learnerState.clarity === 'lost',
+  const teacherMemoryInsight = getTeacherMemoryInsight({
+    userId: signals.userId,
+    teachingMode:
+      input.isCorrectiveTurn || input.correction
+        ? 'correct'
+        : input.wantsRecap
+          ? 'recap'
+          : input.wantsDrill
+            ? 'drill'
+            : input.wantsChallenge
+              ? 'challenge'
+              : 'encourage',
+    concept: input.concept,
+    mistake: input.correction?.mistake,
   });
 
-  const plan = buildResponsePlan({
-    learnerState,
-    isCorrectiveTurn: input.isCorrectiveTurn || !!input.correction,
+  const resolvedRepeatedMistake =
+    Boolean(input.repeatedMistake) ||
+    Boolean(signals.repeatedMistake) ||
+    teacherMemoryInsight.shouldReferencePriorMistake;
+
+  const planning = buildTeachingPlan(
+    {
+      currentDifficulty: input.currentDifficulty,
+      memory: memoryBefore,
+      correction: input.correction,
+      explanation: input.explanation,
+      isCorrectiveTurn: input.isCorrectiveTurn,
+      wantsChallenge: input.wantsChallenge,
+      wantsDrill: input.wantsDrill,
+      wantsRecap: input.wantsRecap,
+      repeatedMistake: resolvedRepeatedMistake,
+    },
+    {
+      ...signals,
+      repeatedMistake: resolvedRepeatedMistake,
+    }
+  );
+
+  const effectivePlan =
+    input.nextPrompt && !planning.plan.addNextStep
+      ? { ...planning.plan, addNextStep: true }
+      : planning.plan;
+
+  const supportiveRepeatedCorrection =
+    resolvedRepeatedMistake &&
+    (effectivePlan.teachingMode === 'correct' || effectivePlan.teachingMode === 'review') &&
+    (
+      signals.learnerState.affect === 'discouraged' ||
+      signals.emotion.primarySignal === 'discouraged' ||
+      signals.emotion.primarySignal === 'frustrated' ||
+      signals.learnerState.confidence === 'low'
+    );
+
+  const resolvedToneName =
+    supportiveRepeatedCorrection
+      ? 'warm'
+      : effectivePlan.teachingMode === 'correct' ||
+          effectivePlan.teachingMode === 'review' ||
+          effectivePlan.teachingMode === 'recap' ||
+          effectivePlan.teachingMode === 'drill'
+        ? 'calm'
+        : planning.calibrated.tone;
+
+  const resolvedShouldBeBrief =
+    effectivePlan.teachingMode === 'review' || effectivePlan.teachingMode === 'recap'
+      ? false
+      : Boolean(planning.calibrated.shouldBeBrief) ||
+        Boolean(input.requireDirectness) ||
+        signals.learnerState.confidence === 'high';
+
+  const resolvedShouldUseHumor =
+    effectivePlan.teachingMode === 'challenge'
+      ? resolvedToneName === 'playful' &&
+        !resolvedRepeatedMistake &&
+        !signals.shouldReviewConcept &&
+        !input.requireDirectness &&
+        !signals.isSensitiveMoment
+      : Boolean(planning.calibrated.shouldUseHumor) &&
+        !resolvedRepeatedMistake &&
+        !signals.shouldReviewConcept &&
+        !input.requireDirectness &&
+        !signals.isSensitiveMoment &&
+        signals.learnerState.confidence !== 'high';
+
+  const resolvedCorrectionStyle =
+    supportiveRepeatedCorrection ? 'gentle' : planning.calibrated.correctionStyle;
+
+  const resolvedTone: ToneCalibrationResult = {
+    ...planning.calibrated,
+    tone: resolvedToneName,
+    correctionStyle: resolvedCorrectionStyle,
+    shouldUseHumor: resolvedShouldUseHumor,
+    shouldBeBrief: resolvedShouldBeBrief,
+  };
+
+  const specificPraise = getSpecificPraiseText({
+    language: input.language,
+    concept: input.concept,
+    mistake: input.correction?.mistake,
+    fix: input.correction?.fix,
+    learnerText: input.learnerText,
+    repeatedMistake: resolvedRepeatedMistake,
+    wasCorrectiveTurn: signals.isCorrectiveTurn,
     wantsChallenge: input.wantsChallenge,
-    wantsExplanation: input.wantsExplanation || !!input.explanation,
-    wantsDrill: input.wantsDrill,
-    wantsRecap: input.wantsRecap,
-    repeatedMistake,
-    shouldReviewConcept: shouldReview,
-    difficultyDirection: difficulty.direction,
-    suppressHumor: input.suppressHumor ?? guardSignals.suppressHumor,
-    requireDirectness: input.requireDirectness ?? guardSignals.requireDirectness,
-    softenTone: input.softenTone ?? guardSignals.softenTone,
+    improvementType: inferPraiseImprovementType({
+      learnerState: signals.learnerState,
+      concept: input.concept,
+      mistake: input.correction?.mistake,
+      repeatedMistake: resolvedRepeatedMistake,
+      isCorrectiveTurn: signals.isCorrectiveTurn,
+      wantsChallenge: input.wantsChallenge,
+    }),
+    length:
+      resolvedRepeatedMistake || signals.isSensitiveMoment ? 'short' : 'medium',
   });
 
-  const calibrated = calibrateTone({
-    learnerState,
-    plan,
-    suppressHumor: input.suppressHumor ?? guardSignals.suppressHumor,
-    requireDirectness: input.requireDirectness ?? guardSignals.requireDirectness,
-    softenTone: input.softenTone ?? guardSignals.softenTone,
-    repeatedMistake,
-    shouldReviewConcept: shouldReview,
-    wantsExplanation: input.wantsExplanation || !!input.explanation,
-    wantsRecap: input.wantsRecap,
-    wantsDrill: input.wantsDrill,
-  });
+  const finalPlan: ResponsePlan = {
+    ...effectivePlan,
+    shouldUseHumor: resolvedShouldUseHumor,
+  };
 
   const strategy =
-    plan.teachingMode === 'correct' && input.correction
-      ? buildCorrectionStrategy(calibrated.correctionStyle, input.correction, {
-          tone: calibrated.tone,
+    finalPlan.teachingMode === 'correct' && input.correction
+      ? buildCorrectionStrategy(resolvedCorrectionStyle, input.correction, {
+          tone: resolvedTone.tone,
           nextPrompt: input.nextPrompt,
+          specificPraise,
           learnerName: input.userName || undefined,
           concept: input.concept,
           example: input.example,
+          repeatedMistake: resolvedRepeatedMistake,
+          isSensitiveMoment: signals.isSensitiveMoment,
+          wantsChallenge: input.wantsChallenge,
+          wantsExplanation: signals.wantsExplanation,
         })
       : buildTeachingStrategy({
-          mode: plan.teachingMode,
-          tone: calibrated.tone,
+          mode: finalPlan.teachingMode,
+          tone: resolvedTone.tone,
           correction: input.correction,
           summary: input.summary,
           explanation: input.explanation,
@@ -408,73 +619,111 @@ export function generateTeachingTurn(
           concept: input.concept,
           cue: input.nextPrompt,
           nextPrompt: input.nextPrompt,
-          specificPraise: undefined,
+          specificPraise,
           learnerName: input.userName || undefined,
+          repeatedMistake: resolvedRepeatedMistake,
+          isSensitiveMoment: signals.isSensitiveMoment,
+          wantsChallenge: input.wantsChallenge,
+          wantsExplanation: signals.wantsExplanation,
         });
 
   const dialogue = buildTeacherDialogue({
-    userId,
+    userId: signals.userId,
     userName: input.userName,
     language: input.language,
     learnerText: input.learnerText,
     concept: input.concept,
     mistake: input.correction?.mistake,
-    plan,
-    tone: calibrated,
+    plan: finalPlan,
+    tone: resolvedTone,
     strategy,
     humorStyle: deriveHumorStyle(input),
-    allowHumor: calibrated.shouldUseHumor,
+    allowHumor: resolvedTone.shouldUseHumor,
     humorContext:
-      plan.teachingMode === 'challenge'
+      finalPlan.teachingMode === 'challenge'
         ? 'challenge'
-        : plan.teachingMode === 'correct'
+        : finalPlan.teachingMode === 'correct'
           ? 'correction'
-          : plan.teachingMode === 'drill'
+          : finalPlan.teachingMode === 'drill'
             ? 'pronunciation'
-            : difficulty.direction === 'up'
+            : planning.difficulty.direction === 'up'
               ? 'streak'
               : 'success',
-    isConfused: learnerState.clarity === 'lost',
-    isFrustrated: learnerState.affect === 'frustrated',
-    isSensitiveMoment:
-      learnerState.affect === 'frustrated' || learnerState.confidence === 'low',
-    repeatedMistake,
+    isConfused: signals.learnerState.clarity === 'lost',
+    isFrustrated: signals.learnerState.affect === 'frustrated',
+    isSensitiveMoment: signals.isSensitiveMoment,
+    repeatedMistake: resolvedRepeatedMistake,
     allowBossJoke: detectBossJoke(input.learnerText),
   });
+
+  const fallbackDialogue = buildPastTenseFallbackText({
+    input,
+    teachingMode: finalPlan.teachingMode,
+    repeatedMistake: resolvedRepeatedMistake,
+  });
+
+  const finalText = fallbackDialogue?.text ?? dialogue.text;
+  const finalTextAlt = fallbackDialogue?.textAlt ?? dialogue.textAlt;
 
   const memory = updateLessonMemory(
     {
       correct: !(input.isCorrectiveTurn || input.correction),
       mistake: input.correction?.mistake,
-      concept: conceptKey,
+      concept: signals.conceptKey,
     },
-    userId
+    signals.userId
   );
 
-  const curriculum =
-    conceptKey
-      ? updateCurriculumTopic({
-          topic: conceptKey,
-          correct: !(input.isCorrectiveTurn || input.correction),
-        })
-      : curriculumBefore;
+  const curriculum = signals.conceptKey
+    ? updateCurriculumTopic({
+        topic: signals.conceptKey,
+        correct: !(input.isCorrectiveTurn || input.correction),
+      })
+    : curriculumBefore;
 
   const curriculumRecommendation = getCurriculumRecommendation();
 
+  const planningAdaptive = planning.adaptive as AdaptiveTeachingAdjustment & {
+    preferredTone?: string;
+    explanationDepthBias?: number;
+    shouldAcknowledgeEffort?: boolean;
+  };
+
+  const adaptive: AdaptiveTeachingAdjustment = {
+    ...planning.adaptive,
+    preferredTone: planningAdaptive.preferredTone ?? resolvedTone.tone,
+    explanationDepthBias:
+      typeof planningAdaptive.explanationDepthBias === 'number'
+        ? planningAdaptive.explanationDepthBias
+        : signals.learnerState.clarity === 'lost' || signals.wantsExplanation
+          ? 0.85
+          : 0.5,
+    shouldAcknowledgeEffort:
+      planningAdaptive.shouldAcknowledgeEffort ?? resolvedRepeatedMistake,
+  };
+
+  const emotion: TeacherEmotionState = {
+    ...signals.emotion,
+    momentumProtection:
+      signals.emotion.momentumProtection || resolvedRepeatedMistake,
+  };
+
   return {
-    text: dialogue.text,
-    textAlt: dialogue.textAlt,
-    learnerState,
-    plan,
-    tone: calibrated,
+    text: finalText,
+    textAlt: finalTextAlt,
+    learnerState: signals.learnerState,
+    emotion,
+    adaptive,
+    plan: finalPlan,
+    tone: resolvedTone,
     strategy,
     memory,
     curriculum,
     curriculumRecommendation,
-    difficulty,
-    guardSignals,
-    repeatedMistake,
-    shouldReviewConcept: shouldReview,
+    difficulty: planning.difficulty,
+    guardSignals: signals.guardSignals,
+    repeatedMistake: resolvedRepeatedMistake,
+    shouldReviewConcept: signals.shouldReviewConcept,
   };
 }
 
@@ -498,6 +747,7 @@ export function generateEnglishFoundationReply(input: {
   wantsExplanation?: boolean;
   wantsDrill?: boolean;
   wantsRecap?: boolean;
+  repeatedMistake?: boolean;
 }): MercyTeachingTurnResult {
   return generateTeachingTurn({
     ...input,

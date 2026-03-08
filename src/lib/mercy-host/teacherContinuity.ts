@@ -1,4 +1,6 @@
 /**
+ * VERSION: teacherContinuity.ts v2
+ *
  * Mercy Teacher Continuity
  *
  * Purpose:
@@ -16,6 +18,12 @@
  * Storage:
  * - sessionStorage when available
  * - in-memory fallback otherwise
+ *
+ * v2 additions:
+ * - helper exports for recent teaching modes
+ * - helper export for same-concept streak
+ * - helper export for same-mistake streak
+ * - continuity snapshot export for lesson-flow integration
  */
 
 import type { TeachingMode } from './teachingModes';
@@ -90,6 +98,13 @@ export interface TeacherContinuitySuggestion {
     | 'generic_continuity';
 }
 
+export interface TeacherContinuitySnapshot {
+  recentTurns: TeacherContinuityTurnRecord[];
+  recentModes: TeachingMode[];
+  sameConceptStreak: number;
+  sameMistakeStreak: number;
+}
+
 const MAX_RECENT_TURNS = 6;
 const STALE_MS = 1000 * 60 * 20;
 
@@ -132,7 +147,47 @@ function isStorageAvailable(): boolean {
   }
 }
 
-export function createEmptyTeacherContinuityState(userId?: string | null): TeacherContinuityState {
+function isRecent(timestamp: number): boolean {
+  return now() - timestamp <= STALE_MS;
+}
+
+function countConceptStreak(
+  turns: TeacherContinuityTurnRecord[],
+  concept?: string
+): number {
+  if (!concept) return 1;
+
+  let count = 0;
+
+  for (const turn of turns) {
+    if (!isRecent(turn.timestamp)) break;
+    if (!sameConcept(turn.concept, concept)) break;
+    count += 1;
+  }
+
+  return count + 1;
+}
+
+function countMistakeStreak(
+  turns: TeacherContinuityTurnRecord[],
+  mistake?: string
+): number {
+  if (!mistake) return 1;
+
+  let count = 0;
+
+  for (const turn of turns) {
+    if (!isRecent(turn.timestamp)) break;
+    if (!sameMistake(turn.mistake, mistake)) break;
+    count += 1;
+  }
+
+  return count + 1;
+}
+
+export function createEmptyTeacherContinuityState(
+  userId?: string | null
+): TeacherContinuityState {
   return {
     userId: userId || 'default',
     recentTurns: [],
@@ -140,7 +195,9 @@ export function createEmptyTeacherContinuityState(userId?: string | null): Teach
   };
 }
 
-export function loadTeacherContinuity(userId?: string | null): TeacherContinuityState {
+export function loadTeacherContinuity(
+  userId?: string | null
+): TeacherContinuityState {
   const key = getKey(userId);
 
   if (isStorageAvailable()) {
@@ -154,7 +211,8 @@ export function loadTeacherContinuity(userId?: string | null): TeacherContinuity
         userId: parsed.userId || userId || 'default',
         lastTurn: parsed.lastTurn,
         recentTurns: Array.isArray(parsed.recentTurns) ? parsed.recentTurns : [],
-        lastUpdatedAt: typeof parsed.lastUpdatedAt === 'number' ? parsed.lastUpdatedAt : now(),
+        lastUpdatedAt:
+          typeof parsed.lastUpdatedAt === 'number' ? parsed.lastUpdatedAt : now(),
       };
     } catch {
       return createEmptyTeacherContinuityState(userId);
@@ -257,6 +315,47 @@ export function getRecentTeacherTurns(
   userId?: string | null
 ): TeacherContinuityTurnRecord[] {
   return loadTeacherContinuity(userId).recentTurns;
+}
+
+export function getRecentTeacherModes(
+  userId?: string | null
+): TeachingMode[] {
+  return getRecentTeacherTurns(userId)
+    .filter((turn) => isRecent(turn.timestamp))
+    .map((turn) => turn.mode);
+}
+
+export function getSameConceptStreak(args: {
+  userId?: string | null;
+  concept?: string;
+}): number {
+  const turns = getRecentTeacherTurns(args.userId);
+  return countConceptStreak(turns, args.concept);
+}
+
+export function getSameMistakeStreak(args: {
+  userId?: string | null;
+  mistake?: string;
+}): number {
+  const turns = getRecentTeacherTurns(args.userId);
+  return countMistakeStreak(turns, args.mistake);
+}
+
+export function getTeacherContinuitySnapshot(args: {
+  userId?: string | null;
+  concept?: string;
+  mistake?: string;
+}): TeacherContinuitySnapshot {
+  const recentTurns = getRecentTeacherTurns(args.userId).filter((turn) =>
+    isRecent(turn.timestamp)
+  );
+
+  return {
+    recentTurns,
+    recentModes: recentTurns.map((turn) => turn.mode),
+    sameConceptStreak: countConceptStreak(recentTurns, args.concept),
+    sameMistakeStreak: countMistakeStreak(recentTurns, args.mistake),
+  };
 }
 
 export function getTeacherContinuitySuggestion(args: {

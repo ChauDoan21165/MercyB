@@ -1,282 +1,395 @@
+/**
+ * VERSION: responsePlanner.ts v3.3
+ *
+ * Core teaching response planner for Mercy.
+ * Converts learner state and intent signals into
+ * teaching mode, tone, humor allowance, and difficulty direction.
+ */
+
 import type { LearnerState } from './learnerState';
-import type { DifficultyDirection } from './difficultyScaler';
-import type { TeachingMode } from './teachingModes';
+
+export type TeachingMode =
+  | 'explain'
+  | 'correct'
+  | 'challenge'
+  | 'review'
+  | 'recap'
+  | 'drill'
+  | 'encourage';
 
 export type ToneStyle = 'calm' | 'warm' | 'playful' | 'firm';
 
 export type CorrectionStyle = 'direct' | 'gentle' | 'contrastive';
 
-export type ResponsePlanReason =
-  | 'confused'
-  | 'frustrated'
-  | 'challenge_requested'
-  | 'momentum'
-  | 'correction'
-  | 'explanation_requested'
-  | 'review_required'
-  | 'drill_required'
-  | 'recap_required'
-  | 'low_confidence'
-  | 'encourage_default';
+export type DifficultyDirection = 'up' | 'down' | 'hold';
 
-export interface ResponsePlan {
-  teachingMode: TeachingMode;
-  tone: ToneStyle;
-  shouldUseHumor: boolean;
-  shouldBeBrief: boolean;
-  correctionStyle: CorrectionStyle;
-  acknowledgeEffort: boolean;
-  addNextStep: boolean;
-  difficultyDirection: DifficultyDirection;
-  reason: ResponsePlanReason;
-}
-
-export interface PlannerInput {
+export interface ResponsePlannerInput {
   learnerState: LearnerState;
 
   isCorrectiveTurn?: boolean;
+  repeatedMistake?: boolean;
+
   wantsChallenge?: boolean;
   wantsExplanation?: boolean;
   wantsDrill?: boolean;
   wantsRecap?: boolean;
 
-  repeatedMistake?: boolean;
-  shouldReviewConcept?: boolean;
-
-  difficultyDirection?: DifficultyDirection;
-
   suppressHumor?: boolean;
-  requireDirectness?: boolean;
-  softenTone?: boolean;
 }
 
-function baseToneFromState(state: LearnerState): ToneStyle {
-  if (state.affect === 'frustrated') return 'warm';
-  if (state.affect === 'playful') return 'playful';
-  if (state.confidence === 'low') return 'warm';
-  return 'calm';
+export interface ResponsePlan {
+  teachingMode: TeachingMode;
+  tone: ToneStyle;
+  correctionStyle?: CorrectionStyle;
+
+  difficultyDirection: DifficultyDirection;
+
+  shouldUseHumor: boolean;
+  shouldBeBrief: boolean;
+  acknowledgeEffort: boolean;
+  addNextStep: boolean;
+
+  reason: string;
 }
 
-function humorAllowed(
-  state: LearnerState,
-  options: {
-    suppressHumor?: boolean;
-    repeatedMistake?: boolean;
-    requireDirectness?: boolean;
-  } = {}
+function hasStructuredNeutralState(
+  state: Partial<LearnerState> & {
+    clarity?: string;
+    momentum?: string;
+    confidence?: string;
+    affect?: string;
+  }
 ): boolean {
-  const {
-    suppressHumor = false,
-    repeatedMistake = false,
-    requireDirectness = false,
-  } = options;
-
-  if (suppressHumor) return false;
-  if (repeatedMistake) return false;
-  if (requireDirectness) return false;
-  if (state.affect === 'frustrated') return false;
-  if (state.clarity === 'lost') return false;
-
-  return state.affect === 'playful';
+  return Boolean(
+    state.clarity !== undefined ||
+      state.momentum !== undefined ||
+      state.confidence !== undefined ||
+      state.affect !== undefined
+  );
 }
 
-function calibrateTone(baseTone: ToneStyle, input: PlannerInput): ToneStyle {
-  const {
-    learnerState,
-    softenTone = false,
-    requireDirectness = false,
-    repeatedMistake = false,
-  } = input;
-
-  let tone = baseTone;
-
-  if (learnerState.clarity === 'lost' || learnerState.affect === 'frustrated') {
-    tone = 'warm';
-  }
-
-  if (learnerState.confidence === 'low' && tone === 'firm') {
-    tone = 'warm';
-  }
-
-  if (softenTone) {
-    if (tone === 'firm') tone = 'calm';
-    if (tone === 'playful') tone = 'warm';
-  }
-
-  if (requireDirectness && tone === 'playful') {
-    tone = 'calm';
-  }
-
-  if (repeatedMistake && tone === 'playful') {
-    tone = 'calm';
-  }
-
-  return tone;
-}
-
-function chooseCorrectionStyle(input: PlannerInput): CorrectionStyle {
-  const {
-    repeatedMistake = false,
-    requireDirectness = false,
-    learnerState,
-  } = input;
-
-  if (learnerState.clarity === 'lost' || learnerState.affect === 'frustrated') {
-    return 'gentle';
-  }
-
-  if (repeatedMistake) {
-    return 'contrastive';
-  }
-
-  if (requireDirectness) {
-    return 'direct';
-  }
-
-  return 'gentle';
-}
-
-export function buildResponsePlan(input: PlannerInput): ResponsePlan {
+export function buildResponsePlan(
+  input: ResponsePlannerInput
+): ResponsePlan {
   const {
     learnerState,
     isCorrectiveTurn = false,
+    repeatedMistake = false,
     wantsChallenge = false,
     wantsExplanation = false,
     wantsDrill = false,
     wantsRecap = false,
-    repeatedMistake = false,
-    shouldReviewConcept = false,
-    difficultyDirection = 'hold',
     suppressHumor = false,
-    requireDirectness = false,
   } = input;
 
-  const baseTone = baseToneFromState(learnerState);
-  const tone = calibrateTone(baseTone, input);
-  const correctionStyle = chooseCorrectionStyle(input);
+  const state = learnerState as LearnerState & {
+    clarity?: string;
+    momentum?: string;
+    confidence?: string;
+    emotion?: string;
+    frustration?: string | boolean;
+    affect?: string;
+    needsConceptReview?: boolean;
+    wantsReview?: boolean;
+    reviewRequired?: boolean;
+    directnessRequired?: boolean;
+    softenTone?: boolean;
+    toneSofteningRequested?: boolean;
+    playful?: boolean;
+  };
 
-  const humor = humorAllowed(learnerState, {
-    suppressHumor,
-    repeatedMistake,
-    requireDirectness,
-  });
+  const clarity = state.clarity;
+  const momentum = state.momentum;
+  const confidence = state.confidence;
 
-  if (learnerState.clarity === 'lost' || learnerState.affect === 'frustrated') {
-    return {
-      teachingMode: wantsExplanation
-        ? 'explain'
-        : isCorrectiveTurn
-          ? 'correct'
-          : 'encourage',
-      tone: 'warm',
-      shouldUseHumor: false,
-      shouldBeBrief: false,
-      correctionStyle: 'gentle',
-      acknowledgeEffort: true,
-      addNextStep: true,
-      difficultyDirection: 'down',
-      reason: learnerState.affect === 'frustrated' ? 'frustrated' : 'confused',
-    };
+  const isConfused = clarity === 'lost' || clarity === 'confused';
+  const isFrustrated =
+    state.emotion === 'frustrated' ||
+    state.affect === 'frustrated' ||
+    state.frustration === true ||
+    state.frustration === 'high';
+
+  const needsReview =
+    state.needsConceptReview === true ||
+    state.wantsReview === true ||
+    state.reviewRequired === true;
+
+  const directnessRequired = state.directnessRequired === true;
+  const softenTone =
+    state.softenTone === true || state.toneSofteningRequested === true;
+
+  const isPlayful =
+    state.playful === true ||
+    momentum === 'playful' ||
+    momentum === 'light' ||
+    momentum === 'flowing';
+
+  const isLowConfidence = confidence === 'low';
+  const hasMomentum = momentum === 'flowing';
+  const hasNeutralStructure = hasStructuredNeutralState(state);
+
+  let teachingMode: TeachingMode = 'encourage';
+  let tone: ToneStyle = isPlayful ? 'playful' : 'warm';
+  let correctionStyle: CorrectionStyle = 'gentle';
+
+  let difficultyDirection: DifficultyDirection = 'hold';
+
+  let shouldUseHumor = isPlayful && !suppressHumor;
+  let shouldBeBrief = false;
+  let acknowledgeEffort = true;
+  let addNextStep = true;
+
+  let reason = hasNeutralStructure ? 'encourage_default' : 'neutral';
+
+  /* -----------------------------
+     1. confusion / frustration
+  ----------------------------- */
+
+  if (isConfused) {
+    const shouldExplainLostLearner =
+      wantsExplanation || isLowConfidence || isFrustrated;
+
+    teachingMode = shouldExplainLostLearner ? 'explain' : 'correct';
+    tone = 'warm';
+    correctionStyle = 'gentle';
+
+    difficultyDirection = 'down';
+
+    shouldUseHumor = false;
+    shouldBeBrief = false;
+    acknowledgeEffort = true;
+    addNextStep = false;
+
+    reason = 'confused';
+  } else if (isFrustrated) {
+    const shouldExplainFrustration = wantsExplanation || isLowConfidence;
+
+    teachingMode = shouldExplainFrustration ? 'explain' : 'correct';
+    tone = 'warm';
+    correctionStyle = 'gentle';
+
+    difficultyDirection = 'down';
+
+    shouldUseHumor = false;
+    shouldBeBrief = false;
+    acknowledgeEffort = true;
+    addNextStep = false;
+
+    reason = 'frustrated';
   }
 
-  if (shouldReviewConcept) {
-    return {
-      teachingMode: 'review',
-      tone: tone === 'playful' ? 'calm' : tone,
-      shouldUseHumor: false,
-      shouldBeBrief: false,
-      correctionStyle: 'gentle',
-      acknowledgeEffort: true,
-      addNextStep: true,
-      difficultyDirection: 'down',
-      reason: 'review_required',
-    };
+  /* -----------------------------
+     2. explicit review / recap / drill / challenge / explain
+  ----------------------------- */
+
+  else if (needsReview) {
+    teachingMode = 'review';
+    tone = 'calm';
+    correctionStyle = 'gentle';
+
+    difficultyDirection = 'down';
+
+    shouldUseHumor = false;
+    shouldBeBrief = false;
+    acknowledgeEffort = true;
+    addNextStep = false;
+
+    reason = 'review_required';
+  } else if (wantsRecap) {
+    teachingMode = 'recap';
+    tone = 'calm';
+    correctionStyle = 'gentle';
+
+    difficultyDirection = 'hold';
+
+    shouldUseHumor = false;
+    shouldBeBrief = false;
+    acknowledgeEffort = false;
+    addNextStep = false;
+
+    reason = 'recap_required';
+  } else if (wantsDrill) {
+    teachingMode = 'drill';
+    tone = 'calm';
+    correctionStyle = 'direct';
+
+    difficultyDirection = 'hold';
+
+    shouldUseHumor = false;
+    shouldBeBrief = true;
+    acknowledgeEffort = false;
+    addNextStep = true;
+
+    reason = 'drill_required';
+  } else if (wantsChallenge) {
+    teachingMode = 'challenge';
+    tone = 'playful';
+    correctionStyle = 'direct';
+
+    difficultyDirection = 'up';
+
+    shouldUseHumor = !suppressHumor;
+    shouldBeBrief = true;
+    acknowledgeEffort = false;
+    addNextStep = true;
+
+    reason = 'challenge_requested';
+  } else if (wantsExplanation && isLowConfidence) {
+    teachingMode = 'explain';
+    tone = 'warm';
+    correctionStyle = 'gentle';
+
+    difficultyDirection = 'hold';
+
+    shouldUseHumor = false;
+    shouldBeBrief = false;
+    acknowledgeEffort = true;
+    addNextStep = false;
+
+    reason = 'low_confidence';
   }
 
-  if (wantsRecap) {
-    return {
-      teachingMode: 'recap',
-      tone: tone === 'firm' ? 'calm' : tone,
-      shouldUseHumor: false,
-      shouldBeBrief: false,
-      correctionStyle: 'gentle',
-      acknowledgeEffort: true,
-      addNextStep: true,
-      difficultyDirection: 'hold',
-      reason: 'recap_required',
-    };
+  /* -----------------------------
+     3. corrective turns
+  ----------------------------- */
+
+  else if (isCorrectiveTurn && directnessRequired) {
+    teachingMode = 'correct';
+    tone = 'firm';
+    correctionStyle = 'direct';
+
+    difficultyDirection = 'down';
+
+    shouldUseHumor = false;
+    shouldBeBrief = true;
+    acknowledgeEffort = false;
+    addNextStep = false;
+
+    reason = 'directness_required';
+  } else if (isCorrectiveTurn && repeatedMistake) {
+    teachingMode = 'correct';
+    tone = softenTone ? 'warm' : 'firm';
+    correctionStyle = softenTone ? 'gentle' : 'contrastive';
+
+    difficultyDirection = 'down';
+
+    shouldUseHumor = false;
+    shouldBeBrief = false;
+    acknowledgeEffort = true;
+    addNextStep = false;
+
+    reason = 'repeated_mistake';
+  } else if (isCorrectiveTurn) {
+    teachingMode = 'correct';
+    tone = 'warm';
+    correctionStyle = 'gentle';
+
+    difficultyDirection = 'hold';
+
+    shouldUseHumor = false;
+    shouldBeBrief = false;
+    acknowledgeEffort = true;
+    addNextStep = false;
+
+    reason = 'correction';
   }
 
-  if (wantsDrill) {
-    return {
-      teachingMode: 'drill',
-      tone: requireDirectness ? 'firm' : tone === 'playful' ? 'calm' : tone,
-      shouldUseHumor: false,
-      shouldBeBrief: true,
-      correctionStyle: requireDirectness ? 'direct' : 'gentle',
-      acknowledgeEffort: false,
-      addNextStep: true,
-      difficultyDirection: repeatedMistake ? 'down' : difficultyDirection,
-      reason: 'drill_required',
-    };
+  /* -----------------------------
+     4. momentum challenge
+  ----------------------------- */
+
+  else if (hasMomentum && !isLowConfidence) {
+    teachingMode = 'challenge';
+    tone = 'firm';
+    correctionStyle = 'direct';
+
+    difficultyDirection = 'up';
+
+    shouldUseHumor = false;
+    shouldBeBrief = true;
+    acknowledgeEffort = false;
+    addNextStep = true;
+
+    reason = 'momentum';
   }
 
-  if (wantsChallenge || learnerState.momentum === 'flowing') {
-    return {
-      teachingMode: 'challenge',
-      tone:
-        learnerState.affect === 'playful' && !requireDirectness ? 'playful' : 'firm',
-      shouldUseHumor: humor,
-      shouldBeBrief: true,
-      correctionStyle: 'direct',
-      acknowledgeEffort: false,
-      addNextStep: true,
-      difficultyDirection: 'up',
-      reason: wantsChallenge ? 'challenge_requested' : 'momentum',
-    };
+  /* -----------------------------
+     5. explanation and encouragement fallback
+  ----------------------------- */
+
+  else if (wantsExplanation) {
+    teachingMode = 'explain';
+    tone = 'warm';
+    correctionStyle = 'gentle';
+
+    difficultyDirection = 'hold';
+
+    shouldUseHumor = false;
+    shouldBeBrief = false;
+    acknowledgeEffort = true;
+    addNextStep = false;
+
+    reason = 'explanation_requested';
+  } else if (isPlayful) {
+    teachingMode = 'encourage';
+    tone = 'playful';
+    correctionStyle = 'gentle';
+
+    difficultyDirection = 'hold';
+
+    shouldUseHumor = !suppressHumor;
+    shouldBeBrief = false;
+    acknowledgeEffort = true;
+    addNextStep = true;
+
+    reason = 'stable_playful';
+  } else {
+    teachingMode = 'encourage';
+    tone = 'warm';
+    correctionStyle = 'gentle';
+
+    difficultyDirection = 'hold';
+
+    shouldUseHumor = false;
+    shouldBeBrief = false;
+    acknowledgeEffort = true;
+    addNextStep = true;
+
+    reason = hasNeutralStructure ? 'encourage_default' : 'neutral';
   }
 
-  if (isCorrectiveTurn) {
-    return {
-      teachingMode: 'correct',
-      tone: requireDirectness ? 'firm' : tone,
-      shouldUseHumor: humor && !repeatedMistake,
-      shouldBeBrief: true,
-      correctionStyle,
-      acknowledgeEffort: true,
-      addNextStep: true,
-      difficultyDirection: repeatedMistake ? 'down' : difficultyDirection,
-      reason: 'correction',
-    };
+  /* -----------------------------
+     humor override
+  ----------------------------- */
+
+  if (suppressHumor) {
+    shouldUseHumor = false;
   }
 
-  if (wantsExplanation) {
-    return {
-      teachingMode: 'explain',
-      tone: tone === 'playful' ? 'calm' : tone,
-      shouldUseHumor: false,
-      shouldBeBrief: false,
-      correctionStyle: requireDirectness ? 'direct' : 'gentle',
-      acknowledgeEffort: learnerState.confidence === 'low',
-      addNextStep: true,
-      difficultyDirection: 'hold',
-      reason:
-        learnerState.confidence === 'low'
-          ? 'low_confidence'
-          : 'explanation_requested',
-    };
-  }
+  /* -----------------------------
+     defensive normalization
+  ----------------------------- */
+
+  teachingMode = teachingMode ?? 'encourage';
+  tone = tone ?? 'warm';
+  difficultyDirection = difficultyDirection ?? 'hold';
+  correctionStyle = correctionStyle ?? 'gentle';
+  shouldUseHumor = Boolean(shouldUseHumor);
+  shouldBeBrief = Boolean(shouldBeBrief);
+  acknowledgeEffort = Boolean(acknowledgeEffort);
+  addNextStep = Boolean(addNextStep);
 
   return {
-    teachingMode: 'encourage',
-    tone: tone === 'firm' ? 'warm' : tone === 'playful' ? 'playful' : 'warm',
-    shouldUseHumor: humor,
-    shouldBeBrief: true,
-    correctionStyle: 'gentle',
-    acknowledgeEffort: true,
-    addNextStep: true,
+    teachingMode,
+    tone,
+    correctionStyle,
     difficultyDirection,
-    reason:
-      learnerState.confidence === 'low' ? 'low_confidence' : 'encourage_default',
+    shouldUseHumor,
+    shouldBeBrief,
+    acknowledgeEffort,
+    addNextStep,
+    reason,
   };
 }
+
+export default buildResponsePlan;

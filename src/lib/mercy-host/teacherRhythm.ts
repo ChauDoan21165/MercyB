@@ -67,7 +67,10 @@ export interface TeacherRhythmRenderResult {
 /* Rhythm profiles                                                            */
 /* -------------------------------------------------------------------------- */
 
-export const TEACHER_RHYTHM_PROFILES: Record<TeachingMode, TeacherRhythmProfile> = {
+export const TEACHER_RHYTHM_PROFILES: Record<
+  TeachingMode,
+  TeacherRhythmProfile
+> = {
   explain: {
     mode: 'explain',
     label: 'Guided Explanation',
@@ -283,18 +286,29 @@ function shouldKeepStage(
   if (!brief) {
     if (stage === 'acknowledge' && !acknowledgeEffort) return false;
     if (stage === 'action' && !addNextStep) return false;
+
     if (stage === 'encourage' && input.mode !== 'encourage' && !useHumor) {
-      return !!getStageLine(input, stage);
+      return false;
     }
+
     return true;
   }
 
   if (stage === 'observe') return false;
   if (stage === 'acknowledge' && !acknowledgeEffort) return false;
-  if (stage === 'action' && !addNextStep && input.mode !== 'challenge' && input.mode !== 'drill') {
+
+  if (
+    stage === 'action' &&
+    !addNextStep &&
+    input.mode !== 'challenge' &&
+    input.mode !== 'drill'
+  ) {
     return false;
   }
-  if (stage === 'encourage' && input.mode !== 'encourage' && !useHumor) return false;
+
+  if (stage === 'encourage' && input.mode !== 'encourage' && !useHumor) {
+    return false;
+  }
 
   return true;
 }
@@ -307,7 +321,9 @@ function joinLines(parts: string[]): string {
 /* Public API                                                                 */
 /* -------------------------------------------------------------------------- */
 
-export function getTeacherRhythmProfile(mode: TeachingMode): TeacherRhythmProfile {
+export function getTeacherRhythmProfile(
+  mode: TeachingMode
+): TeacherRhythmProfile {
   return TEACHER_RHYTHM_PROFILES[mode];
 }
 

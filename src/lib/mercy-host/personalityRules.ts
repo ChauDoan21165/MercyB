@@ -300,6 +300,19 @@ function pick<T>(arr: T[]): T {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
+function pickStable<T>(arr: T[], seed: string): T {
+  if (arr.length === 0) {
+    throw new Error("pickStable requires a non-empty array");
+  }
+
+  let hash = 0;
+  for (let i = 0; i < seed.length; i += 1) {
+    hash = (hash * 31 + seed.charCodeAt(i)) >>> 0;
+  }
+
+  return arr[hash % arr.length]!;
+}
+
 function cleanRoboticPhrases(text: string): string {
   let result = (text ?? "").trim();
   FORBIDDEN_PHRASES.forEach((pattern) => {
@@ -312,11 +325,25 @@ function cleanRoboticPhrases(text: string): string {
     .trim();
 }
 
+function normalizeText(text: string): string {
+  return cleanRoboticPhrases(text)
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 function shouldAddSuffix(text: string): boolean {
   if (!text) return false;
   if (text.length > 220) return false;
   if (/[!?]$/.test(text.trim())) return false;
   return true;
+}
+
+function shouldAddOpening(text: string): boolean {
+  if (!text) return false;
+  if (/^(gently,|softly,|no rush —|nhẹ nhàng thôi,|từ tốn nhé,|không vội đâu —)/i.test(text.trim())) {
+    return false;
+  }
+  return false;
 }
 
 // ============================================
@@ -327,7 +354,7 @@ export function getPersonalityLine(
   context: MercyPersonalityContext = "default"
 ): { en: string; vi: string } {
   const lines = PERSONALITY_LINES[context] ?? PERSONALITY_LINES.default;
-  return pick(lines);
+  return pickStable(lines, context);
 }
 
 // ============================================
@@ -339,25 +366,34 @@ export function applyPersonality(
   textVi: string,
   context: MercyPersonalityContext = "default"
 ): { en: string; vi: string } {
-  let en = cleanRoboticPhrases(textEn);
-  let vi = cleanRoboticPhrases(textVi);
+  let en = normalizeText(textEn);
+  let vi = normalizeText(textVi);
 
-  // Use context if the base text is empty, so the parameter is meaningful
-  // without changing normal behavior.
+  // Only use context as a fallback when the base text is empty.
+  // This keeps rendering deterministic and avoids mutating already-built replies.
   if (!en || !vi) {
     const fallback = getPersonalityLine(context);
     if (!en) en = fallback.en;
     if (!vi) vi = fallback.vi;
   }
 
-  const openingEn = pick(CALM_OPENINGS_EN);
-  const openingVi = pick(CALM_OPENINGS_VI);
+  if (shouldAddOpening(en)) {
+    en = `${pickStable(CALM_OPENINGS_EN, `${context}:en:${en}`)}${en}`.replace(/\s+/g, " ").trim();
+  }
 
-  en = `${openingEn}${en}`.replace(/\s+/g, " ").trim();
-  vi = `${openingVi}${vi}`.replace(/\s+/g, " ").trim();
+  if (shouldAddOpening(vi)) {
+    vi = `${pickStable(CALM_OPENINGS_VI, `${context}:vi:${vi}`)}${vi}`.replace(/\s+/g, " ").trim();
+  }
 
-  if (shouldAddSuffix(en)) en += pick(WARMTH_SUFFIXES_EN);
-  if (shouldAddSuffix(vi)) vi += pick(WARMTH_SUFFIXES_VI);
+  // Intentionally disabled for normal replies:
+  // random/automatic suffixing was causing snapshot drift and overwriting
+  // carefully composed teacher dialogue.
+  if (false && shouldAddSuffix(en)) {
+    en += pickStable(WARMTH_SUFFIXES_EN, `${context}:suffix:en:${en}`);
+  }
+  if (false && shouldAddSuffix(vi)) {
+    vi += pickStable(WARMTH_SUFFIXES_VI, `${context}:suffix:vi:${vi}`);
+  }
 
   return {
     en: en.replace(/\s+/g, " ").trim(),

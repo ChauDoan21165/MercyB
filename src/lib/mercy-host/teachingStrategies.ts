@@ -1,4 +1,6 @@
 /**
+ * VERSION: teachingStrategies.ts v2
+ *
  * Mercy Teaching Strategies
  *
  * Reusable teacher moves for Mercy Host.
@@ -7,6 +9,7 @@
  * - separate pedagogical structure from personality styling
  * - keep teacher responses consistent and intentional
  * - provide bilingual building blocks for scripts and planners
+ * - add worked-example support so Mercy can demonstrate before pushing the learner
  *
  * Design rules:
  * - acknowledge -> teach -> next step
@@ -48,6 +51,11 @@ export interface StrategyOptions {
   learnerName?: string;
   concept?: string;
   example?: string;
+  workedExample?: string;
+  repeatedMistake?: boolean;
+  isSensitiveMoment?: boolean;
+  wantsChallenge?: boolean;
+  wantsExplanation?: boolean;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -109,6 +117,17 @@ function withMeta(
   };
 }
 
+function buildWorkedExampleNextStep(nextPrompt?: string): TeachingStrategyLine {
+  if (nextPrompt) {
+    return buildNextStep(nextPrompt)!;
+  }
+
+  return buildLine(
+    'Now try the same pattern once on your own.',
+    'Giờ bạn thử đúng mẫu đó một lần nhé.'
+  );
+}
+
 /* -------------------------------------------------------------------------- */
 /* Core correction strategies                                                 */
 /* -------------------------------------------------------------------------- */
@@ -118,12 +137,15 @@ export function gentleCorrection(
   options: StrategyOptions = {}
 ): TeachingStrategyResult {
   const tone = options.tone || 'warm';
+  const praise = buildPraiseLine(options.specificPraise);
 
   return withMeta(
     {
       mode: 'correct',
       tone,
-      opening: buildNamedOpening("you're close.", 'bạn gần đúng rồi.', options.learnerName),
+      opening:
+        praise ||
+        buildNamedOpening("you're close.", 'bạn gần đúng rồi.', options.learnerName),
       teaching: buildLine(`Small fix: ${correction.fix}.`, `Sửa nhẹ: ${correction.fix}.`),
       nextStep: buildNextStep(options.nextPrompt),
     },
@@ -139,12 +161,15 @@ export function directCorrection(
   options: StrategyOptions = {}
 ): TeachingStrategyResult {
   const tone = options.tone || 'calm';
+  const praise = buildPraiseLine(options.specificPraise);
 
   return withMeta(
     {
       mode: 'correct',
       tone,
-      opening: buildNamedOpening('close.', 'gần đúng rồi.', options.learnerName),
+      opening:
+        praise ||
+        buildNamedOpening('close.', 'gần đúng rồi.', options.learnerName),
       teaching: buildLine(`${correction.fix}.`, `${correction.fix}.`),
       nextStep: buildNextStep(options.nextPrompt),
     },
@@ -160,12 +185,15 @@ export function contrastiveCorrection(
   options: StrategyOptions = {}
 ): TeachingStrategyResult {
   const tone = options.tone || 'calm';
+  const praise = buildPraiseLine(options.specificPraise);
 
   return withMeta(
     {
       mode: 'correct',
       tone,
-      opening: buildNamedOpening('close.', 'gần đúng rồi.', options.learnerName),
+      opening:
+        praise ||
+        buildNamedOpening('close.', 'gần đúng rồi.', options.learnerName),
       teaching: buildLine(
         `Use "${correction.fix}", not "${correction.mistake}".`,
         `Dùng "${correction.fix}", không dùng "${correction.mistake}".`
@@ -257,12 +285,13 @@ export function confidenceRepair(
   options: StrategyOptions = {}
 ): TeachingStrategyResult {
   const tone = options.tone || 'warm';
+  const praise = buildPraiseLine(options.specificPraise);
 
   return withMeta(
     {
       mode: 'encourage',
       tone,
-      opening: buildLine("You're still in this.", 'Bạn vẫn đang ở trong tiến trình này.'),
+      opening: praise || buildLine("You're still in this.", 'Bạn vẫn đang ở trong tiến trình này.'),
       teaching: buildLine(
         'One clear step is enough for now.',
         'Một bước rõ ràng lúc này là đủ.'
@@ -331,12 +360,13 @@ export function explainRule(
   options: StrategyOptions = {}
 ): TeachingStrategyResult {
   const tone = options.tone || 'calm';
+  const praise = buildPraiseLine(options.specificPraise);
 
   return withMeta(
     {
       mode: 'explain',
       tone,
-      opening: buildLine('Here is the key point.', 'Đây là điểm chính.'),
+      opening: praise || buildLine('Here is the key point.', 'Đây là điểm chính.'),
       teaching: buildLine(explanation, explanation),
       nextStep: buildNextStep(options.nextPrompt),
     },
@@ -353,12 +383,13 @@ export function explainWithExample(
   options: StrategyOptions = {}
 ): TeachingStrategyResult {
   const tone = options.tone || 'calm';
+  const praise = buildPraiseLine(options.specificPraise);
 
   return withMeta(
     {
       mode: 'explain',
       tone,
-      opening: buildLine('Here is the rule.', 'Đây là quy tắc.'),
+      opening: praise || buildLine('Here is the rule.', 'Đây là quy tắc.'),
       teaching: buildLine(
         `${explanation} Example: ${example}`,
         `${explanation} Ví dụ: ${example}`
@@ -372,6 +403,37 @@ export function explainWithExample(
   );
 }
 
+export function workedExample(
+  explanation: string,
+  example: string,
+  options: StrategyOptions = {}
+): TeachingStrategyResult {
+  const tone = options.tone || 'warm';
+  const praise = buildPraiseLine(options.specificPraise);
+
+  return withMeta(
+    {
+      mode: 'explain',
+      tone,
+      opening:
+        praise ||
+        buildLine(
+          'Watch this one first.',
+          'Xem ví dụ này trước nhé.'
+        ),
+      teaching: buildLine(
+        `${explanation} Worked example: ${example}`,
+        `${explanation} Ví dụ làm mẫu: ${example}`
+      ),
+      nextStep: buildWorkedExampleNextStep(options.nextPrompt),
+    },
+    {
+      followUpMode: 'drill',
+      tags: ['explain', 'worked_example'],
+    }
+  );
+}
+
 /* -------------------------------------------------------------------------- */
 /* Practice / drill strategies                                                */
 /* -------------------------------------------------------------------------- */
@@ -381,12 +443,13 @@ export function oneStepChallenge(
   options: StrategyOptions = {}
 ): TeachingStrategyResult {
   const tone = options.tone || 'firm';
+  const praise = buildPraiseLine(options.specificPraise);
 
   return withMeta(
     {
       mode: 'challenge',
       tone,
-      opening: buildLine('Good.', 'Tốt.'),
+      opening: praise || buildLine('Good.', 'Tốt.'),
       teaching: buildLine(
         'Now take it one step further.',
         'Giờ tiến thêm một bước nữa.'
@@ -405,12 +468,15 @@ export function controlledDrill(
   options: StrategyOptions = {}
 ): TeachingStrategyResult {
   const tone = options.tone || 'firm';
+  const praise = buildPraiseLine(options.specificPraise);
 
   return withMeta(
     {
       mode: 'drill',
       tone,
-      opening: buildLine('Again, slowly and clearly.', 'Lại lần nữa, chậm và rõ nhé.'),
+      opening:
+        praise ||
+        buildLine('Again, slowly and clearly.', 'Lại lần nữa, chậm và rõ nhé.'),
       teaching: buildLine(cue, cue),
       nextStep: buildNextStep(options.nextPrompt),
     },
@@ -426,12 +492,13 @@ export function pronunciationNudge(
   options: StrategyOptions = {}
 ): TeachingStrategyResult {
   const tone = options.tone || 'calm';
+  const praise = buildPraiseLine(options.specificPraise);
 
   return withMeta(
     {
       mode: 'drill',
       tone,
-      opening: buildLine('Listen first.', 'Nghe trước nhé.'),
+      opening: praise || buildLine('Listen first.', 'Nghe trước nhé.'),
       teaching: buildLine(cue, cue),
       nextStep: buildNextStep(options.nextPrompt),
     },
@@ -474,6 +541,11 @@ export function buildTeachingStrategy(args: {
   nextPrompt?: string;
   specificPraise?: string;
   learnerName?: string;
+  workedExample?: string;
+  repeatedMistake?: boolean;
+  isSensitiveMoment?: boolean;
+  wantsChallenge?: boolean;
+  wantsExplanation?: boolean;
 }): TeachingStrategyResult {
   const options: StrategyOptions = {
     tone: args.tone,
@@ -482,16 +554,38 @@ export function buildTeachingStrategy(args: {
     learnerName: args.learnerName,
     concept: args.concept,
     example: args.example,
+    workedExample: args.workedExample,
+    repeatedMistake: args.repeatedMistake,
+    isSensitiveMoment: args.isSensitiveMoment,
+    wantsChallenge: args.wantsChallenge,
+    wantsExplanation: args.wantsExplanation,
   };
 
   switch (args.mode) {
     case 'correct':
-      return buildCorrectionStrategy('gentle', args.correction || { mistake: '', fix: '' }, options);
+      return buildCorrectionStrategy(
+        'gentle',
+        args.correction || { mistake: '', fix: '' },
+        options
+      );
 
     case 'explain':
+      if (args.workedExample && args.explanation) {
+        return workedExample(args.explanation, args.workedExample, options);
+      }
+
+      if (
+        args.example &&
+        args.explanation &&
+        (args.repeatedMistake || args.isSensitiveMoment || args.wantsExplanation)
+      ) {
+        return workedExample(args.explanation, args.example, options);
+      }
+
       if (args.explanation && args.example) {
         return explainWithExample(args.explanation, args.example, options);
       }
+
       return explainRule(args.explanation || 'Here is the main rule.', options);
 
     case 'challenge':
@@ -501,7 +595,10 @@ export function buildTeachingStrategy(args: {
       return controlledDrill(args.cue || args.nextPrompt || 'Try it once more.', options);
 
     case 'recap':
-      return microRecap(args.summary || 'You learned the key point clearly today.', options);
+      return microRecap(
+        args.summary || 'You learned the key point clearly today.',
+        options
+      );
 
     case 'review':
       return conceptReview(args.concept || 'this concept', options);
