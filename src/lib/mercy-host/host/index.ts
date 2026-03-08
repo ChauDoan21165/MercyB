@@ -1,4 +1,6 @@
 /**
+ * FILE: src/lib/mercy-host/host/index.ts
+ *
  * Mercy Host Pipeline Barrel
  *
  * Purpose:
@@ -6,11 +8,11 @@
  * - expose host pipeline layers from one place
  */
 
-export { default as buildTeachingSignals } from './buildTeachingSignals';
+export { buildTeachingSignals } from './buildTeachingSignals';
 export type { TeachingSignalsResult } from './buildTeachingSignals';
 
 export { default as buildTeachingPlan } from './buildTeachingPlan';
-export type { TeachingPlanLayerResult } from './buildTeachingPlan';
+export type { BuildTeachingPlanResult as TeachingPlanLayerResult } from './buildTeachingPlan';
 
 export { default as buildTeachingStrategyLayer } from './buildTeachingStrategyLayer';
 export type { TeachingStrategyLayerResult } from './buildTeachingStrategyLayer';

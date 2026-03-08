@@ -1,23 +1,33 @@
-export type PaceAdjustment = "slow" | "normal" | "fast";
-export type CognitiveLoadLevel = "low" | "moderate" | "high";
+/**
+ * FILE: src/lib/mercy-host/intelligence/teacherEmotionModel.ts
+ * VERSION: teacherEmotionModel.ts v1.2
+ *
+ * Purpose:
+ * - infer Mercy's teaching-emotion state from learner, turn, and session signals
+ * - keep pressure, warmth, pacing, and challenge aligned with learner needs
+ * - provide a stable emotional interpretation layer for downstream planning
+ */
+
+export type PaceAdjustment = 'slow' | 'normal' | 'fast';
+export type CognitiveLoadLevel = 'low' | 'moderate' | 'high';
 export type EmotionSignal =
-  | "curious"
-  | "proud"
-  | "discouraged"
-  | "embarrassed"
-  | "overwhelmed"
-  | "frustrated"
-  | "confused"
-  | "neutral";
+  | 'curious'
+  | 'proud'
+  | 'discouraged'
+  | 'embarrassed'
+  | 'overwhelmed'
+  | 'frustrated'
+  | 'confused'
+  | 'neutral';
 
 export interface TeacherEmotionModelInput {
   learnerState?: {
-    confusionLevel?: number;        // 0..1
-    confidenceLevel?: number;       // 0..1
-    frustrationLevel?: number;      // 0..1
-    engagementLevel?: number;       // 0..1
-    momentumLevel?: number;         // 0..1
-    recentSuccessRate?: number;     // 0..1
+    confusionLevel?: number; // 0..1
+    confidenceLevel?: number; // 0..1
+    frustrationLevel?: number; // 0..1
+    engagementLevel?: number; // 0..1
+    momentumLevel?: number; // 0..1
+    recentSuccessRate?: number; // 0..1
     correctionSensitivity?: number; // 0..1
     emotionalState?: string;
   };
@@ -62,19 +72,38 @@ function normalizeEmotionLabel(raw?: string): EmotionSignal | null {
   if (!raw) return null;
   const s = raw.trim().toLowerCase();
 
-  if (["curious", "interested", "engaged", "inquisitive"].includes(s)) return "curious";
-  if (["proud", "confident", "happy", "satisfied"].includes(s)) return "proud";
-  if (["discouraged", "deflated", "down"].includes(s)) return "discouraged";
-  if (["embarrassed", "ashamed", "self-conscious"].includes(s)) return "embarrassed";
-  if (["overwhelmed", "flooded", "overloaded"].includes(s)) return "overwhelmed";
-  if (["frustrated", "annoyed", "stuck"].includes(s)) return "frustrated";
-  if (["confused", "unsure", "lost"].includes(s)) return "confused";
-  if (["neutral", "ok", "fine"].includes(s)) return "neutral";
+  if (['curious', 'interested', 'engaged', 'inquisitive'].includes(s)) {
+    return 'curious';
+  }
+  if (['proud', 'confident', 'happy', 'satisfied'].includes(s)) {
+    return 'proud';
+  }
+  if (['discouraged', 'deflated', 'down'].includes(s)) {
+    return 'discouraged';
+  }
+  if (['embarrassed', 'ashamed', 'self-conscious'].includes(s)) {
+    return 'embarrassed';
+  }
+  if (['overwhelmed', 'flooded', 'overloaded'].includes(s)) {
+    return 'overwhelmed';
+  }
+  if (['frustrated', 'annoyed', 'stuck'].includes(s)) {
+    return 'frustrated';
+  }
+  if (['confused', 'unsure', 'lost'].includes(s)) {
+    return 'confused';
+  }
+  if (['neutral', 'ok', 'fine'].includes(s)) {
+    return 'neutral';
+  }
 
   return null;
 }
 
-function inferPrimarySignal(input: TeacherEmotionModelInput, reasoning: string[]): EmotionSignal {
+function inferPrimarySignal(
+  input: TeacherEmotionModelInput,
+  reasoning: string[]
+): EmotionSignal {
   const learnerState = input.learnerState ?? {};
   const lastTurn = input.lastTurn ?? {};
   const sessionState = input.sessionState ?? {};
@@ -100,28 +129,28 @@ function inferPrimarySignal(input: TeacherEmotionModelInput, reasoning: string[]
   const struggleStreak = sessionState.struggleStreak ?? 0;
 
   if (confusion > 0.8 || struggleStreak >= 3 || (mistakes >= 3 && frustration > 0.5)) {
-    reasoning.push("high confusion/struggle suggests overwhelm");
-    return "overwhelmed";
+    reasoning.push('high confusion/struggle suggests overwhelm');
+    return 'overwhelmed';
   }
 
   if (lastTurn.wasCorrected && correctionSensitivity > 0.7 && confidence < 0.45) {
-    reasoning.push("recent correction plus low confidence suggests embarrassment");
-    return "embarrassed";
+    reasoning.push('recent correction plus low confidence suggests embarrassment');
+    return 'embarrassed';
   }
 
   if (frustration > 0.7) {
-    reasoning.push("high frustration detected");
-    return "frustrated";
+    reasoning.push('high frustration detected');
+    return 'frustrated';
   }
 
   if (confidence < 0.35 && successRate < 0.45) {
-    reasoning.push("low confidence and low recent success suggest discouragement");
-    return "discouraged";
+    reasoning.push('low confidence and low recent success suggest discouragement');
+    return 'discouraged';
   }
 
   if (confusion > 0.55) {
-    reasoning.push("elevated confusion detected");
-    return "confused";
+    reasoning.push('elevated confusion detected');
+    return 'confused';
   }
 
   if (
@@ -130,22 +159,22 @@ function inferPrimarySignal(input: TeacherEmotionModelInput, reasoning: string[]
     confidence > 0.65 &&
     (lastTurn.succeededAfterRetry || momentum > 0.65)
   ) {
-    reasoning.push("recent success and recovery suggest pride");
-    return "proud";
+    reasoning.push('recent success and recovery suggest pride');
+    return 'proud';
   }
 
   if (lastTurn.askedFollowUpQuestion || (engagement > 0.7 && confusion < 0.5)) {
-    reasoning.push("follow-up question or high engagement suggests curiosity");
-    return "curious";
+    reasoning.push('follow-up question or high engagement suggests curiosity');
+    return 'curious';
   }
 
-  reasoning.push("no strong signal; defaulting to neutral");
-  return "neutral";
+  reasoning.push('no strong signal; defaulting to neutral');
+  return 'neutral';
 }
 
 function inferSecondarySignals(
   primary: EmotionSignal,
-  input: TeacherEmotionModelInput,
+  input: TeacherEmotionModelInput
 ): EmotionSignal[] {
   const learnerState = input.learnerState ?? {};
   const sessionState = input.sessionState ?? {};
@@ -159,20 +188,22 @@ function inferSecondarySignals(
 
   const candidates: EmotionSignal[] = [];
 
-  if (primary !== "confused" && confusion > 0.45) candidates.push("confused");
-  if (primary !== "frustrated" && frustration > 0.45) candidates.push("frustrated");
-  if (primary !== "discouraged" && confidence < 0.4 && successRate < 0.5) candidates.push("discouraged");
-  if (primary !== "curious" && engagement > 0.7) candidates.push("curious");
-  if (primary !== "proud" && successRate > 0.75) candidates.push("proud");
-  if (primary !== "embarrassed" && recentCorrections >= 2 && confidence < 0.45) {
-    candidates.push("embarrassed");
+  if (primary !== 'confused' && confusion > 0.45) candidates.push('confused');
+  if (primary !== 'frustrated' && frustration > 0.45) candidates.push('frustrated');
+  if (primary !== 'discouraged' && confidence < 0.4 && successRate < 0.5) {
+    candidates.push('discouraged');
+  }
+  if (primary !== 'curious' && engagement > 0.7) candidates.push('curious');
+  if (primary !== 'proud' && successRate > 0.75) candidates.push('proud');
+  if (primary !== 'embarrassed' && recentCorrections >= 2 && confidence < 0.45) {
+    candidates.push('embarrassed');
   }
 
   return [...new Set(candidates)].slice(0, 2);
 }
 
 export function teacherEmotionModel(
-  input: TeacherEmotionModelInput,
+  input: TeacherEmotionModelInput
 ): TeacherEmotionState {
   const learnerState = input.learnerState ?? {};
   const lastTurn = input.lastTurn ?? {};
@@ -186,137 +217,135 @@ export function teacherEmotionModel(
   const confidence = clamp(learnerState.confidenceLevel ?? 0.5);
   const frustration = clamp(learnerState.frustrationLevel ?? 0);
   const engagement = clamp(learnerState.engagementLevel ?? 0.5);
-  const momentum = clamp(learnerState.momentumLevel ?? 0.5);
   const successRate = clamp(learnerState.recentSuccessRate ?? 0.5);
-  const correctionSensitivity = clamp(learnerState.correctionSensitivity ?? 0.5);
   const mistakes = sessionState.consecutiveMistakes ?? 0;
   const successes = sessionState.consecutiveSuccesses ?? 0;
   const recentCorrections = sessionState.recentCorrections ?? 0;
 
   let humorAllowance = 0.45;
   let warmthLevel = 0.55;
-  let paceAdjustment: PaceAdjustment = "normal";
-  let cognitiveLoadLevel: CognitiveLoadLevel = "moderate";
+  let paceAdjustment: PaceAdjustment = 'normal';
+  let cognitiveLoadLevel: CognitiveLoadLevel = 'moderate';
   let momentumProtection = false;
   let correctionSoftnessBias = 0.5;
   let explanationDepthBias = 0.5;
   let encouragementBias = 0.5;
   let challengeReadiness = 0.5;
 
-  if (confusion > 0.75 || primarySignal === "overwhelmed") {
-    cognitiveLoadLevel = "high";
-    paceAdjustment = "slow";
+  if (confusion > 0.75 || primarySignal === 'overwhelmed') {
+    cognitiveLoadLevel = 'high';
+    paceAdjustment = 'slow';
     explanationDepthBias = 0.75;
     challengeReadiness = 0.2;
     humorAllowance -= 0.25;
     warmthLevel += 0.2;
     encouragementBias += 0.2;
     correctionSoftnessBias += 0.2;
-    reasoning.push("high load -> slower pace, more warmth, lower challenge");
+    reasoning.push('high load -> slower pace, more warmth, lower challenge');
   } else if (confusion < 0.3 && engagement > 0.65) {
-    cognitiveLoadLevel = "low";
+    cognitiveLoadLevel = 'low';
     explanationDepthBias -= 0.1;
     challengeReadiness += 0.15;
-    reasoning.push("low load -> can preserve pace and raise challenge slightly");
+    reasoning.push('low load -> can preserve pace and raise challenge slightly');
   }
 
   switch (primarySignal) {
-    case "embarrassed":
+    case 'embarrassed':
       humorAllowance -= 0.3;
       warmthLevel += 0.2;
       correctionSoftnessBias += 0.25;
       encouragementBias += 0.15;
       momentumProtection = true;
-      reasoning.push("embarrassment -> suppress humor and soften correction");
+      reasoning.push('embarrassment -> suppress humor and soften correction');
       break;
 
-    case "overwhelmed":
+    case 'overwhelmed':
       humorAllowance -= 0.2;
       warmthLevel += 0.2;
-      paceAdjustment = "slow";
+      paceAdjustment = 'slow';
       correctionSoftnessBias += 0.15;
       explanationDepthBias += 0.2;
       encouragementBias += 0.15;
       momentumProtection = true;
-      reasoning.push("overwhelm -> slow down and reduce pressure");
+      reasoning.push('overwhelm -> slow down and reduce pressure');
       break;
 
-    case "discouraged":
+    case 'discouraged':
       humorAllowance -= 0.1;
       warmthLevel += 0.25;
       encouragementBias += 0.25;
       correctionSoftnessBias += 0.15;
       challengeReadiness -= 0.2;
       momentumProtection = true;
-      reasoning.push("discouragement -> stronger warmth and momentum protection");
+      reasoning.push('discouragement -> stronger warmth and momentum protection');
       break;
 
-    case "frustrated":
+    case 'frustrated':
       humorAllowance -= 0.15;
       warmthLevel += 0.1;
       correctionSoftnessBias += 0.1;
       explanationDepthBias += 0.1;
       challengeReadiness -= 0.1;
-      reasoning.push("frustration -> reduce pressure and clarify");
+      reasoning.push('frustration -> reduce pressure and clarify');
       break;
 
-    case "confused":
+    case 'confused':
       humorAllowance -= 0.05;
-      paceAdjustment = paceAdjustment === "fast" ? "normal" : paceAdjustment;
+      paceAdjustment = 'normal';
       explanationDepthBias += 0.15;
       correctionSoftnessBias += 0.05;
-      reasoning.push("confusion -> modest clarification bias");
+      reasoning.push('confusion -> modest clarification bias');
       break;
 
-    case "curious":
+    case 'curious':
       humorAllowance += 0.05;
       challengeReadiness += 0.2;
       explanationDepthBias += 0.05;
       momentumProtection = true;
-      reasoning.push("curiosity -> preserve momentum and allow challenge");
+      reasoning.push('curiosity -> preserve momentum and allow challenge');
       break;
 
-    case "proud":
+    case 'proud':
       humorAllowance += 0.05;
       warmthLevel += 0.05;
       challengeReadiness += 0.2;
       encouragementBias += 0.1;
       momentumProtection = true;
-      reasoning.push("pride -> preserve momentum and escalate gently");
+      reasoning.push('pride -> preserve momentum and escalate gently');
       break;
 
-    case "neutral":
+    case 'neutral':
     default:
-      reasoning.push("neutral signal -> balanced defaults");
+      reasoning.push('neutral signal -> balanced defaults');
       break;
   }
 
   if (successes >= 2 && successRate > 0.75) {
     challengeReadiness += 0.1;
-    reasoning.push("success streak -> challenge readiness increased");
+    reasoning.push('success streak -> challenge readiness increased');
   }
 
   if (mistakes >= 2 || recentCorrections >= 2) {
     correctionSoftnessBias += 0.1;
     humorAllowance -= 0.05;
-    reasoning.push("recent mistakes/corrections -> softer correction and less humor");
+    reasoning.push('recent mistakes/corrections -> softer correction and less humor');
   }
 
   if (lastTurn.retriedAfterMistake) {
     momentumProtection = true;
     encouragementBias += 0.1;
-    reasoning.push("retry effort detected -> protect momentum");
+    reasoning.push('retry effort detected -> protect momentum');
   }
 
   if (lastTurn.succeededAfterRetry) {
     warmthLevel += 0.05;
     challengeReadiness += 0.05;
-    reasoning.push("successful recovery -> small confidence/challenge bump");
+    reasoning.push('successful recovery -> small confidence/challenge bump');
   }
 
   if (engagement > 0.8 && confidence > 0.7 && confusion < 0.25) {
-    paceAdjustment = "fast";
-    reasoning.push("high engagement and confidence -> faster pace allowed");
+    paceAdjustment = 'fast';
+    reasoning.push('high engagement and confidence -> faster pace allowed');
   }
 
   return {

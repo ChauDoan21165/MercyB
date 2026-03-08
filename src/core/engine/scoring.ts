@@ -1,9 +1,12 @@
-// FILE: scoring.ts
-// PATH: src/core/engine/scoring.ts
-//
-// Purpose:
-// - Convert raw drill events into consistent metrics + score.
-// - Deterministic, build-safe, no external deps.
+/**
+ * FILE: src/core/engine/scoring.ts
+ * PATH: src/core/engine/scoring.ts
+ * VERSION: scoring.ts v1.1
+ *
+ * Purpose:
+ * - Convert raw drill events into consistent metrics + score.
+ * - Deterministic, build-safe, no external deps.
+ */
 
 export type ISODateString = string;
 
@@ -107,7 +110,9 @@ function tokenOverlapAccuracy(prompt: string, user: string): number {
 
   const pSet = new Set(p);
   let hit = 0;
-  for (const w of u) if (pSet.has(w)) hit++;
+  for (const w of u) {
+    if (pSet.has(w)) hit++;
+  }
 
   // accuracy is "how much user text matches prompt vocabulary"
   return clamp(hit / Math.max(1, u.length), 0, 1);
@@ -214,7 +219,9 @@ export function scoreDrillAttempt(input: DrillAttemptInput): DrillMetrics {
  * Combine multiple drill metrics into a session score.
  * Weighting: later attempts matter slightly more.
  */
-export function scoreSession(drills: DrillMetrics[]): { score: number; avgAccuracy?: number } {
+export function scoreSession(
+  drills: DrillMetrics[]
+): { score: number; avgAccuracy?: number } {
   if (drills.length === 0) return { score: 0 };
 
   let totalWeight = 0;
@@ -224,17 +231,20 @@ export function scoreSession(drills: DrillMetrics[]): { score: number; avgAccura
   let accCount = 0;
 
   for (let i = 0; i < drills.length; i++) {
+    const drill = drills[i];
+    if (!drill) continue;
+
     const w = 1 + i * 0.15; // gentle ramp
     totalWeight += w;
-    weighted += drills[i].score * w;
+    weighted += drill.score * w;
 
-    if (typeof drills[i].accuracy === "number") {
-      accTotal += drills[i].accuracy;
+    if (typeof drill.accuracy === "number") {
+      accTotal += drill.accuracy;
       accCount++;
     }
   }
 
-  const score = clamp(Math.round(weighted / totalWeight), 0, 100);
+  const score = totalWeight > 0 ? clamp(Math.round(weighted / totalWeight), 0, 100) : 0;
   const avgAccuracy = accCount > 0 ? accTotal / accCount : undefined;
 
   return { score, avgAccuracy };

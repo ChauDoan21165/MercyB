@@ -1,19 +1,8 @@
-// src/screens/Pricing.tsx
-import React, { useEffect } from "react";
+// FILE: Pricing.tsx
+// PATH: src/screens/Pricing.tsx
+// VERSION: v1.1
 
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      "stripe-pricing-table": React.DetailedHTMLProps<
-        React.HTMLAttributes<HTMLElement>,
-        HTMLElement
-      > & {
-        "pricing-table-id"?: string;
-        "publishable-key"?: string;
-      };
-    }
-  }
-}
+import React, { useEffect } from "react";
 
 export default function Pricing() {
   // These should be set in your env (Vercel / .env)
@@ -120,7 +109,6 @@ export default function Pricing() {
         Hai gói đơn giản. Bấm bên dưới để thanh toán qua Stripe.
       </p>
 
-      {/* ✅ Only Pro + Elite (remove old $5 / $12 / $29 and remove "God / Universe" text) */}
       <div style={grid}>
         <div style={card}>
           <h2 style={tierTitle}>
@@ -153,13 +141,12 @@ export default function Pricing() {
         Giá hiển thị là CAD cho dễ hiểu. Số tiền cuối cùng luôn được xác nhận trong trang thanh toán Stripe.
       </div>
 
-      {/* Stripe pricing table embed */}
       {STRIPE_PRICING_TABLE_ID && STRIPE_PUBLISHABLE_KEY ? (
         <div style={{ marginTop: 18 }}>
-          <stripe-pricing-table
-            pricing-table-id={STRIPE_PRICING_TABLE_ID}
-            publishable-key={STRIPE_PUBLISHABLE_KEY}
-          />
+          {React.createElement("stripe-pricing-table", {
+            "pricing-table-id": STRIPE_PRICING_TABLE_ID,
+            "publishable-key": STRIPE_PUBLISHABLE_KEY,
+          })}
         </div>
       ) : (
         <div style={warn}>

@@ -1,5 +1,6 @@
 /**
- * VERSION: responsePlanner.ts v3.3
+ * FILE: src/lib/mercy-host/responsePlanner.ts
+ * VERSION: responsePlanner.ts v3.3.1
  *
  * Core teaching response planner for Mercy.
  * Converts learner state and intent signals into
@@ -98,9 +99,11 @@ export function buildResponsePlan(
     playful?: boolean;
   };
 
-  const clarity = state.clarity;
-  const momentum = state.momentum;
-  const confidence = state.confidence;
+  // Widen locally so legacy comparisons remain behavior-compatible
+  // without fighting the narrower LearnerState unions.
+  const clarity: string | undefined = state.clarity;
+  const momentum: string | undefined = state.momentum;
+  const confidence: string | undefined = state.confidence;
 
   const isConfused = clarity === 'lost' || clarity === 'confused';
   const isFrustrated =

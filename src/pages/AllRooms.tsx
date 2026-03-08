@@ -1,5 +1,6 @@
 // FILE: AllRooms.tsx
 // PATH: src/pages/AllRooms.tsx
+// VERSION: v1.1
 //
 // Rooms utility hub (UI-only quick links)
 // Fix:
@@ -137,7 +138,6 @@ function QuickCard({
     </div>
   );
 
-  // If it's a link, wrap in Link (keeps right-click/open-in-new-tab behavior)
   if (to) {
     return (
       <Link to={to} style={{ textDecoration: "none", color: "inherit" }} onClick={onClick}>
@@ -146,7 +146,6 @@ function QuickCard({
     );
   }
 
-  // Otherwise clickable card (refresh action)
   return (
     <div
       role="button"
@@ -252,22 +251,17 @@ export default function AllRooms() {
     gridTemplateColumns: "1fr",
   };
 
-  // ✅ FIX: Refresh must do something even if already on /rooms
   const onRefreshRooms = useCallback(() => {
-    // Preferred: React Router v6.4+ supports navigate(0) to reload.
     try {
-      // @ts-expect-error - navigate(0) is allowed in RR v6.4+, TS types vary by version.
-      navigate(0);
+      (navigate as unknown as (to: number) => void)(0);
       return;
     } catch {
-      // Fallback #1: force a re-render/re-mount by changing query string
       try {
         const qs = new URLSearchParams(loc.search || "");
         qs.set("ts", String(Date.now()));
         navigate(`${loc.pathname}?${qs.toString()}`, { replace: true });
         return;
       } catch {
-        // Fallback #2: hard reload
         try {
           window.location.reload();
         } catch {

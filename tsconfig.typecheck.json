@@ -12,6 +12,7 @@
     "**/*.test.tsx",
     "**/*.spec.ts",
     "**/*.spec.tsx",
+
     "src/**/__tests__/**",
     "src/test/**",
 
@@ -26,6 +27,10 @@
     "src/lib/health/**",
     "src/lib/roomMaster/**",
     "src/lib/rooms/roomRegistryDiagnostics.ts",
+
+    "src/app/**",
+    "src/screens/**",
+    "src/components/ui/**",
 
     "vite.config.*.ts",
     "vitest.config.ts"

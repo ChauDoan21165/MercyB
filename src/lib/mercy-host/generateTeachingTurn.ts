@@ -1,3 +1,9 @@
+/**
+ * FILE: src/lib/mercy-host/generateTeachingTurn.ts
+ * PATH: src/lib/mercy-host/generateTeachingTurn.ts
+ * VERSION: generateTeachingTurn.ts v1.1
+ */
+
 import adaptiveTeachingIntelligence, {
   type AdaptiveTeachingAdjustment,
   type AdaptiveTeachingInput,
@@ -198,7 +204,8 @@ function chooseTeachingMode(
   }
 
   if (input.repeatedMistake) {
-    return input.learnerState.affect === 'discouraged' ? 'review' : 'correct';
+    const affect: string | undefined = input.learnerState.affect;
+    return affect === 'discouraged' ? 'review' : 'correct';
   }
 
   if (lessonFlow.preferredNextMode) {
@@ -406,7 +413,9 @@ function buildEnglishText(
   if (mode === 'challenge') {
     const prompt = getChallengePrompt(input);
     const playfulTail =
-      tone === 'playful' ? ' Solid. Time for the slightly meaner version.' : '';
+      tone === 'playful'
+        ? ' Good. Now let us make the sentence earn its lunch.'
+        : '';
     return `Now take it one step further. ${prompt}${playfulTail}`;
   }
 
@@ -456,7 +465,7 @@ function buildAltText(
 
   if (mode === 'challenge') {
     const prompt = getChallengePrompt(input);
-    return `Giờ tiến thêm một bước nữa. Bước tiếp theo: ${prompt} Ổn. Đến lúc thử bản khó tính hơn một chút.`;
+    return `Giờ tiến thêm một bước nữa. Bước tiếp theo: ${prompt} Tốt. Giờ hãy làm cho câu này làm việc xứng đáng hơn.`;
   }
 
   if (mode === 'review') {

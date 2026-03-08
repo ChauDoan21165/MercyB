@@ -33,7 +33,7 @@ export interface EmotionScript {
   vi: string;
 }
 
-type StringWithLocales = String & {
+type StringWithLocales = string & {
   en: string;
   vi: string;
   toString(): string;

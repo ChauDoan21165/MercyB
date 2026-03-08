@@ -1,21 +1,19 @@
 // FILE: RecoveryScreen.tsx
 // PATH: src/screens/RecoveryScreen.tsx
+// VERSION: v1.1
 //
 // Purpose:
 // - “Recovery mode” screen when gate is NOT ready
 // - Shows why you’re blocked + what to do next
 // - Persists a lightweight recovery state into repo (so Mercy Host + UI can reference it)
 // - Routes user into the next best action (usually another drill)
-//
-// Notes:
-// - We do NOT assume advanced curriculum/drill routing yet.
-// - This screen is safe even if some params are missing (it will fall back gracefully).
 
 import React, { useEffect, useMemo, useState } from "react";
-import { View, Text, Button, ScrollView, ActivityIndicator } from "react-native";
 
 import type { GateDefinition } from "../core/types/curriculum";
 import type { UserProgress } from "../core/types/session";
+import type { MasteryState, SkillId } from "../core/engine/mastery";
+import { ALL_SKILLS } from "../core/engine/mastery";
 
 import { buildMercyMessage } from "../core/engine/mercyHost";
 import { loadUserProgress, saveUserProgress } from "../core/storage/repo";
@@ -38,14 +36,16 @@ type RecoveryParams = {
   missingSkills?: string[];
 
   // May be passed from DrillResult/Gate screens for immediate rendering
-  mastery?: any; // can be canonical mastery shape OR loose {skill:number}
+  mastery?: unknown; // canonical mastery shape OR loose {skill:number}
   sessionScore0to100?: number;
   avgAccuracy0to1?: number;
 };
 
 interface Props {
   route: { params?: RecoveryParams };
-  navigation: any;
+  navigation: {
+    navigate: (screen: string, params?: Record<string, unknown>) => void;
+  };
 }
 
 function nowISO(): string {
@@ -63,28 +63,48 @@ function pct(n0to1: number | undefined): string {
  * - canonical: { skill: { value, updatedAtISO } }
  * - loose: { skill: 0..1 }
  */
-function toDisplayMastery(mastery: any): Record<string, number> {
+function toDisplayMastery(mastery: unknown): Record<string, number> {
   if (!mastery || typeof mastery !== "object") return {};
-  const keys = Object.keys(mastery);
+  const keys = Object.keys(mastery as Record<string, unknown>);
   if (keys.length === 0) return {};
 
-  const sample = (mastery as any)[keys[0]];
-  // canonical shape
-  if (sample && typeof sample === "object" && typeof sample.value === "number") {
+  const sample = (mastery as Record<string, unknown>)[keys[0]];
+  if (sample && typeof sample === "object" && typeof (sample as { value?: unknown }).value === "number") {
     const out: Record<string, number> = {};
-    for (const [k, v] of Object.entries<any>(mastery)) {
-      if (v && typeof v.value === "number") out[k] = Math.max(0, Math.min(1, v.value));
+    for (const [k, v] of Object.entries(mastery as Record<string, { value?: unknown }>)) {
+      if (v && typeof v.value === "number") {
+        out[k] = Math.max(0, Math.min(1, v.value));
+      }
     }
     return out;
   }
 
-  // loose shape
   const out: Record<string, number> = {};
-  for (const [k, v] of Object.entries<any>(mastery)) {
+  for (const [k, v] of Object.entries(mastery as Record<string, unknown>)) {
     const n = typeof v === "number" ? v : Number(v);
     if (Number.isFinite(n)) out[k] = Math.max(0, Math.min(1, n));
   }
   return out;
+}
+
+function toCanonicalMastery(mastery: unknown): MasteryState {
+  const display = toDisplayMastery(mastery);
+  const epoch = new Date(0).toISOString();
+
+  const full = {} as MasteryState;
+  for (const skill of ALL_SKILLS) {
+    full[skill] = {
+      value: typeof display[skill] === "number" ? display[skill] : 0.2,
+      updatedAtISO: epoch,
+    };
+  }
+  return full;
+}
+
+function normalizeMissingSkills(input?: string[]): SkillId[] {
+  if (!Array.isArray(input)) return [];
+  const allowed = new Set<string>(ALL_SKILLS);
+  return input.filter((s): s is SkillId => allowed.has(s));
 }
 
 function pickRecoveryFocus(
@@ -100,6 +120,61 @@ function pickRecoveryFocus(
   return entries[0]?.[0] ?? null;
 }
 
+const styles = {
+  page: {
+    maxWidth: 760,
+    margin: "0 auto",
+    padding: 24,
+  } as React.CSSProperties,
+  title: {
+    fontSize: 28,
+    fontWeight: 800,
+    margin: 0,
+  } as React.CSSProperties,
+  text: {
+    marginTop: 8,
+    fontSize: 15,
+    lineHeight: "22px",
+    opacity: 0.85,
+  } as React.CSSProperties,
+  card: {
+    marginTop: 16,
+    padding: 16,
+    border: "1px solid rgba(0,0,0,0.12)",
+    borderRadius: 12,
+    background: "rgba(255,255,255,0.8)",
+  } as React.CSSProperties,
+  cardTitle: {
+    fontSize: 18,
+    fontWeight: 700,
+    margin: 0,
+  } as React.CSSProperties,
+  rowGap: {
+    marginTop: 10,
+  } as React.CSSProperties,
+  button: {
+    display: "inline-block",
+    width: "100%",
+    padding: "12px 14px",
+    borderRadius: 10,
+    border: "1px solid rgba(0,0,0,0.14)",
+    background: "#fff",
+    fontSize: 15,
+    fontWeight: 700,
+    cursor: "pointer",
+  } as React.CSSProperties,
+  dangerText: {
+    color: "crimson",
+    marginTop: 12,
+  } as React.CSSProperties,
+  inlineLoading: {
+    display: "flex",
+    alignItems: "center",
+    gap: 12,
+    marginTop: 20,
+  } as React.CSSProperties,
+};
+
 export default function RecoveryScreen({ route, navigation }: Props) {
   const params = route?.params;
 
@@ -111,7 +186,6 @@ export default function RecoveryScreen({ route, navigation }: Props) {
     params?.userId && typeof params?.levelId === "number" && params?.gateDefinition
   );
 
-  // Load authoritative progress so this screen works even if upstream params are stale.
   useEffect(() => {
     const p = loadUserProgress();
     if (p) setStoredProgress(p);
@@ -119,16 +193,24 @@ export default function RecoveryScreen({ route, navigation }: Props) {
 
   const gateReasons = params?.gateReasons ?? [];
   const missingSkills = params?.missingSkills ?? [];
+  const canonicalMissingSkills = useMemo(
+    () => normalizeMissingSkills(missingSkills),
+    [missingSkills]
+  );
   const gateReady = Boolean(params?.gateReady);
 
   const sessionScore0to100 = params?.sessionScore0to100 ?? 0;
   const avgAccuracy0to1 = params?.avgAccuracy0to1 ?? 0;
 
   const displayMastery = useMemo(() => {
-    // Prefer stored mastery, fallback to param mastery
-    const m = storedProgress?.mastery ?? params?.mastery;
+    const m = (storedProgress as { mastery?: unknown } | null)?.mastery ?? params?.mastery;
     return toDisplayMastery(m);
-  }, [storedProgress?.mastery, params?.mastery]);
+  }, [storedProgress, params?.mastery]);
+
+  const canonicalMastery = useMemo(() => {
+    const m = (storedProgress as { mastery?: unknown } | null)?.mastery ?? params?.mastery;
+    return toCanonicalMastery(m);
+  }, [storedProgress, params?.mastery]);
 
   const focusSkill = useMemo(() => {
     return pickRecoveryFocus(missingSkills, displayMastery);
@@ -146,24 +228,23 @@ export default function RecoveryScreen({ route, navigation }: Props) {
     return buildMercyMessage({
       userName: "Warrior",
       levelId: params.levelId,
-      tone: "gentle",
+      tone: "calm",
       seed: params.userId,
-      mastery: storedProgress?.mastery ?? params?.mastery ?? {},
+      mastery: canonicalMastery,
       sessionScore0to100,
       avgAccuracy0to1,
       gateReady: false,
       gateReasons,
-      missingSkills,
+      missingSkills: canonicalMissingSkills,
     }) as MercyMessage;
   }, [
     params?.userId,
     params?.levelId,
-    params?.mastery,
-    storedProgress?.mastery,
+    canonicalMastery,
     sessionScore0to100,
     avgAccuracy0to1,
     gateReasons,
-    missingSkills,
+    canonicalMissingSkills,
   ]);
 
   async function persistRecoveryMode() {
@@ -176,179 +257,188 @@ export default function RecoveryScreen({ route, navigation }: Props) {
       const p = loadUserProgress();
       if (!p) throw new Error("User progress not initialized");
 
-      if ((p as any).userId && (p as any).userId !== params.userId) {
+      if ((p as { userId?: string }).userId && (p as { userId?: string }).userId !== params.userId) {
         throw new Error("Progress user mismatch");
       }
 
       const updated: UserProgress = {
         ...p,
-        currentLevelId: (p as any).currentLevelId ?? params.levelId,
-        ...( {
+        currentLevelId: (p as { currentLevelId?: number }).currentLevelId ?? params.levelId,
+        ...({
           recoveryMode: true,
           recoveryStartedAtISO: nowISO(),
           recoveryFocusSkill: focusSkill ?? null,
           lastGateReasons: gateReasons,
           lastMissingSkills: missingSkills,
           lastRecoveryAtISO: nowISO(),
-        } as any ),
+        } as Record<string, unknown>),
       };
 
       saveUserProgress(updated);
       setStoredProgress(updated);
-    } catch (e: any) {
-      setSaveError(e?.message ?? "Failed to persist recovery state.");
+    } catch (e: unknown) {
+      setSaveError(
+        e instanceof Error ? e.message : "Failed to persist recovery state."
+      );
     } finally {
       setSaving(false);
     }
   }
 
-  // Entering Recovery screen should persist recovery state once we have enough context.
   useEffect(() => {
     if (!hasBasics) return;
-    if (gateReady) return; // if somehow opened, don’t persist recovery
+    if (gateReady) return;
     void persistRecoveryMode();
-    // include focusSkill so persisted “focus” matches what the UI shows
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasBasics, gateReady, focusSkill]);
 
   if (!hasBasics) {
     return (
-      <View style={{ flex: 1, padding: 24, justifyContent: "center" }}>
-        <Text style={{ fontSize: 28, fontWeight: "800" }}>Recovery</Text>
-        <Text style={{ marginTop: 10, fontSize: 16, opacity: 0.8 }}>
+      <div style={{ ...styles.page, minHeight: "60vh", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+        <h1 style={styles.title}>Recovery</h1>
+        <p style={styles.text}>
           This screen needs gate context (userId, levelId, gateDefinition).
-        </Text>
-        <View style={{ marginTop: 24 }}>
-          <Button title="Back to Training" onPress={() => navigation.navigate("TrainHome")} />
-        </View>
-      </View>
+        </p>
+        <div style={{ marginTop: 24 }}>
+          <button style={styles.button} onClick={() => navigation.navigate("TrainHome")}>
+            Back to Training
+          </button>
+        </div>
+      </div>
     );
   }
 
   const { userId, levelId, gateDefinition } = params!;
 
   return (
-    <ScrollView contentContainerStyle={{ padding: 24 }}>
-      <Text style={{ fontSize: 28, fontWeight: "800" }}>Recovery Mode</Text>
-      <Text style={{ marginTop: 8, fontSize: 15, opacity: 0.85 }}>
-        You’re close — but not through the gate yet. Recovery means: simplify, isolate a weakness, repeat cleanly.
-      </Text>
+    <div style={styles.page}>
+      <h1 style={styles.title}>Recovery Mode</h1>
+      <p style={styles.text}>
+        You’re close — but not through the gate yet. Recovery means: simplify,
+        isolate a weakness, repeat cleanly.
+      </p>
 
-      <View style={{ marginTop: 16, padding: 16, borderWidth: 1, borderRadius: 12 }}>
-        <Text style={{ fontSize: 18, fontWeight: "700" }}>Last Session</Text>
-        <Text style={{ marginTop: 8 }}>Score: {sessionScore0to100}</Text>
-        <Text>Accuracy: {pct(avgAccuracy0to1)}</Text>
+      <div style={styles.card}>
+        <h2 style={styles.cardTitle}>Last Session</h2>
+        <p style={styles.rowGap}>Score: {sessionScore0to100}</p>
+        <p>Accuracy: {pct(avgAccuracy0to1)}</p>
         {focusSkill ? (
-          <Text style={{ marginTop: 8, opacity: 0.85 }}>
-            Focus skill: <Text style={{ fontWeight: "800" }}>{focusSkill}</Text>
-          </Text>
+          <p style={{ marginTop: 8, opacity: 0.85 }}>
+            Focus skill: <strong>{focusSkill}</strong>
+          </p>
         ) : (
-          <Text style={{ marginTop: 8, opacity: 0.75 }}>Focus skill: —</Text>
+          <p style={{ marginTop: 8, opacity: 0.75 }}>Focus skill: —</p>
         )}
-      </View>
+      </div>
 
       {(gateReasons.length > 0 || missingSkills.length > 0) && (
-        <View style={{ marginTop: 16, padding: 16, borderWidth: 1, borderRadius: 12 }}>
-          <Text style={{ fontSize: 18, fontWeight: "700" }}>Why the gate didn’t open</Text>
+        <div style={styles.card}>
+          <h2 style={styles.cardTitle}>Why the gate didn’t open</h2>
 
           {gateReasons.length > 0 && (
-            <View style={{ marginTop: 10 }}>
-              <Text style={{ fontWeight: "700" }}>Reasons</Text>
+            <div style={{ marginTop: 10 }}>
+              <p style={{ fontWeight: 700 }}>Reasons</p>
               {gateReasons.map((r, idx) => (
-                <Text key={`${idx}-${r}`} style={{ marginTop: 6, opacity: 0.85 }}>
+                <p key={`${idx}-${r}`} style={{ marginTop: 6, opacity: 0.85 }}>
                   • {r}
-                </Text>
+                </p>
               ))}
-            </View>
+            </div>
           )}
 
           {missingSkills.length > 0 && (
-            <View style={{ marginTop: 12 }}>
-              <Text style={{ fontWeight: "700" }}>Skills to raise</Text>
+            <div style={{ marginTop: 12 }}>
+              <p style={{ fontWeight: 700 }}>Skills to raise</p>
               {missingSkills.map((s) => (
-                <Text key={s} style={{ marginTop: 6, opacity: 0.85 }}>
+                <p key={s} style={{ marginTop: 6, opacity: 0.85 }}>
                   • {s}
-                </Text>
+                </p>
               ))}
-            </View>
+            </div>
           )}
-        </View>
+        </div>
       )}
 
-      <View style={{ marginTop: 16, padding: 16, borderWidth: 1, borderRadius: 12 }}>
-        <Text style={{ fontSize: 18, fontWeight: "800" }}>{mercy.title}</Text>
-        <Text style={{ marginTop: 8, fontSize: 15, lineHeight: 20, opacity: 0.9 }}>
+      <div style={styles.card}>
+        <h2 style={{ ...styles.cardTitle, fontWeight: 800 }}>{mercy.title}</h2>
+        <p style={{ marginTop: 8, fontSize: 15, lineHeight: "20px", opacity: 0.9 }}>
           {mercy.body}
-        </Text>
-      </View>
+        </p>
+      </div>
 
-      <View style={{ marginTop: 16, padding: 16, borderWidth: 1, borderRadius: 12 }}>
-        <Text style={{ fontSize: 18, fontWeight: "700" }}>Mastery Snapshot</Text>
+      <div style={styles.card}>
+        <h2 style={styles.cardTitle}>Mastery Snapshot</h2>
 
         {Object.keys(displayMastery).length === 0 ? (
-          <Text style={{ marginTop: 8, opacity: 0.75 }}>No mastery data available.</Text>
+          <p style={{ marginTop: 8, opacity: 0.75 }}>No mastery data available.</p>
         ) : (
           Object.entries(displayMastery)
             .sort((a, b) => a[0].localeCompare(b[0]))
             .map(([skill, v]) => (
-              <View key={skill} style={{ marginTop: 10 }}>
-                <Text style={{ fontWeight: "700" }}>{skill}</Text>
-                <Text style={{ opacity: 0.8 }}>{pct(v)}</Text>
-              </View>
+              <div key={skill} style={{ marginTop: 10 }}>
+                <p style={{ fontWeight: 700, margin: 0 }}>{skill}</p>
+                <p style={{ opacity: 0.8, margin: "4px 0 0" }}>{pct(v)}</p>
+              </div>
             ))
         )}
-      </View>
+      </div>
 
-      {saveError && (
-        <View style={{ marginTop: 12 }}>
-          <Text style={{ color: "crimson" }}>{saveError}</Text>
-        </View>
+      {saveError && <div style={styles.dangerText}>{saveError}</div>}
+
+      {saving ? (
+        <div style={styles.inlineLoading}>
+          <span>⏳</span>
+          <span>Entering recovery mode...</span>
+        </div>
+      ) : (
+        <div style={{ marginTop: 20 }}>
+          <button
+            style={styles.button}
+            onClick={() => {
+              navigation.navigate("DrillRunner", {
+                userId,
+                levelId,
+                gateDefinition,
+                mode: "recovery",
+                focusSkill,
+              });
+            }}
+          >
+            {focusSkill ? `Do a recovery drill: ${focusSkill}` : "Do a recovery drill"}
+          </button>
+
+          <div style={{ height: 12 }} />
+
+          <button
+            style={styles.button}
+            onClick={() => navigation.navigate("TrainHome", { userId })}
+          >
+            Back to Train Home
+          </button>
+
+          <div style={{ height: 12 }} />
+
+          <button
+            style={styles.button}
+            onClick={() =>
+              navigation.navigate("GateScreen", {
+                userId,
+                levelId,
+                gateDefinition,
+                gateReady: false,
+                gateReasons,
+                missingSkills,
+                mastery: canonicalMastery,
+                sessionScore0to100,
+                avgAccuracy0to1,
+              })
+            }
+          >
+            Re-check Gate
+          </button>
+        </div>
       )}
 
-      <View style={{ marginTop: 20 }}>
-        {saving ? (
-          <View style={{ flexDirection: "row", alignItems: "center", gap: 12 }}>
-            <ActivityIndicator />
-            <Text>Entering recovery mode...</Text>
-          </View>
-        ) : (
-          <>
-            <Button
-              title={focusSkill ? `Do a recovery drill: ${focusSkill}` : "Do a recovery drill"}
-              onPress={() => {
-                navigation.navigate("DrillRunner", {
-                  userId,
-                  levelId,
-                  gateDefinition,
-                  mode: "recovery",
-                  focusSkill,
-                });
-              }}
-            />
-            <View style={{ height: 12 }} />
-            <Button title="Back to Train Home" onPress={() => navigation.navigate("TrainHome", { userId })} />
-            <View style={{ height: 12 }} />
-            <Button
-              title="Re-check Gate"
-              onPress={() =>
-                navigation.navigate("GateScreen", {
-                  userId,
-                  levelId,
-                  gateDefinition,
-                  gateReady: false,
-                  gateReasons,
-                  missingSkills,
-                  mastery: storedProgress?.mastery ?? params?.mastery ?? {},
-                  sessionScore0to100,
-                  avgAccuracy0to1,
-                })
-              }
-            />
-          </>
-        )}
-      </View>
-
-      <View style={{ height: 24 }} />
-    </ScrollView>
+      <div style={{ height: 24 }} />
+    </div>
   );
 }

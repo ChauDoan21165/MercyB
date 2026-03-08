@@ -1,4 +1,7 @@
 /**
+ * FILE: src/lib/mercy-host/teacherRhythm.ts
+ * VERSION: teacherRhythm.ts v1.2
+ *
  * Mercy Teacher Rhythm
  *
  * Purpose:
@@ -239,7 +242,7 @@ function buildStageOrder(
     order.includes('action') &&
     order[order.length - 1] !== 'action'
   ) {
-    return order.filter((s) => s !== 'action').concat('action');
+    return [...order.filter((s) => s !== 'action'), 'action'] as TeacherRhythmStage[];
   }
 
   if (
@@ -248,7 +251,10 @@ function buildStageOrder(
     order.includes('encourage') &&
     order[order.length - 1] !== 'encourage'
   ) {
-    return order.filter((s) => s !== 'encourage').concat('encourage');
+    return [
+      ...order.filter((s) => s !== 'encourage'),
+      'encourage',
+    ] as TeacherRhythmStage[];
   }
 
   return order;
@@ -282,12 +288,13 @@ function shouldKeepStage(
   const acknowledgeEffort = input.plan?.acknowledgeEffort ?? false;
   const addNextStep = input.plan?.addNextStep ?? false;
   const useHumor = input.plan?.shouldUseHumor ?? false;
+  const mode: string = input.mode;
 
   if (!brief) {
     if (stage === 'acknowledge' && !acknowledgeEffort) return false;
     if (stage === 'action' && !addNextStep) return false;
 
-    if (stage === 'encourage' && input.mode !== 'encourage' && !useHumor) {
+    if (stage === 'encourage' && mode !== 'encourage' && !useHumor) {
       return false;
     }
 
@@ -300,13 +307,13 @@ function shouldKeepStage(
   if (
     stage === 'action' &&
     !addNextStep &&
-    input.mode !== 'challenge' &&
-    input.mode !== 'drill'
+    mode !== 'challenge' &&
+    mode !== 'drill'
   ) {
     return false;
   }
 
-  if (stage === 'encourage' && input.mode !== 'encourage' && !useHumor) {
+  if (stage === 'encourage' && mode !== 'encourage' && !useHumor) {
     return false;
   }
 
@@ -328,7 +335,7 @@ export function getTeacherRhythmProfile(
 }
 
 export function getAllTeacherRhythmProfiles(): TeacherRhythmProfile[] {
-  return Object.values(TEACHER_RHYTHM_PROFILES);
+  return Object.values(TEACHER_RHYTHM_PROFILES) as TeacherRhythmProfile[];
 }
 
 /**
@@ -432,3 +439,5 @@ export function renderTeacherCoreRhythm(args: {
     },
   });
 }
+
+export default renderTeacherRhythm;

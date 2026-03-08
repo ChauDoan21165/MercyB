@@ -1,5 +1,6 @@
 /**
- * VERSION: buildDialogueLayer.ts v1
+ * FILE: src/lib/mercy-host/host/buildDialogueLayer.ts
+ * VERSION: buildDialogueLayer.ts v1.1
  *
  * Purpose:
  * - centralize Mercy's dialogue-layer assembly after signals + planning + strategy are known
@@ -8,7 +9,10 @@
  */
 
 import { detectBossJoke } from '../humorEngine';
-import { buildTeacherDialogue, type TeacherDialogueBuilderResult } from '../teacherDialogueBuilder';
+import {
+  buildTeacherDialogue,
+  type TeacherDialogueBuilderResult,
+} from '../teacherDialogueBuilder';
 import type { MercyTeachingTurnInput } from '../mercyHost';
 import type { TeachingSignalsResult } from './buildTeachingSignals';
 import type { TeachingPlanLayerResult } from './buildTeachingPlan';

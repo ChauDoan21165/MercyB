@@ -1,4 +1,7 @@
 /**
+ * FILE: src/lib/mercy-host/humorEngine.ts
+ * VERSION: v1.1
+ *
  * Mercy Humor Engine
  *
  * Purpose:
@@ -104,13 +107,6 @@ const HUMOR_LINES: HumorLine[] = [
     context: 'challenge',
     en: 'Good. Now let us make the sentence earn its lunch.',
     vi: 'Tốt. Giờ hãy làm cho câu này làm việc xứng đáng hơn.',
-  },
-  {
-    id: 'teacher_challenge_2',
-    style: 'teacher_wit',
-    context: 'challenge',
-    en: 'Solid. Time for the slightly meaner version.',
-    vi: 'Ổn. Đến lúc thử bản khó tính hơn một chút.',
   },
   {
     id: 'teacher_correction_1',

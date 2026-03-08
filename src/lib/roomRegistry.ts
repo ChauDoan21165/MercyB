@@ -1,4 +1,6 @@
-// src/lib/roomRegistry.ts
+// FILE: roomRegistry.ts
+// PATH: src/lib/roomRegistry.ts
+// VERSION: v1.1
 
 /**
  * Compatibility shim.
@@ -19,4 +21,3 @@
  */
 
 export * from "@/lib/rooms/roomRegistry";
-export { default } from "@/lib/rooms/roomRegistry";

@@ -1,5 +1,6 @@
 /**
- * VERSION: mercyHost.ts v6.7
+ * FILE: src/lib/mercy-host/mercyHost.ts
+ * VERSION: mercyHost.ts v6.7.1
  *
  * Mercy Host - Main Module
  *
@@ -521,7 +522,6 @@ export function generateTeachingTurn(
     resolvedRepeatedMistake &&
     (effectivePlan.teachingMode === 'correct' || effectivePlan.teachingMode === 'review') &&
     (
-      signals.learnerState.affect === 'discouraged' ||
       signals.emotion.primarySignal === 'discouraged' ||
       signals.emotion.primarySignal === 'frustrated' ||
       signals.learnerState.confidence === 'low'
@@ -683,23 +683,17 @@ export function generateTeachingTurn(
 
   const curriculumRecommendation = getCurriculumRecommendation();
 
-  const planningAdaptive = planning.adaptive as AdaptiveTeachingAdjustment & {
-    preferredTone?: string;
-    explanationDepthBias?: number;
-    shouldAcknowledgeEffort?: boolean;
-  };
-
   const adaptive: AdaptiveTeachingAdjustment = {
     ...planning.adaptive,
-    preferredTone: planningAdaptive.preferredTone ?? resolvedTone.tone,
+    preferredTone: planning.adaptive.preferredTone ?? resolvedTone.tone,
     explanationDepthBias:
-      typeof planningAdaptive.explanationDepthBias === 'number'
-        ? planningAdaptive.explanationDepthBias
+      typeof planning.adaptive.explanationDepthBias === 'number'
+        ? planning.adaptive.explanationDepthBias
         : signals.learnerState.clarity === 'lost' || signals.wantsExplanation
           ? 0.85
           : 0.5,
     shouldAcknowledgeEffort:
-      planningAdaptive.shouldAcknowledgeEffort ?? resolvedRepeatedMistake,
+      planning.adaptive.shouldAcknowledgeEffort ?? resolvedRepeatedMistake,
   };
 
   const emotion: TeacherEmotionState = {

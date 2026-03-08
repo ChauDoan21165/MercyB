@@ -1,5 +1,6 @@
 /**
- * VERSION: buildTeachingPlan.ts v2.1
+ * FILE: src/lib/mercy-host/host/buildTeachingPlan.ts
+ * VERSION: buildTeachingPlan.ts v2.2
  *
  * Purpose:
  * - centralize live planning for Mercy teaching turns
@@ -12,10 +13,19 @@ import {
   calibrateTone,
   type ToneCalibrationResult,
 } from '../toneCalibration';
+import type {
+  AdaptiveTeachingAdjustment,
+  CorrectionStyle,
+  ToneStyle,
+} from '../adaptiveTeachingIntelligence';
+import type {
+  DifficultyLevel,
+  DifficultySnapshot,
+} from '../difficultyScaler';
 import type { TeachingSignalsResult } from './buildTeachingSignals';
 
 export interface BuildTeachingPlanInput {
-  currentDifficulty?: string;
+  currentDifficulty?: DifficultyLevel;
   memory?: unknown;
   correction?: {
     mistake: string;
@@ -26,40 +36,62 @@ export interface BuildTeachingPlanInput {
   wantsChallenge?: boolean;
   wantsDrill?: boolean;
   wantsRecap?: boolean;
+  repeatedMistake?: boolean;
 }
 
 export interface BuildTeachingPlanResult {
-  adaptive: {
-    preferredTeachingMode: ResponsePlan['teachingMode'];
-    preferredDifficultyDirection: ResponsePlan['difficultyDirection'];
-    rationale: string;
-  };
+  adaptive: AdaptiveTeachingAdjustment;
   plan: ResponsePlan;
   calibrated: ToneCalibrationResult;
-  difficulty: {
-    currentLevel: string;
-    direction: ResponsePlan['difficultyDirection'];
-    nextLevel: string;
-  };
+  difficulty: DifficultySnapshot;
 }
 
+/**
+ * Back-compat alias for older host-layer imports.
+ */
+export type TeachingPlanLayerResult = BuildTeachingPlanResult;
+
 function bumpDifficulty(
-  currentLevel: string,
+  currentLevel: DifficultyLevel,
   direction: ResponsePlan['difficultyDirection']
-): string {
-  const levels = ['starter', 'easy', 'medium', 'hard'] as const;
-  const normalized = levels.includes(currentLevel as (typeof levels)[number])
-    ? (currentLevel as (typeof levels)[number])
-    : 'medium';
+): DifficultyLevel {
+  const levels: DifficultyLevel[] = [
+    'very_easy',
+    'easy',
+    'medium',
+    'hard',
+    'stretch',
+  ];
 
-  const currentIndex = levels.indexOf(normalized);
+  const currentIndex = levels.indexOf(currentLevel);
+  const safeIndex = currentIndex === -1 ? levels.indexOf('medium') : currentIndex;
 
-  if (direction === 'hold') return normalized;
+  if (direction === 'hold') return levels[safeIndex];
   if (direction === 'up') {
-    return levels[Math.min(levels.length - 1, currentIndex + 1)];
+    return levels[Math.min(levels.length - 1, safeIndex + 1)];
   }
 
-  return levels[Math.max(0, currentIndex - 1)];
+  return levels[Math.max(0, safeIndex - 1)];
+}
+
+function mapDifficultyReason(
+  direction: ResponsePlan['difficultyDirection'],
+  signals: TeachingSignalsResult
+): DifficultySnapshot['reason'] {
+  if (signals.repeatedMistake) return 'repeated_mistake';
+  if (signals.learnerState.confidence === 'low') return 'low_confidence';
+
+  if (direction === 'up') {
+    return signals.learnerState.momentum === 'flowing'
+      ? 'high_success'
+      : 'stable_success';
+  }
+
+  if (direction === 'down') {
+    return signals.learnerState.clarity === 'lost' ? 'friction' : 'friction';
+  }
+
+  return 'steady';
 }
 
 function applyReviewPriority(
@@ -83,6 +115,46 @@ function applyReviewPriority(
   };
 }
 
+function buildAdaptiveAdjustment(
+  plan: ResponsePlan,
+  calibrated: ToneCalibrationResult,
+  signals: TeachingSignalsResult
+): AdaptiveTeachingAdjustment {
+  const preferredTone: ToneStyle | undefined = calibrated.tone;
+  const preferredCorrectionStyle: CorrectionStyle | undefined =
+    calibrated.correctionStyle ?? 'gentle';
+
+  return {
+    explanationDepthBias:
+      signals.wantsExplanation || signals.learnerState.clarity === 'lost'
+        ? 0.85
+        : 0.5,
+    correctionSoftnessBias:
+      preferredCorrectionStyle === 'gentle'
+        ? 0.8
+        : preferredCorrectionStyle === 'contrastive'
+          ? 0.45
+          : 0.3,
+    drillBias: plan.teachingMode === 'drill' ? 0.85 : 0.5,
+    recapBias: plan.teachingMode === 'recap' ? 0.85 : 0.5,
+    challengePaceBias: plan.teachingMode === 'challenge' ? 0.8 : 0.45,
+
+    preferredTeachingMode: plan.teachingMode,
+    preferredTone,
+    preferredCorrectionStyle,
+    preferredDifficultyDirection: plan.difficultyDirection,
+
+    shouldStayBrief: Boolean(calibrated.shouldBeBrief),
+    shouldAcknowledgeEffort: Boolean(plan.acknowledgeEffort),
+    shouldProtectMomentum:
+      signals.learnerState.momentum === 'flowing' ||
+      signals.repeatedMistake ||
+      signals.learnerState.confidence === 'low',
+
+    rationale: [plan.reason],
+  };
+}
+
 export function buildTeachingPlan(
   input: BuildTeachingPlanInput,
   signals: TeachingSignalsResult
@@ -90,7 +162,8 @@ export function buildTeachingPlan(
   const basePlan = buildResponsePlan({
     learnerState: signals.learnerState,
     isCorrectiveTurn: input.isCorrectiveTurn ?? signals.isCorrectiveTurn,
-    repeatedMistake: signals.repeatedMistake,
+    repeatedMistake:
+      input.repeatedMistake ?? signals.repeatedMistake,
     wantsChallenge: input.wantsChallenge,
     wantsExplanation: signals.wantsExplanation,
     wantsDrill: input.wantsDrill,
@@ -110,22 +183,22 @@ export function buildTeachingPlan(
     softenTone: signals.softenTone,
   });
 
-  const currentLevel = input.currentDifficulty ?? 'medium';
-  const nextLevel = bumpDifficulty(currentLevel, plan.difficultyDirection);
+  const current = input.currentDifficulty ?? 'medium';
+  const recommended = bumpDifficulty(current, plan.difficultyDirection);
+  const difficulty: DifficultySnapshot = {
+    current,
+    recommended,
+    direction: plan.difficultyDirection,
+    reason: mapDifficultyReason(plan.difficultyDirection, signals),
+  };
+
+  const adaptive = buildAdaptiveAdjustment(plan, calibrated, signals);
 
   return {
-    adaptive: {
-      preferredTeachingMode: plan.teachingMode,
-      preferredDifficultyDirection: plan.difficultyDirection,
-      rationale: plan.reason,
-    },
+    adaptive,
     plan,
     calibrated,
-    difficulty: {
-      currentLevel,
-      direction: plan.difficultyDirection,
-      nextLevel,
-    },
+    difficulty,
   };
 }
 

@@ -1,10 +1,13 @@
-// FILE: recommendations.ts
-// PATH: src/core/engine/recommendations.ts
-//
-// Purpose:
-// - Choose what the learner should do next.
-// - Works with simple curriculum shapes: modules/drills each tagged with skills.
-// - Deterministic selection (seeded) to keep UX stable.
+/**
+ * FILE: src/core/engine/recommendations.ts
+ * PATH: src/core/engine/recommendations.ts
+ * VERSION: recommendations.ts v1.0
+ *
+ * Purpose:
+ * - Choose what the learner should do next.
+ * - Works with simple curriculum shapes: modules/drills each tagged with skills.
+ * - Deterministic selection (seeded) to keep UX stable.
+ */
 
 import type { SkillId, MasteryState } from "./mastery";
 
@@ -65,7 +68,7 @@ function stablePick<T>(items: T[], seed: string): T {
 }
 
 function weakestSkill(mastery: MasteryState, only?: SkillId[]): SkillId {
-  const skills = (only ?? (Object.keys(mastery) as SkillId[]));
+  const skills = only ?? (Object.keys(mastery) as SkillId[]);
   let best = skills[0];
   let bestV = mastery[best].value;
   for (const s of skills) {
@@ -81,7 +84,9 @@ function drillFitScore(drill: DrillRef, target: SkillId, mastery: MasteryState):
   // Prefer drills that include target, and also cover other weak skills
   const includesTarget = drill.skills.includes(target) ? 1 : 0;
 
-  const weakness = drill.skills.reduce((sum, s) => sum + (1 - mastery[s].value), 0) / Math.max(1, drill.skills.length);
+  const weakness =
+    drill.skills.reduce((sum, s) => sum + (1 - mastery[s].value), 0) /
+    Math.max(1, drill.skills.length);
 
   // Slight preference for medium difficulty
   const diffPref = 1 - Math.abs(drill.difficulty - 3) / 4; // 0..1
@@ -104,13 +109,16 @@ export function recommendNext(input: RecommendInput): RecommendResult {
   }
 
   // If all completed, allow repeats but still pick intelligently
-  const pool = candidates.length > 0
-    ? candidates
-    : input.modules.flatMap(m => m.drills.map(d => ({ moduleId: m.moduleId, drill: d })));
+  const pool =
+    candidates.length > 0
+      ? candidates
+      : input.modules.flatMap((m) =>
+          m.drills.map((d) => ({ moduleId: m.moduleId, drill: d }))
+        );
 
   // Score each candidate
   const scored = pool
-    .map(c => ({
+    .map((c) => ({
       ...c,
       score: drillFitScore(c.drill, focus, input.mastery),
     }))

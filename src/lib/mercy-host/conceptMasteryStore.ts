@@ -1,5 +1,6 @@
 /**
- * conceptMasteryStore.ts
+ * FILE: src/lib/mercy-host/conceptMasteryStore.ts
+ * VERSION: conceptMasteryStore.ts v1.2
  *
  * Long-term learner mastery tracking.
  *
@@ -309,7 +310,9 @@ export const resetConceptMastery = clearConceptMastery;
 export function getConceptMasteryInsight(
   input: ConceptMasteryInsightInput
 ): ConceptMasteryInsight {
-  if (!input.userId || !normalize(input.concept)) {
+  const concept = normalize(input.concept);
+
+  if (!input.userId || !concept) {
     return {
       shouldReview: false,
       shouldReviewBeforeAdvance: false,
@@ -325,7 +328,7 @@ export function getConceptMasteryInsight(
     };
   }
 
-  const record = loadConceptMastery(input.userId, input.concept);
+  const record = loadConceptMastery(input.userId, concept);
   const topMistake = record.commonMistakes[0]?.mistake;
 
   const isFragile =
@@ -371,7 +374,7 @@ export function getConceptMasteryInsight(
   if (input.repeatedMistake) rationale.push('repeated_mistake_blocks_advance');
   if (topMistake) rationale.push('top_mistake_available');
 
-  return {
+  const result: ConceptMasteryInsight = {
     shouldReview,
     shouldReviewBeforeAdvance,
     shouldAllowChallenge,
@@ -382,9 +385,14 @@ export function getConceptMasteryInsight(
     confidenceScore: record.confidenceScore,
     stabilityScore: record.stabilityScore,
     status: record.status,
-    topMistake,
     rationale,
   };
+
+  if (topMistake) {
+    result.topMistake = topMistake;
+  }
+
+  return result;
 }
 
 export default {

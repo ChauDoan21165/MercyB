@@ -1,5 +1,6 @@
 /**
- * VERSION: buildTeachingStrategyLayer.ts v3
+ * FILE: src/lib/mercy-host/host/buildTeachingStrategyLayer.ts
+ * VERSION: buildTeachingStrategyLayer.ts v3.1
  *
  * Purpose:
  * - centralize Mercy's strategy-layer assembly after signals + planning are known
@@ -64,8 +65,14 @@ function inferPraiseImprovementType(args: {
   | 'structure'
   | 'momentum'
   | undefined {
-  const { learnerState, concept, mistake, repeatedMistake, isCorrectiveTurn, wantsChallenge } =
-    args;
+  const {
+    learnerState,
+    concept,
+    mistake,
+    repeatedMistake,
+    isCorrectiveTurn,
+    wantsChallenge,
+  } = args;
 
   const conceptText = lower(concept);
   const mistakeText = lower(mistake);
@@ -150,7 +157,9 @@ export function buildTeachingStrategyLayer(
     planning,
   });
 
-  const memoryInsight = getTeacherMemoryInsight(signals.userId, {
+  const memoryInsight = getTeacherMemoryInsight({
+    userId: signals.userId,
+    teachingMode: planning.plan.teachingMode,
     concept: input.concept,
     mistake: input.correction?.mistake,
     successfulTurn,

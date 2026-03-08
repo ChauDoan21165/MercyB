@@ -1,12 +1,19 @@
-// FILE: mastery.ts
-// PATH: src/core/engine/mastery.ts
-//
-// Purpose:
-// - Track mastery per skill as an EMA (0..1).
-// - Compute gate readiness for a level.
-// - Deterministic, no dependencies.
+/**
+ * FILE: src/core/engine/mastery.ts
+ * VERSION: mastery.ts v1.1
+ *
+ * Purpose:
+ * - Track mastery per skill as an EMA (0..1).
+ * - Compute gate readiness for a level.
+ * - Deterministic, no dependencies.
+ */
 
-import type { SkillId, GateDefinition as GateCriteria } from "../types/curriculum";
+import type {
+  SkillId,
+  GateDefinition as GateCriteria,
+} from "../types/curriculum";
+
+export type { SkillId };
 
 export interface SkillMastery {
   value: number; // 0..1
@@ -30,7 +37,7 @@ function to0to1(score0to100: number): number {
   return clamp(score0to100 / 100, 0, 1);
 }
 
-const ALL_SKILLS: SkillId[] = [
+export const ALL_SKILLS: SkillId[] = [
   "listening",
   "reading",
   "speaking",
@@ -51,13 +58,18 @@ function ensureSkill(state: Partial<MasteryState>, skill: SkillId): SkillMastery
  * - alpha higher when accuracy is high and score is high (trust signal)
  * - alpha lower when uncertain
  */
-export function updateMastery(prev: Partial<MasteryState>, input: MasteryUpdateInput): MasteryState {
+export function updateMastery(
+  prev: Partial<MasteryState>,
+  input: MasteryUpdateInput
+): MasteryState {
   const next: Partial<MasteryState> = { ...prev };
 
   const old = ensureSkill(prev, input.skill);
   const s = to0to1(input.score0to100);
   const acc =
-    typeof input.accuracy0to1 === "number" ? clamp(input.accuracy0to1, 0, 1) : 0.7;
+    typeof input.accuracy0to1 === "number"
+      ? clamp(input.accuracy0to1, 0, 1)
+      : 0.7;
 
   // Trust: 0.08..0.22
   const alpha = clamp(0.08 + 0.14 * (0.5 * s + 0.5 * acc), 0.08, 0.22);
@@ -71,7 +83,9 @@ export function updateMastery(prev: Partial<MasteryState>, input: MasteryUpdateI
 
   // Ensure stable shape
   const full: MasteryState = {} as MasteryState;
-  for (const k of ALL_SKILLS) full[k] = ensureSkill(next, k);
+  for (const k of ALL_SKILLS) {
+    full[k] = ensureSkill(next, k);
+  }
   return full;
 }
 
@@ -87,15 +101,22 @@ export interface GateResult {
   reasons: string[];
 }
 
-export function computeGate(mastery: MasteryState, gate: GateCriteria, state: GateState): GateResult {
+export function computeGate(
+  mastery: MasteryState,
+  gate: GateCriteria,
+  state: GateState
+): GateResult {
   const avg =
-    ALL_SKILLS.reduce((sum, s) => sum + (mastery[s]?.value ?? 0), 0) / Math.max(1, ALL_SKILLS.length);
+    ALL_SKILLS.reduce((sum, s) => sum + (mastery[s]?.value ?? 0), 0) /
+    Math.max(1, ALL_SKILLS.length);
 
   const missingSkills: SkillId[] = [];
   for (const [skill, min] of Object.entries(gate.minPerSkill)) {
     const sk = skill as SkillId;
     const threshold = min ?? 0;
-    if ((mastery[sk]?.value ?? 0) < threshold) missingSkills.push(sk);
+    if ((mastery[sk]?.value ?? 0) < threshold) {
+      missingSkills.push(sk);
+    }
   }
 
   const reasons: string[] = [];
@@ -103,10 +124,10 @@ export function computeGate(mastery: MasteryState, gate: GateCriteria, state: Ga
     reasons.push(`Need ${gate.minAttempts - state.attemptsInLevel} more practice sessions.`);
   }
   if (avg < gate.minAverage) {
-    reasons.push(`Average mastery is below target.`);
+    reasons.push("Average mastery is below target.");
   }
   if (missingSkills.length > 0) {
-    reasons.push(`Some skills are below required level.`);
+    reasons.push("Some skills are below required level.");
   }
 
   const ready =
@@ -121,9 +142,13 @@ export function computeGate(mastery: MasteryState, gate: GateCriteria, state: Ga
  * UI helper:
  * Convert mastery objects -> { skill: number } for display + Mercy Host messages.
  */
-export function masteryToValues(mastery: Partial<MasteryState> | null | undefined): Record<string, number> {
+export function masteryToValues(
+  mastery: Partial<MasteryState> | null | undefined
+): Record<string, number> {
   const out: Record<string, number> = {};
   if (!mastery) return out;
-  for (const k of ALL_SKILLS) out[k] = clamp(mastery[k]?.value ?? 0, 0, 1);
+  for (const k of ALL_SKILLS) {
+    out[k] = clamp(mastery[k]?.value ?? 0, 0, 1);
+  }
   return out;
 }

@@ -1,4 +1,7 @@
 /**
+ * FILE: src/lib/mercy-host/toneCalibration.ts
+ * VERSION: toneCalibration.ts v1.1
+ *
  * Mercy Tone Calibration
  *
  * Purpose:
@@ -64,7 +67,7 @@ function clonePlan(plan: ResponsePlan): ToneCalibrationResult {
     tone: plan.tone,
     shouldUseHumor: plan.shouldUseHumor,
     shouldBeBrief: plan.shouldBeBrief,
-    correctionStyle: plan.correctionStyle,
+    correctionStyle: plan.correctionStyle ?? 'gentle',
     acknowledgeEffort: plan.acknowledgeEffort,
     addNextStep: plan.addNextStep,
     notes: [],
@@ -251,3 +254,5 @@ export function calibrateTone(input: ToneCalibrationInput): ToneCalibrationResul
 
   return result;
 }
+
+export default calibrateTone;
