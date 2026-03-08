@@ -64,8 +64,13 @@
 // ✅ PATCH (2026-03-02e):
 // - Keep /upgrade route BUT render UpgradePage (which renders the SAME Pricing table UI).
 //   This avoids 404 loops even if old links or 403 redirects still go to /upgrade.
+//
+// ✅ PATCH (2026-03-08):
+// - Safely lazy-load non-home, non-chat, non-login routes to reduce startup bundle size.
+// - Keep Home, LoginPage, ChatHub, MercyAIHost eager for low-risk first-pass optimization.
+// - Wrap route tree in Suspense with a simple loading fallback.
 
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import {
   Routes,
   Route,
@@ -78,49 +83,47 @@ import {
 } from "react-router-dom";
 
 import ChatHub from "@/pages/ChatHub";
-import AllRooms from "@/pages/AllRooms";
 import Home from "@/pages/Home";
-
-// ✅ Billing / Account
-import AccountPage from "@/pages/AccountPage";
-
-// ✅ Upgrade (legacy route) — shows Pricing UI
-import UpgradePage from "@/pages/UpgradePage";
-
-// ✅ Stripe pricing page (your Stripe pricing-table embed)
-import Pricing from "../screens/Pricing";
-
-// ✅ Tier spine pages (NO FETCH)
-import TierIndex from "@/pages/TierIndex";
-import TierDetail from "@/pages/TierDetail";
-
-// ✅ Auth / Signin
 import LoginPage from "@/pages/LoginPage";
 
-// ✅ Admin guard + layout + control board
+// ✅ Admin guard + layout remain eager and tiny
 import AdminRoute from "@/components/admin/AdminRoute";
 import AdminLayout from "@/components/admin/AdminLayout";
-import AdminDashboard from "@/pages/admin/AdminDashboard";
 
-// Existing admin pages (already in src/pages/admin)
-import AdminPayments from "@/pages/admin/AdminPayments";
-import AdminBankTransfers from "@/pages/admin/AdminBankTransfers";
-import AdminPaymentVerification from "@/pages/admin/AdminPaymentVerification";
-import AdminAccessCodes from "@/pages/admin/AdminAccessCodes";
-import AudioCoveragePage from "@/pages/admin/AudioCoveragePage";
-
-// ✅ Monitoring + Metrics
-import AdminMonitoring from "@/pages/admin/AdminMonitoring";
-import AdminMetrics from "@/pages/admin/AdminMetrics";
-
-// ✅ VIP Rooms
-import AdminVIPRooms from "@/pages/admin/AdminVIPRooms";
-
-// ✅ Mercy AI Host (global floating guide)
+// ✅ Mercy AI Host (global floating guide) stays eager for low-risk rollout
 import MercyAIHost from "@/components/guide/MercyAIHost";
 
+// ✅ Lazy-loaded routes/pages (safe first wave)
+const AllRooms = lazy(() => import("@/pages/AllRooms"));
+const AccountPage = lazy(() => import("@/pages/AccountPage"));
+const UpgradePage = lazy(() => import("@/pages/UpgradePage"));
+const Pricing = lazy(() => import("../screens/Pricing"));
+const TierIndex = lazy(() => import("@/pages/TierIndex"));
+const TierDetail = lazy(() => import("@/pages/TierDetail"));
+
+const AdminDashboard = lazy(() => import("@/pages/admin/AdminDashboard"));
+const AdminPayments = lazy(() => import("@/pages/admin/AdminPayments"));
+const AdminBankTransfers = lazy(() => import("@/pages/admin/AdminBankTransfers"));
+const AdminPaymentVerification = lazy(
+  () => import("@/pages/admin/AdminPaymentVerification")
+);
+const AdminAccessCodes = lazy(() => import("@/pages/admin/AdminAccessCodes"));
+const AudioCoveragePage = lazy(() => import("@/pages/admin/AudioCoveragePage"));
+const AdminMonitoring = lazy(() => import("@/pages/admin/AdminMonitoring"));
+const AdminMetrics = lazy(() => import("@/pages/admin/AdminMetrics"));
+const AdminVIPRooms = lazy(() => import("@/pages/admin/AdminVIPRooms"));
+
 // ✅ DEPLOYMENT TRUTH BEACON
-const MB_ROUTER_VERSION = "2026-03-02-app-router-pricing-v3.2";
+const MB_ROUTER_VERSION = "2026-03-08-app-router-lazy-routes-v3.3";
+
+function RouteLoading() {
+  return (
+    <div style={{ padding: 24, opacity: 0.8 }}>
+      <div style={{ fontSize: 18, fontWeight: 800 }}>Loading...</div>
+      <div style={{ marginTop: 8, fontSize: 14 }}>Please wait a moment.</div>
+    </div>
+  );
+}
 
 /**
  * Local NotFound — ZERO dependencies
@@ -320,7 +323,8 @@ export default function AppRouter() {
 
   try {
     if (typeof window !== "undefined") {
-      (window as any).MB_ROUTER_VERSION = MB_ROUTER_VERSION;
+      (window as Window & { MB_ROUTER_VERSION?: string }).MB_ROUTER_VERSION =
+        MB_ROUTER_VERSION;
     }
     if (typeof document !== "undefined" && document.documentElement) {
       document.documentElement.setAttribute(
@@ -334,54 +338,56 @@ export default function AppRouter() {
 
   return (
     <>
-      <Routes>
-        <Route path="/signin" element={<LoginPage />} />
-        <Route path="/auth" element={<AuthRedirect />} />
+      <Suspense fallback={<RouteLoading />}>
+        <Routes>
+          <Route path="/signin" element={<LoginPage />} />
+          <Route path="/auth" element={<AuthRedirect />} />
 
-        <Route element={<AppHeroShell />}>
-          <Route path="/" element={<Home />} />
+          <Route element={<AppHeroShell />}>
+            <Route path="/" element={<Home />} />
 
-          {/* ✅ canonical pricing */}
-          <Route path="/pricing" element={<Pricing />} />
+            {/* ✅ canonical pricing */}
+            <Route path="/pricing" element={<Pricing />} />
 
-          {/* ✅ legacy upgrade route renders the same Stripe pricing table UI */}
-          <Route path="/upgrade" element={<UpgradePage />} />
+            {/* ✅ legacy upgrade route renders the same Stripe pricing table UI */}
+            <Route path="/upgrade" element={<UpgradePage />} />
 
-          {/* ✅ Billing / Account (must be in the REAL router, not src/App.tsx) */}
-          <Route path="/account" element={<AccountPage />} />
+            {/* ✅ Billing / Account (must be in the REAL router, not src/App.tsx) */}
+            <Route path="/account" element={<AccountPage />} />
 
-          <Route path="/rooms" element={<AllRooms />} />
+            <Route path="/rooms" element={<AllRooms />} />
 
-          <Route path="/tiers" element={<TierIndex />} />
-          <Route path="/tiers/:tierId" element={<TierDetail />} />
+            <Route path="/tiers" element={<TierIndex />} />
+            <Route path="/tiers/:tierId" element={<TierDetail />} />
 
-          <Route path="/redeem" element={<RedeemRedirect />} />
+            <Route path="/redeem" element={<RedeemRedirect />} />
 
-          <Route path="/room/room/:roomId" element={<RoomRoomRedirect />} />
-          <Route path="/room" element={<RoomIndexRedirect />} />
-          <Route path="/rooms/room/:roomId" element={<RoomsRoomRedirect />} />
+            <Route path="/room/room/:roomId" element={<RoomRoomRedirect />} />
+            <Route path="/room" element={<RoomIndexRedirect />} />
+            <Route path="/rooms/room/:roomId" element={<RoomsRoomRedirect />} />
 
-          <Route path="/room/:roomId" element={<ChatHub />} />
+            <Route path="/room/:roomId" element={<ChatHub />} />
 
-          <Route path="/admin/*" element={<AdminShell />}>
-            <Route index element={<AdminDashboard />} />
-            <Route path="payments" element={<AdminPayments />} />
-            <Route path="bank-transfers" element={<AdminBankTransfers />} />
-            <Route
-              path="payment-verification"
-              element={<AdminPaymentVerification />}
-            />
-            <Route path="access-codes" element={<AdminAccessCodes />} />
-            <Route path="audio-coverage" element={<AudioCoveragePage />} />
-            <Route path="monitoring" element={<AdminMonitoring />} />
-            <Route path="metrics" element={<AdminMetrics />} />
-            <Route path="vip-rooms" element={<AdminVIPRooms />} />
-            <Route path="*" element={<AdminDashboard />} />
+            <Route path="/admin/*" element={<AdminShell />}>
+              <Route index element={<AdminDashboard />} />
+              <Route path="payments" element={<AdminPayments />} />
+              <Route path="bank-transfers" element={<AdminBankTransfers />} />
+              <Route
+                path="payment-verification"
+                element={<AdminPaymentVerification />}
+              />
+              <Route path="access-codes" element={<AdminAccessCodes />} />
+              <Route path="audio-coverage" element={<AudioCoveragePage />} />
+              <Route path="monitoring" element={<AdminMonitoring />} />
+              <Route path="metrics" element={<AdminMetrics />} />
+              <Route path="vip-rooms" element={<AdminVIPRooms />} />
+              <Route path="*" element={<AdminDashboard />} />
+            </Route>
+
+            <Route path="*" element={<NotFound />} />
           </Route>
-
-          <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
+        </Routes>
+      </Suspense>
 
       <MercyAIHost />
     </>

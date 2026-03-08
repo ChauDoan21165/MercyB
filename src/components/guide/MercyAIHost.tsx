@@ -1,6 +1,6 @@
 // FILE: MercyAIHost.tsx
 // PATH: src/components/guide/MercyAIHost.tsx
-// VERSION: MB-BLUE-101.7h — 2026-01-20 (+0700)
+// VERSION: MB-BLUE-101.7i — 2026-03-08 (+0700)
 // NOTE:
 // - Split into host/* modules for growth & safety.
 // - Auth source of truth: AuthProvider via useAuth().
@@ -50,10 +50,22 @@
 // FIX (2026-03-05a):
 // - Fix TDZ/runtime crash: feedback drain deps referenced repeatTarget/repeatStep before they were declared.
 //   (Repeat loop is now initialized before feedback drain hooks.)
+//
+// PATCH (2026-03-08):
+// - Safe low-risk bundle trim inside this file:
+//   - lazy-load TalkingFaceIcon
+//   - lazy-load TypingIndicator
 
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, {
+  Suspense,
+  lazy,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import TalkingFaceIcon from "@/components/guide/TalkingFaceIcon";
 import { useAuth } from "@/providers/AuthProvider";
 
 import type { HostContext, PanelMode } from "@/components/guide/host/types";
@@ -68,7 +80,10 @@ import { useRepeatLoop } from "@/components/guide/host/useRepeatLoop";
 import { useMakeReply } from "@/components/guide/host/makeReply";
 import { useHostActions } from "@/components/guide/host/buildActions";
 import { useDevHostState } from "@/components/guide/host/useDevState";
-import TypingIndicator from "@/components/guide/host/TypingIndicator";
+
+// ✅ lazy visual-only pieces
+const TalkingFaceIcon = lazy(() => import("@/components/guide/TalkingFaceIcon"));
+const TypingIndicator = lazy(() => import("@/components/guide/host/TypingIndicator"));
 
 type TierKey = "free" | "pro" | "elite";
 
@@ -108,7 +123,6 @@ function safeSetLSJson(key: string, val: any) {
 }
 
 function todayKeyLocal(): string {
-  // YYYY-MM-DD in local time
   const d = new Date();
   const y = d.getFullYear();
   const m = String(d.getMonth() + 1).padStart(2, "0");
@@ -122,10 +136,6 @@ function parseIntLoose(v: any): number | null {
 }
 
 function guessVipRankFromEnv(args: { authUserId: string | null; canVoiceTest?: boolean; ctx?: any }): number {
-  // Best-effort, non-breaking heuristic:
-  // 1) Known localStorage keys (if your app sets any of them)
-  // 2) ctx.vipRank / ctx.userVipRank (if present)
-  // 3) canVoiceTest -> treat as high tier hint
   const ctx = args.ctx ?? null;
 
   const candidates: Array<string | number | null | undefined> = [
@@ -145,19 +155,12 @@ function guessVipRankFromEnv(args: { authUserId: string | null; canVoiceTest?: b
     if (typeof n === "number") return n;
   }
 
-  // Optional hint: voice test is typically paid/high tier.
-  // Map this into "elite" by returning >=3.
   if (args.canVoiceTest) return 3;
-
-  // If logged-in but we cannot detect rank, assume Pro (marketing-friendly).
   if (args.authUserId) return 1;
-
-  // Anonymous => free
   return 0;
 }
 
 function tierFromRank(rank: number): TierKey {
-  // Map heuristic ranks to real product tiers
   if (rank >= 3) return "elite";
   if (rank >= 1) return "pro";
   return "free";
@@ -176,11 +179,9 @@ function tierNextUpgrade(tier: TierKey): TierKey {
 }
 
 function dailyAiLimitForTier(tier: TierKey): number {
-  // PROMO PHASE (first months): generous limits for word-of-mouth growth
-  // NOTE: Only AI calls cost money. Voice can be free via browser TTS.
   if (tier === "free") return 30;
   if (tier === "pro") return 300;
-  return 2000; // elite
+  return 2000;
 }
 
 function shouldCountAsAiMessage(userText: string, currentMode: PanelMode): boolean {
@@ -188,17 +189,13 @@ function shouldCountAsAiMessage(userText: string, currentMode: PanelMode): boole
   if (!t) return false;
   const lower = t.toLowerCase();
 
-  // Commands shouldn't consume AI quota
   if (lower.startsWith("/")) return false;
-
-  // Pure navigation prompts shouldn't consume AI quota
   if (currentMode === "home" && (lower === "tiers" || lower === "pricing")) return false;
 
   return true;
 }
 
 function getAiUsageKey(appKey: string, tier: TierKey): string {
-  // per-day, per-app, per-user-tier bucket (simple)
   return `mb.host.ai.${appKey}.${tier}.${todayKeyLocal()}`;
 }
 
@@ -235,20 +232,17 @@ function bi(en: string, vi: string) {
   return `EN:\n${(en ?? "").trim()}\n\nVI:\n${(vi ?? "").trim()}`;
 }
 
-// If something (like makeReply / AI) returns single-language, force it into EN+VI
 function ensureBilingual(text: string) {
   const t = (text ?? "").trim();
   if (!t) return "";
   if (isBilingualBlock(t)) return t;
-  return bi(t, t); // safe fallback (no translation step)
+  return bi(t, t);
 }
 
 function extractLangFromBilingualBlock(text: string, lang: "en" | "vi") {
   const t = (text ?? "").trim();
   if (!isBilingualBlock(t)) return t;
 
-  // Robust extraction:
-  // EN:\n ... \n\nVI:\n ...
   const m = t.match(/(?:^|\n)EN:\s*\n([\s\S]*?)\n\nVI:\s*\n([\s\S]*)$/);
   if (!m) return t;
 
@@ -257,13 +251,12 @@ function extractLangFromBilingualBlock(text: string, lang: "en" | "vi") {
   return lang === "vi" ? viPart : enPart;
 }
 
-/* =========================
-   Browser TTS fallback (FREE)
-   - Works for visitors + Free users with no backend TTS.
-   - Browsers may require a user gesture before speaking.
-========================= */
 function canBrowserSpeak(): boolean {
-  return typeof window !== "undefined" && "speechSynthesis" in window && typeof (window as any).SpeechSynthesisUtterance !== "undefined";
+  return (
+    typeof window !== "undefined" &&
+    "speechSynthesis" in window &&
+    typeof (window as any).SpeechSynthesisUtterance !== "undefined"
+  );
 }
 
 function stopBrowserTTS() {
@@ -280,7 +273,6 @@ function speakBrowserTTS(text: string, lang: "en" | "vi") {
   const clean = (text ?? "").trim();
   if (!clean) return;
 
-  // Stop any current speech
   stopBrowserTTS();
 
   try {
@@ -312,25 +304,40 @@ function looksLikeHello(s: string) {
   );
 }
 
-// “I’m stuck / help / start” => give a teacher-style next step (FREE, no AI).
 function looksLikeStuck(s: string) {
   const t = (s ?? "").trim().toLowerCase();
   if (!t) return false;
 
-  // ultra-short nudges
-  if (t === "help" || t === "start" || t === "go" || t === "begin" || t === "what now" || t === "now what") return true;
+  if (
+    t === "help" ||
+    t === "start" ||
+    t === "go" ||
+    t === "begin" ||
+    t === "what now" ||
+    t === "now what"
+  ) {
+    return true;
+  }
 
-  // common stuck phrases
-  if (t === "i don't know" || t === "idk" || t === "im stuck" || t === "i am stuck") return true;
+  if (t === "i don't know" || t === "idk" || t === "im stuck" || t === "i am stuck") {
+    return true;
+  }
 
-  // “how to use / where do i begin”
   if (t.includes("where do i begin")) return true;
   if (t.includes("how do i start")) return true;
   if (t.includes("how to use")) return true;
   if (t.includes("what should i do")) return true;
 
-  // vietnamese quick
-  if (t === "giúp" || t === "giup" || t === "bắt đầu" || t === "bat dau" || t === "em không biết" || t === "không biết") return true;
+  if (
+    t === "giúp" ||
+    t === "giup" ||
+    t === "bắt đầu" ||
+    t === "bat dau" ||
+    t === "em không biết" ||
+    t === "không biết"
+  ) {
+    return true;
+  }
   if (t.includes("bắt đầu từ đâu") || t.includes("bat dau tu dau")) return true;
 
   return false;
@@ -353,27 +360,19 @@ function shouldUseAiBrain(userText: string) {
   if (!t) return false;
   const low = t.toLowerCase();
 
-  // Do NOT call AI for commands or tiny acknowledgements
   if (low.startsWith("/")) return false;
   if (looksLikeHello(t)) return false;
   if (looksLikeStuck(t)) return false;
 
-  // Use AI for “smart” intents
   if (low.startsWith("fix grammar:")) return true;
   if (/[?？]$/.test(t)) return true;
   if (low.includes("why") || low.includes("how") || low.includes("what")) return true;
   if (low.includes("explain") || low.includes("summarize") || low.includes("compare")) return true;
   if (t.length >= 80) return true;
 
-  // Otherwise deterministic is fine
   return false;
 }
 
-/* =========================
-   Deterministic rolling summary (FREE)
-   - Keeps AI context “smart” with fewer tokens.
-   - Avoids sending long history; we send summary + last few turns.
-========================= */
 function stripBilingualToLang(text: string, lang: "en" | "vi") {
   const t = (text ?? "").trim();
   if (!t) return "";
@@ -392,7 +391,6 @@ function buildRollingSummary(args: {
 }) {
   const { lang, mode, contextLine, roomId, keyword, repeatActive, repeatStep, messages } = args;
 
-  // take last 2 user messages (most predictive)
   const lastUsers = messages
     .slice()
     .reverse()
@@ -402,7 +400,6 @@ function buildRollingSummary(args: {
     .map((m) => stripBilingualToLang(m.text, lang))
     .filter(Boolean);
 
-  // tiny “state” line
   const parts: string[] = [];
   parts.push(`mode:${mode}`);
   if (contextLine) parts.push(`ctx:${contextLine}`);
@@ -414,13 +411,9 @@ function buildRollingSummary(args: {
   const userLine = lastUsers.length ? `last_user: ${lastUsers.join(" / ")}` : "";
 
   const raw = [stateLine, userLine].filter(Boolean).join("\n");
-  // keep it short for tokens + privacy
   return raw.length > 420 ? raw.slice(0, 420) + "…" : raw;
 }
 
-/* =========================
-   Feedback (FREE): UI + local queue
-========================= */
 type FeedbackVote = "up" | "down";
 type FeedbackReason =
   | "helpful"
@@ -438,29 +431,20 @@ type HostFeedbackEvent = {
   v: 1;
   ts: number;
   appKey: string;
-
-  // context (avoid PII; no email)
   authUserId: string | null;
   tier: TierKey;
   lang: "en" | "vi";
   mode: PanelMode;
   path: string;
-
   roomId?: string;
   entryId?: string;
   keyword?: string;
   contextLine?: string | null;
-
-  // the rated assistant message
   msgId: string;
   vote: FeedbackVote;
   reason?: FeedbackReason;
-
-  // small snippets only
   assistantSnippet?: string;
   lastUserSnippet?: string;
-
-  // optional flags
   repeatStep?: string;
   repeatCount?: number;
 };
@@ -472,13 +456,12 @@ function feedbackStateKey(appKey: string) {
   return `mb.host.feedback.state.${appKey}.v1`;
 }
 
-// ---- Feedback drain (best-effort) ----
 function feedbackDrainStateKey(appKey: string) {
   return `mb.host.feedback.drain.${appKey}.v1`;
 }
 
 type FeedbackDrainState = {
-  nextAttemptAt: number; // epoch ms
+  nextAttemptAt: number;
   backoffMs: number;
   failCount: number;
   lastOkAt: number;
@@ -496,9 +479,8 @@ function clamp(n: number, lo: number, hi: number) {
 }
 
 function nextBackoffMs(prev: number) {
-  // 1s -> 2s -> 4s ... capped at 10 min, with light jitter
   const base = prev > 0 ? Math.min(prev * 2, 10 * 60 * 1000) : 1000;
-  const jitter = Math.floor(Math.random() * 350); // 0..349ms
+  const jitter = Math.floor(Math.random() * 350);
   return base + jitter;
 }
 
@@ -511,7 +493,6 @@ function safeGetNavLocale(): string {
 }
 
 function tzOffsetMinLocal(): number {
-  // JS Date.getTimezoneOffset() is minutes behind UTC; invert sign to match +0700 => 420
   try {
     return new Date().getTimezoneOffset() * -1;
   } catch {
@@ -599,6 +580,20 @@ function clip(s: any, max: number) {
   return t.length > max ? t.slice(0, max) + "…" : t;
 }
 
+function FaceFallback({ size = 44 }: { size?: number }) {
+  return (
+    <div
+      style={{
+        width: size,
+        height: size,
+        borderRadius: 999,
+        background: "rgba(0,0,0,0.06)",
+      }}
+      aria-hidden="true"
+    />
+  );
+}
+
 export default function MercyAIHost() {
   const { user } = useAuth();
 
@@ -608,7 +603,6 @@ export default function MercyAIHost() {
 
   const [lang, setLang] = useState(safeLang());
 
-  // Auto voice (promo default ON)
   const [autoVoice, setAutoVoice] = useState<boolean>(() => {
     const raw = safeGetLS("mb.host.auto_voice");
     if (raw === "0") return false;
@@ -627,7 +621,6 @@ export default function MercyAIHost() {
   const [authUserId, setAuthUserId] = useState<string | null>(null);
   const [authEmail, setAuthEmail] = useState("");
 
-  // Mini test state (kept local for now; makeReply is pure)
   const [testActive, setTestActive] = useState(false);
   const [testStep, setTestStep] = useState<0 | 1 | 2 | 3>(0);
   const [testScore, setTestScore] = useState(0);
@@ -643,15 +636,11 @@ export default function MercyAIHost() {
 
   const appKey = "mercy_blade";
 
-  // Host gentle nudges / “stuck” rescue (local only)
   const repeatNudgeTimerRef = useRef<number | null>(null);
   const repeatNudgedKeyRef = useRef<string>("");
 
   useEffect(() => setMounted(true), []);
 
-  /* =========================
-     Auth snapshot (LOCKED via AuthProvider)
-  ========================= */
   useEffect(() => {
     setAuthUserId(user?.id ?? null);
     setAuthEmail(user?.email ?? "");
@@ -674,7 +663,6 @@ export default function MercyAIHost() {
   }, []);
 
   const clearTypingTimer = useCallback(() => {
-    // IMPORTANT: timer id can be 0 in some environments — check against null, not truthy.
     if (typingTimerRef.current !== null) window.clearTimeout(typingTimerRef.current);
     typingTimerRef.current = null;
   }, []);
@@ -691,18 +679,12 @@ export default function MercyAIHost() {
     };
   }, [clearTypingTimer, clearRepeatNudgeTimer]);
 
-  /* =========================
-     Host Context (window event + route sync)
-  ========================= */
   const [ctx, setCtx] = useHostContextSync({
     isAdmin,
     isRoom,
     roomIdFromUrl,
   });
 
-  /* =========================
-     Profile + progress (Supabase reads)
-  ========================= */
   const profileAny = useHostProfile({
     isAdmin,
     open,
@@ -725,25 +707,19 @@ export default function MercyAIHost() {
       const clean = (assistantText ?? "").trim();
       if (!clean) return;
 
-      // Speak only the current language section (EN or VI) if bilingual
       const toSpeak = extractLangFromBilingualBlock(clean, lang);
 
-      // Prefer app-provided speak() if available, else fallback to browser TTS.
       const hasAppSpeak = typeof speak === "function";
 
-      // Stop current voice before speaking new
       try {
         if (hasAppSpeak && isSpeaking) stopVoice?.();
       } catch {
         // ignore
       }
-      // Also stop browser TTS so they don't overlap
       stopBrowserTTS();
 
       if (hasAppSpeak) {
         try {
-          // speak() signature varies across builds; keep it tolerant
-          // Try (text, lang) first, fall back to (text)
           const r = speak(toSpeak, lang);
           if (typeof (r as any)?.catch === "function") (r as any).catch(() => {});
           return;
@@ -753,12 +729,11 @@ export default function MercyAIHost() {
             if (typeof (r2 as any)?.catch === "function") (r2 as any).catch(() => {});
             return;
           } catch {
-            // fall through to browser
+            // fall through
           }
         }
       }
 
-      // Browser fallback (free)
       speakBrowserTTS(toSpeak, lang);
     },
     [autoVoice, speak, lang, isSpeaking, stopVoice],
@@ -772,11 +747,12 @@ export default function MercyAIHost() {
       const stored = clean.length > 1800 ? `${clean.slice(0, 1800)}…` : clean;
 
       setMessages((prev) => {
-        const id = `${role === "user" ? "u" : "a"}_${Math.random().toString(16).slice(2)}_${Date.now().toString(16)}`;
+        const id = `${role === "user" ? "u" : "a"}_${Math.random()
+          .toString(16)
+          .slice(2)}_${Date.now().toString(16)}`;
         return [...prev, { id, role, text: stored }];
       });
 
-      // Auto-voice for assistant
       if (role === "assistant") {
         maybeSpeakAssistant(stored);
       }
@@ -786,7 +762,6 @@ export default function MercyAIHost() {
 
   const scheduleAssistantMsg = useCallback(
     (text: string, delayMs: number) => {
-      // Deterministic, calm timing (no AI)
       clearTypingTimer();
       setIsTyping(true);
       typingTimerRef.current = window.setTimeout(() => {
@@ -798,7 +773,6 @@ export default function MercyAIHost() {
     [addMsg, clearTypingTimer],
   );
 
-  // ✅ Tier + AI quota (best-effort)
   const vipRankGuess = useMemo(() => {
     return guessVipRankFromEnv({ authUserId, canVoiceTest, ctx });
   }, [authUserId, canVoiceTest, ctx]);
@@ -809,7 +783,6 @@ export default function MercyAIHost() {
   const [aiUsedToday, setAiUsedToday] = useState(0);
 
   useEffect(() => {
-    // Refresh usage when panel opens or tier changes or day changes
     if (!mounted) return;
     const used = readAiUsed(appKey, tierKey);
     setAiUsedToday(used);
@@ -917,7 +890,10 @@ export default function MercyAIHost() {
     (nextMode: PanelMode) => {
       setMessages((prev) => {
         if (prev.length) return prev;
-        const first = nextMode === "home" ? baseAssistantHome : bi(`Hi. Ask me anything about ${nextMode}.`, `Chào. Hỏi mình về ${nextMode}.`);
+        const first =
+          nextMode === "home"
+            ? baseAssistantHome
+            : bi(`Hi. Ask me anything about ${nextMode}.`, `Chào. Hỏi mình về ${nextMode}.`);
         return [
           {
             id: `a_${Math.random().toString(16).slice(2)}_${Date.now().toString(16)}`,
@@ -930,11 +906,6 @@ export default function MercyAIHost() {
     [baseAssistantHome],
   );
 
-  /* =========================
-     Repeat loop (events + hearts)
-     - MUST be safe with stub host/useRepeatLoop.ts
-     - IMPORTANT: declared BEFORE feedback drain hooks to avoid TDZ.
-  ========================= */
   const repeatApi: any = useRepeatLoop();
   const repeatTarget = repeatApi?.repeatTarget ?? null;
   const repeatStep = repeatApi?.repeatStep ?? "idle";
@@ -973,8 +944,6 @@ export default function MercyAIHost() {
     clearHeart();
   }, [clearRepeatBase, clearHeart]);
 
-  // Request audio play for repeat: SAFE (no audio side effects here).
-  // We only flip step and let the UI/other modules actually play audio.
   const requestPlayRepeat = useCallback(() => {
     setRepeatStep("play");
   }, [setRepeatStep]);
@@ -985,12 +954,17 @@ export default function MercyAIHost() {
       if (repeatStep !== "your_turn") return null;
 
       const t = (userText ?? "").trim().toLowerCase();
-      const ok = t === "ok" || t === "okay" || t === "done" || t === "repeated" || t === "i repeated it" || t === "xong";
+      const ok =
+        t === "ok" ||
+        t === "okay" ||
+        t === "done" ||
+        t === "repeated" ||
+        t === "i repeated it" ||
+        t === "xong";
       if (!ok) return null;
 
       ackRepeat();
 
-      // hearts at 3 (best-effort: using current count + 1)
       if (typeof repeatCount === "number" && repeatCount + 1 === 3) triggerHeart("repeat3");
 
       return { handled: true };
@@ -998,19 +972,19 @@ export default function MercyAIHost() {
     [repeatTarget, repeatStep, ackRepeat, repeatCount, triggerHeart],
   );
 
-  /* =========================
-     Feedback state + queue (FREE)
-  ========================= */
-  const [feedbackState, setFeedbackState] = useState<Record<string, { vote: FeedbackVote; reason?: FeedbackReason }>>(() =>
-    safeGetLSJson<Record<string, { vote: FeedbackVote; reason?: FeedbackReason }>>(feedbackStateKey(appKey), {}),
+  const [feedbackState, setFeedbackState] = useState<
+    Record<string, { vote: FeedbackVote; reason?: FeedbackReason }>
+  >(() =>
+    safeGetLSJson<Record<string, { vote: FeedbackVote; reason?: FeedbackReason }>>(
+      feedbackStateKey(appKey),
+      {},
+    ),
   );
 
   useEffect(() => {
-    // Keep tiny state persisted (which messages were rated) so UI remains stable on reload.
     safeSetLSJson(feedbackStateKey(appKey), feedbackState);
   }, [feedbackState, appKey]);
 
-  // ---- Feedback drain state/timers ----
   const anonId = useMemo(() => getOrCreateAnonId(), []);
   const [fbDrain, setFbDrain] = useState<FeedbackDrainState>(() =>
     safeGetLSJson<FeedbackDrainState>(feedbackDrainStateKey(appKey), FEEDBACK_DRAIN_DEFAULT),
@@ -1022,7 +996,9 @@ export default function MercyAIHost() {
 
   const fbDrainInFlightRef = useRef(false);
   const fbDrainTimerRef = useRef<number | null>(null);
-  const drainFeedbackQueueRef = useRef<((why: "open" | "enqueue" | "timer" | "visibility" | "online") => void) | null>(null);
+  const drainFeedbackQueueRef = useRef<
+    ((why: "open" | "enqueue" | "timer" | "visibility" | "online") => void) | null
+  >(null);
 
   const clearFbDrainTimer = useCallback(() => {
     if (fbDrainTimerRef.current !== null) window.clearTimeout(fbDrainTimerRef.current);
@@ -1048,15 +1024,23 @@ export default function MercyAIHost() {
     async (_why: "open" | "enqueue" | "timer" | "visibility" | "online") => {
       if (fbDrainInFlightRef.current) return;
 
-      // Offline => keep queue local
       try {
-        if (typeof navigator !== "undefined" && "onLine" in navigator && (navigator as any).onLine === false) return;
+        if (
+          typeof navigator !== "undefined" &&
+          "onLine" in navigator &&
+          (navigator as any).onLine === false
+        ) {
+          return;
+        }
       } catch {
         // ignore
       }
 
       const now = Date.now();
-      const st = safeGetLSJson<FeedbackDrainState>(feedbackDrainStateKey(appKey), FEEDBACK_DRAIN_DEFAULT);
+      const st = safeGetLSJson<FeedbackDrainState>(
+        feedbackDrainStateKey(appKey),
+        FEEDBACK_DRAIN_DEFAULT,
+      );
       if (st.nextAttemptAt && now < st.nextAttemptAt) return;
 
       const qKey = feedbackQueueKey(appKey);
@@ -1075,13 +1059,11 @@ export default function MercyAIHost() {
       const payload = toFeedbackPayload({
         appKey,
         client: {
-          version: "MB-BLUE-101.7h",
-          buildTime: "2026-03-05T00:00:00.000Z",
+          version: "MB-BLUE-101.7i",
+          buildTime: "2026-03-08T00:00:00.000Z",
         },
         actor: {
           authUserId: authUserId ?? undefined,
-          // NOTE: schema allows authEmail, but the original local event avoids email.
-          // Keep it opt-in: comment out next line if you want strict "never send email".
           authEmail: authEmail || undefined,
           anonId,
         },
@@ -1115,29 +1097,41 @@ export default function MercyAIHost() {
           body: JSON.stringify(payload),
         });
 
-        // Retryable: 429/5xx
         if (r.status === 429 || r.status >= 500) {
           const retryAfterSec = parseIntLoose(r.headers.get("retry-after")) ?? null;
-          const base = retryAfterSec !== null ? clamp(retryAfterSec * 1000, 1000, 10 * 60 * 1000) : nextBackoffMs(st.backoffMs);
+          const base =
+            retryAfterSec !== null
+              ? clamp(retryAfterSec * 1000, 1000, 10 * 60 * 1000)
+              : nextBackoffMs(st.backoffMs);
           const nextAttemptAt = Date.now() + base;
 
-          setFbDrain({ nextAttemptAt, backoffMs: base, failCount: (st.failCount ?? 0) + 1, lastOkAt: st.lastOkAt ?? 0 });
+          setFbDrain({
+            nextAttemptAt,
+            backoffMs: base,
+            failCount: (st.failCount ?? 0) + 1,
+            lastOkAt: st.lastOkAt ?? 0,
+          });
           scheduleFbDrain(base, "timer");
           return;
         }
 
-        // Non-retryable: keep queue, stop hammering for a while
         if (!r.ok) {
-          const base = 60 * 60 * 1000; // 1 hour
-          setFbDrain({ nextAttemptAt: Date.now() + base, backoffMs: base, failCount: (st.failCount ?? 0) + 1, lastOkAt: st.lastOkAt ?? 0 });
+          const base = 60 * 60 * 1000;
+          setFbDrain({
+            nextAttemptAt: Date.now() + base,
+            backoffMs: base,
+            failCount: (st.failCount ?? 0) + 1,
+            lastOkAt: st.lastOkAt ?? 0,
+          });
           return;
         }
 
-        // Success: drop accepted events from local queue
         let acceptedCount = batch.length;
         try {
           const j = await r.json();
-          if (typeof j?.acceptedCount === "number") acceptedCount = Math.max(0, Math.min(batch.length, j.acceptedCount));
+          if (typeof j?.acceptedCount === "number") {
+            acceptedCount = Math.max(0, Math.min(batch.length, j.acceptedCount));
+          }
         } catch {
           // ignore
         }
@@ -1147,12 +1141,16 @@ export default function MercyAIHost() {
 
         setFbDrain({ nextAttemptAt: 0, backoffMs: 0, failCount: 0, lastOkAt: Date.now() });
 
-        // Drain more soon if needed
         if (remaining.length) scheduleFbDrain(120, "timer");
       } catch {
         const base = nextBackoffMs(st.backoffMs);
         const nextAttemptAt = Date.now() + base;
-        setFbDrain({ nextAttemptAt, backoffMs: base, failCount: (st.failCount ?? 0) + 1, lastOkAt: st.lastOkAt ?? 0 });
+        setFbDrain({
+          nextAttemptAt,
+          backoffMs: base,
+          failCount: (st.failCount ?? 0) + 1,
+          lastOkAt: st.lastOkAt ?? 0,
+        });
         scheduleFbDrain(base, "timer");
       } finally {
         fbDrainInFlightRef.current = false;
@@ -1196,7 +1194,9 @@ export default function MercyAIHost() {
   useEffect(() => {
     const onVis = () => {
       try {
-        if (document.visibilityState === "visible") void drainFeedbackQueue("visibility");
+        if (document.visibilityState === "visible") {
+          void drainFeedbackQueue("visibility");
+        }
       } catch {
         // ignore
       }
@@ -1222,11 +1222,9 @@ export default function MercyAIHost() {
       const key = feedbackQueueKey(appKey);
       const q = safeGetLSJson<HostFeedbackEvent[]>(key, []);
       const next = [...q, ev];
-      // cap so LS doesn't blow up
       const capped = next.length > 200 ? next.slice(next.length - 200) : next;
       safeSetLSJson(key, capped);
 
-      // Best-effort drain shortly after enqueue (never blocks UI)
       scheduleFbDrain(250, "enqueue");
     },
     [appKey, scheduleFbDrain],
@@ -1236,13 +1234,11 @@ export default function MercyAIHost() {
     (args: { msgId: string; vote: FeedbackVote; reason?: FeedbackReason; assistantText?: string }) => {
       const { msgId, vote, reason, assistantText } = args;
 
-      // Determine last user snippet (helps debugging, but keep tiny and local)
       const lastUser = [...messages].reverse().find((m) => m.role === "user")?.text ?? "";
       const c = (ctx as any) ?? {};
 
       setFeedbackState((prev) => {
         const existing = prev[msgId];
-        // toggle off if clicking same vote again AND no reason selected
         const shouldClear = existing?.vote === vote && !reason && !existing?.reason;
         if (shouldClear) {
           const copy = { ...prev };
@@ -1270,7 +1266,8 @@ export default function MercyAIHost() {
         reason,
         assistantSnippet: clip(assistantText ?? "", 280),
         lastUserSnippet: clip(lastUser, 180),
-        repeatStep: typeof repeatApi?.repeatStep === "string" ? repeatApi.repeatStep : String(repeatStep ?? ""),
+        repeatStep:
+          typeof repeatApi?.repeatStep === "string" ? repeatApi.repeatStep : String(repeatStep ?? ""),
         repeatCount: typeof repeatCount === "number" ? repeatCount : undefined,
       };
 
@@ -1304,6 +1301,7 @@ export default function MercyAIHost() {
       ] as const,
     [],
   );
+
   const downReasons = useMemo(
     () =>
       [
@@ -1317,7 +1315,6 @@ export default function MercyAIHost() {
     [],
   );
 
-  // mb:host-repeat-target listener (LOCKED behavior: opens host + sets target)
   useEffect(() => {
     if (isAdmin) return;
 
@@ -1326,11 +1323,9 @@ export default function MercyAIHost() {
       const detail = ce?.detail ?? null;
       if (!detail) return;
 
-      // Ensure panel is open + seeded
       setOpen(true);
       seedIfEmpty(mode);
 
-      // Write target into repeat loop
       const target = {
         text_en: detail.text_en ?? detail.textEn ?? "",
         text_vi: detail.text_vi ?? detail.textVi ?? "",
@@ -1345,7 +1340,6 @@ export default function MercyAIHost() {
       startRepeat(target);
       setRepeatSeenAt(Date.now());
 
-      // Keep context synced (best-effort)
       setCtx((prev) => ({
         ...(prev as any),
         roomId: target.roomId || (prev as any)?.roomId,
@@ -1355,7 +1349,6 @@ export default function MercyAIHost() {
         focus_vi: (String(target.text_vi ?? "").trim() || (prev as any)?.focus_vi) as any,
       }));
 
-      // If we have audio, guide through "play" first; else straight to "your_turn"
       if (target.audio_url) setRepeatStep("play");
       else setRepeatStep("your_turn");
     };
@@ -1364,7 +1357,6 @@ export default function MercyAIHost() {
     return () => window.removeEventListener("mb:host-repeat-target", onEvt as EventListener);
   }, [isAdmin, seedIfEmpty, mode, startRepeat, setRepeatStep, setCtx]);
 
-  // Deterministic, calm coaching (no AI, no questions)
   const repeatCoach = useMemo(() => {
     if (!repeatTarget) return null;
 
@@ -1373,7 +1365,8 @@ export default function MercyAIHost() {
     const keyword = (repeatTarget.keyword ?? "").trim();
 
     const words = en ? en.split(/\s+/).filter(Boolean).length : 0;
-    const bucket: "short" | "medium" | "long" = words > 14 ? "long" : words > 7 ? "medium" : "short";
+    const bucket: "short" | "medium" | "long" =
+      words > 14 ? "long" : words > 7 ? "medium" : "short";
 
     const goal = lang === "vi" ? "Mục tiêu: nói trơn tru 3 lần." : "Goal: say it smoothly 3 times.";
 
@@ -1382,26 +1375,26 @@ export default function MercyAIHost() {
         ? repeatStep === "play"
           ? "Bước 1: nghe một lần."
           : repeatStep === "your_turn"
-          ? "Bước 2: đến lượt bạn."
-          : "Bước 3: nghe lại để so nhịp."
+            ? "Bước 2: đến lượt bạn."
+            : "Bước 3: nghe lại để so nhịp."
         : repeatStep === "play"
-        ? "Step 1: listen once."
-        : repeatStep === "your_turn"
-        ? "Step 2: your turn."
-        : "Step 3: listen again for rhythm.";
+          ? "Step 1: listen once."
+          : repeatStep === "your_turn"
+            ? "Step 2: your turn."
+            : "Step 3: listen again for rhythm.";
 
     const micro =
       lang === "vi"
         ? bucket === "long"
           ? "Tập trung nhịp điệu, không cần hoàn hảo."
           : bucket === "medium"
-          ? "Chia 2 nhịp. Nói chậm và rõ."
-          : "Một hơi. Âm cuối rõ."
+            ? "Chia 2 nhịp. Nói chậm và rõ."
+            : "Một hơi. Âm cuối rõ."
         : bucket === "long"
-        ? "Focus on rhythm, not perfection."
-        : bucket === "medium"
-        ? "Two chunks. Slow and clear."
-        : "One breath. Clear endings.";
+          ? "Focus on rhythm, not perfection."
+          : bucket === "medium"
+            ? "Two chunks. Slow and clear."
+            : "One breath. Clear endings.";
 
     const kwHint = keyword && lang === "vi" ? `Từ khóa: ${keyword}` : keyword ? `Keyword: ${keyword}` : null;
 
@@ -1411,35 +1404,37 @@ export default function MercyAIHost() {
     return { goal, calmLine, micro, kwHint, showEn, showVi, bucket };
   }, [repeatTarget, repeatStep, lang]);
 
-  // Failure-aware gentle nudge (only once per target+step)
   useEffect(() => {
     clearRepeatNudgeTimer();
     if (!open) return;
     if (!repeatTarget) return;
     if (repeatStep !== "your_turn") return;
 
-    const key = `${repeatTarget.roomId ?? repeatTarget.room_id ?? ""}|${repeatTarget.entryId ?? repeatTarget.entry_id ?? ""}|${
-      repeatTarget.keyword ?? ""
-    }|${repeatSeenAt ?? ""}|your_turn`;
+    const key = `${repeatTarget.roomId ?? repeatTarget.room_id ?? ""}|${
+      repeatTarget.entryId ?? repeatTarget.entry_id ?? ""
+    }|${repeatTarget.keyword ?? ""}|${repeatSeenAt ?? ""}|your_turn`;
     if (repeatNudgedKeyRef.current === key) return;
 
-    // Nudge after a calm delay (no nagging)
     repeatNudgeTimerRef.current = window.setTimeout(() => {
       repeatNudgeTimerRef.current = null;
       repeatNudgedKeyRef.current = key;
 
-      // One calm sentence, no emoji, no exclamation.
-      scheduleAssistantMsg(bi("That is fine. Try once more, a little slower.", "Không sao. Thử lại chậm hơn một chút."), 0);
+      scheduleAssistantMsg(
+        bi("That is fine. Try once more, a little slower.", "Không sao. Thử lại chậm hơn một chút."),
+        0,
+      );
     }, 12000);
-  }, [open, repeatTarget, repeatStep, repeatSeenAt, clearRepeatNudgeTimer, scheduleAssistantMsg]);
+  }, [
+    open,
+    repeatTarget,
+    repeatStep,
+    repeatSeenAt,
+    clearRepeatNudgeTimer,
+    scheduleAssistantMsg,
+  ]);
 
-  /* =========================
-     Reply function (pure)
-     - MUST match host/makeReply.ts API
-  ========================= */
   const makeReplyRaw = useMakeReply();
 
-  // ✅ HARDEN: tolerate hook returning fn OR { makeReply: fn } during HMR/refactors
   const makeReplyFn = useMemo(() => {
     if (typeof makeReplyRaw === "function") return makeReplyRaw as any;
     const maybe = makeReplyRaw as any;
@@ -1449,9 +1444,20 @@ export default function MercyAIHost() {
   }, [makeReplyRaw]);
 
   const pickPraise = useCallback(() => {
-    // Neutral, calm, one sentence. No emoji. No exclamation.
-    const en = ["Good. Keep it relaxed.", "That was clear.", "Yes. Keep the rhythm.", "Nice. One more time.", "Good. Same pace."];
-    const vi = ["Tốt. Giữ thư thái.", "Rõ rồi.", "Đúng. Giữ nhịp.", "Ổn. Thêm một lần.", "Tốt. Giữ tốc độ."];
+    const en = [
+      "Good. Keep it relaxed.",
+      "That was clear.",
+      "Yes. Keep the rhythm.",
+      "Nice. One more time.",
+      "Good. Same pace.",
+    ];
+    const vi = [
+      "Tốt. Giữ thư thái.",
+      "Rõ rồi.",
+      "Đúng. Giữ nhịp.",
+      "Ổn. Thêm một lần.",
+      "Tốt. Giữ tốc độ.",
+    ];
     const idx = Math.floor(Math.random() * en.length);
     return bi(en[idx] ?? "Good.", vi[idx] ?? "Tốt.");
   }, []);
@@ -1460,13 +1466,18 @@ export default function MercyAIHost() {
     const next = tierNextUpgrade(tier);
     const nextLabel = tierLabel(next);
 
-    const en = `You’ve used today’s AI messages (${Math.min(used, limit)}/${limit}).\n${nextLabel} gives you more practice with less friction.\nType /tiers to upgrade.`;
-    const vi = `Bạn đã dùng hết lượt AI hôm nay (${Math.min(used, limit)}/${limit}).\n${nextLabel} giúp bạn luyện tiếp mượt hơn.\nGõ /tiers để nâng cấp.`;
+    const en = `You’ve used today’s AI messages (${Math.min(
+      used,
+      limit,
+    )}/${limit}).\n${nextLabel} gives you more practice with less friction.\nType /tiers to upgrade.`;
+    const vi = `Bạn đã dùng hết lượt AI hôm nay (${Math.min(
+      used,
+      limit,
+    )}/${limit}).\n${nextLabel} giúp bạn luyện tiếp mượt hơn.\nGõ /tiers để nâng cấp.`;
 
     return bi(en, vi);
   }, []);
 
-  // FREE: rolling summary for AI brain (computed from current state)
   const rollingSummary = useMemo(() => {
     const c = (ctx as any) ?? {};
     const rid = c?.roomId ?? roomIdFromUrl;
@@ -1483,21 +1494,19 @@ export default function MercyAIHost() {
     });
   }, [ctx, roomIdFromUrl, lang, mode, contextLine, repeatTarget, repeatStep, messages]);
 
-  // ---- AI brain call (gpt-4o-mini) via /api/mercy-ai ----
   const callMercyAi = useCallback(
     async (userText: string) => {
       const c = (ctx as any) ?? {};
       const payload = {
         userText,
         lang,
-        summary: rollingSummary, // ✅ short deterministic summary
+        summary: rollingSummary,
         context: {
           roomId: c?.roomId ?? roomIdFromUrl ?? "",
           roomTitle: c?.roomTitle ?? "",
           keyword: c?.keyword ?? "",
           entryId: c?.entryId ?? "",
         },
-        // ✅ Send fewer turns (summary does the heavy lifting)
         history: messages.slice(-4).map((m) => ({ role: m.role, text: m.text })),
       };
 
@@ -1520,7 +1529,6 @@ export default function MercyAIHost() {
       const textTrim = (userText ?? "").trim();
       const lower = textTrim.toLowerCase();
 
-      // 0) Polite greeting (FREE, no AI)
       if (looksLikeHello(textTrim)) {
         clearTypingTimer();
         setIsTyping(false);
@@ -1528,12 +1536,14 @@ export default function MercyAIHost() {
         const name = displayName ? ` ${displayName}` : "";
         addMsg(
           "assistant",
-          bi(`Hello${name}. Good to see you.\nWhat do you want to do right now?`, `Chào${name}. Rất vui gặp bạn.\nBạn muốn làm gì ngay bây giờ?`),
+          bi(
+            `Hello${name}. Good to see you.\nWhat do you want to do right now?`,
+            `Chào${name}. Rất vui gặp bạn.\nBạn muốn làm gì ngay bây giờ?`,
+          ),
         );
         return;
       }
 
-      // 0b) “I’m stuck / help / start” shortcut (FREE, teacher-like, no AI)
       if (looksLikeStuck(textTrim)) {
         clearTypingTimer();
         setIsTyping(false);
@@ -1548,34 +1558,32 @@ export default function MercyAIHost() {
         return;
       }
 
-      // Repeat ACK should never consume AI quota
       const looksLikeRepeatAck =
-        repeatTarget && repeatStep === "your_turn" ? /(i\s*repeated|repeated|done|ok|okay|again|repeat|xong)/i.test(textTrim) : false;
+        repeatTarget && repeatStep === "your_turn"
+          ? /(i\s*repeated|repeated|done|ok|okay|again|repeat|xong)/i.test(textTrim)
+          : false;
 
-      // Commands should not consume AI quota (but can still respond)
       const isCommand = lower.startsWith("/");
 
       clearTypingTimer();
       setIsTyping(true);
 
-      // Micro-timing: shorter for repeat acknowledgements, longer for normal replies
       const delayMs = looksLikeRepeatAck ? 220 : 520;
 
       typingTimerRef.current = window.setTimeout(async () => {
         setIsTyping(false);
         typingTimerRef.current = null;
 
-        // 1) Repeat ACK has priority (STRICT + local)
         const ack = tryAcknowledgeRepeat ? tryAcknowledgeRepeat(userText) : null;
         if (ack?.handled) {
-          // Calm praise rotation (one sentence)
           addMsg("assistant", pickPraise());
 
-          // After praise, give next micro-instruction if still in repeat mode (small breath)
           if (repeatTarget) {
             const follow = bi(
               repeatCount + 1 >= 3 ? "Good. You can move on." : "Now listen once more, then repeat.",
-              repeatCount + 1 >= 3 ? "Tốt. Bạn có thể chuyển sang câu tiếp theo." : "Giờ nghe lại một lần, rồi nói lại.",
+              repeatCount + 1 >= 3
+                ? "Tốt. Bạn có thể chuyển sang câu tiếp theo."
+                : "Giờ nghe lại một lần, rồi nói lại.",
             );
             scheduleAssistantMsg(follow, 600);
           }
@@ -1583,9 +1591,6 @@ export default function MercyAIHost() {
           return;
         }
 
-        // 2) AI brain path (only when it truly helps)
-        //    Quota is checked BEFORE calling AI,
-        //    and ONLY consumed AFTER we successfully get a usable aiText.
         const wantsAi = !isCommand && shouldUseAiBrain(textTrim);
         if (wantsAi) {
           const shouldCount = shouldCountAsAiMessage(textTrim, currentMode);
@@ -1606,15 +1611,17 @@ export default function MercyAIHost() {
               return;
             }
           } catch {
-            // fall through to deterministic reply (no quota consumed)
+            // fall through
           }
         }
 
-        // 3) Deterministic reply (pure)
         if (typeof makeReplyFn !== "function") {
           addMsg(
             "assistant",
-            bi("Host is in a bad state (makeReply). Please refresh (Cmd+R).", "Host đang lỗi (makeReply). Bạn refresh trang (Cmd+R) giúp mình nhé."),
+            bi(
+              "Host is in a bad state (makeReply). Please refresh (Cmd+R).",
+              "Host đang lỗi (makeReply). Bạn refresh trang (Cmd+R) giúp mình nhé.",
+            ),
           );
           return;
         }
@@ -1631,15 +1638,10 @@ export default function MercyAIHost() {
           appKey,
           contextLine,
           headerSubtitle,
-
-          // Optional: deterministic summary (safe to ignore in makeReply)
           chatSummary: rollingSummary,
-
           repeatTarget,
           repeatStep,
           repeatCount,
-
-          // mini test state (local)
           testActive,
           testStep,
           testScore,
@@ -1648,8 +1650,6 @@ export default function MercyAIHost() {
             if (typeof next.step === "number") setTestStep(next.step as 0 | 1 | 2 | 3);
             if (typeof next.score === "number") setTestScore(next.score);
           },
-
-          // optional hooks for side effects (safe)
           onSetRepeatStep: (s: any) => setRepeatStep(s),
           onTriggerHeart: (k: any) => triggerHeart(String(k)),
           onClearHeart: () => clearHeart(),
@@ -1699,14 +1699,14 @@ export default function MercyAIHost() {
   const openPanel = useCallback(() => {
     setOpen(true);
 
-    // Seed first message (welcome)
     const wasEmpty = messages.length === 0;
     seedIfEmpty(mode);
 
-    // Speak the first welcome immediately (for the “teacher enters the room” feel).
-    // NOTE: Most browsers require a user gesture; this is called by a click, so it should work.
     if (wasEmpty) {
-      const first = mode === "home" ? baseAssistantHome : bi(`Hi. Ask me anything about ${mode}.`, `Chào. Hỏi mình về ${mode}.`);
+      const first =
+        mode === "home"
+          ? baseAssistantHome
+          : bi(`Hi. Ask me anything about ${mode}.`, `Chào. Hỏi mình về ${mode}.`);
       window.setTimeout(() => {
         maybeSpeakAssistant(first);
       }, 60);
@@ -1719,7 +1719,6 @@ export default function MercyAIHost() {
     clearRepeatNudgeTimer();
     setIsTyping(false);
 
-    // Stop both app voice (if any) and browser fallback voice
     stopVoice?.();
     stopBrowserTTS();
   }, [clearTypingTimer, clearRepeatNudgeTimer, stopVoice]);
@@ -1731,11 +1730,9 @@ export default function MercyAIHost() {
     setDraft("");
     addMsg("user", text);
 
-    // Small command routing (keep simple + local)
     const lower = text.toLowerCase().trim();
     if (lower === "/tiers") {
       goTiers();
-      // Deterministic acknowledgement (no AI quota)
       addMsg("assistant", bi("OK. Opening /tiers.", "OK. Mở trang /tiers."));
       return;
     }
@@ -1744,7 +1741,6 @@ export default function MercyAIHost() {
     if (lower === "/about") setMode("about");
     if (lower === "/home") setMode("home");
 
-    // Optional: allow clearing repeat without extra UI buttons (keeps “one action button” in repeat card)
     if (lower === "/repeat clear") {
       clearRepeat();
       addMsg("assistant", bi("Repeat cleared.", "Đã xóa repeat."));
@@ -1768,10 +1764,6 @@ export default function MercyAIHost() {
     [onSend, closePanel],
   );
 
-  /* =========================
-     Quick actions
-     - MUST match host/buildActions.ts API
-  ========================= */
   const actions = useHostActions({
     lang,
     onGoTiers: goTiers,
@@ -1794,10 +1786,8 @@ export default function MercyAIHost() {
     speak,
   });
 
-  // ✅ HARDEN: never crash if hook returns non-array (dev/HMR/state mismatch)
   const safeActions = Array.isArray(actions) ? actions : [];
 
-  // Some branches have useDevHostState typed as 0-arg. Keep prod behavior but silence TS.
   (useDevHostState as any)({
     open,
     mode,
@@ -1832,9 +1822,6 @@ export default function MercyAIHost() {
   const fontStack =
     'ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"';
 
-  // “One next-action button” contract for repeatTarget card:
-  // - We keep header controls (close/lang/voice) globally.
-  // - Inside the repeat card itself, we render exactly ONE primary action button.
   const repeatPrimaryAction = useMemo(() => {
     if (!repeatTarget) return null;
 
@@ -1847,7 +1834,6 @@ export default function MercyAIHost() {
         label: "Play",
         onClick: () => {
           if (hasAudio) requestPlayRepeat();
-          // Move to your_turn even if audio is missing; user can still practice.
           setRepeatStep("your_turn");
         },
       };
@@ -1858,20 +1844,23 @@ export default function MercyAIHost() {
         id: "ack",
         label: lang === "vi" ? "Tôi đã nhại lại" : "I repeated it",
         onClick: () => {
-          // Deterministic ack (no AI quota).
           const userText = "ok";
           addMsg("user", userText);
           assistantRespond(userText, mode);
-          // After ack, go to compare step for a brief loop
           setRepeatStep("compare");
         },
       };
     }
 
-    // compare or idle: play again if possible, else go back to your_turn
     return {
       id: "again",
-      label: hasAudio ? (lang === "vi" ? "Nghe lại" : "Play again") : lang === "vi" ? "Đến lượt tôi" : "My turn",
+      label: hasAudio
+        ? lang === "vi"
+          ? "Nghe lại"
+          : "Play again"
+        : lang === "vi"
+          ? "Đến lượt tôi"
+          : "My turn",
       onClick: () => {
         if (hasAudio) requestPlayRepeat();
         setRepeatStep("your_turn");
@@ -1902,7 +1891,6 @@ export default function MercyAIHost() {
     color: "rgba(0,0,0,0.78)",
   } as React.CSSProperties;
 
-  // ✅ closed state must not cover the screen (so OAuth buttons work)
   const ui = open ? (
     <div
       data-mb-host="true"
@@ -1913,7 +1901,6 @@ export default function MercyAIHost() {
         fontFamily: fontStack,
       }}
     >
-      {/* ✅ HeartBurst (inline, no portal) */}
       {heartBurst ? (
         <div
           data-mb-host-heartwrap
@@ -1968,7 +1955,6 @@ export default function MercyAIHost() {
         </div>
       ) : null}
 
-      {/* Backdrop (click to close) */}
       <div
         onMouseDown={closePanel}
         aria-hidden="true"
@@ -1979,7 +1965,6 @@ export default function MercyAIHost() {
         }}
       />
 
-      {/* Dock */}
       <div style={{ position: "fixed", right: 24, bottom: 24 }}>
         <div
           role="dialog"
@@ -1999,7 +1984,6 @@ export default function MercyAIHost() {
             flexDirection: "column",
           }}
         >
-          {/* Header */}
           <div
             style={{
               display: "flex",
@@ -2025,7 +2009,9 @@ export default function MercyAIHost() {
                 }}
                 aria-hidden="true"
               >
-                <TalkingFaceIcon size={44} isTalking={isTyping} />
+                <Suspense fallback={<FaceFallback size={44} />}>
+                  <TalkingFaceIcon size={44} isTalking={isTyping} />
+                </Suspense>
               </div>
 
               <div style={{ lineHeight: 1.15, minWidth: 0 }}>
@@ -2066,11 +2052,18 @@ export default function MercyAIHost() {
             </div>
 
             <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-              {/* Auto voice toggle */}
               <button
                 type="button"
                 onClick={toggleAutoVoice}
-                title={autoVoice ? (lang === "vi" ? "Tắt giọng" : "Mute voice") : lang === "vi" ? "Bật giọng" : "Enable voice"}
+                title={
+                  autoVoice
+                    ? lang === "vi"
+                      ? "Tắt giọng"
+                      : "Mute voice"
+                    : lang === "vi"
+                      ? "Bật giọng"
+                      : "Enable voice"
+                }
                 style={{
                   border: "1px solid rgba(0,0,0,0.10)",
                   background: "#fff",
@@ -2086,7 +2079,6 @@ export default function MercyAIHost() {
                 {autoVoice ? "🔊" : "🔇"}
               </button>
 
-              {/* Stop voice (always cancels browser TTS too) */}
               {hasAnyVoice ? (
                 <button
                   type="button"
@@ -2161,7 +2153,6 @@ export default function MercyAIHost() {
             </div>
           </div>
 
-          {/* Body */}
           <div
             ref={scrollRef}
             style={{
@@ -2172,7 +2163,6 @@ export default function MercyAIHost() {
               minHeight: 0,
             }}
           >
-            {/* Repeat card */}
             {repeatTarget && repeatCoach ? (
               <div
                 style={{
@@ -2183,10 +2173,13 @@ export default function MercyAIHost() {
                   marginBottom: 12,
                 }}
               >
-                {/* 3-line Host contract: calm line, goal line, micro-instruction */}
-                <div style={{ fontSize: 12, fontWeight: 800, color: "#111" }}>{repeatCoach.calmLine}</div>
+                <div style={{ fontSize: 12, fontWeight: 800, color: "#111" }}>
+                  {repeatCoach.calmLine}
+                </div>
 
-                <div style={{ fontSize: 11, color: "rgba(0,0,0,0.70)", marginTop: 6 }}>{repeatCoach.goal}</div>
+                <div style={{ fontSize: 11, color: "rgba(0,0,0,0.70)", marginTop: 6 }}>
+                  {repeatCoach.goal}
+                </div>
 
                 <div style={{ fontSize: 11, color: "rgba(0,0,0,0.60)", marginTop: 6 }}>
                   {repeatCoach.micro}
@@ -2196,20 +2189,42 @@ export default function MercyAIHost() {
                 </div>
 
                 {repeatCoach.showEn ? (
-                  <div style={{ marginTop: 10, fontSize: 12, fontWeight: 700, color: "#111", whiteSpace: "pre-line" }}>
+                  <div
+                    style={{
+                      marginTop: 10,
+                      fontSize: 12,
+                      fontWeight: 700,
+                      color: "#111",
+                      whiteSpace: "pre-line",
+                    }}
+                  >
                     {repeatCoach.showEn}
                   </div>
                 ) : null}
 
                 {repeatCoach.showVi ? (
-                  <div style={{ marginTop: 6, fontSize: 12, color: "rgba(0,0,0,0.78)", whiteSpace: "pre-line" }}>
+                  <div
+                    style={{
+                      marginTop: 6,
+                      fontSize: 12,
+                      color: "rgba(0,0,0,0.78)",
+                      whiteSpace: "pre-line",
+                    }}
+                  >
                     {repeatCoach.showVi}
                   </div>
                 ) : null}
 
-                {/* Exactly ONE next-action button */}
                 {repeatPrimaryAction ? (
-                  <div style={{ marginTop: 12, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
+                  <div
+                    style={{
+                      marginTop: 12,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      gap: 10,
+                    }}
+                  >
                     <button
                       type="button"
                       onClick={repeatPrimaryAction.onClick}
@@ -2227,18 +2242,29 @@ export default function MercyAIHost() {
                         gap: 8,
                       }}
                     >
-                      {/* Small face motif near play actions */}
                       {repeatPrimaryAction.id === "play" || repeatPrimaryAction.id === "again" ? (
-                        <span aria-hidden="true" style={{ display: "inline-flex", alignItems: "center" }}>
-                          <TalkingFaceIcon size={18} isTalking={false} />
+                        <span
+                          aria-hidden="true"
+                          style={{ display: "inline-flex", alignItems: "center" }}
+                        >
+                          <Suspense fallback={<FaceFallback size={18} />}>
+                            <TalkingFaceIcon size={18} isTalking={false} />
+                          </Suspense>
                         </span>
                       ) : null}
                       {repeatPrimaryAction.label}
                     </button>
 
-                    {/* Quiet rescue hint (no extra buttons) */}
-                    <div style={{ fontSize: 11, color: "rgba(0,0,0,0.55)", textAlign: "right" }}>
-                      {lang === "vi" ? "Gõ /repeat clear để xóa." : "Type /repeat clear to clear."}
+                    <div
+                      style={{
+                        fontSize: 11,
+                        color: "rgba(0,0,0,0.55)",
+                        textAlign: "right",
+                      }}
+                    >
+                      {lang === "vi"
+                        ? "Gõ /repeat clear để xóa."
+                        : "Type /repeat clear to clear."}
                     </div>
                   </div>
                 ) : null}
@@ -2275,13 +2301,22 @@ export default function MercyAIHost() {
                     {m.text}
                   </div>
 
-                  {/* Feedback UI (assistant messages only) */}
                   {!isUser ? (
-                    <div style={{ marginTop: 6, display: "flex", flexDirection: "column", gap: 6, maxWidth: "86%" }}>
+                    <div
+                      style={{
+                        marginTop: 6,
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: 6,
+                        maxWidth: "86%",
+                      }}
+                    >
                       <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                         <button
                           type="button"
-                          onClick={() => setFeedbackForMsg({ msgId: m.id, vote: "up", assistantText: m.text })}
+                          onClick={() =>
+                            setFeedbackForMsg({ msgId: m.id, vote: "up", assistantText: m.text })
+                          }
                           title={lang === "vi" ? "Hữu ích" : "Helpful"}
                           style={{
                             borderRadius: 999,
@@ -2299,7 +2334,9 @@ export default function MercyAIHost() {
 
                         <button
                           type="button"
-                          onClick={() => setFeedbackForMsg({ msgId: m.id, vote: "down", assistantText: m.text })}
+                          onClick={() =>
+                            setFeedbackForMsg({ msgId: m.id, vote: "down", assistantText: m.text })
+                          }
                           title={lang === "vi" ? "Không hữu ích" : "Not helpful"}
                           style={{
                             borderRadius: 999,
@@ -2316,9 +2353,13 @@ export default function MercyAIHost() {
                         </button>
 
                         {fb?.vote ? (
-                          <div style={{ fontSize: 11, color: "rgba(0,0,0,0.55)" }}>{lang === "vi" ? "Cảm ơn." : "Thanks."}</div>
+                          <div style={{ fontSize: 11, color: "rgba(0,0,0,0.55)" }}>
+                            {lang === "vi" ? "Cảm ơn." : "Thanks."}
+                          </div>
                         ) : (
-                          <div style={{ fontSize: 11, color: "rgba(0,0,0,0.45)" }}>{lang === "vi" ? "Phản hồi" : "Feedback"}</div>
+                          <div style={{ fontSize: 11, color: "rgba(0,0,0,0.45)" }}>
+                            {lang === "vi" ? "Phản hồi" : "Feedback"}
+                          </div>
                         )}
                       </div>
 
@@ -2331,7 +2372,14 @@ export default function MercyAIHost() {
                               <button
                                 key={r.id}
                                 type="button"
-                                onClick={() => setFeedbackForMsg({ msgId: m.id, vote: fb!.vote, reason: r.id, assistantText: m.text })}
+                                onClick={() =>
+                                  setFeedbackForMsg({
+                                    msgId: m.id,
+                                    vote: fb!.vote,
+                                    reason: r.id,
+                                    assistantText: m.text,
+                                  })
+                                }
                                 style={{
                                   ...chipStyle,
                                   background: active ? "rgba(0,0,0,0.08)" : "#fff",
@@ -2365,12 +2413,13 @@ export default function MercyAIHost() {
                     color: "rgba(0,0,0,0.70)",
                   }}
                 >
-                  <TypingIndicator />
+                  <Suspense fallback={<div style={{ fontSize: 12 }}>...</div>}>
+                    <TypingIndicator />
+                  </Suspense>
                 </div>
               </div>
             ) : null}
 
-            {/* Quick actions */}
             <div style={{ marginTop: 12, display: "flex", flexWrap: "wrap", gap: 8 }}>
               {safeActions.map((a: any) => (
                 <button
@@ -2401,16 +2450,29 @@ export default function MercyAIHost() {
                 padding: 12,
               }}
             >
-              <div style={{ fontSize: 11, fontWeight: 700, color: "rgba(0,0,0,0.70)" }}>{lang === "vi" ? "Gợi ý nhanh" : "Care loop"}</div>
-              <div style={{ fontSize: 11, color: "rgba(0,0,0,0.60)", marginTop: 6 }}>
+              <div
+                style={{
+                  fontSize: 11,
+                  fontWeight: 700,
+                  color: "rgba(0,0,0,0.70)",
+                }}
+              >
+                {lang === "vi" ? "Gợi ý nhanh" : "Care loop"}
+              </div>
+              <div
+                style={{
+                  fontSize: 11,
+                  color: "rgba(0,0,0,0.60)",
+                  marginTop: 6,
+                }}
+              >
                 {lang === "vi"
-                  ? `Gợi ý: gõ “fix grammar:” để sửa ngữ pháp. Luyện phát âm (đọc to và được góp ý) sẽ có sớm. Nếu muốn mở gói, vào /tiers.`
-                  : `Tip: type “fix grammar:” to correct grammar. Pronunciation coaching (read aloud + corrections) is coming soon. For plans, go to /tiers.`}
+                  ? "Gợi ý: gõ “fix grammar:” để sửa ngữ pháp. Luyện phát âm (đọc to và được góp ý) sẽ có sớm. Nếu muốn mở gói, vào /tiers."
+                  : "Tip: type “fix grammar:” to correct grammar. Pronunciation coaching (read aloud + corrections) is coming soon. For plans, go to /tiers."}
               </div>
             </div>
           </div>
 
-          {/* Input bar */}
           <div
             style={{
               borderTop: "1px solid rgba(0,0,0,0.10)",
@@ -2435,7 +2497,11 @@ export default function MercyAIHost() {
                 value={draft}
                 onChange={(e) => setDraft(e.target.value)}
                 onKeyDown={onInputKeyDown}
-                placeholder={lang === "vi" ? "Gõ ở đây… (Enter để gửi, Shift+Enter xuống dòng)" : "Type here… (Enter to send, Shift+Enter newline)"}
+                placeholder={
+                  lang === "vi"
+                    ? "Gõ ở đây… (Enter để gửi, Shift+Enter xuống dòng)"
+                    : "Type here… (Enter to send, Shift+Enter newline)"
+                }
                 rows={1}
                 style={{
                   width: "100%",
@@ -2501,12 +2567,13 @@ export default function MercyAIHost() {
           cursor: "pointer",
         }}
       >
-        <TalkingFaceIcon size={78} isTalking={false} />
+        <Suspense fallback={<FaceFallback size={78} />}>
+          <TalkingFaceIcon size={78} isTalking={false} />
+        </Suspense>
       </button>
     </div>
   );
 
-  // ✅ FINAL GUARD: must be AFTER all hooks (prevents hook-order mismatch on mount/admin/SSR)
   if (!mounted || !isBrowser) return null;
   if (isAdmin) return null;
 

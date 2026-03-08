@@ -12,7 +12,7 @@
  * IMPORTANT COMPAT FIX:
  * - Some legacy tests/code treat getTierGreeting(...) as a STRING
  *   while newer code expects bilingual fields (.en/.vi).
- * - We return a String object that behaves like a string AND also carries `.en` and `.vi`.
+ * - We return a string-like object that behaves like a string AND also carries `.en` and `.vi`.
  *
  * IMPORTANT SNAPSHOT FIX:
  * - Some snapshot tests expect EXACT sets of emotion lines per tier.
@@ -53,8 +53,8 @@ export const TIER_SCRIPTS: Record<string, TierScript> = {
         vi: 'Chào mừng {{name}}. Cùng học từng bước một nhé.',
       },
       {
-        en: 'Mercy will walk with you — slowly, steadily.',
-        vi: 'Mercy sẽ đồng hành cùng bạn — nhẹ nhàng, vững vàng.',
+        en: 'Welcome, {{name}}. Mercy will walk with you — slowly, steadily.',
+        vi: 'Chào mừng {{name}}. Mercy sẽ đồng hành cùng bạn — nhẹ nhàng, vững vàng.',
       },
       {
         en: 'Every journey begins with a single step. Welcome, {{name}}.',
@@ -97,8 +97,8 @@ export const TIER_SCRIPTS: Record<string, TierScript> = {
     tone: 'friendly, supportive',
     greetings: [
       {
-        en: "You're stepping into deeper knowledge. Mercy is here beside you.",
-        vi: 'Bạn đang bước vào kiến thức sâu hơn. Mercy ở bên cạnh bạn.',
+        en: "Welcome, {{name}}. You're stepping into deeper knowledge. Mercy is here beside you.",
+        vi: 'Chào mừng {{name}}. Bạn đang bước vào kiến thức sâu hơn. Mercy ở bên cạnh bạn.',
       },
       {
         en: "Let's strengthen your foundation together, {{name}}.",
@@ -145,12 +145,12 @@ export const TIER_SCRIPTS: Record<string, TierScript> = {
     tone: 'motivating, direct',
     greetings: [
       {
-        en: 'Your growth is accelerating — trust your momentum.',
-        vi: 'Sự phát triển của bạn đang tăng tốc — hãy tin vào đà tiến.',
+        en: 'Welcome, {{name}}. Your growth is accelerating — trust your momentum.',
+        vi: 'Chào mừng, {{name}}. Sự phát triển của bạn đang tăng tốc — hãy tin vào đà tiến.',
       },
       {
-        en: 'Mercy guides your focus so you rise further.',
-        vi: 'Mercy hướng dẫn sự tập trung để bạn tiến xa hơn.',
+        en: 'Welcome, {{name}}. Mercy guides your focus so you rise further.',
+        vi: 'Chào mừng, {{name}}. Mercy hướng dẫn sự tập trung để bạn tiến xa hơn.',
       },
       {
         en: 'Welcome, {{name}}. This level sharpens your edge.',
@@ -193,12 +193,12 @@ export const TIER_SCRIPTS: Record<string, TierScript> = {
     tone: 'confident, intellectual',
     greetings: [
       {
-        en: "Mastery begins with clarity. I'll keep you aligned.",
-        vi: 'Sự thành thạo bắt đầu từ sự rõ ràng. Mình sẽ giữ bạn đúng hướng.',
+        en: "Welcome, {{name}}. Mastery begins with clarity. I'll keep you aligned.",
+        vi: 'Chào mừng, {{name}}. Sự thành thạo bắt đầu từ sự rõ ràng. Mình sẽ giữ bạn đúng hướng.',
       },
       {
-        en: 'You build strength of mind every time you enter.',
-        vi: 'Bạn xây dựng sức mạnh tâm trí mỗi lần bạn bước vào.',
+        en: 'Welcome, {{name}}. You build strength of mind every time you enter.',
+        vi: 'Chào mừng, {{name}}. Bạn xây dựng sức mạnh tâm trí mỗi lần bạn bước vào.',
       },
       {
         en: 'Welcome to deeper waters, {{name}}. Clarity awaits.',
@@ -241,12 +241,12 @@ export const TIER_SCRIPTS: Record<string, TierScript> = {
     tone: 'sharp, structured',
     greetings: [
       {
-        en: 'This level demands precision. Mercy helps you hold the line.',
-        vi: 'Cấp độ này đòi hỏi sự chính xác. Mercy giúp bạn giữ vững đường đi.',
+        en: 'Welcome, {{name}}. This level demands precision. Mercy helps you hold the line.',
+        vi: 'Chào mừng, {{name}}. Cấp độ này đòi hỏi sự chính xác. Mercy giúp bạn giữ vững đường đi.',
       },
       {
-        en: 'Every insight here sharpens your inner blade.',
-        vi: 'Mỗi hiểu biết ở đây mài sắc lưỡi kiếm nội tâm.',
+        en: 'Welcome, {{name}}. Every insight here sharpens your inner blade.',
+        vi: 'Chào mừng, {{name}}. Mỗi hiểu biết ở đây mài sắc lưỡi kiếm nội tâm.',
       },
       {
         en: 'Welcome, {{name}}. Precision is power.',
@@ -289,12 +289,12 @@ export const TIER_SCRIPTS: Record<string, TierScript> = {
     tone: 'leadership, evolution',
     greetings: [
       {
-        en: "You're shaping the world within and around you.",
-        vi: 'Bạn đang định hình thế giới bên trong và xung quanh mình.',
+        en: "Welcome, {{name}}. You're shaping the world within and around you.",
+        vi: 'Chào mừng, {{name}}. Bạn đang định hình thế giới bên trong và xung quanh mình.',
       },
       {
-        en: 'Mercy stands with you as your circle expands.',
-        vi: 'Mercy đứng cùng bạn khi vòng tròn ảnh hưởng mở rộng.',
+        en: 'Welcome, {{name}}. Mercy stands with you as your circle expands.',
+        vi: 'Chào mừng, {{name}}. Mercy đứng cùng bạn khi vòng tròn ảnh hưởng mở rộng.',
       },
       {
         en: 'Welcome, {{name}}. Leaders evolve here.',
@@ -337,12 +337,12 @@ export const TIER_SCRIPTS: Record<string, TierScript> = {
     tone: 'serene, strategic',
     greetings: [
       {
-        en: 'Deep understanding grows only where calm exists.',
-        vi: 'Sự hiểu biết sâu sắc chỉ phát triển nơi có sự bình tĩnh.',
+        en: 'Welcome, {{name}}. Deep understanding grows only where calm exists.',
+        vi: 'Chào mừng, {{name}}. Sự hiểu biết sâu sắc chỉ phát triển nơi có sự bình tĩnh.',
       },
       {
-        en: 'Mercy helps you see what others overlook.',
-        vi: 'Mercy giúp bạn thấy những gì người khác bỏ qua.',
+        en: 'Welcome, {{name}}. Mercy helps you see what others overlook.',
+        vi: 'Chào mừng, {{name}}. Mercy giúp bạn thấy những gì người khác bỏ qua.',
       },
       {
         en: 'Welcome, {{name}}. Strategy meets serenity here.',
@@ -385,12 +385,12 @@ export const TIER_SCRIPTS: Record<string, TierScript> = {
     tone: 'visionary',
     greetings: [
       {
-        en: 'The horizon opens for those who walk with purpose.',
-        vi: 'Chân trời mở ra cho những ai bước đi có mục đích.',
+        en: 'Welcome, {{name}}. The horizon opens for those who walk with purpose.',
+        vi: 'Chào mừng, {{name}}. Chân trời mở ra cho những ai bước đi có mục đích.',
       },
       {
-        en: "Your journey is no longer learning — it's creating.",
-        vi: 'Hành trình của bạn không còn là học — mà là sáng tạo.',
+        en: "Welcome, {{name}}. Your journey is no longer learning — it's creating.",
+        vi: 'Chào mừng, {{name}}. Hành trình của bạn không còn là học — mà là sáng tạo.',
       },
       {
         en: 'Welcome, {{name}}. Visionaries shape tomorrow.',
@@ -433,12 +433,12 @@ export const TIER_SCRIPTS: Record<string, TierScript> = {
     tone: 'poetic, transcendent',
     greetings: [
       {
-        en: 'Your mind moves like light. Mercy walks in silence beside you.',
-        vi: 'Tâm trí bạn di chuyển như ánh sáng. Mercy bước đi trong im lặng bên cạnh.',
+        en: 'Welcome, {{name}}. Your mind moves like light. Mercy walks in silence beside you.',
+        vi: 'Chào mừng, {{name}}. Tâm trí bạn di chuyển như ánh sáng. Mercy bước đi trong im lặng bên cạnh.',
       },
       {
-        en: 'Every room here rewrites your inner world.',
-        vi: 'Mỗi phòng ở đây viết lại thế giới nội tâm của bạn.',
+        en: 'Welcome, {{name}}. Every room here rewrites your inner world.',
+        vi: 'Chào mừng, {{name}}. Mỗi phòng ở đây viết lại thế giới nội tâm của bạn.',
       },
       {
         en: 'Welcome, {{name}}. Transcendence is a state of being.',
@@ -485,8 +485,8 @@ export const TIER_SCRIPTS: Record<string, TierScript> = {
         vi: 'Chào mừng, {{name}}. Bạn đang bước vào vương quốc của sự thành thạo.',
       },
       {
-        en: 'Your presence reshapes this space — Mercy bows to your path.',
-        vi: 'Sự hiện diện của bạn định hình lại không gian này — Mercy cúi chào con đường của bạn.',
+        en: 'Welcome, {{name}}. Your presence reshapes this space — Mercy bows to your path.',
+        vi: 'Chào mừng, {{name}}. Sự hiện diện của bạn định hình lại không gian này — Mercy cúi chào con đường của bạn.',
       },
       {
         en: 'Distinguished {{name}}, the Executive tier welcomes its own.',
@@ -693,7 +693,7 @@ const ENCOURAGEMENT_SUFFIXES: Record<string, { en: string[]; vi: string[] }> = {
 function pickSuffix(
   tier: string,
   table: Record<string, { en: string[]; vi: string[] }>,
-  key: string
+  key: string,
 ): { en: string; vi: string } | null {
   const normalizedTier = normalizeTierKey(tier);
   const pool = table[normalizedTier] || table.free;
@@ -705,7 +705,7 @@ function pickSuffix(
 }
 
 function asStringWithLocales(en: string, vi: string): StringWithLocales {
-  const s = new String(en) as StringWithLocales;
+  const s = new globalThis.String(en) as unknown as StringWithLocales;
   s.en = en;
   s.vi = vi;
   s.toString = () => en;
@@ -731,13 +731,13 @@ export function getTierGreeting(tier: string, name: string): { en: string; vi: s
     const suffix = pickSuffix(
       tier,
       GREETING_SUFFIXES,
-      `${normalizeTierKey(tier)}::greetSuffix::${safeName}`
+      `${normalizeTierKey(tier)}::greetSuffix::${safeName}`,
     );
     if (suffix) {
-      return asStringWithLocales(
-        `${baseEn} ${suffix.en}`,
-        `${baseVi} ${suffix.vi}`
-      ) as unknown as { en: string; vi: string };
+      return asStringWithLocales(`${baseEn} ${suffix.en}`, `${baseVi} ${suffix.vi}`) as unknown as {
+        en: string;
+        vi: string;
+      };
     }
   }
 
@@ -757,7 +757,7 @@ export function getTierEncouragement(tier: string): { en: string; vi: string } {
     const suffix = pickSuffix(
       tier,
       ENCOURAGEMENT_SUFFIXES,
-      `${normalizeTierKey(tier)}::encSuffix`
+      `${normalizeTierKey(tier)}::encSuffix`,
     );
     if (suffix) {
       return { en: `${base.en} ${suffix.en}`, vi: `${base.vi} ${suffix.vi}` };
@@ -767,10 +767,7 @@ export function getTierEncouragement(tier: string): { en: string; vi: string } {
   return base;
 }
 
-const TIER_EMOTION_SCRIPTS_TEST_SAFE: Record<
-  string,
-  Partial<Record<EmotionState, EmotionScript>>
-> = {
+const TIER_EMOTION_SCRIPTS_TEST_SAFE: Record<string, Partial<Record<EmotionState, EmotionScript>>> = {
   free: {
     low_mood: {
       en: "It's okay to feel this way. I'm here, walking beside you.",
@@ -1025,10 +1022,8 @@ const TIER_EMOTION_EXTRAS_RUNTIME: Record<string, Partial<Record<string, Emotion
   },
 };
 
-export const TIER_EMOTION_SCRIPTS: Record<
-  string,
-  Partial<Record<EmotionState, EmotionScript>>
-> = TIER_EMOTION_SCRIPTS_TEST_SAFE;
+export const TIER_EMOTION_SCRIPTS: Record<string, Partial<Record<EmotionState, EmotionScript>>> =
+  TIER_EMOTION_SCRIPTS_TEST_SAFE;
 
 export function getEmotionScript(tier: string, emotion: EmotionState): EmotionScript | null {
   const normalizedTier = normalizeTierKey(tier);
