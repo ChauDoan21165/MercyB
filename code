@@ -9,20 +9,17 @@ import { MercyGuide } from "@/components/MercyGuide";
 
 interface AppShellProps {
   children: React.ReactNode;
-  /** Custom bottom bar content */
   bottomBar?: React.ReactNode;
-  /** If true, hides the global header (for pages with custom headers) */
   hideHeader?: boolean;
-  /** Custom class for main content area */
   mainClassName?: string;
 }
 
 /**
  * AppShell - Centered layout container for room pages
  *
- * - Single "Mercy Blade" logo in header (no duplicates)
- * - max-width: 980px centered content (CANONICAL)
- * - 2-row bottom bar: Row 1 controls, Row 2 audio
+ * - Single "Mercy Blade" logo in header
+ * - Canonical 980px centered content frame
+ * - Defensive clamp for room renderers
  */
 export function AppShell({
   children,
@@ -31,14 +28,12 @@ export function AppShell({
   mainClassName = "",
 }: AppShellProps) {
   return (
-    <div className="min-h-screen flex flex-col bg-background">
-      {/* UNIVERSAL WIDTH CLAMP:
-          Anything rendered under AppShell must respect the same frame as Home.
-          Rooms are especially defensive-clamped here (data-mb-scope="room"). */}
+    <div className="relative min-h-screen flex flex-col bg-background">
       <style>{`
         :root{
           --mb-page-max: 980px;
         }
+
         [data-mb-frame]{
           width: 100%;
           max-width: var(--mb-page-max);
@@ -46,13 +41,13 @@ export function AppShell({
           margin-right: auto;
         }
 
-        /* Hard clamp for RoomRenderer scopes (prevents “escaped” max-width/100vw layouts) */
         [data-mb-frame] [data-mb-scope="room"]{
           width: 100% !important;
           max-width: 100% !important;
           margin-left: 0 !important;
           margin-right: 0 !important;
         }
+
         [data-mb-frame] [data-mb-scope="room"] [data-room-box]{
           width: 100% !important;
           max-width: 100% !important;
@@ -63,28 +58,24 @@ export function AppShell({
 
       {!hideHeader && (
         <header className="sticky top-0 z-40 w-full border-b border-border/40 bg-background/80 backdrop-blur-sm">
-          <div className="mx-auto max-w-[980px] h-12 px-4 grid grid-cols-[auto,1fr,auto] items-center">
-            {/* Left: navigation */}
+          <div className="mx-auto grid h-12 max-w-[980px] grid-cols-[auto,1fr,auto] items-center px-4">
             <div className="flex items-center gap-2">
               <HomeButton />
               <BackButton />
             </div>
 
-            {/* Center: Mercy Blade logo - perfectly centered in column 2 */}
             <div className="flex justify-center">
               <Link
                 to="/"
-                className="font-semibold text-lg tracking-tight bg-gradient-to-r from-[hsl(var(--rainbow-magenta))] via-[hsl(var(--rainbow-purple))] to-[hsl(var(--rainbow-cyan))] bg-clip-text text-transparent hover:opacity-80 transition-opacity"
+                className="bg-gradient-to-r from-[hsl(var(--rainbow-magenta))] via-[hsl(var(--rainbow-purple))] to-[hsl(var(--rainbow-cyan))] bg-clip-text text-lg font-semibold tracking-tight text-transparent transition-opacity hover:opacity-80"
               >
                 Mercy Blade
               </Link>
             </div>
 
-            {/* Right: controls */}
-            <div className="flex items-center gap-2 justify-end">
+            <div className="flex items-center justify-end gap-2">
               <ThemeToggle />
               <Button variant="ghost" size="sm" className="h-8 w-8 p-0" asChild>
-                {/* FIX: Tier Map page is /tiers (not /tier-map) */}
                 <Link to="/tiers" title="Tier Map" aria-label="Tier Map">
                   <Map className="h-4 w-4" />
                 </Link>
@@ -94,25 +85,19 @@ export function AppShell({
         </header>
       )}
 
-      {/* Main content - UNIVERSAL canonical frame */}
       <main className={`flex-1 ${mainClassName}`}>
         <div data-mb-frame className="px-4 py-4">
           {children}
         </div>
       </main>
 
-      {/* Bottom bar - stays as-is (it can be fixed-position / full width if needed) */}
       {bottomBar}
 
-      {/* Mercy Guide assistant */}
       <MercyGuide />
     </div>
   );
 }
 
-/**
- * AppShellContent - For pages using global header but wanting centered content
- */
 export function AppShellContent({
   children,
   className = "",
