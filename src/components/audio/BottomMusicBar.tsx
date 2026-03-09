@@ -24,7 +24,7 @@
 // - ✅ Emits "mb-zoom-change" event on same-tab zoom updates (for live sync consumers).
 //
 // PATCH (2026-03-08c):
-// - Auto-load .mp3 files from src/assets/music via import.meta.glob.
+// - Auto-load audio files from src/assets/music via import.meta.glob.
 // - No manual tracks array editing needed for each new song.
 //
 // PATCH (2026-03-08d):
@@ -32,6 +32,11 @@
 // - Favorites tab is heart-only (no word).
 // - Songs favorited via right-side current-track heart appear in the Favorites list.
 // - If Favorites is empty, dropdown safely falls back to All instead of going blank.
+//
+// PATCH (2026-03-08e):
+// - Keep auto-load behavior while fixing simplified UI regression.
+// - Preserve duplicate variants like "(1)" "(2)" in visible titles so all files appear distinctly.
+// - Tweak favorite-tab active styling to be clearer and less “old UI” looking.
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -203,11 +208,7 @@ function TalkingFaceIcon({ playing }: { playing: boolean }) {
 
 function normalizeTrackTitle(fileName: string) {
   const noExt = fileName.replace(/\.[^/.]+$/, "");
-  return noExt
-    .replace(/[_-]+/g, " ")
-    .replace(/\s+/g, " ")
-    .replace(/\(\d+\)/g, "")
-    .trim();
+  return noExt.replace(/[_-]+/g, " ").replace(/\s+/g, " ").trim();
 }
 
 function makeTrackId(fileName: string) {
@@ -233,7 +234,7 @@ function buildTracks(): Track[] {
         src,
       } as Track;
     })
-    .sort((a, b) => a.title.localeCompare(b.title));
+    .sort((a, b) => a.title.localeCompare(b.title, undefined, { numeric: true }));
 }
 
 export default function BottomMusicBar() {
@@ -483,11 +484,12 @@ export default function BottomMusicBar() {
     userSelect: "none",
     whiteSpace: "nowrap",
     flex: "0 0 auto",
+    color: "rgba(0,0,0,0.92)",
   };
 
   const pillActive: React.CSSProperties = {
     ...pill,
-    background: "rgba(77,184,255,0.18)",
+    background: "rgba(205, 228, 245, 0.90)",
   };
 
   const iconPill: React.CSSProperties = {
@@ -501,6 +503,13 @@ export default function BottomMusicBar() {
     cursor: "pointer",
     userSelect: "none",
     flex: "0 0 auto",
+    color: "rgba(0,0,0,0.92)",
+  };
+
+  const favTabActive: React.CSSProperties = {
+    ...iconPill,
+    background: "rgba(238, 225, 246, 0.90)",
+    border: "1px solid rgba(155, 120, 180, 0.26)",
   };
 
   const selectStyle: React.CSSProperties = {
@@ -512,8 +521,9 @@ export default function BottomMusicBar() {
     fontWeight: 800,
     fontSize: 14,
     outline: "none",
-    maxWidth: 220,
-    flex: "0 0 auto",
+    maxWidth: 320,
+    minWidth: 0,
+    flex: "0 1 320px",
   };
 
   const progressWrap: React.CSSProperties = {
@@ -644,11 +654,7 @@ export default function BottomMusicBar() {
 
             <button
               type="button"
-              style={
-                tab === "fav"
-                  ? { ...iconPill, background: "rgba(184,77,255,0.12)" }
-                  : iconPill
-              }
+              style={tab === "fav" ? favTabActive : iconPill}
               onClick={() => setTab("fav")}
               aria-label="Favorites"
               title="Favorites"
@@ -793,7 +799,7 @@ export default function BottomMusicBar() {
         }
 
         .mb-bottom-musicbar [aria-label="Track"]{
-          max-width: 220px;
+          max-width: 320px;
         }
 
         @media (max-width: 640px){
