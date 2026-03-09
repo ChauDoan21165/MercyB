@@ -51,11 +51,6 @@
 //   - So we must infer “core-ish” by ID + exclude kids + exclude vip*_* hybrids.
 //   - Prefer sort_order (ASC) then created_at (ASC), then pick best from a ranked list.
 //
-// - ✅ Phase-based “How it works”:
-//   - Phase 0 (new/inactive): show full + “First room” CTA
-//   - Phase 2 (habit): collapsed by default, toggleable
-//   - Phase 3 (established): hidden by default
-//
 // NOTE (2026-01-30):
 // - FIXED the syntax error at FIRST_ROOM_FALLBACKS useMemo (bad commas).
 //
@@ -78,12 +73,22 @@
 // - Removes brittle runtime probing / fallback cycling.
 // - If hero is broken in production, the issue is deployment/static asset serving,
 //   not Home render logic.
+//
+// PERF PATCH (2026-03-08):
+// - Remove eager Supabase import from module scope.
+// - Lazy-load "@/lib/supabaseClient" only inside effects.
+// - Remove dead auth/signout/UUID code.
+//
+// FIX (2026-03-08b):
+// - "Start free" / "Enter your first room" must NEVER deep-link to a dead hardcoded room slug.
+// - Remove hardcoded first-room fallback ids like sleep_basics/anxiety_intro.
+// - Only route to /room/:id when the room id was actually found from the live rooms query.
+// - Otherwise route safely to /rooms.
 
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BottomMusicBar from "@/components/audio/BottomMusicBar";
 import { useAuth } from "@/providers/AuthProvider";
-import { supabase } from "@/lib/supabaseClient";
 
 const PAGE_MAX = 980;
 const softPanel = "rgba(230, 244, 255, 0.85)";
@@ -107,6 +112,19 @@ const VN_DT_FMT = new Intl.DateTimeFormat("vi-VN", {
 const ROUTE_PRICING = "/pricing";
 const HERO_SRC = "/hero/hero_band.jpg";
 
+type SupabaseClientType = typeof import("@/lib/supabaseClient")["supabase"];
+
+let supabaseClientPromise: Promise<SupabaseClientType> | null = null;
+
+async function getSupabaseClient(): Promise<SupabaseClientType> {
+  if (!supabaseClientPromise) {
+    supabaseClientPromise = import("@/lib/supabaseClient").then(
+      (mod) => mod.supabase
+    );
+  }
+  return supabaseClientPromise;
+}
+
 function clamp(n: number, a: number, b: number) {
   return Math.max(a, Math.min(b, n));
 }
@@ -116,13 +134,17 @@ function readZoomPct(): number {
     const attr = document.documentElement.getAttribute("data-mb-zoom");
     const fromAttr = attr ? Number(attr) : NaN;
     if (Number.isFinite(fromAttr)) return clamp(Math.round(fromAttr), 60, 140);
-  } catch {}
+  } catch {
+    // ignore
+  }
 
   try {
     const raw = localStorage.getItem(LS_ZOOM);
     const n = raw ? Number(raw) : NaN;
     if (Number.isFinite(n)) return clamp(Math.round(n), 60, 140);
-  } catch {}
+  } catch {
+    // ignore
+  }
 
   return 100;
 }
@@ -167,33 +189,7 @@ function isVipHybridId(id: string) {
 
 export default function Home() {
   const nav = useNavigate();
-  const { user, signOut } = useAuth();
-
-  const handleSignOut = async () => {
-    try {
-      await signOut();
-    } finally {
-      nav("/signin", { replace: true });
-    }
-  };
-
-  const userUuid = user?.id ?? "";
-  const [uuidCopied, setUuidCopied] = useState(false);
-
-  const copyUuid = async () => {
-    if (!userUuid) return;
-    try {
-      await navigator.clipboard.writeText(userUuid);
-      setUuidCopied(true);
-      window.setTimeout(() => setUuidCopied(false), 1200);
-    } catch {
-      const ok = window.prompt("Copy your UUID:", userUuid);
-      if (ok !== null) {
-        setUuidCopied(true);
-        window.setTimeout(() => setUuidCopied(false), 1200);
-      }
-    }
-  };
+  const { user } = useAuth();
 
   const [zoomPct, setZoomPct] = useState<number>(100);
 
@@ -220,7 +216,7 @@ export default function Home() {
   useEffect(() => {
     let alive = true;
 
-    (async () => {
+    void (async () => {
       try {
         if (!user?.id) {
           if (!alive) return;
@@ -230,7 +226,10 @@ export default function Home() {
           return;
         }
 
-        const { data: sessionRes, error: sessionErr } = await supabase.auth.getSession();
+        const supabase = await getSupabaseClient();
+
+        const { data: sessionRes, error: sessionErr } =
+          await supabase.auth.getSession();
         if (!alive) return;
 
         if (sessionErr || !sessionRes.session) {
@@ -276,7 +275,7 @@ export default function Home() {
   useEffect(() => {
     let alive = true;
 
-    (async () => {
+    void (async () => {
       try {
         if (!user?.id) {
           if (!alive) return;
@@ -284,7 +283,10 @@ export default function Home() {
           return;
         }
 
-        const { data: sessionRes, error: sessionErr } = await supabase.auth.getSession();
+        const supabase = await getSupabaseClient();
+
+        const { data: sessionRes, error: sessionErr } =
+          await supabase.auth.getSession();
         if (!alive) return;
 
         if (sessionErr || !sessionRes.session) {
@@ -304,7 +306,9 @@ export default function Home() {
           return;
         }
 
-        const v = data ? Number((data as { streak_days?: unknown }).streak_days ?? 0) : 0;
+        const v = data
+          ? Number((data as { streak_days?: unknown }).streak_days ?? 0)
+          : 0;
         setStreakDays(Number.isFinite(v) ? v : 0);
       } catch {
         if (!alive) return;
@@ -318,7 +322,8 @@ export default function Home() {
   }, [user?.id]);
 
   const progressSummary = useMemo(() => {
-    const streak = streakDays !== null ? streakDays : fmtInt(progressRow?.streak_days ?? 0, 0);
+    const streak =
+      streakDays !== null ? streakDays : fmtInt(progressRow?.streak_days ?? 0, 0);
     const active30d = fmtInt(progressRow?.days_active_30d ?? 0, 0);
     const lastStudyAt = progressRow?.last_study_at ?? null;
 
@@ -329,14 +334,15 @@ export default function Home() {
     };
   }, [progressRow, streakDays]);
 
-  const FIRST_ROOM_FALLBACKS = useMemo(() => ["sleep_basics", "anxiety_intro"], []);
   const [firstRoomId, setFirstRoomId] = useState<string | null>(null);
 
   useEffect(() => {
     let alive = true;
 
-    (async () => {
+    void (async () => {
       try {
+        const supabase = await getSupabaseClient();
+
         const { data, error } = await supabase
           .from("rooms")
           .select("id, tier, sort_order, created_at")
@@ -351,14 +357,18 @@ export default function Home() {
 
         if (!alive) return;
 
-        const rows = (Array.isArray(data) ? (data as Array<Record<string, unknown>>) : []).map((r) => ({
+        const rows = (
+          Array.isArray(data) ? (data as Array<Record<string, unknown>>) : []
+        ).map((r) => ({
           id: String(r?.id ?? ""),
           tier: (r?.tier as string | null) ?? null,
           sort_order: (r?.sort_order as number | null) ?? null,
           created_at: (r?.created_at as string | null) ?? null,
         })) as RoomRowLite[];
 
-        const clean = rows.filter((r) => r.id && !isKidsRoomId(r.id) && !isVipHybridId(r.id));
+        const clean = rows.filter(
+          (r) => r.id && !isKidsRoomId(r.id) && !isVipHybridId(r.id)
+        );
 
         const rankedPrefer = [
           "sleep_basics",
@@ -372,30 +382,42 @@ export default function Home() {
         const byId = new Map(clean.map((r) => [r.id, r]));
         const pickRanked = rankedPrefer.find((id) => byId.has(id)) ?? null;
         const pickEarliest = clean[0]?.id ?? null;
-        const pick = (!error ? pickRanked || pickEarliest : null) || FIRST_ROOM_FALLBACKS[0] || "sleep_basics";
+        const pick = !error ? pickRanked || pickEarliest || null : null;
 
         setFirstRoomId(pick);
       } catch {
         if (!alive) return;
-        setFirstRoomId(FIRST_ROOM_FALLBACKS[0] ?? "sleep_basics");
+        setFirstRoomId(null);
       }
     })();
 
     return () => {
       alive = false;
     };
-  }, [FIRST_ROOM_FALLBACKS]);
+  }, []);
 
   const goFirstRoom = () => {
-    if (firstRoomId) nav(`/room/${firstRoomId}`);
-    else nav("/rooms");
+    if (firstRoomId) {
+      nav(`/room/${firstRoomId}`);
+      return;
+    }
+    nav("/rooms");
   };
 
-  const phase0New = !user?.id || !progressSummary.lastStudyAt || fmtInt(progressSummary.active30d) === 0;
+  const phase0New =
+    !user?.id ||
+    !progressSummary.lastStudyAt ||
+    fmtInt(progressSummary.active30d) === 0;
 
-  const phase2Collapse = !phase0New && (fmtInt(progressSummary.active30d) >= 5 || fmtInt(progressSummary.streak) >= 3);
+  const phase2Collapse =
+    !phase0New &&
+    (fmtInt(progressSummary.active30d) >= 5 ||
+      fmtInt(progressSummary.streak) >= 3);
 
-  const phase3Hide = !phase0New && fmtInt(progressSummary.active30d) >= 10 && fmtInt(progressSummary.streak) >= 7;
+  const phase3Hide =
+    !phase0New &&
+    fmtInt(progressSummary.active30d) >= 10 &&
+    fmtInt(progressSummary.streak) >= 7;
 
   const [howOpen, setHowOpen] = useState<boolean>(true);
 
@@ -646,7 +668,9 @@ export default function Home() {
               <div>
                 <div style={langTag}>EN</div>
                 <h3 style={h3}>Your progress</h3>
-                <div style={{ ...p, marginTop: 8 }}>A quiet snapshot — what you’ve practiced recently.</div>
+                <div style={{ ...p, marginTop: 8 }}>
+                  A quiet snapshot — what you’ve practiced recently.
+                </div>
               </div>
 
               {user?.id ? (
@@ -681,8 +705,18 @@ export default function Home() {
                   background: "rgba(255,255,255,0.7)",
                 }}
               >
-                <div style={{ fontWeight: 900, color: "rgba(120,0,0,0.80)" }}>Progress error</div>
-                <div style={{ marginTop: 6, fontSize: 13, color: "rgba(0,0,0,0.65)" }}>{progressErr}</div>
+                <div style={{ fontWeight: 900, color: "rgba(120,0,0,0.80)" }}>
+                  Progress error
+                </div>
+                <div
+                  style={{
+                    marginTop: 6,
+                    fontSize: 13,
+                    color: "rgba(0,0,0,0.65)",
+                  }}
+                >
+                  {progressErr}
+                </div>
               </div>
             ) : null}
 
@@ -692,30 +726,51 @@ export default function Home() {
                 <div style={progBig}>
                   {progressLoading
                     ? "…"
-                    : `${fmtInt(progressSummary.streak)} ${plural(fmtInt(progressSummary.streak), "day", "days")}`}
+                    : `${fmtInt(progressSummary.streak)} ${plural(
+                        fmtInt(progressSummary.streak),
+                        "day",
+                        "days"
+                      )}`}
                 </div>
                 <div style={progSmall}>
-                  {user?.id ? "How many days in a row you’ve studied." : "Sign in to track your streak."}
+                  {user?.id
+                    ? "How many days in a row you’ve studied."
+                    : "Sign in to track your streak."}
                 </div>
 
                 {user?.id ? (
                   <div style={progBadge} aria-label="Streak badge">
-                    🔥 Streak: {streakDays === null ? "—" : `${streakDays} ${plural(streakDays, "day", "days")}`}
+                    🔥 Streak:{" "}
+                    {streakDays === null
+                      ? "—"
+                      : `${streakDays} ${plural(streakDays, "day", "days")}`}
                   </div>
                 ) : null}
               </div>
 
               <div style={progCard}>
                 <div style={progLabel}>Active days (30d)</div>
-                <div style={progBig}>{progressLoading ? "…" : `${fmtInt(progressSummary.active30d)}`}</div>
-                <div style={progSmall}>How many days you were active in the last 30 days.</div>
+                <div style={progBig}>
+                  {progressLoading ? "…" : `${fmtInt(progressSummary.active30d)}`}
+                </div>
+                <div style={progSmall}>
+                  How many days you were active in the last 30 days.
+                </div>
               </div>
 
               <div style={progCard}>
                 <div style={progLabel}>Last activity</div>
-                <div style={progBig}>{progressLoading ? "…" : progressSummary.lastStudyAt ? "Seen" : "—"}</div>
+                <div style={progBig}>
+                  {progressLoading
+                    ? "…"
+                    : progressSummary.lastStudyAt
+                    ? "Seen"
+                    : "—"}
+                </div>
                 <div style={progSmall}>
-                  {progressSummary.lastStudyAt ? fmtDate(progressSummary.lastStudyAt) : "No recent study yet."}
+                  {progressSummary.lastStudyAt
+                    ? fmtDate(progressSummary.lastStudyAt)
+                    : "No recent study yet."}
                 </div>
               </div>
             </div>
@@ -723,19 +778,22 @@ export default function Home() {
             <div style={{ marginTop: 16 }}>
               <div style={langTag}>VI</div>
               <h3 style={h3}>Tiến độ của bạn</h3>
-              <div style={{ ...p, marginTop: 8 }}>Một bản tóm tắt nhẹ nhàng — bạn đã luyện tập gần đây như thế nào.</div>
+              <div style={{ ...p, marginTop: 8 }}>
+                Một bản tóm tắt nhẹ nhàng — bạn đã luyện tập gần đây như thế nào.
+              </div>
             </div>
           </div>
 
           <div style={band}>
             <h2 style={blockTitle}>A Gentle Companion for Your Whole Life</h2>
             <p style={p}>
-              Mercy Blade is a bilingual (English–Vietnamese) companion for real life — health, emotions, money,
-              relationships, work, and meaning.
+              Mercy Blade is a bilingual (English–Vietnamese) companion for real
+              life — health, emotions, money, relationships, work, and meaning.
             </p>
             <p style={p}>
               This is not a place to rush or perform. <br />
-              It is a place to slow down, listen, and move forward one small step at a time.
+              It is a place to slow down, listen, and move forward one small step
+              at a time.
             </p>
             <p style={p}>
               No pressure. <br />
@@ -744,15 +802,27 @@ export default function Home() {
             </p>
 
             <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
-              <button type="button" style={{ ...primaryBtn, minWidth: 240 }} onClick={goFirstRoom}>
+              <button
+                type="button"
+                style={{ ...primaryBtn, minWidth: 240 }}
+                onClick={goFirstRoom}
+              >
                 👉 Enter your first room
               </button>
 
-              <button type="button" style={{ ...secondaryBtn, minWidth: 240 }} onClick={() => nav(ROUTE_PRICING)}>
+              <button
+                type="button"
+                style={{ ...secondaryBtn, minWidth: 240 }}
+                onClick={() => nav(ROUTE_PRICING)}
+              >
                 💎 Pricing
               </button>
 
-              <button type="button" style={{ ...secondaryBtn, minWidth: 240 }} onClick={() => nav("/rooms")}>
+              <button
+                type="button"
+                style={{ ...secondaryBtn, minWidth: 240 }}
+                onClick={() => nav("/rooms")}
+              >
                 👉 Browse all rooms
               </button>
             </div>
@@ -761,8 +831,9 @@ export default function Home() {
 
             <h2 style={blockTitle}>Người Đồng Hành Nhẹ Nhàng Cho Cả Cuộc Đời Bạn</h2>
             <p style={p}>
-              Mercy Blade là ứng dụng song ngữ (Anh–Việt) đồng hành cùng đời sống thật — sức khỏe, cảm xúc, tiền bạc, mối
-              quan hệ, công việc và ý nghĩa sống.
+              Mercy Blade là ứng dụng song ngữ (Anh–Việt) đồng hành cùng đời sống
+              thật — sức khỏe, cảm xúc, tiền bạc, mối quan hệ, công việc và ý nghĩa
+              sống.
             </p>
             <p style={p}>
               Đây không phải nơi để chạy đua hay thể hiện. <br />
@@ -775,15 +846,27 @@ export default function Home() {
             </p>
 
             <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
-              <button type="button" style={{ ...primaryBtn, minWidth: 240 }} onClick={goFirstRoom}>
+              <button
+                type="button"
+                style={{ ...primaryBtn, minWidth: 240 }}
+                onClick={goFirstRoom}
+              >
                 👉 Vào phòng đầu tiên
               </button>
 
-              <button type="button" style={{ ...secondaryBtn, minWidth: 240 }} onClick={() => nav(ROUTE_PRICING)}>
+              <button
+                type="button"
+                style={{ ...secondaryBtn, minWidth: 240 }}
+                onClick={() => nav(ROUTE_PRICING)}
+              >
                 💎 Bảng giá
               </button>
 
-              <button type="button" style={{ ...secondaryBtn, minWidth: 240 }} onClick={() => nav("/rooms")}>
+              <button
+                type="button"
+                style={{ ...secondaryBtn, minWidth: 240 }}
+                onClick={() => nav("/rooms")}
+              >
                 👉 Xem danh sách phòng
               </button>
             </div>
@@ -821,36 +904,69 @@ export default function Home() {
               {howOpen ? (
                 <>
                   <p style={p}>
-                    You enter <b>rooms</b> — sleep, anxiety, money, relationships, work, resilience, and more.
+                    You enter <b>rooms</b> — sleep, anxiety, money, relationships,
+                    work, resilience, and more.
                   </p>
 
                   <p style={p} />
                   <div style={{ ...p, marginTop: 12 }}>
                     Inside each room:
-                    <ul style={{ marginTop: 10, marginBottom: 0, paddingLeft: 18, color: "rgba(0,0,0,0.70)" }}>
-                      <li>You <b>read first</b></li>
-                      <li>When ready, you <b>listen</b></li>
-                      <li>When comfortable, you <b>repeat and shadow</b></li>
+                    <ul
+                      style={{
+                        marginTop: 10,
+                        marginBottom: 0,
+                        paddingLeft: 18,
+                        color: "rgba(0,0,0,0.70)",
+                      }}
+                    >
+                      <li>
+                        You <b>read first</b>
+                      </li>
+                      <li>
+                        When ready, you <b>listen</b>
+                      </li>
+                      <li>
+                        When comfortable, you <b>repeat and shadow</b>
+                      </li>
                     </ul>
                   </div>
 
                   <p style={p}>
-                    You are not “studying English”. You are <b>living with it</b>, inside real thoughts and real
-                    emotions.
+                    You are not “studying English”. You are <b>living with it</b>,
+                    inside real thoughts and real emotions.
                   </p>
                   <p style={p}>One card. One breath. One meaningful step.</p>
 
                   {phase0New ? (
-                    <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
-                      <button type="button" style={{ ...primaryBtn, minWidth: 240 }} onClick={goFirstRoom}>
+                    <div
+                      style={{
+                        marginTop: 14,
+                        display: "flex",
+                        gap: 10,
+                        flexWrap: "wrap",
+                      }}
+                    >
+                      <button
+                        type="button"
+                        style={{ ...primaryBtn, minWidth: 240 }}
+                        onClick={goFirstRoom}
+                      >
                         👉 Enter your first room
                       </button>
 
-                      <button type="button" style={{ ...secondaryBtn, minWidth: 240 }} onClick={() => nav(ROUTE_PRICING)}>
+                      <button
+                        type="button"
+                        style={{ ...secondaryBtn, minWidth: 240 }}
+                        onClick={() => nav(ROUTE_PRICING)}
+                      >
                         💎 Pricing
                       </button>
 
-                      <button type="button" style={{ ...secondaryBtn, minWidth: 240 }} onClick={() => nav("/rooms")}>
+                      <button
+                        type="button"
+                        style={{ ...secondaryBtn, minWidth: 240 }}
+                        onClick={() => nav("/rooms")}
+                      >
                         👉 Browse all rooms
                       </button>
                     </div>
@@ -860,36 +976,68 @@ export default function Home() {
                   <h3 style={h3}>Cách Mercy Blade Hoạt Động</h3>
 
                   <p style={p}>
-                    Bạn bước vào các <b>phòng</b> — giấc ngủ, lo âu, tiền bạc, mối quan hệ, công việc, sức bền tinh
-                    thần…
+                    Bạn bước vào các <b>phòng</b> — giấc ngủ, lo âu, tiền bạc, mối
+                    quan hệ, công việc, sức bền tinh thần…
                   </p>
 
                   <div style={{ ...p, marginTop: 12 }}>
                     Trong mỗi phòng:
-                    <ul style={{ marginTop: 10, marginBottom: 0, paddingLeft: 18, color: "rgba(0,0,0,0.70)" }}>
-                      <li>Bạn <b>đọc trước</b></li>
-                      <li>Khi sẵn sàng, bạn <b>nghe</b></li>
-                      <li>Khi thoải mái, bạn <b>lặp lại và nói theo</b></li>
+                    <ul
+                      style={{
+                        marginTop: 10,
+                        marginBottom: 0,
+                        paddingLeft: 18,
+                        color: "rgba(0,0,0,0.70)",
+                      }}
+                    >
+                      <li>
+                        Bạn <b>đọc trước</b>
+                      </li>
+                      <li>
+                        Khi sẵn sàng, bạn <b>nghe</b>
+                      </li>
+                      <li>
+                        Khi thoải mái, bạn <b>lặp lại và nói theo</b>
+                      </li>
                     </ul>
                   </div>
 
                   <p style={p}>
-                    Bạn không “học tiếng Anh” theo nghĩa thông thường. Bạn <b>sống cùng nó</b>, trong suy nghĩ và cảm xúc
-                    thật.
+                    Bạn không “học tiếng Anh” theo nghĩa thông thường. Bạn{" "}
+                    <b>sống cùng nó</b>, trong suy nghĩ và cảm xúc thật.
                   </p>
                   <p style={p}>Một thẻ. Một hơi thở. Một bước có ý nghĩa.</p>
 
                   {phase0New ? (
-                    <div style={{ marginTop: 12, display: "flex", gap: 10, flexWrap: "wrap" }}>
-                      <button type="button" style={{ ...primaryBtn, minWidth: 240 }} onClick={goFirstRoom}>
+                    <div
+                      style={{
+                        marginTop: 12,
+                        display: "flex",
+                        gap: 10,
+                        flexWrap: "wrap",
+                      }}
+                    >
+                      <button
+                        type="button"
+                        style={{ ...primaryBtn, minWidth: 240 }}
+                        onClick={goFirstRoom}
+                      >
                         👉 Vào phòng đầu tiên
                       </button>
 
-                      <button type="button" style={{ ...secondaryBtn, minWidth: 240 }} onClick={() => nav(ROUTE_PRICING)}>
+                      <button
+                        type="button"
+                        style={{ ...secondaryBtn, minWidth: 240 }}
+                        onClick={() => nav(ROUTE_PRICING)}
+                      >
                         💎 Bảng giá
                       </button>
 
-                      <button type="button" style={{ ...secondaryBtn, minWidth: 240 }} onClick={() => nav("/rooms")}>
+                      <button
+                        type="button"
+                        style={{ ...secondaryBtn, minWidth: 240 }}
+                        onClick={() => nav("/rooms")}
+                      >
                         👉 Xem danh sách phòng
                       </button>
                     </div>
@@ -898,7 +1046,14 @@ export default function Home() {
               ) : (
                 <div style={{ ...p, marginTop: 10 }}>
                   One card. One breath. One meaningful step.{" "}
-                  <span style={{ fontWeight: 800, color: "rgba(0,0,0,0.72)" }}>Open if you need a reminder.</span>
+                  <span
+                    style={{
+                      fontWeight: 800,
+                      color: "rgba(0,0,0,0.72)",
+                    }}
+                  >
+                    Open if you need a reminder.
+                  </span>
                 </div>
               )}
             </div>
@@ -913,7 +1068,10 @@ export default function Home() {
               It knows what you are practicing. <br />
               It helps you slow down — or continue — when the moment is right.
             </p>
-            <p style={p}>Over time, Mercy Host remembers your journey and supports your progress.</p>
+            <p style={p}>
+              Over time, Mercy Host remembers your journey and supports your
+              progress.
+            </p>
 
             <div style={{ ...langTag, marginTop: 16 }}>VI</div>
             <h3 style={h3}>Mercy Host — Người Hướng Dẫn Dịu Dàng</h3>
@@ -923,7 +1081,10 @@ export default function Home() {
               Biết bạn đang luyện điều gì. <br />
               Giúp bạn chậm lại — hoặc tiếp tục — đúng lúc.
             </p>
-            <p style={p}>Theo thời gian, Mercy Host ghi nhớ hành trình của bạn và nâng đỡ sự tiến bộ của bạn.</p>
+            <p style={p}>
+              Theo thời gian, Mercy Host ghi nhớ hành trình của bạn và nâng đỡ sự
+              tiến bộ của bạn.
+            </p>
           </div>
 
           <div style={section}>
@@ -942,7 +1103,10 @@ export default function Home() {
 
             <div style={{ ...langTag, marginTop: 16 }}>VI</div>
             <h3 style={h3}>Giờ Lặng</h3>
-            <p style={p}>Khi cuộc sống trở nên ồn ào, Mercy Blade mang đến một nghi thức đơn giản:</p>
+            <p style={p}>
+              Khi cuộc sống trở nên ồn ào, Mercy Blade mang đến một nghi thức đơn
+              giản:
+            </p>
             <p style={p}>
               Một phút. <br />
               Một thẻ song ngữ. <br />
@@ -959,8 +1123,8 @@ export default function Home() {
             <h3 style={h3}>Free, and Growing With You</h3>
             <p style={p}>Mercy Blade is free to begin.</p>
             <p style={p}>
-              When you are ready to go deeper, you can choose to unlock more rooms and guidance — from <b>VIP 1</b> to{" "}
-              <b>VIP 9</b>.
+              When you are ready to go deeper, you can choose to unlock more rooms
+              and guidance — from <b>VIP 1</b> to <b>VIP 9</b>.
             </p>
             <p style={p}>
               No rush. <br />
@@ -969,15 +1133,27 @@ export default function Home() {
             </p>
 
             <div style={{ marginTop: 12, display: "flex", gap: 10, flexWrap: "wrap" }}>
-              <button type="button" style={{ ...primaryBtn, minWidth: 240 }} onClick={goFirstRoom}>
+              <button
+                type="button"
+                style={{ ...primaryBtn, minWidth: 240 }}
+                onClick={goFirstRoom}
+              >
                 👉 Start free
               </button>
 
-              <button type="button" style={{ ...secondaryBtn, minWidth: 240 }} onClick={() => nav("/tiers")}>
+              <button
+                type="button"
+                style={{ ...secondaryBtn, minWidth: 240 }}
+                onClick={() => nav("/tiers")}
+              >
                 👉 See learning paths
               </button>
 
-              <button type="button" style={{ ...secondaryBtn, minWidth: 240 }} onClick={() => nav(ROUTE_PRICING)}>
+              <button
+                type="button"
+                style={{ ...secondaryBtn, minWidth: 240 }}
+                onClick={() => nav(ROUTE_PRICING)}
+              >
                 💎 Pricing
               </button>
             </div>
@@ -986,7 +1162,8 @@ export default function Home() {
             <h3 style={h3}>Miễn Phí, và Lớn Lên Cùng Bạn</h3>
             <p style={p}>Mercy Blade miễn phí để bắt đầu.</p>
             <p style={p}>
-              Khi bạn muốn đi sâu hơn, bạn có thể mở thêm phòng và sự hướng dẫn — từ <b>VIP 1</b> đến <b>VIP 9</b>.
+              Khi bạn muốn đi sâu hơn, bạn có thể mở thêm phòng và sự hướng dẫn —
+              từ <b>VIP 1</b> đến <b>VIP 9</b>.
             </p>
             <p style={p}>
               Không vội. <br />
@@ -995,15 +1172,27 @@ export default function Home() {
             </p>
 
             <div style={{ marginTop: 12, display: "flex", gap: 10, flexWrap: "wrap" }}>
-              <button type="button" style={{ ...primaryBtn, minWidth: 240 }} onClick={goFirstRoom}>
+              <button
+                type="button"
+                style={{ ...primaryBtn, minWidth: 240 }}
+                onClick={goFirstRoom}
+              >
                 👉 Bắt đầu miễn phí
               </button>
 
-              <button type="button" style={{ ...secondaryBtn, minWidth: 240 }} onClick={() => nav("/tiers")}>
+              <button
+                type="button"
+                style={{ ...secondaryBtn, minWidth: 240 }}
+                onClick={() => nav("/tiers")}
+              >
                 👉 Xem lộ trình học
               </button>
 
-              <button type="button" style={{ ...secondaryBtn, minWidth: 240 }} onClick={() => nav(ROUTE_PRICING)}>
+              <button
+                type="button"
+                style={{ ...secondaryBtn, minWidth: 240 }}
+                onClick={() => nav(ROUTE_PRICING)}
+              >
                 💎 Bảng giá
               </button>
             </div>
@@ -1018,15 +1207,27 @@ export default function Home() {
                 👉 Start free
               </button>
 
-              <button type="button" style={secondaryBtn} onClick={() => nav(ROUTE_PRICING)}>
+              <button
+                type="button"
+                style={secondaryBtn}
+                onClick={() => nav(ROUTE_PRICING)}
+              >
                 💎 Pricing
               </button>
 
-              <button type="button" style={secondaryBtn} onClick={() => nav("/tiers")}>
+              <button
+                type="button"
+                style={secondaryBtn}
+                onClick={() => nav("/tiers")}
+              >
                 👉 See learning paths
               </button>
 
-              <button type="button" style={secondaryBtn} onClick={() => nav("/redeem")}>
+              <button
+                type="button"
+                style={secondaryBtn}
+                onClick={() => nav("/redeem")}
+              >
                 🎁&nbsp; Redeem Gift Code / Nhập Mã Quà Tặng
               </button>
             </div>
