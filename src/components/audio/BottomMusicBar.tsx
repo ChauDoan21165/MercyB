@@ -15,13 +15,17 @@
 // FIX (100.8):
 // - ✅ ALIGNMENT STABLE: BottomMusicBar is NO LONGER position:fixed.
 //   Pages (Home/ChatHub) own the fixed mount + ruler alignment.
-// - ✅ Remove redundant first heart (Fav tab) → use heart symbol only
+// - ✅ Favorites tab is heart-only.
 //   Keep right-side heart for “favorite this track”.
 //
 // FIX (100.9):
 // - ✅ HARD LAYOUT-NEUTRAL CLAMP: This component can NEVER exceed its parent width.
 //   (Prevents “sticking out” even if inner controls try to expand).
 // - ✅ Emits "mb-zoom-change" event on same-tab zoom updates (for live sync consumers).
+//
+// PATCH (2026-03-08c):
+// - Auto-load .mp3 files from src/assets/music via import.meta.glob.
+// - No manual tracks array editing needed for each new song.
 //
 // PATCH (2026-03-08d):
 // - Simplify tabs: only All + Favorites.
@@ -38,7 +42,6 @@ type Track = {
   id: string;
   title: string;
   src: string;
-  group: "all" | "mb";
 };
 
 const LS_TAB = "mb.music.tab";
@@ -46,8 +49,6 @@ const LS_TRACK = "mb.music.trackId";
 const LS_VOL = "mb.music.vol";
 const LS_ZOOM = "mb.ui.zoom";
 const LS_FAV = "mb.music.fav";
-
-// ✅ owner flag for secret admin dot
 const LS_ADMIN = "mb_admin";
 
 function clamp(n: number, a: number, b: number) {
@@ -90,7 +91,6 @@ function getInitialFav(): Record<string, boolean> {
   }
 }
 
-// ✅ Global zoom: BOTH mechanisms (RoomRenderer/ChatHub may listen to either)
 function applyGlobalZoom(pct: number) {
   const safe = clamp(Math.round(pct), 60, 140);
 
@@ -101,13 +101,11 @@ function applyGlobalZoom(pct: number) {
     localStorage.setItem(LS_ZOOM, String(safe));
   } catch {}
 
-  // ✅ same-tab live update hook (ChatHub listens to this)
   try {
     window.dispatchEvent(new Event("mb-zoom-change"));
   } catch {}
 }
 
-// RAF ticker for time updates while playing
 function useRaf(active: boolean, cb: () => void) {
   const rafRef = useRef<number | null>(null);
   useEffect(() => {
@@ -140,7 +138,6 @@ function TalkingFaceIcon({ playing }: { playing: boolean }) {
       }}
     >
       <div style={{ position: "relative", width: 20, height: 20 }}>
-        {/* eyes */}
         <div
           style={{
             position: "absolute",
@@ -163,7 +160,6 @@ function TalkingFaceIcon({ playing }: { playing: boolean }) {
             background: "rgba(0,0,0,0.62)",
           }}
         />
-        {/* cheeks */}
         <div
           style={{
             position: "absolute",
@@ -186,7 +182,6 @@ function TalkingFaceIcon({ playing }: { playing: boolean }) {
             background: "rgba(255, 120, 160, 0.30)",
           }}
         />
-        {/* mouth */}
         <div
           style={{
             position: "absolute",
@@ -206,32 +201,45 @@ function TalkingFaceIcon({ playing }: { playing: boolean }) {
   );
 }
 
+function normalizeTrackTitle(fileName: string) {
+  const noExt = fileName.replace(/\.[^/.]+$/, "");
+  return noExt
+    .replace(/[_-]+/g, " ")
+    .replace(/\s+/g, " ")
+    .replace(/\(\d+\)/g, "")
+    .trim();
+}
+
+function makeTrackId(fileName: string) {
+  return fileName
+    .replace(/\.[^/.]+$/, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "_")
+    .replace(/^_+|_+$/g, "");
+}
+
+const musicModules = import.meta.glob("@/assets/music/*.{mp3,wav,ogg,m4a}", {
+  eager: true,
+  import: "default",
+}) as Record<string, string>;
+
+function buildTracks(): Track[] {
+  return Object.entries(musicModules)
+    .map(([path, src]) => {
+      const fileName = path.split("/").pop() ?? "";
+      return {
+        id: makeTrackId(fileName),
+        title: normalizeTrackTitle(fileName),
+        src,
+      } as Track;
+    })
+    .sort((a, b) => a.title.localeCompare(b.title));
+}
+
 export default function BottomMusicBar() {
   const nav = useNavigate();
 
-  const tracks: Track[] = useMemo(
-    () => [
-      {
-        id: "strings_of_time",
-        title: "Strings of Time",
-        src: "/music/2016-05-06_-_Strings_of_Time_-_David_Fesliyan_1.mp3",
-        group: "all",
-      },
-      {
-        id: "land_of_8_bits",
-        title: "Land of 8 Bits",
-        src: "/music/2019-01-10_-_Land_of_8_Bits_-_Stephen_Bennett_-_FesliyanStudios.com-2.mp3",
-        group: "all",
-      },
-      {
-        id: "mb_theme_1",
-        title: "MB Theme 1",
-        src: "/music/2015-11-08_-_Peace_-_David_Fesliyan-2.mp3",
-        group: "mb",
-      },
-    ],
-    []
-  );
+  const tracks: Track[] = useMemo(() => buildTracks(), []);
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const lastNonZeroVolRef = useRef<number>(0.6);
@@ -259,8 +267,12 @@ export default function BottomMusicBar() {
   });
 
   const track = useMemo(
-    () => tracks.find((t) => t.id === trackId) ?? tracks[0],
-    [tracks, trackId]
+    () =>
+      visibleTracks.find((t) => t.id === trackId) ??
+      tracks.find((t) => t.id === trackId) ??
+      visibleTracks[0] ??
+      tracks[0],
+    [visibleTracks, tracks, trackId]
   );
 
   const [playing, setPlaying] = useState(false);
@@ -274,7 +286,6 @@ export default function BottomMusicBar() {
     clamp(getInitialNumber(LS_ZOOM, 100), 60, 140)
   );
 
-  // ✅ owner-only visibility for secret admin dot
   const [adminVisible, setAdminVisible] = useState(false);
   useEffect(() => {
     const host = String(window.location.hostname || "");
@@ -287,7 +298,6 @@ export default function BottomMusicBar() {
     setAdminVisible(isLocal || flag);
   }, []);
 
-  // Init audio once
   useEffect(() => {
     const a = new Audio();
     a.preload = "metadata";
@@ -318,21 +328,18 @@ export default function BottomMusicBar() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Persist tab
   useEffect(() => {
     try {
       localStorage.setItem(LS_TAB, tab);
     } catch {}
   }, [tab]);
 
-  // Persist favorites
   useEffect(() => {
     try {
       localStorage.setItem(LS_FAV, JSON.stringify(favorites));
     } catch {}
   }, [favorites]);
 
-  // Sync volume
   useEffect(() => {
     const a = audioRef.current;
     if (a) a.volume = vol;
@@ -342,14 +349,12 @@ export default function BottomMusicBar() {
     } catch {}
   }, [vol]);
 
-  // If current tab no longer contains the selected track, move to the first visible one
   useEffect(() => {
     if (!visibleTracks.some((t) => t.id === trackId) && visibleTracks[0]) {
       setTrackId(visibleTracks[0].id);
     }
   }, [visibleTracks, trackId]);
 
-  // Sync track source (and preserve play state)
   useEffect(() => {
     const a = audioRef.current;
     if (!a || !track) return;
@@ -370,7 +375,6 @@ export default function BottomMusicBar() {
     if (wasPlaying) a.play().catch(() => {});
   }, [track]);
 
-  // Update time while playing
   useRaf(playing, () => {
     const a = audioRef.current;
     if (!a) return;
@@ -417,7 +421,6 @@ export default function BottomMusicBar() {
     setVol(restore);
   };
 
-  // ✅ MB-BLUE-100.9 — HARD “NEVER STICK OUT” SHELL
   const outer: React.CSSProperties = {
     width: "100%",
     maxWidth: "100%",
@@ -617,10 +620,8 @@ export default function BottomMusicBar() {
   };
 
   const progressRatio = duration > 0 ? clamp(current / duration, 0, 1) : 0;
-
   const speakerEmoji =
     vol <= 0.001 ? "🔇" : vol < 0.35 ? "🔈" : vol < 0.7 ? "🔉" : "🔊";
-
   const favTabIcon = tab === "fav" ? "♥" : "♡";
 
   return (
@@ -632,7 +633,6 @@ export default function BottomMusicBar() {
     >
       <div style={box}>
         <div style={row}>
-          {/* LEFT 3/4: MUSIC ONLY */}
           <div style={left}>
             <button
               type="button"
@@ -642,7 +642,6 @@ export default function BottomMusicBar() {
               All
             </button>
 
-            {/* ✅ Favorites TAB — heart only, no word */}
             <button
               type="button"
               style={
@@ -694,7 +693,6 @@ export default function BottomMusicBar() {
               </div>
             </div>
 
-            {/* ✅ Heart ONLY for “favorite current track” */}
             <button
               type="button"
               style={iconPill}
@@ -705,7 +703,6 @@ export default function BottomMusicBar() {
               {isFav ? "♥" : "♡"}
             </button>
 
-            {/* ✅ Volume: speaker icon + slider */}
             <div style={volWrap}>
               <button
                 type="button"
@@ -731,7 +728,6 @@ export default function BottomMusicBar() {
             </div>
           </div>
 
-          {/* RIGHT 1/4: ZOOM + dots ONLY */}
           <div style={right}>
             <div style={zoomWrap}>
               <div style={zoomIcon} aria-hidden="true" title="Zoom">
@@ -777,7 +773,6 @@ export default function BottomMusicBar() {
         .mb-bottom-musicbar,
         .mb-bottom-musicbar * { box-sizing: border-box; }
 
-        /* ✅ NEVER exceed parent width */
         .mb-bottom-musicbar{
           width: 100%;
           max-width: 100%;
@@ -785,7 +780,6 @@ export default function BottomMusicBar() {
           overflow: hidden;
         }
 
-        /* Allow grid/flex children to shrink instead of forcing overflow */
         .mb-bottom-musicbar > div{
           max-width: 100%;
           min-width: 0;
@@ -811,7 +805,3 @@ export default function BottomMusicBar() {
     </div>
   );
 }
-
-/* New thing to learn:
-   In CSS Grid/Flex, “overflow” often comes from default min-width behavior.
-   Setting minWidth: 0 (or overflow hidden) on grid children prevents layout blowouts. */
