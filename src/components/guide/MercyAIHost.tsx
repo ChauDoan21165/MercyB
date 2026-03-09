@@ -1,6 +1,7 @@
 // FILE: MercyAIHost.tsx
 // PATH: src/components/guide/MercyAIHost.tsx
-// VERSION: MB-BLUE-101.7i — 2026-03-08 (+0700)
+// VERSION: MB-BLUE-101.7j — 2026-03-08 (+0700)
+//
 // NOTE:
 // - Split into host/* modules for growth & safety.
 // - Auth source of truth: AuthProvider via useAuth().
@@ -55,6 +56,7 @@
 // - Safe low-risk bundle trim inside this file:
 //   - lazy-load TalkingFaceIcon
 //   - lazy-load TypingIndicator
+//   - remove duplicated local auth state; derive directly from useAuth()
 
 import React, {
   Suspense,
@@ -69,9 +71,6 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "@/providers/AuthProvider";
 
 import type { HostContext, PanelMode } from "@/components/guide/host/types";
-
-// ✅ FIX (prod parity): import explicit file so Vercel/Linux resolver can’t “miss” it.
-// NOTE: Do NOT use ".ts" extension unless tsconfig allows it.
 import { safeSetLS, safeLang } from "@/components/guide/host/utils";
 
 import { useHostContextSync } from "@/components/guide/host/useHostContext";
@@ -81,7 +80,6 @@ import { useMakeReply } from "@/components/guide/host/makeReply";
 import { useHostActions } from "@/components/guide/host/buildActions";
 import { useDevHostState } from "@/components/guide/host/useDevState";
 
-// ✅ lazy visual-only pieces
 const TalkingFaceIcon = lazy(() => import("@/components/guide/TalkingFaceIcon"));
 const TypingIndicator = lazy(() => import("@/components/guide/host/TypingIndicator"));
 
@@ -114,7 +112,7 @@ function safeGetLSJson<T>(key: string, fallback: T): T {
   }
 }
 
-function safeSetLSJson(key: string, val: any) {
+function safeSetLSJson(key: string, val: unknown) {
   try {
     window.localStorage.setItem(key, JSON.stringify(val));
   } catch {
@@ -130,19 +128,23 @@ function todayKeyLocal(): string {
   return `${y}-${m}-${day}`;
 }
 
-function parseIntLoose(v: any): number | null {
+function parseIntLoose(v: unknown): number | null {
   const n = Number.parseInt(String(v ?? ""), 10);
   return Number.isFinite(n) ? n : null;
 }
 
-function guessVipRankFromEnv(args: { authUserId: string | null; canVoiceTest?: boolean; ctx?: any }): number {
-  const ctx = args.ctx ?? null;
+function guessVipRankFromEnv(args: { authUserId: string | null; canVoiceTest?: boolean; ctx?: unknown }): number {
+  const ctx = (args.ctx ?? null) as Record<string, unknown> | null;
 
   const candidates: Array<string | number | null | undefined> = [
-    ctx?.vipRank,
-    ctx?.userVipRank,
-    ctx?.accessRank,
-    ctx?.vip_rank,
+    typeof ctx?.vipRank === "string" || typeof ctx?.vipRank === "number" ? (ctx.vipRank as string | number) : null,
+    typeof ctx?.userVipRank === "string" || typeof ctx?.userVipRank === "number"
+      ? (ctx.userVipRank as string | number)
+      : null,
+    typeof ctx?.accessRank === "string" || typeof ctx?.accessRank === "number"
+      ? (ctx.accessRank as string | number)
+      : null,
+    typeof ctx?.vip_rank === "string" || typeof ctx?.vip_rank === "number" ? (ctx.vip_rank as string | number) : null,
     safeGetLS("mb.vip_rank"),
     safeGetLS("mb.user.vip_rank"),
     safeGetLS("mb.access.rank"),
@@ -219,7 +221,7 @@ type LastProgress = {
 
 type RepeatAckResult = { handled: boolean };
 
-function norm(s: any) {
+function norm(s: unknown) {
   return typeof s === "string" ? s.trim() : "";
 }
 
@@ -255,7 +257,7 @@ function canBrowserSpeak(): boolean {
   return (
     typeof window !== "undefined" &&
     "speechSynthesis" in window &&
-    typeof (window as any).SpeechSynthesisUtterance !== "undefined"
+    typeof (window as unknown as { SpeechSynthesisUtterance?: unknown }).SpeechSynthesisUtterance !== "undefined"
   );
 }
 
@@ -276,7 +278,8 @@ function speakBrowserTTS(text: string, lang: "en" | "vi") {
   stopBrowserTTS();
 
   try {
-    const Utter = (window as any).SpeechSynthesisUtterance as any;
+    const Utter = (window as unknown as { SpeechSynthesisUtterance: typeof SpeechSynthesisUtterance })
+      .SpeechSynthesisUtterance;
     const u = new Utter(clean);
     u.lang = lang === "vi" ? "vi-VN" : "en-US";
     u.rate = 1.0;
@@ -411,7 +414,7 @@ function buildRollingSummary(args: {
   const userLine = lastUsers.length ? `last_user: ${lastUsers.join(" / ")}` : "";
 
   const raw = [stateLine, userLine].filter(Boolean).join("\n");
-  return raw.length > 420 ? raw.slice(0, 420) + "…" : raw;
+  return raw.length > 420 ? `${raw.slice(0, 420)}…` : raw;
 }
 
 type FeedbackVote = "up" | "down";
@@ -486,7 +489,7 @@ function nextBackoffMs(prev: number) {
 
 function safeGetNavLocale(): string {
   try {
-    return (navigator as any)?.language || "en-US";
+    return navigator.language || "en-US";
   } catch {
     return "en-US";
   }
@@ -574,10 +577,10 @@ function toFeedbackPayload(args: {
   };
 }
 
-function clip(s: any, max: number) {
+function clip(s: unknown, max: number) {
   const t = typeof s === "string" ? s.trim() : "";
   if (!t) return "";
-  return t.length > max ? t.slice(0, max) + "…" : t;
+  return t.length > max ? `${t.slice(0, max)}…` : t;
 }
 
 function FaceFallback({ size = 44 }: { size?: number }) {
@@ -594,6 +597,12 @@ function FaceFallback({ size = 44 }: { size?: number }) {
   );
 }
 
+type MessageRow = {
+  id: string;
+  role: "assistant" | "user";
+  text: string;
+};
+
 export default function MercyAIHost() {
   const { user } = useAuth();
 
@@ -601,7 +610,7 @@ export default function MercyAIHost() {
   const [mode, setMode] = useState<PanelMode>("home");
   const [mounted, setMounted] = useState(false);
 
-  const [lang, setLang] = useState(safeLang());
+  const [lang, setLang] = useState<"en" | "vi">(safeLang());
 
   const [autoVoice, setAutoVoice] = useState<boolean>(() => {
     const raw = safeGetLS("mb.host.auto_voice");
@@ -613,13 +622,13 @@ export default function MercyAIHost() {
   const [isTyping, setIsTyping] = useState(false);
   const typingTimerRef = useRef<number | null>(null);
 
-  const [messages, setMessages] = useState<{ id: string; role: "assistant" | "user"; text: string }[]>([]);
+  const [messages, setMessages] = useState<MessageRow[]>([]);
   const [draft, setDraft] = useState("");
   const inputRef = useRef<HTMLTextAreaElement | null>(null);
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
-  const [authUserId, setAuthUserId] = useState<string | null>(null);
-  const [authEmail, setAuthEmail] = useState("");
+  const authUserId = user?.id ?? null;
+  const authEmail = user?.email ?? "";
 
   const [testActive, setTestActive] = useState(false);
   const [testStep, setTestStep] = useState<0 | 1 | 2 | 3>(0);
@@ -640,11 +649,6 @@ export default function MercyAIHost() {
   const repeatNudgedKeyRef = useRef<string>("");
 
   useEffect(() => setMounted(true), []);
-
-  useEffect(() => {
-    setAuthUserId(user?.id ?? null);
-    setAuthEmail(user?.email ?? "");
-  }, [user?.id, user?.email]);
 
   const toggleLang = useCallback(() => {
     setLang((prev) => {
@@ -691,14 +695,21 @@ export default function MercyAIHost() {
     lang,
     authUserId,
     authEmail,
-  }) as any;
+  }) as {
+    displayName?: string;
+    canVoiceTest?: boolean;
+    lastProgress?: LastProgress | null;
+    speak?: ((text: string, lang?: "en" | "vi") => Promise<void> | void) | ((text: string) => Promise<void> | void);
+    stopVoice?: (() => void) | undefined;
+    isSpeaking?: boolean;
+  };
 
-  const displayName: string = profileAny?.displayName ?? "";
-  const canVoiceTest: boolean = Boolean(profileAny?.canVoiceTest);
-  const lastProgress: LastProgress | null = (profileAny?.lastProgress ?? null) as any;
-  const speak: any = profileAny?.speak;
-  const stopVoice: any = profileAny?.stopVoice;
-  const isSpeaking: boolean = Boolean(profileAny?.isSpeaking);
+  const displayName = profileAny?.displayName ?? "";
+  const canVoiceTest = Boolean(profileAny?.canVoiceTest);
+  const lastProgress = profileAny?.lastProgress ?? null;
+  const speak = profileAny?.speak;
+  const stopVoice = profileAny?.stopVoice;
+  const isSpeaking = Boolean(profileAny?.isSpeaking);
 
   const maybeSpeakAssistant = useCallback(
     (assistantText: string) => {
@@ -708,7 +719,6 @@ export default function MercyAIHost() {
       if (!clean) return;
 
       const toSpeak = extractLangFromBilingualBlock(clean, lang);
-
       const hasAppSpeak = typeof speak === "function";
 
       try {
@@ -721,12 +731,16 @@ export default function MercyAIHost() {
       if (hasAppSpeak) {
         try {
           const r = speak(toSpeak, lang);
-          if (typeof (r as any)?.catch === "function") (r as any).catch(() => {});
+          if (typeof (r as Promise<void> | undefined)?.catch === "function") {
+            (r as Promise<void>).catch(() => {});
+          }
           return;
         } catch {
           try {
             const r2 = speak(toSpeak);
-            if (typeof (r2 as any)?.catch === "function") (r2 as any).catch(() => {});
+            if (typeof (r2 as Promise<void> | undefined)?.catch === "function") {
+              (r2 as Promise<void>).catch(() => {});
+            }
             return;
           } catch {
             // fall through
@@ -879,9 +893,9 @@ export default function MercyAIHost() {
     const pronLine_en = "Pronunciation coaching (read aloud + corrections) is coming soon.";
     const pronLine_vi = "Luyện phát âm (đọc to và được góp ý) sẽ có sớm.";
 
-    const enText = `Hi${name}. I’m Mercy Host.\n${p_en ? p_en + "\n" : ""}${aiLine_en}\n${pronLine_en}\nWhat do you need right now?\n• Choose a plan (/tiers)\n• Take a mini test\n• Start learning in a room\n• Report a problem (audio/UI)`;
+    const enText = `Hi${name}. I’m Mercy Host.\n${p_en ? `${p_en}\n` : ""}${aiLine_en}\n${pronLine_en}\nWhat do you need right now?\n• Choose a plan (/tiers)\n• Take a mini test\n• Start learning in a room\n• Report a problem (audio/UI)`;
 
-    const viText = `Chào${name}. Mình là Mercy Host.\n${p_vi ? p_vi + "\n" : ""}${aiLine_vi}\n${pronLine_vi}\nBạn muốn làm gì ngay bây giờ?\n• Chọn gói (/tiers)\n• Làm mini test\n• Vào phòng học\n• Báo lỗi (audio/UI)`;
+    const viText = `Chào${name}. Mình là Mercy Host.\n${p_vi ? `${p_vi}\n` : ""}${aiLine_vi}\n${pronLine_vi}\nBạn muốn làm gì ngay bây giờ?\n• Chọn gói (/tiers)\n• Làm mini test\n• Vào phòng học\n• Báo lỗi (audio/UI)`;
 
     return bi(enText, viText);
   }, [displayName, lastProgress, isSignin, aiUsedToday, aiDailyLimit]);
@@ -906,7 +920,16 @@ export default function MercyAIHost() {
     [baseAssistantHome],
   );
 
-  const repeatApi: any = useRepeatLoop();
+  const repeatApi = useRepeatLoop() as {
+    repeatTarget?: Record<string, unknown> | null;
+    repeatStep?: string;
+    repeatCount?: number;
+    setRepeatStep?: (s: string) => void;
+    clearRepeat?: () => void;
+    startRepeat?: (target: Record<string, unknown>) => void;
+    ackRepeat?: () => void;
+  };
+
   const repeatTarget = repeatApi?.repeatTarget ?? null;
   const repeatStep = repeatApi?.repeatStep ?? "idle";
   const repeatCount = repeatApi?.repeatCount ?? 0;
@@ -1028,7 +1051,7 @@ export default function MercyAIHost() {
         if (
           typeof navigator !== "undefined" &&
           "onLine" in navigator &&
-          (navigator as any).onLine === false
+          navigator.onLine === false
         ) {
           return;
         }
@@ -1053,13 +1076,16 @@ export default function MercyAIHost() {
       const BATCH_SIZE = 10;
       const batch = qAll.slice(0, BATCH_SIZE);
 
-      const c = (ctx as any) ?? {};
-      const rid = c?.roomId ?? roomIdFromUrl ?? undefined;
+      const c = (ctx as Record<string, unknown> | null) ?? null;
+      const rid =
+        (typeof c?.roomId === "string" ? c.roomId : undefined) ??
+        roomIdFromUrl ??
+        undefined;
 
       const payload = toFeedbackPayload({
         appKey,
         client: {
-          version: "MB-BLUE-101.7i",
+          version: "MB-BLUE-101.7j",
           buildTime: "2026-03-08T00:00:00.000Z",
         },
         actor: {
@@ -1072,8 +1098,8 @@ export default function MercyAIHost() {
           mode,
           contextLine,
           roomId: rid,
-          entryId: c?.entryId ?? undefined,
-          keyword: c?.keyword ?? undefined,
+          entryId: typeof c?.entryId === "string" ? c.entryId : undefined,
+          keyword: typeof c?.keyword === "string" ? c.keyword : undefined,
           repeat: {
             active: Boolean(repeatTarget),
             step: String(repeatStep ?? "idle"),
@@ -1128,7 +1154,7 @@ export default function MercyAIHost() {
 
         let acceptedCount = batch.length;
         try {
-          const j = await r.json();
+          const j = (await r.json()) as { acceptedCount?: unknown };
           if (typeof j?.acceptedCount === "number") {
             acceptedCount = Math.max(0, Math.min(batch.length, j.acceptedCount));
           }
@@ -1235,7 +1261,7 @@ export default function MercyAIHost() {
       const { msgId, vote, reason, assistantText } = args;
 
       const lastUser = [...messages].reverse().find((m) => m.role === "user")?.text ?? "";
-      const c = (ctx as any) ?? {};
+      const c = (ctx as Record<string, unknown> | null) ?? {};
 
       setFeedbackState((prev) => {
         const existing = prev[msgId];
@@ -1257,17 +1283,19 @@ export default function MercyAIHost() {
         lang,
         mode,
         path: location.pathname || "/",
-        roomId: c?.roomId ?? roomIdFromUrl ?? undefined,
-        entryId: c?.entryId ?? undefined,
-        keyword: c?.keyword ?? undefined,
+        roomId:
+          (typeof c.roomId === "string" ? c.roomId : undefined) ??
+          roomIdFromUrl ??
+          undefined,
+        entryId: typeof c.entryId === "string" ? c.entryId : undefined,
+        keyword: typeof c.keyword === "string" ? c.keyword : undefined,
         contextLine,
         msgId,
         vote,
         reason,
         assistantSnippet: clip(assistantText ?? "", 280),
         lastUserSnippet: clip(lastUser, 180),
-        repeatStep:
-          typeof repeatApi?.repeatStep === "string" ? repeatApi.repeatStep : String(repeatStep ?? ""),
+        repeatStep: String(repeatStep ?? ""),
         repeatCount: typeof repeatCount === "number" ? repeatCount : undefined,
       };
 
@@ -1285,7 +1313,6 @@ export default function MercyAIHost() {
       contextLine,
       messages,
       pushFeedback,
-      repeatApi,
       repeatStep,
       repeatCount,
     ],
@@ -1319,7 +1346,7 @@ export default function MercyAIHost() {
     if (isAdmin) return;
 
     const onEvt = (evt: Event) => {
-      const ce = evt as CustomEvent<any>;
+      const ce = evt as CustomEvent<Record<string, unknown> | null>;
       const detail = ce?.detail ?? null;
       if (!detail) return;
 
@@ -1327,27 +1354,31 @@ export default function MercyAIHost() {
       seedIfEmpty(mode);
 
       const target = {
-        text_en: detail.text_en ?? detail.textEn ?? "",
-        text_vi: detail.text_vi ?? detail.textVi ?? "",
-        audio_url: detail.audio_url ?? detail.audioUrl ?? "",
-        room_id: detail.room_id ?? detail.roomId ?? "",
-        entry_id: detail.entry_id ?? detail.entryId ?? "",
-        keyword: detail.keyword ?? "",
-        roomId: detail.roomId ?? detail.room_id ?? "",
-        entryId: detail.entryId ?? detail.entry_id ?? "",
+        text_en: typeof detail.text_en === "string" ? detail.text_en : typeof detail.textEn === "string" ? detail.textEn : "",
+        text_vi: typeof detail.text_vi === "string" ? detail.text_vi : typeof detail.textVi === "string" ? detail.textVi : "",
+        audio_url:
+          typeof detail.audio_url === "string" ? detail.audio_url : typeof detail.audioUrl === "string" ? detail.audioUrl : "",
+        room_id:
+          typeof detail.room_id === "string" ? detail.room_id : typeof detail.roomId === "string" ? detail.roomId : "",
+        entry_id:
+          typeof detail.entry_id === "string" ? detail.entry_id : typeof detail.entryId === "string" ? detail.entryId : "",
+        keyword: typeof detail.keyword === "string" ? detail.keyword : "",
+        roomId: typeof detail.roomId === "string" ? detail.roomId : typeof detail.room_id === "string" ? detail.room_id : "",
+        entryId:
+          typeof detail.entryId === "string" ? detail.entryId : typeof detail.entry_id === "string" ? detail.entry_id : "",
       };
 
       startRepeat(target);
       setRepeatSeenAt(Date.now());
 
       setCtx((prev) => ({
-        ...(prev as any),
-        roomId: target.roomId || (prev as any)?.roomId,
-        entryId: target.entryId || (prev as any)?.entryId,
-        keyword: target.keyword || (prev as any)?.keyword,
-        focus_en: (String(target.text_en ?? "").trim() || (prev as any)?.focus_en) as any,
-        focus_vi: (String(target.text_vi ?? "").trim() || (prev as any)?.focus_vi) as any,
-      }));
+        ...(prev as Record<string, unknown>),
+        roomId: target.roomId || (prev as Record<string, unknown>)?.roomId,
+        entryId: target.entryId || (prev as Record<string, unknown>)?.entryId,
+        keyword: target.keyword || (prev as Record<string, unknown>)?.keyword,
+        focus_en: String(target.text_en ?? "").trim() || (prev as Record<string, unknown>)?.focus_en,
+        focus_vi: String(target.text_vi ?? "").trim() || (prev as Record<string, unknown>)?.focus_vi,
+      }) as HostContext);
 
       if (target.audio_url) setRepeatStep("play");
       else setRepeatStep("your_turn");
@@ -1360,9 +1391,10 @@ export default function MercyAIHost() {
   const repeatCoach = useMemo(() => {
     if (!repeatTarget) return null;
 
-    const en = (repeatTarget.text_en ?? "").trim();
-    const vi = (repeatTarget.text_vi ?? "").trim();
-    const keyword = (repeatTarget.keyword ?? "").trim();
+    const target = repeatTarget as Record<string, unknown>;
+    const en = (typeof target.text_en === "string" ? target.text_en : "").trim();
+    const vi = (typeof target.text_vi === "string" ? target.text_vi : "").trim();
+    const keyword = (typeof target.keyword === "string" ? target.keyword : "").trim();
 
     const words = en ? en.split(/\s+/).filter(Boolean).length : 0;
     const bucket: "short" | "medium" | "long" =
@@ -1397,7 +1429,6 @@ export default function MercyAIHost() {
             : "One breath. Clear endings.";
 
     const kwHint = keyword && lang === "vi" ? `Từ khóa: ${keyword}` : keyword ? `Keyword: ${keyword}` : null;
-
     const showEn = en || null;
     const showVi = vi || null;
 
@@ -1410,9 +1441,10 @@ export default function MercyAIHost() {
     if (!repeatTarget) return;
     if (repeatStep !== "your_turn") return;
 
-    const key = `${repeatTarget.roomId ?? repeatTarget.room_id ?? ""}|${
-      repeatTarget.entryId ?? repeatTarget.entry_id ?? ""
-    }|${repeatTarget.keyword ?? ""}|${repeatSeenAt ?? ""}|your_turn`;
+    const target = repeatTarget as Record<string, unknown>;
+    const key = `${String(target.roomId ?? target.room_id ?? "")}|${String(
+      target.entryId ?? target.entry_id ?? "",
+    )}|${String(target.keyword ?? "")}|${repeatSeenAt ?? ""}|your_turn`;
     if (repeatNudgedKeyRef.current === key) return;
 
     repeatNudgeTimerRef.current = window.setTimeout(() => {
@@ -1436,10 +1468,13 @@ export default function MercyAIHost() {
   const makeReplyRaw = useMakeReply();
 
   const makeReplyFn = useMemo(() => {
-    if (typeof makeReplyRaw === "function") return makeReplyRaw as any;
-    const maybe = makeReplyRaw as any;
-    if (typeof maybe?.makeReply === "function") return maybe.makeReply as any;
-    if (typeof maybe?.default === "function") return maybe.default as any;
+    if (typeof makeReplyRaw === "function") return makeReplyRaw;
+    const maybe = makeReplyRaw as {
+      makeReply?: typeof makeReplyRaw;
+      default?: typeof makeReplyRaw;
+    };
+    if (typeof maybe?.makeReply === "function") return maybe.makeReply;
+    if (typeof maybe?.default === "function") return maybe.default;
     return null;
   }, [makeReplyRaw]);
 
@@ -1479,9 +1514,11 @@ export default function MercyAIHost() {
   }, []);
 
   const rollingSummary = useMemo(() => {
-    const c = (ctx as any) ?? {};
-    const rid = c?.roomId ?? roomIdFromUrl;
-    const kw = c?.keyword ?? "";
+    const c = (ctx as Record<string, unknown> | null) ?? {};
+    const rid =
+      (typeof c.roomId === "string" ? c.roomId : undefined) ??
+      roomIdFromUrl;
+    const kw = typeof c.keyword === "string" ? c.keyword : "";
     return buildRollingSummary({
       lang,
       mode,
@@ -1496,16 +1533,16 @@ export default function MercyAIHost() {
 
   const callMercyAi = useCallback(
     async (userText: string) => {
-      const c = (ctx as any) ?? {};
+      const c = (ctx as Record<string, unknown> | null) ?? {};
       const payload = {
         userText,
         lang,
         summary: rollingSummary,
         context: {
-          roomId: c?.roomId ?? roomIdFromUrl ?? "",
-          roomTitle: c?.roomTitle ?? "",
-          keyword: c?.keyword ?? "",
-          entryId: c?.entryId ?? "",
+          roomId: (typeof c.roomId === "string" ? c.roomId : roomIdFromUrl) ?? "",
+          roomTitle: typeof c.roomTitle === "string" ? c.roomTitle : "",
+          keyword: typeof c.keyword === "string" ? c.keyword : "",
+          entryId: typeof c.entryId === "string" ? c.entryId : "",
         },
         history: messages.slice(-4).map((m) => ({ role: m.role, text: m.text })),
       };
@@ -1517,7 +1554,7 @@ export default function MercyAIHost() {
       });
 
       if (!r.ok) throw new Error(`mercy-ai http ${r.status}`);
-      const j = await r.json();
+      const j = (await r.json()) as { text?: unknown };
       const text = norm(j?.text);
       return text || null;
     },
@@ -1650,8 +1687,8 @@ export default function MercyAIHost() {
             if (typeof next.step === "number") setTestStep(next.step as 0 | 1 | 2 | 3);
             if (typeof next.score === "number") setTestScore(next.score);
           },
-          onSetRepeatStep: (s: any) => setRepeatStep(s),
-          onTriggerHeart: (k: any) => triggerHeart(String(k)),
+          onSetRepeatStep: (s: string) => setRepeatStep(s),
+          onTriggerHeart: (k: string) => triggerHeart(String(k)),
           onClearHeart: () => clearHeart(),
         });
 
@@ -1788,11 +1825,11 @@ export default function MercyAIHost() {
 
   const safeActions = Array.isArray(actions) ? actions : [];
 
-  (useDevHostState as any)({
+  useDevHostState({
     open,
     mode,
     page: location.pathname,
-    roomId: (ctx as any)?.roomId ?? roomIdFromUrl,
+    roomId: ((ctx as Record<string, unknown> | null)?.roomId as string | undefined) ?? roomIdFromUrl,
     ctx,
     isTyping,
     messagesCount: messages.length,
@@ -1825,7 +1862,8 @@ export default function MercyAIHost() {
   const repeatPrimaryAction = useMemo(() => {
     if (!repeatTarget) return null;
 
-    const hasAudio = Boolean(repeatTarget.audio_url);
+    const target = repeatTarget as Record<string, unknown>;
+    const hasAudio = Boolean(target.audio_url);
     const step = repeatStep;
 
     if (step === "play") {
@@ -1880,7 +1918,7 @@ export default function MercyAIHost() {
 
   const hasAnyVoice = typeof speak === "function" || canBrowserSpeak();
 
-  const chipStyle = {
+  const chipStyle: React.CSSProperties = {
     borderRadius: 999,
     border: "1px solid rgba(0,0,0,0.12)",
     background: "#fff",
@@ -1889,7 +1927,7 @@ export default function MercyAIHost() {
     fontWeight: 800,
     cursor: "pointer",
     color: "rgba(0,0,0,0.78)",
-  } as React.CSSProperties;
+  };
 
   const ui = open ? (
     <div
@@ -2421,7 +2459,7 @@ export default function MercyAIHost() {
             ) : null}
 
             <div style={{ marginTop: 12, display: "flex", flexWrap: "wrap", gap: 8 }}>
-              {safeActions.map((a: any) => (
+              {safeActions.map((a: { id: string; onClick: () => void; description?: string; label: string }) => (
                 <button
                   key={a.id}
                   type="button"

@@ -1,3 +1,4 @@
+// src/providers/AuthProvider.tsx
 /**
  * MercyBlade Blue — Auth Provider (SINGLE SESSION SOURCE OF TRUTH)
  * Path: src/providers/AuthProvider.tsx
@@ -14,17 +15,25 @@
  * RULE:
  * - Must use canonical client: "@/lib/supabaseClient"
  * - DEV ONLY may log JWT for debugging
+ *
+ * PERF PATCH (2026-03-08):
+ * - Remove eager module-scope Supabase import.
+ * - Lazy-load Supabase client inside provider effects/actions.
+ * - Keeps provider behavior the same while reducing top-level startup pressure.
  */
 
 import React, {
   createContext,
+  useCallback,
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from "react";
 import type { Session, User } from "@supabase/supabase-js";
-import { supabase } from "@/lib/supabaseClient";
+
+type SupabaseClientType = typeof import("@/lib/supabaseClient")["supabase"];
 
 type AuthContextValue = {
   session: Session | null;
@@ -36,20 +45,34 @@ type AuthContextValue = {
 
 const AuthContext = createContext<AuthContextValue | undefined>(undefined);
 
+let supabaseClientPromise: Promise<SupabaseClientType> | null = null;
+
+async function getSupabaseClient(): Promise<SupabaseClientType> {
+  if (!supabaseClientPromise) {
+    supabaseClientPromise = import("@/lib/supabaseClient").then(
+      (mod) => mod.supabase
+    );
+  }
+  return supabaseClientPromise;
+}
+
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [session, setSession] = useState<Session | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  const refreshSession = async () => {
+  const unsubRef = useRef<null | (() => void)>(null);
+
+  const refreshSession = useCallback(async () => {
     try {
+      const supabase = await getSupabaseClient();
       const { data, error } = await supabase.auth.getSession();
+
       if (error && import.meta.env.DEV) {
         console.warn("[auth] getSession failed:", error.message);
       }
 
       setSession(data?.session ?? null);
 
-      // 🔑 DEV ONLY: explicit JWT visibility
       if (import.meta.env.DEV && data?.session?.access_token) {
         console.log("[JWT]", data.session.access_token);
       }
@@ -59,52 +82,79 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }
       setSession(null);
     }
-  };
+  }, []);
 
-  const signOut = async () => {
+  const signOut = useCallback(async () => {
     try {
+      const supabase = await getSupabaseClient();
       await supabase.auth.signOut();
     } finally {
-      // Immediate UI update even if provider cleanup is slow
       setSession(null);
     }
-  };
+  }, []);
 
   useEffect(() => {
     let mounted = true;
 
-    const boot = async () => {
-      await refreshSession();
-      if (mounted) setIsLoading(false);
-    };
+    void (async () => {
+      try {
+        const supabase = await getSupabaseClient();
 
-    boot();
-
-    const { data: sub } = supabase.auth.onAuthStateChange(
-      (event, newSession) => {
+        const { data, error } = await supabase.auth.getSession();
         if (!mounted) return;
 
-        if (import.meta.env.DEV) {
-          console.log(
-            "[auth] onAuthStateChange:",
-            event,
-            newSession?.user?.id ?? "(no-user)"
-          );
-
-          if (newSession?.access_token) {
-            console.log("[JWT]", newSession.access_token);
-          }
+        if (error && import.meta.env.DEV) {
+          console.warn("[auth] getSession failed:", error.message);
         }
 
-        setSession(newSession ?? null);
+        setSession(data?.session ?? null);
+
+        if (import.meta.env.DEV && data?.session?.access_token) {
+          console.log("[JWT]", data.session.access_token);
+        }
+
+        const { data: sub } = supabase.auth.onAuthStateChange(
+          (event, newSession) => {
+            if (!mounted) return;
+
+            if (import.meta.env.DEV) {
+              console.log(
+                "[auth] onAuthStateChange:",
+                event,
+                newSession?.user?.id ?? "(no-user)"
+              );
+
+              if (newSession?.access_token) {
+                console.log("[JWT]", newSession.access_token);
+              }
+            }
+
+            setSession(newSession ?? null);
+          }
+        );
+
+        unsubRef.current = () => {
+          sub?.subscription?.unsubscribe();
+        };
+      } catch (err) {
+        if (import.meta.env.DEV) {
+          console.warn("[auth] boot crashed:", err);
+        }
+        if (mounted) {
+          setSession(null);
+        }
+      } finally {
+        if (mounted) {
+          setIsLoading(false);
+        }
       }
-    );
+    })();
 
     return () => {
       mounted = false;
-      sub?.subscription?.unsubscribe();
+      unsubRef.current?.();
+      unsubRef.current = null;
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const value = useMemo<AuthContextValue>(
@@ -115,14 +165,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       refreshSession,
       signOut,
     }),
-    [session, isLoading]
+    [session, isLoading, refreshSession, signOut]
   );
 
-  return (
-    <AuthContext.Provider value={value}>
-      {children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
 export function useAuth() {

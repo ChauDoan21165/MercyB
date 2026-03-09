@@ -5,27 +5,52 @@ import { useUserAccess } from "@/hooks/useUserAccess";
 
 type Props = { children: React.ReactNode };
 
+type AccessIdentity = {
+  email?: string;
+  userId?: string;
+  user?: {
+    email?: string;
+    id?: string;
+  };
+};
+
+function readAccessIdentity(value: unknown): AccessIdentity {
+  if (!value || typeof value !== "object") return {};
+
+  const obj = value as Record<string, unknown>;
+  const userRaw = obj.user;
+  const user =
+    userRaw && typeof userRaw === "object"
+      ? (userRaw as Record<string, unknown>)
+      : undefined;
+
+  return {
+    email: typeof obj.email === "string" ? obj.email : undefined,
+    userId: typeof obj.userId === "string" ? obj.userId : undefined,
+    user: user
+      ? {
+          email: typeof user.email === "string" ? user.email : undefined,
+          id: typeof user.id === "string" ? user.id : undefined,
+        }
+      : undefined,
+  };
+}
+
 export default function AdminRoute({ children }: Props) {
   const access = useUserAccess();
   const location = useLocation();
 
-  const loading = !!(access.loading || access.isLoading);
-  const isAdmin = !!(
+  const loading = Boolean(access.loading || access.isLoading);
+  const isAdmin = Boolean(
     access.isAdmin ||
-    access.isHighAdmin ||
-    (access.adminLevel ?? 0) >= 1
+      access.isHighAdmin ||
+      (access.adminLevel ?? 0) >= 1
   );
 
-  // Safely derive identity fields without assuming specific properties exist
-  const email =
-    (access as any)?.email ??
-    (access as any)?.user?.email ??
-    undefined;
+  const identity = readAccessIdentity(access);
 
-  const userId =
-    (access as any)?.userId ??
-    (access as any)?.user?.id ??
-    undefined;
+  const email = identity.email ?? identity.user?.email;
+  const userId = identity.userId ?? identity.user?.id;
 
   if (loading) {
     return (

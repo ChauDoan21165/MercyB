@@ -19,6 +19,12 @@
 // - Canonical pricing route is /pricing.
 // - /upgrade is deprecated: hard-normalize it to /pricing BEFORE React Router mounts.
 //   (This avoids 404 loops if any code/edge redirects still send users to /upgrade.)
+//
+// ✅ PERF PATCH (2026-03-08):
+// - Remove eager supabase import from the main entry.
+// - DEV-only Supabase console exposure is now dynamic-imported.
+// - Private audio resolver installer is also dynamic-imported.
+// - This reduces initial-path pressure and avoids pulling extra supabase/debug code into startup here.
 
 import React from "react";
 import ReactDOM from "react-dom/client";
@@ -30,15 +36,11 @@ import "@/index.css";
 // ✅ AUTH PROVIDER (required for /admin)
 import { AuthProvider } from "@/providers/AuthProvider";
 
-// ✅ Supabase client (DEV console debugging)
-import { supabase } from "@/lib/supabaseClient";
-
-// ✅ Private audio seam (optional resolver installer)
-import { installDefaultPrivateAudioResolver } from "@/lib/privateAudioResolver";
+type SupabaseModule = typeof import("@/lib/supabaseClient");
 
 declare global {
   interface Window {
-    supabase?: typeof supabase;
+    supabase?: SupabaseModule["supabase"];
 
     // ✅ Optional private-audio resolver hook (TalkingFacePlayButton seam)
     // Installed by installDefaultPrivateAudioResolver().
@@ -58,7 +60,7 @@ declare global {
 }
 
 // ✅ ENTRY TRUTH BEACON (debug)
-const MB_ENTRY_VERSION = "2026-03-02-main-upgrade-to-pricing-v1";
+const MB_ENTRY_VERSION = "2026-03-08-main-lazy-debug-v1";
 try {
   window.__MB_ENTRY_VERSION__ = MB_ENTRY_VERSION;
 } catch {
@@ -76,7 +78,6 @@ const devLog = (...args: unknown[]) => {
     try {
       if (typeof document === "undefined" || !document.body) return null;
 
-      // Prefer window-stored node (HMR-safe)
       if (
         window.__MB_FATAL_OVERLAY_EL__ &&
         document.body.contains(window.__MB_FATAL_OVERLAY_EL__)
@@ -84,14 +85,14 @@ const devLog = (...args: unknown[]) => {
         return window.__MB_FATAL_OVERLAY_EL__;
       }
 
-      // Reuse existing DOM node if present
-      const existing = document.querySelector<HTMLDivElement>('[data-mb-fatal-overlay="1"]');
+      const existing = document.querySelector<HTMLDivElement>(
+        '[data-mb-fatal-overlay="1"]'
+      );
       if (existing) {
         window.__MB_FATAL_OVERLAY_EL__ = existing;
         return existing;
       }
 
-      // Create once
       const el = document.createElement("div");
       el.setAttribute("data-mb-fatal-overlay", "1");
       document.body.appendChild(el);
@@ -104,9 +105,6 @@ const devLog = (...args: unknown[]) => {
 
   const mount = (title: string, err: unknown) => {
     try {
-      // IMPORTANT:
-      // Do NOT touch #root (no innerHTML="") — that can race React and *cause* removeChild NotFoundError.
-      // Render overlay into its own DOM node attached to body.
       const overlayRoot = getOverlayRoot();
       if (!overlayRoot) return;
 
@@ -119,7 +117,6 @@ const devLog = (...args: unknown[]) => {
 
       const msg = `${title}\n\n${message}\n\nURL: ${window.location.href}`;
 
-      // Ensure visible + topmost
       overlayRoot.innerHTML = "";
 
       const wrap = document.createElement("div");
@@ -143,7 +140,6 @@ const devLog = (...args: unknown[]) => {
       wrap.appendChild(pre);
       overlayRoot.appendChild(wrap);
 
-      // mark shown (avoid re-entrant spam loops)
       window.__MB_FATAL_OVERLAY_SHOWN__ = true;
     } catch {
       // ignore overlay failures
@@ -151,7 +147,6 @@ const devLog = (...args: unknown[]) => {
   };
 
   window.addEventListener("error", (e: ErrorEvent) => {
-    // Allow first render; after that, avoid re-entrant storms.
     if (window.__MB_FATAL_OVERLAY_SHOWN__) return;
     mount("[MB FATAL] window.error", e.error ?? e.message);
   });
@@ -193,12 +188,10 @@ const devLog = (...args: unknown[]) => {
     const url = new URL(redirect);
     let next = `${url.pathname}${url.search}${url.hash}`;
 
-    // ✅ Normalize legacy /upgrade deep links to canonical /pricing
     if (url.pathname === "/upgrade") {
       next = `/pricing${url.search}${url.hash}`;
     }
 
-    // Avoid looping if already at the same path
     if (window.location.pathname + window.location.search + window.location.hash !== next) {
       window.history.replaceState(null, "", next);
     }
@@ -208,22 +201,35 @@ const devLog = (...args: unknown[]) => {
 })();
 
 // ✅ DEV: expose supabase to window for console debugging
+// PERF: dynamic import so main entry does not eagerly pull supabase here.
 (function exposeSupabaseForDebug() {
   try {
     if (!import.meta.env.DEV) return;
-    window.supabase = supabase;
-    devLog("[MB DEV] window.supabase attached");
+
+    void import("@/lib/supabaseClient")
+      .then((mod) => {
+        window.supabase = mod.supabase;
+        devLog("[MB DEV] window.supabase attached");
+      })
+      .catch(() => {
+        // ignore
+      });
   } catch {
     // ignore
   }
 })();
 
 // ✅ Install private-audio resolver seam (safe / optional)
-// - If Edge function isn't deployed yet, private: keys will remain "Locked" in UI.
-// - Public /audio/... continues unchanged.
+// PERF: dynamic import so it does not weigh on first parse unless needed.
 (function installPrivateAudioSeam() {
   try {
-    installDefaultPrivateAudioResolver();
+    void import("@/lib/privateAudioResolver")
+      .then((mod) => {
+        mod.installDefaultPrivateAudioResolver();
+      })
+      .catch(() => {
+        // never block boot
+      });
   } catch {
     // never block boot
   }
@@ -236,12 +242,8 @@ if (!root) {
 }
 
 // ✅ HMR-safe singleton root
-// Vite HMR can re-run this module; creating a second root on the same container
-// triggers React DOM reconciliation races (removeChild NotFoundError).
 const w = window;
 
-// If the root element was replaced (rare), recreate the root once for the new element.
-// Otherwise reuse the existing root instance.
 if (!w.__MB_REACT_ROOT__ || w.__MB_REACT_ROOT_EL__ !== root) {
   w.__MB_REACT_ROOT__ = ReactDOM.createRoot(root);
   w.__MB_REACT_ROOT_EL__ = root;
