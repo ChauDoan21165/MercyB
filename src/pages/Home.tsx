@@ -84,6 +84,12 @@
 // - Remove hardcoded first-room fallback ids like sleep_basics/anxiety_intro.
 // - Only route to /room/:id when the room id was actually found from the live rooms query.
 // - Otherwise route safely to /rooms.
+//
+// COPY / UX PATCH (2026-03-08f):
+// - Stronger launch copy focused on "Think in English. Calmly."
+// - Simpler CTA structure: Start free + 2-minute reassurance
+// - Replace VIP 1..9 wording with Free / Full Access / Lifetime language
+// - Keep existing logic / layout system / progress cards intact
 
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -474,12 +480,40 @@ export default function Home() {
     padding: "22px 16px",
   };
 
+  const heroCard: React.CSSProperties = {
+    marginTop: 18,
+    borderRadius: 20,
+    border: "1px solid rgba(0,0,0,0.08)",
+    background:
+      "linear-gradient(180deg, rgba(255,255,255,0.95), rgba(235,247,255,0.88))",
+    padding: "28px 18px",
+    textAlign: "center",
+    boxShadow: "0 12px 30px rgba(0,0,0,0.06)",
+  };
+
   const blockTitle: React.CSSProperties = {
     margin: 0,
     fontSize: 28,
     fontWeight: 900,
     color: "rgba(15,15,15,0.90)",
     letterSpacing: -0.4,
+  };
+
+  const heroTitle: React.CSSProperties = {
+    margin: 0,
+    fontSize: 34,
+    fontWeight: 950,
+    color: "rgba(0,0,0,0.90)",
+    letterSpacing: -0.8,
+    lineHeight: 1.1,
+  };
+
+  const heroSub: React.CSSProperties = {
+    marginTop: 12,
+    fontSize: 18,
+    color: "rgba(0,0,0,0.68)",
+    fontWeight: 700,
+    lineHeight: 1.6,
   };
 
   const h3: React.CSSProperties = {
@@ -539,6 +573,13 @@ export default function Home() {
     flexWrap: "wrap",
   };
 
+  const heroCtaHint: React.CSSProperties = {
+    marginTop: 10,
+    fontSize: 13,
+    color: "rgba(0,0,0,0.55)",
+    fontWeight: 800,
+  };
+
   const primaryBtn: React.CSSProperties = {
     padding: "14px 22px",
     borderRadius: 16,
@@ -558,7 +599,7 @@ export default function Home() {
     color: "rgba(0,0,0,0.72)",
     fontWeight: 900,
     cursor: "pointer",
-    minWidth: 320,
+    minWidth: 240,
   };
 
   const bottomDockOuter: React.CSSProperties = {
@@ -653,6 +694,80 @@ export default function Home() {
               loading="eager"
               decoding="async"
             />
+          </div>
+
+          <div style={heroCard}>
+            <div style={langTag}>EN</div>
+            <h1 style={heroTitle}>Think in English. Calmly.</h1>
+            <div style={heroSub}>
+              Mercy Blade is a quiet space where you practice thinking about life
+              in English.
+              <br />
+              Not grammar drills. Not pressure. Not noise.
+              <br />
+              Just one room, one reflection, one small step forward.
+            </div>
+
+            <div style={ctaRow}>
+              <button type="button" style={primaryBtn} onClick={goFirstRoom}>
+                👉 Start free
+              </button>
+
+              <button
+                type="button"
+                style={secondaryBtn}
+                onClick={() => nav(ROUTE_PRICING)}
+              >
+                💎 Pricing
+              </button>
+
+              <button
+                type="button"
+                style={secondaryBtn}
+                onClick={() => nav("/rooms")}
+              >
+                👉 Browse all rooms
+              </button>
+            </div>
+
+            <div style={heroCtaHint}>Start with a short room — about 2 minutes.</div>
+
+            <div style={{ ...langTag, marginTop: 18 }}>VI</div>
+            <h2 style={{ ...heroTitle, fontSize: 28 }}>
+              Suy nghĩ bằng tiếng Anh — một cách bình tĩnh.
+            </h2>
+            <div style={heroSub}>
+              Mercy Blade là không gian yên tĩnh để bạn suy nghĩ về cuộc sống bằng
+              tiếng Anh.
+              <br />
+              Không bài tập ngữ pháp. Không áp lực. Không ồn ào.
+              <br />
+              Chỉ một phòng, một suy ngẫm, một bước tiến nhỏ.
+            </div>
+
+            <div style={ctaRow}>
+              <button type="button" style={primaryBtn} onClick={goFirstRoom}>
+                👉 Bắt đầu miễn phí
+              </button>
+
+              <button
+                type="button"
+                style={secondaryBtn}
+                onClick={() => nav(ROUTE_PRICING)}
+              >
+                💎 Bảng giá
+              </button>
+
+              <button
+                type="button"
+                style={secondaryBtn}
+                onClick={() => nav("/rooms")}
+              >
+                👉 Xem tất cả phòng
+              </button>
+            </div>
+
+            <div style={heroCtaHint}>Bắt đầu với một phòng ngắn — khoảng 2 phút.</div>
           </div>
 
           <div style={section} aria-label="Your progress">
@@ -785,20 +900,23 @@ export default function Home() {
           </div>
 
           <div style={band}>
-            <h2 style={blockTitle}>A Gentle Companion for Your Whole Life</h2>
+            <h2 style={blockTitle}>A Quiet Space for Real Life in English</h2>
             <p style={p}>
-              Mercy Blade is a bilingual (English–Vietnamese) companion for real
-              life — health, emotions, money, relationships, work, and meaning.
+              Mercy Blade is a bilingual (English–Vietnamese) space for real life
+              — sleep, confidence, fear, money, relationships, work, and meaning.
             </p>
             <p style={p}>
-              This is not a place to rush or perform. <br />
-              It is a place to slow down, listen, and move forward one small step
-              at a time.
+              You are not here to rush or perform.
+              <br />
+              You are here to slow down, think clearly, and practice English
+              through real human experience.
             </p>
             <p style={p}>
-              No pressure. <br />
-              No judgment. <br />
-              Only clarity, compassion, and steady growth.
+              One room.
+              <br />
+              One reflection.
+              <br />
+              One small step forward.
             </p>
 
             <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
@@ -807,7 +925,7 @@ export default function Home() {
                 style={{ ...primaryBtn, minWidth: 240 }}
                 onClick={goFirstRoom}
               >
-                👉 Enter your first room
+                👉 Start free
               </button>
 
               <button
@@ -829,20 +947,24 @@ export default function Home() {
 
             <div style={{ height: 18 }} />
 
-            <h2 style={blockTitle}>Người Đồng Hành Nhẹ Nhàng Cho Cả Cuộc Đời Bạn</h2>
+            <h2 style={blockTitle}>Một Không Gian Yên Tĩnh Cho Cuộc Sống Thật Bằng Tiếng Anh</h2>
             <p style={p}>
-              Mercy Blade là ứng dụng song ngữ (Anh–Việt) đồng hành cùng đời sống
-              thật — sức khỏe, cảm xúc, tiền bạc, mối quan hệ, công việc và ý nghĩa
-              sống.
+              Mercy Blade là không gian song ngữ (Anh–Việt) cho đời sống thật —
+              giấc ngủ, sự tự tin, nỗi sợ, tiền bạc, mối quan hệ, công việc và ý
+              nghĩa sống.
             </p>
             <p style={p}>
-              Đây không phải nơi để chạy đua hay thể hiện. <br />
-              Mà là nơi để chậm lại, lắng nghe, và tiến lên từng bước nhỏ.
+              Đây không phải nơi để chạy đua hay thể hiện.
+              <br />
+              Đây là nơi để chậm lại, suy nghĩ rõ ràng, và luyện tiếng Anh qua
+              trải nghiệm thật của con người.
             </p>
             <p style={p}>
-              Không áp lực. <br />
-              Không phán xét. <br />
-              Chỉ có sự rõ ràng, dịu dàng và tiến bộ bền vững.
+              Một phòng.
+              <br />
+              Một suy ngẫm.
+              <br />
+              Một bước tiến nhỏ.
             </p>
 
             <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
@@ -851,7 +973,7 @@ export default function Home() {
                 style={{ ...primaryBtn, minWidth: 240 }}
                 onClick={goFirstRoom}
               >
-                👉 Vào phòng đầu tiên
+                👉 Bắt đầu miễn phí
               </button>
 
               <button
@@ -867,7 +989,7 @@ export default function Home() {
                 style={{ ...secondaryBtn, minWidth: 240 }}
                 onClick={() => nav("/rooms")}
               >
-                👉 Xem danh sách phòng
+                👉 Xem tất cả phòng
               </button>
             </div>
           </div>
@@ -904,11 +1026,10 @@ export default function Home() {
               {howOpen ? (
                 <>
                   <p style={p}>
-                    You enter <b>rooms</b> — sleep, anxiety, money, relationships,
-                    work, resilience, and more.
+                    You enter short <b>rooms</b> — sleep, anxiety, money,
+                    relationships, work, resilience, and more.
                   </p>
 
-                  <p style={p} />
                   <div style={{ ...p, marginTop: 12 }}>
                     Inside each room:
                     <ul
@@ -932,10 +1053,15 @@ export default function Home() {
                   </div>
 
                   <p style={p}>
-                    You are not “studying English”. You are <b>living with it</b>,
-                    inside real thoughts and real emotions.
+                    You are not just studying English.
+                    <br />
+                    You are <b>thinking in English about real life.</b>
                   </p>
-                  <p style={p}>One card. One breath. One meaningful step.</p>
+                  <p style={p}>
+                    Most rooms take only a few minutes.
+                    <br />
+                    Small daily practice builds deep fluency.
+                  </p>
 
                   {phase0New ? (
                     <div
@@ -951,7 +1077,7 @@ export default function Home() {
                         style={{ ...primaryBtn, minWidth: 240 }}
                         onClick={goFirstRoom}
                       >
-                        👉 Enter your first room
+                        👉 Start free
                       </button>
 
                       <button
@@ -976,8 +1102,8 @@ export default function Home() {
                   <h3 style={h3}>Cách Mercy Blade Hoạt Động</h3>
 
                   <p style={p}>
-                    Bạn bước vào các <b>phòng</b> — giấc ngủ, lo âu, tiền bạc, mối
-                    quan hệ, công việc, sức bền tinh thần…
+                    Bạn bước vào những <b>phòng</b> ngắn — giấc ngủ, lo âu, tiền
+                    bạc, mối quan hệ, công việc, sức bền tinh thần…
                   </p>
 
                   <div style={{ ...p, marginTop: 12 }}>
@@ -1003,10 +1129,16 @@ export default function Home() {
                   </div>
 
                   <p style={p}>
-                    Bạn không “học tiếng Anh” theo nghĩa thông thường. Bạn{" "}
-                    <b>sống cùng nó</b>, trong suy nghĩ và cảm xúc thật.
+                    Bạn không chỉ học tiếng Anh.
+                    <br />
+                    Bạn đang <b>suy nghĩ bằng tiếng Anh về cuộc sống thật.</b>
                   </p>
-                  <p style={p}>Một thẻ. Một hơi thở. Một bước có ý nghĩa.</p>
+                  <p style={p}>
+                    Phần lớn các phòng chỉ mất vài phút.
+                    <br />
+                    Những bước nhỏ mỗi ngày tạo nên khả năng sử dụng ngôn ngữ sâu
+                    sắc.
+                  </p>
 
                   {phase0New ? (
                     <div
@@ -1022,7 +1154,7 @@ export default function Home() {
                         style={{ ...primaryBtn, minWidth: 240 }}
                         onClick={goFirstRoom}
                       >
-                        👉 Vào phòng đầu tiên
+                        👉 Bắt đầu miễn phí
                       </button>
 
                       <button
@@ -1038,14 +1170,14 @@ export default function Home() {
                         style={{ ...secondaryBtn, minWidth: 240 }}
                         onClick={() => nav("/rooms")}
                       >
-                        👉 Xem danh sách phòng
+                        👉 Xem tất cả phòng
                       </button>
                     </div>
                   ) : null}
                 </>
               ) : (
                 <div style={{ ...p, marginTop: 10 }}>
-                  One card. One breath. One meaningful step.{" "}
+                  One room. One reflection. One small step forward.{" "}
                   <span
                     style={{
                       fontWeight: 800,
@@ -1061,75 +1193,89 @@ export default function Home() {
 
           <div style={section}>
             <div style={langTag}>EN</div>
-            <h3 style={h3}>Mercy Host — A Caring Presence</h3>
-            <p style={p}>Mercy Host is a quiet guide that stays with you.</p>
+            <h3 style={h3}>Mercy Host — A Quiet Guide</h3>
+            <p style={p}>Mercy Host is a gentle companion inside the rooms.</p>
             <p style={p}>
-              It knows which room you are in. <br />
-              It knows what you are practicing. <br />
-              It helps you slow down — or continue — when the moment is right.
+              It knows where you are in your journey.
+              <br />
+              It knows what you are practicing.
+              <br />
+              It helps you continue when the moment feels right.
             </p>
             <p style={p}>
-              Over time, Mercy Host remembers your journey and supports your
+              Over time, Mercy Host remembers your path and supports your
               progress.
             </p>
 
             <div style={{ ...langTag, marginTop: 16 }}>VI</div>
             <h3 style={h3}>Mercy Host — Người Hướng Dẫn Dịu Dàng</h3>
-            <p style={p}>Mercy Host là người hướng dẫn yên lặng nhưng luôn ở đó.</p>
+            <p style={p}>Mercy Host là người đồng hành nhẹ nhàng trong các phòng.</p>
             <p style={p}>
-              Mercy Host biết bạn đang ở phòng nào. <br />
-              Biết bạn đang luyện điều gì. <br />
-              Giúp bạn chậm lại — hoặc tiếp tục — đúng lúc.
+              Mercy Host biết bạn đang ở đâu trong hành trình.
+              <br />
+              Biết bạn đang luyện điều gì.
+              <br />
+              Giúp bạn tiếp tục khi thời điểm phù hợp.
             </p>
             <p style={p}>
-              Theo thời gian, Mercy Host ghi nhớ hành trình của bạn và nâng đỡ sự
+              Theo thời gian, Mercy Host ghi nhớ con đường của bạn và hỗ trợ sự
               tiến bộ của bạn.
             </p>
           </div>
 
           <div style={section}>
             <div style={langTag}>EN</div>
-            <h3 style={h3}>The Quiet Hour</h3>
-            <p style={p}>When life feels loud, Mercy Blade offers a simple ritual:</p>
+            <h3 style={h3}>A Small Daily Ritual</h3>
+            <p style={p}>When life feels loud, Mercy Blade offers something simple:</p>
             <p style={p}>
-              One minute. <br />
-              One bilingual card. <br />
+              One room.
+              <br />
+              One reflection.
+              <br />
               One calm breath.
             </p>
             <p style={p}>
-              You don’t force learning. <br />
+              You don’t force learning.
+              <br />
               You let understanding arrive.
             </p>
 
             <div style={{ ...langTag, marginTop: 16 }}>VI</div>
-            <h3 style={h3}>Giờ Lặng</h3>
+            <h3 style={h3}>Một Nghi Thức Nhỏ Mỗi Ngày</h3>
             <p style={p}>
-              Khi cuộc sống trở nên ồn ào, Mercy Blade mang đến một nghi thức đơn
-              giản:
+              Khi cuộc sống trở nên ồn ào, Mercy Blade mang đến một điều đơn giản:
             </p>
             <p style={p}>
-              Một phút. <br />
-              Một thẻ song ngữ. <br />
-              Một hơi thở yên tĩnh.
+              Một phòng.
+              <br />
+              Một suy ngẫm.
+              <br />
+              Một hơi thở bình tĩnh.
             </p>
             <p style={p}>
-              Bạn không ép mình phải học. <br />
+              Bạn không ép mình phải học.
+              <br />
               Bạn để sự hiểu biết tự đến.
             </p>
           </div>
 
           <div style={section}>
             <div style={langTag}>EN</div>
-            <h3 style={h3}>Free, and Growing With You</h3>
-            <p style={p}>Mercy Blade is free to begin.</p>
+            <h3 style={h3}>Free to Begin. Ready to Grow With You.</h3>
             <p style={p}>
-              When you are ready to go deeper, you can choose to unlock more rooms
-              and guidance — from <b>VIP 1</b> to <b>VIP 9</b>.
+              You can begin with free rooms and feel the atmosphere of Mercy Blade.
             </p>
             <p style={p}>
-              No rush. <br />
-              No obligation. <br />
-              You move forward when <i>you</i> are ready.
+              When you are ready to go deeper, you can unlock <b>Full Access</b>
+              for your journey — or choose <b>Lifetime</b> and keep Mercy Blade
+              with you for the long term.
+            </p>
+            <p style={p}>
+              No rush.
+              <br />
+              No obligation.
+              <br />
+              Move forward when you are ready.
             </p>
 
             <div style={{ marginTop: 12, display: "flex", gap: 10, flexWrap: "wrap" }}>
@@ -1144,31 +1290,37 @@ export default function Home() {
               <button
                 type="button"
                 style={{ ...secondaryBtn, minWidth: 240 }}
-                onClick={() => nav("/tiers")}
+                onClick={() => nav(ROUTE_PRICING)}
               >
-                👉 See learning paths
+                💎 Pricing
               </button>
 
               <button
                 type="button"
                 style={{ ...secondaryBtn, minWidth: 240 }}
-                onClick={() => nav(ROUTE_PRICING)}
+                onClick={() => nav("/rooms")}
               >
-                💎 Pricing
+                👉 Browse all rooms
               </button>
             </div>
 
             <div style={{ ...langTag, marginTop: 16 }}>VI</div>
-            <h3 style={h3}>Miễn Phí, và Lớn Lên Cùng Bạn</h3>
-            <p style={p}>Mercy Blade miễn phí để bắt đầu.</p>
+            <h3 style={h3}>Bắt Đầu Miễn Phí. Sẵn Sàng Lớn Lên Cùng Bạn.</h3>
             <p style={p}>
-              Khi bạn muốn đi sâu hơn, bạn có thể mở thêm phòng và sự hướng dẫn —
-              từ <b>VIP 1</b> đến <b>VIP 9</b>.
+              Bạn có thể bắt đầu với các phòng miễn phí để cảm nhận không khí của
+              Mercy Blade.
             </p>
             <p style={p}>
-              Không vội. <br />
-              Không ép buộc. <br />
-              Bạn tiến lên khi <i>bạn</i> sẵn sàng.
+              Khi bạn muốn đi sâu hơn, bạn có thể mở khóa <b>Toàn Quyền Truy Cập</b>
+              cho hành trình của mình — hoặc chọn <b>Trọn Đời</b> để Mercy Blade
+              đồng hành cùng bạn lâu dài.
+            </p>
+            <p style={p}>
+              Không vội.
+              <br />
+              Không ép buộc.
+              <br />
+              Tiến lên khi bạn sẵn sàng.
             </p>
 
             <div style={{ marginTop: 12, display: "flex", gap: 10, flexWrap: "wrap" }}>
@@ -1183,17 +1335,17 @@ export default function Home() {
               <button
                 type="button"
                 style={{ ...secondaryBtn, minWidth: 240 }}
-                onClick={() => nav("/tiers")}
+                onClick={() => nav(ROUTE_PRICING)}
               >
-                👉 Xem lộ trình học
+                💎 Bảng giá
               </button>
 
               <button
                 type="button"
                 style={{ ...secondaryBtn, minWidth: 240 }}
-                onClick={() => nav(ROUTE_PRICING)}
+                onClick={() => nav("/rooms")}
               >
-                💎 Bảng giá
+                👉 Xem tất cả phòng
               </button>
             </div>
           </div>
@@ -1201,6 +1353,7 @@ export default function Home() {
           <div style={ctaBand}>
             <h2 style={ctaTitle}>Start gently — one room at a time.</h2>
             <div style={ctaSub}>Bắt đầu nhẹ nhàng — từng phòng một.</div>
+            <div style={heroCtaHint}>Start free with a short room — about 2 minutes.</div>
 
             <div style={ctaRow}>
               <button type="button" style={primaryBtn} onClick={goFirstRoom}>
@@ -1218,9 +1371,9 @@ export default function Home() {
               <button
                 type="button"
                 style={secondaryBtn}
-                onClick={() => nav("/tiers")}
+                onClick={() => nav("/rooms")}
               >
-                👉 See learning paths
+                👉 Browse all rooms
               </button>
 
               <button
