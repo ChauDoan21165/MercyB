@@ -65,12 +65,12 @@
 // - Keep /upgrade route BUT render UpgradePage (which renders the SAME Pricing table UI).
 //   This avoids 404 loops even if old links or 403 redirects still go to /upgrade.
 //
-// ✅ PATCH (2026-03-08):
-// - Safely lazy-load non-home, non-chat, non-login routes to reduce startup bundle size.
-// - Keep Home, LoginPage, ChatHub, MercyAIHost eager for low-risk first-pass optimization.
-// - Wrap route tree in Suspense with a simple loading fallback.
+// ✅ PERF PATCH:
+// - Route pages are lazy-loaded to reduce the initial bundle.
+// - MercyAIHost is lazy-loaded and mounted ONLY on room routes,
+//   so it no longer stays globally eligible on first paint for unrelated routes.
 
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useEffect } from "react";
 import {
   Routes,
   Route,
@@ -82,24 +82,26 @@ import {
   useNavigate,
 } from "react-router-dom";
 
-import ChatHub from "@/pages/ChatHub";
-import Home from "@/pages/Home";
-import LoginPage from "@/pages/LoginPage";
-
-// ✅ Admin guard + layout remain eager and tiny
+// ✅ Admin guard + layout stay eager because they are tiny wrappers and part of route gating.
 import AdminRoute from "@/components/admin/AdminRoute";
 import AdminLayout from "@/components/admin/AdminLayout";
 
-// ✅ Mercy AI Host (global floating guide) stays eager for low-risk rollout
-import MercyAIHost from "@/components/guide/MercyAIHost";
+// ✅ DEPLOYMENT TRUTH BEACON
+const MB_ROUTER_VERSION = "2026-03-08-app-router-lazy-split-v2-route-local-host";
 
-// ✅ Lazy-loaded routes/pages (safe first wave)
+// ✅ Lazy route/page imports
+const ChatHub = lazy(() => import("@/pages/ChatHub"));
 const AllRooms = lazy(() => import("@/pages/AllRooms"));
+const Home = lazy(() => import("@/pages/Home"));
+
 const AccountPage = lazy(() => import("@/pages/AccountPage"));
 const UpgradePage = lazy(() => import("@/pages/UpgradePage"));
 const Pricing = lazy(() => import("../screens/Pricing"));
+
 const TierIndex = lazy(() => import("@/pages/TierIndex"));
 const TierDetail = lazy(() => import("@/pages/TierDetail"));
+
+const LoginPage = lazy(() => import("@/pages/LoginPage"));
 
 const AdminDashboard = lazy(() => import("@/pages/admin/AdminDashboard"));
 const AdminPayments = lazy(() => import("@/pages/admin/AdminPayments"));
@@ -113,16 +115,13 @@ const AdminMonitoring = lazy(() => import("@/pages/admin/AdminMonitoring"));
 const AdminMetrics = lazy(() => import("@/pages/admin/AdminMetrics"));
 const AdminVIPRooms = lazy(() => import("@/pages/admin/AdminVIPRooms"));
 
-// ✅ DEPLOYMENT TRUTH BEACON
-const MB_ROUTER_VERSION = "2026-03-08-app-router-lazy-routes-v3.3";
+// ✅ Lazy host, but now mounted only on the route subtree that actually needs it
+const MercyAIHost = lazy(() => import("@/components/guide/MercyAIHost"));
 
-function RouteLoading() {
-  return (
-    <div style={{ padding: 24, opacity: 0.8 }}>
-      <div style={{ fontSize: 18, fontWeight: 800 }}>Loading...</div>
-      <div style={{ marginTop: 8, fontSize: 14 }}>Please wait a moment.</div>
-    </div>
-  );
+declare global {
+  interface Window {
+    MB_ROUTER_VERSION?: string;
+  }
 }
 
 /**
@@ -138,6 +137,18 @@ function NotFound() {
       </div>
     </div>
   );
+}
+
+function RouteFallback() {
+  return <div style={{ padding: 24, opacity: 0.72 }}>Loading…</div>;
+}
+
+function LazyPage({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return <Suspense fallback={<RouteFallback />}>{children}</Suspense>;
 }
 
 function AppHeroShell() {
@@ -277,7 +288,9 @@ function AppHeroShell() {
           </div>
 
           <div style={contentFrame}>
-            <Outlet />
+            <Suspense fallback={<RouteFallback />}>
+              <Outlet />
+            </Suspense>
           </div>
         </>
       )}
@@ -311,85 +324,239 @@ function AdminShell() {
   return (
     <AdminRoute>
       <AdminLayout>
-        <Outlet />
+        <Suspense fallback={<RouteFallback />}>
+          <Outlet />
+        </Suspense>
       </AdminLayout>
     </AdminRoute>
   );
+}
+
+/**
+ * Route-local Mercy host shell.
+ * IMPORTANT:
+ * - This replaces the old global LazyMercyHostMount at app root.
+ * - Only routes nested under this shell can load MercyAIHost.
+ * - That keeps unrelated first-paint routes from structurally mounting the host.
+ */
+function MercyHostRouteShell() {
+  return (
+    <>
+      <Outlet />
+      <Suspense fallback={null}>
+        <MercyAIHost />
+      </Suspense>
+    </>
+  );
+}
+
+function RouterBeacon() {
+  useEffect(() => {
+    try {
+      if (typeof window !== "undefined") {
+        window.MB_ROUTER_VERSION = MB_ROUTER_VERSION;
+      }
+      if (typeof document !== "undefined" && document.documentElement) {
+        document.documentElement.setAttribute(
+          "data-mb-router-version",
+          MB_ROUTER_VERSION
+        );
+      }
+    } catch {
+      // ignore
+    }
+  }, []);
+
+  return null;
 }
 
 export default function AppRouter() {
   // eslint-disable-next-line no-console
   console.log("MB_ROUTER_VERSION", MB_ROUTER_VERSION);
 
-  try {
-    if (typeof window !== "undefined") {
-      (window as Window & { MB_ROUTER_VERSION?: string }).MB_ROUTER_VERSION =
-        MB_ROUTER_VERSION;
-    }
-    if (typeof document !== "undefined" && document.documentElement) {
-      document.documentElement.setAttribute(
-        "data-mb-router-version",
-        MB_ROUTER_VERSION
-      );
-    }
-  } catch {
-    // ignore
-  }
-
   return (
     <>
-      <Suspense fallback={<RouteLoading />}>
-        <Routes>
-          <Route path="/signin" element={<LoginPage />} />
-          <Route path="/auth" element={<AuthRedirect />} />
+      <RouterBeacon />
 
-          <Route element={<AppHeroShell />}>
-            <Route path="/" element={<Home />} />
+      <Routes>
+        <Route
+          path="/signin"
+          element={
+            <LazyPage>
+              <LoginPage />
+            </LazyPage>
+          }
+        />
+        <Route path="/auth" element={<AuthRedirect />} />
 
-            {/* ✅ canonical pricing */}
-            <Route path="/pricing" element={<Pricing />} />
+        <Route element={<AppHeroShell />}>
+          <Route
+            path="/"
+            element={
+              <LazyPage>
+                <Home />
+              </LazyPage>
+            }
+          />
 
-            {/* ✅ legacy upgrade route renders the same Stripe pricing table UI */}
-            <Route path="/upgrade" element={<UpgradePage />} />
+          <Route
+            path="/pricing"
+            element={
+              <LazyPage>
+                <Pricing />
+              </LazyPage>
+            }
+          />
 
-            {/* ✅ Billing / Account (must be in the REAL router, not src/App.tsx) */}
-            <Route path="/account" element={<AccountPage />} />
+          <Route
+            path="/upgrade"
+            element={
+              <LazyPage>
+                <UpgradePage />
+              </LazyPage>
+            }
+          />
 
-            <Route path="/rooms" element={<AllRooms />} />
+          <Route
+            path="/account"
+            element={
+              <LazyPage>
+                <AccountPage />
+              </LazyPage>
+            }
+          />
 
-            <Route path="/tiers" element={<TierIndex />} />
-            <Route path="/tiers/:tierId" element={<TierDetail />} />
+          <Route
+            path="/rooms"
+            element={
+              <LazyPage>
+                <AllRooms />
+              </LazyPage>
+            }
+          />
 
-            <Route path="/redeem" element={<RedeemRedirect />} />
+          <Route
+            path="/tiers"
+            element={
+              <LazyPage>
+                <TierIndex />
+              </LazyPage>
+            }
+          />
 
-            <Route path="/room/room/:roomId" element={<RoomRoomRedirect />} />
-            <Route path="/room" element={<RoomIndexRedirect />} />
-            <Route path="/rooms/room/:roomId" element={<RoomsRoomRedirect />} />
+          <Route
+            path="/tiers/:tierId"
+            element={
+              <LazyPage>
+                <TierDetail />
+              </LazyPage>
+            }
+          />
 
-            <Route path="/room/:roomId" element={<ChatHub />} />
+          <Route path="/redeem" element={<RedeemRedirect />} />
 
-            <Route path="/admin/*" element={<AdminShell />}>
-              <Route index element={<AdminDashboard />} />
-              <Route path="payments" element={<AdminPayments />} />
-              <Route path="bank-transfers" element={<AdminBankTransfers />} />
-              <Route
-                path="payment-verification"
-                element={<AdminPaymentVerification />}
-              />
-              <Route path="access-codes" element={<AdminAccessCodes />} />
-              <Route path="audio-coverage" element={<AudioCoveragePage />} />
-              <Route path="monitoring" element={<AdminMonitoring />} />
-              <Route path="metrics" element={<AdminMetrics />} />
-              <Route path="vip-rooms" element={<AdminVIPRooms />} />
-              <Route path="*" element={<AdminDashboard />} />
-            </Route>
+          <Route path="/room/room/:roomId" element={<RoomRoomRedirect />} />
+          <Route path="/room" element={<RoomIndexRedirect />} />
+          <Route path="/rooms/room/:roomId" element={<RoomsRoomRedirect />} />
 
-            <Route path="*" element={<NotFound />} />
+          {/* ✅ Host mounts only for room routes that actually need it */}
+          <Route element={<MercyHostRouteShell />}>
+            <Route
+              path="/room/:roomId"
+              element={
+                <LazyPage>
+                  <ChatHub />
+                </LazyPage>
+              }
+            />
           </Route>
-        </Routes>
-      </Suspense>
 
-      <MercyAIHost />
+          <Route path="/admin/*" element={<AdminShell />}>
+            <Route
+              index
+              element={
+                <LazyPage>
+                  <AdminDashboard />
+                </LazyPage>
+              }
+            />
+            <Route
+              path="payments"
+              element={
+                <LazyPage>
+                  <AdminPayments />
+                </LazyPage>
+              }
+            />
+            <Route
+              path="bank-transfers"
+              element={
+                <LazyPage>
+                  <AdminBankTransfers />
+                </LazyPage>
+              }
+            />
+            <Route
+              path="payment-verification"
+              element={
+                <LazyPage>
+                  <AdminPaymentVerification />
+                </LazyPage>
+              }
+            />
+            <Route
+              path="access-codes"
+              element={
+                <LazyPage>
+                  <AdminAccessCodes />
+                </LazyPage>
+              }
+            />
+            <Route
+              path="audio-coverage"
+              element={
+                <LazyPage>
+                  <AudioCoveragePage />
+                </LazyPage>
+              }
+            />
+            <Route
+              path="monitoring"
+              element={
+                <LazyPage>
+                  <AdminMonitoring />
+                </LazyPage>
+              }
+            />
+            <Route
+              path="metrics"
+              element={
+                <LazyPage>
+                  <AdminMetrics />
+                </LazyPage>
+              }
+            />
+            <Route
+              path="vip-rooms"
+              element={
+                <LazyPage>
+                  <AdminVIPRooms />
+                </LazyPage>
+              }
+            />
+            <Route
+              path="*"
+              element={
+                <LazyPage>
+                  <AdminDashboard />
+                </LazyPage>
+              }
+            />
+          </Route>
+
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
     </>
   );
 }
