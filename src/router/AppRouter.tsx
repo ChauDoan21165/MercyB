@@ -69,6 +69,10 @@
 // - Route pages are lazy-loaded to reduce the initial bundle.
 // - MercyAIHost is lazy-loaded and mounted ONLY on room routes,
 //   so it no longer stays globally eligible on first paint for unrelated routes.
+//
+// ✅ PATCH (2026-03-09):
+// - /room now redirects to /rooms (better match for room browsing flow).
+// - /redeem temporarily redirects to /pricing instead of /, so CTA lands somewhere intentional.
 
 import React, { Suspense, lazy, useEffect } from "react";
 import {
@@ -82,14 +86,11 @@ import {
   useNavigate,
 } from "react-router-dom";
 
-// ✅ Admin guard + layout stay eager because they are tiny wrappers and part of route gating.
 import AdminRoute from "@/components/admin/AdminRoute";
 import AdminLayout from "@/components/admin/AdminLayout";
 
-// ✅ DEPLOYMENT TRUTH BEACON
-const MB_ROUTER_VERSION = "2026-03-08-app-router-lazy-split-v2-route-local-host";
+const MB_ROUTER_VERSION = "2026-03-09-app-router-rooms-pricing-route-cleanup-v1";
 
-// ✅ Lazy route/page imports
 const ChatHub = lazy(() => import("@/pages/ChatHub"));
 const AllRooms = lazy(() => import("@/pages/AllRooms"));
 const Home = lazy(() => import("@/pages/Home"));
@@ -115,7 +116,6 @@ const AdminMonitoring = lazy(() => import("@/pages/admin/AdminMonitoring"));
 const AdminMetrics = lazy(() => import("@/pages/admin/AdminMetrics"));
 const AdminVIPRooms = lazy(() => import("@/pages/admin/AdminVIPRooms"));
 
-// ✅ Lazy host, but now mounted only on the route subtree that actually needs it
 const MercyAIHost = lazy(() => import("@/components/guide/MercyAIHost"));
 
 declare global {
@@ -124,9 +124,6 @@ declare global {
   }
 }
 
-/**
- * Local NotFound — ZERO dependencies
- */
 function NotFound() {
   return (
     <div style={{ padding: 32 }}>
@@ -300,11 +297,11 @@ function AppHeroShell() {
 
 function RoomRoomRedirect() {
   const { roomId } = useParams<{ roomId: string }>();
-  return <Navigate to={roomId ? `/room/${roomId}` : "/"} replace />;
+  return <Navigate to={roomId ? `/room/${roomId}` : "/rooms"} replace />;
 }
 
 function RoomIndexRedirect() {
-  return <Navigate to="/" replace />;
+  return <Navigate to="/rooms" replace />;
 }
 
 function RoomsRoomRedirect() {
@@ -313,7 +310,7 @@ function RoomsRoomRedirect() {
 }
 
 function RedeemRedirect() {
-  return <Navigate to="/" replace />;
+  return <Navigate to="/pricing" replace />;
 }
 
 function AuthRedirect() {
@@ -332,13 +329,6 @@ function AdminShell() {
   );
 }
 
-/**
- * Route-local Mercy host shell.
- * IMPORTANT:
- * - This replaces the old global LazyMercyHostMount at app root.
- * - Only routes nested under this shell can load MercyAIHost.
- * - That keeps unrelated first-paint routes from structurally mounting the host.
- */
 function MercyHostRouteShell() {
   return (
     <>
@@ -371,7 +361,6 @@ function RouterBeacon() {
 }
 
 export default function AppRouter() {
-  // eslint-disable-next-line no-console
   console.log("MB_ROUTER_VERSION", MB_ROUTER_VERSION);
 
   return (
@@ -459,7 +448,6 @@ export default function AppRouter() {
           <Route path="/room" element={<RoomIndexRedirect />} />
           <Route path="/rooms/room/:roomId" element={<RoomsRoomRedirect />} />
 
-          {/* ✅ Host mounts only for room routes that actually need it */}
           <Route element={<MercyHostRouteShell />}>
             <Route
               path="/room/:roomId"

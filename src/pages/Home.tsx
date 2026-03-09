@@ -90,6 +90,17 @@
 // - Simpler CTA structure: Start free + 2-minute reassurance
 // - Replace VIP 1..9 wording with Free / Full Access / Lifetime language
 // - Keep existing logic / layout system / progress cards intact
+//
+// PATCH (2026-03-09):
+// - Mercy Host is now visibly present on Home near the top of the page.
+// - TEXT-ONLY, no new files/components, no audio.
+// - Added an early Mercy Host spotlight card directly below hero for clear homepage presence.
+//
+// PATCH (2026-03-09b):
+// - Add "Continue your journey" using localStorage mb.lastRoomId.
+// - Add "Today's Reflection" using lightweight local daily-room logic.
+// - Keep Home text-only and schema-safe.
+// - No backend required for these two cards.
 
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -101,6 +112,7 @@ const softPanel = "rgba(230, 244, 255, 0.85)";
 
 // ✅ must match BottomMusicBar key (LOCKED)
 const LS_ZOOM = "mb.ui.zoom";
+const LS_LAST_ROOM = "mb.lastRoomId";
 
 // ✅ VN users first — keep stable even if developer moves timezones
 const HOME_TZ = "Asia/Ho_Chi_Minh";
@@ -193,6 +205,41 @@ function isVipHybridId(id: string) {
   return /^vip\d+_/.test(id) || /^vip\d+-/.test(id);
 }
 
+function prettifyRoomTitle(id: string) {
+  return String(id || "")
+    .replace(/[_-]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .replace(/\b\w/g, (m) => m.toUpperCase());
+}
+
+const DAILY_ROOM_IDS = [
+  "sleep_basics",
+  "slow_breathing",
+  "letting_go",
+  "quiet_morning",
+  "self_kindness",
+  "gratitude",
+  "small_next_step",
+];
+
+function dayIndexInTimezone(timeZone: string) {
+  const d = new Date();
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(d);
+
+  const year = Number(parts.find((p) => p.type === "year")?.value || "0");
+  const month = Number(parts.find((p) => p.type === "month")?.value || "1");
+  const day = Number(parts.find((p) => p.type === "day")?.value || "1");
+
+  const utc = Date.UTC(year, month - 1, day);
+  return Math.floor(utc / 86400000);
+}
+
 export default function Home() {
   const nav = useNavigate();
   const { user } = useAuth();
@@ -218,6 +265,16 @@ export default function Home() {
   const [progressErr, setProgressErr] = useState<string | null>(null);
   const [progressRow, setProgressRow] = useState<ProgressSummaryRow | null>(null);
   const [streakDays, setStreakDays] = useState<number | null>(null);
+  const [lastRoomId, setLastRoomId] = useState<string | null>(null);
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem(LS_LAST_ROOM);
+      setLastRoomId(saved ? String(saved).trim() : null);
+    } catch {
+      setLastRoomId(null);
+    }
+  }, []);
 
   useEffect(() => {
     let alive = true;
@@ -410,6 +467,19 @@ export default function Home() {
     nav("/rooms");
   };
 
+  const goLastRoom = () => {
+    if (lastRoomId) {
+      nav(`/room/${lastRoomId}`);
+      return;
+    }
+    nav("/rooms");
+  };
+
+  const dailyRoomId = useMemo(() => {
+    const idx = dayIndexInTimezone(HOME_TZ);
+    return DAILY_ROOM_IDS[idx % DAILY_ROOM_IDS.length];
+  }, []);
+
   const phase0New =
     !user?.id ||
     !progressSummary.lastStudyAt ||
@@ -489,6 +559,96 @@ export default function Home() {
     padding: "28px 18px",
     textAlign: "center",
     boxShadow: "0 12px 30px rgba(0,0,0,0.06)",
+  };
+
+  const hostSpotlight: React.CSSProperties = {
+    marginTop: 18,
+    borderRadius: 20,
+    border: "1px solid rgba(0,0,0,0.08)",
+    background:
+      "linear-gradient(135deg, rgba(247,252,255,0.96), rgba(239,247,255,0.92), rgba(248,244,255,0.90))",
+    padding: "24px 18px",
+    boxShadow: "0 12px 30px rgba(0,0,0,0.06)",
+  };
+
+  const hostPanelGrid: React.CSSProperties = {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+    gap: 16,
+    alignItems: "stretch",
+  };
+
+  const quickGrid: React.CSSProperties = {
+    marginTop: 18,
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+    gap: 14,
+    alignItems: "stretch",
+  };
+
+  const quickCard: React.CSSProperties = {
+    borderRadius: 18,
+    border: "1px solid rgba(0,0,0,0.08)",
+    background: "rgba(255,255,255,0.84)",
+    padding: "18px 16px",
+    boxShadow: "0 10px 22px rgba(0,0,0,0.05)",
+  };
+
+  const quickLabel: React.CSSProperties = {
+    fontSize: 12,
+    fontWeight: 900,
+    letterSpacing: 0.6,
+    color: "rgba(0,0,0,0.45)",
+    textTransform: "uppercase",
+  };
+
+  const quickTitle: React.CSSProperties = {
+    marginTop: 8,
+    fontSize: 26,
+    fontWeight: 950,
+    color: "rgba(0,0,0,0.88)",
+    letterSpacing: -0.5,
+    lineHeight: 1.15,
+  };
+
+  const quickSub: React.CSSProperties = {
+    marginTop: 6,
+    fontSize: 15,
+    fontWeight: 700,
+    color: "rgba(0,0,0,0.62)",
+    lineHeight: 1.45,
+  };
+
+  const hostBubble: React.CSSProperties = {
+    borderRadius: 18,
+    border: "1px solid rgba(0,0,0,0.08)",
+    background: "rgba(255,255,255,0.88)",
+    padding: "16px 16px",
+    boxShadow: "0 8px 20px rgba(0,0,0,0.05)",
+  };
+
+  const hostName: React.CSSProperties = {
+    margin: 0,
+    fontSize: 24,
+    fontWeight: 950,
+    color: "rgba(0,0,0,0.88)",
+    letterSpacing: -0.4,
+  };
+
+  const hostQuote: React.CSSProperties = {
+    marginTop: 12,
+    marginBottom: 0,
+    fontSize: 18,
+    lineHeight: 1.7,
+    color: "rgba(0,0,0,0.78)",
+    fontWeight: 700,
+  };
+
+  const hostMeta: React.CSSProperties = {
+    marginTop: 10,
+    fontSize: 13,
+    color: "rgba(0,0,0,0.54)",
+    fontWeight: 800,
   };
 
   const blockTitle: React.CSSProperties = {
@@ -768,6 +928,144 @@ export default function Home() {
             </div>
 
             <div style={heroCtaHint}>Bắt đầu với một phòng ngắn — khoảng 2 phút.</div>
+          </div>
+
+          <div style={quickGrid}>
+            {lastRoomId ? (
+              <div style={quickCard} aria-label="Continue your journey">
+                <div style={quickLabel}>Continue your journey</div>
+                <div style={quickTitle}>{prettifyRoomTitle(lastRoomId)}</div>
+                <div style={quickSub}>
+                  Pick up where you left off.
+                  <br />
+                  Tiếp tục từ nơi bạn đã dừng lại.
+                </div>
+                <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
+                  <button type="button" style={primaryBtn} onClick={goLastRoom}>
+                    👉 Continue
+                  </button>
+                  <button
+                    type="button"
+                    style={secondaryBtn}
+                    onClick={() => nav("/rooms")}
+                  >
+                    👉 Browse rooms
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div style={quickCard} aria-label="Begin your journey">
+                <div style={quickLabel}>Begin your journey</div>
+                <div style={quickTitle}>Start with one quiet room</div>
+                <div style={quickSub}>
+                  A gentle first step is enough.
+                  <br />
+                  Một bước khởi đầu nhẹ nhàng là đủ.
+                </div>
+                <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
+                  <button type="button" style={primaryBtn} onClick={goFirstRoom}>
+                    👉 Start free
+                  </button>
+                  <button
+                    type="button"
+                    style={secondaryBtn}
+                    onClick={() => nav("/rooms")}
+                  >
+                    👉 Browse rooms
+                  </button>
+                </div>
+              </div>
+            )}
+
+            <div style={quickCard} aria-label="Today's Reflection">
+              <div style={quickLabel}>Today&apos;s Reflection</div>
+              <div style={quickTitle}>{prettifyRoomTitle(dailyRoomId)}</div>
+              <div style={quickSub}>
+                A small daily invitation.
+                <br />
+                Một lời mời nhỏ mỗi ngày.
+              </div>
+              <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
+                <button
+                  type="button"
+                  style={primaryBtn}
+                  onClick={() => nav(`/room/${dailyRoomId}`)}
+                >
+                  🌿 Open today&apos;s room
+                </button>
+                <button
+                  type="button"
+                  style={secondaryBtn}
+                  onClick={() => nav("/rooms")}
+                >
+                  👉 Explore the library
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div style={hostSpotlight} aria-label="Mercy Host spotlight">
+            <div style={hostPanelGrid}>
+              <div style={hostBubble}>
+                <div style={langTag}>EN</div>
+                <h2 style={hostName}>Mercy Host</h2>
+                <p style={hostQuote}>“Would you like a quiet thought for today?”</p>
+                <div style={hostMeta}>
+                  A gentle guide for reflection — not a noisy chatbot.
+                </div>
+                <p style={p}>
+                  Mercy Host helps you enter the experience softly.
+                  <br />
+                  It invites you to pause, reflect, and continue with calm focus.
+                </p>
+                <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
+                  <button
+                    type="button"
+                    style={{ ...primaryBtn, minWidth: 220 }}
+                    onClick={goFirstRoom}
+                  >
+                    🌿 Enter with Mercy Host
+                  </button>
+                  <button
+                    type="button"
+                    style={{ ...secondaryBtn, minWidth: 220 }}
+                    onClick={() => nav("/rooms")}
+                  >
+                    💬 Explore reflection rooms
+                  </button>
+                </div>
+              </div>
+
+              <div style={hostBubble}>
+                <div style={langTag}>VI</div>
+                <h2 style={hostName}>Mercy Host</h2>
+                <p style={hostQuote}>“Bạn có muốn nhận một suy ngẫm nhẹ nhàng cho hôm nay không?”</p>
+                <div style={hostMeta}>
+                  Một người hướng dẫn dịu dàng cho sự suy ngẫm — không phải chatbot ồn ào.
+                </div>
+                <p style={p}>
+                  Mercy Host giúp bạn bước vào trải nghiệm một cách nhẹ nhàng.
+                  <br />
+                  Mời bạn dừng lại, suy ngẫm, và tiếp tục với sự bình tĩnh.
+                </p>
+                <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
+                  <button
+                    type="button"
+                    style={{ ...primaryBtn, minWidth: 220 }}
+                    onClick={goFirstRoom}
+                  >
+                    🌿 Bắt đầu cùng Mercy Host
+                  </button>
+                  <button
+                    type="button"
+                    style={{ ...secondaryBtn, minWidth: 220 }}
+                    onClick={() => nav("/rooms")}
+                  >
+                    💬 Khám phá các phòng
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div style={section} aria-label="Your progress">

@@ -1,11 +1,21 @@
 // FILE: Pricing.tsx
 // PATH: src/screens/Pricing.tsx
-// VERSION: v1.2
+// VERSION: v2.0
+//
+// Pricing page
+// Fixes:
+// 1) Stronger bilingual structure and cleaner plan explanation.
+// 2) Add quick navigation CTAs (Home / Rooms / Start free).
+// 3) Keep Stripe pricing table lazy-loaded.
+// 4) Make env-missing state clearer.
+// 5) Keep copy aligned with: Free / Full Access / Lifetime.
 
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Pricing() {
-  // These should be set in your env (Vercel / .env)
+  const nav = useNavigate();
+
   const STRIPE_PRICING_TABLE_ID = (import.meta as any).env
     ?.VITE_STRIPE_PRICING_TABLE_ID as string | undefined;
   const STRIPE_PUBLISHABLE_KEY = (import.meta as any).env
@@ -28,12 +38,43 @@ export default function Pricing() {
     padding: "24px 16px 80px",
   };
 
+  const topRow: React.CSSProperties = {
+    display: "flex",
+    alignItems: "flex-start",
+    justifyContent: "space-between",
+    gap: 12,
+    flexWrap: "wrap",
+  };
+
+  const topBtns: React.CSSProperties = {
+    display: "flex",
+    gap: 10,
+    flexWrap: "wrap",
+  };
+
+  const pillBtn: React.CSSProperties = {
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 8,
+    padding: "10px 14px",
+    borderRadius: 9999,
+    border: "1px solid rgba(0,0,0,0.12)",
+    background: "rgba(255,255,255,0.92)",
+    color: "rgba(0,0,0,0.84)",
+    fontWeight: 900,
+    cursor: "pointer",
+    textDecoration: "none",
+    boxShadow: "0 10px 22px rgba(0,0,0,0.05)",
+  };
+
   const h1: React.CSSProperties = {
     fontSize: 34,
     lineHeight: 1.15,
     margin: "8px 0 8px",
-    fontWeight: 800,
+    fontWeight: 900,
     color: "rgba(0,0,0,0.92)",
+    letterSpacing: -0.6,
   };
 
   const sub: React.CSSProperties = {
@@ -42,6 +83,7 @@ export default function Pricing() {
     fontSize: 15,
     lineHeight: 1.6,
     color: "rgba(0,0,0,0.78)",
+    maxWidth: 760,
   };
 
   const hero: React.CSSProperties = {
@@ -67,6 +109,36 @@ export default function Pricing() {
     fontSize: 15,
     lineHeight: 1.7,
     color: "rgba(0,0,0,0.72)",
+  };
+
+  const heroActions: React.CSSProperties = {
+    marginTop: 16,
+    display: "flex",
+    gap: 10,
+    flexWrap: "wrap",
+  };
+
+  const primaryBtn: React.CSSProperties = {
+    padding: "12px 18px",
+    borderRadius: 16,
+    border: "1px solid rgba(0,0,0,0.10)",
+    background: "rgba(0, 128, 120, 0.80)",
+    color: "white",
+    fontWeight: 900,
+    cursor: "pointer",
+    minWidth: 190,
+    boxShadow: "0 10px 22px rgba(0,128,120,0.10)",
+  };
+
+  const secondaryBtn: React.CSSProperties = {
+    padding: "12px 18px",
+    borderRadius: 16,
+    border: "1px solid rgba(0,0,0,0.14)",
+    background: "rgba(255,255,255,0.90)",
+    color: "rgba(0,0,0,0.78)",
+    fontWeight: 900,
+    cursor: "pointer",
+    minWidth: 190,
   };
 
   const grid: React.CSSProperties = {
@@ -149,6 +221,7 @@ export default function Pricing() {
     background: "rgba(255, 180, 0, 0.08)",
     fontSize: 13,
     lineHeight: 1.55,
+    color: "rgba(0,0,0,0.78)",
   };
 
   const sectionTitle: React.CSSProperties = {
@@ -159,9 +232,36 @@ export default function Pricing() {
     letterSpacing: -0.2,
   };
 
+  const helpBox: React.CSSProperties = {
+    marginTop: 18,
+    border: "1px solid rgba(0,0,0,0.08)",
+    borderRadius: 16,
+    padding: 16,
+    background: "rgba(255,255,255,0.84)",
+    boxShadow: "0 8px 20px rgba(0,0,0,0.04)",
+  };
+
   return (
     <div style={page}>
-      <h1 style={h1}>Pricing / Bảng giá</h1>
+      <div style={topRow}>
+        <div>
+          <h1 style={h1}>Pricing / Bảng giá</h1>
+          <div style={sub}>
+            Choose a gentle way to continue.
+            <br />
+            Chọn một cách nhẹ nhàng để tiếp tục.
+          </div>
+        </div>
+
+        <div style={topBtns}>
+          <button type="button" style={pillBtn} onClick={() => nav("/")}>
+            Home / Trang chủ
+          </button>
+          <button type="button" style={pillBtn} onClick={() => nav("/rooms")}>
+            Rooms / Các phòng
+          </button>
+        </div>
+      </div>
 
       <div style={hero}>
         <h2 style={heroTitle}>Start free. Continue when you are ready.</h2>
@@ -178,6 +278,15 @@ export default function Pricing() {
           Khi bạn muốn đi sâu hơn, bạn có thể mở khóa <b>Toàn Quyền Truy Cập</b>
           cho hành trình của mình — hoặc chọn <b>Trọn Đời</b> để Mercy Blade đồng
           hành cùng bạn lâu dài.
+        </div>
+
+        <div style={heroActions}>
+          <button type="button" style={primaryBtn} onClick={() => nav("/rooms")}>
+            👉 Browse rooms
+          </button>
+          <button type="button" style={secondaryBtn} onClick={() => nav("/")}>
+            🌿 Back to Home
+          </button>
         </div>
       </div>
 
@@ -203,7 +312,7 @@ export default function Pricing() {
           <div style={badge}>⭐ Recommended / Gợi ý</div>
           <h2 style={tierTitle}>
             <span>Full Access / Toàn quyền truy cập</span>
-            <span style={price}>3 Months</span>
+            <span style={price}>3 Months / 3 tháng</span>
           </h2>
           <div style={small}>
             Unlock the full journey for a focused season of growth.
@@ -220,7 +329,7 @@ export default function Pricing() {
         <div style={card}>
           <h2 style={tierTitle}>
             <span>Lifetime / Trọn đời</span>
-            <span style={price}>One time</span>
+            <span style={price}>One time / Một lần</span>
           </h2>
           <div style={small}>
             Keep Mercy Blade with you for the long term.
@@ -257,14 +366,37 @@ export default function Pricing() {
         </div>
       ) : (
         <div style={warn}>
-          Stripe pricing-table env vars missing.
+          Stripe pricing table env vars are missing.
           <br />
           Set:
           <br />
           <code>VITE_STRIPE_PRICING_TABLE_ID</code> and{" "}
           <code>VITE_STRIPE_PUBLISHABLE_KEY</code>
+          <br />
+          <br />
+          Biến môi trường Stripe pricing table đang thiếu.
         </div>
       )}
+
+      <div style={helpBox}>
+        <div style={{ fontWeight: 900, color: "rgba(0,0,0,0.86)" }}>
+          Need a gentle first step? / Cần một bước khởi đầu nhẹ nhàng?
+        </div>
+        <div style={small}>
+          You can begin with free rooms first, then return here later.
+          <br />
+          Bạn có thể bắt đầu với các phòng miễn phí trước, rồi quay lại đây sau.
+        </div>
+
+        <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
+          <button type="button" style={primaryBtn} onClick={() => nav("/rooms")}>
+            👉 Start with free rooms
+          </button>
+          <button type="button" style={secondaryBtn} onClick={() => nav("/")}>
+            ← Home
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

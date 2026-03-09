@@ -12,20 +12,27 @@ interface AppShellProps {
   bottomBar?: React.ReactNode;
   hideHeader?: boolean;
   mainClassName?: string;
+  showMercyGuide?: boolean;
 }
 
 /**
- * AppShell - Centered layout container for room pages
+ * AppShell - Centered layout container
  *
- * - Single "Mercy Blade" logo in header
- * - Canonical 980px centered content frame
- * - Defensive clamp for room renderers
+ * Current app routing already provides a global header band on non-admin pages.
+ * So this shell must be SAFE BY DEFAULT:
+ * - header hidden by default (prevents double headers)
+ * - MercyGuide hidden by default (prevents duplicate guide mounts)
+ *
+ * Keeps:
+ * - canonical 980px centered content frame
+ * - defensive clamp for room renderers
  */
 export function AppShell({
   children,
   bottomBar,
-  hideHeader = false,
+  hideHeader = true,
   mainClassName = "",
+  showMercyGuide = false,
 }: AppShellProps) {
   return (
     <div className="relative min-h-screen flex flex-col bg-background">
@@ -39,6 +46,7 @@ export function AppShell({
           max-width: var(--mb-page-max);
           margin-left: auto;
           margin-right: auto;
+          box-sizing: border-box;
         }
 
         [data-mb-frame] [data-mb-scope="room"]{
@@ -46,6 +54,7 @@ export function AppShell({
           max-width: 100% !important;
           margin-left: 0 !important;
           margin-right: 0 !important;
+          box-sizing: border-box !important;
         }
 
         [data-mb-frame] [data-mb-scope="room"] [data-room-box]{
@@ -53,6 +62,7 @@ export function AppShell({
           max-width: 100% !important;
           margin-left: 0 !important;
           margin-right: 0 !important;
+          box-sizing: border-box !important;
         }
       `}</style>
 
@@ -93,7 +103,7 @@ export function AppShell({
 
       {bottomBar}
 
-      <MercyGuide />
+      {showMercyGuide ? <MercyGuide /> : null}
     </div>
   );
 }

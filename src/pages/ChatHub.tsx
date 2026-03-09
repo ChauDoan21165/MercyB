@@ -35,6 +35,18 @@
  * - TEST STABILITY: Even if room load fails (DB/JSON), error UI MUST still provide a Back button
  *   so navigation integration tests don't hang on "Room error" screens.
  * - LOAD ROBUSTNESS: Try multiple ID variants (hyphen/underscore) when loading JSON.
+ *
+ * PATCH (2026-03-08g):
+ * - Persist last successful room id to localStorage for "Continue your journey" surfaces.
+ * - Add a small calm arrival overlay before showing room content.
+ * - Keep ChatHub THIN: no new data writes, no auth changes, no hero/header duplication.
+ *
+ * PATCH (2026-03-09):
+ * - Align RoomRenderer props with current RoomRenderer contract.
+ * - Pass roomId through explicitly.
+ *
+ * PATCH (2026-03-09b):
+ * - Remove dead uiKind detection and related helpers.
  */
 
 import { useEffect, useMemo, useState } from "react";
@@ -59,29 +71,13 @@ type LoadState = "loading" | "ready" | "error";
 type ErrorKind = RoomJsonResolverErrorKind;
 type AnyRoom = any;
 
+const PAGE_MAX = 980;
+const LS_LAST_ROOM = "mb.lastRoomId";
+const ARRIVAL_DELAY_MS = 1600;
+
 /* ----------------------------------------------------- */
 /* helpers                                               */
 /* ----------------------------------------------------- */
-function asArray(x: any) {
-  return Array.isArray(x) ? x : [];
-}
-function firstNonEmptyArray(...candidates: any[]): any[] {
-  for (const c of candidates) {
-    const arr = asArray(c);
-    if (arr.length > 0) return arr;
-  }
-  return [];
-}
-function resolveKeywords(room: AnyRoom) {
-  const en = firstNonEmptyArray(room?.keywords_en, room?.keywords?.en, room?.meta?.keywords_en);
-  const vi = firstNonEmptyArray(room?.keywords_vi, room?.keywords?.vi, room?.meta?.keywords_vi);
-  return { en, vi };
-}
-function detectRoomUiKind(room: AnyRoom): "keyword_hub" | "content" {
-  const kw = resolveKeywords(room);
-  return Math.max(kw.en.length, kw.vi.length) > 0 ? "keyword_hub" : "content";
-}
-
 function uniqueStrings(list: string[]): string[] {
   const out: string[] = [];
   const seen = new Set<string>();
@@ -105,7 +101,6 @@ function roomIdVariants(roomId: string, canonicalId: string): string[] {
   const canonHyphen = canon.replace(/_/g, "-");
   const canonUnder = canon.replace(/-/g, "_");
 
-  // Prefer hyphen IDs first (your manifests/URLs are hyphen-based).
   return uniqueStrings([raw, rawHyphen, canonHyphen, canon, rawUnder, canonUnder]);
 }
 
@@ -155,48 +150,71 @@ function syncRootZoomFromStorage() {
 }
 
 /* ----------------------------------------------------- */
+/* CALM ARRIVAL                                          */
+/* ----------------------------------------------------- */
+function ArrivalOverlay() {
+  return (
+    <div className="min-h-[40vh] flex items-center justify-center px-6">
+      <div className="text-center">
+        <div
+          aria-hidden="true"
+          className="mx-auto mb-5 h-3 w-3 rounded-full bg-black/30 animate-pulse"
+        />
+        <div className="text-lg font-semibold text-foreground">
+          Take a quiet breath.
+        </div>
+        <div className="mt-2 text-sm text-muted-foreground">
+          You are entering a reflection room.
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ----------------------------------------------------- */
 /* MAIN                                                  */
 /* ----------------------------------------------------- */
 export default function ChatHub() {
   const navigate = useNavigate();
   const { roomId } = useParams<{ roomId: string }>();
 
-  // IMPORTANT: canonicalizeRoomId may convert to underscore_case.
-  // Keep it for display/debug, but do NOT rely on it as the only load key.
   const canonicalId = useMemo(() => canonicalizeRoomId(roomId || ""), [roomId]);
-  const loadKeys = useMemo(() => roomIdVariants(roomId || "", canonicalId), [roomId, canonicalId]);
+  const loadKeys = useMemo(
+    () => roomIdVariants(roomId || "", canonicalId),
+    [roomId, canonicalId]
+  );
 
   const [state, setState] = useState<LoadState>("loading");
   const [errorKind, setErrorKind] = useState<ErrorKind | null>(null);
   const [room, setRoom] = useState<AnyRoom | null>(null);
   const [roomSpec, setRoomSpec] = useState<RoomSpec | null>(null);
+  const [showArrival, setShowArrival] = useState<boolean>(true);
 
   useEffect(() => {
-    const sync = () => syncRootZoomFromStorage();
-
-    sync();
-    window.addEventListener("mb-zoom-change", sync as EventListener);
-    window.addEventListener("focus", sync);
+    syncRootZoomFromStorage();
 
     const onStorage = (e: StorageEvent) => {
-      if (e.key === "mb.ui.zoom" || e.key === "mb_zoom") sync();
+      if (!e.key || e.key === "mb.ui.zoom" || e.key === "mb_zoom") {
+        syncRootZoomFromStorage();
+      }
     };
-    window.addEventListener("storage", onStorage);
 
-    return () => {
-      window.removeEventListener("mb-zoom-change", sync as EventListener);
-      window.removeEventListener("focus", sync);
-      window.removeEventListener("storage", onStorage);
-    };
+    window.addEventListener("storage", onStorage);
+    return () => window.removeEventListener("storage", onStorage);
   }, []);
 
   useEffect(() => {
     let cancelled = false;
+    let timer: ReturnType<typeof setTimeout> | null = null;
 
     async function run() {
       if (!roomId) {
-        setErrorKind("not_found");
+        if (cancelled) return;
         setState("error");
+        setErrorKind("not_found" as ErrorKind);
+        setRoom(null);
+        setRoomSpec(null);
+        setShowArrival(false);
         return;
       }
 
@@ -204,153 +222,149 @@ export default function ChatHub() {
       setErrorKind(null);
       setRoom(null);
       setRoomSpec(null);
+      setShowArrival(true);
+
+      let loadedRoom: AnyRoom | null = null;
+      let lastErrorKind: ErrorKind | null = null;
+
+      for (const key of loadKeys) {
+        try {
+          const data = await loadRoomJson(key);
+          if (data) {
+            loadedRoom = data;
+            break;
+          }
+        } catch (err: any) {
+          const kind = (err?.kind || err?.code || "unknown") as ErrorKind;
+          lastErrorKind = kind;
+        }
+      }
+
+      if (cancelled) return;
+
+      if (!loadedRoom) {
+        setState("error");
+        setErrorKind(lastErrorKind || ("not_found" as ErrorKind));
+        setShowArrival(false);
+        return;
+      }
+
+      const effectiveSpec = getEffectiveRoomSpec(loadedRoom);
+
+      setRoom(loadedRoom);
+      setRoomSpec(effectiveSpec);
+      setState("ready");
 
       try {
-        // Try multiple keys (hyphen/underscore) to avoid false "not found".
-        let data: AnyRoom | null = null;
-        let loadedKey: string | null = null;
-
-        for (const key of loadKeys) {
-          try {
-            const maybe = await loadRoomJson(key);
-            if (maybe && typeof maybe === "object") {
-              data = maybe;
-              loadedKey = key;
-              break;
-            }
-          } catch {
-            // try next
-          }
+        const persistedId =
+          String(loadedRoom?.id || roomId || canonicalId || "").trim() ||
+          String(roomId || "").trim();
+        if (persistedId) {
+          localStorage.setItem(LS_LAST_ROOM, persistedId);
         }
-
-        if (!data) {
-          // normalize error shape for existing UI
-          const err: any = new Error("ROOM_NOT_FOUND");
-          err.kind = "not_found";
-          throw err;
-        }
-
-        const tier = (data?.tier || "free") as string;
-        const specKey = loadedKey || canonicalId || roomId;
-
-        const spec = await getEffectiveRoomSpec(specKey, tier).catch(() => null);
-
-        if (!cancelled) {
-          setRoom(data);
-          setRoomSpec(spec);
-          setState("ready");
-        }
-      } catch (err: any) {
-        if (cancelled) return;
-
-        const kind: ErrorKind =
-          err?.kind ||
-          (err instanceof TypeError
-            ? "network"
-            : String(err?.message || "").includes("ROOM_NOT_FOUND")
-              ? "not_found"
-              : String(err?.message || "").includes("JSON_INVALID") ||
-                  String(err?.message || "").includes("Unexpected token")
-                ? "json_invalid"
-                : "server");
-
-        setErrorKind(kind);
-        setState("error");
+      } catch {
+        // ignore
       }
+
+      timer = setTimeout(() => {
+        if (!cancelled) setShowArrival(false);
+      }, ARRIVAL_DELAY_MS);
     }
 
-    run();
+    void run();
+
     return () => {
       cancelled = true;
+      if (timer) clearTimeout(timer);
     };
   }, [roomId, canonicalId, loadKeys]);
 
-  const onBack = async () => {
-    const dest = await getParentRouteSafe(roomId || "");
-    navigate(dest);
-  };
+  const errorMessage = useMemo(() => {
+    return getErrorMessage(errorKind || "unknown");
+  }, [errorKind]);
 
-  if (state === "loading") {
-    return (
-      <div className="min-h-[40vh] flex items-center justify-center text-muted-foreground">
-        Loading…
-      </div>
-    );
+  async function handleBack() {
+    const parent = await getParentRouteSafe(roomId);
+    navigate(parent);
   }
 
-  if (state === "error") {
-    const msgKey =
-      errorKind === "not_found"
-        ? "ROOM_NOT_FOUND"
-        : errorKind === "json_invalid"
-          ? "JSON_INVALID"
-          : errorKind === "network"
-            ? "network_error"
-            : "server_error";
-
-    return (
-      <div className="min-h-[40vh] flex items-center justify-center text-center p-6">
-        <div>
-          <h2 className="text-lg font-semibold mb-2">Room error</h2>
-          <p className="text-muted-foreground">{getErrorMessage(msgKey)}</p>
-
-          {/* ✅ TEST + UX: provide a Back button even on error screens */}
-          <div className="mt-4 flex justify-center">
-            <button
-              type="button"
-              onClick={onBack}
-              className="inline-flex items-center justify-center rounded-md border px-4 py-2 text-sm font-medium hover:bg-muted"
-            >
-              Back
-            </button>
-          </div>
-
-          <p className="text-xs text-muted-foreground mt-3">
-            roomId: <code>{roomId}</code> → canonical: <code>{canonicalId}</code>
-          </p>
-        </div>
-      </div>
-    );
-  }
-
-  const uiKind = detectRoomUiKind(room);
-
-  const hostRoomId = room?.id || canonicalId || roomId || "unknown_room";
-  const hostRoomTitle = room?.title?.en || room?.description?.en || canonicalId || "Room";
-  const hostTier = (room?.tier || "free") as "free" | "vip1" | "vip2" | "vip3";
+  const shellClass = "mx-auto w-full max-w-[980px] px-4 pb-40 pt-3";
 
   return (
-    <>
-      {/* ✅ RULER MUST MATCH GLOBAL HEADER: max-w-[980px] px-4 (NO md:px-6) */}
-      <div className="mx-auto w-full max-w-[980px] px-4 py-6 pb-36">
-        {/* PATCH (2026-01-31):
-            ChatHub MUST NOT render a second header/topbox.
-            GlobalHeader/AppHeader belong to the app shell. */}
+    <div className="min-h-screen bg-background text-foreground">
+      <main className={shellClass}>
+        {state === "loading" ? (
+          <div className="rounded-2xl border border-black/10 bg-white/70 p-6 shadow-sm">
+            <ArrivalOverlay />
+          </div>
+        ) : null}
 
-        {/* ✅ NO HERO BAND ON ROOM PAGES (Home keeps hero) */}
+        {state === "error" ? (
+          <div className="rounded-2xl border border-black/10 bg-white/80 p-6 shadow-sm">
+            <div className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+              Room error
+            </div>
 
-        {FEATURE_FLAGS.MERCY_HOST_ENABLED && (
-          <MercyHostCorner roomId={hostRoomId} roomTitle={hostRoomTitle} roomTier={hostTier} language="en" />
-        )}
+            <h1 className="mt-2 text-2xl font-bold text-foreground">
+              We could not open this room.
+            </h1>
 
-        {/* NOTE: keyword_hub currently uses same renderer; kind is kept for future branching */}
-        {uiKind === "keyword_hub" ? (
-          <RoomRenderer room={room} roomId={canonicalId} roomSpec={roomSpec || undefined} />
-        ) : (
-          <RoomRenderer room={room} roomId={canonicalId} roomSpec={roomSpec || undefined} />
-        )}
-      </div>
+            <p className="mt-3 text-sm leading-6 text-muted-foreground">
+              {errorMessage}
+            </p>
 
-      {/* ✅ FIXED BOTTOM MOUNT: SAME RULER AS PAGE (NO md:px-6) */}
-      <div data-mb-music-mount className="fixed bottom-0 left-0 right-0 z-50" style={{ pointerEvents: "none" }}>
-        <div className="mx-auto w-full max-w-[980px] px-4 pb-4" style={{ pointerEvents: "auto" }}>
+            <div className="mt-5 flex flex-wrap gap-3">
+              <button
+                type="button"
+                onClick={() => void handleBack()}
+                className="rounded-xl border border-black/10 bg-white px-4 py-2 font-medium text-foreground shadow-sm transition hover:bg-black/[0.03]"
+              >
+                ← Back
+              </button>
+
+              <button
+                type="button"
+                onClick={() => navigate("/rooms")}
+                className="rounded-xl border border-black/10 bg-white px-4 py-2 font-medium text-foreground shadow-sm transition hover:bg-black/[0.03]"
+              >
+                Browse rooms
+              </button>
+            </div>
+          </div>
+        ) : null}
+
+        {state === "ready" && room ? (
+          <div className="space-y-4">
+            {showArrival ? (
+              <div className="rounded-2xl border border-black/10 bg-white/75 p-6 shadow-sm">
+                <ArrivalOverlay />
+              </div>
+            ) : null}
+
+            <div className={showArrival ? "hidden" : "block"}>
+              <RoomRenderer
+                room={room}
+                roomId={roomId}
+                roomSpec={roomSpec || undefined}
+              />
+            </div>
+          </div>
+        ) : null}
+      </main>
+
+      {FEATURE_FLAGS?.mercyHostCorner ? <MercyHostCorner /> : null}
+
+      <div
+        aria-label="Bottom music dock"
+        className="pointer-events-none fixed inset-x-0 bottom-3 z-[80] px-4"
+      >
+        <div
+          className="pointer-events-auto mx-auto w-full"
+          style={{ maxWidth: PAGE_MAX }}
+        >
           <BottomMusicBar />
         </div>
       </div>
-    </>
+    </div>
   );
 }
-
-/** New thing to learn:
- * If two pages “almost align” but differ on desktop, check breakpoint padding:
- * px-4 vs md:px-6 will quietly break your global ruler. */

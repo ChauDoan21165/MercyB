@@ -3,31 +3,37 @@
  * BOX 2: Title row (tier left, title centered, fav+refresh right) — ONE ROW
  * BOX 3: Welcome line (EN / VI) + keyword buttons
  * BOX 4: EMPTY until keyword; then EN → TalkingFace → VI
- * BOX 5: Feedback bar pushed to bottom (no header line)
+ * BOX 5: Completion + chat + feedback bar pushed to bottom (no feedback header line)
  *
  * Gate: useUserAccess() (public.profiles), admin/high-admin bypass via hook.
  */
 
 // FILE: src/components/room/RoomRenderer.tsx
-// VERSION: MB-BLUE-99.11w-host-repeat-target — 2026-01-19 (+0700)
+// VERSION: MB-BLUE-99.12-room-completion — 2026-03-09
 //
-// FIXES INCLUDED (kept, but file shortened):
+// FIXES INCLUDED:
 // - DB fetch tries effectiveRoomId THEN coreRoomId (suffix-free) if needed.
 // - Ignore DB if only __legacy stub rows; fallback to JSON.
 // - Coerce legacy JSON entries (copy->content, audio->audio_en, merge keywords).
 // - Keyword pills: 1 per entry when entry keyword fields exist; no fake EN/EN.
 // - Chat: canonical room_id = effectiveRoomId only (load/write/realtime).
+// - Dispatch mb:host-repeat-target when activeEntry becomes known.
+// - Added lightweight room completion moment (localStorage only, no backend).
+// - Kept ROOM 5-BOX structure intact.
 //
-// NEW (99.11w):
-// - Dispatch mb:host-repeat-target when activeEntry becomes known (repeat loop wiring).
+// PATCH (2026-03-09b):
+// - Accept optional uiKind / onBack props from thin page controllers (ChatHub).
+// - Keep renderer backward-compatible with older callers.
+// - Guard browser-only APIs a little more safely.
 //
-// PATCH (2026-01-31):
-// - Tidy alignment: Box 2 now has its own border/card baseline; Box 3 welcome + keywords align to border baseline.
-// - No layout refactor; CSS-only overrides appended after ROOM_CSS.
+// PATCH (2026-03-09c):
+// - Wire in SpeechRecorder below ActiveEntry inside Box 4.
+// - Only render when active entry has a usable English target sentence.
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { BilingualEssay } from "@/components/room/BilingualEssay";
+import SpeechRecorder from "@/components/speech/SpeechRecorder";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import type { TierId } from "@/lib/constants/tiers";
 import { normalizeTier } from "@/lib/constants/tiers";
@@ -46,7 +52,6 @@ import {
 import { ROOM_CSS } from "@/components/room/roomRendererStyles";
 import { supabase } from "@/lib/supabaseClient";
 
-// ✅ NEW: signed-audio seam (TalkingFacePlayButton must only receive signed URL)
 import { getSignedAudio } from "@/lib/audio/getSignedAudio";
 
 import { prettifyRoomIdEN, isBadAutoTitle } from "@/components/room/roomIdUtils";
@@ -62,6 +67,14 @@ import { useAuthUser } from "@/components/room/hooks/useAuthUser";
 import { useRoomFeedback } from "@/components/room/hooks/useRoomFeedback";
 
 type AnyRoom = any;
+
+type RoomRendererProps = {
+  room: AnyRoom;
+  roomId?: string;
+  roomSpec?: { use_color_theme?: boolean };
+  uiKind?: "keyword_hub" | "content";
+  onBack?: () => void;
+};
 
 const pickTitleENRaw = (r: AnyRoom) => r?.title?.en || r?.title_en || r?.name?.en || r?.name_en || "";
 const pickTitleVIRaw = (r: AnyRoom) => r?.title?.vi || r?.title_vi || r?.name?.vi || r?.name_vi || "";
@@ -83,11 +96,10 @@ const pickIntroVI = (r: AnyRoom) =>
   r?.description_vi ||
   r?.summary?.vi ||
   r?.summary_vi ||
-  r?.description || // ✅ FIX: fallback should be r.description (not description_vi again)
+  r?.description ||
   "";
 
 function pickTier(room: AnyRoom): string {
-  // IMPORTANT: do NOT default missing tier to "free" here.
   return String(room?.tier ?? room?.meta?.tier ?? "").toLowerCase();
 }
 function normalizeRoomTierToTierId(roomTier: string): TierId | null {
@@ -117,8 +129,6 @@ function dispatchHostContext(detail: Record<string, any>) {
     // ignore
   }
 }
-
-// NEW: repeat target event for Mercy Host
 function dispatchHostRepeatTarget(detail: Record<string, any>) {
   try {
     if (typeof window === "undefined") return;
@@ -134,16 +144,12 @@ function coreRoomIdFromEffective(effectiveRoomId: string) {
   return id.replace(/_(vip[1-9]|free)$/i, "");
 }
 
-// ✅ NEW: UUID guard (prevents DB ids/slugs becoming “keywords”)
 function looksUuidLike(s: any) {
   const t = String(s ?? "").trim();
   if (!t) return false;
-  // canonical UUID v4-ish (but accept any UUID shape)
   return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(t);
 }
 
-// ✅ NEW: strict TierId normalizer at runtime (prevents "FREE"/"Free " from leaking into UI)
-// ✅ FIX: support vip2 at runtime (so vip1 cannot access vip2 rooms).
 type TierIdRuntime = TierId | "vip2";
 function normalizeTierIdRuntime(x: any): TierIdRuntime {
   const t = String(x ?? "").trim().toLowerCase();
@@ -152,27 +158,23 @@ function normalizeTierIdRuntime(x: any): TierIdRuntime {
   return (n || "free") as TierIdRuntime;
 }
 
-// ✅ NEW: signed-audio helpers (Room-level seam; TalkingFacePlayButton NEVER sees bucket paths)
 function isHttpUrl(s: string) {
   return /^https?:\/\//i.test(String(s || ""));
 }
 function isPublicAudioPath(s: string) {
   const p = String(s || "").trim();
   if (!p) return false;
-  // existing public patterns used across the app
   return p.startsWith("/audio/") || p.startsWith("audio/") || p.startsWith("/music/") || p.startsWith("music/");
 }
 function looksBucketObjectPath(s: string) {
   const p = String(s || "").trim();
   if (!p) return false;
-  // "vip3/test_private.mp3" (no leading slash), can include folders, ends with .mp3
   if (p.startsWith("/")) return false;
   if (isHttpUrl(p)) return false;
   if (isPublicAudioPath(p)) return false;
   return /\.mp3(\?.*)?$/i.test(p);
 }
 
-// ----- “meaningful” entry + legacy coercion -----
 function isLegacyStubEntry(e: any) {
   const slug = String(e?.slug ?? "").trim();
   const id = String(e?.id ?? "").trim();
@@ -215,7 +217,7 @@ function coerceLegacyEntryShape(entry: any) {
     const isUrl = /^https?:\/\//i.test(a);
     if (!isUrl) {
       if (a.startsWith("/")) {
-        // ok
+        // keep
       } else if (a.startsWith("audio/")) {
         e.audio_en = `/${a}`;
       } else if (!a.includes("/")) {
@@ -238,7 +240,6 @@ function coerceLegacyEntryShape(entry: any) {
   pushMany(e.keywords_vi);
   pushMany(e.tags);
 
-  // ✅ IMPORTANT: never treat UUID ids/slugs/titles as keywords
   const slug = String(e.slug ?? "").trim();
   if (slug && !looksUuidLike(slug)) bag.push(slug);
 
@@ -249,7 +250,6 @@ function coerceLegacyEntryShape(entry: any) {
   const merged = bag
     .map((s) => normalizeTextForKwMatch(s))
     .filter(Boolean)
-    // ✅ Drop UUID-like tokens after normalization too (paranoia-safe)
     .filter((s) => !looksUuidLike(s))
     .filter((s) => {
       if (seen.has(s)) return false;
@@ -262,7 +262,6 @@ function coerceLegacyEntryShape(entry: any) {
   return e;
 }
 
-// ----- keyword bilingual lookup + per-entry keyword selection -----
 function buildKeywordLookupFromEntries(entries: any[]) {
   const viByEn = new Map<string, string>();
   const enByVi = new Map<string, string>();
@@ -298,7 +297,6 @@ function pickOneKeywordPairForEntry(
   const enArr = Array.isArray(entry?.keywords_en) ? entry.keywords_en : [];
   const viArr = Array.isArray(entry?.keywords_vi) ? entry.keywords_vi : [];
 
-  // Prefer paired index i↔i
   {
     const n = Math.min(enArr.length, viArr.length);
     for (let i = 0; i < n; i++) {
@@ -310,7 +308,6 @@ function pickOneKeywordPairForEntry(
     }
   }
 
-  // EN-only -> try lookup
   if (enArr.length > 0) {
     const en = String(enArr[0] ?? "").trim();
     if (!en) return null;
@@ -319,7 +316,6 @@ function pickOneKeywordPairForEntry(
     return { en, vi };
   }
 
-  // VI-only -> try lookup
   if (viArr.length > 0) {
     const vi = String(viArr[0] ?? "").trim();
     if (!vi) return null;
@@ -331,7 +327,6 @@ function pickOneKeywordPairForEntry(
   return null;
 }
 
-// NEW: extract repeat-target texts/audio from an entry without depending on exact schema
 function pickRepeatTargetFromEntry(entry: any): { text_en: string; text_vi: string; audio_url: string } {
   const en =
     String(entry?.text_en ?? entry?.content_en ?? entry?.content?.en ?? entry?.copy?.en ?? entry?.en ?? "").trim() ||
@@ -344,7 +339,6 @@ function pickRepeatTargetFromEntry(entry: any): { text_en: string; text_vi: stri
   return { text_en: en, text_vi: vi, audio_url: audio };
 }
 
-/** PATCH: alignment tidy CSS appended after ROOM_CSS (keeps ROOM 5-BOX spec intact). */
 const ROOM_CSS_TIDY = `
 /* === MB: tidy alignment (Box 2 + Box 3) — use card border as the grid standard === */
 [data-mb-scope="room"]{
@@ -355,22 +349,16 @@ const ROOM_CSS_TIDY = `
   --mb-icon: 34px;
   --mb-pill-h: 32px;
 
-  /* border style fallback (works even if theme vars missing) */
   --mb-border: rgba(0,0,0,0.08);
   --mb-card-bg: rgba(255,255,255,0.78);
 }
 
-/* === MB: ROOM WIDTH FRAME (FIX) ===
-   Room pages must use the SAME max-width frame as Home (980px).
-   We clamp at the React wrapper (see return JSX), so here we only ensure
-   boxes fill the *container*, not the viewport. */
 [data-mb-scope="room"] [data-room-box]{
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
 }
 
-/* ---------- BOX 2: give it a real border baseline + align to it ---------- */
 [data-mb-scope="room"] .mb-titleRow{
   display:flex;
   align-items:center;
@@ -379,14 +367,11 @@ const ROOM_CSS_TIDY = `
   min-height: var(--mb-row-min);
   padding: var(--mb-box-pad-y) var(--mb-box-pad-x);
   box-sizing:border-box;
-
-  /* THIS is the missing part: Box 2 must have the same “card border line” standard */
   border: 1px solid var(--mb-border);
   border-radius: 16px;
   background: var(--mb-card-bg);
 }
 
-/* Keep Box 2 snug to Box 3 (less floaty space) */
 [data-mb-scope="room"] [data-room-box="2"]{
   margin-bottom: 14px;
 }
@@ -406,7 +391,6 @@ const ROOM_CSS_TIDY = `
   justify-content:center;
 }
 
-/* Tier pill / small chips in header */
 [data-mb-scope="room"] .mb-titleRow .mb-tier{
   height: var(--mb-pill-h);
   padding: 0 12px;
@@ -419,7 +403,6 @@ const ROOM_CSS_TIDY = `
   box-sizing: border-box;
 }
 
-/* Icon buttons right side: consistent circle/size */
 [data-mb-scope="room"] .mb-titleRow .mb-iconBtn{
   width: var(--mb-icon);
   min-width: var(--mb-icon);
@@ -433,29 +416,25 @@ const ROOM_CSS_TIDY = `
   box-sizing: border-box;
 }
 
-/* Prevent title from pushing controls off baseline */
 [data-mb-scope="room"] .mb-roomTitle{
   margin: 0;
 }
 
-/* ---------- BOX 3: stop “center-floating”; align to border rhythm ---------- */
 [data-mb-scope="room"] .mb-welcomeLine{
-  text-align: left;           /* key: border-aligned, not floating center */
+  text-align: left;
   margin: 0;
 }
 
-/* Keyword row: left aligned, wraps cleanly, uses the card padding as baseline */
 [data-mb-scope="room"] .mb-keyRow{
   display:flex;
   flex-wrap: wrap;
-  justify-content: flex-start; /* key: align to the border baseline */
+  justify-content: flex-start;
   align-items: center;
   gap: 10px;
   margin-top: 12px;
   width: 100%;
 }
 
-/* Keyword pills: consistent height & baseline */
 [data-mb-scope="room"] .mb-keyRow .mb-keyBtn{
   height: var(--mb-pill-h);
   padding: 0 12px;
@@ -468,15 +447,68 @@ const ROOM_CSS_TIDY = `
   box-sizing: border-box;
 }
 
-/* Make active state not jump layout (no scale/border surprises) */
 [data-mb-scope="room"] .mb-keyRow .mb-keyBtn[data-active="true"]{
   transform: none;
 }
 
-/* Ensure buttons never “stick out” due to default button styles */
 [data-mb-scope="room"] .mb-titleRow button,
 [data-mb-scope="room"] .mb-keyRow button{
   box-sizing: border-box;
+}
+
+/* Completion block */
+[data-mb-scope="room"] .mb-completionCard{
+  border: 1px solid var(--mb-border);
+  border-radius: 16px;
+  background: var(--mb-card-bg);
+  padding: 14px 14px 12px;
+  box-sizing: border-box;
+  margin-bottom: 14px;
+}
+
+[data-mb-scope="room"] .mb-completionPrompt{
+  font-weight: 800;
+  line-height: 1.35;
+  margin: 0 0 10px;
+}
+
+[data-mb-scope="room"] .mb-completionSub{
+  font-size: 12px;
+  opacity: .72;
+  margin: 0 0 10px;
+}
+
+[data-mb-scope="room"] .mb-completionRow{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+[data-mb-scope="room"] .mb-completionInput{
+  flex: 1 1 340px;
+  min-width: 220px;
+  width: 100%;
+  border: 1px solid var(--mb-border);
+  border-radius: 999px;
+  padding: 11px 14px;
+  background: rgba(255,255,255,.92);
+  box-sizing: border-box;
+}
+
+[data-mb-scope="room"] .mb-completionBtn{
+  height: 40px;
+  padding: 0 14px;
+  border-radius: 999px;
+  font-weight: 800;
+  box-sizing: border-box;
+}
+
+[data-mb-scope="room"] .mb-completionDone{
+  font-size: 13px;
+  font-weight: 800;
+  margin-top: 10px;
+  opacity: .82;
 }
 `;
 
@@ -484,18 +516,11 @@ export default function RoomRenderer({
   room,
   roomId,
   roomSpec,
-}: {
-  room: AnyRoom;
-  roomId: string | undefined;
-  roomSpec?: { use_color_theme?: boolean };
-}) {
+  uiKind: _uiKind,
+  onBack: _onBack,
+}: RoomRendererProps) {
   const rootRef = useRef<HTMLDivElement | null>(null);
-
-  // ✅ FIX: RoomRendererUI expects RefObject<HTMLDivElement> (not HTMLDivElement | null).
-  // useRef<HTMLDivElement>(null!) keeps type compatible while runtime remains safe.
   const audioAnchorRef = useRef<HTMLDivElement>(null!);
-
-  // ✅ SIGNED AUDIO (Room layer) — cache by raw path/url (DECLARE ONCE)
   const signedAudioCacheRef = useRef<Map<string, string>>(new Map());
 
   const useColorThemeSafe = roomSpec?.use_color_theme !== false;
@@ -518,7 +543,8 @@ export default function RoomRenderer({
     }
   }, [isDev]);
 
-  const isNarrow = typeof window !== "undefined" ? window.matchMedia("(max-width: 860px)").matches : false;
+  const isNarrow =
+    typeof window !== "undefined" ? window.matchMedia("(max-width: 860px)").matches : false;
 
   const scrollToAudio = () => {
     const el = audioAnchorRef.current;
@@ -526,20 +552,16 @@ export default function RoomRenderer({
     el.scrollIntoView({ behavior: "smooth", block: "center" });
   };
 
-  // ✅ NEW: resolve audio into a safe URL for players (signed if bucket path)
   const resolveAudioUrl = useCallback(async (raw: string): Promise<string> => {
     const s = String(raw || "").trim();
     if (!s) return "";
 
-    // Already a full URL
     if (isHttpUrl(s)) return s;
 
-    // Existing public patterns (do not sign)
     if (isPublicAudioPath(s)) {
       return s.startsWith("/") ? s : `/${s}`;
     }
 
-    // Bucket object path => sign (cache by object path)
     if (looksBucketObjectPath(s)) {
       const cached = signedAudioCacheRef.current.get(s);
       if (cached) return cached;
@@ -550,11 +572,9 @@ export default function RoomRenderer({
       return safe || "";
     }
 
-    // Fallback: keep as-is
     return s;
   }, []);
 
-  // kill native audio controls (locked rule)
   useEffect(() => {
     const root = rootRef.current;
     if (!root) return;
@@ -576,7 +596,6 @@ export default function RoomRenderer({
     return () => obs.disconnect();
   }, []);
 
-  // Spec asserts (DEV only)
   useEffect(() => {
     if (!isDev) return;
     const root = rootRef.current;
@@ -584,25 +603,18 @@ export default function RoomRenderer({
 
     const boxes = ["2", "3", "4", "5"].map((n) => root.querySelector(`[data-room-box="${n}"]`));
     if (!boxes.every(Boolean)) {
-      // eslint-disable-next-line no-console
       console.error("ROOM 5-BOX SPEC VIOLATION: missing data-room-box=2/3/4/5");
       return;
     }
     const idx = boxes.map((el) => Array.prototype.indexOf.call(root.children, el));
     if (!(idx[0] < idx[1] && idx[1] < idx[2] && idx[2] < idx[3])) {
-      // eslint-disable-next-line no-console
       console.error("ROOM 5-BOX SPEC VIOLATION: boxes not ordered 2→3→4→5. Indexes:", idx);
     }
   }, [effectiveRoomId, isDev]);
 
-  // ---- tier + gate ----
-  // IMPORTANT FIX:
-  // - requiredTierId MUST come from the ROOM ID (effectiveRoomId) only.
-  // - meta tier is display-only (and only trusted if it matches inferred).
   const tierMetaRaw = useMemo(() => pickTier(safeRoom), [safeRoom]);
   const metaTierId = useMemo<TierId | null>(() => normalizeRoomTierToTierId(tierMetaRaw), [tierMetaRaw]);
 
-  // ✅ runtime-hard normalize (prevents "FREE"/"Free " leaks)
   const inferredTierId = useMemo<TierIdRuntime>(
     () => normalizeTierIdRuntime(tierFromRoomId(effectiveRoomId)),
     [effectiveRoomId],
@@ -615,9 +627,6 @@ export default function RoomRenderer({
     return inferredTierId;
   }, [metaTierId, inferredTierId]);
 
-  // ✅ FIX: room route must not depend on localStorage being written.
-  // Fetch vip_rank once from mb_user_effective_rank and gate off that.
-  // ✅ NEW (403 spam fix): ONLY query mb_user_effective_rank when a real session exists (auth.getSession()).
   const [vipRank, setVipRank] = useState<number | null>(null);
   const [vipRankLoading, setVipRankLoading] = useState<boolean>(false);
 
@@ -627,7 +636,6 @@ export default function RoomRenderer({
     async function loadVipRank() {
       setVipRankLoading(true);
       try {
-        // ✅ Gate behind real session (prevents 403 spam when logged out)
         const { data: sessData, error: sessErr } = await supabase.auth.getSession();
         const session = sessData?.session ?? null;
 
@@ -657,7 +665,6 @@ export default function RoomRenderer({
         const safe = Number.isFinite(n) ? n : 0;
         setVipRank(safe);
 
-        // optional cache to help other routes (not required for gating anymore)
         try {
           if (typeof window !== "undefined") window.localStorage.setItem("mb.vip_rank", String(safe));
         } catch {
@@ -668,7 +675,7 @@ export default function RoomRenderer({
       }
     }
 
-    loadVipRank();
+    void loadVipRank();
     return () => {
       cancelled = true;
     };
@@ -676,32 +683,23 @@ export default function RoomRenderer({
 
   const isLocked = useMemo(() => {
     const requiredRank =
-      requiredTierId === "vip9" ? 9 : requiredTierId === "vip3" ? 3 : requiredTierId === "vip2" ? 2 : requiredTierId === "vip1" ? 1 : 0;
+      requiredTierId === "vip9"
+        ? 9
+        : requiredTierId === "vip3"
+          ? 3
+          : requiredTierId === "vip2"
+            ? 2
+            : requiredTierId === "vip1"
+              ? 1
+              : 0;
 
     if (requiredRank <= 0) return false;
-
-    // If we fetched rank, trust it.
     if (typeof vipRank === "number") return vipRank < requiredRank;
-
-    // While fetching vip rank, keep VIP tiers locked.
     if (vipRankLoading) return true;
-
-    // Fallback (should be rare now)
     if (accessLoading) return true;
     return !access.canAccessTier(requiredTierId as any);
   }, [requiredTierId, vipRank, vipRankLoading, accessLoading, access]);
 
-  // NOTE: room pages no longer own sign-out UI (GlobalHeader/AppHeader do).
-  // Keep this function for safety but DO NOT render a sign-out button here.
-  async function signOut() {
-    try {
-      await supabase.auth.signOut();
-    } finally {
-      window.location.href = "/signin";
-    }
-  }
-
-  // ---- DB entries (RLS) ----
   const [dbRows, setDbRows] = useState<any[] | null>(null);
   const [dbLoading, setDbLoading] = useState(false);
   const [dbError, setDbError] = useState<string | null>(null);
@@ -720,7 +718,6 @@ export default function RoomRenderer({
       setDbLoading(true);
       setDbError(null);
 
-      // ✅ FIX: try effective first, then coreRoomId if no useful rows
       const r1 = await fetchRoomEntriesDb(supabase, effectiveRoomId);
       let rows = Array.isArray(r1?.rows) ? r1.rows : [];
       let error = r1?.error ?? null;
@@ -740,13 +737,12 @@ export default function RoomRenderer({
       setDbLoading(false);
     }
 
-    load();
+    void load();
     return () => {
       cancelled = true;
     };
   }, [effectiveRoomId, coreRoomId]);
 
-  // ---- titles / intros ----
   const rawEN = useMemo(() => String(pickTitleENRaw(safeRoom) || ""), [safeRoom]);
   const rawVI = useMemo(() => String(pickTitleVIRaw(safeRoom) || ""), [safeRoom]);
 
@@ -769,7 +765,6 @@ export default function RoomRenderer({
   const introEN = useMemo(() => pickIntroEN(safeRoom), [safeRoom]);
   const introVI = useMemo(() => pickIntroVI(safeRoom), [safeRoom]);
 
-  // ---- keywords + entries (DB preferred, JSON fallback) ----
   const kwRaw = useMemo(() => resolveKeywords(safeRoom), [safeRoom]);
   const essay = useMemo(() => resolveEssay(safeRoom), [safeRoom]);
 
@@ -800,7 +795,6 @@ export default function RoomRenderer({
 
   const allEntries = useMemo(() => chosenEntries.list.map((e: any) => ({ entry: e })), [chosenEntries]);
 
-  // ✅ SAFETY: never allow UUID-like junk into keyword pills (prod data can differ)
   const looksUuidLikeCb = useCallback((s: any) => {
     const t = String(s ?? "").trim();
     if (!t) return false;
@@ -821,7 +815,6 @@ export default function RoomRenderer({
     const entryCount = entries.length;
     const lookup = buildKeywordLookupFromEntries(entries);
 
-    // Prefer ONE keyword per entry when entry keyword fields exist
     if (entryCount > 0) {
       const perEntry = entries
         .map((e) => pickOneKeywordPairForEntry(e, lookup))
@@ -829,23 +822,24 @@ export default function RoomRenderer({
         .filter((p: any) => {
           const en = String(p?.en ?? "").trim();
           const vi = String(p?.vi ?? "").trim();
-          // drop UUID-like garbage in either slot
           if (looksUuidLikeCb(en)) return false;
           if (looksUuidLikeCb(vi)) return false;
-          // also drop completely empty pairs
           return !!(en || vi);
         }) as Array<{ en: string; vi: string }>;
 
       if (perEntry.length > 0) {
         const trimmed = perEntry.slice(0, Math.max(1, entryCount));
-        const en = trimmed.map((p) => String(p.en || "").trim()).filter(Boolean).filter((x) => !looksUuidLikeCb(x));
+        const en = trimmed
+          .map((p) => String(p.en || "").trim())
+          .filter(Boolean)
+          .filter((x) => !looksUuidLikeCb(x));
         const vi = trimmed
           .map((p) => {
             const v = String(p.vi || "").trim();
             const e = String(p.en || "").trim();
             if (!v) return "";
             if (looksUuidLikeCb(v)) return "";
-            return v && normalizeTextForKwMatch(v) !== normalizeTextForKwMatch(e) ? v : "";
+            return normalizeTextForKwMatch(v) !== normalizeTextForKwMatch(e) ? v : "";
           })
           .filter((x) => !looksUuidLikeCb(x));
 
@@ -853,17 +847,14 @@ export default function RoomRenderer({
       }
     }
 
-    // fallback: room keywords if present else derived
     const hasReal = (kwRaw?.en?.length || 0) > 0 || (kwRaw?.vi?.length || 0) > 0;
     const base0 = hasReal ? kwRaw : entryCount > 0 ? deriveKeywordsFromEntryList(entries) : { en: [], vi: [] };
 
-    // ✅ clean UUID-like junk from both arrays
     const base = {
       en: cleanKwArr(base0.en || []),
       vi: cleanKwArr(base0.vi || []),
     };
 
-    // final: enforce no fake EN/EN display by blanking VI when same
     const maxLen = Math.max(base.en.length, base.vi.length);
     return {
       en: Array.from({ length: maxLen }).map((_, i) => String(base.en[i] ?? "").trim()),
@@ -879,7 +870,6 @@ export default function RoomRenderer({
   const enKeywords = (kw.en.length ? kw.en : kw.vi).map(String).filter((x) => !looksUuidLikeCb(x));
   const viKeywords = (kw.vi.length ? kw.vi : kw.en).map(String).filter((x) => !looksUuidLikeCb(x));
 
-  // ✅ NEW: highlight count rule (3 → 5 → 7) based on text length (no schema dependency)
   const highlightN = useMemo(() => {
     const base = `${String(introEN || "")} ${String(introVI || "")} ${String(essay?.en || "")} ${String(
       essay?.vi || "",
@@ -911,6 +901,21 @@ export default function RoomRenderer({
     return allEntries.findIndex((x) => x.entry === activeEntry);
   }, [activeEntry, allEntries]);
 
+  const speechTargetText = useMemo(() => {
+    return String(
+      activeEntry?.text_en ??
+        activeEntry?.content_en ??
+        activeEntry?.content?.en ??
+        activeEntry?.copy?.en ??
+        activeEntry?.en ??
+        "",
+    ).trim();
+  }, [activeEntry]);
+
+  const speechLineId = useMemo(() => {
+    return String(activeEntry?.id || activeEntry?.slug || activeKeyword || "line-1").trim();
+  }, [activeEntry, activeKeyword]);
+
   const welcomeEN = introEN?.trim() || `Welcome to ${titleEN}, please click a keyword to start`;
   const welcomeVI =
     introVI?.trim() || `Chào mừng bạn đến với phòng ${titleVI || titleEN}, vui lòng nhấp vào từ khóa để bắt đầu`;
@@ -929,13 +934,12 @@ export default function RoomRenderer({
     dispatchHostContext({ page: "room", roomId: effectiveRoomId, keyword, entryId });
   }, [effectiveRoomId, activeKeyword, activeEntry]);
 
-  // ✅ SIGNED AUDIO (active entry)
   const [activeAudioUrl, setActiveAudioUrl] = useState<string>("");
 
   useEffect(() => {
     let alive = true;
 
-    (async () => {
+    void (async () => {
       try {
         if (!activeEntry) {
           if (alive) setActiveAudioUrl("");
@@ -959,29 +963,23 @@ export default function RoomRenderer({
     };
   }, [activeEntry, resolveAudioUrl]);
 
-  // NEW: when repeat target becomes known, signal Mercy Host
   useEffect(() => {
     if (!effectiveRoomId) return;
     if (!activeKeyword) return;
     if (!activeEntry) return;
-
-    // Even if locked UI disables clicks, be defensive:
     if (isLocked) return;
 
     const entryId = String(activeEntry?.id || activeEntry?.slug || "").trim() || null;
     const { text_en, text_vi } = pickRepeatTargetFromEntry(activeEntry);
 
-    // Don’t dispatch empty targets
     if (!text_en && !text_vi) return;
 
-    // ✅ FIX: SSR-safe idempotency guard (avoid repeat spam on re-render)
     const repeatKey = `${effectiveRoomId}|${entryId}|${activeKeyword ?? ""}`;
     if (typeof window !== "undefined") {
       if ((window as any).__mb_last_repeat_key === repeatKey) return;
       (window as any).__mb_last_repeat_key = repeatKey;
     }
 
-    // ✅ IMPORTANT: Host should also receive SIGNED audio (never bucket path)
     dispatchHostRepeatTarget({
       roomId: effectiveRoomId,
       entryId,
@@ -992,7 +990,6 @@ export default function RoomRenderer({
     });
   }, [effectiveRoomId, activeKeyword, activeEntry, isLocked, activeAudioUrl]);
 
-  // ---- BOX 5: CHAT (canonical = effectiveRoomId) ----
   type ChatRow = { id: any; room_id?: string; user_id?: string; message?: string; created_at?: string };
 
   const canonicalChatRoomId = String(effectiveRoomId || "").trim();
@@ -1062,7 +1059,7 @@ export default function RoomRenderer({
   );
 
   useEffect(() => {
-    loadChatInline(60);
+    void loadChatInline(60);
   }, [loadChatInline]);
 
   useEffect(() => {
@@ -1087,7 +1084,7 @@ export default function RoomRenderer({
       },
     );
 
-    channel.subscribe();
+    void channel.subscribe();
     return () => {
       try {
         supabase.removeChannel(channel);
@@ -1185,7 +1182,6 @@ export default function RoomRenderer({
     [isNarrow],
   );
 
-  // UI HARDEN: ensure “locked / empty / system messages” never touch card borders
   const inCardMessagePad: React.CSSProperties = useMemo(
     () => ({
       width: "100%",
@@ -1195,14 +1191,73 @@ export default function RoomRenderer({
     [isNarrow],
   );
 
-  // ✅ NEW: display tier pill only when VIP (no FREE pill in rooms; global header owns tier/account UI)
   const displayTierForPill = useMemo(() => {
     const t = normalizeTierIdRuntime(displayTierId);
     return t !== "free" ? String(t).toUpperCase() : "";
   }, [displayTierId]);
 
+  const completionStorageKey = useMemo(() => `mb.roomCompletion.${effectiveRoomId}`, [effectiveRoomId]);
+  const [completionText, setCompletionText] = useState("");
+  const [completionSaved, setCompletionSaved] = useState(false);
+
+  useEffect(() => {
+    if (!effectiveRoomId || typeof window === "undefined") {
+      setCompletionText("");
+      setCompletionSaved(false);
+      return;
+    }
+    try {
+      const raw = window.localStorage.getItem(completionStorageKey);
+      if (!raw) {
+        setCompletionText("");
+        setCompletionSaved(false);
+        return;
+      }
+      const parsed = JSON.parse(raw);
+      const text = String(parsed?.text || "").trim();
+      setCompletionText(text);
+      setCompletionSaved(!!text);
+    } catch {
+      setCompletionText("");
+      setCompletionSaved(false);
+    }
+  }, [completionStorageKey, effectiveRoomId]);
+
+  useEffect(() => {
+    if (!effectiveRoomId) return;
+    try {
+      localStorage.setItem("mb.lastRoomId", effectiveRoomId);
+    } catch {
+      // ignore
+    }
+  }, [effectiveRoomId]);
+
+  const saveCompletion = useCallback(() => {
+    const text = String(completionText || "").trim();
+    if (!effectiveRoomId || !text || typeof window === "undefined") return;
+    try {
+      window.localStorage.setItem(
+        completionStorageKey,
+        JSON.stringify({
+          room_id: effectiveRoomId,
+          text,
+          completed_at: new Date().toISOString(),
+        }),
+      );
+      window.localStorage.setItem("mb.lastRoomId", effectiveRoomId);
+      setCompletionSaved(true);
+    } catch {
+      // ignore
+    }
+  }, [completionText, completionStorageKey, effectiveRoomId]);
+
+  const canComplete = !isLocked && !!activeEntry;
+  const completionPlaceholder = useMemo(() => {
+    const hint = activeKeyword ? `about “${activeKeyword}”` : "about this idea";
+    return `Write one sentence ${hint}…`;
+  }, [activeKeyword]);
+
   return (
-    // ✅ FIX: clamp ALL room pages to the same frame as Home (980px)
     <div className="mx-auto w-full max-w-[980px] px-4">
       <div
         ref={rootRef}
@@ -1216,8 +1271,6 @@ export default function RoomRenderer({
           <div className="rounded-xl border p-6 text-muted-foreground">Room loaded state is empty.</div>
         ) : (
           <>
-            {/* ✅ IMPORTANT: Room pages no longer render an extra "Guide" pill here.
-              Global Host/Guide is already mounted app-wide. */}
             {false && (
               <MercyGuideCorner
                 disabled={isLocked}
@@ -1228,14 +1281,9 @@ export default function RoomRenderer({
               />
             )}
 
-            {/* BOX 2 */}
             <div className="mb-titleRow" data-room-box="2">
               <div className="mb-titleLeft">
-                {/* VIP only (no FREE pill) */}
                 {displayTierForPill ? <span className="mb-tier">{displayTierForPill}</span> : null}
-
-                {/* NOTE: account + signout are owned by GlobalHeader/AppHeader now.
-                 Keep authUser for chat attribution only. */}
                 {showDev ? (
                   <span className="mb-tier" title={String(authUser?.email || authUser?.id || "")}>
                     DEV: {authUser ? shortEmailLabel(String((authUser as any).email || "")) : "NOAUTH"}
@@ -1250,24 +1298,22 @@ export default function RoomRenderer({
               </div>
 
               <div className="mb-titleRight">
-                {/* Keep only harmless UI-shell buttons in the room header */}
                 <button type="button" className="mb-iconBtn" title="Favorite (UI shell)" onClick={() => {}}>
                   ♡
                 </button>
-                <button type="button" className="mb-iconBtn" title="Refresh" onClick={() => window.location.reload()}>
+                <button
+                  type="button"
+                  className="mb-iconBtn"
+                  title="Refresh"
+                  onClick={() => {
+                    if (typeof window !== "undefined") window.location.reload();
+                  }}
+                >
                   ↻
                 </button>
-
-                {/* DEV-only quick sign-out (hidden) */}
-                {false && authUser ? (
-                  <button type="button" className="mb-tier" title="Sign out" onClick={signOut}>
-                    SIGN OUT
-                  </button>
-                ) : null}
               </div>
             </div>
 
-            {/* BOX 3 */}
             <section className="mb-card p-5 md:p-6 mb-5" data-room-box="3">
               <div className="mb-welcomeLine">
                 <span>
@@ -1295,16 +1341,15 @@ export default function RoomRenderer({
                     let vi = String(kw.vi[i] ?? "").trim();
                     if (!en && !vi) return null;
 
-                    // never show fake EN/EN
                     if (!vi || normalizeTextForKwMatch(vi) === normalizeTextForKwMatch(en)) vi = "";
 
                     const label = en && vi ? `${en} / ${vi}` : en || vi;
                     const next = (en || vi).trim();
 
-                    // ✅ absolute safety: never render UUID-like pills
                     if (looksUuidLike(next) || looksUuidLike(label)) return null;
 
-                    const isActive = normalizeTextForKwMatch(activeKeyword || "") === normalizeTextForKwMatch(next || "");
+                    const isActive =
+                      normalizeTextForKwMatch(activeKeyword || "") === normalizeTextForKwMatch(next || "");
 
                     return (
                       <button
@@ -1336,7 +1381,6 @@ export default function RoomRenderer({
               </div>
             )}
 
-            {/* BOX 4 */}
             <section className="mb-card p-5 md:p-6 mb-5 mb-box4" data-room-box="4">
               <div className="mb-zoomWrap">
                 {isLocked ? (
@@ -1359,25 +1403,34 @@ export default function RoomRenderer({
                 ) : !activeKeyword ? (
                   <div className="min-h-[460px]" />
                 ) : activeEntry ? (
-                  <ActiveEntry
-                    // ✅ IMPORTANT:
-                    // TalkingFacePlayButton must NEVER see bucket paths.
-                    // We override audio fields here so ActiveEntry/TFPB only receives signed URL.
-                    entry={{
-                      ...activeEntry,
-                      ...(activeAudioUrl
-                        ? {
-                            audio_url: activeAudioUrl,
-                            audio_en: activeAudioUrl,
-                            audio: activeAudioUrl,
-                          }
-                        : null),
-                    }}
-                    index={activeEntryIndex >= 0 ? activeEntryIndex : 0}
-                    enKeywords={enKeywords}
-                    viKeywords={viKeywords}
-                    audioAnchorRef={audioAnchorRef}
-                  />
+                  <>
+                    <ActiveEntry
+                      entry={{
+                        ...activeEntry,
+                        ...(activeAudioUrl
+                          ? {
+                              audio_url: activeAudioUrl,
+                              audio_en: activeAudioUrl,
+                              audio: activeAudioUrl,
+                            }
+                          : null),
+                      }}
+                      index={activeEntryIndex >= 0 ? activeEntryIndex : 0}
+                      enKeywords={enKeywords}
+                      viKeywords={viKeywords}
+                      audioAnchorRef={audioAnchorRef}
+                    />
+
+                    {speechTargetText ? (
+                      <div style={{ marginTop: 14 }}>
+                        <SpeechRecorder
+                          roomId={effectiveRoomId}
+                          lineId={speechLineId}
+                          targetText={speechTargetText}
+                        />
+                      </div>
+                    ) : null}
+                  </>
                 ) : (
                   <div className="min-h-[240px] flex items-center justify-center text-center" style={inCardMessagePad}>
                     <div style={{ maxWidth: 760, margin: "0 auto" }}>
@@ -1401,9 +1454,49 @@ export default function RoomRenderer({
               </div>
             </section>
 
-            {/* BOX 5 */}
             <div style={{ marginTop: "auto" }} data-room-box="5">
               <div className="mb-card p-3 md:p-4">
+                <div className="mb-completionCard">
+                  <p className="mb-completionPrompt">Before leaving this room, say one sentence about the idea.</p>
+                  <p className="mb-completionSub">
+                    {canComplete
+                      ? "A short reflection is enough."
+                      : "Choose a keyword first to unlock the reflection moment."}
+                  </p>
+
+                  <div className="mb-completionRow">
+                    <input
+                      className="mb-completionInput"
+                      value={completionText}
+                      onChange={(e) => {
+                        setCompletionText(e.target.value);
+                        if (completionSaved) setCompletionSaved(false);
+                      }}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          e.preventDefault();
+                          saveCompletion();
+                        }
+                      }}
+                      placeholder={completionPlaceholder}
+                      disabled={!canComplete}
+                      maxLength={220}
+                      aria-label="Room completion reflection"
+                    />
+                    <button
+                      type="button"
+                      className="mb-completionBtn mb-tier"
+                      onClick={saveCompletion}
+                      disabled={!canComplete || !completionText.trim()}
+                      title="Mark room completed"
+                    >
+                      Complete
+                    </button>
+                  </div>
+
+                  {completionSaved ? <div className="mb-completionDone">✓ Room completed</div> : null}
+                </div>
+
                 <div className="mb-chatWrap mb-4">
                   <div className="mb-chatHeader" style={{ display: "flex", alignItems: "center", gap: 10 }}>
                     <span>Community Chat</span>
@@ -1421,7 +1514,7 @@ export default function RoomRenderer({
                       <button
                         type="button"
                         className="mb-tier"
-                        onClick={() => loadChatInline(60)}
+                        onClick={() => void loadChatInline(60)}
                         disabled={chatLoading}
                         title="Refresh chat"
                       >
@@ -1495,7 +1588,7 @@ export default function RoomRenderer({
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
                                 e.preventDefault();
-                                sendChatInline();
+                                void sendChatInline();
                               }
                             }}
                             placeholder="Say something… (max 500 chars)"
@@ -1504,7 +1597,7 @@ export default function RoomRenderer({
                           />
                           <button
                             type="button"
-                            onClick={sendChatInline}
+                            onClick={() => void sendChatInline()}
                             disabled={chatSending || !chatText.trim()}
                             title="Send"
                           >
@@ -1530,7 +1623,7 @@ export default function RoomRenderer({
                     onKeyDown={(e) => {
                       if (e.key === "Enter") {
                         e.preventDefault();
-                        feedback.sendFeedback();
+                        void feedback.sendFeedback();
                       }
                     }}
                     placeholder="Feedback to admin / Góp ý cho admin…"
@@ -1541,7 +1634,7 @@ export default function RoomRenderer({
                   <button
                     type="button"
                     title={authUser ? "Send feedback" : "Sign in to send feedback"}
-                    onClick={feedback.sendFeedback}
+                    onClick={() => void feedback.sendFeedback()}
                     disabled={feedback.feedbackSending || !feedback.feedbackText.trim()}
                   >
                     ➤
