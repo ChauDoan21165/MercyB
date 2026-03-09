@@ -23,10 +23,10 @@
 //   (Prevents “sticking out” even if inner controls try to expand).
 // - ✅ Emits "mb-zoom-change" event on same-tab zoom updates (for live sync consumers).
 //
-// PATCH (2026-03-08b):
-// - Added the uploaded music list to the local track catalog.
-// - Excluded the .mp4 item from the music dropdown.
-// - Mercy-themed songs are grouped under "mb"; ambient/other songs remain in "all".
+// PATCH (2026-03-08c):
+// - Auto-load .mp3 files from src/assets/music via import.meta.glob.
+// - No manual tracks array editing needed for each new song.
+// - MB songs are inferred from filename patterns.
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -45,8 +45,6 @@ const LS_TRACK = "mb.music.trackId";
 const LS_VOL = "mb.music.vol";
 const LS_ZOOM = "mb.ui.zoom";
 const LS_FAV = "mb.music.fav";
-
-// ✅ owner flag for secret admin dot
 const LS_ADMIN = "mb_admin";
 
 function clamp(n: number, a: number, b: number) {
@@ -89,7 +87,6 @@ function getInitialFav(): Record<string, boolean> {
   }
 }
 
-// ✅ Global zoom: BOTH mechanisms (RoomRenderer/ChatHub may listen to either)
 function applyGlobalZoom(pct: number) {
   const safe = clamp(Math.round(pct), 60, 140);
 
@@ -100,13 +97,11 @@ function applyGlobalZoom(pct: number) {
     localStorage.setItem(LS_ZOOM, String(safe));
   } catch {}
 
-  // ✅ same-tab live update hook (ChatHub listens to this)
   try {
     window.dispatchEvent(new Event("mb-zoom-change"));
   } catch {}
 }
 
-// RAF ticker for time updates while playing
 function useRaf(active: boolean, cb: () => void) {
   const rafRef = useRef<number | null>(null);
   useEffect(() => {
@@ -202,257 +197,60 @@ function TalkingFaceIcon({ playing }: { playing: boolean }) {
   );
 }
 
+function normalizeTrackTitle(fileName: string) {
+  const noExt = fileName.replace(/\.[^/.]+$/, "");
+  return noExt
+    .replace(/[_-]+/g, " ")
+    .replace(/\s+/g, " ")
+    .replace(/\(\d+\)/g, "")
+    .trim();
+}
+
+function makeTrackId(fileName: string) {
+  return fileName
+    .replace(/\.[^/.]+$/, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "_")
+    .replace(/^_+|_+$/g, "");
+}
+
+function inferGroup(fileName: string): "all" | "mb" {
+  const s = fileName.toLowerCase();
+  const mbHints = [
+    "mercy",
+    "mb",
+    "blade",
+    "heart of the blade",
+    "where mercy",
+    "when mercy",
+    "song of mercy blade",
+  ];
+  return mbHints.some((hint) => s.includes(hint)) ? "mb" : "all";
+}
+
+const musicModules = import.meta.glob("@/assets/music/*.{mp3,wav,ogg,m4a}", {
+  eager: true,
+  import: "default",
+}) as Record<string, string>;
+
+function buildTracks(): Track[] {
+  return Object.entries(musicModules)
+    .map(([path, src]) => {
+      const fileName = path.split("/").pop() ?? "";
+      return {
+        id: makeTrackId(fileName),
+        title: normalizeTrackTitle(fileName),
+        src,
+        group: inferGroup(fileName),
+      } as Track;
+    })
+    .sort((a, b) => a.title.localeCompare(b.title));
+}
+
 export default function BottomMusicBar() {
   const nav = useNavigate();
 
-  const tracks: Track[] = useMemo(
-    () => [
-      // Ambient / general
-      {
-        id: "strings_of_time",
-        title: "Strings of Time",
-        src: "/music/2016-05-06_-_Strings_of_Time_-_David_Fesliyan_1.mp3",
-        group: "all",
-      },
-      {
-        id: "peace_and_happy",
-        title: "Peace And Happy",
-        src: "/music/2016-04-26_-_Peace_And_Happy_-_David_Fesliyan-2.mp3",
-        group: "all",
-      },
-      {
-        id: "an_ambient_day",
-        title: "An Ambient Day",
-        src: "/music/2015-12-22_-_An_Ambient_Day_-_David_Fesliyan-2.mp3",
-        group: "all",
-      },
-      {
-        id: "land_of_8_bits",
-        title: "Land of 8 Bits",
-        src: "/music/2019-01-10_-_Land_of_8_Bits_-_Stephen_Bennett_-_FesliyanStudios.com-2.mp3",
-        group: "all",
-      },
-      {
-        id: "simplicity",
-        title: "Simplicity",
-        src: "/music/2020-09-24_-_Simplicity_-_David_Fesliyan-2.mp3",
-        group: "all",
-      },
-      {
-        id: "tropical_keys",
-        title: "Tropical Keys",
-        src: "/music/2020-09-14_-_Tropical_Keys_-_www.FesliyanStudios.com_David_Renda_1.mp3",
-        group: "all",
-      },
-      {
-        id: "mellow_thoughts",
-        title: "Mellow Thoughts",
-        src: "/music/2020-09-14_-_Mellow_Thoughts_-_www.FesliyanStudios.com_David_Renda-2.mp3",
-        group: "all",
-      },
-      {
-        id: "looking_up",
-        title: "Looking Up",
-        src: "/music/2020-09-14_-_Looking_Up_-_www.FesliyanStudios.com_David_Renda-2.mp3",
-        group: "all",
-      },
-      {
-        id: "cruisin_along",
-        title: "Cruisin Along",
-        src: "/music/2020-08-19_-_Cruisin_Along_-_www.FesliyanStudios.com_David_Renda-2.mp3",
-        group: "all",
-      },
-      {
-        id: "the_soft_lullaby",
-        title: "The Soft Lullaby",
-        src: "/music/2020-03-22_-_The_Soft_Lullaby_-_FesliyanStudios.com_-_David_Renda-2.mp3",
-        group: "all",
-      },
-      {
-        id: "not_much_to_say",
-        title: "Not Much To Say",
-        src: "/music/2020-02-11_-_Not_Much_To_Say_-_David_Fesliyan-2.mp3",
-        group: "all",
-      },
-      {
-        id: "elven_forest",
-        title: "Elven Forest",
-        src: "/music/2019-07-29_-_Elven_Forest_-_FesliyanStudios.com_-_David_Renda-2.mp3",
-        group: "all",
-      },
-      {
-        id: "done_with_work",
-        title: "Done With Work",
-        src: "/music/2019-07-02_-_Done_With_Work_-_www.FesliyanStudios.com_-_David_Renda-2.mp3",
-        group: "all",
-      },
-      {
-        id: "on_my_own",
-        title: "On My Own",
-        src: "/music/2019-06-27_-_On_My_Own_-_www.FesliyanStudios.com_-_David_Renda-2.mp3",
-        group: "all",
-      },
-      {
-        id: "chill_gaming",
-        title: "Chill Gaming",
-        src: "/music/2019-06-07_-_Chill_Gaming_-_David_Fesliyan-2.mp3",
-        group: "all",
-      },
-      {
-        id: "the_lounge",
-        title: "The Lounge",
-        src: "/music/2019-06-05_-_The_Lounge_-_www.fesliyanstudios.com_-_David_Renda-2.mp3",
-        group: "all",
-      },
-      {
-        id: "elevator_ride",
-        title: "Elevator Ride",
-        src: "/music/2019-05-03_-_Elevator_Ride_-_www.fesliyanstudios.com-2.mp3",
-        group: "all",
-      },
-      {
-        id: "sad_winds_chapter_1",
-        title: "Sad Winds Chapter 1",
-        src: "/music/2017-10-14_-_Sad_Winds_Chapter_1_-_David_Fesliyan-2.mp3",
-        group: "all",
-      },
-
-      // Mercy / MB songs
-      {
-        id: "mb_theme_1",
-        title: "MB Theme 1",
-        src: "/music/2015-11-08_-_Peace_-_David_Fesliyan-2.mp3",
-        group: "mb",
-      },
-      {
-        id: "where_mercy_finds_me",
-        title: "Where Mercy Finds Me",
-        src: "/music/Where Mercy Finds Me _ Nơi Mercy Tìm Thấy Tôi.mp3",
-        group: "mb",
-      },
-      {
-        id: "where_mercy_finds_me_1",
-        title: "Where Mercy Finds Me (1)",
-        src: "/music/Where Mercy Finds Me _ Nơi Mercy Tìm Thấy Tôi (1).mp3",
-        group: "mb",
-      },
-      {
-        id: "where_mercy_finds_me_2",
-        title: "Where Mercy Finds Me (2)",
-        src: "/music/Where Mercy Finds Me _ Nơi Mercy Tìm Thấy Tôi (2).mp3",
-        group: "mb",
-      },
-      {
-        id: "where_mercy_finds_me_3",
-        title: "Where Mercy Finds Me (3)",
-        src: "/music/Where Mercy Finds Me _ Nơi Mercy Tìm Thấy Tôi (3).mp3",
-        group: "mb",
-      },
-      {
-        id: "where_mercy_finds_me_4",
-        title: "Where Mercy Finds Me (4)",
-        src: "/music/Where Mercy Finds Me _ Nơi Mercy Tìm Thấy Tôi (4).mp3",
-        group: "mb",
-      },
-      {
-        id: "where_mercy_finds_me_5",
-        title: "Where Mercy Finds Me (5)",
-        src: "/music/Where Mercy Finds Me _ Nơi Mercy Tìm Thấy Tôi (5).mp3",
-        group: "mb",
-      },
-      {
-        id: "when_mercy_looks_at_me",
-        title: "When Mercy Looks at Me",
-        src: "/music/When Mercy Looks at Me _ Khi Mercy Nhìn Về Tôi.mp3",
-        group: "mb",
-      },
-      {
-        id: "when_mercy_looks_at_me_1",
-        title: "When Mercy Looks at Me (1)",
-        src: "/music/When Mercy Looks at Me _ Khi Mercy Nhìn Về Tôi (1).mp3",
-        group: "mb",
-      },
-      {
-        id: "song_of_mercy_blade",
-        title: "The Song of Mercy Blade",
-        src: '/music/The Song of Mercy Blade" – A Signature Anthem for Your Inner Life.mp3',
-        group: "mb",
-      },
-      {
-        id: "song_of_mercy_blade_1",
-        title: "The Song of Mercy Blade (1)",
-        src: '/music/The Song of Mercy Blade" – A Signature Anthem for Your Inner Life (1).mp3',
-        group: "mb",
-      },
-      {
-        id: "song_of_mercy_blade_3",
-        title: "The Song of Mercy Blade (3)",
-        src: '/music/The Song of Mercy Blade" – A Signature Anthem for Your Inner Life (3).mp3',
-        group: "mb",
-      },
-      {
-        id: "step_with_me_mercy",
-        title: "Step With Me, Mercy",
-        src: "/music/Step With Me, Mercy _ Đi Cùng Tôi, Mercy.mp3",
-        group: "mb",
-      },
-      {
-        id: "romanticmusic2018_11_11_tender_love",
-        title: "Tender Love",
-        src: "/music/RomanticMusic2018-11-11_-_Tender_Love_-_David_Fesliyan-2.mp3",
-        group: "mb",
-      },
-      {
-        id: "rise_with_mercy",
-        title: "Rise With Mercy",
-        src: "/music/Rise with Mercy _ Trỗi Dậy Cùng Mercy.mp3",
-        group: "mb",
-      },
-      {
-        id: "mercy_blade_theme",
-        title: "Mercy Blade Theme",
-        src: "/music/mercy_blade_theme.mp3",
-        group: "mb",
-      },
-      {
-        id: "mercy_on_my_mind",
-        title: "Mercy On My Mind",
-        src: "/music/Mercy On My Mind _ Mercy Trong Tâm Trí.mp3",
-        group: "mb",
-      },
-      {
-        id: "mercy_on_my_mind_1",
-        title: "Mercy On My Mind (1)",
-        src: "/music/Mercy On My Mind _ Mercy Trong Tâm Trí (1).mp3",
-        group: "mb",
-      },
-      {
-        id: "in_the_quiet_mercy",
-        title: "In the Quiet, Mercy",
-        src: "/music/In the Quiet, Mercy _ Trong Im Lặng, Mercy.mp3",
-        group: "mb",
-      },
-      {
-        id: "in_a_quiet_room_i_open_my_mind",
-        title: "In a Quiet Room, I Open My Mind",
-        src: "/music/In a quiet room, I open my mind,.mp3",
-        group: "mb",
-      },
-      {
-        id: "heart_of_the_blade",
-        title: "Heart of the Blade",
-        src: "/music/Heart of the Blade _ Trái Tim Của Lưỡi Gươm.mp3",
-        group: "mb",
-      },
-      {
-        id: "heart_of_the_blade_1",
-        title: "Heart of the Blade (1)",
-        src: "/music/Heart of the Blade _ Trái Tim Của Lưỡi Gươm (1).mp3",
-        group: "mb",
-      },
-    ],
-    []
-  );
+  const tracks: Track[] = useMemo(() => buildTracks(), []);
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const lastNonZeroVolRef = useRef<number>(0.6);
@@ -478,8 +276,8 @@ export default function BottomMusicBar() {
   });
 
   const track = useMemo(
-    () => tracks.find((t) => t.id === trackId) ?? tracks[0],
-    [tracks, trackId]
+    () => visibleTracks.find((t) => t.id === trackId) ?? tracks.find((t) => t.id === trackId) ?? visibleTracks[0] ?? tracks[0],
+    [visibleTracks, tracks, trackId]
   );
 
   const [playing, setPlaying] = useState(false);
@@ -555,6 +353,12 @@ export default function BottomMusicBar() {
       localStorage.setItem(LS_VOL, String(vol));
     } catch {}
   }, [vol]);
+
+  useEffect(() => {
+    if (!visibleTracks.some((t) => t.id === trackId) && visibleTracks[0]) {
+      setTrackId(visibleTracks[0].id);
+    }
+  }, [visibleTracks, trackId]);
 
   useEffect(() => {
     const a = audioRef.current;
@@ -821,10 +625,8 @@ export default function BottomMusicBar() {
   };
 
   const progressRatio = duration > 0 ? clamp(current / duration, 0, 1) : 0;
-
   const speakerEmoji =
     vol <= 0.001 ? "🔇" : vol < 0.35 ? "🔈" : vol < 0.7 ? "🔉" : "🔊";
-
   const favTabIcon = tab === "fav" ? "★" : "☆";
 
   return (
@@ -1016,7 +818,3 @@ export default function BottomMusicBar() {
     </div>
   );
 }
-
-/* New thing to learn:
-   In CSS Grid/Flex, “overflow” often comes from default min-width behavior.
-   Setting minWidth: 0 (or overflow hidden) on grid children prevents layout blowouts. */
