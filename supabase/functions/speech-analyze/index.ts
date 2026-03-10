@@ -1,199 +1,149 @@
-// supabase/functions/speech-analyze/index.ts
 import { serve } from "https://deno.land/std@0.224.0/http/server.ts";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+
+import { compareTranscript } from "../_shared/speech/compareTranscript.ts";
+import { mapSpeechIntent } from "../_shared/speech/mapSpeechIntent.ts";
+import { buildSpeechFeedback } from "../_shared/speech/buildSpeechFeedback.ts";
+import type { SpeechAnalysisResponse } from "../_shared/speech/speechTypes.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
-  "Access-Control-Allow-Methods": "POST, OPTIONS",
-  "Content-Type": "application/json",
+  "Access-Control-Allow-Headers":
+    "authorization, x-client-info, apikey, content-type",
 };
 
-function jsonResponse(body: unknown, status = 200) {
-  return new Response(JSON.stringify(body), {
-    status,
-    headers: corsHeaders,
-  });
-}
-
-function normalizeText(input: string): string {
-  return input
-    .toLowerCase()
-    .normalize("NFKC")
-    .replace(/[^\p{L}\p{N}\s']/gu, "")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-function tokenize(input: string): string[] {
-  const s = normalizeText(input);
-  return s ? s.split(" ") : [];
-}
-
-function compareTargetToTranscript(targetText: string, transcript: string) {
-  const normalizedTarget = normalizeText(targetText);
-  const normalizedTranscript = normalizeText(transcript);
-
-  const targetTokens = tokenize(targetText);
-  const heardTokens = tokenize(transcript);
-
-  const heardCounts = new Map<string, number>();
-  for (const token of heardTokens) {
-    heardCounts.set(token, (heardCounts.get(token) ?? 0) + 1);
+serve(async (req) => {
+  if (req.method === "OPTIONS") {
+    return new Response("ok", { headers: corsHeaders });
   }
 
-  const matched: string[] = [];
-  const missingWords: string[] = [];
-
-  for (const token of targetTokens) {
-    const count = heardCounts.get(token) ?? 0;
-    if (count > 0) {
-      matched.push(token);
-      heardCounts.set(token, count - 1);
-    } else {
-      missingWords.push(token);
-    }
-  }
-
-  const extraWords: string[] = [];
-  for (const [token, count] of heardCounts.entries()) {
-    for (let i = 0; i < count; i += 1) extraWords.push(token);
-  }
-
-  const matchScore =
-    targetTokens.length === 0 ? 0 : matched.length / targetTokens.length;
-
-  return {
-    normalizedTarget,
-    normalizedTranscript,
-    matchScore: Number(matchScore.toFixed(4)),
-    missingWords,
-    extraWords,
-  };
-}
-
-function buildGentleFeedback(args: {
-  score: number;
-  missingWords: string[];
-  extraWords: string[];
-}): string {
-  const { score, missingWords, extraWords } = args;
-
-  if (score >= 0.9) {
-    return "Beautiful. You were very close.";
-  }
-
-  if (score >= 0.75) {
-    if (missingWords.length > 0) {
-      return `Good attempt. Try once more slowly and include "${missingWords
-        .slice(0, 2)
-        .join(" ")}".`;
-    }
-    return "Good attempt. Try once more slowly and clearly.";
-  }
-
-  if (score >= 0.55) {
-    if (missingWords.length > 0) {
-      return `You're getting there. Read the sentence once, then try again with "${missingWords
-        .slice(0, 2)
-        .join(" ")}".`;
-    }
-    return "You're getting there. Read the sentence once, then try again.";
-  }
-
-  if (extraWords.length > 0) {
-    return "Take a calm breath and try one short part at a time.";
-  }
-
-  return "Take a calm breath and try again slowly, one part at a time.";
-}
-
-serve(async (req: Request) => {
   try {
-    if (req.method === "OPTIONS") {
-      return new Response("ok", { headers: corsHeaders });
-    }
+    const openAiApiKey = Deno.env.get("OPENAI_API_KEY");
+    const supabaseUrl = Deno.env.get("SUPABASE_URL");
+    const supabaseAnonKey = Deno.env.get("SUPABASE_ANON_KEY");
 
-    if (req.method !== "POST") {
-      return jsonResponse({ error: "Method not allowed" }, 405);
+    if (!openAiApiKey) return jsonError("Missing OPENAI_API_KEY", 500);
+    if (!supabaseUrl || !supabaseAnonKey) return jsonError("Missing Supabase environment variables", 500);
+
+    const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+      global: {
+        headers: {
+          Authorization: req.headers.get("Authorization") ?? "",
+        },
+      },
+    });
+
+    // 0. AUTH & ACCESS CHECK
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return jsonError("Unauthorized", 401);
+
+    // Fetch user profile to check subscription status
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('plan_type, access_expires_at')
+      .eq('id', user.id)
+      .single();
+
+    const planType = profile?.plan_type || 'FREE';
+    const expiresAt = profile?.access_expires_at ? new Date(profile.access_expires_at) : null;
+    const isExpired = expiresAt && new Date() > expiresAt;
+
+    // Gatekeeper: Free trial limit (e.g., if no expiry set yet or if date passed)
+    if (planType === 'FREE' && (isExpired || !expiresAt)) {
+      return jsonError("Your free trial has ended. Upgrade to 3-Month or Lifetime access to continue.", 403);
     }
 
     const formData = await req.formData();
+    const audioFile = formData.get("audio");
+    const roomId = String(formData.get("roomId") ?? "");
+    const lineId = String(formData.get("lineId") ?? "");
+    const targetText = String(formData.get("targetText") ?? "");
+    
+    const userOrigin = String(formData.get("userOrigin") ?? "OTHER");
+    // Use the database plan type as the source of truth for the tier
+    const tierLevel = planType; 
 
-    const audio = formData.get("audio");
-    const roomId = String(formData.get("roomId") ?? "").trim();
-    const lineId = String(formData.get("lineId") ?? "").trim();
-    const targetText = String(formData.get("targetText") ?? "").trim();
+    if (!(audioFile instanceof File)) return jsonError("Missing audio file", 400);
+    if (!targetText.trim()) return jsonError("Missing targetText", 400);
 
-    if (!(audio instanceof File)) {
-      return jsonResponse({ error: "Missing audio file" }, 400);
-    }
+    // 1. Transcription via OpenAI
+    const openAiForm = new FormData();
+    openAiForm.append("file", audioFile);
+    openAiForm.append("model", "whisper-1"); 
 
-    if (!roomId || !lineId || !targetText) {
-      return jsonResponse({ error: "Missing roomId, lineId, or targetText" }, 400);
-    }
-
-    const openaiKey = Deno.env.get("OPENAI_API_KEY");
-    if (!openaiKey) {
-      return jsonResponse({ error: "Missing OPENAI_API_KEY" }, 500);
-    }
-
-    const sttForm = new FormData();
-    sttForm.append("file", audio, audio.name || "speech.webm");
-    sttForm.append("model", "gpt-4o-mini-transcribe");
-    sttForm.append("language", "en");
-    sttForm.append(
-      "prompt",
-      "Transcribe the spoken English sentence clearly for an English learning app."
+    const transcriptionResponse = await fetch(
+      "https://api.openai.com/v1/audio/transcriptions",
+      {
+        method: "POST",
+        headers: { Authorization: `Bearer ${openAiApiKey}` },
+        body: openAiForm,
+      },
     );
 
-    const sttRes = await fetch("https://api.openai.com/v1/audio/transcriptions", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${openaiKey}`,
-      },
-      body: sttForm,
-    });
-
-    if (!sttRes.ok) {
-      const text = await sttRes.text();
-      return jsonResponse({ error: `OpenAI transcription error: ${text}` }, 500);
+    if (!transcriptionResponse.ok) {
+      const errorText = await transcriptionResponse.text();
+      return jsonError(`Transcription failed: ${errorText}`, 500);
     }
 
-    const sttJson = await sttRes.json();
-    const transcript =
-      typeof sttJson?.text === "string" ? sttJson.text.trim() : "";
+    const transcriptionJson = await transcriptionResponse.json();
+    const transcript = String(transcriptionJson.text ?? "").trim();
 
-    if (!transcript) {
-      return jsonResponse({
-        transcript: "",
-        normalizedTranscript: "",
-        normalizedTarget: normalizeText(targetText),
-        matchScore: 0,
-        missingWords: tokenize(targetText),
-        extraWords: [],
-        message:
-          "We could not hear the sentence clearly. Try once more, slowly and close to the microphone.",
-      });
+    // 2. Run logic
+    const comparison = compareTranscript(targetText, transcript);
+    const intent = mapSpeechIntent(transcript, comparison);
+    const message = buildSpeechFeedback(intent, comparison);
+
+    // 3. Error Detection
+    let errorCode = null;
+    if (targetText.toLowerCase().endsWith('s') && !transcript.toLowerCase().endsWith('s')) {
+      errorCode = 'MISSING_FINAL_S';
+    } else if (targetText.toLowerCase().includes('r') && transcript.toLowerCase().includes('z')) {
+      errorCode = 'R_Z_CONFUSION';
     }
 
-    const comparison = compareTargetToTranscript(targetText, transcript);
-    const message = buildGentleFeedback({
-      score: comparison.matchScore,
-      missingWords: comparison.missingWords,
-      extraWords: comparison.extraWords,
-    });
-
-    return jsonResponse({
+    const response: SpeechAnalysisResponse = {
       transcript,
       normalizedTranscript: comparison.normalizedTranscript,
       normalizedTarget: comparison.normalizedTarget,
       matchScore: comparison.matchScore,
       missingWords: comparison.missingWords,
       extraWords: comparison.extraWords,
+      intent,
       message,
+    };
+
+    // 4. Persistence
+    await supabase.from("speech_attempts").insert({
+      user_id: user.id,
+      room_id: roomId || null,
+      line_id: lineId || null,
+      tier_level: tierLevel,
+      target_text: targetText,
+      transcript,
+      normalized_target: comparison.normalizedTarget,
+      normalized_transcript: comparison.normalizedTranscript,
+      match_score: comparison.matchScore,
+      missing_words: comparison.missingWords,
+      extra_words: comparison.extraWords,
+      feedback_message: message,
+      error_code: errorCode,
+      user_origin: userOrigin,
     });
+
+    return new Response(JSON.stringify(response), {
+      status: 200,
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
+
   } catch (error) {
-    const message = error instanceof Error ? error.message : "Speech analysis failed";
-    return jsonResponse({ error: message }, 500);
+    console.error(error);
+    return jsonError(error instanceof Error ? error.message : "Unknown error", 500);
   }
 });
+
+function jsonError(message: string, status = 500): Response {
+  return new Response(JSON.stringify({ error: message }), {
+    status,
+    headers: { ...corsHeaders, "Content-Type": "application/json" },
+  });
+}

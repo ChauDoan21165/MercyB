@@ -2,7 +2,7 @@ import React from "react";
 import { HomeButton } from "@/components/HomeButton";
 import { BackButton } from "@/components/BackButton";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Map } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MercyGuide } from "@/components/MercyGuide";
@@ -21,7 +21,7 @@ interface AppShellProps {
  * Current app routing already provides a global header band on non-admin pages.
  * So this shell must be SAFE BY DEFAULT:
  * - header hidden by default (prevents double headers)
- * - MercyGuide hidden by default (prevents duplicate guide mounts)
+ * - MercyGuide auto-shows on Home (/) unless explicitly disabled
  *
  * Keeps:
  * - canonical 980px centered content frame
@@ -34,6 +34,11 @@ export function AppShell({
   mainClassName = "",
   showMercyGuide = false,
 }: AppShellProps) {
+  const location = useLocation();
+
+  const isHome = location.pathname === "/";
+  const shouldShowMercyGuide = showMercyGuide || isHome;
+
   return (
     <div className="relative min-h-screen flex flex-col bg-background">
       <style>{`
@@ -103,7 +108,7 @@ export function AppShell({
 
       {bottomBar}
 
-      {showMercyGuide ? <MercyGuide /> : null}
+      {shouldShowMercyGuide ? <MercyGuide /> : null}
     </div>
   );
 }

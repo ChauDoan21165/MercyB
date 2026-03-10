@@ -1,370 +1,326 @@
-// src/components/speech/SpeechRecorder.tsx
-//
-// Mercy Blade — Speech Recorder
-// Supabase Edge Function version
-//
-// Calls:
-//   ${import.meta.env.VITE_SUPABASE_FUNCTIONS_URL}/speech-analyze
-//
-// Requires:
-// - VITE_SUPABASE_FUNCTIONS_URL in .env
-// - Supabase auth session available
-// - Edge Function deployed: speech-analyze
-
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { sendSpeechForAnalysis } from "@/lib/speech/sendSpeechForAnalysis";
 import type { SpeechAnalysisResponse } from "@/lib/speech/speechTypes";
-import { supabase } from "@/lib/supabaseClient";
 
 type SpeechRecorderProps = {
   roomId: string;
   lineId: string;
   targetText: string;
+  disabled?: boolean;
+  onResult?: (result: SpeechAnalysisResponse) => void;
+  onError?: (message: string) => void;
 };
 
-type SpeechState =
+type RecorderState =
   | "idle"
-  | "requesting_permission"
+  | "requesting-permission"
   | "recording"
-  | "recorded"
-  | "analyzing"
-  | "done"
+  | "stopping"
+  | "uploading"
+  | "success"
   | "error";
-
-function safeFunctionsBaseUrl(): string {
-  return String(import.meta.env.VITE_SUPABASE_FUNCTIONS_URL || "").trim().replace(/\/+$/, "");
-}
-
-function pickFileNameFromBlob(blob: Blob): string {
-  const type = String(blob.type || "").toLowerCase();
-
-  if (type.includes("webm")) return "speech.webm";
-  if (type.includes("ogg")) return "speech.ogg";
-  if (type.includes("wav")) return "speech.wav";
-  if (type.includes("mp4")) return "speech.mp4";
-  if (type.includes("mpeg")) return "speech.mp3";
-  return "speech.webm";
-}
-
-function friendlyErrorMessage(error: unknown): string {
-  const msg = error instanceof Error ? error.message : String(error || "");
-
-  if (/functions url/i.test(msg)) return "Speech service is not configured yet.";
-  if (/not signed in/i.test(msg)) return "Please sign in to analyze your speech.";
-  if (/microphone/i.test(msg)) return "Microphone access was not available.";
-  if (/analyze failed/i.test(msg)) return "We could not analyze your speech just now.";
-  return msg || "Something went wrong.";
-}
 
 export default function SpeechRecorder({
   roomId,
   lineId,
   targetText,
+  disabled = false,
+  onResult,
+  onError,
 }: SpeechRecorderProps) {
-  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
-  const streamRef = useRef<MediaStream | null>(null);
-  const chunksRef = useRef<BlobPart[]>([]);
-
-  const [speechState, setSpeechState] = useState<SpeechState>("idle");
-  const [audioBlob, setAudioBlob] = useState<Blob | null>(null);
-  const [audioUrl, setAudioUrl] = useState<string>("");
-  const [errorText, setErrorText] = useState<string>("");
+  const [recorderState, setRecorderState] = useState<RecorderState>("idle");
+  const [errorMessage, setErrorMessage] = useState<string>("");
   const [result, setResult] = useState<SpeechAnalysisResponse | null>(null);
+  const [recordingSeconds, setRecordingSeconds] = useState(0);
 
-  const functionsBaseUrl = useMemo(() => safeFunctionsBaseUrl(), []);
+  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
+  const mediaStreamRef = useRef<MediaStream | null>(null);
+  const recordedChunksRef = useRef<Blob[]>([]);
+  const recordingTimerRef = useRef<number | null>(null);
 
-  const canRecord = useMemo(
-    () =>
-      speechState === "idle" ||
-      speechState === "recorded" ||
-      speechState === "done" ||
-      speechState === "error",
-    [speechState],
-  );
+  const isBusy =
+    recorderState === "requesting-permission" ||
+    recorderState === "stopping" ||
+    recorderState === "uploading";
+
+  const isRecording = recorderState === "recording";
 
   useEffect(() => {
     return () => {
-      if (audioUrl) {
-        try {
-          URL.revokeObjectURL(audioUrl);
-        } catch {
-          // ignore
-        }
-      }
-
-      try {
-        streamRef.current?.getTracks().forEach((track) => track.stop());
-      } catch {
-        // ignore
-      }
+      cleanupMedia();
+      clearRecordingTimer();
     };
-  }, [audioUrl]);
+  }, []);
+
+  function clearRecordingTimer() {
+    if (recordingTimerRef.current !== null) {
+      window.clearInterval(recordingTimerRef.current);
+      recordingTimerRef.current = null;
+    }
+  }
+
+  function startRecordingTimer() {
+    clearRecordingTimer();
+    setRecordingSeconds(0);
+
+    recordingTimerRef.current = window.setInterval(() => {
+      setRecordingSeconds((prev) => prev + 1);
+    }, 1000);
+  }
+
+  function cleanupMedia() {
+    if (mediaRecorderRef.current) {
+      mediaRecorderRef.current.ondataavailable = null;
+      mediaRecorderRef.current.onstop = null;
+      mediaRecorderRef.current.onerror = null;
+      mediaRecorderRef.current = null;
+    }
+
+    if (mediaStreamRef.current) {
+      for (const track of mediaStreamRef.current.getTracks()) {
+        track.stop();
+      }
+      mediaStreamRef.current = null;
+    }
+
+    recordedChunksRef.current = [];
+  }
+
+  function resetFeedback() {
+    setErrorMessage("");
+    setResult(null);
+  }
 
   async function startRecording() {
+    if (disabled || isBusy || isRecording) return;
+
+    resetFeedback();
+    setRecorderState("requesting-permission");
+
     try {
-      if (typeof navigator === "undefined" || !navigator.mediaDevices?.getUserMedia) {
-        throw new Error("Microphone recording is not supported in this browser.");
-      }
-
-      if (typeof MediaRecorder === "undefined") {
-        throw new Error("MediaRecorder is not available in this browser.");
-      }
-
-      setErrorText("");
-      setResult(null);
-      setAudioBlob(null);
-
-      if (audioUrl) {
-        try {
-          URL.revokeObjectURL(audioUrl);
-        } catch {
-          // ignore
-        }
-      }
-      setAudioUrl("");
-
-      setSpeechState("requesting_permission");
-
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      streamRef.current = stream;
+      mediaStreamRef.current = stream;
 
-      const mimeType = MediaRecorder.isTypeSupported("audio/webm;codecs=opus")
-        ? "audio/webm;codecs=opus"
-        : MediaRecorder.isTypeSupported("audio/webm")
-          ? "audio/webm"
-          : "";
+      recordedChunksRef.current = [];
 
+      const mimeType = getSupportedMimeType();
       const recorder = mimeType
         ? new MediaRecorder(stream, { mimeType })
         : new MediaRecorder(stream);
 
       mediaRecorderRef.current = recorder;
-      chunksRef.current = [];
 
       recorder.ondataavailable = (event: BlobEvent) => {
-        if (event.data && event.data.size > 0) {
-          chunksRef.current.push(event.data);
+        if (event.data.size > 0) {
+          recordedChunksRef.current.push(event.data);
         }
       };
 
-      recorder.onstop = () => {
-        const blob = new Blob(chunksRef.current, {
-          type: recorder.mimeType || "audio/webm",
-        });
-        const url = URL.createObjectURL(blob);
+      recorder.onerror = () => {
+        clearRecordingTimer();
+        cleanupMedia();
+        setRecorderState("error");
+        setErrorMessage("Recording failed. Please try again.");
+        onError?.("Recording failed. Please try again.");
+      };
 
-        setAudioBlob(blob);
-        setAudioUrl(url);
-        setSpeechState("recorded");
+      recorder.onstop = async () => {
+        clearRecordingTimer();
+        setRecorderState("uploading");
 
         try {
-          if (streamRef.current) {
-            streamRef.current.getTracks().forEach((track) => track.stop());
-            streamRef.current = null;
+          const mime = recorder.mimeType || "audio/webm";
+          const audioBlob = new Blob(recordedChunksRef.current, { type: mime });
+
+          if (audioBlob.size === 0) {
+            throw new Error("No audio was recorded.");
           }
-        } catch {
-          // ignore
+
+          const analysis = await sendSpeechForAnalysis({
+            audioBlob,
+            roomId,
+            lineId,
+            targetText,
+          });
+
+          setResult(analysis);
+          setRecorderState("success");
+          onResult?.(analysis);
+        } catch (error) {
+          const message =
+            error instanceof Error
+              ? error.message
+              : "Could not analyze speech.";
+          setRecorderState("error");
+          setErrorMessage(message);
+          onError?.(message);
+        } finally {
+          cleanupMedia();
         }
       };
 
       recorder.start();
-      setSpeechState("recording");
+      setRecorderState("recording");
+      startRecordingTimer();
     } catch (error) {
-      console.error(error);
-      setErrorText(friendlyErrorMessage(error));
-      setSpeechState("error");
+      cleanupMedia();
+      clearRecordingTimer();
+
+      const message =
+        error instanceof Error
+          ? mapMediaError(error)
+          : "Microphone access failed.";
+      setRecorderState("error");
+      setErrorMessage(message);
+      onError?.(message);
     }
   }
 
   function stopRecording() {
-    try {
-      if (mediaRecorderRef.current && speechState === "recording") {
-        mediaRecorderRef.current.stop();
-      }
-    } catch (error) {
-      console.error(error);
-      setErrorText("Could not stop recording.");
-      setSpeechState("error");
+    if (!mediaRecorderRef.current || mediaRecorderRef.current.state !== "recording") {
+      return;
     }
+
+    setRecorderState("stopping");
+    mediaRecorderRef.current.stop();
   }
 
-  async function analyzeRecording() {
-    try {
-      if (!audioBlob) return;
-
-      if (!functionsBaseUrl) {
-        throw new Error("Supabase Functions URL is missing.");
-      }
-
-      setSpeechState("analyzing");
-      setErrorText("");
-
-      const {
-        data: { session },
-        error: sessionError,
-      } = await supabase.auth.getSession();
-
-      if (sessionError || !session?.access_token) {
-        throw new Error("Not signed in.");
-      }
-
-      const formData = new FormData();
-      formData.append("audio", audioBlob, pickFileNameFromBlob(audioBlob));
-      formData.append("roomId", roomId);
-      formData.append("lineId", lineId);
-      formData.append("targetText", targetText);
-
-      const response = await fetch(`${functionsBaseUrl}/speech-analyze`, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${session.access_token}`,
-        },
-        body: formData,
-      });
-
-      const json = await response.json().catch(() => null);
-
-      if (!response.ok) {
-        const msg = String(json?.error || `Analyze failed: ${response.status}`);
-        throw new Error(msg);
-      }
-
-      const data = json as SpeechAnalysisResponse;
-      setResult(data);
-      setSpeechState("done");
-    } catch (error) {
-      console.error(error);
-      setErrorText(friendlyErrorMessage(error));
-      setSpeechState("error");
-    }
-  }
-
-  function resetRecorder() {
-    setResult(null);
-    setAudioBlob(null);
-
-    if (audioUrl) {
-      try {
-        URL.revokeObjectURL(audioUrl);
-      } catch {
-        // ignore
-      }
+  function handleMainButtonClick() {
+    if (isRecording) {
+      stopRecording();
+      return;
     }
 
-    setAudioUrl("");
-    setErrorText("");
-    setSpeechState("idle");
+    void startRecording();
   }
 
   return (
-    <div
-      style={{
-        border: "1px solid rgba(0,0,0,0.08)",
-        borderRadius: 16,
-        padding: 16,
-        background: "rgba(255,255,255,0.88)",
-      }}
-    >
-      <div
-        style={{
-          fontSize: 12,
-          fontWeight: 900,
-          letterSpacing: 0.5,
-          color: "#666",
-        }}
-      >
-        SPEAK
-      </div>
-
-      <h3 style={{ marginTop: 8, marginBottom: 0 }}>Say this sentence</h3>
-      <p style={{ fontSize: 20, lineHeight: 1.6, marginTop: 10 }}>{targetText}</p>
-
-      <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 14 }}>
-        {canRecord ? (
-          <button type="button" onClick={startRecording}>
-            Record
-          </button>
-        ) : null}
-
-        {speechState === "recording" ? (
-          <button type="button" onClick={stopRecording}>
-            Stop
-          </button>
-        ) : null}
-
-        {speechState === "recorded" && audioBlob ? (
-          <>
-            <button type="button" onClick={analyzeRecording}>
-              Analyze
-            </button>
-            <button type="button" onClick={resetRecorder}>
-              Record again
-            </button>
-          </>
-        ) : null}
-      </div>
-
-      {speechState === "requesting_permission" ? (
-        <p style={{ marginTop: 12 }}>Requesting microphone access…</p>
-      ) : null}
-
-      {speechState === "recording" ? (
-        <p style={{ marginTop: 12 }}>Recording… speak calmly.</p>
-      ) : null}
-
-      {speechState === "analyzing" ? (
-        <p style={{ marginTop: 12 }}>Listening carefully…</p>
-      ) : null}
-
-      {audioUrl ? (
-        <div style={{ marginTop: 14 }}>
-          <audio controls src={audioUrl} />
+    <div className="rounded-2xl border p-4 shadow-sm">
+      <div className="flex flex-col gap-3">
+        <div>
+          <p className="text-sm font-medium">Target sentence</p>
+          <p className="mt-1 text-base">{targetText}</p>
         </div>
-      ) : null}
 
-      {errorText ? (
-        <div style={{ marginTop: 14, color: "#8b0000" }}>{errorText}</div>
-      ) : null}
+        <div className="flex items-center gap-3">
+          <button
+            type="button"
+            onClick={handleMainButtonClick}
+            disabled={disabled || isBusy}
+            className="rounded-xl border px-4 py-2 text-sm font-medium disabled:opacity-50"
+          >
+            {isRecording ? "Stop recording" : "Start recording"}
+          </button>
 
-      {result ? (
-        <div
-          style={{
-            marginTop: 16,
-            border: "1px solid rgba(0,0,0,0.08)",
-            borderRadius: 14,
-            padding: 14,
-            background: "rgba(245,250,255,0.95)",
-          }}
-        >
-          <div style={{ fontWeight: 900 }}>We heard</div>
-          <div style={{ marginTop: 6 }}>{result.transcript || "—"}</div>
+          <button
+            type="button"
+            onClick={() => {
+              resetFeedback();
+              setRecorderState("idle");
+            }}
+            disabled={isRecording || isBusy}
+            className="rounded-xl border px-4 py-2 text-sm disabled:opacity-50"
+          >
+            Clear
+          </button>
 
-          <div style={{ marginTop: 12, fontWeight: 900 }}>Match score</div>
-          <div style={{ marginTop: 6 }}>{Math.round(result.matchScore * 100)}%</div>
+          <span className="text-sm opacity-70">
+            {isRecording
+              ? `Recording... ${recordingSeconds}s`
+              : formatRecorderState(recorderState)}
+          </span>
+        </div>
 
-          {result.missingWords.length > 0 ? (
-            <>
-              <div style={{ marginTop: 12, fontWeight: 900 }}>Missing words</div>
-              <div style={{ marginTop: 6 }}>{result.missingWords.join(", ")}</div>
-            </>
-          ) : null}
-
-          {result.extraWords.length > 0 ? (
-            <>
-              <div style={{ marginTop: 12, fontWeight: 900 }}>Extra words</div>
-              <div style={{ marginTop: 6 }}>{result.extraWords.join(", ")}</div>
-            </>
-          ) : null}
-
-          <div style={{ marginTop: 12, fontWeight: 900 }}>Feedback</div>
-          <div style={{ marginTop: 6 }}>{result.message}</div>
-
-          <div style={{ marginTop: 14 }}>
-            <button type="button" onClick={resetRecorder}>
-              Try once more
-            </button>
+        {errorMessage ? (
+          <div className="rounded-xl border border-red-300 bg-red-50 p-3 text-sm text-red-700">
+            {errorMessage}
           </div>
-        </div>
-      ) : null}
+        ) : null}
+
+        {result ? (
+          <div className="rounded-xl border p-3">
+            <p className="text-sm font-medium">Feedback</p>
+            <p className="mt-1 text-sm">{result.message}</p>
+
+            <div className="mt-3 grid gap-2 text-sm">
+              <div>
+                <span className="font-medium">Transcript:</span>{" "}
+                {result.transcript || "—"}
+              </div>
+              <div>
+                <span className="font-medium">Score:</span> {result.matchScore}
+              </div>
+              <div>
+                <span className="font-medium">Intent:</span> {result.intent}
+              </div>
+              <div>
+                <span className="font-medium">Missing words:</span>{" "}
+                {result.missingWords.length > 0
+                  ? result.missingWords.join(", ")
+                  : "None"}
+              </div>
+              <div>
+                <span className="font-medium">Extra words:</span>{" "}
+                {result.extraWords.length > 0
+                  ? result.extraWords.join(", ")
+                  : "None"}
+              </div>
+            </div>
+          </div>
+        ) : null}
+      </div>
     </div>
   );
+}
+
+function getSupportedMimeType(): string | undefined {
+  const candidates = [
+    "audio/webm;codecs=opus",
+    "audio/webm",
+    "audio/mp4",
+    "audio/ogg;codecs=opus",
+  ];
+
+  for (const type of candidates) {
+    if (MediaRecorder.isTypeSupported(type)) {
+      return type;
+    }
+  }
+
+  return undefined;
+}
+
+function formatRecorderState(state: RecorderState): string {
+  switch (state) {
+    case "idle":
+      return "Ready";
+    case "requesting-permission":
+      return "Requesting microphone access...";
+    case "recording":
+      return "Recording...";
+    case "stopping":
+      return "Stopping...";
+    case "uploading":
+      return "Analyzing speech...";
+    case "success":
+      return "Done";
+    case "error":
+      return "Something went wrong";
+    default:
+      return "Ready";
+  }
+}
+
+function mapMediaError(error: Error): string {
+  const message = error.message.toLowerCase();
+
+  if (message.includes("permission") || message.includes("denied")) {
+    return "Microphone permission was denied. Please allow microphone access and try again.";
+  }
+
+  if (message.includes("notfound") || message.includes("device")) {
+    return "No microphone was found on this device.";
+  }
+
+  return "Could not start recording. Please try again.";
 }

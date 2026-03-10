@@ -1,121 +1,48 @@
 // src/pages/Home.tsx
-// MB-BLUE-100.9 — 2026-01-11 (+0700)
+// MERGED SAFE VERSION
 //
-// HOME (LOCKED):
-// - Home page is TEXT-ONLY (no audio players, no songs, no lyrics).
-// - Music belongs ONLY in BottomMusicBar (entertainment).
-// - Learning audio lives ONLY inside rooms.
+// Base:
+// - HOME older 2 (safe structure)
+// Keeps:
+// - real /tiers learning-path direction
+// - Mercy Host present on Home
+// - no placeholder daily-room logic
+// - no fake room-library logic
 //
-// FIX 100.7:
-// - Replace ONLY BOX 2 HERO:
-//   - Use image hero: /hero/hero_band.jpg
-//   - Centered title + subtitle (like old hero)
-//   - Remove badges / extra words
-// - DO NOT TOUCH header or content below.
+// Also keeps good parts from latest:
+// - stronger hero copy
+// - top Mercy Host spotlight card
+// - progress cards
+// - pricing link
+// - lazy Supabase loading
+// - BottomMusicBar integration
 //
-// FIX 100.8:
-// - ✅ HOME now CONSUMES global zoom from BottomMusicBar:
-//   - Reads :root data-mb-zoom (percent) + localStorage("mb.ui.zoom") fallback
-//   - Applies zoom to HOME content ONLY (hero + body), NOT the fixed music bar
-//   - Header remains unscaled (sticky behavior preserved)
+// Explicitly does NOT add:
+// - hardcoded DAILY_ROOM_IDS
+// - Today's Reflection placeholder links
+// - fake local room suggestions
+// - local placeholder room browsing
 //
-// FIX 100.9:
-// - ✅ Header shows auth state:
-//   - Signed out: "Sign in / Đăng nhập"
-//   - Signed in: shows "Sign out / Đăng xuất" (calls useAuth().signOut())
-// - NO CHANGES to zoom wrapper or content blocks below.
+// NOTE:
+// - Record / Analyze are untouched because they are not part of Home.tsx.
 //
-// NEW (MB-BLUE-100.9g):
-// - BOX 1 header is THIN (no "Home" button, no email text).
-// - BOX 2 hero uses ONE brand image that already includes "Mercy Blade" + tagline.
-// - DO NOT put logo in header. DO NOT put any text overlay in hero.
-//
-// NEW (MB-BLUE-100.9i):
-// - Hero path mismatch hardening:
-//   - Try BOTH /hero/<file> and /<file> (common mistake when copying to /public)
-//   - Try jpg/jpeg/png + case variants
-//   - If all fail, fallback to existing /hero/hero_band.jpg so you never see blank.
-// - Hero full-bleed inside frame (touch both sides).
-//
-// NEW (MB-BLUE-100.9p):
-// - Add HOME Progress cards (TEXT-ONLY) using read-only view v_user_progress_current
-// - Query ONLY when signed-in; safe empty/error handling; no new files
-//
-// PATCH (MB-BLUE-100.9q):
-// - ✅ Streak is now DB-side via read-only view v_user_streak_summary (VN-normalized)
-// - Home displays streak_days only — NO study_log fetch, no timezone pitfalls
-//
-// PATCH (MB-BLUE-100.9s):
-// - ✅ Smarter First Room query (schema-safe):
-//   - rooms table has ONLY: id, tier, sort_order, created_at (no area/is_published)
-//   - So we must infer “core-ish” by ID + exclude kids + exclude vip*_* hybrids.
-//   - Prefer sort_order (ASC) then created_at (ASC), then pick best from a ranked list.
-//
-// NOTE (2026-01-30):
-// - FIXED the syntax error at FIRST_ROOM_FALLBACKS useMemo (bad commas).
-//
-// PATCH (2026-01-30):
-// - Header alignment:
-//   1) Sign out block moves to LEFT side of header (requested).
-//   2) Tier Map stays on RIGHT side.
-//   (Keeps header thin; no new components; no layout rewrites.)
-//
-// PATCH (2026-01-31):
-// - Option A: Home no longer renders its own BOX 1 header strip.
-// - Header actions are now owned by GlobalHeader (single source of truth).
-//
-// PATCH (2026-03-03):
-// - Add Pricing link on Home (route: /pricing), no new files/components.
-// - Keep TEXT-ONLY. No audio.
-//
-// PATCH (2026-03-06):
-// - Hero simplified to ONE canonical path only: /hero/hero_band.jpg
-// - Removes brittle runtime probing / fallback cycling.
-// - If hero is broken in production, the issue is deployment/static asset serving,
-//   not Home render logic.
-//
-// PERF PATCH (2026-03-08):
-// - Remove eager Supabase import from module scope.
-// - Lazy-load "@/lib/supabaseClient" only inside effects.
-// - Remove dead auth/signout/UUID code.
-//
-// FIX (2026-03-08b):
-// - "Start free" / "Enter your first room" must NEVER deep-link to a dead hardcoded room slug.
-// - Remove hardcoded first-room fallback ids like sleep_basics/anxiety_intro.
-// - Only route to /room/:id when the room id was actually found from the live rooms query.
-// - Otherwise route safely to /rooms.
-//
-// COPY / UX PATCH (2026-03-08f):
-// - Stronger launch copy focused on "Think in English. Calmly."
-// - Simpler CTA structure: Start free + 2-minute reassurance
-// - Replace VIP 1..9 wording with Free / Full Access / Lifetime language
-// - Keep existing logic / layout system / progress cards intact
-//
-// PATCH (2026-03-09):
-// - Mercy Host is now visibly present on Home near the top of the page.
-// - TEXT-ONLY, no new files/components, no audio.
-// - Added an early Mercy Host spotlight card directly below hero for clear homepage presence.
-//
-// PATCH (2026-03-09b):
-// - Add "Continue your journey" using localStorage mb.lastRoomId.
-// - Add "Today's Reflection" using lightweight local daily-room logic.
-// - Keep Home text-only and schema-safe.
-// - No backend required for these two cards.
+// PATCH:
+// - Mount real MercyGuide on Home once, safely.
+// - Keep Mercy Host spotlight card.
+// - Do not change Record / Analyze logic inside MercyGuide.
 
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BottomMusicBar from "@/components/audio/BottomMusicBar";
+import { MercyGuide } from "@/components/MercyGuide";
 import { useAuth } from "@/providers/AuthProvider";
 
 const PAGE_MAX = 980;
 const softPanel = "rgba(230, 244, 255, 0.85)";
-
-// ✅ must match BottomMusicBar key (LOCKED)
 const LS_ZOOM = "mb.ui.zoom";
-const LS_LAST_ROOM = "mb.lastRoomId";
-
-// ✅ VN users first — keep stable even if developer moves timezones
 const HOME_TZ = "Asia/Ho_Chi_Minh";
+const ROUTE_PRICING = "/pricing";
+const HERO_SRC = "/hero/hero_band.jpg";
 
 const VN_DT_FMT = new Intl.DateTimeFormat("vi-VN", {
   timeZone: HOME_TZ,
@@ -126,19 +53,13 @@ const VN_DT_FMT = new Intl.DateTimeFormat("vi-VN", {
   minute: "2-digit",
 });
 
-// ✅ routes (single place)
-const ROUTE_PRICING = "/pricing";
-const HERO_SRC = "/hero/hero_band.jpg";
-
 type SupabaseClientType = typeof import("@/lib/supabaseClient")["supabase"];
 
 let supabaseClientPromise: Promise<SupabaseClientType> | null = null;
 
 async function getSupabaseClient(): Promise<SupabaseClientType> {
   if (!supabaseClientPromise) {
-    supabaseClientPromise = import("@/lib/supabaseClient").then(
-      (mod) => mod.supabase
-    );
+    supabaseClientPromise = import("@/lib/supabaseClient").then((mod) => mod.supabase);
   }
   return supabaseClientPromise;
 }
@@ -174,6 +95,13 @@ type ProgressSummaryRow = {
   last_study_at: string | null;
 };
 
+type RoomRowLite = {
+  id: string;
+  tier: string | null;
+  sort_order: number | null;
+  created_at: string | null;
+};
+
 function fmtDate(s: string | null | undefined) {
   if (!s) return "";
   const d = new Date(s);
@@ -190,13 +118,6 @@ function plural(n: number, one: string, many: string) {
   return n === 1 ? one : many;
 }
 
-type RoomRowLite = {
-  id: string;
-  tier: string | null;
-  sort_order: number | null;
-  created_at: string | null;
-};
-
 function isKidsRoomId(id: string) {
   return id.includes("_kids_") || id.includes("-kids-");
 }
@@ -205,46 +126,17 @@ function isVipHybridId(id: string) {
   return /^vip\d+_/.test(id) || /^vip\d+-/.test(id);
 }
 
-function prettifyRoomTitle(id: string) {
-  return String(id || "")
-    .replace(/[_-]+/g, " ")
-    .replace(/\s+/g, " ")
-    .trim()
-    .replace(/\b\w/g, (m) => m.toUpperCase());
-}
-
-const DAILY_ROOM_IDS = [
-  "sleep_basics",
-  "slow_breathing",
-  "letting_go",
-  "quiet_morning",
-  "self_kindness",
-  "gratitude",
-  "small_next_step",
-];
-
-function dayIndexInTimezone(timeZone: string) {
-  const d = new Date();
-  const parts = new Intl.DateTimeFormat("en-CA", {
-    timeZone,
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }).formatToParts(d);
-
-  const year = Number(parts.find((p) => p.type === "year")?.value || "0");
-  const month = Number(parts.find((p) => p.type === "month")?.value || "1");
-  const day = Number(parts.find((p) => p.type === "day")?.value || "1");
-
-  const utc = Date.UTC(year, month - 1, day);
-  return Math.floor(utc / 86400000);
-}
-
 export default function Home() {
   const nav = useNavigate();
   const { user } = useAuth();
 
   const [zoomPct, setZoomPct] = useState<number>(100);
+  const [progressLoading, setProgressLoading] = useState(false);
+  const [progressErr, setProgressErr] = useState<string | null>(null);
+  const [progressRow, setProgressRow] = useState<ProgressSummaryRow | null>(null);
+  const [streakDays, setStreakDays] = useState<number | null>(null);
+  const [firstRoomId, setFirstRoomId] = useState<string | null>(null);
+  const [howOpen, setHowOpen] = useState<boolean>(true);
 
   useEffect(() => {
     const apply = () => setZoomPct(readZoomPct());
@@ -261,21 +153,6 @@ export default function Home() {
 
   const zoomScale = useMemo(() => clamp(zoomPct / 100, 0.6, 1.4), [zoomPct]);
 
-  const [progressLoading, setProgressLoading] = useState(false);
-  const [progressErr, setProgressErr] = useState<string | null>(null);
-  const [progressRow, setProgressRow] = useState<ProgressSummaryRow | null>(null);
-  const [streakDays, setStreakDays] = useState<number | null>(null);
-  const [lastRoomId, setLastRoomId] = useState<string | null>(null);
-
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem(LS_LAST_ROOM);
-      setLastRoomId(saved ? String(saved).trim() : null);
-    } catch {
-      setLastRoomId(null);
-    }
-  }, []);
-
   useEffect(() => {
     let alive = true;
 
@@ -290,9 +167,8 @@ export default function Home() {
         }
 
         const supabase = await getSupabaseClient();
+        const { data: sessionRes, error: sessionErr } = await supabase.auth.getSession();
 
-        const { data: sessionRes, error: sessionErr } =
-          await supabase.auth.getSession();
         if (!alive) return;
 
         if (sessionErr || !sessionRes.session) {
@@ -321,8 +197,7 @@ export default function Home() {
         }
       } catch (e: unknown) {
         if (!alive) return;
-        const msg = e instanceof Error ? e.message : String(e);
-        setProgressErr(msg);
+        setProgressErr(e instanceof Error ? e.message : String(e));
         setProgressRow(null);
       } finally {
         if (!alive) return;
@@ -347,9 +222,8 @@ export default function Home() {
         }
 
         const supabase = await getSupabaseClient();
+        const { data: sessionRes, error: sessionErr } = await supabase.auth.getSession();
 
-        const { data: sessionRes, error: sessionErr } =
-          await supabase.auth.getSession();
         if (!alive) return;
 
         if (sessionErr || !sessionRes.session) {
@@ -369,9 +243,7 @@ export default function Home() {
           return;
         }
 
-        const v = data
-          ? Number((data as { streak_days?: unknown }).streak_days ?? 0)
-          : 0;
+        const v = data ? Number((data as { streak_days?: unknown }).streak_days ?? 0) : 0;
         setStreakDays(Number.isFinite(v) ? v : 0);
       } catch {
         if (!alive) return;
@@ -385,19 +257,12 @@ export default function Home() {
   }, [user?.id]);
 
   const progressSummary = useMemo(() => {
-    const streak =
-      streakDays !== null ? streakDays : fmtInt(progressRow?.streak_days ?? 0, 0);
+    const streak = streakDays !== null ? streakDays : fmtInt(progressRow?.streak_days ?? 0, 0);
     const active30d = fmtInt(progressRow?.days_active_30d ?? 0, 0);
     const lastStudyAt = progressRow?.last_study_at ?? null;
 
-    return {
-      streak,
-      active30d,
-      lastStudyAt,
-    };
+    return { streak, active30d, lastStudyAt };
   }, [progressRow, streakDays]);
-
-  const [firstRoomId, setFirstRoomId] = useState<string | null>(null);
 
   useEffect(() => {
     let alive = true;
@@ -420,18 +285,14 @@ export default function Home() {
 
         if (!alive) return;
 
-        const rows = (
-          Array.isArray(data) ? (data as Array<Record<string, unknown>>) : []
-        ).map((r) => ({
+        const rows = (Array.isArray(data) ? (data as Array<Record<string, unknown>>) : []).map((r) => ({
           id: String(r?.id ?? ""),
           tier: (r?.tier as string | null) ?? null,
           sort_order: (r?.sort_order as number | null) ?? null,
           created_at: (r?.created_at as string | null) ?? null,
         })) as RoomRowLite[];
 
-        const clean = rows.filter(
-          (r) => r.id && !isKidsRoomId(r.id) && !isVipHybridId(r.id)
-        );
+        const clean = rows.filter((r) => r.id && !isKidsRoomId(r.id) && !isVipHybridId(r.id));
 
         const rankedPrefer = [
           "sleep_basics",
@@ -467,19 +328,6 @@ export default function Home() {
     nav("/rooms");
   };
 
-  const goLastRoom = () => {
-    if (lastRoomId) {
-      nav(`/room/${lastRoomId}`);
-      return;
-    }
-    nav("/rooms");
-  };
-
-  const dailyRoomId = useMemo(() => {
-    const idx = dayIndexInTimezone(HOME_TZ);
-    return DAILY_ROOM_IDS[idx % DAILY_ROOM_IDS.length];
-  }, []);
-
   const phase0New =
     !user?.id ||
     !progressSummary.lastStudyAt ||
@@ -494,8 +342,6 @@ export default function Home() {
     !phase0New &&
     fmtInt(progressSummary.active30d) >= 10 &&
     fmtInt(progressSummary.streak) >= 7;
-
-  const [howOpen, setHowOpen] = useState<boolean>(true);
 
   useEffect(() => {
     setHowOpen(!phase2Collapse);
@@ -534,22 +380,6 @@ export default function Home() {
     background: "white",
   };
 
-  const band: React.CSSProperties = {
-    marginTop: 18,
-    borderRadius: 18,
-    border: "1px solid rgba(0,0,0,0.08)",
-    background: softPanel,
-    padding: "26px 16px",
-  };
-
-  const section: React.CSSProperties = {
-    marginTop: 18,
-    borderRadius: 18,
-    border: "1px solid rgba(0,0,0,0.08)",
-    background: "rgba(255,255,255,0.72)",
-    padding: "22px 16px",
-  };
-
   const heroCard: React.CSSProperties = {
     marginTop: 18,
     borderRadius: 20,
@@ -559,6 +389,10 @@ export default function Home() {
     padding: "28px 18px",
     textAlign: "center",
     boxShadow: "0 12px 30px rgba(0,0,0,0.06)",
+  };
+
+  const mercyGuideWrap: React.CSSProperties = {
+    marginTop: 18,
   };
 
   const hostSpotlight: React.CSSProperties = {
@@ -576,47 +410,6 @@ export default function Home() {
     gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
     gap: 16,
     alignItems: "stretch",
-  };
-
-  const quickGrid: React.CSSProperties = {
-    marginTop: 18,
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-    gap: 14,
-    alignItems: "stretch",
-  };
-
-  const quickCard: React.CSSProperties = {
-    borderRadius: 18,
-    border: "1px solid rgba(0,0,0,0.08)",
-    background: "rgba(255,255,255,0.84)",
-    padding: "18px 16px",
-    boxShadow: "0 10px 22px rgba(0,0,0,0.05)",
-  };
-
-  const quickLabel: React.CSSProperties = {
-    fontSize: 12,
-    fontWeight: 900,
-    letterSpacing: 0.6,
-    color: "rgba(0,0,0,0.45)",
-    textTransform: "uppercase",
-  };
-
-  const quickTitle: React.CSSProperties = {
-    marginTop: 8,
-    fontSize: 26,
-    fontWeight: 950,
-    color: "rgba(0,0,0,0.88)",
-    letterSpacing: -0.5,
-    lineHeight: 1.15,
-  };
-
-  const quickSub: React.CSSProperties = {
-    marginTop: 6,
-    fontSize: 15,
-    fontWeight: 700,
-    color: "rgba(0,0,0,0.62)",
-    lineHeight: 1.45,
   };
 
   const hostBubble: React.CSSProperties = {
@@ -649,6 +442,22 @@ export default function Home() {
     fontSize: 13,
     color: "rgba(0,0,0,0.54)",
     fontWeight: 800,
+  };
+
+  const band: React.CSSProperties = {
+    marginTop: 18,
+    borderRadius: 18,
+    border: "1px solid rgba(0,0,0,0.08)",
+    background: softPanel,
+    padding: "26px 16px",
+  };
+
+  const section: React.CSSProperties = {
+    marginTop: 18,
+    borderRadius: 18,
+    border: "1px solid rgba(0,0,0,0.08)",
+    background: "rgba(255,255,255,0.72)",
+    padding: "22px 16px",
   };
 
   const blockTitle: React.CSSProperties = {
@@ -860,8 +669,7 @@ export default function Home() {
             <div style={langTag}>EN</div>
             <h1 style={heroTitle}>Think in English. Calmly.</h1>
             <div style={heroSub}>
-              Mercy Blade is a quiet space where you practice thinking about life
-              in English.
+              Mercy Blade is a quiet space where you practice thinking about life in English.
               <br />
               Not grammar drills. Not pressure. Not noise.
               <br />
@@ -873,32 +681,21 @@ export default function Home() {
                 👉 Start free
               </button>
 
-              <button
-                type="button"
-                style={secondaryBtn}
-                onClick={() => nav(ROUTE_PRICING)}
-              >
-                💎 Pricing
+              <button type="button" style={secondaryBtn} onClick={() => nav("/tiers")}>
+                👉 See learning paths
               </button>
 
-              <button
-                type="button"
-                style={secondaryBtn}
-                onClick={() => nav("/rooms")}
-              >
-                👉 Browse all rooms
+              <button type="button" style={secondaryBtn} onClick={() => nav(ROUTE_PRICING)}>
+                💎 Pricing
               </button>
             </div>
 
             <div style={heroCtaHint}>Start with a short room — about 2 minutes.</div>
 
             <div style={{ ...langTag, marginTop: 18 }}>VI</div>
-            <h2 style={{ ...heroTitle, fontSize: 28 }}>
-              Suy nghĩ bằng tiếng Anh — một cách bình tĩnh.
-            </h2>
+            <h2 style={{ ...heroTitle, fontSize: 28 }}>Suy nghĩ bằng tiếng Anh — một cách bình tĩnh.</h2>
             <div style={heroSub}>
-              Mercy Blade là không gian yên tĩnh để bạn suy nghĩ về cuộc sống bằng
-              tiếng Anh.
+              Mercy Blade là không gian yên tĩnh để bạn suy nghĩ về cuộc sống bằng tiếng Anh.
               <br />
               Không bài tập ngữ pháp. Không áp lực. Không ồn ào.
               <br />
@@ -910,98 +707,20 @@ export default function Home() {
                 👉 Bắt đầu miễn phí
               </button>
 
-              <button
-                type="button"
-                style={secondaryBtn}
-                onClick={() => nav(ROUTE_PRICING)}
-              >
-                💎 Bảng giá
+              <button type="button" style={secondaryBtn} onClick={() => nav("/tiers")}>
+                👉 Xem lộ trình học
               </button>
 
-              <button
-                type="button"
-                style={secondaryBtn}
-                onClick={() => nav("/rooms")}
-              >
-                👉 Xem tất cả phòng
+              <button type="button" style={secondaryBtn} onClick={() => nav(ROUTE_PRICING)}>
+                💎 Bảng giá
               </button>
             </div>
 
             <div style={heroCtaHint}>Bắt đầu với một phòng ngắn — khoảng 2 phút.</div>
           </div>
 
-          <div style={quickGrid}>
-            {lastRoomId ? (
-              <div style={quickCard} aria-label="Continue your journey">
-                <div style={quickLabel}>Continue your journey</div>
-                <div style={quickTitle}>{prettifyRoomTitle(lastRoomId)}</div>
-                <div style={quickSub}>
-                  Pick up where you left off.
-                  <br />
-                  Tiếp tục từ nơi bạn đã dừng lại.
-                </div>
-                <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
-                  <button type="button" style={primaryBtn} onClick={goLastRoom}>
-                    👉 Continue
-                  </button>
-                  <button
-                    type="button"
-                    style={secondaryBtn}
-                    onClick={() => nav("/rooms")}
-                  >
-                    👉 Browse rooms
-                  </button>
-                </div>
-              </div>
-            ) : (
-              <div style={quickCard} aria-label="Begin your journey">
-                <div style={quickLabel}>Begin your journey</div>
-                <div style={quickTitle}>Start with one quiet room</div>
-                <div style={quickSub}>
-                  A gentle first step is enough.
-                  <br />
-                  Một bước khởi đầu nhẹ nhàng là đủ.
-                </div>
-                <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
-                  <button type="button" style={primaryBtn} onClick={goFirstRoom}>
-                    👉 Start free
-                  </button>
-                  <button
-                    type="button"
-                    style={secondaryBtn}
-                    onClick={() => nav("/rooms")}
-                  >
-                    👉 Browse rooms
-                  </button>
-                </div>
-              </div>
-            )}
-
-            <div style={quickCard} aria-label="Today's Reflection">
-              <div style={quickLabel}>Today&apos;s Reflection</div>
-              <div style={quickTitle}>{prettifyRoomTitle(dailyRoomId)}</div>
-              <div style={quickSub}>
-                A small daily invitation.
-                <br />
-                Một lời mời nhỏ mỗi ngày.
-              </div>
-              <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
-                <button
-                  type="button"
-                  style={primaryBtn}
-                  onClick={() => nav(`/room/${dailyRoomId}`)}
-                >
-                  🌿 Open today&apos;s room
-                </button>
-                <button
-                  type="button"
-                  style={secondaryBtn}
-                  onClick={() => nav("/rooms")}
-                >
-                  👉 Explore the library
-                </button>
-              </div>
-            </div>
+          <div style={mercyGuideWrap}>
+            <MercyGuide />
           </div>
 
           <div style={hostSpotlight} aria-label="Mercy Host spotlight">
@@ -1010,28 +729,18 @@ export default function Home() {
                 <div style={langTag}>EN</div>
                 <h2 style={hostName}>Mercy Host</h2>
                 <p style={hostQuote}>“Would you like a quiet thought for today?”</p>
-                <div style={hostMeta}>
-                  A gentle guide for reflection — not a noisy chatbot.
-                </div>
+                <div style={hostMeta}>A gentle guide for reflection — not a noisy chatbot.</div>
                 <p style={p}>
                   Mercy Host helps you enter the experience softly.
                   <br />
                   It invites you to pause, reflect, and continue with calm focus.
                 </p>
                 <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
-                  <button
-                    type="button"
-                    style={{ ...primaryBtn, minWidth: 220 }}
-                    onClick={goFirstRoom}
-                  >
+                  <button type="button" style={{ ...primaryBtn, minWidth: 220 }} onClick={goFirstRoom}>
                     🌿 Enter with Mercy Host
                   </button>
-                  <button
-                    type="button"
-                    style={{ ...secondaryBtn, minWidth: 220 }}
-                    onClick={() => nav("/rooms")}
-                  >
-                    💬 Explore reflection rooms
+                  <button type="button" style={{ ...secondaryBtn, minWidth: 220 }} onClick={() => nav("/tiers")}>
+                    👉 See learning paths
                   </button>
                 </div>
               </div>
@@ -1040,28 +749,18 @@ export default function Home() {
                 <div style={langTag}>VI</div>
                 <h2 style={hostName}>Mercy Host</h2>
                 <p style={hostQuote}>“Bạn có muốn nhận một suy ngẫm nhẹ nhàng cho hôm nay không?”</p>
-                <div style={hostMeta}>
-                  Một người hướng dẫn dịu dàng cho sự suy ngẫm — không phải chatbot ồn ào.
-                </div>
+                <div style={hostMeta}>Một người hướng dẫn dịu dàng cho sự suy ngẫm — không phải chatbot ồn ào.</div>
                 <p style={p}>
                   Mercy Host giúp bạn bước vào trải nghiệm một cách nhẹ nhàng.
                   <br />
                   Mời bạn dừng lại, suy ngẫm, và tiếp tục với sự bình tĩnh.
                 </p>
                 <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
-                  <button
-                    type="button"
-                    style={{ ...primaryBtn, minWidth: 220 }}
-                    onClick={goFirstRoom}
-                  >
+                  <button type="button" style={{ ...primaryBtn, minWidth: 220 }} onClick={goFirstRoom}>
                     🌿 Bắt đầu cùng Mercy Host
                   </button>
-                  <button
-                    type="button"
-                    style={{ ...secondaryBtn, minWidth: 220 }}
-                    onClick={() => nav("/rooms")}
-                  >
-                    💬 Khám phá các phòng
+                  <button type="button" style={{ ...secondaryBtn, minWidth: 220 }} onClick={() => nav("/tiers")}>
+                    👉 Xem lộ trình học
                   </button>
                 </div>
               </div>
@@ -1121,13 +820,7 @@ export default function Home() {
                 <div style={{ fontWeight: 900, color: "rgba(120,0,0,0.80)" }}>
                   Progress error
                 </div>
-                <div
-                  style={{
-                    marginTop: 6,
-                    fontSize: 13,
-                    color: "rgba(0,0,0,0.65)",
-                  }}
-                >
+                <div style={{ marginTop: 6, fontSize: 13, color: "rgba(0,0,0,0.65)" }}>
                   {progressErr}
                 </div>
               </div>
@@ -1198,23 +891,22 @@ export default function Home() {
           </div>
 
           <div style={band}>
-            <h2 style={blockTitle}>A Quiet Space for Real Life in English</h2>
+            <h2 style={blockTitle}>A Gentle Companion for Your Whole Life</h2>
             <p style={p}>
-              Mercy Blade is a bilingual (English–Vietnamese) space for real life
-              — sleep, confidence, fear, money, relationships, work, and meaning.
+              Mercy Blade is a bilingual (English–Vietnamese) companion for real life — health, emotions, money,
+              relationships, work, and meaning.
             </p>
             <p style={p}>
-              You are not here to rush or perform.
+              This is not a place to rush or perform.
               <br />
-              You are here to slow down, think clearly, and practice English
-              through real human experience.
+              It is a place to slow down, listen, and move forward one small step at a time.
             </p>
             <p style={p}>
-              One room.
+              No pressure.
               <br />
-              One reflection.
+              No judgment.
               <br />
-              One small step forward.
+              Only clarity, compassion, and steady growth.
             </p>
 
             <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
@@ -1223,7 +915,15 @@ export default function Home() {
                 style={{ ...primaryBtn, minWidth: 240 }}
                 onClick={goFirstRoom}
               >
-                👉 Start free
+                👉 Enter your first room
+              </button>
+
+              <button
+                type="button"
+                style={{ ...secondaryBtn, minWidth: 240 }}
+                onClick={() => nav("/tiers")}
+              >
+                👉 See learning paths
               </button>
 
               <button
@@ -1233,36 +933,26 @@ export default function Home() {
               >
                 💎 Pricing
               </button>
-
-              <button
-                type="button"
-                style={{ ...secondaryBtn, minWidth: 240 }}
-                onClick={() => nav("/rooms")}
-              >
-                👉 Browse all rooms
-              </button>
             </div>
 
             <div style={{ height: 18 }} />
 
-            <h2 style={blockTitle}>Một Không Gian Yên Tĩnh Cho Cuộc Sống Thật Bằng Tiếng Anh</h2>
+            <h2 style={blockTitle}>Người Đồng Hành Nhẹ Nhàng Cho Cả Cuộc Đời Bạn</h2>
             <p style={p}>
-              Mercy Blade là không gian song ngữ (Anh–Việt) cho đời sống thật —
-              giấc ngủ, sự tự tin, nỗi sợ, tiền bạc, mối quan hệ, công việc và ý
-              nghĩa sống.
+              Mercy Blade là ứng dụng song ngữ (Anh–Việt) đồng hành cùng đời sống thật — sức khỏe, cảm xúc, tiền bạc, mối
+              quan hệ, công việc và ý nghĩa sống.
             </p>
             <p style={p}>
               Đây không phải nơi để chạy đua hay thể hiện.
               <br />
-              Đây là nơi để chậm lại, suy nghĩ rõ ràng, và luyện tiếng Anh qua
-              trải nghiệm thật của con người.
+              Mà là nơi để chậm lại, lắng nghe, và tiến lên từng bước nhỏ.
             </p>
             <p style={p}>
-              Một phòng.
+              Không áp lực.
               <br />
-              Một suy ngẫm.
+              Không phán xét.
               <br />
-              Một bước tiến nhỏ.
+              Chỉ có sự rõ ràng, dịu dàng và tiến bộ bền vững.
             </p>
 
             <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
@@ -1271,7 +961,15 @@ export default function Home() {
                 style={{ ...primaryBtn, minWidth: 240 }}
                 onClick={goFirstRoom}
               >
-                👉 Bắt đầu miễn phí
+                👉 Vào phòng đầu tiên
+              </button>
+
+              <button
+                type="button"
+                style={{ ...secondaryBtn, minWidth: 240 }}
+                onClick={() => nav("/tiers")}
+              >
+                👉 Xem lộ trình học
               </button>
 
               <button
@@ -1280,14 +978,6 @@ export default function Home() {
                 onClick={() => nav(ROUTE_PRICING)}
               >
                 💎 Bảng giá
-              </button>
-
-              <button
-                type="button"
-                style={{ ...secondaryBtn, minWidth: 240 }}
-                onClick={() => nav("/rooms")}
-              >
-                👉 Xem tất cả phòng
               </button>
             </div>
           </div>
@@ -1324,8 +1014,8 @@ export default function Home() {
               {howOpen ? (
                 <>
                   <p style={p}>
-                    You enter short <b>rooms</b> — sleep, anxiety, money,
-                    relationships, work, resilience, and more.
+                    You enter <b>rooms</b> — sleep, anxiety, money, relationships,
+                    work, resilience, and more.
                   </p>
 
                   <div style={{ ...p, marginTop: 12 }}>
@@ -1351,15 +1041,9 @@ export default function Home() {
                   </div>
 
                   <p style={p}>
-                    You are not just studying English.
-                    <br />
-                    You are <b>thinking in English about real life.</b>
+                    You are not “studying English”. You are <b>living with it</b>, inside real thoughts and real emotions.
                   </p>
-                  <p style={p}>
-                    Most rooms take only a few minutes.
-                    <br />
-                    Small daily practice builds deep fluency.
-                  </p>
+                  <p style={p}>One card. One breath. One meaningful step.</p>
 
                   {phase0New ? (
                     <div
@@ -1375,7 +1059,15 @@ export default function Home() {
                         style={{ ...primaryBtn, minWidth: 240 }}
                         onClick={goFirstRoom}
                       >
-                        👉 Start free
+                        👉 Enter your first room
+                      </button>
+
+                      <button
+                        type="button"
+                        style={{ ...secondaryBtn, minWidth: 240 }}
+                        onClick={() => nav("/tiers")}
+                      >
+                        👉 See learning paths
                       </button>
 
                       <button
@@ -1385,14 +1077,6 @@ export default function Home() {
                       >
                         💎 Pricing
                       </button>
-
-                      <button
-                        type="button"
-                        style={{ ...secondaryBtn, minWidth: 240 }}
-                        onClick={() => nav("/rooms")}
-                      >
-                        👉 Browse all rooms
-                      </button>
                     </div>
                   ) : null}
 
@@ -1400,8 +1084,7 @@ export default function Home() {
                   <h3 style={h3}>Cách Mercy Blade Hoạt Động</h3>
 
                   <p style={p}>
-                    Bạn bước vào những <b>phòng</b> ngắn — giấc ngủ, lo âu, tiền
-                    bạc, mối quan hệ, công việc, sức bền tinh thần…
+                    Bạn bước vào các <b>phòng</b> — giấc ngủ, lo âu, tiền bạc, mối quan hệ, công việc, sức bền tinh thần…
                   </p>
 
                   <div style={{ ...p, marginTop: 12 }}>
@@ -1427,16 +1110,9 @@ export default function Home() {
                   </div>
 
                   <p style={p}>
-                    Bạn không chỉ học tiếng Anh.
-                    <br />
-                    Bạn đang <b>suy nghĩ bằng tiếng Anh về cuộc sống thật.</b>
+                    Bạn không “học tiếng Anh” theo nghĩa thông thường. Bạn <b>sống cùng nó</b>, trong suy nghĩ và cảm xúc thật.
                   </p>
-                  <p style={p}>
-                    Phần lớn các phòng chỉ mất vài phút.
-                    <br />
-                    Những bước nhỏ mỗi ngày tạo nên khả năng sử dụng ngôn ngữ sâu
-                    sắc.
-                  </p>
+                  <p style={p}>Một thẻ. Một hơi thở. Một bước có ý nghĩa.</p>
 
                   {phase0New ? (
                     <div
@@ -1452,7 +1128,15 @@ export default function Home() {
                         style={{ ...primaryBtn, minWidth: 240 }}
                         onClick={goFirstRoom}
                       >
-                        👉 Bắt đầu miễn phí
+                        👉 Vào phòng đầu tiên
+                      </button>
+
+                      <button
+                        type="button"
+                        style={{ ...secondaryBtn, minWidth: 240 }}
+                        onClick={() => nav("/tiers")}
+                      >
+                        👉 Xem lộ trình học
                       </button>
 
                       <button
@@ -1462,20 +1146,12 @@ export default function Home() {
                       >
                         💎 Bảng giá
                       </button>
-
-                      <button
-                        type="button"
-                        style={{ ...secondaryBtn, minWidth: 240 }}
-                        onClick={() => nav("/rooms")}
-                      >
-                        👉 Xem tất cả phòng
-                      </button>
                     </div>
                   ) : null}
                 </>
               ) : (
                 <div style={{ ...p, marginTop: 10 }}>
-                  One room. One reflection. One small step forward.{" "}
+                  One card. One breath. One meaningful step.{" "}
                   <span
                     style={{
                       fontWeight: 800,
@@ -1491,44 +1167,42 @@ export default function Home() {
 
           <div style={section}>
             <div style={langTag}>EN</div>
-            <h3 style={h3}>Mercy Host — A Quiet Guide</h3>
-            <p style={p}>Mercy Host is a gentle companion inside the rooms.</p>
+            <h3 style={h3}>Mercy Host — A Caring Presence</h3>
+            <p style={p}>Mercy Host is a quiet guide that stays with you.</p>
             <p style={p}>
-              It knows where you are in your journey.
+              It knows which room you are in.
               <br />
               It knows what you are practicing.
               <br />
-              It helps you continue when the moment feels right.
+              It helps you slow down — or continue — when the moment is right.
             </p>
             <p style={p}>
-              Over time, Mercy Host remembers your path and supports your
-              progress.
+              Over time, Mercy Host remembers your journey and supports your progress.
             </p>
 
             <div style={{ ...langTag, marginTop: 16 }}>VI</div>
             <h3 style={h3}>Mercy Host — Người Hướng Dẫn Dịu Dàng</h3>
-            <p style={p}>Mercy Host là người đồng hành nhẹ nhàng trong các phòng.</p>
+            <p style={p}>Mercy Host là người hướng dẫn yên lặng nhưng luôn ở đó.</p>
             <p style={p}>
-              Mercy Host biết bạn đang ở đâu trong hành trình.
+              Mercy Host biết bạn đang ở phòng nào.
               <br />
               Biết bạn đang luyện điều gì.
               <br />
-              Giúp bạn tiếp tục khi thời điểm phù hợp.
+              Giúp bạn chậm lại — hoặc tiếp tục — đúng lúc.
             </p>
             <p style={p}>
-              Theo thời gian, Mercy Host ghi nhớ con đường của bạn và hỗ trợ sự
-              tiến bộ của bạn.
+              Theo thời gian, Mercy Host ghi nhớ hành trình của bạn và nâng đỡ sự tiến bộ của bạn.
             </p>
           </div>
 
           <div style={section}>
             <div style={langTag}>EN</div>
-            <h3 style={h3}>A Small Daily Ritual</h3>
-            <p style={p}>When life feels loud, Mercy Blade offers something simple:</p>
+            <h3 style={h3}>The Quiet Hour</h3>
+            <p style={p}>When life feels loud, Mercy Blade offers a simple ritual:</p>
             <p style={p}>
-              One room.
+              One minute.
               <br />
-              One reflection.
+              One bilingual card.
               <br />
               One calm breath.
             </p>
@@ -1539,16 +1213,16 @@ export default function Home() {
             </p>
 
             <div style={{ ...langTag, marginTop: 16 }}>VI</div>
-            <h3 style={h3}>Một Nghi Thức Nhỏ Mỗi Ngày</h3>
+            <h3 style={h3}>Giờ Lặng</h3>
             <p style={p}>
-              Khi cuộc sống trở nên ồn ào, Mercy Blade mang đến một điều đơn giản:
+              Khi cuộc sống trở nên ồn ào, Mercy Blade mang đến một nghi thức đơn giản:
             </p>
             <p style={p}>
-              Một phòng.
+              Một phút.
               <br />
-              Một suy ngẫm.
+              Một thẻ song ngữ.
               <br />
-              Một hơi thở bình tĩnh.
+              Một hơi thở yên tĩnh.
             </p>
             <p style={p}>
               Bạn không ép mình phải học.
@@ -1559,21 +1233,17 @@ export default function Home() {
 
           <div style={section}>
             <div style={langTag}>EN</div>
-            <h3 style={h3}>Free to Begin. Ready to Grow With You.</h3>
+            <h3 style={h3}>Free, and Growing With You</h3>
+            <p style={p}>Mercy Blade is free to begin.</p>
             <p style={p}>
-              You can begin with free rooms and feel the atmosphere of Mercy Blade.
-            </p>
-            <p style={p}>
-              When you are ready to go deeper, you can unlock <b>Full Access</b>
-              for your journey — or choose <b>Lifetime</b> and keep Mercy Blade
-              with you for the long term.
+              When you are ready to go deeper, you can choose to unlock more rooms and guidance — from <b>VIP 1</b> to <b>VIP 9</b>.
             </p>
             <p style={p}>
               No rush.
               <br />
               No obligation.
               <br />
-              Move forward when you are ready.
+              You move forward when <i>you</i> are ready.
             </p>
 
             <div style={{ marginTop: 12, display: "flex", gap: 10, flexWrap: "wrap" }}>
@@ -1588,37 +1258,32 @@ export default function Home() {
               <button
                 type="button"
                 style={{ ...secondaryBtn, minWidth: 240 }}
-                onClick={() => nav(ROUTE_PRICING)}
+                onClick={() => nav("/tiers")}
               >
-                💎 Pricing
+                👉 See learning paths
               </button>
 
               <button
                 type="button"
                 style={{ ...secondaryBtn, minWidth: 240 }}
-                onClick={() => nav("/rooms")}
+                onClick={() => nav(ROUTE_PRICING)}
               >
-                👉 Browse all rooms
+                💎 Pricing
               </button>
             </div>
 
             <div style={{ ...langTag, marginTop: 16 }}>VI</div>
-            <h3 style={h3}>Bắt Đầu Miễn Phí. Sẵn Sàng Lớn Lên Cùng Bạn.</h3>
+            <h3 style={h3}>Miễn Phí, và Lớn Lên Cùng Bạn</h3>
+            <p style={p}>Mercy Blade miễn phí để bắt đầu.</p>
             <p style={p}>
-              Bạn có thể bắt đầu với các phòng miễn phí để cảm nhận không khí của
-              Mercy Blade.
-            </p>
-            <p style={p}>
-              Khi bạn muốn đi sâu hơn, bạn có thể mở khóa <b>Toàn Quyền Truy Cập</b>
-              cho hành trình của mình — hoặc chọn <b>Trọn Đời</b> để Mercy Blade
-              đồng hành cùng bạn lâu dài.
+              Khi bạn muốn đi sâu hơn, bạn có thể mở thêm phòng và sự hướng dẫn — từ <b>VIP 1</b> đến <b>VIP 9</b>.
             </p>
             <p style={p}>
               Không vội.
               <br />
               Không ép buộc.
               <br />
-              Tiến lên khi bạn sẵn sàng.
+              Bạn tiến lên khi <i>bạn</i> sẵn sàng.
             </p>
 
             <div style={{ marginTop: 12, display: "flex", gap: 10, flexWrap: "wrap" }}>
@@ -1633,17 +1298,17 @@ export default function Home() {
               <button
                 type="button"
                 style={{ ...secondaryBtn, minWidth: 240 }}
-                onClick={() => nav(ROUTE_PRICING)}
+                onClick={() => nav("/tiers")}
               >
-                💎 Bảng giá
+                👉 Xem lộ trình học
               </button>
 
               <button
                 type="button"
                 style={{ ...secondaryBtn, minWidth: 240 }}
-                onClick={() => nav("/rooms")}
+                onClick={() => nav(ROUTE_PRICING)}
               >
-                👉 Xem tất cả phòng
+                💎 Bảng giá
               </button>
             </div>
           </div>
@@ -1651,7 +1316,6 @@ export default function Home() {
           <div style={ctaBand}>
             <h2 style={ctaTitle}>Start gently — one room at a time.</h2>
             <div style={ctaSub}>Bắt đầu nhẹ nhàng — từng phòng một.</div>
-            <div style={heroCtaHint}>Start free with a short room — about 2 minutes.</div>
 
             <div style={ctaRow}>
               <button type="button" style={primaryBtn} onClick={goFirstRoom}>
@@ -1661,17 +1325,17 @@ export default function Home() {
               <button
                 type="button"
                 style={secondaryBtn}
-                onClick={() => nav(ROUTE_PRICING)}
+                onClick={() => nav("/tiers")}
               >
-                💎 Pricing
+                👉 See learning paths
               </button>
 
               <button
                 type="button"
                 style={secondaryBtn}
-                onClick={() => nav("/rooms")}
+                onClick={() => nav(ROUTE_PRICING)}
               >
-                👉 Browse all rooms
+                💎 Pricing
               </button>
 
               <button

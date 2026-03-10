@@ -1,3 +1,11 @@
+export type SpeechIntent =
+  | "SUCCESS"
+  | "SUCCESS_CLOSE"
+  | "RETRY_WORD"
+  | "RETRY_PHRASE"
+  | "RETRY_SLOW"
+  | "NO_SPEECH";
+
 export type SpeechAnalysisResponse = {
   transcript: string;
   normalizedTranscript: string;
@@ -5,11 +13,6 @@ export type SpeechAnalysisResponse = {
   matchScore: number;
   missingWords: string[];
   extraWords: string[];
+  intent: SpeechIntent;
   message: string;
-};
-
-export type SpeechAnalyzeRequestMeta = {
-  roomId: string;
-  lineId: string;
-  targetText: string;
 };
