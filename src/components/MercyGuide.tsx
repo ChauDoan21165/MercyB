@@ -70,7 +70,7 @@ export function MercyGuide({
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('guide');
   const [showSettings, setShowSettings] = useState(false);
-  const [showCoach, setShowCoach] = useState(false);
+  const [coachStage, setCoachStage] = useState<'intro' | 'coach' | 'dismissed'>('intro');
 
   const [profile, setProfile] = useState<CompanionProfile>({});
   const [checkInMessage, setCheckInMessage] = useState<{ en: string; vi: string } | null>(
@@ -179,15 +179,11 @@ export function MercyGuide({
 
   useEffect(() => {
     if (!isOpen || showSettings) {
-      setShowCoach(false);
+      setCoachStage('intro');
       return;
     }
 
-    const timer = setTimeout(() => {
-      setShowCoach(true);
-    }, 500);
-
-    return () => clearTimeout(timer);
+    setCoachStage('intro');
   }, [isOpen, showSettings]);
 
   useEffect(() => {
@@ -370,21 +366,51 @@ export function MercyGuide({
                 </button>
               )}
 
-              <div className="px-3 pt-3">
-                {showCoach ? (
-                  <div className="animate-in fade-in duration-300">
-                    <DailyCoachCard
-                      profile={profile}
-                      contentEn={contentEn}
-                      troubleWords={troubleWords}
-                      speakPractice={speakPractice}
-                      onOpenSpeak={() => setActiveTab('speak')}
-                    />
+              {coachStage !== 'dismissed' && (
+                <div className="px-3 pt-3">
+                  <div className="min-h-[220px]">
+                    {coachStage === 'intro' && (
+                      <div className="rounded-xl border border-primary/10 bg-primary/5 p-4">
+                        <div className="space-y-2">
+                          <p className="text-sm font-semibold text-foreground">Mercy</p>
+                          <p className="text-sm text-foreground">
+                            Hi. I can guide you with one short speaking step today.
+                          </p>
+                          <p className="text-sm text-muted-foreground">
+                            It only takes a moment.
+                          </p>
+                        </div>
+
+                        <div className="mt-4 flex flex-wrap gap-2">
+                          <Button size="sm" onClick={() => setCoachStage('coach')}>
+                            Start with one phrase
+                          </Button>
+
+                          <Button
+                            size="sm"
+                            variant="ghost"
+                            onClick={() => setCoachStage('dismissed')}
+                          >
+                            Maybe later
+                          </Button>
+                        </div>
+                      </div>
+                    )}
+
+                    {coachStage === 'coach' && (
+                      <div className="animate-in fade-in duration-200">
+                        <DailyCoachCard
+                          profile={profile}
+                          contentEn={contentEn}
+                          troubleWords={troubleWords}
+                          speakPractice={speakPractice}
+                          onOpenSpeak={() => setActiveTab('speak')}
+                        />
+                      </div>
+                    )}
                   </div>
-                ) : (
-                  <div className="min-h-[260px] rounded-xl border border-primary/10 bg-primary/5 animate-pulse" />
-                )}
-              </div>
+                </div>
+              )}
 
               <Tabs
                 value={activeTab}

@@ -1,4 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+/**
+ * Path: src/components/mercy-guide/DailyCoachCard.tsx
+ */
+
+import React from 'react';
 import { CheckCircle2, RefreshCw, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -29,20 +33,6 @@ export function DailyCoachCard({
     speakPractice,
     onOpenSpeak,
   });
-
-  const hasPlayedRef = useRef(false);
-
-  useEffect(() => {
-    if (coach.state !== 'idle') return;
-    if (hasPlayedRef.current) return;
-
-    hasPlayedRef.current = true;
-    speakPractice.handlePlayTarget(coach.phrase);
-  }, [coach.state, coach.phrase, speakPractice]);
-
-  useEffect(() => {
-    hasPlayedRef.current = false;
-  }, [coach.phrase]);
 
   return (
     <div className="rounded-xl border border-primary/15 bg-primary/5 p-4">
