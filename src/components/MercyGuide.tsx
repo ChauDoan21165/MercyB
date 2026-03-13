@@ -370,17 +370,21 @@ export function MercyGuide({
                 </button>
               )}
 
-              {showCoach && (
-                <div className="animate-in fade-in duration-300 px-3 pt-3">
-                  <DailyCoachCard
-                    profile={profile}
-                    contentEn={contentEn}
-                    troubleWords={troubleWords}
-                    speakPractice={speakPractice}
-                    onOpenSpeak={() => setActiveTab('speak')}
-                  />
-                </div>
-              )}
+              <div className="px-3 pt-3">
+                {showCoach ? (
+                  <div className="animate-in fade-in duration-300">
+                    <DailyCoachCard
+                      profile={profile}
+                      contentEn={contentEn}
+                      troubleWords={troubleWords}
+                      speakPractice={speakPractice}
+                      onOpenSpeak={() => setActiveTab('speak')}
+                    />
+                  </div>
+                ) : (
+                  <div className="min-h-[260px] rounded-xl border border-primary/10 bg-primary/5 animate-pulse" />
+                )}
+              </div>
 
               <Tabs
                 value={activeTab}
