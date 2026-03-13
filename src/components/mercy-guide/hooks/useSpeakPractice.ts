@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import type { Dispatch, SetStateAction } from 'react';
 import { usePronunciationRecorder } from '@/hooks/usePronunciationRecorder';
 import { supabase } from '@/lib/supabaseClient';
 import { markEnglishActivity } from '@/services/companion';
@@ -16,7 +17,12 @@ interface UseSpeakPracticeParams {
   contentEn?: string;
   englishLevel?: string | null;
   preferredName?: string | null;
-  addToTroubleWords: (word: string, score: number, tipEn?: string, tipVi?: string) => void;
+  addToTroubleWords: (
+    word: string,
+    score: number,
+    tipEn?: string,
+    tipVi?: string
+  ) => void;
 }
 
 export function useSpeakPractice({
@@ -27,7 +33,8 @@ export function useSpeakPractice({
 }: UseSpeakPracticeParams) {
   const recorder = usePronunciationRecorder();
 
-  const [targetPhrase, setTargetPhrase] = useState('');
+  const [targetPhrase, setTargetPhraseState] = useState('');
+  const targetPhraseRef = useRef('');
   const [isPlayingTarget, setIsPlayingTarget] = useState(false);
   const [pronunciationResult, setPronunciationResult] =
     useState<PronunciationResult | null>(null);
@@ -35,13 +42,45 @@ export function useSpeakPractice({
   const [speakAttempts, setSpeakAttempts] = useState(0);
   const [speakLimitReached, setSpeakLimitReached] = useState(false);
   const [isComparing, setIsComparing] = useState(false);
-  const [lastRecordedAudioUrl, setLastRecordedAudioUrl] = useState<string | null>(null);
+  const [lastRecordedAudioUrl, setLastRecordedAudioUrl] = useState<string | null>(
+    null
+  );
+
+  const setTargetPhrase: Dispatch<SetStateAction<string>> = useCallback(
+    (value) => {
+      if (typeof value === 'function') {
+        setTargetPhraseState((prev) => {
+          const next = value(prev);
+          targetPhraseRef.current = next;
+          return next;
+        });
+        return;
+      }
+
+      targetPhraseRef.current = value;
+      setTargetPhraseState(value);
+    },
+    []
+  );
+
+  const resolvePlaybackPhrase = useCallback(
+    (phrase?: string) => {
+      const directPhrase = phrase?.trim();
+      if (directPhrase) return directPhrase;
+
+      const latestStoredPhrase = targetPhraseRef.current?.trim();
+      if (latestStoredPhrase) return latestStoredPhrase;
+
+      return targetPhrase.trim();
+    },
+    [targetPhrase]
+  );
 
   useEffect(() => {
     if (contentEn && !targetPhrase) {
       setTargetPhrase(extractFirstSentence(contentEn));
     }
-  }, [contentEn, targetPhrase]);
+  }, [contentEn, targetPhrase, setTargetPhrase]);
 
   useEffect(() => {
     const stored = sessionStorage.getItem(SPEAK_SESSION_KEY);
@@ -66,35 +105,43 @@ export function useSpeakPractice({
     };
   }, []);
 
-  const handlePlayTarget = useCallback(() => {
-    if (!targetPhrase || isPlayingTarget) return;
+  const handlePlayTarget = useCallback(
+    (phrase?: string) => {
+      const phraseToPlay = resolvePlaybackPhrase(phrase);
+      if (!phraseToPlay || isPlayingTarget) return;
 
-    window.speechSynthesis.cancel();
+      window.speechSynthesis.cancel();
 
-    const utterance = new SpeechSynthesisUtterance(targetPhrase);
-    utterance.lang = 'en-US';
-    utterance.rate = 0.9;
-    utterance.onstart = () => setIsPlayingTarget(true);
-    utterance.onend = () => setIsPlayingTarget(false);
-    utterance.onerror = () => setIsPlayingTarget(false);
+      const utterance = new SpeechSynthesisUtterance(phraseToPlay);
+      utterance.lang = 'en-US';
+      utterance.rate = 0.9;
+      utterance.onstart = () => setIsPlayingTarget(true);
+      utterance.onend = () => setIsPlayingTarget(false);
+      utterance.onerror = () => setIsPlayingTarget(false);
 
-    window.speechSynthesis.speak(utterance);
-  }, [targetPhrase, isPlayingTarget]);
+      window.speechSynthesis.speak(utterance);
+    },
+    [resolvePlaybackPhrase, isPlayingTarget]
+  );
 
-  const handlePlaySlow = useCallback(() => {
-    if (!targetPhrase || isPlayingTarget) return;
+  const handlePlaySlow = useCallback(
+    (phrase?: string) => {
+      const phraseToPlay = resolvePlaybackPhrase(phrase);
+      if (!phraseToPlay || isPlayingTarget) return;
 
-    window.speechSynthesis.cancel();
+      window.speechSynthesis.cancel();
 
-    const utterance = new SpeechSynthesisUtterance(targetPhrase);
-    utterance.lang = 'en-US';
-    utterance.rate = 0.65;
-    utterance.onstart = () => setIsPlayingTarget(true);
-    utterance.onend = () => setIsPlayingTarget(false);
-    utterance.onerror = () => setIsPlayingTarget(false);
+      const utterance = new SpeechSynthesisUtterance(phraseToPlay);
+      utterance.lang = 'en-US';
+      utterance.rate = 0.65;
+      utterance.onstart = () => setIsPlayingTarget(true);
+      utterance.onend = () => setIsPlayingTarget(false);
+      utterance.onerror = () => setIsPlayingTarget(false);
 
-    window.speechSynthesis.speak(utterance);
-  }, [targetPhrase, isPlayingTarget]);
+      window.speechSynthesis.speak(utterance);
+    },
+    [resolvePlaybackPhrase, isPlayingTarget]
+  );
 
   const handleShadowCompare = useCallback(async () => {
     if (!lastRecordedAudioUrl || !targetPhrase || isComparing) return;
@@ -155,26 +202,29 @@ export function useSpeakPractice({
         setLastRecordedAudioUrl(null);
       }
     },
-    [lastRecordedAudioUrl]
+    [lastRecordedAudioUrl, setTargetPhrase]
   );
 
-  const handleVaultReplay = useCallback((word: string) => {
-    if (!word) return;
+  const handleVaultReplay = useCallback(
+    (word: string) => {
+      if (!word) return;
 
-    setTargetPhrase(word);
-    setPronunciationResult(null);
-    setIsPlayingTarget(false);
-    setIsComparing(false);
+      setTargetPhrase(word);
+      setPronunciationResult(null);
+      setIsPlayingTarget(false);
+      setIsComparing(false);
 
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(word);
-    utterance.lang = 'en-US';
-    utterance.rate = 0.7;
-    utterance.onstart = () => setIsPlayingTarget(true);
-    utterance.onend = () => setIsPlayingTarget(false);
-    utterance.onerror = () => setIsPlayingTarget(false);
-    window.speechSynthesis.speak(utterance);
-  }, []);
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(word);
+      utterance.lang = 'en-US';
+      utterance.rate = 0.7;
+      utterance.onstart = () => setIsPlayingTarget(true);
+      utterance.onend = () => setIsPlayingTarget(false);
+      utterance.onerror = () => setIsPlayingTarget(false);
+      window.speechSynthesis.speak(utterance);
+    },
+    [setTargetPhrase]
+  );
 
   const handleRecordToggle = useCallback(async () => {
     if (recorder.status === 'recording') {
