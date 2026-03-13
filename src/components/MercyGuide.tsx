@@ -41,6 +41,7 @@ import {
 } from './mercy-guide/shared';
 import { useTroubleWordsVault } from './mercy-guide/hooks/useTroubleWordsVault';
 import { useSpeakPractice } from './mercy-guide/hooks/useSpeakPractice';
+import { DailyCoachCard } from './mercy-guide/DailyCoachCard';
 import { MercyGuideTab } from './mercy-guide/MercyGuideTab';
 import { MercyTeacherTab } from './mercy-guide/MercyTeacherTab';
 import { MercyEnglishTab } from './mercy-guide/MercyEnglishTab';
@@ -69,6 +70,7 @@ export function MercyGuide({
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('guide');
   const [showSettings, setShowSettings] = useState(false);
+  const [showCoach, setShowCoach] = useState(false);
 
   const [profile, setProfile] = useState<CompanionProfile>({});
   const [checkInMessage, setCheckInMessage] = useState<{ en: string; vi: string } | null>(
@@ -174,6 +176,19 @@ export function MercyGuide({
   useEffect(() => {
     preloadMercyLibrary();
   }, []);
+
+  useEffect(() => {
+    if (!isOpen || showSettings) {
+      setShowCoach(false);
+      return;
+    }
+
+    const timer = setTimeout(() => {
+      setShowCoach(true);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [isOpen, showSettings]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -353,6 +368,18 @@ export function MercyGuide({
                 >
                   Tell me your name →
                 </button>
+              )}
+
+              {showCoach && (
+                <div className="animate-in fade-in duration-300 px-3 pt-3">
+                  <DailyCoachCard
+                    profile={profile}
+                    contentEn={contentEn}
+                    troubleWords={troubleWords}
+                    speakPractice={speakPractice}
+                    onOpenSpeak={() => setActiveTab('speak')}
+                  />
+                </div>
               )}
 
               <Tabs
