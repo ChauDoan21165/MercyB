@@ -1,7 +1,7 @@
 /**
  * File: MercyGuide.tsx
  * Path: src/components/MercyGuide.tsx
- * Version: v2026-03-11-merge-safe-bilingual-speak-scroll-vault-13
+ * Version: v2026-03-11-merge-safe-bilingual-speak-scroll-vault-14
  */
 
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
@@ -18,6 +18,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { cn } from '@/lib/utils';
 import { useMercyGuide } from '@/hooks/useMercyGuide';
 import { CompanionProfile, getCompanionProfile } from '@/services/companion';
 import { SuggestedItem, getSuggestionsForUser } from '@/services/suggestions';
@@ -57,6 +58,34 @@ interface MercyGuideProps {
   contentEn?: string;
 }
 
+type ResizeDirection =
+  | 'top'
+  | 'right'
+  | 'bottom'
+  | 'left'
+  | 'top-left'
+  | 'top-right'
+  | 'bottom-left'
+  | 'bottom-right';
+
+type PanelRect = {
+  width: number;
+  height: number;
+  right: number;
+  bottom: number;
+};
+
+const DEFAULT_PANEL_WIDTH = 380;
+const DEFAULT_PANEL_HEIGHT_RATIO = 0.75;
+const DEFAULT_PANEL_RIGHT = 24;
+const DEFAULT_PANEL_BOTTOM = 80;
+const MIN_PANEL_WIDTH = 340;
+const MAX_PANEL_WIDTH = 720;
+const MIN_PANEL_HEIGHT = 480;
+const MAX_PANEL_HEIGHT = 900;
+const MIN_PANEL_MARGIN = 8;
+const PANEL_SIZE_STORAGE_KEY = 'mercy-guide-panel-size';
+
 export function MercyGuide({
   roomId,
   roomTitle,
@@ -85,6 +114,13 @@ export function MercyGuide({
   const [breathingStep, setBreathingStep] = useState(0);
   const [showReframe, setShowReframe] = useState(false);
 
+  const [panelRect, setPanelRect] = useState<PanelRect>({
+    width: DEFAULT_PANEL_WIDTH,
+    height: MIN_PANEL_HEIGHT,
+    right: DEFAULT_PANEL_RIGHT,
+    bottom: DEFAULT_PANEL_BOTTOM,
+  });
+
   const {
     articles,
     isEnabled,
@@ -107,6 +143,89 @@ export function MercyGuide({
     resetPracticeState,
     handleVaultReplay: replayVaultWord,
   } = speakPractice;
+
+  const hasEnglishContext = Boolean(contentEn || roomId);
+
+  const clampPanelRect = useCallback((next: PanelRect): PanelRect => {
+    if (typeof window === 'undefined') {
+      return {
+        width: Math.min(MAX_PANEL_WIDTH, Math.max(MIN_PANEL_WIDTH, next.width)),
+        height: Math.min(MAX_PANEL_HEIGHT, Math.max(MIN_PANEL_HEIGHT, next.height)),
+        right: Math.max(MIN_PANEL_MARGIN, next.right),
+        bottom: Math.max(MIN_PANEL_MARGIN, next.bottom),
+      };
+    }
+
+    const maxWidth = Math.min(MAX_PANEL_WIDTH, window.innerWidth - MIN_PANEL_MARGIN * 2);
+    const maxHeight = Math.min(MAX_PANEL_HEIGHT, window.innerHeight - MIN_PANEL_MARGIN * 2);
+    const minWidth = Math.min(MIN_PANEL_WIDTH, maxWidth);
+    const minHeight = Math.min(MIN_PANEL_HEIGHT, maxHeight);
+
+    const width = Math.min(maxWidth, Math.max(minWidth, next.width));
+    const height = Math.min(maxHeight, Math.max(minHeight, next.height));
+    const maxRight = Math.max(MIN_PANEL_MARGIN, window.innerWidth - width - MIN_PANEL_MARGIN);
+    const maxBottom = Math.max(MIN_PANEL_MARGIN, window.innerHeight - height - MIN_PANEL_MARGIN);
+
+    return {
+      width,
+      height,
+      right: Math.min(maxRight, Math.max(MIN_PANEL_MARGIN, next.right)),
+      bottom: Math.min(maxBottom, Math.max(MIN_PANEL_MARGIN, next.bottom)),
+    };
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const fallbackRect = clampPanelRect({
+      width: DEFAULT_PANEL_WIDTH,
+      height: Math.round(window.innerHeight * DEFAULT_PANEL_HEIGHT_RATIO),
+      right: DEFAULT_PANEL_RIGHT,
+      bottom: DEFAULT_PANEL_BOTTOM,
+    });
+
+    try {
+      const stored = window.sessionStorage.getItem(PANEL_SIZE_STORAGE_KEY);
+
+      if (stored) {
+        const parsed = JSON.parse(stored) as Partial<PanelRect>;
+        setPanelRect(
+          clampPanelRect({
+            width: parsed.width ?? fallbackRect.width,
+            height: parsed.height ?? fallbackRect.height,
+            right: parsed.right ?? fallbackRect.right,
+            bottom: parsed.bottom ?? fallbackRect.bottom,
+          })
+        );
+        return;
+      }
+    } catch (error) {
+      console.error('Failed to restore Mercy Guide panel size:', error);
+    }
+
+    setPanelRect(fallbackRect);
+  }, [clampPanelRect]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    try {
+      window.sessionStorage.setItem(PANEL_SIZE_STORAGE_KEY, JSON.stringify(panelRect));
+    } catch (error) {
+      console.error('Failed to persist Mercy Guide panel size:', error);
+    }
+  }, [panelRect]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const handleWindowResize = () => {
+      setPanelRect((prev) => clampPanelRect(prev));
+    };
+
+    window.addEventListener('resize', handleWindowResize);
+    return () => window.removeEventListener('resize', handleWindowResize);
+  }, [clampPanelRect]);
 
   const greeting = useMemo(
     () =>
@@ -170,7 +289,87 @@ export function MercyGuide({
       setActiveTab('speak');
       replayVaultWord(word);
     },
-    [setActiveTab, replayVaultWord]
+    [replayVaultWord]
+  );
+
+  const handleResizePointerDown = useCallback(
+    (direction: ResizeDirection) => (event: React.PointerEvent<HTMLDivElement>) => {
+      event.preventDefault();
+      event.stopPropagation();
+
+      const startX = event.clientX;
+      const startY = event.clientY;
+      const startRect = panelRect;
+      const pointerId = event.pointerId;
+      const handleElement = event.currentTarget;
+      const previousUserSelect = document.body.style.userSelect;
+
+      document.body.style.userSelect = 'none';
+
+      if (handleElement.setPointerCapture) {
+        try {
+          handleElement.setPointerCapture(pointerId);
+        } catch (error) {
+          console.error('Failed to capture resize pointer:', error);
+        }
+      }
+
+      const handlePointerMove = (moveEvent: PointerEvent) => {
+        if (moveEvent.pointerId !== pointerId) return;
+
+        const dx = moveEvent.clientX - startX;
+        const dy = moveEvent.clientY - startY;
+
+        let nextRect: PanelRect = { ...startRect };
+
+        if (direction.includes('left')) {
+          nextRect.width = startRect.width - dx;
+        }
+
+        if (direction.includes('right')) {
+          nextRect.width = startRect.width + dx;
+          nextRect.right = startRect.right - dx;
+        }
+
+        if (direction.includes('top')) {
+          nextRect.height = startRect.height - dy;
+        }
+
+        if (direction.includes('bottom')) {
+          nextRect.height = startRect.height + dy;
+          nextRect.bottom = startRect.bottom - dy;
+        }
+
+        setPanelRect(clampPanelRect(nextRect));
+      };
+
+      const cleanup = () => {
+        document.body.style.userSelect = previousUserSelect;
+        window.removeEventListener('pointermove', handlePointerMove);
+        window.removeEventListener('pointerup', handlePointerUp);
+        window.removeEventListener('pointercancel', handlePointerUp);
+
+        if (handleElement.releasePointerCapture) {
+          try {
+            if (handleElement.hasPointerCapture?.(pointerId)) {
+              handleElement.releasePointerCapture(pointerId);
+            }
+          } catch (error) {
+            console.error('Failed to release resize pointer:', error);
+          }
+        }
+      };
+
+      const handlePointerUp = (upEvent: PointerEvent) => {
+        if (upEvent.pointerId !== pointerId) return;
+        cleanup();
+      };
+
+      window.addEventListener('pointermove', handlePointerMove);
+      window.addEventListener('pointerup', handlePointerUp);
+      window.addEventListener('pointercancel', handlePointerUp);
+    },
+    [clampPanelRect, panelRect]
   );
 
   useEffect(() => {
@@ -282,7 +481,19 @@ export function MercyGuide({
       )}
 
       {isOpen && (
-        <div className="fixed bottom-20 right-6 z-50 flex max-h-[75vh] w-[min(380px,calc(100vw-2.5rem))] flex-col overflow-hidden rounded-xl border border-border bg-white shadow-2xl">
+        <div
+          className="fixed z-50 flex flex-col overflow-hidden rounded-xl border border-border bg-white shadow-2xl"
+          style={{
+            width: panelRect.width,
+            height: panelRect.height,
+            right: panelRect.right,
+            bottom: panelRect.bottom,
+            minWidth: Math.min(MIN_PANEL_WIDTH, panelRect.width),
+            minHeight: Math.min(MIN_PANEL_HEIGHT, panelRect.height),
+            maxWidth: `min(${MAX_PANEL_WIDTH}px, calc(100vw - ${MIN_PANEL_MARGIN * 2}px))`,
+            maxHeight: `min(${MAX_PANEL_HEIGHT}px, calc(100vh - ${MIN_PANEL_MARGIN * 2}px))`,
+          }}
+        >
           <div className="flex items-center justify-between border-b border-border bg-white px-4 py-3">
             <div className="flex items-center gap-3">
               <div className="h-10 w-10 overflow-hidden rounded-full bg-pink-100 ring-2 ring-pink-200">
@@ -367,48 +578,46 @@ export function MercyGuide({
               )}
 
               {coachStage !== 'dismissed' && (
-                <div className="px-3 pt-3">
-                  <div className="min-h-[220px]">
-                    {coachStage === 'intro' && (
-                      <div className="rounded-xl border border-primary/10 bg-primary/5 p-4">
-                        <div className="space-y-2">
-                          <p className="text-sm font-semibold text-foreground">Mercy</p>
-                          <p className="text-sm text-foreground">
-                            Hi. I can guide you with one short speaking step today.
-                          </p>
-                          <p className="text-sm text-muted-foreground">
-                            It only takes a moment.
-                          </p>
-                        </div>
-
-                        <div className="mt-4 flex flex-wrap gap-2">
-                          <Button size="sm" onClick={() => setCoachStage('coach')}>
-                            Start with one phrase
-                          </Button>
-
-                          <Button
-                            size="sm"
-                            variant="ghost"
-                            onClick={() => setCoachStage('dismissed')}
-                          >
-                            Maybe later
-                          </Button>
-                        </div>
+                <div className="shrink-0 px-3 pt-2">
+                  {coachStage === 'intro' && (
+                    <div className="rounded-xl border border-primary/10 bg-primary/5 p-3">
+                      <div className="space-y-1">
+                        <p className="text-sm font-semibold text-foreground">Mercy</p>
+                        <p className="text-sm text-foreground">
+                          I can guide you with one short speaking step today.
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          It only takes a moment.
+                        </p>
                       </div>
-                    )}
 
-                    {coachStage === 'coach' && (
-                      <div className="animate-in fade-in duration-200">
-                        <DailyCoachCard
-                          profile={profile}
-                          contentEn={contentEn}
-                          troubleWords={troubleWords}
-                          speakPractice={speakPractice}
-                          onOpenSpeak={() => setActiveTab('speak')}
-                        />
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        <Button size="sm" onClick={() => setCoachStage('coach')}>
+                          Start with one phrase
+                        </Button>
+
+                        <Button
+                          size="sm"
+                          variant="ghost"
+                          onClick={() => setCoachStage('dismissed')}
+                        >
+                          Maybe later
+                        </Button>
                       </div>
-                    )}
-                  </div>
+                    </div>
+                  )}
+
+                  {coachStage === 'coach' && (
+                    <div className="max-h-[160px] overflow-y-auto pr-1 animate-in fade-in duration-200">
+                      <DailyCoachCard
+                        profile={profile}
+                        contentEn={contentEn}
+                        troubleWords={troubleWords}
+                        speakPractice={speakPractice}
+                        onOpenSpeak={() => setActiveTab('speak')}
+                      />
+                    </div>
+                  )}
                 </div>
               )}
 
@@ -417,91 +626,165 @@ export function MercyGuide({
                 onValueChange={setActiveTab}
                 className="flex min-h-0 flex-1 flex-col overflow-hidden"
               >
-                <TabsList className="mx-3 mt-2 grid grid-cols-5">
-                  <TabsTrigger value="guide" className="text-xs">
-                    <MessageCircleQuestion className="mr-1 h-3 w-3" />
-                    Guide
+                <TabsList className="mx-3 mt-2 shrink-0 grid grid-cols-5 rounded-xl border border-border/60 bg-muted/50 p-1 shadow-sm">
+                  <TabsTrigger
+                    value="guide"
+                    className={cn(
+                      'h-9 gap-1 rounded-lg border px-2 text-[11px] font-semibold transition-all',
+                      'border-transparent text-muted-foreground opacity-75',
+                      'data-[state=active]:border-border data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:opacity-100 data-[state=active]:shadow-sm',
+                      'data-[state=inactive]:hover:bg-white/80 data-[state=inactive]:hover:text-foreground'
+                    )}
+                  >
+                    <MessageCircleQuestion className="h-3.5 w-3.5 shrink-0" />
+                    <span className="truncate">Guide</span>
                   </TabsTrigger>
 
-                  <TabsTrigger value="teacher" className="text-xs">
-                    <GraduationCap className="mr-1 h-3 w-3" />
-                    Teacher
+                  <TabsTrigger
+                    value="teacher"
+                    className={cn(
+                      'h-9 gap-1 rounded-lg border px-2 text-[11px] font-semibold transition-all',
+                      'border-transparent text-muted-foreground opacity-75',
+                      'data-[state=active]:border-border data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:opacity-100 data-[state=active]:shadow-sm',
+                      'data-[state=inactive]:hover:bg-white/80 data-[state=inactive]:hover:text-foreground'
+                    )}
+                  >
+                    <GraduationCap className="h-3.5 w-3.5 shrink-0" />
+                    <span className="truncate">Teacher</span>
                   </TabsTrigger>
 
                   <TabsTrigger
                     value="english"
-                    className="text-xs"
-                    disabled={!contentEn && !roomId}
+                    className={cn(
+                      'h-9 gap-1 rounded-lg border px-2 text-[11px] font-semibold transition-all',
+                      hasEnglishContext
+                        ? 'border-transparent text-muted-foreground opacity-75'
+                        : 'border-transparent text-muted-foreground/70 opacity-65',
+                      'data-[state=active]:border-border data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:opacity-100 data-[state=active]:shadow-sm',
+                      'data-[state=inactive]:hover:bg-white/80 data-[state=inactive]:hover:text-foreground'
+                    )}
                   >
-                    <BookOpen className="mr-1 h-3 w-3" />
-                    English
+                    <BookOpen className="h-3.5 w-3.5 shrink-0" />
+                    <span className="truncate">English</span>
                   </TabsTrigger>
 
-                  <TabsTrigger value="speak" className="text-xs">
-                    <Mic className="mr-1 h-3 w-3" />
-                    Speak
+                  <TabsTrigger
+                    value="speak"
+                    className={cn(
+                      'h-9 gap-1 rounded-lg border px-2 text-[11px] font-semibold transition-all',
+                      'border-transparent text-muted-foreground opacity-75',
+                      'data-[state=active]:border-border data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:opacity-100 data-[state=active]:shadow-sm',
+                      'data-[state=inactive]:hover:bg-white/80 data-[state=inactive]:hover:text-foreground'
+                    )}
+                  >
+                    <Mic className="h-3.5 w-3.5 shrink-0" />
+                    <span className="truncate">Speak</span>
                   </TabsTrigger>
 
-                  <TabsTrigger value="suggest" className="text-xs">
-                    <Sparkles className="mr-1 h-3 w-3" />
-                    For You
+                  <TabsTrigger
+                    value="suggest"
+                    className={cn(
+                      'h-9 gap-1 rounded-lg border px-2 text-[11px] font-semibold transition-all',
+                      'border-transparent text-muted-foreground opacity-75',
+                      'data-[state=active]:border-border data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:opacity-100 data-[state=active]:shadow-sm',
+                      'data-[state=inactive]:hover:bg-white/80 data-[state=inactive]:hover:text-foreground'
+                    )}
+                  >
+                    <Sparkles className="h-3.5 w-3.5 shrink-0" />
+                    <span className="truncate">For You</span>
                   </TabsTrigger>
                 </TabsList>
 
-                <MercyGuideTab
-                  articles={articles}
-                  canAskQuestion={canAskQuestion}
-                  incrementQuestionCount={incrementQuestionCount}
-                  getQuestionsRemaining={getQuestionsRemaining}
-                  roomId={roomId}
-                  roomTitle={roomTitle}
-                  tier={tier}
-                  pathSlug={pathSlug}
-                  tags={tags}
-                  englishLevel={profile.english_level}
-                  learningGoal={profile.learning_goal}
-                  onRequestSpeakTab={() => setActiveTab('speak')}
-                />
+                <div className="relative min-h-0 flex-1 overflow-hidden">
+                  <MercyGuideTab
+                    articles={articles}
+                    canAskQuestion={canAskQuestion}
+                    incrementQuestionCount={incrementQuestionCount}
+                    getQuestionsRemaining={getQuestionsRemaining}
+                    roomId={roomId}
+                    roomTitle={roomTitle}
+                    tier={tier}
+                    pathSlug={pathSlug}
+                    tags={tags}
+                    englishLevel={profile.english_level}
+                    learningGoal={profile.learning_goal}
+                    onRequestSpeakTab={() => setActiveTab('speak')}
+                  />
 
-                <MercyTeacherTab
-                  profile={profile}
-                  yesterdaySummary={yesterdaySummary}
-                  todayTotalMinutes={todayTotalMinutes}
-                  hasHeavyMoods={hasHeavyMoods}
-                  suggestions={suggestions}
-                  showBreathingScript={showBreathingScript}
-                  breathingStep={breathingStep}
-                  showReframe={showReframe}
-                  setShowBreathingScript={setShowBreathingScript}
-                  setBreathingStep={setBreathingStep}
-                  setShowReframe={setShowReframe}
-                  onNavigateSuggestion={handleNavigateSuggestion}
-                />
+                  <MercyTeacherTab
+                    profile={profile}
+                    yesterdaySummary={yesterdaySummary}
+                    todayTotalMinutes={todayTotalMinutes}
+                    hasHeavyMoods={hasHeavyMoods}
+                    suggestions={suggestions}
+                    showBreathingScript={showBreathingScript}
+                    breathingStep={breathingStep}
+                    showReframe={showReframe}
+                    setShowBreathingScript={setShowBreathingScript}
+                    setBreathingStep={setBreathingStep}
+                    setShowReframe={setShowReframe}
+                    onNavigateSuggestion={handleNavigateSuggestion}
+                  />
 
-                <MercyEnglishTab
-                  roomId={roomId}
-                  roomTitle={roomTitle}
-                  contentEn={contentEn}
-                  englishLevel={profile.english_level}
-                  troubleWords={troubleWords}
-                  onVaultReplay={handleVaultReplay}
-                />
+                  <MercyEnglishTab
+                    roomId={roomId}
+                    roomTitle={roomTitle}
+                    contentEn={contentEn}
+                    englishLevel={profile.english_level}
+                    troubleWords={troubleWords}
+                    onVaultReplay={handleVaultReplay}
+                    onRequestGuideTab={() => setActiveTab('guide')}
+                  />
 
-                <MercySpeakTab
-                  roomId={roomId}
-                  contentEn={contentEn}
-                  profile={profile}
-                  troubleWords={troubleWords}
-                  speakPractice={speakPractice}
-                />
+                  <MercySpeakTab
+                    roomId={roomId}
+                    contentEn={contentEn}
+                    profile={profile}
+                    troubleWords={troubleWords}
+                    speakPractice={speakPractice}
+                  />
 
-                <MercySuggestTab
-                  suggestions={suggestions}
-                  onNavigateSuggestion={handleNavigateSuggestion}
-                />
+                  <MercySuggestTab
+                    suggestions={suggestions}
+                    onNavigateSuggestion={handleNavigateSuggestion}
+                  />
+                </div>
               </Tabs>
             </>
           )}
+
+          <div
+            className="absolute inset-x-2 top-0 z-20 h-2 cursor-n-resize touch-none"
+            onPointerDown={handleResizePointerDown('top')}
+          />
+          <div
+            className="absolute inset-x-2 bottom-0 z-20 h-2 cursor-s-resize touch-none"
+            onPointerDown={handleResizePointerDown('bottom')}
+          />
+          <div
+            className="absolute inset-y-2 left-0 z-20 w-2 cursor-w-resize touch-none"
+            onPointerDown={handleResizePointerDown('left')}
+          />
+          <div
+            className="absolute inset-y-2 right-0 z-20 w-2 cursor-e-resize touch-none"
+            onPointerDown={handleResizePointerDown('right')}
+          />
+          <div
+            className="absolute left-0 top-0 z-20 h-4 w-4 cursor-nw-resize touch-none"
+            onPointerDown={handleResizePointerDown('top-left')}
+          />
+          <div
+            className="absolute right-0 top-0 z-20 h-4 w-4 cursor-ne-resize touch-none"
+            onPointerDown={handleResizePointerDown('top-right')}
+          />
+          <div
+            className="absolute bottom-0 left-0 z-20 h-4 w-4 cursor-sw-resize touch-none"
+            onPointerDown={handleResizePointerDown('bottom-left')}
+          />
+          <div
+            className="absolute bottom-0 right-0 z-20 h-4 w-4 cursor-se-resize touch-none"
+            onPointerDown={handleResizePointerDown('bottom-right')}
+          />
         </div>
       )}
     </>
