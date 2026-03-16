@@ -1,54 +1,152 @@
-/**
- * MercyBlade Blue — Stripe Webhook (Supabase Edge Function)
- *
- * PATH: supabase/functions/stripe-webhook/index.ts
- * VERSION: v2026-01-06.10 + PATCH v2026-02-22.04 (manual WebCrypto signature verify; NO Stripe SDK)
- *
- * ⚠️ IMPORTANT (ROOT CAUSE OF 401 IN STRIPE DASHBOARD):
- * Supabase Edge Functions will return 401 BEFORE running this code if JWT verification is enabled.
- *
- * ✅ REQUIRED in supabase/config.toml:
- *   [functions.stripe-webhook]
- *   verify_jwt = false
- *
- * Stripe Webhook — Supabase Edge Function (Deno)
- * JWT DISABLED — Stripe signature ONLY
- *
- * Key behavior:
- * - DB idempotency: if payment_events already has stripe_event_id, we SKIP DB writes.
- * - Email idempotency: we DO send emails on retries IF email_outbox does not show template_key as sent.
- *   (Fixes: provider outage on first attempt; Stripe retry now delivers email)
- *
- * Requires:
- * - email_outbox table exists (best-effort; if missing, email is still attempted, but resend safety is reduced)
- *
- * Keeps:
- * - Signature verification
- * - Subscription updated/deleted logic (update by stripe_subscription_id then fallback upsert)
- * - Local/dev email flow via sendEmail shared module
- *
- * PATCH (2026-02-22.02):
- * - Avoid ALL Stripe API calls inside the webhook (Edge runMicrotasks crash risk).
- * - Rely on checkout metadata + payload fields instead:
- *   create-checkout-session MUST set:
- *     metadata: { tier_id, vip_key, email, supabase_user_id }
- *   and client_reference_id = supabase_user_id
- *
- * PATCH (2026-02-22.04):
- * - REMOVE Stripe SDK import entirely.
- * - Verify Stripe signature manually using WebCrypto HMAC (async).
- *
- * PATCH (2026-02-22.06):
- * - Support MULTIPLE Stripe signing secrets in STRIPE_WEBHOOK_SECRET (comma/newline-separated).
- *   This prevents “400 ERR” signature mismatch when you create/rotate Stripe Event Destinations.
- */
+// FILE: supabase/functions/stripe-webhook/index.ts
 
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2.39.3";
+import {
+  createClient,
+  type SupabaseClient,
+} from "https://esm.sh/@supabase/supabase-js@2.39.3";
+
 import { sendEmail } from "../_shared/sendEmail.ts";
 
-// ---------------------------
-// CORS
-// ---------------------------
+import {
+  deriveEntitlementFromSubscriptions,
+  type EntitlementSnapshot,
+  type SharedSubscriptionRecord,
+  type SharedSubscriptionStatus,
+} from "../../../src/billing/subscriptionRepository.ts";
+
+import { mapStripeSubscription } from "../../../src/billing/stripe/mapStripeSubscription.ts";
+
+/* ============================================================================
+ * Minimal DB typing for Deno compatibility
+ * ========================================================================== */
+
+type Json =
+  | string
+  | number
+  | boolean
+  | null
+  | { [key: string]: Json | undefined }
+  | Json[];
+
+type Database = {
+  public: {
+    Tables: {
+      subscriptions: {
+        Row: {
+          user_id: string;
+          provider: "stripe" | "apple" | "google";
+          provider_customer_id: string | null;
+          provider_subscription_id: string | null;
+          provider_transaction_id: string | null;
+          provider_original_transaction_id: string | null;
+          product_id: string | null;
+          environment: "production" | "sandbox" | null;
+          status: string;
+          current_period_start: string | null;
+          current_period_end: string | null;
+          cancel_at_period_end: boolean | null;
+          canceled_at: string | null;
+          ended_at: string | null;
+          raw_payload: Json | null;
+        };
+        Insert: {
+          user_id: string;
+          provider: "stripe" | "apple" | "google";
+          provider_customer_id?: string | null;
+          provider_subscription_id?: string | null;
+          provider_transaction_id?: string | null;
+          provider_original_transaction_id?: string | null;
+          product_id?: string | null;
+          environment?: "production" | "sandbox" | null;
+          status: string;
+          current_period_start?: string | null;
+          current_period_end?: string | null;
+          cancel_at_period_end?: boolean | null;
+          canceled_at?: string | null;
+          ended_at?: string | null;
+          raw_payload?: Json | null;
+        };
+        Update: Partial<Database["public"]["Tables"]["subscriptions"]["Insert"]>;
+      };
+
+      entitlement_events: {
+        Row: {
+          event_id: string;
+          provider: "stripe" | "apple" | "google";
+          event_type: string;
+          user_id: string | null;
+          payload: Json | null;
+        };
+        Insert: {
+          event_id: string;
+          provider: "stripe" | "apple" | "google";
+          event_type: string;
+          user_id?: string | null;
+          payload?: Json | null;
+        };
+        Update: Partial<
+          Database["public"]["Tables"]["entitlement_events"]["Insert"]
+        >;
+      };
+
+      email_outbox: {
+        Row: {
+          id: string;
+          correlation_id: string | null;
+          template_key: string | null;
+          to_email: string | null;
+          status: string | null;
+        };
+        Insert: {
+          app_key?: string | null;
+          correlation_id?: string | null;
+          template_key?: string | null;
+          to_email?: string | null;
+          status?: string | null;
+          provider?: string | null;
+          variables?: Record<string, string> | null;
+          last_error?: string | null;
+        };
+        Update: {
+          status?: string | null;
+          provider?: string | null;
+          last_error?: string | null;
+          updated_at?: string | null;
+        };
+      };
+
+      profiles: {
+        Row: {
+          id: string;
+          email: string | null;
+          premium_status: string | null;
+          premium_expires_at: string | null;
+          premium_source: string | null;
+        };
+        Insert: {
+          id: string;
+          email?: string | null;
+          premium_status?: string | null;
+          premium_expires_at?: string | null;
+          premium_source?: string | null;
+        };
+        Update: {
+          email?: string | null;
+          premium_status?: string | null;
+          premium_expires_at?: string | null;
+          premium_source?: string | null;
+        };
+      };
+    };
+  };
+};
+
+type DBClient = SupabaseClient<Database>;
+
+/* ============================================================================
+ * Config / constants
+ * ========================================================================== */
+
 const corsHeaders: Record<string, string> = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers":
@@ -56,111 +154,299 @@ const corsHeaders: Record<string, string> = {
   "Access-Control-Allow-Methods": "POST, OPTIONS",
 };
 
-const ok200 = () => new Response("ok", { status: 200, headers: corsHeaders });
+const OUTBOX_SUCCESS_STATUSES = ["sent", "delivered"] as const;
+const STRIPE_CHECKOUT_BOOTSTRAP_STATUS = "incomplete";
+
+/* ============================================================================
+ * Response helpers
+ * ========================================================================== */
+
+const ok200 = () =>
+  new Response("ok", {
+    status: 200,
+    headers: corsHeaders,
+  });
 
 function json(payload: unknown, status = 200) {
   return new Response(JSON.stringify(payload), {
     status,
-    headers: { ...corsHeaders, "Content-Type": "application/json" },
+    headers: {
+      ...corsHeaders,
+      "Content-Type": "application/json",
+    },
   });
 }
 
-const env = (k: string) => (Deno.env.get(k) ?? "").trim();
-// ⚠️ DO NOT trim secrets (HMAC keys must be exact)
-const envRaw = (k: string) => Deno.env.get(k) ?? "";
+/* ============================================================================
+ * Environment / primitive helpers
+ * ========================================================================== */
 
-const norm = (x: unknown) =>
-  String(x ?? "").toLowerCase().replace(/\s+/g, " ").trim();
+function env(key: string): string {
+  return (Deno.env.get(key) ?? "").trim();
+}
 
-function isUuid(x: any): boolean {
+function envRaw(key: string): string {
+  return Deno.env.get(key) ?? "";
+}
+
+function isoNow(): string {
+  return new Date().toISOString();
+}
+
+function isUuid(value: unknown): value is string {
   return (
-    typeof x === "string" &&
+    typeof value === "string" &&
     /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(
-      x,
+      value,
     )
   );
 }
 
-// ---------------------------
-// Stripe signature verify (manual, async WebCrypto)
-// ---------------------------
+function asNonEmptyStringOrNull(value: unknown): string | null {
+  if (typeof value !== "string") return null;
+  const trimmed = value.trim();
+  return trimmed.length > 0 ? trimmed : null;
+}
+
+function asLowerNonEmptyStringOrNull(value: unknown): string | null {
+  const v = asNonEmptyStringOrNull(value);
+  return v ? v.toLowerCase() : null;
+}
+
+function toIsoFromUnix(value: unknown): string | null {
+  if (typeof value !== "number" || !Number.isFinite(value) || value <= 0) {
+    return null;
+  }
+
+  return new Date(value * 1000).toISOString();
+}
+
+/* ============================================================================
+ * Types
+ * ========================================================================== */
+
+type SupportedEventType =
+  | "checkout.session.completed"
+  | "invoice.paid"
+  | "invoice.payment_failed"
+  | "customer.subscription.updated"
+  | "customer.subscription.deleted";
+
+type StripeObjectMetadata = {
+  supabase_user_id?: string | null;
+  user_id?: string | null;
+  tier_id?: string | null;
+  vip_key?: string | null;
+  email?: string | null;
+};
+
+type StripeWebhookEvent<TObject = unknown> = {
+  id: string;
+  type: string;
+  created?: number;
+  livemode?: boolean;
+  data: {
+    object: TObject;
+  };
+};
+
+type CheckoutSessionLike = {
+  id?: string | null;
+  mode?: string | null;
+  status?: string | null;
+  payment_status?: string | null;
+  amount_total?: number | null;
+  currency?: string | null;
+  subscription?: string | null;
+  customer?: string | null;
+  customer_email?: string | null;
+  customer_details?: {
+    email?: string | null;
+  } | null;
+  client_reference_id?: string | null;
+  metadata?: StripeObjectMetadata | null;
+};
+
+type InvoiceLineLike = {
+  period?: {
+    start?: number | null;
+    end?: number | null;
+  } | null;
+  price?: {
+    id?: string | null;
+    product?: string | null;
+  } | null;
+};
+
+type InvoiceLike = {
+  id?: string | null;
+  subscription?: string | null;
+  customer?: string | null;
+  customer_email?: string | null;
+  customer_details?: {
+    email?: string | null;
+  } | null;
+  amount_paid?: number | null;
+  amount_due?: number | null;
+  currency?: string | null;
+  lines?: {
+    data?: InvoiceLineLike[] | null;
+  } | null;
+};
+
+type SubscriptionItemLike = {
+  price?: {
+    id?: string | null;
+    product?: string | null;
+  } | null;
+};
+
+type SubscriptionLike = {
+  id?: string | null;
+  customer?: string | null;
+  status?: string | null;
+  current_period_start?: number | null;
+  current_period_end?: number | null;
+  cancel_at_period_end?: boolean | null;
+  canceled_at?: number | null;
+  ended_at?: number | null;
+  metadata?: StripeObjectMetadata | null;
+  items?: {
+    data?: SubscriptionItemLike[] | null;
+  } | null;
+};
+
+type StripeFreshness = {
+  object_time_ms: number | null;
+  event_created: number | null;
+  event_id: string | null;
+};
+
+type ExistingSubscriptionRow = Pick<
+  SharedSubscriptionRecord,
+  | "user_id"
+  | "provider_customer_id"
+  | "provider_subscription_id"
+  | "provider_transaction_id"
+  | "provider_original_transaction_id"
+  | "product_id"
+  | "environment"
+  | "status"
+  | "current_period_start"
+  | "current_period_end"
+  | "cancel_at_period_end"
+  | "canceled_at"
+  | "ended_at"
+> & {
+  raw_payload?: unknown;
+};
+
+type EmailRoute = {
+  originalTo: string;
+  forcedTo: string | null;
+  finalTo: string;
+};
+
+type UpsertSharedSubscriptionMonotonicResult = {
+  stateChanged: boolean;
+  shouldRecomputeBeforeFinalMark: boolean;
+};
+
+/* ============================================================================
+ * Stripe event / signature helpers
+ * ========================================================================== */
+
+function isSupportedEventType(value: string): value is SupportedEventType {
+  return (
+    value === "checkout.session.completed" ||
+    value === "invoice.paid" ||
+    value === "invoice.payment_failed" ||
+    value === "customer.subscription.updated" ||
+    value === "customer.subscription.deleted"
+  );
+}
 
 function timingSafeEqual(a: Uint8Array, b: Uint8Array): boolean {
   if (a.length !== b.length) return false;
+
   let out = 0;
   for (let i = 0; i < a.length; i++) out |= a[i] ^ b[i];
   return out === 0;
 }
 
 function hexToBytes(hex: string): Uint8Array {
-  const s = String(hex ?? "").trim();
-  if (!/^[0-9a-f]+$/i.test(s) || s.length % 2 !== 0) return new Uint8Array();
-  const out = new Uint8Array(s.length / 2);
-  for (let i = 0; i < out.length; i++) {
-    out[i] = parseInt(s.slice(i * 2, i * 2 + 2), 16);
+  const value = String(hex ?? "").trim();
+
+  if (!/^[0-9a-f]+$/i.test(value) || value.length % 2 !== 0) {
+    return new Uint8Array();
   }
+
+  const out = new Uint8Array(value.length / 2);
+  for (let i = 0; i < out.length; i++) {
+    out[i] = parseInt(value.slice(i * 2, i * 2 + 2), 16);
+  }
+
   return out;
 }
 
-function parseStripeSigHeader(sig: string): { t: string | null; v1s: string[] } {
-  // Example: "t=123,v1=abc,v1=def,v0=old"
-  const parts = String(sig || "").split(",");
-  let t: string | null = null;
+function parseStripeSigHeader(
+  signatureHeader: string,
+): { t: string | null; v1s: string[] } {
+  const parts = String(signatureHeader || "").split(",");
+  let timestamp: string | null = null;
   const v1s: string[] = [];
 
-  for (const p of parts) {
-    const [k, ...rest] = p.split("=");
-    const key = (k || "").trim();
-    const val = rest.join("=").trim();
-    if (!val) continue;
+  for (const part of parts) {
+    const [rawKey, ...rest] = part.split("=");
+    const key = (rawKey || "").trim();
+    const value = rest.join("=").trim();
+    if (!value) continue;
 
-    if (key === "t") t = val;
-    if (key === "v1") v1s.push(val);
+    if (key === "t") timestamp = value;
+    if (key === "v1") v1s.push(value);
   }
 
-  return { t, v1s };
-}
-
-// NOTE: unused; kept harmlessly for future tooling/debug
-function _base64ToBytes(b64: string): Uint8Array {
-  // Deno supports atob()
-  const bin = atob(b64);
-  const out = new Uint8Array(bin.length);
-  for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
-  return out;
+  return { t: timestamp, v1s };
 }
 
 function webhookSecretToKeyBytes(webhookSecret: string): Uint8Array {
-  /**
-   * ✅ FIX (2026-02-22.05):
-   * Stripe signing secret (whsec_...) is an OPAQUE string.
-   * Do NOT base64-decode it.
-   * Use UTF-8 bytes of the ENTIRE secret exactly as stored.
-   */
-  const s = String(webhookSecret || "");
-  return new TextEncoder().encode(s);
+  return new TextEncoder().encode(String(webhookSecret || ""));
 }
 
 async function computeHmacSha256(
   keyBytes: Uint8Array,
   payload: Uint8Array,
 ): Promise<Uint8Array> {
+  const algorithm: HmacImportParams = {
+    name: "HMAC",
+    hash: "SHA-256",
+  };
+
   const key = await crypto.subtle.importKey(
     "raw",
-    keyBytes,
-    { name: "HMAC", hash: "SHA-256" },
+    keyBytes as BufferSource,
+    algorithm,
     false,
     ["sign"],
   );
-  const sig = await crypto.subtle.sign("HMAC", key, payload);
+
+  const sig = await crypto.subtle.sign(
+    { name: "HMAC" },
+    key,
+    payload as BufferSource,
+  );
+
   return new Uint8Array(sig);
 }
 
 function getWebhookToleranceSeconds(): number {
-  // Stripe guidance is ~300s. Allow override.
   const raw = env("STRIPE_WEBHOOK_TOLERANCE_SECONDS");
-  const n = raw ? Number(raw) : NaN;
-  if (Number.isFinite(n) && n > 0) return Math.floor(n);
+  const parsed = raw ? Number(raw) : NaN;
+
+  if (Number.isFinite(parsed) && parsed > 0) {
+    return Math.floor(parsed);
+  }
+
   return 300;
 }
 
@@ -176,314 +462,86 @@ async function verifyStripeSignatureOrThrow(opts: {
     throw new Error("Invalid Stripe-Signature header (missing t or v1)");
   }
 
-  // Replay protection: reject if timestamp too old/new.
   const tolerance = getWebhookToleranceSeconds();
   const ts = Number(t);
+
   if (!Number.isFinite(ts) || ts <= 0) {
     throw new Error("Invalid Stripe-Signature header (bad t)");
   }
+
   const now = Math.floor(Date.now() / 1000);
   if (Math.abs(now - ts) > tolerance) {
     throw new Error(`Stripe timestamp outside tolerance (${tolerance}s)`);
   }
 
-  // Signed payload is: `${t}.${rawBody}`
-  const tDot = new TextEncoder().encode(`${t}.`);
-  const signedPayload = new Uint8Array(tDot.length + rawBodyBytes.length);
-  signedPayload.set(tDot, 0);
-  signedPayload.set(rawBodyBytes, tDot.length);
+  const prefix = new TextEncoder().encode(`${t}.`);
+  const signedPayload = new Uint8Array(prefix.length + rawBodyBytes.length);
+  signedPayload.set(prefix, 0);
+  signedPayload.set(rawBodyBytes, prefix.length);
 
   const keyBytes = webhookSecretToKeyBytes(webhookSecret);
   const expected = await computeHmacSha256(keyBytes, signedPayload);
 
-  // Stripe may send multiple v1 signatures; accept any match.
   for (const v1 of v1s) {
-    const got = hexToBytes(v1);
-    if (!got.length) continue;
-    if (timingSafeEqual(expected, got)) return;
+    const actual = hexToBytes(v1);
+    if (!actual.length) continue;
+    if (timingSafeEqual(expected, actual)) return;
   }
 
   throw new Error("Stripe signature mismatch");
 }
 
-// NEW: allow multiple secrets so new/rotated Stripe Event Destinations keep working.
 function parseWebhookSecrets(raw: string): string[] {
-  // Allow comma/newline separation. We only trim AROUND each token (not inside).
   return String(raw || "")
     .split(/[\n,]+/g)
-    .map((s) => s.trim())
+    .map((part) => part.trim())
     .filter(Boolean);
 }
 
-// ---------------------------
-// Email helpers (best-effort)
-// ---------------------------
+/* ============================================================================
+ * Email helpers
+ * ========================================================================== */
+
 function formatMoney(amountMinor: number, currency?: string | null): string {
-  const cur = typeof currency === "string" ? currency.toUpperCase() : "";
+  const code = typeof currency === "string" ? currency.toUpperCase() : "";
   const minor = Number.isFinite(amountMinor) ? amountMinor : 0;
   const major = minor / 100;
-  return cur ? `${major.toFixed(2)} ${cur}` : `${major.toFixed(2)}`;
+
+  return code ? `${major.toFixed(2)} ${code}` : `${major.toFixed(2)}`;
 }
 
-// Do NOT call Stripe API in webhook. Only use metadata + session fields.
-async function resolveCustomerEmail(session: any): Promise<string | null> {
-  // ✅ FIX: prefer Stripe-provided customer email first (more trustworthy than metadata)
-  const direct =
-    session?.customer_details?.email ?? session?.customer_email ?? null;
-  if (typeof direct === "string" && direct.trim()) return direct.trim();
-
-  // metadata is fallback only (can be wrong / stale / miswired)
-  const metaEmail = session?.metadata?.email ?? null;
-  if (typeof metaEmail === "string" && metaEmail.trim()) return metaEmail.trim();
-
-  return null;
-}
-
-async function resolveProfileEmail(
-  supabase: ReturnType<typeof createClient>,
-  userId: string,
-): Promise<string | null> {
-  try {
-    const { data, error } = await supabase
-      .from("profiles")
-      .select("email")
-      .eq("id", userId)
-      .maybeSingle();
-    if (error) return null;
-    const e = (data as any)?.email;
-    if (typeof e === "string" && e.trim()) return e.trim();
-    return null;
-  } catch {
-    return null;
-  }
-}
-
-async function resolveInvoiceEmail(params: {
-  supabase: ReturnType<typeof createClient>;
-  invoice: any;
-  userId?: string | null;
-}): Promise<string | null> {
-  const inv = params.invoice;
-
-  // Stripe invoice often has customer_email (may be null depending on settings/api version)
-  const invEmail = inv?.customer_email ?? inv?.customer_details?.email ?? null;
-  if (typeof invEmail === "string" && invEmail.trim()) return invEmail.trim();
-
-  if (params.userId && isUuid(params.userId)) {
-    const pe = await resolveProfileEmail(params.supabase, params.userId);
-    if (pe) return pe;
-  }
-
-  return null;
-}
-
-/**
- * ✅ Email routing for audit integrity
- * - sendEmail.ts may override recipient using FORCE_EMAIL_TO
- * - webhook must compute finalTo and store original/forced in outbox variables
- */
-function resolveEmailRoute(originalTo: string | null): {
-  originalTo: string;
-  forcedTo: string | null;
-  finalTo: string;
-} | null {
-  const o = typeof originalTo === "string" ? originalTo.trim() : "";
-  if (!o) return null;
+function resolveEmailRoute(originalTo: string | null): EmailRoute | null {
+  const normalizedOriginal = asNonEmptyStringOrNull(originalTo);
+  if (!normalizedOriginal) return null;
 
   const forced = env("FORCE_EMAIL_TO");
   const forcedTo = forced ? forced : null;
 
   return {
-    originalTo: o,
+    originalTo: normalizedOriginal,
     forcedTo,
-    finalTo: forcedTo ?? o,
+    finalTo: forcedTo ?? normalizedOriginal,
   };
 }
 
-// ---------------------------
-// Tier helpers
-// ---------------------------
-type VipKey = "vip1" | "vip3" | "vip9";
-type ProductKey = "mercy_blade";
-
-function priceIdToVipKey(priceId?: string | null): VipKey | null {
-  if (!priceId) return null;
-  if (priceId === env("STRIPE_PRICE_VIP1")) return "vip1";
-  if (priceId === env("STRIPE_PRICE_VIP3")) return "vip3";
-  if (priceId === env("STRIPE_PRICE_VIP9")) return "vip9";
-  return null;
-}
-
-function normalizeMetaVip(x?: string | null): VipKey | null {
-  const s = norm(x);
-  if (s === "vip1") return "vip1";
-  if (s === "vip3") return "vip3";
-  if (s === "vip9") return "vip9";
-  return null;
-}
-
-// Prefer select("*") and infer tier safely.
-async function resolveTierId(
-  supabase: ReturnType<typeof createClient>,
-  vip: VipKey,
-): Promise<string | null> {
-  const { data, error } = await supabase.from("subscription_tiers").select("*");
-  if (error) throw error;
-
-  for (const r of data ?? []) {
-    const s = norm(
-      (r as any).vip_key ??
-        (r as any).code ??
-        (r as any).slug ??
-        (r as any).name ??
-        (r as any).title ??
-        (r as any).name_vi ??
-        (r as any).id,
-    );
-
-    if (s.includes(vip)) return String((r as any).id);
-
-    const pm = (r as any).price_monthly;
-    const n =
-      typeof pm === "number" ? pm : typeof pm === "string" ? Number(pm) : NaN;
-    if (Number.isFinite(n)) {
-      if (vip === "vip1" && n === 5) return String((r as any).id);
-      if (vip === "vip3" && n === 12) return String((r as any).id);
-      if (vip === "vip9" && n === 25) return String((r as any).id);
-    }
-
-    const d = (r as any).display_order;
-    const di =
-      typeof d === "number" ? d : typeof d === "string" ? Number(d) : NaN;
-    if (Number.isFinite(di)) {
-      if (vip === "vip1" && di === 1) return String((r as any).id);
-      if (vip === "vip3" && di === 3) return String((r as any).id);
-      if (vip === "vip9" && di === 9) return String((r as any).id);
-    }
-  }
-
-  return null;
-}
-
-async function tierExists(
-  supabase: ReturnType<typeof createClient>,
-  tierId: string,
-): Promise<boolean> {
-  try {
-    const { data, error } = await supabase
-      .from("subscription_tiers")
-      .select("id")
-      .eq("id", tierId)
-      .maybeSingle();
-    if (error) return false;
-    return !!data?.id;
-  } catch {
-    return false;
-  }
-}
-
-async function resolveTierFromCheckoutContext(params: {
-  supabase: ReturnType<typeof createClient>;
-  vipKeyFromPrice: VipKey | null;
-  metaVipKey: VipKey | null;
-  metaTierId: string | null;
-}): Promise<{ vipKey: VipKey; tierId: string } | null> {
-  const { supabase, vipKeyFromPrice, metaVipKey, metaTierId } = params;
-
-  if (metaTierId && isUuid(metaTierId)) {
-    const ok = await tierExists(supabase, metaTierId);
-    if (ok) {
-      const v = metaVipKey ?? vipKeyFromPrice;
-      if (v) return { vipKey: v, tierId: metaTierId };
-      return { vipKey: "vip1", tierId: metaTierId }; // label-only fallback
-    }
-  }
-
-  const vip = metaVipKey ?? vipKeyFromPrice;
-  if (!vip) return null;
-
-  const tierId = await resolveTierId(supabase, vip);
-  if (!tierId) return null;
-
-  return { vipKey: vip, tierId };
-}
-
-// ---------------------------
-// Ledger helpers
-// ---------------------------
-async function isEventProcessed(
-  supabase: ReturnType<typeof createClient>,
-  stripeEventId: string,
-): Promise<boolean> {
-  const { data, error } = await supabase
-    .from("payment_events")
-    .select("stripe_event_id")
-    .eq("stripe_event_id", stripeEventId)
-    .maybeSingle();
-
-  if (error) throw error;
-  return !!data?.stripe_event_id;
-}
-
-async function writeLedger({
-  supabase,
-  event,
-  type,
-  userId,
-  tierId,
-  stripeCustomerId,
-  stripeSubscriptionId,
-  stripeSessionId,
-}: {
-  supabase: ReturnType<typeof createClient>;
-  event: any;
-  type: string;
-  userId?: string | null;
-  tierId?: string | null;
-  stripeCustomerId?: string | null;
-  stripeSubscriptionId?: string | null;
-  stripeSessionId?: string | null;
+function buildCommonEmailAuditVariables(params: {
+  originalTo: string;
+  forcedTo: string | null;
+  correlationId: string;
+  userId: string;
 }) {
-  if (!event?.id) throw new Error("Stripe event missing id");
-
-  const { error } = await supabase.from("payment_events").upsert(
-    {
-      provider: "stripe",
-      event_type: type,
-      stripe_event_id: event.id,
-      stripe_customer_id: stripeCustomerId ?? null,
-      stripe_subscription_id: stripeSubscriptionId ?? null,
-      stripe_session_id: stripeSessionId ?? null,
-      external_reference: stripeSessionId ?? stripeSubscriptionId ?? null,
-      user_id: userId ?? null,
-      tier_id: tierId ?? null,
-      payload: {
-        created: event.created,
-        livemode: event.livemode,
-        type: event.type,
-      },
-    },
-    { onConflict: "stripe_event_id" },
-  );
-
-  if (error) throw error;
+  return {
+    user_email: params.originalTo,
+    original_to: params.originalTo,
+    forced_to: params.forcedTo ?? "",
+    correlation_id: params.correlationId,
+    email: params.originalTo,
+    supabase_user_id: params.userId,
+  };
 }
-
-// ---------------------------
-// Email outbox idempotency (best-effort)
-// ---------------------------
-
-/**
- * Patch (email audit integrity):
- * - If sendEmail.ts can override recipient (FORCE_EMAIL_TO), then the webhook must:
- *   - decide `finalTo` upstream
- *   - store `original_to`, `forced_to`, `correlation_id`, `user_email` in variables
- * - Also: treat BOTH "sent" and "delivered" as terminal success states.
- */
-const OUTBOX_SUCCESS_STATUSES = ["sent", "delivered"] as const;
 
 async function outboxAlreadySent(
-  supabase: ReturnType<typeof createClient>,
+  supabase: DBClient,
   correlationId: string,
   templateKey: string,
   toEmail: string,
@@ -498,24 +556,15 @@ async function outboxAlreadySent(
       .in("status", [...OUTBOX_SUCCESS_STATUSES])
       .limit(1);
 
-    if (error) {
-      console.warn(
-        "[stripe-webhook] email_outbox read failed (ignored):",
-        error.message,
-      );
-      return false;
-    }
+    if (error) return false;
     return (data?.length ?? 0) > 0;
-  } catch (e) {
-    console.warn("[stripe-webhook] email_outbox read threw (ignored):", e);
+  } catch {
     return false;
   }
 }
 
-// ✅ NEW: force an outbox row to exist even if sendEmail implementation doesn’t log.
-// This fixes: “email_outbox empty” while payments succeed.
 async function outboxUpsertQueued(params: {
-  supabase: ReturnType<typeof createClient>;
+  supabase: DBClient;
   correlationId: string;
   to: string;
   templateKey: string;
@@ -524,8 +573,7 @@ async function outboxUpsertQueued(params: {
   try {
     const provider = env("EMAIL_PROVIDER") || null;
 
-    // Best-effort: if schema differs, this MUST NOT break the webhook.
-    const { error } = await params.supabase.from("email_outbox").upsert(
+    await params.supabase.from("email_outbox").upsert(
       {
         app_key: "mercy_blade",
         correlation_id: params.correlationId,
@@ -536,23 +584,15 @@ async function outboxUpsertQueued(params: {
         variables: params.variables,
         last_error: null,
       },
-      // If you don’t have this constraint, Supabase will error; we swallow it below.
       { onConflict: "correlation_id,template_key,to_email" },
     );
-
-    if (error) {
-      console.warn(
-        "[stripe-webhook] email_outbox upsert queued failed (ignored):",
-        error.message,
-      );
-    }
-  } catch (e) {
-    console.warn("[stripe-webhook] email_outbox upsert queued threw (ignored):", e);
+  } catch {
+    // best-effort
   }
 }
 
 async function outboxMark(params: {
-  supabase: ReturnType<typeof createClient>;
+  supabase: DBClient;
   correlationId: string;
   to: string;
   templateKey: string;
@@ -562,51 +602,38 @@ async function outboxMark(params: {
   try {
     const provider = env("EMAIL_PROVIDER") || null;
 
-    const { error } = await params.supabase
+    await params.supabase
       .from("email_outbox")
       .update({
         status: params.status,
         provider,
         last_error: params.lastError ?? null,
-        updated_at: new Date().toISOString(),
+        updated_at: isoNow(),
       })
       .eq("correlation_id", params.correlationId)
       .eq("template_key", params.templateKey)
       .eq("to_email", params.to);
-
-    if (error) {
-      console.warn(
-        "[stripe-webhook] email_outbox mark failed (ignored):",
-        error.message,
-      );
-    }
-  } catch (e) {
-    console.warn("[stripe-webhook] email_outbox mark threw (ignored):", e);
+  } catch {
+    // best-effort
   }
 }
 
 async function sendEmailOnce(params: {
-  supabase: ReturnType<typeof createClient>;
+  supabase: DBClient;
   correlationId: string;
   to: string;
   templateKey: string;
   variables: Record<string, string>;
 }) {
-  const already = await outboxAlreadySent(
+  const alreadySent = await outboxAlreadySent(
     params.supabase,
     params.correlationId,
     params.templateKey,
     params.to,
   );
-  if (already) {
-    console.log(
-      "[stripe-webhook] email already sent; skipping:",
-      params.templateKey,
-    );
-    return;
-  }
 
-  // ✅ Ensure an outbox row exists even if provider/sendEmail doesn’t write it.
+  if (alreadySent) return;
+
   await outboxUpsertQueued({
     supabase: params.supabase,
     correlationId: params.correlationId,
@@ -624,7 +651,6 @@ async function sendEmailOnce(params: {
       correlationId: params.correlationId,
     });
 
-    // Mark as sent (best-effort)
     await outboxMark({
       supabase: params.supabase,
       correlationId: params.correlationId,
@@ -633,46 +659,643 @@ async function sendEmailOnce(params: {
       status: "sent",
       lastError: null,
     });
-  } catch (e: any) {
-    // Mark as failed (best-effort) then rethrow so webhook logs show it.
+  } catch (error: unknown) {
     await outboxMark({
       supabase: params.supabase,
       correlationId: params.correlationId,
       to: params.to,
       templateKey: params.templateKey,
       status: "failed",
-      lastError: e?.message ? String(e.message) : String(e),
+      lastError:
+        error instanceof Error ? error.message : String(error ?? "unknown error"),
     });
-    throw e;
+    throw error;
   }
 }
 
-// ---------------------------
-// Server
-// ---------------------------
-Deno.serve(async (req) => {
+async function resolveProfileEmail(
+  supabase: DBClient,
+  userId: string,
+): Promise<string | null> {
   try {
-    console.log("[stripe-webhook] hit", {
-      method: req.method,
-      has_sig: !!req.headers.get("stripe-signature"),
-      ua: req.headers.get("user-agent") ?? "",
-    });
+    const { data } = await supabase
+      .from("profiles")
+      .select("email")
+      .eq("id", userId)
+      .maybeSingle();
+
+    return asNonEmptyStringOrNull(
+      (data as { email?: string | null } | null)?.email,
+    );
   } catch {
-    // ignore
+    return null;
+  }
+}
+
+async function resolveCheckoutCustomerEmail(
+  session: CheckoutSessionLike,
+): Promise<string | null> {
+  return (
+    asNonEmptyStringOrNull(session?.customer_details?.email) ??
+    asNonEmptyStringOrNull(session?.customer_email) ??
+    asNonEmptyStringOrNull(session?.metadata?.email) ??
+    null
+  );
+}
+
+async function resolveInvoiceCustomerEmail(params: {
+  supabase: DBClient;
+  invoice: InvoiceLike;
+  userId: string;
+}): Promise<string | null> {
+  const direct =
+    asNonEmptyStringOrNull(params.invoice?.customer_email) ??
+    asNonEmptyStringOrNull(params.invoice?.customer_details?.email);
+
+  if (direct) return direct;
+  return await resolveProfileEmail(params.supabase, params.userId);
+}
+
+/* ============================================================================
+ * Stripe payload extractors
+ * ========================================================================== */
+
+function stripeEnvironmentFromEvent(
+  event: StripeWebhookEvent,
+): "production" | "sandbox" {
+  return event?.livemode ? "production" : "sandbox";
+}
+
+function getInvoicePeriodRange(invoice: InvoiceLike): {
+  currentPeriodStart: string | null;
+  currentPeriodEnd: string | null;
+} {
+  const lines = invoice?.lines?.data ?? [];
+  let start: string | null = null;
+  let end: string | null = null;
+
+  for (const line of lines) {
+    const lineStart = toIsoFromUnix(line?.period?.start);
+    const lineEnd = toIsoFromUnix(line?.period?.end);
+
+    if (
+      lineStart &&
+      (!start || new Date(lineStart).getTime() < new Date(start).getTime())
+    ) {
+      start = lineStart;
+    }
+
+    if (
+      lineEnd &&
+      (!end || new Date(lineEnd).getTime() > new Date(end).getTime())
+    ) {
+      end = lineEnd;
+    }
   }
 
+  return {
+    currentPeriodStart: start,
+    currentPeriodEnd: end,
+  };
+}
+
+function getInvoiceProductId(invoice: InvoiceLike): string | null {
+  const firstLine = invoice?.lines?.data?.[0];
+  return asNonEmptyStringOrNull(firstLine?.price?.product) ?? null;
+}
+
+function getSubscriptionProductId(subscription: SubscriptionLike): string | null {
+  const firstItem = subscription?.items?.data?.[0];
+  return asNonEmptyStringOrNull(firstItem?.price?.product) ?? null;
+}
+
+/* ============================================================================
+ * Freshness helpers
+ * ========================================================================== */
+
+function asRecordOrNull(value: unknown): Record<string, unknown> | null {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return null;
+  return value as Record<string, unknown>;
+}
+
+function isoToMillis(value: string | null | undefined): number | null {
+  if (!value) return null;
+  const time = new Date(value).getTime();
+  return Number.isFinite(time) ? time : null;
+}
+
+function maxNullableNumber(
+  values: Array<number | null | undefined>,
+): number | null {
+  let out: number | null = null;
+
+  for (const value of values) {
+    if (typeof value !== "number" || !Number.isFinite(value)) continue;
+    if (out === null || value > out) out = value;
+  }
+
+  return out;
+}
+
+function deriveObjectTimeMs(rawPayload: unknown): number | null {
+  const record = asRecordOrNull(rawPayload);
+  if (!record) return null;
+
+  const currentPeriodStart = toIsoFromUnix(record.current_period_start);
+  const currentPeriodEnd = toIsoFromUnix(record.current_period_end);
+  const canceledAt = toIsoFromUnix(record.canceled_at);
+  const endedAt = toIsoFromUnix(record.ended_at);
+
+  if (currentPeriodStart || currentPeriodEnd || canceledAt || endedAt) {
+    return maxNullableNumber([
+      isoToMillis(currentPeriodStart),
+      isoToMillis(currentPeriodEnd),
+      isoToMillis(canceledAt),
+      isoToMillis(endedAt),
+    ]);
+  }
+
+  const lines = asRecordOrNull(record.lines);
+  const lineItems = Array.isArray(lines?.data) ? lines?.data : [];
+
+  if (lineItems.length > 0) {
+    let invoiceObjectTime: number | null = null;
+
+    for (const line of lineItems) {
+      const lineRecord = asRecordOrNull(line);
+      const period = asRecordOrNull(lineRecord?.period);
+      const startIso = toIsoFromUnix(period?.start);
+      const endIso = toIsoFromUnix(period?.end);
+
+      invoiceObjectTime = maxNullableNumber([
+        invoiceObjectTime,
+        isoToMillis(startIso),
+        isoToMillis(endIso),
+      ]);
+    }
+
+    if (invoiceObjectTime !== null) return invoiceObjectTime;
+  }
+
+  return null;
+}
+
+function deriveIncomingFreshness(
+  rawPayload: unknown,
+  event: StripeWebhookEvent,
+): StripeFreshness {
+  return {
+    object_time_ms: deriveObjectTimeMs(rawPayload),
+    event_created:
+      typeof event.created === "number" && Number.isFinite(event.created)
+        ? event.created
+        : null,
+    event_id: asNonEmptyStringOrNull(event.id),
+  };
+}
+
+function derivePersistedFreshness(rawPayload: unknown): StripeFreshness {
+  const record = asRecordOrNull(rawPayload);
+  const explicit = asRecordOrNull(record?.__stripe_freshness);
+
+  const explicitObjectTime =
+    typeof explicit?.object_time_ms === "number" &&
+    Number.isFinite(explicit.object_time_ms)
+      ? explicit.object_time_ms
+      : null;
+
+  const explicitEventCreated =
+    typeof explicit?.event_created === "number" &&
+    Number.isFinite(explicit.event_created)
+      ? explicit.event_created
+      : null;
+
+  const explicitEventId = asNonEmptyStringOrNull(explicit?.event_id);
+
+  if (
+    explicitObjectTime !== null ||
+    explicitEventCreated !== null ||
+    explicitEventId !== null
+  ) {
+    return {
+      object_time_ms: explicitObjectTime,
+      event_created: explicitEventCreated,
+      event_id: explicitEventId,
+    };
+  }
+
+  return {
+    object_time_ms: deriveObjectTimeMs(rawPayload),
+    event_created: null,
+    event_id: null,
+  };
+}
+
+function compareStripeFreshness(
+  left: StripeFreshness,
+  right: StripeFreshness,
+): number {
+  const leftObjectTime = left.object_time_ms ?? -1;
+  const rightObjectTime = right.object_time_ms ?? -1;
+
+  if (leftObjectTime !== rightObjectTime) {
+    return leftObjectTime > rightObjectTime ? 1 : -1;
+  }
+
+  const leftEventCreated = left.event_created ?? -1;
+  const rightEventCreated = right.event_created ?? -1;
+
+  if (leftEventCreated !== rightEventCreated) {
+    return leftEventCreated > rightEventCreated ? 1 : -1;
+  }
+
+  return 0;
+}
+
+function attachStripeFreshnessToRawPayload(
+  rawPayload: unknown,
+  event: StripeWebhookEvent,
+): unknown {
+  const freshness = deriveIncomingFreshness(rawPayload, event);
+  const record = asRecordOrNull(rawPayload);
+
+  if (record) {
+    return {
+      ...record,
+      __stripe_freshness: freshness,
+    };
+  }
+
+  return {
+    __stripe_payload: rawPayload,
+    __stripe_freshness: freshness,
+  };
+}
+
+/* ============================================================================
+ * Subscription persistence helpers
+ * ========================================================================== */
+
+function doesExistingSubscriptionDifferFromWrite(
+  existing: ExistingSubscriptionRow,
+  write: {
+    user_id?: string | null;
+    provider_customer_id?: string | null;
+    provider_transaction_id?: string | null;
+    provider_original_transaction_id?: string | null;
+    product_id?: string | null;
+    environment?: "production" | "sandbox";
+    status?: SharedSubscriptionStatus | string | null;
+    current_period_start?: string | null;
+    current_period_end?: string | null;
+    cancel_at_period_end?: boolean | null;
+    canceled_at?: string | null;
+    ended_at?: string | null;
+  },
+): boolean {
+  return (
+    (existing.user_id ?? null) !== (write.user_id ?? null) ||
+    (existing.provider_customer_id ?? null) !==
+      (write.provider_customer_id ?? null) ||
+    (existing.provider_transaction_id ?? null) !==
+      (write.provider_transaction_id ?? null) ||
+    (existing.provider_original_transaction_id ?? null) !==
+      (write.provider_original_transaction_id ?? null) ||
+    (existing.product_id ?? null) !== (write.product_id ?? null) ||
+    (existing.environment ?? null) !== (write.environment ?? null) ||
+    (existing.status ?? null) !== (write.status ?? null) ||
+    (existing.current_period_start ?? null) !==
+      (write.current_period_start ?? null) ||
+    (existing.current_period_end ?? null) !==
+      (write.current_period_end ?? null) ||
+    (existing.cancel_at_period_end ?? null) !==
+      (write.cancel_at_period_end ?? null) ||
+    (existing.canceled_at ?? null) !== (write.canceled_at ?? null) ||
+    (existing.ended_at ?? null) !== (write.ended_at ?? null)
+  );
+}
+
+async function hasProcessedEntitlementEvent(
+  supabase: DBClient,
+  eventId: string,
+): Promise<boolean> {
+  const { data, error } = await supabase
+    .from("entitlement_events")
+    .select("event_id")
+    .eq("provider", "stripe")
+    .eq("event_id", eventId)
+    .maybeSingle();
+
+  if (error) throw error;
+  return !!data?.event_id;
+}
+
+function isDuplicateEventInsertError(error: unknown): boolean {
+  const code = (error as { code?: string } | null)?.code ?? "";
+  const message = String((error as { message?: string } | null)?.message ?? "")
+    .toLowerCase();
+
+  return (
+    code === "23505" ||
+    message.includes("duplicate key") ||
+    message.includes("unique constraint")
+  );
+}
+
+async function markEntitlementEventProcessed(params: {
+  supabase: DBClient;
+  event: StripeWebhookEvent;
+  userId: string;
+}): Promise<boolean> {
+  const { error } = await params.supabase.from("entitlement_events").insert({
+    provider: "stripe",
+    event_type: params.event.type,
+    event_id: params.event.id,
+    user_id: params.userId,
+    payload: params.event as unknown as Json,
+  });
+
+  if (!error) return true;
+  if (isDuplicateEventInsertError(error)) return false;
+  throw error;
+}
+
+async function getSharedSubscriptionByProviderSubscriptionId(params: {
+  supabase: DBClient;
+  providerSubscriptionId: string | null;
+}): Promise<ExistingSubscriptionRow | null> {
+  if (!params.providerSubscriptionId) return null;
+
+  const { data, error } = await params.supabase
+    .from("subscriptions")
+    .select(
+      "user_id,provider_customer_id,provider_subscription_id,provider_transaction_id,provider_original_transaction_id,product_id,environment,status,current_period_start,current_period_end,cancel_at_period_end,canceled_at,ended_at,raw_payload",
+    )
+    .eq("provider", "stripe")
+    .eq("provider_subscription_id", params.providerSubscriptionId)
+    .maybeSingle();
+
+  if (error) throw error;
+  return (data as ExistingSubscriptionRow | null) ?? null;
+}
+
+async function resolveUserByStripeLinkage(params: {
+  supabase: DBClient;
+  providerSubscriptionId?: string | null;
+  providerCustomerId?: string | null;
+}): Promise<string | null> {
+  if (params.providerSubscriptionId) {
+    const row = await getSharedSubscriptionByProviderSubscriptionId({
+      supabase: params.supabase,
+      providerSubscriptionId: params.providerSubscriptionId,
+    });
+
+    if (isUuid(row?.user_id)) return row.user_id;
+  }
+
+  if (params.providerCustomerId) {
+    const { data, error } = await params.supabase
+      .from("subscriptions")
+      .select("user_id,current_period_end")
+      .eq("provider", "stripe")
+      .eq("provider_customer_id", params.providerCustomerId)
+      .order("current_period_end", { ascending: false, nullsFirst: false })
+      .limit(1)
+      .maybeSingle();
+
+    if (error) throw error;
+    if (isUuid((data as { user_id?: string | null } | null)?.user_id)) {
+      return (data as { user_id?: string | null }).user_id ?? null;
+    }
+  }
+
+  return null;
+}
+
+async function recomputeAndPersistEntitlement(
+  supabase: DBClient,
+  userId: string,
+): Promise<EntitlementSnapshot> {
+  const { data, error } = await supabase
+    .from("subscriptions")
+    .select("status,current_period_end,provider")
+    .eq("user_id", userId);
+
+  if (error) throw error;
+
+  const entitlement = deriveEntitlementFromSubscriptions(
+    (data ?? []) as Array<
+      Pick<
+        SharedSubscriptionRecord,
+        "status" | "current_period_end" | "provider"
+      >
+    >,
+  );
+
+  const { error: profileError } = await supabase
+    .from("profiles")
+    .update({
+      premium_status: entitlement.status,
+      premium_expires_at: entitlement.expires_at,
+      premium_source: entitlement.source,
+    })
+    .eq("id", userId);
+
+  if (profileError) throw profileError;
+
+  return entitlement;
+}
+
+async function finalizeSubscriptionProcessing(params: {
+  supabase: DBClient;
+  userId: string;
+  event: StripeWebhookEvent;
+  shouldRecomputeBeforeFinalMark: boolean;
+}): Promise<boolean> {
+  if (params.shouldRecomputeBeforeFinalMark) {
+    await recomputeAndPersistEntitlement(params.supabase, params.userId);
+  }
+
+  return await markEntitlementEventProcessed({
+    supabase: params.supabase,
+    event: params.event,
+    userId: params.userId,
+  });
+}
+
+async function upsertSharedSubscriptionMonotonic(params: {
+  supabase: DBClient;
+  event: StripeWebhookEvent;
+  userId: string;
+  providerCustomerId: string | null;
+  providerSubscriptionId: string;
+  providerTransactionId?: string | null;
+  providerOriginalTransactionId?: string | null;
+  productId?: string | null;
+  environment: "production" | "sandbox";
+  status?: SharedSubscriptionStatus | string | null;
+  currentPeriodStart?: string | null;
+  currentPeriodEnd?: string | null;
+  cancelAtPeriodEnd?: boolean | null;
+  canceledAt?: string | null;
+  endedAt?: string | null;
+  rawPayload: unknown;
+}): Promise<UpsertSharedSubscriptionMonotonicResult> {
+  const incomingFreshness = deriveIncomingFreshness(
+    params.rawPayload,
+    params.event,
+  );
+
+  const rawPayloadWithFreshness = attachStripeFreshnessToRawPayload(
+    params.rawPayload,
+    params.event,
+  );
+
+  for (;;) {
+    const existing = await getSharedSubscriptionByProviderSubscriptionId({
+      supabase: params.supabase,
+      providerSubscriptionId: params.providerSubscriptionId,
+    });
+
+    if (existing?.user_id != null && existing.user_id !== params.userId) {
+      throw new Error("Stripe subscription ownership mismatch");
+    }
+
+    const write = mapStripeSubscription({
+      userId: params.userId,
+      providerCustomerId:
+        params.providerCustomerId ?? existing?.provider_customer_id ?? null,
+      providerSubscriptionId: params.providerSubscriptionId,
+      providerTransactionId:
+        params.providerTransactionId ??
+        existing?.provider_transaction_id ??
+        null,
+      providerOriginalTransactionId:
+        params.providerOriginalTransactionId ??
+        existing?.provider_original_transaction_id ??
+        params.providerSubscriptionId,
+      productId: params.productId ?? existing?.product_id ?? null,
+      environment: params.environment,
+      status: params.status ?? existing?.status ?? "incomplete",
+      currentPeriodStart:
+        params.currentPeriodStart ?? existing?.current_period_start ?? null,
+      currentPeriodEnd:
+        params.currentPeriodEnd ?? existing?.current_period_end ?? null,
+      cancelAtPeriodEnd:
+        typeof params.cancelAtPeriodEnd === "boolean"
+          ? params.cancelAtPeriodEnd
+          : (existing?.cancel_at_period_end ?? false),
+      canceledAt: params.canceledAt ?? existing?.canceled_at ?? null,
+      endedAt: params.endedAt ?? existing?.ended_at ?? null,
+      rawPayload: rawPayloadWithFreshness,
+    });
+
+    if (existing) {
+      const persistedFreshness = derivePersistedFreshness(existing.raw_payload);
+      const freshnessComparison = compareStripeFreshness(
+        incomingFreshness,
+        persistedFreshness,
+      );
+
+      if (freshnessComparison < 0) {
+        return {
+          stateChanged: false,
+          shouldRecomputeBeforeFinalMark:
+            persistedFreshness.event_id === params.event.id,
+        };
+      }
+
+      if (freshnessComparison === 0) {
+        if (doesExistingSubscriptionDifferFromWrite(existing, write)) {
+          throw new Error(
+            "Ambiguous equal-freshness Stripe subscription update",
+          );
+        }
+
+        return {
+          stateChanged: false,
+          shouldRecomputeBeforeFinalMark:
+            persistedFreshness.event_id === params.event.id,
+        };
+      }
+    }
+
+    if (!existing) {
+      const { error } = await params.supabase
+        .from("subscriptions")
+        .insert(
+          write as Database["public"]["Tables"]["subscriptions"]["Insert"],
+        );
+
+      if (!error) {
+        return {
+          stateChanged: true,
+          shouldRecomputeBeforeFinalMark: true,
+        };
+      }
+
+      if (isDuplicateEventInsertError(error)) {
+        const inserted = await getSharedSubscriptionByProviderSubscriptionId({
+          supabase: params.supabase,
+          providerSubscriptionId: params.providerSubscriptionId,
+        });
+
+        if (inserted) continue;
+      }
+
+      throw error;
+    }
+
+    let query = params.supabase
+      .from("subscriptions")
+      .update(write as Database["public"]["Tables"]["subscriptions"]["Update"])
+      .eq("provider", "stripe")
+      .eq("provider_subscription_id", params.providerSubscriptionId);
+
+    if (existing.raw_payload == null) {
+      query = query.is("raw_payload", null);
+    } else {
+      query = query.eq("raw_payload", existing.raw_payload as Json);
+    }
+
+    const { data, error } = await query
+      .select("provider_subscription_id")
+      .limit(1)
+      .maybeSingle();
+
+    if (error) throw error;
+
+    if (
+      (data as { provider_subscription_id?: string | null } | null)
+        ?.provider_subscription_id
+    ) {
+      return {
+        stateChanged: true,
+        shouldRecomputeBeforeFinalMark: true,
+      };
+    }
+  }
+}
+
+/* ============================================================================
+ * Request handler
+ * ========================================================================== */
+
+Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return ok200();
-  if (req.method !== "POST") return json({ error: "Method not allowed" }, 405);
 
-  // ✅ MULTI-SECRET SUPPORT
-  const webhookSecretsRaw = envRaw("STRIPE_WEBHOOK_SECRET");
-  const webhookSecrets = parseWebhookSecrets(webhookSecretsRaw);
+  if (req.method !== "POST") {
+    return json({ error: "Method not allowed" }, 405);
+  }
 
+  const webhookSecrets = parseWebhookSecrets(envRaw("STRIPE_WEBHOOK_SECRET"));
   const supabaseUrl = env("SUPABASE_URL");
   const serviceKey = env("SUPABASE_SERVICE_ROLE_KEY");
 
-  if (!webhookSecrets.length)
+  if (!webhookSecrets.length) {
     return json({ error: "Missing STRIPE_WEBHOOK_SECRET" }, 500);
+  }
+
   if (!supabaseUrl || !serviceKey) {
     return json(
       { error: "Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY" },
@@ -680,594 +1303,487 @@ Deno.serve(async (req) => {
     );
   }
 
-  const sig = req.headers.get("stripe-signature");
-  if (!sig) return json({ error: "Missing signature" }, 400);
-
-  // Diagnostics (safe)
-  try {
-    const first = webhookSecrets[0] ?? "";
-    console.log("[stripe-webhook] sig debug", {
-      whsec_prefix: first.slice(0, 7),
-      whsec_last4: first.slice(-4),
-      whsec_len: first.length,
-      whsec_count: webhookSecrets.length,
-      sig_preview: String(sig).slice(0, 24),
-      tolerance_s: getWebhookToleranceSeconds(),
-    });
-  } catch {
-    // ignore
+  const signatureHeader = req.headers.get("stripe-signature");
+  if (!signatureHeader) {
+    return json({ error: "Missing signature" }, 400);
   }
 
-  // IMPORTANT: verify against the EXACT raw bytes Stripe signed.
   const rawBuf = await req.arrayBuffer();
   const rawBytes = new Uint8Array(rawBuf);
 
-  // Verify signature (async WebCrypto) — accept ANY configured secret
   try {
-    let ok = false;
-    let lastErr: any = null;
+    let verified = false;
+    let lastError: unknown = null;
 
     for (const webhookSecret of webhookSecrets) {
       try {
         await verifyStripeSignatureOrThrow({
           rawBodyBytes: rawBytes,
-          sigHeader: sig,
+          sigHeader: signatureHeader,
           webhookSecret,
         });
-        ok = true;
+        verified = true;
         break;
-      } catch (e: any) {
-        lastErr = e;
+      } catch (error) {
+        lastError = error;
       }
     }
 
-    if (!ok) throw lastErr ?? new Error("Stripe signature mismatch");
-  } catch (e: any) {
-    const sigPreview = String(sig).slice(0, 32);
-    console.warn("[stripe-webhook] Invalid signature", {
-      sig_preview: sigPreview,
-      raw_len: rawBytes.length,
-      whsec_count: webhookSecrets.length,
-      err: e?.message ?? String(e),
-    });
+    if (!verified) {
+      throw lastError ?? new Error("Stripe signature mismatch");
+    }
+  } catch {
     return json({ error: "Invalid signature" }, 400);
   }
 
-  // Parse JSON after signature is verified
-  let event: any;
+  let event: StripeWebhookEvent;
+
   try {
     const rawText = new TextDecoder().decode(rawBytes);
-    event = JSON.parse(rawText);
-  } catch (e: any) {
-    console.error("[stripe-webhook] JSON parse failed", e);
+    event = JSON.parse(rawText) as StripeWebhookEvent;
+  } catch {
     return json({ error: "Invalid JSON" }, 400);
   }
 
-  if (!event?.id) return json({ error: "Stripe event missing id" }, 400);
+  if (!event?.id) {
+    return json({ error: "Stripe event missing id" }, 400);
+  }
 
-  const type = event.type;
-  console.log("[stripe-webhook] received", { id: event.id, type });
-
-  // ✅ Allowlist (keep webhook fast)
-  if (
-    type !== "checkout.session.completed" &&
-    type !== "invoice.paid" &&
-    type !== "invoice.payment_succeeded" &&
-    type !== "customer.subscription.updated" &&
-    type !== "customer.subscription.deleted"
-  ) {
+  if (!isSupportedEventType(event.type)) {
     return ok200();
   }
 
-  const supabase = createClient(supabaseUrl, serviceKey, {
+  const supabase = createClient<Database>(supabaseUrl, serviceKey, {
     auth: { persistSession: false },
   });
 
   try {
-    const processed = await isEventProcessed(supabase, event.id);
+    const alreadyProcessed = await hasProcessedEntitlementEvent(
+      supabase,
+      event.id,
+    );
 
-    // ---------------------------
-    // CHECKOUT COMPLETED
-    // ---------------------------
-    if (type === "checkout.session.completed") {
-      const s = event.data.object;
+    if (alreadyProcessed) {
+      return ok200();
+    }
 
-      const isComplete = s?.status === "complete";
-      const payOk =
-        s?.payment_status === "paid" ||
-        s?.payment_status === "no_payment_required";
-      if (s.mode !== "subscription" || !isComplete || !payOk) return ok200();
+    const environment = stripeEnvironmentFromEvent(event);
+
+    if (event.type === "checkout.session.completed") {
+      const session = event.data.object as CheckoutSessionLike;
+
+      const mode = asLowerNonEmptyStringOrNull(session?.mode);
+      const sessionStatus = asLowerNonEmptyStringOrNull(session?.status);
+      const paymentStatus = asLowerNonEmptyStringOrNull(session?.payment_status);
+
+      if (
+        mode !== "subscription" ||
+        sessionStatus !== "complete" ||
+        (paymentStatus !== "paid" && paymentStatus !== "no_payment_required")
+      ) {
+        return ok200();
+      }
 
       const candidateUserId =
-        s.client_reference_id ??
-        s.metadata?.supabase_user_id ??
-        s.metadata?.user_id ??
+        session?.client_reference_id ??
+        session?.metadata?.supabase_user_id ??
+        session?.metadata?.user_id ??
         null;
 
       const userId = isUuid(candidateUserId) ? candidateUserId : null;
       if (!userId) {
-        throw new Error(
-          "userId missing/invalid (expected UUID client_reference_id or metadata.supabase_user_id)",
-        );
+        throw new Error("checkout.session.completed user resolution failed");
       }
 
-      const stripeSessionId = s.id;
-      const stripeSubscriptionId = s.subscription ?? null;
-      const stripeCustomerId = s.customer ?? null;
-      const product_key: ProductKey = "mercy_blade";
+      const providerCustomerId = asNonEmptyStringOrNull(session?.customer);
+      const providerSubscriptionId = asNonEmptyStringOrNull(
+        session?.subscription,
+      );
 
-      // No Stripe API calls here. Price may not be available; rely on metadata.
-      const priceId: string | null = null;
+      if (!providerSubscriptionId) {
+        throw new Error("checkout.session.completed missing subscription id");
+      }
 
-      const vipKeyFromPrice = priceIdToVipKey(priceId);
-      const metaVipKey = normalizeMetaVip(s.metadata?.vip_key);
-
-      // Only accept a real UUID tier_id from metadata (optional)
-      const metaTierIdRaw =
-        typeof s.metadata?.tier_id === "string" ? s.metadata.tier_id : null;
-      const metaTierId = isUuid(metaTierIdRaw) ? metaTierIdRaw : null;
-
-      const resolvedTier = await resolveTierFromCheckoutContext({
+      const upsertResult = await upsertSharedSubscriptionMonotonic({
         supabase,
-        vipKeyFromPrice,
-        metaVipKey,
-        metaTierId,
+        event,
+        userId,
+        providerCustomerId,
+        providerSubscriptionId,
+        providerTransactionId: asNonEmptyStringOrNull(session?.id),
+        providerOriginalTransactionId: providerSubscriptionId,
+        productId: null,
+        environment,
+        status: STRIPE_CHECKOUT_BOOTSTRAP_STATUS,
+        currentPeriodStart: null,
+        currentPeriodEnd: null,
+        cancelAtPeriodEnd: null,
+        canceledAt: null,
+        endedAt: null,
+        rawPayload: session,
       });
 
-      // ✅ DO NOT 500: missing tier metadata happens in real Stripe flows (esp. cancellations/deletes).
-      // We log and ACK so Stripe stops retrying; the canonical money event is invoice.* anyway.
-      if (!resolvedTier?.tierId || !isUuid(resolvedTier.tierId)) {
-        console.log("[stripe-webhook] checkout tier unresolved; acking", {
-          stripe_session_id: stripeSessionId,
-          metaVipKey,
-          metaTierId,
-          vipKeyFromPrice,
-        });
-        return ok200();
-      }
+      const didMarkProcessed = await finalizeSubscriptionProcessing({
+        supabase,
+        userId,
+        event,
+        shouldRecomputeBeforeFinalMark:
+          upsertResult.shouldRecomputeBeforeFinalMark,
+      });
 
-      const tierId: string = resolvedTier.tierId;
-      const vipKey: VipKey = resolvedTier.vipKey;
+      if (didMarkProcessed) {
+        const customerEmail = await resolveCheckoutCustomerEmail(session);
 
-      const amount = typeof s.amount_total === "number" ? s.amount_total : 0;
-      const currency = typeof s.currency === "string" ? s.currency : null;
+        if (customerEmail) {
+          const route = resolveEmailRoute(customerEmail);
 
-      const customerEmail = await resolveCustomerEmail(s);
+          if (route) {
+            const amount =
+              typeof session.amount_total === "number"
+                ? session.amount_total
+                : 0;
 
-      if (!processed) {
-        const { data: updatedRows } = await supabase
-          .from("payment_transactions")
-          .update({
-            status: "completed",
-            amount,
-            currency,
-            payment_method: "stripe",
-            transaction_type: "subscription",
-            updated_at: new Date().toISOString(),
-          })
-          .eq("external_reference", stripeSessionId)
-          .eq("status", "pending")
-          .select("id");
+            const currency = asNonEmptyStringOrNull(session.currency);
+            const correlationId = event.id;
 
-        if (!updatedRows || updatedRows.length === 0) {
-          const { error: insErr } = await supabase
-            .from("payment_transactions")
-            .insert({
-              user_id: userId,
-              tier_id: tierId,
-              external_reference: stripeSessionId,
-              status: "completed",
-              amount,
-              currency,
-              payment_method: "stripe",
-              transaction_type: "subscription",
-              metadata: { vip_key: vipKey, product_key },
+            const commonAuditVars = buildCommonEmailAuditVariables({
+              originalTo: route.originalTo,
+              forcedTo: route.forcedTo,
+              correlationId,
+              userId,
             });
 
-          if (insErr) {
-            console.log(
-              "[stripe-webhook] payment_transactions insert skipped:",
-              insErr.message,
-            );
+            try {
+              await sendEmailOnce({
+                supabase,
+                correlationId,
+                to: route.finalTo,
+                templateKey: "receipt_subscription",
+                variables: {
+                  ...commonAuditVars,
+                  amount: formatMoney(amount, currency),
+                  period: "Monthly",
+                  tier: "VIP",
+                  currency: currency ?? "",
+                  amount_minor: String(amount),
+                  stripe_session_id: asNonEmptyStringOrNull(session.id) ?? "",
+                  stripe_subscription_id: providerSubscriptionId,
+                },
+              });
+            } catch {
+              // best-effort
+            }
+
+            try {
+              await sendEmailOnce({
+                supabase,
+                correlationId,
+                to: route.finalTo,
+                templateKey: "welcome_vip",
+                variables: {
+                  ...commonAuditVars,
+                  tier: "VIP",
+                  stripe_session_id: asNonEmptyStringOrNull(session.id) ?? "",
+                  stripe_subscription_id: providerSubscriptionId,
+                },
+              });
+            } catch {
+              // best-effort
+            }
           }
         }
-
-        await supabase.from("user_subscriptions").upsert(
-          {
-            user_id: userId,
-            product_key,
-            tier_id: tierId,
-            status: "active",
-            stripe_customer_id: stripeCustomerId,
-            stripe_subscription_id: stripeSubscriptionId,
-          },
-          { onConflict: "user_id,product_key" },
-        );
-
-        // ledger LAST
-        await writeLedger({
-          supabase,
-          event,
-          type,
-          userId,
-          tierId,
-          stripeCustomerId,
-          stripeSubscriptionId,
-          stripeSessionId,
-        });
-      } else {
-        console.log(
-          "[stripe-webhook] event already processed; skipping DB writes, allowing email retry",
-        );
-      }
-
-      // Emails (retryable; idempotent if correlation_id is stored in outbox)
-      if (customerEmail) {
-        const route = resolveEmailRoute(customerEmail);
-        if (!route) {
-          console.log("[stripe-webhook] customerEmail invalid; skipping emails");
-          return ok200();
-        }
-
-        const { originalTo, forcedTo, finalTo } = route;
-
-        const prettyAmount = formatMoney(amount, currency);
-        const period = "Monthly";
-        const tierLabel = vipKey.toUpperCase();
-        const correlationId = event.id;
-
-        try {
-          await sendEmailOnce({
-            supabase,
-            correlationId,
-            to: finalTo,
-            templateKey: "receipt_subscription",
-            variables: {
-              // ✅ REQUIRED for audit integrity
-              user_email: originalTo,
-              original_to: originalTo,
-              forced_to: forcedTo ?? "",
-              correlation_id: correlationId,
-
-              // keep legacy/debug-friendly fields
-              email: originalTo,
-              supabase_user_id: userId,
-
-              amount: prettyAmount,
-              period,
-              tier: tierLabel,
-              currency: currency ?? "",
-              amount_minor: String(amount),
-              stripe_session_id: stripeSessionId,
-              stripe_subscription_id: stripeSubscriptionId ?? "",
-            },
-          });
-        } catch (e) {
-          console.warn("[stripe-webhook] receipt email failed (ignored)", e);
-        }
-
-        try {
-          await sendEmailOnce({
-            supabase,
-            correlationId,
-            to: finalTo,
-            templateKey: "welcome_vip",
-            variables: {
-              // ✅ REQUIRED for audit integrity
-              user_email: originalTo,
-              original_to: originalTo,
-              forced_to: forcedTo ?? "",
-              correlation_id: correlationId,
-
-              // keep legacy/debug-friendly fields
-              email: originalTo,
-              supabase_user_id: userId,
-
-              tier: tierLabel,
-              stripe_session_id: stripeSessionId,
-              stripe_subscription_id: stripeSubscriptionId ?? "",
-            },
-          });
-        } catch (e) {
-          console.warn("[stripe-webhook] welcome email failed (ignored)", e);
-        }
-      } else {
-        console.log("[stripe-webhook] customerEmail missing; skipping emails");
       }
 
       return ok200();
     }
 
-    // ---------------------------
-    // INVOICE PAID / PAYMENT SUCCEEDED ✅ (real subscription money source)
-    // Put this BEFORE the processed fast-exit so first-time invoices write DB.
-    // ---------------------------
-    if (type === "invoice.paid" || type === "invoice.payment_succeeded") {
-      const inv = event.data.object;
+    if (event.type === "invoice.paid") {
+      const invoice = event.data.object as InvoiceLike;
+      const providerTransactionId = asNonEmptyStringOrNull(invoice?.id);
+      const providerSubscriptionId = asNonEmptyStringOrNull(
+        invoice?.subscription,
+      );
+      const providerCustomerId = asNonEmptyStringOrNull(invoice?.customer);
 
-      const stripeInvoiceId = inv?.id ?? null;
-      const stripeSubscriptionId = inv?.subscription ?? null;
-      const stripeCustomerId = inv?.customer ?? null;
-
-      if (!stripeInvoiceId || !stripeSubscriptionId) {
-        // Without subscription we cannot link to a user in our DB
-        console.log("[stripe-webhook] invoice missing id/subscription; skipping");
+      if (!providerTransactionId || !providerSubscriptionId) {
         return ok200();
       }
 
-      const product_key: ProductKey = "mercy_blade";
-
-      // Link to user/tier via user_subscriptions (source of truth)
-      const { data: us, error: usErr } = await supabase
-        .from("user_subscriptions")
-        .select("user_id,tier_id")
-        .eq("stripe_subscription_id", stripeSubscriptionId)
-        .maybeSingle();
-
-      if (usErr) throw usErr;
-
-      const userId = isUuid((us as any)?.user_id) ? (us as any).user_id : null;
-      const tierId = isUuid((us as any)?.tier_id) ? (us as any).tier_id : null;
-
-      if (!userId) {
-        throw new Error(
-          "invoice user unresolved (expected user_subscriptions row by stripe_subscription_id)",
-        );
-      }
-
-      // Stripe invoice amounts are minor units
-      const amountMinor =
-        typeof inv?.amount_paid === "number"
-          ? inv.amount_paid
-          : typeof inv?.amount_due === "number"
-            ? inv.amount_due
-            : 0;
-
-      const currency = typeof inv?.currency === "string" ? inv.currency : null;
-
-      if (!processed) {
-        // Record the money event as a transaction (external_reference = invoice id)
-        const { error: insErr } = await supabase
-          .from("payment_transactions")
-          .insert({
-            user_id: userId,
-            tier_id: tierId,
-            external_reference: stripeInvoiceId,
-            status: "completed",
-            amount: amountMinor,
-            currency,
-            payment_method: "stripe",
-            transaction_type: "invoice",
-            metadata: {
-              product_key,
-              stripe_invoice_id: stripeInvoiceId,
-              stripe_subscription_id: stripeSubscriptionId,
-            },
-          });
-
-        if (insErr) {
-          // If you later add a unique constraint on external_reference, this becomes safe-idempotent.
-          console.log(
-            "[stripe-webhook] payment_transactions invoice insert skipped:",
-            insErr.message,
-          );
-        }
-
-        // Keep subscription status active if Stripe says paid/succeeded
-        await supabase.from("user_subscriptions").upsert(
-          {
-            user_id: userId,
-            product_key,
-            tier_id: tierId,
-            status: "active",
-            stripe_customer_id: stripeCustomerId,
-            stripe_subscription_id: stripeSubscriptionId,
-          },
-          { onConflict: "user_id,product_key" },
-        );
-
-        // ledger LAST
-        await writeLedger({
-          supabase,
-          event,
-          type,
-          userId,
-          tierId,
-          stripeCustomerId,
-          stripeSubscriptionId,
-          stripeSessionId: null,
-        });
-      } else {
-        console.log(
-          "[stripe-webhook] invoice event already processed; skipping DB writes, allowing email retry",
-        );
-      }
-
-      // Receipt email (retryable)
-      const customerEmail = await resolveInvoiceEmail({
+      const userId = await resolveUserByStripeLinkage({
         supabase,
-        invoice: inv,
-        userId,
+        providerSubscriptionId,
+        providerCustomerId,
       });
 
-      if (customerEmail) {
-        const route = resolveEmailRoute(customerEmail);
-        if (!route) {
-          console.log(
-            "[stripe-webhook] invoice customerEmail invalid; skipping email",
-          );
-          return ok200();
+      if (!userId) {
+        throw new Error("invoice.paid user resolution failed");
+      }
+
+      const period = getInvoicePeriodRange(invoice);
+
+      const upsertResult = await upsertSharedSubscriptionMonotonic({
+        supabase,
+        event,
+        userId,
+        providerCustomerId,
+        providerSubscriptionId,
+        providerTransactionId,
+        providerOriginalTransactionId: providerSubscriptionId,
+        productId: getInvoiceProductId(invoice),
+        environment,
+        status: "active",
+        currentPeriodStart: period.currentPeriodStart,
+        currentPeriodEnd: period.currentPeriodEnd,
+        rawPayload: invoice,
+      });
+
+      const didMarkProcessed = await finalizeSubscriptionProcessing({
+        supabase,
+        userId,
+        event,
+        shouldRecomputeBeforeFinalMark:
+          upsertResult.shouldRecomputeBeforeFinalMark,
+      });
+
+      if (didMarkProcessed) {
+        const customerEmail = await resolveInvoiceCustomerEmail({
+          supabase,
+          invoice,
+          userId,
+        });
+
+        if (customerEmail) {
+          const route = resolveEmailRoute(customerEmail);
+
+          if (route) {
+            const amountMinor =
+              typeof invoice.amount_paid === "number"
+                ? invoice.amount_paid
+                : typeof invoice.amount_due === "number"
+                  ? invoice.amount_due
+                  : 0;
+
+            const currency = asNonEmptyStringOrNull(invoice.currency);
+            const correlationId = event.id;
+
+            const commonAuditVars = buildCommonEmailAuditVariables({
+              originalTo: route.originalTo,
+              forcedTo: route.forcedTo,
+              correlationId,
+              userId,
+            });
+
+            try {
+              await sendEmailOnce({
+                supabase,
+                correlationId,
+                to: route.finalTo,
+                templateKey: "receipt_subscription",
+                variables: {
+                  ...commonAuditVars,
+                  amount: formatMoney(amountMinor, currency),
+                  period: "Monthly",
+                  tier: "VIP",
+                  currency: currency ?? "",
+                  amount_minor: String(amountMinor),
+                  stripe_session_id: "",
+                  stripe_subscription_id: providerSubscriptionId,
+                },
+              });
+            } catch {
+              // best-effort
+            }
+          }
         }
-
-        const { originalTo, forcedTo, finalTo } = route;
-
-        const prettyAmount = formatMoney(amountMinor, currency);
-        const period = "Monthly"; // keep your template expectation
-        const correlationId = event.id;
-
-        try {
-          await sendEmailOnce({
-            supabase,
-            correlationId,
-            to: finalTo,
-            templateKey: "receipt_subscription",
-            variables: {
-              // ✅ REQUIRED for audit integrity
-              user_email: originalTo,
-              original_to: originalTo,
-              forced_to: forcedTo ?? "",
-              correlation_id: correlationId,
-
-              // keep legacy/debug-friendly fields
-              email: originalTo,
-              supabase_user_id: userId,
-
-              amount: prettyAmount,
-              period,
-              tier: tierId ? "VIP" : "VIP", // template requires tier; keep generic if unknown
-              currency: currency ?? "",
-              amount_minor: String(amountMinor),
-              stripe_session_id: "",
-              stripe_subscription_id: String(stripeSubscriptionId ?? ""),
-            },
-          });
-        } catch (e) {
-          console.warn(
-            "[stripe-webhook] invoice receipt email failed (ignored)",
-            e,
-          );
-        }
-      } else {
-        console.log(
-          "[stripe-webhook] invoice customerEmail missing; skipping email",
-        );
       }
 
       return ok200();
     }
 
-    // For non-checkout/invoice events: keep FAST EXIT
-    if (processed) return ok200();
-
-    // ---------------------------
-    // SUBSCRIPTION UPDATED / DELETED
-    // ---------------------------
-    const sub = event.data.object;
-    const stripeSubscriptionId = sub.id;
-    const stripeCustomerId = sub.customer;
-    const product_key: ProductKey = "mercy_blade";
-
-    const { data: existing } = await supabase
-      .from("user_subscriptions")
-      .select("user_id,tier_id")
-      .eq("stripe_subscription_id", stripeSubscriptionId)
-      .maybeSingle();
-
-    let userId: string | null =
-      (existing?.user_id as string | undefined) ?? null;
-
-    if (!isUuid(userId)) {
-      const metaUserId =
-        sub?.metadata?.supabase_user_id ?? sub?.metadata?.user_id ?? null;
-      userId = isUuid(metaUserId) ? metaUserId : null;
-    }
-
-    // ✅ NEW: fallback lookup by stripe_customer_id (covers cases where subscription_id was never stored)
-    if (!isUuid(userId) && stripeCustomerId) {
-      const { data: byCustomer } = await supabase
-        .from("user_subscriptions")
-        .select("user_id,tier_id")
-        .eq("stripe_customer_id", stripeCustomerId)
-        .eq("product_key", product_key)
-        .order("updated_at", { ascending: false })
-        .limit(1)
-        .maybeSingle();
-
-      const candidate = (byCustomer?.user_id as string | undefined) ?? null;
-      if (isUuid(candidate)) userId = candidate;
-    }
-// ✅ DO NOT 500: deletions/updates can arrive without any linkable metadata.
-// Stripe will retry forever if we 500; this path is not revenue-critical.
-if (!isUuid(userId)) {
-  console.log("[stripe-webhook] userId unresolved for sub event; acking", {
-    type,
-    stripe_subscription_id: stripeSubscriptionId ?? null,
-    stripe_customer_id: stripeCustomerId ?? null,
-    meta_supabase_user_id: (sub as any)?.metadata?.supabase_user_id ?? null,
-    meta_user_id: (sub as any)?.metadata?.user_id ?? null,
-    meta_tier_id: (sub as any)?.metadata?.tier_id ?? null,
-    meta_vip_key: (sub as any)?.metadata?.vip_key ?? null,
-  });
-  return ok200();
-}
-
-    let nextTierId: string | null =
-      (existing?.tier_id as string | undefined) ?? null;
-
-    const subMetaTierId =
-      typeof sub?.metadata?.tier_id === "string" ? sub.metadata.tier_id : null;
-    if (subMetaTierId && isUuid(subMetaTierId)) {
-      const ok = await tierExists(supabase, subMetaTierId);
-      if (ok) nextTierId = subMetaTierId;
-    }
-
-    if (type === "customer.subscription.updated") {
-      if (!nextTierId) {
-        const priceId: string | null = sub?.items?.data?.[0]?.price?.id ?? null;
-        const vipKeyFromPrice = priceIdToVipKey(priceId);
-        const metaVipKey = normalizeMetaVip(sub?.metadata?.vip_key);
-
-        const resolvedTier = await resolveTierFromCheckoutContext({
-          supabase,
-          vipKeyFromPrice,
-          metaVipKey,
-          metaTierId: null,
-        });
-
-        if (resolvedTier?.tierId) nextTierId = resolvedTier.tierId;
-      }
-    }
-
-    const nextStatus = sub.status === "active" ? "active" : "inactive";
-
-    const { data: updRows } = await supabase
-      .from("user_subscriptions")
-      .update({
-        tier_id: nextTierId,
-        status: nextStatus,
-        stripe_customer_id: stripeCustomerId,
-      })
-      .eq("stripe_subscription_id", stripeSubscriptionId)
-      .select("user_id");
-
-    if (!updRows || updRows.length === 0) {
-      await supabase.from("user_subscriptions").upsert(
-        {
-          user_id: userId,
-          product_key,
-          tier_id: nextTierId,
-          status: nextStatus,
-          stripe_customer_id: stripeCustomerId,
-          stripe_subscription_id: stripeSubscriptionId,
-        },
-        { onConflict: "user_id,product_key" },
+    if (event.type === "invoice.payment_failed") {
+      const invoice = event.data.object as InvoiceLike;
+      const providerTransactionId = asNonEmptyStringOrNull(invoice?.id);
+      const providerSubscriptionId = asNonEmptyStringOrNull(
+        invoice?.subscription,
       );
+      const providerCustomerId = asNonEmptyStringOrNull(invoice?.customer);
+
+      if (!providerTransactionId || !providerSubscriptionId) {
+        return ok200();
+      }
+
+      const userId = await resolveUserByStripeLinkage({
+        supabase,
+        providerSubscriptionId,
+        providerCustomerId,
+      });
+
+      if (!userId) {
+        throw new Error("invoice.payment_failed user resolution failed");
+      }
+
+      const period = getInvoicePeriodRange(invoice);
+
+      const upsertResult = await upsertSharedSubscriptionMonotonic({
+        supabase,
+        event,
+        userId,
+        providerCustomerId,
+        providerSubscriptionId,
+        providerTransactionId,
+        providerOriginalTransactionId: providerSubscriptionId,
+        productId: getInvoiceProductId(invoice),
+        environment,
+        status: "past_due",
+        currentPeriodStart: period.currentPeriodStart,
+        currentPeriodEnd: period.currentPeriodEnd,
+        rawPayload: invoice,
+      });
+
+      await finalizeSubscriptionProcessing({
+        supabase,
+        userId,
+        event,
+        shouldRecomputeBeforeFinalMark:
+          upsertResult.shouldRecomputeBeforeFinalMark,
+      });
+
+      return ok200();
     }
 
-    // ledger LAST
-    await writeLedger({
-      supabase,
-      event,
-      type,
-      userId,
-      tierId: nextTierId,
-      stripeCustomerId,
-      stripeSubscriptionId,
-    });
+    if (event.type === "customer.subscription.updated") {
+      const subscription = event.data.object as SubscriptionLike;
+      const providerSubscriptionId = asNonEmptyStringOrNull(subscription?.id);
+      const providerCustomerId = asNonEmptyStringOrNull(subscription?.customer);
+
+      if (!providerSubscriptionId) {
+        return ok200();
+      }
+
+      const metadataUserId =
+        subscription?.metadata?.supabase_user_id ??
+        subscription?.metadata?.user_id ??
+        null;
+
+      const userId =
+        (isUuid(metadataUserId) ? metadataUserId : null) ??
+        (await resolveUserByStripeLinkage({
+          supabase,
+          providerSubscriptionId,
+          providerCustomerId,
+        }));
+
+      if (!userId) {
+        throw new Error("customer.subscription.updated user resolution failed");
+      }
+
+      const upsertResult = await upsertSharedSubscriptionMonotonic({
+        supabase,
+        event,
+        userId,
+        providerCustomerId,
+        providerSubscriptionId,
+        providerTransactionId: providerSubscriptionId,
+        providerOriginalTransactionId: providerSubscriptionId,
+        productId: getSubscriptionProductId(subscription),
+        environment,
+        status: subscription?.status,
+        currentPeriodStart: toIsoFromUnix(subscription?.current_period_start),
+        currentPeriodEnd: toIsoFromUnix(subscription?.current_period_end),
+        cancelAtPeriodEnd:
+          typeof subscription?.cancel_at_period_end === "boolean"
+            ? subscription.cancel_at_period_end
+            : null,
+        canceledAt: toIsoFromUnix(subscription?.canceled_at),
+        endedAt: toIsoFromUnix(subscription?.ended_at),
+        rawPayload: subscription,
+      });
+
+      await finalizeSubscriptionProcessing({
+        supabase,
+        userId,
+        event,
+        shouldRecomputeBeforeFinalMark:
+          upsertResult.shouldRecomputeBeforeFinalMark,
+      });
+
+      return ok200();
+    }
+
+    if (event.type === "customer.subscription.deleted") {
+      const subscription = event.data.object as SubscriptionLike;
+      const providerSubscriptionId = asNonEmptyStringOrNull(subscription?.id);
+      const providerCustomerId = asNonEmptyStringOrNull(subscription?.customer);
+
+      if (!providerSubscriptionId) {
+        return ok200();
+      }
+
+      const metadataUserId =
+        subscription?.metadata?.supabase_user_id ??
+        subscription?.metadata?.user_id ??
+        null;
+
+      const userId =
+        (isUuid(metadataUserId) ? metadataUserId : null) ??
+        (await resolveUserByStripeLinkage({
+          supabase,
+          providerSubscriptionId,
+          providerCustomerId,
+        }));
+
+      if (!userId) {
+        throw new Error("customer.subscription.deleted user resolution failed");
+      }
+
+      const currentPeriodEnd = toIsoFromUnix(subscription?.current_period_end);
+      const endedAt = toIsoFromUnix(subscription?.ended_at) ?? isoNow();
+
+      const status: SharedSubscriptionStatus =
+        currentPeriodEnd && new Date(currentPeriodEnd).getTime() > Date.now()
+          ? "canceled"
+          : "expired";
+
+      const upsertResult = await upsertSharedSubscriptionMonotonic({
+        supabase,
+        event,
+        userId,
+        providerCustomerId,
+        providerSubscriptionId,
+        providerTransactionId: providerSubscriptionId,
+        providerOriginalTransactionId: providerSubscriptionId,
+        productId: getSubscriptionProductId(subscription),
+        environment,
+        status,
+        currentPeriodStart: toIsoFromUnix(subscription?.current_period_start),
+        currentPeriodEnd,
+        cancelAtPeriodEnd:
+          typeof subscription?.cancel_at_period_end === "boolean"
+            ? subscription.cancel_at_period_end
+            : true,
+        canceledAt: toIsoFromUnix(subscription?.canceled_at) ?? endedAt,
+        endedAt,
+        rawPayload: subscription,
+      });
+
+      await finalizeSubscriptionProcessing({
+        supabase,
+        userId,
+        event,
+        shouldRecomputeBeforeFinalMark:
+          upsertResult.shouldRecomputeBeforeFinalMark,
+      });
+
+      return ok200();
+    }
 
     return ok200();
-  } catch (e: any) {
-    console.error("❌ Stripe webhook failed", e);
-    return json({ error: e.message }, 500);
+  } catch (error: unknown) {
+    return json(
+      {
+        error: error instanceof Error ? error.message : String(error),
+      },
+      500,
+    );
   }
 });
