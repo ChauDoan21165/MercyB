@@ -1,15 +1,42 @@
-import type { SubscriptionRow } from "./types";
+// FILE: src/billing/subscriptionRepository.ts
+
+import type {
+  BillingEnvironment,
+  BillingProvider,
+  SharedSubscriptionStatus,
+  SubscriptionRow,
+} from "./types";
 
 export interface UpsertSubscriptionInput {
   user_id: string;
-  provider: "stripe" | "apple" | "google";
+  provider: BillingProvider;
   provider_customer_id?: string | null;
   provider_subscription_id?: string | null;
+
+  /**
+   * Provider-scoped identifier for the concrete billing transaction/update
+   * represented by this row version.
+   *
+   * Examples:
+   * - Stripe: invoice id or checkout session id when available
+   * - Apple: current transaction id
+   * - Google: concrete purchase / renewal transaction identifier
+   */
   provider_transaction_id?: string | null;
+
+  /**
+   * Provider-scoped stable chain/root identifier across renewals.
+   *
+   * Examples:
+   * - Stripe: subscription id
+   * - Apple: original transaction id
+   * - Google: original purchase token / stable subscription root identifier
+   */
   provider_original_transaction_id?: string | null;
+
   product_id?: string | null;
-  environment?: "sandbox" | "production" | null;
-  status: SubscriptionRow["status"];
+  environment?: BillingEnvironment | null;
+  status: SharedSubscriptionStatus;
   current_period_start?: string | null;
   current_period_end: string | null;
   cancel_at_period_end?: boolean | null;
@@ -19,37 +46,17 @@ export interface UpsertSubscriptionInput {
 }
 
 export interface EntitlementEventInput {
-  provider: "stripe" | "apple" | "google";
+  provider: BillingProvider;
   event_type: string;
   event_id: string;
   user_id?: string | null;
   payload: unknown;
 }
 
-export type SharedSubscriptionStatus = SubscriptionRow["status"];
-
-export interface SharedSubscriptionRecord {
-  user_id: string;
-  provider: "stripe" | "apple" | "google";
-  provider_customer_id?: string | null;
-  provider_subscription_id?: string | null;
-  provider_transaction_id?: string | null;
-  provider_original_transaction_id?: string | null;
-  product_id?: string | null;
-  environment?: "sandbox" | "production" | null;
-  status: SharedSubscriptionStatus;
-  current_period_start?: string | null;
-  current_period_end?: string | null;
-  cancel_at_period_end?: boolean | null;
-  canceled_at?: string | null;
-  ended_at?: string | null;
-  raw_payload?: unknown;
-}
-
 export interface EntitlementSnapshot {
   status: "active" | "inactive";
   expires_at: string | null;
-  source: SharedSubscriptionRecord["provider"] | null;
+  source: SubscriptionRow["provider"] | null;
 }
 
 type SupabaseLike = {
@@ -83,7 +90,7 @@ function toMillis(value: string | null | undefined): number {
 }
 
 function isEntitlingSubscription(
-  subscription: Pick<SharedSubscriptionRecord, "status" | "current_period_end">,
+  subscription: Pick<SubscriptionRow, "status" | "current_period_end">,
 ): boolean {
   const status = subscription.status;
   const endMs = toMillis(subscription.current_period_end ?? null);
@@ -92,6 +99,7 @@ function isEntitlingSubscription(
   if (
     status === "active" ||
     status === "trialing" ||
+    status === "grace_period" ||
     status === "past_due"
   ) {
     return true;
@@ -106,14 +114,11 @@ function isEntitlingSubscription(
 
 export function deriveEntitlementFromSubscriptions(
   subscriptions: Array<
-    Pick<SharedSubscriptionRecord, "status" | "current_period_end" | "provider">
+    Pick<SubscriptionRow, "status" | "current_period_end" | "provider">
   >,
 ): EntitlementSnapshot {
   let winner:
-    | Pick<
-        SharedSubscriptionRecord,
-        "status" | "current_period_end" | "provider"
-      >
+    | Pick<SubscriptionRow, "status" | "current_period_end" | "provider">
     | null = null;
 
   for (const subscription of subscriptions) {
@@ -163,7 +168,7 @@ export async function getSubscriptionsByUserId(
 }
 
 export async function hasProcessedEvent(
-  provider: "stripe" | "apple" | "google",
+  provider: BillingProvider,
   eventId: string,
 ): Promise<boolean> {
   const supabase = await getSupabase();

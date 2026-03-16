@@ -1,27 +1,70 @@
-import { supabase } from "@/integrations/supabase/client";
-import { computeEntitlement } from "./computeEntitlement";
-import { getSubscriptionsByUserId } from "./subscriptionRepository";
-import type { EntitlementResult } from "./types";
+// FILE: src/billing/recomputeAndPersistEntitlement.ts
+
+import type { EntitlementResult, SubscriptionRow } from "./types";
+
+type SupabaseLike = {
+  from: (table: string) => {
+    select: (columns: string) => {
+      eq: (column: string, value: string) => Promise<{
+        data?: unknown;
+        error?: { message: string } | null;
+      }>;
+    };
+    update: (values: unknown) => {
+      eq: (column: string, value: string) => Promise<{
+        data?: unknown;
+        error?: { message: string } | null;
+      }>;
+    };
+  };
+};
+
+async function getSupabase(): Promise<SupabaseLike> {
+  const dynamicImport = Function("path", "return import(path)") as (
+    path: string,
+  ) => Promise<unknown>;
+
+  const mod = await dynamicImport("@/integrations/supabase/client");
+
+  return (mod as { supabase: unknown }).supabase as SupabaseLike;
+}
 
 export async function recomputeAndPersistEntitlement(
-  userId: string
+  userId: string,
 ): Promise<EntitlementResult> {
-  const subscriptions = await getSubscriptionsByUserId(userId);
+  const { deriveEntitlementFromSubscriptions } = await import(
+    "./subscriptionRepository"
+  );
 
-  const result = computeEntitlement(subscriptions);
+  const supabase = await getSupabase();
 
-  const { error } = await supabase
+  const { data, error } = await supabase
+    .from("subscriptions")
+    .select("status,current_period_end,provider")
+    .eq("user_id", userId);
+
+  if (error) {
+    throw new Error(`Failed to load subscriptions: ${error.message}`);
+  }
+
+  const entitlement = deriveEntitlementFromSubscriptions(
+    (data ?? []) as Array<
+      Pick<SubscriptionRow, "status" | "current_period_end" | "provider">
+    >,
+  );
+
+  const { error: updateError } = await supabase
     .from("profiles")
     .update({
-      premium_status: result.premiumStatus,
-      premium_expires_at: result.premiumExpiresAt,
-      premium_source: result.premiumSource,
+      premium_status: entitlement.status,
+      premium_expires_at: entitlement.expires_at,
+      premium_source: entitlement.source,
     })
     .eq("id", userId);
 
-  if (error) {
-    throw new Error(`Failed to persist entitlement: ${error.message}`);
+  if (updateError) {
+    throw new Error(`Failed to persist entitlement: ${updateError.message}`);
   }
 
-  return result;
+  return entitlement;
 }

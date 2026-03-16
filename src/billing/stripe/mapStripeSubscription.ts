@@ -1,32 +1,28 @@
 // FILE: src/billing/stripe/mapStripeSubscription.ts
-// VERSION: prettified / sectioned
 
-export type StripeMappedSubscription = {
-  user_id: string;
-  provider: "stripe";
-  provider_customer_id: string | null;
-  provider_subscription_id: string | null;
-  provider_transaction_id: string | null;
-  provider_original_transaction_id: string | null;
-  product_id: string | null;
-  environment: "sandbox" | "production";
-  status:
-    | "active"
-    | "trialing"
-    | "grace_period"
-    | "past_due"
-    | "paused"
-    | "expired"
-    | "canceled"
-    | "revoked"
-    | "incomplete";
-  current_period_start: string | null;
-  current_period_end: string | null;
-  cancel_at_period_end: boolean;
-  canceled_at: string | null;
-  ended_at: string | null;
-  raw_payload: unknown;
-};
+import type {
+  SharedSubscriptionStatus,
+  SubscriptionRow,
+} from "../types";
+
+export type StripeMappedSubscription = Pick<
+  SubscriptionRow,
+  | "user_id"
+  | "provider"
+  | "provider_customer_id"
+  | "provider_subscription_id"
+  | "provider_transaction_id"
+  | "provider_original_transaction_id"
+  | "product_id"
+  | "environment"
+  | "status"
+  | "current_period_start"
+  | "current_period_end"
+  | "cancel_at_period_end"
+  | "canceled_at"
+  | "ended_at"
+  | "raw_payload"
+>;
 
 export function mapStripeSubscription(params: {
   userId: string;
@@ -36,7 +32,7 @@ export function mapStripeSubscription(params: {
   providerOriginalTransactionId?: string | null;
   productId?: string | null;
   environment: "production" | "sandbox";
-  status?: StripeMappedSubscription["status"] | string | null;
+  status?: SharedSubscriptionStatus | null;
   currentPeriodStart?: string | null;
   currentPeriodEnd?: string | null;
   cancelAtPeriodEnd?: boolean | null;
@@ -54,9 +50,7 @@ export function mapStripeSubscription(params: {
       params.providerOriginalTransactionId ?? params.providerSubscriptionId,
     product_id: params.productId ?? null,
     environment: params.environment,
-    status:
-      (params.status as StripeMappedSubscription["status"] | null | undefined) ??
-      "incomplete",
+    status: params.status ?? "incomplete",
     current_period_start: params.currentPeriodStart ?? null,
     current_period_end: params.currentPeriodEnd ?? null,
     cancel_at_period_end: Boolean(params.cancelAtPeriodEnd),

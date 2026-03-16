@@ -10,9 +10,11 @@ import { sendEmail } from "../_shared/sendEmail.ts";
 import {
   deriveEntitlementFromSubscriptions,
   type EntitlementSnapshot,
-  type SharedSubscriptionRecord,
-  type SharedSubscriptionStatus,
 } from "../../../src/billing/subscriptionRepository.ts";
+import type {
+  SharedSubscriptionStatus,
+  SubscriptionRow,
+} from "../../../src/billing/types.ts";
 
 import { mapStripeSubscription } from "../../../src/billing/stripe/mapStripeSubscription.ts";
 
@@ -323,7 +325,7 @@ type StripeFreshness = {
 };
 
 type ExistingSubscriptionRow = Pick<
-  SharedSubscriptionRecord,
+  SubscriptionRow,
   | "user_id"
   | "provider_customer_id"
   | "provider_subscription_id"
@@ -726,6 +728,31 @@ function stripeEnvironmentFromEvent(
   return event?.livemode ? "production" : "sandbox";
 }
 
+function normalizeStripeSubscriptionStatus(
+  value: unknown,
+): SharedSubscriptionStatus {
+  const normalized = asLowerNonEmptyStringOrNull(value);
+
+  switch (normalized) {
+    case "active":
+    case "trialing":
+    case "past_due":
+    case "paused":
+    case "canceled":
+    case "incomplete":
+      return normalized;
+
+    case "unpaid":
+      return "past_due";
+
+    case "incomplete_expired":
+      return "expired";
+
+    default:
+      throw new Error(`Unsupported Stripe subscription status: ${String(value)}`);
+  }
+}
+
 function getInvoicePeriodRange(invoice: InvoiceLike): {
   currentPeriodStart: string | null;
   currentPeriodEnd: string | null;
@@ -945,7 +972,7 @@ function doesExistingSubscriptionDifferFromWrite(
     provider_original_transaction_id?: string | null;
     product_id?: string | null;
     environment?: "production" | "sandbox";
-    status?: SharedSubscriptionStatus | string | null;
+    status?: SharedSubscriptionStatus | null;
     current_period_start?: string | null;
     current_period_end?: string | null;
     cancel_at_period_end?: boolean | null;
@@ -1085,10 +1112,7 @@ async function recomputeAndPersistEntitlement(
 
   const entitlement = deriveEntitlementFromSubscriptions(
     (data ?? []) as Array<
-      Pick<
-        SharedSubscriptionRecord,
-        "status" | "current_period_end" | "provider"
-      >
+      Pick<SubscriptionRow, "status" | "current_period_end" | "provider">
     >,
   );
 
@@ -1133,7 +1157,7 @@ async function upsertSharedSubscriptionMonotonic(params: {
   providerOriginalTransactionId?: string | null;
   productId?: string | null;
   environment: "production" | "sandbox";
-  status?: SharedSubscriptionStatus | string | null;
+  status?: SharedSubscriptionStatus | null;
   currentPeriodStart?: string | null;
   currentPeriodEnd?: string | null;
   cancelAtPeriodEnd?: boolean | null;
@@ -1687,7 +1711,7 @@ Deno.serve(async (req) => {
         providerOriginalTransactionId: providerSubscriptionId,
         productId: getSubscriptionProductId(subscription),
         environment,
-        status: subscription?.status,
+        status: normalizeStripeSubscriptionStatus(subscription?.status),
         currentPeriodStart: toIsoFromUnix(subscription?.current_period_start),
         currentPeriodEnd: toIsoFromUnix(subscription?.current_period_end),
         cancelAtPeriodEnd:
