@@ -1,4 +1,4 @@
-// FILE: supabase/functions/stripe-webhook/index.ts
+// deno-lint-ignore-file no-import-prefix
 
 import {
   createClient,
@@ -6,17 +6,6 @@ import {
 } from "https://esm.sh/@supabase/supabase-js@2.39.3";
 
 import { sendEmail } from "../_shared/sendEmail.ts";
-
-import {
-  deriveEntitlementFromSubscriptions,
-  type EntitlementSnapshot,
-} from "../../../src/billing/subscriptionRepository.ts";
-import type {
-  SharedSubscriptionStatus,
-  SubscriptionRow,
-} from "../../../src/billing/types.ts";
-
-import { mapStripeSubscription } from "../../../src/billing/stripe/mapStripeSubscription.ts";
 
 /* ============================================================================
  * Minimal DB typing for Deno compatibility
@@ -30,19 +19,54 @@ type Json =
   | { [key: string]: Json | undefined }
   | Json[];
 
+type BillingProvider = "stripe" | "apple" | "google";
+type BillingEnvironment = "production" | "sandbox";
+type SharedSubscriptionStatus =
+  | "active"
+  | "trialing"
+  | "grace_period"
+  | "past_due"
+  | "paused"
+  | "expired"
+  | "revoked";
+
+type CanonicalSubscriptionRow = {
+  user_id: string;
+  provider: BillingProvider;
+  provider_customer_id: string | null;
+  provider_subscription_id: string | null;
+  provider_transaction_id: string | null;
+  provider_original_transaction_id: string | null;
+  product_id: string | null;
+  environment: BillingEnvironment | null;
+  status: SharedSubscriptionStatus;
+  current_period_start: string | null;
+  current_period_end: string | null;
+  cancel_at_period_end: boolean | null;
+  canceled_at: string | null;
+  ended_at: string | null;
+  raw_payload?: unknown;
+};
+
+type EntitlementSnapshot = {
+  status: "active" | "inactive";
+  expires_at: string | null;
+  source: BillingProvider | null;
+};
+
 type Database = {
   public: {
     Tables: {
       subscriptions: {
         Row: {
           user_id: string;
-          provider: "stripe" | "apple" | "google";
+          provider: BillingProvider;
           provider_customer_id: string | null;
           provider_subscription_id: string | null;
           provider_transaction_id: string | null;
           provider_original_transaction_id: string | null;
           product_id: string | null;
-          environment: "production" | "sandbox" | null;
+          environment: BillingEnvironment | null;
           status: string;
           current_period_start: string | null;
           current_period_end: string | null;
@@ -53,13 +77,13 @@ type Database = {
         };
         Insert: {
           user_id: string;
-          provider: "stripe" | "apple" | "google";
+          provider: BillingProvider;
           provider_customer_id?: string | null;
           provider_subscription_id?: string | null;
           provider_transaction_id?: string | null;
           provider_original_transaction_id?: string | null;
           product_id?: string | null;
-          environment?: "production" | "sandbox" | null;
+          environment?: BillingEnvironment | null;
           status: string;
           current_period_start?: string | null;
           current_period_end?: string | null;
@@ -68,20 +92,22 @@ type Database = {
           ended_at?: string | null;
           raw_payload?: Json | null;
         };
-        Update: Partial<Database["public"]["Tables"]["subscriptions"]["Insert"]>;
+        Update: Partial<
+          Database["public"]["Tables"]["subscriptions"]["Insert"]
+        >;
       };
 
       entitlement_events: {
         Row: {
           event_id: string;
-          provider: "stripe" | "apple" | "google";
+          provider: BillingProvider;
           event_type: string;
           user_id: string | null;
           payload: Json | null;
         };
         Insert: {
           event_id: string;
-          provider: "stripe" | "apple" | "google";
+          provider: BillingProvider;
           event_type: string;
           user_id?: string | null;
           payload?: Json | null;
@@ -94,10 +120,15 @@ type Database = {
       email_outbox: {
         Row: {
           id: string;
+          app_key: string | null;
           correlation_id: string | null;
           template_key: string | null;
           to_email: string | null;
           status: string | null;
+          provider: string | null;
+          variables: Record<string, string> | null;
+          last_error: string | null;
+          updated_at: string | null;
         };
         Insert: {
           app_key?: string | null;
@@ -108,10 +139,16 @@ type Database = {
           provider?: string | null;
           variables?: Record<string, string> | null;
           last_error?: string | null;
+          updated_at?: string | null;
         };
         Update: {
+          app_key?: string | null;
+          correlation_id?: string | null;
+          template_key?: string | null;
+          to_email?: string | null;
           status?: string | null;
           provider?: string | null;
+          variables?: Record<string, string> | null;
           last_error?: string | null;
           updated_at?: string | null;
         };
@@ -157,7 +194,8 @@ const corsHeaders: Record<string, string> = {
 };
 
 const OUTBOX_SUCCESS_STATUSES = ["sent", "delivered"] as const;
-const STRIPE_CHECKOUT_BOOTSTRAP_STATUS = "incomplete";
+const STRIPE_CHECKOUT_BOOTSTRAP_STATUS: SharedSubscriptionStatus = "expired";
+const MAX_MONOTONIC_RETRIES = 8;
 
 /* ============================================================================
  * Response helpers
@@ -198,9 +236,10 @@ function isoNow(): string {
 function isUuid(value: unknown): value is string {
   return (
     typeof value === "string" &&
-    /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(
-      value,
-    )
+    /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
+      .test(
+        value,
+      )
   );
 }
 
@@ -221,6 +260,98 @@ function toIsoFromUnix(value: unknown): string | null {
   }
 
   return new Date(value * 1000).toISOString();
+}
+
+function toMillis(value: string | null | undefined): number {
+  if (!value) return Number.NEGATIVE_INFINITY;
+  const time = new Date(value).getTime();
+  return Number.isFinite(time) ? time : Number.NEGATIVE_INFINITY;
+}
+
+function isEntitlingSubscription(
+  subscription: Pick<CanonicalSubscriptionRow, "status" | "current_period_end">,
+): boolean {
+  return (
+    subscription.status === "active" ||
+    subscription.status === "trialing" ||
+    subscription.status === "grace_period" ||
+    subscription.status === "past_due"
+  );
+}
+
+function deriveEntitlementFromSubscriptions(
+  subscriptions: Array<
+    Pick<CanonicalSubscriptionRow, "status" | "current_period_end" | "provider">
+  >,
+): EntitlementSnapshot {
+  let winner:
+    | Pick<
+      CanonicalSubscriptionRow,
+      "status" | "current_period_end" | "provider"
+    >
+    | null = null;
+
+  for (const subscription of subscriptions) {
+    if (!isEntitlingSubscription(subscription)) continue;
+
+    if (
+      !winner ||
+      toMillis(subscription.current_period_end ?? null) >
+        toMillis(winner.current_period_end ?? null)
+    ) {
+      winner = subscription;
+    }
+  }
+
+  if (!winner) {
+    return {
+      status: "inactive",
+      expires_at: null,
+      source: null,
+    };
+  }
+
+  return {
+    status: "active",
+    expires_at: winner.current_period_end ?? null,
+    source: winner.provider,
+  };
+}
+
+function mapStripeSubscription(params: {
+  userId: string;
+  providerCustomerId: string | null;
+  providerSubscriptionId: string;
+  providerTransactionId?: string | null;
+  providerOriginalTransactionId?: string | null;
+  productId?: string | null;
+  environment: BillingEnvironment;
+  status?: SharedSubscriptionStatus | null;
+  currentPeriodStart?: string | null;
+  currentPeriodEnd?: string | null;
+  cancelAtPeriodEnd?: boolean | null;
+  canceledAt?: string | null;
+  endedAt?: string | null;
+  rawPayload: unknown;
+}): Database["public"]["Tables"]["subscriptions"]["Insert"] {
+  return {
+    user_id: params.userId,
+    provider: "stripe",
+    provider_customer_id: params.providerCustomerId ?? null,
+    provider_subscription_id: params.providerSubscriptionId ?? null,
+    provider_transaction_id: params.providerTransactionId ?? null,
+    provider_original_transaction_id: params.providerOriginalTransactionId ??
+      params.providerSubscriptionId,
+    product_id: params.productId ?? null,
+    environment: params.environment,
+    status: params.status ?? "expired",
+    current_period_start: params.currentPeriodStart ?? null,
+    current_period_end: params.currentPeriodEnd ?? null,
+    cancel_at_period_end: Boolean(params.cancelAtPeriodEnd),
+    canceled_at: params.canceledAt ?? null,
+    ended_at: params.endedAt ?? null,
+    raw_payload: (params.rawPayload ?? null) as Json | null,
+  };
 }
 
 /* ============================================================================
@@ -324,9 +455,32 @@ type StripeFreshness = {
   event_id: string | null;
 };
 
-type ExistingSubscriptionRow = Pick<
-  SubscriptionRow,
+type ExistingSubscriptionRow =
+  & Pick<
+    CanonicalSubscriptionRow,
+    | "user_id"
+    | "provider"
+    | "provider_customer_id"
+    | "provider_subscription_id"
+    | "provider_transaction_id"
+    | "provider_original_transaction_id"
+    | "product_id"
+    | "environment"
+    | "status"
+    | "current_period_start"
+    | "current_period_end"
+    | "cancel_at_period_end"
+    | "canceled_at"
+    | "ended_at"
+  >
+  & {
+    raw_payload?: unknown;
+  };
+
+type ComparableSubscriptionWrite = Pick<
+  Database["public"]["Tables"]["subscriptions"]["Insert"],
   | "user_id"
+  | "provider"
   | "provider_customer_id"
   | "provider_subscription_id"
   | "provider_transaction_id"
@@ -339,8 +493,11 @@ type ExistingSubscriptionRow = Pick<
   | "cancel_at_period_end"
   | "canceled_at"
   | "ended_at"
-> & {
-  raw_payload?: unknown;
+>;
+
+type FilterableQuery = {
+  is(column: string, value: null): unknown;
+  eq(column: string, value: string | boolean): unknown;
 };
 
 type EmailRoute = {
@@ -668,8 +825,9 @@ async function sendEmailOnce(params: {
       to: params.to,
       templateKey: params.templateKey,
       status: "failed",
-      lastError:
-        error instanceof Error ? error.message : String(error ?? "unknown error"),
+      lastError: error instanceof Error
+        ? error.message
+        : String(error ?? "unknown error"),
     });
     throw error;
   }
@@ -694,14 +852,14 @@ async function resolveProfileEmail(
   }
 }
 
-async function resolveCheckoutCustomerEmail(
+function resolveCheckoutCustomerEmail(
   session: CheckoutSessionLike,
-): Promise<string | null> {
+): string | null {
   return (
     asNonEmptyStringOrNull(session?.customer_details?.email) ??
-    asNonEmptyStringOrNull(session?.customer_email) ??
-    asNonEmptyStringOrNull(session?.metadata?.email) ??
-    null
+      asNonEmptyStringOrNull(session?.customer_email) ??
+      asNonEmptyStringOrNull(session?.metadata?.email) ??
+      null
   );
 }
 
@@ -710,8 +868,7 @@ async function resolveInvoiceCustomerEmail(params: {
   invoice: InvoiceLike;
   userId: string;
 }): Promise<string | null> {
-  const direct =
-    asNonEmptyStringOrNull(params.invoice?.customer_email) ??
+  const direct = asNonEmptyStringOrNull(params.invoice?.customer_email) ??
     asNonEmptyStringOrNull(params.invoice?.customer_details?.email);
 
   if (direct) return direct;
@@ -724,32 +881,40 @@ async function resolveInvoiceCustomerEmail(params: {
 
 function stripeEnvironmentFromEvent(
   event: StripeWebhookEvent,
-): "production" | "sandbox" {
+): BillingEnvironment {
   return event?.livemode ? "production" : "sandbox";
 }
 
-function normalizeStripeSubscriptionStatus(
-  value: unknown,
-): SharedSubscriptionStatus {
-  const normalized = asLowerNonEmptyStringOrNull(value);
+function normalizeStripeSubscriptionStatus(params: {
+  value: unknown;
+  currentPeriodEnd?: string | null;
+}): SharedSubscriptionStatus {
+  const normalized = asLowerNonEmptyStringOrNull(params.value);
+  const currentPeriodEndMs = isoToMillis(params.currentPeriodEnd ?? null);
 
   switch (normalized) {
     case "active":
     case "trialing":
     case "past_due":
     case "paused":
-    case "canceled":
-    case "incomplete":
       return normalized;
 
     case "unpaid":
       return "past_due";
 
+    case "canceled":
+      return currentPeriodEndMs !== null && currentPeriodEndMs > Date.now()
+        ? "active"
+        : "expired";
+
+    case "incomplete":
     case "incomplete_expired":
       return "expired";
 
     default:
-      throw new Error(`Unsupported Stripe subscription status: ${String(value)}`);
+      throw new Error(
+        `Unsupported Stripe subscription status: ${String(params.value)}`,
+      );
   }
 }
 
@@ -791,7 +956,9 @@ function getInvoiceProductId(invoice: InvoiceLike): string | null {
   return asNonEmptyStringOrNull(firstLine?.price?.product) ?? null;
 }
 
-function getSubscriptionProductId(subscription: SubscriptionLike): string | null {
+function getSubscriptionProductId(
+  subscription: SubscriptionLike,
+): string | null {
   const firstItem = subscription?.items?.data?.[0];
   return asNonEmptyStringOrNull(firstItem?.price?.product) ?? null;
 }
@@ -885,17 +1052,15 @@ function derivePersistedFreshness(rawPayload: unknown): StripeFreshness {
   const record = asRecordOrNull(rawPayload);
   const explicit = asRecordOrNull(record?.__stripe_freshness);
 
-  const explicitObjectTime =
-    typeof explicit?.object_time_ms === "number" &&
-    Number.isFinite(explicit.object_time_ms)
-      ? explicit.object_time_ms
-      : null;
+  const explicitObjectTime = typeof explicit?.object_time_ms === "number" &&
+      Number.isFinite(explicit.object_time_ms)
+    ? explicit.object_time_ms
+    : null;
 
-  const explicitEventCreated =
-    typeof explicit?.event_created === "number" &&
-    Number.isFinite(explicit.event_created)
-      ? explicit.event_created
-      : null;
+  const explicitEventCreated = typeof explicit?.event_created === "number" &&
+      Number.isFinite(explicit.event_created)
+    ? explicit.event_created
+    : null;
 
   const explicitEventId = asNonEmptyStringOrNull(explicit?.event_id);
 
@@ -965,25 +1130,15 @@ function attachStripeFreshnessToRawPayload(
 
 function doesExistingSubscriptionDifferFromWrite(
   existing: ExistingSubscriptionRow,
-  write: {
-    user_id?: string | null;
-    provider_customer_id?: string | null;
-    provider_transaction_id?: string | null;
-    provider_original_transaction_id?: string | null;
-    product_id?: string | null;
-    environment?: "production" | "sandbox";
-    status?: SharedSubscriptionStatus | null;
-    current_period_start?: string | null;
-    current_period_end?: string | null;
-    cancel_at_period_end?: boolean | null;
-    canceled_at?: string | null;
-    ended_at?: string | null;
-  },
+  write: ComparableSubscriptionWrite,
 ): boolean {
   return (
     (existing.user_id ?? null) !== (write.user_id ?? null) ||
+    (existing.provider ?? null) !== (write.provider ?? null) ||
     (existing.provider_customer_id ?? null) !==
       (write.provider_customer_id ?? null) ||
+    (existing.provider_subscription_id ?? null) !==
+      (write.provider_subscription_id ?? null) ||
     (existing.provider_transaction_id ?? null) !==
       (write.provider_transaction_id ?? null) ||
     (existing.provider_original_transaction_id ?? null) !==
@@ -1000,6 +1155,20 @@ function doesExistingSubscriptionDifferFromWrite(
     (existing.canceled_at ?? null) !== (write.canceled_at ?? null) ||
     (existing.ended_at ?? null) !== (write.ended_at ?? null)
   );
+}
+
+function applyExactFilter<T>(
+  query: T,
+  column: string,
+  value: string | boolean | null | undefined,
+): T {
+  const filterable = query as unknown as FilterableQuery;
+
+  if (value == null) {
+    return filterable.is(column, null) as T;
+  }
+
+  return filterable.eq(column, value) as T;
 }
 
 async function hasProcessedEntitlementEvent(
@@ -1056,7 +1225,7 @@ async function getSharedSubscriptionByProviderSubscriptionId(params: {
   const { data, error } = await params.supabase
     .from("subscriptions")
     .select(
-      "user_id,provider_customer_id,provider_subscription_id,provider_transaction_id,provider_original_transaction_id,product_id,environment,status,current_period_start,current_period_end,cancel_at_period_end,canceled_at,ended_at,raw_payload",
+      "user_id,provider,provider_customer_id,provider_subscription_id,provider_transaction_id,provider_original_transaction_id,product_id,environment,status,current_period_start,current_period_end,cancel_at_period_end,canceled_at,ended_at,raw_payload",
     )
     .eq("provider", "stripe")
     .eq("provider_subscription_id", params.providerSubscriptionId)
@@ -1112,7 +1281,10 @@ async function recomputeAndPersistEntitlement(
 
   const entitlement = deriveEntitlementFromSubscriptions(
     (data ?? []) as Array<
-      Pick<SubscriptionRow, "status" | "current_period_end" | "provider">
+      Pick<
+        CanonicalSubscriptionRow,
+        "status" | "current_period_end" | "provider"
+      >
     >,
   );
 
@@ -1156,7 +1328,7 @@ async function upsertSharedSubscriptionMonotonic(params: {
   providerTransactionId?: string | null;
   providerOriginalTransactionId?: string | null;
   productId?: string | null;
-  environment: "production" | "sandbox";
+  environment: BillingEnvironment;
   status?: SharedSubscriptionStatus | null;
   currentPeriodStart?: string | null;
   currentPeriodEnd?: string | null;
@@ -1175,7 +1347,7 @@ async function upsertSharedSubscriptionMonotonic(params: {
     params.event,
   );
 
-  for (;;) {
+  for (let attempt = 0; attempt < MAX_MONOTONIC_RETRIES; attempt++) {
     const existing = await getSharedSubscriptionByProviderSubscriptionId({
       supabase: params.supabase,
       providerSubscriptionId: params.providerSubscriptionId,
@@ -1187,28 +1359,25 @@ async function upsertSharedSubscriptionMonotonic(params: {
 
     const write = mapStripeSubscription({
       userId: params.userId,
-      providerCustomerId:
-        params.providerCustomerId ?? existing?.provider_customer_id ?? null,
+      providerCustomerId: params.providerCustomerId ??
+        existing?.provider_customer_id ?? null,
       providerSubscriptionId: params.providerSubscriptionId,
-      providerTransactionId:
-        params.providerTransactionId ??
+      providerTransactionId: params.providerTransactionId ??
         existing?.provider_transaction_id ??
         null,
-      providerOriginalTransactionId:
-        params.providerOriginalTransactionId ??
+      providerOriginalTransactionId: params.providerOriginalTransactionId ??
         existing?.provider_original_transaction_id ??
         params.providerSubscriptionId,
       productId: params.productId ?? existing?.product_id ?? null,
       environment: params.environment,
-      status: params.status ?? existing?.status ?? "incomplete",
-      currentPeriodStart:
-        params.currentPeriodStart ?? existing?.current_period_start ?? null,
-      currentPeriodEnd:
-        params.currentPeriodEnd ?? existing?.current_period_end ?? null,
-      cancelAtPeriodEnd:
-        typeof params.cancelAtPeriodEnd === "boolean"
-          ? params.cancelAtPeriodEnd
-          : (existing?.cancel_at_period_end ?? false),
+      status: params.status ?? existing?.status ?? "expired",
+      currentPeriodStart: params.currentPeriodStart ??
+        existing?.current_period_start ?? null,
+      currentPeriodEnd: params.currentPeriodEnd ??
+        existing?.current_period_end ?? null,
+      cancelAtPeriodEnd: typeof params.cancelAtPeriodEnd === "boolean"
+        ? params.cancelAtPeriodEnd
+        : (existing?.cancel_at_period_end ?? false),
       canceledAt: params.canceledAt ?? existing?.canceled_at ?? null,
       endedAt: params.endedAt ?? existing?.ended_at ?? null,
       rawPayload: rawPayloadWithFreshness,
@@ -1247,9 +1416,7 @@ async function upsertSharedSubscriptionMonotonic(params: {
     if (!existing) {
       const { error } = await params.supabase
         .from("subscriptions")
-        .insert(
-          write as Database["public"]["Tables"]["subscriptions"]["Insert"],
-        );
+        .insert(write);
 
       if (!error) {
         return {
@@ -1259,12 +1426,46 @@ async function upsertSharedSubscriptionMonotonic(params: {
       }
 
       if (isDuplicateEventInsertError(error)) {
-        const inserted = await getSharedSubscriptionByProviderSubscriptionId({
+        const latest = await getSharedSubscriptionByProviderSubscriptionId({
           supabase: params.supabase,
           providerSubscriptionId: params.providerSubscriptionId,
         });
 
-        if (inserted) continue;
+        if (!latest) continue;
+
+        if (latest.user_id != null && latest.user_id !== params.userId) {
+          throw new Error("Stripe subscription ownership mismatch");
+        }
+
+        const latestFreshness = derivePersistedFreshness(latest.raw_payload);
+        const latestComparison = compareStripeFreshness(
+          incomingFreshness,
+          latestFreshness,
+        );
+
+        if (latestComparison < 0) {
+          return {
+            stateChanged: false,
+            shouldRecomputeBeforeFinalMark:
+              latestFreshness.event_id === params.event.id,
+          };
+        }
+
+        if (latestComparison === 0) {
+          if (doesExistingSubscriptionDifferFromWrite(latest, write)) {
+            throw new Error(
+              "Ambiguous equal-freshness Stripe subscription update",
+            );
+          }
+
+          return {
+            stateChanged: false,
+            shouldRecomputeBeforeFinalMark:
+              latestFreshness.event_id === params.event.id,
+          };
+        }
+
+        continue;
       }
 
       throw error;
@@ -1276,11 +1477,48 @@ async function upsertSharedSubscriptionMonotonic(params: {
       .eq("provider", "stripe")
       .eq("provider_subscription_id", params.providerSubscriptionId);
 
-    if (existing.raw_payload == null) {
-      query = query.is("raw_payload", null);
-    } else {
-      query = query.eq("raw_payload", existing.raw_payload as Json);
-    }
+    query = applyExactFilter(query, "user_id", existing.user_id);
+    query = applyExactFilter(query, "provider", existing.provider);
+    query = applyExactFilter(
+      query,
+      "provider_customer_id",
+      existing.provider_customer_id,
+    );
+    query = applyExactFilter(
+      query,
+      "provider_subscription_id",
+      existing.provider_subscription_id,
+    );
+    query = applyExactFilter(
+      query,
+      "provider_transaction_id",
+      existing.provider_transaction_id,
+    );
+    query = applyExactFilter(
+      query,
+      "provider_original_transaction_id",
+      existing.provider_original_transaction_id,
+    );
+    query = applyExactFilter(query, "product_id", existing.product_id);
+    query = applyExactFilter(query, "environment", existing.environment);
+    query = applyExactFilter(query, "status", existing.status);
+    query = applyExactFilter(
+      query,
+      "current_period_start",
+      existing.current_period_start,
+    );
+    query = applyExactFilter(
+      query,
+      "current_period_end",
+      existing.current_period_end,
+    );
+    query = applyExactFilter(
+      query,
+      "cancel_at_period_end",
+      existing.cancel_at_period_end,
+    );
+    query = applyExactFilter(query, "canceled_at", existing.canceled_at);
+    query = applyExactFilter(query, "ended_at", existing.ended_at);
 
     const { data, error } = await query
       .select("provider_subscription_id")
@@ -1298,7 +1536,52 @@ async function upsertSharedSubscriptionMonotonic(params: {
         shouldRecomputeBeforeFinalMark: true,
       };
     }
+
+    const latest = await getSharedSubscriptionByProviderSubscriptionId({
+      supabase: params.supabase,
+      providerSubscriptionId: params.providerSubscriptionId,
+    });
+
+    if (!latest) {
+      continue;
+    }
+
+    if (latest.user_id != null && latest.user_id !== params.userId) {
+      throw new Error("Stripe subscription ownership mismatch");
+    }
+
+    const latestFreshness = derivePersistedFreshness(latest.raw_payload);
+    const latestComparison = compareStripeFreshness(
+      incomingFreshness,
+      latestFreshness,
+    );
+
+    if (latestComparison < 0) {
+      return {
+        stateChanged: false,
+        shouldRecomputeBeforeFinalMark:
+          latestFreshness.event_id === params.event.id,
+      };
+    }
+
+    if (latestComparison === 0) {
+      if (doesExistingSubscriptionDifferFromWrite(latest, write)) {
+        throw new Error(
+          "Ambiguous equal-freshness Stripe subscription update",
+        );
+      }
+
+      return {
+        stateChanged: false,
+        shouldRecomputeBeforeFinalMark:
+          latestFreshness.event_id === params.event.id,
+      };
+    }
   }
+
+  throw new Error(
+    "Failed to apply monotonic Stripe subscription update after concurrent modifications",
+  );
 }
 
 /* ============================================================================
@@ -1398,7 +1681,9 @@ Deno.serve(async (req) => {
 
       const mode = asLowerNonEmptyStringOrNull(session?.mode);
       const sessionStatus = asLowerNonEmptyStringOrNull(session?.status);
-      const paymentStatus = asLowerNonEmptyStringOrNull(session?.payment_status);
+      const paymentStatus = asLowerNonEmptyStringOrNull(
+        session?.payment_status,
+      );
 
       if (
         mode !== "subscription" ||
@@ -1408,8 +1693,7 @@ Deno.serve(async (req) => {
         return ok200();
       }
 
-      const candidateUserId =
-        session?.client_reference_id ??
+      const candidateUserId = session?.client_reference_id ??
         session?.metadata?.supabase_user_id ??
         session?.metadata?.user_id ??
         null;
@@ -1456,16 +1740,15 @@ Deno.serve(async (req) => {
       });
 
       if (didMarkProcessed) {
-        const customerEmail = await resolveCheckoutCustomerEmail(session);
+        const customerEmail = resolveCheckoutCustomerEmail(session);
 
         if (customerEmail) {
           const route = resolveEmailRoute(customerEmail);
 
           if (route) {
-            const amount =
-              typeof session.amount_total === "number"
-                ? session.amount_total
-                : 0;
+            const amount = typeof session.amount_total === "number"
+              ? session.amount_total
+              : 0;
 
             const currency = asNonEmptyStringOrNull(session.currency);
             const correlationId = event.id;
@@ -1580,12 +1863,11 @@ Deno.serve(async (req) => {
           const route = resolveEmailRoute(customerEmail);
 
           if (route) {
-            const amountMinor =
-              typeof invoice.amount_paid === "number"
-                ? invoice.amount_paid
-                : typeof invoice.amount_due === "number"
-                  ? invoice.amount_due
-                  : 0;
+            const amountMinor = typeof invoice.amount_paid === "number"
+              ? invoice.amount_paid
+              : typeof invoice.amount_due === "number"
+              ? invoice.amount_due
+              : 0;
 
             const currency = asNonEmptyStringOrNull(invoice.currency);
             const correlationId = event.id;
@@ -1684,13 +1966,11 @@ Deno.serve(async (req) => {
         return ok200();
       }
 
-      const metadataUserId =
-        subscription?.metadata?.supabase_user_id ??
+      const metadataUserId = subscription?.metadata?.supabase_user_id ??
         subscription?.metadata?.user_id ??
         null;
 
-      const userId =
-        (isUuid(metadataUserId) ? metadataUserId : null) ??
+      const userId = (isUuid(metadataUserId) ? metadataUserId : null) ??
         (await resolveUserByStripeLinkage({
           supabase,
           providerSubscriptionId,
@@ -1700,6 +1980,8 @@ Deno.serve(async (req) => {
       if (!userId) {
         throw new Error("customer.subscription.updated user resolution failed");
       }
+
+      const currentPeriodEnd = toIsoFromUnix(subscription?.current_period_end);
 
       const upsertResult = await upsertSharedSubscriptionMonotonic({
         supabase,
@@ -1711,9 +1993,12 @@ Deno.serve(async (req) => {
         providerOriginalTransactionId: providerSubscriptionId,
         productId: getSubscriptionProductId(subscription),
         environment,
-        status: normalizeStripeSubscriptionStatus(subscription?.status),
+        status: normalizeStripeSubscriptionStatus({
+          value: subscription?.status,
+          currentPeriodEnd,
+        }),
         currentPeriodStart: toIsoFromUnix(subscription?.current_period_start),
-        currentPeriodEnd: toIsoFromUnix(subscription?.current_period_end),
+        currentPeriodEnd,
         cancelAtPeriodEnd:
           typeof subscription?.cancel_at_period_end === "boolean"
             ? subscription.cancel_at_period_end
@@ -1743,13 +2028,11 @@ Deno.serve(async (req) => {
         return ok200();
       }
 
-      const metadataUserId =
-        subscription?.metadata?.supabase_user_id ??
+      const metadataUserId = subscription?.metadata?.supabase_user_id ??
         subscription?.metadata?.user_id ??
         null;
 
-      const userId =
-        (isUuid(metadataUserId) ? metadataUserId : null) ??
+      const userId = (isUuid(metadataUserId) ? metadataUserId : null) ??
         (await resolveUserByStripeLinkage({
           supabase,
           providerSubscriptionId,
@@ -1765,7 +2048,7 @@ Deno.serve(async (req) => {
 
       const status: SharedSubscriptionStatus =
         currentPeriodEnd && new Date(currentPeriodEnd).getTime() > Date.now()
-          ? "canceled"
+          ? "active"
           : "expired";
 
       const upsertResult = await upsertSharedSubscriptionMonotonic({
