@@ -1,3 +1,4 @@
+// FILE: src/integrations/supabase/types.ts
 export type Json =
   | string
   | number
@@ -824,6 +825,51 @@ export type Database = {
             columns: ["campaign_id"]
             isOneToOne: false
             referencedRelation: "email_campaigns"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      entitlement_events: {
+        Row: {
+          created_at: string
+          event_id: string
+          event_type: string
+          id: string
+          payload: Json | null
+          provider: string
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          event_id: string
+          event_type: string
+          id?: string
+          payload?: Json | null
+          provider: string
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          event_id?: string
+          event_type?: string
+          id?: string
+          payload?: Json | null
+          provider?: string
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "entitlement_events_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "entitlement_events_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "vip3_public_profiles"
             referencedColumns: ["id"]
           },
         ]
@@ -1796,6 +1842,10 @@ export type Database = {
           full_name: string | null
           id: string
           phone: string | null
+          premium_expires_at: string | null
+          premium_source: string | null
+          premium_status: string
+          stripe_customer_id: string | null
           updated_at: string | null
           username: string | null
         }
@@ -1807,6 +1857,10 @@ export type Database = {
           full_name?: string | null
           id: string
           phone?: string | null
+          premium_expires_at?: string | null
+          premium_source?: string | null
+          premium_status?: string
+          stripe_customer_id?: string | null
           updated_at?: string | null
           username?: string | null
         }
@@ -1818,6 +1872,10 @@ export type Database = {
           full_name?: string | null
           id?: string
           phone?: string | null
+          premium_expires_at?: string | null
+          premium_source?: string | null
+          premium_status?: string
+          stripe_customer_id?: string | null
           updated_at?: string | null
           username?: string | null
         }
@@ -2452,6 +2510,84 @@ export type Database = {
           user_id?: string
         }
         Relationships: []
+      }
+      subscriptions: {
+        Row: {
+          cancel_at_period_end: boolean
+          canceled_at: string | null
+          created_at: string
+          current_period_end: string | null
+          current_period_start: string | null
+          ended_at: string | null
+          environment: string | null
+          id: string
+          product_id: string | null
+          provider: string
+          provider_customer_id: string | null
+          provider_original_transaction_id: string | null
+          provider_subscription_id: string | null
+          provider_transaction_id: string | null
+          raw_payload: Json | null
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          cancel_at_period_end?: boolean
+          canceled_at?: string | null
+          created_at?: string
+          current_period_end?: string | null
+          current_period_start?: string | null
+          ended_at?: string | null
+          environment?: string | null
+          id?: string
+          product_id?: string | null
+          provider: string
+          provider_customer_id?: string | null
+          provider_original_transaction_id?: string | null
+          provider_subscription_id?: string | null
+          provider_transaction_id?: string | null
+          raw_payload?: Json | null
+          status: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          cancel_at_period_end?: boolean
+          canceled_at?: string | null
+          created_at?: string
+          current_period_end?: string | null
+          current_period_start?: string | null
+          ended_at?: string | null
+          environment?: string | null
+          id?: string
+          product_id?: string | null
+          provider?: string
+          provider_customer_id?: string | null
+          provider_original_transaction_id?: string | null
+          provider_subscription_id?: string | null
+          provider_transaction_id?: string | null
+          raw_payload?: Json | null
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "subscriptions_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "subscriptions_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "vip3_public_profiles"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       subscription_tiers: {
         Row: {

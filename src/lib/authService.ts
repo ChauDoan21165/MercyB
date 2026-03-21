@@ -1,37 +1,186 @@
 // src/lib/authService.ts
-// Version: MB-BLUE-100.0 — 2026-01-03 (+0700)
-//
-// PURPOSE:
-// - Centralized Supabase authentication helpers
-// - Email/password signup, signin, signout, current user fetch
-// - VIP helper reads DB view: public.current_user_vip (RLS-protected)
-
+import type { SupabaseClient } from "@supabase/supabase-js";
 import { supabase } from "./supabaseClient";
+import type { TierId } from "@/lib/constants/tiers";
 import type { VipKey } from "./auth";
 
-function isAlreadyRegisteredAuthError(err: any) {
-  const msg = String(err?.message || err?.error_description || err?.error || "").toLowerCase();
-  const code = String(err?.code || err?.status || "").toLowerCase();
+export type BackendEntitlement = {
+  is_premium: boolean;
+  source: string | null;
+  status: string;
+  expires_at: string | null;
+  plan_name?: string | null;
+  tier_id?: string | null;
+};
 
-  // Supabase/GoTrue commonly uses these phrases depending on settings
+export const FAIL_CLOSED_ENTITLEMENT: BackendEntitlement = {
+  is_premium: false,
+  source: null,
+  status: "inactive",
+  expires_at: null,
+  plan_name: null,
+  tier_id: null,
+};
+
+function isAlreadyRegisteredAuthError(err: unknown) {
+  const row = (err ?? {}) as Record<string, unknown>;
+  const msg = String(
+    row.message || row.error_description || row.error || "",
+  ).toLowerCase();
+  const code = String(row.code || row.status || "").toLowerCase();
+
   if (msg.includes("user already registered")) return true;
   if (msg.includes("already registered")) return true;
   if (msg.includes("already exists")) return true;
   if (msg.includes("email already")) return true;
-
-  // Some structured variants
   if (code === "user_already_exists") return true;
 
   return false;
+}
+
+function asNonEmptyStringOrNull(value: unknown): string | null {
+  if (typeof value !== "string") return null;
+  const trimmed = value.trim();
+  return trimmed.length > 0 ? trimmed : null;
+}
+
+function normalizeEntitlement(payload: unknown): BackendEntitlement {
+  const row =
+    payload && typeof payload === "object"
+      ? (payload as Record<string, unknown>)
+      : {};
+
+  const isPremium = row.is_premium === true;
+  const status =
+    asNonEmptyStringOrNull(row.status) ??
+    (isPremium ? "active" : "inactive");
+
+  return {
+    is_premium: isPremium,
+    source: asNonEmptyStringOrNull(row.source),
+    status,
+    expires_at: asNonEmptyStringOrNull(row.expires_at),
+    plan_name: asNonEmptyStringOrNull(row.plan_name),
+    tier_id: asNonEmptyStringOrNull(row.tier_id),
+  };
+}
+
+export function entitlementIsPremium(
+  ent: BackendEntitlement | null | undefined,
+): boolean {
+  return (
+    ent?.is_premium === true &&
+    String(ent?.status ?? "").toLowerCase() === "active"
+  );
+}
+
+function entitlementText(ent: BackendEntitlement | null | undefined): string {
+  return [ent?.tier_id, ent?.plan_name, ent?.source, ent?.status]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase()
+    .replace(/[\s_-]+/g, "");
+}
+
+export function resolveEntitlementTier(
+  ent: BackendEntitlement | null | undefined,
+): TierId {
+  if (!entitlementIsPremium(ent)) return "free";
+
+  const text = entitlementText(ent);
+
+  if (
+    text.includes("vip9") ||
+    text.includes("oneyear") ||
+    text.includes("yearly") ||
+    text.includes("annual") ||
+    text.includes("12month")
+  ) {
+    return "vip9";
+  }
+
+  if (text.includes("vip6")) return "vip6";
+  if (text.includes("vip5")) return "vip5";
+  if (text.includes("vip4")) return "vip4";
+  if (text.includes("vip3")) return "vip3";
+  if (text.includes("vip2")) return "vip2";
+
+  if (
+    text.includes("vip1") ||
+    text.includes("onemonth") ||
+    text.includes("monthly") ||
+    text.includes("month")
+  ) {
+    return "vip1";
+  }
+
+  return "vip1";
+}
+
+export function entitlementToVipKey(
+  ent: BackendEntitlement | null | undefined,
+): VipKey {
+  const tier = resolveEntitlementTier(ent);
+
+  if (tier === "vip9") return "vip9";
+  if (
+    tier === "vip3" ||
+    tier === "vip4" ||
+    tier === "vip5" ||
+    tier === "vip6"
+  ) {
+    return "vip3";
+  }
+  if (tier === "vip1" || tier === "vip2") return "vip1";
+  return "free";
+}
+
+export async function fetchCurrentEntitlement(
+  client: SupabaseClient = supabase,
+): Promise<BackendEntitlement | null> {
+  try {
+    const {
+      data: { session },
+      error: sessionError,
+    } = await client.auth.getSession();
+
+    if (sessionError) {
+      console.warn(
+        "[authService] getSession failed for entitlement fetch:",
+        sessionError,
+      );
+      return { ...FAIL_CLOSED_ENTITLEMENT };
+    }
+
+    if (!session?.access_token) {
+      return null;
+    }
+
+    const { data, error } = await client.functions.invoke("me-entitlement", {
+      method: "GET",
+    });
+
+    if (error) {
+      console.warn("[authService] me-entitlement failed:", error);
+      return { ...FAIL_CLOSED_ENTITLEMENT };
+    }
+
+    return normalizeEntitlement(data);
+  } catch (error) {
+    console.warn("[authService] entitlement fetch crashed:", error);
+    return { ...FAIL_CLOSED_ENTITLEMENT };
+  }
 }
 
 export async function signUpWithEmail(email: string, password: string) {
   const { data, error } = await supabase.auth.signUp({ email, password });
 
   if (error) {
-    // ✅ Give callers a clear, consistent message to show in UI
     if (isAlreadyRegisteredAuthError(error)) {
-      const e: any = new Error("This email is already registered. Please sign in instead.");
+      const e = new Error(
+        "This email is already registered. Please sign in instead.",
+      ) as Error & { code?: string; cause?: unknown };
+
       e.code = "email_already_registered";
       e.cause = error;
       console.error("Sign up error (already registered):", error);
@@ -46,16 +195,22 @@ export async function signUpWithEmail(email: string, password: string) {
 }
 
 export async function signInWithEmail(email: string, password: string) {
-  const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password,
+  });
+
   if (error) {
     console.error("Sign in error:", error);
     throw error;
   }
-  return data; // data.session, data.user
+
+  return data;
 }
 
 export async function signOut() {
   const { error } = await supabase.auth.signOut();
+
   if (error) {
     console.error("Sign out error:", error);
     throw error;
@@ -77,24 +232,10 @@ export async function getCurrentUser() {
 }
 
 /**
- * VIP SOURCE OF TRUTH:
- * - Reads public.current_user_vip (view)
- * - Returns vip_key or "free"
+ * Compatibility shim for older code still expecting VipKey.
+ * Canonical paid truth is me-entitlement.
  */
 export async function getCurrentVipKey(): Promise<VipKey> {
-  try {
-    const { data, error } = await supabase
-      .from("current_user_vip")
-      .select("vip_key")
-      .maybeSingle();
-
-    if (error) throw error;
-
-    const raw = String((data as any)?.vip_key ?? "free").toLowerCase();
-    if (raw === "vip1" || raw === "vip3" || raw === "vip9") return raw;
-    return "free";
-  } catch (e) {
-    console.warn("getCurrentVipKey: fallback to free", e);
-    return "free";
-  }
+  const ent = await fetchCurrentEntitlement();
+  return entitlementToVipKey(ent);
 }

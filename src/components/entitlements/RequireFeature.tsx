@@ -14,9 +14,25 @@ export default function RequireFeature({
   const { loading, hasFlag, ent } = useEntitlements();
 
   if (loading) return <>{fallback}</>;
-  if (!ent) return <>{fallback}</>; // not signed in or no row yet
+  if (!ent) return <>{fallback}</>;
 
-  const ok = hasFlag(flag, false);
+  const normalized = String(flag || "").trim().toLowerCase();
+
+  if (normalized === "premium" || normalized === "is_premium") {
+    return ent.is_premium === true && ent.status === "active"
+      ? <>{children}</>
+      : <>{fallback}</>;
+  }
+
+  const vipMatch = normalized.match(/^vip(\d+)$/);
+  if (vipMatch) {
+    const requiredRank = Number(vipMatch[1]);
+    return (ent.vip_rank ?? 0) >= requiredRank
+      ? <>{children}</>
+      : <>{fallback}</>;
+  }
+
+  const ok = hasFlag(normalized, false);
   if (!ok) return <>{fallback}</>;
 
   return <>{children}</>;

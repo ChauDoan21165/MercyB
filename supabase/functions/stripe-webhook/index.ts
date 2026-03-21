@@ -31,13 +31,22 @@ type SharedSubscriptionStatus =
   | "revoked";
 
 type CanonicalSubscriptionRow = {
+  app_id: string;
   user_id: string;
   provider: BillingProvider;
+
+  customer_id: string;
+  subscription_id: string;
+  price_id: string | null;
+
   provider_customer_id: string | null;
   provider_subscription_id: string | null;
   provider_transaction_id: string | null;
   provider_original_transaction_id: string | null;
+
   product_id: string | null;
+  provider_price_id: string | null;
+
   environment: BillingEnvironment | null;
   status: SharedSubscriptionStatus;
   current_period_start: string | null;
@@ -45,6 +54,7 @@ type CanonicalSubscriptionRow = {
   cancel_at_period_end: boolean | null;
   canceled_at: string | null;
   ended_at: string | null;
+  metadata?: Json | null;
   raw_payload?: unknown;
 };
 
@@ -59,13 +69,22 @@ type Database = {
     Tables: {
       subscriptions: {
         Row: {
+          app_id: string;
           user_id: string;
           provider: BillingProvider;
+
+          customer_id: string;
+          subscription_id: string;
+          price_id: string | null;
+
           provider_customer_id: string | null;
           provider_subscription_id: string | null;
           provider_transaction_id: string | null;
           provider_original_transaction_id: string | null;
+
           product_id: string | null;
+          provider_price_id: string | null;
+
           environment: BillingEnvironment | null;
           status: string;
           current_period_start: string | null;
@@ -73,16 +92,28 @@ type Database = {
           cancel_at_period_end: boolean | null;
           canceled_at: string | null;
           ended_at: string | null;
+          metadata: Json | null;
           raw_payload: Json | null;
+          created_at: string | null;
+          updated_at: string | null;
         };
         Insert: {
+          app_id: string;
           user_id: string;
           provider: BillingProvider;
+
+          customer_id: string;
+          subscription_id: string;
+          price_id?: string | null;
+
           provider_customer_id?: string | null;
           provider_subscription_id?: string | null;
           provider_transaction_id?: string | null;
           provider_original_transaction_id?: string | null;
+
           product_id?: string | null;
+          provider_price_id?: string | null;
+
           environment?: BillingEnvironment | null;
           status: string;
           current_period_start?: string | null;
@@ -90,7 +121,10 @@ type Database = {
           cancel_at_period_end?: boolean | null;
           canceled_at?: string | null;
           ended_at?: string | null;
+          metadata?: Json | null;
           raw_payload?: Json | null;
+          created_at?: string | null;
+          updated_at?: string | null;
         };
         Update: Partial<
           Database["public"]["Tables"]["subscriptions"]["Insert"]
@@ -158,6 +192,7 @@ type Database = {
         Row: {
           id: string;
           email: string | null;
+          stripe_customer_id: string | null;
           premium_status: string | null;
           premium_expires_at: string | null;
           premium_source: string | null;
@@ -165,12 +200,14 @@ type Database = {
         Insert: {
           id: string;
           email?: string | null;
+          stripe_customer_id?: string | null;
           premium_status?: string | null;
           premium_expires_at?: string | null;
           premium_source?: string | null;
         };
         Update: {
           email?: string | null;
+          stripe_customer_id?: string | null;
           premium_status?: string | null;
           premium_expires_at?: string | null;
           premium_source?: string | null;
@@ -194,6 +231,9 @@ const corsHeaders: Record<string, string> = {
 };
 
 const OUTBOX_SUCCESS_STATUSES = ["sent", "delivered"] as const;
+const APP_ID = "mercy_blade" as const;
+const SUBSCRIPTIONS_TABLE = "subscriptions" as const;
+const STRIPE_PROVIDER: BillingProvider = "stripe";
 const STRIPE_CHECKOUT_BOOTSTRAP_STATUS: SharedSubscriptionStatus = "expired";
 const MAX_MONOTONIC_RETRIES = 8;
 
@@ -227,6 +267,25 @@ function env(key: string): string {
 
 function envRaw(key: string): string {
   return Deno.env.get(key) ?? "";
+}
+
+function getSupabaseUrl(): string {
+  const configured = env("PROJECT_URL") ||
+    env("SUPABASE_URL") ||
+    env("VITE_SUPABASE_URL") ||
+    env("NEXT_PUBLIC_SUPABASE_URL");
+
+  return configured ? configured.replace(/\/+$/, "") : "";
+}
+
+function getServiceRoleKey(): string {
+  return env("SERVICE_ROLE_KEY") || env("SUPABASE_SERVICE_ROLE_KEY");
+}
+
+function getStripeSecretKey(): string {
+  return env("STRIPE_SECRET_KEY") ||
+    env("SECRET_STRIPE_KEY") ||
+    env("STRIPE_API_KEY");
 }
 
 function isoNow(): string {
@@ -320,11 +379,12 @@ function deriveEntitlementFromSubscriptions(
 
 function mapStripeSubscription(params: {
   userId: string;
-  providerCustomerId: string | null;
+  providerCustomerId: string;
   providerSubscriptionId: string;
   providerTransactionId?: string | null;
   providerOriginalTransactionId?: string | null;
   productId?: string | null;
+  providerPriceId?: string | null;
   environment: BillingEnvironment;
   status?: SharedSubscriptionStatus | null;
   currentPeriodStart?: string | null;
@@ -332,25 +392,40 @@ function mapStripeSubscription(params: {
   cancelAtPeriodEnd?: boolean | null;
   canceledAt?: string | null;
   endedAt?: string | null;
+  metadata?: unknown;
   rawPayload: unknown;
 }): Database["public"]["Tables"]["subscriptions"]["Insert"] {
   return {
+    app_id: APP_ID,
     user_id: params.userId,
-    provider: "stripe",
-    provider_customer_id: params.providerCustomerId ?? null,
-    provider_subscription_id: params.providerSubscriptionId ?? null,
+    provider: STRIPE_PROVIDER,
+
+    customer_id: params.providerCustomerId,
+    subscription_id: params.providerSubscriptionId,
+    price_id: params.providerPriceId ?? null,
+
+    provider_customer_id: params.providerCustomerId,
+    provider_subscription_id: params.providerSubscriptionId,
     provider_transaction_id: params.providerTransactionId ?? null,
     provider_original_transaction_id: params.providerOriginalTransactionId ??
       params.providerSubscriptionId,
+
     product_id: params.productId ?? null,
+    provider_price_id: params.providerPriceId ?? null,
+
     environment: params.environment,
     status: params.status ?? "expired",
     current_period_start: params.currentPeriodStart ?? null,
     current_period_end: params.currentPeriodEnd ?? null,
-    cancel_at_period_end: Boolean(params.cancelAtPeriodEnd),
+    cancel_at_period_end:
+      typeof params.cancelAtPeriodEnd === "boolean"
+        ? params.cancelAtPeriodEnd
+        : null,
     canceled_at: params.canceledAt ?? null,
     ended_at: params.endedAt ?? null,
+    metadata: (params.metadata ?? null) as Json | null,
     raw_payload: (params.rawPayload ?? null) as Json | null,
+    updated_at: isoNow(),
   };
 }
 
@@ -362,6 +437,7 @@ type SupportedEventType =
   | "checkout.session.completed"
   | "invoice.paid"
   | "invoice.payment_failed"
+  | "customer.subscription.created"
   | "customer.subscription.updated"
   | "customer.subscription.deleted";
 
@@ -371,6 +447,7 @@ type StripeObjectMetadata = {
   tier_id?: string | null;
   vip_key?: string | null;
   email?: string | null;
+  price_id?: string | null;
 };
 
 type StripeWebhookEvent<TObject = unknown> = {
@@ -453,18 +530,25 @@ type StripeFreshness = {
   object_time_ms: number | null;
   event_created: number | null;
   event_id: string | null;
+  event_type: string | null;
+  event_priority: number | null;
 };
 
 type ExistingSubscriptionRow =
   & Pick<
     CanonicalSubscriptionRow,
+    | "app_id"
     | "user_id"
     | "provider"
+    | "customer_id"
+    | "subscription_id"
+    | "price_id"
     | "provider_customer_id"
     | "provider_subscription_id"
     | "provider_transaction_id"
     | "provider_original_transaction_id"
     | "product_id"
+    | "provider_price_id"
     | "environment"
     | "status"
     | "current_period_start"
@@ -474,18 +558,24 @@ type ExistingSubscriptionRow =
     | "ended_at"
   >
   & {
+    metadata?: Json | null;
     raw_payload?: unknown;
   };
 
 type ComparableSubscriptionWrite = Pick<
   Database["public"]["Tables"]["subscriptions"]["Insert"],
+  | "app_id"
   | "user_id"
   | "provider"
+  | "customer_id"
+  | "subscription_id"
+  | "price_id"
   | "provider_customer_id"
   | "provider_subscription_id"
   | "provider_transaction_id"
   | "provider_original_transaction_id"
   | "product_id"
+  | "provider_price_id"
   | "environment"
   | "status"
   | "current_period_start"
@@ -520,6 +610,7 @@ function isSupportedEventType(value: string): value is SupportedEventType {
     value === "checkout.session.completed" ||
     value === "invoice.paid" ||
     value === "invoice.payment_failed" ||
+    value === "customer.subscription.created" ||
     value === "customer.subscription.updated" ||
     value === "customer.subscription.deleted"
   );
@@ -734,7 +825,7 @@ async function outboxUpsertQueued(params: {
 
     await params.supabase.from("email_outbox").upsert(
       {
-        app_key: "mercy_blade",
+        app_key: APP_ID,
         correlation_id: params.correlationId,
         template_key: params.templateKey,
         to_email: params.to,
@@ -806,7 +897,7 @@ async function sendEmailOnce(params: {
       to: params.to,
       templateKey: params.templateKey,
       variables: params.variables,
-      appKey: "mercy_blade",
+      appKey: APP_ID,
       correlationId: params.correlationId,
     });
 
@@ -830,6 +921,78 @@ async function sendEmailOnce(params: {
         : String(error ?? "unknown error"),
     });
     throw error;
+  }
+}
+
+async function resolveUserIdByProfileStripeCustomerId(
+  supabase: DBClient,
+  providerCustomerId: string,
+): Promise<string | null> {
+  const { data, error } = await supabase
+    .from("profiles")
+    .select("id")
+    .eq("stripe_customer_id", providerCustomerId)
+    .maybeSingle();
+
+  if (error) throw error;
+
+  const id = (data as { id?: string | null } | null)?.id ?? null;
+  return isUuid(id) ? id : null;
+}
+
+async function syncProfileStripeCustomerIdBestEffort(params: {
+  supabase: DBClient;
+  userId: string;
+  providerCustomerId: string | null;
+}) {
+  const providerCustomerId = asNonEmptyStringOrNull(params.providerCustomerId);
+
+  if (!providerCustomerId) return;
+
+  try {
+    const { data, error } = await params.supabase
+      .from("profiles")
+      .select("stripe_customer_id")
+      .eq("id", params.userId)
+      .maybeSingle();
+
+    if (error) throw error;
+
+    const existingCustomerId = asNonEmptyStringOrNull(
+      (data as { stripe_customer_id?: string | null } | null)
+        ?.stripe_customer_id ?? null,
+    );
+
+    if (existingCustomerId === providerCustomerId) return;
+
+    if (existingCustomerId && existingCustomerId !== providerCustomerId) {
+      console.warn(
+        "stripe-webhook profile stripe_customer_id mismatch; leaving existing linkage intact",
+        {
+          userId: params.userId,
+          existingCustomerId,
+          incomingCustomerId: providerCustomerId,
+        },
+      );
+      return;
+    }
+
+    await params.supabase
+      .from("profiles")
+      .update({
+        stripe_customer_id: providerCustomerId,
+      })
+      .eq("id", params.userId)
+      .is("stripe_customer_id", null);
+  } catch (error) {
+    console.warn(
+      "stripe-webhook failed to persist profile stripe_customer_id linkage",
+      {
+        userId: params.userId,
+        providerCustomerId,
+        error,
+      },
+    );
   }
 }
 
@@ -956,11 +1119,150 @@ function getInvoiceProductId(invoice: InvoiceLike): string | null {
   return asNonEmptyStringOrNull(firstLine?.price?.product) ?? null;
 }
 
+function getInvoicePriceId(invoice: InvoiceLike): string | null {
+  const firstLine = invoice?.lines?.data?.[0];
+  return asNonEmptyStringOrNull(firstLine?.price?.id) ?? null;
+}
+
 function getSubscriptionProductId(
   subscription: SubscriptionLike,
 ): string | null {
   const firstItem = subscription?.items?.data?.[0];
   return asNonEmptyStringOrNull(firstItem?.price?.product) ?? null;
+}
+
+function getSubscriptionPriceId(
+  subscription: SubscriptionLike,
+): string | null {
+  const firstItem = subscription?.items?.data?.[0];
+  return asNonEmptyStringOrNull(firstItem?.price?.id) ??
+    asNonEmptyStringOrNull(subscription?.metadata?.price_id) ??
+    null;
+}
+
+function getCheckoutSessionPriceId(
+  session: CheckoutSessionLike,
+): string | null {
+  return asNonEmptyStringOrNull(session?.metadata?.price_id) ?? null;
+}
+
+async function fetchStripeSubscriptionById(
+  providerSubscriptionId: string,
+): Promise<SubscriptionLike | null> {
+  const stripeSecretKey = getStripeSecretKey();
+
+  if (!stripeSecretKey || !providerSubscriptionId) {
+    return null;
+  }
+
+  const url = new URL(
+    `https://api.stripe.com/v1/subscriptions/${
+      encodeURIComponent(providerSubscriptionId)
+    }`,
+  );
+  url.searchParams.append("expand[]", "items.data.price");
+
+  try {
+    const response = await fetch(url.toString(), {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${stripeSecretKey}`,
+      },
+    });
+
+    if (response.status === 404) {
+      return null;
+    }
+
+    const raw = await response.text();
+    let payload: unknown = null;
+
+    try {
+      payload = raw ? JSON.parse(raw) : null;
+    } catch {
+      payload = raw;
+    }
+
+    if (!response.ok) {
+      console.warn("stripe-webhook Stripe subscription lookup failed", {
+        providerSubscriptionId,
+        status: response.status,
+        payload,
+      });
+      return null;
+    }
+
+    return payload as SubscriptionLike;
+  } catch (error) {
+    console.warn("stripe-webhook Stripe subscription lookup threw", {
+      providerSubscriptionId,
+      error,
+    });
+    return null;
+  }
+}
+
+function attachInvoiceLookupPayload(
+  invoice: InvoiceLike,
+  stripeSubscription: SubscriptionLike | null,
+): unknown {
+  if (!stripeSubscription) return invoice;
+
+  return {
+    ...invoice,
+    __stripe_subscription_lookup: stripeSubscription,
+  };
+}
+
+async function resolveUserForInvoiceEvent(params: {
+  supabase: DBClient;
+  providerSubscriptionId: string;
+  providerCustomerId: string | null;
+}): Promise<{
+  userId: string | null;
+  stripeSubscription: SubscriptionLike | null;
+}> {
+  const directUserId = await resolveUserByStripeLinkage({
+    supabase: params.supabase,
+    providerSubscriptionId: params.providerSubscriptionId,
+    providerCustomerId: params.providerCustomerId,
+  });
+
+  if (directUserId) {
+    return {
+      userId: directUserId,
+      stripeSubscription: null,
+    };
+  }
+
+  const stripeSubscription = await fetchStripeSubscriptionById(
+    params.providerSubscriptionId,
+  );
+
+  if (!stripeSubscription) {
+    return {
+      userId: null,
+      stripeSubscription: null,
+    };
+  }
+
+  const userId = await resolveUserByStripeLinkage({
+    supabase: params.supabase,
+    metadataSupabaseUserId: stripeSubscription?.metadata?.supabase_user_id ??
+      null,
+    metadataUserId: stripeSubscription?.metadata?.user_id ?? null,
+    providerSubscriptionId:
+      asNonEmptyStringOrNull(stripeSubscription?.id) ??
+      params.providerSubscriptionId,
+    providerCustomerId:
+      asNonEmptyStringOrNull(stripeSubscription?.customer) ??
+      params.providerCustomerId,
+  });
+
+  return {
+    userId,
+    stripeSubscription,
+  };
 }
 
 /* ============================================================================
@@ -1034,10 +1336,31 @@ function deriveObjectTimeMs(rawPayload: unknown): number | null {
   return null;
 }
 
+function getStripeEventPriority(eventType: string | null | undefined): number {
+  switch (eventType) {
+    case "customer.subscription.deleted":
+      return 70;
+    case "customer.subscription.updated":
+      return 60;
+    case "customer.subscription.created":
+      return 50;
+    case "invoice.paid":
+      return 40;
+    case "invoice.payment_failed":
+      return 35;
+    case "checkout.session.completed":
+      return 10;
+    default:
+      return 0;
+  }
+}
+
 function deriveIncomingFreshness(
   rawPayload: unknown,
   event: StripeWebhookEvent,
 ): StripeFreshness {
+  const eventType = asNonEmptyStringOrNull(event.type);
+
   return {
     object_time_ms: deriveObjectTimeMs(rawPayload),
     event_created:
@@ -1045,6 +1368,8 @@ function deriveIncomingFreshness(
         ? event.created
         : null,
     event_id: asNonEmptyStringOrNull(event.id),
+    event_type: eventType,
+    event_priority: getStripeEventPriority(eventType),
   };
 }
 
@@ -1063,16 +1388,26 @@ function derivePersistedFreshness(rawPayload: unknown): StripeFreshness {
     : null;
 
   const explicitEventId = asNonEmptyStringOrNull(explicit?.event_id);
+  const explicitEventType = asNonEmptyStringOrNull(explicit?.event_type);
+  const explicitEventPriority =
+    typeof explicit?.event_priority === "number" &&
+      Number.isFinite(explicit.event_priority)
+      ? explicit.event_priority
+      : null;
 
   if (
     explicitObjectTime !== null ||
     explicitEventCreated !== null ||
-    explicitEventId !== null
+    explicitEventId !== null ||
+    explicitEventType !== null ||
+    explicitEventPriority !== null
   ) {
     return {
       object_time_ms: explicitObjectTime,
       event_created: explicitEventCreated,
       event_id: explicitEventId,
+      event_type: explicitEventType,
+      event_priority: explicitEventPriority,
     };
   }
 
@@ -1080,6 +1415,8 @@ function derivePersistedFreshness(rawPayload: unknown): StripeFreshness {
     object_time_ms: deriveObjectTimeMs(rawPayload),
     event_created: null,
     event_id: null,
+    event_type: null,
+    event_priority: null,
   };
 }
 
@@ -1099,6 +1436,13 @@ function compareStripeFreshness(
 
   if (leftEventCreated !== rightEventCreated) {
     return leftEventCreated > rightEventCreated ? 1 : -1;
+  }
+
+  const leftPriority = left.event_priority ?? 0;
+  const rightPriority = right.event_priority ?? 0;
+
+  if (leftPriority !== rightPriority) {
+    return leftPriority > rightPriority ? 1 : -1;
   }
 
   return 0;
@@ -1133,8 +1477,14 @@ function doesExistingSubscriptionDifferFromWrite(
   write: ComparableSubscriptionWrite,
 ): boolean {
   return (
+    (existing.app_id ?? null) !== (write.app_id ?? null) ||
     (existing.user_id ?? null) !== (write.user_id ?? null) ||
     (existing.provider ?? null) !== (write.provider ?? null) ||
+
+    (existing.customer_id ?? null) !== (write.customer_id ?? null) ||
+    (existing.subscription_id ?? null) !== (write.subscription_id ?? null) ||
+    (existing.price_id ?? null) !== (write.price_id ?? null) ||
+
     (existing.provider_customer_id ?? null) !==
       (write.provider_customer_id ?? null) ||
     (existing.provider_subscription_id ?? null) !==
@@ -1143,7 +1493,11 @@ function doesExistingSubscriptionDifferFromWrite(
       (write.provider_transaction_id ?? null) ||
     (existing.provider_original_transaction_id ?? null) !==
       (write.provider_original_transaction_id ?? null) ||
+
     (existing.product_id ?? null) !== (write.product_id ?? null) ||
+    (existing.provider_price_id ?? null) !==
+      (write.provider_price_id ?? null) ||
+
     (existing.environment ?? null) !== (write.environment ?? null) ||
     (existing.status ?? null) !== (write.status ?? null) ||
     (existing.current_period_start ?? null) !==
@@ -1171,6 +1525,17 @@ function applyExactFilter<T>(
   return filterable.eq(column, value) as T;
 }
 
+function isMissingEntitlementEventsTable(error: unknown): boolean {
+  if (!error || typeof error !== "object") return false;
+
+  const maybe = error as { code?: string; message?: unknown };
+
+  return (
+    maybe.code === "PGRST205" &&
+    String(maybe.message ?? "").includes("public.entitlement_events")
+  );
+}
+
 async function hasProcessedEntitlementEvent(
   supabase: DBClient,
   eventId: string,
@@ -1178,11 +1543,22 @@ async function hasProcessedEntitlementEvent(
   const { data, error } = await supabase
     .from("entitlement_events")
     .select("event_id")
-    .eq("provider", "stripe")
+    .eq("provider", STRIPE_PROVIDER)
     .eq("event_id", eventId)
     .maybeSingle();
 
-  if (error) throw error;
+  if (error) {
+    if (isMissingEntitlementEventsTable(error)) {
+      console.warn(
+        "stripe-webhook entitlement_events table missing; skipping processed check",
+        error,
+      );
+      return false;
+    }
+
+    throw error;
+  }
+
   return !!data?.event_id;
 }
 
@@ -1204,7 +1580,7 @@ async function markEntitlementEventProcessed(params: {
   userId: string;
 }): Promise<boolean> {
   const { error } = await params.supabase.from("entitlement_events").insert({
-    provider: "stripe",
+    provider: STRIPE_PROVIDER,
     event_type: params.event.type,
     event_id: params.event.id,
     user_id: params.userId,
@@ -1213,6 +1589,15 @@ async function markEntitlementEventProcessed(params: {
 
   if (!error) return true;
   if (isDuplicateEventInsertError(error)) return false;
+
+  if (isMissingEntitlementEventsTable(error)) {
+    console.warn(
+      "stripe-webhook entitlement_events table missing; skipping processed mark",
+      error,
+    );
+    return true;
+  }
+
   throw error;
 }
 
@@ -1222,24 +1607,118 @@ async function getSharedSubscriptionByProviderSubscriptionId(params: {
 }): Promise<ExistingSubscriptionRow | null> {
   if (!params.providerSubscriptionId) return null;
 
-  const { data, error } = await params.supabase
-    .from("subscriptions")
-    .select(
-      "user_id,provider,provider_customer_id,provider_subscription_id,provider_transaction_id,provider_original_transaction_id,product_id,environment,status,current_period_start,current_period_end,cancel_at_period_end,canceled_at,ended_at,raw_payload",
-    )
-    .eq("provider", "stripe")
+  const selectClause =
+    "app_id,user_id,provider,customer_id,subscription_id,price_id,provider_customer_id,provider_subscription_id,provider_transaction_id,provider_original_transaction_id,product_id,provider_price_id,environment,status,current_period_start,current_period_end,cancel_at_period_end,canceled_at,ended_at,metadata,raw_payload";
+
+  const byProviderSubscriptionId = await params.supabase
+    .from(SUBSCRIPTIONS_TABLE)
+    .select(selectClause)
+    .eq("app_id", APP_ID)
+    .eq("provider", STRIPE_PROVIDER)
     .eq("provider_subscription_id", params.providerSubscriptionId)
     .maybeSingle();
 
-  if (error) throw error;
-  return (data as ExistingSubscriptionRow | null) ?? null;
+  if (byProviderSubscriptionId.error) throw byProviderSubscriptionId.error;
+  if (byProviderSubscriptionId.data) {
+    return (byProviderSubscriptionId.data as ExistingSubscriptionRow | null) ??
+      null;
+  }
+
+  const byLegacySubscriptionId = await params.supabase
+    .from(SUBSCRIPTIONS_TABLE)
+    .select(selectClause)
+    .eq("app_id", APP_ID)
+    .eq("provider", STRIPE_PROVIDER)
+    .eq("subscription_id", params.providerSubscriptionId)
+    .maybeSingle();
+
+  if (byLegacySubscriptionId.error) throw byLegacySubscriptionId.error;
+  return (byLegacySubscriptionId.data as ExistingSubscriptionRow | null) ?? null;
+}
+
+async function getSharedSubscriptionByProviderCustomerId(params: {
+  supabase: DBClient;
+  providerCustomerId: string | null;
+}): Promise<ExistingSubscriptionRow | null> {
+  if (!params.providerCustomerId) return null;
+
+  const selectClause =
+    "app_id,user_id,provider,customer_id,subscription_id,price_id,provider_customer_id,provider_subscription_id,provider_transaction_id,provider_original_transaction_id,product_id,provider_price_id,environment,status,current_period_start,current_period_end,cancel_at_period_end,canceled_at,ended_at,metadata,raw_payload";
+
+  const byProviderCustomerId = await params.supabase
+    .from(SUBSCRIPTIONS_TABLE)
+    .select(selectClause)
+    .eq("app_id", APP_ID)
+    .eq("provider", STRIPE_PROVIDER)
+    .eq("provider_customer_id", params.providerCustomerId)
+    .order("current_period_end", { ascending: false, nullsFirst: false })
+    .order("updated_at", { ascending: false, nullsFirst: false })
+    .limit(1)
+    .maybeSingle();
+
+  if (byProviderCustomerId.error) throw byProviderCustomerId.error;
+  if (byProviderCustomerId.data) {
+    return (byProviderCustomerId.data as ExistingSubscriptionRow | null) ??
+      null;
+  }
+
+  const byLegacyCustomerId = await params.supabase
+    .from(SUBSCRIPTIONS_TABLE)
+    .select(selectClause)
+    .eq("app_id", APP_ID)
+    .eq("provider", STRIPE_PROVIDER)
+    .eq("customer_id", params.providerCustomerId)
+    .order("current_period_end", { ascending: false, nullsFirst: false })
+    .order("updated_at", { ascending: false, nullsFirst: false })
+    .limit(1)
+    .maybeSingle();
+
+  if (byLegacyCustomerId.error) throw byLegacyCustomerId.error;
+  return (byLegacyCustomerId.data as ExistingSubscriptionRow | null) ?? null;
+}
+
+async function getSharedSubscriptionForUpsert(params: {
+  supabase: DBClient;
+  providerSubscriptionId: string | null;
+  providerCustomerId: string | null;
+}): Promise<ExistingSubscriptionRow | null> {
+  const bySubscriptionId = await getSharedSubscriptionByProviderSubscriptionId({
+    supabase: params.supabase,
+    providerSubscriptionId: params.providerSubscriptionId,
+  });
+
+  if (bySubscriptionId) return bySubscriptionId;
+
+  if (params.providerSubscriptionId) {
+    return null;
+  }
+
+  return await getSharedSubscriptionByProviderCustomerId({
+    supabase: params.supabase,
+    providerCustomerId: params.providerCustomerId,
+  });
 }
 
 async function resolveUserByStripeLinkage(params: {
   supabase: DBClient;
+  metadataSupabaseUserId?: string | null;
+  metadataUserId?: string | null;
+  clientReferenceId?: string | null;
   providerSubscriptionId?: string | null;
   providerCustomerId?: string | null;
 }): Promise<string | null> {
+  if (isUuid(params.metadataSupabaseUserId)) {
+    return params.metadataSupabaseUserId;
+  }
+
+  if (isUuid(params.metadataUserId)) {
+    return params.metadataUserId;
+  }
+
+  if (isUuid(params.clientReferenceId)) {
+    return params.clientReferenceId;
+  }
+
   if (params.providerSubscriptionId) {
     const row = await getSharedSubscriptionByProviderSubscriptionId({
       supabase: params.supabase,
@@ -1247,22 +1726,23 @@ async function resolveUserByStripeLinkage(params: {
     });
 
     if (isUuid(row?.user_id)) return row.user_id;
+    return null;
   }
 
   if (params.providerCustomerId) {
-    const { data, error } = await params.supabase
-      .from("subscriptions")
-      .select("user_id,current_period_end")
-      .eq("provider", "stripe")
-      .eq("provider_customer_id", params.providerCustomerId)
-      .order("current_period_end", { ascending: false, nullsFirst: false })
-      .limit(1)
-      .maybeSingle();
+    const profileUserId = await resolveUserIdByProfileStripeCustomerId(
+      params.supabase,
+      params.providerCustomerId,
+    );
 
-    if (error) throw error;
-    if (isUuid((data as { user_id?: string | null } | null)?.user_id)) {
-      return (data as { user_id?: string | null }).user_id ?? null;
-    }
+    if (profileUserId) return profileUserId;
+
+    const row = await getSharedSubscriptionByProviderCustomerId({
+      supabase: params.supabase,
+      providerCustomerId: params.providerCustomerId,
+    });
+
+    if (isUuid(row?.user_id)) return row.user_id;
   }
 
   return null;
@@ -1273,8 +1753,9 @@ async function recomputeAndPersistEntitlement(
   userId: string,
 ): Promise<EntitlementSnapshot> {
   const { data, error } = await supabase
-    .from("subscriptions")
+    .from(SUBSCRIPTIONS_TABLE)
     .select("status,current_period_end,provider")
+    .eq("app_id", APP_ID)
     .eq("user_id", userId);
 
   if (error) throw error;
@@ -1309,7 +1790,11 @@ async function finalizeSubscriptionProcessing(params: {
   shouldRecomputeBeforeFinalMark: boolean;
 }): Promise<boolean> {
   if (params.shouldRecomputeBeforeFinalMark) {
-    await recomputeAndPersistEntitlement(params.supabase, params.userId);
+    try {
+      await recomputeAndPersistEntitlement(params.supabase, params.userId);
+    } catch (error) {
+      console.warn("stripe-webhook entitlement recompute skipped", error);
+    }
   }
 
   return await markEntitlementEventProcessed({
@@ -1328,6 +1813,7 @@ async function upsertSharedSubscriptionMonotonic(params: {
   providerTransactionId?: string | null;
   providerOriginalTransactionId?: string | null;
   productId?: string | null;
+  providerPriceId?: string | null;
   environment: BillingEnvironment;
   status?: SharedSubscriptionStatus | null;
   currentPeriodStart?: string | null;
@@ -1335,6 +1821,7 @@ async function upsertSharedSubscriptionMonotonic(params: {
   cancelAtPeriodEnd?: boolean | null;
   canceledAt?: string | null;
   endedAt?: string | null;
+  metadata?: unknown;
   rawPayload: unknown;
 }): Promise<UpsertSharedSubscriptionMonotonicResult> {
   const incomingFreshness = deriveIncomingFreshness(
@@ -1348,27 +1835,38 @@ async function upsertSharedSubscriptionMonotonic(params: {
   );
 
   for (let attempt = 0; attempt < MAX_MONOTONIC_RETRIES; attempt++) {
-    const existing = await getSharedSubscriptionByProviderSubscriptionId({
+    const existing = await getSharedSubscriptionForUpsert({
       supabase: params.supabase,
       providerSubscriptionId: params.providerSubscriptionId,
+      providerCustomerId: params.providerCustomerId,
     });
 
     if (existing?.user_id != null && existing.user_id !== params.userId) {
       throw new Error("Stripe subscription ownership mismatch");
     }
 
+    const resolvedProviderCustomerId = params.providerCustomerId ??
+      existing?.provider_customer_id ?? existing?.customer_id ?? null;
+
+    if (!resolvedProviderCustomerId) {
+      throw new Error("Stripe subscription missing customer id");
+    }
+
     const write = mapStripeSubscription({
       userId: params.userId,
-      providerCustomerId: params.providerCustomerId ??
-        existing?.provider_customer_id ?? null,
+      providerCustomerId: resolvedProviderCustomerId,
       providerSubscriptionId: params.providerSubscriptionId,
       providerTransactionId: params.providerTransactionId ??
         existing?.provider_transaction_id ??
         null,
       providerOriginalTransactionId: params.providerOriginalTransactionId ??
         existing?.provider_original_transaction_id ??
+        existing?.subscription_id ??
         params.providerSubscriptionId,
       productId: params.productId ?? existing?.product_id ?? null,
+      providerPriceId: params.providerPriceId ?? existing?.provider_price_id ??
+        existing?.price_id ??
+        null,
       environment: params.environment,
       status: params.status ?? existing?.status ?? "expired",
       currentPeriodStart: params.currentPeriodStart ??
@@ -1377,9 +1875,10 @@ async function upsertSharedSubscriptionMonotonic(params: {
         existing?.current_period_end ?? null,
       cancelAtPeriodEnd: typeof params.cancelAtPeriodEnd === "boolean"
         ? params.cancelAtPeriodEnd
-        : (existing?.cancel_at_period_end ?? false),
+        : (existing?.cancel_at_period_end ?? null),
       canceledAt: params.canceledAt ?? existing?.canceled_at ?? null,
       endedAt: params.endedAt ?? existing?.ended_at ?? null,
+      metadata: params.metadata ?? existing?.metadata ?? null,
       rawPayload: rawPayloadWithFreshness,
     });
 
@@ -1415,8 +1914,11 @@ async function upsertSharedSubscriptionMonotonic(params: {
 
     if (!existing) {
       const { error } = await params.supabase
-        .from("subscriptions")
-        .insert(write);
+        .from(SUBSCRIPTIONS_TABLE)
+        .insert({
+          ...write,
+          created_at: write.updated_at ?? isoNow(),
+        });
 
       if (!error) {
         return {
@@ -1426,9 +1928,10 @@ async function upsertSharedSubscriptionMonotonic(params: {
       }
 
       if (isDuplicateEventInsertError(error)) {
-        const latest = await getSharedSubscriptionByProviderSubscriptionId({
+        const latest = await getSharedSubscriptionForUpsert({
           supabase: params.supabase,
           providerSubscriptionId: params.providerSubscriptionId,
+          providerCustomerId: resolvedProviderCustomerId,
         });
 
         if (!latest) continue;
@@ -1472,13 +1975,20 @@ async function upsertSharedSubscriptionMonotonic(params: {
     }
 
     let query = params.supabase
-      .from("subscriptions")
+      .from(SUBSCRIPTIONS_TABLE)
       .update(write as Database["public"]["Tables"]["subscriptions"]["Update"])
-      .eq("provider", "stripe")
-      .eq("provider_subscription_id", params.providerSubscriptionId);
+      .eq("app_id", APP_ID)
+      .eq("provider", STRIPE_PROVIDER)
+      .eq("subscription_id", existing.subscription_id);
 
+    query = applyExactFilter(query, "app_id", existing.app_id);
     query = applyExactFilter(query, "user_id", existing.user_id);
     query = applyExactFilter(query, "provider", existing.provider);
+
+    query = applyExactFilter(query, "customer_id", existing.customer_id);
+    query = applyExactFilter(query, "subscription_id", existing.subscription_id);
+    query = applyExactFilter(query, "price_id", existing.price_id);
+
     query = applyExactFilter(
       query,
       "provider_customer_id",
@@ -1500,6 +2010,11 @@ async function upsertSharedSubscriptionMonotonic(params: {
       existing.provider_original_transaction_id,
     );
     query = applyExactFilter(query, "product_id", existing.product_id);
+    query = applyExactFilter(
+      query,
+      "provider_price_id",
+      existing.provider_price_id,
+    );
     query = applyExactFilter(query, "environment", existing.environment);
     query = applyExactFilter(query, "status", existing.status);
     query = applyExactFilter(
@@ -1537,9 +2052,10 @@ async function upsertSharedSubscriptionMonotonic(params: {
       };
     }
 
-    const latest = await getSharedSubscriptionByProviderSubscriptionId({
+    const latest = await getSharedSubscriptionForUpsert({
       supabase: params.supabase,
       providerSubscriptionId: params.providerSubscriptionId,
+      providerCustomerId: resolvedProviderCustomerId,
     });
 
     if (!latest) {
@@ -1596,8 +2112,10 @@ Deno.serve(async (req) => {
   }
 
   const webhookSecrets = parseWebhookSecrets(envRaw("STRIPE_WEBHOOK_SECRET"));
-  const supabaseUrl = env("SUPABASE_URL");
-  const serviceKey = env("SUPABASE_SERVICE_ROLE_KEY");
+  const supabaseUrl = getSupabaseUrl();
+  console.log("stripe-webhook using supabase url", supabaseUrl);
+  const serviceKey = getServiceRoleKey();
+  console.log("stripe-webhook service key length", serviceKey.length);
 
   if (!webhookSecrets.length) {
     return json({ error: "Missing STRIPE_WEBHOOK_SECRET" }, 500);
@@ -1605,7 +2123,10 @@ Deno.serve(async (req) => {
 
   if (!supabaseUrl || !serviceKey) {
     return json(
-      { error: "Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY" },
+      {
+        error:
+          "Missing hosted Supabase config (SUPABASE_URL/PROJECT_URL or SUPABASE_SERVICE_ROLE_KEY/SERVICE_ROLE_KEY)",
+      },
       500,
     );
   }
@@ -1693,23 +2214,116 @@ Deno.serve(async (req) => {
         return ok200();
       }
 
-      const candidateUserId = session?.client_reference_id ??
-        session?.metadata?.supabase_user_id ??
-        session?.metadata?.user_id ??
-        null;
-
-      const userId = isUuid(candidateUserId) ? candidateUserId : null;
-      if (!userId) {
-        throw new Error("checkout.session.completed user resolution failed");
-      }
-
       const providerCustomerId = asNonEmptyStringOrNull(session?.customer);
       const providerSubscriptionId = asNonEmptyStringOrNull(
         session?.subscription,
       );
 
+      const userId = await resolveUserByStripeLinkage({
+        supabase,
+        metadataSupabaseUserId: session?.metadata?.supabase_user_id ?? null,
+        metadataUserId: session?.metadata?.user_id ?? null,
+        clientReferenceId: session?.client_reference_id ?? null,
+        providerSubscriptionId,
+        providerCustomerId,
+      });
+
+      if (!userId) {
+        throw new Error("checkout.session.completed user resolution failed");
+      }
+
+      await syncProfileStripeCustomerIdBestEffort({
+        supabase,
+        userId,
+        providerCustomerId,
+      });
+
       if (!providerSubscriptionId) {
         throw new Error("checkout.session.completed missing subscription id");
+      }
+
+      const existingCanonical = await getSharedSubscriptionByProviderSubscriptionId(
+        {
+          supabase,
+          providerSubscriptionId,
+        },
+      );
+
+      if (existingCanonical) {
+        if (existingCanonical.user_id !== userId) {
+          throw new Error("Stripe subscription ownership mismatch");
+        }
+
+        const didMarkProcessed = await finalizeSubscriptionProcessing({
+          supabase,
+          userId,
+          event,
+          shouldRecomputeBeforeFinalMark: false,
+        });
+
+        if (didMarkProcessed) {
+          const customerEmail = resolveCheckoutCustomerEmail(session);
+
+          if (customerEmail) {
+            const route = resolveEmailRoute(customerEmail);
+
+            if (route) {
+              const amount = typeof session.amount_total === "number"
+                ? session.amount_total
+                : 0;
+
+              const currency = asNonEmptyStringOrNull(session.currency);
+              const correlationId = event.id;
+
+              const commonAuditVars = buildCommonEmailAuditVariables({
+                originalTo: route.originalTo,
+                forcedTo: route.forcedTo,
+                correlationId,
+                userId,
+              });
+
+              try {
+                await sendEmailOnce({
+                  supabase,
+                  correlationId,
+                  to: route.finalTo,
+                  templateKey: "receipt_subscription",
+                  variables: {
+                    ...commonAuditVars,
+                    amount: formatMoney(amount, currency),
+                    period: "Monthly",
+                    tier: "VIP",
+                    currency: currency ?? "",
+                    amount_minor: String(amount),
+                    stripe_session_id: asNonEmptyStringOrNull(session.id) ?? "",
+                    stripe_subscription_id: providerSubscriptionId,
+                  },
+                });
+              } catch {
+                // best-effort
+              }
+
+              try {
+                await sendEmailOnce({
+                  supabase,
+                  correlationId,
+                  to: route.finalTo,
+                  templateKey: "welcome_vip",
+                  variables: {
+                    ...commonAuditVars,
+                    tier: "VIP",
+                    stripe_session_id: asNonEmptyStringOrNull(session.id) ?? "",
+                    stripe_subscription_id: providerSubscriptionId,
+                  },
+                });
+              } catch {
+                // best-effort
+              }
+            }
+          }
+        }
+
+        return ok200();
       }
 
       const upsertResult = await upsertSharedSubscriptionMonotonic({
@@ -1721,6 +2335,7 @@ Deno.serve(async (req) => {
         providerTransactionId: asNonEmptyStringOrNull(session?.id),
         providerOriginalTransactionId: providerSubscriptionId,
         productId: null,
+        providerPriceId: getCheckoutSessionPriceId(session),
         environment,
         status: STRIPE_CHECKOUT_BOOTSTRAP_STATUS,
         currentPeriodStart: null,
@@ -1728,6 +2343,7 @@ Deno.serve(async (req) => {
         cancelAtPeriodEnd: null,
         canceledAt: null,
         endedAt: null,
+        metadata: session?.metadata ?? null,
         rawPayload: session,
       });
 
@@ -1812,11 +2428,11 @@ Deno.serve(async (req) => {
       );
       const providerCustomerId = asNonEmptyStringOrNull(invoice?.customer);
 
-      if (!providerTransactionId || !providerSubscriptionId) {
+      if (!providerSubscriptionId) {
         return ok200();
       }
 
-      const userId = await resolveUserByStripeLinkage({
+      const { userId, stripeSubscription } = await resolveUserForInvoiceEvent({
         supabase,
         providerSubscriptionId,
         providerCustomerId,
@@ -1826,22 +2442,48 @@ Deno.serve(async (req) => {
         throw new Error("invoice.paid user resolution failed");
       }
 
+      const resolvedProviderCustomerId =
+        providerCustomerId ??
+        asNonEmptyStringOrNull(stripeSubscription?.customer);
+
+      await syncProfileStripeCustomerIdBestEffort({
+        supabase,
+        userId,
+        providerCustomerId: resolvedProviderCustomerId,
+      });
+
       const period = getInvoicePeriodRange(invoice);
+      const fallbackCurrentPeriodStart = toIsoFromUnix(
+        stripeSubscription?.current_period_start,
+      );
+      const fallbackCurrentPeriodEnd = toIsoFromUnix(
+        stripeSubscription?.current_period_end,
+      );
 
       const upsertResult = await upsertSharedSubscriptionMonotonic({
         supabase,
         event,
         userId,
-        providerCustomerId,
+        providerCustomerId: resolvedProviderCustomerId,
         providerSubscriptionId,
         providerTransactionId,
         providerOriginalTransactionId: providerSubscriptionId,
-        productId: getInvoiceProductId(invoice),
+        productId:
+          getInvoiceProductId(invoice) ??
+          (stripeSubscription
+            ? getSubscriptionProductId(stripeSubscription)
+            : null),
+        providerPriceId:
+          getInvoicePriceId(invoice) ??
+          (stripeSubscription ? getSubscriptionPriceId(stripeSubscription) : null),
         environment,
         status: "active",
-        currentPeriodStart: period.currentPeriodStart,
-        currentPeriodEnd: period.currentPeriodEnd,
-        rawPayload: invoice,
+        currentPeriodStart:
+          period.currentPeriodStart ?? fallbackCurrentPeriodStart,
+        currentPeriodEnd:
+          period.currentPeriodEnd ?? fallbackCurrentPeriodEnd,
+        metadata: stripeSubscription?.metadata ?? null,
+        rawPayload: attachInvoiceLookupPayload(invoice, stripeSubscription),
       });
 
       const didMarkProcessed = await finalizeSubscriptionProcessing({
@@ -1914,11 +2556,11 @@ Deno.serve(async (req) => {
       );
       const providerCustomerId = asNonEmptyStringOrNull(invoice?.customer);
 
-      if (!providerTransactionId || !providerSubscriptionId) {
+      if (!providerSubscriptionId) {
         return ok200();
       }
 
-      const userId = await resolveUserByStripeLinkage({
+      const { userId, stripeSubscription } = await resolveUserForInvoiceEvent({
         supabase,
         providerSubscriptionId,
         providerCustomerId,
@@ -1928,22 +2570,48 @@ Deno.serve(async (req) => {
         throw new Error("invoice.payment_failed user resolution failed");
       }
 
+      const resolvedProviderCustomerId =
+        providerCustomerId ??
+        asNonEmptyStringOrNull(stripeSubscription?.customer);
+
+      await syncProfileStripeCustomerIdBestEffort({
+        supabase,
+        userId,
+        providerCustomerId: resolvedProviderCustomerId,
+      });
+
       const period = getInvoicePeriodRange(invoice);
+      const fallbackCurrentPeriodStart = toIsoFromUnix(
+        stripeSubscription?.current_period_start,
+      );
+      const fallbackCurrentPeriodEnd = toIsoFromUnix(
+        stripeSubscription?.current_period_end,
+      );
 
       const upsertResult = await upsertSharedSubscriptionMonotonic({
         supabase,
         event,
         userId,
-        providerCustomerId,
+        providerCustomerId: resolvedProviderCustomerId,
         providerSubscriptionId,
         providerTransactionId,
         providerOriginalTransactionId: providerSubscriptionId,
-        productId: getInvoiceProductId(invoice),
+        productId:
+          getInvoiceProductId(invoice) ??
+          (stripeSubscription
+            ? getSubscriptionProductId(stripeSubscription)
+            : null),
+        providerPriceId:
+          getInvoicePriceId(invoice) ??
+          (stripeSubscription ? getSubscriptionPriceId(stripeSubscription) : null),
         environment,
         status: "past_due",
-        currentPeriodStart: period.currentPeriodStart,
-        currentPeriodEnd: period.currentPeriodEnd,
-        rawPayload: invoice,
+        currentPeriodStart:
+          period.currentPeriodStart ?? fallbackCurrentPeriodStart,
+        currentPeriodEnd:
+          period.currentPeriodEnd ?? fallbackCurrentPeriodEnd,
+        metadata: stripeSubscription?.metadata ?? null,
+        rawPayload: attachInvoiceLookupPayload(invoice, stripeSubscription),
       });
 
       await finalizeSubscriptionProcessing({
@@ -1957,7 +2625,10 @@ Deno.serve(async (req) => {
       return ok200();
     }
 
-    if (event.type === "customer.subscription.updated") {
+    if (
+      event.type === "customer.subscription.created" ||
+      event.type === "customer.subscription.updated"
+    ) {
       const subscription = event.data.object as SubscriptionLike;
       const providerSubscriptionId = asNonEmptyStringOrNull(subscription?.id);
       const providerCustomerId = asNonEmptyStringOrNull(subscription?.customer);
@@ -1966,20 +2637,25 @@ Deno.serve(async (req) => {
         return ok200();
       }
 
-      const metadataUserId = subscription?.metadata?.supabase_user_id ??
-        subscription?.metadata?.user_id ??
-        null;
-
-      const userId = (isUuid(metadataUserId) ? metadataUserId : null) ??
-        (await resolveUserByStripeLinkage({
-          supabase,
-          providerSubscriptionId,
-          providerCustomerId,
-        }));
+      const userId = await resolveUserByStripeLinkage({
+        supabase,
+        metadataSupabaseUserId: subscription?.metadata?.supabase_user_id ?? null,
+        metadataUserId: subscription?.metadata?.user_id ?? null,
+        providerSubscriptionId,
+        providerCustomerId,
+      });
 
       if (!userId) {
-        throw new Error("customer.subscription.updated user resolution failed");
+        throw new Error(
+          `${event.type} user resolution failed`,
+        );
       }
+
+      await syncProfileStripeCustomerIdBestEffort({
+        supabase,
+        userId,
+        providerCustomerId,
+      });
 
       const currentPeriodEnd = toIsoFromUnix(subscription?.current_period_end);
 
@@ -1992,6 +2668,7 @@ Deno.serve(async (req) => {
         providerTransactionId: providerSubscriptionId,
         providerOriginalTransactionId: providerSubscriptionId,
         productId: getSubscriptionProductId(subscription),
+        providerPriceId: getSubscriptionPriceId(subscription),
         environment,
         status: normalizeStripeSubscriptionStatus({
           value: subscription?.status,
@@ -2005,6 +2682,7 @@ Deno.serve(async (req) => {
             : null,
         canceledAt: toIsoFromUnix(subscription?.canceled_at),
         endedAt: toIsoFromUnix(subscription?.ended_at),
+        metadata: subscription?.metadata ?? null,
         rawPayload: subscription,
       });
 
@@ -2028,20 +2706,23 @@ Deno.serve(async (req) => {
         return ok200();
       }
 
-      const metadataUserId = subscription?.metadata?.supabase_user_id ??
-        subscription?.metadata?.user_id ??
-        null;
-
-      const userId = (isUuid(metadataUserId) ? metadataUserId : null) ??
-        (await resolveUserByStripeLinkage({
-          supabase,
-          providerSubscriptionId,
-          providerCustomerId,
-        }));
+      const userId = await resolveUserByStripeLinkage({
+        supabase,
+        metadataSupabaseUserId: subscription?.metadata?.supabase_user_id ?? null,
+        metadataUserId: subscription?.metadata?.user_id ?? null,
+        providerSubscriptionId,
+        providerCustomerId,
+      });
 
       if (!userId) {
         throw new Error("customer.subscription.deleted user resolution failed");
       }
+
+      await syncProfileStripeCustomerIdBestEffort({
+        supabase,
+        userId,
+        providerCustomerId,
+      });
 
       const currentPeriodEnd = toIsoFromUnix(subscription?.current_period_end);
       const endedAt = toIsoFromUnix(subscription?.ended_at) ?? isoNow();
@@ -2060,6 +2741,7 @@ Deno.serve(async (req) => {
         providerTransactionId: providerSubscriptionId,
         providerOriginalTransactionId: providerSubscriptionId,
         productId: getSubscriptionProductId(subscription),
+        providerPriceId: getSubscriptionPriceId(subscription),
         environment,
         status,
         currentPeriodStart: toIsoFromUnix(subscription?.current_period_start),
@@ -2070,6 +2752,7 @@ Deno.serve(async (req) => {
             : true,
         canceledAt: toIsoFromUnix(subscription?.canceled_at) ?? endedAt,
         endedAt,
+        metadata: subscription?.metadata ?? null,
         rawPayload: subscription,
       });
 
@@ -2086,11 +2769,19 @@ Deno.serve(async (req) => {
 
     return ok200();
   } catch (error: unknown) {
-    return json(
-      {
-        error: error instanceof Error ? error.message : String(error),
-      },
-      500,
-    );
+    const details =
+      error instanceof Error
+        ? {
+            name: error.name,
+            message: error.message,
+            stack: error.stack,
+          }
+        : typeof error === "object" && error !== null
+          ? JSON.parse(JSON.stringify(error))
+          : { message: String(error) };
+
+    console.error("stripe-webhook error", details);
+
+    return json({ error: details }, 500);
   }
 });

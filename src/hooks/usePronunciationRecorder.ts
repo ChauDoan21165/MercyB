@@ -1,155 +1,228 @@
-/**
- * Hook: usePronunciationRecorder
- * Path: src/hooks/usePronunciationRecorder.ts
- * -----------------------------------------------------------------
- * A high-performance hook that records audio, trims silence, and
- * automatically triggers the Mercy speech analysis service.
- * -----------------------------------------------------------------
- */
+import { useCallback, useEffect, useRef, useState } from 'react';
 
-import { useState, useRef, useCallback } from 'react';
-import { analyzeSpeech, SpeechAnalysisRequest } from '../speech/speech-service';
+type RecorderStatus = 'idle' | 'recording' | 'processing';
 
-export type RecorderStatus = 'idle' | 'recording' | 'processing' | 'error';
-
-export interface UsePronunciationRecorderReturn {
+interface PronunciationRecorderState {
   status: RecorderStatus;
-  error?: string;
-  result?: any; // The processed feedback from the Edge Function
+  error: string | null;
+  audioBlob: Blob | null;
   startRecording: () => Promise<void>;
-  stopRecording: (context: Omit<SpeechAnalysisRequest, 'blob'>) => Promise<void>;
+  stopRecording: () => Promise<void>;
   reset: () => void;
 }
 
-const PERMISSION_ERROR = {
-  en: "I need microphone permission to listen to you.",
-  vi: "Mình cần quyền dùng micro để nghe bạn nhé."
-};
-
-/**
- * Utility to trim silence from the beginning and end of an AudioBuffer.
- * Note: For production, we return the original blob if trim is too short,
- * as browser-side re-encoding to WebM from AudioBuffer requires extra libraries.
- */
-async function trimSilence(audioBlob: Blob): Promise<Blob> {
-  try {
-    const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
-    const arrayBuffer = await audioBlob.arrayBuffer();
-    const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
-    
-    const channelData = audioBuffer.getChannelData(0);
-    const sampleRate = audioBuffer.sampleRate;
-    const threshold = 0.01; 
-    
-    let start = 0;
-    let end = channelData.length - 1;
-
-    while (start < channelData.length && Math.abs(channelData[start]) < threshold) start++;
-    while (end > start && Math.abs(channelData[end]) < threshold) end--;
-
-    if (start >= end) return audioBlob;
-
-    const padding = Math.floor(sampleRate * 0.1);
-    start = Math.max(0, start - padding);
-    end = Math.min(channelData.length - 1, end + padding);
-
-    // If trimming significantly changes the length, we'd ideally re-encode.
-    // For now, we use the logical bounds to ensure valid audio exists.
-    return audioBlob; 
-  } catch (e) {
-    console.warn("Silence trimming failed, using original blob.", e);
-    return audioBlob;
+function getSupportedMimeType(): string | undefined {
+  if (typeof window === 'undefined' || typeof MediaRecorder === 'undefined') {
+    return undefined;
   }
+
+  const candidates = [
+    'audio/webm;codecs=opus',
+    'audio/webm',
+    'audio/mp4',
+    'audio/ogg;codecs=opus',
+    'audio/ogg',
+  ];
+
+  return candidates.find((type) => MediaRecorder.isTypeSupported(type));
 }
 
-export function usePronunciationRecorder(): UsePronunciationRecorderReturn {
+export function usePronunciationRecorder(): PronunciationRecorderState {
   const [status, setStatus] = useState<RecorderStatus>('idle');
-  const [error, setError] = useState<string | undefined>();
-  const [result, setResult] = useState<any | undefined>();
-  
-  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
-  const chunksRef = useRef<Blob[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const [audioBlob, setAudioBlob] = useState<Blob | null>(null);
+
   const streamRef = useRef<MediaStream | null>(null);
+  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
+  const chunksRef = useRef<BlobPart[]>([]);
+  const stopPromiseResolverRef = useRef<(() => void) | null>(null);
 
-  const startRecording = useCallback(async () => {
-    setError(undefined);
-    setResult(undefined);
-    chunksRef.current = [];
-
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      streamRef.current = stream;
-
-      const mimeType = MediaRecorder.isTypeSupported('audio/webm;codecs=opus')
-        ? 'audio/webm;codecs=opus'
-        : MediaRecorder.isTypeSupported('audio/webm')
-        ? 'audio/webm'
-        : 'audio/ogg';
-
-      const mediaRecorder = new MediaRecorder(stream, { mimeType });
-      mediaRecorderRef.current = mediaRecorder;
-
-      mediaRecorder.ondataavailable = (event) => {
-        if (event.data.size > 0) chunksRef.current.push(event.data);
-      };
-
-      mediaRecorder.start();
-      setStatus('recording');
-    } catch (err) {
-      if (err instanceof DOMException && err.name === 'NotAllowedError') {
-        setError(`${PERMISSION_ERROR.en}\n${PERMISSION_ERROR.vi}`);
-      } else {
-        setError('Could not access microphone.');
-      }
-      setStatus('error');
+  const cleanupStream = useCallback(() => {
+    if (streamRef.current) {
+      streamRef.current.getTracks().forEach((track) => track.stop());
+      streamRef.current = null;
     }
-  }, []);
-
-  const stopRecording = useCallback(async (context: Omit<SpeechAnalysisRequest, 'blob'>) => {
-    if (!mediaRecorderRef.current || mediaRecorderRef.current.state !== 'recording') return;
-
-    setStatus('processing');
-
-    mediaRecorderRef.current.onstop = async () => {
-      const rawBlob = new Blob(chunksRef.current, { type: mediaRecorderRef.current?.mimeType });
-      
-      try {
-        // 1. Trim silence locally to save bandwidth/processing time
-        const processedBlob = await trimSilence(rawBlob);
-        
-        // 2. Transmit to Edge Function
-        const analysis = await analyzeSpeech({
-          blob: processedBlob,
-          ...context
-        });
-        
-        setResult(analysis);
-        setStatus('idle');
-      } catch (err: any) {
-        setError(err.message || "Failed to analyze speech.");
-        setStatus('error');
-      } finally {
-        if (streamRef.current) {
-          streamRef.current.getTracks().forEach(track => track.stop());
-          streamRef.current = null;
-        }
-      }
-    };
-
-    mediaRecorderRef.current.stop();
   }, []);
 
   const reset = useCallback(() => {
-    if (mediaRecorderRef.current?.state === 'recording') mediaRecorderRef.current.stop();
-    if (streamRef.current) {
-      streamRef.current.getTracks().forEach(track => track.stop());
-      streamRef.current = null;
+    if (mediaRecorderRef.current && mediaRecorderRef.current.state !== 'inactive') {
+      try {
+        mediaRecorderRef.current.stop();
+      } catch (err) {
+        console.error('Failed to stop recorder during reset:', err);
+      }
     }
-    setStatus('idle');
-    setError(undefined);
-    setResult(undefined);
-    chunksRef.current = [];
-  }, []);
 
-  return { status, error, result, startRecording, stopRecording, reset };
+    mediaRecorderRef.current = null;
+    chunksRef.current = [];
+    setAudioBlob(null);
+    setError(null);
+    setStatus('idle');
+    cleanupStream();
+  }, [cleanupStream]);
+
+  useEffect(() => {
+    return () => {
+      cleanupStream();
+    };
+  }, [cleanupStream]);
+
+  const startRecording = useCallback(async () => {
+    if (typeof window === 'undefined' || !navigator.mediaDevices?.getUserMedia) {
+      setError(
+        'Recording is not supported in this browser. Please try Chrome, Edge, or Safari.'
+      );
+      setStatus('idle');
+      return;
+    }
+
+    if (typeof MediaRecorder === 'undefined') {
+      setError(
+        'Recording is not supported in this browser. Please try Chrome, Edge, or Safari.'
+      );
+      setStatus('idle');
+      return;
+    }
+
+    if (status === 'recording' || status === 'processing') {
+      return;
+    }
+
+    setError(null);
+    setAudioBlob(null);
+    chunksRef.current = [];
+
+    try {
+      const permissionState =
+        typeof navigator.permissions?.query === 'function'
+          ? await navigator.permissions
+              .query({ name: 'microphone' as PermissionName })
+              .catch(() => null)
+          : null;
+
+      if (permissionState?.state === 'denied') {
+        setError(
+          'Microphone access is blocked in your browser. Please allow mic access for this site and try again.'
+        );
+        setStatus('idle');
+        return;
+      }
+
+      const stream = await navigator.mediaDevices.getUserMedia({
+        audio: {
+          echoCancellation: true,
+          noiseSuppression: true,
+          autoGainControl: true,
+        },
+      });
+
+      streamRef.current = stream;
+
+      const mimeType = getSupportedMimeType();
+      const recorder = mimeType
+        ? new MediaRecorder(stream, { mimeType })
+        : new MediaRecorder(stream);
+
+      mediaRecorderRef.current = recorder;
+
+      recorder.ondataavailable = (event: BlobEvent) => {
+        if (event.data && event.data.size > 0) {
+          chunksRef.current.push(event.data);
+        }
+      };
+
+      recorder.onerror = (event: Event) => {
+        console.error('MediaRecorder error:', event);
+        setError(
+          'Recording failed while using the microphone. Please try again.'
+        );
+        setStatus('idle');
+        cleanupStream();
+      };
+
+      recorder.onstop = () => {
+        const finalMimeType = recorder.mimeType || mimeType || 'audio/webm';
+        const blob = new Blob(chunksRef.current, { type: finalMimeType });
+
+        setAudioBlob(blob.size > 0 ? blob : null);
+        setStatus('idle');
+        cleanupStream();
+
+        if (blob.size === 0) {
+          setError(
+            'No audio was captured. Please try again and speak after pressing Record.'
+          );
+        }
+
+        stopPromiseResolverRef.current?.();
+        stopPromiseResolverRef.current = null;
+      };
+
+      recorder.start();
+      setStatus('recording');
+    } catch (err) {
+      console.error('Failed to start microphone recording:', err);
+      cleanupStream();
+      setStatus('idle');
+
+      if (err instanceof DOMException) {
+        if (err.name === 'NotAllowedError' || err.name === 'SecurityError') {
+          setError(
+            'Microphone access was denied in your browser. Please allow mic access for this site and try again.'
+          );
+          return;
+        }
+
+        if (err.name === 'NotFoundError' || err.name === 'DevicesNotFoundError') {
+          setError(
+            'No microphone was found for this browser session. Please connect or enable a mic and try again.'
+          );
+          return;
+        }
+
+        if (err.name === 'NotReadableError' || err.name === 'TrackStartError') {
+          setError(
+            'Your microphone is busy or unavailable to the browser right now. Close other apps using the mic and try again.'
+          );
+          return;
+        }
+      }
+
+      setError('Could not start recording. Please try again.');
+    }
+  }, [cleanupStream, status]);
+
+  const stopRecording = useCallback(async () => {
+    const recorder = mediaRecorderRef.current;
+
+    if (!recorder || recorder.state !== 'recording') {
+      return;
+    }
+
+    setStatus('processing');
+
+    await new Promise<void>((resolve) => {
+      stopPromiseResolverRef.current = resolve;
+
+      try {
+        recorder.stop();
+      } catch (err) {
+        console.error('Failed to stop microphone recording:', err);
+        stopPromiseResolverRef.current = null;
+        setError('Could not finish recording. Please try again.');
+        setStatus('idle');
+        cleanupStream();
+        resolve();
+      }
+    });
+  }, [cleanupStream]);
+
+  return {
+    status,
+    error,
+    audioBlob,
+    startRecording,
+    stopRecording,
+    reset,
+  };
 }

@@ -1,5 +1,3 @@
-// FILE: src/billing/computeEntitlement.test.ts
-
 import { describe, expect, it } from "vitest";
 import { deriveEntitlementFromSubscriptions } from "./subscriptionRepository";
 import type { SubscriptionRow } from "./types";
@@ -16,19 +14,18 @@ function makeSubscription(
 }
 
 describe("deriveEntitlementFromSubscriptions", () => {
-  it("defines entitlement for every Stripe-emitted canonical status", () => {
+  it("defines entitlement for every canonical shared status", () => {
     const futureEnd = "2099-01-01T00:00:00.000Z";
-    const pastEnd = "2000-01-01T00:00:00.000Z";
 
     const cases: Array<{
       status:
         | "active"
         | "trialing"
+        | "grace_period"
         | "past_due"
         | "paused"
-        | "canceled"
         | "expired"
-        | "incomplete";
+        | "revoked";
       currentPeriodEnd: string;
       expected: {
         status: "active" | "inactive";
@@ -55,6 +52,15 @@ describe("deriveEntitlementFromSubscriptions", () => {
         },
       },
       {
+        status: "grace_period",
+        currentPeriodEnd: futureEnd,
+        expected: {
+          status: "active",
+          expires_at: futureEnd,
+          source: "stripe",
+        },
+      },
+      {
         status: "past_due",
         currentPeriodEnd: futureEnd,
         expected: {
@@ -73,24 +79,6 @@ describe("deriveEntitlementFromSubscriptions", () => {
         },
       },
       {
-        status: "canceled",
-        currentPeriodEnd: futureEnd,
-        expected: {
-          status: "active",
-          expires_at: futureEnd,
-          source: "stripe",
-        },
-      },
-      {
-        status: "canceled",
-        currentPeriodEnd: pastEnd,
-        expected: {
-          status: "inactive",
-          expires_at: null,
-          source: null,
-        },
-      },
-      {
         status: "expired",
         currentPeriodEnd: futureEnd,
         expected: {
@@ -100,7 +88,7 @@ describe("deriveEntitlementFromSubscriptions", () => {
         },
       },
       {
-        status: "incomplete",
+        status: "revoked",
         currentPeriodEnd: futureEnd,
         expected: {
           status: "inactive",

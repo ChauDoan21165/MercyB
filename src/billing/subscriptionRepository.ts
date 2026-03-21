@@ -1,5 +1,3 @@
-// FILE: src/billing/subscriptionRepository.ts
-
 import type {
   BillingEnvironment,
   BillingProvider,
@@ -93,8 +91,6 @@ function isEntitlingSubscription(
   subscription: Pick<SubscriptionRow, "status" | "current_period_end">,
 ): boolean {
   const status = subscription.status;
-  const endMs = toMillis(subscription.current_period_end ?? null);
-  const now = Date.now();
 
   if (
     status === "active" ||
@@ -102,10 +98,6 @@ function isEntitlingSubscription(
     status === "grace_period" ||
     status === "past_due"
   ) {
-    return true;
-  }
-
-  if (status === "canceled" && endMs > now) {
     return true;
   }
 

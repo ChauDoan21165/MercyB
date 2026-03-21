@@ -1,9 +1,4 @@
-// FILE: src/billing/stripe/mapStripeSubscription.ts
-
-import type {
-  SharedSubscriptionStatus,
-  SubscriptionRow,
-} from "../types";
+import type { SharedSubscriptionStatus, SubscriptionRow } from "../types";
 
 export type StripeMappedSubscription = Pick<
   SubscriptionRow,
@@ -50,7 +45,7 @@ export function mapStripeSubscription(params: {
       params.providerOriginalTransactionId ?? params.providerSubscriptionId,
     product_id: params.productId ?? null,
     environment: params.environment,
-    status: params.status ?? "incomplete",
+    status: params.status ?? "expired",
     current_period_start: params.currentPeriodStart ?? null,
     current_period_end: params.currentPeriodEnd ?? null,
     cancel_at_period_end: Boolean(params.cancelAtPeriodEnd),

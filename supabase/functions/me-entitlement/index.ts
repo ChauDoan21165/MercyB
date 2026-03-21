@@ -1,11 +1,233 @@
-import "@supabase/functions-js/edge-runtime.d.ts";
+// deno-lint-ignore-file no-import-prefix
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Headers":
+    "authorization, x-client-info, apikey, content-type",
   "Access-Control-Allow-Methods": "GET, OPTIONS",
 };
+
+type CanonicalSource = "stripe" | "apple" | "google" | null;
+type CanonicalStatus =
+  | "active"
+  | "trialing"
+  | "grace_period"
+  | "past_due"
+  | "paused"
+  | "expired"
+  | "revoked"
+  | "inactive";
+
+type SubscriptionRow = Record<string, unknown>;
+
+function json(payload: unknown, status = 200) {
+  return new Response(JSON.stringify(payload), {
+    status,
+    headers: {
+      ...corsHeaders,
+      "Content-Type": "application/json",
+    },
+  });
+}
+
+function asNonEmptyString(value: unknown): string | null {
+  return typeof value === "string" && value.trim() ? value.trim() : null;
+}
+
+function toIsoString(value: unknown): string | null {
+  const raw = asNonEmptyString(value);
+  if (!raw) return null;
+
+  const date = new Date(raw);
+  return Number.isNaN(date.getTime()) ? null : date.toISOString();
+}
+
+function getExpiresAt(row: SubscriptionRow): string | null {
+  return (
+    toIsoString(row.expires_at) ??
+    toIsoString(row.current_period_end) ??
+    toIsoString(row.period_end) ??
+    toIsoString(row.ends_at) ??
+    toIsoString(row.expired_at) ??
+    null
+  );
+}
+
+function getSortTimestamp(row: SubscriptionRow): number {
+  const candidates = [
+    row.updated_at,
+    row.current_period_end,
+    row.expires_at,
+    row.period_end,
+    row.ends_at,
+    row.created_at,
+  ];
+
+  for (const value of candidates) {
+    const iso = toIsoString(value);
+    if (iso) return new Date(iso).getTime();
+  }
+
+  return 0;
+}
+
+function normalizeSource(row: SubscriptionRow): CanonicalSource {
+  const raw = (
+    asNonEmptyString(row.source) ??
+    asNonEmptyString(row.provider) ??
+    asNonEmptyString(row.platform) ??
+    asNonEmptyString(row.store)
+  )?.toLowerCase();
+
+  switch (raw) {
+    case "stripe":
+      return "stripe";
+    case "apple":
+    case "app_store":
+    case "appstore":
+    case "apple_app_store":
+      return "apple";
+    case "google":
+    case "google_play":
+    case "googleplay":
+    case "play_store":
+    case "play":
+    case "android":
+      return "google";
+    default:
+      return null;
+  }
+}
+
+function normalizeStatus(row: SubscriptionRow): CanonicalStatus {
+  const raw = (
+    asNonEmptyString(row.status) ??
+    asNonEmptyString(row.subscription_status) ??
+    asNonEmptyString(row.state)
+  )?.toLowerCase();
+
+  const expiresAt = getExpiresAt(row);
+  const expiresAtMs = expiresAt ? new Date(expiresAt).getTime() : null;
+  const now = Date.now();
+
+  switch (raw) {
+    case "active":
+      return "active";
+    case "trialing":
+    case "trial":
+      return "trialing";
+    case "grace_period":
+    case "grace":
+    case "in_grace_period":
+      return "grace_period";
+    case "past_due":
+    case "past-due":
+    case "unpaid":
+      return "past_due";
+    case "paused":
+    case "pause":
+    case "on_hold":
+      return "paused";
+    case "revoked":
+    case "refunded":
+    case "refund":
+    case "chargeback":
+      return "revoked";
+    case "expired":
+      return "expired";
+    case "inactive":
+    case "incomplete":
+    case "incomplete_expired":
+      return "inactive";
+    case "canceled":
+    case "cancelled":
+    case "ended":
+    case "terminated":
+      if (expiresAtMs !== null && expiresAtMs > now) return "active";
+      return "expired";
+    default:
+      if (expiresAtMs !== null && expiresAtMs <= now) return "expired";
+      return "inactive";
+  }
+}
+
+function isPremiumStatus(status: CanonicalStatus): boolean {
+  return (
+    status === "active" ||
+    status === "trialing" ||
+    status === "grace_period" ||
+    status === "past_due"
+  );
+}
+
+function statusRank(status: CanonicalStatus): number {
+  switch (status) {
+    case "active":
+      return 70;
+    case "trialing":
+      return 60;
+    case "grace_period":
+      return 50;
+    case "past_due":
+      return 40;
+    case "paused":
+      return 30;
+    case "expired":
+      return 20;
+    case "revoked":
+      return 10;
+    case "inactive":
+    default:
+      return 0;
+  }
+}
+
+function compareRows(a: SubscriptionRow, b: SubscriptionRow): number {
+  const aStatus = normalizeStatus(a);
+  const bStatus = normalizeStatus(b);
+
+  const byStatus = statusRank(bStatus) - statusRank(aStatus);
+  if (byStatus !== 0) return byStatus;
+
+  const aExpires = getExpiresAt(a);
+  const bExpires = getExpiresAt(b);
+  const aExpiresMs = aExpires ? new Date(aExpires).getTime() : 0;
+  const bExpiresMs = bExpires ? new Date(bExpires).getTime() : 0;
+
+  if (bExpiresMs !== aExpiresMs) return bExpiresMs - aExpiresMs;
+
+  const byTimestamp = getSortTimestamp(b) - getSortTimestamp(a);
+  if (byTimestamp !== 0) return byTimestamp;
+
+  const aId = String(a.id ?? "");
+  const bId = String(b.id ?? "");
+  return aId.localeCompare(bId);
+}
+
+function normalizeEntitlement(rows: SubscriptionRow[]) {
+  const best = [...rows].sort(compareRows)[0];
+
+  if (!best) {
+    return {
+      is_premium: false,
+      source: null,
+      status: "inactive" as CanonicalStatus,
+      expires_at: null,
+    };
+  }
+
+  const status = normalizeStatus(best);
+  const source = normalizeSource(best);
+  const expiresAt = getExpiresAt(best);
+
+  return {
+    is_premium: isPremiumStatus(status),
+    source,
+    status,
+    expires_at: expiresAt,
+  };
+}
 
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
@@ -13,98 +235,74 @@ Deno.serve(async (req) => {
   }
 
   if (req.method !== "GET") {
-    return new Response(
-      JSON.stringify({ error: "Method not allowed" }),
-      {
-        status: 405,
-        headers: {
-          ...corsHeaders,
-          "Content-Type": "application/json",
-        },
-      },
-    );
+    return json({ error: "Method not allowed" }, 405);
   }
 
   try {
-    const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
-    const supabaseAnonKey = Deno.env.get("SUPABASE_ANON_KEY")!;
+    const supabaseUrl = Deno.env.get("SUPABASE_URL");
+    const supabaseAnonKey = Deno.env.get("SUPABASE_ANON_KEY");
+    const supabaseServiceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
 
-    const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+    if (!supabaseUrl || !supabaseAnonKey || !supabaseServiceRoleKey) {
+      return json(
+        {
+          error:
+            "Missing SUPABASE_URL, SUPABASE_ANON_KEY, or SUPABASE_SERVICE_ROLE_KEY",
+        },
+        500,
+      );
+    }
+
+    const authorization = req.headers.get("Authorization") ?? "";
+    if (!authorization) {
+      return json({ error: "Unauthorized" }, 401);
+    }
+
+    const authClient = createClient(supabaseUrl, supabaseAnonKey, {
       global: {
         headers: {
-          Authorization: req.headers.get("Authorization") ?? "",
+          Authorization: authorization,
         },
+      },
+      auth: {
+        persistSession: false,
+        autoRefreshToken: false,
       },
     });
 
     const {
       data: { user },
       error: userError,
-    } = await supabase.auth.getUser();
+    } = await authClient.auth.getUser();
 
     if (userError || !user) {
-      return new Response(
-        JSON.stringify({ error: "Unauthorized" }),
-        {
-          status: 401,
-          headers: {
-            ...corsHeaders,
-            "Content-Type": "application/json",
-          },
-        },
-      );
+      return json({ error: "Unauthorized" }, 401);
     }
 
-    const { data: profile, error: profileError } = await supabase
-      .from("profiles")
-      .select("premium_status, premium_expires_at, premium_source")
-      .eq("id", user.id)
-      .maybeSingle();
-
-    if (profileError) {
-      return new Response(
-        JSON.stringify({ error: profileError.message }),
-        {
-          status: 500,
-          headers: {
-            ...corsHeaders,
-            "Content-Type": "application/json",
-          },
-        },
-      );
-    }
-
-    const status = profile?.premium_status ?? "free";
-    const source = profile?.premium_source ?? "none";
-    const expiresAt = profile?.premium_expires_at ?? null;
-
-    return new Response(
-      JSON.stringify({
-        is_premium: status !== "free",
-        source,
-        status,
-        expires_at: expiresAt,
-      }),
-      {
-        status: 200,
-        headers: {
-          ...corsHeaders,
-          "Content-Type": "application/json",
-        },
+    const adminClient = createClient(supabaseUrl, supabaseServiceRoleKey, {
+      auth: {
+        persistSession: false,
+        autoRefreshToken: false,
       },
-    );
+    });
+
+    const { data: subscriptions, error: subscriptionsError } = await adminClient
+      .from("subscriptions")
+      .select("*")
+      .eq("user_id", user.id)
+      .eq("app_id", "mercy_blade");
+
+    if (subscriptionsError) {
+      return json({ error: subscriptionsError.message }, 500);
+    }
+
+    return json(normalizeEntitlement(subscriptions ?? []));
   } catch (error) {
-    const message = error instanceof Error ? error.message : "Unknown error";
-
-    return new Response(
-      JSON.stringify({ error: message }),
+    return json(
       {
-        status: 500,
-        headers: {
-          ...corsHeaders,
-          "Content-Type": "application/json",
-        },
+        error: error instanceof Error ? error.message : "Unknown error",
       },
+      500,
     );
   }
 });

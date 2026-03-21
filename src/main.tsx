@@ -25,10 +25,15 @@
 // - DEV-only Supabase console exposure is now dynamic-imported.
 // - Private audio resolver installer is also dynamic-imported.
 // - This reduces initial-path pressure and avoids pulling extra supabase/debug code into startup here.
+//
+// ✅ PWA PATCH (2026-03-21):
+// - Register service worker for installable web app support
+// - Keep boot resilient: never block app startup on SW registration failure
 
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
+import { registerSW } from "virtual:pwa-register";
 
 import AppRouter from "@/router/AppRouter";
 import "@/index.css";
@@ -197,6 +202,15 @@ const devLog = (...args: unknown[]) => {
     }
   } catch {
     // ignore
+  }
+})();
+
+// ✅ PWA service worker registration
+(function registerPwaServiceWorker() {
+  try {
+    registerSW({ immediate: true });
+  } catch {
+    // never block boot
   }
 })();
 

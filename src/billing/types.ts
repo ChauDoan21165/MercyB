@@ -1,5 +1,3 @@
-// FILE: src/billing/types.ts
-
 export type BillingProvider = "stripe" | "apple" | "google";
 export type BillingEnvironment = "sandbox" | "production";
 
@@ -10,9 +8,7 @@ export const SHARED_SUBSCRIPTION_STATUSES = [
   "past_due",
   "paused",
   "expired",
-  "canceled",
   "revoked",
-  "incomplete",
 ] as const;
 
 export type SharedSubscriptionStatus =

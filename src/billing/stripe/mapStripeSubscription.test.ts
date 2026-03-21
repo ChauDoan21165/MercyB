@@ -1,10 +1,5 @@
-// FILE: src/billing/stripe/mapStripeSubscription.test.ts
-
 import { describe, expect, it } from "vitest";
-import type {
-  SharedSubscriptionStatus,
-  SubscriptionRow,
-} from "../types";
+import type { SharedSubscriptionStatus, SubscriptionRow } from "../types";
 import { mapStripeSubscription } from "./mapStripeSubscription";
 
 describe("mapStripeSubscription", () => {
@@ -49,7 +44,7 @@ describe("mapStripeSubscription", () => {
     });
   });
 
-  it("defaults to canonical incomplete status and subscription-root original transaction id", () => {
+  it("defaults to canonical expired status and subscription-root original transaction id", () => {
     const mapped = mapStripeSubscription({
       userId: "user-123",
       providerCustomerId: null,
@@ -60,7 +55,7 @@ describe("mapStripeSubscription", () => {
 
     const canonicalRow: SubscriptionRow = mapped;
 
-    expect(canonicalRow.status).toBe("incomplete");
+    expect(canonicalRow.status).toBe("expired");
     expect(canonicalRow.provider_original_transaction_id).toBe("sub_root");
     expect(canonicalRow.provider).toBe("stripe");
   });

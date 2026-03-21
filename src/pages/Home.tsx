@@ -30,6 +30,12 @@
 // - Mount real MercyGuide on Home once, safely.
 // - Keep Mercy Host spotlight card.
 // - Do not change Record / Analyze logic inside MercyGuide.
+//
+// PATCH (2026-03-20):
+// - Make homepage visibly react to auth state.
+// - Add signed-in welcome/status strip.
+// - Add adaptive CTAs: Continue / Account when signed in.
+// - Keep signed-out path simple and calm.
 
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -126,9 +132,30 @@ function isVipHybridId(id: string) {
   return /^vip\d+_/.test(id) || /^vip\d+-/.test(id);
 }
 
+function toDisplayName(email: string, meta: unknown) {
+  const safeMeta =
+    meta && typeof meta === "object" ? (meta as Record<string, unknown>) : null;
+
+  const fullName = String(
+    safeMeta?.full_name ?? safeMeta?.name ?? safeMeta?.display_name ?? "",
+  ).trim();
+
+  if (fullName) return fullName;
+
+  const firstName = String(safeMeta?.first_name ?? "").trim();
+  if (firstName) return firstName;
+
+  const local = email.split("@")[0]?.trim() ?? "";
+  if (!local) return "friend";
+
+  return local
+    .replace(/[._-]+/g, " ")
+    .replace(/\b\w/g, (m) => m.toUpperCase());
+}
+
 export default function Home() {
   const nav = useNavigate();
-  const { user } = useAuth();
+  const { user, isLoading } = useAuth();
 
   const [zoomPct, setZoomPct] = useState<number>(100);
   const [progressLoading, setProgressLoading] = useState(false);
@@ -328,6 +355,22 @@ export default function Home() {
     nav("/rooms");
   };
 
+  const isSignedIn = !!user?.id;
+  const userEmail = String(user?.email ?? "").trim();
+  const displayName = useMemo(
+    () => toDisplayName(userEmail, user?.user_metadata),
+    [userEmail, user?.user_metadata],
+  );
+
+  const primaryCtaEn = isSignedIn ? "👉 Continue learning" : "👉 Start free";
+  const primaryCtaVi = isSignedIn ? "👉 Tiếp tục học" : "👉 Bắt đầu miễn phí";
+  const accountCtaEn = isSignedIn ? "👤 Account" : "🔐 Sign in";
+  const accountCtaVi = isSignedIn ? "👤 Tài khoản" : "🔐 Đăng nhập";
+
+  const goAccountOrSignin = () => {
+    nav(isSignedIn ? "/account" : "/signin");
+  };
+
   const phase0New =
     !user?.id ||
     !progressSummary.lastStudyAt ||
@@ -378,6 +421,91 @@ export default function Home() {
     objectFit: "contain",
     display: "block",
     background: "white",
+  };
+
+  const authStrip: React.CSSProperties = {
+    marginTop: 18,
+    borderRadius: 20,
+    border: isSignedIn
+      ? "1px solid rgba(16,185,129,0.20)"
+      : "1px solid rgba(0,0,0,0.08)",
+    background: isSignedIn
+      ? "linear-gradient(180deg, rgba(236,253,245,0.92), rgba(255,255,255,0.96))"
+      : "linear-gradient(180deg, rgba(255,255,255,0.96), rgba(245,248,255,0.92))",
+    padding: "18px 18px",
+    boxShadow: "0 12px 30px rgba(0,0,0,0.05)",
+  };
+
+  const authStripTop: React.CSSProperties = {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: 12,
+    flexWrap: "wrap",
+  };
+
+  const authBadge: React.CSSProperties = {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: 8,
+    padding: "7px 12px",
+    borderRadius: 9999,
+    border: isSignedIn
+      ? "1px solid rgba(16,185,129,0.22)"
+      : "1px solid rgba(0,0,0,0.10)",
+    background: isSignedIn ? "rgba(236,253,245,0.92)" : "rgba(255,255,255,0.86)",
+    fontSize: 12,
+    fontWeight: 900,
+    color: isSignedIn ? "rgba(6,95,70,0.92)" : "rgba(0,0,0,0.62)",
+  };
+
+  const authDot: React.CSSProperties = {
+    width: 9,
+    height: 9,
+    borderRadius: 9999,
+    background: isLoading
+      ? "rgba(0,0,0,0.28)"
+      : isSignedIn
+      ? "rgb(16,185,129)"
+      : "rgba(0,0,0,0.28)",
+  };
+
+  const authTitle: React.CSSProperties = {
+    margin: 0,
+    fontSize: 28,
+    fontWeight: 950,
+    color: "rgba(0,0,0,0.90)",
+    letterSpacing: -0.6,
+  };
+
+  const authSub: React.CSSProperties = {
+    marginTop: 8,
+    marginBottom: 0,
+    fontSize: 15,
+    lineHeight: 1.7,
+    color: "rgba(0,0,0,0.64)",
+  };
+
+  const authEmailPill: React.CSSProperties = {
+    marginTop: 12,
+    display: "inline-flex",
+    alignItems: "center",
+    gap: 8,
+    maxWidth: "100%",
+    padding: "8px 12px",
+    borderRadius: 9999,
+    border: "1px solid rgba(0,0,0,0.10)",
+    background: "rgba(255,255,255,0.86)",
+    fontSize: 12,
+    fontWeight: 900,
+    color: "rgba(0,0,0,0.74)",
+  };
+
+  const authActions: React.CSSProperties = {
+    marginTop: 14,
+    display: "flex",
+    gap: 10,
+    flexWrap: "wrap",
   };
 
   const heroCard: React.CSSProperties = {
@@ -665,6 +793,68 @@ export default function Home() {
             />
           </div>
 
+          <div style={authStrip} aria-label="Home auth status">
+            <div style={authStripTop}>
+              <div style={authBadge} aria-live="polite">
+                <span style={authDot} />
+                <span>
+                  {isLoading
+                    ? "Checking sign-in..."
+                    : isSignedIn
+                    ? "Signed in"
+                    : "Signed out"}
+                </span>
+              </div>
+            </div>
+
+            {isLoading ? (
+              <p style={authSub}>We’re checking your session.</p>
+            ) : isSignedIn ? (
+              <>
+                <h2 style={authTitle}>Welcome back, {displayName}.</h2>
+                <p style={authSub}>
+                  You’re signed in and ready to continue with calm progress.
+                </p>
+                {userEmail ? (
+                  <div style={authEmailPill} title={userEmail}>
+                    ✉️ {userEmail}
+                  </div>
+                ) : null}
+                <div style={authActions}>
+                  <button type="button" style={primaryBtn} onClick={goFirstRoom}>
+                    👉 Continue learning
+                  </button>
+                  <button
+                    type="button"
+                    style={secondaryBtn}
+                    onClick={() => nav("/account")}
+                  >
+                    👤 Open account
+                  </button>
+                </div>
+              </>
+            ) : (
+              <>
+                <h2 style={authTitle}>Start gently.</h2>
+                <p style={authSub}>
+                  You can begin free right away, or sign in so your progress stays with you.
+                </p>
+                <div style={authActions}>
+                  <button type="button" style={primaryBtn} onClick={goFirstRoom}>
+                    👉 Start free
+                  </button>
+                  <button
+                    type="button"
+                    style={secondaryBtn}
+                    onClick={() => nav("/signin")}
+                  >
+                    🔐 Sign in
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
+
           <div style={heroCard}>
             <div style={langTag}>EN</div>
             <h1 style={heroTitle}>Think in English. Calmly.</h1>
@@ -678,7 +868,11 @@ export default function Home() {
 
             <div style={ctaRow}>
               <button type="button" style={primaryBtn} onClick={goFirstRoom}>
-                👉 Start free
+                {primaryCtaEn}
+              </button>
+
+              <button type="button" style={secondaryBtn} onClick={goAccountOrSignin}>
+                {accountCtaEn}
               </button>
 
               <button type="button" style={secondaryBtn} onClick={() => nav("/tiers")}>
@@ -690,7 +884,11 @@ export default function Home() {
               </button>
             </div>
 
-            <div style={heroCtaHint}>Start with a short room — about 2 minutes.</div>
+            <div style={heroCtaHint}>
+              {isSignedIn
+                ? "You’re in — continue with one short room."
+                : "Start with a short room — about 2 minutes."}
+            </div>
 
             <div style={{ ...langTag, marginTop: 18 }}>VI</div>
             <h2 style={{ ...heroTitle, fontSize: 28 }}>Suy nghĩ bằng tiếng Anh — một cách bình tĩnh.</h2>
@@ -704,7 +902,11 @@ export default function Home() {
 
             <div style={ctaRow}>
               <button type="button" style={primaryBtn} onClick={goFirstRoom}>
-                👉 Bắt đầu miễn phí
+                {primaryCtaVi}
+              </button>
+
+              <button type="button" style={secondaryBtn} onClick={goAccountOrSignin}>
+                {accountCtaVi}
               </button>
 
               <button type="button" style={secondaryBtn} onClick={() => nav("/tiers")}>
@@ -716,7 +918,11 @@ export default function Home() {
               </button>
             </div>
 
-            <div style={heroCtaHint}>Bắt đầu với một phòng ngắn — khoảng 2 phút.</div>
+            <div style={heroCtaHint}>
+              {isSignedIn
+                ? "Bạn đã đăng nhập — tiếp tục với một phòng ngắn."
+                : "Bắt đầu với một phòng ngắn — khoảng 2 phút."}
+            </div>
           </div>
 
           <div style={mercyGuideWrap}>
@@ -737,10 +943,14 @@ export default function Home() {
                 </p>
                 <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
                   <button type="button" style={{ ...primaryBtn, minWidth: 220 }} onClick={goFirstRoom}>
-                    🌿 Enter with Mercy Host
+                    {isSignedIn ? "🌿 Continue with Mercy Host" : "🌿 Enter with Mercy Host"}
                   </button>
-                  <button type="button" style={{ ...secondaryBtn, minWidth: 220 }} onClick={() => nav("/tiers")}>
-                    👉 See learning paths
+                  <button
+                    type="button"
+                    style={{ ...secondaryBtn, minWidth: 220 }}
+                    onClick={goAccountOrSignin}
+                  >
+                    {isSignedIn ? "👤 Open account" : "🔐 Sign in"}
                   </button>
                 </div>
               </div>
@@ -757,10 +967,14 @@ export default function Home() {
                 </p>
                 <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
                   <button type="button" style={{ ...primaryBtn, minWidth: 220 }} onClick={goFirstRoom}>
-                    🌿 Bắt đầu cùng Mercy Host
+                    {isSignedIn ? "🌿 Tiếp tục cùng Mercy Host" : "🌿 Bắt đầu cùng Mercy Host"}
                   </button>
-                  <button type="button" style={{ ...secondaryBtn, minWidth: 220 }} onClick={() => nav("/tiers")}>
-                    👉 Xem lộ trình học
+                  <button
+                    type="button"
+                    style={{ ...secondaryBtn, minWidth: 220 }}
+                    onClick={goAccountOrSignin}
+                  >
+                    {isSignedIn ? "👤 Tài khoản" : "🔐 Đăng nhập"}
                   </button>
                 </div>
               </div>
@@ -781,7 +995,9 @@ export default function Home() {
                 <div style={langTag}>EN</div>
                 <h3 style={h3}>Your progress</h3>
                 <div style={{ ...p, marginTop: 8 }}>
-                  A quiet snapshot — what you’ve practiced recently.
+                  {isSignedIn
+                    ? "A quiet snapshot — what you’ve practiced recently."
+                    : "Sign in to save your path and see your quiet progress snapshot."}
                 </div>
               </div>
 
@@ -802,7 +1018,7 @@ export default function Home() {
                   onClick={() => nav("/signin")}
                   aria-label="Sign in to see progress"
                 >
-                  Sign in to see →
+                  Sign in to save progress →
                 </button>
               )}
             </div>
@@ -860,7 +1076,9 @@ export default function Home() {
                   {progressLoading ? "…" : `${fmtInt(progressSummary.active30d)}`}
                 </div>
                 <div style={progSmall}>
-                  How many days you were active in the last 30 days.
+                  {user?.id
+                    ? "How many days you were active in the last 30 days."
+                    : "Sign in to see your recent activity."}
                 </div>
               </div>
 
@@ -876,7 +1094,9 @@ export default function Home() {
                 <div style={progSmall}>
                   {progressSummary.lastStudyAt
                     ? fmtDate(progressSummary.lastStudyAt)
-                    : "No recent study yet."}
+                    : user?.id
+                    ? "No recent study yet."
+                    : "Sign in to keep your study history."}
                 </div>
               </div>
             </div>
@@ -885,7 +1105,9 @@ export default function Home() {
               <div style={langTag}>VI</div>
               <h3 style={h3}>Tiến độ của bạn</h3>
               <div style={{ ...p, marginTop: 8 }}>
-                Một bản tóm tắt nhẹ nhàng — bạn đã luyện tập gần đây như thế nào.
+                {isSignedIn
+                  ? "Một bản tóm tắt nhẹ nhàng — bạn đã luyện tập gần đây như thế nào."
+                  : "Hãy đăng nhập để lưu hành trình và xem tiến độ của bạn."}
               </div>
             </div>
           </div>
@@ -915,7 +1137,15 @@ export default function Home() {
                 style={{ ...primaryBtn, minWidth: 240 }}
                 onClick={goFirstRoom}
               >
-                👉 Enter your first room
+                {primaryCtaEn}
+              </button>
+
+              <button
+                type="button"
+                style={{ ...secondaryBtn, minWidth: 240 }}
+                onClick={goAccountOrSignin}
+              >
+                {accountCtaEn}
               </button>
 
               <button
@@ -961,7 +1191,15 @@ export default function Home() {
                 style={{ ...primaryBtn, minWidth: 240 }}
                 onClick={goFirstRoom}
               >
-                👉 Vào phòng đầu tiên
+                {primaryCtaVi}
+              </button>
+
+              <button
+                type="button"
+                style={{ ...secondaryBtn, minWidth: 240 }}
+                onClick={goAccountOrSignin}
+              >
+                {accountCtaVi}
               </button>
 
               <button
@@ -1059,7 +1297,15 @@ export default function Home() {
                         style={{ ...primaryBtn, minWidth: 240 }}
                         onClick={goFirstRoom}
                       >
-                        👉 Enter your first room
+                        {primaryCtaEn}
+                      </button>
+
+                      <button
+                        type="button"
+                        style={{ ...secondaryBtn, minWidth: 240 }}
+                        onClick={goAccountOrSignin}
+                      >
+                        {accountCtaEn}
                       </button>
 
                       <button
@@ -1128,7 +1374,15 @@ export default function Home() {
                         style={{ ...primaryBtn, minWidth: 240 }}
                         onClick={goFirstRoom}
                       >
-                        👉 Vào phòng đầu tiên
+                        {primaryCtaVi}
+                      </button>
+
+                      <button
+                        type="button"
+                        style={{ ...secondaryBtn, minWidth: 240 }}
+                        onClick={goAccountOrSignin}
+                      >
+                        {accountCtaVi}
                       </button>
 
                       <button
@@ -1252,7 +1506,15 @@ export default function Home() {
                 style={{ ...primaryBtn, minWidth: 240 }}
                 onClick={goFirstRoom}
               >
-                👉 Start free
+                {primaryCtaEn}
+              </button>
+
+              <button
+                type="button"
+                style={{ ...secondaryBtn, minWidth: 240 }}
+                onClick={goAccountOrSignin}
+              >
+                {accountCtaEn}
               </button>
 
               <button
@@ -1292,7 +1554,15 @@ export default function Home() {
                 style={{ ...primaryBtn, minWidth: 240 }}
                 onClick={goFirstRoom}
               >
-                👉 Bắt đầu miễn phí
+                {primaryCtaVi}
+              </button>
+
+              <button
+                type="button"
+                style={{ ...secondaryBtn, minWidth: 240 }}
+                onClick={goAccountOrSignin}
+              >
+                {accountCtaVi}
               </button>
 
               <button
@@ -1314,12 +1584,28 @@ export default function Home() {
           </div>
 
           <div style={ctaBand}>
-            <h2 style={ctaTitle}>Start gently — one room at a time.</h2>
-            <div style={ctaSub}>Bắt đầu nhẹ nhàng — từng phòng một.</div>
+            <h2 style={ctaTitle}>
+              {isSignedIn
+                ? "You’re in — continue gently, one room at a time."
+                : "Start gently — one room at a time."}
+            </h2>
+            <div style={ctaSub}>
+              {isSignedIn
+                ? "Bạn đã vào rồi — cứ nhẹ nhàng tiếp tục, từng phòng một."
+                : "Bắt đầu nhẹ nhàng — từng phòng một."}
+            </div>
 
             <div style={ctaRow}>
               <button type="button" style={primaryBtn} onClick={goFirstRoom}>
-                👉 Start free
+                {primaryCtaEn}
+              </button>
+
+              <button
+                type="button"
+                style={secondaryBtn}
+                onClick={goAccountOrSignin}
+              >
+                {accountCtaEn}
               </button>
 
               <button

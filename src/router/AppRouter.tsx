@@ -1,5 +1,5 @@
 // src/router/AppRouter.tsx
-// MB-BLUE-101.5 → MB-BLUE-101.5c — 2026-01-29 (+0700)
+// MB-BLUE-101.5 → MB-BLUE-101.5d — 2026-03-20 (-0600)
 //
 // ROUTING RULES (LOCKED):
 // - Home route: /
@@ -62,8 +62,8 @@
 // - Add /pricing route (Stripe pricing table page)
 //
 // ✅ PATCH (2026-03-02e):
-// - Keep /upgrade route BUT render UpgradePage (which renders the SAME Pricing table UI).
-//   This avoids 404 loops even if old links or 403 redirects still go to /upgrade.
+// - Keep /upgrade route BUT render the SAME Pricing UI as /pricing.
+//   This avoids old pricing copy or 404 loops if legacy links still go to /upgrade.
 //
 // ✅ PERF PATCH:
 // - Route pages are lazy-loaded to reduce the initial bundle.
@@ -73,6 +73,19 @@
 // ✅ PATCH (2026-03-09):
 // - /room now redirects to /rooms (better match for room browsing flow).
 // - /redeem temporarily redirects to /pricing instead of /, so CTA lands somewhere intentional.
+//
+// ✅ PATCH (2026-03-20):
+// - Add visible auth state to AppHeroShell right side.
+// - Show loading / signed-in badge / email / Account / Sign out / Sign in.
+// - This makes post-login status obvious on the homepage and other non-admin pages.
+//
+// ✅ PATCH (2026-03-20b):
+// - Preserve /auth query params + hash when redirecting to /signin.
+// - This keeps logged_out / created / reset notices working on LoginPage.
+//
+// ✅ PATCH (2026-03-20c):
+// - Add /billing redirect to /account so legacy billing links never 404.
+// - Add /billing/success route for Stripe success return page.
 
 import React, { Suspense, lazy, useEffect } from "react";
 import {
@@ -88,15 +101,16 @@ import {
 
 import AdminRoute from "@/components/admin/AdminRoute";
 import AdminLayout from "@/components/admin/AdminLayout";
+import { useAuth } from "@/providers/AuthProvider";
 
-const MB_ROUTER_VERSION = "2026-03-09-app-router-rooms-pricing-route-cleanup-v1";
+const MB_ROUTER_VERSION = "2026-03-20-app-router-auth-hero-shell-v3";
 
 const ChatHub = lazy(() => import("@/pages/ChatHub"));
 const AllRooms = lazy(() => import("@/pages/AllRooms"));
 const Home = lazy(() => import("@/pages/Home"));
 
 const AccountPage = lazy(() => import("@/pages/AccountPage"));
-const UpgradePage = lazy(() => import("@/pages/UpgradePage"));
+const BillingSuccessPage = lazy(() => import("@/pages/BillingSuccessPage"));
 const Pricing = lazy(() => import("../screens/Pricing"));
 
 const TierIndex = lazy(() => import("@/pages/TierIndex"));
@@ -151,8 +165,11 @@ function LazyPage({
 function AppHeroShell() {
   const nav = useNavigate();
   const loc = useLocation();
+  const { user, isLoading, signOut } = useAuth();
 
   const isAdmin = String(loc.pathname || "").startsWith("/admin");
+  const isAccountPage = String(loc.pathname || "") === "/account";
+  const userEmail = String(user?.email ?? "").trim();
 
   const rainbow =
     "linear-gradient(90deg,#ff4d4d 0%,#ffb84d 18%,#b6ff4d 36%,#4dffb8 54%,#4db8ff 72%,#b84dff 90%,#ff4dff 100%)";
@@ -195,11 +212,15 @@ function AppHeroShell() {
     alignItems: "center",
     gap: 10,
     justifyContent: "flex-start",
+    flexWrap: "wrap",
   };
 
-  const rightSpacer: React.CSSProperties = {
+  const rightWrap: React.CSSProperties = {
     display: "flex",
     justifyContent: "flex-end",
+    alignItems: "center",
+    gap: 10,
+    flexWrap: "wrap",
   };
 
   const navBtn: React.CSSProperties = {
@@ -217,6 +238,43 @@ function AppHeroShell() {
     lineHeight: 1,
     cursor: "pointer",
     pointerEvents: "auto",
+  };
+
+  const authStatusPill: React.CSSProperties = {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: 8,
+    padding: "8px 12px",
+    borderRadius: 9999,
+    border: user
+      ? "1px solid rgba(16,185,129,0.24)"
+      : "1px solid rgba(0,0,0,0.10)",
+    background: user ? "rgba(236,253,245,0.92)" : "rgba(255,255,255,0.90)",
+    color: user ? "rgba(6,95,70,0.92)" : "rgba(0,0,0,0.62)",
+    fontWeight: 900,
+    fontSize: 13,
+    lineHeight: 1,
+    maxWidth: 300,
+    pointerEvents: "auto",
+  };
+
+  const statusDot: React.CSSProperties = {
+    width: 9,
+    height: 9,
+    borderRadius: 9999,
+    background: user ? "rgb(16,185,129)" : "rgba(0,0,0,0.30)",
+    flex: "0 0 auto",
+  };
+
+  const authEmail: React.CSSProperties = {
+    display: "inline-block",
+    maxWidth: 160,
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+    fontWeight: 800,
+    fontSize: 12,
+    opacity: 0.82,
   };
 
   const brand: React.CSSProperties = {
@@ -244,6 +302,14 @@ function AppHeroShell() {
       }
     } catch {
       nav("/");
+    }
+  };
+
+  const onSignOut = async () => {
+    try {
+      await signOut();
+    } finally {
+      nav("/signin", { replace: true });
     }
   };
 
@@ -280,7 +346,47 @@ function AppHeroShell() {
                 Mercy Blade
               </div>
 
-              <div style={rightSpacer} aria-hidden="true" />
+              <div style={rightWrap}>
+                {isLoading ? (
+                  <div style={authStatusPill} aria-live="polite">
+                    <span style={statusDot} />
+                    <span>Checking sign-in...</span>
+                  </div>
+                ) : user ? (
+                  <>
+                    <div
+                      style={authStatusPill}
+                      aria-label={userEmail ? `Signed in as ${userEmail}` : "Signed in"}
+                      title={userEmail || "Signed in"}
+                    >
+                      <span style={statusDot} />
+                      <span>Signed in</span>
+                      {userEmail ? (
+                        <span style={authEmail}>{userEmail}</span>
+                      ) : null}
+                    </div>
+
+                    {!isAccountPage ? (
+                      <Link to="/account" style={navBtn} aria-label="Account">
+                        Account
+                      </Link>
+                    ) : null}
+
+                    <button
+                      type="button"
+                      style={navBtn}
+                      onClick={onSignOut}
+                      aria-label="Sign out"
+                    >
+                      Sign out
+                    </button>
+                  </>
+                ) : (
+                  <Link to="/signin" style={navBtn} aria-label="Sign in">
+                    Sign in
+                  </Link>
+                )}
+              </div>
             </div>
           </div>
 
@@ -314,7 +420,13 @@ function RedeemRedirect() {
 }
 
 function AuthRedirect() {
-  return <Navigate to="/signin" replace />;
+  const location = useLocation();
+  const target = `/signin${location.search || ""}${location.hash || ""}`;
+  return <Navigate to={target} replace />;
+}
+
+function BillingRedirect() {
+  return <Navigate to="/account" replace />;
 }
 
 function AdminShell() {
@@ -401,7 +513,7 @@ export default function AppRouter() {
             path="/upgrade"
             element={
               <LazyPage>
-                <UpgradePage />
+                <Pricing />
               </LazyPage>
             }
           />
@@ -411,6 +523,24 @@ export default function AppRouter() {
             element={
               <LazyPage>
                 <AccountPage />
+              </LazyPage>
+            }
+          />
+
+          <Route
+            path="/billing"
+            element={
+              <LazyPage>
+                <BillingRedirect />
+              </LazyPage>
+            }
+          />
+
+          <Route
+            path="/billing/success"
+            element={
+              <LazyPage>
+                <BillingSuccessPage />
               </LazyPage>
             }
           />

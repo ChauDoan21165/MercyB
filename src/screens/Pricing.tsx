@@ -1,402 +1,566 @@
-// FILE: Pricing.tsx
-// PATH: src/screens/Pricing.tsx
-// VERSION: v2.0
-//
-// Pricing page
-// Fixes:
-// 1) Stronger bilingual structure and cleaner plan explanation.
-// 2) Add quick navigation CTAs (Home / Rooms / Start free).
-// 3) Keep Stripe pricing table lazy-loaded.
-// 4) Make env-missing state clearer.
-// 5) Keep copy aligned with: Free / Full Access / Lifetime.
-
-import React, { useEffect } from "react";
+// src/pages/Pricing.tsx
+import React, { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { supabase } from "@/lib/supabaseClient";
+
+type PlanKey = "free" | "month" | "year";
+type PaidPlanKey = "month" | "year";
+type PlanAccent = "plain" | "highlight";
+
+type Plan = {
+  key: PlanKey;
+  eyebrow: string;
+  title: string;
+  price: string;
+  subtitleEn: string;
+  subtitleVi: string;
+  bodyEn: string;
+  bodyVi: string;
+  cta: string;
+  accent: PlanAccent;
+};
+
+const PAGE_MAX = 980;
+
+/**
+ * Replace these with your real Stripe price IDs if you do not want to depend on env vars.
+ * The file will prefer env values when present, then fall back to these.
+ */
+const DIRECT_ONE_MONTH_PRICE_ID = "price_REPLACE_WITH_REAL_ONE_MONTH";
+const DIRECT_ONE_YEAR_PRICE_ID = "price_REPLACE_WITH_REAL_ONE_YEAR";
+
+function env(name: string): string {
+  return String((import.meta as any).env?.[name] ?? "").trim();
+}
+
+function pickEnv(...names: string[]): string {
+  for (const name of names) {
+    const value = env(name);
+    if (value) return value;
+  }
+  return "";
+}
+
+function isUsablePriceId(value: string): boolean {
+  if (!value) return false;
+  if (!value.startsWith("price_")) return false;
+  if (value.includes("REPLACE_WITH_REAL")) return false;
+  return true;
+}
+
+function resolvePriceId(...candidates: string[]): string {
+  for (const candidate of candidates) {
+    const value = String(candidate ?? "").trim();
+    if (isUsablePriceId(value)) return value;
+  }
+  return "";
+}
+
+function extractErrorMessage(payload: unknown, fallback: string): string {
+  if (!payload || typeof payload !== "object") return fallback;
+
+  const record = payload as Record<string, unknown>;
+  const error = typeof record.error === "string" ? record.error : "";
+  const message = typeof record.message === "string" ? record.message : "";
+  const detail = record.detail;
+
+  if (error && message) return `${error}: ${message}`;
+  if (error) return error;
+  if (message) return message;
+
+  if (detail && typeof detail === "object") {
+    const detailRecord = detail as Record<string, unknown>;
+    const detailMessage =
+      typeof detailRecord.message === "string" ? detailRecord.message : "";
+    if (detailMessage) return detailMessage;
+  }
+
+  return fallback;
+}
 
 export default function Pricing() {
-  const nav = useNavigate();
+  const navigate = useNavigate();
 
-  const STRIPE_PRICING_TABLE_ID = (import.meta as any).env
-    ?.VITE_STRIPE_PRICING_TABLE_ID as string | undefined;
-  const STRIPE_PUBLISHABLE_KEY = (import.meta as any).env
-    ?.VITE_STRIPE_PUBLISHABLE_KEY as string | undefined;
+  const SUPABASE_URL = pickEnv("VITE_SUPABASE_URL");
+  const SUPABASE_ANON_KEY = pickEnv("VITE_SUPABASE_ANON_KEY");
 
-  useEffect(() => {
-    const id = "stripe-pricing-table-js";
-    if (document.getElementById(id)) return;
+  const ONE_MONTH_PRICE_ID = resolvePriceId(
+    pickEnv(
+      "VITE_STRIPE_PRICE_ONE_MONTH",
+      "VITE_STRIPE_PRICE_MONTHLY",
+      "VITE_STRIPE_MONTHLY_PRICE_ID",
+    ),
+    DIRECT_ONE_MONTH_PRICE_ID,
+  );
 
-    const s = document.createElement("script");
-    s.id = id;
-    s.async = true;
-    s.src = "https://js.stripe.com/v3/pricing-table.js";
-    document.body.appendChild(s);
+  const ONE_YEAR_PRICE_ID = resolvePriceId(
+    pickEnv(
+      "VITE_STRIPE_PRICE_ONE_YEAR",
+      "VITE_STRIPE_PRICE_YEARLY",
+      "VITE_STRIPE_YEARLY_PRICE_ID",
+    ),
+    DIRECT_ONE_YEAR_PRICE_ID,
+  );
+
+  const [busyPlan, setBusyPlan] = useState<PaidPlanKey | null>(null);
+  const [errorText, setErrorText] = useState("");
+
+  const canceled = useMemo(() => {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("canceled") === "1";
   }, []);
 
-  const page: React.CSSProperties = {
-    maxWidth: 980,
-    margin: "0 auto",
-    padding: "24px 16px 80px",
-  };
+  const configWarning = useMemo(() => {
+    const missing: string[] = [];
 
-  const topRow: React.CSSProperties = {
-    display: "flex",
-    alignItems: "flex-start",
-    justifyContent: "space-between",
-    gap: 12,
-    flexWrap: "wrap",
-  };
+    if (!SUPABASE_URL) missing.push("VITE_SUPABASE_URL");
+    if (!ONE_MONTH_PRICE_ID) {
+      missing.push("monthly Stripe price_id (env or DIRECT_ONE_MONTH_PRICE_ID)");
+    }
+    if (!ONE_YEAR_PRICE_ID) {
+      missing.push("yearly Stripe price_id (env or DIRECT_ONE_YEAR_PRICE_ID)");
+    }
 
-  const topBtns: React.CSSProperties = {
-    display: "flex",
-    gap: 10,
-    flexWrap: "wrap",
-  };
+    return missing.length > 0 ? `Missing config: ${missing.join(", ")}` : "";
+  }, [SUPABASE_URL, ONE_MONTH_PRICE_ID, ONE_YEAR_PRICE_ID]);
 
-  const pillBtn: React.CSSProperties = {
-    display: "inline-flex",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: 8,
-    padding: "10px 14px",
-    borderRadius: 9999,
-    border: "1px solid rgba(0,0,0,0.12)",
-    background: "rgba(255,255,255,0.92)",
-    color: "rgba(0,0,0,0.84)",
-    fontWeight: 900,
-    cursor: "pointer",
-    textDecoration: "none",
-    boxShadow: "0 10px 22px rgba(0,0,0,0.05)",
-  };
+  const plans = useMemo<Plan[]>(
+    () => [
+      {
+        key: "free",
+        eyebrow: "",
+        title: "Free / Miễn phí",
+        price: "",
+        subtitleEn: "Start with limited rooms.",
+        subtitleVi: "Bắt đầu với các phòng giới hạn.",
+        bodyEn: "Begin gently and feel the atmosphere.",
+        bodyVi: "Đi nhẹ nhàng và cảm nhận không gian của Mercy Blade.",
+        cta: "Browse rooms",
+        accent: "plain",
+      },
+      {
+        key: "month",
+        eyebrow: "Recommended / Gợi ý",
+        title: "Full Access / Toàn quyền truy cập",
+        price: "200 000 VND / month",
+        subtitleEn: "One Month / 1 tháng",
+        subtitleVi: "Mở khóa toàn bộ hành trình trong 1 tháng.",
+        bodyEn:
+          "Best for learners who want flexibility without a long commitment.",
+        bodyVi:
+          "Phù hợp cho người học muốn linh hoạt mà chưa cần cam kết dài hạn.",
+        cta: "Choose monthly",
+        accent: "highlight",
+      },
+      {
+        key: "year",
+        eyebrow: "",
+        title: "Full Access / Toàn quyền truy cập",
+        price: "2 000 000 VND / year",
+        subtitleEn: "1 Year / 1 năm",
+        subtitleVi: "Đồng hành cùng Mercy Blade trong dài hạn.",
+        bodyEn: "Best value for steady, lasting access.",
+        bodyVi: "Giá trị tốt nhất cho quyền truy cập ổn định và lâu dài.",
+        cta: "Choose yearly",
+        accent: "plain",
+      },
+    ],
+    [],
+  );
 
-  const h1: React.CSSProperties = {
-    fontSize: 34,
-    lineHeight: 1.15,
-    margin: "8px 0 8px",
-    fontWeight: 900,
-    color: "rgba(0,0,0,0.92)",
-    letterSpacing: -0.6,
-  };
+  async function handlePaidPlan(plan: PaidPlanKey) {
+    const priceId = plan === "month" ? ONE_MONTH_PRICE_ID : ONE_YEAR_PRICE_ID;
 
-  const sub: React.CSSProperties = {
-    opacity: 0.85,
-    margin: "0 0 18px",
-    fontSize: 15,
-    lineHeight: 1.6,
-    color: "rgba(0,0,0,0.78)",
-    maxWidth: 760,
-  };
+    setErrorText("");
 
-  const hero: React.CSSProperties = {
-    border: "1px solid rgba(0,0,0,0.08)",
-    borderRadius: 18,
-    padding: 20,
-    background:
-      "linear-gradient(180deg, rgba(255,255,255,0.96), rgba(235,247,255,0.90))",
-    boxShadow: "0 12px 28px rgba(0,0,0,0.05)",
-  };
+    if (!priceId) {
+      setErrorText(
+        plan === "month"
+          ? "Monthly Stripe price_id is not configured."
+          : "Yearly Stripe price_id is not configured.",
+      );
+      return;
+    }
 
-  const heroTitle: React.CSSProperties = {
-    margin: 0,
-    fontSize: 26,
-    lineHeight: 1.15,
-    fontWeight: 900,
-    color: "rgba(0,0,0,0.90)",
-    letterSpacing: -0.4,
-  };
+    if (!SUPABASE_URL) {
+      setErrorText("Supabase URL is missing.");
+      return;
+    }
 
-  const heroBody: React.CSSProperties = {
-    marginTop: 10,
-    fontSize: 15,
-    lineHeight: 1.7,
-    color: "rgba(0,0,0,0.72)",
-  };
+    setBusyPlan(plan);
 
-  const heroActions: React.CSSProperties = {
-    marginTop: 16,
-    display: "flex",
-    gap: 10,
-    flexWrap: "wrap",
-  };
+    try {
+      const {
+        data: { session },
+        error: sessionError,
+      } = await supabase.auth.getSession();
 
-  const primaryBtn: React.CSSProperties = {
-    padding: "12px 18px",
-    borderRadius: 16,
-    border: "1px solid rgba(0,0,0,0.10)",
-    background: "rgba(0, 128, 120, 0.80)",
-    color: "white",
-    fontWeight: 900,
-    cursor: "pointer",
-    minWidth: 190,
-    boxShadow: "0 10px 22px rgba(0,128,120,0.10)",
-  };
+      if (sessionError) {
+        throw new Error(sessionError.message);
+      }
 
-  const secondaryBtn: React.CSSProperties = {
-    padding: "12px 18px",
-    borderRadius: 16,
-    border: "1px solid rgba(0,0,0,0.14)",
-    background: "rgba(255,255,255,0.90)",
-    color: "rgba(0,0,0,0.78)",
-    fontWeight: 900,
-    cursor: "pointer",
-    minWidth: 190,
-  };
+      const accessToken = session?.access_token;
+      if (!accessToken) {
+        navigate("/signin");
+        return;
+      }
 
-  const grid: React.CSSProperties = {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-    gap: 14,
-    margin: "18px 0 18px",
-  };
+      const successUrl =
+        `${window.location.origin}/billing/success?session_id={CHECKOUT_SESSION_ID}`;
+      const cancelUrl =
+        `${window.location.origin}${window.location.pathname}?canceled=1`;
 
-  const card: React.CSSProperties = {
-    border: "1px solid rgba(0,0,0,0.08)",
-    borderRadius: 16,
-    padding: 16,
-    background: "rgba(255,255,255,0.86)",
-    boxShadow: "0 8px 20px rgba(0,0,0,0.04)",
-  };
+      const response = await fetch(
+        `${SUPABASE_URL.replace(/\/$/, "")}/functions/v1/billing-stripe-checkout-session`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+            ...(SUPABASE_ANON_KEY ? { apikey: SUPABASE_ANON_KEY } : {}),
+          },
+          body: JSON.stringify({
+            price_id: priceId,
+            success_url: successUrl,
+            cancel_url: cancelUrl,
+            quantity: 1,
+          }),
+        },
+      );
 
-  const featuredCard: React.CSSProperties = {
-    ...card,
-    border: "1px solid rgba(0,128,120,0.20)",
-    background:
-      "linear-gradient(180deg, rgba(240,255,250,0.98), rgba(245,250,255,0.95))",
-    boxShadow: "0 12px 24px rgba(0,128,120,0.08)",
-  };
+      const raw = await response.text();
+      let payload: Record<string, unknown> = {};
 
-  const badge: React.CSSProperties = {
-    display: "inline-flex",
-    alignItems: "center",
-    gap: 6,
-    padding: "6px 10px",
-    borderRadius: 9999,
-    background: "rgba(0,128,120,0.10)",
-    border: "1px solid rgba(0,128,120,0.16)",
-    fontSize: 12,
-    fontWeight: 900,
-    color: "rgba(0,95,90,0.88)",
-    marginBottom: 10,
-  };
+      try {
+        payload = raw ? JSON.parse(raw) : {};
+      } catch {
+        throw new Error(raw || "Checkout returned a non-JSON response.");
+      }
 
-  const tierTitle: React.CSSProperties = {
-    fontSize: 18,
-    margin: 0,
-    fontWeight: 800,
-    display: "flex",
-    alignItems: "baseline",
-    justifyContent: "space-between",
-    gap: 10,
-    color: "rgba(0,0,0,0.88)",
-  };
+      if (!response.ok) {
+        throw new Error(
+          extractErrorMessage(payload, `Checkout failed (${response.status})`),
+        );
+      }
 
-  const price: React.CSSProperties = {
-    fontSize: 20,
-    fontWeight: 900,
-    letterSpacing: 0.2,
-    whiteSpace: "nowrap",
-    color: "rgba(0,0,0,0.92)",
-  };
+      const checkoutUrl =
+        typeof payload.url === "string"
+          ? payload.url
+          : typeof payload.checkout_url === "string"
+            ? payload.checkout_url
+            : typeof payload.checkoutUrl === "string"
+              ? payload.checkoutUrl
+              : "";
 
-  const small: React.CSSProperties = {
-    marginTop: 8,
-    opacity: 0.9,
-    lineHeight: 1.65,
-    fontSize: 14,
-    color: "rgba(0,0,0,0.72)",
-  };
+      if (!checkoutUrl) {
+        throw new Error("Checkout URL missing from response.");
+      }
 
-  const note: React.CSSProperties = {
-    marginTop: 10,
-    fontSize: 13,
-    opacity: 0.8,
-    lineHeight: 1.6,
-    color: "rgba(0,0,0,0.68)",
-  };
+      window.location.assign(checkoutUrl);
+    } catch (error) {
+      setErrorText(
+        error instanceof Error ? error.message : "Unable to start checkout.",
+      );
+    } finally {
+      setBusyPlan(null);
+    }
+  }
 
-  const warn: React.CSSProperties = {
-    marginTop: 12,
-    padding: 12,
-    borderRadius: 12,
-    border: "1px solid rgba(255, 180, 0, 0.35)",
-    background: "rgba(255, 180, 0, 0.08)",
-    fontSize: 13,
-    lineHeight: 1.55,
-    color: "rgba(0,0,0,0.78)",
-  };
+  function renderCard(plan: Plan) {
+    const commonCardStyle: React.CSSProperties = {
+      minHeight: 360,
+      borderRadius: 18,
+      border: "1px solid rgba(15,23,42,0.10)",
+      padding: 18,
+      display: "flex",
+      flexDirection: "column",
+      gap: 12,
+      textAlign: "left",
+      boxShadow:
+        plan.accent === "highlight"
+          ? "0 10px 30px rgba(16,185,129,0.10)"
+          : "0 6px 20px rgba(15,23,42,0.05)",
+      background:
+        plan.accent === "highlight"
+          ? "linear-gradient(180deg, rgba(236,253,245,0.98) 0%, rgba(240,253,250,0.96) 100%)"
+          : "#ffffff",
+    };
 
-  const sectionTitle: React.CSSProperties = {
-    margin: "26px 0 10px",
-    fontSize: 22,
-    fontWeight: 900,
-    color: "rgba(0,0,0,0.88)",
-    letterSpacing: -0.2,
-  };
+    const badgeStyle: React.CSSProperties = {
+      alignSelf: "flex-start",
+      minHeight: 28,
+      padding: "6px 10px",
+      borderRadius: 999,
+      fontSize: 13,
+      fontWeight: 800,
+      color: "#0f766e",
+      background: "rgba(13,148,136,0.10)",
+      visibility: plan.eyebrow ? "visible" : "hidden",
+    };
 
-  const helpBox: React.CSSProperties = {
-    marginTop: 18,
-    border: "1px solid rgba(0,0,0,0.08)",
-    borderRadius: 16,
-    padding: 16,
-    background: "rgba(255,255,255,0.84)",
-    boxShadow: "0 8px 20px rgba(0,0,0,0.04)",
-  };
+    const titleStyle: React.CSSProperties = {
+      fontSize: 20,
+      fontWeight: 900,
+      lineHeight: 1.25,
+      color: "#111827",
+      margin: 0,
+    };
+
+    const priceStyle: React.CSSProperties = {
+      fontSize: 28,
+      fontWeight: 900,
+      lineHeight: 1.15,
+      color: "#111827",
+      margin: 0,
+      minHeight: 32,
+    };
+
+    const subStyle: React.CSSProperties = {
+      fontSize: 15,
+      fontWeight: 800,
+      color: "#334155",
+      margin: 0,
+    };
+
+    const bodyStyle: React.CSSProperties = {
+      fontSize: 15,
+      lineHeight: 1.6,
+      color: "#475569",
+      margin: 0,
+    };
+
+    const actionStyle: React.CSSProperties = {
+      marginTop: "auto",
+      display: "inline-flex",
+      alignItems: "center",
+      justifyContent: "center",
+      borderRadius: 14,
+      minHeight: 48,
+      padding: "12px 16px",
+      border: "1px solid rgba(15,23,42,0.12)",
+      background: plan.key === "free" ? "#ffffff" : "#0f172a",
+      color: plan.key === "free" ? "#0f172a" : "#ffffff",
+      fontSize: 15,
+      fontWeight: 900,
+      cursor: "pointer",
+      width: "100%",
+    };
+
+    if (plan.key === "free") {
+      return (
+        <div key={plan.key} style={commonCardStyle}>
+          <div style={badgeStyle}>{plan.eyebrow || "placeholder"}</div>
+          <h3 style={titleStyle}>{plan.title}</h3>
+          <p style={priceStyle} aria-hidden="true" />
+          <p style={subStyle}>{plan.subtitleEn}</p>
+          <p style={bodyStyle}>{plan.bodyEn}</p>
+          <p style={bodyStyle}>{plan.subtitleVi}</p>
+          <p style={bodyStyle}>{plan.bodyVi}</p>
+
+          <button
+            type="button"
+            style={actionStyle}
+            onClick={() => navigate("/rooms")}
+          >
+            {plan.cta}
+          </button>
+        </div>
+      );
+    }
+
+    const paidKey = plan.key as PaidPlanKey;
+    const isBusy = busyPlan === paidKey;
+
+    return (
+      <div
+        key={plan.key}
+        style={{
+          ...commonCardStyle,
+          opacity: isBusy ? 0.75 : 1,
+        }}
+      >
+        <div style={badgeStyle}>{plan.eyebrow || "placeholder"}</div>
+        <h3 style={titleStyle}>{plan.title}</h3>
+        <p style={priceStyle}>{plan.price}</p>
+        <p style={subStyle}>{plan.subtitleEn}</p>
+        <p style={bodyStyle}>{plan.bodyEn}</p>
+        <p style={bodyStyle}>{plan.subtitleVi}</p>
+        <p style={bodyStyle}>{plan.bodyVi}</p>
+
+        <button
+          type="button"
+          onClick={() => handlePaidPlan(paidKey)}
+          disabled={isBusy}
+          aria-busy={isBusy}
+          style={{
+            ...actionStyle,
+            cursor: isBusy ? "wait" : "pointer",
+            opacity: isBusy ? 0.85 : 1,
+          }}
+        >
+          {isBusy ? "Opening checkout..." : plan.cta}
+        </button>
+      </div>
+    );
+  }
 
   return (
-    <div style={page}>
-      <div style={topRow}>
-        <div>
-          <h1 style={h1}>Pricing / Bảng giá</h1>
-          <div style={sub}>
-            Choose a gentle way to continue.
-            <br />
-            Chọn một cách nhẹ nhàng để tiếp tục.
-          </div>
-        </div>
+    <div
+      style={{
+        maxWidth: PAGE_MAX,
+        margin: "0 auto",
+        padding: "12px 16px 40px",
+      }}
+    >
+      <div
+        style={{
+          background: "linear-gradient(180deg,#f8fafc 0%, #eefbf7 100%)",
+          border: "1px solid rgba(15,23,42,0.08)",
+          borderRadius: 20,
+          padding: 20,
+          marginBottom: 18,
+        }}
+      >
+        <h1
+          style={{
+            margin: 0,
+            fontSize: 30,
+            lineHeight: 1.1,
+            fontWeight: 950,
+            color: "#111827",
+          }}
+        >
+          Choose your plan
+        </h1>
 
-        <div style={topBtns}>
-          <button type="button" style={pillBtn} onClick={() => nav("/")}>
-            Home / Trang chủ
-          </button>
-          <button type="button" style={pillBtn} onClick={() => nav("/rooms")}>
-            Rooms / Các phòng
-          </button>
-        </div>
-      </div>
+        <p style={{ margin: "12px 0 0", color: "#475569", lineHeight: 1.7 }}>
+          When you want to go deeper, you can unlock{" "}
+          <strong>Full Access for One Month</strong> or choose{" "}
+          <strong>1 Year</strong> for longer continuity.
+        </p>
 
-      <div style={hero}>
-        <h2 style={heroTitle}>Start free. Continue when you are ready.</h2>
-        <div style={heroBody}>
-          Mercy Blade begins with free rooms.
-          <br />
-          When you want to go deeper, you can unlock <b>Full Access</b> for your
-          journey — or choose <b>Lifetime</b> and keep Mercy Blade with you for
-          the long term.
-          <br />
-          <br />
-          Mercy Blade bắt đầu với các phòng miễn phí.
-          <br />
-          Khi bạn muốn đi sâu hơn, bạn có thể mở khóa <b>Toàn Quyền Truy Cập</b>
-          cho hành trình của mình — hoặc chọn <b>Trọn Đời</b> để Mercy Blade đồng
-          hành cùng bạn lâu dài.
-        </div>
+        <p style={{ margin: "12px 0 0", color: "#475569", lineHeight: 1.7 }}>
+          Mercy Blade bắt đầu với các phòng miễn phí. Khi bạn muốn đi sâu hơn,
+          bạn có thể mở khóa <strong>Toàn Quyền Truy Cập trong 1 tháng</strong>{" "}
+          hoặc chọn <strong>1 năm</strong> để đồng hành dài lâu hơn.
+        </p>
 
-        <div style={heroActions}>
-          <button type="button" style={primaryBtn} onClick={() => nav("/rooms")}>
+        <div
+          style={{
+            display: "flex",
+            gap: 12,
+            flexWrap: "wrap",
+            marginTop: 18,
+          }}
+        >
+          <button
+            type="button"
+            onClick={() => navigate("/rooms")}
+            style={{
+              borderRadius: 14,
+              minHeight: 46,
+              padding: "12px 16px",
+              border: "1px solid rgba(13,148,136,0.15)",
+              background: "#2aa198",
+              color: "#fff",
+              fontWeight: 900,
+              cursor: "pointer",
+            }}
+          >
             👉 Browse rooms
           </button>
-          <button type="button" style={secondaryBtn} onClick={() => nav("/")}>
+
+          <button
+            type="button"
+            onClick={() => navigate("/")}
+            style={{
+              borderRadius: 14,
+              minHeight: 46,
+              padding: "12px 16px",
+              border: "1px solid rgba(15,23,42,0.12)",
+              background: "#fff",
+              color: "#111827",
+              fontWeight: 900,
+              cursor: "pointer",
+            }}
+          >
             🌿 Back to Home
           </button>
         </div>
       </div>
 
-      <div style={grid}>
-        <div style={card}>
-          <h2 style={tierTitle}>
-            <span>Free / Miễn phí</span>
-            <span style={price}>CA$0</span>
-          </h2>
-          <div style={small}>
-            Start with limited rooms.
-            <br />
-            Begin gently and feel the atmosphere.
-            <br />
-            <br />
-            Bắt đầu với các phòng giới hạn.
-            <br />
-            Đi nhẹ nhàng và cảm nhận không gian của Mercy Blade.
-          </div>
+      {canceled ? (
+        <div
+          style={{
+            marginBottom: 14,
+            padding: "12px 14px",
+            borderRadius: 14,
+            border: "1px solid rgba(245, 158, 11, 0.25)",
+            background: "rgba(255, 251, 235, 0.95)",
+            color: "#92400e",
+            fontWeight: 700,
+          }}
+        >
+          Checkout was canceled. No changes were made.
         </div>
+      ) : null}
 
-        <div style={featuredCard}>
-          <div style={badge}>⭐ Recommended / Gợi ý</div>
-          <h2 style={tierTitle}>
-            <span>Full Access / Toàn quyền truy cập</span>
-            <span style={price}>3 Months / 3 tháng</span>
-          </h2>
-          <div style={small}>
-            Unlock the full journey for a focused season of growth.
-            <br />
-            Best for learners who want real continuity.
-            <br />
-            <br />
-            Mở khóa toàn bộ hành trình trong 3 tháng tập trung phát triển.
-            <br />
-            Phù hợp nhất cho người học muốn đi tiếp một cách nghiêm túc và liền mạch.
-          </div>
+      {configWarning ? (
+        <div
+          style={{
+            marginBottom: 14,
+            padding: "12px 14px",
+            borderRadius: 14,
+            border: "1px solid rgba(245, 158, 11, 0.25)",
+            background: "rgba(255, 251, 235, 0.95)",
+            color: "#92400e",
+            fontWeight: 700,
+          }}
+        >
+          {configWarning}
         </div>
+      ) : null}
 
-        <div style={card}>
-          <h2 style={tierTitle}>
-            <span>Lifetime / Trọn đời</span>
-            <span style={price}>One time / Một lần</span>
-          </h2>
-          <div style={small}>
-            Keep Mercy Blade with you for the long term.
-            <br />
-            One payment, lasting access.
-            <br />
-            <br />
-            Giữ Mercy Blade đồng hành cùng bạn lâu dài.
-            <br />
-            Một lần thanh toán, sử dụng bền lâu.
-          </div>
+      {errorText ? (
+        <div
+          style={{
+            marginBottom: 14,
+            padding: "12px 14px",
+            borderRadius: 14,
+            border: "1px solid rgba(239,68,68,0.20)",
+            background: "rgba(254,242,242,0.95)",
+            color: "#991b1b",
+            fontWeight: 700,
+          }}
+        >
+          {errorText}
         </div>
+      ) : null}
+
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+          gap: 14,
+          alignItems: "stretch",
+        }}
+      >
+        {plans.map(renderCard)}
       </div>
 
-      <div style={note}>
-        The cards above explain the plan structure clearly. The exact Stripe
-        checkout options shown below should match this same structure:
-        <b> Free / Full Access / Lifetime</b>.
-        <br />
-        <br />
-        Các thẻ ở trên dùng để giải thích rõ cấu trúc gói. Những lựa chọn Stripe
-        bên dưới nên được đồng bộ theo cùng cấu trúc:
-        <b> Miễn phí / Toàn quyền truy cập / Trọn đời</b>.
-      </div>
-
-      <h3 style={sectionTitle}>Checkout / Thanh toán</h3>
-
-      {STRIPE_PRICING_TABLE_ID && STRIPE_PUBLISHABLE_KEY ? (
-        <div style={{ marginTop: 18 }}>
-          {React.createElement("stripe-pricing-table", {
-            "pricing-table-id": STRIPE_PRICING_TABLE_ID,
-            "publishable-key": STRIPE_PUBLISHABLE_KEY,
-          })}
-        </div>
-      ) : (
-        <div style={warn}>
-          Stripe pricing table env vars are missing.
-          <br />
-          Set:
-          <br />
-          <code>VITE_STRIPE_PRICING_TABLE_ID</code> and{" "}
-          <code>VITE_STRIPE_PUBLISHABLE_KEY</code>
-          <br />
-          <br />
-          Biến môi trường Stripe pricing table đang thiếu.
-        </div>
-      )}
-
-      <div style={helpBox}>
-        <div style={{ fontWeight: 900, color: "rgba(0,0,0,0.86)" }}>
-          Need a gentle first step? / Cần một bước khởi đầu nhẹ nhàng?
-        </div>
-        <div style={small}>
-          You can begin with free rooms first, then return here later.
-          <br />
-          Bạn có thể bắt đầu với các phòng miễn phí trước, rồi quay lại đây sau.
-        </div>
-
-        <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
-          <button type="button" style={primaryBtn} onClick={() => nav("/rooms")}>
-            👉 Start with free rooms
-          </button>
-          <button type="button" style={secondaryBtn} onClick={() => nav("/")}>
-            ← Home
-          </button>
-        </div>
-      </div>
+      <p
+        style={{
+          marginTop: 16,
+          fontSize: 14,
+          color: "#64748b",
+          lineHeight: 1.6,
+        }}
+      >
+        The paid cards now skip the blocked client-side subscription tier query
+        and open Stripe checkout directly through the existing{" "}
+        <code>billing-stripe-checkout-session</code> function for the signed-in
+        user.
+      </p>
     </div>
   );
 }

@@ -1,35 +1,104 @@
-import React, { useMemo } from "react";
+// src/pages/AccountPage.tsx
+import React, { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "@/providers/AuthProvider";
+import { useEntitlements } from "@/lib/useEntitlements";
+
+function formatDateTime(value: string | null | undefined): string {
+  if (!value) return "—";
+
+  const d = new Date(value);
+  if (Number.isNaN(d.getTime())) return "—";
+
+  return d.toLocaleString();
+}
+
+function getStatusLabel(status: string | null | undefined): string {
+  switch (status) {
+    case "active":
+      return "Đang hoạt động";
+    case "trialing":
+      return "Đang dùng thử";
+    case "grace_period":
+      return "Đang trong thời gian gia hạn";
+    case "past_due":
+      return "Quá hạn thanh toán";
+    case "paused":
+      return "Đã tạm dừng";
+    case "expired":
+      return "Đã hết hạn";
+    case "revoked":
+      return "Đã bị thu hồi";
+    case "inactive":
+    default:
+      return "Chưa kích hoạt";
+  }
+}
 
 export default function AccountPage() {
   const nav = useNavigate();
+  const { user, isLoading, signOut } = useAuth();
+  const {
+    ent,
+    loading: entitlementLoading,
+    refreshEntitlements,
+  } = useEntitlements();
+  const [isSigningOut, setIsSigningOut] = useState(false);
 
-  // ✅ Keep this "safe": show something even if you haven't wired auth state here.
-  // If you already have a real user object somewhere, replace this with your real source.
-  const email = useMemo(() => {
-    try {
-      // common places people store it during dev:
-      const fromLS =
-        localStorage.getItem("email") ||
-        localStorage.getItem("user_email") ||
-        localStorage.getItem("mb_email") ||
-        "";
-      return fromLS || "—";
-    } catch {
-      return "—";
+  useEffect(() => {
+    if (!isLoading && !user) {
+      nav("/signin", { replace: true });
     }
-  }, []);
+  }, [isLoading, user, nav]);
 
-  const plan = useMemo(() => {
-    try {
-      // optional: if you store plan in localStorage later
-      return localStorage.getItem("mb_plan") || "Free";
-    } catch {
-      return "Free";
+  const email = useMemo(() => String(user?.email ?? "").trim(), [user?.email]);
+
+  const isPremium = useMemo(() => {
+    if (entitlementLoading) return false;
+    return ent?.is_premium === true;
+  }, [ent, entitlementLoading]);
+
+  const accessLabel = useMemo(() => {
+    if (entitlementLoading) return "Loading…";
+    if (!isPremium) return "Miễn phí";
+
+    if (typeof ent?.plan_name === "string" && ent.plan_name.trim()) {
+      return ent.plan_name;
     }
-  }, []);
 
-  const status = "Active";
+    if (ent?.status === "trialing") {
+      return "Cao cấp (dùng thử)";
+    }
+
+    if (ent?.vip_tier === "vip9") return "Cao cấp";
+    if (ent?.vip_tier === "vip1") return "Cao cấp";
+
+    return "Cao cấp";
+  }, [ent, entitlementLoading, isPremium]);
+
+  const entitlementStatusLabel = useMemo(() => {
+    if (entitlementLoading) return "Loading…";
+    return getStatusLabel(ent?.status);
+  }, [ent?.status, entitlementLoading]);
+
+  const statusText = isLoading
+    ? "Checking session..."
+    : user
+      ? "Active"
+      : "Redirecting...";
+
+  async function handleSignOut() {
+    if (isSigningOut) return;
+
+    setIsSigningOut(true);
+
+    try {
+      await signOut();
+      nav("/signin", { replace: true });
+    } finally {
+      setIsSigningOut(false);
+    }
+  }
 
   const wrap: React.CSSProperties = {
     width: "100%",
@@ -73,7 +142,7 @@ export default function AccountPage() {
     fontSize: 14,
     lineHeight: 1.6,
     color: "rgba(0,0,0,0.60)",
-    maxWidth: 520,
+    maxWidth: 560,
   };
 
   const actions: React.CSSProperties = {
@@ -83,90 +152,65 @@ export default function AccountPage() {
     flexWrap: "wrap",
   };
 
-  const pillBtn: React.CSSProperties = {
+  const buttonBase: React.CSSProperties = {
+    borderRadius: 12,
+    minHeight: 42,
+    padding: "10px 14px",
+    border: "1px solid rgba(0,0,0,0.10)",
+    background: "#fff",
+    color: "#111827",
+    fontWeight: 800,
+    cursor: "pointer",
+    textDecoration: "none",
     display: "inline-flex",
     alignItems: "center",
-    gap: 8,
-    padding: "9px 14px",
-    borderRadius: 9999,
-    border: "1px solid rgba(0,0,0,0.12)",
-    background: "rgba(255,255,255,0.95)",
-    color: "rgba(0,0,0,0.80)",
-    textDecoration: "none",
-    fontWeight: 900,
-    fontSize: 13,
-    cursor: "pointer",
+    justifyContent: "center",
   };
 
-  // ✅ Pricing button: visible but NOT harsh
-  const pricingBtn: React.CSSProperties = {
-    ...pillBtn,
-    border: "1px solid rgba(0,0,0,0.14)",
-    background: "rgba(0,0,0,0.03)",
+  const primaryButton: React.CSSProperties = {
+    ...buttonBase,
+    background: "#111827",
+    color: "#fff",
+    borderColor: "#111827",
   };
 
   const grid: React.CSSProperties = {
+    display: "grid",
+    gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+    gap: 16,
     marginTop: 18,
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    gap: 14,
   };
 
-  const gridSingle: React.CSSProperties = {
-    marginTop: 14,
-    display: "grid",
-    gridTemplateColumns: "1fr",
-    gap: 14,
-  };
-
-  const box: React.CSSProperties = {
-    border: "1px solid rgba(0,0,0,0.10)",
-    borderRadius: 14,
-    padding: 16,
-    background: "rgba(255,255,255,0.86)",
-  };
+  const panel = (span = 1): React.CSSProperties => ({
+    ...card,
+    gridColumn: span === 2 ? "span 2" : "span 1",
+  });
 
   const label: React.CSSProperties = {
-    fontSize: 11,
-    letterSpacing: 0.8,
-    fontWeight: 950,
-    color: "rgba(0,0,0,0.45)",
+    fontSize: 12,
+    fontWeight: 800,
     textTransform: "uppercase",
+    letterSpacing: 0.5,
+    color: "rgba(0,0,0,0.48)",
+    marginBottom: 8,
   };
 
   const value: React.CSSProperties = {
-    marginTop: 8,
-    fontSize: 16,
+    fontSize: 24,
     fontWeight: 900,
     color: "rgba(0,0,0,0.86)",
   };
 
-  const valueSub: React.CSSProperties = {
-    marginTop: 6,
+  const sub: React.CSSProperties = {
+    marginTop: 8,
     fontSize: 13,
     lineHeight: 1.6,
     color: "rgba(0,0,0,0.60)",
   };
 
-  const miniRow: React.CSSProperties = {
-    marginTop: 14,
-    display: "flex",
-    gap: 10,
-    flexWrap: "wrap",
-    alignItems: "center",
-  };
-
-  const footer: React.CSSProperties = {
-    marginTop: 14,
-    color: "rgba(0,0,0,0.55)",
-    fontSize: 13,
-    lineHeight: 1.6,
-  };
-
-  const onSignOut = () => {
-    // ✅ If you have real auth sign out, do it here, then nav("/signin")
-    nav("/signin");
-  };
+  if (!user && !isLoading) {
+    return null;
+  }
 
   return (
     <div style={wrap}>
@@ -176,78 +220,85 @@ export default function AccountPage() {
             <div>
               <h1 style={h1}>Account</h1>
               <p style={subtitle}>
-                Your identity and access inside Mercy Blade.
-                <br />
-                <span style={{ display: "inline-block", marginTop: 4 }}>
-                  Danh tính và quyền truy cập của bạn trong Mercy Blade.
-                </span>
+                Premium truth on this screen comes from backend entitlement only.
+                No plan name is inferred from client-side auth metadata.
               </p>
             </div>
 
             <div style={actions}>
-              {/* ✅ Pricing (soft, but visible) */}
-              <Link to="/pricing" style={pricingBtn} aria-label="Open pricing">
-                💳 Pricing
-                <span style={{ opacity: 0.7, fontWeight: 800 }}> / Giá gói</span>
+              <button
+                type="button"
+                style={buttonBase}
+                onClick={() => void refreshEntitlements()}
+              >
+                Refresh access
+              </button>
+
+              <Link to="/billing" style={buttonBase}>
+                Billing
               </Link>
 
-              {/* Upgrade */}
-              <Link to="/upgrade" style={pillBtn} aria-label="Upgrade">
-                Upgrade <span style={{ opacity: 0.7, fontWeight: 800 }}>/ Nâng cấp</span>
+              <Link to="/pricing" style={buttonBase}>
+                Pricing
               </Link>
 
-              {/* Sign out */}
-              <button type="button" style={pillBtn} onClick={onSignOut} aria-label="Sign out">
-                Sign out <span style={{ opacity: 0.7, fontWeight: 800 }}>/ Đăng xuất</span>
+              <button
+                type="button"
+                style={primaryButton}
+                onClick={() => void handleSignOut()}
+                disabled={isSigningOut}
+              >
+                {isSigningOut ? "Signing out…" : "Sign out"}
               </button>
             </div>
           </div>
+        </div>
 
-          <div style={gridSingle}>
-            <div style={box}>
-              <div style={label}>Email</div>
-              <div style={value}>{email}</div>
+        <div style={grid}>
+          <div style={panel()}>
+            <div style={label}>Email</div>
+            <div style={{ ...value, fontSize: 20 }}>{email || "—"}</div>
+            <div style={sub}>Authenticated account email.</div>
+          </div>
+
+          <div style={panel()}>
+            <div style={label}>Session</div>
+            <div style={value}>{statusText}</div>
+            <div style={sub}>Session state from AuthProvider.</div>
+          </div>
+
+          <div style={panel()}>
+            <div style={label}>Current access</div>
+            <div style={value}>{accessLabel}</div>
+            <div style={sub}>
+              {entitlementLoading
+                ? "Checking backend entitlement…"
+                : isPremium
+                  ? `Granted because backend entitlement says premium is ${ent?.status || "active"}.`
+                  : "Free because backend entitlement does not currently grant premium."}
             </div>
           </div>
 
-          <div style={grid}>
-            <div style={box}>
-              <div style={label}>Plan</div>
-              <div style={value}>{plan}</div>
-              <div style={valueSub}>
-                Keep it simple. Upgrade anytime.
-                <br />
-                Giữ đơn giản. Nâng cấp bất cứ lúc nào.
-              </div>
-            </div>
-
-            <div style={box}>
-              <div style={label}>Status</div>
-              <div style={value}>{status}</div>
-              <div style={valueSub}>
-                You’re signed in and ready to continue your journey.
-                <br />
-                Bạn đã đăng nhập và sẵn sàng tiếp tục hành trình.
-              </div>
+          <div style={panel()}>
+            <div style={label}>Entitlement status</div>
+            <div style={value}>{entitlementStatusLabel}</div>
+            <div style={sub}>
+              Raw status: <b>{entitlementLoading ? "Loading…" : (ent?.status || "inactive")}</b>
+              <br />
+              Source: <b>{ent?.source || "—"}</b>
+              <br />
+              Expires: <b>{formatDateTime(ent?.expires_at)}</b>
             </div>
           </div>
 
-          <div style={miniRow}>
-            <Link to="/tiers" style={pillBtn}>
-              Browse tiers <span style={{ opacity: 0.7, fontWeight: 800 }}>/ Xem gói</span>
-            </Link>
-            <Link to="/rooms" style={pillBtn}>
-              Browse rooms <span style={{ opacity: 0.7, fontWeight: 800 }}>/ Xem phòng</span>
-            </Link>
-            <Link to="/" style={pillBtn}>
-              Home <span style={{ opacity: 0.7, fontWeight: 800 }}>/ Trang chủ</span>
-            </Link>
-          </div>
-
-          <div style={footer}>
-            Mercy Blade is built for calm progress — small steps, every day.
-            <br />
-            Mercy Blade được xây dựng cho tiến bộ bình tĩnh — từng bước nhỏ, mỗi ngày.
+          <div style={panel(2)}>
+            <div style={label}>Notes</div>
+            <div style={sub}>
+              Stripe webhook writes canonical truth. <code>public.subscriptions</code> is canonical.
+              Backend entitlement is the only premium truth. This page intentionally does not read
+              <code> user_metadata</code>, <code>app_metadata</code>, <code>subscription_tiers</code>,
+              or <code>user_subscriptions</code> to decide premium access.
+            </div>
           </div>
         </div>
       </div>

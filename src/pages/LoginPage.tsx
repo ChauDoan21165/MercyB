@@ -56,6 +56,17 @@
 //     - "email not confirmed" => treat as new signup (tell user to confirm email)
 //     - "invalid login credentials" => treat as already registered (old account / different password)
 //   This catches Supabase edge cases where identities is missing/changed.
+//
+// PATCH (MB-BLUE-101.3k.5 → MB-BLUE-101.3k.6):
+// - Add query-param notices for logged_out / created / reset.
+// - Add “Continue” action when session already exists.
+// - Add explicit redirecting feedback after successful password/phone auth.
+// - Keep all existing auth flows intact.
+//
+// PATCH (MB-BLUE-101.3k.6 → MB-BLUE-101.3k.7):
+// - Add page-level auth notice banner.
+// - Surface successful sign-up confirmation more clearly at page level.
+// - Keep existing form behavior intact; no auth flow removed or rerouted.
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -63,6 +74,8 @@ import { supabase } from "@/lib/supabaseClient";
 
 type TopMode = "email" | "phone" | "google" | "facebook";
 type EmailMode = "password_signin" | "password_signup" | "magic" | "reset";
+type NoticeTone = "success" | "info" | "error";
+type AuthNotice = { tone: NoticeTone; message: string } | null;
 
 // ---- env helpers (Vite) ----
 function readBoolEnv(key: string): boolean {
@@ -89,7 +102,6 @@ function safeParseReturnTo(search: string): string | null {
 
     if (trimmed.startsWith("/")) return trimmed;
 
-    // ✅ absolute allowed only if same origin
     const u = new URL(trimmed);
     if (u.origin !== window.location.origin) return null;
     return `${u.pathname}${u.search}${u.hash}`;
@@ -103,10 +115,8 @@ function toSafeAppPath(returnTo: string | null): string | null {
   const trimmed = returnTo.trim();
   if (!trimmed) return null;
 
-  // relative allowed
   if (trimmed.startsWith("/")) return trimmed;
 
-  // absolute allowed only if same origin
   try {
     const u = new URL(trimmed);
     if (u.origin !== window.location.origin) return null;
@@ -122,7 +132,6 @@ function resolveAppFromReturnTo(returnTo: string | null): { key: string; label: 
 
   const s = returnTo.toLowerCase();
 
-  // Minimal mapping for now (expand later)
   if (s.includes("mercy-ai-builder") || s.includes("ai-builder")) {
     return { key: "mercy_ai_builder", label: "Mercy AI Builder" };
   }
@@ -131,6 +140,57 @@ function resolveAppFromReturnTo(returnTo: string | null): { key: string; label: 
   }
 
   return null;
+}
+
+function readSearchFlag(search: string, key: string): boolean {
+  try {
+    const sp = new URLSearchParams(search || "");
+    return sp.get(key) === "1";
+  } catch {
+    return false;
+  }
+}
+
+function getNoticeStyle(tone: NoticeTone): React.CSSProperties {
+  if (tone === "success") {
+    return {
+      marginTop: 12,
+      whiteSpace: "pre-wrap",
+      padding: 12,
+      borderRadius: 14,
+      border: "1px solid rgba(16,185,129,0.20)",
+      background: "rgba(236,253,245,0.92)",
+      color: "rgba(6,95,70,0.92)",
+      fontSize: 13,
+      fontWeight: 800,
+    };
+  }
+
+  if (tone === "error") {
+    return {
+      marginTop: 12,
+      whiteSpace: "pre-wrap",
+      padding: 12,
+      borderRadius: 14,
+      border: "1px solid rgba(239,68,68,0.20)",
+      background: "rgba(254,242,242,0.94)",
+      color: "rgba(127,29,29,0.92)",
+      fontSize: 13,
+      fontWeight: 800,
+    };
+  }
+
+  return {
+    marginTop: 12,
+    whiteSpace: "pre-wrap",
+    padding: 12,
+    borderRadius: 14,
+    border: "1px solid rgba(0,0,0,0.12)",
+    background: "rgba(255,255,255,0.92)",
+    color: "rgba(0,0,0,0.78)",
+    fontSize: 13,
+    fontWeight: 800,
+  };
 }
 
 const UI = {
@@ -271,7 +331,7 @@ const UI = {
       outline: "none",
       opacity: disabled ? 0.7 : 1,
       boxSizing: "border-box",
-      minHeight: 46, // keep consistent box height
+      minHeight: 46,
     }) as React.CSSProperties,
 
   primaryBtn: (disabled: boolean) =>
@@ -372,14 +432,12 @@ function isUserAlreadyRegisteredError(e: any): boolean {
   const msg = String(e?.message ?? "").toLowerCase();
   const code = String(e?.code ?? e?.error_code ?? e?.error ?? "").toLowerCase();
 
-  // Common message variants
   if (msg.includes("user already registered")) return true;
   if (msg.includes("already registered")) return true;
   if (msg.includes("already exists")) return true;
   if (msg.includes("user already exists")) return true;
   if (msg.includes("email address already") && msg.includes("exists")) return true;
 
-  // Supabase structured codes we’ve seen in the wild
   if (code === "user_already_exists") return true;
   if (code === "user_already_registered") return true;
 
@@ -387,7 +445,6 @@ function isUserAlreadyRegisteredError(e: any): boolean {
 }
 
 function isSilentAlreadyRegisteredSignUp(data: any): boolean {
-  // Supabase can return NO error, but identities === [] when email already exists.
   const ids = (data as any)?.user?.identities;
   return Array.isArray(ids) && ids.length === 0;
 }
@@ -410,8 +467,11 @@ function humanizeAuthError(e: any, mode: EmailMode) {
     return "Your email is not confirmed yet.\n\nPlease check your inbox for the confirmation email.";
   }
 
-  // More robust: message OR code style
-  if (isUserAlreadyRegisteredError(e) || msg.includes("user_already_exists") || msg.includes("user_already_registered")) {
+  if (
+    isUserAlreadyRegisteredError(e) ||
+    msg.includes("user_already_exists") ||
+    msg.includes("user_already_registered")
+  ) {
     return alreadyRegisteredStatusText();
   }
 
@@ -464,12 +524,6 @@ function readOAuthErrorFromSearch(search: string): { error: string; desc: string
   }
 }
 
-// ✅ INLINE brand overlay (IMAGE ONLY — NO TEXT)
-//
-// Image file name I want you to use:
-//   public/brand/mercy_wordmark.png
-// Then reference it like:
-//   src="/brand/mercy_wordmark.png"
 function MercyRightBrandOverlayInline() {
   return (
     <div
@@ -514,7 +568,6 @@ function MercyRightBrandOverlayInline() {
             objectFit: "contain",
           }}
           onError={(e) => {
-            // NO TEXT FALLBACK (per user). If missing, hide the img so the overlay stays clean.
             e.currentTarget.style.display = "none";
           }}
         />
@@ -578,11 +631,20 @@ function RecoverySetPassword({ busyParent, onDone }: { busyParent: boolean; onDo
     try {
       const a = pw1.trim();
       const b = pw2.trim();
-      if (!a || a.length < 6) return setMsg("Password must be at least 6 characters.");
-      if (a !== b) return setMsg("Passwords do not match.");
+      if (!a || a.length < 6) {
+        setMsg("Password must be at least 6 characters.");
+        return;
+      }
+      if (a !== b) {
+        setMsg("Passwords do not match.");
+        return;
+      }
 
       const { error } = await supabase.auth.updateUser({ password: a });
-      if (error) return setMsg(error.message);
+      if (error) {
+        setMsg(error.message);
+        return;
+      }
 
       setMsg("✅ Password updated. You are now signed in.");
       clearRecoveryFromUrl();
@@ -661,8 +723,6 @@ function RecoverySetPassword({ busyParent, onDone }: { busyParent: boolean; onDo
               padding: 0,
               lineHeight: 1,
               fontSize: 18,
-
-              // ✅ kill browser “button chrome”
               appearance: "none",
               WebkitAppearance: "none",
               outline: "none",
@@ -701,7 +761,11 @@ function RecoverySetPassword({ busyParent, onDone }: { busyParent: boolean; onDo
 
 async function fetchAdminFlagsSafe(userId: string): Promise<{ isAdmin: boolean }> {
   try {
-    const { data, error } = await supabase.from("profiles").select("is_admin, admin_level").eq("id", userId).maybeSingle();
+    const { data, error } = await supabase
+      .from("profiles")
+      .select("is_admin, admin_level")
+      .eq("id", userId)
+      .maybeSingle();
 
     if (error) return { isAdmin: false };
 
@@ -713,7 +777,6 @@ async function fetchAdminFlagsSafe(userId: string): Promise<{ isAdmin: boolean }
 }
 
 function PhoneOtp({
-  redirectToOAuthReturn,
   busyParent,
   onAuthed,
 }: {
@@ -763,8 +826,14 @@ function PhoneOtp({
       const p = cleanPhone();
       const t = token.trim();
 
-      if (!p || p.length < 8) return setMsg("Enter phone with country code.");
-      if (!t || t.length < 4) return setMsg("Enter the code you received.");
+      if (!p || p.length < 8) {
+        setMsg("Enter phone with country code.");
+        return;
+      }
+      if (!t || t.length < 4) {
+        setMsg("Enter the code you received.");
+        return;
+      }
 
       const { error } = await supabase.auth.verifyOtp({
         phone: p,
@@ -778,6 +847,7 @@ function PhoneOtp({
       }
 
       await ensureSessionOrThrow();
+      setMsg("✅ Signed in. Redirecting...");
       await onAuthed();
     } catch (e: any) {
       setMsg(e?.message || "Unknown error");
@@ -851,11 +921,13 @@ function EmailBlock({
   redirectToRecovery,
   busyParent,
   onAuthed,
+  onSignupCreated,
 }: {
   emailRedirectTo: string;
   redirectToRecovery: string;
   busyParent: boolean;
   onAuthed: () => Promise<void>;
+  onSignupCreated: (email: string, message: string) => void;
 }) {
   const [mode, setMode] = useState<EmailMode>("password_signin");
   const [email, setEmail] = useState("");
@@ -865,7 +937,6 @@ function EmailBlock({
   const [status, setStatus] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
 
-  // ✅ auto-scroll status into view so user never thinks “no reaction”
   const statusRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     if (!status) return;
@@ -880,14 +951,20 @@ function EmailBlock({
     setStatus(null);
     try {
       const clean = cleanEmail();
-      if (!clean || !clean.includes("@")) return setStatus("Please enter a valid email.");
+      if (!clean || !clean.includes("@")) {
+        setStatus("Please enter a valid email.");
+        return;
+      }
 
       const { error } = await supabase.auth.signInWithOtp({
         email: clean,
         options: { emailRedirectTo },
       });
 
-      if (error) return setStatus(humanizeAuthError(error, mode));
+      if (error) {
+        setStatus(humanizeAuthError(error, mode));
+        return;
+      }
       setStatus("✅ Email link sent. Open your email and click the link.");
     } catch (e: any) {
       setStatus(humanizeAuthError(e, mode));
@@ -901,13 +978,23 @@ function EmailBlock({
     setStatus(null);
     try {
       const clean = cleanEmail();
-      if (!clean || !clean.includes("@")) return setStatus("Please enter a valid email.");
-      if (!password || password.length < 6) return setStatus("Password must be at least 6 characters.");
+      if (!clean || !clean.includes("@")) {
+        setStatus("Please enter a valid email.");
+        return;
+      }
+      if (!password || password.length < 6) {
+        setStatus("Password must be at least 6 characters.");
+        return;
+      }
 
       const { error } = await supabase.auth.signInWithPassword({ email: clean, password });
-      if (error) return setStatus(humanizeAuthError(error, mode));
+      if (error) {
+        setStatus(humanizeAuthError(error, mode));
+        return;
+      }
 
       await ensureSessionOrThrow();
+      setStatus("✅ Signed in. Redirecting...");
       await onAuthed();
     } catch (e: any) {
       setStatus(humanizeAuthError(e, mode));
@@ -921,8 +1008,14 @@ function EmailBlock({
     setStatus(null);
     try {
       const clean = cleanEmail();
-      if (!clean || !clean.includes("@")) return setStatus("Please enter a valid email.");
-      if (!password || password.length < 6) return setStatus("Password must be at least 6 characters.");
+      if (!clean || !clean.includes("@")) {
+        setStatus("Please enter a valid email.");
+        return;
+      }
+      if (!password || password.length < 6) {
+        setStatus("Password must be at least 6 characters.");
+        return;
+      }
 
       const { data, error } = await supabase.auth.signUp({
         email: clean,
@@ -930,7 +1023,6 @@ function EmailBlock({
         options: { emailRedirectTo },
       });
 
-      // ✅ Case (1): explicit error
       if (error) {
         if (isUserAlreadyRegisteredError(error)) {
           setStatus(alreadyRegisteredStatusText());
@@ -940,16 +1032,11 @@ function EmailBlock({
         return;
       }
 
-      // ✅ Case (2): silent “already registered” (identities === [])
       if (isSilentAlreadyRegisteredSignUp(data)) {
         setStatus(alreadyRegisteredStatusText());
         return;
       }
 
-      // ✅ If no session, Supabase can be in a few states.
-      // We PROBE sign-in with the same email+password to disambiguate:
-      // - Email not confirmed => new signup (tell user to confirm)
-      // - Invalid login creds => most likely existing email (different password) => “already registered”
       if (!data?.session) {
         const { error: siErr } = await supabase.auth.signInWithPassword({ email: clean, password });
 
@@ -957,7 +1044,10 @@ function EmailBlock({
           const m = String(siErr?.message ?? "").toLowerCase();
 
           if (m.includes("email not confirmed")) {
-            setStatus("✅ Account created.\n\nPlease check your email to confirm, then sign in.");
+            const createdMsg =
+              "✅ Account created.\n\nPlease check your email to confirm, then sign in.";
+            setStatus(createdMsg);
+            onSignupCreated(clean, createdMsg);
             return;
           }
 
@@ -966,23 +1056,23 @@ function EmailBlock({
             return;
           }
 
-          // Fallback: keep it actionable (never silent)
-          setStatus(
-            "✅ Signup request received.\n\nIf you already have an account, switch to Sign in.\nOtherwise, check your email for confirmation."
-          );
+          const createdMsg =
+            "✅ Signup request received.\n\nIf you already have an account, switch to Sign in.\nOtherwise, check your email for confirmation.";
+          setStatus(createdMsg);
+          onSignupCreated(clean, createdMsg);
           return;
         }
 
-        // If probe sign-in succeeded, we have a session now.
         await ensureSessionOrThrow();
+        setStatus("✅ Account created. Redirecting...");
         await onAuthed();
         return;
       }
 
       await ensureSessionOrThrow();
+      setStatus("✅ Account created. Redirecting...");
       await onAuthed();
     } catch (e: any) {
-      // Extra guard: if something throws a structured error
       if (isUserAlreadyRegisteredError(e)) {
         setStatus(alreadyRegisteredStatusText());
         return;
@@ -998,12 +1088,18 @@ function EmailBlock({
     setStatus(null);
     try {
       const clean = cleanEmail();
-      if (!clean || !clean.includes("@")) return setStatus("Please enter a valid email.");
+      if (!clean || !clean.includes("@")) {
+        setStatus("Please enter a valid email.");
+        return;
+      }
 
       const { error } = await supabase.auth.resetPasswordForEmail(clean, {
         redirectTo: redirectToRecovery,
       });
-      if (error) return setStatus(humanizeAuthError(error, mode));
+      if (error) {
+        setStatus(humanizeAuthError(error, mode));
+        return;
+      }
 
       setStatus("✅ Password reset email sent.\n\nOpen your email and follow the link.");
     } catch (e: any) {
@@ -1136,8 +1232,6 @@ function EmailBlock({
                 padding: 0,
                 lineHeight: 1,
                 fontSize: 18,
-
-                // ✅ kill browser “button chrome”
                 appearance: "none",
                 WebkitAppearance: "none",
                 outline: "none",
@@ -1170,7 +1264,12 @@ function EmailBlock({
         {mode === "password_signin" ? (
           <>
             New here?{" "}
-            <button type="button" onClick={() => setMode("password_signup")} disabled={disabled} style={UI.linkBtn(disabled)}>
+            <button
+              type="button"
+              onClick={() => setMode("password_signup")}
+              disabled={disabled}
+              style={UI.linkBtn(disabled)}
+            >
               Create an account
             </button>
             .
@@ -1178,7 +1277,12 @@ function EmailBlock({
         ) : mode === "password_signup" ? (
           <>
             Already have an account?{" "}
-            <button type="button" onClick={() => setMode("password_signin")} disabled={disabled} style={UI.linkBtn(disabled)}>
+            <button
+              type="button"
+              onClick={() => setMode("password_signin")}
+              disabled={disabled}
+              style={UI.linkBtn(disabled)}
+            >
               Sign in
             </button>
             .
@@ -1201,14 +1305,12 @@ export default function LoginPage() {
   const returnToRaw = useMemo(() => safeParseReturnTo(window.location.search || ""), []);
   const fromApp = useMemo(() => resolveAppFromReturnTo(returnToRaw), [returnToRaw]);
 
-  // ✅ use helper (also prevents unused readBoolEnv)
   const AUTH_GOOGLE_ENABLED = useMemo(() => readBoolEnv("VITE_AUTH_GOOGLE_ENABLED"), []);
   const AUTH_FACEBOOK_ENABLED = useMemo(() => readBoolEnv("VITE_AUTH_FACEBOOK_ENABLED"), []);
   const IS_DEV = import.meta.env.DEV;
 
   useEffect(() => {
     if (!IS_DEV) return;
-    // eslint-disable-next-line no-console
     console.log("[MB] OAuth flags from import.meta.env:", {
       google: import.meta.env.VITE_AUTH_GOOGLE_ENABLED,
       facebook: import.meta.env.VITE_AUTH_FACEBOOK_ENABLED,
@@ -1238,6 +1340,7 @@ export default function LoginPage() {
   const [topMode, setTopMode] = useState<TopMode>("email");
   const [busy, setBusy] = useState(false);
   const [status, setStatus] = useState<string | null>(null);
+  const [notice, setNotice] = useState<AuthNotice>(null);
 
   const [recoveryReady, setRecoveryReady] = useState(false);
   const [recoveryMsg, setRecoveryMsg] = useState<string | null>(null);
@@ -1269,7 +1372,7 @@ export default function LoginPage() {
       setSessionUserId((s?.user?.id as string) || null);
     }
 
-    bootSessionFlag();
+    void bootSessionFlag();
 
     const { data: sub } = supabase.auth.onAuthStateChange((_evt, session) => {
       if (!alive) return;
@@ -1292,6 +1395,7 @@ export default function LoginPage() {
       nav("/signin", { replace: true });
     } catch (e: any) {
       setStatus(e?.message || "Sign out failed");
+      setNotice({ tone: "error", message: e?.message || "Sign out failed" });
     } finally {
       setBusy(false);
     }
@@ -1307,7 +1411,27 @@ export default function LoginPage() {
       oauthErr.desc ? `details: ${oauthErr.desc}` : "",
     ].filter(Boolean);
 
-    setStatus(lines.join("\n"));
+    const msg = lines.join("\n");
+    setStatus(msg);
+    setNotice({ tone: "error", message: msg });
+  }, []);
+
+  useEffect(() => {
+    const search = window.location.search || "";
+
+    if (readSearchFlag(search, "logged_out")) {
+      setNotice({ tone: "success", message: "✅ You’ve been signed out." });
+      return;
+    }
+
+    if (readSearchFlag(search, "created")) {
+      setNotice({ tone: "success", message: "✅ Account created. You can sign in now." });
+      return;
+    }
+
+    if (readSearchFlag(search, "reset")) {
+      setNotice({ tone: "success", message: "✅ Password updated. You can sign in now." });
+    }
   }, []);
 
   useEffect(() => {
@@ -1340,7 +1464,7 @@ export default function LoginPage() {
       }
     }
 
-    bootRecoveryIfNeeded();
+    void bootRecoveryIfNeeded();
     return () => {
       cancelled = true;
     };
@@ -1361,7 +1485,7 @@ export default function LoginPage() {
       }
     }
 
-    bootIfAlreadySignedIn();
+    void bootIfAlreadySignedIn();
     return () => {
       alive = false;
     };
@@ -1378,14 +1502,23 @@ export default function LoginPage() {
       });
 
       if (error) {
-        setStatus(humanizeAuthError(error, "password_signin"));
+        const msg = humanizeAuthError(error, "password_signin");
+        setStatus(msg);
+        setNotice({ tone: "error", message: msg });
         return;
       }
 
+      setStatus("Redirecting to Google...");
       if (data?.url) window.location.assign(data.url);
-      else setStatus("Google sign-in did not return a redirect URL.");
+      else {
+        const msg = "Google sign-in did not return a redirect URL.";
+        setStatus(msg);
+        setNotice({ tone: "error", message: msg });
+      }
     } catch (e: any) {
-      setStatus(humanizeAuthError(e, "password_signin"));
+      const msg = humanizeAuthError(e, "password_signin");
+      setStatus(msg);
+      setNotice({ tone: "error", message: msg });
     } finally {
       setBusy(false);
     }
@@ -1401,14 +1534,23 @@ export default function LoginPage() {
       });
 
       if (error) {
-        setStatus(humanizeAuthError(error, "password_signin"));
+        const msg = humanizeAuthError(error, "password_signin");
+        setStatus(msg);
+        setNotice({ tone: "error", message: msg });
         return;
       }
 
+      setStatus("Redirecting to Facebook...");
       if (data?.url) window.location.assign(data.url);
-      else setStatus("Facebook sign-in did not return a redirect URL.");
+      else {
+        const msg = "Facebook sign-in did not return a redirect URL.";
+        setStatus(msg);
+        setNotice({ tone: "error", message: msg });
+      }
     } catch (e: any) {
-      setStatus(humanizeAuthError(e, "password_signin"));
+      const msg = humanizeAuthError(e, "password_signin");
+      setStatus(msg);
+      setNotice({ tone: "error", message: msg });
     } finally {
       setBusy(false);
     }
@@ -1424,7 +1566,6 @@ export default function LoginPage() {
           <h1 style={UI.title}>Sign in</h1>
           <p style={UI.subtitle}>Choose a sign-in method. After signing in, we’ll take you to the right place.</p>
 
-          {/* ✅ ALWAYS-visible Session Status bar (sticky) */}
           <div
             style={{
               ...UI.block,
@@ -1441,6 +1582,10 @@ export default function LoginPage() {
                   ✅ Signed in{sessionEmail ? ` as ${sessionEmail}` : ""}.
                 </div>
 
+                <div style={{ ...UI.small, marginBottom: 10 }}>
+                  You’re already authenticated. Continue to the right place, sign out, or inspect the current session.
+                </div>
+
                 {sessionUserId && (
                   <div style={{ ...UI.small, marginBottom: 10 }}>
                     User ID: <code>{sessionUserId}</code>
@@ -1449,9 +1594,18 @@ export default function LoginPage() {
 
                 <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
                   <button
-                    onClick={signOutNow}
+                    type="button"
+                    onClick={routeAfterAuth}
                     disabled={busy}
                     style={{ ...UI.primaryBtn(busy), width: "auto", flex: "1 1 180px" }}
+                  >
+                    {busy ? "Please wait..." : "Continue"}
+                  </button>
+
+                  <button
+                    onClick={signOutNow}
+                    disabled={busy}
+                    style={{ ...UI.ghostBtn(busy), flex: "1 1 180px" }}
                   >
                     {busy ? "Please wait..." : "Sign out"}
                   </button>
@@ -1461,7 +1615,6 @@ export default function LoginPage() {
                     disabled={busy}
                     onClick={async () => {
                       const { data } = await supabase.auth.getSession();
-                      // eslint-disable-next-line no-console
                       console.log("[MB] session:", data?.session);
                     }}
                     style={{ ...UI.ghostBtn(busy), flex: "1 1 180px" }}
@@ -1475,6 +1628,31 @@ export default function LoginPage() {
               <div style={{ fontWeight: 950, fontSize: 13 }}>🔒 Signed out — please sign in.</div>
             )}
           </div>
+
+          {notice ? (
+            <div style={getNoticeStyle(notice.tone)}>
+              <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "flex-start" }}>
+                <div>{notice.message}</div>
+                <button
+                  type="button"
+                  onClick={() => setNotice(null)}
+                  style={{
+                    border: "none",
+                    background: "transparent",
+                    cursor: "pointer",
+                    fontWeight: 900,
+                    opacity: 0.72,
+                    padding: 0,
+                    lineHeight: 1,
+                  }}
+                  aria-label="Dismiss notice"
+                  title="Dismiss"
+                >
+                  ×
+                </button>
+              </div>
+            </div>
+          ) : null}
 
           <div style={UI.ecosystemBlock}>
             <p style={UI.ecosystemTitle}>Mercy Account</p>
@@ -1569,11 +1747,21 @@ export default function LoginPage() {
                   redirectToRecovery={redirectToRecovery}
                   busyParent={busy}
                   onAuthed={routeAfterAuth}
+                  onSignupCreated={(createdEmail, message) => {
+                    setNotice({
+                      tone: "success",
+                      message: `${message}\n\nEmail: ${createdEmail}`,
+                    });
+                  }}
                 />
               )}
 
               {topMode === "phone" && (
-                <PhoneOtp redirectToOAuthReturn={redirectToOAuthReturn} busyParent={busy} onAuthed={routeAfterAuth} />
+                <PhoneOtp
+                  redirectToOAuthReturn={redirectToOAuthReturn}
+                  busyParent={busy}
+                  onAuthed={routeAfterAuth}
+                />
               )}
 
               {status && <div style={UI.status}>{status}</div>}

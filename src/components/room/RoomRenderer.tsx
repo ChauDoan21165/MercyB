@@ -531,6 +531,7 @@ export default function RoomRenderer({
   const access = useUserAccess();
   const accessLoading = access.loading || access.isLoading;
   const authUser = useAuthUser(supabase);
+  const authUserId = useMemo(() => String((authUser as any)?.id ?? "").trim() || null, [authUser]);
 
   const isDev = typeof import.meta !== "undefined" && (import.meta as any).env?.DEV;
   const showDev = useMemo(() => {
@@ -627,60 +628,6 @@ export default function RoomRenderer({
     return inferredTierId;
   }, [metaTierId, inferredTierId]);
 
-  const [vipRank, setVipRank] = useState<number | null>(null);
-  const [vipRankLoading, setVipRankLoading] = useState<boolean>(false);
-
-  useEffect(() => {
-    let cancelled = false;
-
-    async function loadVipRank() {
-      setVipRankLoading(true);
-      try {
-        const { data: sessData, error: sessErr } = await supabase.auth.getSession();
-        const session = sessData?.session ?? null;
-
-        if (sessErr || !session?.user?.id) {
-          if (!cancelled) setVipRank(0);
-          return;
-        }
-
-        const userId = session.user.id;
-
-        const { data, error } = await supabase
-          .from("mb_user_effective_rank")
-          .select("vip_rank")
-          .eq("user_id", userId)
-          .order("vip_rank", { ascending: false })
-          .limit(1);
-
-        if (cancelled) return;
-
-        if (error) {
-          setVipRank(0);
-          return;
-        }
-
-        const r = Array.isArray(data) ? (data[0] as any)?.vip_rank : (data as any)?.vip_rank;
-        const n = Number(r);
-        const safe = Number.isFinite(n) ? n : 0;
-        setVipRank(safe);
-
-        try {
-          if (typeof window !== "undefined") window.localStorage.setItem("mb.vip_rank", String(safe));
-        } catch {
-          // ignore
-        }
-      } finally {
-        if (!cancelled) setVipRankLoading(false);
-      }
-    }
-
-    void loadVipRank();
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
   const isLocked = useMemo(() => {
     const requiredRank =
       requiredTierId === "vip9"
@@ -694,11 +641,9 @@ export default function RoomRenderer({
               : 0;
 
     if (requiredRank <= 0) return false;
-    if (typeof vipRank === "number") return vipRank < requiredRank;
-    if (vipRankLoading) return true;
     if (accessLoading) return true;
     return !access.canAccessTier(requiredTierId as any);
-  }, [requiredTierId, vipRank, vipRankLoading, accessLoading, access]);
+  }, [requiredTierId, accessLoading, access]);
 
   const [dbRows, setDbRows] = useState<any[] | null>(null);
   const [dbLoading, setDbLoading] = useState(false);
@@ -1098,7 +1043,7 @@ export default function RoomRenderer({
     const msg = String(chatText || "").trim();
     if (!msg) return;
 
-    if (!authUser?.id) {
+    if (!authUserId) {
       setChatError("Please sign in to post messages.");
       return;
     }
@@ -1122,7 +1067,7 @@ export default function RoomRenderer({
         if (em.includes("user_id")) {
           res = await supabase
             .from("community_messages")
-            .insert({ room_id: canonicalChatRoomId, message: msg, user_id: authUser.id })
+            .insert({ room_id: canonicalChatRoomId, message: msg, user_id: authUserId })
             .select("id, room_id, user_id, message, created_at")
             .single();
         }
@@ -1153,7 +1098,7 @@ export default function RoomRenderer({
       setChatError(`Send exception: ${e?.message || String(e)}`);
       setChatSending(false);
     }
-  }, [authUser?.id, canonicalChatRoomId, chatText, loadChatInline]);
+  }, [authUserId, canonicalChatRoomId, chatText, loadChatInline]);
 
   const feedback = useRoomFeedback(supabase, coreRoomId, authUser);
 
@@ -1329,8 +1274,7 @@ export default function RoomRenderer({
                   {dbLoading ? "(loading)" : ""} {dbError ? `dbError="${dbError}"` : ""} | dbLeafEntries(real)=
                   {dbLeafEntries.length} | jsonLeafEntries={jsonLeafEntries.length} | chosen={chosenEntries.source} |
                   allEntries={allEntries.length} | kwButtons={Math.max(kw.en.length, kw.vi.length)} | activeKeyword=
-                  {activeKeyword ? ` "${activeKeyword}"` : "null"} | vipRank=
-                  {typeof vipRank === "number" ? vipRank : "null"} {vipRankLoading ? "(vip loading)" : ""}
+                  {activeKeyword ? ` "${activeKeyword}"` : "null"}
                 </div>
               ) : null}
 
@@ -1387,7 +1331,7 @@ export default function RoomRenderer({
                   <div className="min-h-[260px] flex items-center justify-center text-center" style={inCardMessagePad}>
                     <div style={{ maxWidth: 760, margin: "0 auto" }}>
                       <div className="text-sm opacity-70 font-semibold">
-                        {vipRankLoading || accessLoading ? (
+                        {accessLoading ? (
                           <>Checking access…</>
                         ) : (
                           <>

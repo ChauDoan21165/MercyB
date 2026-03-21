@@ -1,150 +1,148 @@
-// FILE: src/lib/useEntitlements.ts
-import { useEffect, useMemo, useState } from "react";
-import { mercyAuth } from "@/lib/mercyAuth";
+// src/lib/useEntitlements.ts
+import { useCallback, useEffect, useMemo, useState } from "react";
+import {
+  FAIL_CLOSED_ENTITLEMENT,
+  fetchCurrentEntitlement,
+  resolveEntitlementTier,
+  type BackendEntitlement,
+} from "@/lib/authService";
+import { useAuth } from "@/providers/AuthProvider";
 
-type Ent = {
+type Ent = BackendEntitlement & {
   vip_tier: string;
   vip_rank: number;
-  features: Record<string, any>;
+  features: Record<string, unknown>;
   updated_at: string;
 };
 
-function tierFromRank(r: number): string {
-  if (r >= 9) return "vip9";
-  if (r >= 3) return "vip3";
-  if (r >= 1) return "vip1";
-  return "free";
+function tierToRank(tier: string): number {
+  const s = String(tier || "free").toLowerCase();
+
+  if (s === "free") return 0;
+
+  const m = s.match(/^vip(\d+)$/);
+  if (!m) return 0;
+
+  const n = Number(m[1]);
+  return Number.isFinite(n) ? n : 0;
 }
 
-function safeSetLS(key: string, value: string) {
-  try {
-    window.localStorage.setItem(key, value);
-  } catch {
-    // ignore
-  }
-}
+function buildFeatures(ent: BackendEntitlement, vipRank: number) {
+  const isPremium = ent.is_premium === true && ent.status === "active";
 
-function parseVipRank(x: any): number {
-  if (typeof x === "number" && Number.isFinite(x)) return x;
-  if (typeof x === "string" && x.trim() && !Number.isNaN(Number(x))) return Number(x);
-  return 0;
+  return {
+    premium: isPremium,
+    is_premium: isPremium,
+    vip1: vipRank >= 1,
+    vip2: vipRank >= 2,
+    vip3: vipRank >= 3,
+    vip4: vipRank >= 4,
+    vip5: vipRank >= 5,
+    vip6: vipRank >= 6,
+    vip9: vipRank >= 9,
+  } as Record<string, unknown>;
 }
 
 export function useEntitlements() {
+  const { user, isLoading: authLoading } = useAuth();
+
   const [data, setData] = useState<Ent | null>(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    let alive = true;
-
-    (async () => {
+  const refreshEntitlements = useCallback(async () => {
+    if (authLoading) {
       setLoading(true);
+      return;
+    }
 
-      if (!mercyAuth) {
-        if (!alive) return;
-        setData(null);
-        setLoading(false);
-        return;
-      }
+    if (!user) {
+      setData(null);
+      setLoading(false);
+      return;
+    }
 
-      try {
-        // 1) Get authed user id
-        const { data: userRes, error: userErr } = await mercyAuth.auth.getUser();
-        const userId = userRes?.user?.id ?? null;
+    setLoading(true);
 
-        // If not signed in, clear ent
-        if (!userId) {
-          if (!alive) return;
-          setData(null);
-          setLoading(false);
-          return;
-        }
+    try {
+      const backendEnt =
+        (await fetchCurrentEntitlement()) ?? FAIL_CLOSED_ENTITLEMENT;
+      const vipTier = resolveEntitlementTier(backendEnt);
+      const vipRank = tierToRank(vipTier);
 
-        // 2) Canonical vip rank from view: mb_user_effective_rank
-        let vipRank = 0;
-        {
-          const { data: rankData, error: rankErr } = await mercyAuth
-            .from("mb_user_effective_rank")
-            .select("vip_rank")
-            .eq("user_id", userId)
-            // IMPORTANT: view may return array; maybeSingle normalizes if possible
-            .maybeSingle();
+      const ent: Ent = {
+        ...backendEnt,
+        vip_tier: vipTier,
+        vip_rank: vipRank,
+        features: buildFeatures(backendEnt, vipRank),
+        updated_at: new Date().toISOString(),
+      };
 
-          if (!rankErr && rankData) {
-            // maybeSingle => object, but keep array-safe fallback anyway
-            vipRank = parseVipRank((rankData as any)?.vip_rank);
-          } else {
-            vipRank = 0;
-          }
-        }
+      setData(ent);
+    } catch {
+      const vipTier = "free";
+      const vipRank = 0;
 
-        // 3) Best-effort entitlements row (features, updated_at, etc.)
-        // If this fails, we still return a minimal ent object using vipRank.
-        let ent: Ent | null = null;
-        {
-          const { data: entData, error: entErr } = await mercyAuth
-            .from("my_entitlements")
-            .select("vip_tier,vip_rank,features,updated_at")
-            .maybeSingle();
+      setData({
+        ...FAIL_CLOSED_ENTITLEMENT,
+        vip_tier: vipTier,
+        vip_rank: vipRank,
+        features: buildFeatures(FAIL_CLOSED_ENTITLEMENT, vipRank),
+        updated_at: new Date().toISOString(),
+      });
+    } finally {
+      setLoading(false);
+    }
+  }, [authLoading, user?.id]);
 
-          if (!entErr && entData) {
-            const features = (entData as any)?.features ?? {};
-            const updated_at = String((entData as any)?.updated_at ?? "");
-            ent = {
-              vip_tier: String((entData as any)?.vip_tier ?? tierFromRank(vipRank)),
-              vip_rank: vipRank, // FORCE canonical
-              features: typeof features === "object" && features ? features : {},
-              updated_at,
-            };
-          }
-        }
-
-        if (!ent) {
-          ent = {
-            vip_tier: tierFromRank(vipRank),
-            vip_rank: vipRank,
-            features: {},
-            updated_at: new Date().toISOString(),
-          };
-        }
-
-        // 4) Write the same keys your app reads later
-        safeSetLS("mb.vip_rank", String(vipRank));
-        safeSetLS("mb.user.vip_rank", String(vipRank));
-        safeSetLS("mb.profile.vip_rank", String(vipRank));
-
-        if (!alive) return;
-        setData(ent);
-        setLoading(false);
-      } catch {
-        if (!alive) return;
-        setData(null);
-        setLoading(false);
-      }
-    })();
-
-    return () => {
-      alive = false;
-    };
-  }, []);
+  useEffect(() => {
+    void refreshEntitlements();
+  }, [refreshEntitlements]);
 
   const features = useMemo(
-    () => (data?.features ?? {}) as Record<string, any>,
-    [data]
+    () => (data?.features ?? {}) as Record<string, unknown>,
+    [data],
   );
 
   function hasFlag(key: string, fallback = false) {
-    const v = features[key];
-    if (typeof v === "boolean") return v;
+    const normalized = String(key || "").trim().toLowerCase();
+    const value = features[normalized];
+
+    if (typeof value === "boolean") return value;
+
+    if (normalized === "premium" || normalized === "is_premium") {
+      return data?.is_premium === true && data?.status === "active";
+    }
+
+    const m = normalized.match(/^vip(\d+)$/);
+    if (m) {
+      return (data?.vip_rank ?? 0) >= Number(m[1]);
+    }
+
     return fallback;
   }
 
   function getLimit(key: string, fallback: number) {
-    const v = features[key];
-    if (typeof v === "number" && Number.isFinite(v)) return v;
-    if (typeof v === "string" && v.trim() && !Number.isNaN(Number(v))) return Number(v);
+    const normalized = String(key || "").trim().toLowerCase();
+    const value = features[normalized];
+
+    if (typeof value === "number" && Number.isFinite(value)) return value;
+    if (
+      typeof value === "string" &&
+      value.trim() &&
+      !Number.isNaN(Number(value))
+    ) {
+      return Number(value);
+    }
+
     return fallback;
   }
 
-  return { ent: data, features, loading, hasFlag, getLimit };
+  return {
+    ent: data,
+    features,
+    loading,
+    hasFlag,
+    getLimit,
+    refreshEntitlements,
+  };
 }

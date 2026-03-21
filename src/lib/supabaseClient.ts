@@ -16,7 +16,36 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 // ⚠️ IMPORTANT: env values can include trailing whitespace/newlines in deployments.
 // We MUST trim to avoid apikey ending with %0A (newline) → Realtime fails + REST 403.
 const supabaseUrl = String(import.meta.env.VITE_SUPABASE_URL ?? "").trim();
-const supabaseAnonKey = String(import.meta.env.VITE_SUPABASE_ANON_KEY ?? "").trim();
+const supabaseAnonKey = String(
+  import.meta.env.VITE_SUPABASE_ANON_KEY ?? "",
+).trim();
+
+type EnvSnapshot = {
+  supabaseUrl: string;
+  projectId: string;
+  storageKey: string;
+  hasAnonKey: boolean;
+  anonKeyPrefix: string;
+  isDev: boolean;
+};
+
+type SessionResult = Awaited<ReturnType<SupabaseClient["auth"]["getSession"]>>;
+
+declare global {
+  /* eslint-disable no-var -- TypeScript ambient globals must use `var` here. */
+  var __MB_SUPABASE__: SupabaseClient | undefined;
+  var __MB_ENV__: (() => EnvSnapshot) | undefined;
+  var __MB_JWT__: (() => Promise<string | null>) | undefined;
+  var __MB_SESSION__: (() => Promise<SessionResult>) | undefined;
+  /* eslint-enable no-var */
+
+  interface Window {
+    __MB_SUPABASE__?: SupabaseClient;
+    __MB_ENV__?: () => EnvSnapshot;
+    __MB_JWT__?: () => Promise<string | null>;
+    __MB_SESSION__?: () => Promise<SessionResult>;
+  }
+}
 
 /**
  * Derive a stable environment/project identifier for storageKey.
@@ -60,46 +89,48 @@ if (!supabaseUrl || !supabaseAnonKey) {
     supabaseUrl: !!supabaseUrl,
     supabaseAnonKey: !!supabaseAnonKey,
   });
-} else {
+} else if (/\s$/.test(String(import.meta.env.VITE_SUPABASE_ANON_KEY ?? ""))) {
   // Extra debug signal for the exact bug you hit (%0A)
-  if (/\s$/.test(String(import.meta.env.VITE_SUPABASE_ANON_KEY ?? ""))) {
-    console.warn(
-      "[supabaseClient] VITE_SUPABASE_ANON_KEY had trailing whitespace; trimmed."
-    );
-  }
+  console.warn(
+    "[supabaseClient] VITE_SUPABASE_ANON_KEY had trailing whitespace; trimmed.",
+  );
 }
 
-export const supabase: SupabaseClient = createClient(supabaseUrl, supabaseAnonKey, {
-  auth: {
-    // Keep sessions across refresh
-    persistSession: true,
+export const supabase: SupabaseClient = createClient(
+  supabaseUrl,
+  supabaseAnonKey,
+  {
+    auth: {
+      // Keep sessions across refresh
+      persistSession: true,
 
-    // Keep tokens fresh
-    autoRefreshToken: true,
+      // Keep tokens fresh
+      autoRefreshToken: true,
 
-    // Important for OAuth / magic link return URLs
-    detectSessionInUrl: true,
+      // Important for OAuth / magic link return URLs
+      detectSessionInUrl: true,
 
-    // Make auth storage deterministic across envs
-    storageKey,
-    storage,
+      // Make auth storage deterministic across envs
+      storageKey,
+      storage,
 
-    // Explicit SPA OAuth flow (safe default for modern Supabase)
-    flowType: "pkce",
+      // Explicit SPA OAuth flow (safe default for modern Supabase)
+      flowType: "pkce",
+    },
   },
-});
+);
 
 /**
  * Optional: quick sanity helper for debugging UI auth-state issues.
- * Call in DevTools: window.__MB_ENV__()
+ * Call in DevTools: window.__MB_ENV__?.()
  */
-function getEnvSnapshot() {
+function getEnvSnapshot(): EnvSnapshot {
   return {
     supabaseUrl,
     projectId,
     storageKey,
     hasAnonKey: !!supabaseAnonKey,
-    anonKeyPrefix: supabaseAnonKey ? supabaseAnonKey.slice(0, 18) + "…" : "",
+    anonKeyPrefix: supabaseAnonKey ? `${supabaseAnonKey.slice(0, 18)}…` : "",
     isDev: !!import.meta.env.DEV,
   };
 }
@@ -121,13 +152,39 @@ export const __mock = {
   },
 };
 
+async function getJwtForDebug(): Promise<string | null> {
+  const { data } = await supabase.auth.getSession();
+  return data.session?.access_token ?? null;
+}
+
+async function getSessionForDebug(): Promise<SessionResult> {
+  return await supabase.auth.getSession();
+}
+
 // Debug hooks (DEV only): lets you run auth commands in DevTools.
 if (import.meta.env.DEV) {
   try {
-    (globalThis as any).__MB_SUPABASE__ = supabase;
-    (globalThis as any).__MB_ENV__ = () => getEnvSnapshot();
-    // eslint-disable-next-line no-console
-    console.log("[MB] __MB_SUPABASE__ attached", getEnvSnapshot());
+    globalThis.__MB_SUPABASE__ = supabase;
+    globalThis.__MB_ENV__ = getEnvSnapshot;
+    globalThis.__MB_JWT__ = getJwtForDebug;
+    globalThis.__MB_SESSION__ = getSessionForDebug;
+
+    if (typeof window !== "undefined") {
+      window.__MB_SUPABASE__ = supabase;
+      window.__MB_ENV__ = getEnvSnapshot;
+      window.__MB_JWT__ = getJwtForDebug;
+      window.__MB_SESSION__ = getSessionForDebug;
+    }
+
+    console.log("[MB] Debug hooks attached", {
+      ...getEnvSnapshot(),
+      devtools: [
+        "window.__MB_SUPABASE__",
+        "window.__MB_ENV__?.()",
+        "await window.__MB_JWT__?.()",
+        "await window.__MB_SESSION__?.()",
+      ],
+    });
   } catch {
     // ignore
   }

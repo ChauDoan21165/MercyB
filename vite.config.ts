@@ -13,9 +13,14 @@
 //
 // PATCH 2026-01-29:
 // - Force single React instance in prod (fixes "Cannot read properties of undefined (reading 'useLayoutEffect')")
+//
+// PATCH 2026-03-21:
+// - Add PWA support for installable web app experience on mercyblade.com
+// - Keep config conservative and compatible with existing chunking strategy
 
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import { VitePWA } from "vite-plugin-pwa";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -51,16 +56,50 @@ export default defineConfig({
     react({
       jsxRuntime: "automatic",
     }),
+
+    VitePWA({
+      registerType: "autoUpdate",
+      includeAssets: [
+        "icons/icon-192.png",
+        "icons/icon-512.png",
+        "icons/icon-maskable-512.png",
+      ],
+      manifest: {
+        name: "Mercy Blade",
+        short_name: "Mercy Blade",
+        start_url: "/",
+        scope: "/",
+        display: "standalone",
+        background_color: "#0a0a0a",
+        theme_color: "#0a0a0a",
+        description: "Mercy Blade web app",
+        icons: [
+          {
+            src: "icons/icon-192.png",
+            sizes: "192x192",
+            type: "image/png",
+          },
+          {
+            src: "icons/icon-512.png",
+            sizes: "512x512",
+            type: "image/png",
+          },
+          {
+            src: "icons/icon-maskable-512.png",
+            sizes: "512x512",
+            type: "image/png",
+            purpose: "maskable",
+          },
+        ],
+      },
+    }),
   ],
 
   resolve: {
     // IMPORTANT: ensure Vite never bundles a second copy of React/ReactDOM
-    // ✅ This is the correct, Vite-native way.
     dedupe: ["react", "react-dom", "react-router", "react-router-dom"],
     alias: {
       "@": path.resolve(__dirname, "./src"),
-      // ❌ DO NOT hard-pin react/react-dom/jsx-runtime via require.resolve.
-      // It can create a second import graph in production builds and lead to undefined hooks.
     },
   },
 

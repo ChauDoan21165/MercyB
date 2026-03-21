@@ -5,6 +5,7 @@ import { Routes, Route, Outlet, Navigate } from "react-router-dom";
 import LoginPage from "@/pages/LoginPage";
 import Home from "@/pages/Home";
 import AccountPage from "@/pages/AccountPage";
+import BillingSuccessPage from "@/pages/BillingSuccessPage";
 import Pricing from "@/screens/Pricing"; // or "../screens/Pricing" depending on your alias setup
 
 /**
@@ -29,6 +30,8 @@ export default function App() {
 
         {/* ✅ Billing / Account */}
         <Route path="/account" element={<AccountPage />} />
+        <Route path="/billing" element={<Navigate to="/account" replace />} />
+        <Route path="/billing/success" element={<BillingSuccessPage />} />
 
         {/* ✅ Pricing is canonical */}
         <Route path="/pricing" element={<Pricing />} />

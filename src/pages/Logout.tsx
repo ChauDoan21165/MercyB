@@ -1,8 +1,8 @@
-// src/pages/Logout.tsx — MB-BLUE-94.13.8 — 2025-12-25 (+0700)
+// src/pages/Logout.tsx — MB-BLUE-94.13.9 — 2026-03-20 (-0600)
 /**
  * MercyBlade Blue — Logout (NUCLEAR)
  * Path: src/pages/Logout.tsx
- * Version: MB-BLUE-94.13.8 — 2025-12-25 (+0700)
+ * Version: MB-BLUE-94.13.9 — 2026-03-20 (-0600)
  *
  * GOAL (LOCKED INTENT):
  * - Stop auth auto-refresh (best-effort)
@@ -15,6 +15,10 @@
  * - Some Supabase auth state can exist in cookies depending on configuration.
  *   We attempt a best-effort cookie cleanup (non-fatal).
  * - This component must NEVER rely on React state.
+ *
+ * PATCH (2026-03-20):
+ * - Remove legacy email-cache cleanup key: mercyblade_email
+ * - Keep auth/session cleanup focused on real session and app flags
  */
 
 import { useEffect } from "react";
@@ -22,17 +26,17 @@ import { supabase } from "@/lib/supabaseClient";
 
 function bestEffortClearSupabaseAuthCookies() {
   try {
-    // Best-effort: clear cookies that look like Supabase auth storage.
-    // (Cookie names differ by setup; this is harmless if none exist.)
     const cookies = document.cookie ? document.cookie.split(";") : [];
     for (const c of cookies) {
       const [rawName] = c.split("=");
       const name = (rawName || "").trim();
       if (!name) continue;
 
-      // Heuristic: clear likely supabase cookies
-      // (Do NOT assume exact cookie names; clear only obvious ones.)
-      if (name.startsWith("sb-") || name.includes("supabase") || name.includes("auth-token")) {
+      if (
+        name.startsWith("sb-") ||
+        name.includes("supabase") ||
+        name.includes("auth-token")
+      ) {
         document.cookie = `${name}=; Max-Age=0; path=/;`;
       }
     }
@@ -44,50 +48,50 @@ function bestEffortClearSupabaseAuthCookies() {
 const Logout = () => {
   useEffect(() => {
     const doLogout = async () => {
-      // 1) Stop background refresh first (prevents “looping”)
       try {
         // exists in supabase-js v2 (optional)
         // @ts-ignore
         supabase.auth.stopAutoRefresh?.();
-      } catch {}
+      } catch {
+        // ignore
+      }
 
-      // 2) Supabase sign out (best-effort)
       try {
         await supabase.auth.signOut({ scope: "global" });
       } catch (err) {
-        if (import.meta.env.DEV) console.warn("[logout] signOut failed (fail-open)", err);
+        if (import.meta.env.DEV) {
+          console.warn("[logout] signOut failed (fail-open)", err);
+        }
       }
 
-      // 3) Clear local/session storage (best-effort)
       try {
-        // MercyBlade local flags
         localStorage.removeItem("mb_has_seen_onboarding");
         localStorage.removeItem("mb_redirect_after_onboarding");
-        localStorage.removeItem("mercyblade_email");
 
-        // ✅ Remove Supabase auth token keys (covers all envs)
         const keysToDelete: string[] = [];
         for (let i = 0; i < localStorage.length; i++) {
           const k = localStorage.key(i);
           if (!k) continue;
-          if (k.startsWith("sb-") && k.endsWith("-auth-token")) keysToDelete.push(k);
+          if (k.startsWith("sb-") && k.endsWith("-auth-token")) {
+            keysToDelete.push(k);
+          }
         }
+
         keysToDelete.forEach((k) => localStorage.removeItem(k));
 
-        // Also clear sessionStorage just in case
         sessionStorage.clear();
       } catch (err) {
-        if (import.meta.env.DEV) console.warn("[logout] storage cleanup failed (fail-open)", err);
+        if (import.meta.env.DEV) {
+          console.warn("[logout] storage cleanup failed (fail-open)", err);
+        }
       }
 
-      // 4) Best-effort cookie cleanup
       bestEffortClearSupabaseAuthCookies();
 
-      // 5) Hard redirect clears in-memory session too
       window.location.replace("/auth?logged_out=1");
     };
 
-    doLogout();
+    void doLogout();
   }, []);
 
   return (

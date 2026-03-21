@@ -93,18 +93,20 @@ export function MercyGuideTab({
   return (
     <TabsContent
       value="guide"
-      className="m-0 flex min-h-0 flex-1 flex-col overflow-hidden"
+      className="m-0 flex h-full min-h-0 flex-1 flex-col overflow-hidden"
     >
-      <div className="flex flex-wrap gap-1 border-b border-border bg-white px-3 py-2">
-        {QUICK_BUTTONS.map((btn) => (
-          <button
-            key={btn.key}
-            onClick={() => handleQuickButton(btn.key)}
-            className="rounded-full bg-secondary px-2 py-1 text-xs text-secondary-foreground transition-colors hover:bg-secondary/80"
-          >
-            {btn.label_en}
-          </button>
-        ))}
+      <div className="shrink-0 border-b border-border bg-white px-3 py-2">
+        <div className="flex flex-wrap gap-1">
+          {QUICK_BUTTONS.map((btn) => (
+            <button
+              key={btn.key}
+              onClick={() => handleQuickButton(btn.key)}
+              className="rounded-full bg-secondary px-2 py-1 text-xs text-secondary-foreground transition-colors hover:bg-secondary/80"
+            >
+              {btn.label_en}
+            </button>
+          ))}
+        </div>
       </div>
 
       <div
@@ -112,7 +114,7 @@ export function MercyGuideTab({
         onScroll={handleGuideScroll}
         className="min-h-0 flex-1 overflow-y-auto bg-white px-4 py-3"
       >
-        <div className="space-y-3">
+        <div className="space-y-3 pb-3">
           {messages.length === 0 && (
             <p className="py-4 text-center text-sm text-muted-foreground">
               Click a quick button or type a question below.
@@ -149,7 +151,7 @@ export function MercyGuideTab({
         </div>
       </div>
 
-      <div className="border-t border-border bg-white px-3 py-2">
+      <div className="sticky bottom-0 shrink-0 border-t border-border bg-white px-3 py-2 shadow-[0_-4px_12px_rgba(0,0,0,0.04)]">
         <div className="flex items-center gap-2">
           <Input
             value={inputValue}

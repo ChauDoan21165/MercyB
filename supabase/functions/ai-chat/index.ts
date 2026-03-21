@@ -1,7 +1,7 @@
-// FILE: supabase/functions/ai-chat/index.ts
 //// import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { logAiUsage as logAiUsageEvent } from "../_shared/aiUsage.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -9,23 +9,96 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type",
 };
 
-// ---------------------------
-// AI gating config (server-side)
-// ---------------------------
-const LIMITS: Record<string, number> = {
-  free: 0,
-  vip1: 25,
-  vip3: 100,
-  vip9: 300,
+type ActiveSubscriptionRow = {
+  id?: string;
+  tier?: string | null;
+  status?: string | null;
+  current_period_end?: string | null;
+  updated_at?: string | null;
 };
 
-// hidden hard stop (protects against edge cases)
-const HARD_CAP: Record<string, number> = {
-  free: 0,
-  vip1: 50,
-  vip3: 200,
-  vip9: 500,
+// ---------------------------
+// Helper: tier normalization
+// ---------------------------
+function canonicalizeTier(value: string | null | undefined): string {
+  const raw = String(value ?? "free").toLowerCase().trim();
+  const cleaned = raw.replace(/[_-]+/g, " ").replace(/\s+/g, " ").trim();
+
+  if (!cleaned || cleaned === "free") return "free";
+
+  if (cleaned.includes("vip9")) return "vip9";
+  if (cleaned.includes("vip6")) return "vip6";
+  if (cleaned.includes("vip5")) return "vip5";
+  if (cleaned.includes("vip4")) return "vip4";
+  if (
+    cleaned.includes("vip3 ii") || cleaned.includes("vip3ii") ||
+    cleaned.includes("vip3")
+  ) return "vip3";
+  if (cleaned.includes("vip2")) return "vip2";
+  if (cleaned.includes("vip1")) return "vip1";
+
+  if (cleaned.includes("kids")) {
+    if (cleaned.includes("3")) return "kids_3";
+    if (cleaned.includes("2")) return "kids_2";
+    return "kids_1";
+  }
+
+  return cleaned.replace(/\s+/g, "");
+}
+
+function isSubscriptionCurrent(currentPeriodEnd: string | null | undefined) {
+  if (!currentPeriodEnd) return true;
+  const ts = new Date(currentPeriodEnd).getTime();
+  return Number.isFinite(ts) && ts > Date.now();
+}
+
+const tierHierarchy: Record<string, number> = {
+  free: 1,
+  vip1: 2,
+  vip2: 3,
+  vip3: 4,
+  vip4: 5,
+  vip5: 6,
+  vip6: 7,
+  vip9: 10,
+  kids_1: 2,
+  kids_2: 3,
+  kids_3: 4,
 };
+
+const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
+const supabaseAnonKey = Deno.env.get("SUPABASE_ANON_KEY")!;
+const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+
+// Admin client (bypasses RLS): safe for server-only reads
+const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey);
+
+async function getBestActiveSubscription(
+  userId: string,
+): Promise<ActiveSubscriptionRow | null> {
+  try {
+    const { data, error } = await supabaseAdmin
+      .from("subscriptions")
+      .select("id, tier, status, current_period_end, updated_at")
+      .eq("user_id", userId)
+      .in("status", ["active", "trialing"])
+      .order("current_period_end", { ascending: false, nullsFirst: false })
+      .order("updated_at", { ascending: false })
+      .limit(20);
+
+    if (error) {
+      console.error("getBestActiveSubscription error:", error);
+      return null;
+    }
+
+    const rows = Array.isArray(data) ? data : [];
+    return rows.find((row) => isSubscriptionCurrent(row.current_period_end)) ??
+      null;
+  } catch (error) {
+    console.error("getBestActiveSubscription unexpected error:", error);
+    return null;
+  }
+}
 
 // ---------------------------
 // Helper: verify user tier access for ROOM gating (kept)
@@ -47,65 +120,18 @@ async function verifyUserTierAccess(
       return { hasAccess: true, tier: "admin" };
     }
 
-    // Get user's subscription
-    const { data: subscription } = await supabaseClient
-      .from("user_subscriptions")
-      .select("tier_id, subscription_tiers(name)")
-      .eq("user_id", userId)
-      .eq("status", "active")
-      .maybeSingle();
+    // Get user's active/trialing subscription from normalized subscriptions table
+    const subscription = await getBestActiveSubscription(userId);
 
     if (!subscription) {
-      return { hasAccess: roomTier.toLowerCase() === "free", tier: "free" };
+      return {
+        hasAccess: canonicalizeTier(roomTier) === "free",
+        tier: "free",
+      };
     }
 
-    // Normalize tier name to canonical TierId format
-    const rawTierName = subscription.subscription_tiers?.name?.toLowerCase() ||
-      "free";
-    let userTier = "free";
-
-    // NOTE: eslint no-dupe-else-if fix:
-    // - vip3 branch below covered both "vip3 ii" and "vip3"
-    // - remove later duplicate vip3 check
-    if (rawTierName.includes("vip3 ii") || rawTierName.includes("vip3")) {
-      userTier = "vip3";
-    } else if (rawTierName.includes("vip9")) {
-      userTier = "vip9";
-    } else if (rawTierName.includes("vip6")) {
-      userTier = "vip6";
-    } else if (rawTierName.includes("vip5")) {
-      userTier = "vip5";
-    } else if (rawTierName.includes("vip4")) {
-      userTier = "vip4";
-    } else if (rawTierName.includes("vip2")) {
-      userTier = "vip2";
-    } else if (rawTierName.includes("vip1")) {
-      userTier = "vip1";
-    } else if (rawTierName.includes("kids")) {
-      if (rawTierName.includes("3")) userTier = "kids_3";
-      else if (rawTierName.includes("2")) userTier = "kids_2";
-      else userTier = "kids_1";
-    }
-
-    // Canonical tier hierarchy (matches lib/constants/tiers.ts)
-    // NOTE: remove duplicate object key "vip3" (JS keeps the last one anyway).
-    const tierHierarchy: Record<string, number> = {
-      free: 1,
-      vip1: 2,
-      vip2: 3,
-      vip3: 4,
-      vip4: 5,
-      vip5: 6,
-      vip6: 7,
-      vip9: 10,
-      kids_1: 2,
-      kids_2: 3,
-      kids_3: 4,
-    };
-
-    const normalizedRoomTier = roomTier.toLowerCase()
-      .replace(/\s+/g, "")
-      .replace("vip3_ii", "vip3");
+    const userTier = canonicalizeTier(subscription.tier);
+    const normalizedRoomTier = canonicalizeTier(roomTier);
 
     const requiredLevel = tierHierarchy[normalizedRoomTier] || 0;
     const userLevel = tierHierarchy[userTier] || 0;
@@ -121,52 +147,173 @@ async function verifyUserTierAccess(
 }
 
 // ---------------------------
-// Helper: host AI tier (ONLY: free/vip1/vip3/vip9)
+// AI budget helpers
 // ---------------------------
-async function getUserTierForHost(
-  supabaseAdmin: any,
-  userId: string,
-): Promise<"free" | "vip1" | "vip3" | "vip9"> {
+type AiBudgetResult = {
+  allowed: boolean;
+  message?: string | null;
+  reset_at?: string | null;
+  usage_ratio?: number | string | null;
+};
+
+async function hasPaidAiAccess(userId: string): Promise<boolean> {
   try {
-    // admin bypass (optional)
     const { data: roles } = await supabaseAdmin
       .from("user_roles")
       .select("role")
       .eq("user_id", userId);
 
     if (roles?.some((r: any) => r.role === "admin")) {
-      return "vip9"; // treat admin as max for AI usage
+      return true;
     }
 
-    const { data, error } = await supabaseAdmin
-      .from("user_subscriptions")
-      .select("subscription_tiers(name), status")
-      .eq("user_id", userId)
-      .eq("status", "active")
-      .maybeSingle();
-
-    if (error || !data) return "free";
-
-    const name = String((data as any)?.subscription_tiers?.name || "")
-      .toLowerCase()
-      .trim();
-
-    if (name.includes("vip9")) return "vip9";
-    if (name.includes("vip3")) return "vip3";
-    if (name.includes("vip1")) return "vip1";
-    return "free";
+    const subscription = await getBestActiveSubscription(userId);
+    return !!subscription;
   } catch (e) {
-    console.error("getUserTierForHost error:", e);
-    return "free";
+    console.error("hasPaidAiAccess unexpected error:", e);
+    return false;
   }
 }
 
-const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
-const supabaseAnonKey = Deno.env.get("SUPABASE_ANON_KEY")!;
-const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+async function checkAiBudget(
+  userId: string,
+  reserveVnd = 0,
+): Promise<AiBudgetResult> {
+  const { data, error } = await supabaseAdmin.rpc("check_ai_budget", {
+    p_user_id: userId,
+    p_request_reserve_vnd: reserveVnd,
+  });
 
-// Admin client (bypasses RLS): safe for server-only reads
-const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey);
+  if (error) {
+    throw error;
+  }
+
+  const budget = Array.isArray(data) ? data[0] : data;
+
+  return {
+    allowed: Boolean(budget?.allowed),
+    message: budget?.message ?? null,
+    reset_at: budget?.reset_at ?? null,
+    usage_ratio: budget?.usage_ratio ?? null,
+  };
+}
+
+function estimateOpenAICostVnd(params: {
+  model: string;
+  inputTokens: number;
+  outputTokens: number;
+}): number {
+  const usdToVnd = Number(Deno.env.get("USD_TO_VND") || "26000");
+
+  const pricingByModel: Record<
+    string,
+    { inputUsdPer1M: number; outputUsdPer1M: number }
+  > = {
+    "gpt-4.1-mini": {
+      inputUsdPer1M: Number(
+        Deno.env.get("GPT_41_MINI_INPUT_USD_PER_1M") || "0.40",
+      ),
+      outputUsdPer1M: Number(
+        Deno.env.get("GPT_41_MINI_OUTPUT_USD_PER_1M") || "1.60",
+      ),
+    },
+  };
+
+  const pricing = pricingByModel[params.model] || pricingByModel["gpt-4.1-mini"];
+
+  const inputUsd = (params.inputTokens / 1_000_000) * pricing.inputUsdPer1M;
+  const outputUsd = (params.outputTokens / 1_000_000) * pricing.outputUsdPer1M;
+  const totalVnd = (inputUsd + outputUsd) * usdToVnd;
+
+  return Number(totalVnd.toFixed(2));
+}
+
+async function logAiUsageLog(params: {
+  userId: string;
+  feature: string;
+  model: string;
+  requestId?: string | null;
+  inputTokens: number;
+  outputTokens: number;
+  estimatedCostVnd: number;
+  meta?: Record<string, unknown>;
+}) {
+  try {
+    const { error } = await supabaseAdmin
+      .from("ai_usage_logs")
+      .insert({
+        user_id: params.userId,
+        feature: params.feature,
+        model: params.model,
+        request_id: params.requestId ?? null,
+        input_tokens: params.inputTokens,
+        output_tokens: params.outputTokens,
+        estimated_cost_vnd: params.estimatedCostVnd,
+        meta: params.meta ?? {},
+      });
+
+    if (error) {
+      console.warn("Failed to log AI usage:", error);
+    }
+  } catch (e) {
+    console.warn("Failed to log AI usage:", e);
+  }
+}
+
+async function consumeOpenAiSseStream(
+  stream: ReadableStream<Uint8Array>,
+  onParsed: (parsed: any) => void,
+) {
+  const reader = stream.getReader();
+  const decoder = new TextDecoder();
+  let buffer = "";
+
+  try {
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+
+      buffer += decoder.decode(value, { stream: true });
+
+      while (true) {
+        const newlineIndex = buffer.indexOf("\n");
+        if (newlineIndex === -1) break;
+
+        const rawLine = buffer.slice(0, newlineIndex);
+        buffer = buffer.slice(newlineIndex + 1);
+
+        const line = rawLine.replace(/\r$/, "").trim();
+        if (!line.startsWith("data:")) continue;
+
+        const payload = line.slice(5).trim();
+        if (!payload) continue;
+        if (payload === "[DONE]") return;
+
+        try {
+          const parsed = JSON.parse(payload);
+          onParsed(parsed);
+        } catch {
+          // ignore malformed/partial payloads
+        }
+      }
+    }
+
+    const remaining = buffer.trim();
+    if (remaining.startsWith("data:")) {
+      const payload = remaining.slice(5).trim();
+      if (payload && payload !== "[DONE]") {
+        try {
+          const parsed = JSON.parse(payload);
+          onParsed(parsed);
+        } catch {
+          // ignore malformed/partial payloads
+        }
+      }
+    }
+  } finally {
+    reader.releaseLock();
+  }
+}
 
 // Room data files mapping
 const roomFiles: { [key: string]: string } = {
@@ -450,7 +597,9 @@ serve(async (req) => {
       const muteExpiry = new Date(modStatus.muted_until);
       if (muteExpiry > new Date()) {
         return new Response(
-          JSON.stringify({ error: `Account muted until ${muteExpiry.toISOString()}` }),
+          JSON.stringify({
+            error: `Account muted until ${muteExpiry.toISOString()}`,
+          }),
           {
             status: 403,
             headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -527,7 +676,9 @@ serve(async (req) => {
       );
     }
 
-    console.log(`Access granted: User tier ${userRoomTier} accessing ${roomTier} room`);
+    console.log(
+      `Access granted: User tier ${userRoomTier} accessing ${roomTier} room`,
+    );
 
     // Extract user query (already validated above)
     const userQuery = messageContent.toLowerCase();
@@ -635,7 +786,9 @@ serve(async (req) => {
       if (isSimpleFormat) {
         contextInfo += `\n=== ALL PROVERBS/CONTENT ===\n`;
         roomData.entries.slice(0, 40).forEach((entry: any, idx: number) => {
-          if (entry.en) contextInfo += `${idx + 1}. ${entry.en} / ${entry.vi || ""}\n`;
+          if (entry.en) {
+            contextInfo += `${idx + 1}. ${entry.en} / ${entry.vi || ""}\n`;
+          }
         });
         contextInfo += `\n=== END OF PROVERBS ===\n\n`;
         matchedEntries = roomData.entries;
@@ -660,7 +813,9 @@ serve(async (req) => {
         }
 
         if (matchedEntries.length > 0) {
-          console.log(`[SUCCESS] Found ${matchedEntries.length} matching entries for: "${userQuery}"`);
+          console.log(
+            `[SUCCESS] Found ${matchedEntries.length} matching entries for: "${userQuery}"`,
+          );
           contextInfo += `\n=== RELEVANT DETAILED INFORMATION ===\n`;
           matchedEntries.slice(0, 3).forEach((entry: any, idx: number) => {
             contextInfo += `\n[Topic ${idx + 1}]\n`;
@@ -682,10 +837,18 @@ serve(async (req) => {
                 .trim();
             };
 
-            if (entry.content?.en) contextInfo += `Content (EN): ${cleanCopy(entry.content.en)}\n`;
-            if (entry.content?.vi) contextInfo += `Content (VI): ${cleanCopy(entry.content.vi)}\n`;
-            if (entry.copy?.en) contextInfo += `Guidance (EN): ${cleanCopy(entry.copy.en)}\n`;
-            if (entry.copy?.vi) contextInfo += `Guidance (VI): ${cleanCopy(entry.copy.vi)}\n`;
+            if (entry.content?.en) {
+              contextInfo += `Content (EN): ${cleanCopy(entry.content.en)}\n`;
+            }
+            if (entry.content?.vi) {
+              contextInfo += `Content (VI): ${cleanCopy(entry.content.vi)}\n`;
+            }
+            if (entry.copy?.en) {
+              contextInfo += `Guidance (EN): ${cleanCopy(entry.copy.en)}\n`;
+            }
+            if (entry.copy?.vi) {
+              contextInfo += `Guidance (VI): ${cleanCopy(entry.copy.vi)}\n`;
+            }
           });
           contextInfo += `\n=== END OF DETAILED INFORMATION ===\n\n`;
         } else {
@@ -699,7 +862,9 @@ serve(async (req) => {
         }
       }
     } else {
-      console.log(`[FEEDBACK] Room "${roomData.schema_id}" - NO ENTRIES DATA AVAILABLE`);
+      console.log(
+        `[FEEDBACK] Room "${roomData.schema_id}" - NO ENTRIES DATA AVAILABLE`,
+      );
     }
 
     const systemPrompt = `${contextInfo}
@@ -733,20 +898,22 @@ Example format:
 [Phản hồi tiếng Việt]`;
 
     // ============================================================
-    // AI GATING + DAILY LIMIT + THROTTLE (server-side, BEFORE AI call)
+    // AI ACCESS + MONTHLY BUDGET + THROTTLE (server-side, BEFORE AI call)
     // ============================================================
     const now = new Date();
 
-    const userTier = await getUserTierForHost(supabaseAdmin, user.id);
-
-    // Free hard block (NO AI for free tier)
-    if (userTier === "free") {
+    // Free hard block (NO AI for users without an active/trialing paid plan)
+    const hasAiAccess = await hasPaidAiAccess(user.id);
+    if (!hasAiAccess) {
       return new Response(
         JSON.stringify({
           error: "ai_not_available_free",
-          message: "Mercy Host is available in VIP tiers.",
+          message: "Mercy Host is available in paid plans.",
         }),
-        { status: 403, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+        {
+          status: 403,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        },
       );
     }
 
@@ -763,7 +930,10 @@ Example format:
     if (usageReadErr) {
       return new Response(
         JSON.stringify({ error: "usage_read_failed" }),
-        { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+        {
+          status: 500,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        },
       );
     }
 
@@ -786,7 +956,10 @@ Example format:
       if (createErr) {
         return new Response(
           JSON.stringify({ error: "usage_create_failed" }),
-          { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+          {
+            status: 500,
+            headers: { ...corsHeaders, "Content-Type": "application/json" },
+          },
         );
       }
 
@@ -803,7 +976,10 @@ Example format:
             error: "rate_limited",
             message: "Slow down a little and try again.",
           }),
-          { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+          {
+            status: 429,
+            headers: { ...corsHeaders, "Content-Type": "application/json" },
+          },
         );
       }
     }
@@ -825,33 +1001,48 @@ Example format:
           error: "rate_limited",
           message: "You’re going fast. Please wait a moment.",
         }),
-        { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+        {
+          status: 429,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        },
       );
     }
 
-    // 4) Daily limit check
-    const used = Number(usageRow?.messages_used ?? 0);
-    const limit = LIMITS[userTier] ?? 0;
-    const hard = HARD_CAP[userTier] ?? limit;
+    // 4) Monthly AI budget check
+    let budget: AiBudgetResult;
+    try {
+      budget = await checkAiBudget(user.id, 1500);
+    } catch (e) {
+      console.error("AI budget check failed:", e);
+      return new Response(
+        JSON.stringify({ error: "budget_check_failed" }),
+        {
+          status: 500,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        },
+      );
+    }
 
-    if (used >= limit || used >= hard) {
+    if (!budget.allowed) {
       return new Response(
         JSON.stringify({
-          error: "daily_limit_reached",
-          message:
-            "You’ve trained deeply today. Rest and return tomorrow — or upgrade to continue.",
-          tier: userTier,
-          limit,
+          error: "monthly_ai_limit_reached",
+          message: budget.message,
+          reset_at: budget.reset_at,
+          can_buy_extra_ai_now: true,
+          usage_ratio: budget.usage_ratio,
         }),
-        { status: 403, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+        {
+          status: 402,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        },
       );
     }
 
-    // 5) Increment usage BEFORE AI call (prevents double-spend on retries)
+    // 5) Update throttle fields only BEFORE AI call
     const { error: updErr } = await supabaseUser
       .from("ai_usage_daily")
       .update({
-        messages_used: used + 1,
         last_request_at: now.toISOString(),
         minute_window_start: windowStart.toISOString(),
         minute_window_count: windowCount + 1,
@@ -862,7 +1053,10 @@ Example format:
     if (updErr) {
       return new Response(
         JSON.stringify({ error: "usage_update_failed" }),
-        { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+        {
+          status: 500,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        },
       );
     }
 
@@ -873,6 +1067,8 @@ Example format:
     if (!OPENAI_API_KEY) {
       throw new Error("OPENAI_API_KEY not configured");
     }
+
+    const model = "gpt-4.1-mini";
 
     // Step 4: AI fallback with exponential backoff for 429
     let retries = 0;
@@ -888,12 +1084,13 @@ Example format:
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            model: "gpt-4.1-mini",
+            model,
             messages: [
               { role: "system", content: systemPrompt },
               ...messages,
             ],
             stream: true,
+            stream_options: { include_usage: true },
             temperature: 0.4,
           }),
         });
@@ -937,49 +1134,104 @@ Example format:
       );
     }
 
-    // Cache AI response for 24 hours (best-effort)
-    if (authHeader) {
-      try {
-        const clonedResponse = aiResponse.clone();
-        const reader = clonedResponse.body?.getReader();
-        const decoder = new TextDecoder();
-        let fullContent = "";
+    if (!aiResponse.body) {
+      throw new Error("AI provider returned no response body");
+    }
 
-        if (reader) {
-          while (true) {
-            const { done, value } = await reader.read();
-            if (done) break;
-            const chunk = decoder.decode(value);
-            const lines = chunk.split("\n").filter((line) =>
-              line.trim().startsWith("data: ")
+    const [clientStream, parseStream] = aiResponse.body.tee();
+
+    // Cache AI response + log usage after stream parse (best-effort)
+    const backgroundTask = (async () => {
+      try {
+        let fullContent = "";
+        let requestId: string | null = null;
+        let promptTokens = 0;
+        let completionTokens = 0;
+
+        await consumeOpenAiSseStream(parseStream, (parsed) => {
+          if (parsed?.id && typeof parsed.id === "string") {
+            requestId = parsed.id;
+          }
+
+          const deltaContent = parsed?.choices?.[0]?.delta?.content;
+          if (typeof deltaContent === "string") {
+            fullContent += deltaContent;
+          }
+
+          if (parsed?.usage) {
+            const nextPromptTokens = Number(parsed.usage.prompt_tokens ?? 0);
+            const nextCompletionTokens = Number(
+              parsed.usage.completion_tokens ?? 0,
             );
-            for (const line of lines) {
-              const json = line.replace("data: ", "");
-              if (json === "[DONE]") break;
-              try {
-                const parsed = JSON.parse(json);
-                fullContent += parsed.choices?.[0]?.delta?.content || "";
-              } catch {
-                // ignore partial lines
-              }
+
+            if (!Number.isNaN(nextPromptTokens)) {
+              promptTokens = nextPromptTokens;
             }
+            if (!Number.isNaN(nextCompletionTokens)) {
+              completionTokens = nextCompletionTokens;
+            }
+          }
+        });
+
+        if (fullContent) {
+          try {
+            await supabaseAdmin.from("responses").insert({
+              query: userQuery,
+              room_id: roomId,
+              response_en: fullContent,
+              response_vi: fullContent, // TODO: split by language later
+            });
+          } catch (e) {
+            console.warn("Failed to cache AI response:", e);
           }
         }
 
-        if (fullContent) {
-          await supabaseAdmin.from("responses").insert({
-            query: userQuery,
-            room_id: roomId,
-            response_en: fullContent,
-            response_vi: fullContent, // TODO: split by language later
-          });
-        }
+        const estimatedCostVnd = estimateOpenAICostVnd({
+          model,
+          inputTokens: promptTokens,
+          outputTokens: completionTokens,
+        });
+
+        await Promise.allSettled([
+          logAiUsageEvent({
+            userId: user.id,
+            model,
+            tokensInput: promptTokens,
+            tokensOutput: completionTokens,
+            endpoint: "ai-chat",
+          }),
+          logAiUsageLog({
+            userId: user.id,
+          feature: "ai-chat",
+          model,
+          requestId,
+          inputTokens: promptTokens,
+          outputTokens: completionTokens,
+          estimatedCostVnd,
+          meta: {
+            roomId,
+            matchedEntriesCount: matchedEntries.length,
+          },
+        }),
+        ]);
       } catch (e) {
-        console.warn("Failed to cache AI response:", e);
+        console.warn("Failed to process AI stream for cache/logging:", e);
       }
+    })();
+
+    const edgeRuntime = (globalThis as {
+      EdgeRuntime?: { waitUntil?: (promise: Promise<unknown>) => void };
+    }).EdgeRuntime;
+
+    if (typeof edgeRuntime?.waitUntil === "function") {
+      edgeRuntime.waitUntil(backgroundTask);
+    } else {
+      backgroundTask.catch((e) => {
+        console.warn("Background AI post-processing failed:", e);
+      });
     }
 
-    return new Response(aiResponse.body, {
+    return new Response(clientStream, {
       headers: { ...corsHeaders, "Content-Type": "text/event-stream" },
     });
   } catch (error) {
@@ -988,7 +1240,10 @@ Example format:
       JSON.stringify({
         error: error instanceof Error ? error.message : "Unknown error",
       }),
-      { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+      {
+        status: 500,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      },
     );
   }
 });
