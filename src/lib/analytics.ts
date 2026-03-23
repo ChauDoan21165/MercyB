@@ -1,46 +1,168 @@
+// src/lib/analytics.ts
+
+export type AnalyticsEventName =
+  | "pricing_viewed"
+  | "checkout_started"
+  | "checkout_completed"
+  | "entitlement_success"
+  | `paywall_shown_${string}`;
+
+export type AnalyticsPayload = Record<string, unknown>;
+
+declare global {
+  interface Window {
+    dataLayer?: Array<Record<string, unknown>>;
+    gtag?: (...args: unknown[]) => void;
+    plausible?: (
+      eventName: string,
+      options?: { props?: AnalyticsPayload },
+    ) => void;
+    analytics?: {
+      track?: (eventName: string, payload?: AnalyticsPayload) => void;
+    };
+  }
+}
+
+function isBrowser(): boolean {
+  return typeof window !== "undefined";
+}
+
+function readEnv(name: string): string {
+  try {
+    return String((import.meta as ImportMeta | undefined)?.env?.[name] ?? "");
+  } catch {
+    return "";
+  }
+}
+
+function isDebugEnabled(): boolean {
+  const explicitDebug = readEnv("VITE_ANALYTICS_DEBUG").toLowerCase() === "true";
+  const isDev = readEnv("DEV") === "true";
+
+  return isDev || explicitDebug;
+}
+
+function nowIso(): string {
+  return new Date().toISOString();
+}
+
+function isSerializableValue(value: unknown): boolean {
+  if (value === undefined) return false;
+  if (typeof value === "function") return false;
+  if (typeof value === "symbol") return false;
+  if (typeof value === "bigint") return false;
+  return true;
+}
+
+function cleanPayload(payload?: AnalyticsPayload): AnalyticsPayload {
+  if (!payload) return {};
+
+  return Object.fromEntries(
+    Object.entries(payload).filter(([, value]) => isSerializableValue(value)),
+  );
+}
+
+function normalizeSource(source: string): string {
+  const normalized = String(source ?? "")
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9\s_-]/g, "")
+    .replace(/\s+/g, "_")
+    .replace(/_+/g, "_")
+    .replace(/^_+|_+$/g, "");
+
+  return normalized || "unknown";
+}
+
+function logDev(eventName: string, payload: AnalyticsPayload, timestamp: string): void {
+  if (!isDebugEnabled()) return;
+
+  console.info("[analytics]", {
+    event: eventName,
+    payload,
+    timestamp,
+  });
+}
+
+export function trackEvent(
+  eventName: AnalyticsEventName,
+  payload?: AnalyticsPayload,
+): void {
+  if (!isBrowser()) return;
+
+  const safePayload = cleanPayload(payload);
+  const timestamp = nowIso();
+
+  logDev(eventName, safePayload, timestamp);
+
+  try {
+    if (typeof window.gtag === "function") {
+      window.gtag("event", eventName, safePayload);
+    }
+  } catch {
+    // no-op
+  }
+
+  try {
+    if (typeof window.plausible === "function") {
+      window.plausible(eventName, { props: safePayload });
+    }
+  } catch {
+    // no-op
+  }
+
+  try {
+    if (typeof window.analytics?.track === "function") {
+      window.analytics.track(eventName, safePayload);
+    }
+  } catch {
+    // no-op
+  }
+
+  try {
+    if (Array.isArray(window.dataLayer)) {
+      window.dataLayer.push({
+        event: eventName,
+        ...safePayload,
+        timestamp,
+      });
+    }
+  } catch {
+    // no-op
+  }
+}
+
+export function trackPricingViewed(payload?: AnalyticsPayload): void {
+  trackEvent("pricing_viewed", payload);
+}
+
+export function trackCheckoutStarted(payload?: AnalyticsPayload): void {
+  trackEvent("checkout_started", payload);
+}
+
+export function trackCheckoutCompleted(payload?: AnalyticsPayload): void {
+  trackEvent("checkout_completed", payload);
+}
+
+export function trackEntitlementSuccess(payload?: AnalyticsPayload): void {
+  trackEvent("entitlement_success", payload);
+}
+
+export function trackPaywallShown(
+  source: string,
+  payload?: AnalyticsPayload,
+): void {
+  const normalizedSource = normalizeSource(source);
+  trackEvent(`paywall_shown_${normalizedSource}`, payload);
+}
+
 /**
- * Analytics Event Layer
- * 
- * Provides a central abstraction for tracking events without vendor coupling.
- * Currently logs to console in dev, no-op in production.
- * Can be extended to integrate with GA, Posthog, etc. in the future.
+ * Backward-compatible alias for callers using:
+ * track("event_name", payload)
  */
-
-type EventPayload = Record<string, any>;
-
-const isDev = import.meta.env.DEV;
-
-export const trackEvent = (eventName: string, payload?: EventPayload) => {
-  if (isDev) {
-    console.log(`[Analytics] Event: ${eventName}`, payload);
-  }
-  // Future: Send to analytics service
-};
-
-export const trackScreen = (screenName: string, payload?: EventPayload) => {
-  if (isDev) {
-    console.log(`[Analytics] Screen: ${screenName}`, payload);
-  }
-  // Future: Send to analytics service
-};
-
-export const trackThemeChange = (mode: 'color' | 'bw') => {
-  trackEvent('theme_toggle', { mode });
-};
-
-export const trackRoomOpened = (roomId: string, tier: string, source: string) => {
-  trackEvent('room_opened', { roomId, tier, source });
-};
-
-export const trackAudioPlay = (roomId: string, entrySlug: string, audioFile: string) => {
-  trackEvent('audio_play', { roomId, entrySlug, audioFile });
-};
-
-export const trackAudioError = (
-  roomId: string, 
-  entrySlug: string, 
-  audioFile: string, 
-  errorMessage: string
-) => {
-  trackEvent('audio_error', { roomId, entrySlug, audioFile, errorMessage });
-};
+export function track(
+  eventName: AnalyticsEventName,
+  payload?: AnalyticsPayload,
+): void {
+  trackEvent(eventName, payload);
+}
