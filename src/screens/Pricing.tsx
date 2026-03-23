@@ -1,7 +1,14 @@
-// src/pages/Pricing.tsx
-import React, { useMemo, useState } from "react";
+// src/screens/Pricing.tsx
+
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/lib/supabaseClient";
+import {
+  trackCheckoutStarted,
+  trackEvent,
+  trackPaywallShown,
+  trackPricingViewed,
+} from "@/lib/analytics";
 
 type PlanKey = "free" | "month" | "year";
 type PaidPlanKey = "month" | "year";
@@ -18,6 +25,15 @@ type Plan = {
   bodyVi: string;
   cta: string;
   accent: PlanAccent;
+  bullets?: string[];
+  savingsBadge?: string;
+};
+
+type EntitlementResponse = {
+  is_premium?: boolean;
+  status?: string | null;
+  source?: string | null;
+  expires_at?: string | null;
 };
 
 const PAGE_MAX = 980;
@@ -103,7 +119,17 @@ export default function Pricing() {
   );
 
   const [busyPlan, setBusyPlan] = useState<PaidPlanKey | null>(null);
+  const [manageBusy, setManageBusy] = useState(false);
   const [errorText, setErrorText] = useState("");
+  const [entitlement, setEntitlement] = useState<EntitlementResponse | null>(
+    null,
+  );
+  const [entitlementLoading, setEntitlementLoading] = useState(true);
+  const [showAlreadySubscribedPanel, setShowAlreadySubscribedPanel] =
+    useState(false);
+
+  const trackedPricingViewed = useRef(false);
+  const trackedPaywallShown = useRef(false);
 
   const canceled = useMemo(() => {
     const params = new URLSearchParams(window.location.search);
@@ -128,50 +154,254 @@ export default function Pricing() {
     () => [
       {
         key: "free",
-        eyebrow: "",
+        eyebrow: "Start here / Bắt đầu",
         title: "Free / Miễn phí",
         price: "",
         subtitleEn: "Start with limited rooms.",
         subtitleVi: "Bắt đầu với các phòng giới hạn.",
-        bodyEn: "Begin gently and feel the atmosphere.",
-        bodyVi: "Đi nhẹ nhàng và cảm nhận không gian của Mercy Blade.",
+        bodyEn: "Begin gently and explore the atmosphere first.",
+        bodyVi: "Bắt đầu nhẹ nhàng và cảm nhận không gian trước khi nâng cấp.",
         cta: "Browse rooms",
         accent: "plain",
+        bullets: [
+          "Explore the experience before upgrading",
+          "Good for first-time visitors",
+          "No billing required",
+        ],
       },
       {
         key: "month",
-        eyebrow: "Recommended / Gợi ý",
-        title: "Full Access / Toàn quyền truy cập",
+        eyebrow: "Flexible / Linh hoạt",
+        title: "Full Access — Monthly / Toàn quyền — Tháng",
         price: "200 000 VND / month",
-        subtitleEn: "One Month / 1 tháng",
-        subtitleVi: "Mở khóa toàn bộ hành trình trong 1 tháng.",
+        subtitleEn: "Try full access with flexible monthly billing.",
+        subtitleVi: "Trải nghiệm toàn quyền truy cập với thanh toán hàng tháng linh hoạt.",
         bodyEn:
-          "Best for learners who want flexibility without a long commitment.",
+          "Good for learners who want every premium room without a longer commitment.",
         bodyVi:
-          "Phù hợp cho người học muốn linh hoạt mà chưa cần cam kết dài hạn.",
-        cta: "Choose monthly",
-        accent: "highlight",
+          "Phù hợp cho người học muốn mở toàn bộ phòng premium mà chưa cần cam kết dài hạn.",
+        cta: "Try full access",
+        accent: "plain",
+        bullets: [
+          "Unlock all premium rooms",
+          "Good for trying the full experience",
+          "Flexible monthly billing",
+        ],
       },
       {
         key: "year",
-        eyebrow: "",
-        title: "Full Access / Toàn quyền truy cập",
+        eyebrow: "Best value / Tiết kiệm nhất",
+        title: "Full Access — Yearly / Toàn quyền — Năm",
         price: "2 000 000 VND / year",
-        subtitleEn: "1 Year / 1 năm",
-        subtitleVi: "Đồng hành cùng Mercy Blade trong dài hạn.",
-        bodyEn: "Best value for steady, lasting access.",
-        bodyVi: "Giá trị tốt nhất cho quyền truy cập ổn định và lâu dài.",
-        cta: "Choose yearly",
-        accent: "plain",
+        subtitleEn: "Save more and stay fully unlocked all year.",
+        subtitleVi: "Tiết kiệm hơn và giữ toàn bộ quyền truy cập suốt cả năm.",
+        bodyEn: "Best long-term value for steady learning without billing friction.",
+        bodyVi: "Giá trị tốt nhất cho hành trình dài hạn với ít gián đoạn thanh toán hơn.",
+        cta: "Unlock full access",
+        accent: "highlight",
+        bullets: [
+          "Best long-term value",
+          "Full premium access all year",
+          "Less billing friction",
+        ],
+        savingsBadge: "Save 17% • 2 months free",
       },
     ],
     [],
   );
 
+  const hasPremium = entitlement?.is_premium === true;
+
+  useEffect(() => {
+    if (trackedPricingViewed.current) return;
+
+    trackPricingViewed({
+      screen: "pricing",
+      path: window.location.pathname,
+    });
+
+    trackedPricingViewed.current = true;
+  }, []);
+
+  useEffect(() => {
+    let mounted = true;
+
+    async function loadEntitlement() {
+      try {
+        setEntitlementLoading(true);
+        const accessToken = await getAccessToken({ redirectOnMissing: false });
+        const result = await fetchEntitlement(accessToken);
+        if (!mounted) return;
+        setEntitlement(result);
+        setShowAlreadySubscribedPanel(result.is_premium === true);
+      } catch {
+        if (!mounted) return;
+        setEntitlement(null);
+        setShowAlreadySubscribedPanel(false);
+      } finally {
+        if (mounted) {
+          setEntitlementLoading(false);
+        }
+      }
+    }
+
+    void loadEntitlement();
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (entitlementLoading) return;
+    if (hasPremium) return;
+    if (trackedPaywallShown.current) return;
+
+    trackPaywallShown("pricing", {
+      screen: "pricing",
+      path: window.location.pathname,
+    });
+
+    trackedPaywallShown.current = true;
+  }, [entitlementLoading, hasPremium]);
+
+  async function getAccessToken(options?: {
+    redirectOnMissing?: boolean;
+  }): Promise<string> {
+    const redirectOnMissing = options?.redirectOnMissing ?? true;
+
+    const {
+      data: { session },
+      error: sessionError,
+    } = await supabase.auth.getSession();
+
+    if (sessionError) {
+      throw new Error(sessionError.message);
+    }
+
+    const accessToken = session?.access_token;
+    if (!accessToken) {
+      if (redirectOnMissing) {
+        navigate("/signin");
+      }
+      throw new Error("Please sign in to continue.");
+    }
+
+    return accessToken;
+  }
+
+  async function fetchEntitlement(
+    accessToken: string,
+  ): Promise<EntitlementResponse> {
+    if (!SUPABASE_URL) {
+      throw new Error("Supabase URL is missing.");
+    }
+
+    const response = await fetch(
+      `${SUPABASE_URL.replace(/\/$/, "")}/functions/v1/me-entitlement`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          ...(SUPABASE_ANON_KEY ? { apikey: SUPABASE_ANON_KEY } : {}),
+        },
+      },
+    );
+
+    const raw = await response.text();
+    let payload: Record<string, unknown> = {};
+
+    try {
+      payload = raw ? JSON.parse(raw) : {};
+    } catch {
+      throw new Error(raw || "Entitlement returned a non-JSON response.");
+    }
+
+    if (!response.ok) {
+      throw new Error(
+        extractErrorMessage(payload, `Entitlement failed (${response.status})`),
+      );
+    }
+
+    return payload as EntitlementResponse;
+  }
+
+  async function createBillingPortalSession(
+    accessToken: string,
+  ): Promise<string> {
+    if (!SUPABASE_URL) {
+      throw new Error("Supabase URL is missing.");
+    }
+
+    const response = await fetch(
+      `${SUPABASE_URL.replace(/\/$/, "")}/functions/v1/create-billing-portal-session`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+          ...(SUPABASE_ANON_KEY ? { apikey: SUPABASE_ANON_KEY } : {}),
+        },
+        body: JSON.stringify({}),
+      },
+    );
+
+    const raw = await response.text();
+    let payload: Record<string, unknown> = {};
+
+    try {
+      payload = raw ? JSON.parse(raw) : {};
+    } catch {
+      throw new Error(raw || "Billing portal returned a non-JSON response.");
+    }
+
+    if (!response.ok) {
+      throw new Error(
+        extractErrorMessage(
+          payload,
+          `Billing portal failed (${response.status})`,
+        ),
+      );
+    }
+
+    const portalUrl = typeof payload.url === "string" ? payload.url : "";
+
+    if (!portalUrl) {
+      throw new Error("Billing portal URL missing from response.");
+    }
+
+    return portalUrl;
+  }
+
+  async function handleManageSubscription() {
+    setErrorText("");
+    setManageBusy(true);
+
+    try {
+      const accessToken = await getAccessToken();
+      const portalUrl = await createBillingPortalSession(accessToken);
+      window.location.assign(portalUrl);
+    } catch (error) {
+      setErrorText(
+        error instanceof Error
+          ? error.message
+          : "Unable to open billing portal.",
+      );
+    } finally {
+      setManageBusy(false);
+    }
+  }
+
   async function handlePaidPlan(plan: PaidPlanKey) {
     const priceId = plan === "month" ? ONE_MONTH_PRICE_ID : ONE_YEAR_PRICE_ID;
 
     setErrorText("");
+
+    if (hasPremium) {
+      setShowAlreadySubscribedPanel(true);
+      await handleManageSubscription();
+      return;
+    }
 
     if (!priceId) {
       setErrorText(
@@ -190,20 +420,14 @@ export default function Pricing() {
     setBusyPlan(plan);
 
     try {
-      const {
-        data: { session },
-        error: sessionError,
-      } = await supabase.auth.getSession();
+      const accessToken = await getAccessToken();
 
-      if (sessionError) {
-        throw new Error(sessionError.message);
-      }
-
-      const accessToken = session?.access_token;
-      if (!accessToken) {
-        navigate("/signin");
-        return;
-      }
+      trackCheckoutStarted({
+        screen: "pricing",
+        plan,
+        price_id: priceId,
+        path: window.location.pathname,
+      });
 
       const successUrl =
         `${window.location.origin}/billing/success?session_id={CHECKOUT_SESSION_ID}`;
@@ -243,6 +467,22 @@ export default function Pricing() {
         );
       }
 
+      if (payload.already_subscribed === true) {
+        setShowAlreadySubscribedPanel(true);
+        const latestEntitlement = await fetchEntitlement(accessToken).catch(
+          () => null,
+        );
+
+        if (latestEntitlement) {
+          setEntitlement(latestEntitlement);
+          setShowAlreadySubscribedPanel(latestEntitlement.is_premium === true);
+        }
+
+        const portalUrl = await createBillingPortalSession(accessToken);
+        window.location.assign(portalUrl);
+        return;
+      }
+
       const checkoutUrl =
         typeof payload.url === "string"
           ? payload.url
@@ -256,6 +496,13 @@ export default function Pricing() {
         throw new Error("Checkout URL missing from response.");
       }
 
+      trackEvent("checkout_redirected", {
+        screen: "pricing",
+        plan,
+        price_id: priceId,
+        path: window.location.pathname,
+      });
+
       window.location.assign(checkoutUrl);
     } catch (error) {
       setErrorText(
@@ -268,7 +515,7 @@ export default function Pricing() {
 
   function renderCard(plan: Plan) {
     const commonCardStyle: React.CSSProperties = {
-      minHeight: 360,
+      minHeight: 460,
       borderRadius: 18,
       border: "1px solid rgba(15,23,42,0.10)",
       padding: 18,
@@ -278,12 +525,14 @@ export default function Pricing() {
       textAlign: "left",
       boxShadow:
         plan.accent === "highlight"
-          ? "0 10px 30px rgba(16,185,129,0.10)"
+          ? "0 12px 34px rgba(16,185,129,0.14)"
           : "0 6px 20px rgba(15,23,42,0.05)",
       background:
         plan.accent === "highlight"
           ? "linear-gradient(180deg, rgba(236,253,245,0.98) 0%, rgba(240,253,250,0.96) 100%)"
           : "#ffffff",
+      position: "relative",
+      overflow: "hidden",
     };
 
     const badgeStyle: React.CSSProperties = {
@@ -293,8 +542,11 @@ export default function Pricing() {
       borderRadius: 999,
       fontSize: 13,
       fontWeight: 800,
-      color: "#0f766e",
-      background: "rgba(13,148,136,0.10)",
+      color: plan.accent === "highlight" ? "#065f46" : "#0f766e",
+      background:
+        plan.accent === "highlight"
+          ? "rgba(16,185,129,0.16)"
+          : "rgba(13,148,136,0.10)",
       visibility: plan.eyebrow ? "visible" : "hidden",
     };
 
@@ -329,6 +581,15 @@ export default function Pricing() {
       margin: 0,
     };
 
+    const bulletListStyle: React.CSSProperties = {
+      margin: 0,
+      paddingLeft: 18,
+      color: "#334155",
+      lineHeight: 1.7,
+      fontSize: 14,
+      fontWeight: 600,
+    };
+
     const actionStyle: React.CSSProperties = {
       marginTop: "auto",
       display: "inline-flex",
@@ -356,6 +617,14 @@ export default function Pricing() {
           <p style={bodyStyle}>{plan.bodyEn}</p>
           <p style={bodyStyle}>{plan.subtitleVi}</p>
           <p style={bodyStyle}>{plan.bodyVi}</p>
+
+          {plan.bullets?.length ? (
+            <ul style={bulletListStyle}>
+              {plan.bullets.map((bullet) => (
+                <li key={bullet}>{bullet}</li>
+              ))}
+            </ul>
+          ) : null}
 
           <button
             type="button"
@@ -387,10 +656,46 @@ export default function Pricing() {
         <p style={bodyStyle}>{plan.subtitleVi}</p>
         <p style={bodyStyle}>{plan.bodyVi}</p>
 
+        {plan.bullets?.length ? (
+          <ul style={bulletListStyle}>
+            {plan.bullets.map((bullet) => (
+              <li key={bullet}>{bullet}</li>
+            ))}
+          </ul>
+        ) : null}
+
+        {plan.savingsBadge ? (
+          <div
+            style={{
+              fontSize: 13,
+              fontWeight: 800,
+              color: "#065f46",
+              background: "rgba(16,185,129,0.10)",
+              borderRadius: 12,
+              padding: "8px 10px",
+            }}
+          >
+            {plan.savingsBadge}
+          </div>
+        ) : plan.key === "year" ? (
+          <div
+            style={{
+              fontSize: 13,
+              fontWeight: 800,
+              color: "#065f46",
+              background: "rgba(16,185,129,0.10)",
+              borderRadius: 12,
+              padding: "8px 10px",
+            }}
+          >
+            Better long-term value for steady practice.
+          </div>
+        ) : null}
+
         <button
           type="button"
           onClick={() => handlePaidPlan(paidKey)}
-          disabled={isBusy}
+          disabled={isBusy || manageBusy || entitlementLoading}
           aria-busy={isBusy}
           style={{
             ...actionStyle,
@@ -398,7 +703,15 @@ export default function Pricing() {
             opacity: isBusy ? 0.85 : 1,
           }}
         >
-          {isBusy ? "Opening checkout..." : plan.cta}
+          {entitlementLoading
+            ? "Checking access..."
+            : isBusy
+              ? hasPremium
+                ? "Opening portal..."
+                : "Opening secure checkout..."
+              : hasPremium
+                ? "Manage subscription"
+                : plan.cta}
         </button>
       </div>
     );
@@ -424,26 +737,72 @@ export default function Pricing() {
         <h1
           style={{
             margin: 0,
-            fontSize: 30,
-            lineHeight: 1.1,
+            fontSize: 32,
+            lineHeight: 1.08,
             fontWeight: 950,
             color: "#111827",
           }}
         >
-          Choose your plan
+          Unlock every premium room in Mercy Blade
         </h1>
 
         <p style={{ margin: "12px 0 0", color: "#475569", lineHeight: 1.7 }}>
-          When you want to go deeper, you can unlock{" "}
-          <strong>Full Access for One Month</strong> or choose{" "}
-          <strong>1 Year</strong> for longer continuity.
+          Get instant full access after payment. Choose flexible monthly billing
+          or save more with yearly access.
         </p>
 
         <p style={{ margin: "12px 0 0", color: "#475569", lineHeight: 1.7 }}>
-          Mercy Blade bắt đầu với các phòng miễn phí. Khi bạn muốn đi sâu hơn,
-          bạn có thể mở khóa <strong>Toàn Quyền Truy Cập trong 1 tháng</strong>{" "}
-          hoặc chọn <strong>1 năm</strong> để đồng hành dài lâu hơn.
+          Mở khóa toàn bộ phòng premium ngay sau khi thanh toán. Chọn gói tháng
+          linh hoạt hoặc tiết kiệm hơn với gói năm.
         </p>
+
+        <div
+          style={{
+            display: "flex",
+            gap: 10,
+            flexWrap: "wrap",
+            marginTop: 14,
+            color: "#475569",
+            fontSize: 14,
+            fontWeight: 700,
+          }}
+        >
+          <span>Secure Stripe checkout</span>
+          <span>•</span>
+          <span>Cancel anytime</span>
+          <span>•</span>
+          <span>No hidden fees</span>
+        </div>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+            gap: 10,
+            marginTop: 18,
+          }}
+        >
+          {[
+            "Full access to all premium rooms",
+            "Instant unlock after successful payment",
+            "Manage or cancel anytime in Stripe",
+          ].map((bullet) => (
+            <div
+              key={bullet}
+              style={{
+                borderRadius: 14,
+                border: "1px solid rgba(15,23,42,0.08)",
+                background: "rgba(255,255,255,0.80)",
+                padding: "10px 12px",
+                fontSize: 14,
+                fontWeight: 700,
+                color: "#334155",
+              }}
+            >
+              ✓ {bullet}
+            </div>
+          ))}
+        </div>
 
         <div
           style={{
@@ -470,6 +829,46 @@ export default function Pricing() {
             👉 Browse rooms
           </button>
 
+          {hasPremium ? (
+            <button
+              type="button"
+              onClick={handleManageSubscription}
+              disabled={manageBusy || entitlementLoading}
+              style={{
+                borderRadius: 14,
+                minHeight: 46,
+                padding: "12px 16px",
+                border: "1px solid rgba(15,23,42,0.12)",
+                background: "#0f172a",
+                color: "#fff",
+                fontWeight: 900,
+                cursor: manageBusy ? "wait" : "pointer",
+                opacity: manageBusy ? 0.85 : 1,
+              }}
+            >
+              {manageBusy ? "Opening portal..." : "Manage Subscription"}
+            </button>
+          ) : (
+            <button
+              type="button"
+              onClick={() => handlePaidPlan("year")}
+              disabled={busyPlan !== null || entitlementLoading}
+              style={{
+                borderRadius: 14,
+                minHeight: 46,
+                padding: "12px 16px",
+                border: "1px solid rgba(15,23,42,0.12)",
+                background: "#0f172a",
+                color: "#fff",
+                fontWeight: 900,
+                cursor: busyPlan ? "wait" : "pointer",
+                opacity: busyPlan ? 0.85 : 1,
+              }}
+            >
+              {busyPlan === "year" ? "Opening..." : "Unlock full access"}
+            </button>
+          )}
+
           <button
             type="button"
             onClick={() => navigate("/")}
@@ -488,6 +887,44 @@ export default function Pricing() {
           </button>
         </div>
       </div>
+
+      {showAlreadySubscribedPanel && hasPremium ? (
+        <div
+          style={{
+            marginBottom: 14,
+            padding: "14px 16px",
+            borderRadius: 14,
+            border: "1px solid rgba(13, 148, 136, 0.22)",
+            background: "rgba(240, 253, 250, 0.96)",
+            color: "#115e59",
+          }}
+        >
+          <div style={{ fontWeight: 900, marginBottom: 6 }}>
+            You already have premium access.
+          </div>
+          <div style={{ lineHeight: 1.6, marginBottom: 10 }}>
+            Manage or cancel your subscription anytime in Stripe.
+          </div>
+          <button
+            type="button"
+            onClick={handleManageSubscription}
+            disabled={manageBusy}
+            style={{
+              borderRadius: 12,
+              minHeight: 42,
+              padding: "10px 14px",
+              border: "1px solid rgba(15,23,42,0.12)",
+              background: "#0f172a",
+              color: "#fff",
+              fontWeight: 900,
+              cursor: manageBusy ? "wait" : "pointer",
+              opacity: manageBusy ? 0.85 : 1,
+            }}
+          >
+            {manageBusy ? "Opening portal..." : "Manage Subscription"}
+          </button>
+        </div>
+      ) : null}
 
       {canceled ? (
         <div
@@ -556,10 +993,9 @@ export default function Pricing() {
           lineHeight: 1.6,
         }}
       >
-        The paid cards now skip the blocked client-side subscription tier query
-        and open Stripe checkout directly through the existing{" "}
-        <code>billing-stripe-checkout-session</code> function for the signed-in
-        user.
+        Paid plans open Stripe Checkout for new subscribers, and route existing
+        subscribers to Stripe Billing Portal instead of creating overlapping
+        subscriptions.
       </p>
     </div>
   );
