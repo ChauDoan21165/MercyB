@@ -15,6 +15,7 @@
 // - removes duplicated account/sign-in button from auth card
 // - keeps lesson card as primary action
 // - removes extra CTA rows inside hero copy block to reduce clutter
+// - cuts white space above and below hero band
 //
 // Does NOT add:
 // - placeholder room logic
@@ -397,11 +398,12 @@ export default function Home() {
   const frame: React.CSSProperties = {
     maxWidth: PAGE_MAX,
     margin: "0 auto",
-    padding: "12px 16px 220px",
+    padding: "4px 16px 220px",
   };
 
   const heroImgWrap: React.CSSProperties = {
     marginTop: 0,
+    marginBottom: 0,
     marginLeft: -16,
     marginRight: -16,
     width: "calc(100% + 32px)",
@@ -409,25 +411,27 @@ export default function Home() {
     border: "1px solid rgba(0,0,0,0.08)",
     overflow: "hidden",
     position: "relative",
-    boxShadow: "0 16px 40px rgba(0,0,0,0.10)",
+    boxShadow: "0 10px 24px rgba(0,0,0,0.08)",
     background: "white",
+    lineHeight: 0,
   };
 
   const heroImg: React.CSSProperties = {
     width: "100%",
-    height: "clamp(260px, 30vw, 420px)",
-    objectFit: "contain",
+    height: "clamp(220px, 28vw, 360px)",
+    objectFit: "cover",
+    objectPosition: "center",
     display: "block",
     background: "white",
   };
 
   const topPriorityGrid: React.CSSProperties = {
-    marginTop: 18,
+    marginTop: 10,
     display: "grid",
     gridTemplateColumns: isDesktopTop
       ? "minmax(0, 1.02fr) minmax(320px, 0.98fr)"
       : "1fr",
-    gap: 16,
+    gap: 14,
     alignItems: "stretch",
   };
 
