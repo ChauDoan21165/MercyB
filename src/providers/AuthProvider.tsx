@@ -2,24 +2,18 @@
 /**
  * MercyBlade Blue — Auth Provider (SINGLE SESSION SOURCE OF TRUTH)
  * Path: src/providers/AuthProvider.tsx
- * Version: MB-BLUE-94.13.19 — 2026-01-11 (+0700)
  *
- * CHANGE (94.13.19):
- * - Add signOut() to the Auth context (still single listener).
- * - UI should call ctx.signOut(), not supabase.auth.signOut() directly.
+ * HARDENING PATCH:
+ * - Keep a single auth listener for the whole app.
+ * - Attach listener BEFORE initial getSession() settles, to avoid startup/routing race.
+ * - Prevent stale async writes after unmount.
+ * - Keep session/loading transitions deterministic.
+ * - Expose signOut() and refreshSession() as stable actions.
  *
- * GOAL:
- * - One Supabase auth listener for the whole app.
- * - All UI reads session from ONE place.
- *
- * RULE:
- * - Must use canonical client: "@/lib/supabaseClient"
- * - DEV ONLY may log JWT for debugging
- *
- * PERF PATCH (2026-03-08):
- * - Remove eager module-scope Supabase import.
- * - Lazy-load Supabase client inside provider effects/actions.
- * - Keeps provider behavior the same while reducing top-level startup pressure.
+ * WHY:
+ * - The Billing button/page is not the root issue anymore.
+ * - The common cause of “navigate to /billing then snap back” is:
+ *   route changes -> auth is briefly unresolved/null -> some guard reacts too early.
  */
 
 import React, {
@@ -50,7 +44,7 @@ let supabaseClientPromise: Promise<SupabaseClientType> | null = null;
 async function getSupabaseClient(): Promise<SupabaseClientType> {
   if (!supabaseClientPromise) {
     supabaseClientPromise = import("@/lib/supabaseClient").then(
-      (mod) => mod.supabase
+      (mod) => mod.supabase,
     );
   }
   return supabaseClientPromise;
@@ -60,102 +54,130 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [session, setSession] = useState<Session | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
+  const mountedRef = useRef(false);
   const unsubRef = useRef<null | (() => void)>(null);
+  const refreshRequestIdRef = useRef(0);
+
+  const safeSetSession = useCallback((next: Session | null) => {
+    if (!mountedRef.current) return;
+    setSession(next);
+  }, []);
+
+  const safeSetLoading = useCallback((next: boolean) => {
+    if (!mountedRef.current) return;
+    setIsLoading(next);
+  }, []);
 
   const refreshSession = useCallback(async () => {
+    const requestId = ++refreshRequestIdRef.current;
+
+    safeSetLoading(true);
+
     try {
       const supabase = await getSupabaseClient();
       const { data, error } = await supabase.auth.getSession();
+
+      if (requestId !== refreshRequestIdRef.current) return;
 
       if (error && import.meta.env.DEV) {
         console.warn("[auth] getSession failed:", error.message);
       }
 
-      setSession(data?.session ?? null);
+      safeSetSession(data?.session ?? null);
+    } catch (error) {
+      if (requestId !== refreshRequestIdRef.current) return;
 
-      if (import.meta.env.DEV && data?.session?.access_token) {
-        console.log("[JWT]", data.session.access_token);
-      }
-    } catch (err) {
       if (import.meta.env.DEV) {
-        console.warn("[auth] refreshSession crashed:", err);
+        console.warn("[auth] refreshSession crashed:", error);
       }
-      setSession(null);
+
+      safeSetSession(null);
+    } finally {
+      if (requestId === refreshRequestIdRef.current) {
+        safeSetLoading(false);
+      }
     }
-  }, []);
+  }, [safeSetLoading, safeSetSession]);
 
   const signOut = useCallback(async () => {
+    safeSetLoading(true);
+
     try {
       const supabase = await getSupabaseClient();
-      await supabase.auth.signOut();
+      const { error } = await supabase.auth.signOut();
+
+      if (error && import.meta.env.DEV) {
+        console.warn("[auth] signOut failed:", error.message);
+      }
+
+      safeSetSession(null);
+    } catch (error) {
+      if (import.meta.env.DEV) {
+        console.warn("[auth] signOut crashed:", error);
+      }
+
+      safeSetSession(null);
     } finally {
-      setSession(null);
+      safeSetLoading(false);
     }
-  }, []);
+  }, [safeSetLoading, safeSetSession]);
 
   useEffect(() => {
-    let mounted = true;
+    mountedRef.current = true;
+    let localUnsub: null | (() => void) = null;
 
-    void (async () => {
+    async function boot() {
+      safeSetLoading(true);
+
       try {
         const supabase = await getSupabaseClient();
+        if (!mountedRef.current) return;
 
-        const { data, error } = await supabase.auth.getSession();
-        if (!mounted) return;
-
-        if (error && import.meta.env.DEV) {
-          console.warn("[auth] getSession failed:", error.message);
-        }
-
-        setSession(data?.session ?? null);
-
-        if (import.meta.env.DEV && data?.session?.access_token) {
-          console.log("[JWT]", data.session.access_token);
-        }
-
-        const { data: sub } = supabase.auth.onAuthStateChange(
-          (event, newSession) => {
-            if (!mounted) return;
-
-            if (import.meta.env.DEV) {
-              console.log(
-                "[auth] onAuthStateChange:",
-                event,
-                newSession?.user?.id ?? "(no-user)"
-              );
-
-              if (newSession?.access_token) {
-                console.log("[JWT]", newSession.access_token);
-              }
-            }
-
-            setSession(newSession ?? null);
-          }
+        const { data: authListener } = supabase.auth.onAuthStateChange(
+          (_event, nextSession) => {
+            safeSetSession(nextSession ?? null);
+            safeSetLoading(false);
+          },
         );
 
-        unsubRef.current = () => {
-          sub?.subscription?.unsubscribe();
+        localUnsub = () => {
+          authListener.subscription.unsubscribe();
         };
-      } catch (err) {
+        unsubRef.current = localUnsub;
+
+        const { data, error } = await supabase.auth.getSession();
+        if (!mountedRef.current) return;
+
+        if (error && import.meta.env.DEV) {
+          console.warn("[auth] initial getSession failed:", error.message);
+        }
+
+        safeSetSession(data?.session ?? null);
+      } catch (error) {
         if (import.meta.env.DEV) {
-          console.warn("[auth] boot crashed:", err);
+          console.warn("[auth] boot failed:", error);
         }
-        if (mounted) {
-          setSession(null);
-        }
+
+        safeSetSession(null);
       } finally {
-        if (mounted) {
-          setIsLoading(false);
-        }
+        safeSetLoading(false);
       }
-    })();
+    }
+
+    void boot();
 
     return () => {
-      mounted = false;
-      unsubRef.current?.();
+      mountedRef.current = false;
+
+      if (localUnsub) {
+        localUnsub();
+      } else if (unsubRef.current) {
+        unsubRef.current();
+      }
+
       unsubRef.current = null;
     };
-  }, []);
+  }, [safeSetLoading, safeSetSession]);
 
   const value = useMemo<AuthContextValue>(
     () => ({
@@ -165,7 +187,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       refreshSession,
       signOut,
     }),
-    [session, isLoading, refreshSession, signOut]
+    [session, isLoading, refreshSession, signOut],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
@@ -173,8 +195,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
 export function useAuth() {
   const ctx = useContext(AuthContext);
+
   if (!ctx) {
     throw new Error("useAuth must be used inside <AuthProvider>");
   }
+
   return ctx;
 }

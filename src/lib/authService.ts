@@ -1,8 +1,8 @@
 // src/lib/authService.ts
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { supabase } from "./supabaseClient";
+import { supabase } from "@/lib/supabaseClient";
 import type { TierId } from "@/lib/constants/tiers";
-import type { VipKey } from "./auth";
+import type { VipKey } from "@/lib/auth";
 
 export type BackendEntitlement = {
   is_premium: boolean;
@@ -44,6 +44,14 @@ function asNonEmptyStringOrNull(value: unknown): string | null {
   return trimmed.length > 0 ? trimmed : null;
 }
 
+function normalizeStatus(
+  value: unknown,
+  fallback: "active" | "inactive",
+): string {
+  const raw = asNonEmptyStringOrNull(value);
+  return raw ? raw.toLowerCase() : fallback;
+}
+
 function normalizeEntitlement(payload: unknown): BackendEntitlement {
   const row =
     payload && typeof payload === "object"
@@ -51,14 +59,12 @@ function normalizeEntitlement(payload: unknown): BackendEntitlement {
       : {};
 
   const isPremium = row.is_premium === true;
-  const status =
-    asNonEmptyStringOrNull(row.status) ??
-    (isPremium ? "active" : "inactive");
+  const fallbackStatus: "active" | "inactive" = isPremium ? "active" : "inactive";
 
   return {
     is_premium: isPremium,
     source: asNonEmptyStringOrNull(row.source),
-    status,
+    status: normalizeStatus(row.status, fallbackStatus),
     expires_at: asNonEmptyStringOrNull(row.expires_at),
     plan_name: asNonEmptyStringOrNull(row.plan_name),
     tier_id: asNonEmptyStringOrNull(row.tier_id),

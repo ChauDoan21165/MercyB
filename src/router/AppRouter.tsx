@@ -1,91 +1,4 @@
 // src/router/AppRouter.tsx
-// MB-BLUE-101.5 → MB-BLUE-101.5d — 2026-03-20 (-0600)
-//
-// ROUTING RULES (LOCKED):
-// - Home route: /
-// - Rooms list route: /rooms
-// - Canonical room route: /room/:roomId
-// - Legacy/bad routes are redirected silently
-// - /room (no id) must NOT show NotFound
-//
-// Tier spine routes:
-// - /tiers
-// - /tiers/:tierId
-//
-// ADMIN (100.7+):
-// - /admin/* is guarded by <AdminRoute>
-// - /admin renders the Admin Control Board
-//
-// FIX (100.8):
-// - Add /auth → /signin so it never 404s.
-//
-// FIX (101.3):
-// - Add /admin/monitoring (guarded) and wire to AdminMonitoring page.
-//
-// FIX (101.4):
-// - Add /admin/metrics (guarded) and wire to AdminMetrics page.
-//
-// FIX (101.5):
-// - Standardize AdminRoute import to DEFAULT export (no braces).
-// - Remove legacy NotFound import; use local NotFound to avoid dependency loops.
-//
-// ✅ FIX (101.5a):
-// - Add AdminVIPRooms import + guarded route: /admin/vip-rooms
-//
-// ✅ CRITICAL FIX (admin blank page):
-// - Use nested routing under "/admin/*" so dashboard is the INDEX route.
-// - Wrap AdminLayout/AdminRoute ONCE at the parent.
-// - TEMP: Remove RequireMercyAuth wrapper from admin routes because it can return null (blank page).
-//   AdminRoute + useUserAccess is the real gate here.
-//
-// ✅ HARDEN (101.5c — global hero shell, no new file):
-// - Add AppHeroShell INSIDE this file (no AppHeroLayout.tsx required).
-// - Exclude only /signin (and keep /auth redirect outside).
-// - Add global Home+Back + Mercy Blade rainbow band for all non-admin pages.
-// - Keep admin clean: AppHeroShell auto-disables band on /admin/*.
-// - Add click-safety containment (isolation + pointerEvents + high zIndex).
-//
-// ✅ PATCH (2026-01-31d):
-// - UNIVERSAL WIDTH FIX: wrap Outlet in the SAME 980px frame as the hero band.
-//   This makes ALL pages (rooms/tiers/rooms list/home) share the same width baseline.
-//
-// ✅ PATCH (2026-02-19):
-// - Add /account route inside AppHeroShell (non-admin) so it never 404 in prod.
-//
-// ✅ PATCH (2026-02-20):
-// - Deployment truth beacon is now ALSO exposed on window.MB_ROUTER_VERSION
-//   + documentElement data-mb-router-version (easy to verify in prod).
-// - IMPORTANT: Do NOT rely on top-level IIFE for beacon; it can be tree-shaken in prod builds.
-//   Beacon is now stamped inside AppRouter() (never tree-shaken).
-//
-// ✅ PATCH (2026-03-02):
-// - Add /pricing route (Stripe pricing table page)
-//
-// ✅ PATCH (2026-03-02e):
-// - Keep /upgrade route BUT render the SAME Pricing UI as /pricing.
-//   This avoids old pricing copy or 404 loops if legacy links still go to /upgrade.
-//
-// ✅ PERF PATCH:
-// - Route pages are lazy-loaded to reduce the initial bundle.
-// - MercyAIHost is lazy-loaded and mounted ONLY on room routes,
-//   so it no longer stays globally eligible on first paint for unrelated routes.
-//
-// ✅ PATCH (2026-03-09):
-// - /room now redirects to /rooms (better match for room browsing flow).
-// - /redeem temporarily redirects to /pricing instead of /, so CTA lands somewhere intentional.
-//
-// ✅ PATCH (2026-03-20):
-// - Add visible auth state to AppHeroShell right side.
-// - Show loading / signed-in badge / email / Account / Sign out / Sign in.
-// - This makes post-login status obvious on the homepage and other non-admin pages.
-//
-// ✅ PATCH (2026-03-20b):
-// - Preserve /auth query params + hash when redirecting to /signin.
-// - This keeps logged_out / created / reset notices working on LoginPage.
-//
-// ✅ PATCH (2026-03-20c):
-// - Add /billing redirect to /account so legacy billing links never 404.
-// - Add /billing/success route for Stripe success return page.
 
 import React, { Suspense, lazy, useEffect } from "react";
 import {
@@ -103,13 +16,15 @@ import AdminRoute from "@/components/admin/AdminRoute";
 import AdminLayout from "@/components/admin/AdminLayout";
 import { useAuth } from "@/providers/AuthProvider";
 
-const MB_ROUTER_VERSION = "2026-03-20-app-router-auth-hero-shell-v3";
+const MB_ROUTER_VERSION = "2026-03-22-app-router-billing-route-fixed-v1";
 
 const ChatHub = lazy(() => import("@/pages/ChatHub"));
 const AllRooms = lazy(() => import("@/pages/AllRooms"));
 const Home = lazy(() => import("@/pages/Home"));
+const Privacy = lazy(() => import("@/pages/Privacy"));
 
 const AccountPage = lazy(() => import("@/pages/AccountPage"));
+const BillingPage = lazy(() => import("@/pages/Billing"));
 const BillingSuccessPage = lazy(() => import("@/pages/BillingSuccessPage"));
 const Pricing = lazy(() => import("../screens/Pricing"));
 
@@ -165,10 +80,10 @@ function LazyPage({
 function AppHeroShell() {
   const nav = useNavigate();
   const loc = useLocation();
-  const { user, isLoading, signOut } = useAuth();
+  const { user, isLoading } = useAuth();
 
-  const isAdmin = String(loc.pathname || "").startsWith("/admin");
-  const isAccountPage = String(loc.pathname || "") === "/account";
+  const pathname = String(loc.pathname || "");
+  const isAdmin = pathname.startsWith("/admin");
   const userEmail = String(user?.email ?? "").trim();
 
   const rainbow =
@@ -246,15 +161,12 @@ function AppHeroShell() {
     gap: 8,
     padding: "8px 12px",
     borderRadius: 9999,
-    border: user
-      ? "1px solid rgba(16,185,129,0.24)"
-      : "1px solid rgba(0,0,0,0.10)",
-    background: user ? "rgba(236,253,245,0.92)" : "rgba(255,255,255,0.90)",
-    color: user ? "rgba(6,95,70,0.92)" : "rgba(0,0,0,0.62)",
+    border: "1px solid rgba(0,0,0,0.10)",
+    background: "rgba(255,255,255,0.90)",
+    color: "rgba(0,0,0,0.62)",
     fontWeight: 900,
     fontSize: 13,
     lineHeight: 1,
-    maxWidth: 300,
     pointerEvents: "auto",
   };
 
@@ -264,17 +176,6 @@ function AppHeroShell() {
     borderRadius: 9999,
     background: user ? "rgb(16,185,129)" : "rgba(0,0,0,0.30)",
     flex: "0 0 auto",
-  };
-
-  const authEmail: React.CSSProperties = {
-    display: "inline-block",
-    maxWidth: 160,
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-    whiteSpace: "nowrap",
-    fontWeight: 800,
-    fontSize: 12,
-    opacity: 0.82,
   };
 
   const brand: React.CSSProperties = {
@@ -302,14 +203,6 @@ function AppHeroShell() {
       }
     } catch {
       nav("/");
-    }
-  };
-
-  const onSignOut = async () => {
-    try {
-      await signOut();
-    } finally {
-      nav("/signin", { replace: true });
     }
   };
 
@@ -350,37 +243,17 @@ function AppHeroShell() {
                 {isLoading ? (
                   <div style={authStatusPill} aria-live="polite">
                     <span style={statusDot} />
-                    <span>Checking sign-in...</span>
+                    <span>Checking...</span>
                   </div>
                 ) : user ? (
-                  <>
-                    <div
-                      style={authStatusPill}
-                      aria-label={userEmail ? `Signed in as ${userEmail}` : "Signed in"}
-                      title={userEmail || "Signed in"}
-                    >
-                      <span style={statusDot} />
-                      <span>Signed in</span>
-                      {userEmail ? (
-                        <span style={authEmail}>{userEmail}</span>
-                      ) : null}
-                    </div>
-
-                    {!isAccountPage ? (
-                      <Link to="/account" style={navBtn} aria-label="Account">
-                        Account
-                      </Link>
-                    ) : null}
-
-                    <button
-                      type="button"
-                      style={navBtn}
-                      onClick={onSignOut}
-                      aria-label="Sign out"
-                    >
-                      Sign out
-                    </button>
-                  </>
+                  <Link
+                    to="/account"
+                    style={navBtn}
+                    aria-label="Account"
+                    title={userEmail || "Account"}
+                  >
+                    Account
+                  </Link>
                 ) : (
                   <Link to="/signin" style={navBtn} aria-label="Sign in">
                     Sign in
@@ -423,10 +296,6 @@ function AuthRedirect() {
   const location = useLocation();
   const target = `/signin${location.search || ""}${location.hash || ""}`;
   return <Navigate to={target} replace />;
-}
-
-function BillingRedirect() {
-  return <Navigate to="/account" replace />;
 }
 
 function AdminShell() {
@@ -501,6 +370,15 @@ export default function AppRouter() {
           />
 
           <Route
+            path="/privacy"
+            element={
+              <LazyPage>
+                <Privacy />
+              </LazyPage>
+            }
+          />
+
+          <Route
             path="/pricing"
             element={
               <LazyPage>
@@ -531,7 +409,7 @@ export default function AppRouter() {
             path="/billing"
             element={
               <LazyPage>
-                <BillingRedirect />
+                <BillingPage />
               </LazyPage>
             }
           />

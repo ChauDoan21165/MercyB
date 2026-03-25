@@ -1,5 +1,5 @@
 // src/lib/useEntitlements.ts
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   FAIL_CLOSED_ENTITLEMENT,
   fetchCurrentEntitlement,
@@ -27,8 +27,13 @@ function tierToRank(tier: string): number {
   return Number.isFinite(n) ? n : 0;
 }
 
+function isPremiumStatus(status: string | null | undefined): boolean {
+  const s = String(status || "").toLowerCase();
+  return s === "active" || s === "trialing";
+}
+
 function buildFeatures(ent: BackendEntitlement, vipRank: number) {
-  const isPremium = ent.is_premium === true && ent.status === "active";
+  const isPremium = ent.is_premium === true && isPremiumStatus(ent.status);
 
   return {
     premium: isPremium,
@@ -43,13 +48,30 @@ function buildFeatures(ent: BackendEntitlement, vipRank: number) {
   } as Record<string, unknown>;
 }
 
+function buildEntitlement(entitlement: BackendEntitlement): Ent {
+  const vipTier = resolveEntitlementTier(entitlement);
+  const vipRank = tierToRank(vipTier);
+
+  return {
+    ...entitlement,
+    vip_tier: vipTier,
+    vip_rank: vipRank,
+    features: buildFeatures(entitlement, vipRank),
+    updated_at: new Date().toISOString(),
+  };
+}
+
 export function useEntitlements() {
   const { user, isLoading: authLoading } = useAuth();
 
   const [data, setData] = useState<Ent | null>(null);
   const [loading, setLoading] = useState(true);
 
+  const requestIdRef = useRef(0);
+
   const refreshEntitlements = useCallback(async () => {
+    const requestId = ++requestIdRef.current;
+
     if (authLoading) {
       setLoading(true);
       return;
@@ -66,31 +88,18 @@ export function useEntitlements() {
     try {
       const backendEnt =
         (await fetchCurrentEntitlement()) ?? FAIL_CLOSED_ENTITLEMENT;
-      const vipTier = resolveEntitlementTier(backendEnt);
-      const vipRank = tierToRank(vipTier);
 
-      const ent: Ent = {
-        ...backendEnt,
-        vip_tier: vipTier,
-        vip_rank: vipRank,
-        features: buildFeatures(backendEnt, vipRank),
-        updated_at: new Date().toISOString(),
-      };
+      if (requestIdRef.current !== requestId) return;
 
-      setData(ent);
+      setData(buildEntitlement(backendEnt));
     } catch {
-      const vipTier = "free";
-      const vipRank = 0;
+      if (requestIdRef.current !== requestId) return;
 
-      setData({
-        ...FAIL_CLOSED_ENTITLEMENT,
-        vip_tier: vipTier,
-        vip_rank: vipRank,
-        features: buildFeatures(FAIL_CLOSED_ENTITLEMENT, vipRank),
-        updated_at: new Date().toISOString(),
-      });
+      setData(buildEntitlement(FAIL_CLOSED_ENTITLEMENT));
     } finally {
-      setLoading(false);
+      if (requestIdRef.current === requestId) {
+        setLoading(false);
+      }
     }
   }, [authLoading, user?.id]);
 
@@ -110,7 +119,7 @@ export function useEntitlements() {
     if (typeof value === "boolean") return value;
 
     if (normalized === "premium" || normalized === "is_premium") {
-      return data?.is_premium === true && data?.status === "active";
+      return data?.is_premium === true && isPremiumStatus(data?.status);
     }
 
     const m = normalized.match(/^vip(\d+)$/);
@@ -126,6 +135,7 @@ export function useEntitlements() {
     const value = features[normalized];
 
     if (typeof value === "number" && Number.isFinite(value)) return value;
+
     if (
       typeof value === "string" &&
       value.trim() &&

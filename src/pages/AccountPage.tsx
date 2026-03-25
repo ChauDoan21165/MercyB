@@ -1,6 +1,6 @@
 // src/pages/AccountPage.tsx
-import React, { useEffect, useMemo, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/providers/AuthProvider";
 import { useEntitlements } from "@/lib/useEntitlements";
 
@@ -43,13 +43,27 @@ export default function AccountPage() {
     loading: entitlementLoading,
     refreshEntitlements,
   } = useEntitlements();
-  const [isSigningOut, setIsSigningOut] = useState(false);
 
+  const [isSigningOut, setIsSigningOut] = useState(false);
+  const [didRedirectToSignin, setDidRedirectToSignin] = useState(false);
+
+  // HARDENED: extra guard + log to catch any auth race during navigation
   useEffect(() => {
-    if (!isLoading && !user) {
+    if (isLoading) return;
+
+    console.log("[AccountPage] auth state:", { user: !!user, isLoading });
+
+    if (user) {
+      if (didRedirectToSignin) setDidRedirectToSignin(false);
+      return;
+    }
+
+    if (!didRedirectToSignin) {
+      console.log("[AccountPage] redirecting unauthed user to signin");
+      setDidRedirectToSignin(true);
       nav("/signin", { replace: true });
     }
-  }, [isLoading, user, nav]);
+  }, [didRedirectToSignin, isLoading, user, nav]);
 
   const email = useMemo(() => String(user?.email ?? "").trim(), [user?.email]);
 
@@ -87,10 +101,11 @@ export default function AccountPage() {
       ? "Active"
       : "Redirecting...";
 
-  async function handleSignOut() {
+  const handleSignOut = useCallback(async () => {
     if (isSigningOut) return;
 
     setIsSigningOut(true);
+    console.log("[AccountPage] signing out...");
 
     try {
       await signOut();
@@ -98,8 +113,27 @@ export default function AccountPage() {
     } finally {
       setIsSigningOut(false);
     }
-  }
+  }, [isSigningOut, nav, signOut]);
 
+  // FIXED + HARDENED: same pattern as Pricing button (pure button + useCallback)
+  // No <a>, no Link, no preventDefault, no window.location — exactly what works for Pricing
+  const handleBillingClick = useCallback((): void => {
+    console.log("=== BILLING BUTTON CLICKED ===");
+    console.log("[AccountPage] navigating to /billing (SPA route change)");
+    nav("/billing");
+  }, [nav]);
+
+  const handlePricingClick = useCallback((): void => {
+    console.log("[AccountPage] navigating to /pricing");
+    nav("/pricing");
+  }, [nav]);
+
+  const handleRefreshClick = useCallback((): void => {
+    console.log("[AccountPage] refreshing entitlements");
+    void refreshEntitlements();
+  }, [refreshEntitlements]);
+
+  // ENHANCED styles (harder contrast, better touch targets, no accidental overlap)
   const wrap: React.CSSProperties = {
     width: "100%",
     minHeight: "100vh",
@@ -148,14 +182,14 @@ export default function AccountPage() {
   const actions: React.CSSProperties = {
     display: "flex",
     alignItems: "center",
-    gap: 10,
+    gap: 12, // increased gap to prevent accidental overlap
     flexWrap: "wrap",
   };
 
   const buttonBase: React.CSSProperties = {
     borderRadius: 12,
-    minHeight: 42,
-    padding: "10px 14px",
+    minHeight: 48, // bigger touch target
+    padding: "12px 18px",
     border: "1px solid rgba(0,0,0,0.10)",
     background: "#fff",
     color: "#111827",
@@ -165,6 +199,10 @@ export default function AccountPage() {
     display: "inline-flex",
     alignItems: "center",
     justifyContent: "center",
+    position: "relative",
+    appearance: "none",
+    WebkitAppearance: "none",
+    userSelect: "none",
   };
 
   const primaryButton: React.CSSProperties = {
@@ -229,18 +267,29 @@ export default function AccountPage() {
               <button
                 type="button"
                 style={buttonBase}
-                onClick={() => void refreshEntitlements()}
+                onClick={handleRefreshClick}
+                disabled={entitlementLoading}
               >
-                Refresh access
+                {entitlementLoading ? "Refreshing…" : "Refresh access"}
               </button>
 
-              <Link to="/billing" style={buttonBase}>
+              {/* FIXED BILLING BUTTON — exact same pattern as Pricing (this is what finally works) */}
+              <button
+                type="button"
+                style={buttonBase}
+                onClick={handleBillingClick}
+                aria-label="Open billing page"
+              >
                 Billing
-              </Link>
+              </button>
 
-              <Link to="/pricing" style={buttonBase}>
+              <button
+                type="button"
+                style={buttonBase}
+                onClick={handlePricingClick}
+              >
                 Pricing
-              </Link>
+              </button>
 
               <button
                 type="button"
@@ -283,7 +332,8 @@ export default function AccountPage() {
             <div style={label}>Entitlement status</div>
             <div style={value}>{entitlementStatusLabel}</div>
             <div style={sub}>
-              Raw status: <b>{entitlementLoading ? "Loading…" : (ent?.status || "inactive")}</b>
+              Raw status:{" "}
+              <b>{entitlementLoading ? "Loading…" : (ent?.status || "inactive")}</b>
               <br />
               Source: <b>{ent?.source || "—"}</b>
               <br />
@@ -294,10 +344,11 @@ export default function AccountPage() {
           <div style={panel(2)}>
             <div style={label}>Notes</div>
             <div style={sub}>
-              Stripe webhook writes canonical truth. <code>public.subscriptions</code> is canonical.
-              Backend entitlement is the only premium truth. This page intentionally does not read
-              <code> user_metadata</code>, <code>app_metadata</code>, <code>subscription_tiers</code>,
-              or <code>user_subscriptions</code> to decide premium access.
+              Stripe webhook writes canonical truth. <code>public.subscriptions</code>{" "}
+              is canonical. Backend entitlement is the only premium truth. This
+              page intentionally does not read <code>user_metadata</code>,{" "}
+              <code>app_metadata</code>, <code>subscription_tiers</code>, or{" "}
+              <code>user_subscriptions</code> to decide premium access.
             </div>
           </div>
         </div>

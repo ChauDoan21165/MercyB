@@ -1,41 +1,25 @@
 // src/pages/Home.tsx
-// MERGED SAFE VERSION
+// SAFE CLEANED VERSION
 //
-// Base:
-// - HOME older 2 (safe structure)
 // Keeps:
-// - real /tiers learning-path direction
-// - Mercy Host present on Home
-// - no placeholder daily-room logic
-// - no fake room-library logic
-//
-// Also keeps good parts from latest:
-// - stronger hero copy
-// - top Mercy Host spotlight card
-// - progress cards
-// - pricing link
+// - existing auth/progress/room lookup logic
+// - real /tiers route
+// - hero image intact
+// - Mercy Host spotlight section
+// - progress section
+// - BottomMusicBar
 // - lazy Supabase loading
-// - BottomMusicBar integration
 //
-// Explicitly does NOT add:
-// - hardcoded DAILY_ROOM_IDS
-// - Today's Reflection placeholder links
+// Cleans:
+// - top area hierarchy
+// - removes duplicated account/sign-in button from auth card
+// - keeps lesson card as primary action
+// - removes extra CTA rows inside hero copy block to reduce clutter
+//
+// Does NOT add:
+// - placeholder room logic
+// - fake daily lesson IDs
 // - fake local room suggestions
-// - local placeholder room browsing
-//
-// NOTE:
-// - Record / Analyze are untouched because they are not part of Home.tsx.
-//
-// PATCH:
-// - Mount real MercyGuide on Home once, safely.
-// - Keep Mercy Host spotlight card.
-// - Do not change Record / Analyze logic inside MercyGuide.
-//
-// PATCH (2026-03-20):
-// - Make homepage visibly react to auth state.
-// - Add signed-in welcome/status strip.
-// - Add adaptive CTAs: Continue / Account when signed in.
-// - Keep signed-out path simple and calm.
 
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -164,6 +148,9 @@ export default function Home() {
   const [streakDays, setStreakDays] = useState<number | null>(null);
   const [firstRoomId, setFirstRoomId] = useState<string | null>(null);
   const [howOpen, setHowOpen] = useState<boolean>(true);
+  const [viewportWidth, setViewportWidth] = useState<number>(
+    typeof window === "undefined" ? 1200 : window.innerWidth,
+  );
 
   useEffect(() => {
     const apply = () => setZoomPct(readZoomPct());
@@ -178,7 +165,18 @@ export default function Home() {
     return () => obs.disconnect();
   }, []);
 
+  useEffect(() => {
+    if (typeof window === "undefined") return undefined;
+
+    const syncViewport = () => setViewportWidth(window.innerWidth);
+    syncViewport();
+
+    window.addEventListener("resize", syncViewport);
+    return () => window.removeEventListener("resize", syncViewport);
+  }, []);
+
   const zoomScale = useMemo(() => clamp(zoomPct / 100, 0.6, 1.4), [zoomPct]);
+  const isDesktopTop = viewportWidth >= 960;
 
   useEffect(() => {
     let alive = true;
@@ -423,8 +421,17 @@ export default function Home() {
     background: "white",
   };
 
-  const authStrip: React.CSSProperties = {
+  const topPriorityGrid: React.CSSProperties = {
     marginTop: 18,
+    display: "grid",
+    gridTemplateColumns: isDesktopTop
+      ? "minmax(0, 1.02fr) minmax(320px, 0.98fr)"
+      : "1fr",
+    gap: 16,
+    alignItems: "stretch",
+  };
+
+  const authStrip: React.CSSProperties = {
     borderRadius: 20,
     border: isSignedIn
       ? "1px solid rgba(16,185,129,0.20)"
@@ -471,11 +478,12 @@ export default function Home() {
   };
 
   const authTitle: React.CSSProperties = {
-    margin: 0,
-    fontSize: 28,
+    margin: "10px 0 0",
+    fontSize: isDesktopTop ? 30 : 26,
     fontWeight: 950,
     color: "rgba(0,0,0,0.90)",
     letterSpacing: -0.6,
+    lineHeight: 1.12,
   };
 
   const authSub: React.CSSProperties = {
@@ -501,11 +509,64 @@ export default function Home() {
     color: "rgba(0,0,0,0.74)",
   };
 
-  const authActions: React.CSSProperties = {
-    marginTop: 14,
+  const lessonCard: React.CSSProperties = {
+    borderRadius: 20,
+    border: "1px solid rgba(0,0,0,0.08)",
+    background: "linear-gradient(180deg, rgba(255,255,255,0.96), rgba(245,248,255,0.92))",
+    padding: "18px 18px",
+    boxShadow: "0 12px 30px rgba(0,0,0,0.05)",
+  };
+
+  const lessonTop: React.CSSProperties = {
     display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
     gap: 10,
     flexWrap: "wrap",
+  };
+
+  const lessonMeta: React.CSSProperties = {
+    fontSize: 12,
+    fontWeight: 900,
+    color: "rgba(0,0,0,0.52)",
+    letterSpacing: 0.2,
+  };
+
+  const lessonTitle: React.CSSProperties = {
+    marginTop: 8,
+    marginBottom: 0,
+    fontSize: isDesktopTop ? 30 : 24,
+    fontWeight: 950,
+    color: "rgba(0,0,0,0.90)",
+    letterSpacing: -0.7,
+    lineHeight: 1.1,
+  };
+
+  const lessonSub: React.CSSProperties = {
+    marginTop: 8,
+    marginBottom: 0,
+    fontSize: 15,
+    lineHeight: 1.7,
+    color: "rgba(0,0,0,0.64)",
+  };
+
+  const quickActionsGrid: React.CSSProperties = {
+    marginTop: 14,
+    display: "grid",
+    gridTemplateColumns: isDesktopTop ? "repeat(3, minmax(0, 1fr))" : "1fr",
+    gap: 10,
+  };
+
+  const quickActionBtn: React.CSSProperties = {
+    padding: "14px 16px",
+    borderRadius: 16,
+    border: "1px solid rgba(0,0,0,0.14)",
+    background: "rgba(255,255,255,0.86)",
+    color: "rgba(0,0,0,0.74)",
+    fontWeight: 900,
+    cursor: "pointer",
+    width: "100%",
+    textAlign: "left",
   };
 
   const heroCard: React.CSSProperties = {
@@ -514,8 +575,8 @@ export default function Home() {
     border: "1px solid rgba(0,0,0,0.08)",
     background:
       "linear-gradient(180deg, rgba(255,255,255,0.95), rgba(235,247,255,0.88))",
-    padding: "28px 18px",
-    textAlign: "center",
+    padding: isDesktopTop ? "28px 22px" : "26px 18px",
+    textAlign: isDesktopTop ? "left" : "center",
     boxShadow: "0 12px 30px rgba(0,0,0,0.06)",
   };
 
@@ -598,7 +659,7 @@ export default function Home() {
 
   const heroTitle: React.CSSProperties = {
     margin: 0,
-    fontSize: 34,
+    fontSize: isDesktopTop ? 36 : 32,
     fontWeight: 950,
     color: "rgba(0,0,0,0.90)",
     letterSpacing: -0.8,
@@ -607,7 +668,7 @@ export default function Home() {
 
   const heroSub: React.CSSProperties = {
     marginTop: 12,
-    fontSize: 18,
+    fontSize: isDesktopTop ? 18 : 17,
     color: "rgba(0,0,0,0.68)",
     fontWeight: 700,
     lineHeight: 1.6,
@@ -671,10 +732,11 @@ export default function Home() {
   };
 
   const heroCtaHint: React.CSSProperties = {
-    marginTop: 10,
+    marginTop: 12,
     fontSize: 13,
     color: "rgba(0,0,0,0.55)",
     fontWeight: 800,
+    textAlign: isDesktopTop ? "left" : "center",
   };
 
   const primaryBtn: React.CSSProperties = {
@@ -696,7 +758,7 @@ export default function Home() {
     color: "rgba(0,0,0,0.72)",
     fontWeight: 900,
     cursor: "pointer",
-    minWidth: 240,
+    minWidth: 210,
   };
 
   const bottomDockOuter: React.CSSProperties = {
@@ -793,66 +855,94 @@ export default function Home() {
             />
           </div>
 
-          <div style={authStrip} aria-label="Home auth status">
-            <div style={authStripTop}>
-              <div style={authBadge} aria-live="polite">
-                <span style={authDot} />
-                <span>
-                  {isLoading
-                    ? "Checking sign-in..."
-                    : isSignedIn
-                    ? "Signed in"
-                    : "Signed out"}
-                </span>
+          <div style={topPriorityGrid}>
+            <div style={authStrip} aria-label="Home auth status">
+              <div style={authStripTop}>
+                <div style={authBadge} aria-live="polite">
+                  <span style={authDot} />
+                  <span>
+                    {isLoading
+                      ? "Checking sign-in..."
+                      : isSignedIn
+                      ? "Signed in"
+                      : "Signed out"}
+                  </span>
+                </div>
               </div>
+
+              {isLoading ? (
+                <p style={authSub}>We’re checking your session.</p>
+              ) : isSignedIn ? (
+                <>
+                  <h2 style={authTitle}>Welcome back, {displayName}.</h2>
+                  <p style={authSub}>
+                    You’re signed in and ready to continue with calm progress.
+                  </p>
+                  {userEmail ? (
+                    <div style={authEmailPill} title={userEmail}>
+                      ✉️ {userEmail}
+                    </div>
+                  ) : null}
+                </>
+              ) : (
+                <>
+                  <h2 style={authTitle}>Start gently.</h2>
+                  <p style={authSub}>
+                    You can begin free right away, or sign in so your progress stays with you.
+                  </p>
+                </>
+              )}
             </div>
 
-            {isLoading ? (
-              <p style={authSub}>We’re checking your session.</p>
-            ) : isSignedIn ? (
-              <>
-                <h2 style={authTitle}>Welcome back, {displayName}.</h2>
-                <p style={authSub}>
-                  You’re signed in and ready to continue with calm progress.
-                </p>
-                {userEmail ? (
-                  <div style={authEmailPill} title={userEmail}>
-                    ✉️ {userEmail}
-                  </div>
-                ) : null}
-                <div style={authActions}>
-                  <button type="button" style={primaryBtn} onClick={goFirstRoom}>
-                    👉 Continue learning
-                  </button>
-                  <button
-                    type="button"
-                    style={secondaryBtn}
-                    onClick={() => nav("/account")}
-                  >
-                    👤 Open account
-                  </button>
-                </div>
-              </>
-            ) : (
-              <>
-                <h2 style={authTitle}>Start gently.</h2>
-                <p style={authSub}>
-                  You can begin free right away, or sign in so your progress stays with you.
-                </p>
-                <div style={authActions}>
-                  <button type="button" style={primaryBtn} onClick={goFirstRoom}>
-                    👉 Start free
-                  </button>
-                  <button
-                    type="button"
-                    style={secondaryBtn}
-                    onClick={() => nav("/signin")}
-                  >
-                    🔐 Sign in
-                  </button>
-                </div>
-              </>
-            )}
+            <div style={lessonCard} aria-label="Today lesson">
+              <div style={lessonTop}>
+                <div style={langTag}>Today’s lesson</div>
+                <div style={lessonMeta}>Lesson 4 · 3 min left</div>
+              </div>
+
+              <h2 style={lessonTitle}>Resume your next small step</h2>
+              <p style={lessonSub}>
+                {isSignedIn
+                  ? "Continue from your last activity with one calm room."
+                  : "Start with one short room — about 2 minutes."}
+              </p>
+
+              <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
+                <button type="button" style={primaryBtn} onClick={goFirstRoom}>
+                  {isSignedIn ? "👉 Resume lesson" : "👉 Start free"}
+                </button>
+
+                <button type="button" style={secondaryBtn} onClick={goAccountOrSignin}>
+                  {isSignedIn ? "👤 Open account" : "🔐 Sign in"}
+                </button>
+              </div>
+
+              <div style={quickActionsGrid}>
+                <button
+                  type="button"
+                  style={quickActionBtn}
+                  onClick={goFirstRoom}
+                >
+                  🎙️ Practice speaking
+                </button>
+
+                <button
+                  type="button"
+                  style={quickActionBtn}
+                  onClick={() => nav("/tiers")}
+                >
+                  📚 Learning paths
+                </button>
+
+                <button
+                  type="button"
+                  style={quickActionBtn}
+                  onClick={() => nav(ROUTE_PRICING)}
+                >
+                  💎 Pricing
+                </button>
+              </div>
+            </div>
           </div>
 
           <div style={heroCard}>
@@ -866,24 +956,6 @@ export default function Home() {
               Just one room, one reflection, one small step forward.
             </div>
 
-            <div style={ctaRow}>
-              <button type="button" style={primaryBtn} onClick={goFirstRoom}>
-                {primaryCtaEn}
-              </button>
-
-              <button type="button" style={secondaryBtn} onClick={goAccountOrSignin}>
-                {accountCtaEn}
-              </button>
-
-              <button type="button" style={secondaryBtn} onClick={() => nav("/tiers")}>
-                👉 See learning paths
-              </button>
-
-              <button type="button" style={secondaryBtn} onClick={() => nav(ROUTE_PRICING)}>
-                💎 Pricing
-              </button>
-            </div>
-
             <div style={heroCtaHint}>
               {isSignedIn
                 ? "You’re in — continue with one short room."
@@ -891,31 +963,15 @@ export default function Home() {
             </div>
 
             <div style={{ ...langTag, marginTop: 18 }}>VI</div>
-            <h2 style={{ ...heroTitle, fontSize: 28 }}>Suy nghĩ bằng tiếng Anh — một cách bình tĩnh.</h2>
+            <h2 style={{ ...heroTitle, fontSize: isDesktopTop ? 30 : 28 }}>
+              Suy nghĩ bằng tiếng Anh — một cách bình tĩnh.
+            </h2>
             <div style={heroSub}>
               Mercy Blade là không gian yên tĩnh để bạn suy nghĩ về cuộc sống bằng tiếng Anh.
               <br />
               Không bài tập ngữ pháp. Không áp lực. Không ồn ào.
               <br />
               Chỉ một phòng, một suy ngẫm, một bước tiến nhỏ.
-            </div>
-
-            <div style={ctaRow}>
-              <button type="button" style={primaryBtn} onClick={goFirstRoom}>
-                {primaryCtaVi}
-              </button>
-
-              <button type="button" style={secondaryBtn} onClick={goAccountOrSignin}>
-                {accountCtaVi}
-              </button>
-
-              <button type="button" style={secondaryBtn} onClick={() => nav("/tiers")}>
-                👉 Xem lộ trình học
-              </button>
-
-              <button type="button" style={secondaryBtn} onClick={() => nav(ROUTE_PRICING)}>
-                💎 Bảng giá
-              </button>
             </div>
 
             <div style={heroCtaHint}>
@@ -959,7 +1015,9 @@ export default function Home() {
                 <div style={langTag}>VI</div>
                 <h2 style={hostName}>Mercy Host</h2>
                 <p style={hostQuote}>“Bạn có muốn nhận một suy ngẫm nhẹ nhàng cho hôm nay không?”</p>
-                <div style={hostMeta}>Một người hướng dẫn dịu dàng cho sự suy ngẫm — không phải chatbot ồn ào.</div>
+                <div style={hostMeta}>
+                  Một người hướng dẫn dịu dàng cho sự suy ngẫm — không phải chatbot ồn ào.
+                </div>
                 <p style={p}>
                   Mercy Host giúp bạn bước vào trải nghiệm một cách nhẹ nhàng.
                   <br />
@@ -1169,8 +1227,8 @@ export default function Home() {
 
             <h2 style={blockTitle}>Người Đồng Hành Nhẹ Nhàng Cho Cả Cuộc Đời Bạn</h2>
             <p style={p}>
-              Mercy Blade là ứng dụng song ngữ (Anh–Việt) đồng hành cùng đời sống thật — sức khỏe, cảm xúc, tiền bạc, mối
-              quan hệ, công việc và ý nghĩa sống.
+              Mercy Blade là ứng dụng song ngữ (Anh–Việt) đồng hành cùng đời sống thật — sức khỏe, cảm xúc, tiền bạc,
+              mối quan hệ, công việc và ý nghĩa sống.
             </p>
             <p style={p}>
               Đây không phải nơi để chạy đua hay thể hiện.

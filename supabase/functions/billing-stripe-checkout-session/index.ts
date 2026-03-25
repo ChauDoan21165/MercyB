@@ -72,6 +72,12 @@ type SubscriptionTierRow =
 type PaymentTransactionInsert =
   Database["public"]["Tables"]["payment_transactions"]["Insert"];
 
+type ExistingSubscriptionRow = {
+  id: string;
+  status: string | null;
+  provider: string | null;
+};
+
 function json(payload: unknown, status = 200) {
   return new Response(JSON.stringify(payload), {
     status,
@@ -458,11 +464,14 @@ async function resolveStripeCustomerId(params: {
         const ownerUserId = getStripeCustomerOwnerUserId(existingCustomer);
 
         if (ownerUserId && ownerUserId !== params.userId) {
-          console.warn("Stripe customer ownership mismatch; creating fresh customer", {
-            current_user_id: params.userId,
-            owner_user_id: ownerUserId,
-            stripe_customer_id: existingCustomer.id,
-          });
+          console.warn(
+            "Stripe customer ownership mismatch; creating fresh customer",
+            {
+              current_user_id: params.userId,
+              owner_user_id: ownerUserId,
+              stripe_customer_id: existingCustomer.id,
+            },
+          );
 
           stripeCustomerId = null;
           await persistProfileStripeCustomerId({
@@ -517,6 +526,40 @@ async function resolveStripeCustomerId(params: {
   }
 
   return stripeCustomerId;
+}
+
+async function getExistingPaidSubscription(params: {
+  supabaseAdmin: AdminClient;
+  userId: string;
+}): Promise<
+  | { data: ExistingSubscriptionRow | null }
+  | { error: Response }
+> {
+  const { data, error } = await params.supabaseAdmin
+    .from("subscriptions")
+    .select("id,status,provider")
+    .eq("user_id", params.userId)
+    .eq("app_id", APP_ID)
+    .eq("provider", PROVIDER)
+    .in("status", ["active", "trialing"])
+    .limit(1)
+    .maybeSingle();
+
+  if (error) {
+    return {
+      error: json(
+        {
+          error: "Failed to check existing subscription",
+          detail: error.message,
+        },
+        500,
+      ),
+    };
+  }
+
+  return {
+    data: (data as ExistingSubscriptionRow | null) ?? null,
+  };
 }
 
 Deno.serve(async (req) => {
@@ -692,6 +735,21 @@ Deno.serve(async (req) => {
     });
     if (!priceValidation.ok) {
       return priceValidation.response;
+    }
+
+    const existingSubscription = await getExistingPaidSubscription({
+      supabaseAdmin,
+      userId: auth.user.id,
+    });
+
+    if ("error" in existingSubscription) {
+      return existingSubscription.error;
+    }
+
+    if (existingSubscription.data) {
+      return json({
+        already_subscribed: true,
+      });
     }
 
     const userEmail = asNonEmptyStringOrNull(auth.user.email);

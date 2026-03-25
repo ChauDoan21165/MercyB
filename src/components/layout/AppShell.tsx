@@ -1,37 +1,101 @@
 // FILE: AppShell.tsx
 // PATH: src/components/layout/AppShell.tsx
 //
-// FIX (2026-01-31):
-// - SINGLE source of truth for page frame width (Home standard): PAGE_MAX=980 + px-4
-// - Rooms must NOT introduce their own competing max-width frames.
-// - Header logo must be truly centered inside the SAME 980 frame (independent of left/right widths).
+// COMPACT HEADER FIX
+//
+// Goals:
+// - keep one shared frame: max-w-[980px] + px-4
+// - make header visually quieter
+// - keep Mercy Blade truly centered
+// - keep left navigation stable
+// - reduce right-side clutter to one compact account entry
+// - preserve layout and routing behavior
+// - keep bottomBar behavior intact
+// - keep MercyGuide mounted globally
+//
+// Notes:
+// - This file assumes HomeButton / BackButton / ThemeToggle already work.
+// - Account menu is intentionally compact: one button only.
+// - If you already render auth/account controls elsewhere on the page,
+//   this prevents the header from fighting that content.
 
 import React from "react";
-import { HomeButton } from "@/components/HomeButton";
-import { BackButton } from "@/components/BackButton";
-import { ThemeToggle } from "@/components/ThemeToggle";
-import { Link } from "react-router-dom";
-import { Map } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Link, useNavigate } from "react-router-dom";
+import { Home, ArrowLeft, User2 } from "lucide-react";
 import { MercyGuide } from "@/components/MercyGuide";
+import { useAuth } from "@/providers/AuthProvider";
 
 interface AppShellProps {
   children: React.ReactNode;
-  /** Custom bottom bar content */
   bottomBar?: React.ReactNode;
-  /** If true, hides the global header (for pages with custom headers) */
   hideHeader?: boolean;
-  /** Custom class for main content area */
   mainClassName?: string;
 }
 
+function HeaderNavButton({
+  onClick,
+  href,
+  label,
+  icon,
+}: {
+  onClick?: () => void;
+  href?: string;
+  label: string;
+  icon: React.ReactNode;
+}) {
+  const className =
+    "inline-flex h-10 items-center gap-2 rounded-full border border-black/10 bg-white/78 px-4 text-[15px] font-extrabold text-black/75 shadow-sm transition hover:bg-white hover:border-black/15";
+
+  if (href) {
+    return (
+      <Link to={href} className={className} aria-label={label} title={label}>
+        {icon}
+        <span>{label}</span>
+      </Link>
+    );
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={className}
+      aria-label={label}
+      title={label}
+    >
+      {icon}
+      <span>{label}</span>
+    </button>
+  );
+}
+
+function AccountButton({
+  signedIn,
+  onClick,
+}: {
+  signedIn: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="inline-flex h-10 items-center gap-2 rounded-full border border-black/10 bg-white/78 px-4 text-[15px] font-extrabold text-black/75 shadow-sm transition hover:bg-white hover:border-black/15"
+      aria-label={signedIn ? "Open account" : "Sign in"}
+      title={signedIn ? "Open account" : "Sign in"}
+    >
+      <User2 className="h-4 w-4" />
+      <span>{signedIn ? "Account" : "Sign in"}</span>
+    </button>
+  );
+}
+
 /**
- * AppShell - Canonical layout frame for the app (rooms included)
+ * AppShell - canonical layout frame for the app
  *
- * LOCKED RULES:
- * - The ONLY width frame is: max-w-[980px] + px-4 (Home standard).
- * - Do not add other "maxWidth: 1100" or "max-w-[720px]" wrappers in room pages.
- * - Header and content must share the SAME frame width so everything lines up.
+ * Locked layout rule:
+ * - Use one shared width frame only: max-w-[980px] + px-4
+ * - Header and page content must use the same frame
  */
 export function AppShell({
   children,
@@ -39,64 +103,67 @@ export function AppShell({
   hideHeader = false,
   mainClassName = "",
 }: AppShellProps) {
+  const nav = useNavigate();
+  const { user } = useAuth();
+  const isSignedIn = !!user?.id;
+
   return (
     <div className="min-h-screen flex flex-col bg-background">
       {!hideHeader && (
-        <header className="sticky top-0 z-40 w-full border-b border-border/40 bg-background/80 backdrop-blur-sm">
-          {/* ✅ Single frame (Home standard) */}
+        <header className="sticky top-0 z-40 w-full border-b border-black/8 bg-background/88 backdrop-blur-md">
           <div className="mx-auto max-w-[980px] px-4">
-            {/* ✅ Relative row so logo can be TRUE centered */}
-            <div className="relative flex h-12 items-center">
-              {/* Left: navigation (normal flow) */}
-              <div className="flex items-center gap-2">
-                <HomeButton />
-                <BackButton />
+            <div className="relative flex h-16 items-center">
+              {/* Left */}
+              <div className="flex min-w-0 items-center gap-3">
+                <HeaderNavButton
+                  href="/"
+                  label="Home"
+                  icon={<Home className="h-4 w-4" />}
+                />
+                <HeaderNavButton
+                  onClick={() => nav(-1)}
+                  label="Back"
+                  icon={<ArrowLeft className="h-4 w-4" />}
+                />
               </div>
 
-              {/* ✅ Center: true center, independent of left/right widths */}
-              <div className="absolute left-1/2 -translate-x-1/2">
+              {/* Center */}
+              <div className="pointer-events-none absolute left-1/2 -translate-x-1/2">
                 <Link
                   to="/"
-                  className="select-none font-semibold text-lg tracking-tight bg-gradient-to-r from-[hsl(var(--rainbow-magenta))] via-[hsl(var(--rainbow-purple))] to-[hsl(var(--rainbow-cyan))] bg-clip-text text-transparent hover:opacity-80 transition-opacity"
                   aria-label="Mercy Blade"
                   title="Mercy Blade"
+                  className="pointer-events-auto select-none bg-gradient-to-r from-[hsl(var(--rainbow-magenta))] via-[hsl(var(--rainbow-purple))] to-[hsl(var(--rainbow-cyan))] bg-clip-text text-[18px] font-black tracking-tight text-transparent transition-opacity hover:opacity-80 sm:text-[20px]"
                 >
                   Mercy Blade
                 </Link>
               </div>
 
-              {/* Right: controls (push to end) */}
-              <div className="ml-auto flex items-center gap-2 justify-end">
-                <ThemeToggle />
-                <Button variant="ghost" size="sm" className="h-8 w-8 p-0" asChild>
-                  <Link to="/tier-map" title="Tier Map">
-                    <Map className="h-4 w-4" />
-                  </Link>
-                </Button>
+              {/* Right */}
+              <div className="ml-auto flex min-w-0 items-center justify-end">
+                <AccountButton
+                  signedIn={isSignedIn}
+                  onClick={() => nav(isSignedIn ? "/account" : "/signin")}
+                />
               </div>
             </div>
           </div>
         </header>
       )}
 
-      {/* ✅ Main content: THE SAME Home frame (no competing wrappers) */}
       <main className={`flex-1 w-full ${mainClassName}`}>
-        <div className="mx-auto w-full max-w-[980px] px-4 py-4">{children}</div>
+        <div className="mx-auto w-full max-w-[980px] px-4 py-4">
+          {children}
+        </div>
       </main>
 
-      {/* Bottom bar (can be fixed/full-width; do not force into 980 here) */}
       {bottomBar}
 
-      {/* Mercy Guide assistant */}
       <MercyGuide />
     </div>
   );
 }
 
-/**
- * AppShellContent - Helper for pages that already sit inside AppShell but still want the Home frame.
- * (Safe to use; it matches the same 980 frame.)
- */
 export function AppShellContent({
   children,
   className = "",
@@ -104,9 +171,9 @@ export function AppShellContent({
   children: React.ReactNode;
   className?: string;
 }) {
-  return <div className={`mx-auto w-full max-w-[980px] px-4 py-4 ${className}`}>{children}</div>;
+  return (
+    <div className={`mx-auto w-full max-w-[980px] px-4 py-4 ${className}`}>
+      {children}
+    </div>
+  );
 }
-
-/* Teacher GPT – new thing to learn:
-   If two UI sections should line up, they must share ONE max-width frame.
-   Multiple competing wrappers (720 / 980 / 1100) will always look “misaligned.” */

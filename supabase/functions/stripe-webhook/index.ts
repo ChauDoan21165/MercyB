@@ -1,3 +1,4 @@
+// supabase/functions/stripe-webhook/index.ts
 // deno-lint-ignore-file no-import-prefix
 
 import {
@@ -27,7 +28,7 @@ type SharedSubscriptionStatus =
   | "grace_period"
   | "past_due"
   | "paused"
-  | "expired"
+  | "canceled"
   | "revoked";
 
 type CanonicalSubscriptionRow = {
@@ -151,6 +152,33 @@ type Database = {
         >;
       };
 
+      stripe_webhook_events: {
+        Row: {
+          event_id: string;
+          created_at: string | null;
+          type: string | null;
+          livemode: boolean | null;
+          processed_at: string | null;
+          error: string | null;
+        };
+        Insert: {
+          event_id: string;
+          created_at?: string | null;
+          type?: string | null;
+          livemode?: boolean | null;
+          processed_at?: string | null;
+          error?: string | null;
+        };
+        Update: {
+          event_id?: string;
+          created_at?: string | null;
+          type?: string | null;
+          livemode?: boolean | null;
+          processed_at?: string | null;
+          error?: string | null;
+        };
+      };
+
       email_outbox: {
         Row: {
           id: string;
@@ -234,8 +262,28 @@ const OUTBOX_SUCCESS_STATUSES = ["sent", "delivered"] as const;
 const APP_ID = "mercy_blade" as const;
 const SUBSCRIPTIONS_TABLE = "subscriptions" as const;
 const STRIPE_PROVIDER: BillingProvider = "stripe";
-const STRIPE_CHECKOUT_BOOTSTRAP_STATUS: SharedSubscriptionStatus = "expired";
 const MAX_MONOTONIC_RETRIES = 8;
+
+class NonRetryableWebhookError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = "NonRetryableWebhookError";
+  }
+}
+
+function logWebhook(
+  level: "info" | "warn" | "error",
+  message: string,
+  fields: Record<string, unknown>,
+) {
+  const logger = level === "error"
+    ? console.error
+    : level === "warn"
+    ? console.warn
+    : console.info;
+
+  logger(JSON.stringify({ scope: "stripe-webhook", level, message, ...fields }));
+}
 
 /* ============================================================================
  * Response helpers
@@ -270,8 +318,7 @@ function envRaw(key: string): string {
 }
 
 function getSupabaseUrl(): string {
-  const configured = env("PROJECT_URL") ||
-    env("SUPABASE_URL") ||
+  const configured = env("PROJECT_SUPABASE_URL") ||
     env("VITE_SUPABASE_URL") ||
     env("NEXT_PUBLIC_SUPABASE_URL");
 
@@ -279,13 +326,38 @@ function getSupabaseUrl(): string {
 }
 
 function getServiceRoleKey(): string {
-  return env("SERVICE_ROLE_KEY") || env("SUPABASE_SERVICE_ROLE_KEY");
+  return env("PROJECT_SUPABASE_SERVICE_ROLE_KEY");
+}
+
+function decodeJwtPayload(token: string): Record<string, unknown> | null {
+  try {
+    const parts = token.split(".");
+    if (parts.length < 2) return null;
+    const base64 = parts[1].replace(/-/g, "+").replace(/_/g, "/");
+    const padded = base64 + "=".repeat((4 - (base64.length % 4)) % 4);
+    const json = atob(padded);
+    return JSON.parse(json) as Record<string, unknown>;
+  } catch {
+    return null;
+  }
 }
 
 function getStripeSecretKey(): string {
   return env("STRIPE_SECRET_KEY") ||
     env("SECRET_STRIPE_KEY") ||
     env("STRIPE_API_KEY");
+}
+
+function getStripeWebhookSecrets(): string[] {
+  const candidates = [
+    envRaw("STRIPE_WEBHOOK_SECRET"),
+    envRaw("SECRET_STRIPE_WEBHOOK_SECRET"),
+    envRaw("STRIPE_SIGNING_SECRET"),
+    envRaw("STRIPE_WEBHOOK_SIGNING_SECRET"),
+  ];
+
+  const parsed = candidates.flatMap((value) => parseWebhookSecrets(value));
+  return [...new Set(parsed)];
 }
 
 function isoNow(): string {
@@ -332,9 +404,7 @@ function isEntitlingSubscription(
 ): boolean {
   return (
     subscription.status === "active" ||
-    subscription.status === "trialing" ||
-    subscription.status === "grace_period" ||
-    subscription.status === "past_due"
+    subscription.status === "trialing"
   );
 }
 
@@ -414,7 +484,7 @@ function mapStripeSubscription(params: {
     provider_price_id: params.providerPriceId ?? null,
 
     environment: params.environment,
-    status: params.status ?? "expired",
+    status: params.status ?? "revoked",
     current_period_start: params.currentPeriodStart ?? null,
     current_period_end: params.currentPeriodEnd ?? null,
     cancel_at_period_end:
@@ -485,6 +555,10 @@ type InvoiceLineLike = {
   price?: {
     id?: string | null;
     product?: string | null;
+    recurring?: {
+      interval?: string | null;
+      interval_count?: number | null;
+    } | null;
   } | null;
 };
 
@@ -508,6 +582,10 @@ type SubscriptionItemLike = {
   price?: {
     id?: string | null;
     product?: string | null;
+    recurring?: {
+      interval?: string | null;
+      interval_count?: number | null;
+    } | null;
   } | null;
 };
 
@@ -746,6 +824,97 @@ function parseWebhookSecrets(raw: string): string[] {
     .split(/[\n,]+/g)
     .map((part) => part.trim())
     .filter(Boolean);
+}
+
+/* ============================================================================
+ * Webhook idempotency helpers
+ * ========================================================================== */
+
+function isMissingStripeWebhookEventsTable(error: unknown): boolean {
+  if (!error || typeof error !== "object") return false;
+
+  const maybe = error as { code?: string; message?: unknown };
+
+  return (
+    maybe.code === "PGRST205" &&
+    String(maybe.message ?? "").includes("public.stripe_webhook_events")
+  );
+}
+
+async function hasProcessedStripeWebhookEvent(
+  supabase: DBClient,
+  eventId: string,
+): Promise<boolean> {
+  const { data, error } = await supabase
+    .from("stripe_webhook_events")
+    .select("event_id")
+    .eq("event_id", eventId)
+    .maybeSingle();
+
+  if (error) {
+    if (isMissingStripeWebhookEventsTable(error)) {
+      console.warn(
+        "stripe-webhook stripe_webhook_events table missing; skipping replay short-circuit",
+        error,
+      );
+      return false;
+    }
+
+    throw error;
+  }
+
+  return !!data?.event_id;
+}
+
+async function upsertStripeWebhookEventResult(params: {
+  supabase: DBClient;
+  event: Pick<StripeWebhookEvent, "id" | "type" | "livemode">;
+  processed: boolean;
+  errorMessage?: string | null;
+}): Promise<boolean> {
+  const payload: Database["public"]["Tables"]["stripe_webhook_events"]["Insert"] = {
+    event_id: params.event.id,
+    type: params.event.type,
+    livemode: typeof params.event.livemode === "boolean" ? params.event.livemode : null,
+    processed_at: params.processed ? isoNow() : null,
+    error: params.errorMessage ?? null,
+  };
+
+  const { error } = await params.supabase
+    .from("stripe_webhook_events")
+    .upsert(payload, { onConflict: "event_id" });
+
+  if (!error) return true;
+
+  if (isMissingStripeWebhookEventsTable(error)) {
+    console.warn(
+      "stripe-webhook stripe_webhook_events table missing; skipping result mark",
+      error,
+    );
+    return true;
+  }
+
+  logWebhook("error", "failed to upsert stripe webhook event result", {
+    event_id: params.event.id,
+    event_type: params.event.type,
+    processed: params.processed,
+    error_message: params.errorMessage ?? null,
+    error,
+  });
+
+  throw error;
+}
+
+async function markStripeWebhookEventProcessed(
+  supabase: DBClient,
+  event: Pick<StripeWebhookEvent, "id" | "type" | "livemode">,
+): Promise<boolean> {
+  return await upsertStripeWebhookEventResult({
+    supabase,
+    event,
+    processed: true,
+    errorMessage: null,
+  });
 }
 
 /* ============================================================================
@@ -1015,6 +1184,25 @@ async function resolveProfileEmail(
   }
 }
 
+async function resolveUserIdByProfileEmail(
+  supabase: DBClient,
+  email: string | null,
+): Promise<string | null> {
+  const normalizedEmail = asLowerNonEmptyStringOrNull(email);
+  if (!normalizedEmail) return null;
+
+  const { data, error } = await supabase
+    .from("profiles")
+    .select("id,email")
+    .eq("email", normalizedEmail)
+    .maybeSingle();
+
+  if (error) throw error;
+
+  const id = (data as { id?: string | null } | null)?.id ?? null;
+  return isUuid(id) ? id : null;
+}
+
 function resolveCheckoutCustomerEmail(
   session: CheckoutSessionLike,
 ): string | null {
@@ -1038,6 +1226,55 @@ async function resolveInvoiceCustomerEmail(params: {
   return await resolveProfileEmail(params.supabase, params.userId);
 }
 
+function formatPlanPeriod(params: {
+  interval?: string | null;
+  intervalCount?: number | null;
+}): string {
+  const interval = asLowerNonEmptyStringOrNull(params.interval);
+  const count =
+    typeof params.intervalCount === "number" && Number.isFinite(params.intervalCount)
+      ? Math.max(1, Math.floor(params.intervalCount))
+      : 1;
+
+  switch (interval) {
+    case "month":
+      return count === 12 ? "Yearly" : count === 1 ? "Monthly" : `Every ${count} months`;
+    case "year":
+      return count === 1 ? "Yearly" : `Every ${count} years`;
+    case "week":
+      return count === 1 ? "Weekly" : `Every ${count} weeks`;
+    case "day":
+      return count === 1 ? "Daily" : `Every ${count} days`;
+    default:
+      return "Subscription";
+  }
+}
+
+function derivePlanDetails(params: {
+  providerPriceId?: string | null;
+  subscription?: SubscriptionLike | null;
+  invoice?: InvoiceLike | null;
+  metadata?: StripeObjectMetadata | null;
+}): {
+  period: string;
+  tier: string;
+} {
+  const invoicePrice = params.invoice?.lines?.data?.[0]?.price ?? null;
+  const subscriptionPrice = params.subscription?.items?.data?.[0]?.price ?? null;
+  const period = formatPlanPeriod({
+    interval: invoicePrice?.recurring?.interval ?? subscriptionPrice?.recurring?.interval ?? null,
+    intervalCount: invoicePrice?.recurring?.interval_count ?? subscriptionPrice?.recurring?.interval_count ?? null,
+  });
+
+  const tier = asNonEmptyStringOrNull(params.metadata?.tier_id) ??
+    asNonEmptyStringOrNull(params.providerPriceId) ??
+    asNonEmptyStringOrNull(invoicePrice?.product) ??
+    asNonEmptyStringOrNull(subscriptionPrice?.product) ??
+    "VIP";
+
+  return { period, tier };
+}
+
 /* ============================================================================
  * Stripe payload extractors
  * ========================================================================== */
@@ -1053,7 +1290,6 @@ function normalizeStripeSubscriptionStatus(params: {
   currentPeriodEnd?: string | null;
 }): SharedSubscriptionStatus {
   const normalized = asLowerNonEmptyStringOrNull(params.value);
-  const currentPeriodEndMs = isoToMillis(params.currentPeriodEnd ?? null);
 
   switch (normalized) {
     case "active":
@@ -1066,18 +1302,14 @@ function normalizeStripeSubscriptionStatus(params: {
       return "past_due";
 
     case "canceled":
-      return currentPeriodEndMs !== null && currentPeriodEndMs > Date.now()
-        ? "active"
-        : "expired";
+      return "canceled";
 
     case "incomplete":
     case "incomplete_expired":
-      return "expired";
+      return "revoked";
 
     default:
-      throw new Error(
-        `Unsupported Stripe subscription status: ${String(params.value)}`,
-      );
+      return "revoked";
   }
 }
 
@@ -1125,14 +1357,14 @@ function getInvoicePriceId(invoice: InvoiceLike): string | null {
 }
 
 function getSubscriptionProductId(
-  subscription: SubscriptionLike,
+  subscription: SubscriptionLike | null | undefined,
 ): string | null {
   const firstItem = subscription?.items?.data?.[0];
   return asNonEmptyStringOrNull(firstItem?.price?.product) ?? null;
 }
 
 function getSubscriptionPriceId(
-  subscription: SubscriptionLike,
+  subscription: SubscriptionLike | null | undefined,
 ): string | null {
   const firstItem = subscription?.items?.data?.[0];
   return asNonEmptyStringOrNull(firstItem?.price?.id) ??
@@ -1218,6 +1450,7 @@ async function resolveUserForInvoiceEvent(params: {
   supabase: DBClient;
   providerSubscriptionId: string;
   providerCustomerId: string | null;
+  invoiceEmail?: string | null;
 }): Promise<{
   userId: string | null;
   stripeSubscription: SubscriptionLike | null;
@@ -1231,6 +1464,18 @@ async function resolveUserForInvoiceEvent(params: {
   if (directUserId) {
     return {
       userId: directUserId,
+      stripeSubscription: null,
+    };
+  }
+
+  const byEmail = await resolveUserIdByProfileEmail(
+    params.supabase,
+    params.invoiceEmail ?? null,
+  );
+
+  if (byEmail) {
+    return {
+      userId: byEmail,
       stripeSubscription: null,
     };
   }
@@ -1259,8 +1504,17 @@ async function resolveUserForInvoiceEvent(params: {
       params.providerCustomerId,
   });
 
+  if (userId) {
+    return { userId, stripeSubscription };
+  }
+
+  const bySubscriptionEmail = await resolveUserIdByProfileEmail(
+    params.supabase,
+    stripeSubscription?.metadata?.email ?? null,
+  );
+
   return {
-    userId,
+    userId: bySubscriptionEmail,
     stripeSubscription,
   };
 }
@@ -1706,6 +1960,7 @@ async function resolveUserByStripeLinkage(params: {
   clientReferenceId?: string | null;
   providerSubscriptionId?: string | null;
   providerCustomerId?: string | null;
+  email?: string | null;
 }): Promise<string | null> {
   if (isUuid(params.metadataSupabaseUserId)) {
     return params.metadataSupabaseUserId;
@@ -1726,7 +1981,6 @@ async function resolveUserByStripeLinkage(params: {
     });
 
     if (isUuid(row?.user_id)) return row.user_id;
-    return null;
   }
 
   if (params.providerCustomerId) {
@@ -1744,6 +1998,12 @@ async function resolveUserByStripeLinkage(params: {
 
     if (isUuid(row?.user_id)) return row.user_id;
   }
+
+  const byEmail = await resolveUserIdByProfileEmail(
+    params.supabase,
+    params.email ?? null,
+  );
+  if (byEmail) return byEmail;
 
   return null;
 }
@@ -1868,7 +2128,7 @@ async function upsertSharedSubscriptionMonotonic(params: {
         existing?.price_id ??
         null,
       environment: params.environment,
-      status: params.status ?? existing?.status ?? "expired",
+      status: params.status ?? existing?.status ?? "revoked",
       currentPeriodStart: params.currentPeriodStart ??
         existing?.current_period_start ?? null,
       currentPeriodEnd: params.currentPeriodEnd ??
@@ -2111,11 +2371,16 @@ Deno.serve(async (req) => {
     return json({ error: "Method not allowed" }, 405);
   }
 
-  const webhookSecrets = parseWebhookSecrets(envRaw("STRIPE_WEBHOOK_SECRET"));
+  const webhookSecrets = getStripeWebhookSecrets();
   const supabaseUrl = getSupabaseUrl();
-  console.log("stripe-webhook using supabase url", supabaseUrl);
   const serviceKey = getServiceRoleKey();
-  console.log("stripe-webhook service key length", serviceKey.length);
+
+  const serviceKeyPayload = decodeJwtPayload(serviceKey);
+  logWebhook("info", "runtime supabase target", {
+    supabase_url: supabaseUrl || null,
+    service_role_ref: serviceKeyPayload?.ref ?? null,
+    service_role_role: serviceKeyPayload?.role ?? null,
+  });
 
   if (!webhookSecrets.length) {
     return json({ error: "Missing STRIPE_WEBHOOK_SECRET" }, 500);
@@ -2125,7 +2390,7 @@ Deno.serve(async (req) => {
     return json(
       {
         error:
-          "Missing hosted Supabase config (SUPABASE_URL/PROJECT_URL or SUPABASE_SERVICE_ROLE_KEY/SERVICE_ROLE_KEY)",
+          "Missing hosted Supabase config (PROJECT_SUPABASE_URL/VITE_SUPABASE_URL/NEXT_PUBLIC_SUPABASE_URL or PROJECT_SUPABASE_SERVICE_ROLE_KEY)",
       },
       500,
     );
@@ -2160,7 +2425,10 @@ Deno.serve(async (req) => {
     if (!verified) {
       throw lastError ?? new Error("Stripe signature mismatch");
     }
-  } catch {
+  } catch (error) {
+    logWebhook("warn", "invalid stripe signature", {
+      details: error instanceof Error ? error.message : String(error),
+    });
     return json({ error: "Invalid signature" }, 400);
   }
 
@@ -2181,17 +2449,44 @@ Deno.serve(async (req) => {
     return ok200();
   }
 
+  logWebhook("info", "received stripe webhook", {
+    event_id: event.id,
+    event_type: event.type,
+    livemode: typeof event.livemode === "boolean" ? event.livemode : null,
+  });
+
   const supabase = createClient<Database>(supabaseUrl, serviceKey, {
     auth: { persistSession: false },
   });
 
   try {
+    const alreadyProcessedStripeWebhookEvent =
+      await hasProcessedStripeWebhookEvent(
+        supabase,
+        event.id,
+      );
+
+    if (alreadyProcessedStripeWebhookEvent) {
+      logWebhook("info", "stripe event replay skipped", {
+        event_id: event.id,
+        event_type: event.type,
+        action: "skip_replayed_event",
+      });
+      return ok200();
+    }
+
     const alreadyProcessed = await hasProcessedEntitlementEvent(
       supabase,
       event.id,
     );
 
     if (alreadyProcessed) {
+      logWebhook("info", "entitlement event already processed", {
+        event_id: event.id,
+        event_type: event.type,
+        action: "skip_already_processed",
+      });
+      await markStripeWebhookEventProcessed(supabase, event);
       return ok200();
     }
 
@@ -2211,6 +2506,7 @@ Deno.serve(async (req) => {
         sessionStatus !== "complete" ||
         (paymentStatus !== "paid" && paymentStatus !== "no_payment_required")
       ) {
+        await markStripeWebhookEventProcessed(supabase, event);
         return ok200();
       }
 
@@ -2218,6 +2514,7 @@ Deno.serve(async (req) => {
       const providerSubscriptionId = asNonEmptyStringOrNull(
         session?.subscription,
       );
+      const checkoutEmail = resolveCheckoutCustomerEmail(session);
 
       const userId = await resolveUserByStripeLinkage({
         supabase,
@@ -2226,10 +2523,13 @@ Deno.serve(async (req) => {
         clientReferenceId: session?.client_reference_id ?? null,
         providerSubscriptionId,
         providerCustomerId,
+        email: checkoutEmail,
       });
 
       if (!userId) {
-        throw new Error("checkout.session.completed user resolution failed");
+        throw new NonRetryableWebhookError(
+          "checkout.session.completed user resolution failed",
+        );
       }
 
       await syncProfileStripeCustomerIdBestEffort({
@@ -2239,15 +2539,41 @@ Deno.serve(async (req) => {
       });
 
       if (!providerSubscriptionId) {
-        throw new Error("checkout.session.completed missing subscription id");
+        throw new NonRetryableWebhookError(
+          "checkout.session.completed missing subscription id",
+        );
       }
 
-      const existingCanonical = await getSharedSubscriptionByProviderSubscriptionId(
-        {
-          supabase,
-          providerSubscriptionId,
-        },
+      const stripeSubscription = await fetchStripeSubscriptionById(
+        providerSubscriptionId,
       );
+      if (!stripeSubscription) {
+        logWebhook("warn", "stripe subscription fetch failed during checkout", {
+          event_id: event.id,
+          providerSubscriptionId,
+        });
+      }
+
+      const checkoutCurrentPeriodStart = toIsoFromUnix(
+        stripeSubscription?.current_period_start,
+      );
+      const checkoutCurrentPeriodEnd = toIsoFromUnix(
+        stripeSubscription?.current_period_end,
+      );
+      const checkoutStatus = stripeSubscription
+        ? normalizeStripeSubscriptionStatus({
+            value: stripeSubscription.status,
+            currentPeriodEnd: checkoutCurrentPeriodEnd,
+          })
+        : "active";
+
+      const existingCanonical =
+        await getSharedSubscriptionByProviderSubscriptionId(
+          {
+            supabase,
+            providerSubscriptionId,
+          },
+        );
 
       if (existingCanonical) {
         if (existingCanonical.user_id !== userId) {
@@ -2262,10 +2588,8 @@ Deno.serve(async (req) => {
         });
 
         if (didMarkProcessed) {
-          const customerEmail = resolveCheckoutCustomerEmail(session);
-
-          if (customerEmail) {
-            const route = resolveEmailRoute(customerEmail);
+          if (checkoutEmail) {
+            const route = resolveEmailRoute(checkoutEmail);
 
             if (route) {
               const amount = typeof session.amount_total === "number"
@@ -2281,6 +2605,11 @@ Deno.serve(async (req) => {
                 correlationId,
                 userId,
               });
+              const planDetails = derivePlanDetails({
+                providerPriceId: getCheckoutSessionPriceId(session),
+                subscription: stripeSubscription,
+                metadata: session?.metadata ?? stripeSubscription?.metadata ?? null,
+              });
 
               try {
                 await sendEmailOnce({
@@ -2291,8 +2620,8 @@ Deno.serve(async (req) => {
                   variables: {
                     ...commonAuditVars,
                     amount: formatMoney(amount, currency),
-                    period: "Monthly",
-                    tier: "VIP",
+                    period: planDetails.period,
+                    tier: planDetails.tier,
                     currency: currency ?? "",
                     amount_minor: String(amount),
                     stripe_session_id: asNonEmptyStringOrNull(session.id) ?? "",
@@ -2311,7 +2640,7 @@ Deno.serve(async (req) => {
                   templateKey: "welcome_vip",
                   variables: {
                     ...commonAuditVars,
-                    tier: "VIP",
+                    tier: planDetails.tier,
                     stripe_session_id: asNonEmptyStringOrNull(session.id) ?? "",
                     stripe_subscription_id: providerSubscriptionId,
                   },
@@ -2323,6 +2652,7 @@ Deno.serve(async (req) => {
           }
         }
 
+        await markStripeWebhookEventProcessed(supabase, event);
         return ok200();
       }
 
@@ -2334,17 +2664,22 @@ Deno.serve(async (req) => {
         providerSubscriptionId,
         providerTransactionId: asNonEmptyStringOrNull(session?.id),
         providerOriginalTransactionId: providerSubscriptionId,
-        productId: null,
-        providerPriceId: getCheckoutSessionPriceId(session),
+        productId: getSubscriptionProductId(stripeSubscription),
+        providerPriceId:
+          getCheckoutSessionPriceId(session) ??
+          getSubscriptionPriceId(stripeSubscription),
         environment,
-        status: STRIPE_CHECKOUT_BOOTSTRAP_STATUS,
-        currentPeriodStart: null,
-        currentPeriodEnd: null,
-        cancelAtPeriodEnd: null,
-        canceledAt: null,
-        endedAt: null,
-        metadata: session?.metadata ?? null,
-        rawPayload: session,
+        status: checkoutStatus,
+        currentPeriodStart: checkoutCurrentPeriodStart,
+        currentPeriodEnd: checkoutCurrentPeriodEnd,
+        cancelAtPeriodEnd:
+          typeof stripeSubscription?.cancel_at_period_end === "boolean"
+            ? stripeSubscription.cancel_at_period_end
+            : null,
+        canceledAt: toIsoFromUnix(stripeSubscription?.canceled_at),
+        endedAt: toIsoFromUnix(stripeSubscription?.ended_at),
+        metadata: session?.metadata ?? stripeSubscription?.metadata ?? null,
+        rawPayload: stripeSubscription ?? session,
       });
 
       const didMarkProcessed = await finalizeSubscriptionProcessing({
@@ -2356,10 +2691,8 @@ Deno.serve(async (req) => {
       });
 
       if (didMarkProcessed) {
-        const customerEmail = resolveCheckoutCustomerEmail(session);
-
-        if (customerEmail) {
-          const route = resolveEmailRoute(customerEmail);
+        if (checkoutEmail) {
+          const route = resolveEmailRoute(checkoutEmail);
 
           if (route) {
             const amount = typeof session.amount_total === "number"
@@ -2375,6 +2708,11 @@ Deno.serve(async (req) => {
               correlationId,
               userId,
             });
+            const planDetails = derivePlanDetails({
+              providerPriceId: getCheckoutSessionPriceId(session),
+              subscription: stripeSubscription,
+              metadata: session?.metadata ?? stripeSubscription?.metadata ?? null,
+            });
 
             try {
               await sendEmailOnce({
@@ -2385,8 +2723,8 @@ Deno.serve(async (req) => {
                 variables: {
                   ...commonAuditVars,
                   amount: formatMoney(amount, currency),
-                  period: "Monthly",
-                  tier: "VIP",
+                  period: planDetails.period,
+                  tier: planDetails.tier,
                   currency: currency ?? "",
                   amount_minor: String(amount),
                   stripe_session_id: asNonEmptyStringOrNull(session.id) ?? "",
@@ -2405,7 +2743,7 @@ Deno.serve(async (req) => {
                 templateKey: "welcome_vip",
                 variables: {
                   ...commonAuditVars,
-                  tier: "VIP",
+                  tier: planDetails.tier,
                   stripe_session_id: asNonEmptyStringOrNull(session.id) ?? "",
                   stripe_subscription_id: providerSubscriptionId,
                 },
@@ -2417,6 +2755,7 @@ Deno.serve(async (req) => {
         }
       }
 
+      await markStripeWebhookEventProcessed(supabase, event);
       return ok200();
     }
 
@@ -2427,8 +2766,15 @@ Deno.serve(async (req) => {
         invoice?.subscription,
       );
       const providerCustomerId = asNonEmptyStringOrNull(invoice?.customer);
+      const invoiceEmail = asNonEmptyStringOrNull(invoice?.customer_email) ??
+        asNonEmptyStringOrNull(invoice?.customer_details?.email);
 
       if (!providerSubscriptionId) {
+        logWebhook("warn", "missing subscription id", {
+          event_id: event.id,
+          event_type: event.type,
+        });
+        await markStripeWebhookEventProcessed(supabase, event);
         return ok200();
       }
 
@@ -2436,10 +2782,11 @@ Deno.serve(async (req) => {
         supabase,
         providerSubscriptionId,
         providerCustomerId,
+        invoiceEmail,
       });
 
       if (!userId) {
-        throw new Error("invoice.paid user resolution failed");
+        throw new NonRetryableWebhookError("invoice.paid user resolution failed");
       }
 
       const resolvedProviderCustomerId =
@@ -2470,12 +2817,10 @@ Deno.serve(async (req) => {
         providerOriginalTransactionId: providerSubscriptionId,
         productId:
           getInvoiceProductId(invoice) ??
-          (stripeSubscription
-            ? getSubscriptionProductId(stripeSubscription)
-            : null),
+          getSubscriptionProductId(stripeSubscription),
         providerPriceId:
           getInvoicePriceId(invoice) ??
-          (stripeSubscription ? getSubscriptionPriceId(stripeSubscription) : null),
+          getSubscriptionPriceId(stripeSubscription),
         environment,
         status: "active",
         currentPeriodStart:
@@ -2520,6 +2865,13 @@ Deno.serve(async (req) => {
               correlationId,
               userId,
             });
+            const planDetails = derivePlanDetails({
+              providerPriceId: getInvoicePriceId(invoice) ??
+                getSubscriptionPriceId(stripeSubscription),
+              subscription: stripeSubscription,
+              invoice,
+              metadata: stripeSubscription?.metadata ?? null,
+            });
 
             try {
               await sendEmailOnce({
@@ -2530,8 +2882,8 @@ Deno.serve(async (req) => {
                 variables: {
                   ...commonAuditVars,
                   amount: formatMoney(amountMinor, currency),
-                  period: "Monthly",
-                  tier: "VIP",
+                  period: planDetails.period,
+                  tier: planDetails.tier,
                   currency: currency ?? "",
                   amount_minor: String(amountMinor),
                   stripe_session_id: "",
@@ -2545,6 +2897,7 @@ Deno.serve(async (req) => {
         }
       }
 
+      await markStripeWebhookEventProcessed(supabase, event);
       return ok200();
     }
 
@@ -2555,8 +2908,15 @@ Deno.serve(async (req) => {
         invoice?.subscription,
       );
       const providerCustomerId = asNonEmptyStringOrNull(invoice?.customer);
+      const invoiceEmail = asNonEmptyStringOrNull(invoice?.customer_email) ??
+        asNonEmptyStringOrNull(invoice?.customer_details?.email);
 
       if (!providerSubscriptionId) {
+        logWebhook("warn", "missing subscription id", {
+          event_id: event.id,
+          event_type: event.type,
+        });
+        await markStripeWebhookEventProcessed(supabase, event);
         return ok200();
       }
 
@@ -2564,10 +2924,13 @@ Deno.serve(async (req) => {
         supabase,
         providerSubscriptionId,
         providerCustomerId,
+        invoiceEmail,
       });
 
       if (!userId) {
-        throw new Error("invoice.payment_failed user resolution failed");
+        throw new NonRetryableWebhookError(
+          "invoice.payment_failed user resolution failed",
+        );
       }
 
       const resolvedProviderCustomerId =
@@ -2598,12 +2961,10 @@ Deno.serve(async (req) => {
         providerOriginalTransactionId: providerSubscriptionId,
         productId:
           getInvoiceProductId(invoice) ??
-          (stripeSubscription
-            ? getSubscriptionProductId(stripeSubscription)
-            : null),
+          getSubscriptionProductId(stripeSubscription),
         providerPriceId:
           getInvoicePriceId(invoice) ??
-          (stripeSubscription ? getSubscriptionPriceId(stripeSubscription) : null),
+          getSubscriptionPriceId(stripeSubscription),
         environment,
         status: "past_due",
         currentPeriodStart:
@@ -2622,6 +2983,7 @@ Deno.serve(async (req) => {
           upsertResult.shouldRecomputeBeforeFinalMark,
       });
 
+      await markStripeWebhookEventProcessed(supabase, event);
       return ok200();
     }
 
@@ -2634,6 +2996,11 @@ Deno.serve(async (req) => {
       const providerCustomerId = asNonEmptyStringOrNull(subscription?.customer);
 
       if (!providerSubscriptionId) {
+        logWebhook("warn", "missing subscription id", {
+          event_id: event.id,
+          event_type: event.type,
+        });
+        await markStripeWebhookEventProcessed(supabase, event);
         return ok200();
       }
 
@@ -2643,10 +3010,11 @@ Deno.serve(async (req) => {
         metadataUserId: subscription?.metadata?.user_id ?? null,
         providerSubscriptionId,
         providerCustomerId,
+        email: subscription?.metadata?.email ?? null,
       });
 
       if (!userId) {
-        throw new Error(
+        throw new NonRetryableWebhookError(
           `${event.type} user resolution failed`,
         );
       }
@@ -2694,6 +3062,7 @@ Deno.serve(async (req) => {
           upsertResult.shouldRecomputeBeforeFinalMark,
       });
 
+      await markStripeWebhookEventProcessed(supabase, event);
       return ok200();
     }
 
@@ -2703,6 +3072,11 @@ Deno.serve(async (req) => {
       const providerCustomerId = asNonEmptyStringOrNull(subscription?.customer);
 
       if (!providerSubscriptionId) {
+        logWebhook("warn", "missing subscription id", {
+          event_id: event.id,
+          event_type: event.type,
+        });
+        await markStripeWebhookEventProcessed(supabase, event);
         return ok200();
       }
 
@@ -2712,10 +3086,13 @@ Deno.serve(async (req) => {
         metadataUserId: subscription?.metadata?.user_id ?? null,
         providerSubscriptionId,
         providerCustomerId,
+        email: subscription?.metadata?.email ?? null,
       });
 
       if (!userId) {
-        throw new Error("customer.subscription.deleted user resolution failed");
+        throw new NonRetryableWebhookError(
+          "customer.subscription.deleted user resolution failed",
+        );
       }
 
       await syncProfileStripeCustomerIdBestEffort({
@@ -2727,10 +3104,7 @@ Deno.serve(async (req) => {
       const currentPeriodEnd = toIsoFromUnix(subscription?.current_period_end);
       const endedAt = toIsoFromUnix(subscription?.ended_at) ?? isoNow();
 
-      const status: SharedSubscriptionStatus =
-        currentPeriodEnd && new Date(currentPeriodEnd).getTime() > Date.now()
-          ? "active"
-          : "expired";
+      const status: SharedSubscriptionStatus = "canceled";
 
       const upsertResult = await upsertSharedSubscriptionMonotonic({
         supabase,
@@ -2764,9 +3138,11 @@ Deno.serve(async (req) => {
           upsertResult.shouldRecomputeBeforeFinalMark,
       });
 
+      await markStripeWebhookEventProcessed(supabase, event);
       return ok200();
     }
 
+    await markStripeWebhookEventProcessed(supabase, event);
     return ok200();
   } catch (error: unknown) {
     const details =
@@ -2780,8 +3156,29 @@ Deno.serve(async (req) => {
           ? JSON.parse(JSON.stringify(error))
           : { message: String(error) };
 
-    console.error("stripe-webhook error", details);
+    logWebhook("error", "webhook processing failed", {
+      event_id: event?.id ?? null,
+      event_type: event?.type ?? null,
+      details,
+    });
 
-    return json({ error: details }, 500);
+    try {
+      await upsertStripeWebhookEventResult({
+        supabase,
+        event,
+        processed: error instanceof NonRetryableWebhookError,
+        errorMessage: error instanceof Error
+          ? error.message
+          : String(error ?? "unknown error"),
+      });
+    } catch {
+      // best-effort only
+    }
+
+    if (error instanceof NonRetryableWebhookError) {
+      return ok200();
+    }
+
+    return json({ error: "Webhook processing failed" }, 500);
   }
 });

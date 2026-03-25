@@ -10,12 +10,37 @@ begin;
 
 create extension if not exists pgcrypto;
 
-DO $$
-BEGIN
-  IF to_regclass('public.subscriptions') IS NULL THEN
-    RAISE EXCEPTION 'Expected canonical table public.subscriptions to exist before applying Team C billing foundation patch';
-  END IF;
-END $$;
+do $$
+begin
+  if to_regclass('public.subscriptions') is null then
+    raise exception 'Expected canonical table public.subscriptions to exist before applying Team C billing foundation patch';
+  end if;
+end $$;
+
+-- Ensure enum-backed provider column can represent apple/google before any checks touch it.
+do $$
+begin
+  if exists (
+    select 1
+    from information_schema.columns
+    where table_schema = 'public'
+      and table_name = 'subscriptions'
+      and column_name = 'provider'
+      and udt_name = 'billing_provider'
+  ) then
+    begin
+      alter type public.billing_provider add value if not exists 'apple';
+    exception when duplicate_object then
+      null;
+    end;
+
+    begin
+      alter type public.billing_provider add value if not exists 'google';
+    exception when duplicate_object then
+      null;
+    end;
+  end if;
+end $$;
 
 alter table public.subscriptions
   add column if not exists provider text,
@@ -59,125 +84,138 @@ alter table public.subscriptions
   alter column provider_metadata set default '{}'::jsonb,
   alter column provider_metadata set not null;
 
-DO $$
-BEGIN
-  IF EXISTS (
-    SELECT 1
-    FROM information_schema.columns
-    WHERE table_schema = 'public'
-      AND table_name = 'subscriptions'
-      AND column_name = 'stripe_subscription_id'
-  ) THEN
-    EXECUTE $stmt$
+do $$
+begin
+  if exists (
+    select 1
+    from information_schema.columns
+    where table_schema = 'public'
+      and table_name = 'subscriptions'
+      and column_name = 'stripe_subscription_id'
+  ) then
+    execute $stmt$
       update public.subscriptions
       set provider_subscription_id = coalesce(provider_subscription_id, stripe_subscription_id)
       where stripe_subscription_id is not null
     $stmt$;
-  END IF;
+  end if;
 
-  IF EXISTS (
-    SELECT 1
-    FROM information_schema.columns
-    WHERE table_schema = 'public'
-      AND table_name = 'subscriptions'
-      AND column_name = 'stripe_customer_id'
-  ) THEN
-    EXECUTE $stmt$
+  if exists (
+    select 1
+    from information_schema.columns
+    where table_schema = 'public'
+      and table_name = 'subscriptions'
+      and column_name = 'stripe_customer_id'
+  ) then
+    execute $stmt$
       update public.subscriptions
       set provider_customer_id = coalesce(provider_customer_id, stripe_customer_id)
       where stripe_customer_id is not null
     $stmt$;
-  END IF;
+  end if;
 
-  IF EXISTS (
-    SELECT 1
-    FROM information_schema.columns
-    WHERE table_schema = 'public'
-      AND table_name = 'subscriptions'
-      AND column_name = 'stripe_price_id'
-  ) THEN
-    EXECUTE $stmt$
+  if exists (
+    select 1
+    from information_schema.columns
+    where table_schema = 'public'
+      and table_name = 'subscriptions'
+      and column_name = 'stripe_price_id'
+  ) then
+    execute $stmt$
       update public.subscriptions
       set provider_price_id = coalesce(provider_price_id, stripe_price_id)
       where stripe_price_id is not null
     $stmt$;
-  END IF;
+  end if;
 
-  IF EXISTS (
-    SELECT 1
-    FROM information_schema.columns
-    WHERE table_schema = 'public'
-      AND table_name = 'subscriptions'
-      AND column_name = 'stripe_product_id'
-  ) THEN
-    EXECUTE $stmt$
+  if exists (
+    select 1
+    from information_schema.columns
+    where table_schema = 'public'
+      and table_name = 'subscriptions'
+      and column_name = 'stripe_product_id'
+  ) then
+    execute $stmt$
       update public.subscriptions
       set provider_product_id = coalesce(provider_product_id, stripe_product_id)
       where stripe_product_id is not null
     $stmt$;
-  END IF;
-END $$;
+  end if;
+end $$;
 
-DO $$
-BEGIN
-  IF NOT EXISTS (
-    SELECT 1
-    FROM pg_constraint
-    WHERE conname = 'subscriptions_provider_check'
-      AND conrelid = 'public.subscriptions'::regclass
-  ) THEN
-    alter table public.subscriptions
-      add constraint subscriptions_provider_check
-      check (provider in ('stripe', 'apple', 'google'));
-  END IF;
+do $$
+declare
+  v_provider_is_enum boolean;
+begin
+  select exists (
+    select 1
+    from information_schema.columns
+    where table_schema = 'public'
+      and table_name = 'subscriptions'
+      and column_name = 'provider'
+      and udt_name = 'billing_provider'
+  ) into v_provider_is_enum;
 
-  IF NOT EXISTS (
-    SELECT 1
-    FROM pg_constraint
-    WHERE conname = 'subscriptions_environment_check'
-      AND conrelid = 'public.subscriptions'::regclass
-  ) THEN
+  if not v_provider_is_enum then
+    if not exists (
+      select 1
+      from pg_constraint
+      where conname = 'subscriptions_provider_check'
+        and conrelid = 'public.subscriptions'::regclass
+    ) then
+      alter table public.subscriptions
+        add constraint subscriptions_provider_check
+        check (provider in ('stripe', 'apple', 'google'));
+    end if;
+  end if;
+
+  if not exists (
+    select 1
+    from pg_constraint
+    where conname = 'subscriptions_environment_check'
+      and conrelid = 'public.subscriptions'::regclass
+  ) then
     alter table public.subscriptions
       add constraint subscriptions_environment_check
       check (environment in ('production', 'sandbox', 'test'));
-  END IF;
+  end if;
 
-  IF NOT EXISTS (
-    SELECT 1
-    FROM pg_constraint
-    WHERE conname = 'subscriptions_billing_interval_check'
-      AND conrelid = 'public.subscriptions'::regclass
-  ) THEN
+  if not exists (
+    select 1
+    from pg_constraint
+    where conname = 'subscriptions_billing_interval_check'
+      and conrelid = 'public.subscriptions'::regclass
+  ) then
     alter table public.subscriptions
       add constraint subscriptions_billing_interval_check
       check (
         billing_interval is null
         or billing_interval in ('day', 'week', 'month', 'year')
       );
-  END IF;
+  end if;
 
-  IF NOT EXISTS (
-    SELECT 1
-    FROM pg_constraint
-    WHERE conname = 'subscriptions_billing_interval_count_check'
-      AND conrelid = 'public.subscriptions'::regclass
-  ) THEN
+  if not exists (
+    select 1
+    from pg_constraint
+    where conname = 'subscriptions_billing_interval_count_check'
+      and conrelid = 'public.subscriptions'::regclass
+  ) then
     alter table public.subscriptions
       add constraint subscriptions_billing_interval_count_check
       check (billing_interval_count is null or billing_interval_count > 0);
-  END IF;
+  end if;
 
-  IF NOT EXISTS (
-    SELECT 1
-    FROM pg_constraint
-    WHERE conname = 'subscriptions_quantity_check'
-      AND conrelid = 'public.subscriptions'::regclass
-  ) THEN
+  if not exists (
+    select 1
+    from pg_constraint
+    where conname = 'subscriptions_quantity_check'
+      and conrelid = 'public.subscriptions'::regclass
+  ) then
     alter table public.subscriptions
       add constraint subscriptions_quantity_check
       check (quantity > 0);
-  END IF;
-END $$;
+  end if;
+end $$;
 
 create index if not exists subscriptions_provider_idx
   on public.subscriptions (provider);
@@ -287,28 +325,30 @@ begin
 end;
 $$;
 
-DO $$
-BEGIN
-  IF NOT EXISTS (
-    SELECT 1 FROM pg_trigger
-    WHERE tgname = 'set_billing_provider_events_updated_at'
-  ) THEN
+do $$
+begin
+  if not exists (
+    select 1 from pg_trigger
+    where tgname = 'set_billing_provider_events_updated_at'
+  ) then
     create trigger set_billing_provider_events_updated_at
       before update on public.billing_provider_events
       for each row
       execute function public.set_row_updated_at();
-  END IF;
+  end if;
 
-  IF NOT EXISTS (
-    SELECT 1 FROM pg_trigger
-    WHERE tgname = 'set_billing_entitlement_events_updated_at'
-  ) THEN
+  if not exists (
+    select 1 from pg_trigger
+    where tgname = 'set_billing_entitlement_events_updated_at'
+  ) then
     create trigger set_billing_entitlement_events_updated_at
       before update on public.billing_entitlement_events
       for each row
       execute function public.set_row_updated_at();
-  END IF;
-END $$;
+  end if;
+end $$;
+
+drop function if exists public.register_billing_provider_event(text, text, text, text, text, timestamptz, jsonb, jsonb, jsonb);
 
 create or replace function public.register_billing_provider_event(
   p_provider text,
@@ -392,6 +432,8 @@ begin
 end;
 $$;
 
+drop function if exists public.log_billing_entitlement_event(text, text, text, text, text, text, text, timestamptz, timestamptz, timestamptz, text, text, jsonb);
+
 create or replace function public.log_billing_entitlement_event(
   p_subject_id text,
   p_subscription_ref text,
@@ -466,6 +508,7 @@ revoke all on table public.billing_entitlement_events from public, anon, authent
 revoke all on function public.register_billing_provider_event(text, text, text, text, text, timestamptz, jsonb, jsonb, jsonb) from public, anon, authenticated;
 revoke all on function public.log_billing_entitlement_event(text, text, text, text, text, text, text, timestamptz, timestamptz, timestamptz, text, text, jsonb) from public, anon, authenticated;
 
+grant usage on schema public to service_role;
 grant select, insert, update on table public.billing_provider_events to service_role;
 grant select, insert, update on table public.billing_entitlement_events to service_role;
 grant execute on function public.register_billing_provider_event(text, text, text, text, text, timestamptz, jsonb, jsonb, jsonb) to service_role;
@@ -476,5 +519,7 @@ comment on table public.billing_provider_events is
 
 comment on table public.billing_entitlement_events is
   'Append-style entitlement event log for future canonical entitlement engine. Does not replace public.subscriptions as source of subscription truth.';
+
+notify pgrst, 'reload schema';
 
 commit;
