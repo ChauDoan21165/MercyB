@@ -443,7 +443,7 @@ export default function Home() {
     background: isSignedIn
       ? "linear-gradient(180deg, rgba(236,253,245,0.92), rgba(255,255,255,0.96))"
       : "linear-gradient(180deg, rgba(255,255,255,0.96), rgba(245,248,255,0.92))",
-    padding: "14px 16px",
+    padding: "12px 14px",
     boxShadow: "0 12px 30px rgba(0,0,0,0.05)",
   };
 
@@ -451,7 +451,7 @@ export default function Home() {
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
-    gap: 12,
+    gap: 10,
     flexWrap: "wrap",
   };
 
@@ -459,7 +459,7 @@ export default function Home() {
     display: "inline-flex",
     alignItems: "center",
     gap: 8,
-    padding: "7px 12px",
+    padding: "6px 11px",
     borderRadius: 9999,
     border: isSignedIn
       ? "1px solid rgba(16,185,129,0.22)"
@@ -468,6 +468,7 @@ export default function Home() {
     fontSize: 12,
     fontWeight: 900,
     color: isSignedIn ? "rgba(6,95,70,0.92)" : "rgba(0,0,0,0.62)",
+    whiteSpace: "nowrap",
   };
 
   const authDot: React.CSSProperties = {
@@ -481,36 +482,48 @@ export default function Home() {
       : "rgba(0,0,0,0.28)",
   };
 
+  const authTopRight: React.CSSProperties = {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-end",
+    minWidth: 0,
+    flex: "1 1 auto",
+  };
+
   const authTitle: React.CSSProperties = {
-    margin: "8px 0 0",
-    fontSize: isDesktopTop ? 30 : 26,
+    margin: "6px 0 0",
+    fontSize: isDesktopTop ? 28 : 22,
     fontWeight: 950,
     color: "rgba(0,0,0,0.90)",
-    letterSpacing: -0.6,
-    lineHeight: 1.12,
+    letterSpacing: -0.55,
+    lineHeight: 1.08,
   };
 
   const authSub: React.CSSProperties = {
-    marginTop: 6,
+    marginTop: 4,
     marginBottom: 0,
-    fontSize: 15,
-    lineHeight: 1.7,
+    fontSize: 14,
+    lineHeight: 1.45,
     color: "rgba(0,0,0,0.64)",
   };
 
   const authEmailPill: React.CSSProperties = {
-    marginTop: 10,
+    marginTop: 0,
     display: "inline-flex",
     alignItems: "center",
-    gap: 8,
+    gap: 6,
+    minWidth: 0,
     maxWidth: "100%",
-    padding: "7px 11px",
+    padding: "6px 10px",
     borderRadius: 9999,
     border: "1px solid rgba(0,0,0,0.10)",
     background: "rgba(255,255,255,0.86)",
     fontSize: 11,
     fontWeight: 900,
     color: "rgba(0,0,0,0.74)",
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
   };
 
   const lessonCard: React.CSSProperties = {
@@ -874,6 +887,14 @@ export default function Home() {
                       : "Signed out"}
                   </span>
                 </div>
+
+                {isSignedIn && userEmail ? (
+                  <div style={authTopRight}>
+                    <div style={authEmailPill} title={userEmail}>
+                      ✉️ {userEmail}
+                    </div>
+                  </div>
+                ) : null}
               </div>
 
               {isLoading ? (
@@ -884,11 +905,6 @@ export default function Home() {
                   <p style={authSub}>
                     You’re signed in and ready to continue with calm progress.
                   </p>
-                  {userEmail ? (
-                    <div style={authEmailPill} title={userEmail}>
-                      ✉️ {userEmail}
-                    </div>
-                  ) : null}
                 </>
               ) : (
                 <>
