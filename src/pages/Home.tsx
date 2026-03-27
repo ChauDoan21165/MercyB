@@ -398,7 +398,7 @@ export default function Home() {
   const frame: React.CSSProperties = {
     maxWidth: PAGE_MAX,
     margin: "0 auto",
-    padding: "4px 16px 220px",
+    padding: "0 16px 188px",
   };
 
   const heroImgWrap: React.CSSProperties = {
@@ -443,7 +443,7 @@ export default function Home() {
     background: isSignedIn
       ? "linear-gradient(180deg, rgba(236,253,245,0.92), rgba(255,255,255,0.96))"
       : "linear-gradient(180deg, rgba(255,255,255,0.96), rgba(245,248,255,0.92))",
-    padding: "18px 18px",
+    padding: "14px 16px",
     boxShadow: "0 12px 30px rgba(0,0,0,0.05)",
   };
 
@@ -482,7 +482,7 @@ export default function Home() {
   };
 
   const authTitle: React.CSSProperties = {
-    margin: "10px 0 0",
+    margin: "8px 0 0",
     fontSize: isDesktopTop ? 30 : 26,
     fontWeight: 950,
     color: "rgba(0,0,0,0.90)",
@@ -491,7 +491,7 @@ export default function Home() {
   };
 
   const authSub: React.CSSProperties = {
-    marginTop: 8,
+    marginTop: 6,
     marginBottom: 0,
     fontSize: 15,
     lineHeight: 1.7,
@@ -499,16 +499,16 @@ export default function Home() {
   };
 
   const authEmailPill: React.CSSProperties = {
-    marginTop: 12,
+    marginTop: 10,
     display: "inline-flex",
     alignItems: "center",
     gap: 8,
     maxWidth: "100%",
-    padding: "8px 12px",
+    padding: "7px 11px",
     borderRadius: 9999,
     border: "1px solid rgba(0,0,0,0.10)",
     background: "rgba(255,255,255,0.86)",
-    fontSize: 12,
+    fontSize: 11,
     fontWeight: 900,
     color: "rgba(0,0,0,0.74)",
   };
@@ -517,7 +517,7 @@ export default function Home() {
     borderRadius: 20,
     border: "1px solid rgba(0,0,0,0.08)",
     background: "linear-gradient(180deg, rgba(255,255,255,0.96), rgba(245,248,255,0.92))",
-    padding: "18px 18px",
+    padding: "14px 16px",
     boxShadow: "0 12px 30px rgba(0,0,0,0.05)",
   };
 
@@ -539,31 +539,31 @@ export default function Home() {
   const lessonTitle: React.CSSProperties = {
     marginTop: 8,
     marginBottom: 0,
-    fontSize: isDesktopTop ? 30 : 24,
+    fontSize: isDesktopTop ? 28 : 23,
     fontWeight: 950,
     color: "rgba(0,0,0,0.90)",
-    letterSpacing: -0.7,
-    lineHeight: 1.1,
+    letterSpacing: -0.6,
+    lineHeight: 1.08,
   };
 
   const lessonSub: React.CSSProperties = {
-    marginTop: 8,
+    marginTop: 6,
     marginBottom: 0,
-    fontSize: 15,
-    lineHeight: 1.7,
+    fontSize: 14,
+    lineHeight: 1.6,
     color: "rgba(0,0,0,0.64)",
   };
 
   const quickActionsGrid: React.CSSProperties = {
-    marginTop: 14,
+    marginTop: 12,
     display: "grid",
     gridTemplateColumns: isDesktopTop ? "repeat(3, minmax(0, 1fr))" : "1fr",
-    gap: 10,
+    gap: 8,
   };
 
   const quickActionBtn: React.CSSProperties = {
-    padding: "14px 16px",
-    borderRadius: 16,
+    padding: "12px 14px",
+    borderRadius: 14,
     border: "1px solid rgba(0,0,0,0.14)",
     background: "rgba(255,255,255,0.86)",
     color: "rgba(0,0,0,0.74)",
@@ -571,6 +571,8 @@ export default function Home() {
     cursor: "pointer",
     width: "100%",
     textAlign: "left",
+    fontSize: 14,
+    lineHeight: 1.25,
   };
 
   const heroCard: React.CSSProperties = {
@@ -744,32 +746,32 @@ export default function Home() {
   };
 
   const primaryBtn: React.CSSProperties = {
-    padding: "14px 22px",
-    borderRadius: 16,
+    padding: "13px 20px",
+    borderRadius: 15,
     border: "1px solid rgba(0,0,0,0.10)",
     background: "rgba(0, 128, 120, 0.78)",
     color: "white",
     fontWeight: 900,
     cursor: "pointer",
-    minWidth: 210,
+    minWidth: 198,
   };
 
   const secondaryBtn: React.CSSProperties = {
-    padding: "14px 22px",
-    borderRadius: 16,
+    padding: "13px 20px",
+    borderRadius: 15,
     border: "1px solid rgba(0,0,0,0.18)",
     background: "rgba(255,255,255,0.85)",
     color: "rgba(0,0,0,0.72)",
     fontWeight: 900,
     cursor: "pointer",
-    minWidth: 210,
+    minWidth: 198,
   };
 
   const bottomDockOuter: React.CSSProperties = {
     position: "fixed",
     left: 0,
     right: 0,
-    bottom: 12,
+    bottom: 10,
     zIndex: 80,
     padding: "0 16px",
     pointerEvents: "none",
@@ -911,7 +913,7 @@ export default function Home() {
                   : "Start with one short room — about 2 minutes."}
               </p>
 
-              <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
+              <div style={{ marginTop: 12, display: "flex", gap: 8, flexWrap: "wrap" }}>
                 <button type="button" style={primaryBtn} onClick={goFirstRoom}>
                   {isSignedIn ? "👉 Resume lesson" : "👉 Start free"}
                 </button>

@@ -20,7 +20,6 @@ type EmailMode = "password_signin" | "password_signup" | "magic" | "reset";
 type NoticeTone = "success" | "info" | "error";
 type AuthNotice = { tone: NoticeTone; message: string } | null;
 
-const CONTROL_CHAR_REGEX = /[-\u001F\u007F]/g;
 const DANGEROUS_PROTOCOLS = /^(data|javascript|vbscript|file|about):/i;
 
 // ---- env helpers ----
@@ -30,10 +29,20 @@ function readBoolEnv(key: string): boolean {
   return v === "true" || v === "1" || v === "yes" || v === "on";
 }
 
+function stripControlChars(value: string): string {
+  if (!value) return "";
+  return Array.from(value)
+    .filter((ch) => {
+      const code = ch.charCodeAt(0);
+      return code >= 32 && code !== 127;
+    })
+    .join("");
+}
+
 // ---- Security helpers (strengthened) ----
 function sanitizeParam(value: string): string {
   if (!value) return "";
-  let cleaned = value.replace(CONTROL_CHAR_REGEX, "").trim();
+  const cleaned = stripControlChars(value).trim();
   if (!cleaned) return "";
 
   if (DANGEROUS_PROTOCOLS.test(cleaned)) return "";
@@ -734,7 +743,7 @@ export default function LoginPage() {
       } catch (err) {
         console.error("[bootSessionFlag] error:", err);
         if (retry === 0 && alive) {
-          setTimeout(() => bootSessionFlag(1), 800); // retry once
+          setTimeout(() => bootSessionFlag(1), 800);
         } else if (alive) {
           setSessionBooted(true);
         }
@@ -816,12 +825,7 @@ export default function LoginPage() {
       if (error) throw error;
 
       if (data?.url) {
-        const targetUrl = new URL(data.url);
-        if (targetUrl.origin === window.location.origin) {
-          window.location.assign(data.url);
-        } else {
-          throw new Error("Invalid OAuth redirect URL (cross-origin)");
-        }
+        window.location.assign(data.url);
       }
     } catch (e: any) {
       setNotice({ tone: "error", message: humanizeAuthError(e, "password_signin") });
@@ -848,12 +852,7 @@ export default function LoginPage() {
       if (error) throw error;
 
       if (data?.url) {
-        const targetUrl = new URL(data.url);
-        if (targetUrl.origin === window.location.origin) {
-          window.location.assign(data.url);
-        } else {
-          throw new Error("Invalid OAuth redirect URL (cross-origin)");
-        }
+        window.location.assign(data.url);
       }
     } catch (e: any) {
       setNotice({ tone: "error", message: humanizeAuthError(e, "password_signin") });
@@ -888,7 +887,6 @@ export default function LoginPage() {
             Choose a sign-in method. After signing in, we’ll take you to the right place.
           </p>
 
-          {/* Session status */}
           <div style={{ ...UI.block, position: "sticky", top: 12, zIndex: 50, background: "rgba(255,255,255,0.92)", backdropFilter: "blur(8px)" }}>
             {hasSession ? (
               <div>
@@ -906,9 +904,13 @@ export default function LoginPage() {
           </div>
 
           {notice && (
-            <div ref={noticeRef} tabIndex={-1} style={notice.tone === "error" 
-              ? { marginTop: 12, padding: 14, borderRadius: 14, background: "rgba(254,242,242,0.94)", border: "1px solid rgba(239,68,68,0.20)", color: "rgba(127,29,29,0.92)" } 
-              : { marginTop: 12, padding: 14, borderRadius: 14, background: "rgba(236,253,245,0.92)", border: "1px solid rgba(16,185,129,0.20)", color: "rgba(6,95,70,0.92)" }}>
+            <div
+              ref={noticeRef}
+              tabIndex={-1}
+              style={notice.tone === "error"
+                ? { marginTop: 12, padding: 14, borderRadius: 14, background: "rgba(254,242,242,0.94)", border: "1px solid rgba(239,68,68,0.20)", color: "rgba(127,29,29,0.92)" }
+                : { marginTop: 12, padding: 14, borderRadius: 14, background: "rgba(236,253,245,0.92)", border: "1px solid rgba(16,185,129,0.20)", color: "rgba(6,95,70,0.92)" }}
+            >
               {notice.message}
             </div>
           )}
