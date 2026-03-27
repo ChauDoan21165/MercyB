@@ -16,7 +16,7 @@ import AdminRoute from "@/components/admin/AdminRoute";
 import AdminLayout from "@/components/admin/AdminLayout";
 import { useAuth } from "@/providers/AuthProvider";
 
-const MB_ROUTER_VERSION = "2026-03-22-app-router-billing-route-fixed-v1";
+const MB_ROUTER_VERSION = "2026-03-25-app-router-logo-fixed-v4-tight-header";
 
 const ChatHub = lazy(() => import("@/pages/ChatHub"));
 const AllRooms = lazy(() => import("@/pages/AllRooms"));
@@ -86,9 +86,6 @@ function AppHeroShell() {
   const isAdmin = pathname.startsWith("/admin");
   const userEmail = String(user?.email ?? "").trim();
 
-  const rainbow =
-    "linear-gradient(90deg,#ff4d4d 0%,#ffb84d 18%,#b6ff4d 36%,#4dffb8 54%,#4db8ff 72%,#b84dff 90%,#ff4dff 100%)";
-
   const PAGE_MAX = 980;
   const FRAME_PAD_X = 16;
   const FRAME_MAX = PAGE_MAX;
@@ -107,19 +104,19 @@ function AppHeroShell() {
     top: 0,
     zIndex: 999999,
     pointerEvents: "auto",
-    background: "rgba(255,255,255,0.92)",
-    backdropFilter: "blur(10px)",
+    background: "rgba(255,255,255,0.95)",
+    backdropFilter: "blur(12px)",
     borderBottom: "1px solid rgba(0,0,0,0.08)",
   };
 
   const bandInner: React.CSSProperties = {
     maxWidth: FRAME_MAX,
     margin: "0 auto",
-    padding: `10px ${FRAME_PAD_X}px`,
+    padding: `4px ${FRAME_PAD_X}px 0`,
     display: "grid",
     gridTemplateColumns: "1fr auto 1fr",
     alignItems: "center",
-    gap: 10,
+    gap: 12,
   };
 
   const leftNavWrap: React.CSSProperties = {
@@ -142,7 +139,7 @@ function AppHeroShell() {
     display: "inline-flex",
     alignItems: "center",
     gap: 8,
-    padding: "8px 12px",
+    padding: "8px 14px",
     borderRadius: 9999,
     border: "1px solid rgba(0,0,0,0.12)",
     background: "rgba(255,255,255,0.90)",
@@ -179,15 +176,25 @@ function AppHeroShell() {
   };
 
   const brand: React.CSSProperties = {
-    fontWeight: 950,
-    letterSpacing: -0.6,
-    background: rainbow,
-    WebkitBackgroundClip: "text",
-    color: "transparent",
-    fontSize: 18,
-    lineHeight: 1,
-    whiteSpace: "nowrap",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
     justifySelf: "center",
+    lineHeight: 0,
+    textDecoration: "none",
+    minHeight: 44,
+    padding: 0,
+  };
+
+  const brandImg: React.CSSProperties = {
+    display: "block",
+    width: "auto",
+    height: "44px",
+    maxHeight: "44px",
+    maxWidth: "none",
+    objectFit: "contain",
+    objectPosition: "center",
+    filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.08))",
   };
 
   const onBack = () => {
@@ -235,9 +242,21 @@ function AppHeroShell() {
                 </button>
               </div>
 
-              <div style={brand} title="Mercy Blade">
-                Mercy Blade
-              </div>
+              <Link
+                to="/"
+                style={brand}
+                title="Mercy Blade"
+                aria-label="Mercy Blade"
+              >
+                <img
+                  src="/brand/mercy-blade-header.png"
+                  alt="Mercy Blade"
+                  style={brandImg}
+                  loading="eager"
+                  decoding="async"
+                  draggable={false}
+                />
+              </Link>
 
               <div style={rightWrap}>
                 {isLoading ? (

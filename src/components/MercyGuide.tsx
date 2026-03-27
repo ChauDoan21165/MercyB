@@ -1,7 +1,7 @@
 /**
  * File: MercyGuide.tsx
  * Path: src/components/MercyGuide.tsx
- * Version: v2026-03-25-responsive-width
+ * Version: v2026-03-25-fab-position-reset
  */
 
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
@@ -89,15 +89,18 @@ const MIN_PANEL_HEIGHT = 480;
 const MIN_PANEL_MARGIN = 8;
 const MOBILE_PANEL_TOP_SAFE = 12;
 const MOBILE_PANEL_BOTTOM_SAFE = 108;
-const PANEL_SIZE_STORAGE_KEY = 'mercy-guide-panel-size';
-const PANEL_SIZE_STORAGE_KEY_MOBILE = 'mercy-guide-panel-size-mobile';
-const PANEL_SIZE_STORAGE_KEY_DESKTOP = 'mercy-guide-panel-size-desktop';
+
+const PANEL_SIZE_STORAGE_KEY = 'mercy-guide-panel-size-v2';
+const PANEL_SIZE_STORAGE_KEY_MOBILE = 'mercy-guide-panel-size-mobile-v2';
+const PANEL_SIZE_STORAGE_KEY_DESKTOP = 'mercy-guide-panel-size-desktop-v2';
 
 const BUBBLE_SIZE = 64;
 const BUBBLE_SAFE_MARGIN = 12;
+const BUBBLE_BOTTOM_SAFE_MOBILE = 112;
+const BUBBLE_BOTTOM_SAFE_DESKTOP = 24;
 const DEFAULT_BUBBLE_RIGHT = 16;
-const DEFAULT_BUBBLE_BOTTOM = 96;
-const BUBBLE_POSITION_STORAGE_KEY = 'mercy-guide-bubble-position';
+const DEFAULT_BUBBLE_BOTTOM = 112;
+const BUBBLE_POSITION_STORAGE_KEY = 'mercy-guide-bubble-position-v2';
 
 const EDGE_HANDLE_THICKNESS = 12;
 const CORNER_HANDLE_SIZE = 18;
@@ -157,6 +160,10 @@ function getPanelHeightPolicy() {
 function getPanelStorageKey() {
   if (typeof window === 'undefined') return PANEL_SIZE_STORAGE_KEY;
   return isMobileViewport() ? PANEL_SIZE_STORAGE_KEY_MOBILE : PANEL_SIZE_STORAGE_KEY_DESKTOP;
+}
+
+function getBubbleBottomSafe() {
+  return isMobileViewport() ? BUBBLE_BOTTOM_SAFE_MOBILE : BUBBLE_BOTTOM_SAFE_DESKTOP;
 }
 
 export function MercyGuide({
@@ -265,22 +272,24 @@ export function MercyGuide({
     if (typeof window === 'undefined') {
       return {
         right: Math.max(BUBBLE_SAFE_MARGIN, next.right),
-        bottom: Math.max(BUBBLE_SAFE_MARGIN, next.bottom),
+        bottom: Math.max(getBubbleBottomSafe(), next.bottom),
       };
     }
+
+    const bottomSafe = getBubbleBottomSafe();
 
     const maxRight = Math.max(
       BUBBLE_SAFE_MARGIN,
       window.innerWidth - BUBBLE_SIZE - BUBBLE_SAFE_MARGIN
     );
     const maxBottom = Math.max(
-      BUBBLE_SAFE_MARGIN,
+      bottomSafe,
       window.innerHeight - BUBBLE_SIZE - BUBBLE_SAFE_MARGIN
     );
 
     return {
       right: Math.min(maxRight, Math.max(BUBBLE_SAFE_MARGIN, next.right)),
-      bottom: Math.min(maxBottom, Math.max(BUBBLE_SAFE_MARGIN, next.bottom)),
+      bottom: Math.min(maxBottom, Math.max(bottomSafe, next.bottom)),
     };
   }, []);
 
@@ -325,9 +334,7 @@ export function MercyGuide({
     });
 
     try {
-      const legacyStored = window.sessionStorage.getItem(PANEL_SIZE_STORAGE_KEY);
-      const scopedStored = window.sessionStorage.getItem(getPanelStorageKey());
-      const stored = scopedStored ?? legacyStored;
+      const stored = window.sessionStorage.getItem(getPanelStorageKey());
 
       if (stored) {
         const parsed = JSON.parse(stored) as Partial<PanelRect>;
@@ -380,7 +387,6 @@ export function MercyGuide({
 
     try {
       window.sessionStorage.setItem(getPanelStorageKey(), JSON.stringify(panelRect));
-      window.sessionStorage.setItem(PANEL_SIZE_STORAGE_KEY, JSON.stringify(panelRect));
     } catch (error) {
       console.error('Failed to persist Mercy Guide panel size:', error);
     }
