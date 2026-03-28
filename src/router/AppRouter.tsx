@@ -228,9 +228,11 @@ function AppHeroShell() {
           <div style={band} aria-label="Mercy global hero band">
             <div style={bandInner}>
               <div style={leftNavWrap}>
-                <Link to="/" style={navBtn} aria-label="Go Home">
-                  ⌂ Home
-                </Link>
+                {pathname !== "/" && (
+                  <Link to="/" style={navBtn} aria-label="Go Home">
+                    ⌂ Home
+                  </Link>
+                )}
                 <button
                   type="button"
                   style={navBtn}
