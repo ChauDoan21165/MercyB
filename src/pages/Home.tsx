@@ -16,6 +16,7 @@
 // - keeps lesson card as primary action
 // - removes extra CTA rows inside hero copy block to reduce clutter
 // - cuts white space above and below hero band
+// - removes duplicated account buttons from lesson card, Mercy Host cards, and progress section
 //
 // Does NOT add:
 // - placeholder room logic
@@ -567,15 +568,29 @@ export default function Home() {
     color: "rgba(0,0,0,0.64)",
   };
 
-  const quickActionsGrid: React.CSSProperties = {
+  const lessonActionsWrap: React.CSSProperties = {
     marginTop: 12,
     display: "grid",
-    gridTemplateColumns: isDesktopTop ? "repeat(3, minmax(0, 1fr))" : "1fr",
-    gap: 8,
+    gridTemplateColumns: "minmax(0, 1.08fr) minmax(132px, 0.92fr)",
+    gap: 10,
+    alignItems: "stretch",
   };
 
-  const quickActionBtn: React.CSSProperties = {
-    padding: "12px 14px",
+  const lessonPrimaryCol: React.CSSProperties = {
+    display: "flex",
+    flexDirection: "column",
+    gap: 8,
+    minWidth: 0,
+  };
+
+  const lessonSecondaryCol: React.CSSProperties = {
+    display: "grid",
+    gap: 8,
+    minWidth: 0,
+  };
+
+  const compactActionBtn: React.CSSProperties = {
+    padding: "11px 12px",
     borderRadius: 14,
     border: "1px solid rgba(0,0,0,0.14)",
     background: "rgba(255,255,255,0.86)",
@@ -584,8 +599,9 @@ export default function Home() {
     cursor: "pointer",
     width: "100%",
     textAlign: "left",
-    fontSize: 14,
-    lineHeight: 1.25,
+    fontSize: 13,
+    lineHeight: 1.2,
+    minHeight: 0,
   };
 
   const heroCard: React.CSSProperties = {
@@ -834,18 +850,6 @@ export default function Home() {
     lineHeight: 1.5,
   };
 
-  const progPill: React.CSSProperties = {
-    display: "inline-flex",
-    alignItems: "center",
-    gap: 8,
-    padding: "7px 10px",
-    borderRadius: 9999,
-    border: "1px solid rgba(0,0,0,0.12)",
-    background: "rgba(255,255,255,0.85)",
-    fontWeight: 900,
-    cursor: "pointer",
-  };
-
   const progBadge: React.CSSProperties = {
     marginTop: 10,
     display: "inline-flex",
@@ -929,40 +933,38 @@ export default function Home() {
                   : "Start with one short room — about 2 minutes."}
               </p>
 
-              <div style={{ marginTop: 12, display: "flex", gap: 8, flexWrap: "wrap" }}>
-                <button type="button" style={primaryBtn} onClick={goFirstRoom}>
-                  {isSignedIn ? "👉 Resume lesson" : "👉 Start free"}
-                </button>
+              <div style={lessonActionsWrap}>
+                <div style={lessonPrimaryCol}>
+                  <button type="button" style={{ ...primaryBtn, width: "100%", minWidth: 0 }} onClick={goFirstRoom}>
+                    {isSignedIn ? "👉 Resume lesson" : "👉 Start free"}
+                  </button>
+                </div>
 
-                <button type="button" style={secondaryBtn} onClick={goAccountOrSignin}>
-                  {isSignedIn ? "👤 Open account" : "🔐 Sign in"}
-                </button>
-              </div>
+                <div style={lessonSecondaryCol}>
+                  <button
+                    type="button"
+                    style={compactActionBtn}
+                    onClick={goFirstRoom}
+                  >
+                    🎙️ Practice speaking
+                  </button>
 
-              <div style={quickActionsGrid}>
-                <button
-                  type="button"
-                  style={quickActionBtn}
-                  onClick={goFirstRoom}
-                >
-                  🎙️ Practice speaking
-                </button>
+                  <button
+                    type="button"
+                    style={compactActionBtn}
+                    onClick={() => nav("/tiers")}
+                  >
+                    📚 Learning paths
+                  </button>
 
-                <button
-                  type="button"
-                  style={quickActionBtn}
-                  onClick={() => nav("/tiers")}
-                >
-                  📚 Learning paths
-                </button>
-
-                <button
-                  type="button"
-                  style={quickActionBtn}
-                  onClick={() => nav(ROUTE_PRICING)}
-                >
-                  💎 Pricing
-                </button>
+                  <button
+                    type="button"
+                    style={compactActionBtn}
+                    onClick={() => nav(ROUTE_PRICING)}
+                  >
+                    💎 Pricing
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -1023,13 +1025,6 @@ export default function Home() {
                   <button type="button" style={{ ...primaryBtn, minWidth: 220 }} onClick={goFirstRoom}>
                     {isSignedIn ? "🌿 Continue with Mercy Host" : "🌿 Enter with Mercy Host"}
                   </button>
-                  <button
-                    type="button"
-                    style={{ ...secondaryBtn, minWidth: 220 }}
-                    onClick={goAccountOrSignin}
-                  >
-                    {isSignedIn ? "👤 Open account" : "🔐 Sign in"}
-                  </button>
                 </div>
               </div>
 
@@ -1048,13 +1043,6 @@ export default function Home() {
                 <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
                   <button type="button" style={{ ...primaryBtn, minWidth: 220 }} onClick={goFirstRoom}>
                     {isSignedIn ? "🌿 Tiếp tục cùng Mercy Host" : "🌿 Bắt đầu cùng Mercy Host"}
-                  </button>
-                  <button
-                    type="button"
-                    style={{ ...secondaryBtn, minWidth: 220 }}
-                    onClick={goAccountOrSignin}
-                  >
-                    {isSignedIn ? "👤 Tài khoản" : "🔐 Đăng nhập"}
                   </button>
                 </div>
               </div>
@@ -1080,27 +1068,6 @@ export default function Home() {
                     : "Sign in to save your path and see your quiet progress snapshot."}
                 </div>
               </div>
-
-              {user?.id ? (
-                <button
-                  type="button"
-                  style={progPill}
-                  onClick={() => nav("/account")}
-                  aria-label="Go to account"
-                  title="Account"
-                >
-                  Open account →
-                </button>
-              ) : (
-                <button
-                  type="button"
-                  style={progPill}
-                  onClick={() => nav("/signin")}
-                  aria-label="Sign in to see progress"
-                >
-                  Sign in to save progress →
-                </button>
-              )}
             </div>
 
             {user?.id && progressErr ? (
@@ -1319,7 +1286,14 @@ export default function Home() {
                 {phase2Collapse ? (
                   <button
                     type="button"
-                    style={{ ...progPill, padding: "8px 12px" }}
+                    style={{
+                      padding: "8px 12px",
+                      borderRadius: 9999,
+                      border: "1px solid rgba(0,0,0,0.12)",
+                      background: "rgba(255,255,255,0.85)",
+                      fontWeight: 900,
+                      cursor: "pointer",
+                    }}
                     onClick={() => setHowOpen((v) => !v)}
                     aria-label="Toggle how it works"
                     title="Toggle"
