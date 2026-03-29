@@ -1,7 +1,6 @@
 /**
  * File: MercyGuide.tsx
  * Path: src/components/MercyGuide.tsx
- * Version: v2026-03-25-fab-position-reset
  */
 
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
@@ -10,6 +9,7 @@ import {
   ChevronDown,
   GraduationCap,
   GripHorizontal,
+  MapPin,
   MessageCircleQuestion,
   Mic,
   Sparkles,
@@ -43,7 +43,6 @@ import {
 } from './mercy-guide/shared';
 import { useTroubleWordsVault } from './mercy-guide/hooks/useTroubleWordsVault';
 import { useSpeakPractice } from './mercy-guide/hooks/useSpeakPractice';
-import { DailyCoachCard } from './mercy-guide/DailyCoachCard';
 import { MercyGuideTab } from './mercy-guide/MercyGuideTab';
 import { MercyTeacherTab } from './mercy-guide/MercyTeacherTab';
 import { MercyEnglishTab } from './mercy-guide/MercyEnglishTab';
@@ -81,6 +80,18 @@ type BubblePos = {
   bottom: number;
 };
 
+type RoomContextSummary = {
+  hasRoomContext: boolean;
+  roomName: string;
+  tierLabel: string | null;
+  topicLabel: string | null;
+  shortSummary: string | null;
+  usageHintEn: string;
+  usageHintVi: string;
+  whereAreWeEn: string | null;
+  whereAreWeVi: string | null;
+};
+
 const DEFAULT_PANEL_HEIGHT_RATIO = 0.75;
 const DEFAULT_PANEL_RIGHT = 24;
 const DEFAULT_PANEL_BOTTOM = 80;
@@ -104,6 +115,9 @@ const BUBBLE_POSITION_STORAGE_KEY = 'mercy-guide-bubble-position-v2';
 
 const EDGE_HANDLE_THICKNESS = 12;
 const CORNER_HANDLE_SIZE = 18;
+
+const GUIDE_TAB_BOTTOM_BUFFER_DESKTOP = 12;
+const GUIDE_TAB_BOTTOM_BUFFER_MOBILE = 20;
 
 function isMobileViewport() {
   return typeof window !== 'undefined' && window.innerWidth < 768;
@@ -148,7 +162,10 @@ function getPanelHeightPolicy() {
 
   if (window.innerWidth < 768) {
     return {
-      maxHeight: Math.min(820, window.innerHeight - MOBILE_PANEL_TOP_SAFE - MOBILE_PANEL_BOTTOM_SAFE),
+      maxHeight: Math.min(
+        820,
+        window.innerHeight - MOBILE_PANEL_TOP_SAFE - MOBILE_PANEL_BOTTOM_SAFE
+      ),
     };
   }
 
@@ -159,11 +176,154 @@ function getPanelHeightPolicy() {
 
 function getPanelStorageKey() {
   if (typeof window === 'undefined') return PANEL_SIZE_STORAGE_KEY;
-  return isMobileViewport() ? PANEL_SIZE_STORAGE_KEY_MOBILE : PANEL_SIZE_STORAGE_KEY_DESKTOP;
+  return isMobileViewport()
+    ? PANEL_SIZE_STORAGE_KEY_MOBILE
+    : PANEL_SIZE_STORAGE_KEY_DESKTOP;
 }
 
 function getBubbleBottomSafe() {
-  return isMobileViewport() ? BUBBLE_BOTTOM_SAFE_MOBILE : BUBBLE_BOTTOM_SAFE_DESKTOP;
+  return isMobileViewport()
+    ? BUBBLE_BOTTOM_SAFE_MOBILE
+    : BUBBLE_BOTTOM_SAFE_DESKTOP;
+}
+
+function getGuideTabBottomBuffer() {
+  return isMobileViewport()
+    ? GUIDE_TAB_BOTTOM_BUFFER_MOBILE
+    : GUIDE_TAB_BOTTOM_BUFFER_DESKTOP;
+}
+
+function cleanText(value?: string | null) {
+  if (!value) return '';
+  return value.replace(/\s+/g, ' ').trim();
+}
+
+function stripHtml(value?: string | null) {
+  if (!value) return '';
+  return cleanText(value.replace(/<[^>]*>/g, ' '));
+}
+
+function sentenceCase(value?: string | null) {
+  const text = cleanText(value);
+  if (!text) return '';
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
+function truncateWords(value?: string | null, maxWords = 20) {
+  const text = cleanText(value);
+  if (!text) return '';
+  const words = text.split(' ');
+  if (words.length <= maxWords) return text;
+  return `${words.slice(0, maxWords).join(' ')}…`;
+}
+
+function humanizeSlug(value?: string | null) {
+  const text = cleanText(value);
+  if (!text) return '';
+  return sentenceCase(text.replace(/[-_/]+/g, ' '));
+}
+
+function deriveTopicLabel(tags?: string[], contentEn?: string) {
+  const usableTags = (tags ?? [])
+    .map((tag) => cleanText(tag))
+    .filter(Boolean)
+    .slice(0, 3);
+
+  if (usableTags.length > 0) {
+    return usableTags.join(', ');
+  }
+
+  const content = stripHtml(contentEn);
+  if (!content) return null;
+
+  const firstSentence =
+    content.split(/[.!?]/).map((part) => cleanText(part)).find(Boolean) ?? '';
+
+  return truncateWords(firstSentence, 12) || null;
+}
+
+function deriveRoomContextSummary({
+  roomTitle,
+  tier,
+  pathSlug,
+  tags,
+  contentEn,
+}: MercyGuideProps): RoomContextSummary {
+  const safeRoomTitle = cleanText(roomTitle);
+  const safeTier = cleanText(tier);
+  const safeSlug = humanizeSlug(pathSlug);
+  const topicLabel = deriveTopicLabel(tags, contentEn);
+  const contentSummary = truncateWords(stripHtml(contentEn), 24);
+
+  const roomName =
+    safeRoomTitle || safeSlug || (safeTier ? `${safeTier} room` : 'this room');
+
+  const hasRoomContext = Boolean(
+    safeRoomTitle || safeTier || safeSlug || topicLabel || contentSummary
+  );
+
+  const shortSummary =
+    contentSummary ||
+    (topicLabel ? `${roomName} focuses on ${topicLabel}.` : null) ||
+    (safeTier ? `${roomName} is part of the ${safeTier} tier.` : null);
+
+  const whereAreWeEn = hasRoomContext
+    ? `You are in ${roomName}${topicLabel ? `, focused on ${topicLabel}` : ''}.`
+    : null;
+
+  const whereAreWeVi = hasRoomContext
+    ? `Bạn đang ở ${roomName}${topicLabel ? `, tập trung vào ${topicLabel}` : ''}.`
+    : null;
+
+  return {
+    hasRoomContext,
+    roomName,
+    tierLabel: safeTier || null,
+    topicLabel,
+    shortSummary,
+    usageHintEn: hasRoomContext
+      ? `Ask me what this room is about, where we are, or how to use ${roomName}.`
+      : 'Ask me what this room is about, where we are, or how to use this space.',
+    usageHintVi: hasRoomContext
+      ? `Bạn có thể hỏi mình phòng này nói về gì, chúng ta đang ở đâu, hoặc cách dùng ${roomName}.`
+      : 'Bạn có thể hỏi mình phòng này nói về gì, chúng ta đang ở đâu, hoặc cách dùng không gian này.',
+    whereAreWeEn,
+    whereAreWeVi,
+  };
+}
+
+function buildRoomAwareCheckIn(
+  profile: CompanionProfile,
+  roomSummary: RoomContextSummary
+) {
+  const preferredName = cleanText(profile.preferred_name);
+  const introName = preferredName ? `${preferredName}, ` : '';
+
+  if (!roomSummary.hasRoomContext) {
+    return {
+      en: preferredName
+        ? `Welcome back, ${preferredName}. I’m here to guide you.`
+        : 'Welcome back. I’m here to guide you.',
+      vi: preferredName
+        ? `Chào mừng quay lại, ${preferredName}. Mình ở đây để hướng dẫn bạn.`
+        : 'Chào mừng quay lại. Mình ở đây để hướng dẫn bạn.',
+    };
+  }
+
+  const roomSentence =
+    roomSummary.whereAreWeEn ?? `You are in ${roomSummary.roomName}.`;
+  const summarySentence = roomSummary.shortSummary
+    ? truncateWords(roomSummary.shortSummary, 22)
+    : null;
+
+  return {
+    en: `${introName}${roomSentence}${
+      summarySentence ? ` ${summarySentence}` : ''
+    } ${roomSummary.usageHintEn}`,
+    vi: `${preferredName ? `${preferredName}, ` : ''}${
+      roomSummary.whereAreWeVi ?? `Bạn đang ở ${roomSummary.roomName}.`
+    } ${roomSummary.usageHintVi}`,
+  };
 }
 
 export function MercyGuide({
@@ -179,14 +339,16 @@ export function MercyGuide({
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('guide');
   const [showSettings, setShowSettings] = useState(false);
-  const [coachStage, setCoachStage] = useState<'intro' | 'coach' | 'dismissed'>('intro');
 
   const [profile, setProfile] = useState<CompanionProfile>({});
-  const [checkInMessage, setCheckInMessage] = useState<{ en: string; vi: string } | null>(
-    null
-  );
+  const [checkInMessage, setCheckInMessage] = useState<{
+    en: string;
+    vi: string;
+  } | null>(null);
   const [suggestions, setSuggestions] = useState<SuggestedItem[]>([]);
-  const [yesterdaySummary, setYesterdaySummary] = useState<StudyLogEntry | undefined>();
+  const [yesterdaySummary, setYesterdaySummary] = useState<
+    StudyLogEntry | undefined
+  >();
   const [todayTotalMinutes, setTodayTotalMinutes] = useState(0);
   const [hasHeavyMoods, setHasHeavyMoods] = useState(false);
 
@@ -230,7 +392,27 @@ export function MercyGuide({
     handleVaultReplay: replayVaultWord,
   } = speakPractice;
 
-  const hasEnglishContext = Boolean(contentEn || roomId);
+  const roomSummary = useMemo(
+    () =>
+      deriveRoomContextSummary({
+        roomId,
+        roomTitle,
+        tier,
+        pathSlug,
+        tags,
+        contentEn,
+      }),
+    [contentEn, pathSlug, roomId, roomTitle, tags, tier]
+  );
+
+  const hasEnglishContext = Boolean(
+    contentEn || roomId || roomTitle || (tags && tags.length > 0)
+  );
+
+  const guideTabBottomBuffer = useMemo(
+    () => getGuideTabBottomBuffer(),
+    [panelRect.height, panelRect.width, isOpen]
+  );
 
   const clampPanelRect = useCallback((next: PanelRect): PanelRect => {
     const mobile = isMobileViewport();
@@ -243,22 +425,37 @@ export function MercyGuide({
 
     if (typeof window === 'undefined') {
       return {
-        width: Math.min(widthPolicy.maxWidth, Math.max(MIN_PANEL_WIDTH, next.width)),
-        height: Math.min(heightPolicy.maxHeight, Math.max(MIN_PANEL_HEIGHT, next.height)),
+        width: Math.min(
+          widthPolicy.maxWidth,
+          Math.max(MIN_PANEL_WIDTH, next.width)
+        ),
+        height: Math.min(
+          heightPolicy.maxHeight,
+          Math.max(MIN_PANEL_HEIGHT, next.height)
+        ),
         right: Math.max(rightSafe, next.right),
         bottom: Math.max(bottomSafe, next.bottom),
       };
     }
 
-    const maxWidth = Math.min(widthPolicy.maxWidth, window.innerWidth - leftSafe - rightSafe);
-    const maxHeight = Math.min(heightPolicy.maxHeight, window.innerHeight - topSafe - bottomSafe);
+    const maxWidth = Math.min(
+      widthPolicy.maxWidth,
+      window.innerWidth - leftSafe - rightSafe
+    );
+    const maxHeight = Math.min(
+      heightPolicy.maxHeight,
+      window.innerHeight - topSafe - bottomSafe
+    );
     const minWidth = Math.min(MIN_PANEL_WIDTH, maxWidth);
     const minHeight = Math.min(MIN_PANEL_HEIGHT, maxHeight);
 
     const width = Math.min(maxWidth, Math.max(minWidth, next.width));
     const height = Math.min(maxHeight, Math.max(minHeight, next.height));
     const maxRight = Math.max(rightSafe, window.innerWidth - width - leftSafe);
-    const maxBottom = Math.max(bottomSafe, window.innerHeight - height - topSafe);
+    const maxBottom = Math.max(
+      bottomSafe,
+      window.innerHeight - height - topSafe
+    );
 
     return {
       width,
@@ -301,7 +498,9 @@ export function MercyGuide({
         width: current.width,
         height: current.height,
         right: mobile ? bubble.right : Math.max(MIN_PANEL_MARGIN, bubble.right - 8),
-        bottom: mobile ? MOBILE_PANEL_BOTTOM_SAFE : Math.max(MIN_PANEL_MARGIN, bubble.bottom - 8),
+        bottom: mobile
+          ? MOBILE_PANEL_BOTTOM_SAFE
+          : Math.max(MIN_PANEL_MARGIN, bubble.bottom - 8),
       };
 
       const clamped = clampPanelRect(candidate);
@@ -309,7 +508,9 @@ export function MercyGuide({
       if (!mobile) return clamped;
 
       const openOnRightHalf =
-        typeof window !== 'undefined' ? bubble.right < window.innerWidth / 2 : true;
+        typeof window !== 'undefined'
+          ? bubble.right < window.innerWidth / 2
+          : true;
 
       return clampPanelRect({
         ...clamped,
@@ -386,7 +587,10 @@ export function MercyGuide({
     if (typeof window === 'undefined') return;
 
     try {
-      window.sessionStorage.setItem(getPanelStorageKey(), JSON.stringify(panelRect));
+      window.sessionStorage.setItem(
+        getPanelStorageKey(),
+        JSON.stringify(panelRect)
+      );
     } catch (error) {
       console.error('Failed to persist Mercy Guide panel size:', error);
     }
@@ -396,7 +600,10 @@ export function MercyGuide({
     if (typeof window === 'undefined') return;
 
     try {
-      window.sessionStorage.setItem(BUBBLE_POSITION_STORAGE_KEY, JSON.stringify(bubblePos));
+      window.sessionStorage.setItem(
+        BUBBLE_POSITION_STORAGE_KEY,
+        JSON.stringify(bubblePos)
+      );
     } catch (error) {
       console.error('Failed to persist Mercy Guide bubble position:', error);
     }
@@ -410,9 +617,10 @@ export function MercyGuide({
         const widthPolicy = getPanelWidthPolicy();
         const fallbackNext = clampPanelRect({
           ...prev,
-          width: !isMobileViewport() && prev.width < widthPolicy.defaultWidth
-            ? widthPolicy.defaultWidth
-            : prev.width,
+          width:
+            !isMobileViewport() && prev.width < widthPolicy.defaultWidth
+              ? widthPolicy.defaultWidth
+              : prev.width,
         });
 
         try {
@@ -427,7 +635,10 @@ export function MercyGuide({
             });
           }
         } catch (error) {
-          console.error('Failed to sync Mercy Guide panel size on resize:', error);
+          console.error(
+            'Failed to sync Mercy Guide panel size on resize:',
+            error
+          );
         }
 
         return fallbackNext;
@@ -445,19 +656,49 @@ export function MercyGuide({
     setPanelRect((prev) => clampPanelRect(prev));
   }, [isOpen, clampPanelRect]);
 
-  const greeting = useMemo(
-    () =>
-      profile.preferred_name
-        ? {
-            en: `Hi, ${profile.preferred_name}. How can I help?`,
-            vi: `Chào ${profile.preferred_name}. Mình giúp gì được cho bạn?`,
-          }
-        : {
-            en: 'Hi! How can I help?',
-            vi: 'Chào bạn! Mình giúp gì được?',
-          },
-    [profile.preferred_name]
-  );
+  const guessedName = useMemo(() => {
+    const profileWithExtras = profile as CompanionProfile & {
+      display_name?: string | null;
+      first_name?: string | null;
+      name?: string | null;
+    };
+
+    return (
+      cleanText(profile.preferred_name) ||
+      cleanText(profileWithExtras.display_name) ||
+      cleanText(profileWithExtras.first_name) ||
+      cleanText(profileWithExtras.name) ||
+      ''
+    );
+  }, [profile]);
+
+  const greeting = useMemo(() => {
+    if (guessedName && roomSummary.hasRoomContext) {
+      return {
+        en: `Hi, ${guessedName}. You’re in ${roomSummary.roomName}.`,
+        vi: `Chào ${guessedName}. Bạn đang ở ${roomSummary.roomName}.`,
+      };
+    }
+
+    if (guessedName) {
+      return {
+        en: `Hi, ${guessedName}. How can I help?`,
+        vi: `Chào ${guessedName}. Mình giúp gì được cho bạn?`,
+      };
+    }
+
+    if (roomSummary.hasRoomContext) {
+      return {
+        en: `Hi! You’re in ${roomSummary.roomName}.`,
+        vi: `Chào bạn! Bạn đang ở ${roomSummary.roomName}.`,
+      };
+    }
+
+    return {
+      en: 'Hi! How can I help?',
+      vi: 'Chào bạn! Mình giúp gì được?',
+    };
+  }, [guessedName, roomSummary]);
 
   const handleAvatarError = useCallback(
     (e: React.SyntheticEvent<HTMLImageElement>) => {
@@ -475,7 +716,7 @@ export function MercyGuide({
       if (parent) {
         parent.classList.add('flex', 'items-center', 'justify-center');
         parent.innerHTML =
-          '<span class="text-xs font-semibold text-rose-700">MH</span>';
+          '<span class="text-sm font-semibold text-rose-700">MH</span>';
       }
     },
     []
@@ -611,97 +852,89 @@ export function MercyGuide({
   );
 
   const handleResizePointerDown = useCallback(
-    (direction: ResizeDirection) => (event: React.PointerEvent<HTMLDivElement>) => {
-      event.preventDefault();
-      event.stopPropagation();
+    (direction: ResizeDirection) =>
+      (event: React.PointerEvent<HTMLDivElement>) => {
+        event.preventDefault();
+        event.stopPropagation();
 
-      const startX = event.clientX;
-      const startY = event.clientY;
-      const startRect = panelRect;
-      const pointerId = event.pointerId;
-      const handleElement = event.currentTarget;
-      const previousUserSelect = document.body.style.userSelect;
+        const startX = event.clientX;
+        const startY = event.clientY;
+        const startRect = panelRect;
+        const pointerId = event.pointerId;
+        const handleElement = event.currentTarget;
+        const previousUserSelect = document.body.style.userSelect;
 
-      document.body.style.userSelect = 'none';
+        document.body.style.userSelect = 'none';
 
-      if (handleElement.setPointerCapture) {
-        try {
-          handleElement.setPointerCapture(pointerId);
-        } catch (error) {
-          console.error('Failed to capture resize pointer:', error);
-        }
-      }
-
-      const handlePointerMove = (moveEvent: PointerEvent) => {
-        if (moveEvent.pointerId !== pointerId) return;
-
-        const dx = moveEvent.clientX - startX;
-        const dy = moveEvent.clientY - startY;
-
-        let nextRect: PanelRect = { ...startRect };
-
-        if (direction.includes('left')) {
-          nextRect.width = startRect.width - dx;
-        }
-
-        if (direction.includes('right')) {
-          nextRect.width = startRect.width + dx;
-          nextRect.right = startRect.right - dx;
-        }
-
-        if (direction.includes('top')) {
-          nextRect.height = startRect.height - dy;
-        }
-
-        if (direction.includes('bottom')) {
-          nextRect.height = startRect.height + dy;
-          nextRect.bottom = startRect.bottom - dy;
-        }
-
-        setPanelRect(clampPanelRect(nextRect));
-      };
-
-      const cleanup = () => {
-        document.body.style.userSelect = previousUserSelect;
-        window.removeEventListener('pointermove', handlePointerMove);
-        window.removeEventListener('pointerup', handlePointerUp);
-        window.removeEventListener('pointercancel', handlePointerUp);
-
-        if (handleElement.releasePointerCapture) {
+        if (handleElement.setPointerCapture) {
           try {
-            if (handleElement.hasPointerCapture?.(pointerId)) {
-              handleElement.releasePointerCapture(pointerId);
-            }
+            handleElement.setPointerCapture(pointerId);
           } catch (error) {
-            console.error('Failed to release resize pointer:', error);
+            console.error('Failed to capture resize pointer:', error);
           }
         }
-      };
 
-      const handlePointerUp = (upEvent: PointerEvent) => {
-        if (upEvent.pointerId !== pointerId) return;
-        cleanup();
-      };
+        const handlePointerMove = (moveEvent: PointerEvent) => {
+          if (moveEvent.pointerId !== pointerId) return;
 
-      window.addEventListener('pointermove', handlePointerMove);
-      window.addEventListener('pointerup', handlePointerUp);
-      window.addEventListener('pointercancel', handlePointerUp);
-    },
+          const dx = moveEvent.clientX - startX;
+          const dy = moveEvent.clientY - startY;
+
+          let nextRect: PanelRect = { ...startRect };
+
+          if (direction.includes('left')) {
+            nextRect.width = startRect.width - dx;
+          }
+
+          if (direction.includes('right')) {
+            nextRect.width = startRect.width + dx;
+            nextRect.right = startRect.right - dx;
+          }
+
+          if (direction.includes('top')) {
+            nextRect.height = startRect.height - dy;
+          }
+
+          if (direction.includes('bottom')) {
+            nextRect.height = startRect.height + dy;
+            nextRect.bottom = startRect.bottom - dy;
+          }
+
+          setPanelRect(clampPanelRect(nextRect));
+        };
+
+        const cleanup = () => {
+          document.body.style.userSelect = previousUserSelect;
+          window.removeEventListener('pointermove', handlePointerMove);
+          window.removeEventListener('pointerup', handlePointerUp);
+          window.removeEventListener('pointercancel', handlePointerUp);
+
+          if (handleElement.releasePointerCapture) {
+            try {
+              if (handleElement.hasPointerCapture?.(pointerId)) {
+                handleElement.releasePointerCapture(pointerId);
+              }
+            } catch (error) {
+              console.error('Failed to release resize pointer:', error);
+            }
+          }
+        };
+
+        const handlePointerUp = (upEvent: PointerEvent) => {
+          if (upEvent.pointerId !== pointerId) return;
+          cleanup();
+        };
+
+        window.addEventListener('pointermove', handlePointerMove);
+        window.addEventListener('pointerup', handlePointerUp);
+        window.addEventListener('pointercancel', handlePointerUp);
+      },
     [clampPanelRect, panelRect]
   );
 
   useEffect(() => {
     preloadMercyLibrary();
   }, []);
-
-  useEffect(() => {
-    if (!isOpen || showSettings) {
-      setCoachStage('intro');
-      return;
-    }
-
-    setCoachStage('intro');
-  }, [isOpen, showSettings]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -719,7 +952,9 @@ export function MercyGuide({
         const greetingId = getGreetingReplyId(ctx);
         const greetingReply = await getMercyReply(greetingId);
 
-        if (greetingReply) {
+        if (roomSummary.hasRoomContext) {
+          setCheckInMessage(buildRoomAwareCheckIn(profileData, roomSummary));
+        } else if (greetingReply) {
           setCheckInMessage({
             en: greetingReply.text_en,
             vi: greetingReply.text_vi,
@@ -757,7 +992,7 @@ export function MercyGuide({
     }
 
     loadData();
-  }, [isOpen, roomId, tags]);
+  }, [isOpen, roomId, roomSummary, tags]);
 
   if (!isEnabled) return null;
 
@@ -778,13 +1013,13 @@ export function MercyGuide({
           }}
         >
           <div className="relative flex items-end justify-end">
-            <div className="absolute -left-16 top-2 z-0 hidden rotate-[-14deg] rounded-[20px] bg-white px-2.5 py-2 shadow-lg ring-1 ring-black/5 transition-transform duration-200 sm:block">
+            <div className="absolute -left-20 top-2 z-0 hidden rotate-[-14deg] rounded-[20px] bg-white px-3 py-2.5 shadow-lg ring-1 ring-black/5 transition-transform duration-200 sm:block">
               <div className="leading-none">
-                <p className="text-[13px] font-extrabold tracking-tight text-black">
-                  Mercy Host
+                <p className="text-[15px] font-extrabold tracking-tight text-black">
+                  Mercy
                 </p>
-                <p className="mt-1 text-[10px] font-medium text-black/70">
-                  Need a guide?
+                <p className="mt-1.5 text-[12px] font-medium text-black/70">
+                  Cần hỗ trợ?
                 </p>
               </div>
             </div>
@@ -829,20 +1064,24 @@ export function MercyGuide({
             bottom: panelRect.bottom,
             minWidth: Math.min(MIN_PANEL_WIDTH, panelRect.width),
             minHeight: Math.min(MIN_PANEL_HEIGHT, panelRect.height),
-            maxWidth: `min(${widthPolicy.maxWidth}px, calc(100vw - ${MIN_PANEL_MARGIN * 2}px))`,
-            maxHeight: `min(${heightPolicy.maxHeight}px, calc(100vh - ${MIN_PANEL_MARGIN * 2}px))`,
+            maxWidth: `min(${widthPolicy.maxWidth}px, calc(100vw - ${
+              MIN_PANEL_MARGIN * 2
+            }px))`,
+            maxHeight: `min(${heightPolicy.maxHeight}px, calc(100vh - ${
+              MIN_PANEL_MARGIN * 2
+            }px))`,
           }}
         >
           <div
             className="flex cursor-move items-center justify-between border-b border-border bg-muted/20 px-4 py-3"
             onPointerDown={handlePanelDragStart}
           >
-            <div className="flex items-center gap-3">
+            <div className="flex min-w-0 items-center gap-3">
               <div className="flex h-10 w-6 items-center justify-center rounded-md text-muted-foreground/70">
                 <GripHorizontal className="h-4 w-4" />
               </div>
 
-              <div className="h-10 w-10 overflow-hidden rounded-full bg-pink-100 ring-2 ring-pink-200">
+              <div className="h-10 w-10 shrink-0 overflow-hidden rounded-full bg-pink-100 ring-2 ring-pink-200">
                 <img
                   src={MERCY_HOST_IMAGE_SRC}
                   alt="Mercy Host"
@@ -853,42 +1092,66 @@ export function MercyGuide({
                 />
               </div>
 
-              <div>
-                <h3 className="font-semibold text-foreground md:text-[17px]">Mercy Guide</h3>
-                <p className="text-xs text-muted-foreground md:text-sm">{greeting.en}</p>
-                <p className="text-[11px] text-muted-foreground/80 md:text-xs">{greeting.vi}</p>
+              <div className="min-w-0">
+                <h3 className="text-lg font-semibold text-foreground md:text-[20px]">
+                  Mercy
+                </h3>
+                <p className="truncate text-sm text-muted-foreground md:text-base">
+                  {greeting.vi}
+                </p>
+
+                {roomSummary.hasRoomContext && (
+                  <div className="mt-1.5 flex flex-wrap items-center gap-2 text-xs text-muted-foreground md:text-sm">
+                    <span className="inline-flex items-center gap-1 rounded-full bg-primary/6 px-2.5 py-1 text-primary">
+                      <MapPin className="h-3.5 w-3.5" />
+                      <span>{roomSummary.roomName}</span>
+                    </span>
+
+                    {roomSummary.tierLabel && (
+                      <span className="rounded-full border border-border/70 px-2.5 py-1">
+                        {roomSummary.tierLabel}
+                      </span>
+                    )}
+
+                    {roomSummary.topicLabel && (
+                      <span className="rounded-full border border-border/70 px-2.5 py-1">
+                        {truncateWords(roomSummary.topicLabel, 6)}
+                      </span>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
 
-            <div className="flex items-center gap-1">
+            <div className="flex shrink-0 items-center gap-1">
               <Button
                 variant="ghost"
                 size="icon"
-                className="h-8 w-8"
+                className="h-9 w-9"
                 onClick={() => setShowSettings(!showSettings)}
-                title="Settings"
+                title="Hồ sơ"
               >
-                <User className="h-4 w-4" />
+                <User className="h-4.5 w-4.5" />
               </Button>
 
               <Button
                 variant="ghost"
                 size="icon"
-                className="h-8 w-8"
+                className="h-9 w-9"
                 onClick={handleCollapseGuide}
-                title="Collapse"
+                title="Thu gọn"
               >
-                <ChevronDown className="h-4 w-4" />
+                <ChevronDown className="h-4.5 w-4.5" />
               </Button>
 
               <Button
                 variant="ghost"
                 size="icon"
-                className="h-8 w-8"
+                className="h-9 w-9"
                 onClick={handleCloseGuide}
-                title="Close"
+                title="Đóng"
               >
-                <X className="h-4 w-4" />
+                <X className="h-4.5 w-4.5" />
               </Button>
             </div>
           </div>
@@ -906,243 +1169,204 @@ export function MercyGuide({
           )}
 
           {!showSettings && (
-            <>
-              {checkInMessage && (
-                <div className="border-b border-primary/10 bg-primary/5 px-4 py-2 md:px-5 md:py-3">
-                  <p className="text-sm text-foreground md:text-[15px]">{checkInMessage.en}</p>
-                  <p className="text-xs text-muted-foreground md:text-[13px]">{checkInMessage.vi}</p>
-                </div>
-              )}
-
-              {!profile.preferred_name && (
-                <button
-                  onClick={() => setShowSettings(true)}
-                  className="border-b border-border bg-white px-4 py-2 text-left text-xs text-primary hover:underline md:px-5 md:py-3 md:text-sm"
-                >
-                  Tell me your name →
-                </button>
-              )}
-
-              {coachStage !== 'dismissed' && (
-                <div className="shrink-0 px-3 pt-2 md:px-4 md:pt-3">
-                  {coachStage === 'intro' && (
-                    <div className="rounded-xl border border-primary/10 bg-primary/5 p-3 md:p-4">
-                      <div className="space-y-1">
-                        <p className="text-sm font-semibold text-foreground md:text-base">Mercy</p>
-                        <p className="text-sm text-foreground md:text-[15px]">
-                          I can guide you with one short speaking step today.
-                        </p>
-                        <p className="text-xs text-muted-foreground md:text-[13px]">
-                          It only takes a moment.
-                        </p>
-                      </div>
-
-                      <div className="mt-3 flex flex-wrap gap-2">
-                        <Button size="sm" onClick={() => setCoachStage('coach')}>
-                          Start with one phrase
-                        </Button>
-
-                        <Button
-                          size="sm"
-                          variant="ghost"
-                          onClick={() => setCoachStage('dismissed')}
-                        >
-                          Maybe later
-                        </Button>
-                      </div>
-                    </div>
-                  )}
-
-                  {coachStage === 'coach' && (
-                    <div className="max-h-[160px] overflow-y-auto pr-1 animate-in fade-in duration-200">
-                      <DailyCoachCard
-                        profile={profile}
-                        contentEn={contentEn}
-                        troubleWords={troubleWords}
-                        speakPractice={speakPractice}
-                        onOpenSpeak={() => setActiveTab('speak')}
-                      />
-                    </div>
-                  )}
-                </div>
-              )}
-
-              <Tabs
-                value={activeTab}
-                onValueChange={setActiveTab}
-                className="flex min-h-0 flex-1 flex-col overflow-hidden"
-              >
-                <TabsList className="mx-3 mt-2 shrink-0 grid grid-cols-5 rounded-xl border border-border/60 bg-muted/50 p-1 shadow-sm md:mx-4 md:mt-3 md:p-1.5">
+            <Tabs
+              value={activeTab}
+              onValueChange={setActiveTab}
+              className="flex min-h-0 flex-1 flex-col overflow-hidden"
+            >
+              <div className="shrink-0 px-3 pt-3 md:px-4 md:pt-4">
+                <TabsList className="flex w-full items-center gap-2 overflow-x-auto rounded-xl border border-border/60 bg-muted/50 p-1.5 shadow-sm md:p-2">
                   <TabsTrigger
                     value="guide"
                     className={cn(
-                      'h-9 gap-1 rounded-lg border px-2 text-[11px] font-semibold transition-all md:h-10 md:px-3 md:text-[12px]',
-                      'border-transparent text-muted-foreground opacity-75',
+                      'h-10 shrink-0 whitespace-nowrap gap-1.5 rounded-lg border px-3 text-sm font-semibold transition-all md:h-11 md:px-3.5 md:text-[14px]',
+                      'border-transparent text-muted-foreground opacity-80',
                       'data-[state=active]:border-border data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:opacity-100 data-[state=active]:shadow-sm',
                       'data-[state=inactive]:hover:bg-white/80 data-[state=inactive]:hover:text-foreground'
                     )}
                   >
-                    <MessageCircleQuestion className="h-3.5 w-3.5 shrink-0" />
-                    <span className="truncate">Guide</span>
+                    <MessageCircleQuestion className="h-4 w-4 shrink-0" />
+                    <span>Guide</span>
                   </TabsTrigger>
 
                   <TabsTrigger
                     value="teacher"
                     className={cn(
-                      'h-9 gap-1 rounded-lg border px-2 text-[11px] font-semibold transition-all md:h-10 md:px-3 md:text-[12px]',
-                      'border-transparent text-muted-foreground opacity-75',
+                      'h-10 shrink-0 whitespace-nowrap gap-1.5 rounded-lg border px-3 text-sm font-semibold transition-all md:h-11 md:px-3.5 md:text-[14px]',
+                      'border-transparent text-muted-foreground opacity-80',
                       'data-[state=active]:border-border data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:opacity-100 data-[state=active]:shadow-sm',
                       'data-[state=inactive]:hover:bg-white/80 data-[state=inactive]:hover:text-foreground'
                     )}
                   >
-                    <GraduationCap className="h-3.5 w-3.5 shrink-0" />
-                    <span className="truncate">Teacher</span>
+                    <GraduationCap className="h-4 w-4 shrink-0" />
+                    <span>Teacher</span>
                   </TabsTrigger>
 
                   <TabsTrigger
                     value="english"
                     className={cn(
-                      'h-9 gap-1 rounded-lg border px-2 text-[11px] font-semibold transition-all md:h-10 md:px-3 md:text-[12px]',
+                      'h-10 shrink-0 whitespace-nowrap gap-1.5 rounded-lg border px-3 text-sm font-semibold transition-all md:h-11 md:px-3.5 md:text-[14px]',
                       hasEnglishContext
-                        ? 'border-transparent text-muted-foreground opacity-75'
-                        : 'border-transparent text-muted-foreground/70 opacity-65',
+                        ? 'border-transparent text-muted-foreground opacity-80'
+                        : 'border-transparent text-muted-foreground/70 opacity-70',
                       'data-[state=active]:border-border data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:opacity-100 data-[state=active]:shadow-sm',
                       'data-[state=inactive]:hover:bg-white/80 data-[state=inactive]:hover:text-foreground'
                     )}
                   >
-                    <BookOpen className="h-3.5 w-3.5 shrink-0" />
-                    <span className="truncate">English</span>
+                    <BookOpen className="h-4 w-4 shrink-0" />
+                    <span>English</span>
                   </TabsTrigger>
 
                   <TabsTrigger
                     value="speak"
                     className={cn(
-                      'h-9 gap-1 rounded-lg border px-2 text-[11px] font-semibold transition-all md:h-10 md:px-3 md:text-[12px]',
-                      'border-transparent text-muted-foreground opacity-75',
+                      'h-10 shrink-0 whitespace-nowrap gap-1.5 rounded-lg border px-3 text-sm font-semibold transition-all md:h-11 md:px-3.5 md:text-[14px]',
+                      'border-transparent text-muted-foreground opacity-80',
                       'data-[state=active]:border-border data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:opacity-100 data-[state=active]:shadow-sm',
                       'data-[state=inactive]:hover:bg-white/80 data-[state=inactive]:hover:text-foreground'
                     )}
                   >
-                    <Mic className="h-3.5 w-3.5 shrink-0" />
-                    <span className="truncate">Speak</span>
+                    <Mic className="h-4 w-4 shrink-0" />
+                    <span>Speak</span>
                   </TabsTrigger>
 
                   <TabsTrigger
                     value="suggest"
                     className={cn(
-                      'h-9 gap-1 rounded-lg border px-2 text-[11px] font-semibold transition-all md:h-10 md:px-3 md:text-[12px]',
-                      'border-transparent text-muted-foreground opacity-75',
+                      'h-10 shrink-0 whitespace-nowrap gap-1.5 rounded-lg border px-3 text-sm font-semibold transition-all md:h-11 md:px-3.5 md:text-[14px]',
+                      'border-transparent text-muted-foreground opacity-80',
                       'data-[state=active]:border-border data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:opacity-100 data-[state=active]:shadow-sm',
                       'data-[state=inactive]:hover:bg-white/80 data-[state=inactive]:hover:text-foreground'
                     )}
                   >
-                    <Sparkles className="h-3.5 w-3.5 shrink-0" />
-                    <span className="truncate">For You</span>
+                    <Sparkles className="h-4 w-4 shrink-0" />
+                    <span>For You</span>
                   </TabsTrigger>
                 </TabsList>
+              </div>
 
-                <div className="relative min-h-0 flex-1 overflow-hidden">
-                  <MercyGuideTab
-                    articles={articles}
-                    canAskQuestion={canAskQuestion}
-                    incrementQuestionCount={incrementQuestionCount}
-                    getQuestionsRemaining={getQuestionsRemaining}
-                    roomId={roomId}
-                    roomTitle={roomTitle}
-                    tier={tier}
-                    pathSlug={pathSlug}
-                    tags={tags}
-                    englishLevel={profile.english_level}
-                    learningGoal={profile.learning_goal}
-                    onRequestSpeakTab={() => setActiveTab('speak')}
-                  />
+              <div
+                className="relative min-h-0 flex-1 overflow-hidden"
+                style={{
+                  paddingBottom: `calc(${guideTabBottomBuffer}px + env(safe-area-inset-bottom, 0px))`,
+                }}
+              >
+                <MercyGuideTab
+                  articles={articles}
+                  canAskQuestion={canAskQuestion}
+                  incrementQuestionCount={incrementQuestionCount}
+                  getQuestionsRemaining={getQuestionsRemaining}
+                  roomId={roomId}
+                  roomTitle={roomTitle}
+                  tier={tier}
+                  pathSlug={pathSlug}
+                  tags={tags}
+                  englishLevel={profile.english_level}
+                  learningGoal={profile.learning_goal}
+                  onRequestSpeakTab={() => setActiveTab('speak')}
+                />
 
-                  <MercyTeacherTab
-                    profile={profile}
-                    yesterdaySummary={yesterdaySummary}
-                    todayTotalMinutes={todayTotalMinutes}
-                    hasHeavyMoods={hasHeavyMoods}
-                    suggestions={suggestions}
-                    showBreathingScript={showBreathingScript}
-                    breathingStep={breathingStep}
-                    showReframe={showReframe}
-                    setShowBreathingScript={setShowBreathingScript}
-                    setBreathingStep={setBreathingStep}
-                    setShowReframe={setShowReframe}
-                    onNavigateSuggestion={handleNavigateSuggestion}
-                  />
+                <MercyTeacherTab
+                  profile={profile}
+                  yesterdaySummary={yesterdaySummary}
+                  todayTotalMinutes={todayTotalMinutes}
+                  hasHeavyMoods={hasHeavyMoods}
+                  suggestions={suggestions}
+                  showBreathingScript={showBreathingScript}
+                  breathingStep={breathingStep}
+                  showReframe={showReframe}
+                  setShowBreathingScript={setShowBreathingScript}
+                  setBreathingStep={setBreathingStep}
+                  setShowReframe={setShowReframe}
+                  onNavigateSuggestion={handleNavigateSuggestion}
+                />
 
-                  <MercyEnglishTab
-                    roomId={roomId}
-                    roomTitle={roomTitle}
-                    contentEn={contentEn}
-                    englishLevel={profile.english_level}
-                    troubleWords={troubleWords}
-                    onVaultReplay={handleVaultReplay}
-                    onRequestGuideTab={() => setActiveTab('guide')}
-                  />
+                <MercyEnglishTab
+                  roomId={roomId}
+                  roomTitle={roomTitle}
+                  contentEn={contentEn}
+                  englishLevel={profile.english_level}
+                  troubleWords={troubleWords}
+                  onVaultReplay={handleVaultReplay}
+                  onRequestGuideTab={() => setActiveTab('guide')}
+                />
 
-                  <MercySpeakTab
-                    roomId={roomId}
-                    contentEn={contentEn}
-                    profile={profile}
-                    troubleWords={troubleWords}
-                    speakPractice={speakPractice}
-                  />
+                <MercySpeakTab
+                  roomId={roomId}
+                  contentEn={contentEn}
+                  profile={profile}
+                  troubleWords={troubleWords}
+                  speakPractice={speakPractice}
+                />
 
-                  <MercySuggestTab
-                    suggestions={suggestions}
-                    onNavigateSuggestion={handleNavigateSuggestion}
-                  />
-                </div>
-              </Tabs>
-            </>
+                <MercySuggestTab
+                  suggestions={suggestions}
+                  onNavigateSuggestion={handleNavigateSuggestion}
+                />
+              </div>
+            </Tabs>
           )}
 
           <div
-            className="absolute inset-x-3 top-0 z-20 touch-none"
+            className="absolute inset-x-3 top-0 z-[70] touch-none"
             style={{ height: EDGE_HANDLE_THICKNESS, cursor: 'n-resize' }}
             onPointerDown={handleResizePointerDown('top')}
           />
           <div
-            className="absolute inset-x-3 bottom-0 z-20 touch-none"
+            className="absolute inset-x-3 bottom-0 z-[70] touch-none"
             style={{ height: EDGE_HANDLE_THICKNESS, cursor: 's-resize' }}
             onPointerDown={handleResizePointerDown('bottom')}
           />
           <div
-            className="absolute inset-y-3 left-0 z-20 touch-none"
+            className="absolute inset-y-3 left-0 z-[70] touch-none"
             style={{ width: EDGE_HANDLE_THICKNESS, cursor: 'w-resize' }}
             onPointerDown={handleResizePointerDown('left')}
           />
           <div
-            className="absolute inset-y-3 right-0 z-20 touch-none"
+            className="absolute inset-y-3 right-0 z-[70] touch-none"
             style={{ width: EDGE_HANDLE_THICKNESS, cursor: 'e-resize' }}
             onPointerDown={handleResizePointerDown('right')}
           />
           <div
-            className="absolute left-0 top-0 z-30 flex touch-none items-start justify-start"
-            style={{ width: CORNER_HANDLE_SIZE, height: CORNER_HANDLE_SIZE, cursor: 'nw-resize' }}
+            className="absolute left-0 top-0 z-[80] flex touch-none items-start justify-start"
+            style={{
+              width: CORNER_HANDLE_SIZE,
+              height: CORNER_HANDLE_SIZE,
+              cursor: 'nw-resize',
+            }}
             onPointerDown={handleResizePointerDown('top-left')}
           >
             <div className="ml-1 mt-1 h-2.5 w-2.5 rounded-full border border-border/70 bg-background shadow-sm" />
           </div>
           <div
-            className="absolute right-0 top-0 z-30 flex touch-none items-start justify-end"
-            style={{ width: CORNER_HANDLE_SIZE, height: CORNER_HANDLE_SIZE, cursor: 'ne-resize' }}
+            className="absolute right-0 top-0 z-[80] flex touch-none items-start justify-end"
+            style={{
+              width: CORNER_HANDLE_SIZE,
+              height: CORNER_HANDLE_SIZE,
+              cursor: 'ne-resize',
+            }}
             onPointerDown={handleResizePointerDown('top-right')}
           >
             <div className="mr-1 mt-1 h-2.5 w-2.5 rounded-full border border-border/70 bg-background shadow-sm" />
           </div>
           <div
-            className="absolute bottom-0 left-0 z-30 flex touch-none items-end justify-start"
-            style={{ width: CORNER_HANDLE_SIZE, height: CORNER_HANDLE_SIZE, cursor: 'sw-resize' }}
+            className="absolute bottom-0 left-0 z-[80] flex touch-none items-end justify-start"
+            style={{
+              width: CORNER_HANDLE_SIZE,
+              height: CORNER_HANDLE_SIZE,
+              cursor: 'sw-resize',
+            }}
             onPointerDown={handleResizePointerDown('bottom-left')}
           >
             <div className="mb-1 ml-1 h-2.5 w-2.5 rounded-full border border-border/70 bg-background shadow-sm" />
           </div>
           <div
-            className="absolute bottom-0 right-0 z-30 flex touch-none items-end justify-end"
-            style={{ width: CORNER_HANDLE_SIZE, height: CORNER_HANDLE_SIZE, cursor: 'se-resize' }}
+            className="absolute bottom-0 right-0 z-[80] flex touch-none items-end justify-end"
+            style={{
+              width: CORNER_HANDLE_SIZE,
+              height: CORNER_HANDLE_SIZE,
+              cursor: 'se-resize',
+            }}
             onPointerDown={handleResizePointerDown('bottom-right')}
           >
             <div className="mb-1 mr-1 h-2.5 w-2.5 rounded-full border border-border/70 bg-background shadow-sm" />
