@@ -1,52 +1,19 @@
 // src/pages/ChatHub.tsx
-// MB-BLUE-100.9 → MB-BLUE-101.NO-HERO-ROOMS — 2026-01-14 (+0700)
+// MB-BLUE-100.9 → MB-BLUE-101.NO-HERO-ROOMS → MB-BLUE-101.9-MERCY-GUIDE-IN-ROOM
 /**
  * ChatHub (Room Loader — THIN CONTROLLER)
  *
- * ✅ FIX (MB-BLUE-101.NO-HERO-ROOMS):
- * - KEEP RoomTopBar (Mercy Blade stays on top bar) ✅
- * - REMOVE HeroBand from normal room pages ✅
+ * FIX (MB-BLUE-101.9-MERCY-GUIDE-IN-ROOM):
+ * - Mount MercyGuide INSIDE the real room page so it gets real room context
+ * - Pass roomId, roomTitle, tier, pathSlug, tags, contentEn into MercyGuide
+ * - Do NOT render MercyHostCorner here, to avoid duplicate host UI on room pages
  *
- * ✅ FIX (MB-BLUE-100.9):
- * - STOP scaling the whole page with transform: scale(...).
- * - BottomMusicBar mount stays fixed + aligned to PAGE_MAX=980.
- * - Zoom stays live-refresh, but only via ROOT vars (no page scale).
- *
- * ✅ DEV ADDITION:
- * - DebugJWT button (DEV only) to safely log Supabase access_token
- *
- * RULES PRESERVED:
- * - SINGLE AuthProvider source of truth
- * - No window.supabase
- * - No terminal execution of React code
- *
- * PATCH (2026-01-31):
- * - The “top box” (RoomTopBar) caused a DOUBLE HEADER when GlobalHeader/AppHeader are present.
- * - ChatHub must be THIN: DO NOT render a second header here.
- * - Room pages now rely on the global header(s) from the app shell.
- *
- * PATCH (2026-01-31b):
- * - ALIGN RULER WITH GLOBAL HEADER:
- *   GlobalHeader/AppHeader use: max-w-[980px] px-4
- *   ChatHub previously used:     max-w-[980px] px-4 md:px-6  (mismatch at md breakpoint)
- *   Fix: remove md:px-6 in BOTH wrappers so borders/boxes line up across pages.
- *
- * PATCH (2026-02-XX):
- * - TEST STABILITY: Even if room load fails (DB/JSON), error UI MUST still provide a Back button
- *   so navigation integration tests don't hang on "Room error" screens.
- * - LOAD ROBUSTNESS: Try multiple ID variants (hyphen/underscore) when loading JSON.
- *
- * PATCH (2026-03-08g):
- * - Persist last successful room id to localStorage for "Continue your journey" surfaces.
- * - Add a small calm arrival overlay before showing room content.
- * - Keep ChatHub THIN: no new data writes, no auth changes, no hero/header duplication.
- *
- * PATCH (2026-03-09):
- * - Align RoomRenderer props with current RoomRenderer contract.
- * - Pass roomId through explicitly.
- *
- * PATCH (2026-03-09b):
- * - Remove dead uiKind detection and related helpers.
+ * PRESERVED:
+ * - ChatHub stays THIN
+ * - No extra auth changes
+ * - No hero/header duplication
+ * - BottomMusicBar stays fixed and aligned
+ * - Room loading / fallback / back button behavior preserved
  */
 
 import { useEffect, useMemo, useState } from "react";
@@ -62,14 +29,12 @@ import { getErrorMessage } from "@/lib/constants/uiText";
 import RoomRenderer from "@/components/room/RoomRenderer";
 import { getEffectiveRoomSpec, type RoomSpec } from "@/lib/roomSpecification";
 
-import MercyHostCorner from "@/components/mercy/MercyHostCorner";
-import { FEATURE_FLAGS } from "@/lib/featureFlags";
-
 import BottomMusicBar from "@/components/audio/BottomMusicBar";
+import { MercyGuide } from "@/components/MercyGuide";
 
 type LoadState = "loading" | "ready" | "error";
 type ErrorKind = RoomJsonResolverErrorKind;
-type AnyRoom = any;
+type AnyRoom = Record<string, unknown>;
 
 const PAGE_MAX = 980;
 const LS_LAST_ROOM = "mb.lastRoomId";
@@ -116,13 +81,123 @@ function fallbackParentRoute(roomId?: string): string {
 
 async function getParentRouteSafe(roomId?: string): Promise<string> {
   try {
-    const mod: any = await import("@/lib/routeHelper").catch(() => null);
-    const fn = mod?.getParentRoute || mod?.getParentPath;
+    const mod: unknown = await import("@/lib/routeHelper").catch(() => null);
+    const anyMod = mod as {
+      getParentRoute?: (roomId?: string) => string;
+      getParentPath?: (roomId?: string) => string;
+    } | null;
+    const fn = anyMod?.getParentRoute || anyMod?.getParentPath;
     if (typeof fn === "function") return fn(roomId);
   } catch {
     // ignore
   }
   return fallbackParentRoute(roomId);
+}
+
+function asString(v: unknown): string {
+  return typeof v === "string" ? v.trim() : "";
+}
+
+function firstNonEmptyString(...vals: unknown[]): string {
+  for (const v of vals) {
+    const s = asString(v);
+    if (s) return s;
+  }
+  return "";
+}
+
+function arrayOfStrings(v: unknown): string[] {
+  if (!Array.isArray(v)) return [];
+  return v.map((x) => asString(x)).filter(Boolean);
+}
+
+function getRoomTitleSafe(room: AnyRoom | null, roomId?: string): string {
+  if (!room) return String(roomId || "").trim();
+
+  return firstNonEmptyString(
+    room.title,
+    room.roomTitle,
+    room.name,
+    room.label,
+    room.heading,
+    room.slugTitle,
+    room.id,
+    roomId
+  );
+}
+
+function getRoomTierSafe(room: AnyRoom | null): string {
+  if (!room) return "";
+
+  return firstNonEmptyString(
+    room.tier,
+    room.vipTier,
+    room.accessTier,
+    room.level
+  );
+}
+
+function getRoomPathSlugSafe(room: AnyRoom | null): string {
+  if (!room) return "";
+
+  return firstNonEmptyString(
+    room.pathSlug,
+    room.path_slug,
+    room.path,
+    room.seriesSlug
+  );
+}
+
+function getRoomTagsSafe(room: AnyRoom | null): string[] {
+  if (!room) return [];
+
+  const direct = arrayOfStrings(room.tags);
+  if (direct.length) return uniqueStrings(direct);
+
+  const keywords = arrayOfStrings(room.keywords);
+  if (keywords.length) return uniqueStrings(keywords);
+
+  const topics = arrayOfStrings(room.topics);
+  if (topics.length) return uniqueStrings(topics);
+
+  return [];
+}
+
+function getRoomContentEnSafe(room: AnyRoom | null): string {
+  if (!room) return "";
+
+  const direct = firstNonEmptyString(
+    room.contentEn,
+    room.content_en,
+    room.textEn,
+    room.text_en,
+    room.english,
+    room.promptEn,
+    room.prompt_en,
+    room.summaryEn,
+    room.summary_en,
+    room.descriptionEn,
+    room.description_en
+  );
+  if (direct) return direct;
+
+  const entries = Array.isArray(room.entries) ? room.entries : [];
+  const lines = entries
+    .slice(0, 12)
+    .map((entry) => {
+      const e = (entry ?? {}) as Record<string, unknown>;
+      return firstNonEmptyString(
+        e.text_en,
+        e.textEn,
+        e.en,
+        e.english,
+        e.line_en,
+        e.lineEn
+      );
+    })
+    .filter(Boolean);
+
+  return lines.join("\n").trim();
 }
 
 /* ----------------------------------------------------- */
@@ -131,11 +206,11 @@ async function getParentRouteSafe(roomId?: string): Promise<string> {
 function syncRootZoomFromStorage() {
   try {
     const rawPct = localStorage.getItem("mb.ui.zoom");
-    let pct = rawPct ? Number(rawPct) : NaN;
+    let pct = rawPct ? Number(rawPct) : Number.NaN;
 
     if (!Number.isFinite(pct)) {
       const rawLegacy = localStorage.getItem("mb_zoom");
-      const legacy = rawLegacy ? Number(rawLegacy) : NaN;
+      const legacy = rawLegacy ? Number(rawLegacy) : Number.NaN;
       if (Number.isFinite(legacy)) pct = Math.round(legacy * 100);
     }
 
@@ -229,13 +304,14 @@ export default function ChatHub() {
 
       for (const key of loadKeys) {
         try {
-          const data = await loadRoomJson(key);
+          const data = (await loadRoomJson(key)) as unknown as AnyRoom | null;
           if (data) {
             loadedRoom = data;
             break;
           }
-        } catch (err: any) {
-          const kind = (err?.kind || err?.code || "unknown") as ErrorKind;
+        } catch (err: unknown) {
+          const anyErr = err as { kind?: ErrorKind; code?: ErrorKind };
+          const kind = (anyErr?.kind || anyErr?.code || "unknown") as ErrorKind;
           lastErrorKind = kind;
         }
       }
@@ -287,6 +363,12 @@ export default function ChatHub() {
     const parent = await getParentRouteSafe(roomId);
     navigate(parent);
   }
+
+  const roomTitle = useMemo(() => getRoomTitleSafe(room, roomId), [room, roomId]);
+  const roomTier = useMemo(() => getRoomTierSafe(room), [room]);
+  const roomPathSlug = useMemo(() => getRoomPathSlugSafe(room), [room]);
+  const roomTags = useMemo(() => getRoomTagsSafe(room), [room]);
+  const roomContentEn = useMemo(() => getRoomContentEnSafe(room), [room]);
 
   const shellClass = "mx-auto w-full max-w-[980px] px-4 pb-40 pt-3";
 
@@ -352,7 +434,16 @@ export default function ChatHub() {
         ) : null}
       </main>
 
-      {FEATURE_FLAGS?.mercyHostCorner ? <MercyHostCorner /> : null}
+      {state === "ready" && room ? (
+        <MercyGuide
+          roomId={String(roomId || "")}
+          roomTitle={roomTitle || undefined}
+          tier={roomTier || undefined}
+          pathSlug={roomPathSlug || undefined}
+          tags={roomTags.length ? roomTags : undefined}
+          contentEn={roomContentEn || undefined}
+        />
+      ) : null}
 
       <div
         aria-label="Bottom music dock"

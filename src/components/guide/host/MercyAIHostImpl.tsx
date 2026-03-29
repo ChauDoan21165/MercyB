@@ -1,19 +1,10 @@
 // FILE: MercyAIHost.tsx
 // PATH: src/components/guide/MercyAIHost.tsx
-// VERSION: MB-BLUE-101.7e — 2026-01-14 (+0700)
-// NOTE: ADD "CARE LOOP" (NO AI):
-// - Loads user display name (from profiles best-effort) + last progress snapshot (mercy_host_notes note_type='progress')
-// - Logs every user message as a 'question' note
-// - Logs room/audio complaints as 'fault' notes
-// - Guides users to choose tier (/tiers), pay, then start learning
-// - Adds a tiny rule-based English level quick test (NO AI) and recommends where to start
-// - Adds EN/VI toggle for Host UI + messages
-// - Adds VOICE button:
-//   - Admin users can test voice via browser TTS (speechSynthesis) at $0 cost.
-//   - Non-admin users see VIP9-only upsell message.
-// - Listens to window "mb:host-progress" to persist progress notes (RoomRenderer will emit later)
-// KEEP: big face (~3x), REAL typing, rule-based chat, assistant typing dots.
-// KEEP: closed state does NOT block page clicks (no fullscreen overlay when closed).
+// VERSION: MB-BLUE-101.7e-size-controls — 2026-03-27 (+0700)
+// NOTE:
+// - Keeps existing care-loop logic, quick test, logging, voice test, and routing behavior
+// - Makes Mercy Host UI sizing easy to change from one place
+// - Keeps TalkingFaceIcon as the visible face source in both launcher + header avatar
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
@@ -47,6 +38,24 @@ type HostLang = "en" | "vi";
 type HostNoteType = "question" | "progress" | "fault" | "feedback";
 type HostCategory = "ui" | "content" | "audio" | "billing" | "auth" | "performance" | "other";
 type HostRowType = "user_report" | "host_auto" | "admin_note";
+
+/**
+ * Mercy Host sizing controls
+ * Adjust these first when you want to resize the real room Mercy Host.
+ */
+const HOST_RIGHT = 24;
+const HOST_BOTTOM = 24;
+
+const HOST_PANEL_WIDTH = 560;
+const HOST_PANEL_MAX_WIDTH = "94vw";
+const HOST_PANEL_MAX_HEIGHT = "calc(100vh - 120px)";
+
+const HOST_LAUNCHER_SIZE = 112;
+const HOST_LAUNCHER_FACE_SIZE = 88;
+
+const HOST_HEADER_AVATAR_WRAP = 68;
+const HOST_HEADER_FACE_SIZE = 54;
+const HOST_HEADER_SUBTITLE_MAX_WIDTH = 360;
 
 function isTruthyString(v: string | null | undefined) {
   return (v ?? "").trim().toLowerCase() === "true";
@@ -228,7 +237,6 @@ export default function MercyAIHost() {
   }, []);
 
   const clearTypingTimer = useCallback(() => {
-    // IMPORTANT: timer id can be 0 in some environments — check against null, not truthy.
     if (typingTimerRef.current !== null) window.clearTimeout(typingTimerRef.current);
     typingTimerRef.current = null;
   }, []);
@@ -364,11 +372,8 @@ export default function MercyAIHost() {
       const email = s?.session?.user?.email ?? "";
       if (!uidUser) return;
 
-      // Best-effort: don't assume exact schema. If these columns don't exist,
-      // Supabase will error — we swallow, and fallback to email.
       const { data: p, error } = await supabase
         .from("profiles")
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         .select("display_name, full_name, name, is_admin, admin_level" as any)
         .eq("id", uidUser)
         .maybeSingle();
@@ -427,7 +432,6 @@ export default function MercyAIHost() {
             room_id?: string | null;
             keyword?: string | null;
             entry_id?: string | null;
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             details?: any;
           }
         | undefined;
@@ -455,7 +459,7 @@ export default function MercyAIHost() {
       title: string;
       message: string;
       fault_code?: string | null;
-      severity?: number | null; // omit to use DB default when possible
+      severity?: number | null;
       details?: Record<string, unknown>;
     }) => {
       try {
@@ -465,14 +469,9 @@ export default function MercyAIHost() {
 
         const rid = ctx.roomId ?? roomIdFromUrl ?? null;
 
-        // client_version: best-effort (optional)
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const v = (import.meta as any)?.env?.VITE_APP_VERSION;
         const clientVersion = typeof v === "string" && v.trim().length ? v.trim() : null;
 
-        // IMPORTANT:
-        // - meta/details in DB are jsonb NOT NULL (default {}), so never send null.
-        // - severity has default; if we don't have a number, omit it (don’t send null).
         const payload: Record<string, unknown> = {
           user_id: uidUser,
           user_email: s?.session?.user?.email ?? null,
@@ -505,13 +504,12 @@ export default function MercyAIHost() {
 
         await supabase.from("mercy_host_notes").insert(payload);
       } catch {
-        // ignore: app must never crash because logging failed
+        // ignore
       }
     },
     [ctx.entryId, ctx.keyword, ctx.roomId, roomIdFromUrl, location.pathname, mode, contextLine, lang]
   );
 
-  // Load identity + last progress when panel opens (care)
   useEffect(() => {
     if (isAdmin) return;
     if (!open) return;
@@ -519,12 +517,9 @@ export default function MercyAIHost() {
     void loadLastProgress();
   }, [isAdmin, open, loadMyDisplayName, loadLastProgress]);
 
-  // Listen for progress events from RoomRenderer (care memory pipeline)
   useEffect(() => {
     if (isAdmin) return;
 
-    // RoomRenderer should dispatch:
-    // window.dispatchEvent(new CustomEvent("mb:host-progress", { detail: { roomId, keyword, entryId, next } }))
     const onProgress = (e: Event) => {
       const ce = e as CustomEvent<{ roomId?: string; keyword?: string; entryId?: string; next?: string }>;
       const d = ce.detail;
@@ -590,7 +585,6 @@ export default function MercyAIHost() {
       setTestActive(false);
       setTestStep(0);
 
-      // Very rough mapping (good enough for onboarding)
       const level = finalScore <= 1 ? "beginner" : finalScore === 2 ? "intermediate" : "advanced";
 
       const recEn =
@@ -604,8 +598,8 @@ export default function MercyAIHost() {
         level === "beginner"
           ? `Kết quả: Cơ bản.\nBắt đầu: phòng câu ngắn + nghe lặp.\nMẹo: chọn 1 keyword và lặp 3 lần.\nBước tiếp: vào /tiers để mở thêm phòng.`
           : level === "intermediate"
-          ? `Kết quả: Trung bình.\nBắt đầu: phòng câu dài hơn + shadowing.\nMẹo: nghe 1 lần → nhại 1 lần → đọc 1 lần.\nBước tiếp: vào /tiers nếu muốn mở phòng VIP.`
-          : `Kết quả: Khá.\nBắt đầu: phòng VIP (chu kỳ dài) + nghe nhanh.\nMẹo: dùng keyword để khoan vào điểm yếu.\nBước tiếp: VIP9 có giọng nói Mercy (giới hạn phút/ngày).`;
+            ? `Kết quả: Trung bình.\nBắt đầu: phòng câu dài hơn + shadowing.\nMẹo: nghe 1 lần → nhại 1 lần → đọc 1 lần.\nBước tiếp: vào /tiers nếu muốn mở phòng VIP.`
+            : `Kết quả: Khá.\nBắt đầu: phòng VIP (chu kỳ dài) + nghe nhanh.\nMẹo: dùng keyword để khoan vào điểm yếu.\nBước tiếp: VIP9 có giọng nói Mercy (giới hạn phút/ngày).`;
 
       addMsg("assistant", lang === "vi" ? recVi : recEn);
 
@@ -626,12 +620,8 @@ export default function MercyAIHost() {
     const p =
       lastProgress?.roomId && !isSignin
         ? lang === "vi"
-          ? `Lần trước: ${lastProgress.roomId}${lastProgress.keyword ? ` • kw:${lastProgress.keyword}` : ""}${
-              lastProgress.next ? `\nBước tiếp: ${lastProgress.next}` : ""
-            }`
-          : `Last time: ${lastProgress.roomId}${lastProgress.keyword ? ` • kw:${lastProgress.keyword}` : ""}${
-              lastProgress.next ? `\nNext: ${lastProgress.next}` : ""
-            }`
+          ? `Lần trước: ${lastProgress.roomId}${lastProgress.keyword ? ` • kw:${lastProgress.keyword}` : ""}${lastProgress.next ? `\nBước tiếp: ${lastProgress.next}` : ""}`
+          : `Last time: ${lastProgress.roomId}${lastProgress.keyword ? ` • kw:${lastProgress.keyword}` : ""}${lastProgress.next ? `\nNext: ${lastProgress.next}` : ""}`
         : "";
 
     if (lang === "vi") {
@@ -649,8 +639,8 @@ export default function MercyAIHost() {
           nextMode === "home"
             ? baseAssistantHome
             : lang === "vi"
-            ? `Chào. Hỏi mình về ${nextMode}.`
-            : `Hi. Ask me anything about ${nextMode}.`;
+              ? `Chào. Hỏi mình về ${nextMode}.`
+              : `Hi. Ask me anything about ${nextMode}.`;
         return [{ id: uid("a"), role: "assistant", text: first }];
       });
     },
@@ -662,19 +652,13 @@ export default function MercyAIHost() {
       const userText = userTextRaw.toLowerCase();
       const rid = ctx.roomId ?? roomIdFromUrl;
 
-      // QUICK TEST handling (NO AI)
       if (testActive) {
         const ans = normalizeOneLetterAnswer(userTextRaw);
         if (!ans) {
           return lang === "vi" ? "Bạn trả lời A / B / C nhé." : "Please answer A / B / C.";
         }
 
-        // Correct answers:
-        // Q1: A (am)
-        // Q2: B (goes)
-        // Q3: A (Yesterday)
         let add = 0;
-
         if (testStep === 1 && ans === "a") add = 1;
         if (testStep === 2 && ans === "b") add = 1;
         if (testStep === 3 && ans === "a") add = 1;
@@ -696,7 +680,6 @@ export default function MercyAIHost() {
             : `Q3) Choose: “___ I watched a movie.”\nA) Yesterday  B) Tomorrow  C) Now\nReply: A / B / C`;
         }
 
-        // step 3 -> finish
         setTestStep(0);
         window.setTimeout(() => {
           finishQuickTest(nextScore);
@@ -705,7 +688,6 @@ export default function MercyAIHost() {
         return lang === "vi" ? "Xong. Mình tổng kết nhé…" : "Done. Let me summarize…";
       }
 
-      // Tier / pay guidance (survival loop)
       if (
         containsAny(userText, [
           "tier",
@@ -811,7 +793,6 @@ Bạn đang dùng cách nào (email / phone / Google / Facebook)?`
 What method are you using (email / phone / Google / Facebook)?`;
       }
 
-      // Voice (VIP9 only) — message only (button handles admin test)
       if (containsAny(userText, ["voice", "speak", "talk", "read to me", "nói", "giọng", "đọc"])) {
         return lang === "vi"
           ? `Giọng nói của Mercy Host là tính năng VIP9.
@@ -822,7 +803,6 @@ Bạn muốn nâng cấp không? Bấm “Chọn gói (Pay)” để vào /tiers
 Want it? Tap “Choose tier” to open /tiers.`;
       }
 
-      // Room/audio complaints -> log fault
       if (
         rid &&
         containsAny(userText, ["room", "audio", "sound", "play", "cannot hear", "can't hear", "progress", "không nghe", "âm thanh", "phòng"])
@@ -853,7 +833,6 @@ Bạn cho mình biết: phòng + dòng entry nào bị lỗi (hoặc gửi roomI
 Tell me: which room + which entry line is failing (or send the roomId).`;
       }
 
-      // Default
       return lang === "vi"
         ? `Ok. Cho mình 1 chi tiết:
 • Bạn đang ở trang nào? (${location.pathname})
@@ -903,18 +882,26 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
         setIsTyping(false);
         typingTimerRef.current = null;
 
-        if (nextMode === "email")
+        if (nextMode === "email") {
           addMsg(
             "assistant",
             lang === "vi"
               ? "OK — email không tới. Bạn cần: xác minh / reset / hóa đơn?"
               : "Okay — email not arriving. What type (verification / reset / receipt)?"
           );
-        else if (nextMode === "billing")
-          addMsg("assistant", lang === "vi" ? "OK — thanh toán/VIP. Bạn đang ở gói nào và lỗi gì?" : "Okay — billing/VIP. Which tier and what’s wrong?");
-        else if (nextMode === "about")
-          addMsg("assistant", lang === "vi" ? "OK — Mercy Blade hoạt động thế nào. Bạn đang muốn làm gì?" : "Okay — here’s how Mercy Blade works. What are you trying to do?");
-        else addMsg("assistant", baseAssistantHome);
+        } else if (nextMode === "billing") {
+          addMsg(
+            "assistant",
+            lang === "vi" ? "OK — thanh toán/VIP. Bạn đang ở gói nào và lỗi gì?" : "Okay — billing/VIP. Which tier and what’s wrong?"
+          );
+        } else if (nextMode === "about") {
+          addMsg(
+            "assistant",
+            lang === "vi" ? "OK — Mercy Blade hoạt động thế nào. Bạn đang muốn làm gì?" : "Okay — here’s how Mercy Blade works. What are you trying to do?"
+          );
+        } else {
+          addMsg("assistant", baseAssistantHome);
+        }
       }, 500);
     },
     [addMsg, baseAssistantHome, clearTypingTimer, seedIfEmpty, lang]
@@ -939,7 +926,6 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
     stopVoice();
   }, [clearTypingTimer, stopVoice]);
 
-  // Auto-open on /signin — ONCE per browser
   useEffect(() => {
     if (isAdmin) return;
     if (!isSignin) return;
@@ -959,7 +945,6 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
     }, 450);
   }, [isAdmin, isSignin, clearTypingTimer, seedIfEmpty]);
 
-  // ESC to close
   useEffect(() => {
     if (isAdmin) return;
     if (!open) return;
@@ -987,17 +972,16 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
             ? "Giọng nói (Admin Test)"
             : "Voice (Admin Test)"
           : lang === "vi"
-          ? "Giọng nói (VIP9)"
-          : "Voice (VIP9)",
+            ? "Giọng nói (VIP9)"
+            : "Voice (VIP9)",
         description: canVoiceTest
           ? lang === "vi"
             ? "Test giọng nói ngay trên trình duyệt (không tốn tiền)"
             : "Test voice using browser TTS (no cost)"
           : lang === "vi"
-          ? "Chỉ dành cho VIP9"
-          : "VIP9 only",
+            ? "Chỉ dành cho VIP9"
+            : "VIP9 only",
         onClick: () => {
-          // If not signed in -> signin
           if (!authUserId) {
             closePanel();
             navigate("/signin");
@@ -1030,7 +1014,7 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
       },
       {
         id: "test",
-        label: lang === "vi" ? "Mini test" : "Mini test",
+        label: "Mini test",
         description: lang === "vi" ? "Đo nhanh trình độ để gợi ý nơi bắt đầu" : "Quick level check to recommend where to start",
         onClick: () => {
           if (!open) openPanel();
@@ -1092,7 +1076,6 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
     seedIfEmpty(mode);
     addMsg("user", text);
 
-    // Log every user message as a 'question' note (best effort)
     void logHostNote({
       note_type: "question",
       category: "other",
@@ -1121,9 +1104,7 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
     [onSend]
   );
 
-  // Dev observability
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const g: any = globalThis as any;
     g.__MB_HOST_STATE__ = {
       open,
@@ -1168,14 +1149,11 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
   ]);
 
   if (!mounted || typeof document === "undefined" || !document.body) return null;
-
-  // ✅ IMPORTANT: hide UI on admin AFTER hooks (no early return before hooks)
   if (isAdmin) return null;
 
   const fontStack =
     'ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"';
 
-  // ✅ closed state must not cover the screen (so OAuth buttons work)
   const ui = open ? (
     <div
       data-mb-host="true"
@@ -1186,7 +1164,6 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
         fontFamily: fontStack,
       }}
     >
-      {/* Backdrop (click to close) */}
       <div
         onMouseDown={closePanel}
         aria-hidden="true"
@@ -1197,17 +1174,16 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
         }}
       />
 
-      {/* Dock */}
-      <div style={{ position: "fixed", right: 24, bottom: 24 }}>
+      <div style={{ position: "fixed", right: HOST_RIGHT, bottom: HOST_BOTTOM }}>
         <div
           role="dialog"
           aria-modal="false"
           onMouseDown={(e) => e.stopPropagation()}
           onClick={(e) => e.stopPropagation()}
           style={{
-            width: 460,
-            maxWidth: "92vw",
-            maxHeight: "calc(100vh - 140px)",
+            width: HOST_PANEL_WIDTH,
+            maxWidth: HOST_PANEL_MAX_WIDTH,
+            maxHeight: HOST_PANEL_MAX_HEIGHT,
             borderRadius: 18,
             background: "#fff",
             border: "1px solid rgba(0,0,0,0.10)",
@@ -1217,7 +1193,6 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
             flexDirection: "column",
           }}
         >
-          {/* Header */}
           <div
             style={{
               display: "flex",
@@ -1232,8 +1207,8 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
             <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
               <div
                 style={{
-                  width: 56,
-                  height: 56,
+                  width: HOST_HEADER_AVATAR_WRAP,
+                  height: HOST_HEADER_AVATAR_WRAP,
                   borderRadius: 999,
                   background: "rgba(0,0,0,0.05)",
                   display: "flex",
@@ -1243,7 +1218,7 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
                 }}
                 aria-hidden="true"
               >
-                <TalkingFaceIcon size={44} isTalking={isTyping} />
+                <TalkingFaceIcon size={HOST_HEADER_FACE_SIZE} isTalking={isTyping} />
               </div>
 
               <div style={{ lineHeight: 1.15, minWidth: 0 }}>
@@ -1256,7 +1231,7 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
                     whiteSpace: "nowrap",
                     overflow: "hidden",
                     textOverflow: "ellipsis",
-                    maxWidth: 310,
+                    maxWidth: HOST_HEADER_SUBTITLE_MAX_WIDTH,
                   }}
                   title={contextLine ?? headerSubtitle}
                 >
@@ -1332,7 +1307,6 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
             </div>
           </div>
 
-          {/* Body */}
           <div
             ref={scrollRef}
             style={{
@@ -1431,7 +1405,6 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
             </div>
           </div>
 
-          {/* Input bar (REAL typing) */}
           <div
             style={{
               borderTop: "1px solid rgba(0,0,0,0.10)",
@@ -1502,8 +1475,8 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
       data-mb-host="true"
       style={{
         position: "fixed",
-        right: 24,
-        bottom: 24,
+        right: HOST_RIGHT,
+        bottom: HOST_BOTTOM,
         zIndex: 2147483000,
         fontFamily: fontStack,
       }}
@@ -1514,8 +1487,8 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
         aria-label="Open Mercy Host"
         title="Mercy Host"
         style={{
-          width: 96,
-          height: 96,
+          width: HOST_LAUNCHER_SIZE,
+          height: HOST_LAUNCHER_SIZE,
           borderRadius: 999,
           border: "1px solid rgba(0,0,0,0.12)",
           background: "#fff",
@@ -1526,7 +1499,7 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
           cursor: "pointer",
         }}
       >
-        <TalkingFaceIcon size={78} isTalking={false} />
+        <TalkingFaceIcon size={HOST_LAUNCHER_FACE_SIZE} isTalking={false} />
       </button>
     </div>
   );

@@ -1307,6 +1307,22 @@ export function MercyGuide({
             </Tabs>
           )}
 
+          <div className="pointer-events-none absolute inset-x-0 top-3 z-[85] flex justify-center">
+            <div className="h-1.5 w-20 rounded-full bg-gray-400/80 shadow-sm" />
+          </div>
+
+          <div className="pointer-events-none absolute inset-x-0 bottom-5 z-[85] flex justify-center">
+            <div className="h-1.5 w-20 rounded-full bg-gray-400/80 shadow-sm" />
+          </div>
+
+          <div className="pointer-events-none absolute inset-y-0 left-3 z-[85] flex items-center">
+            <div className="h-20 w-1.5 rounded-full bg-gray-400/80 shadow-sm" />
+          </div>
+
+          <div className="pointer-events-none absolute inset-y-0 right-3 z-[85] flex items-center">
+            <div className="h-20 w-1.5 rounded-full bg-gray-400/80 shadow-sm" />
+          </div>
+
           <div
             className="absolute inset-x-3 top-0 z-[70] touch-none"
             style={{ height: EDGE_HANDLE_THICKNESS, cursor: 'n-resize' }}

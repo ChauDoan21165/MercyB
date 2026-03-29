@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 export function GlobalNavigationBox() {
   const navigate = useNavigate();
   const location = useLocation();
-  
+
   // Don't show on homepage or onboarding
   if (location.pathname === "/" || location.pathname === "/onboarding") {
     return null;
@@ -33,7 +33,7 @@ export function GlobalNavigationBox() {
             <span className="font-medium">Home</span>
           </Link>
         </Button>
-        
+
         {/* Back Button - Bottom (only if not on root path) */}
         {!isRootPath && (
           <Button

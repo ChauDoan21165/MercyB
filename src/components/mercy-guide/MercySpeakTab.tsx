@@ -1,5 +1,13 @@
 import React from 'react';
-import { Loader2, Mic, Play, Square, Volume2 } from 'lucide-react';
+import {
+  Loader2,
+  Mic,
+  Play,
+  Square,
+  Volume2,
+  Languages,
+  Repeat2,
+} from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -24,6 +32,20 @@ interface MercySpeakTabProps {
   speakPractice: UseSpeakPracticeResult;
 }
 
+function clampScore(value: unknown): number | null {
+  const num = typeof value === 'number' ? value : Number(value);
+  if (!Number.isFinite(num)) return null;
+  return Math.max(0, Math.min(100, Math.round(num)));
+}
+
+function getScoreBand(score: number | null) {
+  if (score === null) return null;
+  if (score >= 90) return 'Rất tốt';
+  if (score >= 75) return 'Khá tốt';
+  if (score >= 60) return 'Đang tiến bộ';
+  return 'Cần luyện thêm';
+}
+
 export function MercySpeakTab({
   roomId,
   contentEn,
@@ -38,6 +60,9 @@ export function MercySpeakTab({
     recorder,
     targetPhrase,
     setTargetPhrase,
+    trimmedTargetPhrase,
+    canRecord,
+    recordDisabledReason,
     isPlayingTarget,
     pronunciationResult,
     isEvaluating,
@@ -52,10 +77,36 @@ export function MercySpeakTab({
     handleRecordToggle,
   } = speakPractice;
 
+  const maybeExtended =
+    speakPractice as UseSpeakPracticeResult & {
+      evaluationError?: string | null;
+      activePlaybackMode?: 'normal' | 'slow' | null;
+      isNormalPlaybackActive?: boolean;
+      isSlowPlaybackActive?: boolean;
+    };
+
+  const evaluationError = maybeExtended.evaluationError ?? null;
+  const activePlaybackMode = maybeExtended.activePlaybackMode ?? null;
+
+  const isNormalPlaybackActive =
+    typeof maybeExtended.isNormalPlaybackActive === 'boolean'
+      ? maybeExtended.isNormalPlaybackActive
+      : isPlayingTarget && activePlaybackMode === 'normal';
+
+  const isSlowPlaybackActive =
+    typeof maybeExtended.isSlowPlaybackActive === 'boolean'
+      ? maybeExtended.isSlowPlaybackActive
+      : isPlayingTarget && activePlaybackMode === 'slow';
+
+  const effectivePhrase =
+    typeof trimmedTargetPhrase === 'string'
+      ? trimmedTargetPhrase
+      : targetPhrase.trim();
+
   const primaryFocusItem = pronunciationResult?.feedback?.focus_items?.[0];
   const secondaryFocusItems =
     pronunciationResult?.feedback?.focus_items?.slice(1) || [];
-  const hasPhrase = Boolean(targetPhrase.trim());
+  const hasPhrase = Boolean(effectivePhrase);
 
   const displayedTroubleWords = React.useMemo(() => {
     const troubleWordMap = new Map(
@@ -91,34 +142,50 @@ export function MercySpeakTab({
     return merged.slice(0, 8);
   }, [troubleWords, pronunciationResult]);
 
+  const canShowCompareButton =
+    Boolean(lastRecordedAudioUrl) && Boolean(effectivePhrase);
+
+  const isRecordDisabled =
+    typeof canRecord === 'boolean'
+      ? !canRecord && recorder.status !== 'recording'
+      : isEvaluating || recorder.status === 'processing';
+
+  const realScore = clampScore(pronunciationResult?.score);
+  const scoreBand = getScoreBand(realScore);
+
+  const praiseEn =
+    pronunciationResult?.feedback?.praise_en || FALLBACK_PRAISE.en;
+  const praiseVi =
+    pronunciationResult?.feedback?.praise_vi || FALLBACK_PRAISE.vi;
+
   return (
     <TabsContent value="speak" className="m-0 h-full flex-1 overflow-hidden">
-      <div className="h-full overflow-y-auto bg-white px-4 py-3">
+      <div className="h-full overflow-y-auto bg-white px-5 py-4">
         {speakLimitReached ? (
-          <div className="space-y-2 py-8 text-center">
-            <p className="text-sm text-foreground">
+          <div className="space-y-3 py-10 text-center">
+            <p className="text-base font-medium text-foreground">
               Let&apos;s rest your voice a bit.
             </p>
-            <p className="text-xs text-muted-foreground">
+            <p className="text-sm text-muted-foreground">
               You can practice more later.
             </p>
-            <p className="mt-4 text-xs text-muted-foreground">
+            <p className="mt-2 text-sm text-muted-foreground">
               Mình cho giọng bạn nghỉ một chút nhé. Lát nữa luyện tiếp cũng được.
             </p>
           </div>
         ) : (
-          <div className="space-y-4 pb-4">
-            <div className="rounded-xl border border-primary/20 bg-primary/5 p-3">
-              <p className="text-sm font-semibold text-foreground">Start here</p>
-              <p className="mt-1 text-xs text-muted-foreground">
+          <div className="space-y-5 pb-5">
+            <div className="rounded-xl border border-primary/20 bg-primary/5 p-4">
+              <p className="text-base font-semibold text-foreground">Start here</p>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">
                 Type or paste a word or short sentence, then tap Record and say
                 it out loud. / Nhập một từ hoặc câu ngắn, rồi nhấn Record và nói
                 thành tiếng.
               </p>
             </div>
 
-            <div className="space-y-2 rounded-xl border border-primary/20 bg-white p-3 shadow-sm">
-              <label className="text-sm font-medium text-foreground">
+            <div className="space-y-3 rounded-xl border border-primary/20 bg-white p-4 shadow-sm">
+              <label className="text-base font-medium text-foreground">
                 Type or paste a word or short sentence
               </label>
 
@@ -126,23 +193,23 @@ export function MercySpeakTab({
                 value={targetPhrase}
                 onChange={(e) => setTargetPhrase(e.target.value.slice(0, 120))}
                 placeholder="Example: I would like a cup of tea"
-                className="text-sm"
+                className="h-11 text-base"
               />
 
-              <p className="text-xs text-muted-foreground">
+              <p className="text-sm text-muted-foreground">
                 Paste one short phrase here first. / Dán hoặc nhập một câu ngắn ở
                 đây trước nhé.
               </p>
             </div>
 
-            <div className="space-y-2 rounded-xl border border-primary/20 bg-primary/5 p-3">
-              <p className="text-sm font-medium text-foreground">
+            <div className="space-y-3 rounded-xl border border-primary/20 bg-primary/5 p-4">
+              <p className="text-base font-medium text-foreground">
                 {hasPhrase
                   ? 'Now tap Record and say the phrase out loud.'
                   : 'After you enter a phrase above, tap Record and say it out loud.'}
               </p>
 
-              <p className="text-xs text-muted-foreground">
+              <p className="text-sm text-muted-foreground">
                 Speak one short phrase at a time. / Mỗi lần mình nói một cụm ngắn
                 thôi nhé.
               </p>
@@ -151,13 +218,10 @@ export function MercySpeakTab({
                 variant={
                   recorder.status === 'recording' ? 'destructive' : 'default'
                 }
-                className="h-11 w-full"
+                className="h-12 w-full text-base"
                 onClick={handleRecordToggle}
-                disabled={
-                  !targetPhrase ||
-                  isEvaluating ||
-                  recorder.status === 'processing'
-                }
+                disabled={isRecordDisabled}
+                title={isRecordDisabled ? recordDisabledReason || undefined : undefined}
               >
                 {isEvaluating || recorder.status === 'processing' ? (
                   <>
@@ -178,22 +242,37 @@ export function MercySpeakTab({
               </Button>
 
               {!hasPhrase && (
-                <p className="text-center text-xs text-muted-foreground">
-                  Add a word or short sentence above to unlock recording. / Nhập
+                <p className="text-center text-sm text-muted-foreground">
+                  Add a word or short sentence above to start recording. / Nhập
                   từ hoặc câu ngắn ở trên để bắt đầu thu âm.
                 </p>
               )}
 
+              {recordDisabledReason &&
+                !recorder.error &&
+                isRecordDisabled &&
+                recorder.status !== 'recording' && (
+                  <p className="text-center text-sm text-muted-foreground">
+                    {recordDisabledReason}
+                  </p>
+                )}
+
+              {recorder.status === 'recording' && (
+                <p className="text-center text-sm text-emerald-600">
+                  Recording now... speak clearly. / Đang thu âm... nói rõ nhé.
+                </p>
+              )}
+
               {recorder.error && (
-                <div className="rounded-lg bg-destructive/10 p-2">
-                  <p className="whitespace-pre-line text-xs text-destructive">
+                <div className="rounded-lg bg-destructive/10 p-3">
+                  <p className="whitespace-pre-line text-sm text-destructive">
                     {recorder.error}
                   </p>
-                  <p className="mt-1 text-xs text-muted-foreground">
+                  <p className="mt-2 text-sm text-muted-foreground">
                     If you can&apos;t use the mic, you can still read the phrase
                     out loud to yourself. That still helps.
                   </p>
-                  <p className="text-xs text-muted-foreground">
+                  <p className="text-sm text-muted-foreground">
                     Nếu chưa dùng được micro, bạn vẫn có thể tự đọc câu này thành
                     tiếng. Vậy vẫn có ích lắm.
                   </p>
@@ -201,39 +280,39 @@ export function MercySpeakTab({
               )}
             </div>
 
-            <div className="rounded-lg bg-muted/40 p-2 text-center">
-              <p className="text-xs text-muted-foreground">
+            <div className="rounded-lg bg-muted/40 p-3 text-center">
+              <p className="text-sm text-muted-foreground">
                 {speakProgressHint.en}
               </p>
-              <p className="text-xs text-muted-foreground/70">
+              <p className="mt-1 text-sm text-muted-foreground/70">
                 {speakProgressHint.vi}
               </p>
             </div>
 
             {shouldShowWithoutRoom && !contentEn && !roomId && (
-              <div className="rounded-lg border border-border bg-muted/30 p-3 text-center">
-                <p className="text-sm text-foreground">
+              <div className="rounded-lg border border-border bg-muted/30 p-4 text-center">
+                <p className="text-base text-foreground">
                   You can practice here even without opening a room.
                 </p>
-                <p className="text-xs text-muted-foreground">
+                <p className="text-sm text-muted-foreground">
                   Bạn vẫn có thể luyện nói ở đây dù chưa mở room.
                 </p>
               </div>
             )}
 
-            <div className="space-y-2">
-              <p className="text-center text-xs text-muted-foreground">
+            <div className="space-y-3">
+              <p className="text-center text-sm text-muted-foreground">
                 Optional: tap Listen first if you want to hear the phrase. / Bạn
                 có thể nhấn Listen trước nếu muốn nghe mẫu.
               </p>
 
               <Button
                 variant="outline"
-                className="w-full"
-                onClick={handlePlayTarget}
-                disabled={!targetPhrase || isPlayingTarget}
+                className="h-11 w-full text-base"
+                onClick={() => void handlePlayTarget()}
+                disabled={!hasPhrase || isPlayingTarget}
               >
-                {isPlayingTarget ? (
+                {isNormalPlaybackActive ? (
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                 ) : (
                   <Volume2 className="mr-2 h-4 w-4" />
@@ -243,116 +322,151 @@ export function MercySpeakTab({
 
               <Button
                 variant="outline"
-                className="w-full"
-                onClick={handlePlaySlow}
-                disabled={!targetPhrase || isPlayingTarget}
+                className="h-11 w-full text-base"
+                onClick={() => void handlePlaySlow()}
+                disabled={!hasPhrase || isPlayingTarget}
               >
-                {isPlayingTarget ? (
+                {isSlowPlaybackActive ? (
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                 ) : (
                   <Play className="mr-2 h-4 w-4" />
                 )}
                 Listen Slow / Nghe chậm
               </Button>
+
+              <Button
+                variant="outline"
+                className="h-11 w-full text-base"
+                onClick={() => void handleShadowCompare()}
+                disabled={!canShowCompareButton || isComparing}
+              >
+                {isComparing ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Comparing Host vs You... / Đang so sánh Host và bạn...
+                  </>
+                ) : (
+                  <>
+                    <Repeat2 className="mr-2 h-4 w-4" />
+                    Compare Host vs You / So sánh Host và bạn
+                  </>
+                )}
+              </Button>
+
+              {!canShowCompareButton && (
+                <p className="text-center text-sm text-muted-foreground">
+                  Record one phrase first to compare your voice with the Host. /
+                  Hãy thu một câu trước để so sánh giọng của bạn với Host.
+                </p>
+              )}
             </div>
 
-            {pronunciationResult && (
+            {evaluationError && (
+              <div className="rounded-lg border border-amber-200 bg-amber-50 p-4">
+                <p className="text-base font-medium text-amber-800">
+                  Pronunciation score is temporarily unavailable
+                </p>
+                <p className="mt-1 text-sm text-amber-700">
+                  The comparison tools still work, but the server did not return a
+                  valid clarity score for this attempt.
+                </p>
+                <p className="mt-1 text-sm text-amber-700">
+                  Chức năng so sánh vẫn dùng được, nhưng máy chủ chưa trả về điểm
+                  rõ âm hợp lệ cho lần này.
+                </p>
+              </div>
+            )}
+
+            {pronunciationResult && !evaluationError && (
               <div className="space-y-4 border-t border-border pt-4">
-                <div className="rounded-lg bg-primary/10 p-3 text-center">
-                  <p className="text-sm font-medium text-primary">
-                    {pronunciationResult.feedback?.praise_en ||
-                      FALLBACK_PRAISE.en}
+                <div className="rounded-lg bg-primary/10 p-4 text-center">
+                  <p className="text-base font-medium text-primary">
+                    {praiseEn}
                   </p>
-                  <p className="mt-1 text-xs text-primary/70">
-                    {pronunciationResult.feedback?.praise_vi ||
-                      FALLBACK_PRAISE.vi}
+                  <p className="mt-1 text-sm text-primary/70">
+                    {praiseVi}
                   </p>
                 </div>
 
-                <div className="flex justify-center">
-                  <span className="rounded-full bg-secondary px-3 py-1 text-sm text-secondary-foreground">
-                    Pronunciation clarity: {pronunciationResult.score}/100
-                  </span>
-                </div>
+                {realScore !== null && (
+                  <div className="flex justify-center">
+                    <div className="rounded-xl bg-secondary px-4 py-3 text-center text-secondary-foreground">
+                      <p className="text-xs uppercase tracking-wide opacity-70">
+                        Accuracy
+                      </p>
+                      <p className="text-xl font-semibold">
+                        {realScore}/100
+                      </p>
+                      {scoreBand && (
+                        <p className="text-sm opacity-80">{scoreBand}</p>
+                      )}
+                    </div>
+                  </div>
+                )}
 
                 {pronunciationResult.transcribedText && (
-                  <div className="rounded-lg bg-muted p-2">
-                    <p className="mb-1 text-xs text-muted-foreground">
-                      I heard:
-                    </p>
-                    <p className="text-sm">
+                  <div className="rounded-lg bg-muted p-3">
+                    <p className="mb-1 text-sm text-muted-foreground">I heard:</p>
+                    <p className="text-base">
                       {pronunciationResult.transcribedText}
                     </p>
                   </div>
                 )}
 
                 {primaryFocusItem && (
-                  <div className="rounded-lg border border-primary/20 bg-primary/5 p-3">
-                    <p className="text-xs font-medium uppercase tracking-wide text-primary">
+                  <div className="rounded-lg border border-primary/20 bg-primary/5 p-4">
+                    <p className="text-sm font-medium uppercase tracking-wide text-primary">
                       Main thing to notice / Điều chính cần chú ý
                     </p>
-                    <p className="mt-2 text-sm font-semibold text-foreground">
+                    <p className="mt-2 text-base font-semibold text-foreground">
                       {primaryFocusItem.word}
                     </p>
-                    <p className="mt-1 text-sm text-foreground">
-                      {primaryFocusItem.tip_en}
-                    </p>
-                    <p className="mt-1 text-xs text-muted-foreground">
-                      {primaryFocusItem.tip_vi}
-                    </p>
+                    {primaryFocusItem.tip_en && (
+                      <p className="mt-2 text-base text-foreground">
+                        {primaryFocusItem.tip_en}
+                      </p>
+                    )}
+                    {primaryFocusItem.tip_vi && (
+                      <p className="mt-1 text-sm text-muted-foreground">
+                        {primaryFocusItem.tip_vi}
+                      </p>
+                    )}
                   </div>
                 )}
 
                 {secondaryFocusItems.length > 0 && (
-                  <div className="space-y-2">
-                    <p className="text-xs font-medium text-foreground">
+                  <div className="space-y-3">
+                    <p className="text-sm font-medium text-foreground">
                       More to practice / Luyện thêm:
                     </p>
 
                     {secondaryFocusItems.map((item, idx) => (
-                      <div key={idx} className="rounded-lg bg-secondary/30 p-2">
-                        <p className="text-sm font-semibold text-primary">
+                      <div key={idx} className="rounded-lg bg-secondary/30 p-3">
+                        <p className="text-base font-semibold text-primary">
                           {item.word}
                         </p>
-                        <p className="mt-1 text-xs text-foreground">
-                          {item.tip_en}
-                        </p>
-                        <p className="text-xs text-muted-foreground">
-                          {item.tip_vi}
-                        </p>
+                        {item.tip_en && (
+                          <p className="mt-1 text-sm text-foreground">
+                            {item.tip_en}
+                          </p>
+                        )}
+                        {item.tip_vi && (
+                          <p className="text-sm text-muted-foreground">
+                            {item.tip_vi}
+                          </p>
+                        )}
                       </div>
                     ))}
                   </div>
                 )}
 
-                {lastRecordedAudioUrl && (
-                  <Button
-                    variant="outline"
-                    className="w-full"
-                    onClick={handleShadowCompare}
-                    disabled={isComparing}
-                  >
-                    {isComparing ? (
-                      <>
-                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        Comparing voices... / Đang so sánh giọng...
-                      </>
-                    ) : (
-                      <>
-                        <Volume2 className="mr-2 h-4 w-4" />
-                        Hear the Difference / Nghe sự khác biệt
-                      </>
-                    )}
-                  </Button>
-                )}
-
                 {pronunciationResult.feedback?.encouragement_en && (
-                  <div className="rounded-lg bg-primary/5 p-3 text-center">
-                    <p className="text-sm text-primary">
+                  <div className="rounded-lg bg-primary/5 p-4 text-center">
+                    <p className="text-base text-primary">
                       {pronunciationResult.feedback.encouragement_en}
                     </p>
                     {pronunciationResult.feedback?.encouragement_vi && (
-                      <p className="text-xs text-primary/70">
+                      <p className="mt-1 text-sm text-primary/70">
                         {pronunciationResult.feedback.encouragement_vi}
                       </p>
                     )}
@@ -362,12 +476,12 @@ export function MercySpeakTab({
             )}
 
             {troubleWords.length > 0 && (
-              <div className="space-y-3 rounded-lg border border-border bg-muted/20 p-3">
+              <div className="space-y-3 rounded-lg border border-border bg-muted/20 p-4">
                 <div className="flex items-center justify-between">
-                  <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                  <p className="text-sm font-medium uppercase tracking-wide text-muted-foreground">
                     Trouble Words / Từ cần luyện thêm
                   </p>
-                  <span className="rounded-full bg-secondary px-2 py-0.5 text-[10px] text-secondary-foreground">
+                  <span className="rounded-full bg-secondary px-2.5 py-1 text-xs text-secondary-foreground">
                     {troubleWords.length}
                   </span>
                 </div>
@@ -377,9 +491,10 @@ export function MercySpeakTab({
                     <button
                       key={`${item.word}-${idx}`}
                       type="button"
-                      onClick={() => handleTroubleWordPractice(item.word)}
+                      onClick={() => void handleTroubleWordPractice(item.word)}
                       className={cn(
-                        'rounded-full border px-3 py-1 text-xs transition-colors',
+                        'inline-flex items-center gap-1 rounded-full border px-3 py-2 text-sm transition-colors',
+                        'hover:shadow-sm active:scale-[0.99]',
                         item.lastScore < 50
                           ? 'border-rose-200 bg-rose-50 text-rose-700'
                           : item.lastScore < 80
@@ -392,21 +507,19 @@ export function MercySpeakTab({
                           : undefined
                       }
                     >
-                      {item.word} ×{item.count}
+                      <Languages className="h-3.5 w-3.5" />
+                      <span>{item.word}</span>
                     </button>
                   ))}
                 </div>
-
-                <p className="text-xs text-muted-foreground">
-                  Tap a word to practice it again. / Chạm vào từ để luyện lại.
-                </p>
               </div>
             )}
 
-            <p className="pt-2 text-center text-xs text-muted-foreground">
-              {MAX_SPEAK_ATTEMPTS - speakAttempts} attempts remaining this
-              session
-            </p>
+            <div className="pb-2 text-center">
+              <p className="text-sm text-muted-foreground">
+                {speakAttempts}/{MAX_SPEAK_ATTEMPTS} attempts used
+              </p>
+            </div>
           </div>
         )}
       </div>

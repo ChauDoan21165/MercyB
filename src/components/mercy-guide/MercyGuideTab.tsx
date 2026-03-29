@@ -225,7 +225,7 @@ export function MercyGuideTab({
                     : 'mr-8 rounded-2xl border border-border bg-muted/30 px-4 py-3 text-foreground'
                 }
               >
-                <p className="text-base leading-7">{message.text}</p>
+                <p className="whitespace-pre-line text-base leading-7">{message.text}</p>
 
                 {message.role === 'assistant' && message.suggestSpeak && (
                   <div className="mt-3">

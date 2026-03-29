@@ -293,10 +293,9 @@ export default function TierDetail() {
     display: "flex",
     flexDirection: "column",
     pointerEvents: "auto",
-    minHeight: 112, // ✅ consistent rhythm
+    minHeight: 112,
   };
 
-  // ✅ 2-line clamp for long slugs; keeps cards calm
   const cardTitle: React.CSSProperties = {
     fontSize: 16,
     fontWeight: 800,
@@ -313,7 +312,7 @@ export default function TierDetail() {
   };
 
   const codeRow: React.CSSProperties = {
-    marginTop: "auto", // ✅ pins actions to bottom
+    marginTop: "auto",
     paddingTop: 10,
     display: "flex",
     alignItems: "center",
@@ -402,7 +401,7 @@ export default function TierDetail() {
               alignItems: "baseline",
             }}
           >
-            <h1 style={titleStyle}>{tierIdToLabel(tier)}</h1>
+            <h1 style={titleStyle}>{tierIdToLabel[tier] ?? tier}</h1>
             <Link style={back} to="/tiers">
               Back to Tier Map
             </Link>
@@ -412,7 +411,6 @@ export default function TierDetail() {
             Rooms in this tier ({areaToShow.toUpperCase()}): <b>{filtered.length}</b>
           </div>
 
-          {/* ✅ Debug-only diagnostics (keeps premium UI clean) */}
           {showDebug ? (
             <div style={debugLine}>
               source={source}

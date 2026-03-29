@@ -16,7 +16,7 @@ import AdminRoute from "@/components/admin/AdminRoute";
 import AdminLayout from "@/components/admin/AdminLayout";
 import { useAuth } from "@/providers/AuthProvider";
 
-const MB_ROUTER_VERSION = "2026-03-25-app-router-logo-fixed-v4-tight-header";
+const MB_ROUTER_VERSION = "2026-03-28-app-router-chat-hub-only-room-host-v2";
 
 const ChatHub = lazy(() => import("@/pages/ChatHub"));
 const AllRooms = lazy(() => import("@/pages/AllRooms"));
@@ -44,8 +44,6 @@ const AudioCoveragePage = lazy(() => import("@/pages/admin/AudioCoveragePage"));
 const AdminMonitoring = lazy(() => import("@/pages/admin/AdminMonitoring"));
 const AdminMetrics = lazy(() => import("@/pages/admin/AdminMetrics"));
 const AdminVIPRooms = lazy(() => import("@/pages/admin/AdminVIPRooms"));
-
-const MercyAIHost = lazy(() => import("@/components/guide/MercyAIHost"));
 
 declare global {
   interface Window {
@@ -331,17 +329,6 @@ function AdminShell() {
   );
 }
 
-function MercyHostRouteShell() {
-  return (
-    <>
-      <Outlet />
-      <Suspense fallback={null}>
-        <MercyAIHost />
-      </Suspense>
-    </>
-  );
-}
-
 function RouterBeacon() {
   useEffect(() => {
     try {
@@ -477,16 +464,14 @@ export default function AppRouter() {
           <Route path="/room" element={<RoomIndexRedirect />} />
           <Route path="/rooms/room/:roomId" element={<RoomsRoomRedirect />} />
 
-          <Route element={<MercyHostRouteShell />}>
-            <Route
-              path="/room/:roomId"
-              element={
-                <LazyPage>
-                  <ChatHub />
-                </LazyPage>
-              }
-            />
-          </Route>
+          <Route
+            path="/room/:roomId"
+            element={
+              <LazyPage>
+                <ChatHub />
+              </LazyPage>
+            }
+          />
 
           <Route path="/admin/*" element={<AdminShell />}>
             <Route
