@@ -1,3 +1,13 @@
+/**
+ * File: supabase/functions/apple-iap-sync/index.ts
+ * Description: Hardened Apple IAP Sync Engine with Account Lockdown.
+ * Features: 
+ * 1. SHA-256 Event Deduplication (Audit Trail)
+ * 2. Original Transaction ID Ownership Check (Anti-Fraud)
+ * 3. Canonical Subscription Mapping (Standardized Entitlements)
+ * 4. Auth-Guard & Service-Role Isolation
+ */
+
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 import {
   AppleEnvironment,
@@ -30,11 +40,22 @@ type AppleIapSyncResponse = {
   error?: string;
 };
 
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+};
+
 Deno.serve(async (req) => {
+  // Handle CORS preflight
+  if (req.method === 'OPTIONS') {
+    return new Response('ok', { headers: corsHeaders });
+  }
+
   if (req.method !== 'POST') {
     return json<AppleIapSyncResponse>({ ok: false, error: 'method_not_allowed' }, 405);
   }
 
+  // 1. Initialize Clients
   const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
   const anonKey = Deno.env.get('SUPABASE_ANON_KEY')!;
   const serviceRoleKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
@@ -44,26 +65,19 @@ Deno.serve(async (req) => {
   });
   const admin = createClient(supabaseUrl, serviceRoleKey);
 
-  const {
-    data: { user },
-    error: authError,
-  } = await authClient.auth.getUser();
-
+  // 2. Auth Guard
+  const { data: { user }, error: authError } = await authClient.auth.getUser();
   if (authError || !user) {
     return json<AppleIapSyncResponse>({ ok: false, error: 'unauthorized' }, 401);
   }
 
   const body = (await req.json()) as AppleIapSyncRequest;
   if (!body.signedTransactionInfo && !body.transactionId) {
-    return json<AppleIapSyncResponse>(
-      { ok: false, error: 'signedTransactionInfo_or_transactionId_required' },
-      400,
-    );
+    return json<AppleIapSyncResponse>({ ok: false, error: 'signedTransactionInfo_or_transactionId_required' }, 400);
   }
 
-  const dedupeKey = await sha256Hex(
-    body.signedTransactionInfo ?? `transaction:${body.transactionId}`,
-  );
+  // 3. Deduplication via SHA-256 (Audit Trail)
+  const dedupeKey = await sha256Hex(body.signedTransactionInfo ?? `transaction:${body.transactionId}`);
 
   const { data: insertedEvent, error: eventError } = await admin
     .from('apple_iap_events')
@@ -77,21 +91,40 @@ Deno.serve(async (req) => {
     .select('id')
     .single();
 
-  if (eventError && !isUniqueViolation(eventError)) {
-    return json<AppleIapSyncResponse>({ ok: false, error: 'event_insert_failed' }, 500);
-  }
-
-  if (!insertedEvent && eventError && isUniqueViolation(eventError)) {
+  if (eventError && isUniqueViolation(eventError)) {
     return json<AppleIapSyncResponse>({ ok: true, entitlement_refresh_required: true }, 200);
   }
 
+  if (eventError) {
+    return json<AppleIapSyncResponse>({ ok: false, error: 'event_insert_failed' }, 500);
+  }
+
   try {
+    // 4. Verify with Apple App Store Server API
     const transaction = await verifyTransactionWithApple({
       signedTransactionInfo: body.signedTransactionInfo,
       transactionId: body.transactionId,
       environmentHint: body.environmentHint,
     });
 
+    // 5. ACCOUNT LOCKDOWN: Ownership Verification
+    // We check if this specific Apple Purchase (originalTransactionId) is already owned by someone else
+    const { data: existingSub, error: subCheckError } = await admin
+      .from('subscriptions')
+      .select('user_id')
+      .eq('provider', 'apple')
+      .eq('provider_subscription_id', transaction.originalTransactionId)
+      .maybeSingle();
+
+    if (subCheckError) throw new Error("Subscription integrity check failed");
+
+    // BLOCK if the transaction belongs to a different MercyB account
+    if (existingSub && existingSub.user_id !== user.id) {
+      console.warn(`[LOCKDOWN-BLOCK] User ${user.id} attempted to hijack Transaction ${transaction.originalTransactionId} belonging to ${existingSub.user_id}`);
+      return json<AppleIapSyncResponse>({ ok: false, error: 'transaction_bound_to_different_user' }, 403);
+    }
+
+    // 6. Map to MercyB Canonical Format
     const canonical = mapAppleToCanonical({
       transaction: {
         ...transaction,
@@ -105,11 +138,13 @@ Deno.serve(async (req) => {
       },
     });
 
+    // 7. Upsert to Subscriptions Table
     const projected = await upsertCanonicalSubscription(admin, canonical, user.id, transaction);
     if (!projected.ok) {
       return json<AppleIapSyncResponse>({ ok: false, error: projected.error }, 500);
     }
 
+    // 8. Mark Event as Processed
     await admin
       .from('apple_iap_events')
       .update({
@@ -131,7 +166,8 @@ Deno.serve(async (req) => {
         current_period_end: canonical.current_period_end,
       },
       entitlement_refresh_required: true,
-    });
+    }, 200);
+
   } catch (error) {
     return json<AppleIapSyncResponse>(
       { ok: false, error: error instanceof Error ? error.message : 'apple_verification_failed' },
@@ -147,15 +183,13 @@ async function upsertCanonicalSubscription(
   transaction: { signedDate?: number; transactionId: string; originalTransactionId: string },
 ): Promise<{ ok: true } | { ok: false; error: string }> {
   const { data: existing, error: selectError } = await admin
-    .from('public.subscriptions')
+    .from('subscriptions')
     .select('status,current_period_end,metadata')
     .eq('provider', 'apple')
     .eq('provider_subscription_id', canonical.provider_subscription_id)
     .maybeSingle();
 
-  if (selectError) {
-    return { ok: false, error: 'subscription_select_failed' };
-  }
+  if (selectError) return { ok: false, error: 'subscription_select_failed' };
 
   const incomingWithSignedDate: CanonicalSubscriptionRecord = {
     ...canonical,
@@ -164,7 +198,6 @@ async function upsertCanonicalSubscription(
       apple_signed_date: transaction.signedDate ?? Date.now(),
       apple_transaction_id: transaction.transactionId,
       apple_original_transaction_id: transaction.originalTransactionId,
-      apple_verification_source: 'app_store_server_api',
     },
   };
 
@@ -172,20 +205,12 @@ async function upsertCanonicalSubscription(
     return { ok: true };
   }
 
-  const payload = {
+  const { error: upsertError } = await admin.from('subscriptions').upsert({
     user_id: userId,
     ...incomingWithSignedDate,
-  };
+  }, { onConflict: 'provider,provider_subscription_id' });
 
-  const { error: upsertError } = await admin.from('public.subscriptions').upsert(payload, {
-    onConflict: 'provider,provider_subscription_id',
-  });
-
-  if (upsertError) {
-    return { ok: false, error: 'subscription_upsert_failed' };
-  }
-
-  return { ok: true };
+  return upsertError ? { ok: false, error: 'subscription_upsert_failed' } : { ok: true };
 }
 
 async function sha256Hex(input: string): Promise<string> {
@@ -195,13 +220,13 @@ async function sha256Hex(input: string): Promise<string> {
     .join('');
 }
 
-function isUniqueViolation(error: { code?: string | null }): boolean {
+function isUniqueViolation(error: any): boolean {
   return error.code === '23505';
 }
 
 function json<T>(body: T, status = 200): Response {
   return new Response(JSON.stringify(body), {
     status,
-    headers: { 'content-type': 'application/json; charset=utf-8' },
+    headers: { 'content-type': 'application/json; charset=utf-8', ...corsHeaders },
   });
 }

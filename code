@@ -1,128 +1,290 @@
-import React from "react";
-import { HomeButton } from "@/components/HomeButton";
-import { BackButton } from "@/components/BackButton";
-import { ThemeToggle } from "@/components/ThemeToggle";
-import { Link, useLocation } from "react-router-dom";
-import { Map } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { MercyGuide } from "@/components/MercyGuide";
+// src/components/mercy-guide/mercyGuideReplyLibrary.ts
 
-interface AppShellProps {
-  children: React.ReactNode;
-  bottomBar?: React.ReactNode;
-  hideHeader?: boolean;
-  mainClassName?: string;
-  showMercyGuide?: boolean;
+export type MercyGuideReplySource =
+  | 'openai'
+  | 'prewritten'
+  | 'fallback'
+  | 'manual';
+
+export type MercyGuideReplyIntent =
+  | 'greeting'
+  | 'app_intro'
+  | 'app_usage'
+  | 'study_plan'
+  | 'room_usage'
+  | 'room_summary'
+  | 'grammar_plan'
+  | 'reading_plan'
+  | 'reading_comprehension_plan'
+  | 'writing_plan'
+  | 'pronunciation_plan'
+  | 'speaking_plan'
+  | 'explain_grammar_in_text'
+  | 'give_simple_patterns'
+  | 'summarize_text'
+  | 'reading_comprehension_questions'
+  | 'check_writing'
+  | 'rewrite_simpler'
+  | 'extract_vocabulary'
+  | 'fallback'
+  | 'grammar_correction'
+  | 'pronunciation_feedback'
+  | 'phonology_final_consonants'
+  | 'phonology_schwa'
+  | 'phonology_diphthongs';
+
+export type MercyGuideReplyRecord = {
+  id: string;
+  intent: MercyGuideReplyIntent;
+  language: 'vi' | 'en';
+  userInput: string;
+  payload?: string;
+  roomId?: string;
+  roomTitle?: string;
+  tier?: string;
+  pathSlug?: string;
+  tags?: string[];
+  englishLevel?: string | null;
+  learningGoal?: string | null;
+  reply: string;
+  source: MercyGuideReplySource;
+  createdAt: string;
+  approved?: boolean;
+  notes?: string;
+};
+
+export type MercyGuideReplySeed = Omit<
+  MercyGuideReplyRecord,
+  'id' | 'createdAt'
+>;
+
+const STORAGE_KEY = 'mercy-guide-reply-library-v1';
+const MAX_RECORDS = 200;
+
+// --- INITIAL SEED DATA (Teacher Soul + Guide Guidance) ---
+const INITIAL_TEACHER_SEEDS: MercyGuideReplySeed[] = [
+  // Teacher Intents
+  {
+    intent: 'grammar_correction',
+    language: 'vi',
+    userInput: '',
+    reply: "Ngữ pháp của bạn gần như hoàn hảo! Chỉ cần chú ý chia động từ ở ngôi thứ ba số ít (thêm 's' hoặc 'es') nhé.",
+    source: 'prewritten',
+    approved: true,
+    notes: 'Strict but kind: Subject-Verb Agreement focus'
+  },
+  {
+    intent: 'phonology_final_consonants',
+    language: 'vi',
+    userInput: '',
+    reply: "Đừng quên âm cuối! Trong tiếng Anh, các âm /s/, /t/, và /ed/ rất quan trọng. Hãy thử phát âm lại thật rõ nhé.",
+    source: 'prewritten',
+    approved: true,
+    notes: 'Phonology: Ending sounds'
+  },
+  // Guide Intents (New from Station E)
+  {
+    intent: 'app_usage',
+    language: 'vi',
+    userInput: 'Làm sao để dùng app?',
+    reply: "Để bắt đầu, bạn hãy nhấn 'Start Speaking'. Mercy sẽ nghe và giúp bạn chỉnh sửa phát âm ngay lập tức. Đừng ngại mắc lỗi nhé!",
+    source: 'prewritten',
+    approved: true,
+    notes: 'Guide: Basic UI usage'
+  },
+  {
+    intent: 'room_usage',
+    language: 'vi',
+    userInput: 'Phòng học là gì?',
+    reply: "Mỗi 'Room' là một không gian học tập riêng biệt. Bạn có thể xem lại tóm tắt bài học và tiến độ của mình tại tab 'Room Summary'.",
+    source: 'prewritten',
+    approved: true,
+    notes: 'Guide: Room navigation'
+  },
+  {
+    intent: 'speaking_plan',
+    language: 'en',
+    userInput: 'How to improve speaking?',
+    reply: "To improve speaking, focus on 'Shadowing'. Listen to the Teacher and repeat immediately. Don't worry about speed; focus on clarity.",
+    source: 'prewritten',
+    approved: true
+  },
+  {
+    intent: 'fallback',
+    language: 'vi',
+    userInput: '',
+    reply: "Tôi chưa hiểu ý bạn lắm, nhưng đừng lo. Chúng ta hãy thử lại hoặc bạn có thể hỏi tôi về lộ trình học phát âm nhé!",
+    source: 'fallback',
+    approved: true
+  }
+];
+
+// --- UTILITIES ---
+
+function canUseStorage() {
+  return typeof window !== 'undefined' && typeof window.localStorage !== 'undefined';
 }
 
-/**
- * AppShell - Centered layout container
- *
- * Current app routing already provides a global header band on non-admin pages.
- * So this shell must be SAFE BY DEFAULT:
- * - header hidden by default (prevents double headers)
- * - MercyGuide auto-shows on Home (/) unless explicitly disabled
- *
- * Keeps:
- * - canonical 980px centered content frame
- * - defensive clamp for room renderers
- */
-export function AppShell({
-  children,
-  bottomBar,
-  hideHeader = true,
-  mainClassName = "",
-  showMercyGuide = false,
-}: AppShellProps) {
-  const location = useLocation();
+function cleanText(value?: string | null) {
+  return String(value ?? '').replace(/\s+/g, ' ').trim();
+}
 
-  const isHome = location.pathname === "/";
-  const shouldShowMercyGuide = showMercyGuide || isHome;
+function makeId() {
+  return `mgr_${Math.random().toString(36).slice(2, 10)}_${Date.now().toString(36)}`;
+}
 
-  return (
-    <div className="relative min-h-screen flex flex-col bg-background">
-      <style>{`
-        :root{
-          --mb-page-max: 980px;
+function normalizeSeed(seed: MercyGuideReplySeed): MercyGuideReplyRecord {
+  return {
+    id: makeId(),
+    intent: seed.intent,
+    language: seed.language,
+    userInput: cleanText(seed.userInput),
+    payload: cleanText(seed.payload),
+    roomId: cleanText(seed.roomId),
+    roomTitle: cleanText(seed.roomTitle),
+    tier: cleanText(seed.tier),
+    pathSlug: cleanText(seed.pathSlug),
+    tags: (seed.tags ?? []).map(cleanText).filter(Boolean),
+    englishLevel: cleanText(seed.englishLevel),
+    learningGoal: cleanText(seed.learningGoal),
+    reply: String(seed.reply ?? '').trim(),
+    source: seed.source,
+    createdAt: new Date().toISOString(),
+    approved: Boolean(seed.approved),
+    notes: cleanText(seed.notes),
+  };
+}
+
+// --- CORE FUNCTIONS ---
+
+export function getMercyGuideReplyLibrary(): MercyGuideReplyRecord[] {
+  if (!canUseStorage()) return [];
+
+  try {
+    const raw = window.localStorage.getItem(STORAGE_KEY);
+    if (!raw) {
+      const seeded = INITIAL_TEACHER_SEEDS.map(normalizeSeed);
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(seeded));
+      return seeded;
+    }
+
+    const parsed = JSON.parse(raw) as MercyGuideReplyRecord[];
+    if (!Array.isArray(parsed)) return [];
+
+    return parsed
+      .filter((item) => item && typeof item.reply === 'string')
+      .sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1));
+  } catch {
+    return [];
+  }
+}
+
+export function saveMercyGuideReplyRecord(
+  seed: MercyGuideReplySeed
+): MercyGuideReplyRecord | null {
+  if (!canUseStorage()) return null;
+
+  const next = normalizeSeed(seed);
+  const existing = getMercyGuideReplyLibrary();
+  const updated = [next, ...existing].slice(0, MAX_RECORDS);
+
+  try {
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+    return next;
+  } catch {
+    return null;
+  }
+}
+
+export function updateMercyGuideReplyRecord(
+  id: string,
+  patch: Partial<Pick<MercyGuideReplyRecord, 'approved' | 'notes' | 'intent'>>
+): MercyGuideReplyRecord[] {
+  if (!canUseStorage()) return [];
+
+  const existing = getMercyGuideReplyLibrary();
+  const updated = existing.map((item) =>
+    item.id === id
+      ? {
+          ...item,
+          approved: typeof patch.approved === 'boolean' ? patch.approved : item.approved,
+          notes: typeof patch.notes === 'string' ? cleanText(patch.notes) : item.notes,
+          intent: patch.intent ?? item.intent,
         }
-
-        [data-mb-frame]{
-          width: 100%;
-          max-width: var(--mb-page-max);
-          margin-left: auto;
-          margin-right: auto;
-          box-sizing: border-box;
-        }
-
-        [data-mb-frame] [data-mb-scope="room"]{
-          width: 100% !important;
-          max-width: 100% !important;
-          margin-left: 0 !important;
-          margin-right: 0 !important;
-          box-sizing: border-box !important;
-        }
-
-        [data-mb-frame] [data-mb-scope="room"] [data-room-box]{
-          width: 100% !important;
-          max-width: 100% !important;
-          margin-left: 0 !important;
-          margin-right: 0 !important;
-          box-sizing: border-box !important;
-        }
-      `}</style>
-
-      {!hideHeader && (
-        <header className="sticky top-0 z-40 w-full border-b border-border/40 bg-background/80 backdrop-blur-sm">
-          <div className="mx-auto grid h-12 max-w-[980px] grid-cols-[auto,1fr,auto] items-center px-4">
-            <div className="flex items-center gap-2">
-              <HomeButton />
-              <BackButton />
-            </div>
-
-            <div className="flex justify-center">
-              <Link
-                to="/"
-                className="bg-gradient-to-r from-[hsl(var(--rainbow-magenta))] via-[hsl(var(--rainbow-purple))] to-[hsl(var(--rainbow-cyan))] bg-clip-text text-lg font-semibold tracking-tight text-transparent transition-opacity hover:opacity-80"
-              >
-                Mercy Blade
-              </Link>
-            </div>
-
-            <div className="flex items-center justify-end gap-2">
-              <ThemeToggle />
-              <Button variant="ghost" size="sm" className="h-8 w-8 p-0" asChild>
-                <Link to="/tiers" title="Tier Map" aria-label="Tier Map">
-                  <Map className="h-4 w-4" />
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </header>
-      )}
-
-      <main className={`flex-1 ${mainClassName}`}>
-        <div data-mb-frame className="px-4 py-4">
-          {children}
-        </div>
-      </main>
-
-      {bottomBar}
-
-      {shouldShowMercyGuide ? <MercyGuide /> : null}
-    </div>
+      : item
   );
+
+  try {
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+    return updated;
+  } catch {
+    return existing;
+  }
 }
 
-export function AppShellContent({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <div data-mb-frame className={`px-4 py-4 ${className}`}>
-      {children}
-    </div>
-  );
+export function deleteMercyGuideReplyRecord(id: string): MercyGuideReplyRecord[] {
+  if (!canUseStorage()) return [];
+
+  const existing = getMercyGuideReplyLibrary();
+  const updated = existing.filter((item) => item.id !== id);
+
+  try {
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+    return updated;
+  } catch {
+    return existing;
+  }
 }
+
+export function clearMercyGuideReplyLibrary() {
+  if (!canUseStorage()) return;
+  try {
+    window.localStorage.removeItem(STORAGE_KEY);
+  } catch {
+    // no-op
+  }
+}
+
+export function findApprovedMercyGuideReplies(
+  intent: MercyGuideReplyIntent,
+  language?: 'vi' | 'en'
+): MercyGuideReplyRecord[] {
+  const library = getMercyGuideReplyLibrary();
+  let matches = library.filter((item) => {
+    if (!item.approved) return false;
+    if (item.intent !== intent) return false;
+    if (language && item.language !== language) return false;
+    return true;
+  });
+
+  if (matches.length === 0 && intent !== 'fallback') {
+    return library.filter(item => item.intent === 'fallback' && item.approved);
+  }
+
+  return matches;
+}
+
+export function buildMercyGuideReplyExport() {
+  const rows = getMercyGuideReplyLibrary();
+
+  return rows.map((item) => ({
+    id: item.id,
+    intent: item.intent,
+    language: item.language,
+    userInput: item.userInput,
+    payload: item.payload || '',
+    reply: item.reply,
+    source: item.source,
+    approved: Boolean(item.approved),
+    createdAt: item.createdAt,
+    notes: item.notes || '',
+    roomTitle: item.roomTitle || '',
+    tier: item.tier || '',
+    pathSlug: item.pathSlug || '',
+    englishLevel: item.englishLevel || '',
+    learningGoal: item.learningGoal || '',
+    tags: (item.tags ?? []).join(', '),
+  }));
+}
+
+// Done

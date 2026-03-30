@@ -27,6 +27,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BottomMusicBar from "@/components/audio/BottomMusicBar";
 import { MercyGuide } from "@/components/MercyGuide";
+import { GuideBox } from "@/components/GuideBox";
 import { useAuth } from "@/providers/AuthProvider";
 
 const PAGE_MAX = 980;
@@ -363,7 +364,7 @@ export default function Home() {
   );
 
   const primaryCtaEn = isSignedIn ? "👉 Continue learning" : "👉 Start free";
-  const primaryCtaVi = isSignedIn ? "👉 Tiếp tục học" : "👉 Bắt đầu miễn phí";
+  const primaryCtaVi = isSignedIn ? "👉 Trở lại bài học" : "👉 Bắt đầu miễn phí";
   const accountCtaEn = isSignedIn ? "👤 Account" : "🔐 Sign in";
   const accountCtaVi = isSignedIn ? "👤 Tài khoản" : "🔐 Đăng nhập";
 
@@ -988,14 +989,14 @@ export default function Home() {
 
             <div style={{ ...langTag, marginTop: 18 }}>VI</div>
             <h2 style={{ ...heroTitle, fontSize: isDesktopTop ? 30 : 28 }}>
-              Suy nghĩ bằng tiếng Anh — một cách bình tĩnh.
+              Tĩnh tại trong tư duy tiếng Anh.
             </h2>
             <div style={heroSub}>
-              Mercy Blade là không gian yên tĩnh để bạn suy nghĩ về cuộc sống bằng tiếng Anh.
+              Mercy Blade là khoảng lặng để bạn chiêm nghiệm cuộc sống qua ngôn ngữ Anh.
               <br />
-              Không bài tập ngữ pháp. Không áp lực. Không ồn ào.
+              Không rập khuôn ngữ pháp. Không áp lực. Không tạp âm.
               <br />
-              Chỉ một phòng, một suy ngẫm, một bước tiến nhỏ.
+              Chỉ một gian phòng, một dòng suy tưởng, một bước chậm rãi tiến về phía trước.
             </div>
 
             <div style={heroCtaHint}>
@@ -1007,6 +1008,7 @@ export default function Home() {
 
           <div style={mercyGuideWrap}>
             <MercyGuide />
+            <GuideBox />
           </div>
 
           <div style={hostSpotlight} aria-label="Mercy Host spotlight">
@@ -1033,12 +1035,12 @@ export default function Home() {
                 <h2 style={hostName}>Mercy Host</h2>
                 <p style={hostQuote}>“Bạn có muốn nhận một suy ngẫm nhẹ nhàng cho hôm nay không?”</p>
                 <div style={hostMeta}>
-                  Một người hướng dẫn dịu dàng cho sự suy ngẫm — không phải chatbot ồn ào.
+                  Một người dẫn dắt tâm hồn — không phải một chatbot ồn ã.
                 </div>
                 <p style={p}>
-                  Mercy Host giúp bạn bước vào trải nghiệm một cách nhẹ nhàng.
+                  Mercy Host khơi mở trải nghiệm của bạn thật khẽ khàng.
                   <br />
-                  Mời bạn dừng lại, suy ngẫm, và tiếp tục với sự bình tĩnh.
+                  Đưa bạn vào những khoảng dừng, để lắng lại và bước tiếp trong sự định tâm.
                 </p>
                 <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
                   <button type="button" style={{ ...primaryBtn, minWidth: 220 }} onClick={goFirstRoom}>
@@ -1153,7 +1155,7 @@ export default function Home() {
               <h3 style={h3}>Tiến độ của bạn</h3>
               <div style={{ ...p, marginTop: 8 }}>
                 {isSignedIn
-                  ? "Một bản tóm tắt nhẹ nhàng — bạn đã luyện tập gần đây như thế nào."
+                  ? "Một lát cắt nhẹ nhàng — ghi dấu hành trình bạn vừa đi qua."
                   : "Hãy đăng nhập để lưu hành trình và xem tiến độ của bạn."}
               </div>
             </div>
@@ -1220,7 +1222,7 @@ export default function Home() {
               mối quan hệ, công việc và ý nghĩa sống.
             </p>
             <p style={p}>
-              Đây không phải nơi để chạy đua hay thể hiện.
+              Đây không phải nơi để vội vã hay phô diễn.
               <br />
               Mà là nơi để chậm lại, lắng nghe, và tiến lên từng bước nhỏ.
             </p>
@@ -1229,7 +1231,7 @@ export default function Home() {
               <br />
               Không phán xét.
               <br />
-              Chỉ có sự rõ ràng, dịu dàng và tiến bộ bền vững.
+              Chỉ còn sự sáng rõ, lòng trắc ẩn và những chuyển biến bền bỉ.
             </p>
 
             <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
@@ -1254,7 +1256,7 @@ export default function Home() {
                 style={{ ...secondaryBtn, minWidth: 240 }}
                 onClick={() => nav("/tiers")}
               >
-                👉 Xem lộ trình học
+                👉 Lối nhỏ hành trình
               </button>
 
               <button
@@ -1262,7 +1264,7 @@ export default function Home() {
                 style={{ ...secondaryBtn, minWidth: 240 }}
                 onClick={() => nav(ROUTE_PRICING)}
               >
-                💎 Bảng giá
+                💎 Gói trải nghiệm
               </button>
             </div>
           </div>
@@ -1384,7 +1386,7 @@ export default function Home() {
                   <h3 style={h3}>Cách Mercy Blade Hoạt Động</h3>
 
                   <p style={p}>
-                    Bạn bước vào các <b>phòng</b> — giấc ngủ, lo âu, tiền bạc, mối quan hệ, công việc, sức bền tinh thần…
+                    Bạn ghé thăm những "gian phòng" — từ giấc ngủ, nỗi lo âu, đến chuyện tiền bạc, mối quan hệ, công việc, sức bền tinh thần…
                   </p>
 
                   <div style={{ ...p, marginTop: 12 }}>
@@ -1410,9 +1412,9 @@ export default function Home() {
                   </div>
 
                   <p style={p}>
-                    Bạn không “học tiếng Anh” theo nghĩa thông thường. Bạn <b>sống cùng nó</b>, trong suy nghĩ và cảm xúc thật.
+                    Bạn không đơn thuần là "học" tiếng Anh. Bạn đang sống cùng nó, len lỏi trong từng suy nghĩ và cảm xúc chân thật nhất.
                   </p>
-                  <p style={p}>Một thẻ. Một hơi thở. Một bước có ý nghĩa.</p>
+                  <p style={p}>Một tấm thẻ. Một nhịp thở. Một bước chân ý nghĩa.</p>
 
                   {phase0New ? (
                     <div
@@ -1444,7 +1446,7 @@ export default function Home() {
                         style={{ ...secondaryBtn, minWidth: 240 }}
                         onClick={() => nav("/tiers")}
                       >
-                        👉 Xem lộ trình học
+                        👉 Lối nhỏ hành trình
                       </button>
 
                       <button
@@ -1452,7 +1454,7 @@ export default function Home() {
                         style={{ ...secondaryBtn, minWidth: 240 }}
                         onClick={() => nav(ROUTE_PRICING)}
                       >
-                        💎 Bảng giá
+                        💎 Gói trải nghiệm
                       </button>
                     </div>
                   ) : null}
@@ -1523,19 +1525,11 @@ export default function Home() {
             <div style={{ ...langTag, marginTop: 16 }}>VI</div>
             <h3 style={h3}>Giờ Lặng</h3>
             <p style={p}>
-              Khi cuộc sống trở nên ồn ào, Mercy Blade mang đến một nghi thức đơn giản:
+              Giữa thế gian hối hả, Mercy Blade gửi đến bạn một nghi thức giản đơn:
             </p>
             <p style={p}>
-              Một phút.
-              <br />
-              Một thẻ song ngữ.
-              <br />
-              Một hơi thở yên tĩnh.
-            </p>
-            <p style={p}>
-              Bạn không ép mình phải học.
-              <br />
-              Bạn để sự hiểu biết tự đến.
+              Đừng gượng ép việc học.<br />
+              Hãy để sự thấu hiểu tự tìm đến bên bạn.
             </p>
           </div>
 
@@ -1624,7 +1618,7 @@ export default function Home() {
                 style={{ ...secondaryBtn, minWidth: 240 }}
                 onClick={() => nav("/tiers")}
               >
-                👉 Xem lộ trình học
+                👉 Lối nhỏ hành trình
               </button>
 
               <button
@@ -1632,7 +1626,7 @@ export default function Home() {
                 style={{ ...secondaryBtn, minWidth: 240 }}
                 onClick={() => nav(ROUTE_PRICING)}
               >
-                💎 Bảng giá
+                💎 Gói trải nghiệm
               </button>
             </div>
           </div>
@@ -1683,7 +1677,7 @@ export default function Home() {
                 style={secondaryBtn}
                 onClick={() => nav("/redeem")}
               >
-                🎁&nbsp; Redeem Gift Code / Nhập Mã Quà Tặng
+                🎁&nbsp; Redeem Gift Code / Kích hoạt mã quà tặng
               </button>
             </div>
           </div>

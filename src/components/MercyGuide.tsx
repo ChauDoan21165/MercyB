@@ -9,8 +9,9 @@ import {
   ChevronDown,
   GraduationCap,
   GripHorizontal,
+  HelpCircle,
+  LifeBuoy,
   MapPin,
-  MessageCircleQuestion,
   Mic,
   Sparkles,
   User,
@@ -43,11 +44,29 @@ import {
 } from './mercy-guide/shared';
 import { useTroubleWordsVault } from './mercy-guide/hooks/useTroubleWordsVault';
 import { useSpeakPractice } from './mercy-guide/hooks/useSpeakPractice';
-import { MercyGuideTab } from './mercy-guide/MercyGuideTab';
 import { MercyTeacherTab } from './mercy-guide/MercyTeacherTab';
 import { MercyEnglishTab } from './mercy-guide/MercyEnglishTab';
 import { MercySpeakTab } from './mercy-guide/MercySpeakTab';
 import { MercySuggestTab } from './mercy-guide/MercySuggestTab';
+
+/**
+ * MERCY_BLUE_PATH_FORWARD (SOP V4.0)
+ * Contextual help constants for the Vietnamese market.
+ */
+const MERCY_BLUE_PATH_FORWARD = {
+  idle: {
+    vi: "Bạn cần giúp gì không? Hãy thử tab 'Speak' để luyện phát âm nhé!",
+    en: "Need a hand? Try the 'Speak' tab to practice your pronunciation!"
+  },
+  navigation: {
+    vi: "Bạn có thể hỏi mình về nội dung phòng này hoặc cách sử dụng các tính năng.",
+    en: "You can ask me about this room's content or how to use the features."
+  },
+  switching: {
+    vi: "Đang chuyển đổi... 'Teacher' giúp sửa lỗi, 'Speak' giúp luyện nói.",
+    en: "Switching... 'Teacher' fixes mistakes, 'Speak' helps you talk."
+  }
+};
 
 interface MercyGuideProps {
   roomId?: string;
@@ -130,23 +149,19 @@ function getPanelWidthPolicy() {
       maxWidth: 960,
     };
   }
-
   const vw = window.innerWidth;
-
   if (vw < 768) {
     return {
       defaultWidth: Math.min(400, vw - 24),
       maxWidth: Math.min(440, vw - 16),
     };
   }
-
   if (vw < 1200) {
     return {
       defaultWidth: 560,
       maxWidth: Math.min(820, vw - 32),
     };
   }
-
   return {
     defaultWidth: 640,
     maxWidth: Math.min(1040, vw - 48),
@@ -159,7 +174,6 @@ function getPanelHeightPolicy() {
       maxHeight: 900,
     };
   }
-
   if (window.innerWidth < 768) {
     return {
       maxHeight: Math.min(
@@ -168,7 +182,6 @@ function getPanelHeightPolicy() {
       ),
     };
   }
-
   return {
     maxHeight: Math.min(960, window.innerHeight - MIN_PANEL_MARGIN * 2),
   };
@@ -228,17 +241,13 @@ function deriveTopicLabel(tags?: string[], contentEn?: string) {
     .map((tag) => cleanText(tag))
     .filter(Boolean)
     .slice(0, 3);
-
   if (usableTags.length > 0) {
     return usableTags.join(', ');
   }
-
   const content = stripHtml(contentEn);
   if (!content) return null;
-
   const firstSentence =
     content.split(/[.!?]/).map((part) => cleanText(part)).find(Boolean) ?? '';
-
   return truncateWords(firstSentence, 12) || null;
 }
 
@@ -254,27 +263,21 @@ function deriveRoomContextSummary({
   const safeSlug = humanizeSlug(pathSlug);
   const topicLabel = deriveTopicLabel(tags, contentEn);
   const contentSummary = truncateWords(stripHtml(contentEn), 24);
-
   const roomName =
     safeRoomTitle || safeSlug || (safeTier ? `${safeTier} room` : 'this room');
-
   const hasRoomContext = Boolean(
     safeRoomTitle || safeTier || safeSlug || topicLabel || contentSummary
   );
-
   const shortSummary =
     contentSummary ||
     (topicLabel ? `${roomName} focuses on ${topicLabel}.` : null) ||
     (safeTier ? `${roomName} is part of the ${safeTier} tier.` : null);
-
   const whereAreWeEn = hasRoomContext
     ? `You are in ${roomName}${topicLabel ? `, focused on ${topicLabel}` : ''}.`
     : null;
-
   const whereAreWeVi = hasRoomContext
     ? `Bạn đang ở ${roomName}${topicLabel ? `, tập trung vào ${topicLabel}` : ''}.`
     : null;
-
   return {
     hasRoomContext,
     roomName,
@@ -298,7 +301,6 @@ function buildRoomAwareCheckIn(
 ) {
   const preferredName = cleanText(profile.preferred_name);
   const introName = preferredName ? `${preferredName}, ` : '';
-
   if (!roomSummary.hasRoomContext) {
     return {
       en: preferredName
@@ -309,13 +311,11 @@ function buildRoomAwareCheckIn(
         : 'Chào mừng quay lại. Mình ở đây để hướng dẫn bạn.',
     };
   }
-
   const roomSentence =
     roomSummary.whereAreWeEn ?? `You are in ${roomSummary.roomName}.`;
   const summarySentence = roomSummary.shortSummary
     ? truncateWords(roomSummary.shortSummary, 22)
     : null;
-
   return {
     en: `${introName}${roomSentence}${
       summarySentence ? ` ${summarySentence}` : ''
@@ -335,10 +335,12 @@ export function MercyGuide({
   contentEn,
 }: MercyGuideProps) {
   const navigate = useNavigate();
-
   const [isOpen, setIsOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState('guide');
+  const [activeTab, setActiveTab] = useState('teacher');
   const [showSettings, setShowSettings] = useState(false);
+  
+  // UX State for Path Forward
+  const [pathHint, setPathHint] = useState<{ vi: string, en: string } | null>(null);
 
   const [profile, setProfile] = useState<CompanionProfile>({});
   const [checkInMessage, setCheckInMessage] = useState<{
@@ -370,11 +372,7 @@ export function MercyGuide({
   });
 
   const {
-    articles,
     isEnabled,
-    canAskQuestion,
-    incrementQuestionCount,
-    getQuestionsRemaining,
   } = useMercyGuide();
 
   const { troubleWords, addToTroubleWords } = useTroubleWordsVault();
@@ -411,7 +409,7 @@ export function MercyGuide({
 
   const guideTabBottomBuffer = useMemo(
     () => getGuideTabBottomBuffer(),
-    [panelRect.height, panelRect.width, isOpen]
+    []
   );
 
   const clampPanelRect = useCallback((next: PanelRect): PanelRect => {
@@ -472,9 +470,7 @@ export function MercyGuide({
         bottom: Math.max(getBubbleBottomSafe(), next.bottom),
       };
     }
-
     const bottomSafe = getBubbleBottomSafe();
-
     const maxRight = Math.max(
       BUBBLE_SAFE_MARGIN,
       window.innerWidth - BUBBLE_SIZE - BUBBLE_SAFE_MARGIN
@@ -483,7 +479,6 @@ export function MercyGuide({
       bottomSafe,
       window.innerHeight - BUBBLE_SIZE - BUBBLE_SAFE_MARGIN
     );
-
     return {
       right: Math.min(maxRight, Math.max(BUBBLE_SAFE_MARGIN, next.right)),
       bottom: Math.min(maxBottom, Math.max(bottomSafe, next.bottom)),
@@ -493,7 +488,6 @@ export function MercyGuide({
   const getOpenPanelRectFromBubble = useCallback(
     (bubble: BubblePos, current: PanelRect): PanelRect => {
       const mobile = isMobileViewport();
-
       const candidate: PanelRect = {
         width: current.width,
         height: current.height,
@@ -502,16 +496,12 @@ export function MercyGuide({
           ? MOBILE_PANEL_BOTTOM_SAFE
           : Math.max(MIN_PANEL_MARGIN, bubble.bottom - 8),
       };
-
       const clamped = clampPanelRect(candidate);
-
       if (!mobile) return clamped;
-
       const openOnRightHalf =
         typeof window !== 'undefined'
           ? bubble.right < window.innerWidth / 2
           : true;
-
       return clampPanelRect({
         ...clamped,
         right: openOnRightHalf
@@ -525,7 +515,6 @@ export function MercyGuide({
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
-
     const widthPolicy = getPanelWidthPolicy();
     const fallbackRect = clampPanelRect({
       width: widthPolicy.defaultWidth,
@@ -533,10 +522,8 @@ export function MercyGuide({
       right: DEFAULT_PANEL_RIGHT,
       bottom: DEFAULT_PANEL_BOTTOM,
     });
-
     try {
       const stored = window.sessionStorage.getItem(getPanelStorageKey());
-
       if (stored) {
         const parsed = JSON.parse(stored) as Partial<PanelRect>;
         setPanelRect(
@@ -552,13 +539,11 @@ export function MercyGuide({
     } catch (error) {
       console.error('Failed to restore Mercy Guide panel size:', error);
     }
-
     setPanelRect(fallbackRect);
   }, [clampPanelRect]);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
-
     try {
       const stored = window.sessionStorage.getItem(BUBBLE_POSITION_STORAGE_KEY);
       if (stored) {
@@ -574,7 +559,6 @@ export function MercyGuide({
     } catch (error) {
       console.error('Failed to restore Mercy Guide bubble position:', error);
     }
-
     setBubblePos(
       clampBubblePos({
         right: DEFAULT_BUBBLE_RIGHT,
@@ -585,7 +569,6 @@ export function MercyGuide({
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
-
     try {
       window.sessionStorage.setItem(
         getPanelStorageKey(),
@@ -598,7 +581,6 @@ export function MercyGuide({
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
-
     try {
       window.sessionStorage.setItem(
         BUBBLE_POSITION_STORAGE_KEY,
@@ -611,7 +593,6 @@ export function MercyGuide({
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
-
     const handleWindowResize = () => {
       setPanelRect((prev) => {
         const widthPolicy = getPanelWidthPolicy();
@@ -622,7 +603,6 @@ export function MercyGuide({
               ? widthPolicy.defaultWidth
               : prev.width,
         });
-
         try {
           const stored = window.sessionStorage.getItem(getPanelStorageKey());
           if (stored) {
@@ -640,13 +620,10 @@ export function MercyGuide({
             error
           );
         }
-
         return fallbackNext;
       });
-
       setBubblePos((prev) => clampBubblePos(prev));
     };
-
     window.addEventListener('resize', handleWindowResize);
     return () => window.removeEventListener('resize', handleWindowResize);
   }, [clampBubblePos, clampPanelRect]);
@@ -662,7 +639,6 @@ export function MercyGuide({
       first_name?: string | null;
       name?: string | null;
     };
-
     return (
       cleanText(profile.preferred_name) ||
       cleanText(profileWithExtras.display_name) ||
@@ -679,21 +655,18 @@ export function MercyGuide({
         vi: `Chào ${guessedName}. Bạn đang ở ${roomSummary.roomName}.`,
       };
     }
-
     if (guessedName) {
       return {
         en: `Hi, ${guessedName}. How can I help?`,
         vi: `Chào ${guessedName}. Mình giúp gì được cho bạn?`,
       };
     }
-
     if (roomSummary.hasRoomContext) {
       return {
         en: `Hi! You’re in ${roomSummary.roomName}.`,
         vi: `Chào bạn! Bạn đang ở ${roomSummary.roomName}.`,
       };
     }
-
     return {
       en: 'Hi! How can I help?',
       vi: 'Chào bạn! Mình giúp gì được?',
@@ -703,16 +676,13 @@ export function MercyGuide({
   const handleAvatarError = useCallback(
     (e: React.SyntheticEvent<HTMLImageElement>) => {
       const img = e.currentTarget;
-
       if (!img.dataset.fallbackApplied) {
         img.dataset.fallbackApplied = 'true';
         img.src = MERCY_HOST_IMAGE_FALLBACK;
         return;
       }
-
       img.style.display = 'none';
       const parent = img.parentElement;
-
       if (parent) {
         parent.classList.add('flex', 'items-center', 'justify-center');
         parent.innerHTML =
@@ -760,21 +730,16 @@ export function MercyGuide({
     (event: React.PointerEvent<HTMLDivElement>) => {
       event.preventDefault();
       event.stopPropagation();
-
       const startX = event.clientX;
       const startY = event.clientY;
       const startPos = bubblePos;
       const pointerId = event.pointerId;
       let moved = false;
-
       const onPointerMove = (moveEvent: PointerEvent) => {
         if (moveEvent.pointerId !== pointerId) return;
-
         const dx = moveEvent.clientX - startX;
         const dy = moveEvent.clientY - startY;
-
         if (Math.abs(dx) > 4 || Math.abs(dy) > 4) moved = true;
-
         setBubblePos(
           clampBubblePos({
             right: startPos.right - dx,
@@ -782,19 +747,15 @@ export function MercyGuide({
           })
         );
       };
-
       const onPointerUp = (upEvent: PointerEvent) => {
         if (upEvent.pointerId !== pointerId) return;
-
         window.removeEventListener('pointermove', onPointerMove);
         window.removeEventListener('pointerup', onPointerUp);
         window.removeEventListener('pointercancel', onPointerUp);
-
         if (!moved) {
           openGuideFromBubble();
         }
       };
-
       window.addEventListener('pointermove', onPointerMove, { passive: false });
       window.addEventListener('pointerup', onPointerUp);
       window.addEventListener('pointercancel', onPointerUp);
@@ -806,23 +767,17 @@ export function MercyGuide({
     (event: React.PointerEvent<HTMLDivElement>) => {
       const target = event.target as HTMLElement | null;
       if (target?.closest('button')) return;
-
       event.preventDefault();
-
       const startX = event.clientX;
       const startY = event.clientY;
       const startRect = panelRect;
       const pointerId = event.pointerId;
       const previousUserSelect = document.body.style.userSelect;
-
       document.body.style.userSelect = 'none';
-
       const onPointerMove = (moveEvent: PointerEvent) => {
         if (moveEvent.pointerId !== pointerId) return;
-
         const dx = moveEvent.clientX - startX;
         const dy = moveEvent.clientY - startY;
-
         setPanelRect(
           clampPanelRect({
             ...startRect,
@@ -831,19 +786,16 @@ export function MercyGuide({
           })
         );
       };
-
       const cleanup = () => {
         document.body.style.userSelect = previousUserSelect;
         window.removeEventListener('pointermove', onPointerMove);
         window.removeEventListener('pointerup', onPointerUp);
         window.removeEventListener('pointercancel', onPointerUp);
       };
-
       const onPointerUp = (upEvent: PointerEvent) => {
         if (upEvent.pointerId !== pointerId) return;
         cleanup();
       };
-
       window.addEventListener('pointermove', onPointerMove);
       window.addEventListener('pointerup', onPointerUp);
       window.addEventListener('pointercancel', onPointerUp);
@@ -856,16 +808,13 @@ export function MercyGuide({
       (event: React.PointerEvent<HTMLDivElement>) => {
         event.preventDefault();
         event.stopPropagation();
-
         const startX = event.clientX;
         const startY = event.clientY;
         const startRect = panelRect;
         const pointerId = event.pointerId;
         const handleElement = event.currentTarget;
         const previousUserSelect = document.body.style.userSelect;
-
         document.body.style.userSelect = 'none';
-
         if (handleElement.setPointerCapture) {
           try {
             handleElement.setPointerCapture(pointerId);
@@ -873,42 +822,32 @@ export function MercyGuide({
             console.error('Failed to capture resize pointer:', error);
           }
         }
-
         const handlePointerMove = (moveEvent: PointerEvent) => {
           if (moveEvent.pointerId !== pointerId) return;
-
           const dx = moveEvent.clientX - startX;
           const dy = moveEvent.clientY - startY;
-
           let nextRect: PanelRect = { ...startRect };
-
           if (direction.includes('left')) {
             nextRect.width = startRect.width - dx;
           }
-
           if (direction.includes('right')) {
             nextRect.width = startRect.width + dx;
             nextRect.right = startRect.right - dx;
           }
-
           if (direction.includes('top')) {
             nextRect.height = startRect.height - dy;
           }
-
           if (direction.includes('bottom')) {
             nextRect.height = startRect.height + dy;
             nextRect.bottom = startRect.bottom - dy;
           }
-
           setPanelRect(clampPanelRect(nextRect));
         };
-
         const cleanup = () => {
           document.body.style.userSelect = previousUserSelect;
           window.removeEventListener('pointermove', handlePointerMove);
           window.removeEventListener('pointerup', handlePointerUp);
           window.removeEventListener('pointercancel', handlePointerUp);
-
           if (handleElement.releasePointerCapture) {
             try {
               if (handleElement.hasPointerCapture?.(pointerId)) {
@@ -919,12 +858,10 @@ export function MercyGuide({
             }
           }
         };
-
         const handlePointerUp = (upEvent: PointerEvent) => {
           if (upEvent.pointerId !== pointerId) return;
           cleanup();
         };
-
         window.addEventListener('pointermove', handlePointerMove);
         window.addEventListener('pointerup', handlePointerUp);
         window.addEventListener('pointercancel', handlePointerUp);
@@ -938,20 +875,16 @@ export function MercyGuide({
 
   useEffect(() => {
     if (!isOpen) return;
-
     async function loadData() {
       try {
         const profileData = await getCompanionProfile();
         setProfile(profileData);
-
         const ctx = buildMercyContext({
           lastActiveAt: profileData.last_english_activity,
           isFirstVisit: !profileData.last_english_activity,
         });
-
         const greetingId = getGreetingReplyId(ctx);
         const greetingReply = await getMercyReply(greetingId);
-
         if (roomSummary.hasRoomContext) {
           setCheckInMessage(buildRoomAwareCheckIn(profileData, roomSummary));
         } else if (greetingReply) {
@@ -967,30 +900,30 @@ export function MercyGuide({
           );
           setCheckInMessage(message);
         }
-
         await getMercyReply(getBreathingReplyId('intro'));
-
         const suggestionsData = await getSuggestionsForUser({
           profile: profileData,
           lastRoomId: roomId,
           lastTags: tags,
         });
         setSuggestions(suggestionsData);
-
         const summary = await getYesterdayAndTodaySummary();
         setYesterdaySummary(summary.yesterday);
         setTodayTotalMinutes(summary.todayTotalMinutes);
-
         const recentMoods = await getRecentMoods(3);
         const heavyCount = recentMoods.filter(
           (m) => m === 'heavy' || m === 'anxious'
         ).length;
         setHasHeavyMoods(heavyCount >= 2);
+        
+        // Logic for Path Forward: If no context, suggest a path.
+        if (!roomSummary.hasRoomContext) {
+          setPathHint(MERCY_BLUE_PATH_FORWARD.idle);
+        }
       } catch (error) {
         console.error('Failed to load guide data:', error);
       }
     }
-
     loadData();
   }, [isOpen, roomId, roomSummary, tags]);
 
@@ -1012,18 +945,7 @@ export function MercyGuide({
             userSelect: 'none',
           }}
         >
-          <div className="relative flex items-end justify-end">
-            <div className="absolute -left-20 top-2 z-0 hidden rotate-[-14deg] rounded-[20px] bg-white px-3 py-2.5 shadow-lg ring-1 ring-black/5 transition-transform duration-200 sm:block">
-              <div className="leading-none">
-                <p className="text-[15px] font-extrabold tracking-tight text-black">
-                  Mercy
-                </p>
-                <p className="mt-1.5 text-[12px] font-medium text-black/70">
-                  Cần hỗ trợ?
-                </p>
-              </div>
-            </div>
-
+          <div className="flex flex-col items-center">
             <div
               role="button"
               tabIndex={0}
@@ -1040,7 +962,7 @@ export function MercyGuide({
               <div className="h-full w-full overflow-hidden rounded-full bg-gradient-to-b from-pink-100 to-rose-100">
                 <img
                   src={MERCY_HOST_IMAGE_SRC}
-                  alt="Mercy Host"
+                  alt="Teacher Mercy"
                   className="pointer-events-none h-full w-full object-cover object-center"
                   loading="eager"
                   decoding="async"
@@ -1049,6 +971,11 @@ export function MercyGuide({
                 />
               </div>
               <div className="pointer-events-none absolute inset-0 rounded-full bg-white/10" />
+            </div>
+            <div className="mt-3 rounded-full bg-white/90 px-4 py-1.5 shadow-md ring-1 ring-black/5">
+              <p className="text-[14px] font-extrabold tracking-tight text-black">
+                Teacher Mercy
+              </p>
             </div>
           </div>
         </div>
@@ -1080,7 +1007,6 @@ export function MercyGuide({
               <div className="flex h-10 w-6 items-center justify-center rounded-md text-muted-foreground/70">
                 <GripHorizontal className="h-4 w-4" />
               </div>
-
               <div className="h-10 w-10 shrink-0 overflow-hidden rounded-full bg-pink-100 ring-2 ring-pink-200">
                 <img
                   src={MERCY_HOST_IMAGE_SRC}
@@ -1091,7 +1017,6 @@ export function MercyGuide({
                   onError={handleAvatarError}
                 />
               </div>
-
               <div className="min-w-0">
                 <h3 className="text-lg font-semibold text-foreground md:text-[20px]">
                   Mercy
@@ -1099,20 +1024,17 @@ export function MercyGuide({
                 <p className="truncate text-sm text-muted-foreground md:text-base">
                   {greeting.vi}
                 </p>
-
                 {roomSummary.hasRoomContext && (
                   <div className="mt-1.5 flex flex-wrap items-center gap-2 text-xs text-muted-foreground md:text-sm">
                     <span className="inline-flex items-center gap-1 rounded-full bg-primary/6 px-2.5 py-1 text-primary">
                       <MapPin className="h-3.5 w-3.5" />
                       <span>{roomSummary.roomName}</span>
                     </span>
-
                     {roomSummary.tierLabel && (
                       <span className="rounded-full border border-border/70 px-2.5 py-1">
                         {roomSummary.tierLabel}
                       </span>
                     )}
-
                     {roomSummary.topicLabel && (
                       <span className="rounded-full border border-border/70 px-2.5 py-1">
                         {truncateWords(roomSummary.topicLabel, 6)}
@@ -1122,7 +1044,6 @@ export function MercyGuide({
                 )}
               </div>
             </div>
-
             <div className="flex shrink-0 items-center gap-1">
               <Button
                 variant="ghost"
@@ -1133,7 +1054,6 @@ export function MercyGuide({
               >
                 <User className="h-4.5 w-4.5" />
               </Button>
-
               <Button
                 variant="ghost"
                 size="icon"
@@ -1143,7 +1063,6 @@ export function MercyGuide({
               >
                 <ChevronDown className="h-4.5 w-4.5" />
               </Button>
-
               <Button
                 variant="ghost"
                 size="icon"
@@ -1171,24 +1090,15 @@ export function MercyGuide({
           {!showSettings && (
             <Tabs
               value={activeTab}
-              onValueChange={setActiveTab}
+              onValueChange={(v) => {
+                setActiveTab(v);
+                setPathHint(MERCY_BLUE_PATH_FORWARD.switching);
+                setTimeout(() => setPathHint(null), 3500);
+              }}
               className="flex min-h-0 flex-1 flex-col overflow-hidden"
             >
               <div className="shrink-0 px-3 pt-3 md:px-4 md:pt-4">
                 <TabsList className="flex w-full items-center gap-2 overflow-x-auto rounded-xl border border-border/60 bg-muted/50 p-1.5 shadow-sm md:p-2">
-                  <TabsTrigger
-                    value="guide"
-                    className={cn(
-                      'h-10 shrink-0 whitespace-nowrap gap-1.5 rounded-lg border px-3 text-sm font-semibold transition-all md:h-11 md:px-3.5 md:text-[14px]',
-                      'border-transparent text-muted-foreground opacity-80',
-                      'data-[state=active]:border-border data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:opacity-100 data-[state=active]:shadow-sm',
-                      'data-[state=inactive]:hover:bg-white/80 data-[state=inactive]:hover:text-foreground'
-                    )}
-                  >
-                    <MessageCircleQuestion className="h-4 w-4 shrink-0" />
-                    <span>Guide</span>
-                  </TabsTrigger>
-
                   <TabsTrigger
                     value="teacher"
                     className={cn(
@@ -1201,7 +1111,6 @@ export function MercyGuide({
                     <GraduationCap className="h-4 w-4 shrink-0" />
                     <span>Teacher</span>
                   </TabsTrigger>
-
                   <TabsTrigger
                     value="english"
                     className={cn(
@@ -1216,7 +1125,6 @@ export function MercyGuide({
                     <BookOpen className="h-4 w-4 shrink-0" />
                     <span>English</span>
                   </TabsTrigger>
-
                   <TabsTrigger
                     value="speak"
                     className={cn(
@@ -1229,7 +1137,6 @@ export function MercyGuide({
                     <Mic className="h-4 w-4 shrink-0" />
                     <span>Speak</span>
                   </TabsTrigger>
-
                   <TabsTrigger
                     value="suggest"
                     className={cn(
@@ -1251,20 +1158,21 @@ export function MercyGuide({
                   paddingBottom: `calc(${guideTabBottomBuffer}px + env(safe-area-inset-bottom, 0px))`,
                 }}
               >
-                <MercyGuideTab
-                  articles={articles}
-                  canAskQuestion={canAskQuestion}
-                  incrementQuestionCount={incrementQuestionCount}
-                  getQuestionsRemaining={getQuestionsRemaining}
-                  roomId={roomId}
-                  roomTitle={roomTitle}
-                  tier={tier}
-                  pathSlug={pathSlug}
-                  tags={tags}
-                  englishLevel={profile.english_level}
-                  learningGoal={profile.learning_goal}
-                  onRequestSpeakTab={() => setActiveTab('speak')}
-                />
+                {/* Path Forward Overlay */}
+                {pathHint && (
+                  <div className="absolute inset-x-4 top-4 z-[90] animate-in fade-in slide-in-from-top-2 rounded-lg border border-pink-100 bg-pink-50/95 p-3 shadow-md backdrop-blur-sm">
+                    <div className="flex items-start justify-between">
+                      <div className="flex gap-2">
+                        <HelpCircle className="h-5 w-5 text-pink-600" />
+                        <div>
+                          <p className="text-sm font-medium text-pink-900">{pathHint.vi}</p>
+                          <p className="text-xs text-pink-700 italic">{pathHint.en}</p>
+                        </div>
+                      </div>
+                      <Button variant="ghost" size="icon" className="h-6 w-6" onClick={() => setPathHint(null)}><X className="h-3 w-3" /></Button>
+                    </div>
+                  </div>
+                )}
 
                 <MercyTeacherTab
                   profile={profile}
@@ -1280,7 +1188,6 @@ export function MercyGuide({
                   setShowReframe={setShowReframe}
                   onNavigateSuggestion={handleNavigateSuggestion}
                 />
-
                 <MercyEnglishTab
                   roomId={roomId}
                   roomTitle={roomTitle}
@@ -1288,9 +1195,8 @@ export function MercyGuide({
                   englishLevel={profile.english_level}
                   troubleWords={troubleWords}
                   onVaultReplay={handleVaultReplay}
-                  onRequestGuideTab={() => setActiveTab('guide')}
+                  onRequestGuideTab={() => setActiveTab('teacher')}
                 />
-
                 <MercySpeakTab
                   roomId={roomId}
                   contentEn={contentEn}
@@ -1298,7 +1204,6 @@ export function MercyGuide({
                   troubleWords={troubleWords}
                   speakPractice={speakPractice}
                 />
-
                 <MercySuggestTab
                   suggestions={suggestions}
                   onNavigateSuggestion={handleNavigateSuggestion}
@@ -1306,85 +1211,46 @@ export function MercyGuide({
               </div>
             </Tabs>
           )}
+          
+          {/* Guide Quick-Action Bar */}
+          {!showSettings && (
+            <div className="flex items-center justify-between border-t bg-muted/10 px-4 py-2.5">
+              <div className="flex gap-2">
+                <Button variant="outline" size="sm" className="h-8 rounded-full border-pink-200 bg-white text-xs" onClick={() => setPathHint(MERCY_BLUE_PATH_FORWARD.navigation)}><Sparkles className="mr-1.5 h-3 w-3" />Hướng dẫn</Button>
+                <Button variant="outline" size="sm" className="h-8 rounded-full border-blue-200 bg-white text-xs" onClick={() => setPathHint(MERCY_BLUE_PATH_FORWARD.idle)}><LifeBuoy className="mr-1.5 h-3 w-3" />Cần giúp?</Button>
+              </div>
+              <p className="text-[10px] text-muted-foreground font-medium">MercyB Guide v4.0</p>
+            </div>
+          )}
 
           <div className="pointer-events-none absolute inset-x-0 top-3 z-[85] flex justify-center">
             <div className="h-1.5 w-20 rounded-full bg-gray-400/80 shadow-sm" />
           </div>
-
           <div className="pointer-events-none absolute inset-x-0 bottom-5 z-[85] flex justify-center">
             <div className="h-1.5 w-20 rounded-full bg-gray-400/80 shadow-sm" />
           </div>
-
           <div className="pointer-events-none absolute inset-y-0 left-3 z-[85] flex items-center">
             <div className="h-20 w-1.5 rounded-full bg-gray-400/80 shadow-sm" />
           </div>
-
           <div className="pointer-events-none absolute inset-y-0 right-3 z-[85] flex items-center">
             <div className="h-20 w-1.5 rounded-full bg-gray-400/80 shadow-sm" />
           </div>
 
-          <div
-            className="absolute inset-x-3 top-0 z-[70] touch-none"
-            style={{ height: EDGE_HANDLE_THICKNESS, cursor: 'n-resize' }}
-            onPointerDown={handleResizePointerDown('top')}
-          />
-          <div
-            className="absolute inset-x-3 bottom-0 z-[70] touch-none"
-            style={{ height: EDGE_HANDLE_THICKNESS, cursor: 's-resize' }}
-            onPointerDown={handleResizePointerDown('bottom')}
-          />
-          <div
-            className="absolute inset-y-3 left-0 z-[70] touch-none"
-            style={{ width: EDGE_HANDLE_THICKNESS, cursor: 'w-resize' }}
-            onPointerDown={handleResizePointerDown('left')}
-          />
-          <div
-            className="absolute inset-y-3 right-0 z-[70] touch-none"
-            style={{ width: EDGE_HANDLE_THICKNESS, cursor: 'e-resize' }}
-            onPointerDown={handleResizePointerDown('right')}
-          />
-          <div
-            className="absolute left-0 top-0 z-[80] flex touch-none items-start justify-start"
-            style={{
-              width: CORNER_HANDLE_SIZE,
-              height: CORNER_HANDLE_SIZE,
-              cursor: 'nw-resize',
-            }}
-            onPointerDown={handleResizePointerDown('top-left')}
-          >
+          <div className="absolute inset-x-3 top-0 z-[70] touch-none" style={{ height: EDGE_HANDLE_THICKNESS, cursor: 'n-resize' }} onPointerDown={handleResizePointerDown('top')} />
+          <div className="absolute inset-x-3 bottom-0 z-[70] touch-none" style={{ height: EDGE_HANDLE_THICKNESS, cursor: 's-resize' }} onPointerDown={handleResizePointerDown('bottom')} />
+          <div className="absolute inset-y-3 left-0 z-[70] touch-none" style={{ width: EDGE_HANDLE_THICKNESS, cursor: 'w-resize' }} onPointerDown={handleResizePointerDown('left')} />
+          <div className="absolute inset-y-3 right-0 z-[70] touch-none" style={{ width: EDGE_HANDLE_THICKNESS, cursor: 'e-resize' }} onPointerDown={handleResizePointerDown('right')} />
+          
+          <div className="absolute left-0 top-0 z-[80] flex touch-none items-start justify-start" style={{ width: CORNER_HANDLE_SIZE, height: CORNER_HANDLE_SIZE, cursor: 'nw-resize' }} onPointerDown={handleResizePointerDown('top-left')}>
             <div className="ml-1 mt-1 h-2.5 w-2.5 rounded-full border border-border/70 bg-background shadow-sm" />
           </div>
-          <div
-            className="absolute right-0 top-0 z-[80] flex touch-none items-start justify-end"
-            style={{
-              width: CORNER_HANDLE_SIZE,
-              height: CORNER_HANDLE_SIZE,
-              cursor: 'ne-resize',
-            }}
-            onPointerDown={handleResizePointerDown('top-right')}
-          >
+          <div className="absolute right-0 top-0 z-[80] flex touch-none items-start justify-end" style={{ width: CORNER_HANDLE_SIZE, height: CORNER_HANDLE_SIZE, cursor: 'ne-resize' }} onPointerDown={handleResizePointerDown('top-right')}>
             <div className="mr-1 mt-1 h-2.5 w-2.5 rounded-full border border-border/70 bg-background shadow-sm" />
           </div>
-          <div
-            className="absolute bottom-0 left-0 z-[80] flex touch-none items-end justify-start"
-            style={{
-              width: CORNER_HANDLE_SIZE,
-              height: CORNER_HANDLE_SIZE,
-              cursor: 'sw-resize',
-            }}
-            onPointerDown={handleResizePointerDown('bottom-left')}
-          >
+          <div className="absolute bottom-0 left-0 z-[80] flex touch-none items-end justify-start" style={{ width: CORNER_HANDLE_SIZE, height: CORNER_HANDLE_SIZE, cursor: 'sw-resize' }} onPointerDown={handleResizePointerDown('bottom-left')}>
             <div className="mb-1 ml-1 h-2.5 w-2.5 rounded-full border border-border/70 bg-background shadow-sm" />
           </div>
-          <div
-            className="absolute bottom-0 right-0 z-[80] flex touch-none items-end justify-end"
-            style={{
-              width: CORNER_HANDLE_SIZE,
-              height: CORNER_HANDLE_SIZE,
-              cursor: 'se-resize',
-            }}
-            onPointerDown={handleResizePointerDown('bottom-right')}
-          >
+          <div className="absolute bottom-0 right-0 z-[80] flex touch-none items-end justify-end" style={{ width: CORNER_HANDLE_SIZE, height: CORNER_HANDLE_SIZE, cursor: 'se-resize' }} onPointerDown={handleResizePointerDown('bottom-right')}>
             <div className="mb-1 mr-1 h-2.5 w-2.5 rounded-full border border-border/70 bg-background shadow-sm" />
           </div>
         </div>
