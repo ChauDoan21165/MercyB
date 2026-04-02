@@ -77,7 +77,7 @@ UptimeRobot will ping your site every 60 seconds:
 
 3. **Optional - Add Health Check Endpoint:**
    - For more detailed monitoring, use:
-   - URL: `https://vpkchobbrennozdvhgaw.supabase.co/functions/v1/health-check`
+   - URL: `https://buemdfxyhxunzpgdoqin.supabase.co/functions/v1/health-check`
    - This endpoint returns JSON with site status
 
 ### Step 4: Set Up Cloudflare (Recommended)
@@ -193,7 +193,7 @@ Your security system will send alerts through:
 
 All edge functions are deployed at:
 ```
-https://vpkchobbrennozdvhgaw.supabase.co/functions/v1/
+https://buemdfxyhxunzpgdoqin.supabase.co/functions/v1/
 ```
 
 - `health-check` - Public, returns site status

@@ -16,7 +16,7 @@
 
 import { createClient } from '@supabase/supabase-js';
 
-const SUPABASE_URL = process.env.VITE_SUPABASE_URL || 'https://vpkchobbrennozdvhgaw.supabase.co';
+const SUPABASE_URL = process.env.VITE_SUPABASE_URL || 'https://buemdfxyhxunzpgdoqin.supabase.co';
 const SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 const OWNER_EMAIL = process.env.OWNER_EMAIL;
 

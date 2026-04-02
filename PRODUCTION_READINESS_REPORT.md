@@ -1,7 +1,7 @@
 # Production Readiness Report
 **Generated:** 2025-11-29  
 **Project:** Mercy Blade App  
-**Supabase Project:** vpkchobbrennozdvhgaw
+**Supabase Project:** buemdfxyhxunzpgdoqin
 
 ---
 

@@ -12,7 +12,7 @@ const AUDIO_DIR = path.join(process.cwd(), 'public/audio');
 const BUCKET_NAME = 'room-audio';
 
 // Load env vars
-const SUPABASE_URL = process.env.VITE_SUPABASE_URL || 'https://vpkchobbrennozdvhgaw.supabase.co';
+const SUPABASE_URL = process.env.VITE_SUPABASE_URL || 'https://buemdfxyhxunzpgdoqin.supabase.co';
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 if (!SUPABASE_SERVICE_KEY) {

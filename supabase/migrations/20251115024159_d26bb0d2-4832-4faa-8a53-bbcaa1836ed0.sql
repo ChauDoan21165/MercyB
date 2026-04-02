@@ -12,7 +12,7 @@ BEGIN
   -- Call the regenerate-registry edge function in the background
   -- Using pg_net to make async HTTP request
   PERFORM net.http_post(
-    url := 'https://vpkchobbrennozdvhgaw.supabase.co/functions/v1/regenerate-registry',
+    url := 'https://buemdfxyhxunzpgdoqin.supabase.co/functions/v1/regenerate-registry',
     headers := jsonb_build_object(
       'Content-Type', 'application/json',
       'Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZwa2Nob2JicmVubm96ZHZoZ2F3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA4NjM4ODQsImV4cCI6MjA3NjQzOTg4NH0.j9fUrdiHQPpdfAxd1d7RVGqZMBfWbw7cq7q1MQBlewY'

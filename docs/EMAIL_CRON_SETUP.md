@@ -22,7 +22,7 @@ SELECT cron.schedule(
   '0 3 * * *',
   $$
   SELECT net.http_post(
-    url := 'https://vpkchobbrennozdvhgaw.supabase.co/functions/v1/email-automations',
+    url := 'https://buemdfxyhxunzpgdoqin.supabase.co/functions/v1/email-automations',
     headers := jsonb_build_object(
       'Content-Type', 'application/json',
       'Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZwa2Nob2JicmVubm96ZHZoZ2F3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA4NjM4ODQsImV4cCI6MjA3NjQzOTg4NH0.j9fUrdiHQPpdfAxd1d7RVGqZMBfWbw7cq7q1MQBlewY'
@@ -44,7 +44,7 @@ SELECT * FROM cron.job WHERE jobname = 'daily-email-automations';
 To test the function immediately:
 
 ```bash
-curl -X POST https://vpkchobbrennozdvhgaw.supabase.co/functions/v1/email-automations \
+curl -X POST https://buemdfxyhxunzpgdoqin.supabase.co/functions/v1/email-automations \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_ANON_KEY" \
   -d '{"action": "run_daily"}'
