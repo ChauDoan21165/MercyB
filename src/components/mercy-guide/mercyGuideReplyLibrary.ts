@@ -1,7 +1,8 @@
 /**
- * File: src/components/mercy-guide/mercyGuideReplyLibrary.ts
- * Description: High-Performance Pedagogical Soul for MercyB.
- * Content: 50+ Seeds for Workplace, IELTS, and Phonological Rhythm.
+ * File: mercyGuideReplyLibrary.ts
+ * Path: src/components/mercy-guide/mercyGuideReplyLibrary.ts
+ * Version: 5.0 (Knowledge Base Hardened)
+ * Focus: Phonetic Triggers (Final S/ED), Room-Context, Fail-Open.
  */
 
 export type MercyGuideReplySource =
@@ -33,8 +34,11 @@ export type MercyGuideReplyIntent =
   | 'fallback'
   | 'grammar_correction'
   | 'pronunciation_feedback'
+  | 'phonology_final_s'      // Added: Vietnamese-specific pitfall
+  | 'phonology_ed_suffix'    // Added: Vietnamese-specific pitfall
   | 'workplace_english'
-  | 'ielts_speaking_p1';
+  | 'ielts_speaking_p1'
+  | 'room_context';          // Added: Key for Room-specific overrides
 
 export type MercyGuideReplyRecord = {
   id: string;
@@ -42,7 +46,7 @@ export type MercyGuideReplyRecord = {
   language: 'vi' | 'en';
   userInput: string;
   payload?: string;
-  roomId?: string;
+  roomId?: string;           // Hardened: Crucial for 400+ Room Mapping
   roomTitle?: string;
   tier?: string;
   pathSlug?: string;
@@ -61,11 +65,27 @@ export type MercyGuideReplySeed = Omit<
   'id' | 'createdAt'
 >;
 
-const STORAGE_KEY = 'mercy-guide-reply-library-v1';
-const MAX_RECORDS = 500;
+const STORAGE_KEY = 'mercy-guide-reply-library-v5';
+const MAX_RECORDS = 1000; // Scaled for massive room coverage
 
-// --- EXPANDED PEDAGOGICAL SOUL (50+ RESPONSES) ---
+// --- HARDENED SEED DATA: THE TEACHER'S SOUL ---
 const INITIAL_TEACHER_SEEDS: MercyGuideReplySeed[] = [
+  // --- PHONETIC TRIGGERS (Vietnamese Specific) ---
+  {
+    intent: 'phonology_final_s',
+    language: 'vi',
+    userInput: '',
+    reply: "Mẹo nhỏ nè: Đừng 'quên' âm /s/ ở cuối nhé! Tiếng Việt không có âm đuôi bật hơi, nhưng trong tiếng Anh, âm /s/ giúp phân biệt số ít và số nhiều đó. Thử xì nhẹ một cái nào!",
+    source: 'prewritten', approved: true, notes: 'Vietnamese pitfall: Final S'
+  },
+  {
+    intent: 'phonology_ed_suffix',
+    language: 'vi',
+    userInput: '',
+    reply: "Âm /ed/ ở cuối có 3 cách đọc (/t/, /d/, /id/). Đừng đọc tất cả là 'ờ' nhé. Với các từ kết thúc bằng âm vô thanh, hãy bật âm /t/ thật gọn!",
+    source: 'prewritten', approved: true, notes: 'Vietnamese pitfall: ED suffix'
+  },
+
   // --- WORKPLACE: RHYTHM & STRESS ---
   {
     intent: 'workplace_english',
@@ -78,74 +98,40 @@ const INITIAL_TEACHER_SEEDS: MercyGuideReplySeed[] = [
     intent: 'workplace_english',
     language: 'vi',
     userInput: '',
-    reply: "Đề xuất ý kiến: 'I'd like to propose a solution'. Mẹo: Nối âm 'propose-a'. Đừng dừng lại giữa hai từ này, hãy để luồng hơi chạy liên tục.",
-    source: 'prewritten', approved: true, notes: 'Workplace: Linking'
-  },
-  {
-    intent: 'workplace_english',
-    language: 'vi',
-    userInput: '',
-    reply: "Thảo luận Deadline: 'We are on a tight schedule'. Mẹo: 'SCHE-dule' nhấn âm đầu. Hãy thả lỏng âm 'dule' thành âm 'jool' nhẹ nhàng.",
-    source: 'prewritten', approved: true, notes: 'Workplace: Schedule Stress'
-  },
-  {
-    intent: 'workplace_english',
-    language: 'vi',
-    userInput: '',
     reply: "Trong email: 'Please find the attached file'. Mẹo: Phát âm 'at-TACHED' với âm /t/ bật mạnh ở cuối. Tránh đọc thành 'a-tát'.",
     source: 'prewritten', approved: true, notes: 'Workplace: Final /t/'
   },
 
-  // --- IELTS SPEAKING: INTONATION & FLOW ---
+  // --- IELTS SPEAKING ---
   {
     intent: 'ielts_speaking_p1',
     language: 'vi',
     userInput: '',
-    reply: "Nói về sở thích: 'It's a great way to unwind'. Mẹo: Hạ giọng ở cuối câu 'unwind' để nghe tự tin và bản xứ hơn. Đừng lên giọng kiểu câu hỏi.",
+    reply: "Nói về sở thích: 'It's a great way to unwind'. Mẹo: Hạ giọng ở cuối câu 'unwind' để nghe tự tin và bản xứ hơn. Đừng lên giọng kiểu câu hỏi nhé.",
     source: 'prewritten', approved: true, notes: 'IELTS: Falling Intonation'
   },
+
+  // --- ROOM-SPECIFIC CONTEXT (Template for Scaling) ---
   {
-    intent: 'ielts_speaking_p1',
+    intent: 'room_context',
     language: 'vi',
+    roomId: 'business-intro-101',
     userInput: '',
-    reply: "Dùng từ nối: 'Actually, to be honest...'. Mẹo: Hãy dùng 'Schwa' cho từ 'to' (đọc thành 'tờ'). Điều này giúp bạn nghe trôi chảy và tự nhiên hơn.",
-    source: 'prewritten', approved: true, notes: 'IELTS: Schwa /ə/'
-  },
-  {
-    intent: 'ielts_speaking_p1',
-    language: 'vi',
-    userInput: '',
-    reply: "Kể về kỷ niệm: 'I clearly remember...'. Mẹo: Nhấn mạnh vào 'CLE-arly'. Hãy kéo dài âm 'ear' một chút để tạo sự nhấn nhá trong câu chuyện.",
-    source: 'prewritten', approved: true, notes: 'IELTS: Narrative Stress'
+    reply: "Chào mừng bạn đến với Business Intro! Hôm nay chúng ta sẽ học cách dùng 'I would appreciate it' để chuyên nghiệp hơn. Bạn đã sẵn sàng chưa?",
+    source: 'prewritten', approved: true
   },
 
-  // --- PHONOLOGY: THE VIETNAMESE HURDLES ---
-  {
-    intent: 'pronunciation_feedback',
-    language: 'vi',
-    userInput: '',
-    reply: "Mẹo nhỏ: Tiếng Anh là ngôn ngữ nhấn nhá (Stress-timed). Hãy gõ nhịp tay khi nói, chỉ nhấn vào các từ quan trọng như Động từ và Danh từ nhé!",
-    source: 'prewritten', approved: true, notes: 'Phonology: Rhythm'
-  },
-  {
-    intent: 'pronunciation_feedback',
-    language: 'vi',
-    userInput: '',
-    reply: "Hãy chú ý âm 'th'. Đặt lưỡi giữa hai hàm răng và đẩy hơi nhẹ. Đừng đọc thành 'd' hoặc 'th' kiểu tiếng Việt.",
-    source: 'prewritten', approved: true, notes: 'Phonology: Dental Fricative'
-  },
-
-  // --- FALLBACKS ---
+  // --- GLOBAL FALLBACK ---
   {
     intent: 'fallback',
     language: 'vi',
     userInput: '',
-    reply: "Mercy đang nghe đây! Bạn muốn luyện tập 'Business Presentation' hay 'IELTS Topic' hôm nay?",
+    reply: "Mercy đang nghe đây! Bạn có muốn luyện tập âm đuôi /s/ hay cách dùng 'ED' trong khi chúng ta khám phá bài học này không?",
     source: 'fallback', approved: true
   }
 ];
 
-// --- CORE LOGIC ---
+// --- CORE UTILITIES ---
 
 function canUseStorage() {
   return typeof window !== 'undefined' && typeof window.localStorage !== 'undefined';
@@ -163,6 +149,7 @@ function normalizeSeed(seed: MercyGuideReplySeed): MercyGuideReplyRecord {
     language: seed.language,
     userInput: seed.userInput || '',
     payload: seed.payload || '',
+    roomId: seed.roomId || '',
     reply: reply.length > 0 ? reply : "Mercy is here to help! / Mercy đang ở đây để hỗ trợ bạn!",
     source: seed.source,
     createdAt: new Date().toISOString(),
@@ -185,20 +172,37 @@ export function getMercyGuideReplyLibrary(): MercyGuideReplyRecord[] {
   } catch { return []; }
 }
 
+/**
+ * ADVISOR LOGIC: Hardened Priority Search
+ * 1. Specific RoomID match
+ * 2. Specific Intent + Language match
+ * 3. Fallback Intent match
+ * 4. Absolute Emergency Fallback
+ */
 export function findApprovedMercyGuideReplies(
   intent: MercyGuideReplyIntent,
-  language?: 'vi' | 'en'
+  language: 'vi' | 'en' = 'vi',
+  roomId?: string
 ): MercyGuideReplyRecord[] {
   const library = getMercyGuideReplyLibrary();
-  let matches = library.filter(item => 
-    item.approved && item.intent === intent && (!language || item.language === language)
-  );
 
-  if (matches.length === 0 && intent !== 'fallback') {
-    matches = library.filter(item => item.intent === 'fallback' && item.approved);
+  // 1. Try Room-Specific Overrides first
+  if (roomId) {
+    const roomMatches = library.filter(i => i.roomId === roomId && i.language === language && i.approved);
+    if (roomMatches.length > 0) return roomMatches;
   }
 
-  // Absolute Last Resort Fail-Open
+  // 2. Try Standard Intent Matches
+  let matches = library.filter(item => 
+    item.approved && item.intent === intent && item.language === language
+  );
+
+  // 3. Fail-Open to Global Fallback
+  if (matches.length === 0 && intent !== 'fallback') {
+    matches = library.filter(item => item.intent === 'fallback' && item.language === language && item.approved);
+  }
+
+  // 4. Absolute Last Resort
   if (matches.length === 0) {
     return [{
       id: 'emergency',
