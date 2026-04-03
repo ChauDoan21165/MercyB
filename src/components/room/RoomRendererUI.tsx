@@ -1,3 +1,5 @@
+// src/components/room/RoomRendererUI.tsx
+
 import React, { useMemo, useState } from "react";
 import TalkingFacePlayButton from "@/components/audio/TalkingFacePlayButton";
 
@@ -66,12 +68,12 @@ export function normalizeTextForKwMatch(s: string) {
 // ------------------------------
 
 const MB_DARK_RAINBOW = [
-  "#B91C1C", // deep red
-  "#C2410C", // orange
-  "#A16207", // gold
-  "#047857", // green/teal
-  "#1D4ED8", // blue
-  "#6D28D9", // purple
+  "#B91C1C",
+  "#C2410C",
+  "#A16207",
+  "#047857",
+  "#1D4ED8",
+  "#6D28D9",
 ];
 
 function stableHash(s: string) {
@@ -236,7 +238,6 @@ function pickEnVerbs(textEn: string, max = 7) {
   const picked = uniqNormalizedKeepOrder(out).slice(0, max);
   if (picked.length > 0) return picked;
 
-  // ✅ fallback: still highlight something
   return pickFirstMeaningfulEnWords(textEn, max);
 }
 
@@ -280,7 +281,6 @@ const VI_STOP = new Set([
   "muốn",
 ]);
 
-// NOTE: tokenizeWords splits multi-word phrases, so this list is mainly single tokens.
 const VI_COMMON_VERBS = new Set([
   "làm",
   "đi",
@@ -354,7 +354,6 @@ function pickViVerbs(textVi: string, max = 7) {
   const picked = uniqNormalizedKeepOrder(out).slice(0, max);
   if (picked.length > 0) return picked;
 
-  // ✅ fallback: still highlight something
   return pickFirstMeaningfulViWords(textVi, max);
 }
 
@@ -476,10 +475,6 @@ export function highlightByColorMap(text: string, colorMap: KeywordColorMap) {
   if (last < t.length) parts.push(t.slice(last));
   return <span className="whitespace-pre-line leading-relaxed">{parts}</span>;
 }
-
-// -------------------------
-// Entry helpers (used by RoomRenderer + ActiveEntry)
-// -------------------------
 
 function stripImplicitAudioLines(text: string): string {
   if (!text) return "";
@@ -605,10 +600,6 @@ function isUglyHeading(h: string) {
   return looksSlug || tooIdLike;
 }
 
-// -------------------------
-// Audio helpers for ActiveEntry
-// -------------------------
-
 function normalizeAudioSrc(src: string): string {
   const s = String(src || "").trim();
   if (!s) return "";
@@ -694,10 +685,6 @@ function audioLabelFromSrc(src: string): string {
   return s ? s.split("/").pop() || s : "";
 }
 
-// -------------------------
-// MercyGuideCorner (UI shell only)
-// -------------------------
-
 export function MercyGuideCorner({
   disabled,
   roomTitle,
@@ -711,8 +698,6 @@ export function MercyGuideCorner({
   onClearKeyword?: () => void;
   onScrollToAudio?: () => void;
 }) {
-  // ✅ PATCH: this room-level Guide is deprecated (global Host/Guide owns the UI now).
-  // Keep code for DEV debugging only, OFF by default.
   const isDev = typeof import.meta !== "undefined" && (import.meta as any).env?.DEV;
   let allow = false;
   try {
@@ -799,10 +784,6 @@ export function MercyGuideCorner({
   );
 }
 
-// -------------------------
-// ActiveEntry (BOX 4)
-// -------------------------
-
 export function ActiveEntry({
   entry,
   index,
@@ -835,30 +816,46 @@ export function ActiveEntry({
       if (!hit) continue;
 
       pairs.push({ en: enK, vi: viK });
-      if (pairs.length >= 7) break; // ✅ 7 highlights for long text
+      if (pairs.length >= 7) break;
     }
 
     const enTop = pairs.map((p) => p.en).filter(Boolean);
     const viTop = pairs.map((p) => p.vi).filter(Boolean);
 
-    return buildKeywordColorMap(enTop, viTop, 7); // ✅ 7
+    return buildKeywordColorMap(enTop, viTop, 7);
   }, [entry, enKeywords, viKeywords]);
 
-  const verbColorMap = useMemo(() => buildEntryVerbColorMap(entry, 7), [entry]); // ✅ 7 verbs/meaningful words
+  const verbColorMap = useMemo(() => buildEntryVerbColorMap(entry, 7), [entry]);
 
   const mergedColorMap = useMemo(() => {
-    // verbs win over keyword classes if overlap
     return new Map<string, string>([...entryKwColorMap.entries(), ...verbColorMap.entries()]);
   }, [entryKwColorMap, verbColorMap]);
 
   const audioList = pickAudioList(entry);
 
+  const zoomTextStyle: React.CSSProperties = {
+    fontSize: "calc(16px * (var(--mb-essay-zoom, 100) / 100))",
+    lineHeight: 1.7,
+  };
+
+  const zoomHeadingStyle: React.CSSProperties = {
+    fontSize: "calc(1.875rem * (var(--mb-essay-zoom, 100) / 100))",
+    lineHeight: 1.15,
+  };
+
   return (
     <div>
-      {heading ? <h3 className="text-2xl md:text-3xl font-serif font-bold mt-1 leading-tight">{heading}</h3> : null}
+      {heading ? (
+        <h3
+          className="font-serif font-bold mt-1 leading-tight"
+          style={zoomHeadingStyle}
+        >
+          {heading}
+        </h3>
+      ) : null}
 
       {en ? (
-        <div className="mt-4 text-[15px] md:text-base mb-entryText">
+        <div className="mt-4 mb-entryText" style={zoomTextStyle}>
           {highlightByColorMap(en, mergedColorMap)}
         </div>
       ) : null}
@@ -884,7 +881,7 @@ export function ActiveEntry({
       ) : null}
 
       {vi ? (
-        <div className="mt-4 text-[15px] md:text-base mb-entryText">
+        <div className="mt-4 mb-entryText" style={zoomTextStyle}>
           {highlightByColorMap(vi, mergedColorMap)}
         </div>
       ) : null}

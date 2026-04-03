@@ -1,468 +1,490 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
-import { supabase } from "@/lib/supabaseClient";
-import { useAuth } from "@/providers/AuthProvider";
-import { useEntitlements } from "@/lib/useEntitlements";
-import { ManageSubscriptionButton } from "@/components/billing/ManageSubscriptionButton";
+import React, { useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  fetchMyEntitlement,
+  openBillingPortal,
+  startCheckoutOrOpenPortal,
+} from "@/lib/billing";
 
-type CheckoutTierId =
-  | "3d5a977c-4fde-4afc-99a4-4b37c3555839"
-  | "a2863250-1798-443e-b1d3-d20e3db06281";
+type PlanKey = "month" | "year";
 
-type SubscriptionRow = {
-  status: string | null;
-  current_period_end: string | null;
-  provider: string | null;
-  provider_subscription_id: string | null;
-  updated_at: string | null;
+type Entitlement = {
+  is_premium?: boolean;
+  status?: string | null;
+  source?: string | null;
+  expires_at?: string | null;
+  current_period_end?: string | null;
+  cancel_at_period_end?: boolean | null;
+  price_id?: string | null;
+  plan_name?: string | null;
+  vip_tier?: string | null;
 };
 
-const MONTHLY_TIER_ID =
-  "3d5a977c-4fde-4afc-99a4-4b37c3555839" as const;
-const YEARLY_TIER_ID =
-  "a2863250-1798-443e-b1d3-d20e3db06281" as const;
+const DIRECT_ONE_MONTH_PRICE_ID = "price_1TCKY02K1tPxy04uCHQNbvik";
+const DIRECT_ONE_YEAR_PRICE_ID = "price_1TCKSF2K1tPxy04uNeKcQWp5";
 
-function getCurrentPlanLabel(
-  ent: ReturnType<typeof useEntitlements>["ent"],
-): string {
-  if (!ent || ent.is_premium !== true) {
-    return "FREE";
-  }
-
-  if (typeof ent.plan_name === "string" && ent.plan_name.trim()) {
-    return ent.plan_name.toUpperCase();
-  }
-
-  if (ent.status === "trialing") return "TRIAL";
-  if (ent.vip_tier === "vip9") return "ONE YEAR";
-  if (ent.vip_tier === "vip1") return "ONE MONTH";
-
-  return "PREMIUM";
+function env(name: string): string {
+  return String((import.meta as any).env?.[name] ?? "").trim();
 }
 
-function formatSubscriptionStatus(status: string | null): string {
+function pickEnv(...names: string[]): string {
+  for (const name of names) {
+    const value = env(name);
+    if (value) return value;
+  }
+  return "";
+}
+
+function isUsablePriceId(value: string): boolean {
+  if (!value) return false;
+  if (!value.startsWith("price_")) return false;
+  if (value.includes("REPLACE_WITH_REAL")) return false;
+  return true;
+}
+
+function resolvePriceId(...candidates: string[]): string {
+  for (const candidate of candidates) {
+    const value = String(candidate ?? "").trim();
+    if (isUsablePriceId(value)) return value;
+  }
+  return "";
+}
+
+function formatDateTime(value: string | null | undefined): string {
+  if (!value) return "—";
+  const d = new Date(value);
+  if (Number.isNaN(d.getTime())) return "—";
+  return d.toLocaleString();
+}
+
+function getExpiryValue(ent: Entitlement | null): string | null {
+  if (!ent) return null;
+  return ent.current_period_end || ent.expires_at || null;
+}
+
+function getStatusLabel(status: string | null | undefined): string {
   switch (status) {
     case "active":
       return "Active";
     case "trialing":
-      return "Trialing";
+      return "Active";
     case "past_due":
       return "Past due";
-    case "canceled":
-      return "Canceled";
-    case "paused":
-      return "Paused";
-    case "revoked":
-      return "Revoked";
     case "grace_period":
       return "Grace period";
+    case "paused":
+      return "Paused";
+    case "canceled":
+      return "Canceled";
+    case "expired":
+      return "Expired";
+    case "revoked":
+      return "Revoked";
     default:
-      return "No subscription";
+      return "Inactive";
   }
 }
 
-function formatDisplayDate(value: string | null): string {
-  if (!value) return "—";
-
-  const date = new Date(value);
-  if (Number.isNaN(date.getTime())) return "—";
-
-  return new Intl.DateTimeFormat(undefined, {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  }).format(date);
-}
-
-function isManageableStatus(status: string | null): boolean {
-  return status === "active" || status === "trialing" || status === "past_due";
+function getPlanPriceId(
+  plan: PlanKey,
+  monthPriceId: string,
+  yearPriceId: string,
+): string {
+  return plan === "month" ? monthPriceId : yearPriceId;
 }
 
 export default function Billing() {
-  const { user, isLoading: authLoading } = useAuth();
-  const { ent, loading: entitlementsLoading } = useEntitlements();
+  const navigate = useNavigate();
 
-  const [busyTierId, setBusyTierId] = useState<CheckoutTierId | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [subscriptionLoading, setSubscriptionLoading] = useState(true);
-  const [subscriptionError, setSubscriptionError] = useState<string | null>(null);
-  const [subscription, setSubscription] = useState<SubscriptionRow | null>(null);
-
-  const isPremium = ent?.is_premium === true;
-  const currentPlanLabel = getCurrentPlanLabel(ent);
-
-  const tiers = useMemo(
-    () =>
-      [
-        {
-          tierId: MONTHLY_TIER_ID,
-          label: "One Month",
-          price: "200,000 VND",
-          desc: "Full MercyBlade access for 1 month.",
-        },
-        {
-          tierId: YEARLY_TIER_ID,
-          label: "One Year",
-          price: "2,000,000 VND",
-          desc: "Full MercyBlade access for 1 year.",
-        },
-      ] as const,
-    [],
+  const monthPriceId = resolvePriceId(
+    pickEnv(
+      "VITE_STRIPE_PRICE_ONE_MONTH",
+      "VITE_STRIPE_PRICE_MONTHLY",
+      "VITE_STRIPE_MONTHLY_PRICE_ID",
+    ),
+    DIRECT_ONE_MONTH_PRICE_ID,
   );
 
-  useEffect(() => {
-    let cancelled = false;
+  const yearPriceId = resolvePriceId(
+    pickEnv(
+      "VITE_STRIPE_PRICE_ONE_YEAR",
+      "VITE_STRIPE_PRICE_YEARLY",
+      "VITE_STRIPE_YEARLY_PRICE_ID",
+    ),
+    DIRECT_ONE_YEAR_PRICE_ID,
+  );
 
-    async function loadSubscription() {
-      if (authLoading) return;
+  const [ent, setEnt] = useState<Entitlement | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [busyPlan, setBusyPlan] = useState<PlanKey | null>(null);
+  const [manageBusy, setManageBusy] = useState(false);
+  const [errorText, setErrorText] = useState("");
 
-      if (!user) {
-        if (!cancelled) {
-          setSubscription(null);
-          setSubscriptionError(null);
-          setSubscriptionLoading(false);
-        }
-        return;
-      }
+  const isPremium = ent?.is_premium === true;
+  const currentPriceId = String(ent?.price_id ?? "").trim();
 
-      try {
-        setSubscriptionLoading(true);
-        setSubscriptionError(null);
+  const planName = useMemo(() => {
+    if (!ent) return "Free";
+    if (ent.plan_name && ent.plan_name.trim()) return ent.plan_name.trim();
+    return isPremium ? "Premium" : "Free";
+  }, [ent, isPremium]);
 
-        const { data, error: subscriptionFetchError } = await supabase
-          .from("subscriptions")
-          .select(
-            "status,current_period_end,provider,provider_subscription_id,updated_at",
-          )
-          .eq("app_id", "mercy_blade")
-          .eq("user_id", user.id)
-          .eq("provider", "stripe")
-          .order("updated_at", { ascending: false, nullsFirst: false })
-          .limit(1)
-          .maybeSingle();
+  const expiryText = useMemo(() => formatDateTime(getExpiryValue(ent)), [ent]);
 
-        if (subscriptionFetchError) {
-          throw subscriptionFetchError;
-        }
+  function isCurrentPlan(plan: PlanKey): boolean {
+    const target = getPlanPriceId(plan, monthPriceId, yearPriceId);
+    return !!currentPriceId && currentPriceId === target;
+  }
 
-        if (!cancelled) {
-          setSubscription((data as SubscriptionRow | null) ?? null);
-        }
-      } catch (e) {
-        if (!cancelled) {
-          const message =
-            e instanceof Error ? e.message : "Failed to load billing status";
-          setSubscriptionError(message);
-          setSubscription(null);
-        }
-      } finally {
-        if (!cancelled) {
-          setSubscriptionLoading(false);
-        }
-      }
-    }
-
-    void loadSubscription();
-
-    return () => {
-      cancelled = true;
-    };
-  }, [authLoading, user]);
-
-  const startCheckout = useCallback(async (tierId: CheckoutTierId) => {
-    setError(null);
-    setBusyTierId(tierId);
-
+  async function refreshEntitlement() {
+    setLoading(true);
+    setErrorText("");
     try {
-      const {
-        data: { session },
-        error: sessionError,
-      } = await supabase.auth.getSession();
-
-      if (sessionError) throw sessionError;
-      if (!session?.access_token) {
-        throw new Error("Please sign in before upgrading.");
-      }
-
-      const successUrl = `${window.location.origin}/billing/success`;
-      const cancelUrl = `${window.location.origin}/billing`;
-
-      const { data, error: invokeError } = await supabase.functions.invoke(
-        "billing-stripe-checkout-session",
-        {
-          body: {
-            tier_id: tierId,
-            success_url: successUrl,
-            cancel_url: cancelUrl,
-          },
-        },
+      const data = await fetchMyEntitlement();
+      setEnt(data);
+    } catch (error) {
+      setEnt(null);
+      setErrorText(
+        error instanceof Error ? error.message : "Unable to load billing status.",
       );
-
-      if (invokeError) throw invokeError;
-
-      const checkoutUrl =
-        data && typeof data === "object"
-          ? (data as { checkout_url?: unknown }).checkout_url
-          : null;
-
-      if (!checkoutUrl || typeof checkoutUrl !== "string") {
-        throw new Error("Missing checkout_url from billing-stripe-checkout-session");
-      }
-
-      window.location.assign(checkoutUrl);
-    } catch (e) {
-      const message = e instanceof Error ? e.message : "Checkout failed";
-      setError(message);
     } finally {
-      setBusyTierId(null);
+      setLoading(false);
     }
+  }
+
+  useEffect(() => {
+    void refreshEntitlement();
   }, []);
 
-  if (authLoading) {
-    return (
-      <div style={{ maxWidth: 920, margin: "0 auto", padding: 16 }}>
-        <h1 style={{ fontSize: 28, margin: "8px 0 4px" }}>Billing</h1>
-        <div style={{ opacity: 0.8 }}>Loading billing…</div>
-      </div>
-    );
+  async function handlePlan(plan: PlanKey) {
+    const priceId = getPlanPriceId(plan, monthPriceId, yearPriceId);
+    if (!priceId) {
+      setErrorText(
+        plan === "month"
+          ? "Monthly Stripe price_id is not configured."
+          : "Yearly Stripe price_id is not configured.",
+      );
+      return;
+    }
+
+    setErrorText("");
+    setBusyPlan(plan);
+
+    try {
+      const result = await startCheckoutOrOpenPortal({
+        priceId,
+        successUrl:
+          `${window.location.origin}/billing/success?session_id={CHECKOUT_SESSION_ID}`,
+        cancelUrl: `${window.location.origin}/billing`,
+      });
+
+      if (result.mode === "change_plan" || result.mode === "noop") {
+        await refreshEntitlement();
+      }
+    } catch (error) {
+      setErrorText(
+        error instanceof Error ? error.message : "Unable to continue.",
+      );
+    } finally {
+      setBusyPlan(null);
+    }
   }
 
-  if (!user) {
-    return <Navigate to="/signin" replace />;
+  async function handleManageBilling() {
+    setErrorText("");
+    setManageBusy(true);
+    try {
+      await openBillingPortal();
+    } catch (error) {
+      setErrorText(
+        error instanceof Error
+          ? error.message
+          : "Unable to open billing portal.",
+      );
+    } finally {
+      setManageBusy(false);
+    }
   }
 
-  const subscriptionStatusLabel = formatSubscriptionStatus(subscription?.status ?? null);
-  const renewalLabel = formatDisplayDate(subscription?.current_period_end ?? null);
-  const showManageButton =
-    isManageableStatus(subscription?.status ?? null) || isPremium;
+  const card: React.CSSProperties = {
+    border: "1px solid rgba(15,23,42,0.10)",
+    borderRadius: 18,
+    background: "#fff",
+    padding: 18,
+    boxShadow: "0 8px 24px rgba(15,23,42,0.05)",
+  };
+
+  const primaryButton: React.CSSProperties = {
+    minHeight: 46,
+    borderRadius: 14,
+    border: "1px solid #0f172a",
+    background: "#0f172a",
+    color: "#fff",
+    fontWeight: 900,
+    padding: "12px 16px",
+    cursor: "pointer",
+  };
+
+  const secondaryButton: React.CSSProperties = {
+    minHeight: 46,
+    borderRadius: 14,
+    border: "1px solid rgba(15,23,42,0.12)",
+    background: "#fff",
+    color: "#111827",
+    fontWeight: 900,
+    padding: "12px 16px",
+    cursor: "pointer",
+  };
 
   return (
-    <div style={{ maxWidth: 920, margin: "0 auto", padding: 16 }}>
+    <div
+      style={{
+        maxWidth: 980,
+        margin: "0 auto",
+        padding: "24px 16px 60px",
+      }}
+    >
       <div
         style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          gap: 12,
-          flexWrap: "wrap",
-          marginBottom: 8,
+          ...card,
+          marginBottom: 16,
+          background: "linear-gradient(180deg,#f8fafc 0%, #eefbf7 100%)",
         }}
       >
-        <h1 style={{ fontSize: 28, margin: 0 }}>Billing</h1>
-
-        <Link
-          to="/account"
+        <h1
           style={{
-            padding: "10px 12px",
-            borderRadius: 999,
-            border: "1px solid rgba(255,255,255,0.18)",
-            textDecoration: "none",
+            margin: 0,
+            fontSize: 32,
+            lineHeight: 1.1,
+            fontWeight: 950,
+            color: "#111827",
+          }}
+        >
+          Billing
+        </h1>
+
+        <p
+          style={{
+            margin: "12px 0 0",
+            color: "#475569",
+            lineHeight: 1.7,
+          }}
+        >
+          Manage your premium access, switch plans, or open Stripe billing portal.
+        </p>
+
+        <div
+          style={{
+            display: "flex",
+            gap: 12,
+            flexWrap: "wrap",
+            marginTop: 18,
+          }}
+        >
+          <button
+            type="button"
+            onClick={() => void refreshEntitlement()}
+            disabled={loading}
+            style={secondaryButton}
+          >
+            {loading ? "Refreshing..." : "Refresh billing"}
+          </button>
+
+          <button
+            type="button"
+            onClick={() => void handleManageBilling()}
+            disabled={manageBusy}
+            style={primaryButton}
+          >
+            {manageBusy ? "Opening..." : "Manage billing"}
+          </button>
+
+          <button
+            type="button"
+            onClick={() => navigate("/pricing")}
+            style={secondaryButton}
+          >
+            Open pricing
+          </button>
+        </div>
+      </div>
+
+      {errorText ? (
+        <div
+          style={{
+            marginBottom: 16,
+            padding: "12px 14px",
+            borderRadius: 14,
+            border: "1px solid rgba(239,68,68,0.20)",
+            background: "rgba(254,242,242,0.95)",
+            color: "#991b1b",
             fontWeight: 700,
           }}
         >
-          Back to account
-        </Link>
-      </div>
-
-      <div style={{ opacity: 0.8, marginBottom: 12 }}>
-        {entitlementsLoading ? (
-          <span>Loading…</span>
-        ) : (
-          <span>
-            Current access: <b>{currentPlanLabel}</b>
-            {ent?.status ? (
-              <>
-                {" "}
-                · status: <b>{String(ent.status)}</b>
-              </>
-            ) : null}
-            {ent?.source ? (
-              <>
-                {" "}
-                · source: <b>{String(ent.source)}</b>
-              </>
-            ) : null}
-          </span>
-        )}
-      </div>
-
-      <div
-        style={{
-          border: "1px solid rgba(255,255,255,0.12)",
-          borderRadius: 16,
-          padding: 14,
-          background: "rgba(255,255,255,0.04)",
-          marginBottom: 12,
-        }}
-      >
-        <div style={{ fontSize: 18, fontWeight: 700, marginBottom: 8 }}>
-          Subscription status
-        </div>
-
-        <div style={{ opacity: 0.85, marginBottom: 12 }}>
-          View your current subscription state and manage billing in Stripe.
-        </div>
-
-        {subscriptionLoading ? (
-          <div style={{ opacity: 0.8 }}>Loading billing status…</div>
-        ) : subscriptionError ? (
-          <div
-            style={{
-              background: "rgba(255,0,0,0.08)",
-              border: "1px solid rgba(255,0,0,0.25)",
-              padding: 12,
-              borderRadius: 12,
-              marginBottom: 12,
-              whiteSpace: "pre-wrap",
-            }}
-          >
-            {subscriptionError}
-          </div>
-        ) : (
-          <>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
-                gap: 12,
-                marginBottom: 12,
-              }}
-            >
-              <div
-                style={{
-                  border: "1px solid rgba(255,255,255,0.12)",
-                  borderRadius: 12,
-                  padding: 12,
-                  background: "rgba(255,255,255,0.02)",
-                }}
-              >
-                <div style={{ fontSize: 12, opacity: 0.7, marginBottom: 6 }}>
-                  Status
-                </div>
-                <div style={{ fontSize: 16, fontWeight: 700 }}>
-                  {subscriptionStatusLabel}
-                </div>
-              </div>
-
-              <div
-                style={{
-                  border: "1px solid rgba(255,255,255,0.12)",
-                  borderRadius: 12,
-                  padding: 12,
-                  background: "rgba(255,255,255,0.02)",
-                }}
-              >
-                <div style={{ fontSize: 12, opacity: 0.7, marginBottom: 6 }}>
-                  {subscription?.status === "canceled"
-                    ? "Access until"
-                    : "Renews / expires"}
-                </div>
-                <div style={{ fontSize: 16, fontWeight: 700 }}>
-                  {renewalLabel}
-                </div>
-              </div>
-            </div>
-
-            {showManageButton ? (
-              <>
-                <div style={{ opacity: 0.85, marginBottom: 12 }}>
-                  Update your payment method, review invoices, or cancel your
-                  plan in Stripe Billing Portal.
-                </div>
-                <ManageSubscriptionButton />
-              </>
-            ) : (
-              <div style={{ opacity: 0.75 }}>
-                No manageable Stripe subscription found yet.
-              </div>
-            )}
-          </>
-        )}
-      </div>
-
-      {error ? (
-        <div
-          style={{
-            background: "rgba(255,0,0,0.08)",
-            border: "1px solid rgba(255,0,0,0.25)",
-            padding: 12,
-            borderRadius: 12,
-            marginBottom: 12,
-            whiteSpace: "pre-wrap",
-          }}
-        >
-          {error}
+          {errorText}
         </div>
       ) : null}
 
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
-          gap: 12,
+          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+          gap: 16,
         }}
       >
-        {tiers.map((t) => {
-          const disabled = busyTierId !== null;
+        <div style={card}>
+          <div
+            style={{
+              fontSize: 12,
+              fontWeight: 800,
+              textTransform: "uppercase",
+              letterSpacing: 0.4,
+              color: "rgba(0,0,0,0.48)",
+              marginBottom: 8,
+            }}
+          >
+            Current plan
+          </div>
 
-          return (
-            <div
-              key={t.tierId}
-              style={{
-                border: "1px solid rgba(255,255,255,0.12)",
-                borderRadius: 16,
-                padding: 14,
-                background: "rgba(255,255,255,0.04)",
-              }}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "baseline",
-                  justifyContent: "space-between",
-                  gap: 12,
-                }}
-              >
-                <div style={{ fontSize: 18, fontWeight: 700 }}>{t.label}</div>
-                <span style={{ fontSize: 13, opacity: 0.8 }}>{t.price}</span>
-              </div>
+          <div
+            style={{
+              fontSize: 26,
+              fontWeight: 900,
+              color: "#111827",
+            }}
+          >
+            {loading ? "Loading..." : planName}
+          </div>
 
-              <div style={{ marginTop: 8, opacity: 0.85, minHeight: 44 }}>
-                {t.desc}
-              </div>
+          <div
+            style={{
+              marginTop: 10,
+              color: "#475569",
+              lineHeight: 1.7,
+              fontSize: 14,
+            }}
+          >
+            Status: <b>{loading ? "Loading..." : getStatusLabel(ent?.status)}</b>
+            <br />
+            Source: <b>{loading ? "Loading..." : (ent?.source || "—")}</b>
+            <br />
+            Expires: <b>{loading ? "Loading..." : expiryText}</b>
+            <br />
+            Cancel at period end:{" "}
+            <b>{loading ? "Loading..." : (ent?.cancel_at_period_end ? "Yes" : "No")}</b>
+          </div>
+        </div>
 
-              <button
-                type="button"
-                disabled={disabled}
-                onClick={() => void startCheckout(t.tierId)}
-                style={{
-                  marginTop: 12,
-                  width: "100%",
-                  padding: "10px 12px",
-                  borderRadius: 999,
-                  border: "1px solid rgba(255,255,255,0.18)",
-                  background: disabled
-                    ? "rgba(255,255,255,0.06)"
-                    : "rgba(255,255,255,0.12)",
-                  cursor: disabled ? "not-allowed" : "pointer",
-                  fontWeight: 700,
-                }}
-              >
-                {busyTierId === t.tierId
-                  ? "Opening Stripe…"
-                  : `Choose ${t.label}`}
-              </button>
-            </div>
-          );
-        })}
-      </div>
+        <div style={card}>
+          <div
+            style={{
+              fontSize: 12,
+              fontWeight: 800,
+              textTransform: "uppercase",
+              letterSpacing: 0.4,
+              color: "rgba(0,0,0,0.48)",
+              marginBottom: 8,
+            }}
+          >
+            Monthly
+          </div>
 
-      <div
-        style={{ marginTop: 14, opacity: 0.7, fontSize: 12, lineHeight: 1.4 }}
-      >
-        Tip: after payment completes, Stripe calls your webhook → webhook updates
-        your subscription state → backend recomputes entitlement → app reads{" "}
-        <code>me-entitlement</code>.
+          <div style={{ fontSize: 26, fontWeight: 900, color: "#111827" }}>
+            200 000 VND
+          </div>
+
+          <div style={{ marginTop: 8, color: "#475569", lineHeight: 1.7 }}>
+            Flexible recurring access with monthly billing.
+          </div>
+
+          <button
+            type="button"
+            onClick={() => void handlePlan("month")}
+            disabled={loading || manageBusy || busyPlan === "month" || isCurrentPlan("month")}
+            style={{
+              ...primaryButton,
+              width: "100%",
+              marginTop: 16,
+              opacity: isCurrentPlan("month") ? 0.7 : 1,
+              cursor: isCurrentPlan("month") ? "default" : "pointer",
+              background: isCurrentPlan("month") ? "#334155" : "#0f172a",
+              borderColor: isCurrentPlan("month") ? "#334155" : "#0f172a",
+            }}
+          >
+            {loading
+              ? "Checking..."
+              : busyPlan === "month"
+                ? "Working..."
+                : isCurrentPlan("month")
+                  ? "Current plan"
+                  : isPremium
+                    ? "Switch to monthly"
+                    : "Choose monthly"}
+          </button>
+        </div>
+
+        <div style={card}>
+          <div
+            style={{
+              fontSize: 12,
+              fontWeight: 800,
+              textTransform: "uppercase",
+              letterSpacing: 0.4,
+              color: "rgba(0,0,0,0.48)",
+              marginBottom: 8,
+            }}
+          >
+            Yearly
+          </div>
+
+          <div style={{ fontSize: 26, fontWeight: 900, color: "#111827" }}>
+            2 000 000 VND
+          </div>
+
+          <div style={{ marginTop: 8, color: "#475569", lineHeight: 1.7 }}>
+            Best long-term value with full premium access all year.
+          </div>
+
+          <div
+            style={{
+              marginTop: 10,
+              fontSize: 13,
+              fontWeight: 800,
+              color: "#065f46",
+              background: "rgba(16,185,129,0.10)",
+              borderRadius: 12,
+              padding: "8px 10px",
+              display: "inline-block",
+            }}
+          >
+            Save 17% • 2 months free
+          </div>
+
+          <button
+            type="button"
+            onClick={() => void handlePlan("year")}
+            disabled={loading || manageBusy || busyPlan === "year" || isCurrentPlan("year")}
+            style={{
+              ...primaryButton,
+              width: "100%",
+              marginTop: 16,
+              opacity: isCurrentPlan("year") ? 0.7 : 1,
+              cursor: isCurrentPlan("year") ? "default" : "pointer",
+              background: isCurrentPlan("year") ? "#334155" : "#0f172a",
+              borderColor: isCurrentPlan("year") ? "#334155" : "#0f172a",
+            }}
+          >
+            {loading
+              ? "Checking..."
+              : busyPlan === "year"
+                ? "Working..."
+                : isCurrentPlan("year")
+                  ? "Current plan"
+                  : isPremium
+                    ? "Switch to yearly"
+                    : "Choose yearly"}
+          </button>
+        </div>
       </div>
     </div>
   );

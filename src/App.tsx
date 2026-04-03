@@ -1,4 +1,3 @@
-import React from "react";
 import { Routes, Route, Outlet, Navigate } from "react-router-dom";
 
 import LoginPage from "@/pages/LoginPage";
@@ -8,6 +7,7 @@ import Billing from "@/pages/Billing";
 import BillingSuccess from "@/pages/BillingSuccess";
 import Privacy from "@/pages/Privacy";
 import Pricing from "@/screens/Pricing";
+import AdminBillingDashboard from "@/pages/admin/AdminBillingDashboard";
 
 function AppHeroLayout() {
   return <Outlet />;
@@ -26,6 +26,7 @@ export default function App() {
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/upgrade" element={<Navigate to="/pricing" replace />} />
+        <Route path="/admin/billing" element={<AdminBillingDashboard />} />
       </Route>
 
       <Route path="*" element={<Navigate to="/" replace />} />

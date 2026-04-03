@@ -29,6 +29,10 @@
 // PATCH (2026-03-09c):
 // - Wire in SpeechRecorder below ActiveEntry inside Box 4.
 // - Only render when active entry has a usable English target sentence.
+//
+// PATCH (2026-04-01):
+// - ZOOM FIX: consume --mb-essay-zoom inside ROOM_CSS_TIDY so the room text
+//   actually responds to the BottomMusicBar zoom slider.
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
@@ -351,12 +355,57 @@ const ROOM_CSS_TIDY = `
 
   --mb-border: rgba(0,0,0,0.08);
   --mb-card-bg: rgba(255,255,255,0.78);
+
+  /* ZOOM FIX */
+  --mb-effective-zoom: calc(var(--mb-essay-zoom, 100) / 100);
 }
 
 [data-mb-scope="room"] [data-room-box]{
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
+}
+
+/* ZOOM FIX — consume the existing slider variable on readable text */
+[data-mb-scope="room"] .mb-welcomeLine,
+[data-mb-scope="room"] .mb-roomTitle,
+[data-mb-scope="room"] .mb-completionPrompt,
+[data-mb-scope="room"] .mb-completionSub,
+[data-mb-scope="room"] .mb-completionDone{
+  font-size: calc(1em * var(--mb-effective-zoom)) !important;
+  line-height: 1.65;
+}
+
+[data-mb-scope="room"] .mb-zoomWrap{
+  font-size: calc(16px * var(--mb-effective-zoom));
+  line-height: 1.65;
+}
+
+[data-mb-scope="room"] .mb-zoomWrap p,
+[data-mb-scope="room"] .mb-zoomWrap li,
+[data-mb-scope="room"] .mb-zoomWrap blockquote,
+[data-mb-scope="room"] .mb-zoomWrap h1,
+[data-mb-scope="room"] .mb-zoomWrap h2,
+[data-mb-scope="room"] .mb-zoomWrap h3,
+[data-mb-scope="room"] .mb-zoomWrap h4,
+[data-mb-scope="room"] .mb-zoomWrap h5,
+[data-mb-scope="room"] .mb-zoomWrap h6,
+[data-mb-scope="room"] .mb-zoomWrap label,
+[data-mb-scope="room"] .mb-zoomWrap figcaption{
+  font-size: calc(1em * var(--mb-effective-zoom)) !important;
+  line-height: 1.65;
+}
+
+/* Keep controls stable */
+[data-mb-scope="room"] .mb-titleRow button,
+[data-mb-scope="room"] .mb-keyRow button,
+[data-mb-scope="room"] .mb-completionBtn,
+[data-mb-scope="room"] .mb-completionInput,
+[data-mb-scope="room"] .mb-chatComposer input,
+[data-mb-scope="room"] .mb-chatComposer button,
+[data-mb-scope="room"] .mb-feedback input,
+[data-mb-scope="room"] .mb-feedback button{
+  font-size: inherit;
 }
 
 [data-mb-scope="room"] .mb-titleRow{

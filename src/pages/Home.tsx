@@ -1,27 +1,8 @@
 // src/pages/Home.tsx
-// SAFE CLEANED VERSION
+// FIXED FOR HOME PAGE TEXT ZOOM
 //
-// Keeps:
-// - existing auth/progress/room lookup logic
-// - real /tiers route
-// - hero image intact
-// - Mercy Host spotlight section
-// - progress section
-// - BottomMusicBar
-// - lazy Supabase loading
-//
-// Cleans:
-// - top area hierarchy
-// - removes duplicated account/sign-in button from auth card
-// - keeps lesson card as primary action
-// - removes extra CTA rows inside hero copy block to reduce clutter
-// - cuts white space above and below hero band
-// - removes duplicated account buttons from lesson card, Mercy Host cards, and progress section
-//
-// Does NOT add:
-// - placeholder room logic
-// - fake daily lesson IDs
-// - fake local room suggestions
+// Keeps native/browser zoom behavior
+// Adds Home-only text zoom wiring to the existing app zoom system
 
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -32,10 +13,11 @@ import { useAuth } from "@/providers/AuthProvider";
 
 const PAGE_MAX = 980;
 const softPanel = "rgba(230, 244, 255, 0.85)";
-const LS_ZOOM = "mb.ui.zoom";
 const HOME_TZ = "Asia/Ho_Chi_Minh";
 const ROUTE_PRICING = "/pricing";
 const HERO_SRC = "/hero/hero_band.jpg";
+const LS_ZOOM = "mb.ui.zoom";
+const DEFAULT_ZOOM = 100;
 
 const VN_DT_FMT = new Intl.DateTimeFormat("vi-VN", {
   timeZone: HOME_TZ,
@@ -55,30 +37,6 @@ async function getSupabaseClient(): Promise<SupabaseClientType> {
     supabaseClientPromise = import("@/lib/supabaseClient").then((mod) => mod.supabase);
   }
   return supabaseClientPromise;
-}
-
-function clamp(n: number, a: number, b: number) {
-  return Math.max(a, Math.min(b, n));
-}
-
-function readZoomPct(): number {
-  try {
-    const attr = document.documentElement.getAttribute("data-mb-zoom");
-    const fromAttr = attr ? Number(attr) : NaN;
-    if (Number.isFinite(fromAttr)) return clamp(Math.round(fromAttr), 60, 140);
-  } catch {
-    // ignore
-  }
-
-  try {
-    const raw = localStorage.getItem(LS_ZOOM);
-    const n = raw ? Number(raw) : NaN;
-    if (Number.isFinite(n)) return clamp(Math.round(n), 60, 140);
-  } catch {
-    // ignore
-  }
-
-  return 100;
 }
 
 type ProgressSummaryRow = {
@@ -140,11 +98,35 @@ function toDisplayName(email: string, meta: unknown) {
     .replace(/\b\w/g, (m) => m.toUpperCase());
 }
 
+function clamp(n: number, a: number, b: number) {
+  return Math.max(a, Math.min(b, n));
+}
+
+function readZoomPct(): number {
+  try {
+    const raw = Number(localStorage.getItem(LS_ZOOM));
+    if (Number.isFinite(raw)) return clamp(Math.round(raw), 60, 140);
+  } catch {
+    // ignore
+  }
+
+  try {
+    const css = getComputedStyle(document.documentElement)
+      .getPropertyValue("--mb-essay-zoom")
+      .trim();
+    const parsed = Number(css);
+    if (Number.isFinite(parsed)) return clamp(Math.round(parsed), 60, 140);
+  } catch {
+    // ignore
+  }
+
+  return DEFAULT_ZOOM;
+}
+
 export default function Home() {
   const nav = useNavigate();
   const { user, isLoading } = useAuth();
 
-  const [zoomPct, setZoomPct] = useState<number>(100);
   const [progressLoading, setProgressLoading] = useState(false);
   const [progressErr, setProgressErr] = useState<string | null>(null);
   const [progressRow, setProgressRow] = useState<ProgressSummaryRow | null>(null);
@@ -154,19 +136,34 @@ export default function Home() {
   const [viewportWidth, setViewportWidth] = useState<number>(
     typeof window === "undefined" ? 1200 : window.innerWidth,
   );
+  const [zoomPct, setZoomPct] = useState<number>(() => readZoomPct());
 
   useEffect(() => {
-    const apply = () => setZoomPct(readZoomPct());
-    apply();
+    const sync = () => setZoomPct(readZoomPct());
+    sync();
 
-    const obs = new MutationObserver(() => apply());
+    const onStorage = (e: StorageEvent) => {
+      if (!e.key || e.key === LS_ZOOM) sync();
+    };
+
+    const obs = new MutationObserver(() => sync());
     obs.observe(document.documentElement, {
       attributes: true,
-      attributeFilter: ["data-mb-zoom"],
+      attributeFilter: ["style", "data-mb-zoom"],
     });
 
-    return () => obs.disconnect();
+    window.addEventListener("storage", onStorage);
+
+    return () => {
+      window.removeEventListener("storage", onStorage);
+      obs.disconnect();
+    };
   }, []);
+
+  const z = useMemo(() => {
+    const scale = zoomPct / 100;
+    return (px: number) => Math.round(px * scale);
+  }, [zoomPct]);
 
   useEffect(() => {
     if (typeof window === "undefined") return undefined;
@@ -178,7 +175,6 @@ export default function Home() {
     return () => window.removeEventListener("resize", syncViewport);
   }, []);
 
-  const zoomScale = useMemo(() => clamp(zoomPct / 100, 0.6, 1.4), [zoomPct]);
   const isDesktopTop = viewportWidth >= 960;
 
   useEffect(() => {
@@ -467,7 +463,7 @@ export default function Home() {
       ? "1px solid rgba(16,185,129,0.22)"
       : "1px solid rgba(0,0,0,0.10)",
     background: isSignedIn ? "rgba(236,253,245,0.92)" : "rgba(255,255,255,0.86)",
-    fontSize: 12,
+    fontSize: z(12),
     fontWeight: 900,
     color: isSignedIn ? "rgba(6,95,70,0.92)" : "rgba(0,0,0,0.62)",
     whiteSpace: "nowrap",
@@ -494,7 +490,7 @@ export default function Home() {
 
   const authTitle: React.CSSProperties = {
     margin: "6px 0 0",
-    fontSize: isDesktopTop ? 28 : 22,
+    fontSize: isDesktopTop ? z(28) : z(22),
     fontWeight: 950,
     color: "rgba(0,0,0,0.90)",
     letterSpacing: -0.55,
@@ -504,7 +500,7 @@ export default function Home() {
   const authSub: React.CSSProperties = {
     marginTop: 4,
     marginBottom: 0,
-    fontSize: 14,
+    fontSize: z(14),
     lineHeight: 1.45,
     color: "rgba(0,0,0,0.64)",
   };
@@ -520,7 +516,7 @@ export default function Home() {
     borderRadius: 9999,
     border: "1px solid rgba(0,0,0,0.10)",
     background: "rgba(255,255,255,0.86)",
-    fontSize: 11,
+    fontSize: z(11),
     fontWeight: 900,
     color: "rgba(0,0,0,0.74)",
     whiteSpace: "nowrap",
@@ -545,7 +541,7 @@ export default function Home() {
   };
 
   const lessonMeta: React.CSSProperties = {
-    fontSize: 12,
+    fontSize: z(12),
     fontWeight: 900,
     color: "rgba(0,0,0,0.52)",
     letterSpacing: 0.2,
@@ -554,7 +550,7 @@ export default function Home() {
   const lessonTitle: React.CSSProperties = {
     marginTop: 8,
     marginBottom: 0,
-    fontSize: isDesktopTop ? 28 : 23,
+    fontSize: isDesktopTop ? z(28) : z(23),
     fontWeight: 950,
     color: "rgba(0,0,0,0.90)",
     letterSpacing: -0.6,
@@ -564,7 +560,7 @@ export default function Home() {
   const lessonSub: React.CSSProperties = {
     marginTop: 6,
     marginBottom: 0,
-    fontSize: 14,
+    fontSize: z(14),
     lineHeight: 1.6,
     color: "rgba(0,0,0,0.64)",
   };
@@ -600,7 +596,7 @@ export default function Home() {
     cursor: "pointer",
     width: "100%",
     textAlign: "left",
-    fontSize: 13,
+    fontSize: z(13),
     lineHeight: 1.2,
     minHeight: 0,
   };
@@ -647,7 +643,7 @@ export default function Home() {
 
   const hostName: React.CSSProperties = {
     margin: 0,
-    fontSize: 24,
+    fontSize: z(24),
     fontWeight: 950,
     color: "rgba(0,0,0,0.88)",
     letterSpacing: -0.4,
@@ -656,7 +652,7 @@ export default function Home() {
   const hostQuote: React.CSSProperties = {
     marginTop: 12,
     marginBottom: 0,
-    fontSize: 18,
+    fontSize: z(18),
     lineHeight: 1.7,
     color: "rgba(0,0,0,0.78)",
     fontWeight: 700,
@@ -664,7 +660,7 @@ export default function Home() {
 
   const hostMeta: React.CSSProperties = {
     marginTop: 10,
-    fontSize: 13,
+    fontSize: z(13),
     color: "rgba(0,0,0,0.54)",
     fontWeight: 800,
   };
@@ -687,7 +683,7 @@ export default function Home() {
 
   const blockTitle: React.CSSProperties = {
     margin: 0,
-    fontSize: 28,
+    fontSize: z(28),
     fontWeight: 900,
     color: "rgba(15,15,15,0.90)",
     letterSpacing: -0.4,
@@ -695,7 +691,7 @@ export default function Home() {
 
   const heroTitle: React.CSSProperties = {
     margin: 0,
-    fontSize: isDesktopTop ? 36 : 32,
+    fontSize: isDesktopTop ? z(36) : z(32),
     fontWeight: 950,
     color: "rgba(0,0,0,0.90)",
     letterSpacing: -0.8,
@@ -704,7 +700,7 @@ export default function Home() {
 
   const heroSub: React.CSSProperties = {
     marginTop: 12,
-    fontSize: isDesktopTop ? 18 : 17,
+    fontSize: isDesktopTop ? z(18) : z(17),
     color: "rgba(0,0,0,0.68)",
     fontWeight: 700,
     lineHeight: 1.6,
@@ -712,7 +708,7 @@ export default function Home() {
 
   const h3: React.CSSProperties = {
     margin: 0,
-    fontSize: 22,
+    fontSize: z(22),
     fontWeight: 900,
     color: "rgba(0,0,0,0.82)",
     letterSpacing: -0.2,
@@ -722,13 +718,13 @@ export default function Home() {
     marginTop: 12,
     marginBottom: 0,
     color: "rgba(0,0,0,0.70)",
-    fontSize: 16,
+    fontSize: z(16),
     lineHeight: 1.65,
   };
 
   const langTag: React.CSSProperties = {
     marginTop: 10,
-    fontSize: 12,
+    fontSize: z(12),
     fontWeight: 900,
     letterSpacing: 0.6,
     color: "rgba(0,0,0,0.45)",
@@ -746,7 +742,7 @@ export default function Home() {
 
   const ctaTitle: React.CSSProperties = {
     margin: 0,
-    fontSize: 42,
+    fontSize: z(42),
     fontWeight: 900,
     color: "rgba(0,0,0,0.86)",
     letterSpacing: -0.8,
@@ -754,7 +750,7 @@ export default function Home() {
 
   const ctaSub: React.CSSProperties = {
     marginTop: 10,
-    fontSize: 18,
+    fontSize: z(18),
     color: "rgba(0,0,0,0.65)",
     fontWeight: 800,
   };
@@ -769,7 +765,7 @@ export default function Home() {
 
   const heroCtaHint: React.CSSProperties = {
     marginTop: 12,
-    fontSize: 13,
+    fontSize: z(13),
     color: "rgba(0,0,0,0.55)",
     fontWeight: 800,
     textAlign: isDesktopTop ? "left" : "center",
@@ -829,7 +825,7 @@ export default function Home() {
   };
 
   const progLabel: React.CSSProperties = {
-    fontSize: 12,
+    fontSize: z(12),
     fontWeight: 900,
     letterSpacing: 0.6,
     color: "rgba(0,0,0,0.45)",
@@ -838,7 +834,7 @@ export default function Home() {
 
   const progBig: React.CSSProperties = {
     marginTop: 6,
-    fontSize: 28,
+    fontSize: z(28),
     fontWeight: 900,
     color: "rgba(0,0,0,0.86)",
     letterSpacing: -0.6,
@@ -846,7 +842,7 @@ export default function Home() {
 
   const progSmall: React.CSSProperties = {
     marginTop: 6,
-    fontSize: 13,
+    fontSize: z(13),
     color: "rgba(0,0,0,0.62)",
     lineHeight: 1.5,
   };
@@ -860,7 +856,7 @@ export default function Home() {
     borderRadius: 9999,
     border: "1px solid rgba(0,0,0,0.10)",
     background: "rgba(255,255,255,0.85)",
-    fontSize: 12,
+    fontSize: z(12),
     fontWeight: 900,
     color: "rgba(0,0,0,0.70)",
   };
@@ -868,7 +864,7 @@ export default function Home() {
   return (
     <div style={wrap}>
       <div style={frame}>
-        <div style={{ ...({ zoom: zoomScale } as unknown as React.CSSProperties) }}>
+        <div>
           <div style={heroImgWrap} aria-label="Hero band">
             <img
               src={HERO_SRC}
@@ -988,7 +984,7 @@ export default function Home() {
             </div>
 
             <div style={{ ...langTag, marginTop: 18 }}>VI</div>
-            <h2 style={{ ...heroTitle, fontSize: isDesktopTop ? 30 : 28 }}>
+            <h2 style={{ ...heroTitle, fontSize: isDesktopTop ? z(30) : z(28) }}>
               Tĩnh tại trong tư duy tiếng Anh.
             </h2>
             <div style={heroSub}>
@@ -1082,10 +1078,10 @@ export default function Home() {
                   background: "rgba(255,255,255,0.7)",
                 }}
               >
-                <div style={{ fontWeight: 900, color: "rgba(120,0,0,0.80)" }}>
+                <div style={{ fontWeight: 900, color: "rgba(120,0,0,0.80)", fontSize: z(16) }}>
                   Progress error
                 </div>
-                <div style={{ marginTop: 6, fontSize: 13, color: "rgba(0,0,0,0.65)" }}>
+                <div style={{ marginTop: 6, fontSize: z(13), color: "rgba(0,0,0,0.65)" }}>
                   {progressErr}
                 </div>
               </div>
@@ -1235,368 +1231,6 @@ export default function Home() {
             </p>
 
             <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
-              <button
-                type="button"
-                style={{ ...primaryBtn, minWidth: 240 }}
-                onClick={goFirstRoom}
-              >
-                {primaryCtaVi}
-              </button>
-
-              <button
-                type="button"
-                style={{ ...secondaryBtn, minWidth: 240 }}
-                onClick={goAccountOrSignin}
-              >
-                {accountCtaVi}
-              </button>
-
-              <button
-                type="button"
-                style={{ ...secondaryBtn, minWidth: 240 }}
-                onClick={() => nav("/tiers")}
-              >
-                👉 Lối nhỏ hành trình
-              </button>
-
-              <button
-                type="button"
-                style={{ ...secondaryBtn, minWidth: 240 }}
-                onClick={() => nav(ROUTE_PRICING)}
-              >
-                💎 Gói trải nghiệm
-              </button>
-            </div>
-          </div>
-
-          {!phase3Hide ? (
-            <div style={section}>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "baseline",
-                  justifyContent: "space-between",
-                  gap: 12,
-                  flexWrap: "wrap",
-                }}
-              >
-                <div>
-                  <div style={langTag}>EN</div>
-                  <h3 style={h3}>How Mercy Blade Works</h3>
-                </div>
-
-                {phase2Collapse ? (
-                  <button
-                    type="button"
-                    style={{
-                      padding: "8px 12px",
-                      borderRadius: 9999,
-                      border: "1px solid rgba(0,0,0,0.12)",
-                      background: "rgba(255,255,255,0.85)",
-                      fontWeight: 900,
-                      cursor: "pointer",
-                    }}
-                    onClick={() => setHowOpen((v) => !v)}
-                    aria-label="Toggle how it works"
-                    title="Toggle"
-                  >
-                    {howOpen ? "Hide ↑" : "How it works →"}
-                  </button>
-                ) : null}
-              </div>
-
-              {howOpen ? (
-                <>
-                  <p style={p}>
-                    You enter <b>rooms</b> — sleep, anxiety, money, relationships,
-                    work, resilience, and more.
-                  </p>
-
-                  <div style={{ ...p, marginTop: 12 }}>
-                    Inside each room:
-                    <ul
-                      style={{
-                        marginTop: 10,
-                        marginBottom: 0,
-                        paddingLeft: 18,
-                        color: "rgba(0,0,0,0.70)",
-                      }}
-                    >
-                      <li>
-                        You <b>read first</b>
-                      </li>
-                      <li>
-                        When ready, you <b>listen</b>
-                      </li>
-                      <li>
-                        When comfortable, you <b>repeat and shadow</b>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <p style={p}>
-                    You are not “studying English”. You are <b>living with it</b>, inside real thoughts and real emotions.
-                  </p>
-                  <p style={p}>One card. One breath. One meaningful step.</p>
-
-                  {phase0New ? (
-                    <div
-                      style={{
-                        marginTop: 14,
-                        display: "flex",
-                        gap: 10,
-                        flexWrap: "wrap",
-                      }}
-                    >
-                      <button
-                        type="button"
-                        style={{ ...primaryBtn, minWidth: 240 }}
-                        onClick={goFirstRoom}
-                      >
-                        {primaryCtaEn}
-                      </button>
-
-                      <button
-                        type="button"
-                        style={{ ...secondaryBtn, minWidth: 240 }}
-                        onClick={goAccountOrSignin}
-                      >
-                        {accountCtaEn}
-                      </button>
-
-                      <button
-                        type="button"
-                        style={{ ...secondaryBtn, minWidth: 240 }}
-                        onClick={() => nav("/tiers")}
-                      >
-                        👉 See learning paths
-                      </button>
-
-                      <button
-                        type="button"
-                        style={{ ...secondaryBtn, minWidth: 240 }}
-                        onClick={() => nav(ROUTE_PRICING)}
-                      >
-                        💎 Pricing
-                      </button>
-                    </div>
-                  ) : null}
-
-                  <div style={{ ...langTag, marginTop: 16 }}>VI</div>
-                  <h3 style={h3}>Cách Mercy Blade Hoạt Động</h3>
-
-                  <p style={p}>
-                    Bạn ghé thăm những "gian phòng" — từ giấc ngủ, nỗi lo âu, đến chuyện tiền bạc, mối quan hệ, công việc, sức bền tinh thần…
-                  </p>
-
-                  <div style={{ ...p, marginTop: 12 }}>
-                    Trong mỗi phòng:
-                    <ul
-                      style={{
-                        marginTop: 10,
-                        marginBottom: 0,
-                        paddingLeft: 18,
-                        color: "rgba(0,0,0,0.70)",
-                      }}
-                    >
-                      <li>
-                        Bạn <b>đọc trước</b>
-                      </li>
-                      <li>
-                        Khi sẵn sàng, bạn <b>nghe</b>
-                      </li>
-                      <li>
-                        Khi thoải mái, bạn <b>lặp lại và nói theo</b>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <p style={p}>
-                    Bạn không đơn thuần là "học" tiếng Anh. Bạn đang sống cùng nó, len lỏi trong từng suy nghĩ và cảm xúc chân thật nhất.
-                  </p>
-                  <p style={p}>Một tấm thẻ. Một nhịp thở. Một bước chân ý nghĩa.</p>
-
-                  {phase0New ? (
-                    <div
-                      style={{
-                        marginTop: 12,
-                        display: "flex",
-                        gap: 10,
-                        flexWrap: "wrap",
-                      }}
-                    >
-                      <button
-                        type="button"
-                        style={{ ...primaryBtn, minWidth: 240 }}
-                        onClick={goFirstRoom}
-                      >
-                        {primaryCtaVi}
-                      </button>
-
-                      <button
-                        type="button"
-                        style={{ ...secondaryBtn, minWidth: 240 }}
-                        onClick={goAccountOrSignin}
-                      >
-                        {accountCtaVi}
-                      </button>
-
-                      <button
-                        type="button"
-                        style={{ ...secondaryBtn, minWidth: 240 }}
-                        onClick={() => nav("/tiers")}
-                      >
-                        👉 Lối nhỏ hành trình
-                      </button>
-
-                      <button
-                        type="button"
-                        style={{ ...secondaryBtn, minWidth: 240 }}
-                        onClick={() => nav(ROUTE_PRICING)}
-                      >
-                        💎 Gói trải nghiệm
-                      </button>
-                    </div>
-                  ) : null}
-                </>
-              ) : (
-                <div style={{ ...p, marginTop: 10 }}>
-                  One card. One breath. One meaningful step.{" "}
-                  <span
-                    style={{
-                      fontWeight: 800,
-                      color: "rgba(0,0,0,0.72)",
-                    }}
-                  >
-                    Open if you need a reminder.
-                  </span>
-                </div>
-              )}
-            </div>
-          ) : null}
-
-          <div style={section}>
-            <div style={langTag}>EN</div>
-            <h3 style={h3}>Mercy Host — A Caring Presence</h3>
-            <p style={p}>Mercy Host is a quiet guide that stays with you.</p>
-            <p style={p}>
-              It knows which room you are in.
-              <br />
-              It knows what you are practicing.
-              <br />
-              It helps you slow down — or continue — when the moment is right.
-            </p>
-            <p style={p}>
-              Over time, Mercy Host remembers your journey and supports your progress.
-            </p>
-
-            <div style={{ ...langTag, marginTop: 16 }}>VI</div>
-            <h3 style={h3}>Mercy Host — Người Hướng Dẫn Dịu Dàng</h3>
-            <p style={p}>Mercy Host là người hướng dẫn yên lặng nhưng luôn ở đó.</p>
-            <p style={p}>
-              Mercy Host biết bạn đang ở phòng nào.
-              <br />
-              Biết bạn đang luyện điều gì.
-              <br />
-              Giúp bạn chậm lại — hoặc tiếp tục — đúng lúc.
-            </p>
-            <p style={p}>
-              Theo thời gian, Mercy Host ghi nhớ hành trình của bạn và nâng đỡ sự tiến bộ của bạn.
-            </p>
-          </div>
-
-          <div style={section}>
-            <div style={langTag}>EN</div>
-            <h3 style={h3}>The Quiet Hour</h3>
-            <p style={p}>When life feels loud, Mercy Blade offers a simple ritual:</p>
-            <p style={p}>
-              One minute.
-              <br />
-              One bilingual card.
-              <br />
-              One calm breath.
-            </p>
-            <p style={p}>
-              You don’t force learning.
-              <br />
-              You let understanding arrive.
-            </p>
-
-            <div style={{ ...langTag, marginTop: 16 }}>VI</div>
-            <h3 style={h3}>Giờ Lặng</h3>
-            <p style={p}>
-              Giữa thế gian hối hả, Mercy Blade gửi đến bạn một nghi thức giản đơn:
-            </p>
-            <p style={p}>
-              Đừng gượng ép việc học.<br />
-              Hãy để sự thấu hiểu tự tìm đến bên bạn.
-            </p>
-          </div>
-
-          <div style={section}>
-            <div style={langTag}>EN</div>
-            <h3 style={h3}>Free, and Growing With You</h3>
-            <p style={p}>Mercy Blade is free to begin.</p>
-            <p style={p}>
-              When you are ready to go deeper, you can choose to unlock more rooms and guidance — from <b>VIP 1</b> to <b>VIP 9</b>.
-            </p>
-            <p style={p}>
-              No rush.
-              <br />
-              No obligation.
-              <br />
-              You move forward when <i>you</i> are ready.
-            </p>
-
-            <div style={{ marginTop: 12, display: "flex", gap: 10, flexWrap: "wrap" }}>
-              <button
-                type="button"
-                style={{ ...primaryBtn, minWidth: 240 }}
-                onClick={goFirstRoom}
-              >
-                {primaryCtaEn}
-              </button>
-
-              <button
-                type="button"
-                style={{ ...secondaryBtn, minWidth: 240 }}
-                onClick={goAccountOrSignin}
-              >
-                {accountCtaEn}
-              </button>
-
-              <button
-                type="button"
-                style={{ ...secondaryBtn, minWidth: 240 }}
-                onClick={() => nav("/tiers")}
-              >
-                👉 See learning paths
-              </button>
-
-              <button
-                type="button"
-                style={{ ...secondaryBtn, minWidth: 240 }}
-                onClick={() => nav(ROUTE_PRICING)}
-              >
-                💎 Pricing
-              </button>
-            </div>
-
-            <div style={{ ...langTag, marginTop: 16 }}>VI</div>
-            <h3 style={h3}>Miễn Phí, và Lớn Lên Cùng Bạn</h3>
-            <p style={p}>Mercy Blade miễn phí để bắt đầu.</p>
-            <p style={p}>
-              Khi bạn muốn đi sâu hơn, bạn có thể mở thêm phòng và sự hướng dẫn — từ <b>VIP 1</b> đến <b>VIP 9</b>.
-            </p>
-            <p style={p}>
-              Không vội.
-              <br />
-              Không ép buộc.
-              <br />
-              Bạn tiến lên khi <i>bạn</i> sẵn sàng.
-            </p>
-
-            <div style={{ marginTop: 12, display: "flex", gap: 10, flexWrap: "wrap" }}>
               <button
                 type="button"
                 style={{ ...primaryBtn, minWidth: 240 }}

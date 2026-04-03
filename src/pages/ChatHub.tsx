@@ -8,6 +8,11 @@
  * - Pass roomId, roomTitle, tier, pathSlug, tags, contentEn into MercyGuide
  * - Do NOT render MercyHostCorner here, to avoid duplicate host UI on room pages
  *
+ * ZOOM FIX:
+ * - Keep syncing --mb-essay-zoom from storage
+ * - Apply that zoom variable to the live room content wrapper
+ * - Do not change layout flow, headers, host, or bottom bar
+ *
  * PRESERVED:
  * - ChatHub stays THIN
  * - No extra auth changes
@@ -374,6 +379,29 @@ export default function ChatHub() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <style>{`
+        :root {
+          --mb-essay-zoom: var(--mb-essay-zoom, 100);
+        }
+
+        [data-mb-room-zoom="1"] {
+          font-size: calc(16px * (var(--mb-essay-zoom, 100) / 100));
+          line-height: 1.65;
+        }
+
+        [data-mb-room-zoom="1"] p,
+        [data-mb-room-zoom="1"] li,
+        [data-mb-room-zoom="1"] blockquote,
+        [data-mb-room-zoom="1"] label,
+        [data-mb-room-zoom="1"] figcaption,
+        [data-mb-room-zoom="1"] .prose,
+        [data-mb-room-zoom="1"] .text-sm,
+        [data-mb-room-zoom="1"] .text-base,
+        [data-mb-room-zoom="1"] .text-lg {
+          font-size: calc(1em * (var(--mb-essay-zoom, 100) / 100)) !important;
+        }
+      `}</style>
+
       <main className={shellClass}>
         {state === "loading" ? (
           <div className="rounded-2xl border border-black/10 bg-white/70 p-6 shadow-sm">
@@ -424,11 +452,13 @@ export default function ChatHub() {
             ) : null}
 
             <div className={showArrival ? "hidden" : "block"}>
-              <RoomRenderer
-                room={room}
-                roomId={roomId}
-                roomSpec={roomSpec || undefined}
-              />
+              <div data-mb-room-zoom="1">
+                <RoomRenderer
+                  room={room}
+                  roomId={roomId}
+                  roomSpec={roomSpec || undefined}
+                />
+              </div>
             </div>
           </div>
         ) : null}

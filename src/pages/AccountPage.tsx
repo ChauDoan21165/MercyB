@@ -18,7 +18,7 @@ function getStatusLabel(status: string | null | undefined): string {
     case "active":
       return "Đang hoạt động";
     case "trialing":
-      return "Đang dùng thử";
+      return "Đang hoạt động";
     case "grace_period":
       return "Đang trong thời gian gia hạn";
     case "past_due":
@@ -29,10 +29,33 @@ function getStatusLabel(status: string | null | undefined): string {
       return "Đã hết hạn";
     case "revoked":
       return "Đã bị thu hồi";
+    case "canceled":
+      return "Đã hủy";
     case "inactive":
     default:
       return "Chưa kích hoạt";
   }
+}
+
+function getExpiryValue(ent: any): string | null {
+  if (!ent) return null;
+
+  return (
+    ent.current_period_end ||
+    ent.expires_at ||
+    ent.expiry_at ||
+    ent.period_end ||
+    null
+  );
+}
+
+function getCancelAtPeriodEnd(ent: any): boolean {
+  return Boolean(ent?.cancel_at_period_end);
+}
+
+function getIsPaidStatus(ent: any): boolean {
+  const status = String(ent?.status ?? "").trim().toLowerCase();
+  return status === "active" || status === "trialing" || status === "past_due";
 }
 
 export default function AccountPage() {
@@ -46,8 +69,8 @@ export default function AccountPage() {
 
   const [isSigningOut, setIsSigningOut] = useState(false);
   const [didRedirectToSignin, setDidRedirectToSignin] = useState(false);
+  const [isOpeningBilling, setIsOpeningBilling] = useState(false);
 
-  // HARDENED: extra guard + log to catch any auth race during navigation
   useEffect(() => {
     if (isLoading) return;
 
@@ -69,7 +92,7 @@ export default function AccountPage() {
 
   const isPremium = useMemo(() => {
     if (entitlementLoading) return false;
-    return ent?.is_premium === true;
+    return ent?.is_premium === true || getIsPaidStatus(ent);
   }, [ent, entitlementLoading]);
 
   const accessLabel = useMemo(() => {
@@ -77,11 +100,7 @@ export default function AccountPage() {
     if (!isPremium) return "Miễn phí";
 
     if (typeof ent?.plan_name === "string" && ent.plan_name.trim()) {
-      return ent.plan_name;
-    }
-
-    if (ent?.status === "trialing") {
-      return "Cao cấp (dùng thử)";
+      return ent.plan_name.trim();
     }
 
     if (ent?.vip_tier === "vip9") return "Cao cấp";
@@ -94,6 +113,16 @@ export default function AccountPage() {
     if (entitlementLoading) return "Loading…";
     return getStatusLabel(ent?.status);
   }, [ent?.status, entitlementLoading]);
+
+  const expiryText = useMemo(() => {
+    if (entitlementLoading) return "Loading…";
+    return formatDateTime(getExpiryValue(ent));
+  }, [ent, entitlementLoading]);
+
+  const cancelAtPeriodEnd = useMemo(() => {
+    if (entitlementLoading) return false;
+    return getCancelAtPeriodEnd(ent);
+  }, [ent, entitlementLoading]);
 
   const statusText = isLoading
     ? "Checking session..."
@@ -115,13 +144,22 @@ export default function AccountPage() {
     }
   }, [isSigningOut, nav, signOut]);
 
-  // FIXED + HARDENED: same pattern as Pricing button (pure button + useCallback)
-  // No <a>, no Link, no preventDefault, no window.location — exactly what works for Pricing
   const handleBillingClick = useCallback((): void => {
-    console.log("=== BILLING BUTTON CLICKED ===");
-    console.log("[AccountPage] navigating to /billing (SPA route change)");
+    console.log("[AccountPage] navigating to /billing");
     nav("/billing");
   }, [nav]);
+
+  const handleManageBillingClick = useCallback(async (): Promise<void> => {
+    if (isOpeningBilling) return;
+
+    try {
+      setIsOpeningBilling(true);
+      console.log("[AccountPage] opening billing portal via /billing");
+      nav("/billing");
+    } finally {
+      setIsOpeningBilling(false);
+    }
+  }, [isOpeningBilling, nav]);
 
   const handlePricingClick = useCallback((): void => {
     console.log("[AccountPage] navigating to /pricing");
@@ -133,7 +171,6 @@ export default function AccountPage() {
     void refreshEntitlements();
   }, [refreshEntitlements]);
 
-  // ENHANCED styles (harder contrast, better touch targets, no accidental overlap)
   const wrap: React.CSSProperties = {
     width: "100%",
     minHeight: "100vh",
@@ -182,13 +219,13 @@ export default function AccountPage() {
   const actions: React.CSSProperties = {
     display: "flex",
     alignItems: "center",
-    gap: 12, // increased gap to prevent accidental overlap
+    gap: 12,
     flexWrap: "wrap",
   };
 
   const buttonBase: React.CSSProperties = {
     borderRadius: 12,
-    minHeight: 48, // bigger touch target
+    minHeight: 48,
     padding: "12px 18px",
     border: "1px solid rgba(0,0,0,0.10)",
     background: "#fff",
@@ -273,7 +310,6 @@ export default function AccountPage() {
                 {entitlementLoading ? "Refreshing…" : "Refresh access"}
               </button>
 
-              {/* FIXED BILLING BUTTON — exact same pattern as Pricing (this is what finally works) */}
               <button
                 type="button"
                 style={buttonBase}
@@ -281,6 +317,16 @@ export default function AccountPage() {
                 aria-label="Open billing page"
               >
                 Billing
+              </button>
+
+              <button
+                type="button"
+                style={buttonBase}
+                onClick={() => void handleManageBillingClick()}
+                disabled={isOpeningBilling}
+                aria-label="Open Stripe billing portal"
+              >
+                {isOpeningBilling ? "Opening…" : "Manage billing"}
               </button>
 
               <button
@@ -337,7 +383,9 @@ export default function AccountPage() {
               <br />
               Source: <b>{ent?.source || "—"}</b>
               <br />
-              Expires: <b>{formatDateTime(ent?.expires_at)}</b>
+              Expires: <b>{expiryText}</b>
+              <br />
+              Cancel at period end: <b>{cancelAtPeriodEnd ? "Yes" : "No"}</b>
             </div>
           </div>
 

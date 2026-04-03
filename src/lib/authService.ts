@@ -71,6 +71,32 @@ function normalizeEntitlement(payload: unknown): BackendEntitlement {
   };
 }
 
+function hasGetSession(
+  client: SupabaseClient,
+): client is SupabaseClient & {
+  auth: SupabaseClient["auth"] & {
+    getSession: () => Promise<{
+      data: { session: { access_token?: string | null } | null };
+      error: unknown;
+    }>;
+  };
+} {
+  return typeof (client as any)?.auth?.getSession === "function";
+}
+
+function hasFunctionsInvoke(
+  client: SupabaseClient,
+): client is SupabaseClient & {
+  functions: SupabaseClient["functions"] & {
+    invoke: (
+      functionName: string,
+      options?: { method?: string },
+    ) => Promise<{ data: unknown; error: unknown }>;
+  };
+} {
+  return typeof (client as any)?.functions?.invoke === "function";
+}
+
 export function entitlementIsPremium(
   ent: BackendEntitlement | null | undefined,
 ): boolean {
@@ -145,6 +171,13 @@ export async function fetchCurrentEntitlement(
   client: SupabaseClient = supabase,
 ): Promise<BackendEntitlement | null> {
   try {
+    if (!hasGetSession(client)) {
+      console.warn(
+        "[authService] entitlement fetch skipped: client.auth.getSession is not available",
+      );
+      return { ...FAIL_CLOSED_ENTITLEMENT };
+    }
+
     const {
       data: { session },
       error: sessionError,
@@ -160,6 +193,13 @@ export async function fetchCurrentEntitlement(
 
     if (!session?.access_token) {
       return null;
+    }
+
+    if (!hasFunctionsInvoke(client)) {
+      console.warn(
+        "[authService] entitlement fetch skipped: client.functions.invoke is not available",
+      );
+      return { ...FAIL_CLOSED_ENTITLEMENT };
     }
 
     const { data, error } = await client.functions.invoke("me-entitlement", {

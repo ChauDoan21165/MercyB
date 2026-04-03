@@ -23,6 +23,12 @@ import {
   getSpeakProgressHint,
 } from './shared';
 
+type PronunciationLaunchPayload = {
+  sourceText: string;
+  correctedText: string;
+  enhancedText?: string;
+};
+
 interface MercySpeakTabProps {
   roomId?: string;
   contentEn?: string;
@@ -30,6 +36,7 @@ interface MercySpeakTabProps {
   troubleWords: TroubleWord[];
   shouldShowWithoutRoom?: boolean;
   speakPractice: UseSpeakPracticeResult;
+  launchPayload?: PronunciationLaunchPayload | null;
 }
 
 function clampScore(value: unknown): number | null {
@@ -46,6 +53,10 @@ function getScoreBand(score: number | null) {
   return 'Cần luyện thêm';
 }
 
+function normalizeMeaningfulText(value?: string) {
+  return (value ?? '').replace(/\s+/g, ' ').trim();
+}
+
 export function MercySpeakTab({
   roomId,
   contentEn,
@@ -53,6 +64,7 @@ export function MercySpeakTab({
   troubleWords,
   shouldShowWithoutRoom = true,
   speakPractice,
+  launchPayload,
 }: MercySpeakTabProps) {
   const speakProgressHint = getSpeakProgressHint(profile);
 
@@ -102,6 +114,23 @@ export function MercySpeakTab({
     typeof trimmedTargetPhrase === 'string'
       ? trimmedTargetPhrase
       : targetPhrase.trim();
+
+  const launchTargetPhrase = React.useMemo(() => {
+    const enhanced = normalizeMeaningfulText(launchPayload?.enhancedText);
+    const corrected = normalizeMeaningfulText(launchPayload?.correctedText);
+    const source = normalizeMeaningfulText(launchPayload?.sourceText);
+
+    return enhanced || corrected || source || '';
+  }, [launchPayload]);
+
+  React.useEffect(() => {
+    if (!launchTargetPhrase) return;
+
+    const current = normalizeMeaningfulText(targetPhrase);
+    if (current === launchTargetPhrase) return;
+
+    setTargetPhrase(launchTargetPhrase);
+  }, [launchTargetPhrase, setTargetPhrase, targetPhrase]);
 
   const primaryFocusItem = pronunciationResult?.feedback?.focus_items?.[0];
   const secondaryFocusItems =
@@ -175,6 +204,20 @@ export function MercySpeakTab({
           </div>
         ) : (
           <div className="space-y-5 pb-5">
+            {launchTargetPhrase && (
+              <div className="rounded-xl border border-indigo-200 bg-indigo-50 p-4">
+                <p className="text-xs font-semibold uppercase tracking-wide text-indigo-700">
+                  Teacher speaking handoff
+                </p>
+                <p className="mt-2 text-sm leading-6 text-foreground">
+                  Mercy brought your latest writing here so you can say it aloud.
+                </p>
+                <p className="mt-1 text-xs leading-5 text-muted-foreground">
+                  Câu mới nhất của bạn đã được đưa sang đây để luyện nói thành tiếng.
+                </p>
+              </div>
+            )}
+
             <div className="rounded-xl border border-primary/20 bg-primary/5 p-4">
               <p className="text-base font-semibold text-foreground">Start here</p>
               <p className="mt-2 text-sm leading-6 text-muted-foreground">

@@ -1,3 +1,4 @@
+// src/main.tsx
 // MB-BLUE-100.7 — 2025-12-31 (+0700)
 //
 // FIX (100.7):
@@ -26,14 +27,13 @@
 // - Private audio resolver installer is also dynamic-imported.
 // - This reduces initial-path pressure and avoids pulling extra supabase/debug code into startup here.
 //
-// ✅ PWA PATCH (2026-03-21):
-// - Register service worker for installable web app support
-// - Keep boot resilient: never block app startup on SW registration failure
+// ✅ PWA DEBUG PATCH:
+// - TEMPORARILY disable service worker registration while debugging stale-cache / zoom issues.
 
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import { registerSW } from "virtual:pwa-register";
+// import { registerSW } from "virtual:pwa-register";
 
 import AppRouter from "@/router/AppRouter";
 import "@/index.css";
@@ -47,37 +47,29 @@ declare global {
   interface Window {
     supabase?: SupabaseModule["supabase"];
 
-    // ✅ Optional private-audio resolver hook (TalkingFacePlayButton seam)
-    // Installed by installDefaultPrivateAudioResolver().
     __mbResolveAudioSrc?: (srcKey: string) => Promise<string | null> | string | null;
 
-    // ✅ HMR-safe singleton root (prevents double createRoot → removeChild NotFoundError)
     __MB_REACT_ROOT__?: ReactDOM.Root;
     __MB_REACT_ROOT_EL__?: HTMLElement;
 
-    // ✅ Fatal overlay singleton state (prevents DOM races + duplicate overlays)
     __MB_FATAL_OVERLAY_EL__?: HTMLDivElement;
     __MB_FATAL_OVERLAY_SHOWN__?: boolean;
 
-    // ✅ Optional entry truth beacon (helps debug which bundle is running)
     __MB_ENTRY_VERSION__?: string;
   }
 }
 
-// ✅ ENTRY TRUTH BEACON (debug)
-const MB_ENTRY_VERSION = "2026-03-08-main-lazy-debug-v1";
+const MB_ENTRY_VERSION = "2026-04-01-main-sw-disabled-debug-v1";
 try {
   window.__MB_ENTRY_VERSION__ = MB_ENTRY_VERSION;
 } catch {
   // ignore
 }
 
-/** ✅ DEV-only logger (keeps production console clean) */
 const devLog = (...args: unknown[]) => {
   if (import.meta.env.DEV) console.log(...args);
 };
 
-// ✅ MB FATAL OVERLAY — shows runtime errors on screen
 (function attachFatalErrorOverlay() {
   const getOverlayRoot = (): HTMLDivElement | null => {
     try {
@@ -162,10 +154,6 @@ const devLog = (...args: unknown[]) => {
   });
 })();
 
-/**
- * ✅ Canonicalize legacy paths BEFORE router mounts.
- * - /upgrade is deprecated -> /pricing
- */
 (function normalizeLegacyPaths() {
   try {
     const path = window.location.pathname || "/";
@@ -178,11 +166,6 @@ const devLog = (...args: unknown[]) => {
   }
 })();
 
-/**
- * ✅ SPA deep-link restore:
- * If public/404.html set sessionStorage.redirect to the original deep URL,
- * restore it before React Router mounts.
- */
 (function restoreDeepLinkFromSessionStorage() {
   try {
     const redirect = sessionStorage.getItem("redirect");
@@ -205,17 +188,11 @@ const devLog = (...args: unknown[]) => {
   }
 })();
 
-// ✅ PWA service worker registration
+// ✅ TEMP DISABLED while debugging stale-cache / zoom issues
 (function registerPwaServiceWorker() {
-  try {
-    registerSW({ immediate: true });
-  } catch {
-    // never block boot
-  }
+  // intentionally disabled
 })();
 
-// ✅ DEV: expose supabase to window for console debugging
-// PERF: dynamic import so main entry does not eagerly pull supabase here.
 (function exposeSupabaseForDebug() {
   try {
     if (!import.meta.env.DEV) return;
@@ -233,8 +210,6 @@ const devLog = (...args: unknown[]) => {
   }
 })();
 
-// ✅ Install private-audio resolver seam (safe / optional)
-// PERF: dynamic import so it does not weigh on first parse unless needed.
 (function installPrivateAudioSeam() {
   try {
     void import("@/lib/privateAudioResolver")
@@ -255,7 +230,6 @@ if (!root) {
   throw new Error("Root element #root not found");
 }
 
-// ✅ HMR-safe singleton root
 const w = window;
 
 if (!w.__MB_REACT_ROOT__ || w.__MB_REACT_ROOT_EL__ !== root) {

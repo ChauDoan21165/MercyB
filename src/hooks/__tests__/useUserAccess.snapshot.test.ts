@@ -1,15 +1,6 @@
 // src/hooks/__tests__/useUserAccess.snapshot.test.ts
 //
 // MB-BLUE alignment (AUTH-DRIVEN, ENTITLEMENT-DRIVEN)
-//
-// IMPORTANT:
-// - useUserAccess reads auth state from useAuth().
-// - It queries profiles only for admin metadata.
-// - Tier is resolved from fetchCurrentEntitlement() / resolveEntitlementTier().
-// - Current product model:
-//   - free
-//   - premium_month
-//   - premium_year
 
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { renderHook, waitFor } from "@testing-library/react";
@@ -130,7 +121,7 @@ function stableSnapshot(a: UserAccess) {
   };
 }
 
-describe("useUserAccess snapshots - current tier model", () => {
+describe("useUserAccess snapshots - baseline", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     __setAuth({ user: null, isLoading: false });
@@ -138,7 +129,7 @@ describe("useUserAccess snapshots - current tier model", () => {
     __setEntitlement(null);
   });
 
-  it("Free tier user access snapshot", async () => {
+  it("free tier user access snapshot", async () => {
     __setAuth({ user: { email: "free@example.com" }, isLoading: false });
 
     __setProfilesResult({
@@ -170,7 +161,7 @@ describe("useUserAccess snapshots - current tier model", () => {
     `);
   });
 
-  it("Monthly premium user access snapshot", async () => {
+  it("monthly premium user access snapshot", async () => {
     __setAuth({ user: { email: "month@example.com" }, isLoading: false });
 
     __setProfilesResult({
@@ -201,7 +192,7 @@ describe("useUserAccess snapshots - current tier model", () => {
     `);
   });
 
-  it("Yearly premium user access snapshot", async () => {
+  it("yearly premium user access snapshot", async () => {
     __setAuth({ user: { email: "year@example.com" }, isLoading: false });
 
     __setProfilesResult({
@@ -232,7 +223,7 @@ describe("useUserAccess snapshots - current tier model", () => {
     `);
   });
 
-  it("Admin user access snapshot", async () => {
+  it("admin user access snapshot", async () => {
     __setAuth({ user: { email: "admin@example.com" }, isLoading: false });
 
     __setProfilesResult({
@@ -264,7 +255,7 @@ describe("useUserAccess snapshots - current tier model", () => {
     `);
   });
 
-  it("Unauthenticated user access snapshot (demo mode)", async () => {
+  it("unauthenticated user access snapshot (demo mode)", async () => {
     __setAuth({ user: null, isLoading: false });
 
     const { result } = renderHook(() => useUserAccess());
@@ -291,7 +282,7 @@ describe("useUserAccess snapshots - current tier model", () => {
     `);
   });
 
-  it("Auth loading: stays loading until auth resolves", async () => {
+  it("auth loading stays loading until auth resolves", async () => {
     __setAuth({ user: null, isLoading: true });
 
     const { result, rerender } = renderHook(() => useUserAccess());
@@ -308,8 +299,324 @@ describe("useUserAccess snapshots - current tier model", () => {
       expect(result.current.isDemoMode).toBe(true);
     });
   });
+});
 
-  it("Missing profiles row: still resolves entitlement tier", async () => {
+describe("useUserAccess admin vs non-admin", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    __setAuth({ user: null, isLoading: false });
+    __setProfilesResult({ data: null, error: null });
+    __setEntitlement(null);
+  });
+
+  it("admin gets admin override even when entitlement is free", async () => {
+    __setAuth({ user: { email: "admin-free@example.com" }, isLoading: false });
+
+    __setProfilesResult({
+      data: { email: "admin-free@example.com", is_admin: true, admin_level: 9 },
+      error: null,
+    });
+
+    __setEntitlement({ tier: "free" });
+
+    const { result } = renderHook(() => useUserAccess());
+
+    await waitFor(() => {
+      expect(result.current.isLoading).toBe(false);
+    });
+
+    expect(result.current.isAuthenticated).toBe(true);
+    expect(result.current.isAdmin).toBe(true);
+    expect(result.current.isHighAdmin).toBe(true);
+    expect(result.current.adminLevel).toBe(9);
+    expect(result.current.tier).toBe("free");
+    expect(result.current.canAccessPremium()).toBe(true);
+  });
+
+  it("non-admin on free entitlement does not get premium access", async () => {
+    __setAuth({ user: { email: "free-user@example.com" }, isLoading: false });
+
+    __setProfilesResult({
+      data: { email: "free-user@example.com", is_admin: false, admin_level: 0 },
+      error: null,
+    });
+
+    __setEntitlement({ tier: "free" });
+
+    const { result } = renderHook(() => useUserAccess());
+
+    await waitFor(() => {
+      expect(result.current.isLoading).toBe(false);
+    });
+
+    expect(result.current.isAuthenticated).toBe(true);
+    expect(result.current.isAdmin).toBe(false);
+    expect(result.current.isHighAdmin).toBe(false);
+    expect(result.current.adminLevel).toBe(0);
+    expect(result.current.tier).toBe("free");
+    expect(result.current.canAccessPremium()).toBe(false);
+  });
+
+  it("admin with broken entitlement still gets admin override", async () => {
+    __setAuth({ user: { email: "admin-broken@example.com" }, isLoading: false });
+
+    __setProfilesResult({
+      data: { email: "admin-broken@example.com", is_admin: true, admin_level: 9 },
+      error: null,
+    });
+
+    __setEntitlement(null);
+
+    const { result } = renderHook(() => useUserAccess());
+
+    await waitFor(() => {
+      expect(result.current.isLoading).toBe(false);
+    });
+
+    expect(result.current.isAuthenticated).toBe(true);
+    expect(result.current.isAdmin).toBe(true);
+    expect(result.current.isHighAdmin).toBe(true);
+    expect(result.current.tier).toBe("free");
+    expect(result.current.canAccessPremium()).toBe(true);
+  });
+
+  it("non-admin with premium_month entitlement gets premium access only from tier, not admin role", async () => {
+    __setAuth({ user: { email: "member-month@example.com" }, isLoading: false });
+
+    __setProfilesResult({
+      data: { email: "member-month@example.com", is_admin: false, admin_level: 0 },
+      error: null,
+    });
+
+    __setEntitlement({ tier: "premium_month" });
+
+    const { result } = renderHook(() => useUserAccess());
+
+    await waitFor(() => {
+      expect(result.current.isLoading).toBe(false);
+    });
+
+    expect(result.current.isAuthenticated).toBe(true);
+    expect(result.current.isAdmin).toBe(false);
+    expect(result.current.isHighAdmin).toBe(false);
+    expect(result.current.adminLevel).toBe(0);
+    expect(result.current.tier).toBe("premium_month");
+    expect(result.current.canAccessPremium()).toBe(true);
+  });
+
+  it("non-admin with premium_year entitlement gets premium access only from tier, not admin role", async () => {
+    __setAuth({ user: { email: "member-year@example.com" }, isLoading: false });
+
+    __setProfilesResult({
+      data: { email: "member-year@example.com", is_admin: false, admin_level: 0 },
+      error: null,
+    });
+
+    __setEntitlement({ tier: "premium_year" });
+
+    const { result } = renderHook(() => useUserAccess());
+
+    await waitFor(() => {
+      expect(result.current.isLoading).toBe(false);
+    });
+
+    expect(result.current.isAuthenticated).toBe(true);
+    expect(result.current.isAdmin).toBe(false);
+    expect(result.current.isHighAdmin).toBe(false);
+    expect(result.current.adminLevel).toBe(0);
+    expect(result.current.tier).toBe("premium_year");
+    expect(result.current.canAccessPremium()).toBe(true);
+  });
+});
+
+describe("useUserAccess corrupted profile rows and malformed entitlement payloads", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    __setAuth({ user: null, isLoading: false });
+    __setProfilesResult({ data: null, error: null });
+    __setEntitlement(null);
+  });
+
+  it("profiles row has invalid admin level → falls back safely", async () => {
+    __setAuth({ user: { email: "weird-admin@example.com" }, isLoading: false });
+
+    __setProfilesResult({
+      data: {
+        email: "weird-admin@example.com",
+        is_admin: false,
+        admin_level: "not-a-number",
+      },
+      error: null,
+    });
+
+    __setEntitlement({ tier: "free" });
+
+    const { result } = renderHook(() => useUserAccess());
+
+    await waitFor(() => {
+      expect(result.current.isLoading).toBe(false);
+    });
+
+    expect(stableSnapshot(result.current)).toEqual({
+      isAdmin: false,
+      isHighAdmin: false,
+      adminLevel: 0,
+      isAuthenticated: true,
+      isDemoMode: false,
+      tier: "free",
+      loading: false,
+      isLoading: false,
+    });
+  });
+
+  it("profiles row with string numeric admin level still grants admin safely", async () => {
+    __setAuth({ user: { email: "string-admin@example.com" }, isLoading: false });
+
+    __setProfilesResult({
+      data: {
+        email: "string-admin@example.com",
+        is_admin: false,
+        admin_level: "9",
+      },
+      error: null,
+    });
+
+    __setEntitlement({ tier: "free" });
+
+    const { result } = renderHook(() => useUserAccess());
+
+    await waitFor(() => {
+      expect(result.current.isLoading).toBe(false);
+    });
+
+    expect(result.current.isAdmin).toBe(true);
+    expect(result.current.isHighAdmin).toBe(true);
+    expect(result.current.adminLevel).toBe(9);
+    expect(result.current.canAccessPremium()).toBe(true);
+  });
+
+  it("malformed entitlement payload with wrong types resolves to free safely", async () => {
+    __setAuth({ user: { email: "bad-entitlement@example.com" }, isLoading: false });
+
+    __setProfilesResult({
+      data: {
+        email: "bad-entitlement@example.com",
+        is_admin: false,
+        admin_level: 0,
+      },
+      error: null,
+    });
+
+    __setEntitlement({
+      tier: 999,
+      status: { active: true },
+      source: ["stripe"],
+    });
+
+    const { result } = renderHook(() => useUserAccess());
+
+    await waitFor(() => {
+      expect(result.current.isLoading).toBe(false);
+    });
+
+    expect(result.current.isAdmin).toBe(false);
+    expect(result.current.tier).toBe("free");
+    expect(result.current.canAccessPremium()).toBe(false);
+  });
+
+  it("malformed entitlement payload missing tier resolves to free safely", async () => {
+    __setAuth({ user: { email: "missing-tier@example.com" }, isLoading: false });
+
+    __setProfilesResult({
+      data: {
+        email: "missing-tier@example.com",
+        is_admin: false,
+        admin_level: 0,
+      },
+      error: null,
+    });
+
+    __setEntitlement({
+      status: "active",
+      weird: true,
+    });
+
+    const { result } = renderHook(() => useUserAccess());
+
+    await waitFor(() => {
+      expect(result.current.isLoading).toBe(false);
+    });
+
+    expect(result.current.tier).toBe("free");
+    expect(result.current.canAccessPremium()).toBe(false);
+  });
+
+  it("corrupted profiles row shape still keeps authenticated user stable", async () => {
+    __setAuth({ user: { email: "broken-profile@example.com" }, isLoading: false });
+
+    __setProfilesResult({
+      data: {
+        strange_field: true,
+        admin_level: null,
+        is_admin: null,
+      },
+      error: null,
+    });
+
+    __setEntitlement({ tier: "premium_month" });
+
+    const { result } = renderHook(() => useUserAccess());
+
+    await waitFor(() => {
+      expect(result.current.isLoading).toBe(false);
+    });
+
+    expect(stableSnapshot(result.current)).toEqual({
+      isAdmin: false,
+      isHighAdmin: false,
+      adminLevel: 0,
+      isAuthenticated: true,
+      isDemoMode: false,
+      tier: "premium_month",
+      loading: false,
+      isLoading: false,
+    });
+
+    expect(result.current.canAccessPremium()).toBe(true);
+  });
+});
+
+describe("useUserAccess auth-loaded but partially broken downstream data", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    __setAuth({ user: null, isLoading: false });
+    __setProfilesResult({ data: null, error: null });
+    __setEntitlement(null);
+  });
+
+  it("profiles lookup error still resolves entitlement tier safely", async () => {
+    __setAuth({ user: { email: "profiles-error@example.com" }, isLoading: false });
+
+    __setProfilesResult({
+      data: null,
+      error: { message: "bad row shape" },
+    });
+
+    __setEntitlement({ tier: "premium_year" });
+
+    const { result } = renderHook(() => useUserAccess());
+
+    await waitFor(() => {
+      expect(result.current.isLoading).toBe(false);
+    });
+
+    expect(result.current.isAdmin).toBe(false);
+    expect(result.current.adminLevel).toBe(0);
+    expect(result.current.tier).toBe("premium_year");
+    expect(result.current.canAccessPremium()).toBe(true);
+  });
+
+  it("missing profile row still resolves entitlement tier", async () => {
     __setAuth({ user: { email: "missing@example.com" }, isLoading: false });
 
     __setProfilesResult({ data: null, error: null });
@@ -323,6 +630,64 @@ describe("useUserAccess snapshots - current tier model", () => {
     });
 
     expect(result.current.tier).toBe("free");
+    expect(result.current.isAdmin).toBe(false);
+  });
+
+  it("unauthenticated user avoids profiles query even if prior mock state is corrupted", async () => {
+    __setProfilesResult({
+      data: {
+        email: "should-not-be-used@example.com",
+        is_admin: true,
+        admin_level: 999,
+      },
+      error: null,
+    });
+
+    __setEntitlement({ tier: "premium_year" });
+    __setAuth({ user: null, isLoading: false });
+
+    const { result } = renderHook(() => useUserAccess());
+
+    await waitFor(() => {
+      expect(result.current.isLoading).toBe(false);
+    });
+
+    expect(mockFrom).not.toHaveBeenCalled();
+    expect(result.current.isAuthenticated).toBe(false);
+    expect(result.current.isDemoMode).toBe(true);
+    expect(result.current.tier).toBe("free");
+  });
+
+  it("auth loading suppresses downstream work until auth resolves", async () => {
+    __setAuth({ user: { email: "loading@example.com" }, isLoading: true });
+
+    const { result, rerender } = renderHook(() => useUserAccess());
+
+    expect(result.current.isLoading).toBe(true);
+    expect(result.current.loading).toBe(true);
+
+    expect(mockFrom).not.toHaveBeenCalled();
+
+    __setProfilesResult({
+      data: {
+        email: "loading@example.com",
+        is_admin: false,
+        admin_level: 0,
+      },
+      error: null,
+    });
+    __setEntitlement({ tier: "premium_month" });
+    __setAuth({ user: { email: "loading@example.com" }, isLoading: false });
+
+    rerender();
+
+    await waitFor(() => {
+      expect(result.current.isLoading).toBe(false);
+    });
+
+    expect(result.current.isAuthenticated).toBe(true);
+    expect(result.current.tier).toBe("premium_month");
+    expect(result.current.canAccessPremium()).toBe(true);
   });
 });
 

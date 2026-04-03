@@ -6,6 +6,10 @@
 // - Gate admin dashboard UI by useUserAccess().
 // - If not admin: show clear message + sign-in link (never return null).
 // - Keep existing multi-app context behavior unchanged.
+//
+// ✅ NaN hardening:
+// - Sanitize access.adminLevel before comparisons / rendering.
+// - Prevent "NaN" from leaking into UI.
 
 import React, { useEffect, useMemo, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -47,7 +51,6 @@ function persistApp(appId: string) {
     // ignore
   }
 
-  // Keep URL shareable
   try {
     const url = new URL(window.location.href);
     url.searchParams.set("app", cleaned);
@@ -64,14 +67,19 @@ function withApp(href: string, appId: string) {
   return `${href}${sep}app=${encodeURIComponent(cleaned)}`;
 }
 
+function safeAdminLevel(value: unknown): number {
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? parsed : 0;
+}
+
 export default function AdminDashboard() {
   const nav = useNavigate();
   const location = useLocation();
 
-  // ✅ REAL admin gate (same source of truth as Room gating)
   const access = useUserAccess();
   const accessLoading = access.loading || access.isLoading;
-  const isAdmin = !!(access.isAdmin || access.isHighAdmin || (access.adminLevel ?? 0) >= 9);
+  const adminLevel = safeAdminLevel(access.adminLevel);
+  const isAdmin = !!(access.isAdmin || access.isHighAdmin || adminLevel >= 9);
 
   const urlApp = useMemo(() => getAppFromUrl(location.search), [location.search]);
 
@@ -82,7 +90,6 @@ export default function AdminDashboard() {
 
   const [appIdDraft, setAppIdDraft] = useState<string>(appId);
 
-  // If URL app changes, respect it and persist.
   useEffect(() => {
     if (urlApp && urlApp !== appId) {
       setAppId(urlApp);
@@ -254,54 +261,14 @@ export default function AdminDashboard() {
   };
 
   const tiles: AdminTile[] = [
-    {
-      title: "Payments",
-      desc: "Inspect payments, Stripe test flows, and verification tools.",
-      href: "/admin/payments",
-      badge: "SAFE",
-    },
-    {
-      title: "Bank Transfers",
-      desc: "Manual transfer logs and reconciliation helpers.",
-      href: "/admin/bank-transfers",
-      badge: "SAFE",
-    },
-    {
-      title: "Payment Verification",
-      desc: "Verification and review actions for manual approvals (keep safe).",
-      href: "/admin/payment-verification",
-      badge: "SAFE",
-    },
-    {
-      title: "Access Codes",
-      desc: "Generate and manage redeem / access codes.",
-      href: "/admin/access-codes",
-      badge: "SAFE",
-    },
-    {
-      title: "Audio Coverage",
-      desc: "Coverage checks for room audio (read-only tools).",
-      href: "/admin/audio-coverage",
-      badge: "READY",
-    },
-    {
-      title: "System Monitoring",
-      desc: "Truth streams: latest feedback + sessions (read-only).",
-      href: "/admin/monitoring",
-      badge: "READY",
-    },
-    {
-      title: "Metrics",
-      desc: "KPIs & distribution snapshots (read-only).",
-      href: "/admin/metrics",
-      badge: "READY",
-    },
-    {
-      title: "Feedback",
-      desc: "Read user feedback from rooms (read-only).",
-      href: "/admin/feedback",
-      badge: "READY",
-    },
+    { title: "Payments", desc: "Inspect payments, Stripe test flows, and verification tools.", href: "/admin/payments", badge: "SAFE" },
+    { title: "Bank Transfers", desc: "Manual transfer logs and reconciliation helpers.", href: "/admin/bank-transfers", badge: "SAFE" },
+    { title: "Payment Verification", desc: "Verification and review actions for manual approvals (keep safe).", href: "/admin/payment-verification", badge: "SAFE" },
+    { title: "Access Codes", desc: "Generate and manage redeem / access codes.", href: "/admin/access-codes", badge: "SAFE" },
+    { title: "Audio Coverage", desc: "Coverage checks for room audio (read-only tools).", href: "/admin/audio-coverage", badge: "READY" },
+    { title: "System Monitoring", desc: "Truth streams: latest feedback + sessions (read-only).", href: "/admin/monitoring", badge: "READY" },
+    { title: "Metrics", desc: "KPIs & distribution snapshots (read-only).", href: "/admin/metrics", badge: "READY" },
+    { title: "Feedback", desc: "Read user feedback from rooms (read-only).", href: "/admin/feedback", badge: "READY" },
   ];
 
   function go(href?: string) {
@@ -312,7 +279,6 @@ export default function AdminDashboard() {
   return (
     <div style={wrap}>
       <div style={frame}>
-        {/* ✅ Never blank */}
         {accessLoading ? (
           <div style={{ ...card, padding: 18 }}>
             <div style={{ fontWeight: 950, fontSize: 18 }}>Admin</div>
@@ -329,17 +295,13 @@ export default function AdminDashboard() {
             </p>
 
             <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
-              <Link to="/signin" style={pill}>
-                Go to Sign In
-              </Link>
-              <Link to="/" style={pill}>
-                Back to Home
-              </Link>
+              <Link to="/signin" style={pill}>Go to Sign In</Link>
+              <Link to="/" style={pill}>Back to Home</Link>
             </div>
 
             <div style={{ marginTop: 12, fontSize: 12, color: "rgba(0,0,0,0.60)", fontWeight: 900 }}>
               Your tier: <span style={mono}>{String(access.tier || "free")}</span> • admin_level:{" "}
-              <span style={mono}>{String(access.adminLevel ?? 0)}</span>
+              <span style={mono}>{String(adminLevel)}</span>
             </div>
           </div>
         ) : (
@@ -358,16 +320,13 @@ export default function AdminDashboard() {
               </div>
 
               <div style={pillRow}>
-                <Link to="/" style={pill}>
-                  Back to Home
-                </Link>
+                <Link to="/" style={pill}>Back to Home</Link>
                 <button type="button" style={pill} onClick={() => nav("/rooms")} aria-label="Open Rooms">
                   Open Rooms
                 </button>
               </div>
             </div>
 
-            {/* App context (multi-app) */}
             <div style={{ ...card, padding: 14, marginBottom: 14 }}>
               <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
                 <div>
@@ -377,9 +336,7 @@ export default function AdminDashboard() {
                     cross-app mistakes.
                   </div>
                   <div style={{ marginTop: 10, display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
-                    <span style={badge}>
-                      APP: <span style={mono}>{appId}</span>
-                    </span>
+                    <span style={badge}>APP: <span style={mono}>{appId}</span></span>
                     <span style={badge}>RISK MODE: SAFE</span>
                     <span style={badge}>NO DESTRUCTIVE ACTIONS</span>
                   </div>
@@ -395,15 +352,10 @@ export default function AdminDashboard() {
                       style={input}
                       aria-label="App ID"
                     />
-                    <button
-                      type="button"
-                      style={{ ...linkBtn, padding: "10px 12px" }}
-                      onClick={() => applyApp(appIdDraft)}
-                      aria-label="Apply app id"
-                    >
+                    <button type="button" style={{ ...linkBtn, padding: "10px 12px" }} onClick={() => applyApp(appIdDraft)}>
                       Apply
                     </button>
-                    <button type="button" style={pill} onClick={() => applyApp("mercy_blade")} aria-label="Switch to mercy_blade">
+                    <button type="button" style={pill} onClick={() => applyApp("mercy_blade")}>
                       mercy_blade
                     </button>
                   </div>
@@ -423,14 +375,7 @@ export default function AdminDashboard() {
                 const hrefWithApp = t.href ? withApp(t.href, appId) : undefined;
 
                 return (
-                  <div
-                    key={t.title}
-                    style={{
-                      ...card,
-                      gridColumn: `span ${span}`,
-                      opacity: isDisabled ? 0.55 : 1,
-                    }}
-                  >
+                  <div key={t.title} style={{ ...card, gridColumn: `span ${span}`, opacity: isDisabled ? 0.55 : 1 }}>
                     <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 10 }}>
                       <h2 style={cardTitle}>{t.title}</h2>
                       {t.badge && <span style={badge}>{t.badge}</span>}
@@ -441,26 +386,15 @@ export default function AdminDashboard() {
                     <div style={cardFooter}>
                       <button
                         type="button"
-                        style={{
-                          ...linkBtn,
-                          opacity: isDisabled ? 0.6 : 1,
-                          cursor: isDisabled ? "not-allowed" : "pointer",
-                        }}
+                        style={{ ...linkBtn, opacity: isDisabled ? 0.6 : 1, cursor: isDisabled ? "not-allowed" : "pointer" }}
                         onClick={() => (!isDisabled ? go(t.href) : null)}
                         disabled={isDisabled}
-                        aria-label={`Open ${t.title}`}
                       >
                         Open
                       </button>
 
                       <div style={{ fontSize: 12, color: "rgba(0,0,0,0.55)", fontWeight: 800 }}>
-                        {hrefWithApp ? (
-                          <>
-                            Route: <span style={mono}>{hrefWithApp}</span>
-                          </>
-                        ) : (
-                          "Route: —"
-                        )}
+                        {hrefWithApp ? <>Route: <span style={mono}>{hrefWithApp}</span></> : "Route: —"}
                       </div>
                     </div>
                   </div>

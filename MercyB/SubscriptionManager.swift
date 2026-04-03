@@ -1,8 +1,8 @@
 /**
- * MercyB: Subscription Manager (Continuity Guard)
+ * MercyB: Subscription Manager (StoreKit 2 Engine)
  * Path: MercyB/SubscriptionManager.swift
- * Strategy: Real-time Lifecycle Synchronization (SOP V4.0).
- * Logic: Persistent background task to catch Refunds/Revocations instantly.
+ * Strategy: Secure IAP handling for CAD/VND settlement with Supabase sync readiness.
+ * Protocol V4.0: Full Fixed File.
  */
 
 import Foundation
@@ -11,25 +11,28 @@ import StoreKit
 @MainActor
 class SubscriptionManager: ObservableObject {
     
-    static let shared = SubscriptionManager()
+    // --- 🔐 GLOBAL ENTITLEMENT STATE ---
+    @Published private(set) var isVip: Bool = false
+    @Published private(set) var userTier: Int = 0 // 0: Free, 1: Pro, 2: Elite
+    @Published private(set) var products: [Product] = []
+    @Published private(set) var purchasedProductIDs = Set<String>()
     
-    // The "Source of Truth" for the UI (ContentView.swift)
-    @Published var isPremium: Bool = false
-    @Published var activeProducts: [Product] = []
+    private var updateListenerTask: Task<Void, Error>? = nil
     
-    private var updateListenerTask: Task<Void, Never>? = nil
-    private let premiumProductID = "com.mercyblade.premium"
+    // Replace these with your actual App Store Connect Identifiers
+    private let productIDs = [
+        "com.mercyb.pro.monthly",
+        "com.mercyb.pro.yearly",
+        "com.mercyb.elite.yearly"
+    ]
 
     init() {
-        // 1. START THE CONTINUITY GUARD
-        // This listens for transactions that happen while the app is active or in background.
+        // Start listening for background transactions immediately
         updateListenerTask = listenForTransactions()
         
-        // 2. THE "NEXT LAUNCH" SYNC
-        // Critical: Ensures that if a refund happened while the app was CLOSED, 
-        // the entitlement is revoked immediately upon opening.
         Task {
-            await updateSubscriptionStatus()
+            await fetchProducts()
+            await updateCustomerProductStatus()
         }
     }
 
@@ -37,94 +40,92 @@ class SubscriptionManager: ObservableObject {
         updateListenerTask?.cancel()
     }
 
-    // --- REAL-TIME ENTITLEMENT SYNC ---
+    // MARK: - 🛒 FETCH PRODUCTS
+    func fetchProducts() async {
+        do {
+            let storeProducts = try await Product.products(for: productIDs)
+            self.products = storeProducts.sorted(by: { $0.price < $1.price })
+        } catch {
+            print("❌ StoreKit: Failed to fetch products: \(error)")
+        }
+    }
 
-    /**
-     * Re-validates all current entitlements against Apple's local receipt/StoreKit 2 cache.
-     */
-    func updateSubscriptionStatus() async {
-        var hasActivePremium = false
+    // MARK: - 💳 PURCHASE LOGIC (The "Buy" Button)
+    func purchase(_ product: Product) async throws {
+        let result = try await product.purchase()
         
-        // Transaction.currentEntitlements only includes verified, non-revoked, non-expired items.
+        switch result {
+        case .success(let verification):
+            let transaction = try checkVerified(verification)
+            
+            // 1. Update UI
+            await updateCustomerProductStatus()
+            
+            // 2. Finalize Transaction
+            await transaction.finish()
+            
+            // 3. TODO: Sync with Supabase for cross-platform (Web/Android)
+            // syncWithBackend(transaction)
+            
+        case .userCancelled:
+            print("⚠️ User cancelled the purchase.")
+        case .pending:
+            print("⏳ Transaction pending (Parental Approval).")
+        @unknown default:
+            break
+        }
+    }
+
+    // MARK: - 🛡️ VERIFICATION & STATUS
+    func updateCustomerProductStatus() async {
+        var purchasedIDs = Set<String>()
+        
+        // Iterate through all current active entitlements
         for await result in Transaction.currentEntitlements {
             do {
                 let transaction = try checkVerified(result)
+                purchasedIDs.insert(transaction.productID)
                 
-                if transaction.productID == premiumProductID {
-                    // Final safety check: ensure no revocation date exists
-                    if transaction.revocationDate == nil && (transaction.expirationDate ?? .distantFuture) > .now {
-                        hasActivePremium = true
-                    }
+                // Determine Tier Logic
+                if transaction.productID.contains("elite") {
+                    self.userTier = 2
+                } else if transaction.productID.contains("pro") {
+                    self.userTier = 1
                 }
             } catch {
-                print("⚠️ [StoreKit Specialist] Entitlement Verification Failed: \(error)")
+                print("❌ StoreKit: Verification failed for entitlement.")
             }
         }
         
-        // Update the UI state. If false, the UI Engineer's logic will instantly lock the PremiumDashboard.
-        if self.isPremium != hasActivePremium {
-            self.isPremium = hasActivePremium
-            print("🔄 [StoreKit Specialist] Entitlement Change: isPremium set to \(hasActivePremium)")
-        }
+        self.purchasedProductIDs = purchasedIDs
+        self.isVip = !purchasedIDs.isEmpty
     }
 
-    // --- THE BACKGROUND LISTENER (THE GUARD) ---
-
-    /**
-     * Listens for asynchronous updates from Apple (Refunds, Family Sharing changes, Renewals).
-     */
-    private func listenForTransactions() -> Task<Void, Never> {
-        return Task.detached {
-            for await result in Transaction.updates {
-                do {
-                    // 1. Verify the transaction cryptographically
-                    let transaction = try await self.checkVerified(result)
-                    
-                    // 2. Refresh the local state on the Main Actor
-                    await MainActor.run {
-                        Task {
-                            await self.updateSubscriptionStatus()
-                        }
-                    }
-                    
-                    // 3. Inform Team Member C's backend if it's a revocation
-                    if transaction.revocationDate != nil {
-                        print("🚨 [StoreKit Specialist] REVOCATION DETECTED: Notifying Backend...")
-                        // Sync call to Supabase apple-iap-sync would go here
-                    }
-                    
-                    // 4. ALWAYS FINISH: Tells Apple we have successfully processed the update.
-                    await transaction.finish()
-                    
-                } catch {
-                    print("❌ [StoreKit Specialist] Transaction Update Error: \(error)")
-                }
-            }
-        }
-    }
-
-    // --- PURCHASE INTERFACE ---
-
-    func purchasePremium() {
-        Task {
-            do {
-                try await AppleSubscriptionService.shared.purchase()
-                await updateSubscriptionStatus()
-            } catch {
-                print("❌ [StoreKit Specialist] Purchase Flow Failed: \(error.localizedDescription)")
-            }
-        }
-    }
-
-    // --- SECURITY UTILS ---
-
-    private func checkVerified<T>(_ result: VerificationResult<T>) throws -> T {
+    func checkVerified<T>(_ result: VerificationResult<T>) throws -> T {
         switch result {
-        case .unverified(_, let error):
-            // Safety-First: Reject any transaction that fails cryptographic signature verification.
-            throw error
+        case .unverified:
+            throw StoreError.failedVerification
         case .verified(let safe):
             return safe
         }
     }
+
+    private func listenForTransactions() -> Task<Void, Error> {
+        return Task.detached {
+            for await result in Transaction.updates {
+                do {
+                    let transaction = try await self.checkVerified(result)
+                    await self.updateCustomerProductStatus()
+                    await transaction.finish()
+                } catch {
+                    print("❌ StoreKit: Background update failed.")
+                }
+            }
+        }
+    }
+}
+
+// MARK: - 🛠️ ERRORS
+enum StoreError: Error {
+    case failedVerification
 }

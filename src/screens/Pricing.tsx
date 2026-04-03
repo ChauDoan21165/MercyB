@@ -1,8 +1,10 @@
-// src/screens/Pricing.tsx
-
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { supabase } from "@/lib/supabaseClient";
+import {
+  fetchMyEntitlement,
+  openBillingPortal,
+  startCheckoutOrOpenPortal,
+} from "@/lib/billing";
 import {
   trackCheckoutStarted,
   trackEvent,
@@ -34,19 +36,24 @@ type EntitlementResponse = {
   status?: string | null;
   source?: string | null;
   expires_at?: string | null;
+  current_period_end?: string | null;
+  cancel_at_period_end?: boolean | null;
+  price_id?: string | null;
+  plan_name?: string | null;
+  vip_tier?: string | null;
 };
 
 const PAGE_MAX = 980;
 
 /**
- * Replace these with your real Stripe price IDs if you do not want to depend on env vars.
- * The file will prefer env values when present, then fall back to these.
+ * Fallbacks only.
+ * Env vars are preferred and should be set in .env.
  */
-const DIRECT_ONE_MONTH_PRICE_ID = "price_REPLACE_WITH_REAL_ONE_MONTH";
-const DIRECT_ONE_YEAR_PRICE_ID = "price_REPLACE_WITH_REAL_ONE_YEAR";
+const DIRECT_ONE_MONTH_PRICE_ID = "price_1TCKY02K1tPxy04uCHQNbvik";
+const DIRECT_ONE_YEAR_PRICE_ID = "price_1TCKSF2K1tPxy04uNeKcQWp5";
 
 function env(name: string): string {
-  return String((import.meta as any).env?.[name] ?? "").trim();
+  return String((import.meta as ImportMeta & { env?: Record<string, string> }).env?.[name] ?? "").trim();
 }
 
 function pickEnv(...names: string[]): string {
@@ -72,33 +79,16 @@ function resolvePriceId(...candidates: string[]): string {
   return "";
 }
 
-function extractErrorMessage(payload: unknown, fallback: string): string {
-  if (!payload || typeof payload !== "object") return fallback;
-
-  const record = payload as Record<string, unknown>;
-  const error = typeof record.error === "string" ? record.error : "";
-  const message = typeof record.message === "string" ? record.message : "";
-  const detail = record.detail;
-
-  if (error && message) return `${error}: ${message}`;
-  if (error) return error;
-  if (message) return message;
-
-  if (detail && typeof detail === "object") {
-    const detailRecord = detail as Record<string, unknown>;
-    const detailMessage =
-      typeof detailRecord.message === "string" ? detailRecord.message : "";
-    if (detailMessage) return detailMessage;
-  }
-
-  return fallback;
+function getPlanPriceId(
+  plan: PaidPlanKey,
+  monthPriceId: string,
+  yearPriceId: string,
+): string {
+  return plan === "month" ? monthPriceId : yearPriceId;
 }
 
 export default function Pricing() {
   const navigate = useNavigate();
-
-  const SUPABASE_URL = pickEnv("VITE_SUPABASE_URL");
-  const SUPABASE_ANON_KEY = pickEnv("VITE_SUPABASE_ANON_KEY");
 
   const ONE_MONTH_PRICE_ID = resolvePriceId(
     pickEnv(
@@ -139,16 +129,11 @@ export default function Pricing() {
   const configWarning = useMemo(() => {
     const missing: string[] = [];
 
-    if (!SUPABASE_URL) missing.push("VITE_SUPABASE_URL");
-    if (!ONE_MONTH_PRICE_ID) {
-      missing.push("monthly Stripe price_id (env or DIRECT_ONE_MONTH_PRICE_ID)");
-    }
-    if (!ONE_YEAR_PRICE_ID) {
-      missing.push("yearly Stripe price_id (env or DIRECT_ONE_YEAR_PRICE_ID)");
-    }
+    if (!ONE_MONTH_PRICE_ID) missing.push("monthly Stripe price_id");
+    if (!ONE_YEAR_PRICE_ID) missing.push("yearly Stripe price_id");
 
     return missing.length > 0 ? `Missing config: ${missing.join(", ")}` : "";
-  }, [SUPABASE_URL, ONE_MONTH_PRICE_ID, ONE_YEAR_PRICE_ID]);
+  }, [ONE_MONTH_PRICE_ID, ONE_YEAR_PRICE_ID]);
 
   const plans = useMemo<Plan[]>(
     () => [
@@ -174,13 +159,13 @@ export default function Pricing() {
         eyebrow: "Flexible / Linh hoạt",
         title: "Full Access — Monthly / Toàn quyền — Tháng",
         price: "200 000 VND / month",
-        subtitleEn: "Try full access with flexible monthly billing.",
-        subtitleVi: "Trải nghiệm toàn quyền truy cập với thanh toán hàng tháng linh hoạt.",
+        subtitleEn: "Flexible recurring access with monthly billing.",
+        subtitleVi: "Toàn quyền truy cập linh hoạt với thanh toán hàng tháng.",
         bodyEn:
           "Good for learners who want every premium room without a longer commitment.",
         bodyVi:
           "Phù hợp cho người học muốn mở toàn bộ phòng premium mà chưa cần cam kết dài hạn.",
-        cta: "Try full access",
+        cta: "Choose monthly",
         accent: "plain",
         bullets: [
           "Unlock all premium rooms",
@@ -195,9 +180,11 @@ export default function Pricing() {
         price: "2 000 000 VND / year",
         subtitleEn: "Save more and stay fully unlocked all year.",
         subtitleVi: "Tiết kiệm hơn và giữ toàn bộ quyền truy cập suốt cả năm.",
-        bodyEn: "Best long-term value for steady learning without billing friction.",
-        bodyVi: "Giá trị tốt nhất cho hành trình dài hạn với ít gián đoạn thanh toán hơn.",
-        cta: "Unlock full access",
+        bodyEn:
+          "Best long-term value for steady learning without billing friction.",
+        bodyVi:
+          "Giá trị tốt nhất cho hành trình dài hạn với ít gián đoạn thanh toán hơn.",
+        cta: "Choose yearly",
         accent: "highlight",
         bullets: [
           "Best long-term value",
@@ -211,6 +198,7 @@ export default function Pricing() {
   );
 
   const hasPremium = entitlement?.is_premium === true;
+  const currentPriceId = String(entitlement?.price_id ?? "").trim();
 
   useEffect(() => {
     if (trackedPricingViewed.current) return;
@@ -229,11 +217,10 @@ export default function Pricing() {
     async function loadEntitlement() {
       try {
         setEntitlementLoading(true);
-        const accessToken = await getAccessToken({ redirectOnMissing: false });
-        const result = await fetchEntitlement(accessToken);
+        const result = await fetchMyEntitlement();
         if (!mounted) return;
-        setEntitlement(result);
-        setShowAlreadySubscribedPanel(result.is_premium === true);
+        setEntitlement(result as EntitlementResponse);
+        setShowAlreadySubscribedPanel(result?.is_premium === true);
       } catch {
         if (!mounted) return;
         setEntitlement(null);
@@ -265,112 +252,13 @@ export default function Pricing() {
     trackedPaywallShown.current = true;
   }, [entitlementLoading, hasPremium]);
 
-  async function getAccessToken(options?: {
-    redirectOnMissing?: boolean;
-  }): Promise<string> {
-    const redirectOnMissing = options?.redirectOnMissing ?? true;
+  async function refreshEntitlement() {
+    const latestEntitlement = await fetchMyEntitlement().catch(() => null);
 
-    const {
-      data: { session },
-      error: sessionError,
-    } = await supabase.auth.getSession();
-
-    if (sessionError) {
-      throw new Error(sessionError.message);
+    if (latestEntitlement) {
+      setEntitlement(latestEntitlement as EntitlementResponse);
+      setShowAlreadySubscribedPanel(latestEntitlement.is_premium === true);
     }
-
-    const accessToken = session?.access_token;
-    if (!accessToken) {
-      if (redirectOnMissing) {
-        navigate("/signin");
-      }
-      throw new Error("Please sign in to continue.");
-    }
-
-    return accessToken;
-  }
-
-  async function fetchEntitlement(
-    accessToken: string,
-  ): Promise<EntitlementResponse> {
-    if (!SUPABASE_URL) {
-      throw new Error("Supabase URL is missing.");
-    }
-
-    const response = await fetch(
-      `${SUPABASE_URL.replace(/\/$/, "")}/functions/v1/me-entitlement`,
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          ...(SUPABASE_ANON_KEY ? { apikey: SUPABASE_ANON_KEY } : {}),
-        },
-      },
-    );
-
-    const raw = await response.text();
-    let payload: Record<string, unknown> = {};
-
-    try {
-      payload = raw ? JSON.parse(raw) : {};
-    } catch {
-      throw new Error(raw || "Entitlement returned a non-JSON response.");
-    }
-
-    if (!response.ok) {
-      throw new Error(
-        extractErrorMessage(payload, `Entitlement failed (${response.status})`),
-      );
-    }
-
-    return payload as EntitlementResponse;
-  }
-
-  async function createBillingPortalSession(
-    accessToken: string,
-  ): Promise<string> {
-    if (!SUPABASE_URL) {
-      throw new Error("Supabase URL is missing.");
-    }
-
-    const response = await fetch(
-      `${SUPABASE_URL.replace(/\/$/, "")}/functions/v1/create-billing-portal-session`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${accessToken}`,
-          ...(SUPABASE_ANON_KEY ? { apikey: SUPABASE_ANON_KEY } : {}),
-        },
-        body: JSON.stringify({}),
-      },
-    );
-
-    const raw = await response.text();
-    let payload: Record<string, unknown> = {};
-
-    try {
-      payload = raw ? JSON.parse(raw) : {};
-    } catch {
-      throw new Error(raw || "Billing portal returned a non-JSON response.");
-    }
-
-    if (!response.ok) {
-      throw new Error(
-        extractErrorMessage(
-          payload,
-          `Billing portal failed (${response.status})`,
-        ),
-      );
-    }
-
-    const portalUrl = typeof payload.url === "string" ? payload.url : "";
-
-    if (!portalUrl) {
-      throw new Error("Billing portal URL missing from response.");
-    }
-
-    return portalUrl;
   }
 
   async function handleManageSubscription() {
@@ -378,30 +266,41 @@ export default function Pricing() {
     setManageBusy(true);
 
     try {
-      const accessToken = await getAccessToken();
-      const portalUrl = await createBillingPortalSession(accessToken);
-      window.location.assign(portalUrl);
+      await openBillingPortal();
     } catch (error) {
-      setErrorText(
+      const message =
         error instanceof Error
           ? error.message
-          : "Unable to open billing portal.",
-      );
+          : "Unable to open billing portal.";
+
+      if (
+        message.toLowerCase().includes("sign in") ||
+        message.toLowerCase().includes("unauthorized") ||
+        message.toLowerCase().includes("auth")
+      ) {
+        navigate("/signin");
+        return;
+      }
+
+      setErrorText(message);
     } finally {
       setManageBusy(false);
     }
   }
 
+  function isCurrentPlan(plan: PaidPlanKey): boolean {
+    const targetPriceId = getPlanPriceId(
+      plan,
+      ONE_MONTH_PRICE_ID,
+      ONE_YEAR_PRICE_ID,
+    );
+    return !!currentPriceId && currentPriceId === targetPriceId;
+  }
+
   async function handlePaidPlan(plan: PaidPlanKey) {
-    const priceId = plan === "month" ? ONE_MONTH_PRICE_ID : ONE_YEAR_PRICE_ID;
+    const priceId = getPlanPriceId(plan, ONE_MONTH_PRICE_ID, ONE_YEAR_PRICE_ID);
 
     setErrorText("");
-
-    if (hasPremium) {
-      setShowAlreadySubscribedPanel(true);
-      await handleManageSubscription();
-      return;
-    }
 
     if (!priceId) {
       setErrorText(
@@ -412,105 +311,87 @@ export default function Pricing() {
       return;
     }
 
-    if (!SUPABASE_URL) {
-      setErrorText("Supabase URL is missing.");
-      return;
-    }
-
     setBusyPlan(plan);
 
     try {
-      const accessToken = await getAccessToken();
-
-      trackCheckoutStarted({
-        screen: "pricing",
-        plan,
-        price_id: priceId,
-        path: window.location.pathname,
-      });
-
-      const successUrl =
-        `${window.location.origin}/billing/success?session_id={CHECKOUT_SESSION_ID}`;
-      const cancelUrl =
-        `${window.location.origin}${window.location.pathname}?canceled=1`;
-
-      const response = await fetch(
-        `${SUPABASE_URL.replace(/\/$/, "")}/functions/v1/billing-stripe-checkout-session`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${accessToken}`,
-            ...(SUPABASE_ANON_KEY ? { apikey: SUPABASE_ANON_KEY } : {}),
-          },
-          body: JSON.stringify({
-            price_id: priceId,
-            success_url: successUrl,
-            cancel_url: cancelUrl,
-            quantity: 1,
-          }),
-        },
-      );
-
-      const raw = await response.text();
-      let payload: Record<string, unknown> = {};
-
-      try {
-        payload = raw ? JSON.parse(raw) : {};
-      } catch {
-        throw new Error(raw || "Checkout returned a non-JSON response.");
-      }
-
-      if (!response.ok) {
-        throw new Error(
-          extractErrorMessage(payload, `Checkout failed (${response.status})`),
-        );
-      }
-
-      if (payload.already_subscribed === true) {
+      if (hasPremium && isCurrentPlan(plan)) {
         setShowAlreadySubscribedPanel(true);
-        const latestEntitlement = await fetchEntitlement(accessToken).catch(
-          () => null,
-        );
-
-        if (latestEntitlement) {
-          setEntitlement(latestEntitlement);
-          setShowAlreadySubscribedPanel(latestEntitlement.is_premium === true);
-        }
-
-        const portalUrl = await createBillingPortalSession(accessToken);
-        window.location.assign(portalUrl);
+        setErrorText("");
         return;
       }
 
-      const checkoutUrl =
-        typeof payload.url === "string"
-          ? payload.url
-          : typeof payload.checkout_url === "string"
-            ? payload.checkout_url
-            : typeof payload.checkoutUrl === "string"
-              ? payload.checkoutUrl
-              : "";
-
-      if (!checkoutUrl) {
-        throw new Error("Checkout URL missing from response.");
+      if (!hasPremium) {
+        trackCheckoutStarted({
+          screen: "pricing",
+          plan,
+          price_id: priceId,
+          path: window.location.pathname,
+        });
       }
 
-      trackEvent("checkout_redirected", {
+      await startCheckoutOrOpenPortal(priceId);
+
+      trackEvent(hasPremium ? "subscription_changed" : "checkout_redirected", {
         screen: "pricing",
         plan,
         price_id: priceId,
         path: window.location.pathname,
       });
 
-      window.location.assign(checkoutUrl);
+      await refreshEntitlement();
+
+      if (hasPremium) {
+        alert(
+          plan === "month"
+            ? "Plan update requested for monthly."
+            : "Plan update requested for yearly.",
+        );
+      }
     } catch (error) {
-      setErrorText(
-        error instanceof Error ? error.message : "Unable to start checkout.",
-      );
+      const message =
+        error instanceof Error ? error.message : "Unable to continue.";
+
+      if (
+        message.toLowerCase().includes("sign in") ||
+        message.toLowerCase().includes("unauthorized") ||
+        message.toLowerCase().includes("auth")
+      ) {
+        navigate("/signin");
+        return;
+      }
+
+      if (
+        message.toLowerCase().includes("already subscribed") ||
+        message.toLowerCase().includes("already have") ||
+        message.toLowerCase().includes("current plan")
+      ) {
+        setShowAlreadySubscribedPanel(true);
+        await refreshEntitlement();
+        setErrorText("");
+        return;
+      }
+
+      setErrorText(message);
     } finally {
       setBusyPlan(null);
     }
+  }
+
+  function getPaidButtonText(plan: PaidPlanKey, isBusy: boolean): string {
+    if (entitlementLoading) return "Checking access...";
+    if (isBusy) {
+      return hasPremium ? "Updating plan..." : "Opening secure checkout...";
+    }
+
+    if (!hasPremium) {
+      return plan === "month" ? "Choose monthly" : "Choose yearly";
+    }
+
+    if (isCurrentPlan(plan)) {
+      return "Current plan";
+    }
+
+    return plan === "month" ? "Switch to monthly" : "Switch to yearly";
   }
 
   function renderCard(plan: Plan) {
@@ -639,6 +520,7 @@ export default function Pricing() {
 
     const paidKey = plan.key as PaidPlanKey;
     const isBusy = busyPlan === paidKey;
+    const currentPlan = isCurrentPlan(paidKey);
 
     return (
       <div
@@ -695,23 +577,16 @@ export default function Pricing() {
         <button
           type="button"
           onClick={() => handlePaidPlan(paidKey)}
-          disabled={isBusy || manageBusy || entitlementLoading}
+          disabled={isBusy || manageBusy || entitlementLoading || currentPlan}
           aria-busy={isBusy}
           style={{
             ...actionStyle,
-            cursor: isBusy ? "wait" : "pointer",
-            opacity: isBusy ? 0.85 : 1,
+            cursor: currentPlan ? "default" : isBusy ? "wait" : "pointer",
+            opacity: currentPlan ? 0.7 : isBusy ? 0.85 : 1,
+            background: currentPlan ? "#334155" : actionStyle.background,
           }}
         >
-          {entitlementLoading
-            ? "Checking access..."
-            : isBusy
-              ? hasPremium
-                ? "Opening portal..."
-                : "Opening secure checkout..."
-              : hasPremium
-                ? "Manage subscription"
-                : plan.cta}
+          {getPaidButtonText(paidKey, isBusy)}
         </button>
       </div>
     );
@@ -903,7 +778,8 @@ export default function Pricing() {
             You already have premium access.
           </div>
           <div style={{ lineHeight: 1.6, marginBottom: 10 }}>
-            Manage or cancel your subscription anytime in Stripe.
+            Choose another paid plan to switch immediately, or open Stripe to
+            manage billing and cancellation.
           </div>
           <button
             type="button"
@@ -993,9 +869,9 @@ export default function Pricing() {
           lineHeight: 1.6,
         }}
       >
-        Paid plans open Stripe Checkout for new subscribers, and route existing
-        subscribers to Stripe Billing Portal instead of creating overlapping
-        subscriptions.
+        New subscribers are routed through the centralized billing helper.
+        Existing subscribers use the same billing layer for checkout and billing
+        management via Stripe Billing Portal.
       </p>
     </div>
   );

@@ -1,4 +1,3 @@
-// src/hooks/useUserAccess.ts
 /**
  * MercyBlade Blue — useUserAccess (AUTH-DRIVEN, ENTITLEMENT PREMIUM TRUTH)
  * Path: src/hooks/useUserAccess.ts
@@ -40,10 +39,30 @@ export interface UserAccess {
   isLoading: boolean;
 
   canAccessPremium: () => boolean;
+
+  email?: string;
+  userId?: string;
+  user?: {
+    id?: string;
+    email?: string;
+  };
 }
 
 function isPremiumTier(tier: TierId): boolean {
   return tier === "premium_month" || tier === "premium_year";
+}
+
+function safeNumber(value: unknown, fallback = 0): number {
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? parsed : fallback;
+}
+
+function isDev(): boolean {
+  try {
+    return Boolean((import.meta as { env?: { DEV?: boolean } })?.env?.DEV);
+  } catch {
+    return false;
+  }
 }
 
 export const guestAccess = (): UserAccess => {
@@ -65,25 +84,33 @@ export const guestAccess = (): UserAccess => {
     isLoading: false,
 
     canAccessPremium: () => false,
+
+    email: undefined,
+    userId: undefined,
+    user: undefined,
   };
 };
 
-function authenticatedFreeAccess(): UserAccess {
+function authenticatedFreeAccess(params: {
+  userId?: string | null;
+  email?: string | null;
+}): UserAccess {
+  const userId = params.userId?.trim() || undefined;
+  const email = params.email?.trim() || undefined;
+
   return {
     ...guestAccess(),
     isAuthenticated: true,
     isDemoMode: false,
     loading: false,
     isLoading: false,
+    email,
+    userId,
+    user: {
+      id: userId,
+      email,
+    },
   };
-}
-
-function isDev(): boolean {
-  try {
-    return Boolean((import.meta as { env?: { DEV?: boolean } })?.env?.DEV);
-  } catch {
-    return false;
-  }
 }
 
 export const useUserAccess = (): UserAccess => {
@@ -96,6 +123,7 @@ export const useUserAccess = (): UserAccess => {
     isDemoMode: false,
   }));
 
+  const userId = (user?.id || "").trim() || null;
   const userEmail = (user?.email || "").trim() || null;
 
   useEffect(() => {
@@ -110,11 +138,17 @@ export const useUserAccess = (): UserAccess => {
           isLoading: true,
           isDemoMode: false,
           isAuthenticated: false,
+          email: userEmail ?? undefined,
+          userId: userId ?? undefined,
+          user: {
+            id: userId ?? undefined,
+            email: userEmail ?? undefined,
+          },
         }));
         return;
       }
 
-      if (!userEmail) {
+      if (!userId) {
         if (!alive) return;
         setAccess(guestAccess());
         return;
@@ -127,28 +161,73 @@ export const useUserAccess = (): UserAccess => {
         isLoading: true,
         isDemoMode: false,
         isAuthenticated: true,
+        email: userEmail ?? undefined,
+        userId: userId ?? undefined,
+        user: {
+          id: userId ?? undefined,
+          email: userEmail ?? undefined,
+        },
       }));
 
       try {
         const { data: profile, error: profileErr } = await supabase
           .from("profiles")
-          .select("email, is_admin, admin_level")
-          .eq("email", userEmail)
+          .select("id, email, is_admin, admin_level")
+          .eq("id", userId)
           .maybeSingle();
+
+        console.log(
+          "[useUserAccess] profile result JSON",
+          JSON.stringify(
+            {
+              userId,
+              userEmail,
+              profile,
+              profileErrMessage: profileErr?.message ?? null,
+              profileErrCode: profileErr?.code ?? null,
+              profileErrDetails: profileErr?.details ?? null,
+              profileErrHint: profileErr?.hint ?? null,
+            },
+            null,
+            2,
+          ),
+        );
 
         if (profileErr && isDev()) {
           console.warn("[useUserAccess] profiles lookup error:", profileErr);
         }
 
-        const adminLevel = Number(profile?.admin_level ?? 0);
+        const adminLevel = safeNumber(profile?.admin_level, 0);
         const isHighAdmin = adminLevel >= 9;
         const isAdmin =
           Boolean(profile?.is_admin) || adminLevel > 0 || isHighAdmin;
 
-        const entitlement = await fetchCurrentEntitlement(supabase);
-        const entitlementTier = resolveEntitlementTier(entitlement);
+        let finalTier: TierId = "free";
 
-        const finalTier: TierId = entitlementTier;
+        try {
+          const entitlement = await fetchCurrentEntitlement(supabase);
+          finalTier = resolveEntitlementTier(entitlement);
+
+          console.log(
+            "[useUserAccess] entitlement result JSON",
+            JSON.stringify(
+              {
+                userId,
+                finalTier,
+              },
+              null,
+              2,
+            ),
+          );
+        } catch (entitlementErr) {
+          if (isDev()) {
+            console.warn(
+              "[useUserAccess] entitlement fetch failed, defaulting to free tier:",
+              entitlementErr,
+            );
+          }
+          finalTier = "free";
+        }
 
         const next: UserAccess = {
           isAdmin,
@@ -168,6 +247,13 @@ export const useUserAccess = (): UserAccess => {
           isLoading: false,
 
           canAccessPremium: () => isPremiumTier(finalTier) || isHighAdmin,
+
+          email: (profile?.email || userEmail || "").trim() || undefined,
+          userId,
+          user: {
+            id: userId,
+            email: (profile?.email || userEmail || "").trim() || undefined,
+          },
         };
 
         if (!alive) return;
@@ -175,7 +261,12 @@ export const useUserAccess = (): UserAccess => {
       } catch (err: unknown) {
         if (isDev()) console.warn("[useUserAccess] crashed:", err);
         if (!alive) return;
-        setAccess(authenticatedFreeAccess());
+        setAccess(
+          authenticatedFreeAccess({
+            userId,
+            email: userEmail,
+          }),
+        );
       }
     };
 
@@ -184,7 +275,7 @@ export const useUserAccess = (): UserAccess => {
     return () => {
       alive = false;
     };
-  }, [authLoading, userEmail]);
+  }, [authLoading, userId, userEmail]);
 
   return useMemo(() => access, [access]);
 };

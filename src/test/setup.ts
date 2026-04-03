@@ -29,19 +29,19 @@ const kPatched = Symbol.for("mercy.vitest.aliasRequirePatched");
 const anyModule = Module as unknown as {
   _resolveFilename: (
     request: string,
-    parent: any,
+    parent: unknown,
     isMain: boolean,
-    options: any,
+    options: unknown,
   ) => string;
   [k: symbol]: boolean | undefined;
 };
 
 function resolveWithTsFallback(
-  originalResolve: anyModule["_resolveFilename"],
+  originalResolve: typeof anyModule._resolveFilename,
   mapped: string,
-  parent: any,
+  parent: unknown,
   isMain: boolean,
-  options: any,
+  options: unknown,
 ) {
   // If request already includes an extension, just try it.
   if (path.extname(mapped)) {
@@ -59,7 +59,7 @@ function resolveWithTsFallback(
     path.join(mapped, "index.jsx"),
   ];
 
-  const hit = candidates.find((p) => fs.existsSync(p));
+  const hit = candidates.find((candidate) => fs.existsSync(candidate));
   if (hit) {
     return originalResolve.call(Module, hit, parent, isMain, options);
   }
@@ -73,13 +73,12 @@ if (!anyModule[kPatched]) {
 
   anyModule._resolveFilename = function (
     request: string,
-    parent: any,
+    parent: unknown,
     isMain: boolean,
-    options: any,
+    options: unknown,
   ) {
     if (request === "@") {
-      // Treat "@" as the src root (rare but supported)
-      return originalResolve.call(this, srcRoot, parent, isMain, options);
+      return resolveWithTsFallback(originalResolve, srcRoot, parent, isMain, options);
     }
 
     if (request.startsWith("@/")) {
@@ -100,24 +99,41 @@ if (!anyModule[kPatched]) {
 if (typeof window !== "undefined") {
   // matchMedia stub (some UI libs rely on it)
   if (!("matchMedia" in window)) {
-    (window as any).matchMedia = (query: string) => ({
-      matches: false,
-      media: query,
-      onchange: null,
-      addListener: () => {},
-      removeListener: () => {},
-      addEventListener: () => {},
-      removeEventListener: () => {},
-      dispatchEvent: () => false,
+    Object.defineProperty(window, "matchMedia", {
+      writable: true,
+      value: (query: string) => ({
+        matches: false,
+        media: query,
+        onchange: null,
+        addListener: () => {},
+        removeListener: () => {},
+        addEventListener: () => {},
+        removeEventListener: () => {},
+        dispatchEvent: () => false,
+      }),
     });
   }
 
   // ResizeObserver stub
   if (!("ResizeObserver" in window)) {
-    (window as any).ResizeObserver = class {
+    (window as typeof window & {
+      ResizeObserver: new () => {
+        observe: () => void;
+        unobserve: () => void;
+        disconnect: () => void;
+      };
+    }).ResizeObserver = class {
       observe() {}
       unobserve() {}
       disconnect() {}
     };
+  }
+
+  // scrollTo stub
+  if (!("scrollTo" in window)) {
+    Object.defineProperty(window, "scrollTo", {
+      writable: true,
+      value: () => {},
+    });
   }
 }

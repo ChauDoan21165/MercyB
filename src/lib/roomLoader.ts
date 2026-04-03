@@ -153,6 +153,30 @@ const mapToAccessTier = (tier: TierId): TierId => {
   return "free";
 };
 
+function hasGetUser(
+  client: typeof supabase,
+): client is typeof supabase & {
+  auth: typeof supabase.auth & {
+    getUser: () => Promise<{
+      data: { user: { id: string } | null };
+      error?: unknown;
+    }>;
+  };
+} {
+  return typeof (client as any)?.auth?.getUser === "function";
+}
+
+function hasRpc(
+  client: typeof supabase,
+): client is typeof supabase & {
+  rpc: (
+    fn: string,
+    args?: Record<string, unknown>,
+  ) => Promise<{ data: unknown; error: { message?: string } | null }>;
+} {
+  return typeof (client as any)?.rpc === "function";
+}
+
 const loadFromDatabase = async (
   candidateIds: string[],
   canonicalTierSourceId: string,
@@ -277,30 +301,55 @@ const loadMergedRoomInternal = async (
   const candidateIds = buildRoomIdCandidates(roomId);
 
   try {
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
+    let user: { id: string } | null = null;
+
+    if (hasGetUser(supabase)) {
+      try {
+        const {
+          data: { user: fetchedUser },
+        } = await supabase.auth.getUser();
+        user = fetchedUser ?? null;
+      } catch (authError: any) {
+        logger.error("Error getting current user", {
+          scope: "roomLoader",
+          roomId,
+          error: authError?.message,
+        });
+      }
+    } else {
+      logger.warn?.("supabase.auth.getUser is not available; treating as guest", {
+        scope: "roomLoader",
+        roomId,
+      });
+    }
 
     let isAdmin = false;
     let baseTier: TierId = "free";
 
     if (user) {
-      const { data: isAdminRpc, error: adminError } = await supabase.rpc(
-        "has_role",
-        {
-          _role: "admin",
-          _user_id: user.id,
-        },
-      );
+      if (hasRpc(supabase)) {
+        const { data: isAdminRpc, error: adminError } = await supabase.rpc(
+          "has_role",
+          {
+            _role: "admin",
+            _user_id: user.id,
+          },
+        );
 
-      if (adminError) {
-        logger.error("Error checking admin role", {
+        if (adminError) {
+          logger.error("Error checking admin role", {
+            scope: "roomLoader",
+            error: adminError.message,
+          });
+        } else {
+          isAdmin = !!isAdminRpc;
+        }
+      } else {
+        logger.warn?.("supabase.rpc is not available; skipping admin role check", {
           scope: "roomLoader",
-          error: adminError.message,
+          roomId,
         });
       }
-
-      isAdmin = !!isAdminRpc;
 
       try {
         const entitlement = await fetchCurrentEntitlement(supabase);

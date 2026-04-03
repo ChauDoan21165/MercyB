@@ -5,7 +5,10 @@
 > It records *what changed*, *why it changed*, and *what is now considered stable*.  
 >  
 > This is **not a roadmap**, **not a brainstorm**, and **not marketing**.  
-> It exists to prevent confusion, regression, and context loss.
+> It exists to prevent confusion, regression, and context loss.  
+>
+> Secondary Purpose (Controlled):  
+> This log also serves as a **source of truth for public storytelling**, showcasing real engineering rigor, stability work, and production hardening.
 
 ---
 
@@ -24,7 +27,7 @@
 
 ## 1. Current System Snapshot
 
-_Last updated: YYYY-MM-DD_
+_Last updated: 2025-12-03_
 
 ### Stack
 - Frontend: React + TypeScript
@@ -46,9 +49,7 @@ _Last updated: YYYY-MM-DD_
 
 ---
 
-## 2. Active Focus (Only These Are “In Progress”)
-
-> If it’s not listed here, it is **not active work**.
+## 2. Active Focus
 
 - [ ] Stripe webhook hardening (tier upgrades)
 - [ ] Audio UX containment (TalkingFacePlayButton)
@@ -58,119 +59,79 @@ _Last updated: YYYY-MM-DD_
 
 ## 3. Change Log (Chronological)
 
-### YYYY-MM-DD — Short title of change
-**Area:** (Payments / Audio / Tiers / Infra / UI)  
-**Files touched:**  
-- `path/to/file.ts`
-- `path/to/function.ts`
+---
+
+### 2025-12-03 — Build Diagnosis & Deployment Fix
+**Area:** Infra / Deployment  
+
+**Files touched:**
+- `netlify.toml`
+- `public/data/companion_lines_friend_en.json`
 
 **What changed:**
-- Bullet list of *exact* changes (no narratives)
+- Fixed Netlify config from Next.js → Vite (`.next` → `dist`)
+- Removed invalid Next.js plugin
+- Corrected redirect paths (`/public/data/* → /data/*`)
+- Added missing `voiceQuiet` key in EN companion JSON
 
 **Why:**
-- One or two sentences max
-- Must reference stability, UX clarity, or risk reduction
+Prevent deployment failure and runtime crashes for EN users.
 
 **Acceptance check:**
-- Explicit condition that confirms success
+- Netlify build succeeds
+- Companion system works for both EN + VI
 
-**Status:**  
-- ⏳ In progress / ✅ Stable / ⚠️ Revisit later
-
----
-
-## 4. Decisions Log (Why We Chose X Over Y)
-
-> Only log decisions that prevent future debate.
-
-### Decision: YYYY-MM-DD — Title
-**Context:**  
-What problem existed.
-
-**Options considered:**  
-- Option A  
-- Option B  
-
-**Decision:**  
-Chosen option.
-
-**Reason:**  
-Clear, short, irreversible logic.
-
-**Cost:**  
-What we knowingly gave up.
+**Status:** ✅ Stable
 
 ---
 
-## 5. Rejected Ideas (Important)
+### 2025-12-03 — MercyBlade Blue (Stability & Test Overhaul)
+**Area:** Infra / Access / Data / Security  
 
-> This section prevents bad ideas from resurfacing.
-
-### Rejected: YYYY-MM-DD — Idea name
-**Why it was tempting:**  
-Short description.
-
-**Why it was rejected:**  
-- Increased complexity / platform risk / distraction / unclear ROI
-
-**Rule reinforced:**  
-Which core principle this protects.
+**Files touched:**
+- `useUserAccess.ts`
+- `roomLoader.ts`
+- `AdminDashboard.tsx`
+- `ResetPasswordPage.tsx`
+- test files (multiple)
 
 ---
 
-## 6. Staff Notes / Handoff
+#### What changed
 
-> Use this when context must survive a break or new contributor.
+**Supabase Mocking**
+- Created shared `createSupabaseMock()`
+- Added `auth.getSession`, `rpc`
+- Standardized `.from()` chain behavior
+- Fixed Vitest hoisting via async mock pattern
 
-### YYYY-MM-DD — Note
-- What is safe to touch
-- What must NOT be touched
-- What the next person should do first
+**Test Architecture**
+- Unified structure across all core tests
+- Deterministic mocks
+- Clean reset with `beforeEach`
 
----
+**Access Logic Coverage**
+- Admin override enforced
+- Premium logic validated
+- Malformed entitlements → safe fallback
+- Corrupted profile rows → defaults
+- String `admin_level` parsed safely
+- Auth loading states handled
 
-## 7. “Do Not Touch” List (Until Explicitly Reopened)
+**Room Loader Resilience**
+- DB empty → JSON fallback
+- DB malformed → JSON fallback
+- DB stale + JSON broken → safe failure
+- Corrupted JSON → safe error (`ROOM_NOT_FOUND`)
+- Mixed bad data → normalized output
 
-- Room registry generator logic
-- Stable audio playback paths
-- Tier definitions once locked
-- Auth flow that is currently working
-
-(Only remove items with a logged decision.)
-
----
-
-## 8. External Research Log (Reference Only)
-
-> This section records **validated external patterns** that inform decisions.  
-> It does **not** authorize features, refactors, or scope changes.
-
-### Status
-- Total startup case studies logged: **29**
-- Sources: Starter Story transcripts (human + Grok-assisted extraction)
-- Purpose: Pattern recognition for **future adjacent apps**, not Mercy Blade core
-
-### Repeated Validated Patterns
-- Red-ocean products outperform novel ideas when UX or focus improves
-- Revenue comes from **filtering noise → decisions**, not content creation
-- Fast MVPs win when distribution is clear
-- Community, feedback, and launch tools monetize earlier than complex platforms
-- Lifetime deals, freemium, and simple subscriptions dominate early revenue
-
-### Guardrail
-- Insights here may inform **separate Mercy ecosystem apps**
-- They must **never** destabilize Mercy Blade core
-
----
-
-## 9. Next Review Trigger
-
-This document must be reviewed when:
-- A payment-related bug occurs
-- Audio UX breaks or regresses
-- A staff member proposes a new feature
-- Context is at risk of being lost
-
----
-
-_End of document_
+**NaN Elimination**
+- Removed unsafe:
+  - `Number(x ?? 0)`
+  - `value ?? 0`
+- Introduced:
+```ts
+function safeNumber(value: unknown, fallback = 0) {
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? parsed : fallback;
+}

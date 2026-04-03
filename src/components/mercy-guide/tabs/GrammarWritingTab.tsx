@@ -1,4 +1,5 @@
-import React, { useMemo, useState } from 'react';
+// File: src/components/mercy-guide/tabs/GrammarWritingTab.tsx
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import {
   AlertCircle,
   BookOpen,
@@ -22,6 +23,25 @@ import {
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
+type TeacherWritingTask = {
+  taskType: 'rewrite' | 'linking' | 'quickFix' | 'production' | string;
+  focus?: string;
+  instruction?: string;
+  reason?: string;
+  prefillText?: string;
+  triggerToken?: string;
+};
+
+type GrammarWritingTeacherState = {
+  latestAnalysisResult: GrammarApiResponse | null;
+  currentWritingMode?: WritingMode;
+  isTeacherInitiated: boolean;
+  isRevisionAttempt: boolean;
+  latestSubmittedText: string;
+  teacherTask?: TeacherWritingTask;
+  revisionSourceText?: string;
+};
+
 type GrammarWritingTabProps = {
   roomId?: string;
   roomTitle?: string;
@@ -32,6 +52,9 @@ type GrammarWritingTabProps = {
     correctedText: string;
     enhancedText?: string;
   }) => void;
+  onAnalysisResult?: (result: GrammarApiResponse | null) => void;
+  teacherTask?: TeacherWritingTask;
+  onTeacherWritingStateChange?: (state: GrammarWritingTeacherState) => void;
 };
 
 type GrammarIssue = {
@@ -250,7 +273,7 @@ const GRAMMAR_GLOSS_MAP: Record<string, string> = {
   'future perfect': 'tương lai hoàn thành',
   'passive voice': 'câu bị động',
   'relative clause': 'mệnh đề quan hệ',
-  'conditionals': 'câu điều kiện',
+  conditionals: 'câu điều kiện',
   'first conditional': 'câu điều kiện loại 1',
   'second conditional': 'câu điều kiện loại 2',
   'third conditional': 'câu điều kiện loại 3',
@@ -303,6 +326,14 @@ function normalizeGlossKey(value: string) {
   return value.trim().toLowerCase();
 }
 
+function normalizeMeaningfulText(value: string) {
+  return value.replace(/\s+/g, ' ').trim();
+}
+
+function hasMeaningfulDifference(a: string, b: string) {
+  return normalizeMeaningfulText(a) !== normalizeMeaningfulText(b);
+}
+
 function getGrammarGloss(value?: string) {
   if (!value) return null;
   return GRAMMAR_GLOSS_MAP[normalizeGlossKey(value)] ?? null;
@@ -334,6 +365,119 @@ function getWritingModeTone(mode?: WritingMode) {
   if (mode === 'essay') return 'border-indigo-200 bg-indigo-50 text-indigo-700';
   if (mode === 'paragraph') return 'border-pink-200 bg-pink-50 text-pink-700';
   return 'border-slate-200 bg-slate-50 text-slate-700';
+}
+
+function getTeacherTaskTone(taskType?: string) {
+  if (taskType === 'rewrite') return 'border-pink-200 bg-pink-50 text-pink-700';
+  if (taskType === 'linking') return 'border-indigo-200 bg-indigo-50 text-indigo-700';
+  if (taskType === 'quickFix') return 'border-amber-200 bg-amber-50 text-amber-700';
+  if (taskType === 'production') return 'border-green-200 bg-green-50 text-green-700';
+  return 'border-slate-200 bg-slate-50 text-slate-700';
+}
+
+function getTeacherTaskLabel(taskType?: string) {
+  if (!taskType) return 'Teacher Task';
+  if (taskType === 'quickFix') return 'Teacher Task · Quick Fix';
+  return `Teacher Task · ${toTitleCase(taskType)}`;
+}
+
+function shouldAutoApplyTeacherPrefill(input: {
+  currentDraft: string;
+  hasUserEditedDraft: boolean;
+  teacherTask?: TeacherWritingTask;
+  previousTriggerToken?: string;
+}) {
+  const { currentDraft, hasUserEditedDraft, teacherTask, previousTriggerToken } = input;
+
+  if (!teacherTask?.prefillText) return false;
+
+  const trimmedDraft = normalizeMeaningfulText(currentDraft);
+  const triggerChanged =
+    teacherTask.triggerToken &&
+    teacherTask.triggerToken !== previousTriggerToken;
+
+  if (!trimmedDraft) return true;
+  if (triggerChanged && !hasUserEditedDraft) return true;
+
+  return false;
+}
+
+function buildTeacherInstructionText(teacherTask?: TeacherWritingTask) {
+  if (!teacherTask) return null;
+  if (teacherTask.instruction) return teacherTask.instruction;
+  if (teacherTask.focus) {
+    return `Mercy wants you to ${teacherTask.taskType} with focus on ${teacherTask.focus}.`;
+  }
+  return `Mercy sent you here for a ${teacherTask.taskType} task.`;
+}
+
+function getTeacherEmphasis(result: GrammarApiResponse | null, teacherTask?: TeacherWritingTask) {
+  if (!result || !teacherTask) return null;
+
+  if (teacherTask.taskType === 'rewrite') {
+    return {
+      title: 'Teacher focus after analysis',
+      subtitle: 'Revision quality and idea flow now matter most.',
+      body:
+        result.paragraphAnalysis?.flow ||
+        result.paragraphAnalysis?.ideaConnection ||
+        result.practice?.tasks?.find((task) => task.type === 'rewrite')?.instruction ||
+        result.explanation ||
+        'Mercy wants your revision to feel more connected and natural from one sentence to the next.',
+    };
+  }
+
+  if (teacherTask.taskType === 'linking') {
+    return {
+      title: 'Teacher focus after analysis',
+      subtitle: 'Connection and transitions now matter most.',
+      body:
+        result.paragraphAnalysis?.ideaConnection ||
+        result.practice?.tasks?.find((task) => task.type === 'linking')?.instruction ||
+        result.paragraphAnalysis?.flow ||
+        result.explanation ||
+        'Mercy wants stronger bridges between your ideas.',
+    };
+  }
+
+  if (teacherTask.taskType === 'quickFix') {
+    const primaryIssue = result.issues?.[0];
+    const quickFixTask = result.practice?.tasks?.find((task) => task.type === 'quickFix');
+
+    return {
+      title: 'Teacher focus after analysis',
+      subtitle: 'Fix the specific grammar problem first.',
+      body:
+        primaryIssue?.reason ||
+        quickFixTask?.question ||
+        quickFixTask?.explanation ||
+        result.explanation ||
+        'Mercy wants one precise grammar correction before moving on.',
+    };
+  }
+
+  if (teacherTask.taskType === 'production') {
+    const productionTask = result.practice?.tasks?.find((task) => task.type === 'production');
+
+    return {
+      title: 'Teacher focus after analysis',
+      subtitle: 'Natural learner-generated output matters most.',
+      body:
+        productionTask?.instruction ||
+        result.overallAssessment ||
+        result.explanation ||
+        'Mercy wants you to produce your own sentence naturally, not only copy corrections.',
+    };
+  }
+
+  return {
+    title: 'Teacher focus after analysis',
+    subtitle: 'Mercy is still guiding this writing task.',
+    body:
+      result.explanation ||
+      result.overallAssessment ||
+      'Mercy is using the analysis to support the assigned task.',
+  };
 }
 
 function localGrammarFallback(text: string): GrammarApiResponse {
@@ -988,16 +1132,120 @@ export function GrammarWritingTab({
   contentEn,
   englishLevel,
   onPracticePronunciation,
+  onAnalysisResult,
+  teacherTask,
+  onTeacherWritingStateChange,
 }: GrammarWritingTabProps) {
   const [draft, setDraft] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<GrammarApiResponse | null>(null);
+  const [latestSubmittedText, setLatestSubmittedText] = useState('');
+  const [teacherAssignedBaseText, setTeacherAssignedBaseText] = useState('');
+  const [isRevisionAttempt, setIsRevisionAttempt] = useState(false);
+  const [hasUserEditedDraftSinceTeacherHydration, setHasUserEditedDraftSinceTeacherHydration] =
+    useState(false);
+  const [teacherPrefillApplied, setTeacherPrefillApplied] = useState(false);
+
+  const lastAppliedTeacherTriggerRef = useRef<string | undefined>(undefined);
+
+  const isTeacherInitiated = Boolean(teacherTask);
+  const teacherInstructionText = useMemo(
+    () => buildTeacherInstructionText(teacherTask),
+    [teacherTask]
+  );
+  const teacherEmphasis = useMemo(
+    () => getTeacherEmphasis(result, teacherTask),
+    [result, teacherTask]
+  );
+
+  /**
+   * Teacher-context hydration:
+   * apply teacher prefill only when it is safe, and remember the base text
+   * so later submissions can be treated as revision attempts.
+   */
+  useEffect(() => {
+    if (!teacherTask) {
+      setTeacherPrefillApplied(false);
+      return;
+    }
+
+    const previousTriggerToken = lastAppliedTeacherTriggerRef.current;
+    const triggerChanged =
+      Boolean(teacherTask.triggerToken) &&
+      teacherTask.triggerToken !== previousTriggerToken;
+
+    if (triggerChanged) {
+      setResult(null);
+      setError(null);
+      setLatestSubmittedText('');
+      setIsRevisionAttempt(false);
+      setTeacherPrefillApplied(false);
+
+      if (!teacherTask.prefillText) {
+        setHasUserEditedDraftSinceTeacherHydration(false);
+      }
+    }
+
+    const shouldApplyPrefill = shouldAutoApplyTeacherPrefill({
+      currentDraft: draft,
+      hasUserEditedDraft: hasUserEditedDraftSinceTeacherHydration,
+      teacherTask,
+      previousTriggerToken,
+    });
+
+    if (shouldApplyPrefill && teacherTask.prefillText) {
+      setDraft(teacherTask.prefillText);
+      setTeacherAssignedBaseText(teacherTask.prefillText);
+      setHasUserEditedDraftSinceTeacherHydration(false);
+      setTeacherPrefillApplied(true);
+    } else if (!teacherAssignedBaseText && teacherTask.prefillText) {
+      setTeacherAssignedBaseText(teacherTask.prefillText);
+    }
+
+    if (teacherTask.triggerToken) {
+      lastAppliedTeacherTriggerRef.current = teacherTask.triggerToken;
+    }
+  }, [
+    draft,
+    teacherAssignedBaseText,
+    hasUserEditedDraftSinceTeacherHydration,
+    teacherTask,
+  ]);
+
+  /**
+   * Upward reporting contract for Teacher Mercy / MercyGuide.
+   */
+  useEffect(() => {
+    onTeacherWritingStateChange?.({
+      latestAnalysisResult: result,
+      currentWritingMode: result?.writingMode,
+      isTeacherInitiated,
+      isRevisionAttempt,
+      latestSubmittedText,
+      teacherTask,
+      revisionSourceText: teacherAssignedBaseText || undefined,
+    });
+  }, [
+    result,
+    isTeacherInitiated,
+    isRevisionAttempt,
+    latestSubmittedText,
+    teacherTask,
+    teacherAssignedBaseText,
+    onTeacherWritingStateChange,
+  ]);
 
   const charCount = draft.trim().length;
   const canSubmit = charCount > 0 && !isLoading;
 
   const placeholder = useMemo(() => {
+    if (teacherInstructionText) {
+      return `${teacherInstructionText}
+
+Paste or write your English here. Mercy will keep the teacher focus while correcting grammar and improving writing.`;
+    }
+
     if (roomTitle) {
       return `Paste 1–2 sentences here and Mercy will fix the grammar, explain the logic, and improve the writing.
 
@@ -1009,7 +1257,7 @@ I very like this lesson because it help me understand better.`;
 
 Example:
 Yesterday I go to supermarket and buy many thing.`;
-  }, [roomTitle]);
+  }, [roomTitle, teacherInstructionText]);
 
   async function handleAnalyze() {
     const text = draft.trim();
@@ -1017,6 +1265,15 @@ Yesterday I go to supermarket and buy many thing.`;
 
     setIsLoading(true);
     setError(null);
+    setLatestSubmittedText(text);
+
+    const revisionBaseline = teacherAssignedBaseText.trim();
+    const revisionDetected = Boolean(
+      teacherTask &&
+        revisionBaseline &&
+        hasMeaningfulDifference(text, revisionBaseline)
+    );
+    setIsRevisionAttempt(revisionDetected);
 
     try {
       const analysis = await analyzeGrammarWithApi({
@@ -1032,11 +1289,13 @@ Yesterday I go to supermarket and buy many thing.`;
       }
 
       setResult(analysis);
+      onAnalysisResult?.(analysis);
     } catch (err) {
       console.error('🔥 Grammar fetch failed:', err);
 
       const fallback = localGrammarFallback(text);
       setResult(fallback);
+      onAnalysisResult?.(fallback);
 
       const message =
         err instanceof Error
@@ -1052,6 +1311,16 @@ Yesterday I go to supermarket and buy many thing.`;
     setDraft('');
     setResult(null);
     setError(null);
+    setLatestSubmittedText('');
+    setIsRevisionAttempt(false);
+    setHasUserEditedDraftSinceTeacherHydration(false);
+    setTeacherPrefillApplied(false);
+
+    if (!teacherTask?.prefillText) {
+      setTeacherAssignedBaseText('');
+    }
+
+    onAnalysisResult?.(null);
   }
 
   function handlePracticePronunciation() {
@@ -1081,6 +1350,18 @@ Yesterday I go to supermarket and buy many thing.`;
     (a, b) => b.priority - a.priority
   );
 
+  const emphasizedPracticeTasks = useMemo(() => {
+    if (!teacherTask || practiceTasks.length === 0) return practiceTasks;
+
+    return [...practiceTasks].sort((a, b) => {
+      const aBoost = a.type === teacherTask.taskType ? 1 : 0;
+      const bBoost = b.type === teacherTask.taskType ? 1 : 0;
+
+      if (aBoost !== bBoost) return bBoost - aBoost;
+      return b.priority - a.priority;
+    });
+  }, [practiceTasks, teacherTask]);
+
   const recurringIssues = Object.entries(memory?.recurringIssues ?? {}).sort(
     (a, b) => b[1] - a[1]
   );
@@ -1106,9 +1387,60 @@ Yesterday I go to supermarket and buy many thing.`;
           subtitle="Paste one or two sentences. Mercy will correct grammar, explain the shift, and improve the writing naturally."
         />
 
+        {teacherTask && (
+          <div
+            className={cn(
+              'mb-4 rounded-2xl border p-4',
+              getTeacherTaskTone(teacherTask.taskType)
+            )}
+          >
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="rounded-full border border-current/20 bg-white/70 px-3 py-1 text-xs font-semibold">
+                {getTeacherTaskLabel(teacherTask.taskType)}
+              </span>
+              {teacherTask.focus ? (
+                <span className="rounded-full border border-current/20 bg-white/70 px-3 py-1 text-xs font-medium">
+                  Focus: {teacherTask.focus}
+                </span>
+              ) : null}
+              {teacherPrefillApplied ? (
+                <span className="rounded-full border border-current/20 bg-white/70 px-3 py-1 text-xs font-medium">
+                  Prefill applied from teacher
+                </span>
+              ) : null}
+              {isRevisionAttempt ? (
+                <span className="rounded-full border border-current/20 bg-white/70 px-3 py-1 text-xs font-medium">
+                  Revision attempt detected
+                </span>
+              ) : null}
+            </div>
+
+            {teacherInstructionText ? (
+              <p className="mt-3 text-sm leading-6">{teacherInstructionText}</p>
+            ) : null}
+
+            {teacherTask.reason ? (
+              <p className="mt-2 text-xs leading-5 opacity-80">{teacherTask.reason}</p>
+            ) : null}
+          </div>
+        )}
+
         <textarea
           value={draft}
-          onChange={(e) => setDraft(e.target.value)}
+          onChange={(e) => {
+            const nextDraft = e.target.value;
+            setDraft(nextDraft);
+
+            const meaningfulEdit = teacherTask?.prefillText
+              ? hasMeaningfulDifference(nextDraft, teacherTask.prefillText)
+              : Boolean(normalizeMeaningfulText(nextDraft));
+
+            setHasUserEditedDraftSinceTeacherHydration(meaningfulEdit);
+
+            if (teacherPrefillApplied && meaningfulEdit) {
+              setTeacherPrefillApplied(false);
+            }
+          }}
           placeholder={placeholder}
           className={cn(
             'min-h-[180px] w-full resize-y rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none',
@@ -1175,7 +1507,28 @@ Yesterday I go to supermarket and buy many thing.`;
             </div>
           )}
 
-          <div className="rounded-2xl border border-border bg-white p-4 shadow-sm">
+          {teacherEmphasis && (
+            <div
+              className={cn(
+                'rounded-2xl border-2 bg-white p-4 shadow-sm',
+                teacherTask ? getTeacherTaskTone(teacherTask.taskType) : 'border-border'
+              )}
+            >
+              <SectionTitle
+                icon={<Target className="h-4 w-4" />}
+                title={teacherEmphasis.title}
+                subtitle={teacherEmphasis.subtitle}
+              />
+              <p className="text-sm leading-6 text-foreground">{teacherEmphasis.body}</p>
+            </div>
+          )}
+
+          <div
+            className={cn(
+              'rounded-2xl border bg-white p-4 shadow-sm',
+              teacherTask?.taskType === 'production' ? 'border-green-200' : 'border-border'
+            )}
+          >
             <div className="mb-2 flex items-center justify-between">
               <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
                 Corrected
@@ -1203,7 +1556,12 @@ Yesterday I go to supermarket and buy many thing.`;
           </div>
 
           {result.enhancedText && (
-            <div className="rounded-2xl border border-border bg-white p-4 shadow-sm">
+            <div
+              className={cn(
+                'rounded-2xl border bg-white p-4 shadow-sm',
+                teacherTask?.taskType === 'production' ? 'border-green-200' : 'border-border'
+              )}
+            >
               <SectionTitle
                 icon={<Wand2 className="h-4 w-4" />}
                 title="Enhanced Writing"
@@ -1236,7 +1594,14 @@ Yesterday I go to supermarket and buy many thing.`;
           )}
 
           {(writingMode || paragraphAnalysis) && (
-            <div className="rounded-2xl border border-border bg-white p-4 shadow-sm">
+            <div
+              className={cn(
+                'rounded-2xl border bg-white p-4 shadow-sm',
+                teacherTask?.taskType === 'rewrite' || teacherTask?.taskType === 'linking'
+                  ? 'border-pink-200'
+                  : 'border-border'
+              )}
+            >
               <SectionTitle
                 icon={<PenSquare className="h-4 w-4" />}
                 title="Paragraph Coaching"
@@ -1258,7 +1623,14 @@ Yesterday I go to supermarket and buy many thing.`;
 
               {paragraphAnalysis && (
                 <div className="grid gap-3 md:grid-cols-3">
-                  <div className="rounded-xl border border-border bg-muted/20 p-3">
+                  <div
+                    className={cn(
+                      'rounded-xl border bg-muted/20 p-3',
+                      teacherTask?.taskType === 'rewrite' || teacherTask?.taskType === 'linking'
+                        ? 'border-pink-200'
+                        : 'border-border'
+                    )}
+                  >
                     <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
                       Flow
                     </p>
@@ -1267,7 +1639,14 @@ Yesterday I go to supermarket and buy many thing.`;
                     </p>
                   </div>
 
-                  <div className="rounded-xl border border-border bg-muted/20 p-3">
+                  <div
+                    className={cn(
+                      'rounded-xl border bg-muted/20 p-3',
+                      teacherTask?.taskType === 'rewrite' || teacherTask?.taskType === 'linking'
+                        ? 'border-pink-200'
+                        : 'border-border'
+                    )}
+                  >
                     <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
                       Idea Connection
                     </p>
@@ -1546,7 +1925,12 @@ Yesterday I go to supermarket and buy many thing.`;
           )}
 
           {(detectedGrammarPoints.length > 0 || likelyMainTense || tenseProfile) && (
-            <div className="rounded-2xl border border-border bg-white p-4 shadow-sm">
+            <div
+              className={cn(
+                'rounded-2xl border bg-white p-4 shadow-sm',
+                teacherTask?.taskType === 'quickFix' ? 'border-amber-200' : 'border-border'
+              )}
+            >
               <SectionTitle
                 icon={<CheckCircle2 className="h-4 w-4" />}
                 title="Grammar Points"
@@ -1630,7 +2014,12 @@ Yesterday I go to supermarket and buy many thing.`;
           )}
 
           {teachingPoints.length > 0 && (
-            <div className="rounded-2xl border border-border bg-white p-4 shadow-sm">
+            <div
+              className={cn(
+                'rounded-2xl border bg-white p-4 shadow-sm',
+                teacherTask?.taskType === 'production' ? 'border-green-200' : 'border-border'
+              )}
+            >
               <SectionTitle
                 icon={<Sparkles className="h-4 w-4" />}
                 title="Teaching Points"
@@ -1756,9 +2145,9 @@ Yesterday I go to supermarket and buy many thing.`;
                 </div>
               </div>
 
-              {practiceTasks.length > 0 ? (
+              {emphasizedPracticeTasks.length > 0 ? (
                 <div className="space-y-4">
-                  {practiceTasks.map((task, index) => {
+                  {emphasizedPracticeTasks.map((task, index) => {
                     const label = getRankLabel(index);
 
                     if (task.type === 'quickFix') {
@@ -1896,7 +2285,12 @@ Yesterday I go to supermarket and buy many thing.`;
           )}
 
           {result.issues && result.issues.length > 0 && (
-            <div className="rounded-2xl border border-border bg-white p-4 shadow-sm">
+            <div
+              className={cn(
+                'rounded-2xl border bg-white p-4 shadow-sm',
+                teacherTask?.taskType === 'quickFix' ? 'border-amber-200' : 'border-border'
+              )}
+            >
               <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
                 Issue Breakdown
               </p>
@@ -1905,7 +2299,10 @@ Yesterday I go to supermarket and buy many thing.`;
                 {result.issues.map((issue, index) => (
                   <div
                     key={`${issue.original}-${index}`}
-                    className="rounded-xl border border-border bg-muted/20 p-3"
+                    className={cn(
+                      'rounded-xl border bg-muted/20 p-3',
+                      teacherTask?.taskType === 'quickFix' ? 'border-amber-200' : 'border-border'
+                    )}
                   >
                     <div className="mb-2 flex flex-wrap gap-2">
                       {issue.category ? (

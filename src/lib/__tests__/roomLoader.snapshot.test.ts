@@ -1,52 +1,24 @@
-// FILE: roomLoader.snapshot.test.ts
-// PATH: src/lib/__tests__/roomLoader.snapshot.test.ts
-// VERSION: MB-BLUE-ROOMLOADER-SNAP-1.0.6 — 2026-02-25 (+0700)
-//
-// BUILD-SAFE FIXES:
-//
-// 1) Vitest hoists vi.mock() to the top of the file.
-//    Any spies used by a mock factory must be created INSIDE that factory.
-//
-// 2) TypeScript: production modules do NOT export test-only named exports like "__mock".
-//    So DO NOT: `import { __mock } from ...` (TS2305).
-//    Instead: `import * as Mod from ...; (Mod as any).__mock`.
-//
-// 3) roomLoader return shape may evolve (errorCode, hasFullAccess, isPreview, etc.).
-//    Snapshots should assert the stable "merged output contract" only.
-//    So we snapshot a subset: audioBasePath, roomTier, keywordMenu, merged.
-//
-// NOTE (2026-02-25):
-// Current roomLoader behavior (in this repo state) returns empty merged/menu for these mocks.
-// Snapshot updated to match the stable subset actually returned, without pinning internal metadata.
-
+// src/lib/__tests__/roomLoader.snapshot.test.ts
 import { describe, it, expect, vi, beforeEach } from "vitest";
 
 // --------------------
-// Supabase mock (hoist-safe)
+// Shared Supabase mock (hoist-safe + TS-safe)
 // --------------------
-vi.mock("@/lib/supabaseClient", () => {
-  const mockGetUser = vi.fn();
-  const mockFrom = vi.fn();
+vi.mock("@/lib/supabaseClient", async () => {
+  const mod = await vi.importActual<any>("@/test/mocks/supabaseMock");
+  const supabase = mod.createSupabaseMock();
 
   return {
-    supabase: {
-      auth: { getUser: mockGetUser },
-      from: mockFrom,
-    },
-    // test-only handle
-    __mock: { mockGetUser, mockFrom },
+    supabase,
+    __mock: supabase,
   };
 });
 
 import * as SupaMod from "@/lib/supabaseClient";
-const { mockGetUser, mockFrom } = ((SupaMod as any).__mock ?? {}) as {
-  mockGetUser: ReturnType<typeof vi.fn>;
-  mockFrom: ReturnType<typeof vi.fn>;
-};
+const supabaseMock = (SupaMod as any).__mock;
 
 // --------------------
 // roomLoaderHelpers mock
-// (kept, but snapshot no longer assumes it is used)
 // --------------------
 vi.mock("../roomLoaderHelpers", () => ({
   processEntriesOptimized: vi.fn(() => ({
@@ -56,31 +28,17 @@ vi.mock("../roomLoaderHelpers", () => ({
 }));
 
 // --------------------
-// accessControl mock (hoist-safe handle)
+// accessControl mock
 // --------------------
-vi.mock("../accessControl", () => {
-  const mockCanUserAccessRoom = vi.fn();
+const accessMocks = vi.hoisted(() => ({
+  mockCanUserAccessRoom: vi.fn(),
+  mockDetermineAccess: vi.fn(),
+}));
 
-  // IMPORTANT: roomLoader uses determineAccess (often via dynamic import)
-  // so we MUST export it in the mock.
-  const mockDetermineAccess = vi.fn(() => ({
-    hasFullAccess: true,
-    isPreview: false,
-  }));
-
-  return {
-    canUserAccessRoom: mockCanUserAccessRoom,
-    determineAccess: mockDetermineAccess,
-    // test-only handle
-    __mock: { mockCanUserAccessRoom, mockDetermineAccess },
-  };
-});
-
-import * as AccessMod from "../accessControl";
-const { mockCanUserAccessRoom, mockDetermineAccess } = ((AccessMod as any).__mock ?? {}) as {
-  mockCanUserAccessRoom: ReturnType<typeof vi.fn>;
-  mockDetermineAccess: ReturnType<typeof vi.fn>;
-};
+vi.mock("../accessControl", () => ({
+  canUserAccessRoom: accessMocks.mockCanUserAccessRoom,
+  determineAccess: accessMocks.mockDetermineAccess,
+}));
 
 // --------------------
 // constants mock
@@ -91,46 +49,77 @@ vi.mock("@/lib/constants/rooms", () => ({
 }));
 
 // --------------------
-// roomJsonResolver mock (hoist-safe handle)
+// roomJsonResolver mock
 // --------------------
-vi.mock("../roomJsonResolver", () => {
-  const mockLoadRoomJson = vi.fn();
-  return {
-    loadRoomJson: mockLoadRoomJson,
-    // test-only handle
-    __mock: { mockLoadRoomJson },
-  };
-});
+const jsonMocks = vi.hoisted(() => ({
+  mockLoadRoomJson: vi.fn(),
+}));
 
-import * as RoomJsonMod from "../roomJsonResolver";
-const { mockLoadRoomJson } = ((RoomJsonMod as any).__mock ?? {}) as {
-  mockLoadRoomJson: ReturnType<typeof vi.fn>;
-};
+vi.mock("../roomJsonResolver", () => ({
+  loadRoomJson: jsonMocks.mockLoadRoomJson,
+}));
 
-// IMPORTANT: import AFTER mocks
 import { loadMergedRoom } from "../roomLoader";
+
+const makeChain = (overrides: Partial<Record<string, any>> = {}) => {
+  const self: any = {
+    select: vi.fn().mockReturnThis(),
+    eq: vi.fn().mockReturnThis(),
+    in: vi.fn().mockReturnThis(),
+    order: vi.fn().mockReturnThis(),
+    not: vi.fn().mockReturnThis(),
+    maybeSingle: vi.fn().mockResolvedValue({ data: null, error: null }),
+    single: vi.fn().mockResolvedValue({ data: null, error: null }),
+    returns: vi.fn().mockResolvedValue({ data: [], error: null }),
+    ...overrides,
+  };
+  return self;
+};
 
 describe("loadMergedRoom snapshots", () => {
   beforeEach(() => {
     vi.clearAllMocks();
 
-    mockGetUser.mockResolvedValue({
+    supabaseMock.auth.getUser.mockResolvedValue({
       data: { user: { id: "user-123" } },
       error: null,
     });
 
-    const subscriptionChain = {
-      select: vi.fn().mockReturnThis(),
-      eq: vi.fn().mockReturnThis(),
-      maybeSingle: vi.fn().mockResolvedValue({
-        data: { subscription_tiers: { name: "Free / Miễn phí" } },
+    supabaseMock.auth.getSession.mockResolvedValue({
+      data: {
+        session: {
+          access_token: "fake-token",
+          user: { id: "user-123" },
+        },
+      },
+      error: null,
+    });
+
+    supabaseMock.rpc.mockResolvedValue({
+      data: false,
+      error: null,
+    });
+
+    supabaseMock.functions.invoke.mockResolvedValue({
+      data: {
+        is_premium: false,
+        source: null,
+        status: "inactive",
+        expires_at: null,
+        plan_name: null,
+        tier_id: null,
+      },
+      error: null,
+    });
+
+    const roomEntriesChain = makeChain({
+      returns: vi.fn().mockResolvedValue({
+        data: [{ room_id: "test-room", index: 0 }],
         error: null,
       }),
-    };
+    });
 
-    const roomsChain = {
-      select: vi.fn().mockReturnThis(),
-      eq: vi.fn().mockReturnThis(),
+    const roomsChain = makeChain({
       maybeSingle: vi.fn().mockResolvedValue({
         data: {
           id: "test-room",
@@ -149,19 +138,22 @@ describe("loadMergedRoom snapshots", () => {
         },
         error: null,
       }),
-    };
-
-    // tolerant to table name drift
-    mockFrom.mockImplementation((table: string) => {
-      const t = String(table || "").toLowerCase();
-      if (t.includes("subscription")) return subscriptionChain;
-      if (t.includes("rooms")) return roomsChain;
-      throw new Error(`Unexpected table: ${table}`);
     });
 
-    mockCanUserAccessRoom.mockReturnValue(true);
-    mockDetermineAccess.mockReturnValue({ hasFullAccess: true, isPreview: false });
-    mockLoadRoomJson.mockResolvedValue(null);
+    supabaseMock.from.mockImplementation((table: string) => {
+      const t = String(table || "").toLowerCase();
+      if (t === "room_entries") return roomEntriesChain;
+      if (t === "rooms") return roomsChain;
+      return makeChain();
+    });
+
+    accessMocks.mockCanUserAccessRoom.mockReturnValue(true);
+    accessMocks.mockDetermineAccess.mockReturnValue({
+      hasFullAccess: true,
+      isPreview: false,
+    });
+
+    jsonMocks.mockLoadRoomJson.mockResolvedValue(null);
   });
 
   it("DB room → stable merged structure snapshot", async () => {
@@ -178,43 +170,53 @@ describe("loadMergedRoom snapshots", () => {
       {
         "audioBasePath": "audio/",
         "keywordMenu": {
-          "en": [],
-          "vi": [],
+          "en": [
+            "dummy",
+          ],
+          "vi": [
+            "dummy",
+          ],
         },
-        "merged": [],
+        "merged": [
+          {
+            "copy": {
+              "en": "EN",
+              "vi": "VI",
+            },
+            "slug": "dummy-entry",
+          },
+        ],
         "roomTier": "free",
       }
     `);
   });
 
   it("JSON fallback room → stable merged structure snapshot", async () => {
-    // DB returns null → forces JSON path
-    mockFrom.mockImplementation((table: string) => {
+    supabaseMock.from.mockImplementation((table: string) => {
       const t = String(table || "").toLowerCase();
 
-      if (t.includes("subscription")) {
-        return {
-          select: vi.fn().mockReturnThis(),
-          eq: vi.fn().mockReturnThis(),
-          maybeSingle: vi.fn().mockResolvedValue({
-            data: { subscription_tiers: { name: "Free / Miễn phí" } },
+      if (t === "room_entries") {
+        return makeChain({
+          returns: vi.fn().mockResolvedValue({
+            data: [],
             error: null,
           }),
-        };
+        });
       }
 
-      if (t.includes("rooms")) {
-        return {
-          select: vi.fn().mockReturnThis(),
-          eq: vi.fn().mockReturnThis(),
-          maybeSingle: vi.fn().mockResolvedValue({ data: null, error: null }),
-        };
+      if (t === "rooms") {
+        return makeChain({
+          maybeSingle: vi.fn().mockResolvedValue({
+            data: null,
+            error: null,
+          }),
+        });
       }
 
-      throw new Error(`Unexpected table: ${table}`);
+      return makeChain();
     });
 
-    mockLoadRoomJson.mockResolvedValue({
+    jsonMocks.mockLoadRoomJson.mockResolvedValue({
       id: "json-room",
       tier: "Free / Miễn phí",
       entries: [
@@ -240,10 +242,22 @@ describe("loadMergedRoom snapshots", () => {
       {
         "audioBasePath": "audio/",
         "keywordMenu": {
-          "en": [],
-          "vi": [],
+          "en": [
+            "dummy",
+          ],
+          "vi": [
+            "dummy",
+          ],
         },
-        "merged": [],
+        "merged": [
+          {
+            "copy": {
+              "en": "EN",
+              "vi": "VI",
+            },
+            "slug": "dummy-entry",
+          },
+        ],
         "roomTier": "free",
       }
     `);

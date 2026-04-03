@@ -1,9 +1,12 @@
+// File: src/components/MercyGuide.tsx
 /**
  * File: MercyGuide.tsx
  * Path: src/components/MercyGuide.tsx
  * Smaller shell: constants/utils/shell logic extracted
  * Safe fix: preserve old tab bodies, rename labels only
  * Grammar fix: use GrammarWritingTab for paste/analyze flow
+ * Step 2 fix: lift latest grammar analysis into shared state
+ * Next layer: wire Teacher tab fully + make it react immediately after analysis
  */
 
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
@@ -78,6 +81,182 @@ interface MercyGuideProps {
   contentEn?: string;
 }
 
+type GrammarIssue = {
+  original: string;
+  corrected: string;
+  reason: string;
+  category?: string;
+  grammarPoint?: string;
+};
+
+type TenseProfile = {
+  primary: string;
+  distribution: Record<string, number>;
+};
+
+type PracticeTask = {
+  type: 'quickFix' | 'contrast' | 'production' | 'review' | 'linking' | 'rewrite';
+  focus: string;
+  priority: number;
+  instruction?: string;
+  explanation?: string;
+  question?: string;
+};
+
+type PracticeBlock = {
+  mode?: 'coach' | 'explain' | 'challenge';
+  tasks?: PracticeTask[];
+};
+
+type TeachingDecision = {
+  primaryFocus: string;
+  secondaryFocuses: string[];
+  praiseFocus?: string;
+  learnerLevelSignal: string;
+  responseMode: 'explain' | 'coach' | 'challenge';
+  taskPlan: {
+    type:
+      | 'quickFix'
+      | 'contrast'
+      | 'production'
+      | 'review'
+      | 'linking'
+      | 'rewrite';
+    focus: string;
+    priority: number;
+    reason: string;
+  }[];
+  shouldReviewOldIssue: boolean;
+  shouldIntroduceStretchTask: boolean;
+  shouldReduceExplanation: boolean;
+  explanationDepth: 'full' | 'medium' | 'minimal';
+  responseTone: 'supportive' | 'balanced' | 'pushing';
+};
+
+type LearnerMemory = {
+  learnerId: string;
+  recurringIssues: Record<string, number>;
+  strengths: Record<string, number>;
+  recentTasks: {
+    type:
+      | 'quickFix'
+      | 'contrast'
+      | 'production'
+      | 'review'
+      | 'linking'
+      | 'rewrite';
+    focus: string;
+    assignedAt: string;
+  }[];
+  reviewQueue: {
+    focus: string;
+    nextReviewAt: string;
+    intervalDays: number;
+    successCount: number;
+  }[];
+  levelTrend?: 'rising' | 'stable' | 'struggling';
+};
+
+type ParagraphAnalysis = {
+  flow?: string;
+  ideaConnection?: string;
+  tenseConsistency?: string;
+};
+
+type WritingMode = 'sentence' | 'paragraph' | 'essay';
+
+type GrammarApiResponse = {
+  correctedText: string;
+  enhancedText?: string;
+  explanation?: string;
+  issues?: GrammarIssue[];
+  grammarPoints?: string[];
+  tenseAnalysis?: {
+    detected: string[];
+    likelyMainTense: string | null;
+    dominantTenseProfile?: TenseProfile;
+    notes: string[];
+  };
+  score?: {
+    grammar: number;
+    clarity: number;
+    naturalness: number;
+  };
+  overallAssessment?: string;
+  levelSignal?: string;
+  teachingPoints?: string[];
+  practice?: PracticeBlock;
+  writingMode?: WritingMode;
+  paragraphAnalysis?: ParagraphAnalysis;
+  decision?: TeachingDecision;
+  memory?: LearnerMemory;
+  source?: 'api' | 'fallback';
+};
+
+type PronunciationLaunchPayload = {
+  sourceText: string;
+  correctedText: string;
+  enhancedText?: string;
+};
+
+type TeacherWritingTask = {
+  taskType: 'rewrite' | 'linking' | 'quickFix' | 'production' | string;
+  focus?: string;
+  instruction?: string;
+  reason?: string;
+  prefillText?: string;
+  triggerToken?: string;
+};
+
+type GrammarWritingTeacherState = {
+  latestAnalysisResult: GrammarApiResponse | null;
+  currentWritingMode?: WritingMode;
+  isTeacherInitiated: boolean;
+  isRevisionAttempt: boolean;
+  latestSubmittedText: string;
+  teacherTask?: TeacherWritingTask;
+  revisionSourceText?: string;
+};
+
+function buildTeacherWritingTask(input: {
+  result: GrammarApiResponse | null;
+  teacherWritingState: GrammarWritingTeacherState | null;
+}): TeacherWritingTask | null {
+  const { result, teacherWritingState } = input;
+  const primaryTask = result?.practice?.tasks?.[0];
+  const decisionTask = result?.decision?.taskPlan?.[0];
+
+  const taskType =
+    primaryTask?.type ?? decisionTask?.type ?? result?.decision?.primaryFocus ?? 'rewrite';
+
+  const focus =
+    primaryTask?.focus ??
+    decisionTask?.focus ??
+    result?.decision?.primaryFocus ??
+    teacherWritingState?.teacherTask?.focus;
+
+  const instruction =
+    primaryTask?.instruction ??
+    decisionTask?.reason ??
+    (focus ? `Focus on ${focus}.` : 'Continue the teacher writing task.');
+
+  const prefillText =
+    teacherWritingState?.latestSubmittedText ||
+    teacherWritingState?.revisionSourceText ||
+    result?.correctedText ||
+    result?.enhancedText ||
+    '';
+
+  return {
+    taskType,
+    focus,
+    instruction,
+    reason: decisionTask?.reason ?? primaryTask?.explanation ?? result?.explanation,
+    prefillText,
+    triggerToken: `${Date.now()}-${taskType}-${focus ?? 'general'}`,
+  };
+}
+
 export function MercyGuide({
   roomId,
   roomTitle,
@@ -106,6 +285,14 @@ export function MercyGuide({
   const [showBreathingScript, setShowBreathingScript] = useState(false);
   const [breathingStep, setBreathingStep] = useState(0);
   const [showReframe, setShowReframe] = useState(false);
+
+  const [latestAnalysisResult, setLatestAnalysisResult] =
+    useState<GrammarApiResponse | null>(null);
+  const [pendingPronunciationPayload, setPendingPronunciationPayload] =
+    useState<PronunciationLaunchPayload | null>(null);
+  const [activeTeacherTask, setActiveTeacherTask] = useState<TeacherWritingTask | null>(null);
+  const [latestTeacherWritingState, setLatestTeacherWritingState] =
+    useState<GrammarWritingTeacherState | null>(null);
 
   const { troubleWords, addToTroubleWords } = useTroubleWordsVault();
 
@@ -276,6 +463,69 @@ export function MercyGuide({
       setTimeout(() => setPathHint(null), 6000);
     },
     [shownTipIds]
+  );
+
+  const handleAnalysisResult = useCallback(
+    (result: GrammarApiResponse | null) => {
+      setLatestAnalysisResult(result);
+
+      if (result) {
+        const hasTeacherSignal = Boolean(
+          result.decision ||
+            result.paragraphAnalysis ||
+            result.writingMode ||
+            result.practice?.tasks?.length
+        );
+
+        if (hasTeacherSignal) {
+          setActiveTab('teacher');
+          setIsGhosted(false);
+          updateInteraction();
+        }
+      }
+    },
+    [updateInteraction]
+  );
+
+  const handleOpenPronunciation = useCallback(
+    (payload: PronunciationLaunchPayload) => {
+      setPendingPronunciationPayload(payload);
+      setActiveTab('speak');
+      setIsGhosted(false);
+      updateInteraction();
+    },
+    [updateInteraction]
+  );
+
+  const handleTeacherOpenPronunciation = useCallback(() => {
+    setActiveTab('speak');
+    setIsGhosted(false);
+    updateInteraction();
+  }, [updateInteraction]);
+
+  const handleTeacherOpenWriting = useCallback(() => {
+    const teacherTask = buildTeacherWritingTask({
+      result: latestAnalysisResult,
+      teacherWritingState: latestTeacherWritingState,
+    });
+
+    if (!teacherTask) return;
+
+    setActiveTeacherTask(teacherTask);
+    setActiveTab('english');
+    setIsGhosted(false);
+    updateInteraction();
+  }, [latestAnalysisResult, latestTeacherWritingState, updateInteraction]);
+
+  const handleTeacherWritingStateChange = useCallback(
+    (state: GrammarWritingTeacherState) => {
+      setLatestTeacherWritingState(state);
+
+      if (state.latestAnalysisResult) {
+        setLatestAnalysisResult(state.latestAnalysisResult);
+      }
+    },
+    []
   );
 
   useEffect(() => {
@@ -546,7 +796,9 @@ export function MercyGuide({
                   >
                     <GraduationCap className="h-4 w-4 shrink-0" />
                     <span className="block text-center leading-tight">
-                      Your<br />Journey
+                      Your
+                      <br />
+                      Journey
                     </span>
                   </TabsTrigger>
 
@@ -562,7 +814,9 @@ export function MercyGuide({
                     )}
                   >
                     <span className="block text-center leading-tight">
-                      Grammar &amp;<br />Writing
+                      Grammar &amp;
+                      <br />
+                      Writing
                     </span>
                   </TabsTrigger>
 
@@ -576,9 +830,7 @@ export function MercyGuide({
                     )}
                   >
                     <Mic className="h-4 w-4 shrink-0" />
-                    <span className="block text-center leading-tight">
-                      Pronunciation
-                    </span>
+                    <span className="block text-center leading-tight">Pronunciation</span>
                   </TabsTrigger>
 
                   <TabsTrigger
@@ -592,7 +844,9 @@ export function MercyGuide({
                   >
                     <Sparkles className="h-4 w-4 shrink-0" />
                     <span className="block text-center leading-tight">
-                      English<br />Logic
+                      English
+                      <br />
+                      Logic
                     </span>
                   </TabsTrigger>
                 </TabsList>
@@ -645,6 +899,15 @@ export function MercyGuide({
                     setBreathingStep={setBreathingStep}
                     setShowReframe={setShowReframe}
                     onNavigateSuggestion={handleNavigateSuggestion}
+                    decision={latestAnalysisResult?.decision}
+                    practice={latestAnalysisResult?.practice}
+                    writingMode={latestAnalysisResult?.writingMode}
+                    paragraphAnalysis={latestAnalysisResult?.paragraphAnalysis}
+                    memory={latestAnalysisResult?.memory}
+                    teacherTask={activeTeacherTask ?? undefined}
+                    latestTeacherWritingState={latestTeacherWritingState ?? undefined}
+                    onOpenPronunciation={handleTeacherOpenPronunciation}
+                    onOpenWriting={handleTeacherOpenWriting}
                   />
                 )}
 
@@ -654,6 +917,10 @@ export function MercyGuide({
                     roomTitle={roomTitle}
                     contentEn={contentEn}
                     englishLevel={profile.english_level}
+                    onAnalysisResult={handleAnalysisResult}
+                    onPracticePronunciation={handleOpenPronunciation}
+                    teacherTask={activeTeacherTask ?? undefined}
+                    onTeacherWritingStateChange={handleTeacherWritingStateChange}
                   />
                 )}
 
@@ -664,6 +931,7 @@ export function MercyGuide({
                     profile={profile}
                     troubleWords={troubleWords}
                     speakPractice={speakPractice}
+                    launchPayload={pendingPronunciationPayload}
                   />
                 )}
 
@@ -746,7 +1014,11 @@ export function MercyGuide({
 
           <div
             className="absolute left-0 top-0 z-[80] flex touch-none items-start justify-start"
-            style={{ width: CORNER_HANDLE_SIZE, height: CORNER_HANDLE_SIZE, cursor: 'nw-resize' }}
+            style={{
+              width: CORNER_HANDLE_SIZE,
+              height: CORNER_HANDLE_SIZE,
+              cursor: 'nw-resize',
+            }}
             onPointerDown={handleResizePointerDown('top-left')}
           >
             <div className="ml-1 mt-1 h-2.5 w-2.5 rounded-full border border-border/70 bg-background shadow-sm" />
@@ -754,7 +1026,11 @@ export function MercyGuide({
 
           <div
             className="absolute right-0 top-0 z-[80] flex touch-none items-start justify-end"
-            style={{ width: CORNER_HANDLE_SIZE, height: CORNER_HANDLE_SIZE, cursor: 'ne-resize' }}
+            style={{
+              width: CORNER_HANDLE_SIZE,
+              height: CORNER_HANDLE_SIZE,
+              cursor: 'ne-resize',
+            }}
             onPointerDown={handleResizePointerDown('top-right')}
           >
             <div className="mr-1 mt-1 h-2.5 w-2.5 rounded-full border border-border/70 bg-background shadow-sm" />
@@ -762,7 +1038,11 @@ export function MercyGuide({
 
           <div
             className="absolute bottom-0 left-0 z-[80] flex touch-none items-end justify-start"
-            style={{ width: CORNER_HANDLE_SIZE, height: CORNER_HANDLE_SIZE, cursor: 'sw-resize' }}
+            style={{
+              width: CORNER_HANDLE_SIZE,
+              height: CORNER_HANDLE_SIZE,
+              cursor: 'sw-resize',
+            }}
             onPointerDown={handleResizePointerDown('bottom-left')}
           >
             <div className="mb-1 ml-1 h-2.5 w-2.5 rounded-full border border-border/70 bg-background shadow-sm" />
@@ -770,7 +1050,11 @@ export function MercyGuide({
 
           <div
             className="absolute bottom-0 right-0 z-[80] flex touch-none items-end justify-end"
-            style={{ width: CORNER_HANDLE_SIZE, height: CORNER_HANDLE_SIZE, cursor: 'se-resize' }}
+            style={{
+              width: CORNER_HANDLE_SIZE,
+              height: CORNER_HANDLE_SIZE,
+              cursor: 'se-resize',
+            }}
             onPointerDown={handleResizePointerDown('bottom-right')}
           >
             <div className="mb-1 mr-1 h-2.5 w-2.5 rounded-full border border-border/70 bg-background shadow-sm" />

@@ -1,57 +1,125 @@
 // src/components/room/BilingualEssay.tsx
-// MB-BLUE-99.6 — 2025-12-31 (+0700)
+// MB-BLUE-99.6 — FIXED
 //
-// ESSAY ZOOM (GLOBAL):
-// - Reads localStorage("mbEssayZoom")
-// - Listens to window event "mb:essayZoom"
+// ESSAY ZOOM (CURRENT APP SYSTEM):
+// - Reads localStorage("mb.ui.zoom")
+// - Syncs with CSS var --mb-essay-zoom
 // - Applies zoom by scaling BASE FONT SIZE (safe layout)
-// - Also respects CSS var --mb-essay-zoom if present
+// - No legacy mbEssayZoom / mb:essayZoom dependency
 
 import React, { useEffect, useMemo, useState } from "react";
 
-// ...keep your existing imports
+type BilingualEssayProps = {
+  title?: string;
+  en?: string;
+  vi?: string;
+};
 
-const LS_ZOOM = "mbEssayZoom";
-const DEFAULT_ZOOM = 1.0;
+const LS_ZOOM = "mb.ui.zoom";
+const DEFAULT_ZOOM = 100;
 
 function clamp(n: number, a: number, b: number) {
   return Math.max(a, Math.min(b, n));
 }
 
-export function BilingualEssay(props: any) {
-  // ✅ keep ALL your existing logic/props/rendering, only add zoom + wrapper style
-  const [zoom, setZoom] = useState(() => {
+function readZoomPct(): number {
+  try {
     const raw = Number(localStorage.getItem(LS_ZOOM));
-    return Number.isFinite(raw) ? clamp(raw, 0.6, 1.6) : DEFAULT_ZOOM;
-  });
+    if (Number.isFinite(raw)) return clamp(Math.round(raw), 60, 140);
+  } catch {
+    // ignore
+  }
+
+  try {
+    const css = getComputedStyle(document.documentElement)
+      .getPropertyValue("--mb-essay-zoom")
+      .trim();
+    const parsed = Number(css);
+    if (Number.isFinite(parsed)) return clamp(Math.round(parsed), 60, 140);
+  } catch {
+    // ignore
+  }
+
+  return DEFAULT_ZOOM;
+}
+
+export function BilingualEssay({ title, en, vi }: BilingualEssayProps) {
+  const [zoomPct, setZoomPct] = useState<number>(() => readZoomPct());
 
   useEffect(() => {
-    const onZoom = (e: Event) => {
-      const ce = e as CustomEvent;
-      const next = Number(ce?.detail?.zoom);
-      if (Number.isFinite(next)) setZoom(clamp(next, 0.6, 1.6));
+    const sync = () => {
+      setZoomPct(readZoomPct());
     };
-    window.addEventListener("mb:essayZoom", onZoom as any);
-    return () => window.removeEventListener("mb:essayZoom", onZoom as any);
+
+    sync();
+
+    const onStorage = (e: StorageEvent) => {
+      if (!e.key || e.key === LS_ZOOM) sync();
+    };
+
+    const obs = new MutationObserver(() => sync());
+    obs.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["style", "data-mb-zoom"],
+    });
+
+    window.addEventListener("storage", onStorage);
+
+    return () => {
+      window.removeEventListener("storage", onStorage);
+      obs.disconnect();
+    };
   }, []);
 
-  // ✅ base font scales; layout stays normal (no CSS transform scale)
-  const baseFontPx = useMemo(() => Math.round(16 * zoom), [zoom]);
+  const baseFontPx = useMemo(() => {
+    return Math.round(16 * (zoomPct / 100));
+  }, [zoomPct]);
 
   return (
     <div
       style={{
-        // global zoom effect
-        fontSize: baseFontPx,
+        fontSize: `${baseFontPx}px`,
         lineHeight: 1.7,
       }}
     >
-      {/* ⬇️ KEEP your existing BilingualEssay UI exactly as-is */}
-      {/* Example: return your existing JSX here */}
-      {/* { ...your current content... } */}
+      {title ? (
+        <h3
+          style={{
+            fontSize: "1.25em",
+            fontWeight: 800,
+            lineHeight: 1.25,
+            margin: "0 0 12px",
+          }}
+        >
+          {title}
+        </h3>
+      ) : null}
+
+      {en ? (
+        <div
+          style={{
+            marginTop: 0,
+            marginBottom: vi ? 16 : 0,
+            whiteSpace: "pre-wrap",
+          }}
+        >
+          {en}
+        </div>
+      ) : null}
+
+      {vi ? (
+        <div
+          style={{
+            marginTop: 0,
+            marginBottom: 0,
+            whiteSpace: "pre-wrap",
+          }}
+        >
+          {vi}
+        </div>
+      ) : null}
     </div>
   );
 }
 
-// If your file uses `export default`, keep it consistent with your existing export style.
 export default BilingualEssay;

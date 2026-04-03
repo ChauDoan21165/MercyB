@@ -16,7 +16,8 @@ import AdminRoute from "@/components/admin/AdminRoute";
 import AdminLayout from "@/components/admin/AdminLayout";
 import { useAuth } from "@/providers/AuthProvider";
 
-const MB_ROUTER_VERSION = "2026-03-28-app-router-chat-hub-only-room-host-v2";
+const MB_ROUTER_VERSION =
+  "2026-04-02-app-router-admin-billing-enabled";
 
 const ChatHub = lazy(() => import("@/pages/ChatHub"));
 const AllRooms = lazy(() => import("@/pages/AllRooms"));
@@ -32,18 +33,25 @@ const TierIndex = lazy(() => import("@/pages/TierIndex"));
 const TierDetail = lazy(() => import("@/pages/TierDetail"));
 
 const LoginPage = lazy(() => import("@/pages/LoginPage"));
+const ResetPasswordPage = lazy(() => import("@/pages/ResetPasswordPage"));
 
 const AdminDashboard = lazy(() => import("@/pages/admin/AdminDashboard"));
 const AdminPayments = lazy(() => import("@/pages/admin/AdminPayments"));
 const AdminBankTransfers = lazy(() => import("@/pages/admin/AdminBankTransfers"));
 const AdminPaymentVerification = lazy(
-  () => import("@/pages/admin/AdminPaymentVerification")
+  () => import("@/pages/admin/AdminPaymentVerification"),
 );
 const AdminAccessCodes = lazy(() => import("@/pages/admin/AdminAccessCodes"));
 const AudioCoveragePage = lazy(() => import("@/pages/admin/AudioCoveragePage"));
 const AdminMonitoring = lazy(() => import("@/pages/admin/AdminMonitoring"));
 const AdminMetrics = lazy(() => import("@/pages/admin/AdminMetrics"));
 const AdminVIPRooms = lazy(() => import("@/pages/admin/AdminVIPRooms"));
+const AdminSubscriptions = lazy(
+  () => import("@/pages/admin/AdminSubscriptions"),
+);
+const AdminBillingDashboard = lazy(
+  () => import("@/pages/admin/AdminBillingDashboard"),
+);
 
 declare global {
   interface Window {
@@ -94,7 +102,6 @@ function AppHeroShell() {
     position: "relative",
     zIndex: 999999,
     pointerEvents: "auto",
-    isolation: "isolate",
   };
 
   const band: React.CSSProperties = {
@@ -338,7 +345,7 @@ function RouterBeacon() {
       if (typeof document !== "undefined" && document.documentElement) {
         document.documentElement.setAttribute(
           "data-mb-router-version",
-          MB_ROUTER_VERSION
+          MB_ROUTER_VERSION,
         );
       }
     } catch {
@@ -365,6 +372,16 @@ export default function AppRouter() {
             </LazyPage>
           }
         />
+
+        <Route
+          path="/reset-password"
+          element={
+            <LazyPage>
+              <ResetPasswordPage />
+            </LazyPage>
+          }
+        />
+
         <Route path="/auth" element={<AuthRedirect />} />
 
         <Route element={<AppHeroShell />}>
@@ -543,6 +560,22 @@ export default function AppRouter() {
               element={
                 <LazyPage>
                   <AdminVIPRooms />
+                </LazyPage>
+              }
+            />
+            <Route
+              path="subscriptions"
+              element={
+                <LazyPage>
+                  <AdminSubscriptions />
+                </LazyPage>
+              }
+            />
+            <Route
+              path="billing"
+              element={
+                <LazyPage>
+                  <AdminBillingDashboard />
                 </LazyPage>
               }
             />

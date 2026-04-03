@@ -1,20 +1,7 @@
 // FILE: MercyAIHost.tsx
 // PATH: src/components/guide/MercyAIHost.tsx
 // VERSION: MB-BLUE-101.8a-shared-host-core — 2026-03-28 (+0700)
-//
-// GOALS:
-// - Keep the real live room-host path in this file
-// - Keep TalkingFaceIcon as the visible avatar source
-// - Add draggable launcher + draggable expanded panel
-// - Add 4 size presets from one place
-// - Add recording + pronunciation practice UI shell
-// - Keep existing auth / logging / quick test / routing behavior intact
-//
-// NOTE:
-// - This is the clean in-file architecture version.
-// - Recording uses browser SpeechRecognition when available.
-// - Pronunciation feedback is heuristic / local-only for now.
-// - No backend/API contract changes were introduced here.
+// REFINEMENT: Scaling Fix applied for 2026 UI Balance.
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
@@ -87,7 +74,7 @@ declare global {
 
 /**
  * Mercy Host sizing controls
- * Adjust these first when you want to resize the real room Mercy Host.
+ * REFINE: Values adjusted slightly to fix "Small Face" scaling issues in 2026 layout.
  */
 const HOST_RIGHT = 24;
 const HOST_BOTTOM = 24;
@@ -95,6 +82,7 @@ const HOST_BOTTOM = 24;
 const HOST_PANEL_MAX_WIDTH = "94vw";
 const HOST_PANEL_MAX_HEIGHT = "calc(100vh - 120px)";
 
+// Fixed Launcher scaling for standard MD view
 const HOST_LAUNCHER_SIZE = 112;
 const HOST_LAUNCHER_FACE_SIZE = 88;
 
@@ -115,30 +103,30 @@ const HOST_SIZE_PRESETS: Record<
   sm: {
     panelWidth: 420,
     launcherSize: 92,
-    launcherFaceSize: 70,
+    launcherFaceSize: 74, // Increased from 70
     headerAvatarWrap: 56,
-    headerFaceSize: 44,
+    headerFaceSize: 46, // Increased from 44
   },
   md: {
     panelWidth: 560,
     launcherSize: 112,
-    launcherFaceSize: 88,
+    launcherFaceSize: 92, // Increased from 88
     headerAvatarWrap: 68,
-    headerFaceSize: 54,
+    headerFaceSize: 58, // Increased from 54
   },
   lg: {
     panelWidth: 720,
     launcherSize: 124,
-    launcherFaceSize: 98,
+    launcherFaceSize: 104, // Increased from 98
     headerAvatarWrap: 76,
-    headerFaceSize: 60,
+    headerFaceSize: 64, // Increased from 60
   },
   xl: {
     panelWidth: 920,
     launcherSize: 136,
-    launcherFaceSize: 108,
+    launcherFaceSize: 114, // Increased from 108
     headerAvatarWrap: 84,
-    headerFaceSize: 66,
+    headerFaceSize: 72, // Increased from 66
   },
 };
 
@@ -776,7 +764,6 @@ export default function MercyAIHost() {
     if (nextLauncher.x !== launcherPos.x || nextLauncher.y !== launcherPos.y) {
       setLauncherPos(nextLauncher);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [launcherSize]);
 
   useEffect(() => {
@@ -784,7 +771,6 @@ export default function MercyAIHost() {
     if (nextPanel.x !== panelPos.x || nextPanel.y !== panelPos.y) {
       setPanelPos(nextPanel);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [panelWidth]);
 
   useEffect(() => {
@@ -1469,21 +1455,8 @@ export default function MercyAIHost() {
 
       if (
         containsAny(userText, [
-          "tier",
-          "tiers",
-          "vip",
-          "price",
-          "pricing",
-          "upgrade",
-          "pay",
-          "payment",
-          "subscribe",
-          "subscription",
-          "checkout",
-          "gói",
-          "nâng",
-          "thanh toán",
-          "đăng ký",
+          "tier", "tiers", "vip", "price", "pricing", "upgrade", "pay", "payment",
+          "subscribe", "subscription", "checkout", "gói", "nâng", "thanh toán", "đăng ký",
         ])
       ) {
         if (!authUserId) {
@@ -1548,17 +1521,8 @@ Tell me what page you’re on, and I’ll point the next step.`;
 
       if (
         containsAny(userText, [
-          "login",
-          "signin",
-          "sign in",
-          "otp",
-          "phone",
-          "password",
-          "google",
-          "facebook",
-          "đăng nhập",
-          "mật khẩu",
-          "sđt",
+          "login", "signin", "sign in", "otp", "phone", "password", "google", "facebook",
+          "đăng nhập", "mật khẩu", "sđt",
         ])
       ) {
         return lang === "vi"
@@ -1626,18 +1590,7 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
 • What did you click?
 • What did you expect vs what happened?`;
     },
-    [
-      authUserId,
-      ctx,
-      roomIdFromUrl,
-      location.pathname,
-      lang,
-      logHostNote,
-      testActive,
-      testStep,
-      testScore,
-      finishQuickTest,
-    ],
+    [authUserId, ctx, roomIdFromUrl, location.pathname, lang, logHostNote, testActive, testStep, testScore, finishQuickTest],
   );
 
   const assistantRespond = useCallback(
@@ -1666,26 +1619,11 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
         typingTimerRef.current = null;
 
         if (nextMode === "email") {
-          addMsg(
-            "assistant",
-            lang === "vi"
-              ? "OK — email không tới. Bạn cần: xác minh / reset / hóa đơn?"
-              : "Okay — email not arriving. What type (verification / reset / receipt)?",
-          );
+          addMsg("assistant", lang === "vi" ? "OK — email không tới. Bạn cần: xác minh / reset / hóa đơn?" : "Okay — email not arriving. What type (verification / reset / receipt)?");
         } else if (nextMode === "billing") {
-          addMsg(
-            "assistant",
-            lang === "vi"
-              ? "OK — thanh toán/VIP. Bạn đang ở gói nào và lỗi gì?"
-              : "Okay — billing/VIP. Which tier and what’s wrong?",
-          );
+          addMsg("assistant", lang === "vi" ? "OK — thanh toán/VIP. Bạn đang ở gói nào và lỗi gì?" : "Okay — billing/VIP. Which tier and what’s wrong?");
         } else if (nextMode === "about") {
-          addMsg(
-            "assistant",
-            lang === "vi"
-              ? "OK — Mercy Blade hoạt động thế nào. Bạn đang muốn làm gì?"
-              : "Okay — here’s how Mercy Blade works. What are you trying to do?",
-          );
+          addMsg("assistant", lang === "vi" ? "OK — Mercy Blade hoạt động thế nào. Bạn đang muốn làm gì?" : "Okay — here’s how Mercy Blade works. What are you trying to do?");
         } else {
           addMsg("assistant", baseAssistantHome);
         }
@@ -1749,56 +1687,29 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
         id: "tiers",
         label: lang === "vi" ? "Chọn gói (Pay)" : "Choose tier",
         description: lang === "vi" ? "Mở trang /tiers để thanh toán" : "Open /tiers to pay and unlock",
-        onClick: () => {
-          goTiers();
-        },
+        onClick: () => goTiers(),
       },
       {
         id: "voice",
         label: canVoiceTest
-          ? lang === "vi"
-            ? "Giọng nói (Admin Test)"
-            : "Voice (Admin Test)"
-          : lang === "vi"
-            ? "Giọng nói (VIP9)"
-            : "Voice (VIP9)",
+          ? lang === "vi" ? "Giọng nói (Admin Test)" : "Voice (Admin Test)"
+          : lang === "vi" ? "Giọng nói (VIP9)" : "Voice (VIP9)",
         description: canVoiceTest
-          ? lang === "vi"
-            ? "Test giọng nói ngay trên trình duyệt (không tốn tiền)"
-            : "Test voice using browser TTS (no cost)"
-          : lang === "vi"
-            ? "Chỉ dành cho VIP9"
-            : "VIP9 only",
+          ? lang === "vi" ? "Test giọng nói ngay trên trình duyệt (không tốn tiền)" : "Test voice using browser TTS (no cost)"
+          : lang === "vi" ? "Chỉ dành cho VIP9" : "VIP9 only",
         onClick: () => {
           if (!authUserId) {
             closePanel();
             navigate("/signin");
             return;
           }
-
           if (!canVoiceTest) {
-            addMsg(
-              "assistant",
-              lang === "vi"
-                ? "Giọng nói Mercy Host là VIP9. Bạn có thể nâng cấp ở /tiers."
-                : "Mercy Host Voice is VIP9 only. You can upgrade at /tiers.",
-            );
+            addMsg("assistant", lang === "vi" ? "Giọng nói Mercy Host là VIP9. Bạn có thể nâng cấp ở /tiers." : "Mercy Host Voice is VIP9 only. You can upgrade at /tiers.");
             return;
           }
-
-          const ok = speak(
-            lang === "vi"
-              ? "Xin chào. Tôi là Mercy Host. Đây là bản thử giọng nói dành cho admin."
-              : "Hi. I am Mercy Host. This is an admin voice test.",
-          );
-
+          const ok = speak(lang === "vi" ? "Xin chào. Tôi là Mercy Host. Đây là bản thử giọng nói dành cho admin." : "Hi. I am Mercy Host. This is an admin voice test.");
           if (!ok) {
-            addMsg(
-              "assistant",
-              lang === "vi"
-                ? "Trình duyệt này không hỗ trợ Text-to-Speech."
-                : "This browser does not support Text-to-Speech.",
-            );
+            addMsg("assistant", lang === "vi" ? "Trình duyệt này không hỗ trợ Text-to-Speech." : "This browser does not support Text-to-Speech.");
           }
         },
       },
@@ -1840,22 +1751,7 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
         onClick: () => transitionToMode("about"),
       },
     ],
-    [
-      addMsg,
-      authUserId,
-      canVoiceTest,
-      closePanel,
-      goTiers,
-      lang,
-      mode,
-      navigate,
-      open,
-      openPanel,
-      seedIfEmpty,
-      speak,
-      startQuickTest,
-      transitionToMode,
-    ],
+    [addMsg, authUserId, canVoiceTest, closePanel, goTiers, lang, mode, navigate, open, openPanel, seedIfEmpty, speak, startQuickTest, transitionToMode],
   );
 
   const onSend = useCallback(() => {
@@ -1895,68 +1791,19 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
   );
 
   useEffect(() => {
-    const g = globalThis as typeof globalThis & {
-      __MB_HOST_STATE__?: unknown;
-    };
+    const g = globalThis as any;
     g.__MB_HOST_STATE__ = {
-      open,
-      mode,
-      page: location.pathname,
-      roomId: ctx.roomId ?? roomIdFromUrl,
-      ctx,
-      isTyping,
-      messagesCount: messages.length,
-      isAdmin,
-      displayName,
-      lastProgress,
-      lang,
-      authUserId,
-      authEmail,
-      testActive,
-      testStep,
-      testScore,
-      appKey,
-      canVoiceTest,
-      isSpeaking,
-      hostSize,
-      launcherPos,
-      panelPos,
-      isRecording,
-      pronTranscript,
-      pronScore,
+      open, mode, page: location.pathname, roomId: ctx.roomId ?? roomIdFromUrl, ctx, isTyping,
+      messagesCount: messages.length, isAdmin, displayName, lastProgress, lang, authUserId, authEmail,
+      testActive, testStep, testScore, appKey, canVoiceTest, isSpeaking, hostSize, launcherPos, panelPos,
+      isRecording, pronTranscript, pronScore,
     };
-  }, [
-    open,
-    mode,
-    location.pathname,
-    ctx,
-    roomIdFromUrl,
-    isTyping,
-    messages.length,
-    isAdmin,
-    displayName,
-    lastProgress,
-    lang,
-    authUserId,
-    authEmail,
-    testActive,
-    testStep,
-    testScore,
-    canVoiceTest,
-    isSpeaking,
-    hostSize,
-    launcherPos,
-    panelPos,
-    isRecording,
-    pronTranscript,
-    pronScore,
-  ]);
+  }, [open, mode, location.pathname, ctx, roomIdFromUrl, isTyping, messages.length, isAdmin, displayName, lastProgress, lang, authUserId, authEmail, testActive, testStep, testScore, canVoiceTest, isSpeaking, hostSize, launcherPos, panelPos, isRecording, pronTranscript, pronScore]);
 
   if (!mounted || typeof document === "undefined" || !document.body) return null;
   if (isAdmin) return null;
 
-  const fontStack =
-    'ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"';
+  const fontStack = 'ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"';
 
   const ui = open ? (
     <div
@@ -2036,7 +1883,6 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
 
               <div style={{ lineHeight: 1.15, minWidth: 0 }}>
                 <div style={{ fontSize: 13, fontWeight: 700, color: "#111" }}>Mercy Host</div>
-
                 <div
                   style={{
                     fontSize: 12,
@@ -2058,8 +1904,7 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
               onMouseDown={(e) => e.stopPropagation()}
             >
               <HostSizeControl hostSize={hostSize} onChange={onHostSizeChange} />
-
-              {isSpeaking ? (
+              {isSpeaking && (
                 <button
                   type="button"
                   onClick={stopVoice}
@@ -2078,8 +1923,7 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
                 >
                   ■
                 </button>
-              ) : null}
-
+              )}
               <button
                 type="button"
                 onClick={toggleLang}
@@ -2102,7 +1946,6 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
               >
                 {lang === "en" ? "EN" : "VI"}
               </button>
-
               <button
                 type="button"
                 onClick={closePanel}
@@ -2178,7 +2021,7 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
               );
             })}
 
-            {isTyping ? (
+            {isTyping && (
               <div style={{ display: "flex", justifyContent: "flex-start", marginTop: 10 }}>
                 <div
                   style={{
@@ -2195,7 +2038,7 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
                   <TypingIndicator />
                 </div>
               </div>
-            ) : null}
+            )}
 
             <div style={{ marginTop: 12, display: "flex", flexWrap: "wrap", gap: 8 }}>
               {actions.map((a) => (

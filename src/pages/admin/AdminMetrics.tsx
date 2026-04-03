@@ -1,27 +1,6 @@
-// src/pages/admin/AdminMetrics.tsx
-// MB-BLUE-101.6 — 2026-01-01 (+0700)
-//
-// ADMIN METRICS (READ-ONLY, SAFE, MULTI-APP READY):
-// - “Truth screen” for KPIs: online users, active users, feedback counts, tier distribution.
-// - Manual refresh only (operator-safe).
-// - Resilient: partial truth — one failed query does NOT blank the whole page.
-// - Multi-app: operator can switch app_id (persisted locally + optional URL ?app=...).
-//
-// Schema truth (confirmed for Mercy Blade):
-// - public.user_sessions has: app_id, user_id, last_activity
-// - public.user_feedback has: app_id, status, created_at
-// - public.profiles has: app_id, tier
-//
-// FIX (101.6):
-// - Add AdminStatsStrip at top (passes current appId).
-// - Keep app context in navigation links (Back to Admin preserves ?app=...).
-// - Add small helper: withApp(path) to prevent mixed realities.
-
 import React, { useEffect, useMemo, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { supabase } from "@/lib/supabaseClient";
-
-// ✅ Live snapshot strip (multi-app)
 import AdminStatsStrip from "@/components/admin/widgets/AdminStatsStrip";
 
 type MetricCard = {
@@ -33,9 +12,37 @@ type MetricCard = {
 
 type TierCount = { tier_id: string; users: number };
 
+type RevenueSubscriptionRow = {
+  subscription_id: string | null;
+  status: string | null;
+  price_id: string | null;
+  cancel_at_period_end: boolean | null;
+  current_period_end: string | null;
+};
+
+type RevenueMetrics = {
+  activeSubscriptions: number | null;
+  monthlySubscriptions: number | null;
+  yearlySubscriptions: number | null;
+  mrrVnd: number | null;
+  scheduledCancellations: number | null;
+  cancellationsNext30d: number | null;
+  renewalsNext30d: number | null;
+};
+
+const MONTHLY_PRICE_ID = "price_1TCKY02K1tPxy04uCHQNbvik";
+const YEARLY_PRICE_ID = "price_1TCKSF2K1tPxy04uNeKcQWp5";
+const MONTHLY_PRICE_VND = 200_000;
+const YEARLY_PRICE_VND = 2_000_000;
+
 function fmtNum(n: number | null | undefined) {
   if (n == null || Number.isNaN(n)) return "—";
   return n.toLocaleString();
+}
+
+function fmtCurrencyVnd(n: number | null | undefined) {
+  if (n == null || Number.isNaN(n)) return "—";
+  return `${Math.round(n).toLocaleString()} VND`;
 }
 
 function isoMinutesAgo(mins: number) {
@@ -44,6 +51,86 @@ function isoMinutesAgo(mins: number) {
 
 function isoHoursAgo(hours: number) {
   return new Date(Date.now() - hours * 60 * 60 * 1000).toISOString();
+}
+
+function normalizeStatus(value: string | null | undefined): string {
+  return String(value ?? "").trim().toLowerCase();
+}
+
+function isRevenueActiveStatus(value: string | null | undefined): boolean {
+  const s = normalizeStatus(value);
+  return s === "active" || s === "trialing" || s === "past_due";
+}
+
+function getMonthlyEquivalentVnd(priceId: string | null | undefined): number {
+  const p = String(priceId ?? "").trim();
+  if (p === MONTHLY_PRICE_ID) return MONTHLY_PRICE_VND;
+  if (p === YEARLY_PRICE_ID) return Math.round(YEARLY_PRICE_VND / 12);
+  return 0;
+}
+
+function isFutureWithinDays(
+  value: string | null | undefined,
+  days: number,
+): boolean {
+  if (!value) return false;
+  const t = new Date(value).getTime();
+  if (Number.isNaN(t)) return false;
+
+  const now = Date.now();
+  const upper = now + days * 24 * 60 * 60 * 1000;
+  return t > now && t <= upper;
+}
+
+function computeRevenueMetrics(
+  rows: RevenueSubscriptionRow[] | null,
+): RevenueMetrics {
+  if (!rows) {
+    return {
+      activeSubscriptions: null,
+      monthlySubscriptions: null,
+      yearlySubscriptions: null,
+      mrrVnd: null,
+      scheduledCancellations: null,
+      cancellationsNext30d: null,
+      renewalsNext30d: null,
+    };
+  }
+
+  const activeRows = rows.filter((r) => isRevenueActiveStatus(r.status));
+  const monthlySubscriptions = activeRows.filter(
+    (r) => String(r.price_id ?? "").trim() === MONTHLY_PRICE_ID,
+  ).length;
+  const yearlySubscriptions = activeRows.filter(
+    (r) => String(r.price_id ?? "").trim() === YEARLY_PRICE_ID,
+  ).length;
+
+  const scheduledCancellations = activeRows.filter(
+    (r) => r.cancel_at_period_end === true && isFutureWithinDays(r.current_period_end, 3650),
+  ).length;
+
+  const cancellationsNext30d = activeRows.filter(
+    (r) => r.cancel_at_period_end === true && isFutureWithinDays(r.current_period_end, 30),
+  ).length;
+
+  const renewalsNext30d = activeRows.filter((r) =>
+    isFutureWithinDays(r.current_period_end, 30),
+  ).length;
+
+  const mrrVnd = activeRows.reduce(
+    (sum, row) => sum + getMonthlyEquivalentVnd(row.price_id),
+    0,
+  );
+
+  return {
+    activeSubscriptions: activeRows.length,
+    monthlySubscriptions,
+    yearlySubscriptions,
+    mrrVnd,
+    scheduledCancellations,
+    cancellationsNext30d,
+    renewalsNext30d,
+  };
 }
 
 export default function AdminMetrics() {
@@ -82,6 +169,16 @@ export default function AdminMetrics() {
 
   const [tierCounts, setTierCounts] = useState<TierCount[] | null>(null);
   const [tierSource, setTierSource] = useState<string>("—");
+
+  const [revenueMetrics, setRevenueMetrics] = useState<RevenueMetrics>({
+    activeSubscriptions: null,
+    monthlySubscriptions: null,
+    yearlySubscriptions: null,
+    mrrVnd: null,
+    scheduledCancellations: null,
+    cancellationsNext30d: null,
+    renewalsNext30d: null,
+  });
 
   const windowOnlineMinutes = 10;
   const windowActiveHours = 24;
@@ -213,7 +310,7 @@ export default function AdminMetrics() {
 
   const metricValue: React.CSSProperties = {
     fontSize: 34,
-    fontWeight: 950 as any,
+    fontWeight: 950 as React.CSSProperties["fontWeight"],
     letterSpacing: -0.7,
     lineHeight: 1.05,
     margin: 0,
@@ -288,8 +385,72 @@ export default function AdminMetrics() {
         hint: `Count from public.user_feedback created in last 24h.`,
         status: feedbackToday == null ? "off" : "ok",
       },
+      {
+        label: "MRR",
+        value: fmtCurrencyVnd(revenueMetrics.mrrVnd),
+        hint: `Computed from active subscriptions using monthly-equivalent VND.`,
+        status: revenueMetrics.mrrVnd == null ? "off" : "ok",
+      },
+      {
+        label: "Active Subs",
+        value: fmtNum(revenueMetrics.activeSubscriptions),
+        hint: `Statuses counted: active, trialing, past_due.`,
+        status: revenueMetrics.activeSubscriptions == null ? "off" : "ok",
+      },
+      {
+        label: "Monthly / Yearly",
+        value:
+          revenueMetrics.monthlySubscriptions == null ||
+          revenueMetrics.yearlySubscriptions == null
+            ? "—"
+            : `${fmtNum(revenueMetrics.monthlySubscriptions)} / ${fmtNum(
+                revenueMetrics.yearlySubscriptions,
+              )}`,
+        hint: `Active subscription mix by Stripe price_id.`,
+        status:
+          revenueMetrics.monthlySubscriptions == null ||
+          revenueMetrics.yearlySubscriptions == null
+            ? "off"
+            : "ok",
+      },
+      {
+        label: "Scheduled Cancellations",
+        value: fmtNum(revenueMetrics.scheduledCancellations),
+        hint: `cancel_at_period_end = true and still in future.`,
+        status:
+          revenueMetrics.scheduledCancellations == null
+            ? "off"
+            : revenueMetrics.scheduledCancellations > 0
+              ? "warn"
+              : "ok",
+      },
+      {
+        label: "Cancels Next 30d",
+        value: fmtNum(revenueMetrics.cancellationsNext30d),
+        hint: `Scheduled cancellations ending in the next 30 days.`,
+        status:
+          revenueMetrics.cancellationsNext30d == null
+            ? "off"
+            : revenueMetrics.cancellationsNext30d > 0
+              ? "warn"
+              : "ok",
+      },
+      {
+        label: "Renewals Next 30d",
+        value: fmtNum(revenueMetrics.renewalsNext30d),
+        hint: `Active subscriptions with current_period_end in the next 30 days.`,
+        status: revenueMetrics.renewalsNext30d == null ? "off" : "ok",
+      },
     ];
-  }, [activeUsers24h, feedbackToday, feedbackUnread, onlineUsers10m]);
+  }, [
+    activeUsers24h,
+    feedbackToday,
+    feedbackUnread,
+    onlineUsers10m,
+    revenueMetrics,
+    windowActiveHours,
+    windowOnlineMinutes,
+  ]);
 
   function applyAppId(next: string) {
     const cleaned = (next || "").trim();
@@ -304,7 +465,6 @@ export default function AdminMetrics() {
       // ignore
     }
 
-    // Optional: reflect in URL (no router changes; keeps shareable links)
     try {
       const url = new URL(window.location.href);
       url.searchParams.set("app", cleaned);
@@ -318,15 +478,22 @@ export default function AdminMetrics() {
     setLoading(true);
     setErr(null);
 
-    // Reset optional areas so UI doesn’t show stale values if a query fails
     setTierCounts(null);
     setTierSource("—");
 
-    // Also clear core values to avoid “stale truth”
     setOnlineUsers10m(null);
     setActiveUsers24h(null);
     setFeedbackUnread(null);
     setFeedbackToday(null);
+    setRevenueMetrics({
+      activeSubscriptions: null,
+      monthlySubscriptions: null,
+      yearlySubscriptions: null,
+      mrrVnd: null,
+      scheduledCancellations: null,
+      cancellationsNext30d: null,
+      renewalsNext30d: null,
+    });
 
     try {
       const since10m = isoMinutesAgo(windowOnlineMinutes);
@@ -365,28 +532,39 @@ export default function AdminMetrics() {
         .eq("app_id", currentAppId)
         .limit(5000);
 
-      const [onlineR, activeR, unreadR, fb24hR, tiersR] = await Promise.all([
-        onlineP,
-        activeP,
-        unreadP,
-        feedback24hP,
-        tiersP,
-      ]);
+      const revenueP = supabase
+        .from("subscriptions")
+        .select(
+          "subscription_id,status,price_id,cancel_at_period_end,current_period_end",
+        )
+        .eq("app_id", currentAppId)
+        .limit(10000);
 
-      const softErr =
-        onlineR.error?.message ||
-        activeR.error?.message ||
-        unreadR.error?.message ||
-        fb24hR.error?.message ||
-        tiersR.error?.message ||
-        null;
+      const [onlineR, activeR, unreadR, fb24hR, tiersR, revenueR] =
+        await Promise.all([
+          onlineP,
+          activeP,
+          unreadP,
+          feedback24hP,
+          tiersP,
+          revenueP,
+        ]);
 
-      setErr(softErr);
+      const softErrors = [
+        onlineR.error?.message,
+        activeR.error?.message,
+        unreadR.error?.message,
+        fb24hR.error?.message,
+        tiersR.error?.message,
+        revenueR.error?.message,
+      ].filter(Boolean);
+
+      setErr(softErrors.length ? softErrors.join("\n") : null);
 
       if (!onlineR.error) {
         const uniq = new Set<string>();
-        (onlineR.data || []).forEach((r: any) => {
-          const u = (r?.user_id || "").toString().trim();
+        (onlineR.data || []).forEach((r: { user_id?: string | null }) => {
+          const u = String(r?.user_id || "").trim();
           if (u) uniq.add(u);
         });
         setOnlineUsers10m(uniq.size);
@@ -394,8 +572,8 @@ export default function AdminMetrics() {
 
       if (!activeR.error) {
         const uniq = new Set<string>();
-        (activeR.data || []).forEach((r: any) => {
-          const u = (r?.user_id || "").toString().trim();
+        (activeR.data || []).forEach((r: { user_id?: string | null }) => {
+          const u = String(r?.user_id || "").trim();
           if (u) uniq.add(u);
         });
         setActiveUsers24h(uniq.size);
@@ -406,8 +584,8 @@ export default function AdminMetrics() {
 
       if (!tiersR.error) {
         const map: Record<string, number> = {};
-        (tiersR.data || []).forEach((r: any) => {
-          const t = (r?.tier || "unknown").toString().trim() || "unknown";
+        (tiersR.data || []).forEach((r: { tier?: string | null }) => {
+          const t = String(r?.tier || "unknown").trim() || "unknown";
           map[t] = (map[t] || 0) + 1;
         });
 
@@ -422,9 +600,17 @@ export default function AdminMetrics() {
         setTierSource("—");
       }
 
+      if (!revenueR.error) {
+        setRevenueMetrics(
+          computeRevenueMetrics(
+            (revenueR.data ?? []) as RevenueSubscriptionRow[],
+          ),
+        );
+      }
+
       setUpdatedAt(new Date().toLocaleString());
-    } catch (e: any) {
-      setErr(e?.message || String(e));
+    } catch (e: unknown) {
+      setErr(e instanceof Error ? e.message : String(e));
     } finally {
       setLoading(false);
     }
@@ -435,12 +621,10 @@ export default function AdminMetrics() {
       applyAppId(appIdFromUrl.trim());
       return;
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [appIdFromUrl]);
+  }, [appIdFromUrl, appId]);
 
   useEffect(() => {
-    loadMetrics(appId);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    void loadMetrics(appId);
   }, [appId]);
 
   return (
@@ -451,7 +635,9 @@ export default function AdminMetrics() {
             <div style={smallTag}>ADMIN • METRICS • READ-ONLY</div>
             <h1 style={title}>System Overview</h1>
             <p style={subtitle}>
-              A single “truth screen” for KPIs: online users, active users, feedback volume, and tier distribution.
+              A single “truth screen” for KPIs: online users, active users,
+              feedback volume, tier distribution, MRR, renewal risk, and
+              cancellation risk.
               <br />
               <span style={{ color: "rgba(0,0,0,0.55)" }}>
                 Manual refresh only. No writes. No destructive actions.
@@ -470,7 +656,7 @@ export default function AdminMetrics() {
                 cursor: loading ? "not-allowed" : "pointer",
                 opacity: loading ? 0.7 : 1,
               }}
-              onClick={() => loadMetrics(appId)}
+              onClick={() => void loadMetrics(appId)}
               aria-label="Refresh metrics"
               disabled={loading}
             >
@@ -479,31 +665,65 @@ export default function AdminMetrics() {
           </div>
         </div>
 
-        {/* ✅ Live snapshot strip (consistent with app context) */}
         <AdminStatsStrip appId={appId} />
 
-        {/* Multi-app selector */}
         <div style={{ ...card, padding: 14, marginBottom: 14 }}>
-          <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              gap: 12,
+              flexWrap: "wrap",
+            }}
+          >
             <div>
               <div style={{ fontWeight: 900, marginBottom: 6 }}>App Context</div>
-              <div style={{ fontSize: 13, color: "rgba(0,0,0,0.70)", lineHeight: 1.6 }}>
-                This admin console can operate multiple apps in your ecosystem. Metrics are filtered by{" "}
-                <span style={mono}>app_id</span>.
-                <div style={{ marginTop: 6, fontSize: 12, fontWeight: 900, color: "rgba(0,0,0,0.55)" }}>
-                  Tip: You can also use <span style={mono}>?app=your_app_id</span> in the URL.
+              <div
+                style={{
+                  fontSize: 13,
+                  color: "rgba(0,0,0,0.70)",
+                  lineHeight: 1.6,
+                }}
+              >
+                This admin console can operate multiple apps in your ecosystem.
+                Metrics are filtered by <span style={mono}>app_id</span>.
+                <div
+                  style={{
+                    marginTop: 6,
+                    fontSize: 12,
+                    fontWeight: 900,
+                    color: "rgba(0,0,0,0.55)",
+                  }}
+                >
+                  Tip: You can also use{" "}
+                  <span style={mono}>?app=your_app_id</span> in the URL.
                 </div>
               </div>
             </div>
 
-            <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
+            <div
+              style={{
+                display: "flex",
+                gap: 10,
+                alignItems: "center",
+                flexWrap: "wrap",
+              }}
+            >
               <span style={badge}>APP: {appId}</span>
               <span style={badge}>{updatedAt ? `UPDATED: ${updatedAt}` : "UPDATED: —"}</span>
               <span style={badge}>READ-ONLY</span>
             </div>
           </div>
 
-          <div style={{ marginTop: 12, display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
+          <div
+            style={{
+              marginTop: 12,
+              display: "flex",
+              gap: 10,
+              flexWrap: "wrap",
+              alignItems: "center",
+            }}
+          >
             <input
               value={appIdDraft}
               onChange={(e) => setAppIdDraft(e.target.value)}
@@ -546,17 +766,31 @@ export default function AdminMetrics() {
           </div>
 
           {err && (
-            <div style={{ marginTop: 12, padding: 12, borderRadius: 14, border: "1px solid rgba(0,0,0,0.12)" }}>
+            <div
+              style={{
+                marginTop: 12,
+                padding: 12,
+                borderRadius: 14,
+                border: "1px solid rgba(0,0,0,0.12)",
+              }}
+            >
               <div style={{ fontWeight: 900, marginBottom: 6 }}>Snapshot note</div>
               <div style={{ ...mono, whiteSpace: "pre-wrap" }}>{err}</div>
-              <div style={{ marginTop: 10, fontSize: 12, color: "rgba(0,0,0,0.55)", fontWeight: 800 }}>
-                This page shows partial truth. A note means one metric query failed (RLS/table/column), not that the page is broken.
+              <div
+                style={{
+                  marginTop: 10,
+                  fontSize: 12,
+                  color: "rgba(0,0,0,0.55)",
+                  fontWeight: 800,
+                }}
+              >
+                This page shows partial truth. A note means one metric query
+                failed, not that the page is broken.
               </div>
             </div>
           )}
         </div>
 
-        {/* Top metrics strip */}
         <div style={grid}>
           {cards.map((c) => (
             <div key={c.label} style={{ ...metricCard, gridColumn: "span 3" }}>
@@ -569,16 +803,36 @@ export default function AdminMetrics() {
 
         <hr style={hr} />
 
-        {/* Tier distribution (profiles.tier) */}
-        <div style={{ ...card }}>
-          <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
+        <div style={card}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              gap: 12,
+              flexWrap: "wrap",
+            }}
+          >
             <div>
               <div style={{ fontWeight: 900, fontSize: 16 }}>Tier Distribution</div>
-              <div style={{ marginTop: 6, fontSize: 12, color: "rgba(0,0,0,0.55)", fontWeight: 800 }}>
+              <div
+                style={{
+                  marginTop: 6,
+                  fontSize: 12,
+                  color: "rgba(0,0,0,0.55)",
+                  fontWeight: 800,
+                }}
+              >
                 Source: <span style={mono}>{tierSource}</span>
               </div>
             </div>
-            <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
+            <div
+              style={{
+                display: "flex",
+                gap: 10,
+                alignItems: "center",
+                flexWrap: "wrap",
+              }}
+            >
               <span style={badge}>APP: {appId}</span>
               <span style={badge}>READ-ONLY</span>
             </div>
@@ -630,14 +884,18 @@ export default function AdminMetrics() {
 
         <hr style={hr} />
 
-        <div style={{ fontSize: 12, color: "rgba(0,0,0,0.55)", fontWeight: 800, lineHeight: 1.6 }}>
-          Tip: Don’t chase “perfect analytics” first. Lock the truth screens early — they reveal schema gaps instantly.
+        <div
+          style={{
+            fontSize: 12,
+            color: "rgba(0,0,0,0.55)",
+            fontWeight: 800,
+            lineHeight: 1.6,
+          }}
+        >
+          Tip: Don’t chase “perfect analytics” first. Lock the truth screens
+          early — they reveal schema gaps instantly.
         </div>
       </div>
     </div>
   );
 }
-
-/* New thing to learn:
-   Multi-app navigation must carry context.
-   If one link drops app_id, you silently mix datasets and trust collapses. */

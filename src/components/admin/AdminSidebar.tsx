@@ -1,17 +1,20 @@
 /**
  * MercyBlade Blue — Admin Sidebar (SIMPLE BLACK TEXT ON WHITE)
  * Path: src/components/admin/AdminSidebar.tsx
- * Version: MB-BLUE-94.13.13 — 2025-12-25 (+0700)
+ * Version: MB-BLUE-94.13.15 — 2026-04-02
  *
  * NOTES:
  * - This file does NOT own auth state. It must not subscribe to Supabase.
  * - Pure navigation UI only.
  *
- * CHANGE (94.13.13):
- * - Add canonical header with PATH + version.
- * - Fix typing: renderMenuItems now accepts a generic list with optional `end`.
+ * CHANGE (94.13.15):
+ * - Add Admin Billing nav item.
+ * - Keep existing Admin Subscriptions nav item.
+ * - Keep simple black text on white styling.
+ * - Tighten icon typing.
  */
 
+import type { LucideIcon } from "lucide-react";
 import {
   LayoutDashboard,
   Users,
@@ -32,6 +35,7 @@ import {
   AlertTriangle,
   Volume2,
   Mail,
+  CreditCard,
 } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 
@@ -55,7 +59,7 @@ import {
 type AdminNavItem = {
   title: string;
   url: string;
-  icon: any; // lucide icon component
+  icon: LucideIcon;
   end?: boolean;
 };
 
@@ -64,6 +68,8 @@ const mainItems: AdminNavItem[] = [
   { title: "AI Usage & Costs", url: "/admin/ai-usage", icon: Activity, end: false },
   { title: "Dashboard", url: "/admin", icon: Home, end: true },
   { title: "Payments", url: "/admin/payments", icon: DollarSign },
+  { title: "Subscriptions", url: "/admin/subscriptions", icon: CreditCard },
+  { title: "Billing", url: "/admin/billing", icon: CreditCard },
   { title: "Bank Transfers", url: "/admin/bank-transfers", icon: DollarSign },
   { title: "Room Health", url: "/admin/room-health-dashboard", icon: Activity },
   { title: "Users", url: "/admin/users", icon: Users },
@@ -146,8 +152,10 @@ export function AdminSidebar() {
         color: "#000000",
       }}
     >
-      <SidebarContent className="py-4 bg-[#F5F5F5]" style={{ backgroundColor: "#F5F5F5" }}>
-        {/* Main Navigation */}
+      <SidebarContent
+        className="py-4 bg-[#F5F5F5]"
+        style={{ backgroundColor: "#F5F5F5" }}
+      >
         <SidebarGroup>
           {open && (
             <SidebarGroupLabel style={{ color: "#666666", fontWeight: "bold" }}>
@@ -157,7 +165,6 @@ export function AdminSidebar() {
           <SidebarGroupContent>{renderMenuItems(mainItems)}</SidebarGroupContent>
         </SidebarGroup>
 
-        {/* Room Management */}
         <SidebarGroup>
           {open && (
             <SidebarGroupLabel style={{ color: "#666666", fontWeight: "bold" }}>
@@ -167,7 +174,6 @@ export function AdminSidebar() {
           <SidebarGroupContent>{renderMenuItems(roomItems)}</SidebarGroupContent>
         </SidebarGroup>
 
-        {/* Monitoring & Analytics */}
         <SidebarGroup>
           {open && (
             <SidebarGroupLabel style={{ color: "#666666", fontWeight: "bold" }}>
@@ -177,7 +183,6 @@ export function AdminSidebar() {
           <SidebarGroupContent>{renderMenuItems(monitoringItems)}</SidebarGroupContent>
         </SidebarGroup>
 
-        {/* User Management */}
         <SidebarGroup>
           {open && (
             <SidebarGroupLabel style={{ color: "#666666", fontWeight: "bold" }}>
@@ -187,7 +192,6 @@ export function AdminSidebar() {
           <SidebarGroupContent>{renderMenuItems(userManagementItems)}</SidebarGroupContent>
         </SidebarGroup>
 
-        {/* Developer Tools */}
         <SidebarGroup>
           {open && (
             <SidebarGroupLabel style={{ color: "#666666", fontWeight: "bold" }}>
@@ -197,7 +201,6 @@ export function AdminSidebar() {
           <SidebarGroupContent>{renderMenuItems(devToolsItems)}</SidebarGroupContent>
         </SidebarGroup>
 
-        {/* System */}
         <SidebarGroup>
           {open && (
             <SidebarGroupLabel style={{ color: "#666666", fontWeight: "bold" }}>

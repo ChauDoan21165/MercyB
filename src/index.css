@@ -7,12 +7,11 @@
 
    MERGED:
    (A) Mercy Blade background modes (rainbow / bw)
-   (B) Mercy mouth + presence animations (SAFE)
+   (B) Presence animations (SAFE)
    (C) Keyword highlights via data-hl (EN/VI same colors)
 
    LOCKED POLICY:
    - Native <audio> UI must NEVER appear inside ROOM pages.
-   - Audio is rendered ONLY via TalkingFacePlayButton (core Mercy Blade motif).
 
    CRITICAL FIX (97.4):
    - Native audio UI still rendering meant <audio> existed in DOM.
@@ -30,11 +29,11 @@
 */
 
 /* ===============================
-   Mercy Blade — Global Media Policy (LOCKED)
+   Mercy Blade — Global Media Policy
    =============================== */
 
 /* ===============================
-   ROOM-SCOPED AUDIO LOCK (THE LOOP BREAKER)
+   ROOM-SCOPED AUDIO LOCK
    =============================== */
 
 /* 0) Scope marker: RoomRenderer uses `.mb-room`.
@@ -145,40 +144,6 @@ body {
 /* optional: reduce harshness in bw mode */
 :root[data-mb-mode="bw"] [data-hl] {
   opacity: 0.95;
-}
-
-/* ===============================
-   Mercy Blade Talking Mouth (SAFE)
-   =============================== */
-
-@keyframes mb-mouth-talk {
-  0%,
-  100% {
-    transform: translateX(-50%) scaleY(0.2);
-  }
-  30% {
-    transform: translateX(-50%) scaleY(1);
-  }
-  60% {
-    transform: translateX(-50%) scaleY(0.4);
-  }
-}
-
-/* Base mouth */
-.mb-mouth {
-  transform-origin: 50% 100%;
-}
-
-/* Apply this when audio playing */
-.mb-mouth--talking {
-  animation: mb-mouth-talk 0.35s ease-in-out infinite;
-  will-change: transform;
-}
-
-/* Backward compat alias (optional) */
-.animate-mouth-talk {
-  animation: mb-mouth-talk 0.35s ease-in-out infinite;
-  will-change: transform;
 }
 
 /* ===============================
@@ -303,7 +268,7 @@ input[type="range"] {
 }
 
 /* ===============================
-   RANGE FOCUS RING / OUTLINE CLIP FIX (THE STICK-OUT)
+   RANGE FOCUS RING / OUTLINE CLIP FIX
    =============================== */
 
 /* Remove the blue “sticking out” focus outline/ring. */

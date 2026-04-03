@@ -1,201 +1,276 @@
-// FILE: src/pages/TiersPage.tsx
-// MB-BLUE-102.0 — 2026-01-14 (+0700)
-//
-// TIERS PAGE (PAY WALL):
-// - Shows VIP1 / VIP3 / VIP9 cards
-// - Uses Supabase Edge Function create-checkout-session (Bearer JWT)
-// - Shows current tier from useUserAccess()
-// - Works even if user is signed out (asks them to sign in first)
-
 import React, { useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { supabase } from "@/lib/supabaseClient";
-import { useUserAccess } from "@/hooks/useUserAccess";
+import { startCheckoutOrOpenPortal } from "@/lib/billing";
 
-type TierKey = "VIP1" | "VIP3" | "VIP9";
-
-type TierPlan = {
-  key: TierKey;
+type TierCard = {
+  id: string;
+  name: string;
+  description: string;
   priceLabel: string;
-  title: string;
-  bullets: string[];
-  highlight?: boolean;
+  badge?: string;
+  featured?: boolean;
 };
 
-function safeReturnTo(pathname: string, search: string) {
-  const p = `${pathname || "/"}${search || ""}`;
-  // prevent weird redirects
-  if (!p.startsWith("/")) return "/";
-  if (p.startsWith("/admin")) return "/";
-  return p;
-}
+const TIERS: TierCard[] = [
+  {
+    id: "vip1",
+    name: "Monthly",
+    description:
+      "Flexible premium access with monthly billing and full room access.",
+    priceLabel: "200 000 VND / month",
+  },
+  {
+    id: "vip9",
+    name: "Yearly",
+    description:
+      "Best long-term value with full premium access all year.",
+    priceLabel: "2 000 000 VND / year",
+    badge: "Best value",
+    featured: true,
+  },
+];
 
 export default function TiersPage() {
-  const access = useUserAccess();
   const navigate = useNavigate();
-  const loc = useLocation();
+  const location = useLocation();
 
-  const [busyKey, setBusyKey] = useState<TierKey | null>(null);
-  const [err, setErr] = useState<string | null>(null);
+  const [busyTierId, setBusyTierId] = useState<string | null>(null);
+  const [errorText, setErrorText] = useState("");
 
-  const plans: TierPlan[] = useMemo(
-    () => [
-      {
-        key: "VIP1",
-        priceLabel: "$9 / month",
-        title: "VIP1 — Starter",
-        bullets: [
-          "Unlock more rooms",
-          "Bilingual text learning",
-          "Audio inside rooms (where available)",
-        ],
-      },
-      {
-        key: "VIP3",
-        priceLabel: "$19 / month",
-        title: "VIP3 — Serious Learner",
-        bullets: [
-          "More rooms + deeper sets",
-          "Faster progress (more practice rooms)",
-          "Priority fixes (your feedback moves faster)",
-        ],
-      },
-      {
-        key: "VIP9",
-        priceLabel: "$29 / month",
-        title: "VIP9 — Premium",
-        bullets: [
-          "Unlock everything",
-          "Mercy Host Voice (daily minutes) (coming soon)",
-          "Highest priority support",
-        ],
-        highlight: true,
-      },
-    ],
-    []
-  );
+  const safeBackPath = useMemo(() => {
+    const p = location.pathname || "/";
+    if (p.startsWith("/admin")) return "/";
+    return "/";
+  }, [location.pathname]);
 
-  const currentTier = String(access.tier || "free").toLowerCase();
-  const returnTo = useMemo(() => {
-    const q = new URLSearchParams(loc.search);
-    const r = q.get("returnTo");
-    if (r && r.startsWith("/")) return safeReturnTo(r, "");
-    return safeReturnTo(loc.pathname, loc.search);
-  }, [loc.pathname, loc.search]);
-
-  async function goSignin() {
-    const q = new URLSearchParams();
-    q.set("returnTo", returnTo);
-    navigate(`/signin?${q.toString()}`);
-  }
-
-  async function startCheckout(tierKey: TierKey) {
-    setErr(null);
-    setBusyKey(tierKey);
+  async function handleTier(tierId: string) {
+    setErrorText("");
+    setBusyTierId(tierId);
 
     try {
-      const { data: sessionData } = await supabase.auth.getSession();
-      const token = sessionData?.session?.access_token;
-
-      if (!token) {
-        setBusyKey(null);
-        await goSignin();
-        return;
-      }
-
-      // Call Supabase Edge Function (JWT required)
-      const supaUrl = (import.meta as any).env?.VITE_SUPABASE_URL as string | undefined;
-      if (!supaUrl) throw new Error("Missing VITE_SUPABASE_URL");
-
-      const res = await fetch(`${supaUrl}/functions/v1/create-checkout-session`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          tierKey, // IMPORTANT: your Edge Function should accept tierKey or map from it
-          // optional: allow return URL if your function supports it
-          returnTo,
-        }),
+      const result = await startCheckoutOrOpenPortal({
+        tierId,
+        successUrl:
+          `${window.location.origin}/billing/success?session_id={CHECKOUT_SESSION_ID}`,
+        cancelUrl: `${window.location.origin}/tiers`,
       });
 
-      const json = await res.json().catch(() => ({}));
-
-      if (!res.ok) {
-        const msg = json?.error || json?.message || `Checkout failed (${res.status})`;
-        throw new Error(msg);
+      if (result.mode === "change_plan" || result.mode === "noop") {
+        navigate("/billing");
       }
-
-      const checkoutUrl = json?.checkout_url || json?.url;
-      if (!checkoutUrl) throw new Error("No checkout_url returned");
-
-      window.location.href = checkoutUrl;
-    } catch (e: any) {
-      setErr(String(e?.message || e || "Failed to start checkout"));
-      setBusyKey(null);
+    } catch (error) {
+      setErrorText(
+        error instanceof Error ? error.message : "Unable to continue.",
+      );
+    } finally {
+      setBusyTierId(null);
     }
   }
 
+  const pageCard: React.CSSProperties = {
+    border: "1px solid rgba(15,23,42,0.10)",
+    borderRadius: 18,
+    background: "#fff",
+    padding: 18,
+    boxShadow: "0 8px 24px rgba(15,23,42,0.05)",
+  };
+
+  const buttonStyle: React.CSSProperties = {
+    minHeight: 46,
+    borderRadius: 14,
+    border: "1px solid #0f172a",
+    background: "#0f172a",
+    color: "#fff",
+    fontWeight: 900,
+    padding: "12px 16px",
+    cursor: "pointer",
+    width: "100%",
+  };
+
   return (
-    <div className="w-full max-w-5xl mx-auto px-4 py-10">
-      <div className="mb-6">
-        <div className="text-3xl font-black tracking-tight">Choose your tier</div>
-        <div className="mt-2 text-sm opacity-70">
-          Current tier: <b>{String(currentTier).toUpperCase()}</b>
-          {access.isHighAdmin ? (
-            <span className="ml-2 inline-block px-2 py-0.5 rounded-full border text-xs font-bold">
-              ADMIN BYPASS
-            </span>
-          ) : null}
+    <div
+      style={{
+        maxWidth: 980,
+        margin: "0 auto",
+        padding: "24px 16px 60px",
+      }}
+    >
+      <div
+        style={{
+          ...pageCard,
+          marginBottom: 16,
+          background: "linear-gradient(180deg,#f8fafc 0%, #eefbf7 100%)",
+        }}
+      >
+        <h1
+          style={{
+            margin: 0,
+            fontSize: 32,
+            lineHeight: 1.1,
+            fontWeight: 950,
+            color: "#111827",
+          }}
+        >
+          Learning paths & premium tiers
+        </h1>
+
+        <p
+          style={{
+            margin: "12px 0 0",
+            color: "#475569",
+            lineHeight: 1.7,
+          }}
+        >
+          Choose the access level that fits your learning path. New subscribers
+          are sent to secure Stripe checkout. Existing subscribers are routed
+          into clean plan switching instead of duplicate subscriptions.
+        </p>
+
+        <div
+          style={{
+            display: "flex",
+            gap: 12,
+            flexWrap: "wrap",
+            marginTop: 18,
+          }}
+        >
+          <button
+            type="button"
+            onClick={() => navigate(safeBackPath)}
+            style={{
+              minHeight: 46,
+              borderRadius: 14,
+              border: "1px solid rgba(15,23,42,0.12)",
+              background: "#fff",
+              color: "#111827",
+              fontWeight: 900,
+              padding: "12px 16px",
+              cursor: "pointer",
+            }}
+          >
+            Back home
+          </button>
+
+          <button
+            type="button"
+            onClick={() => navigate("/billing")}
+            style={{
+              minHeight: 46,
+              borderRadius: 14,
+              border: "1px solid rgba(15,23,42,0.12)",
+              background: "#fff",
+              color: "#111827",
+              fontWeight: 900,
+              padding: "12px 16px",
+              cursor: "pointer",
+            }}
+          >
+            Open billing
+          </button>
         </div>
       </div>
 
-      {err ? (
-        <div className="mb-6 rounded-xl border p-4 text-sm">
-          <b>⚠ Checkout error:</b> {err}
+      {errorText ? (
+        <div
+          style={{
+            marginBottom: 16,
+            padding: "12px 14px",
+            borderRadius: 14,
+            border: "1px solid rgba(239,68,68,0.20)",
+            background: "rgba(254,242,242,0.95)",
+            color: "#991b1b",
+            fontWeight: 700,
+          }}
+        >
+          {errorText}
         </div>
       ) : null}
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {plans.map((p) => (
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+          gap: 16,
+        }}
+      >
+        {TIERS.map((tier) => (
           <div
-            key={p.key}
-            className={`rounded-2xl border bg-white p-5 shadow-sm ${
-              p.highlight ? "ring-2 ring-black/10" : ""
-            }`}
+            key={tier.id}
+            style={{
+              ...pageCard,
+              background: tier.featured
+                ? "linear-gradient(180deg, rgba(236,253,245,0.98) 0%, rgba(240,253,250,0.96) 100%)"
+                : "#fff",
+              boxShadow: tier.featured
+                ? "0 12px 34px rgba(16,185,129,0.14)"
+                : pageCard.boxShadow,
+            }}
           >
-            <div className="text-xs font-black opacity-60">{p.key}</div>
-            <div className="mt-1 text-xl font-black">{p.title}</div>
-            <div className="mt-2 text-sm font-bold opacity-80">{p.priceLabel}</div>
+            <div
+              style={{
+                display: "inline-flex",
+                minHeight: 28,
+                padding: "6px 10px",
+                borderRadius: 999,
+                fontSize: 13,
+                fontWeight: 800,
+                color: tier.featured ? "#065f46" : "#0f766e",
+                background: tier.featured
+                  ? "rgba(16,185,129,0.16)"
+                  : "rgba(13,148,136,0.10)",
+                visibility: tier.badge ? "visible" : "hidden",
+              }}
+            >
+              {tier.badge || "badge"}
+            </div>
 
-            <ul className="mt-4 text-sm leading-relaxed list-disc pl-5">
-              {p.bullets.map((b, i) => (
-                <li key={i}>{b}</li>
-              ))}
-            </ul>
+            <h2
+              style={{
+                margin: "12px 0 0",
+                fontSize: 22,
+                fontWeight: 900,
+                color: "#111827",
+              }}
+            >
+              {tier.name}
+            </h2>
+
+            <div
+              style={{
+                marginTop: 8,
+                fontSize: 28,
+                fontWeight: 900,
+                color: "#111827",
+              }}
+            >
+              {tier.priceLabel}
+            </div>
+
+            <p
+              style={{
+                marginTop: 10,
+                color: "#475569",
+                lineHeight: 1.7,
+              }}
+            >
+              {tier.description}
+            </p>
 
             <button
               type="button"
-              className={`mt-5 w-full rounded-xl px-4 py-3 text-sm font-black ${
-                p.highlight ? "bg-black text-white" : "bg-black/90 text-white"
-              }`}
-              onClick={() => startCheckout(p.key)}
-              disabled={busyKey !== null}
-              title="Go to Stripe Checkout"
+              onClick={() => void handleTier(tier.id)}
+              disabled={busyTierId === tier.id}
+              style={{
+                ...buttonStyle,
+                marginTop: 16,
+                opacity: busyTierId === tier.id ? 0.85 : 1,
+                cursor: busyTierId === tier.id ? "wait" : "pointer",
+              }}
             >
-              {busyKey === p.key ? "Starting…" : "Upgrade / Subscribe"}
+              {busyTierId === tier.id ? "Working..." : "Continue"}
             </button>
-
-            <div className="mt-3 text-xs opacity-60">
-              If you already paid, refresh after webhook tier sync.
-            </div>
           </div>
         ))}
-      </div>
-
-      <div className="mt-8 text-sm opacity-75">
-        Tip: If a room is locked, it should send you here automatically with <code>?returnTo=...</code>.
       </div>
     </div>
   );
