@@ -1,5 +1,3 @@
-// FILE: supabase/functions/stripe-webhook/index.ts
-
 import Stripe from "https://esm.sh/stripe@14.25.0?target=denonext";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.49.1";
 
@@ -94,59 +92,36 @@ function json(body: unknown, status = 200): Response {
 // can complete successfully.
 async function markStripeWebhookEventProcessed(
   _supabase: DBClient,
-  event: Pick<StripeWebhookEvent, "id" | "type" | "livemode">,
+  _event: Pick<StripeWebhookEvent, "id" | "type" | "livemode">,
 ): Promise<boolean> {
-  console.log("stripe-webhook processed (tracking skipped)", {
-    eventId: event.id,
-    eventType: event.type,
-    livemode: !!event.livemode,
-  });
-
   return true;
 }
 
 async function hasStripeWebhookEventBeenProcessed(
   _supabase: DBClient,
-  eventId: string,
+  _eventId: string,
 ): Promise<boolean> {
-  console.log("stripe-webhook duplicate check skipped", { eventId });
   return false;
 }
 
 Deno.serve(async (request: Request) => {
   if (request.method !== "POST") {
-    return new Response("Method Not Allowed", { status: 405 });
+    return json({ error: "Method Not Allowed" }, 405);
   }
 
   const signature = request.headers.get("Stripe-Signature");
   if (!signature) {
-    return new Response("Missing Stripe-Signature header", { status: 400 });
+    return json({ error: "Missing Stripe-Signature header" }, 400);
   }
 
   const webhookSecret = getWebhookSecret();
 
-  console.log("DEBUG stripe webhook env", {
-    hasSignature: !!signature,
-    webhookSecretPresent: !!webhookSecret,
-    webhookSecretPrefix: webhookSecret ? webhookSecret.slice(0, 8) : null,
-    stripeSecretPresent: !!Deno.env.get("STRIPE_SECRET_KEY"),
-    supabaseUrlPresent: !!Deno.env.get("SUPABASE_URL"),
-    serviceRolePresent: !!Deno.env.get("SUPABASE_SERVICE_ROLE_KEY"),
-  });
-
   if (!webhookSecret) {
-    console.error("Missing STRIPE_WEBHOOK_SIGNING_SECRET at runtime");
-    return new Response("Webhook secret not configured", { status: 500 });
+    console.error("stripe-webhook: missing signing secret");
+    return json({ error: "Webhook secret not configured" }, 500);
   }
 
   const rawBody = await request.text();
-
-  console.log("stripe-webhook incoming", {
-    hasSignature: !!signature,
-    bodyLength: rawBody.length,
-    secretPresent: !!webhookSecret,
-    secretPrefix: webhookSecret.slice(0, 8),
-  });
 
   let event: StripeWebhookEvent;
 
@@ -164,20 +139,18 @@ Deno.serve(async (request: Request) => {
   } catch (error) {
     const serialized = serializeError(error);
 
-    console.error("invalid stripe signature", {
+    console.error("stripe-webhook: signature verification failed", {
+      message: error instanceof Error ? error.message : String(error),
       error: serialized,
     });
 
-    return new Response(
-      JSON.stringify({
+    return json(
+      {
         ok: false,
         stage: "signature_verification",
         error: serialized,
-      }),
-      {
-        status: 400,
-        headers: { "Content-Type": "application/json" },
       },
+      400,
     );
   }
 
@@ -190,24 +163,22 @@ Deno.serve(async (request: Request) => {
   } catch (error) {
     const serialized = serializeError(error);
 
-    console.error("stripe-webhook initialization error", {
+    console.error("stripe-webhook: initialization failed", {
       eventId: event.id,
       eventType: event.type,
+      message: error instanceof Error ? error.message : String(error),
       error: serialized,
     });
 
-    return new Response(
-      JSON.stringify({
+    return json(
+      {
         ok: false,
         stage: "initialization",
         eventId: event.id,
         eventType: event.type,
         error: serialized,
-      }),
-      {
-        status: 500,
-        headers: { "Content-Type": "application/json" },
       },
+      500,
     );
   }
 
@@ -218,11 +189,6 @@ Deno.serve(async (request: Request) => {
     );
 
     if (alreadyProcessed) {
-      console.log("stripe-webhook duplicate ignored", {
-        eventId: event.id,
-        eventType: event.type,
-      });
-
       return json({ ok: true, duplicate: true }, 200);
     }
 
@@ -274,11 +240,6 @@ Deno.serve(async (request: Request) => {
         break;
 
       default:
-        console.log("stripe-webhook unhandled event", {
-          eventId: event.id,
-          eventType: event.type,
-        });
-
         await markStripeWebhookEventProcessed(supabase, event);
         break;
     }
@@ -287,24 +248,22 @@ Deno.serve(async (request: Request) => {
   } catch (error) {
     const serialized = serializeError(error);
 
-    console.error("stripe-webhook processing error", {
-      eventId: event.id,
+    console.error("stripe-webhook: handler failed", {
       eventType: event.type,
+      eventId: event.id,
+      message: error instanceof Error ? error.message : String(error),
       error: serialized,
     });
 
-    return new Response(
-      JSON.stringify({
+    return json(
+      {
         ok: false,
         stage: "processing",
         eventId: event.id,
         eventType: event.type,
         error: serialized,
-      }),
-      {
-        status: 500,
-        headers: { "Content-Type": "application/json" },
       },
+      500,
     );
   }
 });
