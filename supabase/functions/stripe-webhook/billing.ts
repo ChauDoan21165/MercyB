@@ -1,131 +1,52 @@
-// supabase/functions/stripe-webhook/billing.ts
+// FILE PATH: supabase/functions/stripe-webhook/billing.ts
 
 import {
   STRIPE_PROVIDER,
   asNonEmptyStringOrNull,
+  deriveEntitlementFromSubscriptions,
   isoNow,
   isUuid,
   resolveUserIdByProfileEmail,
   resolveUserIdByProfileStripeCustomerId,
+  toIsoFromUnix,
 } from "./core.ts";
 import type {
+  BillingEnvironment,
   CanonicalSubscriptionRow,
-  ComparableSubscriptionWrite,
   DBClient,
-  EntitlementSnapshot,
   ExistingSubscriptionRow,
   FilterableQuery,
   Json,
   StripeFreshness,
   StripeWebhookEvent,
   SubscriptionLike,
-  UpsertSharedSubscriptionMonotonicResult,
-  BillingEnvironment,
   SharedSubscriptionStatus,
+  UpsertSharedSubscriptionMonotonicResult,
 } from "./types.ts";
 
 /* ============================================================================
  * Config
  * ========================================================================== */
 
-export const MAX_MONOTONIC_RETRIES = 8;
-
-/* ============================================================================
- * Subscription mapping
- * ========================================================================== */
-
-export function mapStripeSubscription(params: {
-  userId: string;
-  providerCustomerId: string;
-  providerSubscriptionId: string;
-  providerTransactionId?: string | null;
-  providerOriginalTransactionId?: string | null;
-  productId?: string | null;
-  providerProductId?: string | null;
-  providerPriceId?: string | null;
-  environment: BillingEnvironment;
-  status?: SharedSubscriptionStatus | null;
-  currentPeriodStart?: string | null;
-  currentPeriodEnd?: string | null;
-  cancelAtPeriodEnd?: boolean | null;
-  canceledAt?: string | null;
-  endedAt?: string | null;
-  metadata?: unknown;
-  rawPayload: unknown;
-}): {
-  user_id: string;
-  provider: "stripe";
-  provider_customer_id: string | null;
-  provider_subscription_id: string | null;
-  provider_transaction_id: string | null;
-  provider_original_transaction_id: string | null;
-  product_id: string | null;
-  provider_product_id: string | null;
-  provider_price_id: string | null;
-  environment: BillingEnvironment | null;
-  status: string;
-  current_period_start: string | null;
-  current_period_end: string | null;
-  cancel_at_period_end: boolean | null;
-  canceled_at: string | null;
-  ended_at: string | null;
-  metadata: Json | null;
-  provider_metadata: Json | null;
-  raw_payload: Json | null;
-  updated_at: string;
-} {
-  return {
-    user_id: params.userId,
-    provider: STRIPE_PROVIDER,
-    provider_customer_id: params.providerCustomerId,
-    provider_subscription_id: params.providerSubscriptionId,
-    provider_transaction_id: params.providerTransactionId ?? null,
-    provider_original_transaction_id: params.providerOriginalTransactionId ??
-      null,
-    product_id: params.productId ?? null,
-    provider_product_id: params.providerProductId ?? params.productId ?? null,
-    provider_price_id: params.providerPriceId ?? null,
-    environment: params.environment,
-    status: params.status ?? "revoked",
-    current_period_start: params.currentPeriodStart ?? null,
-    current_period_end: params.currentPeriodEnd ?? null,
-    cancel_at_period_end:
-      typeof params.cancelAtPeriodEnd === "boolean"
-        ? params.cancelAtPeriodEnd
-        : null,
-    canceled_at: params.canceledAt ?? null,
-    ended_at: params.endedAt ?? null,
-    metadata: (params.metadata ?? null) as Json | null,
-    provider_metadata: (params.metadata ?? null) as Json | null,
-    raw_payload: (params.rawPayload ?? null) as Json | null,
-    updated_at: isoNow(),
-  };
-}
+const MAX_MONOTONIC_RETRIES = 8;
+const DEFAULT_APP_ID = "mercy_blade";
 
 /* ============================================================================
  * Freshness helpers
  * ========================================================================== */
 
-export function asRecordOrNull(value: unknown): Record<string, unknown> | null {
+function asRecordOrNull(value: unknown): Record<string, unknown> | null {
   if (!value || typeof value !== "object" || Array.isArray(value)) return null;
   return value as Record<string, unknown>;
 }
 
-export function toIsoFromUnix(value: unknown): string | null {
-  if (typeof value !== "number" || !Number.isFinite(value) || value <= 0) {
-    return null;
-  }
-
-  return new Date(value * 1000).toISOString();
-}
-
-export function isoToMillis(value: string | null | undefined): number | null {
+function isoToMillis(value: string | null | undefined): number | null {
   if (!value) return null;
   const time = new Date(value).getTime();
   return Number.isFinite(time) ? time : null;
 }
 
-export function maxNullableNumber(
+function maxNullableNumber(
   values: Array<number | null | undefined>,
 ): number | null {
   let out: number | null = null;
@@ -138,7 +59,7 @@ export function maxNullableNumber(
   return out;
 }
 
-export function deriveObjectTimeMs(rawPayload: unknown): number | null {
+function deriveObjectTimeMs(rawPayload: unknown): number | null {
   const record = asRecordOrNull(rawPayload);
   if (!record) return null;
 
@@ -156,8 +77,29 @@ export function deriveObjectTimeMs(rawPayload: unknown): number | null {
     ]);
   }
 
+  const items = asRecordOrNull(record.items);
+  const itemData = Array.isArray(items?.data) ? items.data : [];
+
+  if (itemData.length > 0) {
+    let subscriptionObjectTime: number | null = null;
+
+    for (const item of itemData) {
+      const itemRecord = asRecordOrNull(item);
+      const startIso = toIsoFromUnix(itemRecord?.current_period_start);
+      const endIso = toIsoFromUnix(itemRecord?.current_period_end);
+
+      subscriptionObjectTime = maxNullableNumber([
+        subscriptionObjectTime,
+        isoToMillis(startIso),
+        isoToMillis(endIso),
+      ]);
+    }
+
+    if (subscriptionObjectTime !== null) return subscriptionObjectTime;
+  }
+
   const lines = asRecordOrNull(record.lines);
-  const lineItems = Array.isArray(lines?.data) ? lines?.data : [];
+  const lineItems = Array.isArray(lines?.data) ? lines.data : [];
 
   if (lineItems.length > 0) {
     let invoiceObjectTime: number | null = null;
@@ -181,7 +123,7 @@ export function deriveObjectTimeMs(rawPayload: unknown): number | null {
   return null;
 }
 
-export function getStripeEventPriority(eventType: string | null | undefined): number {
+function getStripeEventPriority(eventType: string | null | undefined): number {
   switch (eventType) {
     case "customer.subscription.deleted":
       return 70;
@@ -200,7 +142,7 @@ export function getStripeEventPriority(eventType: string | null | undefined): nu
   }
 }
 
-export function deriveIncomingFreshness(
+function deriveIncomingFreshness(
   rawPayload: unknown,
   event: StripeWebhookEvent,
 ): StripeFreshness {
@@ -218,19 +160,21 @@ export function deriveIncomingFreshness(
   };
 }
 
-export function derivePersistedFreshness(rawPayload: unknown): StripeFreshness {
+function derivePersistedFreshness(rawPayload: unknown): StripeFreshness {
   const record = asRecordOrNull(rawPayload);
   const explicit = asRecordOrNull(record?.__stripe_freshness);
 
-  const explicitObjectTime = typeof explicit?.object_time_ms === "number" &&
+  const explicitObjectTime =
+    typeof explicit?.object_time_ms === "number" &&
       Number.isFinite(explicit.object_time_ms)
-    ? explicit.object_time_ms
-    : null;
+      ? explicit.object_time_ms
+      : null;
 
-  const explicitEventCreated = typeof explicit?.event_created === "number" &&
+  const explicitEventCreated =
+    typeof explicit?.event_created === "number" &&
       Number.isFinite(explicit.event_created)
-    ? explicit.event_created
-    : null;
+      ? explicit.event_created
+      : null;
 
   const explicitEventId = asNonEmptyStringOrNull(explicit?.event_id);
   const explicitEventType = asNonEmptyStringOrNull(explicit?.event_type);
@@ -265,7 +209,7 @@ export function derivePersistedFreshness(rawPayload: unknown): StripeFreshness {
   };
 }
 
-export function compareStripeFreshness(
+function compareStripeFreshness(
   left: StripeFreshness,
   right: StripeFreshness,
 ): number {
@@ -293,7 +237,7 @@ export function compareStripeFreshness(
   return 0;
 }
 
-export function attachStripeFreshnessToRawPayload(
+function attachStripeFreshnessToRawPayload(
   rawPayload: unknown,
   event: StripeWebhookEvent,
 ): unknown {
@@ -314,16 +258,96 @@ export function attachStripeFreshnessToRawPayload(
 }
 
 /* ============================================================================
+ * App resolution helpers
+ * ========================================================================== */
+
+function resolveAppId(params: {
+  metadata?: unknown;
+  rawPayload?: unknown;
+  existingAppId?: string | null;
+}): string {
+  const metadataRecord = asRecordOrNull(params.metadata);
+  const payloadRecord = asRecordOrNull(params.rawPayload);
+
+  return (
+    asNonEmptyStringOrNull(metadataRecord?.app_id) ??
+    asNonEmptyStringOrNull(metadataRecord?.appId) ??
+    asNonEmptyStringOrNull(payloadRecord?.app_id) ??
+    asNonEmptyStringOrNull(payloadRecord?.appId) ??
+    asNonEmptyStringOrNull(params.existingAppId) ??
+    DEFAULT_APP_ID
+  );
+}
+
+/* ============================================================================
  * Subscription persistence helpers
  * ========================================================================== */
 
-export function doesExistingSubscriptionDifferFromWrite(
+function mapStripeSubscription(params: {
+  userId: string;
+  appId: string;
+  providerCustomerId: string;
+  providerSubscriptionId: string;
+  providerTransactionId?: string | null;
+  providerOriginalTransactionId?: string | null;
+  productId?: string | null;
+  providerProductId?: string | null;
+  providerPriceId?: string | null;
+  environment: BillingEnvironment;
+  status?: SharedSubscriptionStatus | null;
+  currentPeriodStart?: string | null;
+  currentPeriodEnd?: string | null;
+  cancelAtPeriodEnd?: boolean | null;
+  canceledAt?: string | null;
+  endedAt?: string | null;
+  metadata?: unknown;
+  rawPayload: unknown;
+}): import("./types.ts").Database["public"]["Tables"]["subscriptions"]["Insert"] {
+  return {
+    user_id: params.userId,
+    app_id: params.appId,
+    provider: STRIPE_PROVIDER,
+
+    customer_id: params.providerCustomerId,
+    subscription_id: params.providerSubscriptionId,
+
+    provider_customer_id: params.providerCustomerId,
+    provider_subscription_id: params.providerSubscriptionId,
+    provider_transaction_id: params.providerTransactionId ?? null,
+    provider_original_transaction_id:
+      params.providerOriginalTransactionId ?? null,
+    product_id: params.productId ?? null,
+    provider_product_id: params.providerProductId ?? params.productId ?? null,
+    provider_price_id: params.providerPriceId ?? null,
+    environment: params.environment,
+    status: params.status ?? "revoked",
+    current_period_start: params.currentPeriodStart ?? null,
+    current_period_end: params.currentPeriodEnd ?? null,
+    cancel_at_period_end:
+      typeof params.cancelAtPeriodEnd === "boolean"
+        ? params.cancelAtPeriodEnd
+        : false,
+    canceled_at: params.canceledAt ?? null,
+    ended_at: params.endedAt ?? null,
+    metadata: (params.metadata ?? null) as Json | null,
+    provider_metadata: (params.metadata ?? null) as Json | null,
+    raw_payload: (params.rawPayload ?? null) as Json | null,
+    updated_at: isoNow(),
+  };
+}
+
+function doesExistingSubscriptionDifferFromWrite(
   existing: ExistingSubscriptionRow,
-  write: ComparableSubscriptionWrite,
+  write: import("./types.ts").ComparableSubscriptionWrite,
 ): boolean {
   return (
     (existing.user_id ?? null) !== (write.user_id ?? null) ||
+    ((existing as { app_id?: string | null }).app_id ?? null) !==
+      (((write as unknown as { app_id?: string | null }).app_id) ?? null) ||
     (existing.provider ?? null) !== (write.provider ?? null) ||
+    ((existing as { customer_id?: string | null }).customer_id ?? null) !==
+      ((write as unknown as { customer_id?: string | null }).customer_id ??
+        null) ||
     (existing.provider_customer_id ?? null) !==
       (write.provider_customer_id ?? null) ||
     (existing.provider_subscription_id ?? null) !==
@@ -350,7 +374,7 @@ export function doesExistingSubscriptionDifferFromWrite(
   );
 }
 
-export function applyExactFilter<T>(
+function applyExactFilter<T>(
   query: T,
   column: string,
   value: string | boolean | null | undefined,
@@ -364,7 +388,7 @@ export function applyExactFilter<T>(
   return filterable.eq(column, value) as T;
 }
 
-export function isMissingEntitlementEventsTable(error: unknown): boolean {
+function isMissingEntitlementEventsTable(error: unknown): boolean {
   if (!error || typeof error !== "object") return false;
 
   const maybe = error as { code?: string; message?: unknown };
@@ -401,7 +425,7 @@ export async function hasProcessedEntitlementEvent(
   return !!data?.event_id;
 }
 
-export function isDuplicateEventInsertError(error: unknown): boolean {
+function isDuplicateEventInsertError(error: unknown): boolean {
   const code = (error as { code?: string } | null)?.code ?? "";
   const message = String((error as { message?: string } | null)?.message ?? "")
     .toLowerCase();
@@ -413,7 +437,7 @@ export function isDuplicateEventInsertError(error: unknown): boolean {
   );
 }
 
-export async function markEntitlementEventProcessed(params: {
+async function markEntitlementEventProcessed(params: {
   supabase: DBClient;
   event: StripeWebhookEvent;
   userId: string;
@@ -447,7 +471,7 @@ export async function getSharedSubscriptionByProviderSubscriptionId(params: {
   if (!params.providerSubscriptionId) return null;
 
   const selectClause =
-    "user_id,provider,provider_customer_id,provider_subscription_id,provider_transaction_id,provider_original_transaction_id,product_id,provider_product_id,provider_price_id,environment,status,current_period_start,current_period_end,cancel_at_period_end,canceled_at,ended_at,metadata,provider_metadata,raw_payload";
+    "user_id,app_id,customer_id,provider,provider_customer_id,provider_subscription_id,provider_transaction_id,provider_original_transaction_id,product_id,provider_product_id,provider_price_id,environment,status,current_period_start,current_period_end,cancel_at_period_end,canceled_at,ended_at,metadata,provider_metadata,raw_payload";
 
   const byProviderSubscriptionId = await params.supabase
     .from("subscriptions")
@@ -461,14 +485,14 @@ export async function getSharedSubscriptionByProviderSubscriptionId(params: {
     null;
 }
 
-export async function getSharedSubscriptionByProviderCustomerId(params: {
+async function getSharedSubscriptionByProviderCustomerId(params: {
   supabase: DBClient;
   providerCustomerId: string | null;
 }): Promise<ExistingSubscriptionRow | null> {
   if (!params.providerCustomerId) return null;
 
   const selectClause =
-    "user_id,provider,provider_customer_id,provider_subscription_id,provider_transaction_id,provider_original_transaction_id,product_id,provider_product_id,provider_price_id,environment,status,current_period_start,current_period_end,cancel_at_period_end,canceled_at,ended_at,metadata,provider_metadata,raw_payload";
+    "user_id,app_id,customer_id,provider,provider_customer_id,provider_subscription_id,provider_transaction_id,provider_original_transaction_id,product_id,provider_product_id,provider_price_id,environment,status,current_period_start,current_period_end,cancel_at_period_end,canceled_at,ended_at,metadata,provider_metadata,raw_payload";
 
   const byProviderCustomerId = await params.supabase
     .from("subscriptions")
@@ -484,7 +508,7 @@ export async function getSharedSubscriptionByProviderCustomerId(params: {
   return (byProviderCustomerId.data as ExistingSubscriptionRow | null) ?? null;
 }
 
-export async function getSharedSubscriptionForUpsert(params: {
+async function getSharedSubscriptionForUpsert(params: {
   supabase: DBClient;
   providerSubscriptionId: string | null;
   providerCustomerId: string | null;
@@ -561,14 +585,15 @@ export async function resolveUserByStripeLinkage(params: {
   return null;
 }
 
-export async function recomputeAndPersistEntitlement(
+async function recomputeAndPersistEntitlement(
   supabase: DBClient,
   userId: string,
-): Promise<EntitlementSnapshot> {
+): Promise<import("./types.ts").EntitlementSnapshot> {
   const { data, error } = await supabase
     .from("subscriptions")
     .select("status,current_period_end,provider")
-    .eq("user_id", userId);
+    .eq("user_id", userId)
+    .eq("app_id", DEFAULT_APP_ID);
 
   if (error) throw error;
 
@@ -658,40 +683,55 @@ export async function upsertSharedSubscriptionMonotonic(params: {
       throw new Error("Stripe subscription ownership mismatch");
     }
 
-    const resolvedProviderCustomerId = params.providerCustomerId ??
-      existing?.provider_customer_id ?? null;
+    const resolvedProviderCustomerId =
+      params.providerCustomerId ??
+      existing?.provider_customer_id ??
+      (existing as { customer_id?: string | null } | null)?.customer_id ??
+      null;
 
     if (!resolvedProviderCustomerId) {
       throw new Error("Stripe subscription missing customer id");
     }
 
+    const resolvedAppId = resolveAppId({
+      metadata: params.metadata,
+      rawPayload: params.rawPayload,
+      existingAppId: (existing as { app_id?: string | null } | null)?.app_id ??
+        null,
+    });
+
     const write = mapStripeSubscription({
       userId: params.userId,
+      appId: resolvedAppId,
       providerCustomerId: resolvedProviderCustomerId,
       providerSubscriptionId: params.providerSubscriptionId,
-      providerTransactionId: params.providerTransactionId ??
+      providerTransactionId:
+        params.providerTransactionId ??
         existing?.provider_transaction_id ??
         null,
-      providerOriginalTransactionId: params.providerOriginalTransactionId ??
+      providerOriginalTransactionId:
+        params.providerOriginalTransactionId ??
         existing?.provider_original_transaction_id ??
         null,
       productId: params.productId ?? existing?.product_id ?? null,
-      providerProductId: params.providerProductId ??
+      providerProductId:
+        params.providerProductId ??
         existing?.provider_product_id ??
         params.productId ??
         existing?.product_id ??
         null,
-      providerPriceId: params.providerPriceId ?? existing?.provider_price_id ??
-        null,
+      providerPriceId:
+        params.providerPriceId ?? existing?.provider_price_id ?? null,
       environment: params.environment,
       status: params.status ?? existing?.status ?? "revoked",
-      currentPeriodStart: params.currentPeriodStart ??
-        existing?.current_period_start ?? null,
-      currentPeriodEnd: params.currentPeriodEnd ??
-        existing?.current_period_end ?? null,
-      cancelAtPeriodEnd: typeof params.cancelAtPeriodEnd === "boolean"
-        ? params.cancelAtPeriodEnd
-        : (existing?.cancel_at_period_end ?? null),
+      currentPeriodStart:
+        params.currentPeriodStart ?? existing?.current_period_start ?? null,
+      currentPeriodEnd:
+        params.currentPeriodEnd ?? existing?.current_period_end ?? null,
+      cancelAtPeriodEnd:
+        typeof params.cancelAtPeriodEnd === "boolean"
+          ? params.cancelAtPeriodEnd
+          : (existing?.cancel_at_period_end ?? false),
       canceledAt: params.canceledAt ?? existing?.canceled_at ?? null,
       endedAt: params.endedAt ?? existing?.ended_at ?? null,
       metadata: params.metadata ?? existing?.metadata ?? null,
@@ -715,16 +755,17 @@ export async function upsertSharedSubscriptionMonotonic(params: {
 
       if (freshnessComparison === 0) {
         if (doesExistingSubscriptionDifferFromWrite(existing, write)) {
-          throw new Error(
-            "Ambiguous equal-freshness Stripe subscription update",
-          );
+          console.warn("Equal freshness update — allowing overwrite", {
+            eventId: params.event.id,
+            providerSubscriptionId: params.providerSubscriptionId,
+          });
+        } else {
+          return {
+            stateChanged: false,
+            shouldRecomputeBeforeFinalMark:
+              persistedFreshness.event_id === params.event.id,
+          };
         }
-
-        return {
-          stateChanged: false,
-          shouldRecomputeBeforeFinalMark:
-            persistedFreshness.event_id === params.event.id,
-        };
       }
     }
 
@@ -772,16 +813,17 @@ export async function upsertSharedSubscriptionMonotonic(params: {
 
         if (latestComparison === 0) {
           if (doesExistingSubscriptionDifferFromWrite(latest, write)) {
-            throw new Error(
-              "Ambiguous equal-freshness Stripe subscription update",
-            );
+            console.warn("Equal freshness duplicate-path update — allowing overwrite", {
+              eventId: params.event.id,
+              providerSubscriptionId: params.providerSubscriptionId,
+            });
+          } else {
+            return {
+              stateChanged: false,
+              shouldRecomputeBeforeFinalMark:
+                latestFreshness.event_id === params.event.id,
+            };
           }
-
-          return {
-            stateChanged: false,
-            shouldRecomputeBeforeFinalMark:
-              latestFreshness.event_id === params.event.id,
-          };
         }
 
         continue;
@@ -792,11 +834,23 @@ export async function upsertSharedSubscriptionMonotonic(params: {
 
     let query = params.supabase
       .from("subscriptions")
-      .update(write)
+      .update(
+        write as import("./types.ts").Database["public"]["Tables"]["subscriptions"]["Update"],
+      )
       .eq("provider", STRIPE_PROVIDER)
       .eq("provider_subscription_id", existing.provider_subscription_id);
 
     query = applyExactFilter(query, "user_id", existing.user_id);
+    query = applyExactFilter(
+      query,
+      "app_id",
+      (existing as { app_id?: string | null }).app_id ?? null,
+    );
+    query = applyExactFilter(
+      query,
+      "customer_id",
+      (existing as { customer_id?: string | null }).customer_id ?? null,
+    );
     query = applyExactFilter(query, "provider", existing.provider);
     query = applyExactFilter(
       query,
@@ -896,16 +950,17 @@ export async function upsertSharedSubscriptionMonotonic(params: {
 
     if (latestComparison === 0) {
       if (doesExistingSubscriptionDifferFromWrite(latest, write)) {
-        throw new Error(
-          "Ambiguous equal-freshness Stripe subscription update",
-        );
+        console.warn("Equal freshness post-update conflict — accepting latest state", {
+          eventId: params.event.id,
+          providerSubscriptionId: params.providerSubscriptionId,
+        });
+      } else {
+        return {
+          stateChanged: false,
+          shouldRecomputeBeforeFinalMark:
+            latestFreshness.event_id === params.event.id,
+        };
       }
-
-      return {
-        stateChanged: false,
-        shouldRecomputeBeforeFinalMark:
-          latestFreshness.event_id === params.event.id,
-      };
     }
   }
 
@@ -913,70 +968,6 @@ export async function upsertSharedSubscriptionMonotonic(params: {
     "Failed to apply monotonic Stripe subscription update after concurrent modifications",
   );
 }
-
-/* ============================================================================
- * Entitlement helpers imported from original primitive logic
- * ========================================================================== */
-
-export function isEntitlingSubscription(
-  subscription: Pick<CanonicalSubscriptionRow, "status" | "current_period_end">,
-): boolean {
-  return (
-    subscription.status === "active" ||
-    subscription.status === "trialing" ||
-    subscription.status === "grace_period" ||
-    subscription.status === "past_due"
-  );
-}
-
-export function toMillis(value: string | null | undefined): number {
-  if (!value) return Number.NEGATIVE_INFINITY;
-  const time = new Date(value).getTime();
-  return Number.isFinite(time) ? time : Number.NEGATIVE_INFINITY;
-}
-
-export function deriveEntitlementFromSubscriptions(
-  subscriptions: Array<
-    Pick<CanonicalSubscriptionRow, "status" | "current_period_end" | "provider">
-  >,
-): EntitlementSnapshot {
-  let winner:
-    | Pick<
-      CanonicalSubscriptionRow,
-      "status" | "current_period_end" | "provider"
-    >
-    | null = null;
-
-  for (const subscription of subscriptions) {
-    if (!isEntitlingSubscription(subscription)) continue;
-
-    if (
-      !winner ||
-      toMillis(subscription.current_period_end ?? null) >
-        toMillis(winner.current_period_end ?? null)
-    ) {
-      winner = subscription;
-    }
-  }
-
-  if (!winner) {
-    return {
-      status: "inactive",
-      expires_at: null,
-      source: null,
-    };
-  }
-
-  return {
-    status: "active",
-    expires_at: winner.current_period_end ?? null,
-    source: winner.provider,
-  };
-}
-
-/* ============================================================================
- * Invoice event user resolution helper
- * ========================================================================== */
 
 export async function resolveUserForInvoiceEvent(params: {
   supabase: DBClient;
