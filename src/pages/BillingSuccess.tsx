@@ -18,18 +18,6 @@ type EntitlementResponse = {
 const POLL_INTERVAL_MS = 2500;
 const MAX_POLL_ATTEMPTS = 20;
 
-function env(name: string): string {
-  return String((import.meta as any).env?.[name] ?? "").trim();
-}
-
-function pickEnv(...names: string[]): string {
-  for (const name of names) {
-    const value = env(name);
-    if (value) return value;
-  }
-  return "";
-}
-
 function extractErrorMessage(payload: unknown, fallback: string): string {
   if (!payload || typeof payload !== "object") return fallback;
 
@@ -53,9 +41,6 @@ function extractErrorMessage(payload: unknown, fallback: string): string {
 export default function BillingSuccess() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-
-  const SUPABASE_URL = pickEnv("VITE_SUPABASE_URL");
-  const SUPABASE_ANON_KEY = pickEnv("VITE_SUPABASE_ANON_KEY");
 
   const [entitlement, setEntitlement] = useState<EntitlementResponse | null>(null);
   const [loading, setLoading] = useState(true);
@@ -83,7 +68,7 @@ export default function BillingSuccess() {
   useEffect(() => {
     let cancelled = false;
 
-    async function getAccessToken(): Promise<string> {
+    async function ensureSignedIn() {
       const {
         data: { session },
         error,
@@ -97,56 +82,32 @@ export default function BillingSuccess() {
         navigate("/signin");
         throw new Error("Please sign in to continue.");
       }
-
-      return session.access_token;
     }
 
-    async function fetchEntitlement(
-      accessToken: string,
-    ): Promise<EntitlementResponse> {
-      if (!SUPABASE_URL) {
-        throw new Error("Supabase URL is missing.");
-      }
+    async function fetchEntitlement(): Promise<EntitlementResponse> {
+      const { data, error } = await supabase.functions.invoke("me-entitlement", {
+        method: "GET",
+      });
 
-      const response = await fetch(
-        `${SUPABASE_URL.replace(/\/$/, "")}/functions/v1/me-entitlement`,
-        {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-            ...(SUPABASE_ANON_KEY ? { apikey: SUPABASE_ANON_KEY } : {}),
-          },
-        },
-      );
-
-      const raw = await response.text();
-      let payload: Record<string, unknown> = {};
-
-      try {
-        payload = raw ? JSON.parse(raw) : {};
-      } catch {
-        throw new Error(raw || "Entitlement returned a non-JSON response.");
-      }
-
-      if (!response.ok) {
+      if (error) {
         throw new Error(
-          extractErrorMessage(payload, `Entitlement failed (${response.status})`),
+          extractErrorMessage(error, "Unable to confirm subscription status."),
         );
       }
 
-      return payload as EntitlementResponse;
+      return (data ?? {}) as EntitlementResponse;
     }
 
     async function pollEntitlement() {
       try {
-        const accessToken = await getAccessToken();
+        await ensureSignedIn();
 
         for (let attempt = 1; attempt <= MAX_POLL_ATTEMPTS; attempt += 1) {
           if (cancelled) return;
 
           setAttemptCount(attempt);
 
-          const nextEntitlement = await fetchEntitlement(accessToken);
+          const nextEntitlement = await fetchEntitlement();
 
           if (cancelled) return;
 
@@ -204,7 +165,7 @@ export default function BillingSuccess() {
     return () => {
       cancelled = true;
     };
-  }, [SUPABASE_ANON_KEY, SUPABASE_URL, navigate, sessionId]);
+  }, [navigate, sessionId]);
 
   return (
     <div

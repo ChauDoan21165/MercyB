@@ -47,13 +47,16 @@ const PAGE_MAX = 980;
 
 /**
  * Fallbacks only.
- * Env vars are preferred and should be set in .env.
+ * Env vars are preferred and should be set in root .env.
  */
 const DIRECT_ONE_MONTH_PRICE_ID = "price_1TCKY02K1tPxy04uCHQNbvik";
 const DIRECT_ONE_YEAR_PRICE_ID = "price_1TCKSF2K1tPxy04uNeKcQWp5";
 
 function env(name: string): string {
-  return String((import.meta as ImportMeta & { env?: Record<string, string> }).env?.[name] ?? "").trim();
+  return String(
+    (import.meta as ImportMeta & { env?: Record<string, string> }).env?.[name] ??
+      "",
+  ).trim();
 }
 
 function pickEnv(...names: string[]): string {
@@ -85,6 +88,26 @@ function getPlanPriceId(
   yearPriceId: string,
 ): string {
   return plan === "month" ? monthPriceId : yearPriceId;
+}
+
+function normalizeUiErrorMessage(message: string): string {
+  const lower = message.toLowerCase();
+
+  if (
+    lower.includes("unable to retrieve stripe price") ||
+    lower.includes("no such price")
+  ) {
+    return "We couldn’t load pricing. Please refresh or try again.";
+  }
+
+  if (
+    lower.includes("tierid or priceid is required") ||
+    lower.includes("priceid is required")
+  ) {
+    return "Checkout could not start because the Stripe price is missing from the request.";
+  }
+
+  return message;
 }
 
 export default function Pricing() {
@@ -139,13 +162,13 @@ export default function Pricing() {
     () => [
       {
         key: "free",
-        eyebrow: "Start here / Bắt đầu",
+        eyebrow: "Start free / Bắt đầu",
         title: "Free / Miễn phí",
         price: "",
-        subtitleEn: "Start with limited rooms.",
-        subtitleVi: "Bắt đầu với các phòng giới hạn.",
-        bodyEn: "Begin gently and explore the atmosphere first.",
-        bodyVi: "Bắt đầu nhẹ nhàng và cảm nhận không gian trước khi nâng cấp.",
+        subtitleEn: "Explore a limited set of rooms.",
+        subtitleVi: "Khám phá một số phòng giới hạn.",
+        bodyEn: "Start gently and get a feel for the experience first.",
+        bodyVi: "Bắt đầu nhẹ nhàng và làm quen với trải nghiệm trước.",
         cta: "Browse rooms",
         accent: "plain",
         bullets: [
@@ -165,7 +188,7 @@ export default function Pricing() {
           "Good for learners who want every premium room without a longer commitment.",
         bodyVi:
           "Phù hợp cho người học muốn mở toàn bộ phòng premium mà chưa cần cam kết dài hạn.",
-        cta: "Choose monthly",
+        cta: "Upgrade monthly",
         accent: "plain",
         bullets: [
           "Unlock all premium rooms",
@@ -184,7 +207,7 @@ export default function Pricing() {
           "Best long-term value for steady learning without billing friction.",
         bodyVi:
           "Giá trị tốt nhất cho hành trình dài hạn với ít gián đoạn thanh toán hơn.",
-        cta: "Choose yearly",
+        cta: "Upgrade yearly",
         accent: "highlight",
         bullets: [
           "Best long-term value",
@@ -252,6 +275,17 @@ export default function Pricing() {
     trackedPaywallShown.current = true;
   }, [entitlementLoading, hasPremium]);
 
+  useEffect(() => {
+    if (!entitlementLoading && hasPremium) {
+      navigate("/billing", { replace: true });
+    }
+  }, [entitlementLoading, hasPremium, navigate]);
+
+  useEffect(() => {
+    console.log("[Pricing] ONE_MONTH_PRICE_ID =", ONE_MONTH_PRICE_ID);
+    console.log("[Pricing] ONE_YEAR_PRICE_ID =", ONE_YEAR_PRICE_ID);
+  }, [ONE_MONTH_PRICE_ID, ONE_YEAR_PRICE_ID]);
+
   async function refreshEntitlement() {
     const latestEntitlement = await fetchMyEntitlement().catch(() => null);
 
@@ -282,7 +316,7 @@ export default function Pricing() {
         return;
       }
 
-      setErrorText(message);
+      setErrorText(normalizeUiErrorMessage(message));
     } finally {
       setManageBusy(false);
     }
@@ -329,7 +363,12 @@ export default function Pricing() {
         });
       }
 
-      await startCheckoutOrOpenPortal(priceId);
+      console.log("[Pricing] starting checkout for plan =", plan);
+      console.log("[Pricing] sending priceId =", priceId);
+
+      await startCheckoutOrOpenPortal({
+        priceId,
+      });
 
       trackEvent(hasPremium ? "subscription_changed" : "checkout_redirected", {
         screen: "pricing",
@@ -371,7 +410,7 @@ export default function Pricing() {
         return;
       }
 
-      setErrorText(message);
+      setErrorText(normalizeUiErrorMessage(message));
     } finally {
       setBusyPlan(null);
     }
@@ -384,7 +423,7 @@ export default function Pricing() {
     }
 
     if (!hasPremium) {
-      return plan === "month" ? "Choose monthly" : "Choose yearly";
+      return plan === "month" ? "Upgrade monthly" : "Upgrade yearly";
     }
 
     if (isCurrentPlan(plan)) {
@@ -618,17 +657,15 @@ export default function Pricing() {
             color: "#111827",
           }}
         >
-          Unlock every premium room in Mercy Blade
+          Get full access to all premium rooms
         </h1>
 
         <p style={{ margin: "12px 0 0", color: "#475569", lineHeight: 1.7 }}>
-          Get instant full access after payment. Choose flexible monthly billing
-          or save more with yearly access.
+          Choose a plan that fits your learning pace. Upgrade anytime.
         </p>
 
         <p style={{ margin: "12px 0 0", color: "#475569", lineHeight: 1.7 }}>
-          Mở khóa toàn bộ phòng premium ngay sau khi thanh toán. Chọn gói tháng
-          linh hoạt hoặc tiết kiệm hơn với gói năm.
+          Chọn gói phù hợp với tốc độ học của bạn. Có thể nâng cấp bất cứ lúc nào.
         </p>
 
         <div
@@ -701,7 +738,7 @@ export default function Pricing() {
               cursor: "pointer",
             }}
           >
-            👉 Browse rooms
+            Browse rooms
           </button>
 
           {hasPremium ? (
@@ -721,7 +758,7 @@ export default function Pricing() {
                 opacity: manageBusy ? 0.85 : 1,
               }}
             >
-              {manageBusy ? "Opening portal..." : "Manage Subscription"}
+              {manageBusy ? "Opening portal..." : "Manage subscription"}
             </button>
           ) : (
             <button
@@ -740,7 +777,7 @@ export default function Pricing() {
                 opacity: busyPlan ? 0.85 : 1,
               }}
             >
-              {busyPlan === "year" ? "Opening..." : "Unlock full access"}
+              {busyPlan === "year" ? "Opening..." : "Upgrade now"}
             </button>
           )}
 
@@ -758,7 +795,7 @@ export default function Pricing() {
               cursor: "pointer",
             }}
           >
-            🌿 Back to Home
+            Back to home
           </button>
         </div>
       </div>
@@ -797,7 +834,7 @@ export default function Pricing() {
               opacity: manageBusy ? 0.85 : 1,
             }}
           >
-            {manageBusy ? "Opening portal..." : "Manage Subscription"}
+            {manageBusy ? "Opening portal..." : "Manage subscription"}
           </button>
         </div>
       ) : null}

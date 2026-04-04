@@ -20,9 +20,6 @@ type Entitlement = {
   vip_tier?: string | null;
 };
 
-const DIRECT_ONE_MONTH_PRICE_ID = "price_1TCKY02K1tPxy04uCHQNbvik";
-const DIRECT_ONE_YEAR_PRICE_ID = "price_1TCKSF2K1tPxy04uNeKcQWp5";
-
 function env(name: string): string {
   return String((import.meta as any).env?.[name] ?? "").trim();
 }
@@ -36,10 +33,7 @@ function pickEnv(...names: string[]): string {
 }
 
 function isUsablePriceId(value: string): boolean {
-  if (!value) return false;
-  if (!value.startsWith("price_")) return false;
-  if (value.includes("REPLACE_WITH_REAL")) return false;
-  return true;
+  return !!value && value.startsWith("price_") && !value.includes("REPLACE_WITH_REAL");
 }
 
 function resolvePriceId(...candidates: string[]): string {
@@ -65,7 +59,6 @@ function getExpiryValue(ent: Entitlement | null): string | null {
 function getStatusLabel(status: string | null | undefined): string {
   switch (status) {
     case "active":
-      return "Active";
     case "trialing":
       return "Active";
     case "past_due":
@@ -85,12 +78,38 @@ function getStatusLabel(status: string | null | undefined): string {
   }
 }
 
-function getPlanPriceId(
-  plan: PlanKey,
-  monthPriceId: string,
-  yearPriceId: string,
-): string {
+function getPlanPriceId(plan: PlanKey, monthPriceId: string, yearPriceId: string): string {
   return plan === "month" ? monthPriceId : yearPriceId;
+}
+
+function normalizeUiErrorMessage(message: string): string {
+  const lower = message.toLowerCase();
+
+  if (lower.includes("unable to retrieve stripe price") || lower.includes("no such price")) {
+    return "We couldn’t load pricing. Please refresh or try again.";
+  }
+
+  if (lower.includes("tierid or priceid is required") || lower.includes("priceid is required")) {
+    return "Checkout request is missing the Stripe priceId.";
+  }
+
+  return message;
+}
+
+function getPlanButtonLabel(args: {
+  loading: boolean;
+  busyPlan: PlanKey | null;
+  plan: PlanKey;
+  isCurrent: boolean;
+  isPremium: boolean;
+}): string {
+  const { loading, busyPlan, plan, isCurrent, isPremium } = args;
+
+  if (loading) return "Checking...";
+  if (busyPlan === plan) return "Working...";
+  if (isCurrent) return "Current plan";
+  if (isPremium) return plan === "month" ? "Switch to monthly" : "Switch to yearly";
+  return plan === "month" ? "Choose monthly" : "Choose yearly";
 }
 
 export default function Billing() {
@@ -102,7 +121,6 @@ export default function Billing() {
       "VITE_STRIPE_PRICE_MONTHLY",
       "VITE_STRIPE_MONTHLY_PRICE_ID",
     ),
-    DIRECT_ONE_MONTH_PRICE_ID,
   );
 
   const yearPriceId = resolvePriceId(
@@ -111,7 +129,6 @@ export default function Billing() {
       "VITE_STRIPE_PRICE_YEARLY",
       "VITE_STRIPE_YEARLY_PRICE_ID",
     ),
-    DIRECT_ONE_YEAR_PRICE_ID,
   );
 
   const [ent, setEnt] = useState<Entitlement | null>(null);
@@ -139,13 +156,16 @@ export default function Billing() {
   async function refreshEntitlement() {
     setLoading(true);
     setErrorText("");
+
     try {
       const data = await fetchMyEntitlement();
       setEnt(data);
     } catch (error) {
       setEnt(null);
       setErrorText(
-        error instanceof Error ? error.message : "Unable to load billing status.",
+        normalizeUiErrorMessage(
+          error instanceof Error ? error.message : "Unable to load billing status.",
+        ),
       );
     } finally {
       setLoading(false);
@@ -158,11 +178,12 @@ export default function Billing() {
 
   async function handlePlan(plan: PlanKey) {
     const priceId = getPlanPriceId(plan, monthPriceId, yearPriceId);
+
     if (!priceId) {
       setErrorText(
         plan === "month"
-          ? "Monthly Stripe price_id is not configured."
-          : "Yearly Stripe price_id is not configured.",
+          ? "Monthly Stripe price_id is not configured in root .env."
+          : "Yearly Stripe price_id is not configured in root .env.",
       );
       return;
     }
@@ -173,17 +194,18 @@ export default function Billing() {
     try {
       const result = await startCheckoutOrOpenPortal({
         priceId,
-        successUrl:
-          `${window.location.origin}/billing/success?session_id={CHECKOUT_SESSION_ID}`,
+        successUrl: `${window.location.origin}/billing/success?session_id={CHECKOUT_SESSION_ID}`,
         cancelUrl: `${window.location.origin}/billing`,
       });
 
-      if (result.mode === "change_plan" || result.mode === "noop") {
+      if (result && (result.mode === "change_plan" || result.mode === "noop")) {
         await refreshEntitlement();
       }
     } catch (error) {
       setErrorText(
-        error instanceof Error ? error.message : "Unable to continue.",
+        normalizeUiErrorMessage(
+          error instanceof Error ? error.message : "Unable to continue.",
+        ),
       );
     } finally {
       setBusyPlan(null);
@@ -193,13 +215,14 @@ export default function Billing() {
   async function handleManageBilling() {
     setErrorText("");
     setManageBusy(true);
+
     try {
       await openBillingPortal();
     } catch (error) {
       setErrorText(
-        error instanceof Error
-          ? error.message
-          : "Unable to open billing portal.",
+        normalizeUiErrorMessage(
+          error instanceof Error ? error.message : "Unable to open billing portal.",
+        ),
       );
     } finally {
       setManageBusy(false);
@@ -236,6 +259,9 @@ export default function Billing() {
     cursor: "pointer",
   };
 
+  const monthIsCurrent = isCurrentPlan("month");
+  const yearIsCurrent = isCurrentPlan("year");
+
   return (
     <div
       style={{
@@ -260,7 +286,7 @@ export default function Billing() {
             color: "#111827",
           }}
         >
-          Billing
+          Manage your subscription
         </h1>
 
         <p
@@ -270,7 +296,7 @@ export default function Billing() {
             lineHeight: 1.7,
           }}
         >
-          Manage your premium access, switch plans, or open Stripe billing portal.
+          View your plan, switch plans, or manage billing.
         </p>
 
         <div
@@ -304,7 +330,7 @@ export default function Billing() {
             onClick={() => navigate("/pricing")}
             style={secondaryButton}
           >
-            Open pricing
+            View plans
           </button>
         </div>
       </div>
@@ -366,12 +392,11 @@ export default function Billing() {
           >
             Status: <b>{loading ? "Loading..." : getStatusLabel(ent?.status)}</b>
             <br />
-            Source: <b>{loading ? "Loading..." : (ent?.source || "—")}</b>
+            Source: <b>{loading ? "Loading..." : ent?.source || "—"}</b>
             <br />
             Expires: <b>{loading ? "Loading..." : expiryText}</b>
             <br />
-            Cancel at period end:{" "}
-            <b>{loading ? "Loading..." : (ent?.cancel_at_period_end ? "Yes" : "No")}</b>
+            Cancel at period end: <b>{loading ? "Loading..." : ent?.cancel_at_period_end ? "Yes" : "No"}</b>
           </div>
         </div>
 
@@ -400,26 +425,24 @@ export default function Billing() {
           <button
             type="button"
             onClick={() => void handlePlan("month")}
-            disabled={loading || manageBusy || busyPlan === "month" || isCurrentPlan("month")}
+            disabled={loading || manageBusy || busyPlan === "month" || monthIsCurrent}
             style={{
               ...primaryButton,
               width: "100%",
               marginTop: 16,
-              opacity: isCurrentPlan("month") ? 0.7 : 1,
-              cursor: isCurrentPlan("month") ? "default" : "pointer",
-              background: isCurrentPlan("month") ? "#334155" : "#0f172a",
-              borderColor: isCurrentPlan("month") ? "#334155" : "#0f172a",
+              opacity: monthIsCurrent ? 0.7 : 1,
+              cursor: monthIsCurrent ? "default" : "pointer",
+              background: monthIsCurrent ? "#334155" : "#0f172a",
+              borderColor: monthIsCurrent ? "#334155" : "#0f172a",
             }}
           >
-            {loading
-              ? "Checking..."
-              : busyPlan === "month"
-                ? "Working..."
-                : isCurrentPlan("month")
-                  ? "Current plan"
-                  : isPremium
-                    ? "Switch to monthly"
-                    : "Choose monthly"}
+            {getPlanButtonLabel({
+              loading,
+              busyPlan,
+              plan: "month",
+              isCurrent: monthIsCurrent,
+              isPremium,
+            })}
           </button>
         </div>
 
@@ -463,26 +486,24 @@ export default function Billing() {
           <button
             type="button"
             onClick={() => void handlePlan("year")}
-            disabled={loading || manageBusy || busyPlan === "year" || isCurrentPlan("year")}
+            disabled={loading || manageBusy || busyPlan === "year" || yearIsCurrent}
             style={{
               ...primaryButton,
               width: "100%",
               marginTop: 16,
-              opacity: isCurrentPlan("year") ? 0.7 : 1,
-              cursor: isCurrentPlan("year") ? "default" : "pointer",
-              background: isCurrentPlan("year") ? "#334155" : "#0f172a",
-              borderColor: isCurrentPlan("year") ? "#334155" : "#0f172a",
+              opacity: yearIsCurrent ? 0.7 : 1,
+              cursor: yearIsCurrent ? "default" : "pointer",
+              background: yearIsCurrent ? "#334155" : "#0f172a",
+              borderColor: yearIsCurrent ? "#334155" : "#0f172a",
             }}
           >
-            {loading
-              ? "Checking..."
-              : busyPlan === "year"
-                ? "Working..."
-                : isCurrentPlan("year")
-                  ? "Current plan"
-                  : isPremium
-                    ? "Switch to yearly"
-                    : "Choose yearly"}
+            {getPlanButtonLabel({
+              loading,
+              busyPlan,
+              plan: "year",
+              isCurrent: yearIsCurrent,
+              isPremium,
+            })}
           </button>
         </div>
       </div>

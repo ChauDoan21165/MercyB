@@ -1,6 +1,7 @@
 // src/pages/BillingSuccessPage.tsx
 import React, { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { supabase } from "@/lib/supabaseClient";
 import { useAuth } from "@/providers/AuthProvider";
 import { useEntitlements } from "@/lib/useEntitlements";
 
@@ -26,6 +27,34 @@ function getStatusLabel(status: string | null | undefined): string {
   }
 }
 
+type VerifyCheckoutResponse = {
+  ok?: boolean;
+  message?: string;
+  status?: string | null;
+  source?: string | null;
+  error?: string;
+  detail?: unknown;
+};
+
+function extractErrorMessage(payload: VerifyCheckoutResponse | null | undefined): string {
+  if (!payload) return "Không thể xác minh thanh toán.";
+  if (typeof payload.detail === "string" && payload.detail.trim()) return payload.detail;
+  if (typeof payload.error === "string" && payload.error.trim()) return payload.error;
+  if (typeof payload.message === "string" && payload.message.trim()) return payload.message;
+
+  if (payload.detail && typeof payload.detail === "object") {
+    const detail = payload.detail as Record<string, unknown>;
+    if (typeof detail.message === "string" && detail.message.trim()) {
+      return detail.message;
+    }
+    if (typeof detail.error === "string" && detail.error.trim()) {
+      return detail.error;
+    }
+  }
+
+  return "Không thể xác minh thanh toán.";
+}
+
 export default function BillingSuccessPage() {
   const nav = useNavigate();
   const [params] = useSearchParams();
@@ -33,6 +62,10 @@ export default function BillingSuccessPage() {
   const { ent, loading: entitlementLoading, refreshEntitlements } = useEntitlements();
 
   const [didRefresh, setDidRefresh] = useState(false);
+  const [isVerifying, setIsVerifying] = useState(false);
+  const [verifyError, setVerifyError] = useState<string>("");
+  const [verifyMessage, setVerifyMessage] = useState<string>("");
+
   const sessionId = params.get("session_id") ?? "";
 
   useEffect(() => {
@@ -46,15 +79,45 @@ export default function BillingSuccessPage() {
 
     async function run() {
       if (didRefresh) return;
+      if (!user) return;
+
       setDidRefresh(true);
+      setVerifyError("");
 
       try {
-        await refreshEntitlements();
-      } catch {
-        // best-effort
-      }
+        if (sessionId) {
+          setIsVerifying(true);
 
-      if (cancelled) return;
+          const { data, error } = await supabase.functions.invoke<VerifyCheckoutResponse>(
+            "verify-checkout-session",
+            {
+              body: { session_id: sessionId },
+            },
+          );
+
+          if (error) {
+            throw new Error(error.message || "Không thể xác minh phiên thanh toán.");
+          }
+
+          if (!cancelled && data?.message) {
+            setVerifyMessage(data.message);
+          }
+        }
+
+        await refreshEntitlements();
+      } catch (error) {
+        if (!cancelled) {
+          setVerifyError(
+            error instanceof Error
+              ? error.message
+              : "Không thể đồng bộ quyền truy cập sau thanh toán.",
+          );
+        }
+      } finally {
+        if (!cancelled) {
+          setIsVerifying(false);
+        }
+      }
     }
 
     void run();
@@ -62,17 +125,22 @@ export default function BillingSuccessPage() {
     return () => {
       cancelled = true;
     };
-  }, [didRefresh, refreshEntitlements]);
+  }, [didRefresh, refreshEntitlements, sessionId, user]);
 
   const isPremium = useMemo(() => ent?.is_premium === true, [ent]);
 
   const title = useMemo(() => {
+    if (isVerifying) return "Đang xác nhận thanh toán…";
     if (entitlementLoading) return "Đang xác nhận quyền truy cập…";
     if (isPremium) return "Thanh toán thành công";
     return "Đã nhận thanh toán";
-  }, [entitlementLoading, isPremium]);
+  }, [entitlementLoading, isPremium, isVerifying]);
 
   const subtitle = useMemo(() => {
+    if (isVerifying) {
+      return "Hệ thống đang xác minh phiên Stripe checkout và đồng bộ quyền truy cập của bạn.";
+    }
+
     if (entitlementLoading) {
       return "Hệ thống đang đồng bộ quyền truy cập từ backend entitlement.";
     }
@@ -84,7 +152,7 @@ export default function BillingSuccessPage() {
     }
 
     return "Thanh toán đã hoàn tất. Nếu quyền truy cập chưa cập nhật ngay, hãy bấm làm mới quyền truy cập ở trang tài khoản.";
-  }, [ent, entitlementLoading, isPremium]);
+  }, [ent, entitlementLoading, isPremium, isVerifying]);
 
   const wrap: React.CSSProperties = {
     width: "100%",
@@ -121,6 +189,28 @@ export default function BillingSuccessPage() {
     lineHeight: 1.7,
     color: "rgba(0,0,0,0.64)",
     maxWidth: 680,
+  };
+
+  const bannerBase: React.CSSProperties = {
+    marginTop: 16,
+    borderRadius: 14,
+    padding: "12px 14px",
+    fontSize: 14,
+    lineHeight: 1.6,
+    border: "1px solid rgba(0,0,0,0.10)",
+  };
+
+  const infoBanner: React.CSSProperties = {
+    ...bannerBase,
+    background: "rgba(17,24,39,0.04)",
+    color: "rgba(17,24,39,0.82)",
+  };
+
+  const errorBanner: React.CSSProperties = {
+    ...bannerBase,
+    background: "rgba(239,68,68,0.08)",
+    color: "rgba(127,29,29,0.92)",
+    border: "1px solid rgba(239,68,68,0.22)",
   };
 
   const grid: React.CSSProperties = {
@@ -188,6 +278,43 @@ export default function BillingSuccessPage() {
     borderColor: "#111827",
   };
 
+  async function handleRefreshAccess() {
+    setVerifyError("");
+
+    try {
+      if (sessionId) {
+        setIsVerifying(true);
+
+        const { data, error } = await supabase.functions.invoke<VerifyCheckoutResponse>(
+          "verify-checkout-session",
+          {
+            body: { session_id: sessionId },
+          },
+        );
+
+        if (error) {
+          throw new Error(error.message || "Không thể xác minh phiên thanh toán.");
+        }
+
+        if (data?.error || data?.ok === false) {
+          throw new Error(extractErrorMessage(data));
+        }
+
+        setVerifyMessage(data?.message || "Đã đồng bộ quyền truy cập từ phiên thanh toán.");
+      }
+
+      await refreshEntitlements();
+    } catch (error) {
+      setVerifyError(
+        error instanceof Error
+          ? error.message
+          : "Không thể làm mới quyền truy cập.",
+      );
+    } finally {
+      setIsVerifying(false);
+    }
+  }
+
   if (!user && !isLoading) {
     return null;
   }
@@ -199,17 +326,20 @@ export default function BillingSuccessPage() {
           <h1 style={titleStyle}>{title}</h1>
           <p style={subtitleStyle}>{subtitle}</p>
 
+          {verifyMessage ? <div style={infoBanner}>{verifyMessage}</div> : null}
+          {verifyError ? <div style={errorBanner}>{verifyError}</div> : null}
+
           <div style={grid}>
             <div style={panel}>
               <div style={label}>Quyền truy cập hiện tại</div>
               <div style={value}>
-                {entitlementLoading
+                {entitlementLoading || isVerifying
                   ? "Đang tải…"
                   : isPremium
-                  ? ent?.status === "trialing"
-                    ? "Cao cấp (dùng thử)"
-                    : "Cao cấp"
-                  : "Miễn phí"}
+                    ? ent?.status === "trialing"
+                      ? "Cao cấp (dùng thử)"
+                      : "Cao cấp"
+                    : "Miễn phí"}
               </div>
               <div style={sub}>
                 Màn hình này tin backend entitlement, không tự suy đoán ở client.
@@ -219,10 +349,15 @@ export default function BillingSuccessPage() {
             <div style={panel}>
               <div style={label}>Trạng thái entitlement</div>
               <div style={value}>
-                {entitlementLoading ? "Đang tải…" : getStatusLabel(ent?.status)}
+                {entitlementLoading || isVerifying
+                  ? "Đang tải…"
+                  : getStatusLabel(ent?.status)}
               </div>
               <div style={sub}>
-                Raw status: <b>{entitlementLoading ? "loading" : ent?.status || "inactive"}</b>
+                Raw status:{" "}
+                <b>
+                  {entitlementLoading || isVerifying ? "loading" : ent?.status || "inactive"}
+                </b>
                 <br />
                 Source: <b>{ent?.source || "—"}</b>
               </div>
@@ -233,7 +368,8 @@ export default function BillingSuccessPage() {
               <div style={sub}>
                 Stripe checkout session: <b>{sessionId || "—"}</b>
                 <br />
-                Nếu trạng thái chưa đổi ngay, vào trang tài khoản và bấm <b>Refresh access</b>.
+                Trang này sẽ tự thử xác minh checkout session và đồng bộ quyền truy cập.
+                Nếu trạng thái chưa đổi ngay, hãy bấm <b>Refresh access</b>.
               </div>
             </div>
           </div>
@@ -242,9 +378,10 @@ export default function BillingSuccessPage() {
             <button
               type="button"
               style={buttonBase}
-              onClick={() => void refreshEntitlements()}
+              onClick={() => void handleRefreshAccess()}
+              disabled={isVerifying}
             >
-              Refresh access
+              {isVerifying ? "Đang xác minh…" : "Refresh access"}
             </button>
 
             <Link to="/account" style={primaryButton}>

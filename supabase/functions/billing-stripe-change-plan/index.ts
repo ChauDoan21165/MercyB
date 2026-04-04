@@ -305,7 +305,7 @@ async function getTierAndPrice(params: {
       return { error: json({ error: "Unknown tier" }, 400) };
     }
 
-    if (("is_active" in tier) && !tier.is_active) {
+    if ("is_active" in tier && !tier.is_active) {
       return { error: json({ error: "Tier is inactive" }, 400) };
     }
 
@@ -415,6 +415,212 @@ function inferChangeType(params: {
   return "lateral";
 }
 
+async function getOrCreateStripeCustomer(params: {
+  supabaseAdmin: AdminClient;
+  stripe: Stripe;
+  userId: string;
+  email: string | null;
+}): Promise<
+  | { customerId: string }
+  | { error: Response }
+> {
+  const { data: profiles, error: profileError } = await params.supabaseAdmin
+    .from("profiles")
+    .select("id,user_id,stripe_customer_id")
+    .or(`id.eq.${params.userId},user_id.eq.${params.userId}`)
+    .limit(10);
+
+  if (profileError) {
+    return {
+      error: json(
+        {
+          error: "Failed to load profile",
+          detail: profileError.message,
+        },
+        500,
+      ),
+    };
+  }
+
+  const existingProfile =
+    (profiles ?? []).find((p) => asNonEmptyStringOrNull(p?.id) === params.userId) ??
+    (profiles ?? []).find((p) => asNonEmptyStringOrNull(p?.user_id) === params.userId) ??
+    null;
+
+  const existingCustomerId = asNonEmptyStringOrNull(existingProfile?.stripe_customer_id);
+  if (existingCustomerId) {
+    return { customerId: existingCustomerId };
+  }
+
+  let customer: Stripe.Customer;
+  try {
+    customer = await params.stripe.customers.create({
+      email: params.email ?? undefined,
+      metadata: {
+        supabase_user_id: params.userId,
+        user_id: params.userId,
+        app_id: APP_ID,
+        provider: PROVIDER,
+        ...(params.email ? { email: params.email } : {}),
+      },
+    });
+  } catch (error) {
+    return {
+      error: json(
+        {
+          error: "Failed to create Stripe customer",
+          detail: errToObj(error),
+        },
+        500,
+      ),
+    };
+  }
+
+  const timestamp = new Date().toISOString();
+
+  if (existingProfile?.id) {
+    const { error: updateError } = await params.supabaseAdmin
+      .from("profiles")
+      .update({
+        user_id: params.userId,
+        stripe_customer_id: customer.id,
+        updated_at: timestamp,
+      })
+      .eq("id", existingProfile.id);
+
+    if (updateError) {
+      return {
+        error: json(
+          {
+            error: "Failed to update existing profile with Stripe customer id",
+            detail: updateError.message,
+          },
+          500,
+        ),
+      };
+    }
+
+    return { customerId: customer.id };
+  }
+
+  const { error: insertError } = await params.supabaseAdmin
+    .from("profiles")
+    .insert({
+      id: params.userId,
+      user_id: params.userId,
+      stripe_customer_id: customer.id,
+      updated_at: timestamp,
+    });
+
+  if (insertError) {
+    const { error: fallbackUpdateError } = await params.supabaseAdmin
+      .from("profiles")
+      .update({
+        user_id: params.userId,
+        stripe_customer_id: customer.id,
+        updated_at: timestamp,
+      })
+      .eq("id", params.userId);
+
+    if (fallbackUpdateError) {
+      return {
+        error: json(
+          {
+            error: "Failed to persist Stripe customer id",
+            detail: {
+              insert: insertError.message,
+              fallbackUpdate: fallbackUpdateError.message,
+            },
+          },
+          500,
+        ),
+      };
+    }
+  }
+
+  return { customerId: customer.id };
+}
+
+async function createCheckoutSessionForFreeUser(params: {
+  stripe: Stripe;
+  supabaseAdmin: AdminClient;
+  userId: string;
+  email: string | null;
+  resolvedPriceId: string;
+  resolvedTierId: string | null;
+  tier: SubscriptionTierRow | null;
+  successUrl: string;
+  cancelUrl: string;
+}): Promise<Response> {
+  const customer = await getOrCreateStripeCustomer({
+    supabaseAdmin: params.supabaseAdmin,
+    stripe: params.stripe,
+    userId: params.userId,
+    email: params.email,
+  });
+  if ("error" in customer) return customer.error;
+
+  let session: Stripe.Checkout.Session;
+  try {
+    session = await params.stripe.checkout.sessions.create({
+      mode: "subscription",
+      customer: customer.customerId,
+      line_items: [
+        {
+          price: params.resolvedPriceId,
+          quantity: 1,
+        },
+      ],
+      success_url: params.successUrl,
+      cancel_url: params.cancelUrl,
+      allow_promotion_codes: true,
+      client_reference_id: params.userId,
+      metadata: {
+        supabase_user_id: params.userId,
+        user_id: params.userId,
+        app_id: APP_ID,
+        provider: PROVIDER,
+        price_id: params.resolvedPriceId,
+        ...(params.resolvedTierId ? { tier_id: params.resolvedTierId } : {}),
+        ...(params.tier?.name ? { tier_name: String(params.tier.name) } : {}),
+        ...(params.email ? { email: params.email } : {}),
+      },
+      subscription_data: {
+        metadata: {
+          supabase_user_id: params.userId,
+          user_id: params.userId,
+          app_id: APP_ID,
+          provider: PROVIDER,
+          price_id: params.resolvedPriceId,
+          ...(params.resolvedTierId ? { tier_id: params.resolvedTierId } : {}),
+          ...(params.tier?.name ? { tier_name: String(params.tier.name) } : {}),
+          ...(params.email ? { email: params.email } : {}),
+        },
+      },
+    });
+  } catch (error) {
+    return json(
+      {
+        error: "Failed to create Stripe checkout session",
+        detail: errToObj(error),
+      },
+      500,
+    );
+  }
+
+  return json({
+    ok: true,
+    action: "checkout",
+    mode: "checkout",
+    url: session.url ?? null,
+    checkout_url: session.url ?? null,
+    checkoutUrl: session.url ?? null,
+    requested_price_id: params.resolvedPriceId,
+    tier_id: params.resolvedTierId,
+    message: "Checkout session created successfully.",
+  });
+}
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
@@ -457,6 +663,14 @@ Deno.serve(async (req) => {
 
     const tierId = asNonEmptyStringOrNull(body.tier_id);
     const directPriceId = asNonEmptyStringOrNull(body.price_id);
+    const successUrl =
+      asNonEmptyStringOrNull(body.success_url) ??
+      asNonEmptyStringOrNull(body.successUrl) ??
+      "http://127.0.0.1:3107/billing/success";
+    const cancelUrl =
+      asNonEmptyStringOrNull(body.cancel_url) ??
+      asNonEmptyStringOrNull(body.cancelUrl) ??
+      "http://127.0.0.1:3107/pricing";
 
     const stripe = new Stripe(stripeSecretKey, {
       apiVersion: "2022-11-15",
@@ -465,6 +679,15 @@ Deno.serve(async (req) => {
 
     const supabaseAdmin = createTypedClient(supabaseUrl, serviceRoleKey);
 
+    const tierAndPrice = await getTierAndPrice({
+      supabaseAdmin,
+      tierId,
+      directPriceId,
+    });
+    if ("error" in tierAndPrice) return tierAndPrice.error;
+
+    const { tier, resolvedTierId, resolvedPriceId } = tierAndPrice.data;
+
     const canonical = await getCanonicalSubscription({
       supabaseAdmin,
       userId: auth.user.id,
@@ -472,13 +695,17 @@ Deno.serve(async (req) => {
     if ("error" in canonical) return canonical.error;
 
     if (!canonical.data) {
-      return json(
-        {
-          error: "No active paid subscription found",
-          detail: "User must subscribe before changing plan",
-        },
-        409,
-      );
+      return await createCheckoutSessionForFreeUser({
+        stripe,
+        supabaseAdmin,
+        userId: auth.user.id,
+        email: auth.user.email,
+        resolvedPriceId,
+        resolvedTierId,
+        tier,
+        successUrl,
+        cancelUrl,
+      });
     }
 
     const subscriptionId = asNonEmptyStringOrNull(canonical.data.subscription_id);
@@ -492,15 +719,6 @@ Deno.serve(async (req) => {
         500,
       );
     }
-
-    const tierAndPrice = await getTierAndPrice({
-      supabaseAdmin,
-      tierId,
-      directPriceId,
-    });
-    if ("error" in tierAndPrice) return tierAndPrice.error;
-
-    const { tier, resolvedTierId, resolvedPriceId } = tierAndPrice.data;
 
     if (currentPriceId && currentPriceId === resolvedPriceId) {
       return json(
