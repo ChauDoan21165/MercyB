@@ -1,20 +1,22 @@
+// PATH: src/components/mercy-guide/DailyCoachCard.tsx
+
 /**
  * Path: src/components/mercy-guide/DailyCoachCard.tsx
  */
 
-import React from 'react';
-import { CheckCircle2, RefreshCw, Sparkles } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
-import { CompanionProfile } from '@/services/companion';
-import { TroubleWord } from './shared';
-import { UseSpeakPracticeResult } from './hooks/useSpeakPractice';
-import { useDailyCoach } from './hooks/useDailyCoach';
+import React from "react";
+import { CheckCircle2, RefreshCw, Sparkles } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import type { CompanionProfile } from "@/services/companion";
+import type { TroubleWord } from "./shared";
+import type { UseSpeakPracticeResult } from "./hooks/useSpeakPractice";
+import { useDailyCoach } from "./hooks/useDailyCoach";
 
 interface DailyCoachCardProps {
   profile: CompanionProfile;
   contentEn?: string;
-  troubleWords: TroubleWord[];
+  troubleWords: TroubleWord[] | any[];
   speakPractice: UseSpeakPracticeResult;
   onOpenSpeak: () => void;
 }
@@ -27,10 +29,15 @@ export function DailyCoachCard({
   onOpenSpeak,
 }: DailyCoachCardProps) {
   const coach = useDailyCoach({
-    profile,
+    profile: {
+      ...profile,
+      preferred_name: profile.preferred_name ?? undefined,
+      learning_goal: profile.learning_goal ?? undefined,
+      english_level: profile.english_level ?? undefined,
+    },
     contentEn,
-    troubleWords,
-    speakPractice,
+    troubleWords: troubleWords as any,
+    speakPractice: speakPractice as any,
     onOpenSpeak,
   });
 
@@ -38,7 +45,7 @@ export function DailyCoachCard({
     <div className="rounded-xl border border-primary/15 bg-primary/5 p-4">
       <div className="flex items-start gap-3">
         <div className="rounded-full bg-white/80 p-2 shadow-sm">
-          {coach.state === 'complete' ? (
+          {coach.state === "complete" ? (
             <CheckCircle2 className="h-5 w-5 text-primary" />
           ) : (
             <Sparkles className="h-5 w-5 text-primary" />
@@ -46,7 +53,7 @@ export function DailyCoachCard({
         </div>
 
         <div className="min-w-0 flex-1">
-          {coach.state === 'idle' && (
+          {coach.state === "idle" && (
             <>
               <div className="mt-2 rounded-lg border border-primary/10 bg-white/80 p-3">
                 <p className="text-xs font-medium text-muted-foreground">Mercy</p>
@@ -79,7 +86,7 @@ export function DailyCoachCard({
             </>
           )}
 
-          {coach.state === 'intro' && (
+          {coach.state === "intro" && (
             <>
               <div className="mt-2 rounded-lg border border-primary/10 bg-white/80 p-3">
                 <p className="text-xs font-medium text-muted-foreground">Mercy</p>
@@ -107,12 +114,12 @@ export function DailyCoachCard({
             </>
           )}
 
-          {coach.state === 'feedback' && (
+          {coach.state === "feedback" && (
             <>
               <div className="mt-2 rounded-lg border border-primary/10 bg-white/80 p-3">
                 <p className="text-xs font-medium text-muted-foreground">Mercy</p>
                 <p className="mt-1 text-sm text-foreground">
-                  {coach.score >= 85 ? 'Nice work.' : 'You did it.'}
+                  {coach.score >= 85 ? "Nice work." : "You did it."}
                 </p>
                 <p className="mt-1 text-xs text-muted-foreground">
                   Clarity: {coach.score}/100
@@ -145,7 +152,7 @@ export function DailyCoachCard({
                 <Button
                   onClick={coach.tryOnceMore}
                   disabled={!coach.canRetry}
-                  className={cn(!coach.canRetry && 'opacity-60')}
+                  className={cn(!coach.canRetry && "opacity-60")}
                 >
                   Try once more
                 </Button>
@@ -156,7 +163,7 @@ export function DailyCoachCard({
             </>
           )}
 
-          {coach.state === 'complete' && (
+          {coach.state === "complete" && (
             <>
               <div className="mt-2 rounded-lg border border-primary/10 bg-white/80 p-3">
                 <p className="text-xs font-medium text-muted-foreground">Mercy</p>
@@ -181,7 +188,9 @@ export function DailyCoachCard({
                 <Button variant="ghost" disabled>
                   Come back tomorrow
                 </Button>
-                <Button onClick={coach.practiceAnother}>Practice another phrase</Button>
+                <Button onClick={coach.practiceAnother}>
+                  Practice another phrase
+                </Button>
               </div>
             </>
           )}

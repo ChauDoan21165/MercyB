@@ -7,7 +7,6 @@ import {
 } from "@/lib/billing";
 import {
   trackCheckoutStarted,
-  trackEvent,
   trackPaywallShown,
   trackPricingViewed,
 } from "@/lib/analytics";
@@ -281,11 +280,6 @@ export default function Pricing() {
     }
   }, [entitlementLoading, hasPremium, navigate]);
 
-  useEffect(() => {
-    console.log("[Pricing] ONE_MONTH_PRICE_ID =", ONE_MONTH_PRICE_ID);
-    console.log("[Pricing] ONE_YEAR_PRICE_ID =", ONE_YEAR_PRICE_ID);
-  }, [ONE_MONTH_PRICE_ID, ONE_YEAR_PRICE_ID]);
-
   async function refreshEntitlement() {
     const latestEntitlement = await fetchMyEntitlement().catch(() => null);
 
@@ -354,27 +348,16 @@ export default function Pricing() {
         return;
       }
 
-      if (!hasPremium) {
-        trackCheckoutStarted({
-          screen: "pricing",
-          plan,
-          price_id: priceId,
-          path: window.location.pathname,
-        });
-      }
-
-      console.log("[Pricing] starting checkout for plan =", plan);
-      console.log("[Pricing] sending priceId =", priceId);
-
-      await startCheckoutOrOpenPortal({
-        priceId,
-      });
-
-      trackEvent(hasPremium ? "subscription_changed" : "checkout_redirected", {
+      trackCheckoutStarted({
         screen: "pricing",
         plan,
         price_id: priceId,
         path: window.location.pathname,
+        mode: hasPremium ? "change_plan" : "checkout",
+      });
+
+      await startCheckoutOrOpenPortal({
+        priceId,
       });
 
       await refreshEntitlement();

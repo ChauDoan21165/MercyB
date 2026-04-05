@@ -3,9 +3,9 @@
  * Path: src/services/mercyChat.ts
  *
  * Hardened Mercy entry point for Guide / Mercy Host surfaces.
- * * - Preserves all original logic.
- * - Adds defensive null-checks and normalization.
- * - Ensures a fallback is ALWAYS returned even on library failure.
+ * - Preserves original logic
+ * - Adds defensive null-checks and normalization
+ * - Ensures a fallback is always returned even on library failure
  */
 
 import {
@@ -30,6 +30,9 @@ export type MercySurface = "mercy_host" | "guide";
 export type MercyRole = "teacher" | "janitor";
 export type MercyMood = "light" | "ok" | "heavy" | "anxious" | null;
 
+type MercyReplyCategory = Parameters<typeof getMercyRepliesByCategory>[0];
+type MercyKeywordCategory = MercyReplyCategory | "study_guidance";
+
 export interface AskMercyInput {
   surface: MercySurface;
   role: MercyRole;
@@ -49,7 +52,7 @@ export interface AskMercyInput {
   };
 
   signals?: {
-    lastActiveAt?: string | Date | null; // Added for internal consistency
+    lastActiveAt?: string | Date | null;
     isFirstVisit?: boolean;
     studiedToday?: boolean;
     studiedYesterday?: boolean;
@@ -90,9 +93,6 @@ type GuideIntent =
   | "end-session"
   | "fallback";
 
-/**
- * Normalization Helpers
- */
 function cleanText(value?: string | null): string {
   if (!value) return "";
   return value.trim().replace(/\s+/g, " ");
@@ -106,8 +106,7 @@ function sentenceCase(value?: string | null): string {
 
 function stripHtml(value?: string | null): string {
   if (!value) return "";
-  // More robust regex for HTML stripping
-  return cleanText(value.replace(/<[^>]*>?/gm, ' '));
+  return cleanText(value.replace(/<[^>]*>?/gm, " "));
 }
 
 function truncateWords(value?: string | null, maxWords = 18): string {
@@ -165,7 +164,7 @@ function deriveRoomContextSummary(input: AskMercyInput): RoomContextSummary {
     safeRoomTitle || safeSlug || (safeTier ? `${safeTier} room` : "this room");
 
   const hasRoomContext = Boolean(
-    safeRoomTitle || safeTier || safeSlug || topicLabel || contentSummary
+    safeRoomTitle || safeTier || safeSlug || topicLabel || contentSummary,
   );
 
   return {
@@ -177,17 +176,19 @@ function deriveRoomContextSummary(input: AskMercyInput): RoomContextSummary {
   };
 }
 
-function pickReplyText(reply: MercyReply | null | undefined, surface: MercySurface): string {
+function pickReplyText(
+  reply: MercyReply | null | undefined,
+  surface: MercySurface,
+): string {
   if (!reply) return "";
-  // Preference mapping: Guide gets English, Mercy Host gets Vietnamese (if available)
   return surface === "guide"
-    ? cleanText(reply.textEn || reply.textVi || "")
-    : cleanText(reply.textVi || reply.textEn || "");
+    ? cleanText(reply.text_en || reply.text_vi || "")
+    : cleanText(reply.text_vi || reply.text_en || "");
 }
 
 function buildFallbackGuideReply(
   intent: GuideIntent,
-  roomSummary: RoomContextSummary
+  roomSummary: RoomContextSummary,
 ): string {
   switch (intent) {
     case "use-app":
@@ -253,7 +254,6 @@ function matchGuideIntent(message?: string): GuideIntent {
 
   if (!q) return "greeting";
 
-  // Navigation & Usage
   if (/\b(how|use|work|workings)\b.*\bapp\b/.test(q)) return "use-app";
   if (/\b(how|use|work|action)\b.*\broom\b/.test(q)) return "use-room";
   if (/\b(where am i|current place|what room)\b/.test(q)) return "where-am-i";
@@ -261,17 +261,18 @@ function matchGuideIntent(message?: string): GuideIntent {
   if (/\b(price|pricing|plan|subscription|cost)\b/.test(q)) return "pricing";
   if (/\b(path|paths|tier|tiers|curriculum)\b/.test(q)) return "paths";
   if (/\b(resume|continue|back)\b/.test(q)) return "resume";
-  
-  // Mercy Branding
+
   if (/\b(teacher|mercy|talk to mercy)\b/.test(q)) return "mercy";
 
-  // Mood & Support
-  if (/\b(anxious|heavy|overwhelmed|calm|stress|scared)\b/.test(q)) return "mood-support";
+  if (/\b(anxious|heavy|overwhelmed|calm|stress|scared)\b/.test(q)) {
+    return "mood-support";
+  }
 
-  // Educational Specifics
   if (/\b(yesterday|today summary|what did i do)\b/.test(q)) return "teacher";
   if (/\b(english|coach|help|grammar|vocabulary)\b/.test(q)) return "english";
-  if (/\b(pronunciation|speak score|did i say|accent)\b/.test(q)) return "pronunciation";
+  if (/\b(pronunciation|speak score|did i say|accent)\b/.test(q)) {
+    return "pronunciation";
+  }
   if (/\b(good job|praise|encourage|proud)\b/.test(q)) return "praise";
   if (/\b(finished|done|completed|end|stop)\b/.test(q)) return "end-session";
 
@@ -284,32 +285,39 @@ function getGuideGreeting(roomSummary: RoomContextSummary): string {
     : "Hi. I’m Guide. Ask me practical things like “how do I use the app?”, “where do I start?”, or “how do I use a room?”.";
 }
 
-function findPreparedReplyByKeyword(
+async function findPreparedReplyByKeyword(
   keywords: string[],
-  category?: Parameters<typeof getMercyRepliesByCategory>[0]
-): MercyReply | null {
+  category?: MercyKeywordCategory,
+): Promise<MercyReply | null> {
   try {
-    const pool = category ? getMercyRepliesByCategory(category) : [];
+    const pool =
+      category && category !== "study_guidance"
+        ? await getMercyRepliesByCategory(category)
+        : [];
+
     if (!pool || pool.length === 0) return null;
 
     const loweredKeywords = keywords.map((k) => k.toLowerCase());
 
     for (const reply of pool) {
-      const haystack = `${reply.id} ${reply.textEn ?? ""} ${reply.textVi ?? ""}`.toLowerCase();
+      const haystack =
+        `${reply.id} ${reply.text_en ?? ""} ${reply.text_vi ?? ""}`.toLowerCase();
+
       if (loweredKeywords.some((keyword) => haystack.includes(keyword))) {
         return reply;
       }
     }
+
     return pool[0] ?? null;
-  } catch (e) {
-    console.error("MercyChat: Error in keyword search", e);
+  } catch (error) {
+    console.error("MercyChat: Error in keyword search", error);
     return null;
   }
 }
 
 function buildContext(input: AskMercyInput) {
-  // Defensive normalization of signals
   const signals = input.signals ?? {};
+
   return buildMercyContext({
     lastActiveAt: signals.lastActiveAt ?? input.profile?.lastEnglishActivity ?? null,
     isFirstVisit: !!signals.isFirstVisit,
@@ -327,12 +335,12 @@ function buildContext(input: AskMercyInput) {
 function makePreparedOutput(
   reply: MercyReply,
   surface: MercySurface,
-  category?: string | null
+  category?: string | null,
 ): AskMercyOutput {
   return {
     text: pickReplyText(reply, surface),
-    textEn: reply.textEn ?? "",
-    textVi: reply.textVi ?? "",
+    textEn: reply.text_en ?? "",
+    textVi: reply.text_vi ?? "",
     replyId: reply.id ?? null,
     source: "prepared",
     category: category ?? reply.category ?? null,
@@ -350,151 +358,172 @@ function makeFallbackOutput(text: string): AskMercyOutput {
   };
 }
 
-function resolveGuidePreparedReply(
+async function resolveGuidePreparedReply(
   intent: GuideIntent,
   input: AskMercyInput,
-  roomSummary: RoomContextSummary
-): AskMercyOutput | null {
+  roomSummary: RoomContextSummary,
+): Promise<AskMercyOutput | null> {
   const ctx = buildContext(input);
 
   try {
     switch (intent) {
       case "greeting": {
-        const reply = getMercyReply(getGreetingReplyId(ctx));
+        const reply = await getMercyReply(getGreetingReplyId(ctx));
         return reply ? makePreparedOutput(reply, "guide", "greeting") : null;
       }
 
       case "mood-support": {
-        const reply = getMercyReply(getCalmReplyId(ctx));
+        const reply = await getMercyReply(getCalmReplyId(ctx));
         return reply ? makePreparedOutput(reply, "guide", "calm") : null;
       }
 
       case "teacher": {
-        const reply = getMercyReply(getTeacherReplyId(ctx));
+        const reply = await getMercyReply(getTeacherReplyId(ctx));
         return reply ? makePreparedOutput(reply, "guide", "teacher") : null;
       }
 
       case "english": {
-        const reply = getMercyReply(getEnglishCoachReplyId());
+        const reply = await getMercyReply(getEnglishCoachReplyId());
         return reply ? makePreparedOutput(reply, "guide", "english_coach") : null;
       }
 
       case "pronunciation": {
         const score = input.signals?.pronunciationScore;
-        const reply = getMercyReply(getPronunciationPraiseReplyId(score));
-        return reply ? makePreparedOutput(reply, "guide", "pronunciation_praise") : null;
+        const reply = await getMercyReply(getPronunciationPraiseReplyId(score));
+        return reply
+          ? makePreparedOutput(reply, "guide", "pronunciation_praise")
+          : null;
       }
 
       case "praise": {
-        const reply = getMercyReply(getPraiseReplyId(ctx));
+        const reply = await getMercyReply(getPraiseReplyId(ctx));
         return reply ? makePreparedOutput(reply, "guide", "praise") : null;
       }
 
       case "end-session": {
-        const reply = getMercyReply(getEndSessionReplyId(ctx));
+        const reply = await getMercyReply(getEndSessionReplyId(ctx));
         return reply ? makePreparedOutput(reply, "guide", "end_session") : null;
       }
 
       case "next-step": {
-        const reply = getMercyReply(getSuggestionReplyId(ctx));
+        const reply = await getMercyReply(getSuggestionReplyId(ctx));
         if (reply) return makePreparedOutput(reply, "guide", "suggestion");
         return makeFallbackOutput(buildFallbackGuideReply(intent, roomSummary));
       }
 
       case "use-app": {
         const prepared =
-          findPreparedReplyByKeyword(["start", "first step", "begin"], "suggestion") ??
-          findPreparedReplyByKeyword(["gently", "small step"], "encouragement");
-        if (prepared) return makePreparedOutput(prepared, "guide", prepared.category);
+          await findPreparedReplyByKeyword(
+            ["start", "first step", "begin"],
+            "suggestion",
+          ) ??
+          await findPreparedReplyByKeyword(
+            ["gently", "small step"],
+            "encouragement",
+          );
+
+        if (prepared) {
+          return makePreparedOutput(prepared, "guide", prepared.category);
+        }
+
         return makeFallbackOutput(buildFallbackGuideReply(intent, roomSummary));
       }
 
       case "use-room": {
         const prepared =
-          findPreparedReplyByKeyword(["read", "listen", "slowly"], "study_guidance") ??
-          findPreparedReplyByKeyword(["small step", "gently"], "encouragement");
-        if (prepared) return makePreparedOutput(prepared, "guide", prepared.category);
+          await findPreparedReplyByKeyword(
+            ["read", "listen", "slowly"],
+            "study_guidance",
+          ) ??
+          await findPreparedReplyByKeyword(
+            ["small step", "gently"],
+            "encouragement",
+          );
+
+        if (prepared) {
+          return makePreparedOutput(prepared, "guide", prepared.category);
+        }
+
         return makeFallbackOutput(buildFallbackGuideReply(intent, roomSummary));
       }
 
       default:
         return makeFallbackOutput(buildFallbackGuideReply(intent, roomSummary));
     }
-  } catch (e) {
-    console.error("MercyChat: Error resolving prepared reply", e);
+  } catch (error) {
+    console.error("MercyChat: Error resolving prepared reply", error);
     return makeFallbackOutput(buildFallbackGuideReply(intent, roomSummary));
   }
 }
 
-/**
- * Shared Mercy entry point.
- */
 export async function askMercy(
-  input: AskMercyInput
+  input: AskMercyInput,
 ): Promise<AskMercyOutput> {
-  // Critical error boundary
   try {
     await preloadMercyLibrary();
-  } catch (e) {
-    console.error("MercyChat: Library preload failed", e);
-    return makeFallbackOutput("I'm having trouble thinking clearly. Please try again in a moment.");
+  } catch (error) {
+    console.error("MercyChat: Library preload failed", error);
+    return makeFallbackOutput(
+      "I'm having trouble thinking clearly. Please try again in a moment.",
+    );
   }
 
   const roomSummary = deriveRoomContextSummary(input);
 
-  // Surface check
   if (input.surface === "guide") {
     const intent = matchGuideIntent(input.message);
-    const prepared = resolveGuidePreparedReply(intent, input, roomSummary);
+    const prepared = await resolveGuidePreparedReply(intent, input, roomSummary);
     if (prepared) return prepared;
 
     return makeFallbackOutput(
       intent === "greeting"
         ? getGuideGreeting(roomSummary)
-        : buildFallbackGuideReply(intent, roomSummary)
+        : buildFallbackGuideReply(intent, roomSummary),
     );
   }
 
-  // Mercy Host Path (Teacher Mode)
   try {
     const ctx = buildContext(input);
     const message = cleanText(input.message);
 
-    // 1. Silent/Greeting trigger
     if (!message) {
-      const greeting = getMercyReply(getGreetingReplyId(ctx));
-      if (greeting) return makePreparedOutput(greeting, "mercy_host", "greeting");
+      const greeting = await getMercyReply(getGreetingReplyId(ctx));
+      if (greeting) {
+        return makePreparedOutput(greeting, "mercy_host", "greeting");
+      }
     }
 
-    // 2. Session Completion
     if (input.signals?.completedSession || input.signals?.completedPath) {
-      const reply = getMercyReply(getEndSessionReplyId(ctx));
+      const reply = await getMercyReply(getEndSessionReplyId(ctx));
       if (reply) return makePreparedOutput(reply, "mercy_host", "end_session");
     }
 
-    // 3. Emotional/Crisis Support
     if (
       input.signals?.currentMood === "heavy" ||
       input.signals?.currentMood === "anxious" ||
       input.signals?.recentHeavyMoods
     ) {
-      const reply = getMercyReply(getCalmReplyId(ctx));
+      const reply = await getMercyReply(getCalmReplyId(ctx));
       if (reply) return makePreparedOutput(reply, "mercy_host", "calm");
     }
 
-    // 4. Default Teacher Guidance
-    const teacher = getMercyReply(getTeacherReplyId(ctx));
+    const teacher = await getMercyReply(getTeacherReplyId(ctx));
     if (teacher) return makePreparedOutput(teacher, "mercy_host", "teacher");
 
-    const greetingAlt = getMercyReply(getGreetingReplyId(ctx));
-    if (greetingAlt) return makePreparedOutput(greetingAlt, "mercy_host", "greeting");
+    const greetingAlt = await getMercyReply(getGreetingReplyId(ctx));
+    if (greetingAlt) {
+      return makePreparedOutput(greetingAlt, "mercy_host", "greeting");
+    }
 
-    return makeFallbackOutput("I’m here with you. One small step is enough for now.");
-  } catch (e) {
-    console.error("MercyChat: Mercy Host path failed", e);
-    return makeFallbackOutput("I’m here. Let’s take a deep breath and take one step at a time.");
+    return makeFallbackOutput(
+      "I’m here with you. One small step is enough for now.",
+    );
+  } catch (error) {
+    console.error("MercyChat: Mercy Host path failed", error);
+    return makeFallbackOutput(
+      "I’m here. Let’s take a deep breath and take one step at a time.",
+    );
   }
 }
 
-// Ensure module consistency for default imports
 export default askMercy;

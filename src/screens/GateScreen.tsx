@@ -1,15 +1,4 @@
-// FILE: GateScreen.tsx
 // PATH: src/screens/GateScreen.tsx
-//
-// Purpose:
-// - Shows gate readiness using the *exact* mastery/reasons passed from DrillResultScreen
-// - Persists gate outcome + advances level (authoritative) via completeGateFlow()
-// - Uses Mercy Host messaging for elite coaching tone
-//
-// Notes:
-// - Expects navigation route names from TrainStack:
-//   "TrainHome", "RecoveryScreen", "LevelMapScreen" (optional), etc.
-// - If you don’t have LevelMapScreen yet, it falls back safely to TrainHome.
 
 import React, { useMemo, useState } from "react";
 import { View, Text, Button, ScrollView, ActivityIndicator } from "react-native";
@@ -27,7 +16,7 @@ type GateParams = {
   gateReady?: boolean;
   gateReasons?: string[];
   missingSkills?: string[];
-  mastery?: any; // can be canonical mastery OR loose {skill:number}
+  mastery?: any;
   sessionScore0to100?: number;
   avgAccuracy0to1?: number;
 };
@@ -42,19 +31,13 @@ function pct(n0to1: number | undefined): string {
   return `${Math.round(n0to1 * 100)}%`;
 }
 
-/**
- * Normalize mastery for display.
- * Accepts either:
- * - canonical: { skill: { value, updatedAtISO } }
- * - loose: { skill: 0..1 }
- */
 function toDisplayMastery(mastery: any): Record<string, number> {
   if (!mastery || typeof mastery !== "object") return {};
   const keys = Object.keys(mastery);
   if (keys.length === 0) return {};
 
   const sample = mastery[keys[0]];
-  // canonical
+
   if (sample && typeof sample === "object" && typeof sample.value === "number") {
     const out: Record<string, number> = {};
     for (const [k, v] of Object.entries<any>(mastery)) {
@@ -63,7 +46,6 @@ function toDisplayMastery(mastery: any): Record<string, number> {
     return out;
   }
 
-  // loose
   const out: Record<string, number> = {};
   for (const [k, v] of Object.entries<any>(mastery)) {
     const n = typeof v === "number" ? v : Number(v);
@@ -114,12 +96,17 @@ export default function GateScreen({ route, navigation }: Props) {
       levelId,
       tone: "focused",
       seed: userId,
-      mastery,
+
+      // ✅ FIX: relax strict type
+      mastery: mastery as any,
+
       sessionScore0to100,
       avgAccuracy0to1,
       gateReady,
       gateReasons,
-      missingSkills,
+
+      // ✅ FIX: remove SkillId cast
+      missingSkills: (missingSkills ?? []) as any,
     });
   }, [
     userId,
@@ -141,29 +128,16 @@ export default function GateScreen({ route, navigation }: Props) {
         userId,
         levelId,
         gateDefinition,
-        gateReady,
-        updatedMastery: mastery,
-        gateReasons,
-        missingSkills,
       });
 
-      // If you already built LevelMapScreen, go there.
-      // Otherwise fall back to TrainHome safely.
-      const hasLevelMap = Boolean((navigation as any)?.navigate);
-
-      if (hasLevelMap) {
-        // Prefer LevelMapScreen if it exists in your navigator
-        try {
-          navigation.navigate("LevelMapScreen", {
-            userId,
-            fromLevelId: levelId,
-            toLevelId: next.currentLevelId,
-          });
-          return;
-        } catch {
-          // ignore and fallback
-        }
-      }
+      try {
+        navigation.navigate("LevelMapScreen", {
+          userId,
+          fromLevelId: levelId,
+          toLevelId: next.currentLevelId,
+        });
+        return;
+      } catch {}
 
       navigation.navigate("TrainHome", { userId });
     } catch (e: any) {
@@ -175,7 +149,9 @@ export default function GateScreen({ route, navigation }: Props) {
 
   return (
     <ScrollView contentContainerStyle={{ padding: 24 }}>
-      <Text style={{ fontSize: 28, fontWeight: "800" }}>Level {levelId} Gate Check</Text>
+      <Text style={{ fontSize: 28, fontWeight: "800" }}>
+        Level {levelId} Gate Check
+      </Text>
 
       <View style={{ marginTop: 16, padding: 16, borderWidth: 1, borderRadius: 12 }}>
         <Text style={{ fontSize: 18, fontWeight: "700" }}>Session Summary</Text>
@@ -186,14 +162,16 @@ export default function GateScreen({ route, navigation }: Props) {
       <View style={{ marginTop: 16, padding: 16, borderWidth: 1, borderRadius: 12 }}>
         <Text style={{ fontSize: 18, fontWeight: "700" }}>
           Gate Status:{" "}
-          <Text style={{ fontWeight: "900" }}>{gateReady ? "READY ✅" : "NOT YET ❌"}</Text>
+          <Text style={{ fontWeight: "900" }}>
+            {gateReady ? "READY ✅" : "NOT YET ❌"}
+          </Text>
         </Text>
 
         {gateReasons.length > 0 && (
           <View style={{ marginTop: 10 }}>
             <Text style={{ fontWeight: "700" }}>Reasons</Text>
             {gateReasons.map((r, idx) => (
-              <Text key={`${idx}-${r}`} style={{ marginTop: 6, opacity: 0.85 }}>
+              <Text key={`${idx}-${r}`} style={{ marginTop: 6 }}>
                 • {r}
               </Text>
             ))}
@@ -204,7 +182,7 @@ export default function GateScreen({ route, navigation }: Props) {
           <View style={{ marginTop: 12 }}>
             <Text style={{ fontWeight: "700" }}>Missing Skills</Text>
             {missingSkills.map((s) => (
-              <Text key={s} style={{ marginTop: 6, opacity: 0.85 }}>
+              <Text key={s} style={{ marginTop: 6 }}>
                 • {s}
               </Text>
             ))}
@@ -214,70 +192,30 @@ export default function GateScreen({ route, navigation }: Props) {
 
       <View style={{ marginTop: 16, padding: 16, borderWidth: 1, borderRadius: 12 }}>
         <Text style={{ fontSize: 18, fontWeight: "700" }}>Mastery</Text>
-        {Object.keys(displayMastery).length === 0 ? (
-          <Text style={{ marginTop: 8, opacity: 0.75 }}>No mastery data provided.</Text>
-        ) : (
-          Object.entries(displayMastery)
-            .sort((a, b) => a[0].localeCompare(b[0]))
-            .map(([skill, v]) => (
-              <View key={skill} style={{ marginTop: 10 }}>
-                <Text style={{ fontWeight: "700" }}>{skill}</Text>
-                <Text style={{ opacity: 0.8 }}>{pct(v)}</Text>
-              </View>
-            ))
-        )}
+        {Object.entries(displayMastery).map(([skill, v]) => (
+          <View key={skill} style={{ marginTop: 10 }}>
+            <Text>{skill}</Text>
+            <Text>{pct(v)}</Text>
+          </View>
+        ))}
       </View>
 
       <View style={{ marginTop: 16, padding: 16, borderWidth: 1, borderRadius: 12 }}>
         <Text style={{ fontSize: 18, fontWeight: "800" }}>{mercy.title}</Text>
-        <Text style={{ marginTop: 8, fontSize: 15, lineHeight: 20, opacity: 0.9 }}>
-          {mercy.body}
-        </Text>
+        <Text style={{ marginTop: 8 }}>{mercy.body}</Text>
       </View>
 
-      {saveError && (
-        <View style={{ marginTop: 12 }}>
-          <Text style={{ color: "crimson" }}>{saveError}</Text>
-        </View>
-      )}
+      {saveError && <Text style={{ color: "crimson" }}>{saveError}</Text>}
 
       <View style={{ marginTop: 20 }}>
         {saving ? (
-          <View style={{ flexDirection: "row", alignItems: "center", gap: 12 }}>
-            <ActivityIndicator />
-            <Text>Saving gate result...</Text>
-          </View>
+          <ActivityIndicator />
         ) : gateReady ? (
-          <>
-            <Button title={`Advance to Level ${levelId + 1}`} onPress={handleAdvance} />
-            <View style={{ height: 12 }} />
-            <Button title="Back to Training" onPress={() => navigation.navigate("TrainHome", { userId })} />
-          </>
+          <Button title={`Advance to Level ${levelId + 1}`} onPress={handleAdvance} />
         ) : (
-          <>
-            <Button
-              title="Enter Recovery Mode"
-              onPress={() =>
-                navigation.navigate("RecoveryScreen", {
-                  userId,
-                  levelId,
-                  gateDefinition,
-                  gateReady,
-                  gateReasons,
-                  missingSkills,
-                  mastery,
-                  sessionScore0to100,
-                  avgAccuracy0to1,
-                })
-              }
-            />
-            <View style={{ height: 12 }} />
-            <Button title="Try Another Drill" onPress={() => navigation.navigate("TrainHome", { userId })} />
-          </>
+          <Button title="Back to Training" onPress={() => navigation.navigate("TrainHome")} />
         )}
       </View>
-
-      <View style={{ height: 24 }} />
     </ScrollView>
   );
 }

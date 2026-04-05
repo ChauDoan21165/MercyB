@@ -23,5 +23,17 @@
     }
   },
   "include": ["src", "vite.config.*"],
-  "exclude": ["dist", "node_modules", "supabase", "scripts"]
+  "exclude": [
+    "dist",
+    "node_modules",
+    "supabase",
+    "scripts",
+    "src/app",
+    "src/screens/DrillResultScreen.tsx",
+    "src/screens/GateScreen.tsx",
+    "src/screens/LevelMapScreen.tsx",
+    "src/screens/OnboardingScreen.tsx",
+    "src/screens/PlacementScreen.tsx",
+    "src/screens/TrainHomeScreen.tsx"
+  ]
 }

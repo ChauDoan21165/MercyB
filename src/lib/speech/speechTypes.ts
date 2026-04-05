@@ -1,3 +1,5 @@
+// PATH: src/lib/speech/speechTypes.ts
+
 export type SpeechIntent =
   | "SUCCESS"
   | "SUCCESS_CLOSE"
@@ -6,7 +8,7 @@ export type SpeechIntent =
   | "RETRY_SLOW"
   | "NO_SPEECH";
 
-export type SpeechAnalysisResponse = {
+export type SpeechComparisonResult = {
   transcript: string;
   normalizedTranscript: string;
   normalizedTarget: string;
@@ -16,3 +18,5 @@ export type SpeechAnalysisResponse = {
   intent: SpeechIntent;
   message: string;
 };
+
+export type SpeechAnalysisResponse = SpeechComparisonResult;

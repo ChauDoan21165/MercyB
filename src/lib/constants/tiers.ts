@@ -11,10 +11,14 @@ export type TierId =
   | "vip4"
   | "vip5"
   | "vip6"
+  | "vip7"
+  | "vip8"
   | "vip9"
   | "kids_1"
   | "kids_2"
   | "kids_3";
+
+export type TierValue = TierId;
 
 export const TIER_IDS: readonly TierId[] = [
   "free",
@@ -26,14 +30,17 @@ export const TIER_IDS: readonly TierId[] = [
   "vip4",
   "vip5",
   "vip6",
+  "vip7",
+  "vip8",
   "vip9",
   "kids_1",
   "kids_2",
   "kids_3",
 ] as const;
 
-// ✅ Back-compat export expected by TierDetail.tsx and older callers
+// Back-compat exports expected by older callers
 export const ALL_TIER_IDS: readonly TierId[] = TIER_IDS;
+export const TIERS: readonly TierId[] = TIER_IDS;
 
 export const tierIdToLabel: Record<TierId, string> = {
   free: "Free",
@@ -45,26 +52,60 @@ export const tierIdToLabel: Record<TierId, string> = {
   vip4: "VIP 4",
   vip5: "VIP 5",
   vip6: "VIP 6",
+  vip7: "VIP 7",
+  vip8: "VIP 8",
   vip9: "VIP 9",
   kids_1: "Kids 1",
   kids_2: "Kids 2",
   kids_3: "Kids 3",
 };
 
+export const TIER_ID_TO_LABEL: Record<TierId, string> = tierIdToLabel;
+
+export const KIDS_TIER_IDS: readonly TierId[] = [
+  "kids_1",
+  "kids_2",
+  "kids_3",
+] as const;
+
+const tierLabelToIdMap: Record<string, TierId> = Object.fromEntries(
+  Object.entries(tierIdToLabel).map(([tierId, label]) => [label.toLowerCase(), tierId as TierId]),
+) as Record<string, TierId>;
+
+export const tierLabelToId: Record<string, TierId> = tierLabelToIdMap;
+
 function clean(input: unknown): string {
-  return String(input ?? "")
-    .trim()
-    .toLowerCase();
+  return String(input ?? "").trim().toLowerCase();
 }
 
 export function isTierId(value: unknown): value is TierId {
   return (TIER_IDS as readonly string[]).includes(clean(value));
 }
 
+export function isValidTierId(value: unknown): value is TierId {
+  return isTierId(value);
+}
+
+export function isValidTier(value: unknown): value is TierId {
+  return isTierId(value);
+}
+
+export function isKidsTier(value: unknown): value is TierId {
+  const normalized = normalizeTierOrUndefined(value);
+  return normalized !== undefined && (KIDS_TIER_IDS as readonly TierId[]).includes(normalized);
+}
+
 export function normalizeTier(input: unknown): TierId {
+  return normalizeTierOrUndefined(input) ?? "free";
+}
+
+export function normalizeTierOrUndefined(input: unknown): TierId | undefined {
   const raw = clean(input);
 
-  if (!raw) return "free";
+  if (!raw) return undefined;
+
+  // direct exact match
+  if (isTierId(raw)) return raw;
 
   // current product model
   if (
@@ -95,13 +136,15 @@ export function normalizeTier(input: unknown): TierId {
     return "free";
   }
 
-  // legacy VIP mappings kept temporarily so older code/tests don't explode
+  // legacy VIP mappings
   if (raw === "vip1" || raw.includes("vip1")) return "vip1";
   if (raw === "vip2" || raw.includes("vip2")) return "vip2";
   if (raw === "vip3" || raw.includes("vip3 ii") || raw.includes("vip3")) return "vip3";
   if (raw === "vip4" || raw.includes("vip4")) return "vip4";
   if (raw === "vip5" || raw.includes("vip5")) return "vip5";
   if (raw === "vip6" || raw.includes("vip6")) return "vip6";
+  if (raw === "vip7" || raw.includes("vip7")) return "vip7";
+  if (raw === "vip8" || raw.includes("vip8")) return "vip8";
   if (
     raw === "vip9" ||
     raw.includes("cấp vip9") ||
@@ -141,5 +184,10 @@ export function normalizeTier(input: unknown): TierId {
     return "kids_3";
   }
 
-  return "free";
+  // label-based normalization
+  if (raw in tierLabelToIdMap) {
+    return tierLabelToIdMap[raw];
+  }
+
+  return undefined;
 }

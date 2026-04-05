@@ -1,0 +1,45 @@
+src/components/mercy-guide/DailyCoachCard.tsx(32,5): error TS2322: Type 'CompanionProfile' is not assignable to type 'CompanionProfileLike'.
+  Types of property 'preferred_name' are incompatible.
+    Type 'string | null | undefined' is not assignable to type 'string | undefined'.
+      Type 'null' is not assignable to type 'string | undefined'.
+src/components/mercy-guide/DailyCoachCard.tsx(35,5): error TS2322: Type '{ recorder: PronunciationRecorderState; targetPhrase: string; setTargetPhrase: Dispatch<SetStateAction<string>>; trimmedTargetPhrase: string; ... 20 more ...; clearRecordedAudio: () => void; }' is not assignable to type 'SpeakPracticeLike'.
+  Types of property 'pronunciationResult' are incompatible.
+    Type 'PronunciationResult | null' is not assignable to type 'PronunciationResultLike | null'.
+      Type 'PronunciationResult' is not assignable to type 'PronunciationResultLike'.
+        Types of property 'feedback' are incompatible.
+          Type 'PronunciationFeedback' has no properties in common with type '{ focusWord?: string | undefined; focusTip?: string | undefined; praise?: string | undefined; summary?: string | undefined; }'.
+src/components/mercy-guide/MercyGuide.tsx(12,43): error TS2307: Cannot find module './MercyGuideProfileSettings' or its corresponding type declarations.
+src/components/mercy-guide/MercyGuide.tsx(14,10): error TS2614: Module '"./tabs/EnglishLogicTab"' has no exported member 'MercyEnglishTab'. Did you mean to use 'import MercyEnglishTab from "./tabs/EnglishLogicTab"' instead?
+src/components/mercy-guide/MercyGuide.tsx(15,10): error TS2614: Module '"./tabs/PronunciationTab"' has no exported member 'MercySpeakTab'. Did you mean to use 'import MercySpeakTab from "./tabs/PronunciationTab"' instead?
+src/components/mercy-guide/MercyGuide.tsx(59,96): error TS2339: Property 'mood' does not exist on type 'MoodKey'.
+  Property 'mood' does not exist on type '"light"'.
+src/components/mercy-guide/MercyGuide.tsx(112,22): error TS2741: Property 'onNavigateSuggestion' is missing in type '{ profile: any; yesterdaySummary: any; todayTotalMinutes: number; hasHeavyMoods: boolean; suggestions: any[]; showBreathingScript: false; breathingStep: number; showReframe: false; setShowBreathingScript: () => void; setBreathingStep: () => void; setShowReframe: () => void; onOpenPronunciation: () => void; onOpenWri...' but required in type 'MercyTeacherTabProps'.
+src/components/mercy-guide/MercyGuide.tsx(158,27): error TS7006: Parameter 'nextProfile' implicitly has an 'any' type.
+src/components/mercy-guide/MercyGuide.tsx(158,55): error TS7006: Parameter 'prev' implicitly has an 'any' type.
+src/components/mercy-guide/MercyTeacherTab.tsx(143,38): error TS2552: Cannot find name 'buildOrderedTasks'. Did you mean 'orderedTasks'?
+src/components/mercy-guide/MercyTeacherTab.tsx(144,44): error TS2552: Cannot find name 'deriveTaskFromTeacherTask'. Did you mean 'derivedTeacherTask'?
+src/components/mercy-guide/MercyTeacherTab.tsx(148,34): error TS2552: Cannot find name 'getModeTone'. Did you mean 'modeTone'?
+src/components/mercy-guide/MercyTeacherTab.tsx(149,36): error TS2552: Cannot find name 'getMemoryLine'. Did you mean 'memoryLine'?
+src/components/mercy-guide/MercyTeacherTab.tsx(150,37): error TS2304: Cannot find name 'formatReviewFocus'.
+src/components/mercy-guide/MercyTeacherTab.tsx(151,41): error TS2304: Cannot find name 'getTaskIcon'.
+src/components/mercy-guide/MercyTeacherTab.tsx(152,29): error TS2304: Cannot find name 'supportsInlineAction'.
+src/components/mercy-guide/MercyTeacherTab.tsx(153,42): error TS2552: Cannot find name 'getRevisionSeedText'. Did you mean 'revisionSeedText'?
+src/components/mercy-guide/MercyTeacherTab.tsx(161,39): error TS2304: Cannot find name 'asTeacherApiView'.
+src/components/mercy-guide/MercyTeacherTab.tsx(163,31): error TS2304: Cannot find name 'getFixesFromApi'.
+src/components/mercy-guide/MercyTeacherTab.tsx(164,50): error TS2304: Cannot find name 'getVisibleParagraphAnalysis'.
+src/components/mercy-guide/MercyTeacherTab.tsx(165,40): error TS2304: Cannot find name 'getParagraphNotes'.
+src/components/mercy-guide/MercyTeacherTab.tsx(166,28): error TS2304: Cannot find name 'hasSubmittedWriting'.
+src/components/mercy-guide/MercyTeacherTab.tsx(167,44): error TS2304: Cannot find name 'getTeacherLoopSummary'.
+src/components/mercy-guide/tabs/PronunciationTab.tsx(26,7): error TS2322: Type 'string[]' is not assignable to type 'TroubleWord[]'.
+  Type 'string' is not assignable to type 'TroubleWord'.
+src/components/mercy/MercyWorkspace.tsx(5,28): error TS2307: Cannot find module '../mercy-host/MercyHostPanel' or its corresponding type declarations.
+src/components/MercyGuide.tsx(642,7): error TS2322: Type 'Dispatch<SetStateAction<GuideTab>>' is not assignable to type '(value: string) => void'.
+  Types of parameters 'value' and 'value' are incompatible.
+    Type 'string' is not assignable to type 'SetStateAction<GuideTab>'.
+src/components/ui/Screen.tsx(7,59): error TS2339: Property 'children' does not exist on type '{ style?: any; }'.
+src/components/ui/Screen.tsx(31,6): error TS2322: Type '{ children: Element; style: { flex: number; backgroundColor: string; }; }' is not assignable to type 'IntrinsicAttributes & { style?: any; }'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & { style?: any; }'.
+src/components/VIPNavigation.tsx(28,20): error TS2339: Property 'access' does not exist on type 'UserAccess'.
+src/lib/speech/compareTranscript.ts(303,5): error TS2322: Type 'number' is not assignable to type 'string[]'.
+src/lib/speech/compareTranscript.ts(304,5): error TS2322: Type 'number' is not assignable to type 'string[]'.
+src/lib/speech/compareTranscript.ts(353,76): error TS2339: Property 'accuracy' does not exist on type 'SpeechComparisonResult'.

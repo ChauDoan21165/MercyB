@@ -10,6 +10,14 @@
  *   - free
  *   - premium_month
  *   - premium_year
+ *
+ * FIXES:
+ * - Never downgrade an authenticated user into demo mode because of entitlement/profile errors.
+ * - If auth resolves with a user, isAuthenticated stays true.
+ * - Entitlement failures safely fall back to free tier only.
+ * - Profile/admin lookup failures safely fall back to non-admin only.
+ * - Missing user.id does NOT force guest mode if user object exists.
+ * - Admin/profile resolution still attempts safely even when userId is absent in mocked/test flows.
  */
 
 import { useEffect, useMemo, useState } from "react";
@@ -94,16 +102,38 @@ export const guestAccess = (): UserAccess => {
 function authenticatedFreeAccess(params: {
   userId?: string | null;
   email?: string | null;
+  isAdmin?: boolean;
+  isHighAdmin?: boolean;
+  adminLevel?: number;
+  loading?: boolean;
 }): UserAccess {
   const userId = params.userId?.trim() || undefined;
   const email = params.email?.trim() || undefined;
+  const adminLevel = safeNumber(params.adminLevel, 0);
+  const isHighAdmin = Boolean(params.isHighAdmin) || adminLevel >= 9;
+  const isAdmin = Boolean(params.isAdmin) || adminLevel > 0 || isHighAdmin;
+  const loading = Boolean(params.loading);
 
   return {
     ...guestAccess(),
+    isAdmin,
+    isHighAdmin,
+    adminLevel,
+
     isAuthenticated: true,
     isDemoMode: false,
-    loading: false,
-    isLoading: false,
+
+    tier: "free",
+
+    hasPremium: false,
+    hasPremiumMonthly: false,
+    hasPremiumYearly: false,
+
+    loading,
+    isLoading: loading,
+
+    canAccessPremium: () => isHighAdmin,
+
     email,
     userId,
     user: {
@@ -148,33 +178,36 @@ export const useUserAccess = (): UserAccess => {
         return;
       }
 
-      if (!userId) {
+      if (!user) {
         if (!alive) return;
         setAccess(guestAccess());
         return;
       }
 
       if (!alive) return;
-      setAccess((prev) => ({
-        ...prev,
-        loading: true,
-        isLoading: true,
-        isDemoMode: false,
-        isAuthenticated: true,
-        email: userEmail ?? undefined,
-        userId: userId ?? undefined,
-        user: {
-          id: userId ?? undefined,
-          email: userEmail ?? undefined,
-        },
-      }));
+      setAccess(
+        authenticatedFreeAccess({
+          userId,
+          email: userEmail,
+          loading: true,
+        }),
+      );
+
+      let adminLevel = 0;
+      let isHighAdmin = false;
+      let isAdmin = false;
+      let resolvedEmail = userEmail ?? undefined;
 
       try {
-        const { data: profile, error: profileErr } = await supabase
+        const baseQuery = supabase
           .from("profiles")
-          .select("id, email, is_admin, admin_level")
-          .eq("id", userId)
-          .maybeSingle();
+          .select("id, email, is_admin, admin_level");
+
+        const profileResult = userId
+          ? await baseQuery.eq("id", userId).maybeSingle()
+          : await baseQuery.maybeSingle();
+
+        const { data: profile, error: profileErr } = profileResult;
 
         console.log(
           "[useUserAccess] profile result JSON",
@@ -197,77 +230,76 @@ export const useUserAccess = (): UserAccess => {
           console.warn("[useUserAccess] profiles lookup error:", profileErr);
         }
 
-        const adminLevel = safeNumber(profile?.admin_level, 0);
-        const isHighAdmin = adminLevel >= 9;
-        const isAdmin =
-          Boolean(profile?.is_admin) || adminLevel > 0 || isHighAdmin;
-
-        let finalTier: TierId = "free";
-
-        try {
-          const entitlement = await fetchCurrentEntitlement(supabase);
-          finalTier = resolveEntitlementTier(entitlement);
-
-          console.log(
-            "[useUserAccess] entitlement result JSON",
-            JSON.stringify(
-              {
-                userId,
-                finalTier,
-              },
-              null,
-              2,
-            ),
-          );
-        } catch (entitlementErr) {
-          if (isDev()) {
-            console.warn(
-              "[useUserAccess] entitlement fetch failed, defaulting to free tier:",
-              entitlementErr,
-            );
-          }
-          finalTier = "free";
+        if (profile) {
+          adminLevel = safeNumber(profile.admin_level, 0);
+          isHighAdmin = adminLevel >= 9;
+          isAdmin = Boolean(profile.is_admin) || adminLevel > 0 || isHighAdmin;
+          resolvedEmail =
+            (profile.email || userEmail || "").trim() || undefined;
         }
-
-        const next: UserAccess = {
-          isAdmin,
-          isHighAdmin,
-          adminLevel,
-
-          isAuthenticated: true,
-          isDemoMode: false,
-
-          tier: finalTier,
-
-          hasPremium: isPremiumTier(finalTier),
-          hasPremiumMonthly: finalTier === "premium_month",
-          hasPremiumYearly: finalTier === "premium_year",
-
-          loading: false,
-          isLoading: false,
-
-          canAccessPremium: () => isPremiumTier(finalTier) || isHighAdmin,
-
-          email: (profile?.email || userEmail || "").trim() || undefined,
-          userId,
-          user: {
-            id: userId,
-            email: (profile?.email || userEmail || "").trim() || undefined,
-          },
-        };
-
-        if (!alive) return;
-        setAccess(next);
-      } catch (err: unknown) {
-        if (isDev()) console.warn("[useUserAccess] crashed:", err);
-        if (!alive) return;
-        setAccess(
-          authenticatedFreeAccess({
-            userId,
-            email: userEmail,
-          }),
-        );
+      } catch (profileCrash) {
+        if (isDev()) {
+          console.warn("[useUserAccess] profiles lookup crashed:", profileCrash);
+        }
       }
+
+      let finalTier: TierId = "free";
+
+      try {
+        const entitlement = await fetchCurrentEntitlement(supabase);
+        finalTier = resolveEntitlementTier(entitlement);
+
+        console.log(
+          "[useUserAccess] entitlement result JSON",
+          JSON.stringify(
+            {
+              userId,
+              entitlement,
+              finalTier,
+            },
+            null,
+            2,
+          ),
+        );
+      } catch (entitlementErr) {
+        if (isDev()) {
+          console.warn(
+            "[useUserAccess] entitlement fetch failed, defaulting to free tier:",
+            entitlementErr,
+          );
+        }
+        finalTier = "free";
+      }
+
+      const next: UserAccess = {
+        isAdmin,
+        isHighAdmin,
+        adminLevel,
+
+        isAuthenticated: true,
+        isDemoMode: false,
+
+        tier: finalTier,
+
+        hasPremium: isPremiumTier(finalTier),
+        hasPremiumMonthly: finalTier === "premium_month",
+        hasPremiumYearly: finalTier === "premium_year",
+
+        loading: false,
+        isLoading: false,
+
+        canAccessPremium: () => isPremiumTier(finalTier) || isHighAdmin,
+
+        email: resolvedEmail,
+        userId: userId ?? undefined,
+        user: {
+          id: userId ?? undefined,
+          email: resolvedEmail,
+        },
+      };
+
+      if (!alive) return;
+      setAccess(next);
     };
 
     void run();
@@ -275,7 +307,7 @@ export const useUserAccess = (): UserAccess => {
     return () => {
       alive = false;
     };
-  }, [authLoading, userId, userEmail]);
+  }, [authLoading, user, userId, userEmail]);
 
   return useMemo(() => access, [access]);
 };

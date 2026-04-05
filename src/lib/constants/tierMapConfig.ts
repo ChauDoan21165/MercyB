@@ -1,3 +1,5 @@
+// PATH: src/lib/constants/tierMapConfig.ts
+
 /**
  * TIER MAP CONFIGURATION - Mercy Blade Design System
  *
@@ -14,12 +16,12 @@
  * 5. Never auto-mix rooms - use ONLY this explicit config
  */
 
-import { TierId } from "./tiers";
+import type { TierId } from "./tiers";
 
 export interface TierColumnConfig {
-  english: string[]; // LEFT column - English Pathway
-  core: string[]; // CENTER column - Core Mercy Blade (philosophy, health, stress, AI, etc.)
-  skills: string[]; // RIGHT column - Life Skills / Survival
+  english: string[];
+  core: string[];
+  skills: string[];
 }
 
 export type TierMapConfig = Record<TierId, TierColumnConfig>;
@@ -29,7 +31,6 @@ export type TierMapConfig = Record<TierId, TierColumnConfig>;
  * Used as fallback when room is not explicitly configured
  */
 export const COLUMN_PATTERNS = {
-  // English column patterns (LEFT)
   english: [
     /english/i,
     /^a1/i,
@@ -50,7 +51,6 @@ export const COLUMN_PATTERNS = {
     /storytelling/i,
   ],
 
-  // Core column patterns (CENTER) - Philosophy, Health, Stress, AI, Psychology
   core: [
     /health/i,
     /stress/i,
@@ -79,7 +79,6 @@ export const COLUMN_PATTERNS = {
     /tired.*heart/i,
   ],
 
-  // Skills column patterns (RIGHT) - Life Skills, Survival
   skills: [
     /survival/i,
     /first.*aid/i,
@@ -95,30 +94,29 @@ export const COLUMN_PATTERNS = {
     /delivery.*presence/i,
     /structuring.*message/i,
   ],
-};
+} as const;
 
 /**
  * Categorize a room into a column based on ID and title
  */
-export function categorizeRoom(roomId: string, titleEn?: string): "english" | "core" | "skills" {
+export function categorizeRoom(
+  roomId: string,
+  titleEn?: string
+): "english" | "core" | "skills" {
   const searchStr = `${roomId} ${titleEn || ""}`.toLowerCase();
 
-  // Check English patterns first
   for (const pattern of COLUMN_PATTERNS.english) {
     if (pattern.test(searchStr)) return "english";
   }
 
-  // Check Skills patterns (before core to catch public speaking correctly)
   for (const pattern of COLUMN_PATTERNS.skills) {
     if (pattern.test(searchStr)) return "skills";
   }
 
-  // Check Core patterns
   for (const pattern of COLUMN_PATTERNS.core) {
     if (pattern.test(searchStr)) return "core";
   }
 
-  // Default to core for unclassified rooms
   return "core";
 }
 
@@ -166,10 +164,45 @@ export const TIER_CONTENT_MAP = {
       subtitle: "Health, stress basics",
     },
     skills: {
-      // ✅ FIX: do NOT claim Survival series lives in Free
       title: "Life Skills (Preview)",
       titleVi: "Kỹ Năng Sống (Xem Trước)",
       subtitle: "Intro only (no Survival series here)",
+    },
+  },
+
+  premium_month: {
+    english: {
+      title: "Premium Monthly English",
+      titleVi: "Premium Tháng - Tiếng Anh",
+      subtitle: "Monthly premium access",
+    },
+    core: {
+      title: "Premium Monthly Core",
+      titleVi: "Premium Tháng - Cốt Lõi",
+      subtitle: "Monthly premium access",
+    },
+    skills: {
+      title: "Premium Monthly Skills",
+      titleVi: "Premium Tháng - Kỹ Năng",
+      subtitle: "Monthly premium access",
+    },
+  },
+
+  premium_year: {
+    english: {
+      title: "Premium Yearly English",
+      titleVi: "Premium Năm - Tiếng Anh",
+      subtitle: "Yearly premium access",
+    },
+    core: {
+      title: "Premium Yearly Core",
+      titleVi: "Premium Năm - Cốt Lõi",
+      subtitle: "Yearly premium access",
+    },
+    skills: {
+      title: "Premium Yearly Skills",
+      titleVi: "Premium Năm - Kỹ Năng",
+      subtitle: "Yearly premium access",
     },
   },
 
@@ -185,7 +218,6 @@ export const TIER_CONTENT_MAP = {
       subtitle: "Foundation habits",
     },
     skills: {
-      // ✅ FIX: Survival belongs to VIP1 (right column)
       title: "Survival Skills",
       titleVi: "Kỹ Năng Sinh Tồn",
       subtitle: "Safety + resilience series",
@@ -225,28 +257,52 @@ export const TIER_CONTENT_MAP = {
     },
   },
 
-
   vip4: {
-    english: { title: "Career English", titleVi: "Tiếng Anh Nghề Nghiệp" },
-    core: { title: "CareerZ", titleVi: "Nghề Nghiệp", subtitle: "Career Development" },
-    skills: { title: "Work Skills", titleVi: "Kỹ Năng Công Việc" },
+    english: {
+      title: "Career English",
+      titleVi: "Tiếng Anh Nghề Nghiệp",
+    },
+    core: {
+      title: "CareerZ",
+      titleVi: "Nghề Nghiệp",
+      subtitle: "Career Development",
+    },
+    skills: {
+      title: "Work Skills",
+      titleVi: "Kỹ Năng Công Việc",
+    },
   },
 
   vip5: {
-    english: { title: "Writing English", titleVi: "Viết Tiếng Anh" },
-    core: { title: "Writing", titleVi: "Viết Lách", subtitle: "Advanced Writing Skills" },
-    skills: { title: "Professional Communication", titleVi: "Giao Tiếp Chuyên Nghiệp" },
+    english: {
+      title: "Writing English",
+      titleVi: "Viết Tiếng Anh",
+    },
+    core: {
+      title: "Writing",
+      titleVi: "Viết Lách",
+      subtitle: "Advanced Writing Skills",
+    },
+    skills: {
+      title: "Professional Communication",
+      titleVi: "Giao Tiếp Chuyên Nghiệp",
+    },
   },
 
-  
   vip6: {
-    english: { title: "—", titleVi: "—" },
+    english: {
+      title: "—",
+      titleVi: "—",
+    },
     core: {
       title: "Psychology",
       titleVi: "Tâm Lý Học",
       subtitle: "Shadow Psychology & Mental Health",
     },
-    skills: { title: "—", titleVi: "—" },
+    skills: {
+      title: "—",
+      titleVi: "—",
+    },
   },
 
   vip7: {
@@ -262,38 +318,76 @@ export const TIER_CONTENT_MAP = {
   },
 
   vip9: {
-    english: { title: "—", titleVi: "—" },
+    english: {
+      title: "—",
+      titleVi: "—",
+    },
     core: {
       title: "Strategy Mindset",
       titleVi: "Tư Duy Chiến Lược",
       subtitle: "Individual, Corporate, National, Historical",
     },
-    skills: { title: "Strategic Leadership", titleVi: "Lãnh Đạo Chiến Lược" },
+    skills: {
+      title: "Strategic Leadership",
+      titleVi: "Lãnh Đạo Chiến Lược",
+    },
   },
 
   kids_1: {
-    english: { title: "Kids English L1", titleVi: "Tiếng Anh Trẻ Em L1", subtitle: "Ages 3-6" },
-    core: { title: "Kids Foundation", titleVi: "Nền Tảng Trẻ Em" },
-    skills: { title: "Basic Safety", titleVi: "An Toàn Cơ Bản" },
+    english: {
+      title: "Kids English L1",
+      titleVi: "Tiếng Anh Trẻ Em L1",
+      subtitle: "Ages 3-6",
+    },
+    core: {
+      title: "Kids Foundation",
+      titleVi: "Nền Tảng Trẻ Em",
+    },
+    skills: {
+      title: "Basic Safety",
+      titleVi: "An Toàn Cơ Bản",
+    },
   },
 
   kids_2: {
-    english: { title: "Kids English L2", titleVi: "Tiếng Anh Trẻ Em L2", subtitle: "Ages 6-9" },
-    core: { title: "Kids Intermediate", titleVi: "Trẻ Em Trung Cấp" },
-    skills: { title: "Life Skills for Kids", titleVi: "Kỹ Năng Sống Trẻ Em" },
+    english: {
+      title: "Kids English L2",
+      titleVi: "Tiếng Anh Trẻ Em L2",
+      subtitle: "Ages 6-9",
+    },
+    core: {
+      title: "Kids Intermediate",
+      titleVi: "Trẻ Em Trung Cấp",
+    },
+    skills: {
+      title: "Life Skills for Kids",
+      titleVi: "Kỹ Năng Sống Trẻ Em",
+    },
   },
 
   kids_3: {
-    english: { title: "Kids English L3", titleVi: "Tiếng Anh Trẻ Em L3", subtitle: "Ages 9-12" },
-    core: { title: "Kids Advanced", titleVi: "Trẻ Em Nâng Cao" },
-    skills: { title: "Pre-Teen Skills", titleVi: "Kỹ Năng Tiền Thiếu Niên" },
+    english: {
+      title: "Kids English L3",
+      titleVi: "Tiếng Anh Trẻ Em L3",
+      subtitle: "Ages 9-12",
+    },
+    core: {
+      title: "Kids Advanced",
+      titleVi: "Trẻ Em Nâng Cao",
+    },
+    skills: {
+      title: "Pre-Teen Skills",
+      titleVi: "Kỹ Năng Tiền Thiếu Niên",
+    },
   },
-} satisfies Record<TierId, {
-  english: { title: string; titleVi: string; subtitle?: string };
-  core: { title: string; titleVi: string; subtitle?: string };
-  skills: { title: string; titleVi: string; subtitle?: string };
-}>;
-
+} satisfies Record<
+  TierId,
+  {
+    english: { title: string; titleVi: string; subtitle?: string };
+    core: { title: string; titleVi: string; subtitle?: string };
+    skills: { title: string; titleVi: string; subtitle?: string };
+  }
+>;
 
 /**
  * VIP3 is a CORE SPECIALIZATION block, NOT a separate tier
@@ -302,12 +396,25 @@ export const TIER_CONTENT_MAP = {
 export const VIP3_DESCRIPTION = {
   en: "Core Specialization — Sensitive & Advanced Topics",
   vi: "Chuyên Biệt Cốt Lõi — Chủ Đề Nhạy Cảm & Nâng Cao",
-};
+} as const;
 
 /**
  * Tier display order for the Tier Map (top to bottom = highest to lowest)
  */
-export const TIER_MAP_ORDER: TierId[] = ["vip9", "vip8", "vip7", "vip6", "vip5", "vip4", "vip3", "vip2", "vip1", "free"];
+export const TIER_MAP_ORDER: TierId[] = [
+  "vip9",
+  "vip8",
+  "vip7",
+  "vip6",
+  "vip5",
+  "vip4",
+  "vip3",
+  "vip2",
+  "vip1",
+  "premium_year",
+  "premium_month",
+  "free",
+];
 
 /**
  * Get the route path for a tier
@@ -316,6 +423,10 @@ export function getTierPath(tierId: TierId): string {
   switch (tierId) {
     case "free":
       return "/rooms";
+    case "premium_month":
+      return "/pricing";
+    case "premium_year":
+      return "/pricing";
     case "vip1":
       return "/vip/vip1";
     case "vip2":
@@ -352,10 +463,16 @@ export function getTierLabel(tierId: TierId): string {
   switch (tierId) {
     case "free":
       return "Free";
+    case "premium_month":
+      return "Premium Monthly";
+    case "premium_year":
+      return "Premium Yearly";
     case "vip1":
       return "VIP1";
     case "vip2":
       return "VIP2";
+    case "vip3":
+      return "VIP3";
     case "vip4":
       return "VIP4";
     case "vip5":
@@ -375,6 +492,6 @@ export function getTierLabel(tierId: TierId): string {
     case "kids_3":
       return "Kids L3";
     default:
-      return tierId.toUpperCase();
+      return String(tierId).toUpperCase();
   }
 }

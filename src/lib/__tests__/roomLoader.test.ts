@@ -1,21 +1,27 @@
-// src/lib/__tests__/roomLoader.test.ts
 import { describe, it, expect, vi, beforeEach } from "vitest";
 
 // --------------------
 // SHARED Supabase mock (hoist-safe + TS-safe)
 // --------------------
+const supabaseClientMocks = vi.hoisted(() => ({
+  mockGetRoomFromDB: vi.fn(),
+}));
+
 vi.mock("@/lib/supabaseClient", async () => {
   const mod = await vi.importActual<any>("@/test/mocks/supabaseMock");
   const supabase = mod.createSupabaseMock();
 
   return {
     supabase,
+    getRoomFromDB: supabaseClientMocks.mockGetRoomFromDB,
     __mock: supabase,
+    __mockGetRoomFromDB: supabaseClientMocks.mockGetRoomFromDB,
   };
 });
 
 import * as SupaMod from "@/lib/supabaseClient";
 const supabaseMock = (SupaMod as any).__mock;
+const mockGetRoomFromDB = (SupaMod as any).__mockGetRoomFromDB;
 
 // --------------------
 // Other mocks
@@ -88,24 +94,6 @@ vi.mock("../roomJsonResolver", () => ({
 
 import { loadMergedRoom } from "../roomLoader";
 
-// --------------------
-// Helper
-// --------------------
-const makeChain = (overrides: Partial<Record<string, any>> = {}) => {
-  const self: any = {
-    select: vi.fn().mockReturnThis(),
-    eq: vi.fn().mockReturnThis(),
-    in: vi.fn().mockReturnThis(),
-    not: vi.fn().mockReturnThis(),
-    order: vi.fn().mockReturnThis(),
-    returns: vi.fn().mockResolvedValue({ data: [], error: null }),
-    maybeSingle: vi.fn().mockResolvedValue({ data: null, error: null }),
-    single: vi.fn().mockResolvedValue({ data: null, error: null }),
-    ...overrides,
-  };
-  return self;
-};
-
 describe("loadMergedRoom", () => {
   beforeEach(() => {
     vi.clearAllMocks();
@@ -139,37 +127,22 @@ describe("loadMergedRoom", () => {
       error: null,
     });
 
-    const roomEntriesChain = makeChain({
-      returns: vi.fn().mockResolvedValue({
-        data: [
-          {
-            room_id: "test-room",
-            index: 0,
-            slug: "db-entry",
-            keyword_en: "db-keyword",
-            keyword_vi: "db-keyword-vi",
-            copy: { en: "Hello", vi: "Xin chào" },
-          },
-        ],
-        error: null,
-      }),
-    });
-
-    const roomsChain = makeChain({
-      maybeSingle: vi.fn().mockResolvedValue({
-        data: { id: "test-room", keywords: ["fallback-keyword"] },
-        error: null,
-      }),
-    });
-
-    supabaseMock.from.mockImplementation((table: string) => {
-      if (table === "room_entries") return roomEntriesChain;
-      if (table === "rooms") return roomsChain;
-      return makeChain();
-    });
-
     accessMocks.mockDetermineAccess.mockReturnValue({ hasFullAccess: true });
     jsonMocks.mockLoadRoomJson.mockResolvedValue(null);
+
+    mockGetRoomFromDB.mockResolvedValue({
+      entries: [
+        {
+          room_id: "test-room",
+          index: 0,
+          slug: "db-entry",
+          keyword_en: "db-keyword",
+          keyword_vi: "db-keyword-vi",
+          copy: { en: "Hello", vi: "Xin chào" },
+        },
+      ],
+      meta: { id: "test-room", keywords: ["fallback-keyword"] },
+    });
   });
 
   it("loads room from DB successfully", async () => {
@@ -205,34 +178,17 @@ describe("loadMergedRoom", () => {
       hasFullAccess: false,
     });
 
-    supabaseMock.from.mockImplementation((table: string) => {
-      if (table === "room_entries") {
-        return makeChain({
-          returns: vi.fn().mockResolvedValue({
-            data: [
-              {
-                room_id: "vip3-room",
-                index: 0,
-                slug: "vip-entry",
-                keyword_en: "vip-en",
-                keyword_vi: "vip-vi",
-              },
-            ],
-            error: null,
-          }),
-        });
-      }
-
-      if (table === "rooms") {
-        return makeChain({
-          maybeSingle: vi.fn().mockResolvedValue({
-            data: { id: "vip3-room", keywords: ["vip"] },
-            error: null,
-          }),
-        });
-      }
-
-      return makeChain();
+    mockGetRoomFromDB.mockResolvedValueOnce({
+      entries: [
+        {
+          room_id: "vip3-room",
+          index: 0,
+          slug: "vip-entry",
+          keyword_en: "vip-en",
+          keyword_vi: "vip-vi",
+        },
+      ],
+      meta: { id: "vip3-room", keywords: ["vip"] },
     });
 
     const result = await loadMergedRoom("vip3-room");
@@ -244,26 +200,9 @@ describe("loadMergedRoom", () => {
   });
 
   it("db room metadata missing but json entries recover room", async () => {
-    supabaseMock.from.mockImplementation((table: string) => {
-      if (table === "room_entries") {
-        return makeChain({
-          returns: vi.fn().mockResolvedValue({
-            data: [],
-            error: null,
-          }),
-        });
-      }
-
-      if (table === "rooms") {
-        return makeChain({
-          maybeSingle: vi.fn().mockResolvedValue({
-            data: null,
-            error: null,
-          }),
-        });
-      }
-
-      return makeChain();
+    mockGetRoomFromDB.mockResolvedValueOnce({
+      entries: [],
+      meta: null,
     });
 
     jsonMocks.mockLoadRoomJson.mockResolvedValueOnce({
@@ -287,20 +226,9 @@ describe("loadMergedRoom", () => {
   });
 
   it("JSON exists but entries is not an array → fails safely", async () => {
-    supabaseMock.from.mockImplementation((table: string) => {
-      if (table === "room_entries") {
-        return makeChain({
-          returns: vi.fn().mockResolvedValue({ data: [], error: null }),
-        });
-      }
-
-      if (table === "rooms") {
-        return makeChain({
-          maybeSingle: vi.fn().mockResolvedValue({ data: null, error: null }),
-        });
-      }
-
-      return makeChain();
+    mockGetRoomFromDB.mockResolvedValueOnce({
+      entries: [],
+      meta: null,
     });
 
     jsonMocks.mockLoadRoomJson.mockResolvedValueOnce({
@@ -320,39 +248,22 @@ describe("loadMergedRoom", () => {
   });
 
   it("DB entry rows missing expected fields → derives safe fallback values", async () => {
-    supabaseMock.from.mockImplementation((table: string) => {
-      if (table === "room_entries") {
-        return makeChain({
-          returns: vi.fn().mockResolvedValue({
-            data: [
-              {
-                room_id: "broken-db-room",
-                index: 0,
-                slug: "",
-                keyword_en: null,
-                keyword_vi: undefined,
-                copy: null,
-              },
-              {
-                room_id: "broken-db-room",
-                index: 1,
-              },
-            ],
-            error: null,
-          }),
-        });
-      }
-
-      if (table === "rooms") {
-        return makeChain({
-          maybeSingle: vi.fn().mockResolvedValue({
-            data: { id: "broken-db-room", keywords: [] },
-            error: null,
-          }),
-        });
-      }
-
-      return makeChain();
+    mockGetRoomFromDB.mockResolvedValueOnce({
+      entries: [
+        {
+          room_id: "broken-db-room",
+          index: 0,
+          slug: "",
+          keyword_en: null,
+          keyword_vi: undefined,
+          copy: null,
+        },
+        {
+          room_id: "broken-db-room",
+          index: 1,
+        },
+      ],
+      meta: { id: "broken-db-room", keywords: [] },
     });
 
     const result = await loadMergedRoom("broken-db-room");
@@ -366,30 +277,13 @@ describe("loadMergedRoom", () => {
   });
 
   it("db entries malformed falls back to json", async () => {
-    supabaseMock.from.mockImplementation((table: string) => {
-      if (table === "room_entries") {
-        return makeChain({
-          returns: vi.fn().mockResolvedValue({
-            data: [
-              null,
-              { weird: true },
-              { room_id: "mixed-room", index: 2, slug: "", keyword_en: null },
-            ],
-            error: null,
-          }),
-        });
-      }
-
-      if (table === "rooms") {
-        return makeChain({
-          maybeSingle: vi.fn().mockResolvedValue({
-            data: null,
-            error: null,
-          }),
-        });
-      }
-
-      return makeChain();
+    mockGetRoomFromDB.mockResolvedValueOnce({
+      entries: [
+        null,
+        { weird: true },
+        { room_id: "mixed-room", index: 2, slug: "", keyword_en: null },
+      ],
+      meta: null,
     });
 
     jsonMocks.mockLoadRoomJson.mockResolvedValueOnce({
@@ -412,41 +306,24 @@ describe("loadMergedRoom", () => {
   });
 
   it("room data has empty keywords / null copy / broken shapes → still returns safe output", async () => {
-    supabaseMock.from.mockImplementation((table: string) => {
-      if (table === "room_entries") {
-        return makeChain({
-          returns: vi.fn().mockResolvedValue({
-            data: [
-              {
-                room_id: "shape-room",
-                index: 0,
-                slug: "shape-entry",
-                keyword_en: "",
-                keyword_vi: "",
-                copy: null,
-                weird_extra: { nested: true },
-              },
-            ],
-            error: null,
-          }),
-        });
-      }
-
-      if (table === "rooms") {
-        return makeChain({
-          maybeSingle: vi.fn().mockResolvedValue({
-            data: {
-              id: "shape-room",
-              keywords: [],
-              copy: null,
-              title_en: null,
-            },
-            error: null,
-          }),
-        });
-      }
-
-      return makeChain();
+    mockGetRoomFromDB.mockResolvedValueOnce({
+      entries: [
+        {
+          room_id: "shape-room",
+          index: 0,
+          slug: "shape-entry",
+          keyword_en: "",
+          keyword_vi: "",
+          copy: null,
+          weird_extra: { nested: true },
+        },
+      ],
+      meta: {
+        id: "shape-room",
+        keywords: [],
+        copy: null,
+        title_en: null,
+      },
     });
 
     const result = await loadMergedRoom("shape-room");
@@ -459,30 +336,13 @@ describe("loadMergedRoom", () => {
   });
 
   it("DB has room row but no entries, JSON has broken shapes → still recovers safely", async () => {
-    supabaseMock.from.mockImplementation((table: string) => {
-      if (table === "room_entries") {
-        return makeChain({
-          returns: vi.fn().mockResolvedValue({
-            data: [],
-            error: null,
-          }),
-        });
-      }
-
-      if (table === "rooms") {
-        return makeChain({
-          maybeSingle: vi.fn().mockResolvedValue({
-            data: {
-              id: "mixed-room",
-              keywords: [],
-              title_en: "DB shell",
-            },
-            error: null,
-          }),
-        });
-      }
-
-      return makeChain();
+    mockGetRoomFromDB.mockResolvedValueOnce({
+      entries: [],
+      meta: {
+        id: "mixed-room",
+        keywords: [],
+        title_en: "DB shell",
+      },
     });
 
     jsonMocks.mockLoadRoomJson.mockResolvedValueOnce({
@@ -507,30 +367,13 @@ describe("loadMergedRoom", () => {
   });
 
   it("DB returns stale/incomplete room while JSON is malformed → fails safely", async () => {
-    supabaseMock.from.mockImplementation((table: string) => {
-      if (table === "room_entries") {
-        return makeChain({
-          returns: vi.fn().mockResolvedValue({
-            data: [],
-            error: null,
-          }),
-        });
-      }
-
-      if (table === "rooms") {
-        return makeChain({
-          maybeSingle: vi.fn().mockResolvedValue({
-            data: {
-              id: "broken-room",
-              keywords: [],
-              title_en: "Incomplete DB row",
-            },
-            error: null,
-          }),
-        });
-      }
-
-      return makeChain();
+    mockGetRoomFromDB.mockResolvedValueOnce({
+      entries: [],
+      meta: {
+        id: "broken-room",
+        keywords: [],
+        title_en: "Incomplete DB row",
+      },
     });
 
     jsonMocks.mockLoadRoomJson.mockResolvedValueOnce({

@@ -1,25 +1,69 @@
-/**
- * Service: Speech Analysis
- * Path: src/speech/speech-service.ts
- * -----------------------------------------------------------------
- * This file lives in its own directory to maintain modularity. 
- * It manages the multi-part form data upload to Supabase Edge Functions.
- * -----------------------------------------------------------------
- */
+// PATH: src/lib/api/speech-service.ts
 
-import { supabase } from '../integrations/supabase'; // Adjust path to your client
+import { supabase } from "@/lib/supabaseClient";
+
+export type SpeechUserOrigin = "HANOI" | "SAIGON" | "OTHER";
+export type SpeechTierLevel = "FREE" | "VIP1" | "VIP2" | "VIP3";
 
 export interface SpeechAnalysisRequest {
   blob: Blob;
   roomId: string;
   lineId: string;
   targetText: string;
-  userOrigin: 'HANOI' | 'SAIGON' | 'OTHER';
-  tierLevel: 'FREE' | 'VIP1' | 'VIP2' | 'VIP3';
+  userOrigin: SpeechUserOrigin;
+  tierLevel: SpeechTierLevel;
+}
+
+export interface SpeechAnalysisResponse {
+  ok?: boolean;
+  success?: boolean;
+  error?: string;
+  message?: string;
+  transcript?: string;
+  normalizedTranscript?: string;
+  comparison?: unknown;
+  feedback?: unknown;
+  score?: number | null;
+  accuracy?: number | null;
+  [key: string]: unknown;
+}
+
+type ErrorPayload = {
+  error?: unknown;
+  message?: unknown;
+  detail?: unknown;
+};
+
+function getSupabaseUrl(): string {
+  const url = String(import.meta.env.VITE_SUPABASE_URL ?? "").trim();
+
+  if (!url) {
+    throw new Error("VITE_SUPABASE_URL is missing.");
+  }
+
+  return url;
+}
+
+function getErrorMessage(payload: ErrorPayload | null | undefined): string {
+  if (!payload) return "Speech analysis failed";
+
+  if (typeof payload.error === "string" && payload.error.trim()) {
+    return payload.error;
+  }
+
+  if (typeof payload.message === "string" && payload.message.trim()) {
+    return payload.message;
+  }
+
+  if (typeof payload.detail === "string" && payload.detail.trim()) {
+    return payload.detail;
+  }
+
+  return "Speech analysis failed";
 }
 
 /**
- * Sends audio blob and metadata to the 'speech-analyze' Edge Function.
+ * Sends audio blob and metadata to the `speech-analyze` Edge Function.
  */
 export async function analyzeSpeech({
   blob,
@@ -27,42 +71,66 @@ export async function analyzeSpeech({
   lineId,
   targetText,
   userOrigin,
-  tierLevel
-}: SpeechAnalysisRequest) {
-  const formData = new FormData();
-  
-  // 'audio' name must match what the Edge Function expects in its formData
-  formData.append('audio', blob, 'recording.webm');
-  formData.append('roomId', roomId);
-  formData.append('lineId', lineId);
-  formData.append('targetText', targetText);
-  formData.append('userOrigin', userOrigin);
-  formData.append('tierLevel', tierLevel);
+  tierLevel,
+}: SpeechAnalysisRequest): Promise<SpeechAnalysisResponse> {
+  if (!(blob instanceof Blob)) {
+    throw new Error("A valid audio blob is required.");
+  }
 
-  const { data: { session } } = await supabase.auth.getSession();
-  
-  if (!session) {
+  if (!roomId.trim()) {
+    throw new Error("roomId is required.");
+  }
+
+  if (!lineId.trim()) {
+    throw new Error("lineId is required.");
+  }
+
+  if (!targetText.trim()) {
+    throw new Error("targetText is required.");
+  }
+
+  const formData = new FormData();
+  formData.append("audio", blob, "recording.webm");
+  formData.append("roomId", roomId);
+  formData.append("lineId", lineId);
+  formData.append("targetText", targetText);
+  formData.append("userOrigin", userOrigin);
+  formData.append("tierLevel", tierLevel);
+
+  const {
+    data: { session },
+    error: sessionError,
+  } = await supabase.auth.getSession();
+
+  if (sessionError) {
+    throw new Error(sessionError.message || "Failed to get auth session.");
+  }
+
+  if (!session?.access_token) {
     throw new Error("Authentication required.");
   }
 
-  // Uses the Supabase URL from your environment/client config
   const response = await fetch(
-    `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/speech-analyze`,
+    `${getSupabaseUrl()}/functions/v1/speech-analyze`,
     {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Authorization': `Bearer ${session.access_token}`,
-        // Note: Do NOT set 'Content-Type': 'multipart/form-data' manually.
-        // The browser needs to set the boundary itself for FormData.
+        Authorization: `Bearer ${session.access_token}`,
       },
       body: formData,
-    }
+    },
   );
 
+  const raw = (await response.json().catch(() => null)) as
+    | SpeechAnalysisResponse
+    | ErrorPayload
+    | null;
+
   if (!response.ok) {
-    const errorData = await response.json().catch(() => ({}));
-    throw new Error(errorData.error || 'Speech analysis failed');
+    throw new Error(getErrorMessage(raw as ErrorPayload | null));
   }
 
-  return await response.json();
+  return (raw ?? {}) as SpeechAnalysisResponse;
 }
+
+export default analyzeSpeech;

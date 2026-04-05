@@ -1,4 +1,5 @@
-// src/components/MatchmakingButton.tsx
+// PATH: src/components/MatchmakingButton.tsx
+
 import { useNavigate } from "react-router-dom";
 import { Heart } from "lucide-react";
 import { Button } from "./ui/button";
@@ -9,7 +10,7 @@ export const MatchmakingButton = () => {
   const access = useUserAccess();
 
   if (access.loading) return null;
-  if (!access.canAccessVIP3) return null;
+  if (!access.hasPremium) return null;
 
   return (
     <Button

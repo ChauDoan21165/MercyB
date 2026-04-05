@@ -1,4 +1,4 @@
-// FILE: src/components/layout/AppShell.tsx
+// src/components/layout/AppShell.tsx
 
 import React from "react";
 import { HomeButton } from "@/components/HomeButton";

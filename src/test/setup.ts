@@ -1,4 +1,4 @@
-// src/test/setup.ts
+// PATH: src/test/setup.ts
 
 import "@testing-library/jest-dom/vitest";
 import path from "node:path";
@@ -43,16 +43,15 @@ function resolveWithTsFallback(
   isMain: boolean,
   options: unknown,
 ) {
-  // If request already includes an extension, just try it.
   if (path.extname(mapped)) {
     return originalResolve.call(Module, mapped, parent, isMain, options);
   }
 
   const candidates = [
-    mapped + ".ts",
-    mapped + ".tsx",
-    mapped + ".js",
-    mapped + ".jsx",
+    `${mapped}.ts`,
+    `${mapped}.tsx`,
+    `${mapped}.js`,
+    `${mapped}.jsx`,
     path.join(mapped, "index.ts"),
     path.join(mapped, "index.tsx"),
     path.join(mapped, "index.js"),
@@ -64,7 +63,6 @@ function resolveWithTsFallback(
     return originalResolve.call(Module, hit, parent, isMain, options);
   }
 
-  // Fall back to Node's default behavior (will throw the normal MODULE_NOT_FOUND)
   return originalResolve.call(Module, mapped, parent, isMain, options);
 }
 
@@ -97,7 +95,6 @@ if (!anyModule[kPatched]) {
  * (Safe to keep; only applied if missing.)
  */
 if (typeof window !== "undefined") {
-  // matchMedia stub (some UI libs rely on it)
   if (!("matchMedia" in window)) {
     Object.defineProperty(window, "matchMedia", {
       writable: true,
@@ -114,22 +111,26 @@ if (typeof window !== "undefined") {
     });
   }
 
-  // ResizeObserver stub
   if (!("ResizeObserver" in window)) {
-    (window as typeof window & {
-      ResizeObserver: new () => {
-        observe: () => void;
-        unobserve: () => void;
-        disconnect: () => void;
-      };
-    }).ResizeObserver = class {
+    const ResizeObserverStub = class {
       observe() {}
       unobserve() {}
       disconnect() {}
     };
+
+    Object.defineProperty(window, "ResizeObserver", {
+      writable: true,
+      configurable: true,
+      value: ResizeObserverStub,
+    });
+
+    Object.defineProperty(globalThis, "ResizeObserver", {
+      writable: true,
+      configurable: true,
+      value: ResizeObserverStub,
+    });
   }
 
-  // scrollTo stub
   if (!("scrollTo" in window)) {
     Object.defineProperty(window, "scrollTo", {
       writable: true,

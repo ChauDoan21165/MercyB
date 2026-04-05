@@ -1,17 +1,28 @@
-// FILE: Screen.tsx
-// PATH: src/components/ui/Screen.tsx
+/**
+ * Path: src/components/ui/Screen.tsx
+ */
 
-import React from "react";
-import { SafeAreaView, View, ScrollView } from "react-native";
+import type { ReactNode } from "react";
+import { ScrollView, View } from "react-native";
+
+// Web-safe shim for SafeAreaView
+const SafeAreaView: React.FC<{ style?: any; children?: ReactNode }> = ({ style, children }) => (
+  <View style={style}>{children}</View>
+);
+
 import { theme } from "../../core/ui/theme";
 
-export function Screen(props: {
-  children: React.ReactNode;
+interface ScreenProps {
+  children?: ReactNode;
   scroll?: boolean;
   padded?: boolean;
-}) {
-  const { children, scroll = false, padded = true } = props;
+}
 
+export function Screen({
+  children,
+  scroll = false,
+  padded = true,
+}: ScreenProps) {
   const content = (
     <View style={{ flex: 1, padding: padded ? theme.space.lg : 0 }}>
       {children}
@@ -33,3 +44,5 @@ export function Screen(props: {
     </SafeAreaView>
   );
 }
+
+export default Screen;

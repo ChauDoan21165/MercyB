@@ -1,3 +1,5 @@
+// PATH: supabase/functions/stripe-webhook/index.ts
+
 import Stripe from "https://esm.sh/stripe@14.25.0?target=denonext";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.49.1";
 
@@ -31,7 +33,7 @@ function getRequiredEnv(name: string): string {
 
 function getStripeClient(): Stripe {
   return new Stripe(getRequiredEnv("STRIPE_SECRET_KEY"), {
-    apiVersion: "2024-11-20.acacia",
+    apiVersion: "2025-09-30.clover",
   });
 }
 

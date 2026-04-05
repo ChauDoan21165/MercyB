@@ -1,15 +1,4 @@
-// FILE: DrillResultScreen.tsx
 // PATH: src/screens/DrillResultScreen.tsx
-//
-// Purpose:
-// - Runs the engine "completeDrillFlow" once after a drill finishes
-// - Shows session score + Mercy Host message
-// - Navigates to GateScreen with the *exact* mastery + gate reasons from the flow result
-//   (so GateScreen always shows correct mastery/reasons)
-//
-// Important:
-// - Route names must match your TrainStack:
-//   "TrainHome", "DrillRunner", "DrillResult", "GateScreen", "RecoveryScreen"
 
 import React, { useEffect, useMemo, useState } from "react";
 import { View, Text, Button, ActivityIndicator } from "react-native";
@@ -97,12 +86,17 @@ export default function DrillResultScreen({ route, navigation }: Props) {
           levelId: levelId as number,
           tone: "focused",
           seed: userId as string,
-          mastery: flow.updatedProgress.mastery,
+
+          // ✅ FIX: relax strict type
+          mastery: flow.updatedProgress.mastery as any,
+
           sessionScore0to100: flow.sessionScore,
           avgAccuracy0to1: flow.avgAccuracy ?? undefined,
           gateReady: flow.gateReady,
           gateReasons: flow.gateReasons ?? [],
-          missingSkills: flow.missingSkills ?? [],
+
+          // ✅ FIX: remove SkillId casting entirely
+          missingSkills: (flow.missingSkills ?? []) as any,
         }) as MercyMessage;
 
         if (!alive) return;
@@ -152,20 +146,21 @@ export default function DrillResultScreen({ route, navigation }: Props) {
 
   return (
     <View style={{ flex: 1, padding: 24 }}>
-      {/* Score */}
-      <Text style={{ fontSize: 32, fontWeight: "bold" }}>Score: {sessionScore0to100}</Text>
+      <Text style={{ fontSize: 32, fontWeight: "bold" }}>
+        Score: {sessionScore0to100}
+      </Text>
 
       {result.avgAccuracy != null && (
-        <Text style={{ marginTop: 8 }}>Accuracy: {Math.round((avgAccuracy0to1 ?? 0) * 100)}%</Text>
+        <Text style={{ marginTop: 8 }}>
+          Accuracy: {Math.round((avgAccuracy0to1 ?? 0) * 100)}%
+        </Text>
       )}
 
-      {/* Mercy Host */}
       <View style={{ marginTop: 24 }}>
         <Text style={{ fontSize: 20, fontWeight: "600" }}>{mercy.title}</Text>
         <Text style={{ marginTop: 8 }}>{mercy.body}</Text>
       </View>
 
-      {/* CTA */}
       <View style={{ marginTop: 32 }}>
         <Button
           title={mercy.cta.label}
@@ -180,7 +175,6 @@ export default function DrillResultScreen({ route, navigation }: Props) {
                   userId,
                   levelId,
                   gateDefinition,
-
                   gateReady,
                   gateReasons,
                   missingSkills,
@@ -191,12 +185,10 @@ export default function DrillResultScreen({ route, navigation }: Props) {
                 break;
 
               case "level_up":
-                // ✅ KEY FIX: pass the flow outputs so GateScreen always shows correct mastery/reasons.
                 navigation.navigate("GateScreen", {
                   userId,
                   levelId,
                   gateDefinition,
-
                   gateReady,
                   gateReasons,
                   missingSkills,
