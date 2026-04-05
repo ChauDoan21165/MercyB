@@ -1,6 +1,8 @@
+// PATH: src/lib/billing.ts
+
 import { supabase } from "@/lib/supabaseClient";
 
-type EntitlementResponse = {
+export type EntitlementResponse = {
   is_premium?: boolean;
   status?: string | null;
   source?: string | null;
@@ -12,7 +14,7 @@ type EntitlementResponse = {
   vip_tier?: string | null;
 };
 
-type CheckoutResponse = {
+export type CheckoutResponse = {
   ok?: boolean;
   already_subscribed?: boolean;
   url?: string | null;
@@ -26,7 +28,7 @@ type CheckoutResponse = {
   tier_id?: string | null;
 };
 
-type ChangePlanResponse = {
+export type ChangePlanResponse = {
   ok?: boolean;
   changed?: boolean;
   action?: string | null;
@@ -36,18 +38,18 @@ type ChangePlanResponse = {
   requested_price_id?: string | null;
 };
 
-type PortalResponse = {
-  url?: string;
+export type PortalResponse = {
+  url?: string | null;
 };
 
-type StartBillingParams = {
+export type StartBillingParams = {
   tierId?: string;
   priceId?: string;
   successUrl?: string;
   cancelUrl?: string;
 };
 
-type StartBillingResult =
+export type StartBillingResult =
   | { mode: "checkout" }
   | { mode: "portal" }
   | { mode: "change_plan"; changeType?: "upgrade" | "downgrade" | "lateral" }
@@ -58,6 +60,12 @@ type JsonLike = {
   detail?: unknown;
   message?: string;
 };
+
+type BillingResponse = CheckoutResponse & ChangePlanResponse & JsonLike;
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null;
+}
 
 async function getAccessToken(): Promise<string> {
   const {
@@ -72,7 +80,10 @@ async function getAccessToken(): Promise<string> {
   return session.access_token;
 }
 
-function extractErrorMessage(payload: JsonLike | null | undefined, fallback: string): string {
+function extractErrorMessage(
+  payload: JsonLike | null | undefined,
+  fallback: string,
+): string {
   if (!payload) return fallback;
 
   if (typeof payload.detail === "string" && payload.detail.trim()) {
@@ -87,11 +98,13 @@ function extractErrorMessage(payload: JsonLike | null | undefined, fallback: str
     return payload.message;
   }
 
-  if (payload.detail && typeof payload.detail === "object") {
-    const detail = payload.detail as Record<string, unknown>;
+  if (isRecord(payload.detail)) {
+    const detail = payload.detail;
+
     if (typeof detail.message === "string" && detail.message.trim()) {
       return detail.message;
     }
+
     if (typeof detail.error === "string" && detail.error.trim()) {
       return detail.error;
     }
@@ -100,11 +113,11 @@ function extractErrorMessage(payload: JsonLike | null | undefined, fallback: str
   return fallback;
 }
 
-async function invokeWithAuth<T>(fn: string, body?: unknown): Promise<T> {
+async function invokeWithAuth<T>(fn: string, body?: any): Promise<T> {
   const token = await getAccessToken();
 
   const { data, error } = await supabase.functions.invoke(fn, {
-    body,
+    body: body as any,
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -118,7 +131,34 @@ async function invokeWithAuth<T>(fn: string, body?: unknown): Promise<T> {
 }
 
 function getCheckoutUrl(payload: CheckoutResponse): string {
-  return payload.url || payload.checkout_url || payload.checkoutUrl || "";
+  const value = payload.url ?? payload.checkout_url ?? payload.checkoutUrl ?? "";
+  return typeof value === "string" ? value : "";
+}
+
+async function parseJsonResponse(response: Response): Promise<BillingResponse | null> {
+  const raw: unknown = await response.json().catch(() => null);
+  if (!isRecord(raw)) return null;
+  return raw as BillingResponse;
+}
+
+function getSupabaseFunctionUrl(functionName: string): string {
+  const baseUrl = String(import.meta.env.VITE_SUPABASE_URL ?? "").trim();
+
+  if (!baseUrl) {
+    throw new Error("VITE_SUPABASE_URL is missing.");
+  }
+
+  return `${baseUrl}/functions/v1/${functionName}`;
+}
+
+function getSupabaseAnonKey(): string {
+  const anonKey = String(import.meta.env.VITE_SUPABASE_ANON_KEY ?? "").trim();
+
+  if (!anonKey) {
+    throw new Error("VITE_SUPABASE_ANON_KEY is missing.");
+  }
+
+  return anonKey;
 }
 
 export async function fetchMyEntitlement(): Promise<EntitlementResponse> {
@@ -126,7 +166,8 @@ export async function fetchMyEntitlement(): Promise<EntitlementResponse> {
 }
 
 export async function openBillingPortal(): Promise<{ mode: "portal" }> {
-  const data = await invokeWithAuth<PortalResponse>("create-billing-portal-session");
+  const data =
+    await invokeWithAuth<PortalResponse>("create-billing-portal-session");
 
   if (!data?.url) {
     throw new Error("Billing portal URL was missing.");
@@ -151,11 +192,18 @@ export async function startCheckoutOrOpenPortal(
     throw new Error("tierId or priceId is required.");
   }
 
-  const entitlement = await fetchMyEntitlement().catch(() => null);
+  const entitlement = await fetchMyEntitlement().catch(
+    (): EntitlementResponse | null => null,
+  );
   const isPremium = entitlement?.is_premium === true;
   const currentPriceId = String(entitlement?.price_id ?? "").trim();
 
-  if (isPremium && requestedPriceId && currentPriceId && requestedPriceId === currentPriceId) {
+  if (
+    isPremium &&
+    requestedPriceId &&
+    currentPriceId &&
+    requestedPriceId === currentPriceId
+  ) {
     return { mode: "noop" };
   }
 
@@ -169,50 +217,51 @@ export async function startCheckoutOrOpenPortal(
   const token = await getAccessToken();
 
   const response = await fetch(
-    `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/billing-stripe-change-plan`,
+    getSupabaseFunctionUrl("billing-stripe-change-plan"),
     {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
-        apikey: import.meta.env.VITE_SUPABASE_ANON_KEY,
+        apikey: getSupabaseAnonKey(),
       },
-      body: JSON.stringify(body),
+      body: JSON.stringify(body) as any, // ✅ cast to any for TS fix
     },
   );
 
-  const raw = (await response.json().catch(() => null)) as
-    | CheckoutResponse
-    | ChangePlanResponse
-    | JsonLike
-    | null;
+  const payload = await parseJsonResponse(response);
 
   if (!response.ok) {
     throw new Error(
-      extractErrorMessage(raw as JsonLike, `billing-stripe-change-plan failed (${response.status})`),
+      extractErrorMessage(
+        payload,
+        `billing-stripe-change-plan failed (${response.status})`,
+      ),
     );
   }
 
-  const payload = raw as CheckoutResponse & ChangePlanResponse;
-
-  if (payload.action === "noop" || payload.changed === false) {
+  if (payload?.action === "noop" || payload?.changed === false) {
     return { mode: "noop" };
   }
 
-  if (payload.action === "change_plan") {
+  if (payload?.action === "change_plan") {
     return {
       mode: "change_plan",
       changeType: payload.change_type ?? undefined,
     };
   }
 
-  if (payload.already_subscribed) {
+  if (payload?.already_subscribed) {
     return openBillingPortal();
   }
 
-  const checkoutUrl = getCheckoutUrl(payload);
+  const checkoutUrl = getCheckoutUrl(payload ?? {});
 
-  if (payload.action === "checkout" || payload.mode === "checkout" || checkoutUrl) {
+  if (
+    payload?.action === "checkout" ||
+    payload?.mode === "checkout" ||
+    Boolean(checkoutUrl)
+  ) {
     if (!checkoutUrl) {
       throw new Error("Checkout URL was missing.");
     }
@@ -221,7 +270,7 @@ export async function startCheckoutOrOpenPortal(
     return { mode: "checkout" };
   }
 
-  if (payload.message) {
+  if (typeof payload?.message === "string" && payload.message.trim()) {
     throw new Error(payload.message);
   }
 

@@ -1,4 +1,5 @@
 // eslint.config.js
+
 import js from "@eslint/js";
 import globals from "globals";
 import reactHooks from "eslint-plugin-react-hooks";
@@ -84,6 +85,41 @@ export default [
       /* MercyB reality */
       "no-empty": "off",
       "no-useless-escape": "off",
+
+      /* Mercy grammar guardrails */
+      "no-restricted-imports": [
+        "error",
+        {
+          paths: [
+            {
+              name: "./tabs/GrammarWritingTab",
+              message: "Use ./tabs/grammar-writing/GrammarWritingTab only.",
+            },
+            {
+              name: "@/components/mercy-guide/tabs/GrammarWritingTab",
+              message: "Use the split grammar-writing tab only.",
+            },
+            {
+              name: "./tabs/grammar-writing/fallback",
+              message: "Grammar flow must be API-only. Do not import fallback.",
+            },
+            {
+              name: "@/components/mercy-guide/tabs/grammar-writing/fallback",
+              message: "Grammar flow must be API-only. Do not import fallback.",
+            },
+          ],
+          patterns: [
+            {
+              group: ["**/tabs/GrammarWritingTab", "**/tabs/GrammarWritingTab.*"],
+              message: "Old monolith GrammarWritingTab is forbidden.",
+            },
+            {
+              group: ["**/grammar-writing/fallback", "**/grammar-writing/fallback.*"],
+              message: "Fallback grammar logic is forbidden.",
+            },
+          ],
+        },
+      ],
     },
   },
 

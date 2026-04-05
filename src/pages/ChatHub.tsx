@@ -1,4 +1,5 @@
-// src/pages/ChatHub.tsx
+// PATH: src/pages/ChatHub.tsx
+
 // MB-BLUE-100.9 → MB-BLUE-101.NO-HERO-ROOMS → MB-BLUE-101.9-MERCY-GUIDE-IN-ROOM
 /**
  * ChatHub (Room Loader — THIN CONTROLLER)
@@ -30,6 +31,7 @@ import {
   type RoomJsonResolverErrorKind,
 } from "@/lib/roomJsonResolver";
 import { getErrorMessage } from "@/lib/constants/uiText";
+import { normalizeTierOrUndefined } from "@/lib/constants/tiers";
 
 import RoomRenderer from "@/components/room/RoomRenderer";
 import { getEffectiveRoomSpec, type RoomSpec } from "@/lib/roomSpecification";
@@ -127,7 +129,7 @@ function getRoomTitleSafe(room: AnyRoom | null, roomId?: string): string {
     room.heading,
     room.slugTitle,
     room.id,
-    roomId
+    roomId,
   );
 }
 
@@ -138,7 +140,7 @@ function getRoomTierSafe(room: AnyRoom | null): string {
     room.tier,
     room.vipTier,
     room.accessTier,
-    room.level
+    room.level,
   );
 }
 
@@ -149,7 +151,7 @@ function getRoomPathSlugSafe(room: AnyRoom | null): string {
     room.pathSlug,
     room.path_slug,
     room.path,
-    room.seriesSlug
+    room.seriesSlug,
   );
 }
 
@@ -182,7 +184,7 @@ function getRoomContentEnSafe(room: AnyRoom | null): string {
     room.summaryEn,
     room.summary_en,
     room.descriptionEn,
-    room.description_en
+    room.description_en,
   );
   if (direct) return direct;
 
@@ -197,7 +199,7 @@ function getRoomContentEnSafe(room: AnyRoom | null): string {
         e.en,
         e.english,
         e.line_en,
-        e.lineEn
+        e.lineEn,
       );
     })
     .filter(Boolean);
@@ -261,7 +263,7 @@ export default function ChatHub() {
   const canonicalId = useMemo(() => canonicalizeRoomId(roomId || ""), [roomId]);
   const loadKeys = useMemo(
     () => roomIdVariants(roomId || "", canonicalId),
-    [roomId, canonicalId]
+    [roomId, canonicalId],
   );
 
   const [state, setState] = useState<LoadState>("loading");
@@ -330,7 +332,14 @@ export default function ChatHub() {
         return;
       }
 
-      const effectiveSpec = getEffectiveRoomSpec(loadedRoom);
+      const resolvedTier = normalizeTierOrUndefined(getRoomTierSafe(loadedRoom));
+
+      const effectiveSpec = await getEffectiveRoomSpec(
+        String(loadedRoom.id ?? roomId ?? canonicalId ?? ""),
+        resolvedTier ?? null,
+      );
+
+      if (cancelled) return;
 
       setRoom(loadedRoom);
       setRoomSpec(effectiveSpec);
@@ -338,7 +347,7 @@ export default function ChatHub() {
 
       try {
         const persistedId =
-          String(loadedRoom?.id || roomId || canonicalId || "").trim() ||
+          String(loadedRoom.id || roomId || canonicalId || "").trim() ||
           String(roomId || "").trim();
         if (persistedId) {
           localStorage.setItem(LS_LAST_ROOM, persistedId);

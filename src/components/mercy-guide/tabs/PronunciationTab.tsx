@@ -1,13 +1,19 @@
+/**
+ * Path: src/components/mercy-guide/tabs/PronunciationTab.tsx
+ */
+
 import React from 'react';
-import { CompanionProfile } from '@/services/companion';
+import type { CompanionProfile } from '@/services/companion';
 import { MercySpeakTab } from '@/components/mercy-guide/MercySpeakTab';
+import type { useSpeakPractice } from '@/components/mercy-guide/hooks/useSpeakPractice';
+import type { TroubleWord } from '../shared';
 
 interface PronunciationTabProps {
   roomId?: string;
   contentEn?: string;
   profile: CompanionProfile;
   troubleWords: string[];
-  speakPractice: ReturnType<typeof import('@/components/mercy-guide/hooks/useSpeakPractice').useSpeakPractice>;
+  speakPractice: ReturnType<typeof useSpeakPractice>;
 }
 
 export function PronunciationTab({
@@ -17,13 +23,22 @@ export function PronunciationTab({
   troubleWords,
   speakPractice,
 }: PronunciationTabProps) {
+  const normalizedTroubleWords: TroubleWord[] = troubleWords.map((word) => ({
+    word,
+    count: 0,
+    lastScore: 0,
+    bestScore: 0,
+  }));
+
   return (
     <MercySpeakTab
       roomId={roomId}
       contentEn={contentEn}
       profile={profile}
-      troubleWords={troubleWords}
+      troubleWords={normalizedTroubleWords}
       speakPractice={speakPractice}
     />
   );
 }
+
+export default PronunciationTab;

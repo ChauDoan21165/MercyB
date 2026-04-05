@@ -1,3 +1,5 @@
+// PATH: src/components/room/RoomRenderer.tsx
+
 /**
  * ROOM 5-BOX SPEC (LOCKED)
  * BOX 2: Title row (tier left, title centered, fav+refresh right) — ONE ROW
@@ -569,7 +571,7 @@ export default function RoomRenderer({
   onBack: _onBack,
 }: RoomRendererProps) {
   const rootRef = useRef<HTMLDivElement | null>(null);
-  const audioAnchorRef = useRef<HTMLDivElement>(null!);
+  const audioAnchorRef = useRef<HTMLDivElement | null>(null);
   const signedAudioCacheRef = useRef<Map<string, string>>(new Map());
 
   const useColorThemeSafe = roomSpec?.use_color_theme !== false;
@@ -578,11 +580,11 @@ export default function RoomRenderer({
   const coreRoomId = useMemo(() => coreRoomIdFromEffective(effectiveRoomId), [effectiveRoomId]);
 
   const access = useUserAccess();
-  const accessLoading = access.loading || access.isLoading;
+  const accessLoading = Boolean((access as any).loading ?? (access as any).isLoading);
   const authUser = useAuthUser(supabase);
   const authUserId = useMemo(() => String((authUser as any)?.id ?? "").trim() || null, [authUser]);
 
-  const isDev = typeof import.meta !== "undefined" && (import.meta as any).env?.DEV;
+  const isDev = typeof import.meta !== "undefined" && Boolean((import.meta as any).env?.DEV);
   const showDev = useMemo(() => {
     if (!isDev) return false;
     try {
@@ -651,11 +653,15 @@ export default function RoomRenderer({
     const root = rootRef.current;
     if (!root) return;
 
-    const boxes = ["2", "3", "4", "5"].map((n) => root.querySelector(`[data-room-box="${n}"]`));
-    if (!boxes.every(Boolean)) {
+    const boxes = ["2", "3", "4", "5"]
+      .map((n) => root.querySelector(`[data-room-box="${n}"]`))
+      .filter(Boolean) as Element[];
+
+    if (boxes.length !== 4) {
       console.error("ROOM 5-BOX SPEC VIOLATION: missing data-room-box=2/3/4/5");
       return;
     }
+
     const idx = boxes.map((el) => Array.prototype.indexOf.call(root.children, el));
     if (!(idx[0] < idx[1] && idx[1] < idx[2] && idx[2] < idx[3])) {
       console.error("ROOM 5-BOX SPEC VIOLATION: boxes not ordered 2→3→4→5. Indexes:", idx);
@@ -691,7 +697,7 @@ export default function RoomRenderer({
 
     if (requiredRank <= 0) return false;
     if (accessLoading) return true;
-    return !access.canAccessTier(requiredTierId as any);
+    return !(access as any).canAccessTier(requiredTierId as any);
   }, [requiredTierId, accessLoading, access]);
 
   const [dbRows, setDbRows] = useState<any[] | null>(null);
@@ -1207,7 +1213,7 @@ export default function RoomRenderer({
         setCompletionSaved(false);
         return;
       }
-      const parsed = JSON.parse(raw);
+      const parsed = JSON.parse(raw) as { text?: string } | null;
       const text = String(parsed?.text || "").trim();
       setCompletionText(text);
       setCompletionSaved(!!text);
@@ -1279,7 +1285,7 @@ export default function RoomRenderer({
               <div className="mb-titleLeft">
                 {displayTierForPill ? <span className="mb-tier">{displayTierForPill}</span> : null}
                 {showDev ? (
-                  <span className="mb-tier" title={String(authUser?.email || authUser?.id || "")}>
+                  <span className="mb-tier" title={String((authUser as any)?.email || (authUser as any)?.id || "")}>
                     DEV: {authUser ? shortEmailLabel(String((authUser as any).email || "")) : "NOAUTH"}
                   </span>
                 ) : null}
@@ -1411,7 +1417,7 @@ export default function RoomRenderer({
                       index={activeEntryIndex >= 0 ? activeEntryIndex : 0}
                       enKeywords={enKeywords}
                       viKeywords={viKeywords}
-                      audioAnchorRef={audioAnchorRef}
+                      audioAnchorRef={audioAnchorRef as any}
                     />
 
                     {speechTargetText ? (

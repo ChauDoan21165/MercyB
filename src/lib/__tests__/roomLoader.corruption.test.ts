@@ -8,9 +8,31 @@ vi.mock("@/lib/supabaseClient", async () => {
   const mod = await vi.importActual<any>("@/test/mocks/supabaseMock");
   const supabase = mod.createSupabaseMock();
 
+  const getRoomFromDB = vi.fn(async (roomId: string) => {
+    const roomsRes = await supabase.from("rooms").select("*").eq("id", roomId).maybeSingle();
+    const roomEntriesRes = await supabase
+      .from("room_entries")
+      .select("*")
+      .eq("room_id", roomId)
+      .order("index")
+      .returns();
+
+    const room = roomsRes?.data ?? null;
+    const entries = Array.isArray(roomEntriesRes?.data) ? roomEntriesRes.data : [];
+
+    if (!room && entries.length === 0) return null;
+
+    return {
+      ...(room ?? { id: roomId }),
+      entries,
+    };
+  });
+
   return {
     supabase,
+    getRoomFromDB,
     __mock: supabase,
+    __getRoomFromDBMock: getRoomFromDB,
   };
 });
 

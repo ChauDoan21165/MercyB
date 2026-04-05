@@ -26,8 +26,7 @@ import React, {
   useState,
 } from "react";
 import type { Session, User } from "@supabase/supabase-js";
-
-type SupabaseClientType = typeof import("@/lib/supabaseClient")["supabase"];
+import { supabase } from "@/lib/supabaseClient";
 
 type AuthContextValue = {
   session: Session | null;
@@ -38,17 +37,6 @@ type AuthContextValue = {
 };
 
 const AuthContext = createContext<AuthContextValue | undefined>(undefined);
-
-let supabaseClientPromise: Promise<SupabaseClientType> | null = null;
-
-async function getSupabaseClient(): Promise<SupabaseClientType> {
-  if (!supabaseClientPromise) {
-    supabaseClientPromise = import("@/lib/supabaseClient").then(
-      (mod) => mod.supabase,
-    );
-  }
-  return supabaseClientPromise;
-}
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [session, setSession] = useState<Session | null>(null);
@@ -74,7 +62,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     safeSetLoading(true);
 
     try {
-      const supabase = await getSupabaseClient();
       const { data, error } = await supabase.auth.getSession();
 
       if (requestId !== refreshRequestIdRef.current) return;
@@ -103,7 +90,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     safeSetLoading(true);
 
     try {
-      const supabase = await getSupabaseClient();
       const { error } = await supabase.auth.signOut();
 
       if (error && import.meta.env.DEV) {
@@ -130,7 +116,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       safeSetLoading(true);
 
       try {
-        const supabase = await getSupabaseClient();
         if (!mountedRef.current) return;
 
         const { data: authListener } = supabase.auth.onAuthStateChange(

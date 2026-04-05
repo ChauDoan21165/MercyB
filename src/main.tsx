@@ -22,8 +22,8 @@
 //   (This avoids 404 loops if any code/edge redirects still send users to /upgrade.)
 //
 // ✅ PERF PATCH (2026-03-08):
-// - Remove eager supabase import from the main entry.
-// - DEV-only Supabase console exposure is now dynamic-imported.
+// - Use a single static supabase import in the main entry.
+// - DEV-only Supabase console exposure now reuses that static import.
 // - Private audio resolver installer is also dynamic-imported.
 // - This reduces initial-path pressure and avoids pulling extra supabase/debug code into startup here.
 //
@@ -37,15 +37,14 @@ import { BrowserRouter } from "react-router-dom";
 
 import AppRouter from "@/router/AppRouter";
 import "@/index.css";
+import { supabase } from "@/lib/supabaseClient";
 
 // ✅ AUTH PROVIDER (required for /admin)
 import { AuthProvider } from "@/providers/AuthProvider";
 
-type SupabaseModule = typeof import("@/lib/supabaseClient");
-
 declare global {
   interface Window {
-    supabase?: SupabaseModule["supabase"];
+    supabase?: typeof supabase;
 
     __mbResolveAudioSrc?: (srcKey: string) => Promise<string | null> | string | null;
 
@@ -197,14 +196,8 @@ const devLog = (...args: unknown[]) => {
   try {
     if (!import.meta.env.DEV) return;
 
-    void import("@/lib/supabaseClient")
-      .then((mod) => {
-        window.supabase = mod.supabase;
-        devLog("[MB DEV] window.supabase attached");
-      })
-      .catch(() => {
-        // ignore
-      });
+    window.supabase = supabase;
+    devLog("[MB DEV] window.supabase attached");
   } catch {
     // ignore
   }

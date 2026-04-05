@@ -31,6 +31,11 @@ type EnvSnapshot = {
 
 type SessionResult = Awaited<ReturnType<SupabaseClient["auth"]["getSession"]>>;
 
+type GetRoomFromDBResult = {
+  entries: Record<string, unknown>[] | null;
+  meta: Record<string, unknown> | null;
+};
+
 declare global {
   /* eslint-disable no-var -- TypeScript ambient globals must use `var` here. */
   var __MB_SUPABASE__: SupabaseClient | undefined;
@@ -57,16 +62,13 @@ function deriveProjectId(urlRaw: string): string {
   try {
     const u = new URL(urlRaw);
 
-    // Local dev (127.0.0.1 / localhost)
     if (u.hostname === "127.0.0.1" || u.hostname === "localhost") {
       return `local-${u.hostname}-${u.port || "80"}`;
     }
 
-    // Supabase hosted: <ref>.supabase.co
     const m = u.hostname.match(/^([a-z0-9-]+)\.supabase\.co$/i);
     if (m?.[1]) return m[1];
 
-    // Other hosted domains (fallback to hostname)
     return u.hostname;
   } catch {
     return "unknown";
@@ -74,11 +76,8 @@ function deriveProjectId(urlRaw: string): string {
 }
 
 const projectId = deriveProjectId(supabaseUrl);
-
-// Ensure LOCAL and PROD sessions never conflict in the same browser/profile.
 const storageKey = `mb-supabase-auth-${projectId}`;
 
-// Use localStorage when available; fall back safely in SSR/tests.
 const storage =
   typeof window !== "undefined" && typeof window.localStorage !== "undefined"
     ? window.localStorage
@@ -90,7 +89,6 @@ if (!supabaseUrl || !supabaseAnonKey) {
     supabaseAnonKey: !!supabaseAnonKey,
   });
 } else if (/\s$/.test(String(import.meta.env.VITE_SUPABASE_ANON_KEY ?? ""))) {
-  // Extra debug signal for the exact bug you hit (%0A)
   console.warn(
     "[supabaseClient] VITE_SUPABASE_ANON_KEY had trailing whitespace; trimmed.",
   );
@@ -101,29 +99,16 @@ export const supabase: SupabaseClient = createClient(
   supabaseAnonKey,
   {
     auth: {
-      // Keep sessions across refresh
       persistSession: true,
-
-      // Keep tokens fresh
       autoRefreshToken: true,
-
-      // Important for OAuth / magic link return URLs
       detectSessionInUrl: true,
-
-      // Make auth storage deterministic across envs
       storageKey,
       storage,
-
-      // Explicit SPA OAuth flow (safe default for modern Supabase)
       flowType: "pkce",
     },
   },
 );
 
-/**
- * Optional: quick sanity helper for debugging UI auth-state issues.
- * Call in DevTools: window.__MB_ENV__?.()
- */
 function getEnvSnapshot(): EnvSnapshot {
   return {
     supabaseUrl,
@@ -152,6 +137,38 @@ export const __mock = {
   },
 };
 
+export async function getRoomFromDB(
+  roomId: string,
+): Promise<GetRoomFromDBResult | null> {
+  const [{ data: roomData, error: roomError }, { data: entryData, error: entryError }] =
+    await Promise.all([
+      supabase.from("rooms").select("*").eq("id", roomId).maybeSingle(),
+      supabase
+        .from("room_entries")
+        .select("*")
+        .eq("room_id", roomId)
+        .order("index", { ascending: true }),
+    ]);
+
+  if (roomError) {
+    throw roomError;
+  }
+
+  if (entryError) {
+    throw entryError;
+  }
+
+  return {
+    entries: Array.isArray(entryData)
+      ? (entryData as Record<string, unknown>[])
+      : null,
+    meta:
+      roomData && typeof roomData === "object"
+        ? (roomData as Record<string, unknown>)
+        : null,
+  };
+}
+
 async function getJwtForDebug(): Promise<string | null> {
   const { data } = await supabase.auth.getSession();
   return data.session?.access_token ?? null;
@@ -161,7 +178,6 @@ async function getSessionForDebug(): Promise<SessionResult> {
   return await supabase.auth.getSession();
 }
 
-// Debug hooks (DEV only): lets you run auth commands in DevTools.
 if (import.meta.env.DEV) {
   try {
     globalThis.__MB_SUPABASE__ = supabase;

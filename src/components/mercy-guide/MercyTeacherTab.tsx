@@ -1,4 +1,5 @@
-// File: src/components/mercy-guide/MercyTeacherTab.tsx
+// PATH: src/components/mercy-guide/MercyTeacherTab.tsx
+
 import React, { useEffect, useMemo, useState } from 'react';
 import {
   Wind,
@@ -6,15 +7,20 @@ import {
   CheckCircle2,
   PenSquare,
   Mic,
-  Link2,
   Replace,
   Repeat,
   Target,
   TrendingUp,
+  Sparkles,
+  Eye,
+  RotateCcw,
+  Eraser,
+  Loader2,
+  AlertCircle,
 } from 'lucide-react';
-import { CompanionProfile } from '@/services/companion';
-import { SuggestedItem } from '@/services/suggestions';
-import { StudyLogEntry } from '@/services/studyLog';
+import type { CompanionProfile } from '@/services/companion';
+import type { SuggestedItem } from '@/services/suggestions';
+import type { StudyLogEntry } from '@/services/studyLog';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { TabsContent } from '@/components/ui/tabs';
@@ -24,87 +30,58 @@ import {
   POSITIVE_REFRAME_SHORT,
   COMPASSIONATE_HEAVY_MOOD_MESSAGE,
 } from '@/data/breathing_scripts_en_vi';
-
-type TeacherDecisionTask = {
-  type: string;
-  focus: string;
-  priority?: number;
-  reason?: string;
-};
-
-type TeacherDecision = {
-  primaryFocus?: string;
-  secondaryFocuses?: string[];
-  praiseFocus?: string;
-  responseMode?: string;
-  explanationDepth?: string;
-  taskPlan?: TeacherDecisionTask[];
-};
-
-type PracticeTask = {
-  type: string;
-  focus: string;
-  priority?: number;
-  instruction?: string;
-  explanation?: string;
-  question?: string;
-};
+import type {
+  GrammarApiResponse,
+  GrammarIssue,
+  GrammarWritingTeacherState,
+  LearnerMemory,
+  ParagraphAnalysis,
+  PracticeTask,
+  TeacherWritingTask,
+  TeachingDecision,
+  WritingMode,
+} from './types';
 
 type PracticeBlock = {
-  mode?: string;
   tasks?: PracticeTask[];
 };
 
-type ParagraphAnalysis = {
-  flow?: string;
-  ideaConnection?: string;
-  tenseConsistency?: string;
-  notes?: string[];
-};
+type TeacherActionState = 'idle' | 'acting' | 'submitting' | 'feedback';
 
-type LearnerMemory = {
-  learnerId: string;
-  recurringIssues: Record<string, number>;
-  strengths: Record<string, number>;
-  recentTasks: {
-    type: string;
-    focus: string;
-    assignedAt: string;
-  }[];
-  reviewQueue: {
-    focus: string;
-    nextReviewAt: string;
-    intervalDays: number;
-    successCount: number;
-  }[];
-  levelTrend?: 'rising' | 'stable' | 'struggling';
-};
-
-type TeacherWritingTask = {
-  taskType: 'rewrite' | 'linking' | 'quickFix' | 'production' | string;
+type TeacherRevisionSubmission = {
+  previousText: string;
+  newText: string;
+  isRevision: boolean;
+  taskType?: string;
   focus?: string;
-  instruction?: string;
-  reason?: string;
-  prefillText?: string;
-  triggerToken?: string;
 };
 
-type GrammarWritingTeacherState = {
-  latestAnalysisResult: unknown | null;
-  currentWritingMode?: string;
-  isTeacherInitiated: boolean;
-  isRevisionAttempt: boolean;
-  latestSubmittedText: string;
-  teacherTask?: TeacherWritingTask;
-  revisionSourceText?: string;
+type TeacherApiGloss = {
+  label?: string;
+  glossVi?: string;
 };
 
-type TeacherActionState = 'idle' | 'acting' | 'feedback';
-
-type TeacherMicroFeedback = {
-  title: string;
-  body: string;
-  nextStep: string;
+type TeacherApiView = {
+  headline?: string;
+  why?: string;
+  action?: string;
+  taskLabel?: string;
+  fixes?: string[];
+  editedVersion?: string;
+  teacherModelVersion?: string;
+  explanation?: string;
+  summary?: string;
+  nextStep?: string;
+  encouragement?: string;
+  grammarPoints?: string[];
+  grammarGloss?: TeacherApiGloss[];
+  issues?: GrammarIssue[];
+  paragraphAnalysis?: ParagraphAnalysis;
+  tenseAnalysis?: GrammarApiResponse['tenseAnalysis'];
+  score?: (GrammarApiResponse['score'] & {
+    flow?: number;
+    overall?: number;
+  }) | undefined;
 };
 
 interface MercyTeacherTabProps {
@@ -120,15 +97,18 @@ interface MercyTeacherTabProps {
   setBreathingStep: React.Dispatch<React.SetStateAction<number>>;
   setShowReframe: React.Dispatch<React.SetStateAction<boolean>>;
   onNavigateSuggestion: (item: SuggestedItem) => void;
-  decision?: TeacherDecision;
+  decision?: TeachingDecision;
   practice?: PracticeBlock;
-  writingMode?: string;
+  writingMode?: WritingMode;
   paragraphAnalysis?: ParagraphAnalysis;
   memory?: LearnerMemory;
   teacherTask?: TeacherWritingTask;
   latestTeacherWritingState?: GrammarWritingTeacherState;
   onOpenPronunciation?: () => void;
   onOpenWriting?: () => void;
+  onSubmitTeacherRevision?: (
+    payload: TeacherRevisionSubmission
+  ) => Promise<GrammarApiResponse | null>;
 }
 
 function formatTaskLabel(type: string) {
@@ -155,12 +135,16 @@ function formatFocusLabel(focus?: string) {
   return focus.charAt(0).toUpperCase() + focus.slice(1);
 }
 
-function toTitle(value?: string) {
+function toTitle(value?: string | null) {
   if (!value) return '';
   return value.charAt(0).toUpperCase() + value.slice(1);
 }
 
-function getModeTone(decision?: TeacherDecision) {
+function normalizeMeaningfulText(value?: string | null) {
+  return (value ?? '').replace(/\s+/g, ' ').trim();
+}
+
+function getModeTone(decision?: TeachingDecision) {
   if (decision?.responseMode === 'challenge') {
     return {
       label: 'Challenge',
@@ -188,10 +172,6 @@ function getTaskIcon(type?: string) {
   switch (type) {
     case 'rewrite':
       return Replace;
-    case 'linking':
-      return Link2;
-    case 'quickFix':
-      return CheckCircle2;
     case 'review':
       return Repeat;
     default:
@@ -199,180 +179,34 @@ function getTaskIcon(type?: string) {
   }
 }
 
-function getActionText(task?: PracticeTask, teacherTask?: TeacherWritingTask) {
-  if (task) {
-    switch (task.type) {
-      case 'rewrite':
-        return (
-          task.instruction ||
-          'Rewrite your paragraph so the ideas connect more smoothly.'
-        );
-      case 'linking':
-        return (
-          task.instruction ||
-          'Add linking words so one sentence clearly leads to the next.'
-        );
-      case 'quickFix':
-        return (
-          task.instruction ||
-          'Do one quick grammar fix to support the main writing goal.'
-        );
-      case 'contrast':
-        return (
-          task.instruction ||
-          'Compare the meanings carefully before you write again.'
-        );
-      case 'review':
-        return (
-          task.instruction ||
-          'Review this pattern before moving to the next step.'
-        );
-      case 'production':
-        return (
-          task.instruction ||
-          'Write one more sentence that uses the target pattern naturally.'
-        );
-      default:
-        return task.instruction || 'Continue with the next teacher task.';
-    }
-  }
-
-  if (teacherTask) {
-    return (
-      teacherTask.instruction ||
-      teacherTask.reason ||
-      `Continue the ${formatTaskLabel(teacherTask.taskType)} task${teacherTask.focus ? ` with focus on ${teacherTask.focus}` : ''}.`
-    );
-  }
-
-  return 'Start your next practice step.';
-}
-
-function getPrimaryHeadline(
-  task?: PracticeTask,
-  decision?: TeacherDecision,
-  teacherTask?: TeacherWritingTask
-) {
-  if (task) {
-    switch (task.type) {
-      case 'rewrite':
-        return 'Connect your ideas more clearly';
-      case 'linking':
-        return 'Make your paragraph flow naturally';
-      case 'quickFix':
-        return 'Strengthen the sentence with one key fix';
-      case 'contrast':
-        return 'Choose the clearer meaning before writing again';
-      case 'review':
-        return 'Review this pattern before the next step';
-      case 'production':
-        return 'Use the target pattern in your own sentence';
-      default:
-        return `Focus on ${formatFocusLabel(task.focus)}`;
-    }
-  }
-
-  if (teacherTask) {
-    switch (teacherTask.taskType) {
-      case 'rewrite':
-        return 'Return with a stronger rewrite';
-      case 'linking':
-        return 'Make the ideas connect more smoothly';
-      case 'quickFix':
-        return 'Fix one key issue clearly';
-      case 'production':
-        return 'Produce your own stronger version';
-      default:
-        return `Focus on ${formatFocusLabel(teacherTask.focus)}`;
-    }
-  }
-
-  return `Focus on ${formatFocusLabel(decision?.primaryFocus)}`;
-}
-
-function getWhyLine(
-  task?: PracticeTask,
-  decision?: TeacherDecision,
-  teacherTask?: TeacherWritingTask,
-  latestTeacherWritingState?: GrammarWritingTeacherState
-) {
-  if (task?.explanation) return task.explanation;
-  if (task?.question) return task.question;
-  if (decision?.taskPlan?.[0]?.reason) return decision.taskPlan[0].reason;
-
-  if (latestTeacherWritingState?.isRevisionAttempt) {
-    return teacherTask?.taskType === 'linking'
-      ? 'Mercy is now comparing your revised version against the earlier one to see whether the ideas connect more clearly.'
-      : 'Mercy is now comparing your revised version against the earlier one to see whether the writing got stronger.';
-  }
-
-  if (teacherTask?.reason) return teacherTask.reason;
-  if (teacherTask?.instruction) return teacherTask.instruction;
-
-  switch (task?.type ?? teacherTask?.taskType) {
-    case 'rewrite':
-      return 'Your ideas are there already. Mercy wants them to feel like one connected message.';
-    case 'linking':
-      return 'The meaning becomes easier to follow when each sentence clearly leads to the next.';
-    case 'quickFix':
-      return 'This small grammar fix supports the bigger writing goal.';
-    default:
-      return 'Mercy is choosing the one next step that gives you the biggest improvement now.';
-  }
-}
-
-function getPrimaryButtonLabel(
-  task?: PracticeTask,
-  actionState: TeacherActionState = 'idle',
-  teacherTask?: TeacherWritingTask
-) {
-  if (actionState === 'acting') return 'Hide quick practice';
-  if (actionState === 'feedback') return 'Try one better version';
-
-  switch (task?.type ?? teacherTask?.taskType) {
-    case 'rewrite':
-      return 'Rewrite here';
-    case 'linking':
-      return 'Practice flow here';
-    case 'quickFix':
-      return 'Fix it here';
-    case 'contrast':
-      return 'Compare and choose';
-    case 'review':
-      return 'Review now';
-    case 'production':
-      return 'Write one here';
-    default:
-      return 'Open writing coach';
-  }
-}
-
 function buildOrderedTasks(
   practice?: PracticeBlock,
-  decision?: TeacherDecision
+  decision?: TeachingDecision
 ): PracticeTask[] {
-  const practiceTasks = [...(practice?.tasks ?? [])].sort(
+  const practiceTasks = [...((practice?.tasks as PracticeTask[] | undefined) ?? [])].sort(
     (a, b) => (b.priority ?? 0) - (a.priority ?? 0)
   );
 
   if (practiceTasks.length > 0) return practiceTasks;
 
-  return [...(decision?.taskPlan ?? [])]
+  return [...(((decision?.taskPlan as PracticeTask[] | undefined) ?? []))]
     .sort((a, b) => (b.priority ?? 0) - (a.priority ?? 0))
     .map((task) => ({
       type: task.type,
       focus: task.focus,
       priority: task.priority,
-      instruction: task.reason,
-      explanation: task.reason,
+      instruction: task.instruction ?? task.explanation ?? (task as any).reason,
+      explanation: task.explanation ?? (task as any).reason,
     }));
 }
 
-function buildFallbackTask(teacherTask?: TeacherWritingTask): PracticeTask | undefined {
+function deriveTaskFromTeacherTask(
+  teacherTask?: TeacherWritingTask
+): PracticeTask | undefined {
   if (!teacherTask) return undefined;
 
   return {
-    type: teacherTask.taskType,
+    type: teacherTask.taskType as PracticeTask['type'],
     focus: teacherTask.focus ?? teacherTask.taskType,
     priority: 0,
     instruction: teacherTask.instruction,
@@ -380,18 +214,20 @@ function buildFallbackTask(teacherTask?: TeacherWritingTask): PracticeTask | und
   };
 }
 
-function getMemoryLine(memory?: LearnerMemory, decision?: TeacherDecision) {
-  const recurring = Object.entries(memory?.recurringIssues ?? {}).sort(
-    (a, b) => b[1] - a[1]
-  )[0];
+function getMemoryLine(memory?: LearnerMemory, decision?: TeachingDecision) {
+  const recurringEntries = Object.entries(
+    (memory?.recurringIssues as Record<string, number> | undefined) ?? {}
+  );
+  const recurring = recurringEntries.sort((a, b) => b[1] - a[1])[0];
 
   if (recurring) {
     return `You often need support with ${recurring[0]}, so Mercy is focusing there first today.`;
   }
 
-  const strength = Object.entries(memory?.strengths ?? {}).sort(
-    (a, b) => b[1] - a[1]
-  )[0];
+  const strengthEntries = Object.entries(
+    (memory?.strengths as Record<string, number> | undefined) ?? {}
+  );
+  const strength = strengthEntries.sort((a, b) => b[1] - a[1])[0];
 
   if (strength) {
     return `You are already showing strength in ${strength[0]}. Mercy wants to build on that.`;
@@ -411,9 +247,11 @@ function getTrendLabel(memory?: LearnerMemory) {
 }
 
 function formatReviewFocus(memory?: LearnerMemory) {
-  const nextReview = [...(memory?.reviewQueue ?? [])].sort(
-    (a, b) =>
-      new Date(a.nextReviewAt).getTime() - new Date(b.nextReviewAt).getTime()
+  const nextReview = [
+    ...(((memory?.reviewQueue as Array<{ nextReviewAt: string; focus?: string }> | undefined) ??
+      [])),
+  ].sort(
+    (a, b) => new Date(a.nextReviewAt).getTime() - new Date(b.nextReviewAt).getTime()
   )[0];
 
   return nextReview?.focus ?? null;
@@ -427,137 +265,65 @@ function supportsInlineAction(task?: PracticeTask, teacherTask?: TeacherWritingT
 
 function getDraftPlaceholder(
   task?: PracticeTask,
-  decision?: TeacherDecision,
+  decision?: TeachingDecision,
   teacherTask?: TeacherWritingTask
 ) {
   switch (task?.type ?? teacherTask?.taskType) {
     case 'rewrite':
-      return 'Rewrite your sentence or paragraph here so the ideas connect more clearly.';
+      return 'Rewrite your message here so the ideas connect more clearly.';
     case 'linking':
-      return 'Write a smoother version here and add linking words between your ideas.';
+      return 'Revise your message here and add a clearer bridge between the ideas.';
     case 'quickFix':
       return 'Write the corrected version here.';
     case 'production':
       return 'Write one natural sentence using the target pattern here.';
     default:
-      return `Write here about ${task?.focus ?? teacherTask?.focus ?? decision?.primaryFocus ?? 'your next learning focus'}.`;
+      return `Write here about ${
+        task?.focus ??
+        teacherTask?.focus ??
+        decision?.primaryFocus ??
+        'your day, your life, or one sentence you want Mercy to check'
+      }.`;
   }
 }
 
 function getInlineActionIntro(task?: PracticeTask, teacherTask?: TeacherWritingTask) {
   switch (task?.type ?? teacherTask?.taskType) {
     case 'rewrite':
-      return 'Mercy wants one better rewrite right now inside this tab.';
+      return 'Edit your own writing here first. When you submit, Mercy will wait for the grammar API result and then show the correction, explanation, and teacher model.';
     case 'linking':
-      return 'Mercy wants one version with clearer bridges between ideas.';
+      return 'Start from your own text below. Mercy will wait for your edited version, then show the API-based grammar result.';
     case 'quickFix':
-      return 'Mercy wants one clean correction before you move on.';
+      return 'Make one careful correction here first. Mercy will respond only after the grammar API returns a result.';
     case 'production':
-      return 'Mercy wants you to produce your own sentence, not just read feedback.';
+      return 'Write your own sentence first. Mercy will wait for the submitted text and then show grammar notes from the API.';
     default:
-      return 'Mercy is giving you a quick guided action here first.';
+      return 'Write your own version first. Mercy will wait for the submitted revision before she gives grammar feedback.';
   }
-}
-
-function buildMicroFeedback(
-  draft: string,
-  task?: PracticeTask,
-  teacherTask?: TeacherWritingTask
-): TeacherMicroFeedback {
-  const trimmed = draft.trim();
-  const sentences = trimmed
-    .split(/[.!?]+/)
-    .map((part) => part.trim())
-    .filter(Boolean);
-  const wordCount = trimmed.split(/\s+/).filter(Boolean).length;
-  const taskType = task?.type ?? teacherTask?.taskType;
-
-  if (trimmed.length === 0) {
-    return {
-      title: 'Start with one small sentence',
-      body: 'Mercy needs one written attempt before she can guide the next step.',
-      nextStep: 'Write one sentence first, then submit again.',
-    };
-  }
-
-  if (taskType === 'rewrite') {
-    if (sentences.length >= 2 && wordCount >= 12) {
-      return {
-        title: 'This rewrite is stronger',
-        body: 'You gave Mercy a fuller second version. The next improvement is to make each sentence lead naturally to the next.',
-        nextStep: 'Read it once and improve one transition word or phrase.',
-      };
-    }
-
-    return {
-      title: 'Good first rewrite',
-      body: 'You started the revision. Mercy now wants a little more connection between the ideas.',
-      nextStep: 'Add one more sentence or one linking phrase so the message feels smoother.',
-    };
-  }
-
-  if (taskType === 'linking') {
-    const hasLinkingWord =
-      /\b(because|so|but|and|then|however|therefore|first|next|finally|also)\b/i.test(
-        trimmed
-      );
-
-    return hasLinkingWord
-      ? {
-          title: 'Your flow is getting clearer',
-          body: 'Mercy can already see a bridge between ideas in your new version.',
-          nextStep: 'Read it aloud once and check whether the order of ideas still feels natural.',
-        }
-      : {
-          title: 'Nice start',
-          body: 'You rewrote the idea, but Mercy still wants a clearer bridge between one sentence and the next.',
-          nextStep: 'Add one linking word such as because, so, but, then, or however.',
-        };
-  }
-
-  if (taskType === 'quickFix') {
-    return {
-      title: 'Good correction step',
-      body: 'You focused on one small change, which is exactly how Mercy wants to build accuracy.',
-      nextStep: 'Read the sentence aloud once and check if every word form still matches your meaning.',
-    };
-  }
-
-  if (taskType === 'production') {
-    return {
-      title: 'You used the pattern yourself',
-      body: 'That is the right direction. Mercy wants you producing language, not only reading feedback.',
-      nextStep: 'Write one more example with the same pattern in a different meaning.',
-    };
-  }
-
-  return {
-    title: 'Good work',
-    body: 'You completed the next teacher action inside this tab.',
-    nextStep: 'Open the writing coach if you want a deeper correction pass.',
-  };
 }
 
 function getTeacherLoopSummary(
   teacherTask?: TeacherWritingTask,
-  latestTeacherWritingState?: GrammarWritingTeacherState
+  latestTeacherWritingState?: GrammarWritingTeacherState,
+  hasApiAnalysis?: boolean
 ) {
   if (!teacherTask && !latestTeacherWritingState?.latestSubmittedText) return null;
 
   if (latestTeacherWritingState?.isRevisionAttempt) {
     return {
-      title: 'You came back with a revision',
-      body:
-        teacherTask?.taskType === 'linking'
-          ? 'Mercy can now coach whether your new version connects ideas more clearly.'
-          : 'Mercy can now coach whether your new version is stronger than the first one.',
+      title: hasApiAnalysis ? 'Revision checked by Mercy' : 'Revision received',
+      body: hasApiAnalysis
+        ? 'Mercy is showing the grammar result from the latest submitted revision.'
+        : 'Mercy has the revision text. Grammar feedback should appear after the API result is returned.',
     };
   }
 
   if (latestTeacherWritingState?.isTeacherInitiated) {
     return {
-      title: 'You completed the teacher writing step',
-      body: 'Mercy now uses your latest writing attempt to decide the next best step.',
+      title: 'Teacher writing step is active',
+      body: hasApiAnalysis
+        ? 'Mercy is using the latest grammar result to guide the next teaching move.'
+        : 'Mercy is waiting for your submitted writing so the grammar API can evaluate it.',
     };
   }
 
@@ -573,8 +339,175 @@ function getTeacherLoopSummary(
 
   return {
     title: 'Latest writing received',
-    body: 'Mercy can now react to what you just wrote.',
+    body: hasApiAnalysis
+      ? 'Mercy is showing grammar feedback returned by the API for your latest writing.'
+      : 'Mercy has your latest writing. Grammar feedback should come from the API result, not from a prewritten reply.',
   };
+}
+
+function getRevisionSeedText(
+  latestTeacherWritingState?: GrammarWritingTeacherState,
+  teacherTask?: TeacherWritingTask
+) {
+  return (
+    latestTeacherWritingState?.latestSubmittedText ||
+    latestTeacherWritingState?.revisionSourceText ||
+    teacherTask?.prefillText ||
+    ''
+  );
+}
+
+function hasSubmittedWriting(latestTeacherWritingState?: GrammarWritingTeacherState) {
+  return Boolean(normalizeMeaningfulText(latestTeacherWritingState?.latestSubmittedText));
+}
+
+function toStringArray(value: unknown): string[] {
+  if (!Array.isArray(value)) return [];
+  return value
+    .map((item) => (typeof item === 'string' ? normalizeMeaningfulText(item) : ''))
+    .filter(Boolean);
+}
+
+function toIssueArray(value: unknown): GrammarIssue[] {
+  if (!Array.isArray(value)) return [];
+  return value.filter((item) => item && typeof item === 'object') as GrammarIssue[];
+}
+
+function asParagraphAnalysis(value: unknown): ParagraphAnalysis | undefined {
+  if (!value || typeof value !== 'object') return undefined;
+  return value as ParagraphAnalysis;
+}
+
+function asTeacherApiGlossArray(value: unknown): TeacherApiGloss[] {
+  if (!Array.isArray(value)) return [];
+  return value.filter((item) => item && typeof item === 'object') as TeacherApiGloss[];
+}
+
+function asTeacherApiView(value: unknown): TeacherApiView | null {
+  if (!value || typeof value !== 'object') return null;
+  const raw = value as Record<string, unknown>;
+
+  const nestedResult =
+    raw.result && typeof raw.result === 'object'
+      ? (raw.result as Record<string, unknown>)
+      : null;
+
+  const source = nestedResult ?? raw;
+
+  const correctedText =
+    typeof source.correctedText === 'string'
+      ? source.correctedText
+      : typeof source.corrected === 'string'
+        ? source.corrected
+        : typeof source.editedVersion === 'string'
+          ? source.editedVersion
+          : typeof source.edited_version === 'string'
+            ? source.edited_version
+            : undefined;
+
+  return {
+    headline: typeof source.headline === 'string' ? source.headline : undefined,
+    why:
+      typeof source.why === 'string'
+        ? source.why
+        : typeof source.overallAssessment === 'string'
+          ? source.overallAssessment
+          : undefined,
+    action: typeof source.action === 'string' ? source.action : undefined,
+    taskLabel: typeof source.taskLabel === 'string' ? source.taskLabel : undefined,
+    fixes: toStringArray(source.fixes),
+    editedVersion: correctedText,
+    teacherModelVersion:
+      typeof source.teacherModelVersion === 'string'
+        ? source.teacherModelVersion
+        : typeof source.teacher_model_version === 'string'
+          ? source.teacher_model_version
+          : typeof source.enhancedText === 'string'
+            ? source.enhancedText
+            : undefined,
+    explanation: typeof source.explanation === 'string' ? source.explanation : undefined,
+    summary:
+      typeof source.summary === 'string'
+        ? source.summary
+        : typeof source.overallAssessment === 'string'
+          ? source.overallAssessment
+          : undefined,
+    nextStep:
+      typeof source.nextStep === 'string'
+        ? source.nextStep
+        : typeof source.recommendedNextStep === 'string'
+          ? source.recommendedNextStep
+          : undefined,
+    encouragement:
+      typeof source.encouragement === 'string' ? source.encouragement : undefined,
+    grammarPoints:
+      toStringArray(source.grammarPoints).length > 0
+        ? toStringArray(source.grammarPoints)
+        : toStringArray(source.grammar_points),
+    grammarGloss:
+      asTeacherApiGlossArray(source.grammarGloss).length > 0
+        ? asTeacherApiGlossArray(source.grammarGloss)
+        : asTeacherApiGlossArray(source.grammar_gloss),
+    issues:
+      toIssueArray(source.issues).length > 0
+        ? toIssueArray(source.issues)
+        : toIssueArray(source.issue_list),
+    paragraphAnalysis:
+      asParagraphAnalysis(source.paragraphAnalysis) ??
+      asParagraphAnalysis(source.paragraph_analysis),
+    tenseAnalysis:
+      (source.tenseAnalysis as TeacherApiView['tenseAnalysis']) ??
+      (source.tense_analysis as TeacherApiView['tenseAnalysis']) ??
+      undefined,
+    score: (source.score as TeacherApiView['score']) ?? undefined,
+  };
+}
+
+function getApiTitle(result: TeacherApiView | null, fallbackFocus?: string) {
+  return (
+    result?.headline ||
+    result?.taskLabel ||
+    (fallbackFocus ? `Focus on ${formatFocusLabel(fallbackFocus)}` : 'Grammar feedback')
+  );
+}
+
+function getApiWhy(result: TeacherApiView | null, fallbackText?: string) {
+  return (
+    result?.why ||
+    result?.summary ||
+    result?.explanation ||
+    fallbackText ||
+    'Mercy will show grammar feedback here after the API returns a result.'
+  );
+}
+
+function getFixesFromApi(result: TeacherApiView | null) {
+  if (!result) return [] as string[];
+
+  const directFixes = result.fixes?.filter(Boolean) ?? [];
+  if (directFixes.length > 0) return directFixes;
+
+  return (result.issues ?? [])
+    .map((issue) => {
+      const corrected = normalizeMeaningfulText((issue as any).corrected);
+      const reason = normalizeMeaningfulText((issue as any).reason);
+      if (corrected && reason) return `${corrected} — ${reason}`;
+      if (corrected) return corrected;
+      return reason;
+    })
+    .filter(Boolean);
+}
+
+function getVisibleParagraphAnalysis(
+  result: TeacherApiView | null,
+  fallback?: ParagraphAnalysis
+) {
+  return result?.paragraphAnalysis ?? fallback;
+}
+
+function getParagraphNotes(value?: ParagraphAnalysis): string[] {
+  const raw = (value as (ParagraphAnalysis & { notes?: unknown }) | undefined)?.notes;
+  return toStringArray(raw);
 }
 
 export function MercyTeacherTab({
@@ -599,16 +532,17 @@ export function MercyTeacherTab({
   latestTeacherWritingState,
   onOpenPronunciation,
   onOpenWriting,
+  onSubmitTeacherRevision,
 }: MercyTeacherTabProps) {
   const orderedTasks = useMemo(
     () => buildOrderedTasks(practice, decision),
     [practice, decision]
   );
-  const fallbackTeacherTask = useMemo(
-    () => buildFallbackTask(teacherTask),
+  const derivedTeacherTask = useMemo(
+    () => deriveTaskFromTeacherTask(teacherTask),
     [teacherTask]
   );
-  const primaryTask = orderedTasks[0] ?? fallbackTeacherTask;
+  const primaryTask = orderedTasks[0] ?? derivedTeacherTask;
   const nextTask = orderedTasks[1];
   const supportTask = orderedTasks[2];
   const modeTone = useMemo(() => getModeTone(decision), [decision]);
@@ -618,28 +552,62 @@ export function MercyTeacherTab({
     () => getTaskIcon(primaryTask?.type ?? teacherTask?.taskType),
     [primaryTask?.type, teacherTask?.taskType]
   );
-  const canDoInlineAction = supportsInlineAction(primaryTask, teacherTask);
-  const teacherLoopSummary = useMemo(
-    () => getTeacherLoopSummary(teacherTask, latestTeacherWritingState),
-    [teacherTask, latestTeacherWritingState]
+  const canDoInlineAction =
+    supportsInlineAction(primaryTask, teacherTask) && Boolean(onSubmitTeacherRevision);
+  const revisionSeedText = useMemo(
+    () => getRevisionSeedText(latestTeacherWritingState, teacherTask),
+    [latestTeacherWritingState, teacherTask]
   );
 
   const [actionState, setActionState] = useState<TeacherActionState>('idle');
-  const [draftText, setDraftText] = useState('');
-  const [microFeedback, setMicroFeedback] = useState<TeacherMicroFeedback | null>(
-    null
+  const [draftText, setDraftText] = useState(revisionSeedText);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [showTeacherVersion, setShowTeacherVersion] = useState(false);
+  const [showEditedVersion, setShowEditedVersion] = useState(false);
+
+  const grammarResult = useMemo(
+    () => asTeacherApiView(latestTeacherWritingState?.latestAnalysisResult),
+    [latestTeacherWritingState]
+  );
+  const hasApiAnalysis = Boolean(grammarResult);
+  const fixes = useMemo(() => getFixesFromApi(grammarResult), [grammarResult]);
+  const visibleParagraphAnalysis = useMemo(
+    () => getVisibleParagraphAnalysis(grammarResult, paragraphAnalysis),
+    [grammarResult, paragraphAnalysis]
+  );
+  const paragraphNotes = useMemo(
+    () => getParagraphNotes(visibleParagraphAnalysis),
+    [visibleParagraphAnalysis]
+  );
+  const submittedWriting = hasSubmittedWriting(latestTeacherWritingState);
+  const teacherLoopSummary = useMemo(
+    () => getTeacherLoopSummary(teacherTask, latestTeacherWritingState, hasApiAnalysis),
+    [teacherTask, latestTeacherWritingState, hasApiAnalysis]
   );
 
   useEffect(() => {
     setActionState('idle');
-    setDraftText('');
-    setMicroFeedback(null);
+    setDraftText(revisionSeedText);
+    setSubmitError(null);
+    setShowTeacherVersion(false);
+    setShowEditedVersion(Boolean(latestTeacherWritingState?.isRevisionAttempt));
   }, [
     primaryTask?.type,
     primaryTask?.focus,
     decision?.primaryFocus,
     teacherTask?.triggerToken,
+    latestTeacherWritingState?.latestSubmittedText,
+    latestTeacherWritingState?.isRevisionAttempt,
+    revisionSeedText,
   ]);
+
+  useEffect(() => {
+    if (actionState === 'submitting' && latestTeacherWritingState?.latestAnalysisResult) {
+      setSubmitError(null);
+      setShowEditedVersion(true);
+      setActionState('feedback');
+    }
+  }, [actionState, latestTeacherWritingState?.latestAnalysisResult]);
 
   const handlePrimaryAction = () => {
     if (!canDoInlineAction) {
@@ -652,16 +620,58 @@ export function MercyTeacherTab({
       return;
     }
 
+    setSubmitError(null);
+    setDraftText(revisionSeedText);
     setActionState('acting');
   };
 
-  const handleSubmitInlineAction = () => {
-    const feedback = buildMicroFeedback(draftText, primaryTask, teacherTask);
-    setMicroFeedback(feedback);
-    setActionState('feedback');
+  const handleResetDraft = () => {
+    setDraftText(revisionSeedText);
+    setSubmitError(null);
+    setActionState('acting');
   };
 
-  const showTeacherCoachCard = Boolean(primaryTask || decision || teacherTask);
+  const handleClearDraft = () => {
+    setDraftText('');
+    setSubmitError(null);
+  };
+
+  const handleSubmitInlineAction = async () => {
+    const newText = normalizeMeaningfulText(draftText);
+    if (!newText || !onSubmitTeacherRevision) return;
+
+    setActionState('submitting');
+    setSubmitError(null);
+
+    try {
+      await onSubmitTeacherRevision({
+        previousText:
+          latestTeacherWritingState?.latestSubmittedText ||
+          latestTeacherWritingState?.revisionSourceText ||
+          teacherTask?.prefillText ||
+          '',
+        newText,
+        isRevision: Boolean(revisionSeedText),
+        taskType: primaryTask?.type ?? teacherTask?.taskType,
+        focus: primaryTask?.focus ?? teacherTask?.focus,
+      });
+    } catch (error) {
+      console.error('Teacher revision API failed:', error);
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : 'Grammar API did not return a valid result.'
+      );
+      setActionState('acting');
+    }
+  };
+
+  const showTeacherCoachCard = Boolean(primaryTask || decision || teacherTask || submittedWriting);
+  const showEssayMode = writingMode === 'essay';
+  const shouldShowGeneralWritingCoach =
+    Boolean(showEssayMode || writingMode || visibleParagraphAnalysis) &&
+    !submittedWriting &&
+    !hasApiAnalysis;
 
   return (
     <TabsContent value="teacher" className="m-0 flex-1 overflow-hidden">
@@ -690,12 +700,15 @@ export function MercyTeacherTab({
                   'rounded-full border px-3 py-1 text-xs font-semibold',
                   modeTone.badgeClass
                 )}
+                title={modeTone.description}
               >
                 {modeTone.label}
               </span>
             </div>
 
-            <p className="text-sm text-muted-foreground">{modeTone.description}</p>
+            <p className="text-sm text-muted-foreground">
+              Mercy guides the learning flow here, but grammar feedback must come from the API after you submit your writing.
+            </p>
           </div>
 
           {teacherLoopSummary && (
@@ -710,6 +723,12 @@ export function MercyTeacherTab({
               <p className="mt-1 text-sm leading-6 text-muted-foreground">
                 {teacherLoopSummary.body}
               </p>
+
+              {latestTeacherWritingState?.latestSubmittedText && (
+                <p className="mt-2 text-xs text-indigo-700">
+                  Mercy should show grammar feedback only from the returned API result.
+                </p>
+              )}
 
               {teacherTask && (
                 <div className="mt-3 rounded-xl border border-indigo-200 bg-white p-3">
@@ -759,8 +778,30 @@ export function MercyTeacherTab({
             </div>
           )}
 
+          {!submittedWriting && (
+            <div className="rounded-2xl border border-amber-200 bg-amber-50 p-4 shadow-sm">
+              <p className="text-xs font-semibold uppercase tracking-wide text-amber-700">
+                Daily writing with Mercy
+              </p>
+              <h3 className="mt-1 text-lg font-semibold text-foreground">
+                Write about your day, your life, or one sentence you want to improve
+              </h3>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                Mercy encourages real-life writing first. After you submit, grammar feedback should come from the API, not from a prewritten reply.
+              </p>
+              <div className="mt-3 space-y-2 rounded-xl border border-amber-200 bg-white p-3">
+                <p className="text-sm text-foreground">You can write:</p>
+                <div className="space-y-2 text-sm text-muted-foreground">
+                  <p>• what happened today</p>
+                  <p>• a feeling, memory, or life update</p>
+                  <p>• one sentence you want to check for grammar</p>
+                </div>
+              </div>
+            </div>
+          )}
+
           {showTeacherCoachCard && (
-            <div className="space-y-4 rounded-2xl border border-pink-200 bg-white p-4 shadow-sm">
+            <div className="space-y-4 rounded-2xl border border-pink-200 border-l-4 border-l-pink-300 bg-white p-4 shadow-sm">
               <div className="space-y-3">
                 <div className="inline-flex items-center rounded-full border border-pink-200 bg-pink-50 px-3 py-1 text-xs font-semibold text-pink-700">
                   <Target className="mr-1.5 h-3.5 w-3.5" />
@@ -772,14 +813,18 @@ export function MercyTeacherTab({
 
                 <div>
                   <h3 className="text-xl font-semibold leading-tight text-foreground">
-                    {getPrimaryHeadline(primaryTask, decision, teacherTask)}
+                    {getApiTitle(
+                      grammarResult,
+                      primaryTask?.focus ?? teacherTask?.focus ?? decision?.primaryFocus
+                    )}
                   </h3>
                   <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                    {getWhyLine(
-                      primaryTask,
-                      decision,
-                      teacherTask,
-                      latestTeacherWritingState
+                    {getApiWhy(
+                      grammarResult,
+                      teacherTask?.reason ??
+                        primaryTask?.explanation ??
+                        (decision?.taskPlan?.[0] as any)?.reason ??
+                        'Mercy is waiting for the grammar API result.'
                     )}
                   </p>
                 </div>
@@ -802,80 +847,204 @@ export function MercyTeacherTab({
                       Do this now
                     </p>
                     <p className="mt-1 text-base font-semibold text-foreground">
-                      {primaryTask
-                        ? `${formatTaskLabel(primaryTask.type)}: ${primaryTask.focus}`
-                        : teacherTask
-                          ? `${formatTaskLabel(teacherTask.taskType)}${teacherTask.focus ? `: ${teacherTask.focus}` : ''}`
-                          : `Focus on ${formatFocusLabel(decision?.primaryFocus)}`}
+                      {grammarResult?.taskLabel
+                        ? grammarResult.taskLabel
+                        : primaryTask
+                          ? `${formatTaskLabel(primaryTask.type)}: ${primaryTask.focus}`
+                          : teacherTask
+                            ? `${formatTaskLabel(teacherTask.taskType)}${teacherTask.focus ? `: ${teacherTask.focus}` : ''}`
+                            : `Focus on ${formatFocusLabel(decision?.primaryFocus)}`}
                     </p>
                     <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                      {getActionText(primaryTask, teacherTask)}
+                      {grammarResult?.action ??
+                        teacherTask?.instruction ??
+                        primaryTask?.instruction ??
+                        'Write your own version first, then submit it so Mercy can show the API-based grammar result.'}
                     </p>
                   </div>
                 </div>
 
-                {canDoInlineAction && actionState === 'acting' && (
+                {fixes.length > 0 ? (
                   <div className="mt-4 rounded-2xl border border-pink-200 bg-white p-4 shadow-sm">
-                    <div className="space-y-2">
-                      <p className="text-sm font-semibold text-foreground">
-                        Try it here first
-                      </p>
-                      <p className="text-xs leading-5 text-muted-foreground">
-                        {getInlineActionIntro(primaryTask, teacherTask)}
+                    <p className="text-sm font-semibold text-foreground">Grammar result</p>
+                    <div className="mt-3 space-y-2">
+                      {fixes.map((fix, index) => (
+                        <div
+                          key={`${fix}-${index}`}
+                          className="rounded-xl border border-border bg-muted/10 p-3"
+                        >
+                          <p className="text-sm leading-6 text-foreground">
+                            {index + 1}. {fix}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
+
+                {grammarResult?.grammarPoints?.length ? (
+                  <div className="mt-4 rounded-2xl border border-sky-200 bg-sky-50 p-4">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-sky-700">
+                      Grammar points from API
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-foreground">
+                      {grammarResult.grammarPoints.join(', ')}
+                    </p>
+                  </div>
+                ) : null}
+
+                {showEditedVersion && grammarResult?.editedVersion && (
+                  <div className="mt-4 rounded-2xl border border-emerald-200 bg-emerald-50 p-4">
+                    <div className="flex items-center gap-2">
+                      <Sparkles className="h-4 w-4 text-emerald-700" />
+                      <p className="text-sm font-semibold text-emerald-800">
+                        Edited version
                       </p>
                     </div>
-
-                    <textarea
-                      value={draftText}
-                      onChange={(event) => setDraftText(event.target.value)}
-                      placeholder={getDraftPlaceholder(primaryTask, decision, teacherTask)}
-                      className="mt-3 min-h-[140px] w-full rounded-xl border border-input bg-background px-3 py-2 text-sm text-foreground outline-none ring-offset-background placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                    />
-
-                    <div className="mt-3 flex flex-col gap-2 sm:flex-row">
-                      <Button
-                        className="w-full sm:flex-1"
-                        onClick={handleSubmitInlineAction}
-                        disabled={!draftText.trim()}
-                      >
-                        Submit to Mercy
-                        <CheckCircle2 className="ml-2 h-4 w-4" />
-                      </Button>
-
-                      <Button
-                        variant="outline"
-                        className="w-full sm:flex-1"
-                        onClick={() => {
-                          setDraftText('');
-                          setMicroFeedback(null);
-                        }}
-                      >
-                        Clear draft
-                      </Button>
-                    </div>
+                    <p className="mt-2 text-sm leading-6 text-foreground">
+                      {grammarResult.editedVersion}
+                    </p>
                   </div>
                 )}
 
-                {canDoInlineAction && actionState === 'feedback' && microFeedback && (
+                {grammarResult?.teacherModelVersion && (
+                  <div className="mt-4">
+                    <Button
+                      variant="outline"
+                      className="w-full justify-between rounded-xl"
+                      onClick={() => setShowTeacherVersion((prev) => !prev)}
+                    >
+                      {showTeacherVersion ? 'Hide teacher version' : 'Show teacher version'}
+                      <Eye className="h-4 w-4" />
+                    </Button>
+
+                    {showTeacherVersion && (
+                      <div className="mt-3 rounded-2xl border border-emerald-200 bg-emerald-50 p-4">
+                        <div className="flex items-center gap-2">
+                          <Sparkles className="h-4 w-4 text-emerald-700" />
+                          <p className="text-sm font-semibold text-emerald-800">
+                            Teacher model version
+                          </p>
+                        </div>
+                        <p className="mt-2 text-sm leading-6 text-foreground">
+                          {grammarResult.teacherModelVersion}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {canDoInlineAction &&
+                  (actionState === 'acting' || actionState === 'submitting') && (
+                    <div className="mt-4 rounded-2xl border border-pink-200 bg-white p-4 shadow-sm">
+                      <div className="space-y-2">
+                        <p className="text-sm font-semibold text-foreground">
+                          ✍️ Write and submit to Mercy
+                        </p>
+                        <p className="text-xs leading-5 text-muted-foreground">
+                          {getInlineActionIntro(primaryTask, teacherTask)}
+                        </p>
+                      </div>
+
+                      {revisionSeedText ? (
+                        <div className="mt-3 rounded-xl border border-slate-200 bg-slate-50 p-3">
+                          <p className="text-xs font-semibold uppercase tracking-wide text-slate-600">
+                            Your latest writing loaded for editing
+                          </p>
+                          <p className="mt-1 text-sm leading-6 text-foreground">
+                            {revisionSeedText}
+                          </p>
+                        </div>
+                      ) : null}
+
+                      <textarea
+                        value={draftText}
+                        onChange={(event) => setDraftText(event.target.value)}
+                        placeholder={getDraftPlaceholder(primaryTask, decision, teacherTask)}
+                        className="mt-3 min-h-[180px] w-full rounded-xl border border-input bg-background px-3 py-2 text-sm text-foreground outline-none ring-offset-background placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                      />
+
+                      {submitError ? (
+                        <div className="mt-3 rounded-xl border border-red-200 bg-red-50 p-3">
+                          <div className="flex items-start gap-2">
+                            <AlertCircle className="mt-0.5 h-4 w-4 text-red-700" />
+                            <div>
+                              <p className="text-sm font-semibold text-red-800">
+                                Grammar API error
+                              </p>
+                              <p className="mt-1 text-sm text-red-700">{submitError}</p>
+                            </div>
+                          </div>
+                        </div>
+                      ) : null}
+
+                      <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
+                        <Button
+                          className="w-full sm:flex-1"
+                          onClick={handleSubmitInlineAction}
+                          disabled={!draftText.trim() || actionState === 'submitting'}
+                        >
+                          {actionState === 'submitting' ? (
+                            <>
+                              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                              Calling grammar API...
+                            </>
+                          ) : (
+                            <>
+                              Submit revision to Teacher Mercy
+                              <CheckCircle2 className="ml-2 h-4 w-4" />
+                            </>
+                          )}
+                        </Button>
+
+                        <Button
+                          variant="outline"
+                          className="w-full sm:flex-1"
+                          onClick={handleResetDraft}
+                          disabled={!revisionSeedText || actionState === 'submitting'}
+                        >
+                          Reset to original
+                          <RotateCcw className="ml-2 h-4 w-4" />
+                        </Button>
+
+                        <Button
+                          variant="outline"
+                          className="w-full sm:flex-1"
+                          onClick={handleClearDraft}
+                          disabled={actionState === 'submitting'}
+                        >
+                          Clear
+                          <Eraser className="ml-2 h-4 w-4" />
+                        </Button>
+                      </div>
+                    </div>
+                  )}
+
+                {actionState === 'feedback' && grammarResult && (
                   <div className="mt-4 rounded-2xl border border-green-200 bg-green-50 p-4">
                     <p className="text-xs font-semibold uppercase tracking-wide text-green-700">
-                      Mercy feedback
+                      API result loaded
                     </p>
                     <p className="mt-1 text-base font-semibold text-foreground">
-                      {microFeedback.title}
+                      {grammarResult.headline || 'Mercy received the grammar result'}
                     </p>
                     <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                      {microFeedback.body}
+                      {grammarResult.nextStep ||
+                        grammarResult.encouragement ||
+                        grammarResult.action ||
+                        'You can keep revising, start a new piece of writing, or move to speaking practice if you want.'}
                     </p>
+                  </div>
+                )}
 
-                    <div className="mt-3 rounded-xl border border-green-200 bg-white p-3">
-                      <p className="text-xs font-semibold uppercase tracking-wide text-green-700">
-                        Next step
-                      </p>
-                      <p className="mt-1 text-sm text-foreground">
-                        {microFeedback.nextStep}
-                      </p>
-                    </div>
+                {(latestTeacherWritingState?.isRevisionAttempt || actionState === 'feedback') && (
+                  <div className="mt-4 rounded-2xl border border-sky-200 bg-sky-50 p-4">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-sky-700">
+                      After the correction
+                    </p>
+                    <p className="mt-1 text-sm leading-6 text-foreground">
+                      Mercy can encourage you to practice speaking next, but you are free to choose any sentence you want for Pronunciation. You can also continue with a brand new paragraph about your day or send just one sentence you want Mercy to check for grammar.
+                    </p>
                   </div>
                 )}
 
@@ -883,8 +1052,15 @@ export function MercyTeacherTab({
                   <Button
                     className="w-full justify-between rounded-xl"
                     onClick={handlePrimaryAction}
+                    disabled={actionState === 'submitting'}
                   >
-                    {getPrimaryButtonLabel(primaryTask, actionState, teacherTask)}
+                    {actionState === 'acting'
+                      ? 'Hide revision box'
+                      : actionState === 'feedback'
+                        ? 'Revise again'
+                        : canDoInlineAction
+                          ? 'Revise this writing now'
+                          : 'Open writing coach'}
                     <ArrowRight className="h-4 w-4" />
                   </Button>
 
@@ -893,11 +1069,7 @@ export function MercyTeacherTab({
                     className="w-full justify-between rounded-xl"
                     onClick={onOpenPronunciation}
                   >
-                    {latestTeacherWritingState?.isRevisionAttempt
-                      ? 'Say your revised version'
-                      : latestTeacherWritingState?.latestSubmittedText
-                        ? 'Say your latest version'
-                        : 'Say it aloud'}
+                    Open Pronunciation practice
                     <Mic className="h-4 w-4" />
                   </Button>
                 </div>
@@ -922,10 +1094,13 @@ export function MercyTeacherTab({
                     Why this matters
                   </p>
                   <p className="mt-1 text-sm leading-6 text-foreground">
-                    {primaryTask?.explanation ||
-                      teacherTask?.reason ||
-                      decision?.taskPlan?.[0]?.reason ||
-                      'Mercy is choosing the highest-leverage next action for you.'}
+                    {getApiWhy(
+                      grammarResult,
+                      primaryTask?.explanation ??
+                        teacherTask?.reason ??
+                        (decision?.taskPlan?.[0] as any)?.reason ??
+                        'Mercy is choosing the highest-leverage next action for you.'
+                    )}
                   </p>
                 </div>
 
@@ -938,7 +1113,7 @@ export function MercyTeacherTab({
                   </p>
                   <p className="mt-1 text-xs text-muted-foreground">
                     {decision?.explanationDepth
-                      ? `Explanation depth: ${toTitle(decision.explanationDepth)}`
+                      ? `Explanation depth: ${toTitle(String(decision.explanationDepth))}`
                       : 'Mercy is matching the explanation to your current need.'}
                   </p>
                 </div>
@@ -956,7 +1131,9 @@ export function MercyTeacherTab({
                         {formatTaskLabel(nextTask.type)}: {nextTask.focus}
                       </p>
                       <p className="mt-1 text-xs leading-5 text-muted-foreground">
-                        {getActionText(nextTask)}
+                        {nextTask.instruction ||
+                          nextTask.explanation ||
+                          'Continue with the next supporting step.'}
                       </p>
                     </div>
                   )}
@@ -974,29 +1151,29 @@ export function MercyTeacherTab({
                 </div>
               )}
 
-              {(writingMode || paragraphAnalysis) && (
+              {shouldShowGeneralWritingCoach && (
                 <div className="space-y-3 rounded-2xl border border-border bg-white p-4">
                   <div className="flex items-center gap-2">
                     <PenSquare className="h-4 w-4 text-muted-foreground" />
                     <p className="text-sm font-semibold text-foreground">
-                      Writing coaching
+                      {showEssayMode ? 'Essay coaching' : 'Writing coaching'}
                     </p>
                   </div>
 
                   {writingMode && (
                     <div className="inline-flex rounded-full border border-indigo-200 bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-700">
-                      Writing mode: {toTitle(writingMode)}
+                      Writing mode: {toTitle(String(writingMode))}
                     </div>
                   )}
 
-                  {paragraphAnalysis && (
+                  {visibleParagraphAnalysis && (
                     <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
                       <div className="rounded-xl border border-border bg-muted/20 p-3">
                         <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
                           Flow
                         </p>
                         <p className="mt-1 text-sm leading-6 text-foreground">
-                          {paragraphAnalysis.flow || '—'}
+                          {(visibleParagraphAnalysis as any).flow || '—'}
                         </p>
                       </div>
 
@@ -1005,7 +1182,7 @@ export function MercyTeacherTab({
                           Connection
                         </p>
                         <p className="mt-1 text-sm leading-6 text-foreground">
-                          {paragraphAnalysis.ideaConnection || '—'}
+                          {(visibleParagraphAnalysis as any).ideaConnection || '—'}
                         </p>
                       </div>
 
@@ -1014,11 +1191,24 @@ export function MercyTeacherTab({
                           Tense
                         </p>
                         <p className="mt-1 text-sm leading-6 text-foreground">
-                          {paragraphAnalysis.tenseConsistency || '—'}
+                          {(visibleParagraphAnalysis as any).tenseConsistency || '—'}
                         </p>
                       </div>
                     </div>
                   )}
+
+                  {paragraphNotes.length > 0 ? (
+                    <div className="space-y-2">
+                      {paragraphNotes.map((note, index) => (
+                        <div
+                          key={`${note}-${index}`}
+                          className="rounded-xl border border-border bg-muted/10 p-3"
+                        >
+                          <p className="text-sm leading-6 text-foreground">{note}</p>
+                        </div>
+                      ))}
+                    </div>
+                  ) : null}
                 </div>
               )}
 
@@ -1071,14 +1261,14 @@ export function MercyTeacherTab({
               <>
                 <p className="text-sm">
                   You studied:{' '}
-                  <span className="font-medium">{yesterdaySummary.topic_en}</span>{' '}
-                  {yesterdaySummary.minutes &&
-                    ` (about ${yesterdaySummary.minutes} minutes)`}
+                  <span className="font-medium">{(yesterdaySummary as any).topic_en}</span>{' '}
+                  {(yesterdaySummary as any).minutes &&
+                    ` (about ${(yesterdaySummary as any).minutes} minutes)`}
                 </p>
                 <p className="text-xs text-muted-foreground">
-                  Hôm qua bạn đã học: {yesterdaySummary.topic_vi}
-                  {yesterdaySummary.minutes &&
-                    ` (khoảng ${yesterdaySummary.minutes} phút)`}
+                  Hôm qua bạn đã học: {(yesterdaySummary as any).topic_vi}
+                  {(yesterdaySummary as any).minutes &&
+                    ` (khoảng ${(yesterdaySummary as any).minutes} phút)`}
                 </p>
               </>
             ) : (
@@ -1131,11 +1321,11 @@ export function MercyTeacherTab({
             <div className="space-y-2 rounded-lg bg-secondary/30 p-3">
               <p className="text-xs font-medium text-foreground">Suggested for today:</p>
               <div>
-                <p className="text-sm font-medium">{suggestions[0].title_en}</p>
-                <p className="text-xs text-muted-foreground">{suggestions[0].title_vi}</p>
+                <p className="text-sm font-medium">{(suggestions[0] as any).title_en}</p>
+                <p className="text-xs text-muted-foreground">{(suggestions[0] as any).title_vi}</p>
               </div>
-              <p className="text-xs text-foreground/80">{suggestions[0].reason_en}</p>
-              <p className="text-xs text-muted-foreground">{suggestions[0].reason_vi}</p>
+              <p className="text-xs text-foreground/80">{(suggestions[0] as any).reason_en}</p>
+              <p className="text-xs text-muted-foreground">{(suggestions[0] as any).reason_vi}</p>
 
               <Button
                 size="sm"
@@ -1253,3 +1443,5 @@ export function MercyTeacherTab({
     </TabsContent>
   );
 }
+
+export default MercyTeacherTab;

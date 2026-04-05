@@ -1,3 +1,5 @@
+// PATH: src/lib/ai-meter.ts
+
 import { createClient } from "@supabase/supabase-js";
 
 type Pricing = {
@@ -7,7 +9,6 @@ type Pricing = {
 
 const USD_TO_VND = Number(process.env.USD_TO_VND ?? "26000");
 
-// Put your real model prices here.
 const MODEL_PRICING: Record<string, Pricing> = {
   "gpt-4o-mini": {
     inputUsdPer1M: Number(process.env.GPT_4O_MINI_INPUT_USD_PER_1M ?? "0.15"),
@@ -39,7 +40,7 @@ export async function checkAiBudget(params: {
   userId: string;
   requestReserveVnd?: number;
 }) {
-  const { data, error } = await params.supabaseAdmin.rpc("check_ai_budget", {
+  const { data, error } = await (params.supabaseAdmin as any).rpc("check_ai_budget", {
     p_user_id: params.userId,
     p_request_reserve_vnd: params.requestReserveVnd ?? 0,
   });
@@ -75,7 +76,7 @@ export async function logAiUsage(params: {
   estimatedCostVnd: number;
   meta?: Record<string, unknown>;
 }) {
-  const { error } = await params.supabaseAdmin
+  const { error } = await (params.supabaseAdmin as any)
     .from("ai_usage_logs")
     .insert({
       user_id: params.userId,
@@ -86,7 +87,7 @@ export async function logAiUsage(params: {
       output_tokens: params.outputTokens,
       estimated_cost_vnd: params.estimatedCostVnd,
       meta: params.meta ?? {},
-    });
+    } as any);
 
   if (error) throw error;
 }

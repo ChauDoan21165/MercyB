@@ -1,4 +1,4 @@
-import { CompanionProfile } from '@/services/companion';
+import type { CompanionProfile } from '@/services/companion';
 
 export interface Message {
   id: string;
@@ -7,27 +7,31 @@ export interface Message {
   contentVi?: string;
 }
 
+export interface EnglishHelperResultItem {
+  word: string;
+  meaning_vi: string;
+  example_en: string;
+  example_vi: string;
+}
+
 export interface EnglishHelperResult {
   intro_en: string;
   intro_vi: string;
-  items: {
-    word: string;
-    meaning_vi: string;
-    example_en: string;
-    example_vi: string;
-  }[];
+  items: EnglishHelperResultItem[];
   encouragement_en: string;
   encouragement_vi: string;
+}
+
+export interface PronunciationFocusItem {
+  word: string;
+  tip_en: string;
+  tip_vi: string;
 }
 
 export interface PronunciationFeedback {
   praise_en: string;
   praise_vi: string;
-  focus_items: {
-    word: string;
-    tip_en: string;
-    tip_vi: string;
-  }[];
+  focus_items: PronunciationFocusItem[];
   encouragement_en: string;
   encouragement_vi: string;
 }
@@ -57,6 +61,10 @@ export interface TroubleWord {
   tipVi?: string;
 }
 
+type LooseRecord = Record<string, unknown>;
+
+const EMPTY_RECORD: LooseRecord = {};
+
 export const QUICK_BUTTONS = [
   { key: 'what_is_room', label_en: 'What is a room?', label_vi: 'Phòng là gì?' },
   { key: 'how_to_use_room', label_en: 'How to use?', label_vi: 'Cách sử dụng?' },
@@ -68,37 +76,37 @@ export const QUICK_BUTTONS = [
 export const RATE_LIMIT_MESSAGE = {
   en: 'Let us pause a bit. You can ask more questions later.',
   vi: 'Mình tạm dừng một chút nhé. Bạn có thể hỏi thêm sau.',
-};
+} as const;
 
 export const FALLBACK_PRAISE = {
   en: 'Thank you for trying. Speaking out loud is already a brave step.',
   vi: 'Cảm ơn bạn đã thử. Dám nói ra thành tiếng đã là một bước rất can đảm rồi.',
-};
+} as const;
 
 export const GUIDE_TIMEOUT_FALLBACK = {
   en: "Let's keep it simple for now. Try a shorter question, or open Speak if you want pronunciation help.",
   vi: 'Mình tạm làm đơn giản nhé. Bạn thử hỏi ngắn hơn, hoặc mở tab Speak nếu muốn luyện phát âm.',
-};
+} as const;
 
 export const GUIDE_GENERIC_ERROR = {
   en: 'Sorry, I could not answer that. Please try again.',
   vi: 'Xin lỗi, mình không thể trả lời câu đó. Vui lòng thử lại.',
-};
+} as const;
 
 export const PRONUNCIATION_ROUTE_REPLY = {
   en: 'For pronunciation, please open the Speak tab. I can listen there and help you practice one phrase at a time.',
   vi: 'Với phát âm, bạn mở tab Speak nhé. Ở đó mình có thể nghe và giúp bạn luyện từng cụm ngắn.',
-};
+} as const;
 
 export const SPEAK_LOCATION_REPLY = {
   en: 'The Speak tab is at the top of this panel, next to English. I am opening it for you now.',
   vi: 'Tab Speak nằm ở hàng trên cùng của khung này, cạnh English. Mình mở nó cho bạn ngay nhé.',
-};
+} as const;
 
 export const VOCAB_VAULT_EMPTY = {
   en: 'Your vault is empty. Practice speaking to collect trouble words.',
   vi: 'Kho từ của bạn đang trống. Hãy luyện nói để lưu lại các từ cần luyện thêm.',
-};
+} as const;
 
 export const MAX_SPEAK_ATTEMPTS = 20;
 export const SPEAK_SESSION_KEY = 'mb_speak_attempts';
@@ -106,6 +114,14 @@ export const GUIDE_ASSISTANT_TIMEOUT_MS = 12000;
 export const TROUBLE_WORDS_STORAGE_KEY = 'mb_trouble_words_v1';
 export const MERCY_HOST_IMAGE_SRC = '/mercy-host.jpg?v=3';
 export const MERCY_HOST_IMAGE_FALLBACK = '/mercy-host.png?v=3';
+
+function asRecord(value: unknown): LooseRecord {
+  return value && typeof value === 'object' ? (value as LooseRecord) : EMPTY_RECORD;
+}
+
+function asTrimmedString(value: unknown): string {
+  return typeof value === 'string' ? value.trim() : '';
+}
 
 export function getCheckInMessage(
   profile: CompanionProfile,
@@ -417,18 +433,18 @@ export function normalizePronunciationResult(
   raw: Partial<PronunciationResult> | null | undefined,
   fallbackTargetText: string
 ): PronunciationResult {
-  const rawFeedback =
-    raw && typeof raw.feedback === 'object' && raw.feedback !== null ? raw.feedback : {};
+  const rawRecord = asRecord(raw);
+  const rawFeedback = asRecord(rawRecord.feedback);
+  const rawFocusItems = Array.isArray(rawFeedback.focus_items)
+    ? rawFeedback.focus_items
+    : [];
 
-  const rawFocusItems = Array.isArray(rawFeedback.focus_items) ? rawFeedback.focus_items : [];
-
-  const focus_items = rawFocusItems
+  const focus_items: PronunciationFocusItem[] = rawFocusItems
     .map((item) => {
-      const safeItem =
-        item && typeof item === 'object' ? (item as Record<string, unknown>) : {};
-      const word = typeof safeItem.word === 'string' ? safeItem.word.trim() : '';
-      const tip_en = typeof safeItem.tip_en === 'string' ? safeItem.tip_en.trim() : '';
-      const tip_vi = typeof safeItem.tip_vi === 'string' ? safeItem.tip_vi.trim() : '';
+      const safeItem = asRecord(item);
+      const word = asTrimmedString(safeItem.word);
+      const tip_en = asTrimmedString(safeItem.tip_en);
+      const tip_vi = asTrimmedString(safeItem.tip_vi);
 
       return {
         word,
@@ -440,29 +456,19 @@ export function normalizePronunciationResult(
     .slice(0, 3);
 
   const safeScore =
-    typeof raw?.score === 'number' && Number.isFinite(raw.score) ? raw.score : 0;
+    typeof rawRecord.score === 'number' && Number.isFinite(rawRecord.score)
+      ? rawRecord.score
+      : 0;
 
   return {
-    targetText:
-      typeof raw?.targetText === 'string' && raw.targetText.trim()
-        ? raw.targetText.trim()
-        : fallbackTargetText,
-    transcribedText:
-      typeof raw?.transcribedText === 'string' ? raw.transcribedText.trim() : '',
+    targetText: asTrimmedString(rawRecord.targetText) || fallbackTargetText,
+    transcribedText: asTrimmedString(rawRecord.transcribedText),
     score: Math.max(0, Math.min(100, safeScore)),
     feedback: {
-      praise_en:
-        typeof rawFeedback.praise_en === 'string' ? rawFeedback.praise_en.trim() : '',
-      praise_vi:
-        typeof rawFeedback.praise_vi === 'string' ? rawFeedback.praise_vi.trim() : '',
-      encouragement_en:
-        typeof rawFeedback.encouragement_en === 'string'
-          ? rawFeedback.encouragement_en.trim()
-          : '',
-      encouragement_vi:
-        typeof rawFeedback.encouragement_vi === 'string'
-          ? rawFeedback.encouragement_vi.trim()
-          : '',
+      praise_en: asTrimmedString(rawFeedback.praise_en),
+      praise_vi: asTrimmedString(rawFeedback.praise_vi),
+      encouragement_en: asTrimmedString(rawFeedback.encouragement_en),
+      encouragement_vi: asTrimmedString(rawFeedback.encouragement_vi),
       focus_items,
     },
   };
@@ -471,22 +477,24 @@ export function normalizePronunciationResult(
 export function normalizeEnglishHelperResult(
   raw: Partial<EnglishHelperResult> | null | undefined
 ): EnglishHelperResult {
-  const rawItems = Array.isArray(raw?.items) ? raw.items : [];
+  const rawRecord = asRecord(raw);
+  const rawItems = Array.isArray(rawRecord.items) ? rawRecord.items : [];
 
   return {
-    intro_en: typeof raw?.intro_en === 'string' ? raw.intro_en.trim() : '',
-    intro_vi: typeof raw?.intro_vi === 'string' ? raw.intro_vi.trim() : '',
-    encouragement_en:
-      typeof raw?.encouragement_en === 'string' ? raw.encouragement_en.trim() : '',
-    encouragement_vi:
-      typeof raw?.encouragement_vi === 'string' ? raw.encouragement_vi.trim() : '',
+    intro_en: asTrimmedString(rawRecord.intro_en),
+    intro_vi: asTrimmedString(rawRecord.intro_vi),
+    encouragement_en: asTrimmedString(rawRecord.encouragement_en),
+    encouragement_vi: asTrimmedString(rawRecord.encouragement_vi),
     items: rawItems
-      .map((item) => ({
-        word: typeof item?.word === 'string' ? item.word.trim() : '',
-        meaning_vi: typeof item?.meaning_vi === 'string' ? item.meaning_vi.trim() : '',
-        example_en: typeof item?.example_en === 'string' ? item.example_en.trim() : '',
-        example_vi: typeof item?.example_vi === 'string' ? item.example_vi.trim() : '',
-      }))
+      .map((item) => {
+        const safeItem = asRecord(item);
+        return {
+          word: asTrimmedString(safeItem.word),
+          meaning_vi: asTrimmedString(safeItem.meaning_vi),
+          example_en: asTrimmedString(safeItem.example_en),
+          example_vi: asTrimmedString(safeItem.example_vi),
+        };
+      })
       .filter((item) => item.word),
   };
 }

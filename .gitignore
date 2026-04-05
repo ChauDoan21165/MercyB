@@ -1,5 +1,6 @@
 # secrets
-.env*
+.env
+.env.*
 ANON_KEY*
 *.key
 *.pem

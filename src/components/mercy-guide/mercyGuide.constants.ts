@@ -1,3 +1,7 @@
+/**
+ * Path: src/components/mercy-guide/mercyGuide.constants.ts
+ */
+
 export const SIZE_PRESETS = {
   S: { width: 340, height: 480 },
   M: { width: 440, height: 600 },
@@ -51,3 +55,7 @@ export const CORNER_HANDLE_SIZE = 18;
 
 export const GUIDE_TAB_BOTTOM_BUFFER_DESKTOP = 12;
 export const GUIDE_TAB_BOTTOM_BUFFER_MOBILE = 20;
+
+// Added missing exports to fix build errors
+export const MUSIC_BAR_SAFE_HEIGHT = 72;
+export const SESSION_HINT_KEY = 'mercy-guide-hint-memory';

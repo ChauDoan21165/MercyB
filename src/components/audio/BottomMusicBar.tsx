@@ -1,4 +1,5 @@
-// src/components/audio/BottomMusicBar.tsx
+// PATH: src/components/audio/BottomMusicBar.tsx
+
 /**
  * MercyB: Bottom Music Bar
  * Fixes:
@@ -61,9 +62,7 @@ function buildTracks(): Track[] {
       const normalizedId = normalizeTrackId(noExt);
 
       return {
-        // guaranteed unique for React rendering, even when titles normalize to same slug
         key: `${path}::${src}::${index}`,
-        // human-readable persisted id; keep backward-compatible shape as much as possible
         id: normalizedId || `track_${index}`,
         title: noExt.replace(/[_-]+/g, " ").trim(),
         src,
@@ -76,7 +75,7 @@ function getSingletonAudio(): HTMLAudioElement {
   if (!window.__mbBottomAudio) {
     const a = new Audio();
     a.preload = "auto";
-    a.playsInline = true;
+    (a as any).playsInline = true;
     a.loop = false;
     window.__mbBottomAudio = a;
   }
@@ -144,7 +143,6 @@ export default function BottomMusicBar() {
     }
   }, [tab, visibleTracks.length]);
 
-  // Zoom unlock only
   useEffect(() => {
     let meta = document.querySelector('meta[name="viewport"]');
     if (!meta) {
@@ -170,7 +168,6 @@ export default function BottomMusicBar() {
         -webkit-overflow-scrolling: touch !important;
       }
 
-      /* Let pinch gestures pass through the fixed music bar */
       [data-mb-bottom-bar="1"] {
         touch-action: pan-x pan-y !important;
       }

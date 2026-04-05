@@ -1,39 +1,47 @@
-// FILE: MBButton.tsx
 // PATH: src/components/ui/MBButton.tsx
 
-import React from "react";
-import { Pressable, Text, ActivityIndicator, ViewStyle } from "react-native";
+import { ActivityIndicator, Pressable, Text } from "react-native";
+
+// Web-friendly RN shim types
+type StyleProp<T> = T | T[] | null | undefined;
+type ViewStyle = Record<string, unknown>;
+
 import { theme } from "../../core/ui/theme";
 
 type Variant = "primary" | "ghost" | "danger";
 
-export function MBButton(props: {
+interface MBButtonProps {
   label: string;
   onPress: () => void;
   disabled?: boolean;
   loading?: boolean;
   variant?: Variant;
-  style?: ViewStyle;
-}) {
-  const { label, onPress, disabled, loading, variant = "primary" } = props;
+  style?: StyleProp<ViewStyle>;
+}
 
+export function MBButton({
+  label,
+  onPress,
+  disabled = false,
+  loading = false,
+  variant = "primary",
+  style,
+}: MBButtonProps) {
   const bg =
     variant === "primary"
       ? theme.color.primary
       : variant === "danger"
-      ? theme.color.danger
-      : "transparent";
+        ? theme.color.danger
+        : "transparent";
 
-  const border =
-    variant === "ghost" ? theme.color.border : "transparent";
-
-  const textColor =
-    variant === "ghost" ? theme.color.text : "#0B0F14";
+  const border = variant === "ghost" ? theme.color.border : "transparent";
+  const textColor = variant === "ghost" ? theme.color.text : "#0B0F14";
+  const isDisabled = disabled || loading;
 
   return (
     <Pressable
       onPress={onPress}
-      disabled={disabled || loading}
+      disabled={isDisabled}
       style={[
         {
           height: 48,
@@ -43,9 +51,9 @@ export function MBButton(props: {
           backgroundColor: bg,
           borderWidth: variant === "ghost" ? 1 : 0,
           borderColor: border,
-          opacity: disabled ? 0.55 : 1,
+          opacity: isDisabled ? 0.55 : 1,
         },
-        props.style,
+        style,
       ]}
     >
       {loading ? (
@@ -58,3 +66,5 @@ export function MBButton(props: {
     </Pressable>
   );
 }
+
+export default MBButton;

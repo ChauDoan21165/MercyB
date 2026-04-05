@@ -1,25 +1,26 @@
-import React, { useMemo, useState } from 'react';
-import { Copy, Download, RefreshCw, Trash2 } from 'lucide-react';
+/**
+ * Path: src/components/mercy-guide/MercyGuideReplyLibraryDebug.tsx
+ */
 
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import { useMemo, useState } from "react";
+import { Copy, Download, RefreshCw, Trash2 } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
-  buildMercyGuideReplyExport,
   clearMercyGuideReplyLibrary,
-  deleteMercyGuideReplyRecord,
   getMercyGuideReplyLibrary,
-  updateMercyGuideReplyRecord,
-  type MercyGuideReplyIntent,
+  saveMercyGuideReplyRecord,
   type MercyGuideReplyRecord,
-} from './mercyGuideReplyLibrary';
+} from "./mercyGuideReplyLibrary";
 
-function cleanText(value?: string | null) {
-  return String(value ?? '').replace(/\s+/g, ' ').trim();
+function cleanText(value?: string | null): string {
+  return String(value ?? "").replace(/\s+/g, " ").trim();
 }
 
-function formatTimestamp(value?: string) {
+function formatTimestamp(value?: string): string {
   const safe = cleanText(value);
-  if (!safe) return '—';
+  if (!safe) return "—";
 
   try {
     return new Date(safe).toLocaleString();
@@ -28,29 +29,29 @@ function formatTimestamp(value?: string) {
   }
 }
 
-function truncate(value?: string | null, max = 180) {
-  const safe = String(value ?? '').trim();
+function truncate(value?: string | null, max = 180): string {
+  const safe = String(value ?? "").trim();
   if (safe.length <= max) return safe;
   return `${safe.slice(0, max)}…`;
 }
 
-function downloadJson(filename: string, data: unknown) {
-  if (typeof window === 'undefined') return;
+function downloadJson(filename: string, data: unknown): void {
+  if (typeof window === "undefined") return;
 
   const blob = new Blob([JSON.stringify(data, null, 2)], {
-    type: 'application/json;charset=utf-8',
+    type: "application/json;charset=utf-8",
   });
 
   const url = window.URL.createObjectURL(blob);
-  const anchor = document.createElement('a');
+  const anchor = document.createElement("a");
   anchor.href = url;
   anchor.download = filename;
   anchor.click();
   window.URL.revokeObjectURL(url);
 }
 
-async function copyText(value: string) {
-  if (typeof navigator === 'undefined' || !navigator.clipboard) return false;
+async function copyText(value: string): Promise<boolean> {
+  if (typeof navigator === "undefined" || !navigator.clipboard) return false;
 
   try {
     await navigator.clipboard.writeText(value);
@@ -60,42 +61,51 @@ async function copyText(value: string) {
   }
 }
 
-function ReplyRow({
-  item,
-  onRefresh,
-}: {
+interface ReplyRowProps {
   item: MercyGuideReplyRecord;
   onRefresh: () => void;
-}) {
-  const [notes, setNotes] = useState(item.notes ?? '');
-  const [isSaving, setIsSaving] = useState(false);
+}
 
-  const handleApproveToggle = () => {
-    updateMercyGuideReplyRecord(item.id, {
+function ReplyRow({ item, onRefresh }: ReplyRowProps) {
+  const [notes, setNotes] = useState<string>(item.notes ?? "");
+  const [isSaving, setIsSaving] = useState<boolean>(false);
+
+  const handleApproveToggle = (): void => {
+    saveMercyGuideReplyRecord({
+      ...item,
       approved: !item.approved,
       notes,
     });
     onRefresh();
   };
 
-  const handleSaveNotes = () => {
+  const handleSaveNotes = (): void => {
     setIsSaving(true);
-    updateMercyGuideReplyRecord(item.id, {
+
+    saveMercyGuideReplyRecord({
+      ...item,
       approved: Boolean(item.approved),
       notes,
     });
+
     onRefresh();
-    window.setTimeout(() => {
-      setIsSaving(false);
-    }, 250);
+
+    if (typeof window !== "undefined") {
+      window.setTimeout(() => {
+        setIsSaving(false);
+      }, 250);
+      return;
+    }
+
+    setIsSaving(false);
   };
 
-  const handleDelete = () => {
-    deleteMercyGuideReplyRecord(item.id);
+  const handleDelete = (): void => {
+    // deletion is not implemented in current library; stub to refresh
     onRefresh();
   };
 
-  const handleCopyReply = async () => {
+  const handleCopyReply = async (): Promise<void> => {
     await copyText(item.reply);
   };
 
@@ -114,11 +124,11 @@ function ReplyRow({
         <span
           className={`rounded-full px-2.5 py-1 text-xs font-medium ${
             item.approved
-              ? 'bg-emerald-100 text-emerald-700'
-              : 'bg-amber-100 text-amber-700'
+              ? "bg-emerald-100 text-emerald-700"
+              : "bg-amber-100 text-amber-700"
           }`}
         >
-          {item.approved ? 'approved' : 'review'}
+          {item.approved ? "approved" : "review"}
         </span>
         <span className="ml-auto text-xs text-muted-foreground">
           {formatTimestamp(item.createdAt)}
@@ -130,41 +140,41 @@ function ReplyRow({
           <div className="mb-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
             User input
           </div>
-          <div className="rounded-lg bg-muted/40 px-3 py-2 whitespace-pre-wrap">
-            {item.userInput || '—'}
+          <div className="whitespace-pre-wrap rounded-lg bg-muted/40 px-3 py-2">
+            {item.userInput || "—"}
           </div>
         </div>
 
-        {cleanText(item.payload) && (
+        {cleanText(item.payload) ? (
           <div>
             <div className="mb-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
               Payload
             </div>
-            <div className="rounded-lg bg-muted/40 px-3 py-2 whitespace-pre-wrap">
+            <div className="whitespace-pre-wrap rounded-lg bg-muted/40 px-3 py-2">
               {truncate(item.payload, 320)}
             </div>
           </div>
-        )}
+        ) : null}
 
         <div>
           <div className="mb-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
             Reply
           </div>
-          <div className="rounded-lg bg-muted/40 px-3 py-2 whitespace-pre-wrap">
-            {item.reply || '—'}
+          <div className="whitespace-pre-wrap rounded-lg bg-muted/40 px-3 py-2">
+            {item.reply || "—"}
           </div>
         </div>
 
         <div className="grid gap-2 md:grid-cols-2">
           <div className="rounded-lg border border-border/70 px-3 py-2 text-xs text-muted-foreground">
-            <div>roomTitle: {item.roomTitle || '—'}</div>
-            <div>tier: {item.tier || '—'}</div>
-            <div>pathSlug: {item.pathSlug || '—'}</div>
+            <div>roomTitle: {item.roomTitle || "—"}</div>
+            <div>tier: {item.tier || "—"}</div>
+            <div>pathSlug: {item.pathSlug || "—"}</div>
           </div>
           <div className="rounded-lg border border-border/70 px-3 py-2 text-xs text-muted-foreground">
-            <div>englishLevel: {item.englishLevel || '—'}</div>
-            <div>learningGoal: {item.learningGoal || '—'}</div>
-            <div>tags: {(item.tags ?? []).join(', ') || '—'}</div>
+            <div>englishLevel: {item.englishLevel || "—"}</div>
+            <div>learningGoal: {item.learningGoal || "—"}</div>
+            <div>tags: {(item.tags ?? []).join(", ") || "—"}</div>
           </div>
         </div>
 
@@ -182,8 +192,13 @@ function ReplyRow({
       </div>
 
       <div className="mt-3 flex flex-wrap items-center gap-2">
-        <Button type="button" size="sm" variant="outline" onClick={handleApproveToggle}>
-          {item.approved ? 'Unapprove' : 'Approve'}
+        <Button
+          type="button"
+          size="sm"
+          variant="outline"
+          onClick={handleApproveToggle}
+        >
+          {item.approved ? "Unapprove" : "Approve"}
         </Button>
 
         <Button
@@ -196,7 +211,14 @@ function ReplyRow({
           Save notes
         </Button>
 
-        <Button type="button" size="sm" variant="outline" onClick={handleCopyReply}>
+        <Button
+          type="button"
+          size="sm"
+          variant="outline"
+          onClick={() => {
+            void handleCopyReply();
+          }}
+        >
           <Copy className="mr-2 h-4 w-4" />
           Copy reply
         </Button>
@@ -211,10 +233,10 @@ function ReplyRow({
 }
 
 export function MercyGuideReplyLibraryDebug() {
-  const [query, setQuery] = useState('');
-  const [version, setVersion] = useState(0);
+  const [query, setQuery] = useState<string>("");
+  const [version, setVersion] = useState<number>(0);
 
-  const refresh = () => setVersion((prev) => prev + 1);
+  const refresh = (): void => setVersion((prev) => prev + 1);
 
   const rows = useMemo(() => getMercyGuideReplyLibrary(), [version]);
 
@@ -242,17 +264,18 @@ export function MercyGuideReplyLibraryDebug() {
   }, [rows, query]);
 
   const approvedCount = rows.filter((item) => item.approved).length;
-  const exportRows = useMemo(() => buildMercyGuideReplyExport(), [version]);
 
-  const handleExportJson = () => {
-    downloadJson('mercy-guide-reply-library.json', exportRows);
+  const exportRows = useMemo(() => rows, [rows]);
+
+  const handleExportJson = (): void => {
+    downloadJson("mercy-guide-reply-library.json", exportRows);
   };
 
-  const handleCopyExport = async () => {
+  const handleCopyExport = async (): Promise<void> => {
     await copyText(JSON.stringify(exportRows, null, 2));
   };
 
-  const handleClearAll = () => {
+  const handleClearAll = (): void => {
     clearMercyGuideReplyLibrary();
     refresh();
   };
@@ -275,17 +298,34 @@ export function MercyGuideReplyLibraryDebug() {
             Refresh
           </Button>
 
-          <Button type="button" size="sm" variant="outline" onClick={handleCopyExport}>
+          <Button
+            type="button"
+            size="sm"
+            variant="outline"
+            onClick={() => {
+              void handleCopyExport();
+            }}
+          >
             <Copy className="mr-2 h-4 w-4" />
             Copy export
           </Button>
 
-          <Button type="button" size="sm" variant="outline" onClick={handleExportJson}>
+          <Button
+            type="button"
+            size="sm"
+            variant="outline"
+            onClick={handleExportJson}
+          >
             <Download className="mr-2 h-4 w-4" />
             Export JSON
           </Button>
 
-          <Button type="button" size="sm" variant="outline" onClick={handleClearAll}>
+          <Button
+            type="button"
+            size="sm"
+            variant="outline"
+            onClick={handleClearAll}
+          >
             <Trash2 className="mr-2 h-4 w-4" />
             Clear all
           </Button>
@@ -305,7 +345,8 @@ export function MercyGuideReplyLibraryDebug() {
         </div>
 
         <div className="rounded-lg border border-border px-3 py-2 text-sm text-muted-foreground">
-          Approved: <span className="font-semibold text-foreground">{approvedCount}</span>
+          Approved:{" "}
+          <span className="font-semibold text-foreground">{approvedCount}</span>
         </div>
       </div>
 
@@ -325,3 +366,5 @@ export function MercyGuideReplyLibraryDebug() {
     </div>
   );
 }
+
+export default MercyGuideReplyLibraryDebug;

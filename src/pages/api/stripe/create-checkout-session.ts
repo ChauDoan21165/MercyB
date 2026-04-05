@@ -28,7 +28,7 @@ if (!stripeSecretKey) {
 }
 
 const stripe = new Stripe(String(stripeSecretKey || ""), {
-  apiVersion: "2026-01-28.clover",
+  apiVersion: "2026-02-25.clover",
 });
 
 const ACTIVE_SUBSCRIPTION_STATUSES = ["active", "trialing", "past_due"] as const;
