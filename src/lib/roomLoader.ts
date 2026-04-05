@@ -6,29 +6,90 @@ import {
   normalizeTier,
   salvageDbEntries,
   type KeywordMenu,
+  type NormalizedEntriesResult,
 } from "./roomLoaderNormalize";
+import {
+  clearInFlightRoom,
+  getCachedRoom,
+  getInFlightRoom,
+  setCachedRoom,
+  setInFlightRoom,
+  shouldUseRoomLoaderCache,
+} from "./roomLoaderCache";
 
-type LoadSource = "database" | "json";
-type CandidateKind = "db" | "json" | "db_salvage";
+export type LoadSource = "database" | "json";
+export type CandidateKind = "db" | "json" | "db_salvage";
 
-export type LoadMergedRoomSuccess = {
+export interface RoomCopy {
+  en?: string | null;
+  vi?: string | null;
+  [key: string]: unknown;
+}
+
+export interface BaseRoomEntry {
+  slug?: string | null;
+  title?: string | null;
+  title_en?: string | null;
+  titleEn?: string | null;
+  keyword_en?: string | null;
+  keywordEn?: string | null;
+  keyword_vi?: string | null;
+  keywordVi?: string | null;
+  keywords?: string[] | null;
+  keywords_en?: string[] | null;
+  keywords_vi?: string[] | null;
+  copy?: RoomCopy | string | null;
+  tier?: string | null;
+  [key: string]: unknown;
+}
+
+export interface NormalizedRoomEntry {
+  slug: string;
+  title?: string | null;
+  copy?: RoomCopy | string | null;
+  keywords?: string[];
+  tier?: string | null;
+  [key: string]: unknown;
+}
+
+export interface RoomMeta {
+  id?: string;
+  roomTier?: string | null;
+  tier?: string | null;
+  accessTier?: string | null;
+  entries?: BaseRoomEntry[] | null;
+  keywords?: string[] | null;
+  title_en?: string | null;
+  [key: string]: unknown;
+}
+
+export interface JsonRoom {
+  id?: string;
+  roomTier?: string | null;
+  tier?: string | null;
+  accessTier?: string | null;
+  entries?: BaseRoomEntry[] | null;
+  [key: string]: unknown;
+}
+
+export interface LoadMergedRoomSuccess {
   roomId: string;
-  merged: any[];
+  merged: NormalizedRoomEntry[];
   hasFullAccess: true;
   keywordMenu: KeywordMenu;
   source: LoadSource;
-  meta: any;
+  meta: RoomMeta | JsonRoom | null;
   audioBasePath: string;
   roomTier: string;
-};
+}
 
-export type LoadMergedRoomFailure = {
+export interface LoadMergedRoomFailure {
   roomId: string;
   merged: [];
   hasFullAccess: false;
   keywordMenu: KeywordMenu;
   errorCode: "ROOM_NOT_FOUND";
-};
+}
 
 export type LoadMergedRoomResult =
   | LoadMergedRoomSuccess
@@ -39,10 +100,38 @@ const EMPTY_KEYWORD_MENU: KeywordMenu = { en: [], vi: [] };
 export async function loadMergedRoom(
   roomId: string
 ): Promise<LoadMergedRoomResult> {
+  if (shouldUseRoomLoaderCache()) {
+    const cached = getCachedRoom(roomId);
+    if (cached) return cached;
+
+    const inFlight = getInFlightRoom(roomId);
+    if (inFlight) return inFlight;
+
+    const promise = loadMergedRoomUncached(roomId)
+      .then((result) => {
+        setCachedRoom(roomId, result);
+        return result;
+      })
+      .finally(() => {
+        clearInFlightRoom(roomId);
+      });
+
+    setInFlightRoom(roomId, promise);
+    return promise;
+  }
+
+  return loadMergedRoomUncached(roomId);
+}
+
+async function loadMergedRoomUncached(
+  roomId: string
+): Promise<LoadMergedRoomResult> {
   const start = performance.now();
 
-  const db = await loadDbRoom(roomId);
-  const json = await loadJsonRoomSafe(roomId);
+  const [db, json] = await Promise.all([
+    loadDbRoom(roomId),
+    loadJsonRoomSafe(roomId),
+  ]);
 
   const chosen = chooseBestSource({
     dbEntries: db.entries,
@@ -55,47 +144,63 @@ export async function loadMergedRoom(
     return buildFailure(roomId, start);
   }
 
-  return buildSuccess({
-    roomId,
-    start,
-    source: chosen.source,
-    entries: chosen.entries,
-    meta: chosen.meta,
-    mode: chosen.kind,
-  });
+  const normalized = normalizeChosenEntries(chosen.kind, chosen.entries);
+
+  // 🔥 FINAL FIX: detect "garbage normalized DB"
+  const hasValidSlug = normalized.merged.some(
+    (e) => typeof e.slug === "string" && e.slug.trim() && !e.slug.startsWith("entry-")
+  );
+
+  if (
+    chosen.kind === "db" &&
+    !hasValidSlug &&
+    Array.isArray(json.entries) &&
+    json.entries.length > 0
+  ) {
+    const jsonNormalized = normalizeChosenEntries("json", json.entries);
+
+    if (jsonNormalized.merged.length > 0) {
+      return buildSuccess(roomId, "json", json.room ?? null, jsonNormalized, start);
+    }
+  }
+
+  return buildSuccess(roomId, chosen.source, chosen.meta, normalized, start);
 }
 
-function buildSuccess(input: {
-  roomId: string;
-  start: number;
-  source: LoadSource;
-  entries: any[];
-  meta: any;
-  mode: CandidateKind;
-}): LoadMergedRoomSuccess {
-  const duration = performance.now() - input.start;
+function normalizeChosenEntries(
+  kind: CandidateKind,
+  entries: BaseRoomEntry[]
+): NormalizedEntriesResult {
+  return kind === "db_salvage"
+    ? salvageDbEntries(entries)
+    : normalizeEntries(entries);
+}
 
-  const normalized =
-    input.mode === "db_salvage"
-      ? salvageDbEntries(input.entries)
-      : normalizeEntries(input.entries);
+function buildSuccess(
+  roomId: string,
+  source: LoadSource,
+  meta: RoomMeta | JsonRoom | null,
+  normalized: NormalizedEntriesResult,
+  start: number
+): LoadMergedRoomSuccess {
+  const duration = performance.now() - start;
 
-  logger.info(`[App] Room loaded: ${input.roomId} in ${duration}ms`, {
-    source: input.source,
+  logger.info(`[App] Room loaded: ${roomId} in ${duration}ms`, {
+    source,
     entryCount: normalized.merged.length,
-    roomId: input.roomId,
+    roomId,
     duration_ms: duration,
   });
 
   return {
-    roomId: input.roomId,
+    roomId,
     merged: normalized.merged,
     hasFullAccess: true,
     keywordMenu: normalized.keywordMenu,
-    source: input.source,
-    meta: input.meta || null,
+    source,
+    meta: meta ?? null,
     audioBasePath: `${AUDIO_FOLDER}/`,
-    roomTier: normalizeTier(input.meta),
+    roomTier: normalizeTier(meta),
   };
 }
 

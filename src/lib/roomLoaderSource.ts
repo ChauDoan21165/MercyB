@@ -1,52 +1,53 @@
 import { logger } from "./logger";
 import { getRoomFromDB } from "@/lib/supabaseClient";
 import { loadRoomJson } from "./roomJsonResolver";
+import type { BaseRoomEntry, JsonRoom, RoomMeta } from "./roomLoader";
 
-type LoadSource = "database" | "json";
-type CandidateKind = "db" | "json" | "db_salvage";
+export interface RawDbRoom {
+  entries: BaseRoomEntry[] | null;
+  meta: RoomMeta | null;
+}
 
-export type RawDbRoom = {
-  entries: any[] | null;
-  meta: any;
-};
-
-export type RawJsonRoom = {
-  room: any;
-  entries: any[] | null;
-};
+export interface RawJsonRoom {
+  room: JsonRoom | null;
+  entries: BaseRoomEntry[] | null;
+}
 
 export type ChosenCandidate =
   | {
       kind: "db";
       source: "database";
-      entries: any[];
-      meta: any;
+      entries: BaseRoomEntry[];
+      meta: RoomMeta | null;
     }
   | {
       kind: "json";
       source: "json";
-      entries: any[];
-      meta: any;
+      entries: BaseRoomEntry[];
+      meta: JsonRoom | null;
     }
   | {
       kind: "db_salvage";
       source: "database";
-      entries: any[];
-      meta: any;
+      entries: BaseRoomEntry[];
+      meta: RoomMeta | null;
     }
   | null;
 
+interface DbResult {
+  entries?: unknown;
+  meta?: unknown;
+}
+
 export async function loadDbRoom(roomId: string): Promise<RawDbRoom> {
   try {
-    const dbResult = await getRoomFromDB(roomId);
-
-    if (!dbResult) {
-      return { entries: null, meta: null };
-    }
+    const dbResult = (await getRoomFromDB(roomId)) as DbResult | null;
 
     return {
-      entries: Array.isArray(dbResult.entries) ? dbResult.entries : null,
-      meta: dbResult.meta || null,
+      entries: Array.isArray(dbResult?.entries)
+        ? (dbResult.entries as BaseRoomEntry[])
+        : null,
+      meta: isRecord(dbResult?.meta) ? (dbResult!.meta as RoomMeta) : null,
     };
   } catch (err) {
     logger.error("[roomLoader] DB load failed", {
@@ -60,11 +61,11 @@ export async function loadDbRoom(roomId: string): Promise<RawDbRoom> {
 
 export async function loadJsonRoomSafe(roomId: string): Promise<RawJsonRoom> {
   try {
-    const room = await loadRoomJson(roomId);
+    const room = (await loadRoomJson(roomId)) as JsonRoom | null;
 
     return {
-      room: room || null,
-      entries: room && Array.isArray(room.entries) ? room.entries : null,
+      room: room ?? null,
+      entries: Array.isArray(room?.entries) ? room.entries : null,
     };
   } catch (err) {
     logger.error("[roomLoader] JSON load error", {
@@ -77,88 +78,64 @@ export async function loadJsonRoomSafe(roomId: string): Promise<RawJsonRoom> {
 }
 
 export function chooseBestSource(input: {
-  dbEntries: any[] | null;
-  dbMeta: any;
-  jsonEntries: any[] | null;
-  jsonRoom: any;
+  dbEntries: BaseRoomEntry[] | null;
+  dbMeta: RoomMeta | null;
+  jsonEntries: BaseRoomEntry[] | null;
+  jsonRoom: JsonRoom | null;
 }): ChosenCandidate {
-  const dbPreferredEntries = getPreferredDbEntries(input.dbEntries, input.dbMeta);
+  const dbEntries = preferredDbEntries(input.dbEntries, input.dbMeta);
 
-  if (hasAnyUsableEntries(dbPreferredEntries)) {
+  if (hasUsableEntries(dbEntries)) {
     return {
       kind: "db",
       source: "database",
-      entries: dbPreferredEntries!,
-      meta: input.dbMeta || null,
+      entries: dbEntries,
+      meta: input.dbMeta ?? null,
     };
   }
 
-  if (hasAnyRows(input.jsonEntries)) {
+  if (hasRows(input.jsonEntries)) {
     return {
       kind: "json",
       source: "json",
-      entries: input.jsonEntries!,
-      meta: input.jsonRoom || null,
+      entries: input.jsonEntries,
+      meta: input.jsonRoom ?? null,
     };
   }
 
-  if (hasAnyRows(input.dbEntries)) {
+  if (hasRows(input.dbEntries)) {
     return {
       kind: "db_salvage",
       source: "database",
-      entries: input.dbEntries!,
-      meta: input.dbMeta || null,
+      entries: input.dbEntries,
+      meta: input.dbMeta ?? null,
     };
   }
 
   return null;
 }
 
-function getPreferredDbEntries(dbEntries: any[] | null, dbMeta: any): any[] | null {
+function preferredDbEntries(
+  dbEntries: BaseRoomEntry[] | null,
+  dbMeta: RoomMeta | null
+): BaseRoomEntry[] | null {
   if (Array.isArray(dbMeta?.entries) && dbMeta.entries.length > 0) {
     return dbMeta.entries;
   }
 
-  if (Array.isArray(dbEntries) && dbEntries.length > 0) {
-    return dbEntries;
-  }
-
-  return null;
+  return Array.isArray(dbEntries) && dbEntries.length > 0 ? dbEntries : null;
 }
 
-function hasAnyRows(entries: any[] | null): boolean {
+function hasRows(entries: BaseRoomEntry[] | null): entries is BaseRoomEntry[] {
   return Array.isArray(entries) && entries.length > 0;
 }
 
-function hasAnyUsableEntries(entries: any[] | null): boolean {
-  if (!Array.isArray(entries) || entries.length === 0) {
-    return false;
-  }
-
-  return entries.some(hasUsableIdentity);
+function hasUsableEntries(
+  entries: BaseRoomEntry[] | null
+): entries is BaseRoomEntry[] {
+  return hasRows(entries);
 }
 
-function hasUsableIdentity(entry: any): boolean {
-  return Boolean(
-    firstNonEmptyString(
-      entry?.slug,
-      entry?.keyword_en,
-      entry?.keywordEn,
-      entry?.keyword_vi,
-      entry?.keywordVi,
-      entry?.title,
-      entry?.title_en,
-      entry?.titleEn
-    )
-  );
-}
-
-function firstNonEmptyString(...values: any[]): string | null {
-  for (const value of values) {
-    if (typeof value === "string" && value.trim()) {
-      return value.trim();
-    }
-  }
-
-  return null;
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null;
 }

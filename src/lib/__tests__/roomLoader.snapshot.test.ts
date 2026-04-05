@@ -1,27 +1,43 @@
+// src/lib/__tests__/roomLoader.snapshot.test.ts
 import { describe, it, expect, vi, beforeEach } from "vitest";
 
 // --------------------
 // Shared Supabase mock (hoist-safe + TS-safe)
 // --------------------
-const supabaseClientMocks = vi.hoisted(() => ({
-  mockGetRoomFromDB: vi.fn(),
-}));
-
 vi.mock("@/lib/supabaseClient", async () => {
   const mod = await vi.importActual<any>("@/test/mocks/supabaseMock");
   const supabase = mod.createSupabaseMock();
 
+  const getRoomFromDB = vi.fn(async (roomId: string) => {
+    const roomsRes = await supabase.from("rooms").select("*").eq("id", roomId).maybeSingle();
+    const roomEntriesRes = await supabase
+      .from("room_entries")
+      .select("*")
+      .eq("room_id", roomId)
+      .order("index")
+      .returns();
+
+    const room = roomsRes?.data ?? null;
+    const entries = Array.isArray(roomEntriesRes?.data) ? roomEntriesRes.data : [];
+
+    if (!room && entries.length === 0) return null;
+
+    return {
+      ...(room ?? { id: roomId }),
+      entries,
+    };
+  });
+
   return {
     supabase,
-    getRoomFromDB: supabaseClientMocks.mockGetRoomFromDB,
+    getRoomFromDB,
     __mock: supabase,
-    __mockGetRoomFromDB: supabaseClientMocks.mockGetRoomFromDB,
+    __getRoomFromDBMock: getRoomFromDB,
   };
 });
 
 import * as SupaMod from "@/lib/supabaseClient";
 const supabaseMock = (SupaMod as any).__mock;
-const mockGetRoomFromDB = (SupaMod as any).__mockGetRoomFromDB;
 
 // --------------------
 // roomLoaderHelpers mock
@@ -67,6 +83,21 @@ vi.mock("../roomJsonResolver", () => ({
 
 import { loadMergedRoom } from "../roomLoader";
 
+const makeChain = (overrides: Partial<Record<string, any>> = {}) => {
+  const self: any = {
+    select: vi.fn().mockReturnThis(),
+    eq: vi.fn().mockReturnThis(),
+    in: vi.fn().mockReturnThis(),
+    order: vi.fn().mockReturnThis(),
+    not: vi.fn().mockReturnThis(),
+    maybeSingle: vi.fn().mockResolvedValue({ data: null, error: null }),
+    single: vi.fn().mockResolvedValue({ data: null, error: null }),
+    returns: vi.fn().mockResolvedValue({ data: [], error: null }),
+    ...overrides,
+  };
+  return self;
+};
+
 describe("loadMergedRoom snapshots", () => {
   beforeEach(() => {
     vi.clearAllMocks();
@@ -103,6 +134,41 @@ describe("loadMergedRoom snapshots", () => {
       error: null,
     });
 
+    const roomEntriesChain = makeChain({
+      returns: vi.fn().mockResolvedValue({
+        data: [{ room_id: "test-room", index: 0 }],
+        error: null,
+      }),
+    });
+
+    const roomsChain = makeChain({
+      maybeSingle: vi.fn().mockResolvedValue({
+        data: {
+          id: "test-room",
+          title_en: "Test Room",
+          title_vi: "Phòng thử",
+          tier: "Free / Miễn phí",
+          keywords: ["test"],
+          entries: [
+            {
+              slug: "entry-1",
+              keywords_en: ["test"],
+              keywords_vi: ["thử"],
+              copy: { en: "EN body", vi: "VI body" },
+            },
+          ],
+        },
+        error: null,
+      }),
+    });
+
+    supabaseMock.from.mockImplementation((table: string) => {
+      const t = String(table || "").toLowerCase();
+      if (t === "room_entries") return roomEntriesChain;
+      if (t === "rooms") return roomsChain;
+      return makeChain();
+    });
+
     accessMocks.mockCanUserAccessRoom.mockReturnValue(true);
     accessMocks.mockDetermineAccess.mockReturnValue({
       hasFullAccess: true,
@@ -110,25 +176,6 @@ describe("loadMergedRoom snapshots", () => {
     });
 
     jsonMocks.mockLoadRoomJson.mockResolvedValue(null);
-
-    mockGetRoomFromDB.mockResolvedValue({
-      entries: [{ room_id: "test-room", index: 0 }],
-      meta: {
-        id: "test-room",
-        title_en: "Test Room",
-        title_vi: "Phòng thử",
-        tier: "Free / Miễn phí",
-        keywords: ["test"],
-        entries: [
-          {
-            slug: "entry-1",
-            keywords_en: ["test"],
-            keywords_vi: ["thử"],
-            copy: { en: "EN body", vi: "VI body" },
-          },
-        ],
-      },
-    });
   });
 
   it("DB room → stable merged structure snapshot", async () => {
@@ -167,9 +214,28 @@ describe("loadMergedRoom snapshots", () => {
   });
 
   it("JSON fallback room → stable merged structure snapshot", async () => {
-    mockGetRoomFromDB.mockResolvedValueOnce({
-      entries: [],
-      meta: null,
+    supabaseMock.from.mockImplementation((table: string) => {
+      const t = String(table || "").toLowerCase();
+
+      if (t === "room_entries") {
+        return makeChain({
+          returns: vi.fn().mockResolvedValue({
+            data: [],
+            error: null,
+          }),
+        });
+      }
+
+      if (t === "rooms") {
+        return makeChain({
+          maybeSingle: vi.fn().mockResolvedValue({
+            data: null,
+            error: null,
+          }),
+        });
+      }
+
+      return makeChain();
     });
 
     jsonMocks.mockLoadRoomJson.mockResolvedValue({

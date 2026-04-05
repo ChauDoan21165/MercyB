@@ -1,51 +1,66 @@
 import { processEntriesOptimized } from "./roomLoaderHelpers";
+import type {
+  BaseRoomEntry,
+  JsonRoom,
+  NormalizedRoomEntry,
+  RoomMeta,
+} from "./roomLoader";
 
 export type KeywordMenu = {
   en: string[];
   vi: string[];
 };
 
-export function normalizeEntries(entries: any[]): {
-  merged: any[];
+export interface NormalizedEntriesResult {
+  merged: NormalizedRoomEntry[];
   keywordMenu: KeywordMenu;
-} {
-  const processed = processEntriesOptimized(entries);
+}
+
+interface ProcessedEntriesResult {
+  merged?: unknown;
+  keywordMenu?: {
+    en?: unknown;
+    vi?: unknown;
+  };
+}
+
+export function normalizeEntries(entries: BaseRoomEntry[]): NormalizedEntriesResult {
+  const processed = processEntriesOptimized(entries) as ProcessedEntriesResult;
 
   return {
-    merged: Array.isArray(processed?.merged) ? processed.merged : [],
+    merged: Array.isArray(processed?.merged)
+      ? (processed.merged as NormalizedRoomEntry[])
+      : [],
     keywordMenu: {
       en: Array.isArray(processed?.keywordMenu?.en)
-        ? processed.keywordMenu.en
+        ? (processed.keywordMenu.en as string[])
         : [],
       vi: Array.isArray(processed?.keywordMenu?.vi)
-        ? processed.keywordMenu.vi
+        ? (processed.keywordMenu.vi as string[])
         : [],
     },
   };
 }
 
-export function salvageDbEntries(entries: any[]): {
-  merged: any[];
-  keywordMenu: KeywordMenu;
-} {
-  const merged = entries.map((row, index) => {
+export function salvageDbEntries(entries: BaseRoomEntry[]): NormalizedEntriesResult {
+  const merged: NormalizedRoomEntry[] = entries.map((row, index) => {
     const slug =
       firstNonEmptyString(
-        row?.slug,
-        row?.keyword_en,
-        row?.keywordEn,
-        row?.title,
-        row?.title_en,
-        row?.titleEn
+        row.slug,
+        row.keyword_en,
+        row.keywordEn,
+        row.title,
+        row.title_en,
+        row.titleEn
       ) || `entry-${index}`;
 
     return {
       slug,
       title:
-        firstNonEmptyString(row?.title, row?.title_en, row?.titleEn) ||
+        firstNonEmptyString(row.title, row.title_en, row.titleEn) ||
         `Entry ${index + 1}`,
-      copy: row?.copy ?? null,
-      keywords: Array.isArray(row?.keywords) ? row.keywords : [],
+      copy: row.copy ?? null,
+      keywords: Array.isArray(row.keywords) ? row.keywords : [],
       tier: "free",
     };
   });
@@ -61,7 +76,7 @@ export function salvageDbEntries(entries: any[]): {
   };
 }
 
-export function normalizeTier(meta: any): string {
+export function normalizeTier(meta: RoomMeta | JsonRoom | null): string {
   const raw =
     firstNonEmptyString(meta?.roomTier, meta?.tier, meta?.accessTier) || "free";
 
@@ -76,7 +91,9 @@ export function normalizeTier(meta: any): string {
   return value;
 }
 
-function firstNonEmptyString(...values: any[]): string | null {
+function firstNonEmptyString(
+  ...values: Array<string | null | undefined>
+): string | null {
   for (const value of values) {
     if (typeof value === "string" && value.trim()) {
       return value.trim();
