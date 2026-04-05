@@ -81,6 +81,7 @@ export interface LoadMergedRoomSuccess {
   meta: RoomMeta | JsonRoom | null;
   audioBasePath: string;
   roomTier: string;
+  errorCode?: undefined;
 }
 
 export interface LoadMergedRoomFailure {
@@ -146,9 +147,11 @@ async function loadMergedRoomUncached(
 
   const normalized = normalizeChosenEntries(chosen.kind, chosen.entries);
 
-  // 🔥 FINAL FIX: detect "garbage normalized DB"
   const hasValidSlug = normalized.merged.some(
-    (e) => typeof e.slug === "string" && e.slug.trim() && !e.slug.startsWith("entry-")
+    (e) =>
+      typeof e.slug === "string" &&
+      e.slug.trim() &&
+      !e.slug.startsWith("entry-")
   );
 
   if (
@@ -160,7 +163,13 @@ async function loadMergedRoomUncached(
     const jsonNormalized = normalizeChosenEntries("json", json.entries);
 
     if (jsonNormalized.merged.length > 0) {
-      return buildSuccess(roomId, "json", json.room ?? null, jsonNormalized, start);
+      return buildSuccess(
+        roomId,
+        "json",
+        json.room ?? null,
+        jsonNormalized,
+        start
+      );
     }
   }
 
@@ -201,6 +210,7 @@ function buildSuccess(
     meta: meta ?? null,
     audioBasePath: `${AUDIO_FOLDER}/`,
     roomTier: normalizeTier(meta),
+    errorCode: undefined,
   };
 }
 
