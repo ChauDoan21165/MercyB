@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import BottomMusicBar from "@/components/audio/BottomMusicBar";
 import { MercyGuide } from "@/components/MercyGuide";
 import { GuideBox } from "@/components/GuideBox";
+import { supabase } from "@/lib/supabaseClient";
 import { useAuth } from "@/providers/AuthProvider";
 
 const PAGE_MAX = 980;
@@ -28,16 +29,6 @@ const VN_DT_FMT = new Intl.DateTimeFormat("vi-VN", {
   minute: "2-digit",
 });
 
-type SupabaseClientType = typeof import("@/lib/supabaseClient")["supabase"];
-
-let supabaseClientPromise: Promise<SupabaseClientType> | null = null;
-
-async function getSupabaseClient(): Promise<SupabaseClientType> {
-  if (!supabaseClientPromise) {
-    supabaseClientPromise = import("@/lib/supabaseClient").then((mod) => mod.supabase);
-  }
-  return supabaseClientPromise;
-}
 
 type ProgressSummaryRow = {
   user_id: string | null;
@@ -190,7 +181,6 @@ export default function Home() {
           return;
         }
 
-        const supabase = await getSupabaseClient();
         const { data: sessionRes, error: sessionErr } = await supabase.auth.getSession();
 
         if (!alive) return;
@@ -245,7 +235,6 @@ export default function Home() {
           return;
         }
 
-        const supabase = await getSupabaseClient();
         const { data: sessionRes, error: sessionErr } = await supabase.auth.getSession();
 
         if (!alive) return;
@@ -293,8 +282,6 @@ export default function Home() {
 
     void (async () => {
       try {
-        const supabase = await getSupabaseClient();
-
         const { data, error } = await supabase
           .from("rooms")
           .select("id, tier, sort_order, created_at")
