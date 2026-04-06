@@ -1,5 +1,3 @@
-// src/components/mercy-guide/tabs/grammar-writing/GrammarWritingTab.tsx
-
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { AlertCircle, Target } from 'lucide-react';
 
@@ -11,7 +9,6 @@ import type {
   PronunciationLaunchPayload,
   TeacherWritingTask,
 } from './types';
-import { analyzeGrammarWithApi, GRAMMAR_API_ENDPOINT } from './api';
 import {
   buildTeacherInstructionText,
   getTeacherEmphasis,
@@ -29,6 +26,47 @@ type GrammarWritingTabProps = {
   onPracticePronunciation?: (payload: PronunciationLaunchPayload) => void;
   onTeacherWritingStateChange?: (state: GrammarWritingTeacherState) => void;
 };
+
+type AnalyzeGrammarParams = {
+  text: string;
+  roomId?: string;
+  roomTitle?: string;
+  englishLevel?: string | null;
+  contentEn?: string;
+};
+
+const GRAMMAR_API_ENDPOINT = 'http://localhost:3001/api/mercy/grammar';
+
+async function analyzeGrammarWithApi({
+  text,
+  roomId,
+  roomTitle,
+  englishLevel,
+  contentEn,
+}: AnalyzeGrammarParams): Promise<GrammarApiResponse> {
+  const response = await fetch(GRAMMAR_API_ENDPOINT, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      text,
+      roomId,
+      roomTitle,
+      englishLevel,
+      contentEn,
+    }),
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text().catch(() => '');
+    const suffix = errorText ? `: ${errorText}` : '';
+    throw new Error(`Grammar API failed with status ${response.status}${suffix}`);
+  }
+
+  const data = (await response.json()) as GrammarApiResponse;
+  return data;
+}
 
 export function GrammarWritingTab({
   roomId,
@@ -106,7 +144,7 @@ export function GrammarWritingTab({
 
     const state: GrammarWritingTeacherState = {
       latestAnalysisResult: result ?? null,
-      currentWritingMode: derivedWritingMode ?? null,
+      currentWritingMode: derivedWritingMode,
       isTeacherInitiated,
       isRevisionAttempt,
       latestSubmittedText,
@@ -178,13 +216,26 @@ Yesterday I go to supermarket and buy many thing.`;
 
       setResult(analysis);
       onAnalysisResult?.(analysis);
+
+      if (onTeacherWritingStateChange) {
+        const state: GrammarWritingTeacherState = {
+          latestAnalysisResult: analysis ?? null,
+          currentWritingMode: analysis?.writingMode ?? derivedWritingMode,
+          isTeacherInitiated,
+          isRevisionAttempt: revisionDetected,
+          latestSubmittedText: text,
+          teacherTask,
+          revisionSourceText: teacherAssignedBaseText || undefined,
+        };
+
+        lastEmittedStateRef.current = JSON.stringify(state);
+        onTeacherWritingStateChange(state);
+      }
     } catch (err) {
       console.error('Grammar API failed:', err);
       setResult(null);
       onAnalysisResult?.(null);
-      setError(
-        err instanceof Error ? err.message : 'Grammar API failed. Please try again.',
-      );
+      setError(err instanceof Error ? err.message : 'Grammar API failed. Please try again.');
     } finally {
       setIsLoading(false);
     }
@@ -203,6 +254,19 @@ Yesterday I go to supermarket and buy many thing.`;
     }
 
     onAnalysisResult?.(null);
+
+    const clearedState: GrammarWritingTeacherState = {
+      latestAnalysisResult: null,
+      currentWritingMode: undefined,
+      isTeacherInitiated: false,
+      isRevisionAttempt: false,
+      latestSubmittedText: '',
+      teacherTask: undefined,
+      revisionSourceText: undefined,
+    };
+
+    lastEmittedStateRef.current = JSON.stringify(clearedState);
+    onTeacherWritingStateChange?.(clearedState);
   }
 
   function handlePracticePronunciation() {
@@ -218,103 +282,107 @@ Yesterday I go to supermarket and buy many thing.`;
   const teacherEmphasis = getTeacherEmphasis(result, teacherTask);
 
   return (
-    <div className="space-y-4">
-      <div className="rounded-2xl border bg-white p-4 shadow-sm">
-        <textarea
-          value={draft}
-          onChange={(e) => {
-            setDraft(e.target.value);
-            setHasUserEditedDraftSinceTeacherHydration(true);
-          }}
-          placeholder={placeholder}
-          className="min-h-[180px] w-full resize-y rounded-xl border p-3 text-sm outline-none"
-        />
+    <div className="flex h-full min-h-0 flex-col overflow-hidden">
+      <div className="flex-1 min-h-0 overflow-y-auto px-4 py-4">
+        <div className="space-y-4">
+          <div className="rounded-2xl border bg-white p-4 shadow-sm">
+            <textarea
+              value={draft}
+              onChange={(e) => {
+                setDraft(e.target.value);
+                setHasUserEditedDraftSinceTeacherHydration(true);
+              }}
+              placeholder={placeholder}
+              className="min-h-[180px] w-full resize-y rounded-xl border p-3 text-sm outline-none"
+            />
 
-        <div className="mt-3 flex items-center justify-between gap-3">
-          <p className="text-xs text-muted-foreground">{charCount} characters</p>
+            <div className="mt-3 flex items-center justify-between gap-3">
+              <p className="text-xs text-muted-foreground">{charCount} characters</p>
 
-          <div className="flex items-center gap-2">
-            <Button
-              type="button"
-              variant="outline"
-              onClick={handleClear}
-              disabled={isLoading || (!draft && !result)}
-            >
-              Clear
-            </Button>
+              <div className="flex items-center gap-2">
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={handleClear}
+                  disabled={isLoading || (!draft && !result)}
+                >
+                  Clear
+                </Button>
 
-            <Button type="button" onClick={handleAnalyze} disabled={!canSubmit}>
-              {isLoading ? 'Analyzing...' : 'Analyze'}
-            </Button>
+                <Button type="button" onClick={handleAnalyze} disabled={!canSubmit}>
+                  {isLoading ? 'Analyzing...' : 'Analyze'}
+                </Button>
+              </div>
+            </div>
           </div>
+
+          {error ? (
+            <div className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800">
+              <div className="flex items-start gap-2">
+                <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
+                <div>
+                  <p>{error}</p>
+                  <p className="mt-1 text-xs">
+                    API endpoint tried: <code>{GRAMMAR_API_ENDPOINT}</code>
+                  </p>
+                </div>
+              </div>
+            </div>
+          ) : null}
+
+          {teacherEmphasis ? (
+            <div className="rounded-2xl border bg-white p-4 shadow-sm">
+              <div className="flex items-start gap-2">
+                <Target className="mt-0.5 h-4 w-4 shrink-0" />
+                <div>
+                  <p className="text-sm font-semibold">{teacherEmphasis.title}</p>
+                  {teacherEmphasis.subtitle ? (
+                    <p className="text-xs text-muted-foreground">{teacherEmphasis.subtitle}</p>
+                  ) : null}
+                  <p className="mt-2 text-sm">{teacherEmphasis.body}</p>
+                </div>
+              </div>
+            </div>
+          ) : null}
+
+          {result ? (
+            <div className="space-y-3 rounded-2xl border bg-white p-4 shadow-sm">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                  Corrected
+                </p>
+                <p className="mt-1 font-semibold">{result.correctedText}</p>
+              </div>
+
+              {result.enhancedText ? (
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                    Enhanced
+                  </p>
+                  <p className="mt-1 text-sm">{result.enhancedText}</p>
+                </div>
+              ) : null}
+
+              {result.explanation ? (
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                    Explanation
+                  </p>
+                  <p className="mt-1 text-sm">{result.explanation}</p>
+                </div>
+              ) : null}
+
+              {onPracticePronunciation ? (
+                <div className="pt-2">
+                  <Button type="button" variant="outline" onClick={handlePracticePronunciation}>
+                    Practice this in Pronunciation
+                  </Button>
+                </div>
+              ) : null}
+            </div>
+          ) : null}
         </div>
       </div>
-
-      {error ? (
-        <div className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800">
-          <div className="flex items-start gap-2">
-            <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
-            <div>
-              <p>{error}</p>
-              <p className="mt-1 text-xs">
-                API endpoint tried: <code>{GRAMMAR_API_ENDPOINT}</code>
-              </p>
-            </div>
-          </div>
-        </div>
-      ) : null}
-
-      {teacherEmphasis ? (
-        <div className="rounded-2xl border bg-white p-4 shadow-sm">
-          <div className="flex items-start gap-2">
-            <Target className="mt-0.5 h-4 w-4 shrink-0" />
-            <div>
-              <p className="text-sm font-semibold">{teacherEmphasis.title}</p>
-              {teacherEmphasis.subtitle ? (
-                <p className="text-xs text-muted-foreground">{teacherEmphasis.subtitle}</p>
-              ) : null}
-              <p className="mt-2 text-sm">{teacherEmphasis.body}</p>
-            </div>
-          </div>
-        </div>
-      ) : null}
-
-      {result ? (
-        <div className="space-y-3 rounded-2xl border bg-white p-4 shadow-sm">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-              Corrected
-            </p>
-            <p className="mt-1 font-semibold">{result.correctedText}</p>
-          </div>
-
-          {result.enhancedText ? (
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                Enhanced
-              </p>
-              <p className="mt-1 text-sm">{result.enhancedText}</p>
-            </div>
-          ) : null}
-
-          {result.explanation ? (
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                Explanation
-              </p>
-              <p className="mt-1 text-sm">{result.explanation}</p>
-            </div>
-          ) : null}
-
-          {onPracticePronunciation ? (
-            <div className="pt-2">
-              <Button type="button" variant="outline" onClick={handlePracticePronunciation}>
-                Practice this in Pronunciation
-              </Button>
-            </div>
-          ) : null}
-        </div>
-      ) : null}
     </div>
   );
 }

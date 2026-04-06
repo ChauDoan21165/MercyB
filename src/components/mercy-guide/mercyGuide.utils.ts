@@ -1,3 +1,5 @@
+// PATH: src/components/mercy-guide/mercyGuide.utils.ts
+
 import { CompanionProfile } from '@/services/companion';
 import {
   BUBBLE_BOTTOM_SAFE_DESKTOP,
@@ -15,14 +17,14 @@ import {
 
 export type RoomContextSummary = {
   hasRoomContext: boolean;
-  roomName: string;
-  tierLabel: string | null;
-  topicLabel: string | null;
-  shortSummary: string | null;
-  usageHintEn: string;
-  usageHintVi: string;
-  whereAreWeEn: string | null;
-  whereAreWeVi: string | null;
+  roomName?: string;
+  tierLabel?: string | null;
+  topicLabel?: string | null;
+  shortSummary?: string | null;
+  usageHintEn?: string;
+  usageHintVi?: string;
+  whereAreWeEn?: string | null;
+  whereAreWeVi?: string | null;
 };
 
 export type MercyGuideRoomInput = {
@@ -225,13 +227,24 @@ export function buildRoomAwareCheckIn(
     };
   }
 
-  const roomSentence = roomSummary.whereAreWeEn ?? `You are in ${roomSummary.roomName}.`;
+  const safeRoomName = roomSummary.roomName || 'this room';
+  const roomSentence = roomSummary.whereAreWeEn ?? `You are in ${safeRoomName}.`;
   const summarySentence = roomSummary.shortSummary
     ? truncateWords(roomSummary.shortSummary, 22)
     : null;
+  const usageHintEn =
+    roomSummary.usageHintEn ??
+    (roomSummary.hasRoomContext
+      ? `Ask me what this room is about, where we are, or how to use ${safeRoomName}.`
+      : 'Ask me what this room is about, where we are, or how to use this space.');
+  const usageHintVi =
+    roomSummary.usageHintVi ??
+    (roomSummary.hasRoomContext
+      ? `Bạn có thể hỏi mình phòng này nói về gì, chúng ta đang ở đâu, hoặc cách dùng ${safeRoomName}.`
+      : 'Bạn có thể hỏi mình phòng này nói về gì, chúng ta đang ở đâu, hoặc cách dùng không gian này.');
 
   return {
-    en: `${introName}${roomSentence}${summarySentence ? ` ${summarySentence}` : ''} ${roomSummary.usageHintEn}`,
-    vi: `${preferredName ? `${preferredName}, ` : ''}${roomSummary.whereAreWeVi ?? `Bạn đang ở ${roomSummary.roomName}.`} ${roomSummary.usageHintVi}`,
+    en: `${introName}${roomSentence}${summarySentence ? ` ${summarySentence}` : ''} ${usageHintEn}`,
+    vi: `${preferredName ? `${preferredName}, ` : ''}${roomSummary.whereAreWeVi ?? `Bạn đang ở ${safeRoomName}.`} ${usageHintVi}`,
   };
 }

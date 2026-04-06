@@ -50,6 +50,12 @@ export function useMercyGuideData({
     preloadMercyLibrary();
   }, []);
 
+  const normalizedTags = useMemo(() => (tags ? [...tags] : []), [tags]);
+  const tagsKey = useMemo(() => normalizedTags.join("|"), [normalizedTags]);
+
+  const hasRoomContext = roomSummary.hasRoomContext;
+  const roomName = roomSummary.roomName ?? "";
+
   const guessedName = useMemo(() => {
     const profileWithExtras = profile as ExtendedCompanionProfile;
 
@@ -63,10 +69,10 @@ export function useMercyGuideData({
   }, [profile]);
 
   const greeting = useMemo<CheckInMessage>(() => {
-    if (guessedName && roomSummary.hasRoomContext) {
+    if (guessedName && hasRoomContext) {
       return {
-        en: `Hi, ${guessedName}. You’re in ${roomSummary.roomName}.`,
-        vi: `Chào ${guessedName}. Bạn đang ở ${roomSummary.roomName}.`,
+        en: `Hi, ${guessedName}. You’re in ${roomName}.`,
+        vi: `Chào ${guessedName}. Bạn đang ở ${roomName}.`,
       };
     }
 
@@ -77,10 +83,10 @@ export function useMercyGuideData({
       };
     }
 
-    if (roomSummary.hasRoomContext) {
+    if (hasRoomContext) {
       return {
-        en: `Hi! You’re in ${roomSummary.roomName}.`,
-        vi: `Chào bạn! Bạn đang ở ${roomSummary.roomName}.`,
+        en: `Hi! You’re in ${roomName}.`,
+        vi: `Chào bạn! Bạn đang ở ${roomName}.`,
       };
     }
 
@@ -88,14 +94,17 @@ export function useMercyGuideData({
       en: "Hi! How can I help?",
       vi: "Chào bạn! Mình giúp gì được?",
     };
-  }, [guessedName, roomSummary]);
+  }, [guessedName, hasRoomContext, roomName]);
 
   useEffect(() => {
     if (!isOpen) return;
 
+    let cancelled = false;
+
     async function loadData() {
       try {
         const profileData = await getCompanionProfile();
+        if (cancelled) return;
         setProfile(profileData);
 
         const ctx = buildMercyContext({
@@ -105,15 +114,19 @@ export function useMercyGuideData({
 
         const greetingId = getGreetingReplyId(ctx);
         const greetingReply = await getMercyReply(greetingId);
+        if (cancelled) return;
 
-        if (roomSummary.hasRoomContext) {
+        if (hasRoomContext) {
           setCheckInMessage(
-            buildRoomAwareCheckIn(profileData, roomSummary as any)
+            buildRoomAwareCheckIn(profileData, {
+              hasRoomContext,
+              roomName: roomName || undefined,
+            })
           );
         } else if (greetingReply) {
           setCheckInMessage({
-            en: greetingReply.text_en,
-            vi: greetingReply.text_vi,
+            en: greetingReply.text_en ?? greeting.en,
+            vi: greetingReply.text_vi ?? greeting.vi,
           });
         } else {
           setCheckInMessage(
@@ -126,34 +139,53 @@ export function useMercyGuideData({
         }
 
         await getMercyReply(getBreathingReplyId("intro"));
+        if (cancelled) return;
 
         const suggestionsData = await getSuggestionsForUser({
           profile: profileData,
           lastRoomId: roomId,
-          lastTags: tags,
+          lastTags: normalizedTags,
         });
+        if (cancelled) return;
         setSuggestions(suggestionsData);
 
         const summary = await getYesterdayAndTodaySummary();
+        if (cancelled) return;
         setYesterdaySummary(summary.yesterday);
         setTodayTotalMinutes(summary.todayTotalMinutes);
 
         const recentMoods = await getRecentMoods(3);
+        if (cancelled) return;
         const heavyCount = recentMoods.filter(
           (m) => m === "heavy" || m === "anxious"
         ).length;
         setHasHeavyMoods(heavyCount >= 2);
 
-        if (!roomSummary.hasRoomContext) {
+        if (!hasRoomContext) {
           triggerBilingualHint("idle");
         }
       } catch (error) {
-        console.error("Failed to load guide data:", error);
+        if (!cancelled) {
+          console.error("Failed to load guide data:", error);
+        }
       }
     }
 
     void loadData();
-  }, [isOpen, roomId, roomSummary, tags, triggerBilingualHint]);
+
+    return () => {
+      cancelled = true;
+    };
+  }, [
+    isOpen,
+    roomId,
+    tagsKey,
+    hasRoomContext,
+    roomName,
+    triggerBilingualHint,
+    normalizedTags,
+    greeting,
+  ]);
 
   return {
     profile,

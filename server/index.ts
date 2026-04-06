@@ -1,4 +1,4 @@
-// File: server/index.ts
+// PATH: server/index.ts
 
 import express from 'express';
 import cors from 'cors';
@@ -150,6 +150,7 @@ type ParagraphAnalysis = {
 type GrammarResponse = {
   correctedText: string;
   enhancedText?: string;
+  editedVersion?: string;
   explanation?: string;
   issues?: GrammarIssue[];
   grammarPoints?: string[];
@@ -813,18 +814,6 @@ function analyzeTenseConsistency(text: string) {
     );
   }
 
-  if (currentPeriod && /\bhave been building\b/i.test(corrected)) {
-    // correct pairing
-  }
-
-  if (pastTime && /\bI built\b/i.test(corrected)) {
-    // correct pairing
-  }
-
-  if (nowMarker && /\b(am|is|are) [a-z]+ing\b/i.test(corrected)) {
-    // correct pairing
-  }
-
   return { corrected, issues };
 }
 
@@ -851,6 +840,90 @@ function polishNaturalness(text: string) {
   enhanced = enhanced.replace(/\bwhere you practice\b/gi, 'where you can practice');
 
   return enhanced;
+}
+
+function rewriteParagraph(text: string) {
+  const sentences = sentenceSplit(text);
+  if (sentences.length < 2) return text;
+
+  const trimmed = sentences.map((s) => s.trim()).filter(Boolean);
+  if (trimmed.length < 2) return text;
+
+  const normalized = trimmed.map((sentence, index) => {
+    if (index === 0) return sentence;
+    return sentence.replace(/^(However|Therefore|Also|Then|In addition|As a result),?\s+/i, '');
+  });
+
+  const rewritten: string[] = [];
+
+  normalized.forEach((sentence, index) => {
+    if (index === 0) {
+      rewritten.push(sentence);
+      return;
+    }
+
+    const previous = normalized[index - 1].toLowerCase();
+    const current = sentence.toLowerCase();
+
+    let connector = '';
+
+    if (/\byesterday\b|\blast year\b|\bthis morning\b|\bago\b/.test(previous) && /\bnow\b|\btoday\b|\bcurrently\b|\bthis year\b/.test(current)) {
+      connector = 'Now, ';
+    } else if (/\bbecause\b|\bif\b/.test(current)) {
+      connector = '';
+    } else if (/\bbirds\b|\bnature\b|\bsky\b|\batmosphere\b|\bsurroundings\b/.test(current)) {
+      connector = 'Meanwhile, ';
+    } else if (/\btherefore\b|\bas a result\b|\bso\b/.test(current)) {
+      connector = '';
+    } else if (/\bhowever\b|\bbut\b|\balthough\b|\bthough\b/.test(current)) {
+      connector = 'However, ';
+    } else if (index === normalized.length - 1) {
+      connector = 'As a result, ';
+    } else {
+      connector = 'In addition, ';
+    }
+
+    if (!connector) {
+      rewritten.push(sentence);
+      return;
+    }
+
+    const body = sentence.charAt(0).toLowerCase() + sentence.slice(1);
+    rewritten.push(`${connector}${body}`);
+  });
+
+  let result = rewritten.join(' ');
+  result = result.replace(/\bHowever,\s+however\b/gi, 'However');
+  result = result.replace(/\bAs a result,\s+therefore\b/gi, 'Therefore');
+  result = result.replace(/\bIn addition,\s+also\b/gi, 'Also');
+  result = result.replace(/\s+/g, ' ').trim();
+
+  return result;
+}
+
+function buildEditedVersion(
+  correctedText: string,
+  enhancedText: string,
+  writingMode: WritingMode,
+  paragraphAnalysis?: ParagraphAnalysis,
+  decision?: TeachingDecision
+) {
+  const shouldRewriteParagraph =
+    writingMode !== 'sentence' ||
+    paragraphAnalysis?.flow !== 'strong' ||
+    paragraphAnalysis?.ideaConnection !== 'strong' ||
+    paragraphAnalysis?.tenseConsistency === 'mixed but controlled' ||
+    decision?.primaryFocus === 'paragraph coherence' ||
+    decision?.primaryFocus === 'paragraph flow' ||
+    decision?.primaryFocus === 'idea connection' ||
+    decision?.primaryFocus === 'time-frame connection across sentences' ||
+    decision?.primaryFocus === 'tense consistency across the paragraph';
+
+  if (!shouldRewriteParagraph) {
+    return enhancedText;
+  }
+
+  return rewriteParagraph(enhancedText);
 }
 
 function analyzeAdvancedPatterns(text: string): AdvancedPattern[] {
@@ -1391,10 +1464,7 @@ function buildLinkingTaskFromFocus(
         focus === 'time-frame connection across sentences'
           ? ['past event → present result', 'earlier action → current situation']
           : ['main idea → supporting detail', 'sentence 1 → sentence 2'],
-      targetPattern:
-        focus === 'time-frame connection across sentences'
-          ? 'linking devices'
-          : 'linking devices',
+      targetPattern: 'linking devices',
       explanation:
         focus === 'time-frame connection across sentences'
           ? 'Your paragraph mixes time frames understandably, but the transition between them can be smoother.'
@@ -1462,7 +1532,7 @@ function buildRewriteTaskFromFocus(
       instruction:
         'Rewrite the paragraph so the ideas connect more smoothly and the time frame feels easier to follow.',
       sourceText: correctedText,
-      targetPattern: focus === 'tense consistency across the paragraph' ? 'cohesion' : 'cohesion',
+      targetPattern: 'cohesion',
       explanation:
         focus === 'tense consistency across the paragraph'
           ? 'Keep the time shift if needed, but make it easier for the reader to follow.'
@@ -1666,7 +1736,7 @@ function generatePracticeFromDecision(
     });
   }
 
-  const sortedTasks = [...tasks];
+  const sortedTasks = [...tasks].sort((a, b) => b.priority - a.priority);
 
   const primaryQuickFix = sortedTasks.find(
     (task): task is QuickFixTask => task.type === 'quickFix'
@@ -1894,7 +1964,7 @@ function analyzeGrammar(text: string, learnerId = 'demo-learner'): GrammarRespon
 
   const decisionInput: LearnerMemory = {
     ...learnerMemory,
-    reviewQueue: dueReviews.length > 0 ? learnerMemory.reviewQueue : learnerMemory.reviewQueue,
+    reviewQueue: dueReviews.length > 0 ? dueReviews : learnerMemory.reviewQueue,
   };
 
   const baseTeachingPoints = generateTeachingPoints(
@@ -1914,6 +1984,7 @@ function analyzeGrammar(text: string, learnerId = 'demo-learner'): GrammarRespon
     levelSignal: analysis.levelSignal,
     memory: decisionInput,
   });
+
   const updatedMemory = updateLearnerMemory(learnerMemory, decision);
   learnerMemoryStore.set(learnerId, updatedMemory);
 
@@ -1928,10 +1999,18 @@ function analyzeGrammar(text: string, learnerId = 'demo-learner'): GrammarRespon
   );
   const levelSignal = decision.learnerLevelSignal;
   const grammarGloss = buildGrammarGloss(grammarPoints);
+  const editedVersion = buildEditedVersion(
+    corrected,
+    enhancedText,
+    writingMode,
+    paragraphAnalysis,
+    decision
+  );
 
   return {
     correctedText: corrected,
     enhancedText,
+    editedVersion,
     explanation: buildExplanation(
       cleaned,
       corrected,
@@ -1964,11 +2043,29 @@ function analyzeGrammar(text: string, learnerId = 'demo-learner'): GrammarRespon
     structureAnalysis,
     writingMode,
     paragraphAnalysis,
-    debugServerVersion: 'mercy-advanced-v8',
+    debugServerVersion: 'mercy-advanced-v10-server-stable',
     decision,
     memory: updatedMemory,
   };
 }
+
+app.get('/health', (_req, res) => {
+  return res.status(200).json({
+    ok: true,
+    service: 'mercy-grammar-api',
+    version: 'mercy-advanced-v10-server-stable',
+    timestamp: new Date().toISOString(),
+  });
+});
+
+app.get('/api/health', (_req, res) => {
+  return res.status(200).json({
+    ok: true,
+    service: 'mercy-grammar-api',
+    version: 'mercy-advanced-v10-server-stable',
+    timestamp: new Date().toISOString(),
+  });
+});
 
 app.post('/api/mercy/grammar', (req, res) => {
   try {
@@ -1989,6 +2086,56 @@ app.post('/api/mercy/grammar', (req, res) => {
   }
 });
 
-app.listen(3001, () => {
-  console.log('Grammar API running on http://localhost:3001');
+const PORT = 3001;
+
+const server = app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Grammar API running on http://localhost:${PORT}`);
+  console.log(`Grammar API health check on http://localhost:${PORT}/health`);
 });
+
+server.on('listening', () => {
+  console.log('✅ Express server is listening');
+});
+
+server.on('close', () => {
+  console.log('🛑 Express server closed');
+});
+
+server.on('error', (error) => {
+  console.error('❌ Express server error:', error);
+});
+
+process.on('uncaughtException', (error) => {
+  console.error('❌ Uncaught exception:', error);
+});
+
+process.on('unhandledRejection', (reason) => {
+  console.error('❌ Unhandled rejection:', reason);
+});
+
+process.on('exit', (code) => {
+  console.log(`ℹ️ Process exiting with code ${code}`);
+});
+
+const heartbeat = setInterval(() => {
+  console.log(`💓 Mercy server heartbeat ${new Date().toISOString()}`);
+}, 15000);
+
+function shutdown(signal: string) {
+  console.log(`\n${signal} received. Shutting down Mercy server...`);
+  clearInterval(heartbeat);
+
+  server.close((error) => {
+    if (error) {
+      console.error('❌ Error while closing server:', error);
+      process.exit(1);
+      return;
+    }
+
+    console.log('✅ Mercy server shut down cleanly');
+    process.exit(0);
+  });
+}
+
+process.on('SIGINT', () => shutdown('SIGINT'));
+process.on('SIGTERM', () => shutdown('SIGTERM'));

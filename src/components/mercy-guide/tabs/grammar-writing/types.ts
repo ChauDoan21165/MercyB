@@ -1,4 +1,4 @@
-// src/components/mercy-guide/tabs/grammar-writing/types.ts
+// PATH: src/components/mercy-guide/tabs/grammar-writing/types.ts
 
 export type TeacherTaskType =
   | 'quickFix'
@@ -40,6 +40,11 @@ export type StructureAnalysis = {
   strengths?: string[];
   weaknesses?: string[];
   recommendations?: string[];
+};
+
+export type GrammarGloss = {
+  label?: string;
+  glossVi?: string;
 };
 
 export type PracticeTaskBase = {
@@ -153,6 +158,7 @@ export type ParagraphAnalysis = {
   flow?: string;
   ideaConnection?: string;
   tenseConsistency?: string;
+  notes?: string[];
 };
 
 export type TeacherWritingTask = {
@@ -177,9 +183,19 @@ export type GrammarWritingTeacherState = {
 export type GrammarApiResponse = {
   correctedText: string;
   enhancedText?: string;
+  editedVersion?: string;
+  teacherModelVersion?: string;
   explanation?: string;
+  summary?: string;
+  nextStep?: string;
+  encouragement?: string;
+  headline?: string;
+  action?: string;
+  taskLabel?: string;
   issues?: GrammarIssue[];
   grammarPoints?: string[];
+  grammarGloss?: GrammarGloss[];
+  fixes?: string[];
   tenseAnalysis?: {
     detected: string[];
     likelyMainTense: string | null;
@@ -190,6 +206,8 @@ export type GrammarApiResponse = {
     grammar: number;
     clarity: number;
     naturalness: number;
+    flow?: number;
+    overall?: number;
   };
   practice?: GrammarPractice;
   overallAssessment?: string;

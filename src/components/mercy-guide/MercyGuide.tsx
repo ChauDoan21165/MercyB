@@ -1,5 +1,3 @@
-// PATH: src/components/mercy-guide/MercyGuide.tsx
-
 /**
  * Path: src/components/mercy-guide/MercyGuide.tsx
  */
@@ -84,6 +82,10 @@ const MIN_PANEL_HEIGHT = 520;
 const MUSIC_BAR_SAFE_HEIGHT = 72;
 const SESSION_HINT_KEY = "mercy-guide-hint-memory";
 
+const MercyTeacherTabView = MercyTeacherTab as React.ComponentType<any>;
+const PronunciationTabView = PronunciationTab as React.ComponentType<any>;
+const MercySuggestTabView = MercySuggestTab as React.ComponentType<any>;
+
 function MercyGuideProfileSettings({
   onClose,
   onSaved,
@@ -136,7 +138,9 @@ function getNormalizedMoodValue(entry: unknown): string {
   return "";
 }
 
-function getSuggestionTarget(item: SuggestedItem | null | undefined): string | null {
+function getSuggestionTarget(
+  item: SuggestedItem | null | undefined
+): string | null {
   if (!item || typeof item !== "object") {
     return null;
   }
@@ -166,7 +170,9 @@ function getEnglishLevel(profile: CompanionProfile | null): string | null {
   return typeof value === "string" ? value : null;
 }
 
-function getPreferredName(profile: CompanionProfile | null): string | undefined {
+function getPreferredName(
+  profile: CompanionProfile | null
+): string | undefined {
   const value = profile?.preferred_name;
   return typeof value === "string" && value.trim() ? value : undefined;
 }
@@ -207,9 +213,9 @@ export function MercyGuide({
   const [showSettings, setShowSettings] = useState(false);
   const [profile, setProfile] = useState<CompanionProfile | null>(null);
   const [suggestions, setSuggestions] = useState<SuggestedItem[]>([]);
-  const [yesterdaySummary, setYesterdaySummary] = useState<StudyLogEntry | undefined>(
-    undefined
-  );
+  const [yesterdaySummary, setYesterdaySummary] = useState<
+    StudyLogEntry | undefined
+  >(undefined);
   const [todayTotalMinutes, setTodayTotalMinutes] = useState(0);
   const [hasHeavyMoods, setHasHeavyMoods] = useState(false);
   const [showBreathingScript, setShowBreathingScript] = useState(false);
@@ -317,9 +323,14 @@ export function MercyGuide({
           if (!cancelled) {
             const heavy = Array.isArray(moods)
               ? moods.some((entry) =>
-                  ["sad", "anxious", "stressed", "overwhelmed", "heavy", "tired"].includes(
-                    getNormalizedMoodValue(entry)
-                  )
+                  [
+                    "sad",
+                    "anxious",
+                    "stressed",
+                    "overwhelmed",
+                    "heavy",
+                    "tired",
+                  ].includes(getNormalizedMoodValue(entry))
                 )
               : false;
 
@@ -357,8 +368,8 @@ export function MercyGuide({
           activeTab === "teacher"
             ? MERCY_BLUE_PATH_FORWARD.idle.en
             : activeTab === "english"
-            ? MERCY_BLUE_PATH_FORWARD.navigation.en
-            : MERCY_BLUE_PATH_FORWARD.switching.en;
+              ? MERCY_BLUE_PATH_FORWARD.navigation.en
+              : MERCY_BLUE_PATH_FORWARD.switching.en;
 
         setPathHint(hint);
         window.sessionStorage.setItem(
@@ -501,7 +512,13 @@ export function MercyGuide({
               <MercyGuideProfileSettings
                 onClose={() => setShowSettings(false)}
                 onSaved={(nextProfile: Partial<CompanionProfile>) =>
-                  setProfile((prev) => ({ ...(prev ?? {}), ...nextProfile }))
+                  setProfile(
+                    (prev) =>
+                      ({
+                        ...(prev ?? {}),
+                        ...nextProfile,
+                      }) as CompanionProfile
+                  )
                 }
               />
             ) : (
@@ -519,7 +536,7 @@ export function MercyGuide({
 
                 <div className="flex-1 overflow-y-auto p-4">
                   {activeTab === "teacher" ? (
-                    <MercyTeacherTab
+                    <MercyTeacherTabView
                       profile={(profile ?? {}) as CompanionProfile}
                       yesterdaySummary={yesterdaySummary}
                       todayTotalMinutes={todayTotalMinutes}
@@ -552,7 +569,7 @@ export function MercyGuide({
                   ) : null}
 
                   {activeTab === "speak" ? (
-                    <PronunciationTab
+                    <PronunciationTabView
                       roomId={roomId}
                       contentEn={contentEn}
                       profile={(profile ?? {}) as CompanionProfile}
@@ -562,9 +579,9 @@ export function MercyGuide({
                   ) : null}
 
                   {activeTab === "suggest" ? (
-                    <MercySuggestTab
-                      suggestions={suggestions as any}
-                      onNavigateSuggestion={handleNavigateSuggestion as any}
+                    <MercySuggestTabView
+                      suggestions={suggestions}
+                      onNavigateSuggestion={handleNavigateSuggestion}
                     />
                   ) : null}
                 </div>

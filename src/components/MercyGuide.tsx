@@ -27,7 +27,10 @@ import {
   SESSION_HINT_KEY,
   SIZE_PRESETS,
 } from './mercy-guide/mercyGuide.constants';
-import { getPanelHeightPolicy, getPanelWidthPolicy } from './mercy-guide/mercyGuide.utils';
+import {
+  getPanelHeightPolicy,
+  getPanelWidthPolicy,
+} from './mercy-guide/mercyGuide.utils';
 import { MERCY_HOST_IMAGE_FALLBACK } from './mercy-guide/shared';
 import { analyzeGrammarWithApi } from './mercy-guide/tabs/grammar-writing/api';
 import type {
@@ -78,6 +81,8 @@ type RoomContextSummary = {
   topicLabel: string | null;
   shortSummary: string | null;
 };
+
+const MercyGuidePanelView = MercyGuidePanel as React.ComponentType<any>;
 
 function isMobileViewport(): boolean {
   return typeof window !== 'undefined' && window.innerWidth < 768;
@@ -154,8 +159,10 @@ export function MercyGuide({
   const [pathHint, setPathHint] = useState<PathHint | null>(null);
   const [isGhosted, setIsGhosted] = useState(false);
 
-  const [latestAnalysisResult, setLatestAnalysisResult] = useState<GrammarApiResponse | null>(null);
-  const [activeTeacherTask, setActiveTeacherTask] = useState<TeacherWritingTask | null>(null);
+  const [latestAnalysisResult, setLatestAnalysisResult] =
+    useState<GrammarApiResponse | null>(null);
+  const [activeTeacherTask, setActiveTeacherTask] =
+    useState<TeacherWritingTask | null>(null);
   const [latestTeacherWritingState, setLatestTeacherWritingState] =
     useState<GrammarWritingTeacherState | null>(null);
   const [pendingPronunciationPayload, setPendingPronunciationPayload] =
@@ -544,6 +551,22 @@ export function MercyGuide({
 
   const handleAnalysisResult = useCallback((result: GrammarApiResponse | null) => {
     setLatestAnalysisResult(result);
+
+    setLatestTeacherWritingState((current) => {
+      if (!current && !result) {
+        return current;
+      }
+
+      return {
+        latestAnalysisResult: result ?? null,
+        currentWritingMode: result?.writingMode ?? current?.currentWritingMode,
+        isTeacherInitiated: current?.isTeacherInitiated ?? false,
+        isRevisionAttempt: current?.isRevisionAttempt ?? false,
+        latestSubmittedText: current?.latestSubmittedText ?? '',
+        teacherTask: current?.teacherTask,
+        revisionSourceText: current?.revisionSourceText,
+      };
+    });
   }, []);
 
   const handlePracticePronunciation = useCallback(
@@ -634,11 +657,11 @@ export function MercyGuide({
   }
 
   return (
-    <MercyGuidePanel
+    <MercyGuidePanelView
       isOpen={isOpen}
       isGhosted={isGhosted}
       activeTab={activeTab}
-      setActiveTab={(value) => setActiveTab(value as GuideTab)}
+      setActiveTab={(value: string) => setActiveTab(value as GuideTab)}
       showSettings={showSettings}
       setShowSettings={setShowSettings}
       pathHint={pathHint}
@@ -684,7 +707,12 @@ export function MercyGuide({
       onTeacherOpenPronunciation={handleTeacherOpenPronunciation}
       onTeacherOpenWriting={handleTeacherOpenWriting}
       onTeacherWritingStateChange={handleTeacherWritingStateChange}
-      onSubmitTeacherRevision={async (payload) =>
+      onSubmitTeacherRevision={async (payload: {
+        previousText: string;
+        newText: string;
+        taskType?: string;
+        focus?: string;
+      }) =>
         handleSubmitTeacherRevision({
           originalText: payload.previousText,
           revisedText: payload.newText,

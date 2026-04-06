@@ -1,571 +1,467 @@
-import React from 'react';
-import {
-  Loader2,
-  Mic,
-  Play,
-  Square,
-  Volume2,
-  Languages,
-  Repeat2,
-} from 'lucide-react';
+// PATH: src/components/mercy-guide/MercySpeakTab.tsx
+
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { AlertCircle, Target } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { TabsContent } from '@/components/ui/tabs';
-import { CompanionProfile } from '@/services/companion';
-import { cn } from '@/lib/utils';
 
-import { UseSpeakPracticeResult } from './hooks/useSpeakPractice';
-import {
-  FALLBACK_PRAISE,
-  MAX_SPEAK_ATTEMPTS,
-  TroubleWord,
-  getSpeakProgressHint,
-} from './shared';
+import type {
+  GrammarApiResponse,
+  GrammarWritingTeacherState,
+  PronunciationLaunchPayload,
+  TeacherWritingTask,
+} from './types';
 
-type PronunciationLaunchPayload = {
-  sourceText: string;
-  correctedText: string;
-  enhancedText?: string;
+type MercySpeakTabProps = {
+  roomId?: string;
+  roomTitle?: string;
+  contentEn?: string;
+  englishLevel?: string | null;
+  teacherTask?: TeacherWritingTask;
+  onAnalysisResult?: (result: GrammarApiResponse | null) => void;
+  onPracticePronunciation?: (payload: PronunciationLaunchPayload) => void;
+  onTeacherWritingStateChange?: (state: GrammarWritingTeacherState) => void;
 };
 
-interface MercySpeakTabProps {
+type AnalyzeGrammarParams = {
+  text: string;
   roomId?: string;
+  roomTitle?: string;
+  englishLevel?: string | null;
   contentEn?: string;
-  profile: CompanionProfile;
-  troubleWords: TroubleWord[];
-  shouldShowWithoutRoom?: boolean;
-  speakPractice: UseSpeakPracticeResult;
-  launchPayload?: PronunciationLaunchPayload | null;
+};
+
+type TeacherEmphasis = {
+  title: string;
+  body: string;
+  subtitle?: string;
+};
+
+const GRAMMAR_API_ENDPOINT = 'http://localhost:3001/api/mercy/grammar';
+
+function hasMeaningfulDifference(nextText: string, baseText: string): boolean {
+  const normalize = (value: string) => value.replace(/\s+/g, ' ').trim();
+  return normalize(nextText) !== normalize(baseText);
 }
 
-function clampScore(value: unknown): number | null {
-  const num = typeof value === 'number' ? value : Number(value);
-  if (!Number.isFinite(num)) return null;
-  return Math.max(0, Math.min(100, Math.round(num)));
+function buildTeacherInstructionText(task?: TeacherWritingTask): string {
+  if (!task) return '';
+
+  const parts = [
+    (task as { title?: string | null }).title,
+    (task as { instruction?: string | null }).instruction,
+    (task as { prompt?: string | null }).prompt,
+    (task as { description?: string | null }).description,
+  ]
+    .map((value) => (typeof value === 'string' ? value.trim() : ''))
+    .filter(Boolean);
+
+  return parts.join('\n\n');
 }
 
-function getScoreBand(score: number | null) {
-  if (score === null) return null;
-  if (score >= 90) return 'Rất tốt';
-  if (score >= 75) return 'Khá tốt';
-  if (score >= 60) return 'Đang tiến bộ';
-  return 'Cần luyện thêm';
+function shouldAutoApplyTeacherPrefill({
+  currentDraft,
+  hasUserEditedDraft,
+  teacherTask,
+  previousTriggerToken,
+}: {
+  currentDraft: string;
+  hasUserEditedDraft: boolean;
+  teacherTask?: TeacherWritingTask;
+  previousTriggerToken?: string;
+}): boolean {
+  if (!teacherTask) return false;
+
+  const nextTriggerToken =
+    (teacherTask as { triggerToken?: string | null }).triggerToken ?? undefined;
+
+  if (!currentDraft.trim()) return true;
+  if (!hasUserEditedDraft) return true;
+  if (nextTriggerToken && nextTriggerToken !== previousTriggerToken) return true;
+
+  return false;
 }
 
-function normalizeMeaningfulText(value?: string) {
-  return (value ?? '').replace(/\s+/g, ' ').trim();
+function getTeacherEmphasis(
+  result: GrammarApiResponse | null,
+  teacherTask?: TeacherWritingTask,
+): TeacherEmphasis | null {
+  if (!teacherTask && !result) return null;
+
+  const focus =
+    (teacherTask as { focus?: string | null } | undefined)?.focus ??
+    (teacherTask as { emphasis?: string | null } | undefined)?.emphasis ??
+    undefined;
+
+  if (focus) {
+    return {
+      title: 'Teacher focus',
+      subtitle: 'Keep attention on this practice goal',
+      body: focus,
+    };
+  }
+
+  if (result?.explanation) {
+    return {
+      title: 'Writing focus',
+      body: result.explanation,
+    };
+  }
+
+  return null;
+}
+
+async function analyzeGrammarWithApi({
+  text,
+  roomId,
+  roomTitle,
+  englishLevel,
+  contentEn,
+}: AnalyzeGrammarParams): Promise<GrammarApiResponse> {
+  const response = await fetch(GRAMMAR_API_ENDPOINT, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      text,
+      roomId,
+      roomTitle,
+      englishLevel,
+      contentEn,
+    }),
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text().catch(() => '');
+    const suffix = errorText ? `: ${errorText}` : '';
+    throw new Error(`Grammar API failed with status ${response.status}${suffix}`);
+  }
+
+  return (await response.json()) as GrammarApiResponse;
 }
 
 export function MercySpeakTab({
   roomId,
+  roomTitle,
   contentEn,
-  profile,
-  troubleWords,
-  shouldShowWithoutRoom = true,
-  speakPractice,
-  launchPayload,
+  englishLevel,
+  teacherTask,
+  onAnalysisResult,
+  onPracticePronunciation,
+  onTeacherWritingStateChange,
 }: MercySpeakTabProps) {
-  const speakProgressHint = getSpeakProgressHint(profile);
+  const [draft, setDraft] = useState('');
+  const [result, setResult] = useState<GrammarApiResponse | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [latestSubmittedText, setLatestSubmittedText] = useState('');
+  const [teacherAssignedBaseText, setTeacherAssignedBaseText] = useState('');
+  const [hasUserEditedDraftSinceTeacherHydration, setHasUserEditedDraftSinceTeacherHydration] =
+    useState(false);
+  const [previousTeacherTriggerToken, setPreviousTeacherTriggerToken] = useState<
+    string | undefined
+  >(undefined);
+  const [isRevisionAttempt, setIsRevisionAttempt] = useState(false);
 
-  const {
-    recorder,
-    targetPhrase,
-    setTargetPhrase,
-    trimmedTargetPhrase,
-    canRecord,
-    recordDisabledReason,
-    isPlayingTarget,
-    pronunciationResult,
-    isEvaluating,
-    speakAttempts,
-    speakLimitReached,
-    isComparing,
-    lastRecordedAudioUrl,
-    handlePlayTarget,
-    handlePlaySlow,
-    handleShadowCompare,
-    handleTroubleWordPractice,
-    handleRecordToggle,
-  } = speakPractice;
+  const lastEmittedStateRef = useRef<string | null>(null);
 
-  const maybeExtended =
-    speakPractice as UseSpeakPracticeResult & {
-      evaluationError?: string | null;
-      activePlaybackMode?: 'normal' | 'slow' | null;
-      isNormalPlaybackActive?: boolean;
-      isSlowPlaybackActive?: boolean;
+  const isTeacherInitiated = Boolean(teacherTask);
+
+  const teacherInstructionText = useMemo(
+    () => buildTeacherInstructionText(teacherTask),
+    [teacherTask],
+  );
+
+  const derivedWritingMode = useMemo(() => {
+    if (result?.writingMode) return result.writingMode;
+
+    const wordCount = draft.trim() ? draft.trim().split(/\s+/).length : 0;
+    if (wordCount <= 12) return 'sentence';
+    if (wordCount <= 60) return 'paragraph';
+    return 'essay';
+  }, [result?.writingMode, draft]);
+
+  useEffect(() => {
+    if (!teacherTask) return;
+
+    const shouldApply = shouldAutoApplyTeacherPrefill({
+      currentDraft: draft,
+      hasUserEditedDraft: hasUserEditedDraftSinceTeacherHydration,
+      teacherTask,
+      previousTriggerToken: previousTeacherTriggerToken,
+    });
+
+    const prefillText =
+      (teacherTask as { prefillText?: string | null }).prefillText?.trim() ?? '';
+
+    if (!shouldApply || !prefillText) return;
+
+    setDraft(prefillText);
+    setTeacherAssignedBaseText(prefillText);
+    setHasUserEditedDraftSinceTeacherHydration(false);
+    setIsRevisionAttempt(false);
+    setPreviousTeacherTriggerToken(
+      (teacherTask as { triggerToken?: string | null }).triggerToken ?? undefined,
+    );
+  }, [
+    teacherTask,
+    draft,
+    hasUserEditedDraftSinceTeacherHydration,
+    previousTeacherTriggerToken,
+  ]);
+
+  useEffect(() => {
+    if (!onTeacherWritingStateChange) return;
+
+    const hasMeaningfulState =
+      Boolean(result) || Boolean(latestSubmittedText) || Boolean(teacherTask) || isRevisionAttempt;
+
+    if (!hasMeaningfulState) return;
+
+    const state: GrammarWritingTeacherState = {
+      latestAnalysisResult: result ?? null,
+      currentWritingMode: derivedWritingMode,
+      isTeacherInitiated,
+      isRevisionAttempt,
+      latestSubmittedText,
+      teacherTask,
+      revisionSourceText: teacherAssignedBaseText || undefined,
     };
 
-  const evaluationError = maybeExtended.evaluationError ?? null;
-  const activePlaybackMode = maybeExtended.activePlaybackMode ?? null;
+    const serialized = JSON.stringify(state);
+    if (serialized === lastEmittedStateRef.current) return;
 
-  const isNormalPlaybackActive =
-    typeof maybeExtended.isNormalPlaybackActive === 'boolean'
-      ? maybeExtended.isNormalPlaybackActive
-      : isPlayingTarget && activePlaybackMode === 'normal';
+    lastEmittedStateRef.current = serialized;
+    onTeacherWritingStateChange(state);
+  }, [
+    result,
+    derivedWritingMode,
+    isTeacherInitiated,
+    isRevisionAttempt,
+    latestSubmittedText,
+    teacherTask,
+    teacherAssignedBaseText,
+    onTeacherWritingStateChange,
+  ]);
 
-  const isSlowPlaybackActive =
-    typeof maybeExtended.isSlowPlaybackActive === 'boolean'
-      ? maybeExtended.isSlowPlaybackActive
-      : isPlayingTarget && activePlaybackMode === 'slow';
+  const charCount = draft.trim().length;
+  const canSubmit = charCount > 0 && !isLoading;
 
-  const effectivePhrase =
-    typeof trimmedTargetPhrase === 'string'
-      ? trimmedTargetPhrase
-      : targetPhrase.trim();
+  const placeholder = useMemo(() => {
+    if (teacherInstructionText) {
+      return `${teacherInstructionText}
 
-  const launchTargetPhrase = React.useMemo(() => {
-    const enhanced = normalizeMeaningfulText(launchPayload?.enhancedText);
-    const corrected = normalizeMeaningfulText(launchPayload?.correctedText);
-    const source = normalizeMeaningfulText(launchPayload?.sourceText);
-
-    return enhanced || corrected || source || '';
-  }, [launchPayload]);
-
-  React.useEffect(() => {
-    if (!launchTargetPhrase) return;
-
-    const current = normalizeMeaningfulText(targetPhrase);
-    if (current === launchTargetPhrase) return;
-
-    setTargetPhrase(launchTargetPhrase);
-  }, [launchTargetPhrase, setTargetPhrase, targetPhrase]);
-
-  const primaryFocusItem = pronunciationResult?.feedback?.focus_items?.[0];
-  const secondaryFocusItems =
-    pronunciationResult?.feedback?.focus_items?.slice(1) || [];
-  const hasPhrase = Boolean(effectivePhrase);
-
-  const displayedTroubleWords = React.useMemo(() => {
-    const troubleWordMap = new Map(
-      troubleWords.map((word) => [word.word.toLowerCase(), word] as const)
-    );
-
-    const latestFocusWords =
-      pronunciationResult?.feedback?.focus_items
-        ?.map((item) => troubleWordMap.get(item.word.toLowerCase()))
-        .filter((item): item is TroubleWord => Boolean(item)) || [];
-
-    if (latestFocusWords.length === 0) {
-      return troubleWords.slice(0, 8);
+Paste or write your English here. Mercy will keep the teacher focus while correcting grammar and improving writing.`;
     }
 
-    const seen = new Set<string>();
-    const merged: TroubleWord[] = [];
+    if (roomTitle) {
+      return `Paste 1–2 sentences here and Mercy will fix the grammar, explain the logic, and improve the writing.
 
-    latestFocusWords.forEach((item) => {
-      const key = item.word.toLowerCase();
-      if (seen.has(key)) return;
-      seen.add(key);
-      merged.push(item);
+Example:
+I very like this lesson because it help me understand better.`;
+    }
+
+    return `Paste 1–2 sentences here and Mercy will fix the grammar, explain the logic, and improve the writing.
+
+Example:
+Yesterday I go to supermarket and buy many thing.`;
+  }, [roomTitle, teacherInstructionText]);
+
+  async function handleAnalyze() {
+    const text = draft.trim();
+    if (!text) return;
+
+    setIsLoading(true);
+    setError(null);
+    setLatestSubmittedText(text);
+
+    const revisionBaseline = teacherAssignedBaseText.trim();
+    const revisionDetected = Boolean(
+      teacherTask && revisionBaseline && hasMeaningfulDifference(text, revisionBaseline),
+    );
+    setIsRevisionAttempt(revisionDetected);
+
+    try {
+      const analysis = await analyzeGrammarWithApi({
+        text,
+        roomId,
+        roomTitle,
+        englishLevel,
+        contentEn,
+      });
+
+      setResult(analysis);
+      onAnalysisResult?.(analysis);
+
+      if (onTeacherWritingStateChange) {
+        const state: GrammarWritingTeacherState = {
+          latestAnalysisResult: analysis ?? null,
+          currentWritingMode: analysis?.writingMode ?? derivedWritingMode,
+          isTeacherInitiated,
+          isRevisionAttempt: revisionDetected,
+          latestSubmittedText: text,
+          teacherTask,
+          revisionSourceText: teacherAssignedBaseText || undefined,
+        };
+
+        lastEmittedStateRef.current = JSON.stringify(state);
+        onTeacherWritingStateChange(state);
+      }
+    } catch (err) {
+      console.error('Grammar API failed:', err);
+      setResult(null);
+      onAnalysisResult?.(null);
+      setError(err instanceof Error ? err.message : 'Grammar API failed. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  function handleClear() {
+    setDraft('');
+    setResult(null);
+    setError(null);
+    setLatestSubmittedText('');
+    setIsRevisionAttempt(false);
+    setHasUserEditedDraftSinceTeacherHydration(false);
+
+    if (!(teacherTask as { prefillText?: string | null } | undefined)?.prefillText) {
+      setTeacherAssignedBaseText('');
+    }
+
+    onAnalysisResult?.(null);
+
+    const clearedState: GrammarWritingTeacherState = {
+      latestAnalysisResult: null,
+      currentWritingMode: undefined,
+      isTeacherInitiated: false,
+      isRevisionAttempt: false,
+      latestSubmittedText: '',
+      teacherTask: undefined,
+      revisionSourceText: undefined,
+    };
+
+    lastEmittedStateRef.current = JSON.stringify(clearedState);
+    onTeacherWritingStateChange?.(clearedState);
+  }
+
+  function handlePracticePronunciation() {
+    if (!result?.correctedText || !onPracticePronunciation) return;
+
+    onPracticePronunciation({
+      sourceText: draft.trim(),
+      correctedText: result.correctedText,
+      enhancedText: result.enhancedText,
     });
+  }
 
-    troubleWords.forEach((item) => {
-      const key = item.word.toLowerCase();
-      if (seen.has(key)) return;
-      seen.add(key);
-      merged.push(item);
-    });
-
-    return merged.slice(0, 8);
-  }, [troubleWords, pronunciationResult]);
-
-  const canShowCompareButton =
-    Boolean(lastRecordedAudioUrl) && Boolean(effectivePhrase);
-
-  const isRecordDisabled =
-    typeof canRecord === 'boolean'
-      ? !canRecord && recorder.status !== 'recording'
-      : isEvaluating || recorder.status === 'processing';
-
-  const realScore = clampScore(pronunciationResult?.score);
-  const scoreBand = getScoreBand(realScore);
-
-  const praiseEn =
-    pronunciationResult?.feedback?.praise_en || FALLBACK_PRAISE.en;
-  const praiseVi =
-    pronunciationResult?.feedback?.praise_vi || FALLBACK_PRAISE.vi;
+  const teacherEmphasis = getTeacherEmphasis(result, teacherTask);
 
   return (
-    <TabsContent value="speak" className="m-0 h-full flex-1 overflow-hidden">
-      <div className="h-full overflow-y-auto bg-white px-5 py-4">
-        {speakLimitReached ? (
-          <div className="space-y-3 py-10 text-center">
-            <p className="text-base font-medium text-foreground">
-              Let&apos;s rest your voice a bit.
-            </p>
-            <p className="text-sm text-muted-foreground">
-              You can practice more later.
-            </p>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Mình cho giọng bạn nghỉ một chút nhé. Lát nữa luyện tiếp cũng được.
-            </p>
-          </div>
-        ) : (
-          <div className="space-y-5 pb-5">
-            {launchTargetPhrase && (
-              <div className="rounded-xl border border-indigo-200 bg-indigo-50 p-4">
-                <p className="text-xs font-semibold uppercase tracking-wide text-indigo-700">
-                  Teacher speaking handoff
-                </p>
-                <p className="mt-2 text-sm leading-6 text-foreground">
-                  Mercy brought your latest writing here so you can say it aloud.
-                </p>
-                <p className="mt-1 text-xs leading-5 text-muted-foreground">
-                  Câu mới nhất của bạn đã được đưa sang đây để luyện nói thành tiếng.
-                </p>
+    <div className="flex h-full min-h-0 flex-col overflow-hidden">
+      <div className="flex-1 min-h-0 overflow-y-auto px-4 py-4">
+        <div className="space-y-4">
+          <div className="rounded-2xl border bg-white p-4 shadow-sm">
+            <textarea
+              value={draft}
+              onChange={(e) => {
+                setDraft(e.target.value);
+                setHasUserEditedDraftSinceTeacherHydration(true);
+              }}
+              placeholder={placeholder}
+              className="min-h-[180px] w-full resize-y rounded-xl border p-3 text-sm outline-none"
+            />
+
+            <div className="mt-3 flex items-center justify-between gap-3">
+              <p className="text-xs text-muted-foreground">{charCount} characters</p>
+
+              <div className="flex items-center gap-2">
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={handleClear}
+                  disabled={isLoading || (!draft && !result)}
+                >
+                  Clear
+                </Button>
+
+                <Button type="button" onClick={handleAnalyze} disabled={!canSubmit}>
+                  {isLoading ? 'Analyzing...' : 'Analyze'}
+                </Button>
               </div>
-            )}
-
-            <div className="rounded-xl border border-primary/20 bg-primary/5 p-4">
-              <p className="text-base font-semibold text-foreground">Start here</p>
-              <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                Type or paste a word or short sentence, then tap Record and say
-                it out loud. / Nhập một từ hoặc câu ngắn, rồi nhấn Record và nói
-                thành tiếng.
-              </p>
-            </div>
-
-            <div className="space-y-3 rounded-xl border border-primary/20 bg-white p-4 shadow-sm">
-              <label className="text-base font-medium text-foreground">
-                Type or paste a word or short sentence
-              </label>
-
-              <Input
-                value={targetPhrase}
-                onChange={(e) => setTargetPhrase(e.target.value.slice(0, 120))}
-                placeholder="Example: I would like a cup of tea"
-                className="h-11 text-base"
-              />
-
-              <p className="text-sm text-muted-foreground">
-                Paste one short phrase here first. / Dán hoặc nhập một câu ngắn ở
-                đây trước nhé.
-              </p>
-            </div>
-
-            <div className="space-y-3 rounded-xl border border-primary/20 bg-primary/5 p-4">
-              <p className="text-base font-medium text-foreground">
-                {hasPhrase
-                  ? 'Now tap Record and say the phrase out loud.'
-                  : 'After you enter a phrase above, tap Record and say it out loud.'}
-              </p>
-
-              <p className="text-sm text-muted-foreground">
-                Speak one short phrase at a time. / Mỗi lần mình nói một cụm ngắn
-                thôi nhé.
-              </p>
-
-              <Button
-                variant={
-                  recorder.status === 'recording' ? 'destructive' : 'default'
-                }
-                className="h-12 w-full text-base"
-                onClick={handleRecordToggle}
-                disabled={isRecordDisabled}
-                title={isRecordDisabled ? recordDisabledReason || undefined : undefined}
-              >
-                {isEvaluating || recorder.status === 'processing' ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Evaluating...
-                  </>
-                ) : recorder.status === 'recording' ? (
-                  <>
-                    <Square className="mr-2 h-4 w-4" />
-                    Tap to stop / Nhấn để dừng
-                  </>
-                ) : (
-                  <>
-                    <Mic className="mr-2 h-4 w-4" />
-                    Tap to record / Nhấn để thu
-                  </>
-                )}
-              </Button>
-
-              {!hasPhrase && (
-                <p className="text-center text-sm text-muted-foreground">
-                  Add a word or short sentence above to start recording. / Nhập
-                  từ hoặc câu ngắn ở trên để bắt đầu thu âm.
-                </p>
-              )}
-
-              {recordDisabledReason &&
-                !recorder.error &&
-                isRecordDisabled &&
-                recorder.status !== 'recording' && (
-                  <p className="text-center text-sm text-muted-foreground">
-                    {recordDisabledReason}
-                  </p>
-                )}
-
-              {recorder.status === 'recording' && (
-                <p className="text-center text-sm text-emerald-600">
-                  Recording now... speak clearly. / Đang thu âm... nói rõ nhé.
-                </p>
-              )}
-
-              {recorder.error && (
-                <div className="rounded-lg bg-destructive/10 p-3">
-                  <p className="whitespace-pre-line text-sm text-destructive">
-                    {recorder.error}
-                  </p>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    If you can&apos;t use the mic, you can still read the phrase
-                    out loud to yourself. That still helps.
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    Nếu chưa dùng được micro, bạn vẫn có thể tự đọc câu này thành
-                    tiếng. Vậy vẫn có ích lắm.
-                  </p>
-                </div>
-              )}
-            </div>
-
-            <div className="rounded-lg bg-muted/40 p-3 text-center">
-              <p className="text-sm text-muted-foreground">
-                {speakProgressHint.en}
-              </p>
-              <p className="mt-1 text-sm text-muted-foreground/70">
-                {speakProgressHint.vi}
-              </p>
-            </div>
-
-            {shouldShowWithoutRoom && !contentEn && !roomId && (
-              <div className="rounded-lg border border-border bg-muted/30 p-4 text-center">
-                <p className="text-base text-foreground">
-                  You can practice here even without opening a room.
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  Bạn vẫn có thể luyện nói ở đây dù chưa mở room.
-                </p>
-              </div>
-            )}
-
-            <div className="space-y-3">
-              <p className="text-center text-sm text-muted-foreground">
-                Optional: tap Listen first if you want to hear the phrase. / Bạn
-                có thể nhấn Listen trước nếu muốn nghe mẫu.
-              </p>
-
-              <Button
-                variant="outline"
-                className="h-11 w-full text-base"
-                onClick={() => void handlePlayTarget()}
-                disabled={!hasPhrase || isPlayingTarget}
-              >
-                {isNormalPlaybackActive ? (
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                ) : (
-                  <Volume2 className="mr-2 h-4 w-4" />
-                )}
-                Listen / Nghe
-              </Button>
-
-              <Button
-                variant="outline"
-                className="h-11 w-full text-base"
-                onClick={() => void handlePlaySlow()}
-                disabled={!hasPhrase || isPlayingTarget}
-              >
-                {isSlowPlaybackActive ? (
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                ) : (
-                  <Play className="mr-2 h-4 w-4" />
-                )}
-                Listen Slow / Nghe chậm
-              </Button>
-
-              <Button
-                variant="outline"
-                className="h-11 w-full text-base"
-                onClick={() => void handleShadowCompare()}
-                disabled={!canShowCompareButton || isComparing}
-              >
-                {isComparing ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Comparing Host vs You... / Đang so sánh Host và bạn...
-                  </>
-                ) : (
-                  <>
-                    <Repeat2 className="mr-2 h-4 w-4" />
-                    Compare Host vs You / So sánh Host và bạn
-                  </>
-                )}
-              </Button>
-
-              {!canShowCompareButton && (
-                <p className="text-center text-sm text-muted-foreground">
-                  Record one phrase first to compare your voice with the Host. /
-                  Hãy thu một câu trước để so sánh giọng của bạn với Host.
-                </p>
-              )}
-            </div>
-
-            {evaluationError && (
-              <div className="rounded-lg border border-amber-200 bg-amber-50 p-4">
-                <p className="text-base font-medium text-amber-800">
-                  Pronunciation score is temporarily unavailable
-                </p>
-                <p className="mt-1 text-sm text-amber-700">
-                  The comparison tools still work, but the server did not return a
-                  valid clarity score for this attempt.
-                </p>
-                <p className="mt-1 text-sm text-amber-700">
-                  Chức năng so sánh vẫn dùng được, nhưng máy chủ chưa trả về điểm
-                  rõ âm hợp lệ cho lần này.
-                </p>
-              </div>
-            )}
-
-            {pronunciationResult && !evaluationError && (
-              <div className="space-y-4 border-t border-border pt-4">
-                <div className="rounded-lg bg-primary/10 p-4 text-center">
-                  <p className="text-base font-medium text-primary">
-                    {praiseEn}
-                  </p>
-                  <p className="mt-1 text-sm text-primary/70">
-                    {praiseVi}
-                  </p>
-                </div>
-
-                {realScore !== null && (
-                  <div className="flex justify-center">
-                    <div className="rounded-xl bg-secondary px-4 py-3 text-center text-secondary-foreground">
-                      <p className="text-xs uppercase tracking-wide opacity-70">
-                        Accuracy
-                      </p>
-                      <p className="text-xl font-semibold">
-                        {realScore}/100
-                      </p>
-                      {scoreBand && (
-                        <p className="text-sm opacity-80">{scoreBand}</p>
-                      )}
-                    </div>
-                  </div>
-                )}
-
-                {pronunciationResult.transcribedText && (
-                  <div className="rounded-lg bg-muted p-3">
-                    <p className="mb-1 text-sm text-muted-foreground">I heard:</p>
-                    <p className="text-base">
-                      {pronunciationResult.transcribedText}
-                    </p>
-                  </div>
-                )}
-
-                {primaryFocusItem && (
-                  <div className="rounded-lg border border-primary/20 bg-primary/5 p-4">
-                    <p className="text-sm font-medium uppercase tracking-wide text-primary">
-                      Main thing to notice / Điều chính cần chú ý
-                    </p>
-                    <p className="mt-2 text-base font-semibold text-foreground">
-                      {primaryFocusItem.word}
-                    </p>
-                    {primaryFocusItem.tip_en && (
-                      <p className="mt-2 text-base text-foreground">
-                        {primaryFocusItem.tip_en}
-                      </p>
-                    )}
-                    {primaryFocusItem.tip_vi && (
-                      <p className="mt-1 text-sm text-muted-foreground">
-                        {primaryFocusItem.tip_vi}
-                      </p>
-                    )}
-                  </div>
-                )}
-
-                {secondaryFocusItems.length > 0 && (
-                  <div className="space-y-3">
-                    <p className="text-sm font-medium text-foreground">
-                      More to practice / Luyện thêm:
-                    </p>
-
-                    {secondaryFocusItems.map((item, idx) => (
-                      <div key={idx} className="rounded-lg bg-secondary/30 p-3">
-                        <p className="text-base font-semibold text-primary">
-                          {item.word}
-                        </p>
-                        {item.tip_en && (
-                          <p className="mt-1 text-sm text-foreground">
-                            {item.tip_en}
-                          </p>
-                        )}
-                        {item.tip_vi && (
-                          <p className="text-sm text-muted-foreground">
-                            {item.tip_vi}
-                          </p>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                {pronunciationResult.feedback?.encouragement_en && (
-                  <div className="rounded-lg bg-primary/5 p-4 text-center">
-                    <p className="text-base text-primary">
-                      {pronunciationResult.feedback.encouragement_en}
-                    </p>
-                    {pronunciationResult.feedback?.encouragement_vi && (
-                      <p className="mt-1 text-sm text-primary/70">
-                        {pronunciationResult.feedback.encouragement_vi}
-                      </p>
-                    )}
-                  </div>
-                )}
-              </div>
-            )}
-
-            {troubleWords.length > 0 && (
-              <div className="space-y-3 rounded-lg border border-border bg-muted/20 p-4">
-                <div className="flex items-center justify-between">
-                  <p className="text-sm font-medium uppercase tracking-wide text-muted-foreground">
-                    Trouble Words / Từ cần luyện thêm
-                  </p>
-                  <span className="rounded-full bg-secondary px-2.5 py-1 text-xs text-secondary-foreground">
-                    {troubleWords.length}
-                  </span>
-                </div>
-
-                <div className="flex flex-wrap gap-2">
-                  {displayedTroubleWords.map((item, idx) => (
-                    <button
-                      key={`${item.word}-${idx}`}
-                      type="button"
-                      onClick={() => void handleTroubleWordPractice(item.word)}
-                      className={cn(
-                        'inline-flex items-center gap-1 rounded-full border px-3 py-2 text-sm transition-colors',
-                        'hover:shadow-sm active:scale-[0.99]',
-                        item.lastScore < 50
-                          ? 'border-rose-200 bg-rose-50 text-rose-700'
-                          : item.lastScore < 80
-                            ? 'border-amber-200 bg-amber-50 text-amber-700'
-                            : 'border-emerald-200 bg-emerald-50 text-emerald-700'
-                      )}
-                      title={
-                        item.tipEn
-                          ? `${item.tipEn}${item.tipVi ? ` — ${item.tipVi}` : ''}`
-                          : undefined
-                      }
-                    >
-                      <Languages className="h-3.5 w-3.5" />
-                      <span>{item.word}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            <div className="pb-2 text-center">
-              <p className="text-sm text-muted-foreground">
-                {speakAttempts}/{MAX_SPEAK_ATTEMPTS} attempts used
-              </p>
             </div>
           </div>
-        )}
+
+          {error ? (
+            <div className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800">
+              <div className="flex items-start gap-2">
+                <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
+                <div>
+                  <p>{error}</p>
+                  <p className="mt-1 text-xs">
+                    API endpoint tried: <code>{GRAMMAR_API_ENDPOINT}</code>
+                  </p>
+                </div>
+              </div>
+            </div>
+          ) : null}
+
+          {teacherEmphasis ? (
+            <div className="rounded-2xl border bg-white p-4 shadow-sm">
+              <div className="flex items-start gap-2">
+                <Target className="mt-0.5 h-4 w-4 shrink-0" />
+                <div>
+                  <p className="text-sm font-semibold">{teacherEmphasis.title}</p>
+                  {teacherEmphasis.subtitle ? (
+                    <p className="text-xs text-muted-foreground">{teacherEmphasis.subtitle}</p>
+                  ) : null}
+                  <p className="mt-2 text-sm">{teacherEmphasis.body}</p>
+                </div>
+              </div>
+            </div>
+          ) : null}
+
+          {result ? (
+            <div className="space-y-3 rounded-2xl border bg-white p-4 shadow-sm">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                  Corrected
+                </p>
+                <p className="mt-1 font-semibold">{result.correctedText}</p>
+              </div>
+
+              {result.enhancedText ? (
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                    Enhanced
+                  </p>
+                  <p className="mt-1 text-sm">{result.enhancedText}</p>
+                </div>
+              ) : null}
+
+              {result.explanation ? (
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                    Explanation
+                  </p>
+                  <p className="mt-1 text-sm">{result.explanation}</p>
+                </div>
+              ) : null}
+
+              {onPracticePronunciation ? (
+                <div className="pt-2">
+                  <Button type="button" variant="outline" onClick={handlePracticePronunciation}>
+                    Practice this in Pronunciation
+                  </Button>
+                </div>
+              ) : null}
+            </div>
+          ) : null}
+        </div>
       </div>
-    </TabsContent>
+    </div>
   );
 }
+
+export default MercySpeakTab;

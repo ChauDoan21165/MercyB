@@ -16,6 +16,8 @@ interface PronunciationTabProps {
   speakPractice: ReturnType<typeof useSpeakPractice>;
 }
 
+const MercySpeakTabView = MercySpeakTab as React.ComponentType<any>;
+
 export function PronunciationTab({
   roomId,
   contentEn,
@@ -31,7 +33,7 @@ export function PronunciationTab({
   }));
 
   return (
-    <MercySpeakTab
+    <MercySpeakTabView
       roomId={roomId}
       contentEn={contentEn}
       profile={profile}
