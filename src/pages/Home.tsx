@@ -1,24 +1,17 @@
-// src/pages/Home.tsx
-// FIXED FOR HOME PAGE TEXT ZOOM
-//
-// Keeps native/browser zoom behavior
-// Adds Home-only text zoom wiring to the existing app zoom system
+// PATH: src/pages/Home.tsx
 
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BottomMusicBar from "@/components/audio/BottomMusicBar";
 import { MercyGuide } from "@/components/MercyGuide";
-import { GuideBox } from "@/components/GuideBox";
-import { supabase } from "@/lib/supabaseClient";
 import { useAuth } from "@/providers/AuthProvider";
 
 const PAGE_MAX = 980;
 const softPanel = "rgba(230, 244, 255, 0.85)";
+const LS_ZOOM = "mb.ui.zoom";
 const HOME_TZ = "Asia/Ho_Chi_Minh";
 const ROUTE_PRICING = "/pricing";
 const HERO_SRC = "/hero/hero_band.jpg";
-const LS_ZOOM = "mb.ui.zoom";
-const DEFAULT_ZOOM = 100;
 
 const VN_DT_FMT = new Intl.DateTimeFormat("vi-VN", {
   timeZone: HOME_TZ,
@@ -29,6 +22,40 @@ const VN_DT_FMT = new Intl.DateTimeFormat("vi-VN", {
   minute: "2-digit",
 });
 
+type SupabaseClientType = typeof import("@/lib/supabaseClient")["supabase"];
+
+let supabaseClientPromise: Promise<SupabaseClientType> | null = null;
+
+async function getSupabaseClient(): Promise<SupabaseClientType> {
+  if (!supabaseClientPromise) {
+    supabaseClientPromise = import("@/lib/supabaseClient").then((mod) => mod.supabase);
+  }
+  return supabaseClientPromise;
+}
+
+function clamp(n: number, a: number, b: number) {
+  return Math.max(a, Math.min(b, n));
+}
+
+function readZoomPct(): number {
+  try {
+    const attr = document.documentElement.getAttribute("data-mb-zoom");
+    const fromAttr = attr ? Number(attr) : NaN;
+    if (Number.isFinite(fromAttr)) return clamp(Math.round(fromAttr), 60, 140);
+  } catch {
+    // ignore
+  }
+
+  try {
+    const raw = localStorage.getItem(LS_ZOOM);
+    const n = raw ? Number(raw) : NaN;
+    if (Number.isFinite(n)) return clamp(Math.round(n), 60, 140);
+  } catch {
+    // ignore
+  }
+
+  return 100;
+}
 
 type ProgressSummaryRow = {
   user_id: string | null;
@@ -89,35 +116,11 @@ function toDisplayName(email: string, meta: unknown) {
     .replace(/\b\w/g, (m) => m.toUpperCase());
 }
 
-function clamp(n: number, a: number, b: number) {
-  return Math.max(a, Math.min(b, n));
-}
-
-function readZoomPct(): number {
-  try {
-    const raw = Number(localStorage.getItem(LS_ZOOM));
-    if (Number.isFinite(raw)) return clamp(Math.round(raw), 60, 140);
-  } catch {
-    // ignore
-  }
-
-  try {
-    const css = getComputedStyle(document.documentElement)
-      .getPropertyValue("--mb-essay-zoom")
-      .trim();
-    const parsed = Number(css);
-    if (Number.isFinite(parsed)) return clamp(Math.round(parsed), 60, 140);
-  } catch {
-    // ignore
-  }
-
-  return DEFAULT_ZOOM;
-}
-
 export default function Home() {
   const nav = useNavigate();
   const { user, isLoading } = useAuth();
 
+  const [zoomPct, setZoomPct] = useState<number>(100);
   const [progressLoading, setProgressLoading] = useState(false);
   const [progressErr, setProgressErr] = useState<string | null>(null);
   const [progressRow, setProgressRow] = useState<ProgressSummaryRow | null>(null);
@@ -127,34 +130,19 @@ export default function Home() {
   const [viewportWidth, setViewportWidth] = useState<number>(
     typeof window === "undefined" ? 1200 : window.innerWidth,
   );
-  const [zoomPct, setZoomPct] = useState<number>(() => readZoomPct());
 
   useEffect(() => {
-    const sync = () => setZoomPct(readZoomPct());
-    sync();
+    const apply = () => setZoomPct(readZoomPct());
+    apply();
 
-    const onStorage = (e: StorageEvent) => {
-      if (!e.key || e.key === LS_ZOOM) sync();
-    };
-
-    const obs = new MutationObserver(() => sync());
+    const obs = new MutationObserver(() => apply());
     obs.observe(document.documentElement, {
       attributes: true,
-      attributeFilter: ["style", "data-mb-zoom"],
+      attributeFilter: ["data-mb-zoom"],
     });
 
-    window.addEventListener("storage", onStorage);
-
-    return () => {
-      window.removeEventListener("storage", onStorage);
-      obs.disconnect();
-    };
+    return () => obs.disconnect();
   }, []);
-
-  const z = useMemo(() => {
-    const scale = zoomPct / 100;
-    return (px: number) => Math.round(px * scale);
-  }, [zoomPct]);
 
   useEffect(() => {
     if (typeof window === "undefined") return undefined;
@@ -166,6 +154,7 @@ export default function Home() {
     return () => window.removeEventListener("resize", syncViewport);
   }, []);
 
+  const zoomScale = useMemo(() => clamp(zoomPct / 100, 0.6, 1.4), [zoomPct]);
   const isDesktopTop = viewportWidth >= 960;
 
   useEffect(() => {
@@ -181,6 +170,7 @@ export default function Home() {
           return;
         }
 
+        const supabase = await getSupabaseClient();
         const { data: sessionRes, error: sessionErr } = await supabase.auth.getSession();
 
         if (!alive) return;
@@ -235,6 +225,7 @@ export default function Home() {
           return;
         }
 
+        const supabase = await getSupabaseClient();
         const { data: sessionRes, error: sessionErr } = await supabase.auth.getSession();
 
         if (!alive) return;
@@ -282,6 +273,8 @@ export default function Home() {
 
     void (async () => {
       try {
+        const supabase = await getSupabaseClient();
+
         const { data, error } = await supabase
           .from("rooms")
           .select("id, tier, sort_order, created_at")
@@ -347,7 +340,7 @@ export default function Home() {
   );
 
   const primaryCtaEn = isSignedIn ? "👉 Continue learning" : "👉 Start free";
-  const primaryCtaVi = isSignedIn ? "👉 Trở lại bài học" : "👉 Bắt đầu miễn phí";
+  const primaryCtaVi = isSignedIn ? "👉 Tiếp tục hành trình" : "👉 Bắt đầu nhẹ nhàng";
   const accountCtaEn = isSignedIn ? "👤 Account" : "🔐 Sign in";
   const accountCtaVi = isSignedIn ? "👤 Tài khoản" : "🔐 Đăng nhập";
 
@@ -450,7 +443,7 @@ export default function Home() {
       ? "1px solid rgba(16,185,129,0.22)"
       : "1px solid rgba(0,0,0,0.10)",
     background: isSignedIn ? "rgba(236,253,245,0.92)" : "rgba(255,255,255,0.86)",
-    fontSize: z(12),
+    fontSize: 12,
     fontWeight: 900,
     color: isSignedIn ? "rgba(6,95,70,0.92)" : "rgba(0,0,0,0.62)",
     whiteSpace: "nowrap",
@@ -477,7 +470,7 @@ export default function Home() {
 
   const authTitle: React.CSSProperties = {
     margin: "6px 0 0",
-    fontSize: isDesktopTop ? z(28) : z(22),
+    fontSize: isDesktopTop ? 28 : 22,
     fontWeight: 950,
     color: "rgba(0,0,0,0.90)",
     letterSpacing: -0.55,
@@ -487,7 +480,7 @@ export default function Home() {
   const authSub: React.CSSProperties = {
     marginTop: 4,
     marginBottom: 0,
-    fontSize: z(14),
+    fontSize: 14,
     lineHeight: 1.45,
     color: "rgba(0,0,0,0.64)",
   };
@@ -503,7 +496,7 @@ export default function Home() {
     borderRadius: 9999,
     border: "1px solid rgba(0,0,0,0.10)",
     background: "rgba(255,255,255,0.86)",
-    fontSize: z(11),
+    fontSize: 11,
     fontWeight: 900,
     color: "rgba(0,0,0,0.74)",
     whiteSpace: "nowrap",
@@ -528,7 +521,7 @@ export default function Home() {
   };
 
   const lessonMeta: React.CSSProperties = {
-    fontSize: z(12),
+    fontSize: 12,
     fontWeight: 900,
     color: "rgba(0,0,0,0.52)",
     letterSpacing: 0.2,
@@ -537,7 +530,7 @@ export default function Home() {
   const lessonTitle: React.CSSProperties = {
     marginTop: 8,
     marginBottom: 0,
-    fontSize: isDesktopTop ? z(28) : z(23),
+    fontSize: isDesktopTop ? 28 : 23,
     fontWeight: 950,
     color: "rgba(0,0,0,0.90)",
     letterSpacing: -0.6,
@@ -547,7 +540,7 @@ export default function Home() {
   const lessonSub: React.CSSProperties = {
     marginTop: 6,
     marginBottom: 0,
-    fontSize: z(14),
+    fontSize: 14,
     lineHeight: 1.6,
     color: "rgba(0,0,0,0.64)",
   };
@@ -583,7 +576,7 @@ export default function Home() {
     cursor: "pointer",
     width: "100%",
     textAlign: "left",
-    fontSize: z(13),
+    fontSize: 13,
     lineHeight: 1.2,
     minHeight: 0,
   };
@@ -630,7 +623,7 @@ export default function Home() {
 
   const hostName: React.CSSProperties = {
     margin: 0,
-    fontSize: z(24),
+    fontSize: 24,
     fontWeight: 950,
     color: "rgba(0,0,0,0.88)",
     letterSpacing: -0.4,
@@ -639,7 +632,7 @@ export default function Home() {
   const hostQuote: React.CSSProperties = {
     marginTop: 12,
     marginBottom: 0,
-    fontSize: z(18),
+    fontSize: 18,
     lineHeight: 1.7,
     color: "rgba(0,0,0,0.78)",
     fontWeight: 700,
@@ -647,7 +640,7 @@ export default function Home() {
 
   const hostMeta: React.CSSProperties = {
     marginTop: 10,
-    fontSize: z(13),
+    fontSize: 13,
     color: "rgba(0,0,0,0.54)",
     fontWeight: 800,
   };
@@ -668,9 +661,19 @@ export default function Home() {
     padding: "22px 16px",
   };
 
+  const studyFlowSection: React.CSSProperties = {
+    marginTop: 18,
+    borderRadius: 20,
+    border: "1px solid rgba(0,0,0,0.08)",
+    background:
+      "linear-gradient(180deg, rgba(255,255,255,0.96), rgba(245,248,255,0.92))",
+    padding: isDesktopTop ? "24px 20px" : "20px 16px",
+    boxShadow: "0 12px 30px rgba(0,0,0,0.05)",
+  };
+
   const blockTitle: React.CSSProperties = {
     margin: 0,
-    fontSize: z(28),
+    fontSize: 28,
     fontWeight: 900,
     color: "rgba(15,15,15,0.90)",
     letterSpacing: -0.4,
@@ -678,7 +681,7 @@ export default function Home() {
 
   const heroTitle: React.CSSProperties = {
     margin: 0,
-    fontSize: isDesktopTop ? z(36) : z(32),
+    fontSize: isDesktopTop ? 36 : 32,
     fontWeight: 950,
     color: "rgba(0,0,0,0.90)",
     letterSpacing: -0.8,
@@ -687,7 +690,7 @@ export default function Home() {
 
   const heroSub: React.CSSProperties = {
     marginTop: 12,
-    fontSize: isDesktopTop ? z(18) : z(17),
+    fontSize: isDesktopTop ? 18 : 17,
     color: "rgba(0,0,0,0.68)",
     fontWeight: 700,
     lineHeight: 1.6,
@@ -695,7 +698,7 @@ export default function Home() {
 
   const h3: React.CSSProperties = {
     margin: 0,
-    fontSize: z(22),
+    fontSize: 22,
     fontWeight: 900,
     color: "rgba(0,0,0,0.82)",
     letterSpacing: -0.2,
@@ -705,13 +708,13 @@ export default function Home() {
     marginTop: 12,
     marginBottom: 0,
     color: "rgba(0,0,0,0.70)",
-    fontSize: z(16),
+    fontSize: 16,
     lineHeight: 1.65,
   };
 
   const langTag: React.CSSProperties = {
     marginTop: 10,
-    fontSize: z(12),
+    fontSize: 12,
     fontWeight: 900,
     letterSpacing: 0.6,
     color: "rgba(0,0,0,0.45)",
@@ -729,7 +732,7 @@ export default function Home() {
 
   const ctaTitle: React.CSSProperties = {
     margin: 0,
-    fontSize: z(42),
+    fontSize: 42,
     fontWeight: 900,
     color: "rgba(0,0,0,0.86)",
     letterSpacing: -0.8,
@@ -737,7 +740,7 @@ export default function Home() {
 
   const ctaSub: React.CSSProperties = {
     marginTop: 10,
-    fontSize: z(18),
+    fontSize: 18,
     color: "rgba(0,0,0,0.65)",
     fontWeight: 800,
   };
@@ -752,7 +755,7 @@ export default function Home() {
 
   const heroCtaHint: React.CSSProperties = {
     marginTop: 12,
-    fontSize: z(13),
+    fontSize: 13,
     color: "rgba(0,0,0,0.55)",
     fontWeight: 800,
     textAlign: isDesktopTop ? "left" : "center",
@@ -812,7 +815,7 @@ export default function Home() {
   };
 
   const progLabel: React.CSSProperties = {
-    fontSize: z(12),
+    fontSize: 12,
     fontWeight: 900,
     letterSpacing: 0.6,
     color: "rgba(0,0,0,0.45)",
@@ -821,7 +824,7 @@ export default function Home() {
 
   const progBig: React.CSSProperties = {
     marginTop: 6,
-    fontSize: z(28),
+    fontSize: 28,
     fontWeight: 900,
     color: "rgba(0,0,0,0.86)",
     letterSpacing: -0.6,
@@ -829,7 +832,7 @@ export default function Home() {
 
   const progSmall: React.CSSProperties = {
     marginTop: 6,
-    fontSize: z(13),
+    fontSize: 13,
     color: "rgba(0,0,0,0.62)",
     lineHeight: 1.5,
   };
@@ -843,7 +846,7 @@ export default function Home() {
     borderRadius: 9999,
     border: "1px solid rgba(0,0,0,0.10)",
     background: "rgba(255,255,255,0.85)",
-    fontSize: z(12),
+    fontSize: 12,
     fontWeight: 900,
     color: "rgba(0,0,0,0.70)",
   };
@@ -851,7 +854,7 @@ export default function Home() {
   return (
     <div style={wrap}>
       <div style={frame}>
-        <div>
+        <div style={{ ...({ zoom: zoomScale } as unknown as React.CSSProperties) }}>
           <div style={heroImgWrap} aria-label="Hero band">
             <img
               src={HERO_SRC}
@@ -869,10 +872,10 @@ export default function Home() {
                   <span style={authDot} />
                   <span>
                     {isLoading
-                      ? "Checking sign-in..."
+                      ? "Đang kết nối..."
                       : isSignedIn
-                      ? "Signed in"
-                      : "Signed out"}
+                      ? "Đã sẵn sàng"
+                      : "Chưa đăng nhập"}
                   </span>
                 </div>
 
@@ -886,19 +889,19 @@ export default function Home() {
               </div>
 
               {isLoading ? (
-                <p style={authSub}>We’re checking your session.</p>
+                <p style={authSub}>Chúng tôi đang chuẩn bị không gian cho bạn.</p>
               ) : isSignedIn ? (
                 <>
-                  <h2 style={authTitle}>Welcome back, {displayName}.</h2>
+                  <h2 style={authTitle}>Mừng bạn trở lại, {displayName}.</h2>
                   <p style={authSub}>
-                    You’re signed in and ready to continue with calm progress.
+                    Mọi thứ đã sẵn sàng để bạn tiếp tục bước đi trong sự tĩnh tại.
                   </p>
                 </>
               ) : (
                 <>
-                  <h2 style={authTitle}>Start gently.</h2>
+                  <h2 style={authTitle}>Khởi đầu nhẹ nhàng.</h2>
                   <p style={authSub}>
-                    You can begin free right away, or sign in so your progress stays with you.
+                    Bạn có thể trải nghiệm ngay, hoặc đăng nhập để lưu giữ những dấu ấn cá nhân.
                   </p>
                 </>
               )}
@@ -906,21 +909,21 @@ export default function Home() {
 
             <div style={lessonCard} aria-label="Today lesson">
               <div style={lessonTop}>
-                <div style={langTag}>Today’s lesson</div>
-                <div style={lessonMeta}>Lesson 4 · 3 min left</div>
+                <div style={langTag}>DÀNH CHO HÔM NAY</div>
+                <div style={lessonMeta}>Bài 4 · 3 phút</div>
               </div>
 
-              <h2 style={lessonTitle}>Resume your next small step</h2>
+              <h2 style={lessonTitle}>Tiếp tục bước chân nhỏ</h2>
               <p style={lessonSub}>
                 {isSignedIn
-                  ? "Continue from your last activity with one calm room."
-                  : "Start with one short room — about 2 minutes."}
+                  ? "Trở lại với không gian học gần nhất của bạn."
+                  : "Bắt đầu với một căn phòng ngắn — chỉ khoảng 2 phút."}
               </p>
 
               <div style={lessonActionsWrap}>
                 <div style={lessonPrimaryCol}>
                   <button type="button" style={{ ...primaryBtn, width: "100%", minWidth: 0 }} onClick={goFirstRoom}>
-                    {isSignedIn ? "👉 Resume lesson" : "👉 Start free"}
+                    {isSignedIn ? "👉 Học tiếp" : "👉 Thử ngay"}
                   </button>
                 </div>
 
@@ -930,7 +933,7 @@ export default function Home() {
                     style={compactActionBtn}
                     onClick={goFirstRoom}
                   >
-                    🎙️ Practice speaking
+                    🎙️ Luyện nói
                   </button>
 
                   <button
@@ -938,7 +941,7 @@ export default function Home() {
                     style={compactActionBtn}
                     onClick={() => nav("/tiers")}
                   >
-                    📚 Learning paths
+                    📚 Lộ trình
                   </button>
 
                   <button
@@ -946,7 +949,7 @@ export default function Home() {
                     style={compactActionBtn}
                     onClick={() => nav(ROUTE_PRICING)}
                   >
-                    💎 Pricing
+                    💎 Gói học
                   </button>
                 </div>
               </div>
@@ -970,16 +973,16 @@ export default function Home() {
                 : "Start with a short room — about 2 minutes."}
             </div>
 
-            <div style={{ ...langTag, marginTop: 18 }}>VI</div>
-            <h2 style={{ ...heroTitle, fontSize: isDesktopTop ? z(30) : z(28) }}>
-              Tĩnh tại trong tư duy tiếng Anh.
+            <div style={{ ...langTag, marginTop: 24 }}>VI</div>
+            <h2 style={{ ...heroTitle, fontSize: isDesktopTop ? 30 : 28 }}>
+              Suy nghĩ bằng tiếng Anh. Một cách tĩnh tại.
             </h2>
             <div style={heroSub}>
-              Mercy Blade là khoảng lặng để bạn chiêm nghiệm cuộc sống qua ngôn ngữ Anh.
+              Mercy Blade là khoảng lặng để bạn tập cảm nhận cuộc sống bằng tiếng Anh.
               <br />
-              Không rập khuôn ngữ pháp. Không áp lực. Không tạp âm.
+              Không áp lực điểm số. Không lý thuyết khô khan. Không ồn ào.
               <br />
-              Chỉ một gian phòng, một dòng suy tưởng, một bước chậm rãi tiến về phía trước.
+              Chỉ một phòng, một suy ngẫm, một bước tiến nhỏ mỗi ngày.
             </div>
 
             <div style={heroCtaHint}>
@@ -991,7 +994,6 @@ export default function Home() {
 
           <div style={mercyGuideWrap}>
             <MercyGuide />
-            <GuideBox />
           </div>
 
           <div style={hostSpotlight} aria-label="Mercy Host spotlight">
@@ -1016,252 +1018,212 @@ export default function Home() {
               <div style={hostBubble}>
                 <div style={langTag}>VI</div>
                 <h2 style={hostName}>Mercy Host</h2>
-                <p style={hostQuote}>“Bạn có muốn nhận một suy ngẫm nhẹ nhàng cho hôm nay không?”</p>
-                <div style={hostMeta}>
-                  Một người dẫn dắt tâm hồn — không phải một chatbot ồn ã.
-                </div>
+                <p style={hostQuote}>“Bạn có muốn dành một chút lặng cho hôm nay?”</p>
+                <div style={hostMeta}>Người dẫn đường dịu dàng — không phải chatbot vô hồn.</div>
                 <p style={p}>
-                  Mercy Host khơi mở trải nghiệm của bạn thật khẽ khàng.
+                  Mercy Host dẫn dắt bạn bước vào trải nghiệm một cách mềm mại nhất.
                   <br />
-                  Đưa bạn vào những khoảng dừng, để lắng lại và bước tiếp trong sự định tâm.
+                  Mời bạn dừng lại một nhịp, lắng nghe, và tiến bước với sự tập trung thuần khiết.
                 </p>
                 <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
-                  <button type="button" style={{ ...primaryBtn, minWidth: 220 }} onClick={goFirstRoom}>
-                    {isSignedIn ? "🌿 Tiếp tục cùng Mercy Host" : "🌿 Bắt đầu cùng Mercy Host"}
+                  <button type="button" style={{ ...secondaryBtn, minWidth: 220 }} onClick={goFirstRoom}>
+                    {isSignedIn ? "🌿 Đi cùng Mercy Host" : "🌿 Bắt đầu cùng Mercy Host"}
                   </button>
                 </div>
               </div>
             </div>
           </div>
 
-          <div style={section} aria-label="Your progress">
-            <div
-              style={{
-                display: "flex",
-                alignItems: "baseline",
-                justifyContent: "space-between",
-                gap: 12,
-                flexWrap: "wrap",
-              }}
-            >
-              <div>
-                <div style={langTag}>EN</div>
-                <h3 style={h3}>Your progress</h3>
-                <div style={{ ...p, marginTop: 8 }}>
-                  {isSignedIn
-                    ? "A quiet snapshot — what you’ve practiced recently."
-                    : "Sign in to save your path and see your quiet progress snapshot."}
-                </div>
-              </div>
-            </div>
+          <div style={section}>
+            <div style={langTag}>EN</div>
+            <h3 style={h3}>Mercy Host — A Caring Presence</h3>
+            <p style={p}>Mercy Host is a quiet guide that stays with you.</p>
+            <p style={p}>
+              It knows which room you are in.
+              <br />
+              It knows what you are practicing.
+              <br />
+              It helps you slow down — or continue — when the moment is right.
+            </p>
+            <p style={p}>
+              Over time, Mercy Host remembers your journey and supports your progress.
+            </p>
 
-            {user?.id && progressErr ? (
-              <div
-                style={{
-                  marginTop: 12,
-                  padding: 10,
-                  borderRadius: 14,
-                  border: "1px solid rgba(255,0,0,0.25)",
-                  background: "rgba(255,255,255,0.7)",
-                }}
+            <div style={{ ...langTag, marginTop: 16 }}>VI</div>
+            <h3 style={h3}>Mercy Host — Sự hiện diện thầm lặng</h3>
+            <p style={p}>Mercy Host không chỉ là công cụ, mà là người bạn đồng hành luôn ở đó.</p>
+            <p style={p}>
+              Thấu hiểu bạn đang ở đâu, thấu hiểu điều bạn đang rèn luyện.
+              <br />
+              Giúp bạn chậm lại khi cần, và tiếp thêm động lực đúng lúc.
+            </p>
+            <p style={p}>
+              Theo thời gian, Mercy Host ghi nhớ hành trình để nâng đỡ từng bước tiến của bạn.
+            </p>
+          </div>
+
+          <div style={studyFlowSection} aria-label="Mercy study flow">
+            <div style={langTag}>EN</div>
+            <h3 style={h3}>The Mercy study flow</h3>
+            <p style={p}>
+              Mercy begins with a real sentence from the learner.
+            </p>
+            <p style={p}>
+              It improves that sentence naturally.
+              <br />
+              It helps the learner say it aloud.
+              <br />
+              It explains the difference between English thinking and Vietnamese thinking.
+              <br />
+              Then it remembers useful patterns over time.
+            </p>
+            <p style={p}>
+              The goal is not to study disconnected fragments.
+              <br />
+              The goal is to turn one living sentence into a repeatable learning loop.
+            </p>
+
+            <div style={{ ...langTag, marginTop: 16 }}>VI</div>
+            <h3 style={h3}>Dòng chảy Mercy</h3>
+            <p style={p}>
+              Mọi thứ bắt đầu từ chính suy nghĩ thực của bạn.
+            </p>
+            <p style={p}>
+              Chúng tôi giúp câu nói của bạn trở nên tự nhiên hơn, giúp bạn cất lời thành tiếng.
+              <br />
+              Làm rõ sự khác biệt giữa tư duy Anh - Việt, rồi lưu giữ những tinh hoa đó vào ký ức.
+              <br />
+              Mọi mẫu câu hữu ích sẽ được ghi nhớ theo thời gian.
+            </p>
+            <p style={p}>
+              Mục tiêu không phải là những mảnh vụn kiến thức rời rạc.
+              <br />
+              Mục tiêu là biến mỗi câu sống động thành một vòng lặp cảm xúc và ghi nhớ lâu dài.
+            </p>
+
+            <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
+              <button
+                type="button"
+                style={{ ...primaryBtn, minWidth: 220 }}
+                onClick={goFirstRoom}
               >
-                <div style={{ fontWeight: 900, color: "rgba(120,0,0,0.80)", fontSize: z(16) }}>
-                  Progress error
-                </div>
-                <div style={{ marginTop: 6, fontSize: z(13), color: "rgba(0,0,0,0.65)" }}>
-                  {progressErr}
-                </div>
-              </div>
-            ) : null}
+                {isSignedIn ? "👉 Continue the Mercy flow" : "👉 Start with one sentence"}
+              </button>
 
-            <div style={progGrid}>
-              <div style={progCard}>
-                <div style={progLabel}>Streak</div>
-                <div style={progBig}>
-                  {progressLoading
-                    ? "…"
-                    : `${fmtInt(progressSummary.streak)} ${plural(
-                        fmtInt(progressSummary.streak),
-                        "day",
-                        "days"
-                      )}`}
-                </div>
-                <div style={progSmall}>
-                  {user?.id
-                    ? "How many days in a row you’ve studied."
-                    : "Sign in to track your streak."}
-                </div>
+              <button
+                type="button"
+                style={{ ...secondaryBtn, minWidth: 220 }}
+                onClick={() => nav(ROUTE_PRICING)}
+              >
+                💎 See plans
+              </button>
+            </div>
+          </div>
 
-                {user?.id ? (
-                  <div style={progBadge} aria-label="Streak badge">
-                    🔥 Streak:{" "}
-                    {streakDays === null
-                      ? "—"
-                      : `${streakDays} ${plural(streakDays, "day", "days")}`}
+          <div style={section}>
+            <div style={langTag}>EN</div>
+            <h3 style={h3}>The Quiet Hour</h3>
+            <p style={p}>When life feels loud, Mercy Blade offers a simple ritual:</p>
+            <p style={p}>
+              One minute.
+              <br />
+              One bilingual card.
+              <br />
+              One calm breath.
+            </p>
+            <p style={p}>
+              You don’t force learning.
+              <br />
+              You let understanding arrive.
+            </p>
+
+            <div style={{ ...langTag, marginTop: 16 }}>VI</div>
+            <h3 style={h3}>Giờ Lặng</h3>
+            <p style={p}>
+              Khi thế giới bên ngoài quá ồn ào, Mercy Blade tặng bạn một nghi thức nhỏ:
+            </p>
+            <p style={p}>
+              Một phút.
+              <br />
+              Một thông điệp song ngữ.
+              <br />
+              Một hơi thở sâu.
+            </p>
+            <p style={p}>
+              Đừng ép mình phải học.
+              <br />
+              Hãy để sự hiểu biết tự tìm đến bạn.
+            </p>
+          </div>
+
+          {!phase3Hide ? (
+            <div style={band}>
+              <div style={langTag}>TIẾN TRÌNH</div>
+              <h2 style={blockTitle}>Nhật ký của sự kiên trì</h2>
+              <p style={p}>
+                Tiến bộ không đến từ áp lực.
+                <br />
+                Nó đến từ những lần trở lại nhẹ nhàng, bền bỉ.
+              </p>
+
+              <div style={progGrid}>
+                <div style={progCard}>
+                  <div style={progLabel}>Chuỗi ngày hiện tại</div>
+                  <div style={progBig}>
+                    {progressLoading ? "…" : fmtInt(progressSummary.streak)}{" "}
+                    ngày
                   </div>
-                ) : null}
-              </div>
+                  <div style={progSmall}>
+                    Sự bền bỉ quan trọng hơn cường độ.
+                  </div>
+                </div>
 
-              <div style={progCard}>
-                <div style={progLabel}>Active days (30d)</div>
-                <div style={progBig}>
-                  {progressLoading ? "…" : `${fmtInt(progressSummary.active30d)}`}
+                <div style={progCard}>
+                  <div style={progLabel}>Hoạt động trong tháng</div>
+                  <div style={progBig}>
+                    {progressLoading ? "…" : fmtInt(progressSummary.active30d)}{" "}
+                    ngày
+                  </div>
+                  <div style={progSmall}>
+                    Lặp lại nhẹ nhàng tạo nên sự tự tin.
+                  </div>
                 </div>
-                <div style={progSmall}>
-                  {user?.id
-                    ? "How many days you were active in the last 30 days."
-                    : "Sign in to see your recent activity."}
-                </div>
-              </div>
 
-              <div style={progCard}>
-                <div style={progLabel}>Last activity</div>
-                <div style={progBig}>
-                  {progressLoading
-                    ? "…"
-                    : progressSummary.lastStudyAt
-                    ? "Seen"
-                    : "—"}
-                </div>
-                <div style={progSmall}>
-                  {progressSummary.lastStudyAt
-                    ? fmtDate(progressSummary.lastStudyAt)
-                    : user?.id
-                    ? "No recent study yet."
-                    : "Sign in to keep your study history."}
+                <div style={progCard}>
+                  <div style={progLabel}>Lần học cuối</div>
+                  <div style={progBig}>
+                    {progressLoading
+                      ? "…"
+                      : progressSummary.lastStudyAt
+                      ? fmtDate(progressSummary.lastStudyAt)
+                      : "Mới bắt đầu"}
+                  </div>
+                  <div style={progSmall}>
+                    Cánh cửa Mercy luôn rộng mở đón bạn trở lại.
+                  </div>
                 </div>
               </div>
+
+              {progressErr ? (
+                <div style={progBadge}>Hiện tại chưa cập nhật được tiến trình.</div>
+              ) : isSignedIn ? (
+                <div style={progBadge}>
+                  {howOpen
+                    ? "Bạn đang xây dựng một nền tảng vững chắc."
+                    : "Một nhịp độ thầm lặng đang dần hình thành."}
+                </div>
+              ) : (
+                <div style={progBadge}>
+                  Đăng nhập để lưu giữ những bước tiến của bạn.
+                </div>
+              )}
             </div>
-
-            <div style={{ marginTop: 16 }}>
-              <div style={langTag}>VI</div>
-              <h3 style={h3}>Tiến độ của bạn</h3>
-              <div style={{ ...p, marginTop: 8 }}>
-                {isSignedIn
-                  ? "Một lát cắt nhẹ nhàng — ghi dấu hành trình bạn vừa đi qua."
-                  : "Hãy đăng nhập để lưu hành trình và xem tiến độ của bạn."}
-              </div>
-            </div>
-          </div>
-
-          <div style={band}>
-            <h2 style={blockTitle}>A Gentle Companion for Your Whole Life</h2>
-            <p style={p}>
-              Mercy Blade is a bilingual (English–Vietnamese) companion for real life — health, emotions, money,
-              relationships, work, and meaning.
-            </p>
-            <p style={p}>
-              This is not a place to rush or perform.
-              <br />
-              It is a place to slow down, listen, and move forward one small step at a time.
-            </p>
-            <p style={p}>
-              No pressure.
-              <br />
-              No judgment.
-              <br />
-              Only clarity, compassion, and steady growth.
-            </p>
-
-            <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
-              <button
-                type="button"
-                style={{ ...primaryBtn, minWidth: 240 }}
-                onClick={goFirstRoom}
-              >
-                {primaryCtaEn}
-              </button>
-
-              <button
-                type="button"
-                style={{ ...secondaryBtn, minWidth: 240 }}
-                onClick={goAccountOrSignin}
-              >
-                {accountCtaEn}
-              </button>
-
-              <button
-                type="button"
-                style={{ ...secondaryBtn, minWidth: 240 }}
-                onClick={() => nav("/tiers")}
-              >
-                👉 See learning paths
-              </button>
-
-              <button
-                type="button"
-                style={{ ...secondaryBtn, minWidth: 240 }}
-                onClick={() => nav(ROUTE_PRICING)}
-              >
-                💎 Pricing
-              </button>
-            </div>
-
-            <div style={{ height: 18 }} />
-
-            <h2 style={blockTitle}>Người Đồng Hành Nhẹ Nhàng Cho Cả Cuộc Đời Bạn</h2>
-            <p style={p}>
-              Mercy Blade là ứng dụng song ngữ (Anh–Việt) đồng hành cùng đời sống thật — sức khỏe, cảm xúc, tiền bạc,
-              mối quan hệ, công việc và ý nghĩa sống.
-            </p>
-            <p style={p}>
-              Đây không phải nơi để vội vã hay phô diễn.
-              <br />
-              Mà là nơi để chậm lại, lắng nghe, và tiến lên từng bước nhỏ.
-            </p>
-            <p style={p}>
-              Không áp lực.
-              <br />
-              Không phán xét.
-              <br />
-              Chỉ còn sự sáng rõ, lòng trắc ẩn và những chuyển biến bền bỉ.
-            </p>
-
-            <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
-              <button
-                type="button"
-                style={{ ...primaryBtn, minWidth: 240 }}
-                onClick={goFirstRoom}
-              >
-                {primaryCtaVi}
-              </button>
-
-              <button
-                type="button"
-                style={{ ...secondaryBtn, minWidth: 240 }}
-                onClick={goAccountOrSignin}
-              >
-                {accountCtaVi}
-              </button>
-
-              <button
-                type="button"
-                style={{ ...secondaryBtn, minWidth: 240 }}
-                onClick={() => nav("/tiers")}
-              >
-                👉 Lối nhỏ hành trình
-              </button>
-
-              <button
-                type="button"
-                style={{ ...secondaryBtn, minWidth: 240 }}
-                onClick={() => nav(ROUTE_PRICING)}
-              >
-                💎 Gói trải nghiệm
-              </button>
-            </div>
-          </div>
+          ) : null}
 
           <div style={ctaBand}>
-            <h2 style={ctaTitle}>
-              {isSignedIn
-                ? "You’re in — continue gently, one room at a time."
-                : "Start gently — one room at a time."}
-            </h2>
+            <h2 style={ctaTitle}>Sẵn lòng cho một bước tiếp theo?</h2>
             <div style={ctaSub}>
-              {isSignedIn
-                ? "Bạn đã vào rồi — cứ nhẹ nhàng tiếp tục, từng phòng một."
-                : "Bắt đầu nhẹ nhàng — từng phòng một."}
+              Start with one room. One sentence. One quiet return.
             </div>
 
             <div style={ctaRow}>
@@ -1269,43 +1231,46 @@ export default function Home() {
                 {primaryCtaEn}
               </button>
 
-              <button
-                type="button"
-                style={secondaryBtn}
-                onClick={goAccountOrSignin}
-              >
+              <button type="button" style={secondaryBtn} onClick={goAccountOrSignin}>
                 {accountCtaEn}
               </button>
 
-              <button
-                type="button"
-                style={secondaryBtn}
-                onClick={() => nav("/tiers")}
-              >
-                👉 See learning paths
+              <button type="button" style={secondaryBtn} onClick={() => nav("/tiers")}>
+                📚 Learning paths
               </button>
 
-              <button
-                type="button"
-                style={secondaryBtn}
-                onClick={() => nav(ROUTE_PRICING)}
-              >
+              <button type="button" style={secondaryBtn} onClick={() => nav(ROUTE_PRICING)}>
                 💎 Pricing
               </button>
+            </div>
 
-              <button
-                type="button"
-                style={secondaryBtn}
-                onClick={() => nav("/redeem")}
-              >
-                🎁&nbsp; Redeem Gift Code / Kích hoạt mã quà tặng
+            <div style={{ ...langTag, marginTop: 24 }}>VI</div>
+            <div style={{ ...ctaSub, marginTop: 8 }}>
+              Bắt đầu với một phòng. Một câu. Một lần quay lại nhẹ nhàng.
+            </div>
+
+            <div style={ctaRow}>
+              <button type="button" style={primaryBtn} onClick={goFirstRoom}>
+                {primaryCtaVi}
+              </button>
+
+              <button type="button" style={secondaryBtn} onClick={goAccountOrSignin}>
+                {accountCtaVi}
+              </button>
+
+              <button type="button" style={secondaryBtn} onClick={() => nav("/tiers")}>
+                👉 Khám phá lộ trình
+              </button>
+
+              <button type="button" style={secondaryBtn} onClick={() => nav(ROUTE_PRICING)}>
+                💎 Bảng giá
               </button>
             </div>
           </div>
         </div>
       </div>
 
-      <div style={bottomDockOuter} aria-label="Bottom music dock">
+      <div style={bottomDockOuter}>
         <div style={bottomDockInner}>
           <BottomMusicBar />
         </div>
