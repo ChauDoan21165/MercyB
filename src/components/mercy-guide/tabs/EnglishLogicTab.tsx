@@ -1,4 +1,5 @@
 /**
+ * File: EnglishLogicTab.tsx
  * Path: src/components/mercy-guide/tabs/EnglishLogicTab.tsx
  */
 
@@ -540,8 +541,8 @@ function buildGroundedLogicViewModel(params: {
           'When two versions feel possible, read them aloud and keep the one that sounds cleaner in one breath.',
         miniRule: 'Say it the clean way, not the heavy way.',
         comparisonLabel: 'Natural phrasing pattern',
-        vietlishExample: 'Since he had an exam, he tried to eat nutritious food.',
-        englishExample: 'Knowing he had an exam, he tried to eat nutritious food.',
+        vietlishExample: 'Since he had a big exam that day, he chose a healthy breakfast.',
+        englishExample: 'Knowing he had a big exam that day, he chose a healthy breakfast.',
         keyShift: [
           'Mercy is polishing phrasing, not changing your core meaning.',
           'The stronger English version usually feels lighter and more natural.',
@@ -874,366 +875,400 @@ export default function EnglishLogicTab({
 
   return (
     <div className="m-0 flex-1 overflow-hidden">
-      <ScrollArea className="h-full bg-gradient-to-br from-[#FFF9F5] via-[#FAFBFF] to-[#F5F1FF]">
-        <div className="space-y-5 p-4">
-          <div className="space-y-2">
-            <h2 className="text-lg font-semibold text-slate-900">English Logic</h2>
-            <p className="text-sm text-slate-600">
-              Mercy explains what really changed in this sentence, and only shows a Vietlish logic lesson when the sentence actually needs one.
-            </p>
-          </div>
+      <ScrollArea className="h-full bg-gradient-to-br from-[#FFF8F1] via-[#FFFDFC] to-[#F8F7FF]">
+        <div className="space-y-5 p-4 md:p-5">
+          <div className="rounded-[28px] border border-orange-100/80 bg-gradient-to-br from-[#FFF7ED] via-white to-[#FFFDF8] p-5 shadow-[0_10px_30px_rgba(15,23,42,0.05)]">
+            <div className="space-y-2">
+              <h2 className="text-[1.75rem] font-semibold tracking-tight text-slate-900">
+                English Logic
+              </h2>
+              <p className="max-w-4xl text-[15px] leading-7 text-slate-700">
+                Mercy explains what really changed in this sentence, and only shows a Vietlish logic lesson when the sentence actually needs one.
+              </p>
+            </div>
 
-          {!hasLesson ? (
-            <section className="rounded-2xl border border-white/70 bg-white/90 p-4 shadow-sm">
-              <p className="text-sm font-medium text-slate-900">No learner sentence yet</p>
-              <p className="mt-2 text-sm text-slate-600">{fallbackContext}</p>
+            {!hasLesson ? (
+              <section className="mt-6 rounded-[28px] border border-orange-100/80 bg-gradient-to-br from-[#FFFDF9] via-white to-[#FDF7F2] p-6 shadow-[0_10px_28px_rgba(148,163,184,0.06)] md:p-8">
+                <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-100 via-fuchsia-50 to-orange-50 shadow-sm">
+                    <Languages className="h-8 w-8 text-violet-600" />
+                  </div>
 
-              <div className="mt-4 flex flex-wrap gap-2">
-                <Button type="button" onClick={onOpenWriting}>
-                  <PenSquare className="mr-2 h-4 w-4" />
-                  Open Grammar & Writing
-                </Button>
-              </div>
-            </section>
-          ) : (
-            <>
-              <section className="rounded-2xl border border-white/70 bg-white/92 p-4 shadow-sm">
-                <div className="flex items-center gap-2">
-                  <Languages className="h-4 w-4 text-violet-500" />
-                  <p className="text-sm font-semibold text-slate-900">
-                    Your sentence vs natural English
+                  <p className="mt-5 text-[1.9rem] font-semibold tracking-tight text-slate-900">
+                    No learner sentence yet
                   </p>
-                </div>
-
-                <div className="mt-4 grid gap-3 md:grid-cols-2">
-                  <div className="rounded-xl border border-slate-200 bg-white p-3">
-                    <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                      Your sentence
-                    </p>
-                    <p className="mt-2 text-sm leading-6 text-slate-700">
-                      {originalText || 'No original sentence captured.'}
-                    </p>
-                  </div>
-
-                  <div className="rounded-xl border border-violet-100 bg-gradient-to-br from-violet-50/70 to-white p-3">
-                    <p className="text-xs font-semibold uppercase tracking-wide text-violet-600">
-                      Natural English
-                    </p>
-                    <p className="mt-2 text-sm leading-6 text-slate-700">
-                      {enhancedText || correctedText || 'No improved sentence yet.'}
-                    </p>
-                  </div>
-                </div>
-              </section>
-
-              <section className="rounded-2xl border border-white/70 bg-white/92 p-4 shadow-sm">
-                <div className="flex items-center gap-2">
-                  <Lightbulb className="h-4 w-4 text-amber-500" />
-                  <p className="text-sm font-semibold text-slate-900">{logic.bridgeTitle}</p>
-                </div>
-
-                <div className="mt-4 grid gap-4 md:grid-cols-2">
-                  <div className="space-y-4 text-sm">
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                        Main focus
-                      </p>
-                      <p className="mt-1 text-slate-700">{logic.focus}</p>
-                    </div>
-
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                        Why Mercy changed it
-                      </p>
-                      <p className="mt-1 text-slate-700">{logic.whyNatural}</p>
-                    </div>
-
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                        English thinking
-                      </p>
-                      <p className="mt-1 text-slate-700">{logic.englishLogic}</p>
-                    </div>
-
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                        Key shift
-                      </p>
-                      <div className="mt-2 space-y-2">
-                        {logic.keyShift.map((item) => (
-                          <div key={item} className="flex items-start gap-2">
-                            <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
-                            <p className="text-slate-700">{item}</p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="space-y-4 text-sm">
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                        Vietnamese thinking pattern
-                      </p>
-                      <p className="mt-1 text-slate-700">{logic.vietlishPattern}</p>
-                    </div>
-
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                        Sentence pattern to remember
-                      </p>
-                      <p className="mt-1 text-slate-700">{logic.sentencePattern}</p>
-                    </div>
-
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                        Quick rule
-                      </p>
-                      <p className="mt-1 text-slate-700">{logic.miniRule}</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-4 grid gap-3 md:grid-cols-2">
-                  <div className="rounded-xl border border-rose-100 bg-rose-50/60 p-3">
-                    <p className="text-xs font-semibold uppercase tracking-wide text-rose-600">
-                      Less natural English
-                    </p>
-                    <p className="mt-2 text-sm leading-6 text-slate-700">{logic.vietlishExample}</p>
-                  </div>
-
-                  <div className="rounded-xl border border-emerald-100 bg-emerald-50/60 p-3">
-                    <p className="text-xs font-semibold uppercase tracking-wide text-emerald-600">
-                      More natural English
-                    </p>
-                    <p className="mt-2 text-sm leading-6 text-slate-700">{logic.englishExample}</p>
-                  </div>
-                </div>
-
-                <div className="mt-4 rounded-xl border border-sky-100 bg-sky-50/50 p-3 text-sm">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                    Try this next time
+                  <p className="mt-3 max-w-2xl text-[15px] leading-7 text-slate-700">
+                    {fallbackContext}
                   </p>
-                  <div className="mt-2 flex items-start gap-2">
-                    <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
-                    <p className="text-slate-700">{logic.nextTimeTip}</p>
-                  </div>
-                </div>
-              </section>
 
-              <section className="rounded-2xl border border-white/70 bg-white/92 p-4 shadow-sm">
-                <div className="flex items-center gap-2">
-                  <Sparkles className="h-4 w-4 text-sky-500" />
-                  <p className="text-sm font-semibold text-slate-900">
-                    What changed inside your sentence
-                  </p>
-                </div>
-
-                <div className="mt-4 grid gap-3 md:grid-cols-2">
-                  <div className="rounded-xl border border-slate-200 bg-white p-3">
-                    <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                      Words or patterns removed
-                    </p>
-                    {tokenChanges.removed.length > 0 ? (
-                      <div className="mt-2 flex flex-wrap gap-2">
-                        {tokenChanges.removed.map((token) => (
-                          <span
-                            key={token}
-                            className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-medium text-slate-700"
-                          >
-                            {token}
-                          </span>
-                        ))}
-                      </div>
-                    ) : (
-                      <p className="mt-2 text-sm text-slate-600">
-                        Mercy mostly refined structure instead of removing many words.
-                      </p>
-                    )}
-                  </div>
-
-                  <div className="rounded-xl border border-slate-200 bg-white p-3">
-                    <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                      Words or patterns added
-                    </p>
-                    {tokenChanges.added.length > 0 ? (
-                      <div className="mt-2 flex flex-wrap gap-2">
-                        {tokenChanges.added.map((token) => (
-                          <span
-                            key={token}
-                            className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-medium text-slate-700"
-                          >
-                            {token}
-                          </span>
-                        ))}
-                      </div>
-                    ) : (
-                      <p className="mt-2 text-sm text-slate-600">
-                        Mercy kept your wording close and mainly improved flow.
-                      </p>
-                    )}
-                  </div>
-                </div>
-              </section>
-
-              <section className="rounded-2xl border border-white/70 bg-white/92 p-4 shadow-sm">
-                <p className="text-sm font-semibold text-slate-900">
-                  Sentence pattern examples
-                </p>
-                <p className="mt-2 text-sm text-slate-600">
-                  These examples now follow the real change Mercy noticed in your sentence.
-                </p>
-
-                <div className="mt-4 grid gap-3">
-                  {examples.map((example, index) => (
-                    <div
-                      key={`${example.weak}-${index}`}
-                      className="rounded-xl border border-slate-200 bg-white p-3"
+                  <div className="mt-6 flex flex-wrap justify-center gap-3">
+                    <Button
+                      type="button"
+                      onClick={onOpenWriting}
+                      className="rounded-2xl bg-gradient-to-r from-violet-500 via-fuchsia-500 to-purple-500 px-5 text-white shadow-[0_10px_24px_rgba(168,85,247,0.24)] hover:shadow-[0_12px_28px_rgba(168,85,247,0.28)]"
                     >
-                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                        Example {index + 1}
-                      </p>
-
-                      <div className="mt-3 grid gap-3 md:grid-cols-2">
-                        <div>
-                          <p className="text-xs font-semibold uppercase tracking-wide text-rose-600">
-                            Less natural English
-                          </p>
-                          <p className="mt-1 text-sm text-slate-700">{example.weak}</p>
-                        </div>
-
-                        <div>
-                          <p className="text-xs font-semibold uppercase tracking-wide text-emerald-600">
-                            More natural English
-                          </p>
-                          <p className="mt-1 text-sm text-slate-700">{example.natural}</p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </section>
-
-              <section className="rounded-2xl border border-white/70 bg-white/92 p-4 shadow-sm">
-                <p className="text-sm font-semibold text-slate-900">How this connects to speaking</p>
-                <p className="mt-2 text-sm text-slate-600">
-                  Practice the improved line aloud so your mouth learns the same structure your mind just studied.
-                </p>
-
-                <div className="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-3">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                    Best line to practice
-                  </p>
-                  <p className="mt-2 text-sm text-slate-700">
-                    {practiceLine || 'Open Pronunciation after Grammar to practice the improved line.'}
-                  </p>
-                </div>
-
-                <div className="mt-4 flex flex-wrap gap-2">
-                  <Button
-                    type="button"
-                    variant="outline"
-                    onClick={() => {
-                      if (pronunciationPayload) {
-                        onOpenPronunciation?.(pronunciationPayload);
-                        return;
-                      }
-                      onOpenPronunciation?.();
-                    }}
-                  >
-                    <Mic className="mr-2 h-4 w-4" />
-                    Say this sentence
-                  </Button>
-
-                  <Button type="button" variant="ghost" onClick={onOpenWriting}>
-                    <PenSquare className="mr-2 h-4 w-4" />
-                    Rewrite this sentence
-                  </Button>
-                </div>
-              </section>
-
-              <section className="rounded-2xl border border-white/70 bg-gradient-to-r from-emerald-50/80 to-white p-4 shadow-sm">
-                <div className="flex items-start gap-2">
-                  <RotateCcw className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
-                  <div>
-                    <p className="text-sm font-semibold text-slate-900">Mercy’s next step</p>
-                    <p className="mt-1 text-sm leading-6 text-slate-700">
-                      Good. You understood the exact change Mercy made in this sentence. Now try another real sentence, or rewrite this same idea more clearly and let Mercy guide you again.
-                    </p>
+                      <PenSquare className="mr-2 h-4 w-4" />
+                      Open Grammar & Writing
+                    </Button>
                   </div>
                 </div>
-
-                <div className="mt-4 flex flex-wrap gap-2">
-                  <Button type="button" onClick={onOpenWriting}>
-                    <RotateCcw className="mr-2 h-4 w-4" />
-                    Try this sentence again
-                  </Button>
-
-                  <Button type="button" variant="outline" onClick={onOpenWriting}>
-                    <PenSquare className="mr-2 h-4 w-4" />
-                    Rewrite this sentence
-                  </Button>
-
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    onClick={() => {
-                      if (pronunciationPayload) {
-                        onOpenPronunciation?.(pronunciationPayload);
-                        return;
-                      }
-                      onOpenPronunciation?.();
-                    }}
-                  >
-                    <Mic className="mr-2 h-4 w-4" />
-                    Say it again
-                  </Button>
-                </div>
               </section>
+            ) : (
+              <div className="mt-6 space-y-4">
+                <section className="rounded-[28px] border border-white/80 bg-white/92 p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
+                  <div className="flex items-center gap-2">
+                    <Languages className="h-4 w-4 text-violet-500" />
+                    <p className="text-sm font-semibold text-slate-900">
+                      Your sentence vs natural English
+                    </p>
+                  </div>
 
-              {(grammarPoints.length > 0 || troubleWordList.length > 0) && (
-                <section className="rounded-2xl border border-white/70 bg-white/92 p-4 shadow-sm">
-                  <p className="text-sm font-semibold text-slate-900">Patterns Mercy notices</p>
-
-                  {grammarPoints.length > 0 ? (
-                    <div className="mt-3">
+                  <div className="mt-4 grid gap-3 md:grid-cols-2">
+                    <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_4px_14px_rgba(15,23,42,0.03)]">
                       <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                        Grammar points
+                        Your sentence
                       </p>
-                      <div className="mt-2 flex flex-wrap gap-2">
-                        {grammarPoints.map((point) => (
-                          <span
-                            key={point}
-                            className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700"
-                          >
-                            {point}
-                          </span>
-                        ))}
-                      </div>
+                      <p className="mt-2 text-sm leading-6 text-slate-700">
+                        {originalText || 'No original sentence captured.'}
+                      </p>
                     </div>
-                  ) : null}
 
-                  {troubleWordList.length > 0 ? (
-                    <div className="mt-3">
-                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                        Pronunciation watch words
+                    <div className="rounded-2xl border border-violet-100 bg-gradient-to-br from-violet-50/80 to-white p-4 shadow-[0_4px_14px_rgba(168,85,247,0.06)]">
+                      <p className="text-xs font-semibold uppercase tracking-wide text-violet-600">
+                        Natural English
                       </p>
-                      <div className="mt-2 flex flex-wrap gap-2">
-                        {troubleWordList.map((word) => (
-                          <span
-                            key={word}
-                            className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700"
-                          >
-                            {word}
-                          </span>
-                        ))}
-                      </div>
+                      <p className="mt-2 text-sm leading-6 text-slate-700">
+                        {enhancedText || correctedText || 'No improved sentence yet.'}
+                      </p>
                     </div>
-                  ) : null}
+                  </div>
                 </section>
-              )}
-            </>
-          )}
+
+                <section className="rounded-[28px] border border-white/80 bg-white/92 p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
+                  <div className="flex items-center gap-2">
+                    <Lightbulb className="h-4 w-4 text-amber-500" />
+                    <p className="text-sm font-semibold text-slate-900">{logic.bridgeTitle}</p>
+                  </div>
+
+                  <div className="mt-4 grid gap-4 md:grid-cols-2">
+                    <div className="space-y-4 text-sm">
+                      <div className="rounded-2xl border border-orange-100/70 bg-gradient-to-r from-orange-50/70 to-white p-4">
+                        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                          Main focus
+                        </p>
+                        <p className="mt-1 text-slate-700">{logic.focus}</p>
+                      </div>
+
+                      <div>
+                        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                          Why Mercy changed it
+                        </p>
+                        <p className="mt-1 text-slate-700">{logic.whyNatural}</p>
+                      </div>
+
+                      <div>
+                        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                          English thinking
+                        </p>
+                        <p className="mt-1 text-slate-700">{logic.englishLogic}</p>
+                      </div>
+
+                      <div>
+                        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                          Key shift
+                        </p>
+                        <div className="mt-2 space-y-2">
+                          {logic.keyShift.map((item) => (
+                            <div key={item} className="flex items-start gap-2">
+                              <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
+                              <p className="text-slate-700">{item}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="space-y-4 text-sm">
+                      <div>
+                        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                          Vietnamese thinking pattern
+                        </p>
+                        <p className="mt-1 text-slate-700">{logic.vietlishPattern}</p>
+                      </div>
+
+                      <div className="rounded-2xl border border-purple-100/70 bg-gradient-to-r from-purple-50/70 to-white p-4">
+                        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                          Sentence pattern to remember
+                        </p>
+                        <p className="mt-1 text-slate-700">{logic.sentencePattern}</p>
+                      </div>
+
+                      <div>
+                        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                          Quick rule
+                        </p>
+                        <p className="mt-1 text-slate-700">{logic.miniRule}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mt-4 grid gap-3 md:grid-cols-2">
+                    <div className="rounded-2xl border border-rose-100 bg-rose-50/70 p-4 shadow-[0_4px_14px_rgba(244,63,94,0.04)]">
+                      <p className="text-xs font-semibold uppercase tracking-wide text-rose-600">
+                        Less natural English
+                      </p>
+                      <p className="mt-2 text-sm leading-6 text-slate-700">{logic.vietlishExample}</p>
+                    </div>
+
+                    <div className="rounded-2xl border border-emerald-100 bg-emerald-50/70 p-4 shadow-[0_4px_14px_rgba(16,185,129,0.04)]">
+                      <p className="text-xs font-semibold uppercase tracking-wide text-emerald-600">
+                        More natural English
+                      </p>
+                      <p className="mt-2 text-sm leading-6 text-slate-700">{logic.englishExample}</p>
+                    </div>
+                  </div>
+
+                  <div className="mt-4 rounded-2xl border border-sky-100 bg-gradient-to-r from-sky-50/80 to-white p-4 text-sm shadow-[0_4px_14px_rgba(59,130,246,0.04)]">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                      Try this next time
+                    </p>
+                    <div className="mt-2 flex items-start gap-2">
+                      <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
+                      <p className="text-slate-700">{logic.nextTimeTip}</p>
+                    </div>
+                  </div>
+                </section>
+
+                <section className="rounded-[28px] border border-white/80 bg-white/92 p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
+                  <div className="flex items-center gap-2">
+                    <Sparkles className="h-4 w-4 text-sky-500" />
+                    <p className="text-sm font-semibold text-slate-900">
+                      What changed inside your sentence
+                    </p>
+                  </div>
+
+                  <div className="mt-4 grid gap-3 md:grid-cols-2">
+                    <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_4px_14px_rgba(15,23,42,0.03)]">
+                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                        Words or patterns removed
+                      </p>
+                      {tokenChanges.removed.length > 0 ? (
+                        <div className="mt-2 flex flex-wrap gap-2">
+                          {tokenChanges.removed.map((token) => (
+                            <span
+                              key={token}
+                              className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-medium text-slate-700"
+                            >
+                              {token}
+                            </span>
+                          ))}
+                        </div>
+                      ) : (
+                        <p className="mt-2 text-sm text-slate-600">
+                          Mercy mostly refined structure instead of removing many words.
+                        </p>
+                      )}
+                    </div>
+
+                    <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_4px_14px_rgba(15,23,42,0.03)]">
+                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                        Words or patterns added
+                      </p>
+                      {tokenChanges.added.length > 0 ? (
+                        <div className="mt-2 flex flex-wrap gap-2">
+                          {tokenChanges.added.map((token) => (
+                            <span
+                              key={token}
+                              className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-medium text-slate-700"
+                            >
+                              {token}
+                            </span>
+                          ))}
+                        </div>
+                      ) : (
+                        <p className="mt-2 text-sm text-slate-600">
+                          Mercy kept your wording close and mainly improved flow.
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </section>
+
+                <section className="rounded-[28px] border border-white/80 bg-white/92 p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
+                  <p className="text-sm font-semibold text-slate-900">
+                    Sentence pattern examples
+                  </p>
+                  <p className="mt-2 text-sm text-slate-600">
+                    These examples now follow the real change Mercy noticed in your sentence.
+                  </p>
+
+                  <div className="mt-4 grid gap-3">
+                    {examples.map((example, index) => (
+                      <div
+                        key={`${example.weak}-${index}`}
+                        className="rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_4px_14px_rgba(15,23,42,0.03)]"
+                      >
+                        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                          Example {index + 1}
+                        </p>
+
+                        <div className="mt-3 grid gap-3 md:grid-cols-2">
+                          <div className="rounded-2xl border border-rose-100 bg-rose-50/60 p-3">
+                            <p className="text-xs font-semibold uppercase tracking-wide text-rose-600">
+                              Less natural English
+                            </p>
+                            <p className="mt-1 text-sm text-slate-700">{example.weak}</p>
+                          </div>
+
+                          <div className="rounded-2xl border border-emerald-100 bg-emerald-50/60 p-3">
+                            <p className="text-xs font-semibold uppercase tracking-wide text-emerald-600">
+                              More natural English
+                            </p>
+                            <p className="mt-1 text-sm text-slate-700">{example.natural}</p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+
+                <section className="rounded-[28px] border border-white/80 bg-white/92 p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
+                  <p className="text-sm font-semibold text-slate-900">How this connects to speaking</p>
+                  <p className="mt-2 text-sm text-slate-600">
+                    Practice the improved line aloud so your mouth learns the same structure your mind just studied.
+                  </p>
+
+                  <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                      Best line to practice
+                    </p>
+                    <p className="mt-2 text-sm text-slate-700">
+                      {practiceLine || 'Open Pronunciation after Grammar to practice the improved line.'}
+                    </p>
+                  </div>
+
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    <Button
+                      type="button"
+                      variant="outline"
+                      onClick={() => {
+                        if (pronunciationPayload) {
+                          onOpenPronunciation?.(pronunciationPayload);
+                          return;
+                        }
+                        onOpenPronunciation?.();
+                      }}
+                      className="rounded-2xl border-sky-200 bg-white hover:bg-sky-50"
+                    >
+                      <Mic className="mr-2 h-4 w-4" />
+                      Say this sentence
+                    </Button>
+
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      onClick={onOpenWriting}
+                      className="rounded-2xl hover:bg-slate-100"
+                    >
+                      <PenSquare className="mr-2 h-4 w-4" />
+                      Rewrite this sentence
+                    </Button>
+                  </div>
+                </section>
+
+                <section className="rounded-[28px] border border-emerald-100/70 bg-gradient-to-r from-emerald-50/80 to-white p-5 shadow-[0_10px_28px_rgba(16,185,129,0.05)]">
+                  <div className="flex items-start gap-2">
+                    <RotateCcw className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
+                    <div>
+                      <p className="text-sm font-semibold text-slate-900">Mercy’s next step</p>
+                      <p className="mt-1 text-sm leading-6 text-slate-700">
+                        Good. You understood the exact change Mercy made in this sentence. Now try another real sentence, or rewrite this same idea more clearly and let Mercy guide you again.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    <Button
+                      type="button"
+                      onClick={onOpenWriting}
+                      className="rounded-2xl bg-gradient-to-r from-emerald-400 to-teal-500 text-white shadow-[0_10px_24px_rgba(16,185,129,0.22)] hover:from-emerald-500 hover:to-teal-600"
+                    >
+                      <RotateCcw className="mr-2 h-4 w-4" />
+                      Try this sentence again
+                    </Button>
+
+                    <Button
+                      type="button"
+                      variant="outline"
+                      onClick={onOpenWriting}
+                      className="rounded-2xl border-slate-300 bg-white hover:bg-slate-50"
+                    >
+                      <PenSquare className="mr-2 h-4 w-4" />
+                      Rewrite this sentence
+                    </Button>
+
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      onClick={() => {
+                        if (pronunciationPayload) {
+                          onOpenPronunciation?.(pronunciationPayload);
+                          return;
+                        }
+                        onOpenPronunciation?.();
+                      }}
+                      className="rounded-2xl hover:bg-emerald-100/60"
+                    >
+                      <Mic className="mr-2 h-4 w-4" />
+                      Say it again
+                    </Button>
+                  </div>
+                </section>
+
+                {(grammarPoints.length > 0 || troubleWordList.length > 0) && (
+                  <section className="rounded-[28px] border border-white/80 bg-white/92 p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
+                    <p className="text-sm font-semibold text-slate-900">Patterns Mercy notices</p>
+
+                    {grammarPoints.length > 0 ? (
+                      <div className="mt-3">
+                        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                          Grammar points
+                        </p>
+                        <div className="mt-2 flex flex-wrap gap-2">
+                          {grammarPoints.map((point) => (
+                            <span
+                              key={point}
+                              className="rounded-full border border-orange-100 bg-orange-50 px-3 py-1 text-xs font-medium text-slate-700"
+                            >
+                              {point}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    ) : null}
+
+                    {troubleWordList.length > 0 ? (
+                      <div className="mt-3">
+                        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                          Pronunciation watch words
+                        </p>
+                        <div className="mt-2 flex flex-wrap gap-2">
+                          {troubleWordList.map((word) => (
+                            <span
+                              key={word}
+                              className="rounded-full border border-sky-100 bg-sky-50 px-3 py-1 text-xs font-medium text-slate-700"
+                            >
+                              {word}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    ) : null}
+                  </section>
+                )}
+              </div>
+            )}
+          </div>
         </div>
       </ScrollArea>
     </div>

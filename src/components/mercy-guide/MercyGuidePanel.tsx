@@ -156,25 +156,25 @@ function getTabAccent(tabId: MercyTabType) {
     case 'teacher':
       return {
         active:
-          'border-[#FFB39A] bg-gradient-to-r from-[#FFF1EA] to-[#FFF8F4] text-[#E76F51] shadow-[0_8px_18px_rgba(255,138,101,0.10)]',
+          'border-[#FFB39A] bg-gradient-to-r from-[#FFF1EA] to-[#FFF8F4] text-[#E76F51] shadow-[0_10px_22px_rgba(255,138,101,0.14)]',
         icon: 'text-[#FF8A65]',
       };
     case 'grammar':
       return {
         active:
-          'border-[#A7F3D0] bg-gradient-to-r from-[#ECFDF5] to-[#F7FFF9] text-[#0F9F6E] shadow-[0_8px_18px_rgba(16,185,129,0.10)]',
+          'border-[#A7F3D0] bg-gradient-to-r from-[#ECFDF5] to-[#F7FFF9] text-[#0F9F6E] shadow-[0_10px_22px_rgba(16,185,129,0.12)]',
         icon: 'text-[#10B981]',
       };
     case 'pronunciation':
       return {
         active:
-          'border-[#BFDBFE] bg-gradient-to-r from-[#EFF6FF] to-[#F7FBFF] text-[#2563EB] shadow-[0_8px_18px_rgba(59,130,246,0.10)]',
+          'border-[#BFDBFE] bg-gradient-to-r from-[#EFF6FF] to-[#F7FBFF] text-[#2563EB] shadow-[0_10px_22px_rgba(59,130,246,0.12)]',
         icon: 'text-[#3B82F6]',
       };
     case 'logic':
       return {
         active:
-          'border-[#E9D5FF] bg-gradient-to-r from-[#FAF5FF] to-[#FFF9FF] text-[#9333EA] shadow-[0_8px_18px_rgba(168,85,247,0.10)]',
+          'border-[#FFB39A] bg-gradient-to-r from-[#FFF1EA] to-[#FFF8F4] text-[#E76F51] shadow-[0_10px_22px_rgba(255,138,101,0.14)]',
         icon: 'text-[#A855F7]',
       };
     default:
@@ -468,20 +468,21 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
   }
 
   return (
-    <div className="relative flex h-full flex-col overflow-hidden border-l border-white/70 bg-gradient-to-br from-[#FFF9F5] via-[#F8FAFF] to-[#F4F1FF] shadow-2xl">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-36 bg-[radial-gradient(circle_at_top,_rgba(255,138,101,0.12),_rgba(192,132,252,0.06)_45%,_transparent_75%)]" />
+    <div className="relative flex h-full flex-col overflow-hidden border-l border-white/70 bg-gradient-to-br from-[#FFF8F1] via-[#FFFCFA] to-[#F7F5FF] shadow-2xl">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[radial-gradient(circle_at_top,_rgba(255,159,122,0.14),_rgba(192,132,252,0.07)_42%,_transparent_74%)]" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-[linear-gradient(to_top,rgba(255,255,255,0.72),transparent)]" />
 
       <div
-        className="relative z-10 flex items-center justify-between border-b border-white/70 bg-white/75 px-4 py-3 backdrop-blur-md"
+        className="relative z-10 flex items-center justify-between border-b border-white/80 bg-white/78 px-4 py-3 backdrop-blur-md"
         onPointerDown={onPanelDragStart}
       >
         <div className="flex items-center gap-3">
           <div className="relative shrink-0">
-            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#FFD7C8] to-[#DCC8FF] blur-sm opacity-70" />
+            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#FFD7C8] via-[#FFE6DC] to-[#DCC8FF] blur-sm opacity-80" />
             <img
               src={MERCY_HOST_IMAGE_SRC}
               alt="Teacher Mercy"
-              className="relative h-11 w-11 rounded-full border-2 border-white object-cover object-[50%_32%] scale-110 shadow-sm"
+              className="relative h-11 w-11 rounded-full border-2 border-white object-cover object-[50%_32%] scale-110 shadow-[0_8px_18px_rgba(148,163,184,0.18)]"
               onError={(event) => {
                 fallbackAvatar(event);
                 onAvatarError?.(event);
@@ -494,13 +495,16 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
             <p className="truncate text-base font-semibold text-slate-900">
               {journeyTitle || 'Teacher Mercy'}
             </p>
+            <p className="truncate text-xs font-medium text-slate-500">
+              Warm guidance across Journey, Grammar, Speak, and Logic
+            </p>
           </div>
         </div>
 
         <div className="flex items-center gap-1.5">
           <button
             type="button"
-            className="rounded-full border border-transparent bg-white/70 p-2 text-slate-500 transition hover:border-slate-200 hover:bg-white hover:text-slate-700"
+            className="rounded-full border border-transparent bg-white/75 p-2 text-slate-500 transition hover:border-slate-200 hover:bg-white hover:text-slate-700"
             aria-label={isFullscreen ? 'Exit full screen' : 'Full screen'}
             onClick={onToggleFullscreen}
           >
@@ -509,7 +513,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
 
           <button
             type="button"
-            className="rounded-full border border-transparent bg-white/70 p-2 text-slate-500 transition hover:border-slate-200 hover:bg-white hover:text-slate-700"
+            className="rounded-full border border-transparent bg-white/75 p-2 text-slate-500 transition hover:border-slate-200 hover:bg-white hover:text-slate-700"
             aria-label="Profile"
           >
             <User size={17} />
@@ -518,7 +522,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
           <button
             type="button"
             onClick={handleCollapse}
-            className="rounded-full border border-transparent bg-white/70 p-2 text-slate-500 transition hover:border-slate-200 hover:bg-white hover:text-slate-700"
+            className="rounded-full border border-transparent bg-white/75 p-2 text-slate-500 transition hover:border-slate-200 hover:bg-white hover:text-slate-700"
             aria-label="Collapse Mercy panel"
           >
             <ChevronDown size={17} />
@@ -527,7 +531,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
           <button
             type="button"
             onClick={handleClose}
-            className="rounded-full border border-transparent bg-white/70 p-2 text-slate-400 transition hover:border-red-100 hover:bg-red-50 hover:text-red-500"
+            className="rounded-full border border-transparent bg-white/75 p-2 text-slate-400 transition hover:border-red-100 hover:bg-red-50 hover:text-red-500"
             aria-label="Close Mercy panel"
           >
             <X size={17} />
@@ -535,9 +539,9 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
         </div>
       </div>
 
-      <div className="relative z-10 border-b border-white/70 bg-white/55 px-3 py-2.5 backdrop-blur-sm">
+      <div className="relative z-10 border-b border-white/80 bg-white/58 px-3 py-3 backdrop-blur-sm">
         {!access.features.hasMercyJourney ? (
-          <div className="mb-3 rounded-2xl border border-violet-200 bg-gradient-to-r from-violet-50 via-white to-rose-50 px-4 py-3">
+          <div className="mb-3 rounded-2xl border border-violet-200 bg-gradient-to-r from-violet-50 via-white to-rose-50 px-4 py-3 shadow-[0_8px_22px_rgba(168,85,247,0.08)]">
             <div className="flex items-center justify-between gap-3">
               <div>
                 <p className="text-sm font-semibold text-slate-900">
@@ -572,11 +576,11 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
                 type="button"
                 onClick={() => handleTabChange(tab.id)}
                 disabled={!tab.enabled}
-                className={`flex min-h-[68px] flex-col items-center justify-center gap-1.5 rounded-2xl border px-2 py-2.5 text-center transition-all duration-200 ${
+                className={`flex min-h-[72px] flex-col items-center justify-center gap-1.5 rounded-2xl border px-2 py-3 text-center transition-all duration-200 ${
                   isActive
                     ? accent.active
                     : tab.enabled
-                      ? 'border-transparent bg-white/60 text-slate-500 hover:border-white hover:bg-white/85 hover:text-slate-700'
+                      ? 'border-white/70 bg-white/72 text-slate-600 shadow-[0_6px_16px_rgba(148,163,184,0.06)] hover:border-white hover:bg-white hover:text-slate-800 hover:shadow-[0_10px_20px_rgba(148,163,184,0.10)]'
                       : 'cursor-not-allowed border-transparent bg-slate-100/80 text-slate-300 opacity-80'
                 }`}
                 aria-pressed={isActive}
@@ -722,7 +726,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
         </div>
       </div>
 
-      <div className="relative z-10 border-t border-white/70 bg-white/70 px-4 py-2.5 backdrop-blur-sm">
+      <div className="relative z-10 border-t border-white/80 bg-white/72 px-4 py-3 backdrop-blur-sm">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500">
             {tabs.map((tab) => {

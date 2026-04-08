@@ -1,4 +1,5 @@
 /**
+ * File: GrammarWritingTab.tsx
  * Path: src/components/mercy-guide/tabs/grammar-writing/GrammarWritingTab.tsx
  */
 
@@ -376,16 +377,10 @@ Paste or write your English here. Mercy will keep the teacher focus while correc
     }
 
     if (roomTitle) {
-      return `Write 1–3 real sentences here. Mercy will improve the grammar, make the English more natural, and show you how to continue into speaking and logic.
-
-Example:
-I very like this lesson because it help me understand better.`;
+      return `Write 1–3 real sentences here. Mercy will improve the grammar, make the English more natural, and show you how to continue into speaking and logic.`;
     }
 
-    return `Write 1–3 real sentences here. Mercy will improve the grammar, make the English more natural, and show you how to continue into speaking and logic.
-
-Example:
-Yesterday I go to supermarket and buy many thing.`;
+    return `Write 1–3 real sentences here. Mercy will improve the grammar, make the English more natural, and show you how to continue into speaking and logic.`;
   }, [roomTitle, teacherInstructionText]);
 
   const memoryPatch = useMemo<StudentMercyMemoryUpdate | null>(() => {
@@ -575,27 +570,40 @@ Yesterday I go to supermarket and buy many thing.`;
     <div className="flex h-full min-h-0 flex-col overflow-hidden">
       <div className="flex-1 min-h-0 overflow-y-auto px-4 py-4">
         <div className="space-y-4">
-          <div className="rounded-3xl border border-white/80 bg-white/92 p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
-            <div className="mb-3">
-              <p className="text-base font-semibold text-slate-900">Write what is true today</p>
-              <p className="mt-1 text-sm leading-6 text-slate-600">
+          <div className="rounded-3xl border border-orange-100/90 bg-gradient-to-br from-[#FFF7ED] via-white to-[#F0FDF4] p-5 shadow-[0_10px_30px_rgba(15,23,42,0.05)]">
+            <div className="mb-4">
+              <p className="text-[1.05rem] font-semibold text-slate-900">
+                Write what is true today
+              </p>
+              <p className="mt-1.5 text-sm leading-6 text-slate-700">
                 Start with your mood, something that happened, or a thought you keep returning to.
                 Mercy will help shape it into more natural English.
               </p>
             </div>
 
-            <textarea
-              value={draft}
-              onChange={(e) => {
-                setDraft(e.target.value);
-                setHasUserEditedDraftSinceTeacherHydration(true);
-              }}
-              placeholder={placeholder}
-              className="min-h-[190px] w-full resize-y rounded-2xl border border-slate-200 bg-white p-4 text-sm leading-6 outline-none"
-            />
+            <div className="rounded-[28px] border border-orange-100 bg-[#FFFBF5] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]">
+              <textarea
+                value={draft}
+                onChange={(e) => {
+                  setDraft(e.target.value);
+                  setHasUserEditedDraftSinceTeacherHydration(true);
+                }}
+                placeholder={placeholder}
+                className="min-h-[190px] w-full resize-y border-0 bg-transparent p-0 text-sm leading-7 text-slate-800 outline-none placeholder:text-slate-400 focus:ring-0"
+              />
 
-            <div className="mt-3 flex items-center justify-between gap-3">
-              <p className="text-xs text-slate-500">{charCount} characters</p>
+              <div className="mt-4 rounded-2xl border border-amber-100 bg-gradient-to-r from-amber-50 to-orange-50/70 p-3.5">
+                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-amber-700">
+                  Example
+                </p>
+                <p className="mt-1.5 text-sm leading-6 text-slate-700">
+                  Yesterday I go to supermarket and buy many thing.
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-4 flex items-center justify-between gap-3">
+              <p className="text-xs font-medium text-slate-600">{charCount} characters</p>
 
               <div className="flex items-center gap-2">
                 <Button
@@ -603,11 +611,17 @@ Yesterday I go to supermarket and buy many thing.`;
                   variant="outline"
                   onClick={handleClear}
                   disabled={isLoading || (!draft && !result)}
+                  className="border-slate-300 bg-white text-slate-600 hover:bg-slate-50"
                 >
                   Clear
                 </Button>
 
-                <Button type="button" onClick={handleAnalyze} disabled={!canSubmit}>
+                <Button
+                  type="button"
+                  onClick={handleAnalyze}
+                  disabled={!canSubmit}
+                  className="bg-gradient-to-r from-emerald-400 to-teal-500 text-white shadow-[0_10px_24px_rgba(16,185,129,0.24)] hover:from-emerald-500 hover:to-teal-600 hover:shadow-[0_12px_28px_rgba(16,185,129,0.28)]"
+                >
                   {isLoading ? 'Analyzing...' : 'Analyze'}
                 </Button>
               </div>
@@ -626,9 +640,9 @@ Yesterday I go to supermarket and buy many thing.`;
           ) : null}
 
           {teacherEmphasis ? (
-            <div className="rounded-2xl border border-white/80 bg-white p-4 shadow-sm">
+            <div className="rounded-2xl border border-orange-100 bg-white p-4 shadow-[0_6px_18px_rgba(15,23,42,0.04)]">
               <div className="flex items-start gap-2">
-                <Target className="mt-0.5 h-4 w-4 shrink-0 text-slate-700" />
+                <Target className="mt-0.5 h-4 w-4 shrink-0 text-orange-600" />
                 <div>
                   <p className="text-sm font-semibold text-slate-900">{teacherEmphasis.title}</p>
                   {teacherEmphasis.subtitle ? (
@@ -642,7 +656,7 @@ Yesterday I go to supermarket and buy many thing.`;
 
           {result ? (
             <>
-              <div className="space-y-4 rounded-3xl border border-white/80 bg-white/92 p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
+              <div className="space-y-4 rounded-3xl border border-orange-100/80 bg-gradient-to-br from-white via-[#FFFDFC] to-[#F8FFFC] p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
                     Your sentence
@@ -650,8 +664,8 @@ Yesterday I go to supermarket and buy many thing.`;
                   <p className="mt-1 text-sm leading-6 text-slate-700">{sourceText}</p>
                 </div>
 
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                <div className="rounded-2xl border border-emerald-100 bg-gradient-to-r from-emerald-50/80 to-white p-4">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-emerald-700">
                     Corrected version
                   </p>
                   <p className="mt-1 text-sm font-medium leading-6 text-slate-800">
@@ -781,13 +795,13 @@ Yesterday I go to supermarket and buy many thing.`;
               </div>
 
               {memoryPatch?.writing?.currentFocus?.length ? (
-                <div className="rounded-2xl border border-white/80 bg-white p-4 shadow-sm">
+                <div className="rounded-2xl border border-orange-100/70 bg-white p-4 shadow-[0_6px_18px_rgba(15,23,42,0.04)]">
                   <p className="text-sm font-semibold text-slate-900">Current focus</p>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {memoryPatch.writing.currentFocus.map((item) => (
                       <span
                         key={item}
-                        className="rounded-full border bg-slate-50 px-3 py-1 text-xs font-medium text-slate-700"
+                        className="rounded-full border border-orange-100 bg-orange-50 px-3 py-1 text-xs font-medium text-slate-700"
                       >
                         {item}
                       </span>

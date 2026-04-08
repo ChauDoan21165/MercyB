@@ -1,34 +1,13 @@
 // src/main.tsx
-// MB-BLUE-100.7 — 2025-12-31 (+0700)
+// MB-BLUE-100.8 — 2026-04-08 (+0700)
 //
-// FIX (100.7):
-// - ✅ Wrap app in <AuthProvider> so AdminRoute/useAuth never crashes.
-// - ✅ Remove all explicit `any` (lint clean).
-// - Keep fatal overlay.
-// - Keep React.StrictMode OFF (avoid dev double-mount confusion).
-//
-// ✅ SPA Deep-Link Handoff (Vercel 404 fallback):
-// - If host served / (or 404.html redirected), restore the intended path from sessionStorage.redirect
-// - This pairs with public/404.html that saves location.href then refreshes to "/"
-//
-// ✅ DEV DEBUG (2026-01-18):
-// - Expose Supabase client for console debugging:
-//   window.supabase.auth.getSession()
-//   window.supabase.from("community_messages").select("*").limit(3)
-//
-// ✅ PATCH (2026-03-02):
-// - Canonical pricing route is /pricing.
-// - /upgrade is deprecated: hard-normalize it to /pricing BEFORE React Router mounts.
-//   (This avoids 404 loops if any code/edge redirects still send users to /upgrade.)
-//
-// ✅ PERF PATCH (2026-03-08):
-// - Use a single static supabase import in the main entry.
-// - DEV-only Supabase console exposure now reuses that static import.
-// - Private audio resolver installer is also dynamic-imported.
-// - This reduces initial-path pressure and avoids pulling extra supabase/debug code into startup here.
-//
-// ✅ PWA DEBUG PATCH:
-// - TEMPORARILY disable service worker registration while debugging stale-cache / zoom issues.
+// FIX (100.8):
+// - ✅ Add one-time stale-chunk auto-recovery for dynamic import failures.
+// - ✅ Show friendly reload UI instead of raw fatal dump for chunk mismatch.
+// - ✅ Keep fatal overlay for real crashes.
+// - ✅ Keep AuthProvider wrap.
+// - ✅ Keep React.StrictMode OFF.
+// - ✅ Keep service worker registration disabled while debugging stale-cache issues.
 
 import React from "react";
 import ReactDOM from "react-dom/client";
@@ -55,10 +34,14 @@ declare global {
     __MB_FATAL_OVERLAY_SHOWN__?: boolean;
 
     __MB_ENTRY_VERSION__?: string;
+
+    __MB_CHUNK_RELOAD_ATTEMPTED__?: boolean;
   }
 }
 
-const MB_ENTRY_VERSION = "2026-04-01-main-sw-disabled-debug-v1";
+const MB_ENTRY_VERSION = "2026-04-08-main-chunk-recovery-v1";
+const CHUNK_RELOAD_SESSION_KEY = "__mb_chunk_reload_once__";
+
 try {
   window.__MB_ENTRY_VERSION__ = MB_ENTRY_VERSION;
 } catch {
@@ -68,6 +51,85 @@ try {
 const devLog = (...args: unknown[]) => {
   if (import.meta.env.DEV) console.log(...args);
 };
+
+function asErrorMessage(err: unknown): string {
+  if (err instanceof Error) {
+    return `${err.name}: ${err.message}${err.stack ? `\n\n${err.stack}` : ""}`;
+  }
+
+  if (typeof err === "string") {
+    return err;
+  }
+
+  try {
+    return JSON.stringify(err, null, 2);
+  } catch {
+    return String(err);
+  }
+}
+
+function getFriendlyChunkErrorMessage(): string {
+  return [
+    "A new version of Mercy Blade was deployed.",
+    "Your browser is still holding an older app file, so this page could not load correctly.",
+    "We’ll refresh once automatically.",
+  ].join(" ");
+}
+
+function looksLikeChunkLoadFailure(err: unknown): boolean {
+  const message = asErrorMessage(err).toLowerCase();
+
+  return (
+    message.includes("failed to fetch dynamically imported module") ||
+    message.includes("dynamically imported module") ||
+    message.includes("importing a module script failed") ||
+    message.includes("loading chunk") ||
+    message.includes("chunkloaderror") ||
+    message.includes("failed to import")
+  );
+}
+
+function hasAlreadyAttemptedChunkRecovery(): boolean {
+  try {
+    return sessionStorage.getItem(CHUNK_RELOAD_SESSION_KEY) === "1";
+  } catch {
+    return Boolean(window.__MB_CHUNK_RELOAD_ATTEMPTED__);
+  }
+}
+
+function markChunkRecoveryAttempted(): void {
+  try {
+    sessionStorage.setItem(CHUNK_RELOAD_SESSION_KEY, "1");
+  } catch {
+    window.__MB_CHUNK_RELOAD_ATTEMPTED__ = true;
+  }
+}
+
+function clearChunkRecoveryAttempt(): void {
+  try {
+    sessionStorage.removeItem(CHUNK_RELOAD_SESSION_KEY);
+  } catch {
+    window.__MB_CHUNK_RELOAD_ATTEMPTED__ = false;
+  }
+}
+
+function scheduleOneTimeChunkReload(): boolean {
+  if (hasAlreadyAttemptedChunkRecovery()) {
+    return false;
+  }
+
+  markChunkRecoveryAttempted();
+
+  window.setTimeout(() => {
+    try {
+      window.location.reload();
+    } catch {
+      // ignore
+    }
+  }, 900);
+
+  return true;
+}
 
 (function attachFatalErrorOverlay() {
   const getOverlayRoot = (): HTMLDivElement | null => {
@@ -82,7 +144,7 @@ const devLog = (...args: unknown[]) => {
       }
 
       const existing = document.querySelector<HTMLDivElement>(
-        '[data-mb-fatal-overlay="1"]'
+        '[data-mb-fatal-overlay="1"]',
       );
       if (existing) {
         window.__MB_FATAL_OVERLAY_EL__ = existing;
@@ -99,19 +161,107 @@ const devLog = (...args: unknown[]) => {
     }
   };
 
-  const mount = (title: string, err: unknown) => {
+  const mountFriendlyChunkRecoveryOverlay = (err: unknown) => {
     try {
       const overlayRoot = getOverlayRoot();
       if (!overlayRoot) return;
 
-      const message =
-        err instanceof Error
-          ? err.stack || err.message
-          : typeof err === "string"
-            ? err
-            : JSON.stringify(err, null, 2);
+      overlayRoot.innerHTML = "";
 
-      const msg = `${title}\n\n${message}\n\nURL: ${window.location.href}`;
+      const wrap = document.createElement("div");
+      wrap.style.position = "fixed";
+      wrap.style.inset = "0";
+      wrap.style.zIndex = "2147483647";
+      wrap.style.background = "rgba(255,255,255,0.98)";
+      wrap.style.color = "#0f172a";
+      wrap.style.padding = "24px";
+      wrap.style.fontFamily =
+        'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+      wrap.style.display = "flex";
+      wrap.style.alignItems = "center";
+      wrap.style.justifyContent = "center";
+
+      const card = document.createElement("div");
+      card.style.width = "100%";
+      card.style.maxWidth = "640px";
+      card.style.border = "1px solid rgba(15,23,42,0.08)";
+      card.style.borderRadius = "20px";
+      card.style.background = "linear-gradient(180deg,#f8fafc 0%, #eefbf7 100%)";
+      card.style.boxShadow = "0 10px 30px rgba(15,23,42,0.08)";
+      card.style.padding = "24px";
+
+      const title = document.createElement("h1");
+      title.textContent = "Refreshing Mercy Blade";
+      title.style.margin = "0";
+      title.style.fontSize = "28px";
+      title.style.lineHeight = "1.1";
+      title.style.fontWeight = "900";
+      title.style.color = "#111827";
+
+      const body = document.createElement("p");
+      body.textContent = getFriendlyChunkErrorMessage();
+      body.style.margin = "12px 0 0";
+      body.style.color = "#475569";
+      body.style.lineHeight = "1.7";
+      body.style.fontSize = "16px";
+
+      const debug = document.createElement("pre");
+      debug.textContent = asErrorMessage(err);
+      debug.style.whiteSpace = "pre-wrap";
+      debug.style.margin = "18px 0 0";
+      debug.style.padding = "12px 14px";
+      debug.style.borderRadius = "14px";
+      debug.style.border = "1px solid rgba(15,23,42,0.08)";
+      debug.style.background = "rgba(255,255,255,0.88)";
+      debug.style.color = "#334155";
+      debug.style.fontSize = "12px";
+      debug.style.lineHeight = "1.5";
+      debug.style.overflow = "auto";
+
+      const actions = document.createElement("div");
+      actions.style.display = "flex";
+      actions.style.gap = "12px";
+      actions.style.flexWrap = "wrap";
+      actions.style.marginTop = "18px";
+
+      const reloadBtn = document.createElement("button");
+      reloadBtn.type = "button";
+      reloadBtn.textContent = "Refresh now";
+      reloadBtn.onclick = () => window.location.reload();
+      reloadBtn.style.borderRadius = "14px";
+      reloadBtn.style.minHeight = "46px";
+      reloadBtn.style.padding = "12px 16px";
+      reloadBtn.style.border = "1px solid rgba(15,23,42,0.12)";
+      reloadBtn.style.background = "#0f172a";
+      reloadBtn.style.color = "#fff";
+      reloadBtn.style.fontWeight = "900";
+      reloadBtn.style.cursor = "pointer";
+
+      actions.appendChild(reloadBtn);
+
+      card.appendChild(title);
+      card.appendChild(body);
+      card.appendChild(actions);
+
+      if (import.meta.env.DEV) {
+        card.appendChild(debug);
+      }
+
+      wrap.appendChild(card);
+      overlayRoot.appendChild(wrap);
+
+      window.__MB_FATAL_OVERLAY_SHOWN__ = true;
+    } catch {
+      // ignore overlay failures
+    }
+  };
+
+  const mountFatalOverlay = (title: string, err: unknown) => {
+    try {
+      const overlayRoot = getOverlayRoot();
+      if (!overlayRoot) return;
+
+      const message = `${title}\n\n${asErrorMessage(err)}\n\nURL: ${window.location.href}`;
 
       overlayRoot.innerHTML = "";
 
@@ -131,7 +281,7 @@ const devLog = (...args: unknown[]) => {
       const pre = document.createElement("pre");
       pre.style.whiteSpace = "pre-wrap";
       pre.style.margin = "0";
-      pre.textContent = msg;
+      pre.textContent = message;
 
       wrap.appendChild(pre);
       overlayRoot.appendChild(wrap);
@@ -142,14 +292,28 @@ const devLog = (...args: unknown[]) => {
     }
   };
 
+  const handleGlobalFatal = (title: string, err: unknown) => {
+    if (looksLikeChunkLoadFailure(err)) {
+      mountFriendlyChunkRecoveryOverlay(err);
+
+      const scheduled = scheduleOneTimeChunkReload();
+      if (!scheduled) {
+        mountFatalOverlay(`${title} (chunk reload already attempted)`, err);
+      }
+      return;
+    }
+
+    mountFatalOverlay(title, err);
+  };
+
   window.addEventListener("error", (e: ErrorEvent) => {
     if (window.__MB_FATAL_OVERLAY_SHOWN__) return;
-    mount("[MB FATAL] window.error", e.error ?? e.message);
+    handleGlobalFatal("[MB FATAL] window.error", e.error ?? e.message);
   });
 
   window.addEventListener("unhandledrejection", (e: PromiseRejectionEvent) => {
     if (window.__MB_FATAL_OVERLAY_SHOWN__) return;
-    mount("[MB FATAL] unhandledrejection", e.reason);
+    handleGlobalFatal("[MB FATAL] unhandledrejection", e.reason);
   });
 })();
 
@@ -215,6 +379,12 @@ const devLog = (...args: unknown[]) => {
   } catch {
     // never block boot
   }
+})();
+
+(function clearChunkReloadMarkerAfterHealthyBoot() {
+  window.setTimeout(() => {
+    clearChunkRecoveryAttempt();
+  }, 8000);
 })();
 
 const root = document.getElementById("root");

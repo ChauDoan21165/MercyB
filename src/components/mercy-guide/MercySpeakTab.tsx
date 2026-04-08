@@ -16,6 +16,7 @@ import {
   Radio,
   Sparkles,
   BookOpenText,
+  Wand2,
 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -186,6 +187,36 @@ function getCoachMessage(score: number, hasTranscript: boolean): string {
   }
 
   return 'Start slower. Focus on matching the exact words before trying to sound fast.';
+}
+
+function getVariantButtonClass(active: boolean) {
+  return active
+    ? 'border-[#FFD4C6] bg-gradient-to-r from-[#FFF0E9] to-[#FFF8F4] text-[#D66A4E] shadow-[0_8px_20px_rgba(255,138,101,0.12)]'
+    : 'border-slate-200 bg-white/92 text-slate-600 hover:border-[#FFD4C6] hover:bg-[#FFF8F4] hover:text-[#D66A4E]';
+}
+
+function getMetricTone(score: number) {
+  if (score >= 85) {
+    return {
+      ring: 'border-emerald-200 bg-emerald-50/80',
+      text: 'text-emerald-700',
+      bar: 'from-emerald-400 to-teal-400',
+    };
+  }
+
+  if (score >= 60) {
+    return {
+      ring: 'border-amber-200 bg-amber-50/80',
+      text: 'text-amber-700',
+      bar: 'from-amber-400 to-orange-400',
+    };
+  }
+
+  return {
+    ring: 'border-rose-200 bg-rose-50/80',
+    text: 'text-rose-700',
+    bar: 'from-rose-400 to-orange-400',
+  };
 }
 
 export function MercySpeakTab({
@@ -509,13 +540,18 @@ export function MercySpeakTab({
     }
   }
 
+  const levelLabel = profile?.english_level || 'intermediate';
+  const matchTone = getMetricTone(matchScore);
+
   return (
-    <div className="flex h-full min-h-0 flex-col overflow-hidden">
-      <div className="flex-1 min-h-0 overflow-y-auto px-4 py-4">
+    <div className="flex h-full min-h-0 flex-col overflow-hidden bg-gradient-to-br from-[#FFF8F3] via-[#FFFDFC] to-[#F7FAFF]">
+      <div className="flex-1 min-h-0 overflow-y-auto px-4 py-4 md:px-5 md:py-5">
         <div className="space-y-4">
           <div className="rounded-3xl border border-white/80 bg-white/92 p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
             <div className="flex items-center gap-2">
-              <Radio className="h-4 w-4 text-blue-600" />
+              <div className="rounded-full bg-[#EEF4FF] p-1.5">
+                <Radio className="h-4 w-4 text-[#2563EB]" />
+              </div>
               <p className="text-sm font-semibold text-slate-900">Practice the same sentence aloud</p>
             </div>
 
@@ -523,7 +559,7 @@ export function MercySpeakTab({
               Say the sentence slowly first. Match the wording and rhythm before trying to speak faster.
             </p>
 
-            <div className="mt-4 rounded-2xl border border-sky-100 bg-gradient-to-r from-sky-50/80 to-white p-4">
+            <div className="mt-4 rounded-[22px] border border-[#F4E6D9] bg-gradient-to-r from-[#FFF9F1] via-white to-[#FFF7F2] p-4 shadow-[0_10px_28px_rgba(255,138,101,0.08)]">
               <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
                 Best line to practice
               </p>
@@ -532,9 +568,11 @@ export function MercySpeakTab({
               </p>
             </div>
 
-            <div className="mt-4 rounded-2xl border border-emerald-100 bg-gradient-to-r from-emerald-50/70 to-white p-4">
-              <div className="flex items-start gap-2">
-                <Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
+            <div className="mt-4 rounded-[22px] border border-emerald-100 bg-gradient-to-r from-emerald-50/80 via-white to-teal-50/60 p-4 shadow-[0_8px_24px_rgba(16,185,129,0.08)]">
+              <div className="flex items-start gap-2.5">
+                <div className="rounded-full bg-white/90 p-1.5 shadow-sm">
+                  <Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
+                </div>
                 <div>
                   <p className="text-sm font-semibold text-slate-900">Mercy’s speaking goal</p>
                   <p className="mt-1 text-sm leading-6 text-slate-700">
@@ -554,8 +592,8 @@ export function MercySpeakTab({
                 </p>
               </div>
 
-              <div className="rounded-full border bg-slate-50 px-3 py-1 text-xs font-medium text-slate-600">
-                {profile?.english_level || 'intermediate'}
+              <div className="rounded-full border border-[#EBD7CA] bg-gradient-to-r from-[#FFF6F0] to-[#FFFDFC] px-3 py-1 text-xs font-semibold capitalize text-[#9A6A57] shadow-sm">
+                {levelLabel}
               </div>
             </div>
 
@@ -566,73 +604,126 @@ export function MercySpeakTab({
                 setVariant('custom');
               }}
               placeholder="Type the sentence you want to practice speaking..."
-              className="mt-4 min-h-[120px] w-full resize-y rounded-2xl border border-slate-200 bg-slate-50/70 p-4 text-base leading-7 outline-none"
+              className="mt-4 min-h-[120px] w-full resize-y rounded-[22px] border border-[#F0E2D7] bg-gradient-to-br from-[#FFF9F2] to-white p-4 text-base leading-7 text-slate-800 shadow-[inset_0_1px_0_rgba(255,255,255,0.85),0_8px_20px_rgba(255,138,101,0.05)] outline-none transition focus:border-[#F7B79E] focus:ring-2 focus:ring-[#FFD8C7]"
             />
 
             <div className="mt-4 flex flex-wrap gap-2">
-              <Button
+              <button
                 type="button"
-                variant={variant === 'custom' ? 'default' : 'outline'}
                 onClick={() => setVariant('custom')}
+                className={`rounded-2xl border px-4 py-2 text-sm font-semibold transition-all ${getVariantButtonClass(
+                  variant === 'custom',
+                )}`}
               >
                 Custom
-              </Button>
+              </button>
 
               {correctedText ? (
-                <Button
+                <button
                   type="button"
-                  variant={variant === 'corrected' ? 'default' : 'outline'}
                   onClick={() => {
                     setVariant('corrected');
                     setCustomText(correctedText);
                   }}
+                  className={`rounded-2xl border px-4 py-2 text-sm font-semibold transition-all ${getVariantButtonClass(
+                    variant === 'corrected',
+                  )}`}
                 >
                   Corrected
-                </Button>
+                </button>
               ) : null}
 
               {enhancedText ? (
-                <Button
+                <button
                   type="button"
-                  variant={variant === 'enhanced' ? 'default' : 'outline'}
                   onClick={() => {
                     setVariant('enhanced');
                     setCustomText(enhancedText);
                   }}
+                  className={`rounded-2xl border px-4 py-2 text-sm font-semibold transition-all ${getVariantButtonClass(
+                    variant === 'enhanced',
+                  )}`}
                 >
                   Enhanced
-                </Button>
+                </button>
               ) : null}
 
               {sourceText ? (
-                <Button
+                <button
                   type="button"
-                  variant={variant === 'source' ? 'default' : 'outline'}
                   onClick={() => {
                     setVariant('source');
                     setCustomText(sourceText);
                   }}
+                  className={`rounded-2xl border px-4 py-2 text-sm font-semibold transition-all ${getVariantButtonClass(
+                    variant === 'source',
+                  )}`}
                 >
                   Original
-                </Button>
+                </button>
               ) : null}
             </div>
 
-            <div className="mt-4 flex flex-wrap gap-2">
-              <Button type="button" variant="outline" onClick={handleSpeak} disabled={!practiceText}>
-                <Volume2 className="mr-2 h-4 w-4" />
-                {isSpeaking ? 'Replay Mercy audio' : 'Play Mercy audio'}
-              </Button>
+            <div className="mt-4">
+              <div className="rounded-[24px] border border-[#F0E2D7] bg-gradient-to-r from-[#FFF8F3] via-white to-[#FFFDFC] p-2 shadow-[0_10px_26px_rgba(255,138,101,0.06)]">
+                <div className="grid gap-2 md:grid-cols-3">
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={handleSpeak}
+                    disabled={!practiceText}
+                    className="h-14 justify-start rounded-[18px] border-teal-200 bg-gradient-to-r from-[#6EC6C8] to-[#5DAFB6] px-4 text-left text-white shadow-[0_10px_20px_rgba(93,175,182,0.26)] hover:brightness-[1.03] disabled:opacity-60"
+                  >
+                    <span className="mr-3 rounded-full bg-white/15 p-2 shadow-[0_0_0_4px_rgba(255,255,255,0.08)]">
+                      <Volume2 className="h-4 w-4" />
+                    </span>
+                    <span className="flex flex-col items-start">
+                      <span className="text-sm font-semibold">
+                        {isSpeaking ? 'Replay Mercy audio' : 'Play Mercy audio'}
+                      </span>
+                      <span className="text-[11px] font-medium text-white/85">
+                        Hear the warm Mercy model first
+                      </span>
+                    </span>
+                  </Button>
 
-              <Button type="button" variant="outline" onClick={stopSpeaking} disabled={!isSpeaking}>
-                <Square className="mr-2 h-4 w-4" />
-                Stop audio
-              </Button>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={stopSpeaking}
+                    disabled={!isSpeaking}
+                    className="h-14 justify-start rounded-[18px] border-[#F2D8CA] bg-white px-4 text-left text-slate-800 shadow-sm hover:bg-[#FFF8F4] disabled:opacity-60"
+                  >
+                    <span className="mr-3 rounded-full bg-[#FFE8DE] p-2">
+                      <Square className="h-4 w-4 text-[#E76F51]" />
+                    </span>
+                    <span className="flex flex-col items-start">
+                      <span className="text-sm font-semibold">Stop audio</span>
+                      <span className="text-[11px] font-medium text-slate-500">
+                        Pause Mercy playback
+                      </span>
+                    </span>
+                  </Button>
 
-              <Button type="button" variant="outline" onClick={handleCopy} disabled={!practiceText}>
-                <Copy className="mr-2 h-4 w-4" />
-                {copySuccess ? 'Copied' : 'Copy text'}
-              </Button>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={handleCopy}
+                    disabled={!practiceText}
+                    className="h-14 justify-start rounded-[18px] border-[#F2E7DE] bg-white px-4 text-left text-slate-700 shadow-sm hover:bg-[#FFF8F4] disabled:opacity-60"
+                  >
+                    <span className="mr-3 rounded-full bg-[#F8F1EB] p-2">
+                      <Copy className="h-4 w-4 text-slate-600" />
+                    </span>
+                    <span className="flex flex-col items-start">
+                      <span className="text-sm font-semibold">{copySuccess ? 'Copied' : 'Copy text'}</span>
+                      <span className="text-[11px] font-medium text-slate-500">
+                        Save the line to practice later
+                      </span>
+                    </span>
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -651,12 +742,20 @@ export function MercySpeakTab({
                     type="button"
                     onClick={startListening}
                     disabled={!supportsRecognition || !practiceText}
+                    className="h-12 rounded-2xl border-0 bg-gradient-to-r from-[#4FC5C7] to-[#38AEB6] px-4 text-white shadow-[0_12px_24px_rgba(56,174,182,0.28)] hover:brightness-[1.03] disabled:opacity-60"
                   >
-                    <Mic className="mr-2 h-4 w-4" />
+                    <span className="mr-2 rounded-full bg-white/15 p-1.5 shadow-[0_0_0_4px_rgba(255,255,255,0.08)]">
+                      <Mic className="h-4 w-4" />
+                    </span>
                     Start speaking
                   </Button>
                 ) : (
-                  <Button type="button" variant="destructive" onClick={stopListening}>
+                  <Button
+                    type="button"
+                    variant="destructive"
+                    onClick={stopListening}
+                    className="h-12 rounded-2xl px-4 shadow-[0_12px_24px_rgba(239,68,68,0.18)]"
+                  >
                     <Square className="mr-2 h-4 w-4" />
                     Stop
                   </Button>
@@ -668,18 +767,31 @@ export function MercySpeakTab({
                     variant="outline"
                     onClick={startRecording}
                     disabled={!supportsMediaRecording}
+                    className="h-12 rounded-2xl border-[#BFE8EA] bg-[#F4FEFE] px-4 text-[#137E86] shadow-sm hover:bg-[#ECFCFD] disabled:opacity-60"
                   >
-                    <PlayCircle className="mr-2 h-4 w-4" />
+                    <span className="mr-2 rounded-full bg-[#D8F7F8] p-1.5 shadow-sm">
+                      <PlayCircle className="h-4 w-4" />
+                    </span>
                     Record your voice
                   </Button>
                 ) : (
-                  <Button type="button" variant="outline" onClick={stopRecording}>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={stopRecording}
+                    className="h-12 rounded-2xl border-[#F2D8CA] bg-white px-4 text-slate-800 shadow-sm hover:bg-[#FFF8F4]"
+                  >
                     <Square className="mr-2 h-4 w-4" />
                     Stop recording
                   </Button>
                 )}
 
-                <Button type="button" variant="outline" onClick={handleResetAttempt}>
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={handleResetAttempt}
+                  className="h-12 rounded-2xl border-[#F2E7DE] bg-white px-4 text-slate-700 shadow-sm hover:bg-[#FFF8F4]"
+                >
                   <RotateCcw className="mr-2 h-4 w-4" />
                   Reset
                 </Button>
@@ -725,7 +837,7 @@ export function MercySpeakTab({
             ) : null}
 
             <div className="mt-4 grid gap-4 md:grid-cols-2">
-              <div className="rounded-2xl border border-slate-200 p-4">
+              <div className="rounded-[22px] border border-[#F1E5DB] bg-gradient-to-br from-[#FFF9F3] to-white p-4 shadow-sm">
                 <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
                   You said
                 </p>
@@ -734,19 +846,36 @@ export function MercySpeakTab({
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-slate-200 p-4">
-                <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                  Match score
-                </p>
+              <div className={`rounded-[22px] border p-4 shadow-sm ${transcript ? matchTone.ring : 'border-[#F1E5DB] bg-gradient-to-br from-[#FFF9F3] to-white'}`}>
+                <div className="flex items-center justify-between gap-3">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                    Match score
+                  </p>
+
+                  {transcript ? (
+                    <span className={`rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide ${matchTone.text} ${matchTone.ring}`}>
+                      {getConfidenceLevel(matchScore)}
+                    </span>
+                  ) : null}
+                </div>
+
                 <p className="mt-2 text-2xl font-semibold text-slate-900">
                   {transcript ? `${matchScore}%` : '--'}
                 </p>
-                <p className="mt-2 text-sm leading-6 text-slate-600">{coachMessage}</p>
+
+                <div className="mt-3 h-2.5 overflow-hidden rounded-full bg-white/90">
+                  <div
+                    className={`h-full rounded-full bg-gradient-to-r transition-all duration-500 ${matchTone.bar}`}
+                    style={{ width: `${transcript ? matchScore : 0}%` }}
+                  />
+                </div>
+
+                <p className="mt-3 text-sm leading-6 text-slate-600">{coachMessage}</p>
               </div>
             </div>
 
             {feedbackNotes.length > 0 ? (
-              <div className="mt-4 rounded-2xl border border-emerald-100 bg-emerald-50/60 p-4">
+              <div className="mt-4 rounded-[22px] border border-emerald-100 bg-gradient-to-r from-emerald-50/75 via-white to-teal-50/60 p-4 shadow-[0_8px_22px_rgba(16,185,129,0.08)]">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="h-4 w-4 text-emerald-600" />
                   <p className="text-sm font-semibold text-slate-900">Mercy feedback</p>
@@ -763,7 +892,7 @@ export function MercySpeakTab({
             ) : null}
 
             {recordedAudioUrl ? (
-              <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50/70 p-4">
+              <div className="mt-4 rounded-[22px] border border-[#F1E5DB] bg-gradient-to-br from-[#FFF9F3] to-white p-4 shadow-sm">
                 <div className="flex items-center gap-2">
                   <PlayCircle className="h-4 w-4 text-emerald-600" />
                   <p className="text-sm font-semibold text-slate-900">Your latest recording</p>
@@ -775,9 +904,11 @@ export function MercySpeakTab({
               </div>
             ) : null}
 
-            <div className="mt-4 rounded-2xl border border-violet-100 bg-gradient-to-r from-violet-50/70 to-white p-4">
-              <div className="flex items-start gap-2">
-                <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 text-violet-600" />
+            <div className="mt-4 rounded-[22px] border border-violet-100 bg-gradient-to-r from-violet-50/75 via-white to-rose-50/50 p-4 shadow-[0_10px_24px_rgba(168,85,247,0.08)]">
+              <div className="flex items-start gap-2.5">
+                <div className="rounded-full bg-white/90 p-1.5 shadow-sm">
+                  <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 text-violet-600" />
+                </div>
                 <div>
                   <p className="text-sm font-semibold text-slate-900">Mercy’s next step</p>
                   <p className="mt-1 text-sm leading-6 text-slate-700">{nextStepMessage}</p>
@@ -789,13 +920,21 @@ export function MercySpeakTab({
                   type="button"
                   onClick={startListening}
                   disabled={!supportsRecognition || !practiceText || isListening}
+                  className="h-11 rounded-2xl border-0 bg-gradient-to-r from-[#4FC5C7] to-[#38AEB6] px-4 text-white shadow-[0_10px_20px_rgba(56,174,182,0.24)] hover:brightness-[1.03] disabled:opacity-60"
                 >
-                  <Mic className="mr-2 h-4 w-4" />
+                  <span className="mr-2 rounded-full bg-white/15 p-1.5 shadow-[0_0_0_4px_rgba(255,255,255,0.08)]">
+                    <Mic className="h-4 w-4" />
+                  </span>
                   Try again slowly
                 </Button>
 
                 {onOpenEnglishLogic ? (
-                  <Button type="button" variant="outline" onClick={onOpenEnglishLogic}>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={onOpenEnglishLogic}
+                    className="h-11 rounded-2xl border-violet-200 bg-white text-violet-700 shadow-sm hover:bg-violet-50"
+                  >
                     <BookOpenText className="mr-2 h-4 w-4" />
                     Understand why it changed
                   </Button>
@@ -805,13 +944,16 @@ export function MercySpeakTab({
           </div>
 
           {troubleWordList.length > 0 || generatedTroubleWords.length > 0 ? (
-            <div className="rounded-2xl border border-white/80 bg-white p-4 shadow-sm">
-              <p className="text-sm font-semibold text-slate-900">Watch these trouble words</p>
+            <div className="rounded-[22px] border border-white/80 bg-white p-4 shadow-sm">
+              <div className="flex items-center gap-2">
+                <Wand2 className="h-4 w-4 text-[#E76F51]" />
+                <p className="text-sm font-semibold text-slate-900">Watch these trouble words</p>
+              </div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {[...new Set([...troubleWordList, ...generatedTroubleWords])].map((word) => (
                   <span
                     key={word}
-                    className="rounded-full border bg-slate-50 px-3 py-1 text-xs font-medium text-slate-700"
+                    className="rounded-full border border-[#F2DDD0] bg-gradient-to-r from-[#FFF5EF] to-white px-3 py-1 text-xs font-medium text-[#875E4B] shadow-sm"
                   >
                     {word}
                   </span>
@@ -821,17 +963,17 @@ export function MercySpeakTab({
           ) : null}
 
           {sourceText && correctedText && sourceText !== correctedText ? (
-            <div className="rounded-2xl border border-white/80 bg-white p-4 shadow-sm">
+            <div className="rounded-[22px] border border-white/80 bg-white p-4 shadow-sm">
               <p className="text-sm font-semibold text-slate-900">Why this sentence matters</p>
               <div className="mt-3 grid gap-3 md:grid-cols-2">
-                <div className="rounded-2xl border border-slate-200 p-3">
+                <div className="rounded-[20px] border border-[#F1E5DB] bg-gradient-to-br from-[#FFF9F3] to-white p-3">
                   <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
                     Original
                   </p>
                   <p className="mt-2 text-sm leading-6 text-slate-700">{sourceText}</p>
                 </div>
 
-                <div className="rounded-2xl border border-slate-200 p-3">
+                <div className="rounded-[20px] border border-[#F1E5DB] bg-gradient-to-br from-[#FFF9F3] to-white p-3">
                   <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
                     Better model
                   </p>
