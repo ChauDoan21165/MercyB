@@ -1,3 +1,5 @@
+// File: supabase/functions/billing-stripe-change-plan/index.ts
+
 // deno-lint-ignore-file no-import-prefix
 
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.39.3";
@@ -135,17 +137,45 @@ function isStripePriceId(value: string | null): value is string {
   return !!value && /^price_[A-Za-z0-9]+$/.test(value);
 }
 
+function isStripeCustomerId(value: string | null): value is string {
+  return !!value && /^cus_[A-Za-z0-9]+$/.test(value);
+}
+
+function isValidHttpUrl(value: string | null): value is string {
+  if (!value) return false;
+  try {
+    const url = new URL(value);
+    return url.protocol === "http:" || url.protocol === "https:";
+  } catch {
+    return false;
+  }
+}
+
 function errToObj(error: unknown): Record<string, unknown> {
-  if (error instanceof Error) {
-    const cause = asRecordOrNull(error.cause);
+  const record = asRecordOrNull(error);
+
+  if (error instanceof Stripe.errors.StripeError) {
     return {
-      name: error.name,
+      type: error.type ?? error.name,
       message: error.message,
-      cause: cause?.message ?? error.cause ?? null,
+      code: error.code ?? null,
+      param: error.param ?? null,
+      statusCode: error.statusCode ?? null,
+      requestId: error.requestId ?? null,
+      decline_code: "decline_code" in error ? error.decline_code ?? null : null,
+      ...(record ?? {}),
     };
   }
 
-  const record = asRecordOrNull(error);
+  if (error instanceof Error) {
+    return {
+      type: error.name,
+      message: error.message,
+      stack: error.stack ?? null,
+      ...(record ?? {}),
+    };
+  }
+
   return {
     message: String(error),
     ...(record ?? {}),
@@ -157,6 +187,49 @@ function getBearerToken(req: Request): string {
   return authHeader.toLowerCase().startsWith("bearer ")
     ? authHeader.slice(7).trim()
     : "";
+}
+
+function logInfo(message: string, data?: Record<string, unknown>) {
+  console.log(JSON.stringify({ level: "info", message, ...(data ?? {}) }));
+}
+
+function logError(message: string, data?: Record<string, unknown>) {
+  console.error(JSON.stringify({ level: "error", message, ...(data ?? {}) }));
+}
+
+function getStringField(
+  body: Record<string, unknown>,
+  keys: string[],
+): string | null {
+  for (const key of keys) {
+    const value = asNonEmptyStringOrNull(body[key]);
+    if (value) return value;
+  }
+  return null;
+}
+
+function getRequestOrigin(req: Request): string | null {
+  const origin = asNonEmptyStringOrNull(req.headers.get("origin"));
+  if (origin) return origin.replace(/\/+$/, "");
+
+  const referer = asNonEmptyStringOrNull(req.headers.get("referer"));
+  if (referer) {
+    try {
+      return new URL(referer).origin.replace(/\/+$/, "");
+    } catch {
+      return null;
+    }
+  }
+
+  return null;
+}
+
+function buildDefaultUrls(req: Request) {
+  const origin = getRequestOrigin(req) ?? "http://127.0.0.1:3107";
+  return {
+    successUrl: `${origin}/billing/success`,
+    cancelUrl: `${origin}/pricing`,
+  };
 }
 
 async function getAuthenticatedUser(params: {
@@ -275,7 +348,7 @@ async function getTierAndPrice(params: {
 
   if (!resolvedPriceId && !resolvedTierId) {
     return {
-      error: json({ error: "tier_id or price_id is required" }, 400),
+      error: json({ error: "tier_id/tierId or price_id/priceId is required" }, 400),
     };
   }
 
@@ -362,6 +435,19 @@ async function validateTargetPrice(params: {
   try {
     const price = await params.stripe.prices.retrieve(params.priceId);
 
+    if (!price || price.deleted) {
+      return {
+        ok: false,
+        response: json(
+          {
+            error: "Stripe price not found",
+            detail: { price_id: params.priceId },
+          },
+          400,
+        ),
+      };
+    }
+
     if (!price.active) {
       return {
         ok: false,
@@ -415,46 +501,147 @@ function inferChangeType(params: {
   return "lateral";
 }
 
-async function getOrCreateStripeCustomer(params: {
+async function loadProfileByUserId(params: {
   supabaseAdmin: AdminClient;
-  stripe: Stripe;
   userId: string;
-  email: string | null;
 }): Promise<
-  | { customerId: string }
+  | { profile: ProfilesRow | null }
   | { error: Response }
 > {
-  const { data: profiles, error: profileError } = await params.supabaseAdmin
+  const { data: profiles, error } = await params.supabaseAdmin
     .from("profiles")
-    .select("id,user_id,stripe_customer_id")
+    .select("id,user_id,stripe_customer_id,created_at,updated_at")
     .or(`id.eq.${params.userId},user_id.eq.${params.userId}`)
     .limit(10);
 
-  if (profileError) {
+  if (error) {
     return {
       error: json(
         {
           error: "Failed to load profile",
-          detail: profileError.message,
+          detail: error.message,
         },
         500,
       ),
     };
   }
 
-  const existingProfile =
+  const profile =
     (profiles ?? []).find((p) => asNonEmptyStringOrNull(p?.id) === params.userId) ??
     (profiles ?? []).find((p) => asNonEmptyStringOrNull(p?.user_id) === params.userId) ??
     null;
 
-  const existingCustomerId = asNonEmptyStringOrNull(existingProfile?.stripe_customer_id);
-  if (existingCustomerId) {
-    return { customerId: existingCustomerId };
+  return { profile };
+}
+
+async function persistStripeCustomerId(params: {
+  supabaseAdmin: AdminClient;
+  userId: string;
+  profile: ProfilesRow | null;
+  customerId: string;
+}): Promise<{ ok: true } | { error: Response }> {
+  const timestamp = new Date().toISOString();
+
+  if (params.profile?.id) {
+    const { error } = await params.supabaseAdmin
+      .from("profiles")
+      .update({
+        user_id: params.userId,
+        stripe_customer_id: params.customerId,
+        updated_at: timestamp,
+      })
+      .eq("id", params.profile.id);
+
+    if (error) {
+      return {
+        error: json(
+          {
+            error: "Failed to update profile with Stripe customer id",
+            detail: error.message,
+          },
+          500,
+        ),
+      };
+    }
+
+    return { ok: true };
   }
 
-  let customer: Stripe.Customer;
+  const { error: insertError } = await params.supabaseAdmin
+    .from("profiles")
+    .insert({
+      id: params.userId,
+      user_id: params.userId,
+      stripe_customer_id: params.customerId,
+      updated_at: timestamp,
+    });
+
+  if (insertError) {
+    const { error: fallbackError } = await params.supabaseAdmin
+      .from("profiles")
+      .update({
+        user_id: params.userId,
+        stripe_customer_id: params.customerId,
+        updated_at: timestamp,
+      })
+      .eq("id", params.userId);
+
+    if (fallbackError) {
+      return {
+        error: json(
+          {
+            error: "Failed to persist Stripe customer id",
+            detail: {
+              insert: insertError.message,
+              fallbackUpdate: fallbackError.message,
+            },
+          },
+          500,
+        ),
+      };
+    }
+  }
+
+  return { ok: true };
+}
+
+async function ensureValidStripeCustomer(params: {
+  supabaseAdmin: AdminClient;
+  stripe: Stripe;
+  userId: string;
+  email: string | null;
+}): Promise<{ customerId: string } | { error: Response }> {
+  const loaded = await loadProfileByUserId({
+    supabaseAdmin: params.supabaseAdmin,
+    userId: params.userId,
+  });
+  if ("error" in loaded) return loaded;
+
+  const profile = loaded.profile;
+  const existingCustomerId = asNonEmptyStringOrNull(profile?.stripe_customer_id);
+
+  if (isStripeCustomerId(existingCustomerId)) {
+    try {
+      const existingCustomer = await params.stripe.customers.retrieve(existingCustomerId);
+
+      if (!("deleted" in existingCustomer) || existingCustomer.deleted !== true) {
+        logInfo("Using existing Stripe customer", {
+          user_id: params.userId,
+          customer_id: existingCustomerId,
+        });
+        return { customerId: existingCustomerId };
+      }
+    } catch (error) {
+      logError("Stored Stripe customer id is invalid in current mode", {
+        user_id: params.userId,
+        customer_id: existingCustomerId,
+        detail: errToObj(error),
+      });
+    }
+  }
+
   try {
-    customer = await params.stripe.customers.create({
+    const customer = await params.stripe.customers.create({
       email: params.email ?? undefined,
       metadata: {
         supabase_user_id: params.userId,
@@ -464,6 +651,21 @@ async function getOrCreateStripeCustomer(params: {
         ...(params.email ? { email: params.email } : {}),
       },
     });
+
+    const persisted = await persistStripeCustomerId({
+      supabaseAdmin: params.supabaseAdmin,
+      userId: params.userId,
+      profile,
+      customerId: customer.id,
+    });
+    if ("error" in persisted) return persisted;
+
+    logInfo("Created new Stripe customer", {
+      user_id: params.userId,
+      customer_id: customer.id,
+    });
+
+    return { customerId: customer.id };
   } catch (error) {
     return {
       error: json(
@@ -475,70 +677,6 @@ async function getOrCreateStripeCustomer(params: {
       ),
     };
   }
-
-  const timestamp = new Date().toISOString();
-
-  if (existingProfile?.id) {
-    const { error: updateError } = await params.supabaseAdmin
-      .from("profiles")
-      .update({
-        user_id: params.userId,
-        stripe_customer_id: customer.id,
-        updated_at: timestamp,
-      })
-      .eq("id", existingProfile.id);
-
-    if (updateError) {
-      return {
-        error: json(
-          {
-            error: "Failed to update existing profile with Stripe customer id",
-            detail: updateError.message,
-          },
-          500,
-        ),
-      };
-    }
-
-    return { customerId: customer.id };
-  }
-
-  const { error: insertError } = await params.supabaseAdmin
-    .from("profiles")
-    .insert({
-      id: params.userId,
-      user_id: params.userId,
-      stripe_customer_id: customer.id,
-      updated_at: timestamp,
-    });
-
-  if (insertError) {
-    const { error: fallbackUpdateError } = await params.supabaseAdmin
-      .from("profiles")
-      .update({
-        user_id: params.userId,
-        stripe_customer_id: customer.id,
-        updated_at: timestamp,
-      })
-      .eq("id", params.userId);
-
-    if (fallbackUpdateError) {
-      return {
-        error: json(
-          {
-            error: "Failed to persist Stripe customer id",
-            detail: {
-              insert: insertError.message,
-              fallbackUpdate: fallbackUpdateError.message,
-            },
-          },
-          500,
-        ),
-      };
-    }
-  }
-
-  return { customerId: customer.id };
 }
 
 async function createCheckoutSessionForFreeUser(params: {
@@ -552,7 +690,13 @@ async function createCheckoutSessionForFreeUser(params: {
   successUrl: string;
   cancelUrl: string;
 }): Promise<Response> {
-  const customer = await getOrCreateStripeCustomer({
+  const priceValidation = await validateTargetPrice({
+    stripe: params.stripe,
+    priceId: params.resolvedPriceId,
+  });
+  if (!priceValidation.ok) return priceValidation.response;
+
+  const customer = await ensureValidStripeCustomer({
     supabaseAdmin: params.supabaseAdmin,
     stripe: params.stripe,
     userId: params.userId,
@@ -599,10 +743,36 @@ async function createCheckoutSessionForFreeUser(params: {
       },
     });
   } catch (error) {
+    logError("Failed to create Stripe checkout session", {
+      stage: "checkout.sessions.create",
+      user_id: params.userId,
+      customer_id: customer.customerId,
+      price_id: params.resolvedPriceId,
+      success_url: params.successUrl,
+      cancel_url: params.cancelUrl,
+      detail: errToObj(error),
+    });
+
     return json(
       {
         error: "Failed to create Stripe checkout session",
         detail: errToObj(error),
+        debug: {
+          stage: "checkout.sessions.create",
+          user_id: params.userId,
+          customer_id: customer.customerId,
+          price_id: params.resolvedPriceId,
+        },
+      },
+      500,
+    );
+  }
+
+  if (!session.url) {
+    return json(
+      {
+        error: "Stripe checkout session created without URL",
+        detail: { session_id: session.id },
       },
       500,
     );
@@ -612,9 +782,9 @@ async function createCheckoutSessionForFreeUser(params: {
     ok: true,
     action: "checkout",
     mode: "checkout",
-    url: session.url ?? null,
-    checkout_url: session.url ?? null,
-    checkoutUrl: session.url ?? null,
+    url: session.url,
+    checkout_url: session.url,
+    checkoutUrl: session.url,
     requested_price_id: params.resolvedPriceId,
     tier_id: params.resolvedTierId,
     message: "Checkout session created successfully.",
@@ -650,6 +820,14 @@ Deno.serve(async (req) => {
       );
     }
 
+    logInfo("billing-stripe-change-plan invoked", {
+      stripe_mode: stripeSecretKey.startsWith("sk_live_")
+        ? "live"
+        : stripeSecretKey.startsWith("sk_test_")
+          ? "test"
+          : "unknown",
+    });
+
     const auth = await getAuthenticatedUser({
       req,
       supabaseUrl,
@@ -661,16 +839,30 @@ Deno.serve(async (req) => {
     const body = asRecordOrNull(rawBody);
     if (!body) return json({ error: "Invalid JSON body" }, 400);
 
-    const tierId = asNonEmptyStringOrNull(body.tier_id);
-    const directPriceId = asNonEmptyStringOrNull(body.price_id);
-    const successUrl =
-      asNonEmptyStringOrNull(body.success_url) ??
-      asNonEmptyStringOrNull(body.successUrl) ??
-      "http://127.0.0.1:3107/billing/success";
-    const cancelUrl =
-      asNonEmptyStringOrNull(body.cancel_url) ??
-      asNonEmptyStringOrNull(body.cancelUrl) ??
-      "http://127.0.0.1:3107/pricing";
+    const tierId = getStringField(body, ["tier_id", "tierId"]);
+    const directPriceId = getStringField(body, ["price_id", "priceId"]);
+
+    const defaults = buildDefaultUrls(req);
+    const requestedSuccessUrl = getStringField(body, ["success_url", "successUrl"]);
+    const requestedCancelUrl = getStringField(body, ["cancel_url", "cancelUrl"]);
+
+    const successUrl = isValidHttpUrl(requestedSuccessUrl)
+      ? requestedSuccessUrl
+      : defaults.successUrl;
+    const cancelUrl = isValidHttpUrl(requestedCancelUrl)
+      ? requestedCancelUrl
+      : defaults.cancelUrl;
+
+    logInfo("Incoming billing payload", {
+      user_id: auth.user.id,
+      keys: Object.keys(body),
+      tier_id: tierId,
+      price_id: directPriceId,
+      requested_success_url: requestedSuccessUrl,
+      requested_cancel_url: requestedCancelUrl,
+      success_url: successUrl,
+      cancel_url: cancelUrl,
+    });
 
     const stripe = new Stripe(stripeSecretKey, {
       apiVersion: "2022-11-15",
@@ -687,6 +879,13 @@ Deno.serve(async (req) => {
     if ("error" in tierAndPrice) return tierAndPrice.error;
 
     const { tier, resolvedTierId, resolvedPriceId } = tierAndPrice.data;
+
+    logInfo("Resolved tier/price", {
+      user_id: auth.user.id,
+      resolved_tier_id: resolvedTierId,
+      resolved_price_id: resolvedPriceId,
+      tier_name: tier?.name ?? null,
+    });
 
     const canonical = await getCanonicalSubscription({
       supabaseAdmin,
@@ -797,6 +996,14 @@ Deno.serve(async (req) => {
         },
       });
     } catch (error) {
+      logError("Failed to update Stripe subscription plan", {
+        stage: "subscriptions.update",
+        user_id: auth.user.id,
+        subscription_id: subscriptionId,
+        requested_price_id: resolvedPriceId,
+        detail: errToObj(error),
+      });
+
       return json(
         {
           error: "Failed to update Stripe subscription plan",
@@ -823,6 +1030,10 @@ Deno.serve(async (req) => {
             : "Subscription updated successfully. Webhook will sync the canonical row.",
     });
   } catch (error) {
+    logError("Internal error", {
+      detail: errToObj(error),
+    });
+
     return json(
       {
         error: "Internal error",
