@@ -9,26 +9,6 @@ export const SIZE_PRESETS = {
   XL: { width: 640, height: 820 },
 } as const;
 
-export const MERCY_BLUE_PATH_FORWARD = {
-  idle: {
-    vi: "Bạn cần giúp gì không? Hãy thử tab 'Grammar & Writing' để sửa câu nhé!",
-    en: "Need a hand? Try the 'Grammar & Writing' tab to fix a sentence!",
-  },
-  navigation: {
-    vi: 'Bạn có thể hỏi mình về nội dung phòng này hoặc cách sử dụng các tính năng.',
-    en: "You can ask me about this room's content or how to use the features.",
-  },
-  switching: {
-    vi: "Đang chuyển đổi... 'Your Journey' theo dõi tiến bộ, 'Pronunciation' giúp luyện nói.",
-    en: "Switching... 'Your Journey' tracks progress, 'Pronunciation' helps you speak.",
-  },
-  idle_speak: {
-    vi: 'Đừng ngại nhé! Hãy nhấn vào biểu tượng Micro để bắt đầu luyện nói cùng mình.',
-    en: "Don't be shy! Just tap the Microphone icon to start practicing with me.",
-  },
-} as const;
-
-export const IDLE_THRESHOLD_MS = 15000;
 export const DEFAULT_PANEL_HEIGHT_RATIO = 0.75;
 export const DEFAULT_PANEL_RIGHT = 24;
 export const DEFAULT_PANEL_BOTTOM = 80;
@@ -56,6 +36,4 @@ export const CORNER_HANDLE_SIZE = 18;
 export const GUIDE_TAB_BOTTOM_BUFFER_DESKTOP = 12;
 export const GUIDE_TAB_BOTTOM_BUFFER_MOBILE = 20;
 
-// Added missing exports to fix build errors
 export const MUSIC_BAR_SAFE_HEIGHT = 72;
-export const SESSION_HINT_KEY = 'mercy-guide-hint-memory';

@@ -1,4 +1,7 @@
-// FILE PATH: supabase/functions/stripe-webhook/webhook-events.ts
+/**
+ * File: webhook-events.ts
+ * Path: supabase/functions/stripe-webhook/webhook-events.ts
+ */
 
 import {
   asNonEmptyStringOrNull,
@@ -59,6 +62,24 @@ function withDefaultAppId(
     ...base,
     app_id: asNonEmptyStringOrNull(base.app_id) ?? DEFAULT_APP_ID,
   };
+}
+
+function resolvePlan(input: {
+  plan?: string | null;
+  priceId?: string | null;
+}): "monthly" | "yearly" | null {
+  if (input.plan === "monthly" || input.plan === "yearly") {
+    return input.plan;
+  }
+
+  if (!input.priceId) return null;
+
+  const id = input.priceId.toLowerCase();
+
+  if (id.includes("month")) return "monthly";
+  if (id.includes("year")) return "yearly";
+
+  return null;
 }
 
 function getSubscriptionId(raw: Record<string, unknown>): string | null {
@@ -329,7 +350,19 @@ async function processSubscriptionLikeEvent(params: {
 
   const providerSubscriptionId = getSubscriptionId(params.raw);
   const providerCustomerId = getCustomerId(params.raw);
-  const metadata = withCustomerAliases(baseMetadata, providerCustomerId);
+  const rawMetadata = withCustomerAliases(baseMetadata, providerCustomerId);
+  const priceId =
+    asNonEmptyStringOrNull(rawMetadata.price_id) ??
+    getPriceId(params.raw);
+  const plan = resolvePlan({
+    plan: asNonEmptyStringOrNull(rawMetadata.plan),
+    priceId,
+  });
+  const metadata = {
+    ...rawMetadata,
+    ...(plan ? { plan } : {}),
+    ...(priceId ? { price_id: priceId } : {}),
+  };
   const email =
     asNonEmptyStringOrNull(metadata.email) ??
     getCheckoutEmail(params.raw);
@@ -595,13 +628,29 @@ export async function handleInvoicePaid({
     throw new Error("invoice.paid missing customer id");
   }
 
-  const metadata = withCustomerAliases(
+  const mergedMetadata = withCustomerAliases(
     withDefaultAppId({
       ...getInvoiceMetadata(raw),
       ...(asRecord(stripeSubscription?.metadata) ?? {}),
     }),
     providerCustomerId,
   );
+
+  const priceId =
+    asNonEmptyStringOrNull(mergedMetadata.price_id) ??
+    getPriceId(raw) ??
+    asNonEmptyStringOrNull(asRecord(stripeSubscription?.metadata)?.price_id);
+
+  const plan = resolvePlan({
+    plan: asNonEmptyStringOrNull(mergedMetadata.plan),
+    priceId,
+  });
+
+  const metadata = {
+    ...mergedMetadata,
+    ...(plan ? { plan } : {}),
+    ...(priceId ? { price_id: priceId } : {}),
+  };
 
   const currentPeriodStart =
     getCurrentPeriodStart(raw) ??
@@ -713,13 +762,29 @@ export async function handleInvoicePaymentFailed({
     throw new Error("invoice.payment_failed missing customer id");
   }
 
-  const metadata = withCustomerAliases(
+  const mergedMetadata = withCustomerAliases(
     withDefaultAppId({
       ...getInvoiceMetadata(raw),
       ...(asRecord(stripeSubscription?.metadata) ?? {}),
     }),
     providerCustomerId,
   );
+
+  const priceId =
+    asNonEmptyStringOrNull(mergedMetadata.price_id) ??
+    getPriceId(raw) ??
+    asNonEmptyStringOrNull(asRecord(stripeSubscription?.metadata)?.price_id);
+
+  const plan = resolvePlan({
+    plan: asNonEmptyStringOrNull(mergedMetadata.plan),
+    priceId,
+  });
+
+  const metadata = {
+    ...mergedMetadata,
+    ...(plan ? { plan } : {}),
+    ...(priceId ? { price_id: priceId } : {}),
+  };
 
   const currentPeriodStart =
     getCurrentPeriodStart(raw) ??

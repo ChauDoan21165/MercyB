@@ -1,9 +1,10 @@
+// PATH: src/components/mercy-guide/MercySuggestTab.tsx
+
 import React from 'react';
 import { ChevronRight, Sparkles } from 'lucide-react';
-import { SuggestedItem } from '@/services/suggestions';
+import type { SuggestedItem } from '@/services/suggestions';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { TabsContent } from '@/components/ui/tabs';
 
 interface MercySuggestTabProps {
   suggestions: SuggestedItem[];
@@ -15,7 +16,7 @@ export function MercySuggestTab({
   onNavigateSuggestion,
 }: MercySuggestTabProps) {
   return (
-    <TabsContent value="suggest" className="m-0 flex-1 overflow-hidden">
+    <div className="m-0 flex-1 overflow-hidden">
       <ScrollArea className="h-full bg-white px-4 py-3">
         <div className="space-y-3">
           <h4 className="flex items-center gap-2 text-sm font-medium">
@@ -45,6 +46,7 @@ export function MercySuggestTab({
                 <p className="text-xs text-muted-foreground">{item.reason_vi}</p>
 
                 <Button
+                  type="button"
                   size="sm"
                   variant="secondary"
                   className="mt-2 w-full"
@@ -58,6 +60,8 @@ export function MercySuggestTab({
           )}
         </div>
       </ScrollArea>
-    </TabsContent>
+    </div>
   );
 }
+
+export default MercySuggestTab;

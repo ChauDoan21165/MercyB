@@ -1,23 +1,6 @@
 /**
- * MercyBlade Blue — useUserAccess (AUTH-DRIVEN, ENTITLEMENT PREMIUM TRUTH)
+ * File: useUserAccess.ts
  * Path: src/hooks/useUserAccess.ts
- *
- * GOAL (LOCKED):
- * - Auth timeline comes ONLY from AuthProvider via useAuth().
- * - Premium truth comes ONLY from backend entitlement.
- * - Supabase queries here are allowed ONLY for admin/role fields.
- * - Current product model:
- *   - free
- *   - premium_month
- *   - premium_year
- *
- * FIXES:
- * - Never downgrade an authenticated user into demo mode because of entitlement/profile errors.
- * - If auth resolves with a user, isAuthenticated stays true.
- * - Entitlement failures safely fall back to free tier only.
- * - Profile/admin lookup failures safely fall back to non-admin only.
- * - Missing user.id does NOT force guest mode if user object exists.
- * - Admin/profile resolution still attempts safely even when userId is absent in mocked/test flows.
  */
 
 import { useEffect, useMemo, useState } from "react";
@@ -28,6 +11,15 @@ import {
   fetchCurrentEntitlement,
   resolveEntitlementTier,
 } from "@/lib/authService";
+
+export interface FeatureAccess {
+  hasMercyGuide: boolean;
+  hasMercyJourney: boolean;
+  hasMercyGrammar: boolean;
+  hasMercySpeak: boolean;
+  hasMercyLogic: boolean;
+  hasPremiumRooms: boolean;
+}
 
 export interface UserAccess {
   isAdmin: boolean;
@@ -43,6 +35,8 @@ export interface UserAccess {
   hasPremiumMonthly: boolean;
   hasPremiumYearly: boolean;
 
+  features: FeatureAccess;
+
   loading: boolean;
   isLoading: boolean;
 
@@ -56,8 +50,30 @@ export interface UserAccess {
   };
 }
 
+const FORCE_UNLOCK_MERCY_FEATURES = true;
+
 function isPremiumTier(tier: TierId): boolean {
   return tier === "premium_month" || tier === "premium_year";
+}
+
+function buildFeatureAccess(
+  tier: TierId,
+  options?: {
+    unlockMercyFeatures?: boolean;
+  },
+): FeatureAccess {
+  const isPremium = isPremiumTier(tier);
+  const unlockMercyFeatures =
+    FORCE_UNLOCK_MERCY_FEATURES || Boolean(options?.unlockMercyFeatures);
+
+  return {
+    hasMercyGuide: true,
+    hasMercyJourney: isPremium || unlockMercyFeatures,
+    hasMercyGrammar: isPremium || unlockMercyFeatures,
+    hasMercySpeak: isPremium || unlockMercyFeatures,
+    hasMercyLogic: isPremium || unlockMercyFeatures,
+    hasPremiumRooms: isPremium,
+  };
 }
 
 function safeNumber(value: unknown, fallback = 0): number {
@@ -65,15 +81,9 @@ function safeNumber(value: unknown, fallback = 0): number {
   return Number.isFinite(parsed) ? parsed : fallback;
 }
 
-function isDev(): boolean {
-  try {
-    return Boolean((import.meta as { env?: { DEV?: boolean } })?.env?.DEV);
-  } catch {
-    return false;
-  }
-}
-
 export const guestAccess = (): UserAccess => {
+  const unlockMercyFeatures = FORCE_UNLOCK_MERCY_FEATURES;
+
   return {
     isAdmin: false,
     isHighAdmin: false,
@@ -87,6 +97,8 @@ export const guestAccess = (): UserAccess => {
     hasPremium: false,
     hasPremiumMonthly: false,
     hasPremiumYearly: false,
+
+    features: buildFeatureAccess("free", { unlockMercyFeatures }),
 
     loading: false,
     isLoading: false,
@@ -113,6 +125,7 @@ function authenticatedFreeAccess(params: {
   const isHighAdmin = Boolean(params.isHighAdmin) || adminLevel >= 9;
   const isAdmin = Boolean(params.isAdmin) || adminLevel > 0 || isHighAdmin;
   const loading = Boolean(params.loading);
+  const unlockMercyFeatures = FORCE_UNLOCK_MERCY_FEATURES || isHighAdmin;
 
   return {
     ...guestAccess(),
@@ -128,6 +141,8 @@ function authenticatedFreeAccess(params: {
     hasPremium: false,
     hasPremiumMonthly: false,
     hasPremiumYearly: false,
+
+    features: buildFeatureAccess("free", { unlockMercyFeatures }),
 
     loading,
     isLoading: loading,
@@ -207,28 +222,7 @@ export const useUserAccess = (): UserAccess => {
           ? await baseQuery.eq("id", userId).maybeSingle()
           : await baseQuery.maybeSingle();
 
-        const { data: profile, error: profileErr } = profileResult;
-
-        console.log(
-          "[useUserAccess] profile result JSON",
-          JSON.stringify(
-            {
-              userId,
-              userEmail,
-              profile,
-              profileErrMessage: profileErr?.message ?? null,
-              profileErrCode: profileErr?.code ?? null,
-              profileErrDetails: profileErr?.details ?? null,
-              profileErrHint: profileErr?.hint ?? null,
-            },
-            null,
-            2,
-          ),
-        );
-
-        if (profileErr && isDev()) {
-          console.warn("[useUserAccess] profiles lookup error:", profileErr);
-        }
+        const { data: profile } = profileResult;
 
         if (profile) {
           adminLevel = safeNumber(profile.admin_level, 0);
@@ -237,39 +231,19 @@ export const useUserAccess = (): UserAccess => {
           resolvedEmail =
             (profile.email || userEmail || "").trim() || undefined;
         }
-      } catch (profileCrash) {
-        if (isDev()) {
-          console.warn("[useUserAccess] profiles lookup crashed:", profileCrash);
-        }
-      }
+      } catch {}
 
       let finalTier: TierId = "free";
 
       try {
         const entitlement = await fetchCurrentEntitlement(supabase);
         finalTier = resolveEntitlementTier(entitlement);
-
-        console.log(
-          "[useUserAccess] entitlement result JSON",
-          JSON.stringify(
-            {
-              userId,
-              entitlement,
-              finalTier,
-            },
-            null,
-            2,
-          ),
-        );
-      } catch (entitlementErr) {
-        if (isDev()) {
-          console.warn(
-            "[useUserAccess] entitlement fetch failed, defaulting to free tier:",
-            entitlementErr,
-          );
-        }
+      } catch {
         finalTier = "free";
       }
+
+      const unlockMercyFeatures = FORCE_UNLOCK_MERCY_FEATURES || isHighAdmin;
+      const features = buildFeatureAccess(finalTier, { unlockMercyFeatures });
 
       const next: UserAccess = {
         isAdmin,
@@ -285,10 +259,13 @@ export const useUserAccess = (): UserAccess => {
         hasPremiumMonthly: finalTier === "premium_month",
         hasPremiumYearly: finalTier === "premium_year",
 
+        features,
+
         loading: false,
         isLoading: false,
 
-        canAccessPremium: () => isPremiumTier(finalTier) || isHighAdmin,
+        canAccessPremium: () =>
+          isPremiumTier(finalTier) || isHighAdmin,
 
         email: resolvedEmail,
         userId: userId ?? undefined,

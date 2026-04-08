@@ -103,8 +103,16 @@ function getBubbleBottomSafe() {
     : BUBBLE_BOTTOM_SAFE_DESKTOP;
 }
 
+function getPanelBottomSafe() {
+  return isMobileViewport() ? PANEL_BOTTOM_SAFE_MOBILE : PANEL_MIN_MARGIN;
+}
+
 function clamp(n: number, min: number, max: number) {
   return Math.max(min, Math.min(max, n));
+}
+
+function isFiniteNumber(value: unknown): value is number {
+  return typeof value === "number" && Number.isFinite(value);
 }
 
 function cleanText(value?: string | null) {
@@ -223,9 +231,7 @@ function clampPanelRect(next: PanelRect): PanelRect {
     Math.max(PANEL_MIN_WIDTH, maxWidth)
   );
 
-  const bottomSafe = isMobileViewport()
-    ? PANEL_BOTTOM_SAFE_MOBILE
-    : PANEL_MIN_MARGIN;
+  const bottomSafe = getPanelBottomSafe();
   const maxHeight = Math.max(
     PANEL_MIN_HEIGHT,
     window.innerHeight - bottomSafe - PANEL_MIN_MARGIN
@@ -265,6 +271,79 @@ function makePanelRectFromSize(
     width: size.width,
     height: size.height,
   });
+}
+
+function getDefaultBubblePos(): BubblePos {
+  return clampBubblePos({
+    left: DEFAULT_BUBBLE_LEFT,
+    bottom: DEFAULT_BUBBLE_BOTTOM,
+  });
+}
+
+function getDefaultPanelRect(sizeKey: PanelSizeKey): PanelRect {
+  if (typeof window === "undefined") {
+    return {
+      left: 126,
+      bottom: 118,
+      width: PANEL_SIZES[sizeKey].width,
+      height: PANEL_SIZES[sizeKey].height,
+    };
+  }
+
+  const bubble = getDefaultBubblePos();
+  const left = isMobileViewport()
+    ? PANEL_MIN_MARGIN
+    : bubble.left + BUBBLE_SIZE + 14;
+  const bottom = isMobileViewport()
+    ? PANEL_BOTTOM_SAFE_MOBILE
+    : Math.max(PANEL_MIN_MARGIN, bubble.bottom - 8);
+
+  return makePanelRectFromSize(sizeKey, left, bottom);
+}
+
+function sanitizePanelSizeKey(value: unknown): PanelSizeKey {
+  return value === "sm" || value === "md" || value === "lg" || value === "xl"
+    ? value
+    : DEFAULT_PANEL_SIZE;
+}
+
+function sanitizeBubblePos(value: unknown): BubblePos {
+  const candidate = (value ?? {}) as Partial<BubblePos>;
+  return clampBubblePos({
+    left: isFiniteNumber(candidate.left)
+      ? candidate.left
+      : DEFAULT_BUBBLE_LEFT,
+    bottom: isFiniteNumber(candidate.bottom)
+      ? candidate.bottom
+      : DEFAULT_BUBBLE_BOTTOM,
+  });
+}
+
+function sanitizePanelRect(value: unknown, sizeKey: PanelSizeKey): PanelRect {
+  const candidate = (value ?? {}) as Partial<PanelRect>;
+  const fallback = getDefaultPanelRect(sizeKey);
+
+  return clampPanelRect({
+    left: isFiniteNumber(candidate.left) ? candidate.left : fallback.left,
+    bottom: isFiniteNumber(candidate.bottom)
+      ? candidate.bottom
+      : fallback.bottom,
+    width: isFiniteNumber(candidate.width) ? candidate.width : fallback.width,
+    height: isFiniteNumber(candidate.height)
+      ? candidate.height
+      : fallback.height,
+  });
+}
+
+function readSessionJson<T>(key: string): T | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const raw = window.sessionStorage.getItem(key);
+    if (!raw) return null;
+    return JSON.parse(raw) as T;
+  } catch {
+    return null;
+  }
 }
 
 function createId(prefix: string) {
@@ -333,13 +412,14 @@ export function GuideBox({
   const navigate = useNavigate();
 
   const [isOpen, setIsOpen] = useState(false);
-  const [bubblePos, setBubblePos] = useState<BubblePos>({
-    left: DEFAULT_BUBBLE_LEFT,
-    bottom: DEFAULT_BUBBLE_BOTTOM,
-  });
-  const [panelSize, setPanelSize] = useState<PanelSizeKey>(DEFAULT_PANEL_SIZE);
-  const [panelRect, setPanelRect] = useState<PanelRect>(
-    makePanelRectFromSize(DEFAULT_PANEL_SIZE, 126, 118)
+  const [bubblePos, setBubblePos] = useState<BubblePos>(() =>
+    getDefaultBubblePos()
+  );
+  const [panelSize, setPanelSize] = useState<PanelSizeKey>(() =>
+    DEFAULT_PANEL_SIZE
+  );
+  const [panelRect, setPanelRect] = useState<PanelRect>(() =>
+    getDefaultPanelRect(DEFAULT_PANEL_SIZE)
   );
   const [imageBroken, setImageBroken] = useState(false);
   const [chatInput, setChatInput] = useState("");
@@ -371,53 +451,20 @@ export function GuideBox({
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    try {
-      const storedBubble = window.sessionStorage.getItem(
-        BUBBLE_POSITION_STORAGE_KEY
-      );
-      if (storedBubble) {
-        const parsed = JSON.parse(storedBubble) as Partial<BubblePos>;
-        setBubblePos(
-          clampBubblePos({
-            left: parsed.left ?? DEFAULT_BUBBLE_LEFT,
-            bottom: parsed.bottom ?? DEFAULT_BUBBLE_BOTTOM,
-          })
-        );
-      }
-    } catch {
-      // ignore
-    }
+    const restoredPanelSize = sanitizePanelSizeKey(
+      readSessionJson<string>(PANEL_SIZE_STORAGE_KEY)
+    );
+    const restoredBubble = sanitizeBubblePos(
+      readSessionJson<Partial<BubblePos>>(BUBBLE_POSITION_STORAGE_KEY)
+    );
+    const restoredPanel = sanitizePanelRect(
+      readSessionJson<Partial<PanelRect>>(PANEL_RECT_STORAGE_KEY),
+      restoredPanelSize
+    );
 
-    try {
-      const storedSize = window.sessionStorage.getItem(PANEL_SIZE_STORAGE_KEY);
-      if (
-        storedSize === "sm" ||
-        storedSize === "md" ||
-        storedSize === "lg" ||
-        storedSize === "xl"
-      ) {
-        setPanelSize(storedSize);
-      }
-    } catch {
-      // ignore
-    }
-
-    try {
-      const storedRect = window.sessionStorage.getItem(PANEL_RECT_STORAGE_KEY);
-      if (storedRect) {
-        const parsed = JSON.parse(storedRect) as Partial<PanelRect>;
-        setPanelRect(
-          clampPanelRect({
-            left: parsed.left ?? 126,
-            bottom: parsed.bottom ?? 118,
-            width: parsed.width ?? PANEL_SIZES[DEFAULT_PANEL_SIZE].width,
-            height: parsed.height ?? PANEL_SIZES[DEFAULT_PANEL_SIZE].height,
-          })
-        );
-      }
-    } catch {
-      // ignore
-    }
+    setPanelSize(restoredPanelSize);
+    setBubblePos(restoredBubble);
+    setPanelRect(restoredPanel);
   }, []);
 
   useEffect(() => {
@@ -425,7 +472,7 @@ export function GuideBox({
     try {
       window.sessionStorage.setItem(
         BUBBLE_POSITION_STORAGE_KEY,
-        JSON.stringify(bubblePos)
+        JSON.stringify(sanitizeBubblePos(bubblePos))
       );
     } catch {
       // ignore
@@ -446,24 +493,24 @@ export function GuideBox({
     try {
       window.sessionStorage.setItem(
         PANEL_RECT_STORAGE_KEY,
-        JSON.stringify(panelRect)
+        JSON.stringify(sanitizePanelRect(panelRect, panelSize))
       );
     } catch {
       // ignore
     }
-  }, [panelRect]);
+  }, [panelRect, panelSize]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
 
     const onResize = () => {
-      setBubblePos((prev) => clampBubblePos(prev));
-      setPanelRect((prev) => clampPanelRect(prev));
+      setBubblePos((prev) => sanitizeBubblePos(prev));
+      setPanelRect((prev) => sanitizePanelRect(prev, panelSize));
     };
 
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
-  }, []);
+  }, [panelSize]);
 
   const openGuide = useCallback(() => {
     const nextRect = makePanelRectFromSize(

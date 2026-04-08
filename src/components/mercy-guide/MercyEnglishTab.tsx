@@ -1,9 +1,10 @@
+// PATH: src/components/mercy-guide/MercyEnglishTab.tsx
+
 import React from 'react';
 import { ArrowRight, BookOpen, Loader2 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { TabsContent } from '@/components/ui/tabs';
 import { cn } from '@/lib/utils';
 import { VOCAB_VAULT_EMPTY, TroubleWord } from './shared';
 import { useEnglishHelper } from './hooks/useEnglishHelper';
@@ -38,7 +39,7 @@ export function MercyEnglishTab({
   const hasEnglishContext = Boolean(contentEn || roomId);
 
   return (
-    <TabsContent value="english" className="m-0 flex-1 overflow-hidden">
+    <div className="m-0 flex-1 overflow-hidden">
       <ScrollArea className="h-full bg-white px-4 py-3">
         {!hasEnglishContext ? (
           <div className="space-y-4">
@@ -59,6 +60,7 @@ export function MercyEnglishTab({
               </p>
 
               <Button
+                type="button"
                 onClick={onRequestGuideTab}
                 className="mt-4 w-full"
                 variant="secondary"
@@ -105,8 +107,8 @@ export function MercyEnglishTab({
                           item.lastScore < 50
                             ? 'border-rose-100 bg-rose-50 text-rose-700'
                             : item.lastScore < 80
-                              ? 'border-amber-100 bg-amber-50 text-amber-700'
-                              : 'border-emerald-100 bg-emerald-50 text-emerald-700'
+                            ? 'border-amber-100 bg-amber-50 text-amber-700'
+                            : 'border-emerald-100 bg-emerald-50 text-emerald-700'
                         )}
                       >
                         <div className="flex items-center gap-2">
@@ -141,6 +143,7 @@ export function MercyEnglishTab({
         ) : (
           <div className="space-y-4">
             <Button
+              type="button"
               onClick={handleLearnEnglish}
               disabled={isLoadingEnglish}
               className="w-full"
@@ -244,8 +247,8 @@ export function MercyEnglishTab({
                         item.lastScore < 50
                           ? 'border-rose-100 bg-rose-50 text-rose-700'
                           : item.lastScore < 80
-                            ? 'border-amber-100 bg-amber-50 text-amber-700'
-                            : 'border-emerald-100 bg-emerald-50 text-emerald-700'
+                          ? 'border-amber-100 bg-amber-50 text-amber-700'
+                          : 'border-emerald-100 bg-emerald-50 text-emerald-700'
                       )}
                     >
                       <div className="flex items-center gap-2">
@@ -278,6 +281,8 @@ export function MercyEnglishTab({
           </div>
         )}
       </ScrollArea>
-    </TabsContent>
+    </div>
   );
 }
+
+export default MercyEnglishTab;

@@ -1,6 +1,10 @@
-// PATH: src/components/MercyGuide.tsx
+/**
+ * File: MercyGuide.tsx
+ * Path: src/components/MercyGuide.tsx
+ */
 
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { cn } from '@/lib/utils';
 import { useMercyGuide } from '@/hooks/useMercyGuide';
 import type { CompanionProfile } from '@/services/companion';
 import type { SuggestedItem } from '@/services/suggestions';
@@ -15,8 +19,6 @@ import {
   DEFAULT_PANEL_BOTTOM,
   DEFAULT_PANEL_HEIGHT_RATIO,
   DEFAULT_PANEL_RIGHT,
-  IDLE_THRESHOLD_MS,
-  MERCY_BLUE_PATH_FORWARD,
   MIN_PANEL_HEIGHT,
   MIN_PANEL_MARGIN,
   MIN_PANEL_WIDTH,
@@ -24,34 +26,25 @@ import {
   MUSIC_BAR_SAFE_HEIGHT,
   PANEL_SIZE_STORAGE_KEY_DESKTOP,
   PANEL_SIZE_STORAGE_KEY_MOBILE,
-  SESSION_HINT_KEY,
   SIZE_PRESETS,
 } from './mercy-guide/mercyGuide.constants';
 import {
   getPanelHeightPolicy,
   getPanelWidthPolicy,
 } from './mercy-guide/mercyGuide.utils';
-import { MERCY_HOST_IMAGE_FALLBACK } from './mercy-guide/shared';
+import { MERCY_HOST_IMAGE_FALLBACK, MERCY_HOST_IMAGE_SRC } from './mercy-guide/shared';
 import { analyzeGrammarWithApi } from './mercy-guide/tabs/grammar-writing/api';
+import useMercyMemory from './mercy-guide/hooks/useMercyMemory';
 import type {
+  MercyGuideProps,
   GrammarApiResponse,
   GrammarWritingTeacherState,
-  PathHint,
   PronunciationLaunchPayload,
   TeacherWritingTask,
 } from './mercy-guide/types';
 
-interface MercyGuideProps {
-  roomId?: string;
-  roomTitle?: string;
-  tier?: string;
-  pathSlug?: string;
-  tags?: string[];
-  contentEn?: string;
-}
+type GuideTab = 'teacher' | 'grammar' | 'pronunciation' | 'logic';
 
-type GuideTab = 'teacher' | 'english' | 'speak' | 'suggest';
-type HintKey = keyof typeof MERCY_BLUE_PATH_FORWARD;
 type ResizeDirection =
   | 'top'
   | 'right'
@@ -82,7 +75,9 @@ type RoomContextSummary = {
   shortSummary: string | null;
 };
 
-const MercyGuidePanelView = MercyGuidePanel as React.ComponentType<any>;
+const MercyGuidePanelView = MercyGuide as unknown as React.ComponentType<any>;
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+const MercyGuidePanelResolved = MercyGuidePanel as React.ComponentType<any>;
 
 function isMobileViewport(): boolean {
   return typeof window !== 'undefined' && window.innerWidth < 768;
@@ -117,10 +112,12 @@ function truncateWords(value?: string | null, maxWords = 20): string {
     return '';
   }
 
-  const words = text.split(' ');
-  return words.length <= maxWords
-    ? text
-    : `${words.slice(0, maxWords).join(' ')}…`;
+  const words = text.split(/\s+/);
+  if (words.length <= maxWords) {
+    return text;
+  }
+
+  return `${words.slice(0, maxWords).join(' ')}…`;
 }
 
 function deriveRoomContextSummary({
@@ -143,6 +140,54 @@ function deriveRoomContextSummary({
   };
 }
 
+function clampNumber(value: number, min: number, max: number): number {
+  return Math.min(max, Math.max(min, value));
+}
+
+function readStoredPanelRect(): Partial<PanelRect> | null {
+  if (typeof window === 'undefined') return null;
+
+  try {
+    const raw = window.localStorage.getItem(getPanelStorageKey());
+    if (!raw) return null;
+    return JSON.parse(raw) as Partial<PanelRect>;
+  } catch {
+    return null;
+  }
+}
+
+function writeStoredPanelRect(rect: PanelRect) {
+  if (typeof window === 'undefined') return;
+
+  try {
+    window.localStorage.setItem(getPanelStorageKey(), JSON.stringify(rect));
+  } catch {
+    // ignore storage failures
+  }
+}
+
+function readStoredBubblePos(): Partial<BubblePos> | null {
+  if (typeof window === 'undefined') return null;
+
+  try {
+    const raw = window.localStorage.getItem(BUBBLE_POSITION_STORAGE_KEY);
+    if (!raw) return null;
+    return JSON.parse(raw) as Partial<BubblePos>;
+  } catch {
+    return null;
+  }
+}
+
+function writeStoredBubblePos(pos: BubblePos) {
+  if (typeof window === 'undefined') return;
+
+  try {
+    window.localStorage.setItem(BUBBLE_POSITION_STORAGE_KEY, JSON.stringify(pos));
+  } catch {
+    // ignore storage failures
+  }
+}
+
 export function MercyGuide({
   roomId,
   roomTitle,
@@ -156,8 +201,7 @@ export function MercyGuide({
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<GuideTab>('teacher');
   const [showSettings, setShowSettings] = useState(false);
-  const [pathHint, setPathHint] = useState<PathHint | null>(null);
-  const [isGhosted, setIsGhosted] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
   const [latestAnalysisResult, setLatestAnalysisResult] =
     useState<GrammarApiResponse | null>(null);
@@ -179,11 +223,19 @@ export function MercyGuide({
       }) as CompanionProfile,
   );
 
+  const { memory, teacherSummary, updateMemory } = useMercyMemory(profile);
+
   const suggestions = useMemo<SuggestedItem[]>(() => [], []);
   const yesterdaySummary = useMemo<StudyLogEntry | undefined>(() => undefined, []);
   const todayTotalMinutes = 0;
   const hasHeavyMoods = false;
-  const troubleWords = useMemo<any[]>(() => [], []);
+  const troubleWords = useMemo<any[]>(
+    () =>
+      (memory?.pronunciation?.troubleWords ?? []).map((word) => ({
+        word,
+      })),
+    [memory],
+  );
   const speakPractice = null;
 
   const initialWidthPolicy = getPanelWidthPolicy();
@@ -196,16 +248,26 @@ export function MercyGuide({
     return Math.max(MIN_PANEL_HEIGHT, preferred);
   }, []);
 
-  const [panelRect, setPanelRect] = useState<PanelRect>({
-    width: initialWidthPolicy.defaultWidth,
-    height: initialHeight,
-    right: DEFAULT_PANEL_RIGHT,
-    bottom: DEFAULT_PANEL_BOTTOM,
+  const [panelRect, setPanelRect] = useState<PanelRect>(() => {
+    const stored = readStoredPanelRect();
+
+    return {
+      width: stored?.width ?? initialWidthPolicy.defaultWidth,
+      height: stored?.height ?? initialHeight,
+      right: stored?.right ?? DEFAULT_PANEL_RIGHT,
+      bottom: stored?.bottom ?? DEFAULT_PANEL_BOTTOM,
+    };
   });
 
-  const [bubblePos, setBubblePos] = useState<BubblePos>({
-    right: DEFAULT_BUBBLE_RIGHT,
-    bottom: DEFAULT_BUBBLE_BOTTOM,
+  const panelRectBeforeFullscreenRef = useRef<PanelRect | null>(null);
+
+  const [bubblePos, setBubblePos] = useState<BubblePos>(() => {
+    const stored = readStoredBubblePos();
+
+    return {
+      right: stored?.right ?? DEFAULT_BUBBLE_RIGHT,
+      bottom: stored?.bottom ?? DEFAULT_BUBBLE_BOTTOM,
+    };
   });
 
   const roomSummary = useMemo(
@@ -222,165 +284,136 @@ export function MercyGuide({
   );
 
   const guideTabBottomBuffer = getGuideTabBottomBuffer();
-  const journeyTitle = roomSummary.hasRoomContext
-    ? roomSummary.roomName
-    : 'Teacher Mercy';
-
-  const clampPanelRect = useCallback((next: PanelRect): PanelRect => {
-    if (typeof window === 'undefined') {
-      return next;
-    }
-
-    const widthPolicy = getPanelWidthPolicy();
-    const heightPolicy = getPanelHeightPolicy();
-
-    return {
-      width: Math.min(widthPolicy.maxWidth, Math.max(MIN_PANEL_WIDTH, next.width)),
-      height: Math.min(heightPolicy.maxHeight, Math.max(MIN_PANEL_HEIGHT, next.height)),
-      right: Math.min(
-        window.innerWidth - MIN_PANEL_WIDTH,
-        Math.max(MIN_PANEL_MARGIN, next.right),
-      ),
-      bottom: Math.min(
-        window.innerHeight - MIN_PANEL_HEIGHT - 32,
-        Math.max(
-          isMobileViewport() ? MOBILE_PANEL_BOTTOM_SAFE : MUSIC_BAR_SAFE_HEIGHT,
-          next.bottom,
-        ),
-      ),
-    };
-  }, []);
+  const journeyTitle = roomSummary.hasRoomContext ? roomSummary.roomName : 'Teacher Mercy';
 
   const clampBubblePos = useCallback((next: BubblePos): BubblePos => {
-    if (typeof window === 'undefined') {
-      return next;
-    }
+    if (typeof window === 'undefined') return next;
+
+    const maxRight = Math.max(BUBBLE_SAFE_MARGIN, window.innerWidth - BUBBLE_SIZE - BUBBLE_SAFE_MARGIN);
+    const maxBottom = Math.max(
+      getBubbleBottomSafe(),
+      window.innerHeight - BUBBLE_SIZE - BUBBLE_SAFE_MARGIN,
+    );
 
     return {
-      right: Math.min(
-        window.innerWidth - BUBBLE_SIZE,
-        Math.max(BUBBLE_SAFE_MARGIN, next.right),
-      ),
-      bottom: Math.min(
-        window.innerHeight - BUBBLE_SIZE - 20,
-        Math.max(getBubbleBottomSafe(), next.bottom),
-      ),
+      right: clampNumber(next.right, BUBBLE_SAFE_MARGIN, maxRight),
+      bottom: clampNumber(next.bottom, getBubbleBottomSafe(), maxBottom),
     };
   }, []);
 
-  const showUnseenHint = useCallback((hint: PathHint) => {
-    if (typeof window === 'undefined') {
-      setPathHint(hint);
-      setIsGhosted(false);
-      return;
-    }
+  const clampPanelRect = useCallback(
+    (next: PanelRect): PanelRect => {
+      if (typeof window === 'undefined') return next;
 
-    try {
-      const raw = window.sessionStorage.getItem(SESSION_HINT_KEY);
-      const seen: string[] = raw ? JSON.parse(raw) : [];
+      const widthPolicyRaw = getPanelWidthPolicy();
+      const heightPolicyRaw = getPanelHeightPolicy();
 
-      if (!seen.includes(hint.vi)) {
-        window.sessionStorage.setItem(
-          SESSION_HINT_KEY,
-          JSON.stringify([...seen, hint.vi]),
-        );
-      }
+      const widthPolicy: {
+        minWidth?: number;
+        defaultWidth: number;
+        maxWidth?: number;
+      } = widthPolicyRaw;
 
-      setPathHint(hint);
-      setIsGhosted(false);
-    } catch {
-      setPathHint(hint);
-      setIsGhosted(false);
-    }
-  }, []);
+      const heightPolicy: {
+        minHeight?: number;
+        maxHeight?: number;
+      } = heightPolicyRaw;
 
-  useEffect(() => {
-    if (typeof window === 'undefined') {
-      return;
-    }
+      const maxWidth = Math.max(
+        MIN_PANEL_WIDTH,
+        window.innerWidth - MIN_PANEL_MARGIN * 2,
+      );
 
-    try {
-      const storedPanel = window.sessionStorage.getItem(getPanelStorageKey());
-      const storedBubble = window.sessionStorage.getItem(BUBBLE_POSITION_STORAGE_KEY);
+      const maxHeight = Math.max(
+        MIN_PANEL_HEIGHT,
+        window.innerHeight -
+          MIN_PANEL_MARGIN * 2 -
+          MOBILE_PANEL_BOTTOM_SAFE -
+          MUSIC_BAR_SAFE_HEIGHT,
+      );
 
-      if (storedPanel) {
-        setPanelRect(clampPanelRect(JSON.parse(storedPanel) as PanelRect));
-      }
+      const width = clampNumber(
+        next.width,
+        widthPolicy.minWidth ?? MIN_PANEL_WIDTH,
+        Math.min(widthPolicy.maxWidth ?? maxWidth, maxWidth),
+      );
 
-      if (storedBubble) {
-        setBubblePos(clampBubblePos(JSON.parse(storedBubble) as BubblePos));
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  }, [clampBubblePos, clampPanelRect]);
+      const height = clampNumber(
+        next.height,
+        heightPolicy.minHeight ?? MIN_PANEL_HEIGHT,
+        Math.min(heightPolicy.maxHeight ?? maxHeight, maxHeight),
+      );
 
-  useEffect(() => {
-    if (typeof window === 'undefined') {
-      return;
-    }
+      const maxRight = Math.max(MIN_PANEL_MARGIN, window.innerWidth - width - MIN_PANEL_MARGIN);
+      const maxBottom = Math.max(
+        MIN_PANEL_MARGIN,
+        window.innerHeight - height - MIN_PANEL_MARGIN,
+      );
 
-    window.sessionStorage.setItem(getPanelStorageKey(), JSON.stringify(panelRect));
-    window.sessionStorage.setItem(
-      BUBBLE_POSITION_STORAGE_KEY,
-      JSON.stringify(bubblePos),
-    );
-  }, [bubblePos, panelRect]);
-
-  useEffect(() => {
-    if (!isOpen || activeTab !== 'speak') {
-      return;
-    }
-
-    const timer = window.setTimeout(() => {
-      showUnseenHint(MERCY_BLUE_PATH_FORWARD.idle_speak);
-    }, IDLE_THRESHOLD_MS);
-
-    return () => {
-      window.clearTimeout(timer);
-    };
-  }, [activeTab, isOpen, showUnseenHint]);
-
-  useEffect(() => {
-    setIsGhosted(activeTab === 'speak' && !pathHint);
-  }, [activeTab, pathHint]);
-
-  useEffect(() => {
-    if (!isOpen || roomSummary.hasRoomContext) {
-      return;
-    }
-
-    showUnseenHint(MERCY_BLUE_PATH_FORWARD.idle);
-  }, [isOpen, roomSummary.hasRoomContext, showUnseenHint]);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setPanelRect((current) => clampPanelRect(current));
-      setBubblePos((current) => clampBubblePos(current));
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [clampBubblePos, clampPanelRect]);
-
-  const handleAvatarError = useCallback(
-    (event: React.SyntheticEvent<HTMLImageElement>) => {
-      event.currentTarget.src = MERCY_HOST_IMAGE_FALLBACK;
+      return {
+        width,
+        height,
+        right: clampNumber(next.right, MIN_PANEL_MARGIN, maxRight),
+        bottom: clampNumber(next.bottom, MIN_PANEL_MARGIN, maxBottom),
+      };
     },
     [],
   );
 
-  const handleUpdateInteraction = useCallback(() => {
-    if (isGhosted) {
-      setIsGhosted(false);
-    }
-  }, [isGhosted]);
+  useEffect(() => {
+    writeStoredPanelRect(panelRect);
+  }, [panelRect]);
+
+  useEffect(() => {
+    writeStoredBubblePos(bubblePos);
+  }, [bubblePos]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const onResize = () => {
+      setPanelRect((current) => clampPanelRect(current));
+      setBubblePos((current) => clampBubblePos(current));
+    };
+
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, [clampBubblePos, clampPanelRect]);
 
   const handleOpenGuideFromBubble = useCallback(() => {
     setIsOpen(true);
   }, []);
+
+  const handleCollapseGuide = useCallback(() => {
+    setIsOpen(false);
+  }, []);
+
+  const handleCloseGuide = useCallback(() => {
+    setIsOpen(false);
+    setShowSettings(false);
+  }, []);
+
+  const handleToggleFullscreen = useCallback(() => {
+    setIsFullscreen((current) => {
+      if (!current) {
+        panelRectBeforeFullscreenRef.current = panelRect;
+        return true;
+      }
+
+      setPanelRect(
+        clampPanelRect(
+          panelRectBeforeFullscreenRef.current ?? {
+            width: initialWidthPolicy.defaultWidth,
+            height: initialHeight,
+            right: DEFAULT_PANEL_RIGHT,
+            bottom: DEFAULT_PANEL_BOTTOM,
+          },
+        ),
+      );
+
+      return false;
+    });
+  }, [clampPanelRect, initialHeight, initialWidthPolicy.defaultWidth, panelRect]);
 
   const handleBubblePointerDown = useCallback(
     (event: React.PointerEvent<HTMLDivElement>) => {
@@ -424,7 +457,7 @@ export function MercyGuide({
 
   const handlePanelDragStart = useCallback(
     (event: React.PointerEvent<HTMLDivElement>) => {
-      if ((event.target as HTMLElement).closest('button')) {
+      if (isFullscreen || (event.target as HTMLElement).closest('button')) {
         return;
       }
 
@@ -452,12 +485,16 @@ export function MercyGuide({
       window.addEventListener('pointermove', onMove);
       window.addEventListener('pointerup', onUp);
     },
-    [clampPanelRect, panelRect],
+    [clampPanelRect, isFullscreen, panelRect],
   );
 
   const handleResizePointerDown = useCallback(
     (direction: ResizeDirection) =>
       (event: React.PointerEvent<HTMLDivElement>) => {
+        if (isFullscreen) {
+          return;
+        }
+
         event.preventDefault();
         event.stopPropagation();
 
@@ -500,98 +537,83 @@ export function MercyGuide({
         window.addEventListener('pointermove', onMove);
         window.addEventListener('pointerup', onUp);
       },
-    [clampPanelRect, panelRect],
+    [clampPanelRect, isFullscreen, panelRect],
   );
 
   const handleSetSizePreset = useCallback(
-    (size: keyof typeof SIZE_PRESETS) => {
+    (presetKey: keyof typeof SIZE_PRESETS) => {
+      const preset = SIZE_PRESETS[presetKey];
+      if (!preset) return;
+
       setPanelRect((current) =>
         clampPanelRect({
           ...current,
-          width: SIZE_PRESETS[size].width,
-          height: SIZE_PRESETS[size].height,
+          width: preset.width,
+          height: preset.height,
         }),
       );
     },
     [clampPanelRect],
   );
 
-  const handleCollapseGuide = useCallback(() => {
-    setIsOpen(false);
-    setShowSettings(false);
-    setPathHint(null);
+  const handleUpdateInteraction = useCallback(() => {
+    // reserved hook point for future analytics / freshness timestamps
   }, []);
 
-  const handleCloseGuide = useCallback(() => {
-    setIsOpen(false);
-    setShowSettings(false);
-    setPathHint(null);
-  }, []);
-
-  const handleTriggerBilingualHint = useCallback(
-    (hintKey: HintKey) => {
-      const hint = MERCY_BLUE_PATH_FORWARD[hintKey];
-
-      if (!hint) {
-        return;
-      }
-
-      showUnseenHint(hint);
-
-      if (typeof window !== 'undefined') {
-        window.setTimeout(() => setPathHint(null), 3000);
-      }
-    },
-    [showUnseenHint],
-  );
-
-  const handleNavigateSuggestion = useCallback((_item: SuggestedItem) => {
-    setActiveTab('teacher');
+  const handleAvatarError = useCallback(() => {
+    // reserved hook point for fallback avatar behavior
   }, []);
 
   const handleAnalysisResult = useCallback((result: GrammarApiResponse | null) => {
     setLatestAnalysisResult(result);
-
-    setLatestTeacherWritingState((current) => {
-      if (!current && !result) {
-        return current;
-      }
-
-      return {
-        latestAnalysisResult: result ?? null,
-        currentWritingMode: result?.writingMode ?? current?.currentWritingMode,
-        isTeacherInitiated: current?.isTeacherInitiated ?? false,
-        isRevisionAttempt: current?.isRevisionAttempt ?? false,
-        latestSubmittedText: current?.latestSubmittedText ?? '',
-        teacherTask: current?.teacherTask,
-        revisionSourceText: current?.revisionSourceText,
-      };
-    });
   }, []);
 
   const handlePracticePronunciation = useCallback(
     (payload: PronunciationLaunchPayload) => {
       setPendingPronunciationPayload(payload);
-      setActiveTab('speak');
-      setIsOpen(true);
+      setActiveTab('pronunciation');
     },
     [],
   );
 
-  const handleTeacherOpenPronunciation = useCallback(() => {
-    setActiveTab('speak');
-    setIsOpen(true);
+  const handleOpenEnglishLogic = useCallback(() => {
+    setActiveTab('logic');
   }, []);
 
+  const handleTeacherOpenPronunciation = useCallback(() => {
+    const sourceText =
+      cleanText(latestTeacherWritingState?.latestSubmittedText) ||
+      cleanText(memory?.writing?.lastSubmittedText);
+
+    const correctedText =
+      cleanText(latestAnalysisResult?.correctedText) ||
+      cleanText(memory?.writing?.lastCorrectedText);
+
+    const enhancedText =
+      cleanText(latestAnalysisResult?.enhancedText) ||
+      cleanText(memory?.writing?.lastEnhancedText);
+
+    if (!sourceText && !correctedText && !enhancedText) {
+      setActiveTab('pronunciation');
+      return;
+    }
+
+    setPendingPronunciationPayload({
+      sourceText,
+      correctedText: correctedText || enhancedText || sourceText,
+      enhancedText: enhancedText || undefined,
+    });
+
+    setActiveTab('pronunciation');
+  }, [latestAnalysisResult, latestTeacherWritingState, memory]);
+
   const handleTeacherOpenWriting = useCallback(() => {
-    setActiveTab('english');
-    setIsOpen(true);
+    setActiveTab('grammar');
   }, []);
 
   const handleTeacherWritingStateChange = useCallback(
     (state: GrammarWritingTeacherState) => {
       setLatestTeacherWritingState(state);
-      setActiveTeacherTask(state.teacherTask ?? null);
 
       if (state.latestAnalysisResult) {
         setLatestAnalysisResult(state.latestAnalysisResult);
@@ -607,49 +629,53 @@ export function MercyGuide({
       taskType?: string;
       focus?: string;
     }) => {
-      const input = {
-        text: payload.revisedText,
-        originalText: payload.originalText,
+      const revisedText = cleanText(payload.revisedText);
+      if (!revisedText) return null;
+
+      const result = await analyzeGrammarWithApi({
+        text: revisedText,
+        roomId,
+        roomTitle,
+        contentEn,
+        originalText: cleanText(payload.originalText) || undefined,
         focus: payload.focus,
         taskType: payload.taskType,
         isTeacherInitiated: true,
         isRevisionAttempt: true,
-      } as Parameters<typeof analyzeGrammarWithApi>[0];
-
-      const result = await analyzeGrammarWithApi(input);
-
-      setLatestAnalysisResult(result ?? null);
-      setLatestTeacherWritingState((current) => {
-        if (!current) {
-          return {
-            latestAnalysisResult: result ?? null,
-            currentWritingMode: result?.writingMode ?? undefined,
-            isTeacherInitiated: true,
-            isRevisionAttempt: true,
-            latestSubmittedText: payload.revisedText,
-            teacherTask: activeTeacherTask ?? undefined,
-            revisionSourceText: payload.originalText,
-          };
-        }
-
-        return {
-          ...current,
-          latestAnalysisResult: result ?? null,
-          currentWritingMode: result?.writingMode ?? current.currentWritingMode,
-          isTeacherInitiated: true,
-          isRevisionAttempt: true,
-          latestSubmittedText: payload.revisedText,
-          revisionSourceText: payload.originalText,
-        };
       });
 
-      return result ?? null;
+      setLatestAnalysisResult(result);
+
+      const nextTeacherState: GrammarWritingTeacherState = {
+        latestAnalysisResult: result,
+        currentWritingMode: result?.writingMode,
+        isTeacherInitiated: true,
+        isRevisionAttempt: true,
+        latestSubmittedText: revisedText,
+        teacherTask: activeTeacherTask ?? undefined,
+        revisionSourceText: cleanText(payload.originalText) || undefined,
+      };
+
+      setLatestTeacherWritingState(nextTeacherState);
+
+      if (result?.correctedText || result?.enhancedText) {
+        setPendingPronunciationPayload({
+          sourceText: revisedText,
+          correctedText:
+            cleanText(result.correctedText) ||
+            cleanText(result.enhancedText) ||
+            revisedText,
+          enhancedText: cleanText(result.enhancedText) || undefined,
+        });
+      }
+
+      return result;
     },
-    [activeTeacherTask],
+    [activeTeacherTask, contentEn, roomId, roomTitle],
   );
 
-  const handleSaveProfile = useCallback((newProfile: Partial<CompanionProfile>) => {
-    setProfile((current) => ({ ...current, ...newProfile }));
+  const handleSaveProfile = useCallback((nextProfile: CompanionProfile) => {
+    setProfile(nextProfile);
   }, []);
 
   if (!isEnabled) {
@@ -657,71 +683,161 @@ export function MercyGuide({
   }
 
   return (
-    <MercyGuidePanelView
-      isOpen={isOpen}
-      isGhosted={isGhosted}
-      activeTab={activeTab}
-      setActiveTab={(value: string) => setActiveTab(value as GuideTab)}
-      showSettings={showSettings}
-      setShowSettings={setShowSettings}
-      pathHint={pathHint}
-      setPathHint={setPathHint}
-      panelRect={panelRect}
-      bubblePos={bubblePos}
-      hasEnglishContext={Boolean(contentEn)}
-      guideTabBottomBuffer={guideTabBottomBuffer}
-      journeyTitle={journeyTitle}
-      roomId={roomId}
-      roomTitle={roomTitle}
-      contentEn={contentEn}
-      profile={profile}
-      suggestions={suggestions}
-      yesterdaySummary={yesterdaySummary}
-      todayTotalMinutes={todayTotalMinutes}
-      hasHeavyMoods={hasHeavyMoods}
-      showBreathingScript={showBreathingScript}
-      breathingStep={breathingStep}
-      showReframe={showReframe}
-      setShowBreathingScript={setShowBreathingScript}
-      setBreathingStep={setBreathingStep}
-      setShowReframe={setShowReframe}
-      troubleWords={troubleWords}
-      speakPractice={speakPractice}
-      latestAnalysisResult={latestAnalysisResult}
-      pendingPronunciationPayload={pendingPronunciationPayload}
-      activeTeacherTask={activeTeacherTask}
-      latestTeacherWritingState={latestTeacherWritingState}
-      onUpdateInteraction={handleUpdateInteraction}
-      onOpenGuideFromBubble={handleOpenGuideFromBubble}
-      onBubblePointerDown={handleBubblePointerDown}
-      onPanelDragStart={handlePanelDragStart}
-      onResizePointerDown={handleResizePointerDown}
-      onSetSizePreset={handleSetSizePreset}
-      onCollapseGuide={handleCollapseGuide}
-      onCloseGuide={handleCloseGuide}
-      onTriggerBilingualHint={handleTriggerBilingualHint}
-      onAvatarError={handleAvatarError}
-      onNavigateSuggestion={handleNavigateSuggestion}
-      onAnalysisResult={handleAnalysisResult}
-      onPracticePronunciation={handlePracticePronunciation}
-      onTeacherOpenPronunciation={handleTeacherOpenPronunciation}
-      onTeacherOpenWriting={handleTeacherOpenWriting}
-      onTeacherWritingStateChange={handleTeacherWritingStateChange}
-      onSubmitTeacherRevision={async (payload: {
-        previousText: string;
-        newText: string;
-        taskType?: string;
-        focus?: string;
-      }) =>
-        handleSubmitTeacherRevision({
-          originalText: payload.previousText,
-          revisedText: payload.newText,
-          taskType: payload.taskType,
-          focus: payload.focus,
-        })
-      }
-      onSaveProfile={handleSaveProfile}
-    />
+    <>
+      {!isOpen && (
+        <div
+          role="button"
+          tabIndex={0}
+          onPointerDown={handleBubblePointerDown}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault();
+              handleOpenGuideFromBubble();
+            }
+          }}
+          className={cn(
+            'fixed z-[90] flex h-14 w-14 items-center justify-center rounded-full border border-slate-200 bg-white shadow-lg transition hover:shadow-xl',
+          )}
+          style={{
+            right: bubblePos.right,
+            bottom: bubblePos.bottom,
+          }}
+          aria-label="Open Mercy Guide"
+        >
+          <img
+            src={MERCY_HOST_IMAGE_SRC}
+            alt="Mercy"
+            onError={handleAvatarError}
+            className="h-10 w-10 rounded-full object-cover"
+          />
+        </div>
+      )}
+
+      {isOpen && (
+        <div
+          className={cn(
+            'fixed z-[95] overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-2xl',
+            isFullscreen &&
+              'left-6 right-6 top-6 bottom-6 rounded-[24px] md:left-10 md:right-10 md:top-8 md:bottom-8 lg:left-14 lg:right-14 lg:top-10 lg:bottom-10',
+          )}
+          style={
+            isFullscreen
+              ? undefined
+              : {
+                  width: panelRect.width,
+                  height: panelRect.height,
+                  right: panelRect.right,
+                  bottom: panelRect.bottom,
+                }
+          }
+        >
+          <MercyGuidePanelResolved
+            isOpen={isOpen}
+            activeTab={activeTab}
+            setActiveTab={(value: string) => setActiveTab(value as GuideTab)}
+            showSettings={showSettings}
+            setShowSettings={setShowSettings}
+            panelRect={panelRect}
+            bubblePos={bubblePos}
+            hasEnglishContext={Boolean(contentEn)}
+            guideTabBottomBuffer={guideTabBottomBuffer}
+            journeyTitle={journeyTitle}
+            roomId={roomId}
+            roomTitle={roomTitle}
+            contentEn={contentEn}
+            profile={profile}
+            suggestions={suggestions}
+            yesterdaySummary={yesterdaySummary}
+            todayTotalMinutes={todayTotalMinutes}
+            hasHeavyMoods={hasHeavyMoods}
+            showBreathingScript={showBreathingScript}
+            breathingStep={breathingStep}
+            showReframe={showReframe}
+            setShowBreathingScript={setShowBreathingScript}
+            setBreathingStep={setBreathingStep}
+            setShowReframe={setShowReframe}
+            troubleWords={troubleWords}
+            speakPractice={speakPractice}
+            latestAnalysisResult={latestAnalysisResult}
+            pendingPronunciationPayload={pendingPronunciationPayload}
+            activeTeacherTask={activeTeacherTask}
+            latestTeacherWritingState={latestTeacherWritingState}
+            memory={memory}
+            teacherMemorySummary={teacherSummary}
+            isFullscreen={isFullscreen}
+            onToggleFullscreen={handleToggleFullscreen}
+            onUpdateInteraction={handleUpdateInteraction}
+            onOpenGuideFromBubble={handleOpenGuideFromBubble}
+            onBubblePointerDown={handleBubblePointerDown}
+            onPanelDragStart={handlePanelDragStart}
+            onResizePointerDown={handleResizePointerDown}
+            onSetSizePreset={handleSetSizePreset}
+            onCollapseGuide={handleCollapseGuide}
+            onCloseGuide={handleCloseGuide}
+            onAvatarError={handleAvatarError}
+            onNavigateSuggestion={() => undefined}
+            onAnalysisResult={handleAnalysisResult}
+            onPracticePronunciation={handlePracticePronunciation}
+            onOpenEnglishLogic={handleOpenEnglishLogic}
+            onTeacherOpenPronunciation={handleTeacherOpenPronunciation}
+            onTeacherOpenWriting={handleTeacherOpenWriting}
+            onTeacherWritingStateChange={handleTeacherWritingStateChange}
+            onSubmitTeacherRevision={async (payload: {
+              previousText: string;
+              newText: string;
+              taskType?: string;
+              focus?: string;
+            }) =>
+              handleSubmitTeacherRevision({
+                originalText: payload.previousText,
+                revisedText: payload.newText,
+                taskType: payload.taskType,
+                focus: payload.focus,
+              })
+            }
+            onMemoryUpdate={updateMemory}
+            onSaveProfile={handleSaveProfile}
+          />
+
+          {!isFullscreen && (
+            <>
+              <div
+                className="absolute inset-x-3 top-0 z-[70] h-1.5 cursor-n-resize bg-slate-300/70 hover:bg-slate-400/80"
+                onPointerDown={handleResizePointerDown('top')}
+              />
+              <div
+                className="absolute inset-x-3 bottom-0 z-[70] h-1.5 cursor-s-resize bg-slate-300/70 hover:bg-slate-400/80"
+                onPointerDown={handleResizePointerDown('bottom')}
+              />
+              <div
+                className="absolute inset-y-3 left-0 z-[70] w-1.5 cursor-w-resize bg-slate-300/70 hover:bg-slate-400/80"
+                onPointerDown={handleResizePointerDown('left')}
+              />
+              <div
+                className="absolute inset-y-3 right-0 z-[70] w-1.5 cursor-e-resize bg-slate-300/70 hover:bg-slate-400/80"
+                onPointerDown={handleResizePointerDown('right')}
+              />
+              <div
+                className="absolute left-0 top-0 z-[80] h-2.5 w-2.5 cursor-nw-resize rounded-br bg-slate-400/80"
+                onPointerDown={handleResizePointerDown('top-left')}
+              />
+              <div
+                className="absolute right-0 top-0 z-[80] h-2.5 w-2.5 cursor-ne-resize rounded-bl bg-slate-400/80"
+                onPointerDown={handleResizePointerDown('top-right')}
+              />
+              <div
+                className="absolute bottom-0 left-0 z-[80] h-2.5 w-2.5 cursor-sw-resize rounded-tr bg-slate-400/80"
+                onPointerDown={handleResizePointerDown('bottom-left')}
+              />
+              <div
+                className="absolute bottom-0 right-0 z-[80] h-2.5 w-2.5 cursor-se-resize rounded-tl bg-slate-400/80"
+                onPointerDown={handleResizePointerDown('bottom-right')}
+              />
+            </>
+          )}
+        </div>
+      )}
+    </>
   );
 }
 

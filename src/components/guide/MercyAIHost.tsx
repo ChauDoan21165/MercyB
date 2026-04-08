@@ -1,7 +1,11 @@
-// FILE: MercyAIHost.tsx
-// PATH: src/components/guide/MercyAIHost.tsx
+/**
+ * Path: src/components/guide/MercyAIHost.tsx
+ */
+
 // VERSION: MB-BLUE-101.8a-shared-host-core — 2026-03-28 (+0700)
 // REFINEMENT: Scaling Fix applied for 2026 UI Balance.
+// FIX: Removed mounted render guard that blocked first paint on hard refresh.
+// FIX: Removed global Window speech-recognition augmentation to avoid TS2717 duplicate declaration conflict.
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
@@ -65,12 +69,7 @@ type SpeechRecognitionEventLike = {
   }>;
 };
 
-declare global {
-  interface Window {
-    webkitSpeechRecognition?: new () => SpeechRecognitionLike;
-    SpeechRecognition?: new () => SpeechRecognitionLike;
-  }
-}
+type SpeechRecognitionCtor = new () => SpeechRecognitionLike;
 
 /**
  * Mercy Host sizing controls
@@ -103,30 +102,30 @@ const HOST_SIZE_PRESETS: Record<
   sm: {
     panelWidth: 420,
     launcherSize: 92,
-    launcherFaceSize: 74, // Increased from 70
+    launcherFaceSize: 74,
     headerAvatarWrap: 56,
-    headerFaceSize: 46, // Increased from 44
+    headerFaceSize: 46,
   },
   md: {
     panelWidth: 560,
     launcherSize: 112,
-    launcherFaceSize: 92, // Increased from 88
+    launcherFaceSize: 92,
     headerAvatarWrap: 68,
-    headerFaceSize: 58, // Increased from 54
+    headerFaceSize: 58,
   },
   lg: {
     panelWidth: 720,
     launcherSize: 124,
-    launcherFaceSize: 104, // Increased from 98
+    launcherFaceSize: 104,
     headerAvatarWrap: 76,
-    headerFaceSize: 64, // Increased from 60
+    headerFaceSize: 64,
   },
   xl: {
     panelWidth: 920,
     launcherSize: 136,
-    launcherFaceSize: 114, // Increased from 108
+    launcherFaceSize: 114,
     headerAvatarWrap: 84,
-    headerFaceSize: 72, // Increased from 66
+    headerFaceSize: 72,
   },
 };
 
@@ -261,11 +260,15 @@ function defaultPanelPoint(panelWidth: number): HostPoint {
   );
 }
 
-function getSpeechRecognitionCtor():
-  | (new () => SpeechRecognitionLike)
-  | null {
+function getSpeechRecognitionCtor(): SpeechRecognitionCtor | null {
   if (typeof window === "undefined") return null;
-  return window.SpeechRecognition || window.webkitSpeechRecognition || null;
+
+  const w = window as Window & {
+    webkitSpeechRecognition?: SpeechRecognitionCtor;
+    SpeechRecognition?: SpeechRecognitionCtor;
+  };
+
+  return w.SpeechRecognition || w.webkitSpeechRecognition || null;
 }
 
 function normalizeWords(input: string): string[] {
@@ -331,9 +334,6 @@ function scorePronunciation(target: string, actual: string, lang: HostLang) {
   return { score, summary, detail };
 }
 
-/**
- * Typing dots
- */
 function TypingIndicator() {
   return (
     <svg
@@ -666,7 +666,6 @@ function PronunciationPanel(props: {
 export default function MercyAIHost() {
   const [open, setOpen] = useState(false);
   const [mode, setMode] = useState<PanelMode>("home");
-  const [mounted, setMounted] = useState(false);
   const [ctx, setCtx] = useState<HostContext>({});
   const [lang, setLang] = useState<HostLang>(safeLang());
   const [hostSize, setHostSize] = useState<HostSizeKey>(safeHostSize());
@@ -732,7 +731,6 @@ export default function MercyAIHost() {
 
   const appKey = "mercy_blade";
 
-  // Pronunciation / recording
   const [pronTargetText, setPronTargetText] = useState<string>("I would like a cup of tea.");
   const [pronTranscript, setPronTranscript] = useState<string>("");
   const [pronScore, setPronScore] = useState<number | null>(null);
@@ -743,10 +741,6 @@ export default function MercyAIHost() {
   const recognitionRef = useRef<SpeechRecognitionLike | null>(null);
 
   const speechSupported = useMemo(() => Boolean(getSpeechRecognitionCtor()), []);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     safeSetLS(LS_LANG_KEY, lang);
@@ -764,14 +758,14 @@ export default function MercyAIHost() {
     if (nextLauncher.x !== launcherPos.x || nextLauncher.y !== launcherPos.y) {
       setLauncherPos(nextLauncher);
     }
-  }, [launcherSize]);
+  }, [launcherSize, launcherPos]);
 
   useEffect(() => {
     const nextPanel = clampPointForPanel(panelPos, panelWidth);
     if (nextPanel.x !== panelPos.x || nextPanel.y !== panelPos.y) {
       setPanelPos(nextPanel);
     }
-  }, [panelWidth]);
+  }, [panelWidth, panelPos]);
 
   useEffect(() => {
     const storedLauncher = safeGetJson<HostPoint | null>(LS_LAUNCHER_POS_KEY, null);
@@ -1791,16 +1785,39 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
   );
 
   useEffect(() => {
-    const g = globalThis as any;
+    const g = globalThis as unknown as {
+      __MB_HOST_STATE__?: unknown;
+    };
     g.__MB_HOST_STATE__ = {
-      open, mode, page: location.pathname, roomId: ctx.roomId ?? roomIdFromUrl, ctx, isTyping,
-      messagesCount: messages.length, isAdmin, displayName, lastProgress, lang, authUserId, authEmail,
-      testActive, testStep, testScore, appKey, canVoiceTest, isSpeaking, hostSize, launcherPos, panelPos,
-      isRecording, pronTranscript, pronScore,
+      open,
+      mode,
+      page: location.pathname,
+      roomId: ctx.roomId ?? roomIdFromUrl,
+      ctx,
+      isTyping,
+      messagesCount: messages.length,
+      isAdmin,
+      displayName,
+      lastProgress,
+      lang,
+      authUserId,
+      authEmail,
+      testActive,
+      testStep,
+      testScore,
+      appKey,
+      canVoiceTest,
+      isSpeaking,
+      hostSize,
+      launcherPos,
+      panelPos,
+      isRecording,
+      pronTranscript,
+      pronScore,
     };
   }, [open, mode, location.pathname, ctx, roomIdFromUrl, isTyping, messages.length, isAdmin, displayName, lastProgress, lang, authUserId, authEmail, testActive, testStep, testScore, canVoiceTest, isSpeaking, hostSize, launcherPos, panelPos, isRecording, pronTranscript, pronScore]);
 
-  if (!mounted || typeof document === "undefined" || !document.body) return null;
+  if (typeof document === "undefined" || !document.body) return null;
   if (isAdmin) return null;
 
   const fontStack = 'ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"';

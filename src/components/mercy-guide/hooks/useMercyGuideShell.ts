@@ -50,6 +50,10 @@ type UseMercyGuideShellArgs = {
   updateInteraction: () => void;
 };
 
+function isFiniteNumber(value: unknown): value is number {
+  return typeof value === 'number' && Number.isFinite(value);
+}
+
 export function useMercyGuideShell({
   isOpen,
   setIsOpen,
@@ -362,10 +366,10 @@ export function useMercyGuideShell({
         const parsed = JSON.parse(stored) as Partial<PanelRect>;
         setPanelRect(
           clampPanelRect({
-            width: parsed.width ?? fallbackRect.width,
-            height: parsed.height ?? fallbackRect.height,
-            right: parsed.right ?? fallbackRect.right,
-            bottom: parsed.bottom ?? fallbackRect.bottom,
+            width: isFiniteNumber(parsed.width) ? parsed.width : fallbackRect.width,
+            height: isFiniteNumber(parsed.height) ? parsed.height : fallbackRect.height,
+            right: isFiniteNumber(parsed.right) ? parsed.right : fallbackRect.right,
+            bottom: isFiniteNumber(parsed.bottom) ? parsed.bottom : fallbackRect.bottom,
           })
         );
         return;
@@ -386,8 +390,8 @@ export function useMercyGuideShell({
         const parsed = JSON.parse(stored) as Partial<BubblePos>;
         setBubblePos(
           clampBubblePos({
-            right: parsed.right ?? DEFAULT_BUBBLE_RIGHT,
-            bottom: parsed.bottom ?? DEFAULT_BUBBLE_BOTTOM,
+            right: isFiniteNumber(parsed.right) ? parsed.right : DEFAULT_BUBBLE_RIGHT,
+            bottom: isFiniteNumber(parsed.bottom) ? parsed.bottom : DEFAULT_BUBBLE_BOTTOM,
           })
         );
         return;
@@ -428,30 +432,16 @@ export function useMercyGuideShell({
     const handleWindowResize = () => {
       setPanelRect((prev) => {
         const widthPolicy = getPanelWidthPolicy();
-        const fallbackNext = clampPanelRect({
+
+        const next = {
           ...prev,
           width:
             !isMobileViewport() && prev.width < widthPolicy.defaultWidth
               ? widthPolicy.defaultWidth
               : prev.width,
-        });
+        };
 
-        try {
-          const stored = window.sessionStorage.getItem(getPanelStorageKey());
-          if (stored) {
-            const parsed = JSON.parse(stored) as Partial<PanelRect>;
-            return clampPanelRect({
-              width: parsed.width ?? fallbackNext.width,
-              height: parsed.height ?? fallbackNext.height,
-              right: parsed.right ?? fallbackNext.right,
-              bottom: parsed.bottom ?? fallbackNext.bottom,
-            });
-          }
-        } catch (error) {
-          console.error('Failed to sync Mercy Guide panel size on resize:', error);
-        }
-
-        return fallbackNext;
+        return clampPanelRect(next);
       });
 
       setBubblePos((prev) => clampBubblePos(prev));

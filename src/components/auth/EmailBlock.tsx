@@ -4,7 +4,6 @@ import {
   alreadyRegisteredStatusText,
   ensureSessionOrThrow,
   humanizeAuthError,
-  isUserAlreadyRegisteredError,
   type EmailMode,
 } from "@/lib/authHelpers";
 import { UI } from "@/components/auth/authUI";
@@ -52,8 +51,12 @@ export default function EmailBlock({
 
       const { error } = await supabase.auth.signInWithOtp({
         email: clean,
-        options: { emailRedirectTo },
+        options: {
+          emailRedirectTo,
+          shouldCreateUser: false,
+        },
       });
+
       if (error) throw error;
 
       setStatus("✅ Email link sent. Open your email and click the link.");
@@ -96,7 +99,7 @@ export default function EmailBlock({
     }
   }, [cleanEmail, disabled, mode, onAuthed, password]);
 
-  const signUpWithPassword = useCallback(async () => {
+  const signUpWithMagicLink = useCallback(async () => {
     if (disabled) return;
     setBusy(true);
     setStatus(null);
@@ -107,73 +110,28 @@ export default function EmailBlock({
         setStatus("Please enter a valid email.");
         return;
       }
-      if (!password || password.length < 6) {
-        setStatus("Password must be at least 6 characters.");
-        return;
-      }
 
-      const { data, error } = await supabase.auth.signUp({
+      const { error } = await supabase.auth.signInWithOtp({
         email: clean,
-        password,
-        options: { emailRedirectTo },
+        options: {
+          emailRedirectTo,
+          shouldCreateUser: true,
+        },
       });
 
-      if (error) {
-        if (isUserAlreadyRegisteredError(error)) {
-          setStatus(alreadyRegisteredStatusText());
-          return;
-        }
-        throw error;
-      }
+      if (error) throw error;
 
-      if (!data?.session) {
-        const { error: signInErr } = await supabase.auth.signInWithPassword({
-          email: clean,
-          password,
-        });
+      const createdMsg =
+        "✅ Check your email to create your account.\n\nWe sent you a sign-in link. Your Mercy account will only become usable after you open that email and click the link.";
 
-        if (signInErr) {
-          const m = String(signInErr?.message ?? "").toLowerCase();
-
-          if (m.includes("email not confirmed")) {
-            const createdMsg =
-              "✅ Account created.\n\nPlease check your email to confirm, then sign in.";
-            setStatus(createdMsg);
-            onSignupCreated(clean, createdMsg);
-            return;
-          }
-
-          if (m.includes("invalid login credentials")) {
-            setStatus(alreadyRegisteredStatusText());
-            return;
-          }
-
-          const createdMsg =
-            "✅ Signup request received.\n\nIf you already have an account, switch to Sign in.\nOtherwise, check your email.";
-          setStatus(createdMsg);
-          onSignupCreated(clean, createdMsg);
-          return;
-        }
-
-        await ensureSessionOrThrow();
-        setStatus("✅ Account created. Redirecting...");
-        await onAuthed();
-        return;
-      }
-
-      await ensureSessionOrThrow();
-      setStatus("✅ Account created. Redirecting...");
-      await onAuthed();
+      setStatus(createdMsg);
+      onSignupCreated(clean, createdMsg);
     } catch (e) {
-      if (isUserAlreadyRegisteredError(e)) {
-        setStatus(alreadyRegisteredStatusText());
-        return;
-      }
       setStatus(humanizeAuthError(e, mode));
     } finally {
       setBusy(false);
     }
-  }, [cleanEmail, disabled, emailRedirectTo, mode, onAuthed, onSignupCreated, password]);
+  }, [cleanEmail, disabled, emailRedirectTo, mode, onSignupCreated]);
 
   const sendResetPasswordEmail = useCallback(async () => {
     if (disabled) return;
@@ -200,14 +158,13 @@ export default function EmailBlock({
     }
   }, [cleanEmail, disabled, mode, redirectToRecovery]);
 
-  const showPasswordField =
-    mode === "password_signin" || mode === "password_signup";
+  const showPasswordField = mode === "password_signin";
 
   const primaryActionLabel =
     mode === "password_signin"
       ? "Sign in"
       : mode === "password_signup"
-        ? "Create account"
+        ? "Create account with email link"
         : mode === "magic"
           ? "Send email link"
           : "Send reset email";
@@ -215,7 +172,7 @@ export default function EmailBlock({
   const onPrimary = useCallback(() => {
     if (disabled) return;
     if (mode === "password_signin") void signInWithPassword();
-    else if (mode === "password_signup") void signUpWithPassword();
+    else if (mode === "password_signup") void signUpWithMagicLink();
     else if (mode === "magic") void sendMagicLink();
     else void sendResetPasswordEmail();
   }, [
@@ -224,7 +181,7 @@ export default function EmailBlock({
     sendMagicLink,
     sendResetPasswordEmail,
     signInWithPassword,
-    signUpWithPassword,
+    signUpWithMagicLink,
   ]);
 
   return (
@@ -295,7 +252,7 @@ export default function EmailBlock({
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••"
               type={showPw ? "text" : "password"}
-              autoComplete={mode === "password_signup" ? "new-password" : "current-password"}
+              autoComplete="current-password"
               disabled={disabled}
               style={{
                 width: "100%",
@@ -328,6 +285,12 @@ export default function EmailBlock({
             </button>
           </div>
           <div style={{ marginTop: 8, ...UI.small }}>Minimum 6 characters.</div>
+        </div>
+      )}
+
+      {mode === "password_signup" && (
+        <div style={{ marginTop: 12, ...UI.small }}>
+          New accounts use a verification email link. We only let the account become active after the link in the real inbox is clicked.
         </div>
       )}
 

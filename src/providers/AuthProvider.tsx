@@ -1,4 +1,3 @@
-// src/providers/AuthProvider.tsx
 /**
  * MercyBlade Blue — Auth Provider (SINGLE SESSION SOURCE OF TRUTH)
  * Path: src/providers/AuthProvider.tsx
@@ -10,10 +9,16 @@
  * - Keep session/loading transitions deterministic.
  * - Expose signOut() and refreshSession() as stable actions.
  *
+ * EMAIL VERIFICATION PATCH:
+ * - Treat unverified email sessions as not authenticated.
+ * - Only expose session/user when session.user.email_confirmed_at exists.
+ * - Prevent fake or unreachable email signups from getting app access before verification.
+ *
  * WHY:
  * - The Billing button/page is not the root issue anymore.
  * - The common cause of “navigate to /billing then snap back” is:
  *   route changes -> auth is briefly unresolved/null -> some guard reacts too early.
+ * - We also want signup to require real inbox verification before the user can access the app.
  */
 
 import React, {
@@ -38,6 +43,12 @@ type AuthContextValue = {
 
 const AuthContext = createContext<AuthContextValue | undefined>(undefined);
 
+function getVerifiedSession(next: Session | null): Session | null {
+  if (!next?.user) return null;
+  if (!next.user.email_confirmed_at) return null;
+  return next;
+}
+
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [session, setSession] = useState<Session | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -56,6 +67,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setIsLoading(next);
   }, []);
 
+  const applySession = useCallback(
+    (next: Session | null) => {
+      safeSetSession(getVerifiedSession(next));
+    },
+    [safeSetSession],
+  );
+
   const refreshSession = useCallback(async () => {
     const requestId = ++refreshRequestIdRef.current;
 
@@ -70,7 +88,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         console.warn("[auth] getSession failed:", error.message);
       }
 
-      safeSetSession(data?.session ?? null);
+      applySession(data?.session ?? null);
     } catch (error) {
       if (requestId !== refreshRequestIdRef.current) return;
 
@@ -84,7 +102,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         safeSetLoading(false);
       }
     }
-  }, [safeSetLoading, safeSetSession]);
+  }, [applySession, safeSetLoading, safeSetSession]);
 
   const signOut = useCallback(async () => {
     safeSetLoading(true);
@@ -120,7 +138,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
         const { data: authListener } = supabase.auth.onAuthStateChange(
           (_event, nextSession) => {
-            safeSetSession(nextSession ?? null);
+            applySession(nextSession ?? null);
             safeSetLoading(false);
           },
         );
@@ -137,7 +155,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           console.warn("[auth] initial getSession failed:", error.message);
         }
 
-        safeSetSession(data?.session ?? null);
+        applySession(data?.session ?? null);
       } catch (error) {
         if (import.meta.env.DEV) {
           console.warn("[auth] boot failed:", error);
@@ -162,7 +180,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       unsubRef.current = null;
     };
-  }, [safeSetLoading, safeSetSession]);
+  }, [applySession, safeSetLoading, safeSetSession]);
 
   const value = useMemo<AuthContextValue>(
     () => ({

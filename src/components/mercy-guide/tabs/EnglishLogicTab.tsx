@@ -2,196 +2,1240 @@
  * Path: src/components/mercy-guide/tabs/EnglishLogicTab.tsx
  */
 
-import React, { useMemo } from 'react';
-import { ArrowRight, BrainCircuit, Languages } from 'lucide-react';
+import React, { useEffect, useMemo, useRef } from 'react';
+import { ScrollArea } from '@/components/ui/scroll-area';
 import { Button } from '@/components/ui/button';
-import { MercyEnglishTab } from '@/components/mercy-guide/MercyEnglishTab';
-import type { TroubleWord } from '@/components/mercy-guide/shared';
+import {
+  ArrowRight,
+  Languages,
+  Lightbulb,
+  Mic,
+  PenSquare,
+  Sparkles,
+  RotateCcw,
+} from 'lucide-react';
 
-interface EnglishLogicTabProps {
-  roomId?: string;
+import type {
+  GrammarApiResponse,
+  GrammarWritingTeacherState,
+  MercyLogicPatternMemory,
+  PronunciationLaunchPayload,
+  StudentMercyMemoryUpdate,
+} from '../types';
+
+type EnglishLogicLessonInput = {
   roomTitle?: string;
-  pathSlug?: string;
-  tags?: string[];
   contentEn?: string;
-  englishLevel?: string | null;
-  troubleWords: Array<string | TroubleWord>;
-  onVaultReplay: (word: string) => void;
-  onRequestGuideTab?: () => void;
-}
-
-type LogicPattern = {
-  vi: string;
-  en: string;
-  tip: string;
+  troubleWords?: Array<string | { word?: string | null }>;
 };
 
-const PATTERNS: LogicPattern[] = [
-  {
-    vi: 'vừa...vừa...',
-    en: 'both ... and ... / at the same time',
-    tip: 'English usually chooses a direct structure instead of repeating the Vietnamese pattern.',
-  },
-  {
-    vi: 'dù...nhưng...',
-    en: 'although / even though',
-    tip: 'In English, “although” usually replaces “but” in the same sentence.',
-  },
-  {
-    vi: 'em thấy / tôi feel that',
-    en: 'I think / I feel / it seems',
-    tip: 'Choose the English verb based on meaning, not a word-for-word translation.',
-  },
-];
+type Props = EnglishLogicLessonInput & {
+  latestTeacherWritingState?: GrammarWritingTeacherState | null;
+  latestAnalysisResult?: GrammarApiResponse | null;
+  pendingPronunciationPayload?: PronunciationLaunchPayload | null;
+  onOpenPronunciation?: (payload?: PronunciationLaunchPayload) => void;
+  onOpenWriting?: () => void;
+  onMemoryUpdate?: (patch: StudentMercyMemoryUpdate) => void;
+  onVaultReplay?: (word: string) => void;
+};
 
-function getContextLabel(
-  roomTitle?: string,
-  pathSlug?: string,
-  tags?: string[]
-): string {
-  const firstTag =
-    Array.isArray(tags) && typeof tags[0] === 'string' ? tags[0].trim() : '';
+type LogicViewModel = {
+  focus: string;
+  bridgeTitle: string;
+  whyNatural: string;
+  vietlishPattern: string;
+  englishLogic: string;
+  nextTimeTip: string;
+  miniRule: string;
+  comparisonLabel: string;
+  sentencePattern: string;
+  vietlishExample: string;
+  englishExample: string;
+  keyShift: string[];
+};
 
-  return roomTitle?.trim() || pathSlug?.trim() || firstTag || 'this lesson';
+type ExamplePair = {
+  weak: string;
+  natural: string;
+};
+
+type ChangeInsight = {
+  label: string;
+  category:
+    | 'spelling'
+    | 'wording'
+    | 'connector'
+    | 'verb_tense'
+    | 'be_verb'
+    | 'story_consistency'
+    | 'word_order'
+    | 'clarity';
+  before: string;
+  after: string;
+};
+
+function cleanText(value?: string | null): string {
+  return typeof value === 'string' ? value.replace(/\s+/g, ' ').trim() : '';
 }
 
-function normalizeTroubleWords(
-  troubleWords: Array<string | TroubleWord>
-): TroubleWord[] {
-  return troubleWords
-    .map((item) => {
-      if (typeof item === 'string') {
-        const word = item.trim();
-
-        if (!word) {
-          return null;
-        }
-
-        return {
-          word,
-          count: 0,
-          lastScore: 0,
-          bestScore: 0,
-        } satisfies TroubleWord;
-      }
-
-      if (!item || typeof item.word !== 'string' || !item.word.trim()) {
-        return null;
-      }
-
-      return {
-        word: item.word.trim(),
-        count: typeof item.count === 'number' ? item.count : 0,
-        lastScore: typeof item.lastScore === 'number' ? item.lastScore : 0,
-        bestScore: typeof item.bestScore === 'number' ? item.bestScore : 0,
-        updatedAt: item.updatedAt,
-        tipEn: item.tipEn,
-        tipVi: item.tipVi,
-      } satisfies TroubleWord;
-    })
-    .filter((item): item is TroubleWord => item !== null);
+function asList(value: unknown): string[] {
+  if (!Array.isArray(value)) return [];
+  return value
+    .map((item) => (typeof item === 'string' ? cleanText(item) : ''))
+    .filter(Boolean);
 }
 
-export function EnglishLogicTab({
-  roomId,
-  roomTitle,
-  pathSlug,
-  tags,
-  contentEn,
-  englishLevel,
-  troubleWords,
-  onVaultReplay,
-  onRequestGuideTab,
-}: EnglishLogicTabProps) {
-  const contextLabel = getContextLabel(roomTitle, pathSlug, tags);
-  const normalizedTroubleWords = useMemo(
-    () => normalizeTroubleWords(troubleWords),
-    [troubleWords]
+function splitWords(text: string): string[] {
+  return cleanText(text)
+    .toLowerCase()
+    .replace(/[^\w\s']/g, ' ')
+    .split(/\s+/)
+    .filter(Boolean);
+}
+
+function buildSentencePattern(text: string): string {
+  const normalized = cleanText(text);
+  if (!normalized) return 'subject + time + action + detail';
+
+  const words = splitWords(normalized);
+
+  if (words.length <= 3) return 'short direct English sentence';
+
+  if (
+    words.some((word) =>
+      ['because', 'so', 'when', 'if', 'although', 'since', 'but', 'knowing'].includes(word),
+    )
+  ) {
+    return 'main idea + connector or framing phrase + supporting reason';
+  }
+
+  if (
+    words.some((word) =>
+      ['yesterday', 'last', 'ago', 'today', 'now', 'tomorrow', 'tonight'].includes(word),
+    )
+  ) {
+    return 'subject + time + verb + detail';
+  }
+
+  return 'subject + verb + clear supporting detail';
+}
+
+function getRemovedTokens(original: string, improved: string): string[] {
+  const originalWords = splitWords(original);
+  const improvedWords = new Set(splitWords(improved));
+
+  return Array.from(new Set(originalWords.filter((word) => !improvedWords.has(word)))).slice(0, 6);
+}
+
+function getAddedTokens(original: string, improved: string): string[] {
+  const originalWords = new Set(splitWords(original));
+  const improvedWords = splitWords(improved);
+
+  return Array.from(new Set(improvedWords.filter((word) => !originalWords.has(word)))).slice(0, 6);
+}
+
+function buildLogicPatternMemory(label: string, count = 1): MercyLogicPatternMemory {
+  const normalized = cleanText(label);
+  const now = new Date().toISOString();
+
+  return {
+    key: normalized.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-'),
+    label: normalized,
+    count,
+    lastSeenAt: now,
+  };
+}
+
+function getWordTypos(original: string, improved: string): ChangeInsight[] {
+  const originalWords = original.match(/\b[\w']+\b/g) ?? [];
+  const improvedWords = improved.match(/\b[\w']+\b/g) ?? [];
+
+  const changes: ChangeInsight[] = [];
+  const maxLength = Math.min(originalWords.length, improvedWords.length);
+
+  for (let index = 0; index < maxLength; index += 1) {
+    const before = cleanText(originalWords[index]);
+    const after = cleanText(improvedWords[index]);
+
+    if (!before || !after || before.toLowerCase() === after.toLowerCase()) continue;
+
+    const closeLength = Math.abs(before.length - after.length) <= 3;
+    const bothSingleWords = !before.includes(' ') && !after.includes(' ');
+    const typoLike =
+      closeLength &&
+      bothSingleWords &&
+      before.length >= 4 &&
+      after.length >= 4 &&
+      before[0]?.toLowerCase() === after[0]?.toLowerCase();
+
+    if (!typoLike) continue;
+
+    changes.push({
+      label: `${before} → ${after}`,
+      category: 'spelling',
+      before,
+      after,
+    });
+  }
+
+  return changes.slice(0, 3);
+}
+
+function extractQuotedPairs(explanation: string): ChangeInsight[] {
+  const pairs: ChangeInsight[] = [];
+  const quoteRegex = /[“"]([^"”]+)[”"]\s*(?:→|->|to)\s*[“"]([^"”]+)[”"]/g;
+  let match: RegExpExecArray | null = null;
+
+  while ((match = quoteRegex.exec(explanation))) {
+    const before = cleanText(match[1]);
+    const after = cleanText(match[2]);
+    if (!before || !after || before.toLowerCase() === after.toLowerCase()) continue;
+
+    pairs.push({
+      label: `${before} → ${after}`,
+      category: categorizeChange(before, after),
+      before,
+      after,
+    });
+  }
+
+  return pairs.slice(0, 6);
+}
+
+function categorizeChange(before: string, after: string): ChangeInsight['category'] {
+  const beforeLower = before.toLowerCase();
+  const afterLower = after.toLowerCase();
+
+  const beforeWords = splitWords(beforeLower);
+  const afterWords = splitWords(afterLower);
+
+  if (
+    beforeWords.length === 1 &&
+    afterWords.length === 1 &&
+    Math.abs(before.length - after.length) <= 3 &&
+    before.length >= 4 &&
+    after.length >= 4
+  ) {
+    return 'spelling';
+  }
+
+  const beVerbSet = new Set(['am', 'is', 'are', 'was', 'were']);
+  if (!beforeWords.some((word) => beVerbSet.has(word)) && afterWords.some((word) => beVerbSet.has(word))) {
+    return 'be_verb';
+  }
+
+  const framingWords = new Set(['because', 'since', 'knowing', 'as', 'so']);
+  if (beforeWords.some((word) => framingWords.has(word)) || afterWords.some((word) => framingWords.has(word))) {
+    if (beforeLower !== afterLower) {
+      return 'connector';
+    }
+  }
+
+  const pastSignals = new Set(['yesterday', 'last', 'ago', 'was', 'were', 'had', 'did', 'would', 'went']);
+  const modalSet = new Set(['will', 'would', 'can', 'could', 'may', 'might', 'shall', 'should']);
+  if (
+    beforeWords.some((word) => modalSet.has(word)) &&
+    afterWords.some((word) => modalSet.has(word)) &&
+    beforeWords.join(' ') !== afterWords.join(' ')
+  ) {
+    return 'story_consistency';
+  }
+
+  if (beforeWords.some((word) => pastSignals.has(word)) || afterWords.some((word) => pastSignals.has(word))) {
+    if (beforeLower !== afterLower) {
+      return 'verb_tense';
+    }
+  }
+
+  if (beforeWords.length > 1 || afterWords.length > 1) {
+    return 'wording';
+  }
+
+  return 'clarity';
+}
+
+function dedupeInsights(items: ChangeInsight[]): ChangeInsight[] {
+  const seen = new Set<string>();
+  const result: ChangeInsight[] = [];
+
+  for (const item of items) {
+    const key = `${item.category}:${item.before.toLowerCase()}=>${item.after.toLowerCase()}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    result.push(item);
+  }
+
+  return result;
+}
+
+function buildChangeInsights(params: {
+  original: string;
+  corrected: string;
+  enhanced: string;
+  explanation: string;
+  grammarPoints: string[];
+  tense?: string;
+}): ChangeInsight[] {
+  const { original, corrected, enhanced, explanation, grammarPoints, tense } = params;
+  const improved = enhanced || corrected;
+  const insights: ChangeInsight[] = [];
+
+  if (explanation) {
+    insights.push(...extractQuotedPairs(explanation));
+  }
+
+  if (original && improved) {
+    insights.push(...getWordTypos(original, improved));
+  }
+
+  const pointsLower = grammarPoints.map((item) => item.toLowerCase());
+  const tenseLower = cleanText(tense).toLowerCase();
+  const originalLower = original.toLowerCase();
+  const improvedLower = improved.toLowerCase();
+
+  if (
+    original &&
+    improved &&
+    originalLower !== improvedLower &&
+    (pointsLower.some((item) => item.includes('spelling')) ||
+      insights.some((item) => item.category === 'spelling'))
+  ) {
+    const removed = getRemovedTokens(original, improved);
+    const added = getAddedTokens(original, improved);
+
+    if (removed.length > 0 && added.length > 0) {
+      insights.push({
+        label: 'Spelling and word form cleanup',
+        category: 'spelling',
+        before: removed[0],
+        after: added[0],
+      });
+    }
+  }
+
+  if (
+    original &&
+    improved &&
+    originalLower.includes('since ') &&
+    improvedLower.includes('knowing ')
+  ) {
+    insights.push({
+      label: 'Framing phrase became more natural',
+      category: 'wording',
+      before: 'Since...',
+      after: 'Knowing...',
+    });
+  }
+
+  if (
+    original &&
+    improved &&
+    /\bwill\b/i.test(original) &&
+    /\bwould\b/i.test(improved)
+  ) {
+    insights.push({
+      label: 'Story tone became more consistent',
+      category: 'story_consistency',
+      before: 'will',
+      after: 'would',
+    });
+  }
+
+  if (
+    original &&
+    improved &&
+    (tenseLower.includes('past') ||
+      /\b(yesterday|last|ago)\b/i.test(original) ||
+      /\b(yesterday|last|ago)\b/i.test(improved))
+  ) {
+    const originalPastVerbMismatch =
+      /\b(yesterday|last|ago)\b/i.test(original) &&
+      /\b(go|come|eat|see|do|make|take|give|feel|am|is|are)\b/i.test(original);
+
+    const improvedLooksPast =
+      /\b(went|came|ate|saw|did|made|took|gave|felt|was|were)\b/i.test(improved);
+
+    if (originalPastVerbMismatch || improvedLooksPast) {
+      insights.push({
+        label: 'Past-time signal matched the verb',
+        category: 'verb_tense',
+        before: original,
+        after: improved,
+      });
+    }
+  }
+
+  if (
+    original &&
+    improved &&
+    originalLower !== improvedLower &&
+    insights.length === 0
+  ) {
+    insights.push({
+      label: 'Sentence became clearer and more natural',
+      category: 'clarity',
+      before: original,
+      after: improved,
+    });
+  }
+
+  return dedupeInsights(insights).slice(0, 6);
+}
+
+function getPrimaryInsight(
+  insights: ChangeInsight[],
+  grammarPoints: string[],
+  explanation: string,
+  tense?: string,
+): ChangeInsight | null {
+  const preferredOrder: ChangeInsight['category'][] = [
+    'spelling',
+    'story_consistency',
+    'wording',
+    'connector',
+    'verb_tense',
+    'be_verb',
+    'word_order',
+    'clarity',
+  ];
+
+  for (const category of preferredOrder) {
+    const found = insights.find((item) => item.category === category);
+    if (found) return found;
+  }
+
+  const firstGrammarPoint = cleanText(grammarPoints[0]);
+  if (firstGrammarPoint) {
+    return {
+      label: firstGrammarPoint,
+      category: /spelling/i.test(firstGrammarPoint)
+        ? 'spelling'
+        : cleanText(tense).toLowerCase().includes('past')
+          ? 'verb_tense'
+          : 'clarity',
+      before: '',
+      after: '',
+    };
+  }
+
+  if (explanation) {
+    return {
+      label: 'Sentence became clearer and more natural',
+      category: 'clarity',
+      before: '',
+      after: '',
+    };
+  }
+
+  return null;
+}
+
+function buildGroundedLogicViewModel(params: {
+  original: string;
+  corrected: string;
+  enhanced: string;
+  explanation: string;
+  grammarPoints: string[];
+  tense?: string;
+}): LogicViewModel {
+  const { original, corrected, enhanced, explanation, grammarPoints, tense } = params;
+  const improved = enhanced || corrected || original;
+  const insights = buildChangeInsights(params);
+  const primaryInsight = getPrimaryInsight(insights, grammarPoints, explanation, tense);
+  const hasStrongVietlishTransfer = insights.some((item) =>
+    ['verb_tense', 'be_verb', 'connector', 'word_order'].includes(item.category),
   );
 
+  const defaultWhyNatural =
+    explanation ||
+    'Mercy changed the sentence to make the meaning clearer, smoother, and more natural in English.';
+
+  const base: LogicViewModel = {
+    focus: primaryInsight?.label || grammarPoints[0] || 'clearer English sentence',
+    bridgeTitle: hasStrongVietlishTransfer
+      ? 'English structure becomes clearer here'
+      : 'This is mostly a polish change, not a deep Vietlish problem',
+    whyNatural: defaultWhyNatural,
+    vietlishPattern: hasStrongVietlishTransfer
+      ? 'Some Vietnamese-to-English transfer is showing up here, so Mercy is helping the sentence follow a more natural English pattern.'
+      : 'This sentence is already close to natural English. Mercy is mostly polishing wording, spelling, or story flow instead of fixing a strong Vietnamese-thinking pattern.',
+    englishLogic:
+      'English usually sounds strongest when the sentence is easy to follow, with clear grammar, natural word choice, and a steady story line.',
+    nextTimeTip:
+      'After you write the sentence, do one quick check: spelling, verb choice, and whether the sentence sounds smooth when read aloud.',
+    miniRule: 'Keep the meaning, then polish the line.',
+    comparisonLabel: hasStrongVietlishTransfer ? 'English structure pattern' : 'Polish and clarity pattern',
+    sentencePattern: buildSentencePattern(improved),
+    vietlishExample: 'I very tired today because many work.',
+    englishExample: 'I feel very tired today because I have a lot of work.',
+    keyShift: [
+      'Use the exact change Mercy made to understand what became smoother.',
+      'Not every sentence needs a deep logic lesson. Sometimes the real win is polish and control.',
+    ],
+  };
+
+  switch (primaryInsight?.category) {
+    case 'spelling':
+      return {
+        ...base,
+        focus: 'Spelling correction',
+        bridgeTitle: 'Clean spelling helps English feel trustworthy and clear',
+        whyNatural:
+          explanation ||
+          'Mercy mainly corrected spelling or word form, so the sentence reads more smoothly and looks more confident.',
+        vietlishPattern:
+          'This is not really a Vietlish logic issue. The sentence idea is already understandable. The main improvement is accurate spelling and cleaner word forms.',
+        englishLogic:
+          'In English writing, small spelling errors can distract the reader even when the idea is good. Correct spelling makes the sentence feel more polished and reliable.',
+        nextTimeTip:
+          'After writing, scan slowly for word endings and letter order, especially in longer words.',
+        miniRule: 'Right idea + correct spelling = stronger English.',
+        comparisonLabel: 'Spelling and polish pattern',
+        vietlishExample: 'He felt more confidense after the talk.',
+        englishExample: 'He felt more confidence after the talk.',
+        keyShift: [
+          'The meaning was already there. Mercy mainly cleaned the written form.',
+          'A small spelling fix can make the whole sentence feel more fluent.',
+        ],
+      };
+
+    case 'story_consistency':
+      return {
+        ...base,
+        focus: 'Story consistency',
+        bridgeTitle: 'Keep one story timeline and tone',
+        whyNatural:
+          explanation ||
+          'Mercy adjusted the sentence so the story voice stays consistent from beginning to end.',
+        vietlishPattern:
+          'This is usually not a strong Vietlish issue. It is more about keeping the English story frame stable once the sentence is already in the past or in reflection mode.',
+        englishLogic:
+          'When English is telling a past event or imagining a result from that event, the later parts of the sentence usually stay in the same story frame.',
+        nextTimeTip:
+          'If the sentence is telling a past scene, check whether the final question or result still matches that same moment.',
+        miniRule: 'One story frame, all the way through.',
+        comparisonLabel: 'Story consistency pattern',
+        vietlishExample: 'He studied all night. Will it be enough?',
+        englishExample: 'He studied all night. Would it be enough?',
+        keyShift: [
+          'The sentence became more consistent with the story tone.',
+          'Mercy is helping the paragraph sound like one continuous scene.',
+        ],
+      };
+
+    case 'wording':
+    case 'clarity':
+      return {
+        ...base,
+        focus: 'Natural phrasing',
+        bridgeTitle: 'Choose the smoother English line',
+        whyNatural:
+          explanation ||
+          'Mercy changed the wording because English often prefers a more direct or more elegant phrasing, even when the original meaning is already correct.',
+        vietlishPattern:
+          'This is mostly a phrasing and style improvement, not a major Vietnamese-thinking error. Your meaning was already close.',
+        englishLogic:
+          'Natural English often chooses the version that sounds lighter, more direct, and easier to process in one read.',
+        nextTimeTip:
+          'When two versions feel possible, read them aloud and keep the one that sounds cleaner in one breath.',
+        miniRule: 'Say it the clean way, not the heavy way.',
+        comparisonLabel: 'Natural phrasing pattern',
+        vietlishExample: 'Since he had an exam, he tried to eat nutritious food.',
+        englishExample: 'Knowing he had an exam, he tried to eat nutritious food.',
+        keyShift: [
+          'Mercy is polishing phrasing, not changing your core meaning.',
+          'The stronger English version usually feels lighter and more natural.',
+        ],
+      };
+
+    case 'connector':
+      return {
+        ...base,
+        focus: 'Connector control',
+        bridgeTitle: 'Use one clear idea path',
+        whyNatural:
+          explanation ||
+          'Mercy simplified the link between ideas so the sentence moves more cleanly.',
+        vietlishPattern:
+          'Vietnamese can rely more on context and flexible linking. English often sounds better when the sentence uses one clean connection instead of a heavy chain of translated links.',
+        englishLogic:
+          'In English, one strong connector is often enough. Too many connectors can make the line feel crowded or indirect.',
+        nextTimeTip:
+          'Choose the main relationship first: reason, result, contrast, or time. Then use only the connector you really need.',
+        miniRule: 'One connector, one job.',
+        comparisonLabel: 'Connector pattern',
+        vietlishExample: 'I stayed home because I was tired so I did not go out.',
+        englishExample: 'I stayed home because I was tired.',
+        keyShift: [
+          'Mercy is clearing the path between the ideas.',
+          'English usually prefers one clean connector over several stacked ones.',
+        ],
+      };
+
+    case 'be_verb':
+      return {
+        ...base,
+        focus: 'Visible verb center',
+        bridgeTitle: 'English usually needs the verb to appear clearly',
+        whyNatural:
+          explanation ||
+          'Mercy made the sentence sound natural by making the verb center visible.',
+        vietlishPattern:
+          'Vietnamese can leave this kind of state meaning more to context. English usually wants the main verb, especially forms of “to be,” to appear clearly.',
+        englishLogic:
+          'Descriptions and conditions in English usually need a visible verb so the sentence feels complete.',
+        nextTimeTip:
+          'If you are describing a person, feeling, or condition, check whether am / is / are / was / were should be there.',
+        miniRule: 'No clear sentence without a clear verb.',
+        comparisonLabel: 'Be-verb structure pattern',
+        vietlishExample: 'My sister very kind.',
+        englishExample: 'My sister is very kind.',
+        keyShift: [
+          'Mercy made the sentence center visible.',
+          'English description sentences usually need an explicit verb.',
+        ],
+      };
+
+    case 'verb_tense':
+      return {
+        ...base,
+        focus: 'Time and verb agreement',
+        bridgeTitle: 'Match the verb to the time signal',
+        whyNatural:
+          explanation ||
+          'Mercy changed the verb so the timeline is clear immediately.',
+        vietlishPattern:
+          'Vietnamese often lets the time word carry more of the timeline. English usually expects the verb form to support that timeline too.',
+        englishLogic:
+          'When English hears a past-time signal, it expects the verb to show the past as well.',
+        nextTimeTip:
+          'When you see yesterday, last, ago, or a past-time story, check the verb before anything else.',
+        miniRule: 'Past time word = past verb.',
+        comparisonLabel: 'Past-time verb pattern',
+        vietlishExample: 'Yesterday I go to work very late.',
+        englishExample: 'Yesterday I went to work very late.',
+        keyShift: [
+          'The timeline should appear in the verb, not only in the time word.',
+          'Mercy is helping the sentence sound correct immediately.',
+        ],
+      };
+
+    default:
+      return base;
+  }
+}
+
+function buildExamples(params: {
+  original: string;
+  corrected: string;
+  enhanced: string;
+  explanation: string;
+  grammarPoints: string[];
+  tense?: string;
+}): ExamplePair[] {
+  const insights = buildChangeInsights(params);
+  const primaryInsight = getPrimaryInsight(
+    insights,
+    params.grammarPoints,
+    params.explanation,
+    params.tense,
+  );
+
+  switch (primaryInsight?.category) {
+    case 'spelling':
+      return [
+        {
+          weak: 'He ate nutritous food before the exam.',
+          natural: 'He ate nutritious food before the exam.',
+        },
+        {
+          weak: 'She spoke with confidense during the interview.',
+          natural: 'She spoke with confidence during the interview.',
+        },
+      ];
+
+    case 'story_consistency':
+      return [
+        {
+          weak: 'He worked so hard for the test. Will it be enough?',
+          natural: 'He worked so hard for the test. Would it be enough?',
+        },
+        {
+          weak: 'She had prepared for months. Will her plan succeed?',
+          natural: 'She had prepared for months. Would her plan succeed?',
+        },
+      ];
+
+    case 'wording':
+    case 'clarity':
+      return [
+        {
+          weak: 'Since he had a big exam that day, he chose a healthy breakfast.',
+          natural: 'Knowing he had a big exam that day, he chose a healthy breakfast.',
+        },
+        {
+          weak: 'Because she felt nervous, she tried to breathe slowly.',
+          natural: 'Feeling nervous, she tried to breathe slowly.',
+        },
+      ];
+
+    case 'connector':
+      return [
+        {
+          weak: 'I stayed home because I was tired so I did not go out.',
+          natural: 'I stayed home because I was tired.',
+        },
+        {
+          weak: 'I was busy so because I had too much work.',
+          natural: 'I was busy because I had too much work.',
+        },
+      ];
+
+    case 'be_verb':
+      return [
+        {
+          weak: 'My sister very kind.',
+          natural: 'My sister is very kind.',
+        },
+        {
+          weak: 'Yesterday I very tired.',
+          natural: 'Yesterday I was very tired.',
+        },
+      ];
+
+    case 'verb_tense':
+      return [
+        {
+          weak: 'Yesterday I go to work very late.',
+          natural: 'Yesterday I went to work very late.',
+        },
+        {
+          weak: 'Last night I am very tired.',
+          natural: 'Last night I was very tired.',
+        },
+      ];
+
+    default:
+      return [
+        {
+          weak: 'Today I very busy because many work.',
+          natural: 'I am very busy today because I have a lot of work.',
+        },
+        {
+          weak: 'I go there and after that very confused.',
+          natural: 'I went there, and after that I felt very confused.',
+        },
+      ];
+  }
+}
+
+export default function EnglishLogicTab({
+  roomTitle,
+  contentEn,
+  troubleWords,
+  latestTeacherWritingState,
+  latestAnalysisResult,
+  pendingPronunciationPayload,
+  onOpenPronunciation,
+  onOpenWriting,
+  onMemoryUpdate,
+}: Props) {
+  const lastMemorySignatureRef = useRef<string>('');
+
+  const originalText = cleanText(
+    latestTeacherWritingState?.latestSubmittedText ||
+      latestTeacherWritingState?.revisionSourceText ||
+      pendingPronunciationPayload?.sourceText,
+  );
+
+  const correctedText = cleanText(
+    latestAnalysisResult?.correctedText || pendingPronunciationPayload?.correctedText,
+  );
+
+  const enhancedText = cleanText(
+    latestAnalysisResult?.enhancedText || pendingPronunciationPayload?.enhancedText,
+  );
+
+  const explanationText = cleanText(latestAnalysisResult?.explanation);
+  const grammarPoints = asList(
+    (latestAnalysisResult as { grammarPoints?: unknown } | null | undefined)?.grammarPoints,
+  );
+  const tenseText = cleanText(
+    (
+      latestAnalysisResult as
+        | {
+            tenseAnalysis?: { likelyMainTense?: string | null } | null;
+          }
+        | null
+        | undefined
+    )?.tenseAnalysis?.likelyMainTense,
+  );
+
+  const logic = useMemo(
+    () =>
+      buildGroundedLogicViewModel({
+        original: originalText,
+        corrected: correctedText,
+        enhanced: enhancedText,
+        explanation: explanationText,
+        grammarPoints,
+        tense: tenseText,
+      }),
+    [originalText, correctedText, enhancedText, explanationText, grammarPoints, tenseText],
+  );
+
+  const examples = useMemo(
+    () =>
+      buildExamples({
+        original: originalText,
+        corrected: correctedText,
+        enhanced: enhancedText,
+        explanation: explanationText,
+        grammarPoints,
+        tense: tenseText,
+      }),
+    [originalText, correctedText, enhancedText, explanationText, grammarPoints, tenseText],
+  );
+
+  const displayImprovedText = enhancedText || correctedText;
+  const practiceLine = displayImprovedText || originalText;
+
+  const pronunciationPayload = useMemo<PronunciationLaunchPayload | null>(() => {
+    if (!practiceLine) return null;
+
+    return {
+      sourceText: originalText || practiceLine,
+      correctedText: correctedText || enhancedText || originalText || practiceLine,
+      enhancedText: enhancedText || undefined,
+    };
+  }, [correctedText, enhancedText, originalText, practiceLine]);
+
+  const troubleWordList = useMemo(() => {
+    if (!Array.isArray(troubleWords)) return [];
+    return troubleWords
+      .map((item) => {
+        if (typeof item === 'string') return cleanText(item);
+        if (item && typeof item === 'object' && 'word' in item) {
+          return cleanText((item as { word?: string | null }).word);
+        }
+        return '';
+      })
+      .filter(Boolean)
+      .slice(0, 6);
+  }, [troubleWords]);
+
+  const tokenChanges = useMemo(() => {
+    const improved = displayImprovedText || '';
+    return {
+      removed: getRemovedTokens(originalText, improved),
+      added: getAddedTokens(originalText, improved),
+    };
+  }, [originalText, displayImprovedText]);
+
+  const fallbackContext = cleanText(contentEn)
+    ? cleanText(contentEn).slice(0, 280)
+    : `Mercy will explain how your English sentence works more naturally than direct Vietnamese-style translation${roomTitle ? ` in ${roomTitle}` : ''}.`;
+
+  const hasLesson = Boolean(originalText || correctedText || enhancedText);
+
+  useEffect(() => {
+    if (!hasLesson || !onMemoryUpdate) return;
+
+    const logicPattern = buildLogicPatternMemory(logic.comparisonLabel);
+    const signature = JSON.stringify({
+      originalText,
+      correctedText,
+      enhancedText,
+      focus: logic.focus,
+      bridgeTitle: logic.bridgeTitle,
+      comparisonLabel: logic.comparisonLabel,
+    });
+
+    if (signature === lastMemorySignatureRef.current) return;
+    lastMemorySignatureRef.current = signature;
+
+    onMemoryUpdate({
+      logic: {
+        vietlishPatterns: [logicPattern],
+        bridgesLearned: [logic.bridgeTitle],
+        currentLogicFocus: [logic.focus],
+      },
+    });
+  }, [
+    correctedText,
+    enhancedText,
+    hasLesson,
+    logic.bridgeTitle,
+    logic.comparisonLabel,
+    logic.focus,
+    onMemoryUpdate,
+    originalText,
+  ]);
+
   return (
-    <div className="flex h-full min-h-0 flex-col overflow-hidden">
-      <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-4 pt-4 md:px-5">
-        <div className="rounded-2xl border border-pink-100 bg-gradient-to-br from-pink-50 to-white p-4 shadow-sm">
-          <div className="flex items-start gap-3">
-            <div className="rounded-xl bg-pink-100 p-2 text-pink-700">
-              <BrainCircuit className="h-5 w-5" />
-            </div>
-
-            <div>
-              <h4 className="text-base font-semibold text-foreground">
-                English Logic
-              </h4>
-              <p className="mt-1 text-sm text-muted-foreground">
-                Use this space to bridge Vietnamese thinking and natural English
-                for {contextLabel}.
-              </p>
-            </div>
+    <div className="m-0 flex-1 overflow-hidden">
+      <ScrollArea className="h-full bg-gradient-to-br from-[#FFF9F5] via-[#FAFBFF] to-[#F5F1FF]">
+        <div className="space-y-5 p-4">
+          <div className="space-y-2">
+            <h2 className="text-lg font-semibold text-slate-900">English Logic</h2>
+            <p className="text-sm text-slate-600">
+              Mercy explains what really changed in this sentence, and only shows a Vietlish logic lesson when the sentence actually needs one.
+            </p>
           </div>
-        </div>
 
-        <div className="mt-4 grid gap-3">
-          {PATTERNS.map((pattern) => (
-            <div
-              key={pattern.vi}
-              className="rounded-xl border border-border/70 bg-white p-4 shadow-sm"
-            >
-              <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-pink-700">
-                <Languages className="h-3.5 w-3.5" />
-                <span>Logic bridge</span>
+          {!hasLesson ? (
+            <section className="rounded-2xl border border-white/70 bg-white/90 p-4 shadow-sm">
+              <p className="text-sm font-medium text-slate-900">No learner sentence yet</p>
+              <p className="mt-2 text-sm text-slate-600">{fallbackContext}</p>
+
+              <div className="mt-4 flex flex-wrap gap-2">
+                <Button type="button" onClick={onOpenWriting}>
+                  <PenSquare className="mr-2 h-4 w-4" />
+                  Open Grammar & Writing
+                </Button>
               </div>
+            </section>
+          ) : (
+            <>
+              <section className="rounded-2xl border border-white/70 bg-white/92 p-4 shadow-sm">
+                <div className="flex items-center gap-2">
+                  <Languages className="h-4 w-4 text-violet-500" />
+                  <p className="text-sm font-semibold text-slate-900">
+                    Your sentence vs natural English
+                  </p>
+                </div>
 
-              <p className="mt-2 text-sm font-semibold text-foreground">
-                {pattern.vi}
-              </p>
+                <div className="mt-4 grid gap-3 md:grid-cols-2">
+                  <div className="rounded-xl border border-slate-200 bg-white p-3">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                      Your sentence
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-slate-700">
+                      {originalText || 'No original sentence captured.'}
+                    </p>
+                  </div>
 
-              <div className="mt-2 flex items-center gap-2 text-sm text-muted-foreground">
-                <ArrowRight className="h-4 w-4" />
-                <span>{pattern.en}</span>
-              </div>
+                  <div className="rounded-xl border border-violet-100 bg-gradient-to-br from-violet-50/70 to-white p-3">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-violet-600">
+                      Natural English
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-slate-700">
+                      {enhancedText || correctedText || 'No improved sentence yet.'}
+                    </p>
+                  </div>
+                </div>
+              </section>
 
-              <p className="mt-2 text-sm text-muted-foreground">
-                {pattern.tip}
-              </p>
-            </div>
-          ))}
+              <section className="rounded-2xl border border-white/70 bg-white/92 p-4 shadow-sm">
+                <div className="flex items-center gap-2">
+                  <Lightbulb className="h-4 w-4 text-amber-500" />
+                  <p className="text-sm font-semibold text-slate-900">{logic.bridgeTitle}</p>
+                </div>
+
+                <div className="mt-4 grid gap-4 md:grid-cols-2">
+                  <div className="space-y-4 text-sm">
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                        Main focus
+                      </p>
+                      <p className="mt-1 text-slate-700">{logic.focus}</p>
+                    </div>
+
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                        Why Mercy changed it
+                      </p>
+                      <p className="mt-1 text-slate-700">{logic.whyNatural}</p>
+                    </div>
+
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                        English thinking
+                      </p>
+                      <p className="mt-1 text-slate-700">{logic.englishLogic}</p>
+                    </div>
+
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                        Key shift
+                      </p>
+                      <div className="mt-2 space-y-2">
+                        {logic.keyShift.map((item) => (
+                          <div key={item} className="flex items-start gap-2">
+                            <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
+                            <p className="text-slate-700">{item}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-4 text-sm">
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                        Vietnamese thinking pattern
+                      </p>
+                      <p className="mt-1 text-slate-700">{logic.vietlishPattern}</p>
+                    </div>
+
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                        Sentence pattern to remember
+                      </p>
+                      <p className="mt-1 text-slate-700">{logic.sentencePattern}</p>
+                    </div>
+
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                        Quick rule
+                      </p>
+                      <p className="mt-1 text-slate-700">{logic.miniRule}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-4 grid gap-3 md:grid-cols-2">
+                  <div className="rounded-xl border border-rose-100 bg-rose-50/60 p-3">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-rose-600">
+                      Less natural English
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-slate-700">{logic.vietlishExample}</p>
+                  </div>
+
+                  <div className="rounded-xl border border-emerald-100 bg-emerald-50/60 p-3">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-emerald-600">
+                      More natural English
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-slate-700">{logic.englishExample}</p>
+                  </div>
+                </div>
+
+                <div className="mt-4 rounded-xl border border-sky-100 bg-sky-50/50 p-3 text-sm">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                    Try this next time
+                  </p>
+                  <div className="mt-2 flex items-start gap-2">
+                    <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
+                    <p className="text-slate-700">{logic.nextTimeTip}</p>
+                  </div>
+                </div>
+              </section>
+
+              <section className="rounded-2xl border border-white/70 bg-white/92 p-4 shadow-sm">
+                <div className="flex items-center gap-2">
+                  <Sparkles className="h-4 w-4 text-sky-500" />
+                  <p className="text-sm font-semibold text-slate-900">
+                    What changed inside your sentence
+                  </p>
+                </div>
+
+                <div className="mt-4 grid gap-3 md:grid-cols-2">
+                  <div className="rounded-xl border border-slate-200 bg-white p-3">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                      Words or patterns removed
+                    </p>
+                    {tokenChanges.removed.length > 0 ? (
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        {tokenChanges.removed.map((token) => (
+                          <span
+                            key={token}
+                            className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-medium text-slate-700"
+                          >
+                            {token}
+                          </span>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="mt-2 text-sm text-slate-600">
+                        Mercy mostly refined structure instead of removing many words.
+                      </p>
+                    )}
+                  </div>
+
+                  <div className="rounded-xl border border-slate-200 bg-white p-3">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                      Words or patterns added
+                    </p>
+                    {tokenChanges.added.length > 0 ? (
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        {tokenChanges.added.map((token) => (
+                          <span
+                            key={token}
+                            className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-medium text-slate-700"
+                          >
+                            {token}
+                          </span>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="mt-2 text-sm text-slate-600">
+                        Mercy kept your wording close and mainly improved flow.
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </section>
+
+              <section className="rounded-2xl border border-white/70 bg-white/92 p-4 shadow-sm">
+                <p className="text-sm font-semibold text-slate-900">
+                  Sentence pattern examples
+                </p>
+                <p className="mt-2 text-sm text-slate-600">
+                  These examples now follow the real change Mercy noticed in your sentence.
+                </p>
+
+                <div className="mt-4 grid gap-3">
+                  {examples.map((example, index) => (
+                    <div
+                      key={`${example.weak}-${index}`}
+                      className="rounded-xl border border-slate-200 bg-white p-3"
+                    >
+                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                        Example {index + 1}
+                      </p>
+
+                      <div className="mt-3 grid gap-3 md:grid-cols-2">
+                        <div>
+                          <p className="text-xs font-semibold uppercase tracking-wide text-rose-600">
+                            Less natural English
+                          </p>
+                          <p className="mt-1 text-sm text-slate-700">{example.weak}</p>
+                        </div>
+
+                        <div>
+                          <p className="text-xs font-semibold uppercase tracking-wide text-emerald-600">
+                            More natural English
+                          </p>
+                          <p className="mt-1 text-sm text-slate-700">{example.natural}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              <section className="rounded-2xl border border-white/70 bg-white/92 p-4 shadow-sm">
+                <p className="text-sm font-semibold text-slate-900">How this connects to speaking</p>
+                <p className="mt-2 text-sm text-slate-600">
+                  Practice the improved line aloud so your mouth learns the same structure your mind just studied.
+                </p>
+
+                <div className="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-3">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                    Best line to practice
+                  </p>
+                  <p className="mt-2 text-sm text-slate-700">
+                    {practiceLine || 'Open Pronunciation after Grammar to practice the improved line.'}
+                  </p>
+                </div>
+
+                <div className="mt-4 flex flex-wrap gap-2">
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() => {
+                      if (pronunciationPayload) {
+                        onOpenPronunciation?.(pronunciationPayload);
+                        return;
+                      }
+                      onOpenPronunciation?.();
+                    }}
+                  >
+                    <Mic className="mr-2 h-4 w-4" />
+                    Say this sentence
+                  </Button>
+
+                  <Button type="button" variant="ghost" onClick={onOpenWriting}>
+                    <PenSquare className="mr-2 h-4 w-4" />
+                    Rewrite this sentence
+                  </Button>
+                </div>
+              </section>
+
+              <section className="rounded-2xl border border-white/70 bg-gradient-to-r from-emerald-50/80 to-white p-4 shadow-sm">
+                <div className="flex items-start gap-2">
+                  <RotateCcw className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
+                  <div>
+                    <p className="text-sm font-semibold text-slate-900">Mercy’s next step</p>
+                    <p className="mt-1 text-sm leading-6 text-slate-700">
+                      Good. You understood the exact change Mercy made in this sentence. Now try another real sentence, or rewrite this same idea more clearly and let Mercy guide you again.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-4 flex flex-wrap gap-2">
+                  <Button type="button" onClick={onOpenWriting}>
+                    <RotateCcw className="mr-2 h-4 w-4" />
+                    Try this sentence again
+                  </Button>
+
+                  <Button type="button" variant="outline" onClick={onOpenWriting}>
+                    <PenSquare className="mr-2 h-4 w-4" />
+                    Rewrite this sentence
+                  </Button>
+
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    onClick={() => {
+                      if (pronunciationPayload) {
+                        onOpenPronunciation?.(pronunciationPayload);
+                        return;
+                      }
+                      onOpenPronunciation?.();
+                    }}
+                  >
+                    <Mic className="mr-2 h-4 w-4" />
+                    Say it again
+                  </Button>
+                </div>
+              </section>
+
+              {(grammarPoints.length > 0 || troubleWordList.length > 0) && (
+                <section className="rounded-2xl border border-white/70 bg-white/92 p-4 shadow-sm">
+                  <p className="text-sm font-semibold text-slate-900">Patterns Mercy notices</p>
+
+                  {grammarPoints.length > 0 ? (
+                    <div className="mt-3">
+                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                        Grammar points
+                      </p>
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        {grammarPoints.map((point) => (
+                          <span
+                            key={point}
+                            className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700"
+                          >
+                            {point}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ) : null}
+
+                  {troubleWordList.length > 0 ? (
+                    <div className="mt-3">
+                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                        Pronunciation watch words
+                      </p>
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        {troubleWordList.map((word) => (
+                          <span
+                            key={word}
+                            className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700"
+                          >
+                            {word}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ) : null}
+                </section>
+              )}
+            </>
+          )}
         </div>
-
-        <div className="mt-4 rounded-xl border border-border/70 bg-muted/20 p-3">
-          <p className="text-sm font-medium text-foreground">
-            Need a sentence fix right now?
-          </p>
-          <p className="mt-1 text-sm text-muted-foreground">
-            The analyzer below is still available here so learners can test the
-            logic bridge with real text.
-          </p>
-        </div>
-
-        <div className="mt-4">
-          <MercyEnglishTab
-            roomId={roomId}
-            roomTitle={roomTitle}
-            contentEn={contentEn}
-            englishLevel={englishLevel}
-            troubleWords={normalizedTroubleWords}
-            onVaultReplay={onVaultReplay}
-            onRequestGuideTab={onRequestGuideTab ?? (() => undefined)}
-          />
-        </div>
-
-        <div className="mt-4 flex justify-end">
-          <Button
-            type="button"
-            variant="outline"
-            size="sm"
-            className="rounded-full text-xs font-semibold"
-          >
-            More logic patterns soon
-          </Button>
-        </div>
-      </div>
+      </ScrollArea>
     </div>
   );
 }
-
-export default EnglishLogicTab;

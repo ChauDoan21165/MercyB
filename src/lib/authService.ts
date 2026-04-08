@@ -97,6 +97,11 @@ function hasFunctionsInvoke(
   return typeof (client as any)?.functions?.invoke === "function";
 }
 
+function getDefaultEmailRedirectTo(): string | undefined {
+  if (typeof window === "undefined") return undefined;
+  return `${window.location.origin}/auth/callback`;
+}
+
 export function entitlementIsPremium(
   ent: BackendEntitlement | null | undefined,
 ): boolean {
@@ -218,8 +223,16 @@ export async function fetchCurrentEntitlement(
   }
 }
 
-export async function signUpWithEmail(email: string, password: string) {
-  const { data, error } = await supabase.auth.signUp({ email, password });
+export async function signUpWithEmail(email: string, _password: string) {
+  const cleanEmail = email.trim().toLowerCase();
+
+  const { data, error } = await supabase.auth.signInWithOtp({
+    email: cleanEmail,
+    options: {
+      shouldCreateUser: true,
+      emailRedirectTo: getDefaultEmailRedirectTo(),
+    },
+  });
 
   if (error) {
     if (isAlreadyRegisteredAuthError(error)) {
@@ -237,12 +250,18 @@ export async function signUpWithEmail(email: string, password: string) {
     throw error;
   }
 
-  return data;
+  return {
+    ...data,
+    session: null,
+    requiresEmailVerification: true,
+    verificationMessage:
+      "We sent a sign-in link to your email. Open the email and click the link to create and access your account.",
+  };
 }
 
 export async function signInWithEmail(email: string, password: string) {
   const { data, error } = await supabase.auth.signInWithPassword({
-    email,
+    email: email.trim().toLowerCase(),
     password,
   });
 
