@@ -1,3 +1,5 @@
+// File: src/screens/Pricing.tsx
+
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
@@ -43,13 +45,6 @@ type EntitlementResponse = {
 };
 
 const PAGE_MAX = 980;
-
-/**
- * Fallbacks only.
- * Env vars are preferred and should be set in root .env.
- */
-const DIRECT_ONE_MONTH_PRICE_ID = "price_1TCKY02K1tPxy04uCHQNbvik";
-const DIRECT_ONE_YEAR_PRICE_ID = "price_1TCKSF2K1tPxy04uNeKcQWp5";
 
 function env(name: string): string {
   return String(
@@ -118,7 +113,6 @@ export default function Pricing() {
       "VITE_STRIPE_PRICE_MONTHLY",
       "VITE_STRIPE_MONTHLY_PRICE_ID",
     ),
-    DIRECT_ONE_MONTH_PRICE_ID,
   );
 
   const ONE_YEAR_PRICE_ID = resolvePriceId(
@@ -127,7 +121,6 @@ export default function Pricing() {
       "VITE_STRIPE_PRICE_YEARLY",
       "VITE_STRIPE_YEARLY_PRICE_ID",
     ),
-    DIRECT_ONE_YEAR_PRICE_ID,
   );
 
   const [busyPlan, setBusyPlan] = useState<PaidPlanKey | null>(null);
