@@ -1,0 +1,568 @@
+src/server/host/systemPrompt.ts:20:   - Guide next step
+src/server/host/systemPromptV2.ts:5:You are a structured, intelligent teacher inside a guided learning system.
+src/server/host/renderer.ts:8:// ✅ Optional Whisper transcription (audioBuffer) to guide pronunciation feedback
+src/components/guide/MercyAIHost.tsx:2: * Path: src/components/guide/MercyAIHost.tsx
+src/components/guide/MercyAIHost.tsx:13:import TalkingFaceIcon from "@/components/guide/TalkingFaceIcon";
+src/components/guide/MercyAIHost.tsx:1501:        containsAny(userText, ["how", "works", "what is", "about", "guide", "là gì", "hoạt động"])
+src/components/guide/host/useHostContext.ts:2:// PATH: src/components/guide/host/useHostContext.ts
+src/components/guide/host/useDevState.ts:1:// src/components/guide/host/useDevState.ts
+src/components/guide/host/utils.ts:1:// src/components/guide/host/utils.ts
+src/components/guide/host/types.ts:2:// PATH: src/components/guide/host/types.ts
+src/components/guide/host/useRepeatLoop.ts:1:// src/components/guide/host/useRepeatLoop.ts
+src/components/guide/host/MercyAIHostImpl.tsx:2:// PATH: src/components/guide/host/MercyAIHostImpl.tsx
+src/components/guide/host/MercyAIHostImpl.tsx:13:import TalkingFaceIcon from "@/components/guide/TalkingFaceIcon";
+src/components/guide/host/MercyAIHostImpl.tsx:758:        containsAny(userText, ["how", "works", "what is", "about", "guide", "là gì", "hoạt động"])
+src/components/guide/host/makeReply.ts:1:// src/components/guide/host/makeReply.ts
+src/components/guide/host/TypingIndicator.tsx:1:// src/components/guide/host/TypingIndicator.tsx
+src/components/guide/host/useHostProfile.ts:1:// src/components/guide/host/useHostProfile.ts
+src/components/guide/host/buildActions.ts:1:// src/components/guide/host/buildActions.ts
+src/components/guide/TalkingFaceIcon.tsx:2:// PATH: src/components/guide/TalkingFaceIcon.tsx
+src/components/guide/TeacherGPTPanel.tsx:58:      aria-label="Teacher GPT Guide"
+src/components/guide/TeacherGPTPanel.tsx:73:            {roomTitle ? roomTitle : roomId ? roomId : "Guide"}
+src/components/guide/guideAnswers.ts:1:export type GuideAnswerKey =
+src/components/guide/guideAnswers.ts:10:export const guideAnswers: Record<GuideAnswerKey, string> = {
+src/components/guide/guideAnswers.ts:12:    "Hi! I’m Guide. I can help you use the app, choose a room, and know where to go next.",
+src/components/guide/guideAnswers.ts:18:    "You can use Guide for app help and room navigation. Use Mercy Host when you want real tutoring like grammar explanation, writing correction, summarizing, or reading help.",
+src/components/guide/guideAnswers.ts:21:    "Use Guide for where-to-go questions. Use Mercy Host for learning questions. Use Speak for pronunciation practice.",
+src/components/guide/resolveGuideReply.ts:1:import { guideAnswers, GuideAnswerKey } from "./guideAnswers";
+src/components/guide/resolveGuideReply.ts:3:export type GuideReply =
+src/components/guide/resolveGuideReply.ts:4:  | { type: "local"; message: string; key?: GuideAnswerKey }
+src/components/guide/resolveGuideReply.ts:16:export function resolveGuideReply(input: string): GuideReply {
+src/components/guide/resolveGuideReply.ts:20:    return { type: "local", message: guideAnswers.fallback, key: "fallback" };
+src/components/guide/resolveGuideReply.ts:24:    return { type: "local", message: guideAnswers.greeting, key: "greeting" };
+src/components/guide/resolveGuideReply.ts:29:      "guide me",
+src/components/guide/resolveGuideReply.ts:38:    return { type: "local", message: guideAnswers.onboarding, key: "onboarding" };
+src/components/guide/resolveGuideReply.ts:52:    return { type: "local", message: guideAnswers.app_usage, key: "app_usage" };
+src/components/guide/resolveGuideReply.ts:64:      "what is guide",
+src/components/guide/resolveGuideReply.ts:68:    return { type: "local", message: guideAnswers.room_usage, key: "room_usage" };
+src/components/guide/resolveGuideReply.ts:81:    return { type: "redirect_speak", message: guideAnswers.speak_redirect };
+src/components/guide/resolveGuideReply.ts:103:    return { type: "redirect_host", message: guideAnswers.host_redirect };
+src/components/guide/resolveGuideReply.ts:106:  return { type: "local", message: guideAnswers.fallback, key: "fallback" };
+src/components/guide/GuideTab.tsx:2:import { resolveGuideReply } from "./resolveGuideReply";
+src/components/guide/GuideTab.tsx:10:type GuideTabProps = {
+src/components/guide/GuideTab.tsx:28:export default function GuideTab({
+src/components/guide/GuideTab.tsx:37:}: GuideTabProps) {
+src/components/guide/GuideTab.tsx:48:      text: "Hi! I’m Guide. I help with app usage, room navigation, and where to go next.",
+src/components/guide/GuideTab.tsx:78:    const reply = resolveGuideReply(trimmed);
+src/components/guide/GuideTab.tsx:196:          <div style={{ fontSize: 14, fontWeight: 700 }}>Guide</div>
+src/components/guide/GuideTab.tsx:273:          placeholder="Ask Guide where to go or how to use the app..."
+src/components/room/roomRendererStyles.ts:537:     Guide corner
+src/components/room/roomRendererStyles.ts:539:  [data-mb-scope="room"] .mb-guideCorner,
+src/components/room/roomRendererStyles.ts:540:  .mb-room .mb-guideCorner{
+src/components/room/roomRendererStyles.ts:551:  [data-mb-scope="room"] .mb-guideBtn,
+src/components/room/roomRendererStyles.ts:552:  .mb-room .mb-guideBtn{
+src/components/room/roomRendererStyles.ts:563:  [data-mb-scope="room"] .mb-guidePanel,
+src/components/room/roomRendererStyles.ts:564:  .mb-room .mb-guidePanel{
+src/components/room/RoomRenderer.tsx:50:  MercyGuideCorner,
+src/components/room/RoomRenderer.tsx:1275:              <MercyGuideCorner
+src/components/room/RoomRendererUI.tsx:688:export function MercyGuideCorner({
+src/components/room/RoomRendererUI.tsx:705:      allow = new URLSearchParams(window.location.search).get("roomGuide") === "1";
+src/components/room/RoomRendererUI.tsx:719:    <div className="mb-guideCorner">
+src/components/room/RoomRendererUI.tsx:722:        className="mb-guideBtn"
+src/components/room/RoomRendererUI.tsx:724:        title="Mercy Guide (UI shell)"
+src/components/room/RoomRendererUI.tsx:726:        🙂 <span className="hidden sm:inline">Guide</span>
+src/components/room/RoomRendererUI.tsx:730:        <div className="mb-guidePanel" role="dialog" aria-label="Mercy Guide">
+src/components/room/RoomRendererUI.tsx:731:          <div className="mb-guideTitle">
+src/components/room/RoomRendererUI.tsx:732:            Mercy Guide
+src/components/room/RoomRendererUI.tsx:733:            <button type="button" className="mb-guideClose" onClick={() => setOpen(false)}>
+src/components/room/RoomRendererUI.tsx:738:          <div className="mb-guideBody">
+src/components/room/RoomRendererUI.tsx:739:            <div className="mb-guideLine">
+src/components/room/RoomRendererUI.tsx:743:            <div className="mb-guideLine">
+src/components/room/RoomRendererUI.tsx:755:              <div className="mb-guideActions" role="group" aria-label="Guide actions">
+src/components/room/RoomRendererUI.tsx:758:                  className="mb-guideActionBtn"
+src/components/room/RoomRendererUI.tsx:767:                  className="mb-guideActionBtn"
+src/components/room/RoomRendererUI.tsx:777:            <div className="mb-guideHint">
+src/components/room/LockedBanner.tsx:9: * - Guides user to login or upgrade
+src/components/mercy/MercyWorkspace.tsx:4:import GuideTab from "../guide/GuideTab";
+src/components/mercy/MercyWorkspace.tsx:7:  const [showGuide, setShowGuide] = useState(true);
+src/components/mercy/MercyWorkspace.tsx:8:  const [guideZ, setGuideZ] = useState(30);
+src/components/mercy/MercyWorkspace.tsx:10:  const focusGuide = () => {
+src/components/mercy/MercyWorkspace.tsx:11:    setGuideZ(40);
+src/components/mercy/MercyWorkspace.tsx:16:      {showGuide && (
+src/components/mercy/MercyWorkspace.tsx:17:        <GuideTab
+src/components/mercy/MercyWorkspace.tsx:22:          zIndex={guideZ}
+src/components/mercy/MercyWorkspace.tsx:23:          onFocus={focusGuide}
+src/components/mercy/MercySettingsToggle.tsx:124:                : 'Virtual assistant that welcomes and guides you'
+src/components/layout/AppShell.tsx:10:import { MercyGuide } from "@/components/MercyGuide";
+src/components/layout/AppShell.tsx:17:  showMercyGuide?: boolean;
+src/components/layout/AppShell.tsx:18:  showGuideBox?: boolean;
+src/components/layout/AppShell.tsx:26:  showMercyGuide = false,
+src/components/layout/AppShell.tsx:27:  showGuideBox = false,
+src/components/layout/AppShell.tsx:32:  const shouldShowMercyGuide = showMercyGuide || isHome;
+src/components/layout/AppShell.tsx:33:  const shouldShowGuideBox = showGuideBox || isHome;
+src/components/layout/AppShell.tsx:104:      {shouldShowMercyGuide ? <MercyGuide /> : null}
+src/components/layout/AppShell.tsx:106:      {shouldShowGuideBox ? (
+src/components/layout/AppShell.tsx:122:          Guide
+src/components/CornerTalker.tsx:113:        aria-label={enabled ? "Disable guide audio" : "Enable guide audio"}
+src/components/GuideBox.tsx:23:interface GuideBoxProps {
+src/components/GuideBox.tsx:53:type ChatRole = "guide" | "user";
+src/components/GuideBox.tsx:61:const GUIDE_IMAGE_SRC = "/guide.png";
+src/components/GuideBox.tsx:62:const GUIDE_IMAGE_FALLBACK = "/guide.png";
+src/components/GuideBox.tsx:73:const BUBBLE_POSITION_STORAGE_KEY = "guide-box-bubble-position-v8-left";
+src/components/GuideBox.tsx:74:const PANEL_RECT_STORAGE_KEY = "guide-box-panel-rect-v8-left";
+src/components/GuideBox.tsx:75:const PANEL_SIZE_STORAGE_KEY = "guide-box-panel-size-v8";
+src/components/GuideBox.tsx:174:}: GuideBoxProps): RoomContextSummary {
+src/components/GuideBox.tsx:353:function getInitialGuideMessages(roomSummary: RoomContextSummary): ChatMessage[] {
+src/components/GuideBox.tsx:355:    ? `Hi. I’m Guide. You are in ${roomSummary.roomName}. Ask me practical things like “how do I use this room?”, “where do I go next?”, or “open pricing”.`
+src/components/GuideBox.tsx:356:    : "Hi. I’m Guide. Ask me practical things like “how do I use the app?”, “where do I start?”, or “how do I use a room?”.";
+src/components/GuideBox.tsx:358:  return [{ id: createId("guide"), role: "guide", text: first }];
+src/components/GuideBox.tsx:404:export function GuideBox({
+src/components/GuideBox.tsx:411:}: GuideBoxProps) {
+src/components/GuideBox.tsx:443:    setMessages(getInitialGuideMessages(roomSummary));
+src/components/GuideBox.tsx:515:  const openGuide = useCallback(() => {
+src/components/GuideBox.tsx:622:        if (!moved) openGuide();
+src/components/GuideBox.tsx:629:    [bubblePos, openGuide]
+src/components/GuideBox.tsx:740:          surface: "guide",
+src/components/GuideBox.tsx:751:        const guideMessage: ChatMessage = {
+src/components/GuideBox.tsx:752:          id: createId("guide"),
+src/components/GuideBox.tsx:753:          role: "guide",
+src/components/GuideBox.tsx:757:        setMessages((prev) => [...prev, guideMessage]);
+src/components/GuideBox.tsx:760:          id: createId("guide"),
+src/components/GuideBox.tsx:761:          role: "guide",
+src/components/GuideBox.tsx:844:              aria-label="Open Guide"
+src/components/GuideBox.tsx:849:                  openGuide();
+src/components/GuideBox.tsx:877:                    alt="Guide"
+src/components/GuideBox.tsx:926:              Guide
+src/components/GuideBox.tsx:954:            title="Drag Guide box"
+src/components/GuideBox.tsx:972:            title="Drag Guide box"
+src/components/GuideBox.tsx:990:            title="Drag Guide box"
+src/components/GuideBox.tsx:1025:                aria-label="Drag Guide box"
+src/components/GuideBox.tsx:1026:                title="Drag Guide box"
+src/components/GuideBox.tsx:1073:                      alt="Guide"
+src/components/GuideBox.tsx:1118:                    Guide
+src/components/GuideBox.tsx:1170:                  aria-label="Close Guide"
+src/components/GuideBox.tsx:1426:                Guide chat
+src/components/GuideBox.tsx:1561:export default GuideBox;
+src/components/MercyGuideProfileSettings.tsx:22:interface MercyGuideProfileSettingsProps {
+src/components/MercyGuideProfileSettings.tsx:34:export function MercyGuideProfileSettings({ onClose, onSaved }: MercyGuideProfileSettingsProps) {
+src/components/MercyGuideProfileSettings.tsx:70:          <p>Saved. Mercy Guide will adjust to you.</p>
+src/components/MercyGuideProfileSettings.tsx:71:          <p className="text-xs opacity-70">Đã lưu. Mercy Guide sẽ điều chỉnh cho phù hợp với bạn.</p>
+src/components/MercyGuideProfileSettings.tsx:97:        <h4 className="font-medium text-sm">My Guide Settings</h4>
+src/components/MercyGuideProfileSettings.tsx:102:          <Label htmlFor="guide-name" className="text-xs">
+src/components/MercyGuideProfileSettings.tsx:106:            id="guide-name"
+src/components/MercyGuideProfileSettings.tsx:115:          <Label htmlFor="guide-level" className="text-xs">
+src/components/MercyGuideProfileSettings.tsx:119:            <SelectTrigger id="guide-level" className="h-8 text-sm">
+src/components/MercyGuideProfileSettings.tsx:136:          <Label htmlFor="guide-goal" className="text-xs">
+src/components/MercyGuideProfileSettings.tsx:140:            id="guide-goal"
+src/components/mercy-guide/tabs/YourJourneyTab.tsx:2: * Path: src/components/mercy-guide/tabs/YourJourneyTab.tsx
+src/components/mercy-guide/tabs/YourJourneyTab.tsx:9:import { MercySuggestTab } from '@/components/mercy-guide/MercySuggestTab';
+src/components/mercy-guide/tabs/grammar-writing/utils.ts:1:// src/components/mercy-guide/tabs/grammar-writing/utils.ts
+src/components/mercy-guide/tabs/grammar-writing/api.ts:3: * Path: src/components/mercy-guide/tabs/grammar-writing/api.ts
+src/components/mercy-guide/tabs/grammar-writing/types.ts:1:// PATH: src/components/mercy-guide/tabs/grammar-writing/types.ts
+src/components/mercy-guide/tabs/grammar-writing/cards.tsx:1:// src/components/mercy-guide/tabs/grammar-writing/cards.tsx
+src/components/mercy-guide/tabs/grammar-writing/teacher.ts:1:// src/components/mercy-guide/tabs/grammar-writing/teacher.ts
+src/components/mercy-guide/tabs/grammar-writing/GrammarWritingTab.tsx:2: * Path: src/components/mercy-guide/tabs/grammar-writing/GrammarWritingTab.tsx
+src/components/mercy-guide/tabs/grammar-writing/GrammarWritingTab.tsx:735:                          Mercy is ready to guide your next step.
+src/components/mercy-guide/tabs/PronunciationTab.tsx:2: * Path: src/components/mercy-guide/tabs/PronunciationTab.tsx
+src/components/mercy-guide/tabs/PronunciationTab.tsx:7:import { MercySpeakTab } from '@/components/mercy-guide/MercySpeakTab';
+src/components/mercy-guide/tabs/PronunciationTab.tsx:8:import type { useSpeakPractice } from '@/components/mercy-guide/hooks/useSpeakPractice';
+src/components/mercy-guide/tabs/EnglishLogicTab.tsx:2: * Path: src/components/mercy-guide/tabs/EnglishLogicTab.tsx
+src/components/mercy-guide/tabs/EnglishLogicTab.tsx:1161:                      Good. You understood the exact change Mercy made in this sentence. Now try another real sentence, or rewrite this same idea more clearly and let Mercy guide you again.
+src/components/mercy-guide/mercyGuideClient.ts:2: * Path: src/components/mercy-guide/mercyGuideClient.ts
+src/components/mercy-guide/mercyGuideClient.ts:7:export type MercyGuideLanguage = "vi" | "en";
+src/components/mercy-guide/mercyGuideClient.ts:8:export type MercyGuideSuggestedAction = "none" | "open_speak";
+src/components/mercy-guide/mercyGuideClient.ts:10:export interface MercyGuideHistoryItem {
+src/components/mercy-guide/mercyGuideClient.ts:13:  language?: MercyGuideLanguage;
+src/components/mercy-guide/mercyGuideClient.ts:16:export interface MercyGuideRoomContext {
+src/components/mercy-guide/mercyGuideClient.ts:24:export interface MercyGuideUserContext {
+src/components/mercy-guide/mercyGuideClient.ts:29:export interface MercyGuideClientRequest {
+src/components/mercy-guide/mercyGuideClient.ts:31:  room?: MercyGuideRoomContext;
+src/components/mercy-guide/mercyGuideClient.ts:32:  user?: MercyGuideUserContext;
+src/components/mercy-guide/mercyGuideClient.ts:33:  history?: MercyGuideHistoryItem[];
+src/components/mercy-guide/mercyGuideClient.ts:36:export interface MercyGuideClientResponse {
+src/components/mercy-guide/mercyGuideClient.ts:38:  language: MercyGuideLanguage;
+src/components/mercy-guide/mercyGuideClient.ts:39:  suggestedAction: MercyGuideSuggestedAction;
+src/components/mercy-guide/mercyGuideClient.ts:43:type MercyGuideFunctionResponse = Partial<MercyGuideClientResponse> & {
+src/components/mercy-guide/mercyGuideClient.ts:51:function normalizeLanguage(value: unknown): MercyGuideLanguage {
+src/components/mercy-guide/mercyGuideClient.ts:55:function normalizeSuggestedAction(value: unknown): MercyGuideSuggestedAction {
+src/components/mercy-guide/mercyGuideClient.ts:67:function fallbackReply(language: MercyGuideLanguage): string {
+src/components/mercy-guide/mercyGuideClient.ts:73:function detectLanguage(text: string): MercyGuideLanguage {
+src/components/mercy-guide/mercyGuideClient.ts:96:  history?: MercyGuideHistoryItem[]
+src/components/mercy-guide/mercyGuideClient.ts:97:): MercyGuideHistoryItem[] {
+src/components/mercy-guide/mercyGuideClient.ts:104:      (item): item is MercyGuideHistoryItem =>
+src/components/mercy-guide/mercyGuideClient.ts:110:      const language: MercyGuideLanguage | undefined =
+src/components/mercy-guide/mercyGuideClient.ts:128:  request: MercyGuideClientRequest
+src/components/mercy-guide/mercyGuideClient.ts:129:): MercyGuideClientRequest {
+src/components/mercy-guide/mercyGuideClient.ts:154:  raw: MercyGuideFunctionResponse | null | undefined,
+src/components/mercy-guide/mercyGuideClient.ts:156:): MercyGuideClientResponse {
+src/components/mercy-guide/mercyGuideClient.ts:168:export async function askMercyGuide(
+src/components/mercy-guide/mercyGuideClient.ts:169:  request: MercyGuideClientRequest
+src/components/mercy-guide/mercyGuideClient.ts:170:): Promise<MercyGuideClientResponse> {
+src/components/mercy-guide/mercyGuideClient.ts:174:    const language: MercyGuideLanguage = "en";
+src/components/mercy-guide/mercyGuideClient.ts:184:    const { data, error } = await supabase.functions.invoke("mercy-guide", {
+src/components/mercy-guide/mercyGuideClient.ts:189:      console.error("askMercyGuide invoke error:", error);
+src/components/mercy-guide/mercyGuideClient.ts:194:      (data ?? {}) as MercyGuideFunctionResponse,
+src/components/mercy-guide/mercyGuideClient.ts:198:    console.error("askMercyGuide failed:", error);
+src/components/mercy-guide/mercyGuideClient.ts:203:export default askMercyGuide;
+src/components/mercy-guide/resolveMercyGuideReply.ts:15:export async function resolveMercyGuideReply({
+src/components/mercy-guide/MercyGuidePanel.tsx:2: * Path: src/components/mercy-guide/MercyGuidePanel.tsx
+src/components/mercy-guide/MercyGuidePanel.tsx:40:type MercyGuidePanelProps = {
+src/components/mercy-guide/MercyGuidePanel.tsx:62:  onCloseGuide?: () => void;
+src/components/mercy-guide/MercyGuidePanel.tsx:63:  onCollapseGuide?: () => void;
+src/components/mercy-guide/MercyGuidePanel.tsx:83:  guideTabBottomBuffer?: number;
+src/components/mercy-guide/MercyGuidePanel.tsx:95:  onOpenGuideFromBubble?: () => void;
+src/components/mercy-guide/MercyGuidePanel.tsx:211:export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
+src/components/mercy-guide/MercyGuidePanel.tsx:233:  onCloseGuide,
+src/components/mercy-guide/MercyGuidePanel.tsx:234:  onCollapseGuide,
+src/components/mercy-guide/MercyGuidePanel.tsx:395:    if (onCloseGuide) {
+src/components/mercy-guide/MercyGuidePanel.tsx:396:      onCloseGuide();
+src/components/mercy-guide/MercyGuidePanel.tsx:404:    if (onCollapseGuide) {
+src/components/mercy-guide/MercyGuidePanel.tsx:405:      onCollapseGuide();
+src/components/mercy-guide/MercyGuidePanel.tsx:569:              description="Guide can stay visible, but Journey, Grammar, Speak, and Logic unlock when billing grants premium access."
+src/components/mercy-guide/MercyGuidePanel.tsx:680:export default MercyGuidePanel;
+src/components/mercy-guide/MercyGuideReplyLibraryDebug.tsx:2: * Path: src/components/mercy-guide/MercyGuideReplyLibraryDebug.tsx
+src/components/mercy-guide/MercyGuideReplyLibraryDebug.tsx:11:  clearMercyGuideReplyLibrary,
+src/components/mercy-guide/MercyGuideReplyLibraryDebug.tsx:12:  getMercyGuideReplyLibrary,
+src/components/mercy-guide/MercyGuideReplyLibraryDebug.tsx:13:  saveMercyGuideReplyRecord,
+src/components/mercy-guide/MercyGuideReplyLibraryDebug.tsx:14:  type MercyGuideReplyRecord,
+src/components/mercy-guide/MercyGuideReplyLibraryDebug.tsx:15:} from "./mercyGuideReplyLibrary";
+src/components/mercy-guide/MercyGuideReplyLibraryDebug.tsx:65:  item: MercyGuideReplyRecord;
+src/components/mercy-guide/MercyGuideReplyLibraryDebug.tsx:74:    saveMercyGuideReplyRecord({
+src/components/mercy-guide/MercyGuideReplyLibraryDebug.tsx:85:    saveMercyGuideReplyRecord({
+src/components/mercy-guide/MercyGuideReplyLibraryDebug.tsx:235:export function MercyGuideReplyLibraryDebug() {
+src/components/mercy-guide/MercyGuideReplyLibraryDebug.tsx:241:  const rows = useMemo(() => getMercyGuideReplyLibrary(), [version]);
+src/components/mercy-guide/MercyGuideReplyLibraryDebug.tsx:271:    downloadJson("mercy-guide-reply-library.json", exportRows);
+src/components/mercy-guide/MercyGuideReplyLibraryDebug.tsx:279:    clearMercyGuideReplyLibrary();
+src/components/mercy-guide/MercyGuideReplyLibraryDebug.tsx:288:            Mercy Guide Reply Library
+src/components/mercy-guide/MercyGuideReplyLibraryDebug.tsx:370:export default MercyGuideReplyLibraryDebug;
+src/components/mercy-guide/MercyGuideTab.tsx:1:// PATH: src/components/mercy-guide/MercyGuideTab.tsx
+src/components/mercy-guide/MercyGuideTab.tsx:16:type GuideMessage = {
+src/components/mercy-guide/MercyGuideTab.tsx:21:export function MercyGuideTab() {
+src/components/mercy-guide/MercyGuideTab.tsx:22:  const [messages, setMessages] = useState<GuideMessage[]>([]);
+src/components/mercy-guide/MercyGuideTab.tsx:167:            placeholder="Ask Guide..."
+src/components/mercy-guide/MercyGuideTab.tsx:179:export default MercyGuideTab;
+src/components/mercy-guide/MercySpeakTab.tsx:2: * Path: src/components/mercy-guide/MercySpeakTab.tsx
+src/components/mercy-guide/logic/mercyPolicy.ts:2: * Path: src/components/mercy-guide/logic/mercyPolicy.ts
+src/components/mercy-guide/logic/mercyPolicy.ts:10:export type ForbiddenGuideClaimType =
+src/components/mercy-guide/logic/mercyPolicy.ts:11:  | 'pronunciation_guide_claim'
+src/components/mercy-guide/logic/mercyPolicy.ts:118:export function isPronunciationGuideQuestion(input: string): boolean {
+src/components/mercy-guide/logic/mercyPolicy.ts:135:export function getGuidePronunciationPolicyReply(): MercyPolicyReply {
+src/components/mercy-guide/logic/mercyPolicy.ts:137:    en: 'I can guide you here, but pronunciation listening and correction happens in Speak. Please open Speak to practice and get pronunciation help.',
+src/components/mercy-guide/logic/mercyPolicy.ts:142:export function getGuidePronunciationRepairReply(): MercyPolicyReply {
+src/components/mercy-guide/logic/mercyPolicy.ts:149:export function getForbiddenGuideClaimType(
+src/components/mercy-guide/logic/mercyPolicy.ts:151:): ForbiddenGuideClaimType | null {
+src/components/mercy-guide/logic/mercyPolicy.ts:153:    return 'pronunciation_guide_claim';
+src/components/mercy-guide/logic/mercyPolicy.ts:163:export function getSafeGuidePolicyOverrideForViolation({
+src/components/mercy-guide/logic/mercyPolicy.ts:166:  violationType: ForbiddenGuideClaimType;
+src/components/mercy-guide/logic/mercyPolicy.ts:172:  return getGuidePronunciationPolicyReply();
+src/components/mercy-guide/logic/detectMercyIntent.ts:2: * Path: src/components/mercy-guide/logic/detectMercyIntent.ts
+src/components/mercy-guide/logic/detectMercyIntent.ts:49:  /\bopen guide\b/,
+src/components/mercy-guide/logic/detectMercyIntent.ts:77:  /\bcan you hear me here in guide\b/,
+src/components/mercy-guide/logic/detectMercyIntent.ts:79:  /\bcan you hear me in guide\b/,
+src/components/mercy-guide/logic/detectMercyIntent.ts:96:  /\bban co nghe toi o guide khong\b/,
+src/components/mercy-guide/logic/detectMercyIntent.ts:201:  /\bcan you hear me here in guide\b/,
+src/components/mercy-guide/logic/detectMercyIntent.ts:203:  /\bcan you hear me in guide\b/,
+src/components/mercy-guide/logic/detectMercyIntent.ts:214:  /\bban co nghe toi o guide khong\b/,
+src/components/mercy-guide/logic/routeMercyMessage.ts:2: * Path: src/components/mercy-guide/logic/routeMercyMessage.ts
+src/components/mercy-guide/logic/routeMercyMessage.ts:13:  getGuidePronunciationPolicyReply,
+src/components/mercy-guide/logic/routeMercyMessage.ts:14:  getGuidePronunciationRepairReply,
+src/components/mercy-guide/logic/routeMercyMessage.ts:79:function getPronunciationGuideHandoffReply(
+src/components/mercy-guide/logic/routeMercyMessage.ts:84:    return getGuidePronunciationRepairReply();
+src/components/mercy-guide/logic/routeMercyMessage.ts:88:    return getGuidePronunciationPolicyReply();
+src/components/mercy-guide/logic/routeMercyMessage.ts:91:  return getGuidePronunciationPolicyReply();
+src/components/mercy-guide/logic/routeMercyMessage.ts:98:  return getPronunciationGuideHandoffReply(input, kind);
+src/components/mercy-guide/logic/routeMercyMessage.ts:165:          en: "I can help you use the guide. Tell me what you want to open.",
+src/components/mercy-guide/logic/routeMercyMessage.ts:166:          vi: "Mình có thể giúp bạn dùng guide. Hãy nói bạn muốn mở gì nhé.",
+src/components/mercy-guide/logic/routeMercyMessage.ts:175:        apiMode: "general_guide",
+src/components/mercy-guide/mercyGuide.utils.ts:1:// PATH: src/components/mercy-guide/mercyGuide.utils.ts
+src/components/mercy-guide/mercyGuide.utils.ts:16:} from './mercyGuide.constants';
+src/components/mercy-guide/mercyGuide.utils.ts:30:export type MercyGuideRoomInput = {
+src/components/mercy-guide/mercyGuide.utils.ts:111:export function getGuideTabBottomBuffer() {
+src/components/mercy-guide/mercyGuide.utils.ts:173:}: MercyGuideRoomInput): RoomContextSummary {
+src/components/mercy-guide/mercyGuide.utils.ts:222:        ? `Welcome back, ${preferredName}. I’m here to guide you.`
+src/components/mercy-guide/mercyGuide.utils.ts:223:        : 'Welcome back. I’m here to guide you.',
+src/components/mercy-guide/shared.ts:46:export interface GuideAssistantResponse {
+src/components/mercy-guide/shared.ts:407:  data: GuideAssistantResponse,
+src/components/mercy-guide/DailyCoachCard.tsx:1:// PATH: src/components/mercy-guide/DailyCoachCard.tsx
+src/components/mercy-guide/DailyCoachCard.tsx:4: * Path: src/components/mercy-guide/DailyCoachCard.tsx
+src/components/mercy-guide/types.ts:3: * Path: src/components/mercy-guide/types.ts
+src/components/mercy-guide/types.ts:10:export interface MercyGuideProps {
+src/components/mercy-guide/mercyGuideAnswers.ts:1:export type GuideReplyLanguage = 'vi' | 'en';
+src/components/mercy-guide/mercyGuideAnswers.ts:3:export type GuideReplyKey =
+src/components/mercy-guide/mercyGuideAnswers.ts:36:type BilingualAnswerSet = Record<GuideReplyKey, BilingualAnswerEntry>;
+src/components/mercy-guide/mercyGuideAnswers.ts:54:export function joinGuideLines(lines: Array<string | undefined | null>) {
+src/components/mercy-guide/mercyGuideAnswers.ts:66:      'Mercy Host là người đồng hành trong app này. Bạn có thể dùng Guide để hỏi tự do, Teacher để được hướng dẫn học, English để xem và hiểu nội dung tiếng Anh, và Speak để luyện phát âm bằng ghi âm, nghe lại, so sánh và chấm điểm khi có kết quả.',
+src/components/mercy-guide/mercyGuideAnswers.ts:68:      'Mercy Host is your guide inside this app. You can use Guide for open questions, Teacher for guided study help, English for room content and explanations, and Speak for pronunciation practice with recording, playback, comparison, and scoring when available.',
+src/components/mercy-guide/mercyGuideAnswers.ts:73:      'Cách dùng app nhanh nhất là thế này:\n• Guide để hỏi điều bạn cần\n• Teacher để nhận hướng dẫn học\n• English để xem nội dung và giải thích\n• Speak để luyện phát âm\n\nBước đầu tốt nhất là nói rõ kỹ năng bạn muốn luyện: grammar, reading, writing, pronunciation, hoặc speaking.',
+src/components/mercy-guide/mercyGuideAnswers.ts:75:      'The fastest way to use this app is:\n• Guide for questions\n• Teacher for guided study help\n• English for content and explanations\n• Speak for pronunciation practice\n\nThe best first step is to say which skill you want to train: grammar, reading, writing, pronunciation, or speaking.',
+src/components/mercy-guide/mercyGuideAnswers.ts:80:      joinGuideLines([
+src/components/mercy-guide/mercyGuideAnswers.ts:98:      joinGuideLines([
+src/components/mercy-guide/mercyGuideAnswers.ts:119:      joinGuideLines([
+src/components/mercy-guide/mercyGuideAnswers.ts:131:      joinGuideLines([
+src/components/mercy-guide/mercyGuideAnswers.ts:146:      joinGuideLines([
+src/components/mercy-guide/mercyGuideAnswers.ts:157:      joinGuideLines([
+src/components/mercy-guide/mercyGuideAnswers.ts:171:      joinGuideLines([
+src/components/mercy-guide/mercyGuideAnswers.ts:186:      joinGuideLines([
+src/components/mercy-guide/mercyGuideAnswers.ts:204:      joinGuideLines([
+src/components/mercy-guide/mercyGuideAnswers.ts:219:      joinGuideLines([
+src/components/mercy-guide/mercyGuideAnswers.ts:237:      joinGuideLines([
+src/components/mercy-guide/mercyGuideAnswers.ts:253:      joinGuideLines([
+src/components/mercy-guide/mercyGuideAnswers.ts:272:      joinGuideLines([
+src/components/mercy-guide/mercyGuideAnswers.ts:288:      joinGuideLines([
+src/components/mercy-guide/mercyGuideAnswers.ts:307:      joinGuideLines([
+src/components/mercy-guide/mercyGuideAnswers.ts:322:      joinGuideLines([
+src/components/mercy-guide/mercyGuideAnswers.ts:340:      joinGuideLines([
+src/components/mercy-guide/mercyGuideAnswers.ts:353:      joinGuideLines([
+src/components/mercy-guide/mercyGuideAnswers.ts:382:export function getMercyGuideAnswer(
+src/components/mercy-guide/mercyGuideAnswers.ts:383:  key: GuideReplyKey,
+src/components/mercy-guide/mercyGuideAnswers.ts:384:  language: GuideReplyLanguage,
+src/components/mercy-guide/hooks/useEnglishHelper.ts:28:      const { data, error } = await supabase.functions.invoke('guide-english-helper', {
+src/components/mercy-guide/hooks/useMercyChat.ts:2: * Path: src/components/mercy-guide/hooks/useMercyChat.ts
+src/components/mercy-guide/hooks/useMercyChat.ts:6:import type { GuideArticle } from "@/hooks/useMercyGuide";
+src/components/mercy-guide/hooks/useMercyChat.ts:31:  getForbiddenGuideClaimType,
+src/components/mercy-guide/hooks/useMercyChat.ts:32:  getSafeGuidePolicyOverrideForViolation,
+src/components/mercy-guide/hooks/useMercyChat.ts:37:  articles: Record<string, GuideArticle> | undefined;
+src/components/mercy-guide/hooks/useMercyChat.ts:359:          reject(new Error("Guide assistant timeout"));
+src/components/mercy-guide/hooks/useMercyChat.ts:381:        throw new Error("Guide assistant returned incomplete answer");
+src/components/mercy-guide/hooks/useMercyChat.ts:385:        getForbiddenGuideClaimType(cleanedAnswer) ||
+src/components/mercy-guide/hooks/useMercyChat.ts:386:        getForbiddenGuideClaimType(data.answer);
+src/components/mercy-guide/hooks/useMercyChat.ts:389:        ? getSafeGuidePolicyOverrideForViolation({ violationType })
+src/components/mercy-guide/hooks/useMercyMemory.ts:3: * Path: src/components/mercy-guide/hooks/useMercyMemory.ts
+src/components/mercy-guide/hooks/useSpeakPractice.ts:589:        'guide-pronunciation-coach',
+src/components/mercy-guide/hooks/useMercyGuideData.ts:1:// PATH: src/components/mercy-guide/hooks/useMercyGuideData.ts
+src/components/mercy-guide/hooks/useMercyGuideData.ts:19:import { buildRoomAwareCheckIn, cleanText } from "../mercyGuide.utils";
+src/components/mercy-guide/hooks/useMercyGuideData.ts:27:type UseMercyGuideDataInput = {
+src/components/mercy-guide/hooks/useMercyGuideData.ts:35:export function useMercyGuideData({
+src/components/mercy-guide/hooks/useMercyGuideData.ts:41:}: UseMercyGuideDataInput) {
+src/components/mercy-guide/hooks/useMercyGuideData.ts:169:          console.error("Failed to load guide data:", error);
+src/components/mercy-guide/hooks/useMercyGuideShell.ts:16:} from '../mercyGuide.constants';
+src/components/mercy-guide/hooks/useMercyGuideShell.ts:23:} from '../mercyGuide.utils';
+src/components/mercy-guide/hooks/useMercyGuideShell.ts:47:type UseMercyGuideShellArgs = {
+src/components/mercy-guide/hooks/useMercyGuideShell.ts:57:export function useMercyGuideShell({
+src/components/mercy-guide/hooks/useMercyGuideShell.ts:61:}: UseMercyGuideShellArgs) {
+src/components/mercy-guide/hooks/useMercyGuideShell.ts:177:  const openGuideFromBubble = useCallback(() => {
+src/components/mercy-guide/hooks/useMercyGuideShell.ts:215:          openGuideFromBubble();
+src/components/mercy-guide/hooks/useMercyGuideShell.ts:223:    [bubblePos, clampBubblePos, openGuideFromBubble, updateInteraction]
+src/components/mercy-guide/hooks/useMercyGuideShell.ts:378:      console.error('Failed to restore Mercy Guide panel size:', error);
+src/components/mercy-guide/hooks/useMercyGuideShell.ts:400:      console.error('Failed to restore Mercy Guide bubble position:', error);
+src/components/mercy-guide/hooks/useMercyGuideShell.ts:416:      console.error('Failed to persist Mercy Guide panel size:', error);
+src/components/mercy-guide/hooks/useMercyGuideShell.ts:425:      console.error('Failed to persist Mercy Guide bubble position:', error);
+src/components/mercy-guide/hooks/useMercyGuideShell.ts:462:    openGuideFromBubble,
+src/components/mercy-guide/hooks/useDailyCoach.ts:2: * Path: src/components/mercy-guide/hooks/useDailyCoach.ts
+src/components/mercy-guide/classifyGuideInput.ts:2:  GuideClassification,
+src/components/mercy-guide/classifyGuideInput.ts:3:  GuideSkillIntent,
+src/components/mercy-guide/classifyGuideInput.ts:4:  GuideTaskIntent,
+src/components/mercy-guide/classifyGuideInput.ts:5:} from './guideRoutingSpec';
+src/components/mercy-guide/classifyGuideInput.ts:15:export function detectGuideLanguage(text: string): 'vi' | 'en' {
+src/components/mercy-guide/classifyGuideInput.ts:44:export function extractGuidePayload(input: string) {
+src/components/mercy-guide/classifyGuideInput.ts:74:function detectTaskIntent(lower: string, payload: string): GuideTaskIntent | undefined {
+src/components/mercy-guide/classifyGuideInput.ts:167:function detectSkillIntent(lower: string): GuideSkillIntent | undefined {
+src/components/mercy-guide/classifyGuideInput.ts:181:  skillIntent?: GuideSkillIntent,
+src/components/mercy-guide/classifyGuideInput.ts:182:  taskIntent?: GuideTaskIntent
+src/components/mercy-guide/classifyGuideInput.ts:192:export function classifyGuideInput(input: string): GuideClassification {
+src/components/mercy-guide/classifyGuideInput.ts:194:  const language = detectGuideLanguage(input);
+src/components/mercy-guide/classifyGuideInput.ts:195:  const payload = extractGuidePayload(input);
+src/components/mercy-guide/classifyGuideInput.ts:224:      'guide me',
+src/components/mercy-guide/MercySuggestTab.tsx:1:// PATH: src/components/mercy-guide/MercySuggestTab.tsx
+src/components/mercy-guide/mercyGuideReplyLibrary.ts:2: * File: mercyGuideReplyLibrary.ts
+src/components/mercy-guide/mercyGuideReplyLibrary.ts:3: * Path: src/components/mercy-guide/mercyGuideReplyLibrary.ts
+src/components/mercy-guide/mercyGuideReplyLibrary.ts:8:export type MercyGuideReplySource =
+src/components/mercy-guide/mercyGuideReplyLibrary.ts:14:export type MercyGuideReplyIntent =
+src/components/mercy-guide/mercyGuideReplyLibrary.ts:43:export type MercyGuideReplyRecord = {
+src/components/mercy-guide/mercyGuideReplyLibrary.ts:45:  intent: MercyGuideReplyIntent;
+src/components/mercy-guide/mercyGuideReplyLibrary.ts:57:  source: MercyGuideReplySource;
+src/components/mercy-guide/mercyGuideReplyLibrary.ts:63:export type MercyGuideReplySeed = Omit<
+src/components/mercy-guide/mercyGuideReplyLibrary.ts:64:  MercyGuideReplyRecord,
+src/components/mercy-guide/mercyGuideReplyLibrary.ts:68:const STORAGE_KEY = 'mercy-guide-reply-library-v5';
+src/components/mercy-guide/mercyGuideReplyLibrary.ts:72:const INITIAL_TEACHER_SEEDS: MercyGuideReplySeed[] = [
+src/components/mercy-guide/mercyGuideReplyLibrary.ts:144:function normalizeSeed(seed: MercyGuideReplySeed): MercyGuideReplyRecord {
+src/components/mercy-guide/mercyGuideReplyLibrary.ts:161:export function getMercyGuideReplyLibrary(): MercyGuideReplyRecord[] {
+src/components/mercy-guide/mercyGuideReplyLibrary.ts:170:    const parsed = JSON.parse(raw) as MercyGuideReplyRecord[];
+src/components/mercy-guide/mercyGuideReplyLibrary.ts:182:export function findApprovedMercyGuideReplies(
+src/components/mercy-guide/mercyGuideReplyLibrary.ts:183:  intent: MercyGuideReplyIntent,
+src/components/mercy-guide/mercyGuideReplyLibrary.ts:186:): MercyGuideReplyRecord[] {
+src/components/mercy-guide/mercyGuideReplyLibrary.ts:187:  const library = getMercyGuideReplyLibrary();
+src/components/mercy-guide/mercyGuideReplyLibrary.ts:221:export function saveMercyGuideReplyRecord(seed: MercyGuideReplySeed): MercyGuideReplyRecord | null {
+src/components/mercy-guide/mercyGuideReplyLibrary.ts:224:  const existing = getMercyGuideReplyLibrary();
+src/components/mercy-guide/mercyGuideReplyLibrary.ts:230:export function clearMercyGuideReplyLibrary() {
+src/components/mercy-guide/MercyEnglishTab.tsx:1:// PATH: src/components/mercy-guide/MercyEnglishTab.tsx
+src/components/mercy-guide/MercyEnglishTab.tsx:19:  onRequestGuideTab: () => void;
+src/components/mercy-guide/MercyEnglishTab.tsx:29:  onRequestGuideTab,
+src/components/mercy-guide/MercyEnglishTab.tsx:64:                onClick={onRequestGuideTab}
+src/components/mercy-guide/MercyEnglishTab.tsx:69:                Ask Mercy in Guide instead
+src/components/mercy-guide/MercyEnglishTab.tsx:73:                You can ask about any word, sentence, or grammar point in Guide.
+src/components/mercy-guide/api/askMercyApi.ts:2: * Path: src/components/mercy-guide/api/askMercyApi.ts
+src/components/mercy-guide/api/askMercyApi.ts:6:import type { GuideAssistantResponse } from '../shared';
+src/components/mercy-guide/api/askMercyApi.ts:9:  | 'general_guide'
+src/components/mercy-guide/api/askMercyApi.ts:27:  data: GuideAssistantResponse | null;
+src/components/mercy-guide/api/askMercyApi.ts:42:  const { data, error } = await supabase.functions.invoke<GuideAssistantResponse>(
+src/components/mercy-guide/api/askMercyApi.ts:43:    'guide-assistant',
+src/components/mercy-guide/copy/mercyCopy.ts:7:  guideGreeting: {
+src/components/mercy-guide/copy/mercyCopy.ts:23:    en: "In Guide, I can explain pronunciation in chat, but I cannot hear live audio here. For listening, recording, and pronunciation checking, open Speak, type or paste a short phrase, then tap Record.",
+src/components/mercy-guide/copy/mercyCopy.ts:24:    vi: "Trong Guide, mình có thể giải thích phát âm bằng chat, nhưng mình không nghe âm thanh trực tiếp ở đây. Để nghe mẫu, thu âm và kiểm tra phát âm, bạn hãy mở Speak, nhập hoặc dán một câu ngắn rồi nhấn Record.",
+src/components/mercy-guide/copy/mercyCopy.ts:28:    en: "We’re still working on pronunciation. In Guide, I can explain sounds, mouth position, stress, or a word you type. For voice practice, open Speak and record there.",
+src/components/mercy-guide/copy/mercyCopy.ts:29:    vi: "Mình vẫn đang ở phần hỗ trợ phát âm nhé. Trong Guide, mình có thể giải thích âm, khẩu hình, trọng âm hoặc từ/câu bạn gõ vào. Còn để luyện bằng giọng nói, bạn mở Speak và thu âm ở đó.",
+src/components/mercy-guide/mercyGuide.constants.ts:2: * Path: src/components/mercy-guide/mercyGuide.constants.ts
+src/components/mercy-guide/mercyGuide.constants.ts:21:export const PANEL_SIZE_STORAGE_KEY = 'mercy-guide-panel-size-v2';
+src/components/mercy-guide/mercyGuide.constants.ts:22:export const PANEL_SIZE_STORAGE_KEY_MOBILE = 'mercy-guide-panel-size-mobile-v2';
+src/components/mercy-guide/mercyGuide.constants.ts:23:export const PANEL_SIZE_STORAGE_KEY_DESKTOP = 'mercy-guide-panel-size-desktop-v2';
+src/components/mercy-guide/mercyGuide.constants.ts:31:export const BUBBLE_POSITION_STORAGE_KEY = 'mercy-guide-bubble-position-v2';
+src/components/mercy-guide/guideTutorTypes.ts:1:import type { GuideTaskIntent } from './guideRoutingSpec';
+src/components/mercy-guide/guideTutorTypes.ts:3:export type GuideTutorApiRequest = {
+src/components/mercy-guide/guideTutorTypes.ts:4:  mode: 'guide_tutor';
+src/components/mercy-guide/guideTutorTypes.ts:6:  taskIntent: GuideTaskIntent;
+src/components/mercy-guide/guideTutorTypes.ts:29:export type GuideTutorApiResponse = {
+src/components/mercy-guide/guideTutorTypes.ts:33:  taskIntent?: GuideTaskIntent;
+src/components/mercy-guide/guideRoutingSpec.ts:1:export type GuideRoute =
+src/components/mercy-guide/guideRoutingSpec.ts:7:export type GuideSkillIntent =
+src/components/mercy-guide/guideRoutingSpec.ts:15:export type GuideTaskIntent =
+src/components/mercy-guide/guideRoutingSpec.ts:24:export type GuideClassification = {
+src/components/mercy-guide/guideRoutingSpec.ts:26:  route: GuideRoute;
+src/components/mercy-guide/guideRoutingSpec.ts:27:  skillIntent?: GuideSkillIntent;
+src/components/mercy-guide/guideRoutingSpec.ts:28:  taskIntent?: GuideTaskIntent;
+src/components/mercy-guide/MercyTeacherTab.tsx:3: * Path: src/components/mercy-guide/MercyTeacherTab.tsx
+src/components/mercy-guide/MercyTeacherTab.tsx:381:          : 'See your latest sentence turn into a guided lesson with coaching, speaking direction, and understanding support.',
+src/components/mercy-guide/MercyTeacherTab.tsx:394:          ? `Unlock Journey to turn ${focusText} into a guided learning path.`
+src/components/mercy-guide/MercyTeacherTab.tsx:479:      return 'A short honest sentence is enough. Mercy will guide it step by step.';
+src/components/mercy-guide/MercyTeacherTab.tsx:596:                          ? 'Journey keeps the sentence, the lesson, and the teacher note together so English feels guided instead of fragmented.'
+src/components/mercy-guide/MercyTeacherTab.tsx:747:                            Instead of separate tools, students get one guided path from sentence to understanding.
+src/components/mercy-guide/guideTutorPromptContract.ts:1:import type { GuideTaskIntent } from './guideRoutingSpec';
+src/components/mercy-guide/guideTutorPromptContract.ts:7:You are a study guide inside MercyGuide.
+src/components/mercy-guide/guideTutorPromptContract.ts:35:export function getGuideTutorTaskInstruction(taskIntent: GuideTaskIntent): string {
+src/components/MercyGuide.tsx:2: * File: MercyGuide.tsx
+src/components/MercyGuide.tsx:3: * Path: src/components/MercyGuide.tsx
+src/components/MercyGuide.tsx:8:import { useMercyGuide } from '@/hooks/useMercyGuide';
+src/components/MercyGuide.tsx:12:import { MercyGuidePanel } from './mercy-guide/MercyGuidePanel';
+src/components/MercyGuide.tsx:30:} from './mercy-guide/mercyGuide.constants';
+src/components/MercyGuide.tsx:34:} from './mercy-guide/mercyGuide.utils';
+src/components/MercyGuide.tsx:35:import { MERCY_HOST_IMAGE_FALLBACK, MERCY_HOST_IMAGE_SRC } from './mercy-guide/shared';
+src/components/MercyGuide.tsx:36:import { analyzeGrammarWithApi } from './mercy-guide/tabs/grammar-writing/api';
+src/components/MercyGuide.tsx:37:import useMercyMemory from './mercy-guide/hooks/useMercyMemory';
+src/components/MercyGuide.tsx:39:  MercyGuideProps,
+src/components/MercyGuide.tsx:44:} from './mercy-guide/types';
+src/components/MercyGuide.tsx:46:type GuideTab = 'teacher' | 'grammar' | 'pronunciation' | 'logic';
+src/components/MercyGuide.tsx:78:const MercyGuidePanelView = MercyGuide as unknown as React.ComponentType<any>;
+src/components/MercyGuide.tsx:80:const MercyGuidePanelResolved = MercyGuidePanel as React.ComponentType<any>;
+src/components/MercyGuide.tsx:96:function getGuideTabBottomBuffer(): number {
+src/components/MercyGuide.tsx:128:}: MercyGuideProps): RoomContextSummary {
+src/components/MercyGuide.tsx:198:export function MercyGuide({
+src/components/MercyGuide.tsx:205:}: MercyGuideProps) {
+src/components/MercyGuide.tsx:206:  const { isEnabled } = useMercyGuide();
+src/components/MercyGuide.tsx:209:  const [activeTab, setActiveTab] = useState<GuideTab>('teacher');
+src/components/MercyGuide.tsx:293:  const guideTabBottomBuffer = getGuideTabBottomBuffer();
+src/components/MercyGuide.tsx:390:  const handleOpenGuideFromBubble = useCallback(() => {
+src/components/MercyGuide.tsx:394:  const handleCollapseGuide = useCallback(() => {
+src/components/MercyGuide.tsx:398:  const handleCloseGuide = useCallback(() => {
+src/components/MercyGuide.tsx:455:          handleOpenGuideFromBubble();
+src/components/MercyGuide.tsx:462:    [bubblePos, clampBubblePos, handleOpenGuideFromBubble],
+src/components/MercyGuide.tsx:702:              handleOpenGuideFromBubble();
+src/components/MercyGuide.tsx:710:          aria-label="Open Mercy Guide"
+src/components/MercyGuide.tsx:752:          <MercyGuidePanelResolved
+src/components/MercyGuide.tsx:755:            setActiveTab={(value: string) => setActiveTab(value as GuideTab)}
+src/components/MercyGuide.tsx:761:            guideTabBottomBuffer={guideTabBottomBuffer}
+src/components/MercyGuide.tsx:788:            onOpenGuideFromBubble={handleOpenGuideFromBubble}
+src/components/MercyGuide.tsx:793:            onCollapseGuide={handleCollapseGuide}
+src/components/MercyGuide.tsx:794:            onCloseGuide={handleCloseGuide}
+src/components/MercyGuide.tsx:862:export default MercyGuide;
+src/components/MercyGuideSettings.tsx:4:import { useMercyGuide } from '@/hooks/useMercyGuide';
+src/components/MercyGuideSettings.tsx:7: * Settings toggle for Mercy Guide assistant
+src/components/MercyGuideSettings.tsx:10:export function MercyGuideSettings() {
+src/components/MercyGuideSettings.tsx:11:  const { isEnabled, setGuideEnabled } = useMercyGuide();
+src/components/MercyGuideSettings.tsx:16:        <Label htmlFor="mercy-guide-toggle" className="text-sm font-medium">
+src/components/MercyGuideSettings.tsx:17:          Show Mercy Guide assistant
+src/components/MercyGuideSettings.tsx:20:          Hiện trợ lý Mercy Guide
+src/components/MercyGuideSettings.tsx:24:        id="mercy-guide-toggle"
+src/components/MercyGuideSettings.tsx:26:        onCheckedChange={setGuideEnabled}
+src/hooks/useMercyGuide.ts:4:  GUIDE_ENABLED: 'mb_mercy_guide_enabled',
+src/hooks/useMercyGuide.ts:5:  QUESTIONS_THIS_HOUR: 'mb_guide_questions_hour',
+src/hooks/useMercyGuide.ts:6:  HOUR_TIMESTAMP: 'mb_guide_hour_ts',
+src/hooks/useMercyGuide.ts:12:export interface GuideArticle {
+src/hooks/useMercyGuide.ts:19:export type GuideArticles = Record<string, GuideArticle>;
+src/hooks/useMercyGuide.ts:21:let articlesCache: GuideArticles | null = null;
+src/hooks/useMercyGuide.ts:22:let articlesPromise: Promise<GuideArticles> | null = null;
+src/hooks/useMercyGuide.ts:62:function normalizeArticles(value: unknown): GuideArticles {
+src/hooks/useMercyGuide.ts:68:  const normalized: GuideArticles = {};
+src/hooks/useMercyGuide.ts:75:    const article = rawArticle as Partial<GuideArticle>;
+src/hooks/useMercyGuide.ts:88:async function loadGuideArticles(): Promise<GuideArticles> {
+src/hooks/useMercyGuide.ts:97:  articlesPromise = fetch('/data/guide_articles_en_vi.json', {
+src/hooks/useMercyGuide.ts:103:        throw new Error(`Failed to load guide articles: HTTP ${res.status}`);
+src/hooks/useMercyGuide.ts:141:export function useMercyGuide() {
+src/hooks/useMercyGuide.ts:142:  const [articles, setArticles] = useState<GuideArticles | null>(articlesCache);
+src/hooks/useMercyGuide.ts:160:    loadGuideArticles()
+src/hooks/useMercyGuide.ts:166:        console.error('Failed to load guide articles:', err);
+src/hooks/useMercyGuide.ts:181:  const setGuideEnabled = useCallback((enabled: boolean) => {
+src/hooks/useMercyGuide.ts:208:    setGuideEnabled,
+src/hooks/useUserAccess.ts:16:  hasMercyGuide: boolean;
+src/hooks/useUserAccess.ts:70:    hasMercyGuide: true,
+src/lib/mercy/teacherPersonality.ts:225:        en: "Nice to have you here. Let me guide you with clarity and calm.",
+src/lib/mercy/teacherPersonality.ts:446:        en: "If anything feels heavy, I'll guide you through it.",
+src/lib/ai/promptBuilder.ts:21:const BASE_PERSONALITY = `You are Mercy Blade, a compassionate AI guide helping users develop mental clarity, emotional resilience, and strategic thinking.
+src/lib/mercy-host/adaptiveLessonFlowEngine.test.ts:214:  it('opens a guided-question window for shaky but not overwhelmed learners', () => {
+src/lib/mercy-host/adaptiveLessonFlowEngine.test.ts:232:    expect(result.shouldAskGuidedQuestion).toBe(true);
+src/lib/mercy-host/adaptiveLessonFlowEngine.test.ts:234:    expect(result.rationale).toContain('guided_question_window');
+src/lib/mercy-host/teachingStrategies.ts:214:export function guidedRecall(
+src/lib/mercy-host/host/persona.ts:1:export const FALLBACK_NAMES = ['Mercy', 'Teacher', 'Guide'] as const;
+src/lib/mercy-host/martialCoachScripts.ts:11: * - This version adds coach planning so Mercy feels more like a real guide.
+src/lib/mercy-host/voicePack.ts:222:    en: "We're ready to begin. I'm honored to guide you.",
+src/lib/mercy-host/teacherDialogueBuilder.ts:379:      shouldAskGuidedQuestion: false,
+src/lib/mercy-host/personalityRules.ts:255:      en: "I can guide pronunciation practice, but direct pronunciation correction is not ready yet. For now, tap Play once, then tap My turn and repeat.",
+src/lib/mercy-host/adaptiveLessonFlowEngine.ts:68:  shouldAskGuidedQuestion: boolean;
+src/lib/mercy-host/adaptiveLessonFlowEngine.ts:123:  let shouldAskGuidedQuestion = false;
+src/lib/mercy-host/adaptiveLessonFlowEngine.ts:203:    shouldAskGuidedQuestion = false;
+src/lib/mercy-host/adaptiveLessonFlowEngine.ts:213:    shouldAskGuidedQuestion = true;
+src/lib/mercy-host/adaptiveLessonFlowEngine.ts:214:    rationale.push('guided_question_window');
+src/lib/mercy-host/adaptiveLessonFlowEngine.ts:270:    shouldAskGuidedQuestion,
+src/lib/mercy-host/tierScripts.ts:152:        en: 'Welcome, {{name}}. Mercy guides your focus so you rise further.',
+src/lib/mercy-host/tierScripts.ts:853:      en: 'Structure will guide you. Trust the process.',
+src/lib/mercy-host/greetings.ts:18:    en: "Hi {{name}}, Mercy welcomes you to {{roomTitle}}. Make yourself at home — I'm here to guide you.",
+src/lib/mercy-host/greetings.ts:30:    en: "{{name}}, welcome to {{roomTitle}}. I'm here whenever you need a gentle guide.",
+src/lib/mercy-host/teacherTimingEngine.ts:31:  | 'steady_guided'
+src/lib/mercy-host/teacherTimingEngine.ts:101:  let style: TeacherTimingStyle = 'steady_guided';
+src/lib/mercy-host/teacherTimingEngine.ts:148:    style = 'steady_guided';
+src/lib/mercy-host/teacherTimingEngine.ts:154:    rationale.push('review_guided_shape');
+src/lib/mercy-host/teacherTimingEngine.ts:177:    style = 'steady_guided';
+src/lib/mercy-host/teacherTimingEngine.ts:182:    rationale.push('steady_guided_shape');
+src/lib/mercy-host/teacherRhythm.ts:16: * - explanation should feel guided, not lecture-heavy
+src/lib/mercy-host/teacherRhythm.ts:79:    label: 'Guided Explanation',
+src/lib/mercy-host/sessionTeachingArc.ts:20:  | 'guided_practice'
+src/lib/mercy-host/sessionTeachingArc.ts:187:    if (incoming.correct) return 'guided_practice';
+src/lib/mercy-host/sessionTeachingArc.ts:226:    return 'guided_practice';
+src/lib/mercy-host/sessionTeachingArc.ts:230:    return 'guided_practice';
+src/lib/mercy-host/sessionTeachingArc.ts:396:  } else if (state.currentStage === 'guided_practice') {
+src/lib/mercy-host/sessionTeachingArc.ts:399:    rationale.push('guided_practice_continue');
+src/lib/mercy-host/pedagogicalResponseEvaluator.ts:357:        'Add one short explanation sentence and one guided practice sentence.'
+src/lib/mercy-host/teachingModes.ts:74:    goal: 'Fix the most useful mistake and guide retry.',
+src/pages/Home.tsx:10:import { MercyGuide } from "@/components/MercyGuide";
+src/pages/Home.tsx:11:import { GuideBox } from "@/components/GuideBox";
+src/pages/Home.tsx:601:  const mercyGuideWrap: React.CSSProperties = {
+src/pages/Home.tsx:1001:          <div style={mercyGuideWrap}>
+src/pages/Home.tsx:1002:            <MercyGuide />
+src/pages/Home.tsx:1003:            <GuideBox />
+src/pages/Home.tsx:1012:                <div style={hostMeta}>A gentle guide for reflection — not a noisy chatbot.</div>
+src/pages/ChatHub.tsx:8: * - Mount MercyGuide INSIDE the real room page so it gets real room context
+src/pages/ChatHub.tsx:9: * - Pass roomId, roomTitle, tier, pathSlug, tags, contentEn into MercyGuide
+src/pages/ChatHub.tsx:40:import { MercyGuide } from "@/components/MercyGuide";
+src/pages/ChatHub.tsx:477:        <MercyGuide
+src/services/mercyChat.ts:5: * Hardened Mercy entry point for Guide / Mercy Host surfaces.
+src/services/mercyChat.ts:29:export type MercySurface = "mercy_host" | "guide";
+src/services/mercyChat.ts:78:type GuideIntent =
+src/services/mercyChat.ts:184:  return surface === "guide"
+src/services/mercyChat.ts:189:function buildFallbackGuideReply(
+src/services/mercyChat.ts:190:  intent: GuideIntent,
+src/services/mercyChat.ts:238:      return "Guide is for practical help. Teacher Mercy is for deeper guidance inside the learning experience.";
+src/services/mercyChat.ts:252:function matchGuideIntent(message?: string): GuideIntent {
+src/services/mercyChat.ts:282:function getGuideGreeting(roomSummary: RoomContextSummary): string {
+src/services/mercyChat.ts:284:    ? `Hi. I’m Guide. You are in ${roomSummary.roomName}. Ask me practical things like “how do I use this room?”, “where do I go next?”, or “open pricing”.`
+src/services/mercyChat.ts:285:    : "Hi. I’m Guide. Ask me practical things like “how do I use the app?”, “where do I start?”, or “how do I use a room?”.";
+src/services/mercyChat.ts:361:async function resolveGuidePreparedReply(
+src/services/mercyChat.ts:362:  intent: GuideIntent,
+src/services/mercyChat.ts:372:        return reply ? makePreparedOutput(reply, "guide", "greeting") : null;
+src/services/mercyChat.ts:377:        return reply ? makePreparedOutput(reply, "guide", "calm") : null;
+src/services/mercyChat.ts:382:        return reply ? makePreparedOutput(reply, "guide", "teacher") : null;
+src/services/mercyChat.ts:387:        return reply ? makePreparedOutput(reply, "guide", "english_coach") : null;
+src/services/mercyChat.ts:394:          ? makePreparedOutput(reply, "guide", "pronunciation_praise")
+src/services/mercyChat.ts:400:        return reply ? makePreparedOutput(reply, "guide", "praise") : null;
+src/services/mercyChat.ts:405:        return reply ? makePreparedOutput(reply, "guide", "end_session") : null;
+src/services/mercyChat.ts:410:        if (reply) return makePreparedOutput(reply, "guide", "suggestion");
+src/services/mercyChat.ts:411:        return makeFallbackOutput(buildFallbackGuideReply(intent, roomSummary));
+src/services/mercyChat.ts:426:          return makePreparedOutput(prepared, "guide", prepared.category);
+src/services/mercyChat.ts:429:        return makeFallbackOutput(buildFallbackGuideReply(intent, roomSummary));
+src/services/mercyChat.ts:444:          return makePreparedOutput(prepared, "guide", prepared.category);
+src/services/mercyChat.ts:447:        return makeFallbackOutput(buildFallbackGuideReply(intent, roomSummary));
+src/services/mercyChat.ts:451:        return makeFallbackOutput(buildFallbackGuideReply(intent, roomSummary));
+src/services/mercyChat.ts:455:    return makeFallbackOutput(buildFallbackGuideReply(intent, roomSummary));
+src/services/mercyChat.ts:473:  if (input.surface === "guide") {
+src/services/mercyChat.ts:474:    const intent = matchGuideIntent(input.message);
+src/services/mercyChat.ts:475:    const prepared = await resolveGuidePreparedReply(intent, input, roomSummary);
+src/services/mercyChat.ts:480:        ? getGuideGreeting(roomSummary)
+src/services/mercyChat.ts:481:        : buildFallbackGuideReply(intent, roomSummary),

@@ -225,7 +225,7 @@ export async function startCheckoutOrOpenPortal(
         Authorization: `Bearer ${token}`,
         apikey: getSupabaseAnonKey(),
       },
-      body: JSON.stringify(body) as any, // ✅ cast to any for TS fix
+      body: JSON.stringify(body),
     },
   );
 

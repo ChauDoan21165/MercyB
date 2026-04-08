@@ -1,7 +1,4 @@
-/**
- * File: MercyTeacherTab.tsx
- * Path: src/components/mercy-guide/MercyTeacherTab.tsx
- */
+// Path: src/components/mercy-guide/MercyTeacherTab.tsx
 
 import React, { useMemo } from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';

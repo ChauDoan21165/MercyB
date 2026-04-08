@@ -1,3 +1,5 @@
+// Path: src/pages/Billing.tsx
+
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
@@ -78,6 +80,16 @@ function getStatusLabel(status: string | null | undefined): string {
   }
 }
 
+function isCanceledLike(status: string | null | undefined): boolean {
+  return ["canceled", "expired", "revoked"].includes(String(status ?? "").toLowerCase());
+}
+
+function hasActiveBillingAccess(status: string | null | undefined): boolean {
+  return ["active", "trialing", "past_due", "grace_period"].includes(
+    String(status ?? "").toLowerCase(),
+  );
+}
+
 function getPlanPriceId(plan: PlanKey, monthPriceId: string, yearPriceId: string): string {
   return plan === "month" ? monthPriceId : yearPriceId;
 }
@@ -90,7 +102,19 @@ function normalizeUiErrorMessage(message: string): string {
   }
 
   if (lower.includes("tierid or priceid is required") || lower.includes("priceid is required")) {
-    return "Checkout request is missing the Stripe priceId.";
+    return "Checkout request is missing the Stripe price ID.";
+  }
+
+  if (lower.includes("billing portal")) {
+    return "We couldn’t open billing right now. Please try again.";
+  }
+
+  if (lower.includes("invalid jwt")) {
+    return "Your session expired. Please sign in again, then retry billing.";
+  }
+
+  if (lower.includes("canceled subscription")) {
+    return "Your earlier subscription ended, so we’re opening a fresh checkout instead.";
   }
 
   return message;
@@ -101,15 +125,41 @@ function getPlanButtonLabel(args: {
   busyPlan: PlanKey | null;
   plan: PlanKey;
   isCurrent: boolean;
-  isPremium: boolean;
+  hasActiveAccess: boolean;
+  isCanceledLikeStatus: boolean;
 }): string {
-  const { loading, busyPlan, plan, isCurrent, isPremium } = args;
+  const { loading, busyPlan, plan, isCurrent, hasActiveAccess, isCanceledLikeStatus } = args;
 
   if (loading) return "Checking...";
   if (busyPlan === plan) return "Working...";
   if (isCurrent) return "Current plan";
-  if (isPremium) return plan === "month" ? "Switch to monthly" : "Switch to yearly";
-  return plan === "month" ? "Choose monthly" : "Choose yearly";
+
+  if (isCanceledLikeStatus || !hasActiveAccess) {
+    return plan === "month" ? "Subscribe monthly" : "Subscribe yearly";
+  }
+
+  return plan === "month" ? "Switch to monthly" : "Switch to yearly";
+}
+
+async function wait(ms: number) {
+  await new Promise((resolve) => window.setTimeout(resolve, ms));
+}
+
+async function pollEntitlementAfterBilling(): Promise<Entitlement | null> {
+  const delays = [0, 1200, 2500, 4500];
+
+  for (const delay of delays) {
+    if (delay > 0) {
+      await wait(delay);
+    }
+
+    const data = await fetchMyEntitlement().catch((): Entitlement | null => null);
+    if (data) {
+      return data;
+    }
+  }
+
+  return null;
 }
 
 export default function Billing() {
@@ -136,9 +186,12 @@ export default function Billing() {
   const [busyPlan, setBusyPlan] = useState<PlanKey | null>(null);
   const [manageBusy, setManageBusy] = useState(false);
   const [errorText, setErrorText] = useState("");
+  const [successText, setSuccessText] = useState("");
 
   const isPremium = ent?.is_premium === true;
   const currentPriceId = String(ent?.price_id ?? "").trim();
+  const hasActiveAccess = hasActiveBillingAccess(ent?.status);
+  const canceledLike = isCanceledLike(ent?.status);
 
   const planName = useMemo(() => {
     if (!ent) return "Free";
@@ -153,8 +206,10 @@ export default function Billing() {
     return !!currentPriceId && currentPriceId === target;
   }
 
-  async function refreshEntitlement() {
-    setLoading(true);
+  async function refreshEntitlement(options?: { silent?: boolean }) {
+    if (!options?.silent) {
+      setLoading(true);
+    }
     setErrorText("");
 
     try {
@@ -168,12 +223,31 @@ export default function Billing() {
         ),
       );
     } finally {
-      setLoading(false);
+      if (!options?.silent) {
+        setLoading(false);
+      }
     }
   }
 
   useEffect(() => {
     void refreshEntitlement();
+  }, []);
+
+  useEffect(() => {
+    const query = new URLSearchParams(window.location.search);
+    const billingState = query.get("billing");
+
+    if (billingState === "updated") {
+      setSuccessText("Your plan was updated. Refreshing billing status...");
+      void pollEntitlementAfterBilling().then((data) => {
+        if (data) {
+          setEnt(data);
+          setSuccessText("Your subscription is up to date.");
+        } else {
+          setSuccessText("Payment succeeded. Billing may take a moment to sync.");
+        }
+      });
+    }
   }, []);
 
   async function handlePlan(plan: PlanKey) {
@@ -189,17 +263,31 @@ export default function Billing() {
     }
 
     setErrorText("");
+    setSuccessText("");
     setBusyPlan(plan);
 
     try {
       const result = await startCheckoutOrOpenPortal({
         priceId,
-        successUrl: `${window.location.origin}/billing/success?session_id={CHECKOUT_SESSION_ID}`,
+        successUrl: `${window.location.origin}/billing/success?billing=updated&session_id={CHECKOUT_SESSION_ID}`,
         cancelUrl: `${window.location.origin}/billing`,
       });
 
-      if (result && (result.mode === "change_plan" || result.mode === "noop")) {
-        await refreshEntitlement();
+      if (result.mode === "change_plan") {
+        setSuccessText("Your plan was updated. Refreshing billing status...");
+        const refreshed = await pollEntitlementAfterBilling();
+        if (refreshed) {
+          setEnt(refreshed);
+        } else {
+          await refreshEntitlement({ silent: true });
+        }
+        setSuccessText("Your billing status is up to date.");
+        return;
+      }
+
+      if (result.mode === "noop") {
+        setSuccessText("You are already on that plan.");
+        await refreshEntitlement({ silent: true });
       }
     } catch (error) {
       setErrorText(
@@ -214,6 +302,7 @@ export default function Billing() {
 
   async function handleManageBilling() {
     setErrorText("");
+    setSuccessText("");
     setManageBusy(true);
 
     try {
@@ -299,6 +388,22 @@ export default function Billing() {
           View your plan, switch plans, or manage billing.
         </p>
 
+        {canceledLike ? (
+          <div
+            style={{
+              marginTop: 14,
+              padding: "12px 14px",
+              borderRadius: 14,
+              background: "rgba(254,249,195,0.55)",
+              border: "1px solid rgba(234,179,8,0.25)",
+              color: "#854d0e",
+              fontWeight: 700,
+            }}
+          >
+            Your previous subscription ended. Choose a plan below to start a fresh subscription.
+          </div>
+        ) : null}
+
         <div
           style={{
             display: "flex",
@@ -334,6 +439,22 @@ export default function Billing() {
           </button>
         </div>
       </div>
+
+      {successText ? (
+        <div
+          style={{
+            marginBottom: 16,
+            padding: "12px 14px",
+            borderRadius: 14,
+            border: "1px solid rgba(16,185,129,0.20)",
+            background: "rgba(236,253,245,0.95)",
+            color: "#065f46",
+            fontWeight: 700,
+          }}
+        >
+          {successText}
+        </div>
+      ) : null}
 
       {errorText ? (
         <div
@@ -441,7 +562,8 @@ export default function Billing() {
               busyPlan,
               plan: "month",
               isCurrent: monthIsCurrent,
-              isPremium,
+              hasActiveAccess,
+              isCanceledLikeStatus: canceledLike,
             })}
           </button>
         </div>
@@ -502,7 +624,8 @@ export default function Billing() {
               busyPlan,
               plan: "year",
               isCurrent: yearIsCurrent,
-              isPremium,
+              hasActiveAccess,
+              isCanceledLikeStatus: canceledLike,
             })}
           </button>
         </div>

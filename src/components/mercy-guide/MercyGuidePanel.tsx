@@ -1,6 +1,4 @@
-/**
- * Path: src/components/mercy-guide/MercyGuidePanel.tsx
- */
+// Path: src/components/mercy-guide/MercyGuidePanel.tsx
 
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import {
@@ -14,6 +12,7 @@ import {
   BookOpenText,
   PenSquare,
   Lock,
+  Crown,
 } from 'lucide-react';
 
 import { useUserAccess } from '@/hooks/useUserAccess';
@@ -106,6 +105,7 @@ type MercyTabConfig = {
   label: string;
   icon: React.ComponentType<{ size?: number; className?: string }>;
   enabled: boolean;
+  teaser?: boolean;
 };
 
 function normalizeTab(value: string | undefined): MercyTabType {
@@ -188,9 +188,11 @@ function getTabAccent(tabId: MercyTabType) {
 function LockedAccessCard({
   title,
   description,
+  onUnlock,
 }: {
   title: string;
   description: string;
+  onUnlock?: () => void;
 }) {
   return (
     <div className="rounded-3xl border border-amber-200 bg-gradient-to-br from-[#FFF8F1] via-white to-[#F8FAFF] p-6 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
@@ -199,9 +201,20 @@ function LockedAccessCard({
           <Lock className="h-5 w-5 text-amber-600" />
         </div>
 
-        <div>
+        <div className="flex-1">
           <h3 className="text-lg font-semibold text-slate-900">{title}</h3>
           <p className="mt-2 text-sm leading-6 text-slate-600">{description}</p>
+
+          {onUnlock ? (
+            <button
+              type="button"
+              onClick={onUnlock}
+              className="mt-4 inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-violet-600 via-fuchsia-500 to-rose-500 px-4 py-2.5 text-sm font-semibold text-white shadow-[0_10px_26px_rgba(168,85,247,0.24)]"
+            >
+              <Crown size={16} />
+              Upgrade to Premium
+            </button>
+          ) : null}
         </div>
       </div>
     </div>
@@ -254,6 +267,10 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
   );
   const scrollRef = useRef<HTMLDivElement>(null);
 
+  const goToPricing = () => {
+    window.location.assign('/pricing');
+  };
+
   const normalizedTroubleWords = useMemo<TroubleWordItem[]>(
     () => normalizeTroubleWords(troubleWords ?? memory?.pronunciation?.troubleWords ?? []),
     [memory?.pronunciation?.troubleWords, troubleWords],
@@ -265,7 +282,8 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
         id: 'teacher',
         label: 'Journey',
         icon: Brain,
-        enabled: access.features.hasMercyJourney,
+        enabled: true,
+        teaser: !access.features.hasMercyJourney,
       },
       {
         id: 'grammar',
@@ -294,7 +312,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
   const isTabAllowed = (tabId: MercyTabType): boolean => {
     switch (tabId) {
       case 'teacher':
-        return access.features.hasMercyJourney;
+        return true;
       case 'grammar':
         return access.features.hasMercyGrammar;
       case 'pronunciation':
@@ -307,7 +325,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
   };
 
   const getFirstAllowedTab = (): MercyTabType => {
-    if (access.features.hasMercyJourney) return 'teacher';
+    if (isTabAllowed('teacher')) return 'teacher';
     if (access.features.hasMercyGrammar) return 'grammar';
     if (access.features.hasMercySpeak) return 'pronunciation';
     if (access.features.hasMercyLogic) return 'logic';
@@ -411,6 +429,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
 
   const handleOpenWriting = () => {
     if (!access.features.hasMercyGrammar) {
+      goToPricing();
       return;
     }
 
@@ -420,6 +439,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
 
   const handleOpenPronunciation = (payload?: PronunciationLaunchPayload) => {
     if (!access.features.hasMercySpeak) {
+      goToPricing();
       return;
     }
 
@@ -435,6 +455,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
 
   const handleOpenLogic = () => {
     if (!access.features.hasMercyLogic) {
+      goToPricing();
       return;
     }
 
@@ -469,11 +490,8 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
             <div className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-white bg-emerald-400" />
           </div>
 
-          <div className="min-w-0">
-            <h2 className="truncate text-lg font-semibold tracking-tight text-slate-900">
-              Mercy
-            </h2>
-            <p className="truncate text-sm text-slate-600">
+          <div className="min-w-0 pt-1">
+            <p className="truncate text-base font-semibold text-slate-900">
               {journeyTitle || 'Teacher Mercy'}
             </p>
           </div>
@@ -518,6 +536,30 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
       </div>
 
       <div className="relative z-10 border-b border-white/70 bg-white/55 px-3 py-2.5 backdrop-blur-sm">
+        {!access.features.hasMercyJourney ? (
+          <div className="mb-3 rounded-2xl border border-violet-200 bg-gradient-to-r from-violet-50 via-white to-rose-50 px-4 py-3">
+            <div className="flex items-center justify-between gap-3">
+              <div>
+                <p className="text-sm font-semibold text-slate-900">
+                  Unlock the full Mercy Journey
+                </p>
+                <p className="mt-1 text-xs leading-5 text-slate-600">
+                  Keep coaching, memory, Speak, and Logic connected in one premium teacher flow.
+                </p>
+              </div>
+
+              <button
+                type="button"
+                onClick={goToPricing}
+                className="inline-flex shrink-0 items-center gap-2 rounded-2xl bg-gradient-to-r from-violet-600 via-fuchsia-500 to-rose-500 px-4 py-2 text-sm font-semibold text-white shadow-[0_10px_26px_rgba(168,85,247,0.24)]"
+              >
+                <Crown size={16} />
+                Upgrade
+              </button>
+            </div>
+          </div>
+        ) : null}
+
         <div className="grid grid-cols-4 gap-2">
           {tabs.map((tab) => {
             const Icon = tab.icon;
@@ -539,7 +581,11 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
                 }`}
                 aria-pressed={isActive}
                 aria-disabled={!tab.enabled}
-                title={tab.enabled ? tab.label : `${tab.label} requires premium access`}
+                title={
+                  tab.enabled
+                    ? tab.label
+                    : `${tab.label} requires premium access`
+                }
               >
                 <div className="flex items-center gap-1">
                   <Icon
@@ -553,6 +599,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
                     }
                   />
                   {!tab.enabled ? <Lock size={12} className="text-slate-300" /> : null}
+                  {tab.teaser ? <Crown size={12} className="text-amber-500" /> : null}
                 </div>
 
                 <span className="text-[11px] font-semibold uppercase tracking-[0.12em] leading-tight">
@@ -570,16 +617,22 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
             <LockedAccessCard
               title="Mercy premium features are locked"
               description="Guide can stay visible, but Journey, Grammar, Speak, and Logic unlock when billing grants premium access."
+              onUnlock={goToPricing}
             />
           ) : null}
 
-          {activeTab === 'teacher' && access.features.hasMercyJourney && (
+          {activeTab === 'teacher' && (
             <MercyTeacherTab
               latestTeacherWritingState={latestTeacherWritingState}
               latestAnalysisResult={resolvedLatestAnalysisResult}
               teacherMemorySummary={teacherMemorySummary}
               onOpenPronunciation={() => handleOpenPronunciation(pronunciationPayload ?? undefined)}
               onOpenWriting={handleOpenWriting}
+              isLocked={!access.features.hasMercyJourney}
+              onUnlock={goToPricing}
+              unlockTitle="Unlock Mercy Journey"
+              unlockDescription="Journey turns one real sentence into coaching, memory, progress notes, and a clear next step across Grammar, Speak, and Logic."
+              unlockButtonLabel="Upgrade to Premium"
             />
           )}
 
@@ -593,6 +646,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
               onTeacherWritingStateChange={onTeacherWritingStateChange}
               onPracticePronunciation={(payload) => {
                 if (!access.features.hasMercySpeak) {
+                  goToPricing();
                   return;
                 }
 
@@ -603,6 +657,14 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
               onMemoryUpdate={onMemoryUpdate}
             />
           )}
+
+          {activeTab === 'grammar' && !access.features.hasMercyGrammar ? (
+            <LockedAccessCard
+              title="Grammar is part of Premium"
+              description="Unlock Grammar to improve a real sentence naturally, then pass it into Speak and Logic."
+              onUnlock={goToPricing}
+            />
+          ) : null}
 
           {activeTab === 'pronunciation' && access.features.hasMercySpeak && (
             <MercySpeakTab
@@ -627,6 +689,14 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
             />
           )}
 
+          {activeTab === 'pronunciation' && !access.features.hasMercySpeak ? (
+            <LockedAccessCard
+              title="Speak is part of Premium"
+              description="Unlock Speak to practice the same improved sentence aloud and build pronunciation memory over time."
+              onUnlock={goToPricing}
+            />
+          ) : null}
+
           {activeTab === 'logic' && access.features.hasMercyLogic && (
             <EnglishLogicTab
               roomTitle={roomTitle}
@@ -641,6 +711,14 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
               onVaultReplay={() => {}}
             />
           )}
+
+          {activeTab === 'logic' && !access.features.hasMercyLogic ? (
+            <LockedAccessCard
+              title="Logic is part of Premium"
+              description="Unlock Logic to see the English pattern behind the sentence and connect that lesson back into Mercy’s memory."
+              onUnlock={goToPricing}
+            />
+          ) : null}
         </div>
       </div>
 

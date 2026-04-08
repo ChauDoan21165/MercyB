@@ -8,6 +8,7 @@ import type { Database } from "../_shared/database.types.ts";
 
 const APP_ID = "mercy_blade";
 const PROVIDER = "stripe";
+const FUNCTION_VERSION = "canceled-fallback-v3";
 
 const corsHeaders: Record<string, string> = {
   "Access-Control-Allow-Origin": "*",
@@ -125,6 +126,10 @@ function asNonEmptyStringOrNull(value: unknown): string | null {
   return trimmed.length > 0 ? trimmed : null;
 }
 
+function asBooleanOrNull(value: unknown): boolean | null {
+  return typeof value === "boolean" ? value : null;
+}
+
 function normalize(value: unknown): string {
   return String(value ?? "").toLowerCase().replace(/\s+/g, " ").trim();
 }
@@ -190,11 +195,25 @@ function getBearerToken(req: Request): string {
 }
 
 function logInfo(message: string, data?: Record<string, unknown>) {
-  console.log(JSON.stringify({ level: "info", message, ...(data ?? {}) }));
+  console.log(
+    JSON.stringify({
+      level: "info",
+      function_version: FUNCTION_VERSION,
+      message,
+      ...(data ?? {}),
+    }),
+  );
 }
 
 function logError(message: string, data?: Record<string, unknown>) {
-  console.error(JSON.stringify({ level: "error", message, ...(data ?? {}) }));
+  console.error(
+    JSON.stringify({
+      level: "error",
+      function_version: FUNCTION_VERSION,
+      message,
+      ...(data ?? {}),
+    }),
+  );
 }
 
 function getStringField(
@@ -230,6 +249,52 @@ function buildDefaultUrls(req: Request) {
     successUrl: `${origin}/billing/success`,
     cancelUrl: `${origin}/pricing`,
   };
+}
+
+function isStripeSubscriptionUpdatable(
+  subscription: Stripe.Subscription,
+): boolean {
+  return ["active", "trialing", "past_due", "unpaid"].includes(subscription.status);
+}
+
+function shouldForceCheckoutForLifecycle(
+  subscription: Stripe.Subscription,
+): boolean {
+  return (
+    subscription.status === "canceled" ||
+    subscription.status === "incomplete_expired" ||
+    subscription.canceled_at != null ||
+    subscription.ended_at != null
+  );
+}
+
+function getSubscriptionLifecycleSnapshot(subscription: Stripe.Subscription) {
+  return {
+    id: subscription.id,
+    status: subscription.status,
+    cancel_at_period_end: subscription.cancel_at_period_end ?? false,
+    cancel_at: subscription.cancel_at ?? null,
+    canceled_at: subscription.canceled_at ?? null,
+    ended_at: subscription.ended_at ?? null,
+    current_period_end: subscription.current_period_end ?? null,
+    current_period_start: subscription.current_period_start ?? null,
+    collection_method: subscription.collection_method ?? null,
+    default_payment_method:
+      typeof subscription.default_payment_method === "string"
+        ? subscription.default_payment_method
+        : subscription.default_payment_method?.id ?? null,
+  };
+}
+
+function getExistingRecurringItem(
+  subscription: Stripe.Subscription,
+): Stripe.SubscriptionItem | null {
+  return (
+    subscription.items.data.find((entry) => {
+      const price = entry.price;
+      return !!entry.id && !!price && !price.deleted && !!price.recurring;
+    }) ?? null
+  );
 }
 
 async function getAuthenticatedUser(params: {
@@ -298,20 +363,35 @@ async function getAuthenticatedUser(params: {
 async function getCanonicalSubscription(params: {
   supabaseAdmin: AdminClient;
   userId: string;
+  includeCanceled?: boolean;
 }): Promise<
   | { data: CanonicalSubscriptionRow | null }
   | { error: Response }
 > {
-  const { data, error } = await params.supabaseAdmin
+  let query = params.supabaseAdmin
     .from("subscriptions")
     .select("*")
     .eq("user_id", params.userId)
     .eq("app_id", APP_ID)
     .eq("provider", PROVIDER)
-    .in("status", ["active", "trialing", "past_due"])
     .order("updated_at", { ascending: false })
-    .limit(1)
-    .maybeSingle();
+    .limit(1);
+
+  if (params.includeCanceled) {
+    query = query.in("status", [
+      "active",
+      "trialing",
+      "past_due",
+      "unpaid",
+      "canceled",
+      "incomplete_expired",
+      "incomplete",
+    ]);
+  } else {
+    query = query.in("status", ["active", "trialing", "past_due", "unpaid"]);
+  }
+
+  const { data, error } = await query.maybeSingle();
 
   if (error) {
     return {
@@ -689,6 +769,9 @@ async function createCheckoutSessionForFreeUser(params: {
   tier: SubscriptionTierRow | null;
   successUrl: string;
   cancelUrl: string;
+  reason?: string;
+  existingSubscriptionId?: string | null;
+  existingStatus?: string | null;
 }): Promise<Response> {
   const priceValidation = await validateTargetPrice({
     stripe: params.stripe,
@@ -725,6 +808,12 @@ async function createCheckoutSessionForFreeUser(params: {
         app_id: APP_ID,
         provider: PROVIDER,
         price_id: params.resolvedPriceId,
+        entry_mode: "change_plan_fallback_checkout",
+        ...(params.reason ? { reason: params.reason } : {}),
+        ...(params.existingSubscriptionId
+          ? { previous_subscription_id: params.existingSubscriptionId }
+          : {}),
+        ...(params.existingStatus ? { previous_subscription_status: params.existingStatus } : {}),
         ...(params.resolvedTierId ? { tier_id: params.resolvedTierId } : {}),
         ...(params.tier?.name ? { tier_name: String(params.tier.name) } : {}),
         ...(params.email ? { email: params.email } : {}),
@@ -736,6 +825,14 @@ async function createCheckoutSessionForFreeUser(params: {
           app_id: APP_ID,
           provider: PROVIDER,
           price_id: params.resolvedPriceId,
+          entry_mode: "change_plan_fallback_checkout",
+          ...(params.reason ? { reason: params.reason } : {}),
+          ...(params.existingSubscriptionId
+            ? { previous_subscription_id: params.existingSubscriptionId }
+            : {}),
+          ...(params.existingStatus
+            ? { previous_subscription_status: params.existingStatus }
+            : {}),
           ...(params.resolvedTierId ? { tier_id: params.resolvedTierId } : {}),
           ...(params.tier?.name ? { tier_name: String(params.tier.name) } : {}),
           ...(params.email ? { email: params.email } : {}),
@@ -750,6 +847,9 @@ async function createCheckoutSessionForFreeUser(params: {
       price_id: params.resolvedPriceId,
       success_url: params.successUrl,
       cancel_url: params.cancelUrl,
+      reason: params.reason ?? null,
+      existing_subscription_id: params.existingSubscriptionId ?? null,
+      existing_status: params.existingStatus ?? null,
       detail: errToObj(error),
     });
 
@@ -762,6 +862,9 @@ async function createCheckoutSessionForFreeUser(params: {
           user_id: params.userId,
           customer_id: customer.customerId,
           price_id: params.resolvedPriceId,
+          reason: params.reason ?? null,
+          existing_subscription_id: params.existingSubscriptionId ?? null,
+          existing_status: params.existingStatus ?? null,
         },
       },
       500,
@@ -787,7 +890,15 @@ async function createCheckoutSessionForFreeUser(params: {
     checkoutUrl: session.url,
     requested_price_id: params.resolvedPriceId,
     tier_id: params.resolvedTierId,
-    message: "Checkout session created successfully.",
+    requires_new_subscription: true,
+    reason: params.reason ?? null,
+    existing_subscription_id: params.existingSubscriptionId ?? null,
+    existing_status: params.existingStatus ?? null,
+    function_version: FUNCTION_VERSION,
+    message:
+      params.reason === "canceled_subscription_requires_checkout"
+        ? "Existing Stripe subscription is canceled. Created a new checkout session instead of updating the canceled subscription."
+        : "Checkout session created successfully.",
   });
 }
 
@@ -815,6 +926,7 @@ Deno.serve(async (req) => {
         {
           error:
             "Supabase not configured (need SUPABASE_URL, SUPABASE_ANON_KEY, SUPABASE_SERVICE_ROLE_KEY)",
+          function_version: FUNCTION_VERSION,
         },
         500,
       );
@@ -841,6 +953,8 @@ Deno.serve(async (req) => {
 
     const tierId = getStringField(body, ["tier_id", "tierId"]);
     const directPriceId = getStringField(body, ["price_id", "priceId"]);
+    const allowCanceledCheckoutFallback =
+      asBooleanOrNull(body["allow_canceled_checkout_fallback"]) ?? true;
 
     const defaults = buildDefaultUrls(req);
     const requestedSuccessUrl = getStringField(body, ["success_url", "successUrl"]);
@@ -862,6 +976,7 @@ Deno.serve(async (req) => {
       requested_cancel_url: requestedCancelUrl,
       success_url: successUrl,
       cancel_url: cancelUrl,
+      allow_canceled_checkout_fallback: allowCanceledCheckoutFallback,
     });
 
     const stripe = new Stripe(stripeSecretKey, {
@@ -890,6 +1005,7 @@ Deno.serve(async (req) => {
     const canonical = await getCanonicalSubscription({
       supabaseAdmin,
       userId: auth.user.id,
+      includeCanceled: true,
     });
     if ("error" in canonical) return canonical.error;
 
@@ -904,19 +1020,29 @@ Deno.serve(async (req) => {
         tier,
         successUrl,
         cancelUrl,
+        reason: "no_existing_subscription",
       });
     }
 
     const subscriptionId = asNonEmptyStringOrNull(canonical.data.subscription_id);
     const currentPriceId = asNonEmptyStringOrNull(canonical.data.price_id);
+    const canonicalStatus = asNonEmptyStringOrNull(canonical.data.status);
 
     if (!subscriptionId) {
-      return json(
-        {
-          error: "Canonical subscription missing Stripe subscription_id",
-        },
-        500,
-      );
+      return await createCheckoutSessionForFreeUser({
+        stripe,
+        supabaseAdmin,
+        userId: auth.user.id,
+        email: auth.user.email,
+        resolvedPriceId,
+        resolvedTierId,
+        tier,
+        successUrl,
+        cancelUrl,
+        reason: "missing_canonical_subscription_id",
+        existingSubscriptionId: null,
+        existingStatus: canonicalStatus,
+      });
     }
 
     if (currentPriceId && currentPriceId === resolvedPriceId) {
@@ -928,6 +1054,7 @@ Deno.serve(async (req) => {
           subscription_id: subscriptionId,
           current_price_id: currentPriceId,
           requested_price_id: resolvedPriceId,
+          function_version: FUNCTION_VERSION,
           message: "User is already on the requested plan price.",
         },
         200,
@@ -950,16 +1077,89 @@ Deno.serve(async (req) => {
         {
           error: "Failed to retrieve Stripe subscription",
           detail: errToObj(error),
+          subscription_id: subscriptionId,
+          canonical_status: canonicalStatus,
+          function_version: FUNCTION_VERSION,
         },
         500,
       );
     }
 
-    const item = stripeSubscription.items.data[0];
+    const lifecycle = getSubscriptionLifecycleSnapshot(stripeSubscription);
+
+    logInfo("Stripe subscription lifecycle check", {
+      user_id: auth.user.id,
+      subscription_id: subscriptionId,
+      canonical_status: canonicalStatus,
+      ...lifecycle,
+    });
+
+    const shouldForceCheckout = shouldForceCheckoutForLifecycle(stripeSubscription);
+
+    if (shouldForceCheckout) {
+      logInfo("Stripe subscription requires checkout fallback", {
+        user_id: auth.user.id,
+        subscription_id: subscriptionId,
+        canonical_status: canonicalStatus,
+        ...lifecycle,
+      });
+
+      if (!allowCanceledCheckoutFallback) {
+        return json(
+          {
+            error: "Stripe subscription is canceled and cannot be updated",
+            action: "create_checkout_session",
+            requires_new_subscription: true,
+            subscription_id: subscriptionId,
+            canonical_status: canonicalStatus,
+            stripe_subscription: lifecycle,
+            requested_price_id: resolvedPriceId,
+            function_version: FUNCTION_VERSION,
+          },
+          409,
+        );
+      }
+
+      return await createCheckoutSessionForFreeUser({
+        stripe,
+        supabaseAdmin,
+        userId: auth.user.id,
+        email: auth.user.email,
+        resolvedPriceId,
+        resolvedTierId,
+        tier,
+        successUrl,
+        cancelUrl,
+        reason: "canceled_subscription_requires_checkout",
+        existingSubscriptionId: subscriptionId,
+        existingStatus: stripeSubscription.status,
+      });
+    }
+
+    if (!isStripeSubscriptionUpdatable(stripeSubscription)) {
+      return json(
+        {
+          error: "Stripe subscription is not in an updatable state",
+          action: "create_checkout_session",
+          requires_new_subscription: true,
+          subscription_id: subscriptionId,
+          canonical_status: canonicalStatus,
+          stripe_subscription: lifecycle,
+          requested_price_id: resolvedPriceId,
+          function_version: FUNCTION_VERSION,
+        },
+        409,
+      );
+    }
+
+    const item = getExistingRecurringItem(stripeSubscription);
     if (!item?.id) {
       return json(
         {
-          error: "Stripe subscription has no editable subscription item",
+          error: "Stripe subscription has no editable recurring subscription item",
+          subscription_id: subscriptionId,
+          stripe_subscription: lifecycle,
+          function_version: FUNCTION_VERSION,
         },
         500,
       );
@@ -1001,6 +1201,8 @@ Deno.serve(async (req) => {
         user_id: auth.user.id,
         subscription_id: subscriptionId,
         requested_price_id: resolvedPriceId,
+        canonical_status: canonicalStatus,
+        stripe_subscription: lifecycle,
         detail: errToObj(error),
       });
 
@@ -1008,6 +1210,10 @@ Deno.serve(async (req) => {
         {
           error: "Failed to update Stripe subscription plan",
           detail: errToObj(error),
+          subscription_id: subscriptionId,
+          canonical_status: canonicalStatus,
+          stripe_subscription: lifecycle,
+          function_version: FUNCTION_VERSION,
         },
         500,
       );
@@ -1022,6 +1228,7 @@ Deno.serve(async (req) => {
       previous_price_id: currentPriceId,
       requested_price_id: resolvedPriceId,
       tier_id: resolvedTierId,
+      function_version: FUNCTION_VERSION,
       message:
         changeType === "upgrade"
           ? "Subscription upgraded successfully. Webhook will sync the canonical row."
@@ -1038,6 +1245,7 @@ Deno.serve(async (req) => {
       {
         error: "Internal error",
         detail: errToObj(error),
+        function_version: FUNCTION_VERSION,
       },
       500,
     );

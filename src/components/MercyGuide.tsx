@@ -188,6 +188,13 @@ function writeStoredBubblePos(pos: BubblePos) {
   }
 }
 
+function fallbackAvatar(event: React.SyntheticEvent<HTMLImageElement>) {
+  const img = event.currentTarget;
+  if (img.src === MERCY_HOST_IMAGE_FALLBACK) return;
+  img.onerror = null;
+  img.src = MERCY_HOST_IMAGE_FALLBACK;
+}
+
 export function MercyGuide({
   roomId,
   roomTitle,
@@ -695,21 +702,32 @@ export function MercyGuide({
               handleOpenGuideFromBubble();
             }
           }}
-          className={cn(
-            'fixed z-[90] flex h-14 w-14 items-center justify-center rounded-full border border-slate-200 bg-white shadow-lg transition hover:shadow-xl',
-          )}
+          className="fixed z-[90] flex flex-col items-center"
           style={{
             right: bubblePos.right,
             bottom: bubblePos.bottom,
           }}
           aria-label="Open Mercy Guide"
         >
-          <img
-            src={MERCY_HOST_IMAGE_SRC}
-            alt="Mercy"
-            onError={handleAvatarError}
-            className="h-10 w-10 rounded-full object-cover"
-          />
+          <div
+            className={cn(
+              'flex h-20 w-20 items-center justify-center rounded-full border border-slate-200 bg-white shadow-lg transition hover:shadow-xl',
+            )}
+          >
+            <img
+              src={MERCY_HOST_IMAGE_SRC}
+              alt="Teacher Mercy"
+              onError={(event) => {
+                fallbackAvatar(event);
+                handleAvatarError();
+              }}
+              className="h-16 w-16 rounded-full object-cover"
+            />
+          </div>
+
+          <span className="mt-2 text-sm font-semibold text-slate-700">
+            Teacher Mercy
+          </span>
         </div>
       )}
 

@@ -1,7 +1,4 @@
-/**
- * File: webhook-events.ts
- * Path: supabase/functions/stripe-webhook/webhook-events.ts
- */
+// Path: supabase/functions/stripe-webhook/webhook-events.ts
 
 import {
   asNonEmptyStringOrNull,
@@ -62,6 +59,40 @@ function withDefaultAppId(
     ...base,
     app_id: asNonEmptyStringOrNull(base.app_id) ?? DEFAULT_APP_ID,
   };
+}
+
+function getEventCreatedIso(event: StripeWebhookEvent): string | null {
+  return toIsoFromUnix((event as Record<string, unknown>)?.created) ?? null;
+}
+
+function buildEventContext(
+  event: StripeWebhookEvent,
+  extra?: Record<string, unknown>,
+): Record<string, unknown> {
+  return {
+    event_id: event.id,
+    event_type: event.type,
+    livemode: event.livemode,
+    event_created_at: getEventCreatedIso(event),
+    ...(extra ?? {}),
+  };
+}
+
+async function markProcessedWithLog(
+  supabase: DBClient,
+  event: StripeWebhookEvent,
+  markStripeWebhookEventProcessed: MarkProcessedFn,
+  extra?: Record<string, unknown>,
+): Promise<void> {
+  const inserted = await markStripeWebhookEventProcessed(supabase, event);
+
+  logWebhook(
+    "info",
+    inserted
+      ? "stripe webhook event marked processed"
+      : "stripe webhook event already processed",
+    buildEventContext(event, extra),
+  );
 }
 
 function resolvePlan(input: {
@@ -338,6 +369,33 @@ function normalizeSubscriptionStatus(
   }
 }
 
+function getCancelAtPeriodEnd(raw: Record<string, unknown>): boolean | null {
+  return (
+    asBoolean(raw.cancel_at_period_end) ??
+    asBoolean(getInvoiceParent(raw)?.cancel_at_period_end) ??
+    asBoolean(getInvoiceSubscriptionDetails(raw)?.cancel_at_period_end) ??
+    null
+  );
+}
+
+function getLifecycleDebugPayload(
+  raw: Record<string, unknown>,
+  event: StripeWebhookEvent,
+  extra?: Record<string, unknown>,
+): Record<string, unknown> {
+  return {
+    ...buildEventContext(event, extra),
+    rawCurrentPeriodStart: toIsoFromUnix(raw.current_period_start) ?? null,
+    rawCurrentPeriodEnd: toIsoFromUnix(raw.current_period_end) ?? null,
+    rawPeriodStart: toIsoFromUnix(raw.period_start) ?? null,
+    rawPeriodEnd: toIsoFromUnix(raw.period_end) ?? null,
+    rawStartDate: toIsoFromUnix(raw.start_date) ?? null,
+    rawTrialEnd: toIsoFromUnix(raw.trial_end) ?? null,
+    item0: getFirstSubscriptionItem(raw),
+    line0: getFirstLine(raw),
+  };
+}
+
 async function processSubscriptionLikeEvent(params: {
   supabase: DBClient;
   event: StripeWebhookEvent;
@@ -393,31 +451,19 @@ async function processSubscriptionLikeEvent(params: {
   const currentPeriodStart = getCurrentPeriodStart(params.raw);
   const currentPeriodEnd = getCurrentPeriodEnd(params.raw);
 
-  console.log("PERIOD DEBUG", {
-    eventId: params.event.id,
-    eventType: params.event.type,
-    providerSubscriptionId,
-    providerCustomerId,
-    userId,
-    status: params.status,
-    currentPeriodStart,
-    currentPeriodEnd,
-    rawCurrentPeriodStart:
-      toIsoFromUnix(params.raw.current_period_start) ?? null,
-    rawCurrentPeriodEnd:
-      toIsoFromUnix(params.raw.current_period_end) ?? null,
-    rawPeriodStart:
-      toIsoFromUnix(params.raw.period_start) ?? null,
-    rawPeriodEnd:
-      toIsoFromUnix(params.raw.period_end) ?? null,
-    rawStartDate:
-      toIsoFromUnix(params.raw.start_date) ?? null,
-    rawTrialEnd:
-      toIsoFromUnix(params.raw.trial_end) ?? null,
-    item0: getFirstSubscriptionItem(params.raw),
-    line0: getFirstLine(params.raw),
-    metadata,
-  });
+  logWebhook(
+    "info",
+    "stripe webhook subscription lifecycle snapshot",
+    getLifecycleDebugPayload(params.raw, params.event, {
+      providerSubscriptionId,
+      providerCustomerId,
+      userId,
+      status: params.status,
+      currentPeriodStart,
+      currentPeriodEnd,
+      metadata,
+    }),
+  );
 
   const result = await upsertSharedSubscriptionMonotonic({
     supabase: params.supabase,
@@ -442,7 +488,7 @@ async function processSubscriptionLikeEvent(params: {
     status: params.status,
     currentPeriodStart,
     currentPeriodEnd,
-    cancelAtPeriodEnd: asBoolean(params.raw.cancel_at_period_end),
+    cancelAtPeriodEnd: getCancelAtPeriodEnd(params.raw),
     canceledAt: getCanceledAt(params.raw),
     endedAt: getEndedAt(params.raw),
     metadata,
@@ -456,7 +502,17 @@ async function processSubscriptionLikeEvent(params: {
     shouldRecomputeBeforeFinalMark: result.shouldRecomputeBeforeFinalMark,
   });
 
-  await params.markStripeWebhookEventProcessed(params.supabase, params.event);
+  await markProcessedWithLog(
+    params.supabase,
+    params.event,
+    params.markStripeWebhookEventProcessed,
+    {
+      providerSubscriptionId,
+      providerCustomerId,
+      userId,
+      status: params.status,
+    },
+  );
 }
 
 export async function handleCheckoutSessionCompleted({
@@ -472,7 +528,10 @@ export async function handleCheckoutSessionCompleted({
   const mode = asNonEmptyStringOrNull(raw.mode);
 
   if (mode !== "subscription") {
-    await markStripeWebhookEventProcessed(supabase, event);
+    await markProcessedWithLog(supabase, event, markStripeWebhookEventProcessed, {
+      reason: "non_subscription_checkout_mode",
+      mode,
+    });
     return;
   }
 
@@ -480,12 +539,14 @@ export async function handleCheckoutSessionCompleted({
     logWebhook(
       "info",
       "checkout.session.completed ignored because payment is not paid",
-      {
-        event_id: event.id,
+      buildEventContext(event, {
         payment_status: paymentStatus,
-      },
+      }),
     );
-    await markStripeWebhookEventProcessed(supabase, event);
+    await markProcessedWithLog(supabase, event, markStripeWebhookEventProcessed, {
+      reason: "payment_not_paid",
+      payment_status: paymentStatus,
+    });
     return;
   }
 
@@ -659,35 +720,25 @@ export async function handleInvoicePaid({
     getCurrentPeriodEnd(raw) ??
     getCurrentPeriodEnd(asRecord(stripeSubscription) ?? {});
 
-  console.log("PERIOD DEBUG", {
-    eventId: event.id,
-    eventType: event.type,
-    providerSubscriptionId,
-    providerCustomerId,
-    userId,
-    status: "active",
-    currentPeriodStart,
-    currentPeriodEnd,
-    rawCurrentPeriodStart:
-      toIsoFromUnix(raw.current_period_start) ?? null,
-    rawCurrentPeriodEnd:
-      toIsoFromUnix(raw.current_period_end) ?? null,
-    rawPeriodStart:
-      toIsoFromUnix(raw.period_start) ?? null,
-    rawPeriodEnd:
-      toIsoFromUnix(raw.period_end) ?? null,
-    rawStartDate:
-      toIsoFromUnix(raw.start_date) ?? null,
-    rawTrialEnd:
-      toIsoFromUnix(raw.trial_end) ?? null,
-    item0: getFirstSubscriptionItem(raw),
-    line0: getFirstLine(raw),
-    invoiceParent: getInvoiceParent(raw),
-    invoiceSubscriptionDetails: getInvoiceSubscriptionDetails(raw),
-    lineSubscriptionItemDetails: getLineSubscriptionItemDetails(raw),
-    stripeSubscription,
-    metadata,
-  });
+  logWebhook(
+    "info",
+    "invoice.paid lifecycle snapshot",
+    {
+      ...getLifecycleDebugPayload(raw, event, {
+        providerSubscriptionId,
+        providerCustomerId,
+        userId,
+        status: "active",
+        currentPeriodStart,
+        currentPeriodEnd,
+        metadata,
+      }),
+      invoiceParent: getInvoiceParent(raw),
+      invoiceSubscriptionDetails: getInvoiceSubscriptionDetails(raw),
+      lineSubscriptionItemDetails: getLineSubscriptionItemDetails(raw),
+      stripeSubscription,
+    },
+  );
 
   const result = await upsertSharedSubscriptionMonotonic({
     supabase,
@@ -710,9 +761,9 @@ export async function handleInvoicePaid({
     status: "active",
     currentPeriodStart,
     currentPeriodEnd,
-    cancelAtPeriodEnd: null,
-    canceledAt: null,
-    endedAt: null,
+    cancelAtPeriodEnd: getCancelAtPeriodEnd(raw),
+    canceledAt: getCanceledAt(raw),
+    endedAt: getEndedAt(raw),
     metadata,
     rawPayload: raw,
   });
@@ -724,7 +775,12 @@ export async function handleInvoicePaid({
     shouldRecomputeBeforeFinalMark: result.shouldRecomputeBeforeFinalMark,
   });
 
-  await markStripeWebhookEventProcessed(supabase, event);
+  await markProcessedWithLog(supabase, event, markStripeWebhookEventProcessed, {
+    providerSubscriptionId,
+    providerCustomerId,
+    userId,
+    status: "active",
+  });
 }
 
 export async function handleInvoicePaymentFailed({
@@ -793,35 +849,25 @@ export async function handleInvoicePaymentFailed({
     getCurrentPeriodEnd(raw) ??
     getCurrentPeriodEnd(asRecord(stripeSubscription) ?? {});
 
-  console.log("PERIOD DEBUG", {
-    eventId: event.id,
-    eventType: event.type,
-    providerSubscriptionId,
-    providerCustomerId,
-    userId,
-    status: "past_due",
-    currentPeriodStart,
-    currentPeriodEnd,
-    rawCurrentPeriodStart:
-      toIsoFromUnix(raw.current_period_start) ?? null,
-    rawCurrentPeriodEnd:
-      toIsoFromUnix(raw.current_period_end) ?? null,
-    rawPeriodStart:
-      toIsoFromUnix(raw.period_start) ?? null,
-    rawPeriodEnd:
-      toIsoFromUnix(raw.period_end) ?? null,
-    rawStartDate:
-      toIsoFromUnix(raw.start_date) ?? null,
-    rawTrialEnd:
-      toIsoFromUnix(raw.trial_end) ?? null,
-    item0: getFirstSubscriptionItem(raw),
-    line0: getFirstLine(raw),
-    invoiceParent: getInvoiceParent(raw),
-    invoiceSubscriptionDetails: getInvoiceSubscriptionDetails(raw),
-    lineSubscriptionItemDetails: getLineSubscriptionItemDetails(raw),
-    stripeSubscription,
-    metadata,
-  });
+  logWebhook(
+    "info",
+    "invoice.payment_failed lifecycle snapshot",
+    {
+      ...getLifecycleDebugPayload(raw, event, {
+        providerSubscriptionId,
+        providerCustomerId,
+        userId,
+        status: "past_due",
+        currentPeriodStart,
+        currentPeriodEnd,
+        metadata,
+      }),
+      invoiceParent: getInvoiceParent(raw),
+      invoiceSubscriptionDetails: getInvoiceSubscriptionDetails(raw),
+      lineSubscriptionItemDetails: getLineSubscriptionItemDetails(raw),
+      stripeSubscription,
+    },
+  );
 
   const result = await upsertSharedSubscriptionMonotonic({
     supabase,
@@ -844,9 +890,9 @@ export async function handleInvoicePaymentFailed({
     status: "past_due",
     currentPeriodStart,
     currentPeriodEnd,
-    cancelAtPeriodEnd: null,
-    canceledAt: null,
-    endedAt: null,
+    cancelAtPeriodEnd: getCancelAtPeriodEnd(raw),
+    canceledAt: getCanceledAt(raw),
+    endedAt: getEndedAt(raw),
     metadata,
     rawPayload: raw,
   });
@@ -858,5 +904,10 @@ export async function handleInvoicePaymentFailed({
     shouldRecomputeBeforeFinalMark: result.shouldRecomputeBeforeFinalMark,
   });
 
-  await markStripeWebhookEventProcessed(supabase, event);
+  await markProcessedWithLog(supabase, event, markStripeWebhookEventProcessed, {
+    providerSubscriptionId,
+    providerCustomerId,
+    userId,
+    status: "past_due",
+  });
 }
