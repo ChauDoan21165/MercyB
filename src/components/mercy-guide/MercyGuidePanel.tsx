@@ -481,7 +481,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
             <img
               src={MERCY_HOST_IMAGE_SRC}
               alt="Teacher Mercy"
-              className="relative h-11 w-11 rounded-full border-2 border-white object-cover shadow-sm"
+              className="relative h-11 w-11 rounded-full border-2 border-white object-cover object-[50%_32%] scale-110 shadow-sm"
               onError={(event) => {
                 fallbackAvatar(event);
                 onAvatarError?.(event);

@@ -711,7 +711,7 @@ export function MercyGuide({
         >
           <div
             className={cn(
-              'flex h-20 w-20 items-center justify-center rounded-full border border-slate-200 bg-white shadow-lg transition hover:shadow-xl',
+              'h-20 w-20 overflow-hidden rounded-full border border-slate-200 bg-white shadow-lg transition hover:shadow-xl',
             )}
           >
             <img
@@ -721,7 +721,7 @@ export function MercyGuide({
                 fallbackAvatar(event);
                 handleAvatarError();
               }}
-              className="h-16 w-16 rounded-full object-cover"
+              className="h-full w-full rounded-full object-cover object-[50%_32%] scale-110"
             />
           </div>
 

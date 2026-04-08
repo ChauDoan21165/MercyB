@@ -859,6 +859,7 @@ export function GuideBox({
                 boxShadow: "0 12px 28px rgba(0,0,0,0.18)",
                 border: "2px solid white",
                 cursor: "grab",
+                overflow: "hidden",
               }}
             >
               <div
@@ -891,7 +892,8 @@ export function GuideBox({
                       width: "100%",
                       height: "100%",
                       objectFit: "cover",
-                      objectPosition: "center",
+                      objectPosition: "50% 30%",
+                      transform: "scale(1.14)",
                       pointerEvents: "none",
                     }}
                   />
@@ -1086,7 +1088,8 @@ export function GuideBox({
                         width: "100%",
                         height: "100%",
                         objectFit: "cover",
-                        objectPosition: "center",
+                        objectPosition: "50% 30%",
+                        transform: "scale(1.14)",
                       }}
                     />
                   ) : (
