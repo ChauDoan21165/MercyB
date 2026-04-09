@@ -17,7 +17,7 @@ import AdminLayout from "@/components/admin/AdminLayout";
 import { useAuth } from "@/providers/AuthProvider";
 
 const MB_ROUTER_VERSION =
-  "2026-04-02-app-router-admin-billing-enabled";
+  "2026-04-09-app-router-admin-users-route-enabled";
 
 const ChatHub = lazy(() => import("@/pages/ChatHub"));
 const AllRooms = lazy(() => import("@/pages/AllRooms"));
@@ -36,6 +36,7 @@ const LoginPage = lazy(() => import("@/pages/LoginPage"));
 const ResetPasswordPage = lazy(() => import("@/pages/ResetPasswordPage"));
 
 const AdminDashboard = lazy(() => import("@/pages/admin/AdminDashboard"));
+const AdminUsersPage = lazy(() => import("@/pages/admin/AdminUsersPage"));
 const AdminPayments = lazy(() => import("@/pages/admin/AdminPayments"));
 const AdminBankTransfers = lazy(() => import("@/pages/admin/AdminBankTransfers"));
 const AdminPaymentVerification = lazy(
@@ -496,6 +497,14 @@ export default function AppRouter() {
               element={
                 <LazyPage>
                   <AdminDashboard />
+                </LazyPage>
+              }
+            />
+            <Route
+              path="users"
+              element={
+                <LazyPage>
+                  <AdminUsersPage />
                 </LazyPage>
               }
             />

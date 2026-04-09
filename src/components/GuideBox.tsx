@@ -1,3 +1,8 @@
+/**
+ * File: GuideBox.tsx
+ * Path: src/components/GuideBox.tsx
+ */
+
 import React, {
   useCallback,
   useEffect,
@@ -16,6 +21,14 @@ import {
   CornerDownRight,
   Maximize2,
   GripHorizontal,
+  BookOpen,
+  Mic2,
+  PenSquare,
+  Languages,
+  HeartHandshake,
+  Home,
+  LibraryBig,
+  Sparkles,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import askMercy from "@/services/mercyChat";
@@ -58,6 +71,15 @@ type ChatMessage = {
   text: string;
 };
 
+type GuideInfoCard = {
+  key: string;
+  icon: React.ReactNode;
+  titleEn: string;
+  titleVi: string;
+  bodyEn: string;
+  bodyVi: string;
+};
+
 const GUIDE_IMAGE_SRC = "/guide.png";
 const GUIDE_IMAGE_FALLBACK = "/guide.png";
 
@@ -73,6 +95,7 @@ const BUBBLE_BOTTOM_SAFE_DESKTOP = 24;
 const BUBBLE_POSITION_STORAGE_KEY = "guide-box-bubble-position-v8-left";
 const PANEL_RECT_STORAGE_KEY = "guide-box-panel-rect-v8-left";
 const PANEL_SIZE_STORAGE_KEY = "guide-box-panel-size-v8";
+const GUIDE_INTRO_EXPANDED_STORAGE_KEY = "guide-box-intro-expanded-v1";
 
 const PANEL_MIN_MARGIN = 12;
 const PANEL_BOTTOM_SAFE_MOBILE = 108;
@@ -346,25 +369,70 @@ function readSessionJson<T>(key: string): T | null {
   }
 }
 
+function readSessionBoolean(key: string, fallback = false) {
+  if (typeof window === "undefined") return fallback;
+  try {
+    const raw = window.sessionStorage.getItem(key);
+    if (raw == null) return fallback;
+    return raw === "true";
+  } catch {
+    return fallback;
+  }
+}
+
 function createId(prefix: string) {
   return `${prefix}-${Math.random().toString(36).slice(2, 10)}`;
 }
 
 function getInitialGuideMessages(roomSummary: RoomContextSummary): ChatMessage[] {
   const first = roomSummary.hasRoomContext
-    ? `Hi. I’m Guide. You are in ${roomSummary.roomName}. Ask me practical things like “how do I use this room?”, “where do I go next?”, or “open pricing”.`
-    : "Hi. I’m Guide. Ask me practical things like “how do I use the app?”, “where do I start?”, or “how do I use a room?”.";
+    ? `Hi. I’m Guide.\nChào bạn! Mình là Guide, người dẫn đường của bạn.\n\nYou are in ${roomSummary.roomName}. I can point you to important pages, explain how to use this room, or help you decide the next step.\nBạn đang ở ${roomSummary.roomName}. Mình sẽ chỉ bạn các trang quan trọng, hướng dẫn cách dùng room này, hoặc giúp bạn chọn bước tiếp theo.`
+    : "Hi. I’m Guide.\nChào bạn! Mình là Guide, người dẫn đường của bạn.\n\nI can point you to important pages, explain how to use Mercy Blade, and help you decide where to start.\nMình có thể chỉ bạn các trang quan trọng, hướng dẫn cách dùng Mercy Blade và giúp bạn biết nên bắt đầu từ đâu.";
 
   return [{ id: createId("guide"), role: "guide", text: first }];
 }
 
+function SectionTitle({
+  icon,
+  labelEn,
+  labelVi,
+}: {
+  icon?: React.ReactNode;
+  labelEn: string;
+  labelVi: string;
+}) {
+  return (
+    <div
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        gap: 8,
+        fontSize: 12,
+        fontWeight: 800,
+        color: "rgba(0,0,0,0.50)",
+        textTransform: "uppercase",
+        letterSpacing: 0.4,
+        marginBottom: 10,
+        flexWrap: "wrap",
+      }}
+    >
+      {icon}
+      <span>
+        {labelEn} / {labelVi}
+      </span>
+    </div>
+  );
+}
+
 function ActionButton({
-  label,
+  labelEn,
+  labelVi,
   icon,
   onClick,
   primary = false,
 }: {
-  label: string;
+  labelEn: string;
+  labelVi: string;
   icon: React.ReactNode;
   onClick: () => void;
   primary?: boolean;
@@ -386,18 +454,93 @@ function ActionButton({
           : "1px solid rgba(0,0,0,0.10)",
         background: primary ? "rgba(0,128,120,0.10)" : "white",
         color: "rgba(0,0,0,0.82)",
-        fontWeight: 800,
-        fontSize: 14,
         cursor: "pointer",
         textAlign: "left",
       }}
     >
       <span style={{ display: "inline-flex", alignItems: "center", gap: 10 }}>
         {icon}
-        <span>{label}</span>
+        <span style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+          <span style={{ fontWeight: 800, fontSize: 14 }}>{labelEn}</span>
+          <span
+            style={{
+              fontWeight: 600,
+              fontSize: 12,
+              color: "rgba(0,0,0,0.56)",
+            }}
+          >
+            {labelVi}
+          </span>
+        </span>
       </span>
       <ArrowRight size={16} />
     </button>
+  );
+}
+
+function MiniInfoCard({ card }: { card: GuideInfoCard }) {
+  return (
+    <div
+      style={{
+        borderRadius: 12,
+        border: "1px solid rgba(0,0,0,0.08)",
+        background: "rgba(255,255,255,0.96)",
+        padding: 12,
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          alignItems: "flex-start",
+          gap: 8,
+          color: "rgba(0,0,0,0.82)",
+        }}
+      >
+        <span
+          style={{
+            width: 28,
+            height: 28,
+            borderRadius: 9999,
+            display: "inline-flex",
+            alignItems: "center",
+            justifyContent: "center",
+            background: "rgba(0,128,120,0.10)",
+            color: "rgba(0,0,0,0.76)",
+            flexShrink: 0,
+          }}
+        >
+          {card.icon}
+        </span>
+
+        <div style={{ minWidth: 0 }}>
+          <div style={{ fontWeight: 800, fontSize: 14 }}>{card.titleEn}</div>
+          <div
+            style={{
+              marginTop: 2,
+              fontWeight: 700,
+              fontSize: 12,
+              color: "rgba(0,0,0,0.56)",
+            }}
+          >
+            {card.titleVi}
+          </div>
+        </div>
+      </div>
+
+      <div
+        style={{
+          marginTop: 8,
+          fontSize: 13,
+          lineHeight: 1.55,
+          color: "rgba(0,0,0,0.68)",
+          display: "grid",
+          gap: 6,
+        }}
+      >
+        <div>{card.bodyEn}</div>
+        <div style={{ color: "rgba(0,0,0,0.60)" }}>{card.bodyVi}</div>
+      </div>
+    </div>
   );
 }
 
@@ -424,6 +567,9 @@ export function GuideBox({
   const [imageBroken, setImageBroken] = useState(false);
   const [chatInput, setChatInput] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [showFullAppIntro, setShowFullAppIntro] = useState<boolean>(() =>
+    readSessionBoolean(GUIDE_INTRO_EXPANDED_STORAGE_KEY, false)
+  );
   const messagesRef = useRef<HTMLDivElement | null>(null);
 
   const roomSummary = useMemo(
@@ -499,6 +645,18 @@ export function GuideBox({
       // ignore
     }
   }, [panelRect, panelSize]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    try {
+      window.sessionStorage.setItem(
+        GUIDE_INTRO_EXPANDED_STORAGE_KEY,
+        String(showFullAppIntro)
+      );
+    } catch {
+      // ignore
+    }
+  }, [showFullAppIntro]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -691,6 +849,11 @@ export function GuideBox({
     applyPanelSize("xl");
   }, [applyPanelSize]);
 
+  const goHome = useCallback(() => {
+    navigate("/");
+    setIsOpen(false);
+  }, [navigate]);
+
   const goResume = useCallback(() => {
     if (roomId) {
       navigate(`/room/${roomId}`);
@@ -760,7 +923,7 @@ export function GuideBox({
           id: createId("guide"),
           role: "guide",
           text:
-            "I couldn’t reach Mercy right now. Try again, or use the quick buttons below.",
+            "I couldn’t answer right now.\nMình chưa trả lời được lúc này.\n\nYou can still use the quick buttons and the app guide above.\nBạn vẫn có thể dùng các lối tắt nhanh và phần hướng dẫn ở phía trên.",
         };
 
         setMessages((prev) => [...prev, fallback]);
@@ -769,12 +932,41 @@ export function GuideBox({
     [chatInput, roomId, roomTitle, tier, pathSlug, tags, contentEn]
   );
 
+  const openTeacherMercy = useCallback(() => {
+    submitQuestion("What is Teacher Mercy?");
+  }, [submitQuestion]);
+
   const quickQuestions = useMemo(
     () => [
-      "How do I use the app?",
-      roomSummary.hasRoomContext ? "How do I use the room?" : "Where do I start?",
-      "What should I do next?",
-      "Where am I?",
+      {
+        en: "How do I use the app?",
+        vi: "Làm sao để học hiệu quả với app?",
+      },
+      {
+        en: "What is shadowing?",
+        vi: "Nói đuổi (Shadowing) là gì?",
+      },
+      {
+        en: "What is Teacher Mercy?",
+        vi: "Teacher Mercy là gì?",
+      },
+      roomSummary.hasRoomContext
+        ? {
+            en: "How do I use this room?",
+            vi: "Cách học Room này như thế nào?",
+          }
+        : {
+            en: "Where do I start?",
+            vi: "Mình nên bắt đầu từ đâu?",
+          },
+      {
+        en: "What should I do next?",
+        vi: "Tiếp theo mình nên làm gì?",
+      },
+      {
+        en: "Where am I?",
+        vi: "Mình đang ở đâu vậy?",
+      },
     ],
     [roomSummary.hasRoomContext]
   );
@@ -782,21 +974,39 @@ export function GuideBox({
   const importantPlaces = useMemo(
     () => [
       {
+        key: "home",
+        labelEn: "Go home",
+        labelVi: "Về trang chủ",
+        icon: <Home size={16} />,
+        onClick: goHome,
+        primary: false,
+      },
+      {
         key: "resume",
-        label: roomId ? "Resume this room" : "Go to rooms",
-        icon: <MapPin size={16} />,
+        labelEn: roomId ? "Resume this room" : "Explore rooms",
+        labelVi: roomId ? "Tiếp tục Room này" : "Khám phá các Room",
+        icon: <LibraryBig size={16} />,
         onClick: goResume,
         primary: true,
       },
       {
         key: "paths",
-        label: "Learning paths",
+        labelEn: "Learning paths",
+        labelVi: "Lộ trình bài bản",
         icon: <Compass size={16} />,
         onClick: goPaths,
       },
       {
+        key: "teacher",
+        labelEn: "Teacher Mercy",
+        labelVi: "Mở Teacher Mercy",
+        icon: <Sparkles size={16} />,
+        onClick: openTeacherMercy,
+      },
+      {
         key: "pricing",
-        label: "Pricing",
+        labelEn: "Pricing",
+        labelVi: "Bảng giá & VIP",
         icon: <Gem size={16} />,
         onClick: goPricing,
       },
@@ -804,7 +1014,8 @@ export function GuideBox({
         ? [
             {
               key: "open-room",
-              label: "Open this room",
+              labelEn: "Open this room",
+              labelVi: "Mở Room này",
               icon: <ArrowRight size={16} />,
               onClick: goRoom,
               primary: false,
@@ -812,7 +1023,70 @@ export function GuideBox({
           ]
         : []),
     ],
-    [goPaths, goPricing, goResume, goRoom, roomId, roomSummary.hasRoomContext]
+    [
+      goHome,
+      goPaths,
+      goPricing,
+      goResume,
+      goRoom,
+      openTeacherMercy,
+      roomId,
+      roomSummary.hasRoomContext,
+    ]
+  );
+
+  const appIntroCards = useMemo<GuideInfoCard[]>(
+    () => [
+      {
+        key: "rooms",
+        icon: <BookOpen size={15} />,
+        titleEn: "400+ rooms about real life",
+        titleVi: "400+ Room từ thực tế cuộc sống",
+        bodyEn:
+          "Mercy Blade has a large library of rooms built around meaningful life topics, not empty textbook examples. You learn English through feelings, work, health, goals, habits, relationships, and daily life.",
+        bodyVi:
+          "Mercy Blade sở hữu thư viện khổng lồ với các Room xoay quanh chủ đề đời sống thực tế, thay vì ví dụ sách giáo khoa khô khan. Bạn sẽ học tiếng Anh qua cảm xúc, công việc, sức khỏe và các mối quan hệ hằng ngày.",
+      },
+      {
+        key: "shadowing",
+        icon: <Mic2 size={15} />,
+        titleEn: "Read, listen, and shadow",
+        titleVi: "Đọc, nghe và nói đuổi (Shadowing)",
+        bodyEn:
+          "You can read Vietnamese first to understand the meaning, then read the same idea in English and listen to English audio. Reading and listening to the same text helps you practice shadowing and build rhythm, pronunciation, and confidence.",
+        bodyVi:
+          "Bạn có thể đọc tiếng Việt để hiểu nghĩa, sau đó đối chiếu sang tiếng Anh và nghe audio. Việc này giúp bạn luyện nói đuổi (Shadowing) để cải thiện nhịp điệu, phát âm và sự tự tin tự nhiên.",
+      },
+      {
+        key: "levels",
+        icon: <Languages size={15} />,
+        titleEn: "Free to VIP 9",
+        titleVi: "Lộ trình từ Free đến VIP 9",
+        bodyEn:
+          "The library grows from Free to VIP 9. As you move up, the texts become longer, deeper, and more demanding. That gives learners a calm path from easier material into richer English.",
+        bodyVi:
+          "Thư viện được phân cấp từ Free đến VIP 9. Càng lên cao, nội dung càng sâu sắc và thử thách hơn, giúp bạn nâng trình tiếng Anh một cách bền vững và nhẹ nhàng.",
+      },
+      {
+        key: "teacher-mercy",
+        icon: <PenSquare size={15} />,
+        titleEn: "Teacher Mercy learning loop",
+        titleVi: "Chu trình học cùng Teacher Mercy",
+        bodyEn:
+          "Teacher Mercy helps you write about real life, improve grammar, make your English more natural, practice speaking, and notice English logic so you avoid Vietlish. The advantage is the loop: write → improve → speak → understand.",
+        bodyVi:
+          "Teacher Mercy giúp bạn viết về trải nghiệm thực, chỉnh ngữ pháp và thấm nhuần tư duy bản ngữ để bỏ cách nói 'tiếng Anh bồi'. Điểm mạnh là chu trình khép kín: Viết → Cải thiện → Nói → Thấu hiểu.",
+      },
+    ],
+    []
+  );
+
+  const introSummary = useMemo(
+    () =>
+      roomSummary.hasRoomContext
+        ? `You are in ${roomSummary.roomName}. This app is built around real life learning. Explore rooms, use Teacher Mercy, and keep moving step by step.\nBạn đang ở ${roomSummary.roomName}. App được xây dựng để bạn học từ chính cuộc sống thực. Hãy khám phá các Room, dùng Teacher Mercy và tiến bộ mỗi ngày.`
+        : "Mercy Blade helps Vietnamese learners build English through real life topics, shadowing, and a guided Teacher Mercy loop.\nMercy Blade giúp người Việt xây gốc tiếng Anh qua chủ đề đời sống thực tế, luyện nói đuổi (Shadowing) và chu trình học kèm cặp cùng Teacher Mercy.",
+    [roomSummary.hasRoomContext, roomSummary.roomName]
   );
 
   return (
@@ -953,7 +1227,7 @@ export function GuideBox({
         >
           <div
             onPointerDown={handlePanelDragStart}
-            title="Drag Guide box"
+            title="Kéo hộp Guide"
             style={{
               position: "absolute",
               left: 6,
@@ -971,7 +1245,7 @@ export function GuideBox({
 
           <div
             onPointerDown={handlePanelDragStart}
-            title="Drag Guide box"
+            title="Kéo hộp Guide"
             style={{
               position: "absolute",
               right: 6,
@@ -989,7 +1263,7 @@ export function GuideBox({
 
           <div
             onPointerDown={handlePanelDragStart}
-            title="Drag Guide box"
+            title="Kéo hộp Guide"
             style={{
               position: "absolute",
               left: "50%",
@@ -1025,7 +1299,7 @@ export function GuideBox({
                 role="button"
                 tabIndex={0}
                 aria-label="Drag Guide box"
-                title="Drag Guide box"
+                title="Kéo Guide"
                 style={{
                   width: 72,
                   height: 10,
@@ -1125,12 +1399,13 @@ export function GuideBox({
                       marginTop: 2,
                       fontSize: 13,
                       color: "rgba(0,0,0,0.58)",
-                      whiteSpace: "nowrap",
                       overflow: "hidden",
                       textOverflow: "ellipsis",
                     }}
                   >
-                    Quick help. Comfortable control.
+                    Human help. Important pages. Clear direction.
+                    <br />
+                    Hỗ trợ tận tâm. Truy cập nhanh. Chỉ dẫn rõ ràng.
                   </div>
                 </div>
               </div>
@@ -1146,7 +1421,7 @@ export function GuideBox({
                 <button
                   type="button"
                   onClick={expandForTyping}
-                  title="Expand for typing"
+                  title="Mở rộng để gõ"
                   aria-label="Expand for typing"
                   style={{
                     height: 34,
@@ -1164,14 +1439,14 @@ export function GuideBox({
                   }}
                 >
                   <Maximize2 size={14} />
-                  Expand
+                  Mở rộng
                 </button>
 
                 <button
                   type="button"
                   onClick={() => setIsOpen(false)}
                   aria-label="Close Guide"
-                  title="Close"
+                  title="Đóng"
                   style={{
                     width: 34,
                     height: 34,
@@ -1220,7 +1495,7 @@ export function GuideBox({
                       fontSize: 12,
                       cursor: "pointer",
                     }}
-                    title={`Panel size ${PANEL_SIZES[sizeKey].label}`}
+                    title={`Kích thước ${PANEL_SIZES[sizeKey].label}`}
                   >
                     {PANEL_SIZES[sizeKey].label}
                   </button>
@@ -1229,13 +1504,13 @@ export function GuideBox({
 
               <div
                 style={{
-                  fontSize: 12,
+                  fontSize: 11,
                   color: "rgba(0,0,0,0.46)",
                   fontWeight: 700,
                   marginLeft: 4,
                 }}
               >
-                Drag with any gray handle
+                Kéo bằng các thanh xám để di chuyển Guide
               </div>
             </div>
           </div>
@@ -1244,12 +1519,151 @@ export function GuideBox({
             style={{
               padding: 14,
               display: "grid",
-              gridTemplateRows: "auto auto auto 1fr auto auto",
+              gridTemplateRows: "auto auto auto auto 1fr auto auto",
               gap: 12,
               minHeight: 0,
               flex: 1,
+              overflowY: "auto",
+              overflowX: "hidden",
+              alignContent: "start",
             }}
           >
+            <div
+              style={{
+                borderRadius: 14,
+                border: "1px solid rgba(0,128,120,0.12)",
+                background:
+                  "linear-gradient(180deg, rgba(0,128,120,0.06), rgba(255,255,255,0.98))",
+                padding: 14,
+              }}
+            >
+              <SectionTitle
+                icon={<HeartHandshake size={14} />}
+                labelEn="How to use Mercy Blade"
+                labelVi="Cách học hiệu quả"
+              />
+
+              <div
+                style={{
+                  fontSize: 14,
+                  lineHeight: 1.6,
+                  color: "rgba(0,0,0,0.78)",
+                  fontWeight: 600,
+                  whiteSpace: "pre-wrap",
+                }}
+              >
+                {introSummary}
+              </div>
+
+              <div
+                style={{
+                  marginTop: 12,
+                  display: "grid",
+                  gap: 10,
+                }}
+              >
+                {appIntroCards.map((card) => (
+                  <MiniInfoCard key={card.key} card={card} />
+                ))}
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setShowFullAppIntro((prev) => !prev)}
+                style={{
+                  marginTop: 12,
+                  borderRadius: 9999,
+                  border: "1px solid rgba(0,0,0,0.10)",
+                  background: "white",
+                  padding: "8px 12px",
+                  fontSize: 12,
+                  fontWeight: 800,
+                  color: "rgba(0,0,0,0.74)",
+                  cursor: "pointer",
+                }}
+              >
+                {showFullAppIntro
+                  ? "Show less / Thu gọn"
+                  : "Read full introduction / Đọc giới thiệu đầy đủ"}
+              </button>
+
+              {showFullAppIntro ? (
+                <div
+                  style={{
+                    marginTop: 12,
+                    borderRadius: 12,
+                    border: "1px solid rgba(0,0,0,0.08)",
+                    background: "rgba(255,255,255,0.96)",
+                    padding: 12,
+                    fontSize: 13,
+                    lineHeight: 1.65,
+                    color: "rgba(0,0,0,0.72)",
+                    whiteSpace: "pre-wrap",
+                    display: "grid",
+                    gap: 10,
+                  }}
+                >
+                  <div>
+                    Mercy Blade helps Vietnamese learners build English through
+                    real life, not random textbook sentences.
+                    {"\n\n"}This app has two main strengths.
+                    {"\n\n"}1. A large English library built around real life
+                    {"\n"}Mercy Blade has more than 400 rooms. Each room is a
+                    small learning space built around meaningful topics from
+                    daily life. These rooms cover subjects people actually care
+                    about, such as feelings, family, work, health, money,
+                    habits, goals, travel, and modern life.
+                    {"\n\n"}You can read in Vietnamese to understand the
+                    meaning, then read the same idea in English, and listen to
+                    English audio that matches the text. This supports
+                    shadowing: understand, read, listen, and repeat. Shadowing
+                    helps learners improve pronunciation, rhythm, listening,
+                    confidence, and natural sentence flow.
+                    {"\n\n"}The library is organized from Free to VIP 9. As
+                    learners move higher, the texts become longer, deeper, and
+                    more advanced.
+                    {"\n\n"}2. Teacher Mercy
+                    {"\n"}Teacher Mercy is a guided English coach designed
+                    especially for Vietnamese learners. You write about a real
+                    life event, thought, or feeling. Mercy helps correct
+                    grammar, improve natural English, guide speaking practice,
+                    and explain English logic so you avoid Vietlish. The real
+                    advantage is the loop: write → improve → speak → understand.
+                    {"\n\n"}Our mission
+                    {"\n"}The founder, CD, wants Mercy Blade to become the best
+                    English learning app for Vietnamese people. Your support and
+                    feedback help us improve every day and move closer to that
+                    goal.
+                  </div>
+
+                  <div style={{ color: "rgba(0,0,0,0.60)" }}>
+                    Mercy Blade giúp người Việt xây gốc tiếng Anh qua các tình huống thực tế,
+                    thay vì những câu mẫu ngẫu nhiên kiểu sách giáo khoa.
+                    {"\n\n"}Hệ thống có hai điểm mạnh cốt lõi:
+                    {"\n\n"}1. Thư viện tiếng Anh gắn liền với đời sống thực
+                    {"\n"}Với hơn 400 Room, mỗi không gian học được xây dựng quanh các chủ đề 
+                    ý nghĩa như: Cảm xúc, công việc, sức khỏe, thói quen và mục tiêu. 
+                    Bạn có thể đọc tiếng Việt để thấu hiểu nghĩa trước, sau đó đối chiếu sang 
+                    tiếng Anh và nghe audio đi kèm. 
+                    {"\n\n"}Cách này hỗ trợ tối đa cho việc luyện nói đuổi (Shadowing): 
+                    Hiểu - Đọc - Nghe - Lặp lại. Shadowing giúp bạn cải thiện nhịp điệu, 
+                    phát âm và dòng chảy tự nhiên của câu. Hệ thống bài đọc được phân cấp từ 
+                    Free đến VIP 9, dài hơn và sâu sắc hơn theo trình độ của bạn.
+                    {"\n\n"}2. Teacher Mercy
+                    {"\n"}Đây là người hướng dẫn tiếng Anh có định hướng, được thiết kế riêng 
+                    cho người Việt. Bạn viết về một sự kiện hay suy nghĩ thực tế, 
+                    Mercy sẽ giúp chỉnh sửa ngữ pháp, làm cách diễn đạt tự nhiên hơn và 
+                    giải thích tư duy bản ngữ để bạn thoát khỏi cách nói 'tiếng Anh bồi'. 
+                    Điểm mạnh nhất chính là chu trình học: Viết → Chỉnh sửa → Nói → Thấu hiểu.
+                    {"\n\n"}Sứ mệnh của chúng tôi
+                    {"\n"}Nhà sáng lập CD mong muốn Mercy Blade trở thành ứng dụng học tiếng Anh 
+                    tốt nhất cho người Việt. Sự ủng hộ của bạn chính là động lực để chúng tôi 
+                    hoàn thiện mỗi ngày.
+                  </div>
+                </div>
+              ) : null}
+            </div>
+
             <div
               style={{
                 borderRadius: 14,
@@ -1258,21 +1672,11 @@ export function GuideBox({
                 padding: 12,
               }}
             >
-              <div
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                  fontSize: 12,
-                  fontWeight: 800,
-                  color: "rgba(0,0,0,0.50)",
-                  textTransform: "uppercase",
-                  letterSpacing: 0.4,
-                }}
-              >
-                <MapPin size={14} />
-                Current place
-              </div>
+              <SectionTitle
+                icon={<MapPin size={14} />}
+                labelEn="Current place"
+                labelVi="Vị trí hiện tại"
+              />
 
               <div
                 style={{
@@ -1282,7 +1686,7 @@ export function GuideBox({
                   color: "rgba(0,0,0,0.88)",
                 }}
               >
-                {roomSummary.hasRoomContext ? roomSummary.roomName : "Home"}
+                {roomSummary.hasRoomContext ? roomSummary.roomName : "Trang chủ"}
               </div>
 
               {roomSummary.tierLabel ? (
@@ -1293,7 +1697,7 @@ export function GuideBox({
                     color: "rgba(0,0,0,0.58)",
                   }}
                 >
-                  Tier: {roomSummary.tierLabel}
+                  Cấp độ: {roomSummary.tierLabel}
                 </div>
               ) : null}
 
@@ -1305,7 +1709,7 @@ export function GuideBox({
                     color: "rgba(0,0,0,0.58)",
                   }}
                 >
-                  Topic: {truncateWords(roomSummary.topicLabel, 8)}
+                  Chủ đề: {truncateWords(roomSummary.topicLabel, 8)}
                 </div>
               ) : null}
 
@@ -1331,24 +1735,18 @@ export function GuideBox({
                 padding: 12,
               }}
             >
-              <div
-                style={{
-                  fontSize: 12,
-                  fontWeight: 800,
-                  color: "rgba(0,0,0,0.50)",
-                  textTransform: "uppercase",
-                  letterSpacing: 0.4,
-                  marginBottom: 10,
-                }}
-              >
-                Important places
-              </div>
+              <SectionTitle
+                icon={<Compass size={14} />}
+                labelEn="Important places"
+                labelVi="Lối tắt nhanh"
+              />
 
               <div style={{ display: "grid", gap: 10 }}>
                 {importantPlaces.map((item) => (
                   <ActionButton
                     key={item.key}
-                    label={item.label}
+                    labelEn={item.labelEn}
+                    labelVi={item.labelVi}
                     icon={item.icon}
                     onClick={item.onClick}
                     primary={item.primary}
@@ -1365,25 +1763,18 @@ export function GuideBox({
                 padding: 12,
               }}
             >
-              <div
-                style={{
-                  fontSize: 12,
-                  fontWeight: 800,
-                  color: "rgba(0,0,0,0.50)",
-                  textTransform: "uppercase",
-                  letterSpacing: 0.4,
-                  marginBottom: 10,
-                }}
-              >
-                Common questions
-              </div>
+              <SectionTitle
+                icon={<MessageCircle size={14} />}
+                labelEn="Common questions"
+                labelVi="Câu hỏi thường gặp"
+              />
 
               <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                 {quickQuestions.map((question) => (
                   <button
-                    key={question}
+                    key={question.en}
                     type="button"
-                    onClick={() => submitQuestion(question)}
+                    onClick={() => submitQuestion(question.en)}
                     style={{
                       borderRadius: 9999,
                       border: "1px solid rgba(0,0,0,0.10)",
@@ -1393,9 +1784,20 @@ export function GuideBox({
                       fontWeight: 700,
                       color: "rgba(0,0,0,0.72)",
                       cursor: "pointer",
+                      textAlign: "left",
                     }}
+                    title={question.vi}
                   >
-                    {question}
+                    <div>{question.en}</div>
+                    <div
+                      style={{
+                        marginTop: 2,
+                        fontWeight: 600,
+                        color: "rgba(0,0,0,0.52)",
+                      }}
+                    >
+                      {question.vi}
+                    </div>
                   </button>
                 ))}
               </div>
@@ -1403,7 +1805,7 @@ export function GuideBox({
 
             <div
               style={{
-                minHeight: 0,
+                minHeight: 220,
                 borderRadius: 14,
                 border: "1px solid rgba(0,0,0,0.08)",
                 background: "rgba(255,255,255,0.92)",
@@ -1426,7 +1828,7 @@ export function GuideBox({
                 }}
               >
                 <MessageCircle size={15} />
-                Guide chat
+                Trò chuyện cùng Guide
               </div>
 
               <div
@@ -1486,7 +1888,7 @@ export function GuideBox({
                 value={chatInput}
                 onChange={(e) => setChatInput(e.target.value)}
                 onFocus={expandForTyping}
-                placeholder="Ask a simple question..."
+                placeholder="Ask a simple question... / Hỏi một câu đơn giản..."
                 style={{
                   width: "100%",
                   minWidth: 0,
@@ -1514,7 +1916,7 @@ export function GuideBox({
                   cursor: "pointer",
                 }}
                 aria-label="Send"
-                title="Send"
+                title="Gửi"
               >
                 <Send size={16} />
               </button>
@@ -1527,9 +1929,8 @@ export function GuideBox({
                 color: "rgba(0,0,0,0.50)",
               }}
             >
-              Use the left, right, bottom, or top gray handle to drag. Use S /
-              M / L / XL to resize fast. Use Expand or click the input to get
-              more space for typing.
+              Kéo các thanh xám để di chuyển Guide. Dùng S / M / L / XL để đổi
+              kích thước nhanh. Bấm Mở rộng (Expand) để có nhiều chỗ gõ văn bản hơn.
             </div>
           </div>
 
