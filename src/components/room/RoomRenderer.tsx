@@ -1,3 +1,8 @@
+/**
+ * File: RoomRenderer.tsx
+ * Path: src/components/room/RoomRenderer.tsx
+ */
+
 // PATH: src/components/room/RoomRenderer.tsx
 
 /**
@@ -35,6 +40,10 @@
 // PATCH (2026-04-01):
 // - ZOOM FIX: consume --mb-essay-zoom inside ROOM_CSS_TIDY so the room text
 //   actually responds to the BottomMusicBar zoom slider.
+//
+// PATCH (2026-04-09):
+// - HOTFIX: use standalone canAccessTier() helper instead of calling
+//   access.canAccessTier(...) as a method, which caused runtime crash in production.
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
@@ -44,6 +53,7 @@ import { useUserAccess } from "@/hooks/useUserAccess";
 import type { TierId } from "@/lib/constants/tiers";
 import { normalizeTier } from "@/lib/constants/tiers";
 import { tierFromRoomId } from "@/lib/tierFromRoomId";
+import { canAccessTier } from "@/security/typeGuards";
 
 import {
   ActiveEntry,
@@ -683,6 +693,17 @@ export default function RoomRenderer({
     return inferredTierId;
   }, [metaTierId, inferredTierId]);
 
+  const userTierId = useMemo<TierIdRuntime>(() => {
+    const raw =
+      (access as any)?.tier ??
+      (access as any)?.userTier ??
+      (access as any)?.profile?.tier ??
+      (access as any)?.profileTier ??
+      "free";
+
+    return normalizeTierIdRuntime(raw);
+  }, [access]);
+
   const isLocked = useMemo(() => {
     const requiredRank =
       requiredTierId === "vip9"
@@ -697,8 +718,9 @@ export default function RoomRenderer({
 
     if (requiredRank <= 0) return false;
     if (accessLoading) return true;
-    return !(access as any).canAccessTier(requiredTierId as any);
-  }, [requiredTierId, accessLoading, access]);
+
+    return !canAccessTier(userTierId, requiredTierId);
+  }, [requiredTierId, accessLoading, userTierId]);
 
   const [dbRows, setDbRows] = useState<any[] | null>(null);
   const [dbLoading, setDbLoading] = useState(false);
@@ -1329,7 +1351,8 @@ export default function RoomRenderer({
                   {dbLoading ? "(loading)" : ""} {dbError ? `dbError="${dbError}"` : ""} | dbLeafEntries(real)=
                   {dbLeafEntries.length} | jsonLeafEntries={jsonLeafEntries.length} | chosen={chosenEntries.source} |
                   allEntries={allEntries.length} | kwButtons={Math.max(kw.en.length, kw.vi.length)} | activeKeyword=
-                  {activeKeyword ? ` "${activeKeyword}"` : "null"}
+                  {activeKeyword ? ` "${activeKeyword}"` : "null"} | userTier={String(userTierId).toUpperCase()} |
+                  requiredTier={String(requiredTierId).toUpperCase()} | locked={String(isLocked)}
                 </div>
               ) : null}
 
