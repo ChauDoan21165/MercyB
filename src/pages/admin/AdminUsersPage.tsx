@@ -1,21 +1,15 @@
 // PATH: src/pages/admin/AdminUsersPage.tsx
 //
-// Admin users + subscription analytics dashboard
-// - Production-focused subscription overview
-// - Counts + charts + filters
-// - Includes free-user estimate from profiles
-// - Includes simple SaaS KPIs:
-//   * active / trialing / free
-//   * monthly / yearly
-//   * cancel at period end
-//   * estimated MRR / ARR
-//   * simple conversion and churn-risk view
-// - Export CSV
+// Admin users dashboard
+// - Uses DB view: public.admin_users_dashboard_v1
+// - Uses KPI RPC: public.admin_users_dashboard_kpis_v1
+// - No longer stitches profiles + subscriptions in React
+// - Keeps filters + charts + CSV export + detail drawer
 //
-// Notes:
-// - Assumes public.profiles contains: user_id, email, is_admin, admin_level
-// - Assumes public.subscriptions contains the billing fields already verified in SQL
-// - Safe for browser use under existing AdminRoute, but your DB policies must still restrict reads to admins
+// IMPORTANT:
+// Before using this file, create these DB objects:
+// - view: public.admin_users_dashboard_v1
+// - function: public.admin_users_dashboard_kpis_v1()
 
 import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
@@ -32,57 +26,47 @@ import {
   Line,
 } from "recharts";
 
-type ProfileRow = {
-  user_id: string;
-  email: string | null;
-  is_admin: boolean | null;
-  admin_level: number | null;
-};
-
-type SubscriptionRow = {
-  id: string;
-  user_id: string;
-  status: string | null;
-  environment: string | null;
-  billing_interval: string | null;
-  billing_interval_count: number | null;
-  currency_code: string | null;
-  quantity: number | null;
-  created_at: string | null;
-  current_period_end: string | null;
-  current_period_end_at: string | null;
-  cancel_at_period_end: boolean | null;
-  raw_payload: unknown;
-};
-
 type DashboardRow = {
-  subscriptionId: string;
-  userId: string;
+  subscription_id: string;
+  user_id: string;
+  profile_id: string | null;
   email: string;
+  is_admin: boolean;
+  admin_level: number;
   status: string;
   environment: string;
-  planInterval: string;
-  currencyCode: string;
-  amountCents: number;
+  plan_interval: string;
+  currency_code: string;
+  amount_cents: number;
   quantity: number;
-  createdAt: string | null;
-  currentPeriodEnd: string | null;
-  cancelAtPeriodEnd: boolean;
-  isAdmin: boolean;
-  adminLevel: number;
+  created_at: string | null;
+  current_period_end: string | null;
+  cancel_at_period_end: boolean;
+  provider_customer_id: string | null;
+  provider_subscription_id: string | null;
+  missing_profile: boolean;
+  unknown_email: boolean;
+  unknown_plan: boolean;
+  unknown_amount: boolean;
+  anomaly_flags: string[] | null;
 };
 
-type FreeUserRow = {
-  userId: string;
-  email: string;
-  isAdmin: boolean;
-  adminLevel: number;
+type KpiRow = {
+  production_active_count: number;
+  production_trialing_count: number;
+  monthly_count: number;
+  yearly_count: number;
+  canceling_soon_count: number;
+  sandbox_count: number;
+  missing_profile_count: number;
+  unknown_email_count: number;
+  estimated_mrr: number;
+  estimated_arr: number;
 };
 
-type KpiCardProps = {
-  label: string;
-  value: string | number;
-  help?: string;
+type ChartPoint = {
+  name: string;
+  value: number;
 };
 
 const PAGE_MAX = 1240;
@@ -96,11 +80,6 @@ function safeText(value: unknown, fallback = ""): string {
 function safeNumber(value: unknown, fallback = 0): number {
   const n = Number(value);
   return Number.isFinite(n) ? n : fallback;
-}
-
-function norm(value: unknown, fallback = "unknown"): string {
-  const v = safeText(value).toLowerCase();
-  return v || fallback;
 }
 
 function fmtDate(value: string | null): string {
@@ -145,113 +124,6 @@ function monthKey(value: string | null): string {
   });
 }
 
-function readPlanInterval(
-  billingInterval: string | null,
-  rawPayload: unknown,
-): string {
-  const direct = norm(billingInterval, "");
-  if (direct) return direct;
-
-  const payload =
-    rawPayload && typeof rawPayload === "object"
-      ? (rawPayload as Record<string, unknown>)
-      : null;
-
-  const plan =
-    payload?.plan && typeof payload.plan === "object"
-      ? (payload.plan as Record<string, unknown>)
-      : null;
-
-  const planInterval = norm(plan?.interval, "");
-  if (planInterval) return planInterval;
-
-  const items =
-    payload?.items && typeof payload.items === "object"
-      ? (payload.items as Record<string, unknown>)
-      : null;
-
-  const data = Array.isArray(items?.data) ? items?.data : [];
-  const first = data[0];
-  const firstObj =
-    first && typeof first === "object" ? (first as Record<string, unknown>) : null;
-
-  const price =
-    firstObj?.price && typeof firstObj.price === "object"
-      ? (firstObj.price as Record<string, unknown>)
-      : null;
-
-  const recurring =
-    price?.recurring && typeof price.recurring === "object"
-      ? (price.recurring as Record<string, unknown>)
-      : null;
-
-  const recurringInterval = norm(recurring?.interval, "");
-  if (recurringInterval) return recurringInterval;
-
-  return "unknown";
-}
-
-function readCurrency(
-  currencyCode: string | null,
-  rawPayload: unknown,
-): string {
-  const direct = norm(currencyCode, "");
-  if (direct) return direct.toUpperCase();
-
-  const payload =
-    rawPayload && typeof rawPayload === "object"
-      ? (rawPayload as Record<string, unknown>)
-      : null;
-
-  const payloadCurrency = safeText(payload?.currency, "").toUpperCase();
-  if (payloadCurrency) return payloadCurrency;
-
-  const plan =
-    payload?.plan && typeof payload.plan === "object"
-      ? (payload.plan as Record<string, unknown>)
-      : null;
-
-  const planCurrency = safeText(plan?.currency, "").toUpperCase();
-  if (planCurrency) return planCurrency;
-
-  return "USD";
-}
-
-function readAmountCents(rawPayload: unknown): number {
-  const payload =
-    rawPayload && typeof rawPayload === "object"
-      ? (rawPayload as Record<string, unknown>)
-      : null;
-
-  const plan =
-    payload?.plan && typeof payload.plan === "object"
-      ? (payload.plan as Record<string, unknown>)
-      : null;
-
-  const directPlanAmount = safeNumber(plan?.amount, 0);
-  if (directPlanAmount > 0) return directPlanAmount;
-
-  const items =
-    payload?.items && typeof payload.items === "object"
-      ? (payload.items as Record<string, unknown>)
-      : null;
-
-  const data = Array.isArray(items?.data) ? items?.data : [];
-  const first = data[0];
-  const firstObj =
-    first && typeof first === "object" ? (first as Record<string, unknown>) : null;
-
-  const price =
-    firstObj?.price && typeof firstObj.price === "object"
-      ? (price = firstObj.price as Record<string, unknown>)
-      : null;
-
-  const unitAmount = safeNumber(price?.unit_amount, 0);
-  if (unitAmount > 0) return unitAmount;
-
-  return 0;
-}
-
 function sumBy<T extends { value: number }>(items: T[]): number {
   return items.reduce((acc, item) => acc + item.value, 0);
 }
@@ -264,7 +136,15 @@ function csvEscape(value: unknown): string {
   return text;
 }
 
-function KpiCard({ label, value, help }: KpiCardProps) {
+function KpiCard({
+  label,
+  value,
+  help,
+}: {
+  label: string;
+  value: string | number;
+  help?: string;
+}) {
   const card: React.CSSProperties = {
     borderRadius: 18,
     border: "1px solid rgba(0,0,0,0.08)",
@@ -306,12 +186,287 @@ function KpiCard({ label, value, help }: KpiCardProps) {
   );
 }
 
+function AdminUserDetailDrawer({
+  row,
+  open,
+  onClose,
+}: {
+  row: DashboardRow | null;
+  open: boolean;
+  onClose: () => void;
+}) {
+  if (!open || !row) return null;
+
+  const overlay: React.CSSProperties = {
+    position: "fixed",
+    inset: 0,
+    background: "rgba(0,0,0,0.28)",
+    zIndex: 90,
+    display: "flex",
+    justifyContent: "flex-end",
+  };
+
+  const drawer: React.CSSProperties = {
+    width: "min(540px, 96vw)",
+    height: "100%",
+    background: "rgba(255,255,255,0.98)",
+    borderLeft: "1px solid rgba(0,0,0,0.10)",
+    boxShadow: "-12px 0 40px rgba(0,0,0,0.12)",
+    overflowY: "auto",
+    padding: "20px 18px 28px",
+  };
+
+  const topRow: React.CSSProperties = {
+    display: "flex",
+    alignItems: "flex-start",
+    justifyContent: "space-between",
+    gap: 12,
+  };
+
+  const title: React.CSSProperties = {
+    margin: 0,
+    fontSize: 28,
+    lineHeight: 1.05,
+    fontWeight: 950,
+    color: "rgba(0,0,0,0.90)",
+    letterSpacing: -0.8,
+  };
+
+  const sub: React.CSSProperties = {
+    marginTop: 8,
+    fontSize: 14,
+    lineHeight: 1.6,
+    color: "rgba(0,0,0,0.60)",
+  };
+
+  const closeBtn: React.CSSProperties = {
+    borderRadius: 9999,
+    border: "1px solid rgba(0,0,0,0.12)",
+    background: "rgba(255,255,255,0.96)",
+    padding: "10px 12px",
+    fontWeight: 900,
+    cursor: "pointer",
+  };
+
+  const section: React.CSSProperties = {
+    marginTop: 18,
+    borderRadius: 18,
+    border: "1px solid rgba(0,0,0,0.08)",
+    background: "rgba(250,251,252,0.96)",
+    padding: "14px 14px",
+  };
+
+  const sectionTitle: React.CSSProperties = {
+    margin: 0,
+    fontSize: 16,
+    fontWeight: 900,
+    color: "rgba(0,0,0,0.82)",
+  };
+
+  const grid: React.CSSProperties = {
+    marginTop: 12,
+    display: "grid",
+    gridTemplateColumns: "minmax(110px, 140px) 1fr",
+    gap: "10px 12px",
+  };
+
+  const keyStyle: React.CSSProperties = {
+    fontSize: 12,
+    fontWeight: 900,
+    letterSpacing: 0.5,
+    textTransform: "uppercase",
+    color: "rgba(0,0,0,0.46)",
+  };
+
+  const valueStyle: React.CSSProperties = {
+    fontSize: 14,
+    lineHeight: 1.55,
+    color: "rgba(0,0,0,0.84)",
+    overflowWrap: "anywhere",
+  };
+
+  const actionRow: React.CSSProperties = {
+    marginTop: 12,
+    display: "flex",
+    flexWrap: "wrap",
+    gap: 10,
+  };
+
+  const actionBtn: React.CSSProperties = {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: 8,
+    padding: "10px 12px",
+    borderRadius: 12,
+    border: "1px solid rgba(0,0,0,0.12)",
+    background: "rgba(255,255,255,0.96)",
+    color: "rgba(0,0,0,0.78)",
+    fontWeight: 900,
+    cursor: "pointer",
+  };
+
+  const badge = (warn = false): React.CSSProperties => ({
+    display: "inline-flex",
+    alignItems: "center",
+    borderRadius: 9999,
+    padding: "6px 10px",
+    fontSize: 12,
+    fontWeight: 900,
+    whiteSpace: "nowrap",
+    border: warn
+      ? "1px solid rgba(239,68,68,0.20)"
+      : "1px solid rgba(0,0,0,0.10)",
+    background: warn
+      ? "rgba(254,242,242,0.96)"
+      : "rgba(248,250,252,0.96)",
+    color: warn ? "rgba(153,27,27,0.92)" : "rgba(51,65,85,0.90)",
+  });
+
+  const anomalyFlags = Array.isArray(row.anomaly_flags) ? row.anomaly_flags : [];
+
+  return (
+    <div style={overlay} onClick={onClose}>
+      <div style={drawer} onClick={(e) => e.stopPropagation()}>
+        <div style={topRow}>
+          <div>
+            <h2 style={title}>{row.email || "unknown"}</h2>
+            <div style={sub}>Subscription detail and anomaly inspection.</div>
+          </div>
+
+          <button type="button" style={closeBtn} onClick={onClose}>
+            ✕
+          </button>
+        </div>
+
+        <div style={section}>
+          <h3 style={sectionTitle}>Identity</h3>
+          <div style={grid}>
+            <div style={keyStyle}>Email</div>
+            <div style={valueStyle}>{row.email || "unknown"}</div>
+
+            <div style={keyStyle}>User ID</div>
+            <div style={valueStyle}>
+              <code>{row.user_id}</code>
+            </div>
+
+            <div style={keyStyle}>Profile ID</div>
+            <div style={valueStyle}>
+              <code>{row.profile_id || "—"}</code>
+            </div>
+
+            <div style={keyStyle}>Admin</div>
+            <div style={valueStyle}>{row.is_admin ? `Yes · level ${row.admin_level}` : "No"}</div>
+
+            <div style={keyStyle}>Environment</div>
+            <div style={valueStyle}>{row.environment}</div>
+          </div>
+        </div>
+
+        <div style={section}>
+          <h3 style={sectionTitle}>Billing</h3>
+          <div style={grid}>
+            <div style={keyStyle}>Status</div>
+            <div style={valueStyle}>{row.status}</div>
+
+            <div style={keyStyle}>Plan</div>
+            <div style={valueStyle}>{row.plan_interval}</div>
+
+            <div style={keyStyle}>Amount</div>
+            <div style={valueStyle}>
+              {row.amount_cents > 0
+                ? formatMoney((row.amount_cents * row.quantity) / 100, row.currency_code)
+                : "—"}
+            </div>
+
+            <div style={keyStyle}>Subscription ID</div>
+            <div style={valueStyle}>
+              <code>{row.subscription_id}</code>
+            </div>
+
+            <div style={keyStyle}>Provider customer</div>
+            <div style={valueStyle}>
+              <code>{row.provider_customer_id || "—"}</code>
+            </div>
+
+            <div style={keyStyle}>Provider subscription</div>
+            <div style={valueStyle}>
+              <code>{row.provider_subscription_id || "—"}</code>
+            </div>
+
+            <div style={keyStyle}>Created</div>
+            <div style={valueStyle}>{fmtDate(row.created_at)}</div>
+
+            <div style={keyStyle}>Period end</div>
+            <div style={valueStyle}>{fmtDate(row.current_period_end)}</div>
+
+            <div style={keyStyle}>Cancel at end</div>
+            <div style={valueStyle}>{row.cancel_at_period_end ? "Yes" : "No"}</div>
+          </div>
+        </div>
+
+        <div style={section}>
+          <h3 style={sectionTitle}>Anomalies</h3>
+          <div style={{ marginTop: 12, display: "flex", flexWrap: "wrap", gap: 8 }}>
+            {anomalyFlags.length === 0 ? (
+              <span style={badge(false)}>No anomaly flags</span>
+            ) : (
+              anomalyFlags.map((flag) => (
+                <span key={flag} style={badge(true)}>
+                  {flag}
+                </span>
+              ))
+            )}
+          </div>
+        </div>
+
+        <div style={section}>
+          <h3 style={sectionTitle}>Quick actions</h3>
+          <div style={actionRow}>
+            <button
+              type="button"
+              style={actionBtn}
+              onClick={() => {
+                if (row.email && row.email !== "unknown") {
+                  void navigator.clipboard.writeText(row.email);
+                }
+              }}
+            >
+              Copy email
+            </button>
+
+            <button
+              type="button"
+              style={actionBtn}
+              onClick={() => {
+                void navigator.clipboard.writeText(row.user_id);
+              }}
+            >
+              Copy user ID
+            </button>
+
+            <button
+              type="button"
+              style={actionBtn}
+              onClick={() => {
+                void navigator.clipboard.writeText(row.subscription_id);
+              }}
+            >
+              Copy subscription ID
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function AdminUsersPage() {
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState<string | null>(null);
 
   const [rows, setRows] = useState<DashboardRow[]>([]);
-  const [freeUsers, setFreeUsers] = useState<FreeUserRow[]>([]);
+  const [selectedRow, setSelectedRow] = useState<DashboardRow | null>(null);
+  const [refreshedAt, setRefreshedAt] = useState<string | null>(null);
 
   const [search, setSearch] = useState("");
   const [environmentFilter, setEnvironmentFilter] = useState("production");
@@ -320,127 +475,105 @@ export default function AdminUsersPage() {
   const [adminFilter, setAdminFilter] = useState("all");
   const [sortBy, setSortBy] = useState("created_desc");
 
+  const [kpis, setKpis] = useState<KpiRow>({
+    production_active_count: 0,
+    production_trialing_count: 0,
+    monthly_count: 0,
+    yearly_count: 0,
+    canceling_soon_count: 0,
+    sandbox_count: 0,
+    missing_profile_count: 0,
+    unknown_email_count: 0,
+    estimated_mrr: 0,
+    estimated_arr: 0,
+  });
+
+  const load = async () => {
+    setLoading(true);
+    setErr(null);
+
+    try {
+      const [{ data: rowsData, error: rowsError }, { data: kpiData, error: kpiError }] =
+        await Promise.all([
+          supabase
+            .from("admin_users_dashboard_v1")
+            .select("*")
+            .order("created_at", { ascending: false }),
+          supabase.rpc("admin_users_dashboard_kpis_v1"),
+        ]);
+
+      if (rowsError) throw rowsError;
+      if (kpiError) throw kpiError;
+
+      const nextRows = (Array.isArray(rowsData) ? rowsData : []) as DashboardRow[];
+      const nextKpis = Array.isArray(kpiData)
+        ? ((kpiData[0] as KpiRow | undefined) ?? {
+            production_active_count: 0,
+            production_trialing_count: 0,
+            monthly_count: 0,
+            yearly_count: 0,
+            canceling_soon_count: 0,
+            sandbox_count: 0,
+            missing_profile_count: 0,
+            unknown_email_count: 0,
+            estimated_mrr: 0,
+            estimated_arr: 0,
+          })
+        : ((kpiData as KpiRow | null) ?? {
+            production_active_count: 0,
+            production_trialing_count: 0,
+            monthly_count: 0,
+            yearly_count: 0,
+            canceling_soon_count: 0,
+            sandbox_count: 0,
+            missing_profile_count: 0,
+            unknown_email_count: 0,
+            estimated_mrr: 0,
+            estimated_arr: 0,
+          });
+
+      setRows(nextRows);
+      setKpis(nextKpis);
+      setRefreshedAt(new Date().toISOString());
+    } catch (e: unknown) {
+      setErr(e instanceof Error ? e.message : String(e));
+      setRows([]);
+      setKpis({
+        production_active_count: 0,
+        production_trialing_count: 0,
+        monthly_count: 0,
+        yearly_count: 0,
+        canceling_soon_count: 0,
+        sandbox_count: 0,
+        missing_profile_count: 0,
+        unknown_email_count: 0,
+        estimated_mrr: 0,
+        estimated_arr: 0,
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    let alive = true;
-
-    void (async () => {
-      try {
-        setLoading(true);
-        setErr(null);
-
-        const [{ data: profileData, error: profileError }, { data: subData, error: subError }] =
-          await Promise.all([
-            supabase
-              .from("profiles")
-              .select("user_id, email, is_admin, admin_level")
-              .order("email", { ascending: true }),
-            supabase
-              .from("subscriptions")
-              .select(
-                "id, user_id, status, environment, billing_interval, billing_interval_count, currency_code, quantity, created_at, current_period_end, current_period_end_at, cancel_at_period_end, raw_payload",
-              )
-              .order("created_at", { ascending: false }),
-          ]);
-
-        if (!alive) return;
-
-        if (profileError) throw profileError;
-        if (subError) throw subError;
-
-        const profiles = Array.isArray(profileData)
-          ? (profileData as ProfileRow[])
-          : [];
-        const subscriptions = Array.isArray(subData)
-          ? (subData as SubscriptionRow[])
-          : [];
-
-        const profileMap = new Map<string, ProfileRow>();
-        for (const profile of profiles) {
-          if (profile?.user_id) {
-            profileMap.set(profile.user_id, profile);
-          }
-        }
-
-        const merged: DashboardRow[] = subscriptions.map((sub) => {
-          const profile = profileMap.get(sub.user_id);
-
-          const email = safeText(profile?.email, "unknown");
-          const status = norm(sub.status, "unknown");
-          const environment = norm(sub.environment, "unknown");
-          const planInterval = readPlanInterval(sub.billing_interval, sub.raw_payload);
-          const amountCents = readAmountCents(sub.raw_payload);
-          const currencyCode = readCurrency(sub.currency_code, sub.raw_payload);
-
-          return {
-            subscriptionId: sub.id,
-            userId: sub.user_id,
-            email,
-            status,
-            environment,
-            planInterval,
-            currencyCode,
-            amountCents,
-            quantity: Math.max(1, safeNumber(sub.quantity, 1)),
-            createdAt: sub.created_at,
-            currentPeriodEnd: sub.current_period_end_at ?? sub.current_period_end,
-            cancelAtPeriodEnd: Boolean(sub.cancel_at_period_end),
-            isAdmin:
-              Boolean(profile?.is_admin) ||
-              Number(profile?.admin_level ?? 0) >= 1,
-            adminLevel: Number(profile?.admin_level ?? 0) || 0,
-          };
-        });
-
-        const activeProductionUserIds = new Set(
-          merged
-            .filter((row) => row.environment === "production" && row.status === "active")
-            .map((row) => row.userId),
-        );
-
-        const freeRows: FreeUserRow[] = profiles
-          .filter((profile) => profile.user_id && !activeProductionUserIds.has(profile.user_id))
-          .map((profile) => ({
-            userId: profile.user_id,
-            email: safeText(profile.email, "unknown"),
-            isAdmin:
-              Boolean(profile.is_admin) ||
-              Number(profile.admin_level ?? 0) >= 1,
-            adminLevel: Number(profile.admin_level ?? 0) || 0,
-          }));
-
-        setRows(merged);
-        setFreeUsers(freeRows);
-      } catch (e: unknown) {
-        if (!alive) return;
-        setErr(e instanceof Error ? e.message : String(e));
-        setRows([]);
-        setFreeUsers([]);
-      } finally {
-        if (!alive) return;
-        setLoading(false);
-      }
-    })();
-
-    return () => {
-      alive = false;
-    };
+    void load();
   }, []);
 
   const environmentOptions = useMemo(() => {
     const set = new Set<string>(["all"]);
-    rows.forEach((r) => set.add(r.environment));
+    rows.forEach((r) => set.add(safeText(r.environment, "unknown")));
     return Array.from(set);
   }, [rows]);
 
   const statusOptions = useMemo(() => {
     const set = new Set<string>(["all"]);
-    rows.forEach((r) => set.add(r.status));
+    rows.forEach((r) => set.add(safeText(r.status, "unknown")));
     return Array.from(set);
   }, [rows]);
 
   const planOptions = useMemo(() => {
     const set = new Set<string>(["all"]);
-    rows.forEach((r) => set.add(r.planInterval));
+    rows.forEach((r) => set.add(safeText(r.plan_interval, "unknown")));
     return Array.from(set);
   }, [rows]);
 
@@ -450,19 +583,22 @@ export default function AdminUsersPage() {
     const base = rows.filter((row) => {
       if (environmentFilter !== "all" && row.environment !== environmentFilter) return false;
       if (statusFilter !== "all" && row.status !== statusFilter) return false;
-      if (planFilter !== "all" && row.planInterval !== planFilter) return false;
+      if (planFilter !== "all" && row.plan_interval !== planFilter) return false;
 
-      if (adminFilter === "admin" && !row.isAdmin) return false;
-      if (adminFilter === "non_admin" && row.isAdmin) return false;
+      if (adminFilter === "admin" && !row.is_admin) return false;
+      if (adminFilter === "non_admin" && row.is_admin) return false;
 
       if (!q) return true;
 
+      const anomalyText = Array.isArray(row.anomaly_flags) ? row.anomaly_flags.join(" ") : "";
+
       return (
-        row.email.toLowerCase().includes(q) ||
-        row.status.toLowerCase().includes(q) ||
-        row.planInterval.toLowerCase().includes(q) ||
-        row.environment.toLowerCase().includes(q) ||
-        row.userId.toLowerCase().includes(q)
+        safeText(row.email, "unknown").toLowerCase().includes(q) ||
+        safeText(row.status).toLowerCase().includes(q) ||
+        safeText(row.plan_interval).toLowerCase().includes(q) ||
+        safeText(row.environment).toLowerCase().includes(q) ||
+        safeText(row.user_id).toLowerCase().includes(q) ||
+        anomalyText.toLowerCase().includes(q)
       );
     });
 
@@ -471,150 +607,78 @@ export default function AdminUsersPage() {
     sorted.sort((a, b) => {
       switch (sortBy) {
         case "email_asc":
-          return a.email.localeCompare(b.email);
+          return safeText(a.email).localeCompare(safeText(b.email));
         case "email_desc":
-          return b.email.localeCompare(a.email);
+          return safeText(b.email).localeCompare(safeText(a.email));
         case "plan_asc":
-          return a.planInterval.localeCompare(b.planInterval);
+          return safeText(a.plan_interval).localeCompare(safeText(b.plan_interval));
         case "status_asc":
-          return a.status.localeCompare(b.status);
+          return safeText(a.status).localeCompare(safeText(b.status));
         case "period_desc":
-          return new Date(b.currentPeriodEnd ?? 0).getTime() - new Date(a.currentPeriodEnd ?? 0).getTime();
+          return new Date(b.current_period_end ?? 0).getTime() - new Date(a.current_period_end ?? 0).getTime();
         case "amount_desc":
-          return b.amountCents - a.amountCents;
+          return safeNumber(b.amount_cents) - safeNumber(a.amount_cents);
         case "created_asc":
-          return new Date(a.createdAt ?? 0).getTime() - new Date(b.createdAt ?? 0).getTime();
+          return new Date(a.created_at ?? 0).getTime() - new Date(b.created_at ?? 0).getTime();
         case "created_desc":
         default:
-          return new Date(b.createdAt ?? 0).getTime() - new Date(a.createdAt ?? 0).getTime();
+          return new Date(b.created_at ?? 0).getTime() - new Date(a.created_at ?? 0).getTime();
       }
     });
 
     return sorted;
   }, [rows, search, environmentFilter, statusFilter, planFilter, adminFilter, sortBy]);
 
-  const productionRows = useMemo(
-    () => rows.filter((r) => r.environment === "production"),
-    [rows],
+  const filteredTotals = useMemo(
+    () => ({
+      rows: filteredRows.length,
+      active: filteredRows.filter((r) => r.status === "active").length,
+      trialing: filteredRows.filter((r) => r.status === "trialing").length,
+      admins: filteredRows.filter((r) => r.is_admin).length,
+    }),
+    [filteredRows],
   );
 
-  const productionActiveRows = useMemo(
-    () => productionRows.filter((r) => r.status === "active"),
-    [productionRows],
-  );
-
-  const productionTrialRows = useMemo(
-    () => productionRows.filter((r) => r.status === "trialing"),
-    [productionRows],
-  );
-
-  const monthlyActiveRows = useMemo(
-    () => productionActiveRows.filter((r) => r.planInterval === "month"),
-    [productionActiveRows],
-  );
-
-  const yearlyActiveRows = useMemo(
-    () => productionActiveRows.filter((r) => r.planInterval === "year"),
-    [productionActiveRows],
-  );
-
-  const cancelingSoonRows = useMemo(
-    () => productionActiveRows.filter((r) => r.cancelAtPeriodEnd),
-    [productionActiveRows],
-  );
-
-  const productionActiveCount = productionActiveRows.length;
-  const productionTrialCount = productionTrialRows.length;
-  const monthlyCount = monthlyActiveRows.length;
-  const yearlyCount = yearlyActiveRows.length;
-  const sandboxCount = rows.filter((r) => r.environment === "sandbox").length;
-  const cancelingSoonCount = cancelingSoonRows.length;
-  const freeUsersCount = freeUsers.filter((u) => !u.isAdmin).length;
-
-  const estimatedMrr = useMemo(() => {
-    let total = 0;
-
-    for (const row of monthlyActiveRows) {
-      total += (row.amountCents * row.quantity) / 100;
-    }
-
-    for (const row of yearlyActiveRows) {
-      total += ((row.amountCents * row.quantity) / 100) / 12;
-    }
-
-    return total;
-  }, [monthlyActiveRows, yearlyActiveRows]);
-
-  const estimatedArr = estimatedMrr * 12;
-
-  const simpleConversionPct = useMemo(() => {
-    const denom = productionActiveCount + productionTrialCount;
-    if (denom <= 0) return 0;
-    return (productionActiveCount / denom) * 100;
-  }, [productionActiveCount, productionTrialCount]);
-
-  const churnRiskPct = useMemo(() => {
-    if (productionActiveCount <= 0) return 0;
-    return (cancelingSoonCount / productionActiveCount) * 100;
-  }, [cancelingSoonCount, productionActiveCount]);
-
-  const statusChartData = useMemo(() => {
+  const statusChartData: ChartPoint[] = useMemo(() => {
     const map = new Map<string, number>();
     filteredRows.forEach((row) => {
       map.set(row.status, (map.get(row.status) ?? 0) + 1);
     });
 
     return Array.from(map.entries())
-      .map(([name, value]) => ({
-        name: titleCase(name),
-        value,
-      }))
+      .map(([name, value]) => ({ name: titleCase(name), value }))
       .sort((a, b) => b.value - a.value);
   }, [filteredRows]);
 
-  const planChartData = useMemo(() => {
+  const planChartData: ChartPoint[] = useMemo(() => {
     const map = new Map<string, number>();
     filteredRows.forEach((row) => {
-      map.set(row.planInterval, (map.get(row.planInterval) ?? 0) + 1);
+      map.set(row.plan_interval, (map.get(row.plan_interval) ?? 0) + 1);
     });
 
     return Array.from(map.entries())
-      .map(([name, value]) => ({
-        name: titleCase(name),
-        value,
-      }))
+      .map(([name, value]) => ({ name: titleCase(name), value }))
       .sort((a, b) => b.value - a.value);
   }, [filteredRows]);
 
-  const growthChartData = useMemo(() => {
+  const growthChartData: ChartPoint[] = useMemo(() => {
     const map = new Map<string, number>();
 
-    productionActiveRows.forEach((row) => {
-      const key = monthKey(row.createdAt);
-      map.set(key, (map.get(key) ?? 0) + 1);
-    });
+    rows
+      .filter((row) => row.environment === "production" && row.status === "active")
+      .forEach((row) => {
+        const key = monthKey(row.created_at);
+        map.set(key, (map.get(key) ?? 0) + 1);
+      });
 
     return Array.from(map.entries())
-      .map(([name, value]) => ({
-        name,
-        value,
-      }))
+      .map(([name, value]) => ({ name, value }))
       .sort((a, b) => {
         const da = new Date(`${a.name} 01`).getTime();
         const db = new Date(`${b.name} 01`).getTime();
         return da - db;
       });
-  }, [productionActiveRows]);
-
-  const filteredTotals = useMemo(
-    () => ({
-      rows: filteredRows.length,
-      active: filteredRows.filter((r) => r.status === "active").length,
-      trialing: filteredRows.filter((r) => r.status === "trialing").length,
-      admins: filteredRows.filter((r) => r.isAdmin).length,
-    }),
-    [filteredRows],
-  );
+  }, [rows]);
 
   const exportCsv = () => {
     const header = [
@@ -630,24 +694,40 @@ export default function AdminUsersPage() {
       "is_admin",
       "admin_level",
       "user_id",
+      "profile_id",
       "subscription_id",
+      "provider_customer_id",
+      "provider_subscription_id",
+      "missing_profile",
+      "unknown_email",
+      "unknown_plan",
+      "unknown_amount",
+      "anomaly_flags",
     ];
 
     const lines = filteredRows.map((row) =>
       [
         csvEscape(row.email),
         csvEscape(row.status),
-        csvEscape(row.planInterval),
+        csvEscape(row.plan_interval),
         csvEscape(row.environment),
-        csvEscape(row.amountCents),
-        csvEscape(row.currencyCode),
-        csvEscape(row.cancelAtPeriodEnd),
-        csvEscape(row.currentPeriodEnd ?? ""),
-        csvEscape(row.createdAt ?? ""),
-        csvEscape(row.isAdmin),
-        csvEscape(row.adminLevel),
-        csvEscape(row.userId),
-        csvEscape(row.subscriptionId),
+        csvEscape(row.amount_cents),
+        csvEscape(row.currency_code),
+        csvEscape(row.cancel_at_period_end),
+        csvEscape(row.current_period_end ?? ""),
+        csvEscape(row.created_at ?? ""),
+        csvEscape(row.is_admin),
+        csvEscape(row.admin_level),
+        csvEscape(row.user_id),
+        csvEscape(row.profile_id ?? ""),
+        csvEscape(row.subscription_id),
+        csvEscape(row.provider_customer_id ?? ""),
+        csvEscape(row.provider_subscription_id ?? ""),
+        csvEscape(row.missing_profile),
+        csvEscape(row.unknown_email),
+        csvEscape(row.unknown_plan),
+        csvEscape(row.unknown_amount),
+        csvEscape(Array.isArray(row.anomaly_flags) ? row.anomaly_flags.join("|") : ""),
       ].join(","),
     );
 
@@ -707,6 +787,13 @@ export default function AdminUsersPage() {
     lineHeight: 1.65,
     color: "rgba(0,0,0,0.64)",
     maxWidth: 860,
+  };
+
+  const meta: React.CSSProperties = {
+    marginTop: 8,
+    fontSize: 13,
+    color: "rgba(0,0,0,0.52)",
+    fontWeight: 700,
   };
 
   const topActions: React.CSSProperties = {
@@ -773,6 +860,31 @@ export default function AdminUsersPage() {
     outline: "none",
   };
 
+  const chipRow: React.CSSProperties = {
+    marginTop: 12,
+    display: "flex",
+    flexWrap: "wrap",
+    gap: 8,
+  };
+
+  const chip = (active: boolean): React.CSSProperties => ({
+    display: "inline-flex",
+    alignItems: "center",
+    gap: 8,
+    padding: "8px 12px",
+    borderRadius: 9999,
+    border: active
+      ? "1px solid rgba(16,185,129,0.28)"
+      : "1px solid rgba(0,0,0,0.10)",
+    background: active
+      ? "rgba(236,253,245,0.94)"
+      : "rgba(255,255,255,0.92)",
+    color: active ? "rgba(6,95,70,0.92)" : "rgba(0,0,0,0.72)",
+    fontWeight: 900,
+    fontSize: 13,
+    cursor: "pointer",
+  });
+
   const chartGrid: React.CSSProperties = {
     marginTop: 18,
     display: "grid",
@@ -837,9 +949,12 @@ export default function AdminUsersPage() {
     letterSpacing: 0.5,
     textTransform: "uppercase",
     color: "rgba(0,0,0,0.48)",
-    background: "rgba(247,249,252,0.95)",
+    background: "rgba(247,249,252,0.98)",
     borderBottom: "1px solid rgba(0,0,0,0.08)",
     whiteSpace: "nowrap",
+    position: "sticky",
+    top: 0,
+    zIndex: 1,
   };
 
   const td: React.CSSProperties = {
@@ -850,13 +965,32 @@ export default function AdminUsersPage() {
     verticalAlign: "top",
   };
 
-  const clickEmail: React.CSSProperties = {
+  const rowStyle = (row: DashboardRow): React.CSSProperties => {
+    if (row.missing_profile) return { background: "rgba(254,242,242,0.72)" };
+    if (row.cancel_at_period_end) return { background: "rgba(255,251,235,0.82)" };
+    if (row.environment === "sandbox") return { background: "rgba(248,250,252,0.72)" };
+    return { background: "white" };
+  };
+
+  const emailStyle: React.CSSProperties = {
     cursor: "copy",
     fontWeight: 800,
   };
 
+  const rowBtn: React.CSSProperties = {
+    width: "100%",
+    textAlign: "left",
+    background: "transparent",
+    border: 0,
+    padding: 0,
+    margin: 0,
+    cursor: "pointer",
+    color: "inherit",
+    font: "inherit",
+  };
+
   const badge = (
-    kind: "active" | "trialing" | "month" | "year" | "admin" | "plain",
+    kind: "active" | "trialing" | "month" | "year" | "admin" | "plain" | "warn",
   ): React.CSSProperties => {
     const base: React.CSSProperties = {
       display: "inline-flex",
@@ -905,6 +1039,13 @@ export default function AdminUsersPage() {
           color: "rgba(146,64,14,0.94)",
           border: "1px solid rgba(245,158,11,0.20)",
         };
+      case "warn":
+        return {
+          ...base,
+          background: "rgba(254,242,242,0.96)",
+          color: "rgba(153,27,27,0.92)",
+          border: "1px solid rgba(239,68,68,0.20)",
+        };
       default:
         return {
           ...base,
@@ -922,8 +1063,10 @@ export default function AdminUsersPage() {
           <h1 style={title}>Users & subscriptions dashboard</h1>
           <div style={sub}>
             Production-focused SaaS view of your members, billing state, estimated recurring
-            revenue, churn-risk signals, and a filterable audit list. This gives you a much
-            more useful owner dashboard than a plain table.
+            revenue, churn-risk signals, and a filterable audit list.
+          </div>
+          <div style={meta}>
+            Last refreshed: {refreshedAt ? new Date(refreshedAt).toLocaleString() : "—"}
           </div>
 
           <div style={topActions}>
@@ -933,6 +1076,9 @@ export default function AdminUsersPage() {
             <Link to="/admin/subscriptions" style={pillBtn}>
               Billing page
             </Link>
+            <button type="button" style={pillBtn} onClick={() => void load()}>
+              ↻ Refresh
+            </button>
             <button type="button" style={pillBtn} onClick={exportCsv}>
               ⭳ Export CSV
             </button>
@@ -940,60 +1086,28 @@ export default function AdminUsersPage() {
         </div>
 
         <div style={kpiGrid}>
-          <KpiCard
-            label="Production active"
-            value={productionActiveCount}
-            help="Real active paid production subscriptions."
-          />
-          <KpiCard
-            label="Production trialing"
-            value={productionTrialCount}
-            help="Trials not yet converted."
-          />
-          <KpiCard
-            label="Free users"
-            value={freeUsersCount}
-            help="Profiles without an active production subscription."
-          />
-          <KpiCard
-            label="Monthly"
-            value={monthlyCount}
-            help="Production active subscriptions billed monthly."
-          />
-          <KpiCard
-            label="Yearly"
-            value={yearlyCount}
-            help="Production active subscriptions billed yearly."
-          />
-          <KpiCard
-            label="Canceling soon"
-            value={cancelingSoonCount}
-            help="Active production users with cancel_at_period_end."
-          />
-          <KpiCard
-            label="Estimated MRR"
-            value={formatMoney(estimatedMrr)}
-            help="Yearly plans normalized to monthly."
-          />
-          <KpiCard
-            label="Estimated ARR"
-            value={formatMoney(estimatedArr)}
-            help="Simple annualized recurring revenue."
-          />
+          <KpiCard label="Production active" value={kpis.production_active_count} help="Real active paid production subscriptions." />
+          <KpiCard label="Production trialing" value={kpis.production_trialing_count} help="Trials not yet converted." />
+          <KpiCard label="Monthly" value={kpis.monthly_count} help="Production active subscriptions billed monthly." />
+          <KpiCard label="Yearly" value={kpis.yearly_count} help="Production active subscriptions billed yearly." />
+          <KpiCard label="Canceling soon" value={kpis.canceling_soon_count} help="Active production users with cancel_at_period_end." />
+          <KpiCard label="Sandbox rows" value={kpis.sandbox_count} help="Test billing rows still in subscriptions." />
+          <KpiCard label="Missing profile" value={kpis.missing_profile_count} help="Subscriptions with no matching profile row." />
+          <KpiCard label="Unknown email" value={kpis.unknown_email_count} help="Rows still missing identity email." />
+          <KpiCard label="Estimated MRR" value={formatMoney(safeNumber(kpis.estimated_mrr, 0))} help="Yearly plans normalized to monthly." />
+          <KpiCard label="Estimated ARR" value={formatMoney(safeNumber(kpis.estimated_arr, 0))} help="Simple annualized recurring revenue." />
           <KpiCard
             label="Conversion"
-            value={`${simpleConversionPct.toFixed(0)}%`}
+            value={`${
+              kpis.production_active_count + kpis.production_trialing_count > 0
+                ? Math.round(
+                    (kpis.production_active_count /
+                      (kpis.production_active_count + kpis.production_trialing_count)) *
+                      100,
+                  )
+                : 0
+            }%`}
             help="Active ÷ (active + trialing)."
-          />
-          <KpiCard
-            label="Churn risk"
-            value={`${churnRiskPct.toFixed(0)}%`}
-            help="Canceling soon ÷ active."
-          />
-          <KpiCard
-            label="Sandbox rows"
-            value={sandboxCount}
-            help="Test billing rows still in subscriptions."
           />
           <KpiCard
             label="Filtered rows"
@@ -1009,7 +1123,7 @@ export default function AdminUsersPage() {
               <input
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search by email, plan, status, user id…"
+                placeholder="Search by email, plan, status, user id, anomaly…"
                 style={inputStyle}
               />
             </div>
@@ -1023,7 +1137,7 @@ export default function AdminUsersPage() {
               >
                 {environmentOptions.map((option) => (
                   <option key={option} value={option}>
-                    {titleCase(option)}
+                    {option === "all" ? "All" : option}
                   </option>
                 ))}
               </select>
@@ -1038,7 +1152,7 @@ export default function AdminUsersPage() {
               >
                 {statusOptions.map((option) => (
                   <option key={option} value={option}>
-                    {titleCase(option)}
+                    {option === "all" ? "All" : option}
                   </option>
                 ))}
               </select>
@@ -1053,7 +1167,7 @@ export default function AdminUsersPage() {
               >
                 {planOptions.map((option) => (
                   <option key={option} value={option}>
-                    {titleCase(option)}
+                    {option === "all" ? "All" : option}
                   </option>
                 ))}
               </select>
@@ -1090,15 +1204,51 @@ export default function AdminUsersPage() {
               </select>
             </div>
           </div>
+
+          <div style={chipRow}>
+            <button type="button" style={chip(statusFilter === "active")} onClick={() => setStatusFilter("active")}>
+              Active
+            </button>
+            <button type="button" style={chip(statusFilter === "trialing")} onClick={() => setStatusFilter("trialing")}>
+              Trialing
+            </button>
+            <button type="button" style={chip(planFilter === "month")} onClick={() => setPlanFilter("month")}>
+              Monthly
+            </button>
+            <button type="button" style={chip(planFilter === "year")} onClick={() => setPlanFilter("year")}>
+              Yearly
+            </button>
+            <button
+              type="button"
+              style={chip(search === "canceling_soon" && environmentFilter === "production")}
+              onClick={() => {
+                setSearch("canceling_soon");
+                setEnvironmentFilter("production");
+              }}
+            >
+              Canceling soon
+            </button>
+            <button
+              type="button"
+              style={chip(false)}
+              onClick={() => {
+                setSearch("");
+                setEnvironmentFilter("production");
+                setStatusFilter("all");
+                setPlanFilter("all");
+                setAdminFilter("all");
+                setSortBy("created_desc");
+              }}
+            >
+              Reset
+            </button>
+          </div>
         </div>
 
         <div style={chartGrid}>
           <div style={chartCard}>
             <h2 style={chartTitle}>Status breakdown</h2>
-            <p style={chartHelp}>
-              Current filtered set by subscription status.
-            </p>
-
+            <p style={chartHelp}>Current filtered set by subscription status.</p>
             <div style={{ width: "100%", height: 250, marginTop: 10 }}>
               <ResponsiveContainer>
                 <BarChart data={statusChartData}>
@@ -1110,7 +1260,6 @@ export default function AdminUsersPage() {
                 </BarChart>
               </ResponsiveContainer>
             </div>
-
             <div style={{ marginTop: 8, fontSize: 13, color: "rgba(0,0,0,0.60)" }}>
               Total shown: {sumBy(statusChartData)}
             </div>
@@ -1118,10 +1267,7 @@ export default function AdminUsersPage() {
 
           <div style={chartCard}>
             <h2 style={chartTitle}>Plan interval breakdown</h2>
-            <p style={chartHelp}>
-              Monthly, yearly, and any unknown interval values in the filtered set.
-            </p>
-
+            <p style={chartHelp}>Monthly, yearly, and any unknown interval values in the filtered set.</p>
             <div style={{ width: "100%", height: 250, marginTop: 10 }}>
               <ResponsiveContainer>
                 <BarChart data={planChartData}>
@@ -1133,7 +1279,6 @@ export default function AdminUsersPage() {
                 </BarChart>
               </ResponsiveContainer>
             </div>
-
             <div style={{ marginTop: 8, fontSize: 13, color: "rgba(0,0,0,0.60)" }}>
               Total shown: {sumBy(planChartData)}
             </div>
@@ -1141,10 +1286,7 @@ export default function AdminUsersPage() {
 
           <div style={chartCard}>
             <h2 style={chartTitle}>New active subscriptions over time</h2>
-            <p style={chartHelp}>
-              Simple growth view based on production active subscription created dates.
-            </p>
-
+            <p style={chartHelp}>Simple growth view based on production active subscription created dates.</p>
             <div style={{ width: "100%", height: 250, marginTop: 10 }}>
               <ResponsiveContainer>
                 <LineChart data={growthChartData}>
@@ -1156,9 +1298,8 @@ export default function AdminUsersPage() {
                 </LineChart>
               </ResponsiveContainer>
             </div>
-
             <div style={{ marginTop: 8, fontSize: 13, color: "rgba(0,0,0,0.60)" }}>
-              Active production rows charted: {productionActiveCount}
+              Active production rows charted: {kpis.production_active_count}
             </div>
           </div>
         </div>
@@ -1166,8 +1307,7 @@ export default function AdminUsersPage() {
         <div style={tableCard}>
           <h2 style={chartTitle}>Members list</h2>
           <p style={chartHelp}>
-            Filterable row view for support, billing audits, and quick manual checks. Click an
-            email to copy it.
+            Filterable row view for support, billing audits, and quick manual checks. Click an email to copy it.
           </p>
 
           {loading ? (
@@ -1213,78 +1353,107 @@ export default function AdminUsersPage() {
                     </tr>
                   ) : (
                     filteredRows.map((row) => (
-                      <tr
-                        key={row.subscriptionId}
-                        style={{
-                          background:
-                            row.environment === "production"
-                              ? "white"
-                              : "rgba(248,250,252,0.72)",
-                        }}
-                      >
+                      <tr key={row.subscription_id} style={rowStyle(row)}>
                         <td style={td}>
-                          <div
-                            style={clickEmail}
-                            title="Click to copy email"
-                            onClick={() => {
-                              if (row.email && row.email !== "unknown") {
-                                void navigator.clipboard.writeText(row.email);
-                              }
-                            }}
-                          >
-                            {row.email || "unknown"}
-                          </div>
+                          <button type="button" style={rowBtn} onClick={() => setSelectedRow(row)}>
+                            <div
+                              style={emailStyle}
+                              title="Click to copy email"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                if (row.email && row.email !== "unknown") {
+                                  void navigator.clipboard.writeText(row.email);
+                                }
+                              }}
+                            >
+                              {row.email || "unknown"}
+                            </div>
+                          </button>
                         </td>
+
                         <td style={td}>
-                          <span
-                            style={badge(
-                              row.status === "trialing"
-                                ? "trialing"
-                                : row.status === "active"
-                                  ? "active"
-                                  : "plain",
-                            )}
-                          >
-                            {titleCase(row.status)}
-                          </span>
+                          <button type="button" style={rowBtn} onClick={() => setSelectedRow(row)}>
+                            <span
+                              style={badge(
+                                row.status === "trialing"
+                                  ? "trialing"
+                                  : row.status === "active"
+                                    ? "active"
+                                    : "plain",
+                              )}
+                            >
+                              {titleCase(row.status)}
+                            </span>
+                          </button>
                         </td>
+
                         <td style={td}>
-                          <span
-                            style={badge(
-                              row.planInterval === "year"
-                                ? "year"
-                                : row.planInterval === "month"
-                                  ? "month"
-                                  : "plain",
-                            )}
-                          >
-                            {titleCase(row.planInterval)}
-                          </span>
+                          <button type="button" style={rowBtn} onClick={() => setSelectedRow(row)}>
+                            <span
+                              style={badge(
+                                row.plan_interval === "year"
+                                  ? "year"
+                                  : row.plan_interval === "month"
+                                    ? "month"
+                                    : "plain",
+                              )}
+                            >
+                              {titleCase(row.plan_interval)}
+                            </span>
+                          </button>
                         </td>
+
                         <td style={td}>
-                          {row.amountCents > 0
-                            ? formatMoney((row.amountCents * row.quantity) / 100, row.currencyCode)
-                            : "—"}
+                          <button type="button" style={rowBtn} onClick={() => setSelectedRow(row)}>
+                            {safeNumber(row.amount_cents, 0) > 0
+                              ? formatMoney((safeNumber(row.amount_cents, 0) * safeNumber(row.quantity, 1)) / 100, row.currency_code)
+                              : "—"}
+                          </button>
                         </td>
-                        <td style={td}>{titleCase(row.environment)}</td>
-                        <td style={td}>{fmtDate(row.currentPeriodEnd)}</td>
-                        <td style={td}>{fmtDate(row.createdAt)}</td>
+
                         <td style={td}>
-                          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-                            {row.cancelAtPeriodEnd ? (
-                              <span style={badge("plain")}>Cancel at period end</span>
-                            ) : null}
-                            {row.isAdmin ? (
-                              <span style={badge("admin")}>
-                                Admin L{row.adminLevel}
-                              </span>
-                            ) : null}
-                          </div>
+                          <button type="button" style={rowBtn} onClick={() => setSelectedRow(row)}>
+                            {titleCase(row.environment)}
+                          </button>
                         </td>
+
                         <td style={td}>
-                          <code style={{ fontSize: 12, color: "rgba(0,0,0,0.62)" }}>
-                            {row.userId}
-                          </code>
+                          <button type="button" style={rowBtn} onClick={() => setSelectedRow(row)}>
+                            {fmtDate(row.current_period_end)}
+                          </button>
+                        </td>
+
+                        <td style={td}>
+                          <button type="button" style={rowBtn} onClick={() => setSelectedRow(row)}>
+                            {fmtDate(row.created_at)}
+                          </button>
+                        </td>
+
+                        <td style={td}>
+                          <button type="button" style={rowBtn} onClick={() => setSelectedRow(row)}>
+                            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                              {row.cancel_at_period_end ? (
+                                <span style={badge("warn")}>Cancel at period end</span>
+                              ) : null}
+                              {row.is_admin ? (
+                                <span style={badge("admin")}>Admin L{row.admin_level}</span>
+                              ) : null}
+                              {row.missing_profile ? (
+                                <span style={badge("warn")}>Missing profile</span>
+                              ) : null}
+                              {row.unknown_email ? (
+                                <span style={badge("warn")}>Unknown email</span>
+                              ) : null}
+                            </div>
+                          </button>
+                        </td>
+
+                        <td style={td}>
+                          <button type="button" style={rowBtn} onClick={() => setSelectedRow(row)}>
+                            <code style={{ fontSize: 12, color: "rgba(0,0,0,0.62)" }}>
+                              {row.user_id}
+                            </code>
+                          </button>
                         </td>
                       </tr>
                     ))
@@ -1295,6 +1464,12 @@ export default function AdminUsersPage() {
           )}
         </div>
       </div>
+
+      <AdminUserDetailDrawer
+        row={selectedRow}
+        open={!!selectedRow}
+        onClose={() => setSelectedRow(null)}
+      />
     </div>
   );
 }

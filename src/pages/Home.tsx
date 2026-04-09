@@ -9,6 +9,11 @@
 // - Softens page background
 // - Reduces oversized homepage headings
 // - Makes typography calmer and cleaner without changing layout logic
+//
+// COPY + LANGUAGE TUNE:
+// - Vietnamese is visually secondary to English
+// - Vietnamese is clearly presented as the same meaning as the English above
+// - Replaces old "Mercy Host" naming with "Teacher Mercy"
 
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -352,9 +357,7 @@ export default function Home() {
   );
 
   const primaryCtaEn = isSignedIn ? "👉 Continue learning" : "👉 Start free";
-  const primaryCtaVi = isSignedIn ? "👉 Tiếp tục hành trình" : "👉 Bắt đầu miễn phí";
   const accountCtaEn = isSignedIn ? "👤 Account" : "🔐 Sign in";
-  const accountCtaVi = isSignedIn ? "👤 Tài khoản" : "🔐 Đăng nhập";
 
   const goAccountOrSignin = () => {
     nav(isSignedIn ? "/account" : "/signin");
@@ -650,6 +653,15 @@ export default function Home() {
     fontWeight: 700,
   };
 
+  const hostQuoteVi: React.CSSProperties = {
+    marginTop: 8,
+    marginBottom: 0,
+    fontSize: z(14),
+    lineHeight: 1.62,
+    color: "rgba(0,0,0,0.56)",
+    fontWeight: 600,
+  };
+
   const hostMeta: React.CSSProperties = {
     marginTop: 10,
     fontSize: z(13),
@@ -709,6 +721,14 @@ export default function Home() {
     lineHeight: 1.68,
   };
 
+  const heroSubVi: React.CSSProperties = {
+    marginTop: 8,
+    fontSize: z(13),
+    color: "rgba(0,0,0,0.54)",
+    fontWeight: 600,
+    lineHeight: 1.62,
+  };
+
   const h3: React.CSSProperties = {
     margin: 0,
     fontSize: z(18),
@@ -724,6 +744,23 @@ export default function Home() {
     color: "rgba(0,0,0,0.70)",
     fontSize: z(15),
     lineHeight: 1.72,
+  };
+
+  const pVi: React.CSSProperties = {
+    marginTop: 8,
+    marginBottom: 0,
+    color: "rgba(0,0,0,0.58)",
+    fontSize: z(13),
+    lineHeight: 1.64,
+  };
+
+  const subtleNote: React.CSSProperties = {
+    marginTop: 6,
+    marginBottom: 0,
+    fontSize: z(11),
+    lineHeight: 1.5,
+    color: "rgba(0,0,0,0.46)",
+    fontWeight: 700,
   };
 
   const langTag: React.CSSProperties = {
@@ -989,11 +1026,20 @@ export default function Home() {
                 : "Start with a short room — about 2 minutes."}
             </div>
 
-            <div style={{ ...langTag, marginTop: 18 }}>VI</div>
-            <h2 style={{ ...heroTitle, fontSize: isDesktopTop ? z(23) : z(21) }}>
+            <div style={{ ...langTag, marginTop: 18 }}>VI · same meaning as EN</div>
+            <h2
+              style={{
+                ...heroTitle,
+                fontSize: isDesktopTop ? z(18) : z(17),
+                color: "rgba(0,0,0,0.62)",
+                fontWeight: 700,
+                letterSpacing: -0.18,
+                marginTop: 6,
+              }}
+            >
               Lắng đọng cùng tư duy tiếng Anh.
             </h2>
-            <div style={heroSub}>
+            <div style={heroSubVi}>
               Mercy Blade là khoảng lặng để bạn tự tại chiêm nghiệm cuộc sống bằng tiếng Anh.
               <br />
               Không rập khuôn ngữ pháp. Không áp lực. Không tạp âm.
@@ -1001,10 +1047,14 @@ export default function Home() {
               Chỉ một gian phòng, một dòng suy tưởng, thong dong tiến bước về phía trước.
             </div>
 
-            <div style={heroCtaHint}>
-              {isSignedIn
-                ? "Bạn đã vào — tiếp tục hành trình với một phòng ngắn."
-                : "Bắt đầu nhẹ nhàng — khoảng 2 phút trải nghiệm."}
+            <div
+              style={{
+                ...heroCtaHint,
+                fontSize: z(11),
+                color: "rgba(0,0,0,0.46)",
+              }}
+            >
+              Bản tiếng Việt diễn đạt cùng ý với phần tiếng Anh ở trên.
             </div>
           </div>
 
@@ -1013,40 +1063,48 @@ export default function Home() {
             <GuideBox />
           </div>
 
-          <div style={hostSpotlight} aria-label="Mercy Host spotlight">
+          <div style={hostSpotlight} aria-label="Teacher Mercy spotlight">
             <div style={hostPanelGrid}>
               <div style={hostBubble}>
-                <div style={langTag}>EN</div>
-                <h2 style={hostName}>Mercy Host</h2>
+                <div style={langTag}>EN + VI</div>
+                <h2 style={hostName}>Teacher Mercy</h2>
+
                 <p style={hostQuote}>“Would you like a quiet thought for today?”</p>
-                <div style={hostMeta}>A gentle guide for reflection — not a noisy chatbot.</div>
+                <p style={hostQuoteVi}>
+                  “Bạn có muốn nhận một suy ngẫm nhẹ nhàng cho hôm nay không?”
+                </p>
+
+                <div style={hostMeta}>
+                  A gentle guide for reflection — not a noisy chatbot.
+                  <br />
+                  <span
+                    style={{
+                      fontSize: z(12),
+                      fontWeight: 700,
+                      color: "rgba(0,0,0,0.50)",
+                    }}
+                  >
+                    Người dẫn lối dịu dàng cho suy ngẫm — không phải chatbot ồn ào.
+                  </span>
+                </div>
+
                 <p style={p}>
-                  Mercy Host helps you enter the experience softly.
+                  Teacher Mercy helps you enter the experience softly.
                   <br />
                   It invites you to pause, reflect, and continue with calm focus.
                 </p>
-                <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
-                  <button type="button" style={{ ...primaryBtn, minWidth: 220 }} onClick={goFirstRoom}>
-                    {isSignedIn ? "🌿 Continue with Mercy Host" : "🌿 Enter with Mercy Host"}
-                  </button>
-                </div>
-              </div>
 
-              <div style={hostBubble}>
-                <div style={langTag}>VI</div>
-                <h2 style={hostName}>Mercy Host</h2>
-                <p style={hostQuote}>“Bạn có muốn nhận một suy ngẫm nhẹ nhàng cho hôm nay không?”</p>
-                <div style={hostMeta}>
-                  Người dẫn lối tâm tình — không phải một chatbot ồn ã.
-                </div>
-                <p style={p}>
-                  Mercy Host khơi mở trải nghiệm của bạn thật khẽ khàng.
+                <p style={pVi}>
+                  Teacher Mercy giúp bạn bước vào trải nghiệm một cách nhẹ nhàng.
                   <br />
-                  Đưa bạn vào những khoảng dừng, để lắng lại và vững chãi bước tiếp với tâm thế an nhiên.
+                  Mời bạn dừng lại, suy ngẫm, rồi tiếp tục với sự tập trung bình tĩnh.
                 </p>
+
                 <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
                   <button type="button" style={{ ...primaryBtn, minWidth: 220 }} onClick={goFirstRoom}>
-                    {isSignedIn ? "🌿 Tiếp tục cùng Mercy Host" : "🌿 Bắt đầu cùng Mercy Host"}
+                    {isSignedIn
+                      ? "🌿 Continue with Teacher Mercy"
+                      : "🌿 Enter with Teacher Mercy"}
                   </button>
                 </div>
               </div>
@@ -1054,9 +1112,14 @@ export default function Home() {
           </div>
 
           <div style={section}>
-            <div style={langTag}>EN</div>
-            <h3 style={h3}>Mercy Host — A Caring Presence</h3>
-            <p style={p}>Mercy Host is a calm companion that stays with the learner.</p>
+            <div style={langTag}>EN + VI</div>
+            <h3 style={h3}>Teacher Mercy — A Caring Presence</h3>
+
+            <p style={p}>Teacher Mercy is a calm companion that stays with the learner.</p>
+            <p style={pVi}>
+              Teacher Mercy là người đồng hành bình tâm luôn đi cùng người học.
+            </p>
+
             <p style={p}>
               It helps the learner enter gently.
               <br />
@@ -1064,26 +1127,23 @@ export default function Home() {
               <br />
               It keeps the experience soft, clear, and human.
             </p>
-            <p style={p}>
-              Mercy is not trying to flood the learner with features.
-              <br />
-              It is trying to hold the learner in a steady study rhythm.
-            </p>
-
-            <div style={{ ...langTag, marginTop: 16 }}>VI</div>
-            <h3 style={h3}>Mercy Host — Một Sự Hiện Diện Dịu Dàng</h3>
-            <p style={p}>Mercy Host là người đồng hành bình tâm luôn đi cùng người học.</p>
-            <p style={p}>
+            <p style={pVi}>
               Mercy giúp bạn bước vào hành trình thật nhẹ nhàng.
               <br />
               Gợi mở bước tiếp theo vừa vặn.
               <br />
-              Giữ cho trải nghiệm luôn mềm mại, rõ ràng và đầy tính nhân văn.
+              Giữ cho trải nghiệm mềm mại, rõ ràng và đầy tính con người.
             </p>
+
             <p style={p}>
-              Mercy không làm bạn choáng ngợp bởi tính năng.
+              Teacher Mercy is not trying to flood the learner with features.
               <br />
-              Mercy giữ cho bạn một nhịp học bền bỉ mà tĩnh tại.
+              It is trying to hold the learner in a steady study rhythm.
+            </p>
+            <p style={pVi}>
+              Teacher Mercy không cố làm bạn choáng ngợp vì quá nhiều tính năng.
+              <br />
+              Mercy muốn giữ cho bạn một nhịp học đều đặn và bền vững.
             </p>
           </div>
 
@@ -1108,12 +1168,21 @@ export default function Home() {
               One sentence becomes correction, speaking, understanding, and memory.
             </p>
 
-            <div style={{ ...langTag, marginTop: 16 }}>VI</div>
-            <h3 style={h3}>Lộ trình học của Mercy</h3>
-            <p style={p}>
-              Mercy bắt đầu từ những câu nói chân thực nhất của bạn.
+            <div style={{ ...langTag, marginTop: 16 }}>VI · same meaning as EN</div>
+            <h3
+              style={{
+                ...h3,
+                fontSize: z(16),
+                color: "rgba(0,0,0,0.66)",
+                fontWeight: 700,
+              }}
+            >
+              Lộ trình học của Teacher Mercy
+            </h3>
+            <p style={pVi}>
+              Teacher Mercy bắt đầu từ những câu nói chân thực nhất của bạn.
             </p>
-            <p style={p}>
+            <p style={pVi}>
               Trau chuốt câu từ để cách diễn đạt tự nhiên hơn.
               <br />
               Khích lệ bạn cất tiếng nói tự tin.
@@ -1122,7 +1191,7 @@ export default function Home() {
               <br />
               Ghi dấu những mẫu câu hữu ích theo dòng thời gian.
             </p>
-            <p style={p}>
+            <p style={pVi}>
               Nhờ đó, mỗi bước học đều khơi nguồn cảm hứng.
               <br />
               Từ một câu nói, mở ra sự thấu hiểu, khả năng diễn đạt và trí nhớ bền lâu.
@@ -1248,8 +1317,17 @@ export default function Home() {
 
             <div style={{ marginTop: 16 }}>
               <div style={langTag}>VI</div>
-              <h3 style={h3}>Tiến độ an nhiên</h3>
-              <div style={{ ...p, marginTop: 8 }}>
+              <h3
+                style={{
+                  ...h3,
+                  fontSize: z(16),
+                  color: "rgba(0,0,0,0.66)",
+                  fontWeight: 700,
+                }}
+              >
+                Tiến độ an nhiên
+              </h3>
+              <div style={{ ...pVi, marginTop: 8 }}>
                 {isSignedIn
                   ? "Một lát cắt nhẹ nhàng — ghi dấu hành trình bạn vừa đi qua."
                   : "Hãy đăng nhập để lưu giữ hành trình và ngắm nhìn tiến độ của mình."}
@@ -1258,22 +1336,43 @@ export default function Home() {
           </div>
 
           <div style={band}>
+            <div style={langTag}>EN</div>
             <h2 style={blockTitle}>A Gentle Companion for Your Whole Life</h2>
+
             <p style={p}>
               Mercy Blade is a bilingual (English–Vietnamese) companion for real life — health, emotions, money,
               relationships, work, and meaning.
             </p>
+            <p style={subtleNote}>
+              Vietnamese support below carries the same meaning as the English above.
+              <br />
+              Phần tiếng Việt bên dưới diễn đạt cùng ý với phần tiếng Anh phía trên.
+            </p>
+
             <p style={p}>
               This is not a place to rush or perform.
               <br />
               It is a place to slow down, listen, and move forward one small step at a time.
             </p>
+            <p style={pVi}>
+              Đây không phải nơi để vội vã hay phô diễn.
+              <br />
+              Mà là nơi để bạn lắng lại, lắng nghe và tiến lên từng bước vững vàng.
+            </p>
+
             <p style={p}>
               No pressure.
               <br />
               No judgment.
               <br />
               Only clarity, compassion, and steady growth.
+            </p>
+            <p style={pVi}>
+              Không áp lực.
+              <br />
+              Không phán xét.
+              <br />
+              Chỉ có sự sáng rõ, lòng trắc ẩn và những chuyển biến bền bỉ.
             </p>
 
             <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
@@ -1307,60 +1406,6 @@ export default function Home() {
                 onClick={() => nav(ROUTE_PRICING)}
               >
                 💎 Pricing
-              </button>
-            </div>
-
-            <div style={{ height: 18 }} />
-
-            <h2 style={blockTitle}>Người Đồng Hành Nhẹ Nhàng Cho Cả Cuộc Đời Bạn</h2>
-            <p style={p}>
-              Mercy Blade là người bạn song ngữ Anh–Việt gắn bó cùng đời sống thực — từ sức khỏe, cảm xúc đến tài chính,
-              mối quan hệ và ý nghĩa cuộc sống.
-            </p>
-            <p style={p}>
-              Đây không phải nơi để vội vã hay phô diễn.
-              <br />
-              Mà là nơi để bạn lắng lại, lắng nghe và tiến lên từng bước vững vàng.
-            </p>
-            <p style={p}>
-              Không áp lực.
-              <br />
-              Không phán xét.
-              <br />
-              Chỉ có sự sáng rõ, lòng trắc ẩn và những chuyển biến bền bỉ.
-            </p>
-
-            <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
-              <button
-                type="button"
-                style={{ ...primaryBtn, minWidth: 240 }}
-                onClick={goFirstRoom}
-              >
-                {primaryCtaVi}
-              </button>
-
-              <button
-                type="button"
-                style={{ ...secondaryBtn, minWidth: 240 }}
-                onClick={goAccountOrSignin}
-              >
-                {accountCtaVi}
-              </button>
-
-              <button
-                type="button"
-                style={{ ...secondaryBtn, minWidth: 240 }}
-                onClick={() => nav("/tiers")}
-              >
-                👉 Lộ trình hành trình
-              </button>
-
-              <button
-                type="button"
-                style={{ ...secondaryBtn, minWidth: 240 }}
-                onClick={() => nav(ROUTE_PRICING)}
-              >
-                💎 Gói trải nghiệm
               </button>
             </div>
           </div>
