@@ -17,6 +17,7 @@ import {
   Sparkles,
   BookOpenText,
   Wand2,
+  Eraser,
 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -68,18 +69,6 @@ function normalizeForCompare(value: string): string {
     .replace(/[.,!?;:()[\]"'’`-]/g, '')
     .replace(/\s+/g, ' ')
     .trim();
-}
-
-function getFallbackPracticeText(contentEn?: string): string {
-  const cleaned = cleanText(
-    contentEn?.split('\n').find((line) => cleanText(line).length > 20) ?? '',
-  );
-
-  if (cleaned) {
-    return cleaned;
-  }
-
-  return 'Yesterday, I bought a hat because I will be attending a big party next.';
 }
 
 function extractTroubleWords(
@@ -241,8 +230,8 @@ export function MercySpeakTab({
     if (enhancedText) return enhancedText;
     if (correctedText) return correctedText;
     if (sourceText) return sourceText;
-    return getFallbackPracticeText(contentEn);
-  }, [contentEn, correctedText, enhancedText, sourceText]);
+    return '';
+  }, [correctedText, enhancedText, sourceText]);
 
   const [variant, setVariant] = useState<PracticeVariant>(
     enhancedText ? 'enhanced' : correctedText ? 'corrected' : sourceText ? 'source' : 'custom',
@@ -325,7 +314,7 @@ export function MercySpeakTab({
     return base;
   }, [customText, correctedText, enhancedText, sourceText, variant]);
 
-  const troubleWordList = useMemo(
+  const memoryTroubleWords = useMemo(
     () => extractTroubleWords(troubleWords),
     [troubleWords],
   );
@@ -339,6 +328,14 @@ export function MercySpeakTab({
     () => detectTroubleWords(transcript, practiceText),
     [practiceText, transcript],
   );
+
+  const displayedTroubleWords = useMemo(() => {
+    if (generatedTroubleWords.length > 0) {
+      return generatedTroubleWords;
+    }
+
+    return [];
+  }, [generatedTroubleWords]);
 
   const feedbackNotes = useMemo(() => {
     if (!practiceText || !transcript) return [];
@@ -540,6 +537,20 @@ export function MercySpeakTab({
     }
   }
 
+  function handleClearPracticeLine() {
+    handleResetAttempt();
+    stopListening();
+    stopSpeaking();
+
+    if (isRecording) {
+      stopRecording();
+    }
+
+    setCustomText('');
+    setVariant('custom');
+    setCopySuccess(false);
+  }
+
   const levelLabel = profile?.english_level || 'intermediate';
   const matchTone = getMetricTone(matchScore);
 
@@ -558,15 +569,6 @@ export function MercySpeakTab({
             <p className="mt-2 text-sm leading-6 text-slate-600">
               Say the sentence slowly first. Match the wording and rhythm before trying to speak faster.
             </p>
-
-            <div className="mt-4 rounded-[22px] border border-[#F4E6D9] bg-gradient-to-r from-[#FFF9F1] via-white to-[#FFF7F2] p-4 shadow-[0_10px_28px_rgba(255,138,101,0.08)]">
-              <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                Best line to practice
-              </p>
-              <p className="mt-2 text-base leading-7 text-slate-800">
-                {enhancedText || correctedText || sourceText || defaultPracticeText}
-              </p>
-            </div>
 
             <div className="mt-4 rounded-[22px] border border-emerald-100 bg-gradient-to-r from-emerald-50/80 via-white to-teal-50/60 p-4 shadow-[0_8px_24px_rgba(16,185,129,0.08)]">
               <div className="flex items-start gap-2.5">
@@ -662,6 +664,17 @@ export function MercySpeakTab({
                   Original
                 </button>
               ) : null}
+
+              <button
+                type="button"
+                onClick={handleClearPracticeLine}
+                className="rounded-2xl border border-slate-200 bg-white/92 px-4 py-2 text-sm font-semibold text-slate-600 transition-all hover:border-rose-200 hover:bg-rose-50 hover:text-rose-700"
+              >
+                <span className="inline-flex items-center gap-2">
+                  <Eraser className="h-4 w-4" />
+                  Clear
+                </span>
+              </button>
             </div>
 
             <div className="mt-4">
@@ -943,14 +956,14 @@ export function MercySpeakTab({
             </div>
           </div>
 
-          {troubleWordList.length > 0 || generatedTroubleWords.length > 0 ? (
+          {displayedTroubleWords.length > 0 ? (
             <div className="rounded-[22px] border border-white/80 bg-white p-4 shadow-sm">
               <div className="flex items-center gap-2">
                 <Wand2 className="h-4 w-4 text-[#E76F51]" />
                 <p className="text-sm font-semibold text-slate-900">Watch these trouble words</p>
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
-                {[...new Set([...troubleWordList, ...generatedTroubleWords])].map((word) => (
+                {displayedTroubleWords.map((word) => (
                   <span
                     key={word}
                     className="rounded-full border border-[#F2DDD0] bg-gradient-to-r from-[#FFF5EF] to-white px-3 py-1 text-xs font-medium text-[#875E4B] shadow-sm"

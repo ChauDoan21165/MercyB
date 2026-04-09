@@ -23,6 +23,8 @@ import type {
   TeacherMemorySummaryItem,
 } from './types';
 
+type LearningSupportMode = 'gentle' | 'guided' | 'immersion';
+
 interface Props {
   latestTeacherWritingState?: GrammarWritingTeacherState | null;
   latestAnalysisResult?: GrammarApiResponse | null;
@@ -34,6 +36,7 @@ interface Props {
   unlockTitle?: string;
   unlockDescription?: string;
   unlockButtonLabel?: string;
+  learningSupportMode?: LearningSupportMode | string;
 }
 
 type BilingualText = {
@@ -99,6 +102,14 @@ function asText(value: unknown): string {
 
 function cleanText(value: unknown): string {
   return asText(value).replace(/\s+/g, ' ').trim();
+}
+
+function normalizeLearningSupportMode(value?: string | null): LearningSupportMode {
+  const normalized = cleanText(value).toLowerCase();
+
+  if (normalized === 'guided') return 'guided';
+  if (normalized === 'immersion') return 'immersion';
+  return 'gentle';
 }
 
 function mapResult(value?: GrammarApiResponse | null): TeacherDisplayResult | null {
@@ -394,6 +405,67 @@ function buildLockedJourneyPreview(params: {
   ];
 }
 
+function gentleFocusVi(focusText: string): string {
+  const lower = focusText.toLowerCase();
+
+  const parts: string[] = [];
+
+  if (lower.includes('reason connector')) {
+    parts.push('liên từ nối ý, nhất là cách nối lý do cho rõ hơn');
+  }
+
+  if (lower.includes('sentence structure')) {
+    parts.push('cấu trúc câu rõ ràng và thẳng ý hơn');
+  }
+
+  if (lower.includes('past tense')) {
+    parts.push('quá khứ đơn');
+  }
+
+  if (lower.includes('present simple')) {
+    parts.push('hiện tại đơn');
+  }
+
+  if (lower.includes('present perfect')) {
+    parts.push('hiện tại hoàn thành');
+  }
+
+  if (!parts.length) {
+    parts.push('diễn đạt câu tiếng Anh tự nhiên hơn');
+  }
+
+  return `👉 Điểm đang luyện: ${parts.join(' + ')}.`;
+}
+
+function guidedFocusVi(focusText: string): string {
+  const lower = focusText.toLowerCase();
+
+  if (lower.includes('reason connector') && lower.includes('sentence structure')) {
+    return 'Gợi ý ngắn: đang luyện liên từ + cấu trúc câu.';
+  }
+  if (lower.includes('past tense')) {
+    return 'Gợi ý ngắn: chú ý quá khứ đơn.';
+  }
+  if (lower.includes('present simple')) {
+    return 'Gợi ý ngắn: chú ý hiện tại đơn.';
+  }
+  if (lower.includes('present perfect')) {
+    return 'Gợi ý ngắn: chú ý hiện tại hoàn thành.';
+  }
+
+  return 'Gợi ý ngắn: Mercy đang làm câu rõ và tự nhiên hơn.';
+}
+
+function supportLine(
+  mode: LearningSupportMode,
+  gentle: string,
+  guided?: string,
+) {
+  if (mode === 'immersion') return '';
+  if (mode === 'guided') return guided || gentle;
+  return gentle;
+}
+
 export function MercyTeacherTab({
   latestTeacherWritingState,
   latestAnalysisResult,
@@ -405,7 +477,13 @@ export function MercyTeacherTab({
   unlockTitle = 'Unlock Mercy Journey',
   unlockDescription = 'Journey turns one real sentence into a personal teacher loop with memory, progress notes, and next-step coaching.',
   unlockButtonLabel = 'Unlock Journey',
+  learningSupportMode = 'gentle',
 }: Props) {
+  const mode = useMemo(
+    () => normalizeLearningSupportMode(learningSupportMode),
+    [learningSupportMode],
+  );
+
   const analysisSource =
     latestAnalysisResult ?? latestTeacherWritingState?.latestAnalysisResult ?? null;
 
@@ -463,10 +541,11 @@ export function MercyTeacherTab({
   const coachingLead = useMemo(() => {
     if (teacherMemorySummary.length > 0) {
       const focusItem = teacherMemorySummary.find((item) => item.type === 'focus');
-      if (focusItem?.label) return focusItem.label;
+      const focusLabel = cleanText(focusItem?.label);
+      if (focusLabel) return `Current focus: ${focusLabel}.`;
     }
 
-    if (focusText) return `Today’s focus: ${focusText}.`;
+    if (focusText) return `Current focus: ${focusText}.`;
 
     return 'Start with one real thought, not a perfect sentence.';
   }, [focusText, teacherMemorySummary]);
@@ -541,6 +620,82 @@ export function MercyTeacherTab({
   const showWritingButton = typeof onOpenWriting === 'function';
   const showPronunciationButton = typeof onOpenPronunciation === 'function';
 
+  const focusSupport = supportLine(
+    mode,
+    gentleFocusVi(focusText),
+    guidedFocusVi(focusText),
+  );
+
+  const encouragementSupport = supportLine(
+    mode,
+    latestWriting
+      ? '👉 Mình đã có câu thật của bạn rồi. Bây giờ hãy giữ đúng câu này đi qua Grammar, Speak, rồi Logic để một ý trở thành cả vòng học.'
+      : '👉 Chỉ cần một câu thật, ngắn cũng được. Mercy sẽ giúp bạn sửa, nói, rồi hiểu từng bước.',
+    latestWriting
+      ? 'Gợi ý ngắn: giữ cùng một câu đi qua đủ 3 bước.'
+      : 'Gợi ý ngắn: bắt đầu bằng một câu thật.',
+  );
+
+  const quickCoachSupport = supportLine(
+    mode,
+    !latestWriting
+      ? '👉 Một câu ngắn, thật lòng là đủ để bắt đầu.'
+      : enhancedText
+        ? '👉 Ổn rồi. Mercy đã có bản mạnh hơn cho câu này. Giờ mình chỉ cần tiếp tục cùng một câu.'
+        : '👉 Bạn đã bắt đầu rồi. Hãy mở Grammar để Mercy sửa chính câu này.',
+    !latestWriting
+      ? 'Gợi ý ngắn: một câu ngắn là đủ.'
+      : enhancedText
+        ? 'Gợi ý ngắn: dùng luôn bản câu mạnh hơn này.'
+        : 'Gợi ý ngắn: mở Grammar để sửa câu hiện tại.',
+  );
+
+  const nextStepSupport = supportLine(
+    mode,
+    hasAnalysis
+      ? '👉 Bước tiếp theo: đọc câu đã được cải thiện thành tiếng, rồi mở Logic để hiểu vì sao tiếng Anh dùng cấu trúc như vậy.'
+      : '👉 Bước tiếp theo: mở Grammar trước để Mercy sửa chính câu này.',
+    hasAnalysis
+      ? 'Gợi ý ngắn: nói câu này trước, rồi mở Logic.'
+      : 'Gợi ý ngắn: mở Grammar trước.',
+  );
+
+  const memoryIntroSupport = supportLine(
+    mode,
+    '👉 Đây là nơi Mercy nhớ lại điểm mạnh, điểm đang luyện, mẫu câu, và bước tiếp theo cho riêng bạn.',
+    'Gợi ý ngắn: đây là vùng nhớ học tập của Mercy.',
+  );
+
+  const learningFlowSupport = supportLine(
+    mode,
+    '👉 Một câu nên đi qua cả vòng: viết ra, sửa lại, nói thành tiếng, hiểu logic, rồi để Mercy ghi nhớ.',
+    'Gợi ý ngắn: one sentence, full loop.',
+  );
+
+  const progressNoteSupport = supportLine(
+    mode,
+    '👉 Phần này giúp bạn nhìn thấy tiến bộ thật bằng ngôn ngữ dễ hiểu, không chỉ là kết quả hệ thống khô cứng.',
+    'Gợi ý ngắn: đây là ghi chú tiến bộ của Mercy.',
+  );
+
+  const currentSentenceSupport = supportLine(
+    mode,
+    '👉 Đây là chính câu bạn đang học. Đừng đổi sang câu khác quá sớm.',
+    'Gợi ý ngắn: keep working on the same sentence.',
+  );
+
+  const analysisSupport = supportLine(
+    mode,
+    '👉 Mercy đã bắt đầu giúp rồi. Bây giờ mục tiêu là giữ cùng một câu đi tiếp qua các tab, thay vì học rời rạc.',
+    'Gợi ý ngắn: keep the same sentence moving.',
+  );
+
+  const noMemorySupport = supportLine(
+    mode,
+    '👉 Khi bạn đưa vài câu thật đi qua Grammar, Speak, và Logic, Journey sẽ bắt đầu nhớ ra các mẫu bạn hay gặp.',
+    'Gợi ý ngắn: memory grows after a few real cycles.',
+  );
+
   return (
     <div className="m-0 flex-1 overflow-hidden">
       <ScrollArea className="h-full bg-gradient-to-br from-[#FFF7F0] via-[#F8FAFF] to-[#F0F4FF]">
@@ -575,6 +730,12 @@ export function MercyTeacherTab({
                       ? 'Unlock Journey to turn one real student sentence into coaching, memory, progress notes, and a clear next step.'
                       : encouragementText}
                   </p>
+
+                  {encouragementSupport ? (
+                    <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
+                      {encouragementSupport}
+                    </p>
+                  ) : null}
                 </div>
 
                 <div className="rounded-2xl border border-amber-100/80 bg-gradient-to-r from-[#FFF8F1] via-white to-[#F8FAFF] p-4 md:max-w-sm">
@@ -593,11 +754,21 @@ export function MercyTeacherTab({
                           ? 'Journey keeps the sentence, the lesson, and the teacher note together so English feels guided instead of fragmented.'
                           : coachingLead}
                       </p>
+                      {!isLocked && focusSupport ? (
+                        <p className="mt-1 text-sm leading-6 text-[#D66A4E]">
+                          {focusSupport}
+                        </p>
+                      ) : null}
                       <p className="mt-1 text-sm leading-6 text-slate-600">
                         {isLocked
                           ? 'Students can see what Mercy remembers, what improved, and exactly what to do next.'
                           : quickCoach}
                       </p>
+                      {!isLocked && quickCoachSupport ? (
+                        <p className="mt-1 text-sm leading-6 text-[#D66A4E]">
+                          {quickCoachSupport}
+                        </p>
+                      ) : null}
                     </div>
                   </div>
                 </div>
@@ -611,6 +782,11 @@ export function MercyTeacherTab({
                   <p className="mt-2 text-sm leading-6 text-slate-700">
                     {primarySentence || 'No sentence yet. Start with one honest thought.'}
                   </p>
+                  {mode === 'gentle' && primarySentence ? (
+                    <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
+                      👉 Đây là câu trung tâm của vòng học hiện tại.
+                    </p>
+                  ) : null}
                 </div>
 
                 <div className="rounded-2xl border border-slate-200 bg-white p-4">
@@ -618,6 +794,11 @@ export function MercyTeacherTab({
                     Current focus
                   </p>
                   <p className="mt-2 text-sm leading-6 text-slate-700">{focusText}</p>
+                  {focusSupport ? (
+                    <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
+                      {focusSupport}
+                    </p>
+                  ) : null}
                 </div>
 
                 <div className="rounded-2xl border border-slate-200 bg-white p-4">
@@ -631,6 +812,11 @@ export function MercyTeacherTab({
                         ? 'Say the improved sentence aloud, then open Logic to understand it.'
                         : 'Open Grammar and let Mercy shape the same sentence first.'}
                   </p>
+                  {!isLocked && nextStepSupport ? (
+                    <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
+                      {nextStepSupport}
+                    </p>
+                  ) : null}
                 </div>
               </div>
 
@@ -649,6 +835,16 @@ export function MercyTeacherTab({
                     </span>
                   ))}
                 </div>
+
+                {mode === 'gentle' ? (
+                  <p className="mt-4 text-sm leading-6 text-[#D66A4E]">
+                    👉 Bạn có thể bắt đầu bằng tâm trạng, một chuyện vừa xảy ra, hoặc một ý cứ quay lại trong đầu.
+                  </p>
+                ) : mode === 'guided' ? (
+                  <p className="mt-4 text-sm leading-6 text-[#D66A4E]">
+                    Gợi ý ngắn: bắt đầu bằng một câu thật.
+                  </p>
+                ) : null}
               </div>
 
               <div className="mt-6 flex flex-wrap gap-3">
@@ -860,12 +1056,22 @@ export function MercyTeacherTab({
                   <p className="mt-2 text-sm leading-6 text-slate-600">
                     Journey is Mercy’s memory space for this learner: strengths, focus, logic patterns, and what to practice next.
                   </p>
+                  {memoryIntroSupport ? (
+                    <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
+                      {memoryIntroSupport}
+                    </p>
+                  ) : null}
 
                   {teacherMemorySummary.length === 0 ? (
                     <div className="mt-4 rounded-2xl border border-white/90 bg-white/85 p-4">
                       <p className="text-base leading-7 text-slate-600">
                         Mercy will start remembering your patterns after you move one real sentence through Grammar, Speak, and Logic a few times.
                       </p>
+                      {noMemorySupport ? (
+                        <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
+                          {noMemorySupport}
+                        </p>
+                      ) : null}
                     </div>
                   ) : (
                     <div className="mt-4 grid gap-3 md:grid-cols-2">
@@ -875,7 +1081,19 @@ export function MercyTeacherTab({
                           className="flex items-start gap-3 rounded-2xl border border-white/90 bg-white/85 p-4 shadow-sm"
                         >
                           {getMemoryIcon(item.type)}
-                          <p className="text-base leading-7 text-slate-700">{item.label}</p>
+                          <div>
+                            <p className="text-base leading-7 text-slate-700">{item.label}</p>
+                            {mode === 'gentle' && item.type === 'focus' ? (
+                              <p className="mt-1 text-sm leading-6 text-[#D66A4E]">
+                                {gentleFocusVi(item.label)}
+                              </p>
+                            ) : null}
+                            {mode === 'guided' && item.type === 'focus' ? (
+                              <p className="mt-1 text-sm leading-6 text-[#D66A4E]">
+                                {guidedFocusVi(item.label)}
+                              </p>
+                            ) : null}
+                          </div>
                         </div>
                       ))}
                     </div>
@@ -891,6 +1109,11 @@ export function MercyTeacherTab({
                   <p className="mt-2 text-sm leading-6 text-slate-600">
                     One sentence should move through the full Mercy loop: express it, improve it, say it, understand it, then remember it.
                   </p>
+                  {learningFlowSupport ? (
+                    <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
+                      {learningFlowSupport}
+                    </p>
+                  ) : null}
 
                   <div className="mt-5 grid gap-3 md:grid-cols-4">
                     {journeySteps.map((step) => {
@@ -921,6 +1144,27 @@ export function MercyTeacherTab({
                           </div>
 
                           <p className="mt-2.5 text-base leading-7 text-slate-700">{step.caption}</p>
+
+                          {mode === 'gentle' && step.key === 'express' ? (
+                            <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
+                              👉 Bắt đầu bằng một câu thật.
+                            </p>
+                          ) : null}
+                          {mode === 'gentle' && step.key === 'improve' ? (
+                            <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
+                              👉 Mercy sẽ sửa câu để tự nhiên hơn.
+                            </p>
+                          ) : null}
+                          {mode === 'gentle' && step.key === 'speak' ? (
+                            <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
+                              👉 Đọc lại câu đã cải thiện để miệng quen với dạng đúng.
+                            </p>
+                          ) : null}
+                          {mode === 'gentle' && step.key === 'understand' ? (
+                            <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
+                              👉 Logic giúp bạn hiểu vì sao câu tiếng Anh lại đi theo hướng đó.
+                            </p>
+                          ) : null}
                         </div>
                       );
                     })}
@@ -938,6 +1182,11 @@ export function MercyTeacherTab({
                   <p className="mt-2 text-sm leading-6 text-slate-600">
                     After each sentence cycle, Journey should keep a warm teacher note so the learner can see real progress, not just raw system output.
                   </p>
+                  {progressNoteSupport ? (
+                    <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
+                      {progressNoteSupport}
+                    </p>
+                  ) : null}
 
                   <div className="mt-5 grid gap-3 md:grid-cols-2">
                     {progressNotes.map((note) => (
@@ -949,6 +1198,22 @@ export function MercyTeacherTab({
                           {note.title}
                         </p>
                         <p className="mt-2 text-base leading-7 text-slate-700">{note.body}</p>
+
+                        {mode === 'gentle' && note.title.toLowerCase() === 'what improved' ? (
+                          <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
+                            👉 Mercy đang cho bạn thấy câu đã được làm tự nhiên hơn ở đâu.
+                          </p>
+                        ) : null}
+                        {mode === 'gentle' && note.title.toLowerCase() === 'grammar focus' ? (
+                          <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
+                            👉 Đây là tên điểm ngữ pháp đang nổi bật nhất ở vòng này.
+                          </p>
+                        ) : null}
+                        {mode === 'guided' && note.title.toLowerCase() === 'grammar focus' ? (
+                          <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
+                            Gợi ý ngắn: đây là grammar point chính.
+                          </p>
+                        ) : null}
                       </div>
                     ))}
                   </div>
@@ -966,6 +1231,11 @@ export function MercyTeacherTab({
                         Student writing
                       </p>
                       <p className="mt-3 text-base leading-7 text-slate-700">{latestWriting}</p>
+                      {currentSentenceSupport ? (
+                        <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
+                          {currentSentenceSupport}
+                        </p>
+                      ) : null}
                     </div>
 
                     {(writingMode || focusText) && (
@@ -976,6 +1246,11 @@ export function MercyTeacherTab({
                               Writing mode
                             </p>
                             <p className="mt-2 text-base text-slate-700">{writingMode}</p>
+                            {mode === 'gentle' ? (
+                              <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
+                                👉 Đây là dạng viết hiện tại của bạn.
+                              </p>
+                            ) : null}
                           </div>
                         ) : null}
 
@@ -985,6 +1260,11 @@ export function MercyTeacherTab({
                               Current focus
                             </p>
                             <p className="mt-2 text-base text-slate-700">{focusText}</p>
+                            {focusSupport ? (
+                              <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
+                                {focusSupport}
+                              </p>
+                            ) : null}
                           </div>
                         ) : null}
                       </div>
@@ -1000,6 +1280,11 @@ export function MercyTeacherTab({
                           <p className="mt-1 text-sm leading-6 text-slate-700">
                             Keep this exact line moving. First improve it in Grammar, then speak it aloud, then open Logic to understand the English pattern behind it.
                           </p>
+                          {nextStepSupport ? (
+                            <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
+                              {nextStepSupport}
+                            </p>
+                          ) : null}
                         </div>
                       </div>
                     </div>
@@ -1014,6 +1299,16 @@ export function MercyTeacherTab({
                     <p className="mt-3 text-base leading-7 text-slate-600">
                       Try one sentence about your mood, a moment from today, or a thought you keep replaying in your head.
                     </p>
+
+                    {mode === 'gentle' ? (
+                      <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
+                        👉 Đừng cố viết hoàn hảo ngay. Một câu thật là đủ để bắt đầu.
+                      </p>
+                    ) : mode === 'guided' ? (
+                      <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
+                        Gợi ý ngắn: one real sentence is enough.
+                      </p>
+                    ) : null}
 
                     <div className="mt-5 rounded-2xl border border-violet-100 bg-gradient-to-r from-violet-50/60 to-sky-50/50 p-5">
                       <p className="text-xs font-semibold uppercase tracking-[0.16em] text-violet-600">
@@ -1038,6 +1333,11 @@ export function MercyTeacherTab({
                     <p className="mt-2 text-sm leading-6 text-slate-600">
                       Journey should show the student’s real sentence and Mercy’s real help, not a disconnected demo.
                     </p>
+                    {analysisSupport ? (
+                      <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
+                        {analysisSupport}
+                      </p>
+                    ) : null}
 
                     <div className="mt-5 grid gap-4 md:grid-cols-2">
                       {enhancedText ? (
@@ -1046,6 +1346,11 @@ export function MercyTeacherTab({
                             Natural English
                           </p>
                           <p className="mt-3 text-base leading-7 text-slate-700">{enhancedText}</p>
+                          {mode === 'gentle' ? (
+                            <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
+                              👉 Đây là bản tiếng Anh mượt và tự nhiên hơn.
+                            </p>
+                          ) : null}
                         </div>
                       ) : null}
 
@@ -1055,6 +1360,11 @@ export function MercyTeacherTab({
                             Corrected version
                           </p>
                           <p className="mt-3 text-base leading-7 text-slate-700">{correctedText}</p>
+                          {mode === 'gentle' ? (
+                            <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
+                              👉 Đây là bản đã đúng hơn về ngữ pháp.
+                            </p>
+                          ) : null}
                         </div>
                       ) : null}
                     </div>
@@ -1065,6 +1375,11 @@ export function MercyTeacherTab({
                           Why Mercy changed it
                         </p>
                         <p className="mt-3 text-base leading-7 text-slate-700">{explanationText}</p>
+                        {mode === 'gentle' ? (
+                          <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
+                            👉 Phần này giải thích vì sao Mercy đổi câu theo hướng tiếng Anh tự nhiên hơn.
+                          </p>
+                        ) : null}
                       </div>
                     ) : null}
 
@@ -1097,6 +1412,11 @@ export function MercyTeacherTab({
                           <p className="mt-1 text-sm leading-6 text-slate-700">
                             Improve it in Grammar. Say it in Speak. Understand it in Logic. Then let Mercy remember the pattern for the next sentence.
                           </p>
+                          {nextStepSupport ? (
+                            <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
+                              {nextStepSupport}
+                            </p>
+                          ) : null}
                         </div>
                       </div>
                     </div>

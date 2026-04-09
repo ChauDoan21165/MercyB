@@ -1,4 +1,7 @@
-// Path: src/components/mercy-guide/MercyGuidePanel.tsx
+/**
+ * File: MercyGuidePanel.tsx
+ * Path: src/components/mercy-guide/MercyGuidePanel.tsx
+ */
 
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import {
@@ -13,6 +16,10 @@ import {
   PenSquare,
   Lock,
   Crown,
+  Check,
+  Sprout,
+  Leaf,
+  Trees,
 } from 'lucide-react';
 
 import { useUserAccess } from '@/hooks/useUserAccess';
@@ -30,6 +37,7 @@ import type {
   StudentMercyMemoryUpdate,
   TeacherMemorySummaryItem,
   TeacherWritingTask,
+  LearningSupportMode,
 } from './types';
 
 type MercyTabType = 'teacher' | 'grammar' | 'pronunciation' | 'logic';
@@ -108,6 +116,40 @@ type MercyTabConfig = {
   teaser?: boolean;
 };
 
+type LearningSupportOption = {
+  value: LearningSupportMode;
+  label: string;
+  shortLabel: string;
+  description: string;
+  icon: React.ComponentType<{ size?: number; className?: string }>;
+};
+
+const LEARNING_SUPPORT_STORAGE_KEY = 'mercy.learningSupportMode';
+
+const LEARNING_SUPPORT_OPTIONS: LearningSupportOption[] = [
+  {
+    value: 'gentle',
+    label: 'Gentle',
+    shortLabel: '🌱 Gentle',
+    description: 'English + Vietnamese support for key teaching moments.',
+    icon: Sprout,
+  },
+  {
+    value: 'guided',
+    label: 'Guided',
+    shortLabel: '🌿 Guided',
+    description: 'Mostly English, with small bilingual hints when helpful.',
+    icon: Leaf,
+  },
+  {
+    value: 'immersion',
+    label: 'Immersion',
+    shortLabel: '🌳 Immersion',
+    description: 'English only for learners ready to stay fully in English.',
+    icon: Trees,
+  },
+];
+
 function normalizeTab(value: string | undefined): MercyTabType {
   switch (value) {
     case 'teacher':
@@ -124,6 +166,35 @@ function normalizeTab(value: string | undefined): MercyTabType {
     default:
       return 'teacher';
   }
+}
+
+function normalizeLearningSupportMode(value: unknown): LearningSupportMode {
+  if (value === 'gentle' || value === 'guided' || value === 'immersion') {
+    return value;
+  }
+
+  if (typeof value === 'string') {
+    const normalized = value.trim().toLowerCase();
+
+    if (
+      normalized === 'gentle' ||
+      normalized === 'guided' ||
+      normalized === 'immersion'
+    ) {
+      return normalized;
+    }
+
+    if (
+      normalized === 'full immersion' ||
+      normalized === 'full-immersion' ||
+      normalized === 'english only' ||
+      normalized === 'english-only'
+    ) {
+      return 'immersion';
+    }
+  }
+
+  return 'gentle';
 }
 
 function fallbackAvatar(event: React.SyntheticEvent<HTMLImageElement>): void {
@@ -151,6 +222,37 @@ function normalizeTroubleWords(value: unknown): TroubleWordItem[] {
   });
 }
 
+function readStoredLearningSupportMode(): LearningSupportMode {
+  if (typeof window === 'undefined') return 'gentle';
+
+  const stored = window.localStorage.getItem(LEARNING_SUPPORT_STORAGE_KEY);
+  return normalizeLearningSupportMode(stored);
+}
+
+function getSupportModeStyles(mode: LearningSupportMode) {
+  switch (mode) {
+    case 'gentle':
+      return {
+        trigger:
+          'border-[#FFD7C8] bg-gradient-to-r from-[#FFF4EE] to-[#FFF9F5] text-[#E76F51] shadow-[0_8px_18px_rgba(255,138,101,0.12)]',
+        dot: 'bg-[#FF8A65]',
+      };
+    case 'guided':
+      return {
+        trigger:
+          'border-[#CDE5FF] bg-gradient-to-r from-[#F4F9FF] to-[#FBFDFF] text-[#2563EB] shadow-[0_8px_18px_rgba(59,130,246,0.10)]',
+        dot: 'bg-[#3B82F6]',
+      };
+    case 'immersion':
+    default:
+      return {
+        trigger:
+          'border-[#E9D5FF] bg-gradient-to-r from-[#FAF5FF] to-[#FDFBFF] text-[#7C3AED] shadow-[0_8px_18px_rgba(124,58,237,0.10)]',
+        dot: 'bg-[#8B5CF6]',
+      };
+  }
+}
+
 function getTabAccent(tabId: MercyTabType) {
   switch (tabId) {
     case 'teacher':
@@ -174,8 +276,8 @@ function getTabAccent(tabId: MercyTabType) {
     case 'logic':
       return {
         active:
-          'border-[#FFB39A] bg-gradient-to-r from-[#FFF1EA] to-[#FFF8F4] text-[#E76F51] shadow-[0_10px_22px_rgba(255,138,101,0.14)]',
-        icon: 'text-[#A855F7]',
+          'border-[#DDD6FE] bg-gradient-to-r from-[#F6F3FF] to-[#FCFBFF] text-[#7C3AED] shadow-[0_10px_22px_rgba(139,92,246,0.12)]',
+        icon: 'text-[#8B5CF6]',
       };
     default:
       return {
@@ -217,6 +319,120 @@ function LockedAccessCard({
           ) : null}
         </div>
       </div>
+    </div>
+  );
+}
+
+function LearningSupportModePicker({
+  value,
+  onChange,
+}: {
+  value: LearningSupportMode;
+  onChange: (value: LearningSupportMode) => void;
+}) {
+  const [open, setOpen] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (!rootRef.current) return;
+      if (!rootRef.current.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    };
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setOpen(false);
+      }
+    };
+
+    window.addEventListener('mousedown', handleClickOutside);
+    window.addEventListener('keydown', handleEscape);
+
+    return () => {
+      window.removeEventListener('mousedown', handleClickOutside);
+      window.removeEventListener('keydown', handleEscape);
+    };
+  }, []);
+
+  const selected =
+    LEARNING_SUPPORT_OPTIONS.find((option) => option.value === value) ??
+    LEARNING_SUPPORT_OPTIONS[0];
+  const SelectedIcon = selected.icon;
+  const styles = getSupportModeStyles(selected.value);
+
+  return (
+    <div ref={rootRef} className="relative z-30 w-full md:w-[320px]">
+      <div className="mb-1 px-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500">
+        Learning support
+      </div>
+
+      <button
+        type="button"
+        onClick={() => setOpen((prev) => !prev)}
+        className={`flex min-h-[48px] w-full items-center justify-between gap-3 rounded-2xl border px-3 py-2.5 text-left transition ${styles.trigger}`}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+      >
+        <div className="flex min-w-0 items-center gap-2.5">
+          <SelectedIcon size={16} className="shrink-0" />
+          <div className="min-w-0">
+            <div className="truncate text-sm font-semibold">{selected.shortLabel}</div>
+            <div className="truncate text-xs opacity-80">{selected.description}</div>
+          </div>
+        </div>
+
+        <ChevronDown size={16} className={`shrink-0 transition ${open ? 'rotate-180' : ''}`} />
+      </button>
+
+      {open ? (
+        <div
+          className="absolute right-0 z-[80] mt-2 w-full rounded-3xl border border-white/90 bg-white/95 p-2 shadow-[0_18px_42px_rgba(15,23,42,0.14)] backdrop-blur-md"
+          role="listbox"
+          aria-label="Learning support mode"
+        >
+          {LEARNING_SUPPORT_OPTIONS.map((option) => {
+            const isActive = option.value === value;
+            const Icon = option.icon;
+            const optionStyles = getSupportModeStyles(option.value);
+
+            return (
+              <button
+                key={option.value}
+                type="button"
+                onClick={() => {
+                  onChange(option.value);
+                  setOpen(false);
+                }}
+                className={`flex w-full items-start gap-3 rounded-2xl px-3 py-3 text-left transition ${
+                  isActive ? 'bg-[#FAF7F2]' : 'hover:bg-[#FAF7F2]'
+                }`}
+                role="option"
+                aria-selected={isActive}
+              >
+                <div className="mt-0.5 shrink-0">
+                  <Icon size={16} className="text-slate-600" />
+                </div>
+
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm font-semibold text-slate-900">{option.label}</span>
+                    <span className={`h-2 w-2 rounded-full ${optionStyles.dot}`} />
+                  </div>
+                  <div className="mt-1 text-xs leading-5 text-slate-600">{option.description}</div>
+                </div>
+
+                {isActive ? (
+                  <div className="pt-0.5">
+                    <Check size={16} className="text-violet-600" />
+                  </div>
+                ) : null}
+              </button>
+            );
+          })}
+        </div>
+      ) : null}
     </div>
   );
 }
@@ -265,7 +481,29 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
   const [activeTab, setLocalActiveTab] = useState<MercyTabType>(
     normalizeTab(initialTab),
   );
+  const [learningSupportMode, setLearningSupportMode] = useState<LearningSupportMode>('gentle');
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setLearningSupportMode(readStoredLearningSupportMode());
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    window.localStorage.setItem(LEARNING_SUPPORT_STORAGE_KEY, learningSupportMode);
+  }, [learningSupportMode]);
+
+  const learningSupportHint = useMemo(() => {
+    switch (learningSupportMode) {
+      case 'gentle':
+        return 'Bilingual support is on for new learners.';
+      case 'guided':
+        return 'Mostly English, with small bilingual hints.';
+      case 'immersion':
+      default:
+        return 'Full English mode for confident learners.';
+    }
+  }, [learningSupportMode]);
 
   const goToPricing = () => {
     window.location.assign('/pricing');
@@ -539,7 +777,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
         </div>
       </div>
 
-      <div className="relative z-10 border-b border-white/80 bg-white/58 px-3 py-3 backdrop-blur-sm">
+      <div className="relative z-20 border-b border-white/80 bg-white/58 px-3 py-3 backdrop-blur-sm">
         {!access.features.hasMercyJourney ? (
           <div className="mb-3 rounded-2xl border border-violet-200 bg-gradient-to-r from-violet-50 via-white to-rose-50 px-4 py-3 shadow-[0_8px_22px_rgba(168,85,247,0.08)]">
             <div className="flex items-center justify-between gap-3">
@@ -563,6 +801,20 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
             </div>
           </div>
         ) : null}
+
+        <div className="mb-4 flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+          <div className="px-1">
+            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">
+              Mercy teaching mode
+            </p>
+            <p className="mt-1 text-xs leading-5 text-slate-600">{learningSupportHint}</p>
+          </div>
+
+          <LearningSupportModePicker
+            value={learningSupportMode}
+            onChange={setLearningSupportMode}
+          />
+        </div>
 
         <div className="grid grid-cols-4 gap-2">
           {tabs.map((tab) => {
@@ -637,6 +889,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
               unlockTitle="Unlock Mercy Journey"
               unlockDescription="Journey turns one real sentence into coaching, memory, progress notes, and a clear next step across Grammar, Speak, and Logic."
               unlockButtonLabel="Upgrade to Premium"
+              learningSupportMode={learningSupportMode}
             />
           )}
 
@@ -645,6 +898,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
               roomId={roomId}
               roomTitle={roomTitle}
               contentEn={contentEn}
+              learningSupportMode={learningSupportMode}
               teacherTask={resolvedTeacherTask ?? undefined}
               onAnalysisResult={onAnalysisResult}
               onTeacherWritingStateChange={onTeacherWritingStateChange}
@@ -690,6 +944,8 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
               pendingPayload={pronunciationPayload}
               pendingPronunciationPayload={pronunciationPayload}
               onMemoryUpdate={onMemoryUpdate}
+              onOpenEnglishLogic={handleOpenLogic}
+              learningSupportMode={learningSupportMode}
             />
           )}
 
@@ -705,6 +961,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
             <EnglishLogicTab
               roomTitle={roomTitle}
               contentEn={contentEn}
+              learningSupportMode={learningSupportMode}
               troubleWords={normalizedTroubleWords}
               latestTeacherWritingState={latestTeacherWritingState}
               latestAnalysisResult={resolvedLatestAnalysisResult}

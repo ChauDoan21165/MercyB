@@ -3,6 +3,12 @@
 //
 // Keeps native/browser zoom behavior
 // Adds Home-only text zoom wiring to the existing app zoom system
+//
+// VISUAL TUNE:
+// - Keeps hero band intact
+// - Softens page background
+// - Reduces oversized homepage headings
+// - Makes typography calmer and cleaner without changing layout logic
 
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -13,7 +19,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { useAuth } from "@/providers/AuthProvider";
 
 const PAGE_MAX = 980;
-const softPanel = "rgba(230, 244, 255, 0.85)";
+const softPanel = "rgba(247, 250, 251, 0.94)";
 const HOME_TZ = "Asia/Ho_Chi_Minh";
 const ROUTE_PRICING = "/pricing";
 const HERO_SRC = "/hero/hero_band.jpg";
@@ -376,7 +382,7 @@ export default function Home() {
   const wrap: React.CSSProperties = {
     width: "100%",
     minHeight: "100vh",
-    background: "white",
+    background: "linear-gradient(180deg, #FBF8F3 0%, #F8F7FA 54%, #FEFCF8 100%)",
   };
 
   const frame: React.CSSProperties = {
@@ -425,8 +431,8 @@ export default function Home() {
       ? "1px solid rgba(16,185,129,0.20)"
       : "1px solid rgba(0,0,0,0.08)",
     background: isSignedIn
-      ? "linear-gradient(180deg, rgba(236,253,245,0.92), rgba(255,255,255,0.96))"
-      : "linear-gradient(180deg, rgba(255,255,255,0.96), rgba(245,248,255,0.92))",
+      ? "linear-gradient(180deg, rgba(240,251,246,0.92), rgba(255,255,255,0.97))"
+      : "linear-gradient(180deg, rgba(255,255,255,0.97), rgba(247,249,252,0.93))",
     padding: "12px 14px",
     boxShadow: "0 12px 30px rgba(0,0,0,0.05)",
   };
@@ -462,8 +468,8 @@ export default function Home() {
     background: isLoading
       ? "rgba(0,0,0,0.28)"
       : isSignedIn
-      ? "rgb(16,185,129)"
-      : "rgba(0,0,0,0.28)",
+        ? "rgb(16,185,129)"
+        : "rgba(0,0,0,0.28)",
   };
 
   const authTopRight: React.CSSProperties = {
@@ -475,16 +481,16 @@ export default function Home() {
   };
 
   const authTitle: React.CSSProperties = {
-    margin: "6px 0 0",
-    fontSize: isDesktopTop ? z(28) : z(22),
-    fontWeight: 950,
+    margin: "8px 0 0",
+    fontSize: isDesktopTop ? z(24) : z(20),
+    fontWeight: 900,
     color: "rgba(0,0,0,0.90)",
-    letterSpacing: -0.55,
-    lineHeight: 1.08,
+    letterSpacing: -0.45,
+    lineHeight: 1.12,
   };
 
   const authSub: React.CSSProperties = {
-    marginTop: 4,
+    marginTop: 6,
     marginBottom: 0,
     fontSize: z(14),
     lineHeight: 1.45,
@@ -513,7 +519,7 @@ export default function Home() {
   const lessonCard: React.CSSProperties = {
     borderRadius: 20,
     border: "1px solid rgba(0,0,0,0.08)",
-    background: "linear-gradient(180deg, rgba(255,255,255,0.96), rgba(245,248,255,0.92))",
+    background: "linear-gradient(180deg, rgba(255,255,255,0.97), rgba(247,249,252,0.93))",
     padding: "14px 16px",
     boxShadow: "0 12px 30px rgba(0,0,0,0.05)",
   };
@@ -536,11 +542,11 @@ export default function Home() {
   const lessonTitle: React.CSSProperties = {
     marginTop: 8,
     marginBottom: 0,
-    fontSize: isDesktopTop ? z(28) : z(23),
-    fontWeight: 950,
+    fontSize: isDesktopTop ? z(24) : z(20),
+    fontWeight: 900,
     color: "rgba(0,0,0,0.90)",
-    letterSpacing: -0.6,
-    lineHeight: 1.08,
+    letterSpacing: -0.45,
+    lineHeight: 1.12,
   };
 
   const lessonSub: React.CSSProperties = {
@@ -592,8 +598,8 @@ export default function Home() {
     borderRadius: 20,
     border: "1px solid rgba(0,0,0,0.08)",
     background:
-      "linear-gradient(180deg, rgba(255,255,255,0.95), rgba(235,247,255,0.88))",
-    padding: isDesktopTop ? "28px 22px" : "26px 18px",
+      "linear-gradient(180deg, rgba(251,252,253,0.97), rgba(245,248,250,0.93))",
+    padding: isDesktopTop ? "28px 22px" : "24px 18px",
     textAlign: isDesktopTop ? "left" : "center",
     boxShadow: "0 12px 30px rgba(0,0,0,0.06)",
   };
@@ -607,7 +613,7 @@ export default function Home() {
     borderRadius: 20,
     border: "1px solid rgba(0,0,0,0.08)",
     background:
-      "linear-gradient(135deg, rgba(247,252,255,0.96), rgba(239,247,255,0.92), rgba(248,244,255,0.90))",
+      "linear-gradient(135deg, rgba(249,252,254,0.97), rgba(245,248,251,0.94), rgba(249,247,252,0.93))",
     padding: "24px 18px",
     boxShadow: "0 12px 30px rgba(0,0,0,0.06)",
   };
@@ -622,7 +628,7 @@ export default function Home() {
   const hostBubble: React.CSSProperties = {
     borderRadius: 18,
     border: "1px solid rgba(0,0,0,0.08)",
-    background: "rgba(255,255,255,0.88)",
+    background: "rgba(255,255,255,0.90)",
     padding: "16px 16px",
     boxShadow: "0 8px 20px rgba(0,0,0,0.05)",
   };
@@ -655,7 +661,7 @@ export default function Home() {
     marginTop: 18,
     borderRadius: 18,
     border: "1px solid rgba(0,0,0,0.08)",
-    background: softPanel,
+    background: "linear-gradient(180deg, rgba(249,251,252,0.95), rgba(246,248,250,0.93))",
     padding: "26px 16px",
   };
 
@@ -663,7 +669,7 @@ export default function Home() {
     marginTop: 18,
     borderRadius: 18,
     border: "1px solid rgba(0,0,0,0.08)",
-    background: "rgba(255,255,255,0.72)",
+    background: "rgba(252,252,251,0.84)",
     padding: "22px 16px",
   };
 
@@ -672,58 +678,60 @@ export default function Home() {
     borderRadius: 20,
     border: "1px solid rgba(0,0,0,0.08)",
     background:
-      "linear-gradient(180deg, rgba(255,255,255,0.96), rgba(245,248,255,0.92))",
+      "linear-gradient(180deg, rgba(252,252,251,0.97), rgba(246,248,250,0.93))",
     padding: isDesktopTop ? "24px 20px" : "20px 16px",
     boxShadow: "0 12px 30px rgba(0,0,0,0.05)",
   };
 
   const blockTitle: React.CSSProperties = {
     margin: 0,
-    fontSize: z(28),
-    fontWeight: 900,
-    color: "rgba(15,15,15,0.90)",
-    letterSpacing: -0.4,
+    fontSize: z(24),
+    fontWeight: 850,
+    color: "rgba(20,20,20,0.90)",
+    letterSpacing: -0.25,
+    lineHeight: 1.18,
   };
 
   const heroTitle: React.CSSProperties = {
     margin: 0,
-    fontSize: isDesktopTop ? z(36) : z(32),
-    fontWeight: 950,
-    color: "rgba(0,0,0,0.90)",
-    letterSpacing: -0.8,
-    lineHeight: 1.1,
+    fontSize: isDesktopTop ? z(26) : z(22),
+    fontWeight: 800,
+    color: "rgba(25,25,25,0.90)",
+    letterSpacing: -0.38,
+    lineHeight: 1.16,
   };
 
   const heroSub: React.CSSProperties = {
     marginTop: 12,
-    fontSize: isDesktopTop ? z(18) : z(17),
+    fontSize: z(15),
     color: "rgba(0,0,0,0.68)",
-    fontWeight: 700,
-    lineHeight: 1.6,
+    fontWeight: 650,
+    lineHeight: 1.68,
   };
 
   const h3: React.CSSProperties = {
     margin: 0,
-    fontSize: z(22),
-    fontWeight: 900,
+    fontSize: z(18),
+    fontWeight: 850,
     color: "rgba(0,0,0,0.82)",
-    letterSpacing: -0.2,
+    letterSpacing: -0.15,
+    lineHeight: 1.22,
   };
 
   const p: React.CSSProperties = {
     marginTop: 12,
     marginBottom: 0,
     color: "rgba(0,0,0,0.70)",
-    fontSize: z(16),
-    lineHeight: 1.65,
+    fontSize: z(15),
+    lineHeight: 1.72,
   };
 
   const langTag: React.CSSProperties = {
     marginTop: 10,
-    fontSize: z(12),
+    fontSize: z(11),
     fontWeight: 900,
-    letterSpacing: 0.6,
-    color: "rgba(0,0,0,0.45)",
+    letterSpacing: 0.65,
+    color: "rgba(0,0,0,0.43)",
   };
 
   const ctaBand: React.CSSProperties = {
@@ -731,24 +739,26 @@ export default function Home() {
     borderRadius: 18,
     border: "1px solid rgba(0,0,0,0.08)",
     background:
-      "linear-gradient(90deg, rgba(77,255,184,0.25), rgba(77,184,255,0.22), rgba(184,77,255,0.20), rgba(255,184,77,0.22))",
-    padding: "34px 16px",
+      "linear-gradient(180deg, rgba(248,250,251,0.96), rgba(245,247,249,0.94))",
+    padding: "30px 16px",
     textAlign: "center",
   };
 
   const ctaTitle: React.CSSProperties = {
     margin: 0,
-    fontSize: z(42),
-    fontWeight: 900,
+    fontSize: isDesktopTop ? z(24) : z(20),
+    fontWeight: 800,
     color: "rgba(0,0,0,0.86)",
-    letterSpacing: -0.8,
+    letterSpacing: -0.28,
+    lineHeight: 1.2,
   };
 
   const ctaSub: React.CSSProperties = {
     marginTop: 10,
-    fontSize: z(18),
+    fontSize: z(15),
     color: "rgba(0,0,0,0.65)",
-    fontWeight: 800,
+    fontWeight: 700,
+    lineHeight: 1.55,
   };
 
   const ctaRow: React.CSSProperties = {
@@ -761,9 +771,9 @@ export default function Home() {
 
   const heroCtaHint: React.CSSProperties = {
     marginTop: 12,
-    fontSize: z(13),
-    color: "rgba(0,0,0,0.55)",
-    fontWeight: 800,
+    fontSize: z(12),
+    color: "rgba(0,0,0,0.52)",
+    fontWeight: 700,
     textAlign: isDesktopTop ? "left" : "center",
   };
 
@@ -980,7 +990,7 @@ export default function Home() {
             </div>
 
             <div style={{ ...langTag, marginTop: 18 }}>VI</div>
-            <h2 style={{ ...heroTitle, fontSize: isDesktopTop ? z(30) : z(28) }}>
+            <h2 style={{ ...heroTitle, fontSize: isDesktopTop ? z(23) : z(21) }}>
               Lắng đọng cùng tư duy tiếng Anh.
             </h2>
             <div style={heroSub}>

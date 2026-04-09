@@ -35,6 +35,7 @@ export type PathHint = {
 export type MercyPromptStyle = 'mood' | 'daily_event' | 'reflection' | 'mixed';
 export type MercyFeedbackStyle = 'gentle' | 'direct' | 'detailed';
 export type MercyConfidenceLevel = 'low' | 'medium' | 'high';
+export type LearningSupportMode = 'gentle' | 'guided' | 'immersion';
 
 export type MercyLogicPatternMemory = {
   key: string;

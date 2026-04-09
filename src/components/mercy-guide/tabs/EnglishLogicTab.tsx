@@ -30,7 +30,10 @@ type EnglishLogicLessonInput = {
   troubleWords?: Array<string | { word?: string | null }>;
 };
 
+type LearningSupportMode = 'gentle' | 'guided' | 'immersion';
+
 type Props = EnglishLogicLessonInput & {
+  learningSupportMode?: LearningSupportMode;
   latestTeacherWritingState?: GrammarWritingTeacherState | null;
   latestAnalysisResult?: GrammarApiResponse | null;
   pendingPronunciationPayload?: PronunciationLaunchPayload | null;
@@ -487,16 +490,16 @@ function buildGroundedLogicViewModel(params: {
         vietlishPattern:
           'This is not really a Vietlish logic issue. The sentence idea is already understandable. The main improvement is accurate spelling and cleaner word forms.',
         englishLogic:
-          'In English writing, small spelling errors can distract the reader even when the idea is good. Correct spelling makes the sentence feel more polished and reliable.',
+          'In English writing, small form and agreement errors can distract the reader even when the idea is good. Clean wording makes the sentence feel more polished and reliable.',
         nextTimeTip:
-          'After writing, scan slowly for word endings and letter order, especially in longer words.',
-        miniRule: 'Right idea + correct spelling = stronger English.',
+          'After writing, scan slowly for verb endings, singular/plural forms, and whether the sentence sounds smooth when read aloud.',
+        miniRule: 'Right idea + cleaner form = stronger English.',
         comparisonLabel: 'Spelling and polish pattern',
-        vietlishExample: 'He felt more confidense after the talk.',
-        englishExample: 'He felt more confidence after the talk.',
+        vietlishExample: '',
+        englishExample: '',
         keyShift: [
           'The meaning was already there. Mercy mainly cleaned the written form.',
-          'A small spelling fix can make the whole sentence feel more fluent.',
+          'A small form fix can make the whole sentence feel more fluent.',
         ],
       };
 
@@ -644,16 +647,7 @@ function buildExamples(params: {
 
   switch (primaryInsight?.category) {
     case 'spelling':
-      return [
-        {
-          weak: 'He ate nutritous food before the exam.',
-          natural: 'He ate nutritious food before the exam.',
-        },
-        {
-          weak: 'She spoke with confidense during the interview.',
-          natural: 'She spoke with confidence during the interview.',
-        },
-      ];
+      return [];
 
     case 'story_consistency':
       return [
@@ -730,10 +724,164 @@ function buildExamples(params: {
   }
 }
 
+function detectVietnameseGrammarNames(params: {
+  originalText: string;
+  correctedText: string;
+  explanationText: string;
+}): string[] {
+  const original = params.originalText.toLowerCase();
+  const corrected = params.correctedText.toLowerCase();
+  const explanation = params.explanationText.toLowerCase();
+  const labels: string[] = [];
+
+  const looksPast =
+    original.includes('yesterday') ||
+    original.includes('last ') ||
+    original.includes('ago') ||
+    explanation.includes('past tense');
+
+  const looksPresentSimple =
+    explanation.includes('subject-verb agreement') ||
+    explanation.includes('singular subject') ||
+    /\bhe\s+\w+s\b/.test(corrected) ||
+    /\bshe\s+\w+s\b/.test(corrected);
+
+  if (looksPast) labels.push('Quá khứ đơn');
+  if (looksPresentSimple) labels.push('Hiện tại đơn');
+  if (explanation.includes('present perfect')) labels.push('Hiện tại hoàn thành');
+  if (explanation.includes('preposition') || corrected.includes(' to him') || corrected.includes(' to her')) {
+    labels.push('Giới từ');
+  }
+  if (explanation.includes('article') || /\b(a|an|the)\b/.test(corrected)) {
+    labels.push('Mạo từ');
+  }
+  if (explanation.includes('punctuation') || corrected.includes(',') || corrected.includes('.')) {
+    labels.push('Dấu câu');
+  }
+  if (explanation.includes('sentence structure') || explanation.includes('flow') || explanation.includes('clause')) {
+    labels.push('Cấu trúc câu');
+  }
+
+  return Array.from(new Set(labels)).slice(0, 5);
+}
+
+function buildGentleLogicExplanation(params: {
+  originalText: string;
+  correctedText: string;
+  enhancedText: string;
+  explanationText: string;
+  logic: LogicViewModel;
+}): {
+  intro: string;
+  body: string[];
+  grammarNames: string[];
+} {
+  const { originalText, correctedText, enhancedText, explanationText, logic } = params;
+  const original = originalText.toLowerCase();
+  const corrected = correctedText.toLowerCase();
+
+  const grammarNames = detectVietnameseGrammarNames({
+    originalText,
+    correctedText,
+    explanationText,
+  });
+
+  const body: string[] = [];
+  let intro =
+    'Mình giải thích nhẹ bằng tiếng Việt để bạn dễ thấy chỗ nào Mercy đang chỉnh và vì sao câu nghe tự nhiên hơn.';
+
+  if (logic.focus === 'Spelling correction') {
+    intro =
+      'Câu này không phải lỗi “tư duy tiếng Việt” nặng. Chủ yếu mình đang chỉnh dạng từ, chia động từ, và vài chỗ cho câu gọn và đúng hơn.';
+    body.push(
+      'Ví dụ với chủ ngữ số ít như “the user”, tiếng Anh hiện tại đơn thường cần động từ có thêm -s: start → starts, spill → spills, catch → catches, arrive → arrives, forget → forgets, want → wants, need → needs.'
+    );
+    body.push(
+      'Ngoài ra mình thêm dấu phẩy và tách ý rõ hơn để câu dài dễ đọc hơn. Khi một câu có nhiều hành động liên tiếp, tiếng Anh thường cần chia nhịp rõ ràng hơn.'
+    );
+    if (enhancedText && enhancedText !== correctedText) {
+      body.push(
+        'Bản tự nhiên hơn chỉ làm câu mượt hơn một chút, chứ không đổi ý của bạn.'
+      );
+    }
+  } else if (logic.focus === 'Time and verb agreement') {
+    intro =
+      'Ở đây mình đang sửa theo thời gian của câu. Khi bạn kể chuyện đã xảy ra rồi, tiếng Anh thường dùng quá khứ đơn.';
+    body.push(
+      'Nếu có từ như yesterday, last, ago, động từ thường cũng phải lùi về quá khứ để người nghe hiểu ngay mốc thời gian.'
+    );
+  } else if (logic.focus === 'Visible verb center') {
+    intro =
+      'Ở đây Mercy đang làm cho câu có “trục câu” rõ hơn. Trong tiếng Anh, câu miêu tả thường cần động từ hiện ra đầy đủ.';
+    body.push(
+      'Ví dụ khi tả trạng thái hay cảm xúc, tiếng Anh thường cần am / is / are / was / were.'
+    );
+  } else if (logic.focus === 'Connector control') {
+    intro =
+      'Ở đây mình đang làm đường nối giữa các ý rõ hơn. Tiếng Anh thường thích một đường ý sạch và thẳng hơn.';
+    body.push(
+      'Nếu có quá nhiều connector hoặc nối ý quá dài, câu sẽ nặng và khó theo dõi.'
+    );
+  } else if (logic.focus === 'Natural phrasing') {
+    intro =
+      'Ý của bạn đã đúng khá nhiều rồi. Ở đây Mercy chủ yếu làm câu nhẹ hơn và tự nhiên hơn khi người bản xứ đọc.';
+    body.push(
+      'Tiếng Anh tự nhiên thường chọn cách nói gọn, thẳng, và mượt hơn thay vì giữ nguyên cách sắp ý nặng.'
+    );
+  } else {
+    body.push(
+      'Mercy đang chỉ ra điều gì thực sự thay đổi trong câu, để bạn hiểu đúng chỗ cần nhớ thay vì học quá nhiều cùng lúc.'
+    );
+  }
+
+  if (
+    corrected.includes(' to him') ||
+    corrected.includes(' to her') ||
+    corrected.includes(' to them') ||
+    corrected.includes(' to me')
+  ) {
+    body.push(
+      'Có chỗ mình cũng chỉnh giới từ cho đúng. Ví dụ trong tiếng Anh thường là “listen to someone”, không phải “listen someone”.'
+    );
+  }
+
+  if (explanationText.toLowerCase().includes('subject-verb agreement')) {
+    body.push(
+      'Một điểm quan trọng nữa là hòa hợp chủ ngữ – động từ. Chủ ngữ số ít thường kéo theo dạng động từ khác với số nhiều.'
+    );
+  }
+
+  return { intro, body, grammarNames };
+}
+
+function buildGuidedVietnameseHint(params: {
+  logic: LogicViewModel;
+  explanationText: string;
+  originalText: string;
+  correctedText: string;
+}): string {
+  const grammarNames = detectVietnameseGrammarNames({
+    originalText: params.originalText,
+    correctedText: params.correctedText,
+    explanationText: params.explanationText,
+  });
+
+  if (grammarNames.length > 0) {
+    return `Gợi ý ngắn: điểm chính ở đây là ${grammarNames.join(' • ')}.`;
+  }
+
+  if (params.logic.focus === 'Spelling correction') {
+    return 'Gợi ý ngắn: đây chủ yếu là chỉnh dạng từ và độ mượt của câu.';
+  }
+
+  return 'Gợi ý ngắn: Mercy đang làm câu rõ hơn và tự nhiên hơn.';
+}
+
 export default function EnglishLogicTab({
   roomTitle,
   contentEn,
   troubleWords,
+  learningSupportMode = 'gentle',
   latestTeacherWritingState,
   latestAnalysisResult,
   pendingPronunciationPayload,
@@ -800,6 +948,35 @@ export default function EnglishLogicTab({
 
   const displayImprovedText = enhancedText || correctedText;
   const practiceLine = displayImprovedText || originalText;
+  const shouldShowComparisonExamples =
+    logic.focus !== 'Spelling correction' &&
+    Boolean(logic.vietlishExample) &&
+    Boolean(logic.englishExample);
+  const shouldShowPatternExamples =
+    logic.focus !== 'Spelling correction' && examples.length > 0;
+
+  const gentleLogicExplanation = useMemo(
+    () =>
+      buildGentleLogicExplanation({
+        originalText,
+        correctedText,
+        enhancedText,
+        explanationText,
+        logic,
+      }),
+    [originalText, correctedText, enhancedText, explanationText, logic],
+  );
+
+  const guidedHint = useMemo(
+    () =>
+      buildGuidedVietnameseHint({
+        logic,
+        explanationText,
+        originalText,
+        correctedText,
+      }),
+    [logic, explanationText, originalText, correctedText],
+  );
 
   const pronunciationPayload = useMemo<PronunciationLaunchPayload | null>(() => {
     if (!practiceLine) return null;
@@ -885,6 +1062,20 @@ export default function EnglishLogicTab({
               <p className="max-w-4xl text-[15px] leading-7 text-slate-700">
                 Mercy explains what really changed in this sentence, and only shows a Vietlish logic lesson when the sentence actually needs one.
               </p>
+
+              {learningSupportMode === 'gentle' ? (
+                <div className="rounded-2xl border border-sky-100 bg-sky-50/70 px-4 py-3 text-[15px] leading-7 text-sky-900">
+                  <p>
+                    <strong>Giải thích nhẹ bằng tiếng Việt:</strong> Ở chế độ này, Mercy sẽ nói rõ hơn bằng tiếng Việt, gọi tên điểm ngữ pháp như <strong>quá khứ đơn</strong>, <strong>hiện tại đơn</strong>, <strong>hiện tại hoàn thành</strong>, <strong>giới từ</strong>, <strong>mạo từ</strong>, và <strong>cấu trúc câu</strong>.
+                  </p>
+                </div>
+              ) : null}
+
+              {learningSupportMode === 'guided' ? (
+                <div className="rounded-2xl border border-sky-100 bg-sky-50/70 px-4 py-3 text-sm leading-6 text-sky-900">
+                  <p>{guidedHint}</p>
+                </div>
+              ) : null}
             </div>
 
             {!hasLesson ? (
@@ -942,6 +1133,14 @@ export default function EnglishLogicTab({
                       </p>
                     </div>
                   </div>
+
+                  {learningSupportMode === 'gentle' ? (
+                    <div className="mt-4 rounded-2xl border border-violet-100 bg-violet-50/60 p-4 text-[15px] leading-7 text-violet-900">
+                      <p>
+                        <strong>Nói ngắn gọn bằng tiếng Việt:</strong> bên trái là câu bạn viết, bên phải là bản tiếng Anh đã được làm mượt và rõ hơn. Mục tiêu là để bạn nhìn ra chính xác chỗ Mercy sửa, chứ không phải chỉ đọc kết quả cuối cùng.
+                      </p>
+                    </div>
+                  ) : null}
                 </section>
 
                 <section className="rounded-[28px] border border-white/80 bg-white/92 p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
@@ -957,6 +1156,13 @@ export default function EnglishLogicTab({
                           Main focus
                         </p>
                         <p className="mt-1 text-slate-700">{logic.focus}</p>
+
+                        {learningSupportMode !== 'immersion' && gentleLogicExplanation.grammarNames.length > 0 ? (
+                          <p className="mt-2 text-sm leading-6 text-orange-800">
+                            <strong>Tên điểm ngữ pháp:</strong>{' '}
+                            {gentleLogicExplanation.grammarNames.join(' • ')}
+                          </p>
+                        ) : null}
                       </div>
 
                       <div>
@@ -964,6 +1170,21 @@ export default function EnglishLogicTab({
                           Why Mercy changed it
                         </p>
                         <p className="mt-1 text-slate-700">{logic.whyNatural}</p>
+
+                        {learningSupportMode === 'gentle' ? (
+                          <div className="mt-3 space-y-3 rounded-2xl border border-amber-100 bg-amber-50/60 p-4 text-[15px] leading-7 text-amber-900">
+                            <p>
+                              <strong>Giải thích nhẹ:</strong> {gentleLogicExplanation.intro}
+                            </p>
+                            {gentleLogicExplanation.body.map((item) => (
+                              <p key={item}>{item}</p>
+                            ))}
+                          </div>
+                        ) : null}
+
+                        {learningSupportMode === 'guided' ? (
+                          <p className="mt-2 text-sm leading-6 text-amber-700">{guidedHint}</p>
+                        ) : null}
                       </div>
 
                       <div>
@@ -971,6 +1192,12 @@ export default function EnglishLogicTab({
                           English thinking
                         </p>
                         <p className="mt-1 text-slate-700">{logic.englishLogic}</p>
+
+                        {learningSupportMode === 'gentle' ? (
+                          <p className="mt-2 text-[15px] leading-7 text-sky-900">
+                            <strong>Hiểu theo tiếng Việt:</strong> đây là cách tiếng Anh “muốn” câu được dựng lên. Nhiều khi ý của bạn đúng rồi, nhưng tiếng Anh vẫn cần động từ, dạng từ, dấu câu, hoặc nhịp câu rõ hơn để nghe tự nhiên.
+                          </p>
+                        ) : null}
                       </div>
 
                       <div>
@@ -985,6 +1212,14 @@ export default function EnglishLogicTab({
                             </div>
                           ))}
                         </div>
+
+                        {learningSupportMode === 'gentle' ? (
+                          <div className="mt-3 rounded-2xl border border-emerald-100 bg-emerald-50/60 p-4 text-[15px] leading-7 text-emerald-900">
+                            <p>
+                              <strong>Tóm lại bằng tiếng Việt:</strong> ý của bạn đã có sẵn, Mercy đang giúp câu đúng dạng hơn, gọn hơn, và tự nhiên hơn khi người bản xứ đọc.
+                            </p>
+                          </div>
+                        ) : null}
                       </div>
                     </div>
 
@@ -994,6 +1229,12 @@ export default function EnglishLogicTab({
                           Vietnamese thinking pattern
                         </p>
                         <p className="mt-1 text-slate-700">{logic.vietlishPattern}</p>
+
+                        {learningSupportMode === 'gentle' ? (
+                          <p className="mt-2 text-[15px] leading-7 text-rose-900">
+                            <strong>Nói dễ hiểu:</strong> chỗ này không hẳn là “dịch từ tiếng Việt sang tiếng Anh” quá mạnh. Phần lớn là Mercy đang sửa cho câu sạch hơn về dạng từ, chia động từ, và cách nối ý.
+                          </p>
+                        ) : null}
                       </div>
 
                       <div className="rounded-2xl border border-purple-100/70 bg-gradient-to-r from-purple-50/70 to-white p-4">
@@ -1001,6 +1242,12 @@ export default function EnglishLogicTab({
                           Sentence pattern to remember
                         </p>
                         <p className="mt-1 text-slate-700">{logic.sentencePattern}</p>
+
+                        {learningSupportMode === 'gentle' ? (
+                          <p className="mt-2 text-[15px] leading-7 text-purple-900">
+                            <strong>Mẫu câu nên nhớ:</strong> khi câu có nhiều ý, hãy cố giữ một trục rõ: chủ ngữ + động từ + phần bổ sung, rồi mới nối thêm ý phụ.
+                          </p>
+                        ) : null}
                       </div>
 
                       <div>
@@ -1008,25 +1255,48 @@ export default function EnglishLogicTab({
                           Quick rule
                         </p>
                         <p className="mt-1 text-slate-700">{logic.miniRule}</p>
+
+                        {learningSupportMode === 'gentle' ? (
+                          <p className="mt-2 text-[15px] leading-7 text-slate-800">
+                            <strong>Nhớ nhanh bằng tiếng Việt:</strong> đừng cố giữ nguyên cách nghĩ tiếng Việt từng chữ. Hãy ưu tiên câu tiếng Anh nghe rõ và tròn ý.
+                          </p>
+                        ) : null}
                       </div>
                     </div>
                   </div>
 
-                  <div className="mt-4 grid gap-3 md:grid-cols-2">
-                    <div className="rounded-2xl border border-rose-100 bg-rose-50/70 p-4 shadow-[0_4px_14px_rgba(244,63,94,0.04)]">
-                      <p className="text-xs font-semibold uppercase tracking-wide text-rose-600">
-                        Less natural English
-                      </p>
-                      <p className="mt-2 text-sm leading-6 text-slate-700">{logic.vietlishExample}</p>
-                    </div>
+                  {shouldShowComparisonExamples ? (
+                    <div className="mt-4 grid gap-3 md:grid-cols-2">
+                      <div className="rounded-2xl border border-rose-100 bg-rose-50/70 p-4 shadow-[0_4px_14px_rgba(244,63,94,0.04)]">
+                        <p className="text-xs font-semibold uppercase tracking-wide text-rose-600">
+                          Less natural English
+                        </p>
+                        <p className="mt-2 text-sm leading-6 text-slate-700">{logic.vietlishExample}</p>
+                      </div>
 
-                    <div className="rounded-2xl border border-emerald-100 bg-emerald-50/70 p-4 shadow-[0_4px_14px_rgba(16,185,129,0.04)]">
-                      <p className="text-xs font-semibold uppercase tracking-wide text-emerald-600">
-                        More natural English
-                      </p>
-                      <p className="mt-2 text-sm leading-6 text-slate-700">{logic.englishExample}</p>
+                      <div className="rounded-2xl border border-emerald-100 bg-emerald-50/70 p-4 shadow-[0_4px_14px_rgba(16,185,129,0.04)]">
+                        <p className="text-xs font-semibold uppercase tracking-wide text-emerald-600">
+                          More natural English
+                        </p>
+                        <p className="mt-2 text-sm leading-6 text-slate-700">{logic.englishExample}</p>
+                      </div>
                     </div>
-                  </div>
+                  ) : (
+                    <div className="mt-4 rounded-2xl border border-sky-100 bg-gradient-to-r from-sky-50/80 to-white p-4 text-sm shadow-[0_4px_14px_rgba(59,130,246,0.04)]">
+                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                        Mercy note
+                      </p>
+                      <p className="mt-2 text-slate-700">
+                        This was mainly a polish fix, not a full English-pattern lesson. Mercy cleaned the spelling or wording, so there is no need to force a fake “less natural vs more natural” comparison here.
+                      </p>
+
+                      {learningSupportMode === 'gentle' ? (
+                        <p className="mt-2 text-[15px] leading-7 text-sky-900">
+                          <strong>Giải thích bằng tiếng Việt:</strong> chỗ này chủ yếu là chỉnh câu cho sạch và đúng hơn thôi, chưa cần biến thành một bài học logic lớn.
+                        </p>
+                      ) : null}
+                    </div>
+                  )}
 
                   <div className="mt-4 rounded-2xl border border-sky-100 bg-gradient-to-r from-sky-50/80 to-white p-4 text-sm shadow-[0_4px_14px_rgba(59,130,246,0.04)]">
                     <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
@@ -1036,6 +1306,12 @@ export default function EnglishLogicTab({
                       <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
                       <p className="text-slate-700">{logic.nextTimeTip}</p>
                     </div>
+
+                    {learningSupportMode === 'gentle' ? (
+                      <p className="mt-2 text-[15px] leading-7 text-sky-900">
+                        <strong>Gợi ý nhẹ:</strong> sau khi viết xong, hãy nhìn lại đuôi động từ, chủ ngữ số ít/số nhiều, và thử đọc câu thành tiếng. Nếu đọc bị vấp, câu thường vẫn còn chỗ cần sửa.
+                      </p>
+                    ) : null}
                   </div>
                 </section>
 
@@ -1092,51 +1368,73 @@ export default function EnglishLogicTab({
                       )}
                     </div>
                   </div>
+
+                  {learningSupportMode === 'gentle' ? (
+                    <div className="mt-4 rounded-2xl border border-orange-100 bg-orange-50/60 p-4 text-[15px] leading-7 text-orange-900">
+                      <p>
+                        <strong>Hiểu nhanh bằng tiếng Việt:</strong> phần này giúp bạn thấy cụ thể từ nào hoặc mẫu nào đã được bỏ đi, và từ nào được thêm vào để câu chuẩn hơn.
+                      </p>
+                    </div>
+                  ) : null}
                 </section>
 
-                <section className="rounded-[28px] border border-white/80 bg-white/92 p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
-                  <p className="text-sm font-semibold text-slate-900">
-                    Sentence pattern examples
-                  </p>
-                  <p className="mt-2 text-sm text-slate-600">
-                    These examples now follow the real change Mercy noticed in your sentence.
-                  </p>
+                {shouldShowPatternExamples ? (
+                  <section className="rounded-[28px] border border-white/80 bg-white/92 p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
+                    <p className="text-sm font-semibold text-slate-900">
+                      Sentence pattern examples
+                    </p>
+                    <p className="mt-2 text-sm text-slate-600">
+                      These examples now follow the real change Mercy noticed in your sentence.
+                    </p>
 
-                  <div className="mt-4 grid gap-3">
-                    {examples.map((example, index) => (
-                      <div
-                        key={`${example.weak}-${index}`}
-                        className="rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_4px_14px_rgba(15,23,42,0.03)]"
-                      >
-                        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                          Example {index + 1}
-                        </p>
+                    {learningSupportMode === 'gentle' ? (
+                      <p className="mt-2 text-[15px] leading-7 text-slate-800">
+                        <strong>Ví dụ bằng tiếng Việt:</strong> đây là vài cặp câu để bạn nhìn nhanh cách một câu “ít tự nhiên” chuyển thành câu “tự nhiên hơn”.
+                      </p>
+                    ) : null}
 
-                        <div className="mt-3 grid gap-3 md:grid-cols-2">
-                          <div className="rounded-2xl border border-rose-100 bg-rose-50/60 p-3">
-                            <p className="text-xs font-semibold uppercase tracking-wide text-rose-600">
-                              Less natural English
-                            </p>
-                            <p className="mt-1 text-sm text-slate-700">{example.weak}</p>
-                          </div>
+                    <div className="mt-4 grid gap-3">
+                      {examples.map((example, index) => (
+                        <div
+                          key={`${example.weak}-${index}`}
+                          className="rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_4px_14px_rgba(15,23,42,0.03)]"
+                        >
+                          <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                            Example {index + 1}
+                          </p>
 
-                          <div className="rounded-2xl border border-emerald-100 bg-emerald-50/60 p-3">
-                            <p className="text-xs font-semibold uppercase tracking-wide text-emerald-600">
-                              More natural English
-                            </p>
-                            <p className="mt-1 text-sm text-slate-700">{example.natural}</p>
+                          <div className="mt-3 grid gap-3 md:grid-cols-2">
+                            <div className="rounded-2xl border border-rose-100 bg-rose-50/60 p-3">
+                              <p className="text-xs font-semibold uppercase tracking-wide text-rose-600">
+                                Less natural English
+                              </p>
+                              <p className="mt-1 text-sm text-slate-700">{example.weak}</p>
+                            </div>
+
+                            <div className="rounded-2xl border border-emerald-100 bg-emerald-50/60 p-3">
+                              <p className="text-xs font-semibold uppercase tracking-wide text-emerald-600">
+                                More natural English
+                              </p>
+                              <p className="mt-1 text-sm text-slate-700">{example.natural}</p>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
-                  </div>
-                </section>
+                      ))}
+                    </div>
+                  </section>
+                ) : null}
 
                 <section className="rounded-[28px] border border-white/80 bg-white/92 p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
                   <p className="text-sm font-semibold text-slate-900">How this connects to speaking</p>
                   <p className="mt-2 text-sm text-slate-600">
                     Practice the improved line aloud so your mouth learns the same structure your mind just studied.
                   </p>
+
+                  {learningSupportMode === 'gentle' ? (
+                    <p className="mt-2 text-[15px] leading-7 text-slate-800">
+                      <strong>Nói bằng tiếng Việt:</strong> sau khi hiểu logic của câu, bạn nên đọc câu đã sửa thành tiếng. Khi miệng quen với câu đúng, lần sau viết cũng sẽ tự nhiên hơn.
+                    </p>
+                  ) : null}
 
                   <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-4">
                     <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
@@ -1184,6 +1482,12 @@ export default function EnglishLogicTab({
                       <p className="mt-1 text-sm leading-6 text-slate-700">
                         Good. You understood the exact change Mercy made in this sentence. Now try another real sentence, or rewrite this same idea more clearly and let Mercy guide you again.
                       </p>
+
+                      {learningSupportMode === 'gentle' ? (
+                        <p className="mt-2 text-[15px] leading-7 text-emerald-900">
+                          <strong>Bước tiếp theo bằng tiếng Việt:</strong> hãy thử viết lại cùng ý đó thêm một lần nữa. Mục tiêu không phải viết “hay” ngay, mà là viết ngày càng rõ hơn và đúng hơn.
+                        </p>
+                      ) : null}
                     </div>
                   </div>
 
@@ -1263,6 +1567,12 @@ export default function EnglishLogicTab({
                           ))}
                         </div>
                       </div>
+                    ) : null}
+
+                    {learningSupportMode === 'gentle' ? (
+                      <p className="mt-3 text-[15px] leading-7 text-slate-800">
+                        <strong>Gợi ý bằng tiếng Việt:</strong> đây là những mẫu Mercy đang để ý lặp lại. Nếu bạn nhìn thấy một mẫu xuất hiện nhiều lần, đó thường là điểm nên luyện trước.
+                      </p>
                     ) : null}
                   </section>
                 )}

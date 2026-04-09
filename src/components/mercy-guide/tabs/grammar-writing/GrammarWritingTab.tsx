@@ -32,11 +32,14 @@ import {
 import { hasMeaningfulDifference } from './utils';
 import { analyzeGrammarWithApi } from './api';
 
+type LearningSupportMode = 'gentle' | 'guided' | 'immersion';
+
 type GrammarWritingTabProps = {
   roomId?: string;
   roomTitle?: string;
   contentEn?: string;
   englishLevel?: string | null;
+  learningSupportMode?: LearningSupportMode;
   teacherTask?: TeacherWritingTask;
   onAnalysisResult?: (result: GrammarApiResponse | null) => void;
   onPracticePronunciation?: (payload: PronunciationLaunchPayload) => void;
@@ -55,8 +58,39 @@ const EMPTY_TEACHER_WRITING_STATE: GrammarWritingTeacherState = {
   revisionSourceText: undefined,
 };
 
+const CHANGE_PAIR_STOP_WORDS = new Set([
+  'a',
+  'an',
+  'the',
+  'to',
+  'of',
+  'in',
+  'on',
+  'at',
+  'for',
+  'with',
+  'and',
+  'or',
+  'but',
+  'his',
+  'her',
+  'their',
+  'my',
+  'your',
+  'our',
+  'its',
+]);
+
 function cleanText(value?: string | null): string {
   return typeof value === 'string' ? value.replace(/\s+/g, ' ').trim() : '';
+}
+
+function splitWords(text: string): string[] {
+  return cleanText(text)
+    .toLowerCase()
+    .replace(/[^\w\s']/g, ' ')
+    .split(/\s+/)
+    .filter(Boolean);
 }
 
 function buildLogicPatternMemory(
@@ -92,7 +126,8 @@ function detectWritingPatterns(params: {
     source.includes('last ') ||
     source.includes('ago') ||
     explanation.includes('past tense') ||
-    explanation.includes('tense')
+    explanation.includes('tense') ||
+    explanation.includes('subject-verb agreement')
   ) {
     patterns.push('past tense with time words');
   }
@@ -185,7 +220,8 @@ function detectLogicMemoryPatterns(params: {
   if (
     source.includes('yesterday') ||
     corrected.includes('yesterday') ||
-    explanation.includes('past tense')
+    explanation.includes('past tense') ||
+    explanation.includes('subject-verb agreement')
   ) {
     patterns.push(buildLogicPatternMemory('time words must match the verb'));
   }
@@ -204,6 +240,230 @@ function detectLogicMemoryPatterns(params: {
   }
 
   return patterns.slice(0, 3);
+}
+
+function detectGrammarLabelsVi(params: {
+  sourceText: string;
+  correctedText: string;
+  explanation?: string;
+}): string[] {
+  const source = params.sourceText.toLowerCase();
+  const corrected = params.correctedText.toLowerCase();
+  const explanation = cleanText(params.explanation).toLowerCase();
+
+  const labels: string[] = [];
+
+  if (
+    source.includes('yesterday') ||
+    source.includes('last ') ||
+    source.includes('ago') ||
+    explanation.includes('past tense') ||
+    explanation.includes('tense inconsistencies')
+  ) {
+    labels.push('Quá khứ đơn');
+  }
+
+  if (
+    explanation.includes('subject-verb agreement') ||
+    explanation.includes('singular subject')
+  ) {
+    labels.push('Hiện tại đơn');
+  }
+
+  if (explanation.includes('present perfect')) {
+    labels.push('Hiện tại hoàn thành');
+  }
+
+  if (
+    explanation.includes('article') ||
+    /\b(a|an|the)\b/i.test(corrected)
+  ) {
+    labels.push('Mạo từ');
+  }
+
+  if (
+    explanation.includes('preposition') ||
+    corrected.includes(' to him') ||
+    corrected.includes(' to her') ||
+    corrected.includes(' to them') ||
+    corrected.includes(' to me')
+  ) {
+    labels.push('Giới từ');
+  }
+
+  if (
+    explanation.includes('punctuation') ||
+    corrected.includes(',') ||
+    corrected.includes('.')
+  ) {
+    labels.push('Dấu câu');
+  }
+
+  if (
+    explanation.includes('sentence structure') ||
+    explanation.includes('flow') ||
+    explanation.includes('clause')
+  ) {
+    labels.push('Cấu trúc câu');
+  }
+
+  return Array.from(new Set(labels)).slice(0, 5);
+}
+
+function buildChangedWordPairs(
+  sourceText: string,
+  correctedText: string,
+): Array<{ from: string; to: string }> {
+  const sourceWords = sourceText.match(/\b[\w']+\b/g) ?? [];
+  const correctedWords = correctedText.match(/\b[\w']+\b/g) ?? [];
+  const pairs: Array<{ from: string; to: string }> = [];
+
+  const maxLength = Math.min(sourceWords.length, correctedWords.length);
+
+  for (let index = 0; index < maxLength; index += 1) {
+    const from = cleanText(sourceWords[index]);
+    const to = cleanText(correctedWords[index]);
+
+    if (!from || !to) continue;
+    if (from.toLowerCase() === to.toLowerCase()) continue;
+    if (from.length <= 2 || to.length <= 2) continue;
+    if (CHANGE_PAIR_STOP_WORDS.has(from.toLowerCase()) || CHANGE_PAIR_STOP_WORDS.has(to.toLowerCase())) {
+      continue;
+    }
+
+    pairs.push({ from, to });
+  }
+
+  const sourceLower = sourceText.toLowerCase();
+  const correctedLower = correctedText.toLowerCase();
+
+  if (sourceLower.includes('listen him') && correctedLower.includes('listened to him')) {
+    pairs.push({ from: 'listen him', to: 'listened to him' });
+  }
+
+  if (sourceLower.includes('listen her') && correctedLower.includes('listened to her')) {
+    pairs.push({ from: 'listen her', to: 'listened to her' });
+  }
+
+  if (sourceLower.includes('listen them') && correctedLower.includes('listened to them')) {
+    pairs.push({ from: 'listen them', to: 'listened to them' });
+  }
+
+  if (sourceLower.includes('try study') && correctedLower.includes('tried to study')) {
+    pairs.push({ from: 'try study', to: 'tried to study' });
+  }
+
+  return pairs
+    .filter((item, index, array) => {
+      const key = `${item.from.toLowerCase()}=>${item.to.toLowerCase()}`;
+      return (
+        array.findIndex(
+          (candidate) =>
+            `${candidate.from.toLowerCase()}=>${candidate.to.toLowerCase()}` === key,
+        ) === index
+      );
+    })
+    .slice(0, 6);
+}
+
+function buildGentleVietnameseExplanation(params: {
+  sourceText: string;
+  correctedText: string;
+  enhancedText: string;
+  explanationText: string;
+}): {
+  intro: string;
+  body: string[];
+  labels: string[];
+  changes: Array<{ from: string; to: string }>;
+} {
+  const { sourceText, correctedText, enhancedText, explanationText } = params;
+  const sourceLower = sourceText.toLowerCase();
+  const correctedLower = correctedText.toLowerCase();
+  const labels = detectGrammarLabelsVi({
+    sourceText,
+    correctedText,
+    explanation: explanationText,
+  });
+  const changes = buildChangedWordPairs(sourceText, correctedText);
+
+  const body: string[] = [];
+  let intro =
+    'Mình sửa nhẹ câu này để câu rõ hơn, đúng ngữ pháp hơn, và tự nhiên hơn trong tiếng Anh.';
+
+  const hasPastSimple =
+    labels.includes('Quá khứ đơn') ||
+    sourceLower.includes('yesterday') ||
+    sourceLower.includes('last ') ||
+    sourceLower.includes('ago');
+
+  const hasPresentSimple = labels.includes('Hiện tại đơn');
+
+  if (hasPastSimple) {
+    intro =
+      'Câu này đang kể lại chuyện đã xảy ra rồi, nên mình chuyển nhiều động từ sang quá khứ đơn để người nghe hiểu ngay đây là chuyện trong quá khứ.';
+    body.push(
+      'Khi có các dấu hiệu thời gian như “yesterday”, “last…”, “ago”, tiếng Anh thường cần động từ ở quá khứ đơn.'
+    );
+  } else if (hasPresentSimple) {
+    intro =
+      'Ở đây mình đang chỉnh theo hiện tại đơn và hòa hợp chủ ngữ – động từ, để câu đúng hơn với chủ ngữ số ít.';
+    body.push(
+      'Với chủ ngữ số ít như “he / she / the user”, động từ ở hiện tại đơn thường cần thêm -s hoặc -es.'
+    );
+  } else if (sourceLower.includes('today') && correctedLower !== sourceLower) {
+    intro =
+      'Câu này đang kể một chuỗi việc trong ngày như một câu chuyện nhìn lại, nên Mercy chỉnh các động từ để mạch kể nhất quán và dễ hiểu hơn.';
+  }
+
+  if (
+    correctedLower.includes('listened to him') ||
+    correctedLower.includes('listened to her') ||
+    correctedLower.includes('listened to them') ||
+    correctedLower.includes('listened to me') ||
+    explanationText.toLowerCase().includes('preposition')
+  ) {
+    body.push(
+      'Ngoài ra, mình cũng chỉnh giới từ cho đúng. Ví dụ trong tiếng Anh mình nói “listen to someone”, không nói “listen someone”.'
+    );
+  }
+
+  if (
+    labels.includes('Cấu trúc câu') ||
+    labels.includes('Dấu câu') ||
+    explanationText.toLowerCase().includes('punctuation') ||
+    explanationText.toLowerCase().includes('clause')
+  ) {
+    body.push(
+      'Mình cũng tách câu dài và thêm dấu câu để ý rõ hơn. Khi câu quá dài, tiếng Anh thường dễ đọc hơn nếu chia thành các đoạn ý nhỏ.'
+    );
+  }
+
+  if (enhancedText && enhancedText !== correctedText) {
+    body.push(
+      'Ở bản nâng cao hơn, mình làm câu mượt hơn một chút để nghe tự nhiên hơn, nhưng vẫn giữ nguyên ý của bạn.'
+    );
+  }
+
+  if (body.length === 0) {
+    body.push(
+      'Ý của bạn đã khá rõ rồi. Mình chỉ chỉnh vài điểm ngữ pháp và cách diễn đạt để câu tự nhiên hơn trong tiếng Anh.'
+    );
+  }
+
+  return { intro, body, labels, changes };
+}
+
+function buildSupportHint(mode: LearningSupportMode): string {
+  switch (mode) {
+    case 'gentle':
+      return 'Mercy sẽ dùng tiếng Việt nhiều hơn, giải thích mềm hơn, và gọi rõ tên điểm ngữ pháp như quá khứ đơn, hiện tại đơn, hiện tại hoàn thành.';
+    case 'guided':
+      return 'Mercy will mostly teach in English, with short Vietnamese hints only when they truly help.';
+    case 'immersion':
+    default:
+      return 'Mercy will stay fully in English so you can practice understanding through English only.';
+  }
 }
 
 async function copyText(value: string): Promise<boolean> {
@@ -225,6 +485,7 @@ export function GrammarWritingTab({
   roomTitle,
   contentEn,
   englishLevel,
+  learningSupportMode = 'gentle',
   teacherTask,
   onAnalysisResult,
   onPracticePronunciation,
@@ -275,6 +536,11 @@ export function GrammarWritingTab({
     if (wordCount <= 60) return 'paragraph';
     return 'essay';
   }, [result?.writingMode, draft]);
+
+  const supportHint = useMemo(
+    () => buildSupportHint(learningSupportMode),
+    [learningSupportMode],
+  );
 
   const emitTeacherWritingState = useCallback(
     (
@@ -566,6 +832,17 @@ Paste or write your English here. Mercy will keep the teacher focus while correc
   const practiceTarget = enhancedText || correctedText;
   const sourceText = latestSubmittedText || draft.trim();
 
+  const gentleExplanation = useMemo(
+    () =>
+      buildGentleVietnameseExplanation({
+        sourceText,
+        correctedText,
+        enhancedText,
+        explanationText,
+      }),
+    [sourceText, correctedText, enhancedText, explanationText],
+  );
+
   return (
     <div className="flex h-full min-h-0 flex-col overflow-hidden">
       <div className="flex-1 min-h-0 overflow-y-auto px-4 py-4">
@@ -579,6 +856,13 @@ Paste or write your English here. Mercy will keep the teacher focus while correc
                 Start with your mood, something that happened, or a thought you keep returning to.
                 Mercy will help shape it into more natural English.
               </p>
+
+              <div className="mt-3 rounded-2xl border border-sky-100 bg-sky-50/70 px-3.5 py-3">
+                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-sky-700">
+                  Learning support
+                </p>
+                <p className="mt-1 text-sm leading-6 text-slate-700">{supportHint}</p>
+              </div>
             </div>
 
             <div className="rounded-[28px] border border-orange-100 bg-[#FFFBF5] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]">
@@ -591,15 +875,6 @@ Paste or write your English here. Mercy will keep the teacher focus while correc
                 placeholder={placeholder}
                 className="min-h-[190px] w-full resize-y border-0 bg-transparent p-0 text-sm leading-7 text-slate-800 outline-none placeholder:text-slate-400 focus:ring-0"
               />
-
-              <div className="mt-4 rounded-2xl border border-amber-100 bg-gradient-to-r from-amber-50 to-orange-50/70 p-3.5">
-                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-amber-700">
-                  Example
-                </p>
-                <p className="mt-1.5 text-sm leading-6 text-slate-700">
-                  Yesterday I go to supermarket and buy many thing.
-                </p>
-              </div>
             </div>
 
             <div className="mt-4 flex items-center justify-between gap-3">
@@ -671,6 +946,21 @@ Paste or write your English here. Mercy will keep the teacher focus while correc
                   <p className="mt-1 text-sm font-medium leading-6 text-slate-800">
                     {correctedText}
                   </p>
+
+                  {learningSupportMode === 'gentle' ? (
+                    <div className="mt-2 space-y-2 text-sm leading-6 text-emerald-700">
+                      <p>👉 Mình đã sửa câu này để đúng ngữ pháp hơn và dễ đọc hơn.</p>
+                      {gentleExplanation.labels.length > 0 ? (
+                        <p>
+                          Điểm ngữ pháp chính: <strong>{gentleExplanation.labels.join(' • ')}</strong>
+                        </p>
+                      ) : null}
+                    </div>
+                  ) : learningSupportMode === 'guided' ? (
+                    <p className="mt-2 text-sm leading-6 text-emerald-700">
+                      Small hint: Mercy corrected the main grammar shape and made the sentence easier to read.
+                    </p>
+                  ) : null}
                 </div>
 
                 {enhancedText ? (
@@ -703,6 +993,17 @@ Paste or write your English here. Mercy will keep the teacher focus while correc
                           <p className="mt-1 text-sm leading-6 text-slate-600">
                             Mercy improved your sentence. The next step is to say it aloud, then understand why it works.
                           </p>
+
+                          {learningSupportMode === 'gentle' ? (
+                            <div className="mt-2 space-y-2 text-sm leading-6 text-purple-700">
+                              <p>👉 Bản nâng cao này mượt hơn một chút, để khi đọc lên nghe tự nhiên hơn.</p>
+                              <p>Bước tiếp theo là đọc câu này thành tiếng, rồi xem phần giải thích để hiểu vì sao câu nghe tự nhiên hơn.</p>
+                            </div>
+                          ) : learningSupportMode === 'guided' ? (
+                            <p className="mt-2 text-sm leading-6 text-purple-700">
+                              Gợi ý ngắn: đọc câu này thành tiếng trước, rồi mở phần giải thích để hiểu điểm đổi chính.
+                            </p>
+                          ) : null}
                         </div>
                       </div>
 
@@ -751,6 +1052,17 @@ Paste or write your English here. Mercy will keep the teacher focus while correc
                         <p className="mt-1 text-sm leading-6 text-slate-600">
                           First say the corrected sentence aloud. Then open English Logic to understand the English thinking behind it.
                         </p>
+
+                        {learningSupportMode === 'gentle' ? (
+                          <div className="mt-2 space-y-2 text-sm leading-6 text-sky-700">
+                            <p>👉 Trước tiên hãy nói câu đã sửa thành tiếng.</p>
+                            <p>Sau đó mở phần giải thích để hiểu cách nghĩ bằng tiếng Anh và nhớ tên điểm ngữ pháp cho dễ học lâu hơn.</p>
+                          </div>
+                        ) : learningSupportMode === 'guided' ? (
+                          <p className="mt-2 text-sm leading-6 text-sky-700">
+                            Gợi ý ngắn: nói câu đã sửa trước, rồi mới nhìn sang phần logic.
+                          </p>
+                        ) : null}
                       </div>
                     </div>
 
@@ -785,11 +1097,68 @@ Paste or write your English here. Mercy will keep the teacher focus while correc
                 )}
 
                 {result.explanation ? (
-                  <div>
+                  <div className="rounded-2xl border border-orange-100/80 bg-orange-50/40 p-4">
                     <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
                       Why Mercy changed it
                     </p>
-                    <p className="mt-1 text-sm leading-6 text-slate-700">{result.explanation}</p>
+
+                    {learningSupportMode === 'gentle' ? (
+                      <div className="mt-2 space-y-3">
+                        <p className="text-sm leading-6 text-slate-600">
+                          Mercy corrected the tense, sentence structure, and flow so the story sounds clearer in English.
+                        </p>
+
+                        <div className="space-y-3 text-[15px] leading-7 text-amber-800">
+                          <p>
+                            👉 <strong>Giải thích nhẹ:</strong> {gentleExplanation.intro}
+                          </p>
+
+                          {gentleExplanation.body.map((item) => (
+                            <p key={item}>{item}</p>
+                          ))}
+
+                          {gentleExplanation.changes.length > 0 ? (
+                            <div>
+                              <p className="font-semibold text-amber-900">Các chỗ đổi dễ thấy:</p>
+                              <div className="mt-1 space-y-1">
+                                {gentleExplanation.changes.map((item) => (
+                                  <p key={`${item.from}-${item.to}`}>
+                                    - <strong>{item.from}</strong> → <strong>{item.to}</strong>
+                                  </p>
+                                ))}
+                              </div>
+                            </div>
+                          ) : null}
+
+                          {gentleExplanation.labels.length > 0 ? (
+                            <div>
+                              <p className="font-semibold text-amber-900">Tên điểm ngữ pháp:</p>
+                              <p>
+                                {gentleExplanation.labels.map((item, index) => (
+                                  <React.Fragment key={item}>
+                                    {index > 0 ? ' • ' : ''}
+                                    <strong>{item}</strong>
+                                  </React.Fragment>
+                                ))}
+                              </p>
+                            </div>
+                          ) : null}
+
+                          <p>
+                            Nói ngắn gọn: mình giữ nguyên ý của bạn, nhưng chỉnh để câu đúng hơn, rõ ý hơn, và tự nhiên hơn khi người bản xứ đọc.
+                          </p>
+                        </div>
+                      </div>
+                    ) : learningSupportMode === 'guided' ? (
+                      <div className="mt-2 space-y-2">
+                        <p className="text-sm leading-6 text-slate-700">{result.explanation}</p>
+                        <p className="text-sm leading-6 text-amber-700">
+                          Gợi ý ngắn: tập trung vào {gentleExplanation.labels.length > 0 ? gentleExplanation.labels.join(' • ') : 'động từ, dấu câu, và cấu trúc câu'}.
+                        </p>
+                      </div>
+                    ) : (
+                      <p className="mt-2 text-sm leading-6 text-slate-700">{result.explanation}</p>
+                    )}
                   </div>
                 ) : null}
               </div>
