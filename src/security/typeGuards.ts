@@ -1,4 +1,9 @@
-// Type Guards - Strict runtime type validation for user tier and roles
+/**
+ * File: typeGuards.ts
+ * Path: src/security/typeGuards.ts
+ *
+ * Type Guards - Strict runtime type validation for user tier and roles
+ */
 
 import type { TierId } from '@/lib/roomMaster/roomMasterTypes';
 
@@ -6,7 +11,6 @@ const VALID_TIERS: TierId[] = [
   'free',
   'vip1',
   'vip2',
-  'vip3',
   'vip3',
   'vip4',
   'vip5',
@@ -71,7 +75,8 @@ export function guardUserId(userId: unknown): string | null {
     return null;
   }
 
-  const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+  const uuidPattern =
+    /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
   if (!uuidPattern.test(userId)) {
     if (import.meta.env.DEV) {
@@ -86,7 +91,10 @@ export function guardUserId(userId: unknown): string | null {
 /**
  * Compare client tier vs server tier, detect spoofing
  */
-export function detectTierSpoofing(clientTier: TierId, serverTier: TierId): boolean {
+export function detectTierSpoofing(
+  clientTier: TierId,
+  serverTier: TierId,
+): boolean {
   const normalizedClient = guardTierId(clientTier);
   const normalizedServer = guardTierId(serverTier);
 
@@ -107,12 +115,13 @@ export function detectTierSpoofing(clientTier: TierId, serverTier: TierId): bool
  * Get tier level for comparison (higher = more access)
  */
 export function getTierLevel(tier: TierId): number {
-  const tierLevels: Partial<Record<TierId, number>> = {
+  const safeTier = guardTierId(tier);
+
+  const tierLevels: Record<TierId, number> = {
     free: 0,
     vip1: 1,
     vip2: 2,
     vip3: 3,
-
     vip4: 4,
     vip5: 5,
     vip6: 6,
@@ -124,15 +133,25 @@ export function getTierLevel(tier: TierId): number {
     kids_3: 3,
   };
 
-  return tierLevels[tier] || 0;
+  return tierLevels[safeTier];
 }
 
 /**
  * Check if user tier grants access to required tier
+ *
+ * Safe behavior:
+ * - unknown / poisoned user tier => treated as 'free'
+ * - unknown / poisoned required tier => treated as 'free'
  */
-export function canAccessTier(userTier: TierId, requiredTier: TierId): boolean {
-  const userLevel = getTierLevel(userTier);
-  const requiredLevel = getTierLevel(requiredTier);
+export function canAccessTier(
+  userTier: TierId | string | null | undefined,
+  requiredTier: TierId | string | null | undefined,
+): boolean {
+  const safeUserTier = guardTierId(userTier);
+  const safeRequiredTier = guardTierId(requiredTier);
+
+  const userLevel = getTierLevel(safeUserTier);
+  const requiredLevel = getTierLevel(safeRequiredTier);
 
   return userLevel >= requiredLevel;
 }
