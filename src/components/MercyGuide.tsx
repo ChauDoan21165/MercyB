@@ -209,7 +209,6 @@ export function MercyGuide({
   const [activeTab, setActiveTab] = useState<GuideTab>('teacher');
   const [showSettings, setShowSettings] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [isMobile, setIsMobile] = useState<boolean>(isMobileViewport());
 
   const [latestAnalysisResult, setLatestAnalysisResult] =
     useState<GrammarApiResponse | null>(null);
@@ -297,7 +296,10 @@ export function MercyGuide({
   const clampBubblePos = useCallback((next: BubblePos): BubblePos => {
     if (typeof window === 'undefined') return next;
 
-    const maxRight = Math.max(BUBBLE_SAFE_MARGIN, window.innerWidth - BUBBLE_SIZE - BUBBLE_SAFE_MARGIN);
+    const maxRight = Math.max(
+      BUBBLE_SAFE_MARGIN,
+      window.innerWidth - BUBBLE_SIZE - BUBBLE_SAFE_MARGIN,
+    );
     const maxBottom = Math.max(
       getBubbleBottomSafe(),
       window.innerHeight - BUBBLE_SIZE - BUBBLE_SAFE_MARGIN,
@@ -309,80 +311,68 @@ export function MercyGuide({
     };
   }, []);
 
-  const clampPanelRect = useCallback(
-    (next: PanelRect): PanelRect => {
-      if (typeof window === 'undefined') return next;
+  const clampPanelRect = useCallback((next: PanelRect): PanelRect => {
+    if (typeof window === 'undefined') return next;
 
-      const mobile = isMobileViewport();
+    const widthPolicyRaw = getPanelWidthPolicy();
+    const heightPolicyRaw = getPanelHeightPolicy();
 
-      if (mobile) {
-        return {
-          width: window.innerWidth,
-          height: window.innerHeight,
-          right: 0,
-          bottom: 0,
-        };
-      }
+    const widthPolicy: {
+      minWidth?: number;
+      defaultWidth: number;
+      maxWidth?: number;
+    } = widthPolicyRaw;
 
-      const widthPolicyRaw = getPanelWidthPolicy();
-      const heightPolicyRaw = getPanelHeightPolicy();
+    const heightPolicy: {
+      minHeight?: number;
+      maxHeight?: number;
+    } = heightPolicyRaw;
 
-      const widthPolicy: {
-        minWidth?: number;
-        defaultWidth: number;
-        maxWidth?: number;
-      } = widthPolicyRaw;
+    const maxWidth = Math.max(
+      MIN_PANEL_WIDTH,
+      window.innerWidth - MIN_PANEL_MARGIN * 2,
+    );
 
-      const heightPolicy: {
-        minHeight?: number;
-        maxHeight?: number;
-      } = heightPolicyRaw;
+    const maxHeight = Math.max(
+      MIN_PANEL_HEIGHT,
+      window.innerHeight -
+        MIN_PANEL_MARGIN * 2 -
+        MOBILE_PANEL_BOTTOM_SAFE -
+        MUSIC_BAR_SAFE_HEIGHT,
+    );
 
-      const maxWidth = Math.max(
-        MIN_PANEL_WIDTH,
-        window.innerWidth - MIN_PANEL_MARGIN * 2,
-      );
+    const width = clampNumber(
+      next.width,
+      widthPolicy.minWidth ?? MIN_PANEL_WIDTH,
+      Math.min(widthPolicy.maxWidth ?? maxWidth, maxWidth),
+    );
 
-      const maxHeight = Math.max(
-        MIN_PANEL_HEIGHT,
-        window.innerHeight -
-          MIN_PANEL_MARGIN * 2 -
-          MOBILE_PANEL_BOTTOM_SAFE -
-          MUSIC_BAR_SAFE_HEIGHT,
-      );
+    const height = clampNumber(
+      next.height,
+      heightPolicy.minHeight ?? MIN_PANEL_HEIGHT,
+      Math.min(heightPolicy.maxHeight ?? maxHeight, maxHeight),
+    );
 
-      const width = clampNumber(
-        next.width,
-        widthPolicy.minWidth ?? MIN_PANEL_WIDTH,
-        Math.min(widthPolicy.maxWidth ?? maxWidth, maxWidth),
-      );
+    const maxRight = Math.max(
+      MIN_PANEL_MARGIN,
+      window.innerWidth - width - MIN_PANEL_MARGIN,
+    );
+    const maxBottom = Math.max(
+      MIN_PANEL_MARGIN,
+      window.innerHeight - height - MIN_PANEL_MARGIN,
+    );
 
-      const height = clampNumber(
-        next.height,
-        heightPolicy.minHeight ?? MIN_PANEL_HEIGHT,
-        Math.min(heightPolicy.maxHeight ?? maxHeight, maxHeight),
-      );
-
-      const maxRight = Math.max(MIN_PANEL_MARGIN, window.innerWidth - width - MIN_PANEL_MARGIN);
-      const maxBottom = Math.max(
-        MIN_PANEL_MARGIN,
-        window.innerHeight - height - MIN_PANEL_MARGIN,
-      );
-
-      return {
-        width,
-        height,
-        right: clampNumber(next.right, MIN_PANEL_MARGIN, maxRight),
-        bottom: clampNumber(next.bottom, MIN_PANEL_MARGIN, maxBottom),
-      };
-    },
-    [],
-  );
+    return {
+      width,
+      height,
+      right: clampNumber(next.right, MIN_PANEL_MARGIN, maxRight),
+      bottom: clampNumber(next.bottom, MIN_PANEL_MARGIN, maxBottom),
+    };
+  }, []);
 
   useEffect(() => {
-    if (isMobile) return;
     writeStoredPanelRect(panelRect);
-  }, [isMobile, panelRect]);
+  }, [panelRect]);
 
   useEffect(() => {
     writeStoredBubblePos(bubblePos);
@@ -391,45 +381,14 @@ export function MercyGuide({
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    const syncViewportState = () => {
-      const mobile = isMobileViewport();
-      setIsMobile(mobile);
-
-      if (mobile) {
-        setIsFullscreen(true);
-        setPanelRect({
-          width: window.innerWidth,
-          height: window.innerHeight,
-          right: 0,
-          bottom: 0,
-        });
-      } else {
-        setPanelRect((current) => clampPanelRect(current));
-        setBubblePos((current) => clampBubblePos(current));
-      }
+    const onResize = () => {
+      setPanelRect((current) => clampPanelRect(current));
+      setBubblePos((current) => clampBubblePos(current));
     };
 
-    syncViewportState();
-    window.addEventListener('resize', syncViewportState);
-    return () => window.removeEventListener('resize', syncViewportState);
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
   }, [clampBubblePos, clampPanelRect]);
-
-  useEffect(() => {
-    if (!isOpen || typeof document === 'undefined') return;
-
-    const previousBodyOverflow = document.body.style.overflow;
-    const previousTouchAction = document.body.style.touchAction;
-
-    if (isMobile) {
-      document.body.style.overflow = 'hidden';
-      document.body.style.touchAction = 'none';
-    }
-
-    return () => {
-      document.body.style.overflow = previousBodyOverflow;
-      document.body.style.touchAction = previousTouchAction;
-    };
-  }, [isMobile, isOpen]);
 
   const handleOpenGuideFromBubble = useCallback(() => {
     setIsOpen(true);
@@ -445,7 +404,7 @@ export function MercyGuide({
   }, []);
 
   const handleToggleFullscreen = useCallback(() => {
-    if (isMobile) {
+    if (isMobileViewport()) {
       return;
     }
 
@@ -468,7 +427,7 @@ export function MercyGuide({
 
       return false;
     });
-  }, [clampPanelRect, initialHeight, initialWidthPolicy.defaultWidth, isMobile, panelRect]);
+  }, [clampPanelRect, initialHeight, initialWidthPolicy.defaultWidth, panelRect]);
 
   const handleBubblePointerDown = useCallback(
     (event: React.PointerEvent<HTMLDivElement>) => {
@@ -512,7 +471,7 @@ export function MercyGuide({
 
   const handlePanelDragStart = useCallback(
     (event: React.PointerEvent<HTMLDivElement>) => {
-      if (isFullscreen || isMobile || (event.target as HTMLElement).closest('button')) {
+      if (isFullscreen || (event.target as HTMLElement).closest('button')) {
         return;
       }
 
@@ -540,13 +499,13 @@ export function MercyGuide({
       window.addEventListener('pointermove', onMove);
       window.addEventListener('pointerup', onUp);
     },
-    [clampPanelRect, isFullscreen, isMobile, panelRect],
+    [clampPanelRect, isFullscreen, panelRect],
   );
 
   const handleResizePointerDown = useCallback(
     (direction: ResizeDirection) =>
       (event: React.PointerEvent<HTMLDivElement>) => {
-        if (isFullscreen || isMobile) {
+        if (isFullscreen) {
           return;
         }
 
@@ -592,13 +551,11 @@ export function MercyGuide({
         window.addEventListener('pointermove', onMove);
         window.addEventListener('pointerup', onUp);
       },
-    [clampPanelRect, isFullscreen, isMobile, panelRect],
+    [clampPanelRect, isFullscreen, panelRect],
   );
 
   const handleSetSizePreset = useCallback(
     (presetKey: keyof typeof SIZE_PRESETS) => {
-      if (isMobile) return;
-
       const preset = SIZE_PRESETS[presetKey];
       if (!preset) return;
 
@@ -610,7 +567,7 @@ export function MercyGuide({
         }),
       );
     },
-    [clampPanelRect, isMobile],
+    [clampPanelRect],
   );
 
   const handleUpdateInteraction = useCallback(() => {
@@ -784,16 +741,12 @@ export function MercyGuide({
       {isOpen && (
         <div
           className={cn(
-            'fixed z-[95] overflow-hidden border border-slate-200 bg-white shadow-2xl',
-            isMobile
-              ? 'inset-0 h-[100dvh] w-screen rounded-none border-0'
-              : 'rounded-[28px]',
-            !isMobile &&
-              isFullscreen &&
+            'fixed z-[95] overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-2xl',
+            isFullscreen &&
               'left-6 right-6 top-6 bottom-6 rounded-[24px] md:left-10 md:right-10 md:top-8 md:bottom-8 lg:left-14 lg:right-14 lg:top-10 lg:bottom-10',
           )}
           style={
-            isMobile || isFullscreen
+            isFullscreen
               ? undefined
               : {
                   width: panelRect.width,
@@ -836,7 +789,7 @@ export function MercyGuide({
             latestTeacherWritingState={latestTeacherWritingState}
             memory={memory}
             teacherMemorySummary={teacherSummary}
-            isFullscreen={isMobile ? true : isFullscreen}
+            isFullscreen={isFullscreen}
             onToggleFullscreen={handleToggleFullscreen}
             onUpdateInteraction={handleUpdateInteraction}
             onOpenGuideFromBubble={handleOpenGuideFromBubble}
@@ -871,7 +824,7 @@ export function MercyGuide({
             onSaveProfile={handleSaveProfile}
           />
 
-          {!isFullscreen && !isMobile && (
+          {!isFullscreen && (
             <>
               <div
                 className="absolute inset-x-3 top-0 z-[70] h-1.5 cursor-n-resize bg-slate-300/70 hover:bg-slate-400/80"
