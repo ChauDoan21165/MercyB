@@ -125,7 +125,6 @@ type LearningSupportOption = {
 };
 
 const LEARNING_SUPPORT_STORAGE_KEY = 'mercy.learningSupportMode';
-const MOBILE_BREAKPOINT_QUERY = '(max-width: 767px)';
 
 const LEARNING_SUPPORT_OPTIONS: LearningSupportOption[] = [
   {
@@ -384,7 +383,10 @@ function LearningSupportModePicker({
           </div>
         </div>
 
-        <ChevronDown size={16} className={`shrink-0 transition ${open ? 'rotate-180' : ''}`} />
+        <ChevronDown
+          size={16}
+          className={`shrink-0 transition ${open ? 'rotate-180' : ''}`}
+        />
       </button>
 
       {open ? (
@@ -418,10 +420,14 @@ function LearningSupportModePicker({
 
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2">
-                    <span className="text-sm font-semibold text-slate-900">{option.label}</span>
+                    <span className="text-sm font-semibold text-slate-900">
+                      {option.label}
+                    </span>
                     <span className={`h-2 w-2 rounded-full ${optionStyles.dot}`} />
                   </div>
-                  <div className="mt-1 text-xs leading-5 text-slate-600">{option.description}</div>
+                  <div className="mt-1 text-xs leading-5 text-slate-600">
+                    {option.description}
+                  </div>
                 </div>
 
                 {isActive ? (
@@ -482,8 +488,8 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
   const [activeTab, setLocalActiveTab] = useState<MercyTabType>(
     normalizeTab(initialTab),
   );
-  const [learningSupportMode, setLearningSupportMode] = useState<LearningSupportMode>('gentle');
-  const [isMobileViewport, setIsMobileViewport] = useState(false);
+  const [learningSupportMode, setLearningSupportMode] =
+    useState<LearningSupportMode>('gentle');
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -491,49 +497,9 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
   }, []);
 
   useEffect(() => {
-    if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
-      return;
-    }
-
-    const mediaQuery = window.matchMedia(MOBILE_BREAKPOINT_QUERY);
-    const updateIsMobile = (event?: MediaQueryList | MediaQueryListEvent) => {
-      setIsMobileViewport((event ?? mediaQuery).matches);
-    };
-
-    updateIsMobile(mediaQuery);
-
-    const listener = (event: MediaQueryListEvent) => updateIsMobile(event);
-
-    if (typeof mediaQuery.addEventListener === 'function') {
-      mediaQuery.addEventListener('change', listener);
-      return () => mediaQuery.removeEventListener('change', listener);
-    }
-
-    mediaQuery.addListener(listener);
-    return () => mediaQuery.removeListener(listener);
-  }, []);
-
-  useEffect(() => {
     if (typeof window === 'undefined') return;
     window.localStorage.setItem(LEARNING_SUPPORT_STORAGE_KEY, learningSupportMode);
   }, [learningSupportMode]);
-
-  useEffect(() => {
-    if (!isOpen || typeof document === 'undefined') return;
-
-    const previousBodyOverflow = document.body.style.overflow;
-    const previousTouchAction = document.body.style.touchAction;
-
-    if (isMobileViewport) {
-      document.body.style.overflow = 'hidden';
-      document.body.style.touchAction = 'none';
-    }
-
-    return () => {
-      document.body.style.overflow = previousBodyOverflow;
-      document.body.style.touchAction = previousTouchAction;
-    };
-  }, [isMobileViewport, isOpen]);
 
   const learningSupportHint = useMemo(() => {
     switch (learningSupportMode) {
@@ -748,21 +714,13 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
   }
 
   return (
-    <div
-      className={`${
-        isMobileViewport
-          ? 'fixed inset-0 z-[100] h-[100dvh] w-screen border-0 rounded-none'
-          : 'relative h-full border-l border-white/70'
-      } flex min-h-0 flex-col overflow-hidden bg-gradient-to-br from-[#FFF8F1] via-[#FFFCFA] to-[#F7F5FF] shadow-2xl`}
-    >
+    <div className="relative flex h-full min-h-0 flex-col overflow-hidden border-l border-white/70 bg-gradient-to-br from-[#FFF8F1] via-[#FFFCFA] to-[#F7F5FF] shadow-2xl">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[radial-gradient(circle_at_top,_rgba(255,159,122,0.14),_rgba(192,132,252,0.07)_42%,_transparent_74%)]" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-[linear-gradient(to_top,rgba(255,255,255,0.72),transparent)]" />
 
       <div
-        className={`relative z-30 flex items-center justify-between border-b border-white/80 bg-white/78 backdrop-blur-md ${
-          isMobileViewport ? 'sticky top-0 px-3 py-2.5 pt-[max(0.625rem,env(safe-area-inset-top))]' : 'px-4 py-3'
-        }`}
-        onPointerDown={isMobileViewport ? undefined : onPanelDragStart}
+        className="relative z-30 flex items-center justify-between border-b border-white/80 bg-white/78 px-4 py-3 backdrop-blur-md"
+        onPointerDown={onPanelDragStart}
       >
         <div className="flex min-w-0 items-center gap-3">
           <div className="relative shrink-0">
@@ -770,9 +728,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
             <img
               src={MERCY_HOST_IMAGE_SRC}
               alt="Teacher Mercy"
-              className={`relative rounded-full border-2 border-white object-cover object-[50%_32%] scale-110 shadow-[0_8px_18px_rgba(148,163,184,0.18)] ${
-                isMobileViewport ? 'h-10 w-10' : 'h-11 w-11'
-              }`}
+              className="relative h-11 w-11 rounded-full border-2 border-white object-cover object-[50%_32%] scale-110 shadow-[0_8px_18px_rgba(148,163,184,0.18)]"
               onError={(event) => {
                 fallbackAvatar(event);
                 onAvatarError?.(event);
@@ -782,7 +738,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
           </div>
 
           <div className="min-w-0 pt-1">
-            <p className={`${isMobileViewport ? 'text-sm' : 'text-base'} truncate font-semibold text-slate-900`}>
+            <p className="truncate text-base font-semibold text-slate-900">
               {journeyTitle || 'Teacher Mercy'}
             </p>
             <p className="truncate text-xs font-medium text-slate-500">
@@ -794,9 +750,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
         <div className="ml-2 flex shrink-0 items-center gap-1">
           <button
             type="button"
-            className={`rounded-full border border-transparent bg-white/75 p-2 text-slate-500 transition hover:border-slate-200 hover:bg-white hover:text-slate-700 ${
-              isMobileViewport ? 'hidden' : ''
-            }`}
+            className="rounded-full border border-transparent bg-white/75 p-2 text-slate-500 transition hover:border-slate-200 hover:bg-white hover:text-slate-700"
             aria-label={isFullscreen ? 'Exit full screen' : 'Full screen'}
             onClick={onToggleFullscreen}
           >
@@ -831,13 +785,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
         </div>
       </div>
 
-      <div
-        className={`relative z-20 border-b border-white/80 bg-white/58 backdrop-blur-sm ${
-          isMobileViewport
-            ? 'sticky top-[calc(env(safe-area-inset-top)+3.75rem)] px-3 py-2.5'
-            : 'px-3 py-3'
-        }`}
-      >
+      <div className="relative z-20 border-b border-white/80 bg-white/58 px-3 py-3 backdrop-blur-sm">
         {!access.features.hasMercyJourney ? (
           <div className="mb-3 rounded-2xl border border-violet-200 bg-gradient-to-r from-violet-50 via-white to-rose-50 px-4 py-3 shadow-[0_8px_22px_rgba(168,85,247,0.08)]">
             <div className="flex items-center justify-between gap-3">
@@ -862,7 +810,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
           </div>
         ) : null}
 
-        <div className="mb-3 flex flex-col gap-2 md:mb-4 md:flex-row md:items-end md:justify-between">
+        <div className="mb-4 flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
           <div className="px-1">
             <p className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">
               Mercy teaching mode
@@ -888,7 +836,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
                 type="button"
                 onClick={() => handleTabChange(tab.id)}
                 disabled={!tab.enabled}
-                className={`flex min-h-[68px] md:min-h-[72px] flex-col items-center justify-center gap-1.5 rounded-2xl border px-2 py-2.5 md:py-3 text-center transition-all duration-200 ${
+                className={`flex min-h-[72px] flex-col items-center justify-center gap-1.5 rounded-2xl border px-2 py-3 text-center transition-all duration-200 ${
                   isActive
                     ? accent.active
                     : tab.enabled
@@ -897,11 +845,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
                 }`}
                 aria-pressed={isActive}
                 aria-disabled={!tab.enabled}
-                title={
-                  tab.enabled
-                    ? tab.label
-                    : `${tab.label} requires premium access`
-                }
+                title={tab.enabled ? tab.label : `${tab.label} requires premium access`}
               >
                 <div className="flex items-center gap-1">
                   <Icon
@@ -927,12 +871,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
         </div>
       </div>
 
-      <div
-        ref={scrollRef}
-        className={`relative z-10 min-h-0 flex-1 overflow-y-auto overscroll-contain ${
-          isMobileViewport ? 'pb-[calc(env(safe-area-inset-bottom)+0.75rem)]' : ''
-        }`}
-      >
+      <div ref={scrollRef} className="relative z-10 min-h-0 flex-1 overflow-y-auto">
         <div className="min-h-full p-3 md:p-4">
           {enabledTabs.length === 0 ? (
             <LockedAccessCard
@@ -947,7 +886,9 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
               latestTeacherWritingState={latestTeacherWritingState}
               latestAnalysisResult={resolvedLatestAnalysisResult}
               teacherMemorySummary={teacherMemorySummary}
-              onOpenPronunciation={() => handleOpenPronunciation(pronunciationPayload ?? undefined)}
+              onOpenPronunciation={() =>
+                handleOpenPronunciation(pronunciationPayload ?? undefined)
+              }
               onOpenWriting={handleOpenWriting}
               isLocked={!access.features.hasMercyJourney}
               onUnlock={goToPricing}
