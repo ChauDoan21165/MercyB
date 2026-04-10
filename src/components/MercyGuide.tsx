@@ -209,6 +209,7 @@ export function MercyGuide({
   const [activeTab, setActiveTab] = useState<GuideTab>('teacher');
   const [showSettings, setShowSettings] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isMobile, setIsMobile] = useState<boolean>(isMobileViewport());
 
   const [latestAnalysisResult, setLatestAnalysisResult] =
     useState<GrammarApiResponse | null>(null);
@@ -312,6 +313,17 @@ export function MercyGuide({
     (next: PanelRect): PanelRect => {
       if (typeof window === 'undefined') return next;
 
+      const mobile = isMobileViewport();
+
+      if (mobile) {
+        return {
+          width: window.innerWidth,
+          height: window.innerHeight,
+          right: 0,
+          bottom: 0,
+        };
+      }
+
       const widthPolicyRaw = getPanelWidthPolicy();
       const heightPolicyRaw = getPanelHeightPolicy();
 
@@ -368,8 +380,9 @@ export function MercyGuide({
   );
 
   useEffect(() => {
+    if (isMobile) return;
     writeStoredPanelRect(panelRect);
-  }, [panelRect]);
+  }, [isMobile, panelRect]);
 
   useEffect(() => {
     writeStoredBubblePos(bubblePos);
@@ -378,14 +391,45 @@ export function MercyGuide({
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    const onResize = () => {
-      setPanelRect((current) => clampPanelRect(current));
-      setBubblePos((current) => clampBubblePos(current));
+    const syncViewportState = () => {
+      const mobile = isMobileViewport();
+      setIsMobile(mobile);
+
+      if (mobile) {
+        setIsFullscreen(true);
+        setPanelRect({
+          width: window.innerWidth,
+          height: window.innerHeight,
+          right: 0,
+          bottom: 0,
+        });
+      } else {
+        setPanelRect((current) => clampPanelRect(current));
+        setBubblePos((current) => clampBubblePos(current));
+      }
     };
 
-    window.addEventListener('resize', onResize);
-    return () => window.removeEventListener('resize', onResize);
+    syncViewportState();
+    window.addEventListener('resize', syncViewportState);
+    return () => window.removeEventListener('resize', syncViewportState);
   }, [clampBubblePos, clampPanelRect]);
+
+  useEffect(() => {
+    if (!isOpen || typeof document === 'undefined') return;
+
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousTouchAction = document.body.style.touchAction;
+
+    if (isMobile) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.touchAction = 'none';
+    }
+
+    return () => {
+      document.body.style.overflow = previousBodyOverflow;
+      document.body.style.touchAction = previousTouchAction;
+    };
+  }, [isMobile, isOpen]);
 
   const handleOpenGuideFromBubble = useCallback(() => {
     setIsOpen(true);
@@ -401,6 +445,10 @@ export function MercyGuide({
   }, []);
 
   const handleToggleFullscreen = useCallback(() => {
+    if (isMobile) {
+      return;
+    }
+
     setIsFullscreen((current) => {
       if (!current) {
         panelRectBeforeFullscreenRef.current = panelRect;
@@ -420,7 +468,7 @@ export function MercyGuide({
 
       return false;
     });
-  }, [clampPanelRect, initialHeight, initialWidthPolicy.defaultWidth, panelRect]);
+  }, [clampPanelRect, initialHeight, initialWidthPolicy.defaultWidth, isMobile, panelRect]);
 
   const handleBubblePointerDown = useCallback(
     (event: React.PointerEvent<HTMLDivElement>) => {
@@ -464,7 +512,7 @@ export function MercyGuide({
 
   const handlePanelDragStart = useCallback(
     (event: React.PointerEvent<HTMLDivElement>) => {
-      if (isFullscreen || (event.target as HTMLElement).closest('button')) {
+      if (isFullscreen || isMobile || (event.target as HTMLElement).closest('button')) {
         return;
       }
 
@@ -492,13 +540,13 @@ export function MercyGuide({
       window.addEventListener('pointermove', onMove);
       window.addEventListener('pointerup', onUp);
     },
-    [clampPanelRect, isFullscreen, panelRect],
+    [clampPanelRect, isFullscreen, isMobile, panelRect],
   );
 
   const handleResizePointerDown = useCallback(
     (direction: ResizeDirection) =>
       (event: React.PointerEvent<HTMLDivElement>) => {
-        if (isFullscreen) {
+        if (isFullscreen || isMobile) {
           return;
         }
 
@@ -544,11 +592,13 @@ export function MercyGuide({
         window.addEventListener('pointermove', onMove);
         window.addEventListener('pointerup', onUp);
       },
-    [clampPanelRect, isFullscreen, panelRect],
+    [clampPanelRect, isFullscreen, isMobile, panelRect],
   );
 
   const handleSetSizePreset = useCallback(
     (presetKey: keyof typeof SIZE_PRESETS) => {
+      if (isMobile) return;
+
       const preset = SIZE_PRESETS[presetKey];
       if (!preset) return;
 
@@ -560,7 +610,7 @@ export function MercyGuide({
         }),
       );
     },
-    [clampPanelRect],
+    [clampPanelRect, isMobile],
   );
 
   const handleUpdateInteraction = useCallback(() => {
@@ -734,12 +784,16 @@ export function MercyGuide({
       {isOpen && (
         <div
           className={cn(
-            'fixed z-[95] overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-2xl',
-            isFullscreen &&
+            'fixed z-[95] overflow-hidden border border-slate-200 bg-white shadow-2xl',
+            isMobile
+              ? 'inset-0 h-[100dvh] w-screen rounded-none border-0'
+              : 'rounded-[28px]',
+            !isMobile &&
+              isFullscreen &&
               'left-6 right-6 top-6 bottom-6 rounded-[24px] md:left-10 md:right-10 md:top-8 md:bottom-8 lg:left-14 lg:right-14 lg:top-10 lg:bottom-10',
           )}
           style={
-            isFullscreen
+            isMobile || isFullscreen
               ? undefined
               : {
                   width: panelRect.width,
@@ -782,7 +836,7 @@ export function MercyGuide({
             latestTeacherWritingState={latestTeacherWritingState}
             memory={memory}
             teacherMemorySummary={teacherSummary}
-            isFullscreen={isFullscreen}
+            isFullscreen={isMobile ? true : isFullscreen}
             onToggleFullscreen={handleToggleFullscreen}
             onUpdateInteraction={handleUpdateInteraction}
             onOpenGuideFromBubble={handleOpenGuideFromBubble}
@@ -817,7 +871,7 @@ export function MercyGuide({
             onSaveProfile={handleSaveProfile}
           />
 
-          {!isFullscreen && (
+          {!isFullscreen && !isMobile && (
             <>
               <div
                 className="absolute inset-x-3 top-0 z-[70] h-1.5 cursor-n-resize bg-slate-300/70 hover:bg-slate-400/80"
