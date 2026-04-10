@@ -21,7 +21,7 @@ import {
 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
-import type { StudentMercyMemoryUpdate } from './types';
+import type { StudentMercyMemoryUpdate, LearningSupportMode } from './types';
 import type {
   SpeechRecognitionLike,
   SpeechRecognitionErrorEventLike,
@@ -50,6 +50,7 @@ type MercySpeakTabProps = {
   pendingPronunciationPayload?: PronunciationLaunchPayload | null;
   onMemoryUpdate?: (patch: StudentMercyMemoryUpdate) => void;
   onOpenEnglishLogic?: () => void;
+  learningSupportMode?: LearningSupportMode;
 };
 
 type PracticeVariant = 'custom' | 'corrected' | 'enhanced' | 'source';
@@ -218,7 +219,12 @@ export function MercySpeakTab({
   pendingPronunciationPayload,
   onMemoryUpdate,
   onOpenEnglishLogic,
+  learningSupportMode,
 }: MercySpeakTabProps) {
+  void contentEn;
+  void speakPractice;
+  void learningSupportMode;
+
   const payload =
     pendingPronunciationPayload ?? pendingPayload ?? launchPayload ?? null;
 
@@ -334,8 +340,8 @@ export function MercySpeakTab({
       return generatedTroubleWords;
     }
 
-    return [];
-  }, [generatedTroubleWords]);
+    return memoryTroubleWords;
+  }, [generatedTroubleWords, memoryTroubleWords]);
 
   const feedbackNotes = useMemo(() => {
     if (!practiceText || !transcript) return [];

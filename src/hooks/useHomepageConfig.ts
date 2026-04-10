@@ -1,3 +1,4 @@
+// src/hooks/useHomepageConfig.ts
 import { useState, useEffect } from 'react';
 
 interface HomepageSection {
@@ -39,10 +40,28 @@ const FALLBACK_CONFIG: HomepageConfig = {
   layout: {
     mobile_first: true,
     section_spacing: '2rem',
-    max_width: '1200px'
+    max_width: '1200px',
   },
-  sections: []
+  sections: [],
 };
+
+function isHomepageConfig(value: unknown): value is HomepageConfig {
+  if (!value || typeof value !== 'object') return false;
+
+  const config = value as Partial<HomepageConfig>;
+
+  return (
+    typeof config.id === 'string' &&
+    typeof config.name === 'string' &&
+    typeof config.name_vi === 'string' &&
+    !!config.layout &&
+    typeof config.layout === 'object' &&
+    typeof config.layout.mobile_first === 'boolean' &&
+    typeof config.layout.section_spacing === 'string' &&
+    typeof config.layout.max_width === 'string' &&
+    Array.isArray(config.sections)
+  );
+}
 
 export const useHomepageConfig = () => {
   const [config, setConfig] = useState<HomepageConfig | null>(null);
@@ -50,43 +69,43 @@ export const useHomepageConfig = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    let isMounted = true;
+
     const loadConfig = async () => {
       try {
-        // Attempt to reset pinned config via query flag
         const params = new URLSearchParams(window.location.search);
         if (params.get('reset') === '1' || params.get('unpin') === '1') {
           localStorage.removeItem('pinnedHomepageConfig');
         }
 
-        // Fetch config at runtime (not bundled)
-        const { resolveRoomJsonPath } = await import('@/lib/roomJsonResolver');
-        const url = `${resolveRoomJsonPath('mercy_blade_home_page')}?t=${Date.now()}`;
-        const response = await fetch(url, { 
-          cache: 'no-store',
-          headers: { 'Accept': 'application/json' }
-        });
-        
-        if (!response.ok) {
-          throw new Error(`HTTP ${response.status}`);
+        const { loadRoomJson } = await import('@/lib/roomJsonResolver');
+        const data = await loadRoomJson('mercy_blade_home_page');
+
+        if (!isHomepageConfig(data)) {
+          throw new Error('Invalid homepage config shape');
         }
-        
-        const text = await response.text();
-        if (text.startsWith('<!') || text.startsWith('<html')) {
-          throw new Error('Response is HTML');
-        }
-        
-        const data = JSON.parse(text);
+
+        if (!isMounted) return;
         setConfig(data);
+        setError(null);
       } catch (err) {
         console.warn('Using fallback homepage config:', err);
+
+        if (!isMounted) return;
         setError(err instanceof Error ? err.message : 'Unknown error');
         setConfig(FALLBACK_CONFIG);
       } finally {
-        setLoading(false);
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     };
 
     loadConfig();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   return { config, loading, error };

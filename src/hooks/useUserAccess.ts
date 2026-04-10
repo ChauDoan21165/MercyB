@@ -1,3 +1,5 @@
+// PATH: src/hooks/useUserAccess.ts
+
 /**
  * File: useUserAccess.ts
  * Path: src/hooks/useUserAccess.ts
@@ -30,19 +32,19 @@ export interface UserAccess {
   isDemoMode: boolean;
 
   /**
-   * Effective app tier used by room gating.
-   * Premium subscribers should behave like full access.
+   * Public-facing billing/app tier.
+   * Keep this as the raw resolved entitlement tier so tests/UI snapshots remain stable.
    */
   tier: TierId;
 
   /**
-   * Explicit room-access tier for renderers that want a gating-safe value.
+   * Effective room-access tier for legacy room gating helpers.
+   * Paid billing plans map to vip9 here so premium users can access all VIP rooms.
    */
   userTier: TierId;
 
   /**
-   * Raw billing / entitlement tier from authService.
-   * Kept so premium plan info is not lost even when room gating is elevated.
+   * Raw billing / entitlement tier from authService / profile hints.
    */
   entitlementTier: TierId;
 
@@ -55,6 +57,9 @@ export interface UserAccess {
   loading: boolean;
   isLoading: boolean;
 
+  /**
+   * True when the user has paid access (or high-admin override).
+   */
   canAccessPremium: () => boolean;
 
   email?: string;
@@ -66,20 +71,68 @@ export interface UserAccess {
 }
 
 const FORCE_UNLOCK_MERCY_FEATURES = true;
+const PREMIUM_CACHE_KEY = "mb.cachedEntitlementTier";
 
 function isPremiumTier(tier: TierId): boolean {
   return tier === "premium_month" || tier === "premium_year";
 }
 
+function normalizeTierLoose(value: unknown): TierId {
+  const raw = String(value ?? "").trim().toLowerCase();
+
+  switch (raw) {
+    case "premium":
+    case "premium_month":
+    case "monthly":
+    case "month":
+    case "pro_month":
+    case "paid_month":
+      return "premium_month";
+
+    case "premium_year":
+    case "yearly":
+    case "annual":
+    case "year":
+    case "pro_year":
+    case "paid_year":
+      return "premium_year";
+
+    case "vip1":
+    case "vip2":
+    case "vip3":
+    case "vip4":
+    case "vip5":
+    case "vip6":
+    case "vip7":
+    case "vip8":
+    case "vip9":
+    case "kids_1":
+    case "kids_2":
+    case "kids_3":
+    case "free":
+      return raw as TierId;
+
+    default:
+      return "free";
+  }
+}
+
+function truthyFlag(value: unknown): boolean {
+  if (value === true) return true;
+  const s = String(value ?? "").trim().toLowerCase();
+  return s === "true" || s === "1" || s === "yes" || s === "paid" || s === "active";
+}
+
 /**
- * Paid premium users should not be locked from rooms.
- * Map premium billing plans to full room-access tier.
+ * Effective room tier only.
+ * Raw .tier should remain the billing tier for UI/tests.
  */
-function toEffectiveAccessTier(tier: TierId): TierId {
-  if (tier === "premium_month" || tier === "premium_year") {
+function toEffectiveRoomTier(entitlementTier: TierId, isHighAdmin = false): TierId {
+  if (isHighAdmin) return "vip9";
+  if (entitlementTier === "premium_month" || entitlementTier === "premium_year") {
     return "vip9";
   }
-  return tier;
+  return entitlementTier;
 }
 
 function buildFeatureAccess(
@@ -107,10 +160,86 @@ function safeNumber(value: unknown, fallback = 0): number {
   return Number.isFinite(parsed) ? parsed : fallback;
 }
 
+function readCachedEntitlementTier(): TierId {
+  try {
+    if (typeof window === "undefined") return "free";
+    return normalizeTierLoose(window.localStorage.getItem(PREMIUM_CACHE_KEY));
+  } catch {
+    return "free";
+  }
+}
+
+function writeCachedEntitlementTier(tier: TierId) {
+  try {
+    if (typeof window === "undefined") return;
+    window.localStorage.setItem(PREMIUM_CACHE_KEY, tier);
+  } catch {
+    // ignore
+  }
+}
+
+function clearCachedEntitlementTier() {
+  try {
+    if (typeof window === "undefined") return;
+    window.localStorage.removeItem(PREMIUM_CACHE_KEY);
+  } catch {
+    // ignore
+  }
+}
+
+function resolveProfileTier(profile: any): TierId {
+  const directTierCandidates = [
+    profile?.tier,
+    profile?.plan,
+    profile?.plan_tier,
+    profile?.subscription_tier,
+    profile?.billing_tier,
+    profile?.access_tier,
+    profile?.membership_tier,
+    profile?.premium_tier,
+    profile?.role_tier,
+    profile?.entitlement_tier,
+    profile?.product_tier,
+    profile?.current_tier,
+  ];
+
+  for (const candidate of directTierCandidates) {
+    const normalized = normalizeTierLoose(candidate);
+    if (normalized !== "free") return normalized;
+  }
+
+  const looksPaid =
+    truthyFlag(profile?.is_premium) ||
+    truthyFlag(profile?.premium) ||
+    truthyFlag(profile?.paid) ||
+    truthyFlag(profile?.has_premium) ||
+    truthyFlag(profile?.premium_active) ||
+    truthyFlag(profile?.subscription_active) ||
+    truthyFlag(profile?.is_paid) ||
+    ["active", "trialing", "trial", "paid"].includes(
+      String(profile?.subscription_status ?? profile?.status ?? "").trim().toLowerCase(),
+    );
+
+  if (looksPaid) {
+    const cycle = String(
+      profile?.billing_cycle ??
+        profile?.plan_cycle ??
+        profile?.interval ??
+        profile?.subscription_interval ??
+        "",
+    )
+      .trim()
+      .toLowerCase();
+
+    if (cycle.includes("year") || cycle.includes("annual")) return "premium_year";
+    return "premium_month";
+  }
+
+  return "free";
+}
+
 export const guestAccess = (): UserAccess => {
-  const unlockMercyFeatures = FORCE_UNLOCK_MERCY_FEATURES;
   const entitlementTier: TierId = "free";
-  const effectiveTier = toEffectiveAccessTier(entitlementTier);
 
   return {
     isAdmin: false,
@@ -120,15 +249,17 @@ export const guestAccess = (): UserAccess => {
     isAuthenticated: false,
     isDemoMode: true,
 
-    tier: effectiveTier,
-    userTier: effectiveTier,
+    tier: entitlementTier,
+    userTier: toEffectiveRoomTier(entitlementTier),
     entitlementTier,
 
     hasPremium: false,
     hasPremiumMonthly: false,
     hasPremiumYearly: false,
 
-    features: buildFeatureAccess(entitlementTier, { unlockMercyFeatures }),
+    features: buildFeatureAccess(entitlementTier, {
+      unlockMercyFeatures: FORCE_UNLOCK_MERCY_FEATURES,
+    }),
 
     loading: false,
     isLoading: false,
@@ -155,12 +286,12 @@ function authenticatedFreeAccess(params: {
   const isHighAdmin = Boolean(params.isHighAdmin) || adminLevel >= 9;
   const isAdmin = Boolean(params.isAdmin) || adminLevel > 0 || isHighAdmin;
   const loading = Boolean(params.loading);
-  const unlockMercyFeatures = FORCE_UNLOCK_MERCY_FEATURES || isHighAdmin;
+
   const entitlementTier: TierId = "free";
-  const effectiveTier = isHighAdmin ? "vip9" : toEffectiveAccessTier(entitlementTier);
 
   return {
     ...guestAccess(),
+
     isAdmin,
     isHighAdmin,
     adminLevel,
@@ -168,15 +299,17 @@ function authenticatedFreeAccess(params: {
     isAuthenticated: true,
     isDemoMode: false,
 
-    tier: effectiveTier,
-    userTier: effectiveTier,
+    tier: entitlementTier,
+    userTier: toEffectiveRoomTier(entitlementTier, isHighAdmin),
     entitlementTier,
 
     hasPremium: false,
     hasPremiumMonthly: false,
     hasPremiumYearly: false,
 
-    features: buildFeatureAccess(entitlementTier, { unlockMercyFeatures }),
+    features: buildFeatureAccess(entitlementTier, {
+      unlockMercyFeatures: FORCE_UNLOCK_MERCY_FEATURES || isHighAdmin,
+    }),
 
     loading,
     isLoading: loading,
@@ -211,6 +344,7 @@ export const useUserAccess = (): UserAccess => {
     const run = async () => {
       if (authLoading) {
         if (!alive) return;
+
         setAccess((prev) => ({
           ...prev,
           loading: true,
@@ -234,6 +368,7 @@ export const useUserAccess = (): UserAccess => {
       }
 
       if (!alive) return;
+
       setAccess(
         authenticatedFreeAccess({
           userId,
@@ -246,11 +381,10 @@ export const useUserAccess = (): UserAccess => {
       let isHighAdmin = false;
       let isAdmin = false;
       let resolvedEmail = userEmail ?? undefined;
+      let profileTier: TierId = "free";
 
       try {
-        const baseQuery = supabase
-          .from("profiles")
-          .select("id, email, is_admin, admin_level");
+        const baseQuery = supabase.from("profiles").select("*");
 
         const profileResult = userId
           ? await baseQuery.eq("id", userId).maybeSingle()
@@ -262,33 +396,54 @@ export const useUserAccess = (): UserAccess => {
           adminLevel = safeNumber(profile.admin_level, 0);
           isHighAdmin = adminLevel >= 9;
           isAdmin = Boolean(profile.is_admin) || adminLevel > 0 || isHighAdmin;
-          resolvedEmail =
-            (profile.email || userEmail || "").trim() || undefined;
+          resolvedEmail = (profile.email || userEmail || "").trim() || undefined;
+          profileTier = resolveProfileTier(profile);
         }
       } catch {
-        // keep free/admin defaults
+        // keep defaults
       }
 
       let entitlementTier: TierId = "free";
+      let entitlementFetchSucceeded = false;
 
       try {
         const entitlement = await fetchCurrentEntitlement(supabase);
-        entitlementTier = resolveEntitlementTier(entitlement);
+        entitlementTier = normalizeTierLoose(resolveEntitlementTier(entitlement));
+        entitlementFetchSucceeded = true;
       } catch {
         entitlementTier = "free";
+        entitlementFetchSucceeded = false;
+      }
+
+      const cachedTier = readCachedEntitlementTier();
+
+      let effectiveEntitlementTier: TierId = entitlementTier;
+
+      if (!isPremiumTier(effectiveEntitlementTier) && isPremiumTier(profileTier)) {
+        effectiveEntitlementTier = profileTier;
       }
 
       /**
-       * Business rule:
-       * - active premium_month / premium_year users should not be locked from rooms
-       * - high admins should also have full access
+       * IMPORTANT:
+       * Only trust cached premium state when live entitlement fetch failed.
+       * Do NOT let old cached premium override a fresh "free" result.
        */
-      const effectiveTier: TierId = isHighAdmin
-        ? "vip9"
-        : toEffectiveAccessTier(entitlementTier);
+      if (
+        !entitlementFetchSucceeded &&
+        !isPremiumTier(effectiveEntitlementTier) &&
+        !isPremiumTier(profileTier) &&
+        isPremiumTier(cachedTier)
+      ) {
+        effectiveEntitlementTier = cachedTier;
+      }
 
-      const unlockMercyFeatures = FORCE_UNLOCK_MERCY_FEATURES || isHighAdmin;
-      const features = buildFeatureAccess(entitlementTier, { unlockMercyFeatures });
+      if (isPremiumTier(effectiveEntitlementTier)) {
+        writeCachedEntitlementTier(effectiveEntitlementTier);
+      } else if (entitlementFetchSucceeded || profileTier === "free") {
+        clearCachedEntitlementTier();
+      }
+
+      const hasPremium = isPremiumTier(effectiveEntitlementTier);
 
       const next: UserAccess = {
         isAdmin,
@@ -298,21 +453,22 @@ export const useUserAccess = (): UserAccess => {
         isAuthenticated: true,
         isDemoMode: false,
 
-        tier: effectiveTier,
-        userTier: effectiveTier,
-        entitlementTier,
+        tier: effectiveEntitlementTier,
+        userTier: toEffectiveRoomTier(effectiveEntitlementTier, isHighAdmin),
+        entitlementTier: effectiveEntitlementTier,
 
-        hasPremium: isPremiumTier(entitlementTier),
-        hasPremiumMonthly: entitlementTier === "premium_month",
-        hasPremiumYearly: entitlementTier === "premium_year",
+        hasPremium,
+        hasPremiumMonthly: effectiveEntitlementTier === "premium_month",
+        hasPremiumYearly: effectiveEntitlementTier === "premium_year",
 
-        features,
+        features: buildFeatureAccess(effectiveEntitlementTier, {
+          unlockMercyFeatures: FORCE_UNLOCK_MERCY_FEATURES || isHighAdmin,
+        }),
 
         loading: false,
         isLoading: false,
 
-        canAccessPremium: () =>
-          isPremiumTier(entitlementTier) || isHighAdmin,
+        canAccessPremium: () => hasPremium || isHighAdmin,
 
         email: resolvedEmail,
         userId: userId ?? undefined,

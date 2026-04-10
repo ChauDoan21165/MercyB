@@ -1,4 +1,4 @@
-// src/lib/accessControl.ts
+// PATH: src/lib/accessControl.ts
 
 import type { TierId } from "@/lib/constants/tiers";
 import { KIDS_TIER_IDS } from "@/lib/constants/tiers";
@@ -9,28 +9,34 @@ type AccessTestCase = {
   expected: boolean;
 };
 
-function isKidsTier(tier: TierId | null | undefined): boolean {
-  if (!tier) return false;
+function normalizeTier(tier: TierId | null | undefined): string {
+  return String(tier ?? "").toLowerCase().trim();
+}
 
-  const value = String(tier).toLowerCase().trim();
+function isKidsTier(tier: TierId | null | undefined): boolean {
+  const value = normalizeTier(tier);
+  if (!value) return false;
 
   if (value === "kids_1" || value === "kids_2" || value === "kids_3") {
     return true;
   }
 
   if (Array.isArray(KIDS_TIER_IDS)) {
-    return (KIDS_TIER_IDS as readonly TierId[]).includes(tier);
+    return (KIDS_TIER_IDS as readonly TierId[]).includes(tier as TierId);
   }
 
   return false;
 }
 
+function isPremiumBillingTier(tier: TierId | null | undefined): boolean {
+  const value = normalizeTier(tier);
+  return value === "premium_month" || value === "premium_year";
+}
+
 function tierToLevel(tier: TierId): number {
-  if (!tier) return 0;
+  const value = normalizeTier(tier);
 
-  const value = String(tier).toLowerCase().trim();
-
-  if (value === "free") return 0;
+  if (!value || value === "free") return 0;
 
   if (value === "vip1") return 1;
   if (value === "vip2") return 2;
@@ -38,15 +44,20 @@ function tierToLevel(tier: TierId): number {
   if (value === "vip4") return 4;
   if (value === "vip5") return 5;
   if (value === "vip6") return 6;
+  if (value === "vip7") return 7;
+  if (value === "vip8") return 8;
   if (value === "vip9") return 9;
 
-  // VIP3II collapse
+  // Collapses variants like vip3_ii / VIP3 II to level 3
   if (value.includes("vip3")) return 3;
 
-  // Kids tiers share canonical curriculum levels
   if (value === "kids_1") return 1;
   if (value === "kids_2") return 2;
   if (value === "kids_3") return 3;
+
+  // Premium billing plans unlock all VIP rooms for access checks,
+  // but should remain premium_* in hooks/UI.
+  if (value === "premium_month" || value === "premium_year") return 9;
 
   return 0;
 }
@@ -84,7 +95,12 @@ export function canAccessVIPTier(
   userTier: TierId,
   requiredTier: TierId,
 ): boolean {
-  return tierToLevel(userTier) >= tierToLevel(requiredTier);
+  if (requiredTier === "free") return true;
+
+  const userLevel = tierToLevel(userTier);
+  const requiredLevel = tierToLevel(requiredTier);
+
+  return userLevel >= requiredLevel;
 }
 
 export function canUserAccessRoom(
@@ -92,6 +108,7 @@ export function canUserAccessRoom(
   roomTier: TierId,
   roomId?: string,
 ): boolean {
+  void roomId;
   return canAccessVIPTier(userTier, roomTier);
 }
 
@@ -104,9 +121,12 @@ export function getAccessibleTiers(userTier: TierId): TierId[] {
     "vip4",
     "vip5",
     "vip6",
+    "vip7",
+    "vip8",
     "vip9",
   ];
 
+  // Keep this API focused on curriculum tiers, not billing-plan names.
   return allTiers.filter((tier) => canAccessVIPTier(userTier, tier));
 }
 

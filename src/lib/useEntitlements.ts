@@ -1,4 +1,5 @@
-// src/lib/useEntitlements.ts
+// PATH: src/lib/useEntitlements.ts
+
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   FAIL_CLOSED_ENTITLEMENT,
@@ -15,10 +16,35 @@ type Ent = BackendEntitlement & {
   updated_at: string;
 };
 
+function normalizeTier(tier: string | null | undefined): string {
+  return String(tier || "free").toLowerCase().trim();
+}
+
+function isPremiumStatus(status: string | null | undefined): boolean {
+  const s = String(status || "").toLowerCase();
+  return s === "active" || s === "trialing";
+}
+
+function isPaidBillingTier(tier: string): boolean {
+  return tier === "premium_month" || tier === "premium_year";
+}
+
+function isLegacyVipTier(tier: string): boolean {
+  return /^vip(\d+)$/.test(tier);
+}
+
+/**
+ * Repo-wide access rank:
+ * - free => 0
+ * - premium_month / premium_year => 9 (full paid repo access)
+ * - vip1..vip9 => numeric rank for backward compatibility
+ * - unknown => 0
+ */
 function tierToRank(tier: string): number {
-  const s = String(tier || "free").toLowerCase();
+  const s = normalizeTier(tier);
 
   if (s === "free") return 0;
+  if (isPaidBillingTier(s)) return 9;
 
   const m = s.match(/^vip(\d+)$/);
   if (!m) return 0;
@@ -27,36 +53,56 @@ function tierToRank(tier: string): number {
   return Number.isFinite(n) ? n : 0;
 }
 
-function isPremiumStatus(status: string | null | undefined): boolean {
-  const s = String(status || "").toLowerCase();
-  return s === "active" || s === "trialing";
+function hasPaidRepoAccess(ent: BackendEntitlement, resolvedTier: string): boolean {
+  const tier = normalizeTier(resolvedTier);
+  const premiumActive = ent.is_premium === true && isPremiumStatus(ent.status);
+
+  // New policy:
+  // - active/trialing premium_month or premium_year unlock the whole paid repo
+  // - keep legacy VIP tiers working too
+  if (isPaidBillingTier(tier)) {
+    return premiumActive || isPremiumStatus(ent.status);
+  }
+
+  if (isLegacyVipTier(tier)) {
+    return true;
+  }
+
+  return false;
 }
 
-function buildFeatures(ent: BackendEntitlement, vipRank: number) {
-  const isPremium = ent.is_premium === true && isPremiumStatus(ent.status);
+function buildFeatures(ent: BackendEntitlement, resolvedTier: string, vipRank: number) {
+  const premiumActive = ent.is_premium === true && isPremiumStatus(ent.status);
+  const paidRepoAccess = hasPaidRepoAccess(ent, resolvedTier);
 
   return {
-    premium: isPremium,
-    is_premium: isPremium,
-    vip1: vipRank >= 1,
-    vip2: vipRank >= 2,
-    vip3: vipRank >= 3,
-    vip4: vipRank >= 4,
-    vip5: vipRank >= 5,
-    vip6: vipRank >= 6,
-    vip9: vipRank >= 9,
+    premium: premiumActive,
+    is_premium: premiumActive,
+
+    // New policy: any paid user can access the whole paid repo.
+    vip1: paidRepoAccess || vipRank >= 1,
+    vip2: paidRepoAccess || vipRank >= 2,
+    vip3: paidRepoAccess || vipRank >= 3,
+    vip4: paidRepoAccess || vipRank >= 4,
+    vip5: paidRepoAccess || vipRank >= 5,
+    vip6: paidRepoAccess || vipRank >= 6,
+    vip7: paidRepoAccess || vipRank >= 7,
+    vip8: paidRepoAccess || vipRank >= 8,
+    vip9: paidRepoAccess || vipRank >= 9,
   } as Record<string, unknown>;
 }
 
 function buildEntitlement(entitlement: BackendEntitlement): Ent {
-  const vipTier = resolveEntitlementTier(entitlement);
-  const vipRank = tierToRank(vipTier);
+  const resolvedTier = normalizeTier(resolveEntitlementTier(entitlement));
+  const vipRank = tierToRank(resolvedTier);
 
   return {
     ...entitlement,
-    vip_tier: vipTier,
+    // Keep raw resolved tier here for compatibility with existing callers.
+    vip_tier: resolvedTier,
+    // Use effective access rank so premium_month/year unlock the full paid repo.
     vip_rank: vipRank,
-    features: buildFeatures(entitlement, vipRank),
+    features: buildFeatures(entitlement, resolvedTier, vipRank),
     updated_at: new Date().toISOString(),
   };
 }

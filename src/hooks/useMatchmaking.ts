@@ -1,4 +1,5 @@
-// src/hooks/useMatchmaking.ts
+// PATH: src/hooks/useMatchmaking.ts
+
 import { useCallback, useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { useAuth } from "@/providers/AuthProvider";
@@ -23,14 +24,26 @@ interface MatchSuggestion {
   };
 }
 
-function hasVip3Access(tier: TierId): boolean {
-  return (
-    tier === "vip3" ||
-    tier === "vip4" ||
-    tier === "vip5" ||
-    tier === "vip6" ||
-    tier === "vip9"
-  );
+function normalizeTier(value: unknown): string {
+  return String(value ?? "").trim().toLowerCase();
+}
+
+function isPaidBillingTier(tier: string): boolean {
+  return tier === "premium_month" || tier === "premium_year";
+}
+
+function isLegacyVipTier(tier: string): boolean {
+  return /^vip[1-9]$/.test(tier);
+}
+
+/**
+ * New policy:
+ * - premium_month / premium_year can access the whole paid repo
+ * - keep legacy VIP tiers working too
+ */
+function hasPaidRepoAccess(tier: TierId): boolean {
+  const normalized = normalizeTier(tier);
+  return isPaidBillingTier(normalized) || isLegacyVipTier(normalized);
 }
 
 export const useMatchmaking = () => {
@@ -39,7 +52,18 @@ export const useMatchmaking = () => {
 
   const [suggestions, setSuggestions] = useState<MatchSuggestion[]>([]);
   const [loading, setLoading] = useState(true);
+
+  /**
+   * Keep the old field name for compatibility with existing UI,
+   * but it now means: user has paid access for this feature.
+   */
   const [isVIP3, setIsVIP3] = useState(false);
+
+  const resolveCurrentPaidAccess = useCallback(async (): Promise<boolean> => {
+    const entitlement = await fetchCurrentEntitlement(supabase);
+    const tier = resolveEntitlementTier(entitlement);
+    return hasPaidRepoAccess(tier);
+  }, []);
 
   const fetchSuggestions = useCallback(async () => {
     if (authLoading) {
@@ -57,13 +81,11 @@ export const useMatchmaking = () => {
     setLoading(true);
 
     try {
-      const entitlement = await fetchCurrentEntitlement(supabase);
-      const tier = resolveEntitlementTier(entitlement);
-      const allowed = hasVip3Access(tier);
+      const allowed = await resolveCurrentPaidAccess();
 
       setIsVIP3(allowed);
 
-      // Fail closed: do not fetch premium data when backend entitlement
+      // Fail closed: do not fetch paid data when entitlement
       // does not grant access.
       if (!allowed) {
         setSuggestions([]);
@@ -93,18 +115,17 @@ export const useMatchmaking = () => {
     } finally {
       setLoading(false);
     }
-  }, [authLoading, userId]);
+  }, [authLoading, resolveCurrentPaidAccess, userId]);
 
   const generateSuggestions = useCallback(async () => {
     if (!userId) {
       throw new Error("Please sign in first.");
     }
 
-    const entitlement = await fetchCurrentEntitlement(supabase);
-    const tier = resolveEntitlementTier(entitlement);
+    const allowed = await resolveCurrentPaidAccess();
 
-    if (!hasVip3Access(tier)) {
-      throw new Error("Premium entitlement required.");
+    if (!allowed) {
+      throw new Error("Paid entitlement required.");
     }
 
     const { data, error } = await supabase.functions.invoke(
@@ -118,15 +139,14 @@ export const useMatchmaking = () => {
 
     await fetchSuggestions();
     return data;
-  }, [fetchSuggestions, userId]);
+  }, [fetchSuggestions, resolveCurrentPaidAccess, userId]);
 
   const updateSuggestionStatus = useCallback(
     async (suggestionId: string, status: "accepted" | "rejected") => {
-      const entitlement = await fetchCurrentEntitlement(supabase);
-      const tier = resolveEntitlementTier(entitlement);
+      const allowed = await resolveCurrentPaidAccess();
 
-      if (!hasVip3Access(tier)) {
-        throw new Error("Premium entitlement required.");
+      if (!allowed) {
+        throw new Error("Paid entitlement required.");
       }
 
       const { error } = await supabase
@@ -138,7 +158,7 @@ export const useMatchmaking = () => {
 
       await fetchSuggestions();
     },
-    [fetchSuggestions],
+    [fetchSuggestions, resolveCurrentPaidAccess],
   );
 
   useEffect(() => {

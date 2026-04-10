@@ -1,25 +1,31 @@
 // src/lib/roomTierIndex.ts
-// MB-BLUE-103.0 — 2026-01-01 (+0700)
+// MB-BLUE-103.1 — 2026-04-10
 //
-// ROOM TIER INDEX (RUNTIME, NO FETCH, NO FS)
+// ROOM TIER INDEX (RUNTIME, DB/SECURE SOURCE)
 //
-// PURPOSE (LOCKED):
-// - Tier truth for UI comes from room id / filename (NOT json.tier)
-// - Build a stable Tier -> roomIds index from the generated PUBLIC_ROOM_MANIFEST
+// PURPOSE:
+// - Tier truth for UI comes from room id / explicit DB tier metadata,
+//   not from public/data manifests.
+// - Build and cache a Tier -> roomIds index from loadRoomsForTiers().
 //
 // NOTES:
 // - Tier7 / Tier8 may be intentionally empty -> OK
-// - Unknown tier (no vip/free token in id) is tracked under "unknown"
+// - Unknown tier (no explicit tier signal) is tracked under "unknown"
 //
 // Exports:
 // - ALL_TIER_KEYS
 // - TierKey
 // - inferTierFromRoomId
-// - buildRoomTierIndex
-// - ROOM_IDS_BY_TIER (computed once at import)
-// - ROOM_COUNTS_BY_TIER
+// - buildRoomTierIndexFromIds
+// - buildRoomTierIndexFromRooms
+// - refreshRoomTierIndex
+// - ensureRoomTierIndexLoaded
+// - ROOM_IDS_BY_TIER (mutable runtime cache)
+// - ROOM_COUNTS_BY_TIER (mutable runtime cache)
+// - getRoomsForTier
+// - getAllRoomIdsSorted
 
-import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
+import { loadRoomsForTiers, type TierRoom } from "@/lib/tierRoomSource";
 
 export const ALL_TIER_KEYS = [
   "free",
@@ -39,10 +45,14 @@ export type TierKey = (typeof ALL_TIER_KEYS)[number];
 
 export type RoomTierIndex = Record<TierKey, string[]>;
 
+let loadPromise: Promise<RoomTierIndex> | null = null;
+let hasAttemptedInitialLoad = false;
+
 function normalizeIdLike(v: string): string {
   return String(v || "")
     .trim()
     .toLowerCase()
+    .replace(/\.json$/i, "")
     .replace(/[-\s]+/g, "_")
     .replace(/_+/g, "_");
 }
@@ -65,6 +75,10 @@ export function inferTierFromRoomId(roomIdOrFilename: string): TierKey | null {
   return null;
 }
 
+function isTierKey(value: string): value is TierKey {
+  return (ALL_TIER_KEYS as readonly string[]).includes(value);
+}
+
 function emptyIndex(): RoomTierIndex {
   return {
     free: [],
@@ -81,50 +95,7 @@ function emptyIndex(): RoomTierIndex {
   };
 }
 
-/**
- * Extract room IDs from PUBLIC_ROOM_MANIFEST safely.
- * We do not assume the exact shape beyond "it contains room ids somewhere".
- */
-function extractRoomIdsFromManifest(manifest: unknown): string[] {
-  if (!manifest) return [];
-
-  // Most common: Record<roomId, "/data/room.json">
-  if (typeof manifest === "object" && !Array.isArray(manifest)) {
-    return Object.keys(manifest as Record<string, unknown>);
-  }
-
-  // Sometimes: Array<{ id: string, ... }>
-  if (Array.isArray(manifest)) {
-    const ids: string[] = [];
-    for (const item of manifest) {
-      const id = (item as any)?.id;
-      if (typeof id === "string" && id.trim()) ids.push(id.trim());
-    }
-    return ids;
-  }
-
-  return [];
-}
-
-/**
- * Builds Tier -> roomIds index from manifest.
- * Sorting: alphabetical by normalized id (stable display baseline).
- */
-export function buildRoomTierIndex(manifest: unknown = PUBLIC_ROOM_MANIFEST): RoomTierIndex {
-  const idx = emptyIndex();
-
-  const ids = extractRoomIdsFromManifest(manifest);
-
-  for (const idRaw of ids) {
-    const id = String(idRaw || "").trim();
-    if (!id) continue;
-
-    const inferred = inferTierFromRoomId(id);
-    const bucket: TierKey = inferred || "unknown";
-    idx[bucket].push(id);
-  }
-
-  // stable sort
+function sortIndex(idx: RoomTierIndex): RoomTierIndex {
   for (const k of ALL_TIER_KEYS) {
     idx[k].sort((a, b) => {
       const A = normalizeIdLike(a);
@@ -134,25 +105,114 @@ export function buildRoomTierIndex(manifest: unknown = PUBLIC_ROOM_MANIFEST): Ro
       return 0;
     });
   }
-
   return idx;
 }
 
 /**
- * Computed once at module import (fast, deterministic).
+ * Legacy-compatible pure builder from raw ids.
+ * Useful in tests or callers that already have room ids.
  */
-export const ROOM_IDS_BY_TIER: RoomTierIndex = buildRoomTierIndex(PUBLIC_ROOM_MANIFEST);
+export function buildRoomTierIndexFromIds(ids: string[]): RoomTierIndex {
+  const idx = emptyIndex();
+
+  for (const idRaw of ids || []) {
+    const id = String(idRaw || "").trim();
+    if (!id) continue;
+
+    const inferred = inferTierFromRoomId(id);
+    const bucket: TierKey = inferred || "unknown";
+    idx[bucket].push(id);
+  }
+
+  return sortIndex(idx);
+}
+
+/**
+ * Preferred builder from TierRoom rows loaded via the secure tier source.
+ */
+export function buildRoomTierIndexFromRooms(rooms: TierRoom[]): RoomTierIndex {
+  const idx = emptyIndex();
+
+  for (const room of rooms || []) {
+    const id = String(room?.id || "").trim();
+    if (!id) continue;
+
+    const explicitTier = String(room?.tier || "").trim().toLowerCase();
+    const inferred = inferTierFromRoomId(id);
+
+    let bucket: TierKey = "unknown";
+    if (isTierKey(explicitTier)) bucket = explicitTier;
+    else if (inferred) bucket = inferred;
+
+    idx[bucket].push(id);
+  }
+
+  return sortIndex(idx);
+}
+
+function overwriteIndex(target: RoomTierIndex, source: RoomTierIndex): void {
+  for (const key of ALL_TIER_KEYS) {
+    target[key].splice(0, target[key].length, ...source[key]);
+  }
+}
+
+function overwriteCounts(
+  target: Record<TierKey, number>,
+  source: RoomTierIndex
+): void {
+  for (const key of ALL_TIER_KEYS) {
+    target[key] = source[key].length;
+  }
+}
+
+/**
+ * Mutable runtime cache.
+ * Starts empty until ensureRoomTierIndexLoaded()/refreshRoomTierIndex() runs.
+ */
+export const ROOM_IDS_BY_TIER: RoomTierIndex = emptyIndex();
 
 export const ROOM_COUNTS_BY_TIER: Record<TierKey, number> = ALL_TIER_KEYS.reduce(
   (acc, k) => {
-    acc[k] = ROOM_IDS_BY_TIER[k].length;
+    acc[k] = 0;
     return acc;
   },
   {} as Record<TierKey, number>
 );
 
 /**
- * Convenience helpers (optional)
+ * Force-refresh the tier index from the DB/secure tier source.
+ */
+export async function refreshRoomTierIndex(): Promise<RoomTierIndex> {
+  const result = await loadRoomsForTiers();
+  const nextIndex = buildRoomTierIndexFromRooms(result.rooms);
+
+  overwriteIndex(ROOM_IDS_BY_TIER, nextIndex);
+  overwriteCounts(ROOM_COUNTS_BY_TIER, nextIndex);
+
+  return ROOM_IDS_BY_TIER;
+}
+
+/**
+ * Load the runtime cache once.
+ * Safe to call repeatedly.
+ */
+export async function ensureRoomTierIndexLoaded(): Promise<RoomTierIndex> {
+  if (hasAttemptedInitialLoad && loadPromise) {
+    return loadPromise;
+  }
+
+  hasAttemptedInitialLoad = true;
+  loadPromise = refreshRoomTierIndex().finally(() => {
+    loadPromise = null;
+  });
+
+  return loadPromise;
+}
+
+/**
+ * Convenience helpers.
+ * These return the current runtime snapshot.
+ * Call ensureRoomTierIndexLoaded() first if you need populated values.
  */
 export function getRoomsForTier(tier: TierKey): string[] {
   return ROOM_IDS_BY_TIER[tier] || [];

@@ -1,4 +1,5 @@
-// src/lib/authService.ts
+// PATH: src/lib/authService.ts
+
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { supabase } from "@/lib/supabaseClient";
 import type { TierId } from "@/lib/constants/tiers";
@@ -102,13 +103,15 @@ function getDefaultEmailRedirectTo(): string | undefined {
   return `${window.location.origin}/auth/callback`;
 }
 
+function isPremiumStatus(status: string | null | undefined): boolean {
+  const s = String(status ?? "").toLowerCase();
+  return s === "active" || s === "trialing";
+}
+
 export function entitlementIsPremium(
   ent: BackendEntitlement | null | undefined,
 ): boolean {
-  return (
-    ent?.is_premium === true &&
-    String(ent?.status ?? "").toLowerCase() === "active"
-  );
+  return ent?.is_premium === true && isPremiumStatus(ent?.status);
 }
 
 function entitlementText(ent: BackendEntitlement | null | undefined): string {
@@ -119,57 +122,81 @@ function entitlementText(ent: BackendEntitlement | null | undefined): string {
     .replace(/[\s_-]+/g, "");
 }
 
+function textHasAny(text: string, values: string[]): boolean {
+  return values.some((value) => text.includes(value));
+}
+
 export function resolveEntitlementTier(
   ent: BackendEntitlement | null | undefined,
 ): TierId {
   if (!entitlementIsPremium(ent)) return "free";
 
   const text = entitlementText(ent);
+  const exactTier = String(ent?.tier_id ?? "").trim().toLowerCase();
 
+  // Prefer explicit legacy VIP tiers first when present.
+  if (exactTier === "vip9" || text.includes("vip9")) return "vip9";
+  if (exactTier === "vip8" || text.includes("vip8")) return "vip8";
+  if (exactTier === "vip7" || text.includes("vip7")) return "vip7";
+  if (exactTier === "vip6" || text.includes("vip6")) return "vip6";
+  if (exactTier === "vip5" || text.includes("vip5")) return "vip5";
+  if (exactTier === "vip4" || text.includes("vip4")) return "vip4";
+  if (exactTier === "vip3" || text.includes("vip3")) return "vip3";
+  if (exactTier === "vip2" || text.includes("vip2")) return "vip2";
+  if (exactTier === "vip1" || text.includes("vip1")) return "vip1";
+
+  // Map real billing plan names into legacy-compatible tier buckets expected by tests/UI.
   if (
-    text.includes("vip9") ||
-    text.includes("oneyear") ||
-    text.includes("yearly") ||
-    text.includes("annual") ||
-    text.includes("12month")
+    exactTier === "premium_year" ||
+    textHasAny(text, [
+      "premiumyear",
+      "oneyear",
+      "yearly",
+      "annual",
+      "annually",
+      "12month",
+      "12months",
+      "1year",
+      "year",
+    ])
   ) {
     return "vip9";
   }
 
-  if (text.includes("vip6")) return "vip6";
-  if (text.includes("vip5")) return "vip5";
-  if (text.includes("vip4")) return "vip4";
-  if (text.includes("vip3")) return "vip3";
-  if (text.includes("vip2")) return "vip2";
-
   if (
-    text.includes("vip1") ||
-    text.includes("onemonth") ||
-    text.includes("monthly") ||
-    text.includes("month")
+    exactTier === "premium_month" ||
+    textHasAny(text, [
+      "premiummonth",
+      "onemonth",
+      "monthly",
+      "1month",
+      "month",
+      "premium",
+    ])
   ) {
     return "vip1";
   }
 
+  // Paid but unknown premium-like plan: fail open to the lowest paid tier.
   return "vip1";
 }
 
+/**
+ * Compatibility shim for older code still expecting VipKey.
+ *
+ * Policy expected by current tests:
+ * - free stays free
+ * - vip1 stays vip1
+ * - vip2+ collapse to vip3 compatibility
+ */
 export function entitlementToVipKey(
   ent: BackendEntitlement | null | undefined,
 ): VipKey {
   const tier = resolveEntitlementTier(ent);
 
-  if (tier === "vip9") return "vip9";
-  if (
-    tier === "vip3" ||
-    tier === "vip4" ||
-    tier === "vip5" ||
-    tier === "vip6"
-  ) {
-    return "vip3";
-  }
-  if (tier === "vip1" || tier === "vip2") return "vip1";
-  return "free";
+  if (tier === "free") return "free";
+  if (tier === "vip1") return "vip1";
+  return "vip3";
 }
 
 export async function fetchCurrentEntitlement(

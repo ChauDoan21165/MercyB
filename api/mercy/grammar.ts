@@ -7,6 +7,13 @@ type GrammarBody = {
   mode?: string;
 };
 
+type GrammarResult = {
+  ok: boolean;
+  feedback?: string;
+  correctedText?: string;
+  error?: string;
+};
+
 function asString(value: unknown, max = 1200): string {
   return typeof value === "string" ? value.trim().slice(0, max) : "";
 }
@@ -27,13 +34,16 @@ function parseBody(req: VercelRequest): GrammarBody {
   return {};
 }
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+function sendJson(res: VercelResponse, status: number, payload: GrammarResult): void {
   res.setHeader("Cache-Control", "no-store");
   res.setHeader("Content-Type", "application/json; charset=utf-8");
+  res.status(status).json(payload);
+}
 
+export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
-    return res.status(405).json({
+    return sendJson(res, 405, {
       ok: false,
       error: "Method not allowed",
     });
@@ -46,7 +56,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const mode = asString(body.mode, 50) || "grammar";
 
     if (!text) {
-      return res.status(400).json({
+      return sendJson(res, 400, {
         ok: false,
         error: "Missing text",
       });
@@ -54,7 +64,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     const apiKey = process.env.OPENAI_API_KEY;
     if (!apiKey) {
-      return res.status(503).json({
+      return sendJson(res, 503, {
         ok: false,
         error: "Missing OPENAI_API_KEY",
       });
@@ -101,12 +111,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       });
 
       if (!upstream.ok) {
-        const errorText = await upstream.text().catch(() => "");
-        return res.status(200).json({
+        return sendJson(res, 200, {
           ok: false,
-          feedback: `Grammar service upstream error (${upstream.status}).`,
+          feedback:
+            upstream.status === 401 || upstream.status === 403
+              ? "Grammar service authentication failed. Please contact support."
+              : "Grammar service is temporarily unavailable. Please try again.",
           correctedText: text,
-          details: errorText.slice(0, 400),
         });
       }
 
@@ -123,7 +134,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         };
       }
 
-      return res.status(200).json({
+      return sendJson(res, 200, {
         ok: true,
         feedback: parsed.feedback || "Grammar review complete.",
         correctedText: parsed.correctedText || text,
@@ -133,7 +144,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         error instanceof Error &&
         (error.name === "AbortError" || error.message.toLowerCase().includes("abort"));
 
-      return res.status(200).json({
+      return sendJson(res, 200, {
         ok: false,
         feedback: isAbort
           ? "The grammar check took too long. Please try again."
@@ -144,7 +155,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       clearTimeout(timeoutId);
     }
   } catch {
-    return res.status(500).json({
+    return sendJson(res, 500, {
       ok: false,
       error: "Internal server error",
     });

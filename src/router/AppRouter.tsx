@@ -325,15 +325,13 @@ function AuthRedirect() {
   return <Navigate to={target} replace />;
 }
 
-function AdminShell() {
+function AdminLayoutShell() {
   return (
-    <AdminRoute>
-      <AdminLayout>
-        <Suspense fallback={<RouteFallback />}>
-          <Outlet />
-        </Suspense>
-      </AdminLayout>
-    </AdminRoute>
+    <AdminLayout>
+      <Suspense fallback={<RouteFallback />}>
+        <Outlet />
+      </Suspense>
+    </AdminLayout>
   );
 }
 
@@ -491,111 +489,113 @@ export default function AppRouter() {
             }
           />
 
-          <Route path="/admin/*" element={<AdminShell />}>
-            <Route
-              index
-              element={
-                <LazyPage>
-                  <AdminDashboard />
-                </LazyPage>
-              }
-            />
-            <Route
-              path="users"
-              element={
-                <LazyPage>
-                  <AdminUsersPage />
-                </LazyPage>
-              }
-            />
-            <Route
-              path="payments"
-              element={
-                <LazyPage>
-                  <AdminPayments />
-                </LazyPage>
-              }
-            />
-            <Route
-              path="bank-transfers"
-              element={
-                <LazyPage>
-                  <AdminBankTransfers />
-                </LazyPage>
-              }
-            />
-            <Route
-              path="payment-verification"
-              element={
-                <LazyPage>
-                  <AdminPaymentVerification />
-                </LazyPage>
-              }
-            />
-            <Route
-              path="access-codes"
-              element={
-                <LazyPage>
-                  <AdminAccessCodes />
-                </LazyPage>
-              }
-            />
-            <Route
-              path="audio-coverage"
-              element={
-                <LazyPage>
-                  <AudioCoveragePage />
-                </LazyPage>
-              }
-            />
-            <Route
-              path="monitoring"
-              element={
-                <LazyPage>
-                  <AdminMonitoring />
-                </LazyPage>
-              }
-            />
-            <Route
-              path="metrics"
-              element={
-                <LazyPage>
-                  <AdminMetrics />
-                </LazyPage>
-              }
-            />
-            <Route
-              path="vip-rooms"
-              element={
-                <LazyPage>
-                  <AdminVIPRooms />
-                </LazyPage>
-              }
-            />
-            <Route
-              path="subscriptions"
-              element={
-                <LazyPage>
-                  <AdminSubscriptions />
-                </LazyPage>
-              }
-            />
-            <Route
-              path="billing"
-              element={
-                <LazyPage>
-                  <AdminBillingDashboard />
-                </LazyPage>
-              }
-            />
-            <Route
-              path="*"
-              element={
-                <LazyPage>
-                  <AdminDashboard />
-                </LazyPage>
-              }
-            />
+          <Route path="/admin/*" element={<AdminRoute />}>
+            <Route element={<AdminLayoutShell />}>
+              <Route
+                index
+                element={
+                  <LazyPage>
+                    <AdminDashboard />
+                  </LazyPage>
+                }
+              />
+              <Route
+                path="users"
+                element={
+                  <LazyPage>
+                    <AdminUsersPage />
+                  </LazyPage>
+                }
+              />
+              <Route
+                path="payments"
+                element={
+                  <LazyPage>
+                    <AdminPayments />
+                  </LazyPage>
+                }
+              />
+              <Route
+                path="bank-transfers"
+                element={
+                  <LazyPage>
+                    <AdminBankTransfers />
+                  </LazyPage>
+                }
+              />
+              <Route
+                path="payment-verification"
+                element={
+                  <LazyPage>
+                    <AdminPaymentVerification />
+                  </LazyPage>
+                }
+              />
+              <Route
+                path="access-codes"
+                element={
+                  <LazyPage>
+                    <AdminAccessCodes />
+                  </LazyPage>
+                }
+              />
+              <Route
+                path="audio-coverage"
+                element={
+                  <LazyPage>
+                    <AudioCoveragePage />
+                  </LazyPage>
+                }
+              />
+              <Route
+                path="monitoring"
+                element={
+                  <LazyPage>
+                    <AdminMonitoring />
+                  </LazyPage>
+                }
+              />
+              <Route
+                path="metrics"
+                element={
+                  <LazyPage>
+                    <AdminMetrics />
+                  </LazyPage>
+                }
+              />
+              <Route
+                path="vip-rooms"
+                element={
+                  <LazyPage>
+                    <AdminVIPRooms />
+                  </LazyPage>
+                }
+              />
+              <Route
+                path="subscriptions"
+                element={
+                  <LazyPage>
+                    <AdminSubscriptions />
+                  </LazyPage>
+                }
+              />
+              <Route
+                path="billing"
+                element={
+                  <LazyPage>
+                    <AdminBillingDashboard />
+                  </LazyPage>
+                }
+              />
+              <Route
+                path="*"
+                element={
+                  <LazyPage>
+                    <AdminDashboard />
+                  </LazyPage>
+                }
+              />
+            </Route>
           </Route>
 
           <Route path="*" element={<NotFound />} />

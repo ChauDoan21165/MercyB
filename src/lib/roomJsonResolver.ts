@@ -1,10 +1,4 @@
 // src/lib/roomJsonResolver.ts
-// MB-BLUE-95.7 — 2025-12-27 (+0700)
-// FIX: tolerate legacy roomId input that includes ".json" or "/data/" prefixes.
-// RULE: Canonical roomId is snake_case WITHOUT ".json".
-// Resolver remains the ONLY source of truth.
-
-import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
 
 export type RoomJsonResolverErrorKind =
   | "not_found"
@@ -13,7 +7,6 @@ export type RoomJsonResolverErrorKind =
   | "server";
 
 function stripJsonSuffix(s: string): string {
-  // Remove ONLY a trailing ".json" (case-insensitive)
   return s.replace(/\.json$/i, "");
 }
 
@@ -26,66 +19,41 @@ function lastPathSegment(s: string): string {
 }
 
 export function canonicalizeRoomId(input: string): string {
-  // Accept roomId like:
-  // - "depression_support_vip1"
-  // - "depression_support_vip1.json"
-  // - "/data/depression_support_vip1.json"
-  // - "data/depression_support_vip1.json"
-  // - "/room/depression_support_vip1.json" (rare, but tolerate)
   const seg = lastPathSegment(String(input || ""));
 
-  const noJson = stripJsonSuffix(seg)
-    .replace(/^data_/i, "data_") // no-op, just clarity
-    .replace(/^data$/i, "data") // no-op
-    .replace(/^data\./i, "data.") // no-op
-    .trim();
-
-  // If someone pasted "data/xxx" as the segment (because lastPathSegment),
-  // that would already be "xxx" — but keep safe:
-  const normalized = noJson
-    .replace(/^data_/, "data_") // no-op
+  return stripJsonSuffix(seg)
     .trim()
     .toLowerCase()
     .replace(/[-\s]+/g, "_")
-    .replace(/_+/g, "_");
-
-  return normalized;
+    .replace(/_+/g, "_")
+    .replace(/^_+|_+$/g, "");
 }
 
-/**
- * Compatibility export (older code/scripts may import this name).
- * Keep it as an alias to the canonical behavior.
- */
 export function normalizeRoomIdForCanonicalFile(input: string): string {
   return canonicalizeRoomId(input);
 }
 
-export function resolveRoomJsonPath(roomIdRaw: string): string {
-  const id = canonicalizeRoomId(roomIdRaw);
-
-  // Manifest stores paths like "data/xxx.json"
-  const fromManifest = PUBLIC_ROOM_MANIFEST[id];
-
-  // If manifest exists, trust it.
-  if (fromManifest) return fromManifest;
-
-  // Otherwise default to canonical:
-  return `data/${id}.json`;
+// Legacy static JSON path resolution is disabled.
+export function resolveRoomJsonPath(_roomIdRaw: string): string {
+  throw new Error(
+    "Legacy static /data room JSON loading is disabled. Use the secure loader."
+  );
 }
 
 export async function loadRoomJson(roomIdRaw: string): Promise<any> {
   const id = canonicalizeRoomId(roomIdRaw);
-  const manifestPath = resolveRoomJsonPath(id);
-
-  // Always fetch from root ("/data/..."), never relative ("data/...")
-  const baseUrl = manifestPath.startsWith("/") ? manifestPath : `/${manifestPath}`;
-
-  // DEV ONLY: cache buster to avoid stale browser/Vite caching while debugging
-  const url = import.meta.env.DEV ? `${baseUrl}?t=${Date.now()}` : baseUrl;
 
   let res: Response;
   try {
-    res = await fetch(url, import.meta.env.DEV ? { cache: "no-store" } : undefined);
+    // Replace this URL/body with your real secure endpoint contract.
+    res = await fetch("/functions/v1/secure-room-loader", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({ roomId: id }),
+    });
   } catch {
     const err = new Error("NETWORK_ERROR");
     (err as any).kind = "network" satisfies RoomJsonResolverErrorKind;
@@ -104,11 +72,9 @@ export async function loadRoomJson(roomIdRaw: string): Promise<any> {
     throw err;
   }
 
-  // ✅ Guard: Vercel SPA fallback can return 200 + HTML (index.html) for missing JSON
   const ct = (res.headers.get("content-type") || "").toLowerCase();
   const text = await res.text();
 
-  // If it's clearly HTML, treat as not_found so callers can fallback to DB
   if (!ct.includes("application/json") && /^\s*<!doctype html>|^\s*<html/i.test(text)) {
     const err = new Error("ROOM_NOT_FOUND");
     (err as any).kind = "not_found" satisfies RoomJsonResolverErrorKind;

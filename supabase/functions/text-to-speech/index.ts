@@ -1,3 +1,5 @@
+// PATH: supabase/functions/text-to-speech/index.ts
+
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts'
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 import { validateInput, ttsRequestSchema } from "../shared/validation.ts";
@@ -6,6 +8,44 @@ import { checkRateLimit, checkFeatureFlag } from "../shared/rate-limit.ts";
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+}
+
+type SubscriptionTierRow = {
+  name?: string | null;
+};
+
+type SubscriptionRow = {
+  tier_id?: string | null;
+  subscription_tiers?: SubscriptionTierRow | SubscriptionTierRow[] | null;
+};
+
+function normalizeTier(value: unknown): string {
+  return String(value ?? '').trim().toLowerCase();
+}
+
+function pickSubscriptionTierData(subscription: SubscriptionRow | null): SubscriptionTierRow | null {
+  const raw = subscription?.subscription_tiers ?? null;
+  if (!raw) return null;
+  if (Array.isArray(raw)) return raw[0] ?? null;
+  return raw;
+}
+
+function isPaidBillingTier(tier: string): boolean {
+  return tier === 'premium_month' || tier === 'premium_year';
+}
+
+function isLegacyVipTier(tier: string): boolean {
+  return /^vip[1-9]$/.test(tier);
+}
+
+/**
+ * New repo policy:
+ * - premium_month / premium_year can access the whole paid repo
+ * - keep legacy VIP tiers working too
+ */
+function hasPaidRepoAccess(tier: string): boolean {
+  return isPaidBillingTier(tier) || isLegacyVipTier(tier);
 }
 
 serve(async (req) => {
@@ -60,31 +100,39 @@ serve(async (req) => {
       );
     }
 
-    // Verify VIP3+ access
+    // Verify paid repo access
     const { data: subscription } = await supabaseClient
       .from('user_subscriptions')
       .select('tier_id, subscription_tiers(name)')
       .eq('user_id', user.id)
       .eq('status', 'active')
-      .maybeSingle()
+      .maybeSingle<SubscriptionRow>()
 
-    const tierName = (subscription?.subscription_tiers as any)?.name?.toLowerCase()
-    if (!tierName?.includes('vip3') && !tierName?.includes('vip4')) {
+    const tierData = pickSubscriptionTierData(subscription);
+    const tierName = normalizeTier(tierData?.name);
+    const tierId = normalizeTier(subscription?.tier_id);
+    const resolvedTier = tierName || tierId || 'free';
+
+    if (!hasPaidRepoAccess(resolvedTier)) {
       return new Response(
-        JSON.stringify({ error: 'VIP3+ subscription required for text-to-speech / Cần đăng ký VIP3 trở lên để sử dụng chuyển văn bản thành giọng nói' }),
+        JSON.stringify({
+          error: 'Paid entitlement required for text-to-speech / Cần gói trả phí để sử dụng chuyển văn bản thành giọng nói',
+          tier: resolvedTier,
+        }),
         { status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       )
     }
 
     // Generate unique filename based on room and entry
-    const fileName = `${roomSlug}/${entrySlug}_${voice || 'alloy'}.mp3`
+    const safeVoice = voice || 'alloy'
+    const fileName = `${roomSlug}/${entrySlug}_${safeVoice}.mp3`
     
     // Check if audio file already exists in storage
     const { data: existingFile } = await supabaseClient
       .storage
       .from('room-audio')
       .list(roomSlug, {
-        search: `${entrySlug}_${voice || 'alloy'}.mp3`
+        search: `${entrySlug}_${safeVoice}.mp3`
       })
 
     if (existingFile && existingFile.length > 0) {
@@ -92,7 +140,7 @@ serve(async (req) => {
       const { data: urlData, error: urlError } = await supabaseClient
         .storage
         .from('room-audio')
-        .createSignedUrl(fileName, 86400) // 24 hours
+        .createSignedUrl(fileName, 86400)
       
       if (urlError) {
         console.error('Signed URL error:', urlError)
@@ -129,7 +177,7 @@ serve(async (req) => {
       body: JSON.stringify({
         model: 'tts-1',
         input: englishText,
-        voice: voice || 'alloy',
+        voice: safeVoice,
         response_format: 'mp3',
       }),
     })
@@ -161,7 +209,7 @@ serve(async (req) => {
     const { data: urlData, error: urlError } = await supabaseClient
       .storage
       .from('room-audio')
-      .createSignedUrl(fileName, 86400) // 24 hours
+      .createSignedUrl(fileName, 86400)
 
     if (urlError) {
       console.error('Signed URL error:', urlError)
@@ -172,13 +220,21 @@ serve(async (req) => {
     await supabaseClient.from('tts_usage_log').insert({
       user_id: user.id,
       text_length: englishText.length,
-      voice: voice || 'alloy'
+      voice: safeVoice
     })
 
     console.log('Audio generated and stored:', fileName)
 
     return new Response(
-      JSON.stringify({ audioUrl: urlData.signedUrl, cached: false }),
+      JSON.stringify({
+        audioUrl: urlData.signedUrl,
+        cached: false,
+        access: {
+          granted: true,
+          tier: resolvedTier,
+          paidAccessModel: 'monthly_or_yearly_unlocks_all_vip_rooms',
+        },
+      }),
       {
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       },

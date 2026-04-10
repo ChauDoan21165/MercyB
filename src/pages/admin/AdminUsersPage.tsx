@@ -5,6 +5,7 @@
 // - Uses KPI RPC: public.admin_users_dashboard_kpis_v1
 // - No longer stitches profiles + subscriptions in React
 // - Keeps filters + charts + CSV export + detail drawer
+// - Adds alerts/anomaly panel
 //
 // IMPORTANT:
 // Before using this file, create these DB objects:
@@ -70,6 +71,9 @@ type ChartPoint = {
 };
 
 const PAGE_MAX = 1240;
+const VIEW_NAME = "admin_users_dashboard_v1";
+const KPI_RPC_NAME = "admin_users_dashboard_kpis_v1";
+const ZERO_DECIMAL_CURRENCIES = new Set(["VND", "JPY", "KRW"]);
 
 function safeText(value: unknown, fallback = ""): string {
   if (typeof value === "string") return value.trim();
@@ -112,6 +116,17 @@ function formatMoney(amount: number, currency = "USD"): string {
   } catch {
     return `${currency.toUpperCase()} ${Math.round(amount)}`;
   }
+}
+
+function formatMoneyFromMinorUnits(
+  amountMinor: number,
+  currency = "USD",
+  quantity = 1,
+): string {
+  const code = currency.toUpperCase();
+  const totalMinor = safeNumber(amountMinor, 0) * safeNumber(quantity, 1);
+  const majorAmount = ZERO_DECIMAL_CURRENCIES.has(code) ? totalMinor : totalMinor / 100;
+  return formatMoney(majorAmount, code);
 }
 
 function monthKey(value: string | null): string {
@@ -182,6 +197,135 @@ function KpiCard({
       <div style={labelStyle}>{label}</div>
       <div style={valueStyle}>{value}</div>
       {help ? <div style={helpStyle}>{help}</div> : null}
+    </div>
+  );
+}
+
+function AlertsPanel({
+  rows,
+  onApply,
+}: {
+  rows: DashboardRow[];
+  onApply: (patch: {
+    search?: string;
+    environment?: string;
+    status?: string;
+    plan?: string;
+    admin?: string;
+  }) => void;
+}) {
+  const counts = useMemo(
+    () => ({
+      missingProfile: rows.filter((r) => r.missing_profile).length,
+      unknownEmail: rows.filter((r) => r.unknown_email).length,
+      cancelingSoon: rows.filter((r) => r.cancel_at_period_end && r.environment === "production").length,
+      sandbox: rows.filter((r) => r.environment === "sandbox").length,
+    }),
+    [rows],
+  );
+
+  const cardWrap: React.CSSProperties = {
+    marginTop: 18,
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+    gap: 12,
+  };
+
+  const alertCard = (tone: "red" | "amber" | "blue" | "gray"): React.CSSProperties => {
+    const tones = {
+      red: {
+        background: "rgba(254,242,242,0.96)",
+        border: "1px solid rgba(239,68,68,0.18)",
+        color: "rgba(153,27,27,0.92)",
+      },
+      amber: {
+        background: "rgba(255,251,235,0.96)",
+        border: "1px solid rgba(245,158,11,0.18)",
+        color: "rgba(146,64,14,0.92)",
+      },
+      blue: {
+        background: "rgba(239,246,255,0.96)",
+        border: "1px solid rgba(59,130,246,0.18)",
+        color: "rgba(30,64,175,0.92)",
+      },
+      gray: {
+        background: "rgba(248,250,252,0.96)",
+        border: "1px solid rgba(0,0,0,0.08)",
+        color: "rgba(51,65,85,0.92)",
+      },
+    };
+
+    return {
+      borderRadius: 18,
+      padding: "14px 14px",
+      cursor: "pointer",
+      boxShadow: "0 8px 20px rgba(0,0,0,0.04)",
+      ...tones[tone],
+    };
+  };
+
+  const title: React.CSSProperties = {
+    fontSize: 12,
+    fontWeight: 900,
+    letterSpacing: 0.55,
+    textTransform: "uppercase",
+  };
+
+  const value: React.CSSProperties = {
+    marginTop: 6,
+    fontSize: 28,
+    fontWeight: 950,
+    lineHeight: 1.05,
+  };
+
+  const help: React.CSSProperties = {
+    marginTop: 8,
+    fontSize: 13,
+    lineHeight: 1.45,
+    opacity: 0.88,
+  };
+
+  return (
+    <div style={cardWrap}>
+      <button
+        type="button"
+        style={alertCard("red")}
+        onClick={() => onApply({ search: "missing_profile", environment: "all" })}
+      >
+        <div style={title}>Missing profile</div>
+        <div style={value}>{counts.missingProfile}</div>
+        <div style={help}>Subscribed users without a matching profile row.</div>
+      </button>
+
+      <button
+        type="button"
+        style={alertCard("red")}
+        onClick={() => onApply({ search: "unknown_email", environment: "all" })}
+      >
+        <div style={title}>Unknown email</div>
+        <div style={value}>{counts.unknownEmail}</div>
+        <div style={help}>Rows still missing a resolved identity email.</div>
+      </button>
+
+      <button
+        type="button"
+        style={alertCard("amber")}
+        onClick={() => onApply({ search: "canceling_soon", environment: "production" })}
+      >
+        <div style={title}>Canceling soon</div>
+        <div style={value}>{counts.cancelingSoon}</div>
+        <div style={help}>Active production subscriptions set to end at period close.</div>
+      </button>
+
+      <button
+        type="button"
+        style={alertCard("gray")}
+        onClick={() => onApply({ environment: "sandbox", search: "" })}
+      >
+        <div style={title}>Sandbox rows</div>
+        <div style={value}>{counts.sandbox}</div>
+        <div style={help}>Test billing rows still present in the dashboard data.</div>
+      </button>
     </div>
   );
 }
@@ -374,7 +518,7 @@ function AdminUserDetailDrawer({
             <div style={keyStyle}>Amount</div>
             <div style={valueStyle}>
               {row.amount_cents > 0
-                ? formatMoney((row.amount_cents * row.quantity) / 100, row.currency_code)
+                ? formatMoneyFromMinorUnits(row.amount_cents, row.currency_code, row.quantity)
                 : "—"}
             </div>
 
@@ -493,13 +637,12 @@ export default function AdminUsersPage() {
     setErr(null);
 
     try {
+      const typedSupabase = supabase as any;
+
       const [{ data: rowsData, error: rowsError }, { data: kpiData, error: kpiError }] =
         await Promise.all([
-          supabase
-            .from("admin_users_dashboard_v1")
-            .select("*")
-            .order("created_at", { ascending: false }),
-          supabase.rpc("admin_users_dashboard_kpis_v1"),
+          typedSupabase.from(VIEW_NAME).select("*").order("created_at", { ascending: false }),
+          typedSupabase.rpc(KPI_RPC_NAME),
         ]);
 
       if (rowsError) throw rowsError;
@@ -1116,6 +1259,17 @@ export default function AdminUsersPage() {
           />
         </div>
 
+        <AlertsPanel
+          rows={rows}
+          onApply={(patch) => {
+            if (typeof patch.search !== "undefined") setSearch(patch.search);
+            if (typeof patch.environment !== "undefined") setEnvironmentFilter(patch.environment);
+            if (typeof patch.status !== "undefined") setStatusFilter(patch.status);
+            if (typeof patch.plan !== "undefined") setPlanFilter(patch.plan);
+            if (typeof patch.admin !== "undefined") setAdminFilter(patch.admin);
+          }}
+        />
+
         <div style={filtersCard}>
           <div style={filtersGrid}>
             <div>
@@ -1137,7 +1291,7 @@ export default function AdminUsersPage() {
               >
                 {environmentOptions.map((option) => (
                   <option key={option} value={option}>
-                    {option === "all" ? "All" : option}
+                    {option === "all" ? "All" : titleCase(option)}
                   </option>
                 ))}
               </select>
@@ -1152,7 +1306,7 @@ export default function AdminUsersPage() {
               >
                 {statusOptions.map((option) => (
                   <option key={option} value={option}>
-                    {option === "all" ? "All" : option}
+                    {option === "all" ? "All" : titleCase(option)}
                   </option>
                 ))}
               </select>
@@ -1167,7 +1321,7 @@ export default function AdminUsersPage() {
               >
                 {planOptions.map((option) => (
                   <option key={option} value={option}>
-                    {option === "all" ? "All" : option}
+                    {option === "all" ? "All" : titleCase(option)}
                   </option>
                 ))}
               </select>
@@ -1406,7 +1560,11 @@ export default function AdminUsersPage() {
                         <td style={td}>
                           <button type="button" style={rowBtn} onClick={() => setSelectedRow(row)}>
                             {safeNumber(row.amount_cents, 0) > 0
-                              ? formatMoney((safeNumber(row.amount_cents, 0) * safeNumber(row.quantity, 1)) / 100, row.currency_code)
+                              ? formatMoneyFromMinorUnits(
+                                  safeNumber(row.amount_cents, 0),
+                                  row.currency_code,
+                                  safeNumber(row.quantity, 1),
+                                )
                               : "—"}
                           </button>
                         </td>

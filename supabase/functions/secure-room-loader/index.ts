@@ -1,3 +1,5 @@
+// PATH: supabase/functions/secure-room-loader/index.ts
+
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.39.3';
 import { z } from 'https://deno.land/x/zod@v3.22.4/mod.ts';
 import { rateLimit, getClientIP } from "../_shared/rateLimit.ts";
@@ -11,11 +13,150 @@ const requestSchema = z.object({
   roomId: z.string().min(1),
 });
 
+type SubscriptionTierRow = {
+  name?: string | null;
+  display_order?: number | null;
+};
+
+type SubscriptionRow = {
+  tier_id?: string | null;
+  status?: string | null;
+  subscription_tiers?: SubscriptionTierRow | SubscriptionTierRow[] | null;
+};
+
+type UserRoleRow = {
+  role?: string | null;
+};
+
+type RoomRow = {
+  id: string;
+  tier?: string | null;
+  [key: string]: unknown;
+};
+
+function normalizeTier(value: unknown): string {
+  return String(value ?? '').trim().toLowerCase();
+}
+
+function pickSubscriptionTierData(subscription: SubscriptionRow | null): SubscriptionTierRow | null {
+  const raw = subscription?.subscription_tiers ?? null;
+  if (!raw) return null;
+  if (Array.isArray(raw)) return raw[0] ?? null;
+  return raw;
+}
+
+function isPaidBillingTier(tier: string): boolean {
+  return tier === 'premium_month' || tier === 'premium_year';
+}
+
+function isLegacyVipTier(tier: string): boolean {
+  return /^vip[1-9]$/.test(tier);
+}
+
+function isKidsTier(tier: string): boolean {
+  return /^kids(?:_\d+)?$/.test(tier);
+}
+
+function normalizeRoomTier(rawRoomTier: unknown, roomId: unknown): string {
+  const direct = normalizeTier(rawRoomTier);
+  if (direct) return direct;
+
+  const rid = String(roomId ?? '').trim().toLowerCase();
+
+  if (/_free$/.test(rid) || /(^|_)free($|_)/.test(rid)) return 'free';
+
+  {
+    const m = rid.match(/(?:^|_)(vip[1-9])(?:$|_)/);
+    if (m?.[1]) return m[1];
+  }
+
+  {
+    const m = rid.match(/(?:^|_)(kids(?:_\d+)?)(?:$|_)/);
+    if (m?.[1]) return m[1];
+  }
+
+  return 'free';
+}
+
+function resolveUserTier(subscription: SubscriptionRow | null): string {
+  const tierData = pickSubscriptionTierData(subscription);
+  const tierName = normalizeTier(tierData?.name);
+  const tierId = normalizeTier(subscription?.tier_id);
+
+  if (tierName) return tierName;
+  if (tierId) return tierId;
+  return 'free';
+}
+
+/**
+ * New business rule:
+ * - free room => open to all authenticated users
+ * - vip1..vip9 => curriculum labels only
+ * - any paid monthly/yearly user gets all adult VIP rooms
+ * - admins bypass all checks
+ * - legacy VIP user tiers remain allowed for backward compatibility
+ * - kids tiers remain isolated from adult VIP content
+ */
+function canAccessRoom(params: {
+  userTier: string;
+  roomTier: string;
+  isAdmin: boolean;
+}): { allowed: boolean; reason?: string } {
+  const userTier = normalizeTier(params.userTier);
+  const roomTier = normalizeTier(params.roomTier);
+  const isAdmin = Boolean(params.isAdmin);
+
+  if (isAdmin) {
+    return { allowed: true };
+  }
+
+  if (roomTier === 'free' || roomTier === '') {
+    return { allowed: true };
+  }
+
+  if (isKidsTier(roomTier)) {
+    if (userTier === 'free') {
+      return {
+        allowed: false,
+        reason: 'Kids content requires an eligible kids or adult paid plan.',
+      };
+    }
+    return { allowed: true };
+  }
+
+  if (isLegacyVipTier(roomTier)) {
+    if (isPaidBillingTier(userTier)) {
+      return { allowed: true };
+    }
+
+    // keep legacy VIP accounts working too
+    if (isLegacyVipTier(userTier)) {
+      return { allowed: true };
+    }
+
+    return {
+      allowed: false,
+      reason: 'This room is part of the paid app. Monthly or yearly paid users can access all VIP rooms.',
+    };
+  }
+
+  if (isPaidBillingTier(userTier) || isLegacyVipTier(userTier)) {
+    return { allowed: true };
+  }
+
+  return {
+    allowed: false,
+    reason: 'This room requires paid access.',
+  };
+}
+
 /**
  * Secure Room Loader Edge Function
- * 
- * Serves room JSON files with tier-based access control.
- * Replaces direct public/data/*.json access.
+ *
+ * Serves room JSON files with paid-app access control.
+ * New rule:
+ * - monthly/yearly paid users can access all adult VIP rooms
+ * - VIP1..VIP9 are curriculum labels, not billing gates
  */
 Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') {
@@ -23,12 +164,14 @@ Deno.serve(async (req) => {
   }
 
   try {
+    const authHeader = req.headers.get('Authorization') ?? '';
+
     const supabase = createClient(
       Deno.env.get('SUPABASE_URL') ?? '',
       Deno.env.get('SUPABASE_ANON_KEY') ?? '',
       {
         global: {
-          headers: { Authorization: req.headers.get('Authorization')! },
+          headers: authHeader ? { Authorization: authHeader } : {},
         },
       }
     );
@@ -45,7 +188,7 @@ Deno.serve(async (req) => {
     // Rate limit room loading (prevent abuse)
     try {
       const clientIP = getClientIP(req);
-      await rateLimit(`secure-room-loader:${user.id}:${clientIP}`, 60, 60_000); // 60 calls per minute
+      await rateLimit(`secure-room-loader:${user.id}:${clientIP}`, 60, 60_000);
     } catch (error) {
       if (error instanceof Error && error.message === 'RATE_LIMIT_EXCEEDED') {
         return new Response(
@@ -57,10 +200,14 @@ Deno.serve(async (req) => {
 
     const body = await req.json();
     const validation = requestSchema.safeParse(body);
-    
+
     if (!validation.success) {
       return new Response(
-        JSON.stringify({ success: false, error: 'Invalid request', details: validation.error.errors }),
+        JSON.stringify({
+          success: false,
+          error: 'Invalid request',
+          details: validation.error.errors,
+        }),
         { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
@@ -73,14 +220,14 @@ Deno.serve(async (req) => {
       .select(`
         tier_id,
         status,
-        subscription_tiers!inner (
+        subscription_tiers (
           name,
           display_order
         )
       `)
       .eq('user_id', user.id)
       .eq('status', 'active')
-      .maybeSingle();
+      .maybeSingle<SubscriptionRow>();
 
     // Check if user is admin
     const { data: adminRole } = await supabase
@@ -88,19 +235,17 @@ Deno.serve(async (req) => {
       .select('role')
       .eq('user_id', user.id)
       .eq('role', 'admin')
-      .maybeSingle();
+      .maybeSingle<UserRoleRow>();
 
     const isAdmin = !!adminRole;
-    const tierData = subscription?.subscription_tiers as any;
-    const userTier = tierData?.name?.toLowerCase() || 'free';
-    const userTierLevel = tierData?.display_order || 0;
+    const userTier = resolveUserTier(subscription);
 
     // Get room data
     const { data: room, error: roomError } = await supabase
       .from('rooms')
       .select('*')
       .eq('id', roomId)
-      .maybeSingle();
+      .maybeSingle<RoomRow>();
 
     if (roomError || !room) {
       return new Response(
@@ -109,30 +254,22 @@ Deno.serve(async (req) => {
       );
     }
 
-    // Check tier access
-    const roomTier = room.tier?.toLowerCase() || 'free';
-    const tierMap: Record<string, number> = {
-      free: 0,
-      vip1: 1,
-      vip2: 2,
-      vip3: 3,
-      vip4: 4,
-      vip5: 5,
-      vip6: 6,
-      vip7: 7,
-      vip8: 8,
-      vip9: 9,
-    };
+    // New access model
+    const roomTier = normalizeRoomTier(room.tier, room.id);
+    const access = canAccessRoom({
+      userTier,
+      roomTier,
+      isAdmin,
+    });
 
-    const roomTierLevel = tierMap[roomTier] ?? 0;
-
-    if (!isAdmin && userTierLevel < roomTierLevel) {
+    if (!access.allowed) {
       return new Response(
         JSON.stringify({
           success: false,
           error: 'ACCESS_DENIED: insufficient tier',
+          reason: access.reason ?? 'Access denied',
           requiredTier: roomTier,
-          userTier: userTier,
+          userTier,
         }),
         { status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
@@ -142,7 +279,14 @@ Deno.serve(async (req) => {
     return new Response(
       JSON.stringify({
         success: true,
-        room: room,
+        room,
+        access: {
+          granted: true,
+          userTier,
+          roomTier,
+          isAdmin,
+          paidAccessModel: 'monthly_or_yearly_unlocks_all_vip_rooms',
+        },
       }),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );

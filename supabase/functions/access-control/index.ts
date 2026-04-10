@@ -1,5 +1,3 @@
-// PATH: supabase/functions/get-room/index.ts
-
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.39.3';
 import { z } from 'https://deno.land/x/zod@v3.22.4/mod.ts';
 
@@ -13,14 +11,12 @@ const getRoomSchema = z.object({
   roomId: z.string().min(1, 'Room ID is required').max(100),
 });
 
-type SubscriptionTierRow = {
-  name?: string | null;
-};
-
 type SubscriptionRow = {
   tier_id?: string | null;
   status?: string | null;
-  subscription_tiers?: SubscriptionTierRow | SubscriptionTierRow[] | null;
+  subscription_tiers?: {
+    name?: string | null;
+  } | null;
 };
 
 type UserRoleRow = {
@@ -35,13 +31,6 @@ type RoomRow = {
 
 function normalizeTier(value: unknown): string {
   return String(value ?? '').trim().toLowerCase();
-}
-
-function pickSubscriptionTierData(subscription: SubscriptionRow | null): SubscriptionTierRow | null {
-  const raw = subscription?.subscription_tiers ?? null;
-  if (!raw) return null;
-  if (Array.isArray(raw)) return raw[0] ?? null;
-  return raw;
 }
 
 function isPaidBillingTier(tier: string): boolean {
@@ -63,14 +52,12 @@ function normalizeRoomTier(rawRoomTier: unknown, roomId: unknown): string {
   const rid = String(roomId ?? '').trim().toLowerCase();
 
   if (/_free$/.test(rid) || /(^|_)free($|_)/.test(rid)) return 'free';
-
-  {
-    const m = rid.match(/(?:^|_)(vip[1-9])(?:$|_)/);
+  if (/_vip[1-9]$/.test(rid)) {
+    const m = rid.match(/_(vip[1-9])$/);
     if (m?.[1]) return m[1];
   }
-
-  {
-    const m = rid.match(/(?:^|_)(kids(?:_\d+)?)(?:$|_)/);
+  if (/_kids(?:_\d+)?$/.test(rid)) {
+    const m = rid.match(/_(kids(?:_\d+)?)$/);
     if (m?.[1]) return m[1];
   }
 
@@ -78,8 +65,7 @@ function normalizeRoomTier(rawRoomTier: unknown, roomId: unknown): string {
 }
 
 function resolveUserTier(subscription: SubscriptionRow | null): string {
-  const tierData = pickSubscriptionTierData(subscription);
-  const tierName = normalizeTier(tierData?.name);
+  const tierName = normalizeTier(subscription?.subscription_tiers?.name);
   const tierId = normalizeTier(subscription?.tier_id);
 
   if (tierName) return tierName;
@@ -109,26 +95,27 @@ function canAccessRoom(params: {
     return { allowed: true };
   }
 
+  // Free rooms are open to all authenticated users
   if (roomTier === 'free' || roomTier === '') {
     return { allowed: true };
   }
 
+  // Kids content handling
   if (isKidsTier(roomTier)) {
     if (userTier === 'free') {
-      return {
-        allowed: false,
-        reason: 'Kids content requires an eligible kids or adult paid plan.',
-      };
+      return { allowed: false, reason: 'Kids content requires an eligible kids or adult paid plan.' };
     }
     return { allowed: true };
   }
 
+  // Adult VIP curriculum rooms
   if (isLegacyVipTier(roomTier)) {
+    // paid monthly/yearly unlocks all VIP rooms
     if (isPaidBillingTier(userTier)) {
       return { allowed: true };
     }
 
-    // Backward compatibility for legacy VIP user tiers
+    // keep legacy VIP accounts working
     if (isLegacyVipTier(userTier)) {
       return { allowed: true };
     }
@@ -139,6 +126,7 @@ function canAccessRoom(params: {
     };
   }
 
+  // Unknown adult non-free tiers: treat paid users/admin as allowed, free as denied
   if (isPaidBillingTier(userTier) || isLegacyVipTier(userTier)) {
     return { allowed: true };
   }
@@ -167,7 +155,6 @@ Deno.serve(async (req) => {
       }
     );
 
-    // Verify authentication
     const {
       data: { user },
       error: authError,
@@ -177,7 +164,10 @@ Deno.serve(async (req) => {
       console.error('Authentication failed:', authError);
       return new Response(
         JSON.stringify({ error: 'Unauthorized' }),
-        { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        {
+          status: 401,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        }
       );
     }
 
@@ -187,15 +177,20 @@ Deno.serve(async (req) => {
     if (!validation.success) {
       console.error('Validation failed:', validation.error);
       return new Response(
-        JSON.stringify({ error: 'Invalid request', details: validation.error.errors }),
-        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        JSON.stringify({
+          error: 'Invalid request',
+          details: validation.error.errors,
+        }),
+        {
+          status: 400,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        }
       );
     }
 
     const { roomId } = validation.data;
     console.log(`User ${user.id} requesting room: ${roomId}`);
 
-    // Get user's tier
     const { data: subscription } = await supabase
       .from('user_subscriptions')
       .select(`
@@ -209,7 +204,6 @@ Deno.serve(async (req) => {
       .eq('status', 'active')
       .maybeSingle<SubscriptionRow>();
 
-    // Check if user is admin
     const { data: adminRole } = await supabase
       .from('user_roles')
       .select('role')
@@ -220,9 +214,8 @@ Deno.serve(async (req) => {
     const isAdmin = !!adminRole;
     const userTier = resolveUserTier(subscription);
 
-    console.log(`User tier: ${userTier}, isAdmin: ${isAdmin}`);
+    console.log(`Resolved user tier: ${userTier}, isAdmin: ${isAdmin}`);
 
-    // Get room data
     const { data: room, error: roomError } = await supabase
       .from('rooms')
       .select('*')
@@ -233,12 +226,14 @@ Deno.serve(async (req) => {
       console.error('Room not found:', roomError);
       return new Response(
         JSON.stringify({ error: 'Room not found' }),
-        { status: 404, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        {
+          status: 404,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        }
       );
     }
 
     const roomTier = normalizeRoomTier(room.tier, room.id);
-
     const access = canAccessRoom({
       userTier,
       roomTier,
@@ -254,11 +249,13 @@ Deno.serve(async (req) => {
           requiredTier: roomTier,
           userTier,
         }),
-        { status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        {
+          status: 403,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        }
       );
     }
 
-    // Log access
     try {
       await supabase.from('room_usage_analytics').insert({
         user_id: user.id,
@@ -283,13 +280,18 @@ Deno.serve(async (req) => {
           paidAccessModel: 'monthly_or_yearly_unlocks_all_vip_rooms',
         },
       }),
-      { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      {
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      }
     );
   } catch (error: any) {
     console.error('Error in get-room:', error);
     return new Response(
-      JSON.stringify({ error: error.message || 'Internal server error' }),
-      { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      JSON.stringify({ error: error?.message || 'Internal server error' }),
+      {
+        status: 500,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      }
     );
   }
 });

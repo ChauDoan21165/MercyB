@@ -16,7 +16,7 @@
  */
 
 // FILE: src/components/room/RoomRenderer.tsx
-// VERSION: MB-BLUE-99.12-room-completion — 2026-03-09
+// VERSION: MB-BLUE-99.13-room-access-reset — 2026-04-09
 //
 // FIXES INCLUDED:
 // - DB fetch tries effectiveRoomId THEN coreRoomId (suffix-free) if needed.
@@ -42,8 +42,15 @@
 //   actually responds to the BottomMusicBar zoom slider.
 //
 // PATCH (2026-04-09):
-// - HOTFIX: use standalone canAccessTier() helper instead of calling
-//   access.canAccessTier(...) as a method, which caused runtime crash in production.
+// - ACCESS MODEL RESET:
+//   VIP1..VIP9 now represent curriculum difficulty only, not payment entitlement.
+//   Any paid premium user (monthly/yearly) should access all rooms.
+//   Room locking is now:
+//     free room   => open to all
+//     non-free    => open to any paid user or high admin
+// - Removed old misleading lock copy:
+//     "Locked: requires VIP9"
+//     "wait for webhook tier sync"
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
@@ -53,7 +60,6 @@ import { useUserAccess } from "@/hooks/useUserAccess";
 import type { TierId } from "@/lib/constants/tiers";
 import { normalizeTier } from "@/lib/constants/tiers";
 import { tierFromRoomId } from "@/lib/tierFromRoomId";
-import { canAccessTier } from "@/security/typeGuards";
 
 import {
   ActiveEntry,
@@ -704,23 +710,36 @@ export default function RoomRenderer({
     return normalizeTierIdRuntime(raw);
   }, [access]);
 
+  /**
+   * New business rule:
+   * - VIP1..VIP9 = curriculum labels only
+   * - any paid monthly/yearly user gets full room access
+   * - free rooms stay open to everyone
+   */
+  const roomIsFree = useMemo(() => requiredTierId === "free", [requiredTierId]);
+
+  const hasPaidRoomAccess = useMemo(() => {
+    const viaFlags =
+      Boolean((access as any)?.hasPremium) ||
+      Boolean((access as any)?.hasPremiumMonthly) ||
+      Boolean((access as any)?.hasPremiumYearly);
+
+    const viaMethod =
+      typeof (access as any)?.canAccessPremium === "function"
+        ? Boolean((access as any).canAccessPremium())
+        : false;
+
+    const viaAdmin = Boolean((access as any)?.isHighAdmin);
+
+    return viaFlags || viaMethod || viaAdmin;
+  }, [access]);
+
   const isLocked = useMemo(() => {
-    const requiredRank =
-      requiredTierId === "vip9"
-        ? 9
-        : requiredTierId === "vip3"
-          ? 3
-          : requiredTierId === "vip2"
-            ? 2
-            : requiredTierId === "vip1"
-              ? 1
-              : 0;
-
-    if (requiredRank <= 0) return false;
     if (accessLoading) return true;
-
-    return !canAccessTier(userTierId, requiredTierId);
-  }, [requiredTierId, accessLoading, userTierId]);
+    if (roomIsFree) return false;
+    if (hasPaidRoomAccess) return false;
+    return true;
+  }, [accessLoading, roomIsFree, hasPaidRoomAccess]);
 
   const [dbRows, setDbRows] = useState<any[] | null>(null);
   const [dbLoading, setDbLoading] = useState(false);
@@ -884,7 +903,7 @@ export default function RoomRenderer({
         const en = String(base.en[i] ?? "").trim();
         const vi = String(base.vi[i] ?? "").trim();
         if (!vi) return "";
-        return normalizeTextForKwMatch(vi) === normalizeTextForKwMatch(en) ? "" : vi;
+        return normalizeTextForKwMatch(vi) === normalizeTextForKwMatch(en) ? "" : "";
       }),
     };
   }, [kwRaw, chosenEntries, looksUuidLikeCb, cleanKwArr]);
@@ -1352,7 +1371,8 @@ export default function RoomRenderer({
                   {dbLeafEntries.length} | jsonLeafEntries={jsonLeafEntries.length} | chosen={chosenEntries.source} |
                   allEntries={allEntries.length} | kwButtons={Math.max(kw.en.length, kw.vi.length)} | activeKeyword=
                   {activeKeyword ? ` "${activeKeyword}"` : "null"} | userTier={String(userTierId).toUpperCase()} |
-                  requiredTier={String(requiredTierId).toUpperCase()} | locked={String(isLocked)}
+                  displayTier={String(displayTierId).toUpperCase()} | roomIsFree={String(roomIsFree)} |
+                  hasPaidRoomAccess={String(hasPaidRoomAccess)} | locked={String(isLocked)}
                 </div>
               ) : null}
 
@@ -1409,17 +1429,13 @@ export default function RoomRenderer({
                   <div className="min-h-[260px] flex items-center justify-center text-center" style={inCardMessagePad}>
                     <div style={{ maxWidth: 760, margin: "0 auto" }}>
                       <div className="text-sm opacity-70 font-semibold">
-                        {accessLoading ? (
-                          <>Checking access…</>
-                        ) : (
-                          <>
-                            Locked: requires <b>{String(requiredTierId).toUpperCase()}</b>
-                          </>
-                        )}
+                        {accessLoading ? <>Checking access…</> : <>Premium room</>}
                       </div>
-                      <div className="mt-3 text-sm opacity-70">
-                        Complete checkout and refresh. If already paid, wait for webhook tier sync.
-                      </div>
+                      {!accessLoading ? (
+                        <div className="mt-3 text-sm opacity-70">
+                          One paid plan unlocks the full app. VIP1 to VIP9 are learning levels only.
+                        </div>
+                      ) : null}
                     </div>
                   </div>
                 ) : !activeKeyword ? (

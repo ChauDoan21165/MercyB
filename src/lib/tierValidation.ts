@@ -5,6 +5,11 @@
  *
  * Strict validation for tier system - NO GUESSING, NO FALLBACKS
  * Uses canonical tier constants from lib/constants/tiers.ts
+ *
+ * New access policy:
+ * - premium_month / premium_year unlock the whole paid repo
+ * - legacy VIP tiers remain allowed for backward compatibility
+ * - kids tiers stay on their own progression path
  */
 
 import {
@@ -81,45 +86,58 @@ export function tierIdToDbLabel(tierId: TierId): TierValue {
   return TIER_ID_TO_LABEL[tierId] as TierValue;
 }
 
+function isKidsTier(tierId: TierId): boolean {
+  return tierId === "kids_1" || tierId === "kids_2" || tierId === "kids_3";
+}
+
+function isPaidBillingTier(tierId: TierId): boolean {
+  return tierId === "premium_month" || tierId === "premium_year";
+}
+
+function isLegacyVipTier(tierId: TierId): boolean {
+  return /^vip[1-9]$/.test(String(tierId));
+}
+
+function isPaidRepoTier(tierId: TierId): boolean {
+  return isPaidBillingTier(tierId) || isLegacyVipTier(tierId);
+}
+
+function kidsTierLevel(tierId: TierId): number {
+  if (tierId === "kids_1") return 1;
+  if (tierId === "kids_2") return 2;
+  if (tierId === "kids_3") return 3;
+  return 0;
+}
+
 /**
  * Verify tier access - returns true if userTier can access roomTier
+ *
+ * New policy:
+ * - free users can only access free content
+ * - paid billing tiers can access the whole paid repo
+ * - legacy VIP tiers can access the whole paid repo
+ * - kids tiers only access kids progression by level
  */
 export function verifyTierAccess(userTierId: TierId, roomTierId: TierId): boolean {
-  const tierOrder: TierId[] = [
-    "free",
-    "premium_month",
-    "premium_year",
-    "vip1",
-    "vip2",
-    "vip3",
-    "vip4",
-    "vip5",
-    "vip6",
-    "vip7",
-    "vip8",
-    "vip9",
-  ];
+  const userTier = normalizeTier(userTierId);
+  const roomTier = normalizeTier(roomTierId);
 
-  if (userTierId === "vip9") return true;
+  if (roomTier === "free") return true;
+  if (userTier === roomTier) return true;
 
-  const kidsUserTiers: TierId[] = ["kids_1", "kids_2", "kids_3"];
-  const kidsRoomTiers: TierId[] = ["kids_1", "kids_2", "kids_3"];
+  // Paid users unlock the whole repo
+  if (isPaidRepoTier(userTier)) return true;
 
-  if (kidsUserTiers.includes(userTierId)) {
-    if (!kidsRoomTiers.includes(roomTierId)) return false;
-    return kidsUserTiers.indexOf(userTierId) >= kidsRoomTiers.indexOf(roomTierId);
+  // Kids progression stays separate
+  if (isKidsTier(userTier)) {
+    if (!isKidsTier(roomTier)) return false;
+    return kidsTierLevel(userTier) >= kidsTierLevel(roomTier);
   }
 
-  if (kidsRoomTiers.includes(roomTierId)) {
-    return false;
-  }
+  // Free users cannot access paid/kids gated content
+  if (userTier === "free") return false;
 
-  const userIdx = tierOrder.indexOf(userTierId);
-  const roomIdx = tierOrder.indexOf(roomTierId);
-
-  if (userIdx === -1 || roomIdx === -1) return false;
-
-  return userIdx >= roomIdx;
+  return false;
 }
 
 /**

@@ -8,7 +8,6 @@ export type AdminPermissions = {
   isAdmin: boolean;
   isAdminMaster: boolean;
 
-  // “Capabilities” (you can tune these thresholds later)
   canViewAdmin: boolean;
   canManageUsers: boolean;
   canManageContent: boolean;
@@ -25,6 +24,14 @@ type AdminAccessState = {
   error: string | null;
 };
 
+type ProfileAdminRow = {
+  user_id?: string | null;
+  id?: string | null;
+  email?: string | null;
+  is_admin?: boolean | null;
+  admin_level?: number | null;
+};
+
 const defaultPermissions: AdminPermissions = {
   level: 0,
   isAdmin: false,
@@ -39,25 +46,93 @@ const defaultPermissions: AdminPermissions = {
 };
 
 function permissionsFromLevel(level: number): AdminPermissions {
-  const isAdmin = level > 0;
+  const safeLevel = Number.isFinite(level) ? Math.max(0, level) : 0;
+  const isAdmin = safeLevel > 0;
+
   return {
-    level,
+    level: safeLevel,
     isAdmin,
-    isAdminMaster: level === 10,
+    isAdminMaster: safeLevel >= 10,
 
     canViewAdmin: isAdmin,
-    canManageUsers: level >= 3,
-    canManageContent: level >= 5,
-    canManagePayments: level >= 7,
-    canManageAdmins: level >= 8,
-    canEditSystem: level >= 9,
+    canManageUsers: safeLevel >= 3,
+    canManageContent: safeLevel >= 5,
+    canManagePayments: safeLevel >= 7,
+    canManageAdmins: safeLevel >= 8,
+    canEditSystem: safeLevel >= 9,
   };
+}
+
+function normalizeLevel(value: unknown): number {
+  const level = Number(value ?? 0);
+  return Number.isFinite(level) ? Math.max(0, level) : 0;
+}
+
+function isAdminFromProfile(profile: ProfileAdminRow | null): boolean {
+  if (!profile) return false;
+  const level = normalizeLevel(profile.admin_level);
+  return Boolean(profile.is_admin) || level >= 1;
+}
+
+async function fetchAdminProfile(userId: string): Promise<ProfileAdminRow | null> {
+  const typedSupabase = supabase as any;
+
+  const { data, error } = await typedSupabase
+    .from("profiles")
+    .select("id, user_id, email, is_admin, admin_level")
+    .or(`user_id.eq.${userId},id.eq.${userId}`)
+    .limit(1)
+    .maybeSingle();
+
+  if (error) throw error;
+  return (data as ProfileAdminRow | null) ?? null;
+}
+
+async function fetchAdminRoleByRpc(userId: string): Promise<{ hasRole: boolean; level: number | null }> {
+  const typedSupabase = supabase as any;
+
+  let hasRole = false;
+  let level: number | null = null;
+
+  try {
+    const { data, error } = await typedSupabase.rpc("has_role", {
+      _user_id: userId,
+      _role: "admin" as AdminRole,
+    });
+
+    if (!error) {
+      hasRole = Boolean(data);
+    }
+  } catch {
+    // ignore RPC absence/failure
+  }
+
+  try {
+    const { data, error } = await typedSupabase.rpc("get_admin_level", {
+      _user_id: userId,
+    });
+
+    if (!error && data !== null && typeof data !== "undefined") {
+      level = normalizeLevel(data);
+    }
+  } catch {
+    // ignore RPC absence/failure
+  }
+
+  return { hasRole, level };
 }
 
 /**
  * Single Source of Truth for admin access in the frontend.
- * - Uses RPC has_role + get_admin_level (if available)
- * - Falls back safely when functions are missing
+ *
+ * New priority:
+ * 1) Read admin truth directly from `profiles`
+ * 2) Use RPCs only as optional fallback/support
+ * 3) Never fail closed just because RPCs are missing
+ *
+ * Why:
+ * - Your real admin data already lives in `profiles.is_admin` + `profiles.admin_level`
+ * - RPCs may be missing, stale, or depend on a different role system
  */
 export function useAdminAccess() {
   const [state, setState] = useState<AdminAccessState>({
@@ -72,7 +147,11 @@ export function useAdminAccess() {
     setState((s) => ({ ...s, loading: true, error: null }));
 
     try {
-      const { data: { user }, error: userErr } = await supabase.auth.getUser();
+      const {
+        data: { user },
+        error: userErr,
+      } = await supabase.auth.getUser();
+
       if (userErr) throw userErr;
 
       if (!user) {
@@ -86,55 +165,56 @@ export function useAdminAccess() {
         return;
       }
 
-      // 1) has_role: base gate
-      const { data: hasRole, error: roleErr } = await supabase.rpc("has_role", {
-        _user_id: user.id,
-        _role: "admin" as AdminRole,
-      });
+      const userEmail = user.email ?? null;
 
-      if (roleErr) {
-        // If your DB doesn’t have has_role, fail closed (no admin)
-        console.error("[useAdminAccess] has_role error:", roleErr);
-        setState({
-          loading: false,
-          permissions: defaultPermissions,
-          userId: user.id,
-          email: user.email ?? null,
-          error: "Unable to verify admin role",
-        });
-        return;
+      // Primary source of truth: profiles
+      let profile: ProfileAdminRow | null = null;
+      let profileError: string | null = null;
+
+      try {
+        profile = await fetchAdminProfile(user.id);
+      } catch (err: any) {
+        console.error("[useAdminAccess] profile lookup error:", err);
+        profileError = err?.message || "Unable to read admin profile";
       }
 
-      if (!hasRole) {
+      if (profile && isAdminFromProfile(profile)) {
+        const level = normalizeLevel(profile.admin_level);
+        const resolvedLevel = level >= 1 ? level : 1;
+
         setState({
           loading: false,
-          permissions: defaultPermissions,
+          permissions: permissionsFromLevel(resolvedLevel),
           userId: user.id,
-          email: user.email ?? null,
+          email: userEmail,
           error: null,
         });
         return;
       }
 
-      // 2) admin level (optional but recommended)
-      let level = 1;
-      try {
-        const { data: lvl, error: lvlErr } = await supabase.rpc("get_admin_level", {
-          _user_id: user.id,
+      // Secondary source: RPC role system
+      const rpc = await fetchAdminRoleByRpc(user.id);
+
+      if (rpc.hasRole || (rpc.level ?? 0) >= 1) {
+        const resolvedLevel = Math.max(1, normalizeLevel(rpc.level ?? 1));
+
+        setState({
+          loading: false,
+          permissions: permissionsFromLevel(resolvedLevel),
+          userId: user.id,
+          email: userEmail,
+          error: null,
         });
-        if (!lvlErr && typeof lvl === "number") level = lvl;
-      } catch {
-        // If RPC missing, default level=1
+        return;
       }
 
-      const perms = permissionsFromLevel(level);
-
+      // Not admin. Keep a soft error only if profile lookup itself failed.
       setState({
         loading: false,
-        permissions: perms,
+        permissions: defaultPermissions,
         userId: user.id,
-        email: user.email ?? null,
-        error: null,
+        email: userEmail,
+        error: profileError,
       });
     } catch (e: any) {
       console.error("[useAdminAccess] error:", e);
@@ -149,7 +229,7 @@ export function useAdminAccess() {
   }, []);
 
   useEffect(() => {
-    refresh();
+    void refresh();
   }, [refresh]);
 
   return { ...state, refresh };
