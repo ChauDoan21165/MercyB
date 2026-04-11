@@ -1,5 +1,6 @@
 /**
  * Path: src/components/mercy-guide/MercySpeakTab.tsx
+ * File: MercySpeakTab.tsx
  */
 
 import React, { useEffect, useMemo, useRef, useState } from 'react';
@@ -209,7 +210,46 @@ function getMetricTone(score: number) {
   };
 }
 
+function getRecognitionErrorMessage(error?: string): string {
+  switch (error) {
+    case 'not-allowed':
+    case 'service-not-allowed':
+      return 'Microphone access was blocked. Please allow microphone access and try again.';
+    case 'no-speech':
+      return 'No speech was detected. Try again and speak a little closer to the microphone.';
+    case 'audio-capture':
+      return 'No microphone was found for speech recognition.';
+    case 'network':
+      return 'Speech recognition had a network problem. Please try again.';
+    case 'aborted':
+      return 'Speech recognition was stopped.';
+    default:
+      return error ? `Speech recognition failed: ${error}.` : 'Speech recognition failed.';
+  }
+}
+
+function buildFallbackPracticeText(
+  payload: PronunciationLaunchPayload | null,
+  contentEn?: string,
+): string {
+  const enhancedText = cleanText(payload?.enhancedText);
+  const correctedText = cleanText(payload?.correctedText);
+  const sourceText = cleanText(payload?.sourceText);
+
+  if (enhancedText) return enhancedText;
+  if (correctedText) return correctedText;
+  if (sourceText) return sourceText;
+
+  const fromRoom = cleanText(contentEn);
+  if (!fromRoom) return '';
+
+  const firstSentence = fromRoom.match(/[^.!?]+[.!?]?/u)?.[0] ?? fromRoom;
+  return cleanText(firstSentence);
+}
+
 export function MercySpeakTab({
+  roomId,
+  roomTitle,
   contentEn,
   profile,
   troubleWords,
@@ -221,27 +261,33 @@ export function MercySpeakTab({
   onOpenEnglishLogic,
   learningSupportMode,
 }: MercySpeakTabProps) {
-  void contentEn;
+  void roomId;
+  void roomTitle;
   void speakPractice;
-  void learningSupportMode;
 
-  const payload =
-    pendingPronunciationPayload ?? pendingPayload ?? launchPayload ?? null;
+  const payload = useMemo(
+    () => pendingPronunciationPayload ?? pendingPayload ?? launchPayload ?? null,
+    [launchPayload, pendingPayload, pendingPronunciationPayload],
+  );
 
   const sourceText = cleanText(payload?.sourceText);
   const correctedText = cleanText(payload?.correctedText);
   const enhancedText = cleanText(payload?.enhancedText);
 
-  const defaultPracticeText = useMemo(() => {
-    if (enhancedText) return enhancedText;
-    if (correctedText) return correctedText;
-    if (sourceText) return sourceText;
-    return '';
-  }, [correctedText, enhancedText, sourceText]);
-
-  const [variant, setVariant] = useState<PracticeVariant>(
-    enhancedText ? 'enhanced' : correctedText ? 'corrected' : sourceText ? 'source' : 'custom',
+  const defaultPracticeText = useMemo(
+    () => buildFallbackPracticeText(payload, contentEn),
+    [contentEn, payload],
   );
+
+  const initialVariant: PracticeVariant = enhancedText
+    ? 'enhanced'
+    : correctedText
+      ? 'corrected'
+      : sourceText
+        ? 'source'
+        : 'custom';
+
+  const [variant, setVariant] = useState<PracticeVariant>(initialVariant);
   const [customText, setCustomText] = useState(defaultPracticeText);
   const [copySuccess, setCopySuccess] = useState(false);
 
@@ -280,10 +326,8 @@ export function MercySpeakTab({
 
   useEffect(() => {
     setCustomText(defaultPracticeText);
-    setVariant(
-      enhancedText ? 'enhanced' : correctedText ? 'corrected' : sourceText ? 'source' : 'custom',
-    );
-  }, [correctedText, defaultPracticeText, enhancedText, sourceText]);
+    setVariant(initialVariant);
+  }, [defaultPracticeText, initialVariant]);
 
   useEffect(() => {
     return () => {
@@ -291,18 +335,38 @@ export function MercySpeakTab({
         window.speechSynthesis.cancel();
       }
 
+      try {
+        recognitionRef.current?.abort?.();
+      } catch {
+        // ignore cleanup errors
+      }
+      recognitionRef.current = null;
+
+      try {
+        if (
+          mediaRecorderRef.current &&
+          mediaRecorderRef.current.state !== 'inactive'
+        ) {
+          mediaRecorderRef.current.stop();
+        }
+      } catch {
+        // ignore cleanup errors
+      }
+      mediaRecorderRef.current = null;
+
       if (recordedAudioUrl) {
         URL.revokeObjectURL(recordedAudioUrl);
       }
 
       if (activeStreamRef.current) {
         activeStreamRef.current.getTracks().forEach((track) => track.stop());
+        activeStreamRef.current = null;
       }
     };
   }, [recordedAudioUrl]);
 
   useEffect(() => {
-    if (!copySuccess) return;
+    if (typeof window === 'undefined' || !copySuccess) return;
 
     const timer = window.setTimeout(() => {
       setCopySuccess(false);
@@ -362,6 +426,10 @@ export function MercySpeakTab({
   );
 
   const nextStepMessage = useMemo(() => {
+    if (!practiceText) {
+      return 'Start by choosing or typing one sentence to practice. Mercy will guide the speaking flow after that.';
+    }
+
     if (!transcript) {
       return 'After you say the sentence, Mercy will help you understand why this English structure sounds more natural.';
     }
@@ -375,7 +443,19 @@ export function MercySpeakTab({
     }
 
     return 'Try again slowly, then open Logic to see the English thinking pattern more clearly.';
-  }, [matchScore, transcript]);
+  }, [matchScore, practiceText, transcript]);
+
+  const supportHint = useMemo(() => {
+    switch (learningSupportMode) {
+      case 'immersion':
+        return 'Immersion mode is on. Stay in English and repeat the full sentence slowly.';
+      case 'guided':
+        return 'Guided mode is on. Follow Mercy’s English sentence and use the feedback cards for support.';
+      case 'gentle':
+      default:
+        return 'Gentle mode is on. Start slowly and repeat the sentence step by step.';
+    }
+  }, [learningSupportMode]);
 
   useEffect(() => {
     if (!transcript || !practiceText || !onMemoryUpdate) return;
@@ -389,26 +469,44 @@ export function MercySpeakTab({
     });
   }, [generatedTroubleWords, matchScore, onMemoryUpdate, practiceText, transcript]);
 
-  function handleSpeak() {
-    if (!practiceText || !supportsSpeechSynthesis) return;
-
-    if (typeof window !== 'undefined' && window.speechSynthesis.speaking) {
-      window.speechSynthesis.cancel();
+  function stopActiveStream() {
+    if (activeStreamRef.current) {
+      activeStreamRef.current.getTracks().forEach((track) => track.stop());
+      activeStreamRef.current = null;
     }
+  }
 
-    const utterance = new SpeechSynthesisUtterance(practiceText);
-    utterance.lang = 'en-US';
-    utterance.rate = 0.92;
-    utterance.pitch = 1;
-    utterance.onstart = () => setIsSpeaking(true);
-    utterance.onend = () => setIsSpeaking(false);
-    utterance.onerror = () => setIsSpeaking(false);
+  function revokeRecordedAudioUrl() {
+    if (recordedAudioUrl) {
+      URL.revokeObjectURL(recordedAudioUrl);
+      setRecordedAudioUrl('');
+    }
+  }
 
-    window.speechSynthesis.speak(utterance);
+  function handleSpeak() {
+    if (!practiceText || !supportsSpeechSynthesis || typeof window === 'undefined') return;
+
+    try {
+      if (window.speechSynthesis.speaking) {
+        window.speechSynthesis.cancel();
+      }
+
+      const utterance = new SpeechSynthesisUtterance(practiceText);
+      utterance.lang = 'en-US';
+      utterance.rate = 0.92;
+      utterance.pitch = 1;
+      utterance.onstart = () => setIsSpeaking(true);
+      utterance.onend = () => setIsSpeaking(false);
+      utterance.onerror = () => setIsSpeaking(false);
+
+      window.speechSynthesis.speak(utterance);
+    } catch {
+      setIsSpeaking(false);
+    }
   }
 
   function stopSpeaking() {
-    if (!supportsSpeechSynthesis) return;
+    if (!supportsSpeechSynthesis || typeof window === 'undefined') return;
     window.speechSynthesis.cancel();
     setIsSpeaking(false);
   }
@@ -427,7 +525,17 @@ export function MercySpeakTab({
   }
 
   function stopListening() {
-    recognitionRef.current?.stop();
+    setIsListening(false);
+
+    try {
+      recognitionRef.current?.stop();
+    } catch {
+      try {
+        recognitionRef.current?.abort?.();
+      } catch {
+        // ignore stop errors
+      }
+    }
   }
 
   function startListening() {
@@ -441,6 +549,12 @@ export function MercySpeakTab({
 
     if (!RecognitionCtor) return;
 
+    try {
+      recognitionRef.current?.abort?.();
+    } catch {
+      // ignore replacement errors
+    }
+
     const recognition = new RecognitionCtor();
     recognition.lang = 'en-US';
     recognition.interimResults = true;
@@ -451,7 +565,7 @@ export function MercySpeakTab({
     };
 
     recognition.onerror = (event: SpeechRecognitionErrorEventLike) => {
-      setRecognitionError(event?.error || 'Speech recognition failed.');
+      setRecognitionError(getRecognitionErrorMessage(event?.error));
       setIsListening(false);
     };
 
@@ -475,15 +589,24 @@ export function MercySpeakTab({
     };
 
     recognitionRef.current = recognition;
-    recognition.start();
+
+    try {
+      recognition.start();
+    } catch {
+      setRecognitionError('Speech recognition could not start. Please try again.');
+      setIsListening(false);
+    }
   }
 
   async function startRecording() {
-    if (!supportsMediaRecording || isRecording) return;
+    if (!supportsMediaRecording || isRecording || typeof navigator === 'undefined') return;
 
     setRecordingError('');
 
     try {
+      revokeRecordedAudioUrl();
+      stopActiveStream();
+
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       activeStreamRef.current = stream;
 
@@ -499,24 +622,23 @@ export function MercySpeakTab({
       recorder.onerror = () => {
         setRecordingError('Recording failed. Please try again.');
         setIsRecording(false);
+        stopActiveStream();
       };
 
       recorder.onstop = () => {
         setIsRecording(false);
 
+        const hasAudio = mediaChunksRef.current.length > 0;
+        if (!hasAudio) {
+          setRecordingError('No recording was captured. Please try again.');
+          stopActiveStream();
+          return;
+        }
+
         const blob = new Blob(mediaChunksRef.current, { type: 'audio/webm' });
         const nextUrl = URL.createObjectURL(blob);
-
-        if (recordedAudioUrl) {
-          URL.revokeObjectURL(recordedAudioUrl);
-        }
-
         setRecordedAudioUrl(nextUrl);
-
-        if (activeStreamRef.current) {
-          activeStreamRef.current.getTracks().forEach((track) => track.stop());
-          activeStreamRef.current = null;
-        }
+        stopActiveStream();
       };
 
       mediaRecorderRef.current = recorder;
@@ -525,26 +647,31 @@ export function MercySpeakTab({
     } catch {
       setRecordingError('Microphone access was blocked or unavailable.');
       setIsRecording(false);
+      stopActiveStream();
     }
   }
 
   function stopRecording() {
-    mediaRecorderRef.current?.stop();
+    try {
+      if (
+        mediaRecorderRef.current &&
+        mediaRecorderRef.current.state !== 'inactive'
+      ) {
+        mediaRecorderRef.current.stop();
+      }
+    } catch {
+      setRecordingError('Recording could not be stopped cleanly. Please try again.');
+      setIsRecording(false);
+      stopActiveStream();
+    }
   }
 
   function handleResetAttempt() {
     setTranscript('');
     setRecognitionError('');
     setRecordingError('');
+    setCopySuccess(false);
 
-    if (recordedAudioUrl) {
-      URL.revokeObjectURL(recordedAudioUrl);
-      setRecordedAudioUrl('');
-    }
-  }
-
-  function handleClearPracticeLine() {
-    handleResetAttempt();
     stopListening();
     stopSpeaking();
 
@@ -552,17 +679,22 @@ export function MercySpeakTab({
       stopRecording();
     }
 
+    revokeRecordedAudioUrl();
+  }
+
+  function handleClearPracticeLine() {
+    handleResetAttempt();
     setCustomText('');
     setVariant('custom');
-    setCopySuccess(false);
   }
 
   const levelLabel = profile?.english_level || 'intermediate';
   const matchTone = getMetricTone(matchScore);
+  const hasResolvedPayload = Boolean(sourceText || correctedText || enhancedText);
 
   return (
     <div className="flex h-full min-h-0 flex-col overflow-hidden bg-gradient-to-br from-[#FFF8F3] via-[#FFFDFC] to-[#F7FAFF]">
-      <div className="flex-1 min-h-0 overflow-y-auto px-4 py-4 md:px-5 md:py-5">
+      <div className="min-h-0 flex-1 overflow-y-auto px-4 py-4 md:px-5 md:py-5">
         <div className="space-y-4">
           <div className="rounded-3xl border border-white/80 bg-white/92 p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
             <div className="flex items-center gap-2">
@@ -586,9 +718,16 @@ export function MercySpeakTab({
                   <p className="mt-1 text-sm leading-6 text-slate-700">
                     Do not rush. First let your mouth learn the natural sentence. Then you can open Logic and understand why it sounds better.
                   </p>
+                  <p className="mt-2 text-xs font-medium text-slate-500">{supportHint}</p>
                 </div>
               </div>
             </div>
+
+            {!hasResolvedPayload && !practiceText ? (
+              <div className="mt-4 rounded-[22px] border border-amber-200 bg-amber-50/70 p-4 text-sm leading-6 text-amber-800">
+                Mercy does not have a sentence loaded yet. Type one below, or open Grammar first to send an improved sentence into Speak.
+              </div>
+            ) : null}
           </div>
 
           <div className="rounded-3xl border border-white/80 bg-white/92 p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
@@ -698,7 +837,7 @@ export function MercySpeakTab({
                     </span>
                     <span className="flex flex-col items-start">
                       <span className="text-sm font-semibold">
-                        {isSpeaking ? 'Replay Mercy audio' : 'Play Mercy audio'}
+                        {isSpeaking ? 'Playing Mercy audio' : 'Play Mercy audio'}
                       </span>
                       <span className="text-[11px] font-medium text-white/85">
                         Hear the warm Mercy model first
@@ -865,14 +1004,22 @@ export function MercySpeakTab({
                 </p>
               </div>
 
-              <div className={`rounded-[22px] border p-4 shadow-sm ${transcript ? matchTone.ring : 'border-[#F1E5DB] bg-gradient-to-br from-[#FFF9F3] to-white'}`}>
+              <div
+                className={`rounded-[22px] border p-4 shadow-sm ${
+                  transcript
+                    ? matchTone.ring
+                    : 'border-[#F1E5DB] bg-gradient-to-br from-[#FFF9F3] to-white'
+                }`}
+              >
                 <div className="flex items-center justify-between gap-3">
                   <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
                     Match score
                   </p>
 
                   {transcript ? (
-                    <span className={`rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide ${matchTone.text} ${matchTone.ring}`}>
+                    <span
+                      className={`rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide ${matchTone.text} ${matchTone.ring}`}
+                    >
                       {getConfidenceLevel(matchScore)}
                     </span>
                   ) : null}
@@ -947,7 +1094,7 @@ export function MercySpeakTab({
                   Try again slowly
                 </Button>
 
-                {onOpenEnglishLogic ? (
+                {onOpenEnglishLogic && practiceText ? (
                   <Button
                     type="button"
                     variant="outline"

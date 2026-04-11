@@ -1,6 +1,6 @@
 /**
- * File: typeGuards.ts
  * Path: src/security/typeGuards.ts
+ * File: typeGuards.ts
  *
  * Type Guards - Strict runtime type validation for user tier and roles
  */
@@ -26,7 +26,7 @@ const VALID_TIERS: TierId[] = [
 ];
 
 const VALID_ROLES = ['admin', 'moderator', 'user'] as const;
-export type AppRole = typeof VALID_ROLES[number];
+export type AppRole = (typeof VALID_ROLES)[number];
 
 /**
  * Guard: Ensure tier is valid, force to 'free' if poisoned
@@ -39,7 +39,7 @@ export function guardTierId(tier: unknown): TierId {
     return 'free';
   }
 
-  const normalized = tier.toLowerCase() as TierId;
+  const normalized = tier.trim().toLowerCase() as TierId;
 
   if (!VALID_TIERS.includes(normalized)) {
     if (import.meta.env.DEV) {
@@ -59,14 +59,16 @@ export function guardRole(role: unknown): AppRole {
     return 'user';
   }
 
-  if (!VALID_ROLES.includes(role as AppRole)) {
+  const normalized = role.trim().toLowerCase() as AppRole;
+
+  if (!VALID_ROLES.includes(normalized)) {
     if (import.meta.env.DEV) {
       console.error('[TypeGuard] Invalid role:', role, '- forcing to user');
     }
     return 'user';
   }
 
-  return role as AppRole;
+  return normalized;
 }
 
 /**
@@ -77,17 +79,19 @@ export function guardUserId(userId: unknown): string | null {
     return null;
   }
 
+  const trimmed = userId.trim();
+
   const uuidPattern =
     /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
-  if (!uuidPattern.test(userId)) {
+  if (!uuidPattern.test(trimmed)) {
     if (import.meta.env.DEV) {
       console.error('[TypeGuard] Invalid user ID format');
     }
     return null;
   }
 
-  return userId;
+  return trimmed;
 }
 
 /**
@@ -115,6 +119,11 @@ export function detectTierSpoofing(
 
 /**
  * Get tier level for comparison (higher = more access)
+ *
+ * Notes:
+ * - premium_month / premium_year are canonical paid billing tiers
+ * - vip1..vip9 remain legacy compatibility levels
+ * - kids tiers remain scoped lower levels
  */
 export function getTierLevel(tier: TierId): number {
   const safeTier = guardTierId(tier);

@@ -126,28 +126,22 @@ function textHasAny(text: string, values: string[]): boolean {
   return values.some((value) => text.includes(value));
 }
 
-export function resolveEntitlementTier(
-  ent: BackendEntitlement | null | undefined,
-): TierId {
-  if (!entitlementIsPremium(ent)) return "free";
+function isExplicitLegacyVipTier(value: string): value is TierId {
+  return (
+    value === "vip1" ||
+    value === "vip2" ||
+    value === "vip3" ||
+    value === "vip4" ||
+    value === "vip5" ||
+    value === "vip6" ||
+    value === "vip7" ||
+    value === "vip8" ||
+    value === "vip9"
+  );
+}
 
-  const text = entitlementText(ent);
-  const exactTier = String(ent?.tier_id ?? "").trim().toLowerCase();
-
-  // Prefer explicit legacy VIP tiers first when present.
-  if (exactTier === "vip9" || text.includes("vip9")) return "vip9";
-  if (exactTier === "vip8" || text.includes("vip8")) return "vip8";
-  if (exactTier === "vip7" || text.includes("vip7")) return "vip7";
-  if (exactTier === "vip6" || text.includes("vip6")) return "vip6";
-  if (exactTier === "vip5" || text.includes("vip5")) return "vip5";
-  if (exactTier === "vip4" || text.includes("vip4")) return "vip4";
-  if (exactTier === "vip3" || text.includes("vip3")) return "vip3";
-  if (exactTier === "vip2" || text.includes("vip2")) return "vip2";
-  if (exactTier === "vip1" || text.includes("vip1")) return "vip1";
-
-  // Map real billing plan names into legacy-compatible tier buckets expected by tests/UI.
+function resolveBillingTierFromText(text: string): TierId | null {
   if (
-    exactTier === "premium_year" ||
     textHasAny(text, [
       "premiumyear",
       "oneyear",
@@ -157,28 +151,62 @@ export function resolveEntitlementTier(
       "12month",
       "12months",
       "1year",
-      "year",
     ])
   ) {
-    return "vip9";
+    return "premium_year";
   }
 
   if (
-    exactTier === "premium_month" ||
     textHasAny(text, [
       "premiummonth",
       "onemonth",
       "monthly",
       "1month",
-      "month",
-      "premium",
     ])
   ) {
-    return "vip1";
+    return "premium_month";
   }
 
-  // Paid but unknown premium-like plan: fail open to the lowest paid tier.
-  return "vip1";
+  if (text.includes("premium")) {
+    return "premium_month";
+  }
+
+  return null;
+}
+
+export function resolveEntitlementTier(
+  ent: BackendEntitlement | null | undefined,
+): TierId {
+  if (!entitlementIsPremium(ent)) return "free";
+
+  const exactTier = String(ent?.tier_id ?? "").trim().toLowerCase();
+  const text = entitlementText(ent);
+
+  // Preserve canonical billing tiers exactly.
+  if (exactTier === "premium_year") return "premium_year";
+  if (exactTier === "premium_month") return "premium_month";
+
+  // Preserve true legacy VIP tiers exactly if the backend still sends them.
+  if (isExplicitLegacyVipTier(exactTier)) return exactTier;
+
+  // Legacy VIP detection from other entitlement text.
+  if (text.includes("vip9")) return "vip9";
+  if (text.includes("vip8")) return "vip8";
+  if (text.includes("vip7")) return "vip7";
+  if (text.includes("vip6")) return "vip6";
+  if (text.includes("vip5")) return "vip5";
+  if (text.includes("vip4")) return "vip4";
+  if (text.includes("vip3")) return "vip3";
+  if (text.includes("vip2")) return "vip2";
+  if (text.includes("vip1")) return "vip1";
+
+  // Infer billing tier only when no explicit tier was provided.
+  const inferredBillingTier = resolveBillingTierFromText(text);
+  if (inferredBillingTier) return inferredBillingTier;
+
+  // Paid but unknown premium-like plan: fail open to a real paid billing tier
+  // so downstream premium checks remain truthful.
+  return "premium_month";
 }
 
 /**
@@ -188,6 +216,7 @@ export function resolveEntitlementTier(
  * - free stays free
  * - vip1 stays vip1
  * - vip2+ collapse to vip3 compatibility
+ * - canonical paid billing tiers also collapse to vip3 compatibility
  */
 export function entitlementToVipKey(
   ent: BackendEntitlement | null | undefined,

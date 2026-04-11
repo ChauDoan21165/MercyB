@@ -1,5 +1,7 @@
-// src/components/admin/SyncHealthSummary.tsx
-import { Fragment, useEffect, useState } from "react";
+// Path: src/components/admin/SyncHealthSummary.tsx
+// File: SyncHealthSummary.tsx
+
+import { Fragment, useCallback, useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -50,13 +52,68 @@ interface RoomRow {
   crisis_footer_vi?: string | null;
 }
 
+function safeRoomId(value: unknown): string {
+  return typeof value === "string" ? value.trim() : "";
+}
+
 function hasNoEntries(entries: unknown): boolean {
   if (!entries) return true;
   if (Array.isArray(entries)) return entries.length === 0;
   if (typeof entries === "object") {
     return Object.keys(entries as Record<string, unknown>).length === 0;
   }
-  return false;
+  return true;
+}
+
+function isCanonicalId(id: string): boolean {
+  const safeId = safeRoomId(id);
+
+  const englishPatterns = [
+    /^english_foundation_ef\d{2}$/,
+    /^english_a1_a1\d{2}$/,
+    /^english_a2_a2\d{2}$/,
+    /^english_b1_b1\d{2}$/,
+    /^english_b2_b2\d{2}$/,
+    /^english_c1_c1\d{2}$/,
+    /^english_c2_c2\d{2}$/,
+  ];
+
+  const kidsPattern = /^kids_english_l[123]_/;
+
+  const matchesEnglishPattern = englishPatterns.some((pattern) =>
+    pattern.test(safeId),
+  );
+  const matchesKidsPattern = kidsPattern.test(safeId);
+
+  if (matchesEnglishPattern || matchesKidsPattern) return true;
+
+  return !/[A-Z]/.test(safeId);
+}
+
+function isNonCanonicalEnglishDuplicate(id: string): boolean {
+  const safeId = safeRoomId(id);
+  const isUppercaseEnglishPattern = /^(EF|A1|A2|B1|B2|C1|C2)-\d{2}$/i.test(safeId);
+  const hasUppercaseWithHyphens = /[A-Z]/.test(safeId) && safeId.includes("-");
+  const isTestPrefix = /^(test_|temp_|draft_|dev_|old_)/i.test(safeId);
+
+  return (
+    isUppercaseEnglishPattern ||
+    (hasUppercaseWithHyphens && safeId.length < 20) ||
+    isTestPrefix
+  );
+}
+
+function canUseBrowserConfirm(): boolean {
+  return typeof window !== "undefined" && typeof window.confirm === "function";
+}
+
+function canUseBrowserDownload(): boolean {
+  return (
+    typeof window !== "undefined" &&
+    typeof document !== "undefined" &&
+    typeof URL !== "undefined" &&
+    typeof URL.createObjectURL === "function"
+  );
 }
 
 export function SyncHealthSummary() {
@@ -67,14 +124,7 @@ export function SyncHealthSummary() {
   const [fixing, setFixing] = useState(false);
   const [canonicalRoomIds, setCanonicalRoomIds] = useState<string[]>([]);
 
-  useEffect(() => {
-    loadSyncStats();
-
-    const interval = setInterval(loadSyncStats, 30000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const loadSyncStats = async () => {
+  const loadSyncStats = useCallback(async () => {
     try {
       setLoading(true);
 
@@ -84,11 +134,13 @@ export function SyncHealthSummary() {
 
       if (dbError) throw dbError;
 
-      const rooms = (dbRooms || []) as RoomRow[];
+      const rooms = ((dbRooms || []) as RoomRow[]).filter(
+        (room) => safeRoomId(room.id).length > 0,
+      );
 
       const totalDbRooms = rooms.length;
       const freeDbRooms = rooms.filter(
-        (room) => normalizeTier(room.tier || "") === "free"
+        (room) => normalizeTier(room.tier || "") === "free",
       ).length;
       const vipDbRooms = rooms.filter((room) => {
         const normalizedTier = normalizeTier(room.tier || "");
@@ -96,20 +148,21 @@ export function SyncHealthSummary() {
       }).length;
 
       const canonicalIds = rooms
-        .filter((room) => isCanonicalId(room.id))
-        .map((room) => room.id);
+        .map((room) => safeRoomId(room.id))
+        .filter((id) => id && isCanonicalId(id));
 
       const nonCanonicalIds = rooms
-        .filter((room) => !isCanonicalId(room.id))
-        .map((room) => room.id);
+        .map((room) => safeRoomId(room.id))
+        .filter((id) => id && !isCanonicalId(id));
 
       const nonCanonicalDuplicates = nonCanonicalIds.filter((id) =>
-        isNonCanonicalEnglishDuplicate(id)
+        isNonCanonicalEnglishDuplicate(id),
       );
 
       const phantomRows = rooms.filter((room) => {
-        const isNonCanonical = /[A-Z-]/.test(room.id);
-        return isNonCanonical && hasNoEntries(room.entries);
+        const roomId = safeRoomId(room.id);
+        const isNonCanonical = /[A-Z-]/.test(roomId);
+        return roomId && isNonCanonical && hasNoEntries(room.entries);
       });
 
       setCanonicalRoomIds(canonicalIds);
@@ -168,7 +221,7 @@ export function SyncHealthSummary() {
           matchesRule: 0,
           difference: phantomRows.length,
           status: phantomRows.length === 0 ? "good" : "warning",
-          items: phantomRows.map((room) => room.id),
+          items: phantomRows.map((room) => safeRoomId(room.id)).filter(Boolean),
           note: "Non-canonical rows with no entries are strong phantom-row candidates.",
           action: "delete_phantom",
         },
@@ -185,66 +238,44 @@ export function SyncHealthSummary() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [toast]);
 
-  const isCanonicalId = (id: string): boolean => {
-    const englishPatterns = [
-      /^english_foundation_ef\d{2}$/,
-      /^english_a1_a1\d{2}$/,
-      /^english_a2_a2\d{2}$/,
-      /^english_b1_b1\d{2}$/,
-      /^english_b2_b2\d{2}$/,
-      /^english_c1_c1\d{2}$/,
-      /^english_c2_c2\d{2}$/,
-    ];
+  useEffect(() => {
+    void loadSyncStats();
 
-    const kidsPattern = /^kids_english_l[123]_/;
+    const intervalId = window.setInterval(() => {
+      void loadSyncStats();
+    }, 30000);
 
-    const matchesEnglishPattern = englishPatterns.some((pattern) =>
-      pattern.test(id)
-    );
-    const matchesKidsPattern = kidsPattern.test(id);
-
-    if (matchesEnglishPattern || matchesKidsPattern) return true;
-
-    return !/[A-Z]/.test(id);
-  };
-
-  const isNonCanonicalEnglishDuplicate = (id: string): boolean => {
-    const isUppercaseEnglishPattern = /^(EF|A1|A2|B1|B2|C1|C2)-\d{2}$/i.test(id);
-    const hasUppercaseWithHyphens = /[A-Z]/.test(id) && id.includes("-");
-    const isTestPrefix = /^(test_|temp_|draft_|dev_|old_)/i.test(id);
-
-    return (
-      isUppercaseEnglishPattern ||
-      (hasUppercaseWithHyphens && id.length < 20) ||
-      isTestPrefix
-    );
-  };
+    return () => window.clearInterval(intervalId);
+  }, [loadSyncStats]);
 
   const handleDeleteNonCanonicalDuplicates = async (roomIds: string[]) => {
-    if (!roomIds || roomIds.length === 0) return;
+    const normalizedIds = roomIds.map(safeRoomId).filter(Boolean);
+    if (normalizedIds.length === 0) return;
 
     const message =
-      `🗑️ DELETE ${roomIds.length} NON-CANONICAL DUPLICATES?\n\n` +
+      `🗑️ DELETE ${normalizedIds.length} NON-CANONICAL DUPLICATES?\n\n` +
       `These look like safe-to-delete legacy English IDs:\n\n` +
-      roomIds.slice(0, 15).join(", ") +
-      (roomIds.length > 15 ? `\n...and ${roomIds.length - 15} more` : "") +
+      normalizedIds.slice(0, 15).join(", ") +
+      (normalizedIds.length > 15
+        ? `\n...and ${normalizedIds.length - 15} more`
+        : "") +
       `\n\nThis will NOT delete lowercase canonical room IDs.`;
 
-    const confirmed = confirm(message);
+    const confirmed = canUseBrowserConfirm() ? window.confirm(message) : false;
     if (!confirmed) return;
 
     try {
       setFixing(true);
 
-      const { error } = await supabase.from("rooms").delete().in("id", roomIds);
+      const { error } = await supabase.from("rooms").delete().in("id", normalizedIds);
 
       if (error) throw error;
 
       toast({
         title: "✅ Success",
-        description: `Deleted ${roomIds.length} non-canonical duplicate(s)`,
+        description: `Deleted ${normalizedIds.length} non-canonical duplicate(s)`,
       });
 
       await loadSyncStats();
@@ -262,7 +293,15 @@ export function SyncHealthSummary() {
   };
 
   const handleExportCanonicalJson = async (roomIds: string[]) => {
-    if (!roomIds || roomIds.length === 0) return;
+    const normalizedIds = roomIds.map(safeRoomId).filter(Boolean);
+    if (normalizedIds.length === 0) return;
+    if (!canUseBrowserDownload()) {
+      toast({
+        title: "Unavailable",
+        description: "Export is only available in a browser environment.",
+      });
+      return;
+    }
 
     try {
       setFixing(true);
@@ -270,11 +309,13 @@ export function SyncHealthSummary() {
       const { data: rooms, error: fetchError } = await supabase
         .from("rooms")
         .select("*")
-        .in("id", roomIds);
+        .in("id", normalizedIds);
 
       if (fetchError) throw fetchError;
 
-      const typedRooms = (rooms || []) as RoomRow[];
+      const typedRooms = ((rooms || []) as RoomRow[]).filter(
+        (room) => safeRoomId(room.id).length > 0,
+      );
 
       if (typedRooms.length === 0) {
         toast({
@@ -317,22 +358,22 @@ export function SyncHealthSummary() {
             },
           };
 
-          zip.file(`${room.id}.json`, JSON.stringify(jsonContent, null, 2));
+          zip.file(`${safeRoomId(room.id)}.json`, JSON.stringify(jsonContent, null, 2));
           successCount += 1;
         } catch (error) {
-          console.error(`Failed to add ${room.id} to ZIP:`, error);
+          console.error(`Failed to add ${safeRoomId(room.id)} to ZIP:`, error);
         }
       }
 
       const blob = await zip.generateAsync({ type: "blob" });
-      const url = URL.createObjectURL(blob);
+      const url = window.URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
       a.download = `canonical-rooms-${successCount}-files.zip`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
-      URL.revokeObjectURL(url);
+      window.URL.revokeObjectURL(url);
 
       toast({
         title: "✅ ZIP Download Complete",
@@ -362,10 +403,13 @@ export function SyncHealthSummary() {
 
       if (fetchError) throw fetchError;
 
-      const typedRooms = (allRooms || []) as RoomRow[];
+      const typedRooms = ((allRooms || []) as RoomRow[]).filter(
+        (room) => safeRoomId(room.id).length > 0,
+      );
 
       const phantomRows = typedRooms.filter((room) => {
-        const isNonCanonical = /[A-Z-]/.test(room.id);
+        const roomId = safeRoomId(room.id);
+        const isNonCanonical = /[A-Z-]/.test(roomId);
         return isNonCanonical && hasNoEntries(room.entries);
       });
 
@@ -377,7 +421,7 @@ export function SyncHealthSummary() {
         return;
       }
 
-      const phantomIds = phantomRows.map((room) => room.id);
+      const phantomIds = phantomRows.map((room) => safeRoomId(room.id)).filter(Boolean);
 
       const message =
         `🗑️ DELETE ${phantomIds.length} PHANTOM DB ROWS?\n\n` +
@@ -385,10 +429,12 @@ export function SyncHealthSummary() {
         `✓ Zero entries (no content)\n` +
         `✓ Non-canonical IDs (uppercase/hyphens)\n\n` +
         `IDs to delete:\n${phantomIds.slice(0, 20).join(", ")}` +
-        (phantomIds.length > 20 ? `\n...and ${phantomIds.length - 20} more` : "") +
+        (phantomIds.length > 20
+          ? `\n...and ${phantomIds.length - 20} more`
+          : "") +
         `\n\nThis removes obvious empty legacy rows from the database.`;
 
-      const confirmed = confirm(message);
+      const confirmed = canUseBrowserConfirm() ? window.confirm(message) : false;
       if (!confirmed) return;
 
       const { error: deleteError } = await supabase
@@ -419,7 +465,11 @@ export function SyncHealthSummary() {
 
   const renderExpandedContent = (stat: SyncStats) => {
     if (!stat.items || stat.items.length === 0) {
-      return <p className="text-sm text-muted-foreground">No items found for this category.</p>;
+      return (
+        <p className="text-sm text-muted-foreground">
+          No items found for this category.
+        </p>
+      );
     }
 
     if (stat.action === "delete_noncanonical") {
@@ -485,10 +535,10 @@ export function SyncHealthSummary() {
 
     if (stat.action === "review_noncanonical") {
       const safeToDelete = stat.items.filter((id) =>
-        isNonCanonicalEnglishDuplicate(id)
+        isNonCanonicalEnglishDuplicate(id),
       );
       const needsManualReview = stat.items.filter(
-        (id) => !isNonCanonicalEnglishDuplicate(id)
+        (id) => !isNonCanonicalEnglishDuplicate(id),
       );
 
       return (
@@ -562,7 +612,9 @@ export function SyncHealthSummary() {
       <div className="flex items-center justify-between mb-4 gap-3 flex-wrap">
         <div className="flex items-center gap-3">
           <h2 className="text-2xl font-bold">SYNC HEALTH SUMMARY</h2>
-          {loading && <RefreshCw className="w-5 h-5 animate-spin text-muted-foreground" />}
+          {loading && (
+            <RefreshCw className="w-5 h-5 animate-spin text-muted-foreground" />
+          )}
         </div>
 
         <div className="flex gap-2 flex-wrap">
@@ -579,7 +631,7 @@ export function SyncHealthSummary() {
           <Button
             variant="outline"
             size="sm"
-            onClick={loadSyncStats}
+            onClick={() => void loadSyncStats()}
             disabled={loading}
           >
             <RefreshCw className="w-4 h-4 mr-2" />
@@ -616,7 +668,9 @@ export function SyncHealthSummary() {
                   <td className="py-3 px-4">
                     <div className="font-medium">{stat.category}</div>
                     {stat.note ? (
-                      <div className="text-xs text-muted-foreground mt-1">{stat.note}</div>
+                      <div className="text-xs text-muted-foreground mt-1">
+                        {stat.note}
+                      </div>
                     ) : null}
                   </td>
 
@@ -661,7 +715,7 @@ export function SyncHealthSummary() {
                         size="sm"
                         onClick={() =>
                           setExpandedRow(
-                            expandedRow === stat.category ? null : stat.category
+                            expandedRow === stat.category ? null : stat.category,
                           )
                         }
                       >

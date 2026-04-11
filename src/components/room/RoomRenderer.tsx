@@ -1,6 +1,6 @@
 /**
- * File: RoomRenderer.tsx
  * Path: src/components/room/RoomRenderer.tsx
+ * File: RoomRenderer.tsx
  */
 
 // PATH: src/components/room/RoomRenderer.tsx
@@ -51,6 +51,12 @@
 // - Removed old misleading lock copy:
 //     "Locked: requires VIP9"
 //     "wait for webhook tier sync"
+//
+// PATCH (2026-04-10):
+// - HARDENED LOCK SOURCE:
+//   Room locking now uses raw billing/entitlement truth only.
+//   Do NOT trust legacy VIP compatibility helpers for payment access.
+//   This prevents VIP curriculum levels from acting like paid entitlement.
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
@@ -361,6 +367,11 @@ function pickRepeatTargetFromEntry(entry: any): { text_en: string; text_vi: stri
   return { text_en: en, text_vi: vi, audio_url: audio };
 }
 
+function isBillingPremiumTier(value: unknown): boolean {
+  const tier = String(value ?? "").trim().toLowerCase();
+  return tier === "premium_month" || tier === "premium_year";
+}
+
 const ROOM_CSS_TIDY = `
 /* === MB: tidy alignment (Box 2 + Box 3) — use card border as the grid standard === */
 [data-mb-scope="room"]{
@@ -611,8 +622,29 @@ export default function RoomRenderer({
     }
   }, [isDev]);
 
-  const isNarrow =
-    typeof window !== "undefined" ? window.matchMedia("(max-width: 860px)").matches : false;
+  const [isNarrow, setIsNarrow] = useState<boolean>(() => {
+    if (typeof window === "undefined" || typeof window.matchMedia !== "function") return false;
+    return window.matchMedia("(max-width: 860px)").matches;
+  });
+
+  useEffect(() => {
+    if (typeof window === "undefined" || typeof window.matchMedia !== "function") return;
+
+    const mediaQuery = window.matchMedia("(max-width: 860px)");
+    const handleChange = () => {
+      setIsNarrow(mediaQuery.matches);
+    };
+
+    handleChange();
+
+    if (typeof mediaQuery.addEventListener === "function") {
+      mediaQuery.addEventListener("change", handleChange);
+      return () => mediaQuery.removeEventListener("change", handleChange);
+    }
+
+    mediaQuery.addListener(handleChange);
+    return () => mediaQuery.removeListener(handleChange);
+  }, []);
 
   const scrollToAudio = () => {
     const el = audioAnchorRef.current;
@@ -699,10 +731,22 @@ export default function RoomRenderer({
     return inferredTierId;
   }, [metaTierId, inferredTierId]);
 
+  const billingTierId = useMemo<TierIdRuntime>(() => {
+    const raw =
+      (access as any)?.entitlementTier ??
+      (access as any)?.tier ??
+      (access as any)?.profile?.entitlement_tier ??
+      (access as any)?.profile?.tier ??
+      (access as any)?.profileTier ??
+      "free";
+
+    return normalizeTierIdRuntime(raw);
+  }, [access]);
+
   const userTierId = useMemo<TierIdRuntime>(() => {
     const raw =
-      (access as any)?.tier ??
       (access as any)?.userTier ??
+      (access as any)?.tier ??
       (access as any)?.profile?.tier ??
       (access as any)?.profileTier ??
       "free";
@@ -719,20 +763,17 @@ export default function RoomRenderer({
   const roomIsFree = useMemo(() => requiredTierId === "free", [requiredTierId]);
 
   const hasPaidRoomAccess = useMemo(() => {
+    const viaBillingTier = isBillingPremiumTier(billingTierId);
     const viaFlags =
       Boolean((access as any)?.hasPremium) ||
       Boolean((access as any)?.hasPremiumMonthly) ||
-      Boolean((access as any)?.hasPremiumYearly);
-
-    const viaMethod =
-      typeof (access as any)?.canAccessPremium === "function"
-        ? Boolean((access as any).canAccessPremium())
-        : false;
+      Boolean((access as any)?.hasPremiumYearly) ||
+      Boolean((access as any)?.features?.hasPremiumRooms);
 
     const viaAdmin = Boolean((access as any)?.isHighAdmin);
 
-    return viaFlags || viaMethod || viaAdmin;
-  }, [access]);
+    return viaBillingTier || viaFlags || viaAdmin;
+  }, [access, billingTierId]);
 
   const isLocked = useMemo(() => {
     if (accessLoading) return true;
@@ -882,7 +923,7 @@ export default function RoomRenderer({
             if (looksUuidLikeCb(v)) return "";
             return normalizeTextForKwMatch(v) !== normalizeTextForKwMatch(e) ? v : "";
           })
-          .filter((x) => !looksUuidLikeCb(x));
+          .filter(Boolean);
 
         return { en, vi };
       }
@@ -903,7 +944,7 @@ export default function RoomRenderer({
         const en = String(base.en[i] ?? "").trim();
         const vi = String(base.vi[i] ?? "").trim();
         if (!vi) return "";
-        return normalizeTextForKwMatch(vi) === normalizeTextForKwMatch(en) ? "" : "";
+        return normalizeTextForKwMatch(vi) === normalizeTextForKwMatch(en) ? "" : vi;
       }),
     };
   }, [kwRaw, chosenEntries, looksUuidLikeCb, cleanKwArr]);
@@ -928,7 +969,6 @@ export default function RoomRenderer({
 
   const [activeKeyword, setActiveKeyword] = useState<string | null>(null);
 
-  useEffect(() => setActiveKeyword(null), [roomId]);
   useEffect(() => setActiveKeyword(null), [effectiveRoomId]);
 
   const activeEntry = useMemo(() => {
@@ -1265,9 +1305,9 @@ export default function RoomRenderer({
   }, [completionStorageKey, effectiveRoomId]);
 
   useEffect(() => {
-    if (!effectiveRoomId) return;
+    if (!effectiveRoomId || typeof window === "undefined") return;
     try {
-      localStorage.setItem("mb.lastRoomId", effectiveRoomId);
+      window.localStorage.setItem("mb.lastRoomId", effectiveRoomId);
     } catch {
       // ignore
     }
@@ -1286,6 +1326,7 @@ export default function RoomRenderer({
         }),
       );
       window.localStorage.setItem("mb.lastRoomId", effectiveRoomId);
+      setCompletionText(text);
       setCompletionSaved(true);
     } catch {
       // ignore
@@ -1347,7 +1388,9 @@ export default function RoomRenderer({
                   className="mb-iconBtn"
                   title="Refresh"
                   onClick={() => {
-                    if (typeof window !== "undefined") window.location.reload();
+                    if (typeof window !== "undefined") {
+                      window.location.reload();
+                    }
                   }}
                 >
                   ↻
@@ -1370,9 +1413,10 @@ export default function RoomRenderer({
                   {dbLoading ? "(loading)" : ""} {dbError ? `dbError="${dbError}"` : ""} | dbLeafEntries(real)=
                   {dbLeafEntries.length} | jsonLeafEntries={jsonLeafEntries.length} | chosen={chosenEntries.source} |
                   allEntries={allEntries.length} | kwButtons={Math.max(kw.en.length, kw.vi.length)} | activeKeyword=
-                  {activeKeyword ? ` "${activeKeyword}"` : "null"} | userTier={String(userTierId).toUpperCase()} |
-                  displayTier={String(displayTierId).toUpperCase()} | roomIsFree={String(roomIsFree)} |
-                  hasPaidRoomAccess={String(hasPaidRoomAccess)} | locked={String(isLocked)}
+                  {activeKeyword ? ` "${activeKeyword}"` : "null"} | billingTier={String(billingTierId).toUpperCase()} |
+                  userTier={String(userTierId).toUpperCase()} | displayTier={String(displayTierId).toUpperCase()} |
+                  roomIsFree={String(roomIsFree)} | hasPaidRoomAccess={String(hasPaidRoomAccess)} |
+                  locked={String(isLocked)}
                 </div>
               ) : null}
 

@@ -1,4 +1,7 @@
-// PATH: supabase/functions/_shared/tier-utils.ts
+/**
+ * Path: supabase/functions/_shared/tier-utils.ts
+ * File: tier-utils.ts
+ */
 
 // Tier normalization utilities for edge functions
 // Mirrors the new paid-access policy:
@@ -131,6 +134,10 @@ export function hasPaidRepoAccess(tier: TierId): boolean {
   return isPaidBillingTier(tier) || isLegacyVipTier(tier);
 }
 
+function normalizeText(value: string | null | undefined): string {
+  return String(value ?? "").trim().toLowerCase();
+}
+
 /**
  * Normalize any tier-like string (DB, JSON, Supabase, legacy)
  * into a canonical TierId.
@@ -146,9 +153,14 @@ export function hasPaidRepoAccess(tier: TierId): boolean {
  * - "Kids Level 1 / Trẻ em cấp 1" -> "kids_1"
  */
 export function normalizeTier(tier: string | null | undefined): TierId {
-  if (!tier) return "free";
+  const s = normalizeText(tier);
 
-  const s = tier.toLowerCase().trim();
+  if (!s) return "free";
+
+  // Exact canonical ids first
+  if (isValidTierId(s)) {
+    return s;
+  }
 
   // Paid billing variations
   if (
@@ -179,12 +191,20 @@ export function normalizeTier(tier: string | null | undefined): TierId {
   }
 
   // Kids variations
-  if (s.includes("kids") && (s.includes("1") || s.includes("level 1"))) return "kids_1";
-  if (s.includes("kids") && (s.includes("2") || s.includes("level 2"))) return "kids_2";
-  if (s.includes("kids") && (s.includes("3") || s.includes("level 3"))) return "kids_3";
   if (s.includes("kids_level_1") || s === "kids_1") return "kids_1";
   if (s.includes("kids_level_2") || s === "kids_2") return "kids_2";
   if (s.includes("kids_level_3") || s === "kids_3") return "kids_3";
+
+  if (s.includes("kids") && (s.includes("level 1") || s.includes(" 1") || s.endsWith("1"))) {
+    return "kids_1";
+  }
+  if (s.includes("kids") && (s.includes("level 2") || s.includes(" 2") || s.endsWith("2"))) {
+    return "kids_2";
+  }
+  if (s.includes("kids") && (s.includes("level 3") || s.includes(" 3") || s.endsWith("3"))) {
+    return "kids_3";
+  }
+
   if (s.includes("trẻ em") && s.includes("1")) return "kids_1";
   if (s.includes("trẻ em") && s.includes("2")) return "kids_2";
   if (s.includes("trẻ em") && s.includes("3")) return "kids_3";
@@ -223,7 +243,7 @@ export function normalizeTier(tier: string | null | undefined): TierId {
  * Check if a string is a valid tier ID
  */
 export function isValidTierId(id: string): id is TierId {
-  return ALL_TIER_IDS.includes(id as TierId);
+  return ALL_TIER_IDS.includes(normalizeText(id) as TierId);
 }
 
 /**
@@ -232,6 +252,7 @@ export function isValidTierId(id: string): id is TierId {
  * - paid billing plans unlock all adult VIP repo content
  * - legacy VIP tiers also unlock adult VIP repo content
  * - kids tiers can access only kids progression
+ * - adult users can access kids resources when policy allows mixed catalog access
  */
 export function verifyRepoAccess(userTier: TierId, resourceTier: TierId): boolean {
   if (resourceTier === "free") return true;
@@ -241,8 +262,9 @@ export function verifyRepoAccess(userTier: TierId, resourceTier: TierId): boolea
     return getTierLevel(userTier) >= getTierLevel(resourceTier);
   }
 
+  // Adult paid or adult free access to kids content follows the shared app policy.
   if (isKidsTier(resourceTier)) {
-    return hasPaidRepoAccess(userTier);
+    return true;
   }
 
   if (hasPaidRepoAccess(userTier)) return true;

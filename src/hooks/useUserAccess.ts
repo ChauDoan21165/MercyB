@@ -1,8 +1,6 @@
-// PATH: src/hooks/useUserAccess.ts
-
 /**
- * File: useUserAccess.ts
  * Path: src/hooks/useUserAccess.ts
+ * File: useUserAccess.ts
  */
 
 import { useEffect, useMemo, useState } from "react";
@@ -77,6 +75,24 @@ function isPremiumTier(tier: TierId): boolean {
   return tier === "premium_month" || tier === "premium_year";
 }
 
+function isLegacyVipTier(tier: TierId): boolean {
+  return (
+    tier === "vip1" ||
+    tier === "vip2" ||
+    tier === "vip3" ||
+    tier === "vip4" ||
+    tier === "vip5" ||
+    tier === "vip6" ||
+    tier === "vip7" ||
+    tier === "vip8" ||
+    tier === "vip9"
+  );
+}
+
+function hasPaidLikeAccessTier(tier: TierId): boolean {
+  return isPremiumTier(tier) || isLegacyVipTier(tier);
+}
+
 function normalizeTierLoose(value: unknown): TierId {
   const raw = String(value ?? "").trim().toLowerCase();
 
@@ -115,6 +131,11 @@ function normalizeTierLoose(value: unknown): TierId {
     default:
       return "free";
   }
+}
+
+function normalizeBillingTierOnly(value: unknown): TierId {
+  const normalized = normalizeTierLoose(value);
+  return isPremiumTier(normalized) ? normalized : "free";
 }
 
 function truthyFlag(value: unknown): boolean {
@@ -163,7 +184,7 @@ function safeNumber(value: unknown, fallback = 0): number {
 function readCachedEntitlementTier(): TierId {
   try {
     if (typeof window === "undefined") return "free";
-    return normalizeTierLoose(window.localStorage.getItem(PREMIUM_CACHE_KEY));
+    return normalizeBillingTierOnly(window.localStorage.getItem(PREMIUM_CACHE_KEY));
   } catch {
     return "free";
   }
@@ -204,7 +225,7 @@ function resolveProfileTier(profile: any): TierId {
   ];
 
   for (const candidate of directTierCandidates) {
-    const normalized = normalizeTierLoose(candidate);
+    const normalized = normalizeBillingTierOnly(candidate);
     if (normalized !== "free") return normalized;
   }
 
@@ -403,30 +424,30 @@ export const useUserAccess = (): UserAccess => {
         // keep defaults
       }
 
-      let entitlementTier: TierId = "free";
+      let liveEntitlementTier: TierId = "free";
       let entitlementFetchSucceeded = false;
 
       try {
         const entitlement = await fetchCurrentEntitlement(supabase);
-        entitlementTier = normalizeTierLoose(resolveEntitlementTier(entitlement));
+        liveEntitlementTier = normalizeBillingTierOnly(resolveEntitlementTier(entitlement));
         entitlementFetchSucceeded = true;
       } catch {
-        entitlementTier = "free";
+        liveEntitlementTier = "free";
         entitlementFetchSucceeded = false;
       }
 
       const cachedTier = readCachedEntitlementTier();
 
-      let effectiveEntitlementTier: TierId = entitlementTier;
+      let effectiveEntitlementTier: TierId = liveEntitlementTier;
 
+      // Only use profile as a fallback when live entitlement did not yield a paid billing tier.
       if (!isPremiumTier(effectiveEntitlementTier) && isPremiumTier(profileTier)) {
         effectiveEntitlementTier = profileTier;
       }
 
       /**
-       * IMPORTANT:
-       * Only trust cached premium state when live entitlement fetch failed.
-       * Do NOT let old cached premium override a fresh "free" result.
+       * Only trust cached premium state when live entitlement fetch failed and
+       * profile hints do not provide a paid billing tier.
        */
       if (
         !entitlementFetchSucceeded &&

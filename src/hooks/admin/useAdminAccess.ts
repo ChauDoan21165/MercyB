@@ -1,3 +1,8 @@
+/**
+ * Path: src/hooks/admin/useAdminAccess.ts
+ * File: useAdminAccess.ts
+ */
+
 import { useCallback, useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 
@@ -68,19 +73,30 @@ function normalizeLevel(value: unknown): number {
   return Number.isFinite(level) ? Math.max(0, level) : 0;
 }
 
+function normalizeText(value: unknown): string | null {
+  if (typeof value !== "string") return null;
+  const trimmed = value.trim();
+  return trimmed || null;
+}
+
 function isAdminFromProfile(profile: ProfileAdminRow | null): boolean {
   if (!profile) return false;
   const level = normalizeLevel(profile.admin_level);
   return Boolean(profile.is_admin) || level >= 1;
 }
 
+function escapePostgrestValue(value: string): string {
+  return value.replace(/,/g, "\\,");
+}
+
 async function fetchAdminProfile(userId: string): Promise<ProfileAdminRow | null> {
   const typedSupabase = supabase as any;
+  const safeUserId = escapePostgrestValue(userId);
 
   const { data, error } = await typedSupabase
     .from("profiles")
     .select("id, user_id, email, is_admin, admin_level")
-    .or(`user_id.eq.${userId},id.eq.${userId}`)
+    .or(`user_id.eq.${safeUserId},id.eq.${safeUserId}`)
     .limit(1)
     .maybeSingle();
 
@@ -88,7 +104,9 @@ async function fetchAdminProfile(userId: string): Promise<ProfileAdminRow | null
   return (data as ProfileAdminRow | null) ?? null;
 }
 
-async function fetchAdminRoleByRpc(userId: string): Promise<{ hasRole: boolean; level: number | null }> {
+async function fetchAdminRoleByRpc(
+  userId: string,
+): Promise<{ hasRole: boolean; level: number | null }> {
   const typedSupabase = supabase as any;
 
   let hasRole = false;
@@ -165,9 +183,6 @@ export function useAdminAccess() {
         return;
       }
 
-      const userEmail = user.email ?? null;
-
-      // Primary source of truth: profiles
       let profile: ProfileAdminRow | null = null;
       let profileError: string | null = null;
 
@@ -178,6 +193,8 @@ export function useAdminAccess() {
         profileError = err?.message || "Unable to read admin profile";
       }
 
+      const resolvedEmail = normalizeText(user.email) ?? normalizeText(profile?.email);
+
       if (profile && isAdminFromProfile(profile)) {
         const level = normalizeLevel(profile.admin_level);
         const resolvedLevel = level >= 1 ? level : 1;
@@ -186,14 +203,19 @@ export function useAdminAccess() {
           loading: false,
           permissions: permissionsFromLevel(resolvedLevel),
           userId: user.id,
-          email: userEmail,
+          email: resolvedEmail,
           error: null,
         });
         return;
       }
 
-      // Secondary source: RPC role system
-      const rpc = await fetchAdminRoleByRpc(user.id);
+      let rpc = { hasRole: false, level: null as number | null };
+
+      try {
+        rpc = await fetchAdminRoleByRpc(user.id);
+      } catch (err) {
+        console.error("[useAdminAccess] rpc fallback error:", err);
+      }
 
       if (rpc.hasRole || (rpc.level ?? 0) >= 1) {
         const resolvedLevel = Math.max(1, normalizeLevel(rpc.level ?? 1));
@@ -202,18 +224,17 @@ export function useAdminAccess() {
           loading: false,
           permissions: permissionsFromLevel(resolvedLevel),
           userId: user.id,
-          email: userEmail,
+          email: resolvedEmail,
           error: null,
         });
         return;
       }
 
-      // Not admin. Keep a soft error only if profile lookup itself failed.
       setState({
         loading: false,
         permissions: defaultPermissions,
         userId: user.id,
-        email: userEmail,
+        email: resolvedEmail,
         error: profileError,
       });
     } catch (e: any) {

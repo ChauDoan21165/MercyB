@@ -1,4 +1,5 @@
-// src/lib/roomJsonResolver.ts
+// PATH: src/lib/roomJsonResolver.ts
+// File: roomJsonResolver.ts
 
 export type RoomJsonResolverErrorKind =
   | "not_found"
@@ -6,16 +7,30 @@ export type RoomJsonResolverErrorKind =
   | "network"
   | "server";
 
+type ResolverError = Error & { kind?: RoomJsonResolverErrorKind };
+
+function createResolverError(
+  message: string,
+  kind: RoomJsonResolverErrorKind,
+): ResolverError {
+  const err = new Error(message) as ResolverError;
+  err.kind = kind;
+  return err;
+}
+
 function stripJsonSuffix(s: string): string {
   return s.replace(/\.json$/i, "");
 }
 
 function lastPathSegment(s: string): string {
-  const cleaned = (s || "").trim();
+  const cleaned = String(s || "").trim();
   if (!cleaned) return "";
+
   const withoutQuery = cleaned.split("?")[0] || cleaned;
-  const parts = withoutQuery.split("/").filter(Boolean);
-  return parts.length ? parts[parts.length - 1] : withoutQuery;
+  const withoutHash = withoutQuery.split("#")[0] || withoutQuery;
+  const parts = withoutHash.split("/").filter(Boolean);
+
+  return parts.length ? parts[parts.length - 1] : withoutHash;
 }
 
 export function canonicalizeRoomId(input: string): string {
@@ -24,68 +39,135 @@ export function canonicalizeRoomId(input: string): string {
   return stripJsonSuffix(seg)
     .trim()
     .toLowerCase()
+    .replace(/["'`]+/g, "")
+    .replace(/[^\w\s-]+/g, "_")
     .replace(/[-\s]+/g, "_")
     .replace(/_+/g, "_")
     .replace(/^_+|_+$/g, "");
+}
+
+function coreRoomIdFromCanonical(input: string): string {
+  return canonicalizeRoomId(input).replace(/_(vip[1-9]|free)$/i, "");
+}
+
+function buildRoomIdCandidates(input: string): string[] {
+  const canonical = canonicalizeRoomId(input);
+  const core = coreRoomIdFromCanonical(canonical);
+  return Array.from(new Set([canonical, core].filter(Boolean)));
 }
 
 export function normalizeRoomIdForCanonicalFile(input: string): string {
   return canonicalizeRoomId(input);
 }
 
-// Legacy static JSON path resolution is disabled.
-export function resolveRoomJsonPath(_roomIdRaw: string): string {
-  throw new Error(
-    "Legacy static /data room JSON loading is disabled. Use the secure loader."
-  );
+/**
+ * Secure runtime only.
+ * Room JSON is no longer resolved through PUBLIC_ROOM_MANIFEST or /data/*.json.
+ */
+export function resolveRoomJsonPath(roomIdRaw: string): string {
+  const id = canonicalizeRoomId(roomIdRaw);
+  return buildSecureRoomLoaderUrl(id);
 }
 
-export async function loadRoomJson(roomIdRaw: string): Promise<any> {
-  const id = canonicalizeRoomId(roomIdRaw);
+function buildSecureRoomLoaderUrl(_roomId: string): string {
+  const envBase = String(
+    (import.meta as ImportMeta & {
+      env?: Record<string, string | undefined>;
+    })?.env?.VITE_SUPABASE_FUNCTIONS_URL || "",
+  ).trim();
+
+  if (envBase) {
+    return `${envBase.replace(/\/+$/, "")}/secure-room-loader`;
+  }
+
+  return "/functions/v1/secure-room-loader";
+}
+
+async function parseJsonResponse(res: Response): Promise<any> {
+  if (res.status === 404) {
+    throw createResolverError("ROOM_NOT_FOUND", "not_found");
+  }
+
+  const text = await res.text();
+  const trimmed = text.trim();
+  const contentType = (res.headers.get("content-type") || "").toLowerCase();
+  const looksLikeHtml = /^\s*<!doctype html>|^\s*<html/i.test(trimmed);
+
+  if (!res.ok) {
+    if (res.status === 404) {
+      throw createResolverError("ROOM_NOT_FOUND", "not_found");
+    }
+
+    if (looksLikeHtml) {
+      throw createResolverError("ROOM_NOT_FOUND", "not_found");
+    }
+
+    throw createResolverError(`HTTP_${res.status}`, "server");
+  }
+
+  if (!trimmed) {
+    throw createResolverError("JSON_INVALID", "json_invalid");
+  }
+
+  if (looksLikeHtml) {
+    throw createResolverError("JSON_INVALID", "json_invalid");
+  }
+
+  if (!contentType.includes("application/json")) {
+    try {
+      return JSON.parse(trimmed);
+    } catch {
+      throw createResolverError("JSON_INVALID", "json_invalid");
+    }
+  }
+
+  try {
+    return JSON.parse(trimmed);
+  } catch {
+    throw createResolverError("JSON_INVALID", "json_invalid");
+  }
+}
+
+async function tryFetchSecureJson(roomId: string): Promise<any> {
+  const secureUrl = buildSecureRoomLoaderUrl(roomId);
 
   let res: Response;
   try {
-    // Replace this URL/body with your real secure endpoint contract.
-    res = await fetch("/functions/v1/secure-room-loader", {
+    res = await fetch(secureUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       credentials: "include",
-      body: JSON.stringify({ roomId: id }),
+      body: JSON.stringify({ roomId }),
     });
   } catch {
-    const err = new Error("NETWORK_ERROR");
-    (err as any).kind = "network" satisfies RoomJsonResolverErrorKind;
-    throw err;
+    throw createResolverError("NETWORK_ERROR", "network");
   }
 
-  if (res.status === 404) {
-    const err = new Error("ROOM_NOT_FOUND");
-    (err as any).kind = "not_found" satisfies RoomJsonResolverErrorKind;
-    throw err;
+  return parseJsonResponse(res);
+}
+
+export async function loadRoomJson(roomIdRaw: string): Promise<any> {
+  const candidates = buildRoomIdCandidates(roomIdRaw);
+
+  if (candidates.length === 0) {
+    throw createResolverError("ROOM_NOT_FOUND", "not_found");
   }
 
-  if (!res.ok) {
-    const err = new Error(`HTTP_${res.status}`);
-    (err as any).kind = "server" satisfies RoomJsonResolverErrorKind;
-    throw err;
+  let lastError: unknown = null;
+
+  for (const roomId of candidates) {
+    try {
+      return await tryFetchSecureJson(roomId);
+    } catch (error) {
+      lastError = error;
+    }
   }
 
-  const ct = (res.headers.get("content-type") || "").toLowerCase();
-  const text = await res.text();
-
-  if (!ct.includes("application/json") && /^\s*<!doctype html>|^\s*<html/i.test(text)) {
-    const err = new Error("ROOM_NOT_FOUND");
-    (err as any).kind = "not_found" satisfies RoomJsonResolverErrorKind;
-    throw err;
+  if (lastError && typeof lastError === "object" && "kind" in (lastError as object)) {
+    throw lastError as ResolverError;
   }
 
-  try {
-    return JSON.parse(text);
-  } catch {
-    const err = new Error("JSON_INVALID");
-    (err as any).kind = "json_invalid" satisfies RoomJsonResolverErrorKind;
-    throw err;
-  }
+  throw createResolverError("ROOM_NOT_FOUND", "not_found");
 }

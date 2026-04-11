@@ -1,15 +1,20 @@
-// src/lib/tierRoomSource.ts
-// DB-only truth pipeline for Tier pages.
-// - No /room-registry.json fallback
-// - No PUBLIC_ROOM_MANIFEST fallback
-// - Tier pages read room metadata from the database only
-// - Tier is inferred from explicit DB tier first, then strict id/path markers, then legacy helper fallback
-// - Area (core/english/life/kids) is inferred with hard overrides from id/title before trusting DB metadata
-//
-// Used by: TierIndex, TierDetail
+/**
+ * Path: src/lib/tierRoomSource.ts
+ * File: tierRoomSource.ts
+ *
+ * ONE truth pipeline for Tier pages:
+ * - Prefer database metadata as primary source of truth
+ * - Public registry / manifest are legacy fallback only
+ * - Tier is inferred STRICT from id/path (unknown stays unknown)
+ * - Area (core/english/life/kids) inferred with HARD OVERRIDES:
+ *   - If ID clearly indicates english/kids/life => that wins
+ *
+ * Used by: TierIndex, TierDetail
+ */
 
 import { supabase } from "@/lib/supabaseClient";
 import { ROOMS_TABLE } from "@/lib/constants/rooms";
+import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
 import { tierFromRoomId } from "@/lib/tierFromRoomId";
 
 export type TierId =
@@ -27,7 +32,7 @@ export type TierId =
   | "kids_2"
   | "kids_3";
 
-export type TierSource = "DB" | "none";
+export type TierSource = "DB" | "room-registry.json" | "PUBLIC_ROOM_MANIFEST" | "none";
 
 export type RoomArea = "core" | "english" | "life" | "kids" | "unknown";
 
@@ -47,16 +52,7 @@ export type TierLoadResult = {
   debug?: string;
 };
 
-type RoomDbRow = {
-  id: string;
-  title_en: string | null;
-  title_vi: string | null;
-  domain: string | null;
-  track: string | null;
-  tier: string | null;
-};
-
-export function isTierId(x: unknown): x is TierId {
+export function isTierId(x: any): x is TierId {
   return (
     x === "free" ||
     x === "vip1" ||
@@ -77,23 +73,9 @@ export function isTierId(x: unknown): x is TierId {
 function normalizeLeafId(x: string): string {
   const s = String(x || "").trim();
   if (!s) return "";
-
   const noQuery = s.split("?")[0]?.split("#")[0] ?? s;
   const leaf = noQuery.replace(/\\/g, "/").split("/").pop() || noQuery;
-
-  return leaf.replace(/\.json$/i, "").trim();
-}
-
-function normalizeDbTier(raw: unknown): TierId | "unknown" {
-  const value = String(raw || "").trim().toLowerCase();
-
-  if (isTierId(value)) return value;
-
-  if (value === "kids1" || value === "kids-1" || value === "kids_l1") return "kids_1";
-  if (value === "kids2" || value === "kids-2" || value === "kids_l2") return "kids_2";
-  if (value === "kids3" || value === "kids-3" || value === "kids_l3") return "kids_3";
-
-  return "unknown";
+  return leaf.replace(/\.json$/i, "").trim().toLowerCase();
 }
 
 /**
@@ -101,8 +83,9 @@ function normalizeDbTier(raw: unknown): TierId | "unknown" {
  * - Determine tier ONLY when the id/path contains an explicit tier marker.
  * - Never allow "free" to be a default for unknown.
  *
- * Kids lesson ids are often ..._kids_l1/_kids_l2/_kids_l3
- * Map those to kids_1/2/3 so kids tier pages do not show empty.
+ * CRITICAL FIX:
+ * - Kids lesson ids are often ..._kids_l1/_kids_l2/_kids_l3 (NOT kids_1/2/3)
+ * - Map those to kids_1/2/3 so kids tier pages don't show empty.
  */
 export function strictTierFromIdOrPath(idOrPath: string): TierId | "unknown" {
   const raw = String(idOrPath || "").trim();
@@ -153,29 +136,29 @@ export function strictTierFromIdOrPath(idOrPath: string): TierId | "unknown" {
 
   if (/(^|[_-])free($|[_-])/.test(idLower)) return "free";
 
-  const helperTier = String(tierFromRoomId(leaf) ?? "").trim().toLowerCase();
-  if (helperTier && isTierId(helperTier)) {
-    if (helperTier === "free") return "unknown";
-    return helperTier;
+  const t = String(tierFromRoomId(leaf) ?? "").trim().toLowerCase();
+  if (t && isTierId(t)) {
+    if (t === "free") return "unknown";
+    return t;
   }
 
   return "unknown";
 }
 
 /**
- * DB fallback tier inference:
- * - When DB ids do not contain explicit "_vipX" markers, use the existing helper.
- * - Never let unknown silently default to free.
+ * DB FALLBACK tier inference:
+ * - When DB is the source, many ids may not contain explicit "_vipX" markers.
+ * - We still want reasonable tier counts, using the existing tierFromRoomId() mapping.
+ * - MUST NOT let anything "default" to free.
  */
 function inferTierFromIdFallback(idOrPath: string): TierId | "unknown" {
   const leaf = normalizeLeafId(String(idOrPath || "").trim());
   if (!leaf) return "unknown";
 
-  const helperTier = String(tierFromRoomId(leaf) ?? "").trim().toLowerCase();
-  if (!helperTier || !isTierId(helperTier)) return "unknown";
-  if (helperTier === "free") return "unknown";
-
-  return helperTier;
+  const t = String(tierFromRoomId(leaf) ?? "").trim().toLowerCase();
+  if (!t || !isTierId(t)) return "unknown";
+  if (t === "free") return "unknown";
+  return t;
 }
 
 function inferAreaFromIdHeuristics(idLower: string, titleLower: string): RoomArea {
@@ -294,111 +277,232 @@ function inferAreaFromMetaAndId(meta: {
   if (track === "english") return "english";
   if (track === "kids") return "kids";
   if (track === "life" || track === "life_skills") return "life";
+
   if (track === "core" || track === "bonus") return "core";
 
   return "core";
+}
+
+function extractRoomLikesFromRegistryJson(json: any): { rooms: any[]; debug: string } {
+  const asArray = (x: any) => (Array.isArray(x) ? x : []);
+
+  if (Array.isArray(json)) return { rooms: json, debug: `registry shape: array(len=${json.length})` };
+
+  const rooms = asArray(json?.rooms);
+  if (rooms.length) return { rooms, debug: `registry shape: rooms[] (len=${rooms.length})` };
+
+  const files = asArray(json?.files);
+  if (files.length) return { rooms: files, debug: `registry shape: files[] (len=${files.length})` };
+
+  const manifest = asArray(json?.manifest);
+  if (manifest.length) return { rooms: manifest, debug: `registry shape: manifest[] (len=${manifest.length})` };
+
+  const roomIds = asArray(json?.roomIds);
+  if (roomIds.length) return { rooms: roomIds, debug: `registry shape: roomIds[] (len=${roomIds.length})` };
+
+  const mapObj =
+    (json?.roomDataMap && typeof json.roomDataMap === "object" ? json.roomDataMap : null) ||
+    (json?.rooms && !Array.isArray(json.rooms) && typeof json.rooms === "object" ? json.rooms : null);
+
+  if (mapObj) {
+    const rooms2 = Object.keys(mapObj).map((id) => ({ id, ...(mapObj as any)[id] }));
+    return { rooms: rooms2, debug: `registry shape: object-map(keys=${Object.keys(mapObj).length})` };
+  }
+
+  return { rooms: [], debug: `registry shape: unknown keys=${Object.keys(json || {}).join(",")}` };
+}
+
+function coerceTierRoomsFromAny(anyRooms: any[]): TierRoom[] {
+  return (anyRooms || [])
+    .map((r: any) => {
+      if (typeof r === "string") {
+        const id = String(r || "").trim();
+        if (!id) return null;
+        const tier = strictTierFromIdOrPath(id);
+        const area = inferAreaFromMetaAndId({ id });
+        return { id, tier, area } as TierRoom;
+      }
+
+      if (r && typeof r === "object") {
+        const id = String(r.id || r.roomId || r.path || r.file || "").trim();
+        if (!id) return null;
+
+        const title_en = (r.title_en ?? r.titleEn ?? r.title?.en ?? r.nameEn ?? r.name?.en ?? r.name ?? null) as any;
+        const title_vi = (r.title_vi ?? r.titleVi ?? r.title?.vi ?? r.nameVi ?? r.name?.vi ?? null) as any;
+        const domain = (r.domain ?? r.area ?? r.group ?? null) as any;
+        const track = (r.track ?? r.path_track ?? r.category ?? null) as any;
+
+        const tier = strictTierFromIdOrPath(id);
+        const area = inferAreaFromMetaAndId({
+          id,
+          domain: domain ?? null,
+          track: track ?? null,
+          title_en: title_en ?? null,
+          title_vi: title_vi ?? null,
+        });
+
+        return {
+          id,
+          title_en: title_en ? String(title_en) : undefined,
+          title_vi: title_vi ? String(title_vi) : undefined,
+          domain: domain ? String(domain) : undefined,
+          track: track ? String(track) : undefined,
+          tier,
+          area,
+        } as TierRoom;
+      }
+
+      return null;
+    })
+    .filter(Boolean) as TierRoom[];
+}
+
+async function tryLoadFromRegistry(): Promise<{ rooms: TierRoom[]; debug: string } | null> {
+  const candidates = ["/room-registry.json", "/public/room-registry.json"];
+
+  for (const url of candidates) {
+    try {
+      const res = await fetch(url, { cache: "no-store" });
+      if (!res.ok) continue;
+
+      const text = await res.text();
+      if (text.trim().startsWith("<")) continue;
+
+      const json = JSON.parse(text);
+      const { rooms: roomLikes, debug } = extractRoomLikesFromRegistryJson(json);
+      const rooms = coerceTierRoomsFromAny(roomLikes);
+
+      if (rooms.length) return { rooms, debug: `loaded ${url} | ${debug} -> rooms=${rooms.length}` };
+      return { rooms: [], debug: `parsed ${url} but rooms=0 | ${debug}` };
+    } catch {
+      // keep trying
+    }
+  }
+
+  return null;
+}
+
+function loadFromManifest(): { rooms: TierRoom[]; debug: string } {
+  const any: any = PUBLIC_ROOM_MANIFEST as any;
+  let ids: string[] = [];
+
+  if (Array.isArray(any)) {
+    ids = any.map((x: any) => String(x || "").trim()).filter(Boolean);
+  } else if (any && typeof any === "object") {
+    ids = Object.keys(any)
+      .map((x) => String(x || "").trim())
+      .filter(Boolean);
+  }
+
+  const rooms = ids.map((id) => {
+    const tier = strictTierFromIdOrPath(id);
+    const area = inferAreaFromMetaAndId({ id });
+    return { id, tier, area } as TierRoom;
+  });
+
+  return { rooms, debug: `manifest ids=${ids.length}` };
 }
 
 async function tryLoadFromDb(): Promise<{ rooms: TierRoom[]; debug: string } | null> {
   try {
     const { data, error } = await supabase
       .from(ROOMS_TABLE)
-      .select("id, title_en, title_vi, domain, track, tier")
-      .returns<RoomDbRow[]>();
+      .select("id, title_en, title_vi, domain, track")
+      .returns<
+        {
+          id: string;
+          title_en: string | null;
+          title_vi: string | null;
+          domain: string | null;
+          track: string | null;
+        }[]
+      >();
 
     if (error) {
-      return {
-        rooms: [],
-        debug: `DB error: ${String((error as { message?: string })?.message || error)}`,
-      };
+      return { rooms: [], debug: `DB error: ${String((error as any)?.message || error)}` };
     }
 
     const rows = (data || [])
-      .map((row): TierRoom | null => {
-        const id = String(row?.id || "").trim();
+      .map((r) => {
+        const id = String(r?.id || "").trim();
         if (!id) return null;
 
-        let tier = normalizeDbTier(row.tier);
-        if (tier === "unknown") tier = strictTierFromIdOrPath(id);
+        let tier = strictTierFromIdOrPath(id);
         if (tier === "unknown") tier = inferTierFromIdFallback(id);
 
         const area = inferAreaFromMetaAndId({
           id,
-          domain: row.domain,
-          track: row.track,
-          title_en: row.title_en,
-          title_vi: row.title_vi,
+          domain: r.domain,
+          track: r.track,
+          title_en: r.title_en,
+          title_vi: r.title_vi,
         });
 
         return {
           id,
-          title_en: row.title_en ?? undefined,
-          title_vi: row.title_vi ?? undefined,
-          domain: row.domain ?? undefined,
-          track: row.track ?? undefined,
+          title_en: r.title_en ?? undefined,
+          title_vi: r.title_vi ?? undefined,
+          domain: r.domain ?? undefined,
+          track: r.track ?? undefined,
           tier,
           area,
-        };
+        } as TierRoom;
       })
-      .filter((row): row is TierRoom => row !== null);
+      .filter(Boolean) as TierRoom[];
 
-    return {
-      rooms: rows,
-      debug: `DB rooms=${rows.length}`,
-    };
-  } catch (error) {
-    return {
-      rooms: [],
-      debug: `DB exception: ${String((error as Error)?.message || error)}`,
-    };
+    return { rooms: rows, debug: `DB rooms=${rows.length}` };
+  } catch (e: any) {
+    return { rooms: [], debug: `DB exception: ${String(e?.message || e)}` };
   }
 }
 
 export async function loadRoomsForTiers(): Promise<TierLoadResult> {
+  // Secure / real source first
   const db = await tryLoadFromDb();
   if (db && db.rooms.length) {
-    return {
-      rooms: db.rooms,
-      source: "DB",
-      debug: db.debug,
-    };
+    return { rooms: db.rooms, source: "DB", debug: db.debug };
   }
 
-  return {
-    rooms: [],
-    source: "none",
-    debug: db?.debug || "DB returned no rooms",
-  };
+  // Legacy fallbacks only
+  const reg = await tryLoadFromRegistry();
+  if (reg && reg.rooms.length) {
+    return { rooms: reg.rooms, source: "room-registry.json", debug: reg.debug };
+  }
+  if (reg && reg.rooms.length === 0) {
+    return { rooms: [], source: "room-registry.json", debug: reg.debug };
+  }
+
+  const man = loadFromManifest();
+  if (man.rooms.length) {
+    return { rooms: man.rooms, source: "PUBLIC_ROOM_MANIFEST", debug: man.debug };
+  }
+
+  return { rooms: [], source: "none", debug: "DB empty, registry not found, manifest empty" };
 }
 
 export function filterRoomsByTierAndArea(
   rooms: TierRoom[],
   tier: TierId,
-  area: RoomArea
+  area: RoomArea,
 ): TierRoom[] {
-  return rooms.filter((room) => room.tier === tier && room.area === area);
+  return rooms.filter((r) => r.tier === tier && r.area === area);
 }
 
 export function computeCoreSpineCounts(
   rooms: TierRoom[],
-  spineTiers: readonly TierId[]
+  spineTiers: readonly TierId[],
 ): { totalCore: number; unknownTier: number; byTier: Record<string, number> } {
   const byTier: Record<string, number> = {};
-  for (const tier of spineTiers) byTier[tier] = 0;
+  for (const t of spineTiers) byTier[t] = 0;
 
   let totalCore = 0;
   let unknownTier = 0;
 
-  for (const room of rooms) {
-    if (room.area !== "core") continue;
-
+  for (const r of rooms) {
+    if (r.area !== "core") continue;
     totalCore += 1;
-
-    if (room.tier === "unknown") {
-      unknownTier += 1;
-    } else if (byTier[room.tier] !== undefined) {
-      byTier[room.tier] += 1;
-    }
+    if (r.tier === "unknown") unknownTier += 1;
+    else if (byTier[r.tier] !== undefined) byTier[r.tier] += 1;
   }
 
   return { totalCore, unknownTier, byTier };

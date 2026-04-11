@@ -1,4 +1,5 @@
-// src/router/AppRouter.tsx
+// PATH: src/router/AppRouter.tsx
+// File: AppRouter.tsx
 
 import React, { Suspense, lazy, useEffect } from "react";
 import {
@@ -325,6 +326,10 @@ function AuthRedirect() {
   return <Navigate to={target} replace />;
 }
 
+function LoginRedirect() {
+  return <Navigate to="/signin" replace />;
+}
+
 function AdminLayoutShell() {
   return (
     <AdminLayout>
@@ -356,8 +361,6 @@ function RouterBeacon() {
 }
 
 export default function AppRouter() {
-  console.log("MB_ROUTER_VERSION", MB_ROUTER_VERSION);
-
   return (
     <>
       <RouterBeacon />
@@ -372,6 +375,8 @@ export default function AppRouter() {
           }
         />
 
+        <Route path="/login" element={<LoginRedirect />} />
+
         <Route
           path="/reset-password"
           element={
@@ -382,6 +387,7 @@ export default function AppRouter() {
         />
 
         <Route path="/auth" element={<AuthRedirect />} />
+        <Route path="/auth/callback" element={<AuthRedirect />} />
 
         <Route element={<AppHeroShell />}>
           <Route

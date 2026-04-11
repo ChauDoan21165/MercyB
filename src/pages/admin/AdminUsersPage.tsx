@@ -1,4 +1,5 @@
 // PATH: src/pages/admin/AdminUsersPage.tsx
+// File: AdminUsersPage.tsx
 //
 // Admin users dashboard
 // - Uses DB view: public.admin_users_dashboard_v1
@@ -12,7 +13,7 @@
 // - view: public.admin_users_dashboard_v1
 // - function: public.admin_users_dashboard_kpis_v1()
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import {
@@ -75,6 +76,19 @@ const VIEW_NAME = "admin_users_dashboard_v1";
 const KPI_RPC_NAME = "admin_users_dashboard_kpis_v1";
 const ZERO_DECIMAL_CURRENCIES = new Set(["VND", "JPY", "KRW"]);
 
+const EMPTY_KPIS: KpiRow = {
+  production_active_count: 0,
+  production_trialing_count: 0,
+  monthly_count: 0,
+  yearly_count: 0,
+  canceling_soon_count: 0,
+  sandbox_count: 0,
+  missing_profile_count: 0,
+  unknown_email_count: 0,
+  estimated_mrr: 0,
+  estimated_arr: 0,
+};
+
 function safeText(value: unknown, fallback = ""): string {
   if (typeof value === "string") return value.trim();
   if (typeof value === "number" || typeof value === "boolean") return String(value);
@@ -84,6 +98,77 @@ function safeText(value: unknown, fallback = ""): string {
 function safeNumber(value: unknown, fallback = 0): number {
   const n = Number(value);
   return Number.isFinite(n) ? n : fallback;
+}
+
+function safeBool(value: unknown): boolean {
+  return value === true;
+}
+
+function safeStringArray(value: unknown): string[] | null {
+  if (!Array.isArray(value)) return null;
+  const items = value
+    .map((item) => safeText(item))
+    .filter(Boolean);
+  return items.length > 0 ? items : [];
+}
+
+function normalizeDashboardRow(row: unknown): DashboardRow | null {
+  if (!row || typeof row !== "object") return null;
+
+  const record = row as Record<string, unknown>;
+  const subscriptionId = safeText(record.subscription_id);
+  const userId = safeText(record.user_id);
+
+  if (!subscriptionId || !userId) return null;
+
+  return {
+    subscription_id: subscriptionId,
+    user_id: userId,
+    profile_id: safeText(record.profile_id) || null,
+    email: safeText(record.email, "unknown"),
+    is_admin: safeBool(record.is_admin),
+    admin_level: safeNumber(record.admin_level, 0),
+    status: safeText(record.status, "unknown"),
+    environment: safeText(record.environment, "unknown"),
+    plan_interval: safeText(record.plan_interval, "unknown"),
+    currency_code: safeText(record.currency_code, "USD"),
+    amount_cents: safeNumber(record.amount_cents, 0),
+    quantity: safeNumber(record.quantity, 1),
+    created_at: safeText(record.created_at) || null,
+    current_period_end: safeText(record.current_period_end) || null,
+    cancel_at_period_end: safeBool(record.cancel_at_period_end),
+    provider_customer_id: safeText(record.provider_customer_id) || null,
+    provider_subscription_id: safeText(record.provider_subscription_id) || null,
+    missing_profile: safeBool(record.missing_profile),
+    unknown_email: safeBool(record.unknown_email),
+    unknown_plan: safeBool(record.unknown_plan),
+    unknown_amount: safeBool(record.unknown_amount),
+    anomaly_flags: safeStringArray(record.anomaly_flags),
+  };
+}
+
+function normalizeKpiRow(value: unknown): KpiRow {
+  const row = value && typeof value === "object"
+    ? (value as Record<string, unknown>)
+    : {};
+
+  return {
+    production_active_count: safeNumber(row.production_active_count, 0),
+    production_trialing_count: safeNumber(row.production_trialing_count, 0),
+    monthly_count: safeNumber(row.monthly_count, 0),
+    yearly_count: safeNumber(row.yearly_count, 0),
+    canceling_soon_count: safeNumber(row.canceling_soon_count, 0),
+    sandbox_count: safeNumber(row.sandbox_count, 0),
+    missing_profile_count: safeNumber(row.missing_profile_count, 0),
+    unknown_email_count: safeNumber(row.unknown_email_count, 0),
+    estimated_mrr: safeNumber(row.estimated_mrr, 0),
+    estimated_arr: safeNumber(row.estimated_arr, 0),
+  };
+}
+
+async function copyToClipboard(value: string): Promise<void> {
+  if (typeof navigator === "undefined" || !navigator.clipboard?.writeText) return;
+  await navigator.clipboard.writeText(value);
 }
 
 function fmtDate(value: string | null): string {
@@ -571,7 +656,7 @@ function AdminUserDetailDrawer({
               style={actionBtn}
               onClick={() => {
                 if (row.email && row.email !== "unknown") {
-                  void navigator.clipboard.writeText(row.email);
+                  void copyToClipboard(row.email);
                 }
               }}
             >
@@ -582,7 +667,7 @@ function AdminUserDetailDrawer({
               type="button"
               style={actionBtn}
               onClick={() => {
-                void navigator.clipboard.writeText(row.user_id);
+                void copyToClipboard(row.user_id);
               }}
             >
               Copy user ID
@@ -592,7 +677,7 @@ function AdminUserDetailDrawer({
               type="button"
               style={actionBtn}
               onClick={() => {
-                void navigator.clipboard.writeText(row.subscription_id);
+                void copyToClipboard(row.subscription_id);
               }}
             >
               Copy subscription ID
@@ -619,20 +704,12 @@ export default function AdminUsersPage() {
   const [adminFilter, setAdminFilter] = useState("all");
   const [sortBy, setSortBy] = useState("created_desc");
 
-  const [kpis, setKpis] = useState<KpiRow>({
-    production_active_count: 0,
-    production_trialing_count: 0,
-    monthly_count: 0,
-    yearly_count: 0,
-    canceling_soon_count: 0,
-    sandbox_count: 0,
-    missing_profile_count: 0,
-    unknown_email_count: 0,
-    estimated_mrr: 0,
-    estimated_arr: 0,
-  });
+  const [kpis, setKpis] = useState<KpiRow>(EMPTY_KPIS);
+
+  const requestIdRef = useRef(0);
 
   const load = async () => {
+    const requestId = ++requestIdRef.current;
     setLoading(true);
     setErr(null);
 
@@ -648,53 +725,27 @@ export default function AdminUsersPage() {
       if (rowsError) throw rowsError;
       if (kpiError) throw kpiError;
 
-      const nextRows = (Array.isArray(rowsData) ? rowsData : []) as DashboardRow[];
-      const nextKpis = Array.isArray(kpiData)
-        ? ((kpiData[0] as KpiRow | undefined) ?? {
-            production_active_count: 0,
-            production_trialing_count: 0,
-            monthly_count: 0,
-            yearly_count: 0,
-            canceling_soon_count: 0,
-            sandbox_count: 0,
-            missing_profile_count: 0,
-            unknown_email_count: 0,
-            estimated_mrr: 0,
-            estimated_arr: 0,
-          })
-        : ((kpiData as KpiRow | null) ?? {
-            production_active_count: 0,
-            production_trialing_count: 0,
-            monthly_count: 0,
-            yearly_count: 0,
-            canceling_soon_count: 0,
-            sandbox_count: 0,
-            missing_profile_count: 0,
-            unknown_email_count: 0,
-            estimated_mrr: 0,
-            estimated_arr: 0,
-          });
+      if (requestIdRef.current !== requestId) return;
+
+      const nextRows = (Array.isArray(rowsData) ? rowsData : [])
+        .map(normalizeDashboardRow)
+        .filter((row): row is DashboardRow => Boolean(row));
+
+      const rawKpis = Array.isArray(kpiData) ? kpiData[0] : kpiData;
+      const nextKpis = normalizeKpiRow(rawKpis ?? EMPTY_KPIS);
 
       setRows(nextRows);
       setKpis(nextKpis);
       setRefreshedAt(new Date().toISOString());
     } catch (e: unknown) {
+      if (requestIdRef.current !== requestId) return;
       setErr(e instanceof Error ? e.message : String(e));
       setRows([]);
-      setKpis({
-        production_active_count: 0,
-        production_trialing_count: 0,
-        monthly_count: 0,
-        yearly_count: 0,
-        canceling_soon_count: 0,
-        sandbox_count: 0,
-        missing_profile_count: 0,
-        unknown_email_count: 0,
-        estimated_mrr: 0,
-        estimated_arr: 0,
-      });
+      setKpis(EMPTY_KPIS);
     } finally {
-      setLoading(false);
+      if (requestIdRef.current === requestId) {
+        setLoading(false);
+      }
     }
   };
 
@@ -734,6 +785,15 @@ export default function AdminUsersPage() {
       if (!q) return true;
 
       const anomalyText = Array.isArray(row.anomaly_flags) ? row.anomaly_flags.join(" ") : "";
+      const quickTags = [
+        row.missing_profile ? "missing_profile" : "",
+        row.unknown_email ? "unknown_email" : "",
+        row.cancel_at_period_end ? "canceling_soon" : "",
+        row.unknown_plan ? "unknown_plan" : "",
+        row.unknown_amount ? "unknown_amount" : "",
+      ]
+        .filter(Boolean)
+        .join(" ");
 
       return (
         safeText(row.email, "unknown").toLowerCase().includes(q) ||
@@ -741,7 +801,8 @@ export default function AdminUsersPage() {
         safeText(row.plan_interval).toLowerCase().includes(q) ||
         safeText(row.environment).toLowerCase().includes(q) ||
         safeText(row.user_id).toLowerCase().includes(q) ||
-        anomalyText.toLowerCase().includes(q)
+        anomalyText.toLowerCase().includes(q) ||
+        quickTags.includes(q)
       );
     });
 
@@ -824,6 +885,8 @@ export default function AdminUsersPage() {
   }, [rows]);
 
   const exportCsv = () => {
+    if (typeof document === "undefined" || typeof URL === "undefined") return;
+
     const header = [
       "email",
       "status",
@@ -1516,7 +1579,7 @@ export default function AdminUsersPage() {
                               onClick={(e) => {
                                 e.stopPropagation();
                                 if (row.email && row.email !== "unknown") {
-                                  void navigator.clipboard.writeText(row.email);
+                                  void copyToClipboard(row.email);
                                 }
                               }}
                             >

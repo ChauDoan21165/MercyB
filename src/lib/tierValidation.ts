@@ -1,4 +1,7 @@
-// PATH: src/lib/tierValidation.ts
+/**
+ * Path: src/lib/tierValidation.ts
+ * File: tierValidation.ts
+ */
 
 /**
  * Tier Validation Utilities
@@ -22,7 +25,11 @@ import {
 } from "@/lib/constants/tiers";
 
 /**
- * Validate that a database tier value matches expected canonical format
+ * Validate that a database tier value matches expected canonical format.
+ *
+ * Strict behavior:
+ * - Only canonical tier labels are accepted as valid DB values.
+ * - Unknown / malformed values do not silently pass.
  */
 export function validateDbTier(dbTier: string | null | undefined): {
   valid: boolean;
@@ -30,33 +37,18 @@ export function validateDbTier(dbTier: string | null | undefined): {
   tierId: TierId | null;
   error?: string;
 } {
-  if (!dbTier) {
+  if (typeof dbTier !== "string" || !dbTier.trim()) {
     return {
       valid: false,
       canonical: null,
       tierId: null,
-      error: "Tier is null/undefined",
+      error: "Tier is null/undefined/empty",
     };
   }
 
-  if (isValidTier(dbTier)) {
-    const tierId = normalizeTier(dbTier);
-    return {
-      valid: true,
-      canonical: tierId,
-      tierId,
-    };
-  }
+  const raw = dbTier.trim();
 
-  const tierId = normalizeTier(dbTier);
-  const canonical = tierId;
-
-  if (
-    tierId === "free" &&
-    !dbTier.toLowerCase().includes("free") &&
-    !dbTier.toLowerCase().includes("miễn phí") &&
-    !dbTier.toLowerCase().includes("mien phi")
-  ) {
+  if (!isValidTier(raw)) {
     return {
       valid: false,
       canonical: null,
@@ -65,9 +57,11 @@ export function validateDbTier(dbTier: string | null | undefined): {
     };
   }
 
+  const tierId = normalizeTier(raw);
+
   return {
     valid: true,
-    canonical,
+    canonical: tierIdToDbLabel(tierId),
     tierId,
   };
 }
@@ -112,11 +106,12 @@ function kidsTierLevel(tierId: TierId): number {
 /**
  * Verify tier access - returns true if userTier can access roomTier
  *
- * New policy:
+ * Policy:
  * - free users can only access free content
- * - paid billing tiers can access the whole paid repo
- * - legacy VIP tiers can access the whole paid repo
+ * - paid billing tiers can access the whole adult paid repo
+ * - legacy VIP tiers can access the whole adult paid repo for compatibility
  * - kids tiers only access kids progression by level
+ * - adult users may access kids content only when the room itself is kids-tiered
  */
 export function verifyTierAccess(userTierId: TierId, roomTierId: TierId): boolean {
   const userTier = normalizeTier(userTierId);
@@ -125,16 +120,21 @@ export function verifyTierAccess(userTierId: TierId, roomTierId: TierId): boolea
   if (roomTier === "free") return true;
   if (userTier === roomTier) return true;
 
-  // Paid users unlock the whole repo
-  if (isPaidRepoTier(userTier)) return true;
-
-  // Kids progression stays separate
+  // Kids progression stays isolated from adult paid tiers.
   if (isKidsTier(userTier)) {
     if (!isKidsTier(roomTier)) return false;
     return kidsTierLevel(userTier) >= kidsTierLevel(roomTier);
   }
 
-  // Free users cannot access paid/kids gated content
+  // Adult users can access kids content.
+  if (isKidsTier(roomTier)) {
+    return true;
+  }
+
+  // Paid adult users unlock the whole adult paid repo.
+  if (isPaidRepoTier(userTier)) return true;
+
+  // Free adult users cannot access paid adult content.
   if (userTier === "free") return false;
 
   return false;

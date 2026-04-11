@@ -1,4 +1,5 @@
 // PATH: src/lib/useEntitlements.ts
+// File: useEntitlements.ts
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
@@ -10,6 +11,7 @@ import {
 import { useAuth } from "@/providers/AuthProvider";
 
 type Ent = BackendEntitlement & {
+  billing_tier: string;
   vip_tier: string;
   vip_rank: number;
   features: Record<string, unknown>;
@@ -37,7 +39,7 @@ function isLegacyVipTier(tier: string): boolean {
  * Repo-wide access rank:
  * - free => 0
  * - premium_month / premium_year => 9 (full paid repo access)
- * - vip1..vip9 => numeric rank for backward compatibility
+ * - vip1..vip9 => numeric compatibility only
  * - unknown => 0
  */
 function tierToRank(tier: string): number {
@@ -58,28 +60,41 @@ function hasPaidRepoAccess(ent: BackendEntitlement, resolvedTier: string): boole
   const premiumActive = ent.is_premium === true && isPremiumStatus(ent.status);
 
   // New policy:
-  // - active/trialing premium_month or premium_year unlock the whole paid repo
-  // - keep legacy VIP tiers working too
+  // - only active/trialing premium billing tiers unlock the whole paid repo
+  // - legacy VIP labels remain compatibility labels, not paid truth
   if (isPaidBillingTier(tier)) {
-    return premiumActive || isPremiumStatus(ent.status);
-  }
-
-  if (isLegacyVipTier(tier)) {
-    return true;
+    return premiumActive;
   }
 
   return false;
 }
 
-function buildFeatures(ent: BackendEntitlement, resolvedTier: string, vipRank: number) {
-  const premiumActive = ent.is_premium === true && isPremiumStatus(ent.status);
-  const paidRepoAccess = hasPaidRepoAccess(ent, resolvedTier);
+function buildFeatures(
+  entitlement: BackendEntitlement,
+  resolvedTier: string,
+  vipRank: number,
+) {
+  const normalizedTier = normalizeTier(resolvedTier);
+  const premiumActive =
+    entitlement.is_premium === true && isPremiumStatus(entitlement.status);
+  const paidRepoAccess = hasPaidRepoAccess(entitlement, normalizedTier);
 
   return {
     premium: premiumActive,
     is_premium: premiumActive,
 
-    // New policy: any paid user can access the whole paid repo.
+    // Explicit modern paid flags.
+    paid_repo_access: paidRepoAccess,
+    premium_monthly: paidRepoAccess && normalizedTier === "premium_month",
+    premium_yearly: paidRepoAccess && normalizedTier === "premium_year",
+
+    // Compatibility metadata flags.
+    has_legacy_vip_label: isLegacyVipTier(normalizedTier),
+    vip_tier: normalizedTier,
+    vip_rank: vipRank,
+
+    // Backward-compatible feature flags:
+    // any active paid billing tier unlocks the full paid repo.
     vip1: paidRepoAccess || vipRank >= 1,
     vip2: paidRepoAccess || vipRank >= 2,
     vip3: paidRepoAccess || vipRank >= 3,
@@ -98,9 +113,11 @@ function buildEntitlement(entitlement: BackendEntitlement): Ent {
 
   return {
     ...entitlement,
-    // Keep raw resolved tier here for compatibility with existing callers.
+    // Canonical raw paid-vs-legacy entitlement result.
+    billing_tier: resolvedTier,
+    // Keep a compatibility field name for older callers.
     vip_tier: resolvedTier,
-    // Use effective access rank so premium_month/year unlock the full paid repo.
+    // Effective access rank used by older VIP-based checks.
     vip_rank: vipRank,
     features: buildFeatures(entitlement, resolvedTier, vipRank),
     updated_at: new Date().toISOString(),
@@ -147,7 +164,7 @@ export function useEntitlements() {
         setLoading(false);
       }
     }
-  }, [authLoading, user?.id]);
+  }, [authLoading, user]);
 
   useEffect(() => {
     void refreshEntitlements();
@@ -164,8 +181,30 @@ export function useEntitlements() {
 
     if (typeof value === "boolean") return value;
 
-    if (normalized === "premium" || normalized === "is_premium") {
+    if (
+      normalized === "premium" ||
+      normalized === "is_premium"
+    ) {
       return data?.is_premium === true && isPremiumStatus(data?.status);
+    }
+
+    if (
+      normalized === "paid_repo_access" ||
+      normalized === "premium_monthly" ||
+      normalized === "premium_yearly"
+    ) {
+      const billingTier = normalizeTier(data?.billing_tier);
+      const premiumActive = data?.is_premium === true && isPremiumStatus(data?.status);
+
+      if (normalized === "paid_repo_access") {
+        return premiumActive && isPaidBillingTier(billingTier);
+      }
+      if (normalized === "premium_monthly") {
+        return premiumActive && billingTier === "premium_month";
+      }
+      if (normalized === "premium_yearly") {
+        return premiumActive && billingTier === "premium_year";
+      }
     }
 
     const m = normalized.match(/^vip(\d+)$/);

@@ -1,4 +1,7 @@
-// PATH: src/security/AccessPolicy.ts
+/**
+ * Path: src/security/AccessPolicy.ts
+ * File: AccessPolicy.ts
+ */
 
 // Global Access Policy - Central access control rules
 
@@ -65,7 +68,6 @@ const KIDS_ACCESSIBLE_TIERS: readonly TierId[] = [
 ] as const;
 
 export const ACCESS_POLICIES: Record<string, AccessRule> = {
-  // Public pages
   homepage: {
     allowedRoles: ["user", "moderator", "admin"],
     allowedTiers: ALL_TIERS,
@@ -80,7 +82,6 @@ export const ACCESS_POLICIES: Record<string, AccessRule> = {
     description: "Pricing page - accessible to all",
   },
 
-  // Adult room access model
   free_rooms: {
     allowedRoles: ["user", "moderator", "admin"],
     allowedTiers: ADULT_TIERS,
@@ -151,7 +152,6 @@ export const ACCESS_POLICIES: Record<string, AccessRule> = {
     description: "VIP9 curriculum room - any paid adult user can access",
   },
 
-  // Kids content
   kids_rooms: {
     allowedRoles: ["user", "moderator", "admin"],
     allowedTiers: KIDS_ACCESSIBLE_TIERS,
@@ -159,7 +159,6 @@ export const ACCESS_POLICIES: Record<string, AccessRule> = {
     description: "Kids rooms - accessible to kids tiers and all adult tiers",
   },
 
-  // Admin pages
   admin_dashboard: {
     allowedRoles: ["admin"],
     allowedTiers: ALL_TIERS,
@@ -167,7 +166,6 @@ export const ACCESS_POLICIES: Record<string, AccessRule> = {
     description: "Admin dashboard - requires admin role",
   },
 
-  // Moderator pages
   mod_dashboard: {
     allowedRoles: ["moderator", "admin"],
     allowedTiers: ALL_TIERS,
@@ -175,7 +173,6 @@ export const ACCESS_POLICIES: Record<string, AccessRule> = {
     description: "Moderator dashboard - requires moderator or admin role",
   },
 
-  // Profile & settings
   profile: {
     allowedRoles: ["user", "moderator", "admin"],
     allowedTiers: ALL_TIERS,
@@ -188,13 +185,10 @@ function normalizePageId(input: string): string {
   const raw = String(input || "").trim().toLowerCase();
   if (!raw) return raw;
 
-  // direct hit
   if (ACCESS_POLICIES[raw]) return raw;
 
-  // remove query/hash
   const clean = raw.split("?")[0].split("#")[0];
 
-  // exact aliases
   const aliasMap: Record<string, string> = {
     home: "homepage",
     index: "homepage",
@@ -246,7 +240,6 @@ function normalizePageId(input: string): string {
 
   if (aliasMap[clean]) return aliasMap[clean];
 
-  // route/path patterns
   if (/(^|\/|_|-)(vip[1-9])($|\/|_|-)/i.test(clean)) {
     const m = clean.match(/(vip[1-9])/i);
     if (m?.[1]) return `${m[1].toLowerCase()}_rooms`;
@@ -263,16 +256,23 @@ function normalizePageId(input: string): string {
   return clean;
 }
 
+function safeTier(value: unknown): TierId {
+  const raw = String(value || "").trim().toLowerCase() as TierId;
+
+  if (ALL_TIER_IDS.includes(raw)) {
+    return raw;
+  }
+
+  return "free";
+}
+
 function normalizeRoomTier(roomTier: TierId): TierId {
-  const raw = String(roomTier || "").trim().toLowerCase() as TierId;
-  return raw;
+  return safeTier(roomTier);
 }
 
 function normalizeUserTierForAccess(userTier: TierId): TierId {
-  const raw = String(userTier || "").trim().toLowerCase() as TierId;
+  const raw = safeTier(userTier);
 
-  // Paid billing plans unlock the whole adult app.
-  // Map them to vip9 for effective access comparisons.
   if (raw === "premium_month" || raw === "premium_year") {
     return "vip9";
   }
@@ -282,7 +282,12 @@ function normalizeUserTierForAccess(userTier: TierId): TierId {
 
 function isPaidAdultTier(tier: TierId): boolean {
   const normalized = normalizeUserTierForAccess(tier);
-  return PAID_ADULT_ACCESS_TIERS.includes(normalized) || PAID_BILLING_TIERS.includes(tier);
+  const raw = safeTier(tier);
+
+  return (
+    PAID_ADULT_ACCESS_TIERS.includes(normalized) ||
+    PAID_BILLING_TIERS.includes(raw)
+  );
 }
 
 /**
@@ -297,10 +302,12 @@ export function checkPageAccess(
   const normalizedUserTier = normalizeUserTierForAccess(userTier);
   const policy = ACCESS_POLICIES[normalizedPageId];
 
-  // If the incoming pageId is actually a room/tier alias, resolve it safely.
   if (!policy) {
     if (/^vip[1-9](_rooms?)?$/.test(normalizedPageId)) {
-      return checkRoomAccess(normalizedUserTier, normalizedPageId.replace(/_rooms?$/, "") as TierId);
+      return checkRoomAccess(
+        normalizedUserTier,
+        normalizedPageId.replace(/_rooms?$/, "") as TierId,
+      );
     }
     if (/^free(_rooms?)?$/.test(normalizedPageId)) {
       return checkRoomAccess(normalizedUserTier, "free");
@@ -319,7 +326,6 @@ export function checkPageAccess(
   }
 
   if (!policy.allowedTiers.includes(normalizedUserTier)) {
-    // fallback: for room policies, use room-aware rule instead of raw membership only
     if (/^(free|vip[1-9]|kids)_rooms$/.test(normalizedPageId)) {
       const roomTier =
         normalizedPageId === "free_rooms"
@@ -337,7 +343,6 @@ export function checkPageAccess(
     };
   }
 
-  // For room policies, enforce business rule through room-aware logic too.
   if (/^(free|vip[1-9]|kids)_rooms$/.test(normalizedPageId)) {
     const roomTier =
       normalizedPageId === "free_rooms"
@@ -368,7 +373,6 @@ export function checkRoomAccess(
   const normalizedUserTier = normalizeUserTierForAccess(userTier);
   const normalizedRoomTier = normalizeRoomTier(roomTier);
 
-  // Kids tier users can only access content allowed by kids policy
   if (isKidsTier(normalizedUserTier)) {
     if (!canKidsAccessAdult(normalizedUserTier, normalizedRoomTier)) {
       return {
@@ -379,17 +383,14 @@ export function checkRoomAccess(
     return { allowed: true };
   }
 
-  // Adult users accessing kids rooms is allowed by current policy
   if (isKidsTier(normalizedRoomTier)) {
     return { allowed: true };
   }
 
-  // Free adult rooms
   if (normalizedRoomTier === "free") {
     return { allowed: true };
   }
 
-  // Any paid adult tier unlocks all adult curriculum rooms
   if (isPaidAdultTier(normalizedUserTier)) {
     return { allowed: true };
   }
@@ -405,5 +406,5 @@ export function checkRoomAccess(
  * billing-level paid check only
  */
 export function isPaidBillingTier(tier: TierId): boolean {
-  return PAID_BILLING_TIERS.includes(String(tier || "").trim().toLowerCase() as TierId);
+  return PAID_BILLING_TIERS.includes(safeTier(tier));
 }
