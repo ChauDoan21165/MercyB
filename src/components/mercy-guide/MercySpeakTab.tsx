@@ -24,11 +24,15 @@ import {
 import { Button } from '@/components/ui/button';
 import type { StudentMercyMemoryUpdate, LearningSupportMode } from './types';
 import type {
-  SpeechRecognitionLike,
+  SpeechRecognitionLike as BaseSpeechRecognitionLike,
   SpeechRecognitionErrorEventLike,
   SpeechRecognitionAlternativeLike,
   SpeechRecognitionResultLike,
 } from '@/types/speech-recognition';
+
+type SpeechRecognitionLike = BaseSpeechRecognitionLike & {
+  abort?: () => void;
+};
 
 type PronunciationLaunchPayload = {
   sourceText: string;

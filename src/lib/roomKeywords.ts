@@ -1,7 +1,12 @@
-// src/lib/roomKeywords.ts
+// PATH: src/lib/roomKeywords.ts
 /**
  * Room-specific keyword highlighting configuration
  * Loads custom keyword colors through the secure room loader.
+ *
+ * Compatibility:
+ * - accepts raw room JSON
+ * - accepts legacy wrapped payloads like { room: {...} }
+ * - accepts highlighted_words from root, room, or meta
  */
 
 import { CustomKeywordMapping } from "./keywordColors";
@@ -13,6 +18,27 @@ export interface RoomKeywordConfig {
     vi?: string[];
     color?: string;
   }[];
+  room?: {
+    highlighted_words?: {
+      en?: string[];
+      vi?: string[];
+      color?: string;
+    }[];
+    meta?: {
+      highlighted_words?: {
+        en?: string[];
+        vi?: string[];
+        color?: string;
+      }[];
+    };
+  };
+  meta?: {
+    highlighted_words?: {
+      en?: string[];
+      vi?: string[];
+      color?: string;
+    }[];
+  };
 }
 
 function isStringArray(value: unknown): value is string[] {
@@ -39,10 +65,35 @@ function normalizeHighlightedWords(value: unknown): CustomKeywordMapping[] {
       return {
         en: isStringArray(record.en) ? record.en : [],
         vi: isStringArray(record.vi) ? record.vi : [],
-        color: record.color,
+        color: record.color.trim(),
       } satisfies CustomKeywordMapping;
     })
     .filter((item): item is CustomKeywordMapping => item !== null);
+}
+
+function unwrapRoomKeywordConfig(payload: unknown): RoomKeywordConfig | null {
+  if (!payload || typeof payload !== "object") return null;
+
+  const obj = payload as Record<string, unknown>;
+  const wrappedRoom = obj.room;
+
+  if (wrappedRoom && typeof wrappedRoom === "object") {
+    return payload as RoomKeywordConfig;
+  }
+
+  return payload as RoomKeywordConfig;
+}
+
+function extractHighlightedWords(config: RoomKeywordConfig | null): unknown {
+  if (!config || typeof config !== "object") return [];
+
+  return (
+    config.highlighted_words ??
+    config.room?.highlighted_words ??
+    config.meta?.highlighted_words ??
+    config.room?.meta?.highlighted_words ??
+    []
+  );
 }
 
 /**
@@ -50,13 +101,14 @@ function normalizeHighlightedWords(value: unknown): CustomKeywordMapping[] {
  */
 export async function loadRoomKeywords(roomId: string): Promise<CustomKeywordMapping[]> {
   try {
-    const json = (await loadRoomJson(roomId)) as RoomKeywordConfig | null;
+    const payload = await loadRoomJson(roomId);
+    const config = unwrapRoomKeywordConfig(payload);
 
-    if (!json || typeof json !== "object") {
+    if (!config || typeof config !== "object") {
       return [];
     }
 
-    return normalizeHighlightedWords(json.highlighted_words);
+    return normalizeHighlightedWords(extractHighlightedWords(config));
   } catch (error) {
     console.error(`Failed to load room keywords for ${roomId}:`, error);
     return [];
@@ -69,42 +121,42 @@ export async function loadRoomKeywords(roomId: string): Promise<CustomKeywordMap
  */
 export const ENGLISH_LEARNING_COLORS = {
   // Grammar & Structure
-  grammar: "#B8D4F1", // Calm blue for grammar concepts
-  structure: "#C8E6F5", // Light blue for structural elements
-  syntax: "#A8E6F5", // Bright blue for syntax
+  grammar: "#B8D4F1",
+  structure: "#C8E6F5",
+  syntax: "#A8E6F5",
 
   // Skills & Methods
-  skill: "#90EE90", // Growth green for skills
-  method: "#98FB98", // Fresh green for methods
-  technique: "#A8F0A8", // Soft green for techniques
+  skill: "#90EE90",
+  method: "#98FB98",
+  technique: "#A8F0A8",
 
   // Learning Process
-  practice: "#D8F0E6", // Calm green for practice
-  learning: "#E0F5F8", // Cool blue-green for learning
-  training: "#D8F0F5", // Light blue for training
+  practice: "#D8F0E6",
+  learning: "#E0F5F8",
+  training: "#D8F0F5",
 
   // Cognitive
-  thinking: "#E0D8F5", // Purple for thinking
-  processing: "#D9C8F0", // Soft purple for processing
-  cognitive: "#C4EAEA", // Teal for cognitive
+  thinking: "#E0D8F5",
+  processing: "#D9C8F0",
+  cognitive: "#C4EAEA",
 
   // Performance
-  fluency: "#FFE0CC", // Warm peach for fluency
-  momentum: "#FFD8B8", // Light orange for momentum
-  productivity: "#FFF4D8", // Bright yellow for productivity
+  fluency: "#FFE0CC",
+  momentum: "#FFD8B8",
+  productivity: "#FFF4D8",
 
   // Strategy
-  strategy: "#D8F0F5", // Strategic blue
-  planning: "#E0F5F8", // Planning blue-green
-  framework: "#C8E6F5", // Framework blue
+  strategy: "#D8F0F5",
+  planning: "#E0F5F8",
+  framework: "#C8E6F5",
 
   // Communication
-  speaking: "#FFE0EC", // Warm pink for speaking
-  expression: "#FFF8D8", // Bright cream for expression
-  communication: "#FFE0D8", // Warm coral for communication
+  speaking: "#FFE0EC",
+  expression: "#FFF8D8",
+  communication: "#FFE0D8",
 
   // Key concepts
-  important: "#FFD8E6", // Highlight pink for key terms
-  emphasis: "#FFE0ED", // Emphasis pink
-  focus: "#A8C8E6", // Focus blue
+  important: "#FFD8E6",
+  emphasis: "#FFE0ED",
+  focus: "#A8C8E6",
 };

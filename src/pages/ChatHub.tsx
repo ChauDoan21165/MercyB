@@ -25,6 +25,12 @@
  * - Hardened effective room identity handling
  * - Prefer loaded room.id over raw route param for downstream components
  * - Improved safe metadata extraction for MercyGuide context
+ *
+ * PATCH (2026-04-11):
+ * - Do not duplicate aggressive room-id variant expansion here.
+ * - Let roomJsonResolver own the candidate logic.
+ * - Accept both raw room JSON and legacy wrapped { success, room } payloads.
+ * - Fail soft if room spec resolution throws.
  */
 
 import { useEffect, useMemo, useState } from "react";
@@ -68,26 +74,17 @@ function uniqueStrings(list: string[]): string[] {
   return out;
 }
 
-function roomIdVariants(roomId: string, canonicalId: string): string[] {
-  const raw = String(roomId || "").trim();
-  const canon = String(canonicalId || "").trim();
-
-  const rawHyphen = raw.replace(/_/g, "-");
-  const rawUnder = raw.replace(/-/g, "_");
-
-  const canonHyphen = canon.replace(/_/g, "-");
-  const canonUnder = canon.replace(/-/g, "_");
-
-  return uniqueStrings([raw, rawHyphen, canonHyphen, canon, rawUnder, canonUnder]);
+function buildLoadKeys(roomId: string, canonicalId: string): string[] {
+  return uniqueStrings([roomId, canonicalId]);
 }
 
 function fallbackParentRoute(roomId?: string): string {
   const id = String(roomId || "").trim();
   if (!id) return "/rooms";
   if (/sexuality-curiosity-vip3-sub[1-6]$/i.test(id)) return "/sexuality-culture";
-  if (/-vip3\b/i.test(id)) return "/rooms-vip3";
-  if (/-vip2\b/i.test(id)) return "/rooms-vip2";
-  if (/-vip1\b/i.test(id)) return "/rooms-vip1";
+  if (/-vip3\b|_vip3\b/i.test(id)) return "/rooms-vip3";
+  if (/-vip2\b|_vip2\b/i.test(id)) return "/rooms-vip2";
+  if (/-vip1\b|_vip1\b/i.test(id)) return "/rooms-vip1";
   return "/rooms";
 }
 
@@ -121,6 +118,18 @@ function firstNonEmptyString(...vals: unknown[]): string {
 function arrayOfStrings(v: unknown): string[] {
   if (!Array.isArray(v)) return [];
   return v.map((x) => asString(x)).filter(Boolean);
+}
+
+function unwrapLoadedRoom(payload: unknown): AnyRoom | null {
+  if (!payload || typeof payload !== "object") return null;
+
+  const obj = payload as Record<string, unknown>;
+  const wrappedRoom = obj.room;
+  if (wrappedRoom && typeof wrappedRoom === "object") {
+    return wrappedRoom as AnyRoom;
+  }
+
+  return obj as AnyRoom;
 }
 
 function getEffectiveRoomIdSafe(room: AnyRoom | null, roomId?: string, canonicalId?: string): string {
@@ -304,7 +313,7 @@ export default function ChatHub() {
 
   const canonicalId = useMemo(() => canonicalizeRoomId(roomId || ""), [roomId]);
   const loadKeys = useMemo(
-    () => roomIdVariants(roomId || "", canonicalId),
+    () => buildLoadKeys(roomId || "", canonicalId),
     [roomId, canonicalId],
   );
 
@@ -353,7 +362,8 @@ export default function ChatHub() {
 
       for (const key of loadKeys) {
         try {
-          const data = (await loadRoomJson(key)) as unknown as AnyRoom | null;
+          const payload = await loadRoomJson(key);
+          const data = unwrapLoadedRoom(payload);
           if (data) {
             loadedRoom = data;
             break;
@@ -377,10 +387,15 @@ export default function ChatHub() {
       const effectiveRoomId = getEffectiveRoomIdSafe(loadedRoom, roomId, canonicalId);
       const resolvedTier = normalizeTierOrUndefined(getRoomTierSafe(loadedRoom));
 
-      const effectiveSpec = await getEffectiveRoomSpec(
-        effectiveRoomId,
-        resolvedTier ?? null,
-      );
+      let effectiveSpec: RoomSpec | null = null;
+      try {
+        effectiveSpec = await getEffectiveRoomSpec(
+          effectiveRoomId,
+          resolvedTier ?? null,
+        );
+      } catch {
+        effectiveSpec = null;
+      }
 
       if (cancelled) return;
 

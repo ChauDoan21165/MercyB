@@ -1,16 +1,14 @@
-/**
- * Path: src/lib/tierRoomSource.ts
- * File: tierRoomSource.ts
- *
- * ONE truth pipeline for Tier pages:
- * - Prefer database metadata as primary source of truth
- * - Public registry / manifest are legacy fallback only
- * - Tier is inferred STRICT from id/path (unknown stays unknown)
- * - Area (core/english/life/kids) inferred with HARD OVERRIDES:
- *   - If ID clearly indicates english/kids/life => that wins
- *
- * Used by: TierIndex, TierDetail
- */
+// PATH: src/lib/tierRoomSource.ts
+// File: tierRoomSource.ts
+//
+// ONE truth pipeline for Tier pages:
+// - Prefer richer source of truth between DB and registry
+// - Public registry / manifest are fallback sources
+// - Tier is inferred STRICT from id/path unless explicit valid tier exists
+// - Area (core/english/life/kids) inferred with HARD OVERRIDES:
+//   - If ID clearly indicates english/kids/life => that wins
+//
+// Used by: TierIndex, TierDetail
 
 import { supabase } from "@/lib/supabaseClient";
 import { ROOMS_TABLE } from "@/lib/constants/rooms";
@@ -32,7 +30,12 @@ export type TierId =
   | "kids_2"
   | "kids_3";
 
-export type TierSource = "DB" | "room-registry.json" | "PUBLIC_ROOM_MANIFEST" | "none";
+export type TierSource =
+  | "DB"
+  | "data/registry.json"
+  | "room-registry.json"
+  | "PUBLIC_ROOM_MANIFEST"
+  | "none";
 
 export type RoomArea = "core" | "english" | "life" | "kids" | "unknown";
 
@@ -70,12 +73,28 @@ export function isTierId(x: any): x is TierId {
   );
 }
 
+function isRoomArea(x: any): x is RoomArea {
+  return x === "core" || x === "english" || x === "life" || x === "kids" || x === "unknown";
+}
+
 function normalizeLeafId(x: string): string {
   const s = String(x || "").trim();
   if (!s) return "";
   const noQuery = s.split("?")[0]?.split("#")[0] ?? s;
   const leaf = noQuery.replace(/\\/g, "/").split("/").pop() || noQuery;
   return leaf.replace(/\.json$/i, "").trim().toLowerCase();
+}
+
+function normalizeTierValue(x: unknown): TierId | "unknown" {
+  const t = String(x ?? "").trim().toLowerCase().replace(/-/g, "_");
+
+  if (isTierId(t)) return t;
+
+  if (t === "kids1" || t === "kids_l1" || t === "kidslevel1") return "kids_1";
+  if (t === "kids2" || t === "kids_l2" || t === "kidslevel2") return "kids_2";
+  if (t === "kids3" || t === "kids_l3" || t === "kidslevel3") return "kids_3";
+
+  return "unknown";
 }
 
 /**
@@ -146,10 +165,9 @@ export function strictTierFromIdOrPath(idOrPath: string): TierId | "unknown" {
 }
 
 /**
- * DB FALLBACK tier inference:
- * - When DB is the source, many ids may not contain explicit "_vipX" markers.
- * - We still want reasonable tier counts, using the existing tierFromRoomId() mapping.
- * - MUST NOT let anything "default" to free.
+ * DB / manifest fallback tier inference:
+ * - When ids do not contain explicit "_vipX" markers, use existing tierFromRoomId().
+ * - MUST NOT let anything default to free.
  */
 function inferTierFromIdFallback(idOrPath: string): TierId | "unknown" {
   const leaf = normalizeLeafId(String(idOrPath || "").trim());
@@ -254,7 +272,11 @@ function inferAreaFromMetaAndId(meta: {
   track?: string | null;
   title_en?: string | null;
   title_vi?: string | null;
+  area?: string | null;
 }): RoomArea {
+  const explicitArea = String(meta.area || "").trim().toLowerCase();
+  if (isRoomArea(explicitArea)) return explicitArea;
+
   const idLower = String(meta.id || "").toLowerCase();
   const domain = String(meta.domain || "").toLowerCase();
   const track = String(meta.track || "").toLowerCase();
@@ -318,7 +340,10 @@ function coerceTierRoomsFromAny(anyRooms: any[]): TierRoom[] {
       if (typeof r === "string") {
         const id = String(r || "").trim();
         if (!id) return null;
-        const tier = strictTierFromIdOrPath(id);
+
+        let tier = strictTierFromIdOrPath(id);
+        if (tier === "unknown") tier = inferTierFromIdFallback(id);
+
         const area = inferAreaFromMetaAndId({ id });
         return { id, tier, area } as TierRoom;
       }
@@ -329,16 +354,21 @@ function coerceTierRoomsFromAny(anyRooms: any[]): TierRoom[] {
 
         const title_en = (r.title_en ?? r.titleEn ?? r.title?.en ?? r.nameEn ?? r.name?.en ?? r.name ?? null) as any;
         const title_vi = (r.title_vi ?? r.titleVi ?? r.title?.vi ?? r.nameVi ?? r.name?.vi ?? null) as any;
-        const domain = (r.domain ?? r.area ?? r.group ?? null) as any;
+        const domain = (r.domain ?? r.group ?? null) as any;
         const track = (r.track ?? r.path_track ?? r.category ?? null) as any;
+        const areaRaw = (r.area ?? null) as any;
 
-        const tier = strictTierFromIdOrPath(id);
+        let tier = normalizeTierValue(r.tier);
+        if (tier === "unknown") tier = strictTierFromIdOrPath(id);
+        if (tier === "unknown") tier = inferTierFromIdFallback(id);
+
         const area = inferAreaFromMetaAndId({
           id,
           domain: domain ?? null,
           track: track ?? null,
           title_en: title_en ?? null,
           title_vi: title_vi ?? null,
+          area: areaRaw ? String(areaRaw) : null,
         });
 
         return {
@@ -357,12 +387,16 @@ function coerceTierRoomsFromAny(anyRooms: any[]): TierRoom[] {
     .filter(Boolean) as TierRoom[];
 }
 
-async function tryLoadFromRegistry(): Promise<{ rooms: TierRoom[]; debug: string } | null> {
-  const candidates = ["/room-registry.json", "/public/room-registry.json"];
+async function tryLoadFromRegistry(): Promise<{ rooms: TierRoom[]; debug: string; source: TierSource } | null> {
+  const candidates: Array<{ url: string; source: TierSource }> = [
+    { url: "/data/registry.json", source: "data/registry.json" },
+    { url: "/room-registry.json", source: "room-registry.json" },
+    { url: "/public/room-registry.json", source: "room-registry.json" },
+  ];
 
-  for (const url of candidates) {
+  for (const candidate of candidates) {
     try {
-      const res = await fetch(url, { cache: "no-store" });
+      const res = await fetch(candidate.url, { cache: "no-store" });
       if (!res.ok) continue;
 
       const text = await res.text();
@@ -372,8 +406,19 @@ async function tryLoadFromRegistry(): Promise<{ rooms: TierRoom[]; debug: string
       const { rooms: roomLikes, debug } = extractRoomLikesFromRegistryJson(json);
       const rooms = coerceTierRoomsFromAny(roomLikes);
 
-      if (rooms.length) return { rooms, debug: `loaded ${url} | ${debug} -> rooms=${rooms.length}` };
-      return { rooms: [], debug: `parsed ${url} but rooms=0 | ${debug}` };
+      if (rooms.length) {
+        return {
+          rooms,
+          source: candidate.source,
+          debug: `loaded ${candidate.url} | ${debug} -> rooms=${rooms.length}`,
+        };
+      }
+
+      return {
+        rooms: [],
+        source: candidate.source,
+        debug: `parsed ${candidate.url} but rooms=0 | ${debug}`,
+      };
     } catch {
       // keep trying
     }
@@ -395,7 +440,8 @@ function loadFromManifest(): { rooms: TierRoom[]; debug: string } {
   }
 
   const rooms = ids.map((id) => {
-    const tier = strictTierFromIdOrPath(id);
+    let tier = strictTierFromIdOrPath(id);
+    if (tier === "unknown") tier = inferTierFromIdFallback(id);
     const area = inferAreaFromMetaAndId({ id });
     return { id, tier, area } as TierRoom;
   });
@@ -407,7 +453,7 @@ async function tryLoadFromDb(): Promise<{ rooms: TierRoom[]; debug: string } | n
   try {
     const { data, error } = await supabase
       .from(ROOMS_TABLE)
-      .select("id, title_en, title_vi, domain, track")
+      .select("id, title_en, title_vi, domain, track, tier")
       .returns<
         {
           id: string;
@@ -415,6 +461,7 @@ async function tryLoadFromDb(): Promise<{ rooms: TierRoom[]; debug: string } | n
           title_vi: string | null;
           domain: string | null;
           track: string | null;
+          tier: string | null;
         }[]
       >();
 
@@ -427,7 +474,8 @@ async function tryLoadFromDb(): Promise<{ rooms: TierRoom[]; debug: string } | n
         const id = String(r?.id || "").trim();
         if (!id) return null;
 
-        let tier = strictTierFromIdOrPath(id);
+        let tier = normalizeTierValue(r.tier);
+        if (tier === "unknown") tier = strictTierFromIdOrPath(id);
         if (tier === "unknown") tier = inferTierFromIdFallback(id);
 
         const area = inferAreaFromMetaAndId({
@@ -456,20 +504,62 @@ async function tryLoadFromDb(): Promise<{ rooms: TierRoom[]; debug: string } | n
   }
 }
 
+function dedupeRooms(rooms: TierRoom[]): TierRoom[] {
+  const map = new Map<string, TierRoom>();
+
+  for (const room of rooms || []) {
+    const id = String(room?.id || "").trim();
+    if (!id) continue;
+
+    const prev = map.get(id);
+    if (!prev) {
+      map.set(id, room);
+      continue;
+    }
+
+    map.set(id, {
+      ...prev,
+      ...room,
+      title_en: room.title_en ?? prev.title_en,
+      title_vi: room.title_vi ?? prev.title_vi,
+      domain: room.domain ?? prev.domain,
+      track: room.track ?? prev.track,
+      tier: room.tier !== "unknown" ? room.tier : prev.tier,
+      area: room.area !== "unknown" ? room.area : prev.area,
+    });
+  }
+
+  return Array.from(map.values()).sort((a, b) => a.id.localeCompare(b.id));
+}
+
 export async function loadRoomsForTiers(): Promise<TierLoadResult> {
-  // Secure / real source first
-  const db = await tryLoadFromDb();
+  const [db, reg] = await Promise.all([tryLoadFromDb(), tryLoadFromRegistry()]);
+
+  if (db?.rooms?.length && reg?.rooms?.length) {
+    const merged = dedupeRooms([...reg.rooms, ...db.rooms]);
+
+    // If registry is richer, trust the merged result but keep DB metadata where present.
+    if (merged.length > db.rooms.length) {
+      return {
+        rooms: merged,
+        source: reg.source,
+        debug: `merged richer registry+DB | ${reg.debug} | ${db.debug} | merged=${merged.length}`,
+      };
+    }
+
+    return { rooms: db.rooms, source: "DB", debug: db.debug };
+  }
+
   if (db && db.rooms.length) {
     return { rooms: db.rooms, source: "DB", debug: db.debug };
   }
 
-  // Legacy fallbacks only
-  const reg = await tryLoadFromRegistry();
   if (reg && reg.rooms.length) {
-    return { rooms: reg.rooms, source: "room-registry.json", debug: reg.debug };
+    return { rooms: reg.rooms, source: reg.source, debug: reg.debug };
   }
+
   if (reg && reg.rooms.length === 0) {
-    return { rooms: [], source: "room-registry.json", debug: reg.debug };
+    return { rooms: [], source: reg.source, debug: reg.debug };
   }
 
   const man = loadFromManifest();

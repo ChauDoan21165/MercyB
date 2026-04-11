@@ -1,7 +1,5 @@
-/**
- * Path: src/lib/tierValidation.ts
- * File: tierValidation.ts
- */
+// PATH: src/lib/tierValidation.ts
+// File: tierValidation.ts
 
 /**
  * Tier Validation Utilities
@@ -59,6 +57,15 @@ export function validateDbTier(dbTier: string | null | undefined): {
 
   const tierId = normalizeTier(raw);
 
+  if (!tierId) {
+    return {
+      valid: false,
+      canonical: null,
+      tierId: null,
+      error: `Could not normalize tier value: "${dbTier}"`,
+    };
+  }
+
   return {
     valid: true,
     canonical: tierIdToDbLabel(tierId),
@@ -114,8 +121,10 @@ function kidsTierLevel(tierId: TierId): number {
  * - adult users may access kids content only when the room itself is kids-tiered
  */
 export function verifyTierAccess(userTierId: TierId, roomTierId: TierId): boolean {
-  const userTier = normalizeTier(userTierId);
-  const roomTier = normalizeTier(roomTierId);
+  const userTier = normalizeTier(String(userTierId).trim());
+  const roomTier = normalizeTier(String(roomTierId).trim());
+
+  if (!userTier || !roomTier) return false;
 
   if (roomTier === "free") return true;
   if (userTier === roomTier) return true;

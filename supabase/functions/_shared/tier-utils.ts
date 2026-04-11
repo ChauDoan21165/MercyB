@@ -1,7 +1,5 @@
-/**
- * Path: supabase/functions/_shared/tier-utils.ts
- * File: tier-utils.ts
- */
+// PATH: supabase/functions/_shared/tier-utils.ts
+// File: tier-utils.ts
 
 // Tier normalization utilities for edge functions
 // Mirrors the new paid-access policy:
@@ -191,9 +189,44 @@ export function normalizeTier(tier: string | null | undefined): TierId {
   }
 
   // Kids variations
-  if (s.includes("kids_level_1") || s === "kids_1") return "kids_1";
-  if (s.includes("kids_level_2") || s === "kids_2") return "kids_2";
-  if (s.includes("kids_level_3") || s === "kids_3") return "kids_3";
+  if (
+    s === "kids_1" ||
+    s === "kids-1" ||
+    s === "kids_l1" ||
+    s === "kids level 1" ||
+    s.includes("kids_level_1") ||
+    s.includes("kids level 1") ||
+    s.includes("kids-l1") ||
+    s.includes("kids_l1")
+  ) {
+    return "kids_1";
+  }
+
+  if (
+    s === "kids_2" ||
+    s === "kids-2" ||
+    s === "kids_l2" ||
+    s === "kids level 2" ||
+    s.includes("kids_level_2") ||
+    s.includes("kids level 2") ||
+    s.includes("kids-l2") ||
+    s.includes("kids_l2")
+  ) {
+    return "kids_2";
+  }
+
+  if (
+    s === "kids_3" ||
+    s === "kids-3" ||
+    s === "kids_l3" ||
+    s === "kids level 3" ||
+    s.includes("kids_level_3") ||
+    s.includes("kids level 3") ||
+    s.includes("kids-l3") ||
+    s.includes("kids_l3")
+  ) {
+    return "kids_3";
+  }
 
   if (s.includes("kids") && (s.includes("level 1") || s.includes(" 1") || s.endsWith("1"))) {
     return "kids_1";
@@ -252,7 +285,7 @@ export function isValidTierId(id: string): id is TierId {
  * - paid billing plans unlock all adult VIP repo content
  * - legacy VIP tiers also unlock adult VIP repo content
  * - kids tiers can access only kids progression
- * - adult users can access kids resources when policy allows mixed catalog access
+ * - adult users may access kids resources only when they have paid-style adult access
  */
 export function verifyRepoAccess(userTier: TierId, resourceTier: TierId): boolean {
   if (resourceTier === "free") return true;
@@ -262,9 +295,8 @@ export function verifyRepoAccess(userTier: TierId, resourceTier: TierId): boolea
     return getTierLevel(userTier) >= getTierLevel(resourceTier);
   }
 
-  // Adult paid or adult free access to kids content follows the shared app policy.
   if (isKidsTier(resourceTier)) {
-    return true;
+    return hasPaidRepoAccess(userTier);
   }
 
   if (hasPaidRepoAccess(userTier)) return true;

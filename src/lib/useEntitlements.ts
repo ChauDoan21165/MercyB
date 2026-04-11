@@ -23,7 +23,7 @@ function normalizeTier(tier: string | null | undefined): string {
 }
 
 function isPremiumStatus(status: string | null | undefined): boolean {
-  const s = String(status || "").toLowerCase();
+  const s = String(status || "").toLowerCase().trim();
   return s === "active" || s === "trialing";
 }
 
@@ -36,17 +36,22 @@ function isLegacyVipTier(tier: string): boolean {
 }
 
 /**
- * Repo-wide access rank:
+ * Compatibility rank only:
  * - free => 0
- * - premium_month / premium_year => 9 (full paid repo access)
+ * - premium_month / premium_year => 9 ONLY when premium is active/trialing
  * - vip1..vip9 => numeric compatibility only
  * - unknown => 0
  */
-function tierToRank(tier: string): number {
+function tierToRank(tier: string, entitlement?: BackendEntitlement): number {
   const s = normalizeTier(tier);
 
   if (s === "free") return 0;
-  if (isPaidBillingTier(s)) return 9;
+
+  if (isPaidBillingTier(s)) {
+    const premiumActive =
+      entitlement?.is_premium === true && isPremiumStatus(entitlement?.status);
+    return premiumActive ? 9 : 0;
+  }
 
   const m = s.match(/^vip(\d+)$/);
   if (!m) return 0;
@@ -109,7 +114,7 @@ function buildFeatures(
 
 function buildEntitlement(entitlement: BackendEntitlement): Ent {
   const resolvedTier = normalizeTier(resolveEntitlementTier(entitlement));
-  const vipRank = tierToRank(resolvedTier);
+  const vipRank = tierToRank(resolvedTier, entitlement);
 
   return {
     ...entitlement,

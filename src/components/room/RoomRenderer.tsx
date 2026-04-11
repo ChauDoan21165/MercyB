@@ -1,9 +1,5 @@
-/**
- * Path: src/components/room/RoomRenderer.tsx
- * File: RoomRenderer.tsx
- */
-
 // PATH: src/components/room/RoomRenderer.tsx
+// File: RoomRenderer.tsx
 
 /**
  * ROOM 5-BOX SPEC (LOCKED)
@@ -12,10 +8,11 @@
  * BOX 4: EMPTY until keyword; then EN → TalkingFace → VI
  * BOX 5: Completion + chat + feedback bar pushed to bottom (no feedback header line)
  *
- * Gate: useUserAccess() (public.profiles), admin/high-admin bypass via hook.
+ * Gate:
+ * - secure-room-loader is the real access gate for room content.
+ * - This renderer should not re-lock already loaded room JSON on the client.
  */
 
-// FILE: src/components/room/RoomRenderer.tsx
 // VERSION: MB-BLUE-99.13-room-access-reset — 2026-04-09
 //
 // FIXES INCLUDED:
@@ -57,6 +54,12 @@
 //   Room locking now uses raw billing/entitlement truth only.
 //   Do NOT trust legacy VIP compatibility helpers for payment access.
 //   This prevents VIP curriculum levels from acting like paid entitlement.
+//
+// PATCH (2026-04-11):
+// - IMPORTANT: trust the secure room loader as the real authorization gate.
+// - If room JSON is already loaded into this renderer, do not re-lock content
+//   based on a second client-side entitlement check.
+// - Keep entitlement data only for diagnostics / messaging / badges.
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
@@ -724,10 +727,13 @@ export default function RoomRenderer({
     [effectiveRoomId],
   );
 
-  const requiredTierId = useMemo<TierIdRuntime>(() => inferredTierId, [inferredTierId]);
+  const requiredTierId = useMemo<TierIdRuntime>(() => {
+    if (metaTierId) return metaTierId as TierIdRuntime;
+    return inferredTierId;
+  }, [metaTierId, inferredTierId]);
 
   const displayTierId = useMemo<TierIdRuntime>(() => {
-    if (metaTierId && (metaTierId as any) === inferredTierId) return metaTierId as any;
+    if (metaTierId) return metaTierId as TierIdRuntime;
     return inferredTierId;
   }, [metaTierId, inferredTierId]);
 
@@ -759,6 +765,10 @@ export default function RoomRenderer({
    * - VIP1..VIP9 = curriculum labels only
    * - any paid monthly/yearly user gets full room access
    * - free rooms stay open to everyone
+   *
+   * IMPORTANT:
+   * - The secure room loader is the real authorization gate.
+   * - If room JSON is already loaded here, do not hide content again.
    */
   const roomIsFree = useMemo(() => requiredTierId === "free", [requiredTierId]);
 
@@ -775,12 +785,32 @@ export default function RoomRenderer({
     return viaBillingTier || viaFlags || viaAdmin;
   }, [access, billingTierId]);
 
+  const hasLoadedRenderableRoom = useMemo(() => {
+    if (!safeRoom || typeof safeRoom !== "object") return false;
+    if (Object.keys(safeRoom).length === 0) return false;
+
+    if (Array.isArray((safeRoom as any)?.entries) && (safeRoom as any).entries.length > 0) return true;
+    if (String((safeRoom as any)?.id || "").trim()) return true;
+    if (String((safeRoom as any)?.title_en || "").trim()) return true;
+    if (String((safeRoom as any)?.title_vi || "").trim()) return true;
+    if ((safeRoom as any)?.title && typeof (safeRoom as any).title === "object") return true;
+
+    return true;
+  }, [safeRoom]);
+
   const isLocked = useMemo(() => {
-    if (accessLoading) return true;
     if (roomIsFree) return false;
     if (hasPaidRoomAccess) return false;
-    return true;
-  }, [accessLoading, roomIsFree, hasPaidRoomAccess]);
+
+    // Room JSON already made it through the secure loader.
+    // Do not apply a second client-side hard lock here.
+    if (hasLoadedRenderableRoom) return false;
+
+    // Fail-open for renderer UX; auth should already be enforced upstream.
+    if (accessLoading) return false;
+
+    return false;
+  }, [roomIsFree, hasPaidRoomAccess, hasLoadedRenderableRoom, accessLoading]);
 
   const [dbRows, setDbRows] = useState<any[] | null>(null);
   const [dbLoading, setDbLoading] = useState(false);
@@ -1416,6 +1446,7 @@ export default function RoomRenderer({
                   {activeKeyword ? ` "${activeKeyword}"` : "null"} | billingTier={String(billingTierId).toUpperCase()} |
                   userTier={String(userTierId).toUpperCase()} | displayTier={String(displayTierId).toUpperCase()} |
                   roomIsFree={String(roomIsFree)} | hasPaidRoomAccess={String(hasPaidRoomAccess)} |
+                  accessLoading={String(accessLoading)} | loadedRoom={String(hasLoadedRenderableRoom)} |
                   locked={String(isLocked)}
                 </div>
               ) : null}

@@ -1,7 +1,5 @@
-/**
- * Path: src/hooks/useUserAccess.ts
- * File: useUserAccess.ts
- */
+// PATH: src/hooks/useUserAccess.ts
+// File: useUserAccess.ts
 
 import { useEffect, useMemo, useState } from "react";
 import type { TierId } from "@/lib/constants/tiers";
@@ -133,9 +131,11 @@ function normalizeTierLoose(value: unknown): TierId {
   }
 }
 
-function normalizeBillingTierOnly(value: unknown): TierId {
-  const normalized = normalizeTierLoose(value);
-  return isPremiumTier(normalized) ? normalized : "free";
+/**
+ * Normalize an entitlement-like value while preserving legacy VIP compatibility.
+ */
+function normalizeEntitlementTier(value: unknown): TierId {
+  return normalizeTierLoose(value);
 }
 
 function truthyFlag(value: unknown): boolean {
@@ -146,7 +146,7 @@ function truthyFlag(value: unknown): boolean {
 
 /**
  * Effective room tier only.
- * Raw .tier should remain the billing tier for UI/tests.
+ * Raw .tier should remain the entitlement tier for UI/tests.
  */
 function toEffectiveRoomTier(entitlementTier: TierId, isHighAdmin = false): TierId {
   if (isHighAdmin) return "vip9";
@@ -160,19 +160,20 @@ function buildFeatureAccess(
   entitlementTier: TierId,
   options?: {
     unlockMercyFeatures?: boolean;
+    forcePremiumRooms?: boolean;
   },
 ): FeatureAccess {
-  const isPremium = isPremiumTier(entitlementTier);
+  const hasPaidAccess = hasPaidLikeAccessTier(entitlementTier) || Boolean(options?.forcePremiumRooms);
   const unlockMercyFeatures =
     FORCE_UNLOCK_MERCY_FEATURES || Boolean(options?.unlockMercyFeatures);
 
   return {
     hasMercyGuide: true,
-    hasMercyJourney: isPremium || unlockMercyFeatures,
-    hasMercyGrammar: isPremium || unlockMercyFeatures,
-    hasMercySpeak: isPremium || unlockMercyFeatures,
-    hasMercyLogic: isPremium || unlockMercyFeatures,
-    hasPremiumRooms: isPremium,
+    hasMercyJourney: hasPaidAccess || unlockMercyFeatures,
+    hasMercyGrammar: hasPaidAccess || unlockMercyFeatures,
+    hasMercySpeak: hasPaidAccess || unlockMercyFeatures,
+    hasMercyLogic: hasPaidAccess || unlockMercyFeatures,
+    hasPremiumRooms: hasPaidAccess,
   };
 }
 
@@ -184,7 +185,7 @@ function safeNumber(value: unknown, fallback = 0): number {
 function readCachedEntitlementTier(): TierId {
   try {
     if (typeof window === "undefined") return "free";
-    return normalizeBillingTierOnly(window.localStorage.getItem(PREMIUM_CACHE_KEY));
+    return normalizeEntitlementTier(window.localStorage.getItem(PREMIUM_CACHE_KEY));
   } catch {
     return "free";
   }
@@ -225,7 +226,7 @@ function resolveProfileTier(profile: any): TierId {
   ];
 
   for (const candidate of directTierCandidates) {
-    const normalized = normalizeBillingTierOnly(candidate);
+    const normalized = normalizeEntitlementTier(candidate);
     if (normalized !== "free") return normalized;
   }
 
@@ -324,12 +325,13 @@ function authenticatedFreeAccess(params: {
     userTier: toEffectiveRoomTier(entitlementTier, isHighAdmin),
     entitlementTier,
 
-    hasPremium: false,
+    hasPremium: Boolean(isHighAdmin),
     hasPremiumMonthly: false,
     hasPremiumYearly: false,
 
     features: buildFeatureAccess(entitlementTier, {
       unlockMercyFeatures: FORCE_UNLOCK_MERCY_FEATURES || isHighAdmin,
+      forcePremiumRooms: isHighAdmin,
     }),
 
     loading,
@@ -429,7 +431,7 @@ export const useUserAccess = (): UserAccess => {
 
       try {
         const entitlement = await fetchCurrentEntitlement(supabase);
-        liveEntitlementTier = normalizeBillingTierOnly(resolveEntitlementTier(entitlement));
+        liveEntitlementTier = normalizeEntitlementTier(resolveEntitlementTier(entitlement));
         entitlementFetchSucceeded = true;
       } catch {
         liveEntitlementTier = "free";
@@ -440,31 +442,31 @@ export const useUserAccess = (): UserAccess => {
 
       let effectiveEntitlementTier: TierId = liveEntitlementTier;
 
-      // Only use profile as a fallback when live entitlement did not yield a paid billing tier.
-      if (!isPremiumTier(effectiveEntitlementTier) && isPremiumTier(profileTier)) {
+      // Only use profile as a fallback when live entitlement did not yield any paid-like tier.
+      if (!hasPaidLikeAccessTier(effectiveEntitlementTier) && hasPaidLikeAccessTier(profileTier)) {
         effectiveEntitlementTier = profileTier;
       }
 
       /**
-       * Only trust cached premium state when live entitlement fetch failed and
-       * profile hints do not provide a paid billing tier.
+       * Only trust cached premium/legacy-paid state when live entitlement fetch failed and
+       * profile hints do not provide a paid-like tier.
        */
       if (
         !entitlementFetchSucceeded &&
-        !isPremiumTier(effectiveEntitlementTier) &&
-        !isPremiumTier(profileTier) &&
-        isPremiumTier(cachedTier)
+        !hasPaidLikeAccessTier(effectiveEntitlementTier) &&
+        !hasPaidLikeAccessTier(profileTier) &&
+        hasPaidLikeAccessTier(cachedTier)
       ) {
         effectiveEntitlementTier = cachedTier;
       }
 
-      if (isPremiumTier(effectiveEntitlementTier)) {
+      if (hasPaidLikeAccessTier(effectiveEntitlementTier)) {
         writeCachedEntitlementTier(effectiveEntitlementTier);
       } else if (entitlementFetchSucceeded || profileTier === "free") {
         clearCachedEntitlementTier();
       }
 
-      const hasPremium = isPremiumTier(effectiveEntitlementTier);
+      const hasPremium = hasPaidLikeAccessTier(effectiveEntitlementTier) || isHighAdmin;
 
       const next: UserAccess = {
         isAdmin,
@@ -484,12 +486,13 @@ export const useUserAccess = (): UserAccess => {
 
         features: buildFeatureAccess(effectiveEntitlementTier, {
           unlockMercyFeatures: FORCE_UNLOCK_MERCY_FEATURES || isHighAdmin,
+          forcePremiumRooms: isHighAdmin,
         }),
 
         loading: false,
         isLoading: false,
 
-        canAccessPremium: () => hasPremium || isHighAdmin,
+        canAccessPremium: () => hasPaidLikeAccessTier(effectiveEntitlementTier) || isHighAdmin,
 
         email: resolvedEmail,
         userId: userId ?? undefined,

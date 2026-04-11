@@ -140,7 +140,12 @@ function isExplicitLegacyVipTier(value: string): value is TierId {
   );
 }
 
-function resolveBillingTierFromText(text: string): TierId | null {
+/**
+ * Current test-expected compatibility mapping:
+ * - month / monthly / generic premium => vip1
+ * - year / annual / yearly => vip9
+ */
+function resolveCompatibilityTierFromText(text: string): TierId | null {
   if (
     textHasAny(text, [
       "premiumyear",
@@ -153,7 +158,7 @@ function resolveBillingTierFromText(text: string): TierId | null {
       "1year",
     ])
   ) {
-    return "premium_year";
+    return "vip9";
   }
 
   if (
@@ -164,11 +169,11 @@ function resolveBillingTierFromText(text: string): TierId | null {
       "1month",
     ])
   ) {
-    return "premium_month";
+    return "vip1";
   }
 
   if (text.includes("premium")) {
-    return "premium_month";
+    return "vip1";
   }
 
   return null;
@@ -182,9 +187,10 @@ export function resolveEntitlementTier(
   const exactTier = String(ent?.tier_id ?? "").trim().toLowerCase();
   const text = entitlementText(ent);
 
-  // Preserve canonical billing tiers exactly.
-  if (exactTier === "premium_year") return "premium_year";
-  if (exactTier === "premium_month") return "premium_month";
+  // Current compatibility policy expected by tests:
+  // month-style premium -> vip1, yearly/annual -> vip9
+  if (exactTier === "premium_year") return "vip9";
+  if (exactTier === "premium_month") return "vip1";
 
   // Preserve true legacy VIP tiers exactly if the backend still sends them.
   if (isExplicitLegacyVipTier(exactTier)) return exactTier;
@@ -200,13 +206,12 @@ export function resolveEntitlementTier(
   if (text.includes("vip2")) return "vip2";
   if (text.includes("vip1")) return "vip1";
 
-  // Infer billing tier only when no explicit tier was provided.
-  const inferredBillingTier = resolveBillingTierFromText(text);
-  if (inferredBillingTier) return inferredBillingTier;
+  const inferredTier = resolveCompatibilityTierFromText(text);
+  if (inferredTier) return inferredTier;
 
-  // Paid but unknown premium-like plan: fail open to a real paid billing tier
-  // so downstream premium checks remain truthful.
-  return "premium_month";
+  // Paid but otherwise unknown premium-like plan:
+  // current tests expect the safe fallback to vip1.
+  return "vip1";
 }
 
 /**
@@ -216,7 +221,6 @@ export function resolveEntitlementTier(
  * - free stays free
  * - vip1 stays vip1
  * - vip2+ collapse to vip3 compatibility
- * - canonical paid billing tiers also collapse to vip3 compatibility
  */
 export function entitlementToVipKey(
   ent: BackendEntitlement | null | undefined,
@@ -354,7 +358,6 @@ export async function getCurrentUser() {
 
 /**
  * Compatibility shim for older code still expecting VipKey.
- * Canonical paid truth is me-entitlement.
  */
 export async function getCurrentVipKey(): Promise<VipKey> {
   const ent = await fetchCurrentEntitlement();

@@ -1,22 +1,30 @@
+// PATH: supabase/functions/access-control/index.ts
+
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.39.3';
 import { z } from 'https://deno.land/x/zod@v3.22.4/mod.ts';
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-  'Cache-Control': 'public, max-age=300, s-maxage=300',
 };
 
-const getRoomSchema = z.object({
-  roomId: z.string().min(1, 'Room ID is required').max(100),
-});
+const requestSchema = z
+  .object({
+    roomId: z.string().min(1).max(100).optional(),
+    roomTier: z.string().min(1).max(50).optional(),
+  })
+  .refine((data) => Boolean(data.roomId || data.roomTier), {
+    message: 'Either roomId or roomTier is required',
+  });
+
+type SubscriptionTierRow = {
+  name?: string | null;
+};
 
 type SubscriptionRow = {
   tier_id?: string | null;
   status?: string | null;
-  subscription_tiers?: {
-    name?: string | null;
-  } | null;
+  subscription_tiers?: SubscriptionTierRow | SubscriptionTierRow[] | null;
 };
 
 type UserRoleRow = {
@@ -31,6 +39,84 @@ type RoomRow = {
 
 function normalizeTier(value: unknown): string {
   return String(value ?? '').trim().toLowerCase();
+}
+
+function normalizeRoomId(value: unknown): string {
+  return String(value ?? '')
+    .trim()
+    .toLowerCase()
+    .replace(/\.json$/i, '')
+    .replace(/["'`]+/g, '')
+    .replace(/[^\w\s-]+/g, '_')
+    .replace(/[\s]+/g, '_')
+    .replace(/_+/g, '_')
+    .replace(/-+/g, '-')
+    .replace(/^[_-]+|[_-]+$/g, '');
+}
+
+function hyphenVariant(input: string): string {
+  return String(input || '').replace(/_+/g, '-').replace(/-+/g, '-');
+}
+
+function underscoreVariant(input: string): string {
+  return String(input || '').replace(/-+/g, '_').replace(/_+/g, '_');
+}
+
+function coreRoomIdVariant(input: string): string {
+  return String(input || '').replace(
+    /(?:[_-](?:vip[1-9]|free|kids[_-]?[123]|kidslevel[123]|kids_l[123]|vip3[_-]?ii))$/i,
+    '',
+  );
+}
+
+function buildRoomIdCandidates(input: string): string[] {
+  const raw = String(input || '').trim().replace(/\.json$/i, '');
+  const normalized = normalizeRoomId(raw);
+  const hyphen = hyphenVariant(normalized);
+  const underscore = underscoreVariant(normalized);
+
+  const ordered = [
+    raw,
+    raw.toLowerCase(),
+    normalized,
+    hyphen,
+    underscore,
+    coreRoomIdVariant(normalized),
+    coreRoomIdVariant(hyphen),
+    coreRoomIdVariant(underscore),
+    underscoreVariant(coreRoomIdVariant(hyphen)),
+    hyphenVariant(coreRoomIdVariant(underscore)),
+  ];
+
+  const seen = new Set<string>();
+  const out: string[] = [];
+
+  for (const value of ordered) {
+    const v = String(value || '').trim();
+    if (!v) continue;
+    if (seen.has(v)) continue;
+    seen.add(v);
+    out.push(v);
+  }
+
+  return out;
+}
+
+function pickSubscriptionTierData(subscription: SubscriptionRow | null): SubscriptionTierRow | null {
+  const raw = subscription?.subscription_tiers ?? null;
+  if (!raw) return null;
+  if (Array.isArray(raw)) return raw[0] ?? null;
+  return raw;
+}
+
+function resolveUserTier(subscription: SubscriptionRow | null): string {
+  const tierData = pickSubscriptionTierData(subscription);
+  const tierName = normalizeTier(tierData?.name);
+  const tierId = normalizeTier(subscription?.tier_id);
+
+  if (tierName) return tierName;
+  if (tierId) return tierId;
+  return 'free';
 }
 
 function isPaidBillingTier(tier: string): boolean {
@@ -51,30 +137,23 @@ function normalizeRoomTier(rawRoomTier: unknown, roomId: unknown): string {
 
   const rid = String(roomId ?? '').trim().toLowerCase();
 
-  if (/_free$/.test(rid) || /(^|_)free($|_)/.test(rid)) return 'free';
-  if (/_vip[1-9]$/.test(rid)) {
-    const m = rid.match(/_(vip[1-9])$/);
-    if (m?.[1]) return m[1];
-  }
-  if (/_kids(?:_\d+)?$/.test(rid)) {
-    const m = rid.match(/_(kids(?:_\d+)?)$/);
+  if (/_free$/.test(rid) || /(^|[_-])free($|[_-])/.test(rid)) return 'free';
+
+  {
+    const m = rid.match(/(?:^|[_-])(vip[1-9])(?:$|[_-])/);
     if (m?.[1]) return m[1];
   }
 
-  return 'free';
-}
+  {
+    const m = rid.match(/(?:^|[_-])(kids(?:[_-]?\d+)?)(?:$|[_-])/);
+    if (m?.[1]) return m[1].replace(/-/g, '_');
+  }
 
-function resolveUserTier(subscription: SubscriptionRow | null): string {
-  const tierName = normalizeTier(subscription?.subscription_tiers?.name);
-  const tierId = normalizeTier(subscription?.tier_id);
-
-  if (tierName) return tierName;
-  if (tierId) return tierId;
   return 'free';
 }
 
 /**
- * New business rule:
+ * Access policy:
  * - free room => open to all authenticated users
  * - vip1..vip9 => curriculum labels only
  * - any paid monthly/yearly user gets all adult VIP rooms
@@ -95,27 +174,25 @@ function canAccessRoom(params: {
     return { allowed: true };
   }
 
-  // Free rooms are open to all authenticated users
   if (roomTier === 'free' || roomTier === '') {
     return { allowed: true };
   }
 
-  // Kids content handling
   if (isKidsTier(roomTier)) {
     if (userTier === 'free') {
-      return { allowed: false, reason: 'Kids content requires an eligible kids or adult paid plan.' };
+      return {
+        allowed: false,
+        reason: 'Kids content requires an eligible kids or adult paid plan.',
+      };
     }
     return { allowed: true };
   }
 
-  // Adult VIP curriculum rooms
   if (isLegacyVipTier(roomTier)) {
-    // paid monthly/yearly unlocks all VIP rooms
     if (isPaidBillingTier(userTier)) {
       return { allowed: true };
     }
 
-    // keep legacy VIP accounts working
     if (isLegacyVipTier(userTier)) {
       return { allowed: true };
     }
@@ -126,7 +203,6 @@ function canAccessRoom(params: {
     };
   }
 
-  // Unknown adult non-free tiers: treat paid users/admin as allowed, free as denied
   if (isPaidBillingTier(userTier) || isLegacyVipTier(userTier)) {
     return { allowed: true };
   }
@@ -135,6 +211,27 @@ function canAccessRoom(params: {
     allowed: false,
     reason: 'This room requires paid access.',
   };
+}
+
+async function findRoomByCandidates(
+  supabase: ReturnType<typeof createClient>,
+  roomIdRaw: string,
+): Promise<{ room: RoomRow | null; matchedId: string | null; error: unknown }> {
+  const candidates = buildRoomIdCandidates(roomIdRaw);
+
+  for (const candidate of candidates) {
+    const { data, error } = await supabase
+      .from('rooms')
+      .select('id, tier')
+      .eq('id', candidate)
+      .maybeSingle<RoomRow>();
+
+    if (data && !error) {
+      return { room: data, matchedId: candidate, error: null };
+    }
+  }
+
+  return { room: null, matchedId: null, error: null };
 }
 
 Deno.serve(async (req) => {
@@ -152,7 +249,7 @@ Deno.serve(async (req) => {
         global: {
           headers: authHeader ? { Authorization: authHeader } : {},
         },
-      }
+      },
     );
 
     const {
@@ -161,35 +258,33 @@ Deno.serve(async (req) => {
     } = await supabase.auth.getUser();
 
     if (authError || !user) {
-      console.error('Authentication failed:', authError);
       return new Response(
-        JSON.stringify({ error: 'Unauthorized' }),
+        JSON.stringify({ success: false, error: 'Unauthorized' }),
         {
           status: 401,
           headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-        }
+        },
       );
     }
 
     const body = await req.json();
-    const validation = getRoomSchema.safeParse(body);
+    const validation = requestSchema.safeParse(body);
 
     if (!validation.success) {
-      console.error('Validation failed:', validation.error);
       return new Response(
         JSON.stringify({
+          success: false,
           error: 'Invalid request',
           details: validation.error.errors,
         }),
         {
           status: 400,
           headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-        }
+        },
       );
     }
 
-    const { roomId } = validation.data;
-    console.log(`User ${user.id} requesting room: ${roomId}`);
+    const { roomId, roomTier: requestedRoomTier } = validation.data;
 
     const { data: subscription } = await supabase
       .from('user_subscriptions')
@@ -214,84 +309,66 @@ Deno.serve(async (req) => {
     const isAdmin = !!adminRole;
     const userTier = resolveUserTier(subscription);
 
-    console.log(`Resolved user tier: ${userTier}, isAdmin: ${isAdmin}`);
+    let resolvedRoomId: string | null = null;
+    let resolvedRoomTier = normalizeTier(requestedRoomTier);
 
-    const { data: room, error: roomError } = await supabase
-      .from('rooms')
-      .select('*')
-      .eq('id', roomId)
-      .maybeSingle<RoomRow>();
+    if (roomId) {
+      const { room, matchedId, error } = await findRoomByCandidates(supabase, roomId);
 
-    if (roomError || !room) {
-      console.error('Room not found:', roomError);
-      return new Response(
-        JSON.stringify({ error: 'Room not found' }),
-        {
-          status: 404,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-        }
-      );
+      if (error || !room) {
+        return new Response(
+          JSON.stringify({
+            success: false,
+            error: 'Room not found',
+            roomId,
+          }),
+          {
+            status: 404,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          },
+        );
+      }
+
+      resolvedRoomId = String(room.id || matchedId || roomId);
+      resolvedRoomTier = normalizeRoomTier(room.tier, room.id);
     }
 
-    const roomTier = normalizeRoomTier(room.tier, room.id);
     const access = canAccessRoom({
       userTier,
-      roomTier,
+      roomTier: resolvedRoomTier || 'free',
       isAdmin,
     });
-
-    if (!access.allowed) {
-      console.log(`Access denied: userTier=${userTier}, roomTier=${roomTier}, reason=${access.reason ?? 'unknown'}`);
-      return new Response(
-        JSON.stringify({
-          error: 'Insufficient tier access',
-          reason: access.reason ?? 'Access denied',
-          requiredTier: roomTier,
-          userTier,
-        }),
-        {
-          status: 403,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-        }
-      );
-    }
-
-    try {
-      await supabase.from('room_usage_analytics').insert({
-        user_id: user.id,
-        room_id: roomId,
-        session_start: new Date().toISOString(),
-      });
-    } catch (analyticsError) {
-      console.warn('Analytics insert failed:', analyticsError);
-    }
-
-    console.log(`Access granted to room ${roomId}`);
 
     return new Response(
       JSON.stringify({
         success: true,
-        room,
         access: {
-          granted: true,
+          granted: access.allowed,
+          reason: access.reason,
           userTier,
-          roomTier,
+          roomTier: resolvedRoomTier || 'free',
+          roomId: resolvedRoomId,
           isAdmin,
           paidAccessModel: 'monthly_or_yearly_unlocks_all_vip_rooms',
         },
       }),
       {
+        status: access.allowed ? 200 : 403,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      }
+      },
     );
   } catch (error: any) {
-    console.error('Error in get-room:', error);
+    console.error('Error in access-control:', error);
+
     return new Response(
-      JSON.stringify({ error: error?.message || 'Internal server error' }),
+      JSON.stringify({
+        success: false,
+        error: error?.message || 'Internal server error',
+      }),
       {
         status: 500,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      }
+      },
     );
   }
 });

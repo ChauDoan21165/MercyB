@@ -1,3 +1,5 @@
+# PATH: supabase/config.toml
+
 project_id = "buemdfxyhxunzpgdoqin"
 
 # =========================
@@ -42,7 +44,7 @@ verify_jwt = true
 verify_jwt = true
 
 [functions.bank-transfer-orders]
-verify_jwt = false   # safe only if fully server-validated inside function
+verify_jwt = false
 
 [functions.verify-payment-screenshot]
 verify_jwt = true
@@ -51,7 +53,7 @@ verify_jwt = true
 verify_jwt = true
 
 [functions.redeem-gift-code]
-verify_jwt = false   # OK if gift code itself is securely validated
+verify_jwt = false
 
 
 # =========================
@@ -61,7 +63,7 @@ verify_jwt = false   # OK if gift code itself is securely validated
 verify_jwt = true
 
 [functions.generate-room-audio]
-verify_jwt = false   # OK if internal use only (admin/server triggered)
+verify_jwt = false
 
 [functions.generate-warmth-audio]
 verify_jwt = false
@@ -105,7 +107,7 @@ verify_jwt = true
 verify_jwt = true
 
 [functions.security-alert]
-verify_jwt = false   # only safe if server-triggered
+verify_jwt = false
 
 [functions.audit-v4-safe-shield]
 verify_jwt = true
@@ -128,6 +130,25 @@ verify_jwt = true
 
 
 # =========================
+# ROOM ACCESS / LOADING
+# =========================
+[functions.get-room]
+enabled = true
+verify_jwt = true
+entrypoint = "./functions/get-room/index.ts"
+
+[functions.secure-room-loader]
+enabled = true
+verify_jwt = true
+entrypoint = "./functions/secure-room-loader/index.ts"
+
+[functions.access-control]
+enabled = true
+verify_jwt = true
+entrypoint = "./functions/access-control/index.ts"
+
+
+# =========================
 # STRIPE WEBHOOK
 # =========================
 [functions.stripe-webhook]
@@ -144,24 +165,15 @@ enabled = true
 verify_jwt = true
 import_map = "./functions/admin-daily-digest/deno.json"
 entrypoint = "./functions/admin-daily-digest/index.ts"
+
 [functions.adult-content-url]
 enabled = true
 verify_jwt = true
 import_map = "./functions/adult-content-url/deno.json"
-# Uncomment to specify a custom file path to the entrypoint.
-# Supported file extensions are: .ts, .js, .mjs, .jsx, .tsx
 entrypoint = "./functions/adult-content-url/index.ts"
-# Specifies static files to be bundled with the function. Supports glob patterns.
-# For example, if you want to serve static HTML pages in your function:
-# static_files = [ "./functions/adult-content-url/*.html" ]
 
 [functions.me-entitlement]
 enabled = true
 verify_jwt = true
 import_map = "./functions/me-entitlement/deno.json"
-# Uncomment to specify a custom file path to the entrypoint.
-# Supported file extensions are: .ts, .js, .mjs, .jsx, .tsx
 entrypoint = "./functions/me-entitlement/index.ts"
-# Specifies static files to be bundled with the function. Supports glob patterns.
-# For example, if you want to serve static HTML pages in your function:
-# static_files = [ "./functions/me-entitlement/*.html" ]

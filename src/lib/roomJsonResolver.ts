@@ -19,7 +19,7 @@ function createResolverError(
 }
 
 function stripJsonSuffix(s: string): string {
-  return s.replace(/\.json$/i, "");
+  return String(s || "").replace(/\.json$/i, "");
 }
 
 function lastPathSegment(s: string): string {
@@ -33,27 +33,77 @@ function lastPathSegment(s: string): string {
   return parts.length ? parts[parts.length - 1] : withoutHash;
 }
 
-export function canonicalizeRoomId(input: string): string {
-  const seg = lastPathSegment(String(input || ""));
-
-  return stripJsonSuffix(seg)
+function sanitizeRoomIdKeepHyphen(input: string): string {
+  return stripJsonSuffix(String(input || ""))
     .trim()
     .toLowerCase()
     .replace(/["'`]+/g, "")
     .replace(/[^\w\s-]+/g, "_")
-    .replace(/[-\s]+/g, "_")
+    .replace(/[\s]+/g, "_")
     .replace(/_+/g, "_")
-    .replace(/^_+|_+$/g, "");
+    .replace(/-+/g, "-")
+    .replace(/^[_-]+|[_-]+$/g, "");
 }
 
-function coreRoomIdFromCanonical(input: string): string {
-  return canonicalizeRoomId(input).replace(/_(vip[1-9]|free)$/i, "");
+function hyphenVariant(input: string): string {
+  return String(input || "").replace(/_+/g, "-").replace(/-+/g, "-");
+}
+
+function underscoreVariant(input: string): string {
+  return String(input || "").replace(/-+/g, "_").replace(/_+/g, "_");
+}
+
+function coreRoomIdVariant(input: string): string {
+  return String(input || "").replace(
+    /(?:[_-](?:vip[1-9]|free|kids[_-]?[123]|kidslevel[123]|kids_l[123]|vip3[_-]?ii))$/i,
+    "",
+  );
+}
+
+export function canonicalizeRoomId(input: string): string {
+  const seg = lastPathSegment(String(input || ""));
+  return underscoreVariant(sanitizeRoomIdKeepHyphen(seg)).replace(/^_+|_+$/g, "");
 }
 
 function buildRoomIdCandidates(input: string): string[] {
-  const canonical = canonicalizeRoomId(input);
-  const core = coreRoomIdFromCanonical(canonical);
-  return Array.from(new Set([canonical, core].filter(Boolean)));
+  const rawSegment = stripJsonSuffix(lastPathSegment(String(input || ""))).trim();
+  const safeRaw = sanitizeRoomIdKeepHyphen(rawSegment);
+  const canonical = canonicalizeRoomId(rawSegment);
+  const hyphenSafe = hyphenVariant(safeRaw);
+  const hyphenFromCanonical = hyphenVariant(canonical);
+  const lowerRaw = stripJsonSuffix(rawSegment).trim().toLowerCase();
+
+  const ordered = [
+    rawSegment,
+    lowerRaw,
+    safeRaw,
+    hyphenSafe,
+    canonical,
+    hyphenFromCanonical,
+
+    coreRoomIdVariant(rawSegment),
+    coreRoomIdVariant(lowerRaw),
+    coreRoomIdVariant(safeRaw),
+    coreRoomIdVariant(hyphenSafe),
+    coreRoomIdVariant(canonical),
+    coreRoomIdVariant(hyphenFromCanonical),
+
+    underscoreVariant(coreRoomIdVariant(hyphenSafe)),
+    hyphenVariant(coreRoomIdVariant(canonical)),
+  ];
+
+  const seen = new Set<string>();
+  const out: string[] = [];
+
+  for (const value of ordered) {
+    const v = String(value || "").trim();
+    if (!v) continue;
+    if (seen.has(v)) continue;
+    seen.add(v);
+    out.push(v);
+  }
+
+  return out;
 }
 
 export function normalizeRoomIdForCanonicalFile(input: string): string {

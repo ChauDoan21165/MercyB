@@ -7,36 +7,104 @@
  * - Room lists/summaries come from the database only.
  * - No PUBLIC_ROOM_MANIFEST fallback.
  * - No /data/*.json runtime fetch path.
+ *
+ * PATCH (2026-04-11):
+ * - Align room-id candidate generation with roomJsonResolver.
+ * - Do not narrow room ids too early in this layer.
+ * - Preserve compatibility for underscore / hyphen / suffix-free room ids.
  */
 
 import { supabase } from "@/lib/supabaseClient";
 import { ROOMS_TABLE } from "@/lib/constants/rooms";
-import { loadRoomJson } from "./roomJsonResolver";
+import { canonicalizeRoomId, loadRoomJson } from "./roomJsonResolver";
 
 const LOG_PREFIX = "[roomFetcher]";
 
-function normalizeRoomIdForCanonicalFile(input: string): string {
-  return String(input || "")
+function stripJsonSuffix(s: string): string {
+  return String(s || "").replace(/\.json$/i, "");
+}
+
+function lastPathSegment(s: string): string {
+  const cleaned = String(s || "").trim();
+  if (!cleaned) return "";
+
+  const withoutQuery = cleaned.split("?")[0] || cleaned;
+  const withoutHash = withoutQuery.split("#")[0] || withoutQuery;
+  const parts = withoutHash.split("/").filter(Boolean);
+
+  return parts.length ? parts[parts.length - 1] : withoutHash;
+}
+
+function sanitizeRoomIdKeepHyphen(input: string): string {
+  return stripJsonSuffix(String(input || ""))
     .trim()
     .toLowerCase()
-    .replace(/\.json$/i, "")
     .replace(/["'`]+/g, "")
     .replace(/[^\w\s-]+/g, "_")
-    .replace(/[-\s]+/g, "_")
+    .replace(/[\s]+/g, "_")
     .replace(/_+/g, "_")
-    .replace(/^_+|_+$/g, "");
+    .replace(/-+/g, "-")
+    .replace(/^[_-]+|[_-]+$/g, "");
 }
 
-function coreRoomIdFromCanonical(input: string): string {
-  return normalizeRoomIdForCanonicalFile(input).replace(/_(vip[1-9]|free)$/i, "");
+function hyphenVariant(input: string): string {
+  return String(input || "").replace(/_+/g, "-").replace(/-+/g, "-");
 }
 
-function buildRoomIdCandidates(roomId: string): string[] {
-  const canonical = normalizeRoomIdForCanonicalFile(roomId);
-  const core = coreRoomIdFromCanonical(canonical);
+function underscoreVariant(input: string): string {
+  return String(input || "").replace(/-+/g, "_").replace(/_+/g, "_");
+}
 
-  const candidates = [canonical, core].filter(Boolean);
-  return Array.from(new Set(candidates));
+function coreRoomIdVariant(input: string): string {
+  return String(input || "").replace(
+    /(?:[_-](?:vip[1-9]|free|kids[_-]?[123]|kidslevel[123]|kids_l[123]|vip3[_-]?ii))$/i,
+    "",
+  );
+}
+
+function normalizeRoomIdForCanonicalFile(input: string): string {
+  return canonicalizeRoomId(input);
+}
+
+function buildRoomIdCandidates(input: string): string[] {
+  const rawSegment = stripJsonSuffix(lastPathSegment(String(input || ""))).trim();
+  const safeRaw = sanitizeRoomIdKeepHyphen(rawSegment);
+  const canonical = canonicalizeRoomId(rawSegment);
+  const hyphenSafe = hyphenVariant(safeRaw);
+  const hyphenFromCanonical = hyphenVariant(canonical);
+  const lowerRaw = stripJsonSuffix(rawSegment).trim().toLowerCase();
+
+  const ordered = [
+    rawSegment,
+    lowerRaw,
+    safeRaw,
+    hyphenSafe,
+    canonical,
+    hyphenFromCanonical,
+
+    coreRoomIdVariant(rawSegment),
+    coreRoomIdVariant(lowerRaw),
+    coreRoomIdVariant(safeRaw),
+    coreRoomIdVariant(hyphenSafe),
+    coreRoomIdVariant(canonical),
+    coreRoomIdVariant(hyphenFromCanonical),
+
+    underscoreVariant(coreRoomIdVariant(hyphenSafe)),
+    hyphenVariant(coreRoomIdVariant(canonical)),
+  ];
+
+  const seen = new Set<string>();
+  const out: string[] = [];
+
+  for (const value of ordered) {
+    const v = String(value || "").trim();
+    if (!v) continue;
+    if (seen.has(v)) continue;
+    seen.add(v);
+    out.push(v);
+  }
+
+  return out;
 }
 
 export type RoomMeta = {
@@ -133,7 +201,8 @@ function normalizeRoomSummary(row: RoomSummaryRow): RoomSummary {
 }
 
 function normalizeRoomJson(roomId: string, json: AnyRoomJson): AnyRoomJson {
-  const normalizedId = cleanText(json?.id) || normalizeRoomIdForCanonicalFile(roomId);
+  const normalizedId =
+    cleanText(json?.id) || cleanText(lastPathSegment(roomId)) || normalizeRoomIdForCanonicalFile(roomId);
 
   return {
     ...json,
@@ -145,8 +214,10 @@ function summarizeRoomJson(roomId: string, json: AnyRoomJson): RoomSummary {
   return {
     id: cleanText(json?.id) || normalizeRoomIdForCanonicalFile(roomId),
     tier: toOptionalText(json?.tier),
-    title_en: toOptionalText(json?.title?.en) ?? toOptionalText(json?.title_en) ?? toOptionalText(json?.name),
-    title_vi: toOptionalText(json?.title?.vi) ?? toOptionalText(json?.title_vi) ?? toOptionalText(json?.name_vi),
+    title_en:
+      toOptionalText(json?.title?.en) ?? toOptionalText(json?.title_en) ?? toOptionalText(json?.name),
+    title_vi:
+      toOptionalText(json?.title?.vi) ?? toOptionalText(json?.title_vi) ?? toOptionalText(json?.name_vi),
     intro_en:
       toOptionalText(json?.intro?.en) ??
       toOptionalText(json?.intro_en) ??
@@ -161,6 +232,12 @@ function summarizeRoomJson(roomId: string, json: AnyRoomJson): RoomSummary {
 }
 
 function toRoomFetchErrorCode(error: unknown): RoomAccessErrorCode {
+  if (isObject(error)) {
+    const kind = cleanText(error.kind);
+    if (kind === "network") return "private_room_fetch_failed";
+    if (kind === "server") return "private_room_fetch_failed";
+  }
+
   const message = cleanText(
     error instanceof Error ? error.message : typeof error === "string" ? error : "",
   );
@@ -177,8 +254,8 @@ function toRoomFetchErrorCode(error: unknown): RoomAccessErrorCode {
  * This is now the only runtime path for room JSON.
  *
  * Hardening:
- * - first try the requested canonical room id
- * - then try the suffix-free core room id for compatibility
+ * - try raw / hyphen / underscore / suffix-free variants
+ * - let roomJsonResolver keep the final say on secure fetch candidates
  */
 export async function fetchRoomJsonByIdOrThrow(roomId: string): Promise<AnyRoomJson> {
   const candidates = buildRoomIdCandidates(roomId);

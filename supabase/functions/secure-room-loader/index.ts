@@ -38,6 +38,65 @@ function normalizeTier(value: unknown): string {
   return String(value ?? '').trim().toLowerCase();
 }
 
+function normalizeRoomId(value: unknown): string {
+  return String(value ?? '')
+    .trim()
+    .toLowerCase()
+    .replace(/\.json$/i, '')
+    .replace(/["'`]+/g, '')
+    .replace(/[^\w\s-]+/g, '_')
+    .replace(/[\s]+/g, '_')
+    .replace(/_+/g, '_')
+    .replace(/-+/g, '-')
+    .replace(/^[_-]+|[_-]+$/g, '');
+}
+
+function hyphenVariant(input: string): string {
+  return String(input || '').replace(/_+/g, '-').replace(/-+/g, '-');
+}
+
+function underscoreVariant(input: string): string {
+  return String(input || '').replace(/-+/g, '_').replace(/_+/g, '_');
+}
+
+function coreRoomIdVariant(input: string): string {
+  return String(input || '').replace(
+    /(?:[_-](?:vip[1-9]|free|kids[_-]?[123]|kidslevel[123]|kids_l[123]|vip3[_-]?ii))$/i,
+    '',
+  );
+}
+
+function buildRoomIdCandidates(input: string): string[] {
+  const normalized = normalizeRoomId(input);
+  const hyphen = hyphenVariant(normalized);
+  const underscore = underscoreVariant(normalized);
+
+  const ordered = [
+    String(input || '').trim(),
+    normalized,
+    hyphen,
+    underscore,
+    coreRoomIdVariant(normalized),
+    coreRoomIdVariant(hyphen),
+    coreRoomIdVariant(underscore),
+    underscoreVariant(coreRoomIdVariant(hyphen)),
+    hyphenVariant(coreRoomIdVariant(underscore)),
+  ];
+
+  const seen = new Set<string>();
+  const out: string[] = [];
+
+  for (const value of ordered) {
+    const v = String(value || '').trim();
+    if (!v) continue;
+    if (seen.has(v)) continue;
+    seen.add(v);
+    out.push(v);
+  }
+
+  return out;
+}
+
 function pickSubscriptionTierData(subscription: SubscriptionRow | null): SubscriptionTierRow | null {
   const raw = subscription?.subscription_tiers ?? null;
   if (!raw) return null;
@@ -66,13 +125,13 @@ function normalizeRoomTier(rawRoomTier: unknown, roomId: unknown): string {
   if (/_free$/.test(rid) || /(^|_)free($|_)/.test(rid)) return 'free';
 
   {
-    const m = rid.match(/(?:^|_)(vip[1-9])(?:$|_)/);
+    const m = rid.match(/(?:^|[_-])(vip[1-9])(?:$|[_-])/);
     if (m?.[1]) return m[1];
   }
 
   {
-    const m = rid.match(/(?:^|_)(kids(?:_\d+)?)(?:$|_)/);
-    if (m?.[1]) return m[1];
+    const m = rid.match(/(?:^|[_-])(kids(?:[_-]?\d+)?)(?:$|[_-])/);
+    if (m?.[1]) return m[1].replace(/-/g, '_');
   }
 
   return 'free';
@@ -129,7 +188,6 @@ function canAccessRoom(params: {
       return { allowed: true };
     }
 
-    // keep legacy VIP accounts working too
     if (isLegacyVipTier(userTier)) {
       return { allowed: true };
     }
@@ -150,13 +208,34 @@ function canAccessRoom(params: {
   };
 }
 
+async function findRoomByCandidates(
+  supabase: ReturnType<typeof createClient>,
+  roomIdRaw: string,
+): Promise<{ room: RoomRow | null; matchedId: string | null; error: unknown }> {
+  const candidates = buildRoomIdCandidates(roomIdRaw);
+
+  for (const candidate of candidates) {
+    const { data, error } = await supabase
+      .from('rooms')
+      .select('*')
+      .eq('id', candidate)
+      .maybeSingle<RoomRow>();
+
+    if (data && !error) {
+      return { room: data, matchedId: candidate, error: null };
+    }
+  }
+
+  return { room: null, matchedId: null, error: null };
+}
+
 /**
  * Secure Room Loader Edge Function
  *
  * Serves room JSON files with paid-app access control.
- * New rule:
- * - monthly/yearly paid users can access all adult VIP rooms
- * - VIP1..VIP9 are curriculum labels, not billing gates
+ * IMPORTANT:
+ * - Return the raw room JSON object directly on success.
+ * - The web app expects room JSON, not a wrapped envelope.
  */
 Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') {
@@ -176,7 +255,6 @@ Deno.serve(async (req) => {
       }
     );
 
-    // Verify authentication
     const { data: { user }, error: authError } = await supabase.auth.getUser();
     if (authError || !user) {
       return new Response(
@@ -185,7 +263,6 @@ Deno.serve(async (req) => {
       );
     }
 
-    // Rate limit room loading (prevent abuse)
     try {
       const clientIP = getClientIP(req);
       await rateLimit(`secure-room-loader:${user.id}:${clientIP}`, 60, 60_000);
@@ -214,7 +291,6 @@ Deno.serve(async (req) => {
 
     const { roomId } = validation.data;
 
-    // Get user's tier
     const { data: subscription } = await supabase
       .from('user_subscriptions')
       .select(`
@@ -229,7 +305,6 @@ Deno.serve(async (req) => {
       .eq('status', 'active')
       .maybeSingle<SubscriptionRow>();
 
-    // Check if user is admin
     const { data: adminRole } = await supabase
       .from('user_roles')
       .select('role')
@@ -240,12 +315,7 @@ Deno.serve(async (req) => {
     const isAdmin = !!adminRole;
     const userTier = resolveUserTier(subscription);
 
-    // Get room data
-    const { data: room, error: roomError } = await supabase
-      .from('rooms')
-      .select('*')
-      .eq('id', roomId)
-      .maybeSingle<RoomRow>();
+    const { room, error: roomError } = await findRoomByCandidates(supabase, roomId);
 
     if (roomError || !room) {
       return new Response(
@@ -254,7 +324,6 @@ Deno.serve(async (req) => {
       );
     }
 
-    // New access model
     const roomTier = normalizeRoomTier(room.tier, room.id);
     const access = canAccessRoom({
       userTier,
@@ -275,19 +344,8 @@ Deno.serve(async (req) => {
       );
     }
 
-    // Return room data
     return new Response(
-      JSON.stringify({
-        success: true,
-        room,
-        access: {
-          granted: true,
-          userTier,
-          roomTier,
-          isAdmin,
-          paidAccessModel: 'monthly_or_yearly_unlocks_all_vip_rooms',
-        },
-      }),
+      JSON.stringify(room),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
   } catch (error: any) {

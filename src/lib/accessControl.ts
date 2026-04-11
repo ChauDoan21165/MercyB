@@ -48,16 +48,16 @@ function tierToLevel(tier: TierId): number {
   if (value === "vip8") return 8;
   if (value === "vip9") return 9;
 
-  // Collapses variants like vip3_ii / VIP3 II to level 3
+  // Collapse variants like vip3_ii / VIP3 II to level 3.
   if (value.includes("vip3")) return 3;
 
   if (value === "kids_1") return 1;
   if (value === "kids_2") return 2;
   if (value === "kids_3") return 3;
 
-  // Premium billing plans unlock all VIP rooms for access checks,
-  // but should remain premium_* in hooks/UI.
-  if (value === "premium_month" || value === "premium_year") return 9;
+  // In this file's legacy ladder logic, premium billing tiers behave
+  // like highest curriculum level for comparison purposes.
+  if (isPremiumBillingTier(tier)) return 9;
 
   return 0;
 }
@@ -65,10 +65,19 @@ function tierToLevel(tier: TierId): number {
 export const ACCESS_TEST_MATRIX: AccessTestCase[] = [
   { userTier: "free", roomTier: "free", expected: true },
   { userTier: "free", roomTier: "vip1", expected: false },
+  { userTier: "free", roomTier: "kids_1", expected: false },
+
+  { userTier: "premium_month", roomTier: "vip1", expected: true },
+  { userTier: "premium_month", roomTier: "vip9", expected: true },
+  { userTier: "premium_month", roomTier: "kids_3", expected: true },
+
+  { userTier: "premium_year", roomTier: "vip4", expected: true },
+  { userTier: "premium_year", roomTier: "kids_2", expected: true },
 
   { userTier: "vip1", roomTier: "free", expected: true },
   { userTier: "vip1", roomTier: "vip1", expected: true },
   { userTier: "vip1", roomTier: "vip2", expected: false },
+  { userTier: "vip1", roomTier: "vip9", expected: false },
 
   { userTier: "vip2", roomTier: "vip1", expected: true },
   { userTier: "vip2", roomTier: "vip2", expected: true },
@@ -89,6 +98,9 @@ export const ACCESS_TEST_MATRIX: AccessTestCase[] = [
   { userTier: "kids_1", roomTier: "kids_2", expected: false },
   { userTier: "kids_2", roomTier: "kids_1", expected: true },
   { userTier: "kids_2", roomTier: "vip1", expected: true },
+  { userTier: "kids_2", roomTier: "vip2", expected: true },
+  { userTier: "kids_2", roomTier: "vip3", expected: false },
+  { userTier: "kids_3", roomTier: "kids_2", expected: true },
 ];
 
 export function canAccessVIPTier(
@@ -124,9 +136,11 @@ export function getAccessibleTiers(userTier: TierId): TierId[] {
     "vip7",
     "vip8",
     "vip9",
+    "kids_1",
+    "kids_2",
+    "kids_3",
   ];
 
-  // Keep this API focused on curriculum tiers, not billing-plan names.
   return allTiers.filter((tier) => canAccessVIPTier(userTier, tier));
 }
 

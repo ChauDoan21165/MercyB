@@ -37,11 +37,82 @@ function normalizeTier(value: unknown): string {
   return String(value ?? '').trim().toLowerCase();
 }
 
+function normalizeRoomId(value: unknown): string {
+  return String(value ?? '')
+    .trim()
+    .toLowerCase()
+    .replace(/\.json$/i, '')
+    .replace(/["'`]+/g, '')
+    .replace(/[^\w\s-]+/g, '_')
+    .replace(/[\s]+/g, '_')
+    .replace(/_+/g, '_')
+    .replace(/-+/g, '-')
+    .replace(/^[_-]+|[_-]+$/g, '');
+}
+
+function hyphenVariant(input: string): string {
+  return String(input || '').replace(/_+/g, '-').replace(/-+/g, '-');
+}
+
+function underscoreVariant(input: string): string {
+  return String(input || '').replace(/-+/g, '_').replace(/_+/g, '_');
+}
+
+function coreRoomIdVariant(input: string): string {
+  return String(input || '').replace(
+    /(?:[_-](?:vip[1-9]|free|kids[_-]?[123]|kidslevel[123]|kids_l[123]|vip3[_-]?ii))$/i,
+    '',
+  );
+}
+
+function buildRoomIdCandidates(input: string): string[] {
+  const raw = String(input || '').trim().replace(/\.json$/i, '');
+  const normalized = normalizeRoomId(raw);
+  const hyphen = hyphenVariant(normalized);
+  const underscore = underscoreVariant(normalized);
+
+  const ordered = [
+    raw,
+    raw.toLowerCase(),
+    normalized,
+    hyphen,
+    underscore,
+    coreRoomIdVariant(normalized),
+    coreRoomIdVariant(hyphen),
+    coreRoomIdVariant(underscore),
+    underscoreVariant(coreRoomIdVariant(hyphen)),
+    hyphenVariant(coreRoomIdVariant(underscore)),
+  ];
+
+  const seen = new Set<string>();
+  const out: string[] = [];
+
+  for (const value of ordered) {
+    const v = String(value || '').trim();
+    if (!v) continue;
+    if (seen.has(v)) continue;
+    seen.add(v);
+    out.push(v);
+  }
+
+  return out;
+}
+
 function pickSubscriptionTierData(subscription: SubscriptionRow | null): SubscriptionTierRow | null {
   const raw = subscription?.subscription_tiers ?? null;
   if (!raw) return null;
   if (Array.isArray(raw)) return raw[0] ?? null;
   return raw;
+}
+
+function resolveUserTier(subscription: SubscriptionRow | null): string {
+  const tierData = pickSubscriptionTierData(subscription);
+  const tierName = normalizeTier(tierData?.name);
+  const tierId = normalizeTier(subscription?.tier_id);
+
+  if (tierName) return tierName;
+  if (tierId) return tierId;
+  return 'free';
 }
 
 function isPaidBillingTier(tier: string): boolean {
@@ -62,28 +133,18 @@ function normalizeRoomTier(rawRoomTier: unknown, roomId: unknown): string {
 
   const rid = String(roomId ?? '').trim().toLowerCase();
 
-  if (/_free$/.test(rid) || /(^|_)free($|_)/.test(rid)) return 'free';
+  if (/_free$/.test(rid) || /(^|[_-])free($|[_-])/.test(rid)) return 'free';
 
   {
-    const m = rid.match(/(?:^|_)(vip[1-9])(?:$|_)/);
+    const m = rid.match(/(?:^|[_-])(vip[1-9])(?:$|[_-])/);
     if (m?.[1]) return m[1];
   }
 
   {
-    const m = rid.match(/(?:^|_)(kids(?:_\d+)?)(?:$|_)/);
-    if (m?.[1]) return m[1];
+    const m = rid.match(/(?:^|[_-])(kids(?:[_-]?\d+)?)(?:$|[_-])/);
+    if (m?.[1]) return m[1].replace(/-/g, '_');
   }
 
-  return 'free';
-}
-
-function resolveUserTier(subscription: SubscriptionRow | null): string {
-  const tierData = pickSubscriptionTierData(subscription);
-  const tierName = normalizeTier(tierData?.name);
-  const tierId = normalizeTier(subscription?.tier_id);
-
-  if (tierName) return tierName;
-  if (tierId) return tierId;
   return 'free';
 }
 
@@ -128,7 +189,6 @@ function canAccessRoom(params: {
       return { allowed: true };
     }
 
-    // Backward compatibility for legacy VIP user tiers
     if (isLegacyVipTier(userTier)) {
       return { allowed: true };
     }
@@ -149,6 +209,27 @@ function canAccessRoom(params: {
   };
 }
 
+async function findRoomByCandidates(
+  supabase: ReturnType<typeof createClient>,
+  roomIdRaw: string,
+): Promise<{ room: RoomRow | null; matchedId: string | null; error: unknown }> {
+  const candidates = buildRoomIdCandidates(roomIdRaw);
+
+  for (const candidate of candidates) {
+    const { data, error } = await supabase
+      .from('rooms')
+      .select('*')
+      .eq('id', candidate)
+      .maybeSingle<RoomRow>();
+
+    if (data && !error) {
+      return { room: data, matchedId: candidate, error: null };
+    }
+  }
+
+  return { room: null, matchedId: null, error: null };
+}
+
 Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
@@ -167,7 +248,6 @@ Deno.serve(async (req) => {
       }
     );
 
-    // Verify authentication
     const {
       data: { user },
       error: authError,
@@ -177,7 +257,10 @@ Deno.serve(async (req) => {
       console.error('Authentication failed:', authError);
       return new Response(
         JSON.stringify({ error: 'Unauthorized' }),
-        { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        {
+          status: 401,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        }
       );
     }
 
@@ -187,15 +270,20 @@ Deno.serve(async (req) => {
     if (!validation.success) {
       console.error('Validation failed:', validation.error);
       return new Response(
-        JSON.stringify({ error: 'Invalid request', details: validation.error.errors }),
-        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        JSON.stringify({
+          error: 'Invalid request',
+          details: validation.error.errors,
+        }),
+        {
+          status: 400,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        }
       );
     }
 
     const { roomId } = validation.data;
     console.log(`User ${user.id} requesting room: ${roomId}`);
 
-    // Get user's tier
     const { data: subscription } = await supabase
       .from('user_subscriptions')
       .select(`
@@ -209,7 +297,6 @@ Deno.serve(async (req) => {
       .eq('status', 'active')
       .maybeSingle<SubscriptionRow>();
 
-    // Check if user is admin
     const { data: adminRole } = await supabase
       .from('user_roles')
       .select('role')
@@ -220,25 +307,22 @@ Deno.serve(async (req) => {
     const isAdmin = !!adminRole;
     const userTier = resolveUserTier(subscription);
 
-    console.log(`User tier: ${userTier}, isAdmin: ${isAdmin}`);
+    console.log(`Resolved user tier: ${userTier}, isAdmin: ${isAdmin}`);
 
-    // Get room data
-    const { data: room, error: roomError } = await supabase
-      .from('rooms')
-      .select('*')
-      .eq('id', roomId)
-      .maybeSingle<RoomRow>();
+    const { room, matchedId, error: roomError } = await findRoomByCandidates(supabase, roomId);
 
     if (roomError || !room) {
       console.error('Room not found:', roomError);
       return new Response(
         JSON.stringify({ error: 'Room not found' }),
-        { status: 404, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        {
+          status: 404,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        }
       );
     }
 
     const roomTier = normalizeRoomTier(room.tier, room.id);
-
     const access = canAccessRoom({
       userTier,
       roomTier,
@@ -254,22 +338,24 @@ Deno.serve(async (req) => {
           requiredTier: roomTier,
           userTier,
         }),
-        { status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        {
+          status: 403,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        }
       );
     }
 
-    // Log access
     try {
       await supabase.from('room_usage_analytics').insert({
         user_id: user.id,
-        room_id: roomId,
+        room_id: String(room.id || matchedId || roomId),
         session_start: new Date().toISOString(),
       });
     } catch (analyticsError) {
       console.warn('Analytics insert failed:', analyticsError);
     }
 
-    console.log(`Access granted to room ${roomId}`);
+    console.log(`Access granted to room ${String(room.id || matchedId || roomId)}`);
 
     return new Response(
       JSON.stringify({
@@ -283,13 +369,18 @@ Deno.serve(async (req) => {
           paidAccessModel: 'monthly_or_yearly_unlocks_all_vip_rooms',
         },
       }),
-      { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      {
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      }
     );
   } catch (error: any) {
     console.error('Error in get-room:', error);
     return new Response(
-      JSON.stringify({ error: error.message || 'Internal server error' }),
-      { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      JSON.stringify({ error: error?.message || 'Internal server error' }),
+      {
+        status: 500,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      }
     );
   }
 });

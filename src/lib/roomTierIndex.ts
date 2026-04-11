@@ -1,4 +1,4 @@
-// src/lib/roomTierIndex.ts
+// PATH: src/lib/roomTierIndex.ts
 // MB-BLUE-103.1 — 2026-04-10
 //
 // ROOM TIER INDEX (RUNTIME, DB/SECURE SOURCE)
@@ -46,15 +46,17 @@ export type TierKey = (typeof ALL_TIER_KEYS)[number];
 export type RoomTierIndex = Record<TierKey, string[]>;
 
 let loadPromise: Promise<RoomTierIndex> | null = null;
-let hasAttemptedInitialLoad = false;
 
 function normalizeIdLike(v: string): string {
   return String(v || "")
     .trim()
     .toLowerCase()
     .replace(/\.json$/i, "")
+    .replace(/["'`]+/g, "")
+    .replace(/[^\w\s-]+/g, "_")
     .replace(/[-\s]+/g, "_")
-    .replace(/_+/g, "_");
+    .replace(/_+/g, "_")
+    .replace(/^_+|_+$/g, "");
 }
 
 /**
@@ -197,11 +199,10 @@ export async function refreshRoomTierIndex(): Promise<RoomTierIndex> {
  * Safe to call repeatedly.
  */
 export async function ensureRoomTierIndexLoaded(): Promise<RoomTierIndex> {
-  if (hasAttemptedInitialLoad && loadPromise) {
+  if (loadPromise) {
     return loadPromise;
   }
 
-  hasAttemptedInitialLoad = true;
   loadPromise = refreshRoomTierIndex().finally(() => {
     loadPromise = null;
   });

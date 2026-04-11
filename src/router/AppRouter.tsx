@@ -18,7 +18,7 @@ import AdminLayout from "@/components/admin/AdminLayout";
 import { useAuth } from "@/providers/AuthProvider";
 
 const MB_ROUTER_VERSION =
-  "2026-04-09-app-router-admin-users-route-enabled";
+  "2026-04-11-app-router-room-alias-hardening";
 
 const ChatHub = lazy(() => import("@/pages/ChatHub"));
 const AllRooms = lazy(() => import("@/pages/AllRooms"));
@@ -316,6 +316,16 @@ function RoomsRoomRedirect() {
   return <Navigate to={roomId ? `/room/${roomId}` : "/rooms"} replace />;
 }
 
+function RoomsDirectRedirect() {
+  const { roomId } = useParams<{ roomId: string }>();
+  return <Navigate to={roomId ? `/room/${roomId}` : "/rooms"} replace />;
+}
+
+function ChatAliasRedirect() {
+  const { roomId } = useParams<{ roomId: string }>();
+  return <Navigate to={roomId ? `/room/${roomId}` : "/rooms"} replace />;
+}
+
 function RedeemRedirect() {
   return <Navigate to="/pricing" replace />;
 }
@@ -485,6 +495,8 @@ export default function AppRouter() {
           <Route path="/room/room/:roomId" element={<RoomRoomRedirect />} />
           <Route path="/room" element={<RoomIndexRedirect />} />
           <Route path="/rooms/room/:roomId" element={<RoomsRoomRedirect />} />
+          <Route path="/rooms/:roomId" element={<RoomsDirectRedirect />} />
+          <Route path="/chat/:roomId" element={<ChatAliasRedirect />} />
 
           <Route
             path="/room/:roomId"

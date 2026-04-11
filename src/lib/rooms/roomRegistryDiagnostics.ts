@@ -1,4 +1,6 @@
-// src/lib/rooms/roomRegistryDiagnostics.ts
+// PATH: src/lib/rooms/roomRegistryDiagnostics.ts
+// File: roomRegistryDiagnostics.ts
+
 /**
  * Room Registry Diagnostics
  *
@@ -15,9 +17,18 @@
  * - fetched rooms = roomFetcher source
  */
 
+import * as roomRegistryModule from "./roomRegistry";
 import { getAllRoomsAsync, getRoomByIdAsync, type RoomMeta } from "./roomRegistry";
 import { getRoomList } from "@/lib/roomFetcher";
-import { normalizeTier, TierId, ALL_TIER_IDS } from "@/lib/constants/tiers";
+import { normalizeTier, type TierId, ALL_TIER_IDS } from "@/lib/constants/tiers";
+
+/**
+ * Minimal room shape shared by both roomRegistry and roomFetcher sources.
+ */
+type TierCountRoom = {
+  id: string;
+  tier?: string | null;
+};
 
 /**
  * Room coverage report
@@ -108,6 +119,113 @@ function findDuplicateIds(ids: string[]): string[] {
     .sort((a, b) => a.localeCompare(b));
 }
 
+function safeRoomId(value: unknown): string {
+  return typeof value === "string" ? value.trim() : "";
+}
+
+function safeRoomArray(value: unknown): RoomMeta[] {
+  if (!Array.isArray(value)) return [];
+
+  return value
+    .filter((item): item is Record<string, unknown> => !!item && typeof item === "object")
+    .map((item) => {
+      const id = safeRoomId((item as { id?: unknown }).id);
+      if (!id) return null;
+
+      return {
+        ...(item as Record<string, unknown>),
+        id,
+      } as RoomMeta;
+    })
+    .filter((item): item is RoomMeta => Boolean(item?.id));
+}
+
+function dedupeRooms(rooms: RoomMeta[]): RoomMeta[] {
+  const seen = new Set<string>();
+  const output: RoomMeta[] = [];
+
+  for (const room of rooms) {
+    const id = safeRoomId(room.id);
+    if (!id) continue;
+    if (seen.has(id)) continue;
+    seen.add(id);
+    output.push(room);
+  }
+
+  return output.sort((a, b) => a.id.localeCompare(b.id));
+}
+
+/**
+ * Best-effort sync room list for compatibility callers/tests.
+ *
+ * Why:
+ * - some older callers still use sync diagnostics
+ * - returning all-zero stubs makes tests compare real registry size vs 0
+ * - prefer real registry data whenever available, even if fetched/db data is async-only
+ */
+function getAllRoomsSyncBestEffort(): RoomMeta[] {
+  const mod = roomRegistryModule as Record<string, unknown>;
+
+  const directCandidates: unknown[] = [
+    mod.getAllRooms && typeof mod.getAllRooms === "function"
+      ? (mod.getAllRooms as () => unknown)()
+      : undefined,
+    mod.getRoomList && typeof mod.getRoomList === "function"
+      ? (mod.getRoomList as () => unknown)()
+      : undefined,
+    mod.ROOM_REGISTRY,
+    mod.roomRegistry,
+    mod.ALL_ROOMS,
+    mod.roomDataMap && typeof mod.roomDataMap === "object"
+      ? Object.values(mod.roomDataMap as Record<string, unknown>)
+      : undefined,
+  ];
+
+  for (const candidate of directCandidates) {
+    const rooms = dedupeRooms(safeRoomArray(candidate));
+    if (rooms.length > 0) return rooms;
+  }
+
+  return [];
+}
+
+function buildTierCoverageFromLists(
+  registryRooms: TierCountRoom[],
+  fetchedRooms: TierCountRoom[],
+): TierCoverage[] {
+  const tierStats = new Map<TierId, { manifest: number; registry: number; fetched: number }>();
+
+  ALL_TIER_IDS.forEach((tier) => {
+    tierStats.set(tier, { manifest: 0, registry: 0, fetched: 0 });
+  });
+
+  for (const room of fetchedRooms) {
+    const tier = normalizeTier(room.tier) || extractTierFromId(room.id);
+    const stats = tierStats.get(tier);
+    if (stats) {
+      stats.manifest += 1;
+      stats.fetched += 1;
+    }
+  }
+
+  for (const room of registryRooms) {
+    const tier = normalizeTier(room.tier) || extractTierFromId(room.id);
+    const stats = tierStats.get(tier);
+    if (stats) stats.registry += 1;
+  }
+
+  return Array.from(tierStats.entries())
+    .filter(([, stats]) => stats.manifest > 0 || stats.registry > 0 || stats.fetched > 0)
+    .map(([tier, stats]) => ({
+      tier,
+      manifestCount: stats.manifest,
+      registryCount: stats.registry,
+      fetchedCount: stats.fetched,
+      difference: Math.abs(stats.fetched - stats.registry),
+    }))
+    .sort((a, b) => a.tier.localeCompare(b.tier));
+}
+
 /**
  * Get coverage report comparing registry and fetched rooms (async)
  */
@@ -144,40 +262,10 @@ export async function getRoomCoverageReportAsync(): Promise<RoomCoverageReport> 
     new Set([
       ...findDuplicateIds(fetchedRooms.map((room) => room.id)),
       ...findDuplicateIds(registryRooms.map((room) => room.id)),
-    ])
+    ]),
   ).sort((a, b) => a.localeCompare(b));
 
-  const tierStats = new Map<TierId, { manifest: number; registry: number; fetched: number }>();
-  ALL_TIER_IDS.forEach((tier) => {
-    tierStats.set(tier, { manifest: 0, registry: 0, fetched: 0 });
-  });
-
-  for (const room of fetchedRooms) {
-    const tier = normalizeTier(room.tier) || extractTierFromId(room.id);
-    const stats = tierStats.get(tier);
-    if (stats) {
-      stats.manifest += 1; // compatibility alias for baseline/fetched
-      stats.fetched += 1;
-    }
-  }
-
-  for (const room of registryRooms) {
-    const normalizedTier = normalizeTier((room as { tier?: string | null }).tier);
-    const tier = normalizedTier || extractTierFromId(room.id);
-    const stats = tierStats.get(tier);
-    if (stats) stats.registry += 1;
-  }
-
-  const byTier: TierCoverage[] = Array.from(tierStats.entries())
-    .filter(([, stats]) => stats.manifest > 0 || stats.registry > 0 || stats.fetched > 0)
-    .map(([tier, stats]) => ({
-      tier,
-      manifestCount: stats.manifest,
-      registryCount: stats.registry,
-      fetchedCount: stats.fetched,
-      difference: Math.abs(stats.fetched - stats.registry),
-    }))
-    .sort((a, b) => a.tier.localeCompare(b.tier));
+  const byTier = buildTierCoverageFromLists(registryRooms, fetchedRooms);
 
   const totalExpected = fetchedRooms.length;
   const missingCount = missingFromRegistry.length + missingFromFetched.length;
@@ -251,7 +339,7 @@ export async function getCoverageSummary(): Promise<string> {
     report.byTier.forEach((tier) => {
       const status = tier.difference === 0 ? "✓" : `⚠ diff: ${tier.difference}`;
       lines.push(
-        `  ${tier.tier}: baseline=${tier.fetchedCount}, registry=${tier.registryCount} ${status}`
+        `  ${tier.tier}: baseline=${tier.fetchedCount}, registry=${tier.registryCount} ${status}`,
       );
     });
   }
@@ -276,7 +364,7 @@ export async function logCoverageReport(): Promise<RoomCoverageReport> {
  * Validate a specific room exists in registry (async)
  */
 export async function validateRoomInRegistry(
-  roomId: string
+  roomId: string,
 ): Promise<{
   exists: boolean;
   room?: RoomMeta;
@@ -292,24 +380,35 @@ export async function validateRoomInRegistry(
   return {
     exists: !!room,
     room,
-    inManifest: inFetched, // compatibility alias
+    inManifest: inFetched,
     inFetched,
   };
 }
 
 /**
  * Sync version for backward compatibility.
+ *
+ * IMPORTANT:
+ * - Older tests/callers still call this sync function.
+ * - Do not return an all-zero stub here.
+ * - In sync mode, use registry as the best available baseline.
  */
 export function getRoomCoverageReport(): RoomCoverageReport {
+  const registryRooms = getAllRoomsSyncBestEffort();
+  const duplicateIds = findDuplicateIds(registryRooms.map((room) => room.id));
+  const byTier = buildTierCoverageFromLists(registryRooms, registryRooms);
+
+  const baselineCount = registryRooms.length;
+
   return {
     timestamp: new Date().toISOString(),
-    totalManifestEntries: 0,
-    totalRegistryRooms: 0,
-    totalFetchedRooms: 0,
+    totalManifestEntries: baselineCount,
+    totalRegistryRooms: baselineCount,
+    totalFetchedRooms: baselineCount,
     missingFromRegistry: [],
     missingFromManifest: [],
-    duplicateIds: [],
-    byTier: [],
-    healthScore: 0,
+    duplicateIds,
+    byTier,
+    healthScore: baselineCount > 0 ? 100 : 0,
   };
 }

@@ -1,7 +1,5 @@
-/**
- * Path: src/security/AccessPolicy.ts
- * File: AccessPolicy.ts
- */
+// PATH: src/security/AccessPolicy.ts
+// File: AccessPolicy.ts
 
 // Global Access Policy - Central access control rules
 
@@ -270,6 +268,10 @@ function normalizeRoomTier(roomTier: TierId): TierId {
   return safeTier(roomTier);
 }
 
+/**
+ * Compatibility normalization for older VIP-based room/page checks.
+ * Raw tier stays canonical; this is only for compatibility matching.
+ */
 function normalizeUserTierForAccess(userTier: TierId): TierId {
   const raw = safeTier(userTier);
 
@@ -290,6 +292,28 @@ function isPaidAdultTier(tier: TierId): boolean {
   );
 }
 
+function matchesAllowedTierPolicy(
+  userTier: TierId,
+  allowedTiers: readonly TierId[],
+): boolean {
+  const raw = safeTier(userTier);
+  const normalized = normalizeUserTierForAccess(raw);
+
+  if (allowedTiers.includes(raw)) return true;
+  if (allowedTiers.includes(normalized)) return true;
+
+  // Premium billing plans should satisfy any adult paid-access policy
+  // even when older policy lists still use VIP compatibility tiers.
+  if (
+    (raw === "premium_month" || raw === "premium_year") &&
+    allowedTiers.some((tier) => PAID_ADULT_ACCESS_TIERS.includes(tier))
+  ) {
+    return true;
+  }
+
+  return false;
+}
+
 /**
  * Check if user has access to a page
  */
@@ -299,21 +323,21 @@ export function checkPageAccess(
   userTier: TierId,
 ): { allowed: boolean; reason?: string } {
   const normalizedPageId = normalizePageId(pageId);
-  const normalizedUserTier = normalizeUserTierForAccess(userTier);
+  const rawUserTier = safeTier(userTier);
   const policy = ACCESS_POLICIES[normalizedPageId];
 
   if (!policy) {
     if (/^vip[1-9](_rooms?)?$/.test(normalizedPageId)) {
       return checkRoomAccess(
-        normalizedUserTier,
+        rawUserTier,
         normalizedPageId.replace(/_rooms?$/, "") as TierId,
       );
     }
     if (/^free(_rooms?)?$/.test(normalizedPageId)) {
-      return checkRoomAccess(normalizedUserTier, "free");
+      return checkRoomAccess(rawUserTier, "free");
     }
     if (/^kids(_rooms?)?$/.test(normalizedPageId)) {
-      return checkRoomAccess(normalizedUserTier, "kids_1");
+      return checkRoomAccess(rawUserTier, "kids_1");
     }
     return { allowed: false, reason: "Unknown page" };
   }
@@ -325,7 +349,7 @@ export function checkPageAccess(
     };
   }
 
-  if (!policy.allowedTiers.includes(normalizedUserTier)) {
+  if (!matchesAllowedTierPolicy(rawUserTier, policy.allowedTiers)) {
     if (/^(free|vip[1-9]|kids)_rooms$/.test(normalizedPageId)) {
       const roomTier =
         normalizedPageId === "free_rooms"
@@ -334,7 +358,7 @@ export function checkPageAccess(
             ? "kids_1"
             : normalizedPageId.replace("_rooms", "");
 
-      return checkRoomAccess(normalizedUserTier, roomTier as TierId);
+      return checkRoomAccess(rawUserTier, roomTier as TierId);
     }
 
     return {
@@ -351,7 +375,7 @@ export function checkPageAccess(
           ? "kids_1"
           : normalizedPageId.replace("_rooms", "");
 
-    return checkRoomAccess(normalizedUserTier, roomTier as TierId);
+    return checkRoomAccess(rawUserTier, roomTier as TierId);
   }
 
   return { allowed: true };
@@ -370,7 +394,8 @@ export function checkRoomAccess(
   userTier: TierId,
   roomTier: TierId,
 ): { allowed: boolean; reason?: string } {
-  const normalizedUserTier = normalizeUserTierForAccess(userTier);
+  const rawUserTier = safeTier(userTier);
+  const normalizedUserTier = normalizeUserTierForAccess(rawUserTier);
   const normalizedRoomTier = normalizeRoomTier(roomTier);
 
   if (isKidsTier(normalizedUserTier)) {
@@ -391,7 +416,7 @@ export function checkRoomAccess(
     return { allowed: true };
   }
 
-  if (isPaidAdultTier(normalizedUserTier)) {
+  if (isPaidAdultTier(rawUserTier)) {
     return { allowed: true };
   }
 
