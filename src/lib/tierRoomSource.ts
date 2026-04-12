@@ -1,14 +1,16 @@
-// PATH: src/lib/tierRoomSource.ts
-// File: tierRoomSource.ts
-//
-// ONE truth pipeline for Tier pages:
-// - Prefer richer source of truth between DB and registry
-// - Public registry / manifest are fallback sources
-// - Tier is inferred STRICT from id/path unless explicit valid tier exists
-// - Area (core/english/life/kids) inferred with HARD OVERRIDES:
-//   - If ID clearly indicates english/kids/life => that wins
-//
-// Used by: TierIndex, TierDetail
+/**
+ * PATH: src/lib/tierRoomSource.ts
+ * File: tierRoomSource.ts
+ *
+ * ONE truth pipeline for Tier pages:
+ * - Prefer richer source of truth between DB and registry
+ * - Public registry / manifest are fallback sources
+ * - Tier is inferred STRICT from id/path unless explicit valid tier exists
+ * - Area (core/english/life/kids) inferred with HARD OVERRIDES:
+ *   - If ID clearly indicates english/kids/life => that wins
+ *
+ * Used by: TierIndex, TierDetail
+ */
 
 import { supabase } from "@/lib/supabaseClient";
 import { ROOMS_TABLE } from "@/lib/constants/rooms";
@@ -85,10 +87,49 @@ function normalizeLeafId(x: string): string {
   return leaf.replace(/\.json$/i, "").trim().toLowerCase();
 }
 
+/**
+ * Canonicalize stale migrated room ids back to the currently working data ids.
+ *
+ * Why:
+ * - The repo currently contains mixed ids like ..._level9_... in generated sources
+ * - The actual public data files still largely use ..._vip9_...
+ * - Tier pages should return ids that can really open rooms right now
+ */
+function canonicalizeRoomId(x: string): string {
+  const leaf = normalizeLeafId(x);
+  if (!leaf) return "";
+
+  // Keep kids ids untouched.
+  if (
+    /(^|[_-])kids[_-]?[123]($|[_-])/.test(leaf) ||
+    /_kids_l[123]\b/.test(leaf) ||
+    /_kidslevel[123]\b/.test(leaf)
+  ) {
+    return leaf;
+  }
+
+  return leaf.replace(/(^|[_-])level([1-9])(?=$|[_-])/g, "$1vip$2");
+}
+
 function normalizeTierValue(x: unknown): TierId | "unknown" {
-  const t = String(x ?? "").trim().toLowerCase().replace(/-/g, "_");
+  const raw = String(x ?? "").trim().toLowerCase();
+  if (!raw) return "unknown";
+
+  const t = raw.replace(/[\s-]+/g, "_");
 
   if (isTierId(t)) return t;
+
+  if (t === "free" || t === "mien_phi" || t === "miễn_phí") return "level0";
+
+  if (t === "vip1") return "level1";
+  if (t === "vip2") return "level2";
+  if (t === "vip3" || t === "vip3_ii" || t === "level3_ii") return "level3";
+  if (t === "vip4") return "level4";
+  if (t === "vip5") return "level5";
+  if (t === "vip6") return "level6";
+  if (t === "vip7") return "level7";
+  if (t === "vip8") return "level8";
+  if (t === "vip9") return "level9";
 
   if (t === "kids1" || t === "kids_l1" || t === "kidslevel1") return "kids_1";
   if (t === "kids2" || t === "kids_l2" || t === "kidslevel2") return "kids_2";
@@ -105,6 +146,7 @@ function normalizeTierValue(x: unknown): TierId | "unknown" {
  * CRITICAL FIX:
  * - Kids lesson ids are often ..._kids_l1/_kids_l2/_kids_l3 (NOT kids_1/2/3)
  * - Map those to kids_1/2/3 so kids tier pages don't show empty.
+ * - Legacy working ids still use vip1..vip9, so detect those too.
  */
 export function strictTierFromIdOrPath(idOrPath: string): TierId | "unknown" {
   const raw = String(idOrPath || "").trim();
@@ -143,22 +185,30 @@ export function strictTierFromIdOrPath(idOrPath: string): TierId | "unknown" {
     return "kids_3";
   }
 
-  if (/(^|[_-])level9($|[_-])/.test(idLower)) return "level9";
-  if (/(^|[_-])level8($|[_-])/.test(idLower)) return "level8";
-  if (/(^|[_-])level7($|[_-])/.test(idLower)) return "level7";
-  if (/(^|[_-])level6($|[_-])/.test(idLower)) return "level6";
-  if (/(^|[_-])level5($|[_-])/.test(idLower)) return "level5";
-  if (/(^|[_-])level4($|[_-])/.test(idLower)) return "level4";
-  if (/(^|[_-])level3($|[_-])/.test(idLower)) return "level3";
-  if (/(^|[_-])level2($|[_-])/.test(idLower)) return "level2";
-  if (/(^|[_-])level1($|[_-])/.test(idLower)) return "level1";
+  if (/(^|[_-])level9($|[_-])/.test(idLower) || /(^|[_-])vip9($|[_-])/.test(idLower)) return "level9";
+  if (/(^|[_-])level8($|[_-])/.test(idLower) || /(^|[_-])vip8($|[_-])/.test(idLower)) return "level8";
+  if (/(^|[_-])level7($|[_-])/.test(idLower) || /(^|[_-])vip7($|[_-])/.test(idLower)) return "level7";
+  if (/(^|[_-])level6($|[_-])/.test(idLower) || /(^|[_-])vip6($|[_-])/.test(idLower)) return "level6";
+  if (/(^|[_-])level5($|[_-])/.test(idLower) || /(^|[_-])vip5($|[_-])/.test(idLower)) return "level5";
+  if (/(^|[_-])level4($|[_-])/.test(idLower) || /(^|[_-])vip4($|[_-])/.test(idLower)) return "level4";
+  if (
+    /(^|[_-])level3($|[_-])/.test(idLower) ||
+    /(^|[_-])vip3($|[_-])/.test(idLower) ||
+    /(^|[_-])level3[_-]?ii($|[_-])/.test(idLower) ||
+    /(^|[_-])vip3[_-]?ii($|[_-])/.test(idLower)
+  ) {
+    return "level3";
+  }
+  if (/(^|[_-])level2($|[_-])/.test(idLower) || /(^|[_-])vip2($|[_-])/.test(idLower)) return "level2";
+  if (/(^|[_-])level1($|[_-])/.test(idLower) || /(^|[_-])vip1($|[_-])/.test(idLower)) return "level1";
 
-  if (/(^|[_-])level0($|[_-])/.test(idLower)) return "level0";
+  if (/(^|[_-])level0($|[_-])/.test(idLower) || /(^|[_-])free($|[_-])/.test(idLower)) return "level0";
 
   const t = String(tierFromRoomId(leaf) ?? "").trim().toLowerCase();
-  if (t && isTierId(t)) {
-    if (t === "level0") return "unknown";
-    return t;
+  const normalizedFallback = normalizeTierValue(t);
+  if (normalizedFallback !== "unknown") {
+    if (normalizedFallback === "level0") return "unknown";
+    return normalizedFallback;
   }
 
   return "unknown";
@@ -166,17 +216,36 @@ export function strictTierFromIdOrPath(idOrPath: string): TierId | "unknown" {
 
 /**
  * DB / manifest fallback tier inference:
- * - When ids do not contain explicit "_vipX" markers, use existing tierFromRoomId().
- * - MUST NOT let anything default to level0.
+ * - When ids do not contain explicit tier markers, use existing tierFromRoomId().
+ * - MUST NOT let anything default to level0 unless the id explicitly says free/level0.
  */
 function inferTierFromIdFallback(idOrPath: string): TierId | "unknown" {
   const leaf = normalizeLeafId(String(idOrPath || "").trim());
   if (!leaf) return "unknown";
 
-  const t = String(tierFromRoomId(leaf) ?? "").trim().toLowerCase();
-  if (!t || !isTierId(t)) return "unknown";
+  const explicit = strictTierFromIdOrPath(leaf);
+  if (explicit !== "unknown") return explicit;
+
+  const t = normalizeTierValue(tierFromRoomId(leaf));
+  if (!t || t === "unknown") return "unknown";
   if (t === "level0") return "unknown";
   return t;
+}
+
+function resolveBestTier(rawTier: unknown, idOrPath: string): TierId | "unknown" {
+  const explicitFromId = strictTierFromIdOrPath(idOrPath);
+  const normalizedMeta = normalizeTierValue(rawTier);
+
+  if (explicitFromId !== "unknown") {
+    // Never let stale DB/import metadata collapse an explicit non-free id back to level0.
+    if (normalizedMeta === "unknown" || normalizedMeta === "level0") return explicitFromId;
+    if (normalizedMeta !== explicitFromId) return explicitFromId;
+    return normalizedMeta;
+  }
+
+  if (normalizedMeta !== "unknown") return normalizedMeta;
+
+  return inferTierFromIdFallback(idOrPath);
 }
 
 function inferAreaFromIdHeuristics(idLower: string, titleLower: string): RoomArea {
@@ -338,18 +407,19 @@ function coerceTierRoomsFromAny(anyRooms: any[]): TierRoom[] {
   return (anyRooms || [])
     .map((r: any) => {
       if (typeof r === "string") {
-        const id = String(r || "").trim();
+        const rawId = String(r || "").trim();
+        const id = canonicalizeRoomId(rawId);
         if (!id) return null;
 
-        let tier = strictTierFromIdOrPath(id);
-        if (tier === "unknown") tier = inferTierFromIdFallback(id);
-
+        const tier = resolveBestTier(undefined, id);
         const area = inferAreaFromMetaAndId({ id });
+
         return { id, tier, area } as TierRoom;
       }
 
       if (r && typeof r === "object") {
-        const id = String(r.id || r.roomId || r.path || r.file || "").trim();
+        const rawId = String(r.id || r.roomId || r.path || r.file || "").trim();
+        const id = canonicalizeRoomId(rawId);
         if (!id) return null;
 
         const title_en = (r.title_en ?? r.titleEn ?? r.title?.en ?? r.nameEn ?? r.name?.en ?? r.name ?? null) as any;
@@ -358,10 +428,7 @@ function coerceTierRoomsFromAny(anyRooms: any[]): TierRoom[] {
         const track = (r.track ?? r.path_track ?? r.category ?? null) as any;
         const areaRaw = (r.area ?? null) as any;
 
-        let tier = normalizeTierValue(r.tier);
-        if (tier === "unknown") tier = strictTierFromIdOrPath(id);
-        if (tier === "unknown") tier = inferTierFromIdFallback(id);
-
+        const tier = resolveBestTier(r.tier, id);
         const area = inferAreaFromMetaAndId({
           id,
           domain: domain ?? null,
@@ -432,16 +499,15 @@ function loadFromManifest(): { rooms: TierRoom[]; debug: string } {
   let ids: string[] = [];
 
   if (Array.isArray(any)) {
-    ids = any.map((x: any) => String(x || "").trim()).filter(Boolean);
+    ids = any.map((x: any) => canonicalizeRoomId(String(x || "").trim())).filter(Boolean);
   } else if (any && typeof any === "object") {
     ids = Object.keys(any)
-      .map((x) => String(x || "").trim())
+      .map((x) => canonicalizeRoomId(String(x || "").trim()))
       .filter(Boolean);
   }
 
   const rooms = ids.map((id) => {
-    let tier = strictTierFromIdOrPath(id);
-    if (tier === "unknown") tier = inferTierFromIdFallback(id);
+    const tier = resolveBestTier(undefined, id);
     const area = inferAreaFromMetaAndId({ id });
     return { id, tier, area } as TierRoom;
   });
@@ -471,13 +537,10 @@ async function tryLoadFromDb(): Promise<{ rooms: TierRoom[]; debug: string } | n
 
     const rows = (data || [])
       .map((r) => {
-        const id = String(r?.id || "").trim();
+        const id = canonicalizeRoomId(String(r?.id || "").trim());
         if (!id) return null;
 
-        let tier = normalizeTierValue(r.tier);
-        if (tier === "unknown") tier = strictTierFromIdOrPath(id);
-        if (tier === "unknown") tier = inferTierFromIdFallback(id);
-
+        const tier = resolveBestTier(r.tier, id);
         const area = inferAreaFromMetaAndId({
           id,
           domain: r.domain,
@@ -508,24 +571,26 @@ function dedupeRooms(rooms: TierRoom[]): TierRoom[] {
   const map = new Map<string, TierRoom>();
 
   for (const room of rooms || []) {
-    const id = String(room?.id || "").trim();
+    const id = canonicalizeRoomId(String(room?.id || "").trim());
     if (!id) continue;
 
+    const nextRoom: TierRoom = { ...room, id };
     const prev = map.get(id);
+
     if (!prev) {
-      map.set(id, room);
+      map.set(id, nextRoom);
       continue;
     }
 
     map.set(id, {
       ...prev,
-      ...room,
-      title_en: room.title_en ?? prev.title_en,
-      title_vi: room.title_vi ?? prev.title_vi,
-      domain: room.domain ?? prev.domain,
-      track: room.track ?? prev.track,
-      tier: room.tier !== "unknown" ? room.tier : prev.tier,
-      area: room.area !== "unknown" ? room.area : prev.area,
+      ...nextRoom,
+      title_en: nextRoom.title_en ?? prev.title_en,
+      title_vi: nextRoom.title_vi ?? prev.title_vi,
+      domain: nextRoom.domain ?? prev.domain,
+      track: nextRoom.track ?? prev.track,
+      tier: nextRoom.tier !== "unknown" ? nextRoom.tier : prev.tier,
+      area: nextRoom.area !== "unknown" ? nextRoom.area : prev.area,
     });
   }
 
@@ -538,24 +603,19 @@ export async function loadRoomsForTiers(): Promise<TierLoadResult> {
   if (db?.rooms?.length && reg?.rooms?.length) {
     const merged = dedupeRooms([...reg.rooms, ...db.rooms]);
 
-    // If registry is richer, trust the merged result but keep DB metadata where present.
-    if (merged.length > db.rooms.length) {
-      return {
-        rooms: merged,
-        source: reg.source,
-        debug: `merged richer registry+DB | ${reg.debug} | ${db.debug} | merged=${merged.length}`,
-      };
-    }
-
-    return { rooms: db.rooms, source: "DB", debug: db.debug };
+    return {
+      rooms: merged,
+      source: reg.source,
+      debug: `merged registry+DB | ${reg.debug} | ${db.debug} | merged=${merged.length}`,
+    };
   }
 
   if (db && db.rooms.length) {
-    return { rooms: db.rooms, source: "DB", debug: db.debug };
+    return { rooms: dedupeRooms(db.rooms), source: "DB", debug: db.debug };
   }
 
   if (reg && reg.rooms.length) {
-    return { rooms: reg.rooms, source: reg.source, debug: reg.debug };
+    return { rooms: dedupeRooms(reg.rooms), source: reg.source, debug: reg.debug };
   }
 
   if (reg && reg.rooms.length === 0) {
@@ -564,7 +624,7 @@ export async function loadRoomsForTiers(): Promise<TierLoadResult> {
 
   const man = loadFromManifest();
   if (man.rooms.length) {
-    return { rooms: man.rooms, source: "PUBLIC_ROOM_MANIFEST", debug: man.debug };
+    return { rooms: dedupeRooms(man.rooms), source: "PUBLIC_ROOM_MANIFEST", debug: man.debug };
   }
 
   return { rooms: [], source: "none", debug: "DB empty, registry not found, manifest empty" };
