@@ -33,10 +33,6 @@
 // - Keep renderer backward-compatible with older callers.
 // - Guard browser-only APIs a little more safely.
 //
-// PATCH (2026-03-09c):
-// - Wire in SpeechRecorder below ActiveEntry inside Box 4.
-// - Only render when active entry has a usable English target sentence.
-//
 // PATCH (2026-04-01):
 // - ZOOM FIX: consume --mb-essay-zoom inside ROOM_CSS_TIDY so the room text
 //   actually responds to the BottomMusicBar zoom slider.
@@ -48,7 +44,6 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { BilingualEssay } from "@/components/room/BilingualEssay";
-import SpeechRecorder from "@/components/speech/SpeechRecorder";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import type { TierId } from "@/lib/constants/tiers";
 import { normalizeTier } from "@/lib/constants/tiers";
@@ -582,6 +577,7 @@ export default function RoomRenderer({
 }: RoomRendererProps) {
   const rootRef = useRef<HTMLDivElement | null>(null);
   const audioAnchorRef = useRef<HTMLDivElement | null>(null);
+  const box4Ref = useRef<HTMLElement | null>(null);
   const signedAudioCacheRef = useRef<Map<string, string>>(new Map());
 
   const useColorThemeSafe = roomSpec?.use_color_theme !== false;
@@ -923,26 +919,22 @@ export default function RoomRenderer({
     return allEntries.findIndex((x) => x.entry === activeEntry);
   }, [activeEntry, allEntries]);
 
-  const speechTargetText = useMemo(() => {
-    return String(
-      activeEntry?.text_en ??
-        activeEntry?.content_en ??
-        activeEntry?.content?.en ??
-        activeEntry?.copy?.en ??
-        activeEntry?.en ??
-        "",
-    ).trim();
-  }, [activeEntry]);
-
-  const speechLineId = useMemo(() => {
-    return String(activeEntry?.id || activeEntry?.slug || activeKeyword || "line-1").trim();
-  }, [activeEntry, activeKeyword]);
-
   const welcomeEN = introEN?.trim() || `Welcome to ${titleEN}, please click a keyword to start`;
   const welcomeVI =
     introVI?.trim() || `Chào mừng bạn đến với phòng ${titleVI || titleEN}, vui lòng nhấp vào từ khóa để bắt đầu`;
 
   const clearKeyword = () => setActiveKeyword(null);
+
+  // Auto-scroll Box 4 into view on mobile after keyword selection
+  useEffect(() => {
+    if (!activeKeyword || !isNarrow || !box4Ref.current) return;
+    setTimeout(() => {
+      box4Ref.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }, 80);
+  }, [activeKeyword, isNarrow]);
 
   useEffect(() => {
     if (!effectiveRoomId) return;
@@ -1021,6 +1013,10 @@ export default function RoomRenderer({
   const [chatSending, setChatSending] = useState(false);
   const [chatError, setChatError] = useState<string | null>(null);
   const [chatText, setChatText] = useState("");
+  const [chatCollapsed, setChatCollapsed] = useState(true); // collapsed by default
+
+  useEffect(() => setChatCollapsed(true), [canonicalChatRoomId]);
+
   const chatListRef = useRef<HTMLDivElement | null>(null);
   const stickToBottomRef = useRef(true);
 
@@ -1179,9 +1175,6 @@ export default function RoomRenderer({
 
   const feedback = useRoomFeedback(supabase, coreRoomId, authUser);
 
-  const [chatCollapsed, setChatCollapsed] = useState(false);
-  useEffect(() => setChatCollapsed(false), [canonicalChatRoomId]);
-
   const chatListMaxH = activeEntry ? 140 : 220;
   const roomIsEmpty = !room;
 
@@ -1220,28 +1213,28 @@ export default function RoomRenderer({
 
   const completionStorageKey = useMemo(() => `mb.roomCompletion.${effectiveRoomId}`, [effectiveRoomId]);
   const [completionText, setCompletionText] = useState("");
-  const [completionSaved, setCompletionSaved] = useState(false);
+  const [completionStatus, setCompletionStatus] = useState<"idle" | "saved" | "copied" | "error">("idle");
 
   useEffect(() => {
     if (!effectiveRoomId || typeof window === "undefined") {
       setCompletionText("");
-      setCompletionSaved(false);
+      setCompletionStatus("idle");
       return;
     }
     try {
       const raw = window.localStorage.getItem(completionStorageKey);
       if (!raw) {
         setCompletionText("");
-        setCompletionSaved(false);
+        setCompletionStatus("idle");
         return;
       }
       const parsed = JSON.parse(raw) as { text?: string } | null;
       const text = String(parsed?.text || "").trim();
       setCompletionText(text);
-      setCompletionSaved(!!text);
+      setCompletionStatus(text ? "saved" : "idle");
     } catch {
       setCompletionText("");
-      setCompletionSaved(false);
+      setCompletionStatus("idle");
     }
   }, [completionStorageKey, effectiveRoomId]);
 
@@ -1254,9 +1247,9 @@ export default function RoomRenderer({
     }
   }, [effectiveRoomId]);
 
-  const saveCompletion = useCallback(() => {
+  const saveReflection = useCallback(() => {
     const text = String(completionText || "").trim();
-    if (!effectiveRoomId || !text || typeof window === "undefined") return;
+    if (!effectiveRoomId || !text || typeof window === "undefined") return false;
     try {
       window.localStorage.setItem(
         completionStorageKey,
@@ -1267,17 +1260,52 @@ export default function RoomRenderer({
         }),
       );
       window.localStorage.setItem("mb.lastRoomId", effectiveRoomId);
-      setCompletionSaved(true);
+      setCompletionStatus("saved");
+      return true;
     } catch {
-      // ignore
+      setCompletionStatus("error");
+      return false;
     }
   }, [completionText, completionStorageKey, effectiveRoomId]);
 
+  const copyToTeacherMercy = useCallback(async () => {
+    const text = String(completionText || "").trim();
+    if (!text) {
+      setCompletionStatus("error");
+      return;
+    }
+
+    const saved = saveReflection();
+    if (!saved) return;
+
+    try {
+      if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
+        await navigator.clipboard.writeText(text);
+      }
+    } catch {
+      // fail silently as requested
+    }
+
+    try {
+      window.dispatchEvent(
+        new CustomEvent("mb:teacher-mercy-reflection", {
+          detail: {
+            roomId: effectiveRoomId,
+            roomTitle: roomTitleBilingual,
+            keyword: activeKeyword ? String(activeKeyword).trim() : null,
+            reflectionText: text,
+            copiedAt: new Date().toISOString(),
+          },
+        }),
+      );
+    } catch {
+      // ignore
+    }
+
+    setCompletionStatus("copied");
+  }, [completionText, effectiveRoomId, roomTitleBilingual, activeKeyword, saveReflection]);
+
   const canComplete = !isLocked && !!activeEntry;
-  const completionPlaceholder = useMemo(() => {
-    const hint = activeKeyword ? `about “${activeKeyword}”` : "about this idea";
-    return `Write one sentence ${hint}…`;
-  }, [activeKeyword]);
 
   return (
     <div className="mx-auto w-full max-w-[980px] px-4">
@@ -1403,7 +1431,7 @@ export default function RoomRenderer({
               </div>
             )}
 
-            <section className="mb-card p-5 md:p-6 mb-5 mb-box4" data-room-box="4">
+            <section ref={box4Ref} className="mb-card p-5 md:p-6 mb-5 mb-box4" data-room-box="4">
               <div className="mb-zoomWrap">
                 {isLocked ? (
                   <div className="min-h-[260px] flex items-center justify-center text-center" style={inCardMessagePad}>
@@ -1423,9 +1451,13 @@ export default function RoomRenderer({
                     </div>
                   </div>
                 ) : !activeKeyword ? (
-                  <div className="min-h-[460px]" />
+                  <div className="min-h-[460px] flex flex-col items-center justify-center text-center" style={inCardMessagePad}>
+                    <div className="text-xl font-semibold opacity-80 mb-3">Choose one idea to open this room</div>
+                    <div className="text-sm opacity-60 max-w-[420px]">Tap a keyword above to begin.</div>
+                  </div>
                 ) : activeEntry ? (
                   <>
+                    <div className="mb-3 text-xs uppercase tracking-widest opacity-50">Current focus: {activeKeyword}</div>
                     <ActiveEntry
                       entry={{
                         ...activeEntry,
@@ -1442,16 +1474,6 @@ export default function RoomRenderer({
                       viKeywords={viKeywords}
                       audioAnchorRef={audioAnchorRef as any}
                     />
-
-                    {speechTargetText ? (
-                      <div style={{ marginTop: 14 }}>
-                        <SpeechRecorder
-                          roomId={effectiveRoomId}
-                          lineId={speechLineId}
-                          targetText={speechTargetText}
-                        />
-                      </div>
-                    ) : null}
                   </>
                 ) : (
                   <div className="min-h-[240px] flex items-center justify-center text-center" style={inCardMessagePad}>
@@ -1479,11 +1501,9 @@ export default function RoomRenderer({
             <div style={{ marginTop: "auto" }} data-room-box="5">
               <div className="mb-card p-3 md:p-4">
                 <div className="mb-completionCard">
-                  <p className="mb-completionPrompt">Before leaving this room, say one sentence about the idea.</p>
+                  <p className="mb-completionPrompt">Reflect before you leave</p>
                   <p className="mb-completionSub">
-                    {canComplete
-                      ? "A short reflection is enough."
-                      : "Choose a keyword first to unlock the reflection moment."}
+                    Write the most impressive thought from this room, then copy it to Teacher Mercy to study deeper with her.
                   </p>
 
                   <div className="mb-completionRow">
@@ -1492,31 +1512,51 @@ export default function RoomRenderer({
                       value={completionText}
                       onChange={(e) => {
                         setCompletionText(e.target.value);
-                        if (completionSaved) setCompletionSaved(false);
+                        if (completionStatus !== "idle") setCompletionStatus("idle");
                       }}
                       onKeyDown={(e) => {
                         if (e.key === "Enter") {
                           e.preventDefault();
-                          saveCompletion();
+                          saveReflection();
                         }
                       }}
-                      placeholder={completionPlaceholder}
+                      placeholder="What idea stayed with you the most?"
                       disabled={!canComplete}
                       maxLength={220}
-                      aria-label="Room completion reflection"
+                      aria-label="Room reflection"
                     />
+                  </div>
+
+                  <div className="mb-completionRow" style={{ marginTop: 10 }}>
                     <button
                       type="button"
                       className="mb-completionBtn mb-tier"
-                      onClick={saveCompletion}
+                      onClick={saveReflection}
                       disabled={!canComplete || !completionText.trim()}
-                      title="Mark room completed"
                     >
-                      Complete
+                      Save reflection
+                    </button>
+                    <button
+                      type="button"
+                      className="mb-completionBtn mb-tier"
+                      onClick={copyToTeacherMercy}
+                      disabled={!canComplete || !completionText.trim()}
+                    >
+                      Copy to Teacher Mercy
                     </button>
                   </div>
 
-                  {completionSaved ? <div className="mb-completionDone">✓ Room completed</div> : null}
+                  {completionStatus === "saved" && <div className="mb-completionDone">✓ Reflection saved</div>}
+                  {completionStatus === "copied" && (
+                    <div className="mb-completionDone">
+                      ✓ Copied to clipboard. Open Teacher Mercy and paste it there to continue learning more deeply.
+                    </div>
+                  )}
+                  {completionStatus === "error" && (
+                    <div className="mb-completionDone" style={{ color: "#c33" }}>
+                      Write one thought first.
+                    </div>
+                  )}
                 </div>
 
                 <div className="mb-chatWrap mb-4">

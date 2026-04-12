@@ -30,13 +30,14 @@ export interface UserAccess {
   isDemoMode: boolean;
 
   /**
-   * Effective app tier used by room gating.
-   * Premium subscribers should behave like full access.
+   * Raw public-facing entitlement tier.
+   * Keep billing plan identity here for UI, snapshots, and tests.
    */
   tier: TierId;
 
   /**
-   * Explicit room-access tier for renderers that want a gating-safe value.
+   * Effective room-access tier for renderers / gating.
+   * Premium subscribers and high admins should behave like full access.
    */
   userTier: TierId;
 
@@ -110,7 +111,7 @@ function safeNumber(value: unknown, fallback = 0): number {
 export const guestAccess = (): UserAccess => {
   const unlockMercyFeatures = FORCE_UNLOCK_MERCY_FEATURES;
   const entitlementTier: TierId = "free";
-  const effectiveTier = toEffectiveAccessTier(entitlementTier);
+  const userTier = toEffectiveAccessTier(entitlementTier);
 
   return {
     isAdmin: false,
@@ -120,8 +121,8 @@ export const guestAccess = (): UserAccess => {
     isAuthenticated: false,
     isDemoMode: true,
 
-    tier: effectiveTier,
-    userTier: effectiveTier,
+    tier: entitlementTier,
+    userTier,
     entitlementTier,
 
     hasPremium: false,
@@ -157,7 +158,9 @@ function authenticatedFreeAccess(params: {
   const loading = Boolean(params.loading);
   const unlockMercyFeatures = FORCE_UNLOCK_MERCY_FEATURES || isHighAdmin;
   const entitlementTier: TierId = "free";
-  const effectiveTier = isHighAdmin ? "vip9" : toEffectiveAccessTier(entitlementTier);
+  const userTier: TierId = isHighAdmin
+    ? "vip9"
+    : toEffectiveAccessTier(entitlementTier);
 
   return {
     ...guestAccess(),
@@ -168,8 +171,8 @@ function authenticatedFreeAccess(params: {
     isAuthenticated: true,
     isDemoMode: false,
 
-    tier: effectiveTier,
-    userTier: effectiveTier,
+    tier: entitlementTier,
+    userTier,
     entitlementTier,
 
     hasPremium: false,
@@ -281,9 +284,10 @@ export const useUserAccess = (): UserAccess => {
       /**
        * Business rule:
        * - active premium_month / premium_year users should not be locked from rooms
-       * - high admins should also have full access
+       * - high admins should also have full room access
+       * - but .tier must remain the raw entitlement tier for UI/tests
        */
-      const effectiveTier: TierId = isHighAdmin
+      const userTier: TierId = isHighAdmin
         ? "vip9"
         : toEffectiveAccessTier(entitlementTier);
 
@@ -298,8 +302,8 @@ export const useUserAccess = (): UserAccess => {
         isAuthenticated: true,
         isDemoMode: false,
 
-        tier: effectiveTier,
-        userTier: effectiveTier,
+        tier: entitlementTier,
+        userTier,
         entitlementTier,
 
         hasPremium: isPremiumTier(entitlementTier),
@@ -335,3 +339,5 @@ export const useUserAccess = (): UserAccess => {
 
   return useMemo(() => access, [access]);
 };
+
+export default useUserAccess;
