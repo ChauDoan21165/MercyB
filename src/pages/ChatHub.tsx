@@ -1,8 +1,3 @@
-/**
- * File: ChatHub.tsx
- * Path: src/pages/ChatHub.tsx
- */
-
 // PATH: src/pages/ChatHub.tsx
 
 // MB-BLUE-100.9 → MB-BLUE-101.NO-HERO-ROOMS → MB-BLUE-101.9-MERCY-GUIDE-IN-ROOM
@@ -25,36 +20,9 @@
  * - No hero/header duplication
  * - BottomMusicBar stays fixed and aligned
  * - Room loading / fallback / back button behavior preserved
- *
- * PATCH (2026-04-10):
- * - Hardened effective room identity handling
- * - Prefer loaded room.id over raw route param for downstream components
- * - Improved safe metadata extraction for MercyGuide context
- *
- * PATCH (2026-04-11):
- * - Do not duplicate aggressive room-id variant expansion here.
- * - Let roomJsonResolver own the candidate logic.
- * - Accept both raw room JSON and legacy wrapped { success, room } payloads.
- * - Fail soft if room spec resolution throws.
- *
- * PATCH (2026-04-11 / room-open hardening):
- * - Isolate MercyGuide behind a local error boundary.
- * - Do not let guide-side render/runtime errors block room opening.
- * - Keep RoomRenderer as the primary room-open path.
- *
- * PATCH (2026-04-12 / navigation test hardening):
- * - Keep Back / Browse controls visible during loading.
- * - This preserves prior back-button behavior while the calm arrival overlay is showing.
  */
 
-import {
-  Component,
-  useEffect,
-  useMemo,
-  useState,
-  type ErrorInfo,
-  type ReactNode,
-} from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import {
@@ -95,17 +63,26 @@ function uniqueStrings(list: string[]): string[] {
   return out;
 }
 
-function buildLoadKeys(roomId: string, canonicalId: string): string[] {
-  return uniqueStrings([roomId, canonicalId]);
+function roomIdVariants(roomId: string, canonicalId: string): string[] {
+  const raw = String(roomId || "").trim();
+  const canon = String(canonicalId || "").trim();
+
+  const rawHyphen = raw.replace(/_/g, "-");
+  const rawUnder = raw.replace(/-/g, "_");
+
+  const canonHyphen = canon.replace(/_/g, "-");
+  const canonUnder = canon.replace(/-/g, "_");
+
+  return uniqueStrings([raw, rawHyphen, canonHyphen, canon, rawUnder, canonUnder]);
 }
 
 function fallbackParentRoute(roomId?: string): string {
   const id = String(roomId || "").trim();
   if (!id) return "/rooms";
   if (/sexuality-curiosity-vip3-sub[1-6]$/i.test(id)) return "/sexuality-culture";
-  if (/-vip3\b|_vip3\b/i.test(id)) return "/rooms-vip3";
-  if (/-vip2\b|_vip2\b/i.test(id)) return "/rooms-vip2";
-  if (/-vip1\b|_vip1\b/i.test(id)) return "/rooms-vip1";
+  if (/-vip3\b/i.test(id)) return "/rooms-vip3";
+  if (/-vip2\b/i.test(id)) return "/rooms-vip2";
+  if (/-vip1\b/i.test(id)) return "/rooms-vip1";
   return "/rooms";
 }
 
@@ -141,44 +118,13 @@ function arrayOfStrings(v: unknown): string[] {
   return v.map((x) => asString(x)).filter(Boolean);
 }
 
-function unwrapLoadedRoom(payload: unknown): AnyRoom | null {
-  if (!payload || typeof payload !== "object") return null;
-
-  const obj = payload as Record<string, unknown>;
-  const wrappedRoom = obj.room;
-  if (wrappedRoom && typeof wrappedRoom === "object") {
-    return wrappedRoom as AnyRoom;
-  }
-
-  return obj as AnyRoom;
-}
-
-function getEffectiveRoomIdSafe(
-  room: AnyRoom | null,
-  roomId?: string,
-  canonicalId?: string,
-): string {
-  return firstNonEmptyString(room?.id, canonicalId, roomId);
-}
-
 function getRoomTitleSafe(room: AnyRoom | null, roomId?: string): string {
   if (!room) return String(roomId || "").trim();
 
-  const titleObj = room.title as Record<string, unknown> | undefined;
-  const nameObj = room.name as Record<string, unknown> | undefined;
-
   return firstNonEmptyString(
-    titleObj?.en,
-    titleObj?.vi,
     room.title,
-    room.title_en,
-    room.title_vi,
-    nameObj?.en,
-    nameObj?.vi,
-    room.name,
-    room.name_en,
-    room.name_vi,
     room.roomTitle,
+    room.name,
     room.label,
     room.heading,
     room.slugTitle,
@@ -190,11 +136,8 @@ function getRoomTitleSafe(room: AnyRoom | null, roomId?: string): string {
 function getRoomTierSafe(room: AnyRoom | null): string {
   if (!room) return "";
 
-  const meta = room.meta as Record<string, unknown> | undefined;
-
   return firstNonEmptyString(
     room.tier,
-    meta?.tier,
     room.vipTier,
     room.accessTier,
     room.level,
@@ -221,12 +164,6 @@ function getRoomTagsSafe(room: AnyRoom | null): string[] {
   const keywords = arrayOfStrings(room.keywords);
   if (keywords.length) return uniqueStrings(keywords);
 
-  const keywordsEn = arrayOfStrings(room.keywords_en);
-  const keywordsVi = arrayOfStrings(room.keywords_vi);
-  if (keywordsEn.length || keywordsVi.length) {
-    return uniqueStrings([...keywordsEn, ...keywordsVi]);
-  }
-
   const topics = arrayOfStrings(room.topics);
   if (topics.length) return uniqueStrings(topics);
 
@@ -235,10 +172,6 @@ function getRoomTagsSafe(room: AnyRoom | null): string[] {
 
 function getRoomContentEnSafe(room: AnyRoom | null): string {
   if (!room) return "";
-
-  const intro = room.intro as Record<string, unknown> | undefined;
-  const description = room.description as Record<string, unknown> | undefined;
-  const summary = room.summary as Record<string, unknown> | undefined;
 
   const direct = firstNonEmptyString(
     room.contentEn,
@@ -250,12 +183,8 @@ function getRoomContentEnSafe(room: AnyRoom | null): string {
     room.prompt_en,
     room.summaryEn,
     room.summary_en,
-    summary?.en,
     room.descriptionEn,
     room.description_en,
-    description?.en,
-    room.intro_en,
-    intro?.en,
   );
   if (direct) return direct;
 
@@ -264,9 +193,6 @@ function getRoomContentEnSafe(room: AnyRoom | null): string {
     .slice(0, 12)
     .map((entry) => {
       const e = (entry ?? {}) as Record<string, unknown>;
-      const content = e.content as Record<string, unknown> | undefined;
-      const copy = e.copy as Record<string, unknown> | undefined;
-
       return firstNonEmptyString(
         e.text_en,
         e.textEn,
@@ -274,46 +200,11 @@ function getRoomContentEnSafe(room: AnyRoom | null): string {
         e.english,
         e.line_en,
         e.lineEn,
-        content?.en,
-        copy?.en,
       );
     })
     .filter(Boolean);
 
   return lines.join("\n").trim();
-}
-
-/* ----------------------------------------------------- */
-/* SAFE MERCY GUIDE                                      */
-/* ----------------------------------------------------- */
-class MercyGuideErrorBoundary extends Component<
-  { children: ReactNode },
-  { hasError: boolean }
-> {
-  constructor(props: { children: ReactNode }) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(): { hasError: boolean } {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error: unknown, info: ErrorInfo) {
-    try {
-      console.error("[ChatHub] MercyGuide render failed; room kept open", {
-        error,
-        componentStack: info.componentStack,
-      });
-    } catch {
-      // ignore
-    }
-  }
-
-  render() {
-    if (this.state.hasError) return null;
-    return this.props.children;
-  }
 }
 
 /* ----------------------------------------------------- */
@@ -371,7 +262,7 @@ export default function ChatHub() {
 
   const canonicalId = useMemo(() => canonicalizeRoomId(roomId || ""), [roomId]);
   const loadKeys = useMemo(
-    () => buildLoadKeys(roomId || "", canonicalId),
+    () => roomIdVariants(roomId || "", canonicalId),
     [roomId, canonicalId],
   );
 
@@ -420,8 +311,7 @@ export default function ChatHub() {
 
       for (const key of loadKeys) {
         try {
-          const payload = await loadRoomJson(key);
-          const data = unwrapLoadedRoom(payload);
+          const data = (await loadRoomJson(key)) as unknown as AnyRoom | null;
           if (data) {
             loadedRoom = data;
             break;
@@ -442,18 +332,12 @@ export default function ChatHub() {
         return;
       }
 
-      const effectiveRoomId = getEffectiveRoomIdSafe(loadedRoom, roomId, canonicalId);
       const resolvedTier = normalizeTierOrUndefined(getRoomTierSafe(loadedRoom));
 
-      let effectiveSpec: RoomSpec | null = null;
-      try {
-        effectiveSpec = await getEffectiveRoomSpec(
-          effectiveRoomId,
-          resolvedTier ?? null,
-        );
-      } catch {
-        effectiveSpec = null;
-      }
+      const effectiveSpec = await getEffectiveRoomSpec(
+        String(loadedRoom.id ?? roomId ?? canonicalId ?? ""),
+        resolvedTier ?? null,
+      );
 
       if (cancelled) return;
 
@@ -462,8 +346,11 @@ export default function ChatHub() {
       setState("ready");
 
       try {
-        if (effectiveRoomId) {
-          localStorage.setItem(LS_LAST_ROOM, effectiveRoomId);
+        const persistedId =
+          String(loadedRoom.id || roomId || canonicalId || "").trim() ||
+          String(roomId || "").trim();
+        if (persistedId) {
+          localStorage.setItem(LS_LAST_ROOM, persistedId);
         }
       } catch {
         // ignore
@@ -491,11 +378,6 @@ export default function ChatHub() {
     navigate(parent);
   }
 
-  const effectiveRoomId = useMemo(
-    () => getEffectiveRoomIdSafe(room, roomId, canonicalId),
-    [room, roomId, canonicalId],
-  );
-
   const roomTitle = useMemo(() => getRoomTitleSafe(room, roomId), [room, roomId]);
   const roomTier = useMemo(() => getRoomTierSafe(room), [room]);
   const roomPathSlug = useMemo(() => getRoomPathSlugSafe(room), [room]);
@@ -503,7 +385,6 @@ export default function ChatHub() {
   const roomContentEn = useMemo(() => getRoomContentEnSafe(room), [room]);
 
   const shellClass = "mx-auto w-full max-w-[980px] px-4 pb-40 pt-3";
-  const shouldRenderGuide = state === "ready" && !!room && !!effectiveRoomId;
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -532,28 +413,8 @@ export default function ChatHub() {
 
       <main className={shellClass}>
         {state === "loading" ? (
-          <div className="space-y-4">
-            <div className="flex flex-wrap gap-3">
-              <button
-                type="button"
-                onClick={() => void handleBack()}
-                className="rounded-xl border border-black/10 bg-white px-4 py-2 font-medium text-foreground shadow-sm transition hover:bg-black/[0.03]"
-              >
-                ← Back
-              </button>
-
-              <button
-                type="button"
-                onClick={() => navigate("/rooms")}
-                className="rounded-xl border border-black/10 bg-white px-4 py-2 font-medium text-foreground shadow-sm transition hover:bg-black/[0.03]"
-              >
-                Browse rooms
-              </button>
-            </div>
-
-            <div className="rounded-2xl border border-black/10 bg-white/70 p-6 shadow-sm">
-              <ArrivalOverlay />
-            </div>
+          <div className="rounded-2xl border border-black/10 bg-white/70 p-6 shadow-sm">
+            <ArrivalOverlay />
           </div>
         ) : null}
 
@@ -603,7 +464,7 @@ export default function ChatHub() {
               <div data-mb-room-zoom="1">
                 <RoomRenderer
                   room={room}
-                  roomId={effectiveRoomId}
+                  roomId={roomId}
                   roomSpec={roomSpec || undefined}
                 />
               </div>
@@ -612,17 +473,15 @@ export default function ChatHub() {
         ) : null}
       </main>
 
-      {shouldRenderGuide ? (
-        <MercyGuideErrorBoundary>
-          <MercyGuide
-            roomId={effectiveRoomId}
-            roomTitle={roomTitle || undefined}
-            tier={roomTier || undefined}
-            pathSlug={roomPathSlug || undefined}
-            tags={roomTags.length ? roomTags : undefined}
-            contentEn={roomContentEn || undefined}
-          />
-        </MercyGuideErrorBoundary>
+      {state === "ready" && room ? (
+        <MercyGuide
+          roomId={String(roomId || "")}
+          roomTitle={roomTitle || undefined}
+          tier={roomTier || undefined}
+          pathSlug={roomPathSlug || undefined}
+          tags={roomTags.length ? roomTags : undefined}
+          contentEn={roomContentEn || undefined}
+        />
       ) : null}
 
       <div
