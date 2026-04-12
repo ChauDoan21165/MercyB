@@ -163,7 +163,7 @@ Deno.serve(async (req) => {
         const contentEn = jsonData.content?.en || jsonData.room_essay?.en || jsonData.room_essay_en || null;
         const contentVi = jsonData.content?.vi || jsonData.room_essay?.vi || jsonData.room_essay_vi || null;
         
-        const tier = jsonData.tier || 'free';
+        const tier = jsonData.tier || 'level0';
         const domain = jsonData.domain || null;
         const entries = jsonData.entries || [];
         const keywords = jsonData.keywords || [];

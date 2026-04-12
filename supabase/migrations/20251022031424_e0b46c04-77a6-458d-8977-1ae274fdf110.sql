@@ -6,14 +6,14 @@ ADD COLUMN IF NOT EXISTS total_questions_used INTEGER DEFAULT 0;
 -- Create 10 promo codes with 30 questions each
 INSERT INTO public.promo_codes (code, description, daily_question_limit, max_redemptions, is_active)
 VALUES 
-  ('MERCY30-A1B2', 'Free 30 questions across all rooms / 30 câu hỏi miễn phí', 30, 100, true),
-  ('MERCY30-C3D4', 'Free 30 questions across all rooms / 30 câu hỏi miễn phí', 30, 100, true),
-  ('MERCY30-E5F6', 'Free 30 questions across all rooms / 30 câu hỏi miễn phí', 30, 100, true),
-  ('MERCY30-G7H8', 'Free 30 questions across all rooms / 30 câu hỏi miễn phí', 30, 100, true),
-  ('MERCY30-I9J0', 'Free 30 questions across all rooms / 30 câu hỏi miễn phí', 30, 100, true),
-  ('MERCY30-K1L2', 'Free 30 questions across all rooms / 30 câu hỏi miễn phí', 30, 100, true),
-  ('MERCY30-M3N4', 'Free 30 questions across all rooms / 30 câu hỏi miễn phí', 30, 100, true),
-  ('MERCY30-O5P6', 'Free 30 questions across all rooms / 30 câu hỏi miễn phí', 30, 100, true),
-  ('MERCY30-Q7R8', 'Free 30 questions across all rooms / 30 câu hỏi miễn phí', 30, 100, true),
-  ('MERCY30-S9T0', 'Free 30 questions across all rooms / 30 câu hỏi miễn phí', 30, 100, true)
+  ('MERCY30-A1B2', 'Level 0 30 questions across all rooms / 30 câu hỏi miễn phí', 30, 100, true),
+  ('MERCY30-C3D4', 'Level 0 30 questions across all rooms / 30 câu hỏi miễn phí', 30, 100, true),
+  ('MERCY30-E5F6', 'Level 0 30 questions across all rooms / 30 câu hỏi miễn phí', 30, 100, true),
+  ('MERCY30-G7H8', 'Level 0 30 questions across all rooms / 30 câu hỏi miễn phí', 30, 100, true),
+  ('MERCY30-I9J0', 'Level 0 30 questions across all rooms / 30 câu hỏi miễn phí', 30, 100, true),
+  ('MERCY30-K1L2', 'Level 0 30 questions across all rooms / 30 câu hỏi miễn phí', 30, 100, true),
+  ('MERCY30-M3N4', 'Level 0 30 questions across all rooms / 30 câu hỏi miễn phí', 30, 100, true),
+  ('MERCY30-O5P6', 'Level 0 30 questions across all rooms / 30 câu hỏi miễn phí', 30, 100, true),
+  ('MERCY30-Q7R8', 'Level 0 30 questions across all rooms / 30 câu hỏi miễn phí', 30, 100, true),
+  ('MERCY30-S9T0', 'Level 0 30 questions across all rooms / 30 câu hỏi miễn phí', 30, 100, true)
 ON CONFLICT (code) DO NOTHING;

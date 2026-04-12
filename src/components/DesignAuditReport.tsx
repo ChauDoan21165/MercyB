@@ -44,12 +44,12 @@ export const DesignAuditReport = () => {
           </div>
 
           <div className="border-l-4 border-yellow-500 pl-4">
-            <h3 className="font-semibold mb-2">VIP6 Theme (Past Issue)</h3>
+            <h3 className="font-semibold mb-2">Level 6 Theme (Past Issue)</h3>
             <p className="text-sm text-muted-foreground mb-2">
               Previous setup had strange color choices
             </p>
             <ul className="text-sm space-y-1 list-disc list-inside">
-              <li>VIP6 colors need consistency check with other VIP tiers</li>
+              <li>Level 6 colors need consistency check with other VIP tiers</li>
               <li>Gradient usage should match design system</li>
             </ul>
           </div>

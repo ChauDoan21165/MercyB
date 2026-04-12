@@ -135,7 +135,7 @@ function normalize(value: unknown): string {
 }
 
 function isFreeTier(tier: { name?: string | null }): boolean {
-  return normalize(tier.name) === "free";
+  return normalize(tier.name) === "level0";
 }
 
 function isStripePriceId(value: string | null): value is string {
@@ -463,7 +463,7 @@ async function getTierAndPrice(params: {
     }
 
     if (isFreeTier(tier)) {
-      return { error: json({ error: "Free tier is not billable" }, 400) };
+      return { error: json({ error: "Level 0 tier is not billable" }, 400) };
     }
 
     resolvedPriceId = asNonEmptyStringOrNull(tier.stripe_price_id);

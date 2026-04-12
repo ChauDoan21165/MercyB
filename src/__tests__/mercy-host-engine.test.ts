@@ -47,7 +47,7 @@ describe('Mercy Host Engine', () => {
       const engine = createMercyEngine(setState, getState);
       
       engine.init({
-        tier: 'vip3',
+        tier: 'level3',
         userName: 'Test User',
         language: 'vi'
       });
@@ -131,25 +131,25 @@ describe('Mercy Host Engine', () => {
   });
   
   describe('Tier Scripts', () => {
-    it('should return script for free tier', () => {
-      const script = getTierScript('free');
+    it('should return script for level0 tier', () => {
+      const script = getTierScript('level0');
       expect(script.tone).toBe('warm, encouraging, gentle');
       expect(script.greetings.length).toBeGreaterThan(0);
     });
     
-    it('should return script for VIP9', () => {
-      const script = getTierScript('vip9');
+    it('should return script for Level 9', () => {
+      const script = getTierScript('level9');
       expect(script.tone).toBe('divine, metaphysical');
     });
     
     it('should get tier greeting with name replacement', () => {
-      const greeting = getTierGreeting('free', 'Alice');
+      const greeting = getTierGreeting('level0', 'Alice');
       expect(greeting.en).toContain('Alice');
       expect(greeting.vi).toContain('Alice');
     });
     
     it('should get encouragement for tier', () => {
-      const encouragement = getTierEncouragement('vip3');
+      const encouragement = getTierEncouragement('level3');
       expect(encouragement.en).toBeDefined();
       expect(encouragement.vi).toBeDefined();
     });
@@ -183,7 +183,7 @@ describe('Mercy Host Engine', () => {
       expect(initialEngineState.presenceState).toBe('idle');
       expect(initialEngineState.avatarStyle).toBe('minimalist');
       expect(initialEngineState.language).toBe('en');
-      expect(initialEngineState.currentTier).toBe('free');
+      expect(initialEngineState.currentTier).toBe('level0');
       expect(initialEngineState.isGreetingVisible).toBe(false);
       expect(initialEngineState.isBubbleVisible).toBe(false);
     });
@@ -191,7 +191,7 @@ describe('Mercy Host Engine', () => {
   
   describe('Role Consistency', () => {
     it('should always speak as Mercy', () => {
-      const greeting = getTierGreeting('free', 'User');
+      const greeting = getTierGreeting('level0', 'User');
       // Check greetings don't claim to be AI
       expect(greeting.en.toLowerCase()).not.toContain('ai');
       expect(greeting.en.toLowerCase()).not.toContain('artificial');
@@ -201,7 +201,7 @@ describe('Mercy Host Engine', () => {
   
   describe('Speech Length', () => {
     it('should respect max speech length of 160 chars', () => {
-      const allTiers = ['free', 'vip1', 'vip2', 'vip3', 'vip4', 'vip5', 'vip6', 'vip7', 'vip8', 'vip9'];
+      const allTiers = ['level0', 'level1', 'level2', 'level3', 'level4', 'level5', 'level6', 'level7', 'level8', 'level9'];
       
       allTiers.forEach(tier => {
         const script = getTierScript(tier);

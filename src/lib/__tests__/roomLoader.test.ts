@@ -233,7 +233,7 @@ describe("loadMergedRoom", () => {
           returns: vi.fn().mockResolvedValue({
             data: [
               {
-                room_id: "vip3-room",
+                room_id: "level3-room",
                 index: 0,
                 slug: "vip-entry",
                 keyword_en: "vip-en",
@@ -248,7 +248,7 @@ describe("loadMergedRoom", () => {
       if (table === "rooms") {
         return makeChain({
           maybeSingle: vi.fn().mockResolvedValue({
-            data: { id: "vip3-room", keywords: ["vip"] },
+            data: { id: "level3-room", keywords: ["vip"] },
             error: null,
           }),
         });
@@ -257,7 +257,7 @@ describe("loadMergedRoom", () => {
       return makeChain();
     });
 
-    const result = await loadMergedRoom("vip3-room");
+    const result = await loadMergedRoom("level3-room");
 
     expect(result.hasFullAccess).toBe(true);
     expect(result.errorCode).toBeUndefined();
@@ -290,7 +290,7 @@ describe("loadMergedRoom", () => {
 
     jsonMocks.mockLoadRoomJson.mockResolvedValueOnce({
       id: "json-room",
-      tier: "Free / Miễn phí",
+      tier: "Level 0 / Miễn phí",
       entries: [
         {
           slug: "json-entry",
@@ -327,7 +327,7 @@ describe("loadMergedRoom", () => {
 
     jsonMocks.mockLoadRoomJson.mockResolvedValueOnce({
       id: "bad-json-room",
-      tier: "Free / Miễn phí",
+      tier: "Level 0 / Miễn phí",
       entries: "not-an-array",
     });
 
@@ -416,7 +416,7 @@ describe("loadMergedRoom", () => {
 
     jsonMocks.mockLoadRoomJson.mockResolvedValueOnce({
       id: "mixed-room",
-      tier: "Free / Miễn phí",
+      tier: "Level 0 / Miễn phí",
       entries: [
         {
           slug: "json-recovery-entry",
@@ -509,7 +509,7 @@ describe("loadMergedRoom", () => {
 
     jsonMocks.mockLoadRoomJson.mockResolvedValueOnce({
       id: "mixed-room",
-      tier: "Free / Miễn phí",
+      tier: "Level 0 / Miễn phí",
       entries: [
         {
           slug: "",
@@ -557,7 +557,7 @@ describe("loadMergedRoom", () => {
 
     jsonMocks.mockLoadRoomJson.mockResolvedValueOnce({
       id: "broken-room",
-      tier: "Free / Miễn phí",
+      tier: "Level 0 / Miễn phí",
       entries: 12345,
     });
 

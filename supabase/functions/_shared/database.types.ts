@@ -10065,17 +10065,17 @@ export type Database = {
       feedback_priority: "low" | "normal" | "high"
       feedback_status: "new" | "open" | "resolved" | "archived"
       tier_id:
-        | "free"
-        | "vip1"
-        | "vip2"
-        | "vip3"
-        | "vip4"
-        | "vip5"
-        | "vip6"
-        | "vip7"
-        | "vip8"
-        | "vip9"
-      vip_key: "free" | "vip1" | "vip3" | "vip9"
+        | "level0"
+        | "level1"
+        | "level2"
+        | "level3"
+        | "level4"
+        | "level5"
+        | "level6"
+        | "level7"
+        | "level8"
+        | "level9"
+      vip_key: "level0" | "level1" | "level3" | "level9"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -10231,18 +10231,18 @@ export const Constants = {
       feedback_priority: ["low", "normal", "high"],
       feedback_status: ["new", "open", "resolved", "archived"],
       tier_id: [
-        "free",
-        "vip1",
-        "vip2",
-        "vip3",
-        "vip4",
-        "vip5",
-        "vip6",
-        "vip7",
-        "vip8",
-        "vip9",
+        "level0",
+        "level1",
+        "level2",
+        "level3",
+        "level4",
+        "level5",
+        "level6",
+        "level7",
+        "level8",
+        "level9",
       ],
-      vip_key: ["free", "vip1", "vip3", "vip9"],
+      vip_key: ["level0", "level1", "level3", "level9"],
     },
   },
 } as const

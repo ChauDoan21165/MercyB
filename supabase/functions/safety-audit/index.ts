@@ -156,7 +156,7 @@ async function auditRoomSafety(roomData: any): Promise<SafetyIssue[]> {
   
   // 2. Check disclaimers
   const disclaimerCheck = hasDisclaimers(roomData);
-  if (!disclaimerCheck.hasDisclaimer && roomData.tier !== 'free') {
+  if (!disclaimerCheck.hasDisclaimer && roomData.tier !== 'level0') {
     issues.push({
       roomId,
       issueType: 'disclaimer',

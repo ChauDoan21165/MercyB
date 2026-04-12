@@ -45,10 +45,10 @@ export const KidsLevelSelector = () => (
 );
 
 /* ===============================
-   VIP9 Strategy Page
+   Level 9 Strategy Page
 ================================ */
 
-export const VIP9Page = () => <PlaceholderPage title="VIP9 Page" />;
+export const VIP9Page = () => <PlaceholderPage title="Level 9 Page" />;
 
 /* ===============================
    Payment pages

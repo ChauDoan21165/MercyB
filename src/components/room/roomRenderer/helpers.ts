@@ -40,7 +40,7 @@ export function pickIntroVI(room: AnyRoom) {
   );
 }
 export function pickTier(room: AnyRoom): string {
-  // IMPORTANT: do NOT default missing tier to "free" here.
+  // IMPORTANT: do NOT default missing tier to "level0" here.
   return String(room?.tier ?? room?.meta?.tier ?? "").toLowerCase();
 }
 export function normalizeRoomTierToTierId(roomTier: string): TierId | null {
@@ -78,7 +78,7 @@ export function dispatchHostContext(detail: Record<string, any>) {
 export function coreRoomIdFromEffective(effectiveRoomId: string) {
   const id = String(effectiveRoomId || "").trim();
   if (!id) return id;
-  return id.replace(/_(vip[1-9]|free)$/i, "");
+  return id.replace(/_(vip[1-9]|level0)$/i, "");
 }
 
 // ---------- DB “stub” detection ----------

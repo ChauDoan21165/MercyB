@@ -93,7 +93,7 @@ export function decompressJSON<T>(compressed: string): T {
 }
 
 /**
- * Tree-shake utility - mark as side-effect free
+ * Tree-shake utility - mark as side-effect level0
  */
 export const treeshake = {
   /**

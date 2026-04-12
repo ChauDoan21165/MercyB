@@ -1,7 +1,7 @@
 // src/services/mercyLocalReplies.ts
 
 export type RegionalOrigin = 'HANOI' | 'SAIGON' | 'OTHER';
-export type RoomTier = 'FREE' | 'VIP1' | 'VIP2' | 'VIP3';
+export type RoomTier = 'FREE' | 'Level 1' | 'Level 2' | 'Level 3';
 
 interface MercyFeedback {
   text: string;
@@ -35,9 +35,9 @@ export function getMercyReply(
   // 1. Get the regional specific text
   const baseText = FEEDBACK_LIBRARY[errorCode]?.[origin] || "That was close! Let's try one more time.";
 
-  // 2. Adjust "Tone" based on Tier (VIP3 is more direct/professional)
+  // 2. Adjust "Tone" based on Tier (Level 3 is more direct/professional)
   let finalMessage = baseText;
-  if (tier === 'VIP3') {
+  if (tier === 'Level 3') {
     finalMessage = finalMessage.replace("You're doing great!", "Good attempt.");
   }
 

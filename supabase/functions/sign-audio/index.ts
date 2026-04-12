@@ -35,8 +35,8 @@ Deno.serve(async (req: Request) => {
     }
 
     // HARDEN: keep signing scoped to one prefix (adjust if you want)
-    // Example allowed: "vip3/xxx.mp3" or "vip9/yyy.mp3"
-    if (!/^(vip1|vip3|vip9)\//.test(p)) {
+    // Example allowed: "level3/xxx.mp3" or "level9/yyy.mp3"
+    if (!/^(level1|level3|level9)\//.test(p)) {
       return new Response(JSON.stringify({ error: "path not allowed" }), {
         status: 403,
         headers: { "content-type": "application/json" },

@@ -113,7 +113,7 @@ export function useMakeReply() {
       vipPaid3: "If still locked: sign out/in once, then check /tiers to verify.",
       vipCheckout1: "To subscribe:",
       vipCheckout2:
-        "Open /tiers → choose VIP1/VIP3/VIP9 → complete checkout.",
+        "Open /tiers → choose Level 1/Level 3/Level 9 → complete checkout.",
       vipCheckout3: "After payment, return to your room.",
       repeat1: "Repeat mode:",
       repeat2: "Tap Play → listen once → then press “My turn” and speak.",
@@ -163,7 +163,7 @@ export function useMakeReply() {
       vipPaid3:
         "Nếu vẫn bị khóa: đăng xuất/đăng nhập lại 1 lần, rồi vào /tiers để kiểm tra.",
       vipCheckout1: "Để đăng ký VIP:",
-      vipCheckout2: "Mở /tiers → chọn VIP1/VIP3/VIP9 → thanh toán.",
+      vipCheckout2: "Mở /tiers → chọn Level 1/Level 3/Level 9 → thanh toán.",
       vipCheckout3: "Xong thì quay lại room.",
       repeat1: "Repeat mode:",
       repeat2: "Bấm Play → nghe 1 lần → bấm “My turn” rồi nói.",

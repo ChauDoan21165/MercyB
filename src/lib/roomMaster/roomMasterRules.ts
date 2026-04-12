@@ -2,7 +2,7 @@
 // NOTE (end-of-project safe patch):
 // - Keep runtime behavior identical.
 // - Avoid over-narrowing that causes TS include/index errors.
-// - vip3ii is DELETED as a tier; legacy inputs normalize to vip3 (non-breaking).
+// - vip3ii is DELETED as a tier; legacy inputs normalize to level3 (non-breaking).
 
 import type { TierId } from "./roomMasterTypes";
 
@@ -26,26 +26,26 @@ export const RULES = {
     // Keep as string[] to prevent TS `.includes(string)` headaches.
     // vip3ii intentionally NOT a valid tier anymore.
     VALID_TIERS: [
-      "free",
-      "Free / Miễn phí",
-      "vip1",
-      "VIP1",
-      "vip2",
-      "VIP2",
-      "vip3",
-      "VIP3",
-      "vip4",
-      "VIP4",
-      "vip5",
-      "VIP5",
-      "vip6",
-      "VIP6",
-      "vip7",
-      "VIP7",
-      "vip8",
-      "VIP8",
-      "vip9",
-      "VIP9",
+      "level0",
+      "Level 0 / Miễn phí",
+      "level1",
+      "Level 1",
+      "level2",
+      "Level 2",
+      "level3",
+      "Level 3",
+      "level4",
+      "Level 4",
+      "level5",
+      "Level 5",
+      "level6",
+      "Level 6",
+      "level7",
+      "Level 7",
+      "level8",
+      "Level 8",
+      "level9",
+      "Level 9",
       "kids_1",
       "Kids Level 1",
       "kids_2",
@@ -55,33 +55,33 @@ export const RULES = {
     ] as readonly string[],
 
     // Legacy normalization (non-breaking):
-    // If old data still says vip3ii/VIP3II, map it to vip3.
+    // If old data still says vip3ii/VIP3II, map it to level3.
     NORMALIZE_MAP: ({
-      "Free / Miễn phí": "free",
-      free: "free",
-      VIP1: "vip1",
-      vip1: "vip1",
-      VIP2: "vip2",
-      vip2: "vip2",
-      VIP3: "vip3",
-      vip3: "vip3",
+      "Level 0 / Miễn phí": "level0",
+      level0: "level0",
+      level1: "level1",
+      "Level 1": "level1",
+      level2: "level2",
+      "Level 2": "level2",
+      level3: "level3",
+      "Level 3": "level3",
 
-      // legacy deleted tier -> vip3
-      VIP3II: "vip3",
-      vip3ii: "vip3",
+      // legacy deleted tier -> level3
+      VIP3II: "level3",
+      vip3ii: "level3",
 
-      VIP4: "vip4",
-      vip4: "vip4",
-      VIP5: "vip5",
-      vip5: "vip5",
-      VIP6: "vip6",
-      vip6: "vip6",
-      VIP7: "vip7",
-      vip7: "vip7",
-      VIP8: "vip8",
-      vip8: "vip8",
-      VIP9: "vip9",
-      vip9: "vip9",
+      level4: "level4",
+      "Level 4": "level4",
+      level5: "level5",
+      "Level 5": "level5",
+      level6: "level6",
+      "Level 6": "level6",
+      level7: "level7",
+      "Level 7": "level7",
+      level8: "level8",
+      "Level 8": "level8",
+      level9: "level9",
+      "Level 9": "level9",
       "Kids Level 1": "kids_1",
       kids_1: "kids_1",
       "Kids Level 2": "kids_2",
@@ -168,8 +168,8 @@ export const RULES = {
 
   // Safety Disclaimer Requirements
   SAFETY: {
-    // vip3ii removed; legacy vip3ii normalizes to vip3 anyway.
-    REQUIRED_FOR_TIERS: (["vip1", "vip2", "vip3", "vip4", "vip5", "vip6", "vip9"] as unknown) as TierId[],
+    // vip3ii removed; legacy vip3ii normalizes to level3 anyway.
+    REQUIRED_FOR_TIERS: (["level1", "level2", "level3", "level4", "level5", "level6", "level9"] as unknown) as TierId[],
     DEFAULT_EN:
       "This content is for educational purposes only and is not a substitute for professional medical or mental health advice. If you are experiencing a crisis, please contact emergency services or a qualified healthcare provider immediately.",
     DEFAULT_VI:

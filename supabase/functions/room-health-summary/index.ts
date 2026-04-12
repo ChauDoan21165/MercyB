@@ -15,46 +15,46 @@ const corsHeaders = {
 // ============= CANONICAL TIER TYPES =============
 
 export type TierKey =
-  | "free"
-  | "vip1"
-  | "vip2"
-  | "vip3"
-  | "vip4"
-  | "vip5"
-  | "vip6"
-  | "vip7"
-  | "vip8"
-  | "vip9";
+  | "level0"
+  | "level1"
+  | "level2"
+  | "level3"
+  | "level4"
+  | "level5"
+  | "level6"
+  | "level7"
+  | "level8"
+  | "level9";
 
 function normalizeTier(tierRaw: string | null | undefined): TierKey | null {
   if (!tierRaw) return null;
   const t = tierRaw.toLowerCase().trim();
 
-  // Common DB formats, e.g. "Free / Miễn phí", "VIP1 / VIP1"
-  if (t.startsWith("free") || t.includes("miễn phí")) return "free";
-  if (t.startsWith("vip1") || t.includes("vip1")) return "vip1";
-  if (t.startsWith("vip2") || t.includes("vip2")) return "vip2";
-  if (t.startsWith("vip3") || t.includes("vip3")) return "vip3";
-  if (t.startsWith("vip4") || t.includes("vip4")) return "vip4";
-  if (t.startsWith("vip5") || t.includes("vip5")) return "vip5";
-  if (t.startsWith("vip6") || t.includes("vip6")) return "vip6";
-  if (t.startsWith("vip7") || t.includes("vip7")) return "vip7";
-  if (t.startsWith("vip8") || t.includes("vip8")) return "vip8";
-  if (t.startsWith("vip9") || t.includes("vip9")) return "vip9";
+  // Common DB formats, e.g. "Level 0 / Miễn phí", "Level 1 / Level 1"
+  if (t.startsWith("level0") || t.includes("miễn phí")) return "level0";
+  if (t.startsWith("level1") || t.includes("level1")) return "level1";
+  if (t.startsWith("level2") || t.includes("level2")) return "level2";
+  if (t.startsWith("level3") || t.includes("level3")) return "level3";
+  if (t.startsWith("level4") || t.includes("level4")) return "level4";
+  if (t.startsWith("level5") || t.includes("level5")) return "level5";
+  if (t.startsWith("level6") || t.includes("level6")) return "level6";
+  if (t.startsWith("level7") || t.includes("level7")) return "level7";
+  if (t.startsWith("level8") || t.includes("level8")) return "level8";
+  if (t.startsWith("level9") || t.includes("level9")) return "level9";
 
-  // Fallback: already like "vip1", "free"
+  // Fallback: already like "level1", "level0"
   if (
     [
-      "free",
-      "vip1",
-      "vip2",
-      "vip3",
-      "vip4",
-      "vip5",
-      "vip6",
-      "vip7",
-      "vip8",
-      "vip9",
+      "level0",
+      "level1",
+      "level2",
+      "level3",
+      "level4",
+      "level5",
+      "level6",
+      "level7",
+      "level8",
+      "level9",
     ].includes(t)
   ) {
     return t as TierKey;
@@ -65,26 +65,26 @@ function normalizeTier(tierRaw: string | null | undefined): TierKey | null {
 
 function tierKeyToLabel(tier: TierKey): string {
   switch (tier) {
-    case "free":
-      return "Free / Miễn phí";
-    case "vip1":
-      return "VIP1 / VIP1";
-    case "vip2":
-      return "VIP2 / VIP2";
-    case "vip3":
-      return "VIP3 / VIP3";
-    case "vip4":
-      return "VIP4 / VIP4";
-    case "vip5":
-      return "VIP5 / VIP5";
-    case "vip6":
-      return "VIP6 / VIP6";
-    case "vip7":
-      return "VIP7 / VIP7";
-    case "vip8":
-      return "VIP8 / VIP8";
-    case "vip9":
-      return "VIP9 / VIP9";
+    case "level0":
+      return "Level 0 / Miễn phí";
+    case "level1":
+      return "Level 1 / Level 1";
+    case "level2":
+      return "Level 2 / Level 2";
+    case "level3":
+      return "Level 3 / Level 3";
+    case "level4":
+      return "Level 4 / Level 4";
+    case "level5":
+      return "Level 5 / Level 5";
+    case "level6":
+      return "Level 6 / Level 6";
+    case "level7":
+      return "Level 7 / Level 7";
+    case "level8":
+      return "Level 8 / Level 8";
+    case "level9":
+      return "Level 9 / Level 9";
   }
 }
 
@@ -695,7 +695,7 @@ serve(async (req) => {
     const validationResults: RoomValidationResult[] = [];
     
     for (const room of roomsData || []) {
-      // Normalize tier from DB format (e.g., "VIP1 / VIP1" -> "vip1")
+      // Normalize tier from DB format (e.g., "Level 1 / Level 1" -> "level1")
       const normalizedRoomTier = normalizeTier(room.tier);
       
       // Skip if tier filter is set and doesn't match
@@ -705,11 +705,11 @@ serve(async (req) => {
       
       // Validate using entries from database
       const entries = Array.isArray(room.entries) ? room.entries : [];
-      const result = validateRoomFromDb(room.id, room.tier || 'free', entries);
+      const result = validateRoomFromDb(room.id, room.tier || 'level0', entries);
       validationResults.push(result);
       
-      // Use normalized tier for aggregation (use "free" if normalization fails)
-      const tier = normalizedRoomTier || "free";
+      // Use normalized tier for aggregation (use "level0" if normalization fails)
+      const tier = normalizedRoomTier || "level0";
       
       // Initialize tier object if not exists
       if (!byTier[tier]) {
@@ -742,7 +742,7 @@ serve(async (req) => {
 
     // ============= NEW: Build VIP tier coverage analysis =============
     const vipTierCoverage: VipTierCoverage[] = [];
-    const allVipTierKeys: TierKey[] = ["vip1", "vip2", "vip3", "vip4", "vip5", "vip6", "vip7", "vip8", "vip9"];
+    const allVipTierKeys: TierKey[] = ["level1", "level2", "level3", "level4", "level5", "level6", "level7", "level8", "level9"];
     
     for (const tierId of allVipTierKeys) {
       const label = tierKeyToLabel(tierId);
@@ -828,15 +828,15 @@ serve(async (req) => {
       
       // Check all VIP tiers for gaps
       const allVipTiers: TierKey[] = [
-        "vip1",
-        "vip2",
-        "vip3",
-        "vip4",
-        "vip5",
-        "vip6",
-        "vip7",
-        "vip8",
-        "vip9",
+        "level1",
+        "level2",
+        "level3",
+        "level4",
+        "level5",
+        "level6",
+        "level7",
+        "level8",
+        "level9",
       ];
       
       const missingVipTiers = allVipTiers.filter(

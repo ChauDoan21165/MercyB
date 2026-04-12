@@ -243,7 +243,7 @@ export function RoomSpecificationManager() {
                 id="target-id"
                 value={targetId}
                 onChange={(e) => setTargetId(e.target.value)}
-                placeholder={applyScope === 'room' ? 'e.g., confidence-vip3' : 'e.g., vip3'}
+                placeholder={applyScope === 'room' ? 'e.g., confidence-level3' : 'e.g., level3'}
                 className="border-2 border-black"
               />
             </div>

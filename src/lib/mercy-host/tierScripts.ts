@@ -45,7 +45,7 @@ type StringWithLocales = string & {
  * Keep greetings/encouragements deterministic in tests via stableIndex().
  */
 export const TIER_SCRIPTS: Record<string, TierScript> = {
-  free: {
+  level0: {
     tone: 'warm, encouraging, gentle',
     greetings: [
       {
@@ -93,7 +93,7 @@ export const TIER_SCRIPTS: Record<string, TierScript> = {
     ],
   },
 
-  vip1: {
+  level1: {
     tone: 'friendly, supportive',
     greetings: [
       {
@@ -105,8 +105,8 @@ export const TIER_SCRIPTS: Record<string, TierScript> = {
         vi: 'Hãy cùng củng cố nền tảng của bạn, {{name}}.',
       },
       {
-        en: 'Welcome to VIP1, {{name}}. Your growth journey accelerates here.',
-        vi: 'Chào mừng đến VIP1, {{name}}. Hành trình phát triển của bạn tăng tốc từ đây.',
+        en: 'Welcome to Level 1, {{name}}. Your growth journey accelerates here.',
+        vi: 'Chào mừng đến Level 1, {{name}}. Hành trình phát triển của bạn tăng tốc từ đây.',
       },
       {
         en: 'Hi {{name}} — today we build confidence through clarity.',
@@ -141,7 +141,7 @@ export const TIER_SCRIPTS: Record<string, TierScript> = {
     ],
   },
 
-  vip2: {
+  level2: {
     tone: 'motivating, direct',
     greetings: [
       {
@@ -189,7 +189,7 @@ export const TIER_SCRIPTS: Record<string, TierScript> = {
     ],
   },
 
-  vip3: {
+  level3: {
     tone: 'confident, intellectual',
     greetings: [
       {
@@ -237,7 +237,7 @@ export const TIER_SCRIPTS: Record<string, TierScript> = {
     ],
   },
 
-  vip4: {
+  level4: {
     tone: 'sharp, structured',
     greetings: [
       {
@@ -285,7 +285,7 @@ export const TIER_SCRIPTS: Record<string, TierScript> = {
     ],
   },
 
-  vip5: {
+  level5: {
     tone: 'leadership, evolution',
     greetings: [
       {
@@ -333,7 +333,7 @@ export const TIER_SCRIPTS: Record<string, TierScript> = {
     ],
   },
 
-  vip6: {
+  level6: {
     tone: 'serene, strategic',
     greetings: [
       {
@@ -381,7 +381,7 @@ export const TIER_SCRIPTS: Record<string, TierScript> = {
     ],
   },
 
-  vip7: {
+  level7: {
     tone: 'visionary',
     greetings: [
       {
@@ -429,7 +429,7 @@ export const TIER_SCRIPTS: Record<string, TierScript> = {
     ],
   },
 
-  vip8: {
+  level8: {
     tone: 'poetic, transcendent',
     greetings: [
       {
@@ -477,7 +477,7 @@ export const TIER_SCRIPTS: Record<string, TierScript> = {
     ],
   },
 
-  vip9: {
+  level9: {
     tone: 'divine, metaphysical',
     greetings: [
       {
@@ -527,29 +527,29 @@ export const TIER_SCRIPTS: Record<string, TierScript> = {
 };
 
 const TIER_FALLBACK_CHAIN: Record<string, string[]> = {
-  vip9: ['vip8', 'vip7', 'vip6', 'free'],
-  vip8: ['vip7', 'vip6', 'free'],
-  vip7: ['vip6', 'vip5', 'free'],
-  vip6: ['vip5', 'vip4', 'free'],
-  vip5: ['vip4', 'vip3', 'free'],
-  vip4: ['vip3', 'vip2', 'free'],
-  vip3: ['vip2', 'vip1', 'free'],
-  vip2: ['vip1', 'free'],
-  vip1: ['free'],
-  free: [],
+  level9: ['level8', 'level7', 'level6', 'level0'],
+  level8: ['level7', 'level6', 'level0'],
+  level7: ['level6', 'level5', 'level0'],
+  level6: ['level5', 'level4', 'level0'],
+  level5: ['level4', 'level3', 'level0'],
+  level4: ['level3', 'level2', 'level0'],
+  level3: ['level2', 'level1', 'level0'],
+  level2: ['level1', 'level0'],
+  level1: ['level0'],
+  level0: [],
 };
 
 export const TIER_WEIGHTS: Record<string, number> = {
-  free: 0.3,
-  vip1: 0.4,
-  vip2: 0.5,
-  vip3: 0.6,
-  vip4: 0.7,
-  vip5: 0.75,
-  vip6: 0.8,
-  vip7: 0.85,
-  vip8: 0.9,
-  vip9: 1.0,
+  level0: 0.3,
+  level1: 0.4,
+  level2: 0.5,
+  level3: 0.6,
+  level4: 0.7,
+  level5: 0.75,
+  level6: 0.8,
+  level7: 0.85,
+  level8: 0.9,
+  level9: 1.0,
 };
 
 function normalizeTierKey(tier: string): string {
@@ -566,7 +566,7 @@ export function getTierScript(tier: string): TierScript {
     if (TIER_SCRIPTS[fallbackTier]) return TIER_SCRIPTS[fallbackTier];
   }
 
-  return TIER_SCRIPTS.free;
+  return TIER_SCRIPTS.level0;
 }
 
 export function getTierWeight(tier: string): number {
@@ -605,86 +605,86 @@ function ensureNameTemplate(g: { en: string; vi: string }): { en: string; vi: st
 }
 
 const GREETING_SUFFIXES: Record<string, { en: string[]; vi: string[] }> = {
-  free: {
+  level0: {
     en: ['No pressure.', 'One step is enough.', 'We can go gently.'],
     vi: ['Không áp lực.', 'Một bước là đủ.', 'Mình đi nhẹ nhàng thôi.'],
   },
-  vip1: {
+  level1: {
     en: ["We'll keep it steady.", 'Clarity first.', 'Basics, then flow.'],
     vi: ['Mình giữ nhịp vững nhé.', 'Rõ ràng trước.', 'Nền tảng rồi mới bay.'],
   },
-  vip2: {
+  level2: {
     en: ['Keep what works.', 'Next right step.', 'Focus, then speed.'],
     vi: ['Giữ điều hiệu quả.', 'Bước đúng tiếp theo.', 'Tập trung rồi mới nhanh.'],
   },
-  vip3: {
+  level3: {
     en: ['Patterns over shortcuts.', "Let's find the signal.", 'Depth, calmly.'],
     vi: ['Quy luật hơn đường tắt.', 'Cùng tìm tín hiệu.', 'Đi sâu, bình thản.'],
   },
-  vip4: {
+  level4: {
     en: ['Clean structure.', 'One precise rep.', 'Details done kindly.'],
     vi: ['Cấu trúc gọn.', 'Một lần làm chuẩn.', 'Chi tiết làm bằng sự tử tế.'],
   },
-  vip5: {
+  level5: {
     en: ['Lead gently.', 'Calm is influence.', 'Make it sustainable.'],
     vi: ['Dẫn dắt nhẹ.', 'Bình tĩnh là ảnh hưởng.', 'Làm sao cho bền.'],
   },
-  vip6: {
+  level6: {
     en: ['Quiet advantage.', 'Long-term view.', 'Calm, then choose.'],
     vi: ['Lợi thế yên tĩnh.', 'Góc nhìn dài hạn.', 'Bình tĩnh rồi chọn.'],
   },
-  vip7: {
+  level7: {
     en: ['Build the blueprint.', 'Create the next step.', 'Vision with care.'],
     vi: ['Dựng bản thiết kế.', 'Tạo bước kế tiếp.', 'Tầm nhìn có nâng niu.'],
   },
-  vip8: {
+  level8: {
     en: ['Hold complexity softly.', 'Listen beneath noise.', 'Let meaning arrive.'],
     vi: ['Ôm phức tạp nhẹ thôi.', 'Nghe dưới tiếng ồn.', 'Để ý nghĩa tự đến.'],
   },
-  vip9: {
+  level9: {
     en: ['Quiet mastery.', 'Precision with grace.', 'Lead by being.'],
     vi: ['Thành thạo yên tĩnh.', 'Chính xác mà dịu.', 'Dẫn dắt bằng hiện hữu.'],
   },
 };
 
 const ENCOURAGEMENT_SUFFIXES: Record<string, { en: string[]; vi: string[] }> = {
-  free: {
+  level0: {
     en: ["I'm here.", "You're not behind.", 'Take your time.'],
     vi: ['Mình ở đây.', 'Bạn không hề chậm.', 'Từ từ thôi.'],
   },
-  vip1: {
+  level1: {
     en: ['That adds up.', 'Clean reps win.', 'Keep it simple.'],
     vi: ['Rồi sẽ cộng dồn.', 'Luyện chuẩn là thắng.', 'Giữ đơn giản nhé.'],
   },
-  vip2: {
+  level2: {
     en: ['Stay consistent.', 'Protect your focus.', 'Keep moving.'],
     vi: ['Giữ đều nhé.', 'Giữ sự tập trung.', 'Cứ tiến lên.'],
   },
-  vip3: {
+  level3: {
     en: ["You're earning clarity.", 'Think in layers.', 'Let it click.'],
     vi: ["Bạn đang 'kiếm' sự rõ.", 'Nghĩ theo lớp.', "Rồi sẽ 'ngộ'."],
   },
-  vip4: {
+  level4: {
     en: ['One clean rep.', 'Details matter kindly.', 'Stay exact.'],
     vi: ['Một lần chuẩn.', 'Chi tiết là sự tử tế.', 'Giữ chính xác.'],
   },
-  vip5: {
+  level5: {
     en: ['Calm is power.', 'Lead softly.', 'Trust grows.'],
     vi: ['Bình tĩnh là sức mạnh.', 'Dẫn dắt mềm.', 'Niềm tin sẽ lớn.'],
   },
-  vip6: {
+  level6: {
     en: ['Choose the lever.', 'Quiet wins.', 'Long-term calm.'],
     vi: ['Chọn đúng đòn bẩy.', 'Yên tĩnh mà thắng.', 'Bình tĩnh dài hạn.'],
   },
-  vip7: {
+  level7: {
     en: ['Ship the next step.', 'Keep the horizon.', 'Create gently.'],
     vi: ['Làm xong bước kế.', 'Giữ chân trời.', 'Sáng tạo nhẹ thôi.'],
   },
-  vip8: {
+  level8: {
     en: ['Let it unfold.', 'Soft focus.', 'Spacious mind.'],
     vi: ['Để nó tự mở ra.', 'Tập trung mềm.', 'Tâm trí rộng.'],
   },
-  vip9: {
+  level9: {
     en: ['Graceful standard.', 'Quiet precision.', 'You embody it.'],
     vi: ['Tiêu chuẩn dịu dàng.', 'Chính xác yên tĩnh.', 'Bạn đang sống nó.'],
   },
@@ -696,7 +696,7 @@ function pickSuffix(
   key: string,
 ): { en: string; vi: string } | null {
   const normalizedTier = normalizeTierKey(tier);
-  const pool = table[normalizedTier] || table.free;
+  const pool = table[normalizedTier] || table.level0;
 
   if (!pool || pool.en.length === 0 || pool.vi.length === 0) return null;
 
@@ -768,7 +768,7 @@ export function getTierEncouragement(tier: string): { en: string; vi: string } {
 }
 
 const TIER_EMOTION_SCRIPTS_TEST_SAFE: Record<string, Partial<Record<EmotionState, EmotionScript>>> = {
-  free: {
+  level0: {
     low_mood: {
       en: "It's okay to feel this way. I'm here, walking beside you.",
       vi: 'Không sao cả khi cảm thấy như vậy. Mình ở đây, bước cùng bạn.',
@@ -787,7 +787,7 @@ const TIER_EMOTION_SCRIPTS_TEST_SAFE: Record<string, Partial<Record<EmotionState
     },
   },
 
-  vip1: {
+  level1: {
     low_mood: {
       en: 'Gentle progress is still progress. I see you.',
       vi: 'Tiến bộ nhẹ nhàng vẫn là tiến bộ. Mình thấy bạn.',
@@ -806,7 +806,7 @@ const TIER_EMOTION_SCRIPTS_TEST_SAFE: Record<string, Partial<Record<EmotionState
     },
   },
 
-  vip2: {
+  level2: {
     low_mood: {
       en: "Even on hard days, you're building something real.",
       vi: 'Ngay cả những ngày khó, bạn vẫn xây dựng điều có thật.',
@@ -825,7 +825,7 @@ const TIER_EMOTION_SCRIPTS_TEST_SAFE: Record<string, Partial<Record<EmotionState
     },
   },
 
-  vip3: {
+  level3: {
     low_mood: {
       en: 'Mastery includes the valleys. Keep walking.',
       vi: 'Sự thành thạo bao gồm cả thung lũng. Tiếp tục bước.',
@@ -844,7 +844,7 @@ const TIER_EMOTION_SCRIPTS_TEST_SAFE: Record<string, Partial<Record<EmotionState
     },
   },
 
-  vip4: {
+  level4: {
     low_mood: {
       en: "Precision doesn't mean perfection. You're doing well.",
       vi: 'Chính xác không có nghĩa là hoàn hảo. Bạn đang làm tốt.',
@@ -863,7 +863,7 @@ const TIER_EMOTION_SCRIPTS_TEST_SAFE: Record<string, Partial<Record<EmotionState
     },
   },
 
-  vip5: {
+  level5: {
     low_mood: {
       en: 'Leaders have quiet moments too. Rest is strength.',
       vi: 'Người lãnh đạo cũng có lúc yên lặng. Nghỉ ngơi là sức mạnh.',
@@ -882,7 +882,7 @@ const TIER_EMOTION_SCRIPTS_TEST_SAFE: Record<string, Partial<Record<EmotionState
     },
   },
 
-  vip6: {
+  level6: {
     low_mood: {
       en: 'Deep waters hold great treasures. Be patient.',
       vi: 'Vùng nước sâu chứa kho báu lớn. Hãy kiên nhẫn.',
@@ -901,7 +901,7 @@ const TIER_EMOTION_SCRIPTS_TEST_SAFE: Record<string, Partial<Record<EmotionState
     },
   },
 
-  vip7: {
+  level7: {
     low_mood: {
       en: 'Visionaries see through the fog. Keep looking.',
       vi: 'Người có tầm nhìn nhìn xuyên qua sương mù. Tiếp tục nhìn.',
@@ -920,7 +920,7 @@ const TIER_EMOTION_SCRIPTS_TEST_SAFE: Record<string, Partial<Record<EmotionState
     },
   },
 
-  vip8: {
+  level8: {
     low_mood: {
       en: 'Light moves through shadow. You are that light.',
       vi: 'Ánh sáng xuyên qua bóng tối. Bạn là ánh sáng đó.',
@@ -939,7 +939,7 @@ const TIER_EMOTION_SCRIPTS_TEST_SAFE: Record<string, Partial<Record<EmotionState
     },
   },
 
-  vip9: {
+  level9: {
     low_mood: {
       en: 'Even masters walk through shadows. You are not alone.',
       vi: 'Ngay cả bậc thầy cũng bước qua bóng tối. Bạn không đơn độc.',
@@ -960,61 +960,61 @@ const TIER_EMOTION_SCRIPTS_TEST_SAFE: Record<string, Partial<Record<EmotionState
 };
 
 const TIER_EMOTION_EXTRAS_RUNTIME: Record<string, Partial<Record<string, EmotionScript>>> = {
-  free: {
+  level0: {
     returning_after_gap: {
       en: "Welcome back. No pressure — we'll restart gently.",
       vi: 'Chào mừng trở lại. Không áp lực — mình bắt đầu lại thật nhẹ nhàng.',
     },
   },
-  vip1: {
+  level1: {
     returning_after_gap: {
       en: 'You came back — that is already a win.',
       vi: 'Bạn quay lại rồi — vậy là một chiến thắng rồi.',
     },
   },
-  vip2: {
+  level2: {
     returning_after_gap: {
       en: "Welcome back. We can rebuild momentum fast — gently.",
       vi: 'Chào mừng trở lại. Mình có thể lấy lại đà nhanh — nhưng vẫn nhẹ nhàng.',
     },
   },
-  vip3: {
+  level3: {
     returning_after_gap: {
       en: 'Welcome back. Depth returns quickly when you are ready.',
       vi: 'Chào mừng trở lại. Chiều sâu sẽ quay lại nhanh khi bạn sẵn sàng.',
     },
   },
-  vip4: {
+  level4: {
     returning_after_gap: {
       en: "Welcome back. We'll rebuild structure one clean step at a time.",
       vi: 'Chào mừng trở lại. Mình dựng lại cấu trúc từng bước chuẩn một.',
     },
   },
-  vip5: {
+  level5: {
     returning_after_gap: {
       en: 'Welcome back. The leader in you never left.',
       vi: 'Chào mừng trở lại. Người lãnh đạo trong bạn chưa từng rời đi.',
     },
   },
-  vip6: {
+  level6: {
     returning_after_gap: {
       en: 'Welcome back. Calm returns faster than you expect.',
       vi: 'Chào mừng trở lại. Sự bình tĩnh sẽ quay lại nhanh hơn bạn nghĩ.',
     },
   },
-  vip7: {
+  level7: {
     returning_after_gap: {
       en: 'Welcome back. Your vision is still here, waiting.',
       vi: 'Chào mừng trở lại. Tầm nhìn của bạn vẫn ở đây, đang chờ.',
     },
   },
-  vip8: {
+  level8: {
     returning_after_gap: {
       en: 'Welcome back. The quiet meaning returns when you do.',
       vi: 'Chào mừng trở lại. Ý nghĩa yên lặng sẽ trở lại khi bạn trở lại.',
     },
   },
-  vip9: {
+  level9: {
     returning_after_gap: {
       en: "Welcome back. Mastery doesn't vanish — it waits.",
       vi: 'Chào mừng trở lại. Sự thành thạo không biến mất — nó chỉ đợi bạn.',
@@ -1038,7 +1038,7 @@ export function getEmotionScript(tier: string, emotion: EmotionState): EmotionSc
       if (fbExtra) return fbExtra;
     }
 
-    const freeExtra = TIER_EMOTION_EXTRAS_RUNTIME.free?.[String(emotion)];
+    const freeExtra = TIER_EMOTION_EXTRAS_RUNTIME.level0?.[String(emotion)];
     if (freeExtra) return freeExtra;
   }
 
@@ -1051,5 +1051,5 @@ export function getEmotionScript(tier: string, emotion: EmotionState): EmotionSc
     if (fallbackScripts && fallbackScripts[emotion]) return fallbackScripts[emotion]!;
   }
 
-  return TIER_EMOTION_SCRIPTS.free?.[emotion] || null;
+  return TIER_EMOTION_SCRIPTS.level0?.[emotion] || null;
 }

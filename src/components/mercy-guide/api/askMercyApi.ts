@@ -50,7 +50,7 @@ export async function askMercyApi({
         responseMode: 'bilingual_en_vi',
         mode,
         context: {
-          tier: tier || 'Free',
+          tier: tier || 'Level 0',
           pathSlug,
           tags: tags || [],
           englishLevel,

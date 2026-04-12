@@ -30,10 +30,10 @@ function activeSubscription(tierId: TierId): NonNullable<MockUser["subscription"
 }
 
 const MOCK_USERS: Record<TierId | "admin", MockUser> = {
-  free: {
-    id: "sim-user-free",
-    email: "sim-free@mercyblade.test",
-    tier: "free",
+  level0: {
+    id: "sim-user-level0",
+    email: "sim-level0@mercyblade.test",
+    tier: "level0",
     isAdmin: false,
     subscription: null,
   },
@@ -54,76 +54,76 @@ const MOCK_USERS: Record<TierId | "admin", MockUser> = {
     subscription: activeSubscription("premium_year"),
   },
 
-  vip1: {
-    id: "sim-user-vip1",
-    email: "sim-vip1@mercyblade.test",
-    tier: "vip1",
+  level1: {
+    id: "sim-user-level1",
+    email: "sim-level1@mercyblade.test",
+    tier: "level1",
     isAdmin: false,
-    subscription: activeSubscription("vip1"),
+    subscription: activeSubscription("level1"),
   },
 
-  vip2: {
-    id: "sim-user-vip2",
-    email: "sim-vip2@mercyblade.test",
-    tier: "vip2",
+  level2: {
+    id: "sim-user-level2",
+    email: "sim-level2@mercyblade.test",
+    tier: "level2",
     isAdmin: false,
-    subscription: activeSubscription("vip2"),
+    subscription: activeSubscription("level2"),
   },
 
-  vip3: {
-    id: "sim-user-vip3",
-    email: "sim-vip3@mercyblade.test",
-    tier: "vip3",
+  level3: {
+    id: "sim-user-level3",
+    email: "sim-level3@mercyblade.test",
+    tier: "level3",
     isAdmin: false,
-    subscription: activeSubscription("vip3"),
+    subscription: activeSubscription("level3"),
   },
 
-  vip4: {
-    id: "sim-user-vip4",
-    email: "sim-vip4@mercyblade.test",
-    tier: "vip4",
+  level4: {
+    id: "sim-user-level4",
+    email: "sim-level4@mercyblade.test",
+    tier: "level4",
     isAdmin: false,
-    subscription: activeSubscription("vip4"),
+    subscription: activeSubscription("level4"),
   },
 
-  vip5: {
-    id: "sim-user-vip5",
-    email: "sim-vip5@mercyblade.test",
-    tier: "vip5",
+  level5: {
+    id: "sim-user-level5",
+    email: "sim-level5@mercyblade.test",
+    tier: "level5",
     isAdmin: false,
-    subscription: activeSubscription("vip5"),
+    subscription: activeSubscription("level5"),
   },
 
-  vip6: {
-    id: "sim-user-vip6",
-    email: "sim-vip6@mercyblade.test",
-    tier: "vip6",
+  level6: {
+    id: "sim-user-level6",
+    email: "sim-level6@mercyblade.test",
+    tier: "level6",
     isAdmin: false,
-    subscription: activeSubscription("vip6"),
+    subscription: activeSubscription("level6"),
   },
 
-  vip7: {
-    id: "sim-user-vip7",
-    email: "sim-vip7@mercyblade.test",
-    tier: "vip7",
+  level7: {
+    id: "sim-user-level7",
+    email: "sim-level7@mercyblade.test",
+    tier: "level7",
     isAdmin: false,
-    subscription: activeSubscription("vip7"),
+    subscription: activeSubscription("level7"),
   },
 
-  vip8: {
-    id: "sim-user-vip8",
-    email: "sim-vip8@mercyblade.test",
-    tier: "vip8",
+  level8: {
+    id: "sim-user-level8",
+    email: "sim-level8@mercyblade.test",
+    tier: "level8",
     isAdmin: false,
-    subscription: activeSubscription("vip8"),
+    subscription: activeSubscription("level8"),
   },
 
-  vip9: {
-    id: "sim-user-vip9",
-    email: "sim-vip9@mercyblade.test",
-    tier: "vip9",
+  level9: {
+    id: "sim-user-level9",
+    email: "sim-level9@mercyblade.test",
+    tier: "level9",
     isAdmin: false,
-    subscription: activeSubscription("vip9"),
+    subscription: activeSubscription("level9"),
   },
 
   kids_1: {
@@ -153,9 +153,9 @@ const MOCK_USERS: Record<TierId | "admin", MockUser> = {
   admin: {
     id: "sim-user-admin",
     email: "sim-admin@mercyblade.test",
-    tier: "vip9",
+    tier: "level9",
     isAdmin: true,
-    subscription: activeSubscription("vip9"),
+    subscription: activeSubscription("level9"),
   },
 };
 

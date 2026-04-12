@@ -9,10 +9,10 @@
  * - RIGHT: Life Skills / Survival (debate, martial arts, productivity, public speaking)
  *
  * CRITICAL RULES:
- * 1. Same 3-column structure for every tier (FREE → VIP9)
+ * 1. Same 3-column structure for every tier (FREE → Level 9)
  * 2. Only content difficulty climbs with tiers, not the structure
- * 3. VIP3 is CORE SPECIALIZATION (center column only) - contains sensitive/heavy topics
- * 4. VIP3 is NOT a separate tier - VIP3 users have full access to VIP3
+ * 3. Level 3 is CORE SPECIALIZATION (center column only) - contains sensitive/heavy topics
+ * 4. Level 3 is NOT a separate tier - Level 3 users have full access to Level 3
  * 5. Never auto-mix rooms - use ONLY this explicit config
  */
 
@@ -121,12 +121,12 @@ export function categorizeRoom(
 }
 
 /**
- * Check if a room belongs to VIP3 specialization (by ID pattern)
- * VIP3 rooms are CORE specialization containing sensitive/heavy topics
+ * Check if a room belongs to Level 3 specialization (by ID pattern)
+ * Level 3 rooms are CORE specialization containing sensitive/heavy topics
  */
 export function isVip3IIRoom(roomId: string): boolean {
   const id = roomId.toLowerCase();
-  return id.includes("vip3") || id.includes("vip3_ii") || id.includes("vip3-ii");
+  return id.includes("level3") || id.includes("vip3_ii") || id.includes("level3-ii");
 }
 
 /**
@@ -152,7 +152,7 @@ export const COLUMN_LABELS = {
  * Maps each tier to what content belongs in each column
  */
 export const TIER_CONTENT_MAP = {
-  free: {
+  level0: {
     english: {
       title: "English Foundation",
       titleVi: "Nền Tảng Tiếng Anh",
@@ -206,7 +206,7 @@ export const TIER_CONTENT_MAP = {
     },
   },
 
-  vip1: {
+  level1: {
     english: {
       title: "A1 Beginner",
       titleVi: "A1 Sơ Cấp",
@@ -224,7 +224,7 @@ export const TIER_CONTENT_MAP = {
     },
   },
 
-  vip2: {
+  level2: {
     english: {
       title: "A2 + B1",
       titleVi: "A2 + B1",
@@ -240,7 +240,7 @@ export const TIER_CONTENT_MAP = {
     },
   },
 
-  vip3: {
+  level3: {
     english: {
       title: "B2 + C1 + C2",
       titleVi: "B2 + C1 + C2",
@@ -257,7 +257,7 @@ export const TIER_CONTENT_MAP = {
     },
   },
 
-  vip4: {
+  level4: {
     english: {
       title: "Career English",
       titleVi: "Tiếng Anh Nghề Nghiệp",
@@ -273,7 +273,7 @@ export const TIER_CONTENT_MAP = {
     },
   },
 
-  vip5: {
+  level5: {
     english: {
       title: "Writing English",
       titleVi: "Viết Tiếng Anh",
@@ -289,7 +289,7 @@ export const TIER_CONTENT_MAP = {
     },
   },
 
-  vip6: {
+  level6: {
     english: {
       title: "—",
       titleVi: "—",
@@ -305,19 +305,19 @@ export const TIER_CONTENT_MAP = {
     },
   },
 
-  vip7: {
-    english: { title: "VIP7", titleVi: "VIP7" },
-    core: { title: "VIP7", titleVi: "VIP7" },
-    skills: { title: "VIP7", titleVi: "VIP7" },
+  level7: {
+    english: { title: "Level 7", titleVi: "Level 7" },
+    core: { title: "Level 7", titleVi: "Level 7" },
+    skills: { title: "Level 7", titleVi: "Level 7" },
   },
 
-  vip8: {
-    english: { title: "VIP8", titleVi: "VIP8" },
-    core: { title: "VIP8", titleVi: "VIP8" },
-    skills: { title: "VIP8", titleVi: "VIP8" },
+  level8: {
+    english: { title: "Level 8", titleVi: "Level 8" },
+    core: { title: "Level 8", titleVi: "Level 8" },
+    skills: { title: "Level 8", titleVi: "Level 8" },
   },
 
-  vip9: {
+  level9: {
     english: {
       title: "—",
       titleVi: "—",
@@ -390,8 +390,8 @@ export const TIER_CONTENT_MAP = {
 >;
 
 /**
- * VIP3 is a CORE SPECIALIZATION block, NOT a separate tier
- * VIP3 users MUST see VIP3 rooms (same access level = 3)
+ * Level 3 is a CORE SPECIALIZATION block, NOT a separate tier
+ * Level 3 users MUST see Level 3 rooms (same access level = 3)
  */
 export const VIP3_DESCRIPTION = {
   en: "Core Specialization — Sensitive & Advanced Topics",
@@ -402,18 +402,18 @@ export const VIP3_DESCRIPTION = {
  * Tier display order for the Tier Map (top to bottom = highest to lowest)
  */
 export const TIER_MAP_ORDER: TierId[] = [
-  "vip9",
-  "vip8",
-  "vip7",
-  "vip6",
-  "vip5",
-  "vip4",
-  "vip3",
-  "vip2",
-  "vip1",
+  "level9",
+  "level8",
+  "level7",
+  "level6",
+  "level5",
+  "level4",
+  "level3",
+  "level2",
+  "level1",
   "premium_year",
   "premium_month",
-  "free",
+  "level0",
 ];
 
 /**
@@ -421,30 +421,30 @@ export const TIER_MAP_ORDER: TierId[] = [
  */
 export function getTierPath(tierId: TierId): string {
   switch (tierId) {
-    case "free":
+    case "level0":
       return "/rooms";
     case "premium_month":
       return "/pricing";
     case "premium_year":
       return "/pricing";
-    case "vip1":
-      return "/vip/vip1";
-    case "vip2":
-      return "/vip/vip2";
-    case "vip3":
-      return "/vip/vip3";
-    case "vip4":
-      return "/vip/vip4";
-    case "vip5":
-      return "/vip/vip5";
-    case "vip6":
-      return "/vip/vip6";
-    case "vip7":
-      return "/vip/vip7";
-    case "vip8":
-      return "/vip/vip8";
-    case "vip9":
-      return "/vip/vip9";
+    case "level1":
+      return "/vip/level1";
+    case "level2":
+      return "/vip/level2";
+    case "level3":
+      return "/vip/level3";
+    case "level4":
+      return "/vip/level4";
+    case "level5":
+      return "/vip/level5";
+    case "level6":
+      return "/vip/level6";
+    case "level7":
+      return "/vip/level7";
+    case "level8":
+      return "/vip/level8";
+    case "level9":
+      return "/vip/level9";
     case "kids_1":
       return "/kids-level1";
     case "kids_2":
@@ -461,30 +461,30 @@ export function getTierPath(tierId: TierId): string {
  */
 export function getTierLabel(tierId: TierId): string {
   switch (tierId) {
-    case "free":
-      return "Free";
+    case "level0":
+      return "Level 0";
     case "premium_month":
       return "Premium Monthly";
     case "premium_year":
       return "Premium Yearly";
-    case "vip1":
-      return "VIP1";
-    case "vip2":
-      return "VIP2";
-    case "vip3":
-      return "VIP3";
-    case "vip4":
-      return "VIP4";
-    case "vip5":
-      return "VIP5";
-    case "vip6":
-      return "VIP6";
-    case "vip7":
-      return "VIP7";
-    case "vip8":
-      return "VIP8";
-    case "vip9":
-      return "VIP9";
+    case "level1":
+      return "Level 1";
+    case "level2":
+      return "Level 2";
+    case "level3":
+      return "Level 3";
+    case "level4":
+      return "Level 4";
+    case "level5":
+      return "Level 5";
+    case "level6":
+      return "Level 6";
+    case "level7":
+      return "Level 7";
+    case "level8":
+      return "Level 8";
+    case "level9":
+      return "Level 9";
     case "kids_1":
       return "Kids L1";
     case "kids_2":

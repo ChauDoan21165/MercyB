@@ -70,7 +70,7 @@ function inferTierStrict(room: RoomRow): TierId | "unknown" {
   const rawLabel = String(room?.tier || "").trim();
   if (rawLabel) {
     const n = normalizeTier(rawLabel);
-    // normalizeTier defaults unknown -> free, so only accept if label was actually present
+    // normalizeTier defaults unknown -> level0, so only accept if label was actually present
     if (isValidTierId(n)) return n;
   }
 
@@ -112,9 +112,9 @@ async function fetchCachedRooms(tierId?: TierId): Promise<MinimalRoomData[]> {
     });
 
     // ✅ Apply domain exclusion AFTER we know which tier page we’re rendering,
-    //    but keep the original rule: exclude English Foundation Ladder ONLY for non-free tier pages.
+    //    but keep the original rule: exclude English Foundation Ladder ONLY for non-level0 tier pages.
     const filteredByDomain =
-      tierId && tierId !== "free"
+      tierId && tierId !== "level0"
         ? enriched.filter(({ room }) => {
             const d = String(room.domain || "").trim();
             return !d || d !== "English Foundation Ladder";
@@ -149,7 +149,7 @@ async function fetchCachedRooms(tierId?: TierId): Promise<MinimalRoomData[]> {
     return filteredByTier.map(({ room, inferred }) => {
       // best-effort tier value for display; never used for filtering
       const tierForDisplay: TierId =
-        inferred !== "unknown" ? inferred : "free";
+        inferred !== "unknown" ? inferred : "level0";
 
       return {
         id: room.id,

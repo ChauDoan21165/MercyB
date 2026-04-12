@@ -3,7 +3,7 @@
 import { supabase } from "@/lib/supabaseClient";
 
 export type SpeechUserOrigin = "HANOI" | "SAIGON" | "OTHER";
-export type SpeechTierLevel = "FREE" | "VIP1" | "VIP2" | "VIP3";
+export type SpeechTierLevel = "FREE" | "Level 1" | "Level 2" | "Level 3";
 
 export interface SpeechAnalysisRequest {
   blob: Blob;

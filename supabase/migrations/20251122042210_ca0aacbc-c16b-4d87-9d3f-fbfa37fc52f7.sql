@@ -2,7 +2,7 @@
 CREATE TABLE IF NOT EXISTS public.gift_codes (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   code text NOT NULL UNIQUE,
-  tier text NOT NULL CHECK (tier IN ('VIP2', 'VIP3')),
+  tier text NOT NULL CHECK (tier IN ('Level 2', 'Level 3')),
   code_expires_at timestamp with time zone,
   is_active boolean NOT NULL DEFAULT true,
   used_by uuid REFERENCES auth.users(id),

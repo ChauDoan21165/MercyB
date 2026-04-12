@@ -1,19 +1,19 @@
 // src/lib/constants/tiers.ts
 
 export type TierId =
-  | "free"
+  | "level0"
   | "premium_month"
   | "premium_year"
   // legacy values still kept so older files can compile during migration
-  | "vip1"
-  | "vip2"
-  | "vip3"
-  | "vip4"
-  | "vip5"
-  | "vip6"
-  | "vip7"
-  | "vip8"
-  | "vip9"
+  | "level1"
+  | "level2"
+  | "level3"
+  | "level4"
+  | "level5"
+  | "level6"
+  | "level7"
+  | "level8"
+  | "level9"
   | "kids_1"
   | "kids_2"
   | "kids_3";
@@ -21,18 +21,18 @@ export type TierId =
 export type TierValue = TierId;
 
 export const TIER_IDS: readonly TierId[] = [
-  "free",
+  "level0",
   "premium_month",
   "premium_year",
-  "vip1",
-  "vip2",
-  "vip3",
-  "vip4",
-  "vip5",
-  "vip6",
-  "vip7",
-  "vip8",
-  "vip9",
+  "level1",
+  "level2",
+  "level3",
+  "level4",
+  "level5",
+  "level6",
+  "level7",
+  "level8",
+  "level9",
   "kids_1",
   "kids_2",
   "kids_3",
@@ -43,18 +43,18 @@ export const ALL_TIER_IDS: readonly TierId[] = TIER_IDS;
 export const TIERS: readonly TierId[] = TIER_IDS;
 
 export const tierIdToLabel: Record<TierId, string> = {
-  free: "Free",
+  level0: "Level 0",
   premium_month: "Premium Monthly",
   premium_year: "Premium Yearly",
-  vip1: "VIP 1",
-  vip2: "VIP 2",
-  vip3: "VIP 3",
-  vip4: "VIP 4",
-  vip5: "VIP 5",
-  vip6: "VIP 6",
-  vip7: "VIP 7",
-  vip8: "VIP 8",
-  vip9: "VIP 9",
+  level1: "Level 1",
+  level2: "Level 2",
+  level3: "Level 3",
+  level4: "Level 4",
+  level5: "Level 5",
+  level6: "Level 6",
+  level7: "Level 7",
+  level8: "Level 8",
+  level9: "Level 9",
   kids_1: "Kids 1",
   kids_2: "Kids 2",
   kids_3: "Kids 3",
@@ -96,7 +96,7 @@ export function isKidsTier(value: unknown): value is TierId {
 }
 
 export function normalizeTier(input: unknown): TierId {
-  return normalizeTierOrUndefined(input) ?? "free";
+  return normalizeTierOrUndefined(input) ?? "level0";
 }
 
 export function normalizeTierOrUndefined(input: unknown): TierId | undefined {
@@ -132,26 +132,26 @@ export function normalizeTierOrUndefined(input: unknown): TierId | undefined {
     return "premium_year";
   }
 
-  if (raw === "free" || raw.includes("miễn phí") || raw.includes("mien phi")) {
-    return "free";
+  if (raw === "level0" || raw.includes("miễn phí") || raw.includes("mien phi")) {
+    return "level0";
   }
 
   // legacy VIP mappings
-  if (raw === "vip1" || raw.includes("vip1")) return "vip1";
-  if (raw === "vip2" || raw.includes("vip2")) return "vip2";
-  if (raw === "vip3" || raw.includes("vip3 ii") || raw.includes("vip3")) return "vip3";
-  if (raw === "vip4" || raw.includes("vip4")) return "vip4";
-  if (raw === "vip5" || raw.includes("vip5")) return "vip5";
-  if (raw === "vip6" || raw.includes("vip6")) return "vip6";
-  if (raw === "vip7" || raw.includes("vip7")) return "vip7";
-  if (raw === "vip8" || raw.includes("vip8")) return "vip8";
+  if (raw === "level1" || raw.includes("level1")) return "level1";
+  if (raw === "level2" || raw.includes("level2")) return "level2";
+  if (raw === "level3" || raw.includes("level3 ii") || raw.includes("level3")) return "level3";
+  if (raw === "level4" || raw.includes("level4")) return "level4";
+  if (raw === "level5" || raw.includes("level5")) return "level5";
+  if (raw === "level6" || raw.includes("level6")) return "level6";
+  if (raw === "level7" || raw.includes("level7")) return "level7";
+  if (raw === "level8" || raw.includes("level8")) return "level8";
   if (
-    raw === "vip9" ||
-    raw.includes("cấp vip9") ||
-    raw.includes("cap vip9") ||
-    raw.includes("vip9")
+    raw === "level9" ||
+    raw.includes("cấp level9") ||
+    raw.includes("cap level9") ||
+    raw.includes("level9")
   ) {
-    return "vip9";
+    return "level9";
   }
 
   if (

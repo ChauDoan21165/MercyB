@@ -43,7 +43,7 @@
     "created_at": "2025-10-28T00:00:00+00:00",
     "updated_at": "2025-11-11T00:00:00+00:00",
     "entry_count": 3,
-    "tier": "free",
+    "tier": "level0",
     "room_color": "#4A90E2"
   }
 }

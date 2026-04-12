@@ -3,7 +3,7 @@
 //
 // FIX4: chat still “dead” after RoomRenderer multi-id wiring
 // - Root cause: core normalization too weak for ids like *_vip3_ii, *_vip1_srs02, *_free_xx
-//   Legacy rows are often stored under the true core (strip vip/free + trailing tokens).
+//   Legacy rows are often stored under the true core (strip vip/level0 + trailing tokens).
 // - Also: canonical write must follow caller’s effectiveRoomId (first incoming id), NOT URL.
 // - Keep: stable hook shape (HMR safety), no JSX, load via .in(), realtime on all candidate ids.
 
@@ -61,11 +61,11 @@ function coreRoomIdFromEffective(effectiveRoomId: string) {
   if (!id) return id;
 
   // 1) strip: _vipN or _free at end
-  let core = id.replace(/_(vip[1-9]|free)$/i, "");
+  let core = id.replace(/_(vip[1-9]|level0)$/i, "");
 
   // 2) strip: _vipN_<token> or _free_<token> at end (one extra segment)
   // token = letters/numbers (common room suffixes)
-  core = core.replace(/_(vip[1-9]|free)_[a-z0-9]+$/i, "");
+  core = core.replace(/_(vip[1-9]|level0)_[a-z0-9]+$/i, "");
 
   return core;
 }

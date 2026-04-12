@@ -1351,14 +1351,14 @@ export default function MercyAIHost() {
           ? `Result: Beginner.\nStart: simple rooms with short lines + repeat audio.\nTip: pick 1 keyword and repeat 3 times.\nNext: go to /tiers to unlock more rooms.`
           : level === "intermediate"
             ? `Result: Intermediate.\nStart: rooms with longer sentences + shadowing.\nTip: listen once → repeat once → read once.\nNext: go to /tiers if you want VIP rooms.`
-            : `Result: Advanced.\nStart: VIP rooms (long cycles) + fast listening.\nTip: use “keyword” to drill weak points.\nNext: VIP9 gives Mercy voice coaching (daily minutes cap).`;
+            : `Result: Advanced.\nStart: VIP rooms (long cycles) + fast listening.\nTip: use “keyword” to drill weak points.\nNext: Level 9 gives Mercy voice coaching (daily minutes cap).`;
 
       const recVi =
         level === "beginner"
           ? `Kết quả: Cơ bản.\nBắt đầu: phòng câu ngắn + nghe lặp.\nMẹo: chọn 1 keyword và lặp 3 lần.\nBước tiếp: vào /tiers để mở thêm phòng.`
           : level === "intermediate"
             ? `Kết quả: Trung bình.\nBắt đầu: phòng câu dài hơn + shadowing.\nMẹo: nghe 1 lần → nhại 1 lần → đọc 1 lần.\nBước tiếp: vào /tiers nếu muốn mở phòng VIP.`
-            : `Kết quả: Khá.\nBắt đầu: phòng VIP (chu kỳ dài) + nghe nhanh.\nMẹo: dùng keyword để khoan vào điểm yếu.\nBước tiếp: VIP9 có giọng nói Mercy (giới hạn phút/ngày).`;
+            : `Kết quả: Khá.\nBắt đầu: phòng VIP (chu kỳ dài) + nghe nhanh.\nMẹo: dùng keyword để khoan vào điểm yếu.\nBước tiếp: Level 9 có giọng nói Mercy (giới hạn phút/ngày).`;
 
       addMsg("assistant", lang === "vi" ? recVi : recEn);
 
@@ -1460,8 +1460,8 @@ export default function MercyAIHost() {
         }
 
         return lang === "vi"
-          ? `Mình sẽ dẫn bạn theo 3 bước:\n1) Vào /tiers chọn gói (VIP1/VIP3/VIP9)\n2) Thanh toán\n3) Quay lại phòng học và bắt đầu\nBạn muốn mình mở trang /tiers không?`
-          : `Here’s the 3-step path:\n1) Go to /tiers and choose VIP (VIP1/VIP3/VIP9)\n2) Pay\n3) Return to learning rooms and start\nDo you want me to open /tiers now?`;
+          ? `Mình sẽ dẫn bạn theo 3 bước:\n1) Vào /tiers chọn gói (Level 1/Level 3/Level 9)\n2) Thanh toán\n3) Quay lại phòng học và bắt đầu\nBạn muốn mình mở trang /tiers không?`
+          : `Here’s the 3-step path:\n1) Go to /tiers and choose VIP (Level 1/Level 3/Level 9)\n2) Pay\n3) Return to learning rooms and start\nDo you want me to open /tiers now?`;
       }
 
       if (
@@ -1489,11 +1489,11 @@ Tell me: password reset, verification, or receipt?`;
           ? `VIP / thanh toán:
 • Sau khi trả tiền, VIP sẽ tự kích hoạt
 • Nếu chưa: đăng xuất → đăng nhập lại 1 lần, rồi kiểm tra trang Tier/VIP
-Bạn mua gói nào (VIP1/VIP3/VIP9) và hiện đang thấy gì?`
+Bạn mua gói nào (Level 1/Level 3/Level 9) và hiện đang thấy gì?`
           : `VIP / billing:
 • After payment, VIP should activate automatically
 • If it doesn’t: sign out → sign in once, then check Tier/VIP page
-Tell me: which tier (VIP1/VIP3/VIP9) and what you see now?`;
+Tell me: which tier (Level 1/Level 3/Level 9) and what you see now?`;
       }
 
       if (
@@ -1534,12 +1534,12 @@ What method are you using (email / phone / Google / Facebook)?`;
 
       if (containsAny(userText, ["voice", "speak", "talk", "read to me", "nói", "giọng", "đọc"])) {
         return lang === "vi"
-          ? `Giọng nói của Mercy Host là tính năng VIP9.
-• VIP9 có giới hạn phút/ngày để hệ thống bền vững
+          ? `Giọng nói của Mercy Host là tính năng Level 9.
+• Level 9 có giới hạn phút/ngày để hệ thống bền vững
 • Bạn vẫn có thể luyện phát âm ngay trong khung Host này
 Bạn muốn nâng cấp không? Bấm “Chọn gói (Pay)” để vào /tiers.`
-          : `Mercy Host Voice is VIP9 only.
-• VIP9 includes a daily minutes cap
+          : `Mercy Host Voice is Level 9 only.
+• Level 9 includes a daily minutes cap
 • You can still practice pronunciation directly inside this Host panel
 Want it? Tap “Choose tier” to open /tiers.`;
       }
@@ -1687,10 +1687,10 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
         id: "voice",
         label: canVoiceTest
           ? lang === "vi" ? "Giọng nói (Admin Test)" : "Voice (Admin Test)"
-          : lang === "vi" ? "Giọng nói (VIP9)" : "Voice (VIP9)",
+          : lang === "vi" ? "Giọng nói (Level 9)" : "Voice (Level 9)",
         description: canVoiceTest
           ? lang === "vi" ? "Test giọng nói ngay trên trình duyệt (không tốn tiền)" : "Test voice using browser TTS (no cost)"
-          : lang === "vi" ? "Chỉ dành cho VIP9" : "VIP9 only",
+          : lang === "vi" ? "Chỉ dành cho Level 9" : "Level 9 only",
         onClick: () => {
           if (!authUserId) {
             closePanel();
@@ -1698,7 +1698,7 @@ Tell me: which room + which entry line is failing (or send the roomId).`;
             return;
           }
           if (!canVoiceTest) {
-            addMsg("assistant", lang === "vi" ? "Giọng nói Mercy Host là VIP9. Bạn có thể nâng cấp ở /tiers." : "Mercy Host Voice is VIP9 only. You can upgrade at /tiers.");
+            addMsg("assistant", lang === "vi" ? "Giọng nói Mercy Host là Level 9. Bạn có thể nâng cấp ở /tiers." : "Mercy Host Voice is Level 9 only. You can upgrade at /tiers.");
             return;
           }
           const ok = speak(lang === "vi" ? "Xin chào. Tôi là Mercy Host. Đây là bản thử giọng nói dành cho admin." : "Hi. I am Mercy Host. This is an admin voice test.");

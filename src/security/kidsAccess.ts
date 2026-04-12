@@ -3,16 +3,16 @@
 import { type TierId, isKidsTier as canonicalIsKidsTier, KIDS_TIER_IDS } from '@/lib/constants/tiers';
 
 const ADULT_TIERS: TierId[] = [
-  'free',
-  'vip1',
-  'vip2',
-  'vip3',
-  'vip4',
-  'vip5',
-  'vip6',
-  'vip7',
-  'vip8',
-  'vip9',
+  'level0',
+  'level1',
+  'level2',
+  'level3',
+  'level4',
+  'level5',
+  'level6',
+  'level7',
+  'level8',
+  'level9',
 ];
 
 /**

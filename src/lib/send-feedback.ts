@@ -32,7 +32,7 @@ export async function sendMercyFeedback({
   answerText = null,
   modelName = null,
   promptVersion = null,
-  tier = "free",
+  tier = "level0",
   lang = "en",
   mode = "home",
   path = "/",

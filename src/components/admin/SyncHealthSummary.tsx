@@ -140,7 +140,7 @@ export function SyncHealthSummary() {
 
       const totalDbRooms = rooms.length;
       const freeDbRooms = rooms.filter(
-        (room) => normalizeTier(room.tier || "") === "free",
+        (room) => normalizeTier(room.tier || "") === "level0",
       ).length;
       const vipDbRooms = rooms.filter((room) => {
         const normalizedTier = normalizeTier(room.tier || "");
@@ -178,7 +178,7 @@ export function SyncHealthSummary() {
           action: null,
         },
         {
-          category: "Free tier rooms",
+          category: "Level 0 tier rooms",
           inDatabase: freeDbRooms,
           matchesRule: freeDbRooms,
           difference: 0,
@@ -187,7 +187,7 @@ export function SyncHealthSummary() {
           action: null,
         },
         {
-          category: "VIP1 – VIP9 rooms",
+          category: "Level 1 – Level 9 rooms",
           inDatabase: vipDbRooms,
           matchesRule: vipDbRooms,
           difference: 0,
@@ -336,7 +336,7 @@ export function SyncHealthSummary() {
             schema_version: "1.0",
             schema_id: room.schema_id || room.id,
             id: room.id,
-            tier: room.tier || "free",
+            tier: room.tier || "level0",
             domain: room.domain || "",
             description: {
               en: room.title_en || "",

@@ -171,13 +171,13 @@ describe("JSON Parsing Integration", () => {
         id: "test-room",
         nameEn: "Test Room",
         nameVi: "Phòng Thử",
-        tier: "free",
+        tier: "level0",
         path: "/data/test-room.json",
       };
 
       expect(publicRegistryEntry.id).toBeTruthy();
       expect(publicRegistryEntry.nameEn).toBeTruthy();
-      expect(publicRegistryEntry.tier).toMatch(/^(free|vip1|vip2|vip3|vip4|vip5)$/);
+      expect(publicRegistryEntry.tier).toMatch(/^(level0|level1|level2|level3|level4|level5)$/);
       expect(publicRegistryEntry.path).toContain(".json");
 
       // NEW: Private/adult rooms use "private:<storage-key>" (no ".json" requirement in the prefix itself)
@@ -185,18 +185,18 @@ describe("JSON Parsing Integration", () => {
         id: "adult-room",
         nameEn: "Adult Room",
         nameVi: "Phòng 18+",
-        tier: "vip3",
+        tier: "level3",
         path: "private:sacred_body_curious_self_vip3_sub2_sex.json",
       };
 
       expect(privateRegistryEntry.id).toBeTruthy();
-      expect(privateRegistryEntry.tier).toMatch(/^(free|vip1|vip2|vip3|vip4|vip5)$/);
+      expect(privateRegistryEntry.tier).toMatch(/^(level0|level1|level2|level3|level4|level5)$/);
       expect(privateRegistryEntry.path.startsWith("private:")).toBe(true);
       expect(privateRegistryEntry.path).toContain(".json");
     });
 
     it("should handle multiple tier variations (public + private path support)", () => {
-      const tiers = ["free", "vip1", "vip2", "vip3", "vip4", "vip5"] as const;
+      const tiers = ["level0", "level1", "level2", "level3", "level4", "level5"] as const;
 
       tiers.forEach((tier) => {
         const publicRegistryEntry = {

@@ -78,7 +78,7 @@ function isPremiumTier(tier: TierId): boolean {
  */
 function toEffectiveAccessTier(tier: TierId): TierId {
   if (tier === "premium_month" || tier === "premium_year") {
-    return "vip9";
+    return "level9";
   }
   return tier;
 }
@@ -110,7 +110,7 @@ function safeNumber(value: unknown, fallback = 0): number {
 
 export const guestAccess = (): UserAccess => {
   const unlockMercyFeatures = FORCE_UNLOCK_MERCY_FEATURES;
-  const entitlementTier: TierId = "free";
+  const entitlementTier: TierId = "level0";
   const userTier = toEffectiveAccessTier(entitlementTier);
 
   return {
@@ -157,9 +157,9 @@ function authenticatedFreeAccess(params: {
   const isAdmin = Boolean(params.isAdmin) || adminLevel > 0 || isHighAdmin;
   const loading = Boolean(params.loading);
   const unlockMercyFeatures = FORCE_UNLOCK_MERCY_FEATURES || isHighAdmin;
-  const entitlementTier: TierId = "free";
+  const entitlementTier: TierId = "level0";
   const userTier: TierId = isHighAdmin
-    ? "vip9"
+    ? "level9"
     : toEffectiveAccessTier(entitlementTier);
 
   return {
@@ -269,16 +269,16 @@ export const useUserAccess = (): UserAccess => {
             (profile.email || userEmail || "").trim() || undefined;
         }
       } catch {
-        // keep free/admin defaults
+        // keep level0/admin defaults
       }
 
-      let entitlementTier: TierId = "free";
+      let entitlementTier: TierId = "level0";
 
       try {
         const entitlement = await fetchCurrentEntitlement(supabase);
         entitlementTier = resolveEntitlementTier(entitlement);
       } catch {
-        entitlementTier = "free";
+        entitlementTier = "level0";
       }
 
       /**
@@ -288,7 +288,7 @@ export const useUserAccess = (): UserAccess => {
        * - but .tier must remain the raw entitlement tier for UI/tests
        */
       const userTier: TierId = isHighAdmin
-        ? "vip9"
+        ? "level9"
         : toEffectiveAccessTier(entitlementTier);
 
       const unlockMercyFeatures = FORCE_UNLOCK_MERCY_FEATURES || isHighAdmin;

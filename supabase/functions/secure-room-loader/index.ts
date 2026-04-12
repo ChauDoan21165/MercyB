@@ -18,16 +18,16 @@ const jsonHeaders = {
 };
 
 const tierMap: Record<string, number> = {
-  free: 0,
-  vip1: 1,
-  vip2: 2,
-  vip3: 3,
-  vip4: 4,
-  vip5: 5,
-  vip6: 6,
-  vip7: 7,
-  vip8: 8,
-  vip9: 9,
+  level0: 0,
+  level1: 1,
+  level2: 2,
+  level3: 3,
+  level4: 4,
+  level5: 5,
+  level6: 6,
+  level7: 7,
+  level8: 8,
+  level9: 9,
 };
 
 const requestSchema = z.object({
@@ -157,10 +157,10 @@ Deno.serve(async (req) => {
       | null
       | undefined;
 
-    const userTier = String(tierData?.name ?? 'free').toLowerCase();
+    const userTier = String(tierData?.name ?? 'level0').toLowerCase();
     const userTierLevel = Number(tierData?.display_order ?? 0);
 
-    const roomTier = String(room.tier ?? 'free').toLowerCase();
+    const roomTier = String(room.tier ?? 'level0').toLowerCase();
     const roomTierLevel = tierMap[roomTier] ?? 0;
 
     if (!isAdmin && userTierLevel < roomTierLevel) {

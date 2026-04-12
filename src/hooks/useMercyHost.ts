@@ -45,7 +45,7 @@ export function useMercyHost(config: MercyHostConfig): MercyHostEngine {
   const {
     roomId,
     roomTitle,
-    roomTier = 'free',
+    roomTier = 'level0',
     language = 'en',
     enableVoice = true,
     enableAnimations = true

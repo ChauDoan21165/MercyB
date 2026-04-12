@@ -64,19 +64,19 @@ describe("Mercy Integration Tests", () => {
     it("should initialize engine with default state", () => {
       const engine = createMercyEngine(setState, getState);
 
-      engine.init({ tier: "free", language: "en" });
+      engine.init({ tier: "level0", language: "en" });
 
       expect(setState).toHaveBeenCalled();
       expect(state.isEnabled).toBe(true);
-      expect(state.currentTier).toBe("free");
+      expect(state.currentTier).toBe("level0");
     });
 
     it("should initialize with VIP tier and update avatar", () => {
       const engine = createMercyEngine(setState, getState);
 
-      engine.init({ tier: "vip9", language: "en" });
+      engine.init({ tier: "level9", language: "en" });
 
-      expect(state.currentTier).toBe("vip9");
+      expect(state.currentTier).toBe("level9");
       expect(state.avatarStyle).toBe("angelic");
     });
 
@@ -84,7 +84,7 @@ describe("Mercy Integration Tests", () => {
       localStorage.setItem("mercy_host_enabled", "false");
 
       const engine = createMercyEngine(setState, getState);
-      engine.init({ tier: "free" });
+      engine.init({ tier: "level0" });
 
       expect(state.isEnabled).toBe(false);
     });
@@ -116,17 +116,17 @@ describe("Mercy Integration Tests", () => {
       state.avatarStyle = "minimalist";
       const engine = createMercyEngine(setState, getState);
 
-      engine.onTierChange("vip9");
+      engine.onTierChange("level9");
 
       expect(state.avatarStyle).toBe("angelic");
-      expect(state.currentTier).toBe("vip9");
+      expect(state.currentTier).toBe("level9");
     });
 
     it("should trigger halo animation on tier change", () => {
       state.isEnabled = true;
       const engine = createMercyEngine(setState, getState);
 
-      engine.onTierChange("vip5");
+      engine.onTierChange("level5");
 
       expect(state.currentAnimation).toBe("halo");
     });
@@ -249,10 +249,10 @@ describe("Mercy Integration Tests", () => {
   });
 
   describe("Greeting Snapshots", () => {
-    it("should have consistent greeting text for free tier", async () => {
+    it("should have consistent greeting text for level0 tier", async () => {
       const { getTierGreeting } = await import("@/lib/mercy-host/tierScripts");
 
-      const greeting = getTierGreeting("free", "TestUser");
+      const greeting = getTierGreeting("level0", "TestUser");
 
       expect(greeting.en).toBeDefined();
       expect(greeting.vi).toBeDefined();
@@ -263,7 +263,7 @@ describe("Mercy Integration Tests", () => {
     it("should include user name in greeting", async () => {
       const { getTierGreeting } = await import("@/lib/mercy-host/tierScripts");
 
-      const greeting = getTierGreeting("free", "Alice");
+      const greeting = getTierGreeting("level0", "Alice");
 
       expect(
         greeting.en.includes("Alice") || !greeting.en.includes("{{name}}"),

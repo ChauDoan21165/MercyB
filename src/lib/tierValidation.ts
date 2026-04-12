@@ -114,7 +114,7 @@ function kidsTierLevel(tierId: TierId): number {
  * Verify tier access - returns true if userTier can access roomTier
  *
  * Policy:
- * - free users can only access free content
+ * - level0 users can only access level0 content
  * - paid billing tiers can access the whole adult paid repo
  * - legacy VIP tiers can access the whole adult paid repo for compatibility
  * - kids tiers only access kids progression by level
@@ -126,7 +126,7 @@ export function verifyTierAccess(userTierId: TierId, roomTierId: TierId): boolea
 
   if (!userTier || !roomTier) return false;
 
-  if (roomTier === "free") return true;
+  if (roomTier === "level0") return true;
   if (userTier === roomTier) return true;
 
   // Kids progression stays isolated from adult paid tiers.
@@ -143,8 +143,8 @@ export function verifyTierAccess(userTierId: TierId, roomTierId: TierId): boolea
   // Paid adult users unlock the whole adult paid repo.
   if (isPaidRepoTier(userTier)) return true;
 
-  // Free adult users cannot access paid adult content.
-  if (userTier === "free") return false;
+  // Level 0 adult users cannot access paid adult content.
+  if (userTier === "level0") return false;
 
   return false;
 }

@@ -5,7 +5,7 @@
  * Called by daily cron job or manually for testing.
  * 
  * Automations:
- * 1. Welcome Email: Send to new VIP2/VIP3 subscribers who haven't received welcome email yet
+ * 1. Welcome Email: Send to new Level 2/Level 3 subscribers who haven't received welcome email yet
  * 2. Expiry Warning: Send reminder 7 days before subscription ends
  * 
  * Always returns HTTP 200 with { ok: boolean, ... } pattern
@@ -71,7 +71,7 @@ function getWelcomeEmailHtml(tierName: string): string {
     </div>
     
     <p style="color: #666; font-size: 14px; margin-top: 32px;">
-      If you have any questions, feel free to reach out to our support team.
+      If you have any questions, feel level0 to reach out to our support team.
     </p>
     
     <hr style="border: none; border-top: 1px solid #eee; margin: 32px 0;">
@@ -171,14 +171,14 @@ Deno.serve(async (req) => {
     const errors: string[] = [];
 
     // --- 1. WELCOME EMAILS ---
-    // Find active VIP2/VIP3 subscribers who haven't received welcome email
+    // Find active Level 2/Level 3 subscribers who haven't received welcome email
     console.log("[email-automations] Processing welcome emails...");
 
-    // Get VIP2 and VIP3 tier IDs
+    // Get Level 2 and Level 3 tier IDs
     const { data: vipTiers, error: tiersError } = await adminClient
       .from("subscription_tiers")
       .select("id, name")
-      .in("name", ["VIP2", "VIP3"]);
+      .in("name", ["Level 2", "Level 3"]);
 
     if (tiersError) {
       console.error("Tiers query error:", tiersError);
@@ -189,7 +189,7 @@ Deno.serve(async (req) => {
     const vipTierIds = Array.from(tierMap.keys());
 
     if (vipTierIds.length > 0) {
-      // Get active subscriptions for VIP2/VIP3
+      // Get active subscriptions for Level 2/Level 3
       const { data: activeSubs, error: subsError } = await adminClient
         .from("user_subscriptions")
         .select("user_id, tier_id")

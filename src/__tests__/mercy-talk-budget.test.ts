@@ -23,16 +23,16 @@ import {
 } from '../lib/mercy-host/talkBudget';
 
 describe('Tier Budgets', () => {
-  it('should have correct budget for free tier', () => {
-    expect(TIER_BUDGETS.free).toEqual({
+  it('should have correct budget for level0 tier', () => {
+    expect(TIER_BUDGETS.level0).toEqual({
       dailyChars: 3000,
       softWarnAt: 2400,
       hardCap: 3300
     });
   });
 
-  it('should have correct budget for vip9 tier', () => {
-    expect(TIER_BUDGETS.vip9).toEqual({
+  it('should have correct budget for level9 tier', () => {
+    expect(TIER_BUDGETS.level9).toEqual({
       dailyChars: 12000,
       softWarnAt: 9600,
       hardCap: 13200
@@ -40,47 +40,47 @@ describe('Tier Budgets', () => {
   });
 
   it('should have higher budgets for higher tiers', () => {
-    expect(TIER_BUDGETS.vip1.dailyChars).toBeGreaterThan(TIER_BUDGETS.free.dailyChars);
-    expect(TIER_BUDGETS.vip4.dailyChars).toBeGreaterThan(TIER_BUDGETS.vip1.dailyChars);
-    expect(TIER_BUDGETS.vip7.dailyChars).toBeGreaterThan(TIER_BUDGETS.vip4.dailyChars);
-    expect(TIER_BUDGETS.vip9.dailyChars).toBeGreaterThan(TIER_BUDGETS.vip7.dailyChars);
+    expect(TIER_BUDGETS.level1.dailyChars).toBeGreaterThan(TIER_BUDGETS.level0.dailyChars);
+    expect(TIER_BUDGETS.level4.dailyChars).toBeGreaterThan(TIER_BUDGETS.level1.dailyChars);
+    expect(TIER_BUDGETS.level7.dailyChars).toBeGreaterThan(TIER_BUDGETS.level4.dailyChars);
+    expect(TIER_BUDGETS.level9.dailyChars).toBeGreaterThan(TIER_BUDGETS.level7.dailyChars);
   });
 });
 
 describe('Growth Mode', () => {
   it('should apply growth multiplier for new users', () => {
-    const baseBudget = getEffectiveBudget('free', 1); // First visit
-    expect(baseBudget.dailyChars).toBe(TIER_BUDGETS.free.dailyChars * GROWTH_MODE.multiplier);
+    const baseBudget = getEffectiveBudget('level0', 1); // First visit
+    expect(baseBudget.dailyChars).toBe(TIER_BUDGETS.level0.dailyChars * GROWTH_MODE.multiplier);
   });
 
   it('should return base budget after maxVisits', () => {
-    const baseBudget = getEffectiveBudget('free', GROWTH_MODE.maxVisits + 1);
-    expect(baseBudget.dailyChars).toBe(TIER_BUDGETS.free.dailyChars);
+    const baseBudget = getEffectiveBudget('level0', GROWTH_MODE.maxVisits + 1);
+    expect(baseBudget.dailyChars).toBe(TIER_BUDGETS.level0.dailyChars);
   });
 
   it('should correctly detect growth mode active', () => {
-    expect(isInGrowthMode('free', 1)).toBe(true);
-    expect(isInGrowthMode('free', 5)).toBe(true);
-    expect(isInGrowthMode('free', GROWTH_MODE.maxVisits)).toBe(false);
-    expect(isInGrowthMode('free', 100)).toBe(false);
+    expect(isInGrowthMode('level0', 1)).toBe(true);
+    expect(isInGrowthMode('level0', 5)).toBe(true);
+    expect(isInGrowthMode('level0', GROWTH_MODE.maxVisits)).toBe(false);
+    expect(isInGrowthMode('level0', 100)).toBe(false);
   });
 
   it('should apply to all tiers', () => {
-    expect(isInGrowthMode('vip1', 1)).toBe(true);
-    expect(isInGrowthMode('vip9', 1)).toBe(true);
+    expect(isInGrowthMode('level1', 1)).toBe(true);
+    expect(isInGrowthMode('level9', 1)).toBe(true);
   });
 });
 
 describe('Tier Normalization', () => {
   it('should normalize valid tiers', () => {
-    expect(normalizeTierId('free')).toBe('free');
-    expect(normalizeTierId('VIP1')).toBe('vip1');
-    expect(normalizeTierId('VIP9')).toBe('vip9');
+    expect(normalizeTierId('level0')).toBe('level0');
+    expect(normalizeTierId('Level 1')).toBe('level1');
+    expect(normalizeTierId('Level 9')).toBe('level9');
   });
 
-  it('should default to free for invalid tiers', () => {
-    expect(normalizeTierId('invalid')).toBe('free');
-    expect(normalizeTierId('')).toBe('free');
+  it('should default to level0 for invalid tiers', () => {
+    expect(normalizeTierId('invalid')).toBe('level0');
+    expect(normalizeTierId('')).toBe('level0');
   });
 });
 
@@ -90,7 +90,7 @@ describe('Talk Usage Tracking', () => {
 
   beforeEach(() => {
     defaultUsage = createDefaultTalkUsage();
-    budget = TIER_BUDGETS.free;
+    budget = TIER_BUDGETS.level0;
   });
 
   it('should create default usage with today date', () => {
@@ -130,7 +130,7 @@ describe('Talk Usage Tracking', () => {
 });
 
 describe('Cap Checking', () => {
-  const budget = TIER_BUDGETS.free;
+  const budget = TIER_BUDGETS.level0;
   
   it('should detect when speech would exceed hard cap', () => {
     const usage: TalkUsage = {
@@ -201,7 +201,7 @@ describe('Formatting Helpers', () => {
   });
 
   it('should calculate progress percentage', () => {
-    const budget = TIER_BUDGETS.free;
+    const budget = TIER_BUDGETS.level0;
     const usage: TalkUsage = {
       dateISO: getTodayISO(),
       usedChars: 1500,
@@ -214,7 +214,7 @@ describe('Formatting Helpers', () => {
   });
 
   it('should cap progress at 100%', () => {
-    const budget = TIER_BUDGETS.free;
+    const budget = TIER_BUDGETS.level0;
     const usage: TalkUsage = {
       dateISO: getTodayISO(),
       usedChars: 5000, // Over limit

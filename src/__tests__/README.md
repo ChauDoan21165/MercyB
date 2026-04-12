@@ -27,12 +27,12 @@ npx vitest --watch
 
 ### 1. **Route Helper Integration**
 Tests that the route helper correctly determines parent routes for:
-- Free tier rooms → `/rooms`
-- VIP1 tier rooms → `/rooms-vip1`
-- VIP2 tier rooms → `/rooms-vip2`
-- VIP3 tier rooms → `/rooms-vip3`
+- Level 0 tier rooms → `/rooms`
+- Level 1 tier rooms → `/rooms-level1`
+- Level 2 tier rooms → `/rooms-level2`
+- Level 3 tier rooms → `/rooms-level3`
 - Sexuality sub-rooms → `/sexuality-culture`
-- Special VIP3 rooms (Strategy, Finance Glory)
+- Special Level 3 rooms (Strategy, Finance Glory)
 
 ### 2. **Back Button Navigation**
 End-to-end tests that verify:
@@ -78,7 +78,7 @@ Ensures:
 // Example integration test
 it('should navigate to correct parent when back button is clicked', async () => {
   // 1. Set up mocks
-  vi.mocked(useParams).mockReturnValue({ roomId: 'adhd-support-vip3' });
+  vi.mocked(useParams).mockReturnValue({ roomId: 'adhd-support-level3' });
   
   // 2. Render component
   renderWithRouter(<ChatHub />);
@@ -93,7 +93,7 @@ it('should navigate to correct parent when back button is clicked', async () => 
   await userEvent.setup().click(backButton);
   
   // 5. Assert navigation
-  expect(mockNavigate).toHaveBeenCalledWith('/rooms-vip3');
+  expect(mockNavigate).toHaveBeenCalledWith('/rooms-level3');
 });
 ```
 
@@ -106,7 +106,7 @@ Custom render function that wraps components with:
 
 ```typescript
 renderWithRouter(<MyComponent />, {
-  initialEntries: ['/chat/adhd-support-vip3']
+  initialEntries: ['/chat/adhd-support-level3']
 });
 ```
 
@@ -114,7 +114,7 @@ renderWithRouter(<MyComponent />, {
 Helper for tracking navigation calls:
 ```typescript
 const { navigate, navigations } = createMockNavigate();
-// Later verify: navigations.includes('/rooms-vip3')
+// Later verify: navigations.includes('/rooms-level3')
 ```
 
 ## Mocks
@@ -133,14 +133,14 @@ When adding new room types or navigation patterns:
 1. **Add to Route Helper Integration**
 ```typescript
 it('should handle new-room-type correctly', () => {
-  expect(getParentRoute('new-room-type-vip3')).toBe('/rooms-vip3');
+  expect(getParentRoute('new-room-type-level3')).toBe('/rooms-level3');
 });
 ```
 
 2. **Add E2E Navigation Test**
 ```typescript
 it('should navigate from new room type', async () => {
-  vi.mocked(useParams).mockReturnValue({ roomId: 'new-room-type-vip3' });
+  vi.mocked(useParams).mockReturnValue({ roomId: 'new-room-type-level3' });
   renderWithRouter(<ChatHub />);
   // ... test navigation
 });
@@ -148,7 +148,7 @@ it('should navigate from new room type', async () => {
 
 3. **Add to Coverage Test**
 ```typescript
-{ id: 'new-room-type-vip3', parent: '/rooms-vip3' }
+{ id: 'new-room-type-level3', parent: '/rooms-level3' }
 ```
 
 ## Debugging Tests

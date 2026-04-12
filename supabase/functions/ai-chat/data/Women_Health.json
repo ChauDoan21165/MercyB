@@ -1,8 +1,8 @@
 {
-  "tier": "Free / Miễn phí",
+  "tier": "Level 0 / Miễn phí",
   "default_entry_id": "menstrual_cycle_basics",
   "welcome": {
-    "en": "Hello! Welcome to the Women's Health Free room. How can I help you today?\n\nTopic keywords you can type are below:\n- menstrual_cycle_basics\n- period_pain\n- heavy_flow\n- pms_symptoms\n- breast_self_exam\n- hormonal_balance",
+    "en": "Hello! Welcome to the Women's Health Level 0 room. How can I help you today?\n\nTopic keywords you can type are below:\n- menstrual_cycle_basics\n- period_pain\n- heavy_flow\n- pms_symptoms\n- breast_self_exam\n- hormonal_balance",
     "vi": "Xin chào! Chào mừng bạn đến với phòng Sức Khỏe Phụ Nữ (Miễn phí). Tôi có thể giúp gì cho bạn hôm nay?\n\nCác từ khóa bạn có thể nhập là:\n- chu_ky_kinh_nguyet\n- dau_bung_kinh\n- kinh_ra_nhieu\n- trieu_chung_tien_kinh\n- tu_kiem_tra_vu\n- can_bang_noi_tiet"
   },
   "search": {

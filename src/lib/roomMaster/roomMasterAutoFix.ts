@@ -46,14 +46,14 @@ export function autoFixRoom(room: RoomJson): AutoFixResult {
     );
   }
 
-  // Fix 3: Normalize audio filenames (remove "vip9" if room ID doesn't have it)
+  // Fix 3: Normalize audio filenames (remove "level9" if room ID doesn't have it)
   if (repairedRoom.entries && Array.isArray(repairedRoom.entries)) {
     repairedRoom.entries = repairedRoom.entries.map(
       (entry: RoomJson["entries"][number], index: number) => {
         if (
           entry?.audio &&
-          String(entry.audio).includes("vip9") &&
-          !String(repairedRoom.id).includes("vip9")
+          String(entry.audio).includes("level9") &&
+          !String(repairedRoom.id).includes("level9")
         ) {
           const fixedAudio = String(entry.audio).replace("_vip9", "");
           changesApplied.push(

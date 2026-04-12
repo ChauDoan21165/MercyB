@@ -108,7 +108,7 @@ describe("Room Registry Coverage", () => {
   });
 
   it("should have coverage for all major tiers", () => {
-    const majorTiers = ["free", "vip1", "vip2", "vip3"];
+    const majorTiers = ["level0", "level1", "level2", "level3"];
 
     for (const tier of majorTiers) {
       const tierRooms = getRoomsByTier(tier as any);
@@ -154,10 +154,10 @@ describe("Room Search Coverage", () => {
   });
 
   it("should boost results for specified tier", () => {
-    const vip3Results = searchRooms("Support", { tier: "vip3", limit: 10 });
+    const vip3Results = searchRooms("Support", { tier: "level3", limit: 10 });
 
     if (vip3Results.length > 0) {
-      const vip3Count = vip3Results.slice(0, 5).filter((r) => r.tier === "vip3").length;
+      const vip3Count = vip3Results.slice(0, 5).filter((r) => r.tier === "level3").length;
       expect(vip3Count).toBeGreaterThanOrEqual(0);
     }
   });
@@ -167,8 +167,8 @@ describe("Room Search Coverage", () => {
     expect(results.length).toBe(0);
   });
 
-  it("should find VIP3 rooms that appear on VIP3 page", () => {
-    const knownVip3Rooms = ["adhd-support-vip3", "anxiety-relief-vip3", "depression-support-vip3"];
+  it("should find Level 3 rooms that appear on Level 3 page", () => {
+    const knownVip3Rooms = ["adhd-support-level3", "anxiety-relief-level3", "depression-support-level3"];
 
     for (const routeId of knownVip3Rooms) {
       const roomId = canonicalId(routeId);
@@ -205,7 +205,7 @@ describe("Debug Search Validation", () => {
 
 describe("Room Validation", () => {
   it("should validate that known rooms exist", async () => {
-    const validation = await validateRoomInRegistry("adhd-support-vip3");
+    const validation = await validateRoomInRegistry("adhd-support-level3");
 
     // If this room exists in manifest/dataMap, it should be in registry.
     if (validation.inManifest || (validation as any).inDataMap) {

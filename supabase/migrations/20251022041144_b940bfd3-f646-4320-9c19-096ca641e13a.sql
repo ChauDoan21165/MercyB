@@ -2,7 +2,7 @@
 INSERT INTO storage.buckets (id, name, public)
 VALUES ('room-audio', 'room-audio', true);
 
--- Create RLS policy for public read access (VIP3 users only via app logic)
+-- Create RLS policy for public read access (Level 3 users only via app logic)
 CREATE POLICY "Public read access for room audio"
 ON storage.objects FOR SELECT
 USING (bucket_id = 'room-audio');

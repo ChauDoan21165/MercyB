@@ -106,7 +106,7 @@ Deno.serve(async (req) => {
         : null,
       kidsSubscription: kidsSubscription || null,
       isAdmin,
-      tier: isPremium ? "premium" : "free",
+      tier: isPremium ? "premium" : "level0",
       usage: {
         roomsAccessed: usage?.rooms_accessed || 0,
         customTopicsRequested: usage?.custom_topics_requested || 0,

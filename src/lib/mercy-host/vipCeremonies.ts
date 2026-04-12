@@ -18,64 +18,64 @@ export interface VipCeremonySpec {
 
 // VIP upgrade ceremonies (heartfelt, not transactional)
 export const VIP_CEREMONIES: Record<string, VipCeremonySpec> = {
-  vip1: {
-    tier: 'vip1',
+  level1: {
+    tier: 'level1',
     animation: 'shimmer',
     voiceTrigger: 'celebration',
     textEn: "Welcome deeper. Your commitment to growth inspires me.",
     textVi: "Chào mừng sâu hơn. Cam kết phát triển của bạn truyền cảm hứng cho mình."
   },
-  vip2: {
-    tier: 'vip2',
+  level2: {
+    tier: 'level2',
     animation: 'shimmer',
     voiceTrigger: 'celebration',
     textEn: "You're building real momentum now. I'm honored to walk with you.",
     textVi: "Bạn đang tạo đà tiến thực sự. Mình vinh dự được bước cùng bạn."
   },
-  vip3: {
-    tier: 'vip3',
+  level3: {
+    tier: 'level3',
     animation: 'glow',
     voiceTrigger: 'celebration',
     textEn: "The depths call to you. Welcome to clearer waters.",
     textVi: "Chiều sâu gọi bạn. Chào mừng đến vùng nước trong hơn."
   },
-  vip4: {
-    tier: 'vip4',
+  level4: {
+    tier: 'level4',
     animation: 'glow',
     voiceTrigger: 'celebration',
     textEn: "Precision becomes your ally. This tier shapes focus.",
     textVi: "Sự chính xác trở thành đồng minh. Tầng này định hình sự tập trung."
   },
-  vip5: {
-    tier: 'vip5',
+  level5: {
+    tier: 'level5',
     animation: 'shimmer',
     voiceTrigger: 'celebration',
     textEn: "Your influence grows. Lead with the heart you carry.",
     textVi: "Ảnh hưởng của bạn tăng lên. Dẫn dắt bằng trái tim bạn mang."
   },
-  vip6: {
-    tier: 'vip6',
+  level6: {
+    tier: 'level6',
     animation: 'glow',
     voiceTrigger: 'celebration',
     textEn: "Strategy and serenity merge here. Welcome, thoughtful one.",
     textVi: "Chiến lược và thanh thản hợp nhất ở đây. Chào mừng, người suy tư."
   },
-  vip7: {
-    tier: 'vip7',
+  level7: {
+    tier: 'level7',
     animation: 'shimmer',
     voiceTrigger: 'celebration',
     textEn: "The horizon opens. You're becoming a creator now.",
     textVi: "Chân trời mở ra. Bạn đang trở thành người sáng tạo."
   },
-  vip8: {
-    tier: 'vip8',
+  level8: {
+    tier: 'level8',
     animation: 'glow',
     voiceTrigger: 'celebration',
     textEn: "Light becomes language here. Welcome to transcendence.",
     textVi: "Ánh sáng trở thành ngôn ngữ ở đây. Chào mừng đến siêu việt."
   },
-  vip9: {
-    tier: 'vip9',
+  level9: {
+    tier: 'level9',
     animation: 'shimmer',
     voiceTrigger: 'celebration',
     textEn: "Distinguished one, you've arrived. Mercy bows to your path.",
@@ -153,7 +153,7 @@ export function executeVipCeremony(
  * Convert tier string to number for comparison
  */
 function tierToNumber(tier: string): number {
-  if (tier === 'free') return 0;
+  if (tier === 'level0') return 0;
   const match = tier.match(/vip(\d+)/i);
   return match ? parseInt(match[1], 10) : 0;
 }

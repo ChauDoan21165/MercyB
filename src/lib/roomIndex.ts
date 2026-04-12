@@ -40,14 +40,14 @@ function toHyphenId(s: string): string {
 
 function toCoreRoomId(s: string): string {
   return toCanonicalId(s).replace(
-    /_(vip[1-9]|free|kids_1|kids_2|kids_3|kidslevel[123]|kids_l[123]|vip3_ii)$/i,
+    /_(vip[1-9]|level0|kids_1|kids_2|kids_3|kidslevel[123]|kids_l[123]|vip3_ii)$/i,
     "",
   );
 }
 
 function toCoreHyphenRoomId(s: string): string {
   return toHyphenId(s).replace(
-    /-(vip[1-9]|free|kids-1|kids-2|kids-3|kidslevel[123]|kids-l[123]|vip3-ii)$/i,
+    /-(vip[1-9]|level0|kids-1|kids-2|kids-3|kidslevel[123]|kids-l[123]|level3-ii)$/i,
     "",
   );
 }

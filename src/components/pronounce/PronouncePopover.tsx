@@ -9,7 +9,7 @@ type PronounceResult = {
 
 type Props = {
   word: string;
-  /** VIP gate: pass true only for VIP3+ */
+  /** VIP gate: pass true only for Level 3+ */
   enabled: boolean;
   /** Called with recorded audio. You implement the backend later. */
   onAnalyze: (args: { word: string; audioBlob: Blob }) => Promise<PronounceResult>;
@@ -230,7 +230,7 @@ export default function PronouncePopover({
         type="button"
         onClick={() => (open ? close() : openPopover())}
         disabled={!enabled}
-        title={enabled ? "Pronunciation (VIP3)" : "VIP3 feature"}
+        title={enabled ? "Pronunciation (Level 3)" : "Level 3 feature"}
         style={{
           width: 22,
           height: 22,

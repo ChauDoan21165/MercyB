@@ -2,15 +2,15 @@ import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
 // Canonical tier labels from Design System v1.1
 const TIERS = {
-  FREE: "Free / Miễn phí",
-  VIP1: "VIP1 / VIP1",
-  VIP2: "VIP2 / VIP2",
-  VIP3: "VIP3 / VIP3",
-  VIP3: "VIP3 II / VIP3 II",
-  VIP4: "VIP4 / VIP4",
-  VIP5: "VIP5 / VIP5",
-  VIP6: "VIP6 / VIP6",
-  VIP9: "VIP9 / Cấp VIP9",
+  FREE: "Level 0 / Miễn phí",
+  Level 1: "Level 1 / Level 1",
+  Level 2: "Level 2 / Level 2",
+  Level 3: "Level 3 / Level 3",
+  Level 3: "Level 3 II / Level 3 II",
+  Level 4: "Level 4 / Level 4",
+  Level 5: "Level 5 / Level 5",
+  Level 6: "Level 6 / Level 6",
+  Level 9: "Level 9 / Cấp Level 9",
 } as const;
 
 Deno.serve(async (req) => {

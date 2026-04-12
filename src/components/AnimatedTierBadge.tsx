@@ -1,7 +1,7 @@
 import { Crown, Sparkles, Zap, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-type UserTier = "demo" | "free" | "vip1" | "vip2" | "vip3" | "vip3_ii" | "vip4" | "vip5" | "vip6";
+type UserTier = "demo" | "level0" | "level1" | "level2" | "level3" | "vip3_ii" | "level4" | "level5" | "level6";
 
 interface AnimatedTierBadgeProps {
   tier: UserTier;
@@ -26,65 +26,65 @@ const tierConfig: Record<UserTier, {
     glowColor: "transparent",
     animationClasses: "",
   },
-  free: {
-    label: "Free",
+  level0: {
+    label: "Level 0",
     labelVi: "Miễn phí",
     icon: Star,
     baseClasses: "bg-muted text-muted-foreground border-muted-foreground/20",
     glowColor: "transparent",
     animationClasses: "",
   },
-  vip1: {
-    label: "VIP1",
-    labelVi: "VIP1",
+  level1: {
+    label: "Level 1",
+    labelVi: "Level 1",
     icon: Crown,
     baseClasses: "bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 text-white border-yellow-300",
     glowColor: "rgba(234, 179, 8, 0.5)",
     animationClasses: "",
   },
-  vip2: {
-    label: "VIP2",
-    labelVi: "VIP2",
+  level2: {
+    label: "Level 2",
+    labelVi: "Level 2",
     icon: Sparkles,
     baseClasses: "bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 text-white border-blue-300",
     glowColor: "rgba(59, 130, 246, 0.5)",
     animationClasses: "",
   },
-  vip3: {
-    label: "VIP3",
-    labelVi: "VIP3",
+  level3: {
+    label: "Level 3",
+    labelVi: "Level 3",
     icon: Zap,
     baseClasses: "bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 text-white border-pink-300",
     glowColor: "rgba(168, 85, 247, 0.5)",
     animationClasses: "",
   },
   vip3_ii: {
-    label: "VIP3 II",
-    labelVi: "VIP3 II",
+    label: "Level 3 II",
+    labelVi: "Level 3 II",
     icon: Zap,
     baseClasses: "bg-gradient-to-r from-purple-600 via-pink-600 to-rose-600 text-white border-pink-400",
     glowColor: "rgba(168, 85, 247, 0.6)",
     animationClasses: "",
   },
-  vip4: {
-    label: "VIP4",
-    labelVi: "VIP4",
+  level4: {
+    label: "Level 4",
+    labelVi: "Level 4",
     icon: Crown,
     baseClasses: "bg-gradient-to-r from-orange-500 via-red-500 to-orange-600 text-white border-orange-300",
     glowColor: "rgba(249, 115, 22, 0.5)",
     animationClasses: "",
   },
-  vip5: {
-    label: "VIP5",
-    labelVi: "VIP5",
+  level5: {
+    label: "Level 5",
+    labelVi: "Level 5",
     icon: Crown,
     baseClasses: "bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-600 text-white border-emerald-300",
     glowColor: "rgba(16, 185, 129, 0.5)",
     animationClasses: "",
   },
-  vip6: {
-    label: "VIP6",
-    labelVi: "VIP6",
+  level6: {
+    label: "Level 6",
+    labelVi: "Level 6",
     icon: Crown,
     baseClasses: "bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white border-indigo-300",
     glowColor: "rgba(99, 102, 241, 0.6)",
@@ -110,9 +110,9 @@ export const AnimatedTierBadge = ({
   showIcon = true,
   className 
 }: AnimatedTierBadgeProps) => {
-  const config = tierConfig[tier] || tierConfig.free;
+  const config = tierConfig[tier] || tierConfig.level0;
   const Icon = config.icon;
-  const isVIP = tier !== "free" && tier !== "demo";
+  const isVIP = tier !== "level0" && tier !== "demo";
 
   return (
     <div className={cn("relative inline-flex items-center gap-1.5 rounded-full border font-semibold transition-all duration-300",
@@ -146,7 +146,7 @@ export const AnimatedTierBadge = ({
       <span className="relative z-10">{config.label}</span>
       
       {/* Sparkle effects for high-tier VIPs */}
-      {(tier === "vip3" || tier === "vip3_ii" || tier === "vip4" || tier === "vip5" || tier === "vip6") && (
+      {(tier === "level3" || tier === "vip3_ii" || tier === "level4" || tier === "level5" || tier === "level6") && (
         <>
           <Sparkles className={cn(iconSizeClasses[size], "absolute -top-1 -right-1 animate-sparkle")} />
           <Sparkles className={cn(iconSizeClasses[size], "absolute -bottom-1 -left-1 animate-sparkle")} style={{ animationDelay: "0.75s" }} />

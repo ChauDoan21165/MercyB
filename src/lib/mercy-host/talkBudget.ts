@@ -5,7 +5,7 @@
  * Controls how much Mercy can "talk" (display text) to manage costs.
  */
 
-export type TierId = 'free' | 'vip1' | 'vip2' | 'vip3' | 'vip4' | 'vip5' | 'vip6' | 'vip7' | 'vip8' | 'vip9';
+export type TierId = 'level0' | 'level1' | 'level2' | 'level3' | 'level4' | 'level5' | 'level6' | 'level7' | 'level8' | 'level9';
 
 export interface TalkBudget {
   dailyChars: number;
@@ -30,23 +30,23 @@ export interface GrowthModeConfig {
 /**
  * Base tier budgets (characters per day)
  * 
- * Free: ~3K chars (minimal engagement)
- * VIP1-3: ~5K chars (moderate)
- * VIP4-6: ~7K chars (active)
- * VIP7-8: ~9K chars (premium)
- * VIP9: ~12K chars (unlimited-feel)
+ * Level 0: ~3K chars (minimal engagement)
+ * Level 1-3: ~5K chars (moderate)
+ * Level 4-6: ~7K chars (active)
+ * Level 7-8: ~9K chars (premium)
+ * Level 9: ~12K chars (unlimited-feel)
  */
 export const TIER_BUDGETS: Record<TierId, TalkBudget> = {
-  free: { dailyChars: 3_000, softWarnAt: 2_400, hardCap: 3_300 },
-  vip1: { dailyChars: 5_000, softWarnAt: 4_000, hardCap: 5_500 },
-  vip2: { dailyChars: 5_000, softWarnAt: 4_000, hardCap: 5_500 },
-  vip3: { dailyChars: 5_000, softWarnAt: 4_000, hardCap: 5_500 },
-  vip4: { dailyChars: 7_000, softWarnAt: 5_600, hardCap: 7_700 },
-  vip5: { dailyChars: 7_000, softWarnAt: 5_600, hardCap: 7_700 },
-  vip6: { dailyChars: 7_000, softWarnAt: 5_600, hardCap: 7_700 },
-  vip7: { dailyChars: 9_000, softWarnAt: 7_200, hardCap: 9_900 },
-  vip8: { dailyChars: 9_000, softWarnAt: 7_200, hardCap: 9_900 },
-  vip9: { dailyChars: 12_000, softWarnAt: 9_600, hardCap: 13_200 }
+  level0: { dailyChars: 3_000, softWarnAt: 2_400, hardCap: 3_300 },
+  level1: { dailyChars: 5_000, softWarnAt: 4_000, hardCap: 5_500 },
+  level2: { dailyChars: 5_000, softWarnAt: 4_000, hardCap: 5_500 },
+  level3: { dailyChars: 5_000, softWarnAt: 4_000, hardCap: 5_500 },
+  level4: { dailyChars: 7_000, softWarnAt: 5_600, hardCap: 7_700 },
+  level5: { dailyChars: 7_000, softWarnAt: 5_600, hardCap: 7_700 },
+  level6: { dailyChars: 7_000, softWarnAt: 5_600, hardCap: 7_700 },
+  level7: { dailyChars: 9_000, softWarnAt: 7_200, hardCap: 9_900 },
+  level8: { dailyChars: 9_000, softWarnAt: 7_200, hardCap: 9_900 },
+  level9: { dailyChars: 12_000, softWarnAt: 9_600, hardCap: 13_200 }
 };
 
 /**
@@ -59,13 +59,13 @@ export const GROWTH_MODE: GrowthModeConfig = {
   enabled: true,
   multiplier: 2,
   maxVisits: 15,
-  minTier: 'free'
+  minTier: 'level0'
 };
 
 /**
  * Tier ordering for comparison
  */
-const TIER_ORDER: TierId[] = ['free', 'vip1', 'vip2', 'vip3', 'vip4', 'vip5', 'vip6', 'vip7', 'vip8', 'vip9'];
+const TIER_ORDER: TierId[] = ['level0', 'level1', 'level2', 'level3', 'level4', 'level5', 'level6', 'level7', 'level8', 'level9'];
 
 /**
  * Check if tier A is >= tier B
@@ -82,7 +82,7 @@ export function normalizeTierId(tier: string): TierId {
   if (TIER_ORDER.includes(normalized)) {
     return normalized;
   }
-  return 'free';
+  return 'level0';
 }
 
 /**
@@ -93,7 +93,7 @@ export function normalizeTierId(tier: string): TierId {
  * @returns Effective talk budget (potentially multiplied for growth mode)
  */
 export function getEffectiveBudget(tier: TierId, totalVisits: number): TalkBudget {
-  const baseBudget = TIER_BUDGETS[tier] || TIER_BUDGETS.free;
+  const baseBudget = TIER_BUDGETS[tier] || TIER_BUDGETS.level0;
   
   // Check if growth mode applies
   const isGrowthModeActive = 

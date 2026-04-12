@@ -147,7 +147,7 @@ describe("loadMergedRoom snapshots", () => {
           id: "test-room",
           title_en: "Test Room",
           title_vi: "Phòng thử",
-          tier: "Free / Miễn phí",
+          tier: "Level 0 / Miễn phí",
           keywords: ["test"],
           entries: [
             {
@@ -208,7 +208,7 @@ describe("loadMergedRoom snapshots", () => {
             "slug": "dummy-entry",
           },
         ],
-        "roomTier": "free",
+        "roomTier": "level0",
       }
     `);
   });
@@ -240,7 +240,7 @@ describe("loadMergedRoom snapshots", () => {
 
     jsonMocks.mockLoadRoomJson.mockResolvedValue({
       id: "json-room",
-      tier: "Free / Miễn phí",
+      tier: "Level 0 / Miễn phí",
       entries: [
         {
           slug: "json-entry",
@@ -280,7 +280,7 @@ describe("loadMergedRoom snapshots", () => {
             "slug": "dummy-entry",
           },
         ],
-        "roomTier": "free",
+        "roomTier": "level0",
       }
     `);
   });

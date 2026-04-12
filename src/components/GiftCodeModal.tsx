@@ -175,7 +175,7 @@ export function GiftCodeModal({
             <Label htmlFor="gift-code">Gift Code / Mã quà tặng</Label>
             <Input
               id="gift-code"
-              placeholder="VIP3-XXXX-XXXX-XXXX"
+              placeholder="Level 3-XXXX-XXXX-XXXX"
               value={code}
               onChange={(e) => {
                 setCode(e.target.value.toUpperCase());
@@ -186,7 +186,7 @@ export function GiftCodeModal({
               className="font-mono text-center text-lg"
             />
             <p className="text-xs text-muted-foreground">
-              Format: VIP1-XXXX-XXXX-XXXX through VIP9-XXXX-XXXX-XXXX
+              Format: Level 1-XXXX-XXXX-XXXX through Level 9-XXXX-XXXX-XXXX
             </p>
           </div>
 

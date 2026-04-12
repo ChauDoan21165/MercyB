@@ -50,7 +50,7 @@ export interface RoomValidationResult {
 }
 
 export interface VipTierCoverage {
-  tierId: string;          // "vip1", "vip2", ...
+  tierId: string;          // "level1", "level2", ...
   label: string;           // from TIER_ID_TO_LABEL
   expectedCount: number;   // from registry/JSON
   dbActiveCount: number;   // from Supabase rooms table

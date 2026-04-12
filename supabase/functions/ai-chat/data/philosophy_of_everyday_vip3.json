@@ -1,7 +1,7 @@
 {
 "room_welcome": {
-"en": "Hello! Welcome to Philosophy of Everyday VIP3 room. How can I help you today?\n\nTopic keywords you can type are below:",
-"vi": "Xin chào! Chào mừng bạn đến với phòng Triết Học Đời Thường VIP3. Tôi có thể giúp gì cho bạn hôm nay?\n\nCác từ khóa bạn có thể nhập là:"
+"en": "Hello! Welcome to Philosophy of Everyday Level 3 room. How can I help you today?\n\nTopic keywords you can type are below:",
+"vi": "Xin chào! Chào mừng bạn đến với phòng Triết Học Đời Thường Level 3. Tôi có thể giúp gì cho bạn hôm nay?\n\nCác từ khóa bạn có thể nhập là:"
 },
 "keyword_menu": {
 "en": ["meaning_of_life", "meaning of life", "life meaning", "purpose of life"],
@@ -44,7 +44,7 @@
 "vi": "Ở tầng sâu nhất, ý nghĩa hé lộ như một khúc hòa điệu — không phải điều để theo đuổi, mà là điều để ghi nhớ. Cuộc sống không phải chiếc thang để leo, mà là bản nhạc để hòa cùng, nơi mỗi nốt là hơi thở của bạn và cũng là hơi thở của thế giới. Khi sống với sự tỉnh thức, bạn nhận ra rằng ngay cả nỗi đau cũng góp phần vào vẻ đẹp: chiếc lá úa nuôi dưỡng mảnh đất mới, trái tim tan vỡ mở ra chỗ cho lòng từ bi. Mục đích chân thật nằm trong sự hòa hợp — nơi suy nghĩ, cảm xúc và hành động vận hành như một thể, được dẫn dắt bởi sự chính trực tĩnh lặng. Là con người là học cách cân bằng giữa buông và nắm, giữa cô đơn và gắn bó, giữa im lặng và biểu đạt. Trong nhận thức ấy, sự phục vụ trở thành lòng dâng hiến, và tình yêu trở thành sự thực hành. Ý nghĩa không phải được tìm thấy — mà được tạo nên, trong từng khoảnh khắc bạn hiện diện, tử tế, và tỉnh thức giữa phép màu mong manh của giây phút này."
 },
 "author": "Philosophy Room",
-"tags": ["meaning", "vip3"],
+"tags": ["meaning", "level3"],
 "keywords": [
 "meaning_of_life",
 "meaning of life",

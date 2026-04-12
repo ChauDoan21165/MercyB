@@ -2,7 +2,7 @@
 CREATE TABLE IF NOT EXISTS public.testimonials (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   user_name TEXT NOT NULL,
-  user_title TEXT, -- e.g., "VIP3 Learner", "Parent of 2 kids"
+  user_title TEXT, -- e.g., "Level 3 Learner", "Parent of 2 kids"
   avatar_url TEXT,
   content_en TEXT NOT NULL,
   content_vi TEXT NOT NULL,

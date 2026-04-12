@@ -29,7 +29,7 @@ export function useMercyFeedback({
   anonId,
   modelName = null,
   promptVersion = null,
-  tier = "free",
+  tier = "level0",
   lang = "en",
   mode = "home",
   getPath = () =>

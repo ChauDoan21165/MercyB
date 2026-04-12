@@ -92,7 +92,7 @@ function analyzeRoom(room: any): RoomAudioCoverage {
   const coveragePercent =
     totalEntries > 0 ? Math.round((audioEntries / totalEntries) * 100) : 0;
 
-  const tier = normalizeTier(room.tier || "free");
+  const tier = normalizeTier(room.tier || "level0");
 
   return {
     roomId: room.id,
@@ -148,16 +148,16 @@ export async function generateAudioCoverageReport(): Promise<AudioCoverageReport
 
   // Sort tiers in logical order
   const tierOrder = [
-    "free",
-    "vip1",
-    "vip2",
-    "vip3",
-    "vip4",
-    "vip5",
-    "vip6",
-    "vip7",
-    "vip8",
-    "vip9",
+    "level0",
+    "level1",
+    "level2",
+    "level3",
+    "level4",
+    "level5",
+    "level6",
+    "level7",
+    "level8",
+    "level9",
     "kidslevel1",
     "kidslevel2",
     "kidslevel3",

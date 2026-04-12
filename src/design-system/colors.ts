@@ -39,47 +39,47 @@ export const colors = {
   errorForeground: 'hsl(var(--destructive-foreground))',
 
   // VIP Tier colors (semantic colors for each tier)
-  vip1: {
+  level1: {
     primary: 'hsl(346 77% 50%)', // Deep red
     foreground: 'hsl(0 0% 100%)',
     background: 'hsl(346 77% 97%)',
   },
-  vip2: {
+  level2: {
     primary: 'hsl(217 91% 60%)', // Royal blue
     foreground: 'hsl(0 0% 100%)',
     background: 'hsl(217 91% 97%)',
   },
-  vip3: {
+  level3: {
     primary: 'hsl(142 76% 36%)', // Emerald green
     foreground: 'hsl(0 0% 100%)',
     background: 'hsl(142 76% 97%)',
   },
-  vip4: {
+  level4: {
     primary: 'hsl(280 65% 60%)', // Purple
     foreground: 'hsl(0 0% 100%)',
     background: 'hsl(280 65% 97%)',
   },
-  vip5: {
+  level5: {
     primary: 'hsl(32 95% 44%)', // Orange
     foreground: 'hsl(0 0% 100%)',
     background: 'hsl(32 95% 97%)',
   },
-  vip6: {
+  level6: {
     primary: 'hsl(340 82% 52%)', // Magenta
     foreground: 'hsl(0 0% 100%)',
     background: 'hsl(340 82% 97%)',
   },
-  vip7: {
+  level7: {
     primary: 'hsl(198 93% 60%)', // Cyan
     foreground: 'hsl(0 0% 100%)',
     background: 'hsl(198 93% 97%)',
   },
-  vip8: {
+  level8: {
     primary: 'hsl(25 95% 53%)', // Amber
     foreground: 'hsl(0 0% 0%)',
     background: 'hsl(25 95% 97%)',
   },
-  vip9: {
+  level9: {
     primary: 'hsl(222 47% 11%)', // Dark slate (executive)
     foreground: 'hsl(0 0% 100%)',
     background: 'hsl(222 47% 97%)',
@@ -89,7 +89,7 @@ export const colors = {
     foreground: 'hsl(0 0% 100%)',
     background: 'hsl(262 83% 97%)',
   },
-  free: {
+  level0: {
     primary: 'hsl(214 95% 54%)', // Bright blue
     foreground: 'hsl(0 0% 100%)',
     background: 'hsl(214 95% 97%)',
@@ -101,17 +101,17 @@ export const colors = {
  */
 export const getVipTierColor = (tier: string) => {
   const tierLower = tier.toLowerCase();
-  if (tierLower.includes('vip1')) return colors.vip1;
-  if (tierLower.includes('vip2')) return colors.vip2;
-  if (tierLower.includes('vip3')) return colors.vip3;
-  if (tierLower.includes('vip4')) return colors.vip4;
-  if (tierLower.includes('vip5')) return colors.vip5;
-  if (tierLower.includes('vip6')) return colors.vip6;
-  if (tierLower.includes('vip7')) return colors.vip7;
-  if (tierLower.includes('vip8')) return colors.vip8;
-  if (tierLower.includes('vip9')) return colors.vip9;
+  if (tierLower.includes('level1')) return colors.level1;
+  if (tierLower.includes('level2')) return colors.level2;
+  if (tierLower.includes('level3')) return colors.level3;
+  if (tierLower.includes('level4')) return colors.level4;
+  if (tierLower.includes('level5')) return colors.level5;
+  if (tierLower.includes('level6')) return colors.level6;
+  if (tierLower.includes('level7')) return colors.level7;
+  if (tierLower.includes('level8')) return colors.level8;
+  if (tierLower.includes('level9')) return colors.level9;
   if (tierLower.includes('kids')) return colors.kids;
-  if (tierLower.includes('free')) return colors.free;
+  if (tierLower.includes('level0')) return colors.level0;
   return colors.primary;
 };
 

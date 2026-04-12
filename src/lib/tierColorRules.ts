@@ -2,8 +2,8 @@
  * Mercy Blade Color Theme Rules
  * 
  * CORE RULE:
- * - VIP1-VIP3: Colorful (rainbow healing aesthetic)
- * - VIP6-VIP9: Strict black & white (serious/professional)
+ * - Level 1-Level 3: Colorful (rainbow healing aesthetic)
+ * - Level 6-Level 9: Strict black & white (serious/professional)
  * - Header/logo/tier badges/music player/kids UI/admin tools: Always rainbow
  */
 
@@ -15,12 +15,12 @@ export type ColorMode = 'colorful' | 'monochrome';
  * Determine if a tier uses colorful or monochrome theme
  */
 export function getTierColorMode(tierId: TierId): ColorMode {
-  // VIP6-VIP9 are serious tiers - monochrome only
-  if (['vip6', 'vip7', 'vip8', 'vip9'].includes(tierId)) {
+  // Level 6-Level 9 are serious tiers - monochrome only
+  if (['level6', 'level7', 'level8', 'level9'].includes(tierId)) {
     return 'monochrome';
   }
   
-  // VIP1-VIP5, Kids, Free - colorful
+  // Level 1-Level 5, Kids, Level 0 - colorful
   return 'colorful';
 }
 
@@ -39,7 +39,7 @@ export function isMonochromeTier(tierId: TierId): boolean {
 }
 
 /**
- * Essay highlight colors for colorful tiers (VIP1-VIP3)
+ * Essay highlight colors for colorful tiers (Level 1-Level 3)
  * Used for highlighting emotional/healing/spiritual terms
  */
 export const COLORFUL_HIGHLIGHT_CLASSES = {
@@ -56,7 +56,7 @@ export const COLORFUL_HIGHLIGHT_CLASSES = {
 } as const;
 
 /**
- * Monochrome highlight styles for serious tiers (VIP6-VIP9)
+ * Monochrome highlight styles for serious tiers (Level 6-Level 9)
  * Only gray highlight, bold, italic, underline allowed
  */
 export const MONOCHROME_HIGHLIGHT_CLASS = 'bg-gray-100 text-gray-900 font-medium';

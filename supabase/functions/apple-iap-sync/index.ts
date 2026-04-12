@@ -6,7 +6,7 @@
  * 2. Environment Auto-Router (Production vs Sandbox Root Store)
  * 3. 1:1 Account Lockdown (Anti-Sharing Fraud)
  * 4. VND/CAD Settlement Logging (Canadian Tax Compliance)
- * 5. VIP 1-9 Escalation Trigger
+ * 5. Level 1-9 Escalation Trigger
  */
 
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
@@ -106,7 +106,7 @@ Deno.serve(async (req) => {
       }
     });
 
-    // 7. HARDENING: VIP 1-9 Escalation
+    // 7. HARDENING: Level 1-9 Escalation
     const vipLevel = mapProductToVipLevel(transaction.productId);
 
     // Atomic Sync: Transaction Log + VIP Tier Update + Content Access Mask

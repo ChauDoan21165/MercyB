@@ -45,7 +45,7 @@ const hasInconsistentCasing = (text: string): boolean => {
 
 const hasExtraWhitespace = (text: string): boolean => /\s{2,}|^\s|\s$/.test(text);
 
-const VALID_TIERS = ['free', 'vip1', 'vip2', 'vip3', 'vip4', 'vip5', 'vip6', 'vip7', 'vip8', 'vip9'];
+const VALID_TIERS = ['level0', 'level1', 'level2', 'level3', 'level4', 'level5', 'level6', 'level7', 'level8', 'level9'];
 const VALID_DOMAINS = [
   'English Foundation Ladder', 'Strategic Intelligence', 'VIP Learning', 
   'Kids English', 'General', 'Health & Wellness', 'Mental Health'
@@ -140,8 +140,8 @@ async function runDbHealthAudit(mode: AuditMode): Promise<AuditResult> {
     // Check 6: Tier mismatch
     const tierLower = (room.tier || "").toLowerCase();
     const normalizedTier = tierLower.includes("vip") 
-      ? tierLower.match(/vip\d/)?.[0] || "free"
-      : tierLower.includes("free") ? "free" : "unknown";
+      ? tierLower.match(/vip\d/)?.[0] || "level0"
+      : tierLower.includes("level0") ? "level0" : "unknown";
     
     if (!VALID_TIERS.includes(normalizedTier) && normalizedTier !== "unknown") {
       issues.push({
@@ -317,7 +317,7 @@ async function runDbHealthAudit(mode: AuditMode): Promise<AuditResult> {
 
     // Check 20: Broken foreign keys (rooms -> tiers conceptually)
     // We check tier string validity as proxy
-    if (room.tier && !room.tier.toLowerCase().includes("vip") && !room.tier.toLowerCase().includes("free")) {
+    if (room.tier && !room.tier.toLowerCase().includes("vip") && !room.tier.toLowerCase().includes("level0")) {
       issues.push({
         id: `broken-fk-${roomId}`,
         check: "Broken foreign keys",

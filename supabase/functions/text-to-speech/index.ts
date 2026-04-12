@@ -111,7 +111,7 @@ serve(async (req) => {
     const tierData = pickSubscriptionTierData(subscription);
     const tierName = normalizeTier(tierData?.name);
     const tierId = normalizeTier(subscription?.tier_id);
-    const resolvedTier = tierName || tierId || 'free';
+    const resolvedTier = tierName || tierId || 'level0';
 
     if (!hasPaidRepoAccess(resolvedTier)) {
       return new Response(

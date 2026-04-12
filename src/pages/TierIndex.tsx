@@ -12,13 +12,13 @@
 // - REMOVE "God / Universe" decoration entirely.
 // - Make Pricing button less harsh (softer, readable).
 //
-// FIX (98.9k — DELETE VIP3 II from Tier Map UI):
-// - Remove vip3 from SpineTierId + SPINE_TOP_TO_BOTTOM so the pill disappears.
+// FIX (98.9k — DELETE Level 3 II from Tier Map UI):
+// - Remove level3 from SpineTierId + SPINE_TOP_TO_BOTTOM so the pill disappears.
 // - Keep all tier loading/counting logic stable.
 //
-// FIX (98.9k+ — VIP1 RIGHT CARD):
-// - Change VIP1 right anchor from "Martial art / Discipline" → "Survival skills"
-// - Route to LIFE area explicitly: /tiers/vip1?area=life
+// FIX (98.9k+ — Level 1 RIGHT CARD):
+// - Change Level 1 right anchor from "Martial art / Discipline" → "Survival skills"
+// - Route to LIFE area explicitly: /tiers/level1?area=life
 //
 // FIX (98.9l — AREA-SAFE ROUTING, ALL TIERS):
 // - Problem: left + spine + right often landed in the same default (core) because links lacked ?area=...
@@ -28,7 +28,7 @@
 // - Remove the whole mid-band block.
 //
 // FIX (98.9m+ — REMOVE FREE RIGHT CARD):
-// - Delete "Survival skills" card from Free row on the RIGHT.
+// - Delete "Survival skills" card from Level 0 row on the RIGHT.
 //
 // FIX (98.9m++ — HUNT HIDDEN ROOMS, SAFE DEBUG):
 // - Add area/tier breakdown + “hidden bucket” detection.
@@ -49,16 +49,16 @@ import type { TierRoom, TierSource } from "@/lib/tierRoomSource";
 import { loadRoomsForTiers } from "@/lib/tierRoomSource";
 
 type SpineTierId =
-  | "free"
-  | "vip1"
-  | "vip2"
-  | "vip3"
-  | "vip4"
-  | "vip5"
-  | "vip6"
-  | "vip7"
-  | "vip8"
-  | "vip9";
+  | "level0"
+  | "level1"
+  | "level2"
+  | "level3"
+  | "level4"
+  | "level5"
+  | "level6"
+  | "level7"
+  | "level8"
+  | "level9";
 
 type TierNode = {
   id: SpineTierId;
@@ -70,16 +70,16 @@ const rainbow =
   "linear-gradient(90deg,#ff4d4d 0%,#ffb84d 18%,#b6ff4d 36%,#4dffb8 54%,#4db8ff 72%,#b84dff 90%,#ff4dff 100%)";
 
 const SPINE_TOP_TO_BOTTOM: TierNode[] = [
-  { id: "vip9", label: "VIP9", hint: "Top level" },
-  { id: "vip8", label: "VIP8", hint: "High mastery" },
-  { id: "vip7", label: "VIP7", hint: "Advanced" },
-  { id: "vip6", label: "VIP6", hint: "Systems / strategy" },
-  { id: "vip5", label: "VIP5", hint: "Writing / deeper practice" },
-  { id: "vip4", label: "VIP4", hint: "Climb" },
-  { id: "vip3", label: "VIP3", hint: "Bridge into the spine" },
-  { id: "vip2", label: "VIP2", hint: "Strengthen core skills" },
-  { id: "vip1", label: "VIP1", hint: "Build habit + foundation + survival basics" },
-  { id: "free", label: "Free", hint: "Ground / basics" },
+  { id: "level9", label: "Level 9", hint: "Top level" },
+  { id: "level8", label: "Level 8", hint: "High mastery" },
+  { id: "level7", label: "Level 7", hint: "Advanced" },
+  { id: "level6", label: "Level 6", hint: "Systems / strategy" },
+  { id: "level5", label: "Level 5", hint: "Writing / deeper practice" },
+  { id: "level4", label: "Level 4", hint: "Climb" },
+  { id: "level3", label: "Level 3", hint: "Bridge into the spine" },
+  { id: "level2", label: "Level 2", hint: "Strengthen core skills" },
+  { id: "level1", label: "Level 1", hint: "Build habit + foundation + survival basics" },
+  { id: "level0", label: "Level 0", hint: "Ground / basics" },
 ];
 
 function norm(v: any): string {
@@ -104,26 +104,26 @@ function inferSpineTierFromId(idRaw: any): SpineTierId | null {
     id.includes(`_${t}-`) ||
     id.includes(`-${t}_`);
 
-  if (has("vip9")) return "vip9";
-  if (has("vip8")) return "vip8";
-  if (has("vip7")) return "vip7";
-  if (has("vip6")) return "vip6";
-  if (has("vip5")) return "vip5";
-  if (has("vip4")) return "vip4";
-  if (has("vip3")) return "vip3";
-  if (has("vip2")) return "vip2";
-  if (has("vip1")) return "vip1";
+  if (has("level9")) return "level9";
+  if (has("level8")) return "level8";
+  if (has("level7")) return "level7";
+  if (has("level6")) return "level6";
+  if (has("level5")) return "level5";
+  if (has("level4")) return "level4";
+  if (has("level3")) return "level3";
+  if (has("level2")) return "level2";
+  if (has("level1")) return "level1";
 
   if (
-    id === "free" ||
+    id === "level0" ||
     id.startsWith("free_") ||
-    id.startsWith("free-") ||
+    id.startsWith("level0-") ||
     id.endsWith("_free") ||
-    id.endsWith("-free") ||
+    id.endsWith("-level0") ||
     id.includes("_free_") ||
-    id.includes("-free-")
+    id.includes("-level0-")
   ) {
-    return "free";
+    return "level0";
   }
 
   return null;
@@ -162,7 +162,7 @@ function inferSpineTierFromRank(r: TierRoom): SpineTierId | null {
   if (rank === null) return null;
 
   const rr = Math.max(0, Math.min(9, Math.trunc(rank)));
-  if (rr === 0) return "free";
+  if (rr === 0) return "level0";
   return `vip${rr}` as SpineTierId;
 }
 
@@ -571,14 +571,14 @@ export default function TierIndex() {
   }, []);
 
   const freeLifeCount = useMemo(
-    () => allRooms.filter((r) => (r as any).tier === "free" && isExplicitLifeRoom(r)).length,
+    () => allRooms.filter((r) => (r as any).tier === "level0" && isExplicitLifeRoom(r)).length,
     [allRooms]
   );
 
   const freeLifeIds = useMemo(
     () =>
       allRooms
-        .filter((r) => (r as any).tier === "free" && isExplicitLifeRoom(r))
+        .filter((r) => (r as any).tier === "level0" && isExplicitLifeRoom(r))
         .map((r) => String((r as any).id || ""))
         .sort(),
     [allRooms]
@@ -586,7 +586,7 @@ export default function TierIndex() {
 
   const freeCoreCount = useMemo(() => {
     return allRooms.filter((r) => {
-      if ((r as any).tier !== "free") return false;
+      if ((r as any).tier !== "level0") return false;
       if (isExplicitLifeRoom(r)) return false;
       const a = String((r as any).area || "").toLowerCase();
       if (a === "english" || a === "kids" || a === "life") return false;
@@ -597,7 +597,7 @@ export default function TierIndex() {
   const freeCoreIds = useMemo(() => {
     return allRooms
       .filter((r) => {
-        if ((r as any).tier !== "free") return false;
+        if ((r as any).tier !== "level0") return false;
         if (isExplicitLifeRoom(r)) return false;
         const a = String((r as any).area || "").toLowerCase();
         if (a === "english" || a === "kids" || a === "life") return false;
@@ -609,7 +609,7 @@ export default function TierIndex() {
 
   const countsForDisplay = useMemo(() => {
     const by = { ...counts.bySpineTier };
-    by.free = freeCoreCount;
+    by.level0 = freeCoreCount;
     return { ...counts, bySpineTier: by };
   }, [counts, freeCoreCount]);
 
@@ -734,9 +734,9 @@ export default function TierIndex() {
       });
 
       // eslint-disable-next-line no-console
-      console.log("tier-debug free core ids (first 80):", freeCoreIds.slice(0, 80));
+      console.log("tier-debug level0 core ids (first 80):", freeCoreIds.slice(0, 80));
       // eslint-disable-next-line no-console
-      console.log("tier-debug free explicit-life ids (first 80):", freeLifeIds.slice(0, 80));
+      console.log("tier-debug level0 explicit-life ids (first 80):", freeLifeIds.slice(0, 80));
 
       const coreRooms =
         (window as any).__MB_ALL_ROOMS__?.filter((r: any) => norm(r?.area) === "core") || [];
@@ -755,13 +755,13 @@ export default function TierIndex() {
   }, [counts, nonCoreCount, freeCoreCount, freeLifeCount, freeCoreIds, freeLifeIds]);
 
   const leftAnchors: Partial<Record<SpineTierId, React.ReactNode>> = {
-    free: (
+    level0: (
       <>
         <AnchorCard
           title="English Foundation"
-          tierLabel="Free"
+          tierLabel="Level 0"
           body="English lessons only (foundation)."
-          to="/tiers/free?area=english"
+          to="/tiers/level0?area=english"
         />
         <AnchorCard
           title="Kids Level 1 (English)"
@@ -783,50 +783,50 @@ export default function TierIndex() {
         />
       </>
     ),
-    vip1: (
+    level1: (
       <AnchorCard
         title="Building sentences"
-        tierLabel="VIP1"
+        tierLabel="Level 1"
         body="Pronunciation + patterns + listening repetition (English path)."
-        to="/tiers/vip1?area=english"
+        to="/tiers/level1?area=english"
       />
     ),
-    vip3: (
+    level3: (
       <AnchorCard
         title="Writing (English path)"
-        tierLabel="VIP3"
+        tierLabel="Level 3"
         body="Short essays → structured writing → clear expression."
-        to="/tiers/vip3?area=english"
+        to="/tiers/level3?area=english"
       />
     ),
   };
 
   const rightAnchors: Partial<Record<SpineTierId, React.ReactNode>> = {
-    vip1: (
+    level1: (
       <AnchorCard
         title="Survival skills"
-        tierLabel="VIP1"
+        tierLabel="Level 1"
         body="Life skills (survival/resilience) — safety, preparedness, discipline."
-        to="/tiers/vip1?area=life"
+        to="/tiers/level1?area=life"
       />
     ),
-    vip3: (
+    level3: (
       <AnchorCard
         title="Public speaking / Social skill"
-        tierLabel="VIP3"
+        tierLabel="Level 3"
         body="Communication, confidence, relationships, readiness."
-        to="/tiers/vip3?area=life"
+        to="/tiers/level3?area=life"
       />
     ),
   };
 
   const centerAnchors: Partial<Record<SpineTierId, React.ReactNode>> = {
-    vip3: (
+    level3: (
       <AnchorCard
         title="Bridge into the spine"
-        tierLabel="VIP3"
+        tierLabel="Level 3"
         body="Core training content (spine)."
-        to="/tiers/vip3?area=core"
+        to="/tiers/level3?area=core"
       />
     ),
   };
@@ -886,7 +886,7 @@ export default function TierIndex() {
 
           <div style={colBox} aria-label="Spine column header">
             <div style={colTitle}>Spine</div>
-            <p style={small}>Core only. Free at ground (bottom). VIP9 at top.</p>
+            <p style={small}>Core only. Level 0 at ground (bottom). Level 9 at top.</p>
           </div>
 
           <div style={colBox} aria-label="Right column header">

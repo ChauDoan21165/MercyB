@@ -13,7 +13,7 @@ const corsHeaders = {
 const MAX_FREE_ROOMS = 10;
 const PROFIT_MARGIN_THRESHOLD = 0.70; // 70% Switch point
 const ELITE_MODEL = "gpt-4.5-preview"; // High Reasoning for fresh VIPs
-const STANDARD_MODEL = "gpt-4.1-mini"; // High Speed for high-usage/Free
+const STANDARD_MODEL = "gpt-4.1-mini"; // High Speed for high-usage/Level 0
 
 const MERCY_MESSAGES = {
   ALREADY_SUBSCRIBED: {
@@ -42,21 +42,21 @@ type ActiveSubscriptionRow = {
 // Helper: tier normalization
 // ---------------------------
 function canonicalizeTier(value: string | null | undefined): string {
-  const raw = String(value ?? "free").toLowerCase().trim();
+  const raw = String(value ?? "level0").toLowerCase().trim();
   const cleaned = raw.replace(/[_-]+/g, " ").replace(/\s+/g, " ").trim();
 
-  if (!cleaned || cleaned === "free") return "free";
+  if (!cleaned || cleaned === "level0") return "level0";
 
-  if (cleaned.includes("vip9")) return "vip9";
-  if (cleaned.includes("vip6")) return "vip6";
-  if (cleaned.includes("vip5")) return "vip5";
-  if (cleaned.includes("vip4")) return "vip4";
+  if (cleaned.includes("level9")) return "level9";
+  if (cleaned.includes("level6")) return "level6";
+  if (cleaned.includes("level5")) return "level5";
+  if (cleaned.includes("level4")) return "level4";
   if (
-    cleaned.includes("vip3 ii") || cleaned.includes("vip3ii") ||
-    cleaned.includes("vip3")
-  ) return "vip3";
-  if (cleaned.includes("vip2")) return "vip2";
-  if (cleaned.includes("vip1")) return "vip1";
+    cleaned.includes("level3 ii") || cleaned.includes("vip3ii") ||
+    cleaned.includes("level3")
+  ) return "level3";
+  if (cleaned.includes("level2")) return "level2";
+  if (cleaned.includes("level1")) return "level1";
 
   if (cleaned.includes("kids")) {
     if (cleaned.includes("3")) return "kids_3";
@@ -74,14 +74,14 @@ function isSubscriptionCurrent(currentPeriodEnd: string | null | undefined) {
 }
 
 const tierHierarchy: Record<string, number> = {
-  free: 1,
-  vip1: 2,
-  vip2: 3,
-  vip3: 4,
-  vip4: 5,
-  vip5: 6,
-  vip6: 7,
-  vip9: 10,
+  level0: 1,
+  level1: 2,
+  level2: 3,
+  level3: 4,
+  level4: 5,
+  level5: 6,
+  level6: 7,
+  level9: 10,
   kids_1: 2,
   kids_2: 3,
   kids_3: 4,
@@ -143,8 +143,8 @@ async function verifyUserTierAccess(
 
     if (!subscription) {
       return {
-        hasAccess: canonicalizeTier(roomTier) === "free",
-        tier: "free",
+        hasAccess: canonicalizeTier(roomTier) === "level0",
+        tier: "level0",
       };
     }
 
@@ -160,7 +160,7 @@ async function verifyUserTierAccess(
     };
   } catch (error) {
     console.error("Error verifying tier access:", error);
-    return { hasAccess: false, tier: "free" };
+    return { hasAccess: false, tier: "level0" };
   }
 }
 
@@ -362,12 +362,12 @@ const roomFiles: { [key: string]: string } = {
   "gut-brain": "gut_brain_axis.json",
   "headache": "headache.json",
   "soul-mate": "how_to_find_your_soul_mate_vip1.json",
-  "confidence-building-vip1": "confidence_building_vip1.json",
-  "nutrition-basics-vip1": "nutrition_basics_vip1.json",
-  "financial-wellness-vip1": "financial_wellness_vip1.json",
-  "sleep-improvement-vip1": "sleep_improvement_vip1.json",
+  "confidence-building-level1": "confidence_building_vip1.json",
+  "nutrition-basics-level1": "nutrition_basics_vip1.json",
+  "financial-wellness-level1": "financial_wellness_vip1.json",
+  "sleep-improvement-level1": "sleep_improvement_vip1.json",
   "husband-dealing": "husband_dealing.json",
-  "husband-dealing-vip2": "husband_dealing_vip2.json",
+  "husband-dealing-level2": "husband_dealing_vip2.json",
   "hypertension": "hypertension.json",
   "immune-system": "immune_system.json",
   "immunity-boost": "immunity_boost.json",
@@ -379,11 +379,11 @@ const roomFiles: { [key: string]: string } = {
   "mindfulness-healing": "mindfulness_and_healing.json",
   "nutrition-basics": "nutrition_basics.json",
   "obesity": "obesity.json",
-  "obesity-management-vip2": "obesity_management_vip2.json",
-  "obesity-management-vip3": "obesity_management_vip3.json",
-  "sleep-improvement-free": "sleep_improvement_free.json",
-  "sleep-improvement-vip2": "sleep_improvement_vip2.json",
-  "sleep-improvement-vip3": "sleep_improvement_vip3.json",
+  "obesity-management-level2": "obesity_management_vip2.json",
+  "obesity-management-level3": "obesity_management_vip3.json",
+  "sleep-improvement-level0": "sleep_improvement_free.json",
+  "sleep-improvement-level2": "sleep_improvement_vip2.json",
+  "sleep-improvement-level3": "sleep_improvement_vip3.json",
   "office-survival": "office_survival.json",
   "pain-management": "pain_management.json",
   "phobia": "phobia.json",
@@ -393,7 +393,7 @@ const roomFiles: { [key: string]: string } = {
   "respiratory": "respiratory_system.json",
   "screening": "screening_and_prevention.json",
   "sexuality": "sexuality_and_intimacy.json",
-  "sexuality-intimacy-vip2": "sexuality_intimacy_vip2.json",
+  "sexuality-intimacy-level2": "sexuality_intimacy_vip2.json",
   "skin-health": "skin_health.json",
   "sleep-health": "sleep_health.json",
   "social-connection": "social_connection.json",
@@ -406,32 +406,32 @@ const roomFiles: { [key: string]: string } = {
   "trauma": "trauma.json",
   "user-profile-dashboard": "user_profile_dashboard.json",
   "wife-dealing": "wife_dealing.json",
-  "wife-dealing-vip2": "wife_dealing_vip2.json",
+  "wife-dealing-level2": "wife_dealing_vip2.json",
   "womens-health": "women_health.json",
   "habit-building": "habit_building.json",
   "negotiation-mastery": "negotiation_mastery.json",
   "diabetes-advanced": "diabetes_advanced.json",
   "confidence-building": "confidence_building.json",
   "financial-planning": "financial_planning_101.json",
-  "onboarding-free-users": "onboarding_free_users.json",
+  "onboarding-level0-users": "onboarding_free_users.json",
   "parenting-toddlers": "parenting_toddlers.json",
   "relationship-conflicts": "relationship_conflicts.json",
   "weight-loss": "weight_loss_program.json",
   "anxiety-toolkit": "anxiety_toolkit.json",
-  "keep-soul-calm-vip3": "keep_soul_calm_vip3.json",
-  "mental-sharpness-vip3": "sharpen_mind_vip3.json",
-  "overcome-storm-vip3": "overcome_storm_vip3.json",
-  "shadow-work-vip3": "unlock_shadow_vip3.json",
-  "human-rights-vip3": "human_rights_vip3.json",
-  "confidence-vip3": "confidence_vip3.json",
-  "nutrition-vip3": "nutrition_vip3.json",
-  "meaning-of-life-vip3": "meaning_of_life_vip3.json",
-  "philosophy-of-everyday-vip3": "philosophy_of_everyday_vip3.json",
-  "finding-gods-peace-free": "finding_gods_peace_free.json",
-  "gods-guidance-vip1": "gods_guidance_vip1.json",
-  "gods-strength-vip2-resilience": "gods_strength_vip2_resilience.json",
-  "gods-purpose-vip3": "gods_purpose_vip3.json",
-  "proverbs-wisdom-vip1": "proverbs_wisdom_VIP1.json",
+  "keep-soul-calm-level3": "keep_soul_calm_vip3.json",
+  "mental-sharpness-level3": "sharpen_mind_vip3.json",
+  "overcome-storm-level3": "overcome_storm_vip3.json",
+  "shadow-work-level3": "unlock_shadow_vip3.json",
+  "human-rights-level3": "human_rights_vip3.json",
+  "confidence-level3": "confidence_vip3.json",
+  "nutrition-level3": "nutrition_vip3.json",
+  "meaning-of-life-level3": "meaning_of_life_vip3.json",
+  "philosophy-of-everyday-level3": "philosophy_of_everyday_vip3.json",
+  "finding-gods-peace-level0": "finding_gods_peace_free.json",
+  "gods-guidance-level1": "gods_guidance_vip1.json",
+  "gods-strength-level2-resilience": "gods_strength_vip2_resilience.json",
+  "gods-purpose-level3": "gods_purpose_vip3.json",
+  "proverbs-wisdom-level1": "proverbs_wisdom_VIP1.json",
 };
 
 const embeddedFallbackData: Record<string, any> = {
@@ -541,7 +541,7 @@ serve(async (req) => {
 
     // Tier Verification (Full Code Maintained)
     const { data: roomTierRow } = await supabaseAdmin.from("rooms").select("tier").eq("id", roomId).single();
-    const { hasAccess, tier: userRoomTier } = await verifyUserTierAccess(supabaseAdmin, user.id, roomTierRow?.tier || "free");
+    const { hasAccess, tier: userRoomTier } = await verifyUserTierAccess(supabaseAdmin, user.id, roomTierRow?.tier || "level0");
     if (!hasAccess) return new Response(JSON.stringify({ error: "Insufficient tier" }), { status: 403, headers: corsHeaders });
 
     const roomData = await loadRoomData(roomId);

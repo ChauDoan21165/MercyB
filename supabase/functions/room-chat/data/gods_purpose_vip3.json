@@ -1,9 +1,9 @@
 {
-  "header": "// dumb tree, no diagnostics, catch keyword, speak meter, plain (b1), bilingual (en-vi), gentle persuasion only\n\nGod’s purpose for VIP 3, evidence-based\n\nEach entry: teach practical steps for discovering divine purpose\n\nPhilosophy: empathetic, actionable, inspiring, humane language\n\nBeliefs:\n- Don’t judge. Embrace purpose.\n- Don’t rush. Seek clarity.\n- Don’t doubt. Foster faith.\n\nTalk points\n- Discernment reveals purpose.\n- Service aligns with God.\n- Reflection deepens meaning.\n\nTiny habits to teach:\n- Meditate on purpose daily.\n- Serve one cause monthly.\n- Reflect one purpose weekly.",
+  "header": "// dumb tree, no diagnostics, catch keyword, speak meter, plain (b1), bilingual (en-vi), gentle persuasion only\n\nGod’s purpose for Level 3, evidence-based\n\nEach entry: teach practical steps for discovering divine purpose\n\nPhilosophy: empathetic, actionable, inspiring, humane language\n\nBeliefs:\n- Don’t judge. Embrace purpose.\n- Don’t rush. Seek clarity.\n- Don’t doubt. Foster faith.\n\nTalk points\n- Discernment reveals purpose.\n- Service aligns with God.\n- Reflection deepens meaning.\n\nTiny habits to teach:\n- Meditate on purpose daily.\n- Serve one cause monthly.\n- Reflect one purpose weekly.",
   "schema_version": "1.1",
   "schema_id": "gods_purpose_vip3",
-  "description": "Echologic Mercy Blade room for VIP 3 users to discover God’s purpose with evidence-based strategies",
-  "description_vi": "Phòng Mercy Blade dành cho người dùng VIP 3 để khám phá mục đích của Thiên Chúa với chiến lược dựa trên bằng chứng",
+  "description": "Echologic Mercy Blade room for Level 3 users to discover God’s purpose with evidence-based strategies",
+  "description_vi": "Phòng Mercy Blade dành cho người dùng Level 3 để khám phá mục đích của Thiên Chúa với chiến lược dựa trên bằng chứng",
   "supported_languages": ["en", "vi"],
   "localization": { "default": "en", "fallback": "en", "i18n_required": true },
   "safety_disclaimer": "Educational guidance; not a substitute for professional spiritual or mental health advice.",
@@ -20,13 +20,13 @@
     "created_at": "2025-10-22T07:13:00+07:00",
     "updated_at": "2025-10-22T07:13:00+07:00",
     "checksum_sha256": "<placeholder>",
-    "meta_notes": "Keyword-driven; VIP 3 exclusive; deep gold background; UUIDv4 artifacts; checksum=SHA-256 of canonical JSON.",
+    "meta_notes": "Keyword-driven; Level 3 exclusive; deep gold background; UUIDv4 artifacts; checksum=SHA-256 of canonical JSON.",
     "i18n_verified": true,
     "entry_count": 3,
     "artifact_set_id": "3c4d5e6f-7a8b-4c9d-f0e1-a2b3c4d5e6f7",
     "data_format_version": "MercyBlade-Core-v1.2",
     "room_color": "#F9A825",
-    "tier": "vip3"
+    "tier": "level3"
   },
   "enums": {
     "tags": [
@@ -56,8 +56,8 @@
   },
   "room_essay": {
     "format": "markdown",
-    "en": "# God’s Purpose VIP3\n\nDiscovering God’s purpose brings clarity to life’s meaning. Studies show spiritual purpose boosts fulfillment by 40%. This VIP 3 room offers premium strategies to align with divine calling.\n\n**Practice Discernment**\n- Meditate 5 minutes daily on purpose.\n- Ask “What is God’s plan for me?”.\n- Example: Sarah’s discernment revealed her calling.\n\n**Serve Others**\n- Volunteer for one cause monthly.\n- Help one person with kindness weekly.\n- Research shows service aligns purpose by 35%.\n\n**Reflect on Purpose**\n- Journal one purpose insight weekly.\n- Reflect on God’s guidance.\n- Example: Minh’s reflection clarified his mission.\n\n**Stay Faithful**\n- Trust God’s timing for purpose.\n- Seek spiritual counsel for clarity.\n\nStart today: meditate on purpose or serve someone. Your VIP 3 tools will guide you to God’s plan!\n\n*Word count: 404*",
-    "vi": "# Mục Đích Của Thiên Chúa VIP3\n\nKhám phá mục đích của Thiên Chúa mang lại sự rõ ràng cho ý nghĩa cuộc sống. Nghiên cứu cho thấy mục đích tâm linh tăng sự thỏa mãn 40%. Phòng VIP 3 này cung cấp chiến lược cao cấp để căn chỉnh với lời kêu gọi thần thánh.\n\n**Thực Hành Phân Định**\n- Thiền 5 phút mỗi ngày về mục đích.\n- Hỏi “Kế hoạch của Thiên Chúa cho tôi là gì?”.\n- Ví dụ: Lan phân định, khám phá lời kêu gọi.\n\n**Phục Vụ Người Khác**\n- Tình nguyện cho một sự nghiệp mỗi tháng.\n- Giúp một người bằng lòng tốt mỗi tuần.\n- Nghiên cứu cho thấy phục vụ căn chỉnh mục đích 35%.\n\n**Suy Ngẫm Về Mục Đích**\n- Ghi nhật ký một thông tin mục đích mỗi tuần.\n- Suy ngẫm về sự hướng dẫn của Thiên Chúa.\n- Ví dụ: Hùng suy ngẫm, làm rõ sứ mệnh.\n\n**Giữ Đức Tin**\n- Tin vào thời điểm của Thiên Chúa cho mục đích.\n- Tìm tư vấn tâm linh để rõ ràng.\n\nBắt đầu hôm nay: thiền về mục đích hoặc phục vụ ai đó. Công cụ VIP 3 sẽ dẫn bạn đến kế hoạch của Thiên Chúa!\n\n*Số từ: 412*",
+    "en": "# God’s Purpose Level 3\n\nDiscovering God’s purpose brings clarity to life’s meaning. Studies show spiritual purpose boosts fulfillment by 40%. This Level 3 room offers premium strategies to align with divine calling.\n\n**Practice Discernment**\n- Meditate 5 minutes daily on purpose.\n- Ask “What is God’s plan for me?”.\n- Example: Sarah’s discernment revealed her calling.\n\n**Serve Others**\n- Volunteer for one cause monthly.\n- Help one person with kindness weekly.\n- Research shows service aligns purpose by 35%.\n\n**Reflect on Purpose**\n- Journal one purpose insight weekly.\n- Reflect on God’s guidance.\n- Example: Minh’s reflection clarified his mission.\n\n**Stay Faithful**\n- Trust God’s timing for purpose.\n- Seek spiritual counsel for clarity.\n\nStart today: meditate on purpose or serve someone. Your Level 3 tools will guide you to God’s plan!\n\n*Word count: 404*",
+    "vi": "# Mục Đích Của Thiên Chúa Level 3\n\nKhám phá mục đích của Thiên Chúa mang lại sự rõ ràng cho ý nghĩa cuộc sống. Nghiên cứu cho thấy mục đích tâm linh tăng sự thỏa mãn 40%. Phòng Level 3 này cung cấp chiến lược cao cấp để căn chỉnh với lời kêu gọi thần thánh.\n\n**Thực Hành Phân Định**\n- Thiền 5 phút mỗi ngày về mục đích.\n- Hỏi “Kế hoạch của Thiên Chúa cho tôi là gì?”.\n- Ví dụ: Lan phân định, khám phá lời kêu gọi.\n\n**Phục Vụ Người Khác**\n- Tình nguyện cho một sự nghiệp mỗi tháng.\n- Giúp một người bằng lòng tốt mỗi tuần.\n- Nghiên cứu cho thấy phục vụ căn chỉnh mục đích 35%.\n\n**Suy Ngẫm Về Mục Đích**\n- Ghi nhật ký một thông tin mục đích mỗi tuần.\n- Suy ngẫm về sự hướng dẫn của Thiên Chúa.\n- Ví dụ: Hùng suy ngẫm, làm rõ sứ mệnh.\n\n**Giữ Đức Tin**\n- Tin vào thời điểm của Thiên Chúa cho mục đích.\n- Tìm tư vấn tâm linh để rõ ràng.\n\nBắt đầu hôm nay: thiền về mục đích hoặc phục vụ ai đó. Công cụ Level 3 sẽ dẫn bạn đến kế hoạch của Thiên Chúa!\n\n*Số từ: 412*",
     "word_count_en": 404,
     "word_count_vi": 412,
     "updated_at": "2025-10-22T07:13:00+07:00"

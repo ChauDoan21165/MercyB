@@ -5,7 +5,7 @@ import {
   fetchCurrentEntitlement,
 } from "./authService";
 
-export type VipKey = "free" | "vip1" | "vip3" | "vip9";
+export type VipKey = "level0" | "level1" | "level3" | "level9";
 
 export type UserTierContext = {
   userId: string | null;
@@ -16,7 +16,7 @@ export type UserTierContext = {
 
 /**
  * Reads paid state from backend entitlement only.
- * Returns "free" when not signed in / inactive / unknown.
+ * Returns "level0" when not signed in / inactive / unknown.
  */
 export async function getUserTierContext(
   supabase: SupabaseClient,
@@ -29,7 +29,7 @@ export async function getUserTierContext(
   if (!userId) {
     return {
       userId: null,
-      vipKey: "free",
+      vipKey: "level0",
       tierId: null,
       subscriptionStatus: null,
     };

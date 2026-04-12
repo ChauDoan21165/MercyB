@@ -246,8 +246,8 @@ export function createMercyEngine(
 
   // Helper: auto-select avatar based on tier
   const getAvatarForTier = (tier: string): MercyAvatarStyle => {
-    if (tier === 'vip9') return 'angelic';
-    if (['vip6', 'vip7', 'vip8'].includes(tier)) return 'abstract';
+    if (tier === 'level9') return 'angelic';
+    if (['level6', 'level7', 'level8'].includes(tier)) return 'abstract';
     return getSavedAvatarStyle();
   };
 
@@ -386,7 +386,7 @@ export function createMercyEngine(
     init: (config) => {
       const savedEnabled = localStorage.getItem(STORAGE_KEYS.HOST_ENABLED);
       const savedLang = localStorage.getItem(STORAGE_KEYS.LANGUAGE) as 'en' | 'vi' | null;
-      const tier = config.tier || 'free';
+      const tier = config.tier || 'level0';
       const tierScript = getTierScript(tier);
       const mem = memory.get();
 
@@ -1031,7 +1031,7 @@ export const initialEngineState: MercyEngineState = {
   presenceState: 'idle',
   avatarStyle: 'minimalist',
   language: 'en',
-  currentTier: 'free',
+  currentTier: 'level0',
   currentTone: 'warm, encouraging, gentle',
   userName: null,
   currentVoiceLine: null,

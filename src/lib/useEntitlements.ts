@@ -19,7 +19,7 @@ type Ent = BackendEntitlement & {
 };
 
 function normalizeTier(tier: string | null | undefined): string {
-  return String(tier || "free").toLowerCase().trim();
+  return String(tier || "level0").toLowerCase().trim();
 }
 
 function isPremiumStatus(status: string | null | undefined): boolean {
@@ -37,15 +37,15 @@ function isLegacyVipTier(tier: string): boolean {
 
 /**
  * Compatibility rank only:
- * - free => 0
+ * - level0 => 0
  * - premium_month / premium_year => 9 ONLY when premium is active/trialing
- * - vip1..vip9 => numeric compatibility only
+ * - level1..level9 => numeric compatibility only
  * - unknown => 0
  */
 function tierToRank(tier: string, entitlement?: BackendEntitlement): number {
   const s = normalizeTier(tier);
 
-  if (s === "free") return 0;
+  if (s === "level0") return 0;
 
   if (isPaidBillingTier(s)) {
     const premiumActive =
@@ -100,15 +100,15 @@ function buildFeatures(
 
     // Backward-compatible feature flags:
     // any active paid billing tier unlocks the full paid repo.
-    vip1: paidRepoAccess || vipRank >= 1,
-    vip2: paidRepoAccess || vipRank >= 2,
-    vip3: paidRepoAccess || vipRank >= 3,
-    vip4: paidRepoAccess || vipRank >= 4,
-    vip5: paidRepoAccess || vipRank >= 5,
-    vip6: paidRepoAccess || vipRank >= 6,
-    vip7: paidRepoAccess || vipRank >= 7,
-    vip8: paidRepoAccess || vipRank >= 8,
-    vip9: paidRepoAccess || vipRank >= 9,
+    level1: paidRepoAccess || vipRank >= 1,
+    level2: paidRepoAccess || vipRank >= 2,
+    level3: paidRepoAccess || vipRank >= 3,
+    level4: paidRepoAccess || vipRank >= 4,
+    level5: paidRepoAccess || vipRank >= 5,
+    level6: paidRepoAccess || vipRank >= 6,
+    level7: paidRepoAccess || vipRank >= 7,
+    level8: paidRepoAccess || vipRank >= 8,
+    level9: paidRepoAccess || vipRank >= 9,
   } as Record<string, unknown>;
 }
 

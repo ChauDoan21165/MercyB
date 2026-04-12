@@ -1,13 +1,13 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
 
-const ROOM_FILE_REGEX = /(free|vip1|vip2|vip3|vip3_ii|vip4|vip5|vip6)\.json$/i;
+const ROOM_FILE_REGEX = /(level0|level1|level2|level3|vip3_ii|level4|level5|level6)\.json$/i;
 
 function filenameToRoomId(filename: string): string {
   const base = filename.replace(/\.json$/i, '');
   return base
     .toLowerCase()
     .replace(/[_\s]+/g, '-')
-    .replace(/-(free|vip1|vip2|vip3|vip3[-_]ii|vip4|vip5|vip6)$/i, (match) => match.toLowerCase());
+    .replace(/-(level0|level1|level2|level3|level3[-_]ii|level4|level5|level6)$/i, (match) => match.toLowerCase());
 }
 
 function extractNames(content: any, filename: string) {
@@ -31,7 +31,7 @@ function extractNames(content: any, filename: string) {
   if (!nameEn) {
     nameEn = filename
       .replace(/\.(json)$/i, '')
-      .replace(/[_-](free|vip1|vip2|vip3|vip3[-_]ii|vip4|vip5|vip6)$/i, '')
+      .replace(/[_-](level0|level1|level2|level3|level3[-_]ii|level4|level5|level6)$/i, '')
       .replace(/[_-]/g, ' ')
       .split(' ')
       .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
@@ -63,14 +63,14 @@ serve(async (req) => {
       const roomId = filenameToRoomId(filename);
       const names = extractNames(content, filename);
       
-      let tier = 'free';
-      if (roomId.endsWith('-vip3-ii')) tier = 'vip3_ii';
-      else if (roomId.endsWith('-vip6')) tier = 'vip6';
-      else if (roomId.endsWith('-vip5')) tier = 'vip5';
-      else if (roomId.endsWith('-vip4')) tier = 'vip4';
-      else if (roomId.endsWith('-vip3')) tier = 'vip3';
-      else if (roomId.endsWith('-vip2')) tier = 'vip2';
-      else if (roomId.endsWith('-vip1')) tier = 'vip1';
+      let tier = 'level0';
+      if (roomId.endsWith('-level3-ii')) tier = 'vip3_ii';
+      else if (roomId.endsWith('-level6')) tier = 'level6';
+      else if (roomId.endsWith('-level5')) tier = 'level5';
+      else if (roomId.endsWith('-level4')) tier = 'level4';
+      else if (roomId.endsWith('-level3')) tier = 'level3';
+      else if (roomId.endsWith('-level2')) tier = 'level2';
+      else if (roomId.endsWith('-level1')) tier = 'level1';
       
       manifest[roomId] = `data/${filename}`;
       

@@ -1,9 +1,9 @@
 {
-  "header": "// dumb tree, no diagnostics, catch keyword, speak meter, plain (b1), bilingual (en-vi), gentle persuasion only\n\nNutrition basics for VIP 1, evidence-based\n\nEach entry: teach practical steps for healthy eating\n\nPhilosophy: supportive, actionable, non-judgmental, humane language\n\nBeliefs:\n- Don’t overwhelm. Encourage small steps.\n- Don’t judge. Foster healthy habits.\n- Don’t rush. Build sustainability.\n\nTalk points\n- Balanced meals improve health.\n- Hydration supports wellness.\n- Mindful eating prevents overeating.\n\nTiny habits to teach:\n- Plan one balanced meal daily.\n- Drink one extra glass of water daily.\n- Eat one meal mindfully.",
+  "header": "// dumb tree, no diagnostics, catch keyword, speak meter, plain (b1), bilingual (en-vi), gentle persuasion only\n\nNutrition basics for Level 1, evidence-based\n\nEach entry: teach practical steps for healthy eating\n\nPhilosophy: supportive, actionable, non-judgmental, humane language\n\nBeliefs:\n- Don’t overwhelm. Encourage small steps.\n- Don’t judge. Foster healthy habits.\n- Don’t rush. Build sustainability.\n\nTalk points\n- Balanced meals improve health.\n- Hydration supports wellness.\n- Mindful eating prevents overeating.\n\nTiny habits to teach:\n- Plan one balanced meal daily.\n- Drink one extra glass of water daily.\n- Eat one meal mindfully.",
   "schema_version": "1.1",
   "schema_id": "nutrition_basics_vip1",
-  "description": "Echologic Mercy Blade room for VIP 1 users to master nutrition basics with evidence-based strategies",
-  "description_vi": "Phòng Mercy Blade dành cho người dùng VIP 1 để nắm vững dinh dưỡng cơ bản với chiến lược dựa trên bằng chứng",
+  "description": "Echologic Mercy Blade room for Level 1 users to master nutrition basics with evidence-based strategies",
+  "description_vi": "Phòng Mercy Blade dành cho người dùng Level 1 để nắm vững dinh dưỡng cơ bản với chiến lược dựa trên bằng chứng",
   "supported_languages": ["en", "vi"],
   "localization": { "default": "en", "fallback": "en", "i18n_required": true },
   "safety_disclaimer": "Educational guidance; not a substitute for professional dietary advice.",
@@ -20,13 +20,13 @@
     "created_at": "2025-10-21T19:39:00+07:00",
     "updated_at": "2025-10-21T19:39:00+07:00",
     "checksum_sha256": "<placeholder>",
-    "meta_notes": "Keyword-driven; VIP 1 exclusive; light brown background; UUIDv4 artifacts; checksum=SHA-256 of canonical JSON.",
+    "meta_notes": "Keyword-driven; Level 1 exclusive; light brown background; UUIDv4 artifacts; checksum=SHA-256 of canonical JSON.",
     "i18n_verified": true,
     "entry_count": 3,
     "artifact_set_id": "6d7e8f9a-0b1c-4d2e-a3f4-b5c6d7e8f9a0",
     "data_format_version": "MercyBlade-Core-v1.2",
     "room_color": "#D7CCC8",
-    "tier": "vip1"
+    "tier": "level1"
   },
   "enums": {
     "tags": [
@@ -56,8 +56,8 @@
   },
   "room_essay": {
     "format": "markdown",
-    "en": "# Nutrition Basics VIP1\n\nHealthy eating starts with small, sustainable habits. Research shows balanced nutrition improves health by 25% in 3 months. This VIP 1 room offers premium strategies to master your diet.\n\n**Plan Balanced Meals**\n- Include veggies and protein in one meal daily.\n- Use a plate method (half veggies, quarter protein).\n- Example: Sarah’s meal planning boosted her energy.\n\n**Stay Hydrated**\n- Drink 8 glasses of water daily.\n- Carry a reusable water bottle.\n- Studies show hydration improves focus by 20%.\n\n**Practice Mindful Eating**\n- Eat slowly, chewing each bite 20 times.\n- Avoid distractions during meals.\n- Example: Minh’s mindful eating reduced overeating.\n\n**Stay Consistent**\n- Track food intake weekly with a journal.\n- Consult a dietitian for tailored advice.\n\nStart today: plan one balanced meal or drink an extra glass of water. Your VIP 1 tools will guide you to better health!\n\n*Word count: 404*",
-    "vi": "# Dinh Dưỡng Cơ Bản VIP1\n\nĂn uống lành mạnh bắt đầu từ thói quen nhỏ, bền vững. Nghiên cứu cho thấy dinh dưỡng cân bằng cải thiện sức khỏe 25% trong 3 tháng. Phòng VIP 1 này cung cấp chiến lược cao cấp để làm chủ chế độ ăn.\n\n**Lập Kế Hoạch Bữa Ăn Cân Bằng**\n- Thêm rau và protein vào một bữa ăn hàng ngày.\n- Sử dụng phương pháp chia đĩa (nửa rau, một phần tư protein).\n- Ví dụ: Lan lập kế hoạch bữa ăn, tăng năng lượng.\n\n**Uống Đủ Nước**\n- Uống 8 ly nước mỗi ngày.\n- Mang theo chai nước tái sử dụng.\n- Nghiên cứu cho thấy uống đủ nước cải thiện tập trung 20%.\n\n**Thực Hành Ăn Uống Tỉnh Táo**\n- Ăn chậm, nhai mỗi miếng 20 lần.\n- Tránh phân tâm khi ăn.\n- Ví dụ: Hùng ăn uống tỉnh táo, giảm ăn quá nhiều.\n\n**Giữ Nhất Quán**\n- Theo dõi lượng ăn hàng tuần bằng nhật ký.\n- Tham khảo chuyên gia dinh dưỡng để được tư vấn.\n\nBắt đầu hôm nay: lập kế hoạch một bữa ăn cân bằng hoặc uống thêm một ly nước. Công cụ VIP 1 sẽ dẫn bạn đến sức khỏe tốt hơn!\n\n*Số từ: 412*",
+    "en": "# Nutrition Basics Level 1\n\nHealthy eating starts with small, sustainable habits. Research shows balanced nutrition improves health by 25% in 3 months. This Level 1 room offers premium strategies to master your diet.\n\n**Plan Balanced Meals**\n- Include veggies and protein in one meal daily.\n- Use a plate method (half veggies, quarter protein).\n- Example: Sarah’s meal planning boosted her energy.\n\n**Stay Hydrated**\n- Drink 8 glasses of water daily.\n- Carry a reusable water bottle.\n- Studies show hydration improves focus by 20%.\n\n**Practice Mindful Eating**\n- Eat slowly, chewing each bite 20 times.\n- Avoid distractions during meals.\n- Example: Minh’s mindful eating reduced overeating.\n\n**Stay Consistent**\n- Track food intake weekly with a journal.\n- Consult a dietitian for tailored advice.\n\nStart today: plan one balanced meal or drink an extra glass of water. Your Level 1 tools will guide you to better health!\n\n*Word count: 404*",
+    "vi": "# Dinh Dưỡng Cơ Bản Level 1\n\nĂn uống lành mạnh bắt đầu từ thói quen nhỏ, bền vững. Nghiên cứu cho thấy dinh dưỡng cân bằng cải thiện sức khỏe 25% trong 3 tháng. Phòng Level 1 này cung cấp chiến lược cao cấp để làm chủ chế độ ăn.\n\n**Lập Kế Hoạch Bữa Ăn Cân Bằng**\n- Thêm rau và protein vào một bữa ăn hàng ngày.\n- Sử dụng phương pháp chia đĩa (nửa rau, một phần tư protein).\n- Ví dụ: Lan lập kế hoạch bữa ăn, tăng năng lượng.\n\n**Uống Đủ Nước**\n- Uống 8 ly nước mỗi ngày.\n- Mang theo chai nước tái sử dụng.\n- Nghiên cứu cho thấy uống đủ nước cải thiện tập trung 20%.\n\n**Thực Hành Ăn Uống Tỉnh Táo**\n- Ăn chậm, nhai mỗi miếng 20 lần.\n- Tránh phân tâm khi ăn.\n- Ví dụ: Hùng ăn uống tỉnh táo, giảm ăn quá nhiều.\n\n**Giữ Nhất Quán**\n- Theo dõi lượng ăn hàng tuần bằng nhật ký.\n- Tham khảo chuyên gia dinh dưỡng để được tư vấn.\n\nBắt đầu hôm nay: lập kế hoạch một bữa ăn cân bằng hoặc uống thêm một ly nước. Công cụ Level 1 sẽ dẫn bạn đến sức khỏe tốt hơn!\n\n*Số từ: 412*",
     "word_count_en": 404,
     "word_count_vi": 412,
     "updated_at": "2025-10-21T19:39:00+07:00"

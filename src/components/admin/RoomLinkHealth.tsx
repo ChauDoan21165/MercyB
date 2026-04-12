@@ -58,7 +58,7 @@ export const RoomLinkHealth = () => {
       const uiRoomIds = new Set<string>();
       const uiSources: { id: string; source: string }[] = [];
 
-      // VIP4 hardcoded rooms (from RoomGridVIP4.tsx)
+      // Level 4 hardcoded rooms (from RoomGridVIP4.tsx)
       const vip4HardcodedRooms = [
         "courage-to-begin", "discover-self", "explore-world", "build-skills",
         "bridge-to-reality", "resilience-and-adaptation", "career-community",
@@ -66,7 +66,7 @@ export const RoomLinkHealth = () => {
       ];
       vip4HardcodedRooms.forEach(id => {
         uiRoomIds.add(id);
-        uiSources.push({ id, source: 'VIP4 Grid (hardcoded array)' });
+        uiSources.push({ id, source: 'Level 4 Grid (hardcoded array)' });
       });
 
       // Kids rooms hardcoded map (from KidsChat.tsx)
@@ -122,11 +122,11 @@ export const RoomLinkHealth = () => {
           uiId.toLowerCase().replace(/_/g, '-') === normalizedId
         );
 
-        // Check if it's a dynamically loaded room (from VIP1-6, VIP9 hooks)
+        // Check if it's a dynamically loaded room (from Level 1-6, Level 9 hooks)
         // These rooms are loaded via useVipRooms/useCachedRooms, not hardcoded
         const isDynamicRoom = room.tier && (
           room.tier.toLowerCase().includes('vip') ||
-          room.tier.toLowerCase().includes('free')
+          room.tier.toLowerCase().includes('level0')
         );
 
         if (!isReferenced && !isDynamicRoom) {
@@ -263,7 +263,7 @@ export const RoomLinkHealth = () => {
             
             <p className="text-xs text-gray-600">
               These database rooms are not in hardcoded UI maps. This is normal for dynamically loaded rooms 
-              (VIP1-VIP6, VIP9 use database queries). Only investigate if a room should be hardcoded but isn't showing.
+              (Level 1-Level 6, Level 9 use database queries). Only investigate if a room should be hardcoded but isn't showing.
             </p>
             
             <details className="text-sm">

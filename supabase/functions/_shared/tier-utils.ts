@@ -4,22 +4,22 @@
 // Tier normalization utilities for edge functions
 // Mirrors the new paid-access policy:
 // - premium_month / premium_year unlock the whole paid repo
-// - VIP1..VIP9 remain curriculum labels / legacy compatible tiers
+// - Level 1..Level 9 remain curriculum labels / legacy compatible tiers
 // - kids tiers remain separate
 
 export type TierId =
-  | "free"
+  | "level0"
   | "premium_month"
   | "premium_year"
-  | "vip1"
-  | "vip2"
-  | "vip3"
-  | "vip4"
-  | "vip5"
-  | "vip6"
-  | "vip7"
-  | "vip8"
-  | "vip9"
+  | "level1"
+  | "level2"
+  | "level3"
+  | "level4"
+  | "level5"
+  | "level6"
+  | "level7"
+  | "level8"
+  | "level9"
   | "kids_1"
   | "kids_2"
   | "kids_3";
@@ -30,21 +30,21 @@ export const PAID_BILLING_TIER_IDS: TierId[] = [
 ];
 
 export const VIP_TIER_IDS: TierId[] = [
-  "vip1",
-  "vip2",
-  "vip3",
-  "vip4",
-  "vip5",
-  "vip6",
-  "vip7",
-  "vip8",
-  "vip9",
+  "level1",
+  "level2",
+  "level3",
+  "level4",
+  "level5",
+  "level6",
+  "level7",
+  "level8",
+  "level9",
 ];
 
 export const KIDS_TIER_IDS: TierId[] = ["kids_1", "kids_2", "kids_3"];
 
 export const ALL_TIER_IDS: TierId[] = [
-  "free",
+  "level0",
   ...PAID_BILLING_TIER_IDS,
   ...VIP_TIER_IDS,
   ...KIDS_TIER_IDS,
@@ -55,18 +55,18 @@ export const ALL_TIER_IDS: TierId[] = [
  * Do not use this as a strict billing ladder.
  */
 export const TIER_ORDER: TierId[] = [
-  "free",
+  "level0",
   "premium_month",
   "premium_year",
-  "vip1",
-  "vip2",
-  "vip3",
-  "vip4",
-  "vip5",
-  "vip6",
-  "vip7",
-  "vip8",
-  "vip9",
+  "level1",
+  "level2",
+  "level3",
+  "level4",
+  "level5",
+  "level6",
+  "level7",
+  "level8",
+  "level9",
   "kids_1",
   "kids_2",
   "kids_3",
@@ -80,18 +80,18 @@ export const TIER_ORDER: TierId[] = [
  * - kids tiers keep their own curriculum levels
  */
 export const TIER_LEVEL: Record<TierId, number> = {
-  free: 0,
+  level0: 0,
   premium_month: 9,
   premium_year: 9,
-  vip1: 1,
-  vip2: 2,
-  vip3: 3,
-  vip4: 4,
-  vip5: 5,
-  vip6: 6,
-  vip7: 7,
-  vip8: 8,
-  vip9: 9,
+  level1: 1,
+  level2: 2,
+  level3: 3,
+  level4: 4,
+  level5: 5,
+  level6: 6,
+  level7: 7,
+  level8: 8,
+  level9: 9,
   kids_1: 1,
   kids_2: 2,
   kids_3: 3,
@@ -141,19 +141,19 @@ function normalizeText(value: string | null | undefined): string {
  * into a canonical TierId.
  *
  * Handles formats like:
- * - "Free / Miễn phí" -> "free"
+ * - "Level 0 / Miễn phí" -> "level0"
  * - "premium" -> "premium_month"
  * - "Premium Month" -> "premium_month"
  * - "Premium Year" -> "premium_year"
- * - "VIP1 / VIP1" -> "vip1"
- * - "VIP9 / Cấp VIP9" -> "vip9"
- * - "VIP3 II / VIP3 II" -> "vip3"
+ * - "Level 1 / Level 1" -> "level1"
+ * - "Level 9 / Cấp Level 9" -> "level9"
+ * - "Level 3 II / Level 3 II" -> "level3"
  * - "Kids Level 1 / Trẻ em cấp 1" -> "kids_1"
  */
 export function normalizeTier(tier: string | null | undefined): TierId {
   const s = normalizeText(tier);
 
-  if (!s) return "free";
+  if (!s) return "level0";
 
   // Exact canonical ids first
   if (isValidTierId(s)) {
@@ -243,33 +243,33 @@ export function normalizeTier(tier: string | null | undefined): TierId {
   if (s.includes("trẻ em") && s.includes("3")) return "kids_3";
 
   // VIP tiers
-  if (s.includes("vip9") || s === "vip9") return "vip9";
-  if (s.includes("vip8") || s === "vip8") return "vip8";
-  if (s.includes("vip7") || s === "vip7") return "vip7";
-  if (s.includes("vip6") || s === "vip6") return "vip6";
-  if (s.includes("vip5") || s === "vip5") return "vip5";
-  if (s.includes("vip4") || s === "vip4") return "vip4";
+  if (s.includes("level9") || s === "level9") return "level9";
+  if (s.includes("level8") || s === "level8") return "level8";
+  if (s.includes("level7") || s === "level7") return "level7";
+  if (s.includes("level6") || s === "level6") return "level6";
+  if (s.includes("level5") || s === "level5") return "level5";
+  if (s.includes("level4") || s === "level4") return "level4";
 
-  // VIP3 II collapses to vip3
+  // Level 3 II collapses to level3
   if (
-    s.includes("vip3 ii") ||
+    s.includes("level3 ii") ||
     s.includes("vip3ii") ||
-    s.includes("vip3") ||
-    s === "vip3"
+    s.includes("level3") ||
+    s === "level3"
   ) {
-    return "vip3";
+    return "level3";
   }
 
-  if (s.includes("vip2") || s === "vip2") return "vip2";
-  if (s.includes("vip1") || s === "vip1") return "vip1";
+  if (s.includes("level2") || s === "level2") return "level2";
+  if (s.includes("level1") || s === "level1") return "level1";
 
-  // Free
-  if (s.includes("free") || s.includes("miễn phí") || s.includes("mien phi")) {
-    return "free";
+  // Level 0
+  if (s.includes("level0") || s.includes("miễn phí") || s.includes("mien phi")) {
+    return "level0";
   }
 
   // Safe default
-  return "free";
+  return "level0";
 }
 
 /**
@@ -281,14 +281,14 @@ export function isValidTierId(id: string): id is TierId {
 
 /**
  * Repo-wide access rule:
- * - free can access only free
+ * - level0 can access only level0
  * - paid billing plans unlock all adult VIP repo content
  * - legacy VIP tiers also unlock adult VIP repo content
  * - kids tiers can access only kids progression
  * - adult users may access kids resources only when they have paid-style adult access
  */
 export function verifyRepoAccess(userTier: TierId, resourceTier: TierId): boolean {
-  if (resourceTier === "free") return true;
+  if (resourceTier === "level0") return true;
 
   if (isKidsTier(userTier)) {
     if (!isKidsTier(resourceTier)) return false;

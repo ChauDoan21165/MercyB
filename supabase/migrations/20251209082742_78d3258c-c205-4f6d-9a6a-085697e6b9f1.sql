@@ -5,7 +5,7 @@ CREATE TABLE public.email_campaigns (
   created_by UUID NOT NULL,
   subject TEXT NOT NULL,
   body_html TEXT NOT NULL,
-  audience_type TEXT NOT NULL, -- 'vip2', 'vip3', 'all_vip', 'manual'
+  audience_type TEXT NOT NULL, -- 'level2', 'level3', 'all_vip', 'manual'
   manual_emails TEXT[] NULL,
   sent_at TIMESTAMPTZ NULL,
   status TEXT NOT NULL DEFAULT 'draft', -- 'draft', 'sending', 'sent', 'failed'

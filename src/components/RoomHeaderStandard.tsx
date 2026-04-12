@@ -32,28 +32,28 @@ export interface RoomHeaderStandardProps {
 
 // Tier color mapping for consistent styling
 const tierColors: Record<string, string> = {
-  free: "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300",
-  vip1: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300",
-  vip2: "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300",
-  vip3: "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300",
-  vip4: "bg-rose-100 text-rose-800 dark:bg-rose-900/30 dark:text-rose-300",
-  vip5: "bg-indigo-100 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-300",
-  vip6: "bg-fuchsia-100 text-fuchsia-800 dark:bg-fuchsia-900/30 dark:text-fuchsia-300",
-  vip7: "bg-cyan-100 text-cyan-800 dark:bg-cyan-900/30 dark:text-cyan-300",
-  vip8: "bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300",
-  vip9: "bg-slate-800 text-slate-100 dark:bg-slate-700 dark:text-slate-100",
+  level0: "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300",
+  level1: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300",
+  level2: "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300",
+  level3: "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300",
+  level4: "bg-rose-100 text-rose-800 dark:bg-rose-900/30 dark:text-rose-300",
+  level5: "bg-indigo-100 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-300",
+  level6: "bg-fuchsia-100 text-fuchsia-800 dark:bg-fuchsia-900/30 dark:text-fuchsia-300",
+  level7: "bg-cyan-100 text-cyan-800 dark:bg-cyan-900/30 dark:text-cyan-300",
+  level8: "bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300",
+  level9: "bg-slate-800 text-slate-100 dark:bg-slate-700 dark:text-slate-100",
   kids: "bg-pink-100 text-pink-800 dark:bg-pink-900/30 dark:text-pink-300",
 };
 
 function getTierColorClass(tier: string): string {
   const normalized = tier.toLowerCase().replace(/\s+/g, '').replace('vip', 'vip');
-  return tierColors[normalized] || tierColors.free;
+  return tierColors[normalized] || tierColors.level0;
 }
 
 function formatTierLabel(tier: string): string {
-  if (!tier) return "Free";
+  if (!tier) return "Level 0";
   const lower = tier.toLowerCase();
-  if (lower === "free") return "Free";
+  if (lower === "level0") return "Level 0";
   if (lower.startsWith("vip")) {
     const num = lower.replace("vip", "").trim();
     return `VIP ${num}`;

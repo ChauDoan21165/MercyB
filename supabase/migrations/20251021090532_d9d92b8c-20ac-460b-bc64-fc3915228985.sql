@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS public.rooms (
   crisis_footer_vi text,
   entries jsonb DEFAULT '[]'::jsonb,
   keywords text[] DEFAULT ARRAY[]::text[],
-  tier text DEFAULT 'free',
+  tier text DEFAULT 'level0',
   created_at timestamp with time zone DEFAULT now(),
   updated_at timestamp with time zone DEFAULT now()
 );

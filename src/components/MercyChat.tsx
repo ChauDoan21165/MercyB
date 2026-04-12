@@ -20,7 +20,7 @@ export function MercyChat() {
     anonId: "anon_123",
     modelName: "gpt-4.1-mini",
     promptVersion: "mercy-host-v3",
-    tier: "free",
+    tier: "level0",
     lang: "en",
     mode: "home",
   });

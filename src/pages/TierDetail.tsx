@@ -7,8 +7,8 @@
 //    - isolation + very high zIndex + pointerEvents on page/container.
 // 2) Keep 99.4a: ?area=... and ?debugTier=1 reactive via useLocation().search
 // 3) Restore 99.4c: FREE split is explicit-only LIFE detection (NO generic "-life-")
-//    - Free LIFE  = tier=free AND isExplicitLifeRoom(id)
-//    - Free CORE  = tier=free AND NOT explicit-life AND area NOT english/kids/life
+//    - Level 0 LIFE  = tier=level0 AND isExplicitLifeRoom(id)
+//    - Level 0 CORE  = tier=level0 AND NOT explicit-life AND area NOT english/kids/life
 // 4) tierAreaCounts for FREE uses effective split (core vs life) + diagnostic english/kids counts.
 //
 // NOTE: UI containment only; source-of-truth still belongs in tierRoomSource.
@@ -144,14 +144,14 @@ export default function TierDetail() {
   const filtered = useMemo(() => {
     if (!tier) return [];
 
-    // ✅ Free containment split (matches TierIndex + previous 99.4c intent)
-    if (tier === "free") {
+    // ✅ Level 0 containment split (matches TierIndex + previous 99.4c intent)
+    if (tier === "level0") {
       if (areaToShow === "life") {
-        return rooms.filter((r) => r.tier === "free" && isExplicitLifeRoom(r));
+        return rooms.filter((r) => r.tier === "level0" && isExplicitLifeRoom(r));
       }
       if (areaToShow === "core") {
         return rooms.filter((r) => {
-          if (r.tier !== "free") return false;
+          if (r.tier !== "level0") return false;
           if (isExplicitLifeRoom(r)) return false;
           const a = String((r as any).area || "").toLowerCase();
           if (a === "english" || a === "kids" || a === "life") return false;
@@ -159,10 +159,10 @@ export default function TierDetail() {
         });
       }
       // forced english/kids views
-      return rooms.filter((r) => r.tier === "free" && String((r as any).area || "").toLowerCase() === areaToShow);
+      return rooms.filter((r) => r.tier === "level0" && String((r as any).area || "").toLowerCase() === areaToShow);
     }
 
-    // non-free tiers: normal filter
+    // non-level0 tiers: normal filter
     return rooms.filter((r) => r.tier === tier && String((r as any).area || "").toLowerCase() === areaToShow);
   }, [rooms, tier, areaToShow]);
 
@@ -171,10 +171,10 @@ export default function TierDetail() {
 
     const out: TierAreaCounts = { core: 0, kids: 0, english: 0, life: 0 };
 
-    if (tier === "free") {
-      // Effective split for Free:
+    if (tier === "level0") {
+      // Effective split for Level 0:
       for (const r of rooms) {
-        if (r.tier !== "free") continue;
+        if (r.tier !== "level0") continue;
         if (isExplicitLifeRoom(r)) out.life += 1;
         else {
           const a = String((r as any).area || "").toLowerCase();
@@ -183,9 +183,9 @@ export default function TierDetail() {
         }
       }
 
-      // Diagnostic-only: what DB thinks is english/kids for free
+      // Diagnostic-only: what DB thinks is english/kids for level0
       for (const r of rooms) {
-        if (r.tier !== "free") continue;
+        if (r.tier !== "level0") continue;
         const a = String((r as any).area || "").toLowerCase();
         if (a === "english") out.english += 1;
         if (a === "kids") out.kids += 1;
@@ -436,7 +436,7 @@ export default function TierDetail() {
                     For kids tiers: try <b>?debug=1</b> or <b>?debugTier=1</b> and check “excluded by area”. You can
                     also override with <b>?area=kids</b> / <b>?area=core</b>.
                   </li>
-                ) : tier === "free" && areaToShow === "life" ? (
+                ) : tier === "level0" && areaToShow === "life" ? (
                   <li>
                     LIFE is <b>explicit-only</b> (survival-* / life-skill-*). If empty, you currently have no FREE rooms
                     with those id markers.

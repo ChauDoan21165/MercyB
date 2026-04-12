@@ -77,7 +77,7 @@ serve(async (req) => {
       );
     }
 
-    // Get all VIP3 users' profiles (excluding current user)
+    // Get all Level 3 users' profiles (excluding current user)
     const { data: otherProfiles } = await supabaseAdmin
       .from('user_knowledge_profile')
       .select(`

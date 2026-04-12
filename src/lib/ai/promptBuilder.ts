@@ -31,16 +31,16 @@ Core principles:
  * Tier-specific tone adjustments
  */
 const TIER_TONES = {
-  Free: "Use simple, encouraging language. Focus on step-by-step clarity. Be extra patient.",
-  VIP1: "Gentle coaching tone. Break down concepts clearly. Encourage small wins.",
-  VIP2: "Balanced guidance. Provide concrete examples. Support skill-building.",
-  VIP3: "Precise, elegant language. Offer nuanced insights. Trust user capability.",
-  VIP4: "Professional depth. Balanced technical and practical. Multi-layered reasoning.",
-  VIP5: "Advanced concepts. Strategic frameworks. Assume higher autonomy.",
-  VIP6: "Deep psychological insights. Shadow work language. Handle complexity.",
-  VIP7: "Systems thinking. Interconnected patterns. High sophistication.",
-  VIP8: "Mastery-level guidance. Subtle distinctions. Executive perspective.",
-  VIP9: "Strategic mindset. Historical wisdom. Geopolitical awareness. CEO-level thinking.",
+  level0: "Use simple, encouraging language. Focus on step-by-step clarity. Be extra patient.",
+  level1: "Gentle coaching tone. Break down concepts clearly. Encourage small wins.",
+  level2: "Balanced guidance. Provide concrete examples. Support skill-building.",
+  level3: "Precise, elegant language. Offer nuanced insights. Trust user capability.",
+  level4: "Professional depth. Balanced technical and practical. Multi-layered reasoning.",
+  level5: "Advanced concepts. Strategic frameworks. Assume higher autonomy.",
+  level6: "Deep psychological insights. Shadow work language. Handle complexity.",
+  level7: "Systems thinking. Interconnected patterns. High sophistication.",
+  level8: "Mastery-level guidance. Subtle distinctions. Executive perspective.",
+  level9: "Strategic mindset. Historical wisdom. Geopolitical awareness. CEO-level thinking.",
 };
 
 /**

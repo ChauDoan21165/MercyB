@@ -16,8 +16,8 @@ function generateCodeSegment(length: number): string {
 }
 
 // Valid gift code tiers
-type GiftTier = 'VIP1' | 'VIP2' | 'VIP3' | 'VIP4' | 'VIP5' | 'VIP6' | 'VIP7' | 'VIP8' | 'VIP9';
-const ALLOWED_TIERS: GiftTier[] = ['VIP1', 'VIP2', 'VIP3', 'VIP4', 'VIP5', 'VIP6', 'VIP7', 'VIP8', 'VIP9'];
+type GiftTier = 'Level 1' | 'Level 2' | 'Level 3' | 'Level 4' | 'Level 5' | 'Level 6' | 'Level 7' | 'Level 8' | 'Level 9';
+const ALLOWED_TIERS: GiftTier[] = ['Level 1', 'Level 2', 'Level 3', 'Level 4', 'Level 5', 'Level 6', 'Level 7', 'Level 8', 'Level 9'];
 
 // Duration to days mapping
 const DURATION_DAYS: Record<string, number> = {
@@ -123,7 +123,7 @@ Deno.serve(async (req) => {
 
     if (!tier || !ALLOWED_TIERS.includes(tier as GiftTier)) {
       return new Response(
-        JSON.stringify({ error: 'Valid tier (VIP1–VIP9) is required' }),
+        JSON.stringify({ error: 'Valid tier (Level 1–Level 9) is required' }),
         { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 400 }
       );
     }

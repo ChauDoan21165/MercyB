@@ -37,7 +37,7 @@ interface BroadcastRequest {
   action: "preview" | "send";
   subject: string;
   body_html: string;
-  audience_type: "vip2" | "vip3" | "all_vip" | "manual";
+  audience_type: "level2" | "level3" | "all_vip" | "manual";
   manual_emails?: string[];
 }
 
@@ -109,11 +109,11 @@ Deno.serve(async (req) => {
     } else {
       // Query subscription tiers to get tier IDs
       const tierNames: string[] = [];
-      if (audience_type === "vip2") tierNames.push("VIP2");
-      else if (audience_type === "vip3") tierNames.push("VIP3");
+      if (audience_type === "level2") tierNames.push("Level 2");
+      else if (audience_type === "level3") tierNames.push("Level 3");
       else if (audience_type === "all_vip") {
         // Include all VIP tiers
-        tierNames.push("VIP1", "VIP2", "VIP3", "VIP4", "VIP5", "VIP6", "VIP7", "VIP8", "VIP9");
+        tierNames.push("Level 1", "Level 2", "Level 3", "Level 4", "Level 5", "Level 6", "Level 7", "Level 8", "Level 9");
       }
 
       // Get tier IDs

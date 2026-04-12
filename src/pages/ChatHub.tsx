@@ -79,10 +79,10 @@ function roomIdVariants(roomId: string, canonicalId: string): string[] {
 function fallbackParentRoute(roomId?: string): string {
   const id = String(roomId || "").trim();
   if (!id) return "/rooms";
-  if (/sexuality-curiosity-vip3-sub[1-6]$/i.test(id)) return "/sexuality-culture";
-  if (/-vip3\b/i.test(id)) return "/rooms-vip3";
-  if (/-vip2\b/i.test(id)) return "/rooms-vip2";
-  if (/-vip1\b/i.test(id)) return "/rooms-vip1";
+  if (/sexuality-curiosity-level3-sub[1-6]$/i.test(id)) return "/sexuality-culture";
+  if (/-level3\b/i.test(id)) return "/rooms-level3";
+  if (/-level2\b/i.test(id)) return "/rooms-level2";
+  if (/-level1\b/i.test(id)) return "/rooms-level1";
   return "/rooms";
 }
 

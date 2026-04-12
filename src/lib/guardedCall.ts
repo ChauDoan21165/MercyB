@@ -129,7 +129,7 @@ export async function guardedCall<T>(
  * 
  * // After:
  * const result = await guardedCall(
- *   'Register VIP4 rooms',
+ *   'Register Level 4 rooms',
  *   async () => supabase.from('rooms').insert(...),
  *   { showSuccessToast: true, successMessage: 'Rooms registered successfully' }
  * );

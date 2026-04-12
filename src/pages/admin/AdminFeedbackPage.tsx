@@ -173,7 +173,7 @@ export default function AdminFeedbackPage() {
             <input
               value={roomFilter}
               onChange={(e) => setRoomFilter(e.target.value)}
-              placeholder="e.g. corporate_long_cycle_planning or vip9"
+              placeholder="e.g. corporate_long_cycle_planning or level9"
               className="mt-1 w-full px-3 py-2 rounded-xl border bg-white text-sm outline-none"
             />
           </div>

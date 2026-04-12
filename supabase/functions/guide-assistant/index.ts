@@ -282,7 +282,7 @@ serve(async (req) => {
     const n = Number(r);
     if (Number.isFinite(n)) vip_rank = n;
   } catch {
-    // default vip1
+    // default level1
   }
 
   const tierPolicy = tierPolicyForVip(vip_rank);

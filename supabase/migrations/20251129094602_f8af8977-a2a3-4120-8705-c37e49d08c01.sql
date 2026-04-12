@@ -24,16 +24,16 @@ LANGUAGE sql
 IMMUTABLE
 AS $$
   SELECT CASE lower(trim(tier_name))
-    WHEN 'free' THEN 0
-    WHEN 'vip1' THEN 1
-    WHEN 'vip2' THEN 2
-    WHEN 'vip3' THEN 3
-    WHEN 'vip4' THEN 4
-    WHEN 'vip5' THEN 5
-    WHEN 'vip6' THEN 6
-    WHEN 'vip7' THEN 7
-    WHEN 'vip8' THEN 8
-    WHEN 'vip9' THEN 9
+    WHEN 'level0' THEN 0
+    WHEN 'level1' THEN 1
+    WHEN 'level2' THEN 2
+    WHEN 'level3' THEN 3
+    WHEN 'level4' THEN 4
+    WHEN 'level5' THEN 5
+    WHEN 'level6' THEN 6
+    WHEN 'level7' THEN 7
+    WHEN 'level8' THEN 8
+    WHEN 'level9' THEN 9
     ELSE 0
   END;
 $$;
@@ -62,7 +62,7 @@ TO anon
 USING (
   is_demo = true 
   AND 
-  (tier IS NULL OR lower(tier) = 'free')
+  (tier IS NULL OR lower(tier) = 'level0')
 );
 
 -- Add index for better performance on tier lookups

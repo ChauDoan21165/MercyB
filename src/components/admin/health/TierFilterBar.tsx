@@ -9,14 +9,14 @@ interface TierFilterBarProps {
 
 const TIER_OPTIONS = [
   { value: "all", label: "All Tiers" },
-  { value: "free", label: "Free" },
-  { value: "vip1", label: "VIP1" },
-  { value: "vip2", label: "VIP2" },
-  { value: "vip3", label: "VIP3" },
-  { value: "vip4", label: "VIP4" },
-  { value: "vip5", label: "VIP5" },
-  { value: "vip6", label: "VIP6" },
-  { value: "vip9", label: "VIP9" },
+  { value: "level0", label: "Level 0" },
+  { value: "level1", label: "Level 1" },
+  { value: "level2", label: "Level 2" },
+  { value: "level3", label: "Level 3" },
+  { value: "level4", label: "Level 4" },
+  { value: "level5", label: "Level 5" },
+  { value: "level6", label: "Level 6" },
+  { value: "level9", label: "Level 9" },
   { value: "kids", label: "Kids Rooms" },
 ];
 

@@ -257,7 +257,7 @@ describe("Emotion Scripts Coverage", () => {
   it("should have emotion variants for all tiers", async () => {
     const { TIER_EMOTION_SCRIPTS } = await import("../lib/mercy-host/tierScripts");
 
-    const tiers = ["free", "vip1", "vip2", "vip3", "vip4", "vip5", "vip6", "vip7", "vip8", "vip9"];
+    const tiers = ["level0", "level1", "level2", "level3", "level4", "level5", "level6", "level7", "level8", "level9"];
     const requiredEmotions: EmotionState[] = ["low_mood", "confused", "stressed", "celebrating"];
 
     for (const tier of tiers) {

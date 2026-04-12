@@ -64,7 +64,7 @@ function underscoreVariant(input: string): string {
 
 function coreRoomIdVariant(input: string): string {
   return String(input || '').replace(
-    /(?:[_-](?:vip[1-9]|free|kids[_-]?[123]|kidslevel[123]|kids_l[123]|vip3[_-]?ii))$/i,
+    /(?:[_-](?:vip[1-9]|level0|kids[_-]?[123]|kidslevel[123]|kids_l[123]|level3[_-]?ii))$/i,
     '',
   );
 }
@@ -116,7 +116,7 @@ function resolveUserTier(subscription: SubscriptionRow | null): string {
 
   if (tierName) return tierName;
   if (tierId) return tierId;
-  return 'free';
+  return 'level0';
 }
 
 function isPaidBillingTier(tier: string): boolean {
@@ -137,7 +137,7 @@ function normalizeRoomTier(rawRoomTier: unknown, roomId: unknown): string {
 
   const rid = String(roomId ?? '').trim().toLowerCase();
 
-  if (/_free$/.test(rid) || /(^|[_-])free($|[_-])/.test(rid)) return 'free';
+  if (/_free$/.test(rid) || /(^|[_-])level0($|[_-])/.test(rid)) return 'level0';
 
   {
     const m = rid.match(/(?:^|[_-])(vip[1-9])(?:$|[_-])/);
@@ -149,13 +149,13 @@ function normalizeRoomTier(rawRoomTier: unknown, roomId: unknown): string {
     if (m?.[1]) return m[1].replace(/-/g, '_');
   }
 
-  return 'free';
+  return 'level0';
 }
 
 /**
  * Access policy:
- * - free room => open to all authenticated users
- * - vip1..vip9 => curriculum labels only
+ * - level0 room => open to all authenticated users
+ * - level1..level9 => curriculum labels only
  * - any paid monthly/yearly user gets all adult VIP rooms
  * - admins bypass all checks
  * - legacy VIP user tiers remain allowed for backward compatibility
@@ -174,12 +174,12 @@ function canAccessRoom(params: {
     return { allowed: true };
   }
 
-  if (roomTier === 'free' || roomTier === '') {
+  if (roomTier === 'level0' || roomTier === '') {
     return { allowed: true };
   }
 
   if (isKidsTier(roomTier)) {
-    if (userTier === 'free') {
+    if (userTier === 'level0') {
       return {
         allowed: false,
         reason: 'Kids content requires an eligible kids or adult paid plan.',
@@ -335,7 +335,7 @@ Deno.serve(async (req) => {
 
     const access = canAccessRoom({
       userTier,
-      roomTier: resolvedRoomTier || 'free',
+      roomTier: resolvedRoomTier || 'level0',
       isAdmin,
     });
 
@@ -346,7 +346,7 @@ Deno.serve(async (req) => {
           granted: access.allowed,
           reason: access.reason,
           userTier,
-          roomTier: resolvedRoomTier || 'free',
+          roomTier: resolvedRoomTier || 'level0',
           roomId: resolvedRoomId,
           isAdmin,
           paidAccessModel: 'monthly_or_yearly_unlocks_all_vip_rooms',

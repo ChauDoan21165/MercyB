@@ -56,7 +56,7 @@ serve(async (req) => {
 
   try {
     const url = new URL(req.url);
-    const key = url.searchParams.get("key"); // e.g. "vip3/sacred_body_curious_self_vip3_sub2_sex.json"
+    const key = url.searchParams.get("key"); // e.g. "level3/sacred_body_curious_self_vip3_sub2_sex.json"
 
     if (!key) {
       return new Response(JSON.stringify({ error: "missing_key" }), {

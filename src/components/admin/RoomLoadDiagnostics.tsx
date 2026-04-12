@@ -112,7 +112,7 @@ function underscoreVariant(input: string): string {
 
 function coreRoomIdVariant(input: string): string {
   return String(input || "").replace(
-    /(?:[_-](?:vip[1-9]|free|kids[_-]?[123]|kidslevel[123]|kids_l[123]|vip3[_-]?ii))$/i,
+    /(?:[_-](?:vip[1-9]|level0|kids[_-]?[123]|kidslevel[123]|kids_l[123]|level3[_-]?ii))$/i,
     "",
   );
 }
@@ -525,7 +525,7 @@ export function RoomLoadDiagnostics() {
             </Badge>
 
             <Badge className={access.isAdmin ? "bg-blue-600 text-white" : "bg-gray-200 text-black"}>
-              User tier: {String(access.tier || "free")}
+              User tier: {String(access.tier || "level0")}
             </Badge>
           </div>
         </div>
@@ -597,7 +597,7 @@ export function RoomLoadDiagnostics() {
               User access snapshot
             </div>
             <div className="text-sm text-black">
-              tier: {String(access.tier || "free")}
+              tier: {String(access.tier || "level0")}
             </div>
             <div className="mt-1 text-xs text-gray-600">
               admin: {String(Boolean(access.isAdmin))} · adminLevel: {String(access.adminLevel ?? 0)}

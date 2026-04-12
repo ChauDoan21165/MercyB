@@ -226,7 +226,7 @@ describe('generateTeachingTurn realistic conversation fixtures', () => {
     expect(summary).toContain('repeat=true');
   });
 
-  it('keeps recap mode calm, humor-free, and useful', () => {
+  it('keeps recap mode calm, humor-level0, and useful', () => {
     const result = generateTeachingTurn({
       userId: 'fixture-recap',
       language: 'en',

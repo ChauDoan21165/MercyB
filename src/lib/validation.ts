@@ -30,7 +30,7 @@ export const vipRequestSchema = z.object({
 
 // VIP Topic Request Schema
 export const vipTopicRequestSchema = z.object({
-  tier: z.enum(["vip1", "vip2", "vip3"], { message: "Please select a valid VIP tier" }),
+  tier: z.enum(["level1", "level2", "level3"], { message: "Please select a valid VIP tier" }),
   topicTitle: createTextSchema(200, "Topic title"),
   topicDescription: createTextSchema(3000, "Topic description"),
   specificGoals: z.string().trim().max(1000).transform(sanitizeInput).optional().or(z.literal("")),

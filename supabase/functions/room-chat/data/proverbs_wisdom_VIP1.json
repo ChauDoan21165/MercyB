@@ -1,22 +1,22 @@
 {
-  "header": "// dumb tree, no diagnostics, catch keyword, speak meter, plain (b1), bilingual (en-vi), gentle persuasion only\n\nProverbs for wisdom for Free users, curated collection\n\nEach entry: provide a timeless proverb with English and Vietnamese translations\n\nPhilosophy: inclusive, wisdom-sharing, accessible, humane language\n\nBeliefs:\n- Don't judge. Share wisdom.\n- Don't rush. Reflect on meaning.\n- Don't exclude. Inspire all.\n\nTalk points\n- Proverbs guide daily life.\n- Wisdom fosters growth.\n- Reflection deepens understanding.",
+  "header": "// dumb tree, no diagnostics, catch keyword, speak meter, plain (b1), bilingual (en-vi), gentle persuasion only\n\nProverbs for wisdom for Level 0 users, curated collection\n\nEach entry: provide a timeless proverb with English and Vietnamese translations\n\nPhilosophy: inclusive, wisdom-sharing, accessible, humane language\n\nBeliefs:\n- Don't judge. Share wisdom.\n- Don't rush. Reflect on meaning.\n- Don't exclude. Inspire all.\n\nTalk points\n- Proverbs guide daily life.\n- Wisdom fosters growth.\n- Reflection deepens understanding.",
   "schema_version": "1.1",
   "schema_id": "proverbs_wisdom_free",
-  "description": "Echologic Mercy Blade room for Free users to explore timeless proverbs for wisdom",
-  "description_vi": "Phòng Mercy Blade dành cho người dùng Free để khám phá các câu tục ngữ vượt thời gian về trí tuệ",
+  "description": "Echologic Mercy Blade room for Level 0 users to explore timeless proverbs for wisdom",
+  "description_vi": "Phòng Mercy Blade dành cho người dùng Level 0 để khám phá các câu tục ngữ vượt thời gian về trí tuệ",
   "supported_languages": ["en", "vi"],
   "localization": { "default": "en", "fallback": "en", "i18n_required": true },
   "meta": {
     "created_at": "2025-10-22T09:23:20Z",
     "updated_at": "2025-10-22T17:03:00Z",
     "checksum_sha256": "<placeholder>",
-    "meta_notes": "Keyword-driven; Free user access; white background; UUIDv4 artifacts; checksum=SHA-256 of canonical JSON.",
+    "meta_notes": "Keyword-driven; Level 0 user access; white background; UUIDv4 artifacts; checksum=SHA-256 of canonical JSON.",
     "i18n_verified": true,
     "entry_count": 40,
     "artifact_set_id": "a1b2c3d4-e5f6-4a7b-b8c9-d0e1f2a3b4c5",
     "data_format_version": "MercyBlade-Core-v1.2",
     "room_color": "#FFFFFF",
-    "tier": "vip1"
+    "tier": "level1"
   },
   "enums": {
     "tags": [

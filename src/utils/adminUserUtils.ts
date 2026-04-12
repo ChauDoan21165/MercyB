@@ -48,7 +48,7 @@ export async function getAllUsersWithDetails() {
       
       return {
         ...profile,
-        tier: userSub?.subscription_tiers?.name || 'Free',
+        tier: userSub?.subscription_tiers?.name || 'Level 0',
         totalPaid,
         lastActive: lastSession?.last_activity || profile.created_at,
         subscriptionId: userSub?.id,

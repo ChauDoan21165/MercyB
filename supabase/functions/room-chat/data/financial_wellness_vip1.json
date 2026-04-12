@@ -1,9 +1,9 @@
 {
-  "header": "// dumb tree, no diagnostics, catch keyword, speak meter, plain (b1), bilingual (en-vi), gentle persuasion only\n\nFinancial wellness for VIP 1, evidence-based\n\nEach entry: teach practical steps for financial health\n\nPhilosophy: supportive, actionable, non-judgmental, humane language\n\nBeliefs:\n- Don’t overwhelm. Encourage small steps.\n- Don’t judge. Foster empowerment.\n- Don’t rush. Build stability.\n\nTalk points\n- Budgeting creates control.\n- Small savings build wealth.\n- Goals drive financial success.\n\nTiny habits to teach:\n- Track one expense daily.\n- Save one small amount weekly.\n- Set one financial goal monthly.",
+  "header": "// dumb tree, no diagnostics, catch keyword, speak meter, plain (b1), bilingual (en-vi), gentle persuasion only\n\nFinancial wellness for Level 1, evidence-based\n\nEach entry: teach practical steps for financial health\n\nPhilosophy: supportive, actionable, non-judgmental, humane language\n\nBeliefs:\n- Don’t overwhelm. Encourage small steps.\n- Don’t judge. Foster empowerment.\n- Don’t rush. Build stability.\n\nTalk points\n- Budgeting creates control.\n- Small savings build wealth.\n- Goals drive financial success.\n\nTiny habits to teach:\n- Track one expense daily.\n- Save one small amount weekly.\n- Set one financial goal monthly.",
   "schema_version": "1.1",
   "schema_id": "financial_wellness_vip1",
-  "description": "Echologic Mercy Blade room for VIP 1 users to achieve financial health with evidence-based strategies",
-  "description_vi": "Phòng Mercy Blade dành cho người dùng VIP 1 để đạt được sức khỏe tài chính với chiến lược dựa trên bằng chứng",
+  "description": "Echologic Mercy Blade room for Level 1 users to achieve financial health with evidence-based strategies",
+  "description_vi": "Phòng Mercy Blade dành cho người dùng Level 1 để đạt được sức khỏe tài chính với chiến lược dựa trên bằng chứng",
   "supported_languages": ["en", "vi"],
   "localization": { "default": "en", "fallback": "en", "i18n_required": true },
   "safety_disclaimer": "Educational guidance; not a substitute for professional financial advice.",
@@ -20,13 +20,13 @@
     "created_at": "2025-10-21T19:36:00+07:00",
     "updated_at": "2025-10-21T19:36:00+07:00",
     "checksum_sha256": "<placeholder>",
-    "meta_notes": "Keyword-driven; VIP 1 exclusive; light brown background; UUIDv4 artifacts; checksum=SHA-256 of canonical JSON.",
+    "meta_notes": "Keyword-driven; Level 1 exclusive; light brown background; UUIDv4 artifacts; checksum=SHA-256 of canonical JSON.",
     "i18n_verified": true,
     "entry_count": 3,
     "artifact_set_id": "9c0d1e2f-3a4b-4c5d-b6e7-d8f9a0b1c2d4",
     "data_format_version": "MercyBlade-Core-v1.2",
     "room_color": "#D7CCC8",
-    "tier": "vip1"
+    "tier": "level1"
   },
   "enums": {
     "tags": [
@@ -56,8 +56,8 @@
   },
   "room_essay": {
     "format": "markdown",
-    "en": "# Financial Wellness VIP1\n\nAchieving financial health starts with small, intentional steps. Research shows effective budgeting increases savings by 20% in 6 months. This VIP 1 room offers premium strategies to empower your financial journey.\n\n**Create a Budget**\n- Track daily expenses (e.g., coffee, groceries).\n- Allocate 10% of income to savings.\n- Example: Sarah’s budgeting saved $500 monthly.\n\n**Manage Debt**\n- List all debts and prioritize high-interest ones.\n- Pay one extra amount monthly.\n- Studies show debt repayment plans reduce stress by 30%.\n\n**Set Financial Goals**\n- Define one goal monthly (e.g., save $100).\n- Break goals into weekly steps.\n- Example: Minh’s savings goal built an emergency fund.\n\n**Stay Consistent**\n- Review finances weekly with a journal.\n- Consult a financial advisor for complex issues.\n\nStart today: track one expense or set a small goal. Your VIP 1 tools will guide you to financial freedom!\n\n*Word count: 404*",
-    "vi": "# Sức Khỏe Tài Chính VIP1\n\nĐạt được sức khỏe tài chính bắt đầu từ những bước nhỏ, có chủ ý. Nghiên cứu cho thấy lập ngân sách hiệu quả tăng tiết kiệm 20% trong 6 tháng. Phòng VIP 1 này cung cấp chiến lược cao cấp để trao quyền cho hành trình tài chính của bạn.\n\n**Tạo Ngân Sách**\n- Theo dõi chi tiêu hàng ngày (ví dụ, cà phê, thực phẩm).\n- Dành 10% thu nhập để tiết kiệm.\n- Ví dụ: Lan lập ngân sách, tiết kiệm 500 USD mỗi tháng.\n\n**Quản Lý Nợ**\n- Liệt kê tất cả nợ và ưu tiên nợ lãi suất cao.\n- Trả thêm một khoản mỗi tháng.\n- Nghiên cứu cho thấy kế hoạch trả nợ giảm căng thẳng 30%.\n\n**Đặt Mục Tiêu Tài Chính**\n- Xác định một mục tiêu mỗi tháng (ví dụ, tiết kiệm 100 USD).\n- Chia mục tiêu thành các bước hàng tuần.\n- Ví dụ: Hùng đặt mục tiêu tiết kiệm, xây dựng quỹ khẩn cấp.\n\n**Giữ Nhất Quán**\n- Xem xét tài chính hàng tuần bằng nhật ký.\n- Tham khảo cố vấn tài chính cho vấn đề phức tạp.\n\nBắt đầu hôm nay: theo dõi một khoản chi hoặc đặt mục tiêu nhỏ. Công cụ VIP 1 sẽ dẫn bạn đến tự do tài chính!\n\n*Số từ: 412*",
+    "en": "# Financial Wellness Level 1\n\nAchieving financial health starts with small, intentional steps. Research shows effective budgeting increases savings by 20% in 6 months. This Level 1 room offers premium strategies to empower your financial journey.\n\n**Create a Budget**\n- Track daily expenses (e.g., coffee, groceries).\n- Allocate 10% of income to savings.\n- Example: Sarah’s budgeting saved $500 monthly.\n\n**Manage Debt**\n- List all debts and prioritize high-interest ones.\n- Pay one extra amount monthly.\n- Studies show debt repayment plans reduce stress by 30%.\n\n**Set Financial Goals**\n- Define one goal monthly (e.g., save $100).\n- Break goals into weekly steps.\n- Example: Minh’s savings goal built an emergency fund.\n\n**Stay Consistent**\n- Review finances weekly with a journal.\n- Consult a financial advisor for complex issues.\n\nStart today: track one expense or set a small goal. Your Level 1 tools will guide you to financial freedom!\n\n*Word count: 404*",
+    "vi": "# Sức Khỏe Tài Chính Level 1\n\nĐạt được sức khỏe tài chính bắt đầu từ những bước nhỏ, có chủ ý. Nghiên cứu cho thấy lập ngân sách hiệu quả tăng tiết kiệm 20% trong 6 tháng. Phòng Level 1 này cung cấp chiến lược cao cấp để trao quyền cho hành trình tài chính của bạn.\n\n**Tạo Ngân Sách**\n- Theo dõi chi tiêu hàng ngày (ví dụ, cà phê, thực phẩm).\n- Dành 10% thu nhập để tiết kiệm.\n- Ví dụ: Lan lập ngân sách, tiết kiệm 500 USD mỗi tháng.\n\n**Quản Lý Nợ**\n- Liệt kê tất cả nợ và ưu tiên nợ lãi suất cao.\n- Trả thêm một khoản mỗi tháng.\n- Nghiên cứu cho thấy kế hoạch trả nợ giảm căng thẳng 30%.\n\n**Đặt Mục Tiêu Tài Chính**\n- Xác định một mục tiêu mỗi tháng (ví dụ, tiết kiệm 100 USD).\n- Chia mục tiêu thành các bước hàng tuần.\n- Ví dụ: Hùng đặt mục tiêu tiết kiệm, xây dựng quỹ khẩn cấp.\n\n**Giữ Nhất Quán**\n- Xem xét tài chính hàng tuần bằng nhật ký.\n- Tham khảo cố vấn tài chính cho vấn đề phức tạp.\n\nBắt đầu hôm nay: theo dõi một khoản chi hoặc đặt mục tiêu nhỏ. Công cụ Level 1 sẽ dẫn bạn đến tự do tài chính!\n\n*Số từ: 412*",
     "word_count_en": 404,
     "word_count_vi": 412,
     "updated_at": "2025-10-21T19:36:00+07:00"

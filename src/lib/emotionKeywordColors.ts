@@ -164,7 +164,7 @@ export const emotionKeywordGroups: EmotionKeywordGroup[] = [
   {
     emotion: "adjectives-positive-5",
     color: "#6BCDFF", // Sky Blue
-    en: ["free", "open", "wide", "vast", "spacious", "broad", "expansive", "infinite", "boundless", "unlimited"],
+    en: ["level0", "open", "wide", "vast", "spacious", "broad", "expansive", "infinite", "boundless", "unlimited"],
     vi: ["tự do", "tu do", "mở", "mo", "rộng", "rong", "bao la", "bao la", "rộng rãi", "rong rai", "bao trùm", "bao trum", "mở rộng", "mo rong", "vô tận", "vo tan", "vô biên", "vo bien", "không giới hạn", "khong gioi han"]
   },
   {

@@ -1,9 +1,9 @@
 {
-"tier": "VIP 3 / Cấp VIP 3",
+"tier": "Level 3 / Cấp Level 3",
 "default_entry_id": "balanced_generosity",
 "welcome": {
-"en": "Hello! Welcome to Stoic Philosophy VIP3 room. How can I help you today?\n\nTopic keywords you can type are below:\n- balanced_generosity\n- self_awareness_balance\n- confident_boundaries\n- self_care_strength\n- relationship_discernment\n- virtuous_action_respect\n- avoid_dependency\n- stoic_moderation\n- protect_energy",
-"vi": "Xin chào! Chào mừng bạn đến với phòng Triết Học Stoic VIP3. Tôi có thể giúp gì cho bạn hôm nay?\n\nCác từ khóa bạn có thể nhập là:\n- rộng_lượng_cân_bằng\n- tự_nhận_thức_cân_bằng\n- ranh_giới_tự_tin\n- tự_chăm_sóc_để_mạnh_mẽ\n- phân_biệt_trong_mối_quan_hệ\n- hành_động_đức_hạnh_để_được_tôn_trọng\n- tránh_phụ_thuộc\n- tiết_độ_stoic\n- bảo_vệ_năng_lượng"
+"en": "Hello! Welcome to Stoic Philosophy Level 3 room. How can I help you today?\n\nTopic keywords you can type are below:\n- balanced_generosity\n- self_awareness_balance\n- confident_boundaries\n- self_care_strength\n- relationship_discernment\n- virtuous_action_respect\n- avoid_dependency\n- stoic_moderation\n- protect_energy",
+"vi": "Xin chào! Chào mừng bạn đến với phòng Triết Học Stoic Level 3. Tôi có thể giúp gì cho bạn hôm nay?\n\nCác từ khóa bạn có thể nhập là:\n- rộng_lượng_cân_bằng\n- tự_nhận_thức_cân_bằng\n- ranh_giới_tự_tin\n- tự_chăm_sóc_để_mạnh_mẽ\n- phân_biệt_trong_mối_quan_hệ\n- hành_động_đức_hạnh_để_được_tôn_trọng\n- tránh_phụ_thuộc\n- tiết_độ_stoic\n- bảo_vệ_năng_lượng"
 },
 "search": {
 "normalize_case": true,
@@ -70,7 +70,7 @@
 "vi": "Thiết Lập Ranh Giới Với Sự Tự Tin"
 },
 "content": {
-"en": "Epictetus: control choices, not others’ demands. John’s over-giving invited exploitation until he embraced ‘no.’ Practice: rehearse refusing unfair requests, align with priorities. This Stoic discipline projects strength, countering perceived weakness. Boundaries rooted in virtue—wisdom, justice—earn respect, fostering confident interactions. Daily: assess requests against personal goals, refuse imbalance. This transforms relationships into mutual growth, aligning with universal order for calm, resilient living, free from exploitation’s drain.",
+"en": "Epictetus: control choices, not others’ demands. John’s over-giving invited exploitation until he embraced ‘no.’ Practice: rehearse refusing unfair requests, align with priorities. This Stoic discipline projects strength, countering perceived weakness. Boundaries rooted in virtue—wisdom, justice—earn respect, fostering confident interactions. Daily: assess requests against personal goals, refuse imbalance. This transforms relationships into mutual growth, aligning with universal order for calm, resilient living, level0 from exploitation’s drain.",
 "vi": "Epictetus: hãy làm chủ lựa chọn của mình, không phải yêu cầu của người khác. John cho đi quá mức và bị lợi dụng cho đến khi anh học nói 'không'. Thực hành: tập từ chối các yêu cầu bất công và sắp xếp ưu tiên. Kỷ luật Stoic thể hiện sức mạnh, xua tan cảm giác yếu đuối. Ranh giới dựa trên đức hạnh — trí tuệ, công chính — tạo nên sự tôn trọng, giúp tương tác tự tin. Mỗi ngày: đánh giá đề nghị so với mục tiêu cá nhân và từ chối mất cân bằng. Điều này biến quan hệ thành sự phát triển đôi bên, hòa hợp với trật tự tự nhiên để sống điềm nhiên và kiên định, không còn bị lợi dụng."
 },
 "audio": {
@@ -126,7 +126,7 @@
 "vi": "Tránh Những Cái Bẫy Phụ Thuộc"
 },
 "content": {
-"en": "Stoics warn excessive giving fosters dependency, draining energy. Mark’s constant aid created reliance; moderation restored balance. Practice: offer guidance, not solutions, to encourage self-reliance. Epictetus: rationality over habit. This prevents others’ comfort zones from trapping you, aligning with universal wisdom. Limit aid to foster mutual growth, preserving mental clarity. Daily reflection ensures balanced kindness, embodying Stoic self-control for sustainable, harmonious relationships free from exploitation.",
+"en": "Stoics warn excessive giving fosters dependency, draining energy. Mark’s constant aid created reliance; moderation restored balance. Practice: offer guidance, not solutions, to encourage self-reliance. Epictetus: rationality over habit. This prevents others’ comfort zones from trapping you, aligning with universal wisdom. Limit aid to foster mutual growth, preserving mental clarity. Daily reflection ensures balanced kindness, embodying Stoic self-control for sustainable, harmonious relationships level0 from exploitation.",
 "vi": "Stoic cảnh báo rằng cho đi quá mức sẽ tạo ra sự phụ thuộc, khiến năng lượng cạn kiệt. Sự giúp đỡ liên tục của Mark khiến người khác ỷ lại; chỉ khi anh học tiết chế, cân bằng mới trở lại. Thực hành: hướng dẫn thay vì làm thay, để khuyến khích người khác tự lực. Epictetus: hãy chọn lý trí thay vì thói quen. Cách này ngăn vùng thoải mái của người khác biến thành chiếc bẫy cho bạn, hòa hợp với trí tuệ tự nhiên. Giới hạn sự giúp đỡ để cùng nhau phát triển, giữ đầu óc sáng suốt. Suy ngẫm mỗi ngày để lòng tốt cân bằng, thể hiện tự chủ Stoic cho mối quan hệ hài hòa, bền vững, không bị lợi dụng."
 },
 "audio": {

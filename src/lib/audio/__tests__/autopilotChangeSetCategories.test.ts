@@ -110,7 +110,7 @@ describe('AudioChangeSet contract (Phase 4.7)', () => {
   it('AudioChange has all required fields', () => {
     const change: AudioChange = {
       id: 'test-change-1',
-      roomId: 'vip1-room-test',
+      roomId: 'level1-room-test',
       type: 'rename',
       before: 'old-name.mp3',
       after: 'new-name.mp3',

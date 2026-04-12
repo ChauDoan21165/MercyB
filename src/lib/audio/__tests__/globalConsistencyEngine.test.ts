@@ -22,9 +22,9 @@ describe('globalConsistencyEngine', () => {
     });
 
     it('generates correct canonical pair for numeric slug', () => {
-      const result = getCanonicalAudioForRoom('vip2-nutrition', 1);
-      expect(result.en).toBe('vip2-nutrition-entry-1-en.mp3');
-      expect(result.vi).toBe('vip2-nutrition-entry-1-vi.mp3');
+      const result = getCanonicalAudioForRoom('level2-nutrition', 1);
+      expect(result.en).toBe('level2-nutrition-entry-1-en.mp3');
+      expect(result.vi).toBe('level2-nutrition-entry-1-vi.mp3');
     });
 
     it('normalizes underscores to hyphens in roomId', () => {
@@ -45,7 +45,7 @@ describe('globalConsistencyEngine', () => {
 
   describe('normalizeRoomId', () => {
     it('converts to lowercase', () => {
-      expect(normalizeRoomId('VIP2-Nutrition')).toBe('vip2-nutrition');
+      expect(normalizeRoomId('Level 2-Nutrition')).toBe('level2-nutrition');
     });
 
     it('replaces underscores with hyphens', () => {

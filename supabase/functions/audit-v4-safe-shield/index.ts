@@ -211,16 +211,16 @@ type DbRoom = {
 // ============================================================================
 
 const TIER_PRIORITY: Array<{ pattern: string; tier: string; label: string }> = [
-  { pattern: "vip9", tier: "vip9", label: "VIP9 / VIP9" },
-  { pattern: "vip8", tier: "vip8", label: "VIP8 / VIP8" },
-  { pattern: "vip7", tier: "vip7", label: "VIP7 / VIP7" },
-  { pattern: "vip6", tier: "vip6", label: "VIP6 / VIP6" },
-  { pattern: "vip5", tier: "vip5", label: "VIP5 / VIP5" },
-  { pattern: "vip4", tier: "vip4", label: "VIP4 / VIP4" },
-  { pattern: "vip3", tier: "vip3", label: "VIP3 II / VIP3 II" },
-  { pattern: "vip3", tier: "vip3", label: "VIP3 / VIP3" },
-  { pattern: "vip2", tier: "vip2", label: "VIP2 / VIP2" },
-  { pattern: "vip1", tier: "vip1", label: "VIP1 / VIP1" },
+  { pattern: "level9", tier: "level9", label: "Level 9 / Level 9" },
+  { pattern: "level8", tier: "level8", label: "Level 8 / Level 8" },
+  { pattern: "level7", tier: "level7", label: "Level 7 / Level 7" },
+  { pattern: "level6", tier: "level6", label: "Level 6 / Level 6" },
+  { pattern: "level5", tier: "level5", label: "Level 5 / Level 5" },
+  { pattern: "level4", tier: "level4", label: "Level 4 / Level 4" },
+  { pattern: "level3", tier: "level3", label: "Level 3 II / Level 3 II" },
+  { pattern: "level3", tier: "level3", label: "Level 3 / Level 3" },
+  { pattern: "level2", tier: "level2", label: "Level 2 / Level 2" },
+  { pattern: "level1", tier: "level1", label: "Level 1 / Level 1" },
   { pattern: "kids_3", tier: "kids_3", label: "Kids Level 3 / Trẻ em cấp 3" },
   { pattern: "kids-3", tier: "kids_3", label: "Kids Level 3 / Trẻ em cấp 3" },
   { pattern: "kids_l3", tier: "kids_3", label: "Kids Level 3 / Trẻ em cấp 3" },
@@ -230,7 +230,7 @@ const TIER_PRIORITY: Array<{ pattern: string; tier: string; label: string }> = [
   { pattern: "kids_1", tier: "kids_1", label: "Kids Level 1 / Trẻ em cấp 1" },
   { pattern: "kids-1", tier: "kids_1", label: "Kids Level 1 / Trẻ em cấp 1" },
   { pattern: "kids_l1", tier: "kids_1", label: "Kids Level 1 / Trẻ em cấp 1" },
-  { pattern: "free", tier: "free", label: "Free / Miễn phí" },
+  { pattern: "level0", tier: "level0", label: "Level 0 / Miễn phí" },
 ];
 
 const CANONICAL_TIER_LABELS = new Set(TIER_PRIORITY.map(t => t.label));
@@ -335,22 +335,22 @@ function inferTierFromRoomId(roomId: string): string {
       return label;
     }
   }
-  return "Free / Miễn phí";
+  return "Level 0 / Miễn phí";
 }
 
 function inferDomainFromTier(tier: string): string {
   const t = tier.toLowerCase();
-  if (t.includes("vip9")) return "Strategic Intelligence";
-  if (t.includes("vip8")) return "Advanced Mastery";
-  if (t.includes("vip7")) return "Professional Growth";
-  if (t.includes("vip6")) return "Deep Psychology";
-  if (t.includes("vip5")) return "Creative Writing";
-  if (t.includes("vip4")) return "CareerZ";
-  if (t.includes("vip3")) return "VIP English Learning";
-  if (t.includes("vip3")) return "VIP English Learning";
-  if (t.includes("vip2")) return "VIP English Learning";
-  if (t.includes("vip1")) return "VIP English Learning";
-  if (t.includes("free") || t.includes("miễn phí")) return "English Foundation";
+  if (t.includes("level9")) return "Strategic Intelligence";
+  if (t.includes("level8")) return "Advanced Mastery";
+  if (t.includes("level7")) return "Professional Growth";
+  if (t.includes("level6")) return "Deep Psychology";
+  if (t.includes("level5")) return "Creative Writing";
+  if (t.includes("level4")) return "CareerZ";
+  if (t.includes("level3")) return "VIP English Learning";
+  if (t.includes("level3")) return "VIP English Learning";
+  if (t.includes("level2")) return "VIP English Learning";
+  if (t.includes("level1")) return "VIP English Learning";
+  if (t.includes("level0") || t.includes("miễn phí")) return "English Foundation";
   if (t.includes("kids") || t.includes("trẻ em")) return "Kids English";
   return "General";
 }

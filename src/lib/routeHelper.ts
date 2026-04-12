@@ -23,7 +23,7 @@ export function normalizeRoomId(roomId: string): string {
 
 export function stripRoomAccessSuffix(roomId: string): string {
   const id = normalizeRoomId(roomId);
-  return id.replace(/_(vip|free)$/i, "");
+  return id.replace(/_(vip|level0)$/i, "");
 }
 
 export function isSafeInternalPath(path: string | null | undefined): boolean {

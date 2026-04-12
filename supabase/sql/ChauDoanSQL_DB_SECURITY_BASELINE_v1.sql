@@ -109,7 +109,7 @@ create table if not exists public.subscriptions (
   canceled_at timestamptz null,
   ended_at timestamptz null,
 
-  tier text null,                             -- VIP1/VIP3/VIP9 (your mapping)
+  tier text null,                             -- Level 1/Level 3/Level 9 (your mapping)
   metadata jsonb not null default '{}'::jsonb,
 
   created_at timestamptz not null default now(),

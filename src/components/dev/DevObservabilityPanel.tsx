@@ -80,7 +80,7 @@ export function DevObservabilityPanel() {
             <div className="flex justify-between items-center">
               <span className="text-gray-400">Tier:</span>
               <span className="text-yellow-500 font-bold">
-                {tier || 'Free'}
+                {tier || 'Level 0'}
                 {isAdmin && ' (Admin)'}
               </span>
             </div>

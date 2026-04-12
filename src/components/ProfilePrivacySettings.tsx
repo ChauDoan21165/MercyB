@@ -130,10 +130,10 @@ export function ProfilePrivacySettings() {
             <div className="flex-1">
               <Label htmlFor="vip3_only" className="flex items-center gap-2 font-medium cursor-pointer">
                 <Users className="h-4 w-4" />
-                VIP3 Members Only
+                Level 3 Members Only
               </Label>
               <p className="text-sm text-muted-foreground mt-1">
-                Only VIP3 tier members can see your profile. Good for matchmaking within your tier.
+                Only Level 3 tier members can see your profile. Good for matchmaking within your tier.
               </p>
             </div>
           </div>
@@ -164,7 +164,7 @@ export function ProfilePrivacySettings() {
             <li>Matchmaking preferences</li>
           </ul>
           <p className="text-sm text-muted-foreground mt-2">
-            <strong>Note:</strong> Your username and avatar are always visible to VIP3 members for basic identification.
+            <strong>Note:</strong> Your username and avatar are always visible to Level 3 members for basic identification.
             Sensitive information like email and phone are never shared with other users.
           </p>
         </div>

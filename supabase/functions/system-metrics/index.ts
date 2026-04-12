@@ -62,7 +62,7 @@ Deno.serve(async (req) => {
     // Rooms by tier
     const roomsByTier: Record<string, number> = {};
     rooms.forEach((room) => {
-      const tier = room.tier || 'free';
+      const tier = room.tier || 'level0';
       roomsByTier[tier] = (roomsByTier[tier] || 0) + 1;
     });
 
@@ -95,11 +95,11 @@ Deno.serve(async (req) => {
       .select('*', { count: 'exact', head: true })
       .gte('last_activity', new Date(Date.now() - 5 * 60 * 1000).toISOString()); // Last 5 minutes
 
-    // VIP9 domains
+    // Level 9 domains
     const { data: vip9Rooms } = await supabase
       .from('rooms')
       .select('domain')
-      .ilike('tier', '%vip9%');
+      .ilike('tier', '%level9%');
     
     const vip9Domains: Record<string, number> = {};
     (vip9Rooms || []).forEach((room: any) => {
@@ -170,7 +170,7 @@ Deno.serve(async (req) => {
           { name: 'matchmaking', callsToday: 0, status: 'active' },
         ],
       },
-      vip9: {
+      level9: {
         domains: vip9Domains,
         totalRooms: vip9Rooms?.length || 0,
       },

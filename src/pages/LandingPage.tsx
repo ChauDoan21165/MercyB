@@ -282,9 +282,9 @@ export default function LandingPage() {
         <div className="mt-8 flex flex-wrap gap-2">
           <a
             className="rounded-full border border-slate-700 px-3 py-2 text-xs hover:bg-slate-900"
-            href="/free"
+            href="/level0"
           >
-            {lang === "en" ? "Go to Free Rooms" : "Vào Free Rooms"}
+            {lang === "en" ? "Go to Level 0 Rooms" : "Vào Level 0 Rooms"}
           </a>
         </div>
       </div>

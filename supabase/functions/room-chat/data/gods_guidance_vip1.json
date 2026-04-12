@@ -1,9 +1,9 @@
 {
-  "header": "// dumb tree, no diagnostics, catch keyword, speak meter, plain (b1), bilingual (en-vi), gentle persuasion only\n\nGod’s guidance for VIP 1, evidence-based\n\nEach entry: teach practical steps for seeking divine guidance\n\nPhilosophy: empathetic, actionable, inclusive, humane language\n\nBeliefs:\n- Don’t judge. Embrace faith.\n- Don’t rush. Foster trust.\n- Don’t force. Encourage openness.\n\nTalk points\n- Meditation connects to God.\n- Scripture guides decisions.\n- Journaling deepens faith.\n\nTiny habits to teach:\n- Meditate 5 minutes daily.\n- Read one scripture weekly.\n- Journal one faith insight.",
+  "header": "// dumb tree, no diagnostics, catch keyword, speak meter, plain (b1), bilingual (en-vi), gentle persuasion only\n\nGod’s guidance for Level 1, evidence-based\n\nEach entry: teach practical steps for seeking divine guidance\n\nPhilosophy: empathetic, actionable, inclusive, humane language\n\nBeliefs:\n- Don’t judge. Embrace faith.\n- Don’t rush. Foster trust.\n- Don’t force. Encourage openness.\n\nTalk points\n- Meditation connects to God.\n- Scripture guides decisions.\n- Journaling deepens faith.\n\nTiny habits to teach:\n- Meditate 5 minutes daily.\n- Read one scripture weekly.\n- Journal one faith insight.",
   "schema_version": "1.1",
   "schema_id": "gods_guidance_vip1",
-  "description": "Echologic Mercy Blade room for VIP 1 users to seek God’s guidance with evidence-based strategies",
-  "description_vi": "Phòng Mercy Blade dành cho người dùng VIP 1 để tìm kiếm sự hướng dẫn của Thiên Chúa với chiến lược dựa trên bằng chứng",
+  "description": "Echologic Mercy Blade room for Level 1 users to seek God’s guidance with evidence-based strategies",
+  "description_vi": "Phòng Mercy Blade dành cho người dùng Level 1 để tìm kiếm sự hướng dẫn của Thiên Chúa với chiến lược dựa trên bằng chứng",
   "supported_languages": ["en", "vi"],
   "localization": { "default": "en", "fallback": "en", "i18n_required": true },
   "safety_disclaimer": "Educational guidance; not a substitute for professional spiritual or mental health advice.",
@@ -20,13 +20,13 @@
     "created_at": "2025-10-22T07:13:00+07:00",
     "updated_at": "2025-10-22T07:13:00+07:00",
     "checksum_sha256": "<placeholder>",
-    "meta_notes": "Keyword-driven; VIP 1 exclusive; light brown background; UUIDv4 artifacts; checksum=SHA-256 of canonical JSON.",
+    "meta_notes": "Keyword-driven; Level 1 exclusive; light brown background; UUIDv4 artifacts; checksum=SHA-256 of canonical JSON.",
     "i18n_verified": true,
     "entry_count": 3,
     "artifact_set_id": "6b7c8d9e-0f1a-4b2c-c3d4-e5f6a7b8c9d0",
     "data_format_version": "MercyBlade-Core-v1.2",
     "room_color": "#D7CCC8",
-    "tier": "vip1"
+    "tier": "level1"
   },
   "enums": {
     "tags": [
@@ -56,8 +56,8 @@
   },
   "room_essay": {
     "format": "markdown",
-    "en": "# God’s Guidance VIP1\n\nSeeking God’s guidance brings clarity to life’s decisions. Studies show spiritual practices reduce stress by 30%. This VIP 1 room offers premium strategies to connect with divine wisdom.\n\n**Practice Meditation**\n- Meditate 5 minutes daily, seeking God’s will.\n- Focus on a single prayer.\n- Example: Sarah’s meditation clarified her path.\n\n**Study Scripture**\n- Read one scripture passage weekly.\n- Reflect on its meaning for guidance.\n- Research shows scripture study boosts peace by 25%.\n\n**Journal Faith Insights**\n- Write one spiritual thought weekly.\n- Note how God guides you.\n- Example: Minh’s journaling deepened his faith.\n\n**Stay Open**\n- Trust God’s timing for answers.\n- Seek spiritual counsel for deeper needs.\n\nStart today: meditate 5 minutes or read one scripture. Your VIP 1 tools will guide you to divine clarity!\n\n*Word count: 404*",
-    "vi": "# Hướng Dẫn Của Thiên Chúa VIP1\n\nTìm kiếm sự hướng dẫn của Thiên Chúa mang lại sự rõ ràng cho các quyết định cuộc sống. Nghiên cứu cho thấy thực hành tâm linh giảm căng thẳng 30%. Phòng VIP 1 này cung cấp chiến lược cao cấp để kết nối với trí tuệ thần thánh.\n\n**Thực Hành Thiền**\n- Thiền 5 phút mỗi ngày, tìm kiếm ý muốn của Thiên Chúa.\n- Tập trung vào một lời cầu nguyện duy nhất.\n- Ví dụ: Lan thiền, làm rõ con đường của mình.\n\n**Học Kinh Thánh**\n- Đọc một đoạn kinh thánh mỗi tuần.\n- Suy ngẫm ý nghĩa của nó để được hướng dẫn.\n- Nghiên cứu cho thấy học kinh thánh tăng bình an 25%.\n\n**Ghi Nhật Ký Đức Tin**\n- Viết một suy nghĩ tâm linh mỗi tuần.\n- Ghi lại cách Thiên Chúa hướng dẫn bạn.\n- Ví dụ: Hùng ghi nhật ký, làm sâu sắc đức tin.\n\n**Giữ Cởi Mở**\n- Tin vào thời điểm của Thiên Chúa cho câu trả lời.\n- Tìm tư vấn tâm linh cho nhu cầu sâu hơn.\n\nBắt đầu hôm nay: thiền 5 phút hoặc đọc một đoạn kinh thánh. Công cụ VIP 1 sẽ dẫn bạn đến sự rõ ràng thần thánh!\n\n*Số từ: 412*",
+    "en": "# God’s Guidance Level 1\n\nSeeking God’s guidance brings clarity to life’s decisions. Studies show spiritual practices reduce stress by 30%. This Level 1 room offers premium strategies to connect with divine wisdom.\n\n**Practice Meditation**\n- Meditate 5 minutes daily, seeking God’s will.\n- Focus on a single prayer.\n- Example: Sarah’s meditation clarified her path.\n\n**Study Scripture**\n- Read one scripture passage weekly.\n- Reflect on its meaning for guidance.\n- Research shows scripture study boosts peace by 25%.\n\n**Journal Faith Insights**\n- Write one spiritual thought weekly.\n- Note how God guides you.\n- Example: Minh’s journaling deepened his faith.\n\n**Stay Open**\n- Trust God’s timing for answers.\n- Seek spiritual counsel for deeper needs.\n\nStart today: meditate 5 minutes or read one scripture. Your Level 1 tools will guide you to divine clarity!\n\n*Word count: 404*",
+    "vi": "# Hướng Dẫn Của Thiên Chúa Level 1\n\nTìm kiếm sự hướng dẫn của Thiên Chúa mang lại sự rõ ràng cho các quyết định cuộc sống. Nghiên cứu cho thấy thực hành tâm linh giảm căng thẳng 30%. Phòng Level 1 này cung cấp chiến lược cao cấp để kết nối với trí tuệ thần thánh.\n\n**Thực Hành Thiền**\n- Thiền 5 phút mỗi ngày, tìm kiếm ý muốn của Thiên Chúa.\n- Tập trung vào một lời cầu nguyện duy nhất.\n- Ví dụ: Lan thiền, làm rõ con đường của mình.\n\n**Học Kinh Thánh**\n- Đọc một đoạn kinh thánh mỗi tuần.\n- Suy ngẫm ý nghĩa của nó để được hướng dẫn.\n- Nghiên cứu cho thấy học kinh thánh tăng bình an 25%.\n\n**Ghi Nhật Ký Đức Tin**\n- Viết một suy nghĩ tâm linh mỗi tuần.\n- Ghi lại cách Thiên Chúa hướng dẫn bạn.\n- Ví dụ: Hùng ghi nhật ký, làm sâu sắc đức tin.\n\n**Giữ Cởi Mở**\n- Tin vào thời điểm của Thiên Chúa cho câu trả lời.\n- Tìm tư vấn tâm linh cho nhu cầu sâu hơn.\n\nBắt đầu hôm nay: thiền 5 phút hoặc đọc một đoạn kinh thánh. Công cụ Level 1 sẽ dẫn bạn đến sự rõ ràng thần thánh!\n\n*Số từ: 412*",
     "word_count_en": 404,
     "word_count_vi": 412,
     "updated_at": "2025-10-22T07:13:00+07:00"

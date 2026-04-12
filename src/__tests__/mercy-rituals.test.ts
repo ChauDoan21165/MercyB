@@ -38,7 +38,7 @@ describe('Rituals System', () => {
     describe('entry_complete rituals', () => {
       it('should return soft nod for 1-2 entries', () => {
         const context: RitualContext = {
-          tier: 'free',
+          tier: 'level0',
           entriesCompleted: 1
         };
         
@@ -50,7 +50,7 @@ describe('Rituals System', () => {
 
       it('should return spark for 3-5 entries', () => {
         const context: RitualContext = {
-          tier: 'vip2',
+          tier: 'level2',
           entriesCompleted: 4
         };
         
@@ -62,7 +62,7 @@ describe('Rituals System', () => {
 
       it('should return bridge for 6+ entries', () => {
         const context: RitualContext = {
-          tier: 'vip5',
+          tier: 'level5',
           entriesCompleted: 8
         };
         
@@ -74,9 +74,9 @@ describe('Rituals System', () => {
     });
 
     describe('room_complete rituals', () => {
-      it('should return free tier ritual for free users', () => {
+      it('should return level0 tier ritual for level0 users', () => {
         const context: RitualContext = {
-          tier: 'free',
+          tier: 'level0',
           roomId: 'test-room'
         };
         
@@ -85,27 +85,27 @@ describe('Rituals System', () => {
         expect(ritual?.id).toBe('room_complete_free');
       });
 
-      it('should return vip1-3 ritual for vip2', () => {
+      it('should return level1-3 ritual for level2', () => {
         const context: RitualContext = {
-          tier: 'vip2'
+          tier: 'level2'
         };
         
         const ritual = getRitualForEvent('room_complete', context);
         expect(ritual?.id).toBe('room_complete_vip1_3');
       });
 
-      it('should return vip4-6 ritual for vip5', () => {
+      it('should return level4-6 ritual for level5', () => {
         const context: RitualContext = {
-          tier: 'vip5'
+          tier: 'level5'
         };
         
         const ritual = getRitualForEvent('room_complete', context);
         expect(ritual?.id).toBe('room_complete_vip4_6');
       });
 
-      it('should return vip7-9 ritual for vip9', () => {
+      it('should return level7-9 ritual for level9', () => {
         const context: RitualContext = {
-          tier: 'vip9'
+          tier: 'level9'
         };
         
         const ritual = getRitualForEvent('room_complete', context);
@@ -114,7 +114,7 @@ describe('Rituals System', () => {
 
       it('should return crisis ritual for crisis rooms', () => {
         const context: RitualContext = {
-          tier: 'vip3',
+          tier: 'level3',
           roomTags: ['mental_health', 'crisis']
         };
         
@@ -127,7 +127,7 @@ describe('Rituals System', () => {
     describe('streak_milestone rituals', () => {
       it('should return 3-day streak ritual', () => {
         const context: RitualContext = {
-          tier: 'vip1',
+          tier: 'level1',
           streakDays: 3
         };
         
@@ -138,7 +138,7 @@ describe('Rituals System', () => {
 
       it('should return 7-day streak ritual', () => {
         const context: RitualContext = {
-          tier: 'vip2',
+          tier: 'level2',
           streakDays: 7
         };
         
@@ -148,7 +148,7 @@ describe('Rituals System', () => {
 
       it('should return 30-day streak ritual', () => {
         const context: RitualContext = {
-          tier: 'free',
+          tier: 'level0',
           streakDays: 30
         };
         
@@ -158,7 +158,7 @@ describe('Rituals System', () => {
 
       it('should return null for 2-day streak', () => {
         const context: RitualContext = {
-          tier: 'vip1',
+          tier: 'level1',
           streakDays: 2
         };
         
@@ -170,7 +170,7 @@ describe('Rituals System', () => {
     describe('comeback_after_gap rituals', () => {
       it('should return comeback ritual after 7+ days', () => {
         const context: RitualContext = {
-          tier: 'vip3',
+          tier: 'level3',
           daysSinceLastVisit: 10
         };
         
@@ -182,7 +182,7 @@ describe('Rituals System', () => {
 
       it('should return null for less than 7 days', () => {
         const context: RitualContext = {
-          tier: 'vip1',
+          tier: 'level1',
           daysSinceLastVisit: 5
         };
         
@@ -194,7 +194,7 @@ describe('Rituals System', () => {
 
   describe('getRitualText', () => {
     it('should return English text when language is en', () => {
-      const context: RitualContext = { tier: 'free', entriesCompleted: 1 };
+      const context: RitualContext = { tier: 'level0', entriesCompleted: 1 };
       const ritual = getRitualForEvent('entry_complete', context);
       
       expect(ritual).toBeDefined();
@@ -202,7 +202,7 @@ describe('Rituals System', () => {
     });
 
     it('should return Vietnamese text when language is vi', () => {
-      const context: RitualContext = { tier: 'free', entriesCompleted: 1 };
+      const context: RitualContext = { tier: 'level0', entriesCompleted: 1 };
       const ritual = getRitualForEvent('entry_complete', context);
       
       expect(ritual).toBeDefined();
@@ -254,16 +254,16 @@ describe('VIP Ceremonies', () => {
   });
 
   describe('getVipCeremony', () => {
-    it('should return ceremony for vip1', () => {
-      const ceremony = getVipCeremony('vip1');
+    it('should return ceremony for level1', () => {
+      const ceremony = getVipCeremony('level1');
       expect(ceremony).toBeDefined();
-      expect(ceremony?.tier).toBe('vip1');
+      expect(ceremony?.tier).toBe('level1');
     });
 
-    it('should return ceremony for vip9', () => {
-      const ceremony = getVipCeremony('vip9');
+    it('should return ceremony for level9', () => {
+      const ceremony = getVipCeremony('level9');
       expect(ceremony).toBeDefined();
-      expect(ceremony?.tier).toBe('vip9');
+      expect(ceremony?.tier).toBe('level9');
       expect(ceremony?.textEn).toContain('Distinguished');
     });
 
@@ -272,45 +272,45 @@ describe('VIP Ceremonies', () => {
       expect(ceremony).toBeNull();
     });
 
-    it('should return null for free tier', () => {
-      const ceremony = getVipCeremony('free');
+    it('should return null for level0 tier', () => {
+      const ceremony = getVipCeremony('level0');
       expect(ceremony).toBeNull();
     });
   });
 
   describe('getCeremonyText', () => {
     it('should return English text', () => {
-      const ceremony = getVipCeremony('vip1')!;
+      const ceremony = getVipCeremony('level1')!;
       expect(getCeremonyText(ceremony, 'en')).toBe(ceremony.textEn);
     });
 
     it('should return Vietnamese text', () => {
-      const ceremony = getVipCeremony('vip1')!;
+      const ceremony = getVipCeremony('level1')!;
       expect(getCeremonyText(ceremony, 'vi')).toBe(ceremony.textVi);
     });
   });
 
   describe('executeVipCeremony', () => {
     it('should return ceremony on first upgrade', () => {
-      const ceremony = executeVipCeremony('vip1', 'free');
+      const ceremony = executeVipCeremony('level1', 'level0');
       expect(ceremony).toBeDefined();
-      expect(ceremony?.tier).toBe('vip1');
+      expect(ceremony?.tier).toBe('level1');
     });
 
     it('should return null on second call (already celebrated)', () => {
-      executeVipCeremony('vip1', 'free');
-      const second = executeVipCeremony('vip1', 'free');
+      executeVipCeremony('level1', 'level0');
+      const second = executeVipCeremony('level1', 'level0');
       expect(second).toBeNull();
     });
 
     it('should return null for downgrade', () => {
-      const ceremony = executeVipCeremony('vip1', 'vip3');
+      const ceremony = executeVipCeremony('level1', 'level3');
       expect(ceremony).toBeNull();
     });
   });
 
   describe('ceremony text length', () => {
-    const tiers = ['vip1', 'vip2', 'vip3', 'vip4', 'vip5', 'vip6', 'vip7', 'vip8', 'vip9'];
+    const tiers = ['level1', 'level2', 'level3', 'level4', 'level5', 'level6', 'level7', 'level8', 'level9'];
     
     it.each(tiers)('%s ceremony text should be ≤160 chars', (tier) => {
       const ceremony = getVipCeremony(tier);
@@ -324,7 +324,7 @@ describe('VIP Ceremonies', () => {
 describe('Crisis Room Behavior', () => {
   it('should use gentle ritual in crisis rooms', () => {
     const context: RitualContext = {
-      tier: 'vip5',
+      tier: 'level5',
       roomTags: ['trauma', 'healing']
     };
     
@@ -336,7 +336,7 @@ describe('Crisis Room Behavior', () => {
 
   it('should not use celebrating emotion in crisis rooms', () => {
     const context: RitualContext = {
-      tier: 'vip9',
+      tier: 'level9',
       roomDomain: 'mental_health'
     };
     

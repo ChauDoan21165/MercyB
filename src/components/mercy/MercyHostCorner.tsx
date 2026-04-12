@@ -11,14 +11,14 @@ import { useMercyHost } from "@/hooks/useMercyHost";
 type Props = {
   roomId: string;
   roomTitle: string;
-  roomTier?: "free" | "vip1" | "vip2" | "vip3";
+  roomTier?: "level0" | "level1" | "level2" | "level3";
   language?: "en" | "vi";
 };
 
 export default function MercyHostCorner({
   roomId,
   roomTitle,
-  roomTier = "free",
+  roomTier = "level0",
   language = "en",
 }: Props) {
   const host = useMercyHost({

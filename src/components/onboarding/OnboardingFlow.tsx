@@ -38,9 +38,9 @@ const STEPS: OnboardingStep[] = [
     id: 3,
     title: 'Choose your path, at your pace',
     subtitle:
-      'Start free, then unlock deeper rooms for emotions, health, career, and meaning when you feel ready.',
+      'Start level0, then unlock deeper rooms for emotions, health, career, and meaning when you feel ready.',
     bullets: [
-      'Free rooms to explore core topics',
+      'Level 0 rooms to explore core topics',
       'VIP tiers for deeper, structured journeys',
       'You stay in control — no spam, no pressure',
     ],

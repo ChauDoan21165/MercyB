@@ -4,7 +4,7 @@ import type { TierId } from "@/lib/constants/tiers";
 export function stripTierSuffix(id: string) {
   let s = String(id || "").trim();
   if (!s) return "";
-  s = s.replace(/_(vip[1-9]|free)$/gi, "");
+  s = s.replace(/_(vip[1-9]|level0)$/gi, "");
   s = s.replace(/_+/g, "_").replace(/^_+|_+$/g, "");
   return s;
 }
@@ -23,7 +23,7 @@ export function inferTierIdFromRoomId(effectiveRoomId: string): TierId | null {
   const s = String(effectiveRoomId || "").toLowerCase().trim();
   const m = s.match(/_(vip[1-9])$/);
   if (m?.[1]) return m[1] as TierId;
-  if (/_free$/.test(s)) return "free";
+  if (/_free$/.test(s)) return "level0";
   return null;
 }
 
@@ -49,7 +49,7 @@ export function isBadAutoTitle(raw: string, effectiveRoomId: string) {
   if (rCore && idCore && rCore === idCore) return true;
 
   const looksSnake = /^[a-z0-9_]+$/.test(rLow) && rLow.includes("_") && !r.includes(" ");
-  const hasTierSuffix = /_(vip[1-9]|free)$/i.test(r);
+  const hasTierSuffix = /_(vip[1-9]|level0)$/i.test(r);
 
   return looksSnake || hasTierSuffix;
 }

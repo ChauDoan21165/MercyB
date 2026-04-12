@@ -2,8 +2,8 @@
 -- COMPREHENSIVE SECURITY AUDIT FIXES
 -- ============================================
 
--- 1. FIX: Restrict VIP3 profile visibility to non-sensitive data only
--- DROP existing VIP3 profile viewing policy
+-- 1. FIX: Restrict Level 3 profile visibility to non-sensitive data only
+-- DROP existing Level 3 profile viewing policy
 DROP POLICY IF EXISTS "vip3_view_other_vip3_profiles" ON public.profiles;
 
 -- CREATE new restricted policy that only shows username and avatar
@@ -14,21 +14,21 @@ USING (
   -- Users can see their own full profile
   (auth.uid() = id)
   OR
-  -- VIP3 users can view other VIP3 users' profiles (column restriction handled in app layer)
+  -- Level 3 users can view other Level 3 users' profiles (column restriction handled in app layer)
   (
     EXISTS (
       SELECT 1
       FROM public.user_subscriptions us1
       JOIN public.subscription_tiers st1 ON us1.tier_id = st1.id
       WHERE us1.user_id = auth.uid()
-        AND st1.name = 'VIP3'
+        AND st1.name = 'Level 3'
         AND us1.status = 'active'
     )
     AND id IN (
       SELECT us2.user_id
       FROM public.user_subscriptions us2
       JOIN public.subscription_tiers st2 ON us2.tier_id = st2.id
-      WHERE st2.name = 'VIP3'
+      WHERE st2.name = 'Level 3'
         AND us2.status = 'active'
     )
   )
@@ -380,18 +380,18 @@ BEGIN
     ADD CONSTRAINT user_knowledge_profile_profile_visibility_check
     CHECK (profile_visibility IN ('private', 'vip3_only', 'public'));
 
-    -- Update VIP3 knowledge profile policy to respect privacy settings
-    DROP POLICY IF EXISTS "VIP3 users can view other VIP3 knowledge profiles" ON public.user_knowledge_profile;
-    DROP POLICY IF EXISTS "VIP3 users can view permitted knowledge profiles" ON public.user_knowledge_profile;
+    -- Update Level 3 knowledge profile policy to respect privacy settings
+    DROP POLICY IF EXISTS "Level 3 users can view other Level 3 knowledge profiles" ON public.user_knowledge_profile;
+    DROP POLICY IF EXISTS "Level 3 users can view permitted knowledge profiles" ON public.user_knowledge_profile;
 
-    CREATE POLICY "VIP3 users can view permitted knowledge profiles"
+    CREATE POLICY "Level 3 users can view permitted knowledge profiles"
     ON public.user_knowledge_profile
     FOR SELECT
     USING (
       -- Users can always see their own profile
       (auth.uid() = user_id)
       OR
-      -- VIP3 users can see other VIP3 profiles if visibility allows
+      -- Level 3 users can see other Level 3 profiles if visibility allows
       (
         profile_visibility IN ('vip3_only', 'public')
         AND EXISTS (
@@ -399,14 +399,14 @@ BEGIN
           FROM public.user_subscriptions us1
           JOIN public.subscription_tiers st1 ON us1.tier_id = st1.id
           WHERE us1.user_id = auth.uid()
-            AND st1.name = 'VIP3'
+            AND st1.name = 'Level 3'
             AND us1.status = 'active'
         )
         AND user_id IN (
           SELECT us2.user_id
           FROM public.user_subscriptions us2
           JOIN public.subscription_tiers st2 ON us2.tier_id = st2.id
-          WHERE st2.name = 'VIP3'
+          WHERE st2.name = 'Level 3'
             AND us2.status = 'active'
         )
       )

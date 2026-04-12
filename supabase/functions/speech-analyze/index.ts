@@ -48,9 +48,9 @@ serve(async (req) => {
     const expiresAt = profile?.access_expires_at ? new Date(profile.access_expires_at) : null;
     const isExpired = expiresAt && new Date() > expiresAt;
 
-    // Gatekeeper: Free trial limit (e.g., if no expiry set yet or if date passed)
+    // Gatekeeper: Level 0 trial limit (e.g., if no expiry set yet or if date passed)
     if (planType === 'FREE' && (isExpired || !expiresAt)) {
-      return jsonError("Your free trial has ended. Upgrade to 3-Month or Lifetime access to continue.", 403);
+      return jsonError("Your level0 trial has ended. Upgrade to 3-Month or Lifetime access to continue.", 403);
     }
 
     const formData = await req.formData();

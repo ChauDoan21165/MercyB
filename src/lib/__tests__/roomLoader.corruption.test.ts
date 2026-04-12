@@ -211,7 +211,7 @@ describe("loadMergedRoom corruption handling", () => {
 
     jsonMocks.mockLoadRoomJson.mockResolvedValueOnce({
       id: "bad-json-room",
-      tier: "Free / Miễn phí",
+      tier: "Level 0 / Miễn phí",
       entries: "not-an-array",
     });
 
@@ -344,7 +344,7 @@ describe("loadMergedRoom corruption handling", () => {
 
     jsonMocks.mockLoadRoomJson.mockResolvedValueOnce({
       id: "mixed-room",
-      tier: "Free / Miễn phí",
+      tier: "Level 0 / Miễn phí",
       entries: [
         {
           slug: "",
@@ -390,7 +390,7 @@ describe("loadMergedRoom corruption handling", () => {
 
     jsonMocks.mockLoadRoomJson.mockResolvedValueOnce({
       id: "broken-room",
-      tier: "Free / Miễn phí",
+      tier: "Level 0 / Miễn phí",
       entries: 12345,
     });
 
@@ -465,7 +465,7 @@ describe("loadMergedRoom corruption handling", () => {
 
     jsonMocks.mockLoadRoomJson.mockResolvedValueOnce({
       id: "partial-json-room",
-      tier: "Free / Miễn phí",
+      tier: "Level 0 / Miễn phí",
       entries: [
         {
           keyword_en: "json-keyword-only",

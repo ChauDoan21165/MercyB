@@ -56,7 +56,7 @@ Deno.serve(async (req) => {
       id: room.id,
       nameEn: room.title_en || room.id,
       nameVi: room.title_vi || '',
-      tier: room.tier || 'free',
+      tier: room.tier || 'level0',
       hasData: true // Assume all DB rooms have data
     }));
 

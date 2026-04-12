@@ -14,8 +14,8 @@ WHERE p.id IN (
   SELECT us.user_id 
   FROM user_subscriptions us
   JOIN subscription_tiers st ON us.tier_id = st.id
-  WHERE st.name = 'VIP3' AND us.status = 'active'
+  WHERE st.name = 'Level 3' AND us.status = 'active'
 )
 AND public.is_vip3_user(auth.uid());
 
-COMMENT ON VIEW public.vip3_public_profiles IS 'Safe view exposing only username/avatar for VIP3 matchmaking. Uses SECURITY INVOKER to respect caller RLS.';
+COMMENT ON VIEW public.vip3_public_profiles IS 'Safe view exposing only username/avatar for Level 3 matchmaking. Uses SECURITY INVOKER to respect caller RLS.';

@@ -80,15 +80,15 @@ export function salvageDbEntries(entries: BaseRoomEntry[]): NormalizedEntriesRes
 
 export function normalizeTier(meta: RoomMeta | JsonRoom | null): string {
   const raw =
-    firstNonEmptyString(meta?.roomTier, meta?.tier, meta?.accessTier) || "free";
+    firstNonEmptyString(meta?.roomTier, meta?.tier, meta?.accessTier) || "level0";
 
   const value = raw.toLowerCase();
 
-  if (value.includes("vip3")) return "vip3";
-  if (value.includes("vip2")) return "vip2";
-  if (value.includes("vip1")) return "vip1";
+  if (value.includes("level3")) return "level3";
+  if (value.includes("level2")) return "level2";
+  if (value.includes("level1")) return "level1";
   if (value.includes("premium")) return "premium";
-  if (value.includes("free")) return "free";
+  if (value.includes("level0")) return "level0";
 
   return value;
 }

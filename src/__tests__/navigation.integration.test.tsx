@@ -9,7 +9,7 @@ import { createSupabaseMock } from "@/test/mocks/supabaseMock";
 const mockNavigate = vi.fn();
 
 // Mutable roomId for mocked useParams()
-let __mockRoomId = "adhd-support-vip3";
+let __mockRoomId = "adhd-support-level3";
 
 // Mock react-router-dom
 vi.mock("react-router-dom", async () => {
@@ -106,11 +106,11 @@ async function getParentRouteSafe(roomId?: string): Promise<string> {
 
   const id = String(roomId || "").trim();
   if (!id) return "/rooms";
-  if (/sexuality-curiosity-vip3-sub[1-6]$/.test(id)) return "/sexuality-culture";
-  if (/-vip3\b/.test(id)) return "/rooms-vip3";
-  if (/-vip2\b/.test(id)) return "/rooms-vip2";
-  if (/-vip1\b/.test(id)) return "/rooms-vip1";
-  if (/-free\b/.test(id)) return "/rooms";
+  if (/sexuality-curiosity-level3-sub[1-6]$/.test(id)) return "/sexuality-culture";
+  if (/-level3\b/.test(id)) return "/rooms-level3";
+  if (/-level2\b/.test(id)) return "/rooms-level2";
+  if (/-level1\b/.test(id)) return "/rooms-level1";
+  if (/-level0\b/.test(id)) return "/rooms";
   return "/rooms";
 }
 
@@ -181,7 +181,7 @@ function makeChain(table: string) {
 describe("Navigation Integration Tests", () => {
   beforeEach(() => {
     mockNavigate.mockClear();
-    __mockRoomId = "adhd-support-vip3";
+    __mockRoomId = "adhd-support-level3";
     vi.clearAllMocks();
 
     supabaseMock.auth.getUser.mockResolvedValue({
@@ -209,39 +209,39 @@ describe("Navigation Integration Tests", () => {
 
   describe("Route Helper Integration", () => {
     it("should correctly determine parent routes for all room types", async () => {
-      expect(await getParentRouteSafe("adhd-support-free")).toBe("/rooms");
-      expect(await getParentRouteSafe("anxiety-relief-free")).toBe("/rooms");
-      expect(await getParentRouteSafe("adhd-support-vip1")).toBe("/rooms-vip1");
-      expect(await getParentRouteSafe("mental-health-vip1")).toBe("/rooms-vip1");
-      expect(await getParentRouteSafe("adhd-support-vip2")).toBe("/rooms-vip2");
-      expect(await getParentRouteSafe("burnout-recovery-vip2")).toBe("/rooms-vip2");
-      expect(await getParentRouteSafe("adhd-support-vip3")).toBe("/rooms-vip3");
-      expect(await getParentRouteSafe("confidence-vip3")).toBe("/rooms-vip3");
+      expect(await getParentRouteSafe("adhd-support-level0")).toBe("/rooms");
+      expect(await getParentRouteSafe("anxiety-relief-level0")).toBe("/rooms");
+      expect(await getParentRouteSafe("adhd-support-level1")).toBe("/rooms-level1");
+      expect(await getParentRouteSafe("mental-health-level1")).toBe("/rooms-level1");
+      expect(await getParentRouteSafe("adhd-support-level2")).toBe("/rooms-level2");
+      expect(await getParentRouteSafe("burnout-recovery-level2")).toBe("/rooms-level2");
+      expect(await getParentRouteSafe("adhd-support-level3")).toBe("/rooms-level3");
+      expect(await getParentRouteSafe("confidence-level3")).toBe("/rooms-level3");
     });
 
     it("should handle sexuality sub-rooms correctly", async () => {
-      expect(await getParentRouteSafe("sexuality-curiosity-vip3-sub1")).toBe("/sexuality-culture");
-      expect(await getParentRouteSafe("sexuality-curiosity-vip3-sub2")).toBe("/sexuality-culture");
-      expect(await getParentRouteSafe("sexuality-curiosity-vip3-sub3")).toBe("/sexuality-culture");
-      expect(await getParentRouteSafe("sexuality-curiosity-vip3-sub4")).toBe("/sexuality-culture");
-      expect(await getParentRouteSafe("sexuality-curiosity-vip3-sub5")).toBe("/sexuality-culture");
-      expect(await getParentRouteSafe("sexuality-curiosity-vip3-sub6")).toBe("/sexuality-culture");
+      expect(await getParentRouteSafe("sexuality-curiosity-level3-sub1")).toBe("/sexuality-culture");
+      expect(await getParentRouteSafe("sexuality-curiosity-level3-sub2")).toBe("/sexuality-culture");
+      expect(await getParentRouteSafe("sexuality-curiosity-level3-sub3")).toBe("/sexuality-culture");
+      expect(await getParentRouteSafe("sexuality-curiosity-level3-sub4")).toBe("/sexuality-culture");
+      expect(await getParentRouteSafe("sexuality-curiosity-level3-sub5")).toBe("/sexuality-culture");
+      expect(await getParentRouteSafe("sexuality-curiosity-level3-sub6")).toBe("/sexuality-culture");
     });
 
-    it("should handle special VIP3 rooms correctly", async () => {
-      expect(await getParentRouteSafe("sexuality-and-curiosity-and-culture-vip3")).toBe(
-        "/rooms-vip3",
+    it("should handle special Level 3 rooms correctly", async () => {
+      expect(await getParentRouteSafe("sexuality-and-curiosity-and-culture-level3")).toBe(
+        "/rooms-level3",
       );
-      expect(await getParentRouteSafe("strategy-in-life-1-vip3")).toBe("/rooms-vip3");
-      expect(await getParentRouteSafe("strategy-in-life-2-vip3")).toBe("/rooms-vip3");
-      expect(await getParentRouteSafe("strategy-in-life-3-vip3")).toBe("/rooms-vip3");
-      expect(await getParentRouteSafe("finance-glory-vip3")).toBe("/rooms-vip3");
+      expect(await getParentRouteSafe("strategy-in-life-1-level3")).toBe("/rooms-level3");
+      expect(await getParentRouteSafe("strategy-in-life-2-level3")).toBe("/rooms-level3");
+      expect(await getParentRouteSafe("strategy-in-life-3-level3")).toBe("/rooms-level3");
+      expect(await getParentRouteSafe("finance-glory-level3")).toBe("/rooms-level3");
     });
   });
 
   describe("Back Button Navigation", () => {
     it("should navigate to correct parent when back button is clicked from standard room", async () => {
-      __mockRoomId = "adhd-support-vip3";
+      __mockRoomId = "adhd-support-level3";
 
       const chatHubPath: string = "@/pages/ChatHub";
       const ChatHub = await importMaybeDefault(chatHubPath);
@@ -263,11 +263,11 @@ describe("Navigation Integration Tests", () => {
       const user = userEvent.setup();
       await user.click(backButton);
 
-      expect(mockNavigate).toHaveBeenCalledWith("/rooms-vip3");
+      expect(mockNavigate).toHaveBeenCalledWith("/rooms-level3");
     });
 
     it("should navigate to /sexuality-culture when back is clicked from sub-room", async () => {
-      __mockRoomId = "sexuality-curiosity-vip3-sub1";
+      __mockRoomId = "sexuality-curiosity-level3-sub1";
 
       const chatHubPath: string = "@/pages/ChatHub";
       const ChatHub = await importMaybeDefault(chatHubPath);
@@ -296,10 +296,10 @@ describe("Navigation Integration Tests", () => {
   describe("Cross-Tier Navigation", () => {
     it("should navigate correctly across different tiers", async () => {
       const testCases = [
-        { roomId: "confidence-free", expectedRoute: "/rooms" },
-        { roomId: "confidence-vip1", expectedRoute: "/rooms-vip1" },
-        { roomId: "confidence-vip2", expectedRoute: "/rooms-vip2" },
-        { roomId: "confidence-vip3", expectedRoute: "/rooms-vip3" },
+        { roomId: "confidence-level0", expectedRoute: "/rooms" },
+        { roomId: "confidence-level1", expectedRoute: "/rooms-level1" },
+        { roomId: "confidence-level2", expectedRoute: "/rooms-level2" },
+        { roomId: "confidence-level3", expectedRoute: "/rooms-level3" },
       ];
 
       for (const { roomId, expectedRoute } of testCases) {
@@ -309,10 +309,10 @@ describe("Navigation Integration Tests", () => {
 
     it("should handle all ADHD support rooms correctly", async () => {
       const adhdRooms = [
-        { id: "adhd-support-free", parent: "/rooms" },
-        { id: "adhd-support-vip1", parent: "/rooms-vip1" },
-        { id: "adhd-support-vip2", parent: "/rooms-vip2" },
-        { id: "adhd-support-vip3", parent: "/rooms-vip3" },
+        { id: "adhd-support-level0", parent: "/rooms" },
+        { id: "adhd-support-level1", parent: "/rooms-level1" },
+        { id: "adhd-support-level2", parent: "/rooms-level2" },
+        { id: "adhd-support-level3", parent: "/rooms-level3" },
       ];
 
       for (const { id, parent } of adhdRooms) {
@@ -343,20 +343,20 @@ describe("Navigation Integration Tests", () => {
   describe("Room Type Coverage", () => {
     it("should cover all major room categories", async () => {
       const categories = [
-        { id: "adhd-support-vip3", parent: "/rooms-vip3" },
-        { id: "anxiety-relief-vip2", parent: "/rooms-vip2" },
-        { id: "depression-support-vip1", parent: "/rooms-vip1" },
-        { id: "mental-health-free", parent: "/rooms" },
-        { id: "nutrition-vip3", parent: "/rooms-vip3" },
-        { id: "trigger-point-release-vip1", parent: "/rooms-vip1" },
-        { id: "sleep-improvement-vip1", parent: "/rooms-vip1" },
-        { id: "confidence-vip3", parent: "/rooms-vip3" },
-        { id: "mindfulness-vip2", parent: "/rooms-vip2" },
-        { id: "shadow-work-vip1", parent: "/rooms-vip1" },
-        { id: "god-with-us-vip3", parent: "/rooms-vip3" },
-        { id: "meaning-of-life-vip2", parent: "/rooms-vip2" },
-        { id: "ai-vip3", parent: "/rooms-vip3" },
-        { id: "philosophy-of-everyday-vip2", parent: "/rooms-vip2" },
+        { id: "adhd-support-level3", parent: "/rooms-level3" },
+        { id: "anxiety-relief-level2", parent: "/rooms-level2" },
+        { id: "depression-support-level1", parent: "/rooms-level1" },
+        { id: "mental-health-level0", parent: "/rooms" },
+        { id: "nutrition-level3", parent: "/rooms-level3" },
+        { id: "trigger-point-release-level1", parent: "/rooms-level1" },
+        { id: "sleep-improvement-level1", parent: "/rooms-level1" },
+        { id: "confidence-level3", parent: "/rooms-level3" },
+        { id: "mindfulness-level2", parent: "/rooms-level2" },
+        { id: "shadow-work-level1", parent: "/rooms-level1" },
+        { id: "god-with-us-level3", parent: "/rooms-level3" },
+        { id: "meaning-of-life-level2", parent: "/rooms-level2" },
+        { id: "ai-level3", parent: "/rooms-level3" },
+        { id: "philosophy-of-everyday-level2", parent: "/rooms-level2" },
       ];
 
       for (const { id, parent } of categories) {
@@ -384,7 +384,7 @@ describe("Navigation Integration Tests", () => {
 
     it("should verify all 6 sexuality sub-rooms route correctly", async () => {
       for (let i = 1; i <= 6; i++) {
-        const roomId = `sexuality-curiosity-vip3-sub${i}`;
+        const roomId = `sexuality-curiosity-level3-sub${i}`;
         expect(await getParentRouteSafe(roomId)).toBe("/sexuality-culture");
       }
     });
@@ -392,19 +392,19 @@ describe("Navigation Integration Tests", () => {
 
   describe("Navigation Consistency", () => {
     it("should ensure navigation is bidirectional and consistent", async () => {
-      const parentRoom = "sexuality-and-curiosity-and-culture-vip3";
-      const subRoom1 = "sexuality-curiosity-vip3-sub1";
+      const parentRoom = "sexuality-and-curiosity-and-culture-level3";
+      const subRoom1 = "sexuality-curiosity-level3-sub1";
 
-      expect(await getParentRouteSafe(parentRoom)).toBe("/rooms-vip3");
+      expect(await getParentRouteSafe(parentRoom)).toBe("/rooms-level3");
       expect(await getParentRouteSafe(subRoom1)).toBe("/sexuality-culture");
     });
 
     it("should verify no circular navigation patterns", async () => {
       const testRooms = [
-        "adhd-support-vip3",
-        "sexuality-curiosity-vip3-sub1",
-        "strategy-in-life-1-vip3",
-        "confidence-free",
+        "adhd-support-level3",
+        "sexuality-curiosity-level3-sub1",
+        "strategy-in-life-1-level3",
+        "confidence-level0",
       ];
 
       for (const roomId of testRooms) {

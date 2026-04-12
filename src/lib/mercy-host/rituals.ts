@@ -20,7 +20,7 @@ export type RitualType =
 export interface RitualSpec {
   id: string;
   type: RitualType;
-  tierRange: [number, number]; // [minTier, maxTier] where 0=free, 1=vip1, etc.
+  tierRange: [number, number]; // [minTier, maxTier] where 0=level0, 1=level1, etc.
   minEntries?: number;
   emotionBias?: EmotionState;
   animation: MercyAnimationType;
@@ -83,7 +83,7 @@ const ENTRY_RITUALS: RitualSpec[] = [
 
 // Room completion rituals per tier group
 const ROOM_COMPLETE_RITUALS: RitualSpec[] = [
-  // Free tier
+  // Level 0 tier
   {
     id: 'room_complete_free',
     type: 'room_complete',
@@ -95,7 +95,7 @@ const ROOM_COMPLETE_RITUALS: RitualSpec[] = [
     textVi: "Phòng hoàn thành. Bạn đã có mặt. Điều đó quan trọng.",
     priority: 80
   },
-  // VIP 1-3
+  // Level 1-3
   {
     id: 'room_complete_vip1_3',
     type: 'room_complete',
@@ -107,7 +107,7 @@ const ROOM_COMPLETE_RITUALS: RitualSpec[] = [
     textVi: "Thêm một phòng chinh phục. Nền tảng của bạn vững chắc hơn.",
     priority: 80
   },
-  // VIP 4-6
+  // Level 4-6
   {
     id: 'room_complete_vip4_6',
     type: 'room_complete',
@@ -119,7 +119,7 @@ const ROOM_COMPLETE_RITUALS: RitualSpec[] = [
     textVi: "Sự thành thạo đang chuyển động. Phòng này giờ là một phần của bạn.",
     priority: 80
   },
-  // VIP 7-9
+  // Level 7-9
   {
     id: 'room_complete_vip7_9',
     type: 'room_complete',
@@ -203,7 +203,7 @@ const CRISIS_ROOM_RITUAL: RitualSpec = {
  * Convert tier string to number for comparison
  */
 function tierToNumber(tier: string): number {
-  if (tier === 'free') return 0;
+  if (tier === 'level0') return 0;
   const match = tier.match(/vip(\d+)/i);
   return match ? parseInt(match[1], 10) : 0;
 }

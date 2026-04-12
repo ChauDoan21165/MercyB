@@ -15,10 +15,10 @@ CREATE TABLE public.subscription_tiers (
 
 -- Insert the 4 tiers from your UI
 INSERT INTO public.subscription_tiers (name, name_vi, price_monthly, room_access_per_day, custom_topics_allowed, priority_support, display_order) VALUES
-  ('Free', 'Miễn phí', 0.00, 10, 0, false, 1),
-  ('VIP1', 'VIP1', 2.00, 1, 1, false, 2),
-  ('VIP2', 'VIP2', 4.00, 2, 2, false, 3),
-  ('VIP3', 'VIP3', 6.00, 3, 3, true, 4);
+  ('Level 0', 'Miễn phí', 0.00, 10, 0, false, 1),
+  ('Level 1', 'Level 1', 2.00, 1, 1, false, 2),
+  ('Level 2', 'Level 2', 4.00, 2, 2, false, 3),
+  ('Level 3', 'Level 3', 6.00, 3, 3, true, 4);
 
 -- Create user subscriptions table
 CREATE TABLE public.user_subscriptions (

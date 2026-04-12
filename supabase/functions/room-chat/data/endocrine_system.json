@@ -305,7 +305,7 @@
       "en": ["stop smoking", "quit tobacco", "smoking cessation"],
       "vi": ["bỏ hút", "cai thuốc lá", "ngừng hút"],
       "synonyms": {
-        "en": ["end smoking", "tobacco free", "quit habit"],
+        "en": ["end smoking", "tobacco level0", "quit habit"],
         "vi": ["kết thúc hút", "không thuốc", "cai thói"]
       }
     }

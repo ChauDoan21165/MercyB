@@ -9,14 +9,14 @@ import { useAllRooms } from "@/hooks/useRooms";
 
 // Tier badge colors
 const TIER_COLORS: Record<string, string> = {
-  free: "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400",
-  vip1: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400",
-  vip2: "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400",
-  vip3: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
-  vip4: "bg-pink-100 text-pink-700 dark:bg-pink-900/30 dark:text-pink-400",
-  vip5: "bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400",
-  vip6: "bg-rose-100 text-rose-700 dark:bg-rose-900/30 dark:text-rose-400",
-  vip9: "bg-slate-100 text-slate-700 dark:bg-slate-900/30 dark:text-slate-400",
+  level0: "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400",
+  level1: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400",
+  level2: "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400",
+  level3: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
+  level4: "bg-pink-100 text-pink-700 dark:bg-pink-900/30 dark:text-pink-400",
+  level5: "bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400",
+  level6: "bg-rose-100 text-rose-700 dark:bg-rose-900/30 dark:text-rose-400",
+  level9: "bg-slate-100 text-slate-700 dark:bg-slate-900/30 dark:text-slate-400",
   kids_1: "bg-cyan-100 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-400",
   kids_2: "bg-cyan-100 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-400",
   kids_3: "bg-cyan-100 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-400",
@@ -134,7 +134,7 @@ export const RoomSearch = () => {
               results.map((room) => {
                 // Safe access if RoomSearchResult shape changes late-stage
                 const domain = (room as any)?.domain ?? "other";
-                const tier = (room as any)?.tier ?? "free";
+                const tier = (room as any)?.tier ?? "level0";
 
                 return (
                   <button
@@ -157,7 +157,7 @@ export const RoomSearch = () => {
                           {String(domain)}
                         </span>
 
-                        <span className={cn("px-2 py-0.5 text-xs rounded-full", TIER_COLORS[tier] || TIER_COLORS.free)}>
+                        <span className={cn("px-2 py-0.5 text-xs rounded-full", TIER_COLORS[tier] || TIER_COLORS.level0)}>
                           {String(tier).toUpperCase().replace("_", " ")}
                         </span>
                       </div>

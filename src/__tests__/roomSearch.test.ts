@@ -72,15 +72,15 @@ describe("roomRegistry (real generated roomDataMap)", () => {
   });
 
   it("should get rooms by tier and only return that tier", () => {
-    const freeRooms = getRoomsByTier("free");
+    const freeRooms = getRoomsByTier("level0");
     expect(Array.isArray(freeRooms)).toBe(true);
     expect(freeRooms.length).toBeGreaterThan(0);
-    expect(freeRooms.every((r) => r.tier === "free")).toBe(true);
+    expect(freeRooms.every((r) => r.tier === "level0")).toBe(true);
 
-    const vip3Rooms = getRoomsByTier("vip3");
+    const vip3Rooms = getRoomsByTier("level3");
     // vip tiers might exist or not depending on build, so only assert if present
     if (vip3Rooms.length > 0) {
-      expect(vip3Rooms.every((r) => r.tier === "vip3")).toBe(true);
+      expect(vip3Rooms.every((r) => r.tier === "level3")).toBe(true);
     }
   });
 });
@@ -137,7 +137,7 @@ describe("searchRooms (real dataset)", () => {
     expectRoomExists(KNOWN_IDS.adhdFree);
     expectRoomExists(KNOWN_IDS.adhdVip3);
 
-    const results = searchRooms("ADHD", { tier: "vip3" });
+    const results = searchRooms("ADHD", { tier: "level3" });
     const ids = new Set(results.map((r) => r.id));
 
     // Do NOT assert exact ordering; just ensure relevant rooms can appear.

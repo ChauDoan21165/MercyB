@@ -70,7 +70,7 @@ export default function AdminUsersKpiGrid({ kpis, formatMoney }: Props) {
     <div style={kpiGrid}>
       <KpiCard label="Production active" value={kpis.productionActiveCount} help="Real active paid production subscriptions." />
       <KpiCard label="Production trialing" value={kpis.productionTrialCount} help="Trials not yet converted." />
-      <KpiCard label="Free users" value={kpis.freeUsersCount} help="Profiles without an active production subscription." />
+      <KpiCard label="Level 0 users" value={kpis.freeUsersCount} help="Profiles without an active production subscription." />
       <KpiCard label="Monthly" value={kpis.monthlyCount} help="Production active subscriptions billed monthly." />
       <KpiCard label="Yearly" value={kpis.yearlyCount} help="Production active subscriptions billed yearly." />
       <KpiCard label="Canceling soon" value={kpis.cancelingSoonCount} help="Active production users with cancel_at_period_end." />

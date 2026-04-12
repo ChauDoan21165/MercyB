@@ -84,14 +84,14 @@ serve(async (req) => {
         const { data } = await admin.from("profiles").select("id,email").in("id", vipIds);
         recipients = (data || []).filter((r: any) => !!r.email);
       }
-    } else if (campaign.audience_type === "free") {
+    } else if (campaign.audience_type === "level0") {
       const { data: paidUsers } = await admin
         .from("user_subscriptions")
         .select("user_id")
         .eq("status", "active");
       const paidIds = (paidUsers || []).map((u: any) => u.user_id);
 
-      // If none paid → everyone is free
+      // If none paid → everyone is level0
       if (paidIds.length === 0) {
         const { data } = await admin.from("profiles").select("id,email");
         recipients = (data || []).filter((r: any) => !!r.email);

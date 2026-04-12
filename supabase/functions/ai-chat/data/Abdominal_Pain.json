@@ -1,8 +1,8 @@
 {
-"tier": "Free / Miễn phí",
+"tier": "Level 0 / Miễn phí",
 "default_entry_id": "monitoring_abdominal_pain",
 "welcome": {
-"en": "Hello! Welcome to the Abdominal Pain Free room. How can I help you today?\n\nTopic keywords you can type are below:\n- monitoring_abdominal_pain\n- relieving_abdominal_pain\n- hydration_during_pain\n- abdominal_pain_children\n- abdominal_pain_adults\n- abdominal_pain_elderly",
+"en": "Hello! Welcome to the Abdominal Pain Level 0 room. How can I help you today?\n\nTopic keywords you can type are below:\n- monitoring_abdominal_pain\n- relieving_abdominal_pain\n- hydration_during_pain\n- abdominal_pain_children\n- abdominal_pain_adults\n- abdominal_pain_elderly",
 "vi": "Xin chào! Chào mừng bạn đến với phòng Đau Bụng (Miễn phí). Tôi có thể giúp gì cho bạn hôm nay?\n\nCác từ khóa bạn có thể nhập là:\n- theo_doi_dau_bung\n- giam_dau_bung\n- bo_sung_nuoc_khi_dau\n- dau_bung_tre_em\n- dau_bung_nguoi_lon\n- dau_bung_nguoi_cao_tuoi"
 },
 "search": {

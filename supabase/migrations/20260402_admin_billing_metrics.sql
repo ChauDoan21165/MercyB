@@ -44,9 +44,9 @@ from public.subscriptions s
 left join public.subscription_tiers st
   on lower(st.name) = lower(
     case
-      when s.provider_price_id ilike '%vip1%' then 'VIP1'
-      when s.provider_price_id ilike '%vip3%' then 'VIP3'
-      when s.provider_price_id ilike '%vip9%' then 'VIP9'
+      when s.provider_price_id ilike '%level1%' then 'Level 1'
+      when s.provider_price_id ilike '%level3%' then 'Level 3'
+      when s.provider_price_id ilike '%level9%' then 'Level 9'
       else s.product_id
     end
   )

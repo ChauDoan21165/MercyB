@@ -32,7 +32,7 @@ export default function UniversalRoomChrome({
 }: {
   titleEN: string;
   titleVI?: string;
-  tierLabel: string; // "Free" | "VIP1"...
+  tierLabel: string; // "Level 0" | "Level 1"...
   keywords: KeywordPair[]; // 2–8 (you can pass more, we’ll render first 8)
   activeKeywordIndex: number | null;
   onSelectKeyword: (index: number) => void;

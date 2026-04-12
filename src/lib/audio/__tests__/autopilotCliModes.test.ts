@@ -63,8 +63,8 @@ describe('Autopilot CLI modes (Phase 4.7)', () => {
   });
 
   it('parses --rooms filter', () => {
-    const opts = parseAutopilotCliOptions(['--rooms', 'vip1']);
-    expect(opts.roomFilter).toBe('vip1');
+    const opts = parseAutopilotCliOptions(['--rooms', 'level1']);
+    expect(opts.roomFilter).toBe('level1');
   });
 
   it('parses --max-rooms limit', () => {
@@ -117,7 +117,7 @@ describe('Autopilot CLI modes (Phase 4.7)', () => {
     const opts = parseAutopilotCliOptions([
       '--apply',
       '--deep',
-      '--rooms', 'vip2',
+      '--rooms', 'level2',
       '--governance-mode', 'assisted',
       '--cycle-label', 'hotfix-123',
       '--with-tts',
@@ -126,7 +126,7 @@ describe('Autopilot CLI modes (Phase 4.7)', () => {
 
     expect(opts.mode).toBe('apply');
     expect(opts.cycleMode).toBe('deep');
-    expect(opts.roomFilter).toBe('vip2');
+    expect(opts.roomFilter).toBe('level2');
     expect(opts.governanceMode).toBe('assisted');
     expect(opts.cycleLabel).toBe('hotfix-123');
     expect(opts.withTTS).toBe(true);

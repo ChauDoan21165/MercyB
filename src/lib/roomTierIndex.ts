@@ -28,16 +28,16 @@
 import { loadRoomsForTiers, type TierRoom } from "@/lib/tierRoomSource";
 
 export const ALL_TIER_KEYS = [
-  "free",
-  "vip1",
-  "vip2",
-  "vip3",
-  "vip4",
-  "vip5",
-  "vip6",
-  "vip7",
-  "vip8",
-  "vip9",
+  "level0",
+  "level1",
+  "level2",
+  "level3",
+  "level4",
+  "level5",
+  "level6",
+  "level7",
+  "level8",
+  "level9",
   "unknown",
 ] as const;
 
@@ -61,8 +61,8 @@ function normalizeIdLike(v: string): string {
 
 /**
  * Infers tier from a room id / filename:
- * - ..._vip9... => vip9
- * - ..._free... => free
+ * - ..._vip9... => level9
+ * - ..._free... => level0
  * Returns null if not found.
  */
 export function inferTierFromRoomId(roomIdOrFilename: string): TierKey | null {
@@ -71,8 +71,8 @@ export function inferTierFromRoomId(roomIdOrFilename: string): TierKey | null {
   const mVip = t.match(/(^|_)vip([1-9])(_|$)/);
   if (mVip) return `vip${Number(mVip[2])}` as TierKey;
 
-  const mFree = t.match(/(^|_)free(_|$)/);
-  if (mFree) return "free";
+  const mFree = t.match(/(^|_)level0(_|$)/);
+  if (mFree) return "level0";
 
   return null;
 }
@@ -83,16 +83,16 @@ function isTierKey(value: string): value is TierKey {
 
 function emptyIndex(): RoomTierIndex {
   return {
-    free: [],
-    vip1: [],
-    vip2: [],
-    vip3: [],
-    vip4: [],
-    vip5: [],
-    vip6: [],
-    vip7: [],
-    vip8: [],
-    vip9: [],
+    level0: [],
+    level1: [],
+    level2: [],
+    level3: [],
+    level4: [],
+    level5: [],
+    level6: [],
+    level7: [],
+    level8: [],
+    level9: [],
     unknown: [],
   };
 }

@@ -20,7 +20,7 @@ export const UnauthenticatedBanner = () => {
             Sign Up to Start Your Journey
           </h3>
           <p className="text-sm text-muted-foreground">
-            You're viewing this room as a guest. Create a free account to interact with the content, 
+            You're viewing this room as a guest. Create a level0 account to interact with the content, 
             track your progress, and unlock personalized features.
           </p>
           <p className="text-sm text-muted-foreground italic">
@@ -36,7 +36,7 @@ export const UnauthenticatedBanner = () => {
             className="gap-2 shadow-lg hover:shadow-xl transition-all"
           >
             <UserPlus className="w-5 h-5" />
-            Sign Up Free
+            Sign Up Level 0
           </Button>
         </div>
       </div>

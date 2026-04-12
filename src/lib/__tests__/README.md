@@ -38,18 +38,18 @@ The test suite covers:
 
 #### 3. **Sexuality Sub-Rooms** (6 rooms)
 - All sub-rooms route to `/sexuality-culture`
-- Parent room routes to `/rooms-vip3`
+- Parent room routes to `/rooms-level3`
 
-#### 4. **Special VIP3 Rooms**
+#### 4. **Special Level 3 Rooms**
 - Strategy in Life series (3 rooms)
 - Finance Glory
 - Sexuality parent room
 
 #### 5. **Standard Tier-Based Rooms**
-- Free tier → `/rooms`
-- VIP1 tier → `/rooms-vip1`
-- VIP2 tier → `/rooms-vip2`
-- VIP3 tier → `/rooms-vip3`
+- Level 0 tier → `/rooms`
+- Level 1 tier → `/rooms-level1`
+- Level 2 tier → `/rooms-level2`
+- Level 3 tier → `/rooms-level3`
 
 #### 6. **All Room Categories**
 - ADHD Support (all tiers)
@@ -74,7 +74,7 @@ The test suite covers:
       ✓ Edge Cases (4)
       ✓ Sexuality Sub-Rooms (2)
       ✓ Strategy in Life Series (1)
-      ✓ Special VIP3 Rooms (1)
+      ✓ Special Level 3 Rooms (1)
       ✓ Standard Tier-Based Rooms (4)
       ✓ All Room Categories (4)
       ✓ Type Safety (2)

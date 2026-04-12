@@ -75,7 +75,7 @@ export function validateTierScripts(): ValidationResult {
   const errors: string[] = [];
   const warnings: string[] = [];
 
-  const allTiers = ['free', 'vip1', 'vip2', 'vip3', 'vip4', 'vip5', 'vip6', 'vip7', 'vip8', 'vip9'];
+  const allTiers = ['level0', 'level1', 'level2', 'level3', 'level4', 'level5', 'level6', 'level7', 'level8', 'level9'];
 
   allTiers.forEach(tier => {
     const script = getTierScript(tier);

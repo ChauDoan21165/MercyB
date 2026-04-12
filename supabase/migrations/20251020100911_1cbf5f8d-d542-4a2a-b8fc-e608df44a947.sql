@@ -1,7 +1,7 @@
 -- 20251020100911_1cbf5f8d-d542-4a2a-b8fc-e608df44a947.sql
 -- Make this migration idempotent so it can run even if objects already exist.
 
--- Create table for VIP1 room requests
+-- Create table for Level 1 room requests
 CREATE TABLE IF NOT EXISTS public.vip_room_requests (
   id UUID NOT NULL DEFAULT gen_random_uuid() PRIMARY KEY,
   user_id UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
@@ -37,8 +37,8 @@ ALTER TABLE public.room_usage_analytics ENABLE ROW LEVEL SECURITY;
 -- ---------------------------------------------------------------------
 -- RLS Policies for vip_room_requests (drop first to make idempotent)
 -- ---------------------------------------------------------------------
-DROP POLICY IF EXISTS "VIP1 users can create their own requests" ON public.vip_room_requests;
-CREATE POLICY "VIP1 users can create their own requests"
+DROP POLICY IF EXISTS "Level 1 users can create their own requests" ON public.vip_room_requests;
+CREATE POLICY "Level 1 users can create their own requests"
 ON public.vip_room_requests
 FOR INSERT
 TO authenticated

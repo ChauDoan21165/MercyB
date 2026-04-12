@@ -27,7 +27,7 @@ export function MercyHostGreeting({ mercy, className }: MercyHostGreetingProps) 
     }, 200);
   };
   
-  const isVip = ['vip3', 'vip4', 'vip5', 'vip6', 'vip7', 'vip8', 'vip9'].includes(mercy.tier);
+  const isVip = ['level3', 'level4', 'level5', 'level6', 'level7', 'level8', 'level9'].includes(mercy.tier);
   
   // Floating reopen button when greeting is hidden
   if (!mercy.isGreetingVisible) {

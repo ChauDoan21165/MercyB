@@ -128,22 +128,22 @@ function textHasAny(text: string, values: string[]): boolean {
 
 function isExplicitLegacyVipTier(value: string): value is TierId {
   return (
-    value === "vip1" ||
-    value === "vip2" ||
-    value === "vip3" ||
-    value === "vip4" ||
-    value === "vip5" ||
-    value === "vip6" ||
-    value === "vip7" ||
-    value === "vip8" ||
-    value === "vip9"
+    value === "level1" ||
+    value === "level2" ||
+    value === "level3" ||
+    value === "level4" ||
+    value === "level5" ||
+    value === "level6" ||
+    value === "level7" ||
+    value === "level8" ||
+    value === "level9"
   );
 }
 
 /**
  * Current test-expected compatibility mapping:
- * - month / monthly / generic premium => vip1
- * - year / annual / yearly => vip9
+ * - month / monthly / generic premium => level1
+ * - year / annual / yearly => level9
  */
 function resolveCompatibilityTierFromText(text: string): TierId | null {
   if (
@@ -158,7 +158,7 @@ function resolveCompatibilityTierFromText(text: string): TierId | null {
       "1year",
     ])
   ) {
-    return "vip9";
+    return "level9";
   }
 
   if (
@@ -169,11 +169,11 @@ function resolveCompatibilityTierFromText(text: string): TierId | null {
       "1month",
     ])
   ) {
-    return "vip1";
+    return "level1";
   }
 
   if (text.includes("premium")) {
-    return "vip1";
+    return "level1";
   }
 
   return null;
@@ -182,54 +182,54 @@ function resolveCompatibilityTierFromText(text: string): TierId | null {
 export function resolveEntitlementTier(
   ent: BackendEntitlement | null | undefined,
 ): TierId {
-  if (!entitlementIsPremium(ent)) return "free";
+  if (!entitlementIsPremium(ent)) return "level0";
 
   const exactTier = String(ent?.tier_id ?? "").trim().toLowerCase();
   const text = entitlementText(ent);
 
   // Current compatibility policy expected by tests:
-  // month-style premium -> vip1, yearly/annual -> vip9
-  if (exactTier === "premium_year") return "vip9";
-  if (exactTier === "premium_month") return "vip1";
+  // month-style premium -> level1, yearly/annual -> level9
+  if (exactTier === "premium_year") return "level9";
+  if (exactTier === "premium_month") return "level1";
 
   // Preserve true legacy VIP tiers exactly if the backend still sends them.
   if (isExplicitLegacyVipTier(exactTier)) return exactTier;
 
   // Legacy VIP detection from other entitlement text.
-  if (text.includes("vip9")) return "vip9";
-  if (text.includes("vip8")) return "vip8";
-  if (text.includes("vip7")) return "vip7";
-  if (text.includes("vip6")) return "vip6";
-  if (text.includes("vip5")) return "vip5";
-  if (text.includes("vip4")) return "vip4";
-  if (text.includes("vip3")) return "vip3";
-  if (text.includes("vip2")) return "vip2";
-  if (text.includes("vip1")) return "vip1";
+  if (text.includes("level9")) return "level9";
+  if (text.includes("level8")) return "level8";
+  if (text.includes("level7")) return "level7";
+  if (text.includes("level6")) return "level6";
+  if (text.includes("level5")) return "level5";
+  if (text.includes("level4")) return "level4";
+  if (text.includes("level3")) return "level3";
+  if (text.includes("level2")) return "level2";
+  if (text.includes("level1")) return "level1";
 
   const inferredTier = resolveCompatibilityTierFromText(text);
   if (inferredTier) return inferredTier;
 
   // Paid but otherwise unknown premium-like plan:
-  // current tests expect the safe fallback to vip1.
-  return "vip1";
+  // current tests expect the safe fallback to level1.
+  return "level1";
 }
 
 /**
  * Compatibility shim for older code still expecting VipKey.
  *
  * Policy expected by current tests:
- * - free stays free
- * - vip1 stays vip1
- * - vip2+ collapse to vip3 compatibility
+ * - level0 stays level0
+ * - level1 stays level1
+ * - level2+ collapse to level3 compatibility
  */
 export function entitlementToVipKey(
   ent: BackendEntitlement | null | undefined,
 ): VipKey {
   const tier = resolveEntitlementTier(ent);
 
-  if (tier === "free") return "free";
-  if (tier === "vip1") return "vip1";
-  return "vip3";
+  if (tier === "level0") return "level0";
+  if (tier === "level1") return "level1";
+  return "level3";
 }
 
 export async function fetchCurrentEntitlement(

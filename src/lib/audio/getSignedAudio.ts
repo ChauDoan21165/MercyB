@@ -5,7 +5,7 @@ export async function getSignedAudio(path: string) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       bucket: "audio-private",
-      path, // e.g. "vip3/test_private.mp3"
+      path, // e.g. "level3/test_private.mp3"
     }),
   });
 

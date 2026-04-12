@@ -21,7 +21,7 @@ USING (
   )
 );
 
--- Allow VIP3 users to view other VIP3 profiles for matchmaking
+-- Allow Level 3 users to view other Level 3 profiles for matchmaking
 CREATE POLICY "vip3_mutual_visibility"
 ON profiles FOR SELECT
 TO authenticated
@@ -30,7 +30,7 @@ USING (
     SELECT 1 FROM user_subscriptions us
     JOIN subscription_tiers st ON us.tier_id = st.id
     WHERE us.user_id = auth.uid()
-    AND st.name = 'VIP3'
+    AND st.name = 'Level 3'
     AND us.status = 'active'
   ) 
   AND 
@@ -38,7 +38,7 @@ USING (
     SELECT 1 FROM user_subscriptions us2
     JOIN subscription_tiers st2 ON us2.tier_id = st2.id
     WHERE us2.user_id = profiles.id
-    AND st2.name = 'VIP3'
+    AND st2.name = 'Level 3'
     AND us2.status = 'active'
   )
 );

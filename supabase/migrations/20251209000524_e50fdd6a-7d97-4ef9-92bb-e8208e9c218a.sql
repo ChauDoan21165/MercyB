@@ -1,7 +1,7 @@
 -- Create user_tiers table for simple tier tracking
 CREATE TABLE public.user_tiers (
   user_id UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
-  tier TEXT NOT NULL DEFAULT 'free',
+  tier TEXT NOT NULL DEFAULT 'level0',
   updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now()
 );
 

@@ -3,14 +3,14 @@ import { normalizeTier, type TierId } from './constants/tiers';
 import { getTierPath, getTierLabel } from './constants/tierMapConfig';
 
 export const TIER_ROUTES: Record<TierId | string, { path: string; name: string; nameVi: string }> = {
-  'free': { path: '/rooms', name: 'Free Tier', nameVi: 'Miễn Phí' },
-  'vip1': { path: '/vip/vip1', name: 'VIP1', nameVi: 'VIP1' },
-  'vip2': { path: '/vip/vip2', name: 'VIP2', nameVi: 'VIP2' },
-  'vip3': { path: '/vip/vip3', name: 'VIP3', nameVi: 'VIP3' },
-  'vip4': { path: '/vip/vip4', name: 'VIP4 CareerZ', nameVi: 'VIP4 CareerZ' },
-  'vip5': { path: '/vip/vip5', name: 'VIP5 Writing', nameVi: 'VIP5 Viết' },
-  'vip6': { path: '/vip/vip6', name: 'VIP6 Psychology', nameVi: 'VIP6 Tâm Lý' },
-  'vip9': { path: '/vip/vip9', name: 'VIP9 Strategic Mastery', nameVi: 'VIP9 Chiến Lược' },
+  'level0': { path: '/rooms', name: 'Level 0 Tier', nameVi: 'Miễn Phí' },
+  'level1': { path: '/vip/level1', name: 'Level 1', nameVi: 'Level 1' },
+  'level2': { path: '/vip/level2', name: 'Level 2', nameVi: 'Level 2' },
+  'level3': { path: '/vip/level3', name: 'Level 3', nameVi: 'Level 3' },
+  'level4': { path: '/vip/level4', name: 'Level 4 CareerZ', nameVi: 'Level 4 CareerZ' },
+  'level5': { path: '/vip/level5', name: 'Level 5 Writing', nameVi: 'Level 5 Viết' },
+  'level6': { path: '/vip/level6', name: 'Level 6 Psychology', nameVi: 'Level 6 Tâm Lý' },
+  'level9': { path: '/vip/level9', name: 'Level 9 Strategic Mastery', nameVi: 'Level 9 Chiến Lược' },
   'kids_1': { path: '/kids-level1', name: 'Kids Level 1', nameVi: 'Trẻ Em Cấp 1' },
   'kids_2': { path: '/kids-level2', name: 'Kids Level 2', nameVi: 'Trẻ Em Cấp 2' },
   'kids_3': { path: '/kids-level3', name: 'Kids Level 3', nameVi: 'Trẻ Em Cấp 3' },

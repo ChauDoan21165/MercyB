@@ -195,7 +195,7 @@ export const downgradeUserTier = async (userId: string) => {
   const { data: freeTier, error: tierErr } = await supabase
     .from("subscription_tiers")
     .select("id")
-    .eq("name", "Free")
+    .eq("name", "Level 0")
     .limit(1)
     .maybeSingle();
 
@@ -204,7 +204,7 @@ export const downgradeUserTier = async (userId: string) => {
     throw tierErr;
   }
 
-  if (!freeTier) throw new Error("Free tier not found");
+  if (!freeTier) throw new Error("Level 0 tier not found");
 
   const { error } = await supabase
     .from("user_subscriptions")

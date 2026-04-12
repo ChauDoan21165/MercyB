@@ -596,7 +596,7 @@ function isUglyHeading(h: string) {
   const s = String(h || "").trim();
   if (!s) return true;
   const looksSlug = /^[a-z0-9_-]+$/.test(s) && (s.includes("-") || s.includes("_"));
-  const tooIdLike = /_(vip[1-9]|free)\b/i.test(s);
+  const tooIdLike = /_(vip[1-9]|level0)\b/i.test(s);
   return looksSlug || tooIdLike;
 }
 

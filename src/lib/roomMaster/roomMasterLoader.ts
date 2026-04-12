@@ -4,7 +4,7 @@
 //
 // FIX:
 // - tierLabelToId is now a record, not a callable function
-// - keep strict: never default unknown → free
+// - keep strict: never default unknown → level0
 // - keep backward-compat named export roomMasterLoader
 
 import type { TierId } from "@/lib/constants/tiers";
@@ -23,12 +23,12 @@ function inferTierFromRoomId(roomId: string): TierId | undefined {
   if (s.includes("kids_2") || s.includes("_kids_2")) return "kids_2";
   if (s.includes("kids_3") || s.includes("_kids_3")) return "kids_3";
 
-  if (s.includes("vip3") || s.includes("_vip3")) return "vip3";
+  if (s.includes("level3") || s.includes("_vip3")) return "level3";
 
   const m = s.match(/_vip([1-9])\b/);
   if (m?.[1]) return `vip${m[1]}` as TierId;
 
-  if (s.includes("_free")) return "free";
+  if (s.includes("_free")) return "level0";
 
   return undefined;
 }
@@ -51,21 +51,21 @@ function parseTierStrict(room: AnyRoom): TierId | undefined {
     /vip\s*\d/i.test(s) ||
     /vip\d/i.test(s) ||
     /vip\s*3\s*ii/i.test(s) ||
-    /vip3/i.test(s) ||
+    /level3/i.test(s) ||
     /kids/i.test(s) ||
     /trẻ em/i.test(s) ||
     /tre em/i.test(s) ||
-    /mien phi|miễn phí|free/i.test(s);
+    /mien phi|miễn phí|level0/i.test(s);
 
   if (!looksLikeTier) return undefined;
 
-  if (/vip\s*3\s*ii/i.test(s) || /vip3/i.test(s)) return "vip3";
+  if (/vip\s*3\s*ii/i.test(s) || /level3/i.test(s)) return "level3";
 
   const mapped = tierLabelToId[lower] ?? null;
 
-  if (mapped === "free") {
-    const isReallyFree = /mien phi|miễn phí|free/i.test(s);
-    return isReallyFree ? "free" : undefined;
+  if (mapped === "level0") {
+    const isReallyFree = /mien phi|miễn phí|level0/i.test(s);
+    return isReallyFree ? "level0" : undefined;
   }
 
   return mapped ?? undefined;

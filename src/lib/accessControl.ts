@@ -36,20 +36,20 @@ function isPremiumBillingTier(tier: TierId | null | undefined): boolean {
 function tierToLevel(tier: TierId): number {
   const value = normalizeTier(tier);
 
-  if (!value || value === "free") return 0;
+  if (!value || value === "level0") return 0;
 
-  if (value === "vip1") return 1;
-  if (value === "vip2") return 2;
-  if (value === "vip3") return 3;
-  if (value === "vip4") return 4;
-  if (value === "vip5") return 5;
-  if (value === "vip6") return 6;
-  if (value === "vip7") return 7;
-  if (value === "vip8") return 8;
-  if (value === "vip9") return 9;
+  if (value === "level1") return 1;
+  if (value === "level2") return 2;
+  if (value === "level3") return 3;
+  if (value === "level4") return 4;
+  if (value === "level5") return 5;
+  if (value === "level6") return 6;
+  if (value === "level7") return 7;
+  if (value === "level8") return 8;
+  if (value === "level9") return 9;
 
-  // Collapse variants like vip3_ii / VIP3 II to level 3.
-  if (value.includes("vip3")) return 3;
+  // Collapse variants like vip3_ii / Level 3 II to level 3.
+  if (value.includes("level3")) return 3;
 
   if (value === "kids_1") return 1;
   if (value === "kids_2") return 2;
@@ -63,43 +63,43 @@ function tierToLevel(tier: TierId): number {
 }
 
 export const ACCESS_TEST_MATRIX: AccessTestCase[] = [
-  { userTier: "free", roomTier: "free", expected: true },
-  { userTier: "free", roomTier: "vip1", expected: false },
-  { userTier: "free", roomTier: "kids_1", expected: false },
+  { userTier: "level0", roomTier: "level0", expected: true },
+  { userTier: "level0", roomTier: "level1", expected: false },
+  { userTier: "level0", roomTier: "kids_1", expected: false },
 
-  { userTier: "premium_month", roomTier: "vip1", expected: true },
-  { userTier: "premium_month", roomTier: "vip9", expected: true },
+  { userTier: "premium_month", roomTier: "level1", expected: true },
+  { userTier: "premium_month", roomTier: "level9", expected: true },
   { userTier: "premium_month", roomTier: "kids_3", expected: true },
 
-  { userTier: "premium_year", roomTier: "vip4", expected: true },
+  { userTier: "premium_year", roomTier: "level4", expected: true },
   { userTier: "premium_year", roomTier: "kids_2", expected: true },
 
-  { userTier: "vip1", roomTier: "free", expected: true },
-  { userTier: "vip1", roomTier: "vip1", expected: true },
-  { userTier: "vip1", roomTier: "vip2", expected: false },
-  { userTier: "vip1", roomTier: "vip9", expected: false },
+  { userTier: "level1", roomTier: "level0", expected: true },
+  { userTier: "level1", roomTier: "level1", expected: true },
+  { userTier: "level1", roomTier: "level2", expected: false },
+  { userTier: "level1", roomTier: "level9", expected: false },
 
-  { userTier: "vip2", roomTier: "vip1", expected: true },
-  { userTier: "vip2", roomTier: "vip2", expected: true },
-  { userTier: "vip2", roomTier: "vip3", expected: false },
+  { userTier: "level2", roomTier: "level1", expected: true },
+  { userTier: "level2", roomTier: "level2", expected: true },
+  { userTier: "level2", roomTier: "level3", expected: false },
 
-  { userTier: "vip3", roomTier: "vip1", expected: true },
-  { userTier: "vip3", roomTier: "vip3", expected: true },
-  { userTier: "vip3", roomTier: "vip4", expected: false },
+  { userTier: "level3", roomTier: "level1", expected: true },
+  { userTier: "level3", roomTier: "level3", expected: true },
+  { userTier: "level3", roomTier: "level4", expected: false },
 
-  { userTier: "vip6", roomTier: "vip5", expected: true },
-  { userTier: "vip6", roomTier: "vip9", expected: false },
+  { userTier: "level6", roomTier: "level5", expected: true },
+  { userTier: "level6", roomTier: "level9", expected: false },
 
-  { userTier: "vip9", roomTier: "free", expected: true },
-  { userTier: "vip9", roomTier: "vip6", expected: true },
-  { userTier: "vip9", roomTier: "vip9", expected: true },
+  { userTier: "level9", roomTier: "level0", expected: true },
+  { userTier: "level9", roomTier: "level6", expected: true },
+  { userTier: "level9", roomTier: "level9", expected: true },
 
   { userTier: "kids_1", roomTier: "kids_1", expected: true },
   { userTier: "kids_1", roomTier: "kids_2", expected: false },
   { userTier: "kids_2", roomTier: "kids_1", expected: true },
-  { userTier: "kids_2", roomTier: "vip1", expected: true },
-  { userTier: "kids_2", roomTier: "vip2", expected: true },
-  { userTier: "kids_2", roomTier: "vip3", expected: false },
+  { userTier: "kids_2", roomTier: "level1", expected: true },
+  { userTier: "kids_2", roomTier: "level2", expected: true },
+  { userTier: "kids_2", roomTier: "level3", expected: false },
   { userTier: "kids_3", roomTier: "kids_2", expected: true },
 ];
 
@@ -107,7 +107,7 @@ export function canAccessVIPTier(
   userTier: TierId,
   requiredTier: TierId,
 ): boolean {
-  if (requiredTier === "free") return true;
+  if (requiredTier === "level0") return true;
 
   const userLevel = tierToLevel(userTier);
   const requiredLevel = tierToLevel(requiredTier);
@@ -126,16 +126,16 @@ export function canUserAccessRoom(
 
 export function getAccessibleTiers(userTier: TierId): TierId[] {
   const allTiers: TierId[] = [
-    "free",
-    "vip1",
-    "vip2",
-    "vip3",
-    "vip4",
-    "vip5",
-    "vip6",
-    "vip7",
-    "vip8",
-    "vip9",
+    "level0",
+    "level1",
+    "level2",
+    "level3",
+    "level4",
+    "level5",
+    "level6",
+    "level7",
+    "level8",
+    "level9",
     "kids_1",
     "kids_2",
     "kids_3",

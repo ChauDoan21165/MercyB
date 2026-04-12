@@ -27,66 +27,66 @@ type TierInfo = {
 };
 
 const tierInfo: Partial<Record<TierId, TierInfo>> = {
-  free: {
-    name: { en: "Free", vi: "Miễn phí" },
+  level0: {
+    name: { en: "Level 0", vi: "Miễn phí" },
     benefits: {
       en: ["10 random entries/day", "Achievement badges", "Learning streaks"],
       vi: ["10 mục ngẫu nhiên/ngày", "Huy hiệu thành tựu", "Chuỗi điểm thưởng"],
     },
     color: "bg-muted",
   },
-  vip1: {
-    name: { en: "VIP1", vi: "VIP1" },
+  level1: {
+    name: { en: "Level 1", vi: "Level 1" },
     benefits: {
       en: ["Request 1 custom topic", "1 full room access/day", "🤖 AI Content"],
       vi: ["Yêu cầu 1 chủ đề tùy chỉnh", "Truy cập 1 phòng/ngày", "🤖 Nội dung AI"],
     },
     color: "bg-gradient-to-br from-yellow-300 via-yellow-500 to-yellow-700",
   },
-  vip2: {
-    name: { en: "VIP2", vi: "VIP2" },
+  level2: {
+    name: { en: "Level 2", vi: "Level 2" },
     benefits: {
       en: ["Request 2 custom topics", "2 full rooms access/day", "🤖 AI Content"],
       vi: ["Yêu cầu 2 chủ đề tùy chỉnh", "Truy cập 2 phòng/ngày", "🤖 Nội dung AI"],
     },
     color: "bg-gradient-to-br from-yellow-400 via-yellow-600 to-yellow-800",
   },
-  vip3: {
-    name: { en: "VIP3", vi: "VIP3" },
+  level3: {
+    name: { en: "Level 3", vi: "Level 3" },
     benefits: {
       en: ["Request 3 custom topics", "3 rooms access/day", "AI Matchmaking", "Voice chat", "🤖 AI Content"],
       vi: ["Yêu cầu 3 chủ đề tùy chỉnh", "Truy cập 3 phòng/ngày", "Ghép đôi AI", "Chat giọng nói", "🤖 Nội dung AI"],
     },
     color: "bg-gradient-to-br from-yellow-500 via-yellow-700 to-yellow-900",
   },
-  vip4: {
-    name: { en: "VIP4 CareerZ", vi: "VIP4 Nghề Nghiệp" },
+  level4: {
+    name: { en: "Level 4 CareerZ", vi: "Level 4 Nghề Nghiệp" },
     benefits: {
-      en: ["All VIP3 benefits", "Career consultance", "Premium support"],
-      vi: ["Tất cả quyền lợi VIP3", "Tư vấn nghề nghiệp", "Hỗ trợ cao cấp"],
+      en: ["All Level 3 benefits", "Career consultance", "Premium support"],
+      vi: ["Tất cả quyền lợi Level 3", "Tư vấn nghề nghiệp", "Hỗ trợ cao cấp"],
     },
     color: "bg-gradient-to-br from-orange-400 via-orange-600 to-orange-800",
   },
-  vip5: {
-    name: { en: "VIP5 Writing", vi: "VIP5 Viết Lách" },
+  level5: {
+    name: { en: "Level 5 Writing", vi: "Level 5 Viết Lách" },
     benefits: {
-      en: ["All VIP4 benefits", "English writing support", "Expert feedback", "IELTS-style comments"],
-      vi: ["Tất cả quyền lợi VIP4", "Hỗ trợ viết tiếng Anh", "Phản hồi chuyên gia", "Nhận xét chuẩn IELTS"],
+      en: ["All Level 4 benefits", "English writing support", "Expert feedback", "IELTS-style comments"],
+      vi: ["Tất cả quyền lợi Level 4", "Hỗ trợ viết tiếng Anh", "Phản hồi chuyên gia", "Nhận xét chuẩn IELTS"],
     },
     color: "bg-gradient-to-br from-emerald-500 via-emerald-700 to-emerald-900",
   },
-  vip6: {
-    name: { en: "VIP6 Psychology", vi: "VIP6 Tâm Lý" },
+  level6: {
+    name: { en: "Level 6 Psychology", vi: "Level 6 Tâm Lý" },
     benefits: {
       en: [
-        "All VIP5 benefits",
+        "All Level 5 benefits",
         "Shadow work & deep psychology",
         "Inner child healing",
         "1 custom deep-content piece/month",
         "Trauma pattern analysis",
       ],
       vi: [
-        "Tất cả quyền lợi VIP5",
+        "Tất cả quyền lợi Level 5",
         "Tâm lý sâu & bóng tối",
         "Chữa lành đứa trẻ bên trong",
         "1 nội dung chuyên sâu tùy chỉnh/tháng",
@@ -98,13 +98,13 @@ const tierInfo: Partial<Record<TierId, TierInfo>> = {
 };
 
 const upgradePaths: Partial<Record<TierId, TierId[]>> = {
-  free: ["vip1", "vip2", "vip3", "vip4", "vip5", "vip6"],
-  vip1: ["vip2", "vip3", "vip4", "vip5", "vip6"],
-  vip2: ["vip3", "vip4", "vip5", "vip6"],
-  vip3: ["vip4", "vip5", "vip6"],
-  vip4: ["vip5", "vip6"],
-  vip5: ["vip6"],
-  vip6: [],
+  level0: ["level1", "level2", "level3", "level4", "level5", "level6"],
+  level1: ["level2", "level3", "level4", "level5", "level6"],
+  level2: ["level3", "level4", "level5", "level6"],
+  level3: ["level4", "level5", "level6"],
+  level4: ["level5", "level6"],
+  level5: ["level6"],
+  level6: [],
 };
 
 const FALLBACK_TIER: TierInfo = {
@@ -133,7 +133,7 @@ export const VIPBenefitsDisplay = () => {
   const availableUpgrades = upgradePaths[tier as TierId] ?? [];
 
   // TS-safe: only pass a tier value that matches AnimatedTierBadge’s prop type
-  const badgeTier: AnimatedBadgeTier = isAnimatedBadgeTier(tier) ? (tier as AnimatedBadgeTier) : ("free" as AnimatedBadgeTier);
+  const badgeTier: AnimatedBadgeTier = isAnimatedBadgeTier(tier) ? (tier as AnimatedBadgeTier) : ("level0" as AnimatedBadgeTier);
 
   return (
     <Card className="p-6 space-y-6 bg-gradient-to-br from-primary/5 via-background to-secondary/5">

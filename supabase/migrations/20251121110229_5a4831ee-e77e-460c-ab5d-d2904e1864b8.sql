@@ -12,7 +12,7 @@ USING (
     SELECT 1 FROM user_subscriptions us
     JOIN subscription_tiers st ON us.tier_id = st.id
     WHERE us.user_id = auth.uid()
-    AND st.name = 'VIP3'
+    AND st.name = 'Level 3'
     AND us.status = 'active'
   )
   AND id IN (
@@ -20,7 +20,7 @@ USING (
     WHERE id IN (
       SELECT user_id FROM user_subscriptions us2
       JOIN subscription_tiers st2 ON us2.tier_id = st2.id
-      WHERE st2.name = 'VIP3' AND us2.status = 'active'
+      WHERE st2.name = 'Level 3' AND us2.status = 'active'
     )
   )
 );

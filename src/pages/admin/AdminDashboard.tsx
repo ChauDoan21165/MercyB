@@ -300,7 +300,7 @@ export default function AdminDashboard() {
             </div>
 
             <div style={{ marginTop: 12, fontSize: 12, color: "rgba(0,0,0,0.60)", fontWeight: 900 }}>
-              Your tier: <span style={mono}>{String(access.tier || "free")}</span> • admin_level:{" "}
+              Your tier: <span style={mono}>{String(access.tier || "level0")}</span> • admin_level:{" "}
               <span style={mono}>{String(adminLevel)}</span>
             </div>
           </div>

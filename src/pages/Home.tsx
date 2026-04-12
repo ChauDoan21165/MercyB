@@ -262,13 +262,11 @@ export default function Home() {
     gap: 8,
     padding: "7px 12px",
     borderRadius: 9999,
-    border: isSignedIn
-      ? "1px solid rgba(16,185,129,0.22)"
-      : "1px solid rgba(0,0,0,0.08)",
-    background: isSignedIn ? "rgba(236,253,245,0.90)" : "rgba(255,255,255,0.85)",
+    border: "1px solid rgba(16,185,129,0.22)",
+    background: "rgba(236,253,245,0.90)",
     fontSize: z(12),
     fontWeight: 900,
-    color: isSignedIn ? "rgba(6,95,70,0.92)" : "rgba(0,0,0,0.64)",
+    color: "rgba(6,95,70,0.92)",
   };
 
   const statusDot: React.CSSProperties = {
@@ -300,7 +298,7 @@ export default function Home() {
   };
 
   const headline: React.CSSProperties = {
-    margin: "18px 0 0",
+    margin: isSignedIn || isLoading ? "18px 0 0" : "8px 0 0",
     fontSize: isDesktopTop ? z(42) : z(26),
     fontWeight: 950,
     lineHeight: 1.02,
@@ -434,24 +432,20 @@ export default function Home() {
     <div style={wrap}>
       <div style={frame}>
         <section style={heroShell} aria-label="Homepage hero">
-          <div style={statusRow}>
-            <div style={statusBadge} aria-live="polite">
-              <span style={statusDot} />
-              <span>
-                {isLoading
-                  ? "Checking sign-in..."
-                  : isSignedIn
-                    ? "Signed in"
-                    : "Start free"}
-              </span>
-            </div>
-
-            {isSignedIn ? (
-              <div style={topRightPill} title={`Welcome, ${displayName}`}>
-                Welcome, {displayName}
+          {isSignedIn || isLoading ? (
+            <div style={statusRow}>
+              <div style={statusBadge} aria-live="polite">
+                <span style={statusDot} />
+                <span>{isLoading ? "Checking sign-in..." : "Signed in"}</span>
               </div>
-            ) : null}
-          </div>
+
+              {isSignedIn ? (
+                <div style={topRightPill} title={`Welcome, ${displayName}`}>
+                  Welcome, {displayName}
+                </div>
+              ) : null}
+            </div>
+          ) : null}
 
           <h1 style={headline}>Small Steps. Real Progress.</h1>
           <div style={subline}>English for real life.</div>

@@ -141,15 +141,15 @@ export interface MercyTeachingTurnResult {
 }
 
 const VIP_TIERS = new Set([
-  'vip1',
-  'vip2',
-  'vip3',
-  'vip4',
-  'vip5',
-  'vip6',
-  'vip7',
-  'vip8',
-  'vip9',
+  'level1',
+  'level2',
+  'level3',
+  'level4',
+  'level5',
+  'level6',
+  'level7',
+  'level8',
+  'level9',
 ]);
 
 function getGreetingPersonalityContext(
@@ -188,7 +188,7 @@ function resolveTeacherLevel(
   userTier: string | undefined
 ): TeacherLevel {
   if (explicitLevel) return explicitLevel;
-  return mapTierToTeacherLevel(userTier || 'free');
+  return mapTierToTeacherLevel(userTier || 'level0');
 }
 
 function deriveHumorStyle(input: MercyTeachingTurnInput): HumorStyle {
@@ -322,11 +322,11 @@ function buildPastTenseFallbackText(args: {
 }
 
 export function mapTierToTeacherLevel(userTier: string): TeacherLevel {
-  if (userTier === 'vip3' || userTier === 'vip4' || userTier === 'vip5') {
+  if (userTier === 'level3' || userTier === 'level4' || userTier === 'level5') {
     return 'intense';
   }
 
-  if (userTier === 'vip1' || userTier === 'vip2') {
+  if (userTier === 'level1' || userTier === 'level2') {
     return 'normal';
   }
 

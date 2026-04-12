@@ -24,7 +24,7 @@
     "artifact_set_id": "b2c3d4e5-f6a7-48b9-c0d1-e2f3a4b5c6d7",
     "data_format_version": "MercyBlade-Core-v1.2",
     "room_color": "#FFFFFF",
-    "tier": "free"
+    "tier": "level0"
   },
   "enums": {
     "tags": ["sleep_hygiene", "relaxation", "routine", "lifestyle"],
@@ -50,7 +50,7 @@
         "vi": "Bắt Đầu Thói Quen Trước Giờ Ngủ"
       },
       "copy": {
-        "en": "Begin improving sleep with a calm bedtime routine that signals your body to rest. Choose a consistent sleep and wake time each day, even on weekends, to regulate your natural rhythm. Dim lights and lower noise one hour before bed to help the mind unwind. Avoid screens and bright devices that disrupt melatonin. Keep your room cool, quiet, and comfortable. Record bedtime and wake times weekly in a short journal to track progress. Over time, this steady rhythm tells your body when to relax. Begin tonight with one peaceful ritual like reading or soft music. Ready to restore deep rest? Explore more beyond Free.",
+        "en": "Begin improving sleep with a calm bedtime routine that signals your body to rest. Choose a consistent sleep and wake time each day, even on weekends, to regulate your natural rhythm. Dim lights and lower noise one hour before bed to help the mind unwind. Avoid screens and bright devices that disrupt melatonin. Keep your room cool, quiet, and comfortable. Record bedtime and wake times weekly in a short journal to track progress. Over time, this steady rhythm tells your body when to relax. Begin tonight with one peaceful ritual like reading or soft music. Ready to restore deep rest? Explore more beyond Level 0.",
         "vi": "Bắt đầu cải thiện giấc ngủ với thói quen trước giờ ngủ bình tĩnh, báo hiệu cơ thể nghỉ ngơi. Chọn thời gian ngủ và thức nhất quán mỗi ngày, ngay cả vào cuối tuần, để điều chỉnh nhịp sinh học tự nhiên. Làm mờ đèn và giảm tiếng ồn một giờ trước khi đi ngủ để giúp tâm trí thư giãn. Tránh màn hình và thiết bị sáng làm gián đoạn melatonin. Giữ phòng mát mẻ, yên tĩnh và thoải mái. Ghi lại thời gian đi ngủ và thức dậy hàng tuần trong nhật ký ngắn để theo dõi tiến trình. Theo thời gian, nhịp điệu ổn định này cho cơ thể biết khi nào nên thư giãn. Bắt đầu tối nay với một nghi thức yên bình như đọc sách hoặc âm nhạc nhẹ nhàng."
       },
       "attribution": "MercyBlade Core Content Team",
@@ -70,7 +70,7 @@
         "vi": "Thử Thư Giãn Đơn Giản"
       },
       "copy": {
-        "en": "Ease into restful sleep through simple relaxation techniques. Sit or lie comfortably, close your eyes, and breathe slowly—in for four seconds, hold briefly, then exhale for six. Feel your shoulders soften and your heartbeat slow. This gentle rhythm signals the nervous system to release tension. Try pairing it with calming music or gentle stretching before bed. Reflect weekly in a journal on how relaxation changes your sleep quality. If thoughts intrude, imagine them drifting away like clouds. One mindful breath can begin the shift toward stillness. Start tonight by practicing calm breathing for five minutes. Ready to rest with ease? Explore more beyond Free.",
+        "en": "Ease into restful sleep through simple relaxation techniques. Sit or lie comfortably, close your eyes, and breathe slowly—in for four seconds, hold briefly, then exhale for six. Feel your shoulders soften and your heartbeat slow. This gentle rhythm signals the nervous system to release tension. Try pairing it with calming music or gentle stretching before bed. Reflect weekly in a journal on how relaxation changes your sleep quality. If thoughts intrude, imagine them drifting away like clouds. One mindful breath can begin the shift toward stillness. Start tonight by practicing calm breathing for five minutes. Ready to rest with ease? Explore more beyond Level 0.",
         "vi": "Dễ dàng chuyển sang giấc ngủ yên bình thông qua các kỹ thuật thư giãn đơn giản. Ngồi hoặc nằm thoải mái, nhắm mắt và hít thở chậm rãi—hít vào trong bốn giây, giữ ngắn, sau đó thở ra trong sáu giây. Cảm nhận vai mềm mại và nhịp tim chậm lại. Nhịp điệu nhẹ nhàng này báo hiệu hệ thần kinh giải phóng căng thẳng. Thử kết hợp với âm nhạc êm dịu hoặc duỗi người nhẹ nhàng trước khi ngủ. Suy ngẫm hàng tuần trong nhật ký về cách thư giãn thay đổi chất lượng giấc ngủ của bạn. Nếu suy nghĩ xâm nhập, hãy tưởng tượng chúng trôi đi như những đám mây. Một hơi thở chánh niệm có thể bắt đầu sự chuyển đổi về phía tĩnh lặng."
       },
       "attribution": "MercyBlade Core Content Team",
@@ -90,7 +90,7 @@
         "vi": "Hạn Chế Chất Kích Thích Buổi Tối"
       },
       "copy": {
-        "en": "Improving sleep begins by limiting stimulants that disrupt natural rest. Avoid caffeine, energy drinks, and large meals after early evening. Choose herbal tea, fruit, or light soup instead. Heavy or late dinners strain digestion and delay sleep onset. Notice how evening choices affect how quickly you fall asleep and how refreshed you feel in the morning. Keep a weekly note of which habits help or hinder rest. Replace nighttime scrolling with reading or journaling. These small, steady adjustments create a calmer transition into sleep. Skip that late coffee today and feel the difference tonight. Ready to reclaim your nights? Explore more beyond Free.",
+        "en": "Improving sleep begins by limiting stimulants that disrupt natural rest. Avoid caffeine, energy drinks, and large meals after early evening. Choose herbal tea, fruit, or light soup instead. Heavy or late dinners strain digestion and delay sleep onset. Notice how evening choices affect how quickly you fall asleep and how refreshed you feel in the morning. Keep a weekly note of which habits help or hinder rest. Replace nighttime scrolling with reading or journaling. These small, steady adjustments create a calmer transition into sleep. Skip that late coffee today and feel the difference tonight. Ready to reclaim your nights? Explore more beyond Level 0.",
         "vi": "Cải thiện giấc ngủ bắt đầu bằng việc hạn chế các chất kích thích làm gián đoạn giấc ngủ tự nhiên. Tránh caffeine, nước tăng lực và bữa ăn lớn sau đầu buổi tối. Chọn trà thảo mộc, trái cây hoặc súp nhẹ thay thế. Bữa tối nặng hoặc muộn làm căng thẳng tiêu hóa và trì hoãn khởi đầu giấc ngủ. Chú ý cách lựa chọn buổi tối ảnh hưởng đến tốc độ bạn ngủ và cảm giác sảng khoái vào buổi sáng. Ghi chú hàng tuần về thói quen nào giúp đỡ hoặc cản trở sự nghỉ ngơi. Thay thế việc lướt điện thoại ban đêm bằng đọc sách hoặc viết nhật ký. Những điều chỉnh nhỏ, ổn định này tạo ra sự chuyển đổi bình tĩnh hơn vào giấc ngủ."
       },
       "attribution": "MercyBlade Core Content Team",

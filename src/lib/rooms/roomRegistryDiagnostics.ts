@@ -86,27 +86,27 @@ export interface TierCoverage {
  */
 function extractTierFromId(roomId: string): TierId {
   const tierPatterns: [RegExp, TierId][] = [
-    [/vip9/i, "vip9"],
-    [/vip8/i, "vip8"],
-    [/vip7/i, "vip7"],
-    [/vip6/i, "vip6"],
-    [/vip5/i, "vip5"],
-    [/vip4/i, "vip4"],
-    [/vip3[-_]?ii/i, "vip3"],
-    [/vip3/i, "vip3"],
-    [/vip2/i, "vip2"],
-    [/vip1/i, "vip1"],
+    [/level9/i, "level9"],
+    [/level8/i, "level8"],
+    [/level7/i, "level7"],
+    [/level6/i, "level6"],
+    [/level5/i, "level5"],
+    [/level4/i, "level4"],
+    [/level3[-_]?ii/i, "level3"],
+    [/level3/i, "level3"],
+    [/level2/i, "level2"],
+    [/level1/i, "level1"],
     [/kids[-_]?l?3|kidslevel3/i, "kids_3"],
     [/kids[-_]?l?2|kidslevel2/i, "kids_2"],
     [/kids[-_]?l?1|kidslevel1/i, "kids_1"],
-    [/free/i, "free"],
+    [/level0/i, "level0"],
   ];
 
   for (const [pattern, tier] of tierPatterns) {
     if (pattern.test(roomId)) return tier;
   }
 
-  return "free";
+  return "level0";
 }
 
 function findDuplicateIds(ids: string[]): string[] {

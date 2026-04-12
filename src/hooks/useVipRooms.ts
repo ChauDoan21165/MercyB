@@ -10,8 +10,8 @@
  * - If data is wrong, CI validation + admin tools catch it
  * 
  * Examples:
- * - VIP1 rooms: tier = "VIP1 / VIP1" (exact match only)
- * - VIP9 rooms: tier = "VIP9 / Cấp VIP9" (exact match only)
+ * - Level 1 rooms: tier = "Level 1 / Level 1" (exact match only)
+ * - Level 9 rooms: tier = "Level 9 / Cấp Level 9" (exact match only)
  * 
  * If you see fewer rooms than expected:
  * → Check DB: room probably has wrong tier value or is_active=false

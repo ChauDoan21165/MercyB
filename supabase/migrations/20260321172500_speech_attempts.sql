@@ -9,7 +9,7 @@ create table if not exists public.speech_attempts (
 
   room_id text not null,
   line_id text not null,
-  tier_level text, -- FREE, VIP1, VIP2, VIP3 (Captured for billing/metrics)
+  tier_level text, -- FREE, Level 1, Level 2, Level 3 (Captured for billing/metrics)
 
   target_text text not null,
   transcript text,

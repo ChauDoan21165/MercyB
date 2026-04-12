@@ -31,12 +31,12 @@ export const VIPNavigation = ({ currentPage }: VIPNavigationProps) => {
   const access = user as any; // Step 5 fix: bypass missing access typing
 
   const pages: VipNavItem[] = [
-    { id: "vip1", path: "/vip/vip1", label: "VIP1", canAccess: access.hasPremium },
-    { id: "vip2", path: "/vip/vip2", label: "VIP2", canAccess: access.hasPremium },
-    { id: "vip3", path: "/vip/vip3", label: "VIP3", canAccess: access.hasPremium },
-    { id: "vip4", path: "/vip/vip4", label: "VIP4 CareerZ", canAccess: access.hasPremium },
-    { id: "vip5", path: "/vip/vip5", label: "VIP5 Writing", canAccess: access.hasPremium },
-    { id: "vip6", path: "/vip/vip6", label: "VIP6 Psychology", canAccess: access.hasPremium },
+    { id: "level1", path: "/vip/level1", label: "Level 1", canAccess: access.hasPremium },
+    { id: "level2", path: "/vip/level2", label: "Level 2", canAccess: access.hasPremium },
+    { id: "level3", path: "/vip/level3", label: "Level 3", canAccess: access.hasPremium },
+    { id: "level4", path: "/vip/level4", label: "Level 4 CareerZ", canAccess: access.hasPremium },
+    { id: "level5", path: "/vip/level5", label: "Level 5 Writing", canAccess: access.hasPremium },
+    { id: "level6", path: "/vip/level6", label: "Level 6 Psychology", canAccess: access.hasPremium },
   ];
 
   const currentIndex = currentPage ? pages.findIndex((page) => page.id === currentPage) : -1;

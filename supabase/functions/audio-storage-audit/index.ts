@@ -199,7 +199,7 @@ Deno.serve(async (req) => {
 
     // Sanity tests with known files
     const sanityTestFiles = [
-      'meaning-of-life-vip1-entry-1-en.mp3',
+      'meaning-of-life-level1-entry-1-en.mp3',
       'meaning_of_life_vip1_entry_1_en.mp3',
       'ef01_01_en.mp3',
       'english_foundation_ef01_01_en.mp3',

@@ -1,9 +1,9 @@
 {
-  "header": "// dumb tree, no diagnostics, catch keyword, speak meter, plain (b1), bilingual (en-vi), gentle persuasion only\n\nSexuality and intimacy for VIP 2, evidence-based\n\nEach entry: teach practical steps for fostering healthy sexuality and intimacy\n\nPhilosophy: empathetic, actionable, respectful, humane language\n\nBeliefs:\n- Don’t judge. Foster openness.\n- Don’t rush. Build trust.\n- Don’t force. Encourage mutual respect.\n\nTalk points\n- Open communication enhances intimacy.\n- Small steps build emotional and physical connection.\n- Consent and comfort are key.\n- Self-awareness strengthens relationships.\n\nTiny habits to teach:\n- Discuss one feeling daily.\n- Plan one intimate moment weekly.\n- Practice one act of care daily.\n- Reflect on one relationship need.",
+  "header": "// dumb tree, no diagnostics, catch keyword, speak meter, plain (b1), bilingual (en-vi), gentle persuasion only\n\nSexuality and intimacy for Level 2, evidence-based\n\nEach entry: teach practical steps for fostering healthy sexuality and intimacy\n\nPhilosophy: empathetic, actionable, respectful, humane language\n\nBeliefs:\n- Don’t judge. Foster openness.\n- Don’t rush. Build trust.\n- Don’t force. Encourage mutual respect.\n\nTalk points\n- Open communication enhances intimacy.\n- Small steps build emotional and physical connection.\n- Consent and comfort are key.\n- Self-awareness strengthens relationships.\n\nTiny habits to teach:\n- Discuss one feeling daily.\n- Plan one intimate moment weekly.\n- Practice one act of care daily.\n- Reflect on one relationship need.",
   "schema_version": "1.1",
   "schema_id": "sexuality_intimacy_vip2",
-  "description": "Echologic Mercy Blade room for VIP 2 users to foster healthy sexuality and intimacy in relationships",
-  "description_vi": "Phòng Mercy Blade dành cho người dùng VIP 2 để nuôi dưỡng tình dục và sự thân mật lành mạnh trong quan hệ",
+  "description": "Echologic Mercy Blade room for Level 2 users to foster healthy sexuality and intimacy in relationships",
+  "description_vi": "Phòng Mercy Blade dành cho người dùng Level 2 để nuôi dưỡng tình dục và sự thân mật lành mạnh trong quan hệ",
   "supported_languages": ["en", "vi"],
   "localization": { "default": "en", "fallback": "en", "i18n_required": true },
   "safety_disclaimer": "Educational guidance; not a substitute for professional relationship or sexual health counseling.",
@@ -20,13 +20,13 @@
     "created_at": "2025-10-21T19:01:00+07:00",
     "updated_at": "2025-10-21T19:01:00+07:00",
     "checksum_sha256": "<placeholder>",
-    "meta_notes": "Keyword-driven; VIP 2 exclusive; light gold background; UUIDv4 artifacts; checksum=SHA-256 of canonical JSON.",
+    "meta_notes": "Keyword-driven; Level 2 exclusive; light gold background; UUIDv4 artifacts; checksum=SHA-256 of canonical JSON.",
     "i18n_verified": true,
     "entry_count": 3,
     "artifact_set_id": "2a3b4c5d-6e7f-48a0-b1c2-d3e4f5a6b7c8",
     "data_format_version": "MercyBlade-Core-v1.2",
     "room_color": "#FFD700",
-    "tier": "vip2"
+    "tier": "level2"
   },
   "enums": {
     "tags": [
@@ -56,8 +56,8 @@
   },
   "room_essay": {
     "format": "markdown",
-    "en": "# Sexuality and Intimacy VIP2\n\nHealthy sexuality and intimacy thrive on open communication and mutual respect. Research shows couples who discuss intimacy openly report 70% higher satisfaction. This VIP 2 room offers premium strategies to deepen your connection.\n\n**Communicate Openly**\n- Discuss desires calmly (e.g., “What makes you feel close?”).\n- Share one feeling daily to build trust.\n- Example: Sarah’s honest talks improved her intimacy.\n\n**Build Intimate Moments**\n- Plan a weekly moment (e.g., a quiet dinner).\n- Try one new activity together (e.g., massage).\n- Studies show shared activities boost connection by 50%.\n\n**Prioritize Consent and Comfort**\n- Ask for consent clearly (e.g., “Is this okay?”).\n- Check in on comfort levels regularly.\n- Example: Minh’s respect for boundaries deepened trust.\n\n**Stay Balanced**\n- Reflect on your needs to stay grounded.\n- Seek counseling for complex issues.\n\nStart today: discuss one feeling or plan an intimate moment. Your relationship will flourish with these VIP 2 tools!\n\n*Word count: 404*",
-    "vi": "# Tình Dục và Sự Thân Mật VIP2\n\nTình dục và sự thân mật lành mạnh phát triển nhờ giao tiếp cởi mở và tôn trọng lẫn nhau. Nghiên cứu cho thấy các cặp đôi thảo luận thân mật cởi mở hài lòng hơn 70%. Phòng VIP 2 này cung cấp chiến lược cao cấp để làm sâu sắc kết nối.\n\n**Giao Tiếp Cởi Mở**\n- Thảo luận mong muốn bình tĩnh (ví dụ, “Điều gì khiến em cảm thấy gần gũi?”).\n- Chia sẻ một cảm xúc mỗi ngày để xây dựng niềm tin.\n- Ví dụ: Lan nói chuyện chân thành, cải thiện sự thân mật.\n\n**Xây Dựng Khoảnh Khắc Thân Mật**\n- Lên kế hoạch khoảnh khắc hàng tuần (ví dụ, bữa tối yên tĩnh).\n- Thử một hoạt động mới cùng nhau (ví dụ, mát-xa).\n- Nghiên cứu cho thấy hoạt động chung tăng kết nối 50%.\n\n**Ưu Tiên Đồng Thuận và Thoải Mái**\n- Hỏi ý đồng thuận rõ ràng (ví dụ, “Điều này ổn chứ?”).\n- Kiểm tra mức độ thoải mái thường xuyên.\n- Ví dụ: Hùng tôn trọng ranh giới, làm sâu sắc niềm tin.\n\n**Giữ Cân Bằng**\n- Suy ngẫm về nhu cầu để giữ vững.\n- Tìm tư vấn cho vấn đề phức tạp.\n\nBắt đầu hôm nay: thảo luận một cảm xúc hoặc lên kế hoạch khoảnh khắc thân mật. Quan hệ của bạn sẽ phát triển với công cụ VIP 2 này!\n\n*Số từ: 412*",
+    "en": "# Sexuality and Intimacy Level 2\n\nHealthy sexuality and intimacy thrive on open communication and mutual respect. Research shows couples who discuss intimacy openly report 70% higher satisfaction. This Level 2 room offers premium strategies to deepen your connection.\n\n**Communicate Openly**\n- Discuss desires calmly (e.g., “What makes you feel close?”).\n- Share one feeling daily to build trust.\n- Example: Sarah’s honest talks improved her intimacy.\n\n**Build Intimate Moments**\n- Plan a weekly moment (e.g., a quiet dinner).\n- Try one new activity together (e.g., massage).\n- Studies show shared activities boost connection by 50%.\n\n**Prioritize Consent and Comfort**\n- Ask for consent clearly (e.g., “Is this okay?”).\n- Check in on comfort levels regularly.\n- Example: Minh’s respect for boundaries deepened trust.\n\n**Stay Balanced**\n- Reflect on your needs to stay grounded.\n- Seek counseling for complex issues.\n\nStart today: discuss one feeling or plan an intimate moment. Your relationship will flourish with these Level 2 tools!\n\n*Word count: 404*",
+    "vi": "# Tình Dục và Sự Thân Mật Level 2\n\nTình dục và sự thân mật lành mạnh phát triển nhờ giao tiếp cởi mở và tôn trọng lẫn nhau. Nghiên cứu cho thấy các cặp đôi thảo luận thân mật cởi mở hài lòng hơn 70%. Phòng Level 2 này cung cấp chiến lược cao cấp để làm sâu sắc kết nối.\n\n**Giao Tiếp Cởi Mở**\n- Thảo luận mong muốn bình tĩnh (ví dụ, “Điều gì khiến em cảm thấy gần gũi?”).\n- Chia sẻ một cảm xúc mỗi ngày để xây dựng niềm tin.\n- Ví dụ: Lan nói chuyện chân thành, cải thiện sự thân mật.\n\n**Xây Dựng Khoảnh Khắc Thân Mật**\n- Lên kế hoạch khoảnh khắc hàng tuần (ví dụ, bữa tối yên tĩnh).\n- Thử một hoạt động mới cùng nhau (ví dụ, mát-xa).\n- Nghiên cứu cho thấy hoạt động chung tăng kết nối 50%.\n\n**Ưu Tiên Đồng Thuận và Thoải Mái**\n- Hỏi ý đồng thuận rõ ràng (ví dụ, “Điều này ổn chứ?”).\n- Kiểm tra mức độ thoải mái thường xuyên.\n- Ví dụ: Hùng tôn trọng ranh giới, làm sâu sắc niềm tin.\n\n**Giữ Cân Bằng**\n- Suy ngẫm về nhu cầu để giữ vững.\n- Tìm tư vấn cho vấn đề phức tạp.\n\nBắt đầu hôm nay: thảo luận một cảm xúc hoặc lên kế hoạch khoảnh khắc thân mật. Quan hệ của bạn sẽ phát triển với công cụ Level 2 này!\n\n*Số từ: 412*",
     "word_count_en": 404,
     "word_count_vi": 412,
     "updated_at": "2025-10-21T19:01:00+07:00"
@@ -85,7 +85,7 @@
       "slug": "building_intimatemoments",
       "title": { "en": "Building Intimate Moments", "vi": "Xây Dựng Khoảnh Khắc Thân Mật" },
       "copy": {
-        "en": "**Building Intimate Moments**\n\nShared moments boost connection by 50%, per research. Create intimacy with these steps:\n\n- **Plan Weekly**: Schedule a cozy activity (e.g., dinner at home).\n- **Try New Acts**: Experiment with a new gesture (e.g., holding hands).\n- **Be Present**: Spend 5 minutes distraction-free together.\n- **Express Affection**: Say one loving thing daily.\n\nExample: Linh’s weekly dates rekindled romance. Plan one intimate moment today.\n\n*Word count: 152*",
+        "en": "**Building Intimate Moments**\n\nShared moments boost connection by 50%, per research. Create intimacy with these steps:\n\n- **Plan Weekly**: Schedule a cozy activity (e.g., dinner at home).\n- **Try New Acts**: Experiment with a new gesture (e.g., holding hands).\n- **Be Present**: Spend 5 minutes distraction-level0 together.\n- **Express Affection**: Say one loving thing daily.\n\nExample: Linh’s weekly dates rekindled romance. Plan one intimate moment today.\n\n*Word count: 152*",
         "vi": "**Xây Dựng Khoảnh Khắc Thân Mật**\n\nKhoảnh khắc chung tăng kết nối 50%, theo nghiên cứu. Tạo sự thân mật với các bước:\n\n- **Lên Kế Hoạch Hàng Tuần**: Lên lịch hoạt động ấm cúng (ví dụ, ăn tối tại nhà).\n- **Thử Hành Động Mới**: Thử một cử chỉ mới (ví dụ, nắm tay).\n- **Hiện Diện**: Dành 5 phút không phân tâm cùng nhau.\n- **Bày Tỏ Tình Cảm**: Nói một điều yêu thương mỗi ngày.\n\nVí dụ: Hùng lên lịch hẹn hàng tuần, khơi lại lãng mạn. Lên kế hoạch một khoảnh khắc thân mật hôm nay.\n\n*Số từ: 160*"
       },
       "attribution": "Best Practices / Thực hành tốt nhất",

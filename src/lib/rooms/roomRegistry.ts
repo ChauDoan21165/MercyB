@@ -15,7 +15,7 @@
  * - domain + tags + counts helpers
  * - tolerant title/keyword field parsing
  * - id normalization (- -> _) so navigation/search/tests match
- * - tier inference via tierFromRoomId (VIP3II -> VIP3 collapse)
+ * - tier inference via tierFromRoomId (VIP3II -> Level 3 collapse)
  */
 
 import { getAllRooms as fetchAllRooms } from "@/lib/roomFetcher";
@@ -159,14 +159,14 @@ function pickTags(roomData: any): string[] {
 
 function inferTier(roomId: string, roomData: any): TierId {
   // Prefer explicit tier if present, but normalize.
-  // If missing/garbage, infer from ID (VIP3II -> VIP3 collapse handled in tierFromRoomId).
+  // If missing/garbage, infer from ID (VIP3II -> Level 3 collapse handled in tierFromRoomId).
   const raw = roomData?.tier ?? roomData?.tierId ?? roomData?.accessTier ?? "";
   const normalized = normalizeTier(raw);
-  if (normalized && normalized !== "free") return normalized;
+  if (normalized && normalized !== "level0") return normalized;
 
-  // If normalized tier is "free" but the id indicates VIP, trust the id.
+  // If normalized tier is "level0" but the id indicates VIP, trust the id.
   const inferred = tierFromRoomId(roomId);
-  return inferred ?? "free";
+  return inferred ?? "level0";
 }
 
 /**

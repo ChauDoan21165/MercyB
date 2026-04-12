@@ -1,4 +1,4 @@
--- Add VIP3 II tier to subscription_tiers table
+-- Add Level 3 II tier to subscription_tiers table
 INSERT INTO public.subscription_tiers (
   name,
   name_vi,
@@ -10,14 +10,14 @@ INSERT INTO public.subscription_tiers (
   display_order
 )
 VALUES (
-  'VIP3 II',
-  'VIP3 II',
+  'Level 3 II',
+  'Level 3 II',
   150000,  -- Pricing in VND (adjust as needed)
   5,  -- 5 rooms per day access
   3,  -- 3 custom topics allowed
   true,  -- Priority support enabled
   true,  -- Active tier
-  4  -- Display order: between VIP3 (3) and VIP4 (5)
+  4  -- Display order: between Level 3 (3) and Level 4 (5)
 )
 ON CONFLICT (name) DO UPDATE SET
   name_vi = EXCLUDED.name_vi,

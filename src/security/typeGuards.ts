@@ -6,16 +6,16 @@
 import type { TierId } from "@/lib/constants/tiers";
 
 const VALID_TIERS: TierId[] = [
-  "free",
-  "vip1",
-  "vip2",
-  "vip3",
-  "vip4",
-  "vip5",
-  "vip6",
-  "vip7",
-  "vip8",
-  "vip9",
+  "level0",
+  "level1",
+  "level2",
+  "level3",
+  "level4",
+  "level5",
+  "level6",
+  "level7",
+  "level8",
+  "level9",
   "premium_month",
   "premium_year",
   "kids_1",
@@ -36,15 +36,15 @@ function isPaidBillingTier(tier: TierId): boolean {
 
 function isLegacyVipTier(tier: TierId): boolean {
   return (
-    tier === "vip1" ||
-    tier === "vip2" ||
-    tier === "vip3" ||
-    tier === "vip4" ||
-    tier === "vip5" ||
-    tier === "vip6" ||
-    tier === "vip7" ||
-    tier === "vip8" ||
-    tier === "vip9"
+    tier === "level1" ||
+    tier === "level2" ||
+    tier === "level3" ||
+    tier === "level4" ||
+    tier === "level5" ||
+    tier === "level6" ||
+    tier === "level7" ||
+    tier === "level8" ||
+    tier === "level9"
   );
 }
 
@@ -60,23 +60,23 @@ function kidsTierLevel(tier: TierId): number {
 }
 
 /**
- * Guard: Ensure tier is valid, force to 'free' if poisoned
+ * Guard: Ensure tier is valid, force to 'level0' if poisoned
  */
 export function guardTierId(tier: unknown): TierId {
   if (typeof tier !== "string") {
     if (import.meta.env.DEV) {
       console.error("[TypeGuard] Invalid tier type:", typeof tier);
     }
-    return "free";
+    return "level0";
   }
 
   const normalized = tier.trim().toLowerCase() as TierId;
 
   if (!VALID_TIERS.includes(normalized)) {
     if (import.meta.env.DEV) {
-      console.error("[TypeGuard] Invalid tier value:", tier, "- forcing to free");
+      console.error("[TypeGuard] Invalid tier value:", tier, "- forcing to level0");
     }
-    return "free";
+    return "level0";
   }
 
   return normalized;
@@ -153,7 +153,7 @@ export function detectTierSpoofing(
  *
  * Notes:
  * - premium_month / premium_year are canonical paid billing tiers
- * - vip1..vip9 remain legacy compatibility levels
+ * - level1..level9 remain legacy compatibility levels
  * - kids tiers remain scoped lower levels
  *
  * IMPORTANT:
@@ -164,16 +164,16 @@ export function getTierLevel(tier: TierId): number {
   const safeTier = guardTierId(tier);
 
   const tierLevels: Record<TierId, number> = {
-    free: 0,
-    vip1: 1,
-    vip2: 2,
-    vip3: 3,
-    vip4: 4,
-    vip5: 5,
-    vip6: 6,
-    vip7: 7,
-    vip8: 8,
-    vip9: 9,
+    level0: 0,
+    level1: 1,
+    level2: 2,
+    level3: 3,
+    level4: 4,
+    level5: 5,
+    level6: 6,
+    level7: 7,
+    level8: 8,
+    level9: 9,
     premium_month: 999,
     premium_year: 999,
     kids_1: 1,
@@ -188,11 +188,11 @@ export function getTierLevel(tier: TierId): number {
  * Check if user tier grants access to required tier
  *
  * Safe behavior:
- * - unknown / poisoned user tier => treated as 'free'
- * - unknown / poisoned required tier => treated as 'free'
+ * - unknown / poisoned user tier => treated as 'level0'
+ * - unknown / poisoned required tier => treated as 'level0'
  *
  * Policy:
- * - free => only free
+ * - level0 => only level0
  * - premium_month / premium_year => all adult paid tiers + kids
  * - legacy VIP tiers => all adult paid tiers + kids (compatibility)
  * - kids tiers => only kids progression by level
@@ -204,7 +204,7 @@ export function canAccessTier(
   const safeUserTier = guardTierId(userTier);
   const safeRequiredTier = guardTierId(requiredTier);
 
-  if (safeRequiredTier === "free") return true;
+  if (safeRequiredTier === "level0") return true;
   if (safeUserTier === safeRequiredTier) return true;
 
   // Kids accounts stay isolated from adult tiers.
@@ -221,6 +221,6 @@ export function canAccessTier(
   // Adult paid access unlocks all adult paid tiers.
   if (isPaidRepoTier(safeUserTier)) return true;
 
-  // Free adult users cannot access paid adult content.
+  // Level 0 adult users cannot access paid adult content.
   return false;
 }

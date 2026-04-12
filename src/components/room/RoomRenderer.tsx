@@ -19,7 +19,7 @@
 // VERSION: MB-BLUE-99.12-room-completion — 2026-03-09
 //
 // FIXES INCLUDED:
-// - DB fetch tries effectiveRoomId THEN coreRoomId (suffix-free) if needed.
+// - DB fetch tries effectiveRoomId THEN coreRoomId (suffix-level0) if needed.
 // - Ignore DB if only __legacy stub rows; fallback to JSON.
 // - Coerce legacy JSON entries (copy->content, audio->audio_en, merge keywords).
 // - Keyword pills: 1 per entry when entry keyword fields exist; no fake EN/EN.
@@ -152,7 +152,7 @@ function dispatchHostRepeatTarget(detail: Record<string, any>) {
 function coreRoomIdFromEffective(effectiveRoomId: string) {
   const id = String(effectiveRoomId || "").trim();
   if (!id) return id;
-  return id.replace(/_(vip[1-9]|free)$/i, "");
+  return id.replace(/_(vip[1-9]|level0)$/i, "");
 }
 
 function looksUuidLike(s: any) {
@@ -161,12 +161,12 @@ function looksUuidLike(s: any) {
   return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(t);
 }
 
-type TierIdRuntime = TierId | "vip2";
+type TierIdRuntime = TierId | "level2";
 function normalizeTierIdRuntime(x: any): TierIdRuntime {
   const t = String(x ?? "").trim().toLowerCase();
-  if (t === "vip2") return "vip2";
+  if (t === "level2") return "level2";
   const n = normalizeTier(t);
-  return (n || "free") as TierIdRuntime;
+  return (n || "level0") as TierIdRuntime;
 }
 
 function isHttpUrl(s: string) {
@@ -695,20 +695,20 @@ export default function RoomRenderer({
       (access as any)?.userTier ??
       (access as any)?.profile?.tier ??
       (access as any)?.profileTier ??
-      "free";
+      "level0";
 
     return normalizeTierIdRuntime(raw);
   }, [access]);
 
   const isLocked = useMemo(() => {
     const requiredRank =
-      requiredTierId === "vip9"
+      requiredTierId === "level9"
         ? 9
-        : requiredTierId === "vip3"
+        : requiredTierId === "level3"
           ? 3
-          : requiredTierId === "vip2"
+          : requiredTierId === "level2"
             ? 2
-            : requiredTierId === "vip1"
+            : requiredTierId === "level1"
               ? 1
               : 0;
 
@@ -1208,7 +1208,7 @@ export default function RoomRenderer({
 
   const displayTierForPill = useMemo(() => {
     const t = normalizeTierIdRuntime(displayTierId);
-    return t !== "free" ? String(t).toUpperCase() : "";
+    return t !== "level0" ? String(t).toUpperCase() : "";
   }, [displayTierId]);
 
   const completionStorageKey = useMemo(() => `mb.roomCompletion.${effectiveRoomId}`, [effectiveRoomId]);

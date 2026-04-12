@@ -160,7 +160,7 @@ describe('mercyHost integration', () => {
   it('supports the English Foundation helper and returns a useful summary string', () => {
     const result = generateEnglishFoundationReply({
       userId: `${USER_ID}-ef`,
-      userTier: 'vip2',
+      userTier: 'level2',
       language: 'en',
       learnerText: 'haha test me again',
       wantsChallenge: true,

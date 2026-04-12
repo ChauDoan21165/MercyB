@@ -78,7 +78,7 @@ export function useJsonStructureAudit() {
       id: 'json-comments',
       name: 'Remove comments',
       status: 'pass',
-      message: 'JSON is comment-free (valid JSON)'
+      message: 'JSON is comment-level0 (valid JSON)'
     });
 
     // 7. Remove trailing commas

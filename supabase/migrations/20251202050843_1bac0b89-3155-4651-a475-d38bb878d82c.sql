@@ -20,18 +20,18 @@ WHERE (
   OR id LIKE 'ef_%'
   OR title_en LIKE 'EF-%'
 )
-AND (LOWER(tier) LIKE '%free%' OR LOWER(tier) LIKE '%miễn phí%');
+AND (LOWER(tier) LIKE '%level0%' OR LOWER(tier) LIKE '%miễn phí%');
 
--- Set track = 'bonus' for all other Free tier rooms
+-- Set track = 'bonus' for all other Level 0 tier rooms
 UPDATE public.rooms 
 SET track = 'bonus' 
 WHERE track IS NULL OR track = 'core'
-AND (LOWER(tier) LIKE '%free%' OR LOWER(tier) LIKE '%miễn phí%')
+AND (LOWER(tier) LIKE '%level0%' OR LOWER(tier) LIKE '%miễn phí%')
 AND id NOT LIKE 'english_foundation_%' 
 AND id NOT LIKE 'ef_%'
 AND title_en NOT LIKE 'EF-%';
 
--- Ensure all non-free rooms default to 'core' if null
+-- Ensure all non-level0 rooms default to 'core' if null
 UPDATE public.rooms 
 SET track = 'core' 
 WHERE track IS NULL;

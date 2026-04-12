@@ -16,7 +16,7 @@
  * PATCH (2026-04-11):
  * - Align room-id candidate generation with roomJsonResolver.
  * - Do not narrow room ids too early in this layer.
- * - Preserve compatibility for underscore / hyphen / suffix-free room ids.
+ * - Preserve compatibility for underscore / hyphen / suffix-level0 room ids.
  *
  * PATCH (2026-04-12):
  * - Prioritize the most likely successful room-id candidate first.
@@ -70,7 +70,7 @@ function underscoreVariant(input: string): string {
 
 function coreRoomIdVariant(input: string): string {
   return String(input || "").replace(
-    /(?:[_-](?:vip[1-9]|free|kids[_-]?[123]|kidslevel[123]|kids_l[123]|vip3[_-]?ii))$/i,
+    /(?:[_-](?:vip[1-9]|level0|kids[_-]?[123]|kidslevel[123]|kids_l[123]|level3[_-]?ii))$/i,
     "",
   );
 }
@@ -348,7 +348,7 @@ function hasUsableRoomPayload(json: AnyRoomJson | null): json is AnyRoomJson {
  * This is now the only runtime path for room JSON.
  *
  * Hardening:
- * - try raw / hyphen / underscore / suffix-free variants
+ * - try raw / hyphen / underscore / suffix-level0 variants
  * - let roomJsonResolver keep the final say on secure fetch candidates
  *
  * Speed:

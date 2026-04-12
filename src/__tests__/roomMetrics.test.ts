@@ -37,7 +37,7 @@ const mockMetrics: RoomMetrics = {
   rooms: [
     {
       id: "room_1",
-      tier: "free",
+      tier: "level0",
       domain: "health",
       title_en: "Room 1",
       title_vi: "Phòng 1",
@@ -47,7 +47,7 @@ const mockMetrics: RoomMetrics = {
     },
     {
       id: "room_2",
-      tier: "vip1",
+      tier: "level1",
       domain: "english",
       title_en: "Room 2",
       title_vi: "Phòng 2",
@@ -57,7 +57,7 @@ const mockMetrics: RoomMetrics = {
     },
     {
       id: "room_3",
-      tier: "vip3",
+      tier: "level3",
       domain: "health",
       title_en: "Room 3",
       title_vi: "Phòng 3",
@@ -67,7 +67,7 @@ const mockMetrics: RoomMetrics = {
     },
     {
       id: "room_4",
-      tier: "free",
+      tier: "level0",
       domain: "strategy",
       title_en: "Room 4",
       title_vi: "Phòng 4",
@@ -78,9 +78,9 @@ const mockMetrics: RoomMetrics = {
   ],
   summary: {
     by_tier: {
-      free: { rooms: 2, entries: 9, approx_words_en: 180, approx_words_vi: 210 },
-      vip1: { rooms: 1, entries: 8, approx_words_en: 200, approx_words_vi: 180 },
-      vip3: { rooms: 1, entries: 6, approx_words_en: 150, approx_words_vi: 160 },
+      level0: { rooms: 2, entries: 9, approx_words_en: 180, approx_words_vi: 210 },
+      level1: { rooms: 1, entries: 8, approx_words_en: 200, approx_words_vi: 180 },
+      level3: { rooms: 1, entries: 6, approx_words_en: 150, approx_words_vi: 160 },
     },
     by_domain: {
       health: { rooms: 2, entries: 11, approx_words_en: 250, approx_words_vi: 280 },

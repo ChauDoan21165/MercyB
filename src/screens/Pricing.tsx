@@ -11,7 +11,7 @@ import {
   trackPricingViewed,
 } from "@/lib/analytics";
 
-type PlanKey = "free" | "month" | "year";
+type PlanKey = "level0" | "month" | "year";
 type PaidPlanKey = "month" | "year";
 type PlanAccent = "plain" | "highlight";
 
@@ -160,9 +160,9 @@ export default function Pricing() {
   const plans = useMemo<Plan[]>(
     () => [
       {
-        key: "free",
-        eyebrow: "Start free / Bắt đầu",
-        title: "Free / Miễn phí",
+        key: "level0",
+        eyebrow: "Start level0 / Bắt đầu",
+        title: "Level 0 / Miễn phí",
         price: "",
         subtitleEn: "Explore a limited set of rooms.",
         subtitleVi: "Khám phá một số phòng giới hạn.",
@@ -213,7 +213,7 @@ export default function Pricing() {
           "Full premium access all year",
           "Less billing friction",
         ],
-        savingsBadge: "Save 17% • 2 months free",
+        savingsBadge: "Save 17% • 2 months level0",
       },
     ],
     [],
@@ -502,15 +502,15 @@ export default function Pricing() {
       minHeight: 48,
       padding: "12px 16px",
       border: "1px solid rgba(15,23,42,0.12)",
-      background: plan.key === "free" ? "#ffffff" : "#0f172a",
-      color: plan.key === "free" ? "#0f172a" : "#ffffff",
+      background: plan.key === "level0" ? "#ffffff" : "#0f172a",
+      color: plan.key === "level0" ? "#0f172a" : "#ffffff",
       fontSize: 15,
       fontWeight: 900,
       cursor: "pointer",
       width: "100%",
     };
 
-    if (plan.key === "free") {
+    if (plan.key === "level0") {
       return (
         <div key={plan.key} style={commonCardStyle}>
           <div style={badgeStyle}>{plan.eyebrow || "placeholder"}</div>

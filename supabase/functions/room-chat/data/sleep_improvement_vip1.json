@@ -1,9 +1,9 @@
 {
-  "header": "// dumb tree, no diagnostics, catch keyword, speak meter, plain (b1), bilingual (en-vi), gentle persuasion only\n\nSleep improvement for VIP 1, evidence-based\n\nEach entry: teach practical steps for better sleep\n\nPhilosophy: supportive, actionable, non-judgmental, humane language\n\nBeliefs:\n- Don’t overwhelm. Encourage restful habits.\n- Don’t judge. Foster calm.\n- Don’t rush. Build consistency.\n\nTalk points\n- Sleep routines enhance rest.\n- Environment supports quality sleep.\n- Relaxation reduces insomnia.\n\nTiny habits to teach:\n- Set one bedtime daily.\n- Avoid one screen before bed.\n- Practice one relaxation technique.",
+  "header": "// dumb tree, no diagnostics, catch keyword, speak meter, plain (b1), bilingual (en-vi), gentle persuasion only\n\nSleep improvement for Level 1, evidence-based\n\nEach entry: teach practical steps for better sleep\n\nPhilosophy: supportive, actionable, non-judgmental, humane language\n\nBeliefs:\n- Don’t overwhelm. Encourage restful habits.\n- Don’t judge. Foster calm.\n- Don’t rush. Build consistency.\n\nTalk points\n- Sleep routines enhance rest.\n- Environment supports quality sleep.\n- Relaxation reduces insomnia.\n\nTiny habits to teach:\n- Set one bedtime daily.\n- Avoid one screen before bed.\n- Practice one relaxation technique.",
   "schema_version": "1.1",
   "schema_id": "sleep_improvement_vip1",
-  "description": "Echologic Mercy Blade room for VIP 1 users to improve sleep with evidence-based strategies",
-  "description_vi": "Phòng Mercy Blade dành cho người dùng VIP 1 để cải thiện giấc ngủ với chiến lược dựa trên bằng chứng",
+  "description": "Echologic Mercy Blade room for Level 1 users to improve sleep with evidence-based strategies",
+  "description_vi": "Phòng Mercy Blade dành cho người dùng Level 1 để cải thiện giấc ngủ với chiến lược dựa trên bằng chứng",
   "supported_languages": ["en", "vi"],
   "localization": { "default": "en", "fallback": "en", "i18n_required": true },
   "safety_disclaimer": "Educational guidance; not a substitute for professional medical advice.",
@@ -20,13 +20,13 @@
     "created_at": "2025-10-21T19:31:00+07:00",
     "updated_at": "2025-10-21T19:31:00+07:00",
     "checksum_sha256": "<placeholder>",
-    "meta_notes": "Keyword-driven; VIP 1 exclusive; light brown background; UUIDv4 artifacts; checksum=SHA-256 of canonical JSON.",
+    "meta_notes": "Keyword-driven; Level 1 exclusive; light brown background; UUIDv4 artifacts; checksum=SHA-256 of canonical JSON.",
     "i18n_verified": true,
     "entry_count": 3,
     "artifact_set_id": "7c8d9e0f-1a2b-4c3d-a4e5-b6c7d8e9f0a1",
     "data_format_version": "MercyBlade-Core-v1.2",
     "room_color": "#D7CCC8",
-    "tier": "vip1"
+    "tier": "level1"
   },
   "enums": {
     "tags": [
@@ -56,8 +56,8 @@
   },
   "room_essay": {
     "format": "markdown",
-    "en": "# Sleep Improvement VIP1\n\nBetter sleep starts with consistent, intentional habits. Research shows good sleep hygiene improves rest by 30% in 4 weeks. This VIP 1 room offers premium strategies to enhance your sleep quality.\n\n**Establish Bedtime Routines**\n- Set a fixed bedtime daily (e.g., 10 PM).\n- Avoid screens 1 hour before bed.\n- Example: Sarah’s routine bedtime improved her energy.\n\n**Optimize Your Sleep Environment**\n- Keep your room dark and cool (e.g., 65°F/18°C).\n- Use comfortable bedding.\n- Studies show a restful environment boosts sleep by 25%.\n\n**Practice Relaxation Techniques**\n- Try 5-minute deep breathing (inhale 4 seconds, exhale 4).\n- Listen to calming music before bed.\n- Example: Minh’s breathing exercises reduced insomnia.\n\n**Stay Consistent**\n- Track sleep patterns weekly with a journal.\n- Consult a doctor for persistent issues.\n\nStart today: set a bedtime or try a breathing exercise. Your VIP 1 tools will guide you to restful nights!\n\n*Word count: 404*",
-    "vi": "# Cải Thiện Giấc Ngủ VIP1\n\nGiấc ngủ tốt hơn bắt đầu từ thói quen nhất quán, có chủ ý. Nghiên cứu cho thấy vệ sinh giấc ngủ tốt cải thiện nghỉ ngơi 30% trong 4 tuần. Phòng VIP 1 này cung cấp chiến lược cao cấp để nâng cao chất lượng giấc ngủ.\n\n**Thiết Lập Thói Quen Trước Giờ Ngủ**\n- Đặt giờ đi ngủ cố định mỗi ngày (ví dụ, 22h).\n- Tránh màn hình 1 giờ trước khi ngủ.\n- Ví dụ: Lan đặt giờ ngủ đều, tăng năng lượng.\n\n**Tối Ưu Môi Trường Ngủ**\n- Giữ phòng tối và mát (ví dụ, 18°C).\n- Sử dụng chăn ga thoải mái.\n- Nghiên cứu cho thấy môi trường thư giãn tăng giấc ngủ 25%.\n\n**Thực Hành Kỹ Thuật Thư Giãn**\n- Thử thở sâu 5 phút (hít vào 4 giây, thở ra 4).\n- Nghe nhạc nhẹ trước khi ngủ.\n- Ví dụ: Hùng tập thở, giảm mất ngủ.\n\n**Giữ Nhất Quán**\n- Theo dõi mẫu giấc ngủ hàng tuần bằng nhật ký.\n- Tham khảo bác sĩ nếu vấn đề kéo dài.\n\nBắt đầu hôm nay: đặt giờ ngủ hoặc thử bài tập thở. Công cụ VIP 1 sẽ dẫn bạn đến những đêm yên giấc!\n\n*Số từ: 412*",
+    "en": "# Sleep Improvement Level 1\n\nBetter sleep starts with consistent, intentional habits. Research shows good sleep hygiene improves rest by 30% in 4 weeks. This Level 1 room offers premium strategies to enhance your sleep quality.\n\n**Establish Bedtime Routines**\n- Set a fixed bedtime daily (e.g., 10 PM).\n- Avoid screens 1 hour before bed.\n- Example: Sarah’s routine bedtime improved her energy.\n\n**Optimize Your Sleep Environment**\n- Keep your room dark and cool (e.g., 65°F/18°C).\n- Use comfortable bedding.\n- Studies show a restful environment boosts sleep by 25%.\n\n**Practice Relaxation Techniques**\n- Try 5-minute deep breathing (inhale 4 seconds, exhale 4).\n- Listen to calming music before bed.\n- Example: Minh’s breathing exercises reduced insomnia.\n\n**Stay Consistent**\n- Track sleep patterns weekly with a journal.\n- Consult a doctor for persistent issues.\n\nStart today: set a bedtime or try a breathing exercise. Your Level 1 tools will guide you to restful nights!\n\n*Word count: 404*",
+    "vi": "# Cải Thiện Giấc Ngủ Level 1\n\nGiấc ngủ tốt hơn bắt đầu từ thói quen nhất quán, có chủ ý. Nghiên cứu cho thấy vệ sinh giấc ngủ tốt cải thiện nghỉ ngơi 30% trong 4 tuần. Phòng Level 1 này cung cấp chiến lược cao cấp để nâng cao chất lượng giấc ngủ.\n\n**Thiết Lập Thói Quen Trước Giờ Ngủ**\n- Đặt giờ đi ngủ cố định mỗi ngày (ví dụ, 22h).\n- Tránh màn hình 1 giờ trước khi ngủ.\n- Ví dụ: Lan đặt giờ ngủ đều, tăng năng lượng.\n\n**Tối Ưu Môi Trường Ngủ**\n- Giữ phòng tối và mát (ví dụ, 18°C).\n- Sử dụng chăn ga thoải mái.\n- Nghiên cứu cho thấy môi trường thư giãn tăng giấc ngủ 25%.\n\n**Thực Hành Kỹ Thuật Thư Giãn**\n- Thử thở sâu 5 phút (hít vào 4 giây, thở ra 4).\n- Nghe nhạc nhẹ trước khi ngủ.\n- Ví dụ: Hùng tập thở, giảm mất ngủ.\n\n**Giữ Nhất Quán**\n- Theo dõi mẫu giấc ngủ hàng tuần bằng nhật ký.\n- Tham khảo bác sĩ nếu vấn đề kéo dài.\n\nBắt đầu hôm nay: đặt giờ ngủ hoặc thử bài tập thở. Công cụ Level 1 sẽ dẫn bạn đến những đêm yên giấc!\n\n*Số từ: 412*",
     "word_count_en": 404,
     "word_count_vi": 412,
     "updated_at": "2025-10-21T19:31:00+07:00"

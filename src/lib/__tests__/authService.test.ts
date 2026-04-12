@@ -45,8 +45,8 @@ describe("authService realistic Supabase scenarios", () => {
         source: "stripe",
         status: "active",
         expires_at: null,
-        plan_name: "VIP1 Monthly",
-        tier_id: "vip1",
+        plan_name: "Level 1 Monthly",
+        tier_id: "level1",
       },
       error: null,
     });
@@ -104,8 +104,8 @@ describe("authService realistic Supabase scenarios", () => {
         source: " stripe ",
         status: " ACTIVE ",
         expires_at: "",
-        plan_name: " VIP3 yearly ",
-        tier_id: " vip3 ",
+        plan_name: " Level 3 yearly ",
+        tier_id: " level3 ",
       },
       error: null,
     });
@@ -117,12 +117,12 @@ describe("authService realistic Supabase scenarios", () => {
       source: "stripe",
       status: "active",
       expires_at: null,
-      plan_name: "VIP3 yearly",
-      tier_id: "vip3",
+      plan_name: "Level 3 yearly",
+      tier_id: "level3",
     });
   });
 
-  it("maps premium month-style payloads to vip1", () => {
+  it("maps premium month-style payloads to level1", () => {
     const tier = resolveEntitlementTier({
       is_premium: true,
       source: "stripe",
@@ -132,10 +132,10 @@ describe("authService realistic Supabase scenarios", () => {
       tier_id: null,
     });
 
-    expect(tier).toBe("vip1");
+    expect(tier).toBe("level1");
   });
 
-  it("maps yearly / annual payloads to vip9", () => {
+  it("maps yearly / annual payloads to level9", () => {
     const tier = resolveEntitlementTier({
       is_premium: true,
       source: "stripe",
@@ -145,25 +145,25 @@ describe("authService realistic Supabase scenarios", () => {
       tier_id: null,
     });
 
-    expect(tier).toBe("vip9");
+    expect(tier).toBe("level9");
   });
 
-  it("treats inactive premium-looking payloads as free", () => {
+  it("treats inactive premium-looking payloads as level0", () => {
     const ent = {
       is_premium: true,
       source: "stripe",
       status: "past_due",
       expires_at: null,
-      plan_name: "VIP3",
-      tier_id: "vip3",
+      plan_name: "Level 3",
+      tier_id: "level3",
     } as const;
 
     expect(entitlementIsPremium(ent)).toBe(false);
-    expect(resolveEntitlementTier(ent)).toBe("free");
-    expect(entitlementToVipKey(ent)).toBe("free");
+    expect(resolveEntitlementTier(ent)).toBe("level0");
+    expect(entitlementToVipKey(ent)).toBe("level0");
   });
 
-  it("falls back unknown premium payloads to vip1", () => {
+  it("falls back unknown premium payloads to level1", () => {
     const ent = {
       is_premium: true,
       source: "stripe",
@@ -173,21 +173,21 @@ describe("authService realistic Supabase scenarios", () => {
       tier_id: "something-odd",
     } as const;
 
-    expect(resolveEntitlementTier(ent)).toBe("vip1");
-    expect(entitlementToVipKey(ent)).toBe("vip1");
+    expect(resolveEntitlementTier(ent)).toBe("level1");
+    expect(entitlementToVipKey(ent)).toBe("level1");
   });
 
-  it("maps higher vip tiers to vip3 compatibility key", () => {
+  it("maps higher vip tiers to level3 compatibility key", () => {
     const ent = {
       is_premium: true,
       source: "stripe",
       status: "active",
       expires_at: null,
-      plan_name: "VIP6",
-      tier_id: "vip6",
+      plan_name: "Level 6",
+      tier_id: "level6",
     } as const;
 
-    expect(resolveEntitlementTier(ent)).toBe("vip6");
-    expect(entitlementToVipKey(ent)).toBe("vip3");
+    expect(resolveEntitlementTier(ent)).toBe("level6");
+    expect(entitlementToVipKey(ent)).toBe("level3");
   });
 });

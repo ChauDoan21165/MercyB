@@ -29,10 +29,10 @@ export async function runScenario_iPhoneSE_OnboardingChat() {
       },
     },
     {
-      name: 'Open VIP2 tier grid',
+      name: 'Open Level 2 tier grid',
       action: async () => {
         await delay(1000);
-        simulator.info('VIP2 grid opened');
+        simulator.info('Level 2 grid opened');
         
         // Check layout issues
         const hasOverflow = checkForOverflow();

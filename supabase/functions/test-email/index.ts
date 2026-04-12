@@ -11,7 +11,7 @@ serve(async () => {
     to: "your_email_here@example.com",
     templateUrl,
     variables: {
-      vip_tier: "VIP3",
+      vip_tier: "Level 3",
       effective_date: "2026-01-05",
     },
   });

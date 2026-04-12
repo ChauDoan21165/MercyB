@@ -10,38 +10,38 @@ import { cn } from "@/lib/utils";
 
 // ✅ Updated UI tiers (include premium tiers)
 const UI_TIER_IDS: TierId[] = [
-  "free",
+  "level0",
   "premium_month",
   "premium_year",
-  "vip1",
-  "vip2",
-  "vip3",
-  "vip4",
-  "vip5",
-  "vip6",
-  "vip7",
-  "vip8",
-  "vip9",
+  "level1",
+  "level2",
+  "level3",
+  "level4",
+  "level5",
+  "level6",
+  "level7",
+  "level8",
+  "level9",
   "kids_1",
   "kids_2",
   "kids_3",
 ];
 
 const TIER_COLORS: Record<string, string> = {
-  free: "bg-zinc-100 text-zinc-800",
+  level0: "bg-zinc-100 text-zinc-800",
 
   premium_month: "bg-blue-100 text-blue-800",
   premium_year: "bg-green-100 text-green-800",
 
-  vip1: "bg-zinc-100 text-zinc-800",
-  vip2: "bg-zinc-100 text-zinc-800",
-  vip3: "bg-zinc-100 text-zinc-800",
-  vip4: "bg-zinc-100 text-zinc-800",
-  vip5: "bg-zinc-100 text-zinc-800",
-  vip6: "bg-zinc-100 text-zinc-800",
-  vip7: "bg-zinc-100 text-zinc-800",
-  vip8: "bg-zinc-100 text-zinc-800",
-  vip9: "bg-zinc-100 text-zinc-800",
+  level1: "bg-zinc-100 text-zinc-800",
+  level2: "bg-zinc-100 text-zinc-800",
+  level3: "bg-zinc-100 text-zinc-800",
+  level4: "bg-zinc-100 text-zinc-800",
+  level5: "bg-zinc-100 text-zinc-800",
+  level6: "bg-zinc-100 text-zinc-800",
+  level7: "bg-zinc-100 text-zinc-800",
+  level8: "bg-zinc-100 text-zinc-800",
+  level9: "bg-zinc-100 text-zinc-800",
 
   kids_1: "bg-zinc-100 text-zinc-800",
   kids_2: "bg-zinc-100 text-zinc-800",
@@ -86,19 +86,19 @@ export default function Tiers() {
     const counts: Record<TierBucket, number> = {
       unknown: 0,
 
-      free: 0,
+      level0: 0,
       premium_month: 0,
       premium_year: 0,
 
-      vip1: 0,
-      vip2: 0,
-      vip3: 0,
-      vip4: 0,
-      vip5: 0,
-      vip6: 0,
-      vip7: 0,
-      vip8: 0,
-      vip9: 0,
+      level1: 0,
+      level2: 0,
+      level3: 0,
+      level4: 0,
+      level5: 0,
+      level6: 0,
+      level7: 0,
+      level8: 0,
+      level9: 0,
 
       kids_1: 0,
       kids_2: 0,
@@ -115,8 +115,8 @@ export default function Tiers() {
 
       const tierId = normalizeTierOrUndefined(rawTier);
 
-      // keep vip3 hidden (your original rule)
-      if (tierId === ("vip3" as any)) {
+      // keep level3 hidden (your original rule)
+      if (tierId === ("level3" as any)) {
         counts.unknown++;
         continue;
       }
@@ -171,7 +171,7 @@ export default function Tiers() {
                 <span
                   className={cn(
                     "inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm font-medium",
-                    TIER_COLORS[tier] || TIER_COLORS.free
+                    TIER_COLORS[tier] || TIER_COLORS.level0
                   )}
                 >
                   <span className="inline-block h-2.5 w-2.5 rounded-full bg-zinc-500" />

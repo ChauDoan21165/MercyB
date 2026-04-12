@@ -194,9 +194,9 @@ export default function Billing() {
   const canceledLike = isCanceledLike(ent?.status);
 
   const planName = useMemo(() => {
-    if (!ent) return "Free";
+    if (!ent) return "Level 0";
     if (ent.plan_name && ent.plan_name.trim()) return ent.plan_name.trim();
-    return isPremium ? "Premium" : "Free";
+    return isPremium ? "Premium" : "Level 0";
   }, [ent, isPremium]);
 
   const expiryText = useMemo(() => formatDateTime(getExpiryValue(ent)), [ent]);
@@ -602,7 +602,7 @@ export default function Billing() {
               display: "inline-block",
             }}
           >
-            Save 17% • 2 months free
+            Save 17% • 2 months level0
           </div>
 
           <button

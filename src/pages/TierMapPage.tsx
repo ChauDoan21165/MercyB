@@ -2,7 +2,7 @@
 // MB-BLUE-98.2 — 2025-12-29 (+0700)
 /**
  * TierMapPage (AUTHORITATIVE)
- * Shows tiers Free → VIP9 and lists rooms belonging to each tier.
+ * Shows tiers Level 0 → Level 9 and lists rooms belonging to each tier.
  *
  * UI UPGRADE (LOCKED INTENT):
  * - Keep “control panel” scannable feel.
@@ -18,43 +18,43 @@ import { getRoomList, type RoomMeta as FetcherRoomMeta } from "@/lib/roomFetcher
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 
 type TierId =
-  | "free"
-  | "vip1"
-  | "vip2"
-  | "vip3"
-  | "vip4"
-  | "vip5"
-  | "vip6"
-  | "vip7"
-  | "vip8"
-  | "vip9";
+  | "level0"
+  | "level1"
+  | "level2"
+  | "level3"
+  | "level4"
+  | "level5"
+  | "level6"
+  | "level7"
+  | "level8"
+  | "level9";
 
 const TIERS: { id: TierId; label: string; hint?: string }[] = [
-  { id: "free", label: "FREE", hint: "Core" },
-  { id: "vip1", label: "VIP1", hint: "Core extension" },
-  { id: "vip2", label: "VIP2", hint: "Core extension" },
-  { id: "vip3", label: "VIP3", hint: "Core deep" },
-  { id: "vip4", label: "VIP4", hint: "Career choosing" },
-  { id: "vip5", label: "VIP5", hint: "Advanced English writing" },
-  { id: "vip6", label: "VIP6", hint: "Psychology" },
-  { id: "vip7", label: "VIP7", hint: "Reserved" },
-  { id: "vip8", label: "VIP8", hint: "Reserved" },
-  { id: "vip9", label: "VIP9", hint: "Strategy mindset" },
+  { id: "level0", label: "FREE", hint: "Core" },
+  { id: "level1", label: "Level 1", hint: "Core extension" },
+  { id: "level2", label: "Level 2", hint: "Core extension" },
+  { id: "level3", label: "Level 3", hint: "Core deep" },
+  { id: "level4", label: "Level 4", hint: "Career choosing" },
+  { id: "level5", label: "Level 5", hint: "Advanced English writing" },
+  { id: "level6", label: "Level 6", hint: "Psychology" },
+  { id: "level7", label: "Level 7", hint: "Reserved" },
+  { id: "level8", label: "Level 8", hint: "Reserved" },
+  { id: "level9", label: "Level 9", hint: "Strategy mindset" },
 ];
 
 function normTier(t: unknown): TierId {
-  const x = String(t || "free").toLowerCase().trim();
-  if (x === "free") return "free";
-  if (x === "vip1") return "vip1";
-  if (x === "vip2") return "vip2";
-  if (x === "vip3") return "vip3";
-  if (x === "vip4") return "vip4";
-  if (x === "vip5") return "vip5";
-  if (x === "vip6") return "vip6";
-  if (x === "vip7") return "vip7";
-  if (x === "vip8") return "vip8";
-  if (x === "vip9") return "vip9";
-  return "free";
+  const x = String(t || "level0").toLowerCase().trim();
+  if (x === "level0") return "level0";
+  if (x === "level1") return "level1";
+  if (x === "level2") return "level2";
+  if (x === "level3") return "level3";
+  if (x === "level4") return "level4";
+  if (x === "level5") return "level5";
+  if (x === "level6") return "level6";
+  if (x === "level7") return "level7";
+  if (x === "level8") return "level8";
+  if (x === "level9") return "level9";
+  return "level0";
 }
 
 function titleOf(r: any) {
@@ -86,16 +86,16 @@ export default function TierMapPage() {
   // UI state
   const [query, setQuery] = useState("");
   const [expanded, setExpanded] = useState<Record<TierId, boolean>>({
-    free: true,
-    vip1: false,
-    vip2: false,
-    vip3: false,
-    vip4: false,
-    vip5: false,
-    vip6: false,
-    vip7: false,
-    vip8: false,
-    vip9: true,
+    level0: true,
+    level1: false,
+    level2: false,
+    level3: false,
+    level4: false,
+    level5: false,
+    level6: false,
+    level7: false,
+    level8: false,
+    level9: true,
   });
 
   useEffect(() => {
@@ -117,16 +117,16 @@ export default function TierMapPage() {
 
   const grouped = useMemo(() => {
     const map: Record<TierId, FetcherRoomMeta[]> = {
-      free: [],
-      vip1: [],
-      vip2: [],
-      vip3: [],
-      vip4: [],
-      vip5: [],
-      vip6: [],
-      vip7: [],
-      vip8: [],
-      vip9: [],
+      level0: [],
+      level1: [],
+      level2: [],
+      level3: [],
+      level4: [],
+      level5: [],
+      level6: [],
+      level7: [],
+      level8: [],
+      level9: [],
     };
 
     for (const r of rooms) {
@@ -143,16 +143,16 @@ export default function TierMapPage() {
 
   const filteredGrouped = useMemo(() => {
     const out: Record<TierId, FetcherRoomMeta[]> = {
-      free: [],
-      vip1: [],
-      vip2: [],
-      vip3: [],
-      vip4: [],
-      vip5: [],
-      vip6: [],
-      vip7: [],
-      vip8: [],
-      vip9: [],
+      level0: [],
+      level1: [],
+      level2: [],
+      level3: [],
+      level4: [],
+      level5: [],
+      level6: [],
+      level7: [],
+      level8: [],
+      level9: [],
     };
 
     for (const t of TIERS) {
@@ -296,7 +296,7 @@ export default function TierMapPage() {
                 Mercy Blade — Tier Map
               </h1>
               <p className="mt-3 text-sm mb-hero-sub">
-                A structured view of your rooms: Free → VIP9. Click any room to open.
+                A structured view of your rooms: Level 0 → Level 9. Click any room to open.
               </p>
             </div>
 

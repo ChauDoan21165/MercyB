@@ -127,7 +127,7 @@ export default function HomeHero({
             <div className="badges" aria-label="Hero badges">
               <span className="badge">Audio-first</span>
               <span className="badge">Bilingual</span>
-              <span className="badge">Free → VIP9</span>
+              <span className="badge">Level 0 → Level 9</span>
             </div>
           </div>
         </div>

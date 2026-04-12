@@ -16,16 +16,16 @@ import { PUBLIC_ROOM_MANIFEST } from "@/lib/roomManifest";
 import { tierFromRoomId } from "@/lib/tierFromRoomId";
 
 export type TierId =
-  | "free"
-  | "vip1"
-  | "vip2"
-  | "vip3"
-  | "vip4"
-  | "vip5"
-  | "vip6"
-  | "vip7"
-  | "vip8"
-  | "vip9"
+  | "level0"
+  | "level1"
+  | "level2"
+  | "level3"
+  | "level4"
+  | "level5"
+  | "level6"
+  | "level7"
+  | "level8"
+  | "level9"
   | "kids_1"
   | "kids_2"
   | "kids_3";
@@ -57,16 +57,16 @@ export type TierLoadResult = {
 
 export function isTierId(x: any): x is TierId {
   return (
-    x === "free" ||
-    x === "vip1" ||
-    x === "vip2" ||
-    x === "vip3" ||
-    x === "vip4" ||
-    x === "vip5" ||
-    x === "vip6" ||
-    x === "vip7" ||
-    x === "vip8" ||
-    x === "vip9" ||
+    x === "level0" ||
+    x === "level1" ||
+    x === "level2" ||
+    x === "level3" ||
+    x === "level4" ||
+    x === "level5" ||
+    x === "level6" ||
+    x === "level7" ||
+    x === "level8" ||
+    x === "level9" ||
     x === "kids_1" ||
     x === "kids_2" ||
     x === "kids_3"
@@ -100,7 +100,7 @@ function normalizeTierValue(x: unknown): TierId | "unknown" {
 /**
  * STRICT tier detection:
  * - Determine tier ONLY when the id/path contains an explicit tier marker.
- * - Never allow "free" to be a default for unknown.
+ * - Never allow "level0" to be a default for unknown.
  *
  * CRITICAL FIX:
  * - Kids lesson ids are often ..._kids_l1/_kids_l2/_kids_l3 (NOT kids_1/2/3)
@@ -143,21 +143,21 @@ export function strictTierFromIdOrPath(idOrPath: string): TierId | "unknown" {
     return "kids_3";
   }
 
-  if (/(^|[_-])vip9($|[_-])/.test(idLower)) return "vip9";
-  if (/(^|[_-])vip8($|[_-])/.test(idLower)) return "vip8";
-  if (/(^|[_-])vip7($|[_-])/.test(idLower)) return "vip7";
-  if (/(^|[_-])vip6($|[_-])/.test(idLower)) return "vip6";
-  if (/(^|[_-])vip5($|[_-])/.test(idLower)) return "vip5";
-  if (/(^|[_-])vip4($|[_-])/.test(idLower)) return "vip4";
-  if (/(^|[_-])vip3($|[_-])/.test(idLower)) return "vip3";
-  if (/(^|[_-])vip2($|[_-])/.test(idLower)) return "vip2";
-  if (/(^|[_-])vip1($|[_-])/.test(idLower)) return "vip1";
+  if (/(^|[_-])level9($|[_-])/.test(idLower)) return "level9";
+  if (/(^|[_-])level8($|[_-])/.test(idLower)) return "level8";
+  if (/(^|[_-])level7($|[_-])/.test(idLower)) return "level7";
+  if (/(^|[_-])level6($|[_-])/.test(idLower)) return "level6";
+  if (/(^|[_-])level5($|[_-])/.test(idLower)) return "level5";
+  if (/(^|[_-])level4($|[_-])/.test(idLower)) return "level4";
+  if (/(^|[_-])level3($|[_-])/.test(idLower)) return "level3";
+  if (/(^|[_-])level2($|[_-])/.test(idLower)) return "level2";
+  if (/(^|[_-])level1($|[_-])/.test(idLower)) return "level1";
 
-  if (/(^|[_-])free($|[_-])/.test(idLower)) return "free";
+  if (/(^|[_-])level0($|[_-])/.test(idLower)) return "level0";
 
   const t = String(tierFromRoomId(leaf) ?? "").trim().toLowerCase();
   if (t && isTierId(t)) {
-    if (t === "free") return "unknown";
+    if (t === "level0") return "unknown";
     return t;
   }
 
@@ -167,7 +167,7 @@ export function strictTierFromIdOrPath(idOrPath: string): TierId | "unknown" {
 /**
  * DB / manifest fallback tier inference:
  * - When ids do not contain explicit "_vipX" markers, use existing tierFromRoomId().
- * - MUST NOT let anything default to free.
+ * - MUST NOT let anything default to level0.
  */
 function inferTierFromIdFallback(idOrPath: string): TierId | "unknown" {
   const leaf = normalizeLeafId(String(idOrPath || "").trim());
@@ -175,7 +175,7 @@ function inferTierFromIdFallback(idOrPath: string): TierId | "unknown" {
 
   const t = String(tierFromRoomId(leaf) ?? "").trim().toLowerCase();
   if (!t || !isTierId(t)) return "unknown";
-  if (t === "free") return "unknown";
+  if (t === "level0") return "unknown";
   return t;
 }
 

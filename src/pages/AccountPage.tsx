@@ -103,8 +103,8 @@ export default function AccountPage() {
       return ent.plan_name.trim();
     }
 
-    if (ent?.vip_tier === "vip9") return "Cao cấp";
-    if (ent?.vip_tier === "vip1") return "Cao cấp";
+    if (ent?.vip_tier === "level9") return "Cao cấp";
+    if (ent?.vip_tier === "level1") return "Cao cấp";
 
     return "Cao cấp";
   }, [ent, entitlementLoading, isPremium]);
@@ -370,7 +370,7 @@ export default function AccountPage() {
                 ? "Checking backend entitlement…"
                 : isPremium
                   ? `Granted because backend entitlement says premium is ${ent?.status || "active"}.`
-                  : "Free because backend entitlement does not currently grant premium."}
+                  : "Level 0 because backend entitlement does not currently grant premium."}
             </div>
           </div>
 

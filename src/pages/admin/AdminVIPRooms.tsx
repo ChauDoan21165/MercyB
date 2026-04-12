@@ -189,7 +189,7 @@ export default function AdminVIPRooms() {
       >
         <div style={{ fontWeight: 900 }}>Next wiring (later)</div>
         <ul style={{ marginTop: 10, lineHeight: 1.7 }}>
-          <li>List rooms where tier is VIP1/VIP3/VIP9 (from DB rooms table / view).</li>
+          <li>List rooms where tier is Level 1/Level 3/Level 9 (from DB rooms table / view).</li>
           <li>Show counts by tier, plus “missing metadata” warnings.</li>
           <li>Link to open a room (preserving app context).</li>
         </ul>

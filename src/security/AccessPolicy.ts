@@ -19,22 +19,22 @@ const ALL_TIERS: readonly TierId[] = ALL_TIER_IDS;
 
 // Adult tiers only (no kids)
 const ADULT_TIERS: readonly TierId[] = [
-  "free",
+  "level0",
   "premium_month",
   "premium_year",
-  "vip1",
-  "vip2",
-  "vip3",
-  "vip4",
-  "vip5",
-  "vip6",
-  "vip7",
-  "vip8",
-  "vip9",
+  "level1",
+  "level2",
+  "level3",
+  "level4",
+  "level5",
+  "level6",
+  "level7",
+  "level8",
+  "level9",
 ] as const;
 
 // Paid billing tiers only.
-// VIP1..VIP9 are curriculum labels, not payment plans.
+// Level 1..Level 9 are curriculum labels, not payment plans.
 const PAID_BILLING_TIERS: readonly TierId[] = [
   "premium_month",
   "premium_year",
@@ -46,15 +46,15 @@ const PAID_BILLING_TIERS: readonly TierId[] = [
 const PAID_ADULT_ACCESS_TIERS: readonly TierId[] = [
   "premium_month",
   "premium_year",
-  "vip1",
-  "vip2",
-  "vip3",
-  "vip4",
-  "vip5",
-  "vip6",
-  "vip7",
-  "vip8",
-  "vip9",
+  "level1",
+  "level2",
+  "level3",
+  "level4",
+  "level5",
+  "level6",
+  "level7",
+  "level8",
+  "level9",
 ] as const;
 
 // Kids + adult tiers that can access kids content
@@ -84,70 +84,70 @@ export const ACCESS_POLICIES: Record<string, AccessRule> = {
     allowedRoles: ["user", "moderator", "admin"],
     allowedTiers: ADULT_TIERS,
     requireAuth: true,
-    description: "Free rooms - accessible to all authenticated adult users",
+    description: "Level 0 rooms - accessible to all authenticated adult users",
   },
 
   vip1_rooms: {
     allowedRoles: ["user", "moderator", "admin"],
     allowedTiers: PAID_ADULT_ACCESS_TIERS,
     requireAuth: true,
-    description: "VIP1 curriculum room - any paid adult user can access",
+    description: "Level 1 curriculum room - any paid adult user can access",
   },
 
   vip2_rooms: {
     allowedRoles: ["user", "moderator", "admin"],
     allowedTiers: PAID_ADULT_ACCESS_TIERS,
     requireAuth: true,
-    description: "VIP2 curriculum room - any paid adult user can access",
+    description: "Level 2 curriculum room - any paid adult user can access",
   },
 
   vip3_rooms: {
     allowedRoles: ["user", "moderator", "admin"],
     allowedTiers: PAID_ADULT_ACCESS_TIERS,
     requireAuth: true,
-    description: "VIP3 curriculum room - any paid adult user can access",
+    description: "Level 3 curriculum room - any paid adult user can access",
   },
 
   vip4_rooms: {
     allowedRoles: ["user", "moderator", "admin"],
     allowedTiers: PAID_ADULT_ACCESS_TIERS,
     requireAuth: true,
-    description: "VIP4 curriculum room - any paid adult user can access",
+    description: "Level 4 curriculum room - any paid adult user can access",
   },
 
   vip5_rooms: {
     allowedRoles: ["user", "moderator", "admin"],
     allowedTiers: PAID_ADULT_ACCESS_TIERS,
     requireAuth: true,
-    description: "VIP5 curriculum room - any paid adult user can access",
+    description: "Level 5 curriculum room - any paid adult user can access",
   },
 
   vip6_rooms: {
     allowedRoles: ["user", "moderator", "admin"],
     allowedTiers: PAID_ADULT_ACCESS_TIERS,
     requireAuth: true,
-    description: "VIP6 curriculum room - any paid adult user can access",
+    description: "Level 6 curriculum room - any paid adult user can access",
   },
 
   vip7_rooms: {
     allowedRoles: ["user", "moderator", "admin"],
     allowedTiers: PAID_ADULT_ACCESS_TIERS,
     requireAuth: true,
-    description: "VIP7 curriculum room - any paid adult user can access",
+    description: "Level 7 curriculum room - any paid adult user can access",
   },
 
   vip8_rooms: {
     allowedRoles: ["user", "moderator", "admin"],
     allowedTiers: PAID_ADULT_ACCESS_TIERS,
     requireAuth: true,
-    description: "VIP8 curriculum room - any paid adult user can access",
+    description: "Level 8 curriculum room - any paid adult user can access",
   },
 
   vip9_rooms: {
     allowedRoles: ["user", "moderator", "admin"],
     allowedTiers: PAID_ADULT_ACCESS_TIERS,
     requireAuth: true,
-    description: "VIP9 curriculum room - any paid adult user can access",
+    description: "Level 9 curriculum room - any paid adult user can access",
   },
 
   kids_rooms: {
@@ -191,43 +191,43 @@ function normalizePageId(input: string): string {
     home: "homepage",
     index: "homepage",
 
-    free: "free_rooms",
+    level0: "free_rooms",
     free_room: "free_rooms",
     free_rooms: "free_rooms",
 
-    vip1: "vip1_rooms",
+    level1: "vip1_rooms",
     vip1_room: "vip1_rooms",
     vip1_rooms: "vip1_rooms",
 
-    vip2: "vip2_rooms",
+    level2: "vip2_rooms",
     vip2_room: "vip2_rooms",
     vip2_rooms: "vip2_rooms",
 
-    vip3: "vip3_rooms",
+    level3: "vip3_rooms",
     vip3_room: "vip3_rooms",
     vip3_rooms: "vip3_rooms",
 
-    vip4: "vip4_rooms",
+    level4: "vip4_rooms",
     vip4_room: "vip4_rooms",
     vip4_rooms: "vip4_rooms",
 
-    vip5: "vip5_rooms",
+    level5: "vip5_rooms",
     vip5_room: "vip5_rooms",
     vip5_rooms: "vip5_rooms",
 
-    vip6: "vip6_rooms",
+    level6: "vip6_rooms",
     vip6_room: "vip6_rooms",
     vip6_rooms: "vip6_rooms",
 
-    vip7: "vip7_rooms",
+    level7: "vip7_rooms",
     vip7_room: "vip7_rooms",
     vip7_rooms: "vip7_rooms",
 
-    vip8: "vip8_rooms",
+    level8: "vip8_rooms",
     vip8_room: "vip8_rooms",
     vip8_rooms: "vip8_rooms",
 
-    vip9: "vip9_rooms",
+    level9: "vip9_rooms",
     vip9_room: "vip9_rooms",
     vip9_rooms: "vip9_rooms",
 
@@ -243,7 +243,7 @@ function normalizePageId(input: string): string {
     if (m?.[1]) return `${m[1].toLowerCase()}_rooms`;
   }
 
-  if (/(^|\/|_|-)(free)($|\/|_|-)/i.test(clean)) {
+  if (/(^|\/|_|-)(level0)($|\/|_|-)/i.test(clean)) {
     return "free_rooms";
   }
 
@@ -261,7 +261,7 @@ function safeTier(value: unknown): TierId {
     return raw;
   }
 
-  return "free";
+  return "level0";
 }
 
 function normalizeRoomTier(roomTier: TierId): TierId {
@@ -276,7 +276,7 @@ function normalizeUserTierForAccess(userTier: TierId): TierId {
   const raw = safeTier(userTier);
 
   if (raw === "premium_month" || raw === "premium_year") {
-    return "vip9";
+    return "level9";
   }
 
   return raw;
@@ -333,8 +333,8 @@ export function checkPageAccess(
         normalizedPageId.replace(/_rooms?$/, "") as TierId,
       );
     }
-    if (/^free(_rooms?)?$/.test(normalizedPageId)) {
-      return checkRoomAccess(rawUserTier, "free");
+    if (/^level0(_rooms?)?$/.test(normalizedPageId)) {
+      return checkRoomAccess(rawUserTier, "level0");
     }
     if (/^kids(_rooms?)?$/.test(normalizedPageId)) {
       return checkRoomAccess(rawUserTier, "kids_1");
@@ -350,10 +350,10 @@ export function checkPageAccess(
   }
 
   if (!matchesAllowedTierPolicy(rawUserTier, policy.allowedTiers)) {
-    if (/^(free|vip[1-9]|kids)_rooms$/.test(normalizedPageId)) {
+    if (/^(level0|vip[1-9]|kids)_rooms$/.test(normalizedPageId)) {
       const roomTier =
         normalizedPageId === "free_rooms"
-          ? "free"
+          ? "level0"
           : normalizedPageId === "kids_rooms"
             ? "kids_1"
             : normalizedPageId.replace("_rooms", "");
@@ -367,10 +367,10 @@ export function checkPageAccess(
     };
   }
 
-  if (/^(free|vip[1-9]|kids)_rooms$/.test(normalizedPageId)) {
+  if (/^(level0|vip[1-9]|kids)_rooms$/.test(normalizedPageId)) {
     const roomTier =
       normalizedPageId === "free_rooms"
-        ? "free"
+        ? "level0"
         : normalizedPageId === "kids_rooms"
           ? "kids_1"
           : normalizedPageId.replace("_rooms", "");
@@ -386,9 +386,9 @@ export function checkPageAccess(
  *
  * Business rule:
  * - kids tiers remain governed by kidsAccess
- * - free adult users can access only free adult rooms
+ * - level0 adult users can access only level0 adult rooms
  * - paid adult users can access all adult curriculum rooms
- * - VIP1..VIP9 are curriculum labels, not payment gates
+ * - Level 1..Level 9 are curriculum labels, not payment gates
  */
 export function checkRoomAccess(
   userTier: TierId,
@@ -412,7 +412,7 @@ export function checkRoomAccess(
     return { allowed: true };
   }
 
-  if (normalizedRoomTier === "free") {
+  if (normalizedRoomTier === "level0") {
     return { allowed: true };
   }
 

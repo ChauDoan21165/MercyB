@@ -123,11 +123,11 @@ Deno.serve(async (req) => {
     const end = new Date();
     end.setFullYear(end.getFullYear() + 1);
 
-    // Normalize tier name for lookup (gift codes use VIP3, VIP3, etc. but table may have "VIP3" or "VIP3 II")
+    // Normalize tier name for lookup (gift codes use Level 3, Level 3, etc. but table may have "Level 3" or "Level 3 II")
     let tierLookupName = gift.tier.toUpperCase();
-    // Handle VIP3 -> "VIP3 II" mapping
-    if (tierLookupName === 'VIP3') {
-      tierLookupName = 'VIP3 II';
+    // Handle Level 3 -> "Level 3 II" mapping
+    if (tierLookupName === 'Level 3') {
+      tierLookupName = 'Level 3 II';
     }
 
     // Try exact match first, then try with the normalized name

@@ -77,11 +77,11 @@ vi.mock("@/lib/authService", () => {
   return {
     fetchCurrentEntitlement: vi.fn(async () => entitlement),
     resolveEntitlementTier: vi.fn((ent: any) => {
-      const raw = ent?.tier ?? "free";
+      const raw = ent?.tier ?? "level0";
 
       if (raw === "premium_month") return "premium_month";
       if (raw === "premium_year") return "premium_year";
-      return "free";
+      return "level0";
     }),
     __mock: { __setEntitlement },
   };
@@ -129,21 +129,21 @@ describe("useUserAccess snapshots - baseline", () => {
     __setEntitlement(null);
   });
 
-  it("free tier user access snapshot", async () => {
-    __setAuth({ user: { email: "free@example.com" }, isLoading: false });
+  it("level0 tier user access snapshot", async () => {
+    __setAuth({ user: { email: "level0@example.com" }, isLoading: false });
 
     __setProfilesResult({
-      data: { email: "free@example.com", is_admin: false, admin_level: 0 },
+      data: { email: "level0@example.com", is_admin: false, admin_level: 0 },
       error: null,
     });
 
-    __setEntitlement({ tier: "free" });
+    __setEntitlement({ tier: "level0" });
 
     const { result } = renderHook(() => useUserAccess());
 
     await waitFor(() => {
       expect(result.current.isAuthenticated).toBe(true);
-      expect(result.current.tier).toBe("free");
+      expect(result.current.tier).toBe("level0");
       expect(result.current.isLoading).toBe(false);
     });
 
@@ -156,7 +156,7 @@ describe("useUserAccess snapshots - baseline", () => {
         "isHighAdmin": false,
         "isLoading": false,
         "loading": false,
-        "tier": "free",
+        "tier": "level0",
       }
     `);
   });
@@ -231,7 +231,7 @@ describe("useUserAccess snapshots - baseline", () => {
       error: null,
     });
 
-    __setEntitlement({ tier: "free" });
+    __setEntitlement({ tier: "level0" });
 
     const { result } = renderHook(() => useUserAccess());
 
@@ -250,7 +250,7 @@ describe("useUserAccess snapshots - baseline", () => {
         "isHighAdmin": true,
         "isLoading": false,
         "loading": false,
-        "tier": "free",
+        "tier": "level0",
       }
     `);
   });
@@ -277,7 +277,7 @@ describe("useUserAccess snapshots - baseline", () => {
         "isHighAdmin": false,
         "isLoading": false,
         "loading": false,
-        "tier": "free",
+        "tier": "level0",
       }
     `);
   });
@@ -309,15 +309,15 @@ describe("useUserAccess admin vs non-admin", () => {
     __setEntitlement(null);
   });
 
-  it("admin gets admin override even when entitlement is free", async () => {
-    __setAuth({ user: { email: "admin-free@example.com" }, isLoading: false });
+  it("admin gets admin override even when entitlement is level0", async () => {
+    __setAuth({ user: { email: "admin-level0@example.com" }, isLoading: false });
 
     __setProfilesResult({
-      data: { email: "admin-free@example.com", is_admin: true, admin_level: 9 },
+      data: { email: "admin-level0@example.com", is_admin: true, admin_level: 9 },
       error: null,
     });
 
-    __setEntitlement({ tier: "free" });
+    __setEntitlement({ tier: "level0" });
 
     const { result } = renderHook(() => useUserAccess());
 
@@ -329,19 +329,19 @@ describe("useUserAccess admin vs non-admin", () => {
     expect(result.current.isAdmin).toBe(true);
     expect(result.current.isHighAdmin).toBe(true);
     expect(result.current.adminLevel).toBe(9);
-    expect(result.current.tier).toBe("free");
+    expect(result.current.tier).toBe("level0");
     expect(result.current.canAccessPremium()).toBe(true);
   });
 
-  it("non-admin on free entitlement does not get premium access", async () => {
-    __setAuth({ user: { email: "free-user@example.com" }, isLoading: false });
+  it("non-admin on level0 entitlement does not get premium access", async () => {
+    __setAuth({ user: { email: "level0-user@example.com" }, isLoading: false });
 
     __setProfilesResult({
-      data: { email: "free-user@example.com", is_admin: false, admin_level: 0 },
+      data: { email: "level0-user@example.com", is_admin: false, admin_level: 0 },
       error: null,
     });
 
-    __setEntitlement({ tier: "free" });
+    __setEntitlement({ tier: "level0" });
 
     const { result } = renderHook(() => useUserAccess());
 
@@ -353,7 +353,7 @@ describe("useUserAccess admin vs non-admin", () => {
     expect(result.current.isAdmin).toBe(false);
     expect(result.current.isHighAdmin).toBe(false);
     expect(result.current.adminLevel).toBe(0);
-    expect(result.current.tier).toBe("free");
+    expect(result.current.tier).toBe("level0");
     expect(result.current.canAccessPremium()).toBe(false);
   });
 
@@ -376,7 +376,7 @@ describe("useUserAccess admin vs non-admin", () => {
     expect(result.current.isAuthenticated).toBe(true);
     expect(result.current.isAdmin).toBe(true);
     expect(result.current.isHighAdmin).toBe(true);
-    expect(result.current.tier).toBe("free");
+    expect(result.current.tier).toBe("level0");
     expect(result.current.canAccessPremium()).toBe(true);
   });
 
@@ -449,7 +449,7 @@ describe("useUserAccess corrupted profile rows and malformed entitlement payload
       error: null,
     });
 
-    __setEntitlement({ tier: "free" });
+    __setEntitlement({ tier: "level0" });
 
     const { result } = renderHook(() => useUserAccess());
 
@@ -463,7 +463,7 @@ describe("useUserAccess corrupted profile rows and malformed entitlement payload
       adminLevel: 0,
       isAuthenticated: true,
       isDemoMode: false,
-      tier: "free",
+      tier: "level0",
       loading: false,
       isLoading: false,
     });
@@ -481,7 +481,7 @@ describe("useUserAccess corrupted profile rows and malformed entitlement payload
       error: null,
     });
 
-    __setEntitlement({ tier: "free" });
+    __setEntitlement({ tier: "level0" });
 
     const { result } = renderHook(() => useUserAccess());
 
@@ -495,7 +495,7 @@ describe("useUserAccess corrupted profile rows and malformed entitlement payload
     expect(result.current.canAccessPremium()).toBe(true);
   });
 
-  it("malformed entitlement payload with wrong types resolves to free safely", async () => {
+  it("malformed entitlement payload with wrong types resolves to level0 safely", async () => {
     __setAuth({ user: { email: "bad-entitlement@example.com" }, isLoading: false });
 
     __setProfilesResult({
@@ -520,11 +520,11 @@ describe("useUserAccess corrupted profile rows and malformed entitlement payload
     });
 
     expect(result.current.isAdmin).toBe(false);
-    expect(result.current.tier).toBe("free");
+    expect(result.current.tier).toBe("level0");
     expect(result.current.canAccessPremium()).toBe(false);
   });
 
-  it("malformed entitlement payload missing tier resolves to free safely", async () => {
+  it("malformed entitlement payload missing tier resolves to level0 safely", async () => {
     __setAuth({ user: { email: "missing-tier@example.com" }, isLoading: false });
 
     __setProfilesResult({
@@ -547,7 +547,7 @@ describe("useUserAccess corrupted profile rows and malformed entitlement payload
       expect(result.current.isLoading).toBe(false);
     });
 
-    expect(result.current.tier).toBe("free");
+    expect(result.current.tier).toBe("level0");
     expect(result.current.canAccessPremium()).toBe(false);
   });
 
@@ -620,7 +620,7 @@ describe("useUserAccess auth-loaded but partially broken downstream data", () =>
     __setAuth({ user: { email: "missing@example.com" }, isLoading: false });
 
     __setProfilesResult({ data: null, error: null });
-    __setEntitlement({ tier: "free" });
+    __setEntitlement({ tier: "level0" });
 
     const { result } = renderHook(() => useUserAccess());
 
@@ -629,7 +629,7 @@ describe("useUserAccess auth-loaded but partially broken downstream data", () =>
       expect(result.current.isLoading).toBe(false);
     });
 
-    expect(result.current.tier).toBe("free");
+    expect(result.current.tier).toBe("level0");
     expect(result.current.isAdmin).toBe(false);
   });
 
@@ -655,7 +655,7 @@ describe("useUserAccess auth-loaded but partially broken downstream data", () =>
     expect(mockFrom).not.toHaveBeenCalled();
     expect(result.current.isAuthenticated).toBe(false);
     expect(result.current.isDemoMode).toBe(true);
-    expect(result.current.tier).toBe("free");
+    expect(result.current.tier).toBe("level0");
   });
 
   it("auth loading suppresses downstream work until auth resolves", async () => {
@@ -693,14 +693,14 @@ describe("useUserAccess auth-loaded but partially broken downstream data", () =>
 
 describe("normalizeTier canon tests", () => {
   it("normalizes current tier variants correctly", () => {
-    expect(normalizeTier("free")).toBe("free");
+    expect(normalizeTier("level0")).toBe("level0");
     expect(normalizeTier("premium_month")).toBe("premium_month");
     expect(normalizeTier("premium_year")).toBe("premium_year");
   });
 
-  it("handles null/undefined as free tier", () => {
-    expect(normalizeTier(null)).toBe("free");
-    expect(normalizeTier(undefined)).toBe("free");
-    expect(normalizeTier("")).toBe("free");
+  it("handles null/undefined as level0 tier", () => {
+    expect(normalizeTier(null)).toBe("level0");
+    expect(normalizeTier(undefined)).toBe("level0");
+    expect(normalizeTier("")).toBe("level0");
   });
 });
