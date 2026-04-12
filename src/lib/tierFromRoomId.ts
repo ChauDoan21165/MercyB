@@ -99,7 +99,7 @@ export function strictTierFromRoomId(id: string): TierId | undefined {
     hasToken("level0") ||
     s.endsWith("_free") ||
     s.endsWith("-level0") ||
-    s.includes("_free_") ||
+    s.includes("_level0_") ||
     s.includes("-level0-") ||
     s.includes("/level0/")
   ) {

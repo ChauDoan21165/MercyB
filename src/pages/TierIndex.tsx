@@ -120,7 +120,7 @@ function inferSpineTierFromId(idRaw: any): SpineTierId | null {
     id.startsWith("level0-") ||
     id.endsWith("_free") ||
     id.endsWith("-level0") ||
-    id.includes("_free_") ||
+    id.includes("_level0_") ||
     id.includes("-level0-")
   ) {
     return "level0";

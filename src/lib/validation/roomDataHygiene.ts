@@ -138,7 +138,7 @@ export function validateEntry(entry: RoomEntry, entryIndex: number): ValidationV
       field: 'audio',
       rule: 'Must be filename only, no folder path',
       actual: entry.audio,
-      expected: 'e.g., "meaning_of_life_vip3_01_en.mp3"',
+      expected: 'e.g., "meaning_of_life_level3_01_en.mp3"',
     });
   }
 

@@ -1,396 +1,464 @@
 /**
- * Mercy Rituals System - Phase 6
- * 
- * Defines micro-rituals and ceremonies for user progress events.
+ * Path: src/lib/mercy-host/rituals.ts
+ * File: rituals.ts
  */
 
-import type { EmotionState } from './emotionModel';
-import type { MercyAnimationType } from './eventMap';
-import type { VoiceTrigger } from './voicePack';
-import { memory } from './memory';
-import { isCrisisRoom } from './safetyRails';
+import type { MercyAnimationType } from "./eventMap";
+import type { VoiceTrigger } from "./voicePack";
+import { memory } from "./memory";
 
-export type RitualType = 
-  | 'entry_complete' 
-  | 'room_complete' 
-  | 'streak_milestone' 
-  | 'vip_upgrade' 
-  | 'comeback_after_gap';
+export type RitualEventType =
+  | "entry_complete"
+  | "room_complete"
+  | "streak_milestone"
+  | "comeback_after_gap";
+
+export type EmotionBias =
+  | "neutral"
+  | "returning_after_gap"
+  | "steady_progress"
+  | "gentle_progress";
 
 export interface RitualSpec {
   id: string;
-  type: RitualType;
-  tierRange: [number, number]; // [minTier, maxTier] where 0=level0, 1=level1, etc.
-  minEntries?: number;
-  emotionBias?: EmotionState;
-  animation: MercyAnimationType;
+  eventType: RitualEventType;
+  animation: MercyAnimationType | null;
   voiceTrigger: VoiceTrigger;
   textEn: string;
   textVi: string;
+  tierRange: [number, number];
+  minEntries?: number;
+  maxEntries?: number;
+  milestone?: number;
   badgeId?: string;
-  priority: number; // Higher = more important
-}
-
-// Ritual priority order
-const RITUAL_PRIORITIES: Record<RitualType, number> = {
-  vip_upgrade: 100,
-  room_complete: 80,
-  entry_complete: 40,
-  streak_milestone: 60,
-  comeback_after_gap: 50
-};
-
-// Entry completion micro-rituals
-const ENTRY_RITUALS: RitualSpec[] = [
-  // Soft nod (1-2 entries)
-  {
-    id: 'entry_soft_nod',
-    type: 'entry_complete',
-    tierRange: [0, 9],
-    minEntries: 1,
-    animation: null,
-    voiceTrigger: 'encouragement',
-    textEn: "A small step forward.",
-    textVi: "Một bước nhỏ tiến về phía trước.",
-    priority: 10
-  },
-  // Spark of progress (3-5 entries)
-  {
-    id: 'entry_spark',
-    type: 'entry_complete',
-    tierRange: [0, 9],
-    minEntries: 3,
-    animation: 'spark',
-    voiceTrigger: 'encouragement',
-    textEn: "You're building momentum.",
-    textVi: "Bạn đang tạo đà tiến.",
-    priority: 20
-  },
-  // Step on the bridge (6+ entries)
-  {
-    id: 'entry_bridge',
-    type: 'entry_complete',
-    tierRange: [0, 9],
-    minEntries: 6,
-    emotionBias: 'focused',
-    animation: 'shimmer',
-    voiceTrigger: 'entry_complete',
-    textEn: "You walk the bridge with purpose now.",
-    textVi: "Bạn bước trên cầu với mục đích rõ ràng.",
-    priority: 30
-  }
-];
-
-// Room completion rituals per tier group
-const ROOM_COMPLETE_RITUALS: RitualSpec[] = [
-  // Level 0 tier
-  {
-    id: 'room_complete_free',
-    type: 'room_complete',
-    tierRange: [0, 0],
-    emotionBias: 'celebrating',
-    animation: 'halo',
-    voiceTrigger: 'celebration',
-    textEn: "Room complete. You showed up. That matters.",
-    textVi: "Phòng hoàn thành. Bạn đã có mặt. Điều đó quan trọng.",
-    priority: 80
-  },
-  // Level 1-3
-  {
-    id: 'room_complete_vip1_3',
-    type: 'room_complete',
-    tierRange: [1, 3],
-    emotionBias: 'celebrating',
-    animation: 'glow',
-    voiceTrigger: 'celebration',
-    textEn: "Another room conquered. Your foundation grows stronger.",
-    textVi: "Thêm một phòng chinh phục. Nền tảng của bạn vững chắc hơn.",
-    priority: 80
-  },
-  // Level 4-6
-  {
-    id: 'room_complete_vip4_6',
-    type: 'room_complete',
-    tierRange: [4, 6],
-    emotionBias: 'celebrating',
-    animation: 'shimmer',
-    voiceTrigger: 'celebration',
-    textEn: "Mastery in motion. This room is now part of you.",
-    textVi: "Sự thành thạo đang chuyển động. Phòng này giờ là một phần của bạn.",
-    priority: 80
-  },
-  // Level 7-9
-  {
-    id: 'room_complete_vip7_9',
-    type: 'room_complete',
-    tierRange: [7, 9],
-    emotionBias: 'celebrating',
-    animation: 'shimmer',
-    voiceTrigger: 'celebration',
-    textEn: "A chapter closes, wisdom remains. Beautifully done.",
-    textVi: "Một chương khép lại, trí tuệ còn mãi. Tuyệt đẹp.",
-    priority: 80
-  }
-];
-
-// Streak milestone rituals
-const STREAK_RITUALS: RitualSpec[] = [
-  {
-    id: 'streak_3_days',
-    type: 'streak_milestone',
-    tierRange: [0, 9],
-    emotionBias: 'celebrating',
-    animation: 'spark',
-    voiceTrigger: 'celebration',
-    textEn: "3 days in a row. Consistency is your superpower.",
-    textVi: "3 ngày liên tiếp. Sự kiên trì là siêu năng lực của bạn.",
-    badgeId: 'streak_3',
-    priority: 60
-  },
-  {
-    id: 'streak_7_days',
-    type: 'streak_milestone',
-    tierRange: [0, 9],
-    emotionBias: 'celebrating',
-    animation: 'shimmer',
-    voiceTrigger: 'celebration',
-    textEn: "7 days strong. You're proving something real.",
-    textVi: "7 ngày vững vàng. Bạn đang chứng minh điều có thật.",
-    badgeId: 'streak_7',
-    priority: 65
-  },
-  {
-    id: 'streak_30_days',
-    type: 'streak_milestone',
-    tierRange: [0, 9],
-    emotionBias: 'celebrating',
-    animation: 'glow',
-    voiceTrigger: 'celebration',
-    textEn: "30 days. A habit is born. Mercy bows to your dedication.",
-    textVi: "30 ngày. Một thói quen ra đời. Mercy cúi đầu trước sự cống hiến.",
-    badgeId: 'streak_30',
-    priority: 70
-  }
-];
-
-// Comeback ritual
-const COMEBACK_RITUAL: RitualSpec = {
-  id: 'comeback_after_gap',
-  type: 'comeback_after_gap',
-  tierRange: [0, 9],
-  emotionBias: 'returning_after_gap',
-  animation: 'ripple',
-  voiceTrigger: 'returning_after_gap',
-  textEn: "You came back. That takes courage. Welcome home.",
-  textVi: "Bạn đã quay lại. Điều đó cần dũng khí. Chào mừng về nhà.",
-  priority: 50
-};
-
-// Crisis room gentle acknowledgment (replaces celebration)
-const CRISIS_ROOM_RITUAL: RitualSpec = {
-  id: 'crisis_gentle',
-  type: 'room_complete',
-  tierRange: [0, 9],
-  emotionBias: 'neutral',
-  animation: 'halo',
-  voiceTrigger: 'low_mood',
-  textEn: "You showed up for yourself today. That's enough.",
-  textVi: "Hôm nay bạn đã có mặt vì chính mình. Như vậy là đủ.",
-  priority: 80
-};
-
-/**
- * Convert tier string to number for comparison
- */
-function tierToNumber(tier: string): number {
-  if (tier === 'level0') return 0;
-  const match = tier.match(/vip(\d+)/i);
-  return match ? parseInt(match[1], 10) : 0;
-}
-
-/**
- * Get ritual intensity setting from memory
- */
-function getRitualIntensity(): 'off' | 'minimal' | 'normal' {
-  const mem = memory.get();
-  return (mem as any).ritualIntensity || 'normal';
-}
-
-/**
- * Check if ritual type is allowed based on intensity setting
- */
-function isRitualAllowed(type: RitualType): boolean {
-  const intensity = getRitualIntensity();
-  
-  if (intensity === 'off') return false;
-  
-  if (intensity === 'minimal') {
-    // Only entry_complete and gentle room_complete
-    return type === 'entry_complete' || type === 'room_complete';
-  }
-  
-  return true; // 'normal' allows all
+  minDaysAway?: number;
+  crisisOnly?: boolean;
+  emotionBias?: EmotionBias;
 }
 
 export interface RitualContext {
   tier: string;
-  roomId?: string;
-  roomTags?: string[];
-  roomDomain?: string;
   entriesCompleted?: number;
   streakDays?: number;
+  previousStreak?: number;
+  daysAway?: number;
   daysSinceLastVisit?: number;
-  isVipUpgrade?: boolean;
-  previousTier?: string;
+  gapDays?: number;
+  daysGap?: number;
+  isCrisisRoom?: boolean;
+  isCrisis?: boolean;
+  crisis?: boolean;
+  inCrisis?: boolean;
+  roomCrisis?: boolean;
+  roomId?: string;
+  roomTitle?: string;
+  roomDomain?: string;
+  roomType?: string;
+  area?: string;
+  roomTags?: string[];
+  tags?: string[];
 }
 
-/**
- * Get the best ritual for a given event and context
- */
-export function getRitualForEvent(
-  type: RitualType,
-  context: RitualContext
-): RitualSpec | null {
-  // Check if rituals are allowed
-  if (!isRitualAllowed(type)) return null;
-  
-  const tierNum = tierToNumber(context.tier);
-  const isCrisis = isCrisisRoom(context.roomTags, context.roomDomain);
-  
-  // Handle crisis rooms specially
-  if (isCrisis && type === 'room_complete') {
-    return CRISIS_ROOM_RITUAL;
+type MemoryLike = {
+  lastVisitDateISO?: string;
+  visitStreak?: number;
+};
+
+export const RITUALS: RitualSpec[] = [
+  {
+    id: "entry_soft_nod",
+    eventType: "entry_complete",
+    animation: null,
+    voiceTrigger: "gentle" as VoiceTrigger,
+    textEn: "A small step still counts.",
+    textVi: "Một bước nhỏ vẫn luôn có giá trị.",
+    tierRange: [0, 9],
+    minEntries: 1,
+    maxEntries: 2,
+    emotionBias: "gentle_progress",
+  },
+  {
+    id: "entry_spark",
+    eventType: "entry_complete",
+    animation: "spark" as MercyAnimationType,
+    voiceTrigger: "gentle" as VoiceTrigger,
+    textEn: "Good. You are warming up.",
+    textVi: "Tốt lắm. Bạn đang vào nhịp rồi.",
+    tierRange: [0, 9],
+    minEntries: 3,
+    maxEntries: 5,
+    emotionBias: "steady_progress",
+  },
+  {
+    id: "entry_bridge",
+    eventType: "entry_complete",
+    animation: "shimmer" as MercyAnimationType,
+    voiceTrigger: "gentle" as VoiceTrigger,
+    textEn: "You crossed a real bridge today.",
+    textVi: "Hôm nay bạn đã đi qua một cây cầu thật sự.",
+    tierRange: [0, 9],
+    minEntries: 6,
+    emotionBias: "steady_progress",
+  },
+
+  {
+    id: "room_complete_level0",
+    eventType: "room_complete",
+    animation: "glow" as MercyAnimationType,
+    voiceTrigger: "gentle" as VoiceTrigger,
+    textEn: "You finished the room. That matters.",
+    textVi: "Bạn đã học xong room này. Điều đó rất có ý nghĩa.",
+    tierRange: [0, 0],
+    emotionBias: "gentle_progress",
+  },
+  {
+    id: "room_complete_level1_3",
+    eventType: "room_complete",
+    animation: "glow" as MercyAnimationType,
+    voiceTrigger: "gentle" as VoiceTrigger,
+    textEn: "You are building real momentum now.",
+    textVi: "Bạn đang tạo đà tiến thật sự rồi.",
+    tierRange: [1, 3],
+    emotionBias: "steady_progress",
+  },
+  {
+    id: "room_complete_level4_6",
+    eventType: "room_complete",
+    animation: "shimmer" as MercyAnimationType,
+    voiceTrigger: "gentle" as VoiceTrigger,
+    textEn: "Your focus is getting sharper. Beautiful work.",
+    textVi: "Sự tập trung của bạn đang sắc hơn. Làm rất đẹp.",
+    tierRange: [4, 6],
+    emotionBias: "steady_progress",
+  },
+  {
+    id: "room_complete_level7_9",
+    eventType: "room_complete",
+    animation: "shimmer" as MercyAnimationType,
+    voiceTrigger: "gentle" as VoiceTrigger,
+    textEn: "This is deep work. You carried it well.",
+    textVi: "Đây là công việc chiều sâu. Bạn đã mang nó rất vững.",
+    tierRange: [7, 9],
+    emotionBias: "steady_progress",
+  },
+  {
+    id: "crisis_gentle",
+    eventType: "room_complete",
+    animation: "glow" as MercyAnimationType,
+    voiceTrigger: "low_mood" as VoiceTrigger,
+    textEn: "You stayed with yourself through something hard.",
+    textVi: "Bạn đã ở lại với chính mình qua một đoạn khó khăn.",
+    tierRange: [0, 9],
+    crisisOnly: true,
+    emotionBias: "neutral",
+  },
+
+  {
+    id: "streak_3_days",
+    eventType: "streak_milestone",
+    animation: "spark" as MercyAnimationType,
+    voiceTrigger: "gentle" as VoiceTrigger,
+    textEn: "Three days. A rhythm is beginning.",
+    textVi: "Ba ngày rồi. Một nhịp mới đang bắt đầu.",
+    tierRange: [0, 9],
+    milestone: 3,
+    badgeId: "streak_3",
+    emotionBias: "steady_progress",
+  },
+  {
+    id: "streak_7_days",
+    eventType: "streak_milestone",
+    animation: "shimmer" as MercyAnimationType,
+    voiceTrigger: "gentle" as VoiceTrigger,
+    textEn: "Seven days. You are becoming steady.",
+    textVi: "Bảy ngày rồi. Bạn đang trở nên vững vàng hơn.",
+    tierRange: [0, 9],
+    milestone: 7,
+    badgeId: "streak_7",
+    emotionBias: "steady_progress",
+  },
+  {
+    id: "streak_30_days",
+    eventType: "streak_milestone",
+    animation: "shimmer" as MercyAnimationType,
+    voiceTrigger: "gentle" as VoiceTrigger,
+    textEn: "Thirty days. This is no longer luck. It is character.",
+    textVi: "Ba mươi ngày rồi. Đây không còn là may mắn nữa. Đây là bản lĩnh.",
+    tierRange: [0, 9],
+    milestone: 30,
+    badgeId: "streak_30",
+    emotionBias: "steady_progress",
+  },
+
+  {
+    id: "comeback_after_gap",
+    eventType: "comeback_after_gap",
+    animation: "glow" as MercyAnimationType,
+    voiceTrigger: "gentle" as VoiceTrigger,
+    textEn: "Welcome back. Starting again is a kind of strength.",
+    textVi: "Chào mừng bạn quay lại. Bắt đầu lại cũng là một kiểu mạnh mẽ.",
+    tierRange: [0, 9],
+    minDaysAway: 7,
+    emotionBias: "returning_after_gap",
+  },
+];
+
+function normalizeTier(tier: string | null | undefined): string {
+  const raw = String(tier ?? "").trim().toLowerCase();
+  if (!raw) return "level0";
+
+  const compact = raw.replace(/[\s_-]+/g, "");
+
+  if (compact === "free") return "level0";
+  if (compact === "level0") return "level0";
+
+  const levelMatch = compact.match(/^level([1-9])$/);
+  if (levelMatch) return `level${levelMatch[1]}`;
+
+  const vipMatch = compact.match(/^vip([1-9])$/);
+  if (vipMatch) return `level${vipMatch[1]}`;
+
+  return "level0";
+}
+
+function tierToNumber(tier: string | null | undefined): number {
+  const normalized = normalizeTier(tier);
+  if (normalized === "level0") return 0;
+
+  const match = normalized.match(/^level([1-9])$/);
+  return match ? parseInt(match[1], 10) : 0;
+}
+
+function getTodayISO(): string {
+  return new Date().toISOString().slice(0, 10);
+}
+
+function toISODate(value: Date | string | null | undefined): string {
+  if (!value) return "";
+  if (value instanceof Date) return value.toISOString().slice(0, 10);
+
+  const s = String(value).trim();
+  if (!s) return "";
+
+  if (/^\d{4}-\d{2}-\d{2}$/.test(s)) return s;
+
+  const parsed = new Date(s);
+  if (!Number.isNaN(parsed.getTime())) {
+    return parsed.toISOString().slice(0, 10);
   }
-  
-  // Handle VIP upgrade
-  if (type === 'vip_upgrade' && context.isVipUpgrade) {
-    // VIP ceremonies handled in vipCeremonies.ts
-    return null;
-  }
-  
-  // Handle comeback
-  if (type === 'comeback_after_gap') {
-    const days = context.daysSinceLastVisit || 0;
-    if (days >= 7) {
-      return COMEBACK_RITUAL;
+
+  return "";
+}
+
+function daysBetween(startISO: string, endISO: string): number {
+  const start = new Date(`${startISO}T00:00:00Z`);
+  const end = new Date(`${endISO}T00:00:00Z`);
+  const diffMs = end.getTime() - start.getTime();
+  return Math.floor(diffMs / 86400000);
+}
+
+function getDaysAway(context: RitualContext): number {
+  const candidates = [
+    context.daysAway,
+    context.daysSinceLastVisit,
+    context.gapDays,
+    context.daysGap,
+  ];
+
+  for (const value of candidates) {
+    if (typeof value === "number" && Number.isFinite(value)) {
+      return value;
     }
-    return null;
   }
-  
-  // Handle streak milestones
-  if (type === 'streak_milestone') {
-    const streak = context.streakDays || 0;
-    
-    // Find the highest applicable streak ritual
-    const applicable = STREAK_RITUALS
-      .filter(r => streak >= (r.id.includes('30') ? 30 : r.id.includes('7') ? 7 : 3))
-      .filter(r => tierNum >= r.tierRange[0] && tierNum <= r.tierRange[1]);
-    
-    if (applicable.length > 0) {
-      return applicable[applicable.length - 1]; // Highest streak
-    }
-    return null;
-  }
-  
-  // Handle room complete
-  if (type === 'room_complete') {
-    const ritual = ROOM_COMPLETE_RITUALS.find(
-      r => tierNum >= r.tierRange[0] && tierNum <= r.tierRange[1]
+
+  return 0;
+}
+
+function isCrisisContext(context: RitualContext): boolean {
+  if (context.isCrisisRoom) return true;
+  if (context.isCrisis) return true;
+  if (context.crisis) return true;
+  if (context.inCrisis) return true;
+  if (context.roomCrisis) return true;
+
+  const searchable = JSON.stringify(context).toLowerCase();
+
+  return [
+    "crisis",
+    "emergency",
+    "suicid",
+    "self-harm",
+    "self_harm",
+    "self harm",
+    "kill myself",
+    "harm myself",
+    "panic",
+    "psychosis",
+    "overdose",
+    "abuse",
+    "assault",
+    "trauma",
+    "low_mood",
+    "low mood",
+    "mental_health",
+    "mental health",
+  ].some((needle) => searchable.includes(needle));
+}
+
+export function computeVisitStreak(
+  a: Date | string | null | undefined,
+  b?: number | string | Date | null,
+  c?: string | Date | null
+): number {
+  if (a instanceof Date) {
+    const todayISO = toISODate(a);
+    const lastVisitISO = toISODate(
+      typeof b === "string" || b instanceof Date || b === null ? b : null
     );
-    return ritual || null;
+    const previousStreak = 0;
+
+    if (!lastVisitISO) return 1;
+
+    const gap = daysBetween(lastVisitISO, todayISO);
+    if (gap <= 0) return 1;
+    if (gap === 1) return previousStreak + 1;
+    return 1;
   }
-  
-  // Handle entry complete
-  if (type === 'entry_complete') {
-    const entries = context.entriesCompleted || 1;
-    
-    // Find the best matching entry ritual
-    const applicable = ENTRY_RITUALS
-      .filter(r => entries >= (r.minEntries || 1))
-      .filter(r => tierNum >= r.tierRange[0] && tierNum <= r.tierRange[1]);
-    
-    if (applicable.length > 0) {
-      // Return highest priority ritual
-      return applicable.reduce((best, current) => 
-        current.priority > best.priority ? current : best
-      );
-    }
-    return null;
+
+  const lastVisitISO = toISODate(a);
+  const previousStreak = typeof b === "number" ? b : 0;
+  const todayISO =
+    typeof b === "string" || b instanceof Date
+      ? toISODate(b)
+      : toISODate(c) || getTodayISO();
+
+  if (!lastVisitISO) return 1;
+
+  const gap = daysBetween(lastVisitISO, todayISO);
+
+  if (gap <= 0) {
+    return Math.max(previousStreak, 1);
   }
-  
-  return null;
+
+  if (gap === 1) {
+    return Math.max(previousStreak, 0) + 1;
+  }
+
+  return 1;
 }
 
-/**
- * Get ritual text in specified language
- */
-export function getRitualText(ritual: RitualSpec, language: 'en' | 'vi'): string {
-  return language === 'vi' ? ritual.textVi : ritual.textEn;
-}
-
-/**
- * Check if a streak milestone was just achieved
- */
 export function checkStreakMilestone(
   currentStreak: number,
   previousStreak: number
 ): number | null {
-  const milestones = [3, 7, 30];
-  
-  for (const milestone of milestones) {
-    if (currentStreak >= milestone && previousStreak < milestone) {
+  for (const milestone of [30, 7, 3]) {
+    if (previousStreak < milestone && currentStreak >= milestone) {
       return milestone;
     }
   }
-  
   return null;
 }
 
-/**
- * Compute daily visit streak
- */
-export function computeVisitStreak(now: Date, lastVisitAt: string | null): number {
-  if (!lastVisitAt) return 1;
-  
-  const last = new Date(lastVisitAt);
-  const diffMs = now.getTime() - last.getTime();
-  const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-  
-  // Same day
-  if (diffDays === 0) {
-    const mem = memory.get();
-    return (mem as any).streakDays || 1;
-  }
-  
-  // Consecutive day
-  if (diffDays === 1) {
-    const mem = memory.get();
-    return ((mem as any).streakDays || 0) + 1;
-  }
-  
-  // Streak broken
-  return 1;
+export function updateStreak(): { streak: number; milestone: number | null } {
+  const mem = memory.get() as unknown as MemoryLike;
+  const todayISO = getTodayISO();
+  const previousStreak = typeof mem.visitStreak === "number" ? mem.visitStreak : 0;
+  const streak = computeVisitStreak(mem.lastVisitDateISO, previousStreak, todayISO);
+  const milestone = checkStreakMilestone(streak, previousStreak);
+
+  memory.update({
+    ...(mem as object),
+    lastVisitDateISO: todayISO,
+    visitStreak: streak,
+  } as never);
+
+  return { streak, milestone };
 }
 
-/**
- * Update streak in memory
- */
-export function updateStreak(): { streak: number; milestone: number | null } {
-  const mem = memory.get();
-  const previousStreak = (mem as any).streakDays || 0;
-  const lastVisit = mem.lastVisitISO;
-  const now = new Date();
-  
-  const newStreak = computeVisitStreak(now, lastVisit);
-  const milestone = checkStreakMilestone(newStreak, previousStreak);
-  
-  // Update memory
-  memory.update({
-    ...mem,
-    streakDays: newStreak,
-    longestStreak: Math.max((mem as any).longestStreak || 0, newStreak),
-    lastVisitISO: now.toISOString()
-  } as any);
-  
-  return { streak: newStreak, milestone };
+export function getRitualText(
+  ritual: RitualSpec,
+  language: "en" | "vi"
+): string {
+  return language === "vi" ? ritual.textVi : ritual.textEn;
+}
+
+export function getRitualForEvent(
+  eventType: RitualEventType,
+  context: RitualContext
+): RitualSpec | null {
+  const tierNum = tierToNumber(context.tier);
+
+  if (eventType === "entry_complete") {
+    const count = context.entriesCompleted ?? 0;
+
+    return (
+      RITUALS.find((ritual) => {
+        if (ritual.eventType !== "entry_complete") return false;
+        if (tierNum < ritual.tierRange[0] || tierNum > ritual.tierRange[1]) {
+          return false;
+        }
+        if (typeof ritual.minEntries === "number" && count < ritual.minEntries) {
+          return false;
+        }
+        if (typeof ritual.maxEntries === "number" && count > ritual.maxEntries) {
+          return false;
+        }
+        return true;
+      }) ?? null
+    );
+  }
+
+  if (eventType === "room_complete") {
+    if (isCrisisContext(context)) {
+      return (
+        RITUALS.find(
+          (ritual) =>
+            ritual.eventType === "room_complete" && ritual.crisisOnly === true
+        ) ?? null
+      );
+    }
+
+    return (
+      RITUALS.find((ritual) => {
+        if (ritual.eventType !== "room_complete") return false;
+        if (ritual.crisisOnly) return false;
+        return tierNum >= ritual.tierRange[0] && tierNum <= ritual.tierRange[1];
+      }) ?? null
+    );
+  }
+
+  if (eventType === "streak_milestone") {
+    const current = context.streakDays ?? 0;
+    const previous = context.previousStreak ?? 0;
+    const milestone = checkStreakMilestone(current, previous);
+
+    if (!milestone) return null;
+
+    return (
+      RITUALS.find(
+        (ritual) =>
+          ritual.eventType === "streak_milestone" &&
+          ritual.milestone === milestone &&
+          tierNum >= ritual.tierRange[0] &&
+          tierNum <= ritual.tierRange[1]
+      ) ?? null
+    );
+  }
+
+  if (eventType === "comeback_after_gap") {
+    const daysAway = getDaysAway(context);
+
+    return (
+      RITUALS.find(
+        (ritual) =>
+          ritual.eventType === "comeback_after_gap" &&
+          typeof ritual.minDaysAway === "number" &&
+          daysAway >= ritual.minDaysAway &&
+          tierNum >= ritual.tierRange[0] &&
+          tierNum <= ritual.tierRange[1]
+      ) ?? null
+    );
+  }
+
+  return null;
 }

@@ -1,12 +1,11 @@
 /**
- * VIP Tier Ceremonies - Phase 6
- * 
- * Special upgrade ceremonies for each VIP tier.
+ * Path: src/lib/mercy-host/vipCeremonies.ts
+ * File: vipCeremonies.ts
  */
 
-import type { MercyAnimationType } from './eventMap';
-import type { VoiceTrigger } from './voicePack';
-import { memory } from './memory';
+import type { MercyAnimationType } from "./eventMap";
+import type { VoiceTrigger } from "./voicePack";
+import { memory } from "./memory";
 
 export interface VipCeremonySpec {
   tier: string;
@@ -16,144 +15,166 @@ export interface VipCeremonySpec {
   textVi: string;
 }
 
-// VIP upgrade ceremonies (heartfelt, not transactional)
 export const VIP_CEREMONIES: Record<string, VipCeremonySpec> = {
   level1: {
-    tier: 'level1',
-    animation: 'shimmer',
-    voiceTrigger: 'celebration',
+    tier: "level1",
+    animation: "shimmer",
+    voiceTrigger: "celebration",
     textEn: "Welcome deeper. Your commitment to growth inspires me.",
-    textVi: "Chào mừng sâu hơn. Cam kết phát triển của bạn truyền cảm hứng cho mình."
+    textVi: "Chào mừng sâu hơn. Cam kết phát triển của bạn truyền cảm hứng cho mình.",
   },
   level2: {
-    tier: 'level2',
-    animation: 'shimmer',
-    voiceTrigger: 'celebration',
+    tier: "level2",
+    animation: "shimmer",
+    voiceTrigger: "celebration",
     textEn: "You're building real momentum now. I'm honored to walk with you.",
-    textVi: "Bạn đang tạo đà tiến thực sự. Mình vinh dự được bước cùng bạn."
+    textVi: "Bạn đang tạo đà tiến thực sự. Mình vinh dự được bước cùng bạn.",
   },
   level3: {
-    tier: 'level3',
-    animation: 'glow',
-    voiceTrigger: 'celebration',
+    tier: "level3",
+    animation: "glow",
+    voiceTrigger: "celebration",
     textEn: "The depths call to you. Welcome to clearer waters.",
-    textVi: "Chiều sâu gọi bạn. Chào mừng đến vùng nước trong hơn."
+    textVi: "Chiều sâu gọi bạn. Chào mừng đến vùng nước trong hơn.",
   },
   level4: {
-    tier: 'level4',
-    animation: 'glow',
-    voiceTrigger: 'celebration',
+    tier: "level4",
+    animation: "glow",
+    voiceTrigger: "celebration",
     textEn: "Precision becomes your ally. This tier shapes focus.",
-    textVi: "Sự chính xác trở thành đồng minh. Tầng này định hình sự tập trung."
+    textVi: "Sự chính xác trở thành đồng minh. Tầng này định hình sự tập trung.",
   },
   level5: {
-    tier: 'level5',
-    animation: 'shimmer',
-    voiceTrigger: 'celebration',
+    tier: "level5",
+    animation: "shimmer",
+    voiceTrigger: "celebration",
     textEn: "Your influence grows. Lead with the heart you carry.",
-    textVi: "Ảnh hưởng của bạn tăng lên. Dẫn dắt bằng trái tim bạn mang."
+    textVi: "Ảnh hưởng của bạn tăng lên. Dẫn dắt bằng trái tim bạn mang.",
   },
   level6: {
-    tier: 'level6',
-    animation: 'glow',
-    voiceTrigger: 'celebration',
+    tier: "level6",
+    animation: "glow",
+    voiceTrigger: "celebration",
     textEn: "Strategy and serenity merge here. Welcome, thoughtful one.",
-    textVi: "Chiến lược và thanh thản hợp nhất ở đây. Chào mừng, người suy tư."
+    textVi: "Chiến lược và thanh thản hợp nhất ở đây. Chào mừng, người suy tư.",
   },
   level7: {
-    tier: 'level7',
-    animation: 'shimmer',
-    voiceTrigger: 'celebration',
+    tier: "level7",
+    animation: "shimmer",
+    voiceTrigger: "celebration",
     textEn: "The horizon opens. You're becoming a creator now.",
-    textVi: "Chân trời mở ra. Bạn đang trở thành người sáng tạo."
+    textVi: "Chân trời mở ra. Bạn đang trở thành người sáng tạo.",
   },
   level8: {
-    tier: 'level8',
-    animation: 'glow',
-    voiceTrigger: 'celebration',
+    tier: "level8",
+    animation: "glow",
+    voiceTrigger: "celebration",
     textEn: "Light becomes language here. Welcome to transcendence.",
-    textVi: "Ánh sáng trở thành ngôn ngữ ở đây. Chào mừng đến siêu việt."
+    textVi: "Ánh sáng trở thành ngôn ngữ ở đây. Chào mừng đến siêu việt.",
   },
   level9: {
-    tier: 'level9',
-    animation: 'shimmer',
-    voiceTrigger: 'celebration',
+    tier: "level9",
+    animation: "shimmer",
+    voiceTrigger: "celebration",
     textEn: "Distinguished one, you've arrived. Mercy bows to your path.",
-    textVi: "Người xuất sắc, bạn đã đến. Mercy cúi chào con đường của bạn."
-  }
+    textVi: "Người xuất sắc, bạn đã đến. Mercy cúi chào con đường của bạn.",
+  },
 };
 
-/**
- * Get VIP ceremony for a tier upgrade
- */
+function normalizeTierKey(tier: string | null | undefined): string {
+  const raw = String(tier ?? "").trim().toLowerCase();
+
+  if (!raw) return "level0";
+
+  const compact = raw.replace(/[\s_-]+/g, "");
+
+  if (compact === "free") return "level0";
+  if (compact === "level0") return "level0";
+
+  const levelMatch = compact.match(/^level([1-9])$/);
+  if (levelMatch) {
+    return `level${levelMatch[1]}`;
+  }
+
+  const vipMatch = compact.match(/^vip([1-9])$/);
+  if (vipMatch) {
+    return `level${vipMatch[1]}`;
+  }
+
+  return compact;
+}
+
 export function getVipCeremony(tier: string): VipCeremonySpec | null {
-  const normalizedTier = tier.toLowerCase().replace('-', '');
+  const normalizedTier = normalizeTierKey(tier);
   return VIP_CEREMONIES[normalizedTier] || null;
 }
 
-/**
- * Check if ceremony has already been played for this tier
- */
 export function hasCeremonyBeenPlayed(tier: string): boolean {
-  const mem = memory.get();
-  const celebrated = (mem as any).tiersCelebrated || [];
-  return celebrated.includes(tier.toLowerCase());
+  const mem = memory.get() as unknown as Record<string, unknown>;
+  const celebrated = Array.isArray(mem.tiersCelebrated)
+    ? (mem.tiersCelebrated as string[])
+    : [];
+
+  const normalizedTier = normalizeTierKey(tier);
+  return celebrated.map(normalizeTierKey).includes(normalizedTier);
 }
 
-/**
- * Mark ceremony as played for a tier
- */
 export function markCeremonyPlayed(tier: string): void {
-  const mem = memory.get();
-  const celebrated = (mem as any).tiersCelebrated || [];
-  
-  if (!celebrated.includes(tier.toLowerCase())) {
+  const mem = memory.get() as unknown as Record<string, unknown>;
+  const celebrated = Array.isArray(mem.tiersCelebrated)
+    ? (mem.tiersCelebrated as string[])
+    : [];
+
+  const normalizedTier = normalizeTierKey(tier);
+
+  if (!celebrated.map(normalizeTierKey).includes(normalizedTier)) {
     memory.update({
       ...mem,
-      tiersCelebrated: [...celebrated, tier.toLowerCase()]
-    } as any);
+      tiersCelebrated: [...celebrated, normalizedTier],
+    } as never);
   }
 }
 
-/**
- * Get ceremony text in specified language
- */
-export function getCeremonyText(ceremony: VipCeremonySpec, language: 'en' | 'vi'): string {
-  return language === 'vi' ? ceremony.textVi : ceremony.textEn;
+export function getCeremonyText(
+  ceremony: VipCeremonySpec,
+  language: "en" | "vi"
+): string {
+  return language === "vi" ? ceremony.textVi : ceremony.textEn;
 }
 
-/**
- * Execute VIP ceremony (returns ceremony if should play, null if already played)
- */
 export function executeVipCeremony(
   newTier: string,
   previousTier?: string
 ): VipCeremonySpec | null {
-  // Only celebrate upgrades, not downgrades
-  if (previousTier) {
-    const newNum = tierToNumber(newTier);
-    const prevNum = tierToNumber(previousTier);
-    if (newNum <= prevNum) return null;
-  }
-  
-  // Check if already celebrated
-  if (hasCeremonyBeenPlayed(newTier)) {
+  const normalizedNewTier = normalizeTierKey(newTier);
+  const ceremony = getVipCeremony(normalizedNewTier);
+
+  if (!ceremony) {
     return null;
   }
-  
-  const ceremony = getVipCeremony(newTier);
-  if (ceremony) {
-    markCeremonyPlayed(newTier);
+
+  if (previousTier) {
+    const newNum = tierToNumber(normalizedNewTier);
+    const prevNum = tierToNumber(previousTier);
+
+    if (newNum <= prevNum) {
+      return null;
+    }
   }
-  
+
+  if (hasCeremonyBeenPlayed(normalizedNewTier)) {
+    return null;
+  }
+
+  markCeremonyPlayed(normalizedNewTier);
   return ceremony;
 }
 
-/**
- * Convert tier string to number for comparison
- */
 function tierToNumber(tier: string): number {
-  if (tier === 'level0') return 0;
-  const match = tier.match(/vip(\d+)/i);
+  const normalized = normalizeTierKey(tier);
+
+  if (normalized === "level0") return 0;
+
+  const match = normalized.match(/^level([1-9])$/);
   return match ? parseInt(match[1], 10) : 0;
 }

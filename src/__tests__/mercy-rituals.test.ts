@@ -82,7 +82,7 @@ describe('Rituals System', () => {
         
         const ritual = getRitualForEvent('room_complete', context);
         expect(ritual).toBeDefined();
-        expect(ritual?.id).toBe('room_complete_free');
+        expect(ritual?.id).toBe('room_complete_level0');
       });
 
       it('should return level1-3 ritual for level2', () => {
@@ -91,7 +91,7 @@ describe('Rituals System', () => {
         };
         
         const ritual = getRitualForEvent('room_complete', context);
-        expect(ritual?.id).toBe('room_complete_vip1_3');
+        expect(ritual?.id).toBe('room_complete_level1_3');
       });
 
       it('should return level4-6 ritual for level5', () => {
@@ -100,7 +100,7 @@ describe('Rituals System', () => {
         };
         
         const ritual = getRitualForEvent('room_complete', context);
-        expect(ritual?.id).toBe('room_complete_vip4_6');
+        expect(ritual?.id).toBe('room_complete_level4_6');
       });
 
       it('should return level7-9 ritual for level9', () => {
@@ -109,7 +109,7 @@ describe('Rituals System', () => {
         };
         
         const ritual = getRitualForEvent('room_complete', context);
-        expect(ritual?.id).toBe('room_complete_vip7_9');
+        expect(ritual?.id).toBe('room_complete_level7_9');
       });
 
       it('should return crisis ritual for crisis rooms', () => {

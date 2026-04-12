@@ -78,7 +78,7 @@ export function dispatchHostContext(detail: Record<string, any>) {
 export function coreRoomIdFromEffective(effectiveRoomId: string) {
   const id = String(effectiveRoomId || "").trim();
   if (!id) return id;
-  return id.replace(/_(vip[1-9]|level0)$/i, "");
+  return id.replace(/_(level[1-9]|level0)$/i, "");
 }
 
 // ---------- DB “stub” detection ----------

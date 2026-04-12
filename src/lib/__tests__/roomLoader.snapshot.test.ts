@@ -280,7 +280,7 @@ describe("loadMergedRoom snapshots", () => {
             "slug": "dummy-entry",
           },
         ],
-        "roomTier": "level0",
+        "roomTier": "level 0 / miễn phí",
       }
     `);
   });

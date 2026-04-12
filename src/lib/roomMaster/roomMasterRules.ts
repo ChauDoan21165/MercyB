@@ -123,7 +123,7 @@ export const RULES = {
   AUDIO: {
     PATTERN: /^[a-z0-9_]+_\d+_en\.mp3$/,
     MESSAGE: "Audio filename must match pattern: roomid_index_en.mp3",
-    EXAMPLE: "strategic_foundations_vip9_01_en.mp3",
+    EXAMPLE: "strategic_foundations_level9_01_en.mp3",
     FOLDER: "/audio/",
   },
 

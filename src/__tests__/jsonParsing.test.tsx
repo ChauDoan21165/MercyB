@@ -186,7 +186,7 @@ describe("JSON Parsing Integration", () => {
         nameEn: "Adult Room",
         nameVi: "Phòng 18+",
         tier: "level3",
-        path: "private:sacred_body_curious_self_vip3_sub2_sex.json",
+        path: "private:sacred_body_curious_self_level3_sub2_sex.json",
       };
 
       expect(privateRegistryEntry.id).toBeTruthy();

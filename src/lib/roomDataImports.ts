@@ -61,8 +61,8 @@ export const roomDataMap = {
     "tier": "level3",
     "hasData": true
   },
-  "advanced_persuasion_strategic_influence_vip6_bonus": {
-    "id": "advanced_persuasion_strategic_influence_vip6_bonus",
+  "advanced_persuasion_strategic_influence_level6_bonus": {
+    "id": "advanced_persuasion_strategic_influence_level6_bonus",
     "title_en": "Advanced Persuasion & Strategic Influence — Level 6 Bonus",
     "title_vi": "Thuyết Phục Nâng Cao & Ảnh Hưởng Chiến Lược — Phần Thưởng Level 6",
     "tier": "level0",
@@ -103,22 +103,22 @@ export const roomDataMap = {
     "tier": "level3",
     "hasData": true
   },
-  "alexander_the_great_vip9_vol1": {
-    "id": "alexander_the_great_vip9_vol1",
+  "alexander_the_great_level9_vol1": {
+    "id": "alexander_the_great_level9_vol1",
     "title_en": "Alexander the Great — Volume I",
     "title_vi": "Alexander Đại Đế — Tập I",
     "tier": "level0",
     "hasData": true
   },
-  "alexander_the_great_vip9_vol2": {
-    "id": "alexander_the_great_vip9_vol2",
+  "alexander_the_great_level9_vol2": {
+    "id": "alexander_the_great_level9_vol2",
     "title_en": "Alexander the Great — Volume II (The Architecture of a World Empire)",
     "title_vi": "Alexander Đại Đế — Tập II (Kiến Trúc của một Đế Chế Thế Giới)",
     "tier": "level0",
     "hasData": true
   },
-  "alexander_the_great_vip9_vol3": {
-    "id": "alexander_the_great_vip9_vol3",
+  "alexander_the_great_level9_vol3": {
+    "id": "alexander_the_great_level9_vol3",
     "title_en": "Alexander the Great — Volume III",
     "title_vi": "Alexander Đại Đế — Tập III",
     "tier": "level0",
@@ -229,22 +229,22 @@ export const roomDataMap = {
     "tier": "level3",
     "hasData": true
   },
-  "bismarck_vip9_vol1": {
-    "id": "bismarck_vip9_vol1",
+  "bismarck_level9_vol1": {
+    "id": "bismarck_level9_vol1",
     "title_en": "Otto von Bismarck — Volume I",
     "title_vi": "Otto von Bismarck — Tập I",
     "tier": "level0",
     "hasData": true
   },
-  "bismarck_vip9_vol2": {
-    "id": "bismarck_vip9_vol2",
+  "bismarck_level9_vol2": {
+    "id": "bismarck_level9_vol2",
     "title_en": "Otto von Bismarck — Volume II",
     "title_vi": "Otto von Bismarck — Tập II",
     "tier": "level0",
     "hasData": true
   },
-  "bismarck_vip9_vol3": {
-    "id": "bismarck_vip9_vol3",
+  "bismarck_level9_vol3": {
+    "id": "bismarck_level9_vol3",
     "title_en": "Otto von Bismarck — Volume III",
     "title_vi": "Otto von Bismarck — Tập III",
     "tier": "level0",
@@ -292,8 +292,8 @@ export const roomDataMap = {
     "tier": "level0",
     "hasData": true
   },
-  "charisma_mechanics_presence_engineering_vip5_bonus": {
-    "id": "charisma_mechanics_presence_engineering_vip5_bonus",
+  "charisma_mechanics_presence_engineering_level5_bonus": {
+    "id": "charisma_mechanics_presence_engineering_level5_bonus",
     "title_en": "Charisma Mechanics & Presence Engineering — Level 5 Bonus",
     "title_vi": "Cơ Chế Hấp Dẫn & Kỹ Thuật Hiện Diện — Phần Thưởng Level 5",
     "tier": "level0",
@@ -306,22 +306,22 @@ export const roomDataMap = {
     "tier": "level0",
     "hasData": true
   },
-  "clausewitz_grand_strategy_vip9_vol1": {
-    "id": "clausewitz_grand_strategy_vip9_vol1",
+  "clausewitz_grand_strategy_level9_vol1": {
+    "id": "clausewitz_grand_strategy_level9_vol1",
     "title_en": "Clausewitz Grand Strategy — Volume I",
     "title_vi": "Đại Chiến Lược Clausewitz — Tập I",
     "tier": "level0",
     "hasData": true
   },
-  "clausewitz_grand_strategy_vip9_vol2": {
-    "id": "clausewitz_grand_strategy_vip9_vol2",
+  "clausewitz_grand_strategy_level9_vol2": {
+    "id": "clausewitz_grand_strategy_level9_vol2",
     "title_en": "Clausewitz Grand Strategy — Volume II",
     "title_vi": "Đại Chiến Lược Clausewitz — Tập II",
     "tier": "level0",
     "hasData": true
   },
-  "clausewitz_grand_strategy_vip9_vol3": {
-    "id": "clausewitz_grand_strategy_vip9_vol3",
+  "clausewitz_grand_strategy_level9_vol3": {
+    "id": "clausewitz_grand_strategy_level9_vol3",
     "title_en": "Clausewitz Grand Strategy — Volume III",
     "title_vi": "Đại Chiến Lược Clausewitz — Tập III",
     "tier": "level0",
@@ -369,8 +369,8 @@ export const roomDataMap = {
     "tier": "level2",
     "hasData": true
   },
-  "conflict_navigation_emotional_deescalation_vip5_bonus": {
-    "id": "conflict_navigation_emotional_deescalation_vip5_bonus",
+  "conflict_navigation_emotional_deescalation_level5_bonus": {
+    "id": "conflict_navigation_emotional_deescalation_level5_bonus",
     "title_en": "Conflict Navigation & Emotional De-escalation — Level 5 Bonus",
     "title_vi": "Điều Hướng Xung Đột & Giảm Nhiệt Cảm Xúc — Phần Thưởng Level 5",
     "tier": "level0",
@@ -383,8 +383,8 @@ export const roomDataMap = {
     "tier": "level0",
     "hasData": true
   },
-  "conversational_influence_social_framing_vip5_bonus": {
-    "id": "conversational_influence_social_framing_vip5_bonus",
+  "conversational_influence_social_framing_level5_bonus": {
+    "id": "conversational_influence_social_framing_level5_bonus",
     "title_en": "Conversational Influence & Social Framing — Level 5 Bonus",
     "title_vi": "Ảnh Hưởng Trong Hội Thoại & Định Khung Xã Hội — Phần Thưởng Level 5",
     "tier": "level0",
@@ -544,8 +544,8 @@ export const roomDataMap = {
     "tier": "level0",
     "hasData": true
   },
-  "critical_thinking_mastery_vip6_bonus": {
-    "id": "critical_thinking_mastery_vip6_bonus",
+  "critical_thinking_mastery_level6_bonus": {
+    "id": "critical_thinking_mastery_level6_bonus",
     "title_en": "Critical Thinking Mastery — Level 6 Bonus",
     "title_vi": "Tinh Thông Tư Duy Phản Biện — Phần Thưởng Level 6",
     "tier": "level0",
@@ -558,15 +558,15 @@ export const roomDataMap = {
     "tier": "level0",
     "hasData": true
   },
-  "cyrus_the_great_vip9_vol2": {
-    "id": "cyrus_the_great_vip9_vol2",
+  "cyrus_the_great_level9_vol2": {
+    "id": "cyrus_the_great_level9_vol2",
     "title_en": "Cyrus the Great — Volume II",
     "title_vi": "Cyrus Đại Đế — Tập II",
     "tier": "level0",
     "hasData": true
   },
-  "cyrus_the_great_vip9_vol3": {
-    "id": "cyrus_the_great_vip9_vol3",
+  "cyrus_the_great_level9_vol3": {
+    "id": "cyrus_the_great_level9_vol3",
     "title_en": "Cyrus the Great — Volume III",
     "title_vi": "Cyrus Đại Đế — Tập III",
     "tier": "level0",
@@ -1202,15 +1202,15 @@ export const roomDataMap = {
     "tier": "level0",
     "hasData": true
   },
-  "english_specialization_mastery_module2_vip3_ii": {
-    "id": "english_specialization_mastery_module2_vip3_ii",
+  "english_specialization_mastery_module2_level3_ii": {
+    "id": "english_specialization_mastery_module2_level3_ii",
     "title_en": "Level 3 II – English Specialization Mastery: Advanced Module",
     "title_vi": "Level 3 II – Tinh Thông Tiếng Anh Chuyên Sâu: Mô-đun Nâng Cao",
     "tier": "level0",
     "hasData": true
   },
-  "english_specialization_mastery_vip3_ii": {
-    "id": "english_specialization_mastery_vip3_ii",
+  "english_specialization_mastery_level3_ii": {
+    "id": "english_specialization_mastery_level3_ii",
     "title_en": "Level 3 II – English Specialization Mastery",
     "title_vi": "Level 3 II – Tinh Thông Tiếng Anh Chuyên Sâu",
     "tier": "level0",
@@ -1223,36 +1223,36 @@ export const roomDataMap = {
     "tier": "level0",
     "hasData": true
   },
-  "epaminondas_vip9_vol1": {
-    "id": "epaminondas_vip9_vol1",
+  "epaminondas_level9_vol1": {
+    "id": "epaminondas_level9_vol1",
     "title_en": "Epaminondas — Volume I",
     "title_vi": "Epaminondas — Tập I",
     "tier": "level0",
     "hasData": true
   },
-  "epaminondas_vip9_vol2": {
-    "id": "epaminondas_vip9_vol2",
+  "epaminondas_level9_vol2": {
+    "id": "epaminondas_level9_vol2",
     "title_en": "Epaminondas — Volume II",
     "title_vi": "Epaminondas — Tập II",
     "tier": "level0",
     "hasData": true
   },
-  "epaminondas_vip9_vol3": {
-    "id": "epaminondas_vip9_vol3",
+  "epaminondas_level9_vol3": {
+    "id": "epaminondas_level9_vol3",
     "title_en": "Epaminondas — Volume III",
     "title_vi": "Epaminondas — Tập III",
     "tier": "level0",
     "hasData": true
   },
-  "essential_money_risk_management_vip4_bonus": {
-    "id": "essential_money_risk_management_vip4_bonus",
+  "essential_money_risk_management_level4_bonus": {
+    "id": "essential_money_risk_management_level4_bonus",
     "title_en": "Essential Money & Personal Risk Management — Level 4 Bonus",
     "title_vi": "Tài Chính Cốt Lõi & Quản Lý Rủi Ro Cá Nhân — Phần Thưởng Level 4",
     "tier": "level0",
     "hasData": true
   },
-  "everyday_survival_thinking_vip4_bonus": {
-    "id": "everyday_survival_thinking_vip4_bonus",
+  "everyday_survival_thinking_level4_bonus": {
+    "id": "everyday_survival_thinking_level4_bonus",
     "title_en": "Everyday Survival Thinking — Level 4 Bonus",
     "title_vi": "Tư Duy Sinh Tồn Hằng Ngày — Phần Thưởng Level 4",
     "tier": "level0",
@@ -1363,8 +1363,8 @@ export const roomDataMap = {
     "tier": "level0",
     "hasData": true
   },
-  "foundational_habits_vip1_companion": {
-    "id": "foundational_habits_vip1_companion",
+  "foundational_habits_level1_companion": {
+    "id": "foundational_habits_level1_companion",
     "title_en": "Foundational Habits — Deep Dive Companion",
     "title_vi": "Thói Quen Nền Tảng — Bản Đồng Hành Chuyên Sâu",
     "tier": "level1",
@@ -1377,22 +1377,22 @@ export const roomDataMap = {
     "tier": "level0",
     "hasData": true
   },
-  "frederick_the_great_vip9_vol1": {
-    "id": "frederick_the_great_vip9_vol1",
+  "frederick_the_great_level9_vol1": {
+    "id": "frederick_the_great_level9_vol1",
     "title_en": "Frederick the Great — Volume I",
     "title_vi": "Frederick Đại Đế — Tập I",
     "tier": "level0",
     "hasData": true
   },
-  "frederick_the_great_vip9_vol2": {
-    "id": "frederick_the_great_vip9_vol2",
+  "frederick_the_great_level9_vol2": {
+    "id": "frederick_the_great_level9_vol2",
     "title_en": "Frederick the Great — Volume II",
     "title_vi": "Frederick Đại Đế — Tập II",
     "tier": "level0",
     "hasData": true
   },
-  "frederick_the_great_vip9_vol3": {
-    "id": "frederick_the_great_vip9_vol3",
+  "frederick_the_great_level9_vol3": {
+    "id": "frederick_the_great_level9_vol3",
     "title_en": "Frederick the Great — Volume III",
     "title_vi": "Frederick Đại Đế — Tập III",
     "tier": "level0",
@@ -1412,29 +1412,29 @@ export const roomDataMap = {
     "tier": "level0",
     "hasData": true
   },
-  "genghis_khan_vip9_vol1": {
-    "id": "genghis_khan_vip9_vol1",
+  "genghis_khan_level9_vol1": {
+    "id": "genghis_khan_level9_vol1",
     "title_en": "Genghis Khan — Volume I",
     "title_vi": "Thành Cát Tư Hãn — Tập I",
     "tier": "level0",
     "hasData": true
   },
-  "genghis_khan_vip9_vol1_p3": {
-    "id": "genghis_khan_vip9_vol1_p3",
+  "genghis_khan_level9_vol1_p3": {
+    "id": "genghis_khan_level9_vol1_p3",
     "title_en": "Genghis Khan — Volume I (Piece 3)",
     "title_vi": "Thành Cát Tư Hãn — Tập I (Phần 3)",
     "tier": "level0",
     "hasData": true
   },
-  "genghis_khan_vip9_vol2": {
-    "id": "genghis_khan_vip9_vol2",
+  "genghis_khan_level9_vol2": {
+    "id": "genghis_khan_level9_vol2",
     "title_en": "Genghis Khan — Volume II",
     "title_vi": "Thành Cát Tư Hãn — Tập II",
     "tier": "level0",
     "hasData": true
   },
-  "genghis_khan_vip9_vol3": {
-    "id": "genghis_khan_vip9_vol3",
+  "genghis_khan_level9_vol3": {
+    "id": "genghis_khan_level9_vol3",
     "title_en": "Genghis Khan — Volume III",
     "title_vi": "Thành Cát Tư Hãn — Tập III",
     "tier": "level0",
@@ -1475,8 +1475,8 @@ export const roomDataMap = {
     "tier": "level0",
     "hasData": true
   },
-  "grammar_native_logic_vip3_ii": {
-    "id": "grammar_native_logic_vip3_ii",
+  "grammar_native_logic_level3_ii": {
+    "id": "grammar_native_logic_level3_ii",
     "title_en": "Advanced Grammar Logic & Native Patterns",
     "title_vi": "Logic Ngữ Pháp Nâng Cao & Mẫu Câu Bản Ngữ",
     "tier": "level0",
@@ -1489,22 +1489,22 @@ export const roomDataMap = {
     "tier": "level0",
     "hasData": true
   },
-  "hannibal_barca_grand_strategy_vip9_vol1": {
-    "id": "hannibal_barca_grand_strategy_vip9_vol1",
+  "hannibal_barca_grand_strategy_level9_vol1": {
+    "id": "hannibal_barca_grand_strategy_level9_vol1",
     "title_en": "Hannibal Barca Grand Strategy — Volume I (The Oath Against Rome)",
     "title_vi": "Đại Chiến Lược Hannibal Barca — Tập I (Lời Thề Chống Rome)",
     "tier": "level0",
     "hasData": true
   },
-  "hannibal_barca_grand_strategy_vip9_vol2": {
-    "id": "hannibal_barca_grand_strategy_vip9_vol2",
+  "hannibal_barca_grand_strategy_level9_vol2": {
+    "id": "hannibal_barca_grand_strategy_level9_vol2",
     "title_en": "Hannibal Barca Grand Strategy — Volume II",
     "title_vi": "Đại Chiến Lược Hannibal Barca — Tập II",
     "tier": "level0",
     "hasData": true
   },
-  "hannibal_barca_grand_strategy_vip9_vol3": {
-    "id": "hannibal_barca_grand_strategy_vip9_vol3",
+  "hannibal_barca_grand_strategy_level9_vol3": {
+    "id": "hannibal_barca_grand_strategy_level9_vol3",
     "title_en": "Hannibal Barca — Volume III",
     "title_vi": "Hannibal Barca — Tập III",
     "tier": "level0",
@@ -1524,8 +1524,8 @@ export const roomDataMap = {
     "tier": "level0",
     "hasData": true
   },
-  "high_value_boundaries_relationship_strategy_vip5_bonus": {
-    "id": "high_value_boundaries_relationship_strategy_vip5_bonus",
+  "high_value_boundaries_relationship_strategy_level5_bonus": {
+    "id": "high_value_boundaries_relationship_strategy_level5_bonus",
     "title_en": "High-Value Boundaries & Relationship Strategy — Level 5 Bonus",
     "title_vi": "Ranh Giới Giá Trị Cao & Chiến Lược Quan Hệ — Phần Thưởng Level 5",
     "tier": "level0",
@@ -1573,57 +1573,57 @@ export const roomDataMap = {
     "tier": "level0",
     "hasData": true
   },
-  "julius_caesar_vip9_vol1": {
-    "id": "julius_caesar_vip9_vol1",
+  "julius_caesar_level9_vol1": {
+    "id": "julius_caesar_level9_vol1",
     "title_en": "Julius Caesar — Volume I",
     "title_vi": "Julius Caesar — Tập I",
     "tier": "level0",
     "hasData": true
   },
-  "julius_caesar_vip9_vol1_copy": {
-    "id": "julius_caesar_vip9_vol1_copy",
+  "julius_caesar_level9_vol1_copy": {
+    "id": "julius_caesar_level9_vol1_copy",
     "title_en": "Julius Caesar — Volume I",
     "title_vi": "Julius Caesar — Tập I",
     "tier": "level0",
     "hasData": true
   },
-  "julius_caesar_vip9_vol2": {
-    "id": "julius_caesar_vip9_vol2",
+  "julius_caesar_level9_vol2": {
+    "id": "julius_caesar_level9_vol2",
     "title_en": "Julius Caesar — Volume II (The Making of the Roman Empire)",
     "title_vi": "Julius Caesar — Tập II (Kiến Tạo Đế Chế La Mã)",
     "tier": "level0",
     "hasData": true
   },
-  "julius_caesar_vip9_vol3": {
-    "id": "julius_caesar_vip9_vol3",
+  "julius_caesar_level9_vol3": {
+    "id": "julius_caesar_level9_vol3",
     "title_en": "Genghis Khan — Volume I (Piece 3)",
     "title_vi": "Thành Cát Tư Hãn — Tập I (Phần 3)",
     "tier": "level0",
     "hasData": true
   },
-  "kautilya_grand_strategy_vip9_vol1": {
-    "id": "kautilya_grand_strategy_vip9_vol1",
+  "kautilya_grand_strategy_level9_vol1": {
+    "id": "kautilya_grand_strategy_level9_vol1",
     "title_en": "Kautilya Grand Strategy — Volume I (The Architecture of Power)",
     "title_vi": "Đại Chiến Lược Kautilya — Tập I (Kiến Trúc Quyền Lực)",
     "tier": "level0",
     "hasData": true
   },
-  "kautilya_grand_strategy_vip9_vol2": {
-    "id": "kautilya_grand_strategy_vip9_vol2",
+  "kautilya_grand_strategy_level9_vol2": {
+    "id": "kautilya_grand_strategy_level9_vol2",
     "title_en": "Kautilya Grand Strategy — Volume II",
     "title_vi": "Đại Chiến Lược Kautilya — Tập II",
     "tier": "level0",
     "hasData": true
   },
-  "kautilya_vip9_vol3": {
-    "id": "kautilya_vip9_vol3",
+  "kautilya_level9_vol3": {
+    "id": "kautilya_level9_vol3",
     "title_en": "Kautilya — Volume III: The Deep Architecture of Empire",
     "title_vi": "Kautilya — Tập III: Kiến Trúc Sâu Của Đế Chế",
     "tier": "level0",
     "hasData": true
   },
-  "life_logistics_adulting_skills_vip4_bonus": {
-    "id": "life_logistics_adulting_skills_vip4_bonus",
+  "life_logistics_adulting_skills_level4_bonus": {
+    "id": "life_logistics_adulting_skills_level4_bonus",
     "title_en": "Life Logistics & Adulting Skills — Level 4 Bonus",
     "title_vi": "Hậu Cần Cuộc Sống & Kỹ Năng Người Trưởng Thành — Phần Thưởng Level 4",
     "tier": "level0",
@@ -1706,8 +1706,8 @@ export const roomDataMap = {
     "tier": "level0",
     "hasData": true
   },
-  "machiavelli_strategy_vip9_vol1": {
-    "id": "machiavelli_strategy_vip9_vol1",
+  "machiavelli_strategy_level9_vol1": {
+    "id": "machiavelli_strategy_level9_vol1",
     "title_en": "Machiavelli Strategic Doctrine – Volume I",
     "title_vi": "Học Thuyết Chiến Lược Machiavelli – Tập I",
     "tier": "level0",
@@ -1755,8 +1755,8 @@ export const roomDataMap = {
     "tier": "level3",
     "hasData": true
   },
-  "master_english_high_efficiency_vip3_ii": {
-    "id": "master_english_high_efficiency_vip3_ii",
+  "master_english_high_efficiency_level3_ii": {
+    "id": "master_english_high_efficiency_level3_ii",
     "title_en": "Master English: Cognitive Fluency & High-Performance Communication II",
     "title_vi": "Làm Chủ Tiếng Anh: Tư Duy Trôi Chảy & Giao Tiếp Hiệu Suất Cao II",
     "tier": "level0",
@@ -1783,8 +1783,8 @@ export const roomDataMap = {
     "tier": "level0",
     "hasData": true
   },
-  "meaning_of_life_vip1_vip1": {
-    "id": "meaning_of_life_vip1_vip1",
+  "meaning_of_life_level1_vip1": {
+    "id": "meaning_of_life_level1_vip1",
     "title_en": "The Meaning of Life: Seeds of Purpose",
     "title_vi": "Ý Nghĩa Cuộc Sống: Hạt Giống Mục Đích",
     "tier": "level1",
@@ -1860,43 +1860,43 @@ export const roomDataMap = {
     "tier": "level0",
     "hasData": true
   },
-  "musashi_grand_strategy_vip9_vol1": {
-    "id": "musashi_grand_strategy_vip9_vol1",
+  "musashi_grand_strategy_level9_vol1": {
+    "id": "musashi_grand_strategy_level9_vol1",
     "title_en": "Miyamoto Musashi Grand Strategy — Volume I",
     "title_vi": "Đại Chiến Lược Miyamoto Musashi — Tập I",
     "tier": "level0",
     "hasData": true
   },
-  "musashi_grand_strategy_vip9_vol2": {
-    "id": "musashi_grand_strategy_vip9_vol2",
+  "musashi_grand_strategy_level9_vol2": {
+    "id": "musashi_grand_strategy_level9_vol2",
     "title_en": "Miyamoto Musashi Grand Strategy — Volume II",
     "title_vi": "Đại Chiến Lược Miyamoto Musashi — Tập II",
     "tier": "level0",
     "hasData": true
   },
-  "musashi_grand_strategy_vip9_vol3": {
-    "id": "musashi_grand_strategy_vip9_vol3",
+  "musashi_grand_strategy_level9_vol3": {
+    "id": "musashi_grand_strategy_level9_vol3",
     "title_en": "Miyamoto Musashi Grand Strategy — Volume III (Meta-Strategist)",
     "title_vi": "Đại Chiến Lược Miyamoto Musashi — Tập III (Siêu Chiến Lược Gia)",
     "tier": "level0",
     "hasData": true
   },
-  "napoleon_vip9_vol1": {
-    "id": "napoleon_vip9_vol1",
+  "napoleon_level9_vol1": {
+    "id": "napoleon_level9_vol1",
     "title_en": "Napoleon — Volume I",
     "title_vi": "Napoléon — Tập I",
     "tier": "level0",
     "hasData": true
   },
-  "napoleon_vip9_vol2": {
-    "id": "napoleon_vip9_vol2",
+  "napoleon_level9_vol2": {
+    "id": "napoleon_level9_vol2",
     "title_en": "Napoleon — Volume II",
     "title_vi": "Napoléon — Tập II",
     "tier": "level0",
     "hasData": true
   },
-  "napoleon_vip9_vol3": {
-    "id": "napoleon_vip9_vol3",
+  "napoleon_level9_vol3": {
+    "id": "napoleon_level9_vol3",
     "title_en": "Napoleon — Volume III",
     "title_vi": "Napoléon — Tập III",
     "tier": "level0",
@@ -2105,8 +2105,8 @@ export const roomDataMap = {
     "tier": "level2",
     "hasData": true
   },
-  "personal_safety_self_protection_vip4_bonus": {
-    "id": "personal_safety_self_protection_vip4_bonus",
+  "personal_safety_self_protection_level4_bonus": {
+    "id": "personal_safety_self_protection_level4_bonus",
     "title_en": "Personal Safety & Everyday Self-Protection — Level 4 Bonus",
     "title_vi": "An Toàn Cá Nhân & Tự Bảo Vệ Hằng Ngày — Phần Thưởng Level 4",
     "tier": "level0",
@@ -2210,15 +2210,15 @@ export const roomDataMap = {
     "tier": "level0",
     "hasData": true
   },
-  "psychological_self_mastery_vip6_bonus": {
-    "id": "psychological_self_mastery_vip6_bonus",
+  "psychological_self_mastery_level6_bonus": {
+    "id": "psychological_self_mastery_level6_bonus",
     "title_en": "Psychological Self-Mastery — Level 6 Bonus",
     "title_vi": "Làm Chủ Tâm Lý — Phần Thưởng Level 6",
     "tier": "level0",
     "hasData": true
   },
-  "psychology_of_power_inner_authority_vip6_bonus": {
-    "id": "psychology_of_power_inner_authority_vip6_bonus",
+  "psychology_of_power_inner_authority_level6_bonus": {
+    "id": "psychology_of_power_inner_authority_level6_bonus",
     "title_en": "Psychology of Power & Inner Authority — Level 6 Bonus",
     "title_vi": "Tâm Lý Quyền Lực & Quyền Uy Nội Tâm — Phần Thưởng Level 6",
     "tier": "level0",
@@ -2322,15 +2322,15 @@ export const roomDataMap = {
     "tier": "level0",
     "hasData": true
   },
-  "saladin_vip9_vol2": {
-    "id": "saladin_vip9_vol2",
+  "saladin_level9_vol2": {
+    "id": "saladin_level9_vol2",
     "title_en": "Saladin — Volume II",
     "title_vi": "Saladin — Tập II",
     "tier": "level0",
     "hasData": true
   },
-  "saladin_vip9_vol3": {
-    "id": "saladin_vip9_vol3",
+  "saladin_level9_vol3": {
+    "id": "saladin_level9_vol3",
     "title_en": "Saladin — Volume III",
     "title_vi": "Saladin — Tập III",
     "tier": "level0",
@@ -2371,22 +2371,22 @@ export const roomDataMap = {
     "tier": "level0",
     "hasData": true
   },
-  "scipio_africanus_vip9_vol1": {
-    "id": "scipio_africanus_vip9_vol1",
+  "scipio_africanus_level9_vol1": {
+    "id": "scipio_africanus_level9_vol1",
     "title_en": "Scipio Africanus — Volume I",
     "title_vi": "Scipio Africanus — Tập I",
     "tier": "level0",
     "hasData": true
   },
-  "scipio_africanus_vip9_vol2": {
-    "id": "scipio_africanus_vip9_vol2",
+  "scipio_africanus_level9_vol2": {
+    "id": "scipio_africanus_level9_vol2",
     "title_en": "Scipio Africanus — Volume II",
     "title_vi": "Scipio Africanus — Tập II",
     "tier": "level0",
     "hasData": true
   },
-  "scipio_africanus_vip9_vol3": {
-    "id": "scipio_africanus_vip9_vol3",
+  "scipio_africanus_level9_vol3": {
+    "id": "scipio_africanus_level9_vol3",
     "title_en": "Scipio Africanus — Volume III",
     "title_vi": "Scipio Africanus — Tập III",
     "tier": "level0",
@@ -2574,8 +2574,8 @@ export const roomDataMap = {
     "tier": "level0",
     "hasData": true
   },
-  "strategic_decision_making_vip6_bonus": {
-    "id": "strategic_decision_making_vip6_bonus",
+  "strategic_decision_making_level6_bonus": {
+    "id": "strategic_decision_making_level6_bonus",
     "title_en": "Strategic Decision-Making Mastery — Level 6 Bonus",
     "title_vi": "Làm Chủ Quyết Định Chiến Lược — Phần Thưởng Level 6",
     "tier": "level0",
@@ -2595,8 +2595,8 @@ export const roomDataMap = {
     "tier": "level0",
     "hasData": true
   },
-  "strategic_emotional_reading_hidden_signals_vip6_bonus": {
-    "id": "strategic_emotional_reading_hidden_signals_vip6_bonus",
+  "strategic_emotional_reading_hidden_signals_level6_bonus": {
+    "id": "strategic_emotional_reading_hidden_signals_level6_bonus",
     "title_en": "Strategic Emotional Reading & Hidden Signals — Level 6 Bonus",
     "title_vi": "Đọc Cảm Xúc Chiến Lược & Tín Hiệu Ẩn — Phần Thưởng Level 6",
     "tier": "level0",
@@ -2735,8 +2735,8 @@ export const roomDataMap = {
     "tier": "level0",
     "hasData": true
   },
-  "stress_vip1_vip1": {
-    "id": "stress_vip1_vip1",
+  "stress_level1_vip1": {
+    "id": "stress_level1_vip1",
     "title_en": "Stress Management Level 1",
     "title_vi": "Quản Lý Căng Thẳng Level 1",
     "tier": "level1",
@@ -2763,8 +2763,8 @@ export const roomDataMap = {
     "tier": "level0",
     "hasData": true
   },
-  "sun_tzu_grand_strategy_vip9_vol1": {
-    "id": "sun_tzu_grand_strategy_vip9_vol1",
+  "sun_tzu_grand_strategy_level9_vol1": {
+    "id": "sun_tzu_grand_strategy_level9_vol1",
     "title_en": "Sun Tzu Grand Strategy — Volume I",
     "title_vi": "Đại Chiến Lược Tôn Tử — Tập I",
     "tier": "level0",
@@ -2777,127 +2777,127 @@ export const roomDataMap = {
     "tier": "level0",
     "hasData": true
   },
-  "sun_tzu_strategy_vip9_vol2": {
-    "id": "sun_tzu_strategy_vip9_vol2",
+  "sun_tzu_strategy_level9_vol2": {
+    "id": "sun_tzu_strategy_level9_vol2",
     "title_en": "Sun Tzu Strategic Foundations – Volume II",
     "title_vi": "Tôn Tử – Nền Tảng Chiến Lược – Tập II",
     "tier": "level0",
     "hasData": true
   },
-  "sun_tzu_strategy_vip9_vol3": {
-    "id": "sun_tzu_strategy_vip9_vol3",
+  "sun_tzu_strategy_level9_vol3": {
+    "id": "sun_tzu_strategy_level9_vol3",
     "title_en": "Sun Tzu Strategic Foundations – Volume III",
     "title_vi": "Tôn Tử – Nền Tảng Chiến Lược – Tập III",
     "tier": "level0",
     "hasData": true
   },
-  "sun_tzu_strategy_vip9_vol4": {
-    "id": "sun_tzu_strategy_vip9_vol4",
+  "sun_tzu_strategy_level9_vol4": {
+    "id": "sun_tzu_strategy_level9_vol4",
     "title_en": "Sun Tzu Strategic Foundations – Volume IV",
     "title_vi": "Tôn Tử – Nền Tảng Chiến Lược – Tập IV",
     "tier": "level0",
     "hasData": true
   },
-  "survival_resilience_vip1_srs01": {
-    "id": "survival_resilience_vip1_srs01",
+  "survival_resilience_level1_srs01": {
+    "id": "survival_resilience_level1_srs01",
     "title_en": "SRS-01 — Modern Weather Awareness",
     "title_vi": "SRS-01 — Nhận Biết Thời Tiết Hiện Đại",
     "tier": "level0",
     "hasData": true
   },
-  "survival_resilience_vip1_srs02": {
-    "id": "survival_resilience_vip1_srs02",
+  "survival_resilience_level1_srs02": {
+    "id": "survival_resilience_level1_srs02",
     "title_en": "SRS-02 — Building a Practical 72-Hour Emergency Kit",
     "title_vi": "SRS-02 — Chuẩn Bị Bộ Dụng Cụ 72 Giờ Thiết Yếu",
     "tier": "level0",
     "hasData": true
   },
-  "survival_resilience_vip1_srs03": {
-    "id": "survival_resilience_vip1_srs03",
+  "survival_resilience_level1_srs03": {
+    "id": "survival_resilience_level1_srs03",
     "title_en": "SRS-03 — Safe Heating, Cooling & Power Outage Management",
     "title_vi": "SRS-03 — Giữ Ấm, Làm Mát & Xử Lý Mất Điện An Toàn",
     "tier": "level0",
     "hasData": true
   },
-  "survival_resilience_vip1_srs04": {
-    "id": "survival_resilience_vip1_srs04",
+  "survival_resilience_level1_srs04": {
+    "id": "survival_resilience_level1_srs04",
     "title_en": "SRS-04 — Water Safety & Emergency Purification",
     "title_vi": "SRS-04 — An Toàn Nguồn Nước & Lọc Nước Khẩn Cấp",
     "tier": "level0",
     "hasData": true
   },
-  "survival_resilience_vip1_srs05": {
-    "id": "survival_resilience_vip1_srs05",
+  "survival_resilience_level1_srs05": {
+    "id": "survival_resilience_level1_srs05",
     "title_en": "SRS-05 — Emergency First Aid Basics (Non-Medical, Safe Guidance)",
     "title_vi": "SRS-05 — Sơ Cấp Cứu Cơ Bản (Hướng Dẫn An Toàn, Không Y Khoa)",
     "tier": "level0",
     "hasData": true
   },
-  "survival_resilience_vip1_srs06": {
-    "id": "survival_resilience_vip1_srs06",
+  "survival_resilience_level1_srs06": {
+    "id": "survival_resilience_level1_srs06",
     "title_en": "SRS-06 — Fire Safety & Household Evacuation Basics",
     "title_vi": "SRS-06 — An Toàn Cháy Nổ & Nguyên Tắc Sơ Tán Gia Đình",
     "tier": "level0",
     "hasData": true
   },
-  "survival_resilience_vip1_srs07": {
-    "id": "survival_resilience_vip1_srs07",
+  "survival_resilience_level1_srs07": {
+    "id": "survival_resilience_level1_srs07",
     "title_en": "SRS-07 — Fire Safety & Smoke Survival",
     "title_vi": "SRS-07 — An Toàn Cháy Nổ & Sinh Tồn Khi Có Khói",
     "tier": "level0",
     "hasData": true
   },
-  "survival_resilience_vip1_srs08": {
-    "id": "survival_resilience_vip1_srs08",
+  "survival_resilience_level1_srs08": {
+    "id": "survival_resilience_level1_srs08",
     "title_en": "SRS-08 — Storms, Typhoons & Household Reinforcement",
     "title_vi": "SRS-08 — Bão, Lũ & Gia Cố An Toàn Cho Gia Đình",
     "tier": "level0",
     "hasData": true
   },
-  "survival_resilience_vip1_srs09": {
-    "id": "survival_resilience_vip1_srs09",
+  "survival_resilience_level1_srs09": {
+    "id": "survival_resilience_level1_srs09",
     "title_en": "SRS-09 — Heatwaves & Extreme Temperature Safety",
     "title_vi": "SRS-09 — Sóng Nhiệt & An Toàn Trong Nhiệt Độ Cực Đoan",
     "tier": "level0",
     "hasData": true
   },
-  "survival_resilience_vip1_srs10": {
-    "id": "survival_resilience_vip1_srs10",
+  "survival_resilience_level1_srs10": {
+    "id": "survival_resilience_level1_srs10",
     "title_en": "SRS-10 — Cold Waves, Hypothermia & Staying Warm",
     "title_vi": "SRS-10 — Rét Đậm, Hạ Thân Nhiệt & Giữ Ấm An Toàn",
     "tier": "level0",
     "hasData": true
   },
-  "survival_resilience_vip1_srs11": {
-    "id": "survival_resilience_vip1_srs11",
+  "survival_resilience_level1_srs11": {
+    "id": "survival_resilience_level1_srs11",
     "title_en": "SRS-11 — Earthquakes & Building Safety Basics",
     "title_vi": "SRS-11 — An Toàn Động Đất & Ứng Xử Trong Nhà",
     "tier": "level0",
     "hasData": true
   },
-  "survival_resilience_vip1_srs12": {
-    "id": "survival_resilience_vip1_srs12",
+  "survival_resilience_level1_srs12": {
+    "id": "survival_resilience_level1_srs12",
     "title_en": "SRS-12 — Landslides, Soil Collapse & Slope Safety",
     "title_vi": "SRS-12 — Sạt Lở Đất, Sụt Lún & An Toàn Khu Vực Dốc",
     "tier": "level0",
     "hasData": true
   },
-  "survival_resilience_vip1_srs13": {
-    "id": "survival_resilience_vip1_srs13",
+  "survival_resilience_level1_srs13": {
+    "id": "survival_resilience_level1_srs13",
     "title_en": "SRS-13 — Safe Use of Generators & Backup Power",
     "title_vi": "SRS-13 — Sử Dụng Máy Phát Điện & Nguồn Dự Phòng An Toàn",
     "tier": "level0",
     "hasData": true
   },
-  "survival_resilience_vip1_srs14": {
-    "id": "survival_resilience_vip1_srs14",
+  "survival_resilience_level1_srs14": {
+    "id": "survival_resilience_level1_srs14",
     "title_en": "SRS-14 — Emergency Heating, Cooling & Temperature Management",
     "title_vi": "SRS-14 — Sưởi Ấm, Làm Mát & Ổn Định Thân Nhiệt Khi Khẩn Cấp",
     "tier": "level0",
     "hasData": true
   },
-  "survival_resilience_vip1_srs15": {
-    "id": "survival_resilience_vip1_srs15",
+  "survival_resilience_level1_srs15": {
+    "id": "survival_resilience_level1_srs15",
     "title_en": "SRS-15 — Staying Safe During Earthquakes",
     "title_vi": "SRS-15 — An Toàn Khi Động Đất",
     "tier": "level0",
@@ -2917,50 +2917,50 @@ export const roomDataMap = {
     "tier": "level0",
     "hasData": true
   },
-  "thucydides_vip9_vol1": {
-    "id": "thucydides_vip9_vol1",
+  "thucydides_level9_vol1": {
+    "id": "thucydides_level9_vol1",
     "title_en": "Thucydides — Volume I",
     "title_vi": "Thucydides — Tập I",
     "tier": "level0",
     "hasData": true
   },
-  "thucydides_vip9_vol2": {
-    "id": "thucydides_vip9_vol2",
+  "thucydides_level9_vol2": {
+    "id": "thucydides_level9_vol2",
     "title_en": "Thucydides — Volume II",
     "title_vi": "Thucydides — Tập II",
     "tier": "level0",
     "hasData": true
   },
-  "thucydides_vip9_vol3": {
-    "id": "thucydides_vip9_vol3",
+  "thucydides_level9_vol3": {
+    "id": "thucydides_level9_vol3",
     "title_en": "Thucydides — Volume III",
     "title_vi": "Thucydides — Tập III",
     "tier": "level0",
     "hasData": true
   },
-  "tokugawa_ieyasu_vip9_vol1": {
-    "id": "tokugawa_ieyasu_vip9_vol1",
+  "tokugawa_ieyasu_level9_vol1": {
+    "id": "tokugawa_ieyasu_level9_vol1",
     "title_en": "Tokugawa Ieyasu — Volume I",
     "title_vi": "Tokugawa Ieyasu — Tập I",
     "tier": "level0",
     "hasData": true
   },
-  "tokugawa_ieyasu_vip9_vol2": {
-    "id": "tokugawa_ieyasu_vip9_vol2",
+  "tokugawa_ieyasu_level9_vol2": {
+    "id": "tokugawa_ieyasu_level9_vol2",
     "title_en": "Tokugawa Ieyasu — Volume II",
     "title_vi": "Tokugawa Ieyasu — Tập II",
     "tier": "level0",
     "hasData": true
   },
-  "tokugawa_ieyasu_vip9_vol3": {
-    "id": "tokugawa_ieyasu_vip9_vol3",
+  "tokugawa_ieyasu_level9_vol3": {
+    "id": "tokugawa_ieyasu_level9_vol3",
     "title_en": "Tokugawa Ieyasu — Volume III",
     "title_vi": "Tokugawa Ieyasu — Tập III",
     "tier": "level0",
     "hasData": true
   },
-  "tokugawa_ieyasu_vip9_vol4": {
-    "id": "tokugawa_ieyasu_vip9_vol4",
+  "tokugawa_ieyasu_level9_vol4": {
+    "id": "tokugawa_ieyasu_level9_vol4",
     "title_en": "Tokugawa Ieyasu — Volume IV",
     "title_vi": "Tokugawa Ieyasu — Tập IV",
     "tier": "level0",
@@ -3246,8 +3246,8 @@ export const roomDataMap = {
     "tier": "level0",
     "hasData": true
   },
-  "wealth_wisdom_vip3_preview_free": {
-    "id": "wealth_wisdom_vip3_preview_free",
+  "wealth_wisdom_level3_preview_free": {
+    "id": "wealth_wisdom_level3_preview_free",
     "title_en": "Wealth & Wisdom — Level 3 Preview",
     "title_vi": "Giàu Có & Trí Tuệ — Giới Thiệu Level 3",
     "tier": "level3",
@@ -3309,22 +3309,22 @@ export const roomDataMap = {
     "tier": "level0",
     "hasData": true
   },
-  "zhuge_liang_grand_strategy_vip9_vol2": {
-    "id": "zhuge_liang_grand_strategy_vip9_vol2",
+  "zhuge_liang_grand_strategy_level9_vol2": {
+    "id": "zhuge_liang_grand_strategy_level9_vol2",
     "title_en": "Zhuge Liang Grand Strategy — Volume II (The Way of the Regent)",
     "title_vi": "Đại Chiến Lược Gia Cát Lượng — Tập II (Đạo của Thừa Tướng)",
     "tier": "level0",
     "hasData": true
   },
-  "zhuge_liang_grand_strategy_vip9_vol3": {
-    "id": "zhuge_liang_grand_strategy_vip9_vol3",
+  "zhuge_liang_grand_strategy_level9_vol3": {
+    "id": "zhuge_liang_grand_strategy_level9_vol3",
     "title_en": "Zhuge Liang Grand Strategy — Volume III",
     "title_vi": "Đại Chiến Lược Gia Cát Lượng — Tập III",
     "tier": "level0",
     "hasData": true
   },
-  "zhuge_liang_vip9_vols": {
-    "id": "zhuge_liang_vip9_vols",
+  "zhuge_liang_level9_vols": {
+    "id": "zhuge_liang_level9_vols",
     "title_en": "Zhuge Liang — Volume III",
     "title_vi": "Gia Cát Lượng — Tập III",
     "tier": "level0",

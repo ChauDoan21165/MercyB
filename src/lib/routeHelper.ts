@@ -1,89 +1,188 @@
-// src/lib/routeHelper.ts
-// MB-BLUE-ROUTE-1.0 — Production-only route helpers
-// IMPORTANT:
-// - NO test code in here (no describe/it/expect).
-// - Keep helpers deterministic.
-// - Tests live in src/lib/__tests__/routeHelper.test.ts
-
-export type RoomRouteKind = "room" | "tiers" | "home" | "signin" | "admin";
+/**
+ * Path: src/lib/routeHelper.ts
+ * File: routeHelper.ts
+ */
 
 export const ROUTES = {
   home: "/",
   signin: "/signin",
   admin: "/admin",
   tiers: "/tiers",
-  room: (roomId: string) => `/room/${encodeURIComponent(roomId)}`,
+  rooms: "/rooms",
+  account: "/account",
+  sexualityCulture: "/sexuality-culture",
+  room: (roomId: string) => `/room/${encodeURIComponent(normalizeRoomId(roomId))}`,
 } as const;
 
+export type RouteKind =
+  | "home"
+  | "signin"
+  | "admin"
+  | "tiers"
+  | "rooms"
+  | "room"
+  | "account"
+  | "unknown";
+
+const DEFAULT_RETURN_TO: string = ROUTES.home;
+
+function safeString(value: string | null | undefined): string {
+  return String(value ?? "").trim();
+}
+
+function normalizeMatchValue(value: string): string {
+  return value.trim().toLowerCase().replace(/_/g, "-");
+}
+
+function getParentRouteForRoomId(roomId: string | null | undefined): string {
+  const raw = normalizeRoomId(String(roomId ?? ""));
+  const normalized = normalizeMatchValue(raw);
+
+  if (!normalized) return ROUTES.rooms;
+
+  if (/^sexuality-curiosity-(level3|vip3)-sub[1-6]\b/.test(normalized)) {
+    return ROUTES.sexualityCulture;
+  }
+
+  if (/^sexuality-and-curiosity-and-culture-(level3|vip3)\b/.test(normalized)) {
+    return "/rooms-level3";
+  }
+
+  const levelMatch = normalized.match(/(?:^|-|_)(?:level)([1-9])(?:$|-|_)/);
+  if (levelMatch) {
+    return `/rooms-level${levelMatch[1]}`;
+  }
+
+  const vipMatch = normalized.match(/(?:^|-|_)(?:vip)([1-9])(?:$|-|_)/);
+  if (vipMatch) {
+    return `/rooms-level${vipMatch[1]}`;
+  }
+
+  if (/(?:^|-|_)(level0|free)(?:$|-|_)/.test(normalized)) {
+    return ROUTES.rooms;
+  }
+
+  return ROUTES.rooms;
+}
+
 export function normalizeRoomId(roomId: string): string {
-  const id = (roomId ?? "").trim();
-  if (!id) return "";
-  return id.replace(/^\/+/, "").replace(/\/+$/, "");
+  return safeString(roomId).replace(/^\/+|\/+$/g, "");
 }
 
 export function stripRoomAccessSuffix(roomId: string): string {
   const id = normalizeRoomId(roomId);
-  return id.replace(/_(vip|level0)$/i, "");
+  return id.replace(/([_-])(level[1-9]|level0|vip[1-9]|vip|free)$/i, "");
+}
+
+export function extractRoomIdFromPath(path: string | null | undefined): string {
+  const value = safeString(path);
+  if (!value.startsWith("/room/")) return "";
+
+  const withoutPrefix = value.slice("/room/".length);
+  const firstSegment = withoutPrefix.split("/")[0];
+
+  if (!firstSegment) return "";
+
+  try {
+    return decodeURIComponent(firstSegment);
+  } catch {
+    return firstSegment;
+  }
 }
 
 export function isSafeInternalPath(path: string | null | undefined): boolean {
-  if (!path) return false;
-  const p = path.trim();
-  if (!p.startsWith("/")) return false;
-  if (p.startsWith("//")) return false;
-  if (/^[a-zA-Z][a-zA-Z0-9+.-]*:/.test(p)) return false;
-  if (p.includes("\n") || p.includes("\r")) return false;
+  const value = safeString(path);
+
+  if (!value) return false;
+  if (!value.startsWith("/")) return false;
+  if (value.startsWith("//")) return false;
+  if (/^[a-z]+:/i.test(value)) return false;
+  if (value.includes("\n") || value.includes("\r")) return false;
+
   return true;
 }
 
 export function sanitizeReturnTo(
-  returnTo: string | null | undefined,
-  fallback: string = ROUTES.home
+  path: string | null | undefined,
+  fallback: string = DEFAULT_RETURN_TO
 ): string {
-  if (!returnTo) return fallback;
-  const trimmed = returnTo.trim();
-  return isSafeInternalPath(trimmed) ? trimmed : fallback;
+  return isSafeInternalPath(path) ? safeString(path) : fallback;
 }
 
 export function withReturnTo(path: string, returnTo: string): string {
-  const base = path || ROUTES.home;
-  const rt = sanitizeReturnTo(returnTo, ROUTES.home);
-  const sep = base.includes("?") ? "&" : "?";
-  return `${base}${sep}returnTo=${encodeURIComponent(rt)}`;
+  const safePath = sanitizeReturnTo(path, DEFAULT_RETURN_TO);
+  const safeReturnTo = sanitizeReturnTo(returnTo, DEFAULT_RETURN_TO);
+  const separator = safePath.includes("?") ? "&" : "?";
+
+  return `${safePath}${separator}returnTo=${encodeURIComponent(safeReturnTo)}`;
 }
 
 export function readReturnTo(
-  searchParams: { get: (k: string) => string | null } | null | undefined,
-  fallback: string = ROUTES.home
+  params: URLSearchParams | string | null | undefined,
+  fallback: string = DEFAULT_RETURN_TO
 ): string {
-  const raw = searchParams?.get?.("returnTo") ?? null;
-  return sanitizeReturnTo(raw, fallback);
+  if (!params) return fallback;
+
+  const value =
+    typeof params === "string"
+      ? new URLSearchParams(params).get("returnTo")
+      : params.get("returnTo");
+
+  return sanitizeReturnTo(value, fallback);
 }
 
 export function roomPath(roomId: string): string {
-  const id = normalizeRoomId(roomId);
-  return ROUTES.room(id);
+  return ROUTES.room(roomId);
 }
 
-export function classifyRoute(pathname: string): RoomRouteKind {
-  const p = (pathname ?? "").trim();
-  if (p === ROUTES.home) return "home";
-  if (p.startsWith(ROUTES.signin)) return "signin";
-  if (p.startsWith(ROUTES.admin)) return "admin";
-  if (p.startsWith(ROUTES.tiers)) return "tiers";
-  if (p.startsWith("/room/")) return "room";
+export function classifyRoute(path: string | null | undefined): RouteKind {
+  const safePath = sanitizeReturnTo(path, DEFAULT_RETURN_TO);
+
+  if (safePath === ROUTES.home) return "home";
+  if (safePath === ROUTES.signin) return "signin";
+  if (safePath === ROUTES.admin) return "admin";
+  if (safePath === ROUTES.tiers || safePath.startsWith("/tiers/")) return "tiers";
+  if (
+    safePath === ROUTES.rooms ||
+    /^\/rooms-level[1-9]$/i.test(safePath) ||
+    safePath === ROUTES.sexualityCulture
+  ) {
+    return "rooms";
+  }
+  if (safePath === ROUTES.account || safePath.startsWith("/account/")) {
+    return "account";
+  }
+  if (safePath.startsWith("/room/")) return "room";
+
   return "home";
 }
 
-export function extractRoomIdFromPath(pathname: string): string {
-  const p = (pathname ?? "").trim();
-  const prefix = "/room/";
-  if (!p.startsWith(prefix)) return "";
-  const rest = p.slice(prefix.length);
-  const seg = rest.split("/")[0] ?? "";
-  try {
-    return decodeURIComponent(seg);
-  } catch {
-    return seg;
+export function getParentRoute(input: string | null | undefined): string {
+  const value = safeString(input);
+
+  if (!value) return ROUTES.rooms;
+
+  if (isSafeInternalPath(value)) {
+    const routeKind = classifyRoute(value);
+
+    if (routeKind === "room") {
+      return getParentRouteForRoomId(extractRoomIdFromPath(value));
+    }
+
+    if (value === ROUTES.sexualityCulture) {
+      return "/rooms-level3";
+    }
+
+    if (routeKind === "rooms") return ROUTES.home;
+    if (routeKind === "tiers") return ROUTES.home;
+    if (routeKind === "signin") return ROUTES.home;
+    if (routeKind === "admin") return ROUTES.home;
+    if (routeKind === "account") return ROUTES.home;
+
+    return ROUTES.home;
   }
+
+  return getParentRouteForRoomId(value);
 }
+
+export const getParentPath = getParentRoute;

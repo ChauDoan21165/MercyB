@@ -342,7 +342,7 @@
       "category": "money",
       "input": "Why is this locked?",
       "expectedIntent": ["upsell_info"],
-      "mustIncludeAny": ["no pressure", "optional", "free is still valid"],
+      "mustIncludeAny": ["no pressure", "optional", "level0 is still valid"],
       "mustNotIncludeAny": ["upgrade now", "don't miss"]
     },
     {
@@ -350,7 +350,7 @@
       "category": "money",
       "input": "Do I need to pay?",
       "expectedIntent": ["upsell_info"],
-      "mustIncludeAny": ["free is valid", "optional", "no pressure"]
+      "mustIncludeAny": ["level0 is valid", "optional", "no pressure"]
     },
     {
       "id": "TC033",
@@ -397,7 +397,7 @@
       "category": "money",
       "input": "If I don't pay, I won't improve.",
       "expectedIntent": ["comfort"],
-      "mustIncludeAny": ["free is still valid", "doesn't make you better or worse", "no pressure"]
+      "mustIncludeAny": ["level0 is still valid", "doesn't make you better or worse", "no pressure"]
     },
     {
       "id": "TC039",

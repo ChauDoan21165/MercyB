@@ -1,7 +1,12 @@
 /**
+ * Path: src/lib/audio/globalConsistencyEngine.ts
+ * File: globalConsistencyEngine.ts
+ */
+
+/**
  * Global Consistency Engine (GCE) v2.0
  * Phase 4: Full Pipeline Integration
- * 
+ *
  * THE SINGLE SOURCE OF TRUTH for canonical audio naming across:
  * - validator
  * - autoRepair
@@ -131,20 +136,21 @@ export interface GCEOperation {
 // ============================================
 
 export function normalizeRoomId(roomId: string): string {
-  return roomId
+  return String(roomId)
     .toLowerCase()
     .trim()
     .replace(/[_\s]+/g, '-')
     .replace(/[^a-z0-9-]/g, '')
     .replace(/-+/g, '-')
-    .replace(/^-|-$/g, '');
+    .replace(/^-|-$/g, '')
+    .replace(/^level-(\d)(?=-|$)/, 'level$1');
 }
 
 export function normalizeEntrySlug(slug: string | number): string {
   if (typeof slug === 'number') {
     return `entry-${slug}`;
   }
-  
+
   return String(slug)
     .toLowerCase()
     .trim()
@@ -176,7 +182,7 @@ export function getCanonicalAudioForRoom(
 ): CanonicalAudioPair {
   const normalizedRoomId = normalizeRoomId(roomId);
   const normalizedSlug = normalizeEntrySlug(entrySlug);
-  
+
   return {
     en: `${normalizedRoomId}-${normalizedSlug}-en.mp3`,
     vi: `${normalizedRoomId}-${normalizedSlug}-vi.mp3`,
@@ -196,31 +202,27 @@ export function getCanonicalAudioForEntireRoom(
   const normalizedRoomId = normalizeRoomId(roomId);
   const entryResults: GCEEntryResult[] = [];
   const allIssues: GCEIssue[] = [];
-  
+
   let missing = 0;
   let orphans = 0;
   let namingIssues = 0;
   let duplicates = 0;
   let reversals = 0;
 
-  // Process each entry
   for (let i = 0; i < entries.length; i++) {
     const entry = entries[i];
     const entrySlug = String(entry.slug || entry.artifact_id || entry.id || `entry-${i}`);
     const canonical = getCanonicalAudioForRoom(roomId, entrySlug);
-    
-    // Get JSON refs for this entry
+
     const jsonRefs = jsonAudioRefs?.get(i);
     const jsonRefEn = jsonRefs?.en || (typeof entry.audio === 'object' ? entry.audio?.en : null);
     const jsonRefVi = jsonRefs?.vi || (typeof entry.audio === 'object' ? entry.audio?.vi : null);
-    
-    // Check storage
+
     const storageMatchesEn = storageFiles.has(canonical.en.toLowerCase());
     const storageMatchesVi = storageFiles.has(canonical.vi.toLowerCase());
-    
+
     const issues: GCEIssue[] = [];
-    
-    // Check for missing files
+
     if (!storageMatchesEn) {
       missing++;
       issues.push({
@@ -231,7 +233,7 @@ export function getCanonicalAudioForEntireRoom(
         autoFixable: false,
       });
     }
-    
+
     if (!storageMatchesVi) {
       missing++;
       issues.push({
@@ -242,8 +244,7 @@ export function getCanonicalAudioForEntireRoom(
         autoFixable: false,
       });
     }
-    
-    // Check JSON references
+
     if (jsonRefEn && jsonRefEn.toLowerCase() !== canonical.en) {
       namingIssues++;
       issues.push({
@@ -255,7 +256,7 @@ export function getCanonicalAudioForEntireRoom(
         suggestedFix: canonical.en,
       });
     }
-    
+
     if (jsonRefVi && jsonRefVi.toLowerCase() !== canonical.vi) {
       namingIssues++;
       issues.push({
@@ -267,8 +268,7 @@ export function getCanonicalAudioForEntireRoom(
         suggestedFix: canonical.vi,
       });
     }
-    
-    // Check for reversed EN/VI
+
     if (jsonRefEn && jsonRefVi) {
       const enLang = extractLanguage(jsonRefEn);
       const viLang = extractLanguage(jsonRefVi);
@@ -283,7 +283,7 @@ export function getCanonicalAudioForEntireRoom(
         });
       }
     }
-    
+
     entryResults.push({
       entrySlug,
       expectedEn: canonical.en,
@@ -294,17 +294,16 @@ export function getCanonicalAudioForEntireRoom(
       storageMatchesVi,
       issues,
     });
-    
+
     allIssues.push(...issues);
   }
-  
-  // Detect orphans (files in storage not expected by any entry)
+
   const expectedFiles = new Set<string>();
   for (const entry of entryResults) {
     expectedFiles.add(entry.expectedEn.toLowerCase());
     expectedFiles.add(entry.expectedVi.toLowerCase());
   }
-  
+
   for (const file of storageFiles) {
     const normalizedFile = file.toLowerCase();
     if (normalizedFile.startsWith(normalizedRoomId + '-') && !expectedFiles.has(normalizedFile)) {
@@ -318,22 +317,26 @@ export function getCanonicalAudioForEntireRoom(
       });
     }
   }
-  
-  // Calculate integrity score
-  const totalExpected = entries.length * 2; // EN + VI per entry
-  const totalFound = entryResults.filter(e => e.storageMatchesEn).length + 
-                     entryResults.filter(e => e.storageMatchesVi).length;
-  
+
+  const totalExpected = entries.length * 2;
+  const totalFound =
+    entryResults.filter((e) => e.storageMatchesEn).length +
+    entryResults.filter((e) => e.storageMatchesVi).length;
+
   const coverageScore = totalExpected > 0 ? (totalFound / totalExpected) * 60 : 60;
   const namingPenalty = Math.min(20, namingIssues * 3);
   const orphanPenalty = Math.min(10, orphans * 2);
   const duplicatePenalty = Math.min(5, duplicates * 1);
   const reversalPenalty = Math.min(5, reversals * 2);
-  
-  const roomIntegrityScore = Math.max(0, Math.min(100, Math.round(
-    coverageScore + 40 - namingPenalty - orphanPenalty - duplicatePenalty - reversalPenalty
-  )));
-  
+
+  const roomIntegrityScore = Math.max(
+    0,
+    Math.min(
+      100,
+      Math.round(coverageScore + 40 - namingPenalty - orphanPenalty - duplicatePenalty - reversalPenalty)
+    )
+  );
+
   return {
     roomId,
     entries: entryResults,
@@ -362,35 +365,30 @@ export function validateWithGCE(
   const violations: string[] = [];
   const normalizedFilename = filename.toLowerCase();
   const normalizedRoomId = normalizeRoomId(roomId);
-  
-  const canonical = entrySlug 
+
+  const canonical = entrySlug
     ? getCanonicalAudioForRoom(roomId, entrySlug)
     : { en: '', vi: '' };
-  
-  // Rule 1: Must start with roomId
+
   if (currentConfig.enforceRoomIdPrefix) {
     if (!normalizedFilename.startsWith(normalizedRoomId + '-')) {
       violations.push(`CRITICAL: Must start with "${normalizedRoomId}-"`);
     }
   }
-  
-  // Rule 2: Must be lowercase
+
   if (filename !== filename.toLowerCase()) {
     violations.push('Must be all lowercase');
   }
-  
-  // Rule 3: Must use hyphens
+
   if (filename.includes('_') || filename.includes(' ')) {
     violations.push('Must use hyphens, not underscores or spaces');
   }
-  
-  // Rule 4: Must end with language suffix
+
   const hasLangSuffix = /-en\.mp3$/i.test(filename) || /-vi\.mp3$/i.test(filename);
   if (!hasLangSuffix) {
     violations.push('Must end with -en.mp3 or -vi.mp3');
   }
-  
-  // Rule 5: Must match entry if provided
+
   if (currentConfig.enforceEntryMatch && entrySlug) {
     const lang = extractLanguage(filename);
     if (lang) {
@@ -400,12 +398,11 @@ export function validateWithGCE(
       }
     }
   }
-  
-  // Calculate confidence
+
   let confidence = 100;
   confidence -= violations.length * 15;
   confidence = Math.max(0, confidence);
-  
+
   return {
     isValid: violations.length === 0,
     canonical,
@@ -423,10 +420,10 @@ export function generateRoomRepairPlan(
   roomResult: GCERoomResult
 ): GCERepairPlan {
   const operations: GCEOperation[] = [];
-  
+
   for (const issue of roomResult.allIssues) {
     if (!issue.autoFixable) continue;
-    
+
     switch (issue.type) {
       case 'non-canonical':
         if (issue.filename && issue.suggestedFix) {
@@ -443,7 +440,7 @@ export function generateRoomRepairPlan(
           });
         }
         break;
-        
+
       case 'reversed-lang':
         operations.push({
           type: 'update-json',
@@ -459,18 +456,19 @@ export function generateRoomRepairPlan(
         break;
     }
   }
-  
+
   const estimatedImpact = {
     filesRenamed: 0,
-    jsonUpdates: operations.filter(o => o.type === 'update-json').length,
+    jsonUpdates: operations.filter((o) => o.type === 'update-json').length,
     orphansResolved: 0,
     duplicatesRemoved: 0,
   };
-  
-  const avgConfidence = operations.length > 0
-    ? operations.reduce((sum, o) => sum + o.metadata.confidence, 0) / operations.length
-    : 100;
-  
+
+  const avgConfidence =
+    operations.length > 0
+      ? operations.reduce((sum, o) => sum + o.metadata.confidence, 0) / operations.length
+      : 100;
+
   return {
     roomId: roomResult.roomId,
     operations,
@@ -483,9 +481,9 @@ export function generateGlobalRepairPlan(
   roomResults: GCERoomResult[]
 ): GCERepairPlan[] {
   return roomResults
-    .filter(r => r.allIssues.length > 0)
-    .map(r => generateRoomRepairPlan(r))
-    .filter(p => p.operations.length > 0)
+    .filter((r) => r.allIssues.length > 0)
+    .map((r) => generateRoomRepairPlan(r))
+    .filter((p) => p.operations.length > 0)
     .sort((a, b) => b.operations.length - a.operations.length);
 }
 
@@ -495,7 +493,7 @@ export function applyRepairPlan(plan: GCERepairPlan): {
 } {
   const safeOperations: GCEOperation[] = [];
   const destructiveOperations: GCEOperation[] = [];
-  
+
   for (const op of plan.operations) {
     if (op.metadata.confidence >= currentConfig.autoRepairThreshold * 100) {
       if (op.type === 'delete' || op.type === 'move') {
@@ -507,7 +505,7 @@ export function applyRepairPlan(plan: GCERepairPlan): {
       destructiveOperations.push(op);
     }
   }
-  
+
   return { safeOperations, destructiveOperations };
 }
 
@@ -529,33 +527,35 @@ export function reconcileRoom(
   const filesToRename: Array<{ from: string; to: string }> = [];
   const orphans: string[] = [];
   const missing: string[] = [];
-  
+
   const expectedFiles = new Set<string>();
   const normalizedRoomId = normalizeRoomId(roomId);
-  
+
   for (const entry of entries) {
     const slug = typeof entry.slug === 'number' ? `entry-${entry.slug}` : entry.slug;
     const canonical = getCanonicalAudioForRoom(roomId, slug);
-    
+
     expectedFiles.add(canonical.en.toLowerCase());
     expectedFiles.add(canonical.vi.toLowerCase());
-    
+
     let needsUpdate = false;
     if (!entry.audio) {
       needsUpdate = true;
     } else if (typeof entry.audio === 'string') {
       needsUpdate = true;
     } else {
-      if (entry.audio.en?.toLowerCase() !== canonical.en || 
-          entry.audio.vi?.toLowerCase() !== canonical.vi) {
+      if (
+        entry.audio.en?.toLowerCase() !== canonical.en ||
+        entry.audio.vi?.toLowerCase() !== canonical.vi
+      ) {
         needsUpdate = true;
       }
     }
-    
+
     if (needsUpdate) {
       jsonToUpdate.push({ entrySlug: slug, newAudio: canonical });
     }
-    
+
     if (!storageFiles.has(canonical.en.toLowerCase())) {
       missing.push(canonical.en);
     }
@@ -563,13 +563,13 @@ export function reconcileRoom(
       missing.push(canonical.vi);
     }
   }
-  
+
   for (const file of storageFiles) {
     if (file.startsWith(normalizedRoomId + '-') && !expectedFiles.has(file)) {
       orphans.push(file);
     }
   }
-  
+
   return { jsonToUpdate, filesToRename, orphans, missing };
 }
 

@@ -2,7 +2,7 @@
 // MB-BLUE-99.11r-fix3 → MB-BLUE-99.11r-fix4 — 2026-01-18 (+0700)
 //
 // FIX4: chat still “dead” after RoomRenderer multi-id wiring
-// - Root cause: core normalization too weak for ids like *_vip3_ii, *_vip1_srs02, *_free_xx
+// - Root cause: core normalization too weak for ids like *_level3_ii, *_level1_srs02, *_level0_xx
 //   Legacy rows are often stored under the true core (strip vip/level0 + trailing tokens).
 // - Also: canonical write must follow caller’s effectiveRoomId (first incoming id), NOT URL.
 // - Keep: stable hook shape (HMR safety), no JSX, load via .in(), realtime on all candidate ids.
@@ -39,20 +39,20 @@ function safeErr(e: any): string {
 /**
  * ✅ FIX4: stronger “core” reducer.
  * We want legacy/core rows to match when ids can be:
- * - room_vip3
- * - room_vip3_ii
- * - room_vip1_srs02
- * - room_free_kids_l1
+ * - room_level3
+ * - room_level3_ii
+ * - room_level1_srs02
+ * - room_level0_kids_l1
  *
  * Strategy:
- * - strip trailing: _vip[1-9] OR _free
- * - ALSO allow ONE extra trailing token after that (common pattern: _vip3_ii, _vip1_srs02, _free_xx)
+ * - strip trailing: _level[1-9] OR _level0
+ * - ALSO allow ONE extra trailing token after that (common pattern: _level3_ii, _level1_srs02, _level0_xx)
  *
  * Examples:
  *  "public_speaking_vip3"        -> "public_speaking"
- *  "public_speaking_vip3_ii"     -> "public_speaking"
- *  "survival_resilience_vip1_srs02" -> "survival_resilience"
- *  "kids_english_free_kids_l1"   -> "kids_english"
+ *  "public_speaking_level3_ii"     -> "public_speaking"
+ *  "survival_resilience_level1_srs02" -> "survival_resilience"
+ *  "kids_english_level0_kids_l1"   -> "kids_english"
  *
  * NOTE: We only do this at the end (trailing), to avoid wrecking ids that contain "vip" mid-string.
  */
@@ -61,11 +61,11 @@ function coreRoomIdFromEffective(effectiveRoomId: string) {
   if (!id) return id;
 
   // 1) strip: _vipN or _free at end
-  let core = id.replace(/_(vip[1-9]|level0)$/i, "");
+  let core = id.replace(/_(level[1-9]|level0)$/i, "");
 
-  // 2) strip: _vipN_<token> or _free_<token> at end (one extra segment)
+  // 2) strip: _vipN_<token> or _level0_<token> at end (one extra segment)
   // token = letters/numbers (common room suffixes)
-  core = core.replace(/_(vip[1-9]|level0)_[a-z0-9]+$/i, "");
+  core = core.replace(/_(level[1-9]|level0)_[a-z0-9]+$/i, "");
 
   return core;
 }

@@ -70,7 +70,7 @@ function underscoreVariant(input: string): string {
 
 function coreRoomIdVariant(input: string): string {
   return String(input || "").replace(
-    /(?:[_-](?:vip[1-9]|level0|kids[_-]?[123]|kidslevel[123]|kids_l[123]|level3[_-]?ii))$/i,
+    /(?:[_-](?:level[1-9]|level0|kids[_-]?[123]|kidslevel[123]|kids_l[123]|level3[_-]?ii))$/i,
     "",
   );
 }

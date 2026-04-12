@@ -19,13 +19,13 @@ export function tierFromRoomId(id: string): TierId {
   const s = String(id || "").toLowerCase().trim();
 
   // --- Level 3 II (MUST be before level3 detection) ---
-  // Accept: level3, vip3_ii, level3-ii, level3 ii, _vip3_ii, -level3-ii, etc.
+  // Accept: level3, vip3_ii, level3-ii, level3 ii, _level3_ii, -level3-ii, etc.
   // NOTE: keep this broad but safe; the boundary prevents "vip31ii" false hits.
   if (
     s.includes("level3") ||
     s.includes("_vip3") ||
     s.includes("vip3_ii") ||
-    s.includes("_vip3_ii") ||
+    s.includes("_level3_ii") ||
     /(^|[^a-z0-9])level3[\s_-]*ii([^a-z0-9]|$)/i.test(s)
   ) {
     return "level3" as TierId; // legacy level3 -> level3
@@ -53,7 +53,7 @@ export function tierFromRoomId(id: string): TierId {
   if (
     s.endsWith("_free") ||
     s.endsWith("-level0") ||
-    s.includes("_free_") ||
+    s.includes("_level0_") ||
     s.includes("-level0-") ||
     /(^|[^a-z0-9])level0([^a-z0-9]|$)/i.test(s)
   ) {

@@ -256,7 +256,7 @@ export const processEntry = (
   const transformedEntry = {
     ...entry,
     slug: entry.slug || entry.identifier,
-    audio: audioFilename, // Just filename, e.g. "anx_vip3_1_en.mp3"
+    audio: audioFilename, // Just filename, e.g. "anx_level3_1_en.mp3"
     audioPlaylist, // Array of filenames
     keywordEn,
     keywordVi,
