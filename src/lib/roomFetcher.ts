@@ -1,6 +1,6 @@
 /**
- * File: roomFetcher.ts
  * Path: src/lib/roomFetcher.ts
+ * File: roomFetcher.ts
  */
 
 // PATH: src/lib/roomFetcher.ts
@@ -17,6 +17,12 @@
  * - Align room-id candidate generation with roomJsonResolver.
  * - Do not narrow room ids too early in this layer.
  * - Preserve compatibility for underscore / hyphen / suffix-free room ids.
+ *
+ * PATCH (2026-04-12):
+ * - Prioritize the most likely successful room-id candidate first.
+ * - Cache the last successful candidate per logical room id.
+ * - Deduplicate concurrent fetches for the same logical room id.
+ * - Preserve the full fallback ladder for safety.
  */
 
 import { supabase } from "@/lib/supabaseClient";
@@ -24,6 +30,8 @@ import { ROOMS_TABLE } from "@/lib/constants/rooms";
 import { canonicalizeRoomId, loadRoomJson } from "./roomJsonResolver";
 
 const LOG_PREFIX = "[roomFetcher]";
+const successfulCandidateCache = new Map<string, string>();
+const inFlightRoomRequests = new Map<string, Promise<AnyRoomJson>>();
 
 function stripJsonSuffix(s: string): string {
   return String(s || "").replace(/\.json$/i, "");
@@ -71,6 +79,17 @@ function normalizeRoomIdForCanonicalFile(input: string): string {
   return canonicalizeRoomId(input);
 }
 
+function toRoomRequestCacheKey(input: string): string {
+  const rawSegment = stripJsonSuffix(lastPathSegment(String(input || ""))).trim();
+  const canonical = normalizeRoomIdForCanonicalFile(rawSegment);
+  if (canonical) return canonical;
+
+  const safeRaw = sanitizeRoomIdKeepHyphen(rawSegment);
+  if (safeRaw) return safeRaw;
+
+  return stripJsonSuffix(String(input || "")).trim().toLowerCase();
+}
+
 function buildRoomIdCandidates(input: string): string[] {
   const rawSegment = stripJsonSuffix(lastPathSegment(String(input || ""))).trim();
   const safeRaw = sanitizeRoomIdKeepHyphen(rawSegment);
@@ -110,6 +129,41 @@ function buildRoomIdCandidates(input: string): string[] {
   }
 
   return out;
+}
+
+function buildPrioritizedRoomIdCandidates(input: string): string[] {
+  const requestKey = toRoomRequestCacheKey(input);
+  const cachedCandidate = successfulCandidateCache.get(requestKey);
+  const canonical = normalizeRoomIdForCanonicalFile(input);
+  const generated = buildRoomIdCandidates(input);
+
+  const ordered = [cachedCandidate, canonical, ...generated];
+  const seen = new Set<string>();
+  const out: string[] = [];
+
+  for (const value of ordered) {
+    const v = String(value || "").trim();
+    if (!v) continue;
+    if (seen.has(v)) continue;
+    seen.add(v);
+    out.push(v);
+  }
+
+  return out;
+}
+
+function rememberSuccessfulCandidate(requestKey: string, requestedRoomId: string, candidate: string): void {
+  const keys = [
+    requestKey,
+    toRoomRequestCacheKey(requestedRoomId),
+    toRoomRequestCacheKey(candidate),
+  ];
+
+  for (const key of keys) {
+    const normalized = String(key || "").trim();
+    if (!normalized) continue;
+    successfulCandidateCache.set(normalized, candidate);
+  }
 }
 
 export type RoomMeta = {
@@ -296,31 +350,61 @@ function hasUsableRoomPayload(json: AnyRoomJson | null): json is AnyRoomJson {
  * Hardening:
  * - try raw / hyphen / underscore / suffix-free variants
  * - let roomJsonResolver keep the final say on secure fetch candidates
+ *
+ * Speed:
+ * - prefer the last known successful candidate first
+ * - dedupe concurrent loads for the same logical room id
  */
 export async function fetchRoomJsonByIdOrThrow(roomId: string): Promise<AnyRoomJson> {
-  const candidates = buildRoomIdCandidates(roomId);
-  if (candidates.length === 0) {
+  const requestKey =
+    toRoomRequestCacheKey(roomId) || sanitizeRoomIdKeepHyphen(roomId) || String(roomId || "").trim();
+
+  if (!requestKey) {
     throw new Error("room_fetch_failed");
   }
 
-  let lastError: unknown = null;
-
-  for (const candidate of candidates) {
-    try {
-      const payload = await loadRoomJson(candidate);
-      const json = unwrapLoadedRoomPayload(payload);
-
-      if (!hasUsableRoomPayload(json)) {
-        throw new Error("room_fetch_failed");
-      }
-
-      return normalizeRoomJson(candidate, json);
-    } catch (error) {
-      lastError = error;
-    }
+  const existingRequest = inFlightRoomRequests.get(requestKey);
+  if (existingRequest) {
+    return existingRequest;
   }
 
-  throw new Error(toRoomFetchErrorCode(lastError));
+  const fetchPromise = (async (): Promise<AnyRoomJson> => {
+    const candidates = buildPrioritizedRoomIdCandidates(roomId);
+    if (candidates.length === 0) {
+      throw new Error("room_fetch_failed");
+    }
+
+    let lastError: unknown = null;
+
+    for (const candidate of candidates) {
+      try {
+        const payload = await loadRoomJson(candidate);
+        const json = unwrapLoadedRoomPayload(payload);
+
+        if (!hasUsableRoomPayload(json)) {
+          throw new Error("room_fetch_failed");
+        }
+
+        const normalized = normalizeRoomJson(candidate, json);
+        rememberSuccessfulCandidate(requestKey, roomId, candidate);
+        return normalized;
+      } catch (error) {
+        lastError = error;
+      }
+    }
+
+    throw new Error(toRoomFetchErrorCode(lastError));
+  })();
+
+  inFlightRoomRequests.set(requestKey, fetchPromise);
+
+  try {
+    return await fetchPromise;
+  } finally {
+    if (inFlightRoomRequests.get(requestKey) === fetchPromise) {
+      inFlightRoomRequests.delete(requestKey);
+    }
+  }
 }
 
 /**
@@ -332,7 +416,7 @@ export async function fetchRoomJsonById(roomId: string): Promise<AnyRoomJson | n
   } catch (err: unknown) {
     console.warn(`${LOG_PREFIX} fetchRoomJsonById: could not load`, {
       roomId,
-      candidates: buildRoomIdCandidates(roomId),
+      candidates: buildPrioritizedRoomIdCandidates(roomId),
       error: toRoomFetchErrorCode(err),
     });
     return null;

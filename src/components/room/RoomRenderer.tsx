@@ -1505,6 +1505,9 @@ export default function RoomRenderer({
                   <p className="mb-completionSub">
                     Write the most impressive thought from this room, then copy it to Teacher Mercy to study deeper with her.
                   </p>
+                  <p className="text-sm opacity-60 mt-1 mb-3">
+                    Viết suy nghĩ ấn tượng nhất từ phòng này, sau đó copy sang Teacher Mercy để học sâu hơn cùng cô.
+                  </p>
 
                   <div className="mb-completionRow">
                     <input

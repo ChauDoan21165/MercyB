@@ -1,3 +1,8 @@
+/**
+ * Path: supabase/functions/secure-room-loader/index.ts
+ * File: index.ts
+ */
+
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.39.3';
 import { z } from 'https://deno.land/x/zod@v3.22.4/mod.ts';
 import { rateLimit, getClientIP } from "../_shared/rateLimit.ts";
@@ -7,15 +12,45 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
+const jsonHeaders = {
+  ...corsHeaders,
+  'Content-Type': 'application/json',
+};
+
+const tierMap: Record<string, number> = {
+  free: 0,
+  vip1: 1,
+  vip2: 2,
+  vip3: 3,
+  vip4: 4,
+  vip5: 5,
+  vip6: 6,
+  vip7: 7,
+  vip8: 8,
+  vip9: 9,
+};
+
 const requestSchema = z.object({
   roomId: z.string().min(1),
 });
 
+function jsonResponse(body: unknown, status = 200): Response {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: jsonHeaders,
+  });
+}
+
 /**
  * Secure Room Loader Edge Function
- * 
- * Serves room JSON files with tier-based access control.
- * Replaces direct public/data/*.json access.
+ *
+ * Speed-focused hardening:
+ * - fast-fail when Authorization header is missing
+ * - parse request body once with a clean 400 on invalid JSON
+ * - run subscription lookup, admin-role lookup, and room lookup in parallel
+ * - move static maps/headers outside the request handler
+ *
+ * Access behavior is preserved.
  */
 Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') {
@@ -23,134 +58,136 @@ Deno.serve(async (req) => {
   }
 
   try {
+    const authHeader = req.headers.get('Authorization');
+    if (!authHeader) {
+      return jsonResponse({ success: false, error: 'Unauthorized' }, 401);
+    }
+
     const supabase = createClient(
       Deno.env.get('SUPABASE_URL') ?? '',
       Deno.env.get('SUPABASE_ANON_KEY') ?? '',
       {
         global: {
-          headers: { Authorization: req.headers.get('Authorization')! },
+          headers: { Authorization: authHeader },
         },
       }
     );
 
     // Verify authentication
-    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    const {
+      data: { user },
+      error: authError,
+    } = await supabase.auth.getUser();
+
     if (authError || !user) {
-      return new Response(
-        JSON.stringify({ success: false, error: 'Unauthorized' }),
-        { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
+      return jsonResponse({ success: false, error: 'Unauthorized' }, 401);
     }
 
     // Rate limit room loading (prevent abuse)
     try {
       const clientIP = getClientIP(req);
-      await rateLimit(`secure-room-loader:${user.id}:${clientIP}`, 60, 60_000); // 60 calls per minute
+      await rateLimit(`secure-room-loader:${user.id}:${clientIP}`, 60, 60_000);
     } catch (error) {
       if (error instanceof Error && error.message === 'RATE_LIMIT_EXCEEDED') {
-        return new Response(
-          JSON.stringify({ success: false, error: 'Too many requests. Please slow down.' }),
-          { status: 429, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        return jsonResponse(
+          { success: false, error: 'Too many requests. Please slow down.' },
+          429,
         );
       }
     }
 
-    const body = await req.json();
+    let body: unknown;
+    try {
+      body = await req.json();
+    } catch {
+      return jsonResponse({ success: false, error: 'Invalid JSON body' }, 400);
+    }
+
     const validation = requestSchema.safeParse(body);
-    
     if (!validation.success) {
-      return new Response(
-        JSON.stringify({ success: false, error: 'Invalid request', details: validation.error.errors }),
-        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      return jsonResponse(
+        {
+          success: false,
+          error: 'Invalid request',
+          details: validation.error.errors,
+        },
+        400,
       );
     }
 
     const { roomId } = validation.data;
 
-    // Get user's tier
-    const { data: subscription } = await supabase
-      .from('user_subscriptions')
-      .select(`
-        tier_id,
-        status,
-        subscription_tiers!inner (
-          name,
-          display_order
-        )
-      `)
-      .eq('user_id', user.id)
-      .eq('status', 'active')
-      .maybeSingle();
+    const [subscriptionResult, adminRoleResult, roomResult] = await Promise.all([
+      supabase
+        .from('user_subscriptions')
+        .select(`
+          status,
+          subscription_tiers!inner (
+            name,
+            display_order
+          )
+        `)
+        .eq('user_id', user.id)
+        .eq('status', 'active')
+        .maybeSingle(),
 
-    // Check if user is admin
-    const { data: adminRole } = await supabase
-      .from('user_roles')
-      .select('role')
-      .eq('user_id', user.id)
-      .eq('role', 'admin')
-      .maybeSingle();
+      supabase
+        .from('user_roles')
+        .select('role')
+        .eq('user_id', user.id)
+        .eq('role', 'admin')
+        .maybeSingle(),
 
-    const isAdmin = !!adminRole;
-    const tierData = subscription?.subscription_tiers as any;
-    const userTier = tierData?.name?.toLowerCase() || 'free';
-    const userTierLevel = tierData?.display_order || 0;
+      supabase
+        .from('rooms')
+        .select('*')
+        .eq('id', roomId)
+        .maybeSingle(),
+    ]);
 
-    // Get room data
-    const { data: room, error: roomError } = await supabase
-      .from('rooms')
-      .select('*')
-      .eq('id', roomId)
-      .maybeSingle();
-
+    const { data: room, error: roomError } = roomResult;
     if (roomError || !room) {
-      return new Response(
-        JSON.stringify({ success: false, error: 'Room not found' }),
-        { status: 404, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
+      return jsonResponse({ success: false, error: 'Room not found' }, 404);
     }
 
-    // Check tier access
-    const roomTier = room.tier?.toLowerCase() || 'free';
-    const tierMap: Record<string, number> = {
-      free: 0,
-      vip1: 1,
-      vip2: 2,
-      vip3: 3,
-      vip4: 4,
-      vip5: 5,
-      vip6: 6,
-      vip7: 7,
-      vip8: 8,
-      vip9: 9,
-    };
+    const isAdmin = !!adminRoleResult.data;
 
+    const tierData = subscriptionResult.data?.subscription_tiers as
+      | { name?: string | null; display_order?: number | null }
+      | null
+      | undefined;
+
+    const userTier = String(tierData?.name ?? 'free').toLowerCase();
+    const userTierLevel = Number(tierData?.display_order ?? 0);
+
+    const roomTier = String(room.tier ?? 'free').toLowerCase();
     const roomTierLevel = tierMap[roomTier] ?? 0;
 
     if (!isAdmin && userTierLevel < roomTierLevel) {
-      return new Response(
-        JSON.stringify({
+      return jsonResponse(
+        {
           success: false,
           error: 'ACCESS_DENIED: insufficient tier',
           requiredTier: roomTier,
-          userTier: userTier,
-        }),
-        { status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+          userTier,
+        },
+        403,
       );
     }
 
-    // Return room data
-    return new Response(
-      JSON.stringify({
-        success: true,
-        room: room,
-      }),
-      { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-    );
-  } catch (error: any) {
+    return jsonResponse({
+      success: true,
+      room,
+    });
+  } catch (error: unknown) {
     console.error('Error in secure-room-loader:', error);
-    return new Response(
-      JSON.stringify({ success: false, error: error.message || 'Internal server error' }),
-      { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+
+    const message =
+      error instanceof Error ? error.message : 'Internal server error';
+
+    return jsonResponse(
+      { success: false, error: message || 'Internal server error' },
+      500,
     );
   }
 });

@@ -1,4 +1,9 @@
 /**
+ * Path: src/components/admin/AdminSidebar.tsx
+ * File: AdminSidebar.tsx
+ */
+
+/**
  * MercyBlade Blue — Admin Sidebar (SIMPLE BLACK TEXT ON WHITE)
  * Path: src/components/admin/AdminSidebar.tsx
  * Version: MB-BLUE-94.13.15 — 2026-04-02
@@ -12,6 +17,10 @@
  * - Keep existing Admin Subscriptions nav item.
  * - Keep simple black text on white styling.
  * - Tighten icon typing.
+ *
+ * PATCH (2026-04-12):
+ * - Add Room Load Diagnostics nav item.
+ * - Keep existing structure and styling intact.
  */
 
 import type { LucideIcon } from "lucide-react";
@@ -36,6 +45,7 @@ import {
   Volume2,
   Mail,
   CreditCard,
+  Search,
 } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 
@@ -83,6 +93,7 @@ const roomItems: AdminNavItem[] = [
   { title: "Missing Audio", url: "/admin/missing-audio", icon: AlertTriangle },
   { title: "Music Controller", url: "/admin/homepage-music", icon: Music },
   { title: "Room Health Check", url: "/admin/room-health", icon: Stethoscope },
+  { title: "Room Load Diagnostics", url: "/admin/room-load-diagnostics", icon: Search },
   { title: "Room Management", url: "/admin/rooms", icon: LayoutDashboard },
   { title: "VIP Rooms", url: "/admin/vip-rooms", icon: LayoutDashboard },
 ];

@@ -1,6 +1,6 @@
 /**
- * File: AppRouter.tsx
  * Path: src/router/AppRouter.tsx
+ * File: AppRouter.tsx
  */
 
 // PATH: src/router/AppRouter.tsx
@@ -58,6 +58,11 @@ const AdminSubscriptions = lazy(
 );
 const AdminBillingDashboard = lazy(
   () => import("@/pages/admin/AdminBillingDashboard"),
+);
+const RoomLoadDiagnostics = lazy(() =>
+  import("@/components/admin/RoomLoadDiagnostics").then((module) => ({
+    default: module.RoomLoadDiagnostics,
+  })),
 );
 
 declare global {
@@ -607,6 +612,14 @@ export default function AppRouter() {
                 element={
                   <LazyPage>
                     <AdminBillingDashboard />
+                  </LazyPage>
+                }
+              />
+              <Route
+                path="room-load-diagnostics"
+                element={
+                  <LazyPage>
+                    <RoomLoadDiagnostics />
                   </LazyPage>
                 }
               />
