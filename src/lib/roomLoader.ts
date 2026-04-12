@@ -1,3 +1,8 @@
+/**
+ * File: roomLoader.ts
+ * Path: src/lib/roomLoader.ts
+ */
+
 import { logger } from "./logger";
 import { AUDIO_FOLDER } from "@/lib/constants/rooms";
 import { chooseBestSource, loadDbRoom, loadJsonRoomSafe } from "./roomLoaderSource";
@@ -98,6 +103,46 @@ export type LoadMergedRoomResult =
 
 const EMPTY_KEYWORD_MENU: KeywordMenu = { en: [], vi: [] };
 
+type SafeDbRoom = {
+  entries: BaseRoomEntry[] | null;
+  meta: RoomMeta | null;
+};
+
+type SafeJsonRoom = {
+  room: JsonRoom | null;
+  entries: BaseRoomEntry[] | null;
+};
+
+function nowMs(): number {
+  if (typeof performance !== "undefined" && typeof performance.now === "function") {
+    return performance.now();
+  }
+  return Date.now();
+}
+
+function emptyDbRoom(): SafeDbRoom {
+  return {
+    entries: null,
+    meta: null,
+  };
+}
+
+function emptyJsonRoom(): SafeJsonRoom {
+  return {
+    room: null,
+    entries: null,
+  };
+}
+
+function hasValidSlug(entries: NormalizedRoomEntry[]): boolean {
+  return entries.some(
+    (entry) =>
+      typeof entry.slug === "string" &&
+      entry.slug.trim().length > 0 &&
+      !entry.slug.startsWith("entry-"),
+  );
+}
+
 export async function loadMergedRoom(
   roomId: string
 ): Promise<LoadMergedRoomResult> {
@@ -127,12 +172,44 @@ export async function loadMergedRoom(
 async function loadMergedRoomUncached(
   roomId: string
 ): Promise<LoadMergedRoomResult> {
-  const start = performance.now();
+  const start = nowMs();
 
-  const [db, json] = await Promise.all([
+  const [dbResult, jsonResult] = await Promise.allSettled([
     loadDbRoom(roomId),
     loadJsonRoomSafe(roomId),
   ]);
+
+  const db: SafeDbRoom =
+    dbResult.status === "fulfilled" && dbResult.value
+      ? dbResult.value
+      : emptyDbRoom();
+
+  const json: SafeJsonRoom =
+    jsonResult.status === "fulfilled" && jsonResult.value
+      ? jsonResult.value
+      : emptyJsonRoom();
+
+  if (dbResult.status === "rejected") {
+    logger.info(`[App] DB room source failed, continuing with other sources`, {
+      roomId,
+      source: "database",
+      error:
+        dbResult.reason instanceof Error
+          ? dbResult.reason.message
+          : String(dbResult.reason ?? "unknown"),
+    });
+  }
+
+  if (jsonResult.status === "rejected") {
+    logger.info(`[App] JSON room source failed, continuing with other sources`, {
+      roomId,
+      source: "json",
+      error:
+        jsonResult.reason instanceof Error
+          ? jsonResult.reason.message
+          : String(jsonResult.reason ?? "unknown"),
+    });
+  }
 
   const chosen = chooseBestSource({
     dbEntries: db.entries,
@@ -147,29 +224,31 @@ async function loadMergedRoomUncached(
 
   const normalized = normalizeChosenEntries(chosen.kind, chosen.entries);
 
-  const hasValidSlug = normalized.merged.some(
-    (e) =>
-      typeof e.slug === "string" &&
-      e.slug.trim() &&
-      !e.slug.startsWith("entry-")
-  );
+  if (chosen.kind === "db" && !hasValidSlug(normalized.merged)) {
+    const salvaged = normalizeChosenEntries("db_salvage", chosen.entries);
 
-  if (
-    chosen.kind === "db" &&
-    !hasValidSlug &&
-    Array.isArray(json.entries) &&
-    json.entries.length > 0
-  ) {
-    const jsonNormalized = normalizeChosenEntries("json", json.entries);
-
-    if (jsonNormalized.merged.length > 0) {
+    if (hasValidSlug(salvaged.merged)) {
       return buildSuccess(
         roomId,
-        "json",
-        json.room ?? null,
-        jsonNormalized,
+        "database",
+        chosen.meta,
+        salvaged,
         start
       );
+    }
+
+    if (Array.isArray(json.entries) && json.entries.length > 0) {
+      const jsonNormalized = normalizeChosenEntries("json", json.entries);
+
+      if (jsonNormalized.merged.length > 0) {
+        return buildSuccess(
+          roomId,
+          "json",
+          json.room ?? null,
+          jsonNormalized,
+          start
+        );
+      }
     }
   }
 
@@ -192,7 +271,7 @@ function buildSuccess(
   normalized: NormalizedEntriesResult,
   start: number
 ): LoadMergedRoomSuccess {
-  const duration = performance.now() - start;
+  const duration = nowMs() - start;
 
   logger.info(`[App] Room loaded: ${roomId} in ${duration}ms`, {
     source,
@@ -218,7 +297,7 @@ function buildFailure(roomId: string, start: number): LoadMergedRoomFailure {
   logger.error(`[App] Room failed to load: ${roomId}`, {
     error: "Room not found in database or JSON",
     roomId,
-    duration_ms: performance.now() - start,
+    duration_ms: nowMs() - start,
   });
 
   return {

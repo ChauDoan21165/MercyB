@@ -1,4 +1,9 @@
 /**
+ * File: roomRegistry.ts
+ * Path: src/lib/rooms/roomRegistry.ts
+ */
+
+/**
  * Room Registry - Single Source of Truth for All Room Metadata
  *
  * Hybrid mode:
@@ -251,13 +256,12 @@ async function buildRegistryAsync(): Promise<RoomMeta[]> {
 
       const id = normalizeRoomId(rawId);
 
-      const { en: title_en, vi: title_vi } = pickTitles(roomData);
+      const { en: rawTitleEn, vi: rawTitleVi } = pickTitles(roomData);
 
-      // Keep stricter behavior for runtime fetcher path if you want:
-      // (You can relax this if it causes missing rooms in production.)
-      if (!title_en || !title_vi) {
-        continue;
-      }
+      // Runtime path should stay tolerant too.
+      // Do not drop rooms just because one title is missing in the summary row.
+      const title_en = rawTitleEn || rawTitleVi || "";
+      const title_vi = rawTitleVi || rawTitleEn || "";
 
       const tier = inferTier(id, roomData);
       const domain = getDomainCategory(id, (roomData as any)?.domain);

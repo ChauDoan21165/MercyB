@@ -1,3 +1,5 @@
+// PATH: vite.config.ts
+
 /**
  * File: vite.config.ts
  * Path: vite.config.ts
@@ -24,6 +26,11 @@
 // PATCH 2026-04-01:
 // - Add dev proxy for Mercy grammar API so frontend uses /api/mercy/grammar
 // - Avoid browser-side localhost fetch failures and fallback-only behavior
+//
+// PATCH 2026-04-11:
+// - Add dev proxy for Supabase edge functions under /functions/v1
+// - This restores local room opening when the frontend hits the fallback
+//   /functions/v1/secure-room-loader path during dev
 
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
@@ -111,6 +118,12 @@ export default defineConfig({
         target: 'http://127.0.0.1:3001',
         changeOrigin: true,
         secure: false,
+      },
+
+      '/functions/v1': {
+        target: 'https://buemdfxyhxunzpgdoqin.supabase.co',
+        changeOrigin: true,
+        secure: true,
       },
     },
   },

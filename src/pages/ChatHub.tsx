@@ -1,3 +1,8 @@
+/**
+ * File: ChatHub.tsx
+ * Path: src/pages/ChatHub.tsx
+ */
+
 // PATH: src/pages/ChatHub.tsx
 
 // MB-BLUE-100.9 → MB-BLUE-101.NO-HERO-ROOMS → MB-BLUE-101.9-MERCY-GUIDE-IN-ROOM
@@ -31,9 +36,25 @@
  * - Let roomJsonResolver own the candidate logic.
  * - Accept both raw room JSON and legacy wrapped { success, room } payloads.
  * - Fail soft if room spec resolution throws.
+ *
+ * PATCH (2026-04-11 / room-open hardening):
+ * - Isolate MercyGuide behind a local error boundary.
+ * - Do not let guide-side render/runtime errors block room opening.
+ * - Keep RoomRenderer as the primary room-open path.
+ *
+ * PATCH (2026-04-12 / navigation test hardening):
+ * - Keep Back / Browse controls visible during loading.
+ * - This preserves prior back-button behavior while the calm arrival overlay is showing.
  */
 
-import { useEffect, useMemo, useState } from "react";
+import {
+  Component,
+  useEffect,
+  useMemo,
+  useState,
+  type ErrorInfo,
+  type ReactNode,
+} from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import {
@@ -132,7 +153,11 @@ function unwrapLoadedRoom(payload: unknown): AnyRoom | null {
   return obj as AnyRoom;
 }
 
-function getEffectiveRoomIdSafe(room: AnyRoom | null, roomId?: string, canonicalId?: string): string {
+function getEffectiveRoomIdSafe(
+  room: AnyRoom | null,
+  roomId?: string,
+  canonicalId?: string,
+): string {
   return firstNonEmptyString(room?.id, canonicalId, roomId);
 }
 
@@ -256,6 +281,39 @@ function getRoomContentEnSafe(room: AnyRoom | null): string {
     .filter(Boolean);
 
   return lines.join("\n").trim();
+}
+
+/* ----------------------------------------------------- */
+/* SAFE MERCY GUIDE                                      */
+/* ----------------------------------------------------- */
+class MercyGuideErrorBoundary extends Component<
+  { children: ReactNode },
+  { hasError: boolean }
+> {
+  constructor(props: { children: ReactNode }) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(): { hasError: boolean } {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error: unknown, info: ErrorInfo) {
+    try {
+      console.error("[ChatHub] MercyGuide render failed; room kept open", {
+        error,
+        componentStack: info.componentStack,
+      });
+    } catch {
+      // ignore
+    }
+  }
+
+  render() {
+    if (this.state.hasError) return null;
+    return this.props.children;
+  }
 }
 
 /* ----------------------------------------------------- */
@@ -445,6 +503,7 @@ export default function ChatHub() {
   const roomContentEn = useMemo(() => getRoomContentEnSafe(room), [room]);
 
   const shellClass = "mx-auto w-full max-w-[980px] px-4 pb-40 pt-3";
+  const shouldRenderGuide = state === "ready" && !!room && !!effectiveRoomId;
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -473,8 +532,28 @@ export default function ChatHub() {
 
       <main className={shellClass}>
         {state === "loading" ? (
-          <div className="rounded-2xl border border-black/10 bg-white/70 p-6 shadow-sm">
-            <ArrivalOverlay />
+          <div className="space-y-4">
+            <div className="flex flex-wrap gap-3">
+              <button
+                type="button"
+                onClick={() => void handleBack()}
+                className="rounded-xl border border-black/10 bg-white px-4 py-2 font-medium text-foreground shadow-sm transition hover:bg-black/[0.03]"
+              >
+                ← Back
+              </button>
+
+              <button
+                type="button"
+                onClick={() => navigate("/rooms")}
+                className="rounded-xl border border-black/10 bg-white px-4 py-2 font-medium text-foreground shadow-sm transition hover:bg-black/[0.03]"
+              >
+                Browse rooms
+              </button>
+            </div>
+
+            <div className="rounded-2xl border border-black/10 bg-white/70 p-6 shadow-sm">
+              <ArrivalOverlay />
+            </div>
           </div>
         ) : null}
 
@@ -533,15 +612,17 @@ export default function ChatHub() {
         ) : null}
       </main>
 
-      {state === "ready" && room ? (
-        <MercyGuide
-          roomId={effectiveRoomId}
-          roomTitle={roomTitle || undefined}
-          tier={roomTier || undefined}
-          pathSlug={roomPathSlug || undefined}
-          tags={roomTags.length ? roomTags : undefined}
-          contentEn={roomContentEn || undefined}
-        />
+      {shouldRenderGuide ? (
+        <MercyGuideErrorBoundary>
+          <MercyGuide
+            roomId={effectiveRoomId}
+            roomTitle={roomTitle || undefined}
+            tier={roomTier || undefined}
+            pathSlug={roomPathSlug || undefined}
+            tags={roomTags.length ? roomTags : undefined}
+            contentEn={roomContentEn || undefined}
+          />
+        </MercyGuideErrorBoundary>
       ) : null}
 
       <div

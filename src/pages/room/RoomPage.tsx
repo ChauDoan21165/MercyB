@@ -1,3 +1,4 @@
+// PATH: src/pages/room/RoomPage.tsx
 // src/pages/room/RoomPage.tsx — MB-BLUE-94.4 — 2025-12-24 (+0700)
 /**
  * MercyBlade Blue — DEAD PAGE (Compatibility Shim)

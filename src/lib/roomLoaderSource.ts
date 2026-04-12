@@ -1,3 +1,10 @@
+/**
+ * File: roomLoaderSource.ts
+ * Path: src/lib/roomLoaderSource.ts
+ */
+
+// PATH: src/lib/roomLoaderSource.ts
+
 import { logger } from "./logger";
 import { getRoomFromDB } from "@/lib/supabaseClient";
 import { loadRoomJson } from "./roomJsonResolver";
@@ -39,6 +46,16 @@ interface DbResult {
   meta?: unknown;
 }
 
+type JsonLoadResult =
+  | JsonRoom
+  | {
+      success?: unknown;
+      room?: unknown;
+      entries?: unknown;
+      meta?: unknown;
+    }
+  | null;
+
 export async function loadDbRoom(roomId: string): Promise<RawDbRoom> {
   try {
     const dbResult = (await getRoomFromDB(roomId)) as DbResult | null;
@@ -47,7 +64,7 @@ export async function loadDbRoom(roomId: string): Promise<RawDbRoom> {
       entries: Array.isArray(dbResult?.entries)
         ? (dbResult.entries as BaseRoomEntry[])
         : null,
-      meta: isRecord(dbResult?.meta) ? (dbResult!.meta as RoomMeta) : null,
+      meta: isRecord(dbResult?.meta) ? (dbResult.meta as RoomMeta) : null,
     };
   } catch (err) {
     logger.error("[roomLoader] DB load failed", {
@@ -61,11 +78,13 @@ export async function loadDbRoom(roomId: string): Promise<RawDbRoom> {
 
 export async function loadJsonRoomSafe(roomId: string): Promise<RawJsonRoom> {
   try {
-    const room = (await loadRoomJson(roomId)) as JsonRoom | null;
+    const payload = (await loadRoomJson(roomId)) as JsonLoadResult;
+    const room = unwrapJsonRoomPayload(payload);
+    const entries = pickJsonEntries(payload, room);
 
     return {
-      room: room ?? null,
-      entries: Array.isArray(room?.entries) ? room.entries : null,
+      room,
+      entries,
     };
   } catch (err) {
     logger.error("[roomLoader] JSON load error", {
@@ -133,7 +152,48 @@ function hasRows(entries: BaseRoomEntry[] | null): entries is BaseRoomEntry[] {
 function hasUsableEntries(
   entries: BaseRoomEntry[] | null
 ): entries is BaseRoomEntry[] {
-  return hasRows(entries);
+  if (!hasRows(entries)) return false;
+
+  // Keep DB on the normal path unless the whole set is clearly legacy-stub data.
+  // This preserves older working behavior and lets processEntriesOptimized()
+  // handle real-but-minimal DB rows in tests/runtime.
+  return !entries.every(isExplicitLegacyStubEntry);
+}
+
+function unwrapJsonRoomPayload(payload: JsonLoadResult): JsonRoom | null {
+  if (!isRecord(payload)) {
+    return null;
+  }
+
+  if (isRecord(payload.room)) {
+    return payload.room as JsonRoom;
+  }
+
+  return payload as JsonRoom;
+}
+
+function pickJsonEntries(
+  payload: JsonLoadResult,
+  room: JsonRoom | null
+): BaseRoomEntry[] | null {
+  if (isRecord(payload) && Array.isArray(payload.entries)) {
+    return payload.entries as BaseRoomEntry[];
+  }
+
+  if (Array.isArray(room?.entries)) {
+    return room.entries;
+  }
+
+  return null;
+}
+
+function isExplicitLegacyStubEntry(entry: BaseRoomEntry | null | undefined): boolean {
+  const slug = String(entry?.slug ?? "").trim();
+  const title = String(
+    entry?.title ?? entry?.title_en ?? entry?.titleEn ?? ""
+  ).trim();
+
+  return slug.includes("__legacy") || title.includes("__legacy");
 }
 
 function isRecord(value: unknown): value is Record<string, unknown> {

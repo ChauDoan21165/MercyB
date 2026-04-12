@@ -3,7 +3,7 @@
  * Path: src/components/mercy-guide/MercyGuidePanel.tsx
  */
 
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   X,
   User,
@@ -124,6 +124,13 @@ type LearningSupportOption = {
   icon: React.ComponentType<{ size?: number; className?: string }>;
 };
 
+type AccessFeatures = {
+  hasMercyJourney: boolean;
+  hasMercyGrammar: boolean;
+  hasMercySpeak: boolean;
+  hasMercyLogic: boolean;
+};
+
 const LEARNING_SUPPORT_STORAGE_KEY = 'mercy.learningSupportMode';
 
 const LEARNING_SUPPORT_OPTIONS: LearningSupportOption[] = [
@@ -149,6 +156,13 @@ const LEARNING_SUPPORT_OPTIONS: LearningSupportOption[] = [
     icon: Trees,
   },
 ];
+
+const DEFAULT_ACCESS_FEATURES: AccessFeatures = {
+  hasMercyJourney: false,
+  hasMercyGrammar: false,
+  hasMercySpeak: false,
+  hasMercyLogic: false,
+};
 
 function normalizeTab(value: string | undefined): MercyTabType {
   switch (value) {
@@ -225,8 +239,22 @@ function normalizeTroubleWords(value: unknown): TroubleWordItem[] {
 function readStoredLearningSupportMode(): LearningSupportMode {
   if (typeof window === 'undefined') return 'gentle';
 
-  const stored = window.localStorage.getItem(LEARNING_SUPPORT_STORAGE_KEY);
-  return normalizeLearningSupportMode(stored);
+  try {
+    const stored = window.localStorage.getItem(LEARNING_SUPPORT_STORAGE_KEY);
+    return normalizeLearningSupportMode(stored);
+  } catch {
+    return 'gentle';
+  }
+}
+
+function writeStoredLearningSupportMode(value: LearningSupportMode): void {
+  if (typeof window === 'undefined') return;
+
+  try {
+    window.localStorage.setItem(LEARNING_SUPPORT_STORAGE_KEY, value);
+  } catch {
+    // ignore storage failures
+  }
 }
 
 function getSupportModeStyles(mode: LearningSupportMode) {
@@ -485,6 +513,8 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
   journeyTitle,
 }) => {
   const access = useUserAccess();
+  const accessFeatures = access?.features ?? DEFAULT_ACCESS_FEATURES;
+
   const [activeTab, setLocalActiveTab] = useState<MercyTabType>(
     normalizeTab(initialTab),
   );
@@ -492,13 +522,20 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
     useState<LearningSupportMode>('gentle');
   const scrollRef = useRef<HTMLDivElement>(null);
 
+  const safelyUpdateInteraction = useCallback(() => {
+    try {
+      onUpdateInteraction?.();
+    } catch {
+      // keep panel stable if optional interaction hook throws
+    }
+  }, [onUpdateInteraction]);
+
   useEffect(() => {
     setLearningSupportMode(readStoredLearningSupportMode());
   }, []);
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-    window.localStorage.setItem(LEARNING_SUPPORT_STORAGE_KEY, learningSupportMode);
+    writeStoredLearningSupportMode(learningSupportMode);
   }, [learningSupportMode]);
 
   const learningSupportHint = useMemo(() => {
@@ -513,9 +550,10 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
     }
   }, [learningSupportMode]);
 
-  const goToPricing = () => {
+  const goToPricing = useCallback(() => {
+    if (typeof window === 'undefined') return;
     window.location.assign('/pricing');
-  };
+  }, []);
 
   const normalizedTroubleWords = useMemo<TroubleWordItem[]>(
     () => normalizeTroubleWords(troubleWords ?? memory?.pronunciation?.troubleWords ?? []),
@@ -529,54 +567,57 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
         label: 'Journey',
         icon: Brain,
         enabled: true,
-        teaser: !access.features.hasMercyJourney,
+        teaser: !accessFeatures.hasMercyJourney,
       },
       {
         id: 'grammar',
         label: 'Grammar',
         icon: PenSquare,
-        enabled: access.features.hasMercyGrammar,
+        enabled: accessFeatures.hasMercyGrammar,
       },
       {
         id: 'pronunciation',
         label: 'Speak',
         icon: Mic,
-        enabled: access.features.hasMercySpeak,
+        enabled: accessFeatures.hasMercySpeak,
       },
       {
         id: 'logic',
         label: 'Logic',
         icon: BookOpenText,
-        enabled: access.features.hasMercyLogic,
+        enabled: accessFeatures.hasMercyLogic,
       },
     ],
-    [access.features],
+    [accessFeatures],
   );
 
   const enabledTabs = useMemo(() => tabs.filter((tab) => tab.enabled), [tabs]);
 
-  const isTabAllowed = (tabId: MercyTabType): boolean => {
-    switch (tabId) {
-      case 'teacher':
-        return true;
-      case 'grammar':
-        return access.features.hasMercyGrammar;
-      case 'pronunciation':
-        return access.features.hasMercySpeak;
-      case 'logic':
-        return access.features.hasMercyLogic;
-      default:
-        return false;
-    }
-  };
+  const isTabAllowed = useCallback(
+    (tabId: MercyTabType): boolean => {
+      switch (tabId) {
+        case 'teacher':
+          return true;
+        case 'grammar':
+          return accessFeatures.hasMercyGrammar;
+        case 'pronunciation':
+          return accessFeatures.hasMercySpeak;
+        case 'logic':
+          return accessFeatures.hasMercyLogic;
+        default:
+          return false;
+      }
+    },
+    [accessFeatures],
+  );
 
-  const getFirstAllowedTab = (): MercyTabType => {
+  const getFirstAllowedTab = useCallback((): MercyTabType => {
     if (isTabAllowed('teacher')) return 'teacher';
-    if (access.features.hasMercyGrammar) return 'grammar';
-    if (access.features.hasMercySpeak) return 'pronunciation';
-    if (access.features.hasMercyLogic) return 'logic';
+    if (accessFeatures.hasMercyGrammar) return 'grammar';
+    if (accessFeatures.hasMercySpeak) return 'pronunciation';
+    if (accessFeatures.hasMercyLogic) return 'logic';
     return 'teacher';
-  };
+  }, [accessFeatures, isTabAllowed]);
 
   useEffect(() => {
     const nextTab = normalizeTab(initialTab);
@@ -586,13 +627,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
     }
 
     setLocalActiveTab(getFirstAllowedTab());
-  }, [
-    initialTab,
-    access.features.hasMercyGrammar,
-    access.features.hasMercyJourney,
-    access.features.hasMercyLogic,
-    access.features.hasMercySpeak,
-  ]);
+  }, [getFirstAllowedTab, initialTab, isTabAllowed]);
 
   useEffect(() => {
     if (!isTabAllowed(activeTab)) {
@@ -600,18 +635,15 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
       setLocalActiveTab(nextTab);
       setActiveTab?.(nextTab);
     }
-  }, [
-    activeTab,
-    access.features.hasMercyGrammar,
-    access.features.hasMercyJourney,
-    access.features.hasMercyLogic,
-    access.features.hasMercySpeak,
-    setActiveTab,
-  ]);
+  }, [activeTab, getFirstAllowedTab, isTabAllowed, setActiveTab]);
 
   useEffect(() => {
     if (scrollRef.current) {
-      scrollRef.current.scrollTop = 0;
+      try {
+        scrollRef.current.scrollTop = 0;
+      } catch {
+        // ignore rare scroll container issues
+      }
     }
   }, [activeTab]);
 
@@ -645,69 +677,82 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
     resolvedLatestAnalysisResult,
   ]);
 
-  const handleTabChange = (tabId: MercyTabType) => {
-    if (!isTabAllowed(tabId)) {
-      return;
-    }
+  const handleTabChange = useCallback(
+    (tabId: MercyTabType) => {
+      if (!isTabAllowed(tabId)) {
+        return;
+      }
 
-    setLocalActiveTab(tabId);
-    onUpdateInteraction?.();
-    setActiveTab?.(tabId);
-  };
+      setLocalActiveTab(tabId);
+      safelyUpdateInteraction();
+      setActiveTab?.(tabId);
+    },
+    [isTabAllowed, safelyUpdateInteraction, setActiveTab],
+  );
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     if (onCloseGuide) {
       onCloseGuide();
       return;
     }
 
     onClose?.();
-  };
+  }, [onClose, onCloseGuide]);
 
-  const handleCollapse = () => {
+  const handleCollapse = useCallback(() => {
     if (onCollapseGuide) {
       onCollapseGuide();
       return;
     }
 
     onClose?.();
-  };
+  }, [onClose, onCollapseGuide]);
 
-  const handleOpenWriting = () => {
-    if (!access.features.hasMercyGrammar) {
+  const handleOpenWriting = useCallback(() => {
+    if (!accessFeatures.hasMercyGrammar) {
       goToPricing();
       return;
     }
 
     handleTabChange('grammar');
     onTeacherOpenWriting?.();
-  };
+  }, [accessFeatures.hasMercyGrammar, goToPricing, handleTabChange, onTeacherOpenWriting]);
 
-  const handleOpenPronunciation = (payload?: PronunciationLaunchPayload) => {
-    if (!access.features.hasMercySpeak) {
-      goToPricing();
-      return;
-    }
+  const handleOpenPronunciation = useCallback(
+    (payload?: PronunciationLaunchPayload) => {
+      if (!accessFeatures.hasMercySpeak) {
+        goToPricing();
+        return;
+      }
 
-    if (payload) {
-      onPracticePronunciation?.(payload);
-    } else if (pronunciationPayload) {
-      onPracticePronunciation?.(pronunciationPayload);
-    }
+      if (payload) {
+        onPracticePronunciation?.(payload);
+      } else if (pronunciationPayload) {
+        onPracticePronunciation?.(pronunciationPayload);
+      }
 
-    handleTabChange('pronunciation');
-    onTeacherOpenPronunciation?.();
-  };
+      handleTabChange('pronunciation');
+      onTeacherOpenPronunciation?.();
+    },
+    [
+      accessFeatures.hasMercySpeak,
+      goToPricing,
+      handleTabChange,
+      onPracticePronunciation,
+      onTeacherOpenPronunciation,
+      pronunciationPayload,
+    ],
+  );
 
-  const handleOpenLogic = () => {
-    if (!access.features.hasMercyLogic) {
+  const handleOpenLogic = useCallback(() => {
+    if (!accessFeatures.hasMercyLogic) {
       goToPricing();
       return;
     }
 
     handleTabChange('logic');
     onOpenEnglishLogic?.();
-  };
+  }, [accessFeatures.hasMercyLogic, goToPricing, handleTabChange, onOpenEnglishLogic]);
 
   if (!isOpen) {
     return null;
@@ -786,7 +831,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
       </div>
 
       <div className="relative z-20 border-b border-white/80 bg-white/58 px-3 py-3 backdrop-blur-sm">
-        {!access.features.hasMercyJourney ? (
+        {!accessFeatures.hasMercyJourney ? (
           <div className="mb-3 rounded-2xl border border-violet-200 bg-gradient-to-r from-violet-50 via-white to-rose-50 px-4 py-3 shadow-[0_8px_22px_rgba(168,85,247,0.08)]">
             <div className="flex items-center justify-between gap-3">
               <div>
@@ -890,7 +935,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
                 handleOpenPronunciation(pronunciationPayload ?? undefined)
               }
               onOpenWriting={handleOpenWriting}
-              isLocked={!access.features.hasMercyJourney}
+              isLocked={!accessFeatures.hasMercyJourney}
               onUnlock={goToPricing}
               unlockTitle="Unlock Mercy Journey"
               unlockDescription="Journey turns one real sentence into coaching, memory, progress notes, and a clear next step across Grammar, Speak, and Logic."
@@ -899,7 +944,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
             />
           )}
 
-          {activeTab === 'grammar' && access.features.hasMercyGrammar && (
+          {activeTab === 'grammar' && accessFeatures.hasMercyGrammar && (
             <GrammarWritingTab
               roomId={roomId}
               roomTitle={roomTitle}
@@ -909,7 +954,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
               onAnalysisResult={onAnalysisResult}
               onTeacherWritingStateChange={onTeacherWritingStateChange}
               onPracticePronunciation={(payload) => {
-                if (!access.features.hasMercySpeak) {
+                if (!accessFeatures.hasMercySpeak) {
                   goToPricing();
                   return;
                 }
@@ -922,7 +967,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
             />
           )}
 
-          {activeTab === 'grammar' && !access.features.hasMercyGrammar ? (
+          {activeTab === 'grammar' && !accessFeatures.hasMercyGrammar ? (
             <LockedAccessCard
               title="Grammar is part of Premium"
               description="Unlock Grammar to improve a real sentence naturally, then pass it into Speak and Logic."
@@ -930,7 +975,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
             />
           ) : null}
 
-          {activeTab === 'pronunciation' && access.features.hasMercySpeak && (
+          {activeTab === 'pronunciation' && accessFeatures.hasMercySpeak && (
             <MercySpeakTab
               roomId={roomId}
               roomTitle={roomTitle}
@@ -955,7 +1000,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
             />
           )}
 
-          {activeTab === 'pronunciation' && !access.features.hasMercySpeak ? (
+          {activeTab === 'pronunciation' && !accessFeatures.hasMercySpeak ? (
             <LockedAccessCard
               title="Speak is part of Premium"
               description="Unlock Speak to practice the same improved sentence aloud and build pronunciation memory over time."
@@ -963,7 +1008,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
             />
           ) : null}
 
-          {activeTab === 'logic' && access.features.hasMercyLogic && (
+          {activeTab === 'logic' && accessFeatures.hasMercyLogic && (
             <EnglishLogicTab
               roomTitle={roomTitle}
               contentEn={contentEn}
@@ -979,7 +1024,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
             />
           )}
 
-          {activeTab === 'logic' && !access.features.hasMercyLogic ? (
+          {activeTab === 'logic' && !accessFeatures.hasMercyLogic ? (
             <LockedAccessCard
               title="Logic is part of Premium"
               description="Unlock Logic to see the English pattern behind the sentence and connect that lesson back into Mercy’s memory."

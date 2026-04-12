@@ -1,3 +1,8 @@
+/**
+ * File: AppRouter.tsx
+ * Path: src/router/AppRouter.tsx
+ */
+
 // PATH: src/router/AppRouter.tsx
 // File: AppRouter.tsx
 

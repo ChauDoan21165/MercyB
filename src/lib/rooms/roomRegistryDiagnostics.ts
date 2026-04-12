@@ -15,6 +15,11 @@
  * Current comparison:
  * - registry rooms = roomRegistry source
  * - fetched rooms = roomFetcher source
+ *
+ * HARDENING:
+ * - Diagnostics must never throw hard enough to interfere with room opening
+ * - Normalize unknown arrays from async sources before comparing
+ * - Fall back to sync registry data when async registry reads fail
  */
 
 import * as roomRegistryModule from "./roomRegistry";
@@ -189,6 +194,38 @@ function getAllRoomsSyncBestEffort(): RoomMeta[] {
   return [];
 }
 
+async function getFetchedRoomsSafe(): Promise<RoomMeta[]> {
+  try {
+    const result = await getRoomList();
+    return dedupeRooms(safeRoomArray(result));
+  } catch {
+    return [];
+  }
+}
+
+async function getRegistryRoomsSafe(): Promise<RoomMeta[]> {
+  try {
+    const result = await getAllRoomsAsync();
+    const normalized = dedupeRooms(safeRoomArray(result));
+    if (normalized.length > 0) return normalized;
+  } catch {
+    // ignore and fall back below
+  }
+
+  return getAllRoomsSyncBestEffort();
+}
+
+async function getRoomByIdSafe(roomId: string): Promise<RoomMeta | undefined> {
+  try {
+    const room = await getRoomByIdAsync(roomId);
+    if (room?.id) return room;
+  } catch {
+    // ignore and fall back below
+  }
+
+  return getAllRoomsSyncBestEffort().find((item) => item.id === roomId);
+}
+
 function buildTierCoverageFromLists(
   registryRooms: TierCountRoom[],
   fetchedRooms: TierCountRoom[],
@@ -230,8 +267,8 @@ function buildTierCoverageFromLists(
  * Get coverage report comparing registry and fetched rooms (async)
  */
 export async function getRoomCoverageReportAsync(): Promise<RoomCoverageReport> {
-  const fetchedRooms = await getRoomList();
-  const registryRooms = await getAllRoomsAsync();
+  const fetchedRooms = await getFetchedRoomsSafe();
+  const registryRooms = await getRegistryRoomsSafe();
 
   const fetchedIds = new Set(fetchedRooms.map((room) => room.id));
   const registryIds = new Set(registryRooms.map((room) => room.id));
@@ -371,8 +408,8 @@ export async function validateRoomInRegistry(
   inManifest: boolean;
   inFetched: boolean;
 }> {
-  const room = await getRoomByIdAsync(roomId);
-  const fetchedRooms = await getRoomList();
+  const room = await getRoomByIdSafe(roomId);
+  const fetchedRooms = await getFetchedRoomsSafe();
   const fetchedIds = new Set(fetchedRooms.map((r) => r.id));
 
   const inFetched = fetchedIds.has(roomId);

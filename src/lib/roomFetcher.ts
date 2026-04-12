@@ -1,3 +1,8 @@
+/**
+ * File: roomFetcher.ts
+ * Path: src/lib/roomFetcher.ts
+ */
+
 // PATH: src/lib/roomFetcher.ts
 // File: roomFetcher.ts
 
@@ -134,6 +139,7 @@ type AnyRoomJson = {
   title_vi?: string;
   intro_en?: string;
   path?: string;
+  entries?: unknown[];
 };
 
 type RoomSummaryRow = {
@@ -249,6 +255,40 @@ function toRoomFetchErrorCode(error: unknown): RoomAccessErrorCode {
   return "room_fetch_failed";
 }
 
+function unwrapLoadedRoomPayload(payload: unknown): AnyRoomJson | null {
+  if (!isObject(payload)) return null;
+
+  const wrappedRoom = payload.room;
+  if (isObject(wrappedRoom)) {
+    return wrappedRoom as AnyRoomJson;
+  }
+
+  return payload as AnyRoomJson;
+}
+
+function hasUsableRoomPayload(json: AnyRoomJson | null): json is AnyRoomJson {
+  if (!json || !isObject(json)) return false;
+
+  if (Array.isArray(json.entries) && json.entries.length > 0) return true;
+  if (cleanText(json.id)) return true;
+  if (cleanText(json.title_en)) return true;
+  if (cleanText(json.title_vi)) return true;
+  if (cleanText(json.name)) return true;
+  if (cleanText(json.name_vi)) return true;
+  if (cleanText(json.intro_en)) return true;
+  if (cleanText(json.intro_vi)) return true;
+  if (cleanText(json.description)) return true;
+  if (cleanText(json.description_vi)) return true;
+
+  const title = isObject(json.title) ? json.title : null;
+  if (title && (cleanText(title.en) || cleanText(title.vi))) return true;
+
+  const intro = isObject(json.intro) ? json.intro : null;
+  if (intro && (cleanText(intro.en) || cleanText(intro.vi))) return true;
+
+  return false;
+}
+
 /**
  * Load a single room through the secure loader.
  * This is now the only runtime path for room JSON.
@@ -267,13 +307,14 @@ export async function fetchRoomJsonByIdOrThrow(roomId: string): Promise<AnyRoomJ
 
   for (const candidate of candidates) {
     try {
-      const json = await loadRoomJson(candidate);
+      const payload = await loadRoomJson(candidate);
+      const json = unwrapLoadedRoomPayload(payload);
 
-      if (!isObject(json)) {
+      if (!hasUsableRoomPayload(json)) {
         throw new Error("room_fetch_failed");
       }
 
-      return normalizeRoomJson(candidate, json as AnyRoomJson);
+      return normalizeRoomJson(candidate, json);
     } catch (error) {
       lastError = error;
     }

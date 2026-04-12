@@ -20,6 +20,7 @@ import {
   MessageCircle,
   CornerDownRight,
   Maximize2,
+  Minimize2,
   GripHorizontal,
   BookOpen,
   Mic2,
@@ -386,8 +387,8 @@ function createId(prefix: string) {
 
 function getInitialGuideMessages(roomSummary: RoomContextSummary): ChatMessage[] {
   const first = roomSummary.hasRoomContext
-    ? `Hi. I’m Guide.\nChào bạn! Mình là Guide, người dẫn đường của bạn.\n\nYou are in ${roomSummary.roomName}. I can point you to important pages, explain how to use this room, or help you decide the next step.\nBạn đang ở ${roomSummary.roomName}. Mình sẽ chỉ bạn các trang quan trọng, hướng dẫn cách dùng room này, hoặc giúp bạn chọn bước tiếp theo.`
-    : "Hi. I’m Guide.\nChào bạn! Mình là Guide, người dẫn đường của bạn.\n\nI can point you to important pages, explain how to use Mercy Blade, and help you decide where to start.\nMình có thể chỉ bạn các trang quan trọng, hướng dẫn cách dùng Mercy Blade và giúp bạn biết nên bắt đầu từ đâu.";
+    ? `Hi. I’m Guide.\nChào bạn! Mình là Guide, người dẫn đường của bạn.\n\nYou are in ${roomSummary.roomName}. I can point you to important pages, explain how to use this room, or help you decide the next step.\nBạn đang ở ${roomSummary.roomName}. Mình sẽ chỉ bạn các trang quan trọng, hướng dẫn cách dùng không gian học tập này, hoặc giúp bạn chọn bước tiếp theo.`
+    : "Hi. I’m Guide.\nChào bạn! Mình là Guide, người dẫn đường của bạn.\n\nI can point you to important pages, explain how to use Mercy Blade, and help you decide where to start.\nMình có thể chỉ bạn các trang quan trọng, hướng dẫn cách sử dụng Mercy Blade và giúp bạn biết nên bắt đầu từ đâu.";
 
   return [{ id: createId("guide"), role: "guide", text: first }];
 }
@@ -570,7 +571,13 @@ export function GuideBox({
   const [showFullAppIntro, setShowFullAppIntro] = useState<boolean>(() =>
     readSessionBoolean(GUIDE_INTRO_EXPANDED_STORAGE_KEY, false)
   );
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  const preFullscreenRectRef = useRef<PanelRect | null>(null);
+  const preFullscreenSizeRef = useRef<PanelSizeKey | null>(null);
+
   const messagesRef = useRef<HTMLDivElement | null>(null);
+  const dragCleanupRef = useRef<(() => void) | null>(null);
 
   const roomSummary = useMemo(
     () =>
@@ -620,31 +627,25 @@ export function GuideBox({
         BUBBLE_POSITION_STORAGE_KEY,
         JSON.stringify(sanitizeBubblePos(bubblePos))
       );
-    } catch {
-      // ignore
-    }
+    } catch {}
   }, [bubblePos]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
     try {
       window.sessionStorage.setItem(PANEL_SIZE_STORAGE_KEY, panelSize);
-    } catch {
-      // ignore
-    }
+    } catch {}
   }, [panelSize]);
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    if (typeof window === "undefined" || isFullscreen) return;
     try {
       window.sessionStorage.setItem(
         PANEL_RECT_STORAGE_KEY,
         JSON.stringify(sanitizePanelRect(panelRect, panelSize))
       );
-    } catch {
-      // ignore
-    }
-  }, [panelRect, panelSize]);
+    } catch {}
+  }, [panelRect, panelSize, isFullscreen]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -653,22 +654,30 @@ export function GuideBox({
         GUIDE_INTRO_EXPANDED_STORAGE_KEY,
         String(showFullAppIntro)
       );
-    } catch {
-      // ignore
-    }
+    } catch {}
   }, [showFullAppIntro]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
 
     const onResize = () => {
+      if (isFullscreen) return;
       setBubblePos((prev) => sanitizeBubblePos(prev));
       setPanelRect((prev) => sanitizePanelRect(prev, panelSize));
     };
 
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
-  }, [panelSize]);
+  }, [panelSize, isFullscreen]);
+
+  useEffect(() => {
+    return () => {
+      if (dragCleanupRef.current) {
+        dragCleanupRef.current();
+        dragCleanupRef.current = null;
+      }
+    };
+  }, []);
 
   const openGuide = useCallback(() => {
     const nextRect = makePanelRectFromSize(
@@ -691,8 +700,11 @@ export function GuideBox({
     setIsOpen(true);
   }, [bubblePos, panelSize]);
 
+  // === DRAG HANDLER (used by gray handles and top grip) ===
   const startPanelDrag = useCallback(
     (clientX: number, clientY: number, pointerId: number) => {
+      if (isFullscreen) return;
+
       const startX = clientX;
       const startY = clientY;
       const startRect = panelRect;
@@ -720,7 +732,10 @@ export function GuideBox({
         window.removeEventListener("pointermove", onPointerMove);
         window.removeEventListener("pointerup", onPointerUp);
         window.removeEventListener("pointercancel", onPointerUp);
+        dragCleanupRef.current = null;
       };
+
+      dragCleanupRef.current = cleanup;
 
       const onPointerUp = (upEvent: PointerEvent) => {
         if (upEvent.pointerId !== pointerId) return;
@@ -731,18 +746,20 @@ export function GuideBox({
       window.addEventListener("pointerup", onPointerUp);
       window.addEventListener("pointercancel", onPointerUp);
     },
-    [panelRect]
+    [panelRect, isFullscreen]
   );
 
   const handlePanelDragStart = useCallback(
     (event: React.PointerEvent<HTMLDivElement>) => {
+      if (isFullscreen) return;
       event.preventDefault();
       event.stopPropagation();
       startPanelDrag(event.clientX, event.clientY, event.pointerId);
     },
-    [startPanelDrag]
+    [isFullscreen, startPanelDrag]
   );
 
+  // === BUBBLE DRAG + TAP TO OPEN ===
   const handleBubblePointerDown = useCallback(
     (event: React.PointerEvent<HTMLDivElement>) => {
       event.preventDefault();
@@ -787,8 +804,10 @@ export function GuideBox({
     [bubblePos, openGuide]
   );
 
+  // === RESIZE HANDLER (bottom-right corner) ===
   const handleResizePointerDown = useCallback(
     (event: React.PointerEvent<HTMLDivElement>) => {
+      if (isFullscreen) return;
       event.preventDefault();
       event.stopPropagation();
 
@@ -820,7 +839,10 @@ export function GuideBox({
         window.removeEventListener("pointermove", onPointerMove);
         window.removeEventListener("pointerup", onPointerUp);
         window.removeEventListener("pointercancel", onPointerUp);
+        dragCleanupRef.current = null;
       };
+
+      dragCleanupRef.current = cleanup;
 
       const onPointerUp = (upEvent: PointerEvent) => {
         if (upEvent.pointerId !== pointerId) return;
@@ -831,10 +853,11 @@ export function GuideBox({
       window.addEventListener("pointerup", onPointerUp);
       window.addEventListener("pointercancel", onPointerUp);
     },
-    [panelRect]
+    [isFullscreen, panelRect]
   );
 
   const applyPanelSize = useCallback((sizeKey: PanelSizeKey) => {
+    if (isFullscreen) return;
     setPanelSize(sizeKey);
     setPanelRect((prev) =>
       clampPanelRect({
@@ -843,11 +866,27 @@ export function GuideBox({
         height: PANEL_SIZES[sizeKey].height,
       })
     );
-  }, []);
+  }, [isFullscreen]);
 
   const expandForTyping = useCallback(() => {
     applyPanelSize("xl");
   }, [applyPanelSize]);
+
+  const toggleFullscreen = useCallback(() => {
+    if (isFullscreen) {
+      if (preFullscreenRectRef.current && preFullscreenSizeRef.current) {
+        setPanelRect(clampPanelRect(preFullscreenRectRef.current));
+        setPanelSize(preFullscreenSizeRef.current);
+      }
+      setIsFullscreen(false);
+      preFullscreenRectRef.current = null;
+      preFullscreenSizeRef.current = null;
+    } else {
+      preFullscreenRectRef.current = { ...panelRect };
+      preFullscreenSizeRef.current = panelSize;
+      setIsFullscreen(true);
+    }
+  }, [isFullscreen, panelRect, panelSize]);
 
   const goHome = useCallback(() => {
     navigate("/");
@@ -923,7 +962,7 @@ export function GuideBox({
           id: createId("guide"),
           role: "guide",
           text:
-            "I couldn’t answer right now.\nMình chưa trả lời được lúc này.\n\nYou can still use the quick buttons and the app guide above.\nBạn vẫn có thể dùng các lối tắt nhanh và phần hướng dẫn ở phía trên.",
+            "I couldn’t answer right now.\nMình chưa trả lời được lúc này.\n\nYou can still use the quick buttons and the app guide above.\nBạn vẫn có thể dùng các chỉ dẫn nhanh và phần hướng dẫn ở phía trên.",
         };
 
         setMessages((prev) => [...prev, fallback]);
@@ -940,11 +979,11 @@ export function GuideBox({
     () => [
       {
         en: "How do I use the app?",
-        vi: "Làm sao để học hiệu quả với app?",
+        vi: "Phương pháp học tập tối ưu trên Mercy Blade?",
       },
       {
         en: "What is shadowing?",
-        vi: "Nói đuổi (Shadowing) là gì?",
+        vi: "Shadowing là gì?",
       },
       {
         en: "What is Teacher Mercy?",
@@ -953,11 +992,11 @@ export function GuideBox({
       roomSummary.hasRoomContext
         ? {
             en: "How do I use this room?",
-            vi: "Cách học Room này như thế nào?",
+            vi: "Cách học không gian học tập này như thế nào?",
           }
         : {
             en: "Where do I start?",
-            vi: "Mình nên bắt đầu từ đâu?",
+            vi: "Tôi nên bắt đầu lộ trình từ đâu?",
           },
       {
         en: "What should I do next?",
@@ -984,7 +1023,7 @@ export function GuideBox({
       {
         key: "resume",
         labelEn: roomId ? "Resume this room" : "Explore rooms",
-        labelVi: roomId ? "Tiếp tục Room này" : "Khám phá các Room",
+        labelVi: roomId ? "Tiếp tục không gian học tập này" : "Khám phá các không gian học tập",
         icon: <LibraryBig size={16} />,
         onClick: goResume,
         primary: true,
@@ -1015,7 +1054,7 @@ export function GuideBox({
             {
               key: "open-room",
               labelEn: "Open this room",
-              labelVi: "Mở Room này",
+              labelVi: "Mở không gian học tập này",
               icon: <ArrowRight size={16} />,
               onClick: goRoom,
               primary: false,
@@ -1041,41 +1080,41 @@ export function GuideBox({
         key: "rooms",
         icon: <BookOpen size={15} />,
         titleEn: "400+ rooms about real life",
-        titleVi: "400+ Room từ thực tế cuộc sống",
+        titleVi: "Hơn 400 không gian học tập gắn với đời sống thực tiễn",
         bodyEn:
           "Mercy Blade has a large library of rooms built around meaningful life topics, not empty textbook examples. You learn English through feelings, work, health, goals, habits, relationships, and daily life.",
         bodyVi:
-          "Mercy Blade sở hữu thư viện khổng lồ với các Room xoay quanh chủ đề đời sống thực tế, thay vì ví dụ sách giáo khoa khô khan. Bạn sẽ học tiếng Anh qua cảm xúc, công việc, sức khỏe và các mối quan hệ hằng ngày.",
+          "Mercy Blade sở hữu thư viện phong phú với các không gian học tập được xây dựng xung quanh những chủ đề ý nghĩa trong đời sống, thay vì những ví dụ sách giáo khoa khô khan. Người học sẽ rèn luyện tiếng Anh qua cảm xúc, công việc, sức khỏe, mục tiêu, thói quen, mối quan hệ và sinh hoạt hàng ngày.",
       },
       {
         key: "shadowing",
         icon: <Mic2 size={15} />,
         titleEn: "Read, listen, and shadow",
-        titleVi: "Đọc, nghe và nói đuổi (Shadowing)",
+        titleVi: "Đọc - Nghe - Shadowing",
         bodyEn:
           "You can read Vietnamese first to understand the meaning, then read the same idea in English and listen to English audio. Reading and listening to the same text helps you practice shadowing and build rhythm, pronunciation, and confidence.",
         bodyVi:
-          "Bạn có thể đọc tiếng Việt để hiểu nghĩa, sau đó đối chiếu sang tiếng Anh và nghe audio. Việc này giúp bạn luyện nói đuổi (Shadowing) để cải thiện nhịp điệu, phát âm và sự tự tin tự nhiên.",
+          "Người học có thể đọc phần tiếng Việt để nắm rõ ý nghĩa, sau đó đối chiếu với nội dung tiếng Anh và nghe audio tương ứng. Việc đọc và nghe cùng một nội dung giúp thực hành Shadowing hiệu quả, từ đó cải thiện nhịp điệu, phát âm và sự tự tin tự nhiên.",
       },
       {
         key: "levels",
         icon: <Languages size={15} />,
         titleEn: "Free to VIP 9",
-        titleVi: "Lộ trình từ Free đến VIP 9",
+        titleVi: "Từ Free đến VIP 9",
         bodyEn:
           "The library grows from Free to VIP 9. As you move up, the texts become longer, deeper, and more demanding. That gives learners a calm path from easier material into richer English.",
         bodyVi:
-          "Thư viện được phân cấp từ Free đến VIP 9. Càng lên cao, nội dung càng sâu sắc và thử thách hơn, giúp bạn nâng trình tiếng Anh một cách bền vững và nhẹ nhàng.",
+          "Thư viện được xây dựng theo lộ trình từ Free đến VIP 9. Khi người học tiến bộ, nội dung sẽ dần dài hơn, sâu sắc hơn và đòi hỏi cao hơn, tạo nên hành trình học tập vững chắc và nhẹ nhàng từ cơ bản đến nâng cao.",
       },
       {
         key: "teacher-mercy",
         icon: <PenSquare size={15} />,
         titleEn: "Teacher Mercy learning loop",
-        titleVi: "Chu trình học cùng Teacher Mercy",
+        titleVi: "Chu trình học tập cùng Teacher Mercy",
         bodyEn:
           "Teacher Mercy helps you write about real life, improve grammar, make your English more natural, practice speaking, and notice English logic so you avoid Vietlish. The advantage is the loop: write → improve → speak → understand.",
         bodyVi:
-          "Teacher Mercy giúp bạn viết về trải nghiệm thực, chỉnh ngữ pháp và thấm nhuần tư duy bản ngữ để bỏ cách nói 'tiếng Anh bồi'. Điểm mạnh là chu trình khép kín: Viết → Cải thiện → Nói → Thấu hiểu.",
+          "Teacher Mercy hỗ trợ người học viết về những trải nghiệm thực tiễn, chuẩn hóa ngữ pháp, diễn đạt tự nhiên hơn, luyện nói và nhận ra logic tiếng Anh để tránh lối diễn đạt “tiếng Anh bồi”. Điểm mạnh lớn nhất chính là chu trình học tập khép kín: Viết → Cải thiện → Nói → Thấu hiểu.",
       },
     ],
     []
@@ -1084,10 +1123,41 @@ export function GuideBox({
   const introSummary = useMemo(
     () =>
       roomSummary.hasRoomContext
-        ? `You are in ${roomSummary.roomName}. This app is built around real life learning. Explore rooms, use Teacher Mercy, and keep moving step by step.\nBạn đang ở ${roomSummary.roomName}. App được xây dựng để bạn học từ chính cuộc sống thực. Hãy khám phá các Room, dùng Teacher Mercy và tiến bộ mỗi ngày.`
-        : "Mercy Blade helps Vietnamese learners build English through real life topics, shadowing, and a guided Teacher Mercy loop.\nMercy Blade giúp người Việt xây gốc tiếng Anh qua chủ đề đời sống thực tế, luyện nói đuổi (Shadowing) và chu trình học kèm cặp cùng Teacher Mercy.",
+        ? `Bạn đang ở ${roomSummary.roomName}. Mercy Blade được xây dựng trên nền tảng học tập từ đời sống thực tiễn. Hãy khám phá các không gian học tập, sử dụng Teacher Mercy và tiến bộ từng bước một cách vững chắc.\nBạn đang ở ${roomSummary.roomName}. Mercy Blade được xây dựng để người học rèn luyện tiếng Anh từ chính cuộc sống thực tiễn. Hãy khám phá các không gian học tập, sử dụng Teacher Mercy và tiến bộ từng bước một cách vững chắc.`
+        : "Mercy Blade giúp người học Việt Nam xây dựng nền tảng tiếng Anh qua các chủ đề đời sống thực tiễn, phương pháp Shadowing và chu trình học tập tương tác cùng Teacher Mercy.\nMercy Blade giúp người học Việt Nam xây dựng nền tảng tiếng Anh qua các chủ đề đời sống thực tiễn, phương pháp Shadowing và chu trình học tập tương tác cùng Teacher Mercy.",
     [roomSummary.hasRoomContext, roomSummary.roomName]
   );
+
+  const panelStyle = useMemo(() => ({
+    position: "fixed" as const,
+    zIndex: isFullscreen ? 100000 : 99999,
+    borderRadius: 18,
+    border: "1px solid rgba(0,0,0,0.10)",
+    background: "white",
+    boxShadow: "0 18px 48px rgba(0,0,0,0.18)",
+    overflow: "hidden",
+    display: "flex",
+    flexDirection: "column" as const,
+    ...(isFullscreen
+      ? {
+          top: 12,
+          left: 12,
+          right: 12,
+          bottom: 12,
+          width: "auto",
+          height: "auto",
+          maxWidth: "none",
+          maxHeight: "none",
+        }
+      : {
+          left: panelRect.left,
+          bottom: panelRect.bottom,
+          width: panelRect.width,
+          height: panelRect.height,
+          maxWidth: "calc(100vw - 24px)",
+          maxHeight: "calc(100vh - 24px)",
+        }),
+  }), [isFullscreen, panelRect]);
 
   return (
     <>
@@ -1128,7 +1198,7 @@ export function GuideBox({
                 width: BUBBLE_SIZE,
                 height: BUBBLE_SIZE,
                 borderRadius: 9999,
-                background: "rgb(251 207 232)",
+                background: "rgb(224 248 245)",
                 padding: 4,
                 boxShadow: "0 12px 28px rgba(0,0,0,0.18)",
                 border: "2px solid white",
@@ -1143,7 +1213,7 @@ export function GuideBox({
                   overflow: "hidden",
                   borderRadius: 9999,
                   background:
-                    "linear-gradient(to bottom, rgb(252 231 243), rgb(255 241 242))",
+                    "linear-gradient(to bottom, rgb(240 255 250), rgb(248 255 253))",
                 }}
               >
                 {!imageBroken ? (
@@ -1181,7 +1251,7 @@ export function GuideBox({
                       justifyContent: "center",
                       fontWeight: 800,
                       fontSize: 22,
-                      color: "rgb(157 23 77)",
+                      color: "rgb(0 128 120)",
                     }}
                   >
                     G
@@ -1206,78 +1276,67 @@ export function GuideBox({
       )}
 
       {isOpen && (
-        <div
-          style={{
-            position: "fixed",
-            left: panelRect.left,
-            bottom: panelRect.bottom,
-            zIndex: 99999,
-            width: panelRect.width,
-            height: panelRect.height,
-            maxWidth: "calc(100vw - 24px)",
-            maxHeight: "calc(100vh - 24px)",
-            borderRadius: 18,
-            border: "1px solid rgba(0,0,0,0.10)",
-            background: "white",
-            boxShadow: "0 18px 48px rgba(0,0,0,0.18)",
-            overflow: "hidden",
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
-          <div
-            onPointerDown={handlePanelDragStart}
-            title="Kéo hộp Guide"
-            style={{
-              position: "absolute",
-              left: 6,
-              top: "50%",
-              transform: "translateY(-50%)",
-              width: 8,
-              height: 72,
-              borderRadius: 9999,
-              background: "rgba(0,0,0,0.20)",
-              cursor: "grab",
-              zIndex: 3,
-              touchAction: "none",
-            }}
-          />
+        <div style={panelStyle}>
+          {!isFullscreen && (
+            <>
+              {/* Left vertical drag handle - DRAG ONLY */}
+              <div
+                onPointerDown={handlePanelDragStart}
+                title="Kéo hộp Guide"
+                style={{
+                  position: "absolute",
+                  left: 6,
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  width: 8,
+                  height: 72,
+                  borderRadius: 9999,
+                  background: "rgba(0,0,0,0.20)",
+                  cursor: "grab",
+                  zIndex: 3,
+                  touchAction: "none",
+                }}
+              />
 
-          <div
-            onPointerDown={handlePanelDragStart}
-            title="Kéo hộp Guide"
-            style={{
-              position: "absolute",
-              right: 6,
-              top: "50%",
-              transform: "translateY(-50%)",
-              width: 8,
-              height: 72,
-              borderRadius: 9999,
-              background: "rgba(0,0,0,0.20)",
-              cursor: "grab",
-              zIndex: 3,
-              touchAction: "none",
-            }}
-          />
+              {/* Right vertical drag handle - DRAG ONLY */}
+              <div
+                onPointerDown={handlePanelDragStart}
+                title="Kéo hộp Guide"
+                style={{
+                  position: "absolute",
+                  right: 6,
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  width: 8,
+                  height: 72,
+                  borderRadius: 9999,
+                  background: "rgba(0,0,0,0.20)",
+                  cursor: "grab",
+                  zIndex: 3,
+                  touchAction: "none",
+                }}
+              />
 
-          <div
-            onPointerDown={handlePanelDragStart}
-            title="Kéo hộp Guide"
-            style={{
-              position: "absolute",
-              left: "50%",
-              bottom: 8,
-              transform: "translateX(-50%)",
-              width: 72,
-              height: 8,
-              borderRadius: 9999,
-              background: "rgba(0,0,0,0.20)",
-              cursor: "grab",
-              zIndex: 3,
-              touchAction: "none",
-            }}
-          />
+              {/* Bottom horizontal drag handle - DRAG ONLY */}
+              <div
+                onPointerDown={handlePanelDragStart}
+                title="Kéo hộp Guide"
+                style={{
+                  position: "absolute",
+                  left: "50%",
+                  bottom: 8,
+                  transform: "translateX(-50%)",
+                  width: 72,
+                  height: 8,
+                  borderRadius: 9999,
+                  background: "rgba(0,0,0,0.20)",
+                  cursor: "grab",
+                  zIndex: 3,
+                  touchAction: "none",
+                }}
+              />
+            </>
+          )}
 
           <div
             style={{
@@ -1338,8 +1397,8 @@ export function GuideBox({
                     height: HEADER_FACE_SIZE,
                     borderRadius: 9999,
                     overflow: "hidden",
-                    background: "rgb(252 231 243)",
-                    border: "2px solid rgb(251 207 232)",
+                    background: "rgb(240 255 250)",
+                    border: "2px solid rgb(224 248 245)",
                     flexShrink: 0,
                   }}
                 >
@@ -1375,7 +1434,7 @@ export function GuideBox({
                         alignItems: "center",
                         justifyContent: "center",
                         fontWeight: 800,
-                        color: "rgb(157 23 77)",
+                        color: "rgb(0 128 120)",
                       }}
                     >
                       G
@@ -1405,7 +1464,7 @@ export function GuideBox({
                   >
                     Human help. Important pages. Clear direction.
                     <br />
-                    Hỗ trợ tận tâm. Truy cập nhanh. Chỉ dẫn rõ ràng.
+                    Hỗ trợ tận tâm. Chỉ dẫn nhanh. Hướng dẫn rõ ràng.
                   </div>
                 </div>
               </div>
@@ -1420,9 +1479,9 @@ export function GuideBox({
               >
                 <button
                   type="button"
-                  onClick={expandForTyping}
-                  title="Mở rộng để gõ"
-                  aria-label="Expand for typing"
+                  onClick={toggleFullscreen}
+                  title={isFullscreen ? "Thu gọn Guide" : "Mở rộng Guide"}
+                  aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
                   style={{
                     height: 34,
                     padding: "0 12px",
@@ -1438,8 +1497,8 @@ export function GuideBox({
                     fontSize: 12,
                   }}
                 >
-                  <Maximize2 size={14} />
-                  Mở rộng
+                  {isFullscreen ? <Minimize2 size={14} /> : <Maximize2 size={14} />}
+                  {isFullscreen ? "Thu gọn" : "Mở rộng"}
                 </button>
 
                 <button
@@ -1540,7 +1599,7 @@ export function GuideBox({
               <SectionTitle
                 icon={<HeartHandshake size={14} />}
                 labelEn="How to use Mercy Blade"
-                labelVi="Cách học hiệu quả"
+                labelVi="Phương pháp học tập tối ưu trên Mercy Blade"
               />
 
               <div
@@ -1552,7 +1611,9 @@ export function GuideBox({
                   whiteSpace: "pre-wrap",
                 }}
               >
-                {introSummary}
+                Mercy Blade helps Vietnamese learners build English through real life topics, shadowing, and a guided Teacher Mercy loop.
+                <br /><br />
+                Mercy Blade giúp người học Việt Nam xây dựng nền tảng tiếng Anh qua các chủ đề đời sống thực tiễn, phương pháp Shadowing và chu trình học tập tương tác cùng Teacher Mercy.
               </div>
 
               <div
@@ -1583,8 +1644,8 @@ export function GuideBox({
                 }}
               >
                 {showFullAppIntro
-                  ? "Show less / Thu gọn"
-                  : "Read full introduction / Đọc giới thiệu đầy đủ"}
+                  ? "Thu gọn / Show less"
+                  : "Tìm hiểu triết lý học tập của Mercy Blade"}
               </button>
 
               {showFullAppIntro ? (
@@ -1637,28 +1698,16 @@ export function GuideBox({
                   </div>
 
                   <div style={{ color: "rgba(0,0,0,0.60)" }}>
-                    Mercy Blade giúp người Việt xây gốc tiếng Anh qua các tình huống thực tế,
-                    thay vì những câu mẫu ngẫu nhiên kiểu sách giáo khoa.
-                    {"\n\n"}Hệ thống có hai điểm mạnh cốt lõi:
-                    {"\n\n"}1. Thư viện tiếng Anh gắn liền với đời sống thực
-                    {"\n"}Với hơn 400 Room, mỗi không gian học được xây dựng quanh các chủ đề 
-                    ý nghĩa như: Cảm xúc, công việc, sức khỏe, thói quen và mục tiêu. 
-                    Bạn có thể đọc tiếng Việt để thấu hiểu nghĩa trước, sau đó đối chiếu sang 
-                    tiếng Anh và nghe audio đi kèm. 
-                    {"\n\n"}Cách này hỗ trợ tối đa cho việc luyện nói đuổi (Shadowing): 
-                    Hiểu - Đọc - Nghe - Lặp lại. Shadowing giúp bạn cải thiện nhịp điệu, 
-                    phát âm và dòng chảy tự nhiên của câu. Hệ thống bài đọc được phân cấp từ 
-                    Free đến VIP 9, dài hơn và sâu sắc hơn theo trình độ của bạn.
+                    Mercy Blade giúp người học Việt Nam xây dựng nền tảng tiếng Anh qua các chủ đề đời sống thực tiễn, không phải những câu mẫu ngẫu nhiên từ sách giáo khoa.
+                    {"\n\n"}Ứng dụng có hai điểm mạnh cốt lõi:
+                    {"\n\n"}1. Thư viện tiếng Anh phong phú gắn với đời sống thực tiễn
+                    {"\n"}Mercy Blade có hơn 400 không gian học tập được xây dựng xung quanh những chủ đề ý nghĩa trong cuộc sống. Mỗi không gian là một môi trường học tập nhỏ, tập trung vào những điều người học thực sự quan tâm: cảm xúc, gia đình, công việc, sức khỏe, tiền bạc, thói quen, mục tiêu, du lịch và cuộc sống hiện đại.
+                    {"\n\n"}Người học có thể đọc phần tiếng Việt để nắm rõ ý nghĩa, sau đó đối chiếu với nội dung tiếng Anh và nghe audio tương ứng. Cách tiếp cận này hỗ trợ tối đa cho việc thực hành Shadowing: hiểu – đọc – nghe – lặp lại. Shadowing giúp cải thiện phát âm, nhịp điệu, kỹ năng nghe và sự tự tin tự nhiên.
+                    {"\n\n"}Thư viện được tổ chức theo lộ trình từ Free đến VIP 9. Khi người học tiến bộ, nội dung sẽ dần dài hơn, sâu sắc hơn và đòi hỏi cao hơn.
                     {"\n\n"}2. Teacher Mercy
-                    {"\n"}Đây là người hướng dẫn tiếng Anh có định hướng, được thiết kế riêng 
-                    cho người Việt. Bạn viết về một sự kiện hay suy nghĩ thực tế, 
-                    Mercy sẽ giúp chỉnh sửa ngữ pháp, làm cách diễn đạt tự nhiên hơn và 
-                    giải thích tư duy bản ngữ để bạn thoát khỏi cách nói 'tiếng Anh bồi'. 
-                    Điểm mạnh nhất chính là chu trình học: Viết → Chỉnh sửa → Nói → Thấu hiểu.
+                    {"\n"}Teacher Mercy là người hướng dẫn tiếng Anh được thiết kế đặc biệt cho người học Việt Nam. Người học viết về những trải nghiệm thực tiễn, suy nghĩ hoặc cảm xúc của mình. Teacher Mercy hỗ trợ chuẩn hóa ngữ pháp, diễn đạt tự nhiên hơn, hướng dẫn luyện nói và giúp người học nhận ra logic tiếng Anh để tránh lối diễn đạt “tiếng Anh bồi”. Điểm mạnh lớn nhất chính là chu trình học tập khép kín: Viết → Cải thiện → Nói → Thấu hiểu.
                     {"\n\n"}Sứ mệnh của chúng tôi
-                    {"\n"}Nhà sáng lập CD mong muốn Mercy Blade trở thành ứng dụng học tiếng Anh 
-                    tốt nhất cho người Việt. Sự ủng hộ của bạn chính là động lực để chúng tôi 
-                    hoàn thiện mỗi ngày.
+                    {"\n"}Nhà sáng lập CD mong muốn Mercy Blade trở thành ứng dụng học tiếng Anh tốt nhất dành cho người Việt. Sự ủng hộ và góp ý của người học chính là động lực để chúng tôi không ngừng hoàn thiện mỗi ngày.
                   </div>
                 </div>
               ) : null}
@@ -1667,8 +1716,9 @@ export function GuideBox({
             <div
               style={{
                 borderRadius: 14,
-                border: "1px solid rgba(0,0,0,0.08)",
-                background: "rgba(250,250,250,0.9)",
+                border: "1px solid rgba(0,100,150,0.12)",
+                background:
+                  "linear-gradient(180deg, rgba(0,100,150,0.06), rgba(255,255,255,0.98))",
                 padding: 12,
               }}
             >
@@ -1730,15 +1780,15 @@ export function GuideBox({
             <div
               style={{
                 borderRadius: 14,
-                border: "1px solid rgba(0,0,0,0.08)",
-                background: "rgba(255,255,255,0.96)",
+                border: "1px solid rgba(0,80,120,0.10)",
+                background: "linear-gradient(180deg, rgba(245,250,255,0.95), rgba(255,255,255,0.98))",
                 padding: 12,
               }}
             >
               <SectionTitle
                 icon={<Compass size={14} />}
                 labelEn="Important places"
-                labelVi="Lối tắt nhanh"
+                labelVi="Chỉ dẫn nhanh"
               />
 
               <div style={{ display: "grid", gap: 10 }}>
@@ -1758,15 +1808,15 @@ export function GuideBox({
             <div
               style={{
                 borderRadius: 14,
-                border: "1px solid rgba(0,0,0,0.08)",
-                background: "rgba(255,255,255,0.96)",
+                border: "1px solid rgba(0,140,160,0.10)",
+                background: "rgba(245,253,255,0.96)",
                 padding: 12,
               }}
             >
               <SectionTitle
                 icon={<MessageCircle size={14} />}
                 labelEn="Common questions"
-                labelVi="Câu hỏi thường gặp"
+                labelVi="Giải đáp thắc mắc thường gặp"
               />
 
               <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
@@ -1807,8 +1857,8 @@ export function GuideBox({
               style={{
                 minHeight: 220,
                 borderRadius: 14,
-                border: "1px solid rgba(0,0,0,0.08)",
-                background: "rgba(255,255,255,0.92)",
+                border: "1px solid rgba(0,128,120,0.08)",
+                background: "linear-gradient(180deg, rgba(0,128,120,0.06), rgba(255,255,255,0.98))",
                 display: "flex",
                 flexDirection: "column",
                 overflow: "hidden",
@@ -1841,7 +1891,7 @@ export function GuideBox({
                   display: "flex",
                   flexDirection: "column",
                   gap: 10,
-                  background: "rgba(252,252,252,0.9)",
+                  background: "rgba(252,255,253,0.9)",
                 }}
               >
                 {messages.map((message) => (
@@ -1934,28 +1984,30 @@ export function GuideBox({
             </div>
           </div>
 
-          <div
-            onPointerDown={handleResizePointerDown}
-            title="Resize"
-            style={{
-              position: "absolute",
-              right: 6,
-              bottom: 24,
-              width: 22,
-              height: 22,
-              borderRadius: 10,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              cursor: "nwse-resize",
-              color: "rgba(0,0,0,0.40)",
-              background: "rgba(255,255,255,0.8)",
-              border: "1px solid rgba(0,0,0,0.06)",
-              zIndex: 4,
-            }}
-          >
-            <CornerDownRight size={14} />
-          </div>
+          {!isFullscreen && (
+            <div
+              onPointerDown={handleResizePointerDown}
+              title="Resize"
+              style={{
+                position: "absolute",
+                right: 6,
+                bottom: 24,
+                width: 22,
+                height: 22,
+                borderRadius: 10,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                cursor: "nwse-resize",
+                color: "rgba(0,0,0,0.40)",
+                background: "rgba(255,255,255,0.8)",
+                border: "1px solid rgba(0,0,0,0.06)",
+                zIndex: 4,
+              }}
+            >
+              <CornerDownRight size={14} />
+            </div>
+          )}
         </div>
       )}
     </>
