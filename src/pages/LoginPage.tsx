@@ -1,3 +1,5 @@
+// src/pages/LoginPage.tsx
+
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/lib/supabaseClient";
@@ -323,6 +325,21 @@ export default function LoginPage() {
     <div style={pageStyle}>
       <div style={UI.left}>
         <div style={UI.card}>
+          <div style={{ marginBottom: 12 }}>
+            <button
+              type="button"
+              onClick={() => nav("/")}
+              disabled={busy}
+              style={{
+                ...UI.ghostBtn(busy),
+                minWidth: 0,
+                padding: "10px 14px",
+              }}
+            >
+              ← Back to home
+            </button>
+          </div>
+
           <h1 style={UI.title}>Sign in</h1>
           <p style={UI.subtitle}>
             Choose a sign-in method. After signing in, we’ll take you to the

@@ -14,6 +14,7 @@ import {
   Minimize2,
   PenSquare,
   Send,
+  UserRound,
   X,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -48,6 +49,9 @@ type SavedGuideFeedback = {
 
 const GUIDE_IMAGE_SRC = "/guide.png";
 const GUIDE_IMAGE_FALLBACK = "/guide.png";
+
+const SIGN_IN_ROUTE = "/signin";
+const PRICING_ROUTE = "/pricing";
 
 const BUBBLE_SIZE = 92;
 const HEADER_FACE_SIZE = 50;
@@ -268,6 +272,10 @@ function GuideActionCard({
   bodyEn,
   bodyVi,
   onClick,
+  titleColor,
+  iconBackground,
+  iconColor,
+  arrowColor,
 }: {
   icon: React.ReactNode;
   titleEn: string;
@@ -275,6 +283,10 @@ function GuideActionCard({
   bodyEn: string;
   bodyVi: string;
   onClick: () => void;
+  titleColor: string;
+  iconBackground: string;
+  iconColor: string;
+  arrowColor: string;
 }) {
   return (
     <button
@@ -282,8 +294,8 @@ function GuideActionCard({
       onClick={onClick}
       style={{
         width: "100%",
-        borderRadius: 14,
-        border: "1px solid rgba(0,0,0,0.08)",
+        borderRadius: 16,
+        border: "1px solid rgba(0,0,0,0.07)",
         background: "rgba(255,255,255,0.98)",
         padding: 18,
         display: "flex",
@@ -291,6 +303,7 @@ function GuideActionCard({
         gap: 16,
         cursor: "pointer",
         textAlign: "left",
+        boxShadow: "0 4px 14px rgba(0,0,0,0.03)",
       }}
     >
       <div
@@ -301,8 +314,8 @@ function GuideActionCard({
           display: "inline-flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "rgba(0,128,120,0.10)",
-          color: "rgba(0,0,0,0.76)",
+          background: iconBackground,
+          color: iconColor,
           flexShrink: 0,
         }}
       >
@@ -314,7 +327,7 @@ function GuideActionCard({
           style={{
             fontSize: 17,
             fontWeight: 800,
-            color: "rgba(0,0,0,0.88)",
+            color: titleColor,
             lineHeight: 1.2,
           }}
         >
@@ -326,7 +339,7 @@ function GuideActionCard({
             marginTop: 3,
             fontSize: 12,
             fontWeight: 700,
-            color: "rgba(0,0,0,0.48)",
+            color: "rgba(0,0,0,0.42)",
             lineHeight: 1.35,
           }}
         >
@@ -335,10 +348,10 @@ function GuideActionCard({
 
         <div
           style={{
-            marginTop: 12,
+            marginTop: 10,
             fontSize: 14,
             fontWeight: 700,
-            color: "rgba(0,0,0,0.78)",
+            color: "rgba(0,0,0,0.76)",
             lineHeight: 1.55,
           }}
         >
@@ -347,10 +360,10 @@ function GuideActionCard({
 
         <div
           style={{
-            marginTop: 6,
+            marginTop: 5,
             fontSize: 12,
             fontWeight: 600,
-            color: "rgba(0,0,0,0.50)",
+            color: "rgba(0,0,0,0.46)",
             lineHeight: 1.55,
           }}
         >
@@ -363,14 +376,140 @@ function GuideActionCard({
           display: "inline-flex",
           alignItems: "center",
           justifyContent: "center",
-          color: "rgba(0,0,0,0.78)",
+          color: arrowColor,
           flexShrink: 0,
         }}
         aria-hidden="true"
       >
-        <ArrowRight size={28} strokeWidth={2.4} />
+        <ArrowRight size={26} strokeWidth={2.2} />
       </div>
     </button>
+  );
+}
+
+function NewUserInlineAction({
+  label,
+  onClick,
+}: {
+  label: string;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      style={{
+        height: 32,
+        padding: "0 12px",
+        borderRadius: 9999,
+        border: "1px solid rgba(92,122,170,0.14)",
+        background: "rgba(92,122,170,0.06)",
+        color: "rgba(71,85,126,0.94)",
+        display: "inline-flex",
+        alignItems: "center",
+        gap: 6,
+        cursor: "pointer",
+        fontSize: 12,
+        fontWeight: 800,
+        whiteSpace: "nowrap",
+      }}
+    >
+      <span>{label}</span>
+      <ArrowRight size={14} strokeWidth={2.2} />
+    </button>
+  );
+}
+
+function NewUserPagesCard({
+  onSignIn,
+  onPricing,
+}: {
+  onSignIn: () => void;
+  onPricing: () => void;
+}) {
+  return (
+    <div
+      style={{
+        borderRadius: 14,
+        border: "1px solid rgba(0,0,0,0.07)",
+        background: "rgba(255,255,255,0.98)",
+        padding: 14,
+        boxShadow: "0 4px 14px rgba(0,0,0,0.03)",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: 12,
+          flexWrap: "wrap",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 12,
+            minWidth: 0,
+            flex: 1,
+          }}
+        >
+          <div
+            style={{
+              width: 40,
+              height: 40,
+              borderRadius: 9999,
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              background: "rgba(92,122,170,0.10)",
+              color: "rgba(71,85,126,0.92)",
+              flexShrink: 0,
+            }}
+          >
+            <UserRound size={18} />
+          </div>
+
+          <div style={{ minWidth: 0 }}>
+            <div
+              style={{
+                fontSize: 16,
+                fontWeight: 800,
+                color: "rgba(71,85,126,0.96)",
+                lineHeight: 1.2,
+              }}
+            >
+              Pages for new users
+            </div>
+
+            <div
+              style={{
+                marginTop: 3,
+                fontSize: 12,
+                fontWeight: 700,
+                color: "rgba(0,0,0,0.42)",
+                lineHeight: 1.35,
+              }}
+            >
+              Trang cho người mới
+            </div>
+          </div>
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 8,
+            flexWrap: "wrap",
+          }}
+        >
+          <NewUserInlineAction label="Sign in" onClick={onSignIn} />
+          <NewUserInlineAction label="Pricing" onClick={onPricing} />
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -391,9 +530,9 @@ function SectionTitle({
         gap: 8,
         fontSize: 12,
         fontWeight: 800,
-        color: "rgba(0,0,0,0.50)",
+        color: "rgba(0,0,0,0.46)",
         textTransform: "uppercase",
-        letterSpacing: 0.4,
+        letterSpacing: 0.35,
         marginBottom: 10,
         flexWrap: "wrap",
       }}
@@ -730,6 +869,16 @@ export function GuideBox(_props: GuideBoxProps) {
     setIsOpen(false);
   }, [navigate]);
 
+  const goSignIn = useCallback(() => {
+    navigate(SIGN_IN_ROUTE);
+    setIsOpen(false);
+  }, [navigate]);
+
+  const goPricing = useCallback(() => {
+    navigate(PRICING_ROUTE);
+    setIsOpen(false);
+  }, [navigate]);
+
   const saveFeedback = useCallback(() => {
     const text = cleanText(feedbackText);
     if (!text) return;
@@ -760,10 +909,10 @@ export function GuideBox(_props: GuideBoxProps) {
     () => ({
       position: "fixed" as const,
       zIndex: isFullscreen ? 100000 : 99999,
-      borderRadius: 18,
-      border: "1px solid rgba(0,0,0,0.10)",
-      background: "white",
-      boxShadow: "0 18px 48px rgba(0,0,0,0.18)",
+      borderRadius: 20,
+      border: "1px solid rgba(0,0,0,0.08)",
+      background: "rgba(252,252,251,0.98)",
+      boxShadow: "0 18px 48px rgba(0,0,0,0.14)",
       overflow: "hidden",
       display: "flex",
       flexDirection: "column" as const,
@@ -831,7 +980,7 @@ export function GuideBox(_props: GuideBoxProps) {
                 borderRadius: 9999,
                 background: "rgb(224 248 245)",
                 padding: 4,
-                boxShadow: "0 12px 28px rgba(0,0,0,0.18)",
+                boxShadow: "0 12px 28px rgba(0,0,0,0.16)",
                 border: "2px solid white",
                 cursor: "grab",
                 overflow: "hidden",
@@ -921,7 +1070,7 @@ export function GuideBox(_props: GuideBoxProps) {
                   width: 8,
                   height: 72,
                   borderRadius: 9999,
-                  background: "rgba(0,0,0,0.20)",
+                  background: "rgba(0,0,0,0.16)",
                   cursor: "grab",
                   zIndex: 3,
                   touchAction: "none",
@@ -939,7 +1088,7 @@ export function GuideBox(_props: GuideBoxProps) {
                   width: 8,
                   height: 72,
                   borderRadius: 9999,
-                  background: "rgba(0,0,0,0.20)",
+                  background: "rgba(0,0,0,0.16)",
                   cursor: "grab",
                   zIndex: 3,
                   touchAction: "none",
@@ -957,7 +1106,7 @@ export function GuideBox(_props: GuideBoxProps) {
                   width: 72,
                   height: 8,
                   borderRadius: 9999,
-                  background: "rgba(0,0,0,0.20)",
+                  background: "rgba(0,0,0,0.16)",
                   cursor: "grab",
                   zIndex: 3,
                   touchAction: "none",
@@ -969,8 +1118,8 @@ export function GuideBox(_props: GuideBoxProps) {
           <div
             style={{
               padding: "10px 14px 12px",
-              borderBottom: "1px solid rgba(0,0,0,0.08)",
-              background: "rgba(250,250,250,0.96)",
+              borderBottom: "1px solid rgba(0,0,0,0.06)",
+              background: "rgba(250,250,248,0.96)",
               flexShrink: 0,
             }}
           >
@@ -991,7 +1140,7 @@ export function GuideBox(_props: GuideBoxProps) {
                   width: 72,
                   height: 10,
                   borderRadius: 9999,
-                  background: "rgba(0,0,0,0.22)",
+                  background: "rgba(0,0,0,0.18)",
                   cursor: "grab",
                   touchAction: "none",
                   display: "flex",
@@ -1085,7 +1234,7 @@ export function GuideBox(_props: GuideBoxProps) {
                     style={{
                       marginTop: 2,
                       fontSize: 13,
-                      color: "rgba(0,0,0,0.56)",
+                      color: "rgba(0,0,0,0.54)",
                       lineHeight: 1.4,
                     }}
                   >
@@ -1113,9 +1262,9 @@ export function GuideBox(_props: GuideBoxProps) {
                     height: 34,
                     padding: "0 12px",
                     borderRadius: 9999,
-                    border: "1px solid rgba(0,128,120,0.18)",
-                    background: "rgba(0,128,120,0.10)",
-                    color: "rgba(0,0,0,0.76)",
+                    border: "1px solid rgba(0,128,120,0.16)",
+                    background: "rgba(0,128,120,0.08)",
+                    color: "rgba(0,0,0,0.74)",
                     display: "inline-flex",
                     alignItems: "center",
                     gap: 8,
@@ -1137,13 +1286,13 @@ export function GuideBox(_props: GuideBoxProps) {
                     width: 34,
                     height: 34,
                     borderRadius: 9999,
-                    border: "1px solid rgba(0,0,0,0.10)",
+                    border: "1px solid rgba(0,0,0,0.08)",
                     background: "white",
                     display: "inline-flex",
                     alignItems: "center",
                     justifyContent: "center",
                     cursor: "pointer",
-                    color: "rgba(0,0,0,0.72)",
+                    color: "rgba(0,0,0,0.70)",
                   }}
                 >
                   <X size={16} />
@@ -1173,10 +1322,10 @@ export function GuideBox(_props: GuideBoxProps) {
                       padding: "0 12px",
                       borderRadius: 9999,
                       border: active
-                        ? "1px solid rgba(0,128,120,0.22)"
-                        : "1px solid rgba(0,0,0,0.10)",
-                      background: active ? "rgba(0,128,120,0.10)" : "white",
-                      color: "rgba(0,0,0,0.76)",
+                        ? "1px solid rgba(0,128,120,0.18)"
+                        : "1px solid rgba(0,0,0,0.08)",
+                      background: active ? "rgba(0,128,120,0.08)" : "white",
+                      color: "rgba(0,0,0,0.74)",
                       fontWeight: 800,
                       fontSize: 12,
                       cursor: "pointer",
@@ -1194,38 +1343,50 @@ export function GuideBox(_props: GuideBoxProps) {
             style={{
               padding: 14,
               display: "grid",
-              gap: 12,
+              gap: 14,
               minHeight: 0,
               flex: 1,
               overflowY: "auto",
               overflowX: "hidden",
               alignContent: "start",
+              background: "rgba(249,249,247,0.8)",
             }}
           >
             <GuideActionCard
               icon={<BookOpen size={18} />}
               titleEn="Library"
               titleVi="Thư viện"
-              bodyEn="Browse rooms. Read, listen, reflect. Learn more with Teacher Mercy."
-              bodyVi="Vào room để đọc, nghe, suy ngẫm. Học sâu hơn với Teacher Mercy."
+              bodyEn="Browse rooms. Read, listen, reflect."
+              bodyVi="Vào room để đọc, nghe, suy ngẫm."
               onClick={goLibrary}
+              titleColor="rgba(12,92,84,0.96)"
+              iconBackground="rgba(20,120,110,0.10)"
+              iconColor="rgba(12,92,84,0.92)"
+              arrowColor="rgba(20,120,110,0.78)"
             />
 
             <GuideActionCard
               icon={<PenSquare size={18} />}
               titleEn="Teacher Mercy"
               titleVi="Teacher Mercy"
-              bodyEn="Write about your day or your thoughts. Teacher Mercy corrects grammar, pronunciation, and English logic."
-              bodyVi="Viết về ngày của bạn hoặc suy nghĩ của bạn. Teacher Mercy sửa ngữ pháp, phát âm và logic tiếng Anh."
+              bodyEn="Write and get help with grammar, pronunciation, and English logic."
+              bodyVi="Viết và nhận hỗ trợ về ngữ pháp, phát âm và logic tiếng Anh."
               onClick={goTeacherMercy}
+              titleColor="rgba(139,60,97,0.96)"
+              iconBackground="rgba(190,90,130,0.10)"
+              iconColor="rgba(139,60,97,0.92)"
+              arrowColor="rgba(139,60,97,0.76)"
             />
+
+            <NewUserPagesCard onSignIn={goSignIn} onPricing={goPricing} />
 
             <div
               style={{
-                borderRadius: 14,
-                border: "1px solid rgba(0,0,0,0.08)",
+                borderRadius: 16,
+                border: "1px solid rgba(0,0,0,0.07)",
                 background: "rgba(255,255,255,0.98)",
                 padding: 14,
+                boxShadow: "0 4px 14px rgba(0,0,0,0.03)",
               }}
             >
               <SectionTitle
@@ -1255,11 +1416,13 @@ export function GuideBox(_props: GuideBoxProps) {
                     minWidth: 0,
                     padding: "12px 14px",
                     borderRadius: 12,
-                    border: "1px solid rgba(0,0,0,0.12)",
+                    border: "1px solid rgba(0,0,0,0.10)",
                     outline: "none",
                     fontSize: 14,
                     resize: "none",
                     fontFamily: "inherit",
+                    background: "rgba(252,252,251,0.98)",
+                    color: "rgba(0,0,0,0.82)",
                   }}
                 />
 
@@ -1270,9 +1433,13 @@ export function GuideBox(_props: GuideBoxProps) {
                     height: 48,
                     alignSelf: "end",
                     borderRadius: 12,
-                    border: "1px solid rgba(0,128,120,0.18)",
-                    background: "rgba(0,128,120,0.10)",
-                    color: "rgba(0,0,0,0.82)",
+                    border: feedbackSaved
+                      ? "1px solid rgba(180,83,105,0.18)"
+                      : "1px solid rgba(0,128,120,0.16)",
+                    background: feedbackSaved
+                      ? "rgba(180,83,105,0.08)"
+                      : "rgba(0,128,120,0.08)",
+                    color: "rgba(0,0,0,0.80)",
                     display: "inline-flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -1289,12 +1456,20 @@ export function GuideBox(_props: GuideBoxProps) {
                 <div
                   style={{
                     marginTop: 10,
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 8,
+                    padding: "6px 10px",
+                    borderRadius: 9999,
+                    background: "rgba(180,83,105,0.08)",
+                    border: "1px solid rgba(180,83,105,0.14)",
                     fontSize: 12,
                     fontWeight: 700,
-                    color: "rgba(0,128,120,0.78)",
+                    color: "rgba(131,24,67,0.84)",
                   }}
                 >
-                  Saved. / Đã lưu.
+                  <span aria-hidden="true">🌹</span>
+                  <span>Thank you. / Cảm ơn bạn.</span>
                 </div>
               ) : null}
             </div>
@@ -1315,9 +1490,9 @@ export function GuideBox(_props: GuideBoxProps) {
                 alignItems: "center",
                 justifyContent: "center",
                 cursor: "nwse-resize",
-                color: "rgba(0,0,0,0.40)",
-                background: "rgba(255,255,255,0.8)",
-                border: "1px solid rgba(0,0,0,0.06)",
+                color: "rgba(0,0,0,0.36)",
+                background: "rgba(255,255,255,0.82)",
+                border: "1px solid rgba(0,0,0,0.05)",
                 zIndex: 4,
               }}
             >

@@ -88,6 +88,15 @@ function clearCustomBubbleStorage() {
   }
 }
 
+function hasOpenTeacherMercyPanel(): boolean {
+  if (typeof document === "undefined") return false;
+
+  return Boolean(
+    document.querySelector('[aria-label="Close Mercy panel"]') ||
+      document.querySelector('[aria-label="Collapse Mercy panel"]'),
+  );
+}
+
 export default function Home() {
   const nav = useNavigate();
   const { user, isLoading } = useAuth();
@@ -97,6 +106,9 @@ export default function Home() {
   );
   const [zoomPct, setZoomPct] = useState<number>(() => readZoomPct());
   const [sharedReady, setSharedReady] = useState(false);
+  const [isTeacherMercyOpen, setIsTeacherMercyOpen] = useState<boolean>(() =>
+    hasOpenTeacherMercyPanel(),
+  );
 
   const stageRef = useRef<HTMLDivElement | null>(null);
 
@@ -119,6 +131,31 @@ export default function Home() {
     return () => {
       window.removeEventListener("storage", onStorage);
       obs.disconnect();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (typeof document === "undefined") return undefined;
+
+    const syncTeacherMercyOpen = () => {
+      setIsTeacherMercyOpen(hasOpenTeacherMercyPanel());
+    };
+
+    syncTeacherMercyOpen();
+
+    const observer = new MutationObserver(syncTeacherMercyOpen);
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ["aria-label", "class", "style"],
+    });
+
+    window.addEventListener("focus", syncTeacherMercyOpen);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("focus", syncTeacherMercyOpen);
     };
   }, []);
 
@@ -306,12 +343,26 @@ export default function Home() {
     color: "rgba(10,10,10,0.96)",
   };
 
+  const headlineAccent: React.CSSProperties = {
+    display: "inline-block",
+    backgroundImage:
+      "linear-gradient(135deg, #B45309 0%, #D97706 28%, #14B8A6 74%, #0F766E 100%)",
+    WebkitBackgroundClip: "text",
+    backgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+    color: "transparent",
+  };
+
   const subline: React.CSSProperties = {
     marginTop: 12,
     fontSize: isDesktopTop ? z(20) : z(16),
     lineHeight: 1.45,
     fontWeight: 800,
     color: "rgba(0,0,0,0.62)",
+  };
+
+  const sublineAccent: React.CSSProperties = {
+    color: "rgba(13,148,136,0.92)",
   };
 
   const stageShell: React.CSSProperties = {
@@ -423,7 +474,7 @@ export default function Home() {
         </div>
 
         <div style={libraryTitle}>Library</div>
-        <div style={librarySub}>Start from tier Free up</div>
+        <div style={librarySub}>Start from level 0</div>
       </div>
     </button>
   );
@@ -447,8 +498,14 @@ export default function Home() {
             </div>
           ) : null}
 
-          <h1 style={headline}>Small Steps. Real Progress.</h1>
-          <div style={subline}>English for real life.</div>
+          <h1 style={headline}>
+            <span>Small Steps.</span>{" "}
+            <span style={headlineAccent}>Real Progress.</span>
+          </h1>
+
+          <div style={subline}>
+            English for real <span style={sublineAccent}>life</span>.
+          </div>
         </section>
 
         <section
@@ -467,7 +524,7 @@ export default function Home() {
           {sharedReady ? (
             <React.Fragment key={sharedKey}>
               <MercyGuide />
-              <GuideBox />
+              {!isTeacherMercyOpen ? <GuideBox /> : null}
             </React.Fragment>
           ) : null}
         </div>

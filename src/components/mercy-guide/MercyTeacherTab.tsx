@@ -1,4 +1,7 @@
-// Path: src/components/mercy-guide/MercyTeacherTab.tsx
+/**
+ * Path: src/components/mercy-guide/MercyTeacherTab.tsx
+ * File: MercyTeacherTab.tsx
+ */
 
 import React, { useMemo } from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -6,8 +9,6 @@ import { Button } from '@/components/ui/button';
 import {
   ArrowRight,
   Brain,
-  CheckCircle2,
-  Clock3,
   Crown,
   Lightbulb,
   Lock,
@@ -37,6 +38,12 @@ interface Props {
   unlockDescription?: string;
   unlockButtonLabel?: string;
   learningSupportMode?: LearningSupportMode | string;
+  isKidsMode?: boolean;
+  kidsModeAgeBand?: string | null;
+  teacherLabel?: string | null;
+  disableTeacherWriting?: boolean;
+  selectedKidsObjectKey?: string | null;
+  onSelectKidsObject?: (key: string) => void;
 }
 
 type BilingualText = {
@@ -64,6 +71,14 @@ type ProgressNote = {
   body: string;
 };
 
+type KidsObjectCard = {
+  key: string;
+  label: string;
+  sentence: string;
+  imageSrc: string;
+  aliases: string[];
+};
+
 const PROMPTS = [
   'My mood today is...',
   'Something happened today that made me...',
@@ -71,6 +86,169 @@ const PROMPTS = [
   'Today I realized...',
   'I want to say this in English...',
 ];
+
+const KIDS_OBJECT_KEYS = [
+  'airplane',
+  'apple',
+  'bag',
+  'ball',
+  'banana',
+  'bathtub',
+  'bed',
+  'bicycle',
+  'bird',
+  'blanket',
+  'boat',
+  'book',
+  'bottle',
+  'bus',
+  'cat',
+  'chair',
+  'clock',
+  'cloud',
+  'cup',
+  'dog',
+  'doll',
+  'door',
+  'duck',
+  'fish',
+  'flower',
+  'hat',
+  'house',
+  'key',
+  'leaf',
+  'milk',
+  'moon',
+  'orange',
+  'pencil',
+  'phone',
+  'pillow',
+  'plate',
+  'rainbow',
+  'shirt',
+  'shoes',
+  'soap',
+  'sock',
+  'spoon',
+  'star',
+  'sun',
+  'table',
+  'teddy-bear',
+  'toothbrush',
+  'toy-car',
+  'tree',
+  'window',
+  'ant',
+  'baby-bib',
+  'backpack',
+  'balloon',
+  'bee',
+  'bell',
+  'block',
+  'butterfly',
+  'cake',
+  'candle',
+  'carrot',
+  'cookie',
+  'cow',
+  'crayon',
+  'dinosaur',
+  'elephant',
+  'envelope',
+  'frog',
+  'gift-box',
+  'grapes',
+  'hammer',
+  'helicopter',
+  'ice-cream',
+  'jar',
+  'kite',
+  'lamp',
+  'lion',
+  'lollipop',
+  'monkey',
+  'mouse',
+  'mushroom',
+  'pear',
+  'pig',
+  'pizza',
+  'rabbit',
+  'rocket',
+  'sandwich',
+  'sheep',
+  'strawberry',
+  'train',
+  'truck',
+  'turtle',
+  'watermelon',
+  'whistle',
+  'mitten',
+  'scarf',
+  'drum',
+  'bear-face',
+  'juice-box',
+  'juice',
+] as const;
+
+const KIDS_UNCOUNTABLE_KEYS = new Set<string>([
+  'milk',
+  'soap',
+  'juice',
+  'ice-cream',
+]);
+
+const KIDS_EXTRA_ALIASES: Record<string, string[]> = {
+  'teddy-bear': ['teddy bear', 'bear'],
+  'toy-car': ['toy car', 'car'],
+  'baby-bib': ['baby bib', 'bib'],
+  backpack: ['back pack'],
+  'gift-box': ['gift box', 'gift'],
+  'ice-cream': ['ice cream'],
+  'juice-box': ['juice box'],
+  'bear-face': ['bear face', 'bear'],
+};
+
+function toKidsLabel(key: string): string {
+  return key
+    .split('-')
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(' ');
+}
+
+function startsWithVowelSound(text: string): boolean {
+  return /^[aeiou]/i.test(text.trim());
+}
+
+function toKidsSentence(key: string): string {
+  const lowerLabel = toKidsLabel(key).toLowerCase();
+
+  if (KIDS_UNCOUNTABLE_KEYS.has(key)) {
+    return `This is ${lowerLabel}.`;
+  }
+
+  return `This is ${startsWithVowelSound(lowerLabel) ? 'an' : 'a'} ${lowerLabel}.`;
+}
+
+function toKidsAliases(key: string): string[] {
+  const normalized = key.replace(/-/g, ' ');
+  const label = toKidsLabel(key).toLowerCase();
+  const extra = KIDS_EXTRA_ALIASES[key] ?? [];
+
+  return Array.from(new Set([key, normalized, label, ...extra]));
+}
+
+const KIDS_OBJECTS: KidsObjectCard[] = KIDS_OBJECT_KEYS.map((key) => ({
+  key,
+  label: toKidsLabel(key),
+  sentence: toKidsSentence(key),
+  imageSrc: `/images/mercy-kids/${key}.jpg`,
+  aliases: toKidsAliases(key),
+}));
+
+const KIDS_IMAGE_GRID = KIDS_OBJECTS.map((object) => ({
+  slotId: object.key,
+  object,
+}));
 
 function asText(value: unknown): string {
   if (typeof value === 'string') return value;
@@ -232,140 +410,6 @@ function pickFirstMemoryLabel(
   return cleanText(items.find((item) => item.type === type)?.label);
 }
 
-function buildProgressNotes(params: {
-  latestWriting: string;
-  correctedText: string;
-  enhancedText: string;
-  focusText: string;
-  explanationText: string;
-  grammarPoints: string[];
-  writingMode: string;
-  teacherMemorySummary: TeacherMemorySummaryItem[];
-}): ProgressNote[] {
-  const {
-    latestWriting,
-    correctedText,
-    enhancedText,
-    focusText,
-    explanationText,
-    grammarPoints,
-    writingMode,
-    teacherMemorySummary,
-  } = params;
-
-  const notes: ProgressNote[] = [];
-
-  const latestSentence = enhancedText || correctedText || latestWriting;
-  const strengthLabel = pickFirstMemoryLabel(teacherMemorySummary, 'strength');
-  const focusLabel = pickFirstMemoryLabel(teacherMemorySummary, 'focus');
-  const logicLabel = pickFirstMemoryLabel(teacherMemorySummary, 'logic');
-  const pronunciationLabel = pickFirstMemoryLabel(teacherMemorySummary, 'pronunciation');
-
-  if (latestSentence) {
-    notes.push({
-      title: 'Latest sentence',
-      body: latestSentence,
-    });
-  }
-
-  if (enhancedText && latestWriting && enhancedText !== latestWriting) {
-    notes.push({
-      title: 'What improved',
-      body: `Mercy helped turn the original sentence into a more natural English line. ${
-        focusLabel || focusText
-          ? `This round mainly focused on ${focusLabel || focusText}.`
-          : 'This round focused on making the sentence clearer.'
-      }`,
-    });
-  } else if (correctedText && latestWriting && correctedText !== latestWriting) {
-    notes.push({
-      title: 'What Mercy corrected',
-      body: `Mercy cleaned the sentence so the meaning stays the same but the English feels stronger.${
-        focusLabel || focusText ? ` Main focus: ${focusLabel || focusText}.` : ''
-      }`,
-    });
-  }
-
-  if (logicLabel || explanationText) {
-    notes.push({
-      title: 'What Mercy noticed',
-      body:
-        logicLabel ||
-        explanationText ||
-        'Mercy noticed an English pattern in this sentence and turned it into a teachable moment.',
-    });
-  }
-
-  if (pronunciationLabel) {
-    notes.push({
-      title: 'Speaking note',
-      body: pronunciationLabel,
-    });
-  }
-
-  if (strengthLabel) {
-    notes.push({
-      title: 'Growing strength',
-      body: strengthLabel,
-    });
-  }
-
-  if (!notes.length && writingMode) {
-    notes.push({
-      title: 'Current writing mode',
-      body: writingMode,
-    });
-  }
-
-  const nextStepSource =
-    pronunciationLabel
-      ? 'Say the improved sentence again slowly and clearly, then try one new sentence with the same pattern.'
-      : enhancedText || correctedText
-        ? 'Take the improved sentence into Speak, then open Logic so Mercy can remember the lesson.'
-        : latestWriting
-          ? 'Open Grammar first so Mercy can improve the same sentence before speaking practice.'
-          : 'Write one honest sentence so Mercy can begin your learning history.';
-
-  notes.push({
-    title: 'Next step',
-    body: nextStepSource,
-  });
-
-  const compactNotes = notes
-    .map((note) => ({
-      title: cleanText(note.title),
-      body: cleanText(note.body),
-    }))
-    .filter((note) => note.title && note.body);
-
-  const deduped: ProgressNote[] = [];
-  const seen = new Set<string>();
-
-  for (const note of compactNotes) {
-    const key = `${note.title.toLowerCase()}::${note.body.toLowerCase()}`;
-    if (seen.has(key)) continue;
-    seen.add(key);
-    deduped.push(note);
-  }
-
-  const grammarFallback =
-    grammarPoints.length > 0
-      ? {
-          title: 'Grammar focus',
-          body: grammarPoints[0],
-        }
-      : null;
-
-  if (
-    grammarFallback &&
-    !deduped.some((note) => note.title.toLowerCase() === 'grammar focus')
-  ) {
-    deduped.splice(Math.min(2, deduped.length), 0, grammarFallback);
-  }
-
-  return deduped.slice(0, 6);
-}
-
 function buildLockedJourneyPreview(params: {
   latestWriting: string;
   focusText: string;
@@ -466,6 +510,29 @@ function supportLine(
   return gentle;
 }
 
+function normalizeKidsLookup(text: string): string {
+  return cleanText(text).toLowerCase().replace(/-/g, ' ');
+}
+
+function getKidsObjectFromSentence(sentence: string): KidsObjectCard {
+  const normalized = normalizeKidsLookup(sentence);
+
+  if (!normalized) {
+    return KIDS_OBJECTS[0];
+  }
+
+  const found = KIDS_OBJECTS.find((item) =>
+    item.aliases.some((alias) => normalized.includes(alias)),
+  );
+
+  return found ?? KIDS_OBJECTS[0];
+}
+
+function getKidsObjectByKey(key?: string | null): KidsObjectCard | null {
+  if (!key) return null;
+  return KIDS_OBJECTS.find((item) => item.key === key) ?? null;
+}
+
 export function MercyTeacherTab({
   latestTeacherWritingState,
   latestAnalysisResult,
@@ -478,6 +545,10 @@ export function MercyTeacherTab({
   unlockDescription = 'Journey turns one real sentence into a personal teacher loop with memory, progress notes, and next-step coaching.',
   unlockButtonLabel = 'Unlock Journey',
   learningSupportMode = 'gentle',
+  isKidsMode = false,
+  disableTeacherWriting = false,
+  selectedKidsObjectKey,
+  onSelectKidsObject,
 }: Props) {
   const mode = useMemo(
     () => normalizeLearningSupportMode(learningSupportMode),
@@ -530,14 +601,6 @@ export function MercyTeacherTab({
     return 'real English from your real thought';
   }, [grammarPoints, latestTeacherWritingState?.teacherTask, teacherMemorySummary, tenseText]);
 
-  const encouragementText = useMemo(() => {
-    if (latestWriting) {
-      return 'You already gave Mercy something real. Keep the same sentence moving through Grammar, Speak, and Logic so one idea becomes a full learning loop.';
-    }
-
-    return 'Start with one honest thought. It does not need to be perfect. Mercy will help you shape it into natural English, then help you say it and understand it.';
-  }, [latestWriting]);
-
   const coachingLead = useMemo(() => {
     if (teacherMemorySummary.length > 0) {
       const focusItem = teacherMemorySummary.find((item) => item.type === 'focus');
@@ -556,7 +619,7 @@ export function MercyTeacherTab({
     }
 
     if (enhancedText) {
-      return 'Good. Mercy already has a stronger version ready. Now keep this same sentence moving through the full flow.';
+      return 'Mercy already has a stronger version. Keep the same sentence moving.';
     }
 
     return 'You already started. Open Grammar and let Mercy shape the same sentence.';
@@ -573,30 +636,6 @@ export function MercyTeacherTab({
         hasPronunciationMemory,
       }),
     [hasAnalysis, hasLogicMemory, hasPronunciationMemory, latestWriting],
-  );
-
-  const progressNotes = useMemo(
-    () =>
-      buildProgressNotes({
-        latestWriting,
-        correctedText,
-        enhancedText,
-        focusText,
-        explanationText,
-        grammarPoints,
-        writingMode,
-        teacherMemorySummary,
-      }),
-    [
-      correctedText,
-      enhancedText,
-      explanationText,
-      focusText,
-      grammarPoints,
-      latestWriting,
-      teacherMemorySummary,
-      writingMode,
-    ],
   );
 
   const lockedPreviewNotes = useMemo(
@@ -617,37 +656,14 @@ export function MercyTeacherTab({
   const speakStyles = getStepCardStyles('speak');
   const understandStyles = getStepCardStyles('understand');
 
-  const showWritingButton = typeof onOpenWriting === 'function';
+  const showWritingButton =
+    typeof onOpenWriting === 'function' && !disableTeacherWriting && !isKidsMode;
   const showPronunciationButton = typeof onOpenPronunciation === 'function';
 
   const focusSupport = supportLine(
     mode,
     gentleFocusVi(focusText),
     guidedFocusVi(focusText),
-  );
-
-  const encouragementSupport = supportLine(
-    mode,
-    latestWriting
-      ? '👉 Mình đã có câu thật của bạn rồi. Bây giờ hãy giữ đúng câu này đi qua Grammar, Speak, rồi Logic để một ý trở thành cả vòng học.'
-      : '👉 Chỉ cần một câu thật, ngắn cũng được. Mercy sẽ giúp bạn sửa, nói, rồi hiểu từng bước.',
-    latestWriting
-      ? 'Gợi ý ngắn: giữ cùng một câu đi qua đủ 3 bước.'
-      : 'Gợi ý ngắn: bắt đầu bằng một câu thật.',
-  );
-
-  const quickCoachSupport = supportLine(
-    mode,
-    !latestWriting
-      ? '👉 Một câu ngắn, thật lòng là đủ để bắt đầu.'
-      : enhancedText
-        ? '👉 Ổn rồi. Mercy đã có bản mạnh hơn cho câu này. Giờ mình chỉ cần tiếp tục cùng một câu.'
-        : '👉 Bạn đã bắt đầu rồi. Hãy mở Grammar để Mercy sửa chính câu này.',
-    !latestWriting
-      ? 'Gợi ý ngắn: một câu ngắn là đủ.'
-      : enhancedText
-        ? 'Gợi ý ngắn: dùng luôn bản câu mạnh hơn này.'
-        : 'Gợi ý ngắn: mở Grammar để sửa câu hiện tại.',
   );
 
   const nextStepSupport = supportLine(
@@ -660,98 +676,146 @@ export function MercyTeacherTab({
       : 'Gợi ý ngắn: mở Grammar trước.',
   );
 
-  const memoryIntroSupport = supportLine(
-    mode,
-    '👉 Đây là nơi Mercy nhớ lại điểm mạnh, điểm đang luyện, mẫu câu, và bước tiếp theo cho riêng bạn.',
-    'Gợi ý ngắn: đây là vùng nhớ học tập của Mercy.',
-  );
+  const selectedKidsObject = useMemo(() => {
+    return getKidsObjectByKey(selectedKidsObjectKey) ?? getKidsObjectFromSentence(primarySentence);
+  }, [primarySentence, selectedKidsObjectKey]);
 
-  const learningFlowSupport = supportLine(
-    mode,
-    '👉 Một câu nên đi qua cả vòng: viết ra, sửa lại, nói thành tiếng, hiểu logic, rồi để Mercy ghi nhớ.',
-    'Gợi ý ngắn: one sentence, full loop.',
-  );
+  if (isKidsMode) {
+    return (
+      <div className="m-0 flex h-full min-h-0 flex-1 overflow-hidden">
+        <div className="flex h-full w-full items-center justify-center">
+          <div className="mx-auto grid aspect-square max-h-full w-full max-w-[920px] grid-cols-10 grid-rows-[repeat(10,minmax(0,1fr))] gap-1">
+            {KIDS_IMAGE_GRID.map(({ slotId, object }) => {
+              const isSelected = object.key === selectedKidsObject.key;
 
-  const progressNoteSupport = supportLine(
-    mode,
-    '👉 Phần này giúp bạn nhìn thấy tiến bộ thật bằng ngôn ngữ dễ hiểu, không chỉ là kết quả hệ thống khô cứng.',
-    'Gợi ý ngắn: đây là ghi chú tiến bộ của Mercy.',
-  );
-
-  const currentSentenceSupport = supportLine(
-    mode,
-    '👉 Đây là chính câu bạn đang học. Đừng đổi sang câu khác quá sớm.',
-    'Gợi ý ngắn: keep working on the same sentence.',
-  );
-
-  const analysisSupport = supportLine(
-    mode,
-    '👉 Mercy đã bắt đầu giúp rồi. Bây giờ mục tiêu là giữ cùng một câu đi tiếp qua các tab, thay vì học rời rạc.',
-    'Gợi ý ngắn: keep the same sentence moving.',
-  );
-
-  const noMemorySupport = supportLine(
-    mode,
-    '👉 Khi bạn đưa vài câu thật đi qua Grammar, Speak, và Logic, Journey sẽ bắt đầu nhớ ra các mẫu bạn hay gặp.',
-    'Gợi ý ngắn: memory grows after a few real cycles.',
-  );
+              return (
+                <button
+                  key={slotId}
+                  type="button"
+                  onClick={() => onSelectKidsObject?.(object.key)}
+                  className={`flex h-full w-full items-center justify-center overflow-hidden rounded-xl border bg-white transition ${
+                    isSelected
+                      ? 'border-[#FFB39A] shadow-[0_8px_18px_rgba(255,138,101,0.18)]'
+                      : 'border-white/80 hover:border-[#FFD7C8] hover:shadow-[0_6px_14px_rgba(148,163,184,0.08)]'
+                  }`}
+                  aria-label={object.label}
+                  title={object.label}
+                >
+                  <img
+                    src={object.imageSrc}
+                    alt={object.label}
+                    className="h-full w-full object-contain p-1"
+                  />
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="m-0 flex-1 overflow-hidden">
       <ScrollArea className="h-full bg-gradient-to-br from-[#FFF7F0] via-[#F8FAFF] to-[#F0F4FF]">
-        <div className="relative p-5 md:p-6">
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[radial-gradient(circle_at_top,_rgba(255,138,101,0.10),_rgba(192,132,252,0.05)_45%,_transparent_75%)]" />
+        <div className="relative p-4 md:p-5">
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-[radial-gradient(circle_at_top,_rgba(255,138,101,0.08),_rgba(192,132,252,0.04)_45%,_transparent_75%)]" />
 
-          <div className="relative space-y-5">
-            <section className="overflow-hidden rounded-3xl border border-white/80 bg-white/90 p-6 shadow-[0_12px_36px_rgba(255,138,101,0.08)] backdrop-blur-sm md:p-7">
-              <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
-                <div className="max-w-3xl">
+          <div className="relative space-y-4">
+            <section className="overflow-hidden rounded-3xl border border-white/80 bg-white/90 p-5 shadow-[0_12px_32px_rgba(255,138,101,0.08)] backdrop-blur-sm">
+              <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+                <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-3">
                     <div className="rounded-2xl bg-rose-100/90 p-2.5">
                       {isLocked ? (
-                        <Lock className="h-5.5 w-5.5 text-rose-500" />
+                        <Lock className="h-5 w-5 text-rose-500" />
                       ) : (
-                        <MessageCircleHeart className="h-5.5 w-5.5 text-rose-500" />
+                        <MessageCircleHeart className="h-5 w-5 text-rose-500" />
                       )}
                     </div>
 
-                    <div>
-                      <h2 className="text-xl font-semibold tracking-tight text-slate-900 md:text-2xl">
-                        {isLocked
-                          ? 'Journey is Mercy’s premium teacher layer'
-                          : 'Journey is where Mercy stays with your learning'}
+                    <div className="min-w-0">
+                      <h2 className="text-xl font-semibold tracking-tight text-slate-900">
+                        Journey
                       </h2>
-                      <div className="mt-2 h-[2px] w-24 rounded-full bg-gradient-to-r from-[#FFB199] via-[#FDBA74] to-[#C4B5FD] opacity-80" />
+                      <p className="mt-1 text-sm leading-6 text-slate-600">
+                        {isLocked
+                          ? 'Unlock one place for sentence, focus, and next step.'
+                          : 'One place for your current sentence, focus, and next step.'}
+                      </p>
                     </div>
                   </div>
 
-                  <p className="mt-5 text-base leading-7 text-slate-700">
-                    {isLocked
-                      ? 'Unlock Journey to turn one real student sentence into coaching, memory, progress notes, and a clear next step.'
-                      : encouragementText}
-                  </p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    <span className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700">
+                      {primarySentence ? '1 sentence active' : 'No sentence yet'}
+                    </span>
 
-                  {encouragementSupport ? (
-                    <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
-                      {encouragementSupport}
-                    </p>
-                  ) : null}
+                    <span className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700">
+                      Focus: {focusText}
+                    </span>
+
+                    {writingMode ? (
+                      <span className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700">
+                        {writingMode}
+                      </span>
+                    ) : null}
+
+                    {teacherMemorySummary.length > 0 ? (
+                      <span className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700">
+                        {teacherMemorySummary.length} memory note
+                        {teacherMemorySummary.length > 1 ? 's' : ''}
+                      </span>
+                    ) : null}
+                  </div>
+
+                  <div className="mt-4 flex flex-wrap gap-3">
+                    {showWritingButton ? (
+                      <Button
+                        type="button"
+                        onClick={onOpenWriting}
+                        className="h-10 rounded-2xl border-0 bg-gradient-to-r from-[#FF8A65] to-[#FF6F61] px-5 text-sm font-semibold text-white shadow-[0_10px_24px_rgba(255,111,97,0.22)] hover:brightness-[1.03]"
+                      >
+                        <PenSquare className="mr-2.5 h-4.5 w-4.5" />
+                        {latestWriting ? 'Open Grammar' : 'Start in Grammar'}
+                      </Button>
+                    ) : null}
+
+                    {!isLocked && hasAnalysis && showPronunciationButton ? (
+                      <Button
+                        type="button"
+                        variant="outline"
+                        onClick={onOpenPronunciation}
+                        className="h-10 rounded-2xl border-sky-200 bg-white text-sky-700 hover:bg-sky-50"
+                      >
+                        <Mic className="mr-2.5 h-4.5 w-4.5" />
+                        Open Speak
+                      </Button>
+                    ) : null}
+
+                    {isLocked && onUnlock ? (
+                      <Button
+                        type="button"
+                        onClick={onUnlock}
+                        className="h-10 rounded-2xl border-0 bg-gradient-to-r from-violet-600 via-fuchsia-500 to-rose-500 px-5 text-sm font-semibold text-white shadow-[0_10px_26px_rgba(168,85,247,0.24)] hover:brightness-[1.03]"
+                      >
+                        <Crown className="mr-2.5 h-4.5 w-4.5" />
+                        {unlockButtonLabel}
+                      </Button>
+                    ) : null}
+                  </div>
                 </div>
 
-                <div className="rounded-2xl border border-amber-100/80 bg-gradient-to-r from-[#FFF8F1] via-white to-[#F8FAFF] p-4 md:max-w-sm">
+                <div className="rounded-2xl border border-amber-100/80 bg-gradient-to-r from-[#FFF8F1] via-white to-[#F8FAFF] p-4 lg:max-w-sm">
                   <div className="flex items-start gap-3">
-                    {isLocked ? (
-                      <Crown className="mt-0.5 h-4.5 w-4.5 shrink-0 text-amber-500" />
-                    ) : (
-                      <Lightbulb className="mt-0.5 h-4.5 w-4.5 shrink-0 text-amber-500" />
-                    )}
+                    <Lightbulb className="mt-0.5 h-4.5 w-4.5 shrink-0 text-amber-500" />
                     <div>
                       <p className="text-sm font-semibold text-slate-900">
-                        {isLocked ? 'Why learners unlock Journey' : 'Mercy’s gentle focus'}
+                        {isLocked ? 'Preview' : 'Current focus'}
                       </p>
                       <p className="mt-1 text-sm leading-6 text-slate-700">
                         {isLocked
-                          ? 'Journey keeps the sentence, the lesson, and the teacher note together so English feels guided instead of fragmented.'
+                          ? 'Journey keeps the teacher loop together so learning does not reset on every tab.'
                           : coachingLead}
                       </p>
                       {!isLocked && focusSupport ? (
@@ -759,695 +823,222 @@ export function MercyTeacherTab({
                           {focusSupport}
                         </p>
                       ) : null}
-                      <p className="mt-1 text-sm leading-6 text-slate-600">
+                      <p className="mt-2 text-sm leading-6 text-slate-600">
                         {isLocked
-                          ? 'Students can see what Mercy remembers, what improved, and exactly what to do next.'
+                          ? 'See the sentence, the pattern, and the next move in one place.'
                           : quickCoach}
                       </p>
-                      {!isLocked && quickCoachSupport ? (
-                        <p className="mt-1 text-sm leading-6 text-[#D66A4E]">
-                          {quickCoachSupport}
-                        </p>
-                      ) : null}
                     </div>
                   </div>
                 </div>
-              </div>
-
-              <div className="mt-6 grid gap-3 md:grid-cols-3">
-                <div className="rounded-2xl border border-slate-200 bg-white p-4">
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
-                    Current sentence
-                  </p>
-                  <p className="mt-2 text-sm leading-6 text-slate-700">
-                    {primarySentence || 'No sentence yet. Start with one honest thought.'}
-                  </p>
-                  {mode === 'gentle' && primarySentence ? (
-                    <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
-                      👉 Đây là câu trung tâm của vòng học hiện tại.
-                    </p>
-                  ) : null}
-                </div>
-
-                <div className="rounded-2xl border border-slate-200 bg-white p-4">
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
-                    Current focus
-                  </p>
-                  <p className="mt-2 text-sm leading-6 text-slate-700">{focusText}</p>
-                  {focusSupport ? (
-                    <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
-                      {focusSupport}
-                    </p>
-                  ) : null}
-                </div>
-
-                <div className="rounded-2xl border border-slate-200 bg-white p-4">
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
-                    {isLocked ? 'Unlocked value' : 'Next step'}
-                  </p>
-                  <p className="mt-2 text-sm leading-6 text-slate-700">
-                    {isLocked
-                      ? 'Progress notes, memory-based coaching, and a clear next action for this same sentence.'
-                      : hasAnalysis
-                        ? 'Say the improved sentence aloud, then open Logic to understand it.'
-                        : 'Open Grammar and let Mercy shape the same sentence first.'}
-                  </p>
-                  {!isLocked && nextStepSupport ? (
-                    <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
-                      {nextStepSupport}
-                    </p>
-                  ) : null}
-                </div>
-              </div>
-
-              <div className="mt-6 rounded-2xl border border-rose-100/80 bg-gradient-to-br from-white to-rose-50/50 p-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-rose-600">
-                  Good ways to begin
-                </p>
-
-                <div className="mt-4 flex flex-wrap gap-2.5">
-                  {PROMPTS.map((prompt) => (
-                    <span
-                      key={prompt}
-                      className="rounded-full border border-rose-200/80 bg-white px-4 py-2 text-sm font-medium text-rose-700 transition-colors hover:border-rose-300 hover:bg-rose-50"
-                    >
-                      {prompt}
-                    </span>
-                  ))}
-                </div>
-
-                {mode === 'gentle' ? (
-                  <p className="mt-4 text-sm leading-6 text-[#D66A4E]">
-                    👉 Bạn có thể bắt đầu bằng tâm trạng, một chuyện vừa xảy ra, hoặc một ý cứ quay lại trong đầu.
-                  </p>
-                ) : mode === 'guided' ? (
-                  <p className="mt-4 text-sm leading-6 text-[#D66A4E]">
-                    Gợi ý ngắn: bắt đầu bằng một câu thật.
-                  </p>
-                ) : null}
-              </div>
-
-              <div className="mt-6 flex flex-wrap gap-3">
-                {showWritingButton ? (
-                  <Button
-                    type="button"
-                    onClick={onOpenWriting}
-                    className="h-11 rounded-2xl border-0 bg-gradient-to-r from-[#FF8A65] to-[#FF6F61] px-6 text-sm font-semibold text-white shadow-[0_10px_24px_rgba(255,111,97,0.22)] hover:brightness-[1.03]"
-                  >
-                    <PenSquare className="mr-2.5 h-4.5 w-4.5" />
-                    {latestWriting ? 'Continue in Grammar' : 'Open Grammar & Writing'}
-                  </Button>
-                ) : null}
-
-                {!isLocked && hasAnalysis && showPronunciationButton ? (
-                  <Button
-                    type="button"
-                    variant="outline"
-                    onClick={onOpenPronunciation}
-                    className="h-11 rounded-2xl border-sky-200 bg-white text-sky-700 hover:bg-sky-50"
-                  >
-                    <Mic className="mr-2.5 h-4.5 w-4.5" />
-                    Continue to Speak
-                  </Button>
-                ) : null}
-
-                {isLocked && onUnlock ? (
-                  <Button
-                    type="button"
-                    onClick={onUnlock}
-                    className="h-11 rounded-2xl border-0 bg-gradient-to-r from-violet-600 via-fuchsia-500 to-rose-500 px-6 text-sm font-semibold text-white shadow-[0_10px_26px_rgba(168,85,247,0.24)] hover:brightness-[1.03]"
-                  >
-                    <Crown className="mr-2.5 h-4.5 w-4.5" />
-                    {unlockButtonLabel}
-                  </Button>
-                ) : null}
               </div>
             </section>
 
             {isLocked ? (
-              <>
-                <section className="rounded-3xl border border-violet-100/80 bg-gradient-to-br from-white via-violet-50/50 to-rose-50/40 p-5 shadow-[0_10px_28px_rgba(168,85,247,0.08)] md:p-6">
-                  <div className="flex items-start gap-3">
-                    <div className="rounded-2xl bg-violet-100 p-2.5">
-                      <Lock className="h-5 w-5 text-violet-600" />
-                    </div>
+              <section className="rounded-3xl border border-white/80 bg-white/92 p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
+                <div className="flex items-center gap-2.5">
+                  <Crown className="h-5 w-5 text-violet-500" />
+                  <h3 className="text-lg font-semibold text-slate-900">{unlockTitle}</h3>
+                </div>
 
-                    <div className="flex-1">
-                      <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
-                        <div className="max-w-2xl">
-                          <h3 className="text-lg font-semibold text-slate-900">{unlockTitle}</h3>
-                          <p className="mt-2 text-sm leading-6 text-slate-600">
-                            {unlockDescription}
-                          </p>
-                        </div>
+                <p className="mt-2 text-sm leading-6 text-slate-600">{unlockDescription}</p>
 
-                        {onUnlock ? (
-                          <Button
-                            type="button"
-                            onClick={onUnlock}
-                            className="h-11 rounded-2xl border-0 bg-gradient-to-r from-violet-600 via-fuchsia-500 to-rose-500 px-6 text-sm font-semibold text-white shadow-[0_10px_26px_rgba(168,85,247,0.24)] hover:brightness-[1.03]"
-                          >
-                            <Crown className="mr-2.5 h-4.5 w-4.5" />
-                            {unlockButtonLabel}
-                          </Button>
-                        ) : null}
-                      </div>
-
-                      <div className="mt-5 grid gap-3 md:grid-cols-3">
-                        <div className="rounded-2xl border border-white/90 bg-white/85 p-4">
-                          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
-                            Teacher coaching
-                          </p>
-                          <p className="mt-2 text-sm leading-6 text-slate-700">
-                            Mercy explains what changed, what matters, and what to practice next.
-                          </p>
-                        </div>
-
-                        <div className="rounded-2xl border border-white/90 bg-white/85 p-4">
-                          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
-                            Memory loop
-                          </p>
-                          <p className="mt-2 text-sm leading-6 text-slate-700">
-                            Journey keeps your sentence history, focus areas, and language patterns in one place.
-                          </p>
-                        </div>
-
-                        <div className="rounded-2xl border border-white/90 bg-white/85 p-4">
-                          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
-                            Clear direction
-                          </p>
-                          <p className="mt-2 text-sm leading-6 text-slate-700">
-                            Instead of separate tools, students get one guided path from sentence to understanding.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-
-                <section className="rounded-3xl border border-white/80 bg-white/90 p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)] md:p-6">
-                  <div className="flex items-center gap-2.5">
-                    <Brain className="h-5 w-5 text-violet-500" />
-                    <h3 className="text-lg font-semibold text-slate-900">
-                      Journey preview
-                    </h3>
-                  </div>
-
-                  <p className="mt-2 text-sm leading-6 text-slate-600">
-                    This is the premium teacher layer students unlock after Grammar, Speak, and Logic.
-                  </p>
-
-                  <div className="mt-5 grid gap-3 md:grid-cols-2">
-                    {lockedPreviewNotes.map((note) => (
-                      <div
-                        key={`${note.title}-${note.body}`}
-                        className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm"
-                      >
-                        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
-                          {note.title}
-                        </p>
-                        <p className="mt-2 text-base leading-7 text-slate-700">{note.body}</p>
-                      </div>
-                    ))}
-                  </div>
-
-                  {onUnlock ? (
-                    <div className="mt-5 rounded-2xl border border-amber-100 bg-gradient-to-r from-amber-50/80 to-white p-4">
-                      <div className="flex items-start gap-2">
-                        <ArrowRight className="mt-0.5 h-4.5 w-4.5 shrink-0 text-amber-600" />
-                        <div className="flex-1">
-                          <p className="text-sm font-semibold text-slate-900">
-                            Unlock the full Mercy teacher system
-                          </p>
-                          <p className="mt-1 text-sm leading-6 text-slate-700">
-                            Give students the full sentence journey: improve, speak, understand, remember.
-                          </p>
-                        </div>
-                        <Button
-                          type="button"
-                          variant="outline"
-                          onClick={onUnlock}
-                          className="rounded-2xl border-violet-200 bg-white text-violet-700 hover:bg-violet-50"
-                        >
-                          {unlockButtonLabel}
-                        </Button>
-                      </div>
-                    </div>
-                  ) : null}
-                </section>
-
-                <section className="rounded-3xl border border-white/80 bg-white/90 p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)] md:p-6">
-                  <div className="flex items-center gap-2.5">
-                    <CheckCircle2 className="h-5 w-5 text-emerald-500" />
-                    <h3 className="text-lg font-semibold text-slate-900">
-                      The Mercy learning loop
-                    </h3>
-                  </div>
-
-                  <p className="mt-2 text-sm leading-6 text-slate-600">
-                    Journey sits at the top of the loop and makes the rest of the product feel like one teacher.
-                  </p>
-
-                  <div className="mt-5 grid gap-3 md:grid-cols-4">
-                    {journeySteps.map((step) => {
-                      const styles =
-                        step.key === 'express'
-                          ? expressStyles
-                          : step.key === 'improve'
-                            ? improveStyles
-                            : step.key === 'speak'
-                              ? speakStyles
-                              : understandStyles;
-
-                      return (
-                        <div
-                          key={step.key}
-                          className={`rounded-2xl border border-slate-200 bg-white p-4 shadow-sm border-l-4 ${styles.border}`}
-                        >
-                          <div className="flex items-center justify-between gap-2">
-                            <p className={`text-xs font-semibold uppercase tracking-[0.14em] ${styles.label}`}>
-                              {step.title}
-                            </p>
-
-                            <span
-                              className={`rounded-full border px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] ${styles.badge}`}
-                            >
-                              {step.done ? 'seen' : 'preview'}
-                            </span>
-                          </div>
-
-                          <p className="mt-2.5 text-base leading-7 text-slate-700">{step.caption}</p>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </section>
-              </>
-            ) : (
-              <>
-                <section className="rounded-3xl border border-white/80 bg-gradient-to-r from-amber-50/65 via-white to-violet-50/55 p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)] md:p-6">
-                  <div className="flex items-center gap-2.5">
-                    <Sparkles className="h-5 w-5 text-amber-500" />
-                    <h3 className="text-lg font-semibold text-slate-900">
-                      What Mercy remembers about your English
-                    </h3>
-                  </div>
-
-                  <p className="mt-2 text-sm leading-6 text-slate-600">
-                    Journey is Mercy’s memory space for this learner: strengths, focus, logic patterns, and what to practice next.
-                  </p>
-                  {memoryIntroSupport ? (
-                    <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
-                      {memoryIntroSupport}
-                    </p>
-                  ) : null}
-
-                  {teacherMemorySummary.length === 0 ? (
-                    <div className="mt-4 rounded-2xl border border-white/90 bg-white/85 p-4">
-                      <p className="text-base leading-7 text-slate-600">
-                        Mercy will start remembering your patterns after you move one real sentence through Grammar, Speak, and Logic a few times.
+                <div className="mt-4 grid gap-3 md:grid-cols-3">
+                  {lockedPreviewNotes.slice(0, 3).map((note) => (
+                    <div
+                      key={`${note.title}-${note.body}`}
+                      className="rounded-2xl border border-slate-200 bg-white p-4"
+                    >
+                      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+                        {note.title}
                       </p>
-                      {noMemorySupport ? (
-                        <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
-                          {noMemorySupport}
-                        </p>
-                      ) : null}
+                      <p className="mt-2 text-sm leading-6 text-slate-700">{note.body}</p>
                     </div>
-                  ) : (
-                    <div className="mt-4 grid gap-3 md:grid-cols-2">
-                      {teacherMemorySummary.map((item, index) => (
+                  ))}
+                </div>
+
+                <div className="mt-4 grid gap-2 md:grid-cols-4">
+                  {journeySteps.map((step) => {
+                    const styles =
+                      step.key === 'express'
+                        ? expressStyles
+                        : step.key === 'improve'
+                          ? improveStyles
+                          : step.key === 'speak'
+                            ? speakStyles
+                            : understandStyles;
+
+                    return (
+                      <div
+                        key={step.key}
+                        className={`rounded-2xl border border-slate-200 bg-white p-3 border-l-4 ${styles.border}`}
+                      >
+                        <div className="flex items-center justify-between gap-2">
+                          <p className={`text-[11px] font-semibold uppercase tracking-[0.14em] ${styles.label}`}>
+                            {step.title}
+                          </p>
+
+                          <span
+                            className={`rounded-full border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em] ${styles.badge}`}
+                          >
+                            {step.done ? 'seen' : 'preview'}
+                          </span>
+                        </div>
+
+                        <p className="mt-2 text-sm leading-6 text-slate-600">{step.caption}</p>
+                      </div>
+                    );
+                  })}
+                </div>
+              </section>
+            ) : (
+              <section className="rounded-3xl border border-white/80 bg-white/92 p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
+                <div className="flex items-center gap-2.5">
+                  <Brain className="h-5 w-5 text-violet-500" />
+                  <h3 className="text-lg font-semibold text-slate-900">Current loop</h3>
+                </div>
+
+                <div className="mt-4 grid gap-2 md:grid-cols-4">
+                  {journeySteps.map((step) => {
+                    const styles =
+                      step.key === 'express'
+                        ? expressStyles
+                        : step.key === 'improve'
+                          ? improveStyles
+                          : step.key === 'speak'
+                            ? speakStyles
+                            : understandStyles;
+
+                    return (
+                      <div
+                        key={step.key}
+                        className={`rounded-2xl border border-slate-200 bg-white p-3 border-l-4 ${styles.border}`}
+                      >
+                        <div className="flex items-center justify-between gap-2">
+                          <p className={`text-[11px] font-semibold uppercase tracking-[0.14em] ${styles.label}`}>
+                            {step.title}
+                          </p>
+
+                          <span
+                            className={`rounded-full border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em] ${styles.badge}`}
+                          >
+                            {step.done ? 'done' : 'next'}
+                          </span>
+                        </div>
+
+                        <p className="mt-2 text-sm leading-6 text-slate-600">{step.caption}</p>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                <div className="mt-4 grid gap-3 lg:grid-cols-3">
+                  <div className="rounded-2xl border border-slate-200 bg-white p-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+                      Current sentence
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-slate-700">
+                      {primarySentence || 'No sentence yet. Start with one honest thought.'}
+                    </p>
+                  </div>
+
+                  <div className="rounded-2xl border border-slate-200 bg-white p-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+                      Focus
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-slate-700">{focusText}</p>
+                    {focusSupport ? (
+                      <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
+                        {focusSupport}
+                      </p>
+                    ) : null}
+                  </div>
+
+                  <div className="rounded-2xl border border-slate-200 bg-white p-4">
+                    <div className="flex items-center gap-2">
+                      <ArrowRight className="h-4.5 w-4.5 text-emerald-600" />
+                      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+                        Next
+                      </p>
+                    </div>
+
+                    <p className="mt-2 text-sm leading-6 text-slate-700">
+                      {hasAnalysis
+                        ? 'Say the improved sentence, then open Logic.'
+                        : 'Open Grammar and shape the same sentence first.'}
+                    </p>
+
+                    {nextStepSupport ? (
+                      <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
+                        {nextStepSupport}
+                      </p>
+                    ) : null}
+                  </div>
+                </div>
+
+                {teacherMemorySummary.length > 0 ? (
+                  <div className="mt-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+                      What Mercy remembers
+                    </p>
+
+                    <div className="mt-3 grid gap-3 md:grid-cols-2">
+                      {teacherMemorySummary.slice(0, 4).map((item, index) => (
                         <div
                           key={`${item.type}-${index}-${item.label}`}
-                          className="flex items-start gap-3 rounded-2xl border border-white/90 bg-white/85 p-4 shadow-sm"
+                          className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-white p-4"
                         >
                           {getMemoryIcon(item.type)}
-                          <div>
-                            <p className="text-base leading-7 text-slate-700">{item.label}</p>
-                            {mode === 'gentle' && item.type === 'focus' ? (
-                              <p className="mt-1 text-sm leading-6 text-[#D66A4E]">
-                                {gentleFocusVi(item.label)}
-                              </p>
-                            ) : null}
-                            {mode === 'guided' && item.type === 'focus' ? (
-                              <p className="mt-1 text-sm leading-6 text-[#D66A4E]">
-                                {guidedFocusVi(item.label)}
-                              </p>
-                            ) : null}
-                          </div>
+                          <p className="text-sm leading-6 text-slate-700">{item.label}</p>
                         </div>
                       ))}
                     </div>
-                  )}
-                </section>
-
-                <section className="rounded-3xl border border-white/80 bg-white/90 p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)] md:p-6">
-                  <div className="flex items-center gap-2.5">
-                    <CheckCircle2 className="h-5 w-5 text-emerald-500" />
-                    <h3 className="text-lg font-semibold text-slate-900">Your current learning flow</h3>
                   </div>
-
-                  <p className="mt-2 text-sm leading-6 text-slate-600">
-                    One sentence should move through the full Mercy loop: express it, improve it, say it, understand it, then remember it.
-                  </p>
-                  {learningFlowSupport ? (
-                    <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
-                      {learningFlowSupport}
-                    </p>
-                  ) : null}
-
-                  <div className="mt-5 grid gap-3 md:grid-cols-4">
-                    {journeySteps.map((step) => {
-                      const styles =
-                        step.key === 'express'
-                          ? expressStyles
-                          : step.key === 'improve'
-                            ? improveStyles
-                            : step.key === 'speak'
-                              ? speakStyles
-                              : understandStyles;
-
-                      return (
-                        <div
-                          key={step.key}
-                          className={`rounded-2xl border border-slate-200 bg-white p-4 shadow-sm border-l-4 ${styles.border}`}
-                        >
-                          <div className="flex items-center justify-between gap-2">
-                            <p className={`text-xs font-semibold uppercase tracking-[0.14em] ${styles.label}`}>
-                              {step.title}
-                            </p>
-
-                            <span
-                              className={`rounded-full border px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] ${styles.badge}`}
-                            >
-                              {step.done ? 'done' : 'next'}
-                            </span>
-                          </div>
-
-                          <p className="mt-2.5 text-base leading-7 text-slate-700">{step.caption}</p>
-
-                          {mode === 'gentle' && step.key === 'express' ? (
-                            <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
-                              👉 Bắt đầu bằng một câu thật.
-                            </p>
-                          ) : null}
-                          {mode === 'gentle' && step.key === 'improve' ? (
-                            <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
-                              👉 Mercy sẽ sửa câu để tự nhiên hơn.
-                            </p>
-                          ) : null}
-                          {mode === 'gentle' && step.key === 'speak' ? (
-                            <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
-                              👉 Đọc lại câu đã cải thiện để miệng quen với dạng đúng.
-                            </p>
-                          ) : null}
-                          {mode === 'gentle' && step.key === 'understand' ? (
-                            <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
-                              👉 Logic giúp bạn hiểu vì sao câu tiếng Anh lại đi theo hướng đó.
-                            </p>
-                          ) : null}
-                        </div>
-                      );
-                    })}
-                  </div>
-                </section>
-
-                <section className="rounded-3xl border border-white/80 bg-gradient-to-br from-white to-slate-50/70 p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)] md:p-6">
-                  <div className="flex items-center gap-2.5">
-                    <Brain className="h-5 w-5 text-violet-500" />
-                    <h3 className="text-lg font-semibold text-slate-900">
-                      Teacher Mercy progress note
-                    </h3>
-                  </div>
-
-                  <p className="mt-2 text-sm leading-6 text-slate-600">
-                    After each sentence cycle, Journey should keep a warm teacher note so the learner can see real progress, not just raw system output.
-                  </p>
-                  {progressNoteSupport ? (
-                    <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
-                      {progressNoteSupport}
-                    </p>
-                  ) : null}
-
-                  <div className="mt-5 grid gap-3 md:grid-cols-2">
-                    {progressNotes.map((note) => (
-                      <div
-                        key={`${note.title}-${note.body}`}
-                        className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm"
-                      >
-                        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
-                          {note.title}
-                        </p>
-                        <p className="mt-2 text-base leading-7 text-slate-700">{note.body}</p>
-
-                        {mode === 'gentle' && note.title.toLowerCase() === 'what improved' ? (
-                          <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
-                            👉 Mercy đang cho bạn thấy câu đã được làm tự nhiên hơn ở đâu.
-                          </p>
-                        ) : null}
-                        {mode === 'gentle' && note.title.toLowerCase() === 'grammar focus' ? (
-                          <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
-                            👉 Đây là tên điểm ngữ pháp đang nổi bật nhất ở vòng này.
-                          </p>
-                        ) : null}
-                        {mode === 'guided' && note.title.toLowerCase() === 'grammar focus' ? (
-                          <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
-                            Gợi ý ngắn: đây là grammar point chính.
-                          </p>
-                        ) : null}
-                      </div>
-                    ))}
-                  </div>
-                </section>
+                ) : null}
 
                 {latestWriting ? (
-                  <section className="rounded-3xl border border-white/80 bg-white/90 p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)] md:p-6">
-                    <div className="flex items-center gap-2.5">
-                      <PenSquare className="h-5 w-5 text-slate-700" />
-                      <h3 className="text-lg font-semibold text-slate-900">Your current sentence</h3>
-                    </div>
-
-                    <div className="mt-5 rounded-2xl border border-slate-200 bg-slate-50/70 p-5">
-                      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
-                        Student writing
-                      </p>
-                      <p className="mt-3 text-base leading-7 text-slate-700">{latestWriting}</p>
-                      {currentSentenceSupport ? (
-                        <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
-                          {currentSentenceSupport}
-                        </p>
-                      ) : null}
-                    </div>
-
-                    {(writingMode || focusText) && (
-                      <div className="mt-4 grid gap-3 md:grid-cols-2">
-                        {writingMode ? (
-                          <div className="rounded-2xl border border-slate-200 bg-white p-4">
-                            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
-                              Writing mode
-                            </p>
-                            <p className="mt-2 text-base text-slate-700">{writingMode}</p>
-                            {mode === 'gentle' ? (
-                              <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
-                                👉 Đây là dạng viết hiện tại của bạn.
-                              </p>
-                            ) : null}
-                          </div>
-                        ) : null}
-
-                        {focusText ? (
-                          <div className="rounded-2xl border border-slate-200 bg-white p-4">
-                            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
-                              Current focus
-                            </p>
-                            <p className="mt-2 text-base text-slate-700">{focusText}</p>
-                            {focusSupport ? (
-                              <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
-                                {focusSupport}
-                              </p>
-                            ) : null}
-                          </div>
-                        ) : null}
-                      </div>
-                    )}
-
-                    <div className="mt-5 rounded-2xl border border-emerald-100 bg-emerald-50/60 p-4">
-                      <div className="flex items-start gap-2">
-                        <ArrowRight className="mt-0.5 h-4.5 w-4.5 shrink-0 text-emerald-600" />
-                        <div>
-                          <p className="text-sm font-semibold text-slate-900">
-                            Mercy’s next step for this same sentence
-                          </p>
-                          <p className="mt-1 text-sm leading-6 text-slate-700">
-                            Keep this exact line moving. First improve it in Grammar, then speak it aloud, then open Logic to understand the English pattern behind it.
-                          </p>
-                          {nextStepSupport ? (
-                            <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
-                              {nextStepSupport}
-                            </p>
-                          ) : null}
-                        </div>
-                      </div>
-                    </div>
-                  </section>
-                ) : (
-                  <section className="rounded-3xl border border-white/80 bg-white/90 p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)] md:p-6">
-                    <div className="flex items-center gap-2.5">
-                      <Clock3 className="h-5 w-5 text-slate-700" />
-                      <h3 className="text-lg font-semibold text-slate-900">Before you start</h3>
-                    </div>
-
-                    <p className="mt-3 text-base leading-7 text-slate-600">
-                      Try one sentence about your mood, a moment from today, or a thought you keep replaying in your head.
-                    </p>
-
-                    {mode === 'gentle' ? (
-                      <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
-                        👉 Đừng cố viết hoàn hảo ngay. Một câu thật là đủ để bắt đầu.
-                      </p>
-                    ) : mode === 'guided' ? (
-                      <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
-                        Gợi ý ngắn: one real sentence is enough.
-                      </p>
-                    ) : null}
-
-                    <div className="mt-5 rounded-2xl border border-violet-100 bg-gradient-to-r from-violet-50/60 to-sky-50/50 p-5">
+                  primarySentence && primarySentence !== latestWriting ? (
+                    <div className="mt-4 rounded-2xl border border-violet-100 bg-gradient-to-br from-violet-50/55 to-white p-4">
                       <p className="text-xs font-semibold uppercase tracking-[0.16em] text-violet-600">
-                        Example starting ideas
+                        Original → current
                       </p>
-                      <p className="mt-3 text-base leading-7 text-slate-700">
-                        {PROMPTS.join(' • ')}
-                      </p>
-                    </div>
-                  </section>
-                )}
 
-                {hasAnalysis ? (
-                  <section className="rounded-3xl border border-white/80 bg-white/92 p-5 shadow-[0_12px_32px_rgba(168,85,247,0.08)] md:p-6">
-                    <div className="flex items-center gap-2.5">
-                      <Sparkles className="h-5 w-5 text-violet-500" />
-                      <h3 className="text-lg font-semibold text-slate-900">
-                        Mercy has already started helping
-                      </h3>
-                    </div>
-
-                    <p className="mt-2 text-sm leading-6 text-slate-600">
-                      Journey should show the student’s real sentence and Mercy’s real help, not a disconnected demo.
-                    </p>
-                    {analysisSupport ? (
-                      <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
-                        {analysisSupport}
-                      </p>
-                    ) : null}
-
-                    <div className="mt-5 grid gap-4 md:grid-cols-2">
-                      {enhancedText ? (
-                        <div className="rounded-2xl border border-violet-100 bg-gradient-to-br from-violet-50/70 to-white p-5">
-                          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-violet-600">
-                            Natural English
-                          </p>
-                          <p className="mt-3 text-base leading-7 text-slate-700">{enhancedText}</p>
-                          {mode === 'gentle' ? (
-                            <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
-                              👉 Đây là bản tiếng Anh mượt và tự nhiên hơn.
-                            </p>
-                          ) : null}
-                        </div>
-                      ) : null}
-
-                      {correctedText ? (
-                        <div className="rounded-2xl border border-slate-200 bg-white p-5">
+                      <div className="mt-3 grid gap-3 md:grid-cols-2">
+                        <div className="rounded-2xl border border-slate-200 bg-white p-4">
                           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
-                            Corrected version
+                            Original
                           </p>
-                          <p className="mt-3 text-base leading-7 text-slate-700">{correctedText}</p>
-                          {mode === 'gentle' ? (
-                            <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
-                              👉 Đây là bản đã đúng hơn về ngữ pháp.
-                            </p>
-                          ) : null}
+                          <p className="mt-2 text-sm leading-6 text-slate-700">{latestWriting}</p>
                         </div>
-                      ) : null}
-                    </div>
 
-                    {explanationText ? (
-                      <div className="mt-4 rounded-2xl border border-sky-100 bg-sky-50/55 p-5">
-                        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
-                          Why Mercy changed it
-                        </p>
-                        <p className="mt-3 text-base leading-7 text-slate-700">{explanationText}</p>
-                        {mode === 'gentle' ? (
-                          <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
-                            👉 Phần này giải thích vì sao Mercy đổi câu theo hướng tiếng Anh tự nhiên hơn.
+                        <div className="rounded-2xl border border-violet-200 bg-white p-4">
+                          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-violet-600">
+                            Current
                           </p>
-                        ) : null}
-                      </div>
-                    ) : null}
-
-                    {(grammarPoints.length > 0 || tenseText) && (
-                      <div className="mt-4 flex flex-wrap gap-2">
-                        {grammarPoints.map((point) => (
-                          <span
-                            key={point}
-                            className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700"
-                          >
-                            {point}
-                          </span>
-                        ))}
-
-                        {tenseText ? (
-                          <span className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700">
-                            {tenseText} tense
-                          </span>
-                        ) : null}
-                      </div>
-                    )}
-
-                    <div className="mt-5 rounded-2xl border border-emerald-100 bg-gradient-to-r from-emerald-50/80 to-white p-4">
-                      <div className="flex items-start gap-2">
-                        <ArrowRight className="mt-0.5 h-4.5 w-4.5 shrink-0 text-emerald-600" />
-                        <div>
-                          <p className="text-sm font-semibold text-slate-900">
-                            Keep the same sentence moving
-                          </p>
-                          <p className="mt-1 text-sm leading-6 text-slate-700">
-                            Improve it in Grammar. Say it in Speak. Understand it in Logic. Then let Mercy remember the pattern for the next sentence.
-                          </p>
-                          {nextStepSupport ? (
-                            <p className="mt-2 text-sm leading-6 text-[#D66A4E]">
-                              {nextStepSupport}
-                            </p>
-                          ) : null}
+                          <p className="mt-2 text-sm leading-6 text-slate-700">{primarySentence}</p>
                         </div>
                       </div>
                     </div>
+                  ) : null
+                ) : (
+                  <div className="mt-4 rounded-2xl border border-rose-100/80 bg-gradient-to-r from-[#FFF8F1] via-white to-[#F8FAFF] p-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-rose-600">
+                      Start ideas
+                    </p>
 
-                    <div className="mt-5 flex flex-wrap gap-3">
-                      {showWritingButton ? (
-                        <Button
-                          type="button"
-                          onClick={onOpenWriting}
-                          className="h-11 rounded-2xl border-0 bg-gradient-to-r from-[#FF8A65] to-[#FF6F61] px-6 text-sm font-semibold text-white shadow-[0_10px_24px_rgba(255,111,97,0.22)] hover:brightness-[1.03]"
+                    <div className="mt-3 flex flex-wrap gap-2.5">
+                      {PROMPTS.slice(0, 4).map((prompt) => (
+                        <span
+                          key={prompt}
+                          className="rounded-full border border-rose-200/80 bg-white px-3 py-1.5 text-sm font-medium text-rose-700"
                         >
-                          <PenSquare className="mr-2.5 h-4.5 w-4.5" />
-                          Continue in Grammar
-                        </Button>
-                      ) : null}
-
-                      {showPronunciationButton ? (
-                        <Button
-                          type="button"
-                          variant="outline"
-                          onClick={onOpenPronunciation}
-                          className="h-11 rounded-2xl border-sky-200 bg-white text-sky-700 hover:bg-sky-50"
-                        >
-                          <Mic className="mr-2.5 h-4.5 w-4.5" />
-                          Continue to Speak
-                        </Button>
-                      ) : null}
+                          {prompt}
+                        </span>
+                      ))}
                     </div>
-                  </section>
-                ) : null}
-              </>
+                  </div>
+                )}
+              </section>
             )}
           </div>
         </div>

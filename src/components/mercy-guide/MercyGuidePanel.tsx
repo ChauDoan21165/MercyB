@@ -41,6 +41,7 @@ import type {
 } from './types';
 
 type MercyTabType = 'teacher' | 'grammar' | 'pronunciation' | 'logic';
+type TeacherMode = 'adult' | 'kids';
 
 type TroubleWordItem = string | { word?: string | null };
 
@@ -106,6 +107,21 @@ type MercyGuidePanelProps = {
   onNavigateSuggestion?: (...args: unknown[]) => void;
   onSubmitTeacherRevision?: (...args: unknown[]) => Promise<unknown>;
   onSaveProfile?: (...args: unknown[]) => void;
+
+  teacherMode?: TeacherMode;
+  isKidsMode?: boolean;
+  kidsModeAgeBand?: string | null;
+  bubbleLabel?: string | null;
+  bubbleSubtitle?: string | null;
+  panelTitle?: string | null;
+  availableTabs?: string[];
+  hideGrammarTab?: boolean;
+  hideLogicTab?: boolean;
+  disableTeacherWriting?: boolean;
+  disableGrammarAnalysis?: boolean;
+  disableEnglishLogic?: boolean;
+  preferPronunciationFirst?: boolean;
+  preferTapAndRepeat?: boolean;
 };
 
 type MercyTabConfig = {
@@ -131,7 +147,21 @@ type AccessFeatures = {
   hasMercyLogic: boolean;
 };
 
+type SavedLessonSnapshot = {
+  id: string;
+  roomId: string;
+  roomTitle: string;
+  savedAt: string;
+  lessonSignature: string;
+  latestTeacherWritingState: GrammarWritingTeacherState | null;
+  latestAnalysisResult: GrammarApiResponse | null;
+  pronunciationPayload: PronunciationLaunchPayload | null;
+  learningSupportMode: LearningSupportMode;
+};
+
 const LEARNING_SUPPORT_STORAGE_KEY = 'mercy.learningSupportMode';
+const TEACHER_MODE_STORAGE_KEY = 'mercy.teacherMode';
+const SAVED_LESSONS_STORAGE_KEY = 'mercy.savedLessons.v1';
 
 const LEARNING_SUPPORT_OPTIONS: LearningSupportOption[] = [
   {
@@ -163,6 +193,21 @@ const DEFAULT_ACCESS_FEATURES: AccessFeatures = {
   hasMercySpeak: false,
   hasMercyLogic: false,
 };
+
+const KIDS_OBJECT_KEYS = [
+  'apple',
+  'banana',
+  'orange',
+  'milk',
+  'cup',
+  'spoon',
+  'plate',
+  'bottle',
+  'ball',
+  'teddy-bear',
+] as const;
+
+const DEFAULT_KIDS_OBJECT_KEY = KIDS_OBJECT_KEYS[0];
 
 function normalizeTab(value: string | undefined): MercyTabType {
   switch (value) {
@@ -211,6 +256,35 @@ function normalizeLearningSupportMode(value: unknown): LearningSupportMode {
   return 'gentle';
 }
 
+function normalizeTeacherMode(value: unknown): TeacherMode {
+  return value === 'kids' ? 'kids' : 'adult';
+}
+
+function normalizeVisibleTabs(
+  availableTabs: string[] | undefined,
+  isKidsMode: boolean,
+): MercyTabType[] {
+  const fallback: MercyTabType[] = isKidsMode
+    ? ['teacher', 'pronunciation']
+    : ['teacher', 'grammar', 'pronunciation', 'logic'];
+
+  if (!Array.isArray(availableTabs) || availableTabs.length === 0) {
+    return fallback;
+  }
+
+  const normalized = availableTabs
+    .map((tab) => normalizeTab(tab))
+    .filter((tab, index, array) => array.indexOf(tab) === index);
+
+  return normalized.length > 0 ? normalized : fallback;
+}
+
+function normalizeKidsObjectKey(value?: string | null): string {
+  return KIDS_OBJECT_KEYS.includes(value as (typeof KIDS_OBJECT_KEYS)[number])
+    ? (value as string)
+    : DEFAULT_KIDS_OBJECT_KEY;
+}
+
 function fallbackAvatar(event: React.SyntheticEvent<HTMLImageElement>): void {
   const img = event.currentTarget;
 
@@ -257,6 +331,112 @@ function writeStoredLearningSupportMode(value: LearningSupportMode): void {
   }
 }
 
+function readStoredTeacherMode(): TeacherMode | null {
+  if (typeof window === 'undefined') return null;
+
+  try {
+    const stored = window.localStorage.getItem(TEACHER_MODE_STORAGE_KEY);
+    if (!stored) return null;
+    return normalizeTeacherMode(stored);
+  } catch {
+    return null;
+  }
+}
+
+function writeStoredTeacherMode(value: TeacherMode): void {
+  if (typeof window === 'undefined') return;
+
+  try {
+    window.localStorage.setItem(TEACHER_MODE_STORAGE_KEY, value);
+  } catch {
+    // ignore storage failures
+  }
+}
+
+function hasMeaningfulAnalysisResult(
+  value: GrammarApiResponse | null | undefined,
+): value is GrammarApiResponse {
+  if (!value) return false;
+
+  const candidate = value as {
+    correctedText?: string | null;
+    enhancedText?: string | null;
+  };
+
+  return Boolean(
+    cleanText(candidate.correctedText) || cleanText(candidate.enhancedText),
+  );
+}
+
+function hasMeaningfulPronunciationPayload(
+  value: PronunciationLaunchPayload | null | undefined,
+): value is PronunciationLaunchPayload {
+  if (!value) return false;
+
+  return Boolean(
+    cleanText(value.sourceText) ||
+      cleanText(value.correctedText) ||
+      cleanText(value.enhancedText),
+  );
+}
+
+function buildLessonSignature({
+  latestSubmittedText,
+  analysisResult,
+  payload,
+  roomId,
+}: {
+  latestSubmittedText?: string | null;
+  analysisResult?: GrammarApiResponse | null;
+  payload?: PronunciationLaunchPayload | null;
+  roomId?: string | null;
+}): string {
+  const candidate = analysisResult as
+    | {
+        correctedText?: string | null;
+        enhancedText?: string | null;
+      }
+    | null
+    | undefined;
+
+  return [
+    cleanText(roomId),
+    cleanText(latestSubmittedText),
+    cleanText(candidate?.correctedText),
+    cleanText(candidate?.enhancedText),
+    cleanText(payload?.sourceText),
+    cleanText(payload?.correctedText),
+    cleanText(payload?.enhancedText),
+  ].join('||');
+}
+
+function readSavedLessons(): SavedLessonSnapshot[] {
+  if (typeof window === 'undefined') return [];
+
+  try {
+    const raw = window.localStorage.getItem(SAVED_LESSONS_STORAGE_KEY);
+    if (!raw) return [];
+
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? (parsed as SavedLessonSnapshot[]) : [];
+  } catch {
+    return [];
+  }
+}
+
+function writeSavedLessons(value: SavedLessonSnapshot[]): void {
+  if (typeof window === 'undefined') return;
+
+  try {
+    window.localStorage.setItem(
+      SAVED_LESSONS_STORAGE_KEY,
+      JSON.stringify(value.slice(0, 20)),
+    );
+  } catch {
+    // ignore storage failures
+  }
+}
+
 function getSupportModeStyles(mode: LearningSupportMode) {
   switch (mode) {
     case 'gentle':
@@ -279,6 +459,22 @@ function getSupportModeStyles(mode: LearningSupportMode) {
         dot: 'bg-[#8B5CF6]',
       };
   }
+}
+
+function getTeacherModeStyles(mode: TeacherMode) {
+  if (mode === 'kids') {
+    return {
+      trigger:
+        'border-[#CDEEE1] bg-gradient-to-r from-[#F2FFF8] to-[#FBFFFD] text-[#0F9F6E] shadow-[0_8px_18px_rgba(16,185,129,0.10)]',
+      dot: 'bg-[#10B981]',
+    };
+  }
+
+  return {
+    trigger:
+      'border-[#FFE1D5] bg-gradient-to-r from-[#FFF6F1] to-[#FFFDFC] text-[#C45A3C] shadow-[0_8px_18px_rgba(255,138,101,0.10)]',
+    dot: 'bg-[#FF8A65]',
+  };
 }
 
 function getTabAccent(tabId: MercyTabType) {
@@ -354,9 +550,11 @@ function LockedAccessCard({
 function LearningSupportModePicker({
   value,
   onChange,
+  compact = false,
 }: {
   value: LearningSupportMode;
   onChange: (value: LearningSupportMode) => void;
+  compact?: boolean;
 }) {
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
@@ -391,23 +589,38 @@ function LearningSupportModePicker({
   const styles = getSupportModeStyles(selected.value);
 
   return (
-    <div ref={rootRef} className="relative z-30 w-full md:w-[320px]">
-      <div className="mb-1 px-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500">
-        Learning support
-      </div>
+    <div
+      ref={rootRef}
+      className={`relative z-30 ${
+        compact ? 'w-full sm:w-[210px] xl:w-[230px]' : 'w-full md:w-[320px]'
+      }`}
+    >
+      {!compact ? (
+        <div className="mb-1 px-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500">
+          Learning support
+        </div>
+      ) : null}
 
       <button
         type="button"
         onClick={() => setOpen((prev) => !prev)}
-        className={`flex min-h-[48px] w-full items-center justify-between gap-3 rounded-2xl border px-3 py-2.5 text-left transition ${styles.trigger}`}
+        className={`flex w-full items-center justify-between gap-3 border text-left transition ${
+          compact
+            ? `min-h-[42px] rounded-2xl px-3 py-2 ${styles.trigger}`
+            : `min-h-[48px] rounded-2xl px-3 py-2.5 ${styles.trigger}`
+        }`}
         aria-haspopup="listbox"
         aria-expanded={open}
       >
         <div className="flex min-w-0 items-center gap-2.5">
           <SelectedIcon size={16} className="shrink-0" />
           <div className="min-w-0">
-            <div className="truncate text-sm font-semibold">{selected.shortLabel}</div>
-            <div className="truncate text-xs opacity-80">{selected.description}</div>
+            <div className="truncate text-sm font-semibold">
+              {compact ? selected.label : selected.shortLabel}
+            </div>
+            {!compact ? (
+              <div className="truncate text-xs opacity-80">{selected.description}</div>
+            ) : null}
           </div>
         </div>
 
@@ -472,6 +685,144 @@ function LearningSupportModePicker({
   );
 }
 
+function TeacherModePicker({
+  value,
+  onChange,
+  compact = false,
+}: {
+  value: TeacherMode;
+  onChange: (value: TeacherMode) => void;
+  compact?: boolean;
+}) {
+  const [open, setOpen] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (!rootRef.current) return;
+      if (!rootRef.current.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    };
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setOpen(false);
+      }
+    };
+
+    window.addEventListener('mousedown', handleClickOutside);
+    window.addEventListener('keydown', handleEscape);
+
+    return () => {
+      window.removeEventListener('mousedown', handleClickOutside);
+      window.removeEventListener('keydown', handleEscape);
+    };
+  }, []);
+
+  const styles = getTeacherModeStyles(value);
+  const subtitle =
+    value === 'kids'
+      ? 'Simple listening and repeating'
+      : 'Full teacher flow';
+
+  return (
+    <div
+      ref={rootRef}
+      className={`relative z-30 ${
+        compact ? 'w-full sm:w-[200px] xl:w-[220px]' : 'w-full md:w-[260px]'
+      }`}
+    >
+      {!compact ? (
+        <div className="mb-1 px-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500">
+          Teacher mode
+        </div>
+      ) : null}
+
+      <button
+        type="button"
+        onClick={() => setOpen((prev) => !prev)}
+        className={`flex w-full items-center justify-between gap-3 border text-left transition ${
+          compact
+            ? `min-h-[42px] rounded-2xl px-3 py-2 ${styles.trigger}`
+            : `min-h-[48px] rounded-2xl px-3 py-2.5 ${styles.trigger}`
+        }`}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+      >
+        <div className="flex min-w-0 items-center gap-2.5">
+          <span className={`h-2.5 w-2.5 rounded-full ${styles.dot}`} />
+          <div className="min-w-0">
+            <div className="truncate text-sm font-semibold">
+              {value === 'kids' ? 'Kids mode' : 'Adult mode'}
+            </div>
+            {!compact ? (
+              <div className="truncate text-xs opacity-80">{subtitle}</div>
+            ) : null}
+          </div>
+        </div>
+
+        <ChevronDown
+          size={16}
+          className={`shrink-0 transition ${open ? 'rotate-180' : ''}`}
+        />
+      </button>
+
+      {open ? (
+        <div
+          className="absolute right-0 z-[80] mt-2 w-full rounded-3xl border border-white/90 bg-white/95 p-2 shadow-[0_18px_42px_rgba(15,23,42,0.14)] backdrop-blur-md"
+          role="listbox"
+          aria-label="Teacher mode"
+        >
+          {(['adult', 'kids'] as TeacherMode[]).map((option) => {
+            const isActive = option === value;
+            const optionStyles = getTeacherModeStyles(option);
+
+            return (
+              <button
+                key={option}
+                type="button"
+                onClick={() => {
+                  onChange(option);
+                  setOpen(false);
+                }}
+                className={`flex w-full items-start gap-3 rounded-2xl px-3 py-3 text-left transition ${
+                  isActive ? 'bg-[#FAF7F2]' : 'hover:bg-[#FAF7F2]'
+                }`}
+                role="option"
+                aria-selected={isActive}
+              >
+                <div className="mt-1 shrink-0">
+                  <span className={`block h-2.5 w-2.5 rounded-full ${optionStyles.dot}`} />
+                </div>
+
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm font-semibold text-slate-900">
+                      {option === 'kids' ? 'Kids mode' : 'Adult mode'}
+                    </span>
+                  </div>
+                  <div className="mt-1 text-xs leading-5 text-slate-600">
+                    {option === 'kids'
+                      ? 'Use Mercy from the homepage for little kids too.'
+                      : 'Journey, Grammar, Speak, and Logic stay fully available.'}
+                  </div>
+                </div>
+
+                {isActive ? (
+                  <div className="pt-0.5">
+                    <Check size={16} className="text-violet-600" />
+                  </div>
+                ) : null}
+              </button>
+            );
+          })}
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
 export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
   isOpen,
   onClose,
@@ -511,15 +862,53 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
   teacherMemorySummary = [],
 
   journeyTitle,
+  teacherMode = 'adult',
+  isKidsMode = false,
+  kidsModeAgeBand,
+  bubbleLabel,
+  bubbleSubtitle,
+  panelTitle,
+  availableTabs,
+  hideGrammarTab = false,
+  hideLogicTab = false,
+  disableTeacherWriting = false,
+  disableGrammarAnalysis = false,
+  disableEnglishLogic = false,
+  preferPronunciationFirst = false,
+  preferTapAndRepeat = false,
 }) => {
+  void bubbleSubtitle;
+
   const access = useUserAccess();
   const accessFeatures = access?.features ?? DEFAULT_ACCESS_FEATURES;
+
+  const derivedTeacherMode: TeacherMode =
+    isKidsMode || teacherMode === 'kids' ? 'kids' : 'adult';
+
+  const [manualTeacherMode, setManualTeacherMode] = useState<TeacherMode>(
+    readStoredTeacherMode() ?? derivedTeacherMode,
+  );
+  const effectiveTeacherMode: TeacherMode = manualTeacherMode;
+  const kidsModeActive = effectiveTeacherMode === 'kids';
+
+  const visibleTabs = useMemo(
+    () => normalizeVisibleTabs(availableTabs, kidsModeActive),
+    [availableTabs, kidsModeActive],
+  );
 
   const [activeTab, setLocalActiveTab] = useState<MercyTabType>(
     normalizeTab(initialTab),
   );
   const [learningSupportMode, setLearningSupportMode] =
     useState<LearningSupportMode>('gentle');
+  const [selectedKidsObjectKey, setSelectedKidsObjectKey] = useState<string>(
+    DEFAULT_KIDS_OBJECT_KEY,
+  );
+  const [lessonSessionKey, setLessonSessionKey] = useState(0);
+  const [ignoredLessonSignature, setIgnoredLessonSignature] = useState('');
+  const [saveFeedback, setSaveFeedback] = useState<'idle' | 'saved'>('idle');
+  const [savedLessonCount, setSavedLessonCount] = useState(0);
+
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const safelyUpdateInteraction = useCallback(() => {
@@ -532,23 +921,30 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
 
   useEffect(() => {
     setLearningSupportMode(readStoredLearningSupportMode());
+    setSavedLessonCount(readSavedLessons().length);
   }, []);
+
+  useEffect(() => {
+    const storedMode = readStoredTeacherMode();
+    if (!storedMode) {
+      setManualTeacherMode(derivedTeacherMode);
+    }
+  }, [derivedTeacherMode]);
+
+  useEffect(() => {
+    if (kidsModeActive) {
+      setLearningSupportMode('gentle');
+      setSelectedKidsObjectKey((current) => normalizeKidsObjectKey(current));
+    }
+  }, [kidsModeActive]);
 
   useEffect(() => {
     writeStoredLearningSupportMode(learningSupportMode);
   }, [learningSupportMode]);
 
-  const learningSupportHint = useMemo(() => {
-    switch (learningSupportMode) {
-      case 'gentle':
-        return 'Bilingual support is on for new learners.';
-      case 'guided':
-        return 'Mostly English, with small bilingual hints.';
-      case 'immersion':
-      default:
-        return 'Full English mode for confident learners.';
-    }
-  }, [learningSupportMode]);
+  useEffect(() => {
+    writeStoredTeacherMode(manualTeacherMode);
+  }, [manualTeacherMode]);
 
   const goToPricing = useCallback(() => {
     if (typeof window === 'undefined') return;
@@ -560,24 +956,24 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
     [memory?.pronunciation?.troubleWords, troubleWords],
   );
 
-  const tabs = useMemo<MercyTabConfig[]>(
-    () => [
+  const tabs = useMemo<MercyTabConfig[]>(() => {
+    const baseTabs: MercyTabConfig[] = [
       {
         id: 'teacher',
-        label: 'Journey',
+        label: kidsModeActive ? 'Images' : 'Journey',
         icon: Brain,
         enabled: true,
-        teaser: !accessFeatures.hasMercyJourney,
+        teaser: !kidsModeActive && !accessFeatures.hasMercyJourney,
       },
       {
         id: 'grammar',
-        label: 'Grammar',
+        label: kidsModeActive ? 'Write' : 'Grammar',
         icon: PenSquare,
-        enabled: accessFeatures.hasMercyGrammar,
+        enabled: accessFeatures.hasMercyGrammar && !hideGrammarTab && !kidsModeActive,
       },
       {
         id: 'pronunciation',
-        label: 'Speak',
+        label: kidsModeActive ? 'Say' : 'Speak',
         icon: Mic,
         enabled: accessFeatures.hasMercySpeak,
       },
@@ -585,39 +981,58 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
         id: 'logic',
         label: 'Logic',
         icon: BookOpenText,
-        enabled: accessFeatures.hasMercyLogic,
+        enabled: accessFeatures.hasMercyLogic && !hideLogicTab && !kidsModeActive,
       },
-    ],
-    [accessFeatures],
-  );
+    ];
+
+    return baseTabs.filter((tab) => visibleTabs.includes(tab.id));
+  }, [
+    accessFeatures,
+    hideGrammarTab,
+    hideLogicTab,
+    kidsModeActive,
+    visibleTabs,
+  ]);
 
   const enabledTabs = useMemo(() => tabs.filter((tab) => tab.enabled), [tabs]);
 
   const isTabAllowed = useCallback(
     (tabId: MercyTabType): boolean => {
+      if (!visibleTabs.includes(tabId)) {
+        return false;
+      }
+
       switch (tabId) {
         case 'teacher':
           return true;
         case 'grammar':
-          return accessFeatures.hasMercyGrammar;
+          return accessFeatures.hasMercyGrammar && !hideGrammarTab && !kidsModeActive;
         case 'pronunciation':
           return accessFeatures.hasMercySpeak;
         case 'logic':
-          return accessFeatures.hasMercyLogic;
+          return accessFeatures.hasMercyLogic && !hideLogicTab && !kidsModeActive;
         default:
           return false;
       }
     },
-    [accessFeatures],
+    [accessFeatures, hideGrammarTab, hideLogicTab, kidsModeActive, visibleTabs],
   );
 
   const getFirstAllowedTab = useCallback((): MercyTabType => {
-    if (isTabAllowed('teacher')) return 'teacher';
-    if (accessFeatures.hasMercyGrammar) return 'grammar';
-    if (accessFeatures.hasMercySpeak) return 'pronunciation';
-    if (accessFeatures.hasMercyLogic) return 'logic';
+    const orderedCandidates: MercyTabType[] = kidsModeActive
+      ? ['teacher', 'pronunciation']
+      : preferPronunciationFirst
+        ? ['pronunciation', 'teacher', 'grammar', 'logic']
+        : ['teacher', 'grammar', 'pronunciation', 'logic'];
+
+    for (const tab of orderedCandidates) {
+      if (isTabAllowed(tab)) {
+        return tab;
+      }
+    }
+
     return 'teacher';
-  }, [accessFeatures, isTabAllowed]);
+  }, [isTabAllowed, kidsModeActive, preferPronunciationFirst]);
 
   useEffect(() => {
     const nextTab = normalizeTab(initialTab);
@@ -638,6 +1053,17 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
   }, [activeTab, getFirstAllowedTab, isTabAllowed, setActiveTab]);
 
   useEffect(() => {
+    if (kidsModeActive) {
+      const current = normalizeTab(initialTab);
+      if (current === 'grammar' || current === 'logic') {
+        const nextTab = getFirstAllowedTab();
+        setLocalActiveTab(nextTab);
+        setActiveTab?.(nextTab);
+      }
+    }
+  }, [getFirstAllowedTab, initialTab, kidsModeActive, setActiveTab]);
+
+  useEffect(() => {
     if (scrollRef.current) {
       try {
         scrollRef.current.scrollTop = 0;
@@ -647,13 +1073,66 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
     }
   }, [activeTab]);
 
-  const resolvedLatestAnalysisResult =
-    latestAnalysisResult ?? latestTeacherWritingState?.latestAnalysisResult ?? null;
+  const incomingLessonSignature = useMemo(
+    () =>
+      buildLessonSignature({
+        latestSubmittedText: latestTeacherWritingState?.latestSubmittedText,
+        analysisResult:
+          latestAnalysisResult ?? latestTeacherWritingState?.latestAnalysisResult ?? null,
+        payload: pendingPronunciationPayload,
+        roomId,
+      }),
+    [
+      latestAnalysisResult,
+      latestTeacherWritingState?.latestAnalysisResult,
+      latestTeacherWritingState?.latestSubmittedText,
+      pendingPronunciationPayload,
+      roomId,
+    ],
+  );
+
+  useEffect(() => {
+    if (!ignoredLessonSignature) return;
+    if (ignoredLessonSignature !== incomingLessonSignature) {
+      setIgnoredLessonSignature('');
+    }
+  }, [ignoredLessonSignature, incomingLessonSignature]);
+
+  useEffect(() => {
+    if (saveFeedback !== 'saved' || typeof window === 'undefined') {
+      return;
+    }
+
+    const timer = window.setTimeout(() => {
+      setSaveFeedback('idle');
+    }, 1800);
+
+    return () => window.clearTimeout(timer);
+  }, [saveFeedback]);
+
+  const resolvedLatestAnalysisResult = useMemo(() => {
+    if (incomingLessonSignature === ignoredLessonSignature) {
+      return null;
+    }
+
+    return latestAnalysisResult ?? latestTeacherWritingState?.latestAnalysisResult ?? null;
+  }, [
+    ignoredLessonSignature,
+    incomingLessonSignature,
+    latestAnalysisResult,
+    latestTeacherWritingState?.latestAnalysisResult,
+  ]);
 
   const resolvedTeacherTask =
-    activeTeacherTask ?? latestTeacherWritingState?.teacherTask ?? null;
+    incomingLessonSignature === ignoredLessonSignature
+      ? null
+      : activeTeacherTask ?? latestTeacherWritingState?.teacherTask ?? null;
 
   const pronunciationPayload = useMemo<PronunciationLaunchPayload | null>(() => {
+    if (incomingLessonSignature === ignoredLessonSignature) {
+      return null;
+    }
+
     if (pendingPronunciationPayload) {
       return pendingPronunciationPayload;
     }
@@ -672,8 +1151,48 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
       enhancedText: enhancedText || undefined,
     };
   }, [
+    ignoredLessonSignature,
+    incomingLessonSignature,
     latestTeacherWritingState?.latestSubmittedText,
     pendingPronunciationPayload,
+    resolvedLatestAnalysisResult,
+  ]);
+
+  const currentLessonSignature = useMemo(() => {
+    if (incomingLessonSignature === ignoredLessonSignature) {
+      return '';
+    }
+
+    return buildLessonSignature({
+      latestSubmittedText: latestTeacherWritingState?.latestSubmittedText,
+      analysisResult: resolvedLatestAnalysisResult,
+      payload: pronunciationPayload,
+      roomId,
+    });
+  }, [
+    ignoredLessonSignature,
+    incomingLessonSignature,
+    latestTeacherWritingState?.latestSubmittedText,
+    pronunciationPayload,
+    resolvedLatestAnalysisResult,
+    roomId,
+  ]);
+
+  const hasCurrentLesson = useMemo(() => {
+    if (incomingLessonSignature === ignoredLessonSignature) {
+      return false;
+    }
+
+    return Boolean(
+      cleanText(latestTeacherWritingState?.latestSubmittedText) ||
+        hasMeaningfulAnalysisResult(resolvedLatestAnalysisResult) ||
+        hasMeaningfulPronunciationPayload(pronunciationPayload),
+    );
+  }, [
+    ignoredLessonSignature,
+    incomingLessonSignature,
+    latestTeacherWritingState?.latestSubmittedText,
+    pronunciationPayload,
     resolvedLatestAnalysisResult,
   ]);
 
@@ -688,6 +1207,24 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
       setActiveTab?.(tabId);
     },
     [isTabAllowed, safelyUpdateInteraction, setActiveTab],
+  );
+
+  const handleTeacherModeChange = useCallback(
+    (nextMode: TeacherMode) => {
+      setManualTeacherMode(nextMode);
+
+      if (nextMode === 'kids') {
+        setLearningSupportMode('gentle');
+        setLocalActiveTab('teacher');
+        setActiveTab?.('teacher');
+        return;
+      }
+
+      const nextTab = getFirstAllowedTab();
+      setLocalActiveTab(nextTab);
+      setActiveTab?.(nextTab);
+    },
+    [getFirstAllowedTab, setActiveTab],
   );
 
   const handleClose = useCallback(() => {
@@ -708,7 +1245,71 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
     onClose?.();
   }, [onClose, onCollapseGuide]);
 
+  const handleClearLesson = useCallback(() => {
+    if (!hasCurrentLesson || !currentLessonSignature) {
+      return;
+    }
+
+    setIgnoredLessonSignature(currentLessonSignature);
+    setLessonSessionKey((value) => value + 1);
+    setSaveFeedback('idle');
+    safelyUpdateInteraction();
+    onAnalysisResult?.(null);
+  }, [
+    currentLessonSignature,
+    hasCurrentLesson,
+    onAnalysisResult,
+    safelyUpdateInteraction,
+  ]);
+
+  const handleSaveLesson = useCallback(() => {
+    if (!hasCurrentLesson || !currentLessonSignature) {
+      return;
+    }
+
+    const snapshot: SavedLessonSnapshot = {
+      id: `${Date.now()}`,
+      roomId: cleanText(roomId),
+      roomTitle: cleanText(roomTitle),
+      savedAt: new Date().toISOString(),
+      lessonSignature: currentLessonSignature,
+      latestTeacherWritingState: latestTeacherWritingState ?? null,
+      latestAnalysisResult: resolvedLatestAnalysisResult ?? null,
+      pronunciationPayload: pronunciationPayload ?? null,
+      learningSupportMode,
+    };
+
+    const existing = readSavedLessons().filter(
+      (item) => item.lessonSignature !== currentLessonSignature,
+    );
+    const updated = [snapshot, ...existing].slice(0, 20);
+
+    writeSavedLessons(updated);
+    setSavedLessonCount(updated.length);
+    setSaveFeedback('saved');
+    safelyUpdateInteraction();
+  }, [
+    currentLessonSignature,
+    hasCurrentLesson,
+    latestTeacherWritingState,
+    learningSupportMode,
+    pronunciationPayload,
+    resolvedLatestAnalysisResult,
+    roomId,
+    roomTitle,
+    safelyUpdateInteraction,
+  ]);
+
   const handleOpenWriting = useCallback(() => {
+    if (disableTeacherWriting || hideGrammarTab || kidsModeActive) {
+      if (isTabAllowed('pronunciation')) {
+        handleTabChange('pronunciation');
+      } else {
+        handleTabChange(getFirstAllowedTab());
+      }
+      return;
+    }
+
     if (!accessFeatures.hasMercyGrammar) {
       goToPricing();
       return;
@@ -716,7 +1317,17 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
 
     handleTabChange('grammar');
     onTeacherOpenWriting?.();
-  }, [accessFeatures.hasMercyGrammar, goToPricing, handleTabChange, onTeacherOpenWriting]);
+  }, [
+    accessFeatures.hasMercyGrammar,
+    disableTeacherWriting,
+    getFirstAllowedTab,
+    goToPricing,
+    handleTabChange,
+    hideGrammarTab,
+    isTabAllowed,
+    kidsModeActive,
+    onTeacherOpenWriting,
+  ]);
 
   const handleOpenPronunciation = useCallback(
     (payload?: PronunciationLaunchPayload) => {
@@ -745,6 +1356,15 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
   );
 
   const handleOpenLogic = useCallback(() => {
+    if (disableEnglishLogic || hideLogicTab || kidsModeActive) {
+      if (isTabAllowed('pronunciation')) {
+        handleTabChange('pronunciation');
+      } else {
+        handleTabChange(getFirstAllowedTab());
+      }
+      return;
+    }
+
     if (!accessFeatures.hasMercyLogic) {
       goToPricing();
       return;
@@ -752,7 +1372,23 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
 
     handleTabChange('logic');
     onOpenEnglishLogic?.();
-  }, [accessFeatures.hasMercyLogic, goToPricing, handleTabChange, onOpenEnglishLogic]);
+  }, [
+    accessFeatures.hasMercyLogic,
+    disableEnglishLogic,
+    getFirstAllowedTab,
+    goToPricing,
+    handleTabChange,
+    hideLogicTab,
+    isTabAllowed,
+    kidsModeActive,
+    onOpenEnglishLogic,
+  ]);
+
+  const headerTitle =
+    cleanText(journeyTitle) || cleanText(panelTitle) || cleanText(bubbleLabel) || 'Teacher Mercy';
+
+  const shouldDisablePanelScroll =
+    kidsModeActive && (activeTab === 'teacher' || activeTab === 'pronunciation');
 
   if (!isOpen) {
     return null;
@@ -764,10 +1400,10 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-[linear-gradient(to_top,rgba(255,255,255,0.72),transparent)]" />
 
       <div
-        className="relative z-30 flex items-center justify-between border-b border-white/80 bg-white/78 px-4 py-3 backdrop-blur-md"
+        className="relative z-30 flex flex-wrap items-center gap-2 border-b border-white/80 bg-white/78 px-3 py-2.5 backdrop-blur-md md:flex-nowrap"
         onPointerDown={onPanelDragStart}
       >
-        <div className="flex min-w-0 items-center gap-3">
+        <div className="flex min-w-0 flex-1 items-center gap-3">
           <div className="relative shrink-0">
             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#FFD7C8] via-[#FFE6DC] to-[#DCC8FF] blur-sm opacity-80" />
             <img
@@ -782,57 +1418,70 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
             <div className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-white bg-emerald-400" />
           </div>
 
-          <div className="min-w-0 pt-1">
+          <div className="min-w-0">
             <p className="truncate text-base font-semibold text-slate-900">
-              {journeyTitle || 'Teacher Mercy'}
-            </p>
-            <p className="truncate text-xs font-medium text-slate-500">
-              Warm guidance across Journey, Grammar, Speak, and Logic
+              {headerTitle}
             </p>
           </div>
         </div>
 
-        <div className="ml-2 flex shrink-0 items-center gap-1">
-          <button
-            type="button"
-            className="rounded-full border border-transparent bg-white/75 p-2 text-slate-500 transition hover:border-slate-200 hover:bg-white hover:text-slate-700"
-            aria-label={isFullscreen ? 'Exit full screen' : 'Full screen'}
-            onClick={onToggleFullscreen}
-          >
-            {isFullscreen ? <Minimize2 size={17} /> : <Maximize2 size={17} />}
-          </button>
+        <div className="flex min-w-0 flex-1 flex-wrap items-center justify-end gap-2 md:flex-nowrap md:justify-end">
+          <TeacherModePicker
+            value={effectiveTeacherMode}
+            onChange={handleTeacherModeChange}
+            compact
+          />
 
-          <button
-            type="button"
-            className="rounded-full border border-transparent bg-white/75 p-2 text-slate-500 transition hover:border-slate-200 hover:bg-white hover:text-slate-700"
-            aria-label="Profile"
-          >
-            <User size={17} />
-          </button>
+          {!kidsModeActive ? (
+            <LearningSupportModePicker
+              value={learningSupportMode}
+              onChange={setLearningSupportMode}
+              compact
+            />
+          ) : null}
 
-          <button
-            type="button"
-            onClick={handleCollapse}
-            className="rounded-full border border-transparent bg-white/75 p-2 text-slate-500 transition hover:border-slate-200 hover:bg-white hover:text-slate-700"
-            aria-label="Collapse Mercy panel"
-          >
-            <ChevronDown size={17} />
-          </button>
+          <div className="ml-0 flex shrink-0 items-center gap-1">
+            <button
+              type="button"
+              className="rounded-full border border-transparent bg-white/75 p-2 text-slate-500 transition hover:border-slate-200 hover:bg-white hover:text-slate-700"
+              aria-label={isFullscreen ? 'Exit full screen' : 'Full screen'}
+              onClick={onToggleFullscreen}
+            >
+              {isFullscreen ? <Minimize2 size={17} /> : <Maximize2 size={17} />}
+            </button>
 
-          <button
-            type="button"
-            onClick={handleClose}
-            className="rounded-full border border-transparent bg-white/75 p-2 text-slate-400 transition hover:border-red-100 hover:bg-red-50 hover:text-red-500"
-            aria-label="Close Mercy panel"
-          >
-            <X size={17} />
-          </button>
+            <button
+              type="button"
+              className="rounded-full border border-transparent bg-white/75 p-2 text-slate-500 transition hover:border-slate-200 hover:bg-white hover:text-slate-700"
+              aria-label="Profile"
+            >
+              <User size={17} />
+            </button>
+
+            <button
+              type="button"
+              onClick={handleCollapse}
+              className="rounded-full border border-transparent bg-white/75 p-2 text-slate-500 transition hover:border-slate-200 hover:bg-white hover:text-slate-700"
+              aria-label="Collapse Mercy panel"
+            >
+              <ChevronDown size={17} />
+            </button>
+
+            <button
+              type="button"
+              onClick={handleClose}
+              className="rounded-full border border-transparent bg-white/75 p-2 text-slate-400 transition hover:border-red-100 hover:bg-red-50 hover:text-red-500"
+              aria-label="Close Mercy panel"
+            >
+              <X size={17} />
+            </button>
+          </div>
         </div>
       </div>
 
-      <div className="relative z-20 border-b border-white/80 bg-white/58 px-3 py-3 backdrop-blur-sm">
-        {!accessFeatures.hasMercyJourney ? (
-          <div className="mb-3 rounded-2xl border border-violet-200 bg-gradient-to-r from-violet-50 via-white to-rose-50 px-4 py-3 shadow-[0_8px_22px_rgba(168,85,247,0.08)]">
+      <div className="relative z-20 border-b border-white/80 bg-white/58 px-3 py-2 backdrop-blur-sm">
+        {!accessFeatures.hasMercyJourney && !kidsModeActive ? (
+          <div className="mb-2 rounded-2xl border border-violet-200 bg-gradient-to-r from-violet-50 via-white to-rose-50 px-4 py-3 shadow-[0_8px_22px_rgba(168,85,247,0.08)]">
             <div className="flex items-center justify-between gap-3">
               <div>
                 <p className="text-sm font-semibold text-slate-900">
@@ -855,21 +1504,15 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
           </div>
         ) : null}
 
-        <div className="mb-4 flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
-          <div className="px-1">
-            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">
-              Mercy teaching mode
-            </p>
-            <p className="mt-1 text-xs leading-5 text-slate-600">{learningSupportHint}</p>
-          </div>
-
-          <LearningSupportModePicker
-            value={learningSupportMode}
-            onChange={setLearningSupportMode}
-          />
-        </div>
-
-        <div className="grid grid-cols-4 gap-2">
+        <div
+          className={`grid gap-1.5 ${
+            tabs.length <= 2
+              ? 'grid-cols-2'
+              : tabs.length === 3
+                ? 'grid-cols-3'
+                : 'grid-cols-4'
+          }`}
+        >
           {tabs.map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id && tab.enabled;
@@ -881,7 +1524,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
                 type="button"
                 onClick={() => handleTabChange(tab.id)}
                 disabled={!tab.enabled}
-                className={`flex min-h-[72px] flex-col items-center justify-center gap-1.5 rounded-2xl border px-2 py-3 text-center transition-all duration-200 ${
+                className={`flex min-h-[48px] flex-col items-center justify-center gap-1 rounded-xl border px-2 py-2 text-center transition-all duration-200 ${
                   isActive
                     ? accent.active
                     : tab.enabled
@@ -894,7 +1537,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
               >
                 <div className="flex items-center gap-1">
                   <Icon
-                    size={18}
+                    size={16}
                     className={
                       isActive
                         ? accent.icon
@@ -903,11 +1546,11 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
                           : 'text-slate-300'
                     }
                   />
-                  {!tab.enabled ? <Lock size={12} className="text-slate-300" /> : null}
-                  {tab.teaser ? <Crown size={12} className="text-amber-500" /> : null}
+                  {!tab.enabled ? <Lock size={11} className="text-slate-300" /> : null}
+                  {tab.teaser ? <Crown size={11} className="text-amber-500" /> : null}
                 </div>
 
-                <span className="text-[11px] font-semibold uppercase tracking-[0.12em] leading-tight">
+                <span className="text-[10px] font-semibold uppercase tracking-[0.12em] leading-tight sm:text-[11px]">
                   {tab.label}
                 </span>
               </button>
@@ -916,8 +1559,13 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
         </div>
       </div>
 
-      <div ref={scrollRef} className="relative z-10 min-h-0 flex-1 overflow-y-auto">
-        <div className="min-h-full p-3 md:p-4">
+      <div
+        ref={scrollRef}
+        className={`relative z-10 min-h-0 flex-1 ${
+          shouldDisablePanelScroll ? 'overflow-hidden' : 'overflow-y-auto'
+        }`}
+      >
+        <div className={`${shouldDisablePanelScroll ? 'h-full' : 'min-h-full'} p-3 md:p-4`}>
           {enabledTabs.length === 0 ? (
             <LockedAccessCard
               title="Mercy premium features are locked"
@@ -926,8 +1574,39 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
             />
           ) : null}
 
-          {activeTab === 'teacher' && (
+          {!kidsModeActive && hasCurrentLesson ? (
+            <div className="mb-3 flex flex-wrap items-center justify-end gap-2">
+              {savedLessonCount > 0 ? (
+                <div className="rounded-full border border-slate-200 bg-white/85 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500 shadow-sm">
+                  Saved {savedLessonCount}
+                </div>
+              ) : null}
+
+              <button
+                type="button"
+                onClick={handleSaveLesson}
+                className={`rounded-2xl border px-3 py-2 text-sm font-semibold transition ${
+                  saveFeedback === 'saved'
+                    ? 'border-emerald-200 bg-emerald-50 text-emerald-700'
+                    : 'border-[#D9E6FF] bg-white text-slate-700 hover:border-[#BFD5FF] hover:bg-[#F8FBFF]'
+                }`}
+              >
+                {saveFeedback === 'saved' ? 'Saved' : 'Save lesson'}
+              </button>
+
+              <button
+                type="button"
+                onClick={handleClearLesson}
+                className="rounded-2xl border border-rose-200 bg-white px-3 py-2 text-sm font-semibold text-rose-700 transition hover:bg-rose-50"
+              >
+                Clear lesson
+              </button>
+            </div>
+          ) : null}
+
+          <div className={activeTab === 'teacher' ? 'block h-full' : 'hidden'}>
             <MercyTeacherTab
+              key={`teacher-${lessonSessionKey}`}
               latestTeacherWritingState={latestTeacherWritingState}
               latestAnalysisResult={resolvedLatestAnalysisResult}
               teacherMemorySummary={teacherMemorySummary}
@@ -935,70 +1614,99 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
                 handleOpenPronunciation(pronunciationPayload ?? undefined)
               }
               onOpenWriting={handleOpenWriting}
-              isLocked={!accessFeatures.hasMercyJourney}
-              onUnlock={goToPricing}
-              unlockTitle="Unlock Mercy Journey"
-              unlockDescription="Journey turns one real sentence into coaching, memory, progress notes, and a clear next step across Grammar, Speak, and Logic."
+              isLocked={!accessFeatures.hasMercyJourney && !kidsModeActive}
+              onUnlock={kidsModeActive ? undefined : goToPricing}
+              unlockTitle={kidsModeActive ? 'Mercy kids mode' : 'Unlock Mercy Journey'}
+              unlockDescription={
+                kidsModeActive
+                  ? 'Mercy keeps kids mode simple, warm, and listening-first.'
+                  : 'Journey turns one real sentence into coaching, memory, progress notes, and a clear next step across Grammar, Speak, and Logic.'
+              }
               unlockButtonLabel="Upgrade to Premium"
               learningSupportMode={learningSupportMode}
+              isKidsMode={kidsModeActive}
+              kidsModeAgeBand={kidsModeAgeBand}
+              teacherLabel={cleanText(panelTitle) || cleanText(bubbleLabel) || 'Teacher Mercy'}
+              disableTeacherWriting={disableTeacherWriting}
+              selectedKidsObjectKey={selectedKidsObjectKey}
+              onSelectKidsObject={setSelectedKidsObjectKey}
             />
-          )}
+          </div>
 
-          {activeTab === 'grammar' && accessFeatures.hasMercyGrammar && (
-            <GrammarWritingTab
-              roomId={roomId}
-              roomTitle={roomTitle}
-              contentEn={contentEn}
-              learningSupportMode={learningSupportMode}
-              teacherTask={resolvedTeacherTask ?? undefined}
-              onAnalysisResult={onAnalysisResult}
-              onTeacherWritingStateChange={onTeacherWritingStateChange}
-              onPracticePronunciation={(payload) => {
-                if (!accessFeatures.hasMercySpeak) {
-                  goToPricing();
-                  return;
+          {accessFeatures.hasMercyGrammar && !hideGrammarTab && !disableGrammarAnalysis && !kidsModeActive ? (
+            <div className={activeTab === 'grammar' ? 'block' : 'hidden'}>
+              <GrammarWritingTab
+                key={`grammar-${lessonSessionKey}`}
+                roomId={roomId}
+                roomTitle={roomTitle}
+                contentEn={contentEn}
+                englishLevel={
+                  (profile as { english_level?: string | null } | null | undefined)?.english_level ??
+                  null
                 }
+                learningSupportMode={learningSupportMode}
+                teacherTask={resolvedTeacherTask ?? undefined}
+                onAnalysisResult={onAnalysisResult}
+                onTeacherWritingStateChange={onTeacherWritingStateChange}
+                onPracticePronunciation={(payload) => {
+                  if (!accessFeatures.hasMercySpeak) {
+                    goToPricing();
+                    return;
+                  }
 
-                onPracticePronunciation?.(payload);
-                handleTabChange('pronunciation');
-              }}
-              onOpenEnglishLogic={handleOpenLogic}
-              onMemoryUpdate={onMemoryUpdate}
-            />
-          )}
+                  onPracticePronunciation?.(payload);
+                  handleTabChange('pronunciation');
+                }}
+                onOpenEnglishLogic={handleOpenLogic}
+                onMemoryUpdate={onMemoryUpdate}
+              />
+            </div>
+          ) : null}
 
-          {activeTab === 'grammar' && !accessFeatures.hasMercyGrammar ? (
+          {activeTab === 'grammar' && (!accessFeatures.hasMercyGrammar || hideGrammarTab || disableGrammarAnalysis || kidsModeActive) ? (
             <LockedAccessCard
-              title="Grammar is part of Premium"
-              description="Unlock Grammar to improve a real sentence naturally, then pass it into Speak and Logic."
-              onUnlock={goToPricing}
+              title={kidsModeActive ? 'Writing is off in kids mode' : 'Grammar is part of Premium'}
+              description={
+                kidsModeActive
+                  ? 'Kids mode stays simple. Use Speak for listen-and-repeat practice.'
+                  : 'Unlock Grammar to improve a real sentence naturally, then pass it into Speak and Logic.'
+              }
+              onUnlock={kidsModeActive ? undefined : goToPricing}
             />
           ) : null}
 
-          {activeTab === 'pronunciation' && accessFeatures.hasMercySpeak && (
-            <MercySpeakTab
-              roomId={roomId}
-              roomTitle={roomTitle}
-              contentEn={contentEn}
-              profile={
-                profile as
-                  | {
-                      preferred_name?: string | null;
-                      english_level?: string | null;
-                    }
-                  | null
-                  | undefined
-              }
-              troubleWords={normalizedTroubleWords}
-              speakPractice={speakPractice}
-              launchPayload={pronunciationPayload}
-              pendingPayload={pronunciationPayload}
-              pendingPronunciationPayload={pronunciationPayload}
-              onMemoryUpdate={onMemoryUpdate}
-              onOpenEnglishLogic={handleOpenLogic}
-              learningSupportMode={learningSupportMode}
-            />
-          )}
+          {accessFeatures.hasMercySpeak ? (
+            <div className={activeTab === 'pronunciation' ? 'block h-full' : 'hidden'}>
+              <MercySpeakTab
+                key={`pronunciation-${lessonSessionKey}`}
+                roomId={roomId}
+                roomTitle={roomTitle}
+                contentEn={contentEn}
+                profile={
+                  profile as
+                    | {
+                        preferred_name?: string | null;
+                        english_level?: string | null;
+                      }
+                    | null
+                    | undefined
+                }
+                troubleWords={normalizedTroubleWords}
+                speakPractice={speakPractice}
+                launchPayload={pronunciationPayload}
+                pendingPayload={pronunciationPayload}
+                pendingPronunciationPayload={pronunciationPayload}
+                onMemoryUpdate={onMemoryUpdate}
+                onOpenEnglishLogic={disableEnglishLogic || hideLogicTab || kidsModeActive ? undefined : handleOpenLogic}
+                learningSupportMode={kidsModeActive ? 'gentle' : learningSupportMode}
+                isKidsMode={kidsModeActive}
+                kidsModeAgeBand={kidsModeAgeBand}
+                preferTapAndRepeat={kidsModeActive || preferTapAndRepeat}
+                teacherLabel={cleanText(panelTitle) || cleanText(bubbleLabel) || 'Teacher Mercy'}
+                selectedKidsObjectKey={selectedKidsObjectKey}
+              />
+            </div>
+          ) : null}
 
           {activeTab === 'pronunciation' && !accessFeatures.hasMercySpeak ? (
             <LockedAccessCard
@@ -1008,27 +1716,37 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
             />
           ) : null}
 
-          {activeTab === 'logic' && accessFeatures.hasMercyLogic && (
-            <EnglishLogicTab
-              roomTitle={roomTitle}
-              contentEn={contentEn}
-              learningSupportMode={learningSupportMode}
-              troubleWords={normalizedTroubleWords}
-              latestTeacherWritingState={latestTeacherWritingState}
-              latestAnalysisResult={resolvedLatestAnalysisResult}
-              pendingPronunciationPayload={pronunciationPayload}
-              onOpenPronunciation={handleOpenPronunciation}
-              onOpenWriting={handleOpenWriting}
-              onMemoryUpdate={onMemoryUpdate}
-              onVaultReplay={() => {}}
-            />
-          )}
+          {accessFeatures.hasMercyLogic && !hideLogicTab && !disableEnglishLogic && !kidsModeActive ? (
+            <div className={activeTab === 'logic' ? 'block' : 'hidden'}>
+              <EnglishLogicTab
+                key={`logic-${lessonSessionKey}`}
+                roomTitle={roomTitle}
+                contentEn={contentEn}
+                learningSupportMode={learningSupportMode}
+                troubleWords={normalizedTroubleWords}
+                latestTeacherWritingState={latestTeacherWritingState}
+                latestAnalysisResult={resolvedLatestAnalysisResult}
+                pendingPronunciationPayload={pronunciationPayload}
+                onOpenPronunciation={handleOpenPronunciation}
+                onOpenWriting={handleOpenWriting}
+                onMemoryUpdate={onMemoryUpdate}
+                onVaultReplay={() => {}}
+                isKidsMode={kidsModeActive}
+                kidsModeAgeBand={kidsModeAgeBand}
+                teacherLabel={cleanText(panelTitle) || cleanText(bubbleLabel) || 'Teacher Mercy'}
+              />
+            </div>
+          ) : null}
 
-          {activeTab === 'logic' && !accessFeatures.hasMercyLogic ? (
+          {activeTab === 'logic' && (!accessFeatures.hasMercyLogic || hideLogicTab || disableEnglishLogic || kidsModeActive) ? (
             <LockedAccessCard
-              title="Logic is part of Premium"
-              description="Unlock Logic to see the English pattern behind the sentence and connect that lesson back into Mercy’s memory."
-              onUnlock={goToPricing}
+              title={kidsModeActive ? 'Logic is off in kids mode' : 'Logic is part of Premium'}
+              description={
+                kidsModeActive
+                  ? 'Kids mode keeps Mercy focused on listening and speaking.'
+                  : 'Unlock Logic to see the English pattern behind the sentence and connect that lesson back into Mercy’s memory.'
+              }
+              onUnlock={kidsModeActive ? undefined : goToPricing}
             />
           ) : null}
         </div>
@@ -1062,7 +1780,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
           </div>
 
           <div className="text-[11px] font-medium text-slate-400">
-            Mercy Learning Flow
+            {kidsModeActive ? 'Mercy Kids Flow' : 'Mercy Learning Flow'}
           </div>
         </div>
       </div>

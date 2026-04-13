@@ -44,6 +44,7 @@ import type {
 } from './mercy-guide/types';
 
 type GuideTab = 'teacher' | 'grammar' | 'pronunciation' | 'logic';
+type TeacherMode = 'adult' | 'kids';
 
 type ResizeDirection =
   | 'top'
@@ -75,7 +76,24 @@ type RoomContextSummary = {
   shortSummary: string | null;
 };
 
+type TeacherUiPreset = {
+  bubbleLabel: string;
+  bubbleSubtitle: string | null;
+  journeyTitle: string;
+  defaultTab: GuideTab;
+  availableTabs: GuideTab[];
+  hideGrammarTab: boolean;
+  hideLogicTab: boolean;
+  disableTeacherWriting: boolean;
+  disableGrammarAnalysis: boolean;
+  disableEnglishLogic: boolean;
+  preferPronunciationFirst: boolean;
+  preferTapAndRepeat: boolean;
+};
+
 const MercyGuidePanelResolved = MercyGuidePanel as React.ComponentType<any>;
+const KIDS_CONTEXT_PATTERN =
+  /\bkids?\b|children|child|toddler|preschool|kindergarten|kids[_-]?l?[123]|kidslevel[123]/i;
 
 function isMobileViewport(): boolean {
   return typeof window !== 'undefined' && window.innerWidth < 768;
@@ -101,6 +119,10 @@ function cleanText(value?: string | null): string {
 
 function stripHtml(value?: string | null): string {
   return value ? cleanText(value.replace(/<[^>]*>/g, ' ')) : '';
+}
+
+function hasReadableRoomContent(value?: string | null): boolean {
+  return Boolean(stripHtml(value));
 }
 
 function truncateWords(value?: string | null, maxWords = 20): string {
@@ -135,6 +157,66 @@ function deriveRoomContextSummary({
     tierLabel: safeTier || null,
     topicLabel: tags && tags.length > 0 ? tags.slice(0, 3).join(', ') : null,
     shortSummary: truncateWords(stripHtml(contentEn), 24) || null,
+  };
+}
+
+function deriveTeacherMode({
+  roomId,
+  roomTitle,
+  tier,
+  pathSlug,
+  tags,
+  contentEn,
+}: MercyGuideProps): TeacherMode {
+  const joined = [
+    cleanText(roomId),
+    cleanText(roomTitle),
+    cleanText(tier),
+    cleanText(pathSlug),
+    ...(tags ?? []).map((tag) => cleanText(tag)),
+    truncateWords(stripHtml(contentEn), 40),
+  ]
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase();
+
+  return KIDS_CONTEXT_PATTERN.test(joined) ? 'kids' : 'adult';
+}
+
+function buildTeacherUiPreset(
+  mode: TeacherMode,
+  roomSummary: RoomContextSummary,
+): TeacherUiPreset {
+  if (mode === 'kids') {
+    return {
+      bubbleLabel: 'Teacher Mercy',
+      bubbleSubtitle: 'Kids',
+      journeyTitle: roomSummary.hasRoomContext ? roomSummary.roomName : 'Teacher Mercy',
+      defaultTab: 'pronunciation',
+      availableTabs: ['pronunciation', 'teacher'],
+      hideGrammarTab: true,
+      hideLogicTab: true,
+      disableTeacherWriting: true,
+      disableGrammarAnalysis: true,
+      disableEnglishLogic: true,
+      preferPronunciationFirst: true,
+      preferTapAndRepeat: true,
+    };
+  }
+
+  return {
+    bubbleLabel: 'Teacher Mercy',
+    bubbleSubtitle: null,
+    journeyTitle: roomSummary.hasRoomContext ? roomSummary.roomName : 'Teacher Mercy',
+    defaultTab: 'teacher',
+    availableTabs: ['teacher', 'grammar', 'pronunciation', 'logic'],
+    hideGrammarTab: false,
+    hideLogicTab: false,
+    disableTeacherWriting: false,
+    disableGrammarAnalysis: false,
+    disableEnglishLogic: false,
+    preferPronunciationFirst: false,
+    preferTapAndRepeat: false,
   };
 }
 
@@ -229,8 +311,23 @@ export function MercyGuide({
 }: MercyGuideProps) {
   const { isEnabled } = useMercyGuide();
 
+  const teacherMode = useMemo(
+    () =>
+      deriveTeacherMode({
+        roomId,
+        roomTitle,
+        tier,
+        pathSlug,
+        tags,
+        contentEn,
+      }),
+    [contentEn, pathSlug, roomId, roomTitle, tags, tier],
+  );
+
   const [isOpen, setIsOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState<GuideTab>('teacher');
+  const [activeTab, setActiveTab] = useState<GuideTab>(
+    teacherMode === 'kids' ? 'pronunciation' : 'teacher',
+  );
   const [showSettings, setShowSettings] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
@@ -292,6 +389,12 @@ export function MercyGuide({
 
   const panelRectBeforeFullscreenRef = useRef<PanelRect | null>(null);
   const pointerCleanupRef = useRef<(() => void) | null>(null);
+  const bubbleRef = useRef<HTMLDivElement | null>(null);
+  const panelRef = useRef<HTMLDivElement | null>(null);
+  const bubbleDragFrameRef = useRef<number | null>(null);
+  const bubbleDragOffsetRef = useRef({ x: 0, y: 0 });
+  const panelDragFrameRef = useRef<number | null>(null);
+  const panelDragOffsetRef = useRef({ x: 0, y: 0 });
 
   const [bubblePos, setBubblePos] = useState<BubblePos>(() => {
     const stored = readStoredBubblePos();
@@ -315,13 +418,105 @@ export function MercyGuide({
     [contentEn, pathSlug, roomId, roomTitle, tags, tier],
   );
 
+  const teacherUi = useMemo(
+    () => buildTeacherUiPreset(teacherMode, roomSummary),
+    [roomSummary, teacherMode],
+  );
+
+  const isMobileRoomReading =
+    isMobileViewport() && hasReadableRoomContent(contentEn);
+  const showBubbleLabel = !isMobileRoomReading;
+
   const guideTabBottomBuffer = getGuideTabBottomBuffer();
-  const journeyTitle = roomSummary.hasRoomContext ? roomSummary.roomName : 'Teacher Mercy';
+  const journeyTitle = teacherUi.journeyTitle;
+
+  useEffect(() => {
+    if (teacherMode !== 'kids') return;
+
+    setActiveTab((current) => {
+      if (current === 'grammar' || current === 'logic' || current === 'teacher') {
+        return teacherUi.defaultTab;
+      }
+      return current;
+    });
+  }, [teacherMode, teacherUi.defaultTab]);
 
   const clearPointerListeners = useCallback(() => {
     if (pointerCleanupRef.current) {
       pointerCleanupRef.current();
       pointerCleanupRef.current = null;
+    }
+  }, []);
+
+  const scheduleBubbleDragPreview = useCallback((dx: number, dy: number) => {
+    if (typeof window === 'undefined') return;
+
+    bubbleDragOffsetRef.current = { x: dx, y: dy };
+
+    if (bubbleDragFrameRef.current !== null) {
+      return;
+    }
+
+    bubbleDragFrameRef.current = window.requestAnimationFrame(() => {
+      bubbleDragFrameRef.current = null;
+
+      if (!bubbleRef.current) {
+        return;
+      }
+
+      const { x, y } = bubbleDragOffsetRef.current;
+      bubbleRef.current.style.willChange = 'transform';
+      bubbleRef.current.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    });
+  }, []);
+
+  const clearBubbleDragPreview = useCallback(() => {
+    if (typeof window !== 'undefined' && bubbleDragFrameRef.current !== null) {
+      window.cancelAnimationFrame(bubbleDragFrameRef.current);
+      bubbleDragFrameRef.current = null;
+    }
+
+    bubbleDragOffsetRef.current = { x: 0, y: 0 };
+
+    if (bubbleRef.current) {
+      bubbleRef.current.style.transform = '';
+      bubbleRef.current.style.willChange = '';
+    }
+  }, []);
+
+  const schedulePanelDragPreview = useCallback((dx: number, dy: number) => {
+    if (typeof window === 'undefined') return;
+
+    panelDragOffsetRef.current = { x: dx, y: dy };
+
+    if (panelDragFrameRef.current !== null) {
+      return;
+    }
+
+    panelDragFrameRef.current = window.requestAnimationFrame(() => {
+      panelDragFrameRef.current = null;
+
+      if (!panelRef.current) {
+        return;
+      }
+
+      const { x, y } = panelDragOffsetRef.current;
+      panelRef.current.style.willChange = 'transform';
+      panelRef.current.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    });
+  }, []);
+
+  const clearPanelDragPreview = useCallback(() => {
+    if (typeof window !== 'undefined' && panelDragFrameRef.current !== null) {
+      window.cancelAnimationFrame(panelDragFrameRef.current);
+      panelDragFrameRef.current = null;
+    }
+
+    panelDragOffsetRef.current = { x: 0, y: 0 };
+
+    if (panelRef.current) {
+      panelRef.current.style.transform = '';
+      panelRef.current.style.willChange = '';
     }
   }, []);
 
@@ -342,32 +537,54 @@ export function MercyGuide({
 
       window.addEventListener('pointermove', handleMove);
       window.addEventListener('pointerup', handleUp);
+      window.addEventListener('pointercancel', handleUp);
 
       pointerCleanupRef.current = () => {
         window.removeEventListener('pointermove', handleMove);
         window.removeEventListener('pointerup', handleUp);
+        window.removeEventListener('pointercancel', handleUp);
       };
     },
     [clearPointerListeners],
   );
 
-  const clampBubblePos = useCallback((next: BubblePos): BubblePos => {
-    if (typeof window === 'undefined') return next;
+  const clampBubblePos = useCallback(
+    (next: BubblePos): BubblePos => {
+      if (typeof window === 'undefined') return next;
 
-    const maxRight = Math.max(
-      BUBBLE_SAFE_MARGIN,
-      window.innerWidth - BUBBLE_SIZE - BUBBLE_SAFE_MARGIN,
-    );
-    const maxBottom = Math.max(
-      getBubbleBottomSafe(),
-      window.innerHeight - BUBBLE_SIZE - BUBBLE_SAFE_MARGIN,
-    );
+      const maxRight = Math.max(
+        BUBBLE_SAFE_MARGIN,
+        window.innerWidth - BUBBLE_SIZE - BUBBLE_SAFE_MARGIN,
+      );
+      const maxBottom = Math.max(
+        getBubbleBottomSafe(),
+        window.innerHeight - BUBBLE_SIZE - BUBBLE_SAFE_MARGIN,
+      );
 
-    return {
-      right: clampNumber(next.right, BUBBLE_SAFE_MARGIN, maxRight),
-      bottom: clampNumber(next.bottom, getBubbleBottomSafe(), maxBottom),
-    };
-  }, []);
+      const bottom = clampNumber(
+        next.bottom,
+        getBubbleBottomSafe(),
+        maxBottom,
+      );
+
+      if (isMobileRoomReading) {
+        const snapThreshold = (BUBBLE_SAFE_MARGIN + maxRight) / 2;
+        const snappedRight =
+          next.right >= snapThreshold ? maxRight : BUBBLE_SAFE_MARGIN;
+
+        return {
+          right: snappedRight,
+          bottom,
+        };
+      }
+
+      return {
+        right: clampNumber(next.right, BUBBLE_SAFE_MARGIN, maxRight),
+        bottom,
+      };
+    },
+    [isMobileRoomReading],
+  );
 
   const clampPanelRect = useCallback((next: PanelRect): PanelRect => {
     if (typeof window === 'undefined') return next;
@@ -439,24 +656,51 @@ export function MercyGuide({
   useEffect(() => {
     return () => {
       clearPointerListeners();
+      clearBubbleDragPreview();
+      clearPanelDragPreview();
     };
-  }, [clearPointerListeners]);
+  }, [clearBubbleDragPreview, clearPanelDragPreview, clearPointerListeners]);
+
+  useEffect(() => {
+    if (!isMobileRoomReading) {
+      return;
+    }
+
+    clearBubbleDragPreview();
+    setBubblePos((current) => {
+      const next = clampBubblePos(current);
+      if (next.right === current.right && next.bottom === current.bottom) {
+        return current;
+      }
+      return next;
+    });
+  }, [clampBubblePos, clearBubbleDragPreview, isMobileRoomReading]);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
     const onResize = () => {
+      clearBubbleDragPreview();
+      clearPanelDragPreview();
       setPanelRect((current) => clampPanelRect(current));
       setBubblePos((current) => clampBubblePos(current));
     };
 
     window.addEventListener('resize', onResize);
     return () => window.removeEventListener('resize', onResize);
-  }, [clampBubblePos, clampPanelRect]);
+  }, [
+    clampBubblePos,
+    clampPanelRect,
+    clearBubbleDragPreview,
+    clearPanelDragPreview,
+  ]);
 
   const handleOpenGuideFromBubble = useCallback(() => {
     setIsOpen(true);
-  }, []);
+    if (teacherUi.preferPronunciationFirst) {
+      setActiveTab('pronunciation');
+    }
+  }, [teacherUi.preferPronunciationFirst]);
 
   const handleCollapseGuide = useCallback(() => {
     setIsOpen(false);
@@ -497,6 +741,17 @@ export function MercyGuide({
     (event: React.PointerEvent<HTMLDivElement>) => {
       event.preventDefault();
 
+      const target = event.currentTarget;
+      target.setPointerCapture?.(event.pointerId);
+
+      const previousTouchAction = target.style.touchAction;
+      const previousUserSelect = target.style.userSelect;
+
+      target.style.touchAction = 'none';
+      target.style.userSelect = 'none';
+
+      clearBubbleDragPreview();
+
       const startX = event.clientX;
       const startY = event.clientY;
       const startPos = bubblePos;
@@ -511,46 +766,119 @@ export function MercyGuide({
             moved = true;
           }
 
+          if (isMobileRoomReading) {
+            scheduleBubbleDragPreview(0, dy);
+            return;
+          }
+
+          scheduleBubbleDragPreview(dx, dy);
+        },
+        () => {
+          const { x, y } = bubbleDragOffsetRef.current;
+
+          target.style.touchAction = previousTouchAction;
+          target.style.userSelect = previousUserSelect;
+
+          clearBubbleDragPreview();
+
+          if (!moved) {
+            handleOpenGuideFromBubble();
+            return;
+          }
+
+          if (isMobileRoomReading) {
+            setBubblePos(
+              clampBubblePos({
+                right: startPos.right,
+                bottom: startPos.bottom - y,
+              }),
+            );
+            return;
+          }
+
           setBubblePos(
             clampBubblePos({
-              right: startPos.right - dx,
-              bottom: startPos.bottom - dy,
+              right: startPos.right - x,
+              bottom: startPos.bottom - y,
             }),
           );
         },
-        () => {
-          if (!moved) {
-            handleOpenGuideFromBubble();
-          }
-        },
       );
     },
-    [bindPointerListeners, bubblePos, clampBubblePos, handleOpenGuideFromBubble],
+    [
+      bindPointerListeners,
+      bubblePos,
+      clampBubblePos,
+      clearBubbleDragPreview,
+      handleOpenGuideFromBubble,
+      isMobileRoomReading,
+      scheduleBubbleDragPreview,
+    ],
   );
 
   const handlePanelDragStart = useCallback(
     (event: React.PointerEvent<HTMLDivElement>) => {
-      if (isFullscreen || (event.target as HTMLElement).closest('button')) {
+      const targetElement = event.target as HTMLElement;
+
+      if (
+        isFullscreen ||
+        targetElement.closest(
+          'button, a, input, textarea, select, audio, video, [role="button"], [data-mercy-no-drag="true"]',
+        )
+      ) {
         return;
       }
 
       event.preventDefault();
 
+      const dragHandle = event.currentTarget;
+      dragHandle.setPointerCapture?.(event.pointerId);
+
+      const previousTouchAction = dragHandle.style.touchAction;
+      const previousUserSelect = dragHandle.style.userSelect;
+
+      dragHandle.style.touchAction = 'none';
+      dragHandle.style.userSelect = 'none';
+
+      clearPanelDragPreview();
+
       const startX = event.clientX;
       const startY = event.clientY;
       const startRect = panelRect;
 
-      bindPointerListeners((moveEvent) => {
-        setPanelRect(
-          clampPanelRect({
-            ...startRect,
-            right: startRect.right - (moveEvent.clientX - startX),
-            bottom: startRect.bottom - (moveEvent.clientY - startY),
-          }),
-        );
-      });
+      bindPointerListeners(
+        (moveEvent) => {
+          const dx = moveEvent.clientX - startX;
+          const dy = moveEvent.clientY - startY;
+
+          schedulePanelDragPreview(dx, dy);
+        },
+        () => {
+          const { x, y } = panelDragOffsetRef.current;
+
+          dragHandle.style.touchAction = previousTouchAction;
+          dragHandle.style.userSelect = previousUserSelect;
+
+          clearPanelDragPreview();
+
+          setPanelRect(
+            clampPanelRect({
+              ...startRect,
+              right: startRect.right - x,
+              bottom: startRect.bottom - y,
+            }),
+          );
+        },
+      );
     },
-    [bindPointerListeners, clampPanelRect, isFullscreen, panelRect],
+    [
+      bindPointerListeners,
+      clampPanelRect,
+      clearPanelDragPreview,
+      isFullscreen,
+      panelRect,
+      schedulePanelDragPreview,
+    ],
   );
 
   const handleResizePointerDown = useCallback(
@@ -622,8 +950,12 @@ export function MercyGuide({
   }, []);
 
   const handleAnalysisResult = useCallback((result: GrammarApiResponse | null) => {
+    if (teacherUi.disableGrammarAnalysis) {
+      return;
+    }
+
     setLatestAnalysisResult(result);
-  }, []);
+  }, [teacherUi.disableGrammarAnalysis]);
 
   const handlePracticePronunciation = useCallback(
     (payload: PronunciationLaunchPayload) => {
@@ -634,8 +966,13 @@ export function MercyGuide({
   );
 
   const handleOpenEnglishLogic = useCallback(() => {
+    if (teacherUi.disableEnglishLogic) {
+      setActiveTab('pronunciation');
+      return;
+    }
+
     setActiveTab('logic');
-  }, []);
+  }, [teacherUi.disableEnglishLogic]);
 
   const handleTeacherOpenPronunciation = useCallback(() => {
     const sourceText =
@@ -665,18 +1002,27 @@ export function MercyGuide({
   }, [latestAnalysisResult, latestTeacherWritingState, memory]);
 
   const handleTeacherOpenWriting = useCallback(() => {
+    if (teacherUi.disableTeacherWriting) {
+      setActiveTab('pronunciation');
+      return;
+    }
+
     setActiveTab('grammar');
-  }, []);
+  }, [teacherUi.disableTeacherWriting]);
 
   const handleTeacherWritingStateChange = useCallback(
     (state: GrammarWritingTeacherState) => {
+      if (teacherUi.disableTeacherWriting) {
+        return;
+      }
+
       setLatestTeacherWritingState(state);
 
       if (state.latestAnalysisResult) {
         setLatestAnalysisResult(state.latestAnalysisResult);
       }
     },
-    [],
+    [teacherUi.disableTeacherWriting],
   );
 
   const handleSubmitTeacherRevision = useCallback(
@@ -686,6 +1032,10 @@ export function MercyGuide({
       taskType?: string;
       focus?: string;
     }) => {
+      if (teacherUi.disableTeacherWriting || teacherUi.disableGrammarAnalysis) {
+        return null;
+      }
+
       const revisedText = cleanText(payload.revisedText);
       if (!revisedText) return null;
 
@@ -728,7 +1078,14 @@ export function MercyGuide({
 
       return result;
     },
-    [activeTeacherTask, contentEn, roomId, roomTitle],
+    [
+      activeTeacherTask,
+      contentEn,
+      roomId,
+      roomTitle,
+      teacherUi.disableGrammarAnalysis,
+      teacherUi.disableTeacherWriting,
+    ],
   );
 
   const handleSaveProfile = useCallback((nextProfile: CompanionProfile) => {
@@ -743,6 +1100,7 @@ export function MercyGuide({
     <>
       {!isOpen && (
         <div
+          ref={bubbleRef}
           role="button"
           tabIndex={0}
           onPointerDown={handleBubblePointerDown}
@@ -752,16 +1110,22 @@ export function MercyGuide({
               handleOpenGuideFromBubble();
             }
           }}
-          className="fixed z-[90] flex flex-col items-center"
+          className="fixed z-[90] flex select-none flex-col items-center"
           style={{
             right: bubblePos.right,
             bottom: bubblePos.bottom,
+            touchAction: 'none',
           }}
-          aria-label="Open Mercy Guide"
+          aria-label={
+            teacherMode === 'kids'
+              ? 'Open Teacher Mercy for kids'
+              : 'Open Mercy Guide'
+          }
         >
           <div
             className={cn(
-              'h-20 w-20 overflow-hidden rounded-full border border-slate-200 bg-white shadow-lg transition hover:shadow-xl',
+              'overflow-hidden rounded-full border border-slate-200 bg-white shadow-lg transition hover:shadow-xl',
+              showBubbleLabel ? 'h-20 w-20' : 'h-16 w-16',
             )}
           >
             <img
@@ -775,14 +1139,22 @@ export function MercyGuide({
             />
           </div>
 
-          <span className="mt-2 text-sm font-semibold text-slate-700">
-            Teacher Mercy
-          </span>
+          {showBubbleLabel && (
+            <span className="mt-2 text-sm font-semibold text-slate-700">
+              {teacherUi.bubbleLabel}
+            </span>
+          )}
+          {showBubbleLabel && teacherUi.bubbleSubtitle && (
+            <span className="mt-0.5 text-xs font-medium text-slate-400">
+              {teacherUi.bubbleSubtitle}
+            </span>
+          )}
         </div>
       )}
 
       {isOpen && (
         <div
+          ref={panelRef}
           className={cn(
             'fixed z-[95] overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-2xl',
             isFullscreen &&
@@ -802,7 +1174,17 @@ export function MercyGuide({
           <MercyGuidePanelResolved
             isOpen={isOpen}
             activeTab={activeTab}
-            setActiveTab={(value: string) => setActiveTab(value as GuideTab)}
+            setActiveTab={(value: string) => {
+              const nextTab = value as GuideTab;
+              if (
+                teacherMode === 'kids' &&
+                (nextTab === 'grammar' || nextTab === 'logic')
+              ) {
+                setActiveTab('pronunciation');
+                return;
+              }
+              setActiveTab(nextTab);
+            }}
             showSettings={showSettings}
             setShowSettings={setShowSettings}
             panelRect={panelRect}
@@ -833,6 +1215,20 @@ export function MercyGuide({
             memory={memory}
             teacherMemorySummary={teacherSummary}
             isFullscreen={isFullscreen}
+            teacherMode={teacherMode}
+            isKidsMode={teacherMode === 'kids'}
+            kidsModeAgeBand="3-4"
+            bubbleLabel={teacherUi.bubbleLabel}
+            bubbleSubtitle={teacherUi.bubbleSubtitle}
+            panelTitle={teacherUi.bubbleLabel}
+            availableTabs={teacherUi.availableTabs}
+            hideGrammarTab={teacherUi.hideGrammarTab}
+            hideLogicTab={teacherUi.hideLogicTab}
+            disableTeacherWriting={teacherUi.disableTeacherWriting}
+            disableGrammarAnalysis={teacherUi.disableGrammarAnalysis}
+            disableEnglishLogic={teacherUi.disableEnglishLogic}
+            preferPronunciationFirst={teacherUi.preferPronunciationFirst}
+            preferTapAndRepeat={teacherUi.preferTapAndRepeat}
             onToggleFullscreen={handleToggleFullscreen}
             onUpdateInteraction={handleUpdateInteraction}
             onOpenGuideFromBubble={handleOpenGuideFromBubble}
