@@ -1276,8 +1276,8 @@ export function MercySpeakTab({
   if (isKidsMode) {
     return (
       <div className="flex h-full min-h-0 flex-col overflow-hidden bg-gradient-to-br from-[#FFF8F3] via-[#FFFDFC] to-[#F7FAFF]">
-        <div className="flex h-full min-h-0 flex-col p-2 md:p-3">
-          <div className="flex h-full min-h-0 flex-col gap-3 rounded-[28px] border border-white/80 bg-white/92 p-3 shadow-[0_10px_28px_rgba(148,163,184,0.06)] md:p-4">
+        <div className="min-h-0 flex-1 overflow-y-auto px-2 py-2 md:px-3 md:py-3">
+          <div className="flex min-h-full flex-col gap-3 rounded-[28px] border border-white/80 bg-white/92 p-3 shadow-[0_10px_28px_rgba(148,163,184,0.06)] md:p-4">
             <div>
               <h3 className="text-3xl font-semibold tracking-tight text-slate-900 md:text-[42px] md:leading-[1.02]">
                 {kidsObject?.label ?? KIDS_OBJECTS[0].label}
@@ -1288,16 +1288,16 @@ export function MercySpeakTab({
               </p>
             </div>
 
-            <div className="grid min-h-0 gap-3 lg:grid-cols-[260px_minmax(0,1fr)] lg:gap-4">
-              <div className="flex items-center justify-center rounded-[24px] border border-[#FFD7C8] bg-gradient-to-br from-[#FFF6F0] via-white to-[#F8FBFF] p-3 shadow-[0_12px_26px_rgba(255,138,101,0.10)] md:p-4">
+            <div className="grid gap-3 lg:grid-cols-[260px_minmax(0,1fr)] lg:gap-4">
+              <div className="mx-auto flex w-full max-w-[220px] items-center justify-center rounded-[24px] border border-[#FFD7C8] bg-gradient-to-br from-[#FFF6F0] via-white to-[#F8FBFF] p-3 shadow-[0_12px_26px_rgba(255,138,101,0.10)] md:max-w-[260px] md:p-4 lg:mx-0 lg:max-w-none">
                 <img
                   src={kidsObject?.imageSrc ?? KIDS_OBJECTS[0].imageSrc}
                   alt={kidsObject?.label ?? KIDS_OBJECTS[0].label}
-                  className="h-44 w-44 scale-[1.08] object-contain md:h-56 md:w-56 xl:h-64 xl:w-64"
+                  className="h-40 w-40 scale-[1.08] object-contain md:h-52 md:w-52 xl:h-60 xl:w-60"
                 />
               </div>
 
-              <div className="flex min-h-0 flex-col gap-3 overflow-y-auto pr-1">
+              <div className="flex flex-col gap-3">
                 <div className="rounded-[18px] border border-[#DCE7F7] bg-gradient-to-r from-[#F8FBFF] to-white p-3 shadow-sm">
                   <div className="overflow-x-auto">
                     <div className="flex min-w-max gap-2 pr-1">
@@ -1315,7 +1315,7 @@ export function MercySpeakTab({
                             key={buddy.key}
                             type="button"
                             onClick={() => setSelectedBuddyKey(buddy.key)}
-                            className={`flex min-w-[68px] flex-col items-center rounded-2xl border px-2 py-2 text-center shadow-sm transition ${
+                            className={`flex min-w-[64px] flex-col items-center rounded-2xl border px-2 py-2 text-center shadow-sm transition ${
                               active
                                 ? 'border-[#BFD5F7] bg-white text-slate-900 ring-2 ring-[#DCE7F7]'
                                 : 'border-transparent bg-white/70 text-slate-600 hover:border-[#DCE7F7] hover:bg-white'
@@ -1330,7 +1330,14 @@ export function MercySpeakTab({
                   </div>
                 </div>
 
-                {(recognitionError || recordingError || !supportsRecognition || !supportsMediaRecording) ? (
+                <div className="rounded-full border border-[#DCE7F7] bg-[#F8FBFF] px-3 py-2 text-center text-xs font-semibold uppercase tracking-[0.16em] text-slate-500 lg:hidden">
+                  Scroll down for speaking tools
+                </div>
+
+                {(recognitionError ||
+                  recordingError ||
+                  !supportsRecognition ||
+                  !supportsMediaRecording) ? (
                   <div className="space-y-1.5">
                     {!supportsRecognition ? (
                       <div className="rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-800">
