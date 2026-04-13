@@ -185,7 +185,7 @@
       "audio": "anxiety_relief_vip2_breathing.mp3 anxiety_relief_vip2_grounding.mp3 anxiety_relief_vip2_thought_challenge.mp3 anxiety_relief_vip2_body_scan.mp3 anxiety_relief_vip2_exposure.mp3 anxiety_relief_vip2_lifestyle.mp3"
     }
   ],
-  "tier": "VIP2",
+  "tier": "vip2",
   "domain": "Mental Health",
   "title": {
     "en": "anxiety_relief_vip2",

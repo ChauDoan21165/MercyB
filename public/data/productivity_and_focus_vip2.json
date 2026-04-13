@@ -200,7 +200,7 @@
       "audio": "paf_vip2_1_en.mp3 paf_vip2_2_en.mp3 paf_vip2_3_en.mp3 paf_vip2_4_en.mp3 paf_vip2_5_en.mp3 paf_vip2_6_en.mp3"
     }
   ],
-  "tier": "VIP2",
+  "tier": "vip2",
   "domain": "General",
   "title": {
     "en": "productivity_and_focus_vip2",

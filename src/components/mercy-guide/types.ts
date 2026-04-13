@@ -16,6 +16,10 @@ export interface MercyGuideProps {
   contentEn?: string;
 }
 
+export type MercyGuideTab = 'teacher' | 'grammar' | 'pronunciation' | 'logic';
+export type MercyTeacherMode = 'adult' | 'kids';
+export type TroubleWordItem = string | { word?: string | null };
+
 export type ExtendedCompanionProfile = CompanionProfile & {
   display_name?: string | null;
   first_name?: string | null;

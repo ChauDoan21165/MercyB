@@ -1,6 +1,6 @@
 {
   "id": "strategic_failure_recovery_vip9",
-  "tier": "free",
+  "tier": "vip9",
   "domain": "Individual",
   "title": {
     "en": "Failure Recovery Mastery",

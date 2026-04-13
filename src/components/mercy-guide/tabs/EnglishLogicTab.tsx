@@ -41,6 +41,9 @@ type Props = EnglishLogicLessonInput & {
   onOpenWriting?: () => void;
   onMemoryUpdate?: (patch: StudentMercyMemoryUpdate) => void;
   onVaultReplay?: (word: string) => void;
+  isKidsMode?: boolean;
+  kidsModeAgeBand?: string | null;
+  teacherLabel?: string | null;
 };
 
 type LogicViewModel = {
@@ -888,6 +891,9 @@ export default function EnglishLogicTab({
   onOpenPronunciation,
   onOpenWriting,
   onMemoryUpdate,
+  isKidsMode = false,
+  kidsModeAgeBand,
+  teacherLabel,
 }: Props) {
   const lastMemorySignatureRef = useRef<string>('');
 
@@ -1017,7 +1023,7 @@ export default function EnglishLogicTab({
   const hasLesson = Boolean(originalText || correctedText || enhancedText);
 
   useEffect(() => {
-    if (!hasLesson || !onMemoryUpdate) return;
+    if (!hasLesson || !onMemoryUpdate || isKidsMode) return;
 
     const logicPattern = buildLogicPatternMemory(logic.comparisonLabel);
     const signature = JSON.stringify({
@@ -1043,12 +1049,106 @@ export default function EnglishLogicTab({
     correctedText,
     enhancedText,
     hasLesson,
+    isKidsMode,
     logic.bridgeTitle,
     logic.comparisonLabel,
     logic.focus,
     onMemoryUpdate,
     originalText,
   ]);
+
+  if (isKidsMode) {
+    const kidsTeacherName = cleanText(teacherLabel) || 'Teacher Mercy';
+    const kidsAgeLabel = cleanText(kidsModeAgeBand) || '3–4';
+    const kidsPracticeLine = practiceLine || 'Hello.';
+
+    return (
+      <div className="m-0 flex-1 overflow-hidden">
+        <ScrollArea className="h-full bg-gradient-to-br from-[#FFF8F1] via-[#FFFDFC] to-[#F8F7FF]">
+          <div className="space-y-5 p-4 md:p-5">
+            <div className="rounded-[28px] border border-orange-100/80 bg-gradient-to-br from-[#FFF7ED] via-white to-[#FFFDF8] p-5 shadow-[0_10px_30px_rgba(15,23,42,0.05)]">
+              <div className="space-y-2">
+                <h2 className="text-[1.75rem] font-semibold tracking-tight text-slate-900">
+                  {kidsTeacherName} kids mode
+                </h2>
+                <p className="max-w-4xl text-[15px] leading-7 text-slate-700">
+                  Logic is off for ages {kidsAgeLabel}. Keep the lesson simple: listen first, then say the same line with Mercy.
+                </p>
+
+                <div className="rounded-2xl border border-sky-100 bg-sky-50/70 px-4 py-3 text-[15px] leading-7 text-sky-900">
+                  <p>
+                    <strong>Giải thích ngắn:</strong> với bé nhỏ, mình không mở phần phân tích logic. Chỉ cần nghe mẫu, nói lại, và lặp lại cùng một câu ngắn.
+                  </p>
+                </div>
+              </div>
+
+              <section className="mt-6 rounded-[28px] border border-white/80 bg-white/92 p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
+                <div className="flex items-center gap-2">
+                  <Mic className="h-4 w-4 text-sky-500" />
+                  <p className="text-sm font-semibold text-slate-900">
+                    Best line to say now
+                  </p>
+                </div>
+
+                <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                    Practice line
+                  </p>
+                  <p className="mt-2 text-lg leading-8 text-slate-700">
+                    {kidsPracticeLine}
+                  </p>
+                </div>
+
+                <div className="mt-4 flex flex-wrap gap-2">
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() => {
+                      if (pronunciationPayload) {
+                        onOpenPronunciation?.(pronunciationPayload);
+                        return;
+                      }
+                      onOpenPronunciation?.();
+                    }}
+                    className="rounded-2xl border-sky-200 bg-white hover:bg-sky-50"
+                  >
+                    <Mic className="mr-2 h-4 w-4" />
+                    Open Speak
+                  </Button>
+
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    onClick={onOpenWriting}
+                    className="rounded-2xl hover:bg-slate-100"
+                  >
+                    <PenSquare className="mr-2 h-4 w-4" />
+                    Change the line
+                  </Button>
+                </div>
+              </section>
+
+              <section className="rounded-[28px] border border-emerald-100/70 bg-gradient-to-r from-emerald-50/80 to-white p-5 shadow-[0_10px_28px_rgba(16,185,129,0.05)]">
+                <div className="flex items-start gap-2">
+                  <RotateCcw className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
+                  <div>
+                    <p className="text-sm font-semibold text-slate-900">Mercy’s next step</p>
+                    <p className="mt-1 text-sm leading-6 text-slate-700">
+                      Tap Speak, play the line, then let the child say the same words slowly one more time.
+                    </p>
+
+                    <p className="mt-2 text-[15px] leading-7 text-emerald-900">
+                      <strong>Bước tiếp theo:</strong> bấm Speak, nghe Mercy đọc mẫu, rồi cho bé nói lại đúng câu đó thêm một lần.
+                    </p>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </ScrollArea>
+      </div>
+    );
+  }
 
   return (
     <div className="m-0 flex-1 overflow-hidden">
