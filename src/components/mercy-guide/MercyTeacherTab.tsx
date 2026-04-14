@@ -1,3 +1,5 @@
+// src/components/mercy-guide/MercyTeacherTab.tsx
+
 /**
  * Path: src/components/mercy-guide/MercyTeacherTab.tsx
  * File: MercyTeacherTab.tsx
@@ -77,6 +79,12 @@ type KidsObjectCard = {
   sentence: string;
   imageSrc: string;
   aliases: string[];
+};
+
+type KidsLessonCard = {
+  key: string;
+  label: string;
+  imageSrc: string;
 };
 
 const PROMPTS = [
@@ -208,6 +216,39 @@ const KIDS_EXTRA_ALIASES: Record<string, string[]> = {
   'bear-face': ['bear face', 'bear'],
 };
 
+const PAGE_2_IMAGE_FILENAMES = [
+  'p2_001_what_is_this_apple.png',
+  'p2_002_what_is_this_ball.png',
+  'p2_003_what_is_this_dog.png',
+  'p2_004_what_is_this_cat.png',
+  'p2_005_what_is_this_book.png',
+  'p2_006_what_is_this_car.png',
+  'p2_007_it_is_an_apple.png',
+  'p2_008_it_is_a_ball.png',
+  'p2_009_it_is_a_dog.png',
+  'p2_010_it_is_a_cat.png',
+  'p2_011_i_want_water.png',
+  'p2_012_i_want_milk.png',
+  'p2_013_i_want_juice.png',
+  'p2_014_i_want_an_apple.png',
+  'p2_015_i_want_my_ball.png',
+  'p2_016_i_am_happy.png',
+  'p2_017_i_am_sad.png',
+  'p2_018_i_am_sleepy.png',
+  'p2_019_clap_your_hands.png',
+  'p2_020_jump_up.png',
+  'p2_021_sit_down.png',
+  'p2_022_stand_up.png',
+  'p2_023_come_here.png',
+  'p2_024_lets_go.png',
+  'p2_025_thank_you.png',
+  'p2_026_youre_welcome.png',
+  'p2_027_good_morning.png',
+  'p2_028_good_night.png',
+  'p2_029_the_ball_is_on_the_table.png',
+  'p2_030_the_teddy_is_under_the_chair.png',
+] as const;
+
 function toKidsLabel(key: string): string {
   return key
     .split('-')
@@ -237,6 +278,19 @@ function toKidsAliases(key: string): string[] {
   return Array.from(new Set([key, normalized, label, ...extra]));
 }
 
+function toPage2Label(filename: string): string {
+  return filename
+    .replace(/^p2_\d+_/, '')
+    .replace(/\.png$/i, '')
+    .split('_')
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(' ');
+}
+
+function normalizePage2Key(key?: string | null): string {
+  return cleanText(key).replace(/\.png$/i, '');
+}
+
 const KIDS_OBJECTS: KidsObjectCard[] = KIDS_OBJECT_KEYS.map((key) => ({
   key,
   label: toKidsLabel(key),
@@ -248,6 +302,12 @@ const KIDS_OBJECTS: KidsObjectCard[] = KIDS_OBJECT_KEYS.map((key) => ({
 const KIDS_IMAGE_GRID = KIDS_OBJECTS.map((object) => ({
   slotId: object.key,
   object,
+}));
+
+const PAGE_2_IMAGE_GRID: KidsLessonCard[] = PAGE_2_IMAGE_FILENAMES.map((filename) => ({
+  key: filename.replace(/\.png$/i, ''),
+  label: toPage2Label(filename),
+  imageSrc: `/images/mercy-kids-page-2/${filename}`,
 }));
 
 function asText(value: unknown): string {
@@ -533,6 +593,13 @@ function getKidsObjectByKey(key?: string | null): KidsObjectCard | null {
   return KIDS_OBJECTS.find((item) => item.key === key) ?? null;
 }
 
+function getPage2LessonByKey(key?: string | null): KidsLessonCard | null {
+  const normalized = normalizePage2Key(key);
+  if (!normalized) return null;
+
+  return PAGE_2_IMAGE_GRID.find((item) => item.key === normalized) ?? null;
+}
+
 export function MercyTeacherTab({
   latestTeacherWritingState,
   latestAnalysisResult,
@@ -676,9 +743,23 @@ export function MercyTeacherTab({
       : 'Gợi ý ngắn: mở Grammar trước.',
   );
 
+  const selectedPage2Lesson = useMemo(
+    () => getPage2LessonByKey(selectedKidsObjectKey),
+    [selectedKidsObjectKey],
+  );
+
   const selectedKidsObject = useMemo(() => {
-    return getKidsObjectByKey(selectedKidsObjectKey) ?? getKidsObjectFromSentence(primarySentence);
-  }, [primarySentence, selectedKidsObjectKey]);
+    const selectedObject = getKidsObjectByKey(selectedKidsObjectKey);
+    if (selectedObject) {
+      return selectedObject;
+    }
+
+    if (selectedPage2Lesson) {
+      return null;
+    }
+
+    return getKidsObjectFromSentence(primarySentence);
+  }, [primarySentence, selectedKidsObjectKey, selectedPage2Lesson]);
 
   if (isKidsMode) {
     return (
@@ -693,7 +774,7 @@ export function MercyTeacherTab({
           <div className="mx-auto w-full max-w-[920px]">
             <div className="grid grid-cols-5 gap-2 sm:gap-3">
               {KIDS_IMAGE_GRID.map(({ slotId, object }) => {
-                const isSelected = object.key === selectedKidsObject.key;
+                const isSelected = object.key === selectedKidsObject?.key;
 
                 return (
                   <button
@@ -711,6 +792,42 @@ export function MercyTeacherTab({
                     <img
                       src={object.imageSrc}
                       alt={object.label}
+                      className="h-full w-full object-contain p-1.5 sm:p-2"
+                      loading="lazy"
+                      decoding="async"
+                      draggable={false}
+                    />
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="mt-4 flex items-center justify-center">
+              <span className="rounded-full border border-[#FFD7C8] bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#D66A4E]">
+                Page 2
+              </span>
+            </div>
+
+            <div className="mt-3 grid grid-cols-5 gap-2 sm:gap-3">
+              {PAGE_2_IMAGE_GRID.map((lesson) => {
+                const isSelected = lesson.key === selectedPage2Lesson?.key;
+
+                return (
+                  <button
+                    key={lesson.key}
+                    type="button"
+                    onClick={() => onSelectKidsObject?.(lesson.key)}
+                    className={`aspect-square w-full overflow-hidden rounded-xl border bg-white transition ${
+                      isSelected
+                        ? 'border-[#FFB39A] shadow-[0_8px_18px_rgba(255,138,101,0.18)]'
+                        : 'border-white/80 hover:border-[#FFD7C8] hover:shadow-[0_6px_14px_rgba(148,163,184,0.08)]'
+                    }`}
+                    aria-label={lesson.label}
+                    title={lesson.label}
+                  >
+                    <img
+                      src={lesson.imageSrc}
+                      alt={lesson.label}
                       className="h-full w-full object-contain p-1.5 sm:p-2"
                       loading="lazy"
                       decoding="async"

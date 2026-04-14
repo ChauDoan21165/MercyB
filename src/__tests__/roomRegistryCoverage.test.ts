@@ -1,3 +1,5 @@
+// src/__tests__/roomRegistryCoverage.test.ts
+
 /**
  * Room Registry Coverage Tests
  *
@@ -38,6 +40,13 @@ const canonicalId = (id: string) =>
     .replace(/-/g, "_")
     .replace(/__+/g, "_");
 
+const COVERAGE_TIER_GROUPS = [
+  { label: "level0", candidates: ["level0"] },
+  { label: "vip1", candidates: ["vip1", "level1"] },
+  { label: "vip2", candidates: ["vip2", "level2"] },
+  { label: "vip3", candidates: ["vip3", "level3"] },
+] as const;
+
 function computeHealthScore(report: RoomCoverageReport, registryCount: number): number {
   // Prefer diagnostics healthScore if it looks valid.
   if (typeof report.healthScore === "number" && report.healthScore > 0) return report.healthScore;
@@ -53,6 +62,22 @@ function computeHealthScore(report: RoomCoverageReport, registryCount: number): 
   if (registryCount > 0) return 100;
 
   return 0;
+}
+
+function getRoomsForTierGroup(
+  candidates: readonly string[],
+): { matchedTier: string; rooms: ReturnType<typeof getRoomsByTier> } {
+  for (const tier of candidates) {
+    const rooms = getRoomsByTier(tier as any);
+    if (rooms.length > 0) {
+      return { matchedTier: tier, rooms };
+    }
+  }
+
+  return {
+    matchedTier: candidates[0] ?? "",
+    rooms: [] as ReturnType<typeof getRoomsByTier>,
+  };
 }
 
 describe("Room Registry Coverage", () => {
@@ -108,12 +133,10 @@ describe("Room Registry Coverage", () => {
   });
 
   it("should have coverage for all major tiers", () => {
-    const majorTiers = ["level0", "level1", "level2", "level3"];
-
-    for (const tier of majorTiers) {
-      const tierRooms = getRoomsByTier(tier as any);
-      expect(tierRooms.length).toBeGreaterThan(0);
-      console.log(`${tier}: ${tierRooms.length} rooms`);
+    for (const group of COVERAGE_TIER_GROUPS) {
+      const { matchedTier, rooms } = getRoomsForTierGroup(group.candidates);
+      expect(rooms.length).toBeGreaterThan(0);
+      console.log(`${group.label} (${matchedTier}): ${rooms.length} rooms`);
     }
   });
 });

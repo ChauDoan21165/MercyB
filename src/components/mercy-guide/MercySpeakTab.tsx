@@ -12,8 +12,6 @@ import {
   Square,
   Volume2,
   PlayCircle,
-  BookOpenText,
-  Wand2,
   Eraser,
 } from 'lucide-react';
 
@@ -72,6 +70,13 @@ type KidsObjectCard = {
   sentence: string;
   imageSrc: string;
   aliases: string[];
+};
+
+type KidsLessonCard = {
+  key: string;
+  label: string;
+  sentence: string;
+  imageSrc: string;
 };
 
 type KidsBuddy = {
@@ -296,6 +301,33 @@ const KIDS_BUDDIES: KidsBuddy[] = [
     greatLine: 'Yay, perfect!',
     retryLine: 'Again with Mercy.',
   },
+  {
+    key: 'owl',
+    emoji: '🦉',
+    label: 'Owl',
+    idleLine: 'Eyes and ears ready.',
+    goodLine: 'Nice and clear!',
+    greatLine: 'Wise job!',
+    retryLine: 'Let’s listen again.',
+  },
+  {
+    key: 'koala',
+    emoji: '🐨',
+    label: 'Koala',
+    idleLine: 'Soft and calm voice.',
+    goodLine: 'That sounds good!',
+    greatLine: 'So sweet and clear!',
+    retryLine: 'Try softly again.',
+  },
+  {
+    key: 'tiger',
+    emoji: '🐯',
+    label: 'Tiger',
+    idleLine: 'Use your strong voice.',
+    goodLine: 'Strong try!',
+    greatLine: 'That was tiger-great!',
+    retryLine: 'Try one more big voice.',
+  },
 ];
 
 function toKidsLabel(key: string): string {
@@ -325,6 +357,56 @@ function toKidsAliases(key: string): string[] {
   const extra = KIDS_EXTRA_ALIASES[key] ?? [];
 
   return Array.from(new Set([key, normalized, label, ...extra]));
+}
+
+function normalizePage2Key(value?: string | null): string {
+  return cleanText(value).replace(/\.png$/i, '');
+}
+
+function isPage2LessonKey(value?: string | null): boolean {
+  return /^p2_\d+_/i.test(normalizePage2Key(value));
+}
+
+function formatPage2TextFromKey(key: string): string {
+  const normalized = normalizePage2Key(key);
+  if (!normalized) return '';
+
+  const slug = normalized.replace(/^p2_\d+_/i, '');
+  if (!slug) return '';
+
+  const words = slug.split('_').filter(Boolean).map((word) => {
+    const lower = word.toLowerCase();
+
+    if (lower === 'i') return 'I';
+    if (lower === 'youre') return "you're";
+    if (lower === 'lets') return "let's";
+
+    return lower;
+  });
+
+  if (words.length === 0) return '';
+
+  const text = words.join(' ');
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
+function toPage2Sentence(key: string): string {
+  const base = formatPage2TextFromKey(key);
+  if (!base) return '';
+
+  if (/^What is this /i.test(base)) {
+    const objectPart = base.replace(/^What is this /i, '').trim();
+    const titledObject =
+      objectPart.charAt(0).toUpperCase() + objectPart.slice(1);
+
+    return titledObject ? `What is this? ${titledObject}.` : 'What is this?';
+  }
+
+  return /[.!?]$/.test(base) ? base : `${base}.`;
+}
+
+function toPage2Label(key: string): string {
+  return toPage2Sentence(key).replace(/[.!?]+$/g, '');
 }
 
 const KIDS_OBJECTS: KidsObjectCard[] = KIDS_OBJECT_KEYS.map((key) => ({
@@ -359,6 +441,12 @@ function getKidsBuddyDecorations(key: string): string[] {
       return ['🌼', '⭐', '💙'];
     case 'monkey':
       return ['🍌', '⭐', '🎉'];
+    case 'owl':
+      return ['🌙', '⭐', '📘'];
+    case 'koala':
+      return ['🍃', '⭐', '🤍'];
+    case 'tiger':
+      return ['⚡', '⭐', '🧡'];
     default:
       return ['✨', '⭐', '💛'];
   }
@@ -496,6 +584,33 @@ function getKidsObjectByKey(key?: string | null): KidsObjectCard | null {
   return KIDS_OBJECTS.find((item) => item.key === key) ?? null;
 }
 
+function getPage2LessonByKey(key?: string | null): KidsLessonCard | null {
+  if (!isPage2LessonKey(key)) return null;
+
+  const normalized = normalizePage2Key(key);
+  if (!normalized) return null;
+
+  return {
+    key: normalized,
+    label: toPage2Label(normalized),
+    sentence: toPage2Sentence(normalized),
+    imageSrc: `/images/mercy-kids-page-2/${normalized}.png`,
+  };
+}
+
+function getKidsObjectFromPage2Key(key?: string | null): KidsObjectCard | null {
+  const lesson = getPage2LessonByKey(key);
+  if (!lesson) return null;
+
+  const normalized = normalizeKidsLookup(lesson.sentence);
+
+  return (
+    KIDS_OBJECTS.find((item) =>
+      item.aliases.some((alias) => normalized.includes(alias)),
+    ) ?? null
+  );
+}
+
 function extractTroubleWords(
   troubleWords?: Array<string | { word?: string | null }>,
 ): string[] {
@@ -509,32 +624,6 @@ function extractTroubleWords(
     })
     .filter(Boolean)
     .slice(0, 8);
-}
-
-function buildWordFeedback(target: string, spoken: string, isKidsMode: boolean): string[] {
-  const targetWords = normalizeForCompare(target).split(' ').filter(Boolean);
-  const spokenWords = normalizeForCompare(spoken).split(' ').filter(Boolean);
-
-  if (!targetWords.length || !spokenWords.length) return [];
-
-  const missing = targetWords.filter((word) => !spokenWords.includes(word));
-  const extras = spokenWords.filter((word) => !targetWords.includes(word));
-
-  const notes: string[] = [];
-
-  if (missing.length > 0) {
-    notes.push(
-      isKidsMode
-        ? `Try these words again: ${missing.slice(0, 4).join(', ')}`
-        : `Try saying these more clearly: ${missing.slice(0, 5).join(', ')}`,
-    );
-  }
-
-  if (!isKidsMode && extras.length > 0) {
-    notes.push(`Extra words: ${extras.slice(0, 5).join(', ')}`);
-  }
-
-  return notes;
 }
 
 function calculateMatchScore(target: string, spoken: string): number {
@@ -555,7 +644,10 @@ function calculateMatchScore(target: string, spoken: string): number {
     }
   }
 
-  return Math.max(0, Math.min(100, Math.round((matched / targetWords.length) * 100)));
+  return Math.max(
+    0,
+    Math.min(100, Math.round((matched / targetWords.length) * 100)),
+  );
 }
 
 function detectTroubleWords(transcript: string, target: string): string[] {
@@ -581,59 +673,15 @@ function filterTroubleWordsForPractice(
 
   if (!practiceWordSet.size) return [];
 
-  return troubleWords.filter((word) => practiceWordSet.has(normalizeForCompare(word)));
-}
-
-function buildStressHint(target: string): string | null {
-  const words = cleanText(target).split(/\s+/).filter(Boolean);
-  if (words.length < 3) return null;
-
-  const emphasized = words.map((word, index) => {
-    if (index === 1 || index === words.length - 1) {
-      return word.toUpperCase();
-    }
-    return word;
-  });
-
-  return emphasized.join(' ');
+  return troubleWords.filter((word) =>
+    practiceWordSet.has(normalizeForCompare(word)),
+  );
 }
 
 function getConfidenceLevel(score: number): 'low' | 'medium' | 'high' {
   if (score >= 85) return 'high';
   if (score >= 60) return 'medium';
   return 'low';
-}
-
-function getCoachMessage(score: number, hasTranscript: boolean, isKidsMode: boolean): string {
-  if (isKidsMode) {
-    if (!hasTranscript) {
-      return 'Tap play, listen, then say it with Mercy.';
-    }
-
-    if (score >= 85) {
-      return 'Great job. Say it one more time.';
-    }
-
-    if (score >= 60) {
-      return 'Good try. Say it slowly with Mercy again.';
-    }
-
-    return 'Nice try. Listen once more, then say it slowly.';
-  }
-
-  if (!hasTranscript) {
-    return 'Listen first, then say it slowly.';
-  }
-
-  if (score >= 85) {
-    return 'Very good. You are close to the natural sentence.';
-  }
-
-  if (score >= 60) {
-    return 'Good progress. Slow down and match Mercy’s words more closely.';
-  }
-
-  return 'Start slower. Match the exact words first.';
 }
 
 function getVariantButtonClass(active: boolean) {
@@ -680,7 +728,9 @@ function getRecognitionErrorMessage(error?: string): string {
     case 'aborted':
       return 'Speech recognition was stopped.';
     default:
-      return error ? `Speech recognition failed: ${error}.` : 'Speech recognition failed.';
+      return error
+        ? `Speech recognition failed: ${error}.`
+        : 'Speech recognition failed.';
   }
 }
 
@@ -728,6 +778,7 @@ export function MercySpeakTab({
   void profile;
   void learningSupportMode;
   void kidsModeAgeBand;
+  void preferTapAndRepeat;
   void teacherLabel;
 
   const payload = useMemo(
@@ -744,12 +795,22 @@ export function MercySpeakTab({
     [rawCorrectedText, rawEnhancedText, rawSourceText],
   );
 
+  const kidsLesson = useMemo(() => {
+    if (!isKidsMode) return null;
+    return getPage2LessonByKey(selectedKidsObjectKey);
+  }, [isKidsMode, selectedKidsObjectKey]);
+
   const kidsObject = useMemo(() => {
     if (!isKidsMode) return null;
 
     const selectedObject = getKidsObjectByKey(selectedKidsObjectKey);
     if (selectedObject) {
       return selectedObject;
+    }
+
+    const inferredFromPage2Key = getKidsObjectFromPage2Key(selectedKidsObjectKey);
+    if (inferredFromPage2Key) {
+      return inferredFromPage2Key;
     }
 
     if (isLikelyKidsSentence(rawKidsCandidateText)) {
@@ -761,8 +822,9 @@ export function MercySpeakTab({
 
   const kidsPracticeText = useMemo(() => {
     if (!isKidsMode) return '';
+    if (kidsLesson?.sentence) return kidsLesson.sentence;
     return kidsObject?.sentence ?? KIDS_OBJECTS[0].sentence;
-  }, [isKidsMode, kidsObject]);
+  }, [isKidsMode, kidsLesson, kidsObject]);
 
   const sourceText = isKidsMode ? kidsPracticeText : rawSourceText;
   const correctedText = isKidsMode ? kidsPracticeText : rawCorrectedText;
@@ -806,6 +868,7 @@ export function MercySpeakTab({
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const mediaChunksRef = useRef<BlobPart[]>([]);
   const activeStreamRef = useRef<MediaStream | null>(null);
+  const recordedAudioRef = useRef<HTMLAudioElement | null>(null);
   const lastKidsCelebrationRef = useRef('');
   const hasPlayedBuddySelectRef = useRef(false);
 
@@ -816,10 +879,13 @@ export function MercySpeakTab({
 
   const supportsRecognition =
     typeof window !== 'undefined' &&
-    Boolean(speechWindow?.SpeechRecognition || speechWindow?.webkitSpeechRecognition);
+    Boolean(
+      speechWindow?.SpeechRecognition || speechWindow?.webkitSpeechRecognition,
+    );
 
   const supportsSpeechSynthesis =
-    typeof window !== 'undefined' && typeof window.speechSynthesis !== 'undefined';
+    typeof window !== 'undefined' &&
+    typeof window.speechSynthesis !== 'undefined';
 
   const supportsMediaRecording =
     typeof window !== 'undefined' &&
@@ -856,6 +922,15 @@ export function MercySpeakTab({
         // ignore cleanup errors
       }
       mediaRecorderRef.current = null;
+
+      if (recordedAudioRef.current) {
+        try {
+          recordedAudioRef.current.pause();
+          recordedAudioRef.current.currentTime = 0;
+        } catch {
+          // ignore cleanup errors
+        }
+      }
 
       if (recordedAudioUrl) {
         URL.revokeObjectURL(recordedAudioUrl);
@@ -941,24 +1016,6 @@ export function MercySpeakTab({
       .slice(0, 4);
   }, [displayedTroubleWords, isKidsMode, practiceText]);
 
-  const feedbackNotes = useMemo(() => {
-    if (!practiceText || !transcript) return [];
-
-    const notes = buildWordFeedback(practiceText, transcript, isKidsMode);
-    const stressHint = buildStressHint(practiceText);
-
-    if (stressHint && !isKidsMode) {
-      notes.push(`Stress: ${stressHint}`);
-    }
-
-    return notes;
-  }, [isKidsMode, practiceText, transcript]);
-
-  const coachMessage = useMemo(
-    () => getCoachMessage(matchScore, Boolean(transcript), isKidsMode),
-    [isKidsMode, matchScore, transcript],
-  );
-
   const selectedBuddy = useMemo(
     () => getKidsBuddyByKey(selectedBuddyKey),
     [selectedBuddyKey],
@@ -998,9 +1055,12 @@ export function MercySpeakTab({
           line: 'Big clear voice',
           ringClass: 'border-sky-200 bg-sky-50/95',
           wordClass: 'text-sky-700',
-          haloClass: '[animation:mercyBuddyGlow_1.2s_ease-in-out_infinite]',
-          emojiClass: '[animation:mercyBuddyListen_1.1s_ease-in-out_infinite]',
-          sparkleClass: '[animation:mercyBuddyFloat_2.1s_ease-in-out_infinite]',
+          haloClass:
+            '[animation:mercyBuddyGlow_1.2s_ease-in-out_infinite]',
+          emojiClass:
+            '[animation:mercyBuddyListen_1.1s_ease-in-out_infinite]',
+          sparkleClass:
+            '[animation:mercyBuddyFloat_2.1s_ease-in-out_infinite]',
         };
       case 'hear':
         return {
@@ -1009,9 +1069,12 @@ export function MercySpeakTab({
           line: 'Listen first',
           ringClass: 'border-teal-200 bg-teal-50/95',
           wordClass: 'text-teal-700',
-          haloClass: '[animation:mercyBuddyGlow_1.1s_ease-in-out_infinite]',
-          emojiClass: '[animation:mercyBuddyListen_1.1s_ease-in-out_infinite]',
-          sparkleClass: '[animation:mercyBuddyFloat_2s_ease-in-out_infinite]',
+          haloClass:
+            '[animation:mercyBuddyGlow_1.1s_ease-in-out_infinite]',
+          emojiClass:
+            '[animation:mercyBuddyListen_1.1s_ease-in-out_infinite]',
+          sparkleClass:
+            '[animation:mercyBuddyFloat_2s_ease-in-out_infinite]',
         };
       case 'wow':
         return {
@@ -1020,8 +1083,10 @@ export function MercySpeakTab({
           line: selectedBuddy.greatLine,
           ringClass: 'border-emerald-200 bg-emerald-50/95',
           wordClass: 'text-emerald-700',
-          haloClass: '[animation:mercyBuddyGlow_0.9s_ease-in-out_infinite]',
-          emojiClass: '[animation:mercyBuddyParty_0.85s_ease-in-out_infinite]',
+          haloClass:
+            '[animation:mercyBuddyGlow_0.9s_ease-in-out_infinite]',
+          emojiClass:
+            '[animation:mercyBuddyParty_0.85s_ease-in-out_infinite]',
           sparkleClass: '[animation:mercyBuddySpark_1s_ease-in-out_infinite]',
         };
       case 'great':
@@ -1031,9 +1096,11 @@ export function MercySpeakTab({
           line: selectedBuddy.greatLine,
           ringClass: 'border-emerald-200 bg-emerald-50/92',
           wordClass: 'text-emerald-700',
-          haloClass: '[animation:mercyBuddyGlow_1s_ease-in-out_infinite]',
+          haloClass:
+            '[animation:mercyBuddyGlow_1s_ease-in-out_infinite]',
           emojiClass: '[animation:mercyBuddyHop_0.95s_ease-in-out_infinite]',
-          sparkleClass: '[animation:mercyBuddyFloat_1.5s_ease-in-out_infinite]',
+          sparkleClass:
+            '[animation:mercyBuddyFloat_1.5s_ease-in-out_infinite]',
         };
       case 'good':
         return {
@@ -1042,9 +1109,12 @@ export function MercySpeakTab({
           line: selectedBuddy.goodLine,
           ringClass: 'border-amber-200 bg-amber-50/92',
           wordClass: 'text-amber-700',
-          haloClass: '[animation:mercyBuddyGlow_1.4s_ease-in-out_infinite]',
-          emojiClass: '[animation:mercyBuddyBounce_1.25s_ease-in-out_infinite]',
-          sparkleClass: '[animation:mercyBuddyFloat_1.8s_ease-in-out_infinite]',
+          haloClass:
+            '[animation:mercyBuddyGlow_1.4s_ease-in-out_infinite]',
+          emojiClass:
+            '[animation:mercyBuddyBounce_1.25s_ease-in-out_infinite]',
+          sparkleClass:
+            '[animation:mercyBuddyFloat_1.8s_ease-in-out_infinite]',
         };
       case 'again':
         return {
@@ -1053,9 +1123,11 @@ export function MercySpeakTab({
           line: selectedBuddy.retryLine,
           ringClass: 'border-rose-200 bg-rose-50/90',
           wordClass: 'text-rose-700',
-          haloClass: '[animation:mercyBuddyGlow_1.8s_ease-in-out_infinite]',
+          haloClass:
+            '[animation:mercyBuddyGlow_1.8s_ease-in-out_infinite]',
           emojiClass: '[animation:mercyBuddyBob_2.4s_ease-in-out_infinite]',
-          sparkleClass: '[animation:mercyBuddyFloat_2.5s_ease-in-out_infinite]',
+          sparkleClass:
+            '[animation:mercyBuddyFloat_2.5s_ease-in-out_infinite]',
         };
       default:
         return {
@@ -1064,52 +1136,14 @@ export function MercySpeakTab({
           line: selectedBuddy.idleLine,
           ringClass: 'border-slate-200 bg-white/92',
           wordClass: 'text-slate-700',
-          haloClass: '[animation:mercyBuddyGlow_2.4s_ease-in-out_infinite]',
+          haloClass:
+            '[animation:mercyBuddyGlow_2.4s_ease-in-out_infinite]',
           emojiClass: '[animation:mercyBuddyBob_2.8s_ease-in-out_infinite]',
-          sparkleClass: '[animation:mercyBuddyFloat_2.8s_ease-in-out_infinite]',
+          sparkleClass:
+            '[animation:mercyBuddyFloat_2.8s_ease-in-out_infinite]',
         };
     }
   }, [isKidsMode, isListening, isSpeaking, matchScore, selectedBuddy, transcript]);
-
-  const nextStepMessage = useMemo(() => {
-    if (isKidsMode) {
-      if (!practiceText) {
-        return 'Choose one short line, then tap play and say it with Mercy.';
-      }
-
-      if (!transcript) {
-        return 'Tap play. Listen. Say it with Mercy.';
-      }
-
-      if (matchScore >= 80) {
-        return 'Great. Say it one more time with a big clear voice.';
-      }
-
-      if (matchScore >= 60) {
-        return 'Good try. Listen once more and say it again slowly.';
-      }
-
-      return 'Listen first, then say the same words slowly.';
-    }
-
-    if (!practiceText) {
-      return 'Start with one sentence.';
-    }
-
-    if (!transcript) {
-      return 'Say it once, then open Logic if needed.';
-    }
-
-    if (matchScore >= 80) {
-      return 'Good. Now open Logic to see why it changed.';
-    }
-
-    if (matchScore >= 60) {
-      return 'Try once more slowly, then open Logic.';
-    }
-
-    return 'Try again slowly, then open Logic.';
-  }, [isKidsMode, matchScore, practiceText, transcript]);
 
   useEffect(() => {
     if (!transcript || !practiceText || !onMemoryUpdate) return;
@@ -1121,7 +1155,13 @@ export function MercySpeakTab({
         confidenceLevel: getConfidenceLevel(matchScore),
       },
     });
-  }, [generatedTroubleWords, matchScore, onMemoryUpdate, practiceText, transcript]);
+  }, [
+    generatedTroubleWords,
+    matchScore,
+    onMemoryUpdate,
+    practiceText,
+    transcript,
+  ]);
 
   useEffect(() => {
     if (!isKidsMode) return;
@@ -1171,7 +1211,23 @@ export function MercySpeakTab({
     }
   }
 
+  function stopRecordedAudioPlayback(resetPosition = false) {
+    const audio = recordedAudioRef.current;
+    if (!audio) return;
+
+    try {
+      audio.pause();
+      if (resetPosition) {
+        audio.currentTime = 0;
+      }
+    } catch {
+      // ignore playback stop errors
+    }
+  }
+
   function revokeRecordedAudioUrl() {
+    stopRecordedAudioPlayback(true);
+
     if (recordedAudioUrl) {
       URL.revokeObjectURL(recordedAudioUrl);
       setRecordedAudioUrl('');
@@ -1180,7 +1236,15 @@ export function MercySpeakTab({
 
   function handleSpeak(textOverride?: string) {
     const speechText = cleanText(textOverride) || practiceText;
-    if (!speechText || !supportsSpeechSynthesis || typeof window === 'undefined') return;
+    if (
+      !speechText ||
+      !supportsSpeechSynthesis ||
+      typeof window === 'undefined'
+    ) {
+      return;
+    }
+
+    stopRecordedAudioPlayback(true);
 
     try {
       if (window.speechSynthesis.speaking) {
@@ -1207,8 +1271,29 @@ export function MercySpeakTab({
     setIsSpeaking(false);
   }
 
+  async function handlePlayRecording() {
+    if (!recordedAudioUrl || isRecording) return;
+
+    const audio = recordedAudioRef.current;
+    if (!audio) return;
+
+    stopSpeaking();
+
+    try {
+      audio.currentTime = 0;
+      await audio.play();
+      setRecordingError('');
+    } catch {
+      setRecordingError('Recorded audio could not be played.');
+    }
+  }
+
   async function handleCopy() {
-    if (!practiceText || typeof navigator === 'undefined' || !navigator.clipboard?.writeText) {
+    if (
+      !practiceText ||
+      typeof navigator === 'undefined' ||
+      !navigator.clipboard?.writeText
+    ) {
       return;
     }
 
@@ -1235,8 +1320,16 @@ export function MercySpeakTab({
   }
 
   function startListening() {
-    if (!supportsRecognition || !practiceText || isListening || !speechWindow) return;
+    if (
+      !supportsRecognition ||
+      !practiceText ||
+      isListening ||
+      !speechWindow
+    ) {
+      return;
+    }
 
+    stopRecordedAudioPlayback();
     setRecognitionError('');
     setTranscript('');
 
@@ -1289,14 +1382,23 @@ export function MercySpeakTab({
     try {
       recognition.start();
     } catch {
-      setRecognitionError('Speech recognition could not start. Please try again.');
+      setRecognitionError(
+        'Speech recognition could not start. Please try again.',
+      );
       setIsListening(false);
     }
   }
 
   async function startRecording() {
-    if (!supportsMediaRecording || isRecording || typeof navigator === 'undefined') return;
+    if (
+      !supportsMediaRecording ||
+      isRecording ||
+      typeof navigator === 'undefined'
+    ) {
+      return;
+    }
 
+    stopRecordedAudioPlayback(true);
     setRecordingError('');
 
     try {
@@ -1331,7 +1433,9 @@ export function MercySpeakTab({
           return;
         }
 
-        const blob = new Blob(mediaChunksRef.current, { type: 'audio/webm' });
+        const blob = new Blob(mediaChunksRef.current, {
+          type: 'audio/webm',
+        });
         const nextUrl = URL.createObjectURL(blob);
         setRecordedAudioUrl(nextUrl);
         stopActiveStream();
@@ -1356,7 +1460,9 @@ export function MercySpeakTab({
         mediaRecorderRef.current.stop();
       }
     } catch {
-      setRecordingError('Recording could not be stopped cleanly. Please try again.');
+      setRecordingError(
+        'Recording could not be stopped cleanly. Please try again.',
+      );
       setIsRecording(false);
       stopActiveStream();
     }
@@ -1370,6 +1476,7 @@ export function MercySpeakTab({
 
     stopListening();
     stopSpeaking();
+    stopRecordedAudioPlayback(true);
 
     if (isRecording) {
       stopRecording();
@@ -1385,29 +1492,9 @@ export function MercySpeakTab({
   }
 
   const matchTone = getMetricTone(matchScore);
-  const hasResolvedPayload = Boolean(sourceText || correctedText || enhancedText);
-  const primaryButtonClass = isKidsMode
-    ? 'h-12 rounded-2xl border-0 bg-gradient-to-r from-[#4FC5C7] to-[#38AEB6] px-4 text-sm font-semibold text-white shadow-[0_10px_20px_rgba(56,174,182,0.24)] hover:brightness-[1.03] disabled:opacity-60'
-    : 'h-11 rounded-2xl border-0 bg-gradient-to-r from-[#4FC5C7] to-[#38AEB6] px-4 text-white shadow-[0_10px_20px_rgba(56,174,182,0.24)] hover:brightness-[1.03] disabled:opacity-60';
-  const outlineButtonClass = isKidsMode
-    ? 'h-12 rounded-2xl border-[#F2D8CA] bg-white px-4 text-sm font-semibold text-slate-800 shadow-sm hover:bg-[#FFF8F4] disabled:opacity-60'
-    : 'h-11 rounded-2xl border-[#F2D8CA] bg-white px-4 text-slate-800 shadow-sm hover:bg-[#FFF8F4] disabled:opacity-60';
-  const shouldShowAdultWhyCard = Boolean(
-    !isKidsMode && sourceText && correctedText && sourceText !== correctedText,
-  );
-  const shouldShowLogicButton = Boolean(
-    !isKidsMode &&
-      onOpenEnglishLogic &&
-      (Boolean(transcript) ||
-        shouldShowAdultWhyCard ||
-        Boolean(correctedText) ||
-        Boolean(enhancedText))
-  );
+  const canOpenLogic = Boolean(!isKidsMode && onOpenEnglishLogic);
   const confidenceLabel = getConfidenceLevel(matchScore).toUpperCase();
   const transcriptLabel = 'Your transcript';
-  const troubleLabel =
-    displayedTroubleWords.length === 1 ? 'Word to practice' : 'Words to practice';
-  const showAdultFeedbackCard = Boolean(!isKidsMode && transcript);
 
   if (isKidsMode) {
     return (
@@ -1455,23 +1542,33 @@ export function MercySpeakTab({
         `}</style>
 
         <div className="min-h-0 flex-1 overflow-y-auto overflow-x-hidden px-2 py-2 md:px-3 md:py-3">
-          <div className="flex min-h-full flex-col gap-3 rounded-[28px] border border-white/80 bg-white/92 p-3 shadow-[0_10px_28px_rgba(148,163,184,0.06)] md:p-4">
+          <div className="flex min-h-full flex-col gap-2 rounded-[28px] border border-white/80 bg-white/92 px-3 pb-3 pt-1.5 shadow-[0_10px_28px_rgba(148,163,184,0.06)] md:px-4 md:pb-4 md:pt-2">
             <div className="min-w-0">
-              <h3 className="text-3xl font-semibold tracking-tight text-slate-900 md:text-[42px] md:leading-[1.02]">
-                {kidsObject?.label ?? KIDS_OBJECTS[0].label}
-              </h3>
+              <div className="flex flex-wrap items-end gap-x-3 gap-y-1">
+                <h3 className="text-[1.9rem] font-semibold tracking-tight text-slate-900 md:text-[2.65rem] md:leading-[1.02]">
+                  {kidsLesson?.label ?? kidsObject?.label ?? KIDS_OBJECTS[0].label}
+                </h3>
 
-              <p className="mt-1.5 text-xl leading-8 text-slate-700 md:text-[1.75rem] md:leading-10">
-                {practiceText}
-              </p>
+                <p className="text-[1.05rem] font-medium leading-7 text-slate-700 md:text-[1.35rem] md:leading-8">
+                  {practiceText}
+                </p>
+              </div>
             </div>
 
             <div className="grid grid-cols-2 gap-3">
-              <div className="flex min-h-[220px] items-center justify-center rounded-[24px] border border-[#FFD7C8] bg-gradient-to-br from-[#FFF6F0] via-white to-[#F8FBFF] p-3 shadow-[0_12px_26px_rgba(255,138,101,0.10)] md:min-h-[250px] md:p-4">
+              <div className="flex min-h-[220px] items-center justify-center overflow-hidden rounded-[24px] border border-[#F4DDD1] bg-gradient-to-br from-[#FFF6F0] via-white to-[#F8FBFF] p-0 shadow-[0_8px_18px_rgba(255,138,101,0.06)] md:min-h-[250px]">
                 <img
-                  src={kidsObject?.imageSrc ?? KIDS_OBJECTS[0].imageSrc}
-                  alt={kidsObject?.label ?? KIDS_OBJECTS[0].label}
-                  className="h-28 w-28 object-contain md:h-52 md:w-52"
+                  src={
+                    kidsLesson?.imageSrc ??
+                    kidsObject?.imageSrc ??
+                    KIDS_OBJECTS[0].imageSrc
+                  }
+                  alt={
+                    kidsLesson?.label ??
+                    kidsObject?.label ??
+                    KIDS_OBJECTS[0].label
+                  }
+                  className="h-full w-full scale-[1.08] object-contain"
                 />
               </div>
 
@@ -1498,12 +1595,19 @@ export function MercySpeakTab({
 
                 <div className="relative z-20 flex h-full min-h-[190px] flex-col items-center justify-center gap-2 md:min-h-[220px] md:gap-3">
                   <div className="flex h-28 w-28 items-center justify-center rounded-full bg-white/88 text-[72px] shadow-[0_14px_34px_rgba(148,163,184,0.16)] md:h-36 md:w-36 md:text-[92px]">
-                    <span className={kidsBuddyReaction?.emojiClass ?? '[animation:mercyBuddyBob_2.8s_ease-in-out_infinite]'}>
+                    <span
+                      className={
+                        kidsBuddyReaction?.emojiClass ??
+                        '[animation:mercyBuddyBob_2.8s_ease-in-out_infinite]'
+                      }
+                    >
                       {selectedBuddy.emoji}
                     </span>
                   </div>
 
-                  <div className={`min-h-[24px] text-lg font-semibold md:min-h-[28px] md:text-xl ${kidsBuddyReaction?.wordClass ?? 'text-slate-700'}`}>
+                  <div
+                    className={`min-h-[24px] text-lg font-semibold md:min-h-[28px] md:text-xl ${kidsBuddyReaction?.wordClass ?? 'text-slate-700'}`}
+                  >
                     {kidsBuddyReaction?.word ?? ''}
                   </div>
 
@@ -1514,9 +1618,9 @@ export function MercySpeakTab({
               </div>
             </div>
 
-            <div className="rounded-[18px] border border-[#DCE7F7] bg-gradient-to-r from-[#F8FBFF] to-white p-3 shadow-sm">
+            <div className="rounded-[15px] border border-[#DCE7F7] bg-gradient-to-r from-[#F8FBFF] to-white p-1.5 shadow-sm">
               <div className="max-w-full overflow-x-auto overflow-y-hidden">
-                <div className="flex w-max gap-2 pr-1">
+                <div className="flex w-max gap-1 pr-1">
                   {KIDS_BUDDIES.map((buddy) => {
                     const active = buddy.key === selectedBuddy.key;
                     const motionClass =
@@ -1535,14 +1639,20 @@ export function MercySpeakTab({
                         key={buddy.key}
                         type="button"
                         onClick={() => setSelectedBuddyKey(buddy.key)}
-                        className={`flex min-w-[68px] flex-col items-center rounded-2xl border px-2 py-2 text-center shadow-sm transition ${
+                        className={`flex min-w-[50px] flex-col items-center rounded-[14px] border px-1 py-1 text-center shadow-sm transition ${
                           active
                             ? 'border-[#BFD5F7] bg-white text-slate-900 ring-2 ring-[#DCE7F7]'
                             : 'border-transparent bg-white/70 text-slate-600 hover:border-[#DCE7F7] hover:bg-white'
                         }`}
                       >
-                        <span className={`text-[30px] ${motionClass}`}>{buddy.emoji}</span>
-                        <span className="mt-1 text-[11px] font-semibold">{buddy.label}</span>
+                        <span
+                          className={`text-[22px] leading-none ${motionClass}`}
+                        >
+                          {buddy.emoji}
+                        </span>
+                        <span className="mt-0.5 text-[9px] font-semibold leading-3.5">
+                          {buddy.label}
+                        </span>
                       </button>
                     );
                   })}
@@ -1550,25 +1660,13 @@ export function MercySpeakTab({
               </div>
             </div>
 
-            {(recognitionError ||
-              recordingError ||
-              !supportsRecognition ||
-              !supportsMediaRecording) ? (
+            {(recognitionError || recordingError || !supportsRecognition) ? (
               <div className="space-y-1.5">
                 {!supportsRecognition ? (
                   <div className="rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-800">
                     <div className="flex items-start gap-2">
                       <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
                       <p>Speech recognition is not available in this browser.</p>
-                    </div>
-                  </div>
-                ) : null}
-
-                {!supportsMediaRecording ? (
-                  <div className="rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-800">
-                    <div className="flex items-start gap-2">
-                      <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
-                      <p>Voice recording is not available in this browser.</p>
                     </div>
                   </div>
                 ) : null}
@@ -1593,16 +1691,18 @@ export function MercySpeakTab({
               </div>
             ) : null}
 
-            <div className="grid grid-cols-4 gap-2">
+            <div className="grid grid-cols-5 gap-1.5">
               <Button
                 type="button"
                 variant="outline"
                 onClick={() => handleSpeak()}
                 disabled={!practiceText}
-                className="h-12 rounded-[18px] border-teal-200 bg-gradient-to-r from-[#6EC6C8] to-[#5DAFB6] px-2 text-xs font-semibold text-white shadow-[0_10px_18px_rgba(93,175,182,0.22)] hover:brightness-[1.03] disabled:opacity-60"
+                className="h-[54px] min-w-0 rounded-[16px] border-teal-200 bg-gradient-to-r from-[#6EC6C8] to-[#5DAFB6] px-1 py-1 text-white shadow-[0_10px_18px_rgba(93,175,182,0.22)] hover:brightness-[1.03] disabled:opacity-60"
               >
-                <Volume2 className="mr-1.5 h-4 w-4" />
-                Mercy
+                <span className="flex flex-col items-center justify-center gap-1 leading-none">
+                  <Volume2 className="h-4 w-4 shrink-0" />
+                  <span className="text-[10px] font-semibold">Mercy</span>
+                </span>
               </Button>
 
               {!isListening ? (
@@ -1610,20 +1710,24 @@ export function MercySpeakTab({
                   type="button"
                   onClick={startListening}
                   disabled={!supportsRecognition || !practiceText}
-                  className="h-12 rounded-2xl border-0 bg-gradient-to-r from-[#43C59E] to-[#18A874] px-2 text-xs font-semibold text-white shadow-[0_10px_18px_rgba(24,168,116,0.20)] hover:brightness-[1.03] disabled:opacity-60"
+                  className="h-[54px] min-w-0 rounded-[16px] border-0 bg-gradient-to-r from-[#43C59E] to-[#18A874] px-1 py-1 text-white shadow-[0_10px_18px_rgba(24,168,116,0.20)] hover:brightness-[1.03] disabled:opacity-60"
                 >
-                  <Mic className="mr-1.5 h-4 w-4" />
-                  You
+                  <span className="flex flex-col items-center justify-center gap-1 leading-none">
+                    <Mic className="h-4 w-4 shrink-0" />
+                    <span className="text-[10px] font-semibold">You</span>
+                  </span>
                 </Button>
               ) : (
                 <Button
                   type="button"
                   variant="destructive"
                   onClick={stopListening}
-                  className="h-12 rounded-2xl px-2 text-xs font-semibold shadow-[0_10px_18px_rgba(239,68,68,0.16)]"
+                  className="h-[54px] min-w-0 rounded-[16px] px-1 py-1 shadow-[0_10px_18px_rgba(239,68,68,0.16)]"
                 >
-                  <Square className="mr-1.5 h-4 w-4" />
-                  Stop
+                  <span className="flex flex-col items-center justify-center gap-1 leading-none">
+                    <Square className="h-4 w-4 shrink-0" />
+                    <span className="text-[10px] font-semibold">Stop</span>
+                  </span>
                 </Button>
               )}
 
@@ -1633,97 +1737,118 @@ export function MercySpeakTab({
                   variant="outline"
                   onClick={startRecording}
                   disabled={!supportsMediaRecording}
-                  className="h-12 rounded-2xl border-[#BFE8EA] bg-[#F4FEFE] px-2 text-xs font-semibold text-[#137E86] shadow-sm hover:bg-[#ECFCFD] disabled:opacity-60"
+                  className="h-[54px] min-w-0 rounded-[16px] border-[#BFE8EA] bg-[#F4FEFE] px-1 py-1 text-[#137E86] shadow-sm hover:bg-[#ECFCFD] disabled:opacity-60"
                 >
-                  <PlayCircle className="mr-1.5 h-4 w-4" />
-                  Record
+                  <span className="flex flex-col items-center justify-center gap-1 leading-none">
+                    <Mic className="h-4 w-4 shrink-0" />
+                    <span className="text-[10px] font-semibold">Record</span>
+                  </span>
                 </Button>
               ) : (
                 <Button
                   type="button"
                   variant="outline"
                   onClick={stopRecording}
-                  className="h-12 rounded-2xl border-[#F2D8CA] bg-white px-2 text-xs font-semibold text-slate-800 shadow-sm hover:bg-[#FFF8F4]"
+                  className="h-[54px] min-w-0 rounded-[16px] border-[#F2D8CA] bg-white px-1 py-1 text-slate-800 shadow-sm hover:bg-[#FFF8F4]"
                 >
-                  <Square className="mr-1.5 h-4 w-4" />
-                  Stop
+                  <span className="flex flex-col items-center justify-center gap-1 leading-none">
+                    <Square className="h-4 w-4 shrink-0" />
+                    <span className="text-[10px] font-semibold">Stop</span>
+                  </span>
                 </Button>
               )}
 
               <Button
                 type="button"
                 variant="outline"
-                onClick={handleResetAttempt}
-                className="h-12 rounded-2xl border-[#F2E7DE] bg-white px-2 text-xs font-semibold text-slate-700 shadow-sm hover:bg-[#FFF8F4]"
+                onClick={handlePlayRecording}
+                disabled={!recordedAudioUrl || isRecording}
+                className="h-[54px] min-w-0 rounded-[16px] border-[#E2E8F0] bg-white px-1 py-1 text-slate-700 shadow-sm hover:bg-slate-50 disabled:opacity-50"
               >
-                <RotateCcw className="mr-1.5 h-4 w-4" />
-                Reset
+                <span className="flex flex-col items-center justify-center gap-1 leading-none">
+                  <PlayCircle className="h-4 w-4 shrink-0" />
+                  <span className="text-[10px] font-semibold">Play</span>
+                </span>
+              </Button>
+
+              <Button
+                type="button"
+                variant="outline"
+                onClick={handleResetAttempt}
+                className="h-[54px] min-w-0 rounded-[16px] border-[#F2E7DE] bg-white px-1 py-1 text-slate-700 shadow-sm hover:bg-[#FFF8F4]"
+              >
+                <span className="flex flex-col items-center justify-center gap-1 leading-none">
+                  <RotateCcw className="h-4 w-4 shrink-0" />
+                  <span className="text-[10px] font-semibold">Reset</span>
+                </span>
               </Button>
             </div>
 
-            <div className="rounded-[18px] border border-slate-200 bg-gradient-to-br from-[#FFF9F3] to-white p-3 shadow-sm">
-              <div className="flex items-center justify-between gap-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
-                <span>Mercy</span>
-                <span>100%</span>
-              </div>
+            <div className="rounded-[16px] border border-slate-200 bg-gradient-to-br from-[#FFF9F3] to-white p-2.5 shadow-sm">
+              <div className="space-y-3">
+                <div>
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
+                      Mercy
+                    </span>
+                    <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
+                      100%
+                    </span>
+                  </div>
 
-              <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-slate-100">
-                <div className="h-full w-full rounded-full bg-gradient-to-r from-[#6EC6C8] to-[#5DAFB6]" />
-              </div>
+                  <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-slate-100">
+                    <div className="h-full w-full rounded-full bg-gradient-to-r from-[#6EC6C8] to-[#5DAFB6]" />
+                  </div>
+                </div>
 
-              <div className="mt-3 flex items-center justify-between gap-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
-                <span>You</span>
-                <span>{transcript ? `${matchScore}%` : '0%'}</span>
-              </div>
+                <div>
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
+                      You
+                    </span>
+                    <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
+                      {transcript ? `${matchScore}%` : '0%'}
+                    </span>
+                  </div>
 
-              <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-slate-100">
-                <div
-                  className={`h-full rounded-full bg-gradient-to-r transition-all duration-500 ${matchTone.bar}`}
-                  style={{ width: `${transcript ? matchScore : 0}%` }}
-                />
-              </div>
-
-              <p className="mt-2 text-sm leading-6 text-slate-600">
-                {coachMessage}
-              </p>
-            </div>
-
-            <div className="rounded-[18px] border border-[#F1E5DB] bg-gradient-to-br from-[#FFF9F3] to-white p-3 shadow-sm">
-              {recordedAudioUrl ? (
-                <audio className="w-full" controls src={recordedAudioUrl}>
-                  Your browser does not support audio playback.
-                </audio>
-              ) : (
-                <div className="h-12 rounded-2xl border border-dashed border-[#D9E6EA] bg-white/80 px-3 py-3">
-                  <div className="h-2 overflow-hidden rounded-full bg-slate-100">
+                  <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-slate-100">
                     <div
-                      className={`h-full rounded-full transition-all ${
-                        isRecording
-                          ? 'w-full animate-pulse bg-gradient-to-r from-emerald-400 to-teal-400'
-                          : 'w-0 bg-transparent'
-                      }`}
+                      className={`h-full rounded-full bg-gradient-to-r transition-all duration-500 ${matchTone.bar}`}
+                      style={{ width: `${transcript ? matchScore : 0}%` }}
                     />
                   </div>
                 </div>
-              )}
-            </div>
+              </div>
 
-            {kidsWordChips.length > 0 ? (
-              <div className="rounded-[18px] border border-[#F1E5DB] bg-white/92 p-3 shadow-sm">
-                <div className="flex flex-wrap gap-2">
+              {kidsWordChips.length > 0 ? (
+                <div className="mt-2 flex items-center gap-2 overflow-x-auto pb-0.5">
+                  <span className="shrink-0 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500">
+                    Repeat
+                  </span>
+
                   {kidsWordChips.map((word) => (
                     <button
                       key={word}
                       type="button"
                       onClick={() => handleSpeak(word)}
-                      className="rounded-full border border-[#F2DDD0] bg-gradient-to-r from-[#FFF5EF] to-white px-3 py-1.5 text-sm font-semibold text-[#875E4B] shadow-sm transition hover:border-[#F0C8B3] hover:bg-[#FFF8F4]"
+                      className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-[#F2DDD0] bg-gradient-to-r from-[#FFF5EF] to-white px-2.5 py-1 text-xs font-semibold text-[#875E4B] shadow-sm transition hover:border-[#F0C8B3] hover:bg-[#FFF8F4]"
                     >
-                      {word}
+                      <Volume2 className="h-3.5 w-3.5" />
+                      <span>{word}</span>
                     </button>
                   ))}
                 </div>
-              </div>
-            ) : null}
+              ) : null}
+
+              <audio
+                ref={recordedAudioRef}
+                className="hidden"
+                src={recordedAudioUrl || undefined}
+                preload="metadata"
+              >
+                Your browser does not support audio playback.
+              </audio>
+            </div>
           </div>
         </div>
       </div>
@@ -1735,12 +1860,6 @@ export function MercySpeakTab({
       <div className="min-h-0 flex-1 overflow-y-auto px-4 py-4 md:px-5 md:py-5">
         <div className="space-y-3">
           <div className="rounded-3xl border border-white/80 bg-white/92 p-4 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
-            {!hasResolvedPayload && !practiceText ? (
-              <div className="mb-3 rounded-2xl border border-amber-200 bg-amber-50/70 px-4 py-3 text-sm leading-6 text-amber-800">
-                Mercy does not have a sentence loaded yet. Type one below, or open Grammar first.
-              </div>
-            ) : null}
-
             <textarea
               value={customText}
               onChange={(e) => {
@@ -1751,223 +1870,153 @@ export function MercySpeakTab({
               className="w-full min-h-[92px] resize-y rounded-[22px] border border-[#F0E2D7] bg-gradient-to-br from-[#FFF9F2] to-white p-4 text-base leading-7 text-slate-800 shadow-[inset_0_1px_0_rgba(255,255,255,0.85),0_8px_20px_rgba(255,138,101,0.05)] outline-none transition focus:border-[#F7B79E] focus:ring-2 focus:ring-[#FFD8C7]"
             />
 
-            <div className="mt-3 flex flex-wrap items-center gap-2">
-              <Button
-                type="button"
-                variant="outline"
-                onClick={() => handleSpeak()}
-                disabled={!practiceText}
-                className="h-11 rounded-2xl border-teal-200 bg-gradient-to-r from-[#6EC6C8] to-[#5DAFB6] px-4 text-white shadow-[0_8px_18px_rgba(93,175,182,0.22)] hover:brightness-[1.03] disabled:opacity-60"
-              >
-                <Volume2 className="mr-2 h-4 w-4" />
-                Play
-              </Button>
-
-              <Button
-                type="button"
-                variant="outline"
-                onClick={stopSpeaking}
-                disabled={!isSpeaking}
-                className="h-11 rounded-2xl border-[#F2D8CA] bg-white px-4 text-slate-800 shadow-sm hover:bg-[#FFF8F4] disabled:opacity-60"
-              >
-                <Square className="mr-2 h-4 w-4" />
-                Stop
-              </Button>
-
-              {!isListening ? (
-                <Button
-                  type="button"
-                  onClick={startListening}
-                  disabled={!supportsRecognition || !practiceText}
-                  className={primaryButtonClass}
-                >
-                  <Mic className="mr-2 h-4 w-4" />
-                  Speak
-                </Button>
-              ) : (
-                <Button
-                  type="button"
-                  variant="destructive"
-                  onClick={stopListening}
-                  className="h-11 rounded-2xl px-4 shadow-[0_12px_24px_rgba(239,68,68,0.18)]"
-                >
-                  <Square className="mr-2 h-4 w-4" />
-                  Stop
-                </Button>
-              )}
-
-              {!isRecording ? (
+            <div className="mt-3 space-y-2.5">
+              <div className="grid grid-cols-5 gap-2">
                 <Button
                   type="button"
                   variant="outline"
-                  onClick={startRecording}
-                  disabled={!supportsMediaRecording}
-                  className="h-11 rounded-2xl border-[#BFE8EA] bg-[#F4FEFE] px-4 text-[#137E86] shadow-sm hover:bg-[#ECFCFD] disabled:opacity-60"
+                  onClick={() => handleSpeak()}
+                  disabled={!practiceText}
+                  className="h-[54px] min-w-0 rounded-[16px] border-teal-200 bg-gradient-to-r from-[#6EC6C8] to-[#5DAFB6] px-1 py-1 text-white shadow-[0_10px_18px_rgba(93,175,182,0.22)] hover:brightness-[1.03] disabled:opacity-60"
                 >
-                  <PlayCircle className="mr-2 h-4 w-4" />
-                  Record
+                  <span className="flex flex-col items-center justify-center gap-1 leading-none">
+                    <Volume2 className="h-4 w-4 shrink-0" />
+                    <span className="text-[10px] font-semibold">Mercy</span>
+                  </span>
                 </Button>
-              ) : (
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={stopRecording}
-                  className={outlineButtonClass}
-                >
-                  <Square className="mr-2 h-4 w-4" />
-                  Stop rec
-                </Button>
-              )}
 
-              <div
-                className={`flex h-11 items-center overflow-hidden rounded-2xl border px-2 shadow-sm transition ${
-                  isRecording
-                    ? 'border-emerald-300 bg-emerald-50/90 animate-pulse'
-                    : recordedAudioUrl
-                      ? 'border-emerald-200 bg-emerald-50/80'
-                      : 'border-slate-200 bg-white/70'
-                }`}
-              >
-                <PlayCircle
-                  className={`mr-2 h-4 w-4 shrink-0 ${
-                    isRecording || recordedAudioUrl ? 'text-emerald-600' : 'text-slate-400'
-                  }`}
-                />
-                {recordedAudioUrl ? (
-                  <audio className="h-8 w-[150px] md:w-[170px]" controls src={recordedAudioUrl}>
-                    Your browser does not support audio playback.
-                  </audio>
+                {!isListening ? (
+                  <Button
+                    type="button"
+                    onClick={startListening}
+                    disabled={!supportsRecognition || !practiceText}
+                    className="h-[54px] min-w-0 rounded-[16px] border-0 bg-gradient-to-r from-[#43C59E] to-[#18A874] px-1 py-1 text-white shadow-[0_10px_18px_rgba(24,168,116,0.20)] hover:brightness-[1.03] disabled:opacity-60"
+                  >
+                    <span className="flex flex-col items-center justify-center gap-1 leading-none">
+                      <Mic className="h-4 w-4 shrink-0" />
+                      <span className="text-[10px] font-semibold">You</span>
+                    </span>
+                  </Button>
                 ) : (
-                  <div className="flex items-center">
-                    <div className="h-2 w-[90px] rounded-full bg-white/90 md:w-[120px]">
-                      <div
-                        className={`h-full rounded-full transition-all ${
-                          isRecording
-                            ? 'w-full animate-pulse bg-gradient-to-r from-emerald-400 to-teal-400'
-                            : 'w-0 bg-transparent'
-                        }`}
-                      />
-                    </div>
-                  </div>
+                  <Button
+                    type="button"
+                    variant="destructive"
+                    onClick={stopListening}
+                    className="h-[54px] min-w-0 rounded-[16px] px-1 py-1 shadow-[0_10px_18px_rgba(239,68,68,0.16)]"
+                  >
+                    <span className="flex flex-col items-center justify-center gap-1 leading-none">
+                      <Square className="h-4 w-4 shrink-0" />
+                      <span className="text-[10px] font-semibold">Stop</span>
+                    </span>
+                  </Button>
                 )}
+
+                {!isRecording ? (
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={startRecording}
+                    disabled={!supportsMediaRecording}
+                    className="h-[54px] min-w-0 rounded-[16px] border-[#BFE8EA] bg-[#F4FEFE] px-1 py-1 text-[#137E86] shadow-sm hover:bg-[#ECFCFD] disabled:opacity-60"
+                  >
+                    <span className="flex flex-col items-center justify-center gap-1 leading-none">
+                      <Mic className="h-4 w-4 shrink-0" />
+                      <span className="text-[10px] font-semibold">Record</span>
+                    </span>
+                  </Button>
+                ) : (
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={stopRecording}
+                    className="h-[54px] min-w-0 rounded-[16px] border-[#F2D8CA] bg-white px-1 py-1 text-slate-800 shadow-sm hover:bg-[#FFF8F4]"
+                  >
+                    <span className="flex flex-col items-center justify-center gap-1 leading-none">
+                      <Square className="h-4 w-4 shrink-0" />
+                      <span className="text-[10px] font-semibold">Stop</span>
+                    </span>
+                  </Button>
+                )}
+
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={handlePlayRecording}
+                  disabled={!recordedAudioUrl || isRecording}
+                  className="h-[54px] min-w-0 rounded-[16px] border-[#E2E8F0] bg-white px-1 py-1 text-slate-700 shadow-sm hover:bg-slate-50 disabled:opacity-50"
+                >
+                  <span className="flex flex-col items-center justify-center gap-1 leading-none">
+                    <PlayCircle className="h-4 w-4 shrink-0" />
+                    <span className="text-[10px] font-semibold">Play</span>
+                  </span>
+                </Button>
+
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={handleResetAttempt}
+                  className="h-[54px] min-w-0 rounded-[16px] border-[#F2E7DE] bg-white px-1 py-1 text-slate-700 shadow-sm hover:bg-[#FFF8F4]"
+                >
+                  <span className="flex flex-col items-center justify-center gap-1 leading-none">
+                    <RotateCcw className="h-4 w-4 shrink-0" />
+                    <span className="text-[10px] font-semibold">Reset</span>
+                  </span>
+                </Button>
               </div>
 
-              <Button
-                type="button"
-                onClick={preferTapAndRepeat ? () => handleSpeak() : startListening}
-                disabled={
-                  preferTapAndRepeat
-                    ? !practiceText
-                    : !supportsRecognition || !practiceText || isListening
-                }
-                className="h-11 rounded-2xl border-0 bg-gradient-to-r from-[#4FC5C7] to-[#38AEB6] px-4 text-white shadow-[0_10px_20px_rgba(56,174,182,0.24)] hover:brightness-[1.03] disabled:opacity-60"
-              >
-                {preferTapAndRepeat ? <Volume2 className="mr-2 h-4 w-4" /> : <Mic className="mr-2 h-4 w-4" />}
-                Try again
-              </Button>
+              <div className="grid grid-cols-4 gap-2">
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={handleCopy}
+                  disabled={!practiceText}
+                  className="h-[54px] min-w-0 rounded-[16px] border-[#F2E7DE] bg-white px-1 py-1 text-slate-700 shadow-sm hover:bg-[#FFF8F4] disabled:opacity-60"
+                >
+                  <span className="flex flex-col items-center justify-center gap-1 leading-none">
+                    <Copy className="h-4 w-4 shrink-0" />
+                    <span className="text-[10px] font-semibold">
+                      {copySuccess ? 'Copied' : 'Copy'}
+                    </span>
+                  </span>
+                </Button>
 
-              <Button
-                type="button"
-                variant="outline"
-                onClick={handleResetAttempt}
-                className="h-11 rounded-2xl border-[#F2E7DE] bg-white px-4 text-slate-700 shadow-sm hover:bg-[#FFF8F4]"
-              >
-                <RotateCcw className="mr-2 h-4 w-4" />
-                Reset
-              </Button>
-
-              <Button
-                type="button"
-                variant="outline"
-                onClick={handleCopy}
-                disabled={!practiceText}
-                className="h-11 rounded-2xl border-[#F2E7DE] bg-white px-4 text-slate-700 shadow-sm hover:bg-[#FFF8F4] disabled:opacity-60"
-              >
-                <Copy className="mr-2 h-4 w-4 shrink-0" />
-                <span className="flex flex-col items-start leading-none">
-                  <span className="text-sm font-semibold">{copySuccess ? 'Copied' : 'Copy'}</span>
-                  <span className="mt-1 text-[10px] font-medium text-slate-500">save for later</span>
-                </span>
-              </Button>
-
-              <div className="ml-auto flex flex-wrap items-center gap-2">
                 <button
                   type="button"
                   onClick={() => setVariant('custom')}
-                  className={`rounded-2xl border px-3 py-2 text-sm font-semibold transition-all ${getVariantButtonClass(
+                  className={`h-[54px] min-w-0 rounded-[16px] border px-1 py-1 text-[10px] font-semibold transition-all ${getVariantButtonClass(
                     variant === 'custom',
                   )}`}
                 >
-                  Custom
+                  <span className="flex h-full items-center justify-center text-center leading-tight">
+                    Custom
+                  </span>
                 </button>
-
-                {correctedText ? (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setVariant('corrected');
-                      setCustomText(correctedText);
-                    }}
-                    className={`rounded-2xl border px-3 py-2 text-sm font-semibold transition-all ${getVariantButtonClass(
-                      variant === 'corrected',
-                    )}`}
-                  >
-                    Corrected
-                  </button>
-                ) : null}
-
-                {enhancedText ? (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setVariant('enhanced');
-                      setCustomText(enhancedText);
-                    }}
-                    className={`rounded-2xl border px-3 py-2 text-sm font-semibold transition-all ${getVariantButtonClass(
-                      variant === 'enhanced',
-                    )}`}
-                  >
-                    Enhanced
-                  </button>
-                ) : null}
-
-                {sourceText ? (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setVariant('source');
-                      setCustomText(sourceText);
-                    }}
-                    className={`rounded-2xl border px-3 py-2 text-sm font-semibold transition-all ${getVariantButtonClass(
-                      variant === 'source',
-                    )}`}
-                  >
-                    Original
-                  </button>
-                ) : null}
 
                 <button
                   type="button"
                   onClick={handleClearPracticeLine}
-                  className="rounded-2xl border border-slate-200 bg-white/92 px-3 py-2 text-sm font-semibold text-slate-600 transition-all hover:border-rose-200 hover:bg-rose-50 hover:text-rose-700"
+                  className="h-[54px] min-w-0 rounded-[16px] border border-slate-200 bg-white/92 px-1 py-1 text-[10px] font-semibold text-slate-600 transition-all hover:border-rose-200 hover:bg-rose-50 hover:text-rose-700"
                 >
-                  <span className="inline-flex items-center gap-2">
-                    <Eraser className="h-4 w-4" />
-                    Clear
+                  <span className="flex h-full flex-col items-center justify-center gap-1 leading-none">
+                    <Eraser className="h-4 w-4 shrink-0" />
+                    <span>Clear</span>
                   </span>
                 </button>
 
-                {shouldShowLogicButton ? (
-                  <Button
-                    type="button"
-                    variant="outline"
-                    onClick={onOpenEnglishLogic}
-                    className="h-11 rounded-2xl border-violet-200 bg-white text-violet-700 shadow-sm hover:bg-violet-50"
-                  >
-                    <BookOpenText className="mr-2 h-4 w-4" />
-                    Understand why
-                  </Button>
-                ) : null}
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => {
+                    if (onOpenEnglishLogic) onOpenEnglishLogic();
+                  }}
+                  disabled={!canOpenLogic}
+                  className="h-[54px] min-w-0 rounded-[16px] border-violet-200 bg-white px-1 py-1 text-violet-700 shadow-sm hover:bg-violet-50 disabled:opacity-50"
+                >
+                  <span className="flex h-full flex-col items-center justify-center leading-[1.02]">
+                    <span className="text-[9px] font-semibold">Understand</span>
+                    <span className="text-[9px] font-semibold">why</span>
+                  </span>
+                </Button>
               </div>
             </div>
 
@@ -2010,112 +2059,52 @@ export function MercySpeakTab({
             ) : null}
           </div>
 
-          <div className="grid gap-3 md:grid-cols-[1.15fr_0.85fr]">
-            <div className="rounded-[22px] border border-white/80 bg-white p-4 shadow-sm">
-              <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                {transcriptLabel}
+          <div
+            className={`rounded-[22px] border p-4 shadow-sm ${
+              transcript
+                ? matchTone.ring
+                : 'border-[#F1E5DB] bg-gradient-to-br from-[#FFF9F3] to-white'
+            }`}
+          >
+            <div className="flex items-start justify-between gap-3">
+              <p className="text-[44px] font-semibold leading-none text-slate-900">
+                {transcript ? `${matchScore}%` : '--'}
               </p>
-              <p className="mt-2 min-h-[72px] text-sm leading-6 text-slate-700">
-                {transcript || 'Your transcript will appear here after you speak.'}
-              </p>
+
+              {transcript ? (
+                <span
+                  className={`rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide ${matchTone.text}`}
+                >
+                  {confidenceLabel}
+                </span>
+              ) : null}
             </div>
 
-            <div
-              className={`rounded-[22px] border p-4 shadow-sm ${
-                transcript
-                  ? matchTone.ring
-                  : 'border-[#F1E5DB] bg-gradient-to-br from-[#FFF9F3] to-white'
-              }`}
-            >
-              <div className="flex items-start justify-between gap-3">
-                <p className="text-[44px] font-semibold leading-none text-slate-900">
-                  {transcript ? `${matchScore}%` : '--'}
-                </p>
-
-                {transcript ? (
-                  <span
-                    className={`rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide ${matchTone.text}`}
-                  >
-                    {confidenceLabel}
-                  </span>
-                ) : null}
-              </div>
-
-              <div className="mt-4 h-2.5 overflow-hidden rounded-full bg-white/90">
-                <div
-                  className={`h-full rounded-full bg-gradient-to-r transition-all duration-500 ${matchTone.bar}`}
-                  style={{ width: `${transcript ? matchScore : 0}%` }}
-                />
-              </div>
-
-              <p className="mt-3 text-sm leading-6 text-slate-600">{coachMessage}</p>
+            <div className="mt-4 h-2.5 overflow-hidden rounded-full bg-white/90">
+              <div
+                className={`h-full rounded-full bg-gradient-to-r transition-all duration-500 ${matchTone.bar}`}
+                style={{ width: `${transcript ? matchScore : 0}%` }}
+              />
             </div>
           </div>
 
-          {showAdultFeedbackCard ? (
-            <div className="rounded-[22px] border border-white/80 bg-white p-4 shadow-sm">
-              {feedbackNotes.length > 0 ? (
-                <div className="space-y-1.5">
-                  {feedbackNotes.map((note) => (
-                    <p key={note} className="text-sm leading-6 text-slate-700">
-                      {note}
-                    </p>
-                  ))}
-                </div>
-              ) : null}
+          <div className="rounded-[22px] border border-white/80 bg-white p-4 shadow-sm">
+            <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+              {transcriptLabel}
+            </p>
+            <p className="mt-2 min-h-[72px] text-sm leading-6 text-slate-700">
+              {transcript || 'Your transcript will appear here after you speak.'}
+            </p>
+          </div>
 
-              {displayedTroubleWords.length > 0 ? (
-                <div className={feedbackNotes.length > 0 ? 'mt-3' : ''}>
-                  <div className="flex items-center gap-2">
-                    <Wand2 className="h-4 w-4 text-[#E76F51]" />
-                    <p className="text-sm font-semibold text-slate-900">{troubleLabel}</p>
-                  </div>
-
-                  <div className="mt-2 flex flex-wrap gap-2">
-                    {displayedTroubleWords.map((word) => (
-                      <span
-                        key={word}
-                        className="rounded-full border border-[#F2DDD0] bg-gradient-to-r from-[#FFF5EF] to-white px-3 py-1 text-xs font-medium text-[#875E4B] shadow-sm"
-                      >
-                        {word}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ) : null}
-
-              <p className={`${feedbackNotes.length > 0 || displayedTroubleWords.length > 0 ? 'mt-3' : ''} text-sm leading-6 text-slate-600`}>
-                {nextStepMessage}
-              </p>
-            </div>
-          ) : null}
-
-          {shouldShowAdultWhyCard ? (
-            <div className="rounded-[22px] border border-white/80 bg-white p-4 shadow-sm">
-              <div className="flex items-center gap-2">
-                <BookOpenText className="h-4 w-4 text-violet-600" />
-                <p className="text-sm font-semibold text-slate-900">Original → better</p>
-              </div>
-
-              <div className="mt-3 grid gap-3 md:grid-cols-2">
-                <div className="rounded-[20px] border border-[#F1E5DB] bg-gradient-to-br from-[#FFF9F3] to-white p-3">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                    Original
-                  </p>
-                  <p className="mt-2 text-sm leading-6 text-slate-700">{sourceText}</p>
-                </div>
-
-                <div className="rounded-[20px] border border-[#F1E5DB] bg-gradient-to-br from-[#FFF9F3] to-white p-3">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                    Better
-                  </p>
-                  <p className="mt-2 text-sm leading-6 text-slate-700">
-                    {enhancedText || correctedText}
-                  </p>
-                </div>
-              </div>
-            </div>
-          ) : null}
+          <audio
+            ref={recordedAudioRef}
+            className="hidden"
+            src={recordedAudioUrl || undefined}
+            preload="metadata"
+          >
+            Your browser does not support audio playback.
+          </audio>
         </div>
       </div>
     </div>
