@@ -6,7 +6,6 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   X,
-  User,
   ChevronDown,
   Mic,
   Brain,
@@ -68,7 +67,6 @@ type MercyGuidePanelProps = {
   onToggleFullscreen?: () => void;
 
   onCloseGuide?: () => void;
-  onCollapseGuide?: () => void;
   onPanelDragStart?: (event: React.PointerEvent<HTMLDivElement>) => void;
   onAvatarError?: (event: React.SyntheticEvent<HTMLImageElement>) => void;
   onUpdateInteraction?: () => void;
@@ -147,21 +145,8 @@ type AccessFeatures = {
   hasMercyLogic: boolean;
 };
 
-type SavedLessonSnapshot = {
-  id: string;
-  roomId: string;
-  roomTitle: string;
-  savedAt: string;
-  lessonSignature: string;
-  latestTeacherWritingState: GrammarWritingTeacherState | null;
-  latestAnalysisResult: GrammarApiResponse | null;
-  pronunciationPayload: PronunciationLaunchPayload | null;
-  learningSupportMode: LearningSupportMode;
-};
-
 const LEARNING_SUPPORT_STORAGE_KEY = 'mercy.learningSupportMode';
 const TEACHER_MODE_STORAGE_KEY = 'mercy.teacherMode';
-const SAVED_LESSONS_STORAGE_KEY = 'mercy.savedLessons.v1';
 
 const LEARNING_SUPPORT_OPTIONS: LearningSupportOption[] = [
   {
@@ -348,90 +333,6 @@ function writeStoredTeacherMode(value: TeacherMode): void {
 
   try {
     window.localStorage.setItem(TEACHER_MODE_STORAGE_KEY, value);
-  } catch {
-    // ignore storage failures
-  }
-}
-
-function hasMeaningfulAnalysisResult(
-  value: GrammarApiResponse | null | undefined,
-): value is GrammarApiResponse {
-  if (!value) return false;
-
-  const candidate = value as {
-    correctedText?: string | null;
-    enhancedText?: string | null;
-  };
-
-  return Boolean(
-    cleanText(candidate.correctedText) || cleanText(candidate.enhancedText),
-  );
-}
-
-function hasMeaningfulPronunciationPayload(
-  value: PronunciationLaunchPayload | null | undefined,
-): value is PronunciationLaunchPayload {
-  if (!value) return false;
-
-  return Boolean(
-    cleanText(value.sourceText) ||
-      cleanText(value.correctedText) ||
-      cleanText(value.enhancedText),
-  );
-}
-
-function buildLessonSignature({
-  latestSubmittedText,
-  analysisResult,
-  payload,
-  roomId,
-}: {
-  latestSubmittedText?: string | null;
-  analysisResult?: GrammarApiResponse | null;
-  payload?: PronunciationLaunchPayload | null;
-  roomId?: string | null;
-}): string {
-  const candidate = analysisResult as
-    | {
-        correctedText?: string | null;
-        enhancedText?: string | null;
-      }
-    | null
-    | undefined;
-
-  return [
-    cleanText(roomId),
-    cleanText(latestSubmittedText),
-    cleanText(candidate?.correctedText),
-    cleanText(candidate?.enhancedText),
-    cleanText(payload?.sourceText),
-    cleanText(payload?.correctedText),
-    cleanText(payload?.enhancedText),
-  ].join('||');
-}
-
-function readSavedLessons(): SavedLessonSnapshot[] {
-  if (typeof window === 'undefined') return [];
-
-  try {
-    const raw = window.localStorage.getItem(SAVED_LESSONS_STORAGE_KEY);
-    if (!raw) return [];
-
-    const parsed = JSON.parse(raw);
-    return Array.isArray(parsed) ? (parsed as SavedLessonSnapshot[]) : [];
-  } catch {
-    return [];
-  }
-}
-
-function writeSavedLessons(value: SavedLessonSnapshot[]): void {
-  if (typeof window === 'undefined') return;
-
-  try {
-    window.localStorage.setItem(
-      SAVED_LESSONS_STORAGE_KEY,
-      JSON.stringify(value.slice(0, 20)),
-    );
   } catch {
     // ignore storage failures
   }
@@ -846,7 +747,6 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
   onToggleFullscreen,
 
   onCloseGuide,
-  onCollapseGuide,
   onPanelDragStart,
   onAvatarError,
   onUpdateInteraction,
@@ -904,10 +804,6 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
   const [selectedKidsObjectKey, setSelectedKidsObjectKey] = useState<string>(
     DEFAULT_KIDS_OBJECT_KEY,
   );
-  const [lessonSessionKey, setLessonSessionKey] = useState(0);
-  const [ignoredLessonSignature, setIgnoredLessonSignature] = useState('');
-  const [saveFeedback, setSaveFeedback] = useState<'idle' | 'saved'>('idle');
-  const [savedLessonCount, setSavedLessonCount] = useState(0);
 
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -921,7 +817,6 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
 
   useEffect(() => {
     setLearningSupportMode(readStoredLearningSupportMode());
-    setSavedLessonCount(readSavedLessons().length);
   }, []);
 
   useEffect(() => {
@@ -1073,66 +968,13 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
     }
   }, [activeTab]);
 
-  const incomingLessonSignature = useMemo(
-    () =>
-      buildLessonSignature({
-        latestSubmittedText: latestTeacherWritingState?.latestSubmittedText,
-        analysisResult:
-          latestAnalysisResult ?? latestTeacherWritingState?.latestAnalysisResult ?? null,
-        payload: pendingPronunciationPayload,
-        roomId,
-      }),
-    [
-      latestAnalysisResult,
-      latestTeacherWritingState?.latestAnalysisResult,
-      latestTeacherWritingState?.latestSubmittedText,
-      pendingPronunciationPayload,
-      roomId,
-    ],
-  );
-
-  useEffect(() => {
-    if (!ignoredLessonSignature) return;
-    if (ignoredLessonSignature !== incomingLessonSignature) {
-      setIgnoredLessonSignature('');
-    }
-  }, [ignoredLessonSignature, incomingLessonSignature]);
-
-  useEffect(() => {
-    if (saveFeedback !== 'saved' || typeof window === 'undefined') {
-      return;
-    }
-
-    const timer = window.setTimeout(() => {
-      setSaveFeedback('idle');
-    }, 1800);
-
-    return () => window.clearTimeout(timer);
-  }, [saveFeedback]);
-
-  const resolvedLatestAnalysisResult = useMemo(() => {
-    if (incomingLessonSignature === ignoredLessonSignature) {
-      return null;
-    }
-
-    return latestAnalysisResult ?? latestTeacherWritingState?.latestAnalysisResult ?? null;
-  }, [
-    ignoredLessonSignature,
-    incomingLessonSignature,
-    latestAnalysisResult,
-    latestTeacherWritingState?.latestAnalysisResult,
-  ]);
+  const resolvedLatestAnalysisResult =
+    latestAnalysisResult ?? latestTeacherWritingState?.latestAnalysisResult ?? null;
 
   const resolvedTeacherTask =
-    incomingLessonSignature === ignoredLessonSignature
-      ? null
-      : activeTeacherTask ?? latestTeacherWritingState?.teacherTask ?? null;
+    activeTeacherTask ?? latestTeacherWritingState?.teacherTask ?? null;
 
   const pronunciationPayload = useMemo<PronunciationLaunchPayload | null>(() => {
-    if (incomingLessonSignature === ignoredLessonSignature) {
-      return null;
-    }
-
     if (pendingPronunciationPayload) {
       return pendingPronunciationPayload;
     }
@@ -1151,48 +993,8 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
       enhancedText: enhancedText || undefined,
     };
   }, [
-    ignoredLessonSignature,
-    incomingLessonSignature,
     latestTeacherWritingState?.latestSubmittedText,
     pendingPronunciationPayload,
-    resolvedLatestAnalysisResult,
-  ]);
-
-  const currentLessonSignature = useMemo(() => {
-    if (incomingLessonSignature === ignoredLessonSignature) {
-      return '';
-    }
-
-    return buildLessonSignature({
-      latestSubmittedText: latestTeacherWritingState?.latestSubmittedText,
-      analysisResult: resolvedLatestAnalysisResult,
-      payload: pronunciationPayload,
-      roomId,
-    });
-  }, [
-    ignoredLessonSignature,
-    incomingLessonSignature,
-    latestTeacherWritingState?.latestSubmittedText,
-    pronunciationPayload,
-    resolvedLatestAnalysisResult,
-    roomId,
-  ]);
-
-  const hasCurrentLesson = useMemo(() => {
-    if (incomingLessonSignature === ignoredLessonSignature) {
-      return false;
-    }
-
-    return Boolean(
-      cleanText(latestTeacherWritingState?.latestSubmittedText) ||
-        hasMeaningfulAnalysisResult(resolvedLatestAnalysisResult) ||
-        hasMeaningfulPronunciationPayload(pronunciationPayload),
-    );
-  }, [
-    ignoredLessonSignature,
-    incomingLessonSignature,
-    latestTeacherWritingState?.latestSubmittedText,
-    pronunciationPayload,
     resolvedLatestAnalysisResult,
   ]);
 
@@ -1235,70 +1037,6 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
 
     onClose?.();
   }, [onClose, onCloseGuide]);
-
-  const handleCollapse = useCallback(() => {
-    if (onCollapseGuide) {
-      onCollapseGuide();
-      return;
-    }
-
-    onClose?.();
-  }, [onClose, onCollapseGuide]);
-
-  const handleClearLesson = useCallback(() => {
-    if (!hasCurrentLesson || !currentLessonSignature) {
-      return;
-    }
-
-    setIgnoredLessonSignature(currentLessonSignature);
-    setLessonSessionKey((value) => value + 1);
-    setSaveFeedback('idle');
-    safelyUpdateInteraction();
-    onAnalysisResult?.(null);
-  }, [
-    currentLessonSignature,
-    hasCurrentLesson,
-    onAnalysisResult,
-    safelyUpdateInteraction,
-  ]);
-
-  const handleSaveLesson = useCallback(() => {
-    if (!hasCurrentLesson || !currentLessonSignature) {
-      return;
-    }
-
-    const snapshot: SavedLessonSnapshot = {
-      id: `${Date.now()}`,
-      roomId: cleanText(roomId),
-      roomTitle: cleanText(roomTitle),
-      savedAt: new Date().toISOString(),
-      lessonSignature: currentLessonSignature,
-      latestTeacherWritingState: latestTeacherWritingState ?? null,
-      latestAnalysisResult: resolvedLatestAnalysisResult ?? null,
-      pronunciationPayload: pronunciationPayload ?? null,
-      learningSupportMode,
-    };
-
-    const existing = readSavedLessons().filter(
-      (item) => item.lessonSignature !== currentLessonSignature,
-    );
-    const updated = [snapshot, ...existing].slice(0, 20);
-
-    writeSavedLessons(updated);
-    setSavedLessonCount(updated.length);
-    setSaveFeedback('saved');
-    safelyUpdateInteraction();
-  }, [
-    currentLessonSignature,
-    hasCurrentLesson,
-    latestTeacherWritingState,
-    learningSupportMode,
-    pronunciationPayload,
-    resolvedLatestAnalysisResult,
-    roomId,
-    roomTitle,
-    safelyUpdateInteraction,
-  ]);
 
   const handleOpenWriting = useCallback(() => {
     if (disableTeacherWriting || hideGrammarTab || kidsModeActive) {
@@ -1452,23 +1190,6 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
 
             <button
               type="button"
-              className="rounded-full border border-transparent bg-white/75 p-2 text-slate-500 transition hover:border-slate-200 hover:bg-white hover:text-slate-700"
-              aria-label="Profile"
-            >
-              <User size={17} />
-            </button>
-
-            <button
-              type="button"
-              onClick={handleCollapse}
-              className="rounded-full border border-transparent bg-white/75 p-2 text-slate-500 transition hover:border-slate-200 hover:bg-white hover:text-slate-700"
-              aria-label="Collapse Mercy panel"
-            >
-              <ChevronDown size={17} />
-            </button>
-
-            <button
-              type="button"
               onClick={handleClose}
               className="rounded-full border border-transparent bg-white/75 p-2 text-slate-400 transition hover:border-red-100 hover:bg-red-50 hover:text-red-500"
               aria-label="Close Mercy panel"
@@ -1574,39 +1295,8 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
             />
           ) : null}
 
-          {!kidsModeActive && hasCurrentLesson ? (
-            <div className="mb-3 flex flex-wrap items-center justify-end gap-2">
-              {savedLessonCount > 0 ? (
-                <div className="rounded-full border border-slate-200 bg-white/85 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500 shadow-sm">
-                  Saved {savedLessonCount}
-                </div>
-              ) : null}
-
-              <button
-                type="button"
-                onClick={handleSaveLesson}
-                className={`rounded-2xl border px-3 py-2 text-sm font-semibold transition ${
-                  saveFeedback === 'saved'
-                    ? 'border-emerald-200 bg-emerald-50 text-emerald-700'
-                    : 'border-[#D9E6FF] bg-white text-slate-700 hover:border-[#BFD5FF] hover:bg-[#F8FBFF]'
-                }`}
-              >
-                {saveFeedback === 'saved' ? 'Saved' : 'Save lesson'}
-              </button>
-
-              <button
-                type="button"
-                onClick={handleClearLesson}
-                className="rounded-2xl border border-rose-200 bg-white px-3 py-2 text-sm font-semibold text-rose-700 transition hover:bg-rose-50"
-              >
-                Clear lesson
-              </button>
-            </div>
-          ) : null}
-
-          <div className={activeTab === 'teacher' ? 'block h-full' : 'hidden'}>
+          {activeTab === 'teacher' && (
             <MercyTeacherTab
-              key={`teacher-${lessonSessionKey}`}
               latestTeacherWritingState={latestTeacherWritingState}
               latestAnalysisResult={resolvedLatestAnalysisResult}
               teacherMemorySummary={teacherMemorySummary}
@@ -1631,37 +1321,34 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
               selectedKidsObjectKey={selectedKidsObjectKey}
               onSelectKidsObject={setSelectedKidsObjectKey}
             />
-          </div>
+          )}
 
-          {accessFeatures.hasMercyGrammar && !hideGrammarTab && !disableGrammarAnalysis && !kidsModeActive ? (
-            <div className={activeTab === 'grammar' ? 'block' : 'hidden'}>
-              <GrammarWritingTab
-                key={`grammar-${lessonSessionKey}`}
-                roomId={roomId}
-                roomTitle={roomTitle}
-                contentEn={contentEn}
-                englishLevel={
-                  (profile as { english_level?: string | null } | null | undefined)?.english_level ??
-                  null
+          {activeTab === 'grammar' && accessFeatures.hasMercyGrammar && !hideGrammarTab && !disableGrammarAnalysis && !kidsModeActive && (
+            <GrammarWritingTab
+              roomId={roomId}
+              roomTitle={roomTitle}
+              contentEn={contentEn}
+              englishLevel={
+                (profile as { english_level?: string | null } | null | undefined)?.english_level ??
+                null
+              }
+              learningSupportMode={learningSupportMode}
+              teacherTask={resolvedTeacherTask ?? undefined}
+              onAnalysisResult={onAnalysisResult}
+              onTeacherWritingStateChange={onTeacherWritingStateChange}
+              onPracticePronunciation={(payload) => {
+                if (!accessFeatures.hasMercySpeak) {
+                  goToPricing();
+                  return;
                 }
-                learningSupportMode={learningSupportMode}
-                teacherTask={resolvedTeacherTask ?? undefined}
-                onAnalysisResult={onAnalysisResult}
-                onTeacherWritingStateChange={onTeacherWritingStateChange}
-                onPracticePronunciation={(payload) => {
-                  if (!accessFeatures.hasMercySpeak) {
-                    goToPricing();
-                    return;
-                  }
 
-                  onPracticePronunciation?.(payload);
-                  handleTabChange('pronunciation');
-                }}
-                onOpenEnglishLogic={handleOpenLogic}
-                onMemoryUpdate={onMemoryUpdate}
-              />
-            </div>
-          ) : null}
+                onPracticePronunciation?.(payload);
+                handleTabChange('pronunciation');
+              }}
+              onOpenEnglishLogic={handleOpenLogic}
+              onMemoryUpdate={onMemoryUpdate}
+            />
+          )}
 
           {activeTab === 'grammar' && (!accessFeatures.hasMercyGrammar || hideGrammarTab || disableGrammarAnalysis || kidsModeActive) ? (
             <LockedAccessCard
@@ -1675,38 +1362,35 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
             />
           ) : null}
 
-          {accessFeatures.hasMercySpeak ? (
-            <div className={activeTab === 'pronunciation' ? 'block h-full' : 'hidden'}>
-              <MercySpeakTab
-                key={`pronunciation-${lessonSessionKey}`}
-                roomId={roomId}
-                roomTitle={roomTitle}
-                contentEn={contentEn}
-                profile={
-                  profile as
-                    | {
-                        preferred_name?: string | null;
-                        english_level?: string | null;
-                      }
-                    | null
-                    | undefined
-                }
-                troubleWords={normalizedTroubleWords}
-                speakPractice={speakPractice}
-                launchPayload={pronunciationPayload}
-                pendingPayload={pronunciationPayload}
-                pendingPronunciationPayload={pronunciationPayload}
-                onMemoryUpdate={onMemoryUpdate}
-                onOpenEnglishLogic={disableEnglishLogic || hideLogicTab || kidsModeActive ? undefined : handleOpenLogic}
-                learningSupportMode={kidsModeActive ? 'gentle' : learningSupportMode}
-                isKidsMode={kidsModeActive}
-                kidsModeAgeBand={kidsModeAgeBand}
-                preferTapAndRepeat={kidsModeActive || preferTapAndRepeat}
-                teacherLabel={cleanText(panelTitle) || cleanText(bubbleLabel) || 'Teacher Mercy'}
-                selectedKidsObjectKey={selectedKidsObjectKey}
-              />
-            </div>
-          ) : null}
+          {activeTab === 'pronunciation' && accessFeatures.hasMercySpeak && (
+            <MercySpeakTab
+              roomId={roomId}
+              roomTitle={roomTitle}
+              contentEn={contentEn}
+              profile={
+                profile as
+                  | {
+                      preferred_name?: string | null;
+                      english_level?: string | null;
+                    }
+                  | null
+                  | undefined
+              }
+              troubleWords={normalizedTroubleWords}
+              speakPractice={speakPractice}
+              launchPayload={pronunciationPayload}
+              pendingPayload={pronunciationPayload}
+              pendingPronunciationPayload={pronunciationPayload}
+              onMemoryUpdate={onMemoryUpdate}
+              onOpenEnglishLogic={disableEnglishLogic || hideLogicTab || kidsModeActive ? undefined : handleOpenLogic}
+              learningSupportMode={kidsModeActive ? 'gentle' : learningSupportMode}
+              isKidsMode={kidsModeActive}
+              kidsModeAgeBand={kidsModeAgeBand}
+              preferTapAndRepeat={kidsModeActive || preferTapAndRepeat}
+              teacherLabel={cleanText(panelTitle) || cleanText(bubbleLabel) || 'Teacher Mercy'}
+              selectedKidsObjectKey={selectedKidsObjectKey}
+            />
+          )}
 
           {activeTab === 'pronunciation' && !accessFeatures.hasMercySpeak ? (
             <LockedAccessCard
@@ -1716,27 +1400,24 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
             />
           ) : null}
 
-          {accessFeatures.hasMercyLogic && !hideLogicTab && !disableEnglishLogic && !kidsModeActive ? (
-            <div className={activeTab === 'logic' ? 'block' : 'hidden'}>
-              <EnglishLogicTab
-                key={`logic-${lessonSessionKey}`}
-                roomTitle={roomTitle}
-                contentEn={contentEn}
-                learningSupportMode={learningSupportMode}
-                troubleWords={normalizedTroubleWords}
-                latestTeacherWritingState={latestTeacherWritingState}
-                latestAnalysisResult={resolvedLatestAnalysisResult}
-                pendingPronunciationPayload={pronunciationPayload}
-                onOpenPronunciation={handleOpenPronunciation}
-                onOpenWriting={handleOpenWriting}
-                onMemoryUpdate={onMemoryUpdate}
-                onVaultReplay={() => {}}
-                isKidsMode={kidsModeActive}
-                kidsModeAgeBand={kidsModeAgeBand}
-                teacherLabel={cleanText(panelTitle) || cleanText(bubbleLabel) || 'Teacher Mercy'}
-              />
-            </div>
-          ) : null}
+          {activeTab === 'logic' && accessFeatures.hasMercyLogic && !hideLogicTab && !disableEnglishLogic && !kidsModeActive && (
+            <EnglishLogicTab
+              roomTitle={roomTitle}
+              contentEn={contentEn}
+              learningSupportMode={learningSupportMode}
+              troubleWords={normalizedTroubleWords}
+              latestTeacherWritingState={latestTeacherWritingState}
+              latestAnalysisResult={resolvedLatestAnalysisResult}
+              pendingPronunciationPayload={pronunciationPayload}
+              onOpenPronunciation={handleOpenPronunciation}
+              onOpenWriting={handleOpenWriting}
+              onMemoryUpdate={onMemoryUpdate}
+              onVaultReplay={() => {}}
+              isKidsMode={kidsModeActive}
+              kidsModeAgeBand={kidsModeAgeBand}
+              teacherLabel={cleanText(panelTitle) || cleanText(bubbleLabel) || 'Teacher Mercy'}
+            />
+          )}
 
           {activeTab === 'logic' && (!accessFeatures.hasMercyLogic || hideLogicTab || disableEnglishLogic || kidsModeActive) ? (
             <LockedAccessCard

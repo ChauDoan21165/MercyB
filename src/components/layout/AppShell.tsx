@@ -1,4 +1,7 @@
-// src/components/layout/AppShell.tsx
+/**
+ * File: AppShell.tsx
+ * Path: src/components/layout/AppShell.tsx
+ */
 
 import React from "react";
 import { HomeButton } from "@/components/HomeButton";
@@ -65,19 +68,30 @@ export function AppShell({
       `}</style>
 
       {!hideHeader && (
-        <header className="sticky top-0 z-40 w-full border-b border-border/40 bg-background/80 backdrop-blur-sm">
-          <div className="mx-auto grid h-12 max-w-[980px] grid-cols-[auto,1fr,auto] items-center px-4">
+        <header className="sticky top-0 z-40 w-full border-b border-border/40 bg-background/88 backdrop-blur-md">
+          <div className="mx-auto grid h-14 max-w-[980px] grid-cols-[auto,minmax(0,1fr),auto] items-center px-3 sm:px-4">
             <div className="flex items-center gap-2">
               <HomeButton />
               <BackButton />
             </div>
 
-            <div className="flex justify-center">
+            <div className="flex min-w-0 justify-center px-1">
               <Link
                 to="/"
-                className="bg-gradient-to-r from-[hsl(var(--rainbow-magenta))] via-[hsl(var(--rainbow-purple))] to-[hsl(var(--rainbow-cyan))] bg-clip-text text-lg font-semibold tracking-tight text-transparent transition-opacity hover:opacity-80"
+                aria-label="Mercy Blade home"
+                className="inline-flex min-w-0 items-end justify-center gap-[2px] leading-none transition-opacity hover:opacity-85"
               >
-                Mercy Blade
+                <span
+                  className="shrink-0 bg-gradient-to-r from-[hsl(var(--rainbow-red))] via-[hsl(var(--rainbow-yellow))] via-[hsl(var(--rainbow-green))] to-[hsl(var(--rainbow-purple))] bg-clip-text text-[34px] font-black tracking-[-0.08em] text-transparent sm:text-[38px]"
+                  style={{
+                    textShadow: "0 1px 2px rgba(0,0,0,0.06)",
+                  }}
+                >
+                  M
+                </span>
+                <span className="truncate pb-[4px] text-[18px] font-semibold tracking-[-0.04em] text-foreground/85 sm:text-[20px]">
+                  ercyBlade
+                </span>
               </Link>
             </div>
 

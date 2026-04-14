@@ -129,7 +129,7 @@ function AppHeroShell() {
   const bandInner: React.CSSProperties = {
     maxWidth: FRAME_MAX,
     margin: "0 auto",
-    padding: `4px ${FRAME_PAD_X}px 0`,
+    padding: `4px ${FRAME_PAD_X}px 2px`,
     display: "grid",
     gridTemplateColumns: "1fr auto 1fr",
     alignItems: "center",
@@ -199,19 +199,26 @@ function AppHeroShell() {
     justifySelf: "center",
     lineHeight: 0,
     textDecoration: "none",
-    minHeight: 44,
+    width: "min(190px, 46vw)",
+    height: 56,
+    minHeight: 56,
     padding: 0,
+    overflow: "hidden",
   };
 
   const brandImg: React.CSSProperties = {
     display: "block",
-    width: "auto",
-    height: "44px",
-    maxHeight: "44px",
+    width: "min(250px, 62vw)",
+    height: 84,
     maxWidth: "none",
+    maxHeight: "none",
     objectFit: "contain",
     objectPosition: "center",
-    filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.08))",
+    transform: "translateY(-1px) scale(1.62)",
+    transformOrigin: "center center",
+    filter: "none",
+    userSelect: "none",
+    pointerEvents: "none",
   };
 
   const onBack = () => {

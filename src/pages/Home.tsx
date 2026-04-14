@@ -10,7 +10,6 @@ import { LibraryBig } from "lucide-react";
 import BottomMusicBar from "@/components/audio/BottomMusicBar";
 import { MercyGuide } from "@/components/MercyGuide";
 import { GuideBox } from "@/components/GuideBox";
-import { useAuth } from "@/providers/AuthProvider";
 
 const PAGE_MAX = 980;
 const LS_ZOOM = "mb.ui.zoom";
@@ -21,27 +20,6 @@ const GUIDE_BOX_BUBBLE_STORAGE_KEY = "guide-box-bubble-position-v8-left";
 
 const GUIDE_BUBBLE_SIZE = 92;
 const MERCY_BUBBLE_SIZE = 64;
-
-function toDisplayName(email: string, meta: unknown) {
-  const safeMeta =
-    meta && typeof meta === "object" ? (meta as Record<string, unknown>) : null;
-
-  const fullName = String(
-    safeMeta?.full_name ?? safeMeta?.name ?? safeMeta?.display_name ?? "",
-  ).trim();
-
-  if (fullName) return fullName;
-
-  const firstName = String(safeMeta?.first_name ?? "").trim();
-  if (firstName) return firstName;
-
-  const local = email.split("@")[0]?.trim() ?? "";
-  if (!local) return "friend";
-
-  return local
-    .replace(/[._-]+/g, " ")
-    .replace(/\b\w/g, (m) => m.toUpperCase());
-}
 
 function clamp(n: number, a: number, b: number) {
   return Math.max(a, Math.min(b, n));
@@ -99,7 +77,6 @@ function hasOpenTeacherMercyPanel(): boolean {
 
 export default function Home() {
   const nav = useNavigate();
-  const { user, isLoading } = useAuth();
 
   const [viewportWidth, setViewportWidth] = useState<number>(
     typeof window === "undefined" ? 1200 : window.innerWidth,
@@ -175,13 +152,8 @@ export default function Home() {
   }, []);
 
   const isDesktopTop = viewportWidth >= 960;
-  const isSignedIn = !!user?.id;
-  const userEmail = String(user?.email ?? "").trim();
-
-  const displayName = useMemo(
-    () => toDisplayName(userEmail, user?.user_metadata),
-    [userEmail, user?.user_metadata],
-  );
+  const isCompactHeadline = viewportWidth < 640;
+  const mobileHeadlineSize = viewportWidth <= 380 ? 20 : 22;
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -281,66 +253,18 @@ export default function Home() {
     background:
       "linear-gradient(180deg, rgba(255,252,245,0.98), rgba(248,243,234,0.94))",
     boxShadow: "0 18px 42px rgba(0,0,0,0.07)",
-    padding: isDesktopTop ? "24px 24px 28px" : "22px 16px 26px",
+    padding: isDesktopTop ? "24px 24px 28px" : "20px 16px 24px",
     textAlign: "center",
   };
 
-  const statusRow: React.CSSProperties = {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    gap: 10,
-    flexWrap: "wrap",
-  };
-
-  const statusBadge: React.CSSProperties = {
-    display: "inline-flex",
-    alignItems: "center",
-    gap: 8,
-    padding: "7px 12px",
-    borderRadius: 9999,
-    border: "1px solid rgba(16,185,129,0.22)",
-    background: "rgba(236,253,245,0.90)",
-    fontSize: z(12),
-    fontWeight: 900,
-    color: "rgba(6,95,70,0.92)",
-  };
-
-  const statusDot: React.CSSProperties = {
-    width: 9,
-    height: 9,
-    borderRadius: 9999,
-    background: isLoading
-      ? "rgba(0,0,0,0.28)"
-      : isSignedIn
-        ? "rgb(16,185,129)"
-        : "rgba(0,0,0,0.26)",
-  };
-
-  const topRightPill: React.CSSProperties = {
-    display: "inline-flex",
-    alignItems: "center",
-    minWidth: 0,
-    maxWidth: "100%",
-    padding: "7px 12px",
-    borderRadius: 9999,
-    border: "1px solid rgba(0,0,0,0.08)",
-    background: "rgba(255,255,255,0.86)",
-    fontSize: z(12),
-    fontWeight: 900,
-    color: "rgba(0,0,0,0.70)",
-    whiteSpace: "nowrap",
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-  };
-
   const headline: React.CSSProperties = {
-    margin: isSignedIn || isLoading ? "18px 0 0" : "8px 0 0",
-    fontSize: isDesktopTop ? z(42) : z(26),
+    margin: "2px 0 0",
+    fontSize: isDesktopTop ? z(42) : z(mobileHeadlineSize),
     fontWeight: 950,
-    lineHeight: 1.02,
-    letterSpacing: -1.2,
+    lineHeight: isCompactHeadline ? 1.08 : 1.02,
+    letterSpacing: isCompactHeadline ? -0.9 : -1.2,
     color: "rgba(10,10,10,0.96)",
+    whiteSpace: "nowrap",
   };
 
   const headlineAccent: React.CSSProperties = {
@@ -483,21 +407,6 @@ export default function Home() {
     <div style={wrap}>
       <div style={frame}>
         <section style={heroShell} aria-label="Homepage hero">
-          {isSignedIn || isLoading ? (
-            <div style={statusRow}>
-              <div style={statusBadge} aria-live="polite">
-                <span style={statusDot} />
-                <span>{isLoading ? "Checking sign-in..." : "Signed in"}</span>
-              </div>
-
-              {isSignedIn ? (
-                <div style={topRightPill} title={`Welcome, ${displayName}`}>
-                  Welcome, {displayName}
-                </div>
-              ) : null}
-            </div>
-          ) : null}
-
           <h1 style={headline}>
             <span>Small Steps.</span>{" "}
             <span style={headlineAccent}>Real Progress.</span>

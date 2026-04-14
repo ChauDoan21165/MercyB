@@ -84,6 +84,15 @@ type KidsBuddy = {
   retryLine: string;
 };
 
+type KidsBuddyMood =
+  | 'idle'
+  | 'listen'
+  | 'hear'
+  | 'again'
+  | 'good'
+  | 'great'
+  | 'wow';
+
 const KIDS_OBJECT_KEYS = [
   'airplane',
   'apple',
@@ -330,7 +339,51 @@ function getKidsBuddyByKey(key?: string | null): KidsBuddy {
   return KIDS_BUDDIES.find((item) => item.key === key) ?? KIDS_BUDDIES[0];
 }
 
-function playKidsCelebrationSound(level: 'good' | 'great') {
+function getKidsBuddyDecorations(key: string): string[] {
+  switch (key) {
+    case 'dog':
+      return ['🦴', '⭐', '💛'];
+    case 'cat':
+      return ['🐾', '✨', '🌙'];
+    case 'rabbit':
+      return ['🥕', '⭐', '💗'];
+    case 'bear':
+      return ['🍯', '⭐', '🤍'];
+    case 'panda':
+      return ['🍃', '✨', '💚'];
+    case 'fox':
+      return ['🍂', '✨', '🧡'];
+    case 'lion':
+      return ['👑', '⭐', '☀️'];
+    case 'elephant':
+      return ['🌼', '⭐', '💙'];
+    case 'monkey':
+      return ['🍌', '⭐', '🎉'];
+    default:
+      return ['✨', '⭐', '💛'];
+  }
+}
+
+function getKidsBuddyReactionWord(mood: KidsBuddyMood): string {
+  switch (mood) {
+    case 'listen':
+      return 'Listen';
+    case 'hear':
+      return 'Hear';
+    case 'again':
+      return 'Again';
+    case 'good':
+      return 'Good';
+    case 'great':
+      return 'Great';
+    case 'wow':
+      return 'Wow';
+    default:
+      return '';
+  }
+}
+
+function playKidsUiSound(level: 'select' | 'good' | 'great' | 'wow') {
   if (typeof window === 'undefined') return;
 
   const AudioContextCtor =
@@ -343,31 +396,61 @@ function playKidsCelebrationSound(level: 'good' | 'great') {
   const ctx = new AudioContextCtor();
   void ctx.resume?.();
 
-  const notes =
-    level === 'great' ? [659.25, 783.99, 987.77] : [659.25, 783.99];
+  const config =
+    level === 'select'
+      ? {
+          notes: [659.25, 783.99],
+          duration: 0.1,
+          gap: 0.07,
+          gain: 0.03,
+          type: 'triangle' as OscillatorType,
+        }
+      : level === 'good'
+        ? {
+            notes: [587.33, 659.25, 783.99],
+            duration: 0.12,
+            gap: 0.08,
+            gain: 0.04,
+            type: 'sine' as OscillatorType,
+          }
+        : level === 'great'
+          ? {
+              notes: [659.25, 783.99, 987.77, 1318.51],
+              duration: 0.14,
+              gap: 0.08,
+              gain: 0.045,
+              type: 'triangle' as OscillatorType,
+            }
+          : {
+              notes: [523.25, 783.99, 1046.5, 1318.51, 1567.98],
+              duration: 0.15,
+              gap: 0.07,
+              gain: 0.05,
+              type: 'triangle' as OscillatorType,
+            };
 
-  notes.forEach((frequency, index) => {
-    const start = ctx.currentTime + 0.02 + index * 0.09;
+  config.notes.forEach((frequency, index) => {
+    const start = ctx.currentTime + 0.02 + index * config.gap;
     const oscillator = ctx.createOscillator();
     const gain = ctx.createGain();
 
-    oscillator.type = 'sine';
+    oscillator.type = config.type;
     oscillator.frequency.setValueAtTime(frequency, start);
 
     gain.gain.setValueAtTime(0.0001, start);
-    gain.gain.exponentialRampToValueAtTime(0.06, start + 0.01);
-    gain.gain.exponentialRampToValueAtTime(0.0001, start + 0.18);
+    gain.gain.exponentialRampToValueAtTime(config.gain, start + 0.01);
+    gain.gain.exponentialRampToValueAtTime(0.0001, start + config.duration);
 
     oscillator.connect(gain);
     gain.connect(ctx.destination);
 
     oscillator.start(start);
-    oscillator.stop(start + 0.2);
+    oscillator.stop(start + config.duration + 0.02);
   });
 
   window.setTimeout(() => {
     void ctx.close().catch(() => undefined);
-  }, 700);
+  }, 900);
 }
 
 function cleanText(value?: string | null): string {
@@ -724,6 +807,7 @@ export function MercySpeakTab({
   const mediaChunksRef = useRef<BlobPart[]>([]);
   const activeStreamRef = useRef<MediaStream | null>(null);
   const lastKidsCelebrationRef = useRef('');
+  const hasPlayedBuddySelectRef = useRef(false);
 
   const speechWindow =
     typeof window !== 'undefined'
@@ -880,76 +964,111 @@ export function MercySpeakTab({
     [selectedBuddyKey],
   );
 
+  const buddyDecorations = useMemo(
+    () => getKidsBuddyDecorations(selectedBuddy.key),
+    [selectedBuddy.key],
+  );
+
   const kidsBuddyReaction = useMemo(() => {
     if (!isKidsMode) return null;
 
+    let mood: KidsBuddyMood = 'idle';
+
     if (isListening) {
-      return {
-        title: `${selectedBuddy.label} is listening`,
-        message: 'Say it with a big clear voice.',
-        motionClass: 'animate-pulse',
-        ringClass: 'border-sky-200 bg-sky-50/90',
-        textClass: 'text-sky-700',
-      };
+      mood = 'listen';
+    } else if (isSpeaking) {
+      mood = 'hear';
+    } else if (!transcript) {
+      mood = 'idle';
+    } else if (matchScore >= 94) {
+      mood = 'wow';
+    } else if (matchScore >= 82) {
+      mood = 'great';
+    } else if (matchScore >= 62) {
+      mood = 'good';
+    } else {
+      mood = 'again';
     }
 
-    if (isSpeaking) {
-      return {
-        title: `${selectedBuddy.label} says listen first`,
-        message: 'Listen with Mercy, then say it together.',
-        motionClass: 'animate-pulse',
-        ringClass: 'border-teal-200 bg-teal-50/90',
-        textClass: 'text-teal-700',
-      };
+    switch (mood) {
+      case 'listen':
+        return {
+          mood,
+          word: getKidsBuddyReactionWord(mood),
+          line: 'Big clear voice',
+          ringClass: 'border-sky-200 bg-sky-50/95',
+          wordClass: 'text-sky-700',
+          haloClass: '[animation:mercyBuddyGlow_1.2s_ease-in-out_infinite]',
+          emojiClass: '[animation:mercyBuddyListen_1.1s_ease-in-out_infinite]',
+          sparkleClass: '[animation:mercyBuddyFloat_2.1s_ease-in-out_infinite]',
+        };
+      case 'hear':
+        return {
+          mood,
+          word: getKidsBuddyReactionWord(mood),
+          line: 'Listen first',
+          ringClass: 'border-teal-200 bg-teal-50/95',
+          wordClass: 'text-teal-700',
+          haloClass: '[animation:mercyBuddyGlow_1.1s_ease-in-out_infinite]',
+          emojiClass: '[animation:mercyBuddyListen_1.1s_ease-in-out_infinite]',
+          sparkleClass: '[animation:mercyBuddyFloat_2s_ease-in-out_infinite]',
+        };
+      case 'wow':
+        return {
+          mood,
+          word: getKidsBuddyReactionWord(mood),
+          line: selectedBuddy.greatLine,
+          ringClass: 'border-emerald-200 bg-emerald-50/95',
+          wordClass: 'text-emerald-700',
+          haloClass: '[animation:mercyBuddyGlow_0.9s_ease-in-out_infinite]',
+          emojiClass: '[animation:mercyBuddyParty_0.85s_ease-in-out_infinite]',
+          sparkleClass: '[animation:mercyBuddySpark_1s_ease-in-out_infinite]',
+        };
+      case 'great':
+        return {
+          mood,
+          word: getKidsBuddyReactionWord(mood),
+          line: selectedBuddy.greatLine,
+          ringClass: 'border-emerald-200 bg-emerald-50/92',
+          wordClass: 'text-emerald-700',
+          haloClass: '[animation:mercyBuddyGlow_1s_ease-in-out_infinite]',
+          emojiClass: '[animation:mercyBuddyHop_0.95s_ease-in-out_infinite]',
+          sparkleClass: '[animation:mercyBuddyFloat_1.5s_ease-in-out_infinite]',
+        };
+      case 'good':
+        return {
+          mood,
+          word: getKidsBuddyReactionWord(mood),
+          line: selectedBuddy.goodLine,
+          ringClass: 'border-amber-200 bg-amber-50/92',
+          wordClass: 'text-amber-700',
+          haloClass: '[animation:mercyBuddyGlow_1.4s_ease-in-out_infinite]',
+          emojiClass: '[animation:mercyBuddyBounce_1.25s_ease-in-out_infinite]',
+          sparkleClass: '[animation:mercyBuddyFloat_1.8s_ease-in-out_infinite]',
+        };
+      case 'again':
+        return {
+          mood,
+          word: getKidsBuddyReactionWord(mood),
+          line: selectedBuddy.retryLine,
+          ringClass: 'border-rose-200 bg-rose-50/90',
+          wordClass: 'text-rose-700',
+          haloClass: '[animation:mercyBuddyGlow_1.8s_ease-in-out_infinite]',
+          emojiClass: '[animation:mercyBuddyBob_2.4s_ease-in-out_infinite]',
+          sparkleClass: '[animation:mercyBuddyFloat_2.5s_ease-in-out_infinite]',
+        };
+      default:
+        return {
+          mood,
+          word: '',
+          line: selectedBuddy.idleLine,
+          ringClass: 'border-slate-200 bg-white/92',
+          wordClass: 'text-slate-700',
+          haloClass: '[animation:mercyBuddyGlow_2.4s_ease-in-out_infinite]',
+          emojiClass: '[animation:mercyBuddyBob_2.8s_ease-in-out_infinite]',
+          sparkleClass: '[animation:mercyBuddyFloat_2.8s_ease-in-out_infinite]',
+        };
     }
-
-    if (!transcript) {
-      return {
-        title: `${selectedBuddy.label} is ready`,
-        message: selectedBuddy.idleLine,
-        motionClass: '',
-        ringClass: 'border-slate-200 bg-white/92',
-        textClass: 'text-slate-700',
-      };
-    }
-
-    if (matchScore >= 90) {
-      return {
-        title: `${selectedBuddy.label} is cheering`,
-        message: selectedBuddy.greatLine,
-        motionClass: 'animate-bounce',
-        ringClass: 'border-emerald-200 bg-emerald-50/90',
-        textClass: 'text-emerald-700',
-      };
-    }
-
-    if (matchScore >= 75) {
-      return {
-        title: `${selectedBuddy.label} is smiling`,
-        message: selectedBuddy.goodLine,
-        motionClass: 'animate-pulse',
-        ringClass: 'border-amber-200 bg-amber-50/90',
-        textClass: 'text-amber-700',
-      };
-    }
-
-    if (matchScore >= 55) {
-      return {
-        title: `${selectedBuddy.label} says keep going`,
-        message: 'Good try. Let’s do one more.',
-        motionClass: '',
-        ringClass: 'border-amber-200 bg-amber-50/80',
-        textClass: 'text-amber-700',
-      };
-    }
-
-    return {
-      title: `${selectedBuddy.label} says listen first`,
-      message: selectedBuddy.retryLine,
-      motionClass: '',
-      ringClass: 'border-rose-200 bg-rose-50/80',
-      textClass: 'text-rose-700',
-    };
   }, [isKidsMode, isListening, isSpeaking, matchScore, selectedBuddy, transcript]);
 
   const nextStepMessage = useMemo(() => {
@@ -1007,6 +1126,17 @@ export function MercySpeakTab({
   useEffect(() => {
     if (!isKidsMode) return;
 
+    if (!hasPlayedBuddySelectRef.current) {
+      hasPlayedBuddySelectRef.current = true;
+      return;
+    }
+
+    playKidsUiSound('select');
+  }, [isKidsMode, selectedBuddyKey]);
+
+  useEffect(() => {
+    if (!isKidsMode) return;
+
     if (!transcript || isListening) {
       if (!transcript) {
         lastKidsCelebrationRef.current = '';
@@ -1019,13 +1149,18 @@ export function MercySpeakTab({
 
     lastKidsCelebrationRef.current = attemptKey;
 
-    if (matchScore >= 90) {
-      playKidsCelebrationSound('great');
+    if (matchScore >= 94) {
+      playKidsUiSound('wow');
+      return;
+    }
+
+    if (matchScore >= 82) {
+      playKidsUiSound('great');
       return;
     }
 
     if (matchScore >= 70) {
-      playKidsCelebrationSound('good');
+      playKidsUiSound('good');
     }
   }, [isKidsMode, isListening, matchScore, practiceText, transcript]);
 
@@ -1251,8 +1386,6 @@ export function MercySpeakTab({
 
   const matchTone = getMetricTone(matchScore);
   const hasResolvedPayload = Boolean(sourceText || correctedText || enhancedText);
-  const transcriptLabel = 'You said';
-  const troubleLabel = isKidsMode ? 'Try these words again' : 'Watch these trouble words';
   const primaryButtonClass = isKidsMode
     ? 'h-12 rounded-2xl border-0 bg-gradient-to-r from-[#4FC5C7] to-[#38AEB6] px-4 text-sm font-semibold text-white shadow-[0_10px_20px_rgba(56,174,182,0.24)] hover:brightness-[1.03] disabled:opacity-60'
     : 'h-11 rounded-2xl border-0 bg-gradient-to-r from-[#4FC5C7] to-[#38AEB6] px-4 text-white shadow-[0_10px_20px_rgba(56,174,182,0.24)] hover:brightness-[1.03] disabled:opacity-60';
@@ -1271,14 +1404,59 @@ export function MercySpeakTab({
         Boolean(enhancedText))
   );
   const confidenceLabel = getConfidenceLevel(matchScore).toUpperCase();
+  const transcriptLabel = 'Your transcript';
+  const troubleLabel =
+    displayedTroubleWords.length === 1 ? 'Word to practice' : 'Words to practice';
   const showAdultFeedbackCard = Boolean(!isKidsMode && transcript);
 
   if (isKidsMode) {
     return (
       <div className="flex h-full min-h-0 flex-col overflow-hidden bg-gradient-to-br from-[#FFF8F3] via-[#FFFDFC] to-[#F7FAFF]">
-        <div className="min-h-0 flex-1 overflow-y-auto px-2 py-2 md:px-3 md:py-3">
+        <style>{`
+          @keyframes mercyBuddyBob {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-8px) scale(1.03); }
+          }
+          @keyframes mercyBuddyBounce {
+            0%, 100% { transform: translateY(0) scale(1); }
+            30% { transform: translateY(-14px) scale(1.07); }
+            60% { transform: translateY(0) scale(0.98); }
+          }
+          @keyframes mercyBuddyHop {
+            0%, 100% { transform: translateY(0) scale(1); }
+            25% { transform: translateY(-18px) scale(1.1); }
+            50% { transform: translateY(0) scale(0.96); }
+            75% { transform: translateY(-8px) scale(1.05); }
+          }
+          @keyframes mercyBuddyListen {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.05) rotate(-4deg); }
+            75% { transform: scale(1.05) rotate(4deg); }
+          }
+          @keyframes mercyBuddyParty {
+            0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+            25% { transform: translateY(-14px) rotate(-8deg) scale(1.1); }
+            50% { transform: translateY(0) rotate(0deg) scale(0.98); }
+            75% { transform: translateY(-10px) rotate(8deg) scale(1.12); }
+          }
+          @keyframes mercyBuddyGlow {
+            0%, 100% { opacity: 0.55; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+          }
+          @keyframes mercyBuddyFloat {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-10px) translateX(4px); }
+          }
+          @keyframes mercyBuddySpark {
+            0% { opacity: 0; transform: translateY(0) scale(0.6); }
+            30% { opacity: 1; transform: translateY(-4px) scale(1); }
+            100% { opacity: 0; transform: translateY(-18px) scale(1.12); }
+          }
+        `}</style>
+
+        <div className="min-h-0 flex-1 overflow-y-auto overflow-x-hidden px-2 py-2 md:px-3 md:py-3">
           <div className="flex min-h-full flex-col gap-3 rounded-[28px] border border-white/80 bg-white/92 p-3 shadow-[0_10px_28px_rgba(148,163,184,0.06)] md:p-4">
-            <div>
+            <div className="min-w-0">
               <h3 className="text-3xl font-semibold tracking-tight text-slate-900 md:text-[42px] md:leading-[1.02]">
                 {kidsObject?.label ?? KIDS_OBJECTS[0].label}
               </h3>
@@ -1288,268 +1466,264 @@ export function MercySpeakTab({
               </p>
             </div>
 
-            <div className="grid gap-3 lg:grid-cols-[260px_minmax(0,1fr)] lg:gap-4">
-              <div className="mx-auto flex w-full max-w-[220px] items-center justify-center rounded-[24px] border border-[#FFD7C8] bg-gradient-to-br from-[#FFF6F0] via-white to-[#F8FBFF] p-3 shadow-[0_12px_26px_rgba(255,138,101,0.10)] md:max-w-[260px] md:p-4 lg:mx-0 lg:max-w-none">
+            <div className="grid grid-cols-2 gap-3">
+              <div className="flex min-h-[220px] items-center justify-center rounded-[24px] border border-[#FFD7C8] bg-gradient-to-br from-[#FFF6F0] via-white to-[#F8FBFF] p-3 shadow-[0_12px_26px_rgba(255,138,101,0.10)] md:min-h-[250px] md:p-4">
                 <img
                   src={kidsObject?.imageSrc ?? KIDS_OBJECTS[0].imageSrc}
                   alt={kidsObject?.label ?? KIDS_OBJECTS[0].label}
-                  className="h-40 w-40 scale-[1.08] object-contain md:h-52 md:w-52 xl:h-60 xl:w-60"
+                  className="h-28 w-28 object-contain md:h-52 md:w-52"
                 />
               </div>
 
-              <div className="flex flex-col gap-3">
-                <div className="rounded-[18px] border border-[#DCE7F7] bg-gradient-to-r from-[#F8FBFF] to-white p-3 shadow-sm">
-                  <div className="overflow-x-auto">
-                    <div className="flex min-w-max gap-2 pr-1">
-                      {KIDS_BUDDIES.map((buddy) => {
-                        const active = buddy.key === selectedBuddy.key;
-                        const motionClass =
-                          active && matchScore >= 90
-                            ? 'animate-bounce'
-                            : active && (isListening || isSpeaking)
-                              ? 'animate-pulse'
+              <div
+                className={`relative overflow-hidden rounded-[22px] border p-3 shadow-sm ${kidsBuddyReaction?.ringClass ?? 'border-slate-200 bg-white/92'}`}
+              >
+                <div
+                  className={`absolute inset-3 rounded-full bg-white/65 blur-2xl ${kidsBuddyReaction?.haloClass ?? '[animation:mercyBuddyGlow_2.4s_ease-in-out_infinite]'}`}
+                />
+
+                {buddyDecorations.map((symbol, index) => (
+                  <span
+                    key={`${symbol}-${index}`}
+                    className={`absolute z-10 text-lg md:text-xl ${kidsBuddyReaction?.sparkleClass ?? '[animation:mercyBuddyFloat_2.8s_ease-in-out_infinite]'}`}
+                    style={{
+                      top: index === 0 ? '12%' : index === 1 ? '18%' : '70%',
+                      left: index === 0 ? '16%' : index === 1 ? '72%' : '18%',
+                      animationDelay: `${index * 0.22}s`,
+                    }}
+                  >
+                    {symbol}
+                  </span>
+                ))}
+
+                <div className="relative z-20 flex h-full min-h-[190px] flex-col items-center justify-center gap-2 md:min-h-[220px] md:gap-3">
+                  <div className="flex h-28 w-28 items-center justify-center rounded-full bg-white/88 text-[72px] shadow-[0_14px_34px_rgba(148,163,184,0.16)] md:h-36 md:w-36 md:text-[92px]">
+                    <span className={kidsBuddyReaction?.emojiClass ?? '[animation:mercyBuddyBob_2.8s_ease-in-out_infinite]'}>
+                      {selectedBuddy.emoji}
+                    </span>
+                  </div>
+
+                  <div className={`min-h-[24px] text-lg font-semibold md:min-h-[28px] md:text-xl ${kidsBuddyReaction?.wordClass ?? 'text-slate-700'}`}>
+                    {kidsBuddyReaction?.word ?? ''}
+                  </div>
+
+                  <p className="max-w-[180px] text-center text-xs leading-5 text-slate-600 md:text-sm md:leading-6">
+                    {kidsBuddyReaction?.line ?? selectedBuddy.idleLine}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="rounded-[18px] border border-[#DCE7F7] bg-gradient-to-r from-[#F8FBFF] to-white p-3 shadow-sm">
+              <div className="max-w-full overflow-x-auto overflow-y-hidden">
+                <div className="flex w-max gap-2 pr-1">
+                  {KIDS_BUDDIES.map((buddy) => {
+                    const active = buddy.key === selectedBuddy.key;
+                    const motionClass =
+                      active && matchScore >= 94
+                        ? '[animation:mercyBuddyParty_0.85s_ease-in-out_infinite]'
+                        : active && matchScore >= 82
+                          ? '[animation:mercyBuddyHop_0.95s_ease-in-out_infinite]'
+                          : active && (isListening || isSpeaking)
+                            ? '[animation:mercyBuddyListen_1.1s_ease-in-out_infinite]'
+                            : active
+                              ? '[animation:mercyBuddyBob_2.4s_ease-in-out_infinite]'
                               : '';
 
-                        return (
-                          <button
-                            key={buddy.key}
-                            type="button"
-                            onClick={() => setSelectedBuddyKey(buddy.key)}
-                            className={`flex min-w-[64px] flex-col items-center rounded-2xl border px-2 py-2 text-center shadow-sm transition ${
-                              active
-                                ? 'border-[#BFD5F7] bg-white text-slate-900 ring-2 ring-[#DCE7F7]'
-                                : 'border-transparent bg-white/70 text-slate-600 hover:border-[#DCE7F7] hover:bg-white'
-                            }`}
-                          >
-                            <span className={`text-2xl ${motionClass}`}>{buddy.emoji}</span>
-                            <span className="mt-1 text-[11px] font-semibold">{buddy.label}</span>
-                          </button>
-                        );
-                      })}
+                    return (
+                      <button
+                        key={buddy.key}
+                        type="button"
+                        onClick={() => setSelectedBuddyKey(buddy.key)}
+                        className={`flex min-w-[68px] flex-col items-center rounded-2xl border px-2 py-2 text-center shadow-sm transition ${
+                          active
+                            ? 'border-[#BFD5F7] bg-white text-slate-900 ring-2 ring-[#DCE7F7]'
+                            : 'border-transparent bg-white/70 text-slate-600 hover:border-[#DCE7F7] hover:bg-white'
+                        }`}
+                      >
+                        <span className={`text-[30px] ${motionClass}`}>{buddy.emoji}</span>
+                        <span className="mt-1 text-[11px] font-semibold">{buddy.label}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+
+            {(recognitionError ||
+              recordingError ||
+              !supportsRecognition ||
+              !supportsMediaRecording) ? (
+              <div className="space-y-1.5">
+                {!supportsRecognition ? (
+                  <div className="rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-800">
+                    <div className="flex items-start gap-2">
+                      <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
+                      <p>Speech recognition is not available in this browser.</p>
                     </div>
-                  </div>
-                </div>
-
-                <div className="rounded-full border border-[#DCE7F7] bg-[#F8FBFF] px-3 py-2 text-center text-xs font-semibold uppercase tracking-[0.16em] text-slate-500 lg:hidden">
-                  Scroll down for speaking tools
-                </div>
-
-                {(recognitionError ||
-                  recordingError ||
-                  !supportsRecognition ||
-                  !supportsMediaRecording) ? (
-                  <div className="space-y-1.5">
-                    {!supportsRecognition ? (
-                      <div className="rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-800">
-                        <div className="flex items-start gap-2">
-                          <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
-                          <p>Speech recognition is not available in this browser.</p>
-                        </div>
-                      </div>
-                    ) : null}
-
-                    {!supportsMediaRecording ? (
-                      <div className="rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-800">
-                        <div className="flex items-start gap-2">
-                          <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
-                          <p>Voice recording is not available in this browser.</p>
-                        </div>
-                      </div>
-                    ) : null}
-
-                    {recognitionError ? (
-                      <div className="rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-800">
-                        <div className="flex items-start gap-2">
-                          <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
-                          <p>{recognitionError}</p>
-                        </div>
-                      </div>
-                    ) : null}
-
-                    {recordingError ? (
-                      <div className="rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-800">
-                        <div className="flex items-start gap-2">
-                          <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
-                          <p>{recordingError}</p>
-                        </div>
-                      </div>
-                    ) : null}
                   </div>
                 ) : null}
 
-                <div className="grid gap-2 sm:grid-cols-2">
-                  <Button
-                    type="button"
-                    variant="outline"
-                    onClick={() => handleSpeak()}
-                    disabled={!practiceText}
-                    className="h-12 justify-center rounded-[18px] border-teal-200 bg-gradient-to-r from-[#6EC6C8] to-[#5DAFB6] px-4 text-sm font-semibold text-white shadow-[0_10px_18px_rgba(93,175,182,0.22)] hover:brightness-[1.03] disabled:opacity-60"
-                  >
-                    <Volume2 className="mr-2 h-4 w-4" />
-                    Teacher Mercy
-                  </Button>
-
-                  {!isListening ? (
-                    <Button
-                      type="button"
-                      onClick={startListening}
-                      disabled={!supportsRecognition || !practiceText}
-                      className="h-12 rounded-2xl border-0 bg-gradient-to-r from-[#43C59E] to-[#18A874] px-4 text-sm font-semibold text-white shadow-[0_10px_18px_rgba(24,168,116,0.20)] hover:brightness-[1.03] disabled:opacity-60"
-                    >
-                      <Mic className="mr-2 h-4 w-4" />
-                      Say with mic
-                    </Button>
-                  ) : (
-                    <Button
-                      type="button"
-                      variant="destructive"
-                      onClick={stopListening}
-                      className="h-12 rounded-2xl px-4 text-sm font-semibold shadow-[0_10px_18px_rgba(239,68,68,0.16)]"
-                    >
-                      <Square className="mr-2 h-4 w-4" />
-                      Stop
-                    </Button>
-                  )}
-
-                  {!isRecording ? (
-                    <Button
-                      type="button"
-                      variant="outline"
-                      onClick={startRecording}
-                      disabled={!supportsMediaRecording}
-                      className="h-12 rounded-2xl border-[#BFE8EA] bg-[#F4FEFE] px-4 text-sm font-semibold text-[#137E86] shadow-sm hover:bg-[#ECFCFD] disabled:opacity-60"
-                    >
-                      <PlayCircle className="mr-2 h-4 w-4" />
-                      Record
-                    </Button>
-                  ) : (
-                    <Button
-                      type="button"
-                      variant="outline"
-                      onClick={stopRecording}
-                      className="h-12 rounded-2xl border-[#F2D8CA] bg-white px-4 text-sm font-semibold text-slate-800 shadow-sm hover:bg-[#FFF8F4]"
-                    >
-                      <Square className="mr-2 h-4 w-4" />
-                      Stop record
-                    </Button>
-                  )}
-
-                  <Button
-                    type="button"
-                    variant="outline"
-                    onClick={handleResetAttempt}
-                    className="h-12 rounded-2xl border-[#F2E7DE] bg-white px-4 text-sm font-semibold text-slate-700 shadow-sm hover:bg-[#FFF8F4]"
-                  >
-                    <RotateCcw className="mr-2 h-4 w-4" />
-                    Reset
-                  </Button>
-                </div>
-
-                <div className="grid gap-3 xl:grid-cols-[minmax(0,1.2fr)_minmax(300px,0.8fr)]">
-                  <div className="rounded-[18px] border border-slate-200 bg-gradient-to-br from-[#FFF9F3] to-white p-3 shadow-sm">
-                    <div className="flex items-center justify-between gap-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
-                      <span>Teacher Mercy</span>
-                      <span>100%</span>
-                    </div>
-
-                    <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-slate-100">
-                      <div className="h-full w-full rounded-full bg-gradient-to-r from-[#6EC6C8] to-[#5DAFB6]" />
-                    </div>
-
-                    <div className="mt-3 flex items-center justify-between gap-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
-                      <span>You</span>
-                      <span>{transcript ? `${matchScore}%` : '0%'}</span>
-                    </div>
-
-                    <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-slate-100">
-                      <div
-                        className={`h-full rounded-full bg-gradient-to-r transition-all duration-500 ${matchTone.bar}`}
-                        style={{ width: `${transcript ? matchScore : 0}%` }}
-                      />
-                    </div>
-
-                    <p className="mt-2 text-sm leading-6 text-slate-600">
-                      {coachMessage}
-                    </p>
-
-                    <div
-                      className={`mt-3 flex items-center gap-3 rounded-[18px] border p-3 shadow-sm ${kidsBuddyReaction?.ringClass ?? 'border-slate-200 bg-white'} ${kidsBuddyReaction?.textClass ?? 'text-slate-700'}`}
-                    >
-                      <div
-                        className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-white/85 text-3xl shadow-sm ${kidsBuddyReaction?.motionClass ?? ''}`}
-                      >
-                        {selectedBuddy.emoji}
-                      </div>
-
-                      <div className="min-w-0">
-                        <p className="text-sm font-semibold">{kidsBuddyReaction?.title}</p>
-                        <p className="mt-1 text-sm leading-6 text-slate-600">
-                          {kidsBuddyReaction?.message ?? coachMessage}
-                        </p>
-                      </div>
+                {!supportsMediaRecording ? (
+                  <div className="rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-800">
+                    <div className="flex items-start gap-2">
+                      <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
+                      <p>Voice recording is not available in this browser.</p>
                     </div>
                   </div>
+                ) : null}
 
-                  <div className="rounded-[18px] border border-[#F1E5DB] bg-gradient-to-br from-[#FFF9F3] to-white p-3 shadow-sm">
-                    <div className="flex items-center gap-2">
-                      <PlayCircle className="h-4 w-4 text-emerald-600" />
-                      <p className="text-sm font-semibold text-slate-900">Play my voice</p>
+                {recognitionError ? (
+                  <div className="rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-800">
+                    <div className="flex items-start gap-2">
+                      <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
+                      <p>{recognitionError}</p>
                     </div>
-
-                    {recordedAudioUrl ? (
-                      <audio className="mt-2 w-full" controls src={recordedAudioUrl}>
-                        Your browser does not support audio playback.
-                      </audio>
-                    ) : (
-                      <div className="mt-3 rounded-2xl border border-dashed border-[#D9E6EA] bg-white/80 p-3">
-                        <p className="text-sm font-medium text-slate-700">
-                          Tap <span className="font-semibold">Record</span>, then hear your own voice here.
-                        </p>
-
-                        <div className="mt-3 h-2 overflow-hidden rounded-full bg-slate-100">
-                          <div
-                            className={`h-full rounded-full transition-all ${
-                              isRecording
-                                ? 'w-full animate-pulse bg-gradient-to-r from-emerald-400 to-teal-400'
-                                : 'w-0 bg-transparent'
-                            }`}
-                          />
-                        </div>
-
-                        <p className="mt-2 text-xs text-slate-500">
-                          {isRecording ? 'Recording now…' : 'Your playback will appear after recording.'}
-                        </p>
-                      </div>
-                    )}
-
-                    <p className="mt-3 text-sm leading-6 text-slate-600">
-                      {nextStepMessage}
-                    </p>
                   </div>
-                </div>
+                ) : null}
 
-                {kidsWordChips.length > 0 ? (
-                  <div className="rounded-[18px] border border-[#F1E5DB] bg-white/92 p-3 shadow-sm">
-                    <p className="text-sm font-semibold text-slate-900">
-                      Try these words again
-                    </p>
-
-                    <div className="mt-2 flex flex-wrap gap-2">
-                      {kidsWordChips.map((word) => (
-                        <button
-                          key={word}
-                          type="button"
-                          onClick={() => handleSpeak(word)}
-                          className="rounded-full border border-[#F2DDD0] bg-gradient-to-r from-[#FFF5EF] to-white px-3 py-1.5 text-sm font-semibold text-[#875E4B] shadow-sm transition hover:border-[#F0C8B3] hover:bg-[#FFF8F4]"
-                        >
-                          {word}
-                        </button>
-                      ))}
+                {recordingError ? (
+                  <div className="rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-800">
+                    <div className="flex items-start gap-2">
+                      <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
+                      <p>{recordingError}</p>
                     </div>
                   </div>
                 ) : null}
               </div>
+            ) : null}
+
+            <div className="grid grid-cols-4 gap-2">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => handleSpeak()}
+                disabled={!practiceText}
+                className="h-12 rounded-[18px] border-teal-200 bg-gradient-to-r from-[#6EC6C8] to-[#5DAFB6] px-2 text-xs font-semibold text-white shadow-[0_10px_18px_rgba(93,175,182,0.22)] hover:brightness-[1.03] disabled:opacity-60"
+              >
+                <Volume2 className="mr-1.5 h-4 w-4" />
+                Mercy
+              </Button>
+
+              {!isListening ? (
+                <Button
+                  type="button"
+                  onClick={startListening}
+                  disabled={!supportsRecognition || !practiceText}
+                  className="h-12 rounded-2xl border-0 bg-gradient-to-r from-[#43C59E] to-[#18A874] px-2 text-xs font-semibold text-white shadow-[0_10px_18px_rgba(24,168,116,0.20)] hover:brightness-[1.03] disabled:opacity-60"
+                >
+                  <Mic className="mr-1.5 h-4 w-4" />
+                  You
+                </Button>
+              ) : (
+                <Button
+                  type="button"
+                  variant="destructive"
+                  onClick={stopListening}
+                  className="h-12 rounded-2xl px-2 text-xs font-semibold shadow-[0_10px_18px_rgba(239,68,68,0.16)]"
+                >
+                  <Square className="mr-1.5 h-4 w-4" />
+                  Stop
+                </Button>
+              )}
+
+              {!isRecording ? (
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={startRecording}
+                  disabled={!supportsMediaRecording}
+                  className="h-12 rounded-2xl border-[#BFE8EA] bg-[#F4FEFE] px-2 text-xs font-semibold text-[#137E86] shadow-sm hover:bg-[#ECFCFD] disabled:opacity-60"
+                >
+                  <PlayCircle className="mr-1.5 h-4 w-4" />
+                  Record
+                </Button>
+              ) : (
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={stopRecording}
+                  className="h-12 rounded-2xl border-[#F2D8CA] bg-white px-2 text-xs font-semibold text-slate-800 shadow-sm hover:bg-[#FFF8F4]"
+                >
+                  <Square className="mr-1.5 h-4 w-4" />
+                  Stop
+                </Button>
+              )}
+
+              <Button
+                type="button"
+                variant="outline"
+                onClick={handleResetAttempt}
+                className="h-12 rounded-2xl border-[#F2E7DE] bg-white px-2 text-xs font-semibold text-slate-700 shadow-sm hover:bg-[#FFF8F4]"
+              >
+                <RotateCcw className="mr-1.5 h-4 w-4" />
+                Reset
+              </Button>
             </div>
+
+            <div className="rounded-[18px] border border-slate-200 bg-gradient-to-br from-[#FFF9F3] to-white p-3 shadow-sm">
+              <div className="flex items-center justify-between gap-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
+                <span>Mercy</span>
+                <span>100%</span>
+              </div>
+
+              <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-slate-100">
+                <div className="h-full w-full rounded-full bg-gradient-to-r from-[#6EC6C8] to-[#5DAFB6]" />
+              </div>
+
+              <div className="mt-3 flex items-center justify-between gap-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
+                <span>You</span>
+                <span>{transcript ? `${matchScore}%` : '0%'}</span>
+              </div>
+
+              <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-slate-100">
+                <div
+                  className={`h-full rounded-full bg-gradient-to-r transition-all duration-500 ${matchTone.bar}`}
+                  style={{ width: `${transcript ? matchScore : 0}%` }}
+                />
+              </div>
+
+              <p className="mt-2 text-sm leading-6 text-slate-600">
+                {coachMessage}
+              </p>
+            </div>
+
+            <div className="rounded-[18px] border border-[#F1E5DB] bg-gradient-to-br from-[#FFF9F3] to-white p-3 shadow-sm">
+              {recordedAudioUrl ? (
+                <audio className="w-full" controls src={recordedAudioUrl}>
+                  Your browser does not support audio playback.
+                </audio>
+              ) : (
+                <div className="h-12 rounded-2xl border border-dashed border-[#D9E6EA] bg-white/80 px-3 py-3">
+                  <div className="h-2 overflow-hidden rounded-full bg-slate-100">
+                    <div
+                      className={`h-full rounded-full transition-all ${
+                        isRecording
+                          ? 'w-full animate-pulse bg-gradient-to-r from-emerald-400 to-teal-400'
+                          : 'w-0 bg-transparent'
+                      }`}
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {kidsWordChips.length > 0 ? (
+              <div className="rounded-[18px] border border-[#F1E5DB] bg-white/92 p-3 shadow-sm">
+                <div className="flex flex-wrap gap-2">
+                  {kidsWordChips.map((word) => (
+                    <button
+                      key={word}
+                      type="button"
+                      onClick={() => handleSpeak(word)}
+                      className="rounded-full border border-[#F2DDD0] bg-gradient-to-r from-[#FFF5EF] to-white px-3 py-1.5 text-sm font-semibold text-[#875E4B] shadow-sm transition hover:border-[#F0C8B3] hover:bg-[#FFF8F4]"
+                    >
+                      {word}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ) : null}
           </div>
         </div>
       </div>

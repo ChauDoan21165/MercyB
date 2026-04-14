@@ -1,6 +1,6 @@
 /**
- * File: MercyGuide.tsx
  * Path: src/components/MercyGuide.tsx
+ * File: MercyGuide.tsx
  */
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
@@ -441,6 +441,22 @@ export function MercyGuide({
     });
   }, [teacherMode, teacherUi.defaultTab]);
 
+  useEffect(() => {
+    if (typeof document === 'undefined') return;
+    if (!isOpen || !isFullscreen) return;
+
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousHtmlOverflow = document.documentElement.style.overflow;
+
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = previousBodyOverflow;
+      document.documentElement.style.overflow = previousHtmlOverflow;
+    };
+  }, [isFullscreen, isOpen]);
+
   const clearPointerListeners = useCallback(() => {
     if (pointerCleanupRef.current) {
       pointerCleanupRef.current();
@@ -561,11 +577,7 @@ export function MercyGuide({
         window.innerHeight - BUBBLE_SIZE - BUBBLE_SAFE_MARGIN,
       );
 
-      const bottom = clampNumber(
-        next.bottom,
-        getBubbleBottomSafe(),
-        maxBottom,
-      );
+      const bottom = clampNumber(next.bottom, getBubbleBottomSafe(), maxBottom);
 
       if (isMobileRoomReading) {
         const snapThreshold = (BUBBLE_SAFE_MARGIN + maxRight) / 2;
@@ -709,13 +721,10 @@ export function MercyGuide({
   const handleCloseGuide = useCallback(() => {
     setIsOpen(false);
     setShowSettings(false);
+    setIsFullscreen(false);
   }, []);
 
   const handleToggleFullscreen = useCallback(() => {
-    if (isMobileViewport()) {
-      return;
-    }
-
     setIsFullscreen((current) => {
       if (!current) {
         panelRectBeforeFullscreenRef.current = panelRect;
@@ -1156,9 +1165,10 @@ export function MercyGuide({
         <div
           ref={panelRef}
           className={cn(
-            'fixed z-[95] overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-2xl',
-            isFullscreen &&
-              'left-6 right-6 top-6 bottom-6 rounded-[24px] md:left-10 md:right-10 md:top-8 md:bottom-8 lg:left-14 lg:right-14 lg:top-10 lg:bottom-10',
+            'fixed z-[95] overflow-hidden border border-slate-200 bg-white shadow-2xl',
+            isFullscreen
+              ? 'left-0 right-0 top-0 bottom-0 rounded-none border-0 shadow-none md:left-10 md:right-10 md:top-8 md:bottom-8 md:rounded-[24px] md:border md:border-slate-200 md:shadow-2xl lg:left-14 lg:right-14 lg:top-10 lg:bottom-10'
+              : 'rounded-[28px]',
           )}
           style={
             isFullscreen

@@ -683,32 +683,43 @@ export function MercyTeacherTab({
   if (isKidsMode) {
     return (
       <div className="m-0 flex h-full min-h-0 flex-1 overflow-hidden">
-        <div className="flex h-full w-full items-center justify-center">
-          <div className="mx-auto grid aspect-square max-h-full w-full max-w-[920px] grid-cols-10 grid-rows-[repeat(10,minmax(0,1fr))] gap-1">
-            {KIDS_IMAGE_GRID.map(({ slotId, object }) => {
-              const isSelected = object.key === selectedKidsObject.key;
+        <div
+          className="h-full w-full overflow-y-auto overscroll-contain px-2 pb-3 pt-2 sm:px-3 sm:pb-4 sm:pt-3"
+          style={{
+            WebkitOverflowScrolling: 'touch',
+            touchAction: 'pan-y',
+          }}
+        >
+          <div className="mx-auto w-full max-w-[920px]">
+            <div className="grid grid-cols-5 gap-2 sm:gap-3">
+              {KIDS_IMAGE_GRID.map(({ slotId, object }) => {
+                const isSelected = object.key === selectedKidsObject.key;
 
-              return (
-                <button
-                  key={slotId}
-                  type="button"
-                  onClick={() => onSelectKidsObject?.(object.key)}
-                  className={`flex h-full w-full items-center justify-center overflow-hidden rounded-xl border bg-white transition ${
-                    isSelected
-                      ? 'border-[#FFB39A] shadow-[0_8px_18px_rgba(255,138,101,0.18)]'
-                      : 'border-white/80 hover:border-[#FFD7C8] hover:shadow-[0_6px_14px_rgba(148,163,184,0.08)]'
-                  }`}
-                  aria-label={object.label}
-                  title={object.label}
-                >
-                  <img
-                    src={object.imageSrc}
-                    alt={object.label}
-                    className="h-full w-full object-contain p-1"
-                  />
-                </button>
-              );
-            })}
+                return (
+                  <button
+                    key={slotId}
+                    type="button"
+                    onClick={() => onSelectKidsObject?.(object.key)}
+                    className={`aspect-square w-full overflow-hidden rounded-xl border bg-white transition ${
+                      isSelected
+                        ? 'border-[#FFB39A] shadow-[0_8px_18px_rgba(255,138,101,0.18)]'
+                        : 'border-white/80 hover:border-[#FFD7C8] hover:shadow-[0_6px_14px_rgba(148,163,184,0.08)]'
+                    }`}
+                    aria-label={object.label}
+                    title={object.label}
+                  >
+                    <img
+                      src={object.imageSrc}
+                      alt={object.label}
+                      className="h-full w-full object-contain p-1.5 sm:p-2"
+                      loading="lazy"
+                      decoding="async"
+                      draggable={false}
+                    />
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
