@@ -402,9 +402,8 @@ function getTeacherModeStyles(mode: TeacherMode) {
   return {
     trigger:
       'border-[#FFE1D5] bg-gradient-to-r from-[#FFF6F1] to-[#FFFDFC] text-[#C45A3C] shadow-[0_8px_18px_rgba(255,138,101,0.10)]',
-      dot: 'bg-[#FF8A65]',
-    };
-  }
+    dot: 'bg-[#FF8A65]',
+  };
 }
 
 function getTabAccent(tabId: MercyTabType) {
@@ -522,9 +521,7 @@ function LearningSupportModePicker({
     <div
       ref={rootRef}
       className={`relative z-30 ${
-        compact
-          ? 'w-[182px] shrink-0 sm:w-[192px] xl:w-[210px]'
-          : 'w-full md:w-[320px]'
+        compact ? 'w-full sm:w-[210px] xl:w-[230px]' : 'w-full md:w-[320px]'
       }`}
     >
       {!compact ? (
@@ -662,9 +659,7 @@ function TeacherModePicker({
     <div
       ref={rootRef}
       className={`relative z-30 ${
-        compact
-          ? 'w-[170px] shrink-0 sm:w-[180px] xl:w-[198px]'
-          : 'w-full md:w-[260px]'
+        compact ? 'w-full sm:w-[200px] xl:w-[220px]' : 'w-full md:w-[260px]'
       }`}
     >
       {!compact ? (
@@ -886,17 +881,12 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
   }, []);
 
   const normalizedTroubleWords = useMemo<TroubleWordItem[]>(
-    () =>
-      normalizeTroubleWords(
-        troubleWords ?? memory?.pronunciation?.troubleWords ?? [],
-      ),
+    () => normalizeTroubleWords(troubleWords ?? memory?.pronunciation?.troubleWords ?? []),
     [memory?.pronunciation?.troubleWords, troubleWords],
   );
 
   const handleSelectKidsObject = useCallback((nextKey: string) => {
-    setSelectedKidsObjectKey((current) =>
-      normalizeKidsObjectKey(nextKey, current),
-    );
+    setSelectedKidsObjectKey((current) => normalizeKidsObjectKey(nextKey, current));
   }, []);
 
   const tabs = useMemo<MercyTabConfig[]>(() => {
@@ -912,10 +902,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
         id: 'grammar',
         label: kidsModeActive ? 'Write' : 'Grammar',
         icon: PenSquare,
-        enabled:
-          accessFeatures.hasMercyGrammar &&
-          !hideGrammarTab &&
-          !kidsModeActive,
+        enabled: accessFeatures.hasMercyGrammar && !hideGrammarTab && !kidsModeActive,
       },
       {
         id: 'pronunciation',
@@ -927,8 +914,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
         id: 'logic',
         label: 'Logic',
         icon: BookOpenText,
-        enabled:
-          accessFeatures.hasMercyLogic && !hideLogicTab && !kidsModeActive,
+        enabled: accessFeatures.hasMercyLogic && !hideLogicTab && !kidsModeActive,
       },
     ];
 
@@ -953,19 +939,11 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
         case 'teacher':
           return true;
         case 'grammar':
-          return (
-            accessFeatures.hasMercyGrammar &&
-            !hideGrammarTab &&
-            !kidsModeActive
-          );
+          return accessFeatures.hasMercyGrammar && !hideGrammarTab && !kidsModeActive;
         case 'pronunciation':
           return accessFeatures.hasMercySpeak;
         case 'logic':
-          return (
-            accessFeatures.hasMercyLogic &&
-            !hideLogicTab &&
-            !kidsModeActive
-          );
+          return accessFeatures.hasMercyLogic && !hideLogicTab && !kidsModeActive;
         default:
           return false;
       }
@@ -1183,10 +1161,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
   ]);
 
   const headerTitle =
-    cleanText(journeyTitle) ||
-    cleanText(panelTitle) ||
-    cleanText(bubbleLabel) ||
-    'Teacher Mercy';
+    cleanText(journeyTitle) || cleanText(panelTitle) || cleanText(bubbleLabel) || 'Teacher Mercy';
 
   const shouldDisablePanelScroll =
     kidsModeActive && (activeTab === 'teacher' || activeTab === 'pronunciation');
@@ -1201,24 +1176,32 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-[linear-gradient(to_top,rgba(255,255,255,0.72),transparent)]" />
 
       <div
-        className="relative z-30 flex items-start gap-2 border-b border-white/80 bg-white/78 px-3 py-2.5 backdrop-blur-md"
+        className="relative z-30 flex flex-wrap items-center gap-2 border-b border-white/80 bg-white/78 px-3 py-2.5 backdrop-blur-md md:flex-nowrap"
         onPointerDown={onPanelDragStart}
       >
-        <div className="relative mt-0.5 shrink-0">
-          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#FFD7C8] via-[#FFE6DC] to-[#DCC8FF] blur-sm opacity-80" />
-          <img
-            src={MERCY_HOST_IMAGE_SRC}
-            alt={headerTitle}
-            className="relative h-11 w-11 rounded-full border-2 border-white object-cover object-[50%_32%] scale-110 shadow-[0_8px_18px_rgba(148,163,184,0.18)]"
-            onError={(event) => {
-              fallbackAvatar(event);
-              onAvatarError?.(event);
-            }}
-          />
-          <div className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-white bg-emerald-400" />
+        <div className="flex min-w-0 flex-1 items-center gap-3">
+          <div className="relative shrink-0">
+            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#FFD7C8] via-[#FFE6DC] to-[#DCC8FF] blur-sm opacity-80" />
+            <img
+              src={MERCY_HOST_IMAGE_SRC}
+              alt="Teacher Mercy"
+              className="relative h-11 w-11 rounded-full border-2 border-white object-cover object-[50%_32%] scale-110 shadow-[0_8px_18px_rgba(148,163,184,0.18)]"
+              onError={(event) => {
+                fallbackAvatar(event);
+                onAvatarError?.(event);
+              }}
+            />
+            <div className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-white bg-emerald-400" />
+          </div>
+
+          <div className="min-w-0">
+            <p className="truncate text-base font-semibold text-slate-900">
+              {headerTitle}
+            </p>
+          </div>
         </div>
 
-        <div className="ml-auto flex min-w-0 items-center gap-2">
+        <div className="flex min-w-0 flex-1 flex-wrap items-center justify-end gap-2 md:flex-nowrap md:justify-end">
           <TeacherModePicker
             value={effectiveTeacherMode}
             onChange={handleTeacherModeChange}
@@ -1264,8 +1247,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
                   Unlock the full Mercy Journey
                 </p>
                 <p className="mt-1 text-xs leading-5 text-slate-600">
-                  Keep coaching, memory, Speak, and Logic connected in one
-                  premium teacher flow.
+                  Keep coaching, memory, Speak, and Logic connected in one premium teacher flow.
                 </p>
               </div>
 
@@ -1310,11 +1292,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
                 }`}
                 aria-pressed={isActive}
                 aria-disabled={!tab.enabled}
-                title={
-                  tab.enabled
-                    ? tab.label
-                    : `${tab.label} requires premium access`
-                }
+                title={tab.enabled ? tab.label : `${tab.label} requires premium access`}
               >
                 <div className="flex items-center gap-1">
                   <Icon
@@ -1327,12 +1305,8 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
                           : 'text-slate-300'
                     }
                   />
-                  {!tab.enabled ? (
-                    <Lock size={11} className="text-slate-300" />
-                  ) : null}
-                  {tab.teaser ? (
-                    <Crown size={11} className="text-amber-500" />
-                  ) : null}
+                  {!tab.enabled ? <Lock size={11} className="text-slate-300" /> : null}
+                  {tab.teaser ? <Crown size={11} className="text-amber-500" /> : null}
                 </div>
 
                 <span className="text-[10px] font-semibold uppercase tracking-[0.12em] leading-tight sm:text-[11px]">
@@ -1350,9 +1324,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
           shouldDisablePanelScroll ? 'overflow-hidden' : 'overflow-y-auto'
         }`}
       >
-        <div
-          className={`${shouldDisablePanelScroll ? 'h-full' : 'min-h-full'} p-3 md:p-4`}
-        >
+        <div className={`${shouldDisablePanelScroll ? 'h-full' : 'min-h-full'} p-3 md:p-4`}>
           {enabledTabs.length === 0 ? (
             <LockedAccessCard
               title="Mercy premium features are locked"
@@ -1361,7 +1333,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
             />
           ) : null}
 
-          {activeTab === 'teacher' ? (
+          {activeTab === 'teacher' && (
             <MercyTeacherTab
               latestTeacherWritingState={latestTeacherWritingState}
               latestAnalysisResult={resolvedLatestAnalysisResult}
@@ -1372,9 +1344,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
               onOpenWriting={handleOpenWriting}
               isLocked={!accessFeatures.hasMercyJourney && !kidsModeActive}
               onUnlock={kidsModeActive ? undefined : goToPricing}
-              unlockTitle={
-                kidsModeActive ? 'Mercy kids mode' : 'Unlock Mercy Journey'
-              }
+              unlockTitle={kidsModeActive ? 'Mercy kids mode' : 'Unlock Mercy Journey'}
               unlockDescription={
                 kidsModeActive
                   ? 'Mercy keeps kids mode simple, warm, and listening-first.'
@@ -1384,29 +1354,21 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
               learningSupportMode={learningSupportMode}
               isKidsMode={kidsModeActive}
               kidsModeAgeBand={kidsModeAgeBand}
-              teacherLabel={
-                cleanText(panelTitle) ||
-                cleanText(bubbleLabel) ||
-                'Teacher Mercy'
-              }
+              teacherLabel={cleanText(panelTitle) || cleanText(bubbleLabel) || 'Teacher Mercy'}
               disableTeacherWriting={disableTeacherWriting}
               selectedKidsObjectKey={selectedKidsObjectKey}
               onSelectKidsObject={handleSelectKidsObject}
             />
-          ) : null}
+          )}
 
-          {activeTab === 'grammar' &&
-          accessFeatures.hasMercyGrammar &&
-          !hideGrammarTab &&
-          !disableGrammarAnalysis &&
-          !kidsModeActive ? (
+          {activeTab === 'grammar' && accessFeatures.hasMercyGrammar && !hideGrammarTab && !disableGrammarAnalysis && !kidsModeActive && (
             <GrammarWritingTab
               roomId={roomId}
               roomTitle={roomTitle}
               contentEn={contentEn}
               englishLevel={
-                (profile as { english_level?: string | null } | null | undefined)
-                  ?.english_level ?? null
+                (profile as { english_level?: string | null } | null | undefined)?.english_level ??
+                null
               }
               learningSupportMode={learningSupportMode}
               teacherTask={resolvedTeacherTask ?? undefined}
@@ -1424,19 +1386,11 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
               onOpenEnglishLogic={handleOpenLogic}
               onMemoryUpdate={onMemoryUpdate}
             />
-          ) : null}
+          )}
 
-          {activeTab === 'grammar' &&
-          (!accessFeatures.hasMercyGrammar ||
-            hideGrammarTab ||
-            disableGrammarAnalysis ||
-            kidsModeActive) ? (
+          {activeTab === 'grammar' && (!accessFeatures.hasMercyGrammar || hideGrammarTab || disableGrammarAnalysis || kidsModeActive) ? (
             <LockedAccessCard
-              title={
-                kidsModeActive
-                  ? 'Writing is off in kids mode'
-                  : 'Grammar is part of Premium'
-              }
+              title={kidsModeActive ? 'Writing is off in kids mode' : 'Grammar is part of Premium'}
               description={
                 kidsModeActive
                   ? 'Kids mode stays simple. Use Speak for listen-and-repeat practice.'
@@ -1446,7 +1400,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
             />
           ) : null}
 
-          {activeTab === 'pronunciation' && accessFeatures.hasMercySpeak ? (
+          {activeTab === 'pronunciation' && accessFeatures.hasMercySpeak && (
             <MercySpeakTab
               roomId={roomId}
               roomTitle={roomTitle}
@@ -1466,25 +1420,15 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
               pendingPayload={pronunciationPayload}
               pendingPronunciationPayload={pronunciationPayload}
               onMemoryUpdate={onMemoryUpdate}
-              onOpenEnglishLogic={
-                disableEnglishLogic || hideLogicTab || kidsModeActive
-                  ? undefined
-                  : handleOpenLogic
-              }
-              learningSupportMode={
-                kidsModeActive ? 'gentle' : learningSupportMode
-              }
+              onOpenEnglishLogic={disableEnglishLogic || hideLogicTab || kidsModeActive ? undefined : handleOpenLogic}
+              learningSupportMode={kidsModeActive ? 'gentle' : learningSupportMode}
               isKidsMode={kidsModeActive}
               kidsModeAgeBand={kidsModeAgeBand}
               preferTapAndRepeat={kidsModeActive || preferTapAndRepeat}
-              teacherLabel={
-                cleanText(panelTitle) ||
-                cleanText(bubbleLabel) ||
-                'Teacher Mercy'
-              }
+              teacherLabel={cleanText(panelTitle) || cleanText(bubbleLabel) || 'Teacher Mercy'}
               selectedKidsObjectKey={selectedKidsObjectKey}
             />
-          ) : null}
+          )}
 
           {activeTab === 'pronunciation' && !accessFeatures.hasMercySpeak ? (
             <LockedAccessCard
@@ -1494,11 +1438,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
             />
           ) : null}
 
-          {activeTab === 'logic' &&
-          accessFeatures.hasMercyLogic &&
-          !hideLogicTab &&
-          !disableEnglishLogic &&
-          !kidsModeActive ? (
+          {activeTab === 'logic' && accessFeatures.hasMercyLogic && !hideLogicTab && !disableEnglishLogic && !kidsModeActive && (
             <EnglishLogicTab
               roomTitle={roomTitle}
               contentEn={contentEn}
@@ -1513,25 +1453,13 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
               onVaultReplay={() => {}}
               isKidsMode={kidsModeActive}
               kidsModeAgeBand={kidsModeAgeBand}
-              teacherLabel={
-                cleanText(panelTitle) ||
-                cleanText(bubbleLabel) ||
-                'Teacher Mercy'
-              }
+              teacherLabel={cleanText(panelTitle) || cleanText(bubbleLabel) || 'Teacher Mercy'}
             />
-          ) : null}
+          )}
 
-          {activeTab === 'logic' &&
-          (!accessFeatures.hasMercyLogic ||
-            hideLogicTab ||
-            disableEnglishLogic ||
-            kidsModeActive) ? (
+          {activeTab === 'logic' && (!accessFeatures.hasMercyLogic || hideLogicTab || disableEnglishLogic || kidsModeActive) ? (
             <LockedAccessCard
-              title={
-                kidsModeActive
-                  ? 'Logic is off in kids mode'
-                  : 'Logic is part of Premium'
-              }
+              title={kidsModeActive ? 'Logic is off in kids mode' : 'Logic is part of Premium'}
               description={
                 kidsModeActive
                   ? 'Kids mode keeps Mercy focused on listening and speaking.'
@@ -1560,11 +1488,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
                   }`}
                   onClick={() => handleTabChange(tab.id)}
                   disabled={!tab.enabled}
-                  title={
-                    tab.enabled
-                      ? tab.label
-                      : `${tab.label} requires premium access`
-                  }
+                  title={tab.enabled ? tab.label : `${tab.label} requires premium access`}
                 >
                   <Icon size={12} />
                   {tab.label}
