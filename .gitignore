@@ -30,3 +30,5 @@ private-content/
 .vercel
 mobile-web/
 dist/
+
+.backup-mobile/
