@@ -1,6 +1,6 @@
 /**
- * File: useUserAccess.ts
  * Path: src/hooks/useUserAccess.ts
+ * File: useUserAccess.ts
  */
 
 import { useEffect, useMemo, useState } from "react";
@@ -292,7 +292,9 @@ export const useUserAccess = (): UserAccess => {
         : toEffectiveAccessTier(entitlementTier);
 
       const unlockMercyFeatures = FORCE_UNLOCK_MERCY_FEATURES || isHighAdmin;
-      const features = buildFeatureAccess(entitlementTier, { unlockMercyFeatures });
+      const features = buildFeatureAccess(entitlementTier, {
+        unlockMercyFeatures,
+      });
 
       const next: UserAccess = {
         isAdmin,

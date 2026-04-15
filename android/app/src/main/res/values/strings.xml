@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Mercy Blade</string>
+    <string name="title_activity_main">Mercy Blade</string>
+    <string name="package_name">com.mercyapps.mercyblade</string>
+    <string name="custom_url_scheme">com.mercyapps.mercyblade</string>
+</resources>

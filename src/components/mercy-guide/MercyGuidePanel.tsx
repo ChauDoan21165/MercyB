@@ -533,7 +533,7 @@ function LearningSupportModePicker({
       ref={rootRef}
       className={`relative z-40 ${
         compact
-          ? 'min-w-0 flex-1 max-w-[98px] shrink'
+          ? 'w-[118px] shrink-0 sm:w-[118px] xl:w-[118px]'
           : 'w-full md:w-[320px]'
       }`}
     >
@@ -548,16 +548,16 @@ function LearningSupportModePicker({
         onClick={() => setOpen((prev) => !prev)}
         className={`flex w-full items-center justify-between gap-1.5 border text-left transition ${
           compact
-            ? `min-h-[40px] rounded-2xl px-2 py-2 ${styles.trigger}`
+            ? `min-h-[40px] rounded-2xl px-2.5 py-2 ${styles.trigger}`
             : `min-h-[48px] rounded-2xl px-3 py-2.5 ${styles.trigger}`
         }`}
         aria-haspopup="listbox"
         aria-expanded={open}
       >
         <div className="flex min-w-0 items-center gap-1.5">
-          {!compact ? (
+          {compact ? null : (
             <SelectedIcon size={16} className="shrink-0" />
-          ) : null}
+          )}
           <div className="min-w-0">
             <div className={compact ? 'truncate text-[13px] font-semibold' : 'truncate text-sm font-semibold'}>
               {compact ? selected.label : selected.shortLabel}
@@ -676,7 +676,7 @@ function TeacherModePicker({
       ref={rootRef}
       className={`relative z-40 ${
         compact
-          ? 'min-w-0 flex-1 max-w-[84px] shrink'
+          ? 'w-[118px] shrink-0 sm:w-[118px] xl:w-[118px]'
           : 'w-full md:w-[260px]'
       }`}
     >
@@ -691,7 +691,7 @@ function TeacherModePicker({
         onClick={() => setOpen((prev) => !prev)}
         className={`flex w-full items-center justify-between gap-1.5 border text-left transition ${
           compact
-            ? `min-h-[40px] rounded-2xl px-2 py-2 ${styles.trigger}`
+            ? `min-h-[40px] rounded-2xl px-2.5 py-2 ${styles.trigger}`
             : `min-h-[48px] rounded-2xl px-3 py-2.5 ${styles.trigger}`
         }`}
         aria-haspopup="listbox"
@@ -1258,7 +1258,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
           <div className="flex shrink-0 items-center gap-1">
             <button
               type="button"
-              className="rounded-full border border-transparent bg-white/75 p-2 text-slate-500 transition hover:border-slate-200 hover:bg-white hover:text-slate-700"
+              className="rounded-full p-2 text-slate-400 outline-none transition hover:bg-white/70 hover:text-slate-600 focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0"
               aria-label={isFullscreen ? 'Exit full screen' : 'Full screen'}
               onClick={onToggleFullscreen}
             >
