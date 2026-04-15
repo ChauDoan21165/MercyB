@@ -40,6 +40,21 @@
 // PATCH (2026-04-09):
 // - HOTFIX: use standalone canAccessTier() helper instead of calling
 //   access.canAccessTier(...) as a method, which caused runtime crash in production.
+//
+// PATCH (2026-04-14):
+// - MOBILE ROOM TIDY: reduce horizontal squeeze on narrow screens.
+// - Tighten mobile card padding so reading width is wider.
+// - Keep title row, keywords, box 4 reading area, completion/chat/feedback usable on phone.
+// - Do not change room logic or 5-box structure.
+//
+// PATCH (2026-04-14b):
+// - Reduce mobile border heaviness visually.
+// - Expand usable text width further on phone.
+// - Keep change small and only in this file.
+//
+// PATCH (2026-04-14c):
+// - Cut the remaining text-to-border side space further inside box 4.
+// - Keep the actual reading column much closer to the card edge on phone.
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
@@ -373,6 +388,26 @@ const ROOM_CSS_TIDY = `
   box-sizing: border-box;
 }
 
+/* Keep card border visually lighter on this renderer */
+[data-mb-scope="room"] .mb-card{
+  border-width: 1px !important;
+}
+
+/* Let box 4 reading content use more of the card width */
+[data-mb-scope="room"] .mb-box4{
+  overflow: hidden;
+}
+
+[data-mb-scope="room"] .mb-box4 .mb-zoomWrap{
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+[data-mb-scope="room"] .mb-box4 .mb-zoomWrap > *,
+[data-mb-scope="room"] .mb-box4 .mb-zoomWrap [style*="max-width"]{
+  max-width: 100% !important;
+}
+
 /* ZOOM FIX — consume the existing slider variable on readable text */
 [data-mb-scope="room"] .mb-welcomeLine,
 [data-mb-scope="room"] .mb-roomTitle,
@@ -566,6 +601,109 @@ const ROOM_CSS_TIDY = `
   margin-top: 10px;
   opacity: .82;
 }
+
+/* Mobile tidy pass — make the reading column wider and reduce squeeze */
+@media (max-width: 860px){
+  [data-mb-scope="room"]{
+    --mb-box-pad-x: 6px;
+    --mb-box-pad-y: 10px;
+    --mb-row-min: 42px;
+    --mb-gap: 8px;
+    --mb-icon: 32px;
+    --mb-pill-h: 30px;
+  }
+
+  [data-mb-scope="room"] .mb-card{
+    border-width: 1px !important;
+    border-radius: 14px;
+  }
+
+  [data-mb-scope="room"] .mb-titleRow{
+    padding: 10px 6px;
+  }
+
+  [data-mb-scope="room"] .mb-titleLeft,
+  [data-mb-scope="room"] .mb-titleRight{
+    gap: 8px;
+  }
+
+  [data-mb-scope="room"] .mb-titleRow .mb-tier{
+    padding: 0 10px;
+    font-size: 11px;
+  }
+
+  [data-mb-scope="room"] .mb-welcomeLine{
+    font-size: 15px;
+    line-height: 1.72;
+  }
+
+  [data-mb-scope="room"] .mb-keyRow{
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  [data-mb-scope="room"] .mb-keyRow .mb-keyBtn{
+    padding: 0 11px;
+    font-size: 12px;
+  }
+
+  [data-mb-scope="room"] .mb-zoomWrap{
+    font-size: calc(15px * var(--mb-effective-zoom));
+  }
+
+  [data-mb-scope="room"] .mb-zoomWrap,
+  [data-mb-scope="room"] .mb-zoomWrap > *{
+    max-width: 100% !important;
+  }
+
+  [data-mb-scope="room"] .mb-zoomWrap img,
+  [data-mb-scope="room"] .mb-zoomWrap video,
+  [data-mb-scope="room"] .mb-zoomWrap iframe,
+  [data-mb-scope="room"] .mb-zoomWrap audio{
+    max-width: 100% !important;
+  }
+
+  [data-mb-scope="room"] .mb-completionCard{
+    padding: 12px 12px 10px;
+  }
+
+  [data-mb-scope="room"] .mb-completionInput{
+    min-width: 0;
+  }
+}
+
+@media (max-width: 640px){
+  [data-mb-scope="room"]{
+    --mb-box-pad-x: 3px;
+    --mb-gap: 6px;
+  }
+
+  [data-mb-scope="room"] .mb-card{
+    border-radius: 12px;
+  }
+
+  [data-mb-scope="room"] .mb-titleRow{
+    gap: 6px;
+    padding: 10px 3px;
+  }
+
+  [data-mb-scope="room"] .mb-titleLeft,
+  [data-mb-scope="room"] .mb-titleRight{
+    gap: 6px;
+  }
+
+  [data-mb-scope="room"] .mb-keyRow{
+    gap: 7px;
+  }
+
+  [data-mb-scope="room"] .mb-completionRow{
+    gap: 8px;
+  }
+
+  [data-mb-scope="room"] .mb-chatList{
+    padding: 10px 10px !important;
+  }
+}
 `;
 
 export default function RoomRenderer({
@@ -603,6 +741,8 @@ export default function RoomRenderer({
 
   const isNarrow =
     typeof window !== "undefined" ? window.matchMedia("(max-width: 860px)").matches : false;
+  const isPhone =
+    typeof window !== "undefined" ? window.matchMedia("(max-width: 640px)").matches : false;
 
   const scrollToAudio = () => {
     const el = audioAnchorRef.current;
@@ -925,7 +1065,6 @@ export default function RoomRenderer({
 
   const clearKeyword = () => setActiveKeyword(null);
 
-  // Auto-scroll Box 4 into view on mobile after keyword selection
   useEffect(() => {
     if (!activeKeyword || !isNarrow || !box4Ref.current) return;
     setTimeout(() => {
@@ -1013,7 +1152,7 @@ export default function RoomRenderer({
   const [chatSending, setChatSending] = useState(false);
   const [chatError, setChatError] = useState<string | null>(null);
   const [chatText, setChatText] = useState("");
-  const [chatCollapsed, setChatCollapsed] = useState(true); // collapsed by default
+  const [chatCollapsed, setChatCollapsed] = useState(true);
 
   useEffect(() => setChatCollapsed(true), [canonicalChatRoomId]);
 
@@ -1175,7 +1314,7 @@ export default function RoomRenderer({
 
   const feedback = useRoomFeedback(supabase, coreRoomId, authUser);
 
-  const chatListMaxH = activeEntry ? 140 : 220;
+  const chatListMaxH = activeEntry ? (isPhone ? 128 : 140) : isPhone ? 176 : 220;
   const roomIsEmpty = !room;
 
   const titleStyle: React.CSSProperties = useMemo(
@@ -1201,7 +1340,7 @@ export default function RoomRenderer({
     () => ({
       width: "100%",
       boxSizing: "border-box",
-      padding: isNarrow ? "16px 14px" : "20px 18px",
+      padding: isNarrow ? "8px 0" : "20px 18px",
     }),
     [isNarrow],
   );
@@ -1308,7 +1447,7 @@ export default function RoomRenderer({
   const canComplete = !isLocked && !!activeEntry;
 
   return (
-    <div className="mx-auto w-full max-w-[980px] px-4">
+    <div className="mx-auto w-full max-w-[980px] px-0">
       <div
         ref={rootRef}
         className="mb-room w-full"
@@ -1364,7 +1503,7 @@ export default function RoomRenderer({
               </div>
             </div>
 
-            <section className="mb-card p-5 md:p-6 mb-5" data-room-box="3">
+            <section className="mb-card p-3 md:p-6 mb-5" data-room-box="3">
               <div className="mb-welcomeLine">
                 <span>
                   {highlightByColorMap(welcomeEN, kwColorMap)} <b>/</b> {highlightByColorMap(welcomeVI, kwColorMap)}
@@ -1426,12 +1565,12 @@ export default function RoomRenderer({
             </section>
 
             {(essay.en || essay.vi) && (
-              <div className="mb-card p-4 md:p-6 mb-5">
+              <div className="mb-card p-3 md:p-6 mb-5">
                 <BilingualEssay title="Essay" en={essay.en || ""} vi={essay.vi || ""} />
               </div>
             )}
 
-            <section ref={box4Ref} className="mb-card p-5 md:p-6 mb-5 mb-box4" data-room-box="4">
+            <section ref={box4Ref} className="mb-card p-1 md:p-6 mb-5 mb-box4" data-room-box="4">
               <div className="mb-zoomWrap">
                 {isLocked ? (
                   <div className="min-h-[260px] flex items-center justify-center text-center" style={inCardMessagePad}>

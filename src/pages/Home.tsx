@@ -153,6 +153,7 @@ export default function Home() {
 
   const isDesktopTop = viewportWidth >= 960;
   const isCompactHeadline = viewportWidth < 640;
+  const isPhone = viewportWidth < 640;
   const mobileHeadlineSize = viewportWidth <= 380 ? 20 : 22;
 
   useEffect(() => {
@@ -236,6 +237,8 @@ export default function Home() {
   const wrap: React.CSSProperties = {
     width: "100%",
     minHeight: "100vh",
+    overflowX: "hidden",
+    overflowY: "hidden",
     background:
       "radial-gradient(circle at top, rgba(255,237,213,0.55) 0%, rgba(250,247,241,0.95) 26%, rgba(248,247,250,1) 62%, rgba(252,249,243,1) 100%)",
   };
@@ -243,17 +246,17 @@ export default function Home() {
   const frame: React.CSSProperties = {
     maxWidth: PAGE_MAX,
     margin: "0 auto",
-    padding: "10px 16px 188px",
+    padding: isPhone ? "10px 16px 108px" : "10px 16px 188px",
   };
 
   const heroShell: React.CSSProperties = {
-    marginTop: 8,
+    marginTop: 6,
     borderRadius: 28,
     border: "1px solid rgba(0,0,0,0.06)",
     background:
       "linear-gradient(180deg, rgba(255,252,245,0.98), rgba(248,243,234,0.94))",
     boxShadow: "0 18px 42px rgba(0,0,0,0.07)",
-    padding: isDesktopTop ? "24px 24px 28px" : "20px 16px 24px",
+    padding: isDesktopTop ? "24px 24px 28px" : "18px 16px 22px",
     textAlign: "center",
   };
 
@@ -290,13 +293,13 @@ export default function Home() {
   };
 
   const stageShell: React.CSSProperties = {
-    marginTop: 18,
+    marginTop: 14,
     borderRadius: 26,
     border: "1px solid rgba(0,0,0,0.08)",
     background:
       "linear-gradient(180deg, rgba(247,247,249,0.98), rgba(243,242,245,0.95))",
     boxShadow: "0 16px 34px rgba(0,0,0,0.06)",
-    padding: isDesktopTop ? "22px 18px 26px" : "20px 14px 24px",
+    padding: isDesktopTop ? "22px 18px 26px" : "18px 12px 18px",
     minHeight: isDesktopTop ? 330 : 0,
     position: "relative",
     overflow: "hidden",
@@ -331,13 +334,13 @@ export default function Home() {
     background:
       "linear-gradient(180deg, rgba(255,255,255,0.98), rgba(251,250,248,0.94))",
     boxShadow: "0 16px 34px rgba(0,0,0,0.06)",
-    padding: isDesktopTop ? "28px 22px" : "24px 18px",
+    padding: isDesktopTop ? "28px 22px" : "22px 18px",
     textAlign: "center",
   };
 
   const libraryBubble: React.CSSProperties = {
-    width: 92,
-    height: 92,
+    width: isPhone ? 84 : 92,
+    height: isPhone ? 84 : 92,
     borderRadius: 9999,
     display: "grid",
     placeItems: "center",
@@ -348,7 +351,7 @@ export default function Home() {
   };
 
   const libraryTitle: React.CSSProperties = {
-    marginTop: 18,
+    marginTop: 16,
     fontSize: isDesktopTop ? z(26) : z(22),
     fontWeight: 900,
     color: "rgba(0,0,0,0.90)",
@@ -356,22 +359,22 @@ export default function Home() {
   };
 
   const librarySub: React.CSSProperties = {
-    marginTop: 10,
+    marginTop: 8,
     fontSize: z(15),
-    lineHeight: 1.55,
+    lineHeight: 1.5,
     color: "rgba(0,0,0,0.64)",
     fontWeight: 700,
   };
 
   const floatingFacesWrap: React.CSSProperties = {
-    marginTop: 18,
+    marginTop: isPhone ? 10 : 18,
   };
 
   const bottomDockOuter: React.CSSProperties = {
     position: "fixed",
     left: 0,
     right: 0,
-    bottom: 10,
+    bottom: isPhone ? 8 : 10,
     zIndex: 80,
     padding: "0 16px",
     pointerEvents: "none",
@@ -394,7 +397,7 @@ export default function Home() {
     >
       <div style={libraryShell}>
         <div style={libraryBubble} aria-hidden="true">
-          <LibraryBig size={36} color="white" />
+          <LibraryBig size={isPhone ? 32 : 36} color="white" />
         </div>
 
         <div style={libraryTitle}>Library</div>
