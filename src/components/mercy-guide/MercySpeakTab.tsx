@@ -686,8 +686,8 @@ function getConfidenceLevel(score: number): 'low' | 'medium' | 'high' {
 
 function getVariantButtonClass(active: boolean) {
   return active
-    ? 'border-[#FFD4C6] bg-gradient-to-r from-[#FFF0E9] to-[#FFF8F4] text-[#D66A4E] shadow-[0_8px_20px_rgba(255,138,101,0.12)]'
-    : 'border-slate-200 bg-white/92 text-slate-600 hover:border-[#FFD4C6] hover:bg-[#FFF8F4] hover:text-[#D66A4E]';
+    ? 'border-[#EFAF95] bg-gradient-to-r from-[#FFF0E6] to-[#FFF7F1] text-[#B74F30] shadow-[0_8px_20px_rgba(255,138,101,0.18)]'
+    : 'border-slate-200 bg-white text-slate-800 hover:border-[#EFAF95] hover:bg-[#FFF8F4] hover:text-[#B74F30]';
 }
 
 function getMetricTone(score: number) {
@@ -695,7 +695,7 @@ function getMetricTone(score: number) {
     return {
       ring: 'border-emerald-200 bg-emerald-50/80',
       text: 'text-emerald-700',
-      bar: 'from-emerald-400 to-teal-400',
+      bar: 'from-emerald-500 to-teal-500',
     };
   }
 
@@ -703,14 +703,14 @@ function getMetricTone(score: number) {
     return {
       ring: 'border-amber-200 bg-amber-50/80',
       text: 'text-amber-700',
-      bar: 'from-amber-400 to-orange-400',
+      bar: 'from-amber-500 to-orange-500',
     };
   }
 
   return {
-    ring: 'border-rose-200 bg-rose-50/80',
+    ring: 'border-rose-200 bg-rose-50/85',
     text: 'text-rose-700',
-    bar: 'from-rose-400 to-orange-400',
+    bar: 'from-rose-500 to-orange-500',
   };
 }
 
@@ -1857,217 +1857,213 @@ export function MercySpeakTab({
 
   return (
     <div className="flex h-full min-h-0 flex-col overflow-hidden bg-gradient-to-br from-[#FFF8F3] via-[#FFFDFC] to-[#F7FAFF]">
-      <div className="min-h-0 flex-1 overflow-y-auto px-4 py-4 md:px-5 md:py-5">
+      <div className="min-h-0 flex-1 overflow-y-auto px-2.5 py-3 md:px-3 md:py-4">
         <div className="space-y-3">
-          <div className="rounded-3xl border border-white/80 bg-white/92 p-4 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
-            <textarea
-              value={customText}
-              onChange={(e) => {
-                setCustomText(e.target.value);
-                setVariant('custom');
-              }}
-              placeholder="Type the sentence you want to practice speaking..."
-              className="w-full min-h-[92px] resize-y rounded-[22px] border border-[#F0E2D7] bg-gradient-to-br from-[#FFF9F2] to-white p-4 text-base leading-7 text-slate-800 shadow-[inset_0_1px_0_rgba(255,255,255,0.85),0_8px_20px_rgba(255,138,101,0.05)] outline-none transition focus:border-[#F7B79E] focus:ring-2 focus:ring-[#FFD8C7]"
-            />
+          <textarea
+            value={customText}
+            onChange={(e) => {
+              setCustomText(e.target.value);
+              setVariant('custom');
+            }}
+            placeholder="Type the sentence you want to practice speaking..."
+            className="min-h-[288px] w-full resize-y rounded-[26px] border border-[#E5CDB9] bg-gradient-to-br from-[#FFF9F2] to-white p-6 text-[1.1rem] leading-10 text-slate-950 shadow-[inset_0_1px_0_rgba(255,255,255,0.92),0_8px_20px_rgba(255,138,101,0.05)] outline-none transition placeholder:text-slate-600 focus:border-[#EFA98B] focus:ring-2 focus:ring-[#FFD3BF] md:min-h-[304px]"
+          />
 
-            <div className="mt-3 space-y-2.5">
-              <div className="grid grid-cols-5 gap-2">
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={() => handleSpeak()}
-                  disabled={!practiceText}
-                  className="h-[54px] min-w-0 rounded-[16px] border-teal-200 bg-gradient-to-r from-[#6EC6C8] to-[#5DAFB6] px-1 py-1 text-white shadow-[0_10px_18px_rgba(93,175,182,0.22)] hover:brightness-[1.03] disabled:opacity-60"
-                >
-                  <span className="flex flex-col items-center justify-center gap-1 leading-none">
-                    <Volume2 className="h-4 w-4 shrink-0" />
-                    <span className="text-[10px] font-semibold">Mercy</span>
-                  </span>
-                </Button>
+          <div className="grid grid-cols-5 gap-2.5">
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => handleSpeak()}
+              disabled={!practiceText}
+              className="h-[58px] min-w-0 rounded-[20px] border-[#147A81] bg-gradient-to-r from-[#126C73] to-[#0E545B] px-2 py-1 text-white shadow-[0_10px_22px_rgba(18,108,115,0.30)] hover:brightness-[1.04] disabled:opacity-60"
+            >
+              <span className="flex flex-col items-center justify-center gap-1 leading-none">
+                <Volume2 className="h-4.5 w-4.5 shrink-0" />
+                <span className="text-[11px] font-semibold">Mercy</span>
+              </span>
+            </Button>
 
-                {!isListening ? (
-                  <Button
-                    type="button"
-                    onClick={startListening}
-                    disabled={!supportsRecognition || !practiceText}
-                    className="h-[54px] min-w-0 rounded-[16px] border-0 bg-gradient-to-r from-[#43C59E] to-[#18A874] px-1 py-1 text-white shadow-[0_10px_18px_rgba(24,168,116,0.20)] hover:brightness-[1.03] disabled:opacity-60"
-                  >
-                    <span className="flex flex-col items-center justify-center gap-1 leading-none">
-                      <Mic className="h-4 w-4 shrink-0" />
-                      <span className="text-[10px] font-semibold">You</span>
-                    </span>
-                  </Button>
-                ) : (
-                  <Button
-                    type="button"
-                    variant="destructive"
-                    onClick={stopListening}
-                    className="h-[54px] min-w-0 rounded-[16px] px-1 py-1 shadow-[0_10px_18px_rgba(239,68,68,0.16)]"
-                  >
-                    <span className="flex flex-col items-center justify-center gap-1 leading-none">
-                      <Square className="h-4 w-4 shrink-0" />
-                      <span className="text-[10px] font-semibold">Stop</span>
-                    </span>
-                  </Button>
-                )}
+            {!isListening ? (
+              <Button
+                type="button"
+                onClick={startListening}
+                disabled={!supportsRecognition || !practiceText}
+                className="h-[58px] min-w-0 rounded-[20px] border-0 bg-gradient-to-r from-[#147A53] to-[#0F6242] px-2 py-1 text-white shadow-[0_10px_22px_rgba(20,122,83,0.28)] hover:brightness-[1.04] disabled:opacity-60"
+              >
+                <span className="flex flex-col items-center justify-center gap-1 leading-none">
+                  <Mic className="h-4.5 w-4.5 shrink-0" />
+                  <span className="text-[11px] font-semibold">You</span>
+                </span>
+              </Button>
+            ) : (
+              <Button
+                type="button"
+                variant="destructive"
+                onClick={stopListening}
+                className="h-[58px] min-w-0 rounded-[20px] px-2 py-1 shadow-[0_10px_18px_rgba(239,68,68,0.16)]"
+              >
+                <span className="flex flex-col items-center justify-center gap-1 leading-none">
+                  <Square className="h-4.5 w-4.5 shrink-0" />
+                  <span className="text-[11px] font-semibold">Stop</span>
+                </span>
+              </Button>
+            )}
 
-                {!isRecording ? (
-                  <Button
-                    type="button"
-                    variant="outline"
-                    onClick={startRecording}
-                    disabled={!supportsMediaRecording}
-                    className="h-[54px] min-w-0 rounded-[16px] border-[#BFE8EA] bg-[#F4FEFE] px-1 py-1 text-[#137E86] shadow-sm hover:bg-[#ECFCFD] disabled:opacity-60"
-                  >
-                    <span className="flex flex-col items-center justify-center gap-1 leading-none">
-                      <Mic className="h-4 w-4 shrink-0" />
-                      <span className="text-[10px] font-semibold">Record</span>
-                    </span>
-                  </Button>
-                ) : (
-                  <Button
-                    type="button"
-                    variant="outline"
-                    onClick={stopRecording}
-                    className="h-[54px] min-w-0 rounded-[16px] border-[#F2D8CA] bg-white px-1 py-1 text-slate-800 shadow-sm hover:bg-[#FFF8F4]"
-                  >
-                    <span className="flex flex-col items-center justify-center gap-1 leading-none">
-                      <Square className="h-4 w-4 shrink-0" />
-                      <span className="text-[10px] font-semibold">Stop</span>
-                    </span>
-                  </Button>
-                )}
+            {!isRecording ? (
+              <Button
+                type="button"
+                variant="outline"
+                onClick={startRecording}
+                disabled={!supportsMediaRecording}
+                className="h-[58px] min-w-0 rounded-[20px] border-[#99D6DE] bg-[#F1FEFF] px-2 py-1 text-[#0A6673] shadow-sm hover:bg-[#E9FBFD] disabled:opacity-60"
+              >
+                <span className="flex flex-col items-center justify-center gap-1 leading-none">
+                  <Mic className="h-4.5 w-4.5 shrink-0" />
+                  <span className="text-[11px] font-semibold">Record</span>
+                </span>
+              </Button>
+            ) : (
+              <Button
+                type="button"
+                variant="outline"
+                onClick={stopRecording}
+                className="h-[58px] min-w-0 rounded-[20px] border-[#F2D8CA] bg-white px-2 py-1 text-slate-900 shadow-sm hover:bg-[#FFF8F4]"
+              >
+                <span className="flex flex-col items-center justify-center gap-1 leading-none">
+                  <Square className="h-4.5 w-4.5 shrink-0" />
+                  <span className="text-[11px] font-semibold">Stop</span>
+                </span>
+              </Button>
+            )}
 
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={handlePlayRecording}
-                  disabled={!recordedAudioUrl || isRecording}
-                  className="h-[54px] min-w-0 rounded-[16px] border-[#E2E8F0] bg-white px-1 py-1 text-slate-700 shadow-sm hover:bg-slate-50 disabled:opacity-50"
-                >
-                  <span className="flex flex-col items-center justify-center gap-1 leading-none">
-                    <PlayCircle className="h-4 w-4 shrink-0" />
-                    <span className="text-[10px] font-semibold">Play</span>
-                  </span>
-                </Button>
+            <Button
+              type="button"
+              variant="outline"
+              onClick={handlePlayRecording}
+              disabled={!recordedAudioUrl || isRecording}
+              className="h-[58px] min-w-0 rounded-[20px] border-[#D8E2F0] bg-white px-2 py-1 text-slate-900 shadow-sm hover:bg-slate-50 disabled:opacity-50"
+            >
+              <span className="flex flex-col items-center justify-center gap-1 leading-none">
+                <PlayCircle className="h-4.5 w-4.5 shrink-0" />
+                <span className="text-[11px] font-semibold">Play</span>
+              </span>
+            </Button>
 
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={handleResetAttempt}
-                  className="h-[54px] min-w-0 rounded-[16px] border-[#F2E7DE] bg-white px-1 py-1 text-slate-700 shadow-sm hover:bg-[#FFF8F4]"
-                >
-                  <span className="flex flex-col items-center justify-center gap-1 leading-none">
-                    <RotateCcw className="h-4 w-4 shrink-0" />
-                    <span className="text-[10px] font-semibold">Reset</span>
-                  </span>
-                </Button>
-              </div>
-
-              <div className="grid grid-cols-4 gap-2">
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={handleCopy}
-                  disabled={!practiceText}
-                  className="h-[54px] min-w-0 rounded-[16px] border-[#F2E7DE] bg-white px-1 py-1 text-slate-700 shadow-sm hover:bg-[#FFF8F4] disabled:opacity-60"
-                >
-                  <span className="flex flex-col items-center justify-center gap-1 leading-none">
-                    <Copy className="h-4 w-4 shrink-0" />
-                    <span className="text-[10px] font-semibold">
-                      {copySuccess ? 'Copied' : 'Copy'}
-                    </span>
-                  </span>
-                </Button>
-
-                <button
-                  type="button"
-                  onClick={() => setVariant('custom')}
-                  className={`h-[54px] min-w-0 rounded-[16px] border px-1 py-1 text-[10px] font-semibold transition-all ${getVariantButtonClass(
-                    variant === 'custom',
-                  )}`}
-                >
-                  <span className="flex h-full items-center justify-center text-center leading-tight">
-                    Custom
-                  </span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={handleClearPracticeLine}
-                  className="h-[54px] min-w-0 rounded-[16px] border border-slate-200 bg-white/92 px-1 py-1 text-[10px] font-semibold text-slate-600 transition-all hover:border-rose-200 hover:bg-rose-50 hover:text-rose-700"
-                >
-                  <span className="flex h-full flex-col items-center justify-center gap-1 leading-none">
-                    <Eraser className="h-4 w-4 shrink-0" />
-                    <span>Clear</span>
-                  </span>
-                </button>
-
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={() => {
-                    if (onOpenEnglishLogic) onOpenEnglishLogic();
-                  }}
-                  disabled={!canOpenLogic}
-                  className="h-[54px] min-w-0 rounded-[16px] border-violet-200 bg-white px-1 py-1 text-violet-700 shadow-sm hover:bg-violet-50 disabled:opacity-50"
-                >
-                  <span className="flex h-full flex-col items-center justify-center leading-[1.02]">
-                    <span className="text-[9px] font-semibold">Understand</span>
-                    <span className="text-[9px] font-semibold">why</span>
-                  </span>
-                </Button>
-              </div>
-            </div>
-
-            {!supportsRecognition ? (
-              <div className="mt-3 rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
-                <div className="flex items-start gap-2">
-                  <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
-                  <p>
-                    This browser does not expose speech recognition here. Audio playback still works.
-                  </p>
-                </div>
-              </div>
-            ) : null}
-
-            {!supportsMediaRecording ? (
-              <div className="mt-3 rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
-                <div className="flex items-start gap-2">
-                  <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
-                  <p>This browser does not support in-page voice recording here.</p>
-                </div>
-              </div>
-            ) : null}
-
-            {recognitionError ? (
-              <div className="mt-3 rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
-                <div className="flex items-start gap-2">
-                  <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
-                  <p>{recognitionError}</p>
-                </div>
-              </div>
-            ) : null}
-
-            {recordingError ? (
-              <div className="mt-3 rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
-                <div className="flex items-start gap-2">
-                  <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
-                  <p>{recordingError}</p>
-                </div>
-              </div>
-            ) : null}
+            <Button
+              type="button"
+              variant="outline"
+              onClick={handleResetAttempt}
+              className="h-[58px] min-w-0 rounded-[20px] border-[#E3D7CB] bg-white px-2 py-1 text-slate-900 shadow-sm hover:bg-[#FFF8F4]"
+            >
+              <span className="flex flex-col items-center justify-center gap-1 leading-none">
+                <RotateCcw className="h-4.5 w-4.5 shrink-0" />
+                <span className="text-[11px] font-semibold">Reset</span>
+              </span>
+            </Button>
           </div>
 
+          <div className="grid grid-cols-4 gap-2.5">
+            <Button
+              type="button"
+              variant="outline"
+              onClick={handleCopy}
+              disabled={!practiceText}
+              className="h-[58px] min-w-0 rounded-[20px] border-[#E3D7CB] bg-white px-2 py-1 text-slate-900 shadow-sm hover:bg-[#FFF8F4] disabled:opacity-60"
+            >
+              <span className="flex flex-col items-center justify-center gap-1 leading-none">
+                <Copy className="h-4.5 w-4.5 shrink-0" />
+                <span className="text-[11px] font-semibold">
+                  {copySuccess ? 'Copied' : 'Copy'}
+                </span>
+              </span>
+            </Button>
+
+            <button
+              type="button"
+              onClick={() => setVariant('custom')}
+              className={`h-[58px] min-w-0 rounded-[20px] border px-2 py-1 text-[11px] font-semibold transition-all ${getVariantButtonClass(
+                variant === 'custom',
+              )}`}
+            >
+              <span className="flex h-full items-center justify-center text-center leading-tight">
+                Custom
+              </span>
+            </button>
+
+            <button
+              type="button"
+              onClick={handleClearPracticeLine}
+              className="h-[58px] min-w-0 rounded-[20px] border border-slate-200 bg-white px-2 py-1 text-[11px] font-semibold text-slate-800 transition-all hover:border-rose-300 hover:bg-rose-50 hover:text-rose-700"
+            >
+              <span className="flex h-full flex-col items-center justify-center gap-1 leading-none">
+                <Eraser className="h-4.5 w-4.5 shrink-0" />
+                <span>Clear</span>
+              </span>
+            </button>
+
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => {
+                if (onOpenEnglishLogic) onOpenEnglishLogic();
+              }}
+              disabled={!canOpenLogic}
+              className="h-[58px] min-w-0 rounded-[20px] border-[#C7B0FF] bg-white px-2 py-1 text-[#5B21B6] shadow-sm hover:bg-violet-50 disabled:opacity-50"
+            >
+              <span className="flex h-full flex-col items-center justify-center leading-[1.04]">
+                <span className="text-[10px] font-semibold">Understand</span>
+                <span className="text-[10px] font-semibold">why</span>
+              </span>
+            </Button>
+          </div>
+
+          {!supportsRecognition ? (
+            <div className="rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
+              <div className="flex items-start gap-2">
+                <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
+                <p>
+                  This browser does not expose speech recognition here. Audio playback still works.
+                </p>
+              </div>
+            </div>
+          ) : null}
+
+          {!supportsMediaRecording ? (
+            <div className="rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
+              <div className="flex items-start gap-2">
+                <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
+                <p>This browser does not support in-page voice recording here.</p>
+              </div>
+            </div>
+          ) : null}
+
+          {recognitionError ? (
+            <div className="rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
+              <div className="flex items-start gap-2">
+                <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
+                <p>{recognitionError}</p>
+              </div>
+            </div>
+          ) : null}
+
+          {recordingError ? (
+            <div className="rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
+              <div className="flex items-start gap-2">
+                <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
+                <p>{recordingError}</p>
+              </div>
+            </div>
+          ) : null}
+
           <div
-            className={`rounded-[22px] border p-4 shadow-sm ${
+            className={`rounded-[24px] border p-4 shadow-sm ${
               transcript
                 ? matchTone.ring
                 : 'border-[#F1E5DB] bg-gradient-to-br from-[#FFF9F3] to-white'
             }`}
           >
             <div className="flex items-start justify-between gap-3">
-              <p className="text-[44px] font-semibold leading-none text-slate-900">
+              <p className="text-[2.05rem] font-semibold leading-none text-slate-950">
                 {transcript ? `${matchScore}%` : '--'}
               </p>
 
@@ -2080,7 +2076,7 @@ export function MercySpeakTab({
               ) : null}
             </div>
 
-            <div className="mt-4 h-2.5 overflow-hidden rounded-full bg-white/90">
+            <div className="mt-3 h-2.5 overflow-hidden rounded-full bg-white/90">
               <div
                 className={`h-full rounded-full bg-gradient-to-r transition-all duration-500 ${matchTone.bar}`}
                 style={{ width: `${transcript ? matchScore : 0}%` }}
@@ -2088,11 +2084,11 @@ export function MercySpeakTab({
             </div>
           </div>
 
-          <div className="rounded-[22px] border border-white/80 bg-white p-4 shadow-sm">
-            <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+          <div className="rounded-[24px] border border-white/80 bg-white p-4 shadow-sm">
+            <p className="text-xs font-semibold uppercase tracking-wide text-slate-700">
               {transcriptLabel}
             </p>
-            <p className="mt-2 min-h-[72px] text-sm leading-6 text-slate-700">
+            <p className="mt-2 min-h-[60px] text-sm leading-8 text-slate-950">
               {transcript || 'Your transcript will appear here after you speak.'}
             </p>
           </div>
