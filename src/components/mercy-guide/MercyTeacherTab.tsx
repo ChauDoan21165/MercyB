@@ -287,7 +287,20 @@ function toPage2Label(filename: string): string {
     .join(' ');
 }
 
+function toPage3Label(filename: string): string {
+  return filename
+    .replace(/^k\d+_/, '')
+    .replace(/\.png$/i, '')
+    .split('_')
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(' ');
+}
+
 function normalizePage2Key(key?: string | null): string {
+  return cleanText(key).replace(/\.png$/i, '');
+}
+
+function normalizePage3Key(key?: string | null): string {
   return cleanText(key).replace(/\.png$/i, '');
 }
 
@@ -308,6 +321,116 @@ const PAGE_2_IMAGE_GRID: KidsLessonCard[] = PAGE_2_IMAGE_FILENAMES.map((filename
   key: filename.replace(/\.png$/i, ''),
   label: toPage2Label(filename),
   imageSrc: `/images/mercy-kids-page-2/${filename}`,
+}));
+
+
+const PAGE_3_IMAGE_FILENAMES = [
+  'k001_hello_mercy.png',
+  'k002_bye_bye.png',
+  'k003_apple.png',
+  'k004_ball.png',
+  'k005_dog.png',
+  'k006_cat.png',
+  'k007_cup.png',
+  'k008_book.png',
+  'k009_car.png',
+  'k010_star.png',
+  'k011_teddy_bear.png',
+  'k012_bed.png',
+  'k013_chair.png',
+  'k014_spoon.png',
+  'k015_bottle.png',
+  'k016_my_banana.png',
+  'k017_hat.png',
+  'k018_shoes.png',
+  'k019_sun.png',
+  'k020_moon.png',
+  'k021_happy.png',
+  'k022_sad.png',
+  'k023_sleepy.png',
+  'k024_hungry.png',
+  'k025_clap.png',
+  'k026_jump.png',
+  'k027_sit_down.png',
+  'k028_stand_up.png',
+  'k029_come_here.png',
+  'k030_lets_go.png',
+  'k031_what_is_this.png',
+  'k032_it_is_apple.png',
+  'k033_it_is_banana.png',
+  'k034_it_is_bird.png',
+  'k035_it_is_fish.png',
+  'k036_it_is_flower.png',
+  'k037_it_is_bus.png',
+  'k038_it_is_boat.png',
+  'k039_it_is_tree.png',
+  'k040_it_is_rainbow.png',
+  'k041_i_want_water.png',
+  'k042_i_want_milk.png',
+  'k043_i_want_juice.png',
+  'k044_i_want_apple.png',
+  'k045_i_want_cookie.png',
+  'k046_i_want_my_ball.png',
+  'k047_i_want_teddy_bear.png',
+  'k048_i_want_to_play.png',
+  'k049_i_want_to_eat.png',
+  'k050_i_want_to_sleep.png',
+  'k051_how_are_you.png',
+  'k052_im_fine.png',
+  'k053_im_happy_today.png',
+  'k054_im_tired.png',
+  'k055_im_okay.png',
+  'k056_thank_you.png',
+  'k057_youre_welcome.png',
+  'k058_good_morning.png',
+  'k059_good_night.png',
+  'k060_see_you_again.png',
+  'k061_do_you_like_apples.png',
+  'k062_yes_i_do.png',
+  'k063_no_i_dont.png',
+  'k064_i_like_cats.png',
+  'k065_i_like_dogs.png',
+  'k066_i_like_ice_cream.png',
+  'k067_i_dont_like_spicy_food.png',
+  'k068_this_one_please.png',
+  'k069_that_one_please.png',
+  'k070_i_want_the_red_one.png',
+  'k071_this_is_my_mom.png',
+  'k072_this_is_my_dad.png',
+  'k073_this_is_my_baby_brother.png',
+  'k074_we_are_at_home.png',
+  'k075_i_am_in_my_room.png',
+  'k076_where_is_my_toy.png',
+  'k077_here_it_is.png',
+  'k078_on_the_table.png',
+  'k079_under_the_chair.png',
+  'k080_come_and_help_me.png',
+  'k081_what_is_your_name.png',
+  'k082_my_name_is_emma.png',
+  'k083_how_old_are_you.png',
+  'k084_i_am_six_years_old.png',
+  'k085_i_go_to_school.png',
+  'k086_i_read_a_book.png',
+  'k087_i_write_my_name.png',
+  'k088_i_brush_my_teeth.png',
+  'k089_i_eat_breakfast.png',
+  'k090_i_go_to_bed.png',
+  'k091_how_are_you_today.png',
+  'k092_im_fine_thank_you.png',
+  'k093_what_do_you_want_to_eat.png',
+  'k094_i_want_rice_and_chicken.png',
+  'k095_can_you_help_me.png',
+  'k096_yes_i_can.png',
+  'k097_where_are_you_going.png',
+  'k098_i_am_going_home.png',
+  'k099_what_are_you_doing.png',
+  'k100_i_am_playing_with_my_friend.png',
+] as const;
+
+const PAGE_3_IMAGE_GRID: KidsLessonCard[] = PAGE_3_IMAGE_FILENAMES.map((filename) => ({
+  key: filename.replace(/\.png$/i, ''),
+  label: toPage3Label(filename),
+  imageSrc: `/images/mercy-kids-page-3/${filename}`,
 }));
 
 function asText(value: unknown): string {
@@ -600,6 +723,14 @@ function getPage2LessonByKey(key?: string | null): KidsLessonCard | null {
   return PAGE_2_IMAGE_GRID.find((item) => item.key === normalized) ?? null;
 }
 
+
+function getPage3LessonByKey(key?: string | null): KidsLessonCard | null {
+  const normalized = normalizePage3Key(key);
+  if (!normalized) return null;
+
+  return PAGE_3_IMAGE_GRID.find((item) => item.key === normalized) ?? null;
+}
+
 export function MercyTeacherTab({
   latestTeacherWritingState,
   latestAnalysisResult,
@@ -748,18 +879,23 @@ export function MercyTeacherTab({
     [selectedKidsObjectKey],
   );
 
+  const selectedPage3Lesson = useMemo(
+    () => getPage3LessonByKey(selectedKidsObjectKey),
+    [selectedKidsObjectKey],
+  );
+
   const selectedKidsObject = useMemo(() => {
     const selectedObject = getKidsObjectByKey(selectedKidsObjectKey);
     if (selectedObject) {
       return selectedObject;
     }
 
-    if (selectedPage2Lesson) {
+    if (selectedPage2Lesson || selectedPage3Lesson) {
       return null;
     }
 
     return getKidsObjectFromSentence(primarySentence);
-  }, [primarySentence, selectedKidsObjectKey, selectedPage2Lesson]);
+  }, [primarySentence, selectedKidsObjectKey, selectedPage2Lesson, selectedPage3Lesson]);
 
   if (isKidsMode) {
     return (
@@ -811,6 +947,42 @@ export function MercyTeacherTab({
             <div className="mt-3 grid grid-cols-5 gap-2 sm:gap-3">
               {PAGE_2_IMAGE_GRID.map((lesson) => {
                 const isSelected = lesson.key === selectedPage2Lesson?.key;
+
+                return (
+                  <button
+                    key={lesson.key}
+                    type="button"
+                    onClick={() => onSelectKidsObject?.(lesson.key)}
+                    className={`aspect-square w-full overflow-hidden rounded-xl border bg-white transition ${
+                      isSelected
+                        ? 'border-[#FFB39A] shadow-[0_8px_18px_rgba(255,138,101,0.18)]'
+                        : 'border-white/80 hover:border-[#FFD7C8] hover:shadow-[0_6px_14px_rgba(148,163,184,0.08)]'
+                    }`}
+                    aria-label={lesson.label}
+                    title={lesson.label}
+                  >
+                    <img
+                      src={lesson.imageSrc}
+                      alt={lesson.label}
+                      className="h-full w-full object-contain p-1.5 sm:p-2"
+                      loading="lazy"
+                      decoding="async"
+                      draggable={false}
+                    />
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="mt-4 flex items-center justify-center">
+              <span className="rounded-full border border-[#FFD7C8] bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#D66A4E]">
+                Page 3
+              </span>
+            </div>
+
+            <div className="mt-3 grid grid-cols-5 gap-2 sm:gap-3">
+              {PAGE_3_IMAGE_GRID.map((lesson) => {
+                const isSelected = lesson.key === selectedPage3Lesson?.key;
 
                 return (
                   <button

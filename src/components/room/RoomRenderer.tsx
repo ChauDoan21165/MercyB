@@ -55,6 +55,11 @@
 // PATCH (2026-04-14c):
 // - Cut the remaining text-to-border side space further inside box 4.
 // - Keep the actual reading column much closer to the card edge on phone.
+//
+// PATCH (2026-04-16):
+// - READING TIDY ONLY: larger default reading text, looser line-height, slightly wider reading area.
+// - REMOVE reading-text keyword colors in box 4 and plain welcome text in box 3.
+// - Keep the keyword pills above, but stop coloring words inside the passage itself.
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
@@ -69,8 +74,6 @@ import {
   ActiveEntry,
   MercyGuideCorner,
   KW_CLASSES,
-  buildKeywordColorMap,
-  highlightByColorMap,
   entryMatchesKeyword,
   normalizeTextForKwMatch,
 } from "@/components/room/RoomRendererUI";
@@ -1025,23 +1028,7 @@ export default function RoomRenderer({
     };
   }, [kwRaw, chosenEntries, looksUuidLikeCb, cleanKwArr]);
 
-  const enKeywords = (kw.en.length ? kw.en : kw.vi).map(String).filter((x) => !looksUuidLikeCb(x));
-  const viKeywords = (kw.vi.length ? kw.vi : kw.en).map(String).filter((x) => !looksUuidLikeCb(x));
-
-  const highlightN = useMemo(() => {
-    const base = `${String(introEN || "")} ${String(introVI || "")} ${String(essay?.en || "")} ${String(
-      essay?.vi || "",
-    )}`.trim();
-    const len = base.length;
-    if (len >= 1200) return 7;
-    if (len >= 600) return 5;
-    return 3;
-  }, [introEN, introVI, essay?.en, essay?.vi]);
-
-  const kwColorMap = useMemo(
-    () => buildKeywordColorMap(enKeywords, viKeywords, highlightN),
-    [enKeywords, viKeywords, highlightN],
-  );
+  const plainReadingKeywords = useMemo(() => ({ en: [] as string[], vi: [] as string[] }), []);
 
   const [activeKeyword, setActiveKeyword] = useState<string | null>(null);
 
@@ -1506,7 +1493,7 @@ export default function RoomRenderer({
             <section className="mb-card p-3 md:p-6 mb-5" data-room-box="3">
               <div className="mb-welcomeLine">
                 <span>
-                  {highlightByColorMap(welcomeEN, kwColorMap)} <b>/</b> {highlightByColorMap(welcomeVI, kwColorMap)}
+                  {welcomeEN} <b>/</b> {welcomeVI}
                 </span>
               </div>
 
@@ -1609,8 +1596,8 @@ export default function RoomRenderer({
                           : null),
                       }}
                       index={activeEntryIndex >= 0 ? activeEntryIndex : 0}
-                      enKeywords={enKeywords}
-                      viKeywords={viKeywords}
+                      enKeywords={plainReadingKeywords.en}
+                      viKeywords={plainReadingKeywords.vi}
                       audioAnchorRef={audioAnchorRef as any}
                     />
                   </>

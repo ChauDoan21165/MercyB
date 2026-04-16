@@ -1,6 +1,11 @@
+/**
+ * File: RoomRendererUI.tsx
+ * Path: src/components/room/RoomRendererUI.tsx
+ */
+
 // src/components/room/RoomRendererUI.tsx
 
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import TalkingFacePlayButton from "@/components/audio/TalkingFacePlayButton";
 
 export const KW_CLASSES = [
@@ -787,8 +792,6 @@ export function MercyGuideCorner({
 export function ActiveEntry({
   entry,
   index,
-  enKeywords,
-  viKeywords,
   audioAnchorRef,
 }: {
   entry: any;
@@ -802,35 +805,6 @@ export function ActiveEntry({
 
   const en = normalizeEntryTextEN(entry);
   const vi = normalizeEntryTextVI(entry);
-
-  const entryKwColorMap = useMemo(() => {
-    const pairs: { en: string; vi: string }[] = [];
-    const maxLen = Math.max(enKeywords.length, viKeywords.length);
-
-    for (let i = 0; i < maxLen; i++) {
-      const enK = String(enKeywords[i] ?? "").trim();
-      const viK = String(viKeywords[i] ?? "").trim();
-      if (!enK && !viK) continue;
-
-      const hit = (enK && entryMatchesKeyword(entry, enK)) || (viK && entryMatchesKeyword(entry, viK));
-      if (!hit) continue;
-
-      pairs.push({ en: enK, vi: viK });
-      if (pairs.length >= 7) break;
-    }
-
-    const enTop = pairs.map((p) => p.en).filter(Boolean);
-    const viTop = pairs.map((p) => p.vi).filter(Boolean);
-
-    return buildKeywordColorMap(enTop, viTop, 7);
-  }, [entry, enKeywords, viKeywords]);
-
-  const verbColorMap = useMemo(() => buildEntryVerbColorMap(entry, 7), [entry]);
-
-  const mergedColorMap = useMemo(() => {
-    return new Map<string, string>([...entryKwColorMap.entries(), ...verbColorMap.entries()]);
-  }, [entryKwColorMap, verbColorMap]);
-
   const audioList = pickAudioList(entry);
 
   const zoomTextStyle: React.CSSProperties = {
@@ -855,8 +829,8 @@ export function ActiveEntry({
       ) : null}
 
       {en ? (
-        <div className="mt-4 mb-entryText" style={zoomTextStyle}>
-          {highlightByColorMap(en, mergedColorMap)}
+        <div className="mt-4 mb-entryText whitespace-pre-line leading-relaxed" style={zoomTextStyle}>
+          {en}
         </div>
       ) : null}
 
@@ -881,8 +855,8 @@ export function ActiveEntry({
       ) : null}
 
       {vi ? (
-        <div className="mt-4 mb-entryText" style={zoomTextStyle}>
-          {highlightByColorMap(vi, mergedColorMap)}
+        <div className="mt-4 mb-entryText whitespace-pre-line leading-relaxed" style={zoomTextStyle}>
+          {vi}
         </div>
       ) : null}
     </div>

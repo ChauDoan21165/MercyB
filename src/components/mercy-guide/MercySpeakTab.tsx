@@ -409,6 +409,61 @@ function toPage2Label(key: string): string {
   return toPage2Sentence(key).replace(/[.!?]+$/g, '');
 }
 
+function normalizePage3Key(value?: string | null): string {
+  return cleanText(value).replace(/\.png$/i, '');
+}
+
+function isPage3LessonKey(value?: string | null): boolean {
+  return /^k\d+_/i.test(normalizePage3Key(value));
+}
+
+function formatPage3TextFromKey(key: string): string {
+  const normalized = normalizePage3Key(key);
+  if (!normalized) return '';
+
+  const slug = normalized.replace(/^k\d+_/i, '');
+  if (!slug) return '';
+
+  const words = slug.split('_').filter(Boolean).map((word) => {
+    const lower = word.toLowerCase();
+
+    if (lower === 'i') return 'I';
+    if (lower === 'im') return "I'm";
+    if (lower === 'youre') return "you're";
+    if (lower === 'lets') return "let's";
+    if (lower === 'dont') return "don't";
+
+    return lower;
+  });
+
+  if (words.length === 0) return '';
+
+  const text = words.join(' ');
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
+function toPage3Sentence(key: string): string {
+  const base = formatPage3TextFromKey(key);
+  if (!base) return '';
+
+  if (
+    /^What /i.test(base) ||
+    /^How /i.test(base) ||
+    /^Where /i.test(base) ||
+    /^Which /i.test(base) ||
+    /^Can /i.test(base) ||
+    /^Do /i.test(base)
+  ) {
+    return /[?]$/.test(base) ? base : `${base}?`;
+  }
+
+  return /[.!?]$/.test(base) ? base : `${base}.`;
+}
+
+function toPage3Label(key: string): string {
+  return toPage3Sentence(key).replace(/[.!?]+$/g, '');
+}
+
 const KIDS_OBJECTS: KidsObjectCard[] = KIDS_OBJECT_KEYS.map((key) => ({
   key,
   label: toKidsLabel(key),
@@ -598,17 +653,18 @@ function getPage2LessonByKey(key?: string | null): KidsLessonCard | null {
   };
 }
 
-function getKidsObjectFromPage2Key(key?: string | null): KidsObjectCard | null {
-  const lesson = getPage2LessonByKey(key);
-  if (!lesson) return null;
+function getPage3LessonByKey(key?: string | null): KidsLessonCard | null {
+  if (!isPage3LessonKey(key)) return null;
 
-  const normalized = normalizeKidsLookup(lesson.sentence);
+  const normalized = normalizePage3Key(key);
+  if (!normalized) return null;
 
-  return (
-    KIDS_OBJECTS.find((item) =>
-      item.aliases.some((alias) => normalized.includes(alias)),
-    ) ?? null
-  );
+  return {
+    key: normalized,
+    label: toPage3Label(normalized),
+    sentence: toPage3Sentence(normalized),
+    imageSrc: `/images/mercy-kids-page-3/${normalized}.png`,
+  };
 }
 
 function extractTroubleWords(
@@ -797,20 +853,22 @@ export function MercySpeakTab({
 
   const kidsLesson = useMemo(() => {
     if (!isKidsMode) return null;
-    return getPage2LessonByKey(selectedKidsObjectKey);
+    return (
+      getPage2LessonByKey(selectedKidsObjectKey) ??
+      getPage3LessonByKey(selectedKidsObjectKey)
+    );
   }, [isKidsMode, selectedKidsObjectKey]);
 
   const kidsObject = useMemo(() => {
     if (!isKidsMode) return null;
 
+    if (kidsLesson) {
+      return null;
+    }
+
     const selectedObject = getKidsObjectByKey(selectedKidsObjectKey);
     if (selectedObject) {
       return selectedObject;
-    }
-
-    const inferredFromPage2Key = getKidsObjectFromPage2Key(selectedKidsObjectKey);
-    if (inferredFromPage2Key) {
-      return inferredFromPage2Key;
     }
 
     if (isLikelyKidsSentence(rawKidsCandidateText)) {
@@ -818,7 +876,7 @@ export function MercySpeakTab({
     }
 
     return KIDS_OBJECTS[0];
-  }, [isKidsMode, rawKidsCandidateText, selectedKidsObjectKey]);
+  }, [isKidsMode, kidsLesson, rawKidsCandidateText, selectedKidsObjectKey]);
 
   const kidsPracticeText = useMemo(() => {
     if (!isKidsMode) return '';
