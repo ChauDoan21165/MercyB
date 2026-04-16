@@ -1,3 +1,8 @@
+/**
+ * Path: src/lib/validation/roomDataHygiene.ts
+ * File: roomDataHygiene.ts
+ */
+
 // Room Data Hygiene Validation
 // Following Mercy Blade Design System v1.1
 
@@ -79,26 +84,6 @@ export function validateTier(tier: string): ValidationViolation[] {
 export function validateEntry(entry: RoomEntry, entryIndex: number): ValidationViolation[] {
   const violations: ValidationViolation[] = [];
   const entryId = entry.slug || entry.artifact_id || entry.id || `entry-${entryIndex}`;
-
-  // Validate keywords_en count (3-5)
-  if (!entry.keywords_en || entry.keywords_en.length < 3 || entry.keywords_en.length > 5) {
-    violations.push({
-      field: 'keywords_en',
-      rule: 'Must have 3-5 keywords',
-      actual: entry.keywords_en?.length || 0,
-      expected: '3-5 items',
-    });
-  }
-
-  // Validate keywords_vi count (3-5)
-  if (!entry.keywords_vi || entry.keywords_vi.length < 3 || entry.keywords_vi.length > 5) {
-    violations.push({
-      field: 'keywords_vi',
-      rule: 'Must have 3-5 keywords',
-      actual: entry.keywords_vi?.length || 0,
-      expected: '3-5 items',
-    });
-  }
 
   // Validate tags count (2-4)
   if (!entry.tags || entry.tags.length < 2 || entry.tags.length > 4) {
@@ -303,7 +288,6 @@ export function exportValidationReportAsMarkdown(
 
       // Entry-level violations
       if (report.entryViolations.length > 0) {
-        const keywordIssues: string[] = [];
         const tagIssues: string[] = [];
         const copyIssues: string[] = [];
         const audioIssues: string[] = [];
@@ -312,11 +296,7 @@ export function exportValidationReportAsMarkdown(
           ev.violations.forEach(v => {
             const entryLabel = `Entry \`${ev.entryId}\``;
             
-            if (v.field === 'keywords_en' || v.field === 'keywords_vi') {
-              keywordIssues.push(
-                `  - ${entryLabel}: \`${v.field}\` has ${v.actual} items (needs ${v.expected})`
-              );
-            } else if (v.field === 'tags') {
+            if (v.field === 'tags') {
               tagIssues.push(
                 `  - ${entryLabel}: \`${v.field}\` has ${v.actual} items (needs ${v.expected})`
               );
@@ -331,12 +311,6 @@ export function exportValidationReportAsMarkdown(
             }
           });
         });
-
-        if (keywordIssues.length > 0) {
-          markdown += `- **Keywords**:\n`;
-          keywordIssues.forEach(issue => markdown += `${issue}\n`);
-          markdown += `  - **TODO**: Adjust keyword arrays to 3-5 items each\n`;
-        }
 
         if (tagIssues.length > 0) {
           markdown += `- **Tags**:\n`;

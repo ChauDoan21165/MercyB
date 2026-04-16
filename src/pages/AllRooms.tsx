@@ -1,10 +1,7 @@
-// src/pages/AllRooms.tsx
-// SAFE REDIRECT VERSION
-//
-// Reason:
-// Old room structure lives in /tiers.
-// The placeholder Rooms hub replaced the real browsing path.
-// This restores correct behavior.
+/**
+ * Path: src/pages/AllRooms.tsx
+ * File: AllRooms.tsx
+ */
 
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -13,7 +10,7 @@ export default function AllRooms() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    navigate("/tiers", { replace: true });
+    navigate("/tiers/level0?area=english", { replace: true });
   }, [navigate]);
 
   return null;

@@ -671,6 +671,15 @@ export function GuideBox(_props: GuideBoxProps) {
     setIsOpen(true);
   }, [bubblePos, panelSize]);
 
+  const handleBubbleClick = useCallback(
+    (event: React.MouseEvent<HTMLDivElement>) => {
+      event.preventDefault();
+      event.stopPropagation();
+      openGuide();
+    },
+    [openGuide]
+  );
+
   const startPanelDrag = useCallback(
     (clientX: number, clientY: number, pointerId: number) => {
       if (isFullscreen) return;
@@ -727,50 +736,6 @@ export function GuideBox(_props: GuideBoxProps) {
       startPanelDrag(event.clientX, event.clientY, event.pointerId);
     },
     [isFullscreen, startPanelDrag]
-  );
-
-  const handleBubblePointerDown = useCallback(
-    (event: React.PointerEvent<HTMLDivElement>) => {
-      event.preventDefault();
-      event.stopPropagation();
-
-      const startX = event.clientX;
-      const startY = event.clientY;
-      const startPos = bubblePos;
-      const pointerId = event.pointerId;
-      let moved = false;
-
-      const onPointerMove = (moveEvent: PointerEvent) => {
-        if (moveEvent.pointerId !== pointerId) return;
-
-        const dx = moveEvent.clientX - startX;
-        const dy = moveEvent.clientY - startY;
-
-        if (Math.abs(dx) > 4 || Math.abs(dy) > 4) moved = true;
-
-        setBubblePos(
-          clampBubblePos({
-            left: startPos.left + dx,
-            bottom: startPos.bottom - dy,
-          })
-        );
-      };
-
-      const onPointerUp = (upEvent: PointerEvent) => {
-        if (upEvent.pointerId !== pointerId) return;
-
-        window.removeEventListener("pointermove", onPointerMove);
-        window.removeEventListener("pointerup", onPointerUp);
-        window.removeEventListener("pointercancel", onPointerUp);
-
-        if (!moved) openGuide();
-      };
-
-      window.addEventListener("pointermove", onPointerMove, { passive: false });
-      window.addEventListener("pointerup", onPointerUp);
-      window.addEventListener("pointercancel", onPointerUp);
-    },
-    [bubblePos, openGuide]
   );
 
   const handleResizePointerDown = useCallback(
@@ -948,7 +913,7 @@ export function GuideBox(_props: GuideBoxProps) {
             left: bubblePos.left,
             bottom: bubblePos.bottom,
             zIndex: 99990,
-            touchAction: "none",
+            touchAction: "manipulation",
             WebkitUserSelect: "none",
             userSelect: "none",
           }}
@@ -966,7 +931,7 @@ export function GuideBox(_props: GuideBoxProps) {
               role="button"
               tabIndex={0}
               aria-label="Open Guide"
-              onPointerDown={handleBubblePointerDown}
+              onClick={handleBubbleClick}
               onKeyDown={(e) => {
                 if (e.key === "Enter" || e.key === " ") {
                   e.preventDefault();
@@ -982,7 +947,7 @@ export function GuideBox(_props: GuideBoxProps) {
                 padding: 4,
                 boxShadow: "0 12px 28px rgba(0,0,0,0.16)",
                 border: "2px solid white",
-                cursor: "grab",
+                cursor: "pointer",
                 overflow: "hidden",
               }}
             >

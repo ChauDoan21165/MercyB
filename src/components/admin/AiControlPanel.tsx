@@ -1,4 +1,9 @@
-import { useEffect, useState } from "react";
+/**
+ * Path: src/components/admin/AiControlPanel.tsx
+ * File: AiControlPanel.tsx
+ */
+
+import { useEffect, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Input } from "@/components/ui/input";
@@ -18,6 +23,20 @@ type AiDashboard = {
   per_model: Record<string, { calls: number; tokens: number; cost: number }>;
 };
 
+function shortUserLabel(userId: string) {
+  const s = String(userId || "").trim();
+  if (!s) return "unknown";
+  if (s.length <= 18) return s;
+  return `${s.slice(0, 8)}…${s.slice(-6)}`;
+}
+
+function formatUsageNumber(value: number) {
+  return Number(value || 0).toLocaleString(undefined, {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 4,
+  });
+}
+
 export function AiControlPanel() {
   const [data, setData] = useState<AiDashboard | null>(null);
   const [loading, setLoading] = useState(true);
@@ -27,7 +46,10 @@ export function AiControlPanel() {
   async function load() {
     setLoading(true);
     try {
-      const { data: { session } } = await supabase.auth.getSession();
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
       if (!session) {
         toast.error("Not authenticated");
         return;
@@ -36,18 +58,18 @@ export function AiControlPanel() {
       const res = await fetch(
         `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/ai-dashboard`,
         {
-          headers: { 
+          headers: {
             Authorization: `Bearer ${session.access_token}`,
-            'Content-Type': 'application/json'
+            "Content-Type": "application/json",
           },
-        }
+        },
       );
-      
+
       if (!res.ok) {
         const err = await res.json();
-        throw new Error(err.error || 'Failed to load');
+        throw new Error(err.error || "Failed to load");
       }
-      
+
       const json = await res.json();
       setData(json);
       setBudgetInput(String(json.monthly_budget_usd));
@@ -59,11 +81,16 @@ export function AiControlPanel() {
     }
   }
 
-  async function save(partial: Partial<{ is_ai_enabled: boolean; monthly_budget_usd: number }>) {
+  async function save(
+    partial: Partial<{ is_ai_enabled: boolean; monthly_budget_usd: number }>,
+  ) {
     if (!data) return;
     setSaving(true);
     try {
-      const { data: { session } } = await supabase.auth.getSession();
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
       if (!session) return;
 
       const res = await fetch(
@@ -75,15 +102,16 @@ export function AiControlPanel() {
             Authorization: `Bearer ${session.access_token}`,
           },
           body: JSON.stringify(partial),
-        }
+        },
       );
-      
-      if (!res.ok) throw new Error('Failed to save');
-      
+
+      if (!res.ok) throw new Error("Failed to save");
+
       const json = await res.json();
       setData((prev) => (prev ? { ...prev, ...json } : prev));
       toast.success("Settings saved");
     } catch (err) {
+      console.error(err);
       toast.error("Failed to save settings");
     } finally {
       setSaving(false);
@@ -93,6 +121,16 @@ export function AiControlPanel() {
   useEffect(() => {
     load();
   }, []);
+
+  const userRows = useMemo(() => {
+    if (!data) return [];
+    return Object.entries(data.per_user || {})
+      .map(([userId, usage]) => ({
+        userId,
+        usage: Number(usage || 0),
+      }))
+      .sort((a, b) => b.usage - a.usage);
+  }, [data]);
 
   if (loading) {
     return (
@@ -114,7 +152,11 @@ export function AiControlPanel() {
     );
   }
 
-  const budgetUsedPercent = (data.total_spent_usd / data.monthly_budget_usd) * 100;
+  const budgetUsedPercent =
+    data.monthly_budget_usd > 0
+      ? (data.total_spent_usd / data.monthly_budget_usd) * 100
+      : 0;
+
   const isOverBudget = data.remaining_usd < 0;
 
   return (
@@ -134,6 +176,7 @@ export function AiControlPanel() {
           </div>
         </CardTitle>
       </CardHeader>
+
       <CardContent className="space-y-6">
         {/* Stats Grid */}
         <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
@@ -146,16 +189,22 @@ export function AiControlPanel() {
               ${data.total_spent_usd.toFixed(2)}
             </div>
           </div>
+
           <div className="rounded-lg border border-border bg-background p-3">
             <div className="flex items-center gap-2 text-muted-foreground">
               <TrendingUp className="h-4 w-4" />
               <span className="text-xs">Remaining</span>
             </div>
-            <div className={`mt-1 text-xl font-bold ${isOverBudget ? 'text-destructive' : ''}`}>
+            <div
+              className={`mt-1 text-xl font-bold ${
+                isOverBudget ? "text-destructive" : ""
+              }`}
+            >
               ${Math.abs(data.remaining_usd).toFixed(2)}
               {isOverBudget && " over"}
             </div>
           </div>
+
           <div className="rounded-lg border border-border bg-background p-3">
             <div className="flex items-center gap-2 text-muted-foreground">
               <Zap className="h-4 w-4" />
@@ -165,6 +214,7 @@ export function AiControlPanel() {
               {data.total_calls.toLocaleString()}
             </div>
           </div>
+
           <div className="rounded-lg border border-border bg-background p-3">
             <div className="flex items-center gap-2 text-muted-foreground">
               <Users className="h-4 w-4" />
@@ -184,7 +234,13 @@ export function AiControlPanel() {
           </div>
           <div className="h-2 w-full overflow-hidden rounded-full bg-muted">
             <div
-              className={`h-full transition-all ${isOverBudget ? 'bg-destructive' : budgetUsedPercent > 80 ? 'bg-yellow-500' : 'bg-primary'}`}
+              className={`h-full transition-all ${
+                isOverBudget
+                  ? "bg-destructive"
+                  : budgetUsedPercent > 80
+                    ? "bg-yellow-500"
+                    : "bg-primary"
+              }`}
               style={{ width: `${Math.min(budgetUsedPercent, 100)}%` }}
             />
           </div>
@@ -217,11 +273,35 @@ export function AiControlPanel() {
               {Object.entries(data.per_model)
                 .sort((a, b) => b[1].cost - a[1].cost)
                 .map(([model, stats]) => (
-                  <div key={model} className="flex justify-between text-muted-foreground">
+                  <div
+                    key={model}
+                    className="flex justify-between text-muted-foreground"
+                  >
                     <span className="font-mono">{model}</span>
-                    <span>{stats.calls} calls · ${stats.cost.toFixed(4)}</span>
+                    <span>
+                      {stats.calls} calls · ${stats.cost.toFixed(4)}
+                    </span>
                   </div>
                 ))}
+            </div>
+          </div>
+        )}
+
+        {/* Per User Stats */}
+        {userRows.length > 0 && (
+          <div>
+            <h4 className="mb-2 text-sm font-medium">Usage by User</h4>
+            <div className="space-y-1 text-xs">
+              {userRows.map(({ userId, usage }) => (
+                <div
+                  key={userId}
+                  className="flex items-center justify-between gap-3 text-muted-foreground"
+                  title={userId}
+                >
+                  <span className="font-mono">{shortUserLabel(userId)}</span>
+                  <span>{formatUsageNumber(usage)}</span>
+                </div>
+              ))}
             </div>
           </div>
         )}

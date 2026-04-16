@@ -1,4 +1,7 @@
-// PATH: src/lib/accessControl.ts
+/**
+ * Path: src/lib/accessControl.ts
+ * File: accessControl.ts
+ */
 
 import type { TierId } from "@/lib/constants/tiers";
 import { KIDS_TIER_IDS } from "@/lib/constants/tiers";
@@ -48,15 +51,12 @@ function tierToLevel(tier: TierId): number {
   if (value === "level8") return 8;
   if (value === "level9") return 9;
 
-  // Collapse variants like vip3_ii / Level 3 II to level 3.
   if (value.includes("level3")) return 3;
 
   if (value === "kids_1") return 1;
   if (value === "kids_2") return 2;
   if (value === "kids_3") return 3;
 
-  // In this file's legacy ladder logic, premium billing tiers behave
-  // like highest curriculum level for comparison purposes.
   if (isPremiumBillingTier(tier)) return 9;
 
   return 0;
@@ -120,11 +120,17 @@ export function canUserAccessRoom(
   roomTier: TierId,
   roomId?: string,
 ): boolean {
+  void userTier;
+  void roomTier;
   void roomId;
-  return canAccessVIPTier(userTier, roomTier);
+
+  // NEW RULE: all authenticated users can access all rooms
+  return true;
 }
 
 export function getAccessibleTiers(userTier: TierId): TierId[] {
+  void userTier;
+
   const allTiers: TierId[] = [
     "level0",
     "level1",
@@ -141,7 +147,7 @@ export function getAccessibleTiers(userTier: TierId): TierId[] {
     "kids_3",
   ];
 
-  return allTiers.filter((tier) => canAccessVIPTier(userTier, tier));
+  return allTiers;
 }
 
 export function determineAccess(
@@ -152,11 +158,13 @@ export function determineAccess(
   hasFullAccess: boolean;
   reason?: string;
 } {
-  const allowed = canUserAccessRoom(userTier, roomTier, roomId);
+  void userTier;
+  void roomTier;
+  void roomId;
 
   return {
-    hasFullAccess: allowed,
-    reason: allowed ? undefined : "ACCESS_DENIED",
+    hasFullAccess: true,
+    reason: undefined,
   };
 }
 
