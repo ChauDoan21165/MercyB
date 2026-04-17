@@ -49,7 +49,10 @@ type KidsPageId =
   | 'page6'
   | 'page7'
   | 'page8'
-  | 'page9';
+  | 'page9'
+  | 'page11'
+  | 'page12'
+  | 'page13';
 
 type TroubleWordItem = string | { word?: string | null };
 
@@ -217,6 +220,9 @@ const VALID_KIDS_PAGES = new Set<KidsPageId>([
   'page7',
   'page8',
   'page9',
+  'page11',
+  'page12',
+  'page13',
 ]);
 
 function normalizeTab(value: string | undefined): MercyTabType {
@@ -938,8 +944,6 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
   const [selectedKidsObjectKey, setSelectedKidsObjectKey] = useState<string>(
     () => readStoredKidsObjectKey() ?? DEFAULT_KIDS_OBJECT_KEY,
   );
-
-  // ── New: per-page selection state ─────────────────────────────────────────
   const [selectedKidsPage, setSelectedKidsPage] = useState<KidsPageId>(
     () => readStoredKidsPage() ?? DEFAULT_KIDS_PAGE,
   );
@@ -969,6 +973,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
     if (kidsModeActive) {
       setLearningSupportMode('gentle');
       setSelectedKidsObjectKey((current) => normalizeKidsObjectKey(current));
+      setSelectedKidsPage((current) => normalizeKidsPage(current));
     }
   }, [kidsModeActive]);
 
@@ -986,7 +991,6 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
     }
   }, [kidsModeActive, selectedKidsObjectKey]);
 
-  // Persist selected kids page
   useEffect(() => {
     if (kidsModeActive) {
       writeStoredKidsPage(selectedKidsPage);
@@ -1010,12 +1014,8 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
     setSelectedKidsObjectKey(nextKey);
   }, []);
 
-  // Page change: update page state AND reset object key to the new page's
-  // first item (prevents cross-page sticking).
   const handleSelectKidsPage = useCallback((page: KidsPageId) => {
     setSelectedKidsPage(page);
-    // Reset object key — MercyTeacherTab will also fire onSelectKidsObject
-    // with the first item; we clear here first so there is no stale key flash.
     setSelectedKidsObjectKey('');
   }, []);
 
@@ -1660,7 +1660,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
               description={
                 kidsModeActive
                   ? 'Kids mode keeps Mercy focused on listening and speaking.'
-                  : "Unlock Logic to see the English pattern behind the sentence and connect that lesson back into Mercy\u2019s memory."
+                  : 'Unlock Logic to see the English pattern behind the sentence and connect that lesson back into Mercy’s memory.'
               }
               onUnlock={kidsModeActive ? undefined : goToPricing}
             />

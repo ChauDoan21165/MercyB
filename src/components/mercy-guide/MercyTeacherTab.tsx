@@ -34,7 +34,10 @@ type KidsPageId =
   | 'page6'
   | 'page7'
   | 'page8'
-  | 'page9';
+  | 'page9'
+  | 'page11'
+  | 'page12'
+  | 'page13';
 
 interface Props {
   latestTeacherWritingState?: GrammarWritingTeacherState | null;
@@ -363,341 +366,122 @@ const PAGE_3_IMAGE_FILENAMES = [
 ] as const;
 
 const PAGE_5_KEYS = [
-  'k5_001_i_can_jump',
-  'k5_002_i_can_run',
-  'k5_003_i_can_sing',
-  'k5_004_i_can_read',
-  'k5_005_i_can_draw',
-  'k5_006_i_can_swim',
-  'k5_007_i_can_dance',
-  'k5_008_i_can_ride_a_bike',
-  'k5_009_i_can_write',
-  'k5_010_i_can_count',
-  'k5_011_i_can_clap',
-  'k5_012_i_can_wave',
-  'k5_013_i_can_cook',
-  'k5_014_i_can_climb',
-  'k5_015_i_can_kick',
-  'k5_016_i_can_throw',
-  'k5_017_i_can_catch',
-  'k5_018_i_can_build',
-  'k5_019_i_can_fold',
-  'k5_020_i_can_pour',
-  'k5_021_i_can_wash',
-  'k5_022_i_can_dress',
-  'k5_023_i_can_zip',
-  'k5_024_i_can_tie',
-  'k5_025_i_can_hop',
-  'k5_026_i_can_skip',
-  'k5_027_i_can_spin',
-  'k5_028_i_can_roll',
-  'k5_029_i_can_crawl',
-  'k5_030_i_can_stretch',
-  'k5_031_i_can_bend',
-  'k5_032_i_can_lift',
-  'k5_033_i_can_carry',
-  'k5_034_i_can_find',
-  'k5_035_i_can_show',
-  'k5_036_i_can_give',
-  'k5_037_i_can_share',
-  'k5_038_i_can_help',
-  'k5_039_i_can_bounce',
-  'k5_040_i_can_slide',
-  'k5_041_i_can_swing',
-  'k5_042_i_can_dig',
-  'k5_043_i_can_plant',
-  'k5_044_i_can_water',
-  'k5_045_i_can_cut',
-  'k5_046_i_can_paste',
-  'k5_047_i_can_draw_a_picture',
-  'k5_048_i_can_whistle',
-  'k5_049_i_can_snap_fingers',
-  'k5_050_i_can_wink',
-  'k5_051_i_can_nod',
-  'k5_052_i_can_blink',
-  'k5_053_i_can_blow',
-  'k5_054_i_can_point',
-  'k5_055_i_can_look',
-  'k5_056_i_can_listen',
-  'k5_057_i_can_smell',
-  'k5_058_i_can_taste',
-  'k5_059_i_can_touch',
-  'k5_060_i_can_hide',
-  'k5_061_i_can_pick_up',
-  'k5_062_i_can_put_down',
-  'k5_063_i_can_fill',
-  'k5_064_i_can_empty',
-  'k5_065_i_can_brush_teeth',
-  'k5_066_i_can_comb_hair',
-  'k5_067_i_can_button',
-  'k5_068_i_can_push',
-  'k5_069_i_can_pull',
-  'k5_070_i_can_fix',
-  'k5_071_i_can_break',
-  'k5_072_i_can_open',
-  'k5_073_i_can_close',
-  'k5_074_i_can_drop',
-  'k5_075_i_can_rest',
-  'k5_076_i_can_walk',
-  'k5_077_i_can_catch_a_butterfly',
-  'k5_078_i_can_count_to_five',
-  'k5_079_i_can_share_a_cookie',
-  'k5_080_i_can_do_it',
+  'k5_001_i_can_jump','k5_002_i_can_run','k5_003_i_can_sing','k5_004_i_can_read','k5_005_i_can_draw',
+  'k5_006_i_can_swim','k5_007_i_can_dance','k5_008_i_can_ride_a_bike','k5_009_i_can_write','k5_010_i_can_count',
+  'k5_011_i_can_clap','k5_012_i_can_wave','k5_013_i_can_cook','k5_014_i_can_climb','k5_015_i_can_kick',
+  'k5_016_i_can_throw','k5_017_i_can_catch','k5_018_i_can_build','k5_019_i_can_fold','k5_020_i_can_pour',
+  'k5_021_i_can_wash','k5_022_i_can_dress','k5_023_i_can_zip','k5_024_i_can_tie','k5_025_i_can_hop',
+  'k5_026_i_can_skip','k5_027_i_can_spin','k5_028_i_can_roll','k5_029_i_can_crawl','k5_030_i_can_stretch',
+  'k5_031_i_can_bend','k5_032_i_can_lift','k5_033_i_can_carry','k5_034_i_can_find','k5_035_i_can_show',
+  'k5_036_i_can_give','k5_037_i_can_share','k5_038_i_can_help','k5_039_i_can_bounce','k5_040_i_can_slide',
+  'k5_041_i_can_swing','k5_042_i_can_dig','k5_043_i_can_plant','k5_044_i_can_water','k5_045_i_can_cut',
+  'k5_046_i_can_paste','k5_047_i_can_draw_a_picture','k5_048_i_can_whistle','k5_049_i_can_snap_fingers','k5_050_i_can_wink',
+  'k5_051_i_can_nod','k5_052_i_can_blink','k5_053_i_can_blow','k5_054_i_can_point','k5_055_i_can_look',
+  'k5_056_i_can_listen','k5_057_i_can_smell','k5_058_i_can_taste','k5_059_i_can_touch','k5_060_i_can_hide',
+  'k5_061_i_can_pick_up','k5_062_i_can_put_down','k5_063_i_can_fill','k5_064_i_can_empty','k5_065_i_can_brush_teeth',
+  'k5_066_i_can_comb_hair','k5_067_i_can_button','k5_068_i_can_push','k5_069_i_can_pull','k5_070_i_can_fix',
+  'k5_071_i_can_break','k5_072_i_can_open','k5_073_i_can_close','k5_074_i_can_drop','k5_075_i_can_rest',
+  'k5_076_i_can_walk','k5_077_i_can_catch_a_butterfly','k5_078_i_can_count_to_five','k5_079_i_can_share_a_cookie','k5_080_i_can_do_it',
 ] as const;
 
 const PAGE_6_KEYS = [
-  'k6_001_clap_your_hands',
-  'k6_002_sit_down',
-  'k6_003_stand_up',
-  'k6_004_come_here',
-  'k6_005_go_back',
-  'k6_006_open_the_book',
-  'k6_007_close_the_door',
-  'k6_008_touch_your_head',
-  'k6_009_raise_your_hand',
-  'k6_010_turn_around',
-  'k6_011_jump_up',
-  'k6_012_wave_hello',
-  'k6_013_point_to_the_window',
-  'k6_014_pick_it_up',
-  'k6_015_put_it_down',
-  'k6_016_shake_your_head',
-  'k6_017_nod_your_head',
-  'k6_018_stomp_your_feet',
-  'k6_019_touch_your_nose',
-  'k6_020_open_your_mouth',
-  'k6_021_close_your_eyes',
-  'k6_022_spin_around',
-  'k6_023_bend_your_knees',
-  'k6_024_stretch_your_arms',
-  'k6_025_take_a_step',
-  'k6_026_run_in_place',
-  'k6_027_freeze',
-  'k6_028_whisper',
-  'k6_029_shout',
-  'k6_030_tiptoe',
-  'k6_031_march',
-  'k6_032_hop_on_one_foot',
-  'k6_033_clap_three_times',
-  'k6_034_touch_your_toes',
-  'k6_035_reach_up_high',
-  'k6_036_crouch_down',
-  'k6_037_clap_above_your_head',
-  'k6_038_touch_your_ears',
-  'k6_039_pat_your_head',
-  'k6_040_rub_your_tummy',
-  'k6_041_wiggle_your_fingers',
-  'k6_042_stamp_your_foot',
-  'k6_043_touch_the_floor',
-  'k6_044_look_up',
-  'k6_045_look_down',
-  'k6_046_roll_your_shoulders',
-  'k6_047_swing_your_arms',
-  'k6_048_smile',
-  'k6_049_show_me_your_hands',
-  'k6_050_say_hello',
-  'k6_051_say_goodbye',
-  'k6_052_count_with_me',
-  'k6_053_listen_carefully',
-  'k6_054_look_at_me',
-  'k6_055_sit_like_a_frog',
-  'k6_056_fly_like_a_bird',
-  'k6_057_walk_slowly',
-  'k6_058_walk_fast',
-  'k6_059_jump_like_a_frog',
-  'k6_060_great_job',
+  'k6_001_clap_your_hands','k6_002_sit_down','k6_003_stand_up','k6_004_come_here','k6_005_go_back',
+  'k6_006_open_the_book','k6_007_close_the_door','k6_008_touch_your_head','k6_009_raise_your_hand','k6_010_turn_around',
+  'k6_011_jump_up','k6_012_wave_hello','k6_013_point_to_the_window','k6_014_pick_it_up','k6_015_put_it_down',
+  'k6_016_shake_your_head','k6_017_nod_your_head','k6_018_stomp_your_feet','k6_019_touch_your_nose','k6_020_open_your_mouth',
+  'k6_021_close_your_eyes','k6_022_spin_around','k6_023_bend_your_knees','k6_024_stretch_your_arms','k6_025_take_a_step',
+  'k6_026_run_in_place','k6_027_freeze','k6_028_whisper','k6_029_shout','k6_030_tiptoe',
+  'k6_031_march','k6_032_hop_on_one_foot','k6_033_clap_three_times','k6_034_touch_your_toes','k6_035_reach_up_high',
+  'k6_036_crouch_down','k6_037_clap_above_your_head','k6_038_touch_your_ears','k6_039_pat_your_head','k6_040_rub_your_tummy',
+  'k6_041_wiggle_your_fingers','k6_042_stamp_your_foot','k6_043_touch_the_floor','k6_044_look_up','k6_045_look_down',
+  'k6_046_roll_your_shoulders','k6_047_swing_your_arms','k6_048_smile','k6_049_show_me_your_hands','k6_050_say_hello',
+  'k6_051_say_goodbye','k6_052_count_with_me','k6_053_listen_carefully','k6_054_look_at_me','k6_055_sit_like_a_frog',
+  'k6_056_fly_like_a_bird','k6_057_walk_slowly','k6_058_walk_fast','k6_059_jump_like_a_frog','k6_060_great_job',
 ] as const;
 
 const PAGE_7_KEYS = [
-  'k7_001_excited',
-  'k7_002_bored',
-  'k7_003_surprised',
-  'k7_004_nervous',
-  'k7_005_proud',
-  'k7_006_confused',
-  'k7_007_silly',
-  'k7_008_calm',
-  'k7_009_loved',
-  'k7_010_tired',
-  'k7_011_hungry',
-  'k7_012_thirsty',
-  'k7_013_hot',
-  'k7_014_cold',
-  'k7_015_sick',
-  'k7_016_better',
-  'k7_017_scared',
-  'k7_018_brave',
-  'k7_019_grateful',
-  'k7_020_embarrassed',
-  'k7_021_curious',
-  'k7_022_lonely',
-  'k7_023_hopeful',
-  'k7_024_frustrated',
-  'k7_025_relieved',
-  'k7_026_disgusted',
-  'k7_027_shy',
-  'k7_028_jealous',
-  'k7_029_peaceful',
-  'k7_030_angry',
-  'k7_031_happy',
-  'k7_032_sad',
-  'k7_033_very_happy',
-  'k7_034_a_little_sad',
-  'k7_035_very_scared',
-  'k7_036_a_little_scared',
-  'k7_037_so_excited',
-  'k7_038_not_happy',
-  'k7_039_surprised_and_happy',
-  'k7_040_tired_and_happy',
-  'k7_041_feeling_good',
-  'k7_042_not_feeling_well',
-  'k7_043_full',
-  'k7_044_proud_of_myself',
-  'k7_045_miss_someone',
-  'k7_046_want_to_play',
-  'k7_047_dont_want_to',
-  'k7_048_ouch',
-  'k7_049_yay',
-  'k7_050_aww',
-  'k7_051_uh_oh',
-  'k7_052_no_no_no',
-  'k7_053_yes_yes_yes',
-  'k7_054_i_dont_know',
-  'k7_055_wow',
-  'k7_056_sleepy',
-  'k7_057_loving',
-  'k7_058_grumpy',
-  'k7_059_cozy',
-  'k7_060_peaceful',
+  'k7_001_excited','k7_002_bored','k7_003_surprised','k7_004_nervous','k7_005_proud',
+  'k7_006_confused','k7_007_silly','k7_008_calm','k7_009_loved','k7_010_tired',
+  'k7_011_hungry','k7_012_thirsty','k7_013_hot','k7_014_cold','k7_015_sick',
+  'k7_016_better','k7_017_scared','k7_018_brave','k7_019_grateful','k7_020_embarrassed',
+  'k7_021_curious','k7_022_lonely','k7_023_hopeful','k7_024_frustrated','k7_025_relieved',
+  'k7_026_disgusted','k7_027_shy','k7_028_jealous','k7_029_peaceful','k7_030_angry',
+  'k7_031_happy','k7_032_sad','k7_033_very_happy','k7_034_a_little_sad','k7_035_very_scared',
+  'k7_036_a_little_scared','k7_037_so_excited','k7_038_not_happy','k7_039_surprised_and_happy','k7_040_tired_and_happy',
+  'k7_041_feeling_good','k7_042_not_feeling_well','k7_043_full','k7_044_proud_of_myself','k7_045_miss_someone',
+  'k7_046_want_to_play','k7_047_dont_want_to','k7_048_ouch','k7_049_yay','k7_050_aww',
+  'k7_051_uh_oh','k7_052_no_no_no','k7_053_yes_yes_yes','k7_054_i_dont_know','k7_055_wow',
+  'k7_056_sleepy','k7_057_loving','k7_058_grumpy','k7_059_cozy','k7_060_peaceful',
 ] as const;
 
 const PAGE_8_KEYS = [
-  'k8_001_hello',
-  'k8_002_hi',
-  'k8_003_good_morning',
-  'k8_004_good_afternoon',
-  'k8_005_good_night',
-  'k8_006_how_are_you',
-  'k8_007_i_am_fine',
-  'k8_008_i_am_happy',
-  'k8_009_i_am_tired',
-  'k8_010_i_am_okay',
-  'k8_011_i_am_great',
-  'k8_012_thank_you',
-  'k8_013_youre_welcome',
-  'k8_014_please',
-  'k8_015_sorry',
-  'k8_016_excuse_me',
-  'k8_017_bye',
-  'k8_018_see_you_later',
-  'k8_019_see_you_tomorrow',
-  'k8_020_what_is_your_name',
-  'k8_021_my_name_is',
-  'k8_022_how_old_are_you',
-  'k8_023_i_am_five_years_old',
-  'k8_024_can_i_help_you',
-  'k8_025_yes_please',
-  'k8_026_no_thank_you',
-  'k8_027_do_you_like_it',
-  'k8_028_i_like_it_very_much',
-  'k8_029_what_do_you_want',
-  'k8_030_i_want_water',
-  'k8_031_let_us_play',
-  'k8_032_are_you_ready',
-  'k8_033_come_and_play_with_me',
-  'k8_034_that_is_so_funny',
-  'k8_035_you_are_my_friend',
-  'k8_036_can_you_help_me',
-  'k8_037_i_can_help_you',
-  'k8_038_sharing_is_caring',
-  'k8_039_i_missed_you',
-  'k8_040_we_are_friends',
+  'k8_001_hello','k8_002_hi','k8_003_good_morning','k8_004_good_afternoon','k8_005_good_night',
+  'k8_006_how_are_you','k8_007_i_am_fine','k8_008_i_am_happy','k8_009_i_am_tired','k8_010_i_am_okay',
+  'k8_011_i_am_great','k8_012_thank_you','k8_013_youre_welcome','k8_014_please','k8_015_sorry',
+  'k8_016_excuse_me','k8_017_bye','k8_018_see_you_later','k8_019_see_you_tomorrow','k8_020_what_is_your_name',
+  'k8_021_my_name_is','k8_022_how_old_are_you','k8_023_i_am_five_years_old','k8_024_can_i_help_you','k8_025_yes_please',
+  'k8_026_no_thank_you','k8_027_do_you_like_it','k8_028_i_like_it_very_much','k8_029_what_do_you_want','k8_030_i_want_water',
+  'k8_031_let_us_play','k8_032_are_you_ready','k8_033_come_and_play_with_me','k8_034_that_is_so_funny','k8_035_you_are_my_friend',
+  'k8_036_can_you_help_me','k8_037_i_can_help_you','k8_038_sharing_is_caring','k8_039_i_missed_you','k8_040_we_are_friends',
 ] as const;
 
 const PAGE_9_KEYS = [
-  'k9_001_wake_up',
-  'k9_002_open_eyes',
-  'k9_003_stretch_in_bed',
-  'k9_004_get_out_of_bed',
-  'k9_005_go_to_the_bathroom',
-  'k9_006_wash_face',
-  'k9_007_brush_teeth',
-  'k9_008_rinse_mouth',
-  'k9_009_dry_face',
-  'k9_010_comb_hair',
-  'k9_011_take_off_pajamas',
-  'k9_012_put_on_shirt',
-  'k9_013_put_on_shorts',
-  'k9_014_put_on_socks',
-  'k9_015_put_on_shoes',
-  'k9_016_eat_breakfast',
-  'k9_017_drink_milk',
-  'k9_018_drink_water',
-  'k9_019_eat_bread',
-  'k9_020_finish_breakfast',
-  'k9_021_pack_school_bag',
-  'k9_022_put_on_backpack',
-  'k9_023_say_goodbye_to_mom',
-  'k9_024_go_to_school',
-  'k9_025_arrive_at_school',
-  'k9_026_go_to_class',
-  'k9_027_sit_at_desk',
-  'k9_028_take_out_books',
-  'k9_029_listen_to_teacher',
-  'k9_030_raise_hand',
-  'k9_031_read_a_book',
-  'k9_032_write_in_notebook',
-  'k9_033_draw_a_picture',
-  'k9_034_learn_new_words',
-  'k9_035_answer_a_question',
-  'k9_036_eat_lunch',
-  'k9_037_drink_juice_at_lunch',
-  'k9_038_talk_to_friends',
-  'k9_039_play_outside',
-  'k9_040_run_and_play',
-  'k9_041_drink_water_outside',
-  'k9_042_rest_a_little',
-  'k9_043_go_back_to_class',
-  'k9_044_pack_up_to_go_home',
-  'k9_045_say_goodbye_at_school',
-  'k9_046_walk_home',
-  'k9_047_arrive_home',
-  'k9_048_take_off_shoes',
-  'k9_049_put_down_backpack',
-  'k9_050_change_clothes',
-  'k9_051_wash_hands',
-  'k9_052_eat_a_snack',
-  'k9_053_drink_juice',
-  'k9_054_do_homework',
-  'k9_055_read_at_home',
-  'k9_056_play_with_toys',
-  'k9_057_watch_something',
-  'k9_058_help_at_home',
-  'k9_059_eat_dinner',
-  'k9_060_drink_water_at_dinner',
-  'k9_061_help_clear_table',
-  'k9_062_take_a_bath',
-  'k9_063_wash_hair',
-  'k9_064_rinse_off',
-  'k9_065_dry_off',
-  'k9_066_put_on_pajamas',
-  'k9_067_brush_teeth_at_night',
-  'k9_068_drink_water_before_bed',
-  'k9_069_read_a_bedtime_story',
-  'k9_070_say_goodnight',
-  'k9_071_turn_off_the_light',
-  'k9_072_lie_down',
-  'k9_073_close_eyes',
-  'k9_074_sleep',
-  'k9_075_dream',
-  'k9_076_wake_up_again',
-  'k9_077_feel_fresh',
-  'k9_078_look_outside',
-  'k9_079_say_good_morning',
-  'k9_080_ready_for_the_day',
+  'k9_001_wake_up','k9_002_open_eyes','k9_003_stretch_in_bed','k9_004_get_out_of_bed','k9_005_go_to_the_bathroom',
+  'k9_006_wash_face','k9_007_brush_teeth','k9_008_rinse_mouth','k9_009_dry_face','k9_010_comb_hair',
+  'k9_011_take_off_pajamas','k9_012_put_on_shirt','k9_013_put_on_shorts','k9_014_put_on_socks','k9_015_put_on_shoes',
+  'k9_016_eat_breakfast','k9_017_drink_milk','k9_018_drink_water','k9_019_eat_bread','k9_020_finish_breakfast',
+  'k9_021_pack_school_bag','k9_022_put_on_backpack','k9_023_say_goodbye_to_mom','k9_024_go_to_school','k9_025_arrive_at_school',
+  'k9_026_go_to_class','k9_027_sit_at_desk','k9_028_take_out_books','k9_029_listen_to_teacher','k9_030_raise_hand',
+  'k9_031_read_a_book','k9_032_write_in_notebook','k9_033_draw_a_picture','k9_034_learn_new_words','k9_035_answer_a_question',
+  'k9_036_eat_lunch','k9_037_drink_juice_at_lunch','k9_038_talk_to_friends','k9_039_play_outside','k9_040_run_and_play',
+  'k9_041_drink_water_outside','k9_042_rest_a_little','k9_043_go_back_to_class','k9_044_pack_up_to_go_home','k9_045_say_goodbye_at_school',
+  'k9_046_walk_home','k9_047_arrive_home','k9_048_take_off_shoes','k9_049_put_down_backpack','k9_050_change_clothes',
+  'k9_051_wash_hands','k9_052_eat_a_snack','k9_053_drink_juice','k9_054_do_homework','k9_055_read_at_home',
+  'k9_056_play_with_toys','k9_057_watch_something','k9_058_help_at_home','k9_059_eat_dinner','k9_060_drink_water_at_dinner',
+  'k9_061_help_clear_table','k9_062_take_a_bath','k9_063_wash_hair','k9_064_rinse_off','k9_065_dry_off',
+  'k9_066_put_on_pajamas','k9_067_brush_teeth_at_night','k9_068_drink_water_before_bed','k9_069_read_a_bedtime_story','k9_070_say_goodnight',
+  'k9_071_turn_off_the_light','k9_072_lie_down','k9_073_close_eyes','k9_074_sleep','k9_075_dream',
+  'k9_076_wake_up_again','k9_077_feel_fresh','k9_078_look_outside','k9_079_say_good_morning','k9_080_ready_for_the_day',
 ] as const;
 
-// ─── Page config ────────────────────────────────────────────────────────────
+const PAGE_11_KEYS = [
+  'k11_001_dog','k11_002_cat','k11_003_rabbit','k11_004_hamster','k11_005_fish',
+  'k11_006_cow','k11_007_pig','k11_008_horse','k11_009_sheep','k11_010_duck',
+  'k11_011_hen','k11_012_goat','k11_013_lion','k11_014_elephant','k11_015_tiger',
+  'k11_016_giraffe','k11_017_monkey','k11_018_zebra','k11_019_hippo','k11_020_dolphin',
+  'k11_021_whale','k11_022_crab','k11_023_turtle','k11_024_octopus','k11_025_seahorse',
+  'k11_026_butterfly','k11_027_bee','k11_028_parrot','k11_029_owl','k11_030_eagle',
+  'k11_031_penguin','k11_032_flamingo','k11_033_crocodile','k11_034_snake','k11_035_frog',
+  'k11_036_panda','k11_037_koala','k11_038_kangaroo','k11_039_bear','k11_040_fox',
+  'k11_041_deer','k11_042_raccoon','k11_043_squirrel','k11_044_mouse','k11_045_sheep_baby',
+  'k11_046_chick','k11_047_puppy','k11_048_kitten','k11_049_piglet','k11_050_calf',
+  'k11_051_duckling','k11_052_caterpillar','k11_053_snail','k11_054_ladybug','k11_055_ant',
+  'k11_056_spider','k11_057_worm','k11_058_goldfish_in_bowl','k11_059_bird_on_branch','k11_060_animals_together',
+] as const;
+
+const PAGE_12_KEYS = [
+  'k12_001_head','k12_002_hair','k12_003_face','k12_004_eyes','k12_005_ears',
+  'k12_006_nose','k12_007_mouth','k12_008_teeth','k12_009_tongue','k12_010_neck',
+  'k12_011_shoulders','k12_012_arms','k12_013_elbow','k12_014_hands','k12_015_fingers',
+  'k12_016_nails','k12_017_chest','k12_018_tummy','k12_019_back','k12_020_belly_button',
+  'k12_021_legs','k12_022_knees','k12_023_feet','k12_024_toes','k12_025_heels',
+  'k12_026_thumb','k12_027_forehead','k12_028_cheeks','k12_029_chin','k12_030_eyebrows',
+  'k12_031_eyelashes','k12_032_lips','k12_033_wrist','k12_034_ankle','k12_035_hip',
+  'k12_036_waist','k12_037_skin','k12_038_my_right_hand','k12_039_my_left_hand','k12_040_my_right_foot',
+  'k12_041_my_left_foot','k12_042_clap_your_hands','k12_043_stomp_your_feet','k12_044_touch_your_nose','k12_045_pat_your_head',
+  'k12_046_rub_your_tummy','k12_047_shake_your_head','k12_048_wiggle_your_fingers','k12_049_my_whole_body','k12_050_i_love_my_body',
+] as const;
+
+const PAGE_13_KEYS = [
+  'k13_001_mom','k13_002_dad','k13_003_grandma','k13_004_grandpa','k13_005_baby',
+  'k13_006_sister','k13_007_brother','k13_008_teacher','k13_009_friend','k13_010_doctor',
+  'k13_011_this_is_my_mom','k13_012_this_is_my_dad','k13_013_this_is_my_grandma','k13_014_this_is_my_grandpa','k13_015_this_is_my_baby',
+  'k13_016_my_family','k13_017_i_love_my_mom','k13_018_i_love_my_dad','k13_019_i_love_my_grandma','k13_020_i_love_my_grandpa',
+  'k13_021_mom_is_cooking','k13_022_dad_is_working','k13_023_grandma_is_gardening','k13_024_grandpa_is_reading','k13_025_baby_is_sleeping',
+  'k13_026_my_teacher','k13_027_my_friend','k13_028_hello_friend','k13_029_come_and_play','k13_030_new_friend',
+  'k13_031_neighbor','k13_032_helper','k13_033_baby_brother','k13_034_big_sister','k13_035_little_sister',
+  'k13_036_twins','k13_037_family_dinner','k13_038_family_walk','k13_039_family_hug','k13_040_i_love_my_family',
+] as const;
 
 type KidsPageConfig = {
   id: KidsPageId;
@@ -713,9 +497,10 @@ const KIDS_PAGE_CONFIGS: KidsPageConfig[] = [
   { id: 'page7', label: 'Page 7' },
   { id: 'page8', label: 'Page 8' },
   { id: 'page9', label: 'Page 9' },
+  { id: 'page11', label: 'Page 11' },
+  { id: 'page12', label: 'Page 12' },
+  { id: 'page13', label: 'Page 13' },
 ];
-
-// ─── Helpers ─────────────────────────────────────────────────────────────────
 
 function toKidsLabel(key: string): string {
   return key
@@ -979,32 +764,14 @@ function buildLockedJourneyPreview(params: {
 
 function gentleFocusVi(focusText: string): string {
   const lower = focusText.toLowerCase();
-
   const parts: string[] = [];
 
-  if (lower.includes('reason connector')) {
-    parts.push('liên từ nối ý, nhất là cách nối lý do cho rõ hơn');
-  }
-
-  if (lower.includes('sentence structure')) {
-    parts.push('cấu trúc câu rõ ràng và thẳng ý hơn');
-  }
-
-  if (lower.includes('past tense')) {
-    parts.push('quá khứ đơn');
-  }
-
-  if (lower.includes('present simple')) {
-    parts.push('hiện tại đơn');
-  }
-
-  if (lower.includes('present perfect')) {
-    parts.push('hiện tại hoàn thành');
-  }
-
-  if (!parts.length) {
-    parts.push('diễn đạt câu tiếng Anh tự nhiên hơn');
-  }
+  if (lower.includes('reason connector')) parts.push('liên từ nối ý, nhất là cách nối lý do cho rõ hơn');
+  if (lower.includes('sentence structure')) parts.push('cấu trúc câu rõ ràng và thẳng ý hơn');
+  if (lower.includes('past tense')) parts.push('quá khứ đơn');
+  if (lower.includes('present simple')) parts.push('hiện tại đơn');
+  if (lower.includes('present perfect')) parts.push('hiện tại hoàn thành');
+  if (!parts.length) parts.push('diễn đạt câu tiếng Anh tự nhiên hơn');
 
   return `👉 Điểm đang luyện: ${parts.join(' + ')}.`;
 }
@@ -1015,15 +782,9 @@ function guidedFocusVi(focusText: string): string {
   if (lower.includes('reason connector') && lower.includes('sentence structure')) {
     return 'Gợi ý ngắn: đang luyện liên từ + cấu trúc câu.';
   }
-  if (lower.includes('past tense')) {
-    return 'Gợi ý ngắn: chú ý quá khứ đơn.';
-  }
-  if (lower.includes('present simple')) {
-    return 'Gợi ý ngắn: chú ý hiện tại đơn.';
-  }
-  if (lower.includes('present perfect')) {
-    return 'Gợi ý ngắn: chú ý hiện tại hoàn thành.';
-  }
+  if (lower.includes('past tense')) return 'Gợi ý ngắn: chú ý quá khứ đơn.';
+  if (lower.includes('present simple')) return 'Gợi ý ngắn: chú ý hiện tại đơn.';
+  if (lower.includes('present perfect')) return 'Gợi ý ngắn: chú ý hiện tại hoàn thành.';
 
   return 'Gợi ý ngắn: Mercy đang làm câu rõ và tự nhiên hơn.';
 }
@@ -1037,8 +798,6 @@ function supportLine(
   if (mode === 'guided') return guided || gentle;
   return gentle;
 }
-
-// ─── Kids page item builders (lazy — only the active page is built) ──────────
 
 function buildPage1Items(): KidsLessonCard[] {
   return KIDS_OBJECT_KEYS.map((key) => ({
@@ -1075,7 +834,6 @@ function buildGenericPageItems(
   }));
 }
 
-/** Returns the item list for whichever page is currently active. */
 function resolveCurrentPageItems(page: KidsPageId): KidsLessonCard[] {
   switch (page) {
     case 'page1':
@@ -1094,12 +852,16 @@ function resolveCurrentPageItems(page: KidsPageId): KidsLessonCard[] {
       return buildGenericPageItems(PAGE_8_KEYS, '/images/mercy-kids-page-8');
     case 'page9':
       return buildGenericPageItems(PAGE_9_KEYS, '/images/mercy-kids-page-9');
+    case 'page11':
+      return buildGenericPageItems(PAGE_11_KEYS, '/images/mercy-kids-page-11');
+    case 'page12':
+      return buildGenericPageItems(PAGE_12_KEYS, '/images/mercy-kids-page-12');
+    case 'page13':
+      return buildGenericPageItems(PAGE_13_KEYS, '/images/mercy-kids-page-13');
     default:
       return buildPage1Items();
   }
 }
-
-// ─── Kids image grid ─────────────────────────────────────────────────────────
 
 function KidsImageGrid({
   items,
@@ -1144,8 +906,6 @@ function KidsImageGrid({
   );
 }
 
-// ─── Kids page tab bar ───────────────────────────────────────────────────────
-
 function KidsPageTabBar({
   activePage,
   onSelectPage,
@@ -1177,8 +937,6 @@ function KidsPageTabBar({
     </div>
   );
 }
-
-// ─── Main export ─────────────────────────────────────────────────────────────
 
 export function MercyTeacherTab({
   latestTeacherWritingState,
@@ -1325,13 +1083,11 @@ export function MercyTeacherTab({
       : 'Gợi ý ngắn: mở Grammar trước.',
   );
 
-  // ── Resolve only the active kids page items ────────────────────────────────
   const currentPageItems = useMemo(
     () => resolveCurrentPageItems(selectedKidsPage),
     [selectedKidsPage],
   );
 
-  // ── Page change: switch page and reset selection to first item ─────────────
   const handlePageSelect = (page: KidsPageId) => {
     if (page === selectedKidsPage) return;
     onSelectKidsPage?.(page);
@@ -1340,8 +1096,6 @@ export function MercyTeacherTab({
       onSelectKidsObject?.(firstItems[0].key);
     }
   };
-
-  // ─── Kids mode render ──────────────────────────────────────────────────────
 
   if (isKidsMode) {
     return (
@@ -1370,14 +1124,11 @@ export function MercyTeacherTab({
     );
   }
 
-  // ─── Adult mode render (unchanged) ────────────────────────────────────────
-
   return (
     <div className="m-0 flex-1 overflow-hidden">
       <ScrollArea className="h-full bg-gradient-to-br from-[#FFF7F0] via-[#F8FAFF] to-[#F0F4FF]">
         <div className="relative p-4 md:p-5">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-[radial-gradient(circle_at_top,_rgba(255,138,101,0.08),_rgba(192,132,252,0.04)_45%,_transparent_75%)]" />
-
           <div className="relative space-y-4">
             <section className="overflow-hidden rounded-3xl border border-white/80 bg-white/90 p-5 shadow-[0_12px_32px_rgba(255,138,101,0.08)] backdrop-blur-sm">
               <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">

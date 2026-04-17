@@ -22,6 +22,9 @@ import { getPage6LessonByKey } from './kids/kidPage6Data';
 import { getPage7LessonByKey } from './kids/kidPage7Data';
 import { getPage8LessonByKey } from './kids/kidPage8Data';
 import { getPage9LessonByKey } from './kids/kidPage9Data';
+import { getKidPage11Item } from './kids/kidPage11Data';
+import { getKidPage12Item } from './kids/kidPage12Data';
+import { getKidPage13Item } from './kids/kidPage13Data';
 import type { StudentMercyMemoryUpdate, LearningSupportMode } from './types';
 import type {
   SpeechRecognitionLike as BaseSpeechRecognitionLike,
@@ -470,6 +473,12 @@ function toPage3Label(key: string): string {
   return toPage3Sentence(key).replace(/[.!?]+$/g, '');
 }
 
+function toPhraseSentence(label: string): string {
+  const base = cleanText(label);
+  if (!base) return '';
+  return /[.!?]$/.test(base) ? base : `${base}.`;
+}
+
 const KIDS_OBJECTS: KidsObjectCard[] = KIDS_OBJECT_KEYS.map((key) => ({
   key,
   label: toKidsLabel(key),
@@ -673,6 +682,42 @@ function getPage3LessonByKey(key?: string | null): KidsLessonCard | null {
   };
 }
 
+function getPage11LessonByKey(key?: string | null): KidsLessonCard | null {
+  const item = getKidPage11Item(key);
+  if (!item) return null;
+
+  return {
+    key: item.key,
+    label: item.label,
+    sentence: toPhraseSentence(item.label),
+    imageSrc: item.image,
+  };
+}
+
+function getPage12LessonByKey(key?: string | null): KidsLessonCard | null {
+  const item = getKidPage12Item(key);
+  if (!item) return null;
+
+  return {
+    key: item.key,
+    label: item.label,
+    sentence: toPhraseSentence(item.label),
+    imageSrc: item.image,
+  };
+}
+
+function getPage13LessonByKey(key?: string | null): KidsLessonCard | null {
+  const item = getKidPage13Item(key);
+  if (!item) return null;
+
+  return {
+    key: item.key,
+    label: item.label,
+    sentence: toPhraseSentence(item.label),
+    imageSrc: item.image,
+  };
+}
+
 function extractTroubleWords(
   troubleWords?: Array<string | { word?: string | null }>,
 ): string[] {
@@ -860,6 +905,9 @@ export function MercySpeakTab({
   const kidsLesson = useMemo(() => {
     if (!isKidsMode) return null;
     return (
+      getPage13LessonByKey(selectedKidsObjectKey) ??
+      getPage12LessonByKey(selectedKidsObjectKey) ??
+      getPage11LessonByKey(selectedKidsObjectKey) ??
       getPage9LessonByKey(selectedKidsObjectKey) ??
       getPage8LessonByKey(selectedKidsObjectKey) ??
       getPage7LessonByKey(selectedKidsObjectKey) ??

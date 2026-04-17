@@ -94,6 +94,7 @@ type TeacherUiPreset = {
 const MercyGuidePanelResolved = MercyGuidePanel as React.ComponentType<any>;
 const KIDS_CONTEXT_PATTERN =
   /\bkids?\b|children|child|toddler|preschool|kindergarten|kids[_-]?l?[123]|kidslevel[123]/i;
+const FULLSCREEN_TOP_OFFSET = 88;
 
 function isMobileViewport(): boolean {
   return typeof window !== 'undefined' && window.innerWidth < 768;
@@ -1105,6 +1106,13 @@ export function MercyGuide({
     return null;
   }
 
+  const fullscreenStyle =
+    isFullscreen && isMobileViewport()
+      ? {
+          top: FULLSCREEN_TOP_OFFSET,
+        }
+      : undefined;
+
   return (
     <>
       {!isOpen && (
@@ -1167,12 +1175,12 @@ export function MercyGuide({
           className={cn(
             'fixed z-[95] overflow-hidden border border-slate-200 bg-white shadow-2xl',
             isFullscreen
-              ? 'left-0 right-0 top-0 bottom-0 rounded-none border-0 shadow-none md:left-10 md:right-10 md:top-8 md:bottom-8 md:rounded-[24px] md:border md:border-slate-200 md:shadow-2xl lg:left-14 lg:right-14 lg:top-10 lg:bottom-10'
+              ? 'left-0 right-0 bottom-0 rounded-none border-0 shadow-none md:left-10 md:right-10 md:top-8 md:bottom-8 md:rounded-[24px] md:border md:border-slate-200 md:shadow-2xl lg:left-14 lg:right-14 lg:top-10 lg:bottom-10'
               : 'rounded-[28px]',
           )}
           style={
             isFullscreen
-              ? undefined
+              ? fullscreenStyle
               : {
                   width: panelRect.width,
                   height: panelRect.height,
