@@ -43,10 +43,11 @@
 // - Stronger visual brand impact while keeping the page clean and readable.
 //
 // PATCH (2026-04-17):
-// - Force a stable mobile-first one-column Tier Map on small screens.
-// - Stop desktop 3-column layout from rendering on phones.
-// - Use reactive viewport state instead of one-time matchMedia in render.
-// - Add hard overflow protection so the page cannot widen past the phone viewport.
+// - Mobile-first hardening.
+// - Do not render the old desktop 3-column map on small screens.
+// - Compress mobile spacing.
+// - Make stat pills wrap safely.
+// - Hide long debug/source text on normal mobile view.
 
 import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
@@ -356,7 +357,7 @@ function AnchorCard({
     marginTop: 8,
     marginBottom: 0,
     fontSize: 14,
-    lineHeight: 1.6,
+    lineHeight: 1.55,
     color: "rgba(0,0,0,0.68)",
     wordBreak: "break-word",
   };
@@ -401,7 +402,7 @@ export default function TierIndex() {
   const container: React.CSSProperties = {
     maxWidth: 980,
     margin: "0 auto",
-    padding: isMobile ? "14px 12px 56px" : "18px 16px 80px",
+    padding: isMobile ? "12px 10px 44px" : "18px 16px 80px",
     position: "relative",
     zIndex: 999999,
     pointerEvents: "auto",
@@ -410,10 +411,10 @@ export default function TierIndex() {
 
   const title: React.CSSProperties = {
     margin: 0,
-    fontSize: isMobile ? 28 : 44,
+    fontSize: isMobile ? 26 : 44,
     lineHeight: 1.05,
     fontWeight: 950,
-    letterSpacing: isMobile ? -0.7 : -1.1,
+    letterSpacing: isMobile ? -0.6 : -1.1,
     background: rainbow,
     WebkitBackgroundClip: "text",
     color: "transparent",
@@ -421,9 +422,9 @@ export default function TierIndex() {
   };
 
   const topActions: React.CSSProperties = {
-    marginTop: 12,
+    marginTop: 10,
     display: "flex",
-    gap: 10,
+    gap: 8,
     alignItems: "center",
     flexWrap: "wrap",
   };
@@ -432,7 +433,7 @@ export default function TierIndex() {
     display: "inline-flex",
     alignItems: "center",
     gap: 10,
-    padding: "10px 14px",
+    padding: isMobile ? "9px 14px" : "10px 14px",
     borderRadius: 9999,
     background: "rgba(0,0,0,0.92)",
     color: "white",
@@ -453,31 +454,41 @@ export default function TierIndex() {
   const sub: React.CSSProperties = {
     marginTop: 10,
     color: "rgba(0,0,0,0.65)",
-    fontSize: isMobile ? 14 : 16,
-    lineHeight: 1.6,
+    fontSize: isMobile ? 13 : 16,
+    lineHeight: 1.55,
     maxWidth: 860,
     wordBreak: "break-word",
   };
 
-  const metaRow: React.CSSProperties = {
-    marginTop: 10,
-    display: "flex",
-    flexWrap: "wrap",
-    gap: 10,
-    alignItems: "center",
-  };
+  const metaRow: React.CSSProperties = isMobile
+    ? {
+        marginTop: 10,
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr",
+        gap: 8,
+        alignItems: "stretch",
+      }
+    : {
+        marginTop: 10,
+        display: "flex",
+        flexWrap: "wrap",
+        gap: 10,
+        alignItems: "center",
+      };
 
   const metaPill: React.CSSProperties = {
-    fontSize: 12,
+    fontSize: isMobile ? 11 : 12,
     fontWeight: 900,
-    padding: "6px 10px",
+    padding: isMobile ? "8px 10px" : "6px 10px",
     borderRadius: 9999,
     border: "1px solid rgba(0,0,0,0.12)",
     background: "rgba(255,255,255,0.92)",
     color: "rgba(0,0,0,0.75)",
-    whiteSpace: "nowrap",
+    whiteSpace: isMobile ? "normal" : "nowrap",
     pointerEvents: "auto",
     maxWidth: "100%",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
   };
 
   const rowGrid: React.CSSProperties = {
@@ -512,7 +523,7 @@ export default function TierIndex() {
   const small: React.CSSProperties = {
     marginTop: 8,
     marginBottom: 0,
-    fontSize: 14,
+    fontSize: isMobile ? 13 : 14,
     lineHeight: 1.55,
     color: "rgba(0,0,0,0.70)",
     wordBreak: "break-word",
@@ -537,25 +548,25 @@ export default function TierIndex() {
   const spineCell: React.CSSProperties = { ...cell, justifyContent: "center" };
 
   const spineHint: React.CSSProperties = {
-    marginTop: 6,
+    marginTop: 4,
     fontSize: 12,
     color: "rgba(0,0,0,0.55)",
     textAlign: "center",
   };
 
   const mobileTierStack: React.CSSProperties = {
-    marginTop: 14,
+    marginTop: 12,
     display: "flex",
     flexDirection: "column",
-    gap: 12,
+    gap: 10,
   };
 
-  const mobileTierCard: React.CSSProperties = {
-    borderRadius: 18,
+  const mobileTierRow: React.CSSProperties = {
+    borderRadius: 16,
     border: "1px solid rgba(0,0,0,0.10)",
     background: "rgba(255,255,255,0.88)",
-    padding: "12px",
-    boxShadow: "0 10px 24px rgba(0,0,0,0.05)",
+    padding: "10px 10px 12px",
+    boxShadow: "0 8px 18px rgba(0,0,0,0.04)",
     maxWidth: "100%",
     overflow: "hidden",
   };
@@ -570,7 +581,7 @@ export default function TierIndex() {
   };
 
   const footer: React.CSSProperties = {
-    marginTop: 18,
+    marginTop: 16,
     color: "rgba(0,0,0,0.55)",
     fontSize: 13,
     lineHeight: 1.6,
@@ -891,6 +902,11 @@ export default function TierIndex() {
       ? new URLSearchParams(window.location.search).get("showHidden") === "1"
       : false;
 
+  const showDebugTier =
+    typeof window !== "undefined"
+      ? new URLSearchParams(window.location.search).get("debugTier") === "1"
+      : false;
+
   return (
     <div style={wrap}>
       <div style={container}>
@@ -904,9 +920,17 @@ export default function TierIndex() {
         </div>
 
         <div style={sub}>
-          Three columns. One spine. <b>Core</b> is the spine reality.
-          <br />
-          <b>Left</b> = English lessons only. <b>Right</b> = Life skills.
+          {isMobile ? (
+            <>
+              <b>English</b> / <b>Core</b> / <b>Life</b>
+            </>
+          ) : (
+            <>
+              Three columns. One spine. <b>Core</b> is the spine reality.
+              <br />
+              <b>Left</b> = English lessons only. <b>Right</b> = Life skills.
+            </>
+          )}
         </div>
 
         <div style={metaRow} aria-label="Tier stats">
@@ -914,7 +938,10 @@ export default function TierIndex() {
           <span style={metaPill}>Core rooms: {countsForDisplay.totalCore}</span>
           <span style={metaPill}>Non-core: {nonCoreCount}</span>
           <span style={metaPill}>Unknown core tier: {countsForDisplay.unknownCoreTier}</span>
-          <span style={metaPill}>Source: {countsForDisplay.source}</span>
+
+          {(!isMobile || showDebugTier || showHiddenPills) ? (
+            <span style={metaPill}>Source: {countsForDisplay.source}</span>
+          ) : null}
 
           {showHiddenPills ? (
             <>
@@ -935,12 +962,12 @@ export default function TierIndex() {
             <div style={colBox} aria-label="Tier map summary">
               <div style={colTitle}>Map guide</div>
               <p style={small}>
-                <b>Left</b> = English. <b>Center</b> = Core spine. <b>Right</b> = Life skills.
+                <b>Left</b> = English. <b>Center</b> = Core. <b>Right</b> = Life.
               </p>
             </div>
 
             {SPINE_TOP_TO_BOTTOM.map((t) => (
-              <div key={t.id} style={mobileTierCard} aria-label={`Tier card ${t.label}`}>
+              <div key={t.id} style={mobileTierRow} aria-label={`Tier row ${t.label}`}>
                 <div style={{ display: "flex", justifyContent: "center" }}>
                   <TierLink
                     id={t.id}
@@ -968,7 +995,7 @@ export default function TierIndex() {
 
                 {rightAnchors[t.id] ? (
                   <div style={{ marginTop: 10 }}>
-                    <p style={mobileSectionLabel}>Life skills</p>
+                    <p style={mobileSectionLabel}>Life</p>
                     <div style={{ marginTop: 6 }}>{rightAnchors[t.id]}</div>
                   </div>
                 ) : null}
@@ -1012,11 +1039,9 @@ export default function TierIndex() {
                         to={`/tiers/${t.id}?area=core`}
                       />
                     </div>
-
                     {centerAnchors[t.id] ? (
                       <div style={{ marginTop: 8 }}>{centerAnchors[t.id]}</div>
                     ) : null}
-
                     {t.hint ? <div style={spineHint}>{t.hint}</div> : null}
                   </div>
                 </div>
@@ -1029,16 +1054,18 @@ export default function TierIndex() {
           </div>
         )}
 
-        <div style={footer}>
-          LOCK CHECK: Kids are not in the spine. Core counts exclude English + Life.
-          <br />
-          <span style={{ fontSize: 12, color: "rgba(0,0,0,0.45)" }}>
-            DEBUG: source={countsForDisplay.source} all={countsForDisplay.totalAll} core=
-            {countsForDisplay.totalCore} nonCore={nonCoreCount} free_core={freeCoreCount}
-            {" "}free_life_explicit={freeLifeCount}
-            {countsForDisplay.debug ? ` | ${countsForDisplay.debug}` : ""}
-          </span>
-        </div>
+        {(!isMobile || showDebugTier) && (
+          <div style={footer}>
+            LOCK CHECK: Kids are not in the spine. Core counts exclude English + Life.
+            <br />
+            <span style={{ fontSize: 12, color: "rgba(0,0,0,0.45)" }}>
+              DEBUG: source={countsForDisplay.source} all={countsForDisplay.totalAll} core=
+              {countsForDisplay.totalCore} nonCore={nonCoreCount} free_core={freeCoreCount}{" "}
+              free_life_explicit={freeLifeCount}
+              {countsForDisplay.debug ? ` | ${countsForDisplay.debug}` : ""}
+            </span>
+          </div>
+        )}
       </div>
     </div>
   );
