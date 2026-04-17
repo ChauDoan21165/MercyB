@@ -1,6 +1,6 @@
 /**
- * File: TierIndex.tsx
  * Path: src/pages/TierIndex.tsx
+ * File: TierIndex.tsx
  */
 
 // PATH: src/pages/TierIndex.tsx
@@ -41,6 +41,11 @@
 // - Keep only top black "Pricing / Upgrade" button linking to /upgrade.
 // - Apply real Mercy Blade color language (soft premium neutrals + tier accents from colors.ts).
 // - Stronger visual brand impact while keeping the page clean and readable.
+//
+// PATCH (2026-04-17):
+// - Fix mobile Tier Map being too spread out vertically.
+// - Replace 3-column narrow-screen layout with compact per-tier stacked cards.
+// - Keep desktop 3-column spine layout unchanged.
 
 import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
@@ -86,9 +91,6 @@ function norm(v: any): string {
   return String(v ?? "").toLowerCase().trim();
 }
 
-/**
- * Infer spine tier from room id, COUNTING ONLY.
- */
 function inferSpineTierFromId(idRaw: any): SpineTierId | null {
   const id = norm(idRaw);
   if (!id) return null;
@@ -129,9 +131,6 @@ function inferSpineTierFromId(idRaw: any): SpineTierId | null {
   return null;
 }
 
-/**
- * Infer spine tier from numeric rank fields, COUNTING ONLY.
- */
 function inferSpineTierFromRank(r: TierRoom): SpineTierId | null {
   const anyR: any = r as any;
 
@@ -166,12 +165,6 @@ function inferSpineTierFromRank(r: TierRoom): SpineTierId | null {
   return `vip${rr}` as SpineTierId;
 }
 
-/**
- * Final: infer tier for counting:
- * 1) explicit tier string (if in spine)
- * 2) numeric rank fields
- * 3) id inference
- */
 function inferSpineTierForCounting(r: TierRoom, spineSet: Set<string>): SpineTierId | null {
   const t = norm((r as any).tier);
   if (t && spineSet.has(t)) return t as SpineTierId;
@@ -185,9 +178,6 @@ function inferSpineTierForCounting(r: TierRoom, spineSet: Set<string>): SpineTie
   return null;
 }
 
-/**
- * LIFE (Survival) must be explicit-only (match TierDetail).
- */
 function isExplicitLifeRoom(r: TierRoom): boolean {
   const id = String((r as any)?.id || "").toLowerCase();
 
@@ -362,33 +352,40 @@ function blankCounts(): CountsState {
 }
 
 export default function TierIndex() {
+  const isNarrow =
+    typeof window !== "undefined" ? window.matchMedia("(max-width: 860px)").matches : false;
+
   const wrap: React.CSSProperties = {
     width: "100%",
     minHeight: "100vh",
-    background: "#f8f9fa", // Mercy Blade soft premium neutral
+    background: "#f8f9fa",
     position: "relative",
     zIndex: 999999,
     pointerEvents: "auto",
     isolation: "isolate",
+    overflowX: "hidden",
   };
 
   const container: React.CSSProperties = {
     maxWidth: 980,
     margin: "0 auto",
-    padding: "18px 16px 80px",
+    padding: isNarrow ? "14px 12px 56px" : "18px 16px 80px",
     position: "relative",
     zIndex: 999999,
     pointerEvents: "auto",
+    overflowX: "hidden",
   };
 
   const title: React.CSSProperties = {
     margin: 0,
-    fontSize: 44,
+    fontSize: isNarrow ? 28 : 44,
+    lineHeight: 1.05,
     fontWeight: 950,
-    letterSpacing: -1.1,
+    letterSpacing: isNarrow ? -0.7 : -1.1,
     background: rainbow,
     WebkitBackgroundClip: "text",
     color: "transparent",
+    wordBreak: "break-word",
   };
 
   const topActions: React.CSSProperties = {
@@ -403,7 +400,7 @@ export default function TierIndex() {
     display: "inline-flex",
     alignItems: "center",
     gap: 10,
-    padding: "10px 14px",
+    padding: isNarrow ? "10px 14px" : "10px 14px",
     borderRadius: 9999,
     background: "rgba(0,0,0,0.92)",
     color: "white",
@@ -412,6 +409,7 @@ export default function TierIndex() {
     letterSpacing: -0.2,
     border: "1px solid rgba(0,0,0,0.10)",
     boxShadow: "0 10px 24px rgba(0,0,0,0.10)",
+    maxWidth: "100%",
   };
 
   const ctaSub: React.CSSProperties = {
@@ -423,7 +421,7 @@ export default function TierIndex() {
   const sub: React.CSSProperties = {
     marginTop: 10,
     color: "rgba(0,0,0,0.65)",
-    fontSize: 16,
+    fontSize: isNarrow ? 14 : 16,
     lineHeight: 1.6,
     maxWidth: 860,
   };
@@ -446,6 +444,7 @@ export default function TierIndex() {
     color: "rgba(0,0,0,0.75)",
     whiteSpace: "nowrap",
     pointerEvents: "auto",
+    maxWidth: "100%",
   };
 
   const rowGrid: React.CSSProperties = {
@@ -457,15 +456,11 @@ export default function TierIndex() {
     pointerEvents: "auto",
   };
 
-  const isNarrow =
-    typeof window !== "undefined" ? window.matchMedia("(max-width: 860px)").matches : false;
-  const rowGridNarrow: React.CSSProperties = { ...rowGrid, gridTemplateColumns: "1fr" };
-
   const colBox: React.CSSProperties = {
     borderRadius: 18,
     border: "1px solid rgba(0,0,0,0.10)",
     background: "rgba(255,255,255,0.88)",
-    padding: "12px 12px",
+    padding: isNarrow ? "10px 12px" : "12px 12px",
     boxShadow: "0 10px 30px rgba(0,0,0,0.05)",
     pointerEvents: "auto",
   };
@@ -510,6 +505,30 @@ export default function TierIndex() {
     fontSize: 12,
     color: "rgba(0,0,0,0.55)",
     textAlign: "center",
+  };
+
+  const mobileTierCard: React.CSSProperties = {
+    borderRadius: 18,
+    border: "1px solid rgba(0,0,0,0.10)",
+    background: "rgba(255,255,255,0.88)",
+    padding: "12px",
+    boxShadow: "0 10px 24px rgba(0,0,0,0.05)",
+  };
+
+  const mobileSectionLabel: React.CSSProperties = {
+    margin: 0,
+    fontSize: 11,
+    fontWeight: 900,
+    letterSpacing: 0.5,
+    textTransform: "uppercase",
+    color: "rgba(0,0,0,0.48)",
+  };
+
+  const mobileTierStack: React.CSSProperties = {
+    marginTop: 14,
+    display: "flex",
+    flexDirection: "column",
+    gap: 12,
   };
 
   const footer: React.CSSProperties = {
@@ -841,12 +860,11 @@ export default function TierIndex() {
       <div style={container}>
         <h1 style={title}>Tier Map</h1>
 
-        {/* Pricing CTA — only the top black button */}
         <div style={topActions}>
           <Link to="/upgrade" style={ctaBtn} aria-label="Open pricing / upgrade">
             Pricing / Upgrade
           </Link>
-          <span style={ctaSub}>Opens Stripe upgrade (Pro / Elite).</span>
+          {!isNarrow ? <span style={ctaSub}>Opens Stripe upgrade (Pro / Elite).</span> : null}
         </div>
 
         <div style={sub}>
@@ -876,55 +894,102 @@ export default function TierIndex() {
           {loading ? <span style={metaPill}>Loading…</span> : null}
         </div>
 
-        <div style={isNarrow ? rowGridNarrow : rowGrid} aria-label="Tier rows grid">
-          <div style={colBox} aria-label="Left column header">
-            <div style={colTitle}>Left</div>
-            <p style={small}>
-              <b>English Path</b> — English lessons only (Kids included here).
-            </p>
-          </div>
+        {isNarrow ? (
+          <div style={mobileTierStack} aria-label="Tier rows stack">
+            <div style={colBox} aria-label="Tier map summary">
+              <div style={colTitle}>Map guide</div>
+              <p style={small}>
+                <b>Left</b> = English. <b>Center</b> = Core spine. <b>Right</b> = Life skills.
+              </p>
+            </div>
 
-          <div style={colBox} aria-label="Spine column header">
-            <div style={colTitle}>Spine</div>
-            <p style={small}>Core only. Level 0 at ground (bottom). Level 9 at top.</p>
-          </div>
-
-          <div style={colBox} aria-label="Right column header">
-            <div style={colTitle}>Right</div>
-            <p style={small}>
-              <b>Life Skills</b> — survival, public speaking, debate, discipline.
-            </p>
-          </div>
-
-          {SPINE_TOP_TO_BOTTOM.map((t) => (
-            <React.Fragment key={t.id}>
-              <div style={cell} aria-label={`Left cell ${t.label}`}>
-                <div style={cellStack}>{leftAnchors[t.id] ?? null}</div>
-              </div>
-
-              <div style={spineCell} aria-label={`Spine cell ${t.label}`}>
-                <div style={cellStack}>
-                  <div style={{ display: "flex", justifyContent: "center" }}>
-                    <TierLink
-                      id={t.id}
-                      label={t.label}
-                      count={countsForDisplay.bySpineTier[t.id]}
-                      to={`/tiers/${t.id}?area=core`}
-                    />
-                  </div>
-                  {centerAnchors[t.id] ? (
-                    <div style={{ marginTop: 8 }}>{centerAnchors[t.id]}</div>
-                  ) : null}
-                  {t.hint ? <div style={spineHint}>{t.hint}</div> : null}
+            {SPINE_TOP_TO_BOTTOM.map((t) => (
+              <div key={t.id} style={mobileTierCard} aria-label={`Tier card ${t.label}`}>
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                  <TierLink
+                    id={t.id}
+                    label={t.label}
+                    count={countsForDisplay.bySpineTier[t.id]}
+                    to={`/tiers/${t.id}?area=core`}
+                  />
                 </div>
-              </div>
 
-              <div style={cell} aria-label={`Right cell ${t.label}`}>
-                <div style={cellStack}>{rightAnchors[t.id] ?? null}</div>
+                {t.hint ? <div style={spineHint}>{t.hint}</div> : null}
+
+                {centerAnchors[t.id] ? (
+                  <div style={{ marginTop: 10 }}>
+                    <p style={mobileSectionLabel}>Core</p>
+                    <div style={{ marginTop: 6 }}>{centerAnchors[t.id]}</div>
+                  </div>
+                ) : null}
+
+                {leftAnchors[t.id] ? (
+                  <div style={{ marginTop: 10 }}>
+                    <p style={mobileSectionLabel}>English</p>
+                    <div style={{ marginTop: 6 }}>{leftAnchors[t.id]}</div>
+                  </div>
+                ) : null}
+
+                {rightAnchors[t.id] ? (
+                  <div style={{ marginTop: 10 }}>
+                    <p style={mobileSectionLabel}>Life skills</p>
+                    <div style={{ marginTop: 6 }}>{rightAnchors[t.id]}</div>
+                  </div>
+                ) : null}
               </div>
-            </React.Fragment>
-          ))}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <div style={rowGrid} aria-label="Tier rows grid">
+            <div style={colBox} aria-label="Left column header">
+              <div style={colTitle}>Left</div>
+              <p style={small}>
+                <b>English Path</b> — English lessons only (Kids included here).
+              </p>
+            </div>
+
+            <div style={colBox} aria-label="Spine column header">
+              <div style={colTitle}>Spine</div>
+              <p style={small}>Core only. Level 0 at ground (bottom). Level 9 at top.</p>
+            </div>
+
+            <div style={colBox} aria-label="Right column header">
+              <div style={colTitle}>Right</div>
+              <p style={small}>
+                <b>Life Skills</b> — survival, public speaking, debate, discipline.
+              </p>
+            </div>
+
+            {SPINE_TOP_TO_BOTTOM.map((t) => (
+              <React.Fragment key={t.id}>
+                <div style={cell} aria-label={`Left cell ${t.label}`}>
+                  <div style={cellStack}>{leftAnchors[t.id] ?? null}</div>
+                </div>
+
+                <div style={spineCell} aria-label={`Spine cell ${t.label}`}>
+                  <div style={cellStack}>
+                    <div style={{ display: "flex", justifyContent: "center" }}>
+                      <TierLink
+                        id={t.id}
+                        label={t.label}
+                        count={countsForDisplay.bySpineTier[t.id]}
+                        to={`/tiers/${t.id}?area=core`}
+                      />
+                    </div>
+                    {centerAnchors[t.id] ? (
+                      <div style={{ marginTop: 8 }}>{centerAnchors[t.id]}</div>
+                    ) : null}
+                    {t.hint ? <div style={spineHint}>{t.hint}</div> : null}
+                  </div>
+                </div>
+
+                <div style={cell} aria-label={`Right cell ${t.label}`}>
+                  <div style={cellStack}>{rightAnchors[t.id] ?? null}</div>
+                </div>
+              </React.Fragment>
+            ))}
+          </div>
+        )}
 
         <div style={footer}>
           LOCK CHECK: Kids are not in the spine. Core counts exclude English + Life.
