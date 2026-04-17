@@ -41,6 +41,15 @@ import type {
 
 type MercyTabType = 'teacher' | 'grammar' | 'pronunciation' | 'logic';
 type TeacherMode = 'adult' | 'kids';
+type KidsPageId =
+  | 'page1'
+  | 'page2'
+  | 'page3'
+  | 'page5'
+  | 'page6'
+  | 'page7'
+  | 'page8'
+  | 'page9';
 
 type TroubleWordItem = string | { word?: string | null };
 
@@ -148,6 +157,7 @@ type AccessFeatures = {
 const LEARNING_SUPPORT_STORAGE_KEY = 'mercy.learningSupportMode';
 const TEACHER_MODE_STORAGE_KEY = 'mercy.teacherMode';
 const KIDS_OBJECT_STORAGE_KEY = 'mercy.kids.selectedObjectKey';
+const KIDS_PAGE_STORAGE_KEY = 'mercy.kids.selectedPage';
 
 const LEARNING_SUPPORT_OPTIONS: LearningSupportOption[] = [
   {
@@ -196,6 +206,18 @@ const KIDS_OBJECT_KEYS = [
 const KIDS_EXTENDED_PAGE_PREFIXES = ['k4_', 'k5_', 'k6_', 'k7_', 'k8_', 'k9_'] as const;
 
 const DEFAULT_KIDS_OBJECT_KEY = KIDS_OBJECT_KEYS[0];
+const DEFAULT_KIDS_PAGE: KidsPageId = 'page1';
+
+const VALID_KIDS_PAGES = new Set<KidsPageId>([
+  'page1',
+  'page2',
+  'page3',
+  'page5',
+  'page6',
+  'page7',
+  'page8',
+  'page9',
+]);
 
 function normalizeTab(value: string | undefined): MercyTabType {
   switch (value) {
@@ -267,6 +289,26 @@ function normalizeVisibleTabs(
   return normalized.length > 0 ? normalized : fallback;
 }
 
+function isSupportedKidsObjectKey(value: string): boolean {
+  if (KIDS_OBJECT_KEYS.includes(value as (typeof KIDS_OBJECT_KEYS)[number])) {
+    return true;
+  }
+
+  if (KIDS_EXTENDED_PAGE_PREFIXES.some((prefix) => value.startsWith(prefix))) {
+    return true;
+  }
+
+  if (value.startsWith('p2_')) {
+    return true;
+  }
+
+  if (/^k\d{3}_/.test(value)) {
+    return true;
+  }
+
+  return false;
+}
+
 function normalizeKidsObjectKey(
   value?: string | null,
   fallback: string = DEFAULT_KIDS_OBJECT_KEY,
@@ -276,15 +318,18 @@ function normalizeKidsObjectKey(
     return fallback;
   }
 
-  if (KIDS_OBJECT_KEYS.includes(normalized as (typeof KIDS_OBJECT_KEYS)[number])) {
-    return normalized;
-  }
-
-  if (KIDS_EXTENDED_PAGE_PREFIXES.some((prefix) => normalized.startsWith(prefix))) {
+  if (isSupportedKidsObjectKey(normalized)) {
     return normalized;
   }
 
   return fallback;
+}
+
+function normalizeKidsPage(value: unknown): KidsPageId {
+  if (typeof value === 'string' && VALID_KIDS_PAGES.has(value as KidsPageId)) {
+    return value as KidsPageId;
+  }
+  return DEFAULT_KIDS_PAGE;
 }
 
 function fallbackAvatar(event: React.SyntheticEvent<HTMLImageElement>): void {
@@ -385,6 +430,29 @@ function writeStoredKidsObjectKey(value: string): void {
       KIDS_OBJECT_STORAGE_KEY,
       normalizeKidsObjectKey(value),
     );
+  } catch {
+    // ignore storage failures
+  }
+}
+
+function readStoredKidsPage(): KidsPageId | null {
+  if (typeof window === 'undefined') return null;
+
+  try {
+    const stored = window.localStorage.getItem(KIDS_PAGE_STORAGE_KEY);
+    if (!stored) return null;
+    const page = normalizeKidsPage(stored);
+    return page;
+  } catch {
+    return null;
+  }
+}
+
+function writeStoredKidsPage(value: KidsPageId): void {
+  if (typeof window === 'undefined') return;
+
+  try {
+    window.localStorage.setItem(KIDS_PAGE_STORAGE_KEY, value);
   } catch {
     // ignore storage failures
   }
@@ -871,6 +939,11 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
     () => readStoredKidsObjectKey() ?? DEFAULT_KIDS_OBJECT_KEY,
   );
 
+  // ── New: per-page selection state ─────────────────────────────────────────
+  const [selectedKidsPage, setSelectedKidsPage] = useState<KidsPageId>(
+    () => readStoredKidsPage() ?? DEFAULT_KIDS_PAGE,
+  );
+
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const safelyUpdateInteraction = useCallback(() => {
@@ -913,6 +986,13 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
     }
   }, [kidsModeActive, selectedKidsObjectKey]);
 
+  // Persist selected kids page
+  useEffect(() => {
+    if (kidsModeActive) {
+      writeStoredKidsPage(selectedKidsPage);
+    }
+  }, [kidsModeActive, selectedKidsPage]);
+
   const goToPricing = useCallback(() => {
     if (typeof window === 'undefined') return;
     window.location.assign('/pricing');
@@ -927,9 +1007,16 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
   );
 
   const handleSelectKidsObject = useCallback((nextKey: string) => {
-    setSelectedKidsObjectKey((current) =>
-      normalizeKidsObjectKey(nextKey, current),
-    );
+    setSelectedKidsObjectKey(nextKey);
+  }, []);
+
+  // Page change: update page state AND reset object key to the new page's
+  // first item (prevents cross-page sticking).
+  const handleSelectKidsPage = useCallback((page: KidsPageId) => {
+    setSelectedKidsPage(page);
+    // Reset object key — MercyTeacherTab will also fire onSelectKidsObject
+    // with the first item; we clear here first so there is no stale key flash.
+    setSelectedKidsObjectKey('');
   }, []);
 
   const tabs = useMemo<MercyTabConfig[]>(() => {
@@ -1428,6 +1515,8 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
               disableTeacherWriting={disableTeacherWriting}
               selectedKidsObjectKey={selectedKidsObjectKey}
               onSelectKidsObject={handleSelectKidsObject}
+              selectedKidsPage={selectedKidsPage}
+              onSelectKidsPage={handleSelectKidsPage}
             />
           ) : null}
 
@@ -1571,7 +1660,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
               description={
                 kidsModeActive
                   ? 'Kids mode keeps Mercy focused on listening and speaking.'
-                  : 'Unlock Logic to see the English pattern behind the sentence and connect that lesson back into Mercy’s memory.'
+                  : "Unlock Logic to see the English pattern behind the sentence and connect that lesson back into Mercy\u2019s memory."
               }
               onUnlock={kidsModeActive ? undefined : goToPricing}
             />

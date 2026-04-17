@@ -26,6 +26,16 @@ import type {
 
 type LearningSupportMode = 'gentle' | 'guided' | 'immersion';
 
+type KidsPageId =
+  | 'page1'
+  | 'page2'
+  | 'page3'
+  | 'page5'
+  | 'page6'
+  | 'page7'
+  | 'page8'
+  | 'page9';
+
 interface Props {
   latestTeacherWritingState?: GrammarWritingTeacherState | null;
   latestAnalysisResult?: GrammarApiResponse | null;
@@ -44,6 +54,8 @@ interface Props {
   disableTeacherWriting?: boolean;
   selectedKidsObjectKey?: string | null;
   onSelectKidsObject?: (key: string) => void;
+  selectedKidsPage?: KidsPageId;
+  onSelectKidsPage?: (page: KidsPageId) => void;
 }
 
 type BilingualText = {
@@ -685,6 +697,26 @@ const PAGE_9_KEYS = [
   'k9_080_ready_for_the_day',
 ] as const;
 
+// ─── Page config ────────────────────────────────────────────────────────────
+
+type KidsPageConfig = {
+  id: KidsPageId;
+  label: string;
+};
+
+const KIDS_PAGE_CONFIGS: KidsPageConfig[] = [
+  { id: 'page1', label: 'Page 1' },
+  { id: 'page2', label: 'Page 2' },
+  { id: 'page3', label: 'Page 3' },
+  { id: 'page5', label: 'Page 5' },
+  { id: 'page6', label: 'Page 6' },
+  { id: 'page7', label: 'Page 7' },
+  { id: 'page8', label: 'Page 8' },
+  { id: 'page9', label: 'Page 9' },
+];
+
+// ─── Helpers ─────────────────────────────────────────────────────────────────
+
 function toKidsLabel(key: string): string {
   return key
     .split('-')
@@ -745,56 +777,6 @@ function toGenericPageLabel(key: string): string {
     })
     .join(' ');
 }
-
-function normalizePage2Key(key?: string | null): string {
-  return cleanText(key).replace(/\.png$/i, '');
-}
-
-function normalizePage3Key(key?: string | null): string {
-  return cleanText(key).replace(/\.png$/i, '');
-}
-
-const KIDS_OBJECTS: KidsObjectCard[] = KIDS_OBJECT_KEYS.map((key) => ({
-  key,
-  label: toKidsLabel(key),
-  sentence: toKidsSentence(key),
-  imageSrc: `/images/mercy-kids/${key}.jpg`,
-  aliases: toKidsAliases(key),
-}));
-
-const KIDS_IMAGE_GRID = KIDS_OBJECTS.map((object) => ({
-  slotId: object.key,
-  object,
-}));
-
-const PAGE_2_IMAGE_GRID: KidsLessonCard[] = PAGE_2_IMAGE_FILENAMES.map((filename) => ({
-  key: filename.replace(/\.png$/i, ''),
-  label: toPage2Label(filename),
-  imageSrc: `/images/mercy-kids-page-2/${filename}`,
-}));
-
-const PAGE_3_IMAGE_GRID: KidsLessonCard[] = PAGE_3_IMAGE_FILENAMES.map((filename) => ({
-  key: filename.replace(/\.png$/i, ''),
-  label: toPage3Label(filename),
-  imageSrc: `/images/mercy-kids-page-3/${filename}`,
-}));
-
-function buildKidsLessonGrid(
-  keys: readonly string[],
-  imageFolder: string,
-): KidsLessonCard[] {
-  return keys.map((key) => ({
-    key,
-    label: toGenericPageLabel(key),
-    imageSrc: `${imageFolder}/${key}.png`,
-  }));
-}
-
-const PAGE_5_IMAGE_GRID = buildKidsLessonGrid(PAGE_5_KEYS, '/images/mercy-kids-page-5');
-const PAGE_6_IMAGE_GRID = buildKidsLessonGrid(PAGE_6_KEYS, '/images/mercy-kids-page-6');
-const PAGE_7_IMAGE_GRID = buildKidsLessonGrid(PAGE_7_KEYS, '/images/mercy-kids-page-7');
-const PAGE_8_IMAGE_GRID = buildKidsLessonGrid(PAGE_8_KEYS, '/images/mercy-kids-page-8');
-const PAGE_9_IMAGE_GRID = buildKidsLessonGrid(PAGE_9_KEYS, '/images/mercy-kids-page-9');
 
 function asText(value: unknown): string {
   if (typeof value === 'string') return value;
@@ -1056,100 +1038,147 @@ function supportLine(
   return gentle;
 }
 
-function normalizeKidsLookup(text: string): string {
-  return cleanText(text).toLowerCase().replace(/-/g, ' ');
+// ─── Kids page item builders (lazy — only the active page is built) ──────────
+
+function buildPage1Items(): KidsLessonCard[] {
+  return KIDS_OBJECT_KEYS.map((key) => ({
+    key,
+    label: toKidsLabel(key),
+    imageSrc: `/images/mercy-kids/${key}.jpg`,
+  }));
 }
 
-function getKidsObjectFromSentence(sentence: string): KidsObjectCard {
-  const normalized = normalizeKidsLookup(sentence);
+function buildPage2Items(): KidsLessonCard[] {
+  return PAGE_2_IMAGE_FILENAMES.map((filename) => ({
+    key: filename.replace(/\.png$/i, ''),
+    label: toPage2Label(filename),
+    imageSrc: `/images/mercy-kids-page-2/${filename}`,
+  }));
+}
 
-  if (!normalized) {
-    return KIDS_OBJECTS[0];
+function buildPage3Items(): KidsLessonCard[] {
+  return PAGE_3_IMAGE_FILENAMES.map((filename) => ({
+    key: filename.replace(/\.png$/i, ''),
+    label: toPage3Label(filename),
+    imageSrc: `/images/mercy-kids-page-3/${filename}`,
+  }));
+}
+
+function buildGenericPageItems(
+  keys: readonly string[],
+  imageFolder: string,
+): KidsLessonCard[] {
+  return keys.map((key) => ({
+    key,
+    label: toGenericPageLabel(key),
+    imageSrc: `${imageFolder}/${key}.png`,
+  }));
+}
+
+/** Returns the item list for whichever page is currently active. */
+function resolveCurrentPageItems(page: KidsPageId): KidsLessonCard[] {
+  switch (page) {
+    case 'page1':
+      return buildPage1Items();
+    case 'page2':
+      return buildPage2Items();
+    case 'page3':
+      return buildPage3Items();
+    case 'page5':
+      return buildGenericPageItems(PAGE_5_KEYS, '/images/mercy-kids-page-5');
+    case 'page6':
+      return buildGenericPageItems(PAGE_6_KEYS, '/images/mercy-kids-page-6');
+    case 'page7':
+      return buildGenericPageItems(PAGE_7_KEYS, '/images/mercy-kids-page-7');
+    case 'page8':
+      return buildGenericPageItems(PAGE_8_KEYS, '/images/mercy-kids-page-8');
+    case 'page9':
+      return buildGenericPageItems(PAGE_9_KEYS, '/images/mercy-kids-page-9');
+    default:
+      return buildPage1Items();
   }
-
-  const found = KIDS_OBJECTS.find((item) =>
-    item.aliases.some((alias) => normalized.includes(alias)),
-  );
-
-  return found ?? KIDS_OBJECTS[0];
 }
 
-function getKidsObjectByKey(key?: string | null): KidsObjectCard | null {
-  if (!key) return null;
-  return KIDS_OBJECTS.find((item) => item.key === key) ?? null;
-}
+// ─── Kids image grid ─────────────────────────────────────────────────────────
 
-function getPage2LessonByKey(key?: string | null): KidsLessonCard | null {
-  const normalized = normalizePage2Key(key);
-  if (!normalized) return null;
-
-  return PAGE_2_IMAGE_GRID.find((item) => item.key === normalized) ?? null;
-}
-
-function getPage3LessonByKey(key?: string | null): KidsLessonCard | null {
-  const normalized = normalizePage3Key(key);
-  if (!normalized) return null;
-
-  return PAGE_3_IMAGE_GRID.find((item) => item.key === normalized) ?? null;
-}
-
-function getLessonByKey(
-  key: string | null | undefined,
-  lessons: KidsLessonCard[],
-): KidsLessonCard | null {
-  const normalized = cleanText(key).replace(/\.png$/i, '');
-  if (!normalized) return null;
-  return lessons.find((item) => item.key === normalized) ?? null;
-}
-
-function renderLessonSection(params: {
-  title: string;
-  lessons: KidsLessonCard[];
-  selectedKey?: string | null;
-  onSelectKidsObject?: (key: string) => void;
+function KidsImageGrid({
+  items,
+  selectedKey,
+  onSelect,
+}: {
+  items: KidsLessonCard[];
+  selectedKey: string | null | undefined;
+  onSelect?: (key: string) => void;
 }) {
-  const { title, lessons, selectedKey, onSelectKidsObject } = params;
-
   return (
-    <>
-      <div className="mt-4 flex items-center justify-center">
-        <span className="rounded-full border border-[#FFD7C8] bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#D66A4E]">
-          {title}
-        </span>
-      </div>
+    <div className="grid grid-cols-5 gap-2 sm:gap-3">
+      {items.map((item) => {
+        const isSelected = item.key === selectedKey;
 
-      <div className="mt-3 grid grid-cols-5 gap-2 sm:gap-3">
-        {lessons.map((lesson) => {
-          const isSelected = lesson.key === selectedKey;
-
-          return (
-            <button
-              key={lesson.key}
-              type="button"
-              onClick={() => onSelectKidsObject?.(lesson.key)}
-              className={`aspect-square w-full overflow-hidden rounded-xl border bg-white transition ${
-                isSelected
-                  ? 'border-[#FFB39A] shadow-[0_8px_18px_rgba(255,138,101,0.18)]'
-                  : 'border-white/80 hover:border-[#FFD7C8] hover:shadow-[0_6px_14px_rgba(148,163,184,0.08)]'
-              }`}
-              aria-label={lesson.label}
-              title={lesson.label}
-            >
-              <img
-                src={lesson.imageSrc}
-                alt={lesson.label}
-                className="h-full w-full object-contain p-1.5 sm:p-2"
-                loading="lazy"
-                decoding="async"
-                draggable={false}
-              />
-            </button>
-          );
-        })}
-      </div>
-    </>
+        return (
+          <button
+            key={item.key}
+            type="button"
+            onClick={() => onSelect?.(item.key)}
+            className={`aspect-square w-full overflow-hidden rounded-xl border bg-white transition ${
+              isSelected
+                ? 'border-[#FFB39A] shadow-[0_8px_18px_rgba(255,138,101,0.18)]'
+                : 'border-white/80 hover:border-[#FFD7C8] hover:shadow-[0_6px_14px_rgba(148,163,184,0.08)]'
+            }`}
+            aria-label={item.label}
+            title={item.label}
+            aria-pressed={isSelected}
+          >
+            <img
+              src={item.imageSrc}
+              alt={item.label}
+              className="h-full w-full object-contain p-1.5 sm:p-2"
+              loading="lazy"
+              decoding="async"
+              draggable={false}
+            />
+          </button>
+        );
+      })}
+    </div>
   );
 }
+
+// ─── Kids page tab bar ───────────────────────────────────────────────────────
+
+function KidsPageTabBar({
+  activePage,
+  onSelectPage,
+}: {
+  activePage: KidsPageId;
+  onSelectPage: (page: KidsPageId) => void;
+}) {
+  return (
+    <div className="mb-3 flex flex-wrap gap-1.5">
+      {KIDS_PAGE_CONFIGS.map((config) => {
+        const isActive = config.id === activePage;
+
+        return (
+          <button
+            key={config.id}
+            type="button"
+            onClick={() => onSelectPage(config.id)}
+            className={`rounded-full border px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] transition ${
+              isActive
+                ? 'border-[#FFB39A] bg-gradient-to-r from-[#FFF1EA] to-[#FFF8F4] text-[#D66A4E] shadow-[0_4px_10px_rgba(255,138,101,0.14)]'
+                : 'border-white/80 bg-white text-slate-500 hover:border-[#FFD7C8] hover:text-slate-700'
+            }`}
+            aria-pressed={isActive}
+          >
+            {config.label}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+// ─── Main export ─────────────────────────────────────────────────────────────
 
 export function MercyTeacherTab({
   latestTeacherWritingState,
@@ -1167,6 +1196,8 @@ export function MercyTeacherTab({
   disableTeacherWriting = false,
   selectedKidsObjectKey,
   onSelectKidsObject,
+  selectedKidsPage = 'page1',
+  onSelectKidsPage,
 }: Props) {
   const mode = useMemo(
     () => normalizeLearningSupportMode(learningSupportMode),
@@ -1294,71 +1325,23 @@ export function MercyTeacherTab({
       : 'Gợi ý ngắn: mở Grammar trước.',
   );
 
-  const selectedPage2Lesson = useMemo(
-    () => getPage2LessonByKey(selectedKidsObjectKey),
-    [selectedKidsObjectKey],
+  // ── Resolve only the active kids page items ────────────────────────────────
+  const currentPageItems = useMemo(
+    () => resolveCurrentPageItems(selectedKidsPage),
+    [selectedKidsPage],
   );
 
-  const selectedPage3Lesson = useMemo(
-    () => getPage3LessonByKey(selectedKidsObjectKey),
-    [selectedKidsObjectKey],
-  );
-
-  const selectedPage5Lesson = useMemo(
-    () => getLessonByKey(selectedKidsObjectKey, PAGE_5_IMAGE_GRID),
-    [selectedKidsObjectKey],
-  );
-
-  const selectedPage6Lesson = useMemo(
-    () => getLessonByKey(selectedKidsObjectKey, PAGE_6_IMAGE_GRID),
-    [selectedKidsObjectKey],
-  );
-
-  const selectedPage7Lesson = useMemo(
-    () => getLessonByKey(selectedKidsObjectKey, PAGE_7_IMAGE_GRID),
-    [selectedKidsObjectKey],
-  );
-
-  const selectedPage8Lesson = useMemo(
-    () => getLessonByKey(selectedKidsObjectKey, PAGE_8_IMAGE_GRID),
-    [selectedKidsObjectKey],
-  );
-
-  const selectedPage9Lesson = useMemo(
-    () => getLessonByKey(selectedKidsObjectKey, PAGE_9_IMAGE_GRID),
-    [selectedKidsObjectKey],
-  );
-
-  const selectedKidsObject = useMemo(() => {
-    const selectedObject = getKidsObjectByKey(selectedKidsObjectKey);
-    if (selectedObject) {
-      return selectedObject;
+  // ── Page change: switch page and reset selection to first item ─────────────
+  const handlePageSelect = (page: KidsPageId) => {
+    if (page === selectedKidsPage) return;
+    onSelectKidsPage?.(page);
+    const firstItems = resolveCurrentPageItems(page);
+    if (firstItems.length > 0) {
+      onSelectKidsObject?.(firstItems[0].key);
     }
+  };
 
-    if (
-      selectedPage2Lesson ||
-      selectedPage3Lesson ||
-      selectedPage5Lesson ||
-      selectedPage6Lesson ||
-      selectedPage7Lesson ||
-      selectedPage8Lesson ||
-      selectedPage9Lesson
-    ) {
-      return null;
-    }
-
-    return getKidsObjectFromSentence(primarySentence);
-  }, [
-    primarySentence,
-    selectedKidsObjectKey,
-    selectedPage2Lesson,
-    selectedPage3Lesson,
-    selectedPage5Lesson,
-    selectedPage6Lesson,
-    selectedPage7Lesson,
-    selectedPage8Lesson,
-    selectedPage9Lesson,
-  ]);
+  // ─── Kids mode render ──────────────────────────────────────────────────────
 
   if (isKidsMode) {
     return (
@@ -1371,89 +1354,23 @@ export function MercyTeacherTab({
           }}
         >
           <div className="mx-auto w-full max-w-[920px]">
-            <div className="grid grid-cols-5 gap-2 sm:gap-3">
-              {KIDS_IMAGE_GRID.map(({ slotId, object }) => {
-                const isSelected = object.key === selectedKidsObject?.key;
+            <KidsPageTabBar
+              activePage={selectedKidsPage}
+              onSelectPage={handlePageSelect}
+            />
 
-                return (
-                  <button
-                    key={slotId}
-                    type="button"
-                    onClick={() => onSelectKidsObject?.(object.key)}
-                    className={`aspect-square w-full overflow-hidden rounded-xl border bg-white transition ${
-                      isSelected
-                        ? 'border-[#FFB39A] shadow-[0_8px_18px_rgba(255,138,101,0.18)]'
-                        : 'border-white/80 hover:border-[#FFD7C8] hover:shadow-[0_6px_14px_rgba(148,163,184,0.08)]'
-                    }`}
-                    aria-label={object.label}
-                    title={object.label}
-                  >
-                    <img
-                      src={object.imageSrc}
-                      alt={object.label}
-                      className="h-full w-full object-contain p-1.5 sm:p-2"
-                      loading="lazy"
-                      decoding="async"
-                      draggable={false}
-                    />
-                  </button>
-                );
-              })}
-            </div>
-
-            {renderLessonSection({
-              title: 'Page 2',
-              lessons: PAGE_2_IMAGE_GRID,
-              selectedKey: selectedPage2Lesson?.key,
-              onSelectKidsObject,
-            })}
-
-            {renderLessonSection({
-              title: 'Page 3',
-              lessons: PAGE_3_IMAGE_GRID,
-              selectedKey: selectedPage3Lesson?.key,
-              onSelectKidsObject,
-            })}
-
-            {renderLessonSection({
-              title: 'Page 5',
-              lessons: PAGE_5_IMAGE_GRID,
-              selectedKey: selectedPage5Lesson?.key,
-              onSelectKidsObject,
-            })}
-
-            {renderLessonSection({
-              title: 'Page 6',
-              lessons: PAGE_6_IMAGE_GRID,
-              selectedKey: selectedPage6Lesson?.key,
-              onSelectKidsObject,
-            })}
-
-            {renderLessonSection({
-              title: 'Page 7',
-              lessons: PAGE_7_IMAGE_GRID,
-              selectedKey: selectedPage7Lesson?.key,
-              onSelectKidsObject,
-            })}
-
-            {renderLessonSection({
-              title: 'Page 8',
-              lessons: PAGE_8_IMAGE_GRID,
-              selectedKey: selectedPage8Lesson?.key,
-              onSelectKidsObject,
-            })}
-
-            {renderLessonSection({
-              title: 'Page 9',
-              lessons: PAGE_9_IMAGE_GRID,
-              selectedKey: selectedPage9Lesson?.key,
-              onSelectKidsObject,
-            })}
+            <KidsImageGrid
+              items={currentPageItems}
+              selectedKey={selectedKidsObjectKey}
+              onSelect={onSelectKidsObject}
+            />
           </div>
         </div>
       </div>
     );
   }
+
+  // ─── Adult mode render (unchanged) ────────────────────────────────────────
 
   return (
     <div className="m-0 flex-1 overflow-hidden">
