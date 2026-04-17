@@ -43,9 +43,10 @@
 // - Stronger visual brand impact while keeping the page clean and readable.
 //
 // PATCH (2026-04-17):
-// - Fix mobile Tier Map being too spread out vertically.
-// - Replace 3-column narrow-screen layout with compact per-tier stacked cards.
-// - Keep desktop 3-column spine layout unchanged.
+// - Force a stable mobile-first one-column Tier Map on small screens.
+// - Stop desktop 3-column layout from rendering on phones.
+// - Use reactive viewport state instead of one-time matchMedia in render.
+// - Add hard overflow protection so the page cannot widen past the phone viewport.
 
 import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
@@ -71,6 +72,17 @@ type TierNode = {
   hint?: string;
 };
 
+type CountsState = {
+  source: TierSource;
+  debug?: string;
+  totalAll: number;
+  totalCore: number;
+  unknownCoreTier: number;
+  bySpineTier: Record<SpineTierId, number>;
+};
+
+const MOBILE_BREAKPOINT = 860;
+
 const rainbow =
   "linear-gradient(90deg,#ff4d4d 0%,#ffb84d 18%,#b6ff4d 36%,#4dffb8 54%,#4db8ff 72%,#b84dff 90%,#ff4dff 100%)";
 
@@ -89,6 +101,22 @@ const SPINE_TOP_TO_BOTTOM: TierNode[] = [
 
 function norm(v: any): string {
   return String(v ?? "").toLowerCase().trim();
+}
+
+function blankCounts(): CountsState {
+  const bySpineTier = Object.fromEntries(SPINE_TOP_TO_BOTTOM.map((t) => [t.id, 0])) as Record<
+    SpineTierId,
+    number
+  >;
+
+  return {
+    source: "none",
+    debug: undefined,
+    totalAll: 0,
+    totalCore: 0,
+    unknownCoreTier: 0,
+    bySpineTier,
+  };
 }
 
 function inferSpineTierFromId(idRaw: any): SpineTierId | null {
@@ -147,6 +175,7 @@ function inferSpineTierFromRank(r: TierRoom): SpineTierId | null {
   ];
 
   let rank: number | null = null;
+
   for (const c of candidates) {
     if (typeof c === "number" && Number.isFinite(c)) {
       rank = c;
@@ -195,6 +224,27 @@ function isExplicitLifeRoom(r: TierRoom): boolean {
   return false;
 }
 
+function useIsMobileTierMap(): boolean {
+  const getValue = () =>
+    typeof window !== "undefined" ? window.innerWidth <= MOBILE_BREAKPOINT : false;
+
+  const [isMobile, setIsMobile] = useState<boolean>(getValue);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const onResize = () => {
+      setIsMobile(window.innerWidth <= MOBILE_BREAKPOINT);
+    };
+
+    onResize();
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  return isMobile;
+}
+
 function TierLink({
   id,
   label,
@@ -220,6 +270,7 @@ function TierLink({
     letterSpacing: -0.2,
     whiteSpace: "nowrap",
     pointerEvents: "auto",
+    maxWidth: "100%",
   };
 
   const dot: React.CSSProperties = {
@@ -239,6 +290,7 @@ function TierLink({
     border: "1px solid rgba(0,0,0,0.12)",
     background: "rgba(255,255,255,0.95)",
     color: "rgba(0,0,0,0.75)",
+    flex: "0 0 auto",
   };
 
   return (
@@ -272,6 +324,8 @@ function AnchorCard({
     cursor: "pointer",
     transition: "transform 120ms ease, box-shadow 120ms ease",
     pointerEvents: "auto",
+    maxWidth: "100%",
+    overflow: "hidden",
   };
 
   const itemTitle: React.CSSProperties = {
@@ -284,6 +338,7 @@ function AnchorCard({
     alignItems: "center",
     justifyContent: "space-between",
     gap: 10,
+    flexWrap: "wrap",
   };
 
   const pill: React.CSSProperties = {
@@ -303,6 +358,7 @@ function AnchorCard({
     fontSize: 14,
     lineHeight: 1.6,
     color: "rgba(0,0,0,0.68)",
+    wordBreak: "break-word",
   };
 
   return (
@@ -320,40 +376,16 @@ function AnchorCard({
       }}
     >
       <div style={itemTitle}>
-        {title} <span style={pill}>{tierLabel}</span>
+        {title}
+        <span style={pill}>{tierLabel}</span>
       </div>
       <p style={itemBody}>{body}</p>
     </Link>
   );
 }
 
-type CountsState = {
-  source: TierSource;
-  debug?: string;
-  totalAll: number;
-  totalCore: number;
-  unknownCoreTier: number;
-  bySpineTier: Record<SpineTierId, number>;
-};
-
-function blankCounts(): CountsState {
-  const bySpineTier = Object.fromEntries(SPINE_TOP_TO_BOTTOM.map((t) => [t.id, 0])) as Record<
-    SpineTierId,
-    number
-  >;
-  return {
-    source: "none",
-    debug: undefined,
-    totalAll: 0,
-    totalCore: 0,
-    unknownCoreTier: 0,
-    bySpineTier,
-  };
-}
-
 export default function TierIndex() {
-  const isNarrow =
-    typeof window !== "undefined" ? window.matchMedia("(max-width: 860px)").matches : false;
+  const isMobile = useIsMobileTierMap();
 
   const wrap: React.CSSProperties = {
     width: "100%",
@@ -369,7 +401,7 @@ export default function TierIndex() {
   const container: React.CSSProperties = {
     maxWidth: 980,
     margin: "0 auto",
-    padding: isNarrow ? "14px 12px 56px" : "18px 16px 80px",
+    padding: isMobile ? "14px 12px 56px" : "18px 16px 80px",
     position: "relative",
     zIndex: 999999,
     pointerEvents: "auto",
@@ -378,10 +410,10 @@ export default function TierIndex() {
 
   const title: React.CSSProperties = {
     margin: 0,
-    fontSize: isNarrow ? 28 : 44,
+    fontSize: isMobile ? 28 : 44,
     lineHeight: 1.05,
     fontWeight: 950,
-    letterSpacing: isNarrow ? -0.7 : -1.1,
+    letterSpacing: isMobile ? -0.7 : -1.1,
     background: rainbow,
     WebkitBackgroundClip: "text",
     color: "transparent",
@@ -400,7 +432,7 @@ export default function TierIndex() {
     display: "inline-flex",
     alignItems: "center",
     gap: 10,
-    padding: isNarrow ? "10px 14px" : "10px 14px",
+    padding: "10px 14px",
     borderRadius: 9999,
     background: "rgba(0,0,0,0.92)",
     color: "white",
@@ -421,9 +453,10 @@ export default function TierIndex() {
   const sub: React.CSSProperties = {
     marginTop: 10,
     color: "rgba(0,0,0,0.65)",
-    fontSize: isNarrow ? 14 : 16,
+    fontSize: isMobile ? 14 : 16,
     lineHeight: 1.6,
     maxWidth: 860,
+    wordBreak: "break-word",
   };
 
   const metaRow: React.CSSProperties = {
@@ -460,9 +493,11 @@ export default function TierIndex() {
     borderRadius: 18,
     border: "1px solid rgba(0,0,0,0.10)",
     background: "rgba(255,255,255,0.88)",
-    padding: isNarrow ? "10px 12px" : "12px 12px",
+    padding: isMobile ? "10px 12px" : "12px 12px",
     boxShadow: "0 10px 30px rgba(0,0,0,0.05)",
     pointerEvents: "auto",
+    maxWidth: "100%",
+    overflow: "hidden",
   };
 
   const colTitle: React.CSSProperties = {
@@ -480,6 +515,7 @@ export default function TierIndex() {
     fontSize: 14,
     lineHeight: 1.55,
     color: "rgba(0,0,0,0.70)",
+    wordBreak: "break-word",
   };
 
   const cell: React.CSSProperties = {
@@ -507,12 +543,21 @@ export default function TierIndex() {
     textAlign: "center",
   };
 
+  const mobileTierStack: React.CSSProperties = {
+    marginTop: 14,
+    display: "flex",
+    flexDirection: "column",
+    gap: 12,
+  };
+
   const mobileTierCard: React.CSSProperties = {
     borderRadius: 18,
     border: "1px solid rgba(0,0,0,0.10)",
     background: "rgba(255,255,255,0.88)",
     padding: "12px",
     boxShadow: "0 10px 24px rgba(0,0,0,0.05)",
+    maxWidth: "100%",
+    overflow: "hidden",
   };
 
   const mobileSectionLabel: React.CSSProperties = {
@@ -524,18 +569,12 @@ export default function TierIndex() {
     color: "rgba(0,0,0,0.48)",
   };
 
-  const mobileTierStack: React.CSSProperties = {
-    marginTop: 14,
-    display: "flex",
-    flexDirection: "column",
-    gap: 12,
-  };
-
   const footer: React.CSSProperties = {
     marginTop: 18,
     color: "rgba(0,0,0,0.55)",
     fontSize: 13,
     lineHeight: 1.6,
+    wordBreak: "break-word",
   };
 
   const [allRooms, setAllRooms] = useState<TierRoom[]>([]);
@@ -544,6 +583,7 @@ export default function TierIndex() {
 
   useEffect(() => {
     let alive = true;
+
     (async () => {
       setLoading(true);
       const res = await loadRoomsForTiers();
@@ -693,7 +733,7 @@ export default function TierIndex() {
         .sort()
         .slice(0, n);
 
-    const report = {
+    return {
       totals: {
         all: allRooms.length,
         core: (byArea["core"] || []).length,
@@ -725,8 +765,6 @@ export default function TierIndex() {
       byTierAreaCount: (tier: string, area: string) =>
         (byTierArea[`${tier}__${area}`] || []).length,
     };
-
-    return report;
   }, [allRooms]);
 
   useEffect(() => {
@@ -742,7 +780,6 @@ export default function TierIndex() {
       const qs = new URLSearchParams(typeof window !== "undefined" ? window.location.search : "");
       if (qs.get("debugTier") !== "1") return;
 
-      // eslint-disable-next-line no-console
       console.log("tier-debug TierIndex:", {
         source: counts.source,
         totalAll: counts.totalAll,
@@ -752,9 +789,7 @@ export default function TierIndex() {
         freeLifeCount,
       });
 
-      // eslint-disable-next-line no-console
       console.log("tier-debug level0 core ids (first 80):", freeCoreIds.slice(0, 80));
-      // eslint-disable-next-line no-console
       console.log("tier-debug level0 explicit-life ids (first 80):", freeLifeIds.slice(0, 80));
 
       const coreRooms =
@@ -763,10 +798,11 @@ export default function TierIndex() {
       const sample = coreRooms.slice(0, 30).map((r: any) => ({
         id: r.id,
         tier: r.tier,
-        required_rank: r.required_rank ?? r.required_vip_rank ?? r.min_rank ?? r.vip_rank ?? r.rank,
+        required_rank:
+          r.required_rank ?? r.required_vip_rank ?? r.min_rank ?? r.vip_rank ?? r.rank,
         inferred: inferSpineTierForCounting(r, spineSet),
       }));
-      // eslint-disable-next-line no-console
+
       console.log("tier-debug core sample (first 30):", sample);
     } catch {
       // no-op
@@ -864,7 +900,7 @@ export default function TierIndex() {
           <Link to="/upgrade" style={ctaBtn} aria-label="Open pricing / upgrade">
             Pricing / Upgrade
           </Link>
-          {!isNarrow ? <span style={ctaSub}>Opens Stripe upgrade (Pro / Elite).</span> : null}
+          {!isMobile ? <span style={ctaSub}>Opens Stripe upgrade (Pro / Elite).</span> : null}
         </div>
 
         <div style={sub}>
@@ -894,7 +930,7 @@ export default function TierIndex() {
           {loading ? <span style={metaPill}>Loading…</span> : null}
         </div>
 
-        {isNarrow ? (
+        {isMobile ? (
           <div style={mobileTierStack} aria-label="Tier rows stack">
             <div style={colBox} aria-label="Tier map summary">
               <div style={colTitle}>Map guide</div>
@@ -976,9 +1012,11 @@ export default function TierIndex() {
                         to={`/tiers/${t.id}?area=core`}
                       />
                     </div>
+
                     {centerAnchors[t.id] ? (
                       <div style={{ marginTop: 8 }}>{centerAnchors[t.id]}</div>
                     ) : null}
+
                     {t.hint ? <div style={spineHint}>{t.hint}</div> : null}
                   </div>
                 </div>
@@ -996,8 +1034,8 @@ export default function TierIndex() {
           <br />
           <span style={{ fontSize: 12, color: "rgba(0,0,0,0.45)" }}>
             DEBUG: source={countsForDisplay.source} all={countsForDisplay.totalAll} core=
-            {countsForDisplay.totalCore} nonCore={nonCoreCount} free_core={freeCoreCount} free_life_explicit=
-            {freeLifeCount}
+            {countsForDisplay.totalCore} nonCore={nonCoreCount} free_core={freeCoreCount}
+            {" "}free_life_explicit={freeLifeCount}
             {countsForDisplay.debug ? ` | ${countsForDisplay.debug}` : ""}
           </span>
         </div>
