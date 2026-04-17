@@ -18,6 +18,7 @@ import {
   X,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useUserAccess } from "@/hooks/useUserAccess";
 
 interface GuideBoxProps {
   roomId?: string;
@@ -52,6 +53,8 @@ const GUIDE_IMAGE_FALLBACK = "/guide.png";
 
 const SIGN_IN_ROUTE = "/signin";
 const PRICING_ROUTE = "/pricing";
+const DEFAULT_TRIAL_ENDED_MESSAGE =
+  "Your free trial has ended. Please upgrade to continue.";
 
 const BUBBLE_SIZE = 92;
 const HEADER_FACE_SIZE = 50;
@@ -547,6 +550,7 @@ function SectionTitle({
 
 export function GuideBox(_props: GuideBoxProps) {
   const navigate = useNavigate();
+  const access = useUserAccess();
 
   const [isOpen, setIsOpen] = useState(false);
   const [bubblePos, setBubblePos] = useState<BubblePos>(() =>
@@ -566,6 +570,9 @@ export function GuideBox(_props: GuideBoxProps) {
   const preFullscreenRectRef = useRef<PanelRect | null>(null);
   const preFullscreenSizeRef = useRef<PanelSizeKey | null>(null);
   const dragCleanupRef = useRef<(() => void) | null>(null);
+
+  const trialEndedMessage =
+    access.accessAnnouncement || DEFAULT_TRIAL_ENDED_MESSAGE;
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -821,9 +828,15 @@ export function GuideBox(_props: GuideBoxProps) {
   }, [isFullscreen, panelRect, panelSize]);
 
   const goLibrary = useCallback(() => {
+    if (access.isAuthenticated && access.isTrialExpired) {
+      window.alert(trialEndedMessage);
+      setIsOpen(false);
+      return;
+    }
+
     navigate("/rooms");
     setIsOpen(false);
-  }, [navigate]);
+  }, [access.isAuthenticated, access.isTrialExpired, navigate, trialEndedMessage]);
 
   const goTeacherMercy = useCallback(() => {
     if (typeof window !== "undefined") {

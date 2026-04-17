@@ -217,6 +217,7 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "grammar_foundations_free": "data/grammar_foundations_free.json",
   "grammar_native_logic_vip3_ii": "data/grammar_native_logic_vip3_ii.json",
   "grief_healing_free": "data/grief_healing_free.json",
+  "guide_articles_en_vi": "data/guide_articles_en_vi.json",
   "hannibal_barca_grand_strategy_vip9_vol1": "data/hannibal_barca_grand_strategy_vip9_vol1.json",
   "hannibal_barca_grand_strategy_vip9_vol2": "data/hannibal_barca_grand_strategy_vip9_vol2.json",
   "hannibal_barca_grand_strategy_vip9_vol3": "data/hannibal_barca_grand_strategy_vip9_vol3.json",

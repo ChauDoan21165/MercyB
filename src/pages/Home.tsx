@@ -10,10 +10,13 @@ import { LibraryBig } from "lucide-react";
 import BottomMusicBar from "@/components/audio/BottomMusicBar";
 import { MercyGuide } from "@/components/MercyGuide";
 import { GuideBox } from "@/components/GuideBox";
+import { useUserAccess } from "@/hooks/useUserAccess";
 
 const PAGE_MAX = 980;
 const LS_ZOOM = "mb.ui.zoom";
 const DEFAULT_ZOOM = 100;
+const DEFAULT_TRIAL_ENDED_MESSAGE =
+  "Your free trial has ended. Please upgrade to continue.";
 
 const MERCY_GUIDE_BUBBLE_STORAGE_KEY = "mercy-guide-bubble-position-v2";
 const GUIDE_BOX_BUBBLE_STORAGE_KEY = "guide-box-bubble-position-v8-left";
@@ -77,6 +80,7 @@ function hasOpenTeacherMercyPanel(): boolean {
 
 export default function Home() {
   const nav = useNavigate();
+  const access = useUserAccess();
 
   const [viewportWidth, setViewportWidth] = useState<number>(
     typeof window === "undefined" ? 1200 : window.innerWidth,
@@ -88,6 +92,13 @@ export default function Home() {
   );
 
   const stageRef = useRef<HTMLDivElement | null>(null);
+
+  const trialEndedMessage =
+    access.accessAnnouncement || DEFAULT_TRIAL_ENDED_MESSAGE;
+  const isTeacherMercyAllowed =
+    !access.isAuthenticated ||
+    access.loading ||
+    (!access.isTrialExpired && access.features.hasMercyGuide);
 
   useEffect(() => {
     const sync = () => setZoomPct(readZoomPct());
@@ -150,6 +161,26 @@ export default function Home() {
     window.addEventListener("resize", syncViewport);
     return () => window.removeEventListener("resize", syncViewport);
   }, []);
+
+  useEffect(() => {
+    if (!access.isAuthenticated || access.loading || !access.isTrialExpired) {
+      return;
+    }
+
+    if (typeof document === "undefined") return;
+
+    if (hasOpenTeacherMercyPanel()) {
+      const closeButton = document.querySelector(
+        '[aria-label="Close Mercy panel"]',
+      ) as HTMLButtonElement | null;
+
+      const collapseButton = document.querySelector(
+        '[aria-label="Collapse Mercy panel"]',
+      ) as HTMLButtonElement | null;
+
+      (closeButton || collapseButton)?.click();
+    }
+  }, [access.isAuthenticated, access.loading, access.isTrialExpired]);
 
   const isDesktopTop = viewportWidth >= 960;
   const isCompactHeadline = viewportWidth < 640;
@@ -391,7 +422,13 @@ export default function Home() {
   const libraryCard = (
     <button
       type="button"
-      onClick={() => nav("/rooms")}
+      onClick={() => {
+        if (access.isAuthenticated && access.isTrialExpired) {
+          window.alert(trialEndedMessage);
+          return;
+        }
+        nav("/rooms");
+      }}
       aria-label="Library"
       style={libraryButton}
     >
@@ -435,7 +472,7 @@ export default function Home() {
         <div style={floatingFacesWrap}>
           {sharedReady ? (
             <React.Fragment key={sharedKey}>
-              <MercyGuide />
+              {isTeacherMercyAllowed ? <MercyGuide /> : null}
               {!isTeacherMercyOpen ? <GuideBox /> : null}
             </React.Fragment>
           ) : null}

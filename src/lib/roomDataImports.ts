@@ -1489,6 +1489,13 @@ export const roomDataMap = {
     "tier": "free",
     "hasData": true
   },
+  "guide_articles_en_vi": {
+    "id": "guide_articles_en_vi",
+    "title_en": "guide_articles_en_vi",
+    "title_vi": "guide_articles_en_vi",
+    "tier": "free",
+    "hasData": true
+  },
   "hannibal_barca_grand_strategy_vip9_vol1": {
     "id": "hannibal_barca_grand_strategy_vip9_vol1",
     "title_en": "Hannibal Barca Grand Strategy — Volume I (The Oath Against Rome)",

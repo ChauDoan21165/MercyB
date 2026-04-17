@@ -16,6 +16,12 @@ import {
 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
+import { getPage4LessonByKey } from './kids/kidPage4Data';
+import { getPage5LessonByKey } from './kids/kidPage5Data';
+import { getPage6LessonByKey } from './kids/kidPage6Data';
+import { getPage7LessonByKey } from './kids/kidPage7Data';
+import { getPage8LessonByKey } from './kids/kidPage8Data';
+import { getPage9LessonByKey } from './kids/kidPage9Data';
 import type { StudentMercyMemoryUpdate, LearningSupportMode } from './types';
 import type {
   SpeechRecognitionLike as BaseSpeechRecognitionLike,
@@ -854,6 +860,12 @@ export function MercySpeakTab({
   const kidsLesson = useMemo(() => {
     if (!isKidsMode) return null;
     return (
+      getPage9LessonByKey(selectedKidsObjectKey) ??
+      getPage8LessonByKey(selectedKidsObjectKey) ??
+      getPage7LessonByKey(selectedKidsObjectKey) ??
+      getPage6LessonByKey(selectedKidsObjectKey) ??
+      getPage5LessonByKey(selectedKidsObjectKey) ??
+      getPage4LessonByKey(selectedKidsObjectKey) ??
       getPage2LessonByKey(selectedKidsObjectKey) ??
       getPage3LessonByKey(selectedKidsObjectKey)
     );

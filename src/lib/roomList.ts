@@ -226,6 +226,7 @@ export const ROOM_IDS = [
   "grammar_foundations_free",
   "grammar_native_logic_vip3_ii",
   "grief_healing_free",
+  "guide_articles_en_vi",
   "hannibal_barca_grand_strategy_vip9_vol1",
   "hannibal_barca_grand_strategy_vip9_vol2",
   "hannibal_barca_grand_strategy_vip9_vol3",
@@ -1973,6 +1974,13 @@ const __ROOM_LIST: RoomListItem[] = [
     "id": "grief_healing_free",
     "title_en": "grief_healing_free",
     "title_vi": "Chữa Lành Nỗi Đau Mất Mát",
+    "tier": "free",
+    "hasData": true
+  },
+  {
+    "id": "guide_articles_en_vi",
+    "title_en": "guide_articles_en_vi",
+    "title_vi": "guide_articles_en_vi",
     "tier": "free",
     "hasData": true
   },

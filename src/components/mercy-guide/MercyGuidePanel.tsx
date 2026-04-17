@@ -193,6 +193,8 @@ const KIDS_OBJECT_KEYS = [
   'teddy-bear',
 ] as const;
 
+const KIDS_EXTENDED_PAGE_PREFIXES = ['k4_', 'k5_', 'k6_', 'k7_', 'k8_', 'k9_'] as const;
+
 const DEFAULT_KIDS_OBJECT_KEY = KIDS_OBJECT_KEYS[0];
 
 function normalizeTab(value: string | undefined): MercyTabType {
@@ -270,7 +272,19 @@ function normalizeKidsObjectKey(
   fallback: string = DEFAULT_KIDS_OBJECT_KEY,
 ): string {
   const normalized = typeof value === 'string' ? value.trim() : '';
-  return normalized.length > 0 ? normalized : fallback;
+  if (!normalized) {
+    return fallback;
+  }
+
+  if (KIDS_OBJECT_KEYS.includes(normalized as (typeof KIDS_OBJECT_KEYS)[number])) {
+    return normalized;
+  }
+
+  if (KIDS_EXTENDED_PAGE_PREFIXES.some((prefix) => normalized.startsWith(prefix))) {
+    return normalized;
+  }
+
+  return fallback;
 }
 
 function fallbackAvatar(event: React.SyntheticEvent<HTMLImageElement>): void {

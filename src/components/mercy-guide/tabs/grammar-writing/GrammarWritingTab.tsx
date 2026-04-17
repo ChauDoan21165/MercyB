@@ -34,6 +34,100 @@ import { analyzeGrammarWithApi } from './api';
 
 type LearningSupportMode = 'gentle' | 'guided' | 'immersion';
 
+
+
+type DiffSegment = {
+  value: string;
+  added?: boolean;
+  removed?: boolean;
+};
+
+function tokenizeDiffText(text: string): string[] {
+  return text.match(/\s+|[^\s]+/g) ?? [];
+}
+
+function buildDiffSegments(sourceText: string, correctedText: string): DiffSegment[] {
+  const sourceTokens = tokenizeDiffText(sourceText);
+  const correctedTokens = tokenizeDiffText(correctedText);
+  const sourceLower = sourceTokens.map((token) => token.toLowerCase());
+  const correctedLower = correctedTokens.map((token) => token.toLowerCase());
+  const rows = sourceTokens.length + 1;
+  const cols = correctedTokens.length + 1;
+  const dp = Array.from({ length: rows }, () => Array(cols).fill(0));
+
+  for (let i = sourceTokens.length - 1; i >= 0; i -= 1) {
+    for (let j = correctedTokens.length - 1; j >= 0; j -= 1) {
+      if (sourceLower[i] === correctedLower[j]) {
+        dp[i][j] = dp[i + 1][j + 1] + 1;
+      } else {
+        dp[i][j] = Math.max(dp[i + 1][j], dp[i][j + 1]);
+      }
+    }
+  }
+
+  const segments: DiffSegment[] = [];
+  let i = 0;
+  let j = 0;
+
+  while (i < sourceTokens.length && j < correctedTokens.length) {
+    if (sourceLower[i] === correctedLower[j]) {
+      segments.push({ value: correctedTokens[j] });
+      i += 1;
+      j += 1;
+      continue;
+    }
+
+    if (dp[i][j + 1] >= dp[i + 1][j]) {
+      segments.push({ value: correctedTokens[j], added: true });
+      j += 1;
+      continue;
+    }
+
+    i += 1;
+  }
+
+  while (j < correctedTokens.length) {
+    segments.push({ value: correctedTokens[j], added: true });
+    j += 1;
+  }
+
+  return segments;
+}
+
+function renderCorrectedTextWithHighlights(
+  sourceText: string,
+  correctedText: string,
+): React.ReactNode {
+  const source = cleanText(sourceText);
+  const corrected = cleanText(correctedText);
+
+  if (!corrected) {
+    return null;
+  }
+
+  const segments = buildDiffSegments(source, corrected);
+  const hasHighlight = segments.some((segment) => segment.added && cleanText(segment.value));
+
+  if (!hasHighlight) {
+    return corrected;
+  }
+
+  return segments.map((segment, index) => {
+    if (!segment.added || !cleanText(segment.value)) {
+      return <React.Fragment key={`segment-${index}`}>{segment.value}</React.Fragment>;
+    }
+
+    return (
+      <mark
+        key={`segment-${index}`}
+        className="rounded-md bg-amber-200 px-1 py-0.5 font-semibold text-slate-900"
+      >
+        {segment.value}
+      </mark>
+    );
+  });
+}
+
 type GrammarWritingTabProps = {
   roomId?: string;
   roomTitle?: string;
@@ -843,6 +937,11 @@ Paste or write your English here. Mercy will keep the teacher focus while correc
     [sourceText, correctedText, enhancedText, explanationText],
   );
 
+  const correctedTextHighlighted = useMemo(
+    () => renderCorrectedTextWithHighlights(sourceText, correctedText),
+    [sourceText, correctedText],
+  );
+
   return (
     <div className="flex h-full min-h-0 flex-col overflow-hidden">
       <div className="flex-1 min-h-0 overflow-y-auto px-4 py-4">
@@ -943,13 +1042,14 @@ Paste or write your English here. Mercy will keep the teacher focus while correc
                   <p className="text-xs font-semibold uppercase tracking-wide text-emerald-700">
                     Corrected version
                   </p>
-                  <p className="mt-1 text-sm font-medium leading-6 text-slate-800">
-                    {correctedText}
+                  <p className="mt-1 text-sm font-medium leading-7 text-slate-800">
+                    {correctedTextHighlighted}
                   </p>
 
                   {learningSupportMode === 'gentle' ? (
                     <div className="mt-2 space-y-2 text-sm leading-6 text-emerald-700">
                       <p>👉 Mình đã sửa câu này để đúng ngữ pháp hơn và dễ đọc hơn.</p>
+                      <p>👉 Những chỗ Mercy đổi được tô nổi để người học nhìn ra nhanh hơn.</p>
                       {gentleExplanation.labels.length > 0 ? (
                         <p>
                           Điểm ngữ pháp chính: <strong>{gentleExplanation.labels.join(' • ')}</strong>
