@@ -1,7 +1,5 @@
-/**
- * Path: src/components/mercy-guide/MercySpeakTab.tsx
- * File: MercySpeakTab.tsx
- */
+// Path: src/components/mercy-guide/MercySpeakTab.tsx
+// File: MercySpeakTab.tsx
 
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import {
@@ -25,6 +23,10 @@ import { getPage9LessonByKey } from './kids/kidPage9Data';
 import { getKidPage11Item } from './kids/kidPage11Data';
 import { getKidPage12Item } from './kids/kidPage12Data';
 import { getKidPage13Item } from './kids/kidPage13Data';
+import { getKidPage14Item } from './kids/kidPage14Data';
+import { getKidPage15Item } from './kids/kidPage15Data';
+import { getKidPage16Item } from './kids/kidPage16Data';
+import { getKidPage17Item } from './kids/kidPage17Data';
 import type { StudentMercyMemoryUpdate, LearningSupportMode } from './types';
 import type {
   SpeechRecognitionLike as BaseSpeechRecognitionLike,
@@ -718,6 +720,54 @@ function getPage13LessonByKey(key?: string | null): KidsLessonCard | null {
   };
 }
 
+function getPage14LessonByKey(key?: string | null): KidsLessonCard | null {
+  const item = getKidPage14Item(key);
+  if (!item) return null;
+
+  return {
+    key: item.key,
+    label: item.label,
+    sentence: toPhraseSentence(item.label),
+    imageSrc: item.image,
+  };
+}
+
+function getPage15LessonByKey(key?: string | null): KidsLessonCard | null {
+  const item = getKidPage15Item(key);
+  if (!item) return null;
+
+  return {
+    key: item.key,
+    label: item.label,
+    sentence: toPhraseSentence(item.label),
+    imageSrc: item.image,
+  };
+}
+
+function getPage16LessonByKey(key?: string | null): KidsLessonCard | null {
+  const item = getKidPage16Item(key);
+  if (!item) return null;
+
+  return {
+    key: item.key,
+    label: item.label,
+    sentence: toPhraseSentence(item.label),
+    imageSrc: item.image,
+  };
+}
+
+function getPage17LessonByKey(key?: string | null): KidsLessonCard | null {
+  const item = getKidPage17Item(key);
+  if (!item) return null;
+
+  return {
+    key: item.key,
+    label: item.label,
+    sentence: toPhraseSentence(item.label),
+    imageSrc: item.image,
+  };
+}
+
 function extractTroubleWords(
   troubleWords?: Array<string | { word?: string | null }>,
 ): string[] {
@@ -905,6 +955,10 @@ export function MercySpeakTab({
   const kidsLesson = useMemo(() => {
     if (!isKidsMode) return null;
     return (
+      getPage17LessonByKey(selectedKidsObjectKey) ??
+      getPage16LessonByKey(selectedKidsObjectKey) ??
+      getPage15LessonByKey(selectedKidsObjectKey) ??
+      getPage14LessonByKey(selectedKidsObjectKey) ??
       getPage13LessonByKey(selectedKidsObjectKey) ??
       getPage12LessonByKey(selectedKidsObjectKey) ??
       getPage11LessonByKey(selectedKidsObjectKey) ??

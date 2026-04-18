@@ -1,7 +1,5 @@
-/**
- * Path: src/components/mercy-guide/MercyTeacherTab.tsx
- * File: MercyTeacherTab.tsx
- */
+// Path: src/components/mercy-guide/MercyTeacherTab.tsx
+// File: MercyTeacherTab.tsx
 
 import React, { useMemo } from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -18,6 +16,10 @@ import {
   Sparkles,
   Target,
 } from 'lucide-react';
+import { KID_PAGE_14_ITEMS } from './kids/kidPage14Data';
+import { KID_PAGE_15_ITEMS } from './kids/kidPage15Data';
+import { KID_PAGE_16_ITEMS } from './kids/kidPage16Data';
+import { KID_PAGE_17_ITEMS } from './kids/kidPage17Data';
 import type {
   GrammarApiResponse,
   GrammarWritingTeacherState,
@@ -37,7 +39,11 @@ type KidsPageId =
   | 'page9'
   | 'page11'
   | 'page12'
-  | 'page13';
+  | 'page13'
+  | 'page14'
+  | 'page15'
+  | 'page16'
+  | 'page17';
 
 interface Props {
   latestTeacherWritingState?: GrammarWritingTeacherState | null;
@@ -500,6 +506,10 @@ const KIDS_PAGE_CONFIGS: KidsPageConfig[] = [
   { id: 'page11', label: 'Page 11' },
   { id: 'page12', label: 'Page 12' },
   { id: 'page13', label: 'Page 13' },
+  { id: 'page14', label: 'Page 14' },
+  { id: 'page15', label: 'Page 15' },
+  { id: 'page16', label: 'Page 16' },
+  { id: 'page17', label: 'Page 17' },
 ];
 
 function toKidsLabel(key: string): string {
@@ -834,6 +844,16 @@ function buildGenericPageItems(
   }));
 }
 
+function buildMappedPageItems(
+  items: ReadonlyArray<{ key: string; label: string; image: string }>,
+): KidsLessonCard[] {
+  return items.map((item) => ({
+    key: item.key,
+    label: item.label,
+    imageSrc: item.image,
+  }));
+}
+
 function resolveCurrentPageItems(page: KidsPageId): KidsLessonCard[] {
   switch (page) {
     case 'page1':
@@ -858,6 +878,14 @@ function resolveCurrentPageItems(page: KidsPageId): KidsLessonCard[] {
       return buildGenericPageItems(PAGE_12_KEYS, '/images/mercy-kids-page-12');
     case 'page13':
       return buildGenericPageItems(PAGE_13_KEYS, '/images/mercy-kids-page-13');
+    case 'page14':
+      return buildMappedPageItems(KID_PAGE_14_ITEMS);
+    case 'page15':
+      return buildMappedPageItems(KID_PAGE_15_ITEMS);
+    case 'page16':
+      return buildMappedPageItems(KID_PAGE_16_ITEMS);
+    case 'page17':
+      return buildMappedPageItems(KID_PAGE_17_ITEMS);
     default:
       return buildPage1Items();
   }

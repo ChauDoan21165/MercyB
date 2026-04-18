@@ -1,7 +1,5 @@
-/**
- * Path: src/components/mercy-guide/MercyGuidePanel.tsx
- * File: MercyGuidePanel.tsx
- */
+// Path: src/components/mercy-guide/MercyGuidePanel.tsx
+// File: MercyGuidePanel.tsx
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
@@ -52,7 +50,11 @@ type KidsPageId =
   | 'page9'
   | 'page11'
   | 'page12'
-  | 'page13';
+  | 'page13'
+  | 'page14'
+  | 'page15'
+  | 'page16'
+  | 'page17';
 
 type TroubleWordItem = string | { word?: string | null };
 
@@ -223,6 +225,10 @@ const VALID_KIDS_PAGES = new Set<KidsPageId>([
   'page11',
   'page12',
   'page13',
+  'page14',
+  'page15',
+  'page16',
+  'page17',
 ]);
 
 function normalizeTab(value: string | undefined): MercyTabType {
