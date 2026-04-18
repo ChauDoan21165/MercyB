@@ -481,6 +481,15 @@ function toPhraseSentence(label: string): string {
   return /[.!?]$/.test(base) ? base : `${base}.`;
 }
 
+function matchesPageKeyPrefix(
+  key: string | null | undefined,
+  pageNumber: number,
+): key is string {
+  const normalized = cleanText(key);
+  if (!normalized) return false;
+  return new RegExp(`^k${pageNumber}_`, 'i').test(normalized);
+}
+
 const KIDS_OBJECTS: KidsObjectCard[] = KIDS_OBJECT_KEYS.map((key) => ({
   key,
   label: toKidsLabel(key),
@@ -685,9 +694,9 @@ function getPage3LessonByKey(key?: string | null): KidsLessonCard | null {
 }
 
 function getPage11LessonByKey(key?: string | null): KidsLessonCard | null {
-  const item = getKidPage11Item(key);
-  if (!item) return null;
+  if (!matchesPageKeyPrefix(key, 11)) return null;
 
+  const item = getKidPage11Item(key);
   return {
     key: item.key,
     label: item.label,
@@ -697,9 +706,9 @@ function getPage11LessonByKey(key?: string | null): KidsLessonCard | null {
 }
 
 function getPage12LessonByKey(key?: string | null): KidsLessonCard | null {
-  const item = getKidPage12Item(key);
-  if (!item) return null;
+  if (!matchesPageKeyPrefix(key, 12)) return null;
 
+  const item = getKidPage12Item(key);
   return {
     key: item.key,
     label: item.label,
@@ -709,9 +718,9 @@ function getPage12LessonByKey(key?: string | null): KidsLessonCard | null {
 }
 
 function getPage13LessonByKey(key?: string | null): KidsLessonCard | null {
-  const item = getKidPage13Item(key);
-  if (!item) return null;
+  if (!matchesPageKeyPrefix(key, 13)) return null;
 
+  const item = getKidPage13Item(key);
   return {
     key: item.key,
     label: item.label,
@@ -721,9 +730,9 @@ function getPage13LessonByKey(key?: string | null): KidsLessonCard | null {
 }
 
 function getPage14LessonByKey(key?: string | null): KidsLessonCard | null {
-  const item = getKidPage14Item(key);
-  if (!item) return null;
+  if (!matchesPageKeyPrefix(key, 14)) return null;
 
+  const item = getKidPage14Item(key);
   return {
     key: item.key,
     label: item.label,
@@ -733,9 +742,9 @@ function getPage14LessonByKey(key?: string | null): KidsLessonCard | null {
 }
 
 function getPage15LessonByKey(key?: string | null): KidsLessonCard | null {
-  const item = getKidPage15Item(key);
-  if (!item) return null;
+  if (!matchesPageKeyPrefix(key, 15)) return null;
 
+  const item = getKidPage15Item(key);
   return {
     key: item.key,
     label: item.label,
@@ -745,9 +754,9 @@ function getPage15LessonByKey(key?: string | null): KidsLessonCard | null {
 }
 
 function getPage16LessonByKey(key?: string | null): KidsLessonCard | null {
-  const item = getKidPage16Item(key);
-  if (!item) return null;
+  if (!matchesPageKeyPrefix(key, 16)) return null;
 
+  const item = getKidPage16Item(key);
   return {
     key: item.key,
     label: item.label,
@@ -757,9 +766,9 @@ function getPage16LessonByKey(key?: string | null): KidsLessonCard | null {
 }
 
 function getPage17LessonByKey(key?: string | null): KidsLessonCard | null {
-  const item = getKidPage17Item(key);
-  if (!item) return null;
+  if (!matchesPageKeyPrefix(key, 17)) return null;
 
+  const item = getKidPage17Item(key);
   return {
     key: item.key,
     label: item.label,
