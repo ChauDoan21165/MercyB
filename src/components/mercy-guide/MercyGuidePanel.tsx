@@ -314,7 +314,7 @@ function isSupportedKidsObjectKey(value: string): boolean {
     return true;
   }
 
-  if (/^k\d{3}_/.test(value)) {
+  if (/^k\d+_\d+/.test(value)) {
     return true;
   }
 
@@ -506,7 +506,7 @@ function getTeacherModeStyles(mode: TeacherMode) {
   return {
     trigger:
       'border-[#FFE1D5] bg-gradient-to-r from-[#FFF6F1] to-[#FFFDFC] text-[#C45A3C] shadow-[0_8px_18px_rgba(255,138,101,0.10)]',
-    dot: 'bg-[#FF8A65]',
+      dot: 'bg-[#FF8A65]',
   };
 }
 
@@ -1017,7 +1017,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
   );
 
   const handleSelectKidsObject = useCallback((nextKey: string) => {
-    setSelectedKidsObjectKey(nextKey);
+    setSelectedKidsObjectKey(normalizeKidsObjectKey(nextKey, nextKey));
   }, []);
 
   const handleSelectKidsPage = useCallback((page: KidsPageId) => {

@@ -1,5 +1,6 @@
+// Path: src/pages/admin/AdminDashboard.tsx
 // src/pages/admin/AdminDashboard.tsx
-// MB-BLUE-101.6 → MB-BLUE-101.6a → MB-BLUE-101.7 — 2026-01-14 (+0700)
+// MB-BLUE-101.6 → MB-BLUE-101.6a → MB-BLUE-101.7 → MB-BLUE-101.8 — 2026-01-14 (+0700)
 //
 // ✅ FIX (101.6a):
 // - Stop blank /admin page.
@@ -20,6 +21,12 @@
 //   - Supabase reachability
 //   - missing / failing admin security edge feed
 // - Auto-refresh the checks so the dashboard can surface problems quickly.
+//
+// ✅ NEW (101.8):
+// - Add AI Usage & Costs panel directly onto /admin dashboard.
+// - Keep change small and safe.
+// - Do not add a new route here.
+// - Surface existing admin destinations from the main dashboard.
 
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -1013,6 +1020,128 @@ export default function AdminDashboard() {
                     </div>
                   );
                 })}
+              </div>
+            </div>
+
+            <div
+              style={{
+                ...card,
+                marginBottom: 14,
+                gridColumn: "span 12",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  justifyContent: "space-between",
+                  gap: 12,
+                  flexWrap: "wrap",
+                }}
+              >
+                <div>
+                  <div style={smallTag}>AI • USAGE & COSTS</div>
+                  <h2 style={{ ...cardTitle, marginTop: 10 }}>AI Usage & Costs</h2>
+                  <p style={cardDesc}>
+                    Keep the API meter visible on the main admin dashboard.
+                    This gives you a direct home-page entry for AI usage without needing
+                    a separate admin route first.
+                  </p>
+
+                  <div
+                    style={{
+                      marginTop: 10,
+                      display: "flex",
+                      gap: 10,
+                      flexWrap: "wrap",
+                      alignItems: "center",
+                    }}
+                  >
+                    <span style={badge}>APP: <span style={mono}>{appId}</span></span>
+                    <span style={badge}>ENTRY: DASHBOARD</span>
+                    <span style={badge}>SAFE READ VIEW</span>
+                  </div>
+                </div>
+
+                <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                  <button
+                    type="button"
+                    style={linkBtn}
+                    onClick={() => go("/admin/metrics")}
+                  >
+                    Open Metrics
+                  </button>
+                  <button
+                    type="button"
+                    style={linkBtn}
+                    onClick={() => go("/admin/billing")}
+                  >
+                    Open Billing
+                  </button>
+                </div>
+              </div>
+
+              <div
+                style={{
+                  marginTop: 14,
+                  display: "grid",
+                  gridTemplateColumns: "repeat(12, 1fr)",
+                  gap: 12,
+                }}
+              >
+                <div
+                  style={{
+                    border: "1px solid rgba(0,0,0,0.10)",
+                    borderRadius: 16,
+                    padding: 14,
+                    background: "rgba(0,0,0,0.02)",
+                    gridColumn: "span 4",
+                  }}
+                >
+                  <div style={{ ...mono, fontWeight: 900 }}>Primary destination</div>
+                  <div style={{ marginTop: 8, fontSize: 16, fontWeight: 900 }}>
+                    Metrics
+                  </div>
+                  <div style={{ marginTop: 8, fontSize: 12, color: "rgba(0,0,0,0.58)" }}>
+                    Route: <span style={mono}>{withApp("/admin/metrics", appId)}</span>
+                  </div>
+                </div>
+
+                <div
+                  style={{
+                    border: "1px solid rgba(0,0,0,0.10)",
+                    borderRadius: 16,
+                    padding: 14,
+                    background: "rgba(0,0,0,0.02)",
+                    gridColumn: "span 4",
+                  }}
+                >
+                  <div style={{ ...mono, fontWeight: 900 }}>Cost destination</div>
+                  <div style={{ marginTop: 8, fontSize: 16, fontWeight: 900 }}>
+                    Billing
+                  </div>
+                  <div style={{ marginTop: 8, fontSize: 12, color: "rgba(0,0,0,0.58)" }}>
+                    Route: <span style={mono}>{withApp("/admin/billing", appId)}</span>
+                  </div>
+                </div>
+
+                <div
+                  style={{
+                    border: "1px solid rgba(0,0,0,0.10)",
+                    borderRadius: 16,
+                    padding: 14,
+                    background: "rgba(0,0,0,0.02)",
+                    gridColumn: "span 4",
+                  }}
+                >
+                  <div style={{ ...mono, fontWeight: 900 }}>Dashboard note</div>
+                  <div style={{ marginTop: 8, fontSize: 16, fontWeight: 900 }}>
+                    Home visibility restored
+                  </div>
+                  <div style={{ marginTop: 8, fontSize: 12, color: "rgba(0,0,0,0.58)" }}>
+                    The admin home now includes an AI Usage & Costs block directly.
+                  </div>
+                </div>
               </div>
             </div>
 

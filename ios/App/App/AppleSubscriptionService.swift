@@ -1,3 +1,5 @@
+// Path: ios/App/App/AppleSubscriptionService.swift
+
 import Foundation
 import StoreKit
 
@@ -60,22 +62,27 @@ final class AppleSubscriptionService {
         switch result {
         case .pending:
             throw AppleSubscriptionError.pending
+
         case .userCancelled:
             throw AppleSubscriptionError.cancelled
+
         case .success(let verification):
-            let transaction = try requireVerified(verification)
-            guard let signedTransactionInfo = transaction.jwsRepresentation as String? else {
+            let signedTransactionInfo = verification.jwsRepresentation
+            guard !signedTransactionInfo.isEmpty else {
                 throw AppleSubscriptionError.missingJWSTransaction
             }
+
+            let transaction = try requireVerified(verification)
 
             try await syncPurchaseToBackend(
                 signedTransactionInfo: signedTransactionInfo,
                 appAccountToken: appAccountToken,
-                environmentHint: transaction.environment.serverValue
+                environmentHint: nil
             )
 
             await transaction.finish()
             return try await refreshEntitlementFromBackend()
+
         @unknown default:
             throw AppleSubscriptionError.invalidBackendResponse
         }
@@ -137,34 +144,6 @@ final class AppleSubscriptionService {
             return value
         case .unverified:
             throw AppleSubscriptionError.unverifiedTransaction
-        }
-    }
-}
-
-private extension Product.SubscriptionInfo.Status.Environment {
-    var serverValue: String? {
-        switch self {
-        case .sandbox:
-            return "Sandbox"
-        case .production:
-            return "Production"
-        @unknown default:
-            return nil
-        }
-    }
-}
-
-private extension Transaction.Environment {
-    var serverValue: String? {
-        switch self {
-        case .sandbox:
-            return "Sandbox"
-        case .xcode:
-            return "Xcode"
-        case .production:
-            return "Production"
-        @unknown default:
-            return nil
         }
     }
 }

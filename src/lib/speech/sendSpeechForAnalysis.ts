@@ -1,10 +1,13 @@
+// Path: src/lib/speech/sendSpeechForAnalysis.ts
 // FILE: src/lib/speech/sendSpeechForAnalysis.ts
-// VERSION: MB-SPEECH-1.1-sendSpeechForAnalysis — 2026-03-09
+// VERSION: MB-SPEECH-1.1-sendSpeechForAnalysis → MB-SPEECH-1.2-sendSpeechForAnalysis — 2026-04-17
 // PURPOSE: Client helper to send recorded audio to the Supabase Edge Function
 //          "speech-analyze" and return a typed SpeechAnalysisResponse.
 // NOTES:
 // - Uses the project's canonical Supabase client: "@/lib/supabaseClient"
 // - Sends audio + roomId + lineId + targetText via FormData
+// - Also sends current authenticated userId when available so the backend
+//   can log real pronunciation attempts.
 // - Handles Edge Function errors and normalizes the response for callers.
 
 import { supabase } from "@/lib/supabaseClient";
@@ -34,6 +37,18 @@ export async function sendSpeechForAnalysis({
   formData.append("roomId", roomId);
   formData.append("lineId", lineId);
   formData.append("targetText", targetText);
+
+  try {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (user?.id) {
+      formData.append("userId", user.id);
+    }
+  } catch {
+    // Keep speech analysis working even if auth lookup fails.
+  }
 
   const { data, error } = await supabase.functions.invoke("speech-analyze", {
     body: formData,

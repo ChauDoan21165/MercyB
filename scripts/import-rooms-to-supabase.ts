@@ -1,3 +1,5 @@
+// Path: scripts/import-rooms-to-supabase.ts
+
 /**
  * Script to import JSON room files to Supabase rooms table
  * Run this once to migrate your Echologic Mercy Blade JSON data to Supabase
@@ -9,7 +11,7 @@
  */
 
 import { createClient } from '@supabase/supabase-js';
-import { readdirSync, readFileSync } from 'fs';
+import { readFileSync } from 'fs';
 import { join } from 'path';
 
 const supabaseUrl = process.env.VITE_SUPABASE_URL!;
@@ -62,7 +64,6 @@ const roomFiles: { [key: string]: string } = {
   'mens-health': 'men_health.json',
   'mental-health': 'mental_health.json',
   'mindful-movement': 'mindful_movement.json',
-  'mindfulness-healing': 'mindfulness_and_healing.json',
   'nutrition-basics': 'nutrition_basics.json',
   'obesity': 'obesity.json',
   'office-survival': 'office_survival.json',
@@ -73,7 +74,6 @@ const roomFiles: { [key: string]: string } = {
   'reproductive': 'reproductive_health.json',
   'respiratory': 'respiratory_system.json',
   'screening': 'screening_and_prevention.json',
-  'sexuality': 'sexuality_and_intimacy.json',
   'skin-health': 'skin_health.json',
   'sleep-health': 'sleep_health.json',
   'social-connection': 'social_connection.json',
