@@ -3134,13 +3134,6 @@ export const roomDataMap = {
     "tier": "free",
     "hasData": true
   },
-  "vip6_jealousy_possession": {
-    "id": "vip6_jealousy_possession",
-    "title_en": "Jealousy & Possession",
-    "title_vi": "Ghen Tuông & Chiếm Hữu",
-    "tier": "free",
-    "hasData": true
-  },
   "vip6_martyr_complex": {
     "id": "vip6_martyr_complex",
     "title_en": "Martyr Complex",

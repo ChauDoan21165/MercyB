@@ -452,7 +452,6 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "vip6_imposter_wounds": "data/vip6_imposter_wounds.json",
   "vip6_inner_fragmentation": "data/vip6_inner_fragmentation.json",
   "vip6_inner_saboteur": "data/vip6_inner_saboteur.json",
-  "vip6_jealousy_possession": "data/vip6_jealousy_possession.json",
   "vip6_martyr_complex": "data/vip6_martyr_complex.json",
   "vip6_not_enough_wound": "data/vip6_not_enough_wound.json",
   "vip6_people_pleasing": "data/vip6_people_pleasing.json",

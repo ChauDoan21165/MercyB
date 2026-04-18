@@ -54,7 +54,14 @@ type KidsPageId =
   | 'page14'
   | 'page15'
   | 'page16'
-  | 'page17';
+  | 'page17'
+  | 'page18'
+  | 'page19'
+  | 'page20'
+  | 'page21'
+  | 'page22'
+  | 'page23'
+  | 'page24';
 
 type TroubleWordItem = string | { word?: string | null };
 
@@ -229,6 +236,13 @@ const VALID_KIDS_PAGES = new Set<KidsPageId>([
   'page15',
   'page16',
   'page17',
+  'page18',
+  'page19',
+  'page20',
+  'page21',
+  'page22',
+  'page23',
+  'page24',
 ]);
 
 function normalizeTab(value: string | undefined): MercyTabType {
@@ -506,7 +520,7 @@ function getTeacherModeStyles(mode: TeacherMode) {
   return {
     trigger:
       'border-[#FFE1D5] bg-gradient-to-r from-[#FFF6F1] to-[#FFFDFC] text-[#C45A3C] shadow-[0_8px_18px_rgba(255,138,101,0.10)]',
-      dot: 'bg-[#FF8A65]',
+    dot: 'bg-[#FF8A65]',
   };
 }
 

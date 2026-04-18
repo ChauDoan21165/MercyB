@@ -27,6 +27,13 @@ import { getKidPage14Item } from './kids/kidPage14Data';
 import { getKidPage15Item } from './kids/kidPage15Data';
 import { getKidPage16Item } from './kids/kidPage16Data';
 import { getKidPage17Item } from './kids/kidPage17Data';
+import { getKidPage18Item } from './kids/kidPage18Data';
+import { getKidPage19Item } from './kids/kidPage19Data';
+import { getKidPage20Item } from './kids/kidPage20Data';
+import { getKidPage21Item } from './kids/kidPage21Data';
+import { getKidPage22Item } from './kids/kidPage22Data';
+import { getKidPage23Item } from './kids/kidPage23Data';
+import { getKidPage24Item } from './kids/kidPage24Data';
 import type { StudentMercyMemoryUpdate, LearningSupportMode } from './types';
 import type {
   SpeechRecognitionLike as BaseSpeechRecognitionLike,
@@ -791,6 +798,104 @@ function getPage17LessonByKey(key?: string | null): KidsLessonCard | null {
   };
 }
 
+function getPage18LessonByKey(key?: string | null): KidsLessonCard | null {
+  if (!matchesPageKeyPrefix(key, 18)) return null;
+
+  const item = getKidPage18Item(key);
+  if (!item) return null;
+
+  return {
+    key: item.key,
+    label: item.label,
+    sentence: toPhraseSentence(item.label),
+    imageSrc: item.image,
+  };
+}
+
+function getPage19LessonByKey(key?: string | null): KidsLessonCard | null {
+  if (!matchesPageKeyPrefix(key, 19)) return null;
+
+  const item = getKidPage19Item(key);
+  if (!item) return null;
+
+  return {
+    key: item.key,
+    label: item.label,
+    sentence: toPhraseSentence(item.label),
+    imageSrc: item.image,
+  };
+}
+
+function getPage20LessonByKey(key?: string | null): KidsLessonCard | null {
+  if (!matchesPageKeyPrefix(key, 20)) return null;
+
+  const item = getKidPage20Item(key);
+  if (!item) return null;
+
+  return {
+    key: item.key,
+    label: item.label,
+    sentence: toPhraseSentence(item.label),
+    imageSrc: item.image,
+  };
+}
+
+function getPage21LessonByKey(key?: string | null): KidsLessonCard | null {
+  if (!matchesPageKeyPrefix(key, 21)) return null;
+
+  const item = getKidPage21Item(key);
+  if (!item) return null;
+
+  return {
+    key: item.key,
+    label: item.label,
+    sentence: toPhraseSentence(item.label),
+    imageSrc: item.image,
+  };
+}
+
+function getPage22LessonByKey(key?: string | null): KidsLessonCard | null {
+  if (!matchesPageKeyPrefix(key, 22)) return null;
+
+  const item = getKidPage22Item(key);
+  if (!item) return null;
+
+  return {
+    key: item.key,
+    label: item.label,
+    sentence: toPhraseSentence(item.label),
+    imageSrc: item.image,
+  };
+}
+
+function getPage23LessonByKey(key?: string | null): KidsLessonCard | null {
+  if (!matchesPageKeyPrefix(key, 23)) return null;
+
+  const item = getKidPage23Item(key);
+  if (!item) return null;
+
+  return {
+    key: item.key,
+    label: item.label,
+    sentence: toPhraseSentence(item.label),
+    imageSrc: item.image,
+  };
+}
+
+function getPage24LessonByKey(key?: string | null): KidsLessonCard | null {
+  if (!matchesPageKeyPrefix(key, 24)) return null;
+
+  const item = getKidPage24Item(key);
+  if (!item) return null;
+
+  return {
+    key: item.key,
+    label: item.label,
+    sentence: toPhraseSentence(item.label),
+    imageSrc: item.image,
+  };
+}
+
 function extractTroubleWords(
   troubleWords?: Array<string | { word?: string | null }>,
 ): string[] {
@@ -978,6 +1083,13 @@ export function MercySpeakTab({
   const kidsLesson = useMemo(() => {
     if (!isKidsMode) return null;
     return (
+      getPage24LessonByKey(selectedKidsObjectKey) ??
+      getPage23LessonByKey(selectedKidsObjectKey) ??
+      getPage22LessonByKey(selectedKidsObjectKey) ??
+      getPage21LessonByKey(selectedKidsObjectKey) ??
+      getPage20LessonByKey(selectedKidsObjectKey) ??
+      getPage19LessonByKey(selectedKidsObjectKey) ??
+      getPage18LessonByKey(selectedKidsObjectKey) ??
       getPage17LessonByKey(selectedKidsObjectKey) ??
       getPage16LessonByKey(selectedKidsObjectKey) ??
       getPage15LessonByKey(selectedKidsObjectKey) ??

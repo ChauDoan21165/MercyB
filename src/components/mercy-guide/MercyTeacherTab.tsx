@@ -20,6 +20,13 @@ import { KID_PAGE_14_ITEMS } from './kids/kidPage14Data';
 import { KID_PAGE_15_ITEMS } from './kids/kidPage15Data';
 import { KID_PAGE_16_ITEMS } from './kids/kidPage16Data';
 import { KID_PAGE_17_ITEMS } from './kids/kidPage17Data';
+import { KID_PAGE_18_ITEMS } from './kids/kidPage18Data';
+import { KID_PAGE_19_ITEMS } from './kids/kidPage19Data';
+import { KID_PAGE_20_ITEMS } from './kids/kidPage20Data';
+import { KID_PAGE_21_ITEMS } from './kids/kidPage21Data';
+import { KID_PAGE_22_ITEMS } from './kids/kidPage22Data';
+import { KID_PAGE_23_ITEMS } from './kids/kidPage23Data';
+import { KID_PAGE_24_ITEMS } from './kids/kidPage24Data';
 import type {
   GrammarApiResponse,
   GrammarWritingTeacherState,
@@ -43,7 +50,14 @@ type KidsPageId =
   | 'page14'
   | 'page15'
   | 'page16'
-  | 'page17';
+  | 'page17'
+  | 'page18'
+  | 'page19'
+  | 'page20'
+  | 'page21'
+  | 'page22'
+  | 'page23'
+  | 'page24';
 
 interface Props {
   latestTeacherWritingState?: GrammarWritingTeacherState | null;
@@ -510,6 +524,13 @@ const KIDS_PAGE_CONFIGS: KidsPageConfig[] = [
   { id: 'page15', label: 'Page 15' },
   { id: 'page16', label: 'Page 16' },
   { id: 'page17', label: 'Page 17' },
+  { id: 'page18', label: 'Page 18' },
+  { id: 'page19', label: 'Page 19' },
+  { id: 'page20', label: 'Page 20' },
+  { id: 'page21', label: 'Page 21' },
+  { id: 'page22', label: 'Page 22' },
+  { id: 'page23', label: 'Page 23' },
+  { id: 'page24', label: 'Page 24' },
 ];
 
 function toKidsLabel(key: string): string {
@@ -886,6 +907,20 @@ function resolveCurrentPageItems(page: KidsPageId): KidsLessonCard[] {
       return buildMappedPageItems(KID_PAGE_16_ITEMS);
     case 'page17':
       return buildMappedPageItems(KID_PAGE_17_ITEMS);
+    case 'page18':
+      return buildMappedPageItems(KID_PAGE_18_ITEMS);
+    case 'page19':
+      return buildMappedPageItems(KID_PAGE_19_ITEMS);
+    case 'page20':
+      return buildMappedPageItems(KID_PAGE_20_ITEMS);
+    case 'page21':
+      return buildMappedPageItems(KID_PAGE_21_ITEMS);
+    case 'page22':
+      return buildMappedPageItems(KID_PAGE_22_ITEMS);
+    case 'page23':
+      return buildMappedPageItems(KID_PAGE_23_ITEMS);
+    case 'page24':
+      return buildMappedPageItems(KID_PAGE_24_ITEMS);
     default:
       return buildPage1Items();
   }

@@ -461,7 +461,6 @@ export const ROOM_IDS = [
   "vip6_imposter_wounds",
   "vip6_inner_fragmentation",
   "vip6_inner_saboteur",
-  "vip6_jealousy_possession",
   "vip6_martyr_complex",
   "vip6_not_enough_wound",
   "vip6_people_pleasing",
@@ -3619,13 +3618,6 @@ const __ROOM_LIST: RoomListItem[] = [
     "id": "vip6_inner_saboteur",
     "title_en": "Inner War: Saboteur vs. Self",
     "title_vi": "Cuộc Chiến Bên Trong: Kẻ Phá Hoại Và Bản Thân",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "vip6_jealousy_possession",
-    "title_en": "Jealousy & Possession",
-    "title_vi": "Ghen Tuông & Chiếm Hữu",
     "tier": "free",
     "hasData": true
   },
