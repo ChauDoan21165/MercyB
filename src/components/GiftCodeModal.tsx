@@ -1,3 +1,5 @@
+// src/components/GiftCodeModal.tsx
+
 import { useState } from "react";
 import { Gift, Loader2 } from "lucide-react";
 import {
@@ -21,18 +23,36 @@ interface GiftCodeModalProps {
   onSuccess?: (tier: string) => void;
 }
 
-export function GiftCodeModal({ 
-  open, 
-  onOpenChange, 
+function isAuthError(message: string): boolean {
+  const lower = message.toLowerCase();
+  return (
+    lower.includes("unauthorized") ||
+    lower.includes("401") ||
+    lower.includes("auth") ||
+    lower.includes("session")
+  );
+}
+
+export function GiftCodeModal({
+  open,
+  onOpenChange,
   targetTier,
-  onSuccess 
+  onSuccess,
 }: GiftCodeModalProps) {
-  const [code, setCode] = useState("");
+  const [code, setCode]             = useState("");
   const [isRedeeming, setIsRedeeming] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const { toast } = useToast();
-  const navigate = useNavigate();
-  const location = useLocation();
+  const [error, setError]           = useState<string | null>(null);
+  const { toast }   = useToast();
+  const navigate    = useNavigate();
+  const location    = useLocation();
+
+  function redirectToSignIn() {
+    onOpenChange(false);
+    const next = encodeURIComponent(
+      `${location.pathname}${location.search}${location.hash}`,
+    );
+    navigate(`/signin?next=${next}`);
+  }
 
   const handleRedeem = async () => {
     if (!code.trim()) {
@@ -44,109 +64,85 @@ export function GiftCodeModal({
     setError(null);
 
     try {
-      // CRITICAL: Check if user is logged in FIRST
-      const { data: { session }, error: sessionError } = await supabase.auth.getSession();
-      
+      const { data: { session }, error: sessionError } =
+        await supabase.auth.getSession();
+
       if (sessionError || !session) {
-        console.error('[redeem-gift-code] No active session:', sessionError);
         toast({
           title: "Login Required / Cần đăng nhập",
-          description: "Please log in to redeem your gift code / Vui lòng đăng nhập để sử dụng mã quà tặng",
+          description:
+            "Please log in to redeem your gift code / Vui lòng đăng nhập để sử dụng mã quà tặng",
           variant: "destructive",
         });
-        onOpenChange(false);
-        const redirectPath = encodeURIComponent(location.pathname);
-        navigate(`/auth?redirect=${redirectPath}`);
+        redirectToSignIn();
         return;
       }
 
-      console.log('[redeem-gift-code] Session valid, user:', session.user.id);
-      console.log('[redeem-gift-code] Attempting to redeem:', code.trim());
-      
-      const { data, error: invokeError } = await supabase.functions.invoke('redeem-gift-code', {
-        body: { code: code.trim() },
-      });
+      const { data, error: invokeError } = await supabase.functions.invoke(
+        "redeem-gift-code",
+        { body: { code: code.trim() } },
+      );
 
-      console.log('[redeem-gift-code] Response:', { data, invokeError });
-
-      // Handle 401/auth errors - redirect to login
       if (invokeError) {
-        console.error('[redeem-gift-code] Invoke error:', invokeError);
-        
-        // Check for auth-related errors
-        const errorMessage = invokeError.message?.toLowerCase() || '';
-        if (errorMessage.includes('unauthorized') || errorMessage.includes('401') || errorMessage.includes('auth')) {
+        if (isAuthError(invokeError.message ?? "")) {
           toast({
             title: "Session Expired",
-            description: "Session expired, please log in again / Phiên đăng nhập đã hết hạn, vui lòng đăng nhập lại",
+            description:
+              "Session expired, please log in again / Phiên đăng nhập đã hết hạn, vui lòng đăng nhập lại",
             variant: "destructive",
           });
-          
-          // Close modal and redirect to auth
-          onOpenChange(false);
-          const redirectPath = encodeURIComponent(location.pathname);
-          navigate(`/auth?redirect=${redirectPath}`);
+          redirectToSignIn();
           return;
         }
-        
-        setError(invokeError.message || "Failed to redeem code");
+        setError(invokeError.message || "Failed to redeem code.");
         return;
       }
 
       if (data?.error) {
-        console.error('[redeem-gift-code] API error:', data.error);
-        
-        // Check for auth errors in response data
-        if (data.error.toLowerCase().includes('unauthorized') || data.error.toLowerCase().includes('session')) {
+        if (isAuthError(String(data.error))) {
           toast({
             title: "Session Expired",
-            description: "Session expired, please log in again / Phiên đăng nhập đã hết hạn, vui lòng đăng nhập lại",
+            description:
+              "Session expired, please log in again / Phiên đăng nhập đã hết hạn, vui lòng đăng nhập lại",
             variant: "destructive",
           });
-          
-          onOpenChange(false);
-          const redirectPath = encodeURIComponent(location.pathname);
-          navigate(`/auth?redirect=${redirectPath}`);
+          redirectToSignIn();
           return;
         }
-        
-        setError(data.error);
+        setError(String(data.error));
         return;
       }
 
-      // Handle success (check both ok and success for backwards compatibility)
       if (data?.ok || data?.success) {
         toast({
           title: "🎁 Gift code applied!",
-          description: data.message || `Welcome to your new tier: ${data.tier} 💛`,
+          description:
+            data.message || `Welcome to your new tier: ${data.tier} 💛`,
         });
 
-        // Clear input and close modal
         setCode("");
         onOpenChange(false);
 
-        // Refresh session to update access
         await supabase.auth.refreshSession();
 
-        // Callback for navigation/refresh
         if (onSuccess) {
           onSuccess(data.tier);
         } else {
-          // Default: reload to refresh all access states
           window.location.reload();
         }
       }
-    } catch (err: any) {
-      console.error('[redeem-gift-code] Unexpected error:', err);
-      setError(err.message || "An unexpected error occurred");
+    } catch (err) {
+      const message =
+        err instanceof Error ? err.message : "An unexpected error occurred.";
+      setError(message);
     } finally {
       setIsRedeeming(false);
     }
   };
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && !isRedeeming) {
-      handleRedeem();
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" && !isRedeeming) {
+      void handleRedeem();
     }
   };
 
@@ -159,10 +155,9 @@ export function GiftCodeModal({
             Enter Gift Code / Nhập Mã Quà Tặng
           </DialogTitle>
           <DialogDescription>
-            {targetTier 
+            {targetTier
               ? `Enter your gift code to unlock ${targetTier} access`
-              : "Enter your gift code to unlock VIP access"
-            }
+              : "Enter your gift code to unlock VIP access"}
             <br />
             <span className="text-muted-foreground">
               Nhập mã quà tặng để mở khóa quyền truy cập
@@ -181,7 +176,7 @@ export function GiftCodeModal({
                 setCode(e.target.value.toUpperCase());
                 setError(null);
               }}
-              onKeyPress={handleKeyPress}
+              onKeyDown={handleKeyDown}
               disabled={isRedeeming}
               className="font-mono text-center text-lg"
             />
@@ -190,22 +185,22 @@ export function GiftCodeModal({
             </p>
           </div>
 
-          {error && (
+          {error ? (
             <div className="bg-destructive/10 text-destructive text-sm p-3 rounded-md">
               {error}
             </div>
-          )}
+          ) : null}
 
           <div className="flex gap-2">
             <Button
-              onClick={handleRedeem}
+              onClick={() => void handleRedeem()}
               disabled={isRedeeming || !code.trim()}
               className="flex-1"
             >
               {isRedeeming ? (
                 <>
                   <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                  Redeeming...
+                  Redeeming…
                 </>
               ) : (
                 <>

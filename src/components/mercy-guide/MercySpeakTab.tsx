@@ -585,6 +585,18 @@ export function MercySpeakTab({
     return kidsObject?.sentence ?? KIDS_OBJECTS[0].sentence;
   }, [isKidsMode, kidsLesson, kidsObject]);
 
+  // Derive the pre-recorded mp3 path for kids mode
+  // Key looks like: k25_001_rice  →  /audio/kids/k25_001_rice.mp3
+  // For page1 objects (apple, ball etc) the key is just the word — skip mp3
+  const kidsAudioSrc = useMemo(() => {
+    if (!isKidsMode) return null;
+    const key = selectedKidsObjectKey ?? '';
+    if (!key) return null;
+    // Only use pre-recorded audio for keys that start with kXX_ pattern
+    if (!/^k\d+_/.test(key)) return null;
+    return `/audio/kids/${key}.mp3`;
+  }, [isKidsMode, selectedKidsObjectKey]);
+
   const sourceText    = isKidsMode ? kidsPracticeText : rawSourceText;
   const correctedText = isKidsMode ? kidsPracticeText : rawCorrectedText;
   const enhancedText  = isKidsMode ? kidsPracticeText : rawEnhancedText;
@@ -616,6 +628,7 @@ export function MercySpeakTab({
   const recordedAudioRef  = useRef<HTMLAudioElement | null>(null);
   const lastKidsCelebrationRef    = useRef('');
   const hasPlayedBuddySelectRef   = useRef(false);
+  const kidsAudioRef = useRef<HTMLAudioElement | null>(null);
 
   const speechWindow = typeof window !== 'undefined' ? (window as BrowserWindowWithSpeechRecognition) : undefined;
   const supportsRecognition    = typeof window !== 'undefined' && Boolean(speechWindow?.SpeechRecognition || speechWindow?.webkitSpeechRecognition);
@@ -633,6 +646,10 @@ export function MercySpeakTab({
       mediaRecorderRef.current = null;
       if (recordedAudioRef.current) { try { recordedAudioRef.current.pause(); recordedAudioRef.current.currentTime = 0; } catch { /* ignore */ } }
       if (recordedAudioUrl) URL.revokeObjectURL(recordedAudioUrl);
+      if (kidsAudioRef.current) {
+        try { kidsAudioRef.current.pause(); } catch { /* ignore */ }
+        kidsAudioRef.current = null;
+      }
       if (activeStreamRef.current) { activeStreamRef.current.getTracks().forEach((track) => track.stop()); activeStreamRef.current = null; }
     };
   }, [recordedAudioUrl]);
@@ -726,26 +743,56 @@ export function MercySpeakTab({
     if (recordedAudioUrl) { URL.revokeObjectURL(recordedAudioUrl); setRecordedAudioUrl(''); }
   }
 
+  function speakViaTTS(_speechText: string) {
+    // Browser TTS disabled — ElevenLabs mp3 only
+    // To re-enable, restore the speechSynthesis code here
+  }
+
   function handleSpeak(textOverride?: string) {
     const speechText = cleanText(textOverride) || practiceText;
-    if (!speechText || !supportsSpeechSynthesis || typeof window === 'undefined') return;
+    if (!speechText || typeof window === 'undefined') return;
     stopRecordedAudioPlayback(true);
-    try {
-      if (window.speechSynthesis.speaking) window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(speechText);
-      utterance.lang  = 'en-US';
-      utterance.rate  = isKidsMode ? 0.8 : 0.92;
-      utterance.pitch = isKidsMode ? 1.05 : 1;
-      utterance.onstart = () => setIsSpeaking(true);
-      utterance.onend   = () => setIsSpeaking(false);
-      utterance.onerror = () => setIsSpeaking(false);
-      window.speechSynthesis.speak(utterance);
-    } catch { setIsSpeaking(false); }
+
+    // Kids mode: try pre-recorded ElevenLabs mp3 first
+    // Only use mp3 when playing the main phrase (no textOverride = tapping Mercy button)
+    // For individual word chips (textOverride set), fall through to TTS
+    if (isKidsMode && !textOverride && kidsAudioSrc) {
+      // Reuse or create the audio element
+      if (!kidsAudioRef.current) {
+        kidsAudioRef.current = new Audio();
+      }
+      const audio = kidsAudioRef.current;
+      // Stop any currently playing kids audio
+      try { audio.pause(); audio.currentTime = 0; } catch { /* ignore */ }
+
+      audio.src = kidsAudioSrc;
+      audio.onplay  = () => setIsSpeaking(true);
+      audio.onended = () => setIsSpeaking(false);
+      audio.onerror = () => {
+        // mp3 not found — fall back to browser TTS
+        setIsSpeaking(false);
+        speakViaTTS(speechText);
+      };
+      audio.play().catch(() => {
+        // play() rejected (e.g. file missing) — fall back to TTS
+        setIsSpeaking(false);
+        speakViaTTS(speechText);
+      });
+      return;
+    }
+
+    // Adult mode or word chip: use browser TTS
+    speakViaTTS(speechText);
   }
 
   function stopSpeaking() {
-    if (!supportsSpeechSynthesis || typeof window === 'undefined') return;
-    window.speechSynthesis.cancel();
+    // Stop pre-recorded kids audio if playing
+    if (kidsAudioRef.current) {
+      try { kidsAudioRef.current.pause(); kidsAudioRef.current.currentTime = 0; } catch { /* ignore */ }
+    }
+    if (supportsSpeechSynthesis && typeof window !== 'undefined') {
+      window.speechSynthesis.cancel();
+    }
     setIsSpeaking(false);
   }
 

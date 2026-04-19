@@ -27,7 +27,7 @@ export const BUBBLE_SAFE_MARGIN = 12;
 export const BUBBLE_BOTTOM_SAFE_MOBILE = 112;
 export const BUBBLE_BOTTOM_SAFE_DESKTOP = 24;
 export const DEFAULT_BUBBLE_RIGHT = 16;
-export const DEFAULT_BUBBLE_BOTTOM = 112;
+export const DEFAULT_BUBBLE_BOTTOM = 148;
 export const BUBBLE_POSITION_STORAGE_KEY = 'mercy-guide-bubble-position-v2';
 
 export const EDGE_HANDLE_THICKNESS = 12;

@@ -179,7 +179,25 @@ export const ACCESS_POLICIES: Record<string, AccessRule> = {
   },
 };
 
+// Maps a normalized page id to the canonical room tier it gates.
+// Used by checkPageAccess to delegate room-page decisions to checkRoomAccess
+// without duplicating the logic in two branches.
+const ROOM_PAGE_TIER_MAP: Record<string, TierId> = {
+  free_rooms: "level0",
+  vip1_rooms: "level1",
+  vip2_rooms: "level2",
+  vip3_rooms: "level3",
+  vip4_rooms: "level4",
+  vip5_rooms: "level5",
+  vip6_rooms: "level6",
+  vip7_rooms: "level7",
+  vip8_rooms: "level8",
+  vip9_rooms: "level9",
+  kids_rooms: "kids_1",
+};
+
 function normalizePageId(input: string): string {
+  // Strip query string and hash, then lowercase for consistent matching
   const raw = String(input || "").trim().toLowerCase();
   if (!raw) return raw;
 
@@ -256,11 +274,7 @@ function normalizePageId(input: string): string {
 
 function safeTier(value: unknown): TierId {
   const raw = String(value || "").trim().toLowerCase() as TierId;
-
-  if (ALL_TIER_IDS.includes(raw)) {
-    return raw;
-  }
-
+  if (ALL_TIER_IDS.includes(raw)) return raw;
   return "level0";
 }
 
@@ -268,24 +282,15 @@ function normalizeRoomTier(roomTier: TierId): TierId {
   return safeTier(roomTier);
 }
 
-/**
- * Compatibility normalization for older VIP-based room/page checks.
- * Raw tier stays canonical; this is only for compatibility matching.
- */
 function normalizeUserTierForAccess(userTier: TierId): TierId {
   const raw = safeTier(userTier);
-
-  if (raw === "premium_month" || raw === "premium_year") {
-    return "level9";
-  }
-
+  if (raw === "premium_month" || raw === "premium_year") return "level9";
   return raw;
 }
 
 function isPaidAdultTier(tier: TierId): boolean {
   const normalized = normalizeUserTierForAccess(tier);
   const raw = safeTier(tier);
-
   return (
     PAID_ADULT_ACCESS_TIERS.includes(normalized) ||
     PAID_BILLING_TIERS.includes(raw)
@@ -302,8 +307,8 @@ function matchesAllowedTierPolicy(
   if (allowedTiers.includes(raw)) return true;
   if (allowedTiers.includes(normalized)) return true;
 
-  // Premium billing plans should satisfy any adult paid-access policy
-  // even when older policy lists still use VIP compatibility tiers.
+  // Premium billing plans satisfy any adult paid-access policy
+  // even when older policy lists still use VIP compatibility tiers
   if (
     (raw === "premium_month" || raw === "premium_year") &&
     allowedTiers.some((tier) => PAID_ADULT_ACCESS_TIERS.includes(tier))
@@ -315,7 +320,8 @@ function matchesAllowedTierPolicy(
 }
 
 /**
- * Check if user has access to a page
+ * Check if user has access to a page.
+ * For room pages, delegates entirely to checkRoomAccess to avoid duplicate logic.
  */
 export function checkPageAccess(
   pageId: string,
@@ -327,6 +333,7 @@ export function checkPageAccess(
   const policy = ACCESS_POLICIES[normalizedPageId];
 
   if (!policy) {
+    // Unknown page — try to resolve as a room page directly
     if (/^vip[1-9](_rooms?)?$/.test(normalizedPageId)) {
       return checkRoomAccess(
         rawUserTier,
@@ -342,6 +349,7 @@ export function checkPageAccess(
     return { allowed: false, reason: "Unknown page" };
   }
 
+  // Role check
   if (!policy.allowedRoles.includes(userRole)) {
     return {
       allowed: false,
@@ -349,43 +357,29 @@ export function checkPageAccess(
     };
   }
 
+  // For room pages, delegate entirely to checkRoomAccess —
+  // avoids duplicating the tier-matching logic in two branches
+  const roomTier = ROOM_PAGE_TIER_MAP[normalizedPageId];
+  if (roomTier !== undefined) {
+    return checkRoomAccess(rawUserTier, roomTier);
+  }
+
+  // Non-room page: apply tier policy directly
   if (!matchesAllowedTierPolicy(rawUserTier, policy.allowedTiers)) {
-    if (/^(level0|vip[1-9]|kids)_rooms$/.test(normalizedPageId)) {
-      const roomTier =
-        normalizedPageId === "free_rooms"
-          ? "level0"
-          : normalizedPageId === "kids_rooms"
-            ? "kids_1"
-            : normalizedPageId.replace("_rooms", "");
-
-      return checkRoomAccess(rawUserTier, roomTier as TierId);
-    }
-
     return {
       allowed: false,
       reason: `This page requires ${policy.allowedTiers.join(", ")} tier`,
     };
   }
 
-  if (/^(level0|vip[1-9]|kids)_rooms$/.test(normalizedPageId)) {
-    const roomTier =
-      normalizedPageId === "free_rooms"
-        ? "level0"
-        : normalizedPageId === "kids_rooms"
-          ? "kids_1"
-          : normalizedPageId.replace("_rooms", "");
-
-    return checkRoomAccess(rawUserTier, roomTier as TierId);
-  }
-
   return { allowed: true };
 }
 
 /**
- * Check if user can access a room
+ * Check if user can access a room.
  *
- * Business rule:
- * - kids tiers remain governed by kidsAccess
+ * Business rules:
+ * - kids tiers are governed by kidsAccess
  * - level0 adult users can access only level0 adult rooms
  * - paid adult users can access all adult curriculum rooms
  * - Level 1..Level 9 are curriculum labels, not payment gates
@@ -427,8 +421,7 @@ export function checkRoomAccess(
 }
 
 /**
- * Optional helper:
- * billing-level paid check only
+ * Optional helper: billing-level paid check only
  */
 export function isPaidBillingTier(tier: TierId): boolean {
   return PAID_BILLING_TIERS.includes(safeTier(tier));

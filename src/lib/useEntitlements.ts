@@ -8,6 +8,7 @@ import {
   resolveEntitlementTier,
   type BackendEntitlement,
 } from "@/lib/authService";
+import { supabase } from "@/lib/supabaseClient";
 import { useAuth } from "@/providers/AuthProvider";
 
 type Ent = BackendEntitlement & {
@@ -35,13 +36,6 @@ function isLegacyVipTier(tier: string): boolean {
   return /^vip(\d+)$/.test(tier);
 }
 
-/**
- * Compatibility rank only:
- * - level0 => 0
- * - premium_month / premium_year => 9 ONLY when premium is active/trialing
- * - level1..level9 => numeric compatibility only
- * - unknown => 0
- */
 function tierToRank(tier: string, entitlement?: BackendEntitlement): number {
   const s = normalizeTier(tier);
 
@@ -63,14 +57,7 @@ function tierToRank(tier: string, entitlement?: BackendEntitlement): number {
 function hasPaidRepoAccess(ent: BackendEntitlement, resolvedTier: string): boolean {
   const tier = normalizeTier(resolvedTier);
   const premiumActive = ent.is_premium === true && isPremiumStatus(ent.status);
-
-  // New policy:
-  // - only active/trialing premium billing tiers unlock the whole paid repo
-  // - legacy VIP labels remain compatibility labels, not paid truth
-  if (isPaidBillingTier(tier)) {
-    return premiumActive;
-  }
-
+  if (isPaidBillingTier(tier)) return premiumActive;
   return false;
 }
 
@@ -87,19 +74,12 @@ function buildFeatures(
   return {
     premium: premiumActive,
     is_premium: premiumActive,
-
-    // Explicit modern paid flags.
     paid_repo_access: paidRepoAccess,
     premium_monthly: paidRepoAccess && normalizedTier === "premium_month",
     premium_yearly: paidRepoAccess && normalizedTier === "premium_year",
-
-    // Compatibility metadata flags.
     has_legacy_vip_label: isLegacyVipTier(normalizedTier),
     vip_tier: normalizedTier,
     vip_rank: vipRank,
-
-    // Backward-compatible feature flags:
-    // any active paid billing tier unlocks the full paid repo.
     level1: paidRepoAccess || vipRank >= 1,
     level2: paidRepoAccess || vipRank >= 2,
     level3: paidRepoAccess || vipRank >= 3,
@@ -118,11 +98,8 @@ function buildEntitlement(entitlement: BackendEntitlement): Ent {
 
   return {
     ...entitlement,
-    // Canonical raw paid-vs-legacy entitlement result.
     billing_tier: resolvedTier,
-    // Keep a compatibility field name for older callers.
     vip_tier: resolvedTier,
-    // Effective access rank used by older VIP-based checks.
     vip_rank: vipRank,
     features: buildFeatures(entitlement, resolvedTier, vipRank),
     updated_at: new Date().toISOString(),
@@ -137,15 +114,22 @@ export function useEntitlements() {
 
   const requestIdRef = useRef(0);
 
+  // Stable refs for user and authLoading so refreshEntitlements
+  // does not get recreated on every auth state change
+  const userRef = useRef(user);
+  const authLoadingRef = useRef(authLoading);
+  userRef.current = user;
+  authLoadingRef.current = authLoading;
+
   const refreshEntitlements = useCallback(async () => {
     const requestId = ++requestIdRef.current;
 
-    if (authLoading) {
+    if (authLoadingRef.current) {
       setLoading(true);
       return;
     }
 
-    if (!user) {
+    if (!userRef.current) {
       setData(null);
       setLoading(false);
       return;
@@ -154,8 +138,9 @@ export function useEntitlements() {
     setLoading(true);
 
     try {
+      // Pass supabase explicitly — consistent with authService contract
       const backendEnt =
-        (await fetchCurrentEntitlement()) ?? FAIL_CLOSED_ENTITLEMENT;
+        (await fetchCurrentEntitlement(supabase)) ?? FAIL_CLOSED_ENTITLEMENT;
 
       if (requestIdRef.current !== requestId) return;
 
@@ -169,11 +154,12 @@ export function useEntitlements() {
         setLoading(false);
       }
     }
-  }, [authLoading, user]);
+  }, []); // stable — reads user/authLoading via refs
 
+  // Re-fetch when user identity or auth loading state changes
   useEffect(() => {
     void refreshEntitlements();
-  }, [refreshEntitlements]);
+  }, [user, authLoading, refreshEntitlements]);
 
   const features = useMemo(
     () => (data?.features ?? {}) as Record<string, unknown>,
@@ -186,10 +172,7 @@ export function useEntitlements() {
 
     if (typeof value === "boolean") return value;
 
-    if (
-      normalized === "premium" ||
-      normalized === "is_premium"
-    ) {
+    if (normalized === "premium" || normalized === "is_premium") {
       return data?.is_premium === true && isPremiumStatus(data?.status);
     }
 
@@ -199,7 +182,8 @@ export function useEntitlements() {
       normalized === "premium_yearly"
     ) {
       const billingTier = normalizeTier(data?.billing_tier);
-      const premiumActive = data?.is_premium === true && isPremiumStatus(data?.status);
+      const premiumActive =
+        data?.is_premium === true && isPremiumStatus(data?.status);
 
       if (normalized === "paid_repo_access") {
         return premiumActive && isPaidBillingTier(billingTier);
@@ -213,9 +197,7 @@ export function useEntitlements() {
     }
 
     const m = normalized.match(/^vip(\d+)$/);
-    if (m) {
-      return (data?.vip_rank ?? 0) >= Number(m[1]);
-    }
+    if (m) return (data?.vip_rank ?? 0) >= Number(m[1]);
 
     return fallback;
   }

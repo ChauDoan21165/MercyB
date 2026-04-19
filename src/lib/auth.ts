@@ -1,4 +1,5 @@
 // src/lib/auth.ts
+
 import type { SupabaseClient, User } from "@supabase/supabase-js";
 import {
   entitlementToVipKey,
@@ -14,28 +15,34 @@ export type UserTierContext = {
   subscriptionStatus: string | null;
 };
 
+const SAFE_LEVEL0: UserTierContext = {
+  userId: null,
+  vipKey: "level0",
+  tierId: null,
+  subscriptionStatus: null,
+};
+
 /**
  * Reads paid state from backend entitlement only.
- * Returns "level0" when not signed in / inactive / unknown.
+ * Returns "level0" when not signed in / inactive / unknown / on error.
  */
 export async function getUserTierContext(
   supabase: SupabaseClient,
 ): Promise<UserTierContext> {
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  let user: User | null = null;
 
-  const userId = (user as User | null)?.id ?? null;
-  if (!userId) {
-    return {
-      userId: null,
-      vipKey: "level0",
-      tierId: null,
-      subscriptionStatus: null,
-    };
+  try {
+    const { data, error } = await supabase.auth.getUser();
+    if (error || !data?.user) return SAFE_LEVEL0;
+    user = data.user;
+  } catch {
+    return SAFE_LEVEL0;
   }
 
-  const ent = await fetchCurrentEntitlement(supabase);
+  const userId = user.id ?? null;
+  if (!userId) return SAFE_LEVEL0;
+
+  const ent = await fetchCurrentEntitlement(supabase).catch(() => null);
 
   return {
     userId,

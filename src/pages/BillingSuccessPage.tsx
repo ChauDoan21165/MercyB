@@ -1,30 +1,34 @@
 // src/pages/BillingSuccessPage.tsx
+
 import React, { useEffect, useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@/providers/AuthProvider";
 import { useEntitlements } from "@/lib/useEntitlements";
 
-function getStatusLabel(status: string | null | undefined): string {
+type StatusLabels = { en: string; vi: string };
+
+function getStatusLabel(status: string | null | undefined): StatusLabels {
   switch (status) {
-    case "active":
-      return "Đang hoạt động";
-    case "trialing":
-      return "Đang dùng thử";
-    case "grace_period":
-      return "Đang trong thời gian gia hạn";
-    case "past_due":
-      return "Quá hạn thanh toán";
-    case "paused":
-      return "Đã tạm dừng";
-    case "expired":
-      return "Đã hết hạn";
-    case "revoked":
-      return "Đã bị thu hồi";
+    case "active":       return { en: "Active",        vi: "Đang hoạt động" };
+    case "trialing":     return { en: "Active (trial)", vi: "Đang dùng thử" };
+    case "grace_period": return { en: "Grace period",  vi: "Trong thời gian gia hạn" };
+    case "past_due":     return { en: "Past due",       vi: "Quá hạn thanh toán" };
+    case "paused":       return { en: "Paused",         vi: "Đã tạm dừng" };
+    case "expired":      return { en: "Expired",        vi: "Đã hết hạn" };
+    case "revoked":      return { en: "Revoked",        vi: "Đã bị thu hồi" };
     case "inactive":
-    default:
-      return "Chưa kích hoạt";
+    default:             return { en: "Inactive",       vi: "Chưa kích hoạt" };
   }
 }
+
+const viStyle: React.CSSProperties = {
+  display: "block",
+  fontSize: 12,
+  fontWeight: 400,
+  color: "#94a3b8",
+  marginTop: 3,
+  lineHeight: 1.5,
+};
 
 export default function BillingSuccessPage() {
   const nav = useNavigate();
@@ -44,202 +48,177 @@ export default function BillingSuccessPage() {
 
   const isPremium = useMemo(() => ent?.is_premium === true, [ent]);
 
-  const title = useMemo(() => {
-    if (entitlementLoading) return "Đang xác nhận quyền truy cập…";
-    if (isPremium) return "Thanh toán thành công";
-    return "Đã nhận thanh toán";
-  }, [entitlementLoading, isPremium]);
+  const statusLabels = useMemo(
+    () => getStatusLabel(ent?.status),
+    [ent?.status],
+  );
 
-  const subtitle = useMemo(() => {
-    if (entitlementLoading) {
-      return "Hệ thống đang đồng bộ quyền truy cập từ backend entitlement.";
-    }
+  const accessLabel = useMemo((): StatusLabels => {
+    if (entitlementLoading) return { en: "Loading…", vi: "Đang tải…" };
+    if (!isPremium)         return { en: "Free access", vi: "Truy cập miễn phí" };
+    if (ent?.status === "trialing")
+      return { en: "Premium (trial)", vi: "Cao cấp (dùng thử)" };
+    return { en: "Premium access", vi: "Quyền truy cập cao cấp" };
+  }, [ent?.status, entitlementLoading, isPremium]);
 
-    if (isPremium) {
-      return `Quyền truy cập của bạn đã được bật. Trạng thái hiện tại: ${getStatusLabel(
-        ent?.status,
-      )}.`;
-    }
-
-    return "Thanh toán đã hoàn tất. Nếu quyền truy cập chưa cập nhật ngay, hãy bấm làm mới quyền truy cập hoặc mở trang tài khoản để kiểm tra lại.";
-  }, [ent, entitlementLoading, isPremium]);
-
-  const wrap: React.CSSProperties = {
-    width: "100%",
-    minHeight: "100vh",
-    background: "white",
-  };
-
-  const container: React.CSSProperties = {
-    maxWidth: 860,
-    margin: "0 auto",
-    padding: "32px 16px 80px",
-  };
+  // ── Styles ──────────────────────────────────────────────────────────────────
+  const wrap: React.CSSProperties      = { width: "100%", minHeight: "100vh", background: "white" };
+  const container: React.CSSProperties = { maxWidth: 860, margin: "0 auto", padding: "32px 16px 80px" };
 
   const card: React.CSSProperties = {
-    border: "1px solid rgba(0,0,0,0.10)",
-    borderRadius: 20,
-    padding: 24,
-    background: "rgba(255,255,255,0.95)",
-    boxShadow: "0 12px 32px rgba(0,0,0,0.05)",
+    border: "1px solid rgba(0,0,0,0.10)", borderRadius: 20, padding: 24,
+    background: "rgba(255,255,255,0.95)", boxShadow: "0 12px 32px rgba(0,0,0,0.05)",
   };
 
   const titleStyle: React.CSSProperties = {
-    margin: 0,
-    fontSize: 34,
-    fontWeight: 950,
-    letterSpacing: -0.7,
-    color: "rgba(0,0,0,0.88)",
-  };
-
-  const subtitleStyle: React.CSSProperties = {
-    marginTop: 10,
-    marginBottom: 0,
-    fontSize: 15,
-    lineHeight: 1.7,
-    color: "rgba(0,0,0,0.64)",
-    maxWidth: 680,
+    margin: 0, fontSize: 32, fontWeight: 950,
+    letterSpacing: -0.7, color: "rgba(0,0,0,0.88)",
   };
 
   const grid: React.CSSProperties = {
     display: "grid",
     gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
-    gap: 16,
-    marginTop: 18,
+    gap: 16, marginTop: 18,
   };
 
   const panel: React.CSSProperties = {
-    border: "1px solid rgba(0,0,0,0.10)",
-    borderRadius: 16,
-    padding: 18,
-    background: "#fff",
+    border: "1px solid rgba(0,0,0,0.10)", borderRadius: 16,
+    padding: 18, background: "#fff",
   };
 
-  const label: React.CSSProperties = {
-    fontSize: 12,
-    fontWeight: 800,
-    textTransform: "uppercase",
-    letterSpacing: 0.5,
-    color: "rgba(0,0,0,0.48)",
-    marginBottom: 8,
+  const labelStyle: React.CSSProperties = {
+    fontSize: 11, fontWeight: 800, textTransform: "uppercase",
+    letterSpacing: 0.5, color: "rgba(0,0,0,0.40)", marginBottom: 8,
   };
 
-  const value: React.CSSProperties = {
-    fontSize: 24,
-    fontWeight: 900,
-    color: "rgba(0,0,0,0.88)",
+  const valueStyle: React.CSSProperties = {
+    fontSize: 22, fontWeight: 900, color: "rgba(0,0,0,0.88)", lineHeight: 1.2,
   };
 
-  const sub: React.CSSProperties = {
-    marginTop: 8,
-    fontSize: 13,
-    lineHeight: 1.6,
-    color: "rgba(0,0,0,0.60)",
+  const subStyle: React.CSSProperties = {
+    marginTop: 8, fontSize: 13, lineHeight: 1.6, color: "rgba(0,0,0,0.55)",
   };
 
   const actions: React.CSSProperties = {
-    display: "flex",
-    gap: 10,
-    flexWrap: "wrap",
-    marginTop: 18,
+    display: "flex", gap: 10, flexWrap: "wrap", marginTop: 18,
   };
 
   const buttonBase: React.CSSProperties = {
-    borderRadius: 12,
-    minHeight: 42,
-    padding: "10px 14px",
-    border: "1px solid rgba(0,0,0,0.10)",
-    background: "#fff",
-    color: "#111827",
-    fontWeight: 800,
-    cursor: "pointer",
-    textDecoration: "none",
-    display: "inline-flex",
-    alignItems: "center",
-    justifyContent: "center",
+    borderRadius: 12, minHeight: 44, padding: "10px 14px",
+    border: "1px solid rgba(0,0,0,0.10)", background: "#fff",
+    color: "#111827", fontWeight: 800, cursor: "pointer",
+    textDecoration: "none", display: "inline-flex",
+    flexDirection: "column", alignItems: "center", justifyContent: "center",
+    textAlign: "center",
   };
 
   const primaryButton: React.CSSProperties = {
-    ...buttonBase,
-    background: "#111827",
-    color: "#fff",
-    borderColor: "#111827",
+    ...buttonBase, background: "#111827", color: "#fff", borderColor: "#111827",
   };
+  // ────────────────────────────────────────────────────────────────────────────
 
-  async function handleRefreshAccess() {
-    await refreshEntitlements();
-  }
-
-  if (!user && !isLoading) {
-    return null;
-  }
+  if (!user && !isLoading) return null;
 
   return (
     <div style={wrap}>
       <div style={container}>
         <div style={card}>
-          <h1 style={titleStyle}>{title}</h1>
-          <p style={subtitleStyle}>{subtitle}</p>
 
+          {/* Header */}
+          <h1 style={titleStyle}>
+            {entitlementLoading
+              ? "Confirming your access…"
+              : isPremium
+                ? "Payment successful"
+                : "Payment received"}
+          </h1>
+          <p style={{ ...viStyle, fontSize: 14, marginTop: 4 }}>
+            {entitlementLoading
+              ? "Đang xác nhận quyền truy cập…"
+              : isPremium
+                ? "Thanh toán thành công"
+                : "Đã nhận thanh toán"}
+          </p>
+
+          <p style={{ marginTop: 12, marginBottom: 0, fontSize: 15, lineHeight: 1.7, color: "rgba(0,0,0,0.64)", maxWidth: 680 }}>
+            {entitlementLoading
+              ? "Syncing your subscription status…"
+              : isPremium
+                ? "Your premium access is now active. You can explore all premium rooms."
+                : "Your payment is complete. If access hasn't updated yet, tap Refresh access below."}
+          </p>
+          <p style={{ ...viStyle, fontSize: 13, marginTop: 4 }}>
+            {entitlementLoading
+              ? "Đang đồng bộ trạng thái gói đăng ký…"
+              : isPremium
+                ? "Quyền truy cập premium đang hoạt động. Bạn có thể vào tất cả phòng premium."
+                : "Thanh toán đã hoàn tất. Nếu quyền truy cập chưa cập nhật, hãy bấm Làm mới quyền truy cập."}
+          </p>
+
+          {/* Status grid */}
           <div style={grid}>
             <div style={panel}>
-              <div style={label}>Quyền truy cập hiện tại</div>
-              <div style={value}>
-                {entitlementLoading
-                  ? "Đang tải…"
-                  : isPremium
-                    ? ent?.status === "trialing"
-                      ? "Cao cấp (dùng thử)"
-                      : "Cao cấp"
-                    : "Miễn phí"}
+              <div style={labelStyle}>
+                Current access
+                <span style={viStyle}>Quyền truy cập hiện tại</span>
               </div>
-              <div style={sub}>
-                Màn hình này tin backend entitlement, không tự suy đoán ở client.
+              <div style={valueStyle}>
+                {accessLabel.en}
+                <span style={viStyle}>{accessLabel.vi}</span>
               </div>
+              <p style={subStyle}>
+                {isPremium
+                  ? "All premium rooms are unlocked."
+                  : "No active premium subscription found yet."}
+              </p>
+              <p style={{ ...subStyle, ...viStyle, marginTop: 2 }}>
+                {isPremium
+                  ? "Tất cả phòng premium đã được mở khóa."
+                  : "Chưa tìm thấy gói premium đang hoạt động."}
+              </p>
             </div>
 
             <div style={panel}>
-              <div style={label}>Trạng thái entitlement</div>
-              <div style={value}>
-                {entitlementLoading ? "Đang tải…" : getStatusLabel(ent?.status)}
+              <div style={labelStyle}>
+                Subscription status
+                <span style={viStyle}>Trạng thái gói đăng ký</span>
               </div>
-              <div style={sub}>
-                Raw status: <b>{entitlementLoading ? "loading" : ent?.status || "inactive"}</b>
-                <br />
-                Source: <b>{ent?.source || "—"}</b>
-              </div>
-            </div>
-
-            <div style={{ ...panel, gridColumn: "span 2" }}>
-              <div style={label}>Chi tiết</div>
-              <div style={sub}>
-                Trang này không còn tự xác minh checkout session. Quyền truy cập chỉ được đọc từ
-                backend entitlement. Nếu trạng thái chưa đổi ngay, hãy bấm <b>Refresh access</b>{" "}
-                hoặc mở trang <b>Account</b> để kiểm tra lại.
+              <div style={valueStyle}>
+                {entitlementLoading ? "Loading…" : statusLabels.en}
+                <span style={viStyle}>
+                  {entitlementLoading ? "Đang tải…" : statusLabels.vi}
+                </span>
               </div>
             </div>
           </div>
 
+          {/* Actions */}
           <div style={actions}>
             <button
               type="button"
               style={buttonBase}
-              onClick={() => void handleRefreshAccess()}
+              onClick={() => void refreshEntitlements()}
               disabled={entitlementLoading}
             >
-              {entitlementLoading ? "Đang làm mới…" : "Refresh access"}
+              {entitlementLoading ? "Refreshing…" : "Refresh access"}
+              <span style={{ ...viStyle, color: "#94a3b8" }}>
+                {entitlementLoading ? "Đang làm mới…" : "Làm mới quyền truy cập"}
+              </span>
             </button>
 
-            <Link to="/account" style={primaryButton}>
-              Đi tới tài khoản
+            <Link to="/rooms" style={primaryButton}>
+              Go to rooms
+              <span style={{ ...viStyle, color: "rgba(255,255,255,0.65)" }}>Vào phòng học</span>
+            </Link>
+
+            <Link to="/account" style={buttonBase}>
+              Account
+              <span style={viStyle}>Tài khoản</span>
             </Link>
 
             <Link to="/billing" style={buttonBase}>
               Billing
-            </Link>
-
-            <Link to="/pricing" style={buttonBase}>
-              Pricing
+              <span style={viStyle}>Thanh toán</span>
             </Link>
           </div>
         </div>

@@ -3,7 +3,7 @@
  * File: useUserAccess.ts
  */
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { TierId } from "@/lib/constants/tiers";
 import { supabase } from "@/lib/supabaseClient";
 import { useAuth } from "@/providers/AuthProvider";
@@ -58,10 +58,6 @@ export interface UserAccess {
 
   canAccessPremium: () => boolean;
 
-  /**
-   * Trial state.
-   * No extra UI is required here; consumers can show a simple existing message.
-   */
   isTrialExpired: boolean;
   accessAnnouncement?: string;
 
@@ -77,14 +73,13 @@ const FORCE_UNLOCK_MERCY_FEATURES = true;
 const TRIAL_ENDED_MESSAGE =
   "Your free trial has ended. Please upgrade to continue.";
 
+// Profile query timeout in ms — avoid hanging the access resolution
+const PROFILE_QUERY_TIMEOUT_MS = 6000;
+
 function isPremiumTier(tier: TierId): boolean {
   return tier === "premium_month" || tier === "premium_year";
 }
 
-/**
- * Paid premium users should not be locked from rooms.
- * Map premium billing plans to full room-access tier.
- */
 function toEffectiveAccessTier(tier: TierId): TierId {
   if (tier === "premium_month" || tier === "premium_year") {
     return "level9";
@@ -125,15 +120,7 @@ function inferTrialExpired(entitlement: unknown, entitlementTier: TierId): boole
     readBooleanField(entitlement, "is_trial_expired") ??
     readBooleanField(entitlement, "trial_expired");
 
-  if (typeof explicitExpired === "boolean") {
-    return explicitExpired;
-  }
-
-  const planType =
-    readStringField(entitlement, "plan_type") ??
-    readStringField(entitlement, "planType") ??
-    readStringField(entitlement, "access_type") ??
-    readStringField(entitlement, "accessType");
+  if (typeof explicitExpired === "boolean") return explicitExpired;
 
   const accessExpiresAt =
     readStringField(entitlement, "access_expires_at") ??
@@ -142,23 +129,7 @@ function inferTrialExpired(entitlement: unknown, entitlementTier: TierId): boole
     readStringField(entitlement, "trialExpiresAt");
 
   const expiresAtMs = parseDateMs(accessExpiresAt);
-  if (expiresAtMs !== null) {
-    return Date.now() > expiresAtMs;
-  }
-
-  if (!planType) {
-    return false;
-  }
-
-  const normalizedPlanType = planType.toLowerCase();
-
-  if (
-    normalizedPlanType === "free_trial" ||
-    normalizedPlanType === "trial" ||
-    normalizedPlanType === "free"
-  ) {
-    return false;
-  }
+  if (expiresAtMs !== null) return Date.now() > expiresAtMs;
 
   return false;
 }
@@ -198,36 +169,28 @@ function buildFeatureAccess(
 }
 
 export const guestAccess = (): UserAccess => {
-  const unlockMercyFeatures = FORCE_UNLOCK_MERCY_FEATURES;
   const entitlementTier: TierId = "level0";
   const userTier = toEffectiveAccessTier(entitlementTier);
+  const unlockMercyFeatures = FORCE_UNLOCK_MERCY_FEATURES;
 
   return {
     isAdmin: false,
     isHighAdmin: false,
     adminLevel: 0,
-
     isAuthenticated: false,
     isDemoMode: true,
-
     tier: entitlementTier,
     userTier,
     entitlementTier,
-
     hasPremium: false,
     hasPremiumMonthly: false,
     hasPremiumYearly: false,
-
     features: buildFeatureAccess(entitlementTier, { unlockMercyFeatures }),
-
     loading: false,
     isLoading: false,
-
     canAccessPremium: () => false,
-
     isTrialExpired: false,
     accessAnnouncement: undefined,
-
     email: undefined,
     userId: undefined,
     user: undefined,
@@ -261,37 +224,26 @@ function authenticatedFreeAccess(params: {
     isAdmin,
     isHighAdmin,
     adminLevel,
-
     isAuthenticated: true,
     isDemoMode: false,
-
     tier: entitlementTier,
     userTier,
     entitlementTier,
-
     hasPremium: false,
     hasPremiumMonthly: false,
     hasPremiumYearly: false,
-
     features: buildFeatureAccess(entitlementTier, {
       unlockMercyFeatures,
       trialExpired: isTrialExpired,
     }),
-
     loading,
     isLoading: loading,
-
     canAccessPremium: () => isHighAdmin,
-
     isTrialExpired,
     accessAnnouncement: isTrialExpired ? TRIAL_ENDED_MESSAGE : undefined,
-
     email,
     userId,
-    user: {
-      id: userId,
-      email,
-    },
+    user: { id: userId, email },
   };
 }
 
@@ -305,15 +257,20 @@ export const useUserAccess = (): UserAccess => {
     isDemoMode: false,
   }));
 
-  const userId = (user?.id || "").trim() || null;
-  const userEmail = (user?.email || "").trim() || null;
+  // Stable user identity — only change when the actual user id changes
+  // Avoids the effect re-running on every render due to derived string recalculation
+  const userId = user?.id ?? null;
+  const userEmail = user?.email ?? null;
+
+  // Run counter — discard results from stale concurrent runs
+  const runIdRef = useRef(0);
 
   useEffect(() => {
-    let alive = true;
+    const runId = ++runIdRef.current;
 
     const run = async () => {
       if (authLoading) {
-        if (!alive) return;
+        if (runId !== runIdRef.current) return;
         setAccess((prev) => ({
           ...prev,
           loading: true,
@@ -331,12 +288,12 @@ export const useUserAccess = (): UserAccess => {
       }
 
       if (!user) {
-        if (!alive) return;
+        if (runId !== runIdRef.current) return;
         setAccess(guestAccess());
         return;
       }
 
-      if (!alive) return;
+      if (runId !== runIdRef.current) return;
       setAccess(
         authenticatedFreeAccess({
           userId,
@@ -348,28 +305,32 @@ export const useUserAccess = (): UserAccess => {
       let adminLevel = 0;
       let isHighAdmin = false;
       let isAdmin = false;
-      let resolvedEmail = userEmail ?? undefined;
+      // Email always comes from auth session — never from profiles table
+      // to prevent stale or spoofed profile email affecting access decisions
+      const resolvedEmail = userEmail?.trim() || undefined;
 
       try {
-        const baseQuery = supabase
+        // Race profile query against a timeout to avoid hanging access resolution
+        const profilePromise = supabase
           .from("profiles")
-          .select("id, email, is_admin, admin_level");
+          .select("id, is_admin, admin_level")
+          .eq("id", userId ?? "")
+          .maybeSingle();
 
-        const profileResult = userId
-          ? await baseQuery.eq("id", userId).maybeSingle()
-          : await baseQuery.maybeSingle();
+        const timeoutPromise = new Promise<null>((resolve) =>
+          window.setTimeout(() => resolve(null), PROFILE_QUERY_TIMEOUT_MS),
+        );
 
-        const { data: profile } = profileResult;
+        const result = await Promise.race([profilePromise, timeoutPromise]);
+        const profile = result && "data" in result ? result.data : null;
 
         if (profile) {
           adminLevel = safeNumber(profile.admin_level, 0);
           isHighAdmin = adminLevel >= 9;
           isAdmin = Boolean(profile.is_admin) || adminLevel > 0 || isHighAdmin;
-          resolvedEmail =
-            (profile.email || userEmail || "").trim() || undefined;
         }
       } catch {
-        // keep level0/admin defaults
+        // keep level0/admin defaults — never block access resolution on profile error
       }
 
       let entitlementTier: TierId = "level0";
@@ -384,13 +345,6 @@ export const useUserAccess = (): UserAccess => {
         isTrialExpired = false;
       }
 
-      /**
-       * Business rule:
-       * - active premium_month / premium_year users should not be locked from rooms
-       * - high admins should also have full room access
-       * - but .tier must remain the raw entitlement tier for UI/tests
-       * - when free trial has ended, stop Library + Teacher Mercy access without adding extra UI
-       */
       const userTier: TierId = isHighAdmin
         ? "level9"
         : toEffectiveAccessTier(entitlementTier);
@@ -398,41 +352,32 @@ export const useUserAccess = (): UserAccess => {
       const unlockMercyFeatures =
         !isTrialExpired && (FORCE_UNLOCK_MERCY_FEATURES || isHighAdmin);
 
+      const trialGating =
+        isTrialExpired && !isHighAdmin && !isPremiumTier(entitlementTier);
+
       const features = buildFeatureAccess(entitlementTier, {
         unlockMercyFeatures,
-        trialExpired: isTrialExpired && !isHighAdmin && !isPremiumTier(entitlementTier),
+        trialExpired: trialGating,
       });
 
       const next: UserAccess = {
         isAdmin,
         isHighAdmin,
         adminLevel,
-
         isAuthenticated: true,
         isDemoMode: false,
-
         tier: entitlementTier,
         userTier,
         entitlementTier,
-
         hasPremium: isPremiumTier(entitlementTier),
         hasPremiumMonthly: entitlementTier === "premium_month",
         hasPremiumYearly: entitlementTier === "premium_year",
-
         features,
-
         loading: false,
         isLoading: false,
-
-        canAccessPremium: () =>
-          isPremiumTier(entitlementTier) || isHighAdmin,
-
-        isTrialExpired: isTrialExpired && !isHighAdmin && !isPremiumTier(entitlementTier),
-        accessAnnouncement:
-          isTrialExpired && !isHighAdmin && !isPremiumTier(entitlementTier)
-            ? TRIAL_ENDED_MESSAGE
-            : undefined,
-
+        canAccessPremium: () => isPremiumTier(entitlementTier) || isHighAdmin,
+        isTrialExpired: trialGating,
+        accessAnnouncement: trialGating ? TRIAL_ENDED_MESSAGE : undefined,
         email: resolvedEmail,
         userId: userId ?? undefined,
         user: {
@@ -441,15 +386,11 @@ export const useUserAccess = (): UserAccess => {
         },
       };
 
-      if (!alive) return;
+      if (runId !== runIdRef.current) return;
       setAccess(next);
     };
 
     void run();
-
-    return () => {
-      alive = false;
-    };
   }, [authLoading, user, userId, userEmail]);
 
   return useMemo(() => access, [access]);

@@ -18,7 +18,6 @@ interface AppShellProps {
   hideHeader?: boolean;
   mainClassName?: string;
   showMercyGuide?: boolean;
-  showGuideBox?: boolean;
 }
 
 export function AppShell({
@@ -27,13 +26,11 @@ export function AppShell({
   hideHeader = true,
   mainClassName = "",
   showMercyGuide = false,
-  showGuideBox = false,
 }: AppShellProps) {
   const location = useLocation();
 
   const isHome = location.pathname === "/";
   const shouldShowMercyGuide = showMercyGuide || isHome;
-  const shouldShowGuideBox = showGuideBox || isHome;
 
   return (
     <div className="relative min-h-screen flex flex-col bg-background">
@@ -76,16 +73,11 @@ export function AppShell({
             </div>
 
             <div className="flex min-w-0 justify-center px-1">
-              <Link
-                to="/"
-                aria-label="Mercy Blade home"
-                className="inline-flex min-w-0 items-end justify-center gap-[2px] leading-none transition-opacity hover:opacity-85"
-              >
+              <Link to="/" aria-label="Mercy Blade home"
+                className="inline-flex min-w-0 items-end justify-center gap-[2px] leading-none transition-opacity hover:opacity-85">
                 <span
                   className="shrink-0 bg-gradient-to-r from-[hsl(var(--rainbow-red))] via-[hsl(var(--rainbow-yellow))] via-[hsl(var(--rainbow-green))] to-[hsl(var(--rainbow-purple))] bg-clip-text text-[34px] font-black tracking-[-0.08em] text-transparent sm:text-[38px]"
-                  style={{
-                    textShadow: "0 1px 2px rgba(0,0,0,0.06)",
-                  }}
+                  style={{ textShadow: "0 1px 2px rgba(0,0,0,0.06)" }}
                 >
                   M
                 </span>
@@ -116,26 +108,6 @@ export function AppShell({
       {bottomBar}
 
       {shouldShowMercyGuide ? <MercyGuide /> : null}
-
-      {shouldShowGuideBox ? (
-        <div
-          style={{
-            position: "fixed",
-            right: 184,
-            bottom: 24,
-            zIndex: 99999,
-            background: "white",
-            color: "black",
-            padding: "12px 16px",
-            borderRadius: 9999,
-            boxShadow: "0 8px 24px rgba(0,0,0,0.18)",
-            border: "1px solid rgba(0,0,0,0.08)",
-            fontWeight: 600,
-          }}
-        >
-          Guide
-        </div>
-      ) : null}
     </div>
   );
 }

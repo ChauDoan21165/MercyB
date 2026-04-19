@@ -8,17 +8,12 @@
  * - Prevent stale async writes after unmount.
  * - Keep session/loading transitions deterministic.
  * - Expose signOut() and refreshSession() as stable actions.
+ * - signOut() increments refreshRequestIdRef so any in-flight refresh is discarded.
  *
  * EMAIL VERIFICATION PATCH:
  * - Treat unverified email sessions as not authenticated.
  * - Only expose session/user when session.user.email_confirmed_at exists.
  * - Prevent fake or unreachable email signups from getting app access before verification.
- *
- * WHY:
- * - The Billing button/page is not the root issue anymore.
- * - The common cause of “navigate to /billing then snap back” is:
- *   route changes -> auth is briefly unresolved/null -> some guard reacts too early.
- * - We also want signup to require real inbox verification before the user can access the app.
  */
 
 import React, {
@@ -105,6 +100,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, [applySession, safeSetLoading, safeSetSession]);
 
   const signOut = useCallback(async () => {
+    // Increment request ID so any in-flight refreshSession calls are discarded
+    // and cannot write a stale session back after we clear it here.
+    refreshRequestIdRef.current += 1;
+
     safeSetLoading(true);
 
     try {

@@ -4,12 +4,12 @@
 /**
  * Tier Validation Utilities
  *
- * Strict validation for tier system - NO GUESSING, NO FALLBACKS
+ * Strict validation for tier system — NO GUESSING, NO FALLBACKS
  * Uses canonical tier constants from lib/constants/tiers.ts
  *
- * New access policy:
+ * Access policy:
  * - premium_month / premium_year unlock the whole paid repo
- * - legacy VIP tiers remain allowed for backward compatibility
+ * - legacy level1..level9 tiers remain allowed for backward compatibility
  * - kids tiers stay on their own progression path
  */
 
@@ -74,14 +74,14 @@ export function validateDbTier(dbTier: string | null | undefined): {
 }
 
 /**
- * Get all canonical tier labels for database queries
+ * Get all canonical tier labels for database queries.
  */
 export function getAllCanonicalTierLabels(): TierValue[] {
   return [...TIERS];
 }
 
 /**
- * Map TierId to database tier label for queries
+ * Map TierId to database tier label for queries.
  */
 export function tierIdToDbLabel(tierId: TierId): TierValue {
   return TIER_ID_TO_LABEL[tierId] as TierValue;
@@ -95,8 +95,12 @@ function isPaidBillingTier(tierId: TierId): boolean {
   return tierId === "premium_month" || tierId === "premium_year";
 }
 
+/**
+ * Legacy compatibility tiers — canonical IDs are level1..level9,
+ * not vip1..vip9. The regex must match the actual TierId values.
+ */
 function isLegacyVipTier(tierId: TierId): boolean {
-  return /^vip[1-9]$/.test(String(tierId));
+  return /^level[1-9]$/.test(String(tierId));
 }
 
 function isPaidRepoTier(tierId: TierId): boolean {
@@ -111,14 +115,14 @@ function kidsTierLevel(tierId: TierId): number {
 }
 
 /**
- * Verify tier access - returns true if userTier can access roomTier
+ * Verify tier access — returns true if userTier can access roomTier.
  *
  * Policy:
  * - level0 users can only access level0 content
- * - paid billing tiers can access the whole adult paid repo
- * - legacy VIP tiers can access the whole adult paid repo for compatibility
+ * - paid billing tiers unlock the whole adult paid repo
+ * - legacy level1..level9 tiers unlock the whole adult paid repo (compatibility)
  * - kids tiers only access kids progression by level
- * - adult users may access kids content only when the room itself is kids-tiered
+ * - adult users may access kids-tiered rooms
  */
 export function verifyTierAccess(userTierId: TierId, roomTierId: TierId): boolean {
   const userTier = normalizeTier(String(userTierId).trim());
@@ -129,28 +133,24 @@ export function verifyTierAccess(userTierId: TierId, roomTierId: TierId): boolea
   if (roomTier === "level0") return true;
   if (userTier === roomTier) return true;
 
-  // Kids progression stays isolated from adult paid tiers.
+  // Kids progression stays isolated from adult paid tiers
   if (isKidsTier(userTier)) {
     if (!isKidsTier(roomTier)) return false;
     return kidsTierLevel(userTier) >= kidsTierLevel(roomTier);
   }
 
-  // Adult users can access kids content.
-  if (isKidsTier(roomTier)) {
-    return true;
-  }
+  // Adult users can access kids content
+  if (isKidsTier(roomTier)) return true;
 
-  // Paid adult users unlock the whole adult paid repo.
+  // Paid adult users unlock the whole adult paid repo
   if (isPaidRepoTier(userTier)) return true;
 
-  // Level 0 adult users cannot access paid adult content.
-  if (userTier === "level0") return false;
-
+  // Level 0 adult users cannot access paid adult content
   return false;
 }
 
 /**
- * Debug helper - log tier mismatch details
+ * Debug helper — log tier mismatch details in development only.
  */
 export function logTierMismatch(
   context: string,

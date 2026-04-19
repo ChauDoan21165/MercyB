@@ -7,6 +7,10 @@ except ImportError:
     print("ERROR: please run:  pip3 install requests")
     sys.exit(1)
 
+# ── SET YOUR API KEY HERE ──────────────────────────────────
+API_KEY = "sk_66e7091eab5bf4473ef4974fb1f9190084675d23ec094f8c"  # set your key here   # ← paste your ElevenLabs key here
+# ──────────────────────────────────────────────────────────
+
 VOICE_ID       = "21m00Tcm4TlvDq8ikWAM"
 MODEL_ID       = "eleven_v3"
 VOICE_SETTINGS = {"stability":0.55,"similarity_boost":0.85,"style":0.15,"use_speaker_boost":True}
@@ -17,6 +21,7 @@ MAX_CHARS      = 2500
 def scan(public_dir):
     data_dir  = os.path.join(public_dir, "data")
     audio_dir = os.path.join(public_dir, "audio")
+    os.makedirs(audio_dir, exist_ok=True)
     if not os.path.isdir(data_dir):  print(f"ERROR: no data/ at {data_dir}");  sys.exit(1)
     if not os.path.isdir(audio_dir): print(f"ERROR: no audio/ at {audio_dir}"); sys.exit(1)
 
@@ -57,6 +62,9 @@ def scan(public_dir):
             for fname in audio_files:
                 fname = fname.strip()
                 if not fname: continue
+                # Skip malformed paths with slashes — broken JSON entries
+                if '/' in fname or chr(92) in fname:
+                    continue
                 key = fname.lower()
                 if key in seen or key in existing: continue
                 seen.add(key)
@@ -133,7 +141,7 @@ def generate(missing, audio_dir, api_key):
 def main():
     p = argparse.ArgumentParser(description="MercyB missing audio scanner")
     p.add_argument("--public",   required=True, help="Path to public/ folder")
-    p.add_argument("--key",      default="",    help="ElevenLabs API key")
+    p.add_argument("--key",      default="",    help="ElevenLabs API key (overrides API_KEY in script)")
     p.add_argument("--generate", action="store_true", help="Generate missing audio")
     args = p.parse_args()
 
@@ -150,17 +158,17 @@ def main():
     print(f"⚠️  Missing : {len(missing)} files\n")
     write_report(missing, "missing_audio_report.txt")
 
-    api_key = args.key.strip()
+    # --key argument takes priority, then fall back to API_KEY set at top of file
+    api_key = args.key.strip() or API_KEY.strip()
 
     if api_key:
         generate(missing, audio_dir, api_key)
-    elif args.generate:
-        print("\n  ERROR: --generate requires --key YOUR_ELEVENLABS_KEY")
-        print(f"  Run:")
-        print(f"    python3 scan_missing_audio.py --public {public_dir} --key YOUR_KEY")
     else:
-        print(f"\n  To generate missing audio:")
-        print(f"    python3 scan_missing_audio.py --public {public_dir} --key YOUR_KEY")
+        print(f"\n  To generate missing audio, either:")
+        print(f"  1. Set API_KEY at the top of this script, then run:")
+        print(f"       python3 scan_missing_audio.py --public {public_dir}")
+        print(f"  2. Or pass key on command line:")
+        print(f"       python3 scan_missing_audio.py --public {public_dir} --key YOUR_KEY")
 
 
 if __name__ == "__main__":

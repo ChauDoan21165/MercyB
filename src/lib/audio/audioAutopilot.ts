@@ -252,7 +252,7 @@ export function saveAutopilotStatus(status: AutopilotStatusStore): void {
       };
       localStorage.setItem(AUTOPILOT_STATUS_KEY, JSON.stringify(merged));
     } catch {
-      console.error("Failed to save autopilot status to localStorage");
+      if (import.meta.env.DEV) console.warn("[Autopilot] Failed to save status");
     }
   }
 }
@@ -289,7 +289,7 @@ export function saveAutopilotHistory(history: AutopilotHistory): void {
       history.updatedAt = new Date().toISOString();
       localStorage.setItem(AUTOPILOT_HISTORY_KEY, JSON.stringify(history));
     } catch {
-      console.error("Failed to save autopilot history");
+      if (import.meta.env.DEV) console.warn("[Autopilot] Failed to save history");
     }
   }
 }
@@ -334,7 +334,7 @@ export function savePendingGovernance(db: PendingGovernanceDB): void {
       db.updatedAt = new Date().toISOString();
       localStorage.setItem(PENDING_GOVERNANCE_KEY, JSON.stringify(db));
     } catch {
-      console.error("Failed to save pending governance");
+      if (import.meta.env.DEV) console.warn("[Autopilot] Failed to save pending governance");
     }
   }
 }
@@ -384,7 +384,7 @@ export function rejectGovernanceReview(id: string, reviewedBy?: string, notes?: 
  * Path: public/audio/autopilot-status.json
  */
 export function writeAutopilotStatusToFile(status: AutopilotStatusStore, _outputPath?: string): void {
-  console.log("[Autopilot] Status ready to write:", JSON.stringify(status, null, 2));
+  if (import.meta.env.DEV) console.log("[Autopilot] Status ready to write:", JSON.stringify(status, null, 2));
 }
 
 /**
@@ -392,7 +392,7 @@ export function writeAutopilotStatusToFile(status: AutopilotStatusStore, _output
  * Path: public/audio/autopilot-report.json
  */
 export function writeAutopilotReportToFile(_report: AutopilotReport, _outputPath?: string): void {
-  console.log("[Autopilot] Report ready to write");
+  if (import.meta.env.DEV) console.log("[Autopilot] Report ready to write");
 }
 
 /**
@@ -404,7 +404,7 @@ export function writeAutopilotChangeSetToFile(
   _timestamp: string,
   _outputPath?: string
 ): void {
-  console.log("[Autopilot] ChangeSet ready to write");
+  if (import.meta.env.DEV) console.log("[Autopilot] ChangeSet ready to write");
 }
 
 /**
@@ -412,7 +412,7 @@ export function writeAutopilotChangeSetToFile(
  * Path: public/audio/autopilot-history.json
  */
 export function writeAutopilotHistoryToFile(_history: AutopilotHistory, _outputPath?: string): void {
-  console.log("[Autopilot] History ready to write");
+  if (import.meta.env.DEV) console.log("[Autopilot] History ready to write");
 }
 
 /**
@@ -420,7 +420,7 @@ export function writeAutopilotHistoryToFile(_history: AutopilotHistory, _outputP
  * Path: public/audio/pending-governance.json
  */
 export function writePendingGovernanceToFile(_db: PendingGovernanceDB, _outputPath?: string): void {
-  console.log("[Autopilot] Pending governance ready to write");
+  if (import.meta.env.DEV) console.log("[Autopilot] Pending governance ready to write");
 }
 
 // ============================================
@@ -724,7 +724,7 @@ export async function runAutopilotCycle(
 
     return result;
   } catch (error) {
-    console.error("Autopilot cycle failed:", error);
+    if (import.meta.env.DEV) console.error("[Autopilot] Cycle failed:", error);
     result.duration = Date.now() - startTime;
     return result;
   }

@@ -1,11 +1,11 @@
 // PATH: src/security/typeGuards.ts
 // File: typeGuards.ts
 //
-// Type Guards - Strict runtime type validation for user tier and roles
+// Type Guards — Strict runtime type validation for user tier and roles
 
 import type { TierId } from "@/lib/constants/tiers";
 
-const VALID_TIERS: TierId[] = [
+const VALID_TIERS_SET = new Set<string>([
   "level0",
   "level1",
   "level2",
@@ -21,10 +21,12 @@ const VALID_TIERS: TierId[] = [
   "kids_1",
   "kids_2",
   "kids_3",
-];
+]);
 
 const VALID_ROLES = ["admin", "moderator", "user"] as const;
 export type AppRole = (typeof VALID_ROLES)[number];
+
+const VALID_ROLES_SET = new Set<string>(VALID_ROLES);
 
 function isKidsTier(tier: TierId): boolean {
   return tier === "kids_1" || tier === "kids_2" || tier === "kids_3";
@@ -60,64 +62,60 @@ function kidsTierLevel(tier: TierId): number {
 }
 
 /**
- * Guard: Ensure tier is valid, force to 'level0' if poisoned
+ * Guard: Ensure tier is valid, force to 'level0' if poisoned.
  */
 export function guardTierId(tier: unknown): TierId {
   if (typeof tier !== "string") {
     if (import.meta.env.DEV) {
-      console.error("[TypeGuard] Invalid tier type:", typeof tier);
+      console.warn("[TypeGuard] Invalid tier type:", typeof tier);
     }
     return "level0";
   }
 
-  const normalized = tier.trim().toLowerCase() as TierId;
+  const normalized = tier.trim().toLowerCase();
 
-  if (!VALID_TIERS.includes(normalized)) {
+  if (!VALID_TIERS_SET.has(normalized)) {
     if (import.meta.env.DEV) {
-      console.error("[TypeGuard] Invalid tier value:", tier, "- forcing to level0");
+      console.warn("[TypeGuard] Invalid tier value:", tier, "— forcing to level0");
     }
     return "level0";
   }
 
-  return normalized;
+  return normalized as TierId;
 }
 
 /**
- * Guard: Ensure role is valid
+ * Guard: Ensure role is valid, force to 'user' if unknown.
  */
 export function guardRole(role: unknown): AppRole {
-  if (typeof role !== "string") {
-    return "user";
-  }
+  if (typeof role !== "string") return "user";
 
-  const normalized = role.trim().toLowerCase() as AppRole;
+  const normalized = role.trim().toLowerCase();
 
-  if (!VALID_ROLES.includes(normalized)) {
+  if (!VALID_ROLES_SET.has(normalized)) {
     if (import.meta.env.DEV) {
-      console.error("[TypeGuard] Invalid role:", role, "- forcing to user");
+      console.warn("[TypeGuard] Invalid role:", role, "— forcing to user");
     }
     return "user";
   }
 
-  return normalized;
+  return normalized as AppRole;
 }
 
 /**
- * Guard: Ensure user ID is valid UUID
+ * Guard: Ensure user ID is a valid UUID.
+ * Returns null for any invalid or non-UUID value.
  */
 export function guardUserId(userId: unknown): string | null {
-  if (typeof userId !== "string") {
-    return null;
-  }
+  if (typeof userId !== "string") return null;
 
   const trimmed = userId.trim();
-
   const uuidPattern =
     /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
   if (!uuidPattern.test(trimmed)) {
     if (import.meta.env.DEV) {
-      console.error("[TypeGuard] Invalid user ID format");
+      console.warn("[TypeGuard] Invalid user ID format");
     }
     return null;
   }
@@ -126,7 +124,8 @@ export function guardUserId(userId: unknown): string | null {
 }
 
 /**
- * Compare client tier vs server tier, detect spoofing
+ * Compare client tier vs server tier, detect spoofing.
+ * Returns true if a mismatch is detected.
  */
 export function detectTierSpoofing(
   clientTier: TierId,
@@ -154,11 +153,10 @@ export function detectTierSpoofing(
  * Notes:
  * - premium_month / premium_year are canonical paid billing tiers
  * - level1..level9 remain legacy compatibility levels
- * - kids tiers remain scoped lower levels
+ * - kids tiers map to levels 1–3
  *
- * IMPORTANT:
- * - Do not use this alone as an access policy for mixed adult/kids access.
- * - Use canAccessTier() for policy-aware checks.
+ * IMPORTANT: Do not use this alone as an access policy.
+ * Use canAccessTier() for policy-aware checks.
  */
 export function getTierLevel(tier: TierId): number {
   const safeTier = guardTierId(tier);
@@ -185,7 +183,7 @@ export function getTierLevel(tier: TierId): number {
 }
 
 /**
- * Check if user tier grants access to required tier
+ * Check if user tier grants access to required tier.
  *
  * Safe behavior:
  * - unknown / poisoned user tier => treated as 'level0'
@@ -207,20 +205,20 @@ export function canAccessTier(
   if (safeRequiredTier === "level0") return true;
   if (safeUserTier === safeRequiredTier) return true;
 
-  // Kids accounts stay isolated from adult tiers.
+  // Kids accounts stay isolated from adult tiers
   if (isKidsTier(safeUserTier)) {
     if (!isKidsTier(safeRequiredTier)) return false;
     return kidsTierLevel(safeUserTier) >= kidsTierLevel(safeRequiredTier);
   }
 
-  // Adult paid users may access kids content.
+  // Adult paid users may access kids content
   if (isKidsTier(safeRequiredTier)) {
     return isPaidRepoTier(safeUserTier);
   }
 
-  // Adult paid access unlocks all adult paid tiers.
+  // Adult paid access unlocks all adult paid tiers
   if (isPaidRepoTier(safeUserTier)) return true;
 
-  // Level 0 adult users cannot access paid adult content.
+  // Level 0 adult users cannot access paid adult content
   return false;
 }

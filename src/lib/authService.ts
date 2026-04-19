@@ -10,8 +10,11 @@ export type BackendEntitlement = {
   source: string | null;
   status: string;
   expires_at: string | null;
+  current_period_end?: string | null;
   plan_name?: string | null;
   tier_id?: string | null;
+  price_id?: string | null;
+  cancel_at_period_end?: boolean | null;
 };
 
 export const FAIL_CLOSED_ENTITLEMENT: BackendEntitlement = {
@@ -19,8 +22,11 @@ export const FAIL_CLOSED_ENTITLEMENT: BackendEntitlement = {
   source: null,
   status: "inactive",
   expires_at: null,
+  current_period_end: null,
   plan_name: null,
   tier_id: null,
+  price_id: null,
+  cancel_at_period_end: null,
 };
 
 function isAlreadyRegisteredAuthError(err: unknown) {
@@ -67,8 +73,14 @@ function normalizeEntitlement(payload: unknown): BackendEntitlement {
     source: asNonEmptyStringOrNull(row.source),
     status: normalizeStatus(row.status, fallbackStatus),
     expires_at: asNonEmptyStringOrNull(row.expires_at),
+    current_period_end: asNonEmptyStringOrNull(row.current_period_end),
     plan_name: asNonEmptyStringOrNull(row.plan_name),
     tier_id: asNonEmptyStringOrNull(row.tier_id),
+    price_id: asNonEmptyStringOrNull(row.price_id),
+    cancel_at_period_end:
+      typeof row.cancel_at_period_end === "boolean"
+        ? row.cancel_at_period_end
+        : null,
   };
 }
 
@@ -140,22 +152,11 @@ function isExplicitLegacyVipTier(value: string): value is TierId {
   );
 }
 
-/**
- * Current test-expected compatibility mapping:
- * - month / monthly / generic premium => level1
- * - year / annual / yearly => level9
- */
 function resolveCompatibilityTierFromText(text: string): TierId | null {
   if (
     textHasAny(text, [
-      "premiumyear",
-      "oneyear",
-      "yearly",
-      "annual",
-      "annually",
-      "12month",
-      "12months",
-      "1year",
+      "premiumyear", "oneyear", "yearly", "annual",
+      "annually", "12month", "12months", "1year",
     ])
   ) {
     return "level9";
@@ -163,18 +164,13 @@ function resolveCompatibilityTierFromText(text: string): TierId | null {
 
   if (
     textHasAny(text, [
-      "premiummonth",
-      "onemonth",
-      "monthly",
-      "1month",
+      "premiummonth", "onemonth", "monthly", "1month",
     ])
   ) {
     return "level1";
   }
 
-  if (text.includes("premium")) {
-    return "level1";
-  }
+  if (text.includes("premium")) return "level1";
 
   return null;
 }
@@ -187,15 +183,11 @@ export function resolveEntitlementTier(
   const exactTier = String(ent?.tier_id ?? "").trim().toLowerCase();
   const text = entitlementText(ent);
 
-  // Current compatibility policy expected by tests:
-  // month-style premium -> level1, yearly/annual -> level9
-  if (exactTier === "premium_year") return "level9";
+  if (exactTier === "premium_year")  return "level9";
   if (exactTier === "premium_month") return "level1";
 
-  // Preserve true legacy VIP tiers exactly if the backend still sends them.
   if (isExplicitLegacyVipTier(exactTier)) return exactTier;
 
-  // Legacy VIP detection from other entitlement text.
   if (text.includes("level9")) return "level9";
   if (text.includes("level8")) return "level8";
   if (text.includes("level7")) return "level7";
@@ -209,24 +201,13 @@ export function resolveEntitlementTier(
   const inferredTier = resolveCompatibilityTierFromText(text);
   if (inferredTier) return inferredTier;
 
-  // Paid but otherwise unknown premium-like plan:
-  // current tests expect the safe fallback to level1.
   return "level1";
 }
 
-/**
- * Compatibility shim for older code still expecting VipKey.
- *
- * Policy expected by current tests:
- * - level0 stays level0
- * - level1 stays level1
- * - level2+ collapse to level3 compatibility
- */
 export function entitlementToVipKey(
   ent: BackendEntitlement | null | undefined,
 ): VipKey {
   const tier = resolveEntitlementTier(ent);
-
   if (tier === "level0") return "level0";
   if (tier === "level1") return "level1";
   return "level3";
@@ -237,33 +218,28 @@ export async function fetchCurrentEntitlement(
 ): Promise<BackendEntitlement | null> {
   try {
     if (!hasGetSession(client)) {
-      console.warn(
-        "[authService] entitlement fetch skipped: client.auth.getSession is not available",
-      );
+      if (import.meta.env.DEV) {
+        console.warn("[authService] entitlement fetch skipped: getSession unavailable");
+      }
       return { ...FAIL_CLOSED_ENTITLEMENT };
     }
 
-    const {
-      data: { session },
-      error: sessionError,
-    } = await client.auth.getSession();
+    const { data: { session }, error: sessionError } =
+      await client.auth.getSession();
 
     if (sessionError) {
-      console.warn(
-        "[authService] getSession failed for entitlement fetch:",
-        sessionError,
-      );
+      if (import.meta.env.DEV) {
+        console.warn("[authService] getSession failed:", sessionError.message);
+      }
       return { ...FAIL_CLOSED_ENTITLEMENT };
     }
 
-    if (!session?.access_token) {
-      return null;
-    }
+    if (!session?.access_token) return null;
 
     if (!hasFunctionsInvoke(client)) {
-      console.warn(
-        "[authService] entitlement fetch skipped: client.functions.invoke is not available",
-      );
+      if (import.meta.env.DEV) {
+        console.warn("[authService] entitlement fetch skipped: functions.invoke unavailable");
+      }
       return { ...FAIL_CLOSED_ENTITLEMENT };
     }
 
@@ -272,18 +248,27 @@ export async function fetchCurrentEntitlement(
     });
 
     if (error) {
-      console.warn("[authService] me-entitlement failed:", error);
+      if (import.meta.env.DEV) {
+        console.warn("[authService] me-entitlement failed:", error);
+      }
       return { ...FAIL_CLOSED_ENTITLEMENT };
     }
 
     return normalizeEntitlement(data);
   } catch (error) {
-    console.warn("[authService] entitlement fetch crashed:", error);
+    if (import.meta.env.DEV) {
+      console.warn("[authService] entitlement fetch crashed:", error);
+    }
     return { ...FAIL_CLOSED_ENTITLEMENT };
   }
 }
 
-export async function signUpWithEmail(email: string, _password: string) {
+/**
+ * Sign up via OTP magic link.
+ * Note: password parameter is not used — this flow uses passwordless OTP.
+ * Kept for API compatibility with callers that pass a password argument.
+ */
+export async function signUpWithEmail(email: string, _password?: string) {
   const cleanEmail = email.trim().toLowerCase();
 
   const { data, error } = await supabase.auth.signInWithOtp({
@@ -302,11 +287,18 @@ export async function signUpWithEmail(email: string, _password: string) {
 
       e.code = "email_already_registered";
       e.cause = error;
-      console.error("Sign up error (already registered):", error);
+
+      if (import.meta.env.DEV) {
+        console.warn("[authService] signUp: already registered:", error.message);
+      }
+
       throw e;
     }
 
-    console.error("Sign up error:", error);
+    if (import.meta.env.DEV) {
+      console.warn("[authService] signUp error:", error.message);
+    }
+
     throw error;
   }
 
@@ -326,7 +318,9 @@ export async function signInWithEmail(email: string, password: string) {
   });
 
   if (error) {
-    console.error("Sign in error:", error);
+    if (import.meta.env.DEV) {
+      console.warn("[authService] signIn error:", error.message);
+    }
     throw error;
   }
 
@@ -337,28 +331,26 @@ export async function signOut() {
   const { error } = await supabase.auth.signOut();
 
   if (error) {
-    console.error("Sign out error:", error);
+    if (import.meta.env.DEV) {
+      console.warn("[authService] signOut error:", error.message);
+    }
     throw error;
   }
 }
 
 export async function getCurrentUser() {
-  const {
-    data: { user },
-    error,
-  } = await supabase.auth.getUser();
+  const { data: { user }, error } = await supabase.auth.getUser();
 
   if (error) {
-    console.error("Get user error:", error);
+    if (import.meta.env.DEV) {
+      console.warn("[authService] getUser error:", error.message);
+    }
     throw error;
   }
 
   return user;
 }
 
-/**
- * Compatibility shim for older code still expecting VipKey.
- */
 export async function getCurrentVipKey(): Promise<VipKey> {
   const ent = await fetchCurrentEntitlement();
   return entitlementToVipKey(ent);

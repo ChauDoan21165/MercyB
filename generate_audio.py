@@ -5,7 +5,7 @@ import re
 import time
 import requests
 
-API_KEY = "sk_e7cc66e98d7b3db5932ce4ee16e38cb92f94114c582e570c"
+API_KEY = ""  # set your key here
 BASE_DIR = "/Users/admin/MercyB/public/images"
 VOICE_ID = "DODLEQrClDo8wCz460ld"
 MODEL_ID = "eleven_v3"

@@ -251,9 +251,17 @@ export async function startCheckoutOrOpenPortal(
     };
   }
 
-  if (payload?.already_subscribed) {
+  // ── DUPLICATE SUBSCRIPTION GUARD ──────────────────────────────
+  // Backend returns action:"manage_billing" when user already has
+  // an active/trialing/past_due subscription. Send them to the
+  // billing portal instead of starting a new checkout session.
+  if (
+    payload?.action === "manage_billing" ||
+    payload?.already_subscribed
+  ) {
     return openBillingPortal();
   }
+  // ──────────────────────────────────────────────────────────────
 
   const checkoutUrl = getCheckoutUrl(payload ?? {});
 

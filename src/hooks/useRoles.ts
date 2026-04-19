@@ -1,7 +1,8 @@
-// Custom Role Loader - Load user roles from database
+// PATH: src/hooks/useRoles.ts
+// Custom Role Loader — Load user roles from database
 
-import { useEffect, useState } from 'react';
-import { supabase } from '@/lib/supabaseClient';
+import { useCallback, useEffect, useRef, useState } from "react";
+import { supabase } from "@/lib/supabaseClient";
 
 export interface UserRoles {
   isAdmin: boolean;
@@ -10,76 +11,86 @@ export interface UserRoles {
   loading: boolean;
 }
 
+const DEFAULT_ROLES: UserRoles = {
+  isAdmin: false,
+  isModerator: false,
+  isContentEditor: false,
+  loading: false,
+};
+
 export function useRoles() {
   const [roles, setRoles] = useState<UserRoles>({
-    isAdmin: false,
-    isModerator: false,
-    isContentEditor: false,
+    ...DEFAULT_ROLES,
     loading: true,
   });
 
-  useEffect(() => {
-    loadRoles();
+  const mountedRef = useRef(false);
+  const runIdRef   = useRef(0);
 
-    // Subscribe to auth changes
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(() => {
-      loadRoles();
-    });
+  const loadRoles = useCallback(async () => {
+    const runId = ++runIdRef.current;
 
-    return () => {
-      subscription.unsubscribe();
-    };
+    try {
+      const { data, error: userError } = await supabase.auth.getUser();
+
+      if (!mountedRef.current || runId !== runIdRef.current) return;
+
+      if (userError || !data?.user) {
+        setRoles({ ...DEFAULT_ROLES });
+        return;
+      }
+
+      const { data: userRoles, error: rolesError } = await supabase
+        .from("user_roles")
+        .select("role")
+        .eq("user_id", data.user.id);
+
+      if (!mountedRef.current || runId !== runIdRef.current) return;
+
+      if (rolesError) {
+        // Log only in dev — never leak DB error details to production console
+        if (import.meta.env.DEV) {
+          console.warn("[useRoles] Failed to load roles:", rolesError.message);
+        }
+        setRoles({ ...DEFAULT_ROLES });
+        return;
+      }
+
+      const rolesList = (userRoles ?? []).map((r) => String(r.role ?? ""));
+
+      setRoles({
+        isAdmin: rolesList.includes("admin"),
+        isModerator: rolesList.includes("moderator"),
+        isContentEditor: rolesList.includes("content_editor"),
+        loading: false,
+      });
+    } catch {
+      if (!mountedRef.current || runId !== runIdRef.current) return;
+      setRoles({ ...DEFAULT_ROLES });
+    }
   }, []);
 
-  async function loadRoles() {
-    try {
-      const { data: { user } } = await supabase.auth.getUser();
+  useEffect(() => {
+    mountedRef.current = true;
 
-      if (!user) {
-        setRoles({
-          isAdmin: false,
-          isModerator: false,
-          isContentEditor: false,
-          loading: false,
-        });
-        return;
-      }
+    void loadRoles();
 
-      // Load roles from database
-      const { data: userRoles, error } = await supabase
-        .from('user_roles')
-        .select('role')
-        .eq('user_id', user.id);
+    // Re-load roles only on meaningful auth events —
+    // SIGNED_IN and SIGNED_OUT, not TOKEN_REFRESHED which fires on every
+    // silent refresh and would cause unnecessary DB queries
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (event) => {
+        if (event === "SIGNED_IN" || event === "SIGNED_OUT") {
+          void loadRoles();
+        }
+      },
+    );
 
-      if (error) {
-        console.error('Failed to load roles:', error);
-        setRoles({
-          isAdmin: false,
-          isModerator: false,
-          isContentEditor: false,
-          loading: false,
-        });
-        return;
-      }
-
-      const rolesList = userRoles?.map(r => r.role) || [];
-
-      setRoles({
-        isAdmin: rolesList.includes('admin'),
-        isModerator: rolesList.includes('moderator'),
-        isContentEditor: rolesList.includes('content_editor'),
-        loading: false,
-      });
-    } catch (error) {
-      console.error('Error loading roles:', error);
-      setRoles({
-        isAdmin: false,
-        isModerator: false,
-        isContentEditor: false,
-        loading: false,
-      });
-    }
-  }
+    return () => {
+      mountedRef.current = false;
+      subscription.unsubscribe();
+    };
+  }, [loadRoles]);
 
   return roles;
 }

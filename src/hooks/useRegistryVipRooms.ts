@@ -1,20 +1,19 @@
+// src/hooks/useRegistryVipRooms.ts
 /**
  * REGISTRY-FIRST VIP ROOM LOADER - Design System v1.1
- * 
+ *
  * Source of Truth: JSON files via roomFetcher (runtime loaded)
  * Enhancement: Supabase rooms table (optional metadata)
- * 
+ *
  * Contract:
  * - All rooms from roomFetcher MUST appear in the grid
  * - DB is used ONLY for extra metadata (domain, etc.)
  * - Missing DB row does NOT hide a room
- * 
- * This uses async runtime loading instead of static imports.
  */
 
-import { useQuery } from '@tanstack/react-query';
-import { supabase } from '@/lib/supabaseClient';
-import { TIER_ID_TO_LABEL, type TierId } from '@/lib/constants/tiers';
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/lib/supabaseClient";
+import { TIER_ID_TO_LABEL, type TierId } from "@/lib/constants/tiers";
 
 export interface RegistryRoom {
   id: string;
@@ -24,68 +23,82 @@ export interface RegistryRoom {
   domain?: string;
   is_active: boolean;
   hasData: boolean;
-  entries?: any[];
 }
 
-/**
- * Fetch rooms from fetcher + enhance with DB metadata
- */
+type FetchedRoom = {
+  id: string;
+  nameEn?: string;
+  nameVi?: string;
+  domain?: string;
+  hasData?: boolean;
+};
+
+type DbRoom = {
+  id: string;
+  tier: string | null;
+  domain: string | null;
+};
+
 async function fetchRegistryVipRooms(tierId: TierId): Promise<RegistryRoom[]> {
-  // 1. Get canonical tier label for DB matching
   const tierLabel = TIER_ID_TO_LABEL[tierId];
 
-  // 2. Fetch rooms from runtime loader
-  const fetchedRooms: any[] = [];
-if (import.meta.env.DEV) {
-    console.log(`[RegistryVipRooms] ${tierId} → ${fetchedRooms.length} rooms from fetcher`);
+  // TODO: replace with real runtime loader when implemented
+  // Currently returns empty — rooms come from useCachedRooms instead
+  const fetchedRooms: FetchedRoom[] = [];
+
+  if (import.meta.env.DEV) {
+    console.log(
+      `[RegistryVipRooms] ${tierId} → ${fetchedRooms.length} rooms from fetcher`,
+    );
   }
 
-  // 3. Fetch DB metadata for all these rooms (optional enhancement)
-  const roomIds = fetchedRooms.map((r: any) => r.id);
+  if (fetchedRooms.length === 0) return [];
+
+  const roomIds = fetchedRooms.map((r) => r.id);
+
   const { data: dbRooms, error } = await supabase
-    .from('rooms')
-    .select('id, tier, domain')
-    .in('id', roomIds);
+    .from("rooms")
+    .select("id, tier, domain")
+    .in("id", roomIds);
 
   if (error) {
-    console.warn(`[RegistryVipRooms] DB query warning for ${tierId}:`, error);
-    // Continue without DB data - fetcher is source of truth
+    // DB is optional enhancement — log in DEV only and continue
+    if (import.meta.env.DEV) {
+      console.warn(`[RegistryVipRooms] DB query warning for ${tierId}:`, error);
+    }
   }
 
-  // 4. Build room map with DB metadata
-  const dbRoomMap = new Map(
-    (dbRooms || []).map((r) => [r.id, r])
+  const dbRoomMap = new Map<string, DbRoom>(
+    (dbRooms ?? []).map((r) => [r.id, r]),
   );
 
-  // 5. Merge fetcher + DB data
-  const mergedRooms: RegistryRoom[] = fetchedRooms.map((room: any) => {
+  const mergedRooms: RegistryRoom[] = fetchedRooms.map((room) => {
     const dbRoom = dbRoomMap.get(room.id);
 
     return {
       id: room.id,
-      title_en: room.nameEn,
-      title_vi: room.nameVi,
+      title_en: room.nameEn ?? room.id,
+      title_vi: room.nameVi ?? "",
       tier: tierLabel,
-      domain: dbRoom?.domain || room.domain,
+      domain: dbRoom?.domain ?? room.domain,
       is_active: true,
       hasData: room.hasData !== false,
     };
   });
 
   if (import.meta.env.DEV) {
-    console.log(`[RegistryVipRooms] ${tierId} → ${mergedRooms.length} rooms loaded`);
+    console.log(
+      `[RegistryVipRooms] ${tierId} → ${mergedRooms.length} rooms loaded`,
+    );
   }
 
   return mergedRooms;
 }
 
-/**
- * React Query hook for registry-first VIP room loading
- */
 export function useRegistryVipRooms(tierId: TierId) {
   return useQuery({
-    queryKey: ['registry-vip-rooms', tierId],
-    queryFn: () => fetchRegistryVipRooms(tierId),
-    staleTime: 5 * 60 * 1000, // 5 min cache
+    queryKey: ["registry-vip-rooms", tierId],
+    queryFn:  () => fetchRegistryVipRooms(tierId),
+    staleTime: 5 * 60 * 1000,
   });
 }

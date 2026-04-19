@@ -893,30 +893,32 @@ export default function TierIndex() {
       const qs = new URLSearchParams(typeof window !== "undefined" ? window.location.search : "");
       if (qs.get("debugTier") !== "1") return;
 
-      console.log("tier-debug TierIndex:", {
-        source: counts.source,
-        totalAll: counts.totalAll,
-        totalCore: counts.totalCore,
-        nonCore: nonCoreCount,
-        freeCoreCount,
-        freeLifeCount,
-      });
+      if (import.meta.env.DEV) {
+        if (import.meta.env.DEV) console.log("tier-debug TierIndex:", {
+          source: counts.source,
+          totalAll: counts.totalAll,
+          totalCore: counts.totalCore,
+          nonCore: nonCoreCount,
+          freeCoreCount,
+          freeLifeCount,
+        });
 
-      console.log("tier-debug level0 core ids (first 80):", freeCoreIds.slice(0, 80));
-      console.log("tier-debug level0 explicit-life ids (first 80):", freeLifeIds.slice(0, 80));
+        if (import.meta.env.DEV) console.log("tier-debug level0 core ids (first 80):", freeCoreIds.slice(0, 80));
+        if (import.meta.env.DEV) console.log("tier-debug level0 explicit-life ids (first 80):", freeLifeIds.slice(0, 80));
 
-      const coreRooms =
-        (window as any).__MB_ALL_ROOMS__?.filter((r: any) => norm(r?.area) === "core") || [];
-      const spineSet = new Set(SPINE_TOP_TO_BOTTOM.map((t) => t.id));
-      const sample = coreRooms.slice(0, 30).map((r: any) => ({
-        id: r.id,
-        tier: r.tier,
-        required_rank:
-          r.required_rank ?? r.required_vip_rank ?? r.min_rank ?? r.vip_rank ?? r.rank,
-        inferred: inferSpineTierForCounting(r, spineSet),
-      }));
+        const coreRooms =
+          (window as any).__MB_ALL_ROOMS__?.filter((r: any) => norm(r?.area) === "core") || [];
+        const spineSet = new Set(SPINE_TOP_TO_BOTTOM.map((t) => t.id));
+        const sample = coreRooms.slice(0, 30).map((r: any) => ({
+          id: r.id,
+          tier: r.tier,
+          required_rank:
+            r.required_rank ?? r.required_vip_rank ?? r.min_rank ?? r.vip_rank ?? r.rank,
+          inferred: inferSpineTierForCounting(r, spineSet),
+        }));
 
-      console.log("tier-debug core sample (first 30):", sample);
+        if (import.meta.env.DEV) console.log("tier-debug core sample (first 30):", sample);
+      }
     } catch {
       // no-op
     }

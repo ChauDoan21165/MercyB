@@ -902,6 +902,64 @@ async function createCheckoutSessionForFreeUser(params: {
   });
 }
 
+// New minimal guard to prevent duplicate active subscriptions
+async function checkForActiveSubscription(params: {
+  supabaseAdmin: AdminClient;
+  userId: string;
+  stripe: Stripe;
+  resolvedPriceId: string;
+}): Promise<Response | null> {
+  const canonical = await getCanonicalSubscription({
+    supabaseAdmin: params.supabaseAdmin,
+    userId: params.userId,
+    includeCanceled: false, // only active/trialing/past_due/unpaid
+  });
+  if ("error" in canonical) return canonical.error;
+
+  if (!canonical.data) return null;
+
+  const subscriptionId = asNonEmptyStringOrNull(canonical.data.subscription_id);
+  const canonicalStatus = asNonEmptyStringOrNull(canonical.data.status);
+
+  if (!subscriptionId || !canonicalStatus) return null;
+
+  // Block creation of new subscription if user already has an active/trialing/past_due one
+  if (["active", "trialing", "past_due", "unpaid"].includes(canonicalStatus)) {
+    try {
+      const stripeSub = await params.stripe.subscriptions.retrieve(subscriptionId);
+
+      if (["active", "trialing", "past_due", "unpaid"].includes(stripeSub.status)) {
+        return json({
+          ok: true,
+          action: "manage_billing",
+          message: "Bạn đã có gói đăng ký đang hoạt động. Vui lòng quản lý thanh toán qua cổng billing.",
+          en_message: "You already have an active subscription. Please manage your billing.",
+          subscription_id: subscriptionId,
+          current_status: stripeSub.status,
+          requires_new_subscription: false,
+          function_version: FUNCTION_VERSION,
+        }, 200);
+      }
+    } catch {
+      // If Stripe retrieve fails, fall back to canonical status
+      if (["active", "trialing", "past_due", "unpaid"].includes(canonicalStatus)) {
+        return json({
+          ok: true,
+          action: "manage_billing",
+          message: "Bạn đã có gói đăng ký đang hoạt động. Vui lòng quản lý thanh toán qua cổng billing.",
+          en_message: "You already have an active subscription. Please manage your billing.",
+          subscription_id: subscriptionId,
+          current_status: canonicalStatus,
+          requires_new_subscription: false,
+          function_version: FUNCTION_VERSION,
+        }, 200);
+      }
+    }
+  }
+
+  return null;
+}
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
@@ -1001,6 +1059,15 @@ Deno.serve(async (req) => {
       resolved_price_id: resolvedPriceId,
       tier_name: tier?.name ?? null,
     });
+
+    // === DUPLICATE PROTECTION: Minimal guard before any new subscription/checkout ===
+    const duplicateCheck = await checkForActiveSubscription({
+      supabaseAdmin,
+      userId: auth.user.id,
+      stripe,
+      resolvedPriceId,
+    });
+    if (duplicateCheck) return duplicateCheck;
 
     const canonical = await getCanonicalSubscription({
       supabaseAdmin,

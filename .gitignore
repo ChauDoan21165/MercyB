@@ -32,3 +32,8 @@ mobile-web/
 dist/
 
 .backup-mobile/
+generate_audio.py
+scan_missing_audio.py
+**/.DS_Store
+ios/
+android/

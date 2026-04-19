@@ -2,43 +2,30 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { ManageSubscriptionButton } from "@/components/billing/ManageSubscriptionButton";
-import { supabase } from "@/integrations/supabase/client";
+import { fetchMyEntitlement } from "@/lib/billing";
 
-type SubscriptionRow = {
+type SubscriptionDisplay = {
   status: string | null;
   current_period_end: string | null;
-  provider: string | null;
-  provider_subscription_id: string | null;
-  updated_at?: string | null;
 };
 
 function formatStatus(status: string | null): string {
   switch (status) {
-    case "active":
-      return "Active";
-    case "trialing":
-      return "Trialing";
-    case "past_due":
-      return "Past due";
-    case "canceled":
-      return "Canceled";
-    case "paused":
-      return "Paused";
-    case "revoked":
-      return "Revoked";
-    case "grace_period":
-      return "Grace period";
-    default:
-      return "No subscription";
+    case "active":       return "Active";
+    case "trialing":     return "Trialing";
+    case "past_due":     return "Past due";
+    case "canceled":     return "Canceled";
+    case "paused":       return "Paused";
+    case "revoked":      return "Revoked";
+    case "grace_period": return "Grace period";
+    default:             return "No subscription";
   }
 }
 
 function formatDate(value: string | null): string {
   if (!value) return "—";
-
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) return "—";
-
   return new Intl.DateTimeFormat(undefined, {
     year: "numeric",
     month: "long",
@@ -51,9 +38,9 @@ function isManageableStatus(status: string | null): boolean {
 }
 
 export function BillingStatusCard() {
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [subscription, setSubscription] = useState<SubscriptionRow | null>(null);
+  const [loading, setLoading]           = useState(true);
+  const [error, setError]               = useState<string | null>(null);
+  const [subscription, setSubscription] = useState<SubscriptionDisplay | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -63,54 +50,29 @@ export function BillingStatusCard() {
         setLoading(true);
         setError(null);
 
-        const {
-          data: { user },
-          error: userError,
-        } = await supabase.auth.getUser();
+        // Use the canonical entitlement endpoint — same source of truth
+        // as the rest of the app, not a direct DB query
+        const ent = await fetchMyEntitlement();
 
-        if (userError) throw userError;
+        if (cancelled) return;
 
-        if (!user) {
-          if (!cancelled) {
-            setSubscription(null);
-            setLoading(false);
-          }
-          return;
-        }
-
-        const { data, error: subscriptionError } = await supabase
-          .from("subscriptions")
-          .select(
-            "status,current_period_end,provider,provider_subscription_id,updated_at",
-          )
-          .eq("app_id", "mercy_blade")
-          .eq("user_id", user.id)
-          .eq("provider", "stripe")
-          .order("updated_at", { ascending: false, nullsFirst: false })
-          .limit(1)
-          .maybeSingle();
-
-        if (subscriptionError) throw subscriptionError;
-
-        if (!cancelled) {
-          setSubscription((data as SubscriptionRow | null) ?? null);
-        }
+        setSubscription({
+          status: ent?.status ?? null,
+          current_period_end: ent?.current_period_end ?? ent?.expires_at ?? null,
+        });
       } catch (err) {
-        if (!cancelled) {
-          setError(err instanceof Error ? err.message : "Failed to load billing status");
-        }
+        if (cancelled) return;
+        setError(
+          err instanceof Error ? err.message : "Failed to load billing status.",
+        );
       } finally {
-        if (!cancelled) {
-          setLoading(false);
-        }
+        if (!cancelled) setLoading(false);
       }
     };
 
-    load();
+    void load();
 
-    return () => {
-      cancelled = true;
-    };
+    return () => { cancelled = true; };
   }, []);
 
   const statusLabel = useMemo(
@@ -119,21 +81,17 @@ export function BillingStatusCard() {
   );
 
   const renewalLabel = useMemo(() => {
-    if (!subscription?.status) return "—";
-
-    if (subscription.status === "canceled") {
-      return formatDate(subscription.current_period_end);
-    }
-
+    const status = subscription?.status ?? null;
+    if (!status) return "—";
     if (
-      subscription.status === "active" ||
-      subscription.status === "trialing" ||
-      subscription.status === "past_due" ||
-      subscription.status === "grace_period"
+      status === "active" ||
+      status === "trialing" ||
+      status === "past_due" ||
+      status === "grace_period" ||
+      status === "canceled"
     ) {
-      return formatDate(subscription.current_period_end);
+      return formatDate(subscription?.current_period_end ?? null);
     }
-
     return "—";
   }, [subscription?.current_period_end, subscription?.status]);
 
@@ -149,7 +107,7 @@ export function BillingStatusCard() {
       </div>
 
       {loading ? (
-        <p className="text-sm text-muted-foreground">Loading billing status...</p>
+        <p className="text-sm text-muted-foreground">Loading billing status…</p>
       ) : error ? (
         <p className="text-sm text-red-600">{error}</p>
       ) : (
@@ -172,7 +130,7 @@ export function BillingStatusCard() {
             <ManageSubscriptionButton />
           ) : (
             <p className="text-sm text-muted-foreground">
-              No manageable Stripe subscription found.
+              No active Stripe subscription found.
             </p>
           )}
         </>

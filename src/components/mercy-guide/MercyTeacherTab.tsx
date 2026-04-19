@@ -470,6 +470,40 @@ const PAGE_9_KEYS = [
   'k9_076_wake_up_again','k9_077_feel_fresh','k9_078_look_outside','k9_079_say_good_morning','k9_080_ready_for_the_day',
 ] as const;
 
+const PAGE_4_KEYS = [
+  'k4_001_jump','k4_002_run','k4_003_walk','k4_004_clap','k4_005_wave',
+  'k4_006_dance','k4_007_eat','k4_008_drink','k4_009_sleep','k4_010_read',
+  'k4_011_write','k4_012_draw','k4_013_open','k4_014_close','k4_015_push',
+  'k4_016_pull','k4_017_kick','k4_018_throw','k4_019_catch','k4_020_swim',
+  'k4_021_sing','k4_022_laugh','k4_023_cry','k4_024_hug','k4_025_point',
+  'k4_026_sit','k4_027_stand','k4_028_bend','k4_029_stretch','k4_030_spin',
+  'k4_031_hop','k4_032_skip','k4_033_crawl','k4_034_roll','k4_035_climb',
+  'k4_036_slide','k4_037_swing','k4_038_dig','k4_039_plant','k4_040_water',
+  'k4_041_cook','k4_042_cut','k4_043_paste','k4_044_fold','k4_045_count',
+  'k4_046_build','k4_047_break','k4_048_fix','k4_049_carry','k4_050_lift',
+  'k4_051_drop','k4_052_pick_up','k4_053_put_down','k4_054_pour','k4_055_fill',
+  'k4_056_empty','k4_057_wash','k4_058_dry','k4_059_brush','k4_060_comb',
+  'k4_061_dress','k4_062_undress','k4_063_zip','k4_064_button','k4_065_tie',
+  'k4_066_kick_ball','k4_067_bounce','k4_068_roll_ball','k4_069_catch_butterfly','k4_070_look',
+  'k4_071_listen','k4_072_smell','k4_073_taste','k4_074_touch','k4_075_hide',
+  'k4_076_find','k4_077_show','k4_078_give','k4_079_take','k4_080_rest',
+] as const;
+
+const PAGE_10_KEYS = [
+  'k10_001_red','k10_002_blue','k10_003_yellow','k10_004_green','k10_005_orange',
+  'k10_006_purple','k10_007_pink','k10_008_white','k10_009_black','k10_010_brown',
+  'k10_011_one','k10_012_two','k10_013_three','k10_014_four','k10_015_five',
+  'k10_016_six','k10_017_seven','k10_018_eight','k10_019_nine','k10_020_ten',
+  'k10_021_eleven','k10_022_twelve','k10_023_thirteen','k10_024_fourteen','k10_025_fifteen',
+  'k10_026_sixteen','k10_027_seventeen','k10_028_eighteen','k10_029_nineteen','k10_030_twenty',
+  'k10_031_one_apple','k10_032_two_dogs','k10_033_three_cats','k10_034_four_flowers','k10_035_five_birds',
+  'k10_036_one_sun','k10_037_two_moons','k10_038_three_stars','k10_039_four_hearts','k10_040_five_butterflies',
+  'k10_041_red_apple','k10_042_blue_sky','k10_043_yellow_sun','k10_044_green_frog','k10_045_orange_carrot',
+  'k10_046_purple_grapes','k10_047_pink_flower','k10_048_white_cloud','k10_049_black_umbrella','k10_050_brown_bear',
+  'k10_051_count_with_fingers','k10_052_one_big_two_small','k10_053_more_or_less','k10_054_same_number','k10_055_count_the_dots',
+  'k10_056_rainbow','k10_057_many_colors','k10_058_favorite_color','k10_059_colors_and_numbers','k10_060_i_know_my_colors',
+] as const;
+
 const PAGE_11_KEYS = [
   'k11_001_dog','k11_002_cat','k11_003_rabbit','k11_004_hamster','k11_005_fish',
   'k11_006_cow','k11_007_pig','k11_008_horse','k11_009_sheep','k11_010_duck',
@@ -518,11 +552,13 @@ const KIDS_PAGE_CONFIGS: KidsPageConfig[] = [
   { id: 'page1', label: 'Page 1' },
   { id: 'page2', label: 'Page 2' },
   { id: 'page3', label: 'Page 3' },
+  { id: 'page4', label: 'Page 4' },
   { id: 'page5', label: 'Page 5' },
   { id: 'page6', label: 'Page 6' },
   { id: 'page7', label: 'Page 7' },
   { id: 'page8', label: 'Page 8' },
   { id: 'page9', label: 'Page 9' },
+  { id: 'page10', label: 'Page 10' },
   { id: 'page11', label: 'Page 11' },
   { id: 'page12', label: 'Page 12' },
   { id: 'page13', label: 'Page 13' },
@@ -892,6 +928,8 @@ function resolveCurrentPageItems(page: KidsPageId): KidsLessonCard[] {
       return buildPage2Items();
     case 'page3':
       return buildPage3Items();
+    case 'page4':
+      return buildGenericPageItems(PAGE_4_KEYS, '/images/mercy-kids-page-4');
     case 'page5':
       return buildGenericPageItems(PAGE_5_KEYS, '/images/mercy-kids-page-5');
     case 'page6':
@@ -902,6 +940,8 @@ function resolveCurrentPageItems(page: KidsPageId): KidsLessonCard[] {
       return buildGenericPageItems(PAGE_8_KEYS, '/images/mercy-kids-page-8');
     case 'page9':
       return buildGenericPageItems(PAGE_9_KEYS, '/images/mercy-kids-page-9');
+    case 'page10':
+      return buildGenericPageItems(PAGE_10_KEYS, '/images/mercy-kids-page-10');
     case 'page11':
       return buildGenericPageItems(PAGE_11_KEYS, '/images/mercy-kids-page-11');
     case 'page12':
