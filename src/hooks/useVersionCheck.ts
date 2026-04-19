@@ -1,6 +1,6 @@
 // src/hooks/useVersionCheck.ts
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 
 interface VersionInfo {
   version: string;
@@ -11,18 +11,21 @@ interface VersionInfo {
 }
 
 const VERSION_STORAGE_KEY = "mb_app_version";
-const BLOCKED_STORAGE_KEY = "mb_min_version_blocked";
-const CHECK_INTERVAL       = 45 * 1000; // 45 seconds
-const FETCH_TIMEOUT_MS     = 10000;
+const CHECK_INTERVAL_MS   = 60 * 1000; // 60 seconds
+const FETCH_TIMEOUT_MS    = 10000;
 
 export function useVersionCheck() {
   const [currentVersion, setCurrentVersion]   = useState<VersionInfo | null>(null);
   const [latestVersion, setLatestVersion]     = useState<VersionInfo | null>(null);
   const [updateAvailable, setUpdateAvailable] = useState(false);
-  const [isBlocked, setIsBlocked]             = useState(false);
   const [checking, setChecking]               = useState(false);
 
+  const inFlightRef = useRef(false);
+
   const checkForUpdates = useCallback(async () => {
+    if (inFlightRef.current) return;
+    inFlightRef.current = true;
+
     try {
       setChecking(true);
 
@@ -63,14 +66,10 @@ export function useVersionCheck() {
       setLatestVersion(serverVersion);
 
       const storedVersionStr = localStorage.getItem(VERSION_STORAGE_KEY);
-      const wasBlocked       = localStorage.getItem(BLOCKED_STORAGE_KEY) === "true";
 
       if (!storedVersionStr) {
         localStorage.setItem(VERSION_STORAGE_KEY, JSON.stringify(serverVersion));
         setCurrentVersion(serverVersion);
-        if (import.meta.env.DEV) {
-          console.log("[version] Initial version stored:", serverVersion.version);
-        }
         return;
       }
 
@@ -78,7 +77,6 @@ export function useVersionCheck() {
       try {
         storedVersion = JSON.parse(storedVersionStr) as VersionInfo;
       } catch {
-        // Corrupt storage — reset and treat as fresh
         localStorage.setItem(VERSION_STORAGE_KEY, JSON.stringify(serverVersion));
         setCurrentVersion(serverVersion);
         return;
@@ -90,54 +88,60 @@ export function useVersionCheck() {
         serverVersion.version !== storedVersion.version ||
         serverVersion.hash    !== storedVersion.hash
       ) {
-        if (import.meta.env.DEV) {
-          console.log(
-            "[version] New version detected:",
-            serverVersion.version,
-            "from",
-            storedVersion.version,
-          );
-        }
         setUpdateAvailable(true);
-        localStorage.setItem(BLOCKED_STORAGE_KEY, "true");
-        setIsBlocked(true);
-      } else {
-        if (wasBlocked) {
-          localStorage.removeItem(BLOCKED_STORAGE_KEY);
-          setIsBlocked(false);
-        }
       }
     } catch (error) {
-      // AbortError from timeout or network failure — silent in production
       if (import.meta.env.DEV) {
         console.warn("[version] Check failed:", error);
       }
     } finally {
+      inFlightRef.current = false;
       setChecking(false);
     }
   }, []);
 
-  const applyUpdate = useCallback(() => {
-    localStorage.removeItem(VERSION_STORAGE_KEY);
-    localStorage.removeItem(BLOCKED_STORAGE_KEY);
+  const applyUpdate = useCallback(async () => {
+    // 1. Persist the new version so we don't prompt again after reload
+    if (latestVersion) {
+      localStorage.setItem(VERSION_STORAGE_KEY, JSON.stringify(latestVersion));
+    } else {
+      localStorage.removeItem(VERSION_STORAGE_KEY);
+    }
+
+    // 2. Tell the service worker to activate the new version immediately
+    try {
+      if ("serviceWorker" in navigator) {
+        const reg = await navigator.serviceWorker.getRegistration();
+        if (reg?.waiting) {
+          reg.waiting.postMessage({ type: "SKIP_WAITING" });
+        }
+      }
+    } catch {
+      // ignore — fall through to reload
+    }
+
+    // 3. Hard reload to pick up the new bundle
     window.location.reload();
-  }, []);
+  }, [latestVersion]);
 
   const dismissUpdate = useCallback(() => {
     setUpdateAvailable(false);
-    // isBlocked remains true until reload
   }, []);
 
   useEffect(() => {
-    const wasBlocked = localStorage.getItem(BLOCKED_STORAGE_KEY) === "true";
-    if (wasBlocked) setIsBlocked(true);
-
     const initialTimer = window.setTimeout(checkForUpdates, 3000);
-    const interval     = window.setInterval(checkForUpdates, CHECK_INTERVAL);
+    const interval     = window.setInterval(checkForUpdates, CHECK_INTERVAL_MS);
+
+    // Also check when the tab regains focus — catches users who return after a deploy
+    const onVisible = () => {
+      if (document.visibilityState === "visible") checkForUpdates();
+    };
+    document.addEventListener("visibilitychange", onVisible);
 
     return () => {
       window.clearTimeout(initialTimer);
       window.clearInterval(interval);
+      document.removeEventListener("visibilitychange", onVisible);
     };
   }, [checkForUpdates]);
 
@@ -145,7 +149,6 @@ export function useVersionCheck() {
     currentVersion,
     latestVersion,
     updateAvailable,
-    isBlocked,
     checking,
     checkForUpdates,
     applyUpdate,

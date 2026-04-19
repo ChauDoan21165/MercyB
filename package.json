@@ -24,7 +24,7 @@
     "check:mercy-grammar": "rg -n \"localGrammarFallback|tabs/GrammarWritingTab|grammar-writing/fallback\" src && exit 1 || exit 0",
     "rooms:check": "npm run generate:room-registry && npm run validate-rooms:core",
     "prebuild": "npm run rooms:check",
-    "build": "npm run generate:audio-manifest && vite build",
+    "build": "node scripts/generate-version.js && npm run generate:audio-manifest && vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview --host 127.0.0.1 --port 3107 --strictPort",

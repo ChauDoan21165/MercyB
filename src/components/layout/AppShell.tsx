@@ -11,6 +11,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Map } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MercyGuide } from "@/components/MercyGuide";
+import { UpdatePrompt } from "@/components/UpdatePrompt";
 
 interface AppShellProps {
   children: React.ReactNode;
@@ -108,6 +109,8 @@ export function AppShell({
       {bottomBar}
 
       {shouldShowMercyGuide ? <MercyGuide /> : null}
+
+      <UpdatePrompt />
     </div>
   );
 }
