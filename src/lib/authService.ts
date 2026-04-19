@@ -68,19 +68,25 @@ function normalizeEntitlement(payload: unknown): BackendEntitlement {
   const isPremium = row.is_premium === true;
   const fallbackStatus: "active" | "inactive" = isPremium ? "active" : "inactive";
 
+  const currentPeriodEnd = asNonEmptyStringOrNull(row.current_period_end);
+  const planName = asNonEmptyStringOrNull(row.plan_name);
+  const tierId = asNonEmptyStringOrNull(row.tier_id);
+  const priceId = asNonEmptyStringOrNull(row.price_id);
+  const cancelAtPeriodEnd =
+    typeof row.cancel_at_period_end === "boolean"
+      ? row.cancel_at_period_end
+      : null;
+
   return {
     is_premium: isPremium,
     source: asNonEmptyStringOrNull(row.source),
     status: normalizeStatus(row.status, fallbackStatus),
     expires_at: asNonEmptyStringOrNull(row.expires_at),
-    current_period_end: asNonEmptyStringOrNull(row.current_period_end),
-    plan_name: asNonEmptyStringOrNull(row.plan_name),
-    tier_id: asNonEmptyStringOrNull(row.tier_id),
-    price_id: asNonEmptyStringOrNull(row.price_id),
-    cancel_at_period_end:
-      typeof row.cancel_at_period_end === "boolean"
-        ? row.cancel_at_period_end
-        : null,
+    ...(currentPeriodEnd !== null && { current_period_end: currentPeriodEnd }),
+    ...(planName !== null && { plan_name: planName }),
+    ...(tierId !== null && { tier_id: tierId }),
+    ...(priceId !== null && { price_id: priceId }),
+    ...(cancelAtPeriodEnd !== null && { cancel_at_period_end: cancelAtPeriodEnd }),
   };
 }
 

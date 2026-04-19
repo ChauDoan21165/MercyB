@@ -15,9 +15,9 @@ export interface AuthContext {
 
 const GUARD_TIMEOUT_MS = 8000;
 
-function withTimeout<T>(promise: Promise<T>, ms: number): Promise<T> {
+function withTimeout<T>(promise: PromiseLike<T>, ms: number): Promise<T> {
   return Promise.race([
-    promise,
+    Promise.resolve(promise),
     new Promise<never>((_, reject) =>
       window.setTimeout(() => reject(new Error('AUTH_GUARD_TIMEOUT')), ms),
     ),
