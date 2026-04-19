@@ -34,6 +34,9 @@ import { getKidPage21Item } from './kids/kidPage21Data';
 import { getKidPage22Item } from './kids/kidPage22Data';
 import { getKidPage23Item } from './kids/kidPage23Data';
 import { getKidPage24Item } from './kids/kidPage24Data';
+import { getKidPage25Item } from './kids/kidPage25Data';
+import { getKidPage26Item } from './kids/kidPage26Data';
+import { getKidPage27Item } from './kids/kidPage27Data';
 import type { StudentMercyMemoryUpdate, LearningSupportMode } from './types';
 import type {
   SpeechRecognitionLike as BaseSpeechRecognitionLike,
@@ -117,113 +120,20 @@ type KidsBuddyMood =
   | 'wow';
 
 const KIDS_OBJECT_KEYS = [
-  'airplane',
-  'apple',
-  'bag',
-  'ball',
-  'banana',
-  'bathtub',
-  'bed',
-  'bicycle',
-  'bird',
-  'blanket',
-  'boat',
-  'book',
-  'bottle',
-  'bus',
-  'cat',
-  'chair',
-  'clock',
-  'cloud',
-  'cup',
-  'dog',
-  'doll',
-  'door',
-  'duck',
-  'fish',
-  'flower',
-  'hat',
-  'house',
-  'key',
-  'leaf',
-  'milk',
-  'moon',
-  'orange',
-  'pencil',
-  'phone',
-  'pillow',
-  'plate',
-  'rainbow',
-  'shirt',
-  'shoes',
-  'soap',
-  'sock',
-  'spoon',
-  'star',
-  'sun',
-  'table',
-  'teddy-bear',
-  'toothbrush',
-  'toy-car',
-  'tree',
-  'window',
-  'ant',
-  'baby-bib',
-  'backpack',
-  'balloon',
-  'bee',
-  'bell',
-  'block',
-  'butterfly',
-  'cake',
-  'candle',
-  'carrot',
-  'cookie',
-  'cow',
-  'crayon',
-  'dinosaur',
-  'elephant',
-  'envelope',
-  'frog',
-  'gift-box',
-  'grapes',
-  'hammer',
-  'helicopter',
-  'ice-cream',
-  'jar',
-  'kite',
-  'lamp',
-  'lion',
-  'lollipop',
-  'monkey',
-  'mouse',
-  'mushroom',
-  'pear',
-  'pig',
-  'pizza',
-  'rabbit',
-  'rocket',
-  'sandwich',
-  'sheep',
-  'strawberry',
-  'train',
-  'truck',
-  'turtle',
-  'watermelon',
-  'whistle',
-  'mitten',
-  'scarf',
-  'drum',
-  'bear-face',
-  'juice-box',
-  'juice',
+  'airplane','apple','bag','ball','banana','bathtub','bed','bicycle','bird','blanket',
+  'boat','book','bottle','bus','cat','chair','clock','cloud','cup','dog',
+  'doll','door','duck','fish','flower','hat','house','key','leaf','milk',
+  'moon','orange','pencil','phone','pillow','plate','rainbow','shirt','shoes','soap',
+  'sock','spoon','star','sun','table','teddy-bear','toothbrush','toy-car','tree','window',
+  'ant','baby-bib','backpack','balloon','bee','bell','block','butterfly','cake','candle',
+  'carrot','cookie','cow','crayon','dinosaur','elephant','envelope','frog','gift-box','grapes',
+  'hammer','helicopter','ice-cream','jar','kite','lamp','lion','lollipop','monkey','mouse',
+  'mushroom','pear','pig','pizza','rabbit','rocket','sandwich','sheep','strawberry','train',
+  'truck','turtle','watermelon','whistle','mitten','scarf','drum','bear-face','juice-box','juice',
 ] as const;
 
 const KIDS_UNCOUNTABLE_KEYS = new Set<string>([
-  'milk',
-  'soap',
-  'juice',
-  'ice-cream',
+  'milk','soap','juice','ice-cream',
 ]);
 
 const KIDS_EXTRA_ALIASES: Record<string, string[]> = {
@@ -238,121 +148,22 @@ const KIDS_EXTRA_ALIASES: Record<string, string[]> = {
 };
 
 const KIDS_BUDDIES: KidsBuddy[] = [
-  {
-    key: 'dog',
-    emoji: '🐶',
-    label: 'Dog',
-    idleLine: 'Let’s say it together.',
-    goodLine: 'Good job!',
-    greatLine: 'Amazing!',
-    retryLine: 'Let’s try again.',
-  },
-  {
-    key: 'cat',
-    emoji: '🐱',
-    label: 'Cat',
-    idleLine: 'Ready when you are.',
-    goodLine: 'Nice voice!',
-    greatLine: 'So clear!',
-    retryLine: 'Slow and steady.',
-  },
-  {
-    key: 'rabbit',
-    emoji: '🐰',
-    label: 'Rabbit',
-    idleLine: 'Hop in and say it.',
-    goodLine: 'Great try!',
-    greatLine: 'You did it!',
-    retryLine: 'One more hop.',
-  },
-  {
-    key: 'bear',
-    emoji: '🐻',
-    label: 'Bear',
-    idleLine: 'Big calm voice.',
-    goodLine: 'That was good.',
-    greatLine: 'Strong and clear!',
-    retryLine: 'Try with me.',
-  },
-  {
-    key: 'panda',
-    emoji: '🐼',
-    label: 'Panda',
-    idleLine: 'Listen, then say it.',
-    goodLine: 'Very close!',
-    greatLine: 'Beautiful!',
-    retryLine: 'Let’s do it softly.',
-  },
-  {
-    key: 'fox',
-    emoji: '🦊',
-    label: 'Fox',
-    idleLine: 'Quick ears on.',
-    goodLine: 'Nice work!',
-    greatLine: 'Smart speaking!',
-    retryLine: 'Listen first.',
-  },
-  {
-    key: 'lion',
-    emoji: '🦁',
-    label: 'Lion',
-    idleLine: 'Use your brave voice.',
-    goodLine: 'Brave try!',
-    greatLine: 'Roar, that was great!',
-    retryLine: 'Try a big clear voice.',
-  },
-  {
-    key: 'elephant',
-    emoji: '🐘',
-    label: 'Elephant',
-    idleLine: 'Slow and clear.',
-    goodLine: 'That was steady.',
-    greatLine: 'Wonderful job!',
-    retryLine: 'Slowly again.',
-  },
-  {
-    key: 'monkey',
-    emoji: '🐵',
-    label: 'Monkey',
-    idleLine: 'Let’s have fun.',
-    goodLine: 'You’re close!',
-    greatLine: 'Yay, perfect!',
-    retryLine: 'Again with Mercy.',
-  },
-  {
-    key: 'owl',
-    emoji: '🦉',
-    label: 'Owl',
-    idleLine: 'Eyes and ears ready.',
-    goodLine: 'Nice and clear!',
-    greatLine: 'Wise job!',
-    retryLine: 'Let’s listen again.',
-  },
-  {
-    key: 'koala',
-    emoji: '🐨',
-    label: 'Koala',
-    idleLine: 'Soft and calm voice.',
-    goodLine: 'That sounds good!',
-    greatLine: 'So sweet and clear!',
-    retryLine: 'Try softly again.',
-  },
-  {
-    key: 'tiger',
-    emoji: '🐯',
-    label: 'Tiger',
-    idleLine: 'Use your strong voice.',
-    goodLine: 'Strong try!',
-    greatLine: 'That was tiger-great!',
-    retryLine: 'Try one more big voice.',
-  },
+  { key: 'dog',      emoji: '🐶', label: 'Dog',      idleLine: 'Let\'s say it together.', goodLine: 'Good job!',           greatLine: 'Amazing!',              retryLine: 'Let\'s try again.'    },
+  { key: 'cat',      emoji: '🐱', label: 'Cat',      idleLine: 'Ready when you are.',    goodLine: 'Nice voice!',          greatLine: 'So clear!',             retryLine: 'Slow and steady.'     },
+  { key: 'rabbit',   emoji: '🐰', label: 'Rabbit',   idleLine: 'Hop in and say it.',     goodLine: 'Great try!',           greatLine: 'You did it!',           retryLine: 'One more hop.'        },
+  { key: 'bear',     emoji: '🐻', label: 'Bear',     idleLine: 'Big calm voice.',        goodLine: 'That was good.',       greatLine: 'Strong and clear!',     retryLine: 'Try with me.'         },
+  { key: 'panda',    emoji: '🐼', label: 'Panda',    idleLine: 'Listen, then say it.',   goodLine: 'Very close!',          greatLine: 'Beautiful!',            retryLine: 'Let\'s do it softly.' },
+  { key: 'fox',      emoji: '🦊', label: 'Fox',      idleLine: 'Quick ears on.',         goodLine: 'Nice work!',           greatLine: 'Smart speaking!',       retryLine: 'Listen first.'        },
+  { key: 'lion',     emoji: '🦁', label: 'Lion',     idleLine: 'Use your brave voice.',  goodLine: 'Brave try!',           greatLine: 'Roar, that was great!', retryLine: 'Try a big clear voice.' },
+  { key: 'elephant', emoji: '🐘', label: 'Elephant', idleLine: 'Slow and clear.',        goodLine: 'That was steady.',     greatLine: 'Wonderful job!',        retryLine: 'Slowly again.'        },
+  { key: 'monkey',   emoji: '🐵', label: 'Monkey',   idleLine: 'Let\'s have fun.',       goodLine: 'You\'re close!',       greatLine: 'Yay, perfect!',         retryLine: 'Again with Mercy.'    },
+  { key: 'owl',      emoji: '🦉', label: 'Owl',      idleLine: 'Eyes and ears ready.',   goodLine: 'Nice and clear!',      greatLine: 'Wise job!',             retryLine: 'Let\'s listen again.' },
+  { key: 'koala',    emoji: '🐨', label: 'Koala',    idleLine: 'Soft and calm voice.',   goodLine: 'That sounds good!',    greatLine: 'So sweet and clear!',   retryLine: 'Try softly again.'    },
+  { key: 'tiger',    emoji: '🐯', label: 'Tiger',    idleLine: 'Use your strong voice.', goodLine: 'Strong try!',          greatLine: 'That was tiger-great!', retryLine: 'Try one more big voice.' },
 ];
 
 function toKidsLabel(key: string): string {
-  return key
-    .split('-')
-    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-    .join(' ');
+  return key.split('-').map((part) => part.charAt(0).toUpperCase() + part.slice(1)).join(' ');
 }
 
 function startsWithVowelSound(text: string): boolean {
@@ -361,11 +172,7 @@ function startsWithVowelSound(text: string): boolean {
 
 function toKidsSentence(key: string): string {
   const lowerLabel = toKidsLabel(key).toLowerCase();
-
-  if (KIDS_UNCOUNTABLE_KEYS.has(key)) {
-    return `This is ${lowerLabel}.`;
-  }
-
+  if (KIDS_UNCOUNTABLE_KEYS.has(key)) return `This is ${lowerLabel}.`;
   return `This is ${startsWithVowelSound(lowerLabel) ? 'an' : 'a'} ${lowerLabel}.`;
 }
 
@@ -373,7 +180,6 @@ function toKidsAliases(key: string): string[] {
   const normalized = key.replace(/-/g, ' ');
   const label = toKidsLabel(key).toLowerCase();
   const extra = KIDS_EXTRA_ALIASES[key] ?? [];
-
   return Array.from(new Set([key, normalized, label, ...extra]));
 }
 
@@ -388,22 +194,16 @@ function isPage2LessonKey(value?: string | null): boolean {
 function formatPage2TextFromKey(key: string): string {
   const normalized = normalizePage2Key(key);
   if (!normalized) return '';
-
   const slug = normalized.replace(/^p2_\d+_/i, '');
   if (!slug) return '';
-
   const words = slug.split('_').filter(Boolean).map((word) => {
     const lower = word.toLowerCase();
-
     if (lower === 'i') return 'I';
     if (lower === 'youre') return "you're";
     if (lower === 'lets') return "let's";
-
     return lower;
   });
-
   if (words.length === 0) return '';
-
   const text = words.join(' ');
   return text.charAt(0).toUpperCase() + text.slice(1);
 }
@@ -411,15 +211,11 @@ function formatPage2TextFromKey(key: string): string {
 function toPage2Sentence(key: string): string {
   const base = formatPage2TextFromKey(key);
   if (!base) return '';
-
   if (/^What is this /i.test(base)) {
     const objectPart = base.replace(/^What is this /i, '').trim();
-    const titledObject =
-      objectPart.charAt(0).toUpperCase() + objectPart.slice(1);
-
+    const titledObject = objectPart.charAt(0).toUpperCase() + objectPart.slice(1);
     return titledObject ? `What is this? ${titledObject}.` : 'What is this?';
   }
-
   return /[.!?]$/.test(base) ? base : `${base}.`;
 }
 
@@ -438,24 +234,18 @@ function isPage3LessonKey(value?: string | null): boolean {
 function formatPage3TextFromKey(key: string): string {
   const normalized = normalizePage3Key(key);
   if (!normalized) return '';
-
   const slug = normalized.replace(/^k\d+_/i, '');
   if (!slug) return '';
-
   const words = slug.split('_').filter(Boolean).map((word) => {
     const lower = word.toLowerCase();
-
     if (lower === 'i') return 'I';
     if (lower === 'im') return "I'm";
     if (lower === 'youre') return "you're";
     if (lower === 'lets') return "let's";
     if (lower === 'dont') return "don't";
-
     return lower;
   });
-
   if (words.length === 0) return '';
-
   const text = words.join(' ');
   return text.charAt(0).toUpperCase() + text.slice(1);
 }
@@ -463,18 +253,13 @@ function formatPage3TextFromKey(key: string): string {
 function toPage3Sentence(key: string): string {
   const base = formatPage3TextFromKey(key);
   if (!base) return '';
-
   if (
-    /^What /i.test(base) ||
-    /^How /i.test(base) ||
-    /^Where /i.test(base) ||
-    /^Which /i.test(base) ||
-    /^Can /i.test(base) ||
-    /^Do /i.test(base)
+    /^What /i.test(base) || /^How /i.test(base) ||
+    /^Where /i.test(base) || /^Which /i.test(base) ||
+    /^Can /i.test(base) || /^Do /i.test(base)
   ) {
     return /[?]$/.test(base) ? base : `${base}?`;
   }
-
   return /[.!?]$/.test(base) ? base : `${base}.`;
 }
 
@@ -488,10 +273,7 @@ function toPhraseSentence(label: string): string {
   return /[.!?]$/.test(base) ? base : `${base}.`;
 }
 
-function matchesPageKeyPrefix(
-  key: string | null | undefined,
-  pageNumber: number,
-): key is string {
+function matchesPageKeyPrefix(key: string | null | undefined, pageNumber: number): key is string {
   const normalized = cleanText(key);
   if (!normalized) return false;
   return new RegExp(`^k${pageNumber}_`, 'i').test(normalized);
@@ -511,122 +293,60 @@ function getKidsBuddyByKey(key?: string | null): KidsBuddy {
 
 function getKidsBuddyDecorations(key: string): string[] {
   switch (key) {
-    case 'dog':
-      return ['🦴', '⭐', '💛'];
-    case 'cat':
-      return ['🐾', '✨', '🌙'];
-    case 'rabbit':
-      return ['🥕', '⭐', '💗'];
-    case 'bear':
-      return ['🍯', '⭐', '🤍'];
-    case 'panda':
-      return ['🍃', '✨', '💚'];
-    case 'fox':
-      return ['🍂', '✨', '🧡'];
-    case 'lion':
-      return ['👑', '⭐', '☀️'];
-    case 'elephant':
-      return ['🌼', '⭐', '💙'];
-    case 'monkey':
-      return ['🍌', '⭐', '🎉'];
-    case 'owl':
-      return ['🌙', '⭐', '📘'];
-    case 'koala':
-      return ['🍃', '⭐', '🤍'];
-    case 'tiger':
-      return ['⚡', '⭐', '🧡'];
-    default:
-      return ['✨', '⭐', '💛'];
+    case 'dog':      return ['🦴', '⭐', '💛'];
+    case 'cat':      return ['🐾', '✨', '🌙'];
+    case 'rabbit':   return ['🥕', '⭐', '💗'];
+    case 'bear':     return ['🍯', '⭐', '🤍'];
+    case 'panda':    return ['🍃', '✨', '💚'];
+    case 'fox':      return ['🍂', '✨', '🧡'];
+    case 'lion':     return ['👑', '⭐', '☀️'];
+    case 'elephant': return ['🌼', '⭐', '💙'];
+    case 'monkey':   return ['🍌', '⭐', '🎉'];
+    case 'owl':      return ['🌙', '⭐', '📘'];
+    case 'koala':    return ['🍃', '⭐', '🤍'];
+    case 'tiger':    return ['⚡', '⭐', '🧡'];
+    default:         return ['✨', '⭐', '💛'];
   }
 }
 
 function getKidsBuddyReactionWord(mood: KidsBuddyMood): string {
   switch (mood) {
-    case 'listen':
-      return 'Listen';
-    case 'hear':
-      return 'Hear';
-    case 'again':
-      return 'Again';
-    case 'good':
-      return 'Good';
-    case 'great':
-      return 'Great';
-    case 'wow':
-      return 'Wow';
-    default:
-      return '';
+    case 'listen': return 'Listen';
+    case 'hear':   return 'Hear';
+    case 'again':  return 'Again';
+    case 'good':   return 'Good';
+    case 'great':  return 'Great';
+    case 'wow':    return 'Wow';
+    default:       return '';
   }
 }
 
 function playKidsUiSound(level: 'select' | 'good' | 'great' | 'wow') {
   if (typeof window === 'undefined') return;
-
-  const AudioContextCtor =
-    window.AudioContext ||
-    (window as Window & { webkitAudioContext?: typeof AudioContext })
-      .webkitAudioContext;
-
+  const AudioContextCtor = window.AudioContext || (window as Window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
   if (!AudioContextCtor) return;
-
   const ctx = new AudioContextCtor();
   void ctx.resume?.();
-
   const config =
-    level === 'select'
-      ? {
-          notes: [659.25, 783.99],
-          duration: 0.1,
-          gap: 0.07,
-          gain: 0.03,
-          type: 'triangle' as OscillatorType,
-        }
-      : level === 'good'
-        ? {
-            notes: [587.33, 659.25, 783.99],
-            duration: 0.12,
-            gap: 0.08,
-            gain: 0.04,
-            type: 'sine' as OscillatorType,
-          }
-        : level === 'great'
-          ? {
-              notes: [659.25, 783.99, 987.77, 1318.51],
-              duration: 0.14,
-              gap: 0.08,
-              gain: 0.045,
-              type: 'triangle' as OscillatorType,
-            }
-          : {
-              notes: [523.25, 783.99, 1046.5, 1318.51, 1567.98],
-              duration: 0.15,
-              gap: 0.07,
-              gain: 0.05,
-              type: 'triangle' as OscillatorType,
-            };
-
+    level === 'select' ? { notes: [659.25, 783.99], duration: 0.1, gap: 0.07, gain: 0.03, type: 'triangle' as OscillatorType } :
+    level === 'good'   ? { notes: [587.33, 659.25, 783.99], duration: 0.12, gap: 0.08, gain: 0.04, type: 'sine' as OscillatorType } :
+    level === 'great'  ? { notes: [659.25, 783.99, 987.77, 1318.51], duration: 0.14, gap: 0.08, gain: 0.045, type: 'triangle' as OscillatorType } :
+                         { notes: [523.25, 783.99, 1046.5, 1318.51, 1567.98], duration: 0.15, gap: 0.07, gain: 0.05, type: 'triangle' as OscillatorType };
   config.notes.forEach((frequency, index) => {
     const start = ctx.currentTime + 0.02 + index * config.gap;
     const oscillator = ctx.createOscillator();
     const gain = ctx.createGain();
-
     oscillator.type = config.type;
     oscillator.frequency.setValueAtTime(frequency, start);
-
     gain.gain.setValueAtTime(0.0001, start);
     gain.gain.exponentialRampToValueAtTime(config.gain, start + 0.01);
     gain.gain.exponentialRampToValueAtTime(0.0001, start + config.duration);
-
     oscillator.connect(gain);
     gain.connect(ctx.destination);
-
     oscillator.start(start);
     oscillator.stop(start + config.duration + 0.02);
   });
-
-  window.setTimeout(() => {
-    void ctx.close().catch(() => undefined);
-  }, 900);
+  window.setTimeout(() => { void ctx.close().catch(() => undefined); }, 900);
 }
 
 function cleanText(value?: string | null): string {
@@ -634,11 +354,7 @@ function cleanText(value?: string | null): string {
 }
 
 function normalizeForCompare(value: string): string {
-  return cleanText(value)
-    .toLowerCase()
-    .replace(/[.,!?;:()[\]"'’`-]/g, '')
-    .replace(/\s+/g, ' ')
-    .trim();
+  return cleanText(value).toLowerCase().replace(/[.,!?;:()[\]"''`-]/g, '').replace(/\s+/g, ' ').trim();
 }
 
 function normalizeKidsLookup(value: string): string {
@@ -648,22 +364,16 @@ function normalizeKidsLookup(value: string): string {
 function isLikelyKidsSentence(value: string): boolean {
   const text = cleanText(value);
   if (!text) return false;
-
   const words = normalizeForCompare(text).split(' ').filter(Boolean);
   if (words.length === 0 || words.length > 8) return false;
   if (/[.!?].+[.!?]/.test(text)) return false;
-
   return /^this is\b/i.test(text) || /^it is\b/i.test(text);
 }
 
 function getKidsObjectFromSentence(value: string): KidsObjectCard {
   const normalized = normalizeKidsLookup(value);
   if (!normalized) return KIDS_OBJECTS[0];
-
-  const found = KIDS_OBJECTS.find((item) =>
-    item.aliases.some((alias) => normalized.includes(alias)),
-  );
-
+  const found = KIDS_OBJECTS.find((item) => item.aliases.some((alias) => normalized.includes(alias)));
   return found ?? KIDS_OBJECTS[0];
 }
 
@@ -674,293 +384,80 @@ function getKidsObjectByKey(key?: string | null): KidsObjectCard | null {
 
 function getPage2LessonByKey(key?: string | null): KidsLessonCard | null {
   if (!isPage2LessonKey(key)) return null;
-
   const normalized = normalizePage2Key(key);
   if (!normalized) return null;
-
-  return {
-    key: normalized,
-    label: toPage2Label(normalized),
-    sentence: toPage2Sentence(normalized),
-    imageSrc: `/images/mercy-kids-page-2/${normalized}.png`,
-  };
+  return { key: normalized, label: toPage2Label(normalized), sentence: toPage2Sentence(normalized), imageSrc: `/images/mercy-kids-page-2/${normalized}.png` };
 }
 
 function getPage3LessonByKey(key?: string | null): KidsLessonCard | null {
   if (!isPage3LessonKey(key)) return null;
-
   const normalized = normalizePage3Key(key);
   if (!normalized) return null;
+  return { key: normalized, label: toPage3Label(normalized), sentence: toPage3Sentence(normalized), imageSrc: `/images/mercy-kids-page-3/${normalized}.png` };
+}
 
-  return {
-    key: normalized,
-    label: toPage3Label(normalized),
-    sentence: toPage3Sentence(normalized),
-    imageSrc: `/images/mercy-kids-page-3/${normalized}.png`,
+function makePageLessonGetter(pageNumber: number, getItem: (key: string | null | undefined) => { key: string; label: string; image: string } | null | undefined) {
+  return function getLessonByKey(key?: string | null): KidsLessonCard | null {
+    if (!matchesPageKeyPrefix(key, pageNumber)) return null;
+    const item = getItem(key);
+    if (!item) return null;
+    return { key: item.key, label: item.label, sentence: toPhraseSentence(item.label), imageSrc: item.image };
   };
 }
 
-function getPage11LessonByKey(key?: string | null): KidsLessonCard | null {
-  if (!matchesPageKeyPrefix(key, 11)) return null;
+const getPage11LessonByKey = makePageLessonGetter(11, getKidPage11Item);
+const getPage12LessonByKey = makePageLessonGetter(12, getKidPage12Item);
+const getPage13LessonByKey = makePageLessonGetter(13, getKidPage13Item);
+const getPage14LessonByKey = makePageLessonGetter(14, getKidPage14Item);
+const getPage15LessonByKey = makePageLessonGetter(15, getKidPage15Item);
+const getPage16LessonByKey = makePageLessonGetter(16, getKidPage16Item);
+const getPage17LessonByKey = makePageLessonGetter(17, getKidPage17Item);
+const getPage18LessonByKey = makePageLessonGetter(18, getKidPage18Item);
+const getPage19LessonByKey = makePageLessonGetter(19, getKidPage19Item);
+const getPage20LessonByKey = makePageLessonGetter(20, getKidPage20Item);
+const getPage21LessonByKey = makePageLessonGetter(21, getKidPage21Item);
+const getPage22LessonByKey = makePageLessonGetter(22, getKidPage22Item);
+const getPage23LessonByKey = makePageLessonGetter(23, getKidPage23Item);
+const getPage24LessonByKey = makePageLessonGetter(24, getKidPage24Item);
+const getPage25LessonByKey = makePageLessonGetter(25, getKidPage25Item);
+const getPage26LessonByKey = makePageLessonGetter(26, getKidPage26Item);
+const getPage27LessonByKey = makePageLessonGetter(27, getKidPage27Item);
 
-  const item = getKidPage11Item(key);
-  if (!item) return null;
-
-  return {
-    key: item.key,
-    label: item.label,
-    sentence: toPhraseSentence(item.label),
-    imageSrc: item.image,
-  };
-}
-
-function getPage12LessonByKey(key?: string | null): KidsLessonCard | null {
-  if (!matchesPageKeyPrefix(key, 12)) return null;
-
-  const item = getKidPage12Item(key);
-  if (!item) return null;
-
-  return {
-    key: item.key,
-    label: item.label,
-    sentence: toPhraseSentence(item.label),
-    imageSrc: item.image,
-  };
-}
-
-function getPage13LessonByKey(key?: string | null): KidsLessonCard | null {
-  if (!matchesPageKeyPrefix(key, 13)) return null;
-
-  const item = getKidPage13Item(key);
-  if (!item) return null;
-
-  return {
-    key: item.key,
-    label: item.label,
-    sentence: toPhraseSentence(item.label),
-    imageSrc: item.image,
-  };
-}
-
-function getPage14LessonByKey(key?: string | null): KidsLessonCard | null {
-  if (!matchesPageKeyPrefix(key, 14)) return null;
-
-  const item = getKidPage14Item(key);
-  if (!item) return null;
-
-  return {
-    key: item.key,
-    label: item.label,
-    sentence: toPhraseSentence(item.label),
-    imageSrc: item.image,
-  };
-}
-
-function getPage15LessonByKey(key?: string | null): KidsLessonCard | null {
-  if (!matchesPageKeyPrefix(key, 15)) return null;
-
-  const item = getKidPage15Item(key);
-  if (!item) return null;
-
-  return {
-    key: item.key,
-    label: item.label,
-    sentence: toPhraseSentence(item.label),
-    imageSrc: item.image,
-  };
-}
-
-function getPage16LessonByKey(key?: string | null): KidsLessonCard | null {
-  if (!matchesPageKeyPrefix(key, 16)) return null;
-
-  const item = getKidPage16Item(key);
-  if (!item) return null;
-
-  return {
-    key: item.key,
-    label: item.label,
-    sentence: toPhraseSentence(item.label),
-    imageSrc: item.image,
-  };
-}
-
-function getPage17LessonByKey(key?: string | null): KidsLessonCard | null {
-  if (!matchesPageKeyPrefix(key, 17)) return null;
-
-  const item = getKidPage17Item(key);
-  if (!item) return null;
-
-  return {
-    key: item.key,
-    label: item.label,
-    sentence: toPhraseSentence(item.label),
-    imageSrc: item.image,
-  };
-}
-
-function getPage18LessonByKey(key?: string | null): KidsLessonCard | null {
-  if (!matchesPageKeyPrefix(key, 18)) return null;
-
-  const item = getKidPage18Item(key);
-  if (!item) return null;
-
-  return {
-    key: item.key,
-    label: item.label,
-    sentence: toPhraseSentence(item.label),
-    imageSrc: item.image,
-  };
-}
-
-function getPage19LessonByKey(key?: string | null): KidsLessonCard | null {
-  if (!matchesPageKeyPrefix(key, 19)) return null;
-
-  const item = getKidPage19Item(key);
-  if (!item) return null;
-
-  return {
-    key: item.key,
-    label: item.label,
-    sentence: toPhraseSentence(item.label),
-    imageSrc: item.image,
-  };
-}
-
-function getPage20LessonByKey(key?: string | null): KidsLessonCard | null {
-  if (!matchesPageKeyPrefix(key, 20)) return null;
-
-  const item = getKidPage20Item(key);
-  if (!item) return null;
-
-  return {
-    key: item.key,
-    label: item.label,
-    sentence: toPhraseSentence(item.label),
-    imageSrc: item.image,
-  };
-}
-
-function getPage21LessonByKey(key?: string | null): KidsLessonCard | null {
-  if (!matchesPageKeyPrefix(key, 21)) return null;
-
-  const item = getKidPage21Item(key);
-  if (!item) return null;
-
-  return {
-    key: item.key,
-    label: item.label,
-    sentence: toPhraseSentence(item.label),
-    imageSrc: item.image,
-  };
-}
-
-function getPage22LessonByKey(key?: string | null): KidsLessonCard | null {
-  if (!matchesPageKeyPrefix(key, 22)) return null;
-
-  const item = getKidPage22Item(key);
-  if (!item) return null;
-
-  return {
-    key: item.key,
-    label: item.label,
-    sentence: toPhraseSentence(item.label),
-    imageSrc: item.image,
-  };
-}
-
-function getPage23LessonByKey(key?: string | null): KidsLessonCard | null {
-  if (!matchesPageKeyPrefix(key, 23)) return null;
-
-  const item = getKidPage23Item(key);
-  if (!item) return null;
-
-  return {
-    key: item.key,
-    label: item.label,
-    sentence: toPhraseSentence(item.label),
-    imageSrc: item.image,
-  };
-}
-
-function getPage24LessonByKey(key?: string | null): KidsLessonCard | null {
-  if (!matchesPageKeyPrefix(key, 24)) return null;
-
-  const item = getKidPage24Item(key);
-  if (!item) return null;
-
-  return {
-    key: item.key,
-    label: item.label,
-    sentence: toPhraseSentence(item.label),
-    imageSrc: item.image,
-  };
-}
-
-function extractTroubleWords(
-  troubleWords?: Array<string | { word?: string | null }>,
-): string[] {
+function extractTroubleWords(troubleWords?: Array<string | { word?: string | null }>): string[] {
   if (!Array.isArray(troubleWords)) return [];
-
-  return troubleWords
-    .map((item) => {
-      if (typeof item === 'string') return cleanText(item);
-      if (item && typeof item === 'object') return cleanText(item.word);
-      return '';
-    })
-    .filter(Boolean)
-    .slice(0, 8);
+  return troubleWords.map((item) => {
+    if (typeof item === 'string') return cleanText(item);
+    if (item && typeof item === 'object') return cleanText(item.word);
+    return '';
+  }).filter(Boolean).slice(0, 8);
 }
 
 function calculateMatchScore(target: string, spoken: string): number {
   const targetWords = normalizeForCompare(target).split(' ').filter(Boolean);
   const spokenWords = normalizeForCompare(spoken).split(' ').filter(Boolean);
-
   if (!targetWords.length) return 0;
   if (!spokenWords.length) return 0;
-
   let matched = 0;
   const remainingSpoken = [...spokenWords];
-
   for (const word of targetWords) {
     const index = remainingSpoken.indexOf(word);
-    if (index >= 0) {
-      matched += 1;
-      remainingSpoken.splice(index, 1);
-    }
+    if (index >= 0) { matched += 1; remainingSpoken.splice(index, 1); }
   }
-
-  return Math.max(
-    0,
-    Math.min(100, Math.round((matched / targetWords.length) * 100)),
-  );
+  return Math.max(0, Math.min(100, Math.round((matched / targetWords.length) * 100)));
 }
 
 function detectTroubleWords(transcript: string, target: string): string[] {
-  const transcriptWords = new Set(
-    normalizeForCompare(transcript).split(/\s+/).filter(Boolean),
-  );
-
-  return normalizeForCompare(target)
-    .split(/\s+/)
-    .filter(Boolean)
+  const transcriptWords = new Set(normalizeForCompare(transcript).split(/\s+/).filter(Boolean));
+  return normalizeForCompare(target).split(/\s+/).filter(Boolean)
     .filter((word, index, array) => array.indexOf(word) === index)
     .filter((word) => !transcriptWords.has(word))
     .slice(0, 5);
 }
 
-function filterTroubleWordsForPractice(
-  troubleWords: string[],
-  practiceText: string,
-): string[] {
-  const practiceWordSet = new Set(
-    normalizeForCompare(practiceText).split(/\s+/).filter(Boolean),
-  );
-
+function filterTroubleWordsForPractice(troubleWords: string[], practiceText: string): string[] {
+  const practiceWordSet = new Set(normalizeForCompare(practiceText).split(/\s+/).filter(Boolean));
   if (!practiceWordSet.size) return [];
-
-  return troubleWords.filter((word) =>
-    practiceWordSet.has(normalizeForCompare(word)),
-  );
+  return troubleWords.filter((word) => practiceWordSet.has(normalizeForCompare(word)));
 }
 
 function getConfidenceLevel(score: number): 'low' | 'medium' | 'high' {
@@ -976,64 +473,32 @@ function getVariantButtonClass(active: boolean) {
 }
 
 function getMetricTone(score: number) {
-  if (score >= 85) {
-    return {
-      ring: 'border-emerald-200 bg-emerald-50/80',
-      text: 'text-emerald-700',
-      bar: 'from-emerald-500 to-teal-500',
-    };
-  }
-
-  if (score >= 60) {
-    return {
-      ring: 'border-amber-200 bg-amber-50/80',
-      text: 'text-amber-700',
-      bar: 'from-amber-500 to-orange-500',
-    };
-  }
-
-  return {
-    ring: 'border-rose-200 bg-rose-50/85',
-    text: 'text-rose-700',
-    bar: 'from-rose-500 to-orange-500',
-  };
+  if (score >= 85) return { ring: 'border-emerald-200 bg-emerald-50/80', text: 'text-emerald-700', bar: 'from-emerald-500 to-teal-500' };
+  if (score >= 60) return { ring: 'border-amber-200 bg-amber-50/80',   text: 'text-amber-700',   bar: 'from-amber-500 to-orange-500' };
+  return                 { ring: 'border-rose-200 bg-rose-50/85',       text: 'text-rose-700',    bar: 'from-rose-500 to-orange-500' };
 }
 
 function getRecognitionErrorMessage(error?: string): string {
   switch (error) {
     case 'not-allowed':
-    case 'service-not-allowed':
-      return 'Microphone access was blocked. Please allow microphone access and try again.';
-    case 'no-speech':
-      return 'No speech was detected. Try again and speak a little closer to the microphone.';
-    case 'audio-capture':
-      return 'No microphone was found for speech recognition.';
-    case 'network':
-      return 'Speech recognition had a network problem. Please try again.';
-    case 'aborted':
-      return 'Speech recognition was stopped.';
-    default:
-      return error
-        ? `Speech recognition failed: ${error}.`
-        : 'Speech recognition failed.';
+    case 'service-not-allowed': return 'Microphone access was blocked. Please allow microphone access and try again.';
+    case 'no-speech':           return 'No speech was detected. Try again and speak a little closer to the microphone.';
+    case 'audio-capture':       return 'No microphone was found for speech recognition.';
+    case 'network':             return 'Speech recognition had a network problem. Please try again.';
+    case 'aborted':             return 'Speech recognition was stopped.';
+    default:                    return error ? `Speech recognition failed: ${error}.` : 'Speech recognition failed.';
   }
 }
 
-function buildFallbackPracticeText(
-  payload: PronunciationLaunchPayload | null,
-  contentEn?: string,
-): string {
+function buildFallbackPracticeText(payload: PronunciationLaunchPayload | null, contentEn?: string): string {
   const enhancedText = cleanText(payload?.enhancedText);
   const correctedText = cleanText(payload?.correctedText);
   const sourceText = cleanText(payload?.sourceText);
-
   if (enhancedText) return enhancedText;
   if (correctedText) return correctedText;
   if (sourceText) return sourceText;
-
   const fromRoom = cleanText(contentEn);
   if (!fromRoom) return '';
-
   const firstSentence = fromRoom.match(/[^.!?]+[.!?]?/u)?.[0] ?? fromRoom;
   return cleanText(firstSentence);
 }
@@ -1057,23 +522,17 @@ export function MercySpeakTab({
   teacherLabel,
   selectedKidsObjectKey,
 }: MercySpeakTabProps) {
-  void roomId;
-  void roomTitle;
-  void speakPractice;
-  void profile;
-  void learningSupportMode;
-  void kidsModeAgeBand;
-  void preferTapAndRepeat;
-  void teacherLabel;
+  void roomId; void roomTitle; void speakPractice; void profile;
+  void learningSupportMode; void kidsModeAgeBand; void preferTapAndRepeat; void teacherLabel;
 
   const payload = useMemo(
     () => pendingPronunciationPayload ?? pendingPayload ?? launchPayload ?? null,
     [launchPayload, pendingPayload, pendingPronunciationPayload],
   );
 
-  const rawSourceText = cleanText(payload?.sourceText);
+  const rawSourceText    = cleanText(payload?.sourceText);
   const rawCorrectedText = cleanText(payload?.correctedText);
-  const rawEnhancedText = cleanText(payload?.enhancedText);
+  const rawEnhancedText  = cleanText(payload?.enhancedText);
 
   const rawKidsCandidateText = useMemo(
     () => rawEnhancedText || rawCorrectedText || rawSourceText,
@@ -1083,6 +542,9 @@ export function MercySpeakTab({
   const kidsLesson = useMemo(() => {
     if (!isKidsMode) return null;
     return (
+      getPage27LessonByKey(selectedKidsObjectKey) ??
+      getPage26LessonByKey(selectedKidsObjectKey) ??
+      getPage25LessonByKey(selectedKidsObjectKey) ??
       getPage24LessonByKey(selectedKidsObjectKey) ??
       getPage23LessonByKey(selectedKidsObjectKey) ??
       getPage22LessonByKey(selectedKidsObjectKey) ??
@@ -1110,20 +572,10 @@ export function MercySpeakTab({
 
   const kidsObject = useMemo(() => {
     if (!isKidsMode) return null;
-
-    if (kidsLesson) {
-      return null;
-    }
-
+    if (kidsLesson) return null;
     const selectedObject = getKidsObjectByKey(selectedKidsObjectKey);
-    if (selectedObject) {
-      return selectedObject;
-    }
-
-    if (isLikelyKidsSentence(rawKidsCandidateText)) {
-      return getKidsObjectFromSentence(rawKidsCandidateText);
-    }
-
+    if (selectedObject) return selectedObject;
+    if (isLikelyKidsSentence(rawKidsCandidateText)) return getKidsObjectFromSentence(rawKidsCandidateText);
     return KIDS_OBJECTS[0];
   }, [isKidsMode, kidsLesson, rawKidsCandidateText, selectedKidsObjectKey]);
 
@@ -1133,443 +585,162 @@ export function MercySpeakTab({
     return kidsObject?.sentence ?? KIDS_OBJECTS[0].sentence;
   }, [isKidsMode, kidsLesson, kidsObject]);
 
-  const sourceText = isKidsMode ? kidsPracticeText : rawSourceText;
+  const sourceText    = isKidsMode ? kidsPracticeText : rawSourceText;
   const correctedText = isKidsMode ? kidsPracticeText : rawCorrectedText;
-  const enhancedText = isKidsMode ? kidsPracticeText : rawEnhancedText;
+  const enhancedText  = isKidsMode ? kidsPracticeText : rawEnhancedText;
 
   const defaultPracticeText = useMemo(() => {
-    if (isKidsMode) {
-      return kidsPracticeText;
-    }
+    if (isKidsMode) return kidsPracticeText;
     return buildFallbackPracticeText(payload, contentEn);
   }, [contentEn, isKidsMode, kidsPracticeText, payload]);
 
-  const initialVariant: PracticeVariant = isKidsMode
-    ? 'custom'
-    : enhancedText
-      ? 'enhanced'
-      : correctedText
-        ? 'corrected'
-        : sourceText
-          ? 'source'
-          : 'custom';
+  const initialVariant: PracticeVariant = isKidsMode ? 'custom' :
+    enhancedText ? 'enhanced' : correctedText ? 'corrected' : sourceText ? 'source' : 'custom';
 
-  const [variant, setVariant] = useState<PracticeVariant>(initialVariant);
-  const [customText, setCustomText] = useState(defaultPracticeText);
+  const [variant, setVariant]         = useState<PracticeVariant>(initialVariant);
+  const [customText, setCustomText]   = useState(defaultPracticeText);
   const [copySuccess, setCopySuccess] = useState(false);
-
-  const [transcript, setTranscript] = useState('');
+  const [transcript, setTranscript]   = useState('');
   const [recognitionError, setRecognitionError] = useState('');
   const [isListening, setIsListening] = useState(false);
-
-  const [recordingError, setRecordingError] = useState('');
+  const [recordingError, setRecordingError]     = useState('');
   const [isRecording, setIsRecording] = useState(false);
   const [recordedAudioUrl, setRecordedAudioUrl] = useState('');
+  const [isSpeaking, setIsSpeaking]   = useState(false);
+  const [selectedBuddyKey, setSelectedBuddyKey] = useState<string>(KIDS_BUDDIES[0].key);
 
-  const [isSpeaking, setIsSpeaking] = useState(false);
-  const [selectedBuddyKey, setSelectedBuddyKey] = useState<string>(
-    KIDS_BUDDIES[0].key,
-  );
+  const recognitionRef    = useRef<SpeechRecognitionLike | null>(null);
+  const mediaRecorderRef  = useRef<MediaRecorder | null>(null);
+  const mediaChunksRef    = useRef<BlobPart[]>([]);
+  const activeStreamRef   = useRef<MediaStream | null>(null);
+  const recordedAudioRef  = useRef<HTMLAudioElement | null>(null);
+  const lastKidsCelebrationRef    = useRef('');
+  const hasPlayedBuddySelectRef   = useRef(false);
 
-  const recognitionRef = useRef<SpeechRecognitionLike | null>(null);
-  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
-  const mediaChunksRef = useRef<BlobPart[]>([]);
-  const activeStreamRef = useRef<MediaStream | null>(null);
-  const recordedAudioRef = useRef<HTMLAudioElement | null>(null);
-  const lastKidsCelebrationRef = useRef('');
-  const hasPlayedBuddySelectRef = useRef(false);
+  const speechWindow = typeof window !== 'undefined' ? (window as BrowserWindowWithSpeechRecognition) : undefined;
+  const supportsRecognition    = typeof window !== 'undefined' && Boolean(speechWindow?.SpeechRecognition || speechWindow?.webkitSpeechRecognition);
+  const supportsSpeechSynthesis = typeof window !== 'undefined' && typeof window.speechSynthesis !== 'undefined';
+  const supportsMediaRecording  = typeof window !== 'undefined' && typeof navigator !== 'undefined' && Boolean(navigator.mediaDevices?.getUserMedia) && typeof MediaRecorder !== 'undefined';
 
-  const speechWindow =
-    typeof window !== 'undefined'
-      ? (window as BrowserWindowWithSpeechRecognition)
-      : undefined;
-
-  const supportsRecognition =
-    typeof window !== 'undefined' &&
-    Boolean(
-      speechWindow?.SpeechRecognition || speechWindow?.webkitSpeechRecognition,
-    );
-
-  const supportsSpeechSynthesis =
-    typeof window !== 'undefined' &&
-    typeof window.speechSynthesis !== 'undefined';
-
-  const supportsMediaRecording =
-    typeof window !== 'undefined' &&
-    typeof navigator !== 'undefined' &&
-    Boolean(navigator.mediaDevices?.getUserMedia) &&
-    typeof MediaRecorder !== 'undefined';
-
-  useEffect(() => {
-    setCustomText(defaultPracticeText);
-    setVariant(initialVariant);
-  }, [defaultPracticeText, initialVariant]);
+  useEffect(() => { setCustomText(defaultPracticeText); setVariant(initialVariant); }, [defaultPracticeText, initialVariant]);
 
   useEffect(() => {
     return () => {
-      if (typeof window !== 'undefined' && window.speechSynthesis) {
-        window.speechSynthesis.cancel();
-      }
-
-      try {
-        recognitionRef.current?.abort?.();
-      } catch {
-        // ignore cleanup errors
-      }
+      if (typeof window !== 'undefined' && window.speechSynthesis) window.speechSynthesis.cancel();
+      try { recognitionRef.current?.abort?.(); } catch { /* ignore */ }
       recognitionRef.current = null;
-
-      try {
-        if (
-          mediaRecorderRef.current &&
-          mediaRecorderRef.current.state !== 'inactive'
-        ) {
-          mediaRecorderRef.current.stop();
-        }
-      } catch {
-        // ignore cleanup errors
-      }
+      try { if (mediaRecorderRef.current && mediaRecorderRef.current.state !== 'inactive') mediaRecorderRef.current.stop(); } catch { /* ignore */ }
       mediaRecorderRef.current = null;
-
-      if (recordedAudioRef.current) {
-        try {
-          recordedAudioRef.current.pause();
-          recordedAudioRef.current.currentTime = 0;
-        } catch {
-          // ignore cleanup errors
-        }
-      }
-
-      if (recordedAudioUrl) {
-        URL.revokeObjectURL(recordedAudioUrl);
-      }
-
-      if (activeStreamRef.current) {
-        activeStreamRef.current.getTracks().forEach((track) => track.stop());
-        activeStreamRef.current = null;
-      }
+      if (recordedAudioRef.current) { try { recordedAudioRef.current.pause(); recordedAudioRef.current.currentTime = 0; } catch { /* ignore */ } }
+      if (recordedAudioUrl) URL.revokeObjectURL(recordedAudioUrl);
+      if (activeStreamRef.current) { activeStreamRef.current.getTracks().forEach((track) => track.stop()); activeStreamRef.current = null; }
     };
   }, [recordedAudioUrl]);
 
   useEffect(() => {
     if (typeof window === 'undefined' || !copySuccess) return;
-
-    const timer = window.setTimeout(() => {
-      setCopySuccess(false);
-    }, 1600);
-
+    const timer = window.setTimeout(() => { setCopySuccess(false); }, 1600);
     return () => window.clearTimeout(timer);
   }, [copySuccess]);
 
   const practiceText = useMemo(() => {
-    if (isKidsMode) {
-      return kidsPracticeText;
-    }
-
+    if (isKidsMode) return kidsPracticeText;
     const base = cleanText(customText);
-
-    if (variant === 'enhanced' && enhancedText) return enhancedText;
+    if (variant === 'enhanced'  && enhancedText)  return enhancedText;
     if (variant === 'corrected' && correctedText) return correctedText;
-    if (variant === 'source' && sourceText) return sourceText;
+    if (variant === 'source'    && sourceText)    return sourceText;
     return base;
-  }, [
-    correctedText,
-    customText,
-    enhancedText,
-    isKidsMode,
-    kidsPracticeText,
-    sourceText,
-    variant,
-  ]);
+  }, [correctedText, customText, enhancedText, isKidsMode, kidsPracticeText, sourceText, variant]);
 
-  const memoryTroubleWords = useMemo(
-    () => extractTroubleWords(troubleWords),
-    [troubleWords],
-  );
-
-  const scopedMemoryTroubleWords = useMemo(
-    () => filterTroubleWordsForPractice(memoryTroubleWords, practiceText),
-    [memoryTroubleWords, practiceText],
-  );
-
-  const matchScore = useMemo(
-    () => calculateMatchScore(practiceText, transcript),
-    [practiceText, transcript],
-  );
-
-  const generatedTroubleWords = useMemo(
-    () => detectTroubleWords(transcript, practiceText),
-    [practiceText, transcript],
-  );
-
-  const displayedTroubleWords = useMemo(() => {
-    if (generatedTroubleWords.length > 0) {
-      return generatedTroubleWords;
-    }
-
-    return scopedMemoryTroubleWords;
-  }, [generatedTroubleWords, scopedMemoryTroubleWords]);
+  const memoryTroubleWords = useMemo(() => extractTroubleWords(troubleWords), [troubleWords]);
+  const scopedMemoryTroubleWords = useMemo(() => filterTroubleWordsForPractice(memoryTroubleWords, practiceText), [memoryTroubleWords, practiceText]);
+  const matchScore = useMemo(() => calculateMatchScore(practiceText, transcript), [practiceText, transcript]);
+  const generatedTroubleWords = useMemo(() => detectTroubleWords(transcript, practiceText), [practiceText, transcript]);
+  const displayedTroubleWords = useMemo(() => generatedTroubleWords.length > 0 ? generatedTroubleWords : scopedMemoryTroubleWords, [generatedTroubleWords, scopedMemoryTroubleWords]);
 
   const kidsWordChips = useMemo(() => {
     if (!isKidsMode) return [];
-
-    if (displayedTroubleWords.length > 0) {
-      return displayedTroubleWords;
-    }
-
-    return normalizeForCompare(practiceText)
-      .split(/\s+/)
-      .filter(Boolean)
-      .filter((word, index, array) => array.indexOf(word) === index)
-      .slice(0, 4);
+    if (displayedTroubleWords.length > 0) return displayedTroubleWords;
+    return normalizeForCompare(practiceText).split(/\s+/).filter(Boolean).filter((word, index, array) => array.indexOf(word) === index).slice(0, 4);
   }, [displayedTroubleWords, isKidsMode, practiceText]);
 
-  const selectedBuddy = useMemo(
-    () => getKidsBuddyByKey(selectedBuddyKey),
-    [selectedBuddyKey],
-  );
-
-  const buddyDecorations = useMemo(
-    () => getKidsBuddyDecorations(selectedBuddy.key),
-    [selectedBuddy.key],
-  );
+  const selectedBuddy      = useMemo(() => getKidsBuddyByKey(selectedBuddyKey), [selectedBuddyKey]);
+  const buddyDecorations   = useMemo(() => getKidsBuddyDecorations(selectedBuddy.key), [selectedBuddy.key]);
 
   const kidsBuddyReaction = useMemo(() => {
     if (!isKidsMode) return null;
-
     let mood: KidsBuddyMood = 'idle';
-
-    if (isListening) {
-      mood = 'listen';
-    } else if (isSpeaking) {
-      mood = 'hear';
-    } else if (!transcript) {
-      mood = 'idle';
-    } else if (matchScore >= 94) {
-      mood = 'wow';
-    } else if (matchScore >= 82) {
-      mood = 'great';
-    } else if (matchScore >= 62) {
-      mood = 'good';
-    } else {
-      mood = 'again';
-    }
+    if (isListening)          mood = 'listen';
+    else if (isSpeaking)      mood = 'hear';
+    else if (!transcript)     mood = 'idle';
+    else if (matchScore >= 94) mood = 'wow';
+    else if (matchScore >= 82) mood = 'great';
+    else if (matchScore >= 62) mood = 'good';
+    else                       mood = 'again';
 
     switch (mood) {
-      case 'listen':
-        return {
-          mood,
-          word: getKidsBuddyReactionWord(mood),
-          line: 'Big clear voice',
-          ringClass: 'border-sky-200 bg-sky-50/95',
-          wordClass: 'text-sky-700',
-          haloClass:
-            '[animation:mercyBuddyGlow_1.2s_ease-in-out_infinite]',
-          emojiClass:
-            '[animation:mercyBuddyListen_1.1s_ease-in-out_infinite]',
-          sparkleClass:
-            '[animation:mercyBuddyFloat_2.1s_ease-in-out_infinite]',
-        };
-      case 'hear':
-        return {
-          mood,
-          word: getKidsBuddyReactionWord(mood),
-          line: 'Listen first',
-          ringClass: 'border-teal-200 bg-teal-50/95',
-          wordClass: 'text-teal-700',
-          haloClass:
-            '[animation:mercyBuddyGlow_1.1s_ease-in-out_infinite]',
-          emojiClass:
-            '[animation:mercyBuddyListen_1.1s_ease-in-out_infinite]',
-          sparkleClass:
-            '[animation:mercyBuddyFloat_2s_ease-in-out_infinite]',
-        };
-      case 'wow':
-        return {
-          mood,
-          word: getKidsBuddyReactionWord(mood),
-          line: selectedBuddy.greatLine,
-          ringClass: 'border-emerald-200 bg-emerald-50/95',
-          wordClass: 'text-emerald-700',
-          haloClass:
-            '[animation:mercyBuddyGlow_0.9s_ease-in-out_infinite]',
-          emojiClass:
-            '[animation:mercyBuddyParty_0.85s_ease-in-out_infinite]',
-          sparkleClass: '[animation:mercyBuddySpark_1s_ease-in-out_infinite]',
-        };
-      case 'great':
-        return {
-          mood,
-          word: getKidsBuddyReactionWord(mood),
-          line: selectedBuddy.greatLine,
-          ringClass: 'border-emerald-200 bg-emerald-50/92',
-          wordClass: 'text-emerald-700',
-          haloClass:
-            '[animation:mercyBuddyGlow_1s_ease-in-out_infinite]',
-          emojiClass: '[animation:mercyBuddyHop_0.95s_ease-in-out_infinite]',
-          sparkleClass:
-            '[animation:mercyBuddyFloat_1.5s_ease-in-out_infinite]',
-        };
-      case 'good':
-        return {
-          mood,
-          word: getKidsBuddyReactionWord(mood),
-          line: selectedBuddy.goodLine,
-          ringClass: 'border-amber-200 bg-amber-50/92',
-          wordClass: 'text-amber-700',
-          haloClass:
-            '[animation:mercyBuddyGlow_1.4s_ease-in-out_infinite]',
-          emojiClass:
-            '[animation:mercyBuddyBounce_1.25s_ease-in-out_infinite]',
-          sparkleClass:
-            '[animation:mercyBuddyFloat_1.8s_ease-in-out_infinite]',
-        };
-      case 'again':
-        return {
-          mood,
-          word: getKidsBuddyReactionWord(mood),
-          line: selectedBuddy.retryLine,
-          ringClass: 'border-rose-200 bg-rose-50/90',
-          wordClass: 'text-rose-700',
-          haloClass:
-            '[animation:mercyBuddyGlow_1.8s_ease-in-out_infinite]',
-          emojiClass: '[animation:mercyBuddyBob_2.4s_ease-in-out_infinite]',
-          sparkleClass:
-            '[animation:mercyBuddyFloat_2.5s_ease-in-out_infinite]',
-        };
-      default:
-        return {
-          mood,
-          word: '',
-          line: selectedBuddy.idleLine,
-          ringClass: 'border-slate-200 bg-white/92',
-          wordClass: 'text-slate-700',
-          haloClass:
-            '[animation:mercyBuddyGlow_2.4s_ease-in-out_infinite]',
-          emojiClass: '[animation:mercyBuddyBob_2.8s_ease-in-out_infinite]',
-          sparkleClass:
-            '[animation:mercyBuddyFloat_2.8s_ease-in-out_infinite]',
-        };
+      case 'listen': return { mood, word: getKidsBuddyReactionWord(mood), line: 'Big clear voice',     ringClass: 'border-sky-200 bg-sky-50/95',     wordClass: 'text-sky-700',     haloClass: '[animation:mercyBuddyGlow_1.2s_ease-in-out_infinite]',  emojiClass: '[animation:mercyBuddyListen_1.1s_ease-in-out_infinite]', sparkleClass: '[animation:mercyBuddyFloat_2.1s_ease-in-out_infinite]' };
+      case 'hear':   return { mood, word: getKidsBuddyReactionWord(mood), line: 'Listen first',        ringClass: 'border-teal-200 bg-teal-50/95',   wordClass: 'text-teal-700',    haloClass: '[animation:mercyBuddyGlow_1.1s_ease-in-out_infinite]',  emojiClass: '[animation:mercyBuddyListen_1.1s_ease-in-out_infinite]', sparkleClass: '[animation:mercyBuddyFloat_2s_ease-in-out_infinite]'   };
+      case 'wow':    return { mood, word: getKidsBuddyReactionWord(mood), line: selectedBuddy.greatLine, ringClass: 'border-emerald-200 bg-emerald-50/95', wordClass: 'text-emerald-700', haloClass: '[animation:mercyBuddyGlow_0.9s_ease-in-out_infinite]',  emojiClass: '[animation:mercyBuddyParty_0.85s_ease-in-out_infinite]', sparkleClass: '[animation:mercyBuddySpark_1s_ease-in-out_infinite]'   };
+      case 'great':  return { mood, word: getKidsBuddyReactionWord(mood), line: selectedBuddy.greatLine, ringClass: 'border-emerald-200 bg-emerald-50/92', wordClass: 'text-emerald-700', haloClass: '[animation:mercyBuddyGlow_1s_ease-in-out_infinite]',    emojiClass: '[animation:mercyBuddyHop_0.95s_ease-in-out_infinite]',   sparkleClass: '[animation:mercyBuddyFloat_1.5s_ease-in-out_infinite]' };
+      case 'good':   return { mood, word: getKidsBuddyReactionWord(mood), line: selectedBuddy.goodLine,  ringClass: 'border-amber-200 bg-amber-50/92',   wordClass: 'text-amber-700',   haloClass: '[animation:mercyBuddyGlow_1.4s_ease-in-out_infinite]',  emojiClass: '[animation:mercyBuddyBounce_1.25s_ease-in-out_infinite]',sparkleClass: '[animation:mercyBuddyFloat_1.8s_ease-in-out_infinite]' };
+      case 'again':  return { mood, word: getKidsBuddyReactionWord(mood), line: selectedBuddy.retryLine, ringClass: 'border-rose-200 bg-rose-50/90',     wordClass: 'text-rose-700',    haloClass: '[animation:mercyBuddyGlow_1.8s_ease-in-out_infinite]',  emojiClass: '[animation:mercyBuddyBob_2.4s_ease-in-out_infinite]',    sparkleClass: '[animation:mercyBuddyFloat_2.5s_ease-in-out_infinite]' };
+      default:       return { mood, word: '',                              line: selectedBuddy.idleLine,  ringClass: 'border-slate-200 bg-white/92',      wordClass: 'text-slate-700',   haloClass: '[animation:mercyBuddyGlow_2.4s_ease-in-out_infinite]',  emojiClass: '[animation:mercyBuddyBob_2.8s_ease-in-out_infinite]',    sparkleClass: '[animation:mercyBuddyFloat_2.8s_ease-in-out_infinite]' };
     }
   }, [isKidsMode, isListening, isSpeaking, matchScore, selectedBuddy, transcript]);
 
   useEffect(() => {
     if (!transcript || !practiceText || !onMemoryUpdate) return;
-
-    onMemoryUpdate({
-      pronunciation: {
-        troubleWords: generatedTroubleWords,
-        lastPracticeLine: practiceText,
-        confidenceLevel: getConfidenceLevel(matchScore),
-      },
-    });
-  }, [
-    generatedTroubleWords,
-    matchScore,
-    onMemoryUpdate,
-    practiceText,
-    transcript,
-  ]);
+    onMemoryUpdate({ pronunciation: { troubleWords: generatedTroubleWords, lastPracticeLine: practiceText, confidenceLevel: getConfidenceLevel(matchScore) } });
+  }, [generatedTroubleWords, matchScore, onMemoryUpdate, practiceText, transcript]);
 
   useEffect(() => {
     if (!isKidsMode) return;
-
-    if (!hasPlayedBuddySelectRef.current) {
-      hasPlayedBuddySelectRef.current = true;
-      return;
-    }
-
+    if (!hasPlayedBuddySelectRef.current) { hasPlayedBuddySelectRef.current = true; return; }
     playKidsUiSound('select');
   }, [isKidsMode, selectedBuddyKey]);
 
   useEffect(() => {
     if (!isKidsMode) return;
-
-    if (!transcript || isListening) {
-      if (!transcript) {
-        lastKidsCelebrationRef.current = '';
-      }
-      return;
-    }
-
+    if (!transcript || isListening) { if (!transcript) lastKidsCelebrationRef.current = ''; return; }
     const attemptKey = `${normalizeForCompare(practiceText)}__${normalizeForCompare(transcript)}`;
     if (lastKidsCelebrationRef.current === attemptKey) return;
-
     lastKidsCelebrationRef.current = attemptKey;
-
-    if (matchScore >= 94) {
-      playKidsUiSound('wow');
-      return;
-    }
-
-    if (matchScore >= 82) {
-      playKidsUiSound('great');
-      return;
-    }
-
-    if (matchScore >= 70) {
-      playKidsUiSound('good');
-    }
+    if (matchScore >= 94) { playKidsUiSound('wow'); return; }
+    if (matchScore >= 82) { playKidsUiSound('great'); return; }
+    if (matchScore >= 70) { playKidsUiSound('good'); }
   }, [isKidsMode, isListening, matchScore, practiceText, transcript]);
 
   function stopActiveStream() {
-    if (activeStreamRef.current) {
-      activeStreamRef.current.getTracks().forEach((track) => track.stop());
-      activeStreamRef.current = null;
-    }
+    if (activeStreamRef.current) { activeStreamRef.current.getTracks().forEach((track) => track.stop()); activeStreamRef.current = null; }
   }
 
   function stopRecordedAudioPlayback(resetPosition = false) {
     const audio = recordedAudioRef.current;
     if (!audio) return;
-
-    try {
-      audio.pause();
-      if (resetPosition) {
-        audio.currentTime = 0;
-      }
-    } catch {
-      // ignore playback stop errors
-    }
+    try { audio.pause(); if (resetPosition) audio.currentTime = 0; } catch { /* ignore */ }
   }
 
   function revokeRecordedAudioUrl() {
     stopRecordedAudioPlayback(true);
-
-    if (recordedAudioUrl) {
-      URL.revokeObjectURL(recordedAudioUrl);
-      setRecordedAudioUrl('');
-    }
+    if (recordedAudioUrl) { URL.revokeObjectURL(recordedAudioUrl); setRecordedAudioUrl(''); }
   }
 
   function handleSpeak(textOverride?: string) {
     const speechText = cleanText(textOverride) || practiceText;
-    if (
-      !speechText ||
-      !supportsSpeechSynthesis ||
-      typeof window === 'undefined'
-    ) {
-      return;
-    }
-
+    if (!speechText || !supportsSpeechSynthesis || typeof window === 'undefined') return;
     stopRecordedAudioPlayback(true);
-
     try {
-      if (window.speechSynthesis.speaking) {
-        window.speechSynthesis.cancel();
-      }
-
+      if (window.speechSynthesis.speaking) window.speechSynthesis.cancel();
       const utterance = new SpeechSynthesisUtterance(speechText);
-      utterance.lang = 'en-US';
-      utterance.rate = isKidsMode ? 0.8 : 0.92;
+      utterance.lang  = 'en-US';
+      utterance.rate  = isKidsMode ? 0.8 : 0.92;
       utterance.pitch = isKidsMode ? 1.05 : 1;
       utterance.onstart = () => setIsSpeaking(true);
-      utterance.onend = () => setIsSpeaking(false);
+      utterance.onend   = () => setIsSpeaking(false);
       utterance.onerror = () => setIsSpeaking(false);
-
       window.speechSynthesis.speak(utterance);
-    } catch {
-      setIsSpeaking(false);
-    }
+    } catch { setIsSpeaking(false); }
   }
 
   function stopSpeaking() {
@@ -1580,215 +751,82 @@ export function MercySpeakTab({
 
   async function handlePlayRecording() {
     if (!recordedAudioUrl || isRecording) return;
-
     const audio = recordedAudioRef.current;
     if (!audio) return;
-
     stopSpeaking();
-
-    try {
-      audio.currentTime = 0;
-      await audio.play();
-      setRecordingError('');
-    } catch {
-      setRecordingError('Recorded audio could not be played.');
-    }
+    try { audio.currentTime = 0; await audio.play(); setRecordingError(''); } catch { setRecordingError('Recorded audio could not be played.'); }
   }
 
   async function handleCopy() {
-    if (
-      !practiceText ||
-      typeof navigator === 'undefined' ||
-      !navigator.clipboard?.writeText
-    ) {
-      return;
-    }
-
-    try {
-      await navigator.clipboard.writeText(practiceText);
-      setCopySuccess(true);
-    } catch {
-      setCopySuccess(false);
-    }
+    if (!practiceText || typeof navigator === 'undefined' || !navigator.clipboard?.writeText) return;
+    try { await navigator.clipboard.writeText(practiceText); setCopySuccess(true); } catch { setCopySuccess(false); }
   }
 
   function stopListening() {
     setIsListening(false);
-
-    try {
-      recognitionRef.current?.stop();
-    } catch {
-      try {
-        recognitionRef.current?.abort?.();
-      } catch {
-        // ignore stop errors
-      }
-    }
+    try { recognitionRef.current?.stop(); } catch { try { recognitionRef.current?.abort?.(); } catch { /* ignore */ } }
   }
 
   function startListening() {
-    if (
-      !supportsRecognition ||
-      !practiceText ||
-      isListening ||
-      !speechWindow
-    ) {
-      return;
-    }
-
+    if (!supportsRecognition || !practiceText || isListening || !speechWindow) return;
     stopRecordedAudioPlayback();
     setRecognitionError('');
     setTranscript('');
-
-    const RecognitionCtor =
-      speechWindow.SpeechRecognition ?? speechWindow.webkitSpeechRecognition;
-
+    const RecognitionCtor = speechWindow.SpeechRecognition ?? speechWindow.webkitSpeechRecognition;
     if (!RecognitionCtor) return;
-
-    try {
-      recognitionRef.current?.abort?.();
-    } catch {
-      // ignore replacement errors
-    }
-
+    try { recognitionRef.current?.abort?.(); } catch { /* ignore */ }
     const recognition = new RecognitionCtor();
     recognition.lang = 'en-US';
     recognition.interimResults = true;
-    recognition.continuous = false;
-
-    recognition.onstart = () => {
-      setIsListening(true);
-    };
-
-    recognition.onerror = (event: SpeechRecognitionErrorEventLike) => {
-      setRecognitionError(getRecognitionErrorMessage(event?.error));
-      setIsListening(false);
-    };
-
-    recognition.onend = () => {
-      setIsListening(false);
-    };
-
+    recognition.continuous     = false;
+    recognition.onstart = () => { setIsListening(true); };
+    recognition.onerror = (event: SpeechRecognitionErrorEventLike) => { setRecognitionError(getRecognitionErrorMessage(event?.error)); setIsListening(false); };
+    recognition.onend   = () => { setIsListening(false); };
     recognition.onresult = (event) => {
-      const combined = Array.from(event.results)
-        .map((result: SpeechRecognitionResultLike) =>
-          Array.from(
-            { length: result.length },
-            (_, index) => result[index] as SpeechRecognitionAlternativeLike,
-          )
-            .map((item) => item?.transcript || '')
-            .join(' '),
-        )
-        .join(' ');
-
+      const combined = Array.from(event.results).map((result: SpeechRecognitionResultLike) =>
+        Array.from({ length: result.length }, (_, index) => result[index] as SpeechRecognitionAlternativeLike).map((item) => item?.transcript || '').join(' ')
+      ).join(' ');
       setTranscript(cleanText(combined));
     };
-
     recognitionRef.current = recognition;
-
-    try {
-      recognition.start();
-    } catch {
-      setRecognitionError(
-        'Speech recognition could not start. Please try again.',
-      );
-      setIsListening(false);
-    }
+    try { recognition.start(); } catch { setRecognitionError('Speech recognition could not start. Please try again.'); setIsListening(false); }
   }
 
   async function startRecording() {
-    if (
-      !supportsMediaRecording ||
-      isRecording ||
-      typeof navigator === 'undefined'
-    ) {
-      return;
-    }
-
+    if (!supportsMediaRecording || isRecording || typeof navigator === 'undefined') return;
     stopRecordedAudioPlayback(true);
     setRecordingError('');
-
     try {
       revokeRecordedAudioUrl();
       stopActiveStream();
-
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       activeStreamRef.current = stream;
-
       const recorder = new MediaRecorder(stream);
       mediaChunksRef.current = [];
-
-      recorder.ondataavailable = (event) => {
-        if (event.data.size > 0) {
-          mediaChunksRef.current.push(event.data);
-        }
-      };
-
-      recorder.onerror = () => {
-        setRecordingError('Recording failed. Please try again.');
-        setIsRecording(false);
-        stopActiveStream();
-      };
-
+      recorder.ondataavailable = (event) => { if (event.data.size > 0) mediaChunksRef.current.push(event.data); };
+      recorder.onerror = () => { setRecordingError('Recording failed. Please try again.'); setIsRecording(false); stopActiveStream(); };
       recorder.onstop = () => {
         setIsRecording(false);
-
-        const hasAudio = mediaChunksRef.current.length > 0;
-        if (!hasAudio) {
-          setRecordingError('No recording was captured. Please try again.');
-          stopActiveStream();
-          return;
-        }
-
-        const blob = new Blob(mediaChunksRef.current, {
-          type: 'audio/webm',
-        });
-        const nextUrl = URL.createObjectURL(blob);
-        setRecordedAudioUrl(nextUrl);
+        if (!mediaChunksRef.current.length) { setRecordingError('No recording was captured. Please try again.'); stopActiveStream(); return; }
+        const blob = new Blob(mediaChunksRef.current, { type: 'audio/webm' });
+        setRecordedAudioUrl(URL.createObjectURL(blob));
         stopActiveStream();
       };
-
       mediaRecorderRef.current = recorder;
       recorder.start();
       setIsRecording(true);
-    } catch {
-      setRecordingError('Microphone access was blocked or unavailable.');
-      setIsRecording(false);
-      stopActiveStream();
-    }
+    } catch { setRecordingError('Microphone access was blocked or unavailable.'); setIsRecording(false); stopActiveStream(); }
   }
 
   function stopRecording() {
-    try {
-      if (
-        mediaRecorderRef.current &&
-        mediaRecorderRef.current.state !== 'inactive'
-      ) {
-        mediaRecorderRef.current.stop();
-      }
-    } catch {
-      setRecordingError(
-        'Recording could not be stopped cleanly. Please try again.',
-      );
-      setIsRecording(false);
-      stopActiveStream();
-    }
+    try { if (mediaRecorderRef.current && mediaRecorderRef.current.state !== 'inactive') mediaRecorderRef.current.stop(); }
+    catch { setRecordingError('Recording could not be stopped cleanly. Please try again.'); setIsRecording(false); stopActiveStream(); }
   }
 
   function handleResetAttempt() {
-    setTranscript('');
-    setRecognitionError('');
-    setRecordingError('');
-    setCopySuccess(false);
-
-    stopListening();
-    stopSpeaking();
-    stopRecordedAudioPlayback(true);
-
-    if (isRecording) {
-      stopRecording();
-    }
-
+    setTranscript(''); setRecognitionError(''); setRecordingError(''); setCopySuccess(false);
+    stopListening(); stopSpeaking(); stopRecordedAudioPlayback(true);
+    if (isRecording) stopRecording();
     revokeRecordedAudioUrl();
   }
 
@@ -1798,54 +836,23 @@ export function MercySpeakTab({
     setVariant('custom');
   }
 
-  const matchTone = getMetricTone(matchScore);
-  const canOpenLogic = Boolean(!isKidsMode && onOpenEnglishLogic);
-  const confidenceLabel = getConfidenceLevel(matchScore).toUpperCase();
-  const transcriptLabel = 'Your transcript';
+  const matchTone        = getMetricTone(matchScore);
+  const canOpenLogic     = Boolean(!isKidsMode && onOpenEnglishLogic);
+  const confidenceLabel  = getConfidenceLevel(matchScore).toUpperCase();
+  const transcriptLabel  = 'Your transcript';
 
   if (isKidsMode) {
     return (
       <div className="flex h-full min-h-0 flex-col overflow-hidden bg-gradient-to-br from-[#FFF8F3] via-[#FFFDFC] to-[#F7FAFF]">
         <style>{`
-          @keyframes mercyBuddyBob {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-8px) scale(1.03); }
-          }
-          @keyframes mercyBuddyBounce {
-            0%, 100% { transform: translateY(0) scale(1); }
-            30% { transform: translateY(-14px) scale(1.07); }
-            60% { transform: translateY(0) scale(0.98); }
-          }
-          @keyframes mercyBuddyHop {
-            0%, 100% { transform: translateY(0) scale(1); }
-            25% { transform: translateY(-18px) scale(1.1); }
-            50% { transform: translateY(0) scale(0.96); }
-            75% { transform: translateY(-8px) scale(1.05); }
-          }
-          @keyframes mercyBuddyListen {
-            0%, 100% { transform: scale(1) rotate(0deg); }
-            25% { transform: scale(1.05) rotate(-4deg); }
-            75% { transform: scale(1.05) rotate(4deg); }
-          }
-          @keyframes mercyBuddyParty {
-            0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
-            25% { transform: translateY(-14px) rotate(-8deg) scale(1.1); }
-            50% { transform: translateY(0) rotate(0deg) scale(0.98); }
-            75% { transform: translateY(-10px) rotate(8deg) scale(1.12); }
-          }
-          @keyframes mercyBuddyGlow {
-            0%, 100% { opacity: 0.55; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.1); }
-          }
-          @keyframes mercyBuddyFloat {
-            0%, 100% { transform: translateY(0) translateX(0); }
-            50% { transform: translateY(-10px) translateX(4px); }
-          }
-          @keyframes mercyBuddySpark {
-            0% { opacity: 0; transform: translateY(0) scale(0.6); }
-            30% { opacity: 1; transform: translateY(-4px) scale(1); }
-            100% { opacity: 0; transform: translateY(-18px) scale(1.12); }
-          }
+          @keyframes mercyBuddyBob { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-8px) scale(1.03); } }
+          @keyframes mercyBuddyBounce { 0%, 100% { transform: translateY(0) scale(1); } 30% { transform: translateY(-14px) scale(1.07); } 60% { transform: translateY(0) scale(0.98); } }
+          @keyframes mercyBuddyHop { 0%, 100% { transform: translateY(0) scale(1); } 25% { transform: translateY(-18px) scale(1.1); } 50% { transform: translateY(0) scale(0.96); } 75% { transform: translateY(-8px) scale(1.05); } }
+          @keyframes mercyBuddyListen { 0%, 100% { transform: scale(1) rotate(0deg); } 25% { transform: scale(1.05) rotate(-4deg); } 75% { transform: scale(1.05) rotate(4deg); } }
+          @keyframes mercyBuddyParty { 0%, 100% { transform: translateY(0) rotate(0deg) scale(1); } 25% { transform: translateY(-14px) rotate(-8deg) scale(1.1); } 50% { transform: translateY(0) rotate(0deg) scale(0.98); } 75% { transform: translateY(-10px) rotate(8deg) scale(1.12); } }
+          @keyframes mercyBuddyGlow { 0%, 100% { opacity: 0.55; transform: scale(1); } 50% { opacity: 1; transform: scale(1.1); } }
+          @keyframes mercyBuddyFloat { 0%, 100% { transform: translateY(0) translateX(0); } 50% { transform: translateY(-10px) translateX(4px); } }
+          @keyframes mercyBuddySpark { 0% { opacity: 0; transform: translateY(0) scale(0.6); } 30% { opacity: 1; transform: translateY(-4px) scale(1); } 100% { opacity: 0; transform: translateY(-18px) scale(1.12); } }
         `}</style>
 
         <div className="min-h-0 flex-1 overflow-y-auto overflow-x-hidden px-2 py-2 md:px-3 md:py-3">
@@ -1855,7 +862,6 @@ export function MercySpeakTab({
                 <h3 className="text-[1.9rem] font-semibold tracking-tight text-slate-900 md:text-[2.65rem] md:leading-[1.02]">
                   {kidsLesson?.label ?? kidsObject?.label ?? KIDS_OBJECTS[0].label}
                 </h3>
-
                 <p className="text-[1.05rem] font-medium leading-7 text-slate-700 md:text-[1.35rem] md:leading-8">
                   {practiceText}
                 </p>
@@ -1865,59 +871,27 @@ export function MercySpeakTab({
             <div className="grid grid-cols-2 gap-3">
               <div className="flex min-h-[220px] items-center justify-center overflow-hidden rounded-[24px] border border-[#F4DDD1] bg-gradient-to-br from-[#FFF6F0] via-white to-[#F8FBFF] p-0 shadow-[0_8px_18px_rgba(255,138,101,0.06)] md:min-h-[250px]">
                 <img
-                  src={
-                    kidsLesson?.imageSrc ??
-                    kidsObject?.imageSrc ??
-                    KIDS_OBJECTS[0].imageSrc
-                  }
-                  alt={
-                    kidsLesson?.label ??
-                    kidsObject?.label ??
-                    KIDS_OBJECTS[0].label
-                  }
+                  src={kidsLesson?.imageSrc ?? kidsObject?.imageSrc ?? KIDS_OBJECTS[0].imageSrc}
+                  alt={kidsLesson?.label ?? kidsObject?.label ?? KIDS_OBJECTS[0].label}
                   className="h-full w-full scale-[1.08] object-contain"
                 />
               </div>
 
-              <div
-                className={`relative overflow-hidden rounded-[22px] border p-3 shadow-sm ${kidsBuddyReaction?.ringClass ?? 'border-slate-200 bg-white/92'}`}
-              >
-                <div
-                  className={`absolute inset-3 rounded-full bg-white/65 blur-2xl ${kidsBuddyReaction?.haloClass ?? '[animation:mercyBuddyGlow_2.4s_ease-in-out_infinite]'}`}
-                />
-
+              <div className={`relative overflow-hidden rounded-[22px] border p-3 shadow-sm ${kidsBuddyReaction?.ringClass ?? 'border-slate-200 bg-white/92'}`}>
+                <div className={`absolute inset-3 rounded-full bg-white/65 blur-2xl ${kidsBuddyReaction?.haloClass ?? '[animation:mercyBuddyGlow_2.4s_ease-in-out_infinite]'}`} />
                 {buddyDecorations.map((symbol, index) => (
-                  <span
-                    key={`${symbol}-${index}`}
-                    className={`absolute z-10 text-lg md:text-xl ${kidsBuddyReaction?.sparkleClass ?? '[animation:mercyBuddyFloat_2.8s_ease-in-out_infinite]'}`}
-                    style={{
-                      top: index === 0 ? '12%' : index === 1 ? '18%' : '70%',
-                      left: index === 0 ? '16%' : index === 1 ? '72%' : '18%',
-                      animationDelay: `${index * 0.22}s`,
-                    }}
-                  >
+                  <span key={`${symbol}-${index}`} className={`absolute z-10 text-lg md:text-xl ${kidsBuddyReaction?.sparkleClass ?? '[animation:mercyBuddyFloat_2.8s_ease-in-out_infinite]'}`}
+                    style={{ top: index === 0 ? '12%' : index === 1 ? '18%' : '70%', left: index === 0 ? '16%' : index === 1 ? '72%' : '18%', animationDelay: `${index * 0.22}s` }}>
                     {symbol}
                   </span>
                 ))}
-
                 <div className="relative z-20 flex h-full min-h-[190px] flex-col items-center justify-center gap-2 md:min-h-[220px] md:gap-3">
                   <div className="flex h-28 w-28 items-center justify-center rounded-full bg-white/88 text-[72px] shadow-[0_14px_34px_rgba(148,163,184,0.16)] md:h-36 md:w-36 md:text-[92px]">
-                    <span
-                      className={
-                        kidsBuddyReaction?.emojiClass ??
-                        '[animation:mercyBuddyBob_2.8s_ease-in-out_infinite]'
-                      }
-                    >
-                      {selectedBuddy.emoji}
-                    </span>
+                    <span className={kidsBuddyReaction?.emojiClass ?? '[animation:mercyBuddyBob_2.8s_ease-in-out_infinite]'}>{selectedBuddy.emoji}</span>
                   </div>
-
-                  <div
-                    className={`min-h-[24px] text-lg font-semibold md:min-h-[28px] md:text-xl ${kidsBuddyReaction?.wordClass ?? 'text-slate-700'}`}
-                  >
+                  <div className={`min-h-[24px] text-lg font-semibold md:min-h-[28px] md:text-xl ${kidsBuddyReaction?.wordClass ?? 'text-slate-700'}`}>
                     {kidsBuddyReaction?.word ?? ''}
                   </div>
-
                   <p className="max-w-[180px] text-center text-xs leading-5 text-slate-600 md:text-sm md:leading-6">
                     {kidsBuddyReaction?.line ?? selectedBuddy.idleLine}
                   </p>
@@ -1930,36 +904,15 @@ export function MercySpeakTab({
                 <div className="flex w-max gap-1 pr-1">
                   {KIDS_BUDDIES.map((buddy) => {
                     const active = buddy.key === selectedBuddy.key;
-                    const motionClass =
-                      active && matchScore >= 94
-                        ? '[animation:mercyBuddyParty_0.85s_ease-in-out_infinite]'
-                        : active && matchScore >= 82
-                          ? '[animation:mercyBuddyHop_0.95s_ease-in-out_infinite]'
-                          : active && (isListening || isSpeaking)
-                            ? '[animation:mercyBuddyListen_1.1s_ease-in-out_infinite]'
-                            : active
-                              ? '[animation:mercyBuddyBob_2.4s_ease-in-out_infinite]'
-                              : '';
-
+                    const motionClass = active && matchScore >= 94 ? '[animation:mercyBuddyParty_0.85s_ease-in-out_infinite]' :
+                      active && matchScore >= 82 ? '[animation:mercyBuddyHop_0.95s_ease-in-out_infinite]' :
+                      active && (isListening || isSpeaking) ? '[animation:mercyBuddyListen_1.1s_ease-in-out_infinite]' :
+                      active ? '[animation:mercyBuddyBob_2.4s_ease-in-out_infinite]' : '';
                     return (
-                      <button
-                        key={buddy.key}
-                        type="button"
-                        onClick={() => setSelectedBuddyKey(buddy.key)}
-                        className={`flex min-w-[50px] flex-col items-center rounded-[14px] border px-1 py-1 text-center shadow-sm transition ${
-                          active
-                            ? 'border-[#BFD5F7] bg-white text-slate-900 ring-2 ring-[#DCE7F7]'
-                            : 'border-transparent bg-white/70 text-slate-600 hover:border-[#DCE7F7] hover:bg-white'
-                        }`}
-                      >
-                        <span
-                          className={`text-[22px] leading-none ${motionClass}`}
-                        >
-                          {buddy.emoji}
-                        </span>
-                        <span className="mt-0.5 text-[9px] font-semibold leading-3.5">
-                          {buddy.label}
-                        </span>
+                      <button key={buddy.key} type="button" onClick={() => setSelectedBuddyKey(buddy.key)}
+                        className={`flex min-w-[50px] flex-col items-center rounded-[14px] border px-1 py-1 text-center shadow-sm transition ${active ? 'border-[#BFD5F7] bg-white text-slate-900 ring-2 ring-[#DCE7F7]' : 'border-transparent bg-white/70 text-slate-600 hover:border-[#DCE7F7] hover:bg-white'}`}>
+                        <span className={`text-[22px] leading-none ${motionClass}`}>{buddy.emoji}</span>
+                        <span className="mt-0.5 text-[9px] font-semibold leading-3.5">{buddy.label}</span>
                       </button>
                     );
                   })}
@@ -1969,125 +922,39 @@ export function MercySpeakTab({
 
             {(recognitionError || recordingError || !supportsRecognition) ? (
               <div className="space-y-1.5">
-                {!supportsRecognition ? (
-                  <div className="rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-800">
-                    <div className="flex items-start gap-2">
-                      <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
-                      <p>Speech recognition is not available in this browser.</p>
-                    </div>
-                  </div>
-                ) : null}
-
-                {recognitionError ? (
-                  <div className="rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-800">
-                    <div className="flex items-start gap-2">
-                      <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
-                      <p>{recognitionError}</p>
-                    </div>
-                  </div>
-                ) : null}
-
-                {recordingError ? (
-                  <div className="rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-800">
-                    <div className="flex items-start gap-2">
-                      <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
-                      <p>{recordingError}</p>
-                    </div>
-                  </div>
-                ) : null}
+                {!supportsRecognition ? <div className="rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-800"><div className="flex items-start gap-2"><AlertCircle className="mt-0.5 h-4 w-4 shrink-0" /><p>Speech recognition is not available in this browser.</p></div></div> : null}
+                {recognitionError ? <div className="rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-800"><div className="flex items-start gap-2"><AlertCircle className="mt-0.5 h-4 w-4 shrink-0" /><p>{recognitionError}</p></div></div> : null}
+                {recordingError   ? <div className="rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-800"><div className="flex items-start gap-2"><AlertCircle className="mt-0.5 h-4 w-4 shrink-0" /><p>{recordingError}</p></div></div>   : null}
               </div>
             ) : null}
 
             <div className="grid grid-cols-5 gap-1.5">
-              <Button
-                type="button"
-                variant="outline"
-                onClick={() => handleSpeak()}
-                disabled={!practiceText}
-                className="h-[54px] min-w-0 rounded-[16px] border-teal-200 bg-gradient-to-r from-[#6EC6C8] to-[#5DAFB6] px-1 py-1 text-white shadow-[0_10px_18px_rgba(93,175,182,0.22)] hover:brightness-[1.03] disabled:opacity-60"
-              >
-                <span className="flex flex-col items-center justify-center gap-1 leading-none">
-                  <Volume2 className="h-4 w-4 shrink-0" />
-                  <span className="text-[10px] font-semibold">Mercy</span>
-                </span>
+              <Button type="button" variant="outline" onClick={() => handleSpeak()} disabled={!practiceText} className="h-[54px] min-w-0 rounded-[16px] border-teal-200 bg-gradient-to-r from-[#6EC6C8] to-[#5DAFB6] px-1 py-1 text-white shadow-[0_10px_18px_rgba(93,175,182,0.22)] hover:brightness-[1.03] disabled:opacity-60">
+                <span className="flex flex-col items-center justify-center gap-1 leading-none"><Volume2 className="h-4 w-4 shrink-0" /><span className="text-[10px] font-semibold">Mercy</span></span>
               </Button>
-
               {!isListening ? (
-                <Button
-                  type="button"
-                  onClick={startListening}
-                  disabled={!supportsRecognition || !practiceText}
-                  className="h-[54px] min-w-0 rounded-[16px] border-0 bg-gradient-to-r from-[#43C59E] to-[#18A874] px-1 py-1 text-white shadow-[0_10px_18px_rgba(24,168,116,0.20)] hover:brightness-[1.03] disabled:opacity-60"
-                >
-                  <span className="flex flex-col items-center justify-center gap-1 leading-none">
-                    <Mic className="h-4 w-4 shrink-0" />
-                    <span className="text-[10px] font-semibold">You</span>
-                  </span>
+                <Button type="button" onClick={startListening} disabled={!supportsRecognition || !practiceText} className="h-[54px] min-w-0 rounded-[16px] border-0 bg-gradient-to-r from-[#43C59E] to-[#18A874] px-1 py-1 text-white shadow-[0_10px_18px_rgba(24,168,116,0.20)] hover:brightness-[1.03] disabled:opacity-60">
+                  <span className="flex flex-col items-center justify-center gap-1 leading-none"><Mic className="h-4 w-4 shrink-0" /><span className="text-[10px] font-semibold">You</span></span>
                 </Button>
               ) : (
-                <Button
-                  type="button"
-                  variant="destructive"
-                  onClick={stopListening}
-                  className="h-[54px] min-w-0 rounded-[16px] px-1 py-1 shadow-[0_10px_18px_rgba(239,68,68,0.16)]"
-                >
-                  <span className="flex flex-col items-center justify-center gap-1 leading-none">
-                    <Square className="h-4 w-4 shrink-0" />
-                    <span className="text-[10px] font-semibold">Stop</span>
-                  </span>
+                <Button type="button" variant="destructive" onClick={stopListening} className="h-[54px] min-w-0 rounded-[16px] px-1 py-1 shadow-[0_10px_18px_rgba(239,68,68,0.16)]">
+                  <span className="flex flex-col items-center justify-center gap-1 leading-none"><Square className="h-4 w-4 shrink-0" /><span className="text-[10px] font-semibold">Stop</span></span>
                 </Button>
               )}
-
               {!isRecording ? (
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={startRecording}
-                  disabled={!supportsMediaRecording}
-                  className="h-[54px] min-w-0 rounded-[16px] border-[#BFE8EA] bg-[#F4FEFE] px-1 py-1 text-[#137E86] shadow-sm hover:bg-[#ECFCFD] disabled:opacity-60"
-                >
-                  <span className="flex flex-col items-center justify-center gap-1 leading-none">
-                    <Mic className="h-4 w-4 shrink-0" />
-                    <span className="text-[10px] font-semibold">Record</span>
-                  </span>
+                <Button type="button" variant="outline" onClick={startRecording} disabled={!supportsMediaRecording} className="h-[54px] min-w-0 rounded-[16px] border-[#BFE8EA] bg-[#F4FEFE] px-1 py-1 text-[#137E86] shadow-sm hover:bg-[#ECFCFD] disabled:opacity-60">
+                  <span className="flex flex-col items-center justify-center gap-1 leading-none"><Mic className="h-4 w-4 shrink-0" /><span className="text-[10px] font-semibold">Record</span></span>
                 </Button>
               ) : (
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={stopRecording}
-                  className="h-[54px] min-w-0 rounded-[16px] border-[#F2D8CA] bg-white px-1 py-1 text-slate-800 shadow-sm hover:bg-[#FFF8F4]"
-                >
-                  <span className="flex flex-col items-center justify-center gap-1 leading-none">
-                    <Square className="h-4 w-4 shrink-0" />
-                    <span className="text-[10px] font-semibold">Stop</span>
-                  </span>
+                <Button type="button" variant="outline" onClick={stopRecording} className="h-[54px] min-w-0 rounded-[16px] border-[#F2D8CA] bg-white px-1 py-1 text-slate-800 shadow-sm hover:bg-[#FFF8F4]">
+                  <span className="flex flex-col items-center justify-center gap-1 leading-none"><Square className="h-4 w-4 shrink-0" /><span className="text-[10px] font-semibold">Stop</span></span>
                 </Button>
               )}
-
-              <Button
-                type="button"
-                variant="outline"
-                onClick={handlePlayRecording}
-                disabled={!recordedAudioUrl || isRecording}
-                className="h-[54px] min-w-0 rounded-[16px] border-[#E2E8F0] bg-white px-1 py-1 text-slate-700 shadow-sm hover:bg-slate-50 disabled:opacity-50"
-              >
-                <span className="flex flex-col items-center justify-center gap-1 leading-none">
-                  <PlayCircle className="h-4 w-4 shrink-0" />
-                  <span className="text-[10px] font-semibold">Play</span>
-                </span>
+              <Button type="button" variant="outline" onClick={handlePlayRecording} disabled={!recordedAudioUrl || isRecording} className="h-[54px] min-w-0 rounded-[16px] border-[#E2E8F0] bg-white px-1 py-1 text-slate-700 shadow-sm hover:bg-slate-50 disabled:opacity-50">
+                <span className="flex flex-col items-center justify-center gap-1 leading-none"><PlayCircle className="h-4 w-4 shrink-0" /><span className="text-[10px] font-semibold">Play</span></span>
               </Button>
-
-              <Button
-                type="button"
-                variant="outline"
-                onClick={handleResetAttempt}
-                className="h-[54px] min-w-0 rounded-[16px] border-[#F2E7DE] bg-white px-1 py-1 text-slate-700 shadow-sm hover:bg-[#FFF8F4]"
-              >
-                <span className="flex flex-col items-center justify-center gap-1 leading-none">
-                  <RotateCcw className="h-4 w-4 shrink-0" />
-                  <span className="text-[10px] font-semibold">Reset</span>
-                </span>
+              <Button type="button" variant="outline" onClick={handleResetAttempt} className="h-[54px] min-w-0 rounded-[16px] border-[#F2E7DE] bg-white px-1 py-1 text-slate-700 shadow-sm hover:bg-[#FFF8F4]">
+                <span className="flex flex-col items-center justify-center gap-1 leading-none"><RotateCcw className="h-4 w-4 shrink-0" /><span className="text-[10px] font-semibold">Reset</span></span>
               </Button>
             </div>
 
@@ -2095,66 +962,35 @@ export function MercySpeakTab({
               <div className="space-y-3">
                 <div>
                   <div className="flex items-center justify-between gap-3">
-                    <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
-                      Mercy
-                    </span>
-                    <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
-                      100%
-                    </span>
+                    <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">Mercy</span>
+                    <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">100%</span>
                   </div>
-
                   <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-slate-100">
                     <div className="h-full w-full rounded-full bg-gradient-to-r from-[#6EC6C8] to-[#5DAFB6]" />
                   </div>
                 </div>
-
                 <div>
                   <div className="flex items-center justify-between gap-3">
-                    <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
-                      You
-                    </span>
-                    <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
-                      {transcript ? `${matchScore}%` : '0%'}
-                    </span>
+                    <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">You</span>
+                    <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">{transcript ? `${matchScore}%` : '0%'}</span>
                   </div>
-
                   <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-slate-100">
-                    <div
-                      className={`h-full rounded-full bg-gradient-to-r transition-all duration-500 ${matchTone.bar}`}
-                      style={{ width: `${transcript ? matchScore : 0}%` }}
-                    />
+                    <div className={`h-full rounded-full bg-gradient-to-r transition-all duration-500 ${matchTone.bar}`} style={{ width: `${transcript ? matchScore : 0}%` }} />
                   </div>
                 </div>
               </div>
-
               {kidsWordChips.length > 0 ? (
                 <div className="mt-2 flex items-center gap-2 overflow-x-auto pb-0.5">
-                  <span className="shrink-0 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500">
-                    Repeat
-                  </span>
-
+                  <span className="shrink-0 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500">Repeat</span>
                   {kidsWordChips.map((word) => (
-                    <button
-                      key={word}
-                      type="button"
-                      onClick={() => handleSpeak(word)}
-                      className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-[#F2DDD0] bg-gradient-to-r from-[#FFF5EF] to-white px-2.5 py-1 text-xs font-semibold text-[#875E4B] shadow-sm transition hover:border-[#F0C8B3] hover:bg-[#FFF8F4]"
-                    >
-                      <Volume2 className="h-3.5 w-3.5" />
-                      <span>{word}</span>
+                    <button key={word} type="button" onClick={() => handleSpeak(word)}
+                      className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-[#F2DDD0] bg-gradient-to-r from-[#FFF5EF] to-white px-2.5 py-1 text-xs font-semibold text-[#875E4B] shadow-sm transition hover:border-[#F0C8B3] hover:bg-[#FFF8F4]">
+                      <Volume2 className="h-3.5 w-3.5" /><span>{word}</span>
                     </button>
                   ))}
                 </div>
               ) : null}
-
-              <audio
-                ref={recordedAudioRef}
-                className="hidden"
-                src={recordedAudioUrl || undefined}
-                preload="metadata"
-              >
-                Your browser does not support audio playback.
-              </audio>
+              <audio ref={recordedAudioRef} className="hidden" src={recordedAudioUrl || undefined} preload="metadata">Your browser does not support audio playback.</audio>
             </div>
           </div>
         </div>
@@ -2168,246 +1004,77 @@ export function MercySpeakTab({
         <div className="space-y-3">
           <textarea
             value={customText}
-            onChange={(e) => {
-              setCustomText(e.target.value);
-              setVariant('custom');
-            }}
+            onChange={(e) => { setCustomText(e.target.value); setVariant('custom'); }}
             placeholder="Type the sentence you want to practice speaking..."
             className="min-h-[288px] w-full resize-y rounded-[26px] border border-[#E5CDB9] bg-gradient-to-br from-[#FFF9F2] to-white p-6 text-[1.1rem] leading-10 text-slate-950 shadow-[inset_0_1px_0_rgba(255,255,255,0.92),0_8px_20px_rgba(255,138,101,0.05)] outline-none transition placeholder:text-slate-600 focus:border-[#EFA98B] focus:ring-2 focus:ring-[#FFD3BF] md:min-h-[304px]"
           />
 
           <div className="grid grid-cols-5 gap-2.5">
-            <Button
-              type="button"
-              variant="outline"
-              onClick={() => handleSpeak()}
-              disabled={!practiceText}
-              className="h-[58px] min-w-0 rounded-[20px] border-[#147A81] bg-gradient-to-r from-[#126C73] to-[#0E545B] px-2 py-1 text-white shadow-[0_10px_22px_rgba(18,108,115,0.30)] hover:brightness-[1.04] disabled:opacity-60"
-            >
-              <span className="flex flex-col items-center justify-center gap-1 leading-none">
-                <Volume2 className="h-4.5 w-4.5 shrink-0" />
-                <span className="text-[11px] font-semibold">Mercy</span>
-              </span>
+            <Button type="button" variant="outline" onClick={() => handleSpeak()} disabled={!practiceText} className="h-[58px] min-w-0 rounded-[20px] border-[#147A81] bg-gradient-to-r from-[#126C73] to-[#0E545B] px-2 py-1 text-white shadow-[0_10px_22px_rgba(18,108,115,0.30)] hover:brightness-[1.04] disabled:opacity-60">
+              <span className="flex flex-col items-center justify-center gap-1 leading-none"><Volume2 className="h-4.5 w-4.5 shrink-0" /><span className="text-[11px] font-semibold">Mercy</span></span>
             </Button>
-
             {!isListening ? (
-              <Button
-                type="button"
-                onClick={startListening}
-                disabled={!supportsRecognition || !practiceText}
-                className="h-[58px] min-w-0 rounded-[20px] border-0 bg-gradient-to-r from-[#147A53] to-[#0F6242] px-2 py-1 text-white shadow-[0_10px_22px_rgba(20,122,83,0.28)] hover:brightness-[1.04] disabled:opacity-60"
-              >
-                <span className="flex flex-col items-center justify-center gap-1 leading-none">
-                  <Mic className="h-4.5 w-4.5 shrink-0" />
-                  <span className="text-[11px] font-semibold">You</span>
-                </span>
+              <Button type="button" onClick={startListening} disabled={!supportsRecognition || !practiceText} className="h-[58px] min-w-0 rounded-[20px] border-0 bg-gradient-to-r from-[#147A53] to-[#0F6242] px-2 py-1 text-white shadow-[0_10px_22px_rgba(20,122,83,0.28)] hover:brightness-[1.04] disabled:opacity-60">
+                <span className="flex flex-col items-center justify-center gap-1 leading-none"><Mic className="h-4.5 w-4.5 shrink-0" /><span className="text-[11px] font-semibold">You</span></span>
               </Button>
             ) : (
-              <Button
-                type="button"
-                variant="destructive"
-                onClick={stopListening}
-                className="h-[58px] min-w-0 rounded-[20px] px-2 py-1 shadow-[0_10px_18px_rgba(239,68,68,0.16)]"
-              >
-                <span className="flex flex-col items-center justify-center gap-1 leading-none">
-                  <Square className="h-4.5 w-4.5 shrink-0" />
-                  <span className="text-[11px] font-semibold">Stop</span>
-                </span>
+              <Button type="button" variant="destructive" onClick={stopListening} className="h-[58px] min-w-0 rounded-[20px] px-2 py-1 shadow-[0_10px_18px_rgba(239,68,68,0.16)]">
+                <span className="flex flex-col items-center justify-center gap-1 leading-none"><Square className="h-4.5 w-4.5 shrink-0" /><span className="text-[11px] font-semibold">Stop</span></span>
               </Button>
             )}
-
             {!isRecording ? (
-              <Button
-                type="button"
-                variant="outline"
-                onClick={startRecording}
-                disabled={!supportsMediaRecording}
-                className="h-[58px] min-w-0 rounded-[20px] border-[#99D6DE] bg-[#F1FEFF] px-2 py-1 text-[#0A6673] shadow-sm hover:bg-[#E9FBFD] disabled:opacity-60"
-              >
-                <span className="flex flex-col items-center justify-center gap-1 leading-none">
-                  <Mic className="h-4.5 w-4.5 shrink-0" />
-                  <span className="text-[11px] font-semibold">Record</span>
-                </span>
+              <Button type="button" variant="outline" onClick={startRecording} disabled={!supportsMediaRecording} className="h-[58px] min-w-0 rounded-[20px] border-[#99D6DE] bg-[#F1FEFF] px-2 py-1 text-[#0A6673] shadow-sm hover:bg-[#E9FBFD] disabled:opacity-60">
+                <span className="flex flex-col items-center justify-center gap-1 leading-none"><Mic className="h-4.5 w-4.5 shrink-0" /><span className="text-[11px] font-semibold">Record</span></span>
               </Button>
             ) : (
-              <Button
-                type="button"
-                variant="outline"
-                onClick={stopRecording}
-                className="h-[58px] min-w-0 rounded-[20px] border-[#F2D8CA] bg-white px-2 py-1 text-slate-900 shadow-sm hover:bg-[#FFF8F4]"
-              >
-                <span className="flex flex-col items-center justify-center gap-1 leading-none">
-                  <Square className="h-4.5 w-4.5 shrink-0" />
-                  <span className="text-[11px] font-semibold">Stop</span>
-                </span>
+              <Button type="button" variant="outline" onClick={stopRecording} className="h-[58px] min-w-0 rounded-[20px] border-[#F2D8CA] bg-white px-2 py-1 text-slate-900 shadow-sm hover:bg-[#FFF8F4]">
+                <span className="flex flex-col items-center justify-center gap-1 leading-none"><Square className="h-4.5 w-4.5 shrink-0" /><span className="text-[11px] font-semibold">Stop</span></span>
               </Button>
             )}
-
-            <Button
-              type="button"
-              variant="outline"
-              onClick={handlePlayRecording}
-              disabled={!recordedAudioUrl || isRecording}
-              className="h-[58px] min-w-0 rounded-[20px] border-[#D8E2F0] bg-white px-2 py-1 text-slate-900 shadow-sm hover:bg-slate-50 disabled:opacity-50"
-            >
-              <span className="flex flex-col items-center justify-center gap-1 leading-none">
-                <PlayCircle className="h-4.5 w-4.5 shrink-0" />
-                <span className="text-[11px] font-semibold">Play</span>
-              </span>
+            <Button type="button" variant="outline" onClick={handlePlayRecording} disabled={!recordedAudioUrl || isRecording} className="h-[58px] min-w-0 rounded-[20px] border-[#D8E2F0] bg-white px-2 py-1 text-slate-900 shadow-sm hover:bg-slate-50 disabled:opacity-50">
+              <span className="flex flex-col items-center justify-center gap-1 leading-none"><PlayCircle className="h-4.5 w-4.5 shrink-0" /><span className="text-[11px] font-semibold">Play</span></span>
             </Button>
-
-            <Button
-              type="button"
-              variant="outline"
-              onClick={handleResetAttempt}
-              className="h-[58px] min-w-0 rounded-[20px] border-[#E3D7CB] bg-white px-2 py-1 text-slate-900 shadow-sm hover:bg-[#FFF8F4]"
-            >
-              <span className="flex flex-col items-center justify-center gap-1 leading-none">
-                <RotateCcw className="h-4.5 w-4.5 shrink-0" />
-                <span className="text-[11px] font-semibold">Reset</span>
-              </span>
+            <Button type="button" variant="outline" onClick={handleResetAttempt} className="h-[58px] min-w-0 rounded-[20px] border-[#E3D7CB] bg-white px-2 py-1 text-slate-900 shadow-sm hover:bg-[#FFF8F4]">
+              <span className="flex flex-col items-center justify-center gap-1 leading-none"><RotateCcw className="h-4.5 w-4.5 shrink-0" /><span className="text-[11px] font-semibold">Reset</span></span>
             </Button>
           </div>
 
           <div className="grid grid-cols-4 gap-2.5">
-            <Button
-              type="button"
-              variant="outline"
-              onClick={handleCopy}
-              disabled={!practiceText}
-              className="h-[58px] min-w-0 rounded-[20px] border-[#E3D7CB] bg-white px-2 py-1 text-slate-900 shadow-sm hover:bg-[#FFF8F4] disabled:opacity-60"
-            >
-              <span className="flex flex-col items-center justify-center gap-1 leading-none">
-                <Copy className="h-4.5 w-4.5 shrink-0" />
-                <span className="text-[11px] font-semibold">
-                  {copySuccess ? 'Copied' : 'Copy'}
-                </span>
-              </span>
+            <Button type="button" variant="outline" onClick={handleCopy} disabled={!practiceText} className="h-[58px] min-w-0 rounded-[20px] border-[#E3D7CB] bg-white px-2 py-1 text-slate-900 shadow-sm hover:bg-[#FFF8F4] disabled:opacity-60">
+              <span className="flex flex-col items-center justify-center gap-1 leading-none"><Copy className="h-4.5 w-4.5 shrink-0" /><span className="text-[11px] font-semibold">{copySuccess ? 'Copied' : 'Copy'}</span></span>
             </Button>
-
-            <button
-              type="button"
-              onClick={() => setVariant('custom')}
-              className={`h-[58px] min-w-0 rounded-[20px] border px-2 py-1 text-[11px] font-semibold transition-all ${getVariantButtonClass(
-                variant === 'custom',
-              )}`}
-            >
-              <span className="flex h-full items-center justify-center text-center leading-tight">
-                Custom
-              </span>
+            <button type="button" onClick={() => setVariant('custom')} className={`h-[58px] min-w-0 rounded-[20px] border px-2 py-1 text-[11px] font-semibold transition-all ${getVariantButtonClass(variant === 'custom')}`}>
+              <span className="flex h-full items-center justify-center text-center leading-tight">Custom</span>
             </button>
-
-            <button
-              type="button"
-              onClick={handleClearPracticeLine}
-              className="h-[58px] min-w-0 rounded-[20px] border border-slate-200 bg-white px-2 py-1 text-[11px] font-semibold text-slate-800 transition-all hover:border-rose-300 hover:bg-rose-50 hover:text-rose-700"
-            >
-              <span className="flex h-full flex-col items-center justify-center gap-1 leading-none">
-                <Eraser className="h-4.5 w-4.5 shrink-0" />
-                <span>Clear</span>
-              </span>
+            <button type="button" onClick={handleClearPracticeLine} className="h-[58px] min-w-0 rounded-[20px] border border-slate-200 bg-white px-2 py-1 text-[11px] font-semibold text-slate-800 transition-all hover:border-rose-300 hover:bg-rose-50 hover:text-rose-700">
+              <span className="flex h-full flex-col items-center justify-center gap-1 leading-none"><Eraser className="h-4.5 w-4.5 shrink-0" /><span>Clear</span></span>
             </button>
-
-            <Button
-              type="button"
-              variant="outline"
-              onClick={() => {
-                if (onOpenEnglishLogic) onOpenEnglishLogic();
-              }}
-              disabled={!canOpenLogic}
-              className="h-[58px] min-w-0 rounded-[20px] border-[#C7B0FF] bg-white px-2 py-1 text-[#5B21B6] shadow-sm hover:bg-violet-50 disabled:opacity-50"
-            >
-              <span className="flex h-full flex-col items-center justify-center leading-[1.04]">
-                <span className="text-[10px] font-semibold">Understand</span>
-                <span className="text-[10px] font-semibold">why</span>
-              </span>
+            <Button type="button" variant="outline" onClick={() => { if (onOpenEnglishLogic) onOpenEnglishLogic(); }} disabled={!canOpenLogic} className="h-[58px] min-w-0 rounded-[20px] border-[#C7B0FF] bg-white px-2 py-1 text-[#5B21B6] shadow-sm hover:bg-violet-50 disabled:opacity-50">
+              <span className="flex h-full flex-col items-center justify-center leading-[1.04]"><span className="text-[10px] font-semibold">Understand</span><span className="text-[10px] font-semibold">why</span></span>
             </Button>
           </div>
 
-          {!supportsRecognition ? (
-            <div className="rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
-              <div className="flex items-start gap-2">
-                <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
-                <p>
-                  This browser does not expose speech recognition here. Audio playback still works.
-                </p>
-              </div>
-            </div>
-          ) : null}
+          {!supportsRecognition ? <div className="rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800"><div className="flex items-start gap-2"><AlertCircle className="mt-0.5 h-4 w-4 shrink-0" /><p>This browser does not expose speech recognition here. Audio playback still works.</p></div></div> : null}
+          {!supportsMediaRecording ? <div className="rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800"><div className="flex items-start gap-2"><AlertCircle className="mt-0.5 h-4 w-4 shrink-0" /><p>This browser does not support in-page voice recording here.</p></div></div> : null}
+          {recognitionError ? <div className="rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800"><div className="flex items-start gap-2"><AlertCircle className="mt-0.5 h-4 w-4 shrink-0" /><p>{recognitionError}</p></div></div> : null}
+          {recordingError   ? <div className="rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800"><div className="flex items-start gap-2"><AlertCircle className="mt-0.5 h-4 w-4 shrink-0" /><p>{recordingError}</p></div></div>   : null}
 
-          {!supportsMediaRecording ? (
-            <div className="rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
-              <div className="flex items-start gap-2">
-                <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
-                <p>This browser does not support in-page voice recording here.</p>
-              </div>
-            </div>
-          ) : null}
-
-          {recognitionError ? (
-            <div className="rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
-              <div className="flex items-start gap-2">
-                <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
-                <p>{recognitionError}</p>
-              </div>
-            </div>
-          ) : null}
-
-          {recordingError ? (
-            <div className="rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
-              <div className="flex items-start gap-2">
-                <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
-                <p>{recordingError}</p>
-              </div>
-            </div>
-          ) : null}
-
-          <div
-            className={`rounded-[24px] border p-4 shadow-sm ${
-              transcript
-                ? matchTone.ring
-                : 'border-[#F1E5DB] bg-gradient-to-br from-[#FFF9F3] to-white'
-            }`}
-          >
+          <div className={`rounded-[24px] border p-4 shadow-sm ${transcript ? matchTone.ring : 'border-[#F1E5DB] bg-gradient-to-br from-[#FFF9F3] to-white'}`}>
             <div className="flex items-start justify-between gap-3">
-              <p className="text-[2.05rem] font-semibold leading-none text-slate-950">
-                {transcript ? `${matchScore}%` : '--'}
-              </p>
-
-              {transcript ? (
-                <span
-                  className={`rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide ${matchTone.text}`}
-                >
-                  {confidenceLabel}
-                </span>
-              ) : null}
+              <p className="text-[2.05rem] font-semibold leading-none text-slate-950">{transcript ? `${matchScore}%` : '--'}</p>
+              {transcript ? <span className={`rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide ${matchTone.text}`}>{confidenceLabel}</span> : null}
             </div>
-
             <div className="mt-3 h-2.5 overflow-hidden rounded-full bg-white/90">
-              <div
-                className={`h-full rounded-full bg-gradient-to-r transition-all duration-500 ${matchTone.bar}`}
-                style={{ width: `${transcript ? matchScore : 0}%` }}
-              />
+              <div className={`h-full rounded-full bg-gradient-to-r transition-all duration-500 ${matchTone.bar}`} style={{ width: `${transcript ? matchScore : 0}%` }} />
             </div>
           </div>
 
           <div className="rounded-[24px] border border-white/80 bg-white p-4 shadow-sm">
-            <p className="text-xs font-semibold uppercase tracking-wide text-slate-700">
-              {transcriptLabel}
-            </p>
-            <p className="mt-2 min-h-[60px] text-sm leading-8 text-slate-950">
-              {transcript || 'Your transcript will appear here after you speak.'}
-            </p>
+            <p className="text-xs font-semibold uppercase tracking-wide text-slate-700">{transcriptLabel}</p>
+            <p className="mt-2 min-h-[60px] text-sm leading-8 text-slate-950">{transcript || 'Your transcript will appear here after you speak.'}</p>
           </div>
 
-          <audio
-            ref={recordedAudioRef}
-            className="hidden"
-            src={recordedAudioUrl || undefined}
-            preload="metadata"
-          >
-            Your browser does not support audio playback.
-          </audio>
+          <audio ref={recordedAudioRef} className="hidden" src={recordedAudioUrl || undefined} preload="metadata">Your browser does not support audio playback.</audio>
         </div>
       </div>
     </div>

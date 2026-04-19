@@ -61,7 +61,10 @@ type KidsPageId =
   | 'page21'
   | 'page22'
   | 'page23'
-  | 'page24';
+  | 'page24'
+  | 'page25'
+  | 'page26'
+  | 'page27';
 
 type TroubleWordItem = string | { word?: string | null };
 
@@ -243,6 +246,9 @@ const VALID_KIDS_PAGES = new Set<KidsPageId>([
   'page22',
   'page23',
   'page24',
+  'page25',
+  'page26',
+  'page27',
 ]);
 
 function normalizeTab(value: string | undefined): MercyTabType {
@@ -1680,7 +1686,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
               description={
                 kidsModeActive
                   ? 'Kids mode keeps Mercy focused on listening and speaking.'
-                  : 'Unlock Logic to see the English pattern behind the sentence and connect that lesson back into Mercy’s memory.'
+                  : 'Unlock Logic to see the English pattern behind the sentence and connect that lesson back into Mercy\'s memory.'
               }
               onUnlock={kidsModeActive ? undefined : goToPricing}
             />

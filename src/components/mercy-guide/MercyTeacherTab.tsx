@@ -27,6 +27,9 @@ import { KID_PAGE_21_ITEMS } from './kids/kidPage21Data';
 import { KID_PAGE_22_ITEMS } from './kids/kidPage22Data';
 import { KID_PAGE_23_ITEMS } from './kids/kidPage23Data';
 import { KID_PAGE_24_ITEMS } from './kids/kidPage24Data';
+import { KID_PAGE_25_ITEMS } from './kids/kidPage25Data';
+import { KID_PAGE_26_ITEMS } from './kids/kidPage26Data';
+import { KID_PAGE_27_ITEMS } from './kids/kidPage27Data';
 import type {
   GrammarApiResponse,
   GrammarWritingTeacherState,
@@ -57,7 +60,10 @@ type KidsPageId =
   | 'page21'
   | 'page22'
   | 'page23'
-  | 'page24';
+  | 'page24'
+  | 'page25'
+  | 'page26'
+  | 'page27';
 
 interface Props {
   latestTeacherWritingState?: GrammarWritingTeacherState | null;
@@ -531,6 +537,9 @@ const KIDS_PAGE_CONFIGS: KidsPageConfig[] = [
   { id: 'page22', label: 'Page 22' },
   { id: 'page23', label: 'Page 23' },
   { id: 'page24', label: 'Page 24' },
+  { id: 'page25', label: 'Page 25' },
+  { id: 'page26', label: 'Page 26' },
+  { id: 'page27', label: 'Page 27' },
 ];
 
 function toKidsLabel(key: string): string {
@@ -921,6 +930,12 @@ function resolveCurrentPageItems(page: KidsPageId): KidsLessonCard[] {
       return buildMappedPageItems(KID_PAGE_23_ITEMS);
     case 'page24':
       return buildMappedPageItems(KID_PAGE_24_ITEMS);
+    case 'page25':
+      return buildMappedPageItems(KID_PAGE_25_ITEMS);
+    case 'page26':
+      return buildMappedPageItems(KID_PAGE_26_ITEMS);
+    case 'page27':
+      return buildMappedPageItems(KID_PAGE_27_ITEMS);
     default:
       return buildPage1Items();
   }
