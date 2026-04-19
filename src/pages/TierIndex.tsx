@@ -4,7 +4,7 @@
  */
 
 // PATH: src/pages/TierIndex.tsx
-// MB-BLUE-98.9j → MB-BLUE-98.9n — 2026-01-18 (+0700)
+// MB-BLUE-98.9j → MB-BLUE-98.9o — 2026-04-19
 //
 // PATCH (2026-03-01):
 // - REMOVE old displayed tier prices ($5/$12/$29) from Tier Map UI.
@@ -48,6 +48,11 @@
 // - Compress mobile spacing.
 // - Make stat pills wrap safely.
 // - Hide long debug/source text on normal mobile view.
+//
+// PATCH (2026-04-19):
+// - Make Tier Map more colorful without changing routing or data logic.
+// - Add soft rainbow page background, colorful stat pills, and level-colored tier links.
+// - Add subtle color accents to cards while keeping readability high.
 
 import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
@@ -85,7 +90,15 @@ type CountsState = {
 const MOBILE_BREAKPOINT = 860;
 
 const rainbow =
-  "linear-gradient(90deg,#ff4d4d 0%,#ffb84d 18%,#b6ff4d 36%,#4dffb8 54%,#4db8ff 72%,#b84dff 90%,#ff4dff 100%)";
+  "linear-gradient(90deg,#ff5a7a 0%,#ff9d57 18%,#ffd85a 32%,#7be77b 48%,#66d7ff 66%,#7b8cff 82%,#c86cff 100%)";
+
+const pageGlow =
+  [
+    "radial-gradient(circle at 0% 0%, rgba(255,132,169,0.22) 0, transparent 28%)",
+    "radial-gradient(circle at 100% 8%, rgba(95,190,255,0.18) 0, transparent 26%)",
+    "radial-gradient(circle at 50% 100%, rgba(255,214,102,0.16) 0, transparent 24%)",
+    "linear-gradient(180deg, #fbfbff 0%, #f6f7ff 38%, #f8fbff 100%)",
+  ].join(",");
 
 const SPINE_TOP_TO_BOTTOM: TierNode[] = [
   { id: "level9", label: "Level 9", hint: "Top level" },
@@ -246,6 +259,109 @@ function useIsMobileTierMap(): boolean {
   return isMobile;
 }
 
+function getTierTheme(id: SpineTierId) {
+  const map: Record<
+    SpineTierId,
+    { band: string; glow: string; dot: string; pillBg: string; pillBorder: string }
+  > = {
+    level9: {
+      band: "linear-gradient(135deg, rgba(255,95,143,0.30) 0%, rgba(255,198,86,0.22) 48%, rgba(187,113,255,0.28) 100%)",
+      glow: "0 10px 24px rgba(255,120,160,0.18)",
+      dot: "#ff5f96",
+      pillBg: "rgba(255,111,157,0.14)",
+      pillBorder: "rgba(255,111,157,0.28)",
+    },
+    level8: {
+      band: "linear-gradient(135deg, rgba(111,140,255,0.24) 0%, rgba(94,220,255,0.20) 100%)",
+      glow: "0 10px 24px rgba(111,140,255,0.16)",
+      dot: "#6f8cff",
+      pillBg: "rgba(111,140,255,0.13)",
+      pillBorder: "rgba(111,140,255,0.28)",
+    },
+    level7: {
+      band: "linear-gradient(135deg, rgba(88,186,255,0.22) 0%, rgba(99,235,212,0.18) 100%)",
+      glow: "0 10px 24px rgba(88,186,255,0.16)",
+      dot: "#44b8ff",
+      pillBg: "rgba(68,184,255,0.13)",
+      pillBorder: "rgba(68,184,255,0.28)",
+    },
+    level6: {
+      band: "linear-gradient(135deg, rgba(87,217,137,0.22) 0%, rgba(184,233,106,0.18) 100%)",
+      glow: "0 10px 24px rgba(87,217,137,0.16)",
+      dot: "#49c878",
+      pillBg: "rgba(73,200,120,0.13)",
+      pillBorder: "rgba(73,200,120,0.28)",
+    },
+    level5: {
+      band: "linear-gradient(135deg, rgba(255,181,76,0.24) 0%, rgba(255,226,112,0.19) 100%)",
+      glow: "0 10px 24px rgba(255,181,76,0.16)",
+      dot: "#ffae34",
+      pillBg: "rgba(255,174,52,0.14)",
+      pillBorder: "rgba(255,174,52,0.28)",
+    },
+    level4: {
+      band: "linear-gradient(135deg, rgba(255,141,84,0.22) 0%, rgba(255,197,135,0.18) 100%)",
+      glow: "0 10px 24px rgba(255,141,84,0.16)",
+      dot: "#ff8d54",
+      pillBg: "rgba(255,141,84,0.13)",
+      pillBorder: "rgba(255,141,84,0.28)",
+    },
+    level3: {
+      band: "linear-gradient(135deg, rgba(255,109,151,0.20) 0%, rgba(255,171,206,0.18) 100%)",
+      glow: "0 10px 24px rgba(255,109,151,0.14)",
+      dot: "#ff6d97",
+      pillBg: "rgba(255,109,151,0.13)",
+      pillBorder: "rgba(255,109,151,0.28)",
+    },
+    level2: {
+      band: "linear-gradient(135deg, rgba(194,110,255,0.18) 0%, rgba(137,137,255,0.18) 100%)",
+      glow: "0 10px 24px rgba(194,110,255,0.14)",
+      dot: "#b56cff",
+      pillBg: "rgba(181,108,255,0.13)",
+      pillBorder: "rgba(181,108,255,0.28)",
+    },
+    level1: {
+      band: "linear-gradient(135deg, rgba(87,178,255,0.18) 0%, rgba(121,214,255,0.18) 100%)",
+      glow: "0 10px 24px rgba(87,178,255,0.14)",
+      dot: "#57b2ff",
+      pillBg: "rgba(87,178,255,0.13)",
+      pillBorder: "rgba(87,178,255,0.28)",
+    },
+    level0: {
+      band: "linear-gradient(135deg, rgba(145,217,120,0.20) 0%, rgba(196,233,125,0.16) 100%)",
+      glow: "0 10px 24px rgba(145,217,120,0.14)",
+      dot: "#72bf59",
+      pillBg: "rgba(114,191,89,0.13)",
+      pillBorder: "rgba(114,191,89,0.28)",
+    },
+  };
+
+  return map[id];
+}
+
+function getMetaPillTheme(index: number) {
+  const themes = [
+    {
+      background: "linear-gradient(135deg, rgba(255,115,150,0.16) 0%, rgba(255,201,104,0.14) 100%)",
+      border: "1px solid rgba(255,134,170,0.28)",
+    },
+    {
+      background: "linear-gradient(135deg, rgba(130,214,255,0.16) 0%, rgba(139,255,219,0.14) 100%)",
+      border: "1px solid rgba(95,194,255,0.28)",
+    },
+    {
+      background: "linear-gradient(135deg, rgba(255,212,107,0.16) 0%, rgba(255,165,120,0.14) 100%)",
+      border: "1px solid rgba(255,189,87,0.28)",
+    },
+    {
+      background: "linear-gradient(135deg, rgba(199,143,255,0.16) 0%, rgba(255,162,218,0.14) 100%)",
+      border: "1px solid rgba(196,122,255,0.28)",
+    },
+  ];
+
+  return themes[index % themes.length];
+}
+
 function TierLink({
   id,
   label,
@@ -257,6 +373,8 @@ function TierLink({
   count?: number;
   to?: string;
 }) {
+  const theme = getTierTheme(id);
+
   const a: React.CSSProperties = {
     display: "inline-flex",
     alignItems: "center",
@@ -264,21 +382,24 @@ function TierLink({
     textDecoration: "none",
     padding: "8px 12px",
     borderRadius: 9999,
-    border: "1px solid rgba(0,0,0,0.14)",
-    background: "rgba(255,255,255,0.92)",
-    color: "rgba(0,0,0,0.85)",
-    fontWeight: 900,
+    border: `1px solid ${theme.pillBorder}`,
+    background: theme.band,
+    color: "rgba(0,0,0,0.84)",
+    fontWeight: 950,
     letterSpacing: -0.2,
     whiteSpace: "nowrap",
     pointerEvents: "auto",
     maxWidth: "100%",
+    boxShadow: theme.glow,
+    backdropFilter: "blur(8px)",
   };
 
   const dot: React.CSSProperties = {
     width: 10,
     height: 10,
     borderRadius: 9999,
-    background: "rgba(0,0,0,0.75)",
+    background: theme.dot,
+    boxShadow: `0 0 0 4px ${theme.pillBg}`,
     flex: "0 0 auto",
   };
 
@@ -288,10 +409,11 @@ function TierLink({
     fontWeight: 900,
     padding: "3px 9px",
     borderRadius: 9999,
-    border: "1px solid rgba(0,0,0,0.12)",
-    background: "rgba(255,255,255,0.95)",
+    border: `1px solid ${theme.pillBorder}`,
+    background: "rgba(255,255,255,0.84)",
     color: "rgba(0,0,0,0.75)",
     flex: "0 0 auto",
+    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.55)",
   };
 
   return (
@@ -316,9 +438,10 @@ function AnchorCard({
 }) {
   const item: React.CSSProperties = {
     borderRadius: 14,
-    border: "1px solid rgba(0,0,0,0.10)",
+    border: "1px solid rgba(125,125,185,0.16)",
     padding: "10px 12px",
-    background: "rgba(255,255,255,0.88)",
+    background:
+      "linear-gradient(135deg, rgba(255,255,255,0.94) 0%, rgba(252,247,255,0.92) 52%, rgba(244,250,255,0.94) 100%)",
     textDecoration: "none",
     display: "block",
     color: "inherit",
@@ -327,6 +450,7 @@ function AnchorCard({
     pointerEvents: "auto",
     maxWidth: "100%",
     overflow: "hidden",
+    boxShadow: "0 10px 24px rgba(105,114,180,0.06)",
   };
 
   const itemTitle: React.CSSProperties = {
@@ -347,10 +471,10 @@ function AnchorCard({
     fontWeight: 900,
     padding: "4px 10px",
     borderRadius: 9999,
-    border: "1px solid rgba(0,0,0,0.12)",
-    background: "rgba(255,255,255,0.92)",
+    border: "1px solid rgba(170,134,255,0.22)",
+    background: "linear-gradient(135deg, rgba(255,255,255,0.92) 0%, rgba(244,237,255,0.92) 100%)",
     whiteSpace: "nowrap",
-    color: "rgba(0,0,0,0.75)",
+    color: "rgba(73,56,138,0.82)",
   };
 
   const itemBody: React.CSSProperties = {
@@ -369,11 +493,11 @@ function AnchorCard({
       aria-label={`Open ${tierLabel}`}
       onMouseEnter={(e) => {
         e.currentTarget.style.transform = "translateY(-1px)";
-        e.currentTarget.style.boxShadow = "0 10px 18px rgba(0,0,0,0.08)";
+        e.currentTarget.style.boxShadow = "0 12px 24px rgba(118,116,208,0.12)";
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.transform = "translateY(0px)";
-        e.currentTarget.style.boxShadow = "none";
+        e.currentTarget.style.boxShadow = "0 10px 24px rgba(105,114,180,0.06)";
       }}
     >
       <div style={itemTitle}>
@@ -391,7 +515,7 @@ export default function TierIndex() {
   const wrap: React.CSSProperties = {
     width: "100%",
     minHeight: "100vh",
-    background: "#f8f9fa",
+    background: pageGlow,
     position: "relative",
     zIndex: 999999,
     pointerEvents: "auto",
@@ -419,6 +543,7 @@ export default function TierIndex() {
     WebkitBackgroundClip: "text",
     color: "transparent",
     wordBreak: "break-word",
+    textShadow: "0 10px 24px rgba(255,135,135,0.08)",
   };
 
   const topActions: React.CSSProperties = {
@@ -435,25 +560,25 @@ export default function TierIndex() {
     gap: 10,
     padding: isMobile ? "9px 14px" : "10px 14px",
     borderRadius: 9999,
-    background: "rgba(0,0,0,0.92)",
+    background: "linear-gradient(135deg, rgba(19,20,30,0.98) 0%, rgba(35,38,69,0.98) 100%)",
     color: "white",
     textDecoration: "none",
     fontWeight: 950,
     letterSpacing: -0.2,
-    border: "1px solid rgba(0,0,0,0.10)",
-    boxShadow: "0 10px 24px rgba(0,0,0,0.10)",
+    border: "1px solid rgba(255,255,255,0.10)",
+    boxShadow: "0 12px 28px rgba(57,67,124,0.20)",
     maxWidth: "100%",
   };
 
   const ctaSub: React.CSSProperties = {
     fontSize: 13,
-    color: "rgba(0,0,0,0.55)",
-    fontWeight: 700,
+    color: "rgba(53,63,119,0.64)",
+    fontWeight: 800,
   };
 
   const sub: React.CSSProperties = {
     marginTop: 10,
-    color: "rgba(0,0,0,0.65)",
+    color: "rgba(35,42,92,0.72)",
     fontSize: isMobile ? 13 : 16,
     lineHeight: 1.55,
     maxWidth: 860,
@@ -476,21 +601,6 @@ export default function TierIndex() {
         alignItems: "center",
       };
 
-  const metaPill: React.CSSProperties = {
-    fontSize: isMobile ? 11 : 12,
-    fontWeight: 900,
-    padding: isMobile ? "8px 10px" : "6px 10px",
-    borderRadius: 9999,
-    border: "1px solid rgba(0,0,0,0.12)",
-    background: "rgba(255,255,255,0.92)",
-    color: "rgba(0,0,0,0.75)",
-    whiteSpace: isMobile ? "normal" : "nowrap",
-    pointerEvents: "auto",
-    maxWidth: "100%",
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-  };
-
   const rowGrid: React.CSSProperties = {
     marginTop: 18,
     display: "grid",
@@ -502,13 +612,15 @@ export default function TierIndex() {
 
   const colBox: React.CSSProperties = {
     borderRadius: 18,
-    border: "1px solid rgba(0,0,0,0.10)",
-    background: "rgba(255,255,255,0.88)",
+    border: "1px solid rgba(137,145,210,0.16)",
+    background:
+      "linear-gradient(135deg, rgba(255,255,255,0.90) 0%, rgba(251,247,255,0.90) 50%, rgba(245,250,255,0.90) 100%)",
     padding: isMobile ? "10px 12px" : "12px 12px",
-    boxShadow: "0 10px 30px rgba(0,0,0,0.05)",
+    boxShadow: "0 12px 30px rgba(106,116,180,0.08)",
     pointerEvents: "auto",
     maxWidth: "100%",
     overflow: "hidden",
+    backdropFilter: "blur(10px)",
   };
 
   const colTitle: React.CSSProperties = {
@@ -517,7 +629,7 @@ export default function TierIndex() {
     fontWeight: 900,
     letterSpacing: 0.6,
     textTransform: "uppercase",
-    color: "rgba(0,0,0,0.55)",
+    color: "rgba(64,70,133,0.62)",
   };
 
   const small: React.CSSProperties = {
@@ -550,7 +662,7 @@ export default function TierIndex() {
   const spineHint: React.CSSProperties = {
     marginTop: 4,
     fontSize: 12,
-    color: "rgba(0,0,0,0.55)",
+    color: "rgba(57,63,119,0.58)",
     textAlign: "center",
   };
 
@@ -561,28 +673,18 @@ export default function TierIndex() {
     gap: 10,
   };
 
-  const mobileTierRow: React.CSSProperties = {
-    borderRadius: 16,
-    border: "1px solid rgba(0,0,0,0.10)",
-    background: "rgba(255,255,255,0.88)",
-    padding: "10px 10px 12px",
-    boxShadow: "0 8px 18px rgba(0,0,0,0.04)",
-    maxWidth: "100%",
-    overflow: "hidden",
-  };
-
   const mobileSectionLabel: React.CSSProperties = {
     margin: 0,
     fontSize: 11,
     fontWeight: 900,
     letterSpacing: 0.5,
     textTransform: "uppercase",
-    color: "rgba(0,0,0,0.48)",
+    color: "rgba(63,71,132,0.52)",
   };
 
   const footer: React.CSSProperties = {
     marginTop: 16,
-    color: "rgba(0,0,0,0.55)",
+    color: "rgba(50,58,110,0.58)",
     fontSize: 13,
     lineHeight: 1.6,
     wordBreak: "break-word",
@@ -907,6 +1009,12 @@ export default function TierIndex() {
       ? new URLSearchParams(window.location.search).get("debugTier") === "1"
       : false;
 
+  const mobileGuideBox: React.CSSProperties = {
+    ...colBox,
+    background:
+      "linear-gradient(135deg, rgba(255,248,252,0.92) 0%, rgba(248,250,255,0.92) 52%, rgba(244,255,248,0.92) 100%)",
+  };
+
   return (
     <div style={wrap}>
       <div style={container}>
@@ -934,123 +1042,310 @@ export default function TierIndex() {
         </div>
 
         <div style={metaRow} aria-label="Tier stats">
-          <span style={metaPill}>Rooms (all): {countsForDisplay.totalAll}</span>
-          <span style={metaPill}>Core rooms: {countsForDisplay.totalCore}</span>
-          <span style={metaPill}>Non-core: {nonCoreCount}</span>
-          <span style={metaPill}>Unknown core tier: {countsForDisplay.unknownCoreTier}</span>
+          {[
+            `Rooms (all): ${countsForDisplay.totalAll}`,
+            `Core rooms: ${countsForDisplay.totalCore}`,
+            `Non-core: ${nonCoreCount}`,
+            `Unknown core tier: ${countsForDisplay.unknownCoreTier}`,
+          ].map((text, index) => {
+            const theme = getMetaPillTheme(index);
+            const metaPill: React.CSSProperties = {
+              fontSize: isMobile ? 11 : 12,
+              fontWeight: 900,
+              padding: isMobile ? "8px 10px" : "6px 10px",
+              borderRadius: 9999,
+              border: theme.border,
+              background: theme.background,
+              color: "rgba(43,45,85,0.82)",
+              whiteSpace: isMobile ? "normal" : "nowrap",
+              pointerEvents: "auto",
+              maxWidth: "100%",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              boxShadow: "0 8px 18px rgba(120,130,190,0.06)",
+            };
+
+            return (
+              <span key={text} style={metaPill}>
+                {text}
+              </span>
+            );
+          })}
 
           {(!isMobile || showDebugTier || showHiddenPills) ? (
-            <span style={metaPill}>Source: {countsForDisplay.source}</span>
+            <span
+              style={{
+                fontSize: isMobile ? 11 : 12,
+                fontWeight: 900,
+                padding: isMobile ? "8px 10px" : "6px 10px",
+                borderRadius: 9999,
+                border: "1px solid rgba(123,140,255,0.24)",
+                background:
+                  "linear-gradient(135deg, rgba(235,240,255,0.88) 0%, rgba(248,250,255,0.92) 100%)",
+                color: "rgba(43,45,85,0.82)",
+                whiteSpace: isMobile ? "normal" : "nowrap",
+                pointerEvents: "auto",
+                maxWidth: "100%",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+              }}
+            >
+              Source: {countsForDisplay.source}
+            </span>
           ) : null}
 
           {showHiddenPills ? (
             <>
-              <span style={metaPill}>English: {hiddenReport.totals.english}</span>
-              <span style={metaPill}>Life: {hiddenReport.totals.life}</span>
-              <span style={metaPill}>Kids(area): {hiddenReport.totals.kids}</span>
-              <span style={metaPill}>Unknown area: {hiddenReport.totals.unknownArea}</span>
-              <span style={metaPill}>Untiered(strict): {hiddenReport.totals.strictUntiered}</span>
-              <span style={metaPill}>Non-spine tier: {hiddenReport.totals.nonSpineTier}</span>
+              <span
+                style={{
+                  fontSize: isMobile ? 11 : 12,
+                  fontWeight: 900,
+                  padding: isMobile ? "8px 10px" : "6px 10px",
+                  borderRadius: 9999,
+                  border: "1px solid rgba(255,153,190,0.24)",
+                  background: "rgba(255,242,249,0.90)",
+                  color: "rgba(43,45,85,0.82)",
+                }}
+              >
+                English: {hiddenReport.totals.english}
+              </span>
+              <span
+                style={{
+                  fontSize: isMobile ? 11 : 12,
+                  fontWeight: 900,
+                  padding: isMobile ? "8px 10px" : "6px 10px",
+                  borderRadius: 9999,
+                  border: "1px solid rgba(114,210,172,0.24)",
+                  background: "rgba(239,255,247,0.90)",
+                  color: "rgba(43,45,85,0.82)",
+                }}
+              >
+                Life: {hiddenReport.totals.life}
+              </span>
+              <span
+                style={{
+                  fontSize: isMobile ? 11 : 12,
+                  fontWeight: 900,
+                  padding: isMobile ? "8px 10px" : "6px 10px",
+                  borderRadius: 9999,
+                  border: "1px solid rgba(118,184,255,0.24)",
+                  background: "rgba(240,248,255,0.90)",
+                  color: "rgba(43,45,85,0.82)",
+                }}
+              >
+                Kids(area): {hiddenReport.totals.kids}
+              </span>
+              <span
+                style={{
+                  fontSize: isMobile ? 11 : 12,
+                  fontWeight: 900,
+                  padding: isMobile ? "8px 10px" : "6px 10px",
+                  borderRadius: 9999,
+                  border: "1px solid rgba(180,156,255,0.24)",
+                  background: "rgba(246,241,255,0.90)",
+                  color: "rgba(43,45,85,0.82)",
+                }}
+              >
+                Unknown area: {hiddenReport.totals.unknownArea}
+              </span>
+              <span
+                style={{
+                  fontSize: isMobile ? 11 : 12,
+                  fontWeight: 900,
+                  padding: isMobile ? "8px 10px" : "6px 10px",
+                  borderRadius: 9999,
+                  border: "1px solid rgba(255,198,111,0.24)",
+                  background: "rgba(255,248,235,0.90)",
+                  color: "rgba(43,45,85,0.82)",
+                }}
+              >
+                Untiered(strict): {hiddenReport.totals.strictUntiered}
+              </span>
+              <span
+                style={{
+                  fontSize: isMobile ? 11 : 12,
+                  fontWeight: 900,
+                  padding: isMobile ? "8px 10px" : "6px 10px",
+                  borderRadius: 9999,
+                  border: "1px solid rgba(255,150,116,0.24)",
+                  background: "rgba(255,244,239,0.90)",
+                  color: "rgba(43,45,85,0.82)",
+                }}
+              >
+                Non-spine tier: {hiddenReport.totals.nonSpineTier}
+              </span>
             </>
           ) : null}
 
-          {loading ? <span style={metaPill}>Loading…</span> : null}
+          {loading ? (
+            <span
+              style={{
+                fontSize: isMobile ? 11 : 12,
+                fontWeight: 900,
+                padding: isMobile ? "8px 10px" : "6px 10px",
+                borderRadius: 9999,
+                border: "1px solid rgba(103,198,255,0.24)",
+                background: "rgba(238,251,255,0.92)",
+                color: "rgba(43,45,85,0.82)",
+              }}
+            >
+              Loading…
+            </span>
+          ) : null}
         </div>
 
         {isMobile ? (
           <div style={mobileTierStack} aria-label="Tier rows stack">
-            <div style={colBox} aria-label="Tier map summary">
+            <div style={mobileGuideBox} aria-label="Tier map summary">
               <div style={colTitle}>Map guide</div>
               <p style={small}>
                 <b>Left</b> = English. <b>Center</b> = Core. <b>Right</b> = Life.
               </p>
             </div>
 
-            {SPINE_TOP_TO_BOTTOM.map((t) => (
-              <div key={t.id} style={mobileTierRow} aria-label={`Tier row ${t.label}`}>
-                <div style={{ display: "flex", justifyContent: "center" }}>
-                  <TierLink
-                    id={t.id}
-                    label={t.label}
-                    count={countsForDisplay.bySpineTier[t.id]}
-                    to={`/tiers/${t.id}?area=core`}
-                  />
+            {SPINE_TOP_TO_BOTTOM.map((t) => {
+              const theme = getTierTheme(t.id);
+
+              const mobileTierRow: React.CSSProperties = {
+                borderRadius: 18,
+                border: `1px solid ${theme.pillBorder}`,
+                background: theme.band,
+                padding: "10px 10px 12px",
+                boxShadow: theme.glow,
+                maxWidth: "100%",
+                overflow: "hidden",
+                backdropFilter: "blur(8px)",
+              };
+
+              return (
+                <div key={t.id} style={mobileTierRow} aria-label={`Tier row ${t.label}`}>
+                  <div style={{ display: "flex", justifyContent: "center" }}>
+                    <TierLink
+                      id={t.id}
+                      label={t.label}
+                      count={countsForDisplay.bySpineTier[t.id]}
+                      to={`/tiers/${t.id}?area=core`}
+                    />
+                  </div>
+
+                  {t.hint ? <div style={spineHint}>{t.hint}</div> : null}
+
+                  {centerAnchors[t.id] ? (
+                    <div style={{ marginTop: 10 }}>
+                      <p style={mobileSectionLabel}>Core</p>
+                      <div style={{ marginTop: 6 }}>{centerAnchors[t.id]}</div>
+                    </div>
+                  ) : null}
+
+                  {leftAnchors[t.id] ? (
+                    <div style={{ marginTop: 10 }}>
+                      <p style={mobileSectionLabel}>English</p>
+                      <div style={{ marginTop: 6 }}>{leftAnchors[t.id]}</div>
+                    </div>
+                  ) : null}
+
+                  {rightAnchors[t.id] ? (
+                    <div style={{ marginTop: 10 }}>
+                      <p style={mobileSectionLabel}>Life</p>
+                      <div style={{ marginTop: 6 }}>{rightAnchors[t.id]}</div>
+                    </div>
+                  ) : null}
                 </div>
-
-                {t.hint ? <div style={spineHint}>{t.hint}</div> : null}
-
-                {centerAnchors[t.id] ? (
-                  <div style={{ marginTop: 10 }}>
-                    <p style={mobileSectionLabel}>Core</p>
-                    <div style={{ marginTop: 6 }}>{centerAnchors[t.id]}</div>
-                  </div>
-                ) : null}
-
-                {leftAnchors[t.id] ? (
-                  <div style={{ marginTop: 10 }}>
-                    <p style={mobileSectionLabel}>English</p>
-                    <div style={{ marginTop: 6 }}>{leftAnchors[t.id]}</div>
-                  </div>
-                ) : null}
-
-                {rightAnchors[t.id] ? (
-                  <div style={{ marginTop: 10 }}>
-                    <p style={mobileSectionLabel}>Life</p>
-                    <div style={{ marginTop: 6 }}>{rightAnchors[t.id]}</div>
-                  </div>
-                ) : null}
-              </div>
-            ))}
+              );
+            })}
           </div>
         ) : (
           <div style={rowGrid} aria-label="Tier rows grid">
-            <div style={colBox} aria-label="Left column header">
+            <div
+              style={{
+                ...colBox,
+                background:
+                  "linear-gradient(135deg, rgba(255,247,250,0.92) 0%, rgba(247,249,255,0.92) 100%)",
+              }}
+              aria-label="Left column header"
+            >
               <div style={colTitle}>Left</div>
               <p style={small}>
                 <b>English Path</b> — English lessons only (Kids included here).
               </p>
             </div>
 
-            <div style={colBox} aria-label="Spine column header">
+            <div
+              style={{
+                ...colBox,
+                background:
+                  "linear-gradient(135deg, rgba(247,249,255,0.92) 0%, rgba(250,247,255,0.92) 100%)",
+              }}
+              aria-label="Spine column header"
+            >
               <div style={colTitle}>Spine</div>
               <p style={small}>Core only. Level 0 at ground (bottom). Level 9 at top.</p>
             </div>
 
-            <div style={colBox} aria-label="Right column header">
+            <div
+              style={{
+                ...colBox,
+                background:
+                  "linear-gradient(135deg, rgba(247,255,250,0.92) 0%, rgba(247,249,255,0.92) 100%)",
+              }}
+              aria-label="Right column header"
+            >
               <div style={colTitle}>Right</div>
               <p style={small}>
                 <b>Life Skills</b> — survival, public speaking, debate, discipline.
               </p>
             </div>
 
-            {SPINE_TOP_TO_BOTTOM.map((t) => (
-              <React.Fragment key={t.id}>
-                <div style={cell} aria-label={`Left cell ${t.label}`}>
-                  <div style={cellStack}>{leftAnchors[t.id] ?? null}</div>
-                </div>
+            {SPINE_TOP_TO_BOTTOM.map((t) => {
+              const theme = getTierTheme(t.id);
 
-                <div style={spineCell} aria-label={`Spine cell ${t.label}`}>
-                  <div style={cellStack}>
-                    <div style={{ display: "flex", justifyContent: "center" }}>
-                      <TierLink
-                        id={t.id}
-                        label={t.label}
-                        count={countsForDisplay.bySpineTier[t.id]}
-                        to={`/tiers/${t.id}?area=core`}
-                      />
-                    </div>
-                    {centerAnchors[t.id] ? (
-                      <div style={{ marginTop: 8 }}>{centerAnchors[t.id]}</div>
-                    ) : null}
-                    {t.hint ? <div style={spineHint}>{t.hint}</div> : null}
+              const coloredCell: React.CSSProperties = {
+                ...cell,
+                borderRadius: 18,
+                padding: "8px 10px",
+                background: theme.band,
+                border: `1px solid ${theme.pillBorder}`,
+                boxShadow: theme.glow,
+              };
+
+              const coloredSpineCell: React.CSSProperties = {
+                ...spineCell,
+                borderRadius: 18,
+                padding: "8px 10px",
+                background: theme.band,
+                border: `1px solid ${theme.pillBorder}`,
+                boxShadow: theme.glow,
+              };
+
+              return (
+                <React.Fragment key={t.id}>
+                  <div style={coloredCell} aria-label={`Left cell ${t.label}`}>
+                    <div style={cellStack}>{leftAnchors[t.id] ?? null}</div>
                   </div>
-                </div>
 
-                <div style={cell} aria-label={`Right cell ${t.label}`}>
-                  <div style={cellStack}>{rightAnchors[t.id] ?? null}</div>
-                </div>
-              </React.Fragment>
-            ))}
+                  <div style={coloredSpineCell} aria-label={`Spine cell ${t.label}`}>
+                    <div style={cellStack}>
+                      <div style={{ display: "flex", justifyContent: "center" }}>
+                        <TierLink
+                          id={t.id}
+                          label={t.label}
+                          count={countsForDisplay.bySpineTier[t.id]}
+                          to={`/tiers/${t.id}?area=core`}
+                        />
+                      </div>
+                      {centerAnchors[t.id] ? (
+                        <div style={{ marginTop: 8 }}>{centerAnchors[t.id]}</div>
+                      ) : null}
+                      {t.hint ? <div style={spineHint}>{t.hint}</div> : null}
+                    </div>
+                  </div>
+
+                  <div style={coloredCell} aria-label={`Right cell ${t.label}`}>
+                    <div style={cellStack}>{rightAnchors[t.id] ?? null}</div>
+                  </div>
+                </React.Fragment>
+              );
+            })}
           </div>
         )}
 
@@ -1058,7 +1353,7 @@ export default function TierIndex() {
           <div style={footer}>
             LOCK CHECK: Kids are not in the spine. Core counts exclude English + Life.
             <br />
-            <span style={{ fontSize: 12, color: "rgba(0,0,0,0.45)" }}>
+            <span style={{ fontSize: 12, color: "rgba(56,65,121,0.48)" }}>
               DEBUG: source={countsForDisplay.source} all={countsForDisplay.totalAll} core=
               {countsForDisplay.totalCore} nonCore={nonCoreCount} free_core={freeCoreCount}{" "}
               free_life_explicit={freeLifeCount}
