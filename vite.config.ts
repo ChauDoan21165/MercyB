@@ -100,6 +100,16 @@ export default defineConfig({
               expiration: { maxEntries: 2000, maxAgeSeconds: 60 * 60 * 24 * 30 },
             },
           },
+          {
+            urlPattern: /\/storage\/v1\/object\/sign\/room-audio\/.*\.mp3/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'room-audio',
+              matchOptions: { ignoreSearch: true },
+              expiration: { maxEntries: 2000, maxAgeSeconds: 60 * 60 * 24 * 30 },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
         ],
       },
       manifest: {
