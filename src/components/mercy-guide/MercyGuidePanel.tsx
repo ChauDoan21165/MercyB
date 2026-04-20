@@ -66,7 +66,14 @@ type KidsPageId =
   | 'page24'
   | 'page25'
   | 'page26'
-  | 'page27';
+  | 'page27'
+  | 'page28'
+  | 'page29'
+  | 'page30'
+  | 'page31'
+  | 'page32'
+  | 'page33'
+  | 'page34';
 
 type TroubleWordItem = string | { word?: string | null };
 
@@ -253,6 +260,13 @@ const VALID_KIDS_PAGES = new Set<KidsPageId>([
   'page25',
   'page26',
   'page27',
+  'page28',
+  'page29',
+  'page30',
+  'page31',
+  'page32',
+  'page33',
+  'page34',
 ]);
 
 function normalizeTab(value: string | undefined): MercyTabType {

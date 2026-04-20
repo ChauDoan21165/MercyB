@@ -30,6 +30,27 @@ import { KID_PAGE_24_ITEMS } from './kids/kidPage24Data';
 import { KID_PAGE_25_ITEMS } from './kids/kidPage25Data';
 import { KID_PAGE_26_ITEMS } from './kids/kidPage26Data';
 import { KID_PAGE_27_ITEMS } from './kids/kidPage27Data';
+import { KID_PAGE_28_ITEMS } from './kids/kidPage28Data';
+import { KID_PAGE_29_ITEMS } from './kids/kidPage29Data';
+import { KID_PAGE_30_ITEMS } from './kids/kidPage30Data';
+import { KID_PAGE_31_ITEMS } from './kids/kidPage31Data';
+import { KID_PAGE_32_ITEMS } from './kids/kidPage32Data';
+import { KID_PAGE_33_ITEMS } from './kids/kidPage33Data';
+import { KID_PAGE_34_ITEMS } from './kids/kidPage34Data';
+import { KID_PAGE_28_ITEMS } from './kids/kidPage28Data';
+import { KID_PAGE_29_ITEMS } from './kids/kidPage29Data';
+import { KID_PAGE_30_ITEMS } from './kids/kidPage30Data';
+import { KID_PAGE_31_ITEMS } from './kids/kidPage31Data';
+import { KID_PAGE_32_ITEMS } from './kids/kidPage32Data';
+import { KID_PAGE_33_ITEMS } from './kids/kidPage33Data';
+import { KID_PAGE_34_ITEMS } from './kids/kidPage34Data';
+import { KID_PAGE_28_ITEMS } from './kids/kidPage28Data';
+import { KID_PAGE_29_ITEMS } from './kids/kidPage29Data';
+import { KID_PAGE_30_ITEMS } from './kids/kidPage30Data';
+import { KID_PAGE_31_ITEMS } from './kids/kidPage31Data';
+import { KID_PAGE_32_ITEMS } from './kids/kidPage32Data';
+import { KID_PAGE_33_ITEMS } from './kids/kidPage33Data';
+import { KID_PAGE_34_ITEMS } from './kids/kidPage34Data';
 import type {
   GrammarApiResponse,
   GrammarWritingTeacherState,
@@ -65,7 +86,14 @@ type KidsPageId =
   | 'page24'
   | 'page25'
   | 'page26'
-  | 'page27';
+  | 'page27'
+  | 'page28'
+  | 'page29'
+  | 'page30'
+  | 'page31'
+  | 'page32'
+  | 'page33'
+  | 'page34';
 
 interface Props {
   latestTeacherWritingState?: GrammarWritingTeacherState | null;
@@ -578,6 +606,13 @@ const KIDS_PAGE_CONFIGS: KidsPageConfig[] = [
   { id: 'page25', label: 'Page 25' },
   { id: 'page26', label: 'Page 26' },
   { id: 'page27', label: 'Page 27' },
+  { id: 'page28', label: 'Page 28 — Age 12+' },
+  { id: 'page29', label: 'Page 29 — Age 12+' },
+  { id: 'page30', label: 'Page 30 — Age 14' },
+  { id: 'page31', label: 'Page 31 — Age 15' },
+  { id: 'page32', label: 'Page 32 — Age 16' },
+  { id: 'page33', label: 'Page 33 — Age 17' },
+  { id: 'page34', label: 'Page 34 — Age 18' },
 ];
 
 function toKidsLabel(key: string): string {
@@ -978,6 +1013,20 @@ function resolveCurrentPageItems(page: KidsPageId): KidsLessonCard[] {
       return buildMappedPageItems(KID_PAGE_26_ITEMS);
     case 'page27':
       return buildMappedPageItems(KID_PAGE_27_ITEMS);
+    case 'page28':
+      return buildMappedPageItems(KID_PAGE_28_ITEMS);
+    case 'page29':
+      return buildMappedPageItems(KID_PAGE_29_ITEMS);
+    case 'page30':
+      return buildMappedPageItems(KID_PAGE_30_ITEMS);
+    case 'page31':
+      return buildMappedPageItems(KID_PAGE_31_ITEMS);
+    case 'page32':
+      return buildMappedPageItems(KID_PAGE_32_ITEMS);
+    case 'page33':
+      return buildMappedPageItems(KID_PAGE_33_ITEMS);
+    case 'page34':
+      return buildMappedPageItems(KID_PAGE_34_ITEMS);
     default:
       return buildPage1Items();
   }
