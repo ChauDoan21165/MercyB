@@ -1181,8 +1181,8 @@ export default function EnglishLogicTab({
             {!hasLesson ? (
               <section className="mt-6 rounded-[28px] border border-orange-100/80 bg-gradient-to-br from-[#FFFDF9] via-white to-[#FDF7F2] p-6 shadow-[0_10px_28px_rgba(148,163,184,0.06)] md:p-8">
                 <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-100 via-fuchsia-50 to-orange-50 shadow-sm">
-                    <Languages className="h-8 w-8 text-violet-600" />
+                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#FFF0E8] via-[#FFE4D6] to-[#FFF5EF] shadow-sm">
+                    <Languages className="h-8 w-8 text-[#E07050]" />
                   </div>
 
                   <p className="mt-5 text-[1.9rem] font-semibold tracking-tight text-slate-900">
@@ -1196,7 +1196,7 @@ export default function EnglishLogicTab({
                     <Button
                       type="button"
                       onClick={onOpenWriting}
-                      className="rounded-2xl bg-gradient-to-r from-violet-500 via-fuchsia-500 to-purple-500 px-5 text-white shadow-[0_10px_24px_rgba(168,85,247,0.24)] hover:shadow-[0_12px_28px_rgba(168,85,247,0.28)]"
+                      className="rounded-2xl bg-gradient-to-r from-[#FF8A65] to-[#FF6F61] px-5 text-white shadow-[0_10px_24px_rgba(255,111,97,0.22)] hover:brightness-[1.03]"
                     >
                       <PenSquare className="mr-2 h-4 w-4" />
                       Open Grammar & Writing

@@ -1114,25 +1114,25 @@ export function MercySpeakTab({
                 <span className="flex flex-col items-center justify-center gap-1 leading-none"><Square className="h-4.5 w-4.5 shrink-0" /><span className="text-[11px] font-semibold">Stop</span></span>
               </Button>
             )}
-            <Button type="button" variant="outline" onClick={handlePlayRecording} disabled={!recordedAudioUrl || isRecording} className="h-[58px] min-w-0 rounded-[20px] border-[#D8E2F0] bg-white px-2 py-1 text-slate-900 shadow-sm hover:bg-slate-50 disabled:opacity-50">
+            <Button type="button" variant="outline" onClick={handlePlayRecording} disabled={!recordedAudioUrl || isRecording} className="h-[58px] min-w-0 rounded-[20px] border-[#B0BDD0] bg-white px-2 py-1 text-slate-700 shadow-sm hover:bg-slate-100 disabled:opacity-40">
               <span className="flex flex-col items-center justify-center gap-1 leading-none"><PlayCircle className="h-4.5 w-4.5 shrink-0" /><span className="text-[11px] font-semibold">Play</span></span>
             </Button>
-            <Button type="button" variant="outline" onClick={handleResetAttempt} className="h-[58px] min-w-0 rounded-[20px] border-[#E3D7CB] bg-white px-2 py-1 text-slate-900 shadow-sm hover:bg-[#FFF8F4]">
+            <Button type="button" variant="outline" onClick={handleResetAttempt} className="h-[58px] min-w-0 rounded-[20px] border-[#C8B8A8] bg-white px-2 py-1 text-slate-700 shadow-sm hover:bg-[#FFF4EE]">
               <span className="flex flex-col items-center justify-center gap-1 leading-none"><RotateCcw className="h-4.5 w-4.5 shrink-0" /><span className="text-[11px] font-semibold">Reset</span></span>
             </Button>
           </div>
 
           <div className="grid grid-cols-4 gap-2.5">
-            <Button type="button" variant="outline" onClick={handleCopy} disabled={!practiceText} className="h-[58px] min-w-0 rounded-[20px] border-[#E3D7CB] bg-white px-2 py-1 text-slate-900 shadow-sm hover:bg-[#FFF8F4] disabled:opacity-60">
+            <Button type="button" variant="outline" onClick={handleCopy} disabled={!practiceText} className="h-[58px] min-w-0 rounded-[20px] border-[#C8B8A8] bg-white px-2 py-1 text-slate-700 shadow-sm hover:bg-[#FFF4EE] disabled:opacity-50">
               <span className="flex flex-col items-center justify-center gap-1 leading-none"><Copy className="h-4.5 w-4.5 shrink-0" /><span className="text-[11px] font-semibold">{copySuccess ? 'Copied' : 'Copy'}</span></span>
             </Button>
             <button type="button" onClick={() => setVariant('custom')} className={`h-[58px] min-w-0 rounded-[20px] border px-2 py-1 text-[11px] font-semibold transition-all ${getVariantButtonClass(variant === 'custom')}`}>
               <span className="flex h-full items-center justify-center text-center leading-tight">Custom</span>
             </button>
-            <button type="button" onClick={handleClearPracticeLine} className="h-[58px] min-w-0 rounded-[20px] border border-slate-200 bg-white px-2 py-1 text-[11px] font-semibold text-slate-800 transition-all hover:border-rose-300 hover:bg-rose-50 hover:text-rose-700">
+            <button type="button" onClick={handleClearPracticeLine} className="h-[58px] min-w-0 rounded-[20px] border border-slate-300 bg-white px-2 py-1 text-[11px] font-semibold text-slate-700 transition-all hover:border-rose-400 hover:bg-rose-50 hover:text-rose-700">
               <span className="flex h-full flex-col items-center justify-center gap-1 leading-none"><Eraser className="h-4.5 w-4.5 shrink-0" /><span>Clear</span></span>
             </button>
-            <Button type="button" variant="outline" onClick={() => { if (onOpenEnglishLogic) onOpenEnglishLogic(); }} disabled={!canOpenLogic} className="h-[58px] min-w-0 rounded-[20px] border-[#C7B0FF] bg-white px-2 py-1 text-[#5B21B6] shadow-sm hover:bg-violet-50 disabled:opacity-50">
+            <Button type="button" variant="outline" onClick={() => { if (onOpenEnglishLogic) onOpenEnglishLogic(); }} disabled={!canOpenLogic} className="h-[58px] min-w-0 rounded-[20px] border-[#FFB39A] bg-[#FFF5EF] px-2 py-1 text-[#C05830] shadow-sm hover:bg-[#FFE8D8] disabled:opacity-50">
               <span className="flex h-full flex-col items-center justify-center leading-[1.04]"><span className="text-[10px] font-semibold">Understand</span><span className="text-[10px] font-semibold">why</span></span>
             </Button>
           </div>
