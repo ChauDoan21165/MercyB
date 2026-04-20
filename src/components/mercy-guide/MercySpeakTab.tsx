@@ -624,9 +624,11 @@ export function MercySpeakTab({
     const key = selectedKidsObjectKey ?? '';
     if (!key) return null;
     const folder = voiceGender === 'josh' ? '/audio/kids/josh' : '/audio/kids';
-    // Page 3: audio lives in image folder
+    // Page 3: audio lives in image folder (k0XX_ format)
     if (/^k0\d+_/.test(key)) return `/images/mercy-kids-page-3/${key}.mp3`;
-    // Pages 4-34: standard format
+    // Pages 17-24: short key format k17_001 etc
+    if (/^k(1[7-9]|2[0-4])_\d+$/.test(key)) return `${folder}/${key}.mp3`;
+    // Pages 4-34: standard long format
     if (/^k\d+_/.test(key)) return `${folder}/${key}.mp3`;
     // Page 2: p2_ prefix
     if (/^p2_/.test(key)) return `${folder}/${key}.mp3`;
@@ -1104,29 +1106,7 @@ export function MercySpeakTab({
                   </div>
                 </div>
               </div>
-              {kidsWordChips.length > 0 ? (
-                <div className="mt-2 flex items-center gap-2 overflow-x-auto pb-0.5">
-                  <span className="shrink-0 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500">Repeat</span>
-                  {kidsWordChips.map((word) => (
-                    <button key={word} type="button" onClick={() => {
-                        // Speak just this word via TTS directly on click gesture
-                        try {
-                          window.speechSynthesis.cancel();
-                          const u = new SpeechSynthesisUtterance(word);
-                          u.lang = 'en-US'; u.rate = 0.85; u.volume = 1.0;
-                          const vs = window.speechSynthesis.getVoices();
-                          const v = vs.find(v => v.lang === 'en-US' && v.name.includes('Samantha'))
-                            || vs.find(v => v.lang === 'en-US') || vs[0];
-                          if (v) u.voice = v;
-                          window.speechSynthesis.speak(u);
-                        } catch(e) { handleSpeak(word); }
-                      }}
-                      className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-[#F2DDD0] bg-gradient-to-r from-[#FFF5EF] to-white px-2.5 py-1 text-xs font-semibold text-[#875E4B] shadow-sm transition hover:border-[#F0C8B3] hover:bg-[#FFF8F4]">
-                      <Volume2 className="h-3.5 w-3.5" /><span>{word}</span>
-                    </button>
-                  ))}
-                </div>
-              ) : null}
+
               <audio ref={recordedAudioRef} className="hidden" src={recordedAudioUrl || undefined} preload="metadata">Your browser does not support audio playback.</audio>
             </div>
           </div>

@@ -106,21 +106,14 @@ async function syncToSupabase(totalPoints: number, event: PointEventType, points
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return;
 
-    // Upsert total points to profiles
-    await supabase
-      .from('profiles')
-      .update({ total_points: totalPoints } as any)
-      .eq('id', user.id);
-
-    // Log the event to study_log as a points entry
-    await supabase
-      .from('study_log')
-      .insert({
-        user_id: user.id,
-        topic_en: `points:${event}:${points}`,
-        room_id: context || null,
-        minutes: 0,
-      } as any);
+    // Use existing award_points RPC
+    await (supabase as any).rpc('award_points', {
+      _user_id: user.id,
+      _points: points,
+      _transaction_type: event,
+      _description: event.replace(/_/g, ' '),
+      _room_id: context || null,
+    });
 
   } catch {
     // Fail silently — local points still work
@@ -195,10 +188,10 @@ export async function loadPointsFromSupabase(): Promise<number | null> {
     if (!user) return null;
 
     const { data } = await supabase
-      .from('profiles')
+      .from('user_points')
       .select('total_points')
-      .eq('id', user.id)
-      .single();
+      .eq('user_id', user.id)
+      .maybeSingle();
 
     const serverPoints = (data as any)?.total_points;
     if (typeof serverPoints === 'number' && serverPoints > getLocalPoints()) {
