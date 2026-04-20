@@ -50,28 +50,25 @@ export function NotebookPanel({ isKidsMode = false }: NotebookPanelProps) {
         <span className="text-xs text-muted-foreground">{limitText}</span>
       </div>
 
-      <div className="mt-3 flex items-center justify-between gap-3 rounded-xl bg-rose-50/60 px-3 py-2.5">
-        <div className="min-w-0">
-          <p className="text-sm font-medium text-slate-900">
-            {dueCount === 0
-              ? 'No reviews due'
-              : `${dueCount} due for review`}
-          </p>
-          <p className="text-xs text-muted-foreground">
-            {dueCount === 0
-              ? 'Come back later — spaced repetition works best with time.'
-              : 'A few minutes of review goes a long way.'}
-          </p>
+      {dueCount > 0 ? (
+        <div className="mt-3 flex items-center justify-between gap-3 rounded-xl bg-rose-50/60 px-3 py-2.5">
+          <div className="min-w-0">
+            <p className="text-sm font-medium text-slate-900">
+              📚 {dueCount} due for review
+            </p>
+            <p className="text-xs text-muted-foreground">
+              A few minutes of review goes a long way.
+            </p>
+          </div>
+          <Button
+            size="sm"
+            className="shrink-0 bg-rose-500 hover:bg-rose-600"
+            onClick={() => setReviewOpen(true)}
+          >
+            Start review
+          </Button>
         </div>
-        <Button
-          size="sm"
-          disabled={dueCount === 0}
-          className="shrink-0 bg-rose-500 hover:bg-rose-600"
-          onClick={() => setReviewOpen(true)}
-        >
-          Start review
-        </Button>
-      </div>
+      ) : null}
 
       <div className="mt-4">
         <NotebookList />

@@ -42,6 +42,7 @@ import type {
   GrammarWritingTeacherState,
   TeacherMemorySummaryItem,
 } from './types';
+import { NotebookPanel } from '@/components/notebook/NotebookPanel';
 
 type LearningSupportMode = 'gentle' | 'guided' | 'immersion';
 
@@ -1603,6 +1604,8 @@ export function MercyTeacherTab({
                 )}
               </section>
             )}
+
+            <NotebookPanel />
           </div>
         </div>
       </ScrollArea>
