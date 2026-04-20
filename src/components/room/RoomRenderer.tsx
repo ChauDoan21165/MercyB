@@ -744,10 +744,27 @@ export default function RoomRenderer({
     }
   }, [isDev]);
 
-  const isNarrow =
-    typeof window !== "undefined" ? window.matchMedia("(max-width: 860px)").matches : false;
-  const isPhone =
-    typeof window !== "undefined" ? window.matchMedia("(max-width: 640px)").matches : false;
+  const [isNarrow, setIsNarrow] = useState<boolean>(() =>
+    typeof window !== "undefined" ? window.matchMedia("(max-width: 860px)").matches : false
+  );
+  const [isPhone, setIsPhone] = useState<boolean>(() =>
+    typeof window !== "undefined" ? window.matchMedia("(max-width: 640px)").matches : false
+  );
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const narrowMq = window.matchMedia("(max-width: 860px)");
+    const phoneMq = window.matchMedia("(max-width: 640px)");
+    const onNarrow = (e: MediaQueryListEvent | MediaQueryList) => setIsNarrow(e.matches);
+    const onPhone = (e: MediaQueryListEvent | MediaQueryList) => setIsPhone(e.matches);
+    onNarrow(narrowMq);
+    onPhone(phoneMq);
+    narrowMq.addEventListener("change", onNarrow);
+    phoneMq.addEventListener("change", onPhone);
+    return () => {
+      narrowMq.removeEventListener("change", onNarrow);
+      phoneMq.removeEventListener("change", onPhone);
+    };
+  }, []);
 
   const scrollToAudio = () => {
     const el = audioAnchorRef.current;

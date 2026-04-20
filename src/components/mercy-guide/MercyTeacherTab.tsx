@@ -1298,7 +1298,7 @@ export function MercyTeacherTab({
                     </div>
 
                     <div className="min-w-0">
-                      <h2 className="text-xl font-semibold tracking-tight text-slate-900">
+                      <h2 className="text-lg md:text-xl font-semibold tracking-tight text-slate-900">
                         Journey
                       </h2>
                       <p className="mt-1 text-sm leading-6 text-slate-600">
@@ -1398,7 +1398,7 @@ export function MercyTeacherTab({
             </section>
 
             {isLocked ? (
-              <section className="rounded-3xl border border-white/80 bg-white/92 p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
+              <section className="rounded-2xl md:rounded-3xl border border-white/80 bg-white/92 p-3 md:p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
                 <div className="flex items-center gap-2.5">
                   <Crown className="h-5 w-5 text-violet-500" />
                   <h3 className="text-lg font-semibold text-slate-900">{unlockTitle}</h3>

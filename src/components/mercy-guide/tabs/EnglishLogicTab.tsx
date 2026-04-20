@@ -1066,7 +1066,7 @@ export default function EnglishLogicTab({
       <div className="m-0 flex-1 overflow-hidden">
         <ScrollArea className="h-full bg-gradient-to-br from-[#FFF8F1] via-[#FFFDFC] to-[#F8F7FF]">
           <div className="space-y-5 p-4 md:p-5">
-            <div className="rounded-[28px] border border-orange-100/80 bg-gradient-to-br from-[#FFF7ED] via-white to-[#FFFDF8] p-5 shadow-[0_10px_30px_rgba(15,23,42,0.05)]">
+            <div className="rounded-[20px] md:rounded-[28px] border border-orange-100/80 bg-gradient-to-br from-[#FFF7ED] via-white to-[#FFFDF8] p-3 md:p-5 shadow-[0_10px_30px_rgba(15,23,42,0.05)]">
               <div className="space-y-2">
                 <h2 className="text-[1.75rem] font-semibold tracking-tight text-slate-900">
                   {kidsTeacherName} kids mode
@@ -1082,7 +1082,7 @@ export default function EnglishLogicTab({
                 </div>
               </div>
 
-              <section className="mt-6 rounded-[28px] border border-white/80 bg-white/92 p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
+              <section className="mt-6 rounded-[20px] md:rounded-[28px] border border-white/80 bg-white/92 p-3 md:p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
                 <div className="flex items-center gap-2">
                   <Mic className="h-4 w-4 text-sky-500" />
                   <p className="text-sm font-semibold text-slate-900">
@@ -1128,7 +1128,7 @@ export default function EnglishLogicTab({
                 </div>
               </section>
 
-              <section className="rounded-[28px] border border-emerald-100/70 bg-gradient-to-r from-emerald-50/80 to-white p-5 shadow-[0_10px_28px_rgba(16,185,129,0.05)]">
+              <section className="rounded-[20px] md:rounded-[28px] border border-emerald-100/70 bg-gradient-to-r from-emerald-50/80 to-white p-3 md:p-5 shadow-[0_10px_28px_rgba(16,185,129,0.05)]">
                 <div className="flex items-start gap-2">
                   <RotateCcw className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
                   <div>
@@ -1154,7 +1154,7 @@ export default function EnglishLogicTab({
     <div className="m-0 flex-1 overflow-hidden">
       <ScrollArea className="h-full bg-gradient-to-br from-[#FFF8F1] via-[#FFFDFC] to-[#F8F7FF]">
         <div className="space-y-5 p-4 md:p-5">
-          <div className="rounded-[28px] border border-orange-100/80 bg-gradient-to-br from-[#FFF7ED] via-white to-[#FFFDF8] p-5 shadow-[0_10px_30px_rgba(15,23,42,0.05)]">
+          <div className="rounded-[20px] md:rounded-[28px] border border-orange-100/80 bg-gradient-to-br from-[#FFF7ED] via-white to-[#FFFDF8] p-3 md:p-5 shadow-[0_10px_30px_rgba(15,23,42,0.05)]">
             <div className="space-y-2">
               <h2 className="text-[1.75rem] font-semibold tracking-tight text-slate-900">
                 English Logic
@@ -1179,7 +1179,7 @@ export default function EnglishLogicTab({
             </div>
 
             {!hasLesson ? (
-              <section className="mt-6 rounded-[28px] border border-orange-100/80 bg-gradient-to-br from-[#FFFDF9] via-white to-[#FDF7F2] p-6 shadow-[0_10px_28px_rgba(148,163,184,0.06)] md:p-8">
+              <section className="mt-4 md:mt-6 rounded-[20px] md:rounded-[28px] border border-orange-100/80 bg-gradient-to-br from-[#FFFDF9] via-white to-[#FDF7F2] p-4 md:p-6 lg:p-8 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
                 <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
                   <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#FFF0E8] via-[#FFE4D6] to-[#FFF5EF] shadow-sm">
                     <Languages className="h-8 w-8 text-[#E07050]" />
@@ -1206,7 +1206,7 @@ export default function EnglishLogicTab({
               </section>
             ) : (
               <div className="mt-6 space-y-4">
-                <section className="rounded-[28px] border border-white/80 bg-white/92 p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
+                <section className="rounded-[20px] md:rounded-[28px] border border-white/80 bg-white/92 p-3 md:p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
                   <div className="flex items-center gap-2">
                     <Languages className="h-4 w-4 text-violet-500" />
                     <p className="text-sm font-semibold text-slate-900">
@@ -1243,7 +1243,7 @@ export default function EnglishLogicTab({
                   ) : null}
                 </section>
 
-                <section className="rounded-[28px] border border-white/80 bg-white/92 p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
+                <section className="rounded-[20px] md:rounded-[28px] border border-white/80 bg-white/92 p-3 md:p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
                   <div className="flex items-center gap-2">
                     <Lightbulb className="h-4 w-4 text-amber-500" />
                     <p className="text-sm font-semibold text-slate-900">{logic.bridgeTitle}</p>
@@ -1415,7 +1415,7 @@ export default function EnglishLogicTab({
                   </div>
                 </section>
 
-                <section className="rounded-[28px] border border-white/80 bg-white/92 p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
+                <section className="rounded-[20px] md:rounded-[28px] border border-white/80 bg-white/92 p-3 md:p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
                   <div className="flex items-center gap-2">
                     <Sparkles className="h-4 w-4 text-sky-500" />
                     <p className="text-sm font-semibold text-slate-900">
@@ -1479,7 +1479,7 @@ export default function EnglishLogicTab({
                 </section>
 
                 {shouldShowPatternExamples ? (
-                  <section className="rounded-[28px] border border-white/80 bg-white/92 p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
+                  <section className="rounded-[20px] md:rounded-[28px] border border-white/80 bg-white/92 p-3 md:p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
                     <p className="text-sm font-semibold text-slate-900">
                       Sentence pattern examples
                     </p>
@@ -1524,7 +1524,7 @@ export default function EnglishLogicTab({
                   </section>
                 ) : null}
 
-                <section className="rounded-[28px] border border-white/80 bg-white/92 p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
+                <section className="rounded-[20px] md:rounded-[28px] border border-white/80 bg-white/92 p-3 md:p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
                   <p className="text-sm font-semibold text-slate-900">How this connects to speaking</p>
                   <p className="mt-2 text-sm text-slate-600">
                     Practice the improved line aloud so your mouth learns the same structure your mind just studied.
@@ -1574,7 +1574,7 @@ export default function EnglishLogicTab({
                   </div>
                 </section>
 
-                <section className="rounded-[28px] border border-emerald-100/70 bg-gradient-to-r from-emerald-50/80 to-white p-5 shadow-[0_10px_28px_rgba(16,185,129,0.05)]">
+                <section className="rounded-[20px] md:rounded-[28px] border border-emerald-100/70 bg-gradient-to-r from-emerald-50/80 to-white p-3 md:p-5 shadow-[0_10px_28px_rgba(16,185,129,0.05)]">
                   <div className="flex items-start gap-2">
                     <RotateCcw className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
                     <div>
@@ -1630,7 +1630,7 @@ export default function EnglishLogicTab({
                 </section>
 
                 {(grammarPoints.length > 0 || troubleWordList.length > 0) && (
-                  <section className="rounded-[28px] border border-white/80 bg-white/92 p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
+                  <section className="rounded-[20px] md:rounded-[28px] border border-white/80 bg-white/92 p-3 md:p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
                     <p className="text-sm font-semibold text-slate-900">Patterns Mercy notices</p>
 
                     {grammarPoints.length > 0 ? (

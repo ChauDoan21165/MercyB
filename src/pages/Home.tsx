@@ -114,7 +114,7 @@ export default function Home() {
 
   const isDesktopTop      = viewportWidth >= 960;
   const isPhone           = viewportWidth < 640;
-  const mobileHeadlineSize = viewportWidth <= 380 ? 20 : 22;
+  const mobileHeadlineSize = viewportWidth <= 360 ? 19 : viewportWidth <= 400 ? 21 : 24;
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -167,14 +167,14 @@ export default function Home() {
 
   const frame: React.CSSProperties = {
     maxWidth: PAGE_MAX, margin: "0 auto",
-    padding: isPhone ? "10px 16px 108px" : "10px 16px 188px",
+    padding: isPhone ? "10px 12px 108px" : "10px 16px 188px",
   };
 
   const heroShell: React.CSSProperties = {
     marginTop: 6, borderRadius: 28, border: "1px solid rgba(0,0,0,0.06)",
     background: "linear-gradient(180deg, rgba(255,252,245,0.98), rgba(248,243,234,0.94))",
     boxShadow: "0 18px 42px rgba(0,0,0,0.07)",
-    padding: isDesktopTop ? "24px 24px 28px" : "18px 16px 22px",
+    padding: isDesktopTop ? "24px 24px 28px" : "18px 14px 22px",
     textAlign: "center",
   };
 
@@ -182,7 +182,7 @@ export default function Home() {
     margin: "2px 0 0",
     fontSize: isDesktopTop ? z(42) : z(mobileHeadlineSize),
     fontWeight: 950, lineHeight: 1.05, letterSpacing: isPhone ? -0.9 : -1.2,
-    color: "rgba(10,10,10,0.96)", whiteSpace: "nowrap",
+    color: "rgba(10,10,10,0.96)", overflowWrap: "break-word", wordBreak: "break-word",
   };
 
   const headlineAccent: React.CSSProperties = {
@@ -216,7 +216,7 @@ export default function Home() {
     <button type="button" onClick={handleTeacherMercy} aria-label="Open Teacher Mercy"
       style={{ width: "100%", background: "none", border: "none", padding: 0, cursor: "pointer", textAlign: "center" }}>
       <div style={{
-        borderRadius: 26, padding: isPhone ? "24px 18px 28px" : "32px 24px 36px",
+        borderRadius: 26, padding: isPhone ? "22px 16px 26px" : "32px 24px 36px",
         background: "linear-gradient(150deg, rgba(250,232,255,0.96) 0%, rgba(255,240,248,0.96) 40%, rgba(253,240,230,0.94) 100%)",
         border: "1px solid rgba(190,100,140,0.14)",
         boxShadow: "0 20px 48px rgba(160,60,100,0.10)",
@@ -233,7 +233,7 @@ export default function Home() {
           />
         </div>
 
-        <div style={{ marginTop: 16, fontSize: isPhone ? z(24) : z(30), fontWeight: 950, letterSpacing: -0.6, color: "rgba(100,30,60,0.94)", lineHeight: 1.1 }}>
+        <div style={{ marginTop: 16, fontSize: isPhone ? z(22) : z(30), fontWeight: 950, letterSpacing: -0.5, color: "rgba(100,30,60,0.94)", lineHeight: 1.15 }}>
           Teacher Mercy
         </div>
         <div style={{ marginTop: 4, fontSize: z(13), fontWeight: 700, color: "rgba(140,60,90,0.62)", letterSpacing: 0.2 }}>

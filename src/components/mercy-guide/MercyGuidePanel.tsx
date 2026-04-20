@@ -593,7 +593,7 @@ function LockedAccessCard({
   onUnlock?: () => void;
 }) {
   return (
-    <div className="rounded-3xl border border-amber-200 bg-gradient-to-br from-[#FFF8F1] via-white to-[#F8FAFF] p-6 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
+    <div className="rounded-2xl md:rounded-3xl border border-amber-200 bg-gradient-to-br from-[#FFF8F1] via-white to-[#F8FAFF] p-4 md:p-6 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
       <div className="flex items-start gap-3">
         <div className="rounded-2xl bg-amber-100 p-2.5">
           <Lock className="h-5 w-5 text-amber-600" />
@@ -683,7 +683,7 @@ function LearningSupportModePicker({
 
       {/* Dropdown explanation panel */}
       {open && (
-        <div className="absolute right-0 top-11 z-[90] w-[260px] rounded-2xl border border-slate-100 bg-white p-2 shadow-xl">
+        <div className="absolute right-0 top-11 z-[90] w-[min(260px,calc(100vw-24px))] rounded-2xl border border-slate-100 bg-white p-2 shadow-xl">
           {LEARNING_SUPPORT_OPTIONS.map((opt) => {
             const isActive = opt.value === value;
             const c = COLORS[opt.value];
@@ -804,7 +804,7 @@ function TeacherModePicker({
 
       {open ? (
         <div
-          className={`absolute z-[90] mt-2 rounded-3xl border border-white/90 bg-white/95 p-2 shadow-[0_18px_42px_rgba(15,23,42,0.14)] backdrop-blur-md ${menuPlacementClass}`}
+          className={`absolute z-[90] mt-2 max-w-[calc(100vw-24px)] rounded-2xl md:rounded-3xl border border-white/90 bg-white/95 p-2 shadow-[0_18px_42px_rgba(15,23,42,0.14)] backdrop-blur-md ${menuPlacementClass}`}
           role="listbox"
           aria-label="Teacher mode"
         >
@@ -1384,7 +1384,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
               to   { opacity: 1; transform: translateY(0); }
             }
           `}</style>
-          <div className="flex items-center gap-3 rounded-2xl border border-[#FFE4D6] bg-gradient-to-r from-[#FFF8F3] to-white px-4 py-2.5 shadow-[0_4px_16px_rgba(255,138,101,0.10)]">
+          <div className="flex items-center gap-2 md:gap-3 rounded-2xl border border-[#FFE4D6] bg-gradient-to-r from-[#FFF8F3] to-white px-3 py-2 md:px-4 md:py-2.5 shadow-[0_4px_16px_rgba(255,138,101,0.10)]">
             <span className="text-xl">👋</span>
             <div className="min-w-0 flex-1">
               <p className="text-sm font-semibold text-slate-900 leading-tight">

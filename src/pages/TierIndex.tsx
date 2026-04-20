@@ -87,7 +87,7 @@ type CountsState = {
   bySpineTier: Record<SpineTierId, number>;
 };
 
-const MOBILE_BREAKPOINT = 860;
+const MOBILE_BREAKPOINT = 1024;
 
 const rainbow =
   "linear-gradient(90deg,#ff5a7a 0%,#ff9d57 18%,#ffd85a 32%,#7be77b 48%,#66d7ff 66%,#7b8cff 82%,#c86cff 100%)";
@@ -604,8 +604,10 @@ export default function TierIndex() {
   const rowGrid: React.CSSProperties = {
     marginTop: 18,
     display: "grid",
-    gridTemplateColumns: "1fr 260px 1fr",
-    gap: 14,
+    gridTemplateColumns: isMobile
+      ? "1fr"
+      : "minmax(0, 1fr) minmax(220px, 260px) minmax(0, 1fr)",
+    gap: isMobile ? 10 : 14,
     alignItems: "start",
     pointerEvents: "auto",
   };

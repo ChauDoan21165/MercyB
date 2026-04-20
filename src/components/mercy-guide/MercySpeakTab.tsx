@@ -1123,7 +1123,7 @@ export function MercySpeakTab({
             value={customText}
             onChange={(e) => { setCustomText(e.target.value); setVariant('custom'); }}
             placeholder="Type the sentence you want to practice speaking..."
-            className="min-h-[288px] w-full resize-y rounded-[26px] border border-[#E5CDB9] bg-gradient-to-br from-[#FFF9F2] to-white p-6 text-[1.1rem] leading-10 text-slate-950 shadow-[inset_0_1px_0_rgba(255,255,255,0.92),0_8px_20px_rgba(255,138,101,0.05)] outline-none transition placeholder:text-slate-600 focus:border-[#EFA98B] focus:ring-2 focus:ring-[#FFD3BF] md:min-h-[304px]"
+            className="min-h-[220px] w-full resize-y rounded-[20px] md:rounded-[26px] border border-[#E5CDB9] bg-gradient-to-br from-[#FFF9F2] to-white p-4 md:p-6 text-base leading-7 md:text-[1.1rem] md:leading-10 text-slate-950 shadow-[inset_0_1px_0_rgba(255,255,255,0.92),0_8px_20px_rgba(255,138,101,0.05)] outline-none transition placeholder:text-slate-600 focus:border-[#EFA98B] focus:ring-2 focus:ring-[#FFD3BF] md:min-h-[304px]"
           />
 
           <div className="grid grid-cols-5 gap-2.5">
@@ -1176,7 +1176,7 @@ export function MercySpeakTab({
           {recognitionError ? <div className="rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800"><div className="flex items-start gap-2"><AlertCircle className="mt-0.5 h-4 w-4 shrink-0" /><p>{recognitionError}</p></div></div> : null}
           {recordingError   ? <div className="rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800"><div className="flex items-start gap-2"><AlertCircle className="mt-0.5 h-4 w-4 shrink-0" /><p>{recordingError}</p></div></div>   : null}
 
-          <div className={`rounded-[24px] border p-4 shadow-sm ${transcript ? matchTone.ring : 'border-[#F1E5DB] bg-gradient-to-br from-[#FFF9F3] to-white'}`}>
+          <div className={`rounded-[20px] md:rounded-[24px] border p-3 md:p-4 shadow-sm ${transcript ? matchTone.ring : 'border-[#F1E5DB] bg-gradient-to-br from-[#FFF9F3] to-white'}`}>
             <div className="flex items-start justify-between gap-3">
               <p className="text-[2.05rem] font-semibold leading-none text-slate-950">{transcript ? `${matchScore}%` : '--'}</p>
               {transcript ? <span className={`rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide ${matchTone.text}`}>{confidenceLabel}</span> : null}
@@ -1186,7 +1186,7 @@ export function MercySpeakTab({
             </div>
           </div>
 
-          <div className="rounded-[24px] border border-white/80 bg-white p-4 shadow-sm">
+          <div className="rounded-[20px] md:rounded-[24px] border border-white/80 bg-white p-3 md:p-4 shadow-sm">
             <p className="text-xs font-semibold uppercase tracking-wide text-slate-700">{transcriptLabel}</p>
             <p className="mt-2 min-h-[60px] text-sm leading-8 text-slate-950">{transcript || 'Your transcript will appear here after you speak.'}</p>
           </div>

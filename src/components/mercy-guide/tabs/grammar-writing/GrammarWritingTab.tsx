@@ -946,7 +946,7 @@ Paste or write your English here. Mercy will keep the teacher focus while correc
     <div className="flex h-full min-h-0 flex-col overflow-hidden">
       <div className="flex-1 min-h-0 overflow-y-auto px-4 py-4">
         <div className="space-y-4">
-          <div className="rounded-3xl border border-orange-100/90 bg-gradient-to-br from-[#FFF7ED] via-white to-[#F0FDF4] p-5 shadow-[0_10px_30px_rgba(15,23,42,0.05)]">
+          <div className="rounded-2xl md:rounded-3xl border border-orange-100/90 bg-gradient-to-br from-[#FFF7ED] via-white to-[#F0FDF4] p-3 md:p-5 shadow-[0_10px_30px_rgba(15,23,42,0.05)]">
             <div className="mb-4">
               <p className="text-[1.05rem] font-semibold text-slate-900">
                 Write what is true today
@@ -1030,7 +1030,7 @@ Paste or write your English here. Mercy will keep the teacher focus while correc
 
           {result ? (
             <>
-              <div className="space-y-4 rounded-3xl border border-orange-100/80 bg-gradient-to-br from-white via-[#FFFDFC] to-[#F8FFFC] p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
+              <div className="space-y-3 md:space-y-4 rounded-2xl md:rounded-3xl border border-orange-100/80 bg-gradient-to-br from-white via-[#FFFDFC] to-[#F8FFFC] p-3 md:p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
                     Your sentence
