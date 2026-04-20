@@ -62,5 +62,6 @@
     "vi": "Củng cố sự tự tin bên trong bằng các thực hành tinh chỉnh phát triển tự nhiên theo thời gian. Phòng VIP2 này cung cấp năm thói quen vi mô hàng tuần tập trung vào khẳng định chân thực, sự hiện diện xã hội, định hướng mục tiêu, nhận thức chánh niệm và kết nối cộng đồng. Mỗi bước xây dựng sức mạnh và cảm giác thuộc về yên lặng. Theo dõi một khoảnh khắc nhỏ của sự can đảm mỗi ngày. Các cấp cao hơn bao gồm công cụ phản ánh cá nhân hóa và hành trình âm thanh hướng dẫn. Khám phá thêm ở cấp độ cao hơn."
   },
   "tier": "vip2",
-  "domain": "General"
+  "domain": "General",
+  "domain_image": "/images/domains/general.svg"
 }

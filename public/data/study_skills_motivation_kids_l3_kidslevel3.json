@@ -122,5 +122,6 @@
       "audio": "study_skills_motivation_v1_stay_positive.mp3"
     }
   ],
-  "domain": "Kids"
+  "domain": "Kids",
+  "domain_image": "/images/domains/kids.svg"
 }

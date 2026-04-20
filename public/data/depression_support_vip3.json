@@ -55,5 +55,6 @@
     "vi": "Các chiến lược chuyên sâu giúp bạn kiểm soát trầm cảm bằng những công cụ toàn diện và thực tế"
   },
   "tier": "vip3",
-  "domain": "Mental Health"
+  "domain": "Mental Health",
+  "domain_image": "/images/domains/mental_health.svg"
 }

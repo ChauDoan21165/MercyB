@@ -74,5 +74,6 @@
       "audio": "paf_free_1_en.mp3 paf_free_2_en.mp3"
     }
   ],
-  "domain": "General"
+  "domain": "General",
+  "domain_image": "/images/domains/general.svg"
 }

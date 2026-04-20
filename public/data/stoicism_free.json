@@ -90,5 +90,6 @@
       "audio": "firm_purpose_free.mp3 emotional_control_free.mp3"
     }
   ],
-  "domain": "General"
+  "domain": "General",
+  "domain_image": "/images/domains/general.svg"
 }

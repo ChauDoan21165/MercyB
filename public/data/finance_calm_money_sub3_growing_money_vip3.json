@@ -62,5 +62,6 @@
     "vi": "Đầu tư không có hoảng loạn. Cách tiếp cận đơn giản, bình tĩnh để xây dựng tài sản."
   },
   "tier": "vip3",
-  "domain": "General"
+  "domain": "General",
+  "domain_image": "/images/domains/general.svg"
 }

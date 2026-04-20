@@ -13,91 +13,188 @@
   "entries": [
     {
       "slug": "define-long-term-projects",
-      "keywords_en": ["long-term", "projects", "definition"],
-      "keywords_vi": ["dài hạn", "dự án", "định nghĩa"],
+      "keywords_en": [
+        "long-term",
+        "projects",
+        "definition"
+      ],
+      "keywords_vi": [
+        "dài hạn",
+        "dự án",
+        "định nghĩa"
+      ],
       "copy": {
         "en": "A long-term project is anything too large to finish in one sitting. It requires phases, patience, and multiple cycles of effort. Examples: learning a skill, building a business, writing a book, transforming health. Recognizing a long-term project prevents unrealistic expectations and sets up sustainable strategy.",
         "vi": "Dự án dài hạn là mọi thứ quá lớn để hoàn tất trong một lần ngồi. Nó cần giai đoạn, sự kiên nhẫn và nhiều chu kỳ nỗ lực. Ví dụ: học kỹ năng, xây doanh nghiệp, viết sách, cải thiện sức khỏe. Nhận diện dự án dài hạn giúp tránh kỳ vọng phi thực tế và tạo nền chiến lược bền."
       },
-      "tags": ["definition", "clarity", "scale"],
+      "tags": [
+        "definition",
+        "clarity",
+        "scale"
+      ],
       "audio": "vip2_productivity_61.mp3"
     },
     {
       "slug": "milestones-and-subprojects",
-      "keywords_en": ["milestones", "structure", "subprojects"],
-      "keywords_vi": ["mốc", "cấu trúc", "tiểu dự án"],
+      "keywords_en": [
+        "milestones",
+        "structure",
+        "subprojects"
+      ],
+      "keywords_vi": [
+        "mốc",
+        "cấu trúc",
+        "tiểu dự án"
+      ],
       "copy": {
         "en": "Break large goals into milestones—clear markers showing progress. Then break milestones into subprojects small enough to plan weekly. This structure prevents overwhelm. When each piece becomes manageable, big goals feel less threatening and more achievable.",
         "vi": "Hãy chia mục tiêu lớn thành các mốc—điểm đánh dấu tiến độ. Rồi chia các mốc thành tiểu dự án đủ nhỏ để lập kế hoạch theo tuần. Cấu trúc này ngăn quá tải. Khi từng phần trở nên dễ quản lý, mục tiêu lớn bớt đáng sợ và dễ đạt hơn."
       },
-      "tags": ["planning", "structure", "ease"],
+      "tags": [
+        "planning",
+        "structure",
+        "ease"
+      ],
       "audio": "vip2_productivity_62.mp3"
     },
     {
       "slug": "weekly-blocks",
-      "keywords_en": ["weekly blocks", "execution", "planning"],
-      "keywords_vi": ["khối tuần", "thực thi", "lập kế hoạch"],
+      "keywords_en": [
+        "weekly blocks",
+        "execution",
+        "planning"
+      ],
+      "keywords_vi": [
+        "khối tuần",
+        "thực thi",
+        "lập kế hoạch"
+      ],
       "copy": {
         "en": "Translate milestones into simple weekly blocks. Assign one or two meaningful moves per week instead of unrealistic schedules. Weekly blocks create sustainable traction. Over months, the small movements compound into major progress.",
         "vi": "Hãy chuyển các mốc thành các khối tuần đơn giản. Giao một hai bước quan trọng mỗi tuần thay vì lịch trình phi thực tế. Khối tuần tạo lực kéo bền vững. Qua nhiều tháng, những bước nhỏ tích lũy thành tiến bộ lớn."
       },
-      "tags": ["weekly", "consistency", "momentum"],
+      "tags": [
+        "weekly",
+        "consistency",
+        "momentum"
+      ],
       "audio": "vip2_productivity_63.mp3"
     },
     {
       "slug": "project-scoreboards",
-      "keywords_en": ["scoreboard", "tracking", "visibility"],
-      "keywords_vi": ["bảng điểm", "theo dõi", "hình dung"],
+      "keywords_en": [
+        "scoreboard",
+        "tracking",
+        "visibility"
+      ],
+      "keywords_vi": [
+        "bảng điểm",
+        "theo dõi",
+        "hình dung"
+      ],
       "copy": {
         "en": "A scoreboard shows progress at a glance—percent complete, milestones reached, or streaks maintained. When progress becomes visible, motivation increases. A scoreboard keeps your long-term project alive in your awareness, preventing it from fading into the background.",
         "vi": "Bảng điểm cho bạn thấy tiến độ ngay lập tức—phần trăm hoàn tất, mốc đã đạt, chuỗi thói quen được giữ. Khi tiến độ nhìn thấy được, động lực tăng lên. Bảng điểm giữ dự án dài hạn luôn hiện diện trong nhận thức của bạn, tránh để nó biến mất vào nền."
       },
-      "tags": ["tracking", "visibility", "motivation"],
+      "tags": [
+        "tracking",
+        "visibility",
+        "motivation"
+      ],
       "audio": "vip2_productivity_64.mp3"
     },
     {
       "slug": "time-boxed-seasons",
-      "keywords_en": ["time-boxing", "seasons", "focus"],
-      "keywords_vi": ["đóng khung thời gian", "mùa", "tập trung"],
+      "keywords_en": [
+        "time-boxing",
+        "seasons",
+        "focus"
+      ],
+      "keywords_vi": [
+        "đóng khung thời gian",
+        "mùa",
+        "tập trung"
+      ],
       "copy": {
         "en": "Use time-boxed seasons—4 to 12 weeks—to focus deeply on one major project. Limiting the timeframe increases intensity without requiring constant pressure. Seasons create natural cycles of effort and rest, preventing burnout while maintaining consistent progress.",
         "vi": "Hãy dùng các mùa thời gian đóng khung—4 đến 12 tuần—để tập trung sâu vào một dự án lớn. Việc giới hạn khung thời gian tăng cường độ mà không cần áp lực liên tục. Mùa tạo chu kỳ tự nhiên giữa nỗ lực và nghỉ, tránh kiệt sức nhưng vẫn duy trì tiến độ ổn định."
       },
-      "tags": ["focus", "cycles", "effort"],
+      "tags": [
+        "focus",
+        "cycles",
+        "effort"
+      ],
       "audio": "vip2_productivity_65.mp3"
     },
     {
       "slug": "emotional-drift",
-      "keywords_en": ["emotional drift", "motivation", "resistance"],
-      "keywords_vi": ["trôi cảm xúc", "động lực", "kháng cự"],
+      "keywords_en": [
+        "emotional drift",
+        "motivation",
+        "resistance"
+      ],
+      "keywords_vi": [
+        "trôi cảm xúc",
+        "động lực",
+        "kháng cự"
+      ],
       "copy": {
         "en": "Long-term projects often stall because motivation fades. This emotional drift is normal. Counter it with purpose reminders, visual cues, reflection notes, and small actions that maintain connection. You do not need constant motivation—only consistent re-alignment.",
         "vi": "Dự án dài hạn thường chững lại vì động lực giảm. Trôi cảm xúc là chuyện bình thường. Hãy chống lại nó bằng lời nhắc mục đích, tín hiệu trực quan, ghi chú phản tư và các hành động nhỏ giữ sự kết nối. Bạn không cần động lực liên tục—chỉ cần tái căn chỉnh đều đặn."
       },
-      "tags": ["motivation", "purpose", "alignment"],
+      "tags": [
+        "motivation",
+        "purpose",
+        "alignment"
+      ],
       "audio": "vip2_productivity_66.mp3"
     },
     {
       "slug": "quarterly-reset",
-      "keywords_en": ["quarterly reset", "review", "strategy"],
-      "keywords_vi": ["reset quý", "xem lại", "chiến lược"],
+      "keywords_en": [
+        "quarterly reset",
+        "review",
+        "strategy"
+      ],
+      "keywords_vi": [
+        "reset quý",
+        "xem lại",
+        "chiến lược"
+      ],
       "copy": {
         "en": "Every 90 days, step back and review your direction. Which projects still matter? Which need redesign? Which should be paused or ended? Quarterly resets prevent wasted effort and keep your long-term projects aligned with your evolving life.",
         "vi": "Mỗi 90 ngày, hãy lùi lại và xem lại hướng đi. Dự án nào vẫn quan trọng? Dự án nào cần chỉnh? Dự án nào nên tạm dừng hoặc kết thúc? Reset theo quý ngăn lãng phí nỗ lực và giữ các dự án dài hạn đồng bộ với đời sống đang thay đổi của bạn."
       },
-      "tags": ["review", "alignment", "strategy"],
+      "tags": [
+        "review",
+        "alignment",
+        "strategy"
+      ],
       "audio": "vip2_productivity_67.mp3"
     },
     {
       "slug": "lifetime-systems",
-      "keywords_en": ["lifetime systems", "habits", "durability"],
-      "keywords_vi": ["hệ thống trọn đời", "thói quen", "bền vững"],
+      "keywords_en": [
+        "lifetime systems",
+        "habits",
+        "durability"
+      ],
+      "keywords_vi": [
+        "hệ thống trọn đời",
+        "thói quen",
+        "bền vững"
+      ],
       "copy": {
         "en": "Lifetime systems are structures you keep for decades: morning rhythms, tracking templates, learning rituals, health foundations. These compound quietly over years. When your life is supported by durable systems, growth becomes a natural outcome instead of a forced effort.",
         "vi": "Hệ thống trọn đời là những cấu trúc bạn giữ hàng chục năm: nhịp buổi sáng, mẫu theo dõi, nghi thức học tập, nền tảng sức khỏe. Chúng tích lũy âm thầm qua năm tháng. Khi cuộc sống được nâng đỡ bởi các hệ thống bền, sự phát triển trở thành kết quả tự nhiên thay vì nỗ lực gồng ép."
       },
-      "tags": ["durability", "habits", "foundation"],
+      "tags": [
+        "durability",
+        "habits",
+        "foundation"
+      ],
       "audio": "vip2_productivity_68.mp3"
     }
-  ]
+  ],
+  "domain_image": "/images/domains/productivity.svg"
 }

@@ -81,5 +81,6 @@
     "vi": "Chiến lược chuyên gia để làm chủ giảm cân và thể dục với khoa học"
   },
   "tier": "vip3",
-  "domain": "Health"
+  "domain": "Health",
+  "domain_image": "/images/domains/health.svg"
 }

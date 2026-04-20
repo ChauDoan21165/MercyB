@@ -641,5 +641,6 @@
   "title": {
     "en": "matchmaker_traits",
     "vi": "matchmaker_traits"
-  }
+  },
+  "domain_image": "/images/domains/general.svg"
 }

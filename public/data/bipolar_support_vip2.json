@@ -138,5 +138,6 @@
     "vi": ""
   },
   "tier": "vip2",
-  "domain": "Mental Health"
+  "domain": "Mental Health",
+  "domain_image": "/images/domains/mental_health.svg"
 }

@@ -54,5 +54,6 @@
       ]
     }
   ],
-  "domain": "Health"
+  "domain": "Health",
+  "domain_image": "/images/domains/health.svg"
 }

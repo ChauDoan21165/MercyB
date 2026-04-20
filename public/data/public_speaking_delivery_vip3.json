@@ -195,5 +195,6 @@
       "audio": "vip3_speaking_38.mp3"
     }
   ],
-  "domain": "General"
+  "domain": "General",
+  "domain_image": "/images/domains/general.svg"
 }

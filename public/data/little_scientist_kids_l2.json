@@ -90,5 +90,6 @@
       "audio": ""
     }
   ],
-  "domain": "Kids"
+  "domain": "Kids",
+  "domain_image": "/images/domains/kids.svg"
 }

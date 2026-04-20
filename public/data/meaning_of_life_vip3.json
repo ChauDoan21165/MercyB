@@ -143,5 +143,6 @@
       "audio": "meaning_vip3_1_en.mp3 meaning_vip3_2_en.mp3 meaning_vip3_3_en.mp3 meaning_vip3_4_en.mp3 meaning_vip3_5_en.mp3"
     }
   ],
-  "domain": "General"
+  "domain": "General",
+  "domain_image": "/images/domains/general.svg"
 }

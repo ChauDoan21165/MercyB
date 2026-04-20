@@ -111,5 +111,6 @@
     "vi": "Truyền cảm hứng để sinh viên vượt qua sợ hãi, do dự và so sánh, và bước những bước đầu tiên thực sự hướng tới sự phát triển."
   },
   "tier": "vip4",
-  "domain": "General"
+  "domain": "General",
+  "domain_image": "/images/domains/general.svg"
 }

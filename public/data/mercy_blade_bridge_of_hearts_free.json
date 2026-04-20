@@ -34,5 +34,6 @@
       ]
     }
   ],
-  "domain": "General"
+  "domain": "General",
+  "domain_image": "/images/domains/general.svg"
 }

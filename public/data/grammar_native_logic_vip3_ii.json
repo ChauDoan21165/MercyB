@@ -209,5 +209,6 @@
       "audio": "vip3ii_grammar_macro.mp3"
     }
   ],
-  "domain": "English"
+  "domain": "English",
+  "domain_image": "/images/domains/english.svg"
 }

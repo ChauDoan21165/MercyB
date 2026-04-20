@@ -149,5 +149,6 @@
     "vi": "Các chiến lược nâng cao, dựa trên bằng chứng để quản lý béo phì lâu dài thông qua tối ưu hóa chuyển hóa, làm chủ hành vi và các hệ thống lối sống bền vững."
   },
   "tier": "vip3",
-  "domain": "Health"
+  "domain": "Health",
+  "domain_image": "/images/domains/health.svg"
 }

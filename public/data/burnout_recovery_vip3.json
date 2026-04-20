@@ -56,5 +56,6 @@
     "vi": "Chiến lược chuyên sâu, dựa trên khoa học để giúp bạn phục hồi kiệt sức một cách hệ thống và bền vững."
   },
   "tier": "vip3",
-  "domain": "General"
+  "domain": "General",
+  "domain_image": "/images/domains/general.svg"
 }

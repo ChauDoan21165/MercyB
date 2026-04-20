@@ -336,5 +336,6 @@
       "essay_ref": "strategic-leadership_vip3_essay.txt"
     }
   ],
-  "domain": "General"
+  "domain": "General",
+  "domain_image": "/images/domains/general.svg"
 }

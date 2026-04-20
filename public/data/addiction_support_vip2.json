@@ -127,5 +127,6 @@
       "audio": "addiction_support_vip1_all.mp3"
     }
   ],
-  "domain": "Mental Health"
+  "domain": "Mental Health",
+  "domain_image": "/images/domains/mental_health.svg"
 }

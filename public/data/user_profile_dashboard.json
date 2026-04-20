@@ -235,5 +235,6 @@
   "title": {
     "en": "user_profile_dashboard",
     "vi": "Phòng Mercy Blade về quản lý hồ sơ người dùng và bảng điều khiển học tập"
-  }
+  },
+  "domain_image": "/images/domains/general.svg"
 }

@@ -167,5 +167,6 @@
       "audio": "ef11_06_en.mp3"
     }
   ],
-  "domain": "English"
+  "domain": "English",
+  "domain_image": "/images/domains/english.svg"
 }

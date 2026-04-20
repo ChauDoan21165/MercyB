@@ -85,5 +85,6 @@
       "audio": "stress-vip1-entry-3-en.mp3"
     }
   ],
-  "domain": "Mental Health"
+  "domain": "Mental Health",
+  "domain_image": "/images/domains/mental_health.svg"
 }

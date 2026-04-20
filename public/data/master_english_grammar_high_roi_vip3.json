@@ -211,5 +211,6 @@
       "audio": "vip3_grammar_hedging.mp3"
     }
   ],
-  "domain": "English"
+  "domain": "English",
+  "domain_image": "/images/domains/english.svg"
 }

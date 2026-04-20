@@ -142,5 +142,6 @@
       "audio": "clothes_dressing_v1_shirt.mp3 clothes_dressing_v1_pants.mp3 clothes_dressing_v1_shoes_socks.mp3 clothes_dressing_v1_hat.mp3 clothes_dressing_v1_sorting_game.mp3"
     }
   ],
-  "domain": "Kids"
+  "domain": "Kids",
+  "domain_image": "/images/domains/kids.svg"
 }

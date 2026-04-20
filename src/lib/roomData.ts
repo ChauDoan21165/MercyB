@@ -104,10 +104,45 @@ export async function getAllRooms(): Promise<RoomInfo[]> {
     const nameEn = getEnglishName(roomId, roomData);
     const nameVi = getVietnameseName(roomId, roomData);
 
+    const domain = String(roomData?.domain || '').toLowerCase().trim();
+    const domainImageMap: Record<string, string> = {
+      'general': '/images/domains/general.svg',
+      'kids': '/images/domains/kids.svg',
+      'strategy': '/images/domains/strategy.svg',
+      'mental health': '/images/domains/mental_health.svg',
+      'english': '/images/domains/english.svg',
+      'english a1': '/images/domains/english.svg',
+      'english a2': '/images/domains/english.svg',
+      'english b1': '/images/domains/english.svg',
+      'english c1': '/images/domains/english.svg',
+      'english c2': '/images/domains/english.svg',
+      'corporate': '/images/domains/corporate.svg',
+      'survival': '/images/domains/survival.svg',
+      'health': '/images/domains/health.svg',
+      'national': '/images/domains/national.svg',
+      'productivity': '/images/domains/productivity.svg',
+      'individual': '/images/domains/individual.svg',
+      'power': '/images/domains/power.svg',
+      'influence': '/images/domains/influence.svg',
+      'ai & technology': '/images/domains/ai_and_technology.svg',
+      'interpersonal': '/images/domains/interpersonal.svg',
+      'lifeskills': '/images/domains/lifeskills.svg',
+      'spirituality': '/images/domains/spirituality.svg',
+      'self-mastery': '/images/domains/self_mastery.svg',
+      'critical thinking': '/images/domains/critical_thinking.svg',
+      'public speaking': '/images/domains/public_speaking.svg',
+      'decision making': '/images/domains/decision_making.svg',
+      'debate': '/images/domains/debate.svg',
+      'relationships': '/images/domains/relationships.svg',
+      'perception': '/images/domains/perception.svg',
+    };
+    const domainImage = domainImageMap[domain];
+
     return {
       id: roomId,
       nameEn,
       nameVi,
+      domainImage,
       tier,
       hasData: !!(
         roomData?.hasData ||

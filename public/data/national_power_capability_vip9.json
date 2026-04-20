@@ -191,5 +191,6 @@
       "audio": "npc_v1_8_en.mp3",
       "tags": []
     }
-  ]
+  ],
+  "domain_image": "/images/domains/strategy.svg"
 }

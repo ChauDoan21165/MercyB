@@ -62,5 +62,6 @@
     "vi": "Một khởi đầu nhẹ nhàng. Giảm căng thẳng về tiền, xây dựng thói quen bình tĩnh, và bắt đầu không xấu hổ."
   },
   "tier": "vip3",
-  "domain": "General"
+  "domain": "General",
+  "domain_image": "/images/domains/general.svg"
 }

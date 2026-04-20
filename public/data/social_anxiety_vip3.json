@@ -78,5 +78,6 @@
     "vi": "Chiến lược chuyên sâu giúp bạn làm chủ lo âu xã hội thông qua trị liệu, phơi nhiễm có kiểm soát và các kỹ thuật CBT."
   },
   "tier": "vip3",
-  "domain": "Mental Health"
+  "domain": "Mental Health",
+  "domain_image": "/images/domains/mental_health.svg"
 }

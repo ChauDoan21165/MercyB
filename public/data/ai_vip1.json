@@ -120,5 +120,6 @@
       "audio": "curiosity_of_intelligence_vip1.mp3 art_and_science_of_ai_vip1.mp3 future_of_human_connection_vip1.mp3"
     }
   ],
-  "domain": "General"
+  "domain": "General",
+  "domain_image": "/images/domains/general.svg"
 }

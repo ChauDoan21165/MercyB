@@ -44,6 +44,66 @@ function pickTitle(r: RoomMetaLike) {
   return r?.title_en || r?.title_vi || r?.id;
 }
 
+const DOMAIN_IMAGE_MAP: Record<string, string> = {
+  'general': '/images/domains/general.svg',
+  'kids': '/images/domains/kids.svg',
+  'strategy': '/images/domains/strategy.svg',
+  'mental health': '/images/domains/mental_health.svg',
+  'english': '/images/domains/english.svg',
+  'english a1': '/images/domains/english.svg',
+  'english a2': '/images/domains/english.svg',
+  'english b1': '/images/domains/english.svg',
+  'english c1': '/images/domains/english.svg',
+  'english c2': '/images/domains/english.svg',
+  'corporate': '/images/domains/corporate.svg',
+  'survival': '/images/domains/survival.svg',
+  'health': '/images/domains/health.svg',
+  'national': '/images/domains/national.svg',
+  'productivity': '/images/domains/productivity.svg',
+  'individual': '/images/domains/individual.svg',
+  'power': '/images/domains/power.svg',
+  'influence': '/images/domains/influence.svg',
+  'ai & technology': '/images/domains/ai_and_technology.svg',
+  'interpersonal': '/images/domains/interpersonal.svg',
+  'lifeskills': '/images/domains/lifeskills.svg',
+  'spirituality': '/images/domains/spirituality.svg',
+  'self-mastery': '/images/domains/self_mastery.svg',
+  'critical thinking': '/images/domains/critical_thinking.svg',
+  'public speaking': '/images/domains/public_speaking.svg',
+  'decision making': '/images/domains/decision_making.svg',
+  'debate': '/images/domains/debate.svg',
+  'relationships': '/images/domains/relationships.svg',
+  'perception': '/images/domains/perception.svg',
+};
+
+function getDomainImage(domain?: string | null, id?: string): string | undefined {
+  if (domain) {
+    const img = DOMAIN_IMAGE_MAP[domain.toLowerCase().trim()];
+    if (img) return img;
+  }
+  // Fallback: derive from room ID
+  if (id) {
+    const lid = id.toLowerCase();
+    if (lid.includes('kids') || lid.includes('_l1') || lid.includes('_l2') || lid.includes('_l3')) return DOMAIN_IMAGE_MAP['kids'];
+    if (lid.includes('strategy') || lid.includes('vip9') || lid.includes('sun_tzu') || lid.includes('machiavelli')) return DOMAIN_IMAGE_MAP['strategy'];
+    if (lid.includes('mental') || lid.includes('anxiety') || lid.includes('depression') || lid.includes('adhd') || lid.includes('addiction')) return DOMAIN_IMAGE_MAP['mental health'];
+    if (lid.includes('english') || lid.includes('_a1') || lid.includes('_a2') || lid.includes('_b1') || lid.includes('_b2') || lid.includes('_c1') || lid.includes('_c2')) return DOMAIN_IMAGE_MAP['english'];
+    if (lid.includes('corporate') || lid.includes('business') || lid.includes('management')) return DOMAIN_IMAGE_MAP['corporate'];
+    if (lid.includes('survival') || lid.includes('crisis')) return DOMAIN_IMAGE_MAP['survival'];
+    if (lid.includes('health') || lid.includes('fitness') || lid.includes('nutrition')) return DOMAIN_IMAGE_MAP['health'];
+    if (lid.includes('nation') || lid.includes('politic') || lid.includes('history')) return DOMAIN_IMAGE_MAP['national'];
+    if (lid.includes('productiv') || lid.includes('habit') || lid.includes('time_manage')) return DOMAIN_IMAGE_MAP['productivity'];
+    if (lid.includes('power') || lid.includes('dominan')) return DOMAIN_IMAGE_MAP['power'];
+    if (lid.includes('influenc') || lid.includes('persuasion')) return DOMAIN_IMAGE_MAP['influence'];
+    if (lid.includes('ai') || lid.includes('tech') || lid.includes('digital')) return DOMAIN_IMAGE_MAP['ai & technology'];
+    if (lid.includes('speak') || lid.includes('speech') || lid.includes('present')) return DOMAIN_IMAGE_MAP['public speaking'];
+    if (lid.includes('debate')) return DOMAIN_IMAGE_MAP['debate'];
+    if (lid.includes('relation') || lid.includes('love') || lid.includes('marriage')) return DOMAIN_IMAGE_MAP['relationships'];
+    if (lid.includes('spirit') || lid.includes('mindful') || lid.includes('meditation')) return DOMAIN_IMAGE_MAP['spirituality'];
+  }
+  return DOMAIN_IMAGE_MAP['general'];
+}
+
 function parseAreaParam(v: string | null): RoomArea | null {
   const s = String(v || "").toLowerCase().trim();
   if (s === "core" || s === "kids" || s === "english" || s === "life") return s;
@@ -474,6 +534,7 @@ export default function TierDetail() {
               }}
               aria-label={`Open room ${r.id}`}
             >
+              <img src={getDomainImage((r as any).domain, r.id)} alt="" aria-hidden="true" style={{ width: '100%', height: 64, borderRadius: 8, marginBottom: 6, opacity: 0.95, objectFit: 'cover' }} loading="lazy" />
               <p style={cardTitle}>{pickTitle({ id: r.id, title_en: r.title_en, title_vi: r.title_vi })}</p>
 
               <div style={codeRow}>

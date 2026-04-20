@@ -21,6 +21,7 @@ interface RoomData {
   tier: string;
   hasData: boolean;
   color?: string;
+  domainImage?: string;
 }
 
 interface VirtualizedRoomGridProps {
@@ -199,6 +200,15 @@ export const VirtualizedRoomGrid = ({
                             </div>
 
                             <div className="space-y-2 relative z-[1]">
+                              {room.domainImage && (
+                                <img
+                                  src={room.domainImage}
+                                  alt=""
+                                  aria-hidden="true"
+                                  className="w-8 h-8 rounded-md mb-1 opacity-90"
+                                  loading="lazy"
+                                />
+                              )}
                               <div className="space-y-1">
                                 <p
                                   className={`${

@@ -62,5 +62,6 @@
     "vi": "Tiền của bạn thực sự dành cho điều gì. Xây dựng tuyên ngôn và tác động lâu dài."
   },
   "tier": "vip3",
-  "domain": "General"
+  "domain": "General",
+  "domain_image": "/images/domains/general.svg"
 }

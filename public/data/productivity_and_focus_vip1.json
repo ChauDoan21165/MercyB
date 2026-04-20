@@ -125,5 +125,6 @@
       "audio": "paf_vip1_1_en.mp3 paf_vip1_2_en.mp3 paf_vip1_3_en.mp3 paf_vip1_4_en.mp3"
     }
   ],
-  "domain": "General"
+  "domain": "General",
+  "domain_image": "/images/domains/general.svg"
 }

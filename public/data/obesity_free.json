@@ -83,5 +83,6 @@
       "audio": "practicing_mindful_eating_free.mp3"
     }
   ],
-  "domain": "Health"
+  "domain": "Health",
+  "domain_image": "/images/domains/health.svg"
 }

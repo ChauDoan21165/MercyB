@@ -139,5 +139,6 @@
       "audio": "dep_vip1_1_en.mp3 dep_vip1_2_en.mp3 dep_vip1_3_en.mp3 dep_vip1_4_en.mp3"
     }
   ],
-  "domain": "Mental Health"
+  "domain": "Mental Health",
+  "domain_image": "/images/domains/mental_health.svg"
 }

@@ -218,5 +218,6 @@
       "audio": "vip2_productivity_49.mp3"
     }
   ],
-  "domain": "General"
+  "domain": "General",
+  "domain_image": "/images/domains/general.svg"
 }
