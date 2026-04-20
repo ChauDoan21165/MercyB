@@ -551,7 +551,7 @@ async function tryLoadFromDb(): Promise<{ rooms: TierRoom[]; debug: string } | n
 
         return {
           id,
-          title_en: r.title_en ?? undefined,
+          title_en: r.title_en || (r as any).title || undefined,
           title_vi: r.title_vi ?? undefined,
           domain: r.domain ?? undefined,
           track: r.track ?? undefined,
