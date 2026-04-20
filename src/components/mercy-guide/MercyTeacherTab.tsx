@@ -1281,8 +1281,8 @@ export function MercyTeacherTab({
 
   return (
     <div className="m-0 flex-1 overflow-hidden">
-      <ScrollArea className="h-full bg-gradient-to-br from-[#FFF7F0] via-[#F8FAFF] to-[#F0F4FF]">
-        <div className="relative p-4 md:p-5">
+      <ScrollArea className="h-full bg-gradient-to-br from-[#FFFAF7] via-[#FDFCFF] to-[#F8FAFF]">
+        <div className="relative p-3 md:p-4">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-[radial-gradient(circle_at_top,_rgba(255,138,101,0.08),_rgba(192,132,252,0.04)_45%,_transparent_75%)]" />
           <div className="relative space-y-4">
             <section className="overflow-hidden rounded-3xl border border-white/80 bg-white/90 p-5 shadow-[0_12px_32px_rgba(255,138,101,0.08)] backdrop-blur-sm">
