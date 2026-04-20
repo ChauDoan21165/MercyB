@@ -382,12 +382,16 @@ export default function BottomMusicBar() {
           onChange={(e) => setTrackId(e.target.value)}
           style={{
             border: "none",
-            background: "rgba(0,0,0,0.05)",
+            background: "transparent",
             borderRadius: "4px",
-            fontSize: "10px",
-            fontWeight: "800",
+            fontSize: "9px",
+            fontWeight: "500",
             padding: "2px 4px",
-            maxWidth: "80px",
+            maxWidth: "110px",
+            minWidth: "60px",
+            flex: "0 0 auto",
+            color: "#333",
+            letterSpacing: "0.01em",
           }}
         >
           {visibleTracks.map((t) => (
@@ -447,7 +451,7 @@ export default function BottomMusicBar() {
               localStorage.setItem(LS_VOL, String(v));
             }}
             className="mb-slider-pro"
-            style={{ width: "60px" }}
+            style={{ width: "44px" }}
           />
         </div>
 
@@ -462,7 +466,7 @@ export default function BottomMusicBar() {
             value={zoomPct}
             onChange={(e) => setZoomPct(Number(e.target.value))}
             className="mb-slider-pro"
-            style={{ width: "60px" }}
+            style={{ width: "44px" }}
           />
           <span style={{ fontSize: "10px", fontWeight: "900", color: "#555", width: "28px" }}>
             {zoomPct}%
