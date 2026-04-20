@@ -34,7 +34,7 @@
         "input",
         "listening"
       ],
-      "audio": "/audio/eng_01.mp3"
+      "audio": "eng_08.mp3"
     },
     {
       "slug": "shadowing-method",
@@ -59,7 +59,7 @@
         "pronunciation",
         "speaking"
       ],
-      "audio": "/audio/eng_02.mp3"
+      "audio": "eng_09.mp3"
     },
     {
       "slug": "chunking-collocations",
@@ -84,7 +84,7 @@
         "vocabulary",
         "chunks"
       ],
-      "audio": "/audio/eng_03.mp3"
+      "audio": "eng_08.mp3"
     },
     {
       "slug": "retrieval-writing-loop",
@@ -109,7 +109,7 @@
         "retrieval",
         "output"
       ],
-      "audio": "/audio/eng_04.mp3"
+      "audio": "eng_09.mp3"
     },
     {
       "slug": "spaced-repetition-vocabulary",
@@ -134,7 +134,7 @@
         "memory",
         "SRS"
       ],
-      "audio": "/audio/eng_05.mp3"
+      "audio": "eng_08.mp3"
     },
     {
       "slug": "ai-feedback-loop",
@@ -159,7 +159,7 @@
         "feedback",
         "practice"
       ],
-      "audio": "/audio/eng_06.mp3"
+      "audio": "eng_09.mp3"
     },
     {
       "slug": "daily-immersion-routine",
@@ -184,7 +184,7 @@
         "habits",
         "immersion"
       ],
-      "audio": "/audio/eng_07.mp3"
+      "audio": "eng_08.mp3"
     },
     {
       "slug": "output-accountability",
@@ -209,7 +209,7 @@
         "exchange",
         "accountability"
       ],
-      "audio": "/audio/eng_08.mp3"
+      "audio": "eng_08.mp3"
     },
     {
       "slug": "reading-graded-extensive",
@@ -234,7 +234,7 @@
         "extensive",
         "graded"
       ],
-      "audio": "/audio/eng_09.mp3"
+      "audio": "eng_09.mp3"
     },
     {
       "slug": "progress-mastery-loop",
@@ -259,7 +259,7 @@
         "assessment",
         "CEFR"
       ],
-      "audio": "/audio/eng_10.mp3"
+      "audio": "eng_09.mp3"
     }
   ],
   "domain": "English",

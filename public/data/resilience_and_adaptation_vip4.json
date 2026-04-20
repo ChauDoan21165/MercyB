@@ -40,7 +40,7 @@
         "growth",
         "resilience"
       ],
-      "audio": "rooms/resil_v4_01_en.mp3"
+      "audio": "resil_v4_01_en.mp3"
     },
     {
       "slug": "burnout-as-beckoning",
@@ -65,7 +65,7 @@
         "rest",
         "boundaries"
       ],
-      "audio": "rooms/resil_v4_02_en.mp3"
+      "audio": "resil_v4_02_en.mp3"
     },
     {
       "slug": "path-change-as-poetry",
@@ -90,7 +90,7 @@
         "evolution",
         "courage"
       ],
-      "audio": "rooms/resil_v4_03_en.mp3"
+      "audio": "resil_v4_03_en.mp3"
     },
     {
       "slug": "healing-as-homecoming",
@@ -115,7 +115,7 @@
         "self-compassion",
         "renewal"
       ],
-      "audio": "rooms/resil_v4_04_en.mp3"
+      "audio": "resil_v4_04_en.mp3"
     }
   ],
   "id": "resilience_and_adaptation_vip4",

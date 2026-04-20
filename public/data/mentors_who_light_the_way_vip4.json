@@ -45,7 +45,7 @@
         "beginning",
         "action"
       ],
-      "audio": "rooms/begin_vip4_long_01_en.mp3"
+      "audio": "begin_vip4_long_01_en.mp3"
     },
     {
       "slug": "inner-compass",
@@ -70,7 +70,7 @@
         "guidance",
         "alignment"
       ],
-      "audio": "rooms/compass_vip4_long_01_en.mp3"
+      "audio": "compass_vip4_long_01_en.mp3"
     },
     {
       "slug": "people-who-inspire",
@@ -95,7 +95,7 @@
         "role-models",
         "possibility"
       ],
-      "audio": "rooms/inspire_vip4_long_01_en.mp3"
+      "audio": "inspire_vip4_long_01_en.mp3"
     },
     {
       "slug": "start-small",
@@ -120,7 +120,7 @@
         "consistency",
         "growth"
       ],
-      "audio": "rooms/start_vip4_long_01_en.mp3"
+      "audio": "start_vip4_long_01_en.mp3"
     },
     {
       "slug": "work-that-heals-helps",
@@ -145,7 +145,7 @@
         "healing",
         "purpose"
       ],
-      "audio": "rooms/heal_vip4_long_01_en.mp3"
+      "audio": "heal_vip4_long_01_en.mp3"
     },
     {
       "slug": "grow-through-change",
@@ -170,7 +170,7 @@
         "resilience",
         "adaptation"
       ],
-      "audio": "rooms/change_vip4_long_01_en.mp3"
+      "audio": "change_vip4_long_01_en.mp3"
     },
     {
       "slug": "meaning-and-legacy",
@@ -195,7 +195,7 @@
         "meaning",
         "contribution"
       ],
-      "audio": "rooms/legacy_vip4_long_01_en.mp3"
+      "audio": "legacy_vip4_long_01_en.mp3"
     }
   ],
   "id": "mentors_who_light_the_way_vip4",

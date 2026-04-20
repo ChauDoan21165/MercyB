@@ -40,7 +40,7 @@
         "power",
         "perception"
       ],
-      "audio_en": "machiavelli_big_1_en.mp3"
+      "audio_en": "machiavelli_v1_1_en.mp3"
     },
     {
       "slug": "virtue-fortune-and-strategic-agency",
@@ -71,7 +71,7 @@
         "virtue",
         "fortune"
       ],
-      "audio_en": "machiavelli_big_2_en.mp3"
+      "audio_en": "machiavelli_v1_2_en.mp3"
     },
     {
       "slug": "institutions-stability-and-civil-order",
@@ -102,7 +102,7 @@
         "institutions",
         "order"
       ],
-      "audio_en": "machiavelli_big_3_en.mp3"
+      "audio_en": "machiavelli_v1_3_en.mp3"
     },
     {
       "slug": "the-engineering-of-legitimacy",
@@ -133,7 +133,7 @@
         "legitimacy",
         "authority"
       ],
-      "audio_en": "machiavelli_big_4_en.mp3"
+      "audio_en": "mach3_1_en.mp3"
     },
     {
       "slug": "managing-elites-factions-and-internal-power",
@@ -164,7 +164,7 @@
         "elites",
         "factions"
       ],
-      "audio_en": "machiavelli_big_5_en.mp3"
+      "audio_en": "mach3_2_en.mp3"
     },
     {
       "slug": "war-preparedness-and-the-art-of-anticipation",
@@ -195,7 +195,7 @@
         "war",
         "anticipation"
       ],
-      "audio_en": "machiavelli_big_6_en.mp3"
+      "audio_en": "mach3_3_en.mp3"
     },
     {
       "slug": "building-legitimacy-through-strength-and-competence",
@@ -226,7 +226,7 @@
         "legitimacy",
         "strength"
       ],
-      "audio_en": "machiavelli_big_7_en.mp3"
+      "audio_en": "mach4_1_en.mp3"
     },
     {
       "slug": "fortune-virtue-and-the-strategic-mastery-of-chaos",
@@ -257,7 +257,7 @@
         "fortune",
         "virtue"
       ],
-      "audio_en": "machiavelli_big_8_en.mp3"
+      "audio_en": "mach4_2_en.mp3"
     }
   ],
   "domain_image": "/images/domains/strategy.svg"
