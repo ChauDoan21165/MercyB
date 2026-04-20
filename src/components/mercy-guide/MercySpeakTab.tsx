@@ -622,23 +622,19 @@ export function MercySpeakTab({
   const kidsAudioSrc = useMemo(() => {
     if (!isKidsMode) return null;
     const key = selectedKidsObjectKey ?? '';
-    if (!key || !/^k\d+_/.test(key)) return null;
+    if (!key) return null;
     const folder = voiceGender === 'josh' ? '/audio/kids/josh' : '/audio/kids';
+    // Page 3: audio lives in image folder
+    if (/^k0\d+_/.test(key)) return `/images/mercy-kids-page-3/${key}.mp3`;
+    // Pages 4-34: standard format
+    if (/^k\d+_/.test(key)) return `${folder}/${key}.mp3`;
+    // Page 2: p2_ prefix
+    if (/^p2_/.test(key)) return `${folder}/${key}.mp3`;
+    // Page 1: simple words like apple, ball
     return `${folder}/${key}.mp3`;
   }, [isKidsMode, selectedKidsObjectKey, voiceGender]);
 
-  const kidsAudioPlaylist = useMemo(() => {
-    if (!isKidsMode) return [] as string[];
-    const key = selectedKidsObjectKey ?? '';
-    if (!key || !/^k\d+_/.test(key)) return [] as string[];
-    const folder = voiceGender === 'josh' ? '/audio/kids/josh' : '/audio/kids';
-    const lines = (kidsLesson as any)?.dialogue ?? [];
-    if (lines.length <= 1) return [`${folder}/${key}.mp3`];
-    return [
-      `${folder}/${key}.mp3`,
-      ...lines.slice(1).map((_: string, i: number) => `${folder}/${key}_line${i + 2}.mp3`),
-    ];
-  }, [isKidsMode, selectedKidsObjectKey, voiceGender, kidsLesson]);
+
 
   const sourceText    = isKidsMode ? kidsPracticeText : rawSourceText;
   const correctedText = isKidsMode ? kidsPracticeText : rawCorrectedText;
@@ -790,21 +786,30 @@ export function MercySpeakTab({
   function speakViaTTS(speechText: string) {
     if (!speechText || !supportsSpeechSynthesis || typeof window === 'undefined') return;
     window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(speechText);
-    utterance.lang = 'en-US';
-    utterance.rate = 0.9;
-    utterance.pitch = 1.0;
-    utterance.volume = 1.0;
-    // Pick a natural English voice if available
+
+    const doSpeak = () => {
+      const utterance = new SpeechSynthesisUtterance(speechText);
+      utterance.lang = 'en-US';
+      utterance.rate = 0.9;
+      utterance.pitch = 1.0;
+      utterance.volume = 1.0;
+      const voices = window.speechSynthesis.getVoices();
+      const preferred = voices.find(v =>
+        v.lang === 'en-US' && (v.name.includes('Samantha') || v.name.includes('Karen') || v.name.includes('Google'))
+      ) || voices.find(v => v.lang === 'en-US') || voices[0];
+      if (preferred) utterance.voice = preferred;
+      utterance.onstart = () => setIsSpeaking(true);
+      utterance.onend   = () => setIsSpeaking(false);
+      utterance.onerror = () => setIsSpeaking(false);
+      window.speechSynthesis.speak(utterance);
+    };
+
     const voices = window.speechSynthesis.getVoices();
-    const preferred = voices.find(v =>
-      v.lang === 'en-US' && (v.name.includes('Samantha') || v.name.includes('Karen') || v.name.includes('Google'))
-    ) || voices.find(v => v.lang === 'en-US') || voices[0];
-    if (preferred) utterance.voice = preferred;
-    utterance.onstart = () => setIsSpeaking(true);
-    utterance.onend   = () => setIsSpeaking(false);
-    utterance.onerror = () => setIsSpeaking(false);
-    window.speechSynthesis.speak(utterance);
+    if (voices.length > 0) {
+      doSpeak();
+    } else {
+      window.speechSynthesis.onvoiceschanged = () => { doSpeak(); };
+    }
   }
 
   function handleSpeak(textOverride?: string) {
@@ -816,32 +821,17 @@ export function MercySpeakTab({
     // Only use mp3 when playing the main phrase (no textOverride = tapping Mercy button)
     // For individual word chips (textOverride set), fall through to TTS
     if (isKidsMode && !textOverride && kidsAudioSrc) {
-      // Reuse or create the audio element
-      if (!kidsAudioRef.current) {
-        kidsAudioRef.current = new Audio();
+      // Stop any currently playing audio
+      if (kidsAudioRef.current) {
+        try { kidsAudioRef.current.pause(); kidsAudioRef.current.currentTime = 0; } catch { /* ignore */ }
       }
-      const audio = kidsAudioRef.current;
-      // Stop any currently playing kids audio
-      try { audio.pause(); audio.currentTime = 0; } catch { /* ignore */ }
-
-      const playlist = kidsAudioPlaylist.length > 0 ? kidsAudioPlaylist : (kidsAudioSrc ? [kidsAudioSrc] : []);
-      if (playlist.length === 0) { speakViaTTS(speechText); return; }
-
-      let currentIdx = 0;
-      const playNext = () => {
-        if (currentIdx >= playlist.length) { setIsSpeaking(false); return; }
-        const src = playlist[currentIdx++];
-        audio.src = src;
-        audio.onplay = () => setIsSpeaking(true);
-        audio.onended = () => setTimeout(playNext, 400); // 400ms pause between lines
-        audio.onerror = () => {
-          // line not found — skip to next or fall back
-          if (currentIdx >= playlist.length) { setIsSpeaking(false); }
-          else setTimeout(playNext, 100);
-        };
-        audio.play().catch(() => { setIsSpeaking(false); });
-      };
-      playNext();
+      const freshAudio = new Audio();
+      kidsAudioRef.current = freshAudio;
+      freshAudio.src = kidsAudioSrc;
+      freshAudio.onplay = () => setIsSpeaking(true);
+      freshAudio.onended = () => setIsSpeaking(false);
+      freshAudio.onerror = () => { setIsSpeaking(false); speakViaTTS(speechText); };
+      freshAudio.play().catch(() => { setIsSpeaking(false); speakViaTTS(speechText); });
       return;
     }
 
@@ -969,13 +959,23 @@ export function MercySpeakTab({
         <div className="min-h-0 flex-1 overflow-y-auto overflow-x-hidden px-2 py-2 md:px-3 md:py-3">
           <div className="flex min-h-full flex-col gap-2 rounded-[28px] border border-white/80 bg-white/92 px-3 pb-3 pt-1.5 shadow-[0_10px_28px_rgba(148,163,184,0.06)] md:px-4 md:pb-4 md:pt-2">
             <div className="min-w-0">
-              <div className="flex flex-wrap items-end gap-x-3 gap-y-1">
+              <div className="flex flex-col gap-2">
                 <h3 className="text-[1.9rem] font-semibold tracking-tight text-slate-900 md:text-[2.65rem] md:leading-[1.02]">
                   {kidsLesson?.label ?? kidsObject?.label ?? KIDS_OBJECTS[0].label}
                 </h3>
-                <p className="text-[1.05rem] font-medium leading-7 text-slate-700 md:text-[1.35rem] md:leading-8">
-                  {practiceText}
-                </p>
+                {(kidsLesson as any)?.dialogue?.length > 1 ? (
+                  <div className="flex flex-col gap-1.5">
+                    {((kidsLesson as any).dialogue as string[]).map((line: string, i: number) => (
+                      <p key={i} className={`text-[0.95rem] leading-6 md:text-[1.05rem] md:leading-7 ${i % 2 === 0 ? 'text-slate-700 font-medium' : 'text-[#C05830] font-medium pl-3 border-l-2 border-[#FFB39A]'}`}>
+                        {line}
+                      </p>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-[1.05rem] font-medium leading-7 text-slate-700 md:text-[1.35rem] md:leading-8">
+                    {practiceText}
+                  </p>
+                )}
               </div>
             </div>
 
@@ -1040,9 +1040,23 @@ export function MercySpeakTab({
             ) : null}
 
             <div className="grid grid-cols-5 gap-1.5">
-              <Button type="button" variant="outline" onClick={() => handleSpeak()} disabled={!practiceText} className="h-[54px] min-w-0 rounded-[16px] border-teal-200 bg-gradient-to-r from-[#6EC6C8] to-[#5DAFB6] px-1 py-1 text-white shadow-[0_10px_18px_rgba(93,175,182,0.22)] hover:brightness-[1.03] disabled:opacity-60">
-                <span className="flex flex-col items-center justify-center gap-1 leading-none"><Volume2 className="h-4 w-4 shrink-0" /><span className="text-[10px] font-semibold">Mercy</span></span>
-              </Button>
+              <div className="flex flex-col gap-1">
+                <Button type="button" variant="outline" onClick={() => handleSpeak()} disabled={!practiceText}
+                  className={`h-[42px] min-w-0 rounded-[14px] px-1 py-1 text-white shadow-sm hover:brightness-[1.03] disabled:opacity-60 ${voiceGender === 'josh' ? 'border-blue-300 bg-gradient-to-r from-[#5B8DEF] to-[#3B6FD4]' : 'border-teal-200 bg-gradient-to-r from-[#6EC6C8] to-[#5DAFB6]'}`}>
+                  <span className="flex flex-col items-center justify-center gap-0.5 leading-none">
+                    <Volume2 className="h-3.5 w-3.5 shrink-0" />
+                    <span className="text-[9px] font-semibold">{voiceGender === 'josh' ? 'Josh' : 'Mercy'}</span>
+                  </span>
+                </Button>
+                <div className="flex gap-0.5">
+                  <button type="button"
+                    onClick={() => { setVoiceGender('mercy'); try { localStorage.setItem('mb.voice.gender','mercy'); } catch {} }}
+                    className={`flex-1 rounded-full text-[9px] font-bold py-0.5 transition ${voiceGender === 'mercy' ? 'bg-[#5DAFB6] text-white' : 'bg-slate-100 text-slate-400'}`}>♀</button>
+                  <button type="button"
+                    onClick={() => { setVoiceGender('josh'); try { localStorage.setItem('mb.voice.gender','josh'); } catch {} }}
+                    className={`flex-1 rounded-full text-[9px] font-bold py-0.5 transition ${voiceGender === 'josh' ? 'bg-[#3B6FD4] text-white' : 'bg-slate-100 text-slate-400'}`}>♂</button>
+                </div>
+              </div>
               {!isListening ? (
                 <Button type="button" onClick={startListening} disabled={!supportsRecognition || !practiceText} className="h-[54px] min-w-0 rounded-[16px] border-0 bg-gradient-to-r from-[#43C59E] to-[#18A874] px-1 py-1 text-white shadow-[0_10px_18px_rgba(24,168,116,0.20)] hover:brightness-[1.03] disabled:opacity-60">
                   <span className="flex flex-col items-center justify-center gap-1 leading-none"><Mic className="h-4 w-4 shrink-0" /><span className="text-[10px] font-semibold">You</span></span>
@@ -1094,7 +1108,19 @@ export function MercySpeakTab({
                 <div className="mt-2 flex items-center gap-2 overflow-x-auto pb-0.5">
                   <span className="shrink-0 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500">Repeat</span>
                   {kidsWordChips.map((word) => (
-                    <button key={word} type="button" onClick={() => handleSpeak(word)}
+                    <button key={word} type="button" onClick={() => {
+                        // Speak just this word via TTS directly on click gesture
+                        try {
+                          window.speechSynthesis.cancel();
+                          const u = new SpeechSynthesisUtterance(word);
+                          u.lang = 'en-US'; u.rate = 0.85; u.volume = 1.0;
+                          const vs = window.speechSynthesis.getVoices();
+                          const v = vs.find(v => v.lang === 'en-US' && v.name.includes('Samantha'))
+                            || vs.find(v => v.lang === 'en-US') || vs[0];
+                          if (v) u.voice = v;
+                          window.speechSynthesis.speak(u);
+                        } catch(e) { handleSpeak(word); }
+                      }}
                       className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-[#F2DDD0] bg-gradient-to-r from-[#FFF5EF] to-white px-2.5 py-1 text-xs font-semibold text-[#875E4B] shadow-sm transition hover:border-[#F0C8B3] hover:bg-[#FFF8F4]">
                       <Volume2 className="h-3.5 w-3.5" /><span>{word}</span>
                     </button>
