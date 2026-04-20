@@ -37,20 +37,6 @@ import { KID_PAGE_31_ITEMS } from './kids/kidPage31Data';
 import { KID_PAGE_32_ITEMS } from './kids/kidPage32Data';
 import { KID_PAGE_33_ITEMS } from './kids/kidPage33Data';
 import { KID_PAGE_34_ITEMS } from './kids/kidPage34Data';
-import { KID_PAGE_28_ITEMS } from './kids/kidPage28Data';
-import { KID_PAGE_29_ITEMS } from './kids/kidPage29Data';
-import { KID_PAGE_30_ITEMS } from './kids/kidPage30Data';
-import { KID_PAGE_31_ITEMS } from './kids/kidPage31Data';
-import { KID_PAGE_32_ITEMS } from './kids/kidPage32Data';
-import { KID_PAGE_33_ITEMS } from './kids/kidPage33Data';
-import { KID_PAGE_34_ITEMS } from './kids/kidPage34Data';
-import { KID_PAGE_28_ITEMS } from './kids/kidPage28Data';
-import { KID_PAGE_29_ITEMS } from './kids/kidPage29Data';
-import { KID_PAGE_30_ITEMS } from './kids/kidPage30Data';
-import { KID_PAGE_31_ITEMS } from './kids/kidPage31Data';
-import { KID_PAGE_32_ITEMS } from './kids/kidPage32Data';
-import { KID_PAGE_33_ITEMS } from './kids/kidPage33Data';
-import { KID_PAGE_34_ITEMS } from './kids/kidPage34Data';
 import type {
   GrammarApiResponse,
   GrammarWritingTeacherState,

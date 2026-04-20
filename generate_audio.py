@@ -1,254 +1,465 @@
-# Path: generate_audio.py
+#!/usr/bin/env python3
+"""
+Generate ElevenLabs audio for kids pages 28-34.
+Uses exact label text — no filename guessing.
+Run: python3 ~/Downloads/generate_audio_28_34.py
+"""
+import os, time, requests, sys
 
-import os
-import re
-import time
-import requests
-
-API_KEY = ""  # set your key here
-BASE_DIR = "/Users/admin/MercyB/public/images"
+API_KEY = "sk_66e7091eab5bf4473ef4974fb1f9190084675d23ec094f8c"  # paste your ElevenLabs API key here
 VOICE_ID = "DODLEQrClDo8wCz460ld"
 MODEL_ID = "eleven_v3"
+VOICE_SETTINGS = {"stability": 0.55, "similarity_boost": 0.85, "style": 0.20, "use_speaker_boost": True}
+DELAY = 0.5
+OUT_DIR = "/Users/admin/MercyB/public/audio/kids"
 
-VOICE_SETTINGS = {
-    "stability": 0.55,
-    "similarity_boost": 0.85,
-    "style": 0.20,
-    "use_speaker_boost": True,
+PAGES = {
+    "Page 28 — Polite Phrases": [
+        ("k28_001_excuse_me", "Excuse me"),
+        ("k28_002_may_i_please", "May I please"),
+        ("k28_003_i_am_sorry", "I am sorry"),
+        ("k28_004_thank_you_very_much", "Thank you very much"),
+        ("k28_005_you_are_welcome", "You are welcome"),
+        ("k28_006_could_you_help_me", "Could you help me?"),
+        ("k28_007_please_and_thank_you", "Please and thank you"),
+        ("k28_008_i_beg_your_pardon", "I beg your pardon"),
+        ("k28_009_after_you", "After you"),
+        ("k28_010_i_appreciate_it", "I appreciate it"),
+        ("k28_011_no_problem", "No problem"),
+        ("k28_012_of_course", "Of course"),
+        ("k28_013_certainly", "Certainly"),
+        ("k28_014_with_pleasure", "With pleasure"),
+        ("k28_015_i_dont_mind", "I don't mind"),
+        ("k28_016_pardon_me", "Pardon me"),
+        ("k28_017_how_kind_of_you", "How kind of you"),
+        ("k28_018_i_am_grateful", "I am grateful"),
+        ("k28_019_that_is_very_thoughtful", "That is very thoughtful"),
+        ("k28_020_i_owe_you_one", "I owe you one"),
+    ],
+    "Page 29 — Everyday English": [
+        ("k29_001_what_did_the_teacher_say", "What did the teacher say?"),
+        ("k29_002_can_i_borrow_a_pencil", "Can I borrow a pencil?"),
+        ("k29_003_i_finished_my_homework", "I finished my homework"),
+        ("k29_004_when_is_the_test", "When is the test?"),
+        ("k29_005_i_dont_understand", "I don't understand"),
+        ("k29_006_can_you_explain_that_again", "Can you explain that again?"),
+        ("k29_007_i_have_a_question", "I have a question"),
+        ("k29_008_may_i_go_to_the_bathroom", "May I go to the bathroom?"),
+        ("k29_009_i_am_present", "I am present"),
+        ("k29_010_i_forgot_my_book", "I forgot my book"),
+        ("k29_011_i_have_a_headache", "I have a headache"),
+        ("k29_012_i_feel_sick", "I feel sick"),
+        ("k29_013_i_need_to_see_the_nurse", "I need to see the nurse"),
+        ("k29_014_i_am_allergic_to", "I am allergic to"),
+        ("k29_015_i_take_medicine_for", "I take medicine for"),
+        ("k29_016_how_much_does_it_cost", "How much does it cost?"),
+        ("k29_017_do_you_have_this_in_another_size", "Do you have this in another size?"),
+        ("k29_018_i_would_like_to_pay", "I would like to pay"),
+        ("k29_019_can_i_get_a_receipt", "Can I get a receipt?"),
+        ("k29_020_do_you_accept_cards", "Do you accept cards?"),
+        ("k29_021_what_time_is_it", "What time is it?"),
+        ("k29_022_how_long_will_it_take", "How long will it take?"),
+        ("k29_023_i_am_running_late", "I am running late"),
+        ("k29_024_can_we_meet_at", "Can we meet at"),
+        ("k29_025_i_will_be_there_soon", "I will be there soon"),
+        ("k29_026_what_is_the_weather_like", "What is the weather like?"),
+        ("k29_027_it_is_going_to_rain", "It is going to rain"),
+        ("k29_028_it_is_a_beautiful_day", "It is a beautiful day"),
+        ("k29_029_it_is_very_hot_today", "It is very hot today"),
+        ("k29_030_dress_warmly", "Dress warmly"),
+        ("k29_031_happy_birthday", "Happy birthday!"),
+        ("k29_032_congratulations", "Congratulations!"),
+        ("k29_033_happy_new_year", "Happy New Year!"),
+        ("k29_034_merry_christmas", "Merry Christmas!"),
+        ("k29_035_good_luck", "Good luck!"),
+        ("k29_036_well_done", "Well done!"),
+        ("k29_037_i_am_so_proud_of_you", "I am so proud of you"),
+        ("k29_038_that_is_wonderful_news", "That is wonderful news"),
+        ("k29_039_i_wish_you_all_the_best", "I wish you all the best"),
+        ("k29_040_have_a_great_day", "Have a great day!"),
+        ("k29_041_what_do_you_like_to_do", "What do you like to do?"),
+        ("k29_042_i_enjoy_reading", "I enjoy reading"),
+        ("k29_043_my_favourite_subject_is", "My favourite subject is"),
+        ("k29_044_i_am_good_at", "I am good at"),
+        ("k29_045_i_would_like_to_learn", "I would like to learn"),
+        ("k29_046_what_are_you_interested_in", "What are you interested in?"),
+        ("k29_047_i_love_music", "I love music"),
+        ("k29_048_do_you_play_any_sports", "Do you play any sports?"),
+        ("k29_049_i_play_football", "I play football"),
+        ("k29_050_i_like_drawing", "I like drawing"),
+        ("k29_051_what_did_you_do_on_the_weekend", "What did you do on the weekend?"),
+        ("k29_052_i_went_to_the_park", "I went to the park"),
+        ("k29_053_we_had_a_picnic", "We had a picnic"),
+        ("k29_054_i_visited_my_grandparents", "I visited my grandparents"),
+        ("k29_055_it_was_so_much_fun", "It was so much fun"),
+        ("k29_056_what_are_you_doing_this_weekend", "What are you doing this weekend?"),
+        ("k29_057_i_am_going_to_the_cinema", "I am going to the cinema"),
+        ("k29_058_would_you_like_to_join_us", "Would you like to join us?"),
+        ("k29_059_that_sounds_great", "That sounds great!"),
+        ("k29_060_i_cannot_wait", "I cannot wait!"),
+    ],
+    "Page 30 — Teen English": [
+        ("k30_001_i_totally_agree", "I totally agree"),
+        ("k30_002_i_see_your_point", "I see your point"),
+        ("k30_003_that_makes_sense", "That makes sense"),
+        ("k30_004_i_am_not_sure_about_that", "I am not sure about that"),
+        ("k30_005_i_respectfully_disagree", "I respectfully disagree"),
+        ("k30_006_what_do_you_think", "What do you think?"),
+        ("k30_007_could_you_give_me_an_example", "Could you give me an example?"),
+        ("k30_008_that_is_a_good_point", "That is a good point"),
+        ("k30_009_on_the_other_hand", "On the other hand"),
+        ("k30_010_to_be_honest", "To be honest"),
+        ("k30_011_personally_i_think", "Personally, I think"),
+        ("k30_012_in_my_opinion", "In my opinion"),
+        ("k30_013_i_believe_that", "I believe that"),
+        ("k30_014_i_feel_strongly_about", "I feel strongly about"),
+        ("k30_015_it_depends_on", "It depends on"),
+        ("k30_016_i_am_stressed_about", "I am stressed about"),
+        ("k30_017_i_need_some_space", "I need some space"),
+        ("k30_018_i_am_feeling_overwhelmed", "I am feeling overwhelmed"),
+        ("k30_019_can_we_talk_about_this", "Can we talk about this?"),
+        ("k30_020_i_just_need_someone_to_listen", "I just need someone to listen"),
+        ("k30_021_that_really_bothers_me", "That really bothers me"),
+        ("k30_022_i_am_proud_of_myself", "I am proud of myself"),
+        ("k30_023_i_am_working_on_it", "I am working on it"),
+        ("k30_024_i_made_a_mistake", "I made a mistake"),
+        ("k30_025_i_will_do_better_next_time", "I will do better next time"),
+        ("k30_026_i_need_to_study_for", "I need to study for"),
+        ("k30_027_can_you_help_me_understand", "Can you help me understand?"),
+        ("k30_028_i_am_behind_on_my_work", "I am behind on my work"),
+        ("k30_029_i_got_a_good_grade", "I got a good grade"),
+        ("k30_030_i_failed_the_test", "I failed the test"),
+        ("k30_031_can_i_use_your_charger", "Can I use your charger?"),
+        ("k30_032_my_phone_is_dead", "My phone is dead"),
+        ("k30_033_i_will_send_you_the_link", "I will send you the link"),
+        ("k30_034_have_you_seen_this_video", "Have you seen this video?"),
+        ("k30_035_i_follow_them_online", "I follow them online"),
+        ("k30_036_that_went_viral", "That went viral"),
+        ("k30_037_i_need_to_unplug_for_a_while", "I need to unplug for a while"),
+        ("k30_038_screen_time_is_out_of_control", "Screen time is out of control"),
+        ("k30_039_i_got_a_notification", "I got a notification"),
+        ("k30_040_my_wifi_is_not_working", "My wifi is not working"),
+        ("k30_041_what_are_your_plans_for_the_future", "What are your plans for the future?"),
+        ("k30_042_i_want_to_study_abroad", "I want to study abroad"),
+        ("k30_043_i_am_thinking_about_my_career", "I am thinking about my career"),
+        ("k30_044_i_would_like_to_travel", "I would like to travel"),
+        ("k30_045_i_am_saving_up_for", "I am saving up for"),
+        ("k30_046_what_kind_of_job_do_you_want", "What kind of job do you want?"),
+        ("k30_047_i_want_to_make_a_difference", "I want to make a difference"),
+        ("k30_048_i_am_passionate_about_the_environment", "I am passionate about the environment"),
+        ("k30_049_i_care_about_equality", "I care about equality"),
+        ("k30_050_i_want_to_help_my_community", "I want to help my community"),
+        ("k30_051_that_is_not_fair", "That is not fair"),
+        ("k30_052_i_have_the_right_to", "I have the right to"),
+        ("k30_053_everyone_deserves_respect", "Everyone deserves respect"),
+        ("k30_054_stand_up_for_yourself", "Stand up for yourself"),
+        ("k30_055_do_not_give_up", "Do not give up"),
+        ("k30_056_believe_in_yourself", "Believe in yourself"),
+        ("k30_057_you_are_capable_of_great_things", "You are capable of great things"),
+        ("k30_058_take_it_one_step_at_a_time", "Take it one step at a time"),
+        ("k30_059_it_is_okay_to_ask_for_help", "It is okay to ask for help"),
+        ("k30_060_you_are_not_alone", "You are not alone"),
+    ],
+    "Page 31 — Real Life English": [
+        ("k31_001_can_you_repeat_that_please", "Can you repeat that please?"),
+        ("k31_002_i_did_not_catch_that", "I did not catch that"),
+        ("k31_003_could_you_speak_more_slowly", "Could you speak more slowly?"),
+        ("k31_004_what_does_that_mean", "What does that mean?"),
+        ("k31_005_how_do_you_spell_that", "How do you spell that?"),
+        ("k31_006_let_me_think_about_it", "Let me think about it"),
+        ("k31_007_i_will_get_back_to_you", "I will get back to you"),
+        ("k31_008_that_is_not_what_i_meant", "That is not what I meant"),
+        ("k31_009_i_think_there_is_a_misunderstanding", "I think there is a misunderstanding"),
+        ("k31_010_let_me_clarify", "Let me clarify"),
+        ("k31_011_what_i_mean_is", "What I mean is"),
+        ("k31_012_in_other_words", "In other words"),
+        ("k31_013_to_put_it_simply", "To put it simply"),
+        ("k31_014_if_i_understand_correctly", "If I understand correctly"),
+        ("k31_015_am_i_making_sense", "Am I making sense?"),
+        ("k31_016_what_would_you_recommend", "What would you recommend?"),
+        ("k31_017_i_am_looking_for", "I am looking for"),
+        ("k31_018_where_can_i_find", "Where can I find"),
+        ("k31_019_how_do_i_get_to", "How do I get to"),
+        ("k31_020_is_it_far_from_here", "Is it far from here?"),
+        ("k31_021_can_i_make_a_reservation", "Can I make a reservation?"),
+        ("k31_022_i_have_a_booking_under", "I have a booking under"),
+        ("k31_023_what_time_does_it_open", "What time does it open?"),
+        ("k31_024_is_there_a_waiting_list", "Is there a waiting list?"),
+        ("k31_025_i_would_like_to_cancel", "I would like to cancel"),
+        ("k31_026_i_need_to_talk_to_someone", "I need to talk to someone"),
+        ("k31_027_can_we_sort_this_out", "Can we sort this out?"),
+        ("k31_028_i_feel_left_out", "I feel left out"),
+        ("k31_029_that_hurt_my_feelings", "That hurt my feelings"),
+        ("k31_030_i_am_trying_my_best", "I am trying my best"),
+        ("k31_031_i_changed_my_mind", "I changed my mind"),
+        ("k31_032_i_am_going_to_try_something_new", "I am going to try something new"),
+        ("k31_033_i_learned_from_my_mistake", "I learned from my mistake"),
+        ("k31_034_i_need_a_break", "I need a break"),
+        ("k31_035_i_am_ready_to_move_on", "I am ready to move on"),
+        ("k31_036_that_was_unexpected", "That was unexpected"),
+        ("k31_037_i_was_not_prepared_for_that", "I was not prepared for that"),
+        ("k31_038_things_did_not_go_as_planned", "Things did not go as planned"),
+        ("k31_039_we_will_figure_it_out", "We will figure it out"),
+        ("k31_040_every_cloud_has_a_silver_lining", "Every cloud has a silver lining"),
+        ("k31_041_i_am_nervous_about", "I am nervous about"),
+        ("k31_042_i_am_excited_for", "I am excited for"),
+        ("k31_043_i_cannot_believe_it", "I cannot believe it!"),
+        ("k31_044_that_is_amazing", "That is amazing!"),
+        ("k31_045_i_am_so_relieved", "I am so relieved"),
+        ("k31_046_i_appreciate_your_honesty", "I appreciate your honesty"),
+        ("k31_047_i_trust_you", "I trust you"),
+        ("k31_048_you_can_count_on_me", "You can count on me"),
+        ("k31_049_i_have_got_your_back", "I have got your back"),
+        ("k31_050_we_make_a_good_team", "We make a good team"),
+        ("k31_051_i_owe_you_an_apology", "I owe you an apology"),
+        ("k31_052_i_should_not_have_said_that", "I should not have said that"),
+        ("k31_053_can_you_forgive_me", "Can you forgive me?"),
+        ("k31_054_i_forgive_you", "I forgive you"),
+        ("k31_055_let_us_start_fresh", "Let us start fresh"),
+        ("k31_056_actions_speak_louder_than_words", "Actions speak louder than words"),
+        ("k31_057_i_mean_what_i_say", "I mean what I say"),
+        ("k31_058_honesty_is_the_best_policy", "Honesty is the best policy"),
+        ("k31_059_i_stand_by_what_i_said", "I stand by what I said"),
+        ("k31_060_i_gave_it_my_all", "I gave it my all"),
+    ],
+    "Page 32 — Think & Persuade": [
+        ("k32_001_i_think_we_should", "I think we should"),
+        ("k32_002_the_reason_i_say_this_is", "The reason I say this is"),
+        ("k32_003_have_you_considered", "Have you considered"),
+        ("k32_004_what_if_we_tried", "What if we tried"),
+        ("k32_005_the_advantage_of_this_is", "The advantage of this is"),
+        ("k32_006_one_downside_could_be", "One downside could be"),
+        ("k32_007_i_would_argue_that", "I would argue that"),
+        ("k32_008_the_evidence_shows", "The evidence shows"),
+        ("k32_009_for_example", "For example"),
+        ("k32_010_on_balance", "On balance"),
+        ("k32_011_i_am_convinced_that", "I am convinced that"),
+        ("k32_012_think_about_it_this_way", "Think about it this way"),
+        ("k32_013_surely_you_would_agree", "Surely you would agree"),
+        ("k32_014_is_it_not_true_that", "Is it not true that"),
+        ("k32_015_this_clearly_shows", "This clearly shows"),
+        ("k32_016_could_you_walk_me_through", "Could you walk me through"),
+        ("k32_017_what_exactly_do_you_mean", "What exactly do you mean?"),
+        ("k32_018_i_am_not_following", "I am not following"),
+        ("k32_019_could_you_be_more_specific", "Could you be more specific?"),
+        ("k32_020_that_is_an_interesting_perspective", "That is an interesting perspective"),
+        ("k32_021_i_had_not_thought_of_it_that_way", "I had not thought of it that way"),
+        ("k32_022_you_raise_a_fair_point", "You raise a fair point"),
+        ("k32_023_i_take_your_point_but", "I take your point, but"),
+        ("k32_024_with_all_due_respect", "With all due respect"),
+        ("k32_025_i_beg_to_differ", "I beg to differ"),
+        ("k32_026_what_is_the_plan", "What is the plan?"),
+        ("k32_027_who_is_responsible_for", "Who is responsible for"),
+        ("k32_028_when_is_the_deadline", "When is the deadline?"),
+        ("k32_029_can_we_divide_the_tasks", "Can we divide the tasks?"),
+        ("k32_030_i_will_take_care_of_that", "I will take care of that"),
+        ("k32_031_i_disagree_and_here_is_why", "I disagree and here is why"),
+        ("k32_032_that_logic_does_not_hold", "That logic does not hold"),
+        ("k32_033_you_are_contradicting_yourself", "You are contradicting yourself"),
+        ("k32_034_can_you_back_that_up", "Can you back that up?"),
+        ("k32_035_where_is_your_evidence", "Where is your evidence?"),
+        ("k32_036_i_am_open_to_other_ideas", "I am open to other ideas"),
+        ("k32_037_let_us_find_common_ground", "Let us find common ground"),
+        ("k32_038_can_we_compromise", "Can we compromise?"),
+        ("k32_039_i_am_willing_to_meet_halfway", "I am willing to meet halfway"),
+        ("k32_040_that_seems_fair_to_everyone", "That seems fair to everyone"),
+        ("k32_041_what_are_the_consequences", "What are the consequences?"),
+        ("k32_042_is_this_sustainable", "Is this sustainable?"),
+        ("k32_043_have_we_thought_long_term", "Have we thought long term?"),
+        ("k32_044_this_could_set_a_precedent", "This could set a precedent"),
+        ("k32_045_we_need_to_weigh_our_options", "We need to weigh our options"),
+        ("k32_046_i_propose_a_solution", "I propose a solution"),
+        ("k32_047_step_one_would_be", "Step one would be"),
+        ("k32_048_the_next_phase_involves", "The next phase involves"),
+        ("k32_049_this_approach_would_work_because", "This approach would work because"),
+        ("k32_050_let_us_put_it_to_a_vote", "Let us put it to a vote"),
+        ("k32_051_i_have_done_my_research", "I have done my research"),
+        ("k32_052_the_statistics_suggest", "The statistics suggest"),
+        ("k32_053_experts_agree_that", "Experts agree that"),
+        ("k32_054_history_has_shown_us", "History has shown us"),
+        ("k32_055_this_is_backed_by_science", "This is backed by science"),
+        ("k32_056_what_does_the_data_say", "What does the data say?"),
+        ("k32_057_we_cannot_ignore_the_facts", "We cannot ignore the facts"),
+        ("k32_058_the_numbers_speak_for_themselves", "The numbers speak for themselves"),
+        ("k32_059_this_is_a_proven_method", "This is a proven method"),
+        ("k32_060_the_results_are_clear", "The results are clear"),
+    ],
+    "Page 33 — Academic & Professional": [
+        ("k33_001_the_evidence_suggests", "The evidence suggests"),
+        ("k33_002_in_contrast", "In contrast"),
+        ("k33_003_to_summarize", "To summarize"),
+        ("k33_004_this_supports_the_idea", "This supports the idea"),
+        ("k33_005_furthermore", "Furthermore"),
+        ("k33_006_however", "However"),
+        ("k33_007_it_can_be_argued", "It can be argued"),
+        ("k33_008_as_a_result", "As a result"),
+        ("k33_009_in_conclusion", "In conclusion"),
+        ("k33_010_according_to", "According to"),
+        ("k33_011_on_the_one_hand", "On the one hand"),
+        ("k33_012_this_suggests_that", "This suggests that"),
+        ("k33_013_a_key_finding_is", "A key finding is"),
+        ("k33_014_it_is_worth_noting", "It is worth noting"),
+        ("k33_015_the_data_indicates", "The data indicates"),
+        ("k33_016_today_ill_be_talking_about", "Today I'll be talking about"),
+        ("k33_017_moving_on_to_my_next_point", "Moving on to my next point"),
+        ("k33_018_to_conclude", "To conclude"),
+        ("k33_019_any_questions", "Any questions?"),
+        ("k33_020_as_you_can_see_from", "As you can see from"),
+        ("k33_021_let_me_take_you_through", "Let me take you through"),
+        ("k33_022_that_is_a_great_question", "That is a great question"),
+        ("k33_023_i_would_like_to_draw_your_attention", "I would like to draw your attention"),
+        ("k33_024_in_summary", "In summary"),
+        ("k33_025_i_will_now_hand_over_to", "I will now hand over to"),
+        ("k33_026_to_illustrate_this_point", "To illustrate this point"),
+        ("k33_027_i_am_open_to_feedback", "I am open to feedback"),
+        ("k33_028_please_refer_to", "Please refer to"),
+        ("k33_029_building_on_that", "Building on that"),
+        ("k33_030_i_would_like_to_emphasise", "I would like to emphasise"),
+        ("k33_031_im_a_fast_learner", "I'm a fast learner"),
+        ("k33_032_my_greatest_strength_is", "My greatest strength is"),
+        ("k33_033_i_work_well_under_pressure", "I work well under pressure"),
+        ("k33_034_where_do_you_see_yourself", "Where do you see yourself"),
+        ("k33_035_i_am_passionate_about", "I am passionate about"),
+        ("k33_036_i_am_a_team_player", "I am a team player"),
+        ("k33_037_my_weakness_is", "My weakness is"),
+        ("k33_038_i_have_experience_in", "I have experience in"),
+        ("k33_039_i_thrive_in", "I thrive in"),
+        ("k33_040_i_am_committed_to_growth", "I am committed to growth"),
+        ("k33_041_i_led_a_project", "I led a project"),
+        ("k33_042_i_am_detail_oriented", "I am detail oriented"),
+        ("k33_043_tell_me_about_yourself", "Tell me about yourself"),
+        ("k33_044_i_would_bring", "I would bring"),
+        ("k33_045_do_you_have_any_questions", "Do you have any questions?"),
+        ("k33_046_ive_weighed_the_pros_and_cons", "I've weighed the pros and cons"),
+        ("k33_047_my_priority_is", "My priority is"),
+        ("k33_048_i_am_committed_to", "I am committed to"),
+        ("k33_049_lets_set_a_deadline", "Let's set a deadline"),
+        ("k33_050_i_have_made_my_decision", "I have made my decision"),
+        ("k33_051_lets_break_it_down", "Let's break it down"),
+        ("k33_052_the_risk_is_worth_it", "The risk is worth it"),
+        ("k33_053_i_need_more_information", "I need more information"),
+        ("k33_054_lets_revisit_this", "Let's revisit this"),
+        ("k33_055_in_the_long_run", "In the long run"),
+        ("k33_056_i_propose", "I propose"),
+        ("k33_057_we_should_plan_ahead", "We should plan ahead"),
+        ("k33_058_i_stand_by_my_decision", "I stand by my decision"),
+        ("k33_059_lets_evaluate_our_progress", "Let's evaluate our progress"),
+        ("k33_060_the_next_step_is", "The next step is"),
+    ],
+    "Page 34 — Adult Life English": [
+        ("k34_001_i_would_like_to_discuss_my_grade", "I would like to discuss my grade"),
+        ("k34_002_could_i_arrange_office_hours", "Could I arrange office hours?"),
+        ("k34_003_my_thesis_argues_that", "My thesis argues that"),
+        ("k34_004_i_would_like_to_cite", "I would like to cite"),
+        ("k34_005_i_missed_the_lecture", "I missed the lecture"),
+        ("k34_006_could_you_clarify_the_assignment", "Could you clarify the assignment brief?"),
+        ("k34_007_i_would_like_to_appeal", "I would like to appeal this decision"),
+        ("k34_008_i_am_working_on_my_dissertation", "I am working on my dissertation"),
+        ("k34_009_the_seminar_reading", "Did you do the seminar reading?"),
+        ("k34_010_i_need_an_extension", "I need an extension"),
+        ("k34_011_group_work_contribution", "Can we talk about contribution?"),
+        ("k34_012_i_have_read_widely_on_this", "I have read widely on this topic"),
+        ("k34_013_peer_review", "Could you peer review my draft?"),
+        ("k34_014_academic_integrity", "Academic integrity matters"),
+        ("k34_015_i_passed_my_finals", "I passed my finals!"),
+        ("k34_016_i_am_following_up", "I am following up on"),
+        ("k34_017_please_find_attached", "Please find attached"),
+        ("k34_018_it_was_a_pleasure_meeting_you", "It was a pleasure meeting you"),
+        ("k34_019_i_would_like_to_connect", "I would like to connect with you"),
+        ("k34_020_as_discussed_in_our_meeting", "As discussed in our meeting"),
+        ("k34_021_i_would_appreciate_your_feedback", "I would appreciate your feedback"),
+        ("k34_022_i_am_available_for_a_call", "I am available for a call"),
+        ("k34_023_i_will_circle_back", "I will circle back on this"),
+        ("k34_024_per_my_last_email", "As I mentioned in my previous email"),
+        ("k34_025_i_am_out_of_office", "I am out of office"),
+        ("k34_026_to_clarify_my_position", "To clarify my position"),
+        ("k34_027_i_will_take_ownership", "I will take ownership of this"),
+        ("k34_028_let_us_schedule_a_follow_up", "Let us schedule a follow-up"),
+        ("k34_029_i_am_copying_in", "I am copying in my manager"),
+        ("k34_030_thank_you_for_the_opportunity", "Thank you for the opportunity"),
+        ("k34_031_i_would_like_to_open_an_account", "I would like to open an account"),
+        ("k34_032_my_lease_says", "My lease says"),
+        ("k34_033_can_i_make_an_appointment", "Can I make an appointment?"),
+        ("k34_034_what_are_my_rights", "What are my rights here?"),
+        ("k34_035_i_need_to_cancel_my_subscription", "I need to cancel my subscription"),
+        ("k34_036_i_would_like_to_report", "I would like to report a problem"),
+        ("k34_037_i_am_disputing_this_charge", "I am disputing this charge"),
+        ("k34_038_what_is_included_in_the_rent", "What is included in the rent?"),
+        ("k34_039_i_am_on_a_budget", "I am on a budget"),
+        ("k34_040_i_need_a_reference", "I need a reference"),
+        ("k34_041_splitting_bills", "Can we agree on how to split the bills?"),
+        ("k34_042_i_am_registering_with_a_gp", "I am registering with a GP"),
+        ("k34_043_i_need_to_file_my_taxes", "I need to file my taxes"),
+        ("k34_044_i_am_looking_for_a_flatmate", "I am looking for a flatmate"),
+        ("k34_045_independent_life", "Living independently is a learning curve"),
+        ("k34_046_i_need_to_be_direct", "I need to be direct with you"),
+        ("k34_047_that_is_not_acceptable", "That is not acceptable"),
+        ("k34_048_i_would_like_to_clarify", "I would like to clarify something"),
+        ("k34_049_i_respectfully_disagree", "I respectfully disagree"),
+        ("k34_050_i_need_to_set_a_boundary", "I need to set a boundary"),
+        ("k34_051_i_feel_unheard", "I feel unheard"),
+        ("k34_052_i_am_not_comfortable_with_that", "I am not comfortable with that"),
+        ("k34_053_i_would_like_an_apology", "I would like an apology"),
+        ("k34_054_let_us_address_this_now", "Let us address this now"),
+        ("k34_055_i_want_to_understand_your_perspective", "I want to understand your perspective"),
+        ("k34_056_i_am_raising_a_formal_complaint", "I am raising a formal complaint"),
+        ("k34_057_i_own_that_mistake", "I own that mistake"),
+        ("k34_058_this_is_a_difficult_conversation", "This is a difficult conversation"),
+        ("k34_059_i_have_given_this_careful_thought", "I have given this careful thought"),
+        ("k34_060_i_am_ready_for_this", "I am ready for this"),
+    ],
 }
 
-DELAY_BETWEEN_CALLS = 0.5
-
-PHRASE_OVERRIDES = {
-    "i_am_eating_now": "I am eating now",
-    "she_is_dancing_now": "She is dancing now",
-    "it_is_raining_now": "It is raining now",
-    "they_are_playing_now": "They are playing now",
-    "the_baby_is_sleeping_now": "The baby is sleeping now",
-    "i_will_be_a_doctor": "I will be a doctor",
-    "i_woke_up_early": "I woke up early",
-    "pho": "Pho noodle soup",
-    "banh_mi": "Banh mi",
-    "banh mi": "Banh mi",
-    "a": "The letter A",
-    "b": "The letter B",
-    "c": "The letter C",
-    "d": "The letter D",
-    "e": "The letter E",
-    "f": "The letter F",
-    "g": "The letter G",
-    "h": "The letter H",
-    "i": "The letter I",
-    "j": "The letter J",
-    "k": "The letter K",
-    "l": "The letter L",
-    "m": "The letter M",
-    "n": "The letter N",
-    "o": "The letter O",
-    "p": "The letter P",
-    "q": "The letter Q",
-    "r": "The letter R",
-    "s": "The letter S",
-    "t": "The letter T",
-    "u": "The letter U",
-    "v": "The letter V",
-    "w": "The letter W",
-    "x": "The letter X",
-    "y": "The letter Y",
-    "z": "The letter Z",
-}
-
-
-def filename_to_text(filename: str) -> str:
-    name = os.path.splitext(filename)[0]
-    name = re.sub(r"^k\d+_\d+_", "", name)
-
-    if name in PHRASE_OVERRIDES:
-        return PHRASE_OVERRIDES[name]
-
-    text = name.replace("_", " ").strip()
-    if not text:
-        return ""
-
-    words = text.split()
-    if not words:
-        return ""
-
-    lower_words = {
-        "a", "an", "the", "and", "or", "but", "in", "on", "at", "to", "for",
-        "of", "is", "are", "was", "were", "be", "it", "do", "does", "did",
-        "not", "my", "your", "his", "her", "our", "their",
-    }
-
-    normalized_words = []
-    for index, word in enumerate(words):
-        lower = word.lower()
-
-        if lower == "i":
-            normalized_words.append("I")
-        elif lower == "im":
-            normalized_words.append("I'm")
-        elif lower == "youre":
-            normalized_words.append("you're" if index > 0 else "You're")
-        elif lower == "lets":
-            normalized_words.append("let's" if index > 0 else "Let's")
-        elif lower == "dont":
-            normalized_words.append("don't" if index > 0 else "Don't")
-        elif lower == "cant":
-            normalized_words.append("can't" if index > 0 else "Can't")
-        elif lower == "wont":
-            normalized_words.append("won't" if index > 0 else "Won't")
-        elif index > 0 and lower in lower_words:
-            normalized_words.append(lower)
-        else:
-            normalized_words.append(lower)
-
-    text = " ".join(normalized_words)
-    return text[:1].upper() + text[1:]
-
-
-def generate_audio(text: str, output_path: str, api_key: str) -> bool:
+def generate(text, out_path):
     url = f"https://api.elevenlabs.io/v1/text-to-speech/{VOICE_ID}"
-
-    headers = {
-        "Accept": "audio/mpeg",
-        "Content-Type": "application/json",
-        "xi-api-key": api_key,
-    }
-
-    payload = {
-        "text": text,
-        "model_id": MODEL_ID,
-        "voice_settings": VOICE_SETTINGS,
-    }
-
+    headers = {"Accept": "audio/mpeg", "Content-Type": "application/json", "xi-api-key": API_KEY}
+    payload = {"text": text, "model_id": MODEL_ID, "voice_settings": VOICE_SETTINGS}
     try:
-        response = requests.post(url, json=payload, headers=headers, timeout=30)
-
-        if response.status_code == 200:
-            with open(output_path, "wb") as file_handle:
-                file_handle.write(response.content)
+        r = requests.post(url, json=payload, headers=headers, timeout=30)
+        if r.status_code == 200:
+            with open(out_path, "wb") as f: f.write(r.content)
             return True
-
-        if response.status_code == 401:
-            print("\n❌ API key error")
-            return False
-
-        if response.status_code == 402:
-            print(f"\n❌ Payment or plan error {response.status_code}: {response.text[:200]}")
-            return False
-
-        if response.status_code == 429:
-            print("\n⏳ Rate limited — waiting 10 seconds...")
+        if r.status_code == 429:
+            print(" ⏳ rate limited, waiting 10s...", end="", flush=True)
             time.sleep(10)
-
-            retry_response = requests.post(
-                url,
-                json=payload,
-                headers=headers,
-                timeout=30,
-            )
-            if retry_response.status_code == 200:
-                with open(output_path, "wb") as file_handle:
-                    file_handle.write(retry_response.content)
+            r2 = requests.post(url, json=payload, headers=headers, timeout=30)
+            if r2.status_code == 200:
+                with open(out_path, "wb") as f: f.write(r2.content)
                 return True
-
-            print(f"\n❌ Retry failed {retry_response.status_code}: {retry_response.text[:200]}")
-            return False
-
-        print(f"\n❌ Error {response.status_code}: {response.text[:200]}")
+        print(f" ✗ {r.status_code}", end="")
+        return False
+    except Exception as e:
+        print(f" ✗ {e}", end="")
         return False
 
-    except requests.exceptions.Timeout:
-        print(f"\n⏱ Timeout — skipping {output_path}")
-        return False
-    except Exception as error:
-        print(f"\n❌ Exception: {error}")
-        return False
+if not API_KEY:
+    print("❌ Set your API_KEY at the top of the script first.")
+    sys.exit(1)
 
+os.makedirs(OUT_DIR, exist_ok=True)
+total_ok = total_skip = total_fail = 0
 
-def find_all_images(base_dir: str) -> list[tuple[str, str]]:
-    all_files: list[tuple[str, str]] = []
-
-    if not os.path.isdir(base_dir):
-        return all_files
-
-    for folder_name in sorted(os.listdir(base_dir)):
-        folder_path = os.path.join(base_dir, folder_name)
-
-        if not os.path.isdir(folder_path):
+for page_label, items in PAGES.items():
+    print(f"\n=== {page_label} ({len(items)} items) ===")
+    ok = skip = fail = 0
+    for i, (key, text) in enumerate(items):
+        path = os.path.join(OUT_DIR, f"{key}.mp3")
+        if os.path.exists(path):
+            skip += 1
             continue
-
-        if not re.match(r"^mercy-kids-page-\d+$", folder_name):
-            continue
-
-        for filename in sorted(os.listdir(folder_path)):
-            if filename.lower().endswith(".png"):
-                all_files.append((folder_path, filename))
-
-    return all_files
-
-
-def main() -> None:
-    all_images = find_all_images(BASE_DIR)
-
-    if not all_images:
-        print(f"\n❌ No images found in: {BASE_DIR}")
-        return
-
-    total = len(all_images)
-    processed = 0
-    skipped = 0
-    failed = 0
-    succeeded = 0
-
-    print("=" * 60)
-    print("Mercy Blade Kids — Audio Generator")
-    print("Voice ID:", VOICE_ID)
-    print("Base dir:", BASE_DIR)
-    print("Model:", MODEL_ID)
-    print("=" * 60)
-    print(f"\nFound {total} images")
-    print("Starting audio generation...\n")
-
-    for folder_path, filename in all_images:
-        mp3_name = os.path.splitext(filename)[0] + ".mp3"
-        mp3_path = os.path.join(folder_path, mp3_name)
-
-        if os.path.exists(mp3_path):
-            skipped += 1
-            continue
-
-        spoken_text = filename_to_text(filename)
-        processed += 1
-        pct = int(((processed + skipped) / total) * 100)
-
-        print(
-            f'[{pct:3d}%] {filename[:45]:<45} -> "{spoken_text}"',
-            end="",
-            flush=True,
-        )
-
-        success = generate_audio(spoken_text, mp3_path, API_KEY)
-
-        if success:
-            succeeded += 1
-            size_kb = os.path.getsize(mp3_path) // 1024
-            print(f" ✓ {size_kb}KB")
+        pct = int((i+1)/len(items)*100)
+        print(f"[{pct:3d}%] {key}.mp3  ->  \"{text}\"", end=" ", flush=True)
+        if generate(text, path):
+            kb = os.path.getsize(path)//1024
+            print(f"✓ {kb}KB")
+            ok += 1
         else:
-            failed += 1
-            print(" ✗ FAILED")
+            fail += 1
+            print()
+        time.sleep(DELAY)
+    print(f"  Generated: {ok}  Skipped: {skip}  Failed: {fail}")
+    total_ok += ok; total_skip += skip; total_fail += fail
 
-        time.sleep(DELAY_BETWEEN_CALLS)
-
-    print("\n" + "=" * 60)
-    print("COMPLETE")
-    print(f"Generated: {succeeded}")
-    print(f"Skipped:   {skipped}")
-    print(f"Failed:    {failed}")
-    print(f"Total:     {total}")
-    print("=" * 60)
-
-
-if __name__ == "__main__":
-    main()
+print(f"\n{'='*60}")
+print(f"TOTAL — Generated: {total_ok}  Skipped: {total_skip}  Failed: {total_fail}")
+print(f"{'='*60}")

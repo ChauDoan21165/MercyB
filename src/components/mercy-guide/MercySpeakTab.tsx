@@ -37,27 +37,13 @@ import { getKidPage24Item } from './kids/kidPage24Data';
 import { getKidPage25Item } from './kids/kidPage25Data';
 import { getKidPage26Item } from './kids/kidPage26Data';
 import { getKidPage27Item } from './kids/kidPage27Data';
-import { getKidPage28Item } from './kids/kidPage28Data';
-import { getKidPage29Item } from './kids/kidPage29Data';
-import { getKidPage30Item } from './kids/kidPage30Data';
-import { getKidPage31Item } from './kids/kidPage31Data';
-import { getKidPage32Item } from './kids/kidPage32Data';
-import { getKidPage33Item } from './kids/kidPage33Data';
-import { getKidPage34Item } from './kids/kidPage34Data';
-import { getKidPage28Item } from './kids/kidPage28Data';
-import { getKidPage29Item } from './kids/kidPage29Data';
-import { getKidPage30Item } from './kids/kidPage30Data';
-import { getKidPage31Item } from './kids/kidPage31Data';
-import { getKidPage32Item } from './kids/kidPage32Data';
-import { getKidPage33Item } from './kids/kidPage33Data';
-import { getKidPage34Item } from './kids/kidPage34Data';
-import { getKidPage28Item } from './kids/kidPage28Data';
-import { getKidPage29Item } from './kids/kidPage29Data';
-import { getKidPage30Item } from './kids/kidPage30Data';
-import { getKidPage31Item } from './kids/kidPage31Data';
-import { getKidPage32Item } from './kids/kidPage32Data';
-import { getKidPage33Item } from './kids/kidPage33Data';
-import { getKidPage34Item } from './kids/kidPage34Data';
+import { KID_PAGE_28_ITEMS } from './kids/kidPage28Data';
+import { KID_PAGE_29_ITEMS } from './kids/kidPage29Data';
+import { KID_PAGE_30_ITEMS } from './kids/kidPage30Data';
+import { KID_PAGE_31_ITEMS } from './kids/kidPage31Data';
+import { KID_PAGE_32_ITEMS } from './kids/kidPage32Data';
+import { KID_PAGE_33_ITEMS } from './kids/kidPage33Data';
+import { KID_PAGE_34_ITEMS } from './kids/kidPage34Data';
 import type { StudentMercyMemoryUpdate, LearningSupportMode } from './types';
 import type {
   SpeechRecognitionLike as BaseSpeechRecognitionLike,
@@ -443,27 +429,13 @@ const getPage24LessonByKey = makePageLessonGetter(24, getKidPage24Item);
 const getPage25LessonByKey = makePageLessonGetter(25, getKidPage25Item);
 const getPage26LessonByKey = makePageLessonGetter(26, getKidPage26Item);
 const getPage27LessonByKey = makePageLessonGetter(27, getKidPage27Item);
-const getPage28LessonByKey = makePageLessonGetter(28, getKidPage28Item);
-const getPage29LessonByKey = makePageLessonGetter(29, getKidPage29Item);
-const getPage30LessonByKey = makePageLessonGetter(30, getKidPage30Item);
-const getPage31LessonByKey = makePageLessonGetter(31, getKidPage31Item);
-const getPage32LessonByKey = makePageLessonGetter(32, getKidPage32Item);
-const getPage33LessonByKey = makePageLessonGetter(33, getKidPage33Item);
-const getPage34LessonByKey = makePageLessonGetter(34, getKidPage34Item);
-const getPage28LessonByKey = makePageLessonGetter(28, getKidPage28Item);
-const getPage29LessonByKey = makePageLessonGetter(29, getKidPage29Item);
-const getPage30LessonByKey = makePageLessonGetter(30, getKidPage30Item);
-const getPage31LessonByKey = makePageLessonGetter(31, getKidPage31Item);
-const getPage32LessonByKey = makePageLessonGetter(32, getKidPage32Item);
-const getPage33LessonByKey = makePageLessonGetter(33, getKidPage33Item);
-const getPage34LessonByKey = makePageLessonGetter(34, getKidPage34Item);
-const getPage28LessonByKey = makePageLessonGetter(28, getKidPage28Item);
-const getPage29LessonByKey = makePageLessonGetter(29, getKidPage29Item);
-const getPage30LessonByKey = makePageLessonGetter(30, getKidPage30Item);
-const getPage31LessonByKey = makePageLessonGetter(31, getKidPage31Item);
-const getPage32LessonByKey = makePageLessonGetter(32, getKidPage32Item);
-const getPage33LessonByKey = makePageLessonGetter(33, getKidPage33Item);
-const getPage34LessonByKey = makePageLessonGetter(34, getKidPage34Item);
+const getPage28LessonByKey = makePageLessonGetter(28, (k) => KID_PAGE_28_ITEMS.find(i => i.key === k));
+const getPage29LessonByKey = makePageLessonGetter(29, (k) => KID_PAGE_29_ITEMS.find(i => i.key === k));
+const getPage30LessonByKey = makePageLessonGetter(30, (k) => KID_PAGE_30_ITEMS.find(i => i.key === k));
+const getPage31LessonByKey = makePageLessonGetter(31, (k) => KID_PAGE_31_ITEMS.find(i => i.key === k));
+const getPage32LessonByKey = makePageLessonGetter(32, (k) => KID_PAGE_32_ITEMS.find(i => i.key === k));
+const getPage33LessonByKey = makePageLessonGetter(33, (k) => KID_PAGE_33_ITEMS.find(i => i.key === k));
+const getPage34LessonByKey = makePageLessonGetter(34, (k) => KID_PAGE_34_ITEMS.find(i => i.key === k));
 
 function extractTroubleWords(troubleWords?: Array<string | { word?: string | null }>): string[] {
   if (!Array.isArray(troubleWords)) return [];
@@ -584,20 +556,6 @@ export function MercySpeakTab({
   const kidsLesson = useMemo(() => {
     if (!isKidsMode) return null;
     return (
-      getPage34LessonByKey(selectedKidsObjectKey) ??
-      getPage33LessonByKey(selectedKidsObjectKey) ??
-      getPage32LessonByKey(selectedKidsObjectKey) ??
-      getPage31LessonByKey(selectedKidsObjectKey) ??
-      getPage30LessonByKey(selectedKidsObjectKey) ??
-      getPage29LessonByKey(selectedKidsObjectKey) ??
-      getPage28LessonByKey(selectedKidsObjectKey) ??
-      getPage34LessonByKey(selectedKidsObjectKey) ??
-      getPage33LessonByKey(selectedKidsObjectKey) ??
-      getPage32LessonByKey(selectedKidsObjectKey) ??
-      getPage31LessonByKey(selectedKidsObjectKey) ??
-      getPage30LessonByKey(selectedKidsObjectKey) ??
-      getPage29LessonByKey(selectedKidsObjectKey) ??
-      getPage28LessonByKey(selectedKidsObjectKey) ??
       getPage34LessonByKey(selectedKidsObjectKey) ??
       getPage33LessonByKey(selectedKidsObjectKey) ??
       getPage32LessonByKey(selectedKidsObjectKey) ??
