@@ -534,7 +534,7 @@ export default function TierDetail() {
               }}
               aria-label={`Open room ${r.id}`}
             >
-              <img src={getDomainImage((r as any).domain, r.id)} alt="" aria-hidden="true" style={{ width: '100%', height: 64, borderRadius: 8, marginBottom: 6, opacity: 0.95, objectFit: 'cover' }} loading="lazy" />
+              <img src={getDomainImage((r as any).domain, r.id)} alt="" aria-hidden="true" style={{ width: 48, height: 48, borderRadius: 8, marginBottom: 6, opacity: 0.95 }} loading="lazy" />
               <p style={cardTitle}>{pickTitle({ id: r.id, title_en: r.title_en, title_vi: r.title_vi })}</p>
 
               <div style={codeRow}>
