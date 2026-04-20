@@ -1659,11 +1659,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
             />
           ) : null}
 
-          {activeTab === 'logic' &&
-          accessFeatures.hasMercyLogic &&
-          !hideLogicTab &&
-          !disableEnglishLogic &&
-          !kidsModeActive ? (
+          <div style={{ display: activeTab === 'logic' && accessFeatures.hasMercyLogic && !hideLogicTab && !disableEnglishLogic && !kidsModeActive ? 'contents' : 'none' }}>
             <EnglishLogicTab
               roomTitle={roomTitle}
               contentEn={contentEn}
@@ -1684,7 +1680,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
                 'Teacher Mercy'
               }
             />
-          ) : null}
+          </div>
 
           {activeTab === 'logic' &&
           (!accessFeatures.hasMercyLogic ||
