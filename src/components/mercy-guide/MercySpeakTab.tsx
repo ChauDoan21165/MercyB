@@ -857,7 +857,19 @@ export function MercySpeakTab({
     const audio = recordedAudioRef.current;
     if (!audio) return;
     stopSpeaking();
-    try { audio.currentTime = 0; await audio.play(); setRecordingError(''); } catch { setRecordingError('Recorded audio could not be played.'); }
+    try {
+      // iOS Safari quirk: must reload before play if src changed
+      if (audio.src !== recordedAudioUrl) {
+        audio.src = recordedAudioUrl;
+      }
+      audio.load();
+      audio.currentTime = 0;
+      await audio.play();
+      setRecordingError('');
+    } catch (err) {
+      console.error('[MercySpeak] Playback failed:', err);
+      setRecordingError('Recorded audio could not be played.');
+    }
   }
 
   async function handleCopy() {
@@ -904,14 +916,38 @@ export function MercySpeakTab({
       stopActiveStream();
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       activeStreamRef.current = stream;
-      const recorder = new MediaRecorder(stream);
+      // Pick a mime type the browser actually supports. iOS Safari wants mp4/aac,
+      // Chrome/Firefox want webm/opus. Let the browser pick from this ordered list.
+      const preferredTypes = [
+        'audio/mp4;codecs=mp4a.40.2',
+        'audio/mp4',
+        'audio/aac',
+        'audio/webm;codecs=opus',
+        'audio/webm',
+        'audio/ogg;codecs=opus',
+      ];
+      const supportedType = preferredTypes.find((t) =>
+        typeof MediaRecorder !== 'undefined' && typeof MediaRecorder.isTypeSupported === 'function'
+          ? MediaRecorder.isTypeSupported(t)
+          : false
+      ) || '';
+      const recorder = supportedType
+        ? new MediaRecorder(stream, { mimeType: supportedType })
+        : new MediaRecorder(stream);
       mediaChunksRef.current = [];
       recorder.ondataavailable = (event) => { if (event.data.size > 0) mediaChunksRef.current.push(event.data); };
-      recorder.onerror = () => { setRecordingError('Recording failed. Please try again.'); setIsRecording(false); stopActiveStream(); };
+      recorder.onerror = (event) => {
+        console.error('[MercySpeak] Recorder error:', event);
+        setRecordingError('Recording failed. Please try again.');
+        setIsRecording(false);
+        stopActiveStream();
+      };
       recorder.onstop = () => {
         setIsRecording(false);
         if (!mediaChunksRef.current.length) { setRecordingError('No recording was captured. Please try again.'); stopActiveStream(); return; }
-        const blob = new Blob(mediaChunksRef.current, { type: 'audio/webm' });
+        // Use the recorder's actual mime type so the Blob matches what was encoded.
+        const blobType = recorder.mimeType || supportedType || 'audio/webm';
+        const blob = new Blob(mediaChunksRef.current, { type: blobType });
         setRecordedAudioUrl(URL.createObjectURL(blob));
         stopActiveStream();
       };
