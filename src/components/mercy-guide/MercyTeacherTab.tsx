@@ -1285,7 +1285,7 @@ export function MercyTeacherTab({
         <div className="relative p-3 md:p-4">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-[radial-gradient(circle_at_top,_rgba(255,138,101,0.08),_rgba(192,132,252,0.04)_45%,_transparent_75%)]" />
           <div className="relative space-y-4">
-            <section className="overflow-hidden rounded-3xl border border-white/80 bg-white/90 p-5 shadow-[0_12px_32px_rgba(255,138,101,0.08)] backdrop-blur-sm">
+            <section className="overflow-hidden rounded-2xl border border-[#FFE4D6] bg-gradient-to-br from-[#FFF8F3] to-white p-4 shadow-[0_8px_24px_rgba(255,138,101,0.08)]">
               <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-3">
@@ -1455,10 +1455,10 @@ export function MercyTeacherTab({
                 </div>
               </section>
             ) : (
-              <section className="rounded-3xl border border-white/80 bg-white/92 p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
-                <div className="flex items-center gap-2.5">
-                  <Brain className="h-5 w-5 text-violet-500" />
-                  <h3 className="text-lg font-semibold text-slate-900">Current loop</h3>
+              <section className="rounded-2xl border border-slate-100 bg-white/95 p-4 shadow-[0_4px_16px_rgba(148,163,184,0.08)]">
+                <div className="flex items-center gap-2">
+                  <Brain className="h-4 w-4 text-violet-500" />
+                  <h3 className="text-sm font-bold text-slate-900">Current loop</h3>
                 </div>
 
                 <div className="mt-4 grid gap-2 md:grid-cols-4">
