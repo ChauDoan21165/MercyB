@@ -621,7 +621,6 @@ function LockedAccessCard({
 function LearningSupportModePicker({
   value,
   onChange,
-  compact = false,
 }: {
   value: LearningSupportMode;
   onChange: (value: LearningSupportMode) => void;
@@ -630,133 +629,82 @@ function LearningSupportModePicker({
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
 
+  const COLORS: Record<LearningSupportMode, { active: string; dot: string; bar: string }> = {
+    gentle:    { active: 'bg-[#FFF3ED] border-[#FFB39A] text-[#C05830]', dot: 'bg-[#FF8A65]', bar: 'bg-[#FF8A65]' },
+    guided:    { active: 'bg-[#EDF7F0] border-[#7CC9A0] text-[#1E7A4A]', dot: 'bg-[#43C59E]', bar: 'bg-[#43C59E]' },
+    immersion: { active: 'bg-[#EEF4FF] border-[#93B4F5] text-[#2A56C6]', dot: 'bg-[#5B8DEF]', bar: 'bg-[#5B8DEF]' },
+  };
+
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (!rootRef.current) return;
-      if (!rootRef.current.contains(event.target as Node)) {
-        setOpen(false);
-      }
-    };
-
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setOpen(false);
-      }
-    };
-
+    function handleClickOutside(e: MouseEvent) {
+      if (rootRef.current && !rootRef.current.contains(e.target as Node)) setOpen(false);
+    }
+    function handleEscape(e: KeyboardEvent) { if (e.key === 'Escape') setOpen(false); }
     window.addEventListener('mousedown', handleClickOutside);
     window.addEventListener('keydown', handleEscape);
-
-    return () => {
-      window.removeEventListener('mousedown', handleClickOutside);
-      window.removeEventListener('keydown', handleEscape);
-    };
+    return () => { window.removeEventListener('mousedown', handleClickOutside); window.removeEventListener('keydown', handleEscape); };
   }, []);
 
-  const selected =
-    LEARNING_SUPPORT_OPTIONS.find((option) => option.value === value) ??
-    LEARNING_SUPPORT_OPTIONS[0];
-  const SelectedIcon = selected.icon;
-  const styles = getSupportModeStyles(selected.value);
-  const menuPlacementClass = compact ? 'right-0 w-[240px]' : 'right-0 w-full';
+  const activeIdx = LEARNING_SUPPORT_OPTIONS.findIndex(o => o.value === value);
 
   return (
-    <div
-      ref={rootRef}
-      className={`relative z-40 ${
-        compact
-          ? 'w-[118px] shrink-0 sm:w-[118px] xl:w-[118px]'
-          : 'w-full md:w-[320px]'
-      }`}
-    >
-      {!compact ? (
-        <div className="mb-1 px-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500">
-          Learning support
-        </div>
-      ) : null}
+    <div ref={rootRef} className="relative shrink-0">
+      {/* Emoji bar — 3 dots, compact */}
+      <div className="flex h-9 items-stretch overflow-hidden rounded-full border border-slate-200 bg-white shadow-sm">
+        {LEARNING_SUPPORT_OPTIONS.map((opt, idx) => {
+          const isActive = opt.value === value;
+          const c = COLORS[opt.value];
+          return (
+            <button key={opt.value} type="button"
+              onClick={() => { onChange(opt.value); setOpen(true); }}
+              className={[
+                'relative flex w-9 items-center justify-center transition-all',
+                isActive ? `${c.active} border` : 'text-slate-400 hover:bg-slate-50',
+                idx === 0 ? 'rounded-l-full' : idx === 2 ? 'rounded-r-full' : 'border-x border-slate-100',
+              ].join(' ')} aria-pressed={isActive} title={opt.label}>
+              <span className="text-[15px] leading-none">{opt.shortLabel.split(' ')[0]}</span>
+              {isActive && <span className={`absolute bottom-0.5 left-1/2 h-0.5 w-3 -translate-x-1/2 rounded-full ${c.dot}`} />}
+            </button>
+          );
+        })}
+        {/* Info button */}
+        <button type="button" onClick={() => setOpen(v => !v)}
+          className="flex w-7 items-center justify-center rounded-r-full border-l border-slate-100 text-slate-400 hover:bg-slate-50 hover:text-slate-600 transition-all text-[11px] font-bold">
+          ?
+        </button>
+      </div>
 
-      <button
-        type="button"
-        onClick={() => setOpen((prev) => !prev)}
-        className={`flex w-full items-center justify-between gap-1.5 border text-left transition ${
-          compact
-            ? `min-h-[40px] rounded-2xl px-2.5 py-2 ${styles.trigger}`
-            : `min-h-[48px] rounded-2xl px-3 py-2.5 ${styles.trigger}`
-        }`}
-        aria-haspopup="listbox"
-        aria-expanded={open}
-      >
-        <div className="flex min-w-0 items-center gap-1.5">
-          {compact ? null : (
-            <SelectedIcon size={16} className="shrink-0" />
-          )}
-          <div className="min-w-0">
-            <div className={compact ? 'truncate text-[13px] font-semibold' : 'truncate text-sm font-semibold'}>
-              {compact ? selected.label : selected.shortLabel}
-            </div>
-            {!compact ? (
-              <div className="truncate text-xs opacity-80">{selected.description}</div>
-            ) : null}
-          </div>
-        </div>
+      {/* Progress bar */}
+      <div className="mt-0.5 h-0.5 overflow-hidden rounded-full bg-slate-100">
+        <div className={`h-full rounded-full transition-all duration-300 ${COLORS[value].bar}`}
+          style={{ width: `${((activeIdx + 1) / 3) * 100}%` }} />
+      </div>
 
-        <ChevronDown
-          size={compact ? 14 : 16}
-          className={`shrink-0 transition ${open ? 'rotate-180' : ''}`}
-        />
-      </button>
-
-      {open ? (
-        <div
-          className={`absolute z-[90] mt-2 rounded-3xl border border-white/90 bg-white/95 p-2 shadow-[0_18px_42px_rgba(15,23,42,0.14)] backdrop-blur-md ${menuPlacementClass}`}
-          role="listbox"
-          aria-label="Learning support mode"
-        >
-          {LEARNING_SUPPORT_OPTIONS.map((option) => {
-            const isActive = option.value === value;
-            const Icon = option.icon;
-            const optionStyles = getSupportModeStyles(option.value);
-
+      {/* Dropdown explanation panel */}
+      {open && (
+        <div className="absolute right-0 top-11 z-[90] w-[260px] rounded-2xl border border-slate-100 bg-white p-2 shadow-xl">
+          {LEARNING_SUPPORT_OPTIONS.map((opt) => {
+            const isActive = opt.value === value;
+            const c = COLORS[opt.value];
             return (
-              <button
-                key={option.value}
-                type="button"
-                onClick={() => {
-                  onChange(option.value);
-                  setOpen(false);
-                }}
-                className={`flex w-full items-start gap-3 rounded-2xl px-3 py-3 text-left transition ${
-                  isActive ? 'bg-[#FAF7F2]' : 'hover:bg-[#FAF7F2]'
-                }`}
-                role="option"
-                aria-selected={isActive}
-              >
-                <div className="mt-0.5 shrink-0">
-                  <Icon size={16} className="text-slate-600" />
-                </div>
-
+              <button key={opt.value} type="button"
+                onClick={() => { onChange(opt.value); setOpen(false); }}
+                className={['flex w-full items-start gap-3 rounded-xl px-3 py-2.5 text-left transition',
+                  isActive ? 'bg-slate-50' : 'hover:bg-slate-50'].join(' ')}>
+                <span className="mt-0.5 text-lg leading-none">{opt.shortLabel.split(' ')[0]}</span>
                 <div className="min-w-0 flex-1">
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm font-semibold text-slate-900">
-                      {option.label}
-                    </span>
-                    <span className={`h-2 w-2 rounded-full ${optionStyles.dot}`} />
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-sm font-semibold text-slate-900">{opt.label}</span>
+                    <span className={`h-2 w-2 rounded-full ${c.dot}`} />
+                    {isActive && <span className="ml-auto text-xs font-bold text-slate-400">✓</span>}
                   </div>
-                  <div className="mt-1 text-xs leading-5 text-slate-600">
-                    {option.description}
-                  </div>
+                  <p className="mt-0.5 text-xs leading-5 text-slate-500">{opt.description}</p>
                 </div>
-
-                {isActive ? (
-                  <div className="pt-0.5">
-                    <Check size={16} className="text-violet-600" />
-                  </div>
-                ) : null}
               </button>
             );
           })}
         </div>
-      ) : null}
+      )}
     </div>
   );
 }
