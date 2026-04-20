@@ -74,6 +74,34 @@ export default defineConfig({
         'icons/icon-512.png',
         'icons/icon-maskable-512.png',
       ],
+      workbox: {
+        runtimeCaching: [
+          {
+            urlPattern: /\/audio\/kids\/.*\.mp3$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'kids-audio',
+              expiration: { maxEntries: 500, maxAgeSeconds: 60 * 60 * 24 * 30 },
+            },
+          },
+          {
+            urlPattern: /\/audio\/music\/.*\.mp3$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'music',
+              expiration: { maxEntries: 50, maxAgeSeconds: 60 * 60 * 24 * 30 },
+            },
+          },
+          {
+            urlPattern: /\/images\/mercy-kids.*\.png$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'kids-images',
+              expiration: { maxEntries: 2000, maxAgeSeconds: 60 * 60 * 24 * 30 },
+            },
+          },
+        ],
+      },
       manifest: {
         name: 'Mercy Blade',
         short_name: 'Mercy Blade',
