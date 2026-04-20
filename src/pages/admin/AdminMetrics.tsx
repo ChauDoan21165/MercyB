@@ -2,6 +2,10 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { supabase } from "@/lib/supabaseClient";
 import AdminStatsStrip from "@/components/admin/widgets/AdminStatsStrip";
+import {
+  AreaChart, Area, BarChart, Bar, XAxis, YAxis, CartesianGrid,
+  Tooltip, ResponsiveContainer, PieChart, Pie, Cell, Legend
+} from "recharts";
 
 type MetricCard = {
   label: string;
@@ -883,6 +887,109 @@ export default function AdminMetrics() {
         </div>
 
         <hr style={hr} />
+
+        {/* CHARTS */}
+        <hr style={hr} />
+        <div style={{ fontWeight: 900, fontSize: 20, marginBottom: 14 }}>📊 Visual Overview</div>
+
+        <div style={{ ...card, marginBottom: 14 }}>
+          <div style={{ fontWeight: 900, fontSize: 15, marginBottom: 4 }}>Tier Distribution</div>
+          <div style={{ fontSize: 12, color: 'rgba(0,0,0,0.5)', marginBottom: 14 }}>Users per tier</div>
+          {tierCounts && tierCounts.length > 0 ? (
+            <ResponsiveContainer width="100%" height={220}>
+              <BarChart data={tierCounts} margin={{ top: 4, right: 16, left: 0, bottom: 4 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" />
+                <XAxis dataKey="tier_id" tick={{ fontSize: 11, fontWeight: 800 }} />
+                <YAxis tick={{ fontSize: 11 }} />
+                <Tooltip formatter={(v) => [Number(v).toLocaleString(), 'Users']} />
+                <Bar dataKey="users" fill="#FF8A65" radius={[6,6,0,0]} />
+              </BarChart>
+            </ResponsiveContainer>
+          ) : <div style={{ color: 'rgba(0,0,0,0.4)', fontSize: 13 }}>No tier data.</div>}
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14, marginBottom: 14 }}>
+          <div style={card}>
+            <div style={{ fontWeight: 900, fontSize: 15, marginBottom: 4 }}>Subscription Mix</div>
+            <div style={{ fontSize: 12, color: 'rgba(0,0,0,0.5)', marginBottom: 14 }}>Monthly vs Yearly</div>
+            <ResponsiveContainer width="100%" height={200}>
+              <PieChart>
+                <Pie data={[
+                  { name: 'Monthly', value: revenueMetrics.monthlySubscriptions ?? 0 },
+                  { name: 'Yearly',  value: revenueMetrics.yearlySubscriptions ?? 0 },
+                ]} cx="50%" cy="50%" outerRadius={75} dataKey="value"
+                  label={({ name, percent }: any) => `${name} ${((percent as number)*100).toFixed(0)}%`}>
+                  <Cell fill="#FF8A65" />
+                  <Cell fill="#43C59E" />
+                </Pie>
+                <Tooltip />
+              </PieChart>
+            </ResponsiveContainer>
+          </div>
+
+          <div style={card}>
+            <div style={{ fontWeight: 900, fontSize: 15, marginBottom: 4 }}>Renewal Risk (30d)</div>
+            <div style={{ fontSize: 12, color: 'rgba(0,0,0,0.5)', marginBottom: 14 }}>Renewals vs Cancellations</div>
+            <ResponsiveContainer width="100%" height={200}>
+              <BarChart data={[
+                { label: 'Renewals', value: revenueMetrics.renewalsNext30d ?? 0 },
+                { label: 'Cancels',  value: revenueMetrics.cancellationsNext30d ?? 0 },
+              ]} margin={{ top: 4, right: 16, left: 0, bottom: 4 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" />
+                <XAxis dataKey="label" tick={{ fontSize: 12, fontWeight: 800 }} />
+                <YAxis tick={{ fontSize: 11 }} />
+                <Tooltip />
+                <Bar dataKey="value" radius={[6,6,0,0]}>
+                  <Cell fill="#43C59E" />
+                  <Cell fill="#FF6B6B" />
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+
+        <div style={{ ...card, marginBottom: 14 }}>
+          <div style={{ fontWeight: 900, fontSize: 15, marginBottom: 4 }}>Activity Snapshot</div>
+          <div style={{ fontSize: 12, color: 'rgba(0,0,0,0.5)', marginBottom: 14 }}>Online / Active / Feedback</div>
+          <ResponsiveContainer width="100%" height={180}>
+            <BarChart data={[
+              { label: 'Online 10m',  value: onlineUsers10m ?? 0 },
+              { label: 'Active 24h',  value: activeUsers24h ?? 0 },
+              { label: 'Feedback 24h', value: feedbackToday ?? 0 },
+              { label: 'Unread FB',   value: feedbackUnread ?? 0 },
+            ]} margin={{ top: 4, right: 16, left: 0, bottom: 4 }}>
+              <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" />
+              <XAxis dataKey="label" tick={{ fontSize: 11, fontWeight: 700 }} />
+              <YAxis tick={{ fontSize: 11 }} />
+              <Tooltip />
+              <Bar dataKey="value" radius={[6,6,0,0]}>
+                <Cell fill="#5B8DEF" />
+                <Cell fill="#43C59E" />
+                <Cell fill="#FF8A65" />
+                <Cell fill="#FF6B6B" />
+              </Bar>
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+
+        <div style={{ ...card, marginBottom: 14, borderColor: (feedbackUnread ?? 0) > 10 ? '#FF6B6B' : 'rgba(0,0,0,0.10)' }}>
+          <div style={{ fontWeight: 900, fontSize: 15, marginBottom: 8 }}>
+            {(feedbackUnread ?? 0) > 10 ? '🚨' : '🛡️'} Security Signals
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 12 }}>
+            {[
+              { label: 'Unread Feedback', value: feedbackUnread ?? 0, warn: (feedbackUnread ?? 0) > 10, hint: '>10 may indicate spam' },
+              { label: 'Feedback Spike 24h', value: feedbackToday ?? 0, warn: (feedbackToday ?? 0) > 20, hint: '>20/day is unusual' },
+              { label: 'Sched. Cancels', value: revenueMetrics.scheduledCancellations ?? 0, warn: (revenueMetrics.scheduledCancellations ?? 0) > 5, hint: '>5 needs review' },
+            ].map(item => (
+              <div key={item.label} style={{ padding: 12, borderRadius: 12, border: `1px solid ${item.warn ? '#FF6B6B' : 'rgba(0,0,0,0.08)'}`, background: item.warn ? '#FFF5F5' : 'white' }}>
+                <div style={{ fontSize: 11, fontWeight: 900, textTransform: 'uppercase', letterSpacing: 0.5, color: item.warn ? '#CC2222' : 'rgba(0,0,0,0.55)', marginBottom: 4 }}>{item.label}</div>
+                <div style={{ fontSize: 28, fontWeight: 900, color: item.warn ? '#CC2222' : 'black' }}>{item.value.toLocaleString()}</div>
+                <div style={{ fontSize: 11, color: 'rgba(0,0,0,0.45)', marginTop: 4 }}>{item.hint}</div>
+              </div>
+            ))}
+          </div>
+        </div>
 
         <div
           style={{
