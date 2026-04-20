@@ -150,6 +150,12 @@ export default defineConfig({
 
           if (s.includes('/node_modules/')) return 'vendor';
 
+          // Kids data files — split into separate chunk
+          if (s.includes('/mercy-guide/kids/kidPage')) return 'kids-data';
+
+          // MercyGuide components — split from main
+          if (s.includes('/mercy-guide/') || s.includes('/MercyGuide')) return 'mercy-guide';
+
           return undefined;
         },
       },
