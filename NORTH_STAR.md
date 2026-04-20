@@ -134,12 +134,13 @@ Typical:
 
 ## 🗺️ The Roadmap (ordered by impact)
 
-### Phase 1: Foundation ✅ (in progress, ~this week)
-- Audio cleanup (done)
-- Supabase Storage migration (in progress)
-- Personal notebook feature (in progress)
-- Responsive UI polish (done)
-- iOS app submission ready
+### Phase 1: Foundation ✅ (near-complete, ~this week)
+- [x] **Audio cleanup** — 53 loose `.mp3`s removed from repo root + 3 byte-identical music files deduped
+- [x] **Supabase audio migration** — 3550/3550 files uploaded, `roomAudioResolver` + workbox signed-URL cache shipped, local fallback verified
+- [x] **Personal notebook feature** — 6 commits (migration → service → hook → SaveWordPopup → review/list/panel → integration into `MercyTeacherTab` adult branch); kids branch untouched
+- [x] **Responsive UI polish** — Home, TierIndex, MercyGuidePanel, MercySpeakTab, MercyTeacherTab, GrammarWritingTab, EnglishLogicTab all scale 375–1280px
+- [ ] **iOS bundle size reduction** — IN PROGRESS. Supabase path works; local `public/audio/*.mp3` still bundled. Next step is removing them after runtime tests confirm cutover.
+- [ ] **iOS app submission** — NOT YET. Blocked on bundle size reduction above.
 
 ### Phase 2: Vietnamese-First Features (next 2 weeks)
 - Vietnamese pronunciation-specific drills (th, r, l, final consonants)
@@ -353,6 +354,12 @@ Re-read section 1 (Mission). If the work doesn't serve the mission, stop doing i
 - Synthesizes: responsive UI work, audio migration plan, notebook feature decision, Vietnamese market strategy discussion
 - Current state: Phase 1 Foundation in progress (audio cleanup + Supabase migration + notebook feature)
 
+### April 20, 2026 (evening) — v1.1
+- Completed Phase 1 Foundation: audio cleanup, Supabase migration (3550/3550 files), notebook feature (6 commits), responsive UI, tech debt documentation
+- Applied notebook table manually to Supabase (CLI repair deferred)
+- 12+ commits pending push (holding for runtime tests)
+- Next: runtime verification of Supabase audio cutover, then push, then iOS submission prep
+
 ---
 
 *This document is living. Update it as the business evolves. Never let it become stale dogma — it's a compass, not a cage.*
@@ -381,7 +388,8 @@ Things that aren't broken for users but need fixing eventually. Ordered by prior
 5. Confirm `supabase db push` works for future migrations
 
 **Why deferred:** Manual SQL Editor works fine for now. CLI only needed for CI/CD automation, which we're not using yet.
-**Priority:** Medium (blocks future automated deploys)
+**Priority:** Medium (blocks CI/CD automation)
+**Est:** 30–45 min
 
 ### Fix Vite circular chunk warning
 - Build output shows: `Circular chunk: ui -> vendor -> ui. Please adjust the manual chunk logic for these chunks.`
@@ -389,6 +397,15 @@ Things that aren't broken for users but need fixing eventually. Ordered by prior
 
 **Fix:** Review `vite.config.ts` manual chunk config; decouple `ui` and `vendor` dependencies.
 **Priority:** Low (not affecting users yet, may cause flaky first-load behavior)
+**Est:** 20–30 min
+
+### Add retry-with-backoff to audio upload script
+- `scripts/upload-audio-to-supabase.ts` has no retry logic
+- 2 of 3550 files failed on first bulk run due to transient errors (recovered manually)
+- For any future bulk re-run, add retry wrapper around `uploadOne()` (3 attempts, exponential backoff)
+
+**Priority:** Low (only matters if we re-run bulk upload)
+**Est:** 15 min
 
 ### Clean up 2 failed audio uploads
 - 2 files got "Bad Request" from Supabase during bulk upload:
@@ -400,12 +417,13 @@ Things that aren't broken for users but need fixing eventually. Ordered by prior
 **Fix:** Investigate with verbose error logging, retry individually. Document the root cause.
 **Priority:** Low (fallback covers it)
 
-### Investigate orphan_candidates.txt and other cleanup artifacts
-- `orphan_candidates.txt` at repo root — scratch file from audit
-- Should be deleted or gitignored
+### Clean up orphan_candidates.txt scratch file
+- `orphan_candidates.txt` at repo root — scratch file from audio audit
+- Should be deleted and added to `.gitignore`
 
 **Fix:** `rm orphan_candidates.txt && echo "orphan_candidates.txt" >> .gitignore`
-**Priority:** Low (just clutter)
+**Priority:** Very Low (just clutter)
+**Est:** 2 min
 
 ### Remove bundled audio after Supabase cutover verified
 - Currently both Supabase AND local audio coexist
@@ -413,5 +431,6 @@ Things that aren't broken for users but need fixing eventually. Ordered by prior
 - This is the whole point of Phase 2 — reduce iOS bundle from 3.9 GB to ~200 MB
 
 **Fix:** After runtime tests pass: `git rm public/audio/*.mp3` (exclude kids folder), rebuild, commit, push.
-**Priority:** High (this is how we unlock iOS App Store submission)
+**Priority:** High (this is how we unlock iOS App Store submission — 3.9 GB → ~300 MB)
+**Est:** 1 hour (careful staged removal + verification)
 
