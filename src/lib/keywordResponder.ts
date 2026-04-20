@@ -3,6 +3,8 @@
  * No static imports of large JSON files
  */
 
+import { resolveRoomAudioUrl } from '@/lib/roomAudioResolver';
+
 // Cache for loaded room data and cross-topic recommendations
 let crossTopicCache: any = null;
 let roomJsonCache: Record<string, any> = {};
@@ -217,16 +219,13 @@ export async function keywordRespondAsync(
     if (matchedEntry) {
       entryId = matchedEntry.id;
       const audio = matchedEntry.audio;
+      let rawPath: string | null = null;
       if (typeof audio === 'string') {
-        let path = audio.replace(/^\/+/, '').replace(/^public\//, '').replace(/^audio\//, '');
-        audioFile = `/audio/${path}`;
+        rawPath = audio;
       } else if (audio && typeof audio === 'object') {
-        const audioPath = audio.en || audio.vi;
-        if (audioPath) {
-          let path = audioPath.replace(/^\/+/, '').replace(/^public\//, '').replace(/^audio\//, '');
-          audioFile = `/audio/${path}`;
-        }
+        rawPath = audio.en || audio.vi || null;
       }
+      audioFile = (await resolveRoomAudioUrl(rawPath)) ?? undefined;
     }
   } else {
     const keywordsSource: any = roomData.keywords || roomData.keywords_dict || {};
@@ -234,16 +233,13 @@ export async function keywordRespondAsync(
 
     if (matchedEntry) {
       const audio = matchedEntry.audio || matchedEntry.audio_file || matchedEntry.meta?.audio_file || matchedEntry.audioEn || matchedEntry.audio_en;
+      let rawPath: string | null = null;
       if (typeof audio === 'string') {
-        let path = audio.replace(/^\/+/, '').replace(/^public\//, '').replace(/^audio\//, '');
-        audioFile = `/audio/${path}`;
+        rawPath = audio;
       } else if (audio && typeof audio === 'object') {
-        const audioPath = audio.en || audio.vi;
-        if (audioPath) {
-          let path = audioPath.replace(/^\/+/, '').replace(/^public\//, '').replace(/^audio\//, '');
-          audioFile = `/audio/${path}`;
-        }
+        rawPath = audio.en || audio.vi || null;
       }
+      audioFile = (await resolveRoomAudioUrl(rawPath)) ?? undefined;
       entryId = matchedEntry.id || matchedEntry.artifact_id || matchedEntry.title;
     }
   }
