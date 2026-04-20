@@ -44,6 +44,7 @@ import { KID_PAGE_31_ITEMS } from './kids/kidPage31Data';
 import { KID_PAGE_32_ITEMS } from './kids/kidPage32Data';
 import { KID_PAGE_33_ITEMS } from './kids/kidPage33Data';
 import { KID_PAGE_34_ITEMS } from './kids/kidPage34Data';
+import { awardSpeakPoints } from '@/services/pointsService';
 import type { StudentMercyMemoryUpdate, LearningSupportMode } from './types';
 import type {
   SpeechRecognitionLike as BaseSpeechRecognitionLike,
@@ -105,6 +106,7 @@ type KidsLessonCard = {
   label: string;
   sentence: string;
   imageSrc: string;
+  dialogue?: string[];
 };
 
 type KidsBuddy = {
@@ -403,12 +405,18 @@ function getPage3LessonByKey(key?: string | null): KidsLessonCard | null {
   return { key: normalized, label: toPage3Label(normalized), sentence: toPage3Sentence(normalized), imageSrc: `/images/mercy-kids-page-3/${normalized}.png` };
 }
 
-function makePageLessonGetter(pageNumber: number, getItem: (key: string | null | undefined) => { key: string; label: string; image: string } | null | undefined) {
+function makePageLessonGetter(pageNumber: number, getItem: (key: string | null | undefined) => { key: string; label: string; image: string; dialogue?: string[] } | null | undefined) {
   return function getLessonByKey(key?: string | null): KidsLessonCard | null {
     if (!matchesPageKeyPrefix(key, pageNumber)) return null;
     const item = getItem(key);
     if (!item) return null;
-    return { key: item.key, label: item.label, sentence: toPhraseSentence(item.label), imageSrc: item.image };
+    return {
+      key: item.key,
+      label: item.label,
+      sentence: item.dialogue ? item.dialogue[0] : toPhraseSentence(item.label),
+      imageSrc: item.image,
+      dialogue: item.dialogue,
+    };
   };
 }
 
@@ -607,16 +615,30 @@ export function MercySpeakTab({
   }, [isKidsMode, kidsLesson, kidsObject]);
 
   // Derive the pre-recorded mp3 path for kids mode
-  // Key looks like: k25_001_rice  →  /audio/kids/k25_001_rice.mp3
-  // For page1 objects (apple, ball etc) the key is just the word — skip mp3
+  const [voiceGender, setVoiceGender] = useState<'mercy' | 'josh'>(() => {
+    try { return (localStorage.getItem('mb.voice.gender') as 'mercy' | 'josh') || 'mercy'; } catch { return 'mercy'; }
+  });
+
   const kidsAudioSrc = useMemo(() => {
     if (!isKidsMode) return null;
     const key = selectedKidsObjectKey ?? '';
-    if (!key) return null;
-    // Only use pre-recorded audio for keys that start with kXX_ pattern
-    if (!/^k\d+_/.test(key)) return null;
-    return `/audio/kids/${key}.mp3`;
-  }, [isKidsMode, selectedKidsObjectKey]);
+    if (!key || !/^k\d+_/.test(key)) return null;
+    const folder = voiceGender === 'josh' ? '/audio/kids/josh' : '/audio/kids';
+    return `${folder}/${key}.mp3`;
+  }, [isKidsMode, selectedKidsObjectKey, voiceGender]);
+
+  const kidsAudioPlaylist = useMemo(() => {
+    if (!isKidsMode) return [] as string[];
+    const key = selectedKidsObjectKey ?? '';
+    if (!key || !/^k\d+_/.test(key)) return [] as string[];
+    const folder = voiceGender === 'josh' ? '/audio/kids/josh' : '/audio/kids';
+    const lines = (kidsLesson as any)?.dialogue ?? [];
+    if (lines.length <= 1) return [`${folder}/${key}.mp3`];
+    return [
+      `${folder}/${key}.mp3`,
+      ...lines.slice(1).map((_: string, i: number) => `${folder}/${key}_line${i + 2}.mp3`),
+    ];
+  }, [isKidsMode, selectedKidsObjectKey, voiceGender, kidsLesson]);
 
   const sourceText    = isKidsMode ? kidsPracticeText : rawSourceText;
   const correctedText = isKidsMode ? kidsPracticeText : rawCorrectedText;
@@ -730,6 +752,7 @@ export function MercySpeakTab({
   useEffect(() => {
     if (!transcript || !practiceText || !onMemoryUpdate) return;
     onMemoryUpdate({ pronunciation: { troubleWords: generatedTroubleWords, lastPracticeLine: practiceText, confidenceLevel: getConfidenceLevel(matchScore) } });
+    if (transcript) awardSpeakPoints(matchScore, roomId);
   }, [generatedTroubleWords, matchScore, onMemoryUpdate, practiceText, transcript]);
 
   useEffect(() => {
@@ -801,19 +824,24 @@ export function MercySpeakTab({
       // Stop any currently playing kids audio
       try { audio.pause(); audio.currentTime = 0; } catch { /* ignore */ }
 
-      audio.src = kidsAudioSrc;
-      audio.onplay  = () => setIsSpeaking(true);
-      audio.onended = () => setIsSpeaking(false);
-      audio.onerror = () => {
-        // mp3 not found — fall back to browser TTS
-        setIsSpeaking(false);
-        speakViaTTS(speechText);
+      const playlist = kidsAudioPlaylist.length > 0 ? kidsAudioPlaylist : (kidsAudioSrc ? [kidsAudioSrc] : []);
+      if (playlist.length === 0) { speakViaTTS(speechText); return; }
+
+      let currentIdx = 0;
+      const playNext = () => {
+        if (currentIdx >= playlist.length) { setIsSpeaking(false); return; }
+        const src = playlist[currentIdx++];
+        audio.src = src;
+        audio.onplay = () => setIsSpeaking(true);
+        audio.onended = () => setTimeout(playNext, 400); // 400ms pause between lines
+        audio.onerror = () => {
+          // line not found — skip to next or fall back
+          if (currentIdx >= playlist.length) { setIsSpeaking(false); }
+          else setTimeout(playNext, 100);
+        };
+        audio.play().catch(() => { setIsSpeaking(false); });
       };
-      audio.play().catch(() => {
-        // play() rejected (e.g. file missing) — fall back to TTS
-        setIsSpeaking(false);
-        speakViaTTS(speechText);
-      });
+      playNext();
       return;
     }
 

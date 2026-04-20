@@ -5,6 +5,7 @@
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { supabase } from '@/lib/supabaseClient';
+import { getTotalPoints, getStreakDays, getStreakEmoji, getPointsDisplay, loadPointsFromSupabase } from '@/services/pointsService';
 import { cn } from '@/lib/utils';
 import { useMercyGuide } from '@/hooks/useMercyGuide';
 import type { CompanionProfile } from '@/services/companion';
@@ -1126,6 +1127,11 @@ export function MercyGuide({
       }
     })();
     return () => { alive = false; };
+  }, []);
+
+  // Load points from Supabase on mount
+  useEffect(() => {
+    void loadPointsFromSupabase();
   }, []);
 
   if (!isEnabled) {

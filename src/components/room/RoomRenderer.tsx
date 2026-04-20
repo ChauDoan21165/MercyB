@@ -83,6 +83,7 @@ import { supabase } from "@/lib/supabaseClient";
 
 import { getSignedAudio } from "@/lib/audio/getSignedAudio";
 import { addStudyLogEntry } from "@/services/studyLog";
+import { awardPoints } from "@/services/pointsService";
 
 import { prettifyRoomIdEN, isBadAutoTitle } from "@/components/room/roomIdUtils";
 import { fetchRoomEntriesDb, coerceRoomEntryRowToEntry } from "@/components/room/roomEntriesDb";
@@ -1554,6 +1555,7 @@ export default function RoomRenderer({
                           setActiveKeyword((cur) => {
                             const curKey = normalizeTextForKwMatch(cur || "");
                             const nextKey = normalizeTextForKwMatch(next || "");
+                            if (!(curKey && curKey === nextKey)) awardPoints('keyword_click', effectiveRoomId);
                             return curKey && curKey === nextKey ? null : next;
                           })
                         }
