@@ -1564,11 +1564,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
             />
           ) : null}
 
-          {activeTab === 'grammar' &&
-          accessFeatures.hasMercyGrammar &&
-          !hideGrammarTab &&
-          !disableGrammarAnalysis &&
-          !kidsModeActive ? (
+          <div style={{ display: activeTab === 'grammar' && accessFeatures.hasMercyGrammar && !hideGrammarTab && !disableGrammarAnalysis && !kidsModeActive ? 'contents' : 'none' }}>
             <GrammarWritingTab
               roomId={roomId}
               roomTitle={roomTitle}
@@ -1593,7 +1589,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
               onOpenEnglishLogic={handleOpenLogic}
               onMemoryUpdate={onMemoryUpdate}
             />
-          ) : null}
+          </div>
 
           {activeTab === 'grammar' &&
           (!accessFeatures.hasMercyGrammar ||
