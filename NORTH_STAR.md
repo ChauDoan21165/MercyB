@@ -356,3 +356,62 @@ Re-read section 1 (Mission). If the work doesn't serve the mission, stop doing i
 ---
 
 *This document is living. Update it as the business evolves. Never let it become stale dogma — it's a compass, not a cage.*
+
+
+---
+
+## 🛠 Deferred Tech Debt
+
+Things that aren't broken for users but need fixing eventually. Ordered by priority.
+
+### Fix Supabase migration drift
+- `supabase migration list` shows stuck 20260321 duplicate row in remote schema_migrations
+- 4 migrations marked pending remotely but some may already be applied manually:
+  - 20260321 (stuck duplicate)
+  - 20260402
+  - 20260403
+  - 20260420000038
+- Notebook migration (20260420225840) applied manually via SQL Editor — works, but not in CLI state
+
+**Fix process (~30-45 min, do when no ship pressure):**
+1. Audit remote schema — for each pending migration, check if tables/columns actually exist in Supabase
+2. For each one already applied manually: `supabase migration repair --status applied <timestamp>`
+3. For 20260321 stuck row: `supabase migration repair --status reverted 20260321`
+4. Run `supabase migration list` → verify clean state
+5. Confirm `supabase db push` works for future migrations
+
+**Why deferred:** Manual SQL Editor works fine for now. CLI only needed for CI/CD automation, which we're not using yet.
+**Priority:** Medium (blocks future automated deploys)
+
+### Fix Vite circular chunk warning
+- Build output shows: `Circular chunk: ui -> vendor -> ui. Please adjust the manual chunk logic for these chunks.`
+- Build completes successfully, but can cause subtle loading issues on first load for some users
+
+**Fix:** Review `vite.config.ts` manual chunk config; decouple `ui` and `vendor` dependencies.
+**Priority:** Low (not affecting users yet, may cause flaky first-load behavior)
+
+### Clean up 2 failed audio uploads
+- 2 files got "Bad Request" from Supabase during bulk upload:
+  - `kautilya_vol2_7_en.mp3` (2.7 MB)
+  - `legacy_vip4_01_en.mp3` (297 KB)
+- Safety net: local fallback in audio resolver means users still hear audio from bundled files
+- Root cause: unclear (transient API issue vs content issue vs naming)
+
+**Fix:** Investigate with verbose error logging, retry individually. Document the root cause.
+**Priority:** Low (fallback covers it)
+
+### Investigate orphan_candidates.txt and other cleanup artifacts
+- `orphan_candidates.txt` at repo root — scratch file from audit
+- Should be deleted or gitignored
+
+**Fix:** `rm orphan_candidates.txt && echo "orphan_candidates.txt" >> .gitignore`
+**Priority:** Low (just clutter)
+
+### Remove bundled audio after Supabase cutover verified
+- Currently both Supabase AND local audio coexist
+- After runtime tests confirm Supabase path works, remove `public/audio/*` files (kids audio stays)
+- This is the whole point of Phase 2 — reduce iOS bundle from 3.9 GB to ~200 MB
+
+**Fix:** After runtime tests pass: `git rm public/audio/*.mp3` (exclude kids folder), rebuild, commit, push.
+**Priority:** High (this is how we unlock iOS App Store submission)
+
