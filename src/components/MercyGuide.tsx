@@ -4,6 +4,7 @@
  */
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { supabase } from '@/lib/supabaseClient';
 import { cn } from '@/lib/utils';
 import { useMercyGuide } from '@/hooks/useMercyGuide';
 import type { CompanionProfile } from '@/services/companion';
@@ -1100,6 +1101,31 @@ export function MercyGuide({
 
   const handleSaveProfile = useCallback((nextProfile: CompanionProfile) => {
     setProfile(nextProfile);
+  }, []);
+
+  // Load profile from Supabase on mount to get student name
+  useEffect(() => {
+    let alive = true;
+    void (async () => {
+      try {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user || !alive) return;
+        const { data } = await supabase
+          .from('profiles')
+          .select('preferred_name, full_name, english_level, email')
+          .eq('id', user.id)
+          .single();
+        if (!data || !alive) return;
+        setProfile(prev => ({
+          ...prev,
+          preferred_name: data.preferred_name || data.full_name || data.email?.split('@')[0] || null,
+          english_level: data.english_level || prev.english_level,
+        } as CompanionProfile));
+      } catch {
+        // ignore
+      }
+    })();
+    return () => { alive = false; };
   }, []);
 
   if (!isEnabled) {

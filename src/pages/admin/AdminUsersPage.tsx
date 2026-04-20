@@ -706,6 +706,8 @@ export default function AdminUsersPage() {
 
   const [kpis, setKpis] = useState<KpiRow>(EMPTY_KPIS);
 
+  const [allProfiles, setAllProfiles] = useState<Array<{id: string; email: string; tier: string; created_at: string | null}>>([]);
+  const [activeTab, setActiveTabLocal] = useState<'subscribers' | 'all_users'>('subscribers');
   const requestIdRef = useRef(0);
 
   const load = async () => {
@@ -737,6 +739,19 @@ export default function AdminUsersPage() {
       setRows(nextRows);
       setKpis(nextKpis);
       setRefreshedAt(new Date().toISOString());
+
+      // Also load ALL profiles (free + paid)
+      const { data: profilesData } = await (supabase as any)
+        .from('profiles')
+        .select('id, email, tier, created_at')
+        .order('created_at', { ascending: false })
+        .limit(2000);
+      if (profilesData) {
+        setAllProfiles((profilesData as any[]).map((p: any) => ({
+          id: safeText(p.id), email: safeText(p.email, 'unknown'),
+          tier: safeText(p.tier, 'free'), created_at: safeText(p.created_at) || null,
+        })));
+      }
     } catch (e: unknown) {
       if (requestIdRef.current !== requestId) return;
       setErr(e instanceof Error ? e.message : String(e));
@@ -1321,6 +1336,66 @@ export default function AdminUsersPage() {
             help="Current result set after filters."
           />
         </div>
+
+        {/* Tab switcher */}
+        <div style={{ marginTop: 18, display: 'flex', gap: 10 }}>
+          {(['subscribers', 'all_users'] as const).map(tab => (
+            <button key={tab} type="button"
+              onClick={() => setActiveTabLocal(tab)}
+              style={{
+                padding: '10px 18px', borderRadius: 999, fontWeight: 900, fontSize: 14, cursor: 'pointer',
+                border: activeTab === tab ? '1px solid rgba(0,0,0,0.24)' : '1px solid rgba(0,0,0,0.10)',
+                background: activeTab === tab ? 'black' : 'white',
+                color: activeTab === tab ? 'white' : 'rgba(0,0,0,0.72)',
+              }}>
+              {tab === 'subscribers' ? `💳 Subscribers (${rows.length})` : `👥 All Users (${allProfiles.length})`}
+            </button>
+          ))}
+        </div>
+
+        {activeTab === 'all_users' && (
+          <div style={{ marginTop: 18, borderRadius: 20, border: '1px solid rgba(0,0,0,0.08)', background: 'white', padding: 16, boxShadow: '0 10px 24px rgba(0,0,0,0.04)' }}>
+            <h2 style={{ margin: '0 0 4px', fontSize: 22, fontWeight: 900 }}>All Registered Users</h2>
+            <p style={{ margin: '0 0 14px', fontSize: 13, color: 'rgba(0,0,0,0.55)' }}>All profiles including free users — {allProfiles.length} total</p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: 12, marginBottom: 16 }}>
+              {[
+                { label: 'Total Users', value: allProfiles.length },
+                { label: 'Free (level0)', value: allProfiles.filter(p => !p.tier || p.tier === 'level0' || p.tier === 'free').length },
+                { label: 'Paid', value: allProfiles.filter(p => p.tier && p.tier !== 'level0' && p.tier !== 'free').length },
+                { label: 'This Month', value: allProfiles.filter(p => p.created_at && new Date(p.created_at) > new Date(Date.now() - 30*24*60*60*1000)).length },
+              ].map(stat => (
+                <div key={stat.label} style={{ padding: '14px 16px', borderRadius: 16, border: '1px solid rgba(0,0,0,0.08)', background: 'rgba(248,250,252,0.96)' }}>
+                  <div style={{ fontSize: 11, fontWeight: 900, textTransform: 'uppercase', letterSpacing: 0.5, color: 'rgba(0,0,0,0.45)', marginBottom: 6 }}>{stat.label}</div>
+                  <div style={{ fontSize: 30, fontWeight: 950, letterSpacing: -0.7 }}>{stat.value}</div>
+                </div>
+              ))}
+            </div>
+            <div style={{ overflowX: 'auto', borderRadius: 14, border: '1px solid rgba(0,0,0,0.08)' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 600 }}>
+                <thead>
+                  <tr>
+                    {['Email', 'Tier', 'Joined'].map(h => (
+                      <th key={h} style={{ padding: '10px 12px', textAlign: 'left', fontSize: 12, fontWeight: 900, letterSpacing: 0.5, textTransform: 'uppercase', color: 'rgba(0,0,0,0.48)', background: 'rgba(247,249,252,0.98)', borderBottom: '1px solid rgba(0,0,0,0.08)' }}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {allProfiles.map(p => (
+                    <tr key={p.id} style={{ borderBottom: '1px solid rgba(0,0,0,0.06)' }}>
+                      <td style={{ padding: '10px 12px', fontSize: 14 }}>{p.email}</td>
+                      <td style={{ padding: '10px 12px', fontSize: 13 }}>
+                        <span style={{ padding: '4px 10px', borderRadius: 999, fontSize: 12, fontWeight: 900, background: p.tier === 'level0' || p.tier === 'free' || !p.tier ? 'rgba(248,250,252,0.96)' : 'rgba(236,253,245,0.95)', border: '1px solid rgba(0,0,0,0.10)', color: p.tier === 'level0' || p.tier === 'free' || !p.tier ? 'rgba(51,65,85,0.90)' : 'rgba(6,95,70,0.94)' }}>
+                          {p.tier || 'free'}
+                        </span>
+                      </td>
+                      <td style={{ padding: '10px 12px', fontSize: 13, color: 'rgba(0,0,0,0.55)' }}>{p.created_at ? new Date(p.created_at).toLocaleDateString() : '—'}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
 
         <AlertsPanel
           rows={rows}

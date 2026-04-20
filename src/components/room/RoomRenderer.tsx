@@ -82,6 +82,7 @@ import { ROOM_CSS } from "@/components/room/roomRendererStyles";
 import { supabase } from "@/lib/supabaseClient";
 
 import { getSignedAudio } from "@/lib/audio/getSignedAudio";
+import { addStudyLogEntry } from "@/services/studyLog";
 
 import { prettifyRoomIdEN, isBadAutoTitle } from "@/components/room/roomIdUtils";
 import { fetchRoomEntriesDb, coerceRoomEntryRowToEntry } from "@/components/room/roomEntriesDb";
@@ -1073,6 +1074,21 @@ export default function RoomRenderer({
     const keyword = activeKeyword ? String(activeKeyword).trim() : null;
     dispatchHostContext({ page: "room", roomId: effectiveRoomId, keyword, entryId });
   }, [effectiveRoomId, activeKeyword, activeEntry]);
+
+  // Log study activity when user picks a keyword
+  useEffect(() => {
+    if (!effectiveRoomId || !activeKeyword || isLocked) return;
+    const sessionStart = Date.now();
+    return () => {
+      const minutes = Math.round((Date.now() - sessionStart) / 60000);
+      void addStudyLogEntry({
+        room_id: effectiveRoomId,
+        topic_en: String(activeKeyword || "").trim() || undefined,
+        topic_vi: titleVI || undefined,
+        minutes: Math.max(1, minutes),
+      });
+    };
+  }, [effectiveRoomId, activeKeyword, isLocked]);
 
   const [activeAudioUrl, setActiveAudioUrl] = useState<string>("");
 

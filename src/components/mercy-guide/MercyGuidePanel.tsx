@@ -931,6 +931,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
   const [activeTab, setLocalActiveTab] = useState<MercyTabType>(
     normalizeTab(initialTab),
   );
+  const [showGreeting, setShowGreeting] = useState(true);
   const [learningSupportMode, setLearningSupportMode] =
     useState<LearningSupportMode>('gentle');
   const [selectedKidsObjectKey, setSelectedKidsObjectKey] = useState<string>(
@@ -1369,6 +1370,50 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
           </div>
         </div>
       </div>
+
+      {/* Greeting banner */}
+      {showGreeting && (
+        <div
+          className="relative z-30 px-3 pt-2"
+          style={{ animation: 'mbGreetingFade 0.4s ease-out' }}
+        >
+          <style>{`
+            @keyframes mbGreetingFade {
+              from { opacity: 0; transform: translateY(-6px); }
+              to   { opacity: 1; transform: translateY(0); }
+            }
+          `}</style>
+          <div className="flex items-center gap-3 rounded-2xl border border-[#FFE4D6] bg-gradient-to-r from-[#FFF8F3] to-white px-4 py-2.5 shadow-[0_4px_16px_rgba(255,138,101,0.10)]">
+            <span className="text-xl">👋</span>
+            <div className="min-w-0">
+              <p className="text-sm font-semibold text-slate-900 leading-tight">
+                {(() => {
+                  const name = cleanText((profile as any)?.preferred_name ?? (profile as any)?.full_name ?? '');
+                  return name ? `Hello ${name}, welcome to the class! 🌸` : `Hello! Welcome to the class. 🌸`;
+                })()}
+              </p>
+              <p className="text-xs text-slate-500 mt-0.5 leading-tight">
+                {(() => {
+                  const summaryItems = Array.isArray(teacherMemorySummary) ? teacherMemorySummary : [];
+                  const strength = summaryItems.find((s: any) => s?.type === 'strength');
+                  const focus = summaryItems.find((s: any) => s?.type === 'focus');
+                  if (strength) return `Last time you did great with ${cleanText(strength.label)}! 🌟`;
+                  if (focus) return `We have been working on ${cleanText(focus.label)} together.`;
+                  return 'What would you like to talk about today?';
+                })()}
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => setShowGreeting(false)}
+              className="ml-auto shrink-0 text-slate-300 hover:text-slate-500 transition text-lg leading-none"
+              aria-label="Dismiss greeting"
+            >
+              ×
+            </button>
+          </div>
+        </div>
+      )}
 
       <div className="relative z-20 border-b border-white/80 bg-white/58 px-3 py-2 backdrop-blur-sm">
         {!accessFeatures.hasMercyJourney && !kidsModeActive ? (
