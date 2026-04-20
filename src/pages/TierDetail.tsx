@@ -334,41 +334,40 @@ export default function TierDetail() {
 
   const grid: React.CSSProperties = {
     marginTop: 14,
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
-    gap: 14,
+    display: "flex",
+    flexDirection: "column",
+    gap: 8,
     pointerEvents: "auto",
-    alignItems: "stretch",
   };
 
   const cardBase: React.CSSProperties = {
-    borderRadius: 18,
+    borderRadius: 14,
     border: "1px solid rgba(0,0,0,0.10)",
     background: "rgba(255,255,255,0.86)",
-    boxShadow: "0 8px 18px rgba(0,0,0,0.08)",
-    padding: "14px 14px 12px",
+    boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
+    padding: "10px 12px",
     textDecoration: "none",
     color: "inherit",
     transition: "transform 120ms ease, box-shadow 120ms ease",
     display: "flex",
-    flexDirection: "column",
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 12,
     pointerEvents: "auto",
-    minHeight: 112,
   };
 
   const cardTitle: React.CSSProperties = {
-    fontSize: 16,
-    fontWeight: 800,
+    fontSize: 15,
+    fontWeight: 700,
     color: "rgba(0,0,0,0.78)",
     letterSpacing: -0.2,
     margin: 0,
-    lineHeight: 1.2,
-    display: "-webkit-box",
-    WebkitLineClamp: 2,
-    WebkitBoxOrient: "vertical",
+    lineHeight: 1.3,
+    flex: 1,
+    minWidth: 0,
     overflow: "hidden",
-    overflowWrap: "anywhere",
-    wordBreak: "break-word",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
   };
 
   const codeRow: React.CSSProperties = {
@@ -534,13 +533,9 @@ export default function TierDetail() {
               }}
               aria-label={`Open room ${r.id}`}
             >
-              <img src={getDomainImage((r as any).domain, r.id)} alt="" aria-hidden="true" style={{ width: 48, height: 48, borderRadius: 8, marginBottom: 6, opacity: 0.95 }} loading="lazy" />
+              <img src={getDomainImage((r as any).domain, r.id)} alt="" aria-hidden="true" style={{ width: 44, height: 44, borderRadius: 8, flexShrink: 0, opacity: 0.95 }} loading="lazy" />
               <p style={cardTitle}>{pickTitle({ id: r.id, title_en: r.title_en, title_vi: r.title_vi })}</p>
-
-              <div style={codeRow}>
-                <span style={pill}>OPEN</span>
-                {showDebug ? <span style={tinyCode}>id: {r.id}</span> : null}
-              </div>
+              <svg style={{ flexShrink: 0, opacity: 0.35 }} width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7"/></svg>
             </Link>
           ))}
         </div>
