@@ -45,30 +45,19 @@ function formatTime(sec: number) {
   return `${m}:${String(s).padStart(2, "0")}`;
 }
 
-const musicModules = import.meta.glob("@/assets/music/*.{mp3,wav,ogg,m4a}", {
-  eager: true,
-  import: "default",
-}) as Record<string, string>;
+import { MUSIC_TRACKS } from './musicTracks';
 
 function normalizeTrackId(input: string) {
   return input.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
 }
 
 function buildTracks(): Track[] {
-  return Object.entries(musicModules)
-    .map(([path, src], index) => {
-      const fileName = path.split("/").pop() ?? "";
-      const noExt = fileName.replace(/\.[^/.]+$/, "");
-      const normalizedId = normalizeTrackId(noExt);
-
-      return {
-        key: `${path}::${src}::${index}`,
-        id: normalizedId || `track_${index}`,
-        title: noExt.replace(/[_-]+/g, " ").trim(),
-        src,
-      };
-    })
-    .sort((a, b) => a.title.localeCompare(b.title, undefined, { numeric: true }));
+  return MUSIC_TRACKS.map((t, index) => ({
+    key: `${t.src}::${index}`,
+    id: t.id,
+    title: t.title,
+    src: t.src,
+  }));
 }
 
 function getSingletonAudio(): HTMLAudioElement {
