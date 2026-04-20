@@ -807,35 +807,60 @@ export function ActiveEntry({
   const vi = normalizeEntryTextVI(entry);
   const audioList = pickAudioList(entry);
 
-  const zoomTextStyle: React.CSSProperties = {
-    fontSize: "calc(16px * (var(--mb-essay-zoom, 100) / 100))",
-    lineHeight: 1.7,
+  const zoom = "var(--mb-essay-zoom, 100)";
+
+  const headingStyle: React.CSSProperties = {
+    fontFamily: "'Lora', 'Georgia', serif",
+    fontSize: `calc(1.75rem * (${zoom} / 100))`,
+    fontWeight: 700,
+    lineHeight: 1.18,
+    letterSpacing: "-0.01em",
+    color: "rgba(0,0,0,0.88)",
+    marginTop: 4,
+    marginBottom: 0,
   };
 
-  const zoomHeadingStyle: React.CSSProperties = {
-    fontSize: "calc(1.875rem * (var(--mb-essay-zoom, 100) / 100))",
-    lineHeight: 1.15,
+  const enTextStyle: React.CSSProperties = {
+    fontFamily: "'Lora', 'Georgia', serif",
+    fontSize: `calc(17px * (${zoom} / 100))`,
+    lineHeight: 1.85,
+    color: "rgba(0,0,0,0.84)",
+    letterSpacing: "0.005em",
+  };
+
+  const viTextStyle: React.CSSProperties = {
+    fontFamily: "'Be Vietnam Pro', 'Segoe UI', sans-serif",
+    fontSize: `calc(15.5px * (${zoom} / 100))`,
+    lineHeight: 1.88,
+    color: "rgba(0,0,0,0.58)",
+    letterSpacing: "0.008em",
+    fontStyle: "italic",
+    borderLeft: "3px solid rgba(255,138,101,0.35)",
+    paddingLeft: 16,
+    marginLeft: 2,
   };
 
   return (
     <div>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
+      `}</style>
+
       {heading ? (
-        <h3
-          className="font-serif font-bold mt-1 leading-tight"
-          style={zoomHeadingStyle}
-        >
-          {heading}
-        </h3>
+        <h3 style={headingStyle}>{heading}</h3>
       ) : null}
 
       {en ? (
-        <div className="mt-4 mb-entryText whitespace-pre-line leading-relaxed" style={zoomTextStyle}>
+        <div
+          className="mt-5 mb-entryText whitespace-pre-line"
+          style={enTextStyle}
+        >
           {en}
         </div>
       ) : null}
 
       {audioList.length ? (
-        <div ref={audioAnchorRef as any} className="mt-4 mb-audioClamp">
+        <div ref={audioAnchorRef as any} className="mt-5 mb-audioClamp">
           <div className="flex flex-col gap-2">
             {audioList.map((src, i) => {
               const base = audioLabelFromSrc(src);
@@ -855,7 +880,10 @@ export function ActiveEntry({
       ) : null}
 
       {vi ? (
-        <div className="mt-4 mb-entryText whitespace-pre-line leading-relaxed" style={zoomTextStyle}>
+        <div
+          className="mt-5 mb-entryText whitespace-pre-line"
+          style={viTextStyle}
+        >
           {vi}
         </div>
       ) : null}

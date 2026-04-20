@@ -322,8 +322,8 @@ export const ROOM_CSS = String.raw`
      ============================= */
   [data-mb-scope="room"] .mb-box4 .mb-zoomWrap,
   .mb-room .mb-box4 .mb-zoomWrap{
-    padding-bottom: 320px !important; /* room for chat+composer so VI text never gets covered */
-    scroll-padding-bottom: 320px !important;
+    padding-bottom: 24px !important;
+    scroll-padding-bottom: 24px !important;
   }
 
   [data-mb-scope="room"] .mb-chatWrap,
@@ -366,9 +366,9 @@ export const ROOM_CSS = String.raw`
 
   [data-mb-scope="room"] .mb-zoomWrap,
   .mb-room .mb-zoomWrap{
-    height: 100%;
+    height: auto;
     min-height: 0;
-    overflow: auto;
+    overflow: visible;
 
     /* ✅ SAFETY GAP: keep text off borders */
     padding: 14px 16px;
@@ -423,11 +423,12 @@ export const ROOM_CSS = String.raw`
      ============================= */
   [data-mb-scope="room"] .mb-chatWrap,
   .mb-room .mb-chatWrap{
-    border: 1px solid rgba(15,23,42,0.06);
-    background: rgba(255,255,255,0.64);
+    border: 1px solid rgba(255,138,101,0.14);
+    background: rgba(255,248,242,0.90);
     border-radius: 18px;
-    padding: 10px 10px;
+    padding: 12px 12px;
     min-width: 0;
+    margin-bottom: 12px;
   }
   [data-mb-scope="room"] .mb-chatHeader,
   .mb-room .mb-chatHeader{
@@ -503,12 +504,12 @@ export const ROOM_CSS = String.raw`
      ============================= */
   [data-mb-scope="room"] .mb-feedback,
   .mb-room .mb-feedback{
-    border: 1px solid rgba(15,23,42,0.10);
-    background: rgba(255,255,255,0.50);
-    border-radius: 18px;
-    padding: 8px 10px;
+    border: 1.5px solid rgba(15,23,42,0.08);
+    background: rgba(255,255,255,0.70);
+    border-radius: 14px;
+    padding: 4px 6px 4px 14px;
     display: flex;
-    gap: 10px;
+    gap: 8px;
     align-items: center;
     min-width: 0;
   }
