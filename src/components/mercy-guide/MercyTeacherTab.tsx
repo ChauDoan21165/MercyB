@@ -1,11 +1,12 @@
 // Path: src/components/mercy-guide/MercyTeacherTab.tsx
 // File: MercyTeacherTab.tsx
 
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Button } from '@/components/ui/button';
 import {
   ArrowRight,
+  BookmarkPlus,
   Brain,
   Crown,
   Lightbulb,
@@ -43,6 +44,8 @@ import type {
   TeacherMemorySummaryItem,
 } from './types';
 import { NotebookPanel } from '@/components/notebook/NotebookPanel';
+import { SaveWordPopup } from '@/components/notebook/SaveWordPopup';
+import type { NotebookItemType } from '@/services/notebookService';
 
 type LearningSupportMode = 'gentle' | 'guided' | 'immersion';
 
@@ -1253,6 +1256,17 @@ export function MercyTeacherTab({
     }
   };
 
+  const [savePopup, setSavePopup] = useState<{
+    itemType: NotebookItemType;
+    contentEn: string;
+  } | null>(null);
+
+  const openSave = (itemType: NotebookItemType, contentEn: string) => {
+    const trimmed = contentEn.trim();
+    if (!trimmed) return;
+    setSavePopup({ itemType, contentEn: trimmed });
+  };
+
   if (isKidsMode) {
     return (
       <div className="m-0 flex h-full min-h-0 flex-1 overflow-hidden">
@@ -1498,9 +1512,23 @@ export function MercyTeacherTab({
 
                 <div className="mt-4 grid gap-3 lg:grid-cols-3">
                   <div className="rounded-2xl border border-slate-200 bg-white p-4">
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
-                      Current sentence
-                    </p>
+                    <div className="flex items-start justify-between gap-2">
+                      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+                        Current sentence
+                      </p>
+                      {hasAnalysis && primarySentence ? (
+                        <Button
+                          type="button"
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => openSave('grammar', primarySentence)}
+                          className="-mr-1 -mt-1 h-7 gap-1 px-2 text-xs text-rose-600 hover:bg-rose-50 hover:text-rose-700"
+                        >
+                          <BookmarkPlus className="h-3.5 w-3.5" />
+                          Save
+                        </Button>
+                      ) : null}
+                    </div>
                     <p className="mt-2 text-sm leading-6 text-slate-700">
                       {primarySentence || 'No sentence yet. Start with one honest thought.'}
                     </p>
@@ -1539,6 +1567,27 @@ export function MercyTeacherTab({
                     ) : null}
                   </div>
                 </div>
+
+                {grammarPoints.length > 0 ? (
+                  <div className="mt-4 rounded-2xl border border-slate-200 bg-white p-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+                      Grammar points
+                    </p>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {grammarPoints.slice(0, 6).map((point, i) => (
+                        <button
+                          key={`${point}-${i}`}
+                          type="button"
+                          onClick={() => openSave('grammar', point)}
+                          className="group inline-flex max-w-full items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 transition hover:border-rose-300 hover:bg-rose-50"
+                        >
+                          <span className="truncate">{point}</span>
+                          <BookmarkPlus className="h-3.5 w-3.5 shrink-0 text-muted-foreground group-hover:text-rose-600" />
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
 
                 {teacherMemorySummary.length > 0 ? (
                   <div className="mt-4">
@@ -1609,6 +1658,18 @@ export function MercyTeacherTab({
           </div>
         </div>
       </ScrollArea>
+
+      {savePopup ? (
+        <SaveWordPopup
+          open={true}
+          onOpenChange={(next) => {
+            if (!next) setSavePopup(null);
+          }}
+          itemType={savePopup.itemType}
+          contentEn={savePopup.contentEn}
+          source="teacher"
+        />
+      ) : null}
     </div>
   );
 }
