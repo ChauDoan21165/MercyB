@@ -701,6 +701,19 @@ export function MercySpeakTab({
     return () => window.clearTimeout(timer);
   }, [copySuccess]);
 
+  // Chrome kills the speech-synth engine after ~15s of continuous speech.
+  // Ticking pause()/resume() every 10s keeps it alive across multi-chunk utterances.
+  useEffect(() => {
+    if (typeof window === 'undefined' || !window.speechSynthesis) return;
+    const synth = window.speechSynthesis;
+    const id = window.setInterval(() => {
+      if (synth.speaking && !synth.paused) {
+        try { synth.pause(); synth.resume(); } catch { /* ignore */ }
+      }
+    }, 10000);
+    return () => window.clearInterval(id);
+  }, []);
+
   const practiceText = useMemo(() => {
     if (isKidsMode) return kidsPracticeText;
     const base = cleanText(customText);
@@ -785,35 +798,77 @@ export function MercySpeakTab({
     if (recordedAudioUrl) { URL.revokeObjectURL(recordedAudioUrl); setRecordedAudioUrl(''); }
   }
 
+  // Chunk text at sentence (then clause) boundaries so no single utterance
+  // exceeds Chrome's ~15s silent-fail threshold. Max ~160 chars per chunk keeps
+  // each utterance safely short even at slow rates.
+  function chunkForTTS(text: string, max = 160): string[] {
+    const out: string[] = [];
+    const sentences = text.split(/(?<=[.!?])\s+/).filter(Boolean);
+    let buf = '';
+    const flush = () => { if (buf) { out.push(buf); buf = ''; } };
+    for (const s of sentences) {
+      if (s.length > max) {
+        // Sentence itself too long — split on comma / em-dash / semicolon.
+        flush();
+        const parts = s.split(/(?<=[,;—])\s+/).filter(Boolean);
+        for (const p of parts) {
+          if (p.length > max) {
+            // Still too long — hard-split at whitespace nearest the limit.
+            let rest = p;
+            while (rest.length > max) {
+              const cut = rest.lastIndexOf(' ', max);
+              out.push(rest.slice(0, cut > 0 ? cut : max).trim());
+              rest = rest.slice(cut > 0 ? cut : max).trim();
+            }
+            if (rest) out.push(rest);
+          } else if ((buf + ' ' + p).trim().length <= max) {
+            buf = (buf + ' ' + p).trim();
+          } else {
+            flush();
+            buf = p;
+          }
+        }
+        flush();
+      } else if ((buf + ' ' + s).trim().length <= max) {
+        buf = (buf + ' ' + s).trim();
+      } else {
+        flush();
+        buf = s;
+      }
+    }
+    flush();
+    return out.length ? out : [text];
+  }
+
   function speakViaTTS(speechText: string) {
     if (!speechText || !supportsSpeechSynthesis || typeof window === 'undefined') return;
     const synth = window.speechSynthesis;
 
-    // Chrome quirk: cancel() can leave the engine in a paused state that blocks
-    // the next speak(). resume() clears that state.
+    // Clear any stuck queue and the Chrome paused-after-cancel state.
     synth.cancel();
-    try { synth.resume(); } catch { /* some browsers throw on idle resume */ }
-
-    const utterance = new SpeechSynthesisUtterance(speechText);
-    utterance.lang = 'en-US';
-    utterance.rate = 0.9;
-    utterance.pitch = 1.0;
-    utterance.volume = 1.0;
+    try { synth.resume(); } catch { /* idle-resume throws on some browsers */ }
 
     const voices = synth.getVoices();
     const preferred = voices.find(v =>
       v.lang === 'en-US' && (v.name.includes('Samantha') || v.name.includes('Karen') || v.name.includes('Google'))
     ) || voices.find(v => v.lang === 'en-US') || voices[0];
-    if (preferred) utterance.voice = preferred;
 
-    utterance.onstart = () => setIsSpeaking(true);
-    utterance.onend   = () => setIsSpeaking(false);
-    utterance.onerror = () => setIsSpeaking(false);
-
-    // Call synchronously inside the user-gesture. If voices aren't ready yet,
-    // the browser picks a default — better than deferring via onvoiceschanged,
-    // which fires outside the gesture window and makes Chrome drop speak().
-    synth.speak(utterance);
+    const chunks = chunkForTTS(speechText);
+    chunks.forEach((chunk, i) => {
+      const u = new SpeechSynthesisUtterance(chunk);
+      u.lang = 'en-US';
+      u.rate = 0.9;
+      u.pitch = 1.0;
+      u.volume = 1.0;
+      if (preferred) u.voice = preferred;
+      if (i === 0) u.onstart = () => setIsSpeaking(true);
+      if (i === chunks.length - 1) u.onend = () => setIsSpeaking(false);
+      u.onerror = (e: any) => {
+        console.warn('[Speak] TTS utterance error', e?.error ?? e?.type ?? 'unknown');
+        setIsSpeaking(false);
+      };
+      synth.speak(u);
+    });
   }
 
   function handleSpeak(textOverride?: string) {
