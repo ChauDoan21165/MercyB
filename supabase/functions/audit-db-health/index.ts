@@ -138,10 +138,12 @@ async function runDbHealthAudit(mode: AuditMode): Promise<AuditResult> {
     }
 
     // Check 6: Tier mismatch
-    const tierLower = (room.tier || "").toLowerCase();
-    const normalizedTier = tierLower.includes("vip") 
-      ? tierLower.match(/vip\d/)?.[0] || "level0"
-      : tierLower.includes("level0") ? "level0" : "unknown";
+    const tierKey = (room.tier || "").toLowerCase().replace(/\s+/g, "");
+    const levelMatch = tierKey.match(/level(\d)/);
+    const vipMatch = tierKey.match(/vip(\d)/);
+    const normalizedTier = levelMatch ? `level${levelMatch[1]}`
+      : vipMatch ? `level${vipMatch[1]}` // legacy vipN → levelN
+      : "unknown";
     
     if (!VALID_TIERS.includes(normalizedTier) && normalizedTier !== "unknown") {
       issues.push({
@@ -317,15 +319,20 @@ async function runDbHealthAudit(mode: AuditMode): Promise<AuditResult> {
 
     // Check 20: Broken foreign keys (rooms -> tiers conceptually)
     // We check tier string validity as proxy
-    if (room.tier && !room.tier.toLowerCase().includes("vip") && !room.tier.toLowerCase().includes("level0")) {
-      issues.push({
-        id: `broken-fk-${roomId}`,
-        check: "Broken foreign keys",
-        severity: "warning",
-        message: `Room ${roomId} has unrecognized tier: ${room.tier}`,
-        table: "rooms",
-        rowId: roomId,
-      });
+    if (room.tier) {
+      const t = room.tier.toLowerCase().replace(/\s+/g, "");
+      const legacyVip = t.match(/vip(\d)/);
+      const canonical = legacyVip ? `level${legacyVip[1]}` : t;
+      if (!VALID_TIERS.includes(canonical)) {
+        issues.push({
+          id: `broken-fk-${roomId}`,
+          check: "Broken foreign keys",
+          severity: "warning",
+          message: `Room ${roomId} has unrecognized tier: ${room.tier}`,
+          table: "rooms",
+          rowId: roomId,
+        });
+      }
     }
 
     // Check 21: Rebuild metadata indexes (info only)
