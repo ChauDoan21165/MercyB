@@ -37,7 +37,7 @@ interface BroadcastRequest {
   action: "preview" | "send";
   subject: string;
   body_html: string;
-  audience_type: "level2" | "level3" | "all_vip" | "manual";
+  audience_type: "level2" | "level3" | "all_paid" | "manual";
   manual_emails?: string[];
 }
 
@@ -111,8 +111,8 @@ Deno.serve(async (req) => {
       const tierNames: string[] = [];
       if (audience_type === "level2") tierNames.push("Level 2");
       else if (audience_type === "level3") tierNames.push("Level 3");
-      else if (audience_type === "all_vip") {
-        // Include all VIP tiers
+      else if (audience_type === "all_paid") {
+        // Include all paid tiers (Level 1 and above)
         tierNames.push("Level 1", "Level 2", "Level 3", "Level 4", "Level 5", "Level 6", "Level 7", "Level 8", "Level 9");
       }
 
