@@ -24,6 +24,9 @@ scripts/_scratch/
 docs/*_LOG.md
 bad.txt
 room_scan_report.json
+orphan_candidates.txt
+orphan_*.txt
+tmp_*.txt
 
 # local staging (do not ship)
 private-content/

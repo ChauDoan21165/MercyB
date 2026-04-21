@@ -101,7 +101,8 @@ export default defineConfig({
             },
           },
           {
-            urlPattern: /\/storage\/v1\/object\/sign\/room-audio\/.*\.mp3/,
+            // Bucket is public today; regex kept forward-compatible for future flip to signed URLs.
+            urlPattern: /\/storage\/v1\/object\/(sign|public)\/room-audio\/.*\.mp3/,
             handler: 'CacheFirst',
             options: {
               cacheName: 'room-audio',
