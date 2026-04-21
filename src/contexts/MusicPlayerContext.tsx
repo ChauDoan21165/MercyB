@@ -24,6 +24,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { resolveRoomAudioUrl } from "@/lib/roomAudioResolver";
 
 type MusicPlayerContextValue = {
   isPlaying: boolean;
@@ -38,14 +39,6 @@ type MusicPlayerContextValue = {
 
 const MusicPlayerContext =
   createContext<MusicPlayerContextValue | undefined>(undefined);
-
-function normalizeAudioUrl(file: string): string {
-  const clean = String(file || "").trim().replace(/^\/+/, "");
-  // If caller accidentally passes "audio/x.mp3", normalize to "/audio/x.mp3"
-  if (clean.startsWith("audio/")) return `/${clean}`;
-  // Default: filename only
-  return `/audio/${clean}`;
-}
 
 export const MusicPlayerProvider = ({ children }: { children: ReactNode }) => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -83,7 +76,11 @@ export const MusicPlayerProvider = ({ children }: { children: ReactNode }) => {
       // Stop anything else first (SINGLE OWNER rule)
       stop();
 
-      const url = normalizeAudioUrl(name);
+      // Phase 2: resolve via central pipeline — signed URL for adult-room keys,
+      // local URL for kids/music (short-circuit, no network), local fallback on error.
+      const resolved = await resolveRoomAudioUrl(name);
+      if (!resolved) return;
+      const url = resolved.url;
       const a = new Audio(url);
       a.preload = "metadata";
 

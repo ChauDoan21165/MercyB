@@ -1,6 +1,7 @@
 // src/pages/LandingPage.tsx — v2025-12-21-87.2-AUDIO-AVATAR
 import { useMemo, useRef, useState } from "react";
 import homepage from "@/data/homepage-config.json";
+import { useAudioUrl } from "@/hooks/useAudioUrl";
 
 type Lang = "en" | "vi";
 
@@ -19,8 +20,12 @@ function safeLower(s: string) {
 }
 
 /**
- * Simple “talking face” avatar that animates while audio is playing.
+ * Simple "talking face" avatar that animates while audio is playing.
  * Keeps native audio controls.
+ *
+ * `src` is a canonical audio key (filename or kids/music subpath, not a URL).
+ * useAudioUrl produces the playable URL — signed Supabase URL for adult-room
+ * audio, /audio/... for kids/music, or local fallback on signing errors.
  */
 function AudioWithAvatar({
   src,
@@ -31,6 +36,7 @@ function AudioWithAvatar({
 }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const { url, refresh } = useAudioUrl(src);
 
   return (
     <div className="rounded-xl border border-slate-800 bg-slate-950/30 p-3">
@@ -124,11 +130,12 @@ function AudioWithAvatar({
         ref={audioRef}
         controls
         preload="none"
-        src={src}
+        src={url ?? undefined}
         style={{ width: "100%" }}
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
         onEnded={() => setIsPlaying(false)}
+        onError={() => refresh()}
       />
 
       <div className="mt-2 text-[11px] text-slate-400">
@@ -262,7 +269,7 @@ export default function LandingPage() {
                 <div className="mt-4">
                   {audioFile ? (
                     <AudioWithAvatar
-                      src={`/audio/${audioFile}`}
+                      src={audioFile}
                       label={audioFile}
                     />
                   ) : (
