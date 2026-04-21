@@ -384,7 +384,6 @@ export default function AppRouter() {
               <Route index element={<LazyPage><AdminDashboard /></LazyPage>} />
               <Route path="users"                element={<LazyPage><AdminUsersPage /></LazyPage>} />
               <Route path="payments"             element={<LazyPage><AdminPaymentsPage defaultTab="transactions" /></LazyPage>} />
-              <Route path="bank-transfers"       element={<LazyPage><AdminPaymentsPage defaultTab="bank" /></LazyPage>} />
               <Route path="payment-verification" element={<LazyPage><AdminPaymentsPage defaultTab="verify" /></LazyPage>} />
               <Route path="access-codes"         element={<LazyPage><AdminAccessCodes /></LazyPage>} />
               <Route path="audio-coverage"       element={<LazyPage><AudioCoveragePage /></LazyPage>} />
