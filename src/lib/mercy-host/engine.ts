@@ -664,8 +664,8 @@ export function createMercyEngine(
         setTimeout(() => {
           showRitualBanner(ceremony, true);
         }, jitter());
-      } else if (newTier.startsWith('vip') && !state.silenceMode) {
-        // Generic VIP encouragement
+      } else if (newTier !== 'level0' && (newTier.startsWith('level') || newTier.startsWith('vip')) && !state.silenceMode) {
+        // Generic paid-tier encouragement (levelN for N>=1; legacy vipN kept for mixed data)
         const rawEncouragement = getTierEncouragement(newTier);
         const encouragement = styleText(rawEncouragement, 'encouragement');
         setTimeout(() => {
