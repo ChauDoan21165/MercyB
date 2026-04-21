@@ -9,6 +9,7 @@
 
 import React from "react";
 import TalkingFacePlayButton from "@/components/audio/TalkingFacePlayButton";
+import { toAudioKey } from "@/lib/roomAudioResolver";
 
 type Props = {
   // legacy variants
@@ -26,44 +27,29 @@ type Props = {
   fullWidthBar?: boolean;
 };
 
-function normalizeAudioSrc(src: string): string {
-  const s = String(src || "").trim();
-  if (!s) return "";
-  if (s.startsWith("http://") || s.startsWith("https://")) return s;
-
-  let p = s.replace(/^\/+/, "");
-
-  // tolerate odd paths but ends with mp3 -> keep leaf
-  if (p.includes("/") && !p.startsWith("audio/") && p.toLowerCase().endsWith(".mp3")) {
-    const leaf = p.split("/").pop() || p;
-    p = leaf;
-  }
-
-  if (p.startsWith("audio/")) return `/${p}`;
-  return `/audio/${p}`;
-}
-
-function pickSrc(props: Props): string {
+function pickKey(props: Props): string {
   const raw = props.src || props.url || props.audioSrc || "";
-  return normalizeAudioSrc(raw);
+  return toAudioKey(raw) ?? "";
 }
 
-function fallbackLabel(src: string): string {
-  const s = String(src || "").trim();
+function fallbackLabel(key: string): string {
+  const s = String(key || "").trim();
   if (!s) return "";
   return s.split("/").pop() || s;
 }
 
 // Named export (legacy imports)
 export function AudioPlayer(props: Props) {
-  const src = pickSrc(props);
-  if (!src) return null;
+  // Phase 2: pass the canonical key down; TalkingFacePlayButton's useAudioUrl
+  // produces the playable URL (Supabase signed or local, per key family).
+  const key = pickKey(props);
+  if (!key) return null;
 
-  const label = String(props.label || props.title || "").trim() || fallbackLabel(src);
+  const label = String(props.label || props.title || "").trim() || fallbackLabel(key);
 
   return (
     <TalkingFacePlayButton
-      src={src}
+      src={key}
       label={label}
       className={props.className}
       fullWidthBar={props.fullWidthBar ?? true}
