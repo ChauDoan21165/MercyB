@@ -7,6 +7,7 @@
 
 import React, { useState } from "react";
 import TalkingFacePlayButton from "@/components/audio/TalkingFacePlayButton";
+import { toAudioKey } from "@/lib/roomAudioResolver";
 
 export const KW_CLASSES = [
   "mb-kw-0",
@@ -605,14 +606,8 @@ function isUglyHeading(h: string) {
   return looksSlug || tooIdLike;
 }
 
-function normalizeAudioSrc(src: string): string {
-  const s = String(src || "").trim();
-  if (!s) return "";
-  if (s.startsWith("http://") || s.startsWith("https://")) return s;
-  const p = s.replace(/^\/+/, "");
-  if (p.startsWith("audio/")) return `/${p}`;
-  return `/audio/${p.split("/").pop() || p}`;
-}
+// Phase 2: pickAudio / pickAudioList now return canonical KEYS (not URLs).
+// TalkingFacePlayButton's useAudioUrl hook produces the final playable URL.
 
 function pickAudio(entry: any): string {
   const candidates: any[] = [];
@@ -624,12 +619,11 @@ function pickAudio(entry: any): string {
   for (const c of candidates) {
     if (!c) continue;
     if (typeof c === "string") {
-      const norm = normalizeAudioSrc(c);
-      if (norm) return norm;
+      const key = toAudioKey(c);
+      if (key) return key;
     } else if (typeof c === "object") {
-      const s = String(c?.en || c?.vi || c?.src || c?.url || "").trim();
-      const norm = normalizeAudioSrc(s);
-      if (norm) return norm;
+      const key = toAudioKey(c?.en || c?.vi || c?.src || c?.url);
+      if (key) return key;
     }
   }
   return "";
@@ -658,8 +652,8 @@ function pickAudioList(entry: any): string[] {
 
       const parts = s.includes(" ") ? s.split(/\s+/g) : s.includes(",") ? s.split(",") : [s];
       for (const p of parts) {
-        const norm = normalizeAudioSrc(String(p || "").trim());
-        if (norm) out.push(norm);
+        const key = toAudioKey(p);
+        if (key) out.push(key);
       }
     }
   };
