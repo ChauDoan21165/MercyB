@@ -45,20 +45,23 @@ const tierColors: Record<string, string> = {
   kids: "bg-pink-100 text-pink-800 dark:bg-pink-900/30 dark:text-pink-300",
 };
 
+// Normalize tier identifiers: legacy "vipN" → "levelN", lowercase, no whitespace.
+function normalizeTier(tier: string): string {
+  const lower = String(tier || '').toLowerCase().replace(/\s+/g, '');
+  const vipMatch = lower.match(/^vip(\d+)$/);
+  return vipMatch ? `level${vipMatch[1]}` : lower;
+}
+
 function getTierColorClass(tier: string): string {
-  const normalized = tier.toLowerCase().replace(/\s+/g, '').replace('vip', 'vip');
-  return tierColors[normalized] || tierColors.level0;
+  return tierColors[normalizeTier(tier)] || tierColors.level0;
 }
 
 function formatTierLabel(tier: string): string {
   if (!tier) return "Level 0";
-  const lower = tier.toLowerCase();
-  if (lower === "level0") return "Level 0";
-  if (lower.startsWith("vip")) {
-    const num = lower.replace("vip", "").trim();
-    return `VIP ${num}`;
-  }
-  if (lower.includes("kids")) return "Kids";
+  const normalized = normalizeTier(tier);
+  if (normalized === "kids") return "Kids";
+  const match = normalized.match(/^level(\d+)$/);
+  if (match) return `Level ${match[1]}`;
   return tier;
 }
 
