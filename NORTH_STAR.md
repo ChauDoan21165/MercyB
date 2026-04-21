@@ -367,6 +367,13 @@ Re-read section 1 (Mission). If the work doesn't serve the mission, stop doing i
 - Async audio path now single source of truth; kids/music invariant enforced at multiple layers (`toAudioKey` preserves subdir, `tryResolveLocal` short-circuits before any Supabase call)
 - Next: runtime tests via harness + verify script, bundled-audio removal, iOS submission prep
 
+### April 20, 2026 (night) — v1.3 — Phase 2 audio cutover COMPLETE
+- Browser runtime test confirmed: `identifying_hidden_traits_free.mp3` served from `https://buemdfxyhxunzpgdoqin.supabase.co/storage/v1/object/public/room-audio/…` → 206 Partial Content via Cloudflare CDN, `audio/mpeg`, 157916 bytes real data, `Cache-Control: max-age=3600`
+- Supabase RLS deadlock bypassed by flipping `room-audio` bucket to PUBLIC; resolver simplified from `createSignedUrl` + cache/TTL/inflight machinery to a single `getPublicUrl` call (committed as `aee88e13`)
+- Tier-gating will now live in app-layer subscription checks, not in Storage RLS
+- Kids/music invariant preserved (`tryResolveLocal` short-circuit unchanged)
+- Remaining before Phase 2.6 bundle removal: (1) update workbox cache pattern from `/sign/` to `/public/`, (2) verify on iOS Capacitor build, (3) stage-remove bundled `public/audio/*.mp3` (kids folder stays)
+
 ---
 
 *This document is living. Update it as the business evolves. Never let it become stale dogma — it's a compass, not a cage.*
@@ -432,28 +439,24 @@ Things that aren't broken for users but need fixing eventually. Ordered by prior
 **Priority:** Very Low (just clutter)
 **Est:** 2 min
 
-### Supabase Storage signed-URL bug (blocks iOS bundle reduction)
-Symptoms:
-- createSignedUrl returns 400 with "new row violates row-level security policy"
-- Persists with fully permissive RLS policies (authenticated ALL on storage.objects)
-- authenticated_read_buckets policy on storage.buckets is present
-- Valid JWT session (chaudoan@yahoo.com, 857-char token)
-- Bucket is private, no size/MIME restrictions
+### Tier-gate VIP audio via signed URLs (revisit when subscription enforcement exists)
+- `room-audio` bucket is currently public to bypass an unresolved RLS deadlock around `createSignedUrl` (see April 20 v1.3 changelog).
+- Public URLs mean any visitor who knows a filename can download any VIP audio. Acceptable for launch given filenames aren't enumerable without the room JSON, but not a long-term access-control story.
+- Once app-layer subscription enforcement is stable (profiles.tier checks at the UI gate), revisit:
+  1. Flip bucket back to private
+  2. Add RLS policy that authorizes `authenticated` sessions where the user's profile tier ≥ the tier encoded in the filename (regex pattern `vip[1-9]`)
+  3. Update resolver to call `createSignedUrl` again; restore TTL cache + inflight dedupe + `bustCache` refresh path
+- Related: the `ResolveOpts { bustCache?: boolean }` type is kept for call-site compatibility and will become load-bearing again if we return to signed URLs.
 
-Attempted fixes that didn't work:
-- SELECT-only policy on storage.objects
-- INSERT+SELECT policies
-- Single ALL policy (permissive)
-- Policies on storage.s3_multipart_uploads
-- Policies on storage.buckets
+**Priority:** Medium (security tightening; not user-facing)
+**Est:** 2-3 hours when ready (bucket flip + RLS + resolver refactor + tests)
 
-Not yet investigated:
-- Supabase docs on createSignedUrl internals
-- Whether bucket was created via API vs dashboard (may matter)
-- Supabase support ticket
-
-Priority: HIGH (blocks removing 2.6 GB bundled audio, blocks iOS submission)
-Est: 30-60 min fresh debugging tomorrow
+### Update workbox cache pattern for public bucket URLs
+- `vite.config.ts` runtime cache rule targets `/storage/v1/object/sign/room-audio/…` — stale since the bucket switched to public. Actual URLs now contain `/public/room-audio/…`, so the cache rule no-matches and PWA never caches Supabase audio responses.
+- Cloudflare CDN edge cache is working (`Cache-Control: max-age=3600`), so first-play latency is fine, but there's no PWA offline cache for Supabase audio.
+- **Fix:** change the `urlPattern` regex from `\/sign\/room-audio\/` to `\/(sign|public)\/room-audio\/` (covers both, forward-compatible if we flip back to private). Rebuild so the SW updates.
+**Priority:** Medium (blocks reliable offline audio after bundled-audio removal)
+**Est:** 5 min
 
 ### Remove bundled audio after Supabase cutover verified
 - Currently both Supabase AND local audio coexist
