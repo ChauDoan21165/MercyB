@@ -1372,88 +1372,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
         </div>
       </div>
 
-      {/* Greeting banner */}
-      {showGreeting && (
-        <div
-          className="relative z-30 px-3 pt-2"
-          style={{ animation: 'mbGreetingFade 0.4s ease-out' }}
-        >
-          <style>{`
-            @keyframes mbGreetingFade {
-              from { opacity: 0; transform: translateY(-6px); }
-              to   { opacity: 1; transform: translateY(0); }
-            }
-          `}</style>
-          <div className="flex items-center gap-2 md:gap-3 rounded-2xl border border-[#FFE4D6] bg-gradient-to-r from-[#FFF8F3] to-white px-3 py-2 md:px-4 md:py-2.5 shadow-[0_4px_16px_rgba(255,138,101,0.10)]">
-            <span className="text-xl">👋</span>
-            <div className="min-w-0 flex-1">
-              <p className="text-sm font-semibold text-slate-900 leading-tight">
-                {(() => {
-                  const name = cleanText((profile as any)?.preferred_name ?? (profile as any)?.full_name ?? '');
-                  return name ? `Hello ${name}, welcome to the class! 🌸` : `Hello! Welcome to the class. 🌸`;
-                })()}
-              </p>
-              <p className="text-xs text-slate-500 mt-0.5 leading-tight">
-                {(() => {
-                  const summaryItems = Array.isArray(teacherMemorySummary) ? teacherMemorySummary : [];
-                  const strength = summaryItems.find((s: any) => s?.type === 'strength');
-                  const focus = summaryItems.find((s: any) => s?.type === 'focus');
-                  if (strength) return `Last time you did great with ${cleanText(strength.label)}! 🌟`;
-                  if (focus) return `We have been working on ${cleanText(focus.label)} together.`;
-                  return 'What would you like to talk about today?';
-                })()}
-              </p>
-              <div className="flex items-center gap-2 mt-1">
-                <span className="text-xs font-bold text-[#FF8A65]">⭐ {getPointsDisplay()} pts</span>
-                <span className="text-xs text-slate-400">·</span>
-                <span className="text-xs text-slate-500">{getStreakEmoji(getStreakDays())} {getStreakDays()} day streak</span>
-              </div>
-            </div>
-            {/* Speak button — user gesture required for TTS */}
-            <button
-              type="button"
-              onClick={() => {
-                try {
-                  if (typeof window === 'undefined' || !window.speechSynthesis) return;
-                  const name = cleanText((profile as any)?.preferred_name ?? (profile as any)?.full_name ?? '');
-                  const summaryItems = Array.isArray(teacherMemorySummary) ? teacherMemorySummary : [];
-                  const strength = summaryItems.find((s: any) => s?.type === 'strength');
-                  const focus = summaryItems.find((s: any) => s?.type === 'focus');
-                  const praiseText = strength
-                    ? `Last time you did really well with ${cleanText(strength.label)}.`
-                    : focus ? `We have been working on ${cleanText(focus.label)} together.` : '';
-                  const greeting = name ? `Hello ${name}, welcome to the class.` : `Hello, welcome to the class.`;
-                  const text = [greeting, praiseText, `What would you like to talk about today?`].filter(Boolean).join(' ');
-                  window.speechSynthesis.cancel();
-                  const utterance = new SpeechSynthesisUtterance(text);
-                  utterance.lang = 'en-US';
-                  utterance.rate = 0.88;
-                  utterance.pitch = 1.05;
-                  utterance.volume = 0.95;
-                  const voices = window.speechSynthesis.getVoices();
-                  const voice = voices.find(v => v.lang === 'en-US' && (v.name.includes('Samantha') || v.name.includes('Karen') || v.name.includes('Fiona') || v.name.includes('Google')))
-                    || voices.find(v => v.lang === 'en-US') || voices[0];
-                  if (voice) utterance.voice = voice;
-                  window.speechSynthesis.speak(utterance);
-                } catch { /* ignore */ }
-              }}
-              className="shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-[#FF8A65] text-white shadow-sm hover:bg-[#FF6F61] transition text-sm"
-              aria-label="Hear greeting"
-              title="Tap to hear Mercy speak"
-            >
-              🔊
-            </button>
-            <button
-              type="button"
-              onClick={() => setShowGreeting(false)}
-              className="shrink-0 text-slate-300 hover:text-slate-500 transition text-lg leading-none"
-              aria-label="Dismiss greeting"
-            >
-              ×
-            </button>
-          </div>
-        </div>
-      )}
+      {/* Greeting banner removed — total points display moved to bottom of panel. */}
 
       <div className="relative z-20 border-b border-white/80 bg-white/58 px-3 py-2 backdrop-blur-sm">
         {!accessFeatures.hasMercyJourney && !kidsModeActive ? (
@@ -1769,9 +1688,14 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
           </div>
 
           <div className="text-[11px] font-medium text-slate-400">
-            {kidsModeActive ? 'Mercy Kids Flow' : 'Mercy Learning Flow'}
+            {getPointsDisplay()}
           </div>
         </div>
+      </div>
+
+      {/* Mobile-visible points footer — single plain number, no label. */}
+      <div className="relative z-10 flex justify-center border-t border-white/80 bg-white/72 px-4 py-1.5 text-[11px] font-medium text-slate-400 backdrop-blur-sm md:hidden">
+        {getPointsDisplay()}
       </div>
     </div>
   );

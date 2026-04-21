@@ -455,6 +455,10 @@ function extractTroubleWords(troubleWords?: Array<string | { word?: string | nul
   }).filter(Boolean).slice(0, 8);
 }
 
+// NOTE: This is a word-bag comparison against the ASR transcript — NOT real
+// pronunciation assessment. Tracked as tech debt; pending Azure Speech (or
+// equivalent) phoneme-level integration. Order ignored; extra spoken words
+// are free; missing target words cost 1/N each.
 function calculateMatchScore(target: string, spoken: string): number {
   const targetWords = normalizeForCompare(target).split(' ').filter(Boolean);
   const spokenWords = normalizeForCompare(spoken).split(' ').filter(Boolean);
@@ -1172,24 +1176,13 @@ export function MercySpeakTab({
             </div>
 
             <div className="rounded-[16px] border border-slate-200 bg-gradient-to-br from-[#FFF9F3] to-white p-2.5 shadow-sm">
-              <div className="space-y-3">
-                <div>
-                  <div className="flex items-center justify-between gap-3">
-                    <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">Mercy</span>
-                    <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">100%</span>
-                  </div>
-                  <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-slate-100">
-                    <div className="h-full w-full rounded-full bg-gradient-to-r from-[#6EC6C8] to-[#5DAFB6]" />
-                  </div>
+              <div>
+                <div className="flex items-center justify-between gap-3">
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">You</span>
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">{transcript ? `${matchScore}%` : '0%'}</span>
                 </div>
-                <div>
-                  <div className="flex items-center justify-between gap-3">
-                    <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">You</span>
-                    <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">{transcript ? `${matchScore}%` : '0%'}</span>
-                  </div>
-                  <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-slate-100">
-                    <div className={`h-full rounded-full bg-gradient-to-r transition-all duration-500 ${matchTone.bar}`} style={{ width: `${transcript ? matchScore : 0}%` }} />
-                  </div>
+                <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-slate-100">
+                  <div className={`h-full rounded-full bg-gradient-to-r transition-all duration-500 ${matchTone.bar}`} style={{ width: `${transcript ? matchScore : 0}%` }} />
                 </div>
               </div>
 
