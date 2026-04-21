@@ -1,6 +1,7 @@
 // src/components/audio/TalkingFacePlayButton.tsx
 
 import React, { useEffect, useId, useMemo, useRef, useState } from "react";
+import { useAudioUrl } from "@/hooks/useAudioUrl";
 
 function fmtTime(n: number) {
   if (!Number.isFinite(n) || n < 0) n = 0;
@@ -9,20 +10,19 @@ function fmtTime(n: number) {
   return `${m}:${String(s).padStart(2, "0")}`;
 }
 
-function normalizePublicAudioSrc(s: string) {
-  const p = String(s || "").trim();
-  if (!p) return "";
-  if (/^https?:\/\//i.test(p)) return p;
-  if (p.startsWith("/")) return p;
-  if (p.startsWith("audio/")) return `/${p}`;
-  if (!p.includes("/") && p.toLowerCase().endsWith(".mp3")) return `/audio/${p}`;
-  return `/${p}`;
-}
-
-function isPrivateAudioKey(s: string) {
-  return String(s || "").trim().startsWith("private:");
-}
-
+/**
+ * Loading-state pattern (canonical — mirror this in the 11 other audio consumers):
+ *
+ *   - While `loading === true` (Supabase signing in flight for adult-room audio),
+ *     disable the play button but DO NOT show a spinner.
+ *   - Kids/music/absolute keys have `loading === false` on first render (hook's
+ *     sync seed via tryResolveLocal), so there is no loading flash.
+ *   - Supabase signing typically completes in <500ms — imperceptible to users.
+ *   - On Supabase failure (`error != null`), `url` still holds the local fallback,
+ *     so playback continues silently degraded. Error is available for telemetry.
+ *   - On playback 403 (signed URL expired after sleep-wake), <audio>'s onError
+ *     calls `refresh()`, which drops the cache entry and re-signs atomically.
+ */
 type Props = {
   src: string;
   label?: string;
@@ -54,14 +54,16 @@ export default function TalkingFacePlayButton({
   const [playing,     setPlaying]     = useState(false);
   const [t,           setT]           = useState(0);
   const [dur,         setDur]         = useState(0);
-  const [resolvedSrc, setResolvedSrc] = useState<string>("");
-  const [isLocked,    setIsLocked]    = useState(false);
   // mouth open amount 0..1
   const [mouthOpen,   setMouthOpen]   = useState(0);
   const mouthRafRef   = useRef<number | null>(null);
 
   const safeSrc   = String(src || "").trim();
   const shownLabel = String(label || "").trim();
+
+  // Phase 2: useAudioUrl handles local short-circuit (kids/music) + Supabase sign + fallback.
+  const { url: resolvedSrc, loading, refresh } = useAudioUrl(safeSrc);
+  const isLocked = !loading && !resolvedSrc;
 
   const pct = useMemo(() => {
     if (!dur || dur <= 0) return 0;
@@ -85,31 +87,6 @@ export default function TalkingFacePlayButton({
     mouthRafRef.current = requestAnimationFrame(animate);
     return () => { if (mouthRafRef.current) cancelAnimationFrame(mouthRafRef.current); };
   }, [playing]);
-
-  // Resolve src
-  useEffect(() => {
-    let alive = true;
-    const run = async () => {
-      setResolvedSrc(""); setIsLocked(false);
-      const key = safeSrc;
-      if (!key) { setIsLocked(true); return; }
-      if (!isPrivateAudioKey(key)) {
-        const pub = normalizePublicAudioSrc(key);
-        if (!alive) return;
-        setResolvedSrc(pub); setIsLocked(!pub); return;
-      }
-      try {
-        const resolver = (window as any)?.__mbResolveAudioSrc;
-        if (!resolver) { if (!alive) return; setIsLocked(true); return; }
-        const out = await Promise.resolve(resolver(key));
-        const next = String(out || "").trim();
-        if (!alive) return;
-        setResolvedSrc(next); setIsLocked(!next);
-      } catch { if (!alive) return; setIsLocked(true); }
-    };
-    run();
-    return () => { alive = false; };
-  }, [safeSrc]);
 
   const dispatchHostRepeatTarget = (phase: "start" | "end", audioUrl: string) => {
     try {
@@ -151,14 +128,18 @@ export default function TalkingFacePlayButton({
     audioRef.current = a;
     const onLoaded = () => { setReady(true); setDur(Number.isFinite(a.duration) ? a.duration : 0); };
     const onTime   = () => setT(a.currentTime || 0);
-    const onPlay   = () => { setPlaying(true);  dispatchHostRepeatTarget("start", resolvedSrc); };
+    const onPlay   = () => { setPlaying(true);  dispatchHostRepeatTarget("start", resolvedSrc!); };
     const onPause  = () => setPlaying(false);
-    const onEnded  = () => { setPlaying(false); setT(0); dispatchHostRepeatTarget("end", resolvedSrc); };
+    const onEnded  = () => { setPlaying(false); setT(0); dispatchHostRepeatTarget("end", resolvedSrc!); };
+    // 403 self-heal: if playback errors after a signed URL expires (sleep-wake
+    // edge case), invalidate the cache + re-sign so the next render attempts fresh.
+    const onError  = () => { refresh(); };
     a.addEventListener("loadedmetadata", onLoaded);
     a.addEventListener("timeupdate", onTime);
     a.addEventListener("play", onPlay);
     a.addEventListener("pause", onPause);
     a.addEventListener("ended", onEnded);
+    a.addEventListener("error", onError);
     return () => {
       a.pause();
       a.removeEventListener("loadedmetadata", onLoaded);
@@ -166,9 +147,10 @@ export default function TalkingFacePlayButton({
       a.removeEventListener("play", onPlay);
       a.removeEventListener("pause", onPause);
       a.removeEventListener("ended", onEnded);
+      a.removeEventListener("error", onError);
       audioRef.current = null;
     };
-  }, [resolvedSrc, isLocked]);
+  }, [resolvedSrc, isLocked, refresh]);
 
   const toggle = () => {
     const a = audioRef.current;
