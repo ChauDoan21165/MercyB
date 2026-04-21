@@ -1,6 +1,7 @@
 // src/pages/admin/AdminBillingDashboard.tsx
 
 import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { formatDateTime } from "@/utils/adminFormatters";
 import {
   AlertCircle,
   CreditCard,
@@ -104,13 +105,6 @@ function formatDate(value: string | null | undefined): string {
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) return "—";
   return date.toLocaleDateString();
-}
-
-function formatDateTime(value: string | null | undefined): string {
-  if (!value) return "—";
-  const date = new Date(value);
-  if (Number.isNaN(date.getTime())) return "—";
-  return date.toLocaleString();
 }
 
 function labelizeProvider(value: string | null | undefined): string {

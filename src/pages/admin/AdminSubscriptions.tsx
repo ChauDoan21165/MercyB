@@ -4,6 +4,7 @@ import {
   adminCancelSubscription,
   adminOpenPortal,
 } from "@/lib/adminBilling";
+import { formatDateTime } from "@/utils/adminFormatters";
 
 type SubscriptionRow = {
   id: string;
@@ -30,13 +31,6 @@ type StatusFilter =
   | "inactive";
 
 type ExpiryFilter = "all" | "expiring_7d" | "expiring_30d" | "expired";
-
-function formatDateTime(value: string | null | undefined): string {
-  if (!value) return "—";
-  const d = new Date(value);
-  if (Number.isNaN(d.getTime())) return "—";
-  return d.toLocaleString();
-}
 
 function statusTone(status: string | null | undefined): {
   bg: string;
