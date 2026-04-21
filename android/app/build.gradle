@@ -1,5 +1,13 @@
 apply plugin: 'com.android.application'
 
+// Load release-signing credentials from android/keystore.properties (gitignored).
+// Falls through silently if the file is missing, so debug builds still work on fresh clones.
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
 android {
     namespace "com.mercyapps.mercyblade"
     compileSdk rootProject.ext.compileSdkVersion
@@ -16,10 +24,19 @@ android {
             ignoreAssetsPattern '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
         }
     }
+    signingConfigs {
+        release {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+            storePassword keystoreProperties['storePassword']
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 }
@@ -40,6 +57,19 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"
     implementation project(':capacitor-cordova-android-plugins')
+}
+
+// Fix Capacitor duplicate-class error: some plugins pull in kotlin-stdlib-jdk7/jdk8
+// (the old split packaging), others pull in kotlin-stdlib 1.8+ where those classes
+// are merged. Redirect the legacy jdk7/jdk8 variants to the main stdlib.
+configurations.all {
+    resolutionStrategy.eachDependency { details ->
+        if (details.requested.group == 'org.jetbrains.kotlin' &&
+            (details.requested.name == 'kotlin-stdlib-jdk7' ||
+             details.requested.name == 'kotlin-stdlib-jdk8')) {
+            details.useTarget("org.jetbrains.kotlin:kotlin-stdlib:${details.requested.version}")
+        }
+    }
 }
 
 apply from: 'capacitor.build.gradle'
