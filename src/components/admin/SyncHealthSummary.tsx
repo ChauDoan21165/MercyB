@@ -142,9 +142,9 @@ export function SyncHealthSummary() {
       const freeDbRooms = rooms.filter(
         (room) => normalizeTier(room.tier || "") === "level0",
       ).length;
-      const vipDbRooms = rooms.filter((room) => {
+      const paidDbRooms = rooms.filter((room) => {
         const normalizedTier = normalizeTier(room.tier || "");
-        return normalizedTier.startsWith("vip");
+        return normalizedTier.startsWith("level") && normalizedTier !== "level0";
       }).length;
 
       const canonicalIds = rooms
@@ -188,11 +188,11 @@ export function SyncHealthSummary() {
         },
         {
           category: "Level 1 – Level 9 rooms",
-          inDatabase: vipDbRooms,
-          matchesRule: vipDbRooms,
+          inDatabase: paidDbRooms,
+          matchesRule: paidDbRooms,
           difference: 0,
           status: "good",
-          note: "Legacy VIP counts remain for backward compatibility checks.",
+          note: "Tier count from database only.",
           action: null,
         },
         {

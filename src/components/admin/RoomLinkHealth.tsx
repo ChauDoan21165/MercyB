@@ -122,11 +122,12 @@ export const RoomLinkHealth = () => {
           uiId.toLowerCase().replace(/_/g, '-') === normalizedId
         );
 
-        // Check if it's a dynamically loaded room (from Level 1-6, Level 9 hooks)
-        // These rooms are loaded via useVipRooms/useCachedRooms, not hardcoded
-        const isDynamicRoom = room.tier && (
-          room.tier.toLowerCase().includes('vip') ||
-          room.tier.toLowerCase().includes('level0')
+        // Check if it's a dynamically loaded room (tier-based rooms load via
+        // useVipRooms/useCachedRooms, not hardcoded UI maps).
+        const tierLower = (room.tier || '').toLowerCase();
+        const isDynamicRoom = !!room.tier && (
+          tierLower.includes('level') ||
+          tierLower.includes('vip') // legacy vipN
         );
 
         if (!isReferenced && !isDynamicRoom) {
