@@ -77,9 +77,9 @@ type AdminNavItem = {
 const mainItems: AdminNavItem[] = [
   { title: "AI Usage & Costs", url: "/admin/ai-usage", icon: Activity, end: false },
   { title: "Dashboard", url: "/admin", icon: Home, end: true },
+  { title: "Metrics", url: "/admin/metrics", icon: TrendingUp },
   { title: "Payments", url: "/admin/payments", icon: DollarSign },
   { title: "Subscriptions", url: "/admin/subscriptions", icon: CreditCard },
-  { title: "Billing", url: "/admin/billing", icon: CreditCard },
   { title: "Room Health", url: "/admin/room-health-dashboard", icon: Activity },
   { title: "Users", url: "/admin/users", icon: Users },
 ];
