@@ -225,7 +225,8 @@ export async function keywordRespondAsync(
       } else if (audio && typeof audio === 'object') {
         rawPath = audio.en || audio.vi || null;
       }
-      audioFile = (await resolveRoomAudioUrl(rawPath)) ?? undefined;
+      const resolved = await resolveRoomAudioUrl(rawPath);
+      audioFile = resolved?.url ?? undefined;
     }
   } else {
     const keywordsSource: any = roomData.keywords || roomData.keywords_dict || {};
@@ -239,7 +240,8 @@ export async function keywordRespondAsync(
       } else if (audio && typeof audio === 'object') {
         rawPath = audio.en || audio.vi || null;
       }
-      audioFile = (await resolveRoomAudioUrl(rawPath)) ?? undefined;
+      const resolved = await resolveRoomAudioUrl(rawPath);
+      audioFile = resolved?.url ?? undefined;
       entryId = matchedEntry.id || matchedEntry.artifact_id || matchedEntry.title;
     }
   }
