@@ -672,12 +672,10 @@ export default function AdminDashboard() {
 
   const tiles: AdminTile[] = [
     { title: "Payments", desc: "Inspect payments, Stripe test flows, and verification tools.", href: "/admin/payments", badge: "SAFE" },
-    { title: "Bank Transfers", desc: "Manual transfer logs and reconciliation helpers.", href: "/admin/bank-transfers", badge: "SAFE" },
     { title: "Payment Verification", desc: "Verification and review actions for manual approvals (keep safe).", href: "/admin/payment-verification", badge: "SAFE" },
     { title: "Access Codes", desc: "Generate and manage redeem / access codes.", href: "/admin/access-codes", badge: "SAFE" },
     { title: "Audio Coverage", desc: "Coverage checks for room audio (read-only tools).", href: "/admin/audio-coverage", badge: "READY" },
     { title: "System Monitoring", desc: "Truth streams: latest feedback + sessions (read-only).", href: "/admin/monitoring", badge: "READY" },
-    { title: "Metrics", desc: "KPIs & distribution snapshots (read-only).", href: "/admin/metrics", badge: "READY" },
     { title: "Feedback", desc: "Read user feedback from rooms (read-only).", href: "/admin/feedback", badge: "READY" },
   ];
 
@@ -1026,22 +1024,6 @@ export default function AdminDashboard() {
                   </div>
                 </div>
 
-                <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-                  <button
-                    type="button"
-                    style={linkBtn}
-                    onClick={() => go("/admin/metrics")}
-                  >
-                    Open Metrics
-                  </button>
-                  <button
-                    type="button"
-                    style={linkBtn}
-                    onClick={() => go("/admin/billing")}
-                  >
-                    Open Billing
-                  </button>
-                </div>
               </div>
 
               <div
@@ -1058,43 +1040,7 @@ export default function AdminDashboard() {
                     borderRadius: 16,
                     padding: 14,
                     background: "rgba(0,0,0,0.02)",
-                    gridColumn: "span 4",
-                  }}
-                >
-                  <div style={{ ...mono, fontWeight: 900 }}>Primary destination</div>
-                  <div style={{ marginTop: 8, fontSize: 16, fontWeight: 900 }}>
-                    Metrics
-                  </div>
-                  <div style={{ marginTop: 8, fontSize: 12, color: "rgba(0,0,0,0.58)" }}>
-                    Route: <span style={mono}>{withApp("/admin/metrics", appId)}</span>
-                  </div>
-                </div>
-
-                <div
-                  style={{
-                    border: "1px solid rgba(0,0,0,0.10)",
-                    borderRadius: 16,
-                    padding: 14,
-                    background: "rgba(0,0,0,0.02)",
-                    gridColumn: "span 4",
-                  }}
-                >
-                  <div style={{ ...mono, fontWeight: 900 }}>Cost destination</div>
-                  <div style={{ marginTop: 8, fontSize: 16, fontWeight: 900 }}>
-                    Billing
-                  </div>
-                  <div style={{ marginTop: 8, fontSize: 12, color: "rgba(0,0,0,0.58)" }}>
-                    Route: <span style={mono}>{withApp("/admin/billing", appId)}</span>
-                  </div>
-                </div>
-
-                <div
-                  style={{
-                    border: "1px solid rgba(0,0,0,0.10)",
-                    borderRadius: 16,
-                    padding: 14,
-                    background: "rgba(0,0,0,0.02)",
-                    gridColumn: "span 4",
+                    gridColumn: "span 12",
                   }}
                 >
                   <div style={{ ...mono, fontWeight: 900 }}>Dashboard note</div>
