@@ -52,6 +52,12 @@ const RoomLoadDiagnostics     = lazy(() =>
   })),
 );
 
+// Dev-only: useAudioUrl manual test harness. Gated behind import.meta.env.DEV
+// so Vite tree-shakes both the dynamic import and the route JSX in prod builds.
+const DevAudioTest = import.meta.env.DEV
+  ? lazy(() => import("@/pages/DevAudioTest"))
+  : null;
+
 declare global {
   interface Window { MB_ROUTER_VERSION?: string; }
 }
@@ -394,6 +400,10 @@ export default function AppRouter() {
               <Route path="*" element={<LazyPage><AdminDashboard /></LazyPage>} />
             </Route>
           </Route>
+
+          {import.meta.env.DEV && DevAudioTest ? (
+            <Route path="/dev/audio-test" element={<LazyPage><DevAudioTest /></LazyPage>} />
+          ) : null}
 
           <Route path="*" element={<NotFound />} />
         </Route>
