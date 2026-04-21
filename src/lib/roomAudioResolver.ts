@@ -1,17 +1,18 @@
 /**
- * Phase 2 audio resolver — canonical key → playable URL pipeline.
+ * Audio resolver — canonical key → playable URL pipeline.
  *
  * Public surface:
  *   toAudioKey(raw)                — sync, pure, idempotent. Normalize any input to a canonical key.
- *   tryResolveLocal(key)           — sync. Local URL for kids/music/absolute; null otherwise.
- *   resolveRoomAudioUrl(raw, opts) — async. Supabase public URL for adult-room keys; local fallback on error.
+ *   tryResolveLocal(key)           — sync. Local URL for absolute http(s) keys only; null otherwise.
+ *   resolveRoomAudioUrl(raw, opts) — async. Supabase public URL; local fallback on error.
  *
- * Invariant (hard rule): kids/* and music/* keys NEVER reach Supabase.
- * Enforced in resolveRoomAudioUrl by calling tryResolveLocal before any remote resolution.
+ * All audio (adult-room, kids/*, music/*) now flows through the Supabase `room-audio`
+ * public bucket. The PWA service worker caches responses so offline playback works
+ * after first play. This violates the earlier "kids stays local" invariant — required
+ * to fit under Google Play's 200 MB base-module limit.
  *
- * The room-audio bucket is PUBLIC. Public URLs do not expire, so this module has no
- * cache/TTL/inflight machinery. The opts.bustCache parameter is preserved for
- * call-site compatibility but has no effect.
+ * Public URLs do not expire, so this module has no cache/TTL/inflight machinery.
+ * The opts.bustCache parameter is preserved for call-site compatibility but has no effect.
  */
 
 import { supabase } from '@/lib/supabaseClient';
@@ -65,17 +66,19 @@ export function toAudioKey(raw: unknown): string | null {
   return s || null;
 }
 
-function isLocalOnlyKey(key: string): boolean {
-  return key.startsWith('kids/') || key.startsWith('music/');
-}
-
 /**
- * Return a local URL for keys that never need remote resolution.
+ * Return a URL for keys that don't need Supabase resolution:
+ *   - absolute http(s) URLs (passthrough)
+ *   - `images/…` paths (kids page-3 audio lives in /images/mercy-kids-page-N/
+ *     next to the images — still bundled locally, not migrated to Supabase)
+ *
+ * Previously also short-circuited kids/* and music/* to local /audio/ paths;
+ * those now go through Supabase so they can be removed from the app bundle.
  */
 export function tryResolveLocal(key: string | null | undefined): string | null {
   if (!key) return null;
   if (/^https?:\/\//i.test(key)) return key;
-  if (isLocalOnlyKey(key)) return `/audio/${key}`;
+  if (key.startsWith('images/')) return `/${key}`;
   return null;
 }
 
@@ -102,8 +105,11 @@ function localFallback(key: string, err: unknown): ResolvedAudio {
  *
  * Returns null iff rawPath is null/undefined/empty/whitespace.
  * Otherwise always returns a ResolvedAudio with a playable `url`.
- *   - Kids, music, or absolute URLs → local `url`, `fallback: false`, no Supabase call (invariant).
- *   - Adult-room filenames → Supabase public `url`, `fallback: false` (or local on error, `fallback: true`).
+ *   - Absolute http(s) URLs → passed through, `fallback: false`, no Supabase call.
+ *   - Every other key (foo.mp3, kids/x.mp3, kids/josh/x.mp3, music/x.mp3) →
+ *     Supabase public `url`, `fallback: false` (or local /audio/{key} on error, `fallback: true`).
+ *     The local fallback will 404 for kids/music once those files are deleted from the bundle;
+ *     it exists only to preserve the adult-room fallback behavior during rollout.
  */
 export async function resolveRoomAudioUrl(
   rawPath: string | null | undefined,

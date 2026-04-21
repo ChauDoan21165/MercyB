@@ -46,9 +46,25 @@ function formatTime(sec: number) {
 }
 
 import { MUSIC_TRACKS } from './musicTracks';
+import { resolveRoomAudioUrl } from '@/lib/roomAudioResolver';
 
 function normalizeTrackId(input: string) {
   return input.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
+}
+
+/**
+ * Translate a track's declared src (may be /audio/music/... path) into a
+ * playable URL — Supabase public URL for migrated tracks, local fallback
+ * for anything not in the bucket. Never throws; falls back to the raw src
+ * on any resolver error.
+ */
+async function resolveTrackSrc(rawSrc: string): Promise<string> {
+  try {
+    const resolved = await resolveRoomAudioUrl(rawSrc);
+    return resolved?.url ?? rawSrc;
+  } catch {
+    return rawSrc;
+  }
 }
 
 function buildTracks(): Track[] {
@@ -234,15 +250,16 @@ export default function BottomMusicBar() {
       setTrackId(nextTrack.id);
       localStorage.setItem(LS_TRACK, nextTrack.id);
 
-      a.src = nextTrack.src;
-
-      const p = a.play();
-      if (p) {
-        p.catch((err) => {
-          console.warn("Auto-next blocked:", err);
-          setPlaying(false);
-        });
-      }
+      resolveTrackSrc(nextTrack.src).then((resolvedSrc) => {
+        a.src = resolvedSrc;
+        const p = a.play();
+        if (p) {
+          p.catch((err) => {
+            console.warn("Auto-next blocked:", err);
+            setPlaying(false);
+          });
+        }
+      });
     };
 
     a.addEventListener("ended", handleEnded);
@@ -257,25 +274,34 @@ export default function BottomMusicBar() {
     const a = audioRef.current;
     if (!a || !track) return;
 
-    const sameSrc = a.currentSrc === track.src || a.src === track.src;
-    if (sameSrc) {
-      localStorage.setItem(LS_TRACK, track.id);
-      return;
-    }
-
+    let cancelled = false;
     const wasPlaying = !a.paused || playingRef.current;
 
-    a.src = track.src;
-    localStorage.setItem(LS_TRACK, track.id);
+    resolveTrackSrc(track.src).then((resolvedSrc) => {
+      if (cancelled) return;
 
-    if (wasPlaying) {
-      a.play().catch(() => {
-        setPlaying(false);
-      });
-    } else {
-      setCurrent(0);
-      setDuration(0);
-    }
+      const sameSrc = a.currentSrc === resolvedSrc || a.src === resolvedSrc;
+      if (sameSrc) {
+        localStorage.setItem(LS_TRACK, track.id);
+        return;
+      }
+
+      a.src = resolvedSrc;
+      localStorage.setItem(LS_TRACK, track.id);
+
+      if (wasPlaying) {
+        a.play().catch(() => {
+          setPlaying(false);
+        });
+      } else {
+        setCurrent(0);
+        setDuration(0);
+      }
+    });
+
+    return () => {
+      cancelled = true;
+    };
   }, [track]);
 
   const toggleFavCurrent = () => {
@@ -285,13 +311,14 @@ export default function BottomMusicBar() {
     localStorage.setItem(LS_FAV, JSON.stringify(newFavs));
   };
 
-  const onTogglePlay = () => {
+  const onTogglePlay = async () => {
     const a = audioRef.current;
     if (!a || !track) return;
 
     if (a.paused) {
-      if (a.src !== track.src && a.currentSrc !== track.src) {
-        a.src = track.src;
+      const resolvedSrc = await resolveTrackSrc(track.src);
+      if (a.src !== resolvedSrc && a.currentSrc !== resolvedSrc) {
+        a.src = resolvedSrc;
       }
       a.play().catch(() => {
         setPlaying(false);

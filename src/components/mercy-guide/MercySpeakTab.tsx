@@ -45,6 +45,7 @@ import { KID_PAGE_32_ITEMS } from './kids/kidPage32Data';
 import { KID_PAGE_33_ITEMS } from './kids/kidPage33Data';
 import { KID_PAGE_34_ITEMS } from './kids/kidPage34Data';
 import { awardSpeakPoints } from '@/services/pointsService';
+import { resolveRoomAudioUrl } from '@/lib/roomAudioResolver';
 import type { StudentMercyMemoryUpdate, LearningSupportMode } from './types';
 import type {
   SpeechRecognitionLike as BaseSpeechRecognitionLike,
@@ -860,12 +861,13 @@ export function MercySpeakTab({
     });
   }
 
-  function handleSpeak(textOverride?: string) {
+  async function handleSpeak(textOverride?: string) {
     const speechText = cleanText(textOverride) || practiceText;
     if (!speechText || typeof window === 'undefined') return;
     stopRecordedAudioPlayback(true);
 
-    // Kids mode: try pre-recorded ElevenLabs mp3 first
+    // Kids mode: try pre-recorded ElevenLabs mp3 first (now served from Supabase for
+    // kids/* and kids/josh/* keys; /images/mercy-kids-page-3/* stays local).
     // Only use mp3 when playing the main phrase (no textOverride = tapping Mercy button)
     // For individual word chips (textOverride set), fall through to TTS
     if (isKidsMode && !textOverride && kidsAudioSrc) {
@@ -873,9 +875,11 @@ export function MercySpeakTab({
       if (kidsAudioRef.current) {
         try { kidsAudioRef.current.pause(); kidsAudioRef.current.currentTime = 0; } catch { /* ignore */ }
       }
+      const resolved = await resolveRoomAudioUrl(kidsAudioSrc);
+      if (!resolved?.url) { speakViaTTS(speechText); return; }
       const freshAudio = new Audio();
       kidsAudioRef.current = freshAudio;
-      freshAudio.src = kidsAudioSrc;
+      freshAudio.src = resolved.url;
       freshAudio.onplay = () => setIsSpeaking(true);
       freshAudio.onended = () => setIsSpeaking(false);
       freshAudio.onerror = () => { setIsSpeaking(false); speakViaTTS(speechText); };

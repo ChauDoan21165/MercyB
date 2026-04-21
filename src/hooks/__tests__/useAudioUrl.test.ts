@@ -32,7 +32,6 @@ vi.mock('@/lib/roomAudioResolver', () => {
   function tryResolveLocal(key: string | null | undefined): string | null {
     if (!key) return null;
     if (/^https?:\/\//i.test(key)) return key;
-    if (key.startsWith('kids/') || key.startsWith('music/')) return `/audio/${key}`;
     return null;
   }
 
@@ -85,30 +84,44 @@ describe('useAudioUrl — empty inputs', () => {
   });
 });
 
-// ── Sync short-circuit (kids / music / absolute) ─────────────────────────────
+// ── Sync short-circuit (absolute URLs only post-migration) ───────────────────
 
-describe('useAudioUrl — sync short-circuit (parametrized)', () => {
-  const cases = [
-    { label: 'kids/ prefix', input: 'kids/airplane.mp3', expected: '/audio/kids/airplane.mp3' },
-    { label: 'music/ prefix', input: 'music/theme.mp3', expected: '/audio/music/theme.mp3' },
-    { label: 'https:// absolute', input: 'https://cdn.example.com/x.mp3', expected: 'https://cdn.example.com/x.mp3' },
-  ];
-
-  for (const c of cases) {
-    it(`${c.label} → local URL synchronously, no resolver call`, () => {
-      const { result } = renderHook(() => useAudioUrl(c.input));
-      expect(result.current.url).toBe(c.expected);
-      expect(result.current.loading).toBe(false);
-      expect(result.current.error).toBeNull();
-      expect(mockResolve).not.toHaveBeenCalled();
-    });
-  }
-
-  it('kids path after /audio/ prefix is normalized by toAudioKey', () => {
-    const { result } = renderHook(() => useAudioUrl('/audio/kids/airplane.mp3'));
-    expect(result.current.url).toBe('/audio/kids/airplane.mp3');
+describe('useAudioUrl — sync short-circuit for absolute URLs', () => {
+  it('https:// absolute → passthrough synchronously, no resolver call', () => {
+    const { result } = renderHook(() => useAudioUrl('https://cdn.example.com/x.mp3'));
+    expect(result.current.url).toBe('https://cdn.example.com/x.mp3');
     expect(result.current.loading).toBe(false);
+    expect(result.current.error).toBeNull();
     expect(mockResolve).not.toHaveBeenCalled();
+  });
+});
+
+// ── kids / music now flow through the async resolver (Supabase) ──────────────
+
+describe('useAudioUrl — kids and music go through Supabase', () => {
+  it('kids/ key dispatches the async resolver', async () => {
+    mockResolve.mockResolvedValue({ url: 'https://supabase.example/kids/airplane.mp3', fallback: false });
+    const { result } = renderHook(() => useAudioUrl('kids/airplane.mp3'));
+    expect(result.current.loading).toBe(true);
+    expect(mockResolve).toHaveBeenCalledWith('kids/airplane.mp3', undefined);
+    await waitFor(() => expect(result.current.loading).toBe(false));
+    expect(result.current.url).toBe('https://supabase.example/kids/airplane.mp3');
+  });
+
+  it('music/ key dispatches the async resolver', async () => {
+    mockResolve.mockResolvedValue({ url: 'https://supabase.example/music/theme.mp3', fallback: false });
+    const { result } = renderHook(() => useAudioUrl('music/theme.mp3'));
+    expect(result.current.loading).toBe(true);
+    expect(mockResolve).toHaveBeenCalledWith('music/theme.mp3', undefined);
+    await waitFor(() => expect(result.current.loading).toBe(false));
+    expect(result.current.url).toBe('https://supabase.example/music/theme.mp3');
+  });
+
+  it('/audio/kids/ prefix is normalized and dispatched', async () => {
+    mockResolve.mockResolvedValue({ url: 'https://supabase.example/kids/x.mp3', fallback: false });
+    const { result } = renderHook(() => useAudioUrl('/audio/kids/x.mp3'));
+    expect(mockResolve).toHaveBeenCalledWith('kids/x.mp3', undefined);
+    await waitFor(() => expect(result.current.loading).toBe(false));
   });
 });
 
