@@ -95,7 +95,6 @@ const roomItems: AdminNavItem[] = [
   { title: "Room Health Check", url: "/admin/room-health", icon: Stethoscope },
   { title: "Room Load Diagnostics", url: "/admin/room-load-diagnostics", icon: Search },
   { title: "Room Management", url: "/admin/rooms", icon: LayoutDashboard },
-  { title: "VIP Rooms", url: "/admin/vip-rooms", icon: LayoutDashboard },
 ];
 
 // Monitoring & analytics
