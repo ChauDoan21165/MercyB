@@ -72,16 +72,16 @@ serve(async (req) => {
     // 4) Compute recipients (same logic, but safer)
     let recipients: { id: string; email: string }[] = [];
 
-    if (campaign.audience_type === "vip") {
-      const { data: vipUsers } = await admin
+    if (campaign.audience_type === "all_paid") {
+      const { data: paidUsers } = await admin
         .from("user_subscriptions")
         .select("user_id")
         .eq("status", "active");
 
-      const vipIds = (vipUsers || []).map((u: any) => u.user_id);
-      if (vipIds.length === 0) recipients = [];
+      const paidIds = (paidUsers || []).map((u: any) => u.user_id);
+      if (paidIds.length === 0) recipients = [];
       else {
-        const { data } = await admin.from("profiles").select("id,email").in("id", vipIds);
+        const { data } = await admin.from("profiles").select("id,email").in("id", paidIds);
         recipients = (data || []).filter((r: any) => !!r.email);
       }
     } else if (campaign.audience_type === "level0") {
