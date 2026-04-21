@@ -23,7 +23,10 @@ node --loader ts-node/esm scripts/generate-cross-topic-recommendations.ts
 ### Output:
 - File: `src/data/system/cross_topic_recommendations.json`
 - Contains: Keyword → Related Rooms mapping
-- Used by: `keywordResponder.ts` to suggest related rooms to users
+- No current runtime consumer — `keywordResponder.ts` was removed in the
+  Phase 2 audio refactor (commit `f9218527`). Script is kept because the
+  generated data file is still useful reference material and may be wired
+  back into a related-rooms feature later.
 
 ### Example output:
 ```json
