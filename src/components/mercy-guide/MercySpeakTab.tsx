@@ -787,31 +787,33 @@ export function MercySpeakTab({
 
   function speakViaTTS(speechText: string) {
     if (!speechText || !supportsSpeechSynthesis || typeof window === 'undefined') return;
-    window.speechSynthesis.cancel();
+    const synth = window.speechSynthesis;
 
-    const doSpeak = () => {
-      const utterance = new SpeechSynthesisUtterance(speechText);
-      utterance.lang = 'en-US';
-      utterance.rate = 0.9;
-      utterance.pitch = 1.0;
-      utterance.volume = 1.0;
-      const voices = window.speechSynthesis.getVoices();
-      const preferred = voices.find(v =>
-        v.lang === 'en-US' && (v.name.includes('Samantha') || v.name.includes('Karen') || v.name.includes('Google'))
-      ) || voices.find(v => v.lang === 'en-US') || voices[0];
-      if (preferred) utterance.voice = preferred;
-      utterance.onstart = () => setIsSpeaking(true);
-      utterance.onend   = () => setIsSpeaking(false);
-      utterance.onerror = () => setIsSpeaking(false);
-      window.speechSynthesis.speak(utterance);
-    };
+    // Chrome quirk: cancel() can leave the engine in a paused state that blocks
+    // the next speak(). resume() clears that state.
+    synth.cancel();
+    try { synth.resume(); } catch { /* some browsers throw on idle resume */ }
 
-    const voices = window.speechSynthesis.getVoices();
-    if (voices.length > 0) {
-      doSpeak();
-    } else {
-      window.speechSynthesis.onvoiceschanged = () => { doSpeak(); };
-    }
+    const utterance = new SpeechSynthesisUtterance(speechText);
+    utterance.lang = 'en-US';
+    utterance.rate = 0.9;
+    utterance.pitch = 1.0;
+    utterance.volume = 1.0;
+
+    const voices = synth.getVoices();
+    const preferred = voices.find(v =>
+      v.lang === 'en-US' && (v.name.includes('Samantha') || v.name.includes('Karen') || v.name.includes('Google'))
+    ) || voices.find(v => v.lang === 'en-US') || voices[0];
+    if (preferred) utterance.voice = preferred;
+
+    utterance.onstart = () => setIsSpeaking(true);
+    utterance.onend   = () => setIsSpeaking(false);
+    utterance.onerror = () => setIsSpeaking(false);
+
+    // Call synchronously inside the user-gesture. If voices aren't ready yet,
+    // the browser picks a default — better than deferring via onvoiceschanged,
+    // which fires outside the gesture window and makes Chrome drop speak().
+    synth.speak(utterance);
   }
 
   function handleSpeak(textOverride?: string) {
