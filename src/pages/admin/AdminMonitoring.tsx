@@ -18,6 +18,12 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { supabase } from "@/lib/supabaseClient";
+import {
+  getAppFromSearch,
+  getAppFromStorage,
+  setAdminAppId as persistApp,
+  withApp,
+} from "@/lib/adminAppContext";
 
 type FeedbackRow = {
   id?: string;
@@ -41,8 +47,6 @@ type SessionRow = {
   current_room_id?: string | null;
 };
 
-const ADMIN_APP_ID_KEY = "mb_admin_app_id";
-
 function fmtTime(ts?: string | null) {
   if (!ts) return "—";
   const d = new Date(ts);
@@ -54,48 +58,6 @@ function clip(s?: string | null, n = 140) {
   const t = (s || "").trim();
   if (!t) return "—";
   return t.length > n ? `${t.slice(0, n)}…` : t;
-}
-
-function getAppFromUrl(search: string) {
-  try {
-    return (new URLSearchParams(search).get("app") || "").trim();
-  } catch {
-    return "";
-  }
-}
-
-function getAppFromStorage() {
-  try {
-    return (localStorage.getItem(ADMIN_APP_ID_KEY) || "").trim();
-  } catch {
-    return "";
-  }
-}
-
-function persistApp(appId: string) {
-  const cleaned = (appId || "").trim();
-  if (!cleaned) return;
-
-  try {
-    localStorage.setItem(ADMIN_APP_ID_KEY, cleaned);
-  } catch {
-    // ignore
-  }
-
-  try {
-    const url = new URL(window.location.href);
-    url.searchParams.set("app", cleaned);
-    window.history.replaceState({}, "", url.toString());
-  } catch {
-    // ignore
-  }
-}
-
-function withApp(href: string, appId: string) {
-  const cleaned = (appId || "").trim();
-  if (!cleaned) return href;
-  const sep = href.includes("?") ? "&" : "?";
-  return `${href}${sep}app=${encodeURIComponent(cleaned)}`;
 }
 
 async function withOptionalAppIdFilter<T extends { error?: any }>(queryWithAppId: PromiseLike<T>,
@@ -113,7 +75,7 @@ async function withOptionalAppIdFilter<T extends { error?: any }>(queryWithAppId
 export default function AdminMonitoring() {
   const location = useLocation();
 
-  const urlApp = useMemo(() => getAppFromUrl(location.search), [location.search]);
+  const urlApp = useMemo(() => getAppFromSearch(location.search), [location.search]);
 
   const [appId, setAppId] = useState<string>(() => {
     const saved = getAppFromStorage();

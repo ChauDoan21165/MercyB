@@ -31,6 +31,12 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useUserAccess } from "@/hooks/useUserAccess";
+import {
+  getAppFromSearch,
+  getAppFromStorage,
+  setAdminAppId as persistApp,
+  withApp,
+} from "@/lib/adminAppContext";
 
 type AdminTile = {
   title: string;
@@ -62,50 +68,7 @@ type EdgeSecurityFeedPayload = {
   }>;
 };
 
-const ADMIN_APP_ID_KEY = "mb_admin_app_id";
 const SECURITY_REFRESH_MS = 20_000;
-
-function getAppFromUrl(search: string) {
-  try {
-    return (new URLSearchParams(search).get("app") || "").trim();
-  } catch {
-    return "";
-  }
-}
-
-function getAppFromStorage() {
-  try {
-    return (localStorage.getItem(ADMIN_APP_ID_KEY) || "").trim();
-  } catch {
-    return "";
-  }
-}
-
-function persistApp(appId: string) {
-  const cleaned = (appId || "").trim();
-  if (!cleaned) return;
-
-  try {
-    localStorage.setItem(ADMIN_APP_ID_KEY, cleaned);
-  } catch {
-    // ignore
-  }
-
-  try {
-    const url = new URL(window.location.href);
-    url.searchParams.set("app", cleaned);
-    window.history.replaceState({}, "", url.toString());
-  } catch {
-    // ignore
-  }
-}
-
-function withApp(href: string, appId: string) {
-  const cleaned = (appId || "").trim();
-  if (!cleaned) return href;
-  const sep = href.includes("?") ? "&" : "?";
-  return `${href}${sep}app=${encodeURIComponent(cleaned)}`;
-}
 
 function safeAdminLevel(value: unknown): number {
   const parsed = Number(value);
@@ -220,7 +183,7 @@ export default function AdminDashboard() {
   const adminLevel = safeAdminLevel(access.adminLevel);
   const isAdmin = !!(access.isAdmin || access.isHighAdmin || adminLevel >= 9);
 
-  const urlApp = useMemo(() => getAppFromUrl(location.search), [location.search]);
+  const urlApp = useMemo(() => getAppFromSearch(location.search), [location.search]);
 
   const [appId, setAppId] = useState<string>(() => {
     const saved = getAppFromStorage();

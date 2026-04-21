@@ -53,3 +53,29 @@ export function setAdminAppId(appId: string) {
     // ignore
   }
 }
+
+// Read app id from a router search string (e.g. useLocation().search).
+export function getAppFromSearch(search: string): string {
+  try {
+    return (new URLSearchParams(search).get("app") || "").trim();
+  } catch {
+    return "";
+  }
+}
+
+// Read app id from localStorage only (no URL/default fallback).
+export function getAppFromStorage(): string {
+  try {
+    return (localStorage.getItem(ADMIN_APP_ID_KEY) || "").trim();
+  } catch {
+    return "";
+  }
+}
+
+// Append ?app=<appId> to a href, preserving existing query params.
+export function withApp(href: string, appId: string): string {
+  const cleaned = (appId || "").trim();
+  if (!cleaned) return href;
+  const sep = href.includes("?") ? "&" : "?";
+  return `${href}${sep}app=${encodeURIComponent(cleaned)}`;
+}
