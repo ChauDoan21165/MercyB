@@ -1,8 +1,12 @@
 /**
- * Phase 2: Upload adult-room audio to Supabase Storage (bucket: room-audio).
+ * Upload all .mp3 files under public/audio/ to Supabase Storage (bucket: room-audio).
  *
- * Uploads every .mp3 at the top level of public/audio/ (skipping kids/, music/,
- * and any other subdirectories — those remain bundled with the app).
+ * Recursively walks public/audio/ and uploads every .mp3, preserving the
+ * relative path as the bucket key:
+ *   public/audio/foo.mp3                → foo.mp3                 (adult room audio)
+ *   public/audio/kids/airplane.mp3      → kids/airplane.mp3
+ *   public/audio/kids/josh/airplane.mp3 → kids/josh/airplane.mp3
+ *   public/audio/music/theme.mp3        → music/theme.mp3
  *
  * Idempotent: skips files already present in the bucket with matching size.
  * Writes a manifest to scripts/audio-upload-manifest.json on completion.
@@ -10,7 +14,7 @@
  * Run with:
  *   npx tsx scripts/upload-audio-to-supabase.ts
  *
- * Required env (read from .env.local, which is gitignored):
+ * Required env (read from .env.local or .env, both gitignored):
  *   VITE_SUPABASE_URL              (same as client)
  *   SUPABASE_SERVICE_ROLE_KEY      (NOT the anon key — this bypasses RLS)
  */
@@ -61,32 +65,48 @@ async function ensureBucket(): Promise<void> {
   if (createErr) throw new Error(`[upload] createBucket failed: ${createErr.message}`);
 }
 
-function collectTopLevelMp3s(): string[] {
-  const entries = readdirSync(AUDIO_DIR);
-  const files: string[] = [];
-  for (const name of entries) {
-    const fullPath = join(AUDIO_DIR, name);
-    const st = statSync(fullPath);
-    if (st.isFile() && name.toLowerCase().endsWith('.mp3')) {
-      files.push(name);
+/**
+ * Walks AUDIO_DIR recursively, returning relative paths of every .mp3 found.
+ * The relative path doubles as the Supabase bucket key (slashes preserved).
+ */
+function collectAllMp3s(): string[] {
+  const out: string[] = [];
+  const walk = (dir: string, rel: string) => {
+    for (const name of readdirSync(dir)) {
+      const fullPath = join(dir, name);
+      const relPath = rel ? `${rel}/${name}` : name;
+      const st = statSync(fullPath);
+      if (st.isDirectory()) {
+        walk(fullPath, relPath);
+      } else if (st.isFile() && name.toLowerCase().endsWith('.mp3')) {
+        out.push(relPath);
+      }
     }
-  }
-  files.sort();
-  return files;
+  };
+  walk(AUDIO_DIR, '');
+  out.sort();
+  return out;
 }
 
-async function remoteSizeOf(filename: string): Promise<number | null> {
-  const { data, error } = await supabase.storage.from(BUCKET).list('', {
+async function remoteSizeOf(key: string): Promise<number | null> {
+  // key may be "foo.mp3" or "kids/airplane.mp3" or "kids/josh/ant.mp3".
+  // Supabase list() takes a directory prefix + search basename.
+  const lastSlash = key.lastIndexOf('/');
+  const dirPart = lastSlash >= 0 ? key.slice(0, lastSlash) : '';
+  const basePart = lastSlash >= 0 ? key.slice(lastSlash + 1) : key;
+  const { data, error } = await supabase.storage.from(BUCKET).list(dirPart, {
     limit: 1,
-    search: filename,
+    search: basePart,
   });
   if (error) return null;
-  const hit = (data ?? []).find((o) => o.name === filename);
+  const hit = (data ?? []).find((o) => o.name === basePart);
   const sz = hit?.metadata?.size;
   return typeof sz === 'number' ? sz : null;
 }
 
 async function uploadOne(filename: string): Promise<UploadResult> {
+  // `filename` here is the full relative path from AUDIO_DIR, which is also
+  // the bucket key (slashes preserved).
   const localPath = join(AUDIO_DIR, filename);
   const localSize = statSync(localPath).size;
 
@@ -136,14 +156,24 @@ async function runWithConcurrency<T, R>(
 }
 
 async function main(): Promise<void> {
-  console.log('[upload] starting Phase 2 audio migration to Supabase Storage');
+  console.log('[upload] starting audio migration to Supabase Storage');
   console.log(`[upload] project: ${SUPABASE_URL}`);
   console.log(`[upload] bucket: ${BUCKET}`);
 
   await ensureBucket();
 
-  const files = collectTopLevelMp3s();
-  console.log(`[upload] found ${files.length} top-level .mp3 files in ${AUDIO_DIR}`);
+  const files = collectAllMp3s();
+  console.log(`[upload] found ${files.length} .mp3 files under ${AUDIO_DIR} (recursive)`);
+
+  // Break down by top-level prefix so the operator can sanity-check scope.
+  const byPrefix: Record<string, number> = {};
+  for (const f of files) {
+    const prefix = f.includes('/') ? f.slice(0, f.indexOf('/')) : '(root)';
+    byPrefix[prefix] = (byPrefix[prefix] ?? 0) + 1;
+  }
+  for (const [prefix, count] of Object.entries(byPrefix).sort()) {
+    console.log(`[upload]   ${prefix}/: ${count} files`);
+  }
 
   const totalBytes = files.reduce((sum, f) => sum + statSync(join(AUDIO_DIR, f)).size, 0);
   console.log(`[upload] total size: ${(totalBytes / 1024 / 1024).toFixed(1)} MB`);
