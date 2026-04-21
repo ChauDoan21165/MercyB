@@ -812,22 +812,22 @@ serve(async (req) => {
       });
     }
     
-    console.log('[room-health-summary] VIP tier coverage:', JSON.stringify(vipTierCoverage, null, 2));
+    console.log('[room-health-summary] Paid tier coverage:', JSON.stringify(vipTierCoverage, null, 2));
 
-    // Check for VIP tiers with 0 rooms (only if not filtering by specific tier)
+    // Check for paid tiers with 0 rooms (only if not filtering by specific tier)
     if (!tierFilterKey) {
-      // Build set of existing VIP tiers using normalization
-      const existingVipTiers = new Set<TierKey>();
-      
+      // Build set of existing paid tiers using normalization (level0 excluded — free tier)
+      const existingPaidTiers = new Set<TierKey>();
+
       for (const result of validationResults) {
         const tierKey = normalizeTier(result.tier);
-        if (tierKey && (tierKey as string).startsWith("vip")) {
-          existingVipTiers.add(tierKey);
+        if (tierKey && tierKey !== "level0") {
+          existingPaidTiers.add(tierKey);
         }
       }
-      
-      // Check all VIP tiers for gaps
-      const allVipTiers: TierKey[] = [
+
+      // Check all paid tiers for gaps
+      const allPaidTiers: TierKey[] = [
         "level1",
         "level2",
         "level3",
@@ -838,13 +838,13 @@ serve(async (req) => {
         "level8",
         "level9",
       ];
-      
-      const missingVipTiers = allVipTiers.filter(
-        (tier) => !existingVipTiers.has(tier)
+
+      const missingPaidTiers = allPaidTiers.filter(
+        (tier) => !existingPaidTiers.has(tier)
       );
-      
+
       // Add missing tiers to track gaps
-      for (const tier of missingVipTiers) {
+      for (const tier of missingPaidTiers) {
         trackGaps.push({
           tier,
           title: tier.toUpperCase(),
