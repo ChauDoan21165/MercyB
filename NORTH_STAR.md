@@ -139,7 +139,7 @@ Typical:
 - [x] **Supabase audio migration** — 3550/3550 files uploaded, `roomAudioResolver` + workbox signed-URL cache shipped, local fallback verified
 - [x] **Personal notebook feature** — 6 commits (migration → service → hook → SaveWordPopup → review/list/panel → integration into `MercyTeacherTab` adult branch); kids branch untouched
 - [x] **Responsive UI polish** — Home, TierIndex, MercyGuidePanel, MercySpeakTab, MercyTeacherTab, GrammarWritingTab, EnglishLogicTab all scale 375–1280px
-- [ ] **iOS bundle size reduction** — IN PROGRESS. Supabase path works; local `public/audio/*.mp3` still bundled. Next step is removing them after runtime tests confirm cutover.
+- [ ] **iOS bundle size reduction** — IN PROGRESS. Async audio refactor landed (CC #1 + #2 in parallel); Supabase path is now single-source-of-truth via `toAudioKey` → `tryResolveLocal` → `resolveRoomAudioUrl` pipeline. Awaiting runtime verification (`DevAudioTest` harness + `verify-supabase-cutover.ts` script) before removing bundled `public/audio/*.mp3`.
 - [ ] **iOS app submission** — NOT YET. Blocked on bundle size reduction above.
 
 ### Phase 2: Vietnamese-First Features (next 2 weeks)
@@ -360,6 +360,13 @@ Re-read section 1 (Mission). If the work doesn't serve the mission, stop doing i
 - 12+ commits pending push (holding for runtime tests)
 - Next: runtime verification of Supabase audio cutover, then push, then iOS submission prep
 
+### April 20, 2026 (late evening) — v1.2
+- Phase 0 contract locked for async audio refactor (CC #1 + CC #2 aligned on `toAudioKey`, `tryResolveLocal`, `resolveRoomAudioUrl` with `bustCache` option)
+- CC #2 shipped: `useAudioUrl` hook + 19-case vitest suite (`1d12436a`), `DevAudioTest` harness at `/dev/audio-test` dev-only route (`e9ee788d`), `scripts/verify-supabase-cutover.ts` post-deploy check with supabase-vs-fallback source reporting (`45b0021e`)
+- CC #1 shipped in parallel: resolver foundation (`624cfc52`), plus consumer migrations (TalkingFacePlayButton, AudioPlayer, RoomRendererUI)
+- Async audio path now single source of truth; kids/music invariant enforced at multiple layers (`toAudioKey` preserves subdir, `tryResolveLocal` short-circuits before any Supabase call)
+- Next: runtime tests via harness + verify script, bundled-audio removal, iOS submission prep
+
 ---
 
 *This document is living. Update it as the business evolves. Never let it become stale dogma — it's a compass, not a cage.*
@@ -430,7 +437,19 @@ Things that aren't broken for users but need fixing eventually. Ordered by prior
 - After runtime tests confirm Supabase path works, remove `public/audio/*` files (kids audio stays)
 - This is the whole point of Phase 2 — reduce iOS bundle from 3.9 GB to ~200 MB
 
-**Fix:** After runtime tests pass: `git rm public/audio/*.mp3` (exclude kids folder), rebuild, commit, push.
+**Fix:** After runtime tests pass (via `DevAudioTest` harness at `/dev/audio-test` + `scripts/verify-supabase-cutover.ts`): `git rm public/audio/*.mp3` (exclude kids folder), rebuild, commit, push.
 **Priority:** High (this is how we unlock iOS App Store submission — 3.9 GB → ~300 MB)
 **Est:** 1 hour (careful staged removal + verification)
+
+### Telemetry for audio fallback events
+- `useAudioUrl` surfaces `error` when the resolver falls back to local; no system currently logs these.
+- When a monitoring backend exists, add an `onError` callback or standalone reporter that ingests `{ key, error.message, timestamp }` so we catch Supabase degradation before users notice.
+**Priority:** Low (fallback still plays)
+**Est:** 30 min once monitoring exists
+
+### Delete resolveRoomAudioUrlSync if fully unused post-migration
+- CC #1 kept `resolveRoomAudioUrlSync` during the Phase 2 migration as a safety hatch for non-React callers.
+- After Phase 2 consumer migration is complete, grep for callers; if zero, remove it to shrink surface area.
+**Priority:** Very Low
+**Est:** 10 min
 
