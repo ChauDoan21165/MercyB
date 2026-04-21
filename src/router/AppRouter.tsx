@@ -36,9 +36,7 @@ const ResetPasswordPage   = lazy(() => import("@/pages/ResetPasswordPage"));
 
 const AdminDashboard          = lazy(() => import("@/pages/admin/AdminDashboard"));
 const AdminUsersPage          = lazy(() => import("@/pages/admin/AdminUsersPage"));
-const AdminPayments           = lazy(() => import("@/pages/admin/AdminPayments"));
-const AdminBankTransfers      = lazy(() => import("@/pages/admin/AdminBankTransfers"));
-const AdminPaymentVerification = lazy(() => import("@/pages/admin/AdminPaymentVerification"));
+const AdminPaymentsPage       = lazy(() => import("@/pages/admin/AdminPaymentsPage"));
 const AdminAccessCodes        = lazy(() => import("@/pages/admin/AdminAccessCodes"));
 const AudioCoveragePage       = lazy(() => import("@/pages/admin/AudioCoveragePage"));
 const AdminMonitoring         = lazy(() => import("@/pages/admin/AdminMonitoring"));
@@ -385,9 +383,9 @@ export default function AppRouter() {
             <Route element={<AdminLayoutShell />}>
               <Route index element={<LazyPage><AdminDashboard /></LazyPage>} />
               <Route path="users"                element={<LazyPage><AdminUsersPage /></LazyPage>} />
-              <Route path="payments"             element={<LazyPage><AdminPayments /></LazyPage>} />
-              <Route path="bank-transfers"       element={<LazyPage><AdminBankTransfers /></LazyPage>} />
-              <Route path="payment-verification" element={<LazyPage><AdminPaymentVerification /></LazyPage>} />
+              <Route path="payments"             element={<LazyPage><AdminPaymentsPage defaultTab="transactions" /></LazyPage>} />
+              <Route path="bank-transfers"       element={<LazyPage><AdminPaymentsPage defaultTab="bank" /></LazyPage>} />
+              <Route path="payment-verification" element={<LazyPage><AdminPaymentsPage defaultTab="verify" /></LazyPage>} />
               <Route path="access-codes"         element={<LazyPage><AdminAccessCodes /></LazyPage>} />
               <Route path="audio-coverage"       element={<LazyPage><AudioCoveragePage /></LazyPage>} />
               <Route path="monitoring"           element={<LazyPage><AdminMonitoring /></LazyPage>} />

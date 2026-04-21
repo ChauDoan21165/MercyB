@@ -80,7 +80,6 @@ const mainItems: AdminNavItem[] = [
   { title: "Payments", url: "/admin/payments", icon: DollarSign },
   { title: "Subscriptions", url: "/admin/subscriptions", icon: CreditCard },
   { title: "Billing", url: "/admin/billing", icon: CreditCard },
-  { title: "Bank Transfers", url: "/admin/bank-transfers", icon: DollarSign },
   { title: "Room Health", url: "/admin/room-health-dashboard", icon: Activity },
   { title: "Users", url: "/admin/users", icon: Users },
 ];
