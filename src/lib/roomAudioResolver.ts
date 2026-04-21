@@ -4,39 +4,32 @@
  * Public surface:
  *   toAudioKey(raw)                — sync, pure, idempotent. Normalize any input to a canonical key.
  *   tryResolveLocal(key)           — sync. Local URL for kids/music/absolute; null otherwise.
- *   resolveRoomAudioUrl(raw, opts) — async. Supabase signed URL for adult-room keys; local fallback on error.
+ *   resolveRoomAudioUrl(raw, opts) — async. Supabase public URL for adult-room keys; local fallback on error.
  *
  * Invariant (hard rule): kids/* and music/* keys NEVER reach Supabase.
- * Enforced in resolveRoomAudioUrl by calling tryResolveLocal before any signing attempt.
+ * Enforced in resolveRoomAudioUrl by calling tryResolveLocal before any remote resolution.
  *
- * Caching: in-memory module-scoped Map keyed by canonical key, 1-hour TTL (matches signed URL expiry),
- * refreshes 5 minutes before expiry. Pass {bustCache: true} to drop the entry and re-sign atomically
- * (used by the hook's refresh() for 403 self-heal).
+ * The room-audio bucket is PUBLIC. Public URLs do not expire, so this module has no
+ * cache/TTL/inflight machinery. The opts.bustCache parameter is preserved for
+ * call-site compatibility but has no effect.
  */
 
 import { supabase } from '@/lib/supabaseClient';
 import { ROOM_AUDIO_BUCKET } from '@/lib/constants/rooms';
 
-const SIGNED_URL_TTL_SECONDS = 60 * 60;
-const CACHE_REFRESH_BEFORE_EXPIRY_MS = 5 * 60 * 1000;
-
 export type ResolvedAudio = {
-  /** Playable URL — Supabase signed URL or local fallback. Never empty. */
+  /** Playable URL — Supabase public URL or local fallback. Never empty. */
   url: string;
-  /** True iff Supabase signing failed and we fell back to the local /audio/{key} URL. */
+  /** True iff Supabase resolution failed and we fell back to the local /audio/{key} URL. */
   fallback: boolean;
   /** The Supabase error. Present iff fallback === true. */
   error?: Error;
 };
 
 export type ResolveOpts = {
-  /** Drop any cached signed URL for this key and re-sign fresh. */
+  /** Retained for call-site compatibility; has no effect for public URLs. */
   bustCache?: boolean;
 };
-
-type CacheEntry = { url: string; expiresAt: number };
-const memoryCache = new Map<string, CacheEntry>();
-const inflight = new Map<string, Promise<ResolvedAudio>>();
 
 /**
  * Normalize any raw audio reference into a canonical key.
@@ -47,12 +40,12 @@ const inflight = new Map<string, Promise<ResolvedAudio>>();
  *   "audio/foo.mp3"                   → "foo.mp3"
  *   "/audio/foo.mp3"                  → "foo.mp3"
  *   "public/audio/foo.mp3"            → "foo.mp3"
- *   "/audio/audio/foo.mp3" (double)   → "foo.mp3"             (while-loop strip guarantees idempotence)
- *   "/audio/kids/airplane.mp3"        → "kids/airplane.mp3"   (keeps kids/ so tryResolveLocal routes local)
+ *   "/audio/audio/foo.mp3" (double)   → "foo.mp3"
+ *   "/audio/kids/airplane.mp3"        → "kids/airplane.mp3"
  *   "kids/airplane.mp3"               → "kids/airplane.mp3"
  *   "music/theme.mp3"                 → "music/theme.mp3"
- *   "https://cdn…/x.mp3"              → "https://cdn…/x.mp3"  (absolute passthrough)
- *   "private:foo.mp3"                 → "foo.mp3"             (legacy seam prefix stripped)
+ *   "https://cdn…/x.mp3"              → "https://cdn…/x.mp3"
+ *   "private:foo.mp3"                 → "foo.mp3"
  *   null | "" | "   " | non-string    → null
  */
 export function toAudioKey(raw: unknown): string | null {
@@ -77,13 +70,7 @@ function isLocalOnlyKey(key: string): boolean {
 }
 
 /**
- * Return a local URL for keys that never need async signing.
- *   kids/*    → /audio/kids/...      (offline kids experience is non-negotiable)
- *   music/*   → /audio/music/...     (bundled atmospheric music)
- *   https://… → passthrough           (already-absolute URL)
- *   anything else (adult-room) → null (caller must use resolveRoomAudioUrl)
- *
- * Safe to call inside useState initializers — no loading flash for local-only keys.
+ * Return a local URL for keys that never need remote resolution.
  */
 export function tryResolveLocal(key: string | null | undefined): string | null {
   if (!key) return null;
@@ -92,14 +79,14 @@ export function tryResolveLocal(key: string | null | undefined): string | null {
   return null;
 }
 
-async function signFromSupabase(filename: string): Promise<string> {
-  const { data, error } = await supabase.storage
+function getPublicFromSupabase(filename: string): string {
+  const { data } = supabase.storage
     .from(ROOM_AUDIO_BUCKET)
-    .createSignedUrl(filename, SIGNED_URL_TTL_SECONDS);
-  if (error || !data?.signedUrl) {
-    throw new Error(error?.message ?? 'createSignedUrl returned no URL');
+    .getPublicUrl(filename);
+  if (!data?.publicUrl) {
+    throw new Error('getPublicUrl returned no URL');
   }
-  return data.signedUrl;
+  return data.publicUrl;
 }
 
 function localFallback(key: string, err: unknown): ResolvedAudio {
@@ -116,14 +103,11 @@ function localFallback(key: string, err: unknown): ResolvedAudio {
  * Returns null iff rawPath is null/undefined/empty/whitespace.
  * Otherwise always returns a ResolvedAudio with a playable `url`.
  *   - Kids, music, or absolute URLs → local `url`, `fallback: false`, no Supabase call (invariant).
- *   - Adult-room filenames → Supabase signed `url`, `fallback: false` (or local on error, `fallback: true`).
- *
- * Pass `{ bustCache: true }` to drop any cached entry for this key and re-sign atomically.
- * Consumers should pass this from refresh() when an <audio> element observes a 403 playback error.
+ *   - Adult-room filenames → Supabase public `url`, `fallback: false` (or local on error, `fallback: true`).
  */
 export async function resolveRoomAudioUrl(
   rawPath: string | null | undefined,
-  opts?: ResolveOpts,
+  _opts?: ResolveOpts,
 ): Promise<ResolvedAudio | null> {
   const key = toAudioKey(rawPath);
   if (!key) return null;
@@ -133,37 +117,12 @@ export async function resolveRoomAudioUrl(
     return { url: local, fallback: false };
   }
 
-  if (opts?.bustCache) {
-    memoryCache.delete(key);
-    inflight.delete(key);
+  try {
+    const url = getPublicFromSupabase(key);
+    return { url, fallback: false };
+  } catch (err) {
+    return localFallback(key, err);
   }
-
-  const now = Date.now();
-  const cached = memoryCache.get(key);
-  if (cached && cached.expiresAt - CACHE_REFRESH_BEFORE_EXPIRY_MS > now) {
-    return { url: cached.url, fallback: false };
-  }
-
-  const pending = inflight.get(key);
-  if (pending) return pending;
-
-  const request = (async (): Promise<ResolvedAudio> => {
-    try {
-      const signedUrl = await signFromSupabase(key);
-      memoryCache.set(key, {
-        url: signedUrl,
-        expiresAt: now + SIGNED_URL_TTL_SECONDS * 1000,
-      });
-      return { url: signedUrl, fallback: false };
-    } catch (err) {
-      return localFallback(key, err);
-    } finally {
-      inflight.delete(key);
-    }
-  })();
-
-  inflight.set(key, request);
-  return request;
 }
 
 /**
