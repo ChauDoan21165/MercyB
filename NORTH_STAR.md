@@ -432,6 +432,29 @@ Things that aren't broken for users but need fixing eventually. Ordered by prior
 **Priority:** Very Low (just clutter)
 **Est:** 2 min
 
+### Supabase Storage signed-URL bug (blocks iOS bundle reduction)
+Symptoms:
+- createSignedUrl returns 400 with "new row violates row-level security policy"
+- Persists with fully permissive RLS policies (authenticated ALL on storage.objects)
+- authenticated_read_buckets policy on storage.buckets is present
+- Valid JWT session (chaudoan@yahoo.com, 857-char token)
+- Bucket is private, no size/MIME restrictions
+
+Attempted fixes that didn't work:
+- SELECT-only policy on storage.objects
+- INSERT+SELECT policies
+- Single ALL policy (permissive)
+- Policies on storage.s3_multipart_uploads
+- Policies on storage.buckets
+
+Not yet investigated:
+- Supabase docs on createSignedUrl internals
+- Whether bucket was created via API vs dashboard (may matter)
+- Supabase support ticket
+
+Priority: HIGH (blocks removing 2.6 GB bundled audio, blocks iOS submission)
+Est: 30-60 min fresh debugging tomorrow
+
 ### Remove bundled audio after Supabase cutover verified
 - Currently both Supabase AND local audio coexist
 - After runtime tests confirm Supabase path works, remove `public/audio/*` files (kids audio stays)
