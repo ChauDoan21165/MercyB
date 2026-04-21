@@ -10,6 +10,7 @@ import React from "react";
 
 // ✅ AUTHORITATIVE UI MOTIF
 import TalkingFacePlayButton from "@/components/audio/TalkingFacePlayButton";
+import { toAudioKey } from "@/lib/roomAudioResolver";
 
 interface TierSectionProps {
   id: string;
@@ -38,24 +39,8 @@ interface TierSectionProps {
   };
 }
 
-function normalizeAudioSrc(input: string): string {
-  const s = String(input || "").trim();
-  if (!s) return "";
-  if (s.startsWith("http")) return s;
-
-  // remove leading slashes
-  const p = s.replace(/^\/+/, "");
-  // already "audio/..."
-  if (p.startsWith("audio/")) return `/${p}`;
-  // already "/audio/..."
-  if (s.startsWith("/audio/")) return s;
-
-  // default: treat as filename
-  return `/audio/${p}`;
-}
-
-function audioLabelFromSrc(src: string): string {
-  const leaf = (src || "").split("/").pop() || src;
+function audioLabelFromKey(key: string): string {
+  const leaf = (key || "").split("/").pop() || key;
   return leaf;
 }
 
@@ -78,8 +63,9 @@ export const TierSection = ({
     ? "border-slate-500/40"
     : "border-gray-300/50";
 
-  const audioSrc = audio ? normalizeAudioSrc(audio) : "";
-  const audioLabel = audioSrc ? audioLabelFromSrc(audioSrc) : "";
+  // Phase 2: pass canonical key to TalkingFacePlayButton; hook handles URL resolution.
+  const audioKey = audio ? (toAudioKey(audio) ?? "") : "";
+  const audioLabel = audioKey ? audioLabelFromKey(audioKey) : "";
 
   return (
     <section
@@ -207,10 +193,10 @@ export const TierSection = ({
           </div>
 
           {/* ✅ Talking Face Audio (ONLY) */}
-          {audioSrc ? (
+          {audioKey ? (
             <div className="pt-2 w-full max-w-none">
               <TalkingFacePlayButton
-                src={audioSrc}
+                src={audioKey}
                 label={audioLabel}
                 className="w-full max-w-none"
                 fullWidthBar
