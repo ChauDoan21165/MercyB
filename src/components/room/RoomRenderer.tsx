@@ -69,6 +69,7 @@ import type { TierId } from "@/lib/constants/tiers";
 import { normalizeTier } from "@/lib/constants/tiers";
 import { tierFromRoomId } from "@/lib/tierFromRoomId";
 import { canAccessTier } from "@/security/typeGuards";
+import { toAudioKey } from "@/lib/roomAudioResolver";
 
 import {
   ActiveEntry,
@@ -243,18 +244,10 @@ function coerceLegacyEntryShape(entry: any) {
 
   if (typeof e.audio === "string" && e.audio.trim() && !e.audio_en) e.audio_en = e.audio.trim();
 
+  // Normalize audio_en into the canonical key form (Phase 2 — render-time hook produces the URL).
   if (typeof e.audio_en === "string" && e.audio_en.trim()) {
-    const a = e.audio_en.trim();
-    const isUrl = /^https?:\/\//i.test(a);
-    if (!isUrl) {
-      if (a.startsWith("/")) {
-        // keep
-      } else if (a.startsWith("audio/")) {
-        e.audio_en = `/${a}`;
-      } else if (!a.includes("/")) {
-        e.audio_en = `/audio/${a}`;
-      }
-    }
+    const key = toAudioKey(e.audio_en);
+    if (key) e.audio_en = key;
   }
 
   const bag: string[] = [];

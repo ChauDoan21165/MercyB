@@ -5,6 +5,7 @@ import { prettifyRoomIdEN, isBadAutoTitle } from "@/components/room/roomIdUtils"
 import { normalizeTextForKwMatch } from "@/components/room/RoomRendererUI";
 import type { TierId } from "@/lib/constants/tiers";
 import { normalizeTier } from "@/lib/constants/tiers";
+import { toAudioKey } from "@/lib/roomAudioResolver";
 
 export type AnyRoom = any;
 
@@ -132,21 +133,10 @@ export function coerceLegacyEntryShape(entry: any) {
     if (!e.audio_en) e.audio_en = e.audio.trim();
   }
 
-  // 2b) normalize audio filenames to a usable public path
+  // 2b) normalize audio_en into the canonical key form (Phase 2 — render-time hook handles URL build)
   if (typeof e.audio_en === "string" && e.audio_en.trim()) {
-    const a = e.audio_en.trim();
-    const isUrl = /^https?:\/\//i.test(a);
-    if (!isUrl) {
-      if (a.startsWith("/")) {
-        // ok
-      } else if (a.startsWith("audio/")) {
-        e.audio_en = `/${a}`;
-      } else if (!a.includes("/")) {
-        e.audio_en = `/audio/${a}`;
-      } else {
-        // leave as-is
-      }
-    }
+    const key = toAudioKey(e.audio_en);
+    if (key) e.audio_en = key;
   }
 
   // 3) merge keywords/tags -> keywords[] (normalized) so entryMatchesKeyword() works
