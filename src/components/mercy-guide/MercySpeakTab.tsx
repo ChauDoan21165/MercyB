@@ -701,18 +701,6 @@ export function MercySpeakTab({
     return () => window.clearTimeout(timer);
   }, [copySuccess]);
 
-  // Chrome kills the speech-synth engine after ~15s of continuous speech.
-  // Ticking pause()/resume() every 10s keeps it alive across multi-chunk utterances.
-  useEffect(() => {
-    if (typeof window === 'undefined' || !window.speechSynthesis) return;
-    const synth = window.speechSynthesis;
-    const id = window.setInterval(() => {
-      if (synth.speaking && !synth.paused) {
-        try { synth.pause(); synth.resume(); } catch { /* ignore */ }
-      }
-    }, 10000);
-    return () => window.clearInterval(id);
-  }, []);
 
   const practiceText = useMemo(() => {
     if (isKidsMode) return kidsPracticeText;
@@ -843,28 +831,29 @@ export function MercySpeakTab({
   function speakViaTTS(speechText: string) {
     if (!speechText || !supportsSpeechSynthesis || typeof window === 'undefined') return;
     const synth = window.speechSynthesis;
-
-    // Clear any stuck queue and the Chrome paused-after-cancel state.
     synth.cancel();
-    try { synth.resume(); } catch { /* idle-resume throws on some browsers */ }
 
     const voices = synth.getVoices();
-    const preferred = voices.find(v =>
+    const voice = voices.find(v =>
       v.lang === 'en-US' && (v.name.includes('Samantha') || v.name.includes('Karen') || v.name.includes('Google'))
     ) || voices.find(v => v.lang === 'en-US') || voices[0];
 
-    const chunks = chunkForTTS(speechText);
-    chunks.forEach((chunk, i) => {
-      const u = new SpeechSynthesisUtterance(chunk);
+    // Only chunk when the single utterance would exceed Chrome's silent-fail zone.
+    // Short text (<=180 chars) uses the same single-utterance pattern as the working
+    // panel greeting button — that's known to work in this codebase.
+    const parts = speechText.length > 180 ? chunkForTTS(speechText) : [speechText];
+
+    parts.forEach((part, i) => {
+      const u = new SpeechSynthesisUtterance(part);
       u.lang = 'en-US';
       u.rate = 0.9;
       u.pitch = 1.0;
       u.volume = 1.0;
-      if (preferred) u.voice = preferred;
+      if (voice) u.voice = voice;
       if (i === 0) u.onstart = () => setIsSpeaking(true);
-      if (i === chunks.length - 1) u.onend = () => setIsSpeaking(false);
+      if (i === parts.length - 1) u.onend = () => setIsSpeaking(false);
       u.onerror = (e: any) => {
-        console.warn('[Speak] TTS utterance error', e?.error ?? e?.type ?? 'unknown');
+        console.warn('[Speak] TTS error', e?.error ?? e?.type ?? 'unknown');
         setIsSpeaking(false);
       };
       synth.speak(u);
