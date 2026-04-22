@@ -12,6 +12,9 @@ import {
   trackPaywallShown,
   trackPricingViewed,
 } from "@/lib/analytics";
+import { getPlatform } from "@/lib/platform";
+import { APPLE_MANAGE_SUBSCRIPTIONS_URL } from "@/lib/iap";
+import IapPlanCard from "@/components/pricing/IapPlanCard";
 
 type PlanKey = "level0" | "month" | "year";
 type PaidPlanKey = "month" | "year";
@@ -116,6 +119,11 @@ function BiText({ en, vi }: { en: string; vi: string }) {
 
 export default function Pricing() {
   const navigate = useNavigate();
+
+  // Platform gate — iOS uses Apple IAP via RevenueCat per Apple 3.1.1.
+  // Web + Android keep the existing Stripe flow unchanged.
+  const platform = getPlatform();
+  const isIos = platform === "ios";
 
   const ONE_MONTH_PRICE_ID = resolvePriceId(
     pickEnv("VITE_STRIPE_PRICE_ONE_MONTH", "VITE_STRIPE_PRICE_MONTHLY", "VITE_STRIPE_MONTHLY_PRICE_ID"),
@@ -615,7 +623,7 @@ export default function Pricing() {
         </p>
 
         <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 14, color: "#475569", fontSize: 13, fontWeight: 700 }}>
-          <span>Secure Stripe checkout</span>
+          <span>{isIos ? "Billed through your Apple ID" : "Secure Stripe checkout"}</span>
           <span>•</span>
           <span>Cancel anytime</span>
           <span>•</span>
@@ -626,7 +634,9 @@ export default function Pricing() {
           {[
             { en: "Full access to all premium rooms",          vi: "Toàn quyền truy cập phòng premium" },
             { en: "Instant unlock after successful payment",   vi: "Mở khóa ngay sau khi thanh toán thành công" },
-            { en: "Manage or cancel anytime in Stripe",        vi: "Quản lý hoặc hủy bất cứ lúc nào qua Stripe" },
+            isIos
+              ? { en: "Manage or cancel in Apple ID settings",   vi: "Quản lý hoặc hủy trong Cài đặt Apple ID" }
+              : { en: "Manage or cancel anytime in Stripe",      vi: "Quản lý hoặc hủy bất cứ lúc nào qua Stripe" },
           ].map(({ en, vi }) => (
             <div key={en} style={{ borderRadius: 14, border: "1px solid rgba(15,23,42,0.08)", background: "rgba(255,255,255,0.80)", padding: "10px 12px" }}>
               <div style={{ fontSize: 13, fontWeight: 700, color: "#334155" }}>✓ {en}</div>
@@ -642,21 +652,37 @@ export default function Pricing() {
           </button>
 
           {hasPremium ? (
-            <button type="button" onClick={() => void handleManageSubscription()}
-              disabled={manageBusy || entitlementLoading}
+            <button type="button"
+              onClick={() => {
+                if (isIos) {
+                  try { window.open(APPLE_MANAGE_SUBSCRIPTIONS_URL, "_blank", "noopener,noreferrer"); }
+                  catch { window.location.href = APPLE_MANAGE_SUBSCRIPTIONS_URL; }
+                  return;
+                }
+                void handleManageSubscription();
+              }}
+              disabled={!isIos && (manageBusy || entitlementLoading)}
               style={{ borderRadius: 14, minHeight: 46, padding: "12px 16px", border: "1px solid rgba(15,23,42,0.12)", background: "#0f172a", color: "#fff", fontWeight: 900, cursor: manageBusy ? "wait" : "pointer", opacity: manageBusy ? 0.85 : 1 }}>
               <BiText
-                en={manageBusy ? "Opening portal…" : "Manage subscription"}
-                vi={manageBusy ? "Đang mở cổng thanh toán…" : "Quản lý gói đăng ký"}
+                en={isIos ? "Manage in Apple" : (manageBusy ? "Opening portal…" : "Manage subscription")}
+                vi={isIos ? "Quản lý qua Apple" : (manageBusy ? "Đang mở cổng thanh toán…" : "Quản lý gói đăng ký")}
               />
             </button>
           ) : (
-            <button type="button" onClick={() => void handlePaidPlan("year")}
-              disabled={busyPlan !== null || entitlementLoading}
+            <button type="button"
+              onClick={() => {
+                if (isIos) {
+                  const el = document.getElementById("mb-plans-grid");
+                  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                  return;
+                }
+                void handlePaidPlan("year");
+              }}
+              disabled={!isIos && (busyPlan !== null || entitlementLoading)}
               style={{ borderRadius: 14, minHeight: 46, padding: "12px 16px", border: "1px solid rgba(15,23,42,0.12)", background: "#0f172a", color: "#fff", fontWeight: 900, cursor: busyPlan ? "wait" : "pointer", opacity: busyPlan ? 0.85 : 1 }}>
               <BiText
-                en={busyPlan === "year" ? "Opening…" : "Upgrade now"}
-                vi={busyPlan === "year" ? "Đang mở…" : "Nâng cấp ngay"}
+                en={isIos ? "See plans" : (busyPlan === "year" ? "Opening…" : "Upgrade now")}
+                vi={isIos ? "Xem các gói" : (busyPlan === "year" ? "Đang mở…" : "Nâng cấp ngay")}
               />
             </button>
           )}
@@ -678,13 +704,24 @@ export default function Pricing() {
             Bạn đã có quyền truy cập premium.
           </div>
           <div style={{ lineHeight: 1.6, marginBottom: 10, fontSize: 14 }}>
-            Choose another paid plan to switch immediately, or open Stripe to manage billing and cancellation.
+            {isIos
+              ? "Manage or cancel your subscription in Apple ID settings."
+              : "Choose another paid plan to switch immediately, or open Stripe to manage billing and cancellation."}
           </div>
-          <button type="button" onClick={() => void handleManageSubscription()} disabled={manageBusy}
+          <button type="button"
+            onClick={() => {
+              if (isIos) {
+                try { window.open(APPLE_MANAGE_SUBSCRIPTIONS_URL, "_blank", "noopener,noreferrer"); }
+                catch { window.location.href = APPLE_MANAGE_SUBSCRIPTIONS_URL; }
+                return;
+              }
+              void handleManageSubscription();
+            }}
+            disabled={!isIos && manageBusy}
             style={{ borderRadius: 12, minHeight: 42, padding: "10px 14px", border: "1px solid rgba(15,23,42,0.12)", background: "#0f172a", color: "#fff", fontWeight: 900, cursor: manageBusy ? "wait" : "pointer", opacity: manageBusy ? 0.85 : 1 }}>
             <BiText
-              en={manageBusy ? "Opening portal…" : "Manage subscription"}
-              vi={manageBusy ? "Đang mở cổng thanh toán…" : "Quản lý gói đăng ký"}
+              en={isIos ? "Manage in Apple" : (manageBusy ? "Opening portal…" : "Manage subscription")}
+              vi={isIos ? "Quản lý qua Apple" : (manageBusy ? "Đang mở cổng thanh toán…" : "Quản lý gói đăng ký")}
             />
           </button>
         </div>
@@ -721,12 +758,21 @@ export default function Pricing() {
       ) : null}
 
       {/* ── Plan cards ──────────────────────────────────────── */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 14, alignItems: "stretch" }}>
-        {plans.map(renderCard)}
+      <div id="mb-plans-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 14, alignItems: "stretch" }}>
+        {isIos ? (
+          <>
+            {renderCard(plans[0])}
+            <IapPlanCard onEntitlementGranted={() => { void refreshEntitlement(); }} />
+          </>
+        ) : (
+          plans.map(renderCard)
+        )}
       </div>
 
       <p style={{ marginTop: 16, fontSize: 13, color: "#64748b", lineHeight: 1.6 }}>
-        Payments are processed securely through Stripe. Existing subscribers are managed through Stripe Billing Portal.
+        {isIos
+          ? "Subscriptions are billed through your Apple ID and managed in Apple ID → Subscriptions."
+          : "Payments are processed securely through Stripe. Existing subscribers are managed through Stripe Billing Portal."}
       </p>
 
       {/* Subscription disclosure — required by Apple 3.1.2(c) + Google Play */}
