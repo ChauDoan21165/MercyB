@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/providers/AuthProvider";
 import { useEntitlements } from "@/lib/useEntitlements";
+import { GiftCodeModal } from "@/components/GiftCodeModal";
 
 function formatDateTime(value: string | null | undefined): string {
   if (!value) return "—";
@@ -78,6 +79,7 @@ export default function AccountPage() {
   const [isSigningOut, setIsSigningOut]       = useState(false);
   const [didRedirectToSignin, setDidRedirectToSignin] = useState(false);
   const [isOpeningBilling, setIsOpeningBilling] = useState(false);
+  const [showGiftModal, setShowGiftModal]     = useState(false);
 
   // Ref-based in-flight guards — prevent duplicate taps even before state updates
   const signingOutRef     = useRef(false);
@@ -355,6 +357,10 @@ export default function AccountPage() {
                 <BiLabel en="Pricing" vi="Bảng giá" />
               </button>
 
+              <button type="button" style={buttonBase} onClick={() => setShowGiftModal(true)}>
+                <BiLabel en="Redeem gift code" vi="Kích hoạt mã quà tặng" />
+              </button>
+
               <button type="button" style={primaryButton}
                 onClick={() => void handleSignOut()} disabled={isSigningOut}>
                 <BiLabel
@@ -447,6 +453,8 @@ export default function AccountPage() {
 
         </div>
       </div>
+
+      <GiftCodeModal open={showGiftModal} onOpenChange={setShowGiftModal} />
     </div>
   );
 }

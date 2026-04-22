@@ -27,6 +27,7 @@ const Home                = lazy(() => import("@/pages/Home"));
 const Privacy             = lazy(() => import("@/pages/Privacy"));
 const AccountPage         = lazy(() => import("@/pages/AccountPage"));
 const BillingPage         = lazy(() => import("@/pages/Billing"));
+const RedeemPage          = lazy(() => import("@/pages/RedeemPage"));
 const BillingSuccessPage  = lazy(() => import("@/pages/BillingSuccessPage"));
 const Pricing             = lazy(() => import("../screens/Pricing"));
 const TierIndex           = lazy(() => import("@/pages/TierIndex"));
@@ -128,7 +129,6 @@ function ChatAliasRedirect() {
   return <Navigate to={roomId ? `/room/${roomId}` : "/rooms"} replace />;
 }
 
-function RedeemRedirect()  { return <Navigate to="/pricing" replace />; }
 function LoginRedirect()   { return <Navigate to="/signin" replace />; }
 
 function AuthRedirect() {
@@ -342,7 +342,8 @@ export default function AppRouter() {
           <Route path="/rooms"   element={<LazyPage><AllRooms /></LazyPage>} />
           <Route path="/tiers"   element={<LazyPage><TierIndex /></LazyPage>} />
           <Route path="/tiers/:tierId" element={<LazyPage><TierDetail /></LazyPage>} />
-          <Route path="/redeem"  element={<RedeemRedirect />} />
+          <Route path="/redeem"     element={<LazyPage><RedeemPage /></LazyPage>} />
+          <Route path="/promo-code" element={<LazyPage><RedeemPage /></LazyPage>} />
 
           {/* Protected pages — redirect to /signin if not authenticated */}
           <Route path="/account"
