@@ -671,11 +671,12 @@ export default function AdminDashboard() {
   };
 
   const tiles: AdminTile[] = [
-    { title: "Payments", desc: "Inspect payments, Stripe test flows, and verification tools.", href: "/admin/payments", badge: "SAFE" },
+    { title: "Users", desc: "Who signed up, who's paying, who's churning.", href: "/admin/users", badge: "SAFE" },
+    { title: "Subscriptions", desc: "Live Stripe subscription state with cancel / portal actions.", href: "/admin/subscriptions", badge: "SAFE" },
+    { title: "Feedback", desc: "Read user feedback from rooms (read-only).", href: "/admin/feedback", badge: "READY" },
+    { title: "Payments", desc: "Latest payment transactions.", href: "/admin/payments", badge: "SAFE" },
     { title: "Access Codes", desc: "Generate and manage redeem / access codes.", href: "/admin/access-codes", badge: "SAFE" },
     { title: "Audio Coverage", desc: "Coverage checks for room audio (read-only tools).", href: "/admin/audio-coverage", badge: "READY" },
-    { title: "System Monitoring", desc: "Truth streams: latest feedback + sessions (read-only).", href: "/admin/monitoring", badge: "READY" },
-    { title: "Feedback", desc: "Read user feedback from rooms (read-only).", href: "/admin/feedback", badge: "READY" },
   ];
 
   function go(href?: string) {
