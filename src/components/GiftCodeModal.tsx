@@ -157,7 +157,7 @@ export function GiftCodeModal({
           <DialogDescription>
             {targetTier
               ? `Enter your gift code to unlock ${targetTier} access`
-              : "Enter your gift code to unlock VIP access"}
+              : "Enter your gift code to unlock premium access"}
             <br />
             <span className="text-muted-foreground">
               Nhập mã quà tặng để mở khóa quyền truy cập
@@ -223,7 +223,7 @@ export function GiftCodeModal({
             <ul className="space-y-1 list-disc list-inside">
               <li>Enter your gift code above</li>
               <li>Click "Redeem" to activate</li>
-              <li>VIP access is granted based on code duration</li>
+              <li>Premium access is granted based on code duration</li>
               <li>Each code can only be used once</li>
             </ul>
           </div>
