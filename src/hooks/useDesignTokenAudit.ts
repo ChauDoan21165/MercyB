@@ -65,16 +65,6 @@ export function useDesignTokenAudit() {
       category: 'color',
     });
 
-    // 3. Check VIP color tokens
-    const vipElements = document.querySelectorAll('[class*="vip"], [data-tier*="vip"]');
-    issues.push({
-      id: 'vip-color-tokens',
-      check: 'VIP color tokens',
-      severity: 'pass',
-      message: `${vipElements.length} VIP-styled elements`,
-      category: 'color',
-    });
-
     // 4. Check card border radius
     const cards = document.querySelectorAll('[class*="card"], .card');
     const radii = new Set<string>();
@@ -220,16 +210,6 @@ export function useDesignTokenAudit() {
       check: 'Kids card assets',
       severity: 'pass',
       message: `${kidsCards.length} kids-themed elements found`,
-      category: 'component',
-    });
-
-    // 16. Check VIP-card assets
-    const vipCards = document.querySelectorAll('[class*="vip-card"], .vip-card');
-    issues.push({
-      id: 'vip-card-assets',
-      check: 'VIP card assets',
-      severity: 'pass',
-      message: `${vipCards.length} VIP card elements`,
       category: 'component',
     });
 
