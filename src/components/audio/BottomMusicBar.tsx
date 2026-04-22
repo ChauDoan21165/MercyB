@@ -16,12 +16,15 @@
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Play, Pause, Heart, Volume2, Search } from "lucide-react";
+import { MUSIC_TRACKS } from "./musicTracks";
+import { getPublicAudioUrl } from "@/lib/musicAudioUrl";
 
 type TabId = "all" | "fav";
 type Track = {
   key: string;
   id: string;
   title: string;
+  /** Public URL to the track. Computed once from the filename at build time. */
   src: string;
 };
 
@@ -45,34 +48,12 @@ function formatTime(sec: number) {
   return `${m}:${String(s).padStart(2, "0")}`;
 }
 
-import { MUSIC_TRACKS } from './musicTracks';
-import { resolveRoomAudioUrl } from '@/lib/roomAudioResolver';
-
-function normalizeTrackId(input: string) {
-  return input.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
-}
-
-/**
- * Translate a track's declared src (may be /audio/music/... path) into a
- * playable URL — Supabase public URL for migrated tracks, local fallback
- * for anything not in the bucket. Never throws; falls back to the raw src
- * on any resolver error.
- */
-async function resolveTrackSrc(rawSrc: string): Promise<string> {
-  try {
-    const resolved = await resolveRoomAudioUrl(rawSrc);
-    return resolved?.url ?? rawSrc;
-  } catch {
-    return rawSrc;
-  }
-}
-
 function buildTracks(): Track[] {
   return MUSIC_TRACKS.map((t, index) => ({
-    key: `${t.src}::${index}`,
+    key: `${t.file}::${index}`,
     id: t.id,
     title: t.title,
-    src: t.src,
+    src: getPublicAudioUrl(t.file),
   }));
 }
 
@@ -250,16 +231,14 @@ export default function BottomMusicBar() {
       setTrackId(nextTrack.id);
       localStorage.setItem(LS_TRACK, nextTrack.id);
 
-      resolveTrackSrc(nextTrack.src).then((resolvedSrc) => {
-        a.src = resolvedSrc;
-        const p = a.play();
-        if (p) {
-          p.catch((err) => {
-            console.warn("Auto-next blocked:", err);
-            setPlaying(false);
-          });
-        }
-      });
+      a.src = nextTrack.src;
+      const p = a.play();
+      if (p) {
+        p.catch((err) => {
+          console.warn("Auto-next blocked:", err);
+          setPlaying(false);
+        });
+      }
     };
 
     a.addEventListener("ended", handleEnded);
@@ -274,34 +253,23 @@ export default function BottomMusicBar() {
     const a = audioRef.current;
     if (!a || !track) return;
 
-    let cancelled = false;
     const wasPlaying = !a.paused || playingRef.current;
 
-    resolveTrackSrc(track.src).then((resolvedSrc) => {
-      if (cancelled) return;
-
-      const sameSrc = a.currentSrc === resolvedSrc || a.src === resolvedSrc;
-      if (sameSrc) {
-        localStorage.setItem(LS_TRACK, track.id);
-        return;
-      }
-
-      a.src = resolvedSrc;
+    const sameSrc = a.currentSrc === track.src || a.src === track.src;
+    if (sameSrc) {
       localStorage.setItem(LS_TRACK, track.id);
+      return;
+    }
 
-      if (wasPlaying) {
-        a.play().catch(() => {
-          setPlaying(false);
-        });
-      } else {
-        setCurrent(0);
-        setDuration(0);
-      }
-    });
+    a.src = track.src;
+    localStorage.setItem(LS_TRACK, track.id);
 
-    return () => {
-      cancelled = true;
-    };
+    if (wasPlaying) {
+      a.play().catch(() => setPlaying(false));
+    } else {
+      setCurrent(0);
+      setDuration(0);
+    }
   }, [track]);
 
   const toggleFavCurrent = () => {
@@ -311,18 +279,15 @@ export default function BottomMusicBar() {
     localStorage.setItem(LS_FAV, JSON.stringify(newFavs));
   };
 
-  const onTogglePlay = async () => {
+  const onTogglePlay = () => {
     const a = audioRef.current;
     if (!a || !track) return;
 
     if (a.paused) {
-      const resolvedSrc = await resolveTrackSrc(track.src);
-      if (a.src !== resolvedSrc && a.currentSrc !== resolvedSrc) {
-        a.src = resolvedSrc;
+      if (a.src !== track.src && a.currentSrc !== track.src) {
+        a.src = track.src;
       }
-      a.play().catch(() => {
-        setPlaying(false);
-      });
+      a.play().catch(() => setPlaying(false));
     } else {
       a.pause();
     }
@@ -348,27 +313,6 @@ export default function BottomMusicBar() {
         touchAction: "pan-x pan-y",
       }}
     >
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "1.5px",
-          background: "rgba(0,0,0,0.04)",
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          height: "1.5px",
-          background: "#007AFF",
-          width: `${(current / duration) * 100 || 0}%`,
-        }}
-      />
-
       <div style={{ display: "flex", alignItems: "center", gap: "8px", flexShrink: 0 }}>
         <button
           onClick={() => {
@@ -419,7 +363,7 @@ export default function BottomMusicBar() {
         </select>
       </div>
 
-      <div style={{ flex: 1, display: "flex", alignItems: "center", gap: "8px", minWidth: 0 }}>
+      <div style={{ flex: 1, display: "flex", alignItems: "center", gap: "8px", minWidth: 80 }}>
         <input
           type="range"
           min={0}
@@ -430,10 +374,18 @@ export default function BottomMusicBar() {
             if (!a) return;
             a.currentTime = (Number(e.target.value) / 100) * duration;
           }}
-          className="mb-slider-pro"
-          style={{ flex: 1 }}
+          className="mb-slider-pro mb-slider-progress"
+          aria-label="Seek"
+          style={
+            {
+              flex: 1,
+              minWidth: 80,
+              // Fill percentage used by CSS to paint the played portion.
+              "--mb-progress": `${(current / duration) * 100 || 0}%`,
+            } as React.CSSProperties
+          }
         />
-        <span style={{ fontSize: "9px", fontWeight: "900", opacity: 0.4 }}>
+        <span style={{ fontSize: "9px", fontWeight: "900", opacity: 0.55, minWidth: 32, textAlign: "right" }}>
           {formatTime(current)}
         </span>
       </div>
@@ -493,19 +445,59 @@ export default function BottomMusicBar() {
       <style>{`
         .mb-slider-pro {
           -webkit-appearance: none;
-          background: rgba(0,0,0,0.06);
-          height: 2px;
+          appearance: none;
+          background: rgba(0,0,0,0.14);
+          height: 4px;
           border-radius: 10px;
           outline: none;
+          margin: 0;
+          padding: 0;
+        }
+        .mb-slider-pro::-webkit-slider-runnable-track {
+          height: 4px;
+          border-radius: 10px;
+          background: transparent;
+        }
+        .mb-slider-pro::-moz-range-track {
+          height: 4px;
+          border-radius: 10px;
+          background: rgba(0,0,0,0.14);
+        }
+        /* Seek-bar variant: show played portion in blue via a linear-gradient
+           driven by the --mb-progress CSS var set inline. */
+        .mb-slider-progress {
+          background: linear-gradient(
+            to right,
+            #007AFF 0%,
+            #007AFF var(--mb-progress, 0%),
+            rgba(0,0,0,0.14) var(--mb-progress, 0%),
+            rgba(0,0,0,0.14) 100%
+          );
+        }
+        .mb-slider-progress::-moz-range-progress {
+          background: #007AFF;
+          height: 4px;
+          border-radius: 10px;
         }
         .mb-slider-pro::-webkit-slider-thumb {
           -webkit-appearance: none;
-          height: 10px;
-          width: 10px;
+          appearance: none;
+          height: 14px;
+          width: 14px;
+          margin-top: -5px;
           border-radius: 50%;
-          background: #444;
-          border: 1.5px solid white;
-          box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+          background: #111;
+          border: 2px solid #fff;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+          cursor: pointer;
+        }
+        .mb-slider-pro::-moz-range-thumb {
+          height: 14px;
+          width: 14px;
+          border-radius: 50%;
+          background: #111;
+          border: 2px solid #fff;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.3);
           cursor: pointer;
         }
       `}</style>
