@@ -38,7 +38,7 @@ describe('Mercy Logs', () => {
     const summary = getLogSummary();
     expect(summary.room_enter).toBe(2);
     expect(summary.entry_click).toBe(1);
-    expect(summary.vip_upgrade).toBe(0);
+    expect(summary.tier_upgrade).toBe(0);
   });
 
   it('should clear logs', () => {

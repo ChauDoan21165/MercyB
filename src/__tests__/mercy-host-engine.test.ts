@@ -108,8 +108,8 @@ describe('Mercy Host Engine', () => {
       expect(getAnimationForEvent('entry_click')).toBe('spark');
     });
     
-    it('should return shimmer for vip_upgrade', () => {
-      expect(getAnimationForEvent('vip_upgrade')).toBe('shimmer');
+    it('should return shimmer for tier_upgrade', () => {
+      expect(getAnimationForEvent('tier_upgrade')).toBe('shimmer');
     });
     
     it('should return glow for color_toggle', () => {
@@ -119,13 +119,13 @@ describe('Mercy Host Engine', () => {
     it('should determine voice trigger correctly', () => {
       expect(shouldTriggerVoice('room_enter')).toBe(true);
       expect(shouldTriggerVoice('entry_click')).toBe(false);
-      expect(shouldTriggerVoice('vip_upgrade')).toBe(true);
+      expect(shouldTriggerVoice('tier_upgrade')).toBe(true);
     });
     
     it('should map event to voice trigger type', () => {
       expect(getVoiceTriggerForEvent('room_enter')).toBe('room_enter');
       expect(getVoiceTriggerForEvent('entry_complete')).toBe('entry_complete');
-      expect(getVoiceTriggerForEvent('vip_upgrade')).toBe('encouragement');
+      expect(getVoiceTriggerForEvent('tier_upgrade')).toBe('encouragement');
       expect(getVoiceTriggerForEvent('entry_click')).toBeNull();
     });
   });

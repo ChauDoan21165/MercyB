@@ -31,7 +31,7 @@ export type EmotionInput =
   | "milestone_complete"
   | "return_after_7_days"
   | "tier_unlock"
-  | "vip_upgrade"
+  | "tier_upgrade"
   | "color_toggle"
   | "audio_complete"
   | "favorite_add";
@@ -63,7 +63,7 @@ const EMOTION_WEIGHTS: Record<
   milestone_complete: { celebrating: 0.7 },
   return_after_7_days: { returning_after_gap: 0.8 },
   tier_unlock: { celebrating: 0.6 },
-  vip_upgrade: { celebrating: 0.8 },
+  tier_upgrade: { celebrating: 0.8 },
   color_toggle: { neutral: 0.1 },
   audio_complete: { focused: 0.2, neutral: 0.1 },
   favorite_add: { focused: 0.2 },

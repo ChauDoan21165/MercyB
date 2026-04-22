@@ -12,7 +12,7 @@ export type MercyEventType =
   | "entry_complete"
   | "color_toggle"
   | "tier_unlock"
-  | "vip_upgrade"
+  | "tier_upgrade"
   | "achievement"
   | "first_visit"
   | "return_inactive"
@@ -31,7 +31,7 @@ export const MERCY_EVENTS: MercyEventType[] = [
   "entry_complete",
   "color_toggle",
   "tier_unlock",
-  "vip_upgrade",
+  "tier_upgrade",
   "achievement",
   "first_visit",
   "return_inactive",
@@ -53,7 +53,7 @@ const EVENT_ANIMATION_MAP: Record<MercyEventType, MercyAnimationType> = {
   entry_complete: "shimmer",
   color_toggle: "glow",
   tier_unlock: "spark",
-  vip_upgrade: "shimmer",
+  tier_upgrade: "shimmer",
   achievement: "spark",
   first_visit: "glow",
   return_inactive: "ripple",
@@ -81,7 +81,7 @@ export function getAnimationForEvent(event: MercyEventType | string): MercyAnima
  * Event priority for overlapping events
  */
 const EVENT_PRIORITY: Record<MercyEventType, number> = {
-  vip_upgrade: 10,
+  tier_upgrade: 10,
   tier_unlock: 9,
   achievement: 8,
   first_visit: 7,
@@ -113,7 +113,7 @@ export function shouldTriggerVoice(event: MercyEventType): boolean {
     "entry_complete",
     "color_toggle",
     "tier_unlock",
-    "vip_upgrade",
+    "tier_upgrade",
     "return_inactive",
   ].includes(event);
 }
@@ -145,7 +145,7 @@ export function getVoiceTriggerForEvent(
       return "return_inactive";
 
     case "tier_unlock":
-    case "vip_upgrade":
+    case "tier_upgrade":
     case "achievement":
       return "encouragement";
 

@@ -15,7 +15,7 @@ export type MercyLogEventType =
   | 'chat_message'
   | 'ef_practice'
   | 'streak_milestone'
-  | 'vip_upgrade'
+  | 'tier_upgrade'
   | 'color_toggle'
   | 'host_toggle'
   // Phase 8: Martial events
@@ -129,7 +129,7 @@ export function getLogSummary(): Record<MercyLogEventType, number> {
     chat_message: 0,
     ef_practice: 0,
     streak_milestone: 0,
-    vip_upgrade: 0,
+    tier_upgrade: 0,
     color_toggle: 0,
     host_toggle: 0,
     // Phase 8: Martial events

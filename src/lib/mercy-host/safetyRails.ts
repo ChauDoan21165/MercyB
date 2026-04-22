@@ -77,7 +77,7 @@ export function isSafeTrigger(trigger: string, isCrisis: boolean): boolean {
     'celebrating',
     'milestone_complete',
     'tier_unlock',
-    'vip_upgrade',
+    'tier_upgrade',
     'achievement'
   ];
   
