@@ -27,6 +27,7 @@ const ChatHub             = lazy(() => import("@/pages/ChatHub"));
 const AllRooms            = lazy(() => import("@/pages/AllRooms"));
 const Home                = lazy(() => import("@/pages/Home"));
 const Privacy             = lazy(() => import("@/pages/Privacy"));
+const Terms                = lazy(() => import("@/pages/Terms"));
 const AccountPage         = lazy(() => import("@/pages/AccountPage"));
 const BillingPage         = lazy(() => import("@/pages/Billing"));
 const BillingSuccessPage  = lazy(() => import("@/pages/BillingSuccessPage"));
@@ -369,6 +370,7 @@ export default function AppRouter() {
           {/* Public pages */}
           <Route path="/"        element={<LazyPage><Home /></LazyPage>} />
           <Route path="/privacy" element={<LazyPage><Privacy /></LazyPage>} />
+          <Route path="/terms"   element={<LazyPage><Terms /></LazyPage>} />
           <Route path="/pricing" element={<LazyPage><Pricing /></LazyPage>} />
           <Route path="/upgrade" element={<LazyPage><Pricing /></LazyPage>} />
           <Route path="/rooms"   element={<LazyPage><AllRooms /></LazyPage>} />

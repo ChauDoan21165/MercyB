@@ -728,6 +728,20 @@ export default function Pricing() {
       <p style={{ marginTop: 16, fontSize: 13, color: "#64748b", lineHeight: 1.6 }}>
         Payments are processed securely through Stripe. Existing subscribers are managed through Stripe Billing Portal.
       </p>
+
+      {/* Subscription disclosure — required by Apple 3.1.2(c) + Google Play */}
+      <div style={{ marginTop: 20, padding: 14, borderRadius: 12, border: "1px solid rgba(0,0,0,0.08)", background: "#f8fafc", fontSize: 12, lineHeight: 1.6, color: "#475569" }}>
+        <p style={{ marginTop: 0, marginBottom: 6 }}>
+          <strong>Auto-renewing subscription.</strong> Your subscription renews automatically at the end of each billing period at the price shown above unless you cancel at least 24 hours before the renewal date. You can manage or cancel your subscription at any time from the billing portal (web) or Apple account settings (iOS).
+        </p>
+        <p style={{ margin: "0 0 8px", color: "#64748b" }}>
+          Gói đăng ký tự động gia hạn. Gói sẽ tự động gia hạn vào cuối mỗi kỳ thanh toán với mức giá niêm yết trừ khi bạn hủy ít nhất 24 giờ trước ngày gia hạn. Bạn có thể quản lý hoặc hủy bất cứ lúc nào.
+        </p>
+        <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
+          <a href="/terms"   target="_blank" rel="noopener noreferrer" style={{ color: "#2563eb", textDecoration: "underline" }}>Terms of Use (EULA) / Điều khoản sử dụng</a>
+          <a href="/privacy" target="_blank" rel="noopener noreferrer" style={{ color: "#2563eb", textDecoration: "underline" }}>Privacy Policy / Chính sách bảo mật</a>
+        </div>
+      </div>
     </div>
   );
 }

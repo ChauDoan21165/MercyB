@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/providers/AuthProvider";
 import { useEntitlements } from "@/lib/useEntitlements";
 import { GiftCodeModal } from "@/components/GiftCodeModal";
+import { supabase } from "@/lib/supabaseClient";
 
 function formatDateTime(value: string | null | undefined): string {
   if (!value) return "—";
@@ -80,6 +81,10 @@ export default function AccountPage() {
   const [didRedirectToSignin, setDidRedirectToSignin] = useState(false);
   const [isOpeningBilling, setIsOpeningBilling] = useState(false);
   const [showGiftModal, setShowGiftModal]     = useState(false);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [deleteConfirmText, setDeleteConfirmText] = useState("");
+  const [isDeleting, setIsDeleting]           = useState(false);
+  const [deleteError, setDeleteError]         = useState<string | null>(null);
 
   // Ref-based in-flight guards — prevent duplicate taps even before state updates
   const signingOutRef     = useRef(false);
@@ -166,6 +171,32 @@ export default function AccountPage() {
   const handleRefreshClick = useCallback((): void => {
     void refreshEntitlements();
   }, [refreshEntitlements]);
+
+  const handleDeleteAccount = useCallback(async (): Promise<void> => {
+    if (isDeleting) return;
+    setIsDeleting(true);
+    setDeleteError(null);
+    try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const token = sessionData.session?.access_token;
+      if (!token) throw new Error("Not signed in.");
+
+      const { error } = await supabase.functions.invoke("delete-account", {
+        body: {},
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (error) throw error;
+
+      await supabase.auth.signOut();
+      nav("/", { replace: true });
+    } catch (err) {
+      setDeleteError(
+        err instanceof Error ? err.message : "Unable to delete account.",
+      );
+    } finally {
+      setIsDeleting(false);
+    }
+  }, [isDeleting, nav]);
 
   // ── Styles ──────────────────────────────────────────────────────────────────
   const wrap: React.CSSProperties = { width: "100%", minHeight: "100vh", background: "white" };
@@ -460,6 +491,117 @@ export default function AccountPage() {
             </p>
           </div>
 
+        </div>
+
+        {/* ── Legal + account deletion ─────────────────────────── */}
+        <div style={{ ...card, marginTop: 18 }}>
+          <div style={labelStyle}>Legal & account</div>
+          <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 8 }}>
+            <a
+              href="/privacy"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ ...buttonBase, textDecoration: "none" } as React.CSSProperties}
+            >
+              <BiLabel en="Privacy Policy" vi="Chính sách bảo mật" />
+            </a>
+            <a
+              href="/terms"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ ...buttonBase, textDecoration: "none" } as React.CSSProperties}
+            >
+              <BiLabel en="Terms of Use" vi="Điều khoản sử dụng" />
+            </a>
+            <button
+              type="button"
+              style={{
+                ...buttonBase,
+                background: "#fff",
+                color: "#b91c1c",
+                borderColor: "#fecaca",
+              }}
+              onClick={() => { setShowDeleteConfirm(true); setDeleteError(null); setDeleteConfirmText(""); }}
+            >
+              <BiLabel en="Delete my account" vi="Xóa tài khoản của tôi" />
+            </button>
+          </div>
+
+          {showDeleteConfirm ? (
+            <div
+              style={{
+                marginTop: 14,
+                padding: 14,
+                border: "1px solid #fecaca",
+                borderRadius: 12,
+                background: "#fef2f2",
+              }}
+            >
+              <p style={{ ...subStyle, color: "#991b1b", fontWeight: 700, marginTop: 0 }}>
+                This permanently deletes your account, memory, notebook, and all
+                associated data. This cannot be undone.
+              </p>
+              <p style={{ ...subViStyle, color: "#991b1b", marginBottom: 10 }}>
+                Thao tác này sẽ xóa vĩnh viễn tài khoản, bộ nhớ, sổ tay và toàn
+                bộ dữ liệu liên quan. Không thể hoàn tác.
+              </p>
+              <p style={{ ...subStyle, margin: "4px 0" }}>
+                Type <strong>DELETE</strong> to confirm:
+              </p>
+              <p style={{ ...subViStyle, margin: "2px 0 8px" }}>
+                Nhập <strong>DELETE</strong> để xác nhận.
+              </p>
+              <input
+                type="text"
+                autoComplete="off"
+                value={deleteConfirmText}
+                onChange={(e) => setDeleteConfirmText(e.target.value)}
+                placeholder="DELETE"
+                style={{
+                  width: "100%",
+                  padding: "10px 12px",
+                  borderRadius: 10,
+                  border: "1px solid #fecaca",
+                  fontSize: 14,
+                  marginBottom: 10,
+                }}
+              />
+              {deleteError ? (
+                <p style={{ ...subStyle, color: "#b91c1c", marginTop: 4 }}>
+                  {deleteError}
+                </p>
+              ) : null}
+              <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                <button
+                  type="button"
+                  style={{
+                    ...buttonBase,
+                    background: "#b91c1c",
+                    color: "#fff",
+                    borderColor: "#b91c1c",
+                    opacity: deleteConfirmText === "DELETE" && !isDeleting ? 1 : 0.5,
+                    cursor:
+                      deleteConfirmText === "DELETE" && !isDeleting ? "pointer" : "not-allowed",
+                  }}
+                  disabled={deleteConfirmText !== "DELETE" || isDeleting}
+                  onClick={() => void handleDeleteAccount()}
+                >
+                  <BiLabel
+                    en={isDeleting ? "Deleting…" : "Permanently delete"}
+                    vi={isDeleting ? "Đang xóa…" : "Xóa vĩnh viễn"}
+                  />
+                </button>
+                <button
+                  type="button"
+                  style={buttonBase}
+                  disabled={isDeleting}
+                  onClick={() => { setShowDeleteConfirm(false); setDeleteConfirmText(""); }}
+                >
+                  <BiLabel en="Cancel" vi="Hủy" />
+                </button>
+              </div>
+            </div>
+          ) : null}
         </div>
       </div>
 
