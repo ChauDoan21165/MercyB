@@ -71,7 +71,7 @@ describe("Mercy Integration Tests", () => {
       expect(state.currentTier).toBe("level0");
     });
 
-    it("should initialize with VIP tier and update avatar", () => {
+    it("should initialize with Premium tier and update avatar", () => {
       const engine = createMercyEngine(setState, getState);
 
       engine.init({ tier: "level9", language: "en" });

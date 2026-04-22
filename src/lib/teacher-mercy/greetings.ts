@@ -37,9 +37,9 @@ export const GENERAL_GREETINGS: GreetingTemplate[] = [
 ];
 
 /**
- * VIP-tier enhanced greetings (Level 3+)
+ * Premium-tier enhanced greetings (Level 3+)
  */
-export const VIP_GREETINGS: GreetingTemplate[] = [
+export const PREMIUM_GREETINGS: GreetingTemplate[] = [
   {
     en: "Welcome back, {{name}}. As a valued member, {{roomTitle}} opens its deeper layers for you.",
     vi: "Chào mừng trở lại, {{name}}. Là thành viên quý, {{roomTitle}} mở ra những tầng sâu hơn cho bạn."
@@ -57,7 +57,7 @@ export const VIP_GREETINGS: GreetingTemplate[] = [
 /**
  * Level 9 Executive greetings (exclusive tone)
  */
-export const VIP9_GREETINGS: GreetingTemplate[] = [
+export const PREMIUM9_GREETINGS: GreetingTemplate[] = [
   {
     en: "{{name}}, welcome to the Executive tier. {{roomTitle}} represents our most refined wisdom.",
     vi: "{{name}}, chào mừng đến tầng Cao cấp. {{roomTitle}} đại diện cho tri thức tinh túy nhất."
@@ -121,15 +121,15 @@ export function getRandomGreeting(templates: GreetingTemplate[]): GreetingTempla
  */
 export function getGreetingByTier(tier: string): GreetingTemplate {
   if (tier === 'level9') {
-    return getRandomGreeting(VIP9_GREETINGS);
+    return getRandomGreeting(PREMIUM9_GREETINGS);
   }
   if (tier.startsWith('kids')) {
     return getRandomGreeting(KIDS_GREETINGS);
   }
   if (['level3', 'level4', 'level5', 'level6', 'level7', 'level8'].includes(tier)) {
-    // 50% chance of VIP greeting, 50% general
-    return Math.random() > 0.5 
-      ? getRandomGreeting(VIP_GREETINGS) 
+    // 50% chance of Premium greeting, 50% general
+    return Math.random() > 0.5
+      ? getRandomGreeting(PREMIUM_GREETINGS)
       : getRandomGreeting(GENERAL_GREETINGS);
   }
   return getRandomGreeting(GENERAL_GREETINGS);

@@ -248,7 +248,7 @@ describe('Rituals System', () => {
   });
 });
 
-describe('VIP Ceremonies', () => {
+describe('Premium Ceremonies', () => {
   beforeEach(() => {
     localStorageMock.clear();
   });

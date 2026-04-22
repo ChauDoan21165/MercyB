@@ -66,7 +66,7 @@ export interface TeacherMercyContext {
 export interface MercyGreeting {
   text: string;
   textAlt: string;
-  isVip: boolean;
+  isPremium: boolean;
 }
 
 export interface MercyTeacherReply {
@@ -140,7 +140,7 @@ export interface MercyTeachingTurnResult {
   shouldReviewConcept: boolean;
 }
 
-const VIP_TIERS = new Set([
+const PREMIUM_TIERS = new Set([
   'level1',
   'level2',
   'level3',
@@ -155,7 +155,7 @@ const VIP_TIERS = new Set([
 function getGreetingPersonalityContext(
   userTier: string
 ): 'greeting' | 'encouragement' {
-  return VIP_TIERS.has(userTier) ? 'encouragement' : 'greeting';
+  return PREMIUM_TIERS.has(userTier) ? 'encouragement' : 'greeting';
 }
 
 function cleanText(text: string): string {
@@ -357,7 +357,7 @@ export function generateRoomGreeting(context: TeacherMercyContext): MercyGreetin
   return {
     text: language === 'vi' ? cleanText(styled.vi) : cleanText(styled.en),
     textAlt: language === 'vi' ? cleanText(styled.en) : cleanText(styled.vi),
-    isVip: VIP_TIERS.has(userTier),
+    isPremium: PREMIUM_TIERS.has(userTier),
   };
 }
 
@@ -377,7 +377,7 @@ export function generateTeacherGreeting(
   return {
     text: language === 'vi' ? cleanText(tip.vi) : cleanText(tip.en),
     textAlt: language === 'vi' ? cleanText(tip.en) : cleanText(tip.vi),
-    isVip: VIP_TIERS.has(userTier),
+    isPremium: PREMIUM_TIERS.has(userTier),
   };
 }
 
@@ -396,7 +396,7 @@ export function generateTeacherTip(params: {
   return {
     text: params.language === 'vi' ? cleanText(tip.vi) : cleanText(tip.en),
     textAlt: params.language === 'vi' ? cleanText(tip.en) : cleanText(tip.vi),
-    isVip: false,
+    isPremium: false,
   };
 }
 

@@ -154,10 +154,10 @@ export const CreditLimitModal = ({ open, onClose, onSuccess, questionsUsed, ques
 
           <div className="text-center pt-2">
             <p className="text-sm text-muted-foreground">
-              Or upgrade to VIP for unlimited questions
+              Or upgrade to Premium for unlimited questions
             </p>
             <p className="text-xs text-muted-foreground">
-              Hoặc nâng cấp VIP để có câu hỏi không giới hạn
+              Hoặc nâng cấp Premium để có câu hỏi không giới hạn
             </p>
           </div>
         </div>
