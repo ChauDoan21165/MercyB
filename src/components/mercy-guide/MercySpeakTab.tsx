@@ -439,12 +439,20 @@ function getMetricTone(score: number) {
 function getRecognitionErrorMessage(error?: string): string {
   switch (error) {
     case 'not-allowed':
-    case 'service-not-allowed': return 'Microphone access was blocked. Please allow microphone access and try again.';
-    case 'no-speech':           return 'No speech was detected. Try again and speak a little closer to the microphone.';
-    case 'audio-capture':       return 'No microphone was found for speech recognition.';
-    case 'network':             return 'Speech recognition had a network problem. Please try again.';
-    case 'aborted':             return 'Speech recognition was stopped.';
-    default:                    return error ? `Speech recognition failed: ${error}.` : 'Speech recognition failed.';
+    case 'service-not-allowed':
+      return 'Cần quyền dùng micro. Mở quyền trong trình duyệt rồi thử lại. / Microphone access was blocked.';
+    case 'no-speech':
+      return 'Chưa nghe thấy bạn. Nói to hơn hoặc gần micro hơn nhé. / We didn\'t hear you — speak louder or closer to the mic.';
+    case 'audio-capture':
+      return 'Không tìm thấy micro. / No microphone found.';
+    case 'network':
+      return 'Lỗi mạng. Thử lại. / Network problem. Please try again.';
+    case 'aborted':
+      return 'Đã dừng. / Stopped.';
+    default:
+      return error
+        ? `Lỗi nhận giọng nói: ${error}. / Speech recognition failed: ${error}.`
+        : 'Lỗi nhận giọng nói. / Speech recognition failed.';
   }
 }
 
@@ -602,6 +610,13 @@ export function MercySpeakTab({
   const mediaChunksRef    = useRef<BlobPart[]>([]);
   const activeStreamRef   = useRef<MediaStream | null>(null);
   const recordedAudioRef  = useRef<HTMLAudioElement | null>(null);
+
+  // Pre-warmed mic stream + live input-level meter (for "we hear you" feedback)
+  const prewarmStreamRef  = useRef<MediaStream | null>(null);
+  const audioContextRef   = useRef<AudioContext | null>(null);
+  const analyserRef       = useRef<AnalyserNode | null>(null);
+  const levelRafRef       = useRef<number | null>(null);
+  const [micLevel, setMicLevel] = useState(0);
   const lastKidsCelebrationRef    = useRef('');
   const [kidsImageCelebration, setKidsImageCelebration] = useState<'good' | 'great' | 'wow' | null>(null);
   const kidsImageCelebrationTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -688,6 +703,90 @@ export function MercySpeakTab({
 
   function stopActiveStream() {
     if (activeStreamRef.current) { activeStreamRef.current.getTracks().forEach((track) => track.stop()); activeStreamRef.current = null; }
+  }
+
+  // Pre-warm mic permission + stream on tab mount so the first click doesn't
+  // pay the "prompt + cold-start" latency tax (the symptom: first click gets
+  // nothing, second works). Tracks are held disabled to avoid the browser's
+  // recording indicator until the user actually starts listening/recording.
+  useEffect(() => {
+    if (typeof navigator === 'undefined' || !navigator.mediaDevices?.getUserMedia) return;
+    let cancelled = false;
+    navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
+      if (cancelled) { stream.getTracks().forEach((t) => t.stop()); return; }
+      stream.getTracks().forEach((t) => { t.enabled = false; });
+      prewarmStreamRef.current = stream;
+    }).catch(() => {
+      // Permission denied or unavailable — user will still get a prompt on
+      // first mic click, just without the pre-warm benefit.
+    });
+    return () => {
+      cancelled = true;
+      stopLevelMeter();
+      if (audioContextRef.current) {
+        try { audioContextRef.current.close(); } catch { /* ignore */ }
+        audioContextRef.current = null;
+        analyserRef.current = null;
+      }
+      if (prewarmStreamRef.current) {
+        prewarmStreamRef.current.getTracks().forEach((t) => t.stop());
+        prewarmStreamRef.current = null;
+      }
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  async function startLevelMeter() {
+    if (levelRafRef.current != null) return;
+    const stream = prewarmStreamRef.current;
+    if (!stream) return;
+    // Enable tracks so the analyser sees signal (and the browser shows the
+    // recording indicator, which is correct at this point).
+    stream.getTracks().forEach((t) => { t.enabled = true; });
+    try {
+      if (!audioContextRef.current) {
+        const Ctor = (window.AudioContext ?? (window as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext);
+        if (!Ctor) return;
+        audioContextRef.current = new Ctor();
+      }
+      const ctx = audioContextRef.current;
+      if (ctx.state === 'suspended') await ctx.resume();
+      if (!analyserRef.current) {
+        const source = ctx.createMediaStreamSource(stream);
+        const analyser = ctx.createAnalyser();
+        analyser.fftSize = 256;
+        analyser.smoothingTimeConstant = 0.6;
+        source.connect(analyser);
+        analyserRef.current = analyser;
+      }
+      const analyser = analyserRef.current;
+      const buffer = new Uint8Array(analyser.frequencyBinCount);
+      const tick = () => {
+        analyser.getByteFrequencyData(buffer);
+        let sum = 0;
+        for (let i = 0; i < buffer.length; i += 1) sum += buffer[i] * buffer[i];
+        const rms = Math.sqrt(sum / buffer.length);
+        // Map roughly 0..128 to 0..100 with a small boost so soft voices
+        // register visibly. Clamp to 100.
+        const level = Math.min(100, Math.round((rms / 128) * 150));
+        setMicLevel(level);
+        levelRafRef.current = requestAnimationFrame(tick);
+      };
+      levelRafRef.current = requestAnimationFrame(tick);
+    } catch (err) {
+      console.warn('[MercySpeak] Level meter start failed:', err);
+    }
+  }
+
+  function stopLevelMeter() {
+    if (levelRafRef.current != null) {
+      cancelAnimationFrame(levelRafRef.current);
+      levelRafRef.current = null;
+    }
+    if (prewarmStreamRef.current) {
+      prewarmStreamRef.current.getTracks().forEach((t) => { t.enabled = false; });
+    }
+    setMicLevel(0);
   }
 
   function stopRecordedAudioPlayback(resetPosition = false) {
@@ -843,6 +942,7 @@ export function MercySpeakTab({
 
   function stopListening() {
     setIsListening(false);
+    stopLevelMeter();
     try { recognitionRef.current?.stop(); } catch { try { recognitionRef.current?.abort?.(); } catch { /* ignore */ } }
   }
 
@@ -853,14 +953,27 @@ export function MercySpeakTab({
     setTranscript('');
     const RecognitionCtor = speechWindow.SpeechRecognition ?? speechWindow.webkitSpeechRecognition;
     if (!RecognitionCtor) return;
+    // If a stale recognition instance lingers from a previous session that
+    // never fired onend, abort it and drop the ref before constructing a new
+    // one. This avoids the Chrome "start while still aborting" race that
+    // caused the classic "first click does nothing, second click works" bug.
     try { recognitionRef.current?.abort?.(); } catch { /* ignore */ }
+    recognitionRef.current = null;
     const recognition = new RecognitionCtor();
     recognition.lang = 'en-US';
     recognition.interimResults = true;
     recognition.continuous     = false;
-    recognition.onstart = () => { setIsListening(true); };
-    recognition.onerror = (event: SpeechRecognitionErrorEventLike) => { setRecognitionError(getRecognitionErrorMessage(event?.error)); setIsListening(false); };
-    recognition.onend   = () => { setIsListening(false); };
+    recognition.onstart = () => { setIsListening(true); void startLevelMeter(); };
+    recognition.onerror = (event: SpeechRecognitionErrorEventLike) => {
+      setRecognitionError(getRecognitionErrorMessage(event?.error));
+      setIsListening(false);
+      stopLevelMeter();
+    };
+    recognition.onend   = () => {
+      setIsListening(false);
+      stopLevelMeter();
+      if (recognitionRef.current === recognition) recognitionRef.current = null;
+    };
     recognition.onresult = (event) => {
       const combined = Array.from(event.results).map((result: SpeechRecognitionResultLike) =>
         Array.from({ length: result.length }, (_, index) => result[index] as SpeechRecognitionAlternativeLike).map((item) => item?.transcript || '').join(' ')
@@ -1067,11 +1180,22 @@ export function MercySpeakTab({
             <div className="rounded-[16px] border border-slate-200 bg-gradient-to-br from-[#FFF9F3] to-white p-2.5 shadow-sm">
               <div>
                 <div className="flex items-center justify-between gap-3">
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">You</span>
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">{transcript ? `${matchScore}%` : '0%'}</span>
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
+                    {isListening && !transcript ? 'Đang nghe... / Listening' : 'You'}
+                  </span>
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
+                    {transcript ? `${matchScore}%` : (isListening ? `${micLevel}%` : '0%')}
+                  </span>
                 </div>
                 <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-slate-100">
-                  <div className={`h-full rounded-full bg-gradient-to-r transition-all duration-500 ${matchTone.bar}`} style={{ width: `${transcript ? matchScore : 0}%` }} />
+                  {isListening && !transcript ? (
+                    <div
+                      className="h-full rounded-full bg-gradient-to-r from-[#43C59E] to-[#18A874] transition-[width] duration-75"
+                      style={{ width: `${micLevel}%` }}
+                    />
+                  ) : (
+                    <div className={`h-full rounded-full bg-gradient-to-r transition-all duration-500 ${matchTone.bar}`} style={{ width: `${transcript ? matchScore : 0}%` }} />
+                  )}
                 </div>
               </div>
 
@@ -1146,11 +1270,24 @@ export function MercySpeakTab({
 
           <div className={`rounded-[20px] md:rounded-[24px] border p-3 md:p-4 shadow-sm ${transcript ? matchTone.ring : 'border-[#F1E5DB] bg-gradient-to-br from-[#FFF9F3] to-white'}`}>
             <div className="flex items-start justify-between gap-3">
-              <p className="text-[2.05rem] font-semibold leading-none text-slate-950">{transcript ? `${matchScore}%` : '--'}</p>
-              {transcript ? <span className={`rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide ${matchTone.text}`}>{confidenceLabel}</span> : null}
+              <p className="text-[2.05rem] font-semibold leading-none text-slate-950">
+                {transcript ? `${matchScore}%` : (isListening ? `${micLevel}%` : '--')}
+              </p>
+              {transcript ? (
+                <span className={`rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide ${matchTone.text}`}>{confidenceLabel}</span>
+              ) : isListening ? (
+                <span className="rounded-full bg-[#E6F7EF] px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-[#137E4E]">Đang nghe / Listening</span>
+              ) : null}
             </div>
             <div className="mt-3 h-2.5 overflow-hidden rounded-full bg-white/90">
-              <div className={`h-full rounded-full bg-gradient-to-r transition-all duration-500 ${matchTone.bar}`} style={{ width: `${transcript ? matchScore : 0}%` }} />
+              {isListening && !transcript ? (
+                <div
+                  className="h-full rounded-full bg-gradient-to-r from-[#43C59E] to-[#18A874] transition-[width] duration-75"
+                  style={{ width: `${micLevel}%` }}
+                />
+              ) : (
+                <div className={`h-full rounded-full bg-gradient-to-r transition-all duration-500 ${matchTone.bar}`} style={{ width: `${transcript ? matchScore : 0}%` }} />
+              )}
             </div>
           </div>
 
