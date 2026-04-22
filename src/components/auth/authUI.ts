@@ -6,6 +6,7 @@ export const UI = {
     gridTemplateColumns: "1fr 420px",
     minHeight: "100vh",
     background: "#f8f9fa",
+    overflowX: "hidden",
   } as React.CSSProperties,
 
   left: {
@@ -14,6 +15,7 @@ export const UI = {
     justifyContent: "center",
     padding: "40px 20px",
     background: "white",
+    minWidth: 0,
   } as React.CSSProperties,
 
   card: {
@@ -87,7 +89,7 @@ export const UI = {
   }),
 
   segBtn: (active: boolean, disabled: boolean = false): React.CSSProperties => ({
-    padding: "10px 18px",
+    padding: "10px 14px",
     fontSize: 14,
     fontWeight: 600,
     borderRadius: 9999,
@@ -96,7 +98,8 @@ export const UI = {
     color: active ? "white" : "#555",
     cursor: disabled ? "not-allowed" : "pointer",
     opacity: disabled ? 0.6 : 1,
-    flex: 1,
+    // no flex:1 so buttons size to content and wrap cleanly on narrow viewports
+    whiteSpace: "nowrap",
   }),
 
   status: {
