@@ -1,35 +1,51 @@
-// Auto-generated static music track list
-export const MUSIC_TRACKS = [
-  { id: '2015_11_08___peace___david_fes', title: 'Peace', src: '/audio/music/2015-11-08_-_Peace_-_David_Fesliyan-2.mp3' },
-  { id: '2015_12_22___an_ambient_day___', title: 'An Ambient Day', src: '/audio/music/2015-12-22_-_An_Ambient_Day_-_David_Fesliyan-2.mp3' },
-  { id: '2016_04_26___peace_and_happy__', title: 'Peace And Happy', src: '/audio/music/2016-04-26_-_Peace_And_Happy_-_David_Fesliyan-2.mp3' },
-  { id: '2016_05_06___strings_of_time__', title: 'Strings of Time', src: '/audio/music/2016-05-06_-_Strings_of_Time_-_David_Fesliyan_1.mp3' },
-  { id: '2017_10_14___sad_winds_chapter', title: 'Sad Winds Chapter 1', src: '/audio/music/2017-10-14_-_Sad_Winds_Chapter_1_-_David_Fesliyan-2.mp3' },
-  { id: '2019_01_10___land_of_8_bits___', title: 'Land of 8 Bits', src: '/audio/music/2019-01-10_-_Land_of_8_Bits_-_Stephen_Bennett_-_FesliyanStudios.com-2.mp3' },
-  { id: '2019_05_03___elevator_ride___w', title: 'Elevator Ride', src: '/audio/music/2019-05-03_-_Elevator_Ride_-_www.fesliyanstudios.com-2.mp3' },
-  { id: '2019_06_05___the_lounge___www_', title: 'The Lounge', src: '/audio/music/2019-06-05_-_The_Lounge_-_www.fesliyanstudios.com_-_David_Renda-2.mp3' },
-  { id: '2019_06_07___chill_gaming___da', title: 'Chill Gaming', src: '/audio/music/2019-06-07_-_Chill_Gaming_-_David_Fesliyan-2.mp3' },
-  { id: '2019_06_27___on_my_own___www_f', title: 'On My Own', src: '/audio/music/2019-06-27_-_On_My_Own_-_www.FesliyanStudios.com_-_David_Renda-2.mp3' },
-  { id: '2019_07_02___done_with_work___', title: 'Done With Work', src: '/audio/music/2019-07-02_-_Done_With_Work_-_www.FesliyanStudios.com_-_David_Renda-2.mp3' },
-  { id: '2019_07_29___elven_forest___fe', title: 'Elven Forest   FesliyanStudios.com', src: '/audio/music/2019-07-29_-_Elven_Forest_-_FesliyanStudios.com_-_David_Renda-2.mp3' },
-  { id: '2020_02_11___not_much_to_say__', title: 'Not Much To Say', src: '/audio/music/2020-02-11_-_Not_Much_To_Say_-_David_Fesliyan-2.mp3' },
-  { id: '2020_03_22___the_soft_lullaby_', title: 'The Soft Lullaby   FesliyanStudios.com', src: '/audio/music/2020-03-22_-_The_Soft_Lullaby_-_FesliyanStudios.com_-_David_Renda-2.mp3' },
-  { id: '2020_08_19___cruisin_along___w', title: 'Cruisin Along', src: '/audio/music/2020-08-19_-_Cruisin_Along_-_www.FesliyanStudios.com_David_Renda-2.mp3' },
-  { id: '2020_09_14___looking_up___www_', title: 'Looking Up', src: '/audio/music/2020-09-14_-_Looking_Up_-_www.FesliyanStudios.com_David_Renda-2.mp3' },
-  { id: '2020_09_14___mellow_thoughts__', title: 'Mellow Thoughts', src: '/audio/music/2020-09-14_-_Mellow_Thoughts_-_www.FesliyanStudios.com_David_Renda-2.mp3' },
-  { id: '2020_09_14___tropical_keys___w', title: 'Tropical Keys', src: '/audio/music/2020-09-14_-_Tropical_Keys_-_www.FesliyanStudios.com_David_Renda_1.mp3' },
-  { id: '2020_09_24___simplicity___davi', title: 'Simplicity', src: '/audio/music/2020-09-24_-_Simplicity_-_David_Fesliyan-2.mp3' },
-  { id: 'heart_of_the_blade___tr_i_tim_', title: 'Heart of the Blade   Trái Tim Của Lưỡi Gươm', src: '/audio/music/heart_of_the_blade_trai_tim_cua_luoi_guom.mp3' },
-  { id: 'in_a_quiet_room__i_open_my_min', title: 'In a quiet room, I open my mind,', src: '/audio/music/In a quiet room, I open my mind,.mp3' },
-  { id: 'in_the_quiet__mercy___trong_im', title: 'In the Quiet, Mercy   Trong Im Lặng, Mercy', src: '/audio/music/in_the_quiet_mercy_trong_im_lang_mercy.mp3' },
-  { id: 'mercy_on_my_mind___mercy_trong', title: 'Mercy On My Mind   Mercy Trong Tâm Trí', src: '/audio/music/mercy_on_my_mind_mercy_trong_tam_tri.mp3' },
-  { id: 'rise_with_mercy___tr_i_d_y_c_n', title: 'Rise With Mercy   Trỗi Dậy Cùng Mercy', src: '/audio/music/rise_with_mercy_troi_day_cung_mercy.mp3' },
-  { id: 'romanticmusic2018_11_11___tend', title: 'RomanticMusic2018 11 11   Tender Love', src: '/audio/music/RomanticMusic2018-11-11_-_Tender_Love_-_David_Fesliyan-2.mp3' },
-  { id: 'say_my_name__mercy_blade_1', title: 'Say My Name, Mercy Blade 1', src: '/audio/music/Say My Name, Mercy Blade 1.mp3' },
-  { id: 'say_my_name__mercy_blade', title: 'Say My Name, Mercy Blade', src: '/audio/music/Say My Name, Mercy Blade.mp3' },
-  { id: 'step_with_me__mercy____i_c_ng_', title: 'Step With Me, Mercy   Đi Cùng Tôi, Mercy', src: '/audio/music/step_with_me_mercy_di_cung_toi_mercy.mp3' },
-  { id: 'the_song_of_mercy_blade____a_s', title: 'The Song of Mercy Blade  — A Signature Anthem for Your Inner Life', src: '/audio/music/the_song_of_mercy_blade_a_signature_anthem_for_your_inner_life.mp3' },
-  { id: 'when_mercy_looks_at_me___khi_m', title: 'When Mercy Looks at Me   Khi Mercy Nhìn Về Tôi', src: '/audio/music/when_mercy_looks_at_me_khi_mercy_nhin_ve_toi.mp3' },
-  { id: 'where_mercy_finds_me___n_i_mer', title: 'Where Mercy Finds Me   Nơi Mercy Tìm Thấy Tôi', src: '/audio/music/where_mercy_finds_me_noi_mercy_tim_thay_toi.mp3' },
-  { id: 'mercy_blade_theme', title: 'mercy blade theme', src: '/audio/music/mercy_blade_theme.mp3' },
+// Mercy Blade original songs, served from the Supabase Storage public bucket `music`.
+// Only filenames live here — getPublicAudioUrl() turns each one into a playable URL.
+//
+// Fesliyan royalty-free background tracks were intentionally dropped from the bar
+// in this consolidation (no licensing re-hosting work, cleaner brand focus).
+
+export type MusicTrack = {
+  id: string;
+  title: string;
+  file: string;
+};
+
+export const MUSIC_TRACKS: MusicTrack[] = [
+  { id: 'mb1',  title: 'In A Quiet Room I Open My Mind',                    file: 'in_a_quiet_room_i_open_my_mind.mp3' },
+  { id: 'mb2',  title: 'In A Quiet Room I Open My Mind (2)',                file: 'in_a_quiet_room_i_open_my_mind_2.mp3' },
+  { id: 'mb3',  title: 'When Mercy Looks at Me',                            file: 'when_mercy_looks_at_me.mp3' },
+  { id: 'mb4',  title: 'When Mercy Looks at Me (1)',                        file: 'when_mercy_looks_at_me_1.mp3' },
+  { id: 'mb5',  title: 'When Mercy Looks at Me (2)',                        file: 'when_mercy_looks_at_me_2.mp3' },
+  { id: 'mb6',  title: 'When Mercy Looks at Me (3)',                        file: 'when_mercy_looks_at_me_3.mp3' },
+  { id: 'mb7',  title: 'Heart of the Blade',                                file: 'heart_of_the_blade.mp3' },
+  { id: 'mb8',  title: 'Heart of the Blade (1)',                            file: 'heart_of_the_blade_1.mp3' },
+  { id: 'mb8b', title: 'Heart of the Blade (2)',                            file: 'heart_of_the_blade_2.mp3' },
+  { id: 'mb9',  title: 'Rise With Mercy',                                   file: 'rise_with_mercy.mp3' },
+  { id: 'mb10', title: 'Where Mercy Finds Me',                              file: 'where_mercy_finds_me.mp3' },
+  { id: 'mb11', title: 'Where Mercy Finds Me (1)',                          file: 'where_mercy_finds_me_1.mp3' },
+  { id: 'mb12', title: 'Where Mercy Finds Me (2)',                          file: 'where_mercy_finds_me_2.mp3' },
+  { id: 'mb13', title: 'Where Mercy Finds Me (3)',                          file: 'where_mercy_finds_me_3.mp3' },
+  { id: 'mb14', title: 'Where Mercy Finds Me (4)',                          file: 'where_mercy_finds_me_4.mp3' },
+  { id: 'mb15', title: 'Where Mercy Finds Me (4 v2)',                       file: 'where_mercy_finds_me_4_v2.mp3' },
+  { id: 'mb16', title: 'Where Mercy Finds Me (5)',                          file: 'where_mercy_finds_me_5.mp3' },
+  { id: 'mb17', title: 'Where Mercy Finds Me (6)',                          file: 'where_mercy_finds_me_6.mp3' },
+  { id: 'mb18', title: 'Mercy On My Mind',                                  file: 'mercy_on_my_mind.mp3' },
+  { id: 'mb19', title: 'Mercy On My Mind (1)',                              file: 'mercy_on_my_mind_1.mp3' },
+  { id: 'mb20', title: 'Mercy On My Mind (2)',                              file: 'mercy_on_my_mind_2.mp3' },
+  { id: 'mb21', title: 'Mercy On My Mind (3)',                              file: 'mercy_on_my_mind_3.mp3' },
+  { id: 'mb22', title: 'In the Quiet Mercy',                                file: 'in_the_quiet_mercy.mp3' },
+  { id: 'mb23', title: 'In the Quiet Mercy (2)',                            file: 'in_the_quiet_mercy_2.mp3' },
+  { id: 'mb24', title: 'Step With Me Mercy',                                file: 'step_with_me_mercy.mp3' },
+  { id: 'mb25', title: 'Step With Me Mercy (2)',                            file: 'step_with_me_mercy_2.mp3' },
+  { id: 'mb26', title: 'In A Quiet Room I Open My Mind (3)',                file: 'in_a_quiet_room_i_open_my_mind_3.mp3' },
+  { id: 'mb29', title: 'Bridge of Hearts',                                  file: 'bridge_of_hearts.mp3' },
+  { id: 'mb31', title: 'Say My Name, Mercy Blade (core)',                   file: 'say_my_name_mercy_blade_core.mp3' },
+  { id: 'mb32', title: 'Say My Name, Mercy Blade (1)',                      file: 'say_my_name_mercy_blade_1.mp3' },
+  { id: 'mb34', title: 'Morning With You / Buổi Sáng Cùng Ngài (2)',        file: 'morning_with_you_2.mp3' },
+  { id: 'mb35', title: 'The Song of Mercy Blade (2)',                       file: 'song_of_mercy_blade_2.mp3' },
+  { id: 'mb36', title: 'The Song of Mercy Blade (3)',                       file: 'song_of_mercy_blade_3.mp3' },
+  { id: 'mb37', title: 'Tâm Hồn Tự Tại / A Mind at Peace',                  file: 'tam_hon_tu_tai.mp3' },
+  { id: 'mb38', title: 'Ánh Sáng Trong Vòng Tay Cha (1)',                   file: 'anh_sang_trong_vong_tay_cha_1.mp3' },
+  { id: 'mb39', title: 'Dấu Ấn Trong Tôi / The Prints Within (1)',          file: 'dau_an_trong_toi_1.mp3' },
+  { id: 'mb40', title: 'Sự Sắp Đặt Thiêng Liêng',                           file: 'su_sap_dat_thieng_lieng.mp3' },
 ];
