@@ -672,7 +672,6 @@ export default function AdminDashboard() {
 
   const tiles: AdminTile[] = [
     { title: "Payments", desc: "Inspect payments, Stripe test flows, and verification tools.", href: "/admin/payments", badge: "SAFE" },
-    { title: "Payment Verification", desc: "Verification and review actions for manual approvals (keep safe).", href: "/admin/payment-verification", badge: "SAFE" },
     { title: "Access Codes", desc: "Generate and manage redeem / access codes.", href: "/admin/access-codes", badge: "SAFE" },
     { title: "Audio Coverage", desc: "Coverage checks for room audio (read-only tools).", href: "/admin/audio-coverage", badge: "READY" },
     { title: "System Monitoring", desc: "Truth streams: latest feedback + sessions (read-only).", href: "/admin/monitoring", badge: "READY" },
