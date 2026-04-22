@@ -83,6 +83,21 @@ function RequireAuth({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }
 
+/**
+ * Room-level auth gate. Kids rooms stay login-free per CLAUDE.md #2
+ * ("Kids mode is sacred. No login friction."). All other rooms require
+ * sign-in. Kids pattern match mirrors src/pages/TierIndex.tsx.
+ */
+function RequireAuthForRoom({ children }: { children: React.ReactNode }) {
+  const { roomId } = useParams<{ roomId: string }>();
+  const id = roomId ?? "";
+  const isKidsRoom =
+    id.includes("_kids_l1") || id.includes("_kids_l2") || id.includes("_kids_l3");
+
+  if (isKidsRoom) return <>{children}</>;
+  return <RequireAuth>{children}</RequireAuth>;
+}
+
 // ── Fallbacks ─────────────────────────────────────────────────────────────────
 
 function NotFound() {
@@ -377,7 +392,14 @@ export default function AppRouter() {
           <Route path="/rooms/:roomId"     element={<RoomsDirectRedirect />} />
           <Route path="/chat/:roomId"      element={<ChatAliasRedirect />} />
 
-          <Route path="/room/:roomId" element={<LazyPage><ChatHub /></LazyPage>} />
+          <Route
+            path="/room/:roomId"
+            element={
+              <RequireAuthForRoom>
+                <LazyPage><ChatHub /></LazyPage>
+              </RequireAuthForRoom>
+            }
+          />
 
           {/* Admin routes */}
           <Route path="/admin/*" element={<AdminRoute />}>
