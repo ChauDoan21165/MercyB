@@ -1,13 +1,13 @@
 /**
- * Path: src/lib/mercy-host/vipCeremonies.ts
- * File: vipCeremonies.ts
+ * Path: src/lib/mercy-host/tierCeremonies.ts
+ * File: tierCeremonies.ts
  */
 
 import type { MercyAnimationType } from "./eventMap";
 import type { VoiceTrigger } from "./voicePack";
 import { memory } from "./memory";
 
-export interface VipCeremonySpec {
+export interface TierCeremonySpec {
   tier: string;
   animation: MercyAnimationType;
   voiceTrigger: VoiceTrigger;
@@ -15,7 +15,7 @@ export interface VipCeremonySpec {
   textVi: string;
 }
 
-export const VIP_CEREMONIES: Record<string, VipCeremonySpec> = {
+export const TIER_CEREMONIES: Record<string, TierCeremonySpec> = {
   level1: {
     tier: "level1",
     animation: "shimmer",
@@ -104,9 +104,9 @@ function normalizeTierKey(tier: string | null | undefined): string {
   return compact;
 }
 
-export function getVipCeremony(tier: string): VipCeremonySpec | null {
+export function getTierCeremony(tier: string): TierCeremonySpec | null {
   const normalizedTier = normalizeTierKey(tier);
-  return VIP_CEREMONIES[normalizedTier] || null;
+  return TIER_CEREMONIES[normalizedTier] || null;
 }
 
 export function hasCeremonyBeenPlayed(tier: string): boolean {
@@ -136,18 +136,18 @@ export function markCeremonyPlayed(tier: string): void {
 }
 
 export function getCeremonyText(
-  ceremony: VipCeremonySpec,
+  ceremony: TierCeremonySpec,
   language: "en" | "vi"
 ): string {
   return language === "vi" ? ceremony.textVi : ceremony.textEn;
 }
 
-export function executeVipCeremony(
+export function executeTierCeremony(
   newTier: string,
   previousTier?: string
-): VipCeremonySpec | null {
+): TierCeremonySpec | null {
   const normalizedNewTier = normalizeTierKey(newTier);
-  const ceremony = getVipCeremony(normalizedNewTier);
+  const ceremony = getTierCeremony(normalizedNewTier);
 
   if (!ceremony) {
     return null;

@@ -10,11 +10,11 @@ import {
   checkStreakMilestone,
   type RitualContext 
 } from '../lib/mercy-host/rituals';
-import { 
-  getVipCeremony, 
+import {
+  getTierCeremony,
   getCeremonyText,
-  executeVipCeremony
-} from '../lib/mercy-host/vipCeremonies';
+  executeTierCeremony
+} from '../lib/mercy-host/tierCeremonies';
 
 // Mock localStorage
 const localStorageMock = (() => {
@@ -253,58 +253,58 @@ describe('VIP Ceremonies', () => {
     localStorageMock.clear();
   });
 
-  describe('getVipCeremony', () => {
+  describe('getTierCeremony', () => {
     it('should return ceremony for level1', () => {
-      const ceremony = getVipCeremony('level1');
+      const ceremony = getTierCeremony('level1');
       expect(ceremony).toBeDefined();
       expect(ceremony?.tier).toBe('level1');
     });
 
     it('should return ceremony for level9', () => {
-      const ceremony = getVipCeremony('level9');
+      const ceremony = getTierCeremony('level9');
       expect(ceremony).toBeDefined();
       expect(ceremony?.tier).toBe('level9');
       expect(ceremony?.textEn).toContain('Distinguished');
     });
 
     it('should return null for invalid tier', () => {
-      const ceremony = getVipCeremony('vip10');
+      const ceremony = getTierCeremony('vip10');
       expect(ceremony).toBeNull();
     });
 
     it('should return null for level0 tier', () => {
-      const ceremony = getVipCeremony('level0');
+      const ceremony = getTierCeremony('level0');
       expect(ceremony).toBeNull();
     });
   });
 
   describe('getCeremonyText', () => {
     it('should return English text', () => {
-      const ceremony = getVipCeremony('level1')!;
+      const ceremony = getTierCeremony('level1')!;
       expect(getCeremonyText(ceremony, 'en')).toBe(ceremony.textEn);
     });
 
     it('should return Vietnamese text', () => {
-      const ceremony = getVipCeremony('level1')!;
+      const ceremony = getTierCeremony('level1')!;
       expect(getCeremonyText(ceremony, 'vi')).toBe(ceremony.textVi);
     });
   });
 
-  describe('executeVipCeremony', () => {
+  describe('executeTierCeremony', () => {
     it('should return ceremony on first upgrade', () => {
-      const ceremony = executeVipCeremony('level1', 'level0');
+      const ceremony = executeTierCeremony('level1', 'level0');
       expect(ceremony).toBeDefined();
       expect(ceremony?.tier).toBe('level1');
     });
 
     it('should return null on second call (already celebrated)', () => {
-      executeVipCeremony('level1', 'level0');
-      const second = executeVipCeremony('level1', 'level0');
+      executeTierCeremony('level1', 'level0');
+      const second = executeTierCeremony('level1', 'level0');
       expect(second).toBeNull();
     });
 
     it('should return null for downgrade', () => {
-      const ceremony = executeVipCeremony('level1', 'level3');
+      const ceremony = executeTierCeremony('level1', 'level3');
       expect(ceremony).toBeNull();
     });
   });
@@ -313,7 +313,7 @@ describe('VIP Ceremonies', () => {
     const tiers = ['level1', 'level2', 'level3', 'level4', 'level5', 'level6', 'level7', 'level8', 'level9'];
     
     it.each(tiers)('%s ceremony text should be ≤160 chars', (tier) => {
-      const ceremony = getVipCeremony(tier);
+      const ceremony = getTierCeremony(tier);
       expect(ceremony).toBeDefined();
       expect(ceremony!.textEn.length).toBeLessThanOrEqual(160);
       expect(ceremony!.textVi.length).toBeLessThanOrEqual(160);

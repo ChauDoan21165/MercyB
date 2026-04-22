@@ -20,10 +20,10 @@ import {
   type RitualSpec
 } from './rituals';
 import {
-  executeVipCeremony,
+  executeTierCeremony,
   getCeremonyText,
-  type VipCeremonySpec
-} from './vipCeremonies';
+  type TierCeremonySpec
+} from './tierCeremonies';
 import { isCrisisRoom, isSafeTrigger, enforceSafeEmotion } from './safetyRails';
 import { memory } from './memory';
 import { submitThrottledEvent } from './eventLimiter';
@@ -252,7 +252,7 @@ export function createMercyEngine(
   };
 
   // Helper: show ritual banner
-  const showRitualBanner = (ritual: RitualSpec | VipCeremonySpec, isCeremony = false) => {
+  const showRitualBanner = (ritual: RitualSpec | TierCeremonySpec, isCeremony = false) => {
     const state = getState();
 
     // Respect silence mode - no voice or large animations
@@ -260,7 +260,7 @@ export function createMercyEngine(
       // Still show text banner if not completely off
       if (state.ritualIntensity !== 'off') {
         const rawText = isCeremony
-          ? { en: (ritual as VipCeremonySpec).textEn, vi: (ritual as VipCeremonySpec).textVi }
+          ? { en: (ritual as TierCeremonySpec).textEn, vi: (ritual as TierCeremonySpec).textVi }
           : { en: (ritual as RitualSpec).textEn, vi: (ritual as RitualSpec).textVi };
 
         const text = styleText(rawText, 'gentle_authority');
@@ -278,7 +278,7 @@ export function createMercyEngine(
     }
 
     const rawText = isCeremony
-      ? { en: (ritual as VipCeremonySpec).textEn, vi: (ritual as VipCeremonySpec).textVi }
+      ? { en: (ritual as TierCeremonySpec).textEn, vi: (ritual as TierCeremonySpec).textVi }
       : { en: (ritual as RitualSpec).textEn, vi: (ritual as RitualSpec).textVi };
 
     const text = styleText(rawText, 'gentle_authority');
@@ -287,7 +287,7 @@ export function createMercyEngine(
       ...s,
       lastRitualId: (ritual as any).tier ?? (ritual as any).id,
       lastRitualText: text,
-      lastCeremonyTier: isCeremony ? (ritual as VipCeremonySpec).tier : s.lastCeremonyTier,
+      lastCeremonyTier: isCeremony ? (ritual as TierCeremonySpec).tier : s.lastCeremonyTier,
       currentAnimation: ritual.animation,
       isRitualBannerVisible: true,
       presenceState: 'active'
@@ -656,11 +656,11 @@ export function createMercyEngine(
         avatarStyle: getAvatarForTier(newTier)
       }));
 
-      // Check for VIP ceremony
-      const ceremony = executeVipCeremony(newTier, prevTier);
+      // Check for tier ceremony
+      const ceremony = executeTierCeremony(newTier, prevTier);
 
       if (ceremony) {
-        // VIP upgrade ceremony
+        // Tier upgrade ceremony
         setTimeout(() => {
           showRitualBanner(ceremony, true);
         }, jitter());
