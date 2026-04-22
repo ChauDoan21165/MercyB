@@ -1,7 +1,7 @@
 // Path: src/components/mercy-guide/MercyTeacherTab.tsx
 // File: MercyTeacherTab.tsx
 
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Button } from '@/components/ui/button';
 import {
@@ -1022,6 +1022,41 @@ function resolveCurrentPageItems(page: KidsPageId): KidsLessonCard[] {
   }
 }
 
+const KIDS_CELEBRATE_STYLE_ID = 'mercy-kids-celebrate-style';
+const KIDS_CELEBRATE_CSS = `
+@keyframes mercyKidCelebrate {
+  0%   { transform: scale(1)    rotate(0deg); }
+  20%  { transform: scale(1.12) rotate(-6deg); }
+  40%  { transform: scale(0.96) rotate(5deg); }
+  60%  { transform: scale(1.08) rotate(-3deg); }
+  80%  { transform: scale(0.99) rotate(2deg); }
+  100% { transform: scale(1)    rotate(0deg); }
+}
+@keyframes mercyKidSparkle {
+  0%   { box-shadow: 0 0 0 0 rgba(255,193,7,0.55); }
+  60%  { box-shadow: 0 0 0 14px rgba(255,193,7,0); }
+  100% { box-shadow: 0 0 0 0 rgba(255,193,7,0); }
+}
+.mercy-kid-celebrate {
+  animation: mercyKidCelebrate 600ms cubic-bezier(.34,1.56,.64,1),
+             mercyKidSparkle 700ms ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .mercy-kid-celebrate { animation: none; }
+}
+`;
+
+function useMercyKidsCelebrateStyles() {
+  useEffect(() => {
+    if (typeof document === 'undefined') return;
+    if (document.getElementById(KIDS_CELEBRATE_STYLE_ID)) return;
+    const el = document.createElement('style');
+    el.id = KIDS_CELEBRATE_STYLE_ID;
+    el.textContent = KIDS_CELEBRATE_CSS;
+    document.head.appendChild(el);
+  }, []);
+}
+
 function KidsImageGrid({
   items,
   selectedKey,
@@ -1031,21 +1066,42 @@ function KidsImageGrid({
   selectedKey: string | null | undefined;
   onSelect?: (key: string) => void;
 }) {
+  useMercyKidsCelebrateStyles();
+
+  const [celebratingKey, setCelebratingKey] = useState<string | null>(null);
+  const celebrateTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (celebrateTimerRef.current) clearTimeout(celebrateTimerRef.current);
+    };
+  }, []);
+
+  const handleTap = (key: string) => {
+    onSelect?.(key);
+    if (celebrateTimerRef.current) clearTimeout(celebrateTimerRef.current);
+    // Force animation restart even on the same key by clearing first.
+    setCelebratingKey(null);
+    requestAnimationFrame(() => setCelebratingKey(key));
+    celebrateTimerRef.current = setTimeout(() => setCelebratingKey(null), 700);
+  };
+
   return (
     <div className="grid grid-cols-5 gap-2 sm:gap-3">
       {items.map((item) => {
         const isSelected = item.key === selectedKey;
+        const isCelebrating = item.key === celebratingKey;
 
         return (
           <button
             key={item.key}
             type="button"
-            onClick={() => onSelect?.(item.key)}
+            onClick={() => handleTap(item.key)}
             className={`aspect-square w-full overflow-hidden rounded-xl border bg-white transition ${
               isSelected
                 ? 'border-[#FFB39A] shadow-[0_8px_18px_rgba(255,138,101,0.18)]'
                 : 'border-white/80 hover:border-[#FFD7C8] hover:shadow-[0_6px_14px_rgba(148,163,184,0.08)]'
-            }`}
+            } ${isCelebrating ? 'mercy-kid-celebrate' : ''}`}
             aria-label={item.label}
             title={item.label}
             aria-pressed={isSelected}

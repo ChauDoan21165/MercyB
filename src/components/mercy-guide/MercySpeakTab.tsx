@@ -603,6 +603,18 @@ export function MercySpeakTab({
   const activeStreamRef   = useRef<MediaStream | null>(null);
   const recordedAudioRef  = useRef<HTMLAudioElement | null>(null);
   const lastKidsCelebrationRef    = useRef('');
+  const [kidsImageCelebration, setKidsImageCelebration] = useState<'good' | 'great' | 'wow' | null>(null);
+  const kidsImageCelebrationTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => () => { if (kidsImageCelebrationTimerRef.current) clearTimeout(kidsImageCelebrationTimerRef.current); }, []);
+
+  function triggerKidsImageCelebration(tier: 'good' | 'great' | 'wow') {
+    if (kidsImageCelebrationTimerRef.current) clearTimeout(kidsImageCelebrationTimerRef.current);
+    setKidsImageCelebration(null);
+    requestAnimationFrame(() => setKidsImageCelebration(tier));
+    const duration = tier === 'wow' ? 1100 : tier === 'great' ? 850 : 700;
+    kidsImageCelebrationTimerRef.current = setTimeout(() => setKidsImageCelebration(null), duration);
+  }
   const kidsAudioRef = useRef<HTMLAudioElement | null>(null);
 
   const speechWindow = typeof window !== 'undefined' ? (window as BrowserWindowWithSpeechRecognition) : undefined;
@@ -669,9 +681,9 @@ export function MercySpeakTab({
     const attemptKey = `${normalizeForCompare(practiceText)}__${normalizeForCompare(transcript)}`;
     if (lastKidsCelebrationRef.current === attemptKey) return;
     lastKidsCelebrationRef.current = attemptKey;
-    if (matchScore >= 94) { playKidsUiSound('wow'); return; }
-    if (matchScore >= 82) { playKidsUiSound('great'); return; }
-    if (matchScore >= 70) { playKidsUiSound('good'); }
+    if (matchScore >= 94) { playKidsUiSound('wow');   triggerKidsImageCelebration('wow');   return; }
+    if (matchScore >= 82) { playKidsUiSound('great'); triggerKidsImageCelebration('great'); return; }
+    if (matchScore >= 70) { playKidsUiSound('good');  triggerKidsImageCelebration('good'); }
   }, [isKidsMode, isListening, matchScore, practiceText, transcript]);
 
   function stopActiveStream() {
@@ -970,7 +982,29 @@ export function MercySpeakTab({
               </div>
             </div>
 
-            <div className="flex min-h-[260px] w-full items-center justify-center overflow-hidden rounded-[24px] border border-[#F4DDD1] bg-gradient-to-br from-[#FFF6F0] via-white to-[#F8FBFF] p-0 shadow-[0_8px_18px_rgba(255,138,101,0.06)] md:min-h-[340px]">
+            <style>{`
+@keyframes mercyKidCelebrate {
+  0%   { transform: scale(1)    rotate(0deg); }
+  20%  { transform: scale(1.12) rotate(-8deg); }
+  40%  { transform: scale(0.94) rotate(6deg); }
+  60%  { transform: scale(1.08) rotate(-4deg); }
+  80%  { transform: scale(0.98) rotate(2deg); }
+  100% { transform: scale(1)    rotate(0deg); }
+}
+`}</style>
+            <div
+              onClick={() => { playKidsUiSound('good'); triggerKidsImageCelebration('good'); }}
+              className="flex min-h-[260px] w-full cursor-pointer items-center justify-center overflow-hidden rounded-[24px] border border-[#F4DDD1] bg-gradient-to-br from-[#FFF6F0] via-white to-[#F8FBFF] p-0 shadow-[0_8px_18px_rgba(255,138,101,0.06)] md:min-h-[340px]"
+              style={{
+                animation: kidsImageCelebration
+                  ? `mercyKidCelebrate ${kidsImageCelebration === 'wow' ? '900ms' : kidsImageCelebration === 'great' ? '700ms' : '600ms'} cubic-bezier(.34,1.56,.64,1)`
+                  : undefined,
+                boxShadow: kidsImageCelebration
+                  ? `0 0 0 ${kidsImageCelebration === 'wow' ? '24px' : kidsImageCelebration === 'great' ? '18px' : '14px'} ${kidsImageCelebration === 'wow' ? 'rgba(255,99,132,0.35)' : kidsImageCelebration === 'great' ? 'rgba(255,193,7,0.45)' : 'rgba(110,198,200,0.45)'}`
+                  : undefined,
+                transition: 'box-shadow 200ms ease-out',
+              }}
+            >
               <img
                 src={kidsLesson?.imageSrc ?? kidsObject?.imageSrc ?? KIDS_OBJECTS[0].imageSrc}
                 alt={kidsLesson?.label ?? kidsObject?.label ?? KIDS_OBJECTS[0].label}
