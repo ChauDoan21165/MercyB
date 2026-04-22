@@ -112,7 +112,7 @@ export const AnimatedTierBadge = ({
 }: AnimatedTierBadgeProps) => {
   const config = tierConfig[tier] || tierConfig.level0;
   const Icon = config.icon;
-  const isVIP = tier !== "level0" && tier !== "demo";
+  const isPremium = tier !== "level0" && tier !== "demo";
 
   return (
     <div className={cn("relative inline-flex items-center gap-1.5 rounded-full border font-semibold transition-all duration-300",
@@ -122,12 +122,12 @@ export const AnimatedTierBadge = ({
       className
     )}
     style={{
-      boxShadow: isVIP ? `0 0 10px ${config.glowColor}, 0 0 20px ${config.glowColor}` : "none",
+      boxShadow: isPremium ? `0 0 10px ${config.glowColor}, 0 0 20px ${config.glowColor}` : "none",
     }}
     >
-      {/* Shine effect for VIP badges */}
-      {isVIP && (
-        <div 
+      {/* Shine effect for Premium badges */}
+      {isPremium && (
+        <div
           className="absolute inset-0 rounded-full opacity-30"
           style={{
             background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)",
@@ -136,16 +136,16 @@ export const AnimatedTierBadge = ({
           }}
         />
       )}
-      
+
       {/* Icon */}
       {showIcon && (
-        <Icon className={cn(iconSizeClasses[size], isVIP && "animate-sparkle")} />
+        <Icon className={cn(iconSizeClasses[size], isPremium && "animate-sparkle")} />
       )}
-      
+
       {/* Label */}
       <span className="relative z-10">{config.label}</span>
-      
-      {/* Sparkle effects for high-tier VIPs */}
+
+      {/* Sparkle effects for high-tier Premium users */}
       {(tier === "level3" || tier === "vip3_ii" || tier === "level4" || tier === "level5" || tier === "level6") && (
         <>
           <Sparkles className={cn(iconSizeClasses[size], "absolute -top-1 -right-1 animate-sparkle")} />

@@ -6,7 +6,7 @@
  * - CENTER: Core Mercy Blade 
  * - RIGHT: Life Skills / Survival
  * 
- * Used by VIP pages to maintain consistent 3-column layout.
+ * Used by Premium pages to maintain consistent 3-column layout.
  */
 
 import React from 'react';

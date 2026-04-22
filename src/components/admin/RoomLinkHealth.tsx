@@ -123,7 +123,7 @@ export const RoomLinkHealth = () => {
         );
 
         // Check if it's a dynamically loaded room (tier-based rooms load via
-        // useVipRooms/useCachedRooms, not hardcoded UI maps).
+        // useCachedRooms, not hardcoded UI maps).
         const tierLower = (room.tier || '').toLowerCase();
         const isDynamicRoom = !!room.tier && (
           tierLower.includes('level') ||

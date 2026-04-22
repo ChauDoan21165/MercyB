@@ -178,7 +178,7 @@ export function MercyColorModeToast({ message, onDismiss }: MercyColorModeToastP
  * Legacy props interface for backward compatibility
  */
 interface LegacyTeacherMercyGreetingProps {
-  greeting: { text: string; textAlt: string; isVip: boolean };
+  greeting: { text: string; textAlt: string; isPremium: boolean };
   show: boolean;
   onDismiss: () => void;
   onReopen: () => void;
@@ -226,7 +226,7 @@ export function LegacyTeacherMercyGreeting({
     )}>
       <div className={cn(
         "relative rounded-xl border p-4",
-        greeting.isVip
+        greeting.isPremium
           ? "bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30 border-purple-200 dark:border-purple-800"
           : "bg-muted/50 border-border"
       )}>
@@ -242,7 +242,7 @@ export function LegacyTeacherMercyGreeting({
         <div className="flex items-start gap-3">
           <div className={cn(
             "flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center",
-            greeting.isVip
+            greeting.isPremium
               ? "bg-gradient-to-br from-purple-500 to-pink-500"
               : "bg-gradient-to-br from-primary to-accent"
           )}>

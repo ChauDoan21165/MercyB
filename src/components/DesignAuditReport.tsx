@@ -49,7 +49,7 @@ export const DesignAuditReport = () => {
               Previous setup had strange color choices
             </p>
             <ul className="text-sm space-y-1 list-disc list-inside">
-              <li>Level 6 colors need consistency check with other VIP tiers</li>
+              <li>Level 6 colors need consistency check with other Premium tiers</li>
               <li>Gradient usage should match design system</li>
             </ul>
           </div>
@@ -114,8 +114,8 @@ export const DesignAuditReport = () => {
               <p className="text-xs text-muted-foreground mt-1">Fixed positioning and accessibility</p>
             </div>
             <div className="font-mono bg-muted p-2 rounded">
-              src/index.css (VIP theme variables)
-              <p className="text-xs text-muted-foreground mt-1">VIP tier color definitions</p>
+              src/index.css (Premium theme variables)
+              <p className="text-xs text-muted-foreground mt-1">Premium tier color definitions</p>
             </div>
             <div className="font-mono bg-muted p-2 rounded">
               tailwind.config.ts (kids.rainbow colors)

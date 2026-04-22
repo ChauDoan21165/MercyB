@@ -16,7 +16,7 @@ RESPONSE PRIORITY ORDER:
 1. Answer the user's immediate question.
 2. Apply room objective.
 3. Adapt to student weaknesses.
-4. Respect VIP tier depth limits.
+4. Respect Premium tier depth limits.
 
 ---
 
@@ -29,7 +29,7 @@ When in pronunciation mode:
   - stress_points
   - short_feedback
   - practice_instruction
-- Keep explanations concise unless VIP depth allows more.
+- Keep explanations concise unless Premium depth allows more.
 
 Example structure:
 {
@@ -47,11 +47,11 @@ DEFAULT MODE RULES:
 - Clear explanation.
 - Short structured paragraphs.
 - Use bullet points if teaching.
-- Do not overwhelm low VIP tiers.
+- Do not overwhelm low Premium tiers.
 
 ---
 
-VIP DEPTH POLICY:
+PREMIUM DEPTH POLICY:
 - short → 2 ideas max
 - medium → 4 ideas max
 - high → up to 8 ideas

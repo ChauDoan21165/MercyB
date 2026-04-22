@@ -41,7 +41,7 @@ const STEPS: OnboardingStep[] = [
       'Start level0, then unlock deeper rooms for emotions, health, career, and meaning when you feel ready.',
     bullets: [
       'Level 0 rooms to explore core topics',
-      'VIP tiers for deeper, structured journeys',
+      'Premium tiers for deeper, structured journeys',
       'You stay in control — no spam, no pressure',
     ],
     tag: 'Your path / Hành trình của bạn',
