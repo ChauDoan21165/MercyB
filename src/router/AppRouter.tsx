@@ -39,7 +39,7 @@ const AdminUsersPage          = lazy(() => import("@/pages/admin/AdminUsersPage"
 const AdminPaymentsPage       = lazy(() => import("@/pages/admin/AdminPaymentsPage"));
 const AdminAccessCodes        = lazy(() => import("@/pages/admin/AdminAccessCodes"));
 const AudioCoveragePage       = lazy(() => import("@/pages/admin/AudioCoveragePage"));
-const AdminMonitoring         = lazy(() => import("@/pages/admin/AdminMonitoring"));
+const AdminInboxPage          = lazy(() => import("@/pages/admin/AdminInboxPage"));
 const AdminSubscriptions      = lazy(() => import("@/pages/admin/AdminSubscriptions"));
 const RoomLoadDiagnostics     = lazy(() =>
   import("@/components/admin/RoomLoadDiagnostics").then((m) => ({
@@ -385,7 +385,8 @@ export default function AppRouter() {
               <Route path="payment-verification" element={<LazyPage><AdminPaymentsPage defaultTab="verify" /></LazyPage>} />
               <Route path="access-codes"         element={<LazyPage><AdminAccessCodes /></LazyPage>} />
               <Route path="audio-coverage"       element={<LazyPage><AudioCoveragePage /></LazyPage>} />
-              <Route path="monitoring"           element={<LazyPage><AdminMonitoring /></LazyPage>} />
+              <Route path="monitoring"           element={<LazyPage><AdminInboxPage defaultTab="monitoring" /></LazyPage>} />
+              <Route path="feedback"             element={<LazyPage><AdminInboxPage defaultTab="feedback" /></LazyPage>} />
               <Route path="subscriptions"        element={<LazyPage><AdminSubscriptions /></LazyPage>} />
               <Route path="room-load-diagnostics" element={<LazyPage><RoomLoadDiagnostics /></LazyPage>} />
               <Route path="*" element={<LazyPage><AdminDashboard /></LazyPage>} />
