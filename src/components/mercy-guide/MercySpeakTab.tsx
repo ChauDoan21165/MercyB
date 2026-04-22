@@ -1052,22 +1052,34 @@ export function MercySpeakTab({
           <div className="flex min-h-full flex-col gap-2 rounded-[28px] border border-white/80 bg-white/92 px-3 pb-3 pt-1.5 shadow-[0_10px_28px_rgba(148,163,184,0.06)] md:px-4 md:pb-4 md:pt-2">
             <div className="min-w-0">
               <div className="flex flex-col gap-2">
-                <h3 className="text-[1.9rem] font-semibold tracking-tight text-slate-900 md:text-[2.65rem] md:leading-[1.02]">
-                  {kidsLesson?.label ?? kidsObject?.label ?? KIDS_OBJECTS[0].label}
-                </h3>
-                {(kidsLesson as any)?.dialogue?.length > 1 ? (
-                  <div className="flex flex-col gap-1.5">
-                    {((kidsLesson as any).dialogue as string[]).map((line: string, i: number) => (
-                      <p key={i} className={`text-[0.95rem] leading-6 md:text-[1.05rem] md:leading-7 ${i % 2 === 0 ? 'text-slate-700 font-medium' : 'text-[#C05830] font-medium pl-3 border-l-2 border-[#FFB39A]'}`}>
-                        {line}
-                      </p>
-                    ))}
-                  </div>
-                ) : (
-                  <p className="text-[1.05rem] font-medium leading-7 text-slate-700 md:text-[1.35rem] md:leading-8">
-                    {practiceText}
-                  </p>
-                )}
+                {(() => {
+                  const headingLabel = kidsLesson?.label ?? kidsObject?.label ?? KIDS_OBJECTS[0].label;
+                  const normalize = (s: string) => s.replace(/[.!?,;:\s]+$/g, '').trim().toLowerCase();
+                  const dialogue = (kidsLesson as any)?.dialogue as string[] | undefined;
+                  const hasDialogue = Array.isArray(dialogue) && dialogue.length > 1;
+                  const sentenceDiffersFromLabel =
+                    !!practiceText && normalize(practiceText) !== normalize(headingLabel);
+                  return (
+                    <>
+                      <h3 className="text-[1.9rem] font-semibold tracking-tight text-slate-900 md:text-[2.65rem] md:leading-[1.02]">
+                        {headingLabel}
+                      </h3>
+                      {hasDialogue ? (
+                        <div className="flex flex-col gap-1.5">
+                          {dialogue!.map((line, i) => (
+                            <p key={i} className={`text-[0.95rem] leading-6 md:text-[1.05rem] md:leading-7 ${i % 2 === 0 ? 'text-slate-700 font-medium' : 'text-[#C05830] font-medium pl-3 border-l-2 border-[#FFB39A]'}`}>
+                              {line}
+                            </p>
+                          ))}
+                        </div>
+                      ) : sentenceDiffersFromLabel ? (
+                        <p className="text-[1.05rem] font-medium leading-7 text-slate-700 md:text-[1.35rem] md:leading-8">
+                          {practiceText}
+                        </p>
+                      ) : null}
+                    </>
+                  );
+                })()}
               </div>
             </div>
 
