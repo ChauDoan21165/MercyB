@@ -18,6 +18,8 @@ import {
 import AdminRoute from "@/components/admin/AdminRoute";
 import AdminLayout from "@/components/admin/AdminLayout";
 import { useAuth } from "@/providers/AuthProvider";
+import { useUserAccess } from "@/hooks/useUserAccess";
+import TrialExpiredScreen from "@/components/TrialExpiredScreen";
 
 const MB_ROUTER_VERSION = "2026-04-11-app-router-room-alias-hardening";
 
@@ -96,6 +98,19 @@ function RequireAuthForRoom({ children }: { children: React.ReactNode }) {
 
   if (isKidsRoom) return <>{children}</>;
   return <RequireAuth>{children}</RequireAuth>;
+}
+
+/**
+ * Trial-expiry gate. Renders the TrialExpiredScreen for free-tier users
+ * whose 3-day trial has ended. Premium users and grandfathered users
+ * (profiles.created_at before the cutoff in me-entitlement) pass through.
+ * Kids rooms skip this layer entirely via RequireAuthForRoom.
+ */
+function RequireTrialActive({ children }: { children: React.ReactNode }) {
+  const { isTrialExpired, isLoading } = useUserAccess();
+  if (isLoading) return null;
+  if (isTrialExpired) return <TrialExpiredScreen />;
+  return <>{children}</>;
 }
 
 // ── Fallbacks ─────────────────────────────────────────────────────────────────
@@ -396,7 +411,9 @@ export default function AppRouter() {
             path="/room/:roomId"
             element={
               <RequireAuthForRoom>
-                <LazyPage><ChatHub /></LazyPage>
+                <RequireTrialActive>
+                  <LazyPage><ChatHub /></LazyPage>
+                </RequireTrialActive>
               </RequireAuthForRoom>
             }
           />
