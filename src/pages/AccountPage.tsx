@@ -357,7 +357,16 @@ export default function AccountPage() {
                 <BiLabel en="Pricing" vi="Bảng giá" />
               </button>
 
-              <button type="button" style={buttonBase} onClick={() => setShowGiftModal(true)}>
+              <button
+                type="button"
+                style={buttonBase}
+                onClick={() => {
+                  // Defer one tick so this click finishes bubbling before Radix
+                  // mounts the Dialog overlay — otherwise Radix's pointer-down-
+                  // outside handler fires on the same event and closes it.
+                  setTimeout(() => setShowGiftModal(true), 0);
+                }}
+              >
                 <BiLabel en="Redeem gift code" vi="Kích hoạt mã quà tặng" />
               </button>
 
