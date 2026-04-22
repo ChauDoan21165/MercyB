@@ -229,6 +229,42 @@ function normalizeEntitlement(rows: SubscriptionRow[]) {
   };
 }
 
+// ── Trial window (Phase 2) ───────────────────────────────────────────────────
+// Free-tier users get exactly TRIAL_DAYS of access from profiles.created_at.
+// Users created before GRANDFATHER_CUTOFF_ISO are grandfathered (no expiry).
+// Premium users bypass the trial gate entirely.
+const TRIAL_DAYS = 3;
+const GRANDFATHER_CUTOFF_ISO = "2026-04-22T00:00:00Z";
+
+function computeTrialStatus(
+  createdAtRaw: unknown,
+  isPremium: boolean,
+): { trial_expires_at: string | null; is_trial_expired: boolean } {
+  if (isPremium) {
+    return { trial_expires_at: null, is_trial_expired: false };
+  }
+
+  const createdAtIso = toIsoString(createdAtRaw);
+  if (!createdAtIso) {
+    // No profile row or unparseable created_at: fail open (grandfathered).
+    // Avoids locking out legitimate users on data-integrity edge cases.
+    return { trial_expires_at: null, is_trial_expired: false };
+  }
+
+  const createdAtMs = new Date(createdAtIso).getTime();
+  const cutoffMs = new Date(GRANDFATHER_CUTOFF_ISO).getTime();
+
+  if (createdAtMs < cutoffMs) {
+    return { trial_expires_at: null, is_trial_expired: false };
+  }
+
+  const trialEndsMs = createdAtMs + TRIAL_DAYS * 24 * 60 * 60 * 1000;
+  return {
+    trial_expires_at: new Date(trialEndsMs).toISOString(),
+    is_trial_expired: Date.now() > trialEndsMs,
+  };
+}
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response("ok", { headers: corsHeaders });
@@ -296,7 +332,22 @@ Deno.serve(async (req) => {
       return json({ error: subscriptionsError.message }, 500);
     }
 
-    return json(normalizeEntitlement(subscriptions ?? []));
+    let profileCreatedAt: unknown = null;
+    try {
+      const { data: profile } = await adminClient
+        .from("profiles")
+        .select("created_at")
+        .eq("id", user.id)
+        .maybeSingle();
+      profileCreatedAt = profile?.created_at ?? null;
+    } catch {
+      // fail open: missing profile → grandfathered
+    }
+
+    const entitlement = normalizeEntitlement(subscriptions ?? []);
+    const trial = computeTrialStatus(profileCreatedAt, entitlement.is_premium);
+
+    return json({ ...entitlement, ...trial });
   } catch (error) {
     return json(
       {
