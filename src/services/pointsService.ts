@@ -101,13 +101,28 @@ function isFirstActionToday(): boolean {
 
 // ── Supabase sync ────────────────────────────────────────────────────────────
 
+// Kill switch: flip to true after the first failed award_points call so we
+// stop spamming 403s in the console. Local points keep working either way.
+let supabaseSyncDisabled = false;
+
+export function isSupabaseSyncDisabled(): boolean {
+  return supabaseSyncDisabled;
+}
+
+export function disableSupabaseSync(reason: string): void {
+  if (supabaseSyncDisabled) return;
+  supabaseSyncDisabled = true;
+  console.warn('[points] Supabase sync disabled for this session:', reason);
+}
+
 async function syncToSupabase(totalPoints: number, event: PointEventType, points: number, context?: string): Promise<void> {
+  if (supabaseSyncDisabled) return;
   try {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return;
 
     // Use existing award_points RPC
-    await (supabase as any).rpc('award_points', {
+    const { error } = await (supabase as any).rpc('award_points', {
       _user_id: user.id,
       _points: points,
       _transaction_type: event,
@@ -115,8 +130,11 @@ async function syncToSupabase(totalPoints: number, event: PointEventType, points
       _room_id: context || null,
     });
 
-  } catch {
-    // Fail silently — local points still work
+    if (error) {
+      disableSupabaseSync(`award_points → ${error.message ?? error.code ?? 'unknown error'}`);
+    }
+  } catch (err) {
+    disableSupabaseSync(`award_points threw: ${String((err as Error)?.message ?? err)}`);
   }
 }
 

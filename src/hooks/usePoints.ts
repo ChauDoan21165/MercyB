@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
+import { disableSupabaseSync, isSupabaseSyncDisabled } from "@/services/pointsService";
 
 export const usePoints = () => {
   const [totalPoints, setTotalPoints] = useState<number>(0);
@@ -35,6 +36,7 @@ export const usePoints = () => {
     description?: string,
     roomId?: string
   ) => {
+    if (isSupabaseSyncDisabled()) return;
     try {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) return;
@@ -47,10 +49,13 @@ export const usePoints = () => {
         _room_id: roomId,
       });
 
-      if (error) throw error;
+      if (error) {
+        disableSupabaseSync(`award_points → ${error.message ?? error.code ?? 'unknown error'}`);
+        return;
+      }
       await fetchPoints(); // Refresh points after awarding
     } catch (error) {
-      console.error("Error awarding points:", error);
+      disableSupabaseSync(`award_points threw: ${String((error as Error)?.message ?? error)}`);
     }
   };
 
