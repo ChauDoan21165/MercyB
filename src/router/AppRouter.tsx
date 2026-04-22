@@ -153,6 +153,7 @@ function AppHeroShell() {
   const shell: React.CSSProperties = {
     minHeight: "100vh", width: "100%", position: "relative",
     zIndex: 999999, pointerEvents: "auto",
+    overflowX: "hidden",
   };
 
   const band: React.CSSProperties = {
@@ -228,6 +229,7 @@ function AppHeroShell() {
 
   const contentFrame: React.CSSProperties = {
     maxWidth: PAGE_MAX, margin: "0 auto", width: "100%",
+    minWidth: 0, overflowX: "hidden",
   };
 
   return (
