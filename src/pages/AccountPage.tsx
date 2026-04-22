@@ -6,6 +6,7 @@ import { useAuth } from "@/providers/AuthProvider";
 import { useEntitlements } from "@/lib/useEntitlements";
 import { GiftCodeModal } from "@/components/GiftCodeModal";
 import { supabase } from "@/lib/supabaseClient";
+import RestorePurchasesButton from "@/components/iap/RestorePurchasesButton";
 
 function formatDateTime(value: string | null | undefined): string {
   if (!value) return "—";
@@ -410,6 +411,7 @@ export default function AccountPage() {
               </button>
             </div>
           </div>
+          <RestorePurchasesButton />
         </div>
 
         {/* ── Info grid ───────────────────────────────────────── */}
