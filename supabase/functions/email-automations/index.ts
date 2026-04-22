@@ -27,6 +27,48 @@ const EMAIL_CONFIG = {
   siteUrl: "https://mercyblade.com",
 };
 
+// Trial gate constants — MUST match me-entitlement/index.ts
+const TRIAL_DAYS = 3;
+const GRANDFATHER_CUTOFF_ISO = "2026-04-22T00:00:00Z";
+const MS_PER_DAY = 24 * 60 * 60 * 1000;
+
+// New trial emails use the canonical admin@mercyblade.com sender
+// (per Chau's sending-address rule; existing welcome/expiry templates
+// remain on the legacy resend.dev sandbox address pending a separate
+// migration).
+const TRIAL_EMAIL_FROM = "Mercy Blade <admin@mercyblade.com>";
+
+function getTrialEndingSoonHtml(): string {
+  return `<!DOCTYPE html>
+<html>
+  <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 560px; margin: 0 auto; padding: 24px; color: #1f2937; line-height: 1.6;">
+    <p>Chào bạn,</p>
+    <p>Bản dùng thử 3 ngày miễn phí tại Mercy Blade của bạn sẽ kết thúc trong vòng 24 giờ tới.</p>
+    <p>Bạn đã bắt đầu hành trình học tiếng Anh cùng Teacher Mercy. Để tiếp tục truy cập toàn bộ phòng học, Speak và Grammar, hãy nâng cấp gói ngay hôm nay.</p>
+    <p style="margin: 24px 0;">
+      <a href="https://mercyblade.com/pricing" style="display: inline-block; background: #f59e0b; color: #fff; padding: 12px 22px; border-radius: 9999px; text-decoration: none; font-weight: 600;">Xem gói</a>
+    </p>
+    <p>Nếu cần hỗ trợ, bạn chỉ cần trả lời email này.</p>
+    <p style="margin-top: 32px;">Chau<br/>Mercy Blade</p>
+  </body>
+</html>`;
+}
+
+function getTrialExpiredHtml(): string {
+  return `<!DOCTYPE html>
+<html>
+  <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 560px; margin: 0 auto; padding: 24px; color: #1f2937; line-height: 1.6;">
+    <p>Chào bạn,</p>
+    <p>Bản dùng thử 3 ngày của bạn tại Mercy Blade đã kết thúc. Tài khoản vẫn còn đó — chỉ cần nâng cấp để mở lại phòng học.</p>
+    <p style="margin: 24px 0;">
+      <a href="https://mercyblade.com/pricing" style="display: inline-block; background: #f59e0b; color: #fff; padding: 12px 22px; border-radius: 9999px; text-decoration: none; font-weight: 600;">Xem gói</a>
+    </p>
+    <p>Nếu bạn thấy Mercy Blade chưa phù hợp, không cần làm gì cả — tài khoản sẽ được giữ nguyên.</p>
+    <p style="margin-top: 32px;">Chau<br/>Mercy Blade</p>
+  </body>
+</html>`;
+}
+
 // Helper to always return HTTP 200 with JSON
 function send(data: Record<string, unknown>) {
   return new Response(JSON.stringify(data), {
@@ -371,12 +413,141 @@ Deno.serve(async (req) => {
       }
     }
 
-    console.log(`[email-automations] Complete: ${welcomeEmailsSent} welcome, ${expiryWarningsSent} expiry warnings`);
+    // --- 3. TRIAL NUDGE EMAILS (Vietnamese) ---
+    // Free-tier users whose 3-day trial ends in the next 24 hours
+    // (trial_ending_soon) or ended within the last 24 hours (trial_expired).
+    // Grandfathered users are excluded by the created_at >= cutoff filter.
+    // Premium users (any active subscription) are excluded explicitly.
+    console.log("[email-automations] Processing trial nudges...");
+
+    let trialEndingSoonSent = 0;
+    let trialExpiredSent = 0;
+
+    try {
+      const nowMs = Date.now();
+      const cutoffMs = new Date(GRANDFATHER_CUTOFF_ISO).getTime();
+
+      // Window bounds for created_at:
+      //   trial ends in [now, now+24h]  →  created_at in [now-3d, now+1d-3d]
+      //   trial ended in [now-24h, now] →  created_at in [now-3d-1d, now-3d]
+      // Pre-filter candidates to a single superset window for one DB call:
+      //   created_at in [now - 4 days, now - 2 days] AND >= cutoff.
+      const superMinMs = nowMs - (TRIAL_DAYS + 1) * MS_PER_DAY;
+      const superMaxMs = nowMs - (TRIAL_DAYS - 1) * MS_PER_DAY;
+      const lowerBoundMs = Math.max(superMinMs, cutoffMs);
+
+      if (lowerBoundMs <= superMaxMs) {
+        const { data: candidates, error: candidatesError } = await adminClient
+          .from("profiles")
+          .select("id, email, created_at")
+          .gte("created_at", new Date(lowerBoundMs).toISOString())
+          .lte("created_at", new Date(superMaxMs).toISOString());
+
+        if (candidatesError) {
+          errors.push(`Trial-candidates query failed: ${candidatesError.message}`);
+        } else if (candidates && candidates.length > 0) {
+          // Exclude premium users (any active subscription)
+          const candidateIds = candidates.map((p) => p.id);
+          const { data: activeSubs } = await adminClient
+            .from("user_subscriptions")
+            .select("user_id")
+            .in("user_id", candidateIds)
+            .eq("status", "active");
+          const premiumIds = new Set(
+            (activeSubs ?? []).map((s: { user_id: string }) => s.user_id),
+          );
+
+          const endingSoon: Array<{ id: string; email: string }> = [];
+          const justExpired: Array<{ id: string; email: string }> = [];
+
+          for (const p of candidates) {
+            if (!p.email || premiumIds.has(p.id)) continue;
+            const createdAtMs = new Date(p.created_at).getTime();
+            if (!Number.isFinite(createdAtMs)) continue;
+            const trialEndMs = createdAtMs + TRIAL_DAYS * MS_PER_DAY;
+            const delta = trialEndMs - nowMs;
+            if (delta > 0 && delta <= MS_PER_DAY) {
+              endingSoon.push({ id: p.id, email: p.email });
+            } else if (delta <= 0 && delta >= -MS_PER_DAY) {
+              justExpired.push({ id: p.id, email: p.email });
+            }
+          }
+
+          const sendTrialEmail = async (
+            targets: Array<{ id: string; email: string }>,
+            type: string,
+            subject: string,
+            html: string,
+          ): Promise<number> => {
+            let sent = 0;
+            for (const t of targets) {
+              const { data: existing } = await adminClient
+                .from("email_events")
+                .select("id")
+                .eq("user_id", t.id)
+                .eq("type", type)
+                .limit(1);
+              if (existing && existing.length > 0) continue;
+
+              try {
+                const { error: sendError } = await resend.emails.send({
+                  from: TRIAL_EMAIL_FROM,
+                  to: [t.email],
+                  bcc: [EMAIL_CONFIG.bcc],
+                  subject,
+                  html,
+                });
+                if (sendError) {
+                  await adminClient.from("email_events").insert({
+                    user_id: t.id,
+                    email: t.email,
+                    type,
+                    status: "failed",
+                    error_message: sendError.message,
+                  });
+                } else {
+                  sent++;
+                  await adminClient.from("email_events").insert({
+                    user_id: t.id,
+                    email: t.email,
+                    type,
+                    status: "sent",
+                  });
+                }
+              } catch (err) {
+                console.error(`Exception sending ${type}:`, err);
+              }
+            }
+            return sent;
+          };
+
+          trialEndingSoonSent = await sendTrialEmail(
+            endingSoon,
+            "trial_ending_soon",
+            "24 giờ cuối của bản dùng thử miễn phí – Mercy Blade",
+            getTrialEndingSoonHtml(),
+          );
+          trialExpiredSent = await sendTrialEmail(
+            justExpired,
+            "trial_expired",
+            "Bản dùng thử đã kết thúc – nâng cấp để tiếp tục",
+            getTrialExpiredHtml(),
+          );
+        }
+      }
+    } catch (err) {
+      console.error("[email-automations] Trial nudge block crashed:", err);
+      errors.push(`Trial nudges failed: ${err instanceof Error ? err.message : "unknown"}`);
+    }
+
+    console.log(`[email-automations] Complete: ${welcomeEmailsSent} welcome, ${expiryWarningsSent} expiry warnings, ${trialEndingSoonSent} trial-ending-soon, ${trialExpiredSent} trial-expired`);
 
     return send({
       ok: true,
       welcome_emails_sent: welcomeEmailsSent,
       expiry_warnings_sent: expiryWarningsSent,
+      trial_ending_soon_sent: trialEndingSoonSent,
+      trial_expired_sent: trialExpiredSent,
       errors: errors.length > 0 ? errors : undefined,
     });
 
