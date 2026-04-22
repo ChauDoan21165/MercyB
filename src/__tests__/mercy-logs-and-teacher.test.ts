@@ -3,9 +3,9 @@
  */
 
 import { describe, it, expect, beforeEach } from 'vitest';
-import { logEvent, getRecentLogs, clearLogs, getLogSummary } from '../lib/mercy-host/logs';
-import { getDomainCategory, isEnglishDomain, isHealthDomain } from '../lib/mercy-host/domainMap';
-import { getTeacherTip, validateTeacherTips } from '../lib/mercy-host/teacherScripts';
+import { logEvent, getRecentLogs, clearLogs, getLogSummary } from '../lib/teacher-mercy/logs';
+import { getDomainCategory, isEnglishDomain, isHealthDomain } from '../lib/teacher-mercy/domainMap';
+import { getTeacherTip, validateTeacherTips } from '../lib/teacher-mercy/teacherScripts';
 
 describe('Mercy Logs', () => {
   beforeEach(() => {

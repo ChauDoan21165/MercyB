@@ -126,7 +126,7 @@ export interface CorrectionInput {
 /* Mercy Host Engine State                                                    */
 /* -------------------------------------------------------------------------- */
 
-export interface MercyHostState {
+export interface TeacherMercyState {
   tier: string;
   tone: string;
   avatarStyle: MercyAvatarStyle;
@@ -141,7 +141,7 @@ export interface MercyHostState {
 /* Mercy Host Engine Actions                                                  */
 /* -------------------------------------------------------------------------- */
 
-export interface MercyHostActions {
+export interface TeacherMercyActions {
   greet: () => void;
   dismiss: () => void;
   reopen: () => void;
@@ -155,7 +155,7 @@ export interface MercyHostActions {
 /* Full Engine Interface                                                      */
 /* -------------------------------------------------------------------------- */
 
-export interface MercyHostEngine extends MercyHostState, MercyHostActions {
+export interface TeacherMercyEngine extends TeacherMercyState, TeacherMercyActions {
   avatar: ReactNode;
   animation: ReactNode;
   greetingText: BilingualLine | null;
@@ -165,7 +165,7 @@ export interface MercyHostEngine extends MercyHostState, MercyHostActions {
 /* Host Initialization Config                                                 */
 /* -------------------------------------------------------------------------- */
 
-export interface MercyHostConfig {
+export interface TeacherMercyConfig {
   roomId: string;
   roomTitle: string;
   roomTier?: string;

@@ -55,7 +55,7 @@ import { getTeacherMemoryInsight } from './teacherMemoryEngine';
 import { buildTeachingSignals } from './host/buildTeachingSignals';
 import buildTeachingPlan from './host/buildTeachingPlan';
 
-export interface MercyHostContext {
+export interface TeacherMercyContext {
   userName: string | null;
   userTier: string;
   roomId: string;
@@ -333,7 +333,7 @@ export function mapTierToTeacherLevel(userTier: string): TeacherLevel {
   return 'gentle';
 }
 
-export function generateRoomGreeting(context: MercyHostContext): MercyGreeting {
+export function generateRoomGreeting(context: TeacherMercyContext): MercyGreeting {
   const { userName, userTier, roomTitle, language } = context;
 
   const name = getResolvedName(userName, language);
@@ -362,7 +362,7 @@ export function generateRoomGreeting(context: MercyHostContext): MercyGreeting {
 }
 
 export function generateTeacherGreeting(
-  context: MercyHostContext,
+  context: TeacherMercyContext,
   teacherLevel?: TeacherLevel
 ): MercyGreeting {
   const { userName, userTier, language } = context;

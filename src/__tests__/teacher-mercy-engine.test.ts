@@ -3,10 +3,10 @@
  */
 
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { createMercyEngine, initialEngineState, type MercyEngineState } from '@/lib/mercy-host/engine';
-import { getAnimationForEvent, shouldTriggerVoice, getVoiceTriggerForEvent } from '@/lib/mercy-host/eventMap';
-import { getTierScript, getTierGreeting, getTierEncouragement } from '@/lib/mercy-host/tierScripts';
-import { getVoiceLineByTrigger } from '@/lib/mercy-host/voicePack';
+import { createMercyEngine, initialEngineState, type MercyEngineState } from '@/lib/teacher-mercy/engine';
+import { getAnimationForEvent, shouldTriggerVoice, getVoiceTriggerForEvent } from '@/lib/teacher-mercy/eventMap';
+import { getTierScript, getTierGreeting, getTierEncouragement } from '@/lib/teacher-mercy/tierScripts';
+import { getVoiceLineByTrigger } from '@/lib/teacher-mercy/voicePack';
 
 describe('Mercy Host Engine', () => {
   let state: MercyEngineState;

@@ -13,21 +13,21 @@ import {
   initialEngineState,
   type MercyEngineState,
   type MercyEngine
-} from '@/lib/mercy-host/engine';
-import type { MercyEventType } from '@/lib/mercy-host/eventMap';
-import { mercyHeartbeat } from '@/lib/mercy-host/heartbeat';
+} from '@/lib/teacher-mercy/engine';
+import type { MercyEventType } from '@/lib/teacher-mercy/eventMap';
+import { mercyHeartbeat } from '@/lib/teacher-mercy/heartbeat';
 
-const MercyHostContext = createContext<MercyEngine | null>(null);
+const TeacherMercyContext = createContext<MercyEngine | null>(null);
 
-interface MercyHostProviderProps {
+interface TeacherMercyProviderProps {
   children: React.ReactNode;
   defaultLanguage?: 'en' | 'vi';
 }
 
-export function MercyHostProvider({ 
+export function TeacherMercyProvider({ 
   children,
   defaultLanguage = 'en'
-}: MercyHostProviderProps) {
+}: TeacherMercyProviderProps) {
   const [state, setState] = useState<MercyEngineState>({
     ...initialEngineState,
     language: defaultLanguage
@@ -130,7 +130,7 @@ export function MercyHostProvider({
           }
         }
       } catch (error) {
-        console.warn('[MercyHostProvider] Failed to fetch user profile:', error);
+        console.warn('[TeacherMercyProvider] Failed to fetch user profile:', error);
       }
     };
     
@@ -154,19 +154,19 @@ export function MercyHostProvider({
   }, [actions, defaultLanguage]);
   
   return (
-    <MercyHostContext.Provider value={engine}>
+    <TeacherMercyContext.Provider value={engine}>
       {children}
-    </MercyHostContext.Provider>
+    </TeacherMercyContext.Provider>
   );
 }
 
 /**
  * Hook to access Mercy Host context
  */
-export function useMercyHostContext(): MercyEngine {
-  const context = useContext(MercyHostContext);
+export function useTeacherMercyContext(): MercyEngine {
+  const context = useContext(TeacherMercyContext);
   if (!context) {
-    throw new Error('useMercyHostContext must be used within MercyHostProvider');
+    throw new Error('useTeacherMercyContext must be used within TeacherMercyProvider');
   }
   return context;
 }
@@ -174,8 +174,8 @@ export function useMercyHostContext(): MercyEngine {
 /**
  * Hook for room-specific Mercy Host behavior
  */
-export function useMercyHostRoom(roomId: string, roomTitle: string, tier?: string) {
-  const mercy = useMercyHostContext();
+export function useTeacherMercyRoom(roomId: string, roomTitle: string, tier?: string) {
+  const mercy = useTeacherMercyContext();
   
   // Initialize for room
   useEffect(() => {
@@ -196,7 +196,7 @@ export function useMercyHostRoom(roomId: string, roomTitle: string, tier?: strin
  * Hook for triggering Mercy events
  */
 export function useMercyEvent() {
-  const mercy = useMercyHostContext();
+  const mercy = useTeacherMercyContext();
   
   return useCallback((event: MercyEventType, payload?: Record<string, unknown>) => {
     mercy.onEvent(event, payload);
@@ -207,7 +207,7 @@ export function useMercyEvent() {
  * Hook for triggering room complete
  */
 export function useMercyRoomComplete() {
-  const mercy = useMercyHostContext();
+  const mercy = useTeacherMercyContext();
   
   return useCallback((roomId: string, roomTags?: string[], roomDomain?: string) => {
     mercy.onRoomComplete(roomId, roomTags, roomDomain);

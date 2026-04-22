@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from 'vitest';
-import { generateTeachingTurn, summarizeTeachingTurn } from '../mercyHost';
+import { generateTeachingTurn, summarizeTeachingTurn } from '../teacherMercy';
 
 describe('generateTeachingTurn realistic conversation fixtures', () => {
   beforeEach(() => {

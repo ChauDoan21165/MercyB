@@ -1,12 +1,12 @@
-// src/components/mercy/MercyHostCorner.tsx — MB-BLUE-93.7 — 2025-12-24 (+0700)
+// src/components/mercy/TeacherMercyCorner.tsx — MB-BLUE-93.7 — 2025-12-24 (+0700)
 /**
- * MercyHostCorner (MINIMAL MOUNT)
+ * TeacherMercyCorner (MINIMAL MOUNT)
  * Goal: prove Mercy Host engine renders inside a room.
  * Non-goals (later): full styling, animations polish, keyword UI, etc.
  */
 
 import React from "react";
-import { useMercyHost } from "@/hooks/useMercyHost";
+import { useTeacherMercy } from "@/hooks/useTeacherMercy";
 
 type Props = {
   roomId: string;
@@ -15,13 +15,13 @@ type Props = {
   language?: "en" | "vi";
 };
 
-export default function MercyHostCorner({
+export default function TeacherMercyCorner({
   roomId,
   roomTitle,
   roomTier = "level0",
   language = "en",
 }: Props) {
-  const host = useMercyHost({
+  const host = useTeacherMercy({
     roomId,
     roomTitle,
     roomTier,

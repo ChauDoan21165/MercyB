@@ -10,7 +10,7 @@
 import { MercyAvatarAngelic } from "./MercyAvatarAngelic";
 import { MercyAvatarMinimalist } from "./MercyAvatarMinimalist";
 import { MercyAvatarAbstract } from "./MercyAvatarAbstract";
-import { getSavedAvatarStyle, type MercyAvatarStyle } from "@/lib/mercy-host/avatarStyles";
+import { getSavedAvatarStyle, type MercyAvatarStyle } from "@/lib/teacher-mercy/avatarStyles";
 
 interface MercyAvatarProps {
   size?: number;

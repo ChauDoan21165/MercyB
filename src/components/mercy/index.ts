@@ -13,16 +13,16 @@ export { MercyAnimation, HaloPulse, WingsShimmer, GuidingSpark, RippleWelcome, C
 export { MercyStyleSelector } from './MercyStyleSelector';
 
 // Host Core
-export { MercyHostCore, MercyHostButton } from './MercyHostCoreSafe';
+export { TeacherMercyCore, TeacherMercyButton } from './TeacherMercyCoreSafe';
 
 // Provider & Hooks
 export { 
-  MercyHostProvider, 
-  useMercyHostContext, 
-  useMercyHostRoom, 
+  TeacherMercyProvider, 
+  useTeacherMercyContext, 
+  useTeacherMercyRoom, 
   useMercyEvent,
   useMercyRoomComplete 
-} from './MercyHostProvider';
+} from './TeacherMercyProvider';
 
 // Settings
 export { MercySettingsToggle } from './MercySettingsToggle';

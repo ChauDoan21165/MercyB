@@ -3,13 +3,13 @@
  */
 
 import { describe, it, expect } from 'vitest';
-import { isMartialDomain, getDomainCategory } from '@/lib/mercy-host/domainMap';
+import { isMartialDomain, getDomainCategory } from '@/lib/teacher-mercy/domainMap';
 import { 
   getMartialCoachTip, 
   validateMartialCoachTips, 
   inferMartialDiscipline,
   type MartialCoachLevel 
-} from '@/lib/mercy-host/martialCoachScripts';
+} from '@/lib/teacher-mercy/martialCoachScripts';
 
 describe('Martial Domain Detection', () => {
   it('detects martial domain from roomId', () => {

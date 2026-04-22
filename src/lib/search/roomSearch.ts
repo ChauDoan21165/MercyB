@@ -7,7 +7,7 @@
 
 import { getAllRooms, type RoomMeta } from '@/lib/rooms/roomRegistry';
 import type { TierId } from '@/lib/constants/tiers';
-import type { DomainCategory } from '@/lib/mercy-host/domainMap';
+import type { DomainCategory } from '@/lib/teacher-mercy/domainMap';
 
 /**
  * Search result with relevance score

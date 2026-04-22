@@ -1,6 +1,6 @@
 /**
  * MercyBlade Blue — Mercy Host Engine Hook (SINGLE AUDIO ENGINE COMPLIANT)
- * File: src/hooks/useMercyHost.ts
+ * File: src/hooks/useTeacherMercy.ts
  * Version: MB-BLUE-94.6 — 2025-12-24 (+0700)
  *
  * CHANGE (A4 MIGRATION):
@@ -19,13 +19,13 @@ import {
   wasGreetingShown,
   markGreetingShown,
   FALLBACK_NAMES
-} from '@/lib/mercy-host/mercyHost';
-import { getTierScript, getTierGreeting } from '@/lib/mercy-host/tierScripts';
-import { getVoiceLineByTrigger, type VoiceLine } from '@/lib/mercy-host/voicePack';
-import { getSavedAvatarStyle, saveAvatarStyle, type MercyAvatarStyle } from '@/lib/mercy-host/avatarStyles';
+} from '@/lib/teacher-mercy/teacherMercy';
+import { getTierScript, getTierGreeting } from '@/lib/teacher-mercy/tierScripts';
+import { getVoiceLineByTrigger, type VoiceLine } from '@/lib/teacher-mercy/voicePack';
+import { getSavedAvatarStyle, saveAvatarStyle, type MercyAvatarStyle } from '@/lib/teacher-mercy/avatarStyles';
 import { MercyAvatar } from '@/components/mercy/MercyAvatar';
 import { MercyAnimation } from '@/components/mercy/MercyAnimations';
-import type { MercyHostEngine, MercyHostConfig, MercyEvent } from '@/lib/mercy-host/types';
+import type { TeacherMercyEngine, TeacherMercyConfig, MercyEvent } from '@/lib/teacher-mercy/types';
 import { useMusicPlayer } from '@/contexts/MusicPlayerContext';
 
 const LAST_ACTIVE_KEY = 'mercy_last_active';
@@ -41,7 +41,7 @@ const toFilename = (input?: string): string | null => {
   return parts[parts.length - 1] || null;
 };
 
-export function useMercyHost(config: MercyHostConfig): MercyHostEngine {
+export function useTeacherMercy(config: TeacherMercyConfig): TeacherMercyEngine {
   const {
     roomId,
     roomTitle,
@@ -89,7 +89,7 @@ export function useMercyHost(config: MercyHostConfig): MercyHostEngine {
           }
         }
       } catch (error) {
-        console.warn('[useMercyHost] Failed to fetch user profile:', error);
+        console.warn('[useTeacherMercy] Failed to fetch user profile:', error);
       }
     };
 

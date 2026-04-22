@@ -9,12 +9,12 @@ import {
   computeVisitStreak,
   checkStreakMilestone,
   type RitualContext 
-} from '../lib/mercy-host/rituals';
+} from '../lib/teacher-mercy/rituals';
 import {
   getTierCeremony,
   getCeremonyText,
   executeTierCeremony
-} from '../lib/mercy-host/tierCeremonies';
+} from '../lib/teacher-mercy/tierCeremonies';
 
 // Mock localStorage
 const localStorageMock = (() => {

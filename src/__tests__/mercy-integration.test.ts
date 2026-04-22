@@ -1,7 +1,7 @@
 /**
  * Mercy Integration Tests
  *
- * Tests ChatHub + MercyHostProvider interplay.
+ * Tests ChatHub + TeacherMercyProvider interplay.
  *
  * MB-BLUE NOTE (2026-02-25):
  * - Tier greeting script import must work in tests.
@@ -15,14 +15,14 @@ import {
   createMercyEngine,
   initialEngineState,
   type MercyEngineState,
-} from "@/lib/mercy-host/engine";
+} from "@/lib/teacher-mercy/engine";
 import {
   loadValidatedMemory,
   saveMemory,
   resetMemory,
-} from "@/lib/mercy-host/memorySchema";
-import { eventLimiter } from "@/lib/mercy-host/eventLimiter";
-import { mercyHeartbeat } from "@/lib/mercy-host/heartbeat";
+} from "@/lib/teacher-mercy/memorySchema";
+import { eventLimiter } from "@/lib/teacher-mercy/eventLimiter";
+import { mercyHeartbeat } from "@/lib/teacher-mercy/heartbeat";
 
 describe("Mercy Integration Tests", () => {
   let state: MercyEngineState;
@@ -250,7 +250,7 @@ describe("Mercy Integration Tests", () => {
 
   describe("Greeting Snapshots", () => {
     it("should have consistent greeting text for level0 tier", async () => {
-      const { getTierGreeting } = await import("@/lib/mercy-host/tierScripts");
+      const { getTierGreeting } = await import("@/lib/teacher-mercy/tierScripts");
 
       const greeting = getTierGreeting("level0", "TestUser");
 
@@ -261,7 +261,7 @@ describe("Mercy Integration Tests", () => {
     });
 
     it("should include user name in greeting", async () => {
-      const { getTierGreeting } = await import("@/lib/mercy-host/tierScripts");
+      const { getTierGreeting } = await import("@/lib/teacher-mercy/tierScripts");
 
       const greeting = getTierGreeting("level0", "Alice");
 

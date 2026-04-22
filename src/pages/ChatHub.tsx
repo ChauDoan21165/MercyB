@@ -7,7 +7,7 @@
  * FIX (MB-BLUE-101.9-MERCY-GUIDE-IN-ROOM):
  * - Mount MercyGuide INSIDE the real room page so it gets real room context
  * - Pass roomId, roomTitle, tier, pathSlug, tags, contentEn into MercyGuide
- * - Do NOT render MercyHostCorner here, to avoid duplicate host UI on room pages
+ * - Do NOT render TeacherMercyCorner here, to avoid duplicate host UI on room pages
  *
  * ZOOM FIX:
  * - Keep syncing --mb-essay-zoom from storage

@@ -8,13 +8,13 @@ import {
   inferEmotion,
   getEmotionFromOnboardingAnswer,
   type EmotionState,
-} from "../lib/mercy-host/emotionModel";
+} from "../lib/teacher-mercy/emotionModel";
 import {
   isCrisisRoom,
   enforceSafeEmotion,
   isSafeTrigger,
   validateCrisisScript,
-} from "../lib/mercy-host/safetyRails";
+} from "../lib/teacher-mercy/safetyRails";
 
 // Mock localStorage
 const localStorageMock = (() => {
@@ -255,7 +255,7 @@ describe("Safety Rails", () => {
 describe("Emotion Scripts Coverage", () => {
   // Import tier scripts dynamically
   it("should have emotion variants for all tiers", async () => {
-    const { TIER_EMOTION_SCRIPTS } = await import("../lib/mercy-host/tierScripts");
+    const { TIER_EMOTION_SCRIPTS } = await import("../lib/teacher-mercy/tierScripts");
 
     const tiers = ["level0", "level1", "level2", "level3", "level4", "level5", "level6", "level7", "level8", "level9"];
     const requiredEmotions: EmotionState[] = ["low_mood", "confused", "stressed", "celebrating"];
@@ -275,7 +275,7 @@ describe("Emotion Scripts Coverage", () => {
 
 describe("Snapshot Tests", () => {
   it("should match English greeting snapshots", async () => {
-    const { TIER_EMOTION_SCRIPTS } = await import("../lib/mercy-host/tierScripts");
+    const { TIER_EMOTION_SCRIPTS } = await import("../lib/teacher-mercy/tierScripts");
 
     const allEnglishGreetings: Record<string, string[]> = {};
     for (const [tier, scripts] of Object.entries(TIER_EMOTION_SCRIPTS as any)) {
@@ -286,7 +286,7 @@ describe("Snapshot Tests", () => {
   });
 
   it("should match Vietnamese greeting snapshots", async () => {
-    const { TIER_EMOTION_SCRIPTS } = await import("../lib/mercy-host/tierScripts");
+    const { TIER_EMOTION_SCRIPTS } = await import("../lib/teacher-mercy/tierScripts");
 
     const allVietnameseGreetings: Record<string, string[]> = {};
     for (const [tier, scripts] of Object.entries(TIER_EMOTION_SCRIPTS as any)) {

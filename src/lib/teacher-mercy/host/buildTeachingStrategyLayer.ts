@@ -22,7 +22,7 @@ import {
   updateTeacherMemory,
 } from '../teacherMemoryEngine';
 import type { LearnerState } from '../learnerState';
-import type { MercyTeachingTurnInput } from '../mercyHost';
+import type { MercyTeachingTurnInput } from '../teacherMercy';
 import type { TeachingSignalsResult } from './buildTeachingSignals';
 import type { TeachingPlanLayerResult } from './buildTeachingPlan';
 

@@ -16,12 +16,12 @@
 
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import { useMercyHostContext } from "./MercyHostProvider";
-import { runFullValidation } from "@/lib/mercy-host/validation";
-import { hostSignal } from "@/lib/mercy-host/hostSignal";
-import { getRitualForEvent } from "@/lib/mercy-host/rituals";
-import { getMemoryData, type MercyMemoryV2 } from "@/lib/mercy-host/memorySchema";
-import { getRecentLogs, getLogSummary, getLogBufferSize } from "@/lib/mercy-host/logs";
+import { useTeacherMercyContext } from "./TeacherMercyProvider";
+import { runFullValidation } from "@/lib/teacher-mercy/validation";
+import { hostSignal } from "@/lib/teacher-mercy/hostSignal";
+import { getRitualForEvent } from "@/lib/teacher-mercy/rituals";
+import { getMemoryData, type MercyMemoryV2 } from "@/lib/teacher-mercy/memorySchema";
+import { getRecentLogs, getLogSummary, getLogBufferSize } from "@/lib/teacher-mercy/logs";
 import { Button } from "@/components/ui/button";
 import {
   Bug,
@@ -56,7 +56,7 @@ export function MercyDebugPanel({ isAdmin = false }: MercyDebugPanelProps) {
   const [activeTab, setActiveTab] = useState<
     "state" | "validation" | "signals" | "memory" | "rituals" | "logs"
   >("state");
-  const mercy = useMercyHostContext();
+  const mercy = useTeacherMercyContext();
 
   // Admin gate: only show in dev mode or with explicit admin flag
   if (!isAdmin && !isDev) return null;

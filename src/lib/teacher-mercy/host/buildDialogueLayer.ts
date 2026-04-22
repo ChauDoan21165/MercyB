@@ -13,7 +13,7 @@ import {
   buildTeacherDialogue,
   type TeacherDialogueBuilderResult,
 } from '../teacherDialogueBuilder';
-import type { MercyTeachingTurnInput } from '../mercyHost';
+import type { MercyTeachingTurnInput } from '../teacherMercy';
 import type { TeachingSignalsResult } from './buildTeachingSignals';
 import type { TeachingPlanLayerResult } from './buildTeachingPlan';
 import type { TeachingStrategyLayerResult } from './buildTeachingStrategyLayer';

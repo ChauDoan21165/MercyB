@@ -9,15 +9,15 @@
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { useMercyHostContext } from './MercyHostProvider';
+import { useTeacherMercyContext } from './TeacherMercyProvider';
 import { MercyAvatar } from './MercyAvatar';
-import { AVATAR_STYLES, type MercyAvatarStyle } from '@/lib/mercy-host/avatarStyles';
+import { AVATAR_STYLES, type MercyAvatarStyle } from '@/lib/teacher-mercy/avatarStyles';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Slider } from '@/components/ui/slider';
 import { VolumeX, Volume2, Sparkles, GraduationCap, Sword, MessageSquare } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import type { RitualIntensity, TeacherLevel, MartialCoachLevel } from '@/lib/mercy-host/engine';
-import { formatCharCount } from '@/lib/mercy-host/talkBudget';
+import type { RitualIntensity, TeacherLevel, MartialCoachLevel } from '@/lib/teacher-mercy/engine';
+import { formatCharCount } from '@/lib/teacher-mercy/talkBudget';
 import { Progress } from '@/components/ui/progress';
 
 interface MercySettingsToggleProps {
@@ -93,7 +93,7 @@ const MARTIAL_LEVEL_DESCRIPTIONS: Record<MartialCoachLevel, { en: string; vi: st
 };
 
 export function MercySettingsToggle({ language = 'en' }: MercySettingsToggleProps) {
-  const mercy = useMercyHostContext();
+  const mercy = useTeacherMercyContext();
   
   const intensityToSlider = (intensity: RitualIntensity): number => {
     switch (intensity) {

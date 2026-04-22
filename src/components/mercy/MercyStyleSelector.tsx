@@ -17,7 +17,7 @@ import {
   getSavedAvatarStyle, 
   saveAvatarStyle, 
   type MercyAvatarStyle 
-} from '@/lib/mercy-host/avatarStyles';
+} from '@/lib/teacher-mercy/avatarStyles';
 import { toast } from 'sonner';
 
 interface MercyStyleSelectorProps {

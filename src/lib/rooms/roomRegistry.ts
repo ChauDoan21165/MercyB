@@ -20,7 +20,7 @@
 
 import { getAllRooms as fetchAllRooms } from "@/lib/roomFetcher";
 import { normalizeTier, TierId, ALL_TIER_IDS } from "@/lib/constants/tiers";
-import { getDomainCategory, type DomainCategory } from "@/lib/mercy-host/domainMap";
+import { getDomainCategory, type DomainCategory } from "@/lib/teacher-mercy/domainMap";
 import { tierFromRoomId } from "@/lib/tierFromRoomId";
 
 // NOTE: This import is intentionally here so tests can vi.mock it.

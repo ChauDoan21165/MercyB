@@ -20,7 +20,7 @@ import {
   type CurriculumRecommendation,
   type CurriculumState,
 } from '../curriculumTracker';
-import type { MercyTeachingTurnInput } from '../mercyHost';
+import type { MercyTeachingTurnInput } from '../teacherMercy';
 import type { TeachingSignalsResult } from './buildTeachingSignals';
 
 export interface TeachingProgressLayerResult {

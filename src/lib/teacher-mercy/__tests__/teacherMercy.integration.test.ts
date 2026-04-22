@@ -3,7 +3,7 @@ import {
   generateEnglishFoundationReply,
   generateTeachingTurn,
   summarizeTeachingTurn,
-} from '../mercyHost';
+} from '../teacherMercy';
 
 describe('mercyHost integration', () => {
   const USER_ID = 'integration-test-user';

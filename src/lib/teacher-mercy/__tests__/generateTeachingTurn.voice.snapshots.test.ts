@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from 'vitest';
-import { generateTeachingTurn } from '../mercyHost';
+import { generateTeachingTurn } from '../teacherMercy';
 import { clearTeacherMemory } from '../teacherMemoryEngine';
 import { clearLessonMemory } from '../lessonMemory';
 

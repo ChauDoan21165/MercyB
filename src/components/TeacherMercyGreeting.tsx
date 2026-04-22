@@ -2,21 +2,21 @@
  * Mercy Host Greeting Component
  * 
  * Displays Mercy's welcome greeting with avatar, animation, and voice.
- * Integrated with the MercyHostEngine.
+ * Integrated with the TeacherMercyEngine.
  */
 
 import { useState } from 'react';
 import { X, Sparkles, Volume2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import type { MercyHostEngine } from '@/lib/mercy-host/types';
+import type { TeacherMercyEngine } from '@/lib/teacher-mercy/types';
 
-interface MercyHostGreetingProps {
-  mercy: MercyHostEngine;
+interface TeacherMercyGreetingProps {
+  mercy: TeacherMercyEngine;
   className?: string;
 }
 
-export function MercyHostGreeting({ mercy, className }: MercyHostGreetingProps) {
+export function TeacherMercyGreeting({ mercy, className }: TeacherMercyGreetingProps) {
   const [isExiting, setIsExiting] = useState(false);
   
   const handleDismiss = () => {
@@ -177,7 +177,7 @@ export function MercyColorModeToast({ message, onDismiss }: MercyColorModeToastP
 /**
  * Legacy props interface for backward compatibility
  */
-interface LegacyMercyHostGreetingProps {
+interface LegacyTeacherMercyGreetingProps {
   greeting: { text: string; textAlt: string; isVip: boolean };
   show: boolean;
   onDismiss: () => void;
@@ -185,13 +185,13 @@ interface LegacyMercyHostGreetingProps {
   className?: string;
 }
 
-export function LegacyMercyHostGreeting({
+export function LegacyTeacherMercyGreeting({
   greeting,
   show,
   onDismiss,
   onReopen,
   className
-}: LegacyMercyHostGreetingProps) {
+}: LegacyTeacherMercyGreetingProps) {
   const [isExiting, setIsExiting] = useState(false);
   
   const handleDismiss = () => {

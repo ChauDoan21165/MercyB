@@ -20,7 +20,7 @@ import {
   type TierId,
   type TalkBudget,
   type TalkUsage
-} from '../lib/mercy-host/talkBudget';
+} from '../lib/teacher-mercy/talkBudget';
 
 describe('Tier Budgets', () => {
   it('should have correct budget for level0 tier', () => {

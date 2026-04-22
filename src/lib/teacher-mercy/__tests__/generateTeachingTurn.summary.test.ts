@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from 'vitest';
-import { generateTeachingTurn, summarizeTeachingTurn } from '../mercyHost';
+import { generateTeachingTurn, summarizeTeachingTurn } from '../teacherMercy';
 
 function pickStableToneFields(result: ReturnType<typeof generateTeachingTurn>) {
   return {

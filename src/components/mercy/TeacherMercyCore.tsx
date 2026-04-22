@@ -11,20 +11,20 @@ import { useEffect, useCallback, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { MercyAvatar } from './MercyAvatar';
 import { MercyAnimation } from './MercyAnimations';
-import { useMercyHostContext } from './MercyHostProvider';
+import { useTeacherMercyContext } from './TeacherMercyProvider';
 import { X, Volume2, Sparkles, Star, GraduationCap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-interface MercyHostCoreProps {
+interface TeacherMercyCoreProps {
   className?: string;
   position?: 'top-right' | 'bottom-right' | 'bottom-left';
 }
 
-export function MercyHostCore({ 
+export function TeacherMercyCore({ 
   className,
   position = 'top-right'
-}: MercyHostCoreProps) {
-  const mercy = useMercyHostContext();
+}: TeacherMercyCoreProps) {
+  const mercy = useTeacherMercyContext();
   const [viewportSize, setViewportSize] = useState({ width: 0, height: 0 });
   
   // Track viewport for auto-dismiss on resize
@@ -372,7 +372,7 @@ function TeacherHintBubble({ text, language, onDismiss }: TeacherHintBubbleProps
 /**
  * Compact Mercy Host Button (for reopening)
  */
-export function MercyHostButton({ onClick }: { onClick: () => void }) {
+export function TeacherMercyButton({ onClick }: { onClick: () => void }) {
   return (
     <button
       onClick={onClick}

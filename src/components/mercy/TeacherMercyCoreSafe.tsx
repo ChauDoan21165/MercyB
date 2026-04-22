@@ -10,11 +10,11 @@ import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { MercyAvatar } from './MercyAvatar';
 import { MercyAnimation } from './MercyAnimations';
-import { useMercyHostContext } from './MercyHostProvider';
+import { useTeacherMercyContext } from './TeacherMercyProvider';
 import { X, Volume2, VolumeX, Sword, Moon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-interface MercyHostCoreProps {
+interface TeacherMercyCoreProps {
   className?: string;
   position?: 'top-right' | 'bottom-right' | 'bottom-left';
 }
@@ -23,7 +23,7 @@ interface MercyHostCoreProps {
  * SSR-Safe placeholder skeleton
  * Kept for optional future use, but no longer used to block first paint.
  */
-function MercyHostSkeleton({ position = 'top-right' }: { position?: string }) {
+function TeacherMercySkeleton({ position = 'top-right' }: { position?: string }) {
   const positionClasses: Record<string, string> = {
     'top-right': 'top-20 right-4',
     'bottom-right': 'bottom-24 right-4',
@@ -42,11 +42,11 @@ function MercyHostSkeleton({ position = 'top-right' }: { position?: string }) {
   );
 }
 
-export function MercyHostCore({
+export function TeacherMercyCore({
   className,
   position = 'top-right',
-}: MercyHostCoreProps) {
-  const mercy = useMercyHostContext();
+}: TeacherMercyCoreProps) {
+  const mercy = useTeacherMercyContext();
   const [lastViewportSize, setLastViewportSize] = useState({ width: 0, height: 0 });
   const [hasShownLimitMessage, setHasShownLimitMessage] = useState(false);
 
@@ -339,7 +339,7 @@ function VoiceLineBubble({ text, language, onDismiss }: VoiceLineBubbleProps) {
 /**
  * Compact Mercy Host Button (for reopening)
  */
-export function MercyHostButton({ onClick }: { onClick: () => void }) {
+export function TeacherMercyButton({ onClick }: { onClick: () => void }) {
   if (typeof document === 'undefined') return null;
 
   return (
