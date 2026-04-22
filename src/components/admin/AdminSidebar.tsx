@@ -25,26 +25,13 @@
 
 import type { LucideIcon } from "lucide-react";
 import {
-  LayoutDashboard,
   Users,
-  TrendingUp,
-  MessageSquare,
   DollarSign,
-  Music,
-  Shield,
-  FileText,
   Home,
-  Code,
-  Activity,
-  Palette,
-  Gift,
-  Stethoscope,
-  BarChart3,
-  Settings,
-  AlertTriangle,
-  Volume2,
-  Mail,
+  Inbox,
   CreditCard,
+  Gift,
+  Volume2,
   Search,
 } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
@@ -73,58 +60,22 @@ type AdminNavItem = {
   end?: boolean;
 };
 
-// Main navigation items
+// Main navigation — every entry points to a route that actually exists.
 const mainItems: AdminNavItem[] = [
-  { title: "AI Usage & Costs", url: "/admin/ai-usage", icon: Activity, end: false },
   { title: "Dashboard", url: "/admin", icon: Home, end: true },
+  { title: "Users", url: "/admin/users", icon: Users },
+  { title: "Inbox", url: "/admin/monitoring", icon: Inbox },
+];
+
+const billingItems: AdminNavItem[] = [
   { title: "Payments", url: "/admin/payments", icon: DollarSign },
   { title: "Subscriptions", url: "/admin/subscriptions", icon: CreditCard },
-  { title: "Room Health", url: "/admin/room-health-dashboard", icon: Activity },
-  { title: "Users", url: "/admin/users", icon: Users },
+  { title: "Access Codes", url: "/admin/access-codes", icon: Gift },
 ];
 
-// Room management tools
-const roomItems: AdminNavItem[] = [
-  { title: "Audio Management", url: "/admin/audio-upload", icon: Music },
-  { title: "Audio Scanner", url: "/admin/audio-scanner", icon: Volume2 },
-  { title: "Audit v4 Safe Shield", url: "/admin/audit-v4", icon: Shield },
-  { title: "Missing Audio", url: "/admin/missing-audio", icon: AlertTriangle },
-  { title: "Music Controller", url: "/admin/homepage-music", icon: Music },
-  { title: "Room Health Check", url: "/admin/room-health", icon: Stethoscope },
+const toolsItems: AdminNavItem[] = [
+  { title: "Audio Coverage", url: "/admin/audio-coverage", icon: Volume2 },
   { title: "Room Load Diagnostics", url: "/admin/room-load-diagnostics", icon: Search },
-  { title: "Room Management", url: "/admin/rooms", icon: LayoutDashboard },
-];
-
-// Monitoring & analytics
-const monitoringItems: AdminNavItem[] = [
-  { title: "App Metrics", url: "/admin/app-metrics", icon: BarChart3 },
-  { title: "Email Broadcast", url: "/admin/email-broadcast", icon: Mail },
-  { title: "Reports", url: "/admin/reports", icon: FileText },
-  { title: "Statistics", url: "/admin/stats", icon: TrendingUp },
-  { title: "System Health", url: "/admin/system-health", icon: Activity },
-  { title: "System Metrics", url: "/admin/system-metrics", icon: Activity },
-];
-
-// User management
-const userManagementItems: AdminNavItem[] = [
-  { title: "Gift Codes", url: "/admin/gift-codes", icon: Gift },
-  { title: "Manage Admins", url: "/admin/manage-admins", icon: Shield },
-  { title: "Moderation", url: "/admin/moderation", icon: Shield },
-  { title: "VIP Requests", url: "/vip-requests", icon: MessageSquare },
-];
-
-// Developer tools
-const devToolsItems: AdminNavItem[] = [
-  { title: "Code Editor", url: "/admin/code-editor", icon: Code },
-  { title: "Design Audit", url: "/admin/design-audit", icon: Palette },
-  { title: "System Codes", url: "/admin/system-codes", icon: FileText },
-];
-
-// System tools
-const systemItems: AdminNavItem[] = [
-  { title: "Logs", url: "/admin/logs", icon: AlertTriangle },
-  { title: "Security", url: "/admin/security", icon: Shield },
-  { title: "Settings", url: "/admin/settings", icon: Settings },
 ];
 
 export function AdminSidebar() {
@@ -176,46 +127,19 @@ export function AdminSidebar() {
         <SidebarGroup>
           {open && (
             <SidebarGroupLabel style={{ color: "#666666", fontWeight: "bold" }}>
-              Rooms
+              Billing
             </SidebarGroupLabel>
           )}
-          <SidebarGroupContent>{renderMenuItems(roomItems)}</SidebarGroupContent>
+          <SidebarGroupContent>{renderMenuItems(billingItems)}</SidebarGroupContent>
         </SidebarGroup>
 
         <SidebarGroup>
           {open && (
             <SidebarGroupLabel style={{ color: "#666666", fontWeight: "bold" }}>
-              Monitoring
+              Tools
             </SidebarGroupLabel>
           )}
-          <SidebarGroupContent>{renderMenuItems(monitoringItems)}</SidebarGroupContent>
-        </SidebarGroup>
-
-        <SidebarGroup>
-          {open && (
-            <SidebarGroupLabel style={{ color: "#666666", fontWeight: "bold" }}>
-              Users
-            </SidebarGroupLabel>
-          )}
-          <SidebarGroupContent>{renderMenuItems(userManagementItems)}</SidebarGroupContent>
-        </SidebarGroup>
-
-        <SidebarGroup>
-          {open && (
-            <SidebarGroupLabel style={{ color: "#666666", fontWeight: "bold" }}>
-              Dev Tools
-            </SidebarGroupLabel>
-          )}
-          <SidebarGroupContent>{renderMenuItems(devToolsItems)}</SidebarGroupContent>
-        </SidebarGroup>
-
-        <SidebarGroup>
-          {open && (
-            <SidebarGroupLabel style={{ color: "#666666", fontWeight: "bold" }}>
-              System
-            </SidebarGroupLabel>
-          )}
-          <SidebarGroupContent>{renderMenuItems(systemItems)}</SidebarGroupContent>
+          <SidebarGroupContent>{renderMenuItems(toolsItems)}</SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>
