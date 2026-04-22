@@ -144,7 +144,7 @@ they're not runtime code.
 - **Blast radius if unfixed:** Transactional emails can go out saying "VIP"
   when tier lookup fails — user-facing copy regression.
 
-### 10. Auto-generated `app_role` enum still includes `'vip'`
+### 10. Auto-generated `app_role` enum still includes `'vip'` — **WON'T FIX (accepted debt)**
 
 - **Files:**
   - `src/integrations/supabase/types.ts:10042, 10206`
@@ -152,12 +152,20 @@ they're not runtime code.
 - **What's wrong:** `app_role: "admin" | "user" | "vip"` — mirrors a DB enum
   that still has `'vip'`. Types are auto-generated, so the source of truth is
   the DB.
-- **Proposed fix:** Drop or rename the `'vip'` value in the `app_role` enum
-  via a Supabase migration (coordinate with any rows that still reference it),
-  then regenerate types.
-- **Blast radius if unfixed:** Any code assigning `app_role = 'vip'` compiles
-  cleanly but has stale semantics. Low risk today (no writers spotted), but a
-  footgun if a new writer is added without a review.
+- **Status (2026-04-21):** Prod DB confirmed has the `'vip'` enum value but
+  **zero `user_roles` rows reference it**. No application code assigns or
+  compares against `'vip'`.
+- **Why we're not fixing:** Postgres does not support dropping an enum value.
+  Removing `'vip'` requires rebuilding the entire `app_role` type, which
+  cascades through the `user_roles.role` column, the `has_role()` function,
+  and every RLS policy that casts `'admin'::app_role` (dozens of policies
+  across many tables). The blast radius of a failed rebuild is app-wide auth
+  breakage. The benefit is cosmetic — one stale literal in two auto-generated
+  type files. Not worth the risk.
+- **Guard:** Any future writer of `app_role = 'vip'` would still compile. This
+  TODO entry is the guard. If the footgun is ever tripped, the clean fix is
+  to rebuild the enum with a proper backup + staging rehearsal, not to
+  opportunistically "just drop it".
 
 ---
 
