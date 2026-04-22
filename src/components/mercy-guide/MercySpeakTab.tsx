@@ -110,25 +110,6 @@ type KidsLessonCard = {
   dialogue?: string[];
 };
 
-type KidsBuddy = {
-  key: string;
-  emoji: string;
-  label: string;
-  idleLine: string;
-  goodLine: string;
-  greatLine: string;
-  retryLine: string;
-};
-
-type KidsBuddyMood =
-  | 'idle'
-  | 'listen'
-  | 'hear'
-  | 'again'
-  | 'good'
-  | 'great'
-  | 'wow';
-
 const KIDS_OBJECT_KEYS = [
   'airplane','apple','bag','ball','banana','bathtub','bed','bicycle','bird','blanket',
   'boat','book','bottle','bus','cat','chair','clock','cloud','cup','dog',
@@ -156,21 +137,6 @@ const KIDS_EXTRA_ALIASES: Record<string, string[]> = {
   'juice-box': ['juice box'],
   'bear-face': ['bear face', 'bear'],
 };
-
-const KIDS_BUDDIES: KidsBuddy[] = [
-  { key: 'dog',      emoji: '🐶', label: 'Dog',      idleLine: 'Let\'s say it together.', goodLine: 'Good job!',           greatLine: 'Amazing!',              retryLine: 'Let\'s try again.'    },
-  { key: 'cat',      emoji: '🐱', label: 'Cat',      idleLine: 'Ready when you are.',    goodLine: 'Nice voice!',          greatLine: 'So clear!',             retryLine: 'Slow and steady.'     },
-  { key: 'rabbit',   emoji: '🐰', label: 'Rabbit',   idleLine: 'Hop in and say it.',     goodLine: 'Great try!',           greatLine: 'You did it!',           retryLine: 'One more hop.'        },
-  { key: 'bear',     emoji: '🐻', label: 'Bear',     idleLine: 'Big calm voice.',        goodLine: 'That was good.',       greatLine: 'Strong and clear!',     retryLine: 'Try with me.'         },
-  { key: 'panda',    emoji: '🐼', label: 'Panda',    idleLine: 'Listen, then say it.',   goodLine: 'Very close!',          greatLine: 'Beautiful!',            retryLine: 'Let\'s do it softly.' },
-  { key: 'fox',      emoji: '🦊', label: 'Fox',      idleLine: 'Quick ears on.',         goodLine: 'Nice work!',           greatLine: 'Smart speaking!',       retryLine: 'Listen first.'        },
-  { key: 'lion',     emoji: '🦁', label: 'Lion',     idleLine: 'Use your brave voice.',  goodLine: 'Brave try!',           greatLine: 'Roar, that was great!', retryLine: 'Try a big clear voice.' },
-  { key: 'elephant', emoji: '🐘', label: 'Elephant', idleLine: 'Slow and clear.',        goodLine: 'That was steady.',     greatLine: 'Wonderful job!',        retryLine: 'Slowly again.'        },
-  { key: 'monkey',   emoji: '🐵', label: 'Monkey',   idleLine: 'Let\'s have fun.',       goodLine: 'You\'re close!',       greatLine: 'Yay, perfect!',         retryLine: 'Again with Mercy.'    },
-  { key: 'owl',      emoji: '🦉', label: 'Owl',      idleLine: 'Eyes and ears ready.',   goodLine: 'Nice and clear!',      greatLine: 'Wise job!',             retryLine: 'Let\'s listen again.' },
-  { key: 'koala',    emoji: '🐨', label: 'Koala',    idleLine: 'Soft and calm voice.',   goodLine: 'That sounds good!',    greatLine: 'So sweet and clear!',   retryLine: 'Try softly again.'    },
-  { key: 'tiger',    emoji: '🐯', label: 'Tiger',    idleLine: 'Use your strong voice.', goodLine: 'Strong try!',          greatLine: 'That was tiger-great!', retryLine: 'Try one more big voice.' },
-];
 
 function toKidsLabel(key: string): string {
   return key.split('-').map((part) => part.charAt(0).toUpperCase() + part.slice(1)).join(' ');
@@ -297,48 +263,13 @@ const KIDS_OBJECTS: KidsObjectCard[] = KIDS_OBJECT_KEYS.map((key) => ({
   aliases: toKidsAliases(key),
 }));
 
-function getKidsBuddyByKey(key?: string | null): KidsBuddy {
-  return KIDS_BUDDIES.find((item) => item.key === key) ?? KIDS_BUDDIES[0];
-}
-
-function getKidsBuddyDecorations(key: string): string[] {
-  switch (key) {
-    case 'dog':      return ['🦴', '⭐', '💛'];
-    case 'cat':      return ['🐾', '✨', '🌙'];
-    case 'rabbit':   return ['🥕', '⭐', '💗'];
-    case 'bear':     return ['🍯', '⭐', '🤍'];
-    case 'panda':    return ['🍃', '✨', '💚'];
-    case 'fox':      return ['🍂', '✨', '🧡'];
-    case 'lion':     return ['👑', '⭐', '☀️'];
-    case 'elephant': return ['🌼', '⭐', '💙'];
-    case 'monkey':   return ['🍌', '⭐', '🎉'];
-    case 'owl':      return ['🌙', '⭐', '📘'];
-    case 'koala':    return ['🍃', '⭐', '🤍'];
-    case 'tiger':    return ['⚡', '⭐', '🧡'];
-    default:         return ['✨', '⭐', '💛'];
-  }
-}
-
-function getKidsBuddyReactionWord(mood: KidsBuddyMood): string {
-  switch (mood) {
-    case 'listen': return 'Listen';
-    case 'hear':   return 'Hear';
-    case 'again':  return 'Again';
-    case 'good':   return 'Good';
-    case 'great':  return 'Great';
-    case 'wow':    return 'Wow';
-    default:       return '';
-  }
-}
-
-function playKidsUiSound(level: 'select' | 'good' | 'great' | 'wow') {
+function playKidsUiSound(level: 'good' | 'great' | 'wow') {
   if (typeof window === 'undefined') return;
   const AudioContextCtor = window.AudioContext || (window as Window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
   if (!AudioContextCtor) return;
   const ctx = new AudioContextCtor();
   void ctx.resume?.();
   const config =
-    level === 'select' ? { notes: [659.25, 783.99], duration: 0.1, gap: 0.07, gain: 0.03, type: 'triangle' as OscillatorType } :
     level === 'good'   ? { notes: [587.33, 659.25, 783.99], duration: 0.12, gap: 0.08, gain: 0.04, type: 'sine' as OscillatorType } :
     level === 'great'  ? { notes: [659.25, 783.99, 987.77, 1318.51], duration: 0.14, gap: 0.08, gain: 0.045, type: 'triangle' as OscillatorType } :
                          { notes: [523.25, 783.99, 1046.5, 1318.51, 1567.98], duration: 0.15, gap: 0.07, gain: 0.05, type: 'triangle' as OscillatorType };
@@ -665,7 +596,6 @@ export function MercySpeakTab({
   const [isRecording, setIsRecording] = useState(false);
   const [recordedAudioUrl, setRecordedAudioUrl] = useState('');
   const [isSpeaking, setIsSpeaking]   = useState(false);
-  const [selectedBuddyKey, setSelectedBuddyKey] = useState<string>(KIDS_BUDDIES[0].key);
 
   const recognitionRef    = useRef<SpeechRecognitionLike | null>(null);
   const mediaRecorderRef  = useRef<MediaRecorder | null>(null);
@@ -673,7 +603,6 @@ export function MercySpeakTab({
   const activeStreamRef   = useRef<MediaStream | null>(null);
   const recordedAudioRef  = useRef<HTMLAudioElement | null>(null);
   const lastKidsCelebrationRef    = useRef('');
-  const hasPlayedBuddySelectRef   = useRef(false);
   const kidsAudioRef = useRef<HTMLAudioElement | null>(null);
 
   const speechWindow = typeof window !== 'undefined' ? (window as BrowserWindowWithSpeechRecognition) : undefined;
@@ -728,42 +657,11 @@ export function MercySpeakTab({
     return normalizeForCompare(practiceText).split(/\s+/).filter(Boolean).filter((word, index, array) => array.indexOf(word) === index).slice(0, 4);
   }, [displayedTroubleWords, isKidsMode, practiceText]);
 
-  const selectedBuddy      = useMemo(() => getKidsBuddyByKey(selectedBuddyKey), [selectedBuddyKey]);
-  const buddyDecorations   = useMemo(() => getKidsBuddyDecorations(selectedBuddy.key), [selectedBuddy.key]);
-
-  const kidsBuddyReaction = useMemo(() => {
-    if (!isKidsMode) return null;
-    let mood: KidsBuddyMood = 'idle';
-    if (isListening)          mood = 'listen';
-    else if (isSpeaking)      mood = 'hear';
-    else if (!transcript)     mood = 'idle';
-    else if (matchScore >= 94) mood = 'wow';
-    else if (matchScore >= 82) mood = 'great';
-    else if (matchScore >= 62) mood = 'good';
-    else                       mood = 'again';
-
-    switch (mood) {
-      case 'listen': return { mood, word: getKidsBuddyReactionWord(mood), line: 'Big clear voice',     ringClass: 'border-sky-200 bg-sky-50/95',     wordClass: 'text-sky-700',     haloClass: '[animation:mercyBuddyGlow_1.2s_ease-in-out_infinite]',  emojiClass: '[animation:mercyBuddyListen_1.1s_ease-in-out_infinite]', sparkleClass: '[animation:mercyBuddyFloat_2.1s_ease-in-out_infinite]' };
-      case 'hear':   return { mood, word: getKidsBuddyReactionWord(mood), line: 'Listen first',        ringClass: 'border-teal-200 bg-teal-50/95',   wordClass: 'text-teal-700',    haloClass: '[animation:mercyBuddyGlow_1.1s_ease-in-out_infinite]',  emojiClass: '[animation:mercyBuddyListen_1.1s_ease-in-out_infinite]', sparkleClass: '[animation:mercyBuddyFloat_2s_ease-in-out_infinite]'   };
-      case 'wow':    return { mood, word: getKidsBuddyReactionWord(mood), line: selectedBuddy.greatLine, ringClass: 'border-emerald-200 bg-emerald-50/95', wordClass: 'text-emerald-700', haloClass: '[animation:mercyBuddyGlow_0.9s_ease-in-out_infinite]',  emojiClass: '[animation:mercyBuddyParty_0.85s_ease-in-out_infinite]', sparkleClass: '[animation:mercyBuddySpark_1s_ease-in-out_infinite]'   };
-      case 'great':  return { mood, word: getKidsBuddyReactionWord(mood), line: selectedBuddy.greatLine, ringClass: 'border-emerald-200 bg-emerald-50/92', wordClass: 'text-emerald-700', haloClass: '[animation:mercyBuddyGlow_1s_ease-in-out_infinite]',    emojiClass: '[animation:mercyBuddyHop_0.95s_ease-in-out_infinite]',   sparkleClass: '[animation:mercyBuddyFloat_1.5s_ease-in-out_infinite]' };
-      case 'good':   return { mood, word: getKidsBuddyReactionWord(mood), line: selectedBuddy.goodLine,  ringClass: 'border-amber-200 bg-amber-50/92',   wordClass: 'text-amber-700',   haloClass: '[animation:mercyBuddyGlow_1.4s_ease-in-out_infinite]',  emojiClass: '[animation:mercyBuddyBounce_1.25s_ease-in-out_infinite]',sparkleClass: '[animation:mercyBuddyFloat_1.8s_ease-in-out_infinite]' };
-      case 'again':  return { mood, word: getKidsBuddyReactionWord(mood), line: selectedBuddy.retryLine, ringClass: 'border-rose-200 bg-rose-50/90',     wordClass: 'text-rose-700',    haloClass: '[animation:mercyBuddyGlow_1.8s_ease-in-out_infinite]',  emojiClass: '[animation:mercyBuddyBob_2.4s_ease-in-out_infinite]',    sparkleClass: '[animation:mercyBuddyFloat_2.5s_ease-in-out_infinite]' };
-      default:       return { mood, word: '',                              line: selectedBuddy.idleLine,  ringClass: 'border-slate-200 bg-white/92',      wordClass: 'text-slate-700',   haloClass: '[animation:mercyBuddyGlow_2.4s_ease-in-out_infinite]',  emojiClass: '[animation:mercyBuddyBob_2.8s_ease-in-out_infinite]',    sparkleClass: '[animation:mercyBuddyFloat_2.8s_ease-in-out_infinite]' };
-    }
-  }, [isKidsMode, isListening, isSpeaking, matchScore, selectedBuddy, transcript]);
-
   useEffect(() => {
     if (!transcript || !practiceText || !onMemoryUpdate) return;
     onMemoryUpdate({ pronunciation: { troubleWords: generatedTroubleWords, lastPracticeLine: practiceText, confidenceLevel: getConfidenceLevel(matchScore) } });
     if (transcript) awardSpeakPoints(matchScore, roomId);
   }, [generatedTroubleWords, matchScore, onMemoryUpdate, practiceText, transcript]);
-
-  useEffect(() => {
-    if (!isKidsMode) return;
-    if (!hasPlayedBuddySelectRef.current) { hasPlayedBuddySelectRef.current = true; return; }
-    playKidsUiSound('select');
-  }, [isKidsMode, selectedBuddyKey]);
 
   useEffect(() => {
     if (!isKidsMode) return;
@@ -1037,17 +935,6 @@ export function MercySpeakTab({
   if (isKidsMode) {
     return (
       <div className="flex h-full min-h-0 flex-col overflow-hidden bg-gradient-to-br from-[#FFF8F3] via-[#FFFDFC] to-[#F7FAFF]">
-        <style>{`
-          @keyframes mercyBuddyBob { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-8px) scale(1.03); } }
-          @keyframes mercyBuddyBounce { 0%, 100% { transform: translateY(0) scale(1); } 30% { transform: translateY(-14px) scale(1.07); } 60% { transform: translateY(0) scale(0.98); } }
-          @keyframes mercyBuddyHop { 0%, 100% { transform: translateY(0) scale(1); } 25% { transform: translateY(-18px) scale(1.1); } 50% { transform: translateY(0) scale(0.96); } 75% { transform: translateY(-8px) scale(1.05); } }
-          @keyframes mercyBuddyListen { 0%, 100% { transform: scale(1) rotate(0deg); } 25% { transform: scale(1.05) rotate(-4deg); } 75% { transform: scale(1.05) rotate(4deg); } }
-          @keyframes mercyBuddyParty { 0%, 100% { transform: translateY(0) rotate(0deg) scale(1); } 25% { transform: translateY(-14px) rotate(-8deg) scale(1.1); } 50% { transform: translateY(0) rotate(0deg) scale(0.98); } 75% { transform: translateY(-10px) rotate(8deg) scale(1.12); } }
-          @keyframes mercyBuddyGlow { 0%, 100% { opacity: 0.55; transform: scale(1); } 50% { opacity: 1; transform: scale(1.1); } }
-          @keyframes mercyBuddyFloat { 0%, 100% { transform: translateY(0) translateX(0); } 50% { transform: translateY(-10px) translateX(4px); } }
-          @keyframes mercyBuddySpark { 0% { opacity: 0; transform: translateY(0) scale(0.6); } 30% { opacity: 1; transform: translateY(-4px) scale(1); } 100% { opacity: 0; transform: translateY(-18px) scale(1.12); } }
-        `}</style>
-
         <div className="min-h-0 flex-1 overflow-y-auto overflow-x-hidden px-2 py-2 md:px-3 md:py-3">
           <div className="flex min-h-full flex-col gap-2 rounded-[28px] border border-white/80 bg-white/92 px-3 pb-3 pt-1.5 shadow-[0_10px_28px_rgba(148,163,184,0.06)] md:px-4 md:pb-4 md:pt-2">
             <div className="min-w-0">
@@ -1083,56 +970,12 @@ export function MercySpeakTab({
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-3">
-              <div className="flex min-h-[220px] items-center justify-center overflow-hidden rounded-[24px] border border-[#F4DDD1] bg-gradient-to-br from-[#FFF6F0] via-white to-[#F8FBFF] p-0 shadow-[0_8px_18px_rgba(255,138,101,0.06)] md:min-h-[250px]">
-                <img
-                  src={kidsLesson?.imageSrc ?? kidsObject?.imageSrc ?? KIDS_OBJECTS[0].imageSrc}
-                  alt={kidsLesson?.label ?? kidsObject?.label ?? KIDS_OBJECTS[0].label}
-                  className="h-full w-full scale-[1.08] object-contain"
-                />
-              </div>
-
-              <div className={`relative overflow-hidden rounded-[22px] border p-3 shadow-sm ${kidsBuddyReaction?.ringClass ?? 'border-slate-200 bg-white/92'}`}>
-                <div className={`absolute inset-3 rounded-full bg-white/65 blur-2xl ${kidsBuddyReaction?.haloClass ?? '[animation:mercyBuddyGlow_2.4s_ease-in-out_infinite]'}`} />
-                {buddyDecorations.map((symbol, index) => (
-                  <span key={`${symbol}-${index}`} className={`absolute z-10 text-lg md:text-xl ${kidsBuddyReaction?.sparkleClass ?? '[animation:mercyBuddyFloat_2.8s_ease-in-out_infinite]'}`}
-                    style={{ top: index === 0 ? '12%' : index === 1 ? '18%' : '70%', left: index === 0 ? '16%' : index === 1 ? '72%' : '18%', animationDelay: `${index * 0.22}s` }}>
-                    {symbol}
-                  </span>
-                ))}
-                <div className="relative z-20 flex h-full min-h-[190px] flex-col items-center justify-center gap-2 md:min-h-[220px] md:gap-3">
-                  <div className="flex h-28 w-28 items-center justify-center rounded-full bg-white/88 text-[72px] shadow-[0_14px_34px_rgba(148,163,184,0.16)] md:h-36 md:w-36 md:text-[92px]">
-                    <span className={kidsBuddyReaction?.emojiClass ?? '[animation:mercyBuddyBob_2.8s_ease-in-out_infinite]'}>{selectedBuddy.emoji}</span>
-                  </div>
-                  <div className={`min-h-[24px] text-lg font-semibold md:min-h-[28px] md:text-xl ${kidsBuddyReaction?.wordClass ?? 'text-slate-700'}`}>
-                    {kidsBuddyReaction?.word ?? ''}
-                  </div>
-                  <p className="max-w-[180px] text-center text-xs leading-5 text-slate-600 md:text-sm md:leading-6">
-                    {kidsBuddyReaction?.line ?? selectedBuddy.idleLine}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="rounded-[15px] border border-[#DCE7F7] bg-gradient-to-r from-[#F8FBFF] to-white p-1.5 shadow-sm">
-              <div className="max-w-full overflow-x-auto overflow-y-hidden">
-                <div className="flex w-max gap-1 pr-1">
-                  {KIDS_BUDDIES.map((buddy) => {
-                    const active = buddy.key === selectedBuddy.key;
-                    const motionClass = active && matchScore >= 94 ? '[animation:mercyBuddyParty_0.85s_ease-in-out_infinite]' :
-                      active && matchScore >= 82 ? '[animation:mercyBuddyHop_0.95s_ease-in-out_infinite]' :
-                      active && (isListening || isSpeaking) ? '[animation:mercyBuddyListen_1.1s_ease-in-out_infinite]' :
-                      active ? '[animation:mercyBuddyBob_2.4s_ease-in-out_infinite]' : '';
-                    return (
-                      <button key={buddy.key} type="button" onClick={() => setSelectedBuddyKey(buddy.key)}
-                        className={`flex min-w-[50px] flex-col items-center rounded-[14px] border px-1 py-1 text-center shadow-sm transition ${active ? 'border-[#BFD5F7] bg-white text-slate-900 ring-2 ring-[#DCE7F7]' : 'border-transparent bg-white/70 text-slate-600 hover:border-[#DCE7F7] hover:bg-white'}`}>
-                        <span className={`text-[22px] leading-none ${motionClass}`}>{buddy.emoji}</span>
-                        <span className="mt-0.5 text-[9px] font-semibold leading-3.5">{buddy.label}</span>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
+            <div className="flex min-h-[260px] w-full items-center justify-center overflow-hidden rounded-[24px] border border-[#F4DDD1] bg-gradient-to-br from-[#FFF6F0] via-white to-[#F8FBFF] p-0 shadow-[0_8px_18px_rgba(255,138,101,0.06)] md:min-h-[340px]">
+              <img
+                src={kidsLesson?.imageSrc ?? kidsObject?.imageSrc ?? KIDS_OBJECTS[0].imageSrc}
+                alt={kidsLesson?.label ?? kidsObject?.label ?? KIDS_OBJECTS[0].label}
+                className="h-full w-full scale-[1.04] object-contain"
+              />
             </div>
 
             {(recognitionError || recordingError || !supportsRecognition) ? (
