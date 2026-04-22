@@ -281,6 +281,17 @@ function scheduleOneTimeChunkReload(): boolean {
   } catch { /* never block boot */ }
 })();
 
+(function initIapOnNative() {
+  // Lazy-load so the web bundle does not include the RevenueCat module.
+  // initRevenueCat() is internally a no-op on non-iOS platforms, but the
+  // import itself only runs here. Never block boot.
+  try {
+    void import("@/lib/iap")
+      .then((mod) => { void mod.initRevenueCat(); })
+      .catch(() => { /* never block boot */ });
+  } catch { /* never block boot */ }
+})();
+
 (function clearChunkReloadMarkerAfterHealthyBoot() {
   window.setTimeout(() => { clearChunkRecoveryAttempt(); }, 8000);
 })();

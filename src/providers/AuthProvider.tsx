@@ -27,6 +27,32 @@ import React, {
 } from "react";
 import type { Session, User } from "@supabase/supabase-js";
 import { supabase } from "@/lib/supabaseClient";
+import { isNativePlatform } from "@/lib/platform";
+
+/**
+ * Keep RevenueCat's App User ID in sync with the current Supabase user.
+ * No-op on web; lazy-imports the plugin so the web bundle never loads
+ * it. Called from AuthProvider on sign-in success and sign-out. Both
+ * Purchases.logIn and Purchases.logOut are idempotent per RevenueCat's
+ * docs — safe to call on repeated onAuthStateChange events (e.g. token
+ * refresh) without extra cost. Errors are swallowed (dev-warn only) so
+ * an IAP-side hiccup can never block auth UX.
+ */
+async function syncRevenueCatOnAuth(userId: string | null): Promise<void> {
+  if (!isNativePlatform()) return;
+  try {
+    const { Purchases } = await import("@revenuecat/purchases-capacitor");
+    if (userId) {
+      await Purchases.logIn({ appUserID: userId });
+    } else {
+      await Purchases.logOut();
+    }
+  } catch (err) {
+    if (import.meta.env.DEV) {
+      console.warn("[auth] RevenueCat identity sync failed:", err);
+    }
+  }
+}
 
 type AuthContextValue = {
   session: Session | null;
@@ -122,6 +148,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       safeSetSession(null);
     } finally {
       safeSetLoading(false);
+      // Always sync RevenueCat to logged-out state. Matches the existing
+      // safeSetSession(null) pattern that clears UI in both try + catch.
+      // Fire-and-forget; no-op on web.
+      void syncRevenueCatOnAuth(null);
     }
   }, [safeSetLoading, safeSetSession]);
 
@@ -139,6 +169,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           (_event, nextSession) => {
             applySession(nextSession ?? null);
             safeSetLoading(false);
+            // Sync RevenueCat App User ID with the fresh Supabase session.
+            // Uses verified-session filter so unverified emails do not get
+            // identified to RevenueCat. Fire-and-forget; no-op on web.
+            void syncRevenueCatOnAuth(
+              getVerifiedSession(nextSession ?? null)?.user?.id ?? null,
+            );
           },
         );
 
