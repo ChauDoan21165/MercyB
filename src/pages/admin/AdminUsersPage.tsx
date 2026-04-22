@@ -16,17 +16,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
-import {
-  ResponsiveContainer,
-  BarChart,
-  Bar,
-  CartesianGrid,
-  XAxis,
-  YAxis,
-  Tooltip,
-  LineChart,
-  Line,
-} from "recharts";
 
 type DashboardRow = {
   subscription_id: string;
@@ -64,11 +53,6 @@ type KpiRow = {
   unknown_email_count: number;
   estimated_mrr: number;
   estimated_arr: number;
-};
-
-type ChartPoint = {
-  name: string;
-  value: number;
 };
 
 const PAGE_MAX = 1240;
@@ -212,20 +196,6 @@ function formatMoneyFromMinorUnits(
   const totalMinor = safeNumber(amountMinor, 0) * safeNumber(quantity, 1);
   const majorAmount = ZERO_DECIMAL_CURRENCIES.has(code) ? totalMinor : totalMinor / 100;
   return formatMoney(majorAmount, code);
-}
-
-function monthKey(value: string | null): string {
-  if (!value) return "Unknown";
-  const d = new Date(value);
-  if (Number.isNaN(d.getTime())) return "Unknown";
-  return d.toLocaleString("en-GB", {
-    year: "numeric",
-    month: "short",
-  });
-}
-
-function sumBy<T extends { value: number }>(items: T[]): number {
-  return items.reduce((acc, item) => acc + item.value, 0);
 }
 
 function csvEscape(value: unknown): string {
@@ -858,47 +828,6 @@ export default function AdminUsersPage() {
     [filteredRows],
   );
 
-  const statusChartData: ChartPoint[] = useMemo(() => {
-    const map = new Map<string, number>();
-    filteredRows.forEach((row) => {
-      map.set(row.status, (map.get(row.status) ?? 0) + 1);
-    });
-
-    return Array.from(map.entries())
-      .map(([name, value]) => ({ name: titleCase(name), value }))
-      .sort((a, b) => b.value - a.value);
-  }, [filteredRows]);
-
-  const planChartData: ChartPoint[] = useMemo(() => {
-    const map = new Map<string, number>();
-    filteredRows.forEach((row) => {
-      map.set(row.plan_interval, (map.get(row.plan_interval) ?? 0) + 1);
-    });
-
-    return Array.from(map.entries())
-      .map(([name, value]) => ({ name: titleCase(name), value }))
-      .sort((a, b) => b.value - a.value);
-  }, [filteredRows]);
-
-  const growthChartData: ChartPoint[] = useMemo(() => {
-    const map = new Map<string, number>();
-
-    rows
-      .filter((row) => row.environment === "production" && row.status === "active")
-      .forEach((row) => {
-        const key = monthKey(row.created_at);
-        map.set(key, (map.get(key) ?? 0) + 1);
-      });
-
-    return Array.from(map.entries())
-      .map(([name, value]) => ({ name, value }))
-      .sort((a, b) => {
-        const da = new Date(`${a.name} 01`).getTime();
-        const db = new Date(`${b.name} 01`).getTime();
-        return da - db;
-      });
-  }, [rows]);
-
   const exportCsv = () => {
     if (typeof document === "undefined" || typeof URL === "undefined") return;
 
@@ -1105,22 +1034,6 @@ export default function AdminUsersPage() {
     fontSize: 13,
     cursor: "pointer",
   });
-
-  const chartGrid: React.CSSProperties = {
-    marginTop: 18,
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))",
-    gap: 14,
-  };
-
-  const chartCard: React.CSSProperties = {
-    borderRadius: 20,
-    border: "1px solid rgba(0,0,0,0.08)",
-    background: "rgba(255,255,255,0.94)",
-    padding: "16px 16px 12px",
-    boxShadow: "0 10px 24px rgba(0,0,0,0.04)",
-    minHeight: 340,
-  };
 
   const chartTitle: React.CSSProperties = {
     margin: 0,
@@ -1534,65 +1447,6 @@ export default function AdminUsersPage() {
             >
               Reset
             </button>
-          </div>
-        </div>
-
-        <div style={chartGrid}>
-          <div style={chartCard}>
-            <h2 style={chartTitle}>Status breakdown</h2>
-            <p style={chartHelp}>Current filtered set by subscription status.</p>
-            <div style={{ width: "100%", height: 250, marginTop: 10 }}>
-              <ResponsiveContainer>
-                <BarChart data={statusChartData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.08)" />
-                  <XAxis dataKey="name" tick={{ fontSize: 12 }} />
-                  <YAxis allowDecimals={false} tick={{ fontSize: 12 }} />
-                  <Tooltip />
-                  <Bar dataKey="value" radius={[8, 8, 0, 0]} />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
-            <div style={{ marginTop: 8, fontSize: 13, color: "rgba(0,0,0,0.60)" }}>
-              Total shown: {sumBy(statusChartData)}
-            </div>
-          </div>
-
-          <div style={chartCard}>
-            <h2 style={chartTitle}>Plan interval breakdown</h2>
-            <p style={chartHelp}>Monthly, yearly, and any unknown interval values in the filtered set.</p>
-            <div style={{ width: "100%", height: 250, marginTop: 10 }}>
-              <ResponsiveContainer>
-                <BarChart data={planChartData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.08)" />
-                  <XAxis dataKey="name" tick={{ fontSize: 12 }} />
-                  <YAxis allowDecimals={false} tick={{ fontSize: 12 }} />
-                  <Tooltip />
-                  <Bar dataKey="value" radius={[8, 8, 0, 0]} />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
-            <div style={{ marginTop: 8, fontSize: 13, color: "rgba(0,0,0,0.60)" }}>
-              Total shown: {sumBy(planChartData)}
-            </div>
-          </div>
-
-          <div style={chartCard}>
-            <h2 style={chartTitle}>New active subscriptions over time</h2>
-            <p style={chartHelp}>Simple growth view based on production active subscription created dates.</p>
-            <div style={{ width: "100%", height: 250, marginTop: 10 }}>
-              <ResponsiveContainer>
-                <LineChart data={growthChartData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.08)" />
-                  <XAxis dataKey="name" tick={{ fontSize: 12 }} />
-                  <YAxis allowDecimals={false} tick={{ fontSize: 12 }} />
-                  <Tooltip />
-                  <Line type="monotone" dataKey="value" strokeWidth={2} dot />
-                </LineChart>
-              </ResponsiveContainer>
-            </div>
-            <div style={{ marginTop: 8, fontSize: 13, color: "rgba(0,0,0,0.60)" }}>
-              Active production rows charted: {kpis.production_active_count}
-            </div>
           </div>
         </div>
 
