@@ -103,12 +103,12 @@
   --mb-bg: linear-gradient(180deg, #ffffff, #f4f4f4);
 }
 
-html, body {
-  margin: 0;
+html {
   overflow-x: hidden;
 }
 
 body {
+  margin: 0;
   background: var(--mb-bg);
 }
 
