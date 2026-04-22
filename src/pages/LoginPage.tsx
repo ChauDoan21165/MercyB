@@ -16,6 +16,7 @@ import {
   toSafeAppPath,
 } from "@/lib/authRedirect";
 import { UI } from "@/components/auth/authUI";
+import { AppleSignInButton } from "@/components/auth/AppleSignInButton";
 import EmailBlock from "@/components/auth/EmailBlock";
 import PhoneOtp from "@/components/auth/PhoneOtp";
 import {
@@ -358,6 +359,40 @@ export default function LoginPage() {
     }
   }, [busy, IS_DEV, redirectToOAuthReturn]);
 
+  // Sign in with Apple — required by App Store guideline 4.8 when Google
+  // and Facebook login are offered. Uses the shared nativeOAuth helper on
+  // iOS so the OAuth redirect stays in-app (SFSafariViewController).
+  const signInApple = useCallback(async () => {
+    if (busy || submitRef.current) return;
+    submitRef.current = true;
+    setBusy(true);
+
+    try {
+      if (IS_DEV) console.group("[MB Auth] signInApple");
+      if (isNativeAuthPlatform()) {
+        await signInWithNativeOAuth({ provider: "apple" });
+      } else {
+        const { data, error } = await supabase.auth.signInWithOAuth({
+          provider: "apple",
+          options: { redirectTo: redirectToOAuthReturn },
+        });
+        if (error) throw error;
+        if (data?.url) window.location.assign(data.url);
+      }
+    } catch (e) {
+      setNotice({
+        tone: "error",
+        message: humanizeAuthError(e, "password_signin"),
+      });
+    } finally {
+      setBusy(false);
+      setTimeout(() => {
+        submitRef.current = false;
+      }, 1200);
+      if (IS_DEV) console.groupEnd();
+    }
+  }, [busy, IS_DEV, redirectToOAuthReturn]);
+
   const pageStyle: React.CSSProperties = isNarrow
     ? { ...UI.page, gridTemplateColumns: "1fr" }
     : UI.page;
@@ -477,7 +512,13 @@ export default function LoginPage() {
             )}
           </div>
 
-          <div style={{ marginTop: 16, display: "flex", gap: 10, flexWrap: "wrap" }}>
+          <div style={{ marginTop: 16, display: "flex", flexDirection: "column", gap: 10 }}>
+            <AppleSignInButton
+              onClick={() => void signInApple()}
+              disabled={busy}
+              busy={busy}
+            />
+
             <button
               type="button"
               onClick={() => void signInGoogle()}
