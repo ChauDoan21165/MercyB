@@ -204,7 +204,7 @@ Deno.serve(async (req) => {
       if (activeSubs && activeSubs.length > 0) {
         // For each subscription, check if welcome email was already sent
         for (const sub of activeSubs) {
-          const tierName = tierMap.get(sub.tier_id) || "VIP";
+          const tierName = tierMap.get(sub.tier_id) || "Premium";
 
           // Check if welcome email already sent for this user+tier
           const { data: existingEvent } = await adminClient
@@ -328,7 +328,7 @@ Deno.serve(async (req) => {
           continue;
         }
 
-        const tierName = allTierMap.get(sub.tier_id) || "VIP";
+        const tierName = allTierMap.get(sub.tier_id) || "Premium";
         const expiryDate = new Date(sub.current_period_end).toLocaleDateString("en-US", {
           year: "numeric",
           month: "long",

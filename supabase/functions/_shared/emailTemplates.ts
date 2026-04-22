@@ -146,7 +146,7 @@ const templates: Record<string, TemplateFn> = {
 
   welcome_vip: ({ appKey, variables }) => {
     const appName = resolveAppDisplayName(appKey);
-    const tier = escapeHtml(pick(variables, "tier", "VIP"));
+    const tier = escapeHtml(pick(variables, "tier", "Premium"));
     const subject = `${appName} – Welcome ${tier}`;
 
     const inner = `
