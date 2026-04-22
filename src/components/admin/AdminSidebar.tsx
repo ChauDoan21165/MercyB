@@ -64,7 +64,7 @@ type AdminNavItem = {
 const mainItems: AdminNavItem[] = [
   { title: "Dashboard", url: "/admin", icon: Home, end: true },
   { title: "Users", url: "/admin/users", icon: Users },
-  { title: "Inbox", url: "/admin/monitoring", icon: Inbox },
+  { title: "Feedback", url: "/admin/feedback", icon: Inbox },
 ];
 
 const billingItems: AdminNavItem[] = [
