@@ -18,6 +18,11 @@ import {
 import { UI } from "@/components/auth/authUI";
 import EmailBlock from "@/components/auth/EmailBlock";
 import PhoneOtp from "@/components/auth/PhoneOtp";
+import {
+  isNativeAuthPlatform,
+  registerDeepLinkListener,
+  signInWithNativeOAuth,
+} from "@/lib/nativeOAuth";
 
 type TopMode = "email" | "phone";
 type NoticeTone = "success" | "info" | "error";
@@ -204,6 +209,34 @@ export default function LoginPage() {
     };
   }, []);
 
+  useEffect(() => {
+    if (!isNativeAuthPlatform()) return;
+    let unsubscribe: (() => Promise<void>) | null = null;
+    let alive = true;
+
+    void (async () => {
+      try {
+        const off = await registerDeepLinkListener((session) => {
+          if (!alive || !session) return;
+          setHasSession(true);
+          setSessionBooted(true);
+        });
+        if (!alive) {
+          void off();
+          return;
+        }
+        unsubscribe = off;
+      } catch (err) {
+        console.error("[LoginPage] registerDeepLinkListener failed:", err);
+      }
+    })();
+
+    return () => {
+      alive = false;
+      if (unsubscribe) void unsubscribe();
+    };
+  }, []);
+
   const routeAfterAuth = useCallback(async () => {
     if (isSubmitting.current) return;
     isSubmitting.current = true;
@@ -270,12 +303,16 @@ export default function LoginPage() {
 
     try {
       if (IS_DEV) console.group("[MB Auth] signInGoogle");
-      const { data, error } = await supabase.auth.signInWithOAuth({
-        provider: "google",
-        options: { redirectTo: redirectToOAuthReturn },
-      });
-      if (error) throw error;
-      if (data?.url) window.location.assign(data.url);
+      if (isNativeAuthPlatform()) {
+        await signInWithNativeOAuth({ provider: "google" });
+      } else {
+        const { data, error } = await supabase.auth.signInWithOAuth({
+          provider: "google",
+          options: { redirectTo: redirectToOAuthReturn },
+        });
+        if (error) throw error;
+        if (data?.url) window.location.assign(data.url);
+      }
     } catch (e) {
       setNotice({
         tone: "error",
@@ -297,12 +334,16 @@ export default function LoginPage() {
 
     try {
       if (IS_DEV) console.group("[MB Auth] signInFacebook");
-      const { data, error } = await supabase.auth.signInWithOAuth({
-        provider: "facebook",
-        options: { redirectTo: redirectToOAuthReturn },
-      });
-      if (error) throw error;
-      if (data?.url) window.location.assign(data.url);
+      if (isNativeAuthPlatform()) {
+        await signInWithNativeOAuth({ provider: "facebook" });
+      } else {
+        const { data, error } = await supabase.auth.signInWithOAuth({
+          provider: "facebook",
+          options: { redirectTo: redirectToOAuthReturn },
+        });
+        if (error) throw error;
+        if (data?.url) window.location.assign(data.url);
+      }
     } catch (e) {
       setNotice({
         tone: "error",
