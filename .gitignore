@@ -37,6 +37,7 @@ private-content/
 .vercel
 mobile-web/
 dist/
+/assets/
 
 .backup-mobile/
 generate_audio.py
