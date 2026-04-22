@@ -5,10 +5,15 @@
  * GOAL (LOCKED):
  * - Only ONE audio plays at a time across the whole app.
  * - Simple API for buttons: play(file), stop()
- * - Audio files live in /public/audio and are referenced as filename only.
+ * - Audio is resolved through resolveRoomAudioUrl, which handles:
+ *     • room audio (Supabase public bucket `room-audio`)
+ *     • kids/* and music/* local assets
+ *     • absolute https:// URLs (e.g. Mercy original songs served from the
+ *       Supabase public `music` bucket — see MusicPlayer.tsx)
  *
  * Proof target:
- * - EntryAudioButton calls play("english_writing_basics.mp3") and it plays /audio/english_writing_basics.mp3
+ * - EntryAudioButton calls play("english_writing_basics.mp3") and it plays
+ *   the correctly-resolved audio URL.
  *
  * MB-BLUE-94.3 changes:
  * - stop() clears audioRef to hard reset ownership
@@ -30,7 +35,7 @@ type MusicPlayerContextValue = {
   isPlaying: boolean;
   currentTrackName?: string;
 
-  /** Play a filename from /public/audio (filename only) */
+  /** Play a track. Accepts a filename or an absolute URL; resolveRoomAudioUrl sorts it out. */
   play: (file: string) => Promise<void>;
 
   /** Stop current playback (if any) */

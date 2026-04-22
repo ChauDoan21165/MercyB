@@ -23,44 +23,70 @@ import { useFavoriteTracks } from '@/hooks/useFavoriteTracks';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { TalkingFaceButton } from '@/components/audio/TalkingFaceButton';
 
-// Mercy Blade original songs (32 tracks)
-const MB_TRACKS = [
-  { id: 'mb1', name: 'In A Quiet Room I Open My Mind', url: '/audio/in_a_quiet_room_i_open_my_mind.mp3' },
-  { id: 'mb2', name: 'In A Quiet Room I Open My Mind (2)', url: '/audio/in_a_quiet_room_i_open_my_mind_2.mp3' },
-  { id: 'mb3', name: 'When Mercy Looks at Me', url: '/audio/when_mercy_looks_at_me.mp3' },
-  { id: 'mb4', name: 'When Mercy Looks at Me (1)', url: '/audio/when_mercy_looks_at_me_1.mp3' },
-  { id: 'mb5', name: 'When Mercy Looks at Me (2)', url: '/audio/when_mercy_looks_at_me_2.mp3' },
-  { id: 'mb6', name: 'When Mercy Looks at Me (3)', url: '/audio/when_mercy_looks_at_me_3.mp3' },
-  { id: 'mb7', name: 'Heart of the Blade', url: '/audio/heart_of_the_blade.mp3' },
-  { id: 'mb8', name: 'Heart of the Blade (1)', url: '/audio/heart_of_the_blade_1.mp3' },
-  { id: 'mb8b', name: 'Heart of the Blade (2)', url: '/audio/heart_of_the_blade_2.mp3' },
-  { id: 'mb9', name: 'Rise With Mercy', url: '/audio/rise_with_mercy.mp3' },
-  { id: 'mb10', name: 'Where Mercy Finds Me', url: '/audio/where_mercy_finds_me.mp3' },
-  { id: 'mb11', name: 'Where Mercy Finds Me (1)', url: '/audio/where_mercy_finds_me_1.mp3' },
-  { id: 'mb12', name: 'Where Mercy Finds Me (2)', url: '/audio/where_mercy_finds_me_2.mp3' },
-  { id: 'mb13', name: 'Where Mercy Finds Me (3)', url: '/audio/where_mercy_finds_me_3.mp3' },
-  { id: 'mb14', name: 'Where Mercy Finds Me (4)', url: '/audio/where_mercy_finds_me_4.mp3' },
-  { id: 'mb15', name: 'Where Mercy Finds Me (4 v2)', url: '/audio/where_mercy_finds_me_4_v2.mp3' },
-  { id: 'mb16', name: 'Where Mercy Finds Me (5)', url: '/audio/where_mercy_finds_me_5.mp3' },
-  { id: 'mb17', name: 'Where Mercy Finds Me (6)', url: '/audio/where_mercy_finds_me_6.mp3' },
-  { id: 'mb18', name: 'Mercy On My Mind', url: '/audio/mercy_on_my_mind.mp3' },
-  { id: 'mb19', name: 'Mercy On My Mind (1)', url: '/audio/mercy_on_my_mind_1.mp3' },
-  { id: 'mb20', name: 'Mercy On My Mind (2)', url: '/audio/mercy_on_my_mind_2.mp3' },
-  { id: 'mb21', name: 'Mercy On My Mind (3)', url: '/audio/mercy_on_my_mind_3.mp3' },
-  { id: 'mb22', name: 'In the Quiet Mercy', url: '/audio/in_the_quiet_mercy.mp3' },
-  { id: 'mb23', name: 'In the Quiet Mercy (2)', url: '/audio/in_the_quiet_mercy_2.mp3' },
-  { id: 'mb24', name: 'Step With Me Mercy', url: '/audio/step_with_me_mercy.mp3' },
-  { id: 'mb25', name: 'Step With Me Mercy (2)', url: '/audio/step_with_me_mercy_2.mp3' },
-  { id: 'mb26', name: 'In A Quiet Room I Open My Mind (3)', url: '/audio/in_a_quiet_room_i_open_my_mind_3.mp3' },
-  { id: 'mb27', name: 'From My Heart to Yours', url: '/audio/from_my_heart_to_yours_mercy_blade.mp3' },
-  { id: 'mb28', name: 'Fire in My Veins', url: '/audio/fire_in_my_veins_mercy_blade.mp3' },
-  { id: 'mb29', name: 'Bridge of Hearts', url: '/audio/mercy_blade_bridge_of_hearts.mp3' },
-  { id: 'mb30', name: 'Bridge of Hearts (1)', url: '/audio/mercy_blade_bridge_of_hearts_1.mp3' },
-  { id: 'mb31', name: 'Say My Name Mercy Blade', url: '/audio/say_my_name_mercy_blade.mp3' },
-  { id: 'mb32', name: 'Say My Name Mercy Blade (1)', url: '/audio/say_my_name_mercy_blade_1.mp3' },
-  { id: 'mb33', name: 'Morning With You / Buổi Sáng Cùng Ngài', url: '/audio/morning_with_you_1.mp3' },
-  { id: 'mb34', name: 'Morning With You / Buổi Sáng Cùng Ngài (2)', url: '/audio/morning_with_you_2.mp3' },
+// Mercy Blade original songs — served from Supabase Storage public bucket `music`.
+// Only filenames are stored here; getPublicAudioUrl() constructs the full URL
+// at module load so consumers can keep reading track.url unchanged.
+const MUSIC_BUCKET = 'music';
+const SUPABASE_URL = String(
+  (import.meta as ImportMeta & { env?: Record<string, string> }).env
+    ?.VITE_SUPABASE_URL ?? '',
+).trim();
+
+function getPublicAudioUrl(filename: string): string {
+  if (!SUPABASE_URL) {
+    console.warn('[MusicPlayer] VITE_SUPABASE_URL missing — audio will fail to load');
+    return `/${filename}`;
+  }
+  return `${SUPABASE_URL}/storage/v1/object/public/${MUSIC_BUCKET}/${filename}`;
+}
+
+type MercyTrackSpec = { id: string; name: string; file: string };
+
+const MB_TRACK_SPECS: MercyTrackSpec[] = [
+  { id: 'mb1',  name: 'In A Quiet Room I Open My Mind',                    file: 'in_a_quiet_room_i_open_my_mind.mp3' },
+  { id: 'mb2',  name: 'In A Quiet Room I Open My Mind (2)',                file: 'in_a_quiet_room_i_open_my_mind_2.mp3' },
+  { id: 'mb3',  name: 'When Mercy Looks at Me',                            file: 'when_mercy_looks_at_me.mp3' },
+  { id: 'mb4',  name: 'When Mercy Looks at Me (1)',                        file: 'when_mercy_looks_at_me_1.mp3' },
+  { id: 'mb5',  name: 'When Mercy Looks at Me (2)',                        file: 'when_mercy_looks_at_me_2.mp3' },
+  { id: 'mb6',  name: 'When Mercy Looks at Me (3)',                        file: 'when_mercy_looks_at_me_3.mp3' },
+  { id: 'mb7',  name: 'Heart of the Blade',                                file: 'heart_of_the_blade.mp3' },
+  { id: 'mb8',  name: 'Heart of the Blade (1)',                            file: 'heart_of_the_blade_1.mp3' },
+  { id: 'mb8b', name: 'Heart of the Blade (2)',                            file: 'heart_of_the_blade_2.mp3' },
+  { id: 'mb9',  name: 'Rise With Mercy',                                   file: 'rise_with_mercy.mp3' },
+  { id: 'mb10', name: 'Where Mercy Finds Me',                              file: 'where_mercy_finds_me.mp3' },
+  { id: 'mb11', name: 'Where Mercy Finds Me (1)',                          file: 'where_mercy_finds_me_1.mp3' },
+  { id: 'mb12', name: 'Where Mercy Finds Me (2)',                          file: 'where_mercy_finds_me_2.mp3' },
+  { id: 'mb13', name: 'Where Mercy Finds Me (3)',                          file: 'where_mercy_finds_me_3.mp3' },
+  { id: 'mb14', name: 'Where Mercy Finds Me (4)',                          file: 'where_mercy_finds_me_4.mp3' },
+  { id: 'mb15', name: 'Where Mercy Finds Me (4 v2)',                       file: 'where_mercy_finds_me_4_v2.mp3' },
+  { id: 'mb16', name: 'Where Mercy Finds Me (5)',                          file: 'where_mercy_finds_me_5.mp3' },
+  { id: 'mb17', name: 'Where Mercy Finds Me (6)',                          file: 'where_mercy_finds_me_6.mp3' },
+  { id: 'mb18', name: 'Mercy On My Mind',                                  file: 'mercy_on_my_mind.mp3' },
+  { id: 'mb19', name: 'Mercy On My Mind (1)',                              file: 'mercy_on_my_mind_1.mp3' },
+  { id: 'mb20', name: 'Mercy On My Mind (2)',                              file: 'mercy_on_my_mind_2.mp3' },
+  { id: 'mb21', name: 'Mercy On My Mind (3)',                              file: 'mercy_on_my_mind_3.mp3' },
+  { id: 'mb22', name: 'In the Quiet Mercy',                                file: 'in_the_quiet_mercy.mp3' },
+  { id: 'mb23', name: 'In the Quiet Mercy (2)',                            file: 'in_the_quiet_mercy_2.mp3' },
+  { id: 'mb24', name: 'Step With Me Mercy',                                file: 'step_with_me_mercy.mp3' },
+  { id: 'mb25', name: 'Step With Me Mercy (2)',                            file: 'step_with_me_mercy_2.mp3' },
+  { id: 'mb26', name: 'In A Quiet Room I Open My Mind (3)',                file: 'in_a_quiet_room_i_open_my_mind_3.mp3' },
+  { id: 'mb29', name: 'Bridge of Hearts',                                  file: 'bridge_of_hearts.mp3' },
+  { id: 'mb31', name: 'Say My Name, Mercy Blade (core)',                   file: 'say_my_name_mercy_blade_core.mp3' },
+  { id: 'mb32', name: 'Say My Name, Mercy Blade (1)',                      file: 'say_my_name_mercy_blade_1.mp3' },
+  { id: 'mb34', name: 'Morning With You / Buổi Sáng Cùng Ngài (2)',        file: 'morning_with_you_2.mp3' },
+  { id: 'mb35', name: 'The Song of Mercy Blade (2)',                       file: 'song_of_mercy_blade_2.mp3' },
+  { id: 'mb36', name: 'The Song of Mercy Blade (3)',                       file: 'song_of_mercy_blade_3.mp3' },
+  { id: 'mb37', name: 'Tâm Hồn Tự Tại / A Mind at Peace',                  file: 'tam_hon_tu_tai.mp3' },
+  { id: 'mb38', name: 'Ánh Sáng Trong Vòng Tay Cha (1)',                   file: 'anh_sang_trong_vong_tay_cha_1.mp3' },
+  { id: 'mb39', name: 'Dấu Ấn Trong Tôi / The Prints Within (1)',          file: 'dau_an_trong_toi_1.mp3' },
+  { id: 'mb40', name: 'Sự Sắp Đặt Thiêng Liêng',                           file: 'su_sap_dat_thieng_lieng.mp3' },
 ];
+
+const MB_TRACKS = MB_TRACK_SPECS.map((t) => ({
+  id: t.id,
+  name: t.name,
+  url: getPublicAudioUrl(t.file),
+}));
 
 // Common background music (Fesliyan Studios etc)
 const COMMON_TRACKS = [

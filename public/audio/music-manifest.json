@@ -1,0 +1,192 @@
+{
+  "bucket": "music",
+  "generatedAt": "2026-04-22T22:14:33.340Z",
+  "total": 37,
+  "files": [
+    {
+      "name": "anh_sang_trong_vong_tay_cha_1.mp3",
+      "size": 4587065,
+      "publicUrl": "https://buemdfxyhxunzpgdoqin.supabase.co/storage/v1/object/public/music/anh_sang_trong_vong_tay_cha_1.mp3"
+    },
+    {
+      "name": "bridge_of_hearts.mp3",
+      "size": 3444300,
+      "publicUrl": "https://buemdfxyhxunzpgdoqin.supabase.co/storage/v1/object/public/music/bridge_of_hearts.mp3"
+    },
+    {
+      "name": "dau_an_trong_toi_1.mp3",
+      "size": 8663003,
+      "publicUrl": "https://buemdfxyhxunzpgdoqin.supabase.co/storage/v1/object/public/music/dau_an_trong_toi_1.mp3"
+    },
+    {
+      "name": "heart_of_the_blade.mp3",
+      "size": 5884573,
+      "publicUrl": "https://buemdfxyhxunzpgdoqin.supabase.co/storage/v1/object/public/music/heart_of_the_blade.mp3"
+    },
+    {
+      "name": "heart_of_the_blade_1.mp3",
+      "size": 8056765,
+      "publicUrl": "https://buemdfxyhxunzpgdoqin.supabase.co/storage/v1/object/public/music/heart_of_the_blade_1.mp3"
+    },
+    {
+      "name": "heart_of_the_blade_2.mp3",
+      "size": 5884573,
+      "publicUrl": "https://buemdfxyhxunzpgdoqin.supabase.co/storage/v1/object/public/music/heart_of_the_blade_2.mp3"
+    },
+    {
+      "name": "in_a_quiet_room_i_open_my_mind.mp3",
+      "size": 4903262,
+      "publicUrl": "https://buemdfxyhxunzpgdoqin.supabase.co/storage/v1/object/public/music/in_a_quiet_room_i_open_my_mind.mp3"
+    },
+    {
+      "name": "in_a_quiet_room_i_open_my_mind_2.mp3",
+      "size": 4903262,
+      "publicUrl": "https://buemdfxyhxunzpgdoqin.supabase.co/storage/v1/object/public/music/in_a_quiet_room_i_open_my_mind_2.mp3"
+    },
+    {
+      "name": "in_a_quiet_room_i_open_my_mind_3.mp3",
+      "size": 4903262,
+      "publicUrl": "https://buemdfxyhxunzpgdoqin.supabase.co/storage/v1/object/public/music/in_a_quiet_room_i_open_my_mind_3.mp3"
+    },
+    {
+      "name": "in_the_quiet_mercy.mp3",
+      "size": 5496128,
+      "publicUrl": "https://buemdfxyhxunzpgdoqin.supabase.co/storage/v1/object/public/music/in_the_quiet_mercy.mp3"
+    },
+    {
+      "name": "in_the_quiet_mercy_2.mp3",
+      "size": 5496128,
+      "publicUrl": "https://buemdfxyhxunzpgdoqin.supabase.co/storage/v1/object/public/music/in_the_quiet_mercy_2.mp3"
+    },
+    {
+      "name": "mercy_on_my_mind.mp3",
+      "size": 3080989,
+      "publicUrl": "https://buemdfxyhxunzpgdoqin.supabase.co/storage/v1/object/public/music/mercy_on_my_mind.mp3"
+    },
+    {
+      "name": "mercy_on_my_mind_1.mp3",
+      "size": 3401870,
+      "publicUrl": "https://buemdfxyhxunzpgdoqin.supabase.co/storage/v1/object/public/music/mercy_on_my_mind_1.mp3"
+    },
+    {
+      "name": "mercy_on_my_mind_2.mp3",
+      "size": 3401870,
+      "publicUrl": "https://buemdfxyhxunzpgdoqin.supabase.co/storage/v1/object/public/music/mercy_on_my_mind_2.mp3"
+    },
+    {
+      "name": "mercy_on_my_mind_3.mp3",
+      "size": 3080989,
+      "publicUrl": "https://buemdfxyhxunzpgdoqin.supabase.co/storage/v1/object/public/music/mercy_on_my_mind_3.mp3"
+    },
+    {
+      "name": "morning_with_you_2.mp3",
+      "size": 5589322,
+      "publicUrl": "https://buemdfxyhxunzpgdoqin.supabase.co/storage/v1/object/public/music/morning_with_you_2.mp3"
+    },
+    {
+      "name": "rise_with_mercy.mp3",
+      "size": 4692370,
+      "publicUrl": "https://buemdfxyhxunzpgdoqin.supabase.co/storage/v1/object/public/music/rise_with_mercy.mp3"
+    },
+    {
+      "name": "say_my_name_mercy_blade_1.mp3",
+      "size": 7271375,
+      "publicUrl": "https://buemdfxyhxunzpgdoqin.supabase.co/storage/v1/object/public/music/say_my_name_mercy_blade_1.mp3"
+    },
+    {
+      "name": "say_my_name_mercy_blade_core.mp3",
+      "size": 3926318,
+      "publicUrl": "https://buemdfxyhxunzpgdoqin.supabase.co/storage/v1/object/public/music/say_my_name_mercy_blade_core.mp3"
+    },
+    {
+      "name": "song_of_mercy_blade_2.mp3",
+      "size": 6623866,
+      "publicUrl": "https://buemdfxyhxunzpgdoqin.supabase.co/storage/v1/object/public/music/song_of_mercy_blade_2.mp3"
+    },
+    {
+      "name": "song_of_mercy_blade_3.mp3",
+      "size": 5824807,
+      "publicUrl": "https://buemdfxyhxunzpgdoqin.supabase.co/storage/v1/object/public/music/song_of_mercy_blade_3.mp3"
+    },
+    {
+      "name": "step_with_me_mercy.mp3",
+      "size": 3931812,
+      "publicUrl": "https://buemdfxyhxunzpgdoqin.supabase.co/storage/v1/object/public/music/step_with_me_mercy.mp3"
+    },
+    {
+      "name": "step_with_me_mercy_2.mp3",
+      "size": 3931812,
+      "publicUrl": "https://buemdfxyhxunzpgdoqin.supabase.co/storage/v1/object/public/music/step_with_me_mercy_2.mp3"
+    },
+    {
+      "name": "su_sap_dat_thieng_lieng.mp3",
+      "size": 5520954,
+      "publicUrl": "https://buemdfxyhxunzpgdoqin.supabase.co/storage/v1/object/public/music/su_sap_dat_thieng_lieng.mp3"
+    },
+    {
+      "name": "tam_hon_tu_tai.mp3",
+      "size": 2810918,
+      "publicUrl": "https://buemdfxyhxunzpgdoqin.supabase.co/storage/v1/object/public/music/tam_hon_tu_tai.mp3"
+    },
+    {
+      "name": "when_mercy_looks_at_me.mp3",
+      "size": 5561532,
+      "publicUrl": "https://buemdfxyhxunzpgdoqin.supabase.co/storage/v1/object/public/music/when_mercy_looks_at_me.mp3"
+    },
+    {
+      "name": "when_mercy_looks_at_me_1.mp3",
+      "size": 5518220,
+      "publicUrl": "https://buemdfxyhxunzpgdoqin.supabase.co/storage/v1/object/public/music/when_mercy_looks_at_me_1.mp3"
+    },
+    {
+      "name": "when_mercy_looks_at_me_2.mp3",
+      "size": 5460318,
+      "publicUrl": "https://buemdfxyhxunzpgdoqin.supabase.co/storage/v1/object/public/music/when_mercy_looks_at_me_2.mp3"
+    },
+    {
+      "name": "when_mercy_looks_at_me_3.mp3",
+      "size": 5518220,
+      "publicUrl": "https://buemdfxyhxunzpgdoqin.supabase.co/storage/v1/object/public/music/when_mercy_looks_at_me_3.mp3"
+    },
+    {
+      "name": "where_mercy_finds_me.mp3",
+      "size": 5081279,
+      "publicUrl": "https://buemdfxyhxunzpgdoqin.supabase.co/storage/v1/object/public/music/where_mercy_finds_me.mp3"
+    },
+    {
+      "name": "where_mercy_finds_me_1.mp3",
+      "size": 3688475,
+      "publicUrl": "https://buemdfxyhxunzpgdoqin.supabase.co/storage/v1/object/public/music/where_mercy_finds_me_1.mp3"
+    },
+    {
+      "name": "where_mercy_finds_me_2.mp3",
+      "size": 3687029,
+      "publicUrl": "https://buemdfxyhxunzpgdoqin.supabase.co/storage/v1/object/public/music/where_mercy_finds_me_2.mp3"
+    },
+    {
+      "name": "where_mercy_finds_me_3.mp3",
+      "size": 5081279,
+      "publicUrl": "https://buemdfxyhxunzpgdoqin.supabase.co/storage/v1/object/public/music/where_mercy_finds_me_3.mp3"
+    },
+    {
+      "name": "where_mercy_finds_me_4.mp3",
+      "size": 4635468,
+      "publicUrl": "https://buemdfxyhxunzpgdoqin.supabase.co/storage/v1/object/public/music/where_mercy_finds_me_4.mp3"
+    },
+    {
+      "name": "where_mercy_finds_me_4_v2.mp3",
+      "size": 4635468,
+      "publicUrl": "https://buemdfxyhxunzpgdoqin.supabase.co/storage/v1/object/public/music/where_mercy_finds_me_4_v2.mp3"
+    },
+    {
+      "name": "where_mercy_finds_me_5.mp3",
+      "size": 3927404,
+      "publicUrl": "https://buemdfxyhxunzpgdoqin.supabase.co/storage/v1/object/public/music/where_mercy_finds_me_5.mp3"
+    },
+    {
+      "name": "where_mercy_finds_me_6.mp3",
+      "size": 5081279,
+      "publicUrl": "https://buemdfxyhxunzpgdoqin.supabase.co/storage/v1/object/public/music/where_mercy_finds_me_6.mp3"
+    }
+  ]
+}
