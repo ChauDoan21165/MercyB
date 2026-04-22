@@ -79,7 +79,7 @@ export function GiftCodeModal({
       }
 
       const { data, error: invokeError } = await supabase.functions.invoke(
-        "redeem-gift-code",
+        "redeem-access-code",
         { body: { code: code.trim() } },
       );
 
