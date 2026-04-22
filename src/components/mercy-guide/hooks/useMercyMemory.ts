@@ -3,7 +3,8 @@
  * Path: src/components/mercy-guide/hooks/useMercyMemory.ts
  */
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { supabase } from '@/lib/supabaseClient';
 import type {
   MercyLogicPatternMemory,
   StudentMercyMemory,
@@ -268,6 +269,15 @@ export function buildTeacherMemorySummary(
   return summary.slice(0, 4);
 }
 
+function memoryToPatch(memory: StudentMercyMemory): StudentMercyMemoryUpdate {
+  return {
+    writing: memory.writing,
+    logic: memory.logic,
+    pronunciation: memory.pronunciation,
+    coaching: memory.coaching,
+  };
+}
+
 export function useMercyMemory(profile?: BasicProfileLike | null) {
   const userKey = useMemo(() => buildUserKey(profile), [profile]);
   const storageKey = useMemo(() => `${STORAGE_PREFIX}:${userKey}`, [userKey]);
@@ -292,6 +302,36 @@ export function useMercyMemory(profile?: BasicProfileLike | null) {
     }
   });
 
+  const [authUserId, setAuthUserId] = useState<string | null>(null);
+  const serverLoadedForRef = useRef<string | null>(null);
+  const writeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const skipNextServerWriteRef = useRef(false);
+
+  // Track the signed-in Supabase user. Anonymous users stay on localStorage only.
+  useEffect(() => {
+    let cancelled = false;
+
+    supabase.auth
+      .getUser()
+      .then(({ data }) => {
+        if (cancelled) return;
+        setAuthUserId(data.user?.id ?? null);
+      })
+      .catch(() => {
+        if (!cancelled) setAuthUserId(null);
+      });
+
+    const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
+      setAuthUserId(session?.user?.id ?? null);
+    });
+
+    return () => {
+      cancelled = true;
+      sub.subscription.unsubscribe();
+    };
+  }, []);
+
+  // Rehydrate from localStorage whenever the user key changes.
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
@@ -313,6 +353,63 @@ export function useMercyMemory(profile?: BasicProfileLike | null) {
     }
   }, [storageKey, userKey]);
 
+  // Fetch from Supabase on sign-in. Server wins on overlapping keys; if the
+  // server row is empty we seed it with whatever the user already has locally.
+  useEffect(() => {
+    if (!authUserId) return;
+    if (serverLoadedForRef.current === authUserId) return;
+    serverLoadedForRef.current = authUserId;
+
+    let cancelled = false;
+
+    (async () => {
+      try {
+        const { data, error } = await supabase
+          .from('teacher_memory')
+          .select('memory')
+          .eq('user_id', authUserId)
+          .maybeSingle();
+
+        if (cancelled) return;
+        if (error) return;
+
+        const serverMemory = data?.memory as StudentMercyMemory | null | undefined;
+        const hasServerData =
+          serverMemory &&
+          typeof serverMemory === 'object' &&
+          Object.keys(serverMemory).length > 0;
+
+        if (hasServerData) {
+          // Server is source of truth — merge it into local state.
+          skipNextServerWriteRef.current = true;
+          setMemory((current) => mergeMemory(current, memoryToPatch(serverMemory!)));
+          return;
+        }
+
+        // Server empty — seed it from whatever we have locally.
+        setMemory((current) => {
+          if (current.updatedAt) {
+            void supabase
+              .from('teacher_memory')
+              .upsert(
+                { user_id: authUserId, memory: current },
+                { onConflict: 'user_id' },
+              );
+          }
+          return current;
+        });
+      } catch {
+        // Network or RLS failure — stay on localStorage, try again next mount.
+        serverLoadedForRef.current = null;
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [authUserId]);
+
+  // Write locally immediately; debounce the Supabase upsert by 500ms.
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
@@ -327,7 +424,30 @@ export function useMercyMemory(profile?: BasicProfileLike | null) {
     } catch {
       // ignore storage failures
     }
-  }, [memory, storageKey]);
+
+    if (!authUserId) return;
+    if (skipNextServerWriteRef.current) {
+      skipNextServerWriteRef.current = false;
+      return;
+    }
+
+    if (writeTimerRef.current) clearTimeout(writeTimerRef.current);
+    writeTimerRef.current = setTimeout(() => {
+      void supabase
+        .from('teacher_memory')
+        .upsert(
+          { user_id: authUserId, memory },
+          { onConflict: 'user_id' },
+        );
+    }, 500);
+
+    return () => {
+      if (writeTimerRef.current) {
+        clearTimeout(writeTimerRef.current);
+        writeTimerRef.current = null;
+      }
+    };
+  }, [memory, storageKey, authUserId]);
 
   const updateMemory = useCallback((patch: StudentMercyMemoryUpdate) => {
     setMemory((current) => mergeMemory(current, patch));
@@ -335,7 +455,10 @@ export function useMercyMemory(profile?: BasicProfileLike | null) {
 
   const resetMemory = useCallback(() => {
     setMemory(createEmptyMemory(userKey));
-  }, [userKey]);
+    if (authUserId) {
+      void supabase.from('teacher_memory').delete().eq('user_id', authUserId);
+    }
+  }, [userKey, authUserId]);
 
   const teacherSummary = useMemo(() => buildTeacherMemorySummary(memory), [memory]);
 
