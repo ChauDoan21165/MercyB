@@ -1,0 +1,195 @@
+{
+  "bucket": "music",
+  "generatedAt": "2026-04-22T22:12:39.637Z",
+  "total": 37,
+  "uploaded": 37,
+  "skipped": 0,
+  "failed": 0,
+  "entries": [
+    {
+      "filename": "anh_sang_trong_vong_tay_cha_1.mp3",
+      "size": 4587065,
+      "status": "uploaded"
+    },
+    {
+      "filename": "bridge_of_hearts.mp3",
+      "size": 3444300,
+      "status": "uploaded"
+    },
+    {
+      "filename": "dau_an_trong_toi_1.mp3",
+      "size": 8663003,
+      "status": "uploaded"
+    },
+    {
+      "filename": "heart_of_the_blade.mp3",
+      "size": 5884573,
+      "status": "uploaded"
+    },
+    {
+      "filename": "heart_of_the_blade_1.mp3",
+      "size": 8056765,
+      "status": "uploaded"
+    },
+    {
+      "filename": "heart_of_the_blade_2.mp3",
+      "size": 5884573,
+      "status": "uploaded"
+    },
+    {
+      "filename": "in_a_quiet_room_i_open_my_mind.mp3",
+      "size": 4903262,
+      "status": "uploaded"
+    },
+    {
+      "filename": "in_a_quiet_room_i_open_my_mind_2.mp3",
+      "size": 4903262,
+      "status": "uploaded"
+    },
+    {
+      "filename": "in_a_quiet_room_i_open_my_mind_3.mp3",
+      "size": 4903262,
+      "status": "uploaded"
+    },
+    {
+      "filename": "in_the_quiet_mercy.mp3",
+      "size": 5496128,
+      "status": "uploaded"
+    },
+    {
+      "filename": "in_the_quiet_mercy_2.mp3",
+      "size": 5496128,
+      "status": "uploaded"
+    },
+    {
+      "filename": "mercy_on_my_mind.mp3",
+      "size": 3080989,
+      "status": "uploaded"
+    },
+    {
+      "filename": "mercy_on_my_mind_1.mp3",
+      "size": 3401870,
+      "status": "uploaded"
+    },
+    {
+      "filename": "mercy_on_my_mind_2.mp3",
+      "size": 3401870,
+      "status": "uploaded"
+    },
+    {
+      "filename": "mercy_on_my_mind_3.mp3",
+      "size": 3080989,
+      "status": "uploaded"
+    },
+    {
+      "filename": "morning_with_you_2.mp3",
+      "size": 5589322,
+      "status": "uploaded"
+    },
+    {
+      "filename": "rise_with_mercy.mp3",
+      "size": 4692370,
+      "status": "uploaded"
+    },
+    {
+      "filename": "say_my_name_mercy_blade_1.mp3",
+      "size": 7271375,
+      "status": "uploaded"
+    },
+    {
+      "filename": "say_my_name_mercy_blade_core.mp3",
+      "size": 3926318,
+      "status": "uploaded"
+    },
+    {
+      "filename": "song_of_mercy_blade_2.mp3",
+      "size": 6623866,
+      "status": "uploaded"
+    },
+    {
+      "filename": "song_of_mercy_blade_3.mp3",
+      "size": 5824807,
+      "status": "uploaded"
+    },
+    {
+      "filename": "step_with_me_mercy.mp3",
+      "size": 3931812,
+      "status": "uploaded"
+    },
+    {
+      "filename": "step_with_me_mercy_2.mp3",
+      "size": 3931812,
+      "status": "uploaded"
+    },
+    {
+      "filename": "su_sap_dat_thieng_lieng.mp3",
+      "size": 5520954,
+      "status": "uploaded"
+    },
+    {
+      "filename": "tam_hon_tu_tai.mp3",
+      "size": 2810918,
+      "status": "uploaded"
+    },
+    {
+      "filename": "when_mercy_looks_at_me.mp3",
+      "size": 5561532,
+      "status": "uploaded"
+    },
+    {
+      "filename": "when_mercy_looks_at_me_1.mp3",
+      "size": 5518220,
+      "status": "uploaded"
+    },
+    {
+      "filename": "when_mercy_looks_at_me_2.mp3",
+      "size": 5460318,
+      "status": "uploaded"
+    },
+    {
+      "filename": "when_mercy_looks_at_me_3.mp3",
+      "size": 5518220,
+      "status": "uploaded"
+    },
+    {
+      "filename": "where_mercy_finds_me.mp3",
+      "size": 5081279,
+      "status": "uploaded"
+    },
+    {
+      "filename": "where_mercy_finds_me_1.mp3",
+      "size": 3688475,
+      "status": "uploaded"
+    },
+    {
+      "filename": "where_mercy_finds_me_2.mp3",
+      "size": 3687029,
+      "status": "uploaded"
+    },
+    {
+      "filename": "where_mercy_finds_me_3.mp3",
+      "size": 5081279,
+      "status": "uploaded"
+    },
+    {
+      "filename": "where_mercy_finds_me_4.mp3",
+      "size": 4635468,
+      "status": "uploaded"
+    },
+    {
+      "filename": "where_mercy_finds_me_4_v2.mp3",
+      "size": 4635468,
+      "status": "uploaded"
+    },
+    {
+      "filename": "where_mercy_finds_me_5.mp3",
+      "size": 3927404,
+      "status": "uploaded"
+    },
+    {
+      "filename": "where_mercy_finds_me_6.mp3",
+      "size": 5081279,
+      "status": "uploaded"
+    }
+  ]
+}
