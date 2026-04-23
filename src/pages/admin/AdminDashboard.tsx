@@ -677,6 +677,7 @@ export default function AdminDashboard() {
     { title: "Payments", desc: "Latest payment transactions.", href: "/admin/payments", badge: "SAFE" },
     { title: "Access Codes", desc: "Generate and manage redeem / access codes.", href: "/admin/access-codes", badge: "SAFE" },
     { title: "Audio Coverage", desc: "Coverage checks for room audio (read-only tools).", href: "/admin/audio-coverage", badge: "READY" },
+    { title: "Feature Flags", desc: "Toggle global flags or add users to per-flag cohorts.", href: "/admin/feature-flags", badge: "SAFE" },
   ];
 
   function go(href?: string) {

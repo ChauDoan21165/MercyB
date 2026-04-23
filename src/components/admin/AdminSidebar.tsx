@@ -33,6 +33,7 @@ import {
   Gift,
   Volume2,
   Search,
+  Flag,
 } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 
@@ -76,6 +77,7 @@ const billingItems: AdminNavItem[] = [
 const toolsItems: AdminNavItem[] = [
   { title: "Audio Coverage", url: "/admin/audio-coverage", icon: Volume2 },
   { title: "Room Load Diagnostics", url: "/admin/room-load-diagnostics", icon: Search },
+  { title: "Feature Flags", url: "/admin/feature-flags", icon: Flag },
 ];
 
 export function AdminSidebar() {
