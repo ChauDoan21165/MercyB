@@ -42,6 +42,8 @@ const PlacementWhoForPage  = lazy(() => import("@/pages/placement/WhoForPage"));
 const PlacementTestPage    = lazy(() => import("@/pages/placement/TestPage"));
 const PlacementResultsPage = lazy(() => import("@/pages/placement/ResultsPage"));
 
+const SpeechDrillPage      = lazy(() => import("@/pages/SpeechDrillPage"));
+
 const AdminDashboard          = lazy(() => import("@/pages/admin/AdminDashboard"));
 const AdminUsersPage          = lazy(() => import("@/pages/admin/AdminUsersPage"));
 const AdminPaymentsPage       = lazy(() => import("@/pages/admin/AdminPaymentsPage"));
@@ -410,6 +412,15 @@ export default function AppRouter() {
             element={
               <RequireAuth>
                 <LazyPage><PlacementResultsPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+
+          {/* Speech drill — page self-gates on pronunciationScoringEnabled flag */}
+          <Route path="/speak"
+            element={
+              <RequireAuth>
+                <LazyPage><SpeechDrillPage /></LazyPage>
               </RequireAuth>
             }
           />
