@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/providers/AuthProvider";
 import { useEntitlements } from "@/lib/useEntitlements";
+import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 import { GiftCodeModal } from "@/components/GiftCodeModal";
 import { supabase } from "@/lib/supabaseClient";
 
@@ -166,6 +167,48 @@ export default function AccountPage() {
 
   const handlePricingClick = useCallback((): void => {
     nav("/pricing");
+  }, [nav]);
+
+  // ── Placement test (feature-flagged) ──────────────────────────────
+  const { enabled: placementFlagEnabled } = useFeatureFlag(
+    "placement_test_enabled",
+    false,
+  );
+  const [placementInfo, setPlacementInfo] = useState<{
+    completedAt: string | null;
+    cefr: string | null;
+  } | null>(null);
+
+  useEffect(() => {
+    if (!placementFlagEnabled || !user?.id) return;
+    let cancelled = false;
+    (async () => {
+      const { data, error } = await supabase
+        .from("profiles")
+        .select("placement_completed_at, placement_cefr")
+        .eq("id", user.id)
+        .maybeSingle();
+      if (cancelled) return;
+      if (error) {
+        console.warn("[AccountPage] placement info fetch:", error.message);
+        return;
+      }
+      setPlacementInfo({
+        completedAt:
+          (data as { placement_completed_at?: string | null } | null)
+            ?.placement_completed_at ?? null,
+        cefr:
+          (data as { placement_cefr?: string | null } | null)
+            ?.placement_cefr ?? null,
+      });
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [placementFlagEnabled, user?.id]);
+
+  const handlePlacementClick = useCallback((): void => {
+    nav("/placement");
   }, [nav]);
 
   const handleRefreshClick = useCallback((): void => {
@@ -398,6 +441,24 @@ export default function AccountPage() {
               <button type="button" style={buttonBase} onClick={handlePricingClick}>
                 <BiLabel en="Pricing" vi="Bảng giá" />
               </button>
+
+              {placementFlagEnabled ? (
+                <button
+                  type="button"
+                  style={buttonBase}
+                  onClick={handlePlacementClick}
+                  aria-label="Placement test"
+                >
+                  {placementInfo?.completedAt ? (
+                    <BiLabel
+                      en={`Retake placement test${placementInfo.cefr ? ` · last result ${placementInfo.cefr}` : ""}`}
+                      vi={`Làm lại bài đánh giá${placementInfo.cefr ? ` · kết quả ${placementInfo.cefr}` : ""}`}
+                    />
+                  ) : (
+                    <BiLabel en="Take placement test" vi="Làm bài đánh giá" />
+                  )}
+                </button>
+              ) : null}
 
               <button
                 type="button"
