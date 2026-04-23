@@ -475,7 +475,7 @@ export default function Billing() {
 
       {/* ── Header ──────────────────────────────────────────── */}
       <div style={{ ...card, marginBottom: 16, background: "linear-gradient(180deg,#f8fafc 0%, #eefbf7 100%)" }}>
-        <h1 style={{ margin: 0, fontSize: 32, lineHeight: 1.1, fontWeight: 950, color: "#111827" }}>
+        <h1 style={{ margin: 0, fontSize: "clamp(22px, 5.2vw, 32px)", lineHeight: 1.1, fontWeight: 950, color: "#111827" }}>
           Billing
           <span style={{ ...VIETNAMESE_SUB_STYLE, fontSize: 16, fontWeight: 500, color: "#94a3b8" }}>
             Quản lý thanh toán
