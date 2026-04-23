@@ -164,21 +164,19 @@ export default function LoginPage() {
   const [topMode, setTopMode] = useState<TopMode>("email");
   const [busy, setBusy] = useState(false);
   const [notice, setNotice] = useState<AuthNotice>(null);
-  const [isNarrow, setIsNarrow] = useState(window.innerWidth < 980);
   const [hasSession, setHasSession] = useState(false);
   const [sessionBooted, setSessionBooted] = useState(false);
+
+  // Layout collapse at <= 980px is handled entirely in CSS (see the <style>
+  // block in the returned JSX). No runtime breakpoint state or resize
+  // listener — the page paints correctly in the first frame, matches SSR
+  // mental models, and avoids a layout thrash on browser resize.
 
   useEffect(() => {
     return () => {
       if (IS_DEV) console.groupEnd();
     };
   }, [IS_DEV]);
-
-  useEffect(() => {
-    const handleResize = () => setIsNarrow(window.innerWidth < 980);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   useEffect(() => {
     let alive = true;
@@ -396,12 +394,17 @@ export default function LoginPage() {
     }
   }, [busy, IS_DEV, redirectToOAuthReturn]);
 
-  const pageStyle: React.CSSProperties = isNarrow
-    ? { ...UI.page, gridTemplateColumns: "1fr" }
-    : UI.page;
-
   return (
-    <div style={pageStyle}>
+    <div className="mb-login-shell" style={UI.page}>
+      {/* Responsive collapse: at <= 980px the two-column shell becomes a
+          single column and the marketing panel is hidden via display:none.
+          CSS-only — no runtime state, no flash on resize. */}
+      <style>{`
+        @media (max-width: 980px) {
+          .mb-login-shell { grid-template-columns: 1fr !important; }
+          .mb-login-marketing { display: none !important; }
+        }
+      `}</style>
       <div style={UI.left}>
         <div style={UI.card}>
           <div style={{ marginBottom: 12 }}>
@@ -606,7 +609,9 @@ export default function LoginPage() {
         </div>
       </div>
 
-      {!isNarrow && <MarketingPanel />}
+      <div className="mb-login-marketing" style={{ display: "contents" }}>
+        <MarketingPanel />
+      </div>
     </div>
   );
 }
