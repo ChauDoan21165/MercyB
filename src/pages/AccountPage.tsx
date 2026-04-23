@@ -289,6 +289,9 @@ export default function AccountPage() {
 
   const grid: React.CSSProperties = {
     display: "grid",
+    // 2 cols on tablet+, 1 col on phones. CSS media query override applied
+    // via the .mb-account-grid class below so the layout is driven by the
+    // viewport, not by runtime JS state.
     gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
     gap: 16,
     marginTop: 18,
@@ -342,6 +345,13 @@ export default function AccountPage() {
 
   return (
     <div style={wrap}>
+      {/* Collapse the 2-col grid to a single column on phones so card content
+          doesn't get squeezed into ~140px at 320/375px viewports. */}
+      <style>{`
+        @media (max-width: 640px) {
+          .mb-account-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
       <div style={container}>
 
         {/* ── Header card ─────────────────────────────────────── */}
@@ -413,7 +423,7 @@ export default function AccountPage() {
         </div>
 
         {/* ── Info grid ───────────────────────────────────────── */}
-        <div style={grid}>
+        <div className="mb-account-grid" style={grid}>
 
           <div style={panel()}>
             <div style={labelStyle}>Email</div>
