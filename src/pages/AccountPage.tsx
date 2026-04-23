@@ -85,6 +85,11 @@ export default function AccountPage() {
   const [deleteConfirmText, setDeleteConfirmText] = useState("");
   const [isDeleting, setIsDeleting]           = useState(false);
   const [deleteError, setDeleteError]         = useState<string | null>(null);
+  const [showResetMemoryConfirm, setShowResetMemoryConfirm] = useState(false);
+  const [resetMemoryConfirmText, setResetMemoryConfirmText] = useState("");
+  const [isResettingMemory, setIsResettingMemory]           = useState(false);
+  const [resetMemoryError, setResetMemoryError]             = useState<string | null>(null);
+  const [resetMemorySuccess, setResetMemorySuccess]         = useState(false);
 
   // Ref-based in-flight guards — prevent duplicate taps even before state updates
   const signingOutRef     = useRef(false);
@@ -171,6 +176,48 @@ export default function AccountPage() {
   const handleRefreshClick = useCallback((): void => {
     void refreshEntitlements();
   }, [refreshEntitlements]);
+
+  const handleResetMercyMemory = useCallback(async (): Promise<void> => {
+    if (isResettingMemory) return;
+    setIsResettingMemory(true);
+    setResetMemoryError(null);
+    setResetMemorySuccess(false);
+    try {
+      const userId = user?.id;
+      if (!userId) throw new Error("Not signed in.");
+
+      const { error } = await supabase
+        .from("teacher_memory")
+        .delete()
+        .eq("user_id", userId);
+      if (error) throw error;
+
+      // Wipe the mirrored device-local memory so Mercy forgets everywhere,
+      // not just on the server.
+      try {
+        const memMod = await import("@/lib/teacher-mercy/memory");
+        memMod.clearMemory();
+      } catch { /* non-fatal — the server truth has been cleared */ }
+      try {
+        const logsMod = await import("@/lib/teacher-mercy/logs");
+        logsMod.clearLogs();
+      } catch { /* non-fatal */ }
+      try {
+        const curriculumMod = await import("@/lib/teacher-mercy/curriculumTracker");
+        curriculumMod.resetCurriculumState();
+      } catch { /* non-fatal */ }
+
+      setResetMemorySuccess(true);
+      setShowResetMemoryConfirm(false);
+      setResetMemoryConfirmText("");
+    } catch (err) {
+      setResetMemoryError(
+        err instanceof Error ? err.message : "Unable to reset Mercy's memory.",
+      );
+    } finally {
+      setIsResettingMemory(false);
+    }
+  }, [isResettingMemory, user?.id]);
 
   const handleDeleteAccount = useCallback(async (): Promise<void> => {
     if (isDeleting) return;
@@ -529,6 +576,23 @@ export default function AccountPage() {
               style={{
                 ...buttonBase,
                 background: "#fff",
+                color: "#92400e",
+                borderColor: "#fde68a",
+              }}
+              onClick={() => {
+                setShowResetMemoryConfirm(true);
+                setResetMemoryError(null);
+                setResetMemorySuccess(false);
+                setResetMemoryConfirmText("");
+              }}
+            >
+              <BiLabel en="Reset Mercy's memory" vi="Đặt lại bộ nhớ của Mercy" />
+            </button>
+            <button
+              type="button"
+              style={{
+                ...buttonBase,
+                background: "#fff",
                 color: "#b91c1c",
                 borderColor: "#fecaca",
               }}
@@ -537,6 +601,105 @@ export default function AccountPage() {
               <BiLabel en="Delete my account" vi="Xóa tài khoản của tôi" />
             </button>
           </div>
+
+          {resetMemorySuccess && !showResetMemoryConfirm ? (
+            <div
+              style={{
+                marginTop: 14,
+                padding: 12,
+                border: "1px solid #bbf7d0",
+                borderRadius: 12,
+                background: "#f0fdf4",
+              }}
+            >
+              <p style={{ ...subStyle, color: "#065f46", margin: 0 }}>
+                Mercy's memory has been reset. She'll start fresh on your next lesson.
+              </p>
+              <p style={{ ...subViStyle, color: "#065f46", margin: "4px 0 0" }}>
+                Bộ nhớ của Mercy đã được xóa. Cô ấy sẽ bắt đầu lại từ buổi học tiếp theo.
+              </p>
+            </div>
+          ) : null}
+
+          {showResetMemoryConfirm ? (
+            <div
+              style={{
+                marginTop: 14,
+                padding: 14,
+                border: "1px solid #fde68a",
+                borderRadius: 12,
+                background: "#fffbeb",
+              }}
+            >
+              <p style={{ ...subStyle, color: "#92400e", fontWeight: 700, marginTop: 0 }}>
+                This clears everything Mercy remembers about you — past lessons, strengths, weaknesses, and personality notes. Your account and progress stay.
+              </p>
+              <p style={{ ...subViStyle, color: "#92400e", marginBottom: 10 }}>
+                Thao tác này sẽ xóa mọi thứ Mercy nhớ về bạn — các bài học trước, điểm mạnh, điểm yếu, và ghi chú về tính cách. Tài khoản và tiến độ của bạn được giữ nguyên.
+              </p>
+              <p style={{ ...subStyle, margin: "4px 0" }}>
+                Type <strong>RESET</strong> to confirm:
+              </p>
+              <p style={{ ...subViStyle, margin: "2px 0 8px" }}>
+                Nhập <strong>RESET</strong> để xác nhận.
+              </p>
+              <input
+                type="text"
+                autoComplete="off"
+                value={resetMemoryConfirmText}
+                onChange={(e) => setResetMemoryConfirmText(e.target.value)}
+                placeholder="RESET"
+                style={{
+                  width: "100%",
+                  padding: "10px 12px",
+                  borderRadius: 10,
+                  border: "1px solid #fde68a",
+                  fontSize: 14,
+                  marginBottom: 10,
+                }}
+              />
+              {resetMemoryError ? (
+                <p style={{ ...subStyle, color: "#b45309", marginTop: 4 }}>
+                  {resetMemoryError}
+                </p>
+              ) : null}
+              <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                <button
+                  type="button"
+                  style={{
+                    ...buttonBase,
+                    background: "#b45309",
+                    color: "#fff",
+                    borderColor: "#b45309",
+                    opacity:
+                      resetMemoryConfirmText === "RESET" && !isResettingMemory ? 1 : 0.5,
+                    cursor:
+                      resetMemoryConfirmText === "RESET" && !isResettingMemory
+                        ? "pointer"
+                        : "not-allowed",
+                  }}
+                  disabled={resetMemoryConfirmText !== "RESET" || isResettingMemory}
+                  onClick={() => void handleResetMercyMemory()}
+                >
+                  <BiLabel
+                    en={isResettingMemory ? "Resetting…" : "Reset memory"}
+                    vi={isResettingMemory ? "Đang đặt lại…" : "Đặt lại bộ nhớ"}
+                  />
+                </button>
+                <button
+                  type="button"
+                  style={buttonBase}
+                  disabled={isResettingMemory}
+                  onClick={() => {
+                    setShowResetMemoryConfirm(false);
+                    setResetMemoryConfirmText("");
+                  }}
+                >
+                  <BiLabel en="Cancel" vi="Hủy" />
+                </button>
+              </div>
+            </div>
+          ) : null}
 
           {showDeleteConfirm ? (
             <div
