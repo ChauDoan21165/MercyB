@@ -4,10 +4,20 @@
 //
 // Flow:
 //   1. Validate Authorization header → fetch user via anon client.
-//   2. Delete or anonymize data the user owns across tables (best-effort).
-//   3. Delete the auth.users row via service role admin API — this is the
-//      part rightToBeForgotten.ts cannot do from the browser.
+//   2. Iterate USER_DATA_MANIFEST (see user-data-manifest.ts) to either
+//      DELETE personal data or ANONYMIZE retained audit/financial rows.
+//   3. Delete profiles row (parent of many FKs).
+//   4. Delete auth.users row — cascade catches anything the manifest
+//      missed (defense in depth).
+//
+// The manifest is enforced by scripts/check-delete-account-coverage.mjs
+// which fails CI when a new user-identifying table lands without a
+// classification.
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import {
+  getAnonymizeEntries,
+  getDeleteEntries,
+} from "./user-data-manifest.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -22,6 +32,12 @@ function json(payload: unknown, status = 200) {
     headers: { ...corsHeaders, "Content-Type": "application/json" },
   });
 }
+
+type WipeReport = {
+  deleted: Array<{ table: string; column: string }>;
+  anonymized: Array<{ table: string; column: string }>;
+  errors: Array<{ table: string; column: string; action: string; message: string }>;
+};
 
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
@@ -60,57 +76,70 @@ Deno.serve(async (req) => {
       auth: { persistSession: false, autoRefreshToken: false },
     });
 
-    // Best-effort data cleanup. Errors are collected but don't block the
-    // overall deletion — auth user removal is the critical step.
-    const errors: string[] = [];
+    const report: WipeReport = { deleted: [], anonymized: [], errors: [] };
 
-    const tablesOwnedByUser: Array<{ table: string; column: string }> = [
-      { table: "favorite_tracks",      column: "user_id" },
-      { table: "user_points",          column: "user_id" },
-      { table: "user_sessions",        column: "user_id" },
-      { table: "teacher_memory",       column: "user_id" },
-      { table: "user_notebook_items",  column: "user_id" },
-    ];
-
-    for (const t of tablesOwnedByUser) {
-      const { error } = await admin.from(t.table).delete().eq(t.column, userId);
-      if (error) errors.push(`${t.table}: ${error.message}`);
+    // ── Pass 1: DELETE personal-data rows ───────────────────────
+    // Each (table, column) is handled independently — errors are recorded
+    // but do not stop subsequent passes. The auth.users deletion at the
+    // end will cascade whatever remains.
+    for (const { table, column } of getDeleteEntries()) {
+      const { error } = await admin.from(table).delete().eq(column, userId);
+      if (error) {
+        report.errors.push({
+          table,
+          column,
+          action: "delete",
+          message: error.message,
+        });
+      } else {
+        report.deleted.push({ table, column });
+      }
     }
 
-    // Anonymize feedback (keep row so analytics aren't broken).
-    {
-      const { error } = await admin
-        .from("feedback")
-        .update({ user_id: null, message: "[DELETED BY USER REQUEST]" })
-        .eq("user_id", userId);
-      if (error) errors.push(`feedback: ${error.message}`);
+    // ── Pass 2: ANONYMIZE financial / audit / security rows ─────
+    // Rows are retained (tax / legal audit / abuse-prevention memory)
+    // but the user-identifying column is nulled.
+    for (const { table, column } of getAnonymizeEntries()) {
+      const payload: Record<string, null> = { [column]: null };
+      const { error } = await admin.from(table).update(payload).eq(column, userId);
+      if (error) {
+        report.errors.push({
+          table,
+          column,
+          action: "anonymize",
+          message: error.message,
+        });
+      } else {
+        report.anonymized.push({ table, column });
+      }
     }
 
-    // Mark subscription as deleted for financial records; don't hard-delete.
-    {
-      const { error } = await admin
-        .from("user_subscriptions")
-        .update({ status: "deleted", updated_at: new Date().toISOString() })
-        .eq("user_id", userId);
-      if (error) errors.push(`user_subscriptions: ${error.message}`);
-    }
-
-    // Delete profile last (FKs from other tables may reference it).
+    // ── Pass 3: DELETE profiles (parent of many FKs) ────────────
     {
       const { error } = await admin.from("profiles").delete().eq("id", userId);
-      if (error) errors.push(`profiles: ${error.message}`);
+      if (error) {
+        report.errors.push({
+          table: "profiles",
+          column: "id",
+          action: "delete",
+          message: error.message,
+        });
+      }
     }
 
-    // Critical step — remove the auth user. Only service role can do this.
+    // ── Pass 4: DELETE auth.users — cascade catches stragglers ──
     const { error: authDeleteError } = await admin.auth.admin.deleteUser(userId);
     if (authDeleteError) {
       return json(
-        { error: `Failed to delete auth user: ${authDeleteError.message}`, warnings: errors },
+        {
+          error: `Failed to delete auth user: ${authDeleteError.message}`,
+          report,
+        },
         500,
       );
     }
 
-    return json({ success: true, warnings: errors });
+    return json({ success: true, report });
   } catch (error) {
     return json(
       { error: error instanceof Error ? error.message : "Unknown error" },

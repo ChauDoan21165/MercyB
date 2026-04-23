@@ -26,6 +26,7 @@ node_modules/
 
 # local scratch
 scripts/_scratch/
+scripts/.user-id-tables.json
 docs/*_LOG.md
 bad.txt
 room_scan_report.json
