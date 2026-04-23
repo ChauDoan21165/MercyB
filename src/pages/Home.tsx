@@ -11,6 +11,7 @@ import BottomMusicBar from "@/components/audio/BottomMusicBar";
 import { MercyGuide } from "@/components/MercyGuide";
 import { FeedbackBar } from "@/components/FeedbackBar";
 import { useUserAccess } from "@/hooks/useUserAccess";
+import FocusAreasCard from "@/components/home/FocusAreasCard";
 
 const PAGE_MAX = 980;
 const LS_ZOOM  = "mb.ui.zoom";
@@ -308,6 +309,9 @@ export default function Home() {
 
           {/* Library — secondary */}
           {libraryCard}
+
+          {/* Focus areas — tertiary (feature-flagged) */}
+          <FocusAreasCard />
         </section>
 
         {/* Floating bubbles */}
