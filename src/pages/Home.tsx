@@ -240,7 +240,7 @@ export default function Home() {
           Giáo viên Mercy
         </div>
 
-        <div style={{ marginTop: 14, fontSize: isPhone ? z(14) : z(16), fontWeight: 700, color: "rgba(80,20,45,0.78)", lineHeight: 1.6, maxWidth: 340, margin: "14px auto 0" }}>
+        <div style={{ marginTop: 14, fontSize: isPhone ? z(14) : z(16), fontWeight: 700, color: "rgba(80,20,45,0.78)", lineHeight: 1.6, maxWidth: "min(340px, 100%)", margin: "14px auto 0" }}>
           Your English teacher. Grammar, pronunciation, writing — all in one place.
         </div>
         <div style={{ marginTop: 6, fontSize: z(13), fontWeight: 600, color: "rgba(140,60,90,0.58)", lineHeight: 1.5 }}>
@@ -320,11 +320,11 @@ export default function Home() {
         </div>
       </div>
 
-      <div style={{ position: "fixed", left: 16, bottom: isPhone ? 44 : 52, zIndex: 81, pointerEvents: "auto" }}>
+      <div style={{ position: "fixed", left: 16, bottom: `calc(${isPhone ? 44 : 52}px + env(safe-area-inset-bottom, 0px))`, zIndex: 81, pointerEvents: "auto" }}>
         <FeedbackBar />
       </div>
 
-      <div style={{ position: "fixed", left: 0, right: 0, bottom: isPhone ? 8 : 10, zIndex: 80, padding: "0 16px", pointerEvents: "none" }} aria-label="Bottom music dock">
+      <div style={{ position: "fixed", left: 0, right: 0, bottom: `calc(${isPhone ? 8 : 10}px + env(safe-area-inset-bottom, 0px))`, zIndex: 80, padding: "0 16px", pointerEvents: "none" }} aria-label="Bottom music dock">
         <div style={{ maxWidth: PAGE_MAX, margin: "0 auto", pointerEvents: "auto" }}>
           <BottomMusicBar />
         </div>
