@@ -221,7 +221,8 @@ export default function AccountPage() {
 
   const h1: React.CSSProperties = {
     margin: 0,
-    fontSize: 34,
+    // clamp down to 22px on the narrowest phones; full 34px on tablet+
+    fontSize: "clamp(22px, 5.5vw, 34px)",
     fontWeight: 950,
     letterSpacing: -0.8,
     color: "rgba(0,0,0,0.86)",
