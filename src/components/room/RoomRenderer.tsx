@@ -85,6 +85,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { getSignedAudio } from "@/lib/audio/getSignedAudio";
 import { addStudyLogEntry } from "@/services/studyLog";
 import { awardPoints } from "@/services/pointsService";
+import { trackRoomEntry, updateRoomProgress } from "@/services/roomProgress";
 
 import { prettifyRoomIdEN, isBadAutoTitle } from "@/components/room/roomIdUtils";
 import { fetchRoomEntriesDb, coerceRoomEntryRowToEntry } from "@/components/room/roomEntriesDb";
@@ -1085,6 +1086,43 @@ export default function RoomRenderer({
     const keyword = activeKeyword ? String(activeKeyword).trim() : null;
     dispatchHostContext({ page: "room", roomId: effectiveRoomId, keyword, entryId });
   }, [effectiveRoomId, activeKeyword, activeEntry]);
+
+  // user_room_progress: session-scoped visited-keyword set, used to compute
+  // a monotonic progress_pct client-side. Reset when the room changes.
+  const visitedKeywordsRef = useRef<Set<string>>(new Set());
+  useEffect(() => {
+    visitedKeywordsRef.current = new Set();
+  }, [effectiveRoomId]);
+
+  // user_room_progress: mark room entry once auth + roomId are known.
+  // Fire-and-forget — the service handles retry + logs failures.
+  useEffect(() => {
+    if (!authUserId || !effectiveRoomId) return;
+    void trackRoomEntry(authUserId, effectiveRoomId);
+  }, [authUserId, effectiveRoomId]);
+
+  // user_room_progress: when the user picks a keyword, update last_keyword_en
+  // and bump progress_pct (monotonic). progress_pct is approximated as
+  // (distinct keywords visited this session / total entries in room) * 100.
+  useEffect(() => {
+    if (!authUserId || !effectiveRoomId || !activeKeyword) return;
+    const keyword = String(activeKeyword).trim();
+    if (!keyword) return;
+
+    visitedKeywordsRef.current.add(keyword);
+    const total = Array.isArray(allEntries) ? allEntries.length : 0;
+    const progressPct =
+      total > 0
+        ? Math.min(100, Math.round((visitedKeywordsRef.current.size / total) * 100))
+        : undefined;
+
+    const entryId = String(activeEntry?.id || activeEntry?.slug || "").trim() || null;
+    void updateRoomProgress(authUserId, effectiveRoomId, {
+      keywordEn: keyword,
+      entryId,
+      progressPct,
+    });
+  }, [authUserId, effectiveRoomId, activeKeyword, activeEntry, allEntries]);
 
   // Log study activity when user picks a keyword
   useEffect(() => {
