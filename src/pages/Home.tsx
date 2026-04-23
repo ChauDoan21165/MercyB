@@ -320,11 +320,11 @@ export default function Home() {
         </div>
       </div>
 
-      <div style={{ position: "fixed", left: 16, bottom: isPhone ? 44 : 52, zIndex: 81, pointerEvents: "auto" }}>
+      <div style={{ position: "fixed", left: 16, bottom: `calc(${isPhone ? 44 : 52}px + env(safe-area-inset-bottom, 0px))`, zIndex: 81, pointerEvents: "auto" }}>
         <FeedbackBar />
       </div>
 
-      <div style={{ position: "fixed", left: 0, right: 0, bottom: isPhone ? 8 : 10, zIndex: 80, padding: "0 16px", pointerEvents: "none" }} aria-label="Bottom music dock">
+      <div style={{ position: "fixed", left: 0, right: 0, bottom: `calc(${isPhone ? 8 : 10}px + env(safe-area-inset-bottom, 0px))`, zIndex: 80, padding: "0 16px", pointerEvents: "none" }} aria-label="Bottom music dock">
         <div style={{ maxWidth: PAGE_MAX, margin: "0 auto", pointerEvents: "auto" }}>
           <BottomMusicBar />
         </div>
