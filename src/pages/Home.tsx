@@ -12,7 +12,7 @@ import { MercyGuide } from "@/components/MercyGuide";
 import { FeedbackBar } from "@/components/FeedbackBar";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { useAuth } from "@/providers/AuthProvider";
-import { useFeatureFlag } from "@/hooks/useFeatureFlag";
+import { usePlacementFlag } from "@/lib/placement/usePlacementFlag";
 import { supabase } from "@/lib/supabaseClient";
 
 const LS_PLACEMENT_BANNER_DISMISSED = "mb.placement.banner.dismissed";
@@ -62,10 +62,8 @@ export default function Home() {
   const nav    = useNavigate();
   const access = useUserAccess();
   const { user } = useAuth();
-  const { enabled: placementFlagEnabled } = useFeatureFlag(
-    "placement_test_enabled",
-    false,
-  );
+  const { enabled: placementFlagEnabled, loading: placementFlagLoading } =
+    usePlacementFlag(user?.id ?? null);
 
   const [placementBannerDismissed, setPlacementBannerDismissed] = useState<boolean>(() => {
     try {
@@ -138,12 +136,25 @@ export default function Home() {
   // completed the placement test. If NOT, and they haven't already been
   // redirected once this session (to avoid ping-pong), send them to
   // /placement. If YES, show the dismissible banner instead.
+  //
+  // Diagnostic console logs are intentional — feature flags + auth +
+  // profile fetch is a three-way race that's a pain to debug blind.
+  // Safe to keep in prod; they're prefixed and rare.
   useEffect(() => {
-    if (!placementFlagEnabled) return;
+    if (placementFlagLoading) {
+      console.log("[Home/placement] flag still resolving, waiting");
+      return;
+    }
+    if (!placementFlagEnabled) {
+      console.log("[Home/placement] flag disabled for this user");
+      return;
+    }
     if (!user?.id) {
+      console.log("[Home/placement] no authenticated user");
       setPlacementCompleted(null);
       return;
     }
+
     let cancelled = false;
     (async () => {
       const { data, error } = await supabase
@@ -153,7 +164,7 @@ export default function Home() {
         .maybeSingle();
       if (cancelled) return;
       if (error) {
-        console.warn("[Home] placement fetch:", error.message);
+        console.warn("[Home/placement] profile fetch error:", error.message);
         setPlacementCompleted(null);
         return;
       }
@@ -163,24 +174,32 @@ export default function Home() {
       const completed = Boolean(completedAt);
       setPlacementCompleted(completed);
 
-      if (!completed) {
-        let alreadyRedirected = false;
-        try {
-          alreadyRedirected =
-            window.sessionStorage.getItem(LS_PLACEMENT_REDIRECT_SEEN) === "1";
-        } catch { /* ignore */ }
-        if (!alreadyRedirected) {
-          try {
-            window.sessionStorage.setItem(LS_PLACEMENT_REDIRECT_SEEN, "1");
-          } catch { /* ignore */ }
-          nav("/placement", { replace: true });
-        }
+      if (completed) {
+        console.log("[Home/placement] already completed at", completedAt);
+        return;
       }
+
+      let alreadyRedirected = false;
+      try {
+        alreadyRedirected =
+          window.sessionStorage.getItem(LS_PLACEMENT_REDIRECT_SEEN) === "1";
+      } catch { /* ignore */ }
+
+      if (alreadyRedirected) {
+        console.log("[Home/placement] redirect already seen this session — showing banner instead");
+        return;
+      }
+
+      try {
+        window.sessionStorage.setItem(LS_PLACEMENT_REDIRECT_SEEN, "1");
+      } catch { /* ignore */ }
+      console.log("[Home/placement] redirecting to /placement");
+      nav("/placement", { replace: true });
     })();
     return () => {
       cancelled = true;
     };
-  }, [placementFlagEnabled, user?.id, nav]);
+  }, [placementFlagLoading, placementFlagEnabled, user?.id, nav]);
 
   const dismissPlacementBanner = () => {
     try {

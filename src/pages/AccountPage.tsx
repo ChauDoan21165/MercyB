@@ -4,7 +4,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/providers/AuthProvider";
 import { useEntitlements } from "@/lib/useEntitlements";
-import { useFeatureFlag } from "@/hooks/useFeatureFlag";
+import { usePlacementFlag } from "@/lib/placement/usePlacementFlag";
 import { GiftCodeModal } from "@/components/GiftCodeModal";
 import { supabase } from "@/lib/supabaseClient";
 
@@ -170,10 +170,7 @@ export default function AccountPage() {
   }, [nav]);
 
   // ── Placement test (feature-flagged) ──────────────────────────────
-  const { enabled: placementFlagEnabled } = useFeatureFlag(
-    "placement_test_enabled",
-    false,
-  );
+  const { enabled: placementFlagEnabled } = usePlacementFlag(user?.id ?? null);
   const [placementInfo, setPlacementInfo] = useState<{
     completedAt: string | null;
     cefr: string | null;
