@@ -8,25 +8,37 @@
 //   - skill           — what the question primarily tests (grammar, vocabulary,
 //                       usage, reading)
 //   - cefrDescriptor  — plain-English citation of the CEFR descriptor this
-//                       question targets (for review)
-//   - prompt          — bilingual question text (en + vi)
-//   - options         — 4 choices (id a..d), bilingual labels
+//                       question targets (for review). Items targeting
+//                       Vietnamese L1 interference are prefixed with
+//                       "Vietnamese L1 interference: <pattern>".
+//   - prompt          — bilingual question text (en + vi). Vietnamese is
+//                       provided to help learners understand the task.
+//   - options         — 4 choices (id a..d). OPTION LABELS ARE ENGLISH ONLY.
+//                       The schema keeps a BilingualText shape for simplicity,
+//                       but vi === en for every option so we don't leak the
+//                       answer via translation (doing otherwise lets learners
+//                       pattern-match in Vietnamese rather than actually
+//                       reading the English).
 //   - correctOptionId — which option id is correct
 //
-// Reading questions additionally carry a `passage` field with a short bilingual
-// passage. Both the passage and the question options are translated so a user
-// reading in "VI mode" can still benchmark their EN proficiency — the text being
-// tested is always the English, but the Vietnamese gives navigational support.
+// Reading questions additionally carry a `passage` field with a bilingual
+// passage. The passage is translated so a learner can navigate, but the skill
+// being tested is comprehension of the English — the Vietnamese is support,
+// not the answer key.
 //
-// Distribution (40 questions):
-//   A1: 7 multiple-choice + 1 reading  = 8
-//   A2: 6 multiple-choice + 2 reading  = 8
-//   B1: 5 multiple-choice + 3 reading  = 8
-//   B2: 4 multiple-choice + 2 reading  = 6
-//   C1: 4 multiple-choice + 2 reading  = 6
-//   C2: 4 multiple-choice + 0 reading  = 4
+// Distribution (43 questions):
+//   A1: 8 multiple-choice + 1 reading             = 9
+//   A2: 9 multiple-choice + 2 reading             = 11
+//   B1: 6 multiple-choice + 3 reading             = 9
+//   B2: 4 multiple-choice + 2 reading             = 6
+//   C1: 4 multiple-choice + 2 reading             = 6
+//   C2: 4 multiple-choice + 0 reading             = 4
 //
-// No audio/listening questions in v0 (deferred to v1 per Chau's decision).
+// Includes 3 Vietnamese-L1-interference items (q_a1_009 plural -s,
+// q_a2_009 past -ed, q_b1_009 third-person -s) — documented Vietnamese
+// learner error patterns that raw CEFR tests often miss.
+//
+// No audio / listening questions in v0 (deferred to v1 per Chau's decision).
 // No runtime AI — deterministic scoring only.
 
 export type CEFR = 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2';
@@ -40,6 +52,7 @@ export type BilingualText = {
 
 export type QuestionOption = {
   id: 'a' | 'b' | 'c' | 'd';
+  /** Option labels are English only. vi === en by contract. */
   text: BilingualText;
 };
 
@@ -69,8 +82,11 @@ export type PlacementQuestion =
   | MultipleChoiceQuestion
   | ReadingComprehensionQuestion;
 
+// Helper: option labels are English only. vi === en.
+const en = (text: string): BilingualText => ({ en: text, vi: text });
+
 // ─────────────────────────────────────────────────────────────────────────────
-// A1 — Basic survival, present tense, simple sentences (8 questions)
+// A1 — Basic survival, present tense, simple sentences (9 questions)
 // ─────────────────────────────────────────────────────────────────────────────
 
 const A1: PlacementQuestion[] = [
@@ -86,10 +102,10 @@ const A1: PlacementQuestion[] = [
       vi: 'I ___ a student.',
     },
     options: [
-      { id: 'a', text: { en: 'is', vi: 'is' } },
-      { id: 'b', text: { en: 'am', vi: 'am' } },
-      { id: 'c', text: { en: 'are', vi: 'are' } },
-      { id: 'd', text: { en: 'be', vi: 'be' } },
+      { id: 'a', text: en('is') },
+      { id: 'b', text: en('am') },
+      { id: 'c', text: en('are') },
+      { id: 'd', text: en('be') },
     ],
     correctOptionId: 'b',
   },
@@ -99,16 +115,16 @@ const A1: PlacementQuestion[] = [
     cefr: 'A1',
     difficulty: 1,
     skill: 'vocabulary',
-    cefrDescriptor: "A1 vocabulary: basic personal information (name / age / greeting)",
+    cefrDescriptor: 'A1 vocabulary: basic personal information (name / age / greeting)',
     prompt: {
       en: 'Hello, my ___ is Minh.',
       vi: 'Hello, my ___ is Minh.',
     },
     options: [
-      { id: 'a', text: { en: 'name', vi: 'name (tên)' } },
-      { id: 'b', text: { en: 'age', vi: 'age (tuổi)' } },
-      { id: 'c', text: { en: 'color', vi: 'color (màu)' } },
-      { id: 'd', text: { en: 'house', vi: 'house (nhà)' } },
+      { id: 'a', text: en('name') },
+      { id: 'b', text: en('age') },
+      { id: 'c', text: en('color') },
+      { id: 'd', text: en('house') },
     ],
     correctOptionId: 'a',
   },
@@ -124,10 +140,10 @@ const A1: PlacementQuestion[] = [
       vi: 'There are ___ days in a week.',
     },
     options: [
-      { id: 'a', text: { en: 'five', vi: 'five (năm)' } },
-      { id: 'b', text: { en: 'six', vi: 'six (sáu)' } },
-      { id: 'c', text: { en: 'seven', vi: 'seven (bảy)' } },
-      { id: 'd', text: { en: 'ten', vi: 'ten (mười)' } },
+      { id: 'a', text: en('five') },
+      { id: 'b', text: en('six') },
+      { id: 'c', text: en('seven') },
+      { id: 'd', text: en('ten') },
     ],
     correctOptionId: 'c',
   },
@@ -143,10 +159,10 @@ const A1: PlacementQuestion[] = [
       vi: 'She is ___ engineer.',
     },
     options: [
-      { id: 'a', text: { en: 'a', vi: 'a' } },
-      { id: 'b', text: { en: 'an', vi: 'an' } },
-      { id: 'c', text: { en: 'the', vi: 'the' } },
-      { id: 'd', text: { en: '(no article)', vi: '(không có mạo từ)' } },
+      { id: 'a', text: en('a') },
+      { id: 'b', text: en('an') },
+      { id: 'c', text: en('the') },
+      { id: 'd', text: en('(no article)') },
     ],
     correctOptionId: 'b',
   },
@@ -162,10 +178,10 @@ const A1: PlacementQuestion[] = [
       vi: 'This is my brother. ___ name is Tom.',
     },
     options: [
-      { id: 'a', text: { en: 'He', vi: 'He' } },
-      { id: 'b', text: { en: 'Him', vi: 'Him' } },
-      { id: 'c', text: { en: 'His', vi: 'His' } },
-      { id: 'd', text: { en: "He's", vi: "He's" } },
+      { id: 'a', text: en('He') },
+      { id: 'b', text: en('Him') },
+      { id: 'c', text: en('His') },
+      { id: 'd', text: en("He's") },
     ],
     correctOptionId: 'c',
   },
@@ -181,10 +197,10 @@ const A1: PlacementQuestion[] = [
       vi: "My father's brother is my ___.",
     },
     options: [
-      { id: 'a', text: { en: 'cousin', vi: 'cousin (anh/em họ)' } },
-      { id: 'b', text: { en: 'nephew', vi: 'nephew (cháu trai)' } },
-      { id: 'c', text: { en: 'uncle', vi: 'uncle (bác/chú)' } },
-      { id: 'd', text: { en: 'grandfather', vi: 'grandfather (ông)' } },
+      { id: 'a', text: en('cousin') },
+      { id: 'b', text: en('nephew') },
+      { id: 'c', text: en('uncle') },
+      { id: 'd', text: en('grandfather') },
     ],
     correctOptionId: 'c',
   },
@@ -200,10 +216,10 @@ const A1: PlacementQuestion[] = [
       vi: '___ do you live?',
     },
     options: [
-      { id: 'a', text: { en: 'What', vi: 'What' } },
-      { id: 'b', text: { en: 'When', vi: 'When' } },
-      { id: 'c', text: { en: 'Where', vi: 'Where' } },
-      { id: 'd', text: { en: 'Who', vi: 'Who' } },
+      { id: 'a', text: en('What') },
+      { id: 'b', text: en('When') },
+      { id: 'c', text: en('Where') },
+      { id: 'd', text: en('Who') },
     ],
     correctOptionId: 'c',
   },
@@ -224,17 +240,37 @@ const A1: PlacementQuestion[] = [
       vi: 'Anna có bao nhiêu con mèo?',
     },
     options: [
-      { id: 'a', text: { en: 'One', vi: 'Một' } },
-      { id: 'b', text: { en: 'Two', vi: 'Hai' } },
-      { id: 'c', text: { en: 'Three', vi: 'Ba' } },
-      { id: 'd', text: { en: 'None', vi: 'Không con nào' } },
+      { id: 'a', text: en('One') },
+      { id: 'b', text: en('Two') },
+      { id: 'c', text: en('Three') },
+      { id: 'd', text: en('None') },
+    ],
+    correctOptionId: 'b',
+  },
+  {
+    id: 'q_a1_009',
+    type: 'multiple_choice',
+    cefr: 'A1',
+    difficulty: 1,
+    skill: 'grammar',
+    cefrDescriptor:
+      'Vietnamese L1 interference: plural noun inflection (-s) — Vietnamese marks plurals with measure words, not suffixes, so learners often drop the -s',
+    prompt: {
+      en: 'I have three ___ on my desk.',
+      vi: 'I have three ___ on my desk.',
+    },
+    options: [
+      { id: 'a', text: en('book') },
+      { id: 'b', text: en('books') },
+      { id: 'c', text: en('bookes') },
+      { id: 'd', text: en('a book') },
     ],
     correctOptionId: 'b',
   },
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
-// A2 — Simple past, basic modals, prepositions (8 questions)
+// A2 — Simple past, basic modals, prepositions (11 questions)
 // ─────────────────────────────────────────────────────────────────────────────
 
 const A2: PlacementQuestion[] = [
@@ -250,10 +286,10 @@ const A2: PlacementQuestion[] = [
       vi: 'Yesterday, I ___ my homework before dinner.',
     },
     options: [
-      { id: 'a', text: { en: 'finish', vi: 'finish' } },
-      { id: 'b', text: { en: 'finishes', vi: 'finishes' } },
-      { id: 'c', text: { en: 'finished', vi: 'finished' } },
-      { id: 'd', text: { en: 'finishing', vi: 'finishing' } },
+      { id: 'a', text: en('finish') },
+      { id: 'b', text: en('finishes') },
+      { id: 'c', text: en('finished') },
+      { id: 'd', text: en('finishing') },
     ],
     correctOptionId: 'c',
   },
@@ -263,16 +299,16 @@ const A2: PlacementQuestion[] = [
     cefr: 'A2',
     difficulty: 2,
     skill: 'grammar',
-    cefrDescriptor: "A2 grammar: past simple of irregular verbs (eat → ate)",
+    cefrDescriptor: 'A2 grammar: past simple of irregular verbs (eat → ate)',
     prompt: {
       en: 'She ___ breakfast at 7 a.m. yesterday.',
       vi: 'She ___ breakfast at 7 a.m. yesterday.',
     },
     options: [
-      { id: 'a', text: { en: 'ate', vi: 'ate' } },
-      { id: 'b', text: { en: 'eat', vi: 'eat' } },
-      { id: 'c', text: { en: 'eated', vi: 'eated' } },
-      { id: 'd', text: { en: 'eating', vi: 'eating' } },
+      { id: 'a', text: en('ate') },
+      { id: 'b', text: en('eat') },
+      { id: 'c', text: en('eated') },
+      { id: 'd', text: en('eating') },
     ],
     correctOptionId: 'a',
   },
@@ -288,10 +324,10 @@ const A2: PlacementQuestion[] = [
       vi: 'My brother is ___ than me.',
     },
     options: [
-      { id: 'a', text: { en: 'tall', vi: 'tall' } },
-      { id: 'b', text: { en: 'taller', vi: 'taller' } },
-      { id: 'c', text: { en: 'tallest', vi: 'tallest' } },
-      { id: 'd', text: { en: 'more tall', vi: 'more tall' } },
+      { id: 'a', text: en('tall') },
+      { id: 'b', text: en('taller') },
+      { id: 'c', text: en('tallest') },
+      { id: 'd', text: en('more tall') },
     ],
     correctOptionId: 'b',
   },
@@ -307,10 +343,10 @@ const A2: PlacementQuestion[] = [
       vi: 'She ___ speak three languages.',
     },
     options: [
-      { id: 'a', text: { en: 'cans', vi: 'cans' } },
-      { id: 'b', text: { en: 'can', vi: 'can' } },
-      { id: 'c', text: { en: 'caning', vi: 'caning' } },
-      { id: 'd', text: { en: 'canning', vi: 'canning' } },
+      { id: 'a', text: en('cans') },
+      { id: 'b', text: en('can') },
+      { id: 'c', text: en('caning') },
+      { id: 'd', text: en('canning') },
     ],
     correctOptionId: 'b',
   },
@@ -320,16 +356,16 @@ const A2: PlacementQuestion[] = [
     cefr: 'A2',
     difficulty: 2,
     skill: 'vocabulary',
-    cefrDescriptor: "A2 vocabulary: prepositions of time (in / on / at) with years",
+    cefrDescriptor: 'A2 vocabulary: prepositions of time (in / on / at) with years',
     prompt: {
       en: 'I was born ___ 1995.',
       vi: 'I was born ___ 1995.',
     },
     options: [
-      { id: 'a', text: { en: 'on', vi: 'on' } },
-      { id: 'b', text: { en: 'at', vi: 'at' } },
-      { id: 'c', text: { en: 'in', vi: 'in' } },
-      { id: 'd', text: { en: 'by', vi: 'by' } },
+      { id: 'a', text: en('on') },
+      { id: 'b', text: en('at') },
+      { id: 'c', text: en('in') },
+      { id: 'd', text: en('by') },
     ],
     correctOptionId: 'c',
   },
@@ -345,10 +381,10 @@ const A2: PlacementQuestion[] = [
       vi: 'Look at those clouds! It ___ rain.',
     },
     options: [
-      { id: 'a', text: { en: 'is going to', vi: 'is going to' } },
-      { id: 'b', text: { en: 'go to', vi: 'go to' } },
-      { id: 'c', text: { en: 'goes', vi: 'goes' } },
-      { id: 'd', text: { en: 'will going', vi: 'will going' } },
+      { id: 'a', text: en('is going to') },
+      { id: 'b', text: en('go to') },
+      { id: 'c', text: en('goes') },
+      { id: 'd', text: en('will going') },
     ],
     correctOptionId: 'a',
   },
@@ -368,10 +404,10 @@ const A2: PlacementQuestion[] = [
       vi: 'Minh đã ăn gì vào bữa trưa?',
     },
     options: [
-      { id: 'a', text: { en: 'Rice', vi: 'Cơm' } },
-      { id: 'b', text: { en: 'Noodles', vi: 'Phở' } },
-      { id: 'c', text: { en: 'Pizza', vi: 'Pizza' } },
-      { id: 'd', text: { en: 'Fish', vi: 'Cá' } },
+      { id: 'a', text: en('Rice') },
+      { id: 'b', text: en('Noodles') },
+      { id: 'c', text: en('Pizza') },
+      { id: 'd', text: en('Fish') },
     ],
     correctOptionId: 'b',
   },
@@ -391,17 +427,37 @@ const A2: PlacementQuestion[] = [
       vi: 'Người mẹ đi làm bằng phương tiện gì?',
     },
     options: [
-      { id: 'a', text: { en: 'By bus', vi: 'Bằng xe buýt' } },
-      { id: 'b', text: { en: 'By car', vi: 'Bằng ô tô' } },
-      { id: 'c', text: { en: 'By motorbike', vi: 'Bằng xe máy' } },
-      { id: 'd', text: { en: 'By bicycle', vi: 'Bằng xe đạp' } },
+      { id: 'a', text: en('By bus') },
+      { id: 'b', text: en('By car') },
+      { id: 'c', text: en('By motorbike') },
+      { id: 'd', text: en('By bicycle') },
     ],
     correctOptionId: 'c',
+  },
+  {
+    id: 'q_a2_009',
+    type: 'multiple_choice',
+    cefr: 'A2',
+    difficulty: 2,
+    skill: 'grammar',
+    cefrDescriptor:
+      'Vietnamese L1 interference: past-simple regular -ed ending — Vietnamese speech tends to drop final consonants, so "walked" is often heard/written as "walk"',
+    prompt: {
+      en: 'Yesterday I ___ to the market with my mother.',
+      vi: 'Yesterday I ___ to the market with my mother.',
+    },
+    options: [
+      { id: 'a', text: en('walk') },
+      { id: 'b', text: en('walked') },
+      { id: 'c', text: en('walking') },
+      { id: 'd', text: en('walks') },
+    ],
+    correctOptionId: 'b',
   },
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
-// B1 — Present perfect, conditionals, phrasal verbs (8 questions)
+// B1 — Present perfect, conditionals, phrasal verbs (9 questions)
 // ─────────────────────────────────────────────────────────────────────────────
 
 const B1: PlacementQuestion[] = [
@@ -417,10 +473,10 @@ const B1: PlacementQuestion[] = [
       vi: '___ you ever ___ to Japan?',
     },
     options: [
-      { id: 'a', text: { en: 'Did / go', vi: 'Did / go' } },
-      { id: 'b', text: { en: 'Have / gone', vi: 'Have / gone' } },
-      { id: 'c', text: { en: 'Are / going', vi: 'Are / going' } },
-      { id: 'd', text: { en: 'Do / go', vi: 'Do / go' } },
+      { id: 'a', text: en('Did / go') },
+      { id: 'b', text: en('Have / gone') },
+      { id: 'c', text: en('Are / going') },
+      { id: 'd', text: en('Do / go') },
     ],
     correctOptionId: 'b',
   },
@@ -436,10 +492,10 @@ const B1: PlacementQuestion[] = [
       vi: 'If it rains tomorrow, we ___ the picnic.',
     },
     options: [
-      { id: 'a', text: { en: 'cancel', vi: 'cancel' } },
-      { id: 'b', text: { en: 'will cancel', vi: 'will cancel' } },
-      { id: 'c', text: { en: 'would cancel', vi: 'would cancel' } },
-      { id: 'd', text: { en: 'have cancelled', vi: 'have cancelled' } },
+      { id: 'a', text: en('cancel') },
+      { id: 'b', text: en('will cancel') },
+      { id: 'c', text: en('would cancel') },
+      { id: 'd', text: en('have cancelled') },
     ],
     correctOptionId: 'b',
   },
@@ -455,10 +511,10 @@ const B1: PlacementQuestion[] = [
       vi: 'While I ___ dinner, the phone rang.',
     },
     options: [
-      { id: 'a', text: { en: 'cooked', vi: 'cooked' } },
-      { id: 'b', text: { en: 'was cooking', vi: 'was cooking' } },
-      { id: 'c', text: { en: 'have cooked', vi: 'have cooked' } },
-      { id: 'd', text: { en: 'cook', vi: 'cook' } },
+      { id: 'a', text: en('cooked') },
+      { id: 'b', text: en('was cooking') },
+      { id: 'c', text: en('have cooked') },
+      { id: 'd', text: en('cook') },
     ],
     correctOptionId: 'b',
   },
@@ -468,18 +524,19 @@ const B1: PlacementQuestion[] = [
     cefr: 'B1',
     difficulty: 3,
     skill: 'vocabulary',
-    cefrDescriptor: "B1 vocabulary: common phrasal verbs ('get up' for waking)",
+    cefrDescriptor:
+      "B1 vocabulary: three-word phrasal verbs — 'put up with' (tolerate). Tests preposition-selection awareness beyond surface-level phrasal-verb recognition.",
     prompt: {
-      en: 'I need to ___ early tomorrow for my flight.',
-      vi: 'I need to ___ early tomorrow for my flight.',
+      en: "I can't ___ his rude behavior any longer.",
+      vi: "I can't ___ his rude behavior any longer.",
     },
     options: [
-      { id: 'a', text: { en: 'get up', vi: 'get up' } },
-      { id: 'b', text: { en: 'get off', vi: 'get off' } },
-      { id: 'c', text: { en: 'get by', vi: 'get by' } },
-      { id: 'd', text: { en: 'get away', vi: 'get away' } },
+      { id: 'a', text: en('put away') },
+      { id: 'b', text: en('put up with') },
+      { id: 'c', text: en('put down') },
+      { id: 'd', text: en('put off') },
     ],
-    correctOptionId: 'a',
+    correctOptionId: 'b',
   },
   {
     id: 'q_b1_005',
@@ -493,10 +550,10 @@ const B1: PlacementQuestion[] = [
       vi: 'She said she ___ tired.',
     },
     options: [
-      { id: 'a', text: { en: 'is', vi: 'is' } },
-      { id: 'b', text: { en: 'was', vi: 'was' } },
-      { id: 'c', text: { en: 'be', vi: 'be' } },
-      { id: 'd', text: { en: 'has been', vi: 'has been' } },
+      { id: 'a', text: en('is') },
+      { id: 'b', text: en('was') },
+      { id: 'c', text: en('be') },
+      { id: 'd', text: en('has been') },
     ],
     correctOptionId: 'b',
   },
@@ -508,7 +565,7 @@ const B1: PlacementQuestion[] = [
     skill: 'reading',
     cefrDescriptor: 'B1 reading: opinion article, identify cause',
     passage: {
-      en: "Many young people in Vietnam are learning English to find better jobs. English is not only useful for business, but also for travel and making friends from other countries. However, learning a language takes time and practice. Some learners give up because they feel shy when speaking. It is important to remember that making mistakes is part of learning.",
+      en: 'Many young people in Vietnam are learning English to find better jobs. English is not only useful for business, but also for travel and making friends from other countries. However, learning a language takes time and practice. Some learners give up because they feel shy when speaking. It is important to remember that making mistakes is part of learning.',
       vi: 'Nhiều bạn trẻ ở Việt Nam học tiếng Anh để tìm công việc tốt hơn. Tiếng Anh không chỉ hữu ích trong kinh doanh, mà còn giúp du lịch và kết bạn với người nước ngoài. Tuy nhiên, học ngôn ngữ cần thời gian và luyện tập. Một số người bỏ cuộc vì họ cảm thấy ngại khi nói. Điều quan trọng là phải nhớ rằng mắc lỗi là một phần của quá trình học.',
     },
     prompt: {
@@ -516,10 +573,10 @@ const B1: PlacementQuestion[] = [
       vi: 'Theo bài đọc, vì sao một số người học bỏ cuộc?',
     },
     options: [
-      { id: 'a', text: { en: 'Because English is too difficult', vi: 'Vì tiếng Anh quá khó' } },
-      { id: 'b', text: { en: "Because they don't have time", vi: 'Vì họ không có thời gian' } },
-      { id: 'c', text: { en: 'Because they feel shy when speaking', vi: 'Vì họ cảm thấy ngại khi nói' } },
-      { id: 'd', text: { en: "Because they can't find a teacher", vi: 'Vì họ không tìm được giáo viên' } },
+      { id: 'a', text: en('Because English is too difficult') },
+      { id: 'b', text: en("Because they don't have time") },
+      { id: 'c', text: en('Because they feel shy when speaking') },
+      { id: 'd', text: en("Because they can't find a teacher") },
     ],
     correctOptionId: 'c',
   },
@@ -539,10 +596,10 @@ const B1: PlacementQuestion[] = [
       vi: 'Bạn nên làm gì trước khi đặt nhân vào bánh tráng?',
     },
     options: [
-      { id: 'a', text: { en: 'Cook the shrimp', vi: 'Nấu tôm' } },
-      { id: 'b', text: { en: 'Chop the herbs', vi: 'Thái rau thơm' } },
-      { id: 'c', text: { en: 'Dip the rice paper in warm water', vi: 'Nhúng bánh tráng vào nước ấm' } },
-      { id: 'd', text: { en: 'Make the peanut sauce', vi: 'Làm nước chấm đậu phộng' } },
+      { id: 'a', text: en('Cook the shrimp') },
+      { id: 'b', text: en('Chop the herbs') },
+      { id: 'c', text: en('Dip the rice paper in warm water') },
+      { id: 'd', text: en('Make the peanut sauce') },
     ],
     correctOptionId: 'c',
   },
@@ -562,10 +619,30 @@ const B1: PlacementQuestion[] = [
       vi: 'Thư viện đóng cửa vào ngày nào?',
     },
     options: [
-      { id: 'a', text: { en: 'On Sunday', vi: 'Chủ nhật' } },
-      { id: 'b', text: { en: 'On Monday', vi: 'Thứ hai' } },
-      { id: 'c', text: { en: 'In the morning', vi: 'Buổi sáng' } },
-      { id: 'd', text: { en: 'After 9 p.m.', vi: 'Sau 9 giờ tối' } },
+      { id: 'a', text: en('On Sunday') },
+      { id: 'b', text: en('On Monday') },
+      { id: 'c', text: en('In the morning') },
+      { id: 'd', text: en('After 9 p.m.') },
+    ],
+    correctOptionId: 'b',
+  },
+  {
+    id: 'q_b1_009',
+    type: 'multiple_choice',
+    cefr: 'B1',
+    difficulty: 3,
+    skill: 'grammar',
+    cefrDescriptor:
+      'Vietnamese L1 interference: third-person singular -s in present simple. This is the most chronic Vietnamese-learner error and often persists into B1 / B2 — placing it at B1 catches learners whose level is otherwise B1 but who still miss this feature.',
+    prompt: {
+      en: 'She ___ English every day.',
+      vi: 'She ___ English every day.',
+    },
+    options: [
+      { id: 'a', text: en('study') },
+      { id: 'b', text: en('studies') },
+      { id: 'c', text: en('studying') },
+      { id: 'd', text: en('studied') },
     ],
     correctOptionId: 'b',
   },
@@ -588,10 +665,10 @@ const B2: PlacementQuestion[] = [
       vi: 'If I ___ you, I would apologize immediately.',
     },
     options: [
-      { id: 'a', text: { en: 'am', vi: 'am' } },
-      { id: 'b', text: { en: 'was', vi: 'was' } },
-      { id: 'c', text: { en: 'were', vi: 'were' } },
-      { id: 'd', text: { en: 'would be', vi: 'would be' } },
+      { id: 'a', text: en('am') },
+      { id: 'b', text: en('was') },
+      { id: 'c', text: en('were') },
+      { id: 'd', text: en('would be') },
     ],
     correctOptionId: 'c',
   },
@@ -607,10 +684,10 @@ const B2: PlacementQuestion[] = [
       vi: 'If she ___ studied harder, she would have passed the exam.',
     },
     options: [
-      { id: 'a', text: { en: 'has', vi: 'has' } },
-      { id: 'b', text: { en: 'had', vi: 'had' } },
-      { id: 'c', text: { en: 'have', vi: 'have' } },
-      { id: 'd', text: { en: 'would have', vi: 'would have' } },
+      { id: 'a', text: en('has') },
+      { id: 'b', text: en('had') },
+      { id: 'c', text: en('have') },
+      { id: 'd', text: en('would have') },
     ],
     correctOptionId: 'b',
   },
@@ -626,10 +703,10 @@ const B2: PlacementQuestion[] = [
       vi: 'The report ___ by tomorrow morning.',
     },
     options: [
-      { id: 'a', text: { en: 'will finish', vi: 'will finish' } },
-      { id: 'b', text: { en: 'will be finished', vi: 'will be finished' } },
-      { id: 'c', text: { en: 'finishes', vi: 'finishes' } },
-      { id: 'd', text: { en: 'has finished', vi: 'has finished' } },
+      { id: 'a', text: en('will finish') },
+      { id: 'b', text: en('will be finished') },
+      { id: 'c', text: en('finishes') },
+      { id: 'd', text: en('has finished') },
     ],
     correctOptionId: 'b',
   },
@@ -639,18 +716,19 @@ const B2: PlacementQuestion[] = [
     cefr: 'B2',
     difficulty: 4,
     skill: 'vocabulary',
-    cefrDescriptor: "B2 vocabulary: verb collocations in business register ('deliver a project')",
+    cefrDescriptor:
+      "B2 vocabulary: business collocation — 'meet a deadline'. Distractor verbs (reach, arrive, catch) are plausible from direct translation but wrong in English.",
     prompt: {
-      en: 'Despite the setback, the team managed to ___ the project on schedule.',
-      vi: 'Despite the setback, the team managed to ___ the project on schedule.',
+      en: "We'll have to work overtime to ___ the deadline.",
+      vi: "We'll have to work overtime to ___ the deadline.",
     },
     options: [
-      { id: 'a', text: { en: 'give', vi: 'give' } },
-      { id: 'b', text: { en: 'make', vi: 'make' } },
-      { id: 'c', text: { en: 'deliver', vi: 'deliver' } },
-      { id: 'd', text: { en: 'produce', vi: 'produce' } },
+      { id: 'a', text: en('reach') },
+      { id: 'b', text: en('meet') },
+      { id: 'c', text: en('arrive') },
+      { id: 'd', text: en('catch') },
     ],
-    correctOptionId: 'c',
+    correctOptionId: 'b',
   },
   {
     id: 'q_b2_005',
@@ -668,10 +746,10 @@ const B2: PlacementQuestion[] = [
       vi: 'Tác giả gợi ý điều gì về các tổ chức thành công?',
     },
     options: [
-      { id: 'a', text: { en: 'They avoid remote work entirely', vi: 'Họ hoàn toàn tránh làm việc từ xa' } },
-      { id: 'b', text: { en: 'They treat remote work as a long-term cultural change', vi: 'Họ coi làm việc từ xa là thay đổi văn hóa lâu dài' } },
-      { id: 'c', text: { en: 'They force employees back to the office', vi: 'Họ ép nhân viên quay lại văn phòng' } },
-      { id: 'd', text: { en: 'They only invest in new technology', vi: 'Họ chỉ đầu tư vào công nghệ mới' } },
+      { id: 'a', text: en('They avoid remote work entirely') },
+      { id: 'b', text: en('They treat remote work as a long-term cultural change') },
+      { id: 'c', text: en('They force employees back to the office') },
+      { id: 'd', text: en('They only invest in new technology') },
     ],
     correctOptionId: 'b',
   },
@@ -691,10 +769,10 @@ const B2: PlacementQuestion[] = [
       vi: "Vì sao nụ cười của bố mẹ 'có phần gượng gạo'?",
     },
     options: [
-      { id: 'a', text: { en: 'They were angry with Mai', vi: 'Họ đang giận Mai' } },
-      { id: 'b', text: { en: 'They were in a hurry', vi: 'Họ đang vội' } },
-      { id: 'c', text: { en: 'They were sad to see her leave', vi: 'Họ buồn khi thấy em rời đi' } },
-      { id: 'd', text: { en: 'They disapproved of her decision', vi: 'Họ không đồng ý với quyết định của em' } },
+      { id: 'a', text: en('They were angry with Mai') },
+      { id: 'b', text: en('They were in a hurry') },
+      { id: 'c', text: en('They were sad to see her leave') },
+      { id: 'd', text: en('They disapproved of her decision') },
     ],
     correctOptionId: 'c',
   },
@@ -718,10 +796,10 @@ const C1: PlacementQuestion[] = [
       vi: "If you had followed my advice, you ___ in this mess now.",
     },
     options: [
-      { id: 'a', text: { en: "wouldn't have been", vi: "wouldn't have been" } },
-      { id: 'b', text: { en: "wouldn't be", vi: "wouldn't be" } },
-      { id: 'c', text: { en: "won't be", vi: "won't be" } },
-      { id: 'd', text: { en: "aren't", vi: "aren't" } },
+      { id: 'a', text: en("wouldn't have been") },
+      { id: 'b', text: en("wouldn't be") },
+      { id: 'c', text: en("won't be") },
+      { id: 'd', text: en("aren't") },
     ],
     correctOptionId: 'b',
   },
@@ -737,10 +815,10 @@ const C1: PlacementQuestion[] = [
       vi: 'Never ___ such a beautiful sunset.',
     },
     options: [
-      { id: 'a', text: { en: 'I saw', vi: 'I saw' } },
-      { id: 'b', text: { en: 'I have seen', vi: 'I have seen' } },
-      { id: 'c', text: { en: 'have I seen', vi: 'have I seen' } },
-      { id: 'd', text: { en: 'did I saw', vi: 'did I saw' } },
+      { id: 'a', text: en('I saw') },
+      { id: 'b', text: en('I have seen') },
+      { id: 'c', text: en('have I seen') },
+      { id: 'd', text: en('did I saw') },
     ],
     correctOptionId: 'c',
   },
@@ -756,10 +834,10 @@ const C1: PlacementQuestion[] = [
       vi: 'The evidence is ___, leaving little room for doubt about the conclusion.',
     },
     options: [
-      { id: 'a', text: { en: 'obvious', vi: 'obvious' } },
-      { id: 'b', text: { en: 'conclusive', vi: 'conclusive' } },
-      { id: 'c', text: { en: 'clear', vi: 'clear' } },
-      { id: 'd', text: { en: 'big', vi: 'big' } },
+      { id: 'a', text: en('obvious') },
+      { id: 'b', text: en('conclusive') },
+      { id: 'c', text: en('clear') },
+      { id: 'd', text: en('big') },
     ],
     correctOptionId: 'b',
   },
@@ -775,10 +853,10 @@ const C1: PlacementQuestion[] = [
       vi: 'The report is incomplete; ___, it offers a useful starting point for discussion.',
     },
     options: [
-      { id: 'a', text: { en: 'therefore', vi: 'therefore' } },
-      { id: 'b', text: { en: 'because', vi: 'because' } },
-      { id: 'c', text: { en: 'nevertheless', vi: 'nevertheless' } },
-      { id: 'd', text: { en: 'however then', vi: 'however then' } },
+      { id: 'a', text: en('therefore') },
+      { id: 'b', text: en('because') },
+      { id: 'c', text: en('nevertheless') },
+      { id: 'd', text: en('however then') },
     ],
     correctOptionId: 'c',
   },
@@ -798,10 +876,10 @@ const C1: PlacementQuestion[] = [
       vi: 'Luận điểm chính của tác giả là gì?',
     },
     options: [
-      { id: 'a', text: { en: 'AI will definitely replace human workers', vi: 'AI chắc chắn sẽ thay thế người lao động' } },
-      { id: 'b', text: { en: 'AI should be banned to protect jobs', vi: 'AI nên bị cấm để bảo vệ việc làm' } },
-      { id: 'c', text: { en: 'The social structures around AI matter more than the technology itself', vi: 'Cấu trúc xã hội xung quanh AI quan trọng hơn bản thân công nghệ' } },
-      { id: 'd', text: { en: 'Historical predictions about technology have always been accurate', vi: 'Các dự đoán lịch sử về công nghệ luôn chính xác' } },
+      { id: 'a', text: en('AI will definitely replace human workers') },
+      { id: 'b', text: en('AI should be banned to protect jobs') },
+      { id: 'c', text: en('The social structures around AI matter more than the technology itself') },
+      { id: 'd', text: en('Historical predictions about technology have always been accurate') },
     ],
     correctOptionId: 'c',
   },
@@ -811,7 +889,7 @@ const C1: PlacementQuestion[] = [
     cefr: 'C1',
     difficulty: 5,
     skill: 'reading',
-    cefrDescriptor: "C1 reading: interpret tone — distinguish mild skepticism from direct criticism",
+    cefrDescriptor: 'C1 reading: interpret tone — distinguish mild skepticism from direct criticism',
     passage: {
       en: "Dr. Nguyen's latest book is, to put it charitably, ambitious. She attempts to reconcile twenty centuries of philosophical tradition with contemporary neuroscience in a mere three hundred pages. The result, while occasionally brilliant, more often reads like a tour of highlights selected to support predetermined conclusions rather than a rigorous synthesis. Readers looking for a provocation will find much to underline; those seeking a definitive treatment may wish to keep their expectations modest.",
       vi: 'Cuốn sách mới nhất của Tiến sĩ Nguyễn, nói một cách nhẹ nhàng, là tham vọng. Bà cố gắng dung hòa hai mươi thế kỷ truyền thống triết học với thần kinh học đương đại trong vỏn vẹn ba trăm trang. Kết quả, dù đôi khi xuất sắc, thường đọc giống một chuyến dạo quanh những điểm nhấn được chọn để ủng hộ các kết luận định sẵn hơn là một sự tổng hợp nghiêm ngặt. Những độc giả muốn tìm một tác phẩm khiêu khích sẽ có nhiều chỗ để gạch chân; những ai tìm một công trình dứt khoát có lẽ nên giảm kỳ vọng.',
@@ -821,10 +899,10 @@ const C1: PlacementQuestion[] = [
       vi: 'Thái độ tổng thể của người điểm sách là gì?',
     },
     options: [
-      { id: 'a', text: { en: 'Enthusiastic praise', vi: 'Khen ngợi nồng nhiệt' } },
-      { id: 'b', text: { en: 'Outright condemnation', vi: 'Lên án thẳng thừng' } },
-      { id: 'c', text: { en: 'Polite but skeptical', vi: 'Lịch sự nhưng hoài nghi' } },
-      { id: 'd', text: { en: 'Neutral summary without opinion', vi: 'Tóm tắt trung lập, không đưa ra ý kiến' } },
+      { id: 'a', text: en('Enthusiastic praise') },
+      { id: 'b', text: en('Outright condemnation') },
+      { id: 'c', text: en('Polite but skeptical') },
+      { id: 'd', text: en('Neutral summary without opinion') },
     ],
     correctOptionId: 'c',
   },
@@ -848,10 +926,10 @@ const C2: PlacementQuestion[] = [
       vi: 'The committee recommended that the proposal ___ rejected.',
     },
     options: [
-      { id: 'a', text: { en: 'is', vi: 'is' } },
-      { id: 'b', text: { en: 'was', vi: 'was' } },
-      { id: 'c', text: { en: 'be', vi: 'be' } },
-      { id: 'd', text: { en: 'would be', vi: 'would be' } },
+      { id: 'a', text: en('is') },
+      { id: 'b', text: en('was') },
+      { id: 'c', text: en('be') },
+      { id: 'd', text: en('would be') },
     ],
     correctOptionId: 'c',
   },
@@ -867,10 +945,10 @@ const C2: PlacementQuestion[] = [
       vi: "The minister's remarks were widely condemned as ___ — at best tone-deaf, at worst deliberately provocative.",
     },
     options: [
-      { id: 'a', text: { en: 'confusing', vi: 'confusing' } },
-      { id: 'b', text: { en: 'interesting', vi: 'interesting' } },
-      { id: 'c', text: { en: 'boring', vi: 'boring' } },
-      { id: 'd', text: { en: 'egregious', vi: 'egregious' } },
+      { id: 'a', text: en('confusing') },
+      { id: 'b', text: en('interesting') },
+      { id: 'c', text: en('boring') },
+      { id: 'd', text: en('egregious') },
     ],
     correctOptionId: 'd',
   },
@@ -886,10 +964,10 @@ const C2: PlacementQuestion[] = [
       vi: 'The policy, though well-intentioned, has ___ created more problems than it has solved.',
     },
     options: [
-      { id: 'a', text: { en: 'by and large', vi: 'by and large' } },
-      { id: 'b', text: { en: 'in the mean', vi: 'in the mean' } },
-      { id: 'c', text: { en: 'by the way', vi: 'by the way' } },
-      { id: 'd', text: { en: 'on all hand', vi: 'on all hand' } },
+      { id: 'a', text: en('by and large') },
+      { id: 'b', text: en('in the mean') },
+      { id: 'c', text: en('by the way') },
+      { id: 'd', text: en('on all hand') },
     ],
     correctOptionId: 'a',
   },
@@ -905,10 +983,10 @@ const C2: PlacementQuestion[] = [
       vi: 'I would sooner eat glass than ___ another meeting about it.',
     },
     options: [
-      { id: 'a', text: { en: 'to sit through', vi: 'to sit through' } },
-      { id: 'b', text: { en: 'sit through', vi: 'sit through' } },
-      { id: 'c', text: { en: 'sitting through', vi: 'sitting through' } },
-      { id: 'd', text: { en: 'I sit through', vi: 'I sit through' } },
+      { id: 'a', text: en('to sit through') },
+      { id: 'b', text: en('sit through') },
+      { id: 'c', text: en('sitting through') },
+      { id: 'd', text: en('I sit through') },
     ],
     correctOptionId: 'b',
   },
