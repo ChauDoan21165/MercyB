@@ -53,7 +53,10 @@ function MercyRightBrandOverlayInline() {
           backdropFilter: "blur(10px)",
           boxShadow: "0 22px 70px rgba(0,0,0,0.10)",
           padding: "14px 18px",
-          maxWidth: 720,
+          // min(720px, 100%) is equivalent to maxWidth:720 + width:100% here,
+          // but makes the "never wider than parent" constraint explicit so a
+          // future edit can't accidentally drop the width:100% and break it.
+          maxWidth: "min(720px, 100%)",
           width: "100%",
           display: "flex",
           alignItems: "center",
