@@ -1,10 +1,14 @@
 // File: api/mercy/grammar.ts
 import type { VercelRequest, VercelResponse } from "@vercel/node";
+import { createClient } from "@supabase/supabase-js";
+import { firstL1HintFromIssues, type L1HintPayload } from "../../server/mercy/l1HintAdapter";
+import { isFlagEnabledForUser } from "../../src/lib/featureFlags";
 
 type GrammarBody = {
   text?: string; context?: string; mode?: string;
   englishLevel?: string; focus?: string;
   isRevisionAttempt?: boolean; originalText?: string;
+  userId?: string;  // Supabase user id — required for per-user L1 flag gate
 };
 
 type GrammarResult = {
@@ -14,8 +18,27 @@ type GrammarResult = {
   grammarPoints?: string[];
   tenseAnalysis?: { likelyMainTense?: string };
   issues?: Array<{ original: string; corrected: string; reason: string }>;
+  l1Hint?: L1HintPayload;  // present iff feedbackL1DetectorEnabled for this user
   error?: string;
 };
+
+// ─────────────────────────────────────────────────────────────────────────
+// Supabase client for the L1 feature-flag check. Built lazily on first
+// request so cold starts don't pay the cost when the flag is OFF.
+// ─────────────────────────────────────────────────────────────────────────
+const L1_FLAG_KEY = "feedbackL1DetectorEnabled";
+let supabaseSingleton: ReturnType<typeof createClient> | null = null;
+
+function getSupabaseClient() {
+  if (supabaseSingleton) return supabaseSingleton;
+  const url = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL || "";
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
+  if (!url || !key) return null;
+  supabaseSingleton = createClient(url, key, {
+    auth: { persistSession: false, autoRefreshToken: false },
+  });
+  return supabaseSingleton;
+}
 
 function asString(value: unknown, max = 1200): string {
   return typeof value === "string" ? value.trim().slice(0, max) : "";
@@ -108,6 +131,27 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       let parsed: any = {};
       try { parsed = JSON.parse(raw); } catch { parsed = { correctedText: text, feedback: raw }; }
 
+      const issues = Array.isArray(parsed.issues) ? parsed.issues : [];
+
+      // ── L1 detector (feature-flagged, default OFF globally) ─────────
+      // Runs only when (a) the request carries a userId, (b) the user is
+      // in the flag's enabled_user_ids cohort OR the flag is globally ON,
+      // and (c) Supabase env vars are available on this deployment. Any
+      // failure silently leaves the response unchanged.
+      const userId = asString(body.userId, 64);
+      let l1Hint: L1HintPayload | null = null;
+      if (userId) {
+        const sb = getSupabaseClient();
+        if (sb) {
+          try {
+            const flagOn = await isFlagEnabledForUser(sb, L1_FLAG_KEY, userId);
+            if (flagOn) l1Hint = firstL1HintFromIssues(issues);
+          } catch (err) {
+            console.warn("[grammar] L1 flag lookup failed (silently off):", err);
+          }
+        }
+      }
+
       return sendJson(res, 200, {
         ok: true,
         correctedText: parsed.correctedText || text,
@@ -116,7 +160,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         feedback: parsed.feedback || "Good effort! Keep going.",
         grammarPoints: Array.isArray(parsed.grammarPoints) ? parsed.grammarPoints : [],
         tenseAnalysis: parsed.tenseAnalysis || {},
-        issues: Array.isArray(parsed.issues) ? parsed.issues : [],
+        issues,
+        ...(l1Hint ? { l1Hint } : {}),
       });
     } catch (error) {
       const isAbort = error instanceof Error && error.name === "AbortError";
