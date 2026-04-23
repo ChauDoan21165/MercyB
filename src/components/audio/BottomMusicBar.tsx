@@ -293,66 +293,38 @@ export default function BottomMusicBar() {
     }
   };
 
+  const progressPct = (current / duration) * 100 || 0;
+
   return (
-    <div
-      data-mb-bottom-bar="1"
-      style={{
-        position: "fixed",
-        bottom: 0,
-        left: 0,
-        width: "100%",
-        background: "rgba(255,255,255,0.98)",
-        backdropFilter: "blur(20px)",
-        borderTop: "1px solid rgba(0,0,0,0.06)",
-        padding: "0 15px",
-        height: "36px",
-        display: "flex",
-        alignItems: "center",
-        gap: "12px",
-        zIndex: 1000,
-        touchAction: "pan-x pan-y",
-      }}
-    >
-      <div style={{ display: "flex", alignItems: "center", gap: "8px", flexShrink: 0 }}>
+    <div data-mb-bottom-bar="1" className="mb-bar">
+      <div className="mb-bar-left">
         <button
+          className="mb-btn"
+          aria-label="Toggle favourites filter"
           onClick={() => {
             const nextTab: TabId = tab === "all" ? "fav" : "all";
             setTab(nextTab);
             localStorage.setItem(LS_TAB, nextTab);
           }}
-          style={{
-            border: "none",
-            background: "none",
-            cursor: "pointer",
-            color: tab === "fav" ? "#E11D48" : "#bbb",
-          }}
+          style={{ color: tab === "fav" ? "#E11D48" : "#bbb" }}
         >
           <Heart size={14} fill={tab === "fav" ? "currentColor" : "none"} />
         </button>
 
         <button
+          className="mb-btn"
           onClick={onTogglePlay}
-          style={{ border: "none", background: "none", cursor: "pointer", color: "#000" }}
+          aria-label={playing ? "Pause" : "Play"}
+          style={{ color: "#000" }}
         >
           {playing ? <Pause size={16} fill="currentColor" /> : <Play size={16} fill="currentColor" />}
         </button>
 
         <select
+          className="mb-title"
           value={track?.id ?? ""}
           onChange={(e) => setTrackId(e.target.value)}
-          style={{
-            border: "none",
-            background: "transparent",
-            borderRadius: "4px",
-            fontSize: "9px",
-            fontWeight: "500",
-            padding: "2px 4px",
-            maxWidth: "110px",
-            minWidth: "60px",
-            flex: "0 0 auto",
-            color: "#333",
-            letterSpacing: "0.01em",
-          }}
+          aria-label="Select track"
         >
           {visibleTracks.map((t) => (
             <option key={t.key} value={t.id}>
@@ -363,48 +335,38 @@ export default function BottomMusicBar() {
         </select>
       </div>
 
-      <div style={{ flex: 1, display: "flex", alignItems: "center", gap: "8px", minWidth: 80 }}>
+      <div className="mb-bar-seek">
         <input
           type="range"
           min={0}
           max={100}
-          value={(current / duration) * 100 || 0}
+          value={progressPct}
           onChange={(e) => {
             const a = audioRef.current;
             if (!a) return;
             a.currentTime = (Number(e.target.value) / 100) * duration;
           }}
-          className="mb-slider-pro mb-slider-progress"
+          className="mb-slider-pro mb-slider-progress mb-seek"
           aria-label="Seek"
-          style={
-            {
-              flex: 1,
-              minWidth: 80,
-              // Fill percentage used by CSS to paint the played portion.
-              "--mb-progress": `${(current / duration) * 100 || 0}%`,
-            } as React.CSSProperties
-          }
+          style={{ "--mb-progress": `${progressPct}%` } as React.CSSProperties}
         />
-        <span style={{ fontSize: "9px", fontWeight: "900", opacity: 0.55, minWidth: 32, textAlign: "right" }}>
-          {formatTime(current)}
+        <span className="mb-time">
+          <span className="mb-time-current">{formatTime(current)}</span>
+          <span className="mb-time-duration"> / {formatTime(duration)}</span>
         </span>
       </div>
 
       <button
+        className="mb-btn"
+        aria-label="Favourite this track"
         onClick={toggleFavCurrent}
-        style={{
-          border: "none",
-          background: "none",
-          cursor: "pointer",
-          color: track && favorites[track.id] ? "#E11D48" : "#ccc",
-          flexShrink: 0,
-        }}
+        style={{ color: track && favorites[track.id] ? "#E11D48" : "#ccc" }}
       >
         <Heart size={14} fill={track && favorites[track.id] ? "currentColor" : "none"} />
       </button>
 
-      <div style={{ display: "flex", alignItems: "center", gap: "10px", flexShrink: 0 }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+      <div className="mb-bar-right">
+        <div className="mb-bar-slot">
           <Volume2 size={12} color="#aaa" />
           <input
             type="range"
@@ -418,14 +380,14 @@ export default function BottomMusicBar() {
               if (a) a.volume = v;
               localStorage.setItem(LS_VOL, String(v));
             }}
-            className="mb-slider-pro"
-            style={{ width: "44px" }}
+            className="mb-slider-pro mb-slider-small"
+            aria-label="Volume"
           />
         </div>
 
-        <div style={{ width: "1px", height: "10px", background: "rgba(0,0,0,0.1)" }} />
+        <div className="mb-divider" />
 
-        <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+        <div className="mb-bar-slot">
           <Search size={12} color="#aaa" />
           <input
             type="range"
@@ -433,16 +395,119 @@ export default function BottomMusicBar() {
             max={140}
             value={zoomPct}
             onChange={(e) => setZoomPct(Number(e.target.value))}
-            className="mb-slider-pro"
-            style={{ width: "44px" }}
+            className="mb-slider-pro mb-slider-small"
+            aria-label="Zoom"
           />
-          <span style={{ fontSize: "10px", fontWeight: "900", color: "#555", width: "28px" }}>
-            {zoomPct}%
-          </span>
+          <span className="mb-zoom-label">{zoomPct}%</span>
         </div>
       </div>
 
       <style>{`
+        /* ===================================================================
+           Bottom music bar — fluid responsive layout (320 → 1440+)
+           Rule: nothing is ever hidden; every control stays visible and
+           tappable. All sizes scale via clamp() between a mobile minimum and
+           a desktop maximum. Duration label is the only element behind a
+           viewport-based toggle, and that's a label-refinement (0:17 →
+           0:17 / 3:24), not a control removal.
+           =================================================================== */
+        .mb-bar {
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          background: rgba(255,255,255,0.98);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          border-top: 1px solid rgba(0,0,0,0.06);
+          padding: 0 clamp(6px, 2vw, 15px);
+          height: 36px;
+          display: flex;
+          align-items: center;
+          gap: clamp(3px, 1vw, 12px);
+          z-index: 1000;
+          touch-action: pan-x pan-y;
+        }
+        .mb-bar-left,
+        .mb-bar-right {
+          display: flex;
+          align-items: center;
+          gap: clamp(2px, 0.6vw, 8px);
+          flex-shrink: 0;
+        }
+        .mb-bar-seek {
+          flex: 1 1 0;
+          display: flex;
+          align-items: center;
+          gap: clamp(3px, 1vw, 8px);
+          min-width: 40px;
+        }
+        .mb-bar-slot {
+          display: flex;
+          align-items: center;
+          gap: clamp(2px, 0.5vw, 4px);
+        }
+        .mb-btn {
+          border: none;
+          background: none;
+          cursor: pointer;
+          padding: 4px;
+          line-height: 0;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .mb-title {
+          border: none;
+          background: transparent;
+          border-radius: 4px;
+          font-size: clamp(9px, 1.6vw, 12px);
+          font-weight: 500;
+          padding: 2px 4px;
+          max-width: clamp(40px, 22vw, 180px);
+          min-width: 40px;
+          flex: 0 0 auto;
+          color: #333;
+          letter-spacing: 0.01em;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+        .mb-seek {
+          flex: 1 1 auto;
+          min-width: 0;
+        }
+        .mb-time {
+          font-size: clamp(9px, 1.4vw, 11px);
+          font-weight: 900;
+          opacity: 0.55;
+          white-space: nowrap;
+          flex: 0 0 auto;
+        }
+        .mb-time-duration {
+          display: none;
+        }
+        @media (min-width: 500px) {
+          .mb-time-duration { display: inline; }
+        }
+        .mb-slider-small {
+          width: clamp(28px, 7vw, 80px);
+        }
+        .mb-divider {
+          width: 1px;
+          height: 10px;
+          background: rgba(0,0,0,0.1);
+          flex-shrink: 0;
+        }
+        .mb-zoom-label {
+          font-size: clamp(8px, 1.3vw, 11px);
+          font-weight: 900;
+          color: #555;
+          min-width: 22px;
+          white-space: nowrap;
+          flex: 0 0 auto;
+        }
+
+        /* ---- slider common ---- */
         .mb-slider-pro {
           -webkit-appearance: none;
           appearance: none;
@@ -463,8 +528,8 @@ export default function BottomMusicBar() {
           border-radius: 10px;
           background: rgba(0,0,0,0.14);
         }
-        /* Seek-bar variant: show played portion in blue via a linear-gradient
-           driven by the --mb-progress CSS var set inline. */
+        /* Seek variant: blue fill of played portion via linear-gradient driven
+           by the --mb-progress var set inline. */
         .mb-slider-progress {
           background: linear-gradient(
             to right,
