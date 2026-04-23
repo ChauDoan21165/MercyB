@@ -64,6 +64,13 @@ type QuestionBase = {
   skill: QuestionSkill;
   /** Human-readable citation of the CEFR descriptor this question targets. */
   cefrDescriptor: string;
+  /**
+   * Optional diagnostic tag. When present AND the user gets this
+   * question wrong, the engine adds the tag to
+   * EngineSnapshot.weaknessFlags. Today used for the three Vietnamese
+   * L1-interference items; future SRS will use the same mechanism.
+   */
+  weaknessTag?: string;
   prompt: BilingualText;
   options: QuestionOption[];
   correctOptionId: QuestionOption['id'];
@@ -255,6 +262,7 @@ const A1: PlacementQuestion[] = [
     skill: 'grammar',
     cefrDescriptor:
       'Vietnamese L1 interference: plural noun inflection (-s) — Vietnamese marks plurals with measure words, not suffixes, so learners often drop the -s',
+    weaknessTag: 'vi_l1_plural_s',
     prompt: {
       en: 'I have three ___ on my desk.',
       vi: 'I have three ___ on my desk.',
@@ -442,6 +450,7 @@ const A2: PlacementQuestion[] = [
     skill: 'grammar',
     cefrDescriptor:
       'Vietnamese L1 interference: past-simple regular -ed ending — Vietnamese speech tends to drop final consonants, so "walked" is often heard/written as "walk"',
+    weaknessTag: 'vi_l1_past_ed',
     prompt: {
       en: 'Yesterday I ___ to the market with my mother.',
       vi: 'Yesterday I ___ to the market with my mother.',
@@ -634,6 +643,7 @@ const B1: PlacementQuestion[] = [
     skill: 'grammar',
     cefrDescriptor:
       'Vietnamese L1 interference: third-person singular -s in present simple. This is the most chronic Vietnamese-learner error and often persists into B1 / B2 — placing it at B1 catches learners whose level is otherwise B1 but who still miss this feature.',
+    weaknessTag: 'vi_l1_3rd_person_s',
     prompt: {
       en: 'She ___ English every day.',
       vi: 'She ___ English every day.',

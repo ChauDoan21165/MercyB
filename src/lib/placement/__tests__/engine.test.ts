@@ -273,3 +273,177 @@ describe('placement engine — configurable options', () => {
     expect(state.questionCount).toBeGreaterThanOrEqual(4);
   });
 });
+
+describe('placement engine — weaknessFlags', () => {
+  // The three L1-interference items with known tags. If questions.ts
+  // renames any of these, this block fails loudly — which is the point.
+  const L1_IDS = ['q_a1_009', 'q_a2_009', 'q_b1_009'];
+  const TAG_BY_ID: Record<string, string> = {
+    q_a1_009: 'vi_l1_plural_s',
+    q_a2_009: 'vi_l1_past_ed',
+    q_b1_009: 'vi_l1_3rd_person_s',
+  };
+
+  it('is an empty array until isDone', () => {
+    const engine = createPlacementEngine();
+    const s0 = engine.getState();
+    expect(s0.isDone).toBe(false);
+    expect(s0.weaknessFlags).toEqual([]);
+
+    // Answer a few questions; still not done.
+    for (let i = 0; i < 3; i++) {
+      const s = engine.getState();
+      if (!s.currentQuestion) break;
+      engine.submit({ selectedOptionId: s.currentQuestion.correctOptionId });
+    }
+    expect(engine.getState().weaknessFlags).toEqual([]);
+  });
+
+  it('records tag on a response when a tagged question is asked', () => {
+    // Level-1 user (A1) — correct on A1 items incl. q_a1_009 — tag copied
+    // through to response but not to weaknessFlags (answer was correct).
+    const engine = createPlacementEngine();
+    let state = engine.getState();
+    let safety = 30;
+    while (!state.isDone && state.currentQuestion && safety-- > 0) {
+      const q = state.currentQuestion;
+      engine.submit({
+        selectedOptionId: q.difficulty <= 1 ? q.correctOptionId : 'a',
+      });
+      state = engine.getState();
+    }
+    const askedL1 = state.responses.filter((r) => L1_IDS.includes(r.questionId));
+    for (const r of askedL1) {
+      expect(r.weaknessTag).toBe(TAG_BY_ID[r.questionId]);
+    }
+  });
+
+  it('flags exactly the tagged questions the user got wrong', () => {
+    // Force every question wrong so every L1 item the engine asks gets
+    // flagged. Uses a simulated -10 user (all-incorrect).
+    const engine = createPlacementEngine();
+    let state = engine.getState();
+    let safety = 30;
+    while (!state.isDone && state.currentQuestion && safety-- > 0) {
+      const q = state.currentQuestion;
+      const wrong = q.options.find((o) => o.id !== q.correctOptionId)!.id;
+      engine.submit({ selectedOptionId: wrong });
+      state = engine.getState();
+    }
+    expect(state.isDone).toBe(true);
+
+    const askedTagged = state.responses
+      .filter((r) => r.weaknessTag !== undefined)
+      .map((r) => r.weaknessTag as string);
+
+    // Engine may skip L1 items at levels it doesn't visit, but every L1
+    // item that WAS asked should appear (they're all-wrong here).
+    expect(new Set(state.weaknessFlags)).toEqual(new Set(askedTagged));
+  });
+
+  it('does not flag tagged questions the user got right', () => {
+    // Answer every question correctly. weaknessFlags must be empty even
+    // if L1 items were asked.
+    const engine = createPlacementEngine();
+    let state = engine.getState();
+    let safety = 30;
+    while (!state.isDone && state.currentQuestion && safety-- > 0) {
+      engine.submit({
+        selectedOptionId: state.currentQuestion.correctOptionId,
+      });
+      state = engine.getState();
+    }
+    expect(state.isDone).toBe(true);
+    expect(state.weaknessFlags).toEqual([]);
+  });
+
+  it('returns tags in ask order and deduplicated', () => {
+    // Ask custom pool with two copies of the same tag so we can verify
+    // the dedupe branch. Use a minimal adaptive setup to keep this fast.
+    const engine = createPlacementEngine({
+      minQuestions: 2,
+      maxQuestions: 4,
+      targetQuestions: 4,
+      pool: [
+        {
+          id: 'fake_1',
+          type: 'multiple_choice',
+          cefr: 'A1',
+          difficulty: 3,
+          skill: 'grammar',
+          cefrDescriptor: 'test',
+          weaknessTag: 'tag_alpha',
+          prompt: { en: 'x', vi: 'x' },
+          options: [
+            { id: 'a', text: { en: '1', vi: '1' } },
+            { id: 'b', text: { en: '2', vi: '2' } },
+            { id: 'c', text: { en: '3', vi: '3' } },
+            { id: 'd', text: { en: '4', vi: '4' } },
+          ],
+          correctOptionId: 'a',
+        },
+        {
+          id: 'fake_2',
+          type: 'multiple_choice',
+          cefr: 'A2',
+          difficulty: 3,
+          skill: 'grammar',
+          cefrDescriptor: 'test',
+          weaknessTag: 'tag_beta',
+          prompt: { en: 'x', vi: 'x' },
+          options: [
+            { id: 'a', text: { en: '1', vi: '1' } },
+            { id: 'b', text: { en: '2', vi: '2' } },
+            { id: 'c', text: { en: '3', vi: '3' } },
+            { id: 'd', text: { en: '4', vi: '4' } },
+          ],
+          correctOptionId: 'a',
+        },
+        {
+          id: 'fake_3',
+          type: 'multiple_choice',
+          cefr: 'A2',
+          difficulty: 3,
+          skill: 'grammar',
+          cefrDescriptor: 'test',
+          weaknessTag: 'tag_alpha', // duplicate tag — tests dedupe
+          prompt: { en: 'x', vi: 'x' },
+          options: [
+            { id: 'a', text: { en: '1', vi: '1' } },
+            { id: 'b', text: { en: '2', vi: '2' } },
+            { id: 'c', text: { en: '3', vi: '3' } },
+            { id: 'd', text: { en: '4', vi: '4' } },
+          ],
+          correctOptionId: 'a',
+        },
+        {
+          id: 'fake_4',
+          type: 'multiple_choice',
+          cefr: 'B1',
+          difficulty: 3,
+          skill: 'grammar',
+          cefrDescriptor: 'test',
+          prompt: { en: 'x', vi: 'x' },
+          options: [
+            { id: 'a', text: { en: '1', vi: '1' } },
+            { id: 'b', text: { en: '2', vi: '2' } },
+            { id: 'c', text: { en: '3', vi: '3' } },
+            { id: 'd', text: { en: '4', vi: '4' } },
+          ],
+          correctOptionId: 'a',
+        },
+      ],
+    });
+
+    // All wrong → all L1 tags flagged.
+    let state = engine.getState();
+    let safety = 10;
+    while (!state.isDone && state.currentQuestion && safety-- > 0) {
+      engine.submit({ selectedOptionId: 'b' }); // never 'a' = always wrong
+      state = engine.getState();
+    }
+    expect(state.isDone).toBe(true);
+    // tag_alpha and tag_beta should both appear. tag_alpha dedupes.
+    expect(state.weaknessFlags).toEqual(['tag_alpha', 'tag_beta']);
+  });
+});

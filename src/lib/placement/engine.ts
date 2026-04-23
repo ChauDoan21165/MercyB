@@ -33,6 +33,10 @@ export type QuestionResponse = {
   correct: boolean;
   viRevealed: boolean;
   elapsedMs: number;
+  /** Copied from the question's weaknessTag (if any). Present on every
+   *  response so the persisted log is self-describing; also drives the
+   *  derivation of EngineSnapshot.weaknessFlags on commit. */
+  weaknessTag?: string;
 };
 
 export type EngineSnapshot = {
@@ -52,6 +56,13 @@ export type EngineSnapshot = {
   estimate: number;
   /** Set once isDone becomes true. */
   finalCefr: ResultCEFR | null;
+  /**
+   * Diagnostic tags for questions the user was asked AND got wrong
+   * (only questions with a weaknessTag contribute). Empty array until
+   * isDone. Used on the Results screen for targeted tips and in Wave 2
+   * for SRS review scheduling. Deduplicated, preserves ask order.
+   */
+  weaknessFlags: string[];
 };
 
 export type EngineOptions = {
@@ -152,6 +163,7 @@ export function createPlacementEngine(
   let currentQuestion: PlacementQuestion | null = null;
   let isDone = false;
   let finalCefr: ResultCEFR | null = null;
+  let weaknessFlags: string[] = [];
   const responses: QuestionResponse[] = [];
   const recentDeltas: number[] = [];
 
@@ -186,6 +198,19 @@ export function createPlacementEngine(
     isDone = true;
     finalCefr = mapEstimateToCefr(estimate);
     currentQuestion = null;
+    // Derive weaknessFlags: tagged questions the user got wrong. Preserve
+    // ask order and dedupe defensively (today each tag appears on exactly
+    // one question, but future additions may reuse tags).
+    const seen = new Set<string>();
+    weaknessFlags = [];
+    for (const r of responses) {
+      if (r.correct) continue;
+      const tag = r.weaknessTag;
+      if (!tag) continue;
+      if (seen.has(tag)) continue;
+      seen.add(tag);
+      weaknessFlags.push(tag);
+    }
   }
 
   return {
@@ -206,6 +231,7 @@ export function createPlacementEngine(
         responses: responses.slice(),
         estimate,
         finalCefr,
+        weaknessFlags: weaknessFlags.slice(),
       };
     },
 
@@ -227,6 +253,7 @@ export function createPlacementEngine(
         correct,
         viRevealed,
         elapsedMs,
+        weaknessTag: answered.weaknessTag,
       });
 
       // Step schedule is indexed by questions-already-answered. On the
