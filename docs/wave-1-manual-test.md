@@ -136,6 +136,46 @@ select 'user_role_audit target still linked', count(*) from user_role_audit wher
 
 **Expected:** every `c` column is `0`. If any row is non-zero, that's a gap — update the manifest and re-run.
 
+### Step 1.6 — Verify PII scrub on anonymized rows
+
+Nulling `user_id` alone is not GDPR-safe for tables with free-text columns or
+jsonb payloads that can contain identifying content. Confirm the scrub_columns
+overlay ran for the rows we anonymized above (seeded with the test `:uid`):
+
+```sql
+-- feedback.message must be '[deleted]', not the seeded text.
+select id, user_id, message from feedback where message = 'public feedback that should be anonymized';
+-- Expected: zero rows. If the original message text is still present,
+-- scrub_columns did not apply.
+
+-- Pattern for other scrubbed tables: confirm by checking PII columns are
+-- null / '[deleted]' on the anonymized rows. Substitute the seeded row
+-- identifiers as needed.
+select id, raw_payload from apple_iap_events where raw_payload is not null
+  and created_at >= now() - interval '1 hour';
+-- Expected: zero newly-seeded rows still carrying raw_payload.
+
+select id, ip_address, user_agent, metadata from security_events
+  where created_at >= now() - interval '1 hour'
+    and (ip_address is not null or user_agent is not null or metadata is not null);
+-- Expected: zero rows — all three columns must be NULL for freshly anonymized rows.
+
+select id, email, customer_id from billing_customers
+  where created_at >= now() - interval '1 hour'
+    and (email is not null or customer_id is not null);
+-- Expected: zero rows.
+
+select id, message_content from user_moderation_violations
+  where created_at >= now() - interval '1 hour'
+    and message_content != '[deleted]';
+-- Expected: zero rows — original violating message text must be scrubbed.
+```
+
+If any of these queries return rows, the scrub overlay failed for that table.
+Check the edge function `report.errors` JSON response — the update likely
+returned an error (most often a missing column in the live schema or a RLS
+grant issue).
+
 ### Step 1.5 — Broad sweep (belt + suspenders)
 
 Confirm no stray orphans by scanning every table in the manifest:

@@ -98,9 +98,17 @@ Deno.serve(async (req) => {
 
     // ── Pass 2: ANONYMIZE financial / audit / security rows ─────
     // Rows are retained (tax / legal audit / abuse-prevention memory)
-    // but the user-identifying column is nulled.
-    for (const { table, column } of getAnonymizeEntries()) {
-      const payload: Record<string, null> = { [column]: null };
+    // but the user-identifying column is nulled. When a manifest entry
+    // declares `scrub_columns`, those fields are overwritten in the same
+    // UPDATE so free-text (e.g. feedback.message, security_events.ip_address,
+    // jsonb payloads containing emails) cannot leak after erasure.
+    for (const { table, column, scrub_columns } of getAnonymizeEntries()) {
+      const payload: Record<string, string | null> = { [column]: null };
+      if (scrub_columns) {
+        for (const [k, v] of Object.entries(scrub_columns)) {
+          payload[k] = v;
+        }
+      }
       const { error } = await admin.from(table).update(payload).eq(column, userId);
       if (error) {
         report.errors.push({

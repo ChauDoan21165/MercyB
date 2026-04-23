@@ -25,6 +25,14 @@ export type ManifestEntry = {
   action: ManifestAction;
   /** Column whose value equals the target user_id. Required for delete + anonymize. */
   column?: string;
+  /**
+   * For anonymize only. Additional columns to scrub in the same UPDATE.
+   * Use `null` to set a column to SQL NULL; use a string literal (e.g.
+   * `"[deleted]"`) to overwrite free-text. Needed when nulling `user_id`
+   * alone would still leave identifying content behind (e.g. `feedback.message`,
+   * jsonb payloads with embedded emails, IP addresses).
+   */
+  scrub_columns?: Record<string, string | null>;
   reason: string;
 };
 
@@ -108,41 +116,153 @@ export const USER_DATA_MANIFEST: ManifestEntry[] = [
   // Billing / financial / entitlements → ANONYMIZE
   // (retain row for tax / legal audit; strip user linkage)
   // ────────────────────────────────────────────────────────────
-  { table: "apple_iap_events",                action: "anonymize", column: "user_id", reason: "keep for IAP audit/refunds" },
-  { table: "bank_payment_requests",           action: "anonymize", column: "user_id", reason: "financial record" },
-  { table: "bank_transfer_orders",            action: "anonymize", column: "user_id", reason: "financial record" },
-  { table: "billing_customers",               action: "anonymize", column: "user_id", reason: "Stripe customer link; row kept for reconciliation" },
-  { table: "entitlement_events",              action: "anonymize", column: "user_id", reason: "entitlement history" },
-  { table: "organization_users",              action: "anonymize", column: "user_id", reason: "org membership record" },
-  { table: "payment_events",                  action: "anonymize", column: "user_id", reason: "payment event log" },
-  { table: "payment_proof_submissions",       action: "anonymize", column: "user_id", reason: "manual payment proof history" },
-  { table: "payment_transactions",            action: "anonymize", column: "user_id", reason: "financial record" },
-  { table: "payments",                        action: "anonymize", column: "user_id", reason: "financial record" },
-  { table: "subscription_usage",              action: "anonymize", column: "user_id", reason: "per-subscription usage" },
-  { table: "subscriptions",                   action: "anonymize", column: "user_id", reason: "subscription history" },
-  { table: "tier_memberships",                action: "anonymize", column: "user_id", reason: "tier history" },
-  { table: "user_entitlements",               action: "anonymize", column: "user_id", reason: "entitlement history" },
-  { table: "user_entitlements_raw",           action: "anonymize", column: "user_id", reason: "entitlement audit" },
-  { table: "user_entitlements_raw_20260301_181303", action: "anonymize", column: "user_id", reason: "entitlement snapshot backup" },
-  { table: "user_promo_redemptions",          action: "anonymize", column: "user_id", reason: "promo redemption log" },
-  { table: "user_subscription_state",         action: "anonymize", column: "user_id", reason: "subscription state" },
-  { table: "user_subscriptions",              action: "anonymize", column: "user_id", reason: "subscription history" },
-  { table: "user_tiers",                      action: "anonymize", column: "user_id", reason: "tier assignment history" },
-  { table: "webhook_events",                  action: "anonymize", column: "user_id", reason: "webhook delivery audit" },
-  { table: "webhook_events_pending",          action: "anonymize", column: "user_id", reason: "webhook delivery queue" },
+  {
+    table: "apple_iap_events", action: "anonymize", column: "user_id",
+    scrub_columns: {
+      raw_payload: null, dedupe_key: null, notification_uuid: null,
+      original_transaction_id: null, transaction_id: null,
+    },
+    reason: "keep amounts/dates for audit; scrub signed JWS payload + Apple transaction IDs (contain appAccountToken = user uuid)",
+  },
+  {
+    table: "bank_payment_requests", action: "anonymize", column: "user_id",
+    scrub_columns: { transfer_note: "[deleted]", admin_note: "[deleted]", screenshot_url: null },
+    reason: "financial record; scrub user-written note, admin note referencing user, and proof-image URL",
+  },
+  {
+    table: "bank_transfer_orders", action: "anonymize", column: "user_id",
+    scrub_columns: { transfer_note: "[deleted]", rejection_reason: "[deleted]", screenshot_url: null },
+    reason: "financial record; scrub user-written note, admin rejection reason, proof-image URL",
+  },
+  {
+    table: "billing_customers", action: "anonymize", column: "user_id",
+    scrub_columns: { email: null, customer_id: null },
+    reason: "row kept for reconciliation; scrub explicit email + Stripe customer_id",
+  },
+  {
+    table: "entitlement_events", action: "anonymize", column: "user_id",
+    scrub_columns: { payload: null, event_id: null },
+    reason: "entitlement history; scrub jsonb payload (provider event body, can contain email)",
+  },
+  { table: "organization_users",              action: "anonymize", column: "user_id", reason: "org_id + role only — no further PII after user_id nulled" },
+  {
+    table: "payment_events", action: "anonymize", column: "user_id",
+    scrub_columns: {
+      payload: null, stripe_customer_id: null, stripe_subscription_id: null,
+      stripe_session_id: null, external_reference: null,
+    },
+    reason: "payment event log; scrub jsonb payload + Stripe IDs that back-link to PII via Stripe API",
+  },
+  {
+    table: "payment_proof_submissions", action: "anonymize", column: "user_id",
+    scrub_columns: {
+      username: null, admin_notes: "[deleted]", screenshot_url: null, extracted_email: null,
+    },
+    reason: "manual payment proof history; scrub user-stated username, admin notes, proof-image URL, OCR-extracted email",
+  },
+  {
+    table: "payment_transactions", action: "anonymize", column: "user_id",
+    scrub_columns: {
+      metadata: null, stripe_customer_id: null, stripe_subscription_id: null,
+      stripe_payment_intent_id: null, external_reference: null,
+    },
+    reason: "financial record; scrub jsonb metadata + Stripe IDs",
+  },
+  {
+    table: "payments", action: "anonymize", column: "user_id",
+    scrub_columns: {
+      raw: null, customer_id: null, subscription_id: null,
+      invoice_id: null, payment_intent_id: null,
+    },
+    reason: "financial record; scrub full Stripe event body + provider IDs",
+  },
+  { table: "subscription_usage",              action: "anonymize", column: "user_id", reason: "dates + usage counters only — no PII after user_id nulled" },
+  {
+    table: "subscriptions", action: "anonymize", column: "user_id",
+    scrub_columns: {
+      raw_payload: null, metadata: null, provider_metadata: null,
+      customer_id: null, subscription_id: null,
+      provider_customer_id: null, provider_transaction_id: null,
+      provider_original_transaction_id: null,
+    },
+    reason: "subscription history; scrub jsonb raw/metadata + all provider-assigned IDs",
+  },
+  { table: "tier_memberships",                action: "anonymize", column: "user_id", reason: "tier + dates only — no PII after user_id nulled" },
+  { table: "user_entitlements",               action: "anonymize", column: "user_id", reason: "tier_name + vip_rank + date only — no PII after user_id nulled" },
+  { table: "user_entitlements_raw",           action: "anonymize", column: "user_id", scrub_columns: { features: null }, reason: "entitlement audit; features jsonb can hold arbitrary flags — null for safety" },
+  { table: "user_entitlements_raw_20260301_181303", action: "anonymize", column: "user_id", scrub_columns: { features: null }, reason: "entitlement snapshot backup; null features jsonb" },
+  { table: "user_promo_redemptions",          action: "anonymize", column: "user_id", reason: "promo_code_id + counters only — no PII after user_id nulled" },
+  {
+    table: "user_subscription_state", action: "anonymize", column: "user_id",
+    scrub_columns: { stripe_customer_id: null, stripe_subscription_id: null },
+    reason: "subscription state; scrub Stripe IDs",
+  },
+  {
+    table: "user_subscriptions", action: "anonymize", column: "user_id",
+    scrub_columns: {
+      stripe_customer_id: null, stripe_subscription_id: null,
+      provider_customer_id: null, provider_transaction_id: null,
+    },
+    reason: "subscription history; scrub all provider-assigned IDs",
+  },
+  { table: "user_tiers",                      action: "anonymize", column: "user_id", reason: "tier + date only — no PII after user_id nulled" },
+  {
+    table: "webhook_events", action: "anonymize", column: "user_id",
+    scrub_columns: {
+      payload: null, error: null, customer_id: null, subscription_id: null,
+      invoice_id: null, payment_intent_id: null,
+    },
+    reason: "webhook delivery audit; scrub jsonb payload (full provider event), error text, provider IDs",
+  },
+  {
+    table: "webhook_events_pending", action: "anonymize", column: "user_id",
+    scrub_columns: {
+      payload: null, error: null, customer_id: null, subscription_id: null,
+      invoice_id: null, payment_intent_id: null,
+    },
+    reason: "webhook delivery queue; same scrub shape as webhook_events",
+  },
 
   // ────────────────────────────────────────────────────────────
   // Security / moderation / audit → ANONYMIZE
   // ────────────────────────────────────────────────────────────
-  { table: "audit_logs",                      action: "anonymize", column: "admin_id",       reason: "admin audit — retain for accountability" },
-  { table: "feedback",                        action: "anonymize", column: "user_id",        reason: "public feedback — keep message, strip user" },
-  { table: "security_events",                 action: "anonymize", column: "user_id",        reason: "security audit" },
-  { table: "system_logs",                     action: "anonymize", column: "user_id",        reason: "system audit" },
-  { table: "user_moderation_status",          action: "anonymize", column: "user_id",        reason: "moderation state — keep for abuse-prevention memory" },
-  { table: "user_moderation_violations",      action: "anonymize", column: "user_id",        reason: "moderation audit" },
-  { table: "user_role_audit",                 action: "anonymize", column: "actor_user_id",  reason: "role audit — retain action, strip actor" },
-  { table: "user_role_audit",                 action: "anonymize", column: "target_user_id", reason: "role audit — retain action, strip target" },
-  { table: "user_security_status",            action: "anonymize", column: "user_id",        reason: "security tracking" },
+  {
+    table: "audit_logs", action: "anonymize", column: "admin_id",
+    scrub_columns: { ip_address: null, user_agent: null, metadata: null },
+    reason: "admin audit — retain action for accountability; scrub IP (GDPR PII) + user_agent + metadata jsonb",
+  },
+  {
+    table: "feedback", action: "anonymize", column: "user_id",
+    scrub_columns: { message: "[deleted]" },
+    reason: "public feedback — keep row for analytics; scrub free-text message body (user may have typed name/phone/email)",
+  },
+  {
+    table: "security_events", action: "anonymize", column: "user_id",
+    scrub_columns: { ip_address: null, user_agent: null, metadata: null },
+    reason: "security audit; scrub IP (GDPR PII) + user_agent + metadata jsonb (may contain device fingerprint)",
+  },
+  {
+    table: "system_logs", action: "anonymize", column: "user_id",
+    scrub_columns: { message: "[deleted]", metadata: null },
+    reason: "system audit; scrub free-text log message and metadata jsonb",
+  },
+  { table: "user_moderation_status",          action: "anonymize", column: "user_id",        reason: "counters + booleans only — no PII after user_id nulled; kept for abuse-prevention memory" },
+  {
+    table: "user_moderation_violations", action: "anonymize", column: "user_id",
+    scrub_columns: { message_content: "[deleted]" },
+    reason: "moderation audit — retain violation_type/severity; scrub the user's violating message text",
+  },
+  {
+    table: "user_role_audit", action: "anonymize", column: "actor_user_id",
+    scrub_columns: { actor_email: null },
+    reason: "role audit — retain action; strip actor_user_id + actor_email. Scrub only runs on actor pass so other admins' emails on rows where this user was the TARGET are untouched.",
+  },
+  { table: "user_role_audit",                 action: "anonymize", column: "target_user_id", reason: "role audit — strip target only; actor columns handled on the actor pass" },
+  {
+    table: "user_security_status", action: "anonymize", column: "user_id",
+    scrub_columns: { blocked_reason: "[deleted]" },
+    reason: "security tracking; scrub admin-written blocked_reason text",
+  },
   { table: "vip_topic_requests_detailed",     action: "skip_view", reason: "view over vip_room_requests" },
 
   // ────────────────────────────────────────────────────────────
@@ -223,13 +343,17 @@ export function getDeleteEntries(): Array<{ table: string; column: string }> {
     .map(({ table, column }) => ({ table, column }));
 }
 
-/** Tables with explicit ANONYMIZE action. */
-export function getAnonymizeEntries(): Array<{ table: string; column: string }> {
+/** Tables with explicit ANONYMIZE action, including any scrub overlay. */
+export function getAnonymizeEntries(): Array<{
+  table: string;
+  column: string;
+  scrub_columns?: Record<string, string | null>;
+}> {
   return USER_DATA_MANIFEST
     .filter((m): m is ManifestEntry & { column: string } =>
       m.action === "anonymize" && typeof m.column === "string",
     )
-    .map(({ table, column }) => ({ table, column }));
+    .map(({ table, column, scrub_columns }) => ({ table, column, scrub_columns }));
 }
 
 /** Canonical set of table names this manifest covers (views + skips included). */
