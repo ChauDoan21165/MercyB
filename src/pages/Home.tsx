@@ -12,8 +12,9 @@ import { MercyGuide } from "@/components/MercyGuide";
 import { FeedbackBar } from "@/components/FeedbackBar";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { useAuth } from "@/providers/AuthProvider";
-import { usePlacementFlag } from "@/lib/placement/usePlacementFlag";
+import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 import { supabase } from "@/lib/supabaseClient";
+import FocusAreasCard from "@/components/home/FocusAreasCard";
 
 const LS_PLACEMENT_BANNER_DISMISSED = "mb.placement.banner.dismissed";
 const LS_PLACEMENT_REDIRECT_SEEN    = "mb.placement.redirect.seen";
@@ -63,7 +64,7 @@ export default function Home() {
   const access = useUserAccess();
   const { user } = useAuth();
   const { enabled: placementFlagEnabled, loading: placementFlagLoading } =
-    usePlacementFlag(user?.id ?? null);
+    useFeatureFlag("placement_test_enabled", false);
 
   const [placementBannerDismissed, setPlacementBannerDismissed] = useState<boolean>(() => {
     try {
@@ -470,6 +471,9 @@ export default function Home() {
 
           {/* Library — secondary */}
           {libraryCard}
+
+          {/* Focus areas — tertiary (feature-flagged) */}
+          <FocusAreasCard />
         </section>
 
         {/* Floating bubbles */}

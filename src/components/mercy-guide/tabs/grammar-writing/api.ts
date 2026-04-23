@@ -4,6 +4,7 @@
  */
 
 import type { GrammarApiResponse } from '../../types';
+import { supabase } from '@/lib/supabaseClient';
 
 export const GRAMMAR_API_ENDPOINT = '/api/mercy/grammar';
 const GRAMMAR_API_TIMEOUT_MS = 20000;
@@ -49,7 +50,10 @@ function buildContext(payload: AnalyzeGrammarPayload): string {
   return truncateText(contextParts.join(' | '), MAX_CONTEXT_LENGTH);
 }
 
-function buildRoutePayload(payload: AnalyzeGrammarPayload) {
+function buildRoutePayload(
+  payload: AnalyzeGrammarPayload,
+  userId: string | null,
+) {
   const text = cleanText(payload.text);
   const title = cleanText(payload.roomTitle);
 
@@ -64,7 +68,20 @@ function buildRoutePayload(payload: AnalyzeGrammarPayload) {
     englishLevel: cleanText(payload.englishLevel ?? undefined),
     isTeacherInitiated: Boolean(payload.isTeacherInitiated),
     isRevisionAttempt: Boolean(payload.isRevisionAttempt),
+    // userId is forwarded so the server can check the per-user
+    // feedbackL1DetectorEnabled flag. When unset (anonymous session),
+    // the detector stays OFF regardless of the global flag state.
+    userId: userId ?? undefined,
   };
+}
+
+async function getCurrentUserId(): Promise<string | null> {
+  try {
+    const { data } = await supabase.auth.getUser();
+    return data.user?.id ?? null;
+  } catch {
+    return null;
+  }
 }
 
 function getTimeoutErrorMessage(): string {
@@ -128,7 +145,8 @@ function normalizeGrammarApiResponse(value: unknown): GrammarApiResponse {
 export async function analyzeGrammarWithApi(
   payload: AnalyzeGrammarPayload,
 ): Promise<GrammarApiResponse> {
-  const requestBody = buildRoutePayload(payload);
+  const userId = await getCurrentUserId();
+  const requestBody = buildRoutePayload(payload, userId);
 
   if (!requestBody.text) {
     throw new Error('Grammar API was not called because text is empty.');
