@@ -28,6 +28,10 @@ import React, {
 import type { Session, User } from "@supabase/supabase-js";
 import { supabase } from "@/lib/supabaseClient";
 import { isNativePlatform } from "@/lib/platform";
+import {
+  migrateLocalStreakOnce,
+  writeBrowserTimezoneOnce,
+} from "@/lib/streakMigration";
 
 /**
  * Keep RevenueCat's App User ID in sync with the current Supabase user.
@@ -51,6 +55,27 @@ async function syncRevenueCatOnAuth(userId: string | null): Promise<void> {
     if (import.meta.env.DEV) {
       console.warn("[auth] RevenueCat identity sync failed:", err);
     }
+  }
+}
+
+/**
+ * Fire-and-forget tasks tied to a verified session: push browser timezone
+ * on first login, and run the one-time localStorage → server streak
+ * migration. Both functions are internally idempotent and guarded by the
+ * SERVER_STREAKS_ENABLED feature flag — this function is a no-op when the
+ * flag is off.
+ */
+async function runStreakBootTasksOnAuth(userId: string | null): Promise<void> {
+  if (!userId) return;
+  try {
+    await writeBrowserTimezoneOnce();
+  } catch (err) {
+    if (import.meta.env.DEV) console.warn("[auth] writeBrowserTimezone:", err);
+  }
+  try {
+    await migrateLocalStreakOnce();
+  } catch (err) {
+    if (import.meta.env.DEV) console.warn("[auth] migrateLocalStreak:", err);
   }
 }
 
@@ -172,9 +197,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             // Sync RevenueCat App User ID with the fresh Supabase session.
             // Uses verified-session filter so unverified emails do not get
             // identified to RevenueCat. Fire-and-forget; no-op on web.
-            void syncRevenueCatOnAuth(
-              getVerifiedSession(nextSession ?? null)?.user?.id ?? null,
-            );
+            const verifiedId =
+              getVerifiedSession(nextSession ?? null)?.user?.id ?? null;
+            void syncRevenueCatOnAuth(verifiedId);
+            // Wave 2 Step 2: server-streaks boot tasks. No-op when the
+            // feature flag is off. Runs per-session on verified sessions,
+            // but each task is internally idempotent.
+            void runStreakBootTasksOnAuth(verifiedId);
           },
         );
 
