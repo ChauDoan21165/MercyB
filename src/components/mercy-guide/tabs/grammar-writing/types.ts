@@ -221,6 +221,27 @@ export type GrammarApiResponse = {
   decision?: TeachingDecision;
   memory?: LearnerMemory;
   source?: 'api' | 'fallback';
+  /**
+   * Bilingual L1-interference hint. Present only when the server-side
+   * feedbackL1DetectorEnabled flag is ON for the user AND a known
+   * Vietnamese-L1 pattern matched. Shape mirrors the matched arm of
+   * L1DetectionResult from src/lib/feedback/l1-error-detector.ts.
+   */
+  l1Hint?: L1HintPayload;
+};
+
+/**
+ * Shape of the `l1Hint` field on GrammarApiResponse. Kept loose
+ * (weaknessTag typed as string) so new detector rules added
+ * server-side don't break the client type — L1HintCard renders a
+ * readable fallback label for unknown tags.
+ */
+export type L1HintPayload = {
+  weaknessTag: string;
+  feedback: {
+    en: string;
+    vi: string;
+  };
 };
 
 export type AnalyzeGrammarInput = {

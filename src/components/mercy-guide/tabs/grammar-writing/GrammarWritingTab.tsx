@@ -31,6 +31,8 @@ import {
 } from './teacher';
 import { hasMeaningfulDifference } from './utils';
 import { analyzeGrammarWithApi } from './api';
+import L1HintCard from './L1HintCard';
+import { useFeatureFlag } from '@/hooks/useFeatureFlag';
 
 type LearningSupportMode = 'gentle' | 'guided' | 'immersion';
 
@@ -600,6 +602,12 @@ export function GrammarWritingTab({
   >(undefined);
   const [isRevisionAttempt, setIsRevisionAttempt] = useState(false);
   const [copiedState, setCopiedState] = useState<'corrected' | 'enhanced' | null>(null);
+
+  // Belt-and-braces gate: server already filters l1Hint by the same
+  // flag per user. Client-side check keeps the card hidden even if a
+  // stale cached response still carries the payload after the flag
+  // flips off.
+  const { enabled: l1DetectorEnabled } = useFeatureFlag('feedbackL1DetectorEnabled');
 
   const lastEmittedStateRef = useRef<string | null>(null);
 
@@ -1260,6 +1268,10 @@ Paste or write your English here. Mercy will keep the teacher focus while correc
                       <p className="mt-2 text-sm leading-6 text-slate-700">{result.explanation}</p>
                     )}
                   </div>
+                ) : null}
+
+                {l1DetectorEnabled && result.l1Hint ? (
+                  <L1HintCard hint={result.l1Hint} />
                 ) : null}
               </div>
 
