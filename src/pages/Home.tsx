@@ -11,6 +11,13 @@ import BottomMusicBar from "@/components/audio/BottomMusicBar";
 import { MercyGuide } from "@/components/MercyGuide";
 import { FeedbackBar } from "@/components/FeedbackBar";
 import { useUserAccess } from "@/hooks/useUserAccess";
+import { useAuth } from "@/providers/AuthProvider";
+import { useFeatureFlag } from "@/hooks/useFeatureFlag";
+import { supabase } from "@/lib/supabaseClient";
+import FocusAreasCard from "@/components/home/FocusAreasCard";
+
+const LS_PLACEMENT_BANNER_DISMISSED = "mb.placement.banner.dismissed";
+const LS_PLACEMENT_REDIRECT_SEEN    = "mb.placement.redirect.seen";
 
 const PAGE_MAX = 980;
 const LS_ZOOM  = "mb.ui.zoom";
@@ -55,6 +62,18 @@ function hasOpenTeacherMercyPanel(): boolean {
 export default function Home() {
   const nav    = useNavigate();
   const access = useUserAccess();
+  const { user } = useAuth();
+  const { enabled: placementFlagEnabled, loading: placementFlagLoading } =
+    useFeatureFlag("placement_test_enabled", false);
+
+  const [placementBannerDismissed, setPlacementBannerDismissed] = useState<boolean>(() => {
+    try {
+      return window.localStorage.getItem(LS_PLACEMENT_BANNER_DISMISSED) === "1";
+    } catch {
+      return false;
+    }
+  });
+  const [placementCompleted, setPlacementCompleted] = useState<boolean | null>(null);
 
   const [viewportWidth, setViewportWidth] = useState<number>(
     typeof window === "undefined" ? 1200 : window.innerWidth,
@@ -111,6 +130,90 @@ export default function Home() {
       (closeButton || collapseButton)?.click();
     }
   }, [access.isAuthenticated, access.loading, access.isTrialExpired]);
+
+  // ── Placement test integration (feature-flagged) ────────────────────────
+  //
+  // On mount, for authenticated users only, check whether they've ever
+  // completed the placement test. If NOT, and they haven't already been
+  // redirected once this session (to avoid ping-pong), send them to
+  // /placement. If YES, show the dismissible banner instead.
+  //
+  // Diagnostic console logs are intentional — feature flags + auth +
+  // profile fetch is a three-way race that's a pain to debug blind.
+  // Safe to keep in prod; they're prefixed and rare.
+  useEffect(() => {
+    if (placementFlagLoading) {
+      console.log("[Home/placement] flag still resolving, waiting");
+      return;
+    }
+    if (!placementFlagEnabled) {
+      console.log("[Home/placement] flag disabled for this user");
+      return;
+    }
+    if (!user?.id) {
+      console.log("[Home/placement] no authenticated user");
+      setPlacementCompleted(null);
+      return;
+    }
+
+    let cancelled = false;
+    (async () => {
+      const { data, error } = await supabase
+        .from("profiles")
+        .select("placement_completed_at")
+        .eq("id", user.id)
+        .maybeSingle();
+      if (cancelled) return;
+      if (error) {
+        console.warn("[Home/placement] profile fetch error:", error.message);
+        setPlacementCompleted(null);
+        return;
+      }
+      const completedAt =
+        (data as { placement_completed_at?: string | null } | null)
+          ?.placement_completed_at ?? null;
+      const completed = Boolean(completedAt);
+      setPlacementCompleted(completed);
+
+      if (completed) {
+        console.log("[Home/placement] already completed at", completedAt);
+        return;
+      }
+
+      let alreadyRedirected = false;
+      try {
+        alreadyRedirected =
+          window.sessionStorage.getItem(LS_PLACEMENT_REDIRECT_SEEN) === "1";
+      } catch { /* ignore */ }
+
+      if (alreadyRedirected) {
+        console.log("[Home/placement] redirect already seen this session — showing banner instead");
+        return;
+      }
+
+      try {
+        window.sessionStorage.setItem(LS_PLACEMENT_REDIRECT_SEEN, "1");
+      } catch { /* ignore */ }
+      console.log("[Home/placement] redirecting to /placement");
+      nav("/placement", { replace: true });
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [placementFlagLoading, placementFlagEnabled, user?.id, nav]);
+
+  const dismissPlacementBanner = () => {
+    try {
+      window.localStorage.setItem(LS_PLACEMENT_BANNER_DISMISSED, "1");
+    } catch { /* ignore */ }
+    setPlacementBannerDismissed(true);
+  };
+
+  const showPlacementBanner =
+    placementFlagEnabled &&
+    Boolean(user) &&
+    placementCompleted === false &&
+    !placementBannerDismissed;
 
   const isDesktopTop      = viewportWidth >= 960;
   const isPhone           = viewportWidth < 640;
@@ -287,9 +390,69 @@ export default function Home() {
     </button>
   );
 
+  const placementBanner = showPlacementBanner ? (
+    <div
+      style={{
+        marginTop: 8,
+        borderRadius: 14,
+        border: "1px solid rgba(16,185,129,0.24)",
+        background: "linear-gradient(135deg, rgba(16,185,129,0.08), rgba(20,184,166,0.06))",
+        padding: "10px 14px",
+        display: "flex",
+        alignItems: "center",
+        gap: 10,
+        flexWrap: "wrap",
+      }}
+      role="region"
+      aria-label="Placement test suggestion"
+    >
+      <span style={{ fontSize: 20, lineHeight: 1, flex: "0 0 auto" }} aria-hidden>🎯</span>
+      <div style={{ flex: 1, minWidth: 180, fontSize: 13, fontWeight: 700, color: "rgba(0,60,50,0.90)", lineHeight: 1.45 }}>
+        Take the placement test to see where to start
+        <span style={{ display: "block", fontSize: 12, fontWeight: 400, color: "#94a3b8", marginTop: 2 }}>
+          Làm bài đánh giá để biết nên bắt đầu từ đâu
+        </span>
+      </div>
+      <button
+        type="button"
+        onClick={() => nav("/placement")}
+        style={{
+          background: "#059669",
+          color: "white",
+          border: "none",
+          borderRadius: 9999,
+          fontSize: 12,
+          fontWeight: 900,
+          padding: "8px 14px",
+          cursor: "pointer",
+          minHeight: 34,
+        }}
+      >
+        Take test → · Làm bài →
+      </button>
+      <button
+        type="button"
+        onClick={dismissPlacementBanner}
+        aria-label="Dismiss placement suggestion"
+        style={{
+          background: "transparent",
+          color: "rgba(0,0,0,0.40)",
+          border: "none",
+          fontSize: 18,
+          lineHeight: 1,
+          cursor: "pointer",
+          padding: "4px 6px",
+        }}
+      >
+        ×
+      </button>
+    </div>
+  ) : null;
+
   return (
     <div style={wrap}>
       <div style={frame}>
+        {placementBanner}
         {/* Headline */}
         <section style={heroShell} aria-label="Homepage hero">
           <h1 style={headline}>
@@ -308,6 +471,9 @@ export default function Home() {
 
           {/* Library — secondary */}
           {libraryCard}
+
+          {/* Focus areas — tertiary (feature-flagged) */}
+          <FocusAreasCard />
         </section>
 
         {/* Floating bubbles */}

@@ -1,0 +1,141 @@
+// src/lib/weakness/__tests__/weakness-catalog.test.ts
+//
+// Validates the weakness catalog invariants. Mirror of the pattern used
+// by src/lib/placement/__tests__/cefrToRoom.test.ts — reads public/data
+// from disk at test time so CI fails loudly if a mapped room is renamed
+// or removed.
+
+import { describe, expect, it } from "vitest";
+import { existsSync, readFileSync } from "node:fs";
+import { resolve } from "node:path";
+
+import {
+  ALL_WEAKNESS_TAGS,
+  WEAKNESS_CATALOG,
+  getWeaknessEntry,
+  isKnownWeaknessTag,
+  resolveWeaknessTags,
+} from "../weakness-catalog";
+
+const PUBLIC_DATA = resolve(__dirname, "../../../../public/data");
+
+describe("WEAKNESS_CATALOG shape", () => {
+  it("exposes every tag in ALL_WEAKNESS_TAGS", () => {
+    const catalogKeys = Object.keys(WEAKNESS_CATALOG).sort();
+    const allTags = [...ALL_WEAKNESS_TAGS].sort();
+    expect(catalogKeys).toEqual(allTags);
+  });
+
+  it("has non-empty bilingual strings for every tag", () => {
+    for (const tag of ALL_WEAKNESS_TAGS) {
+      const entry = WEAKNESS_CATALOG[tag];
+      expect(entry.displayEn.trim().length).toBeGreaterThan(0);
+      expect(entry.displayVi.trim().length).toBeGreaterThan(0);
+      expect(entry.whyEn.trim().length).toBeGreaterThan(0);
+      expect(entry.whyVi.trim().length).toBeGreaterThan(0);
+      expect(entry.roomId.trim().length).toBeGreaterThan(0);
+    }
+  });
+
+  it("keeps entry.tag in sync with its record key", () => {
+    for (const tag of ALL_WEAKNESS_TAGS) {
+      expect(WEAKNESS_CATALOG[tag].tag).toBe(tag);
+    }
+  });
+});
+
+describe("mapped rooms exist on disk", () => {
+  // Clone of cefrToRoom.test.ts intent: fail CI if a room is renamed.
+  for (const tag of ALL_WEAKNESS_TAGS) {
+    const entry = WEAKNESS_CATALOG[tag];
+    it(`${tag} → ${entry.roomId}.json exists`, () => {
+      const path = resolve(PUBLIC_DATA, `${entry.roomId}.json`);
+      expect(existsSync(path)).toBe(true);
+
+      // Defensive: the file should parse as JSON. If it's corrupt, the
+      // Home card would navigate to a room that crashes — catch here.
+      const raw = readFileSync(path, "utf8");
+      expect(() => JSON.parse(raw)).not.toThrow();
+    });
+  }
+});
+
+describe("isKnownWeaknessTag", () => {
+  it("returns true for every known tag", () => {
+    for (const tag of ALL_WEAKNESS_TAGS) {
+      expect(isKnownWeaknessTag(tag)).toBe(true);
+    }
+  });
+
+  it("returns false for unknown strings", () => {
+    expect(isKnownWeaknessTag("")).toBe(false);
+    expect(isKnownWeaknessTag("vi_l1_made_up")).toBe(false);
+    expect(isKnownWeaknessTag("anything")).toBe(false);
+  });
+
+  it("returns false for non-string values", () => {
+    expect(isKnownWeaknessTag(null)).toBe(false);
+    expect(isKnownWeaknessTag(undefined)).toBe(false);
+    expect(isKnownWeaknessTag(42)).toBe(false);
+    expect(isKnownWeaknessTag({})).toBe(false);
+    expect(isKnownWeaknessTag([])).toBe(false);
+  });
+});
+
+describe("getWeaknessEntry", () => {
+  it("returns the matching entry for each known tag", () => {
+    for (const tag of ALL_WEAKNESS_TAGS) {
+      const entry = getWeaknessEntry(tag);
+      expect(entry).not.toBeNull();
+      expect(entry!.tag).toBe(tag);
+    }
+  });
+
+  it("returns null for unknown tags", () => {
+    expect(getWeaknessEntry("")).toBeNull();
+    expect(getWeaknessEntry("vi_l1_ghost_tag")).toBeNull();
+  });
+});
+
+describe("resolveWeaknessTags", () => {
+  it("preserves input order", () => {
+    const resolved = resolveWeaknessTags([
+      "vi_l1_past_ed",
+      "vi_l1_3rd_person_s",
+      "vi_l1_plural_s",
+    ]);
+    expect(resolved.map((e) => e.tag)).toEqual([
+      "vi_l1_past_ed",
+      "vi_l1_3rd_person_s",
+      "vi_l1_plural_s",
+    ]);
+  });
+
+  it("drops unknown tags without crashing", () => {
+    const resolved = resolveWeaknessTags([
+      "vi_l1_3rd_person_s",
+      "vi_l1_unknown_future",
+      "vi_l1_past_ed",
+    ]);
+    expect(resolved.map((e) => e.tag)).toEqual([
+      "vi_l1_3rd_person_s",
+      "vi_l1_past_ed",
+    ]);
+  });
+
+  it("deduplicates repeat tags", () => {
+    const resolved = resolveWeaknessTags([
+      "vi_l1_plural_s",
+      "vi_l1_plural_s",
+      "vi_l1_3rd_person_s",
+    ]);
+    expect(resolved.map((e) => e.tag)).toEqual([
+      "vi_l1_plural_s",
+      "vi_l1_3rd_person_s",
+    ]);
+  });
+
+  it("returns empty array for empty input", () => {
+    expect(resolveWeaknessTags([])).toEqual([]);
+  });
+});

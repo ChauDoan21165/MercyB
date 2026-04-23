@@ -37,6 +37,11 @@ const TierDetail          = lazy(() => import("@/pages/TierDetail"));
 const LoginPage           = lazy(() => import("@/pages/LoginPage"));
 const ResetPasswordPage   = lazy(() => import("@/pages/ResetPasswordPage"));
 
+const PlacementWelcomePage = lazy(() => import("@/pages/placement/WelcomePage"));
+const PlacementWhoForPage  = lazy(() => import("@/pages/placement/WhoForPage"));
+const PlacementTestPage    = lazy(() => import("@/pages/placement/TestPage"));
+const PlacementResultsPage = lazy(() => import("@/pages/placement/ResultsPage"));
+
 const AdminDashboard          = lazy(() => import("@/pages/admin/AdminDashboard"));
 const AdminUsersPage          = lazy(() => import("@/pages/admin/AdminUsersPage"));
 const AdminPaymentsPage       = lazy(() => import("@/pages/admin/AdminPaymentsPage"));
@@ -378,6 +383,36 @@ export default function AppRouter() {
           <Route path="/tiers/:tierId" element={<LazyPage><TierDetail /></LazyPage>} />
           <Route path="/redeem"     element={<RedeemRedirect />} />
           <Route path="/promo-code" element={<RedeemRedirect />} />
+
+          {/* Placement test — requires auth (profile writes keyed on user.id) */}
+          <Route path="/placement"
+            element={
+              <RequireAuth>
+                <LazyPage><PlacementWelcomePage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+          <Route path="/placement/who"
+            element={
+              <RequireAuth>
+                <LazyPage><PlacementWhoForPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+          <Route path="/placement/test"
+            element={
+              <RequireAuth>
+                <LazyPage><PlacementTestPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+          <Route path="/placement/results"
+            element={
+              <RequireAuth>
+                <LazyPage><PlacementResultsPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
 
           {/* Protected pages — redirect to /signin if not authenticated */}
           <Route path="/account"
