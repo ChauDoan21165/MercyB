@@ -56,20 +56,6 @@ type SecurityCheck = {
   detail?: string;
 };
 
-type EdgeSecurityFeedPayload = {
-  status?: string;
-  checkedAt?: string;
-  checks?: Array<{
-    key?: string;
-    label?: string;
-    state?: string;
-    summary?: string;
-    detail?: string;
-  }>;
-};
-
-const SECURITY_REFRESH_MS = 20_000;
-
 function safeAdminLevel(value: unknown): number {
   const parsed = Number(value);
   return Number.isFinite(parsed) ? parsed : 0;
@@ -77,14 +63,6 @@ function safeAdminLevel(value: unknown): number {
 
 function cleanText(value: unknown): string {
   return typeof value === "string" ? value.trim() : "";
-}
-
-function normalizeState(value: unknown): Exclude<SecurityHealthState, "loading"> {
-  const normalized = cleanText(value).toLowerCase();
-
-  if (normalized === "critical") return "critical";
-  if (normalized === "warn" || normalized === "warning") return "warn";
-  return "ok";
 }
 
 function statePriority(value: SecurityHealthState): number {
@@ -143,37 +121,6 @@ function getTone(state: SecurityHealthState) {
   }
 }
 
-async function timedFetch(
-  url: string,
-  init?: RequestInit,
-  timeoutMs = 6_000,
-): Promise<{ response: Response; responseMs: number }> {
-  const controller = new AbortController();
-  const startedAt =
-    typeof performance !== "undefined" ? performance.now() : Date.now();
-
-  const timeoutId = window.setTimeout(() => {
-    controller.abort();
-  }, timeoutMs);
-
-  try {
-    const response = await fetch(url, {
-      ...init,
-      signal: controller.signal,
-    });
-
-    const endedAt =
-      typeof performance !== "undefined" ? performance.now() : Date.now();
-
-    return {
-      response,
-      responseMs: endedAt - startedAt,
-    };
-  } finally {
-    window.clearTimeout(timeoutId);
-  }
-}
-
 export default function AdminDashboard() {
   const nav = useNavigate();
   const location = useLocation();
@@ -195,7 +142,6 @@ export default function AdminDashboard() {
   const [securityLoading, setSecurityLoading] = useState<boolean>(true);
   const [securityChecks, setSecurityChecks] = useState<SecurityCheck[]>([]);
   const [securityCheckedAt, setSecurityCheckedAt] = useState<string>("");
-  const [serverFeedCheckedAt, setServerFeedCheckedAt] = useState<string>("");
 
   useEffect(() => {
     if (urlApp && urlApp !== appId) {
@@ -216,16 +162,6 @@ export default function AdminDashboard() {
 
   const supabaseUrl = cleanText(import.meta.env.VITE_SUPABASE_URL);
   const supabaseAnonKey = cleanText(import.meta.env.VITE_SUPABASE_ANON_KEY);
-
-  const supabaseSettingsUrl = useMemo(() => {
-    if (!supabaseUrl) return "";
-    return `${supabaseUrl.replace(/\/$/, "")}/auth/v1/settings`;
-  }, [supabaseUrl]);
-
-  const securityEdgeFeedUrl = useMemo(() => {
-    if (!supabaseUrl) return "";
-    return `${supabaseUrl.replace(/\/$/, "")}/functions/v1/admin-security-health`;
-  }, [supabaseUrl]);
 
   const runSecurityChecks = useCallback(async () => {
     if (typeof window === "undefined") return;
@@ -303,170 +239,13 @@ export default function AdminDashboard() {
         : "This is a browser/runtime problem, not necessarily an attack.",
     });
 
-    if (!supabaseSettingsUrl || !supabaseAnonKey) {
-      pushCheck({
-        key: "supabase-reachability",
-        label: "Supabase reachability",
-        state: "critical",
-        summary: "Supabase reachability could not be tested.",
-        detail: "Client env is incomplete, so the dashboard cannot verify Supabase health.",
-      });
-    } else {
-      try {
-        const { response, responseMs } = await timedFetch(
-          supabaseSettingsUrl,
-          {
-            method: "GET",
-            headers: {
-              apikey: supabaseAnonKey,
-            },
-          },
-          6_000,
-        );
-
-        const state: Exclude<SecurityHealthState, "loading"> =
-          response.status >= 500
-            ? "critical"
-            : response.status >= 400 || responseMs > 2_500
-              ? "warn"
-              : "ok";
-
-        pushCheck({
-          key: "supabase-reachability",
-          label: "Supabase reachability",
-          state,
-          summary:
-            response.status >= 500
-              ? "Supabase is failing."
-              : response.status >= 400
-                ? `Supabase returned ${response.status}.`
-                : "Supabase responded.",
-          detail: `GET ${supabaseSettingsUrl} · ${response.status} · ${Math.round(responseMs)} ms`,
-        });
-      } catch (error) {
-        const message =
-          error instanceof Error ? error.message : "Network error while checking Supabase.";
-
-        pushCheck({
-          key: "supabase-reachability",
-          label: "Supabase reachability",
-          state: "critical",
-          summary: "Supabase did not respond.",
-          detail: message,
-        });
-      }
-    }
-
-    if (!securityEdgeFeedUrl || !supabaseAnonKey) {
-      pushCheck({
-        key: "admin-security-feed",
-        label: "Admin security edge feed",
-        state: "warn",
-        summary: "Security edge feed is not configured yet.",
-        detail:
-          "Create supabase/functions/admin-security-health and this panel will show real server-side security signals.",
-      });
-      setServerFeedCheckedAt("");
-    } else {
-      try {
-        const { response, responseMs } = await timedFetch(
-          securityEdgeFeedUrl,
-          {
-            method: "GET",
-            headers: {
-              apikey: supabaseAnonKey,
-              Authorization: `Bearer ${supabaseAnonKey}`,
-            },
-          },
-          7_000,
-        );
-
-        if (response.status === 404) {
-          pushCheck({
-            key: "admin-security-feed",
-            label: "Admin security edge feed",
-            state: "warn",
-            summary: "Security edge feed is not installed yet.",
-            detail: `GET ${securityEdgeFeedUrl} returned 404.`,
-          });
-          setServerFeedCheckedAt("");
-        } else if (!response.ok) {
-          pushCheck({
-            key: "admin-security-feed",
-            label: "Admin security edge feed",
-            state: "critical",
-            summary: "Security edge feed failed.",
-            detail: `GET ${securityEdgeFeedUrl} returned ${response.status} · ${Math.round(responseMs)} ms`,
-          });
-          setServerFeedCheckedAt("");
-        } else {
-          const payload = (await response.json()) as EdgeSecurityFeedPayload;
-          const feedState = normalizeState(payload?.status);
-          const feedChecks = Array.isArray(payload?.checks) ? payload.checks : [];
-
-          const worstFeedState = feedChecks.reduce<Exclude<SecurityHealthState, "loading">>(
-            (worst, item) => {
-              const next = normalizeState(item?.state);
-              return statePriority(next) > statePriority(worst) ? next : worst;
-            },
-            feedState,
-          );
-
-          pushCheck({
-            key: "admin-security-feed",
-            label: "Admin security edge feed",
-            state: worstFeedState,
-            summary:
-              feedChecks.length > 0
-                ? `${feedChecks.length} server-side security checks loaded.`
-                : "Security edge feed responded.",
-            detail: `GET ${securityEdgeFeedUrl} · ${Math.round(responseMs)} ms`,
-          });
-
-          setServerFeedCheckedAt(cleanText(payload?.checkedAt));
-
-          feedChecks.forEach((item, index) => {
-            nextChecks.push({
-              key: cleanText(item?.key) || `edge-check-${index}`,
-              label: cleanText(item?.label) || `Server security check ${index + 1}`,
-              state: normalizeState(item?.state),
-              summary: cleanText(item?.summary) || "No summary provided.",
-              detail: cleanText(item?.detail),
-            });
-          });
-        }
-      } catch (error) {
-        const message =
-          error instanceof Error ? error.message : "Network error while checking security edge feed.";
-
-        pushCheck({
-          key: "admin-security-feed",
-          label: "Admin security edge feed",
-          state: "critical",
-          summary: "Security edge feed could not be reached.",
-          detail: message,
-        });
-        setServerFeedCheckedAt("");
-      }
-    }
-
     setSecurityChecks(nextChecks);
     setSecurityCheckedAt(new Date().toISOString());
     setSecurityLoading(false);
-  }, [securityEdgeFeedUrl, supabaseAnonKey, supabaseSettingsUrl, supabaseUrl]);
+  }, [supabaseAnonKey, supabaseUrl]);
 
   useEffect(() => {
     void runSecurityChecks();
-  }, [runSecurityChecks]);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const id = window.setInterval(() => {
-      void runSecurityChecks();
-    }, SECURITY_REFRESH_MS);
-
-    return () => window.clearInterval(id);
   }, [runSecurityChecks]);
 
   const overallSecurityState = useMemo<SecurityHealthState>(() => {
@@ -896,11 +675,6 @@ export default function AdminDashboard() {
                     <span style={badge}>
                       Checked: <span style={mono}>{formatCheckedAt(securityCheckedAt)}</span>
                     </span>
-                    {serverFeedCheckedAt ? (
-                      <span style={badge}>
-                        Server feed: <span style={mono}>{formatCheckedAt(serverFeedCheckedAt)}</span>
-                      </span>
-                    ) : null}
                   </div>
                 </div>
 
