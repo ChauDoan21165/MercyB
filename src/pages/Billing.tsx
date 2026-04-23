@@ -535,7 +535,10 @@ export default function Billing() {
       ) : null}
 
       {/* ── Cards ───────────────────────────────────────────── */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 16 }}>
+      {/* min(100%, 280px) keeps auto-fit safe on 320px viewports: the grid
+          can't demand a column wider than its container, so it collapses
+          to 1 col instead of overflowing. */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: 16 }}>
 
         {/* Current access */}
         <div style={card}>
