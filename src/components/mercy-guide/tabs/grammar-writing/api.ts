@@ -4,12 +4,14 @@
  */
 
 import type { GrammarApiResponse } from '../../types';
+import { resolveApiUrl } from '@/lib/apiBase';
 import { supabase } from '@/lib/supabaseClient';
 
 export const GRAMMAR_API_ENDPOINT = '/api/mercy/grammar';
 const GRAMMAR_API_TIMEOUT_MS = 20000;
 const MAX_CONTEXT_LENGTH = 4000;
 const MAX_ERROR_PREVIEW_LENGTH = 240;
+const MAX_BODY_PREVIEW_LENGTH = 200;
 
 export type AnalyzeGrammarPayload = {
   text: string;
@@ -134,6 +136,26 @@ function isObject(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null;
 }
 
+/**
+ * Build a debug-friendly error message when the response body cannot be
+ * parsed as JSON. Includes the HTTP status, content-type, and a short
+ * body preview so future regressions (Capacitor SPA fallback returning
+ * index.html, OpenAI plain-text rate-limit, edge-function panic page)
+ * surface the actual cause instead of the generic "invalid JSON".
+ */
+function buildInvalidJsonMessage(
+  status: number,
+  contentType: string | null,
+  raw: string,
+): string {
+  const preview = truncateText(raw.replace(/\s+/g, ' ').trim(), MAX_BODY_PREVIEW_LENGTH);
+  const ctSegment = contentType ? ` (${contentType})` : '';
+  if (preview) {
+    return `Grammar help returned a non-JSON response (HTTP ${status}${ctSegment}): ${preview}`;
+  }
+  return `Grammar help returned a non-JSON response (HTTP ${status}${ctSegment}).`;
+}
+
 function normalizeGrammarApiResponse(value: unknown): GrammarApiResponse {
   if (!isObject(value)) {
     throw new Error('Grammar help returned an invalid response.');
@@ -162,7 +184,13 @@ export async function analyzeGrammarWithApi(
     : null;
 
   try {
-    const response = await fetch(GRAMMAR_API_ENDPOINT, {
+    // resolveApiUrl: on web returns the relative path unchanged
+    // (fetch resolves against page origin), on Capacitor native it
+    // prefixes the prod origin. Without this, native fetch hits the
+    // WebView's SPA fallback and gets back index.html — the source of
+    // the "Grammar help returned invalid JSON" bug from TestFlight
+    // Build 7. See src/lib/apiBase.ts.
+    const response = await fetch(resolveApiUrl(GRAMMAR_API_ENDPOINT), {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -189,7 +217,16 @@ export async function analyzeGrammarWithApi(
     try {
       parsed = JSON.parse(raw) as unknown;
     } catch {
-      throw new Error('Grammar help returned invalid JSON.');
+      // Surface status + content-type + body preview so we can tell
+      // an HTML SPA fallback (Capacitor) from a rate-limit text body
+      // (OpenAI) from an empty/malformed payload.
+      const contentType =
+        typeof response.headers?.get === 'function'
+          ? response.headers.get('content-type')
+          : null;
+      throw new Error(
+        buildInvalidJsonMessage(response.status, contentType, raw),
+      );
     }
 
     return normalizeGrammarApiResponse(parsed);
