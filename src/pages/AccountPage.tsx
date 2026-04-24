@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/providers/AuthProvider";
 import { useEntitlements } from "@/lib/useEntitlements";
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
+import { useAdminAccess } from "@/hooks/admin/useAdminAccess";
 import { GiftCodeModal } from "@/components/GiftCodeModal";
 import { supabase } from "@/lib/supabaseClient";
 import { StreakHistoryPanel } from "@/components/streak/StreakHistoryPanel";
@@ -78,6 +79,7 @@ export default function AccountPage() {
   const nav = useNavigate();
   const { user, isLoading, signOut } = useAuth();
   const { ent, loading: entitlementLoading, refreshEntitlements } = useEntitlements();
+  const admin = useAdminAccess();
 
   const [isSigningOut, setIsSigningOut]       = useState(false);
   const [didRedirectToSignin, setDidRedirectToSignin] = useState(false);
@@ -631,6 +633,31 @@ export default function AccountPage() {
           </div>
 
         </div>
+
+        {/* ── Admin link (level 9+ only) ─────────────────────── */}
+        {!admin.loading && admin.permissions.level >= 9 ? (
+          <div style={{ marginTop: 18 }}>
+            <a
+              href="/admin/analytics"
+              data-testid="account-admin-dashboard-link"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 6,
+                padding: "10px 16px",
+                border: "1px solid #bae6fd",
+                background: "#f0f9ff",
+                color: "#075985",
+                borderRadius: 9999,
+                fontSize: 13,
+                fontWeight: 800,
+                textDecoration: "none",
+              }}
+            >
+              Admin dashboard →
+            </a>
+          </div>
+        ) : null}
 
         {/* ── My Progress (streaks) ────────────────────────────── */}
         <div style={{ marginTop: 18 }}>

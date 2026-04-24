@@ -678,6 +678,7 @@ export default function AdminDashboard() {
     { title: "Access Codes", desc: "Generate and manage redeem / access codes.", href: "/admin/access-codes", badge: "SAFE" },
     { title: "Audio Coverage", desc: "Coverage checks for room audio (read-only tools).", href: "/admin/audio-coverage", badge: "READY" },
     { title: "Feature Flags", desc: "Toggle global flags or add users to per-flag cohorts.", href: "/admin/feature-flags", badge: "SAFE" },
+    { title: "Analytics", desc: "DAU, feature usage, funnel, and room popularity (Level 9+).", href: "/admin/analytics", badge: "READY" },
   ];
 
   function go(href?: string) {
