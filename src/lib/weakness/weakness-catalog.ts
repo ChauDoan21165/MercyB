@@ -73,7 +73,36 @@ export type WeaknessTag =
   | "vi_l1_another_vs_other"
   | "vi_l1_look_vs_see_vs_watch"
   | "vi_l1_by_vs_with"
-  | "vi_l1_time_expressions";
+  | "vi_l1_time_expressions"
+  // Round 5 — CC3 25-rule expansion (public IDs L1-036..L1-060).
+  // CC4 will backfill Vietnamese strings for every entry in a
+  // subsequent PR. English + example fields are CC3-owned and
+  // should stay stable.
+  | "vi_l1_present_perfect_vs_past"
+  | "vi_l1_subjunctive_were"
+  | "vi_l1_embedded_question_order"
+  | "vi_l1_do_support_3ps"
+  | "vi_l1_subject_relative_omit"
+  | "vi_l1_gerund_after_verb"
+  | "vi_l1_modal_perfect"
+  | "vi_l1_phrasal_pronoun_order"
+  | "vi_l1_comparative_more_long"
+  | "vi_l1_many_with_uncount"
+  | "vi_l1_geographical_article"
+  | "vi_l1_generic_plural"
+  | "vi_l1_double_negative"
+  | "vi_l1_negative_inversion"
+  | "vi_l1_adverb_before_subject"
+  | "vi_l1_make_let_bare"
+  | "vi_l1_too_vs_very"
+  | "vi_l1_a_vs_an_vowel"
+  | "vi_l1_one_of_the_singular"
+  | "vi_l1_each_singular"
+  | "vi_l1_been_vs_gone"
+  | "vi_l1_tag_polarity"
+  | "vi_l1_no_article_generic"
+  | "vi_l1_superlative_the"
+  | "vi_l1_if_will";
 
 export type BilingualText = {
   /** English surface — may contain `**word**` markdown bolding. */
@@ -650,6 +679,388 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     },
     exampleWrong: "I saw him before two days.",
     exampleRight: "I saw him two days ago.",
+    linkedRoomId: null,
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
+  // Round 5 entries — CC3 seeded English + examples. CC4 will fill the
+  // Vietnamese strings (shortLabel.vi / longDescription.vi) in a
+  // subsequent PR. The "[VI TBD — CC4]" marker makes unreviewed rows
+  // easy to spot.
+  // ────────────────────────────────────────────────────────────────────────
+
+  vi_l1_present_perfect_vs_past: {
+    tag: "vi_l1_present_perfect_vs_past",
+    shortLabel: {
+      en: "Present perfect vs past",
+      vi: "[VI TBD — CC4]",
+    },
+    longDescription: {
+      en: "Vietnamese has no perfect aspect. When a sentence names a specific past time (**yesterday**, **last week**, **in 1990**), English requires simple past — not **have/has + past participle**.",
+      vi: "[VI TBD — CC4]",
+    },
+    exampleWrong: "I have eaten pho yesterday.",
+    exampleRight: "I ate pho yesterday.",
+    linkedRoomId: null,
+  },
+
+  vi_l1_subjunctive_were: {
+    tag: "vi_l1_subjunctive_were",
+    shortLabel: {
+      en: "Subjunctive **were**",
+      vi: "[VI TBD — CC4]",
+    },
+    longDescription: {
+      en: "After **if** or **wish**, English uses **were** for every subject in unreal / imagined situations — *If I **were** you*, not *If I **was** you*.",
+      vi: "[VI TBD — CC4]",
+    },
+    exampleWrong: "If I was you, I would take the job.",
+    exampleRight: "If I were you, I would take the job.",
+    linkedRoomId: null,
+  },
+
+  vi_l1_embedded_question_order: {
+    tag: "vi_l1_embedded_question_order",
+    shortLabel: {
+      en: "Embedded-question order",
+      vi: "[VI TBD — CC4]",
+    },
+    longDescription: {
+      en: "A question inside another sentence drops the question word order — subject comes before the auxiliary.",
+      vi: "[VI TBD — CC4]",
+    },
+    exampleWrong: "I don't know what is this.",
+    exampleRight: "I don't know what this is.",
+    linkedRoomId: null,
+  },
+
+  vi_l1_do_support_3ps: {
+    tag: "vi_l1_do_support_3ps",
+    shortLabel: {
+      en: "**doesn't** for he / she / it",
+      vi: "[VI TBD — CC4]",
+    },
+    longDescription: {
+      en: "In the present simple, the helper with **he**, **she**, or **it** is **doesn't** — not **don't**. The **-s** rides on the helper, so the main verb stays bare.",
+      vi: "[VI TBD — CC4]",
+    },
+    exampleWrong: "She don't know the answer.",
+    exampleRight: "She doesn't know the answer.",
+    linkedRoomId: null,
+  },
+
+  vi_l1_subject_relative_omit: {
+    tag: "vi_l1_subject_relative_omit",
+    shortLabel: {
+      en: "Subject **who / which / that**",
+      vi: "[VI TBD — CC4]",
+    },
+    longDescription: {
+      en: "English cannot drop a **subject** relative pronoun. Use **who** for people and **which / that** for things.",
+      vi: "[VI TBD — CC4]",
+    },
+    exampleWrong: "The man came yesterday is my uncle.",
+    exampleRight: "The man who came yesterday is my uncle.",
+    linkedRoomId: null,
+  },
+
+  vi_l1_gerund_after_verb: {
+    tag: "vi_l1_gerund_after_verb",
+    shortLabel: {
+      en: "Gerund after **enjoy / avoid / finish**",
+      vi: "[VI TBD — CC4]",
+    },
+    longDescription: {
+      en: "Verbs like **enjoy**, **avoid**, **finish**, **keep**, **mind**, **suggest**, and **practise** are followed by **-ing**, not **to + verb**.",
+      vi: "[VI TBD — CC4]",
+    },
+    exampleWrong: "I enjoy to swim in the morning.",
+    exampleRight: "I enjoy swimming in the morning.",
+    linkedRoomId: null,
+  },
+
+  vi_l1_modal_perfect: {
+    tag: "vi_l1_modal_perfect",
+    shortLabel: {
+      en: "Modal + **have** + V3",
+      vi: "[VI TBD — CC4]",
+    },
+    longDescription: {
+      en: "To talk about a past possibility, regret, or conclusion with a modal, English uses **modal + have + past participle** — not the past-tense verb directly.",
+      vi: "[VI TBD — CC4]",
+    },
+    exampleWrong: "I should did it yesterday.",
+    exampleRight: "I should have done it yesterday.",
+    linkedRoomId: null,
+  },
+
+  vi_l1_phrasal_pronoun_order: {
+    tag: "vi_l1_phrasal_pronoun_order",
+    shortLabel: {
+      en: "Pronoun splits phrasal verb",
+      vi: "[VI TBD — CC4]",
+    },
+    longDescription: {
+      en: "With separable phrasal verbs, pronoun objects go **between** the verb and the particle: *picked **him** up*, not *picked up **him***.",
+      vi: "[VI TBD — CC4]",
+    },
+    exampleWrong: "I picked up him from the airport.",
+    exampleRight: "I picked him up from the airport.",
+    linkedRoomId: null,
+  },
+
+  vi_l1_comparative_more_long: {
+    tag: "vi_l1_comparative_more_long",
+    shortLabel: {
+      en: "**more** with long adjectives",
+      vi: "[VI TBD — CC4]",
+    },
+    longDescription: {
+      en: "Adjectives with two or more syllables take **more** — *more beautiful*, *more important* — not an **-er** ending.",
+      vi: "[VI TBD — CC4]",
+    },
+    exampleWrong: "This is beautifuler than that one.",
+    exampleRight: "This is more beautiful than that one.",
+    linkedRoomId: null,
+  },
+
+  vi_l1_many_with_uncount: {
+    tag: "vi_l1_many_with_uncount",
+    shortLabel: {
+      en: "**much** with uncountables",
+      vi: "[VI TBD — CC4]",
+    },
+    longDescription: {
+      en: "Uncountable nouns (**water**, **money**, **advice**, **music**) take **much**, not **many**. *Many* is only for countable plurals.",
+      vi: "[VI TBD — CC4]",
+    },
+    exampleWrong: "How many water do you drink?",
+    exampleRight: "How much water do you drink?",
+    linkedRoomId: null,
+  },
+
+  vi_l1_geographical_article: {
+    tag: "vi_l1_geographical_article",
+    shortLabel: {
+      en: "**the** with country names",
+      vi: "[VI TBD — CC4]",
+    },
+    longDescription: {
+      en: "Most country names take no article (**Vietnam**, **Japan**), but a few plural-sounding ones do (**the Philippines**, **the USA**, **the Netherlands**).",
+      vi: "[VI TBD — CC4]",
+    },
+    exampleWrong: "I live in the Vietnam.",
+    exampleRight: "I live in Vietnam.",
+    linkedRoomId: null,
+  },
+
+  vi_l1_generic_plural: {
+    tag: "vi_l1_generic_plural",
+    shortLabel: {
+      en: "Generic = plural",
+      vi: "[VI TBD — CC4]",
+    },
+    longDescription: {
+      en: "To talk about something in general, English uses the bare plural — *I like **dogs***, not *I like dog*.",
+      vi: "[VI TBD — CC4]",
+    },
+    exampleWrong: "I like dog.",
+    exampleRight: "I like dogs.",
+    linkedRoomId: null,
+  },
+
+  vi_l1_double_negative: {
+    tag: "vi_l1_double_negative",
+    shortLabel: {
+      en: "One negative per clause",
+      vi: "[VI TBD — CC4]",
+    },
+    longDescription: {
+      en: "Standard English uses only **one** negative word per clause. *I don't have **no** money* → *I don't have **any** money*.",
+      vi: "[VI TBD — CC4]",
+    },
+    exampleWrong: "I don't have no money.",
+    exampleRight: "I don't have any money.",
+    linkedRoomId: null,
+  },
+
+  vi_l1_negative_inversion: {
+    tag: "vi_l1_negative_inversion",
+    shortLabel: {
+      en: "Negative inversion",
+      vi: "[VI TBD — CC4]",
+    },
+    longDescription: {
+      en: "When a negative adverbial like **never**, **seldom**, **rarely**, or **not only** opens the sentence, the subject and auxiliary invert — *Never **have I** seen…*",
+      vi: "[VI TBD — CC4]",
+    },
+    exampleWrong: "Never I have seen such a view.",
+    exampleRight: "Never have I seen such a view.",
+    linkedRoomId: null,
+  },
+
+  vi_l1_adverb_before_subject: {
+    tag: "vi_l1_adverb_before_subject",
+    shortLabel: {
+      en: "Frequency adverb after subject",
+      vi: "[VI TBD — CC4]",
+    },
+    longDescription: {
+      en: "Frequency adverbs like **always**, **usually**, **sometimes** come **after** the subject in English — *I **always** go*, not *Always I go*.",
+      vi: "[VI TBD — CC4]",
+    },
+    exampleWrong: "Always I go to school by bus.",
+    exampleRight: "I always go to school by bus.",
+    linkedRoomId: null,
+  },
+
+  vi_l1_make_let_bare: {
+    tag: "vi_l1_make_let_bare",
+    shortLabel: {
+      en: "**make / let** + bare verb",
+      vi: "[VI TBD — CC4]",
+    },
+    longDescription: {
+      en: "After **make**, **let**, and causative **have**, English uses the **bare verb** — no **to**. *She made me **cry***, not *She made me to cry*.",
+      vi: "[VI TBD — CC4]",
+    },
+    exampleWrong: "She made me to cry.",
+    exampleRight: "She made me cry.",
+    linkedRoomId: null,
+  },
+
+  vi_l1_too_vs_very: {
+    tag: "vi_l1_too_vs_very",
+    shortLabel: {
+      en: "**too** vs **very**",
+      vi: "[VI TBD — CC4]",
+    },
+    longDescription: {
+      en: "**Too** implies excess (there's a problem). For a simple strong intensifier, use **very**. *I am **very** happy to see you*, not *too happy*.",
+      vi: "[VI TBD — CC4]",
+    },
+    exampleWrong: "I am too happy to see you.",
+    exampleRight: "I am very happy to see you.",
+    linkedRoomId: null,
+  },
+
+  vi_l1_a_vs_an_vowel: {
+    tag: "vi_l1_a_vs_an_vowel",
+    shortLabel: {
+      en: "**a** vs **an** by sound",
+      vi: "[VI TBD — CC4]",
+    },
+    longDescription: {
+      en: "Use **a** before a consonant **sound** and **an** before a vowel **sound**. Listen, don't just look at the letter — *an **h**our* (silent h), *a **u**niversity* (starts with a y-sound).",
+      vi: "[VI TBD — CC4]",
+    },
+    exampleWrong: "I ate a apple for lunch.",
+    exampleRight: "I ate an apple for lunch.",
+    linkedRoomId: null,
+  },
+
+  vi_l1_one_of_the_singular: {
+    tag: "vi_l1_one_of_the_singular",
+    shortLabel: {
+      en: "**one of the + plural**",
+      vi: "[VI TBD — CC4]",
+    },
+    longDescription: {
+      en: "After **one of the / my / her / his / their**, the noun is plural — even though the whole phrase refers to one item.",
+      vi: "[VI TBD — CC4]",
+    },
+    exampleWrong: "She is one of the student in my class.",
+    exampleRight: "She is one of the students in my class.",
+    linkedRoomId: null,
+  },
+
+  vi_l1_each_singular: {
+    tag: "vi_l1_each_singular",
+    shortLabel: {
+      en: "**each / every** + singular",
+      vi: "[VI TBD — CC4]",
+    },
+    longDescription: {
+      en: "**Each** and **every** always take a singular noun and a singular verb — *each **student is***, not *each students are*.",
+      vi: "[VI TBD — CC4]",
+    },
+    exampleWrong: "Each students are happy.",
+    exampleRight: "Each student is happy.",
+    linkedRoomId: null,
+  },
+
+  vi_l1_been_vs_gone: {
+    tag: "vi_l1_been_vs_gone",
+    shortLabel: {
+      en: "**been to** vs **gone to**",
+      vi: "[VI TBD — CC4]",
+    },
+    longDescription: {
+      en: "**gone to** = went there and is still away. **been to** = visited and came back. A sentence with **times**, **before**, or **ever** almost always needs **been to**.",
+      vi: "[VI TBD — CC4]",
+    },
+    exampleWrong: "He has gone to Paris three times.",
+    exampleRight: "He has been to Paris three times.",
+    linkedRoomId: null,
+  },
+
+  vi_l1_tag_polarity: {
+    tag: "vi_l1_tag_polarity",
+    shortLabel: {
+      en: "Tag-question polarity",
+      vi: "[VI TBD — CC4]",
+    },
+    longDescription: {
+      en: "Tag questions flip polarity: positive statement → negative tag, negative statement → positive tag. *You like it, **don't you**?* — not *do you?*",
+      vi: "[VI TBD — CC4]",
+    },
+    exampleWrong: "You like it, do you?",
+    exampleRight: "You like it, don't you?",
+    linkedRoomId: null,
+  },
+
+  vi_l1_no_article_generic: {
+    tag: "vi_l1_no_article_generic",
+    shortLabel: {
+      en: "No **the** with generic nouns",
+      vi: "[VI TBD — CC4]",
+    },
+    longDescription: {
+      en: "Abstract and generic nouns (**life**, **love**, **music**, **nature**) usually take no article when they mean the concept in general.",
+      vi: "[VI TBD — CC4]",
+    },
+    exampleWrong: "The life is hard sometimes.",
+    exampleRight: "Life is hard sometimes.",
+    linkedRoomId: null,
+  },
+
+  vi_l1_superlative_the: {
+    tag: "vi_l1_superlative_the",
+    shortLabel: {
+      en: "**the** + superlative",
+      vi: "[VI TBD — CC4]",
+    },
+    longDescription: {
+      en: "Superlatives (**best**, **tallest**, **most beautiful**) almost always sit inside a **the + superlative + noun** pattern.",
+      vi: "[VI TBD — CC4]",
+    },
+    exampleWrong: "She is best student in our class.",
+    exampleRight: "She is the best student in our class.",
+    linkedRoomId: null,
+  },
+
+  vi_l1_if_will: {
+    tag: "vi_l1_if_will",
+    shortLabel: {
+      en: "No **will** in the **if**-clause",
+      vi: "[VI TBD — CC4]",
+    },
+    longDescription: {
+      en: "In a first-conditional **if**-clause, English uses the present simple — **will** only appears in the main clause.",
+      vi: "[VI TBD — CC4]",
+    },
+    exampleWrong: "If I will go tomorrow, I will tell you.",
+    exampleRight: "If I go tomorrow, I will tell you.",
     linkedRoomId: null,
   },
 };
