@@ -1,3 +1,5 @@
+import { resolveApiUrl } from '@/lib/apiBase';
+
 export type GrammarApiResponse = {
   correctedText: string;
   enhancedText?: string;
@@ -16,7 +18,9 @@ export async function analyzeGrammar(input: {
   englishLevel?: string | null;
   contentEn?: string;
 }): Promise<GrammarApiResponse> {
-  const response = await fetch('/api/english/analyze', {
+  // resolveApiUrl: routes around the Capacitor SPA-fallback bug — see
+  // src/lib/apiBase.ts.
+  const response = await fetch(resolveApiUrl('/api/english/analyze'), {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

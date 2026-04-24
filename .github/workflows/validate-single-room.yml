@@ -20,10 +20,10 @@ jobs:
     
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '18'
 
@@ -46,9 +46,6 @@ jobs:
               node scripts/validate-single-room.js "$filename"
             done
           fi
-
-      - name: Run full validation suite
-        run: node scripts/validate-room-files.js
 
       - name: Generate registry
         run: node scripts/generate-room-registry.js

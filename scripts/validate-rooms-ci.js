@@ -17,8 +17,12 @@
  * Run: VITE_MB_VALIDATION_MODE=strict node scripts/validate-rooms-ci.js
  */
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Determine validation mode from env or default to strict for CI
 const MODE = process.env.VITE_MB_VALIDATION_MODE || 'strict';

@@ -28,7 +28,7 @@ const chain: any = {
   maybeSingle: () => mockMaybeSingle(),
 };
 
-const mockFrom = vi.fn(() => chain);
+const mockFrom = vi.fn((..._args: unknown[]) => chain);
 
 vi.mock("@/lib/supabaseClient", () => ({
   supabase: { from: (...args: unknown[]) => mockFrom(...args) },

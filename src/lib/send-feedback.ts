@@ -1,5 +1,7 @@
 // FILE: src/lib/send-feedback.ts
 
+import { resolveApiUrl } from "@/lib/apiBase";
+
 type Vote = "up" | "down";
 
 type SendFeedbackArgs = {
@@ -37,7 +39,9 @@ export async function sendMercyFeedback({
   mode = "home",
   path = "/",
 }: SendFeedbackArgs) {
-  const res = await fetch("/api/mercy-feedback", {
+  // resolveApiUrl: routes around the Capacitor SPA-fallback bug — see
+  // src/lib/apiBase.ts.
+  const res = await fetch(resolveApiUrl("/api/mercy-feedback"), {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

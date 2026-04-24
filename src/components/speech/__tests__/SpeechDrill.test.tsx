@@ -27,6 +27,7 @@ import {
   isSpeechRecognitionSupported,
   recognizeOnce,
 } from '@/lib/pronunciation/recognizer';
+import type { RecognitionResult } from '@/lib/pronunciation/recognizer';
 import { scorePronunciation } from '@/lib/pronunciation/scorer';
 import type { ScoreResult } from '@/lib/pronunciation/scorer';
 
@@ -87,7 +88,7 @@ describe('SpeechDrill', () => {
 
   it('transitions idle → listening → scoring → result on tap', async () => {
     const user = userEvent.setup();
-    let resolveRecognition: (v: unknown) => void = () => {};
+    let resolveRecognition: (v: RecognitionResult) => void = () => {};
     vi.mocked(recognizeOnce).mockImplementation(
       () => new Promise((resolve) => { resolveRecognition = resolve; }),
     );
