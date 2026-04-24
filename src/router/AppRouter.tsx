@@ -43,6 +43,7 @@ const PlacementTestPage    = lazy(() => import("@/pages/placement/TestPage"));
 const PlacementResultsPage = lazy(() => import("@/pages/placement/ResultsPage"));
 
 const SpeechDrillPage      = lazy(() => import("@/pages/SpeechDrillPage"));
+const SpeechHistoryPage    = lazy(() => import("@/pages/speech/SpeechHistoryPage"));
 
 const AdminDashboard          = lazy(() => import("@/pages/admin/AdminDashboard"));
 const AdminUsersPage          = lazy(() => import("@/pages/admin/AdminUsersPage"));
@@ -422,6 +423,15 @@ export default function AppRouter() {
             element={
               <RequireAuth>
                 <LazyPage><SpeechDrillPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+
+          {/* Speech history — page self-gates on pronunciationScoringEnabled flag */}
+          <Route path="/speech/history"
+            element={
+              <RequireAuth>
+                <LazyPage><SpeechHistoryPage /></LazyPage>
               </RequireAuth>
             }
           />
