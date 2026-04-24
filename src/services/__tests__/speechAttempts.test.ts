@@ -2,8 +2,12 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 
 const mockInsertSingle = vi.fn();
 const mockInsertSelect = vi.fn(() => ({ single: () => mockInsertSingle() }));
-const mockInsert = vi.fn(() => ({ select: () => mockInsertSelect() }));
-const mockFrom = vi.fn(() => ({ insert: (row: unknown) => mockInsert(row) }));
+const mockInsert = vi.fn((_row: Record<string, unknown>) => ({
+  select: () => mockInsertSelect(),
+}));
+const mockFrom = vi.fn((..._args: unknown[]) => ({
+  insert: (row: Record<string, unknown>) => mockInsert(row),
+}));
 const mockGetUser = vi.fn();
 
 vi.mock("@/lib/supabaseClient", () => ({
@@ -40,6 +44,7 @@ const SAMPLE_SCORE: ScoreResult = {
       hint: { en: "Close — try again.", vi: "Gần rồi — thử lại." },
     },
   ],
+  phonemeFeedback: [],
 };
 
 beforeEach(() => {
