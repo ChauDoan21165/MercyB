@@ -40,14 +40,24 @@ export function firstL1HintFromIssues(
   if (!Array.isArray(issues)) return null;
 
   for (const issue of issues) {
-    const user = (issue.before ?? issue.original ?? '').trim();
-    const expected = (issue.corrected ?? issue.after ?? '').trim();
+    // Defensive: issue could be null/undefined/non-object if upstream
+    // (e.g. OpenAI JSON parse) produced something malformed.
+    if (!issue || typeof issue !== 'object') continue;
+    const rawUser = (issue as GrammarIssueLike).before ?? (issue as GrammarIssueLike).original;
+    const rawExpected = (issue as GrammarIssueLike).corrected ?? (issue as GrammarIssueLike).after;
+    const user = typeof rawUser === 'string' ? rawUser.trim() : '';
+    const expected = typeof rawExpected === 'string' ? rawExpected.trim() : '';
     if (!user || !expected) continue;
 
-    const res: L1DetectionResult = detectL1Error({
-      userAnswer: user,
-      expectedAnswer: expected,
-    });
+    let res: L1DetectionResult;
+    try {
+      res = detectL1Error({ userAnswer: user, expectedAnswer: expected });
+    } catch (err) {
+      // A regex or DP-alignment bug inside the detector must never kill
+      // the caller. Log + move on to the next issue.
+      console.warn('[l1HintAdapter] detectL1Error threw — skipping this issue:', err);
+      continue;
+    }
 
     if (res.matched) {
       return {

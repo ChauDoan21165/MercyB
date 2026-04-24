@@ -134,22 +134,24 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       const issues = Array.isArray(parsed.issues) ? parsed.issues : [];
 
       // ── L1 detector (feature-flagged, default OFF globally) ─────────
-      // Runs only when (a) the request carries a userId, (b) the user is
-      // in the flag's enabled_user_ids cohort OR the flag is globally ON,
-      // and (c) Supabase env vars are available on this deployment. Any
-      // failure silently leaves the response unchanged.
+      // Broad try/catch: the detector path must NEVER kill the core grammar
+      // response. If anything here throws — Supabase auth, flag lookup,
+      // rule regex, template fill — log and degrade to l1Hint = null.
       const userId = asString(body.userId, 64);
       let l1Hint: L1HintPayload | null = null;
-      if (userId) {
-        const sb = getSupabaseClient();
-        if (sb) {
-          try {
+      try {
+        if (userId) {
+          const sb = getSupabaseClient();
+          if (sb) {
             const flagOn = await isFlagEnabledForUser(sb, L1_FLAG_KEY, userId);
             if (flagOn) l1Hint = firstL1HintFromIssues(issues);
-          } catch (err) {
-            console.warn("[grammar] L1 flag lookup failed (silently off):", err);
           }
         }
+      } catch (err) {
+        // Never fail the request over L1 hint problems. The grammar core
+        // response below is still returned successfully.
+        console.warn("[grammar] L1 hint generation failed (degraded):", err);
+        l1Hint = null;
       }
 
       return sendJson(res, 200, {
@@ -168,5 +170,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return sendJson(res, 200, { ok: false, correctedText: text,
         feedback: isAbort ? "Grammar check took too long. Please try again." : "Grammar service had a temporary error." });
     } finally { clearTimeout(timeoutId); }
-  } catch { return sendJson(res, 500, { ok: false, error: "Internal server error" }); }
+  } catch (outerErr) {
+    // Log the real stack so Vercel's function logs show what actually
+    // failed — previous version swallowed the error silently.
+    // Degrade from a 500 to a 200 with ok:false so the client renders
+    // the friendly fallback message instead of a hard "server error".
+    console.error("[grammar] unexpected top-level error:", outerErr);
+    return sendJson(res, 200, {
+      ok: false,
+      error: "Internal server error",
+      feedback: "Grammar help had a temporary error. Please try again.",
+    });
+  }
 }
