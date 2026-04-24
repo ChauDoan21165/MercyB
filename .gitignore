@@ -50,3 +50,8 @@ android/
 
 # Editor backup files
 *.bak
+
+# Playwright output
+playwright-report/
+playwright-smoke-report/
+test-results/
