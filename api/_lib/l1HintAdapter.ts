@@ -19,10 +19,12 @@
 // pair — rule-based emits `{before, corrected}`, OpenAI emits
 // `{original, corrected}`. This adapter normalises both shapes.
 
+// Explicit `.js` extension — same ESM resolver requirement as the top
+// of api/mercy/grammar.ts. See fix/grammar-esm-extensions.
 import {
   detectL1Error,
   type L1DetectionResult,
-} from '../../src/lib/feedback/l1-error-detector';
+} from '../../src/lib/feedback/l1-error-detector.js';
 
 export type GrammarIssueLike = {
   before?: string;

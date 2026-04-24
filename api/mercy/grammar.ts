@@ -5,8 +5,15 @@ import { createClient } from "@supabase/supabase-js";
 // trace relative imports outside the api/ subtree (see
 // fix/grammar-api-import-path for the ERR_MODULE_NOT_FOUND outage that
 // returned 500 on every grammar request until this move).
-import { firstL1HintFromIssues, type L1HintPayload } from "../_lib/l1HintAdapter";
-import { isFlagEnabledForUser } from "../_lib/featureFlags";
+//
+// EXPLICIT `.js` EXTENSIONS REQUIRED: Vercel's ESM serverless runtime
+// resolves relative imports literally — without the extension, Node
+// can't find the compiled module (a second ERR_MODULE_NOT_FOUND outage
+// after the api/_lib/ move; see fix/grammar-esm-extensions). The source
+// is .ts but the bundled artefact is .js, which is what the runtime
+// actually looks up at request time.
+import { firstL1HintFromIssues, type L1HintPayload } from "../_lib/l1HintAdapter.js";
+import { isFlagEnabledForUser } from "../_lib/featureFlags.js";
 
 type GrammarBody = {
   text?: string; context?: string; mode?: string;
