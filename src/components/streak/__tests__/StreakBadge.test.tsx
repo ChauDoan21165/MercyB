@@ -65,7 +65,7 @@ describe("StreakBadge", () => {
     expect(link.getAttribute("href")).toBe("/somewhere/else");
   });
 
-  it("renders bilingual tooltip on hover", () => {
+  it("renders bilingual motivational tooltip on hover", () => {
     render(
       <MemoryRouter>
         <StreakBadge />
@@ -74,8 +74,8 @@ describe("StreakBadge", () => {
     expect(screen.queryByTestId("streak-badge-tooltip")).toBeNull();
     fireEvent.mouseEnter(screen.getByTestId("streak-badge-wrap"));
     const tip = screen.getByTestId("streak-badge-tooltip");
-    expect(tip.textContent).toContain("12-day streak · Longest: 34");
-    expect(tip.textContent).toContain("Chuỗi 12 ngày · Dài nhất: 34");
+    expect(tip.textContent).toContain("You're on a 12-day streak! Keep it going 🔥");
+    expect(tip.textContent).toContain("Bạn đang có chuỗi 12 ngày! Cố lên nhé 🔥");
   });
 
   it("hides itself when streak_current is 0", () => {

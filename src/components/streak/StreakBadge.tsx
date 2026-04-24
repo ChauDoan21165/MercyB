@@ -95,9 +95,9 @@ export function StreakBadge({ href = "/account#streaks" }: StreakBadgeProps) {
 
       {showTip ? (
         <div role="tooltip" style={tooltipStyle} data-testid="streak-badge-tooltip">
-          {streak.current}-day streak · Longest: {streak.longest}
+          You're on a {streak.current}-day streak! Keep it going 🔥
           <span style={tooltipViStyle}>
-            Chuỗi {streak.current} ngày · Dài nhất: {streak.longest}
+            Bạn đang có chuỗi {streak.current} ngày! Cố lên nhé 🔥
           </span>
         </div>
       ) : null}

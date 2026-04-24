@@ -131,11 +131,11 @@ type StatusVisuals = {
 };
 
 const STATUS_VISUALS: Record<StreakStatus, StatusVisuals> = {
-  active:   { emoji: "🔥", labelEn: "Streak active",          labelVi: "Đang duy trì",       bg: "#fff7ed", fg: "#9a3412" },
-  in_grace: { emoji: "💤", labelEn: "Paused — grace window",  labelVi: "Tạm dừng — đang ân hạn", bg: "#fefce8", fg: "#854d0e" },
-  warning:  { emoji: "⚠️", labelEn: "Last day to keep it",    labelVi: "Ngày cuối để giữ chuỗi", bg: "#fef3c7", fg: "#b45309" },
-  reset:    { emoji: "⏸",  labelEn: "Streak will reset",      labelVi: "Sắp đặt lại",         bg: "#f1f5f9", fg: "#475569" },
-  unknown:  { emoji: "✨", labelEn: "Streak",                 labelVi: "Chuỗi",               bg: "#f1f5f9", fg: "#475569" },
+  active:   { emoji: "🔥", labelEn: "Active",        labelVi: "Đang duy trì",  bg: "#fff7ed", fg: "#9a3412" },
+  in_grace: { emoji: "💤", labelEn: "Grace period",  labelVi: "Còn ân hạn",    bg: "#fefce8", fg: "#854d0e" },
+  warning:  { emoji: "⚠️", labelEn: "Almost lost",   labelVi: "Sắp mất chuỗi", bg: "#fef3c7", fg: "#b45309" },
+  reset:    { emoji: "⏸",  labelEn: "Reset",         labelVi: "Đã reset",      bg: "#f1f5f9", fg: "#475569" },
+  unknown:  { emoji: "✨", labelEn: "Streak",        labelVi: "Chuỗi",         bg: "#f1f5f9", fg: "#475569" },
 };
 
 function startOfDayLocal(d: Date): Date {
@@ -238,7 +238,7 @@ export function StreakHistoryPanel({
       <header style={headerRow}>
         <h2 style={titleStyle}>
           My Progress
-          <span style={titleViStyle}>Tiến trình của tôi</span>
+          <span style={titleViStyle}>Tiến độ của tôi</span>
         </h2>
         <span
           style={statusPillStyle(visuals.bg, visuals.fg)}
@@ -262,6 +262,14 @@ export function StreakHistoryPanel({
 
       <div style={metaRowStyle}>
         <div>
+          <span style={{ fontWeight: 700 }}>Current streak:</span>{" "}
+          {streak.current} day{streak.current === 1 ? "" : "s"}
+          <span style={metaLineViStyle}>
+            {" "}
+            · Chuỗi hiện tại: {streak.current} ngày
+          </span>
+        </div>
+        <div>
           <span style={{ fontWeight: 700 }}>Longest streak:</span>{" "}
           {streak.longest} day{streak.longest === 1 ? "" : "s"}
           <span style={metaLineViStyle}>
@@ -274,17 +282,17 @@ export function StreakHistoryPanel({
           {lastStudied.en}
           <span style={metaLineViStyle}>
             {" "}
-            · Học gần nhất: {lastStudied.vi}
+            · Học lần cuối: {lastStudied.vi}
           </span>
         </div>
       </div>
 
       <p style={noteStyle}>
-        You have <strong>1 day of grace</strong> if you miss a day — your
-        streak only resets after 3 days off.
+        You have <strong>1 day of grace left</strong>. Study anything today to
+        protect your streak!
         <span style={noteViStyle}>
-          Bạn có <strong>1 ngày ân hạn</strong> nếu bỏ lỡ — chuỗi chỉ đặt lại
-          sau 3 ngày không học.
+          Bạn còn <strong>1 ngày ân hạn</strong>. Học bất kỳ gì hôm nay là giữ
+          được chuỗi ngay!
         </span>
       </p>
     </section>

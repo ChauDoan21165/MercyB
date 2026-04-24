@@ -80,25 +80,33 @@ describe("StreakHistoryPanel — status pill (lock-step with SQL trigger)", () =
   it("ACTIVE — studied today (today's local date)", () => {
     setStreak({ lastStudiedDate: "2026-04-23" });
     render(<StreakHistoryPanel />);
-    expect(screen.getByTestId("streak-status-pill").textContent).toMatch(/active/i);
+    const txt = screen.getByTestId("streak-status-pill").textContent ?? "";
+    expect(txt).toContain("Active");
+    expect(txt).toContain("Đang duy trì");
   });
 
   it("IN_GRACE — studied yesterday (1 day ago)", () => {
     setStreak({ lastStudiedDate: "2026-04-22" });
     render(<StreakHistoryPanel />);
-    expect(screen.getByTestId("streak-status-pill").textContent).toMatch(/grace/i);
+    const txt = screen.getByTestId("streak-status-pill").textContent ?? "";
+    expect(txt).toContain("Grace period");
+    expect(txt).toContain("Còn ân hạn");
   });
 
   it("WARNING — studied 2 days ago (last day of grace)", () => {
     setStreak({ lastStudiedDate: "2026-04-21" });
     render(<StreakHistoryPanel />);
-    expect(screen.getByTestId("streak-status-pill").textContent).toMatch(/last day/i);
+    const txt = screen.getByTestId("streak-status-pill").textContent ?? "";
+    expect(txt).toContain("Almost lost");
+    expect(txt).toContain("Sắp mất chuỗi");
   });
 
   it("RESET — studied 3+ days ago (next study won't extend)", () => {
     setStreak({ lastStudiedDate: "2026-04-19" });
     render(<StreakHistoryPanel />);
-    expect(screen.getByTestId("streak-status-pill").textContent).toMatch(/reset/i);
+    const txt = screen.getByTestId("streak-status-pill").textContent ?? "";
+    expect(txt).toContain("Reset");
+    expect(txt).toContain("Đã reset");
   });
 
   it("UNKNOWN — null lastStudiedDate (shouldn't happen if current>0)", () => {
@@ -121,9 +129,8 @@ describe("StreakHistoryPanel — last-studied formatting", () => {
     // EN: weekday, short month, numeric day. Wednesday Apr 22 2026.
     expect(screen.getByText(/Wednesday/)).toBeDefined();
     expect(screen.getByText(/Apr 22/)).toBeDefined();
-    // VI: vi-VN locale renders "Thứ Tư" for Wed (case may vary; just check we
-    // emitted SOMETHING bilingual). Look for the · separator.
-    expect(screen.getByText(/Học gần nhất:/)).toBeDefined();
+    // VI side uses the new label "Học lần cuối".
+    expect(screen.getByText(/Học lần cuối:/)).toBeDefined();
   });
 
   it("renders em dash when lastStudiedDate is missing", () => {
@@ -137,10 +144,12 @@ describe("StreakHistoryPanel — last-studied formatting", () => {
 });
 
 describe("StreakHistoryPanel — grace explanation", () => {
-  it("includes the bilingual grace-window explanation", () => {
+  it("includes the bilingual grace-window explanation with protect-your-streak CTA", () => {
     render(<StreakHistoryPanel />);
-    expect(screen.getByText(/1 day of grace/i)).toBeDefined();
+    expect(screen.getByText(/1 day of grace left/i)).toBeDefined();
+    expect(screen.getByText(/protect your streak/i)).toBeDefined();
     expect(screen.getByText(/1 ngày ân hạn/i)).toBeDefined();
+    expect(screen.getByText(/giữ được chuỗi/i)).toBeDefined();
   });
 });
 
