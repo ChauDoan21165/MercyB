@@ -2,9 +2,9 @@
 //
 // Unit tests for the L1 hint card. Exercises:
 //   - Both EN + VI strings render when hint is populated.
-//   - Short badge label comes from WEAKNESS_CATALOG for the three
-//     catalog tags, falls back to local map for detector-only tags,
-//     and to a prettified identifier for fully unknown tags.
+//   - Short badge label comes from WEAKNESS_CATALOG for every known
+//     detector tag, and falls back to a prettified identifier only
+//     when the detector emits a tag the catalog doesn't have yet.
 //   - renderInlineBold wires through — **word** segments become <strong>.
 //   - Returns nothing for null / undefined / empty feedback.
 //
@@ -57,10 +57,12 @@ describe("L1HintCard", () => {
     expect(screen.getByText(/Chia động từ theo chủ ngữ/)).toBeDefined();
   });
 
-  it("uses the local short-label map for detector-only tags not yet in the catalog", () => {
+  it("uses the catalog short label for detector tags that live in the catalog", () => {
+    // vi_l1_missing_be is now in WEAKNESS_CATALOG (post-expansion) and
+    // should render the catalog's canonical EN + VI strings.
     render(<L1HintCard hint={makeHint({ weaknessTag: "vi_l1_missing_be" })} />);
-    expect(screen.getByText(/Missing "be"/)).toBeDefined();
-    expect(screen.getByText(/Thiếu động từ "be"/)).toBeDefined();
+    expect(screen.getByText(/Missing "to be"/)).toBeDefined();
+    expect(screen.getByText(/Thiếu động từ "to be"/)).toBeDefined();
   });
 
   it("falls back to a prettified tag identifier when the tag is fully unknown", () => {

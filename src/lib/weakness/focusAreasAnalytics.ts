@@ -49,12 +49,12 @@ export function logFocusAreasCardViewed(userId: string, tags: readonly WeaknessT
 export function logFocusAreasTagTapped(
   userId: string,
   tag: WeaknessTag,
-  roomId: string,
+  roomId: string | null,
 ): void {
   void insert({
     userId,
     interactionType: "focus_areas_tag_tapped",
-    roomId,
+    roomId: roomId ?? undefined,
     data: { tag },
   });
 }
@@ -62,12 +62,12 @@ export function logFocusAreasTagTapped(
 export function logFocusAreasLessonStarted(
   userId: string,
   tag: WeaknessTag,
-  roomId: string,
+  roomId: string | null,
 ): void {
   void insert({
     userId,
     interactionType: "focus_areas_lesson_started",
-    roomId,
+    roomId: roomId ?? undefined,
     data: { tag },
   });
 }

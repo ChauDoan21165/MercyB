@@ -25,38 +25,17 @@ interface L1HintCardProps {
 }
 
 /**
- * Short 2–4 word badge labels for the detector's known weakness tags.
- * The three that also live in WEAKNESS_CATALOG read from the catalog
- * at render time so there's one canonical display string. The six
- * others (added to the detector in PR #19) have local bilingual
- * shorthands here until Chau reviews + promotes them into the shared
- * catalog.
- */
-const L1_TAG_SHORT_LABEL: Record<string, { en: string; vi: string }> = {
-  vi_l1_missing_be: { en: 'Missing "be"', vi: 'Thiếu động từ "be"' },
-  vi_l1_question_no_aux: { en: "Question structure", vi: "Cấu trúc câu hỏi" },
-  vi_l1_missing_article: { en: "Articles a / an / the", vi: "Mạo từ a / an / the" },
-  vi_l1_possessive_gender: { en: "His / her", vi: "His / her" },
-  vi_l1_preposition_transfer: { en: "Prepositions", vi: "Giới từ" },
-  vi_l1_countable: { en: "Countable / uncountable", vi: "Đếm được / không đếm được" },
-};
-
-/**
- * Resolve the short badge label for a weakness tag. Catalog entry wins
- * when available (canonical displayEn/displayVi). Falls back to the
- * local short-label map. For a truly unknown tag, returns a readable
- * derivation so the badge still shows something useful.
+ * Resolve the short badge label for a weakness tag. Every detector tag
+ * is expected to live in WEAKNESS_CATALOG — that's the canonical source
+ * for `shortLabel.en` / `shortLabel.vi`. For a tag the detector emits
+ * before the catalog catches up, fall back to a prettified identifier
+ * so the badge still shows something useful.
  */
 function resolveShortLabel(tag: string): { en: string; vi: string } {
   const entry = getWeaknessEntry(tag);
   if (entry) {
-    return { en: entry.displayEn, vi: entry.displayVi };
+    return { en: entry.shortLabel.en, vi: entry.shortLabel.vi };
   }
-  const local = L1_TAG_SHORT_LABEL[tag];
-  if (local) return local;
-  // Last-resort fallback: strip the `vi_l1_` prefix, replace
-  // underscores with spaces. Good enough for a debug/ship-later tag
-  // until it lands in the catalog.
   const readable = tag.replace(/^vi_l1_/, "").replace(/_/g, " ").trim();
   return { en: readable || tag, vi: readable || tag };
 }
