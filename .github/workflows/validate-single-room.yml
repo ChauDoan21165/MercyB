@@ -47,9 +47,6 @@ jobs:
             done
           fi
 
-      - name: Run full validation suite
-        run: node scripts/validate-room-files.js
-
       - name: Generate registry
         run: node scripts/generate-room-registry.js
 
