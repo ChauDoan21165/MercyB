@@ -1111,16 +1111,19 @@ export function MercyGuide({
       try {
         const { data: { user } } = await supabase.auth.getUser();
         if (!user || !alive) return;
+        // `english_level` lives on `companion_state`, not `profiles`
+        // (fetched separately via getCompanionProfile). Keeping it in
+        // this select was returning 400 Bad Request from PostgREST
+        // because the column does not exist on `profiles`.
         const { data } = await supabase
           .from('profiles')
-          .select('preferred_name, full_name, english_level, email')
+          .select('preferred_name, full_name, email')
           .eq('id', user.id)
           .single();
         if (!data || !alive) return;
         setProfile(prev => ({
           ...prev,
           preferred_name: data.preferred_name || data.full_name || data.email?.split('@')[0] || null,
-          english_level: data.english_level || prev.english_level,
         } as CompanionProfile));
       } catch {
         // ignore
