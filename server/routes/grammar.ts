@@ -3,8 +3,13 @@
 import type { Express, Request, Response } from 'express';
 import { createClient } from '@supabase/supabase-js';
 import { analyzeGrammar } from '../mercy/grammarEngine';
-import { firstL1HintFromIssues } from '../mercy/l1HintAdapter';
-import { isFlagEnabledForUser } from '../../src/lib/featureFlags';
+// L1 hint adapter + feature-flag resolver live under api/_lib/ so the
+// Vercel bundler can see them. Local dev imports from the same canonical
+// source to avoid drift between the two runtimes. Explicit `.js`
+// extensions match the Vercel ESM resolver requirement and are also
+// accepted by tsx at dev time.
+import { firstL1HintFromIssues } from '../../api/_lib/l1HintAdapter.js';
+import { isFlagEnabledForUser } from '../../api/_lib/featureFlags.js';
 
 // ─────────────────────────────────────────────────────────────────────────
 // Supabase client — used to resolve the per-user feature flag that gates

@@ -22,6 +22,7 @@ import {
 import type { RecognitionResult } from '@/lib/pronunciation/recognizer';
 import {
   scorePronunciation,
+  type PhonemeTip,
   type ScoreResult,
   type WordScore,
   type WordStatus,
@@ -58,6 +59,13 @@ export type SpeechDrillProps = {
    * ignore this, and persistence callers can get the richer payload.
    */
   onAttempt?: (event: SpeechAttemptEvent) => void;
+  /**
+   * Optional. When a user taps a "Try this word" button in the phoneme
+   * feedback section, we emit the single word so a parent can swap the
+   * drill target for focused practice. Omit to hide the button entirely;
+   * practice words still render for visual reference.
+   */
+  onPracticeWord?: (word: string) => void;
   /**
    * Called when the user taps "View your history" after a score lands.
    * Omit to hide the link — the component does no routing of its own.
@@ -247,6 +255,7 @@ export function SpeechDrill({
   onNext,
   onScore,
   onAttempt,
+  onPracticeWord,
   onViewHistory,
 }: SpeechDrillProps) {
   // Gate the whole UI on support detection. Run once — if the browser
@@ -391,7 +400,7 @@ export function SpeechDrill({
       </div>
 
       {state === 'result' && score ? (
-        <ResultBlock score={score} />
+        <ResultBlock score={score} onPracticeWord={onPracticeWord} />
       ) : null}
 
       {state === 'result' || state === 'error' ? (
@@ -441,7 +450,13 @@ export function SpeechDrill({
   );
 }
 
-function ResultBlock({ score }: { score: ScoreResult }) {
+function ResultBlock({
+  score,
+  onPracticeWord,
+}: {
+  score: ScoreResult;
+  onPracticeWord?: (word: string) => void;
+}) {
   return (
     <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 14 }}>
       <div
@@ -468,7 +483,183 @@ function ResultBlock({ score }: { score: ScoreResult }) {
           {score.feedback.vi}
         </span>
       </div>
+
+      {score.phonemeFeedback.length > 0 ? (
+        <PhonemeFeedbackSection
+          tips={score.phonemeFeedback}
+          onPracticeWord={onPracticeWord}
+        />
+      ) : null}
     </div>
+  );
+}
+
+const phonemeSectionStyle: React.CSSProperties = {
+  width: '100%',
+  marginTop: 4,
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 10,
+  textAlign: 'left',
+};
+
+const phonemeSectionHeading: React.CSSProperties = {
+  fontSize: 12,
+  fontWeight: 800,
+  textTransform: 'uppercase',
+  letterSpacing: 0.6,
+  color: 'rgba(0,0,0,0.55)',
+};
+
+const phonemeSectionHeadingVi: React.CSSProperties = {
+  display: 'inline',
+  marginLeft: 6,
+  fontSize: 12,
+  fontWeight: 400,
+  color: '#94a3b8',
+  textTransform: 'none',
+  letterSpacing: 0,
+};
+
+const phonemeCardStyle: React.CSSProperties = {
+  border: '1px solid rgba(0,0,0,0.10)',
+  borderRadius: 14,
+  padding: '12px 14px',
+  background: '#fafafa',
+};
+
+const phonemeSummaryStyle: React.CSSProperties = {
+  cursor: 'pointer',
+  fontSize: 14,
+  fontWeight: 800,
+  color: 'rgba(0,0,0,0.84)',
+  listStyle: 'none',
+  outline: 'none',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  gap: 12,
+};
+
+const phonemeSummaryViStyle: React.CSSProperties = {
+  display: 'block',
+  marginTop: 2,
+  fontSize: 12,
+  fontWeight: 400,
+  color: '#94a3b8',
+};
+
+const phonemeBodyStyle: React.CSSProperties = {
+  marginTop: 10,
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 10,
+};
+
+const practiceWordBtn: React.CSSProperties = {
+  display: 'inline-flex',
+  alignItems: 'center',
+  gap: 6,
+  background: 'white',
+  color: 'rgba(0,0,0,0.82)',
+  border: '1px solid rgba(0,0,0,0.14)',
+  borderRadius: 9999,
+  padding: '6px 12px',
+  fontSize: 13,
+  fontWeight: 700,
+  cursor: 'pointer',
+  fontFamily: 'inherit',
+};
+
+const practiceWordChip: React.CSSProperties = {
+  ...practiceWordBtn,
+  cursor: 'default',
+};
+
+function phonemeLabel(key: string): string {
+  // Strip internal tokens like 'th-voiceless' → 'th'. Fall back to key.
+  const head = key.split('-')[0];
+  if (/^[a-z]+$/.test(head)) return head;
+  return key;
+}
+
+function PhonemeFeedbackSection({
+  tips,
+  onPracticeWord,
+}: {
+  tips: PhonemeTip[];
+  onPracticeWord?: (word: string) => void;
+}) {
+  return (
+    <section style={phonemeSectionStyle} aria-label="Phonemes to practice">
+      <div style={phonemeSectionHeading}>
+        Phonemes to practice
+        <span style={phonemeSectionHeadingVi}>· Âm cần luyện</span>
+      </div>
+
+      {tips.map((tip) => {
+        const labelShort = phonemeLabel(tip.phoneme);
+        return (
+          <details key={tip.phoneme} style={phonemeCardStyle} data-phoneme={tip.phoneme}>
+            <summary style={phonemeSummaryStyle}>
+              <span>
+                Practice: [{labelShort}]
+                <span style={phonemeSummaryViStyle}>Luyện âm: [{labelShort}]</span>
+              </span>
+              <span style={{ fontSize: 11, color: '#94a3b8', fontWeight: 700 }}>
+                tap to expand
+              </span>
+            </summary>
+
+            <div style={phonemeBodyStyle}>
+              <p style={{ margin: 0, fontSize: 13, color: '#475569', lineHeight: 1.5 }}>
+                {tip.vnConfusion}
+              </p>
+
+              <div>
+                <div style={{ fontSize: 13, fontWeight: 700, color: 'rgba(0,0,0,0.84)', lineHeight: 1.5 }}>
+                  {tip.articulation.en}
+                </div>
+                <div style={{ marginTop: 2, fontSize: 12, color: '#94a3b8', lineHeight: 1.5 }}>
+                  {tip.articulation.vi}
+                </div>
+              </div>
+
+              <div>
+                <div style={{ fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 0.6, color: 'rgba(0,0,0,0.55)', marginBottom: 6 }}>
+                  Practice words
+                  <span style={{ marginLeft: 6, fontSize: 11, fontWeight: 400, color: '#94a3b8', textTransform: 'none', letterSpacing: 0 }}>
+                    · Từ luyện tập
+                  </span>
+                </div>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                  {tip.practiceWords.map((w) =>
+                    onPracticeWord ? (
+                      <button
+                        key={w}
+                        type="button"
+                        style={practiceWordBtn}
+                        onClick={() => onPracticeWord(w)}
+                        aria-label={`Try the word ${w}`}
+                      >
+                        {w}
+                      </button>
+                    ) : (
+                      <span key={w} style={practiceWordChip}>{w}</span>
+                    ),
+                  )}
+                </div>
+                {onPracticeWord ? (
+                  <div style={{ marginTop: 6, fontSize: 11, color: '#94a3b8' }}>
+                    Tap a word to practice it · Nhấn vào một từ để luyện
+                  </div>
+                ) : null}
+              </div>
+            </div>
+          </details>
+        );
+      })}
+    </section>
   );
 }
 
