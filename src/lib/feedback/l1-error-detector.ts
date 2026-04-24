@@ -396,6 +396,9 @@ const RULE_STRINGS: Record<L1WeaknessTag, StringTemplate> = {
     vi: "[VI TBD — CC4] Trạng từ tần suất đi sau chủ ngữ, không đứng trước. Thử: *{FIX}*.",
   },
   vi_l1_make_let_bare: {
+    // NOTE FOR CC4: the causative "had + obj + bare verb" (e.g., "I had
+    // my friend drive me") is rarer than make/let in the wild. Keep the
+    // VN explanation focused on make / made / let. Per CC7 peer review.
     en: "After **make**, **let**, or **have** in this meaning, English uses the **bare verb** — no **to**. *She made me **to cry*** → *She made me **cry***. Try: *{FIX}*.",
     vi: "[VI TBD — CC4] Sau **make / let / have** (sai khiến), dùng động từ nguyên mẫu không **to**. Thử: *{FIX}*.",
   },

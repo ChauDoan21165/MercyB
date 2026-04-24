@@ -914,6 +914,10 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     linkedRoomId: null,
   },
 
+  // NOTE FOR CC4: causative "had + obj + bare verb" is rare in
+  // everyday English — weight the VN explanation toward make / made /
+  // let. Detector accepts "had" too, but the teaching message should
+  // reflect frequency. Per CC7 peer review.
   vi_l1_make_let_bare: {
     tag: "vi_l1_make_let_bare",
     shortLabel: {
