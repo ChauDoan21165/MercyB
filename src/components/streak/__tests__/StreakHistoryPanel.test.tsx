@@ -166,3 +166,36 @@ describe("StreakHistoryPanel — singular vs plural", () => {
     expect(screen.getByText(/^days · ngày$/)).toBeDefined();
   });
 });
+
+describe("StreakHistoryPanel — empty state (current === 0)", () => {
+  it("renders the Chau-approved motivational empty copy in both languages", () => {
+    setStreak({ current: 0, longest: 0, lastStudiedDate: null });
+    render(<StreakHistoryPanel />);
+    const empty = screen.getByTestId("streak-empty-state");
+    expect(empty.textContent).toContain(
+      "Start learning today to build your streak!",
+    );
+    expect(empty.textContent).toContain(
+      "Học hôm nay để bắt đầu xây dựng chuỗi của bạn nhé!",
+    );
+  });
+
+  it("still shows the 'My Progress · Tiến độ của tôi' title in empty state", () => {
+    setStreak({ current: 0 });
+    render(<StreakHistoryPanel />);
+    expect(screen.getByText("My Progress")).toBeDefined();
+    expect(screen.getByText("Tiến độ của tôi")).toBeDefined();
+  });
+
+  it("does NOT render the big current-streak number in empty state", () => {
+    setStreak({ current: 0 });
+    render(<StreakHistoryPanel />);
+    expect(screen.queryByTestId("streak-current-big")).toBeNull();
+  });
+
+  it("does NOT render the status pill in empty state", () => {
+    setStreak({ current: 0 });
+    render(<StreakHistoryPanel />);
+    expect(screen.queryByTestId("streak-status-pill")).toBeNull();
+  });
+});

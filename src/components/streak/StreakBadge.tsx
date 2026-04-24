@@ -15,6 +15,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { useServerStreak } from "@/hooks/useServerStreak";
+import { formatStreakTooltip } from "@/components/streak/streakCopy";
 
 const pillStyle: React.CSSProperties = {
   display: "inline-flex",
@@ -93,14 +94,15 @@ export function StreakBadge({ href = "/account#streaks" }: StreakBadgeProps) {
         <span>{streak.current}</span>
       </Link>
 
-      {showTip ? (
-        <div role="tooltip" style={tooltipStyle} data-testid="streak-badge-tooltip">
-          You're on a {streak.current}-day streak! Keep it going 🔥
-          <span style={tooltipViStyle}>
-            Bạn đang có chuỗi {streak.current} ngày! Cố lên nhé 🔥
-          </span>
-        </div>
-      ) : null}
+      {showTip ? (() => {
+        const tip = formatStreakTooltip(streak.current);
+        return (
+          <div role="tooltip" style={tooltipStyle} data-testid="streak-badge-tooltip">
+            {tip.en}
+            <span style={tooltipViStyle}>{tip.vi}</span>
+          </div>
+        );
+      })() : null}
     </div>
   );
 }

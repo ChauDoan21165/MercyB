@@ -20,6 +20,13 @@
 import React, { useMemo } from "react";
 
 import { useServerStreak } from "@/hooks/useServerStreak";
+import {
+  emptyState,
+  graceMessage,
+  labels,
+  splitBilingual,
+  statusPills,
+} from "@/components/streak/streakCopy";
 
 const wrap: React.CSSProperties = {
   border: "1px solid rgba(0,0,0,0.08)",
@@ -122,20 +129,15 @@ const noteViStyle: React.CSSProperties = {
 
 type StreakStatus = "active" | "in_grace" | "warning" | "reset" | "unknown";
 
-type StatusVisuals = {
-  emoji: string;
-  labelEn: string;
-  labelVi: string;
-  bg: string;
-  fg: string;
-};
-
-const STATUS_VISUALS: Record<StreakStatus, StatusVisuals> = {
-  active:   { emoji: "🔥", labelEn: "Active",        labelVi: "Đang duy trì",  bg: "#fff7ed", fg: "#9a3412" },
-  in_grace: { emoji: "💤", labelEn: "Grace period",  labelVi: "Còn ân hạn",    bg: "#fefce8", fg: "#854d0e" },
-  warning:  { emoji: "⚠️", labelEn: "Almost lost",   labelVi: "Sắp mất chuỗi", bg: "#fef3c7", fg: "#b45309" },
-  reset:    { emoji: "⏸",  labelEn: "Reset",         labelVi: "Đã reset",      bg: "#f1f5f9", fg: "#475569" },
-  unknown:  { emoji: "✨", labelEn: "Streak",        labelVi: "Chuỗi",         bg: "#f1f5f9", fg: "#475569" },
+// Visuals are component-local; labels come from the shared copy dictionary
+// (streakCopy.ts). Keep this map in lock-step with the SQL trigger grace
+// semantics in supabase/migrations/20260425000000_server_side_streaks.sql.
+const STATUS_VISUALS: Record<StreakStatus, { emoji: string; label: { en: string; vi: string }; bg: string; fg: string }> = {
+  active:   { emoji: "🔥", label: splitBilingual(statusPills.active),  bg: "#fff7ed", fg: "#9a3412" },
+  in_grace: { emoji: "💤", label: splitBilingual(statusPills.grace),   bg: "#fefce8", fg: "#854d0e" },
+  warning:  { emoji: "⚠️", label: splitBilingual(statusPills.warning), bg: "#fef3c7", fg: "#b45309" },
+  reset:    { emoji: "⏸",  label: splitBilingual(statusPills.reset),   bg: "#f1f5f9", fg: "#475569" },
+  unknown:  { emoji: "✨", label: { en: "Streak", vi: "Chuỗi" },       bg: "#f1f5f9", fg: "#475569" },
 };
 
 function startOfDayLocal(d: Date): Date {
@@ -228,6 +230,34 @@ export function StreakHistoryPanel({
     );
   }
 
+  // Empty state — no streak yet (first-time users or reset). Show the
+  // Chau-approved motivational copy instead of a card full of zeros.
+  if (streak.current <= 0) {
+    const title = splitBilingual(labels.myProgress);
+    return (
+      <section
+        id={anchorId}
+        style={wrap}
+        aria-label="Study streak"
+        data-testid="streak-history-panel"
+      >
+        <header style={headerRow}>
+          <h2 style={titleStyle}>
+            {title.en}
+            <span style={titleViStyle}>{title.vi}</span>
+          </h2>
+        </header>
+        <p
+          style={{ ...noteStyle, background: "#f0f9ff", borderColor: "#bae6fd", color: "#075985" }}
+          data-testid="streak-empty-state"
+        >
+          {emptyState.en}
+          <span style={{ ...noteViStyle, color: "#0369a1" }}>{emptyState.vi}</span>
+        </p>
+      </section>
+    );
+  }
+
   return (
     <section
       id={anchorId}
@@ -237,8 +267,10 @@ export function StreakHistoryPanel({
     >
       <header style={headerRow}>
         <h2 style={titleStyle}>
-          My Progress
-          <span style={titleViStyle}>Tiến độ của tôi</span>
+          {splitBilingual(labels.myProgress).en}
+          <span style={titleViStyle}>
+            {splitBilingual(labels.myProgress).vi}
+          </span>
         </h2>
         <span
           style={statusPillStyle(visuals.bg, visuals.fg)}
@@ -246,7 +278,7 @@ export function StreakHistoryPanel({
         >
           <span aria-hidden>{visuals.emoji}</span>
           <span>
-            {visuals.labelEn} · {visuals.labelVi}
+            {visuals.label.en} · {visuals.label.vi}
           </span>
         </span>
       </header>
@@ -262,38 +294,40 @@ export function StreakHistoryPanel({
 
       <div style={metaRowStyle}>
         <div>
-          <span style={{ fontWeight: 700 }}>Current streak:</span>{" "}
+          <span style={{ fontWeight: 700 }}>
+            {splitBilingual(labels.currentStreak).en}:
+          </span>{" "}
           {streak.current} day{streak.current === 1 ? "" : "s"}
           <span style={metaLineViStyle}>
             {" "}
-            · Chuỗi hiện tại: {streak.current} ngày
+            · {splitBilingual(labels.currentStreak).vi}: {streak.current} ngày
           </span>
         </div>
         <div>
-          <span style={{ fontWeight: 700 }}>Longest streak:</span>{" "}
+          <span style={{ fontWeight: 700 }}>
+            {splitBilingual(labels.longestStreak).en}:
+          </span>{" "}
           {streak.longest} day{streak.longest === 1 ? "" : "s"}
           <span style={metaLineViStyle}>
             {" "}
-            · Chuỗi dài nhất: {streak.longest} ngày
+            · {splitBilingual(labels.longestStreak).vi}: {streak.longest} ngày
           </span>
         </div>
         <div>
-          <span style={{ fontWeight: 700 }}>Last studied:</span>{" "}
+          <span style={{ fontWeight: 700 }}>
+            {splitBilingual(labels.lastStudied).en}:
+          </span>{" "}
           {lastStudied.en}
           <span style={metaLineViStyle}>
             {" "}
-            · Học lần cuối: {lastStudied.vi}
+            · {splitBilingual(labels.lastStudied).vi}: {lastStudied.vi}
           </span>
         </div>
       </div>
 
       <p style={noteStyle}>
-        You have <strong>1 day of grace left</strong>. Study anything today to
-        protect your streak!
-        <span style={noteViStyle}>
-          Bạn còn <strong>1 ngày ân hạn</strong>. Học bất kỳ gì hôm nay là giữ
-          được chuỗi ngay!
-        </span>
+        {graceMessage.en}
+        <span style={noteViStyle}>{graceMessage.vi}</span>
       </p>
     </section>
   );
