@@ -28,7 +28,12 @@
  * randomness. Easy to unit test, easy to reason about.
  */
 
-import { getAcceptedVariants } from './vn-phoneme-map';
+import {
+  getAcceptedVariants,
+  inferPhonemeForWord,
+  type PhonemeTip,
+} from './vn-phoneme-map';
+export type { PhonemeTip } from './vn-phoneme-map';
 
 export type WordStatus = 'correct' | 'close' | 'wrong' | 'missed';
 
@@ -50,6 +55,13 @@ export type ScoreResult = {
   overallScore: number;
   wordScores: WordScore[];
   feedback: ScoreFeedback;
+  /**
+   * Up to three actionable pronunciation tips tied to the phonemes
+   * the learner struggled with on this attempt. Empty when the overall
+   * score is high enough that coaching would feel noisy (>= 85) or
+   * when no wrong/close word maps to a known L1-interference pattern.
+   */
+  phonemeFeedback: PhonemeTip[];
 };
 
 export type ScoreInput = {
@@ -191,6 +203,43 @@ function bandFeedback(score: number): ScoreFeedback {
 
 const EXTRA_WORD_PENALTY = 3;  // points off the total per unexpected heard word
 
+/** Overall score at or above this threshold suppresses phoneme coaching. */
+const PHONEME_FEEDBACK_THRESHOLD = 85;
+/** Hard cap on how many tips we surface in one result. */
+const MAX_PHONEME_TIPS = 3;
+
+/**
+ * From the per-word scores, pick up to MAX_PHONEME_TIPS distinct
+ * PhonemeTips that best explain what went wrong. Prioritises 'wrong'
+ * over 'close' (bigger gap first), then preserves ask-order.
+ */
+function derivePhonemeFeedback(
+  overallScore: number,
+  wordScores: WordScore[],
+): PhonemeTip[] {
+  if (overallScore >= PHONEME_FEEDBACK_THRESHOLD) return [];
+
+  const wrong: WordScore[] = [];
+  const close: WordScore[] = [];
+  for (const w of wordScores) {
+    if (w.status === 'wrong' && w.word) wrong.push(w);
+    else if (w.status === 'close' && w.word) close.push(w);
+  }
+
+  // Walk wrong first, then close, collecting unique phoneme keys.
+  const seen = new Set<string>();
+  const tips: PhonemeTip[] = [];
+  for (const slot of [...wrong, ...close]) {
+    if (tips.length >= MAX_PHONEME_TIPS) break;
+    const tip = inferPhonemeForWord(slot.word, slot.heard);
+    if (!tip) continue;
+    if (seen.has(tip.phoneme)) continue;
+    seen.add(tip.phoneme);
+    tips.push(tip);
+  }
+  return tips;
+}
+
 export function scorePronunciation(input: ScoreInput): ScoreResult {
   const targetTokens = tokenize(input.target);
   const heardTokens = tokenize(input.recognized);
@@ -204,6 +253,7 @@ export function scorePronunciation(input: ScoreInput): ScoreResult {
         en: 'No target sentence provided.',
         vi: 'Chưa có câu mẫu.',
       },
+      phonemeFeedback: [],
     };
   }
 
@@ -221,6 +271,7 @@ export function scorePronunciation(input: ScoreInput): ScoreResult {
         en: 'We didn\'t hear anything — tap Record and try again.',
         vi: 'Chưa nghe thấy gì — bấm Record và thử lại.',
       },
+      phonemeFeedback: [],
     };
   }
 
@@ -313,5 +364,6 @@ export function scorePronunciation(input: ScoreInput): ScoreResult {
     overallScore,
     wordScores,
     feedback: bandFeedback(overallScore),
+    phonemeFeedback: derivePhonemeFeedback(overallScore, wordScores),
   };
 }
