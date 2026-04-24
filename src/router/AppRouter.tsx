@@ -53,6 +53,7 @@ const AudioCoveragePage       = lazy(() => import("@/pages/admin/AudioCoveragePa
 const AdminFeedbackPage       = lazy(() => import("@/pages/admin/AdminFeedbackPage"));
 const AdminSubscriptions      = lazy(() => import("@/pages/admin/AdminSubscriptions"));
 const FeatureFlagsAdmin       = lazy(() => import("@/pages/admin/FeatureFlagsAdmin"));
+const AdminAnalyticsPage      = lazy(() => import("@/pages/admin/AdminAnalyticsPage"));
 const RoomLoadDiagnostics     = lazy(() =>
   import("@/components/admin/RoomLoadDiagnostics").then((m) => ({
     default: m.RoomLoadDiagnostics,
@@ -488,6 +489,7 @@ export default function AppRouter() {
               <Route path="feedback"             element={<LazyPage><AdminFeedbackPage /></LazyPage>} />
               <Route path="subscriptions"        element={<LazyPage><AdminSubscriptions /></LazyPage>} />
               <Route path="feature-flags"        element={<LazyPage><FeatureFlagsAdmin /></LazyPage>} />
+              <Route path="analytics"            element={<LazyPage><AdminAnalyticsPage /></LazyPage>} />
               <Route path="room-load-diagnostics" element={<LazyPage><RoomLoadDiagnostics /></LazyPage>} />
               <Route path="*" element={<LazyPage><AdminDashboard /></LazyPage>} />
             </Route>
