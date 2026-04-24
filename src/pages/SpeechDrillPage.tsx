@@ -177,10 +177,18 @@ export default function SpeechDrillPage() {
   const urlLevel: LevelSelection = parseCefrParam(searchParams.get('cefr'));
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Reset position whenever the level changes (user either flips the
-  // dropdown or navigates with a new ?cefr=).
+  /**
+   * When the user taps a "Try this word" button inside the phoneme
+   * feedback card, we override the drill target with that single word
+   * for one round. On Next (or level change / sentence change), we
+   * drop the override and resume normal sentence cycling.
+   */
+  const [practiceOverride, setPracticeOverride] = useState<string | null>(null);
+
+  // Reset position + clear override whenever the level changes.
   useEffect(() => {
     setCurrentIndex(0);
+    setPracticeOverride(null);
   }, [urlLevel]);
 
   const activeSentences = useMemo(
@@ -313,13 +321,61 @@ export default function SpeechDrillPage() {
           <span style={cefrBadgeStyle}>{badgeText}</span>
         </div>
 
+        {practiceOverride ? (
+          <div
+            style={{
+              background: '#fff7ed',
+              border: '1px solid rgba(234,88,12,0.24)',
+              borderRadius: 14,
+              padding: '10px 14px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: 10,
+              flexWrap: 'wrap',
+            }}
+            role="status"
+          >
+            <div style={{ fontSize: 13, fontWeight: 700, color: '#9a3412', lineHeight: 1.45 }}>
+              Practising just the word "{practiceOverride}"
+              <span style={{ display: 'block', fontSize: 12, fontWeight: 400, color: '#94a3b8', marginTop: 2 }}>
+                Đang luyện riêng từ "{practiceOverride}"
+              </span>
+            </div>
+            <button
+              type="button"
+              onClick={() => setPracticeOverride(null)}
+              style={{
+                background: 'white',
+                border: '1px solid rgba(234,88,12,0.32)',
+                color: '#9a3412',
+                borderRadius: 9999,
+                padding: '6px 12px',
+                fontSize: 12,
+                fontWeight: 800,
+                cursor: 'pointer',
+              }}
+            >
+              Back to sentence · Quay lại câu
+            </button>
+          </div>
+        ) : null}
+
         <SpeechDrill
           // Force a clean mount when the sentence changes so internal
           // state machine resets (idle → result persists would be wrong).
-          key={current.id}
-          targetSentence={current.target_en}
-          targetSentenceVi={current.target_vi}
-          onNext={() => setCurrentIndex((i) => i + 1)}
+          // Override changes also need a fresh mount.
+          key={practiceOverride ? `override:${practiceOverride}` : current.id}
+          targetSentence={practiceOverride ?? current.target_en}
+          targetSentenceVi={practiceOverride ? undefined : current.target_vi}
+          onNext={() => {
+            if (practiceOverride) {
+              setPracticeOverride(null);
+            } else {
+              setCurrentIndex((i) => i + 1);
+            }
+          }}
+          onPracticeWord={(word) => setPracticeOverride(word)}
           onAttempt={(event) => {
             // Fire-and-forget. The service is feature-flag gated and
             // never throws — it's safe to ignore the returned promise
@@ -329,7 +385,12 @@ export default function SpeechDrillPage() {
               recognized: event.recognized,
               score: event.score,
               elapsedMs: event.elapsedMs,
-              context: { extra: { source: 'speech_drill_page' } },
+              context: {
+                extra: {
+                  source: 'speech_drill_page',
+                  mode: practiceOverride ? 'phoneme_practice' : 'sentence',
+                },
+              },
             });
           }}
         />

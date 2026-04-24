@@ -50,6 +50,7 @@ function makeScore(overallScore: number): ScoreResult {
       en: 'Nice — a couple of slips but clear overall.',
       vi: 'Tốt — còn vài chỗ trượt nhưng nhìn chung rõ.',
     },
+    phonemeFeedback: [],
   };
 }
 
