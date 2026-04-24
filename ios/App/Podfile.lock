@@ -1,7 +1,11 @@
 PODS:
-  - Capacitor (8.3.0):
+  - Capacitor (8.3.1):
     - CapacitorCordova
-  - CapacitorCordova (8.3.0)
+  - CapacitorApp (8.1.0):
+    - Capacitor
+  - CapacitorBrowser (8.0.3):
+    - Capacitor
+  - CapacitorCordova (8.3.1)
   - PurchasesHybridCommon (18.1.0):
     - RevenueCat (= 5.68.0)
   - RevenueCat (5.68.0)
@@ -11,6 +15,8 @@ PODS:
 
 DEPENDENCIES:
   - "Capacitor (from `../../node_modules/@capacitor/ios`)"
+  - "CapacitorApp (from `../../node_modules/@capacitor/app`)"
+  - "CapacitorBrowser (from `../../node_modules/@capacitor/browser`)"
   - "CapacitorCordova (from `../../node_modules/@capacitor/ios`)"
   - "RevenuecatPurchasesCapacitor (from `../../node_modules/@revenuecat/purchases-capacitor`)"
 
@@ -22,18 +28,24 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   Capacitor:
     :path: "../../node_modules/@capacitor/ios"
+  CapacitorApp:
+    :path: "../../node_modules/@capacitor/app"
+  CapacitorBrowser:
+    :path: "../../node_modules/@capacitor/browser"
   CapacitorCordova:
     :path: "../../node_modules/@capacitor/ios"
   RevenuecatPurchasesCapacitor:
     :path: "../../node_modules/@revenuecat/purchases-capacitor"
 
 SPEC CHECKSUMS:
-  Capacitor: 22e541237135648c9aa736232bb4d2eec35fddcb
-  CapacitorCordova: 2e1e2bb93b2f365309dc4ff18b72b9a69a7814a9
+  Capacitor: 46dbaa89c1d1cd121b9fc2dc839c1f39cc49e326
+  CapacitorApp: 449ffe26375e96f8aaaee625ac6e01e5c57c8650
+  CapacitorBrowser: c987c73d09d8bd3b5ec13f06338b1e14d5d2be69
+  CapacitorCordova: 9010447fe25e869705fcf525e5f490facde87608
   PurchasesHybridCommon: 32902b8fad349cf549f096183926ee33af00e36a
   RevenueCat: c535d3739d51163f6d9d5dbd01c7b5d93b718ff5
   RevenuecatPurchasesCapacitor: d2951545ee37dd35adbcc94acc3a9b83a3a2cca8
 
-PODFILE CHECKSUM: 0f62cdad304a3c21afe0b9e53ed5b6776eba46d2
+PODFILE CHECKSUM: ea23fb6c71d586c02d7ae6252a19356b0979160c
 
 COCOAPODS: 1.16.2
