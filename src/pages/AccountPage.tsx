@@ -7,6 +7,7 @@ import { useEntitlements } from "@/lib/useEntitlements";
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 import { GiftCodeModal } from "@/components/GiftCodeModal";
 import { supabase } from "@/lib/supabaseClient";
+import { StreakHistoryPanel } from "@/components/streak/StreakHistoryPanel";
 
 function formatDateTime(value: string | null | undefined): string {
   if (!value) return "—";
@@ -610,6 +611,11 @@ export default function AccountPage() {
             </p>
           </div>
 
+        </div>
+
+        {/* ── My Progress (streaks) ────────────────────────────── */}
+        <div style={{ marginTop: 18 }}>
+          <StreakHistoryPanel />
         </div>
 
         {/* ── Legal + account deletion ─────────────────────────── */}
