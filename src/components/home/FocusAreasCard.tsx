@@ -95,22 +95,22 @@ function FocusAreasCardInner() {
                 onClick={(e) => {
                   e.stopPropagation();
                   if (user?.id) {
-                    logFocusAreasTagTapped(user.id, entry.tag, entry.roomId);
+                    logFocusAreasTagTapped(user.id, entry.tag, entry.linkedRoomId);
                   }
                   setDialogEntry(entry);
                 }}
                 className="group flex w-full items-center gap-3 rounded-[14px] border border-amber-200/60 bg-white/70 px-3 py-2.5 text-left transition hover:border-amber-300 hover:bg-amber-50/80"
-                aria-label={`Open micro-lesson: ${entry.displayEn.replace(/\*\*/g, "")}`}
+                aria-label={`Open micro-lesson: ${entry.shortLabel.en.replace(/\*\*/g, "")}`}
               >
                 <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-amber-100 text-amber-700">
                   <Target className="h-4 w-4" aria-hidden />
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="truncate text-sm font-semibold text-slate-800">
-                    {renderInlineBold(entry.displayEn)}
+                    {renderInlineBold(entry.shortLabel.en)}
                   </div>
                   <div className="truncate text-xs text-slate-500">
-                    {renderInlineBold(entry.displayVi)}
+                    {renderInlineBold(entry.shortLabel.vi)}
                   </div>
                 </div>
                 <ChevronRight

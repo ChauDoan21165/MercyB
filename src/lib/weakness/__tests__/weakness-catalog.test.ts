@@ -26,14 +26,20 @@ describe("WEAKNESS_CATALOG shape", () => {
     expect(catalogKeys).toEqual(allTags);
   });
 
-  it("has non-empty bilingual strings for every tag", () => {
+  it("has no duplicate tags", () => {
+    const uniq = new Set(ALL_WEAKNESS_TAGS);
+    expect(uniq.size).toBe(ALL_WEAKNESS_TAGS.length);
+  });
+
+  it("has non-empty bilingual strings + examples for every tag", () => {
     for (const tag of ALL_WEAKNESS_TAGS) {
       const entry = WEAKNESS_CATALOG[tag];
-      expect(entry.displayEn.trim().length).toBeGreaterThan(0);
-      expect(entry.displayVi.trim().length).toBeGreaterThan(0);
-      expect(entry.whyEn.trim().length).toBeGreaterThan(0);
-      expect(entry.whyVi.trim().length).toBeGreaterThan(0);
-      expect(entry.roomId.trim().length).toBeGreaterThan(0);
+      expect(entry.shortLabel.en.trim().length).toBeGreaterThan(0);
+      expect(entry.shortLabel.vi.trim().length).toBeGreaterThan(0);
+      expect(entry.longDescription.en.trim().length).toBeGreaterThan(0);
+      expect(entry.longDescription.vi.trim().length).toBeGreaterThan(0);
+      expect(entry.exampleWrong.trim().length).toBeGreaterThan(0);
+      expect(entry.exampleRight.trim().length).toBeGreaterThan(0);
     }
   });
 
@@ -42,14 +48,27 @@ describe("WEAKNESS_CATALOG shape", () => {
       expect(WEAKNESS_CATALOG[tag].tag).toBe(tag);
     }
   });
+
+  it("linkedRoomId is either null or a non-empty string", () => {
+    for (const tag of ALL_WEAKNESS_TAGS) {
+      const id = WEAKNESS_CATALOG[tag].linkedRoomId;
+      if (id !== null) {
+        expect(typeof id).toBe("string");
+        expect(id.trim().length).toBeGreaterThan(0);
+      }
+    }
+  });
 });
 
 describe("mapped rooms exist on disk", () => {
-  // Clone of cefrToRoom.test.ts intent: fail CI if a room is renamed.
+  // Clone of cefrToRoom.test.ts intent: fail CI if a mapped room is
+  // renamed. Entries with linkedRoomId === null are intentional
+  // "no existing room yet" markers and are skipped.
   for (const tag of ALL_WEAKNESS_TAGS) {
     const entry = WEAKNESS_CATALOG[tag];
-    it(`${tag} → ${entry.roomId}.json exists`, () => {
-      const path = resolve(PUBLIC_DATA, `${entry.roomId}.json`);
+    if (entry.linkedRoomId === null) continue;
+    it(`${tag} → ${entry.linkedRoomId}.json exists`, () => {
+      const path = resolve(PUBLIC_DATA, `${entry.linkedRoomId}.json`);
       expect(existsSync(path)).toBe(true);
 
       // Defensive: the file should parse as JSON. If it's corrupt, the

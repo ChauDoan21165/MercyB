@@ -6,6 +6,10 @@
 //
 // Bilingual EN + VI. Inline **bold** markdown inside strings is
 // rendered via renderInlineBold so native terms stay emphasized.
+//
+// When `entry.linkedRoomId` is null the catalog doesn't yet have a
+// matching room — the CTA flips to a disabled "coming soon" affordance
+// instead of navigating anywhere.
 
 import React from "react";
 import { useNavigate } from "react-router-dom";
@@ -39,14 +43,15 @@ export default function FocusAreasMicroLessonDialog({
 }: FocusAreasMicroLessonDialogProps) {
   const navigate = useNavigate();
   const open = entry !== null;
+  const hasRoom = entry !== null && entry.linkedRoomId !== null;
 
   function handleStart() {
-    if (!entry) return;
+    if (!entry || !entry.linkedRoomId) return;
     if (userId) {
-      logFocusAreasLessonStarted(userId, entry.tag, entry.roomId);
+      logFocusAreasLessonStarted(userId, entry.tag, entry.linkedRoomId);
     }
     onOpenChange(false);
-    navigate(`/room/${entry.roomId}`);
+    navigate(`/room/${entry.linkedRoomId}`);
   }
 
   return (
@@ -59,31 +64,55 @@ export default function FocusAreasMicroLessonDialog({
                 <Target className="h-5 w-5" aria-hidden />
               </div>
               <DialogTitle className="text-center text-lg font-semibold">
-                {renderInlineBold(entry.displayEn)}
+                {renderInlineBold(entry.shortLabel.en)}
               </DialogTitle>
               <DialogDescription className="text-center text-sm text-slate-500">
-                {renderInlineBold(entry.displayVi)}
+                {renderInlineBold(entry.shortLabel.vi)}
               </DialogDescription>
             </DialogHeader>
 
             <div className="space-y-3 pt-1">
               <p className="text-sm leading-relaxed text-slate-800">
-                {renderInlineBold(entry.whyEn)}
+                {renderInlineBold(entry.longDescription.en)}
               </p>
               <p className="text-xs leading-relaxed text-slate-500">
-                {renderInlineBold(entry.whyVi)}
+                {renderInlineBold(entry.longDescription.vi)}
               </p>
+
+              <div className="mt-3 rounded-lg border border-slate-200 bg-slate-50 p-3 text-sm">
+                <div className="flex items-start gap-2">
+                  <span className="mt-0.5 text-xs font-semibold uppercase text-rose-600">✗</span>
+                  <span className="text-slate-700 line-through decoration-rose-300">
+                    {entry.exampleWrong}
+                  </span>
+                </div>
+                <div className="mt-1 flex items-start gap-2">
+                  <span className="mt-0.5 text-xs font-semibold uppercase text-emerald-600">✓</span>
+                  <span className="font-medium text-slate-800">{entry.exampleRight}</span>
+                </div>
+              </div>
             </div>
 
             <DialogFooter className="mt-2 flex-col gap-2 sm:flex-col">
-              <Button
-                type="button"
-                onClick={handleStart}
-                className="w-full bg-amber-500 text-white hover:bg-amber-600"
-              >
-                Start lesson / Bắt đầu bài học
-                <ArrowRight className="ml-2 h-4 w-4" aria-hidden />
-              </Button>
+              {hasRoom ? (
+                <Button
+                  type="button"
+                  onClick={handleStart}
+                  className="w-full bg-amber-500 text-white hover:bg-amber-600"
+                >
+                  Start lesson / Bắt đầu bài học
+                  <ArrowRight className="ml-2 h-4 w-4" aria-hidden />
+                </Button>
+              ) : (
+                <Button
+                  type="button"
+                  disabled
+                  aria-disabled="true"
+                  className="w-full cursor-not-allowed bg-slate-200 text-slate-500 hover:bg-slate-200"
+                >
+                  Lesson coming soon / Sắp có bài học
+                </Button>
+              )}
               <Button
                 type="button"
                 variant="ghost"
