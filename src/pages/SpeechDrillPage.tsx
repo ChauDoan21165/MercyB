@@ -21,6 +21,7 @@ import { Navigate, useSearchParams } from 'react-router-dom';
 
 import { useFeatureFlag } from '@/hooks/useFeatureFlag';
 import { SpeechDrill } from '@/components/speech/SpeechDrill';
+import { recordSpeechAttempt } from '@/services/speechAttempts';
 import {
   SENTENCE_CEFR_LEVELS,
   parseCefrParam,
@@ -319,6 +320,18 @@ export default function SpeechDrillPage() {
           targetSentence={current.target_en}
           targetSentenceVi={current.target_vi}
           onNext={() => setCurrentIndex((i) => i + 1)}
+          onAttempt={(event) => {
+            // Fire-and-forget. The service is feature-flag gated and
+            // never throws — it's safe to ignore the returned promise
+            // from the React event handler.
+            void recordSpeechAttempt({
+              target: event.target,
+              recognized: event.recognized,
+              score: event.score,
+              elapsedMs: event.elapsedMs,
+              context: { extra: { source: 'speech_drill_page' } },
+            });
+          }}
         />
       </div>
     </div>

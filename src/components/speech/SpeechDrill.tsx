@@ -35,6 +35,13 @@ type RecognitionFailure = {
   message: string;
 };
 
+export type SpeechAttemptEvent = {
+  target: string;
+  recognized: string;
+  score: ScoreResult;
+  elapsedMs: number;
+};
+
 export type SpeechDrillProps = {
   /** The English sentence the learner is asked to say. */
   targetSentence: string;
@@ -44,6 +51,13 @@ export type SpeechDrillProps = {
   onNext?: () => void;
   /** Called when a score lands, for the parent to log/collect if it wants. */
   onScore?: (score: ScoreResult) => void;
+  /**
+   * Called once per scored attempt with the full metadata needed for
+   * persistence (target, recognized text, elapsed time). Fires AFTER
+   * onScore. Kept separate so consumers that only want the score can
+   * ignore this, and persistence callers can get the richer payload.
+   */
+  onAttempt?: (event: SpeechAttemptEvent) => void;
 };
 
 // ── Style tokens (match AccountPage / placement work) ───────────────
@@ -227,6 +241,7 @@ export function SpeechDrill({
   targetSentenceVi,
   onNext,
   onScore,
+  onAttempt,
 }: SpeechDrillProps) {
   // Gate the whole UI on support detection. Run once — if the browser
   // doesn't have SpeechRecognition, the entire component body renders
@@ -256,6 +271,7 @@ export function SpeechDrill({
     setErrorCopy(null);
 
     let recognition: RecognitionResult;
+    const recognitionStart = Date.now();
     try {
       recognition = await recognizeOnce({ lang: 'en-US' });
     } catch (failure) {
@@ -265,6 +281,7 @@ export function SpeechDrill({
       setState('error');
       return;
     }
+    const elapsedMs = Date.now() - recognitionStart;
 
     if (!mountedRef.current) return;
     setState('scoring');
@@ -278,13 +295,19 @@ export function SpeechDrill({
       setScore(result);
       setState('result');
       onScore?.(result);
+      onAttempt?.({
+        target: targetSentence,
+        recognized: recognition.transcript,
+        score: result,
+        elapsedMs,
+      });
     } catch (err) {
       if (!mountedRef.current) return;
       console.warn('[SpeechDrill] scorePronunciation threw:', err);
       setErrorCopy(failureCopy('unknown'));
       setState('error');
     }
-  }, [state, targetSentence, onScore]);
+  }, [state, targetSentence, onScore, onAttempt]);
 
   const handleTryAgain = useCallback(() => {
     setState('idle');

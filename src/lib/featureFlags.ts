@@ -44,6 +44,16 @@ export const FEATURE_FLAGS = {
    * Reads from env `VITE_SERVER_STREAKS_ENABLED`; defaults to OFF.
    */
   SERVER_STREAKS_ENABLED: readEnvBool("VITE_SERVER_STREAKS_ENABLED", false),
+
+  /**
+   * Wave 2 Step 3 — persist CC1's pronunciation scoring results into
+   * speech_attempts so future analytics + weekly rollups have data.
+   * When ON: each successful score in <SpeechDrill> fires an
+   * INSERT into speech_attempts (fire-and-forget, non-blocking UI).
+   * When OFF: scoring still runs and displays, but nothing is persisted.
+   * Reads from env `VITE_SPEECH_PERSISTENCE_ENABLED`; defaults to OFF.
+   */
+  SPEECH_PERSISTENCE_ENABLED: readEnvBool("VITE_SPEECH_PERSISTENCE_ENABLED", false),
 };
 
 /**
