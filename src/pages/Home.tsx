@@ -15,6 +15,7 @@ import { useAuth } from "@/providers/AuthProvider";
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 import { supabase } from "@/lib/supabaseClient";
 import FocusAreasCard from "@/components/home/FocusAreasCard";
+import { StreakBadge } from "@/components/streak/StreakBadge";
 
 const LS_PLACEMENT_BANNER_DISMISSED = "mb.placement.banner.dismissed";
 const LS_PLACEMENT_REDIRECT_SEEN    = "mb.placement.redirect.seen";
@@ -451,6 +452,20 @@ export default function Home() {
 
   return (
     <div style={wrap}>
+      {/* Top-right floating streak badge — hidden when streak_current === 0 */}
+      <div
+        style={{
+          position: "fixed",
+          top: `calc(12px + env(safe-area-inset-top, 0px))`,
+          right: 16,
+          zIndex: 70,
+          pointerEvents: "auto",
+        }}
+        aria-label="Study streak quick view"
+      >
+        <StreakBadge />
+      </div>
+
       <div style={frame}>
         {placementBanner}
         {/* Headline */}
