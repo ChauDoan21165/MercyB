@@ -7,13 +7,25 @@
 //     when the detector emits a tag the catalog doesn't have yet.
 //   - renderInlineBold wires through — **word** segments become <strong>.
 //   - Returns nothing for null / undefined / empty feedback.
+//   - Learn more →:
+//       * Active link navigates to /room/:linkedRoomId for tags whose
+//         catalog entry has a roomId.
+//       * Disabled "No lesson yet" state for tags without a catalog entry.
+//       * Click fires l1_hint_learn_more_clicked analytics with the
+//         expected payload.
 //
 // This component does NOT consume useFeatureFlag directly — the caller
 // (GrammarWritingTab) gates rendering. So no flag mocking needed here.
 
 import React from "react";
-import { describe, expect, it } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { describe, expect, it, vi, beforeEach } from "vitest";
+import { render, screen, fireEvent, cleanup } from "@testing-library/react";
+import { MemoryRouter, Routes, Route } from "react-router-dom";
+
+const mockTrackEvent = vi.fn();
+vi.mock("@/lib/analytics", () => ({
+  trackEvent: (...args: unknown[]) => mockTrackEvent(...args),
+}));
 
 import L1HintCard from "../L1HintCard";
 import type { L1HintPayload } from "../types";
@@ -34,25 +46,40 @@ function makeHint(
   };
 }
 
+function renderCard(hint: L1HintPayload | null | undefined) {
+  return render(
+    <MemoryRouter initialEntries={["/grammar"]}>
+      <Routes>
+        <Route path="/grammar" element={<L1HintCard hint={hint} />} />
+        <Route
+          path="/room/:roomId"
+          element={<div data-testid="room-route" />}
+        />
+      </Routes>
+    </MemoryRouter>,
+  );
+}
+
+beforeEach(() => {
+  cleanup();
+  mockTrackEvent.mockReset();
+});
+
 describe("L1HintCard", () => {
   it("renders both English and Vietnamese feedback when a hint is provided", () => {
-    render(<L1HintCard hint={makeHint()} />);
+    renderCard(makeHint());
 
-    // EN body
     expect(screen.getByText(/In English, verbs change after/)).toBeDefined();
-    // VI body
     expect(screen.getByText(/Trong tiếng Anh, động từ đi với/)).toBeDefined();
   });
 
   it("renders the 'Pattern noticed' framing label (warm, not alarming)", () => {
-    render(<L1HintCard hint={makeHint()} />);
+    renderCard(makeHint());
     expect(screen.getByText(/Pattern noticed/i)).toBeDefined();
   });
 
   it("uses the WEAKNESS_CATALOG short label when the tag is in the catalog", () => {
-    // vi_l1_3rd_person_s is in the catalog → "Subject-verb agreement" /
-    // "Chia động từ theo chủ ngữ" (Chau-approved strings).
-    render(<L1HintCard hint={makeHint({ weaknessTag: "vi_l1_3rd_person_s" })} />);
+    renderCard(makeHint({ weaknessTag: "vi_l1_3rd_person_s" }));
     expect(screen.getByText(/Subject-verb agreement/)).toBeDefined();
     expect(screen.getByText(/Chia động từ theo chủ ngữ/)).toBeDefined();
   });
@@ -60,62 +87,103 @@ describe("L1HintCard", () => {
   it("uses the catalog short label for detector tags that live in the catalog", () => {
     // vi_l1_missing_be is now in WEAKNESS_CATALOG (post-expansion) and
     // should render the catalog's canonical EN + VI strings.
-    render(<L1HintCard hint={makeHint({ weaknessTag: "vi_l1_missing_be" })} />);
+    renderCard(makeHint({ weaknessTag: "vi_l1_missing_be" }));
     expect(screen.getByText(/Missing "to be"/)).toBeDefined();
     expect(screen.getByText(/Thiếu động từ "to be"/)).toBeDefined();
   });
 
   it("falls back to a prettified tag identifier when the tag is fully unknown", () => {
-    render(<L1HintCard hint={makeHint({ weaknessTag: "vi_l1_some_new_pattern" })} />);
-    // Fallback is the same string in both EN and VI slots because we
-    // don't have separate translations for an unknown tag.
+    renderCard(makeHint({ weaknessTag: "vi_l1_some_new_pattern" }));
     const matches = screen.getAllByText(/some new pattern/);
     expect(matches.length).toBeGreaterThanOrEqual(1);
   });
 
   it("wraps **bold** segments in <strong> via renderInlineBold", () => {
-    const { container } = render(<L1HintCard hint={makeHint()} />);
+    const { container } = renderCard(makeHint());
     const html = container.innerHTML;
-    // The raw ** markers must NOT appear — they got converted to tags.
     expect(html).not.toContain("**she**");
     expect(html).toContain("<strong>she</strong>");
     expect(html).toContain("<strong>he</strong>");
   });
 
   it("renders nothing when hint is null", () => {
-    const { container } = render(<L1HintCard hint={null} />);
-    expect(container.firstChild).toBeNull();
+    const { container } = renderCard(null);
+    // MemoryRouter renders the Routes wrapper; the matched route renders
+    // L1HintCard, which returns null. Confirm the routes wrapper is empty
+    // of card markup (no amber section).
+    expect(container.querySelector('[aria-label="Vietnamese learner hint"]')).toBeNull();
   });
 
   it("renders nothing when hint is undefined", () => {
-    const { container } = render(<L1HintCard hint={undefined} />);
-    expect(container.firstChild).toBeNull();
+    const { container } = renderCard(undefined);
+    expect(container.querySelector('[aria-label="Vietnamese learner hint"]')).toBeNull();
   });
 
   it("renders nothing when both feedback strings are empty", () => {
-    const { container } = render(
-      <L1HintCard hint={makeHint({ feedback: { en: "", vi: "" } })} />,
+    const { container } = renderCard(
+      makeHint({ feedback: { en: "", vi: "" } }),
     );
-    expect(container.firstChild).toBeNull();
+    expect(container.querySelector('[aria-label="Vietnamese learner hint"]')).toBeNull();
   });
 
   it("renders when only English feedback is present", () => {
-    const { container } = render(
-      <L1HintCard
-        hint={makeHint({ feedback: { en: "English only hint.", vi: "" } })}
-      />,
-    );
-    expect(container.firstChild).not.toBeNull();
+    renderCard(makeHint({ feedback: { en: "English only hint.", vi: "" } }));
     expect(screen.getByText(/English only hint/)).toBeDefined();
   });
 
   it("renders when only Vietnamese feedback is present", () => {
-    const { container } = render(
-      <L1HintCard
-        hint={makeHint({ feedback: { en: "", vi: "Chỉ có tiếng Việt." } })}
-      />,
-    );
-    expect(container.firstChild).not.toBeNull();
+    renderCard(makeHint({ feedback: { en: "", vi: "Chỉ có tiếng Việt." } }));
     expect(screen.getByText(/Chỉ có tiếng Việt/)).toBeDefined();
+  });
+});
+
+describe("L1HintCard — Learn more navigation", () => {
+  it("renders an active link for a tag whose catalog entry has a roomId", () => {
+    renderCard(makeHint({ weaknessTag: "vi_l1_3rd_person_s" }));
+    const link = screen.getByTestId("l1-hint-learn-more-link") as HTMLAnchorElement;
+    expect(link).toBeDefined();
+    expect(link.getAttribute("href")).toBe("/room/english_a1_a107");
+    expect(link.textContent).toMatch(/Learn more/);
+  });
+
+  it("clicking the link navigates to /room/:linkedRoomId", () => {
+    renderCard(makeHint({ weaknessTag: "vi_l1_past_ed" }));
+    const link = screen.getByTestId("l1-hint-learn-more-link");
+    fireEvent.click(link);
+    expect(screen.getByTestId("room-route")).toBeDefined();
+  });
+
+  it("fires l1_hint_learn_more_clicked with {tag, linked_room_id, source: grammar_writing}", () => {
+    renderCard(makeHint({ weaknessTag: "vi_l1_plural_s" }));
+    fireEvent.click(screen.getByTestId("l1-hint-learn-more-link"));
+    expect(mockTrackEvent).toHaveBeenCalledWith("l1_hint_learn_more_clicked", {
+      tag: "vi_l1_plural_s",
+      linked_room_id: "english_a1_a109",
+      source: "grammar_writing",
+    });
+  });
+
+  it("shows 'No lesson yet' disabled state for catalog tags without a linkedRoomId", () => {
+    // vi_l1_missing_article is in WEAKNESS_CATALOG but has
+    // linkedRoomId: null — no existing room teaches articles yet.
+    renderCard(makeHint({ weaknessTag: "vi_l1_missing_article" }));
+    expect(screen.queryByTestId("l1-hint-learn-more-link")).toBeNull();
+    const disabled = screen.getByTestId("l1-hint-learn-more-disabled");
+    expect(disabled.getAttribute("aria-disabled")).toBe("true");
+    expect(disabled.textContent).toMatch(/No lesson yet/);
+    expect(disabled.textContent).toMatch(/Chưa có bài học/);
+  });
+
+  it("shows 'No lesson yet' disabled state for tags with no catalog entry", () => {
+    renderCard(makeHint({ weaknessTag: "vi_l1_ghost_tag" }));
+    expect(screen.queryByTestId("l1-hint-learn-more-link")).toBeNull();
+    expect(screen.getByTestId("l1-hint-learn-more-disabled")).toBeDefined();
+  });
+
+  it("disabled state does NOT fire analytics when clicked", () => {
+    renderCard(makeHint({ weaknessTag: "vi_l1_unknown_thing" }));
+    const disabled = screen.getByTestId("l1-hint-learn-more-disabled");
+    fireEvent.click(disabled);
+    expect(mockTrackEvent).not.toHaveBeenCalled();
   });
 });

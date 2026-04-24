@@ -13,10 +13,12 @@
 // guards against a missing/empty hint payload internally.
 
 import React from "react";
+import { Link } from "react-router-dom";
 import { BookOpen } from "lucide-react";
 
 import { getWeaknessEntry } from "@/lib/weakness/weakness-catalog";
 import { renderInlineBold } from "@/lib/weakness/renderInlineBold";
+import { trackEvent } from "@/lib/analytics";
 import type { L1HintPayload } from "./types";
 
 interface L1HintCardProps {
@@ -80,19 +82,62 @@ export default function L1HintCard({ hint }: L1HintCardProps) {
         </p>
       ) : null}
 
-      {/* TODO: wire to micro-lesson route once the dedicated /learn/:tag
-          page exists. For now it's a no-op styled link so designers +
-          analytics can preview the placement. */}
       <div className="mt-3">
-        <span
-          role="button"
-          aria-disabled="true"
-          tabIndex={-1}
-          className="cursor-not-allowed text-xs font-semibold text-amber-800 underline-offset-2 opacity-60 hover:underline dark:text-amber-200"
-        >
-          Learn more →
-        </span>
+        <LearnMoreLink
+          tag={hint.weaknessTag}
+          linkedRoomId={resolveLinkedRoomId(hint.weaknessTag)}
+        />
       </div>
     </section>
+  );
+}
+
+/**
+ * Resolve the linked room id for a weakness tag. Returns null when no
+ * catalog entry exists for the tag OR when the entry exists but has
+ * `linkedRoomId: null` (a deliberate "no existing room teaches this
+ * yet" marker). Both cases surface the "No lesson yet" disabled state.
+ */
+function resolveLinkedRoomId(tag: string): string | null {
+  const entry = getWeaknessEntry(tag);
+  return entry?.linkedRoomId ?? null;
+}
+
+function LearnMoreLink({
+  tag,
+  linkedRoomId,
+}: {
+  tag: string;
+  linkedRoomId: string | null;
+}) {
+  if (!linkedRoomId) {
+    return (
+      <span
+        role="button"
+        aria-disabled="true"
+        tabIndex={-1}
+        className="cursor-not-allowed text-xs font-semibold text-amber-800/70 dark:text-amber-200/70"
+        data-testid="l1-hint-learn-more-disabled"
+      >
+        No lesson yet · Chưa có bài học
+      </span>
+    );
+  }
+
+  return (
+    <Link
+      to={`/room/${linkedRoomId}`}
+      className="text-xs font-semibold text-amber-800 underline-offset-2 hover:underline dark:text-amber-200"
+      data-testid="l1-hint-learn-more-link"
+      onClick={() => {
+        trackEvent("l1_hint_learn_more_clicked", {
+          tag,
+          linked_room_id: linkedRoomId,
+          source: "grammar_writing",
+        });
+      }}
+    >
+      Learn more →
+    </Link>
   );
 }

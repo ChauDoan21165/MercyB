@@ -426,21 +426,376 @@ describe('cross-rule regressions', () => {
 });
 
 // ────────────────────────────────────────────────────────────────────────────
+// 11. vi_l1_to_verb_confusion — "i want go" → "i want to go"
+// ────────────────────────────────────────────────────────────────────────────
+describe('rule 11: vi_l1_to_verb_confusion', () => {
+  it('positive cases (10)', () => {
+    expectHit('i want go home',             'i want to go home',             'vi_l1_to_verb_confusion');
+    expectHit('i need eat',                 'i need to eat',                 'vi_l1_to_verb_confusion');
+    expectHit('she try finish her work',    'she try to finish her work',    'vi_l1_to_verb_confusion');
+    expectHit('he hope see you',            'he hope to see you',            'vi_l1_to_verb_confusion');
+    expectHit('i plan travel next month',   'i plan to travel next month',   'vi_l1_to_verb_confusion');
+    expectHit('she decide leave',           'she decide to leave',           'vi_l1_to_verb_confusion');
+    expectHit('they learn speak english',   'they learn to speak english',   'vi_l1_to_verb_confusion');
+    expectHit('i prefer stay home',         'i prefer to stay home',         'vi_l1_to_verb_confusion');
+    expectHit('we agree meet at six',       'we agree to meet at six',       'vi_l1_to_verb_confusion');
+    expectHit('i promise help you',         'i promise to help you',         'vi_l1_to_verb_confusion');
+  });
+
+  it('negative cases (10)', () => {
+    expectMiss('i want to go home',         'i want to go home');
+    expectMiss('she goes home',             'she goes home');
+    expectMissOrDifferentTag('she study english', 'she studies english', 'vi_l1_to_verb_confusion');
+    expectMiss('i like pho',                'i like pho');          // "like"+noun is fine
+    expectMiss('he can swim',               'he can swim');         // modal, not trigger verb
+    expectMiss('i love her',                'i love her');          // love + object, not verb
+    expectMiss('i start the work',          'i start the work');    // start + noun
+    expectMiss('they will meet tomorrow',   'they will meet tomorrow');
+    expectMiss('we need money',             'we need money');
+    expectMissOrDifferentTag('she happy',   'she is happy',         'vi_l1_to_verb_confusion');
+  });
+});
+
+// ────────────────────────────────────────────────────────────────────────────
+// 12. vi_l1_can_no_infinitive — "she can speaks" → "she can speak"
+// ────────────────────────────────────────────────────────────────────────────
+describe('rule 12: vi_l1_can_no_infinitive', () => {
+  it('positive cases (10)', () => {
+    expectHit('she can speaks english',     'she can speak english',         'vi_l1_can_no_infinitive');
+    expectHit('he can sings well',          'he can sing well',              'vi_l1_can_no_infinitive');
+    expectHit('i could went there',         'i could go there',              'vi_l1_can_no_infinitive');
+    expectHit('they will came tomorrow',    'they will come tomorrow',       'vi_l1_can_no_infinitive');
+    expectHit('she should studies more',    'she should study more',         'vi_l1_can_no_infinitive');
+    expectHit('he must works harder',       'he must work harder',           'vi_l1_can_no_infinitive');
+    expectHit('i might goes home',          'i might go home',               'vi_l1_can_no_infinitive');
+    expectHit('we would plays football',    'we would play football',        'vi_l1_can_no_infinitive');
+    expectHit('she may sings',              'she may sing',                  'vi_l1_can_no_infinitive');
+    expectHit('he can ate all of it',       'he can eat all of it',          'vi_l1_can_no_infinitive');
+  });
+
+  it('negative cases (10)', () => {
+    expectMiss('she can speak english',     'she can speak english');
+    expectMiss('he can sing well',          'he can sing well');
+    expectMiss('they will come tomorrow',   'they will come tomorrow');
+    expectMiss('i should study more',       'i should study more');
+    expectMissOrDifferentTag('she studies english', 'she studies english', 'vi_l1_can_no_infinitive'); // no modal
+    expectMiss('i went home',               'i went home');            // past, no modal
+    expectMiss('he plays football',         'he plays football');
+    expectMissOrDifferentTag('she eat apple', 'she eats apple', 'vi_l1_can_no_infinitive'); // rule 1
+    expectMiss('we do the work',            'we do the work');
+    expectMiss('she has a cat',             'she has a cat');
+  });
+});
+
+// ────────────────────────────────────────────────────────────────────────────
+// 13. vi_l1_double_past — "i didn't went" → "i didn't go"
+// ────────────────────────────────────────────────────────────────────────────
+describe('rule 13: vi_l1_double_past', () => {
+  it('positive cases (10)', () => {
+    expectHit("i didn't went home",         "i didn't go home",              'vi_l1_double_past');
+    expectHit("she didn't ate lunch",       "she didn't eat lunch",          'vi_l1_double_past');
+    expectHit("he doesn't likes coffee",    "he doesn't like coffee",        'vi_l1_double_past');
+    expectHit("they didn't came yesterday", "they didn't come yesterday",    'vi_l1_double_past');
+    expectHit("she doesn't knows me",       "she doesn't know me",           'vi_l1_double_past');
+    expectHit("i don't likes it",           "i don't like it",               'vi_l1_double_past');
+    expectHit("we didn't saw the movie",    "we didn't see the movie",       'vi_l1_double_past');
+    expectHit("he didn't bought it",        "he didn't buy it",              'vi_l1_double_past');
+    expectHit("did she went there",         "did she go there",              'vi_l1_double_past');
+    expectHit("does he likes pho",          "does he like pho",              'vi_l1_double_past');
+  });
+
+  it('negative cases (10)', () => {
+    expectMiss("i didn't go home",          "i didn't go home");
+    expectMiss("she didn't eat lunch",      "she didn't eat lunch");
+    expectMiss("he doesn't like coffee",    "he doesn't like coffee");
+    expectMiss('i went home',               'i went home');               // plain past
+    expectMissOrDifferentTag('she study english', 'she studies english', 'vi_l1_double_past'); // rule 1
+    expectMissOrDifferentTag('yesterday i walk', 'yesterday i walked', 'vi_l1_double_past'); // rule 2
+    expectMiss("i don't know",              "i don't know");
+    expectMiss("she doesn't cry",           "she doesn't cry");
+    expectMiss('does he know',              'does he know');
+    expectMiss("we didn't see it",          "we didn't see it");
+  });
+});
+
+// ────────────────────────────────────────────────────────────────────────────
+// 14. vi_l1_possessive_s_missing — "my mother house" → "my mother's house"
+// ────────────────────────────────────────────────────────────────────────────
+describe('rule 14: vi_l1_possessive_s_missing', () => {
+  it('positive cases (10)', () => {
+    expectHit("my mother house is big",         "my mother's house is big",           'vi_l1_possessive_s_missing');
+    expectHit("my brother car is red",          "my brother's car is red",            'vi_l1_possessive_s_missing');
+    expectHit("the teacher book is on desk",    "the teacher's book is on desk",      'vi_l1_possessive_s_missing');
+    expectHit("my friend bike broke",           "my friend's bike broke",             'vi_l1_possessive_s_missing');
+    expectHit("john house is near school",      "john's house is near school",        'vi_l1_possessive_s_missing');
+    expectHit("the doctor clinic opens early",  "the doctor's clinic opens early",    'vi_l1_possessive_s_missing');
+    expectHit("my sister room is clean",        "my sister's room is clean",          'vi_l1_possessive_s_missing');
+    expectHit("the dog tail is wagging",        "the dog's tail is wagging",          'vi_l1_possessive_s_missing');
+    expectHit("my boss office is downstairs",   "my boss's office is downstairs",     'vi_l1_possessive_s_missing');
+    expectHit("mary bag is on the chair",       "mary's bag is on the chair",         'vi_l1_possessive_s_missing');
+  });
+
+  it('negative cases (10)', () => {
+    expectMiss("my mother's house is big",      "my mother's house is big");
+    expectMiss("my brother's car is red",       "my brother's car is red");
+    expectMiss('the book is on the table',      'the book is on the table');
+    expectMiss('she has a car',                 'she has a car');
+    expectMissOrDifferentTag('she happy',       'she is happy',       'vi_l1_possessive_s_missing');
+    expectMiss('my house is big',               'my house is big');   // one noun only
+    expectMiss('the teacher helps students',    'the teacher helps students');
+    expectMissOrDifferentTag('she study english', 'she studies english', 'vi_l1_possessive_s_missing');
+    expectMiss("i like my mother's cooking",    "i like my mother's cooking");
+    expectMiss('the cars are fast',             'the cars are fast');
+  });
+});
+
+// ────────────────────────────────────────────────────────────────────────────
+// 15. vi_l1_comparative_double — "more better" / "more faster"
+// ────────────────────────────────────────────────────────────────────────────
+describe('rule 15: vi_l1_comparative_double', () => {
+  it('positive cases (10)', () => {
+    expectHit('this is more better',        'this is better',                'vi_l1_comparative_double');
+    expectHit('he runs more faster',        'he runs faster',                'vi_l1_comparative_double');
+    expectHit('she is more taller',         'she is taller',                 'vi_l1_comparative_double');
+    expectHit('it is more bigger',          'it is bigger',                  'vi_l1_comparative_double');
+    expectHit('this car is more smaller',   'this car is smaller',           'vi_l1_comparative_double');
+    expectHit('he is more stronger',        'he is stronger',                'vi_l1_comparative_double');
+    expectHit('she looks more younger',     'she looks younger',             'vi_l1_comparative_double');
+    expectHit('it got more worse',          'it got worse',                  'vi_l1_comparative_double');
+    expectHit('we need more longer rope',   'we need longer rope',           'vi_l1_comparative_double');
+    expectHit('this is more cheaper',       'this is cheaper',               'vi_l1_comparative_double');
+  });
+
+  it('negative cases (10)', () => {
+    expectMiss('this is better',            'this is better');
+    expectMiss('he runs faster',            'he runs faster');
+    expectMiss('this is more expensive',    'this is more expensive');      // correct, no -er
+    expectMiss('i want more',               'i want more');                 // "more" alone
+    expectMiss('give me more books',        'give me more books');
+    expectMissOrDifferentTag('she happy',   'she is happy',                 'vi_l1_comparative_double');
+    expectMiss('she is taller than me',     'she is taller than me');
+    expectMiss('it is the biggest',         'it is the biggest');
+    expectMiss('a little more rice please', 'a little more rice please');   // "more rice" not comparative
+    expectMiss('she has more money',        'she has more money');
+  });
+});
+
+// ────────────────────────────────────────────────────────────────────────────
+// 16. vi_l1_adjective_order — "car red" → "red car"
+// ────────────────────────────────────────────────────────────────────────────
+describe('rule 16: vi_l1_adjective_order', () => {
+  it('positive cases (10)', () => {
+    expectHit('i have car red',             'i have red car',                'vi_l1_adjective_order');
+    expectHit('she wears dress beautiful',  'she wears beautiful dress',     'vi_l1_adjective_order');
+    expectHit('the book new is here',       'the new book is here',          'vi_l1_adjective_order');
+    expectHit('my bag small',               'my small bag',                  'vi_l1_adjective_order');
+    expectHit('a phone old',                'a old phone',                   'vi_l1_adjective_order');
+    expectHit('the house big',              'the big house',                 'vi_l1_adjective_order');
+    expectHit('i see dog black',            'i see black dog',               'vi_l1_adjective_order');
+    expectHit('she has shirt blue',         'she has blue shirt',            'vi_l1_adjective_order');
+    expectHit('the room warm',              'the warm room',                 'vi_l1_adjective_order');
+    expectHit('my cat white',               'my white cat',                  'vi_l1_adjective_order');
+  });
+
+  it('negative cases (10)', () => {
+    expectMiss('i have red car',            'i have red car');
+    expectMiss('she wears beautiful dress', 'she wears beautiful dress');
+    expectMissOrDifferentTag('she happy',   'she is happy',                  'vi_l1_adjective_order');
+    expectMiss('the book is new',           'the book is new');              // predicative adj is fine
+    expectMiss('the car is red',            'the car is red');               // predicative
+    expectMiss('she is happy',              'she is happy');
+    expectMissOrDifferentTag('she study english', 'she studies english', 'vi_l1_adjective_order');
+    expectMiss('i have two cats',           'i have two cats');
+    expectMiss('this is good',              'this is good');
+    expectMiss('the cars are blue',         'the cars are blue');            // predicative, plural noun not in COMMON_NOUNS
+  });
+});
+
+// ────────────────────────────────────────────────────────────────────────────
+// 17. vi_l1_very_much_placement — "i very much like it" → "i like it very much"
+// ────────────────────────────────────────────────────────────────────────────
+describe('rule 17: vi_l1_very_much_placement', () => {
+  it('positive cases (10)', () => {
+    expectHit('i very much like it',        'i like it very much',           'vi_l1_very_much_placement');
+    expectHit('she very much enjoys music', 'she enjoys music very much',    'vi_l1_very_much_placement');
+    expectHit('we very much want pho',      'we want pho very much',         'vi_l1_very_much_placement');
+    expectHit('he very much misses home',   'he misses home very much',      'vi_l1_very_much_placement');
+    expectHit('they very much love movies', 'they love movies very much',    'vi_l1_very_much_placement');
+    expectHit('i very much enjoyed it',     'i enjoyed it very much',        'vi_l1_very_much_placement');
+    expectHit('she very much wants to go',  'she wants to go very much',     'vi_l1_very_much_placement');
+    expectHit('you very much help me',      'you help me very much',         'vi_l1_very_much_placement');
+    expectHit('we very much appreciate it', 'we appreciate it very much',    'vi_l1_very_much_placement');
+    expectHit('he very much hopes so',      'he hopes so very much',         'vi_l1_very_much_placement');
+  });
+
+  it('negative cases (10)', () => {
+    expectMiss('i like it very much',           'i like it very much');
+    expectMiss('thank you very much',           'thank you very much');
+    expectMiss('i like it',                     'i like it');
+    expectMiss('very much of the time',         'very much of the time');
+    expectMissOrDifferentTag('she happy',       'she is happy',                  'vi_l1_very_much_placement');
+    expectMiss('she enjoys music',              'she enjoys music');
+    expectMiss('we want pho very much',         'we want pho very much');
+    expectMissOrDifferentTag('she study english', 'she studies english', 'vi_l1_very_much_placement');
+    expectMiss('i am very hungry',              'i am very hungry');            // "very" without "much"
+    expectMiss('it is very important',          'it is very important');
+  });
+});
+
+// ────────────────────────────────────────────────────────────────────────────
+// 18. vi_l1_there_are_singular — "there are a book" → "there is a book"
+// ────────────────────────────────────────────────────────────────────────────
+describe('rule 18: vi_l1_there_are_singular', () => {
+  it('positive cases (10)', () => {
+    expectHit('there are a book on the table', 'there is a book on the table',  'vi_l1_there_are_singular');
+    expectHit('there are an apple here',       'there is an apple here',        'vi_l1_there_are_singular');
+    expectHit('there are one cat in the room', 'there is one cat in the room',  'vi_l1_there_are_singular');
+    expectHit('there are a car outside',       'there is a car outside',        'vi_l1_there_are_singular');
+    expectHit('there are a problem',           'there is a problem',            'vi_l1_there_are_singular');
+    expectHit('there are an orange',           'there is an orange',            'vi_l1_there_are_singular');
+    expectHit('there are a teacher here',      'there is a teacher here',       'vi_l1_there_are_singular');
+    expectHit('there are an error',            'there is an error',             'vi_l1_there_are_singular');
+    expectHit('there are one pen',             'there is one pen',              'vi_l1_there_are_singular');
+    expectHit('there are a room for you',      'there is a room for you',       'vi_l1_there_are_singular');
+  });
+
+  it('negative cases (10)', () => {
+    expectMiss('there is a book on the table', 'there is a book on the table');
+    expectMiss('there are books on the table', 'there are books on the table'); // plural OK
+    expectMiss('there are many cars',          'there are many cars');
+    expectMiss('there are two apples',         'there are two apples');
+    expectMiss('there is a problem',           'there is a problem');
+    expectMissOrDifferentTag('she happy',      'she is happy',                  'vi_l1_there_are_singular');
+    expectMiss('there are some people',        'there are some people');
+    expectMiss('we have a book',               'we have a book');
+    expectMissOrDifferentTag('she study english', 'she studies english', 'vi_l1_there_are_singular');
+    expectMiss('there were some apples',       'there were some apples');
+  });
+});
+
+// ────────────────────────────────────────────────────────────────────────────
+// 19. vi_l1_everyone_plural — "everyone are" → "everyone is"
+// ────────────────────────────────────────────────────────────────────────────
+describe('rule 19: vi_l1_everyone_plural', () => {
+  it('positive cases (10)', () => {
+    expectHit('everyone are happy here',      'everyone is happy here',         'vi_l1_everyone_plural');
+    expectHit('someone are knocking',         'someone is knocking',            'vi_l1_everyone_plural');
+    expectHit('anyone have a pen',            'anyone has a pen',               'vi_l1_everyone_plural');
+    expectHit('nobody were there',            'nobody was there',               'vi_l1_everyone_plural');
+    expectHit('everybody have homework',      'everybody has homework',         'vi_l1_everyone_plural');
+    expectHit('everyone were tired',          'everyone was tired',             'vi_l1_everyone_plural');
+    expectHit('somebody are waiting',         'somebody is waiting',            'vi_l1_everyone_plural');
+    expectHit('nothing are easy',             'nothing is easy',                'vi_l1_everyone_plural');
+    expectHit('everything have changed',      'everything has changed',         'vi_l1_everyone_plural');
+    expectHit('anybody are welcome',          'anybody is welcome',             'vi_l1_everyone_plural');
+  });
+
+  it('negative cases (10)', () => {
+    expectMiss('everyone is happy here',      'everyone is happy here');
+    expectMiss('they are happy',              'they are happy');
+    expectMiss('we have homework',            'we have homework');
+    expectMiss('the students are here',       'the students are here');
+    expectMissOrDifferentTag('she happy',     'she is happy',                   'vi_l1_everyone_plural');
+    expectMiss('people are waiting',          'people are waiting');          // "people" not indef
+    expectMiss('someone was knocking',        'someone was knocking');
+    expectMissOrDifferentTag('she study english', 'she studies english', 'vi_l1_everyone_plural');
+    expectMiss('nothing is wrong',            'nothing is wrong');
+    expectMiss('everybody has left',          'everybody has left');
+  });
+});
+
+// ────────────────────────────────────────────────────────────────────────────
+// 20. vi_l1_make_vs_do — collocation errors
+// ────────────────────────────────────────────────────────────────────────────
+describe('rule 20: vi_l1_make_vs_do', () => {
+  it('positive cases (10)', () => {
+    expectHit('i always do a mistake',         'i always make a mistake',          'vi_l1_make_vs_do');
+    expectHit('she made homework fast',        'she did homework fast',            'vi_l1_make_vs_do');
+    // "make a homework" would also fire rule 10 (countable noun with article);
+    // by priority rule 10 wins. Use a case that's cleanly rule 20 only.
+    expectHit('please make homework now',      'please do homework now',           'vi_l1_make_vs_do');
+    expectHit('he do a decision yesterday',    'he made a decision yesterday',     'vi_l1_make_vs_do');
+    expectHit('we make exercise every day',    'we do exercise every day',         'vi_l1_make_vs_do');
+    expectHit('they make sport every weekend', 'they do sport every weekend',      'vi_l1_make_vs_do');
+    expectHit('he makes business with japan',  'he does business with japan',      'vi_l1_make_vs_do');
+    expectHit('she do an effort today',        'she made an effort today',         'vi_l1_make_vs_do');
+    expectHit('we do a plan for summer',       'we make a plan for summer',        'vi_l1_make_vs_do');
+    expectHit('i make research online',        'i do research online',             'vi_l1_make_vs_do');
+  });
+
+  it('negative cases (10)', () => {
+    expectMiss('i always make a mistake',      'i always make a mistake');
+    expectMiss('she did homework fast',        'she did homework fast');
+    expectMiss('they do their best',           'they do their best');            // correct
+    expectMiss('please make dinner',           'please make dinner');            // correct
+    expectMiss('he made a phone call',         'he made a phone call');
+    expectMissOrDifferentTag('she happy',      'she is happy',                   'vi_l1_make_vs_do');
+    expectMiss('i finished my work',           'i finished my work');
+    expectMissOrDifferentTag('she study english', 'she studies english', 'vi_l1_make_vs_do');
+    expectMiss('we made progress',             'we made progress');
+    expectMiss('do the dishes please',         'do the dishes please');
+  });
+});
+
+// ────────────────────────────────────────────────────────────────────────────
+// 21. vi_l1_tag_question — ", no?" / ", yes?"
+// ────────────────────────────────────────────────────────────────────────────
+describe('rule 21: vi_l1_tag_question', () => {
+  it('positive cases (10)', () => {
+    expectHit('you like coffee, no?',          "you like coffee, don't you?",        'vi_l1_tag_question');
+    expectHit('she is tired, no?',             "she is tired, isn't she?",           'vi_l1_tag_question');
+    expectHit('he is coming, yes?',            'he is coming, right?',               'vi_l1_tag_question');
+    expectHit('you went there, no?',           "you went there, didn't you?",        'vi_l1_tag_question');
+    expectHit('they will come, no?',           "they will come, won't they?",        'vi_l1_tag_question');
+    expectHit('it is hot today, no?',          "it is hot today, isn't it?",         'vi_l1_tag_question');
+    expectHit('you can swim, yes?',            'you can swim, right?',               'vi_l1_tag_question');
+    expectHit('she has a dog, no?',            "she has a dog, doesn't she?",        'vi_l1_tag_question');
+    expectHit('we are friends, yes?',          "we are friends, aren't we?",         'vi_l1_tag_question');
+    expectHit('you speak vietnamese, no?',     "you speak vietnamese, don't you?",   'vi_l1_tag_question');
+  });
+
+  it('negative cases (10)', () => {
+    expectMiss("you like coffee, don't you?",  "you like coffee, don't you?");
+    expectMiss('do you like coffee?',          'do you like coffee?');
+    expectMiss('is she tired?',                'is she tired?');
+    expectMiss('i said no',                    'i said no');                         // no ? at end
+    expectMiss('yes that is right',            'yes that is right');
+    expectMissOrDifferentTag('she happy',      'she is happy',                       'vi_l1_tag_question');
+    expectMiss("no, i don't like it",          "no, i don't like it");
+    expectMissOrDifferentTag('she study english', 'she studies english',             'vi_l1_tag_question');
+    expectMiss('we are ready?',                'we are ready?');
+    expectMiss('where are you going?',         'where are you going?');
+  });
+});
+
+// ────────────────────────────────────────────────────────────────────────────
 // Perf budget — detector must stay well under 5 ms per call on average.
 // ────────────────────────────────────────────────────────────────────────────
 describe('performance', () => {
   it('mean call time < 5 ms across 500 iterations', () => {
     const cases: Array<[string, string]> = [
-      ['she study english',          'she studies english'],
-      ['yesterday i walk to school', 'yesterday i walked to school'],
-      ['two book',                   'two books'],
-      ['she happy',                  'she is happy'],
-      ['you like coffee?',           'do you like coffee?'],
-      ['i eat apple',                'i eat an apple'],
-      ['his sister',                 'her sister'],
-      ['i see her in monday',        'i see her on monday'],
-      ['i need an advice',           'i need advice'],
-      ['i am happy',                 'i am happy'],
+      ['she study english',            'she studies english'],
+      ['yesterday i walk to school',   'yesterday i walked to school'],
+      ['two book',                     'two books'],
+      ['she happy',                    'she is happy'],
+      ['you like coffee?',             'do you like coffee?'],
+      ['i eat apple',                  'i eat an apple'],
+      ['his sister',                   'her sister'],
+      ['i see her in monday',          'i see her on monday'],
+      ['i need an advice',             'i need advice'],
+      ['i am happy',                   'i am happy'],
+      // v1.1 cases to exercise the new rules in the perf budget
+      ['i want go home',               'i want to go home'],
+      ['she can speaks english',       'she can speak english'],
+      ["i didn't went home",           "i didn't go home"],
+      ['my mother house is big',       "my mother's house is big"],
+      ['this is more better',          'this is better'],
+      ['i have car red',               'i have red car'],
+      ['i very much like it',          'i like it very much'],
+      ['there are a book here',        'there is a book here'],
+      ['everyone are happy',           'everyone is happy'],
+      ['i do a mistake',               'i make a mistake'],
+      ['you like coffee, no?',         "you like coffee, don't you?"],
     ];
     const start = performance.now();
     for (let i = 0; i < 500; i++) {
