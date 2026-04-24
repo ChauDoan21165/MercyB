@@ -6,7 +6,7 @@ const { mockState } = vi.hoisted(() => ({
   mockState: {
     current: 7,
     longest: 30,
-    lastStudiedDate: "2026-04-23",
+    lastStudiedDate: "2026-04-23" as string | null,
     loading: false,
     error: null as string | null,
   },
