@@ -16,6 +16,7 @@ import { Navigate } from 'react-router-dom';
 
 import { useFeatureFlag } from '@/hooks/useFeatureFlag';
 import { SpeechDrill } from '@/components/speech/SpeechDrill';
+import { recordSpeechAttempt } from '@/services/speechAttempts';
 
 type Sentence = {
   en: string;
@@ -199,6 +200,18 @@ export default function SpeechDrillPage() {
           targetSentence={current.en}
           targetSentenceVi={current.vi}
           onNext={() => setCurrentIndex((i) => i + 1)}
+          onAttempt={(event) => {
+            // Fire-and-forget. The service is feature-flag gated and
+            // never throws — it's safe to ignore the returned promise
+            // from the React event handler.
+            void recordSpeechAttempt({
+              target: event.target,
+              recognized: event.recognized,
+              score: event.score,
+              elapsedMs: event.elapsedMs,
+              context: { extra: { source: 'speech_drill_page' } },
+            });
+          }}
         />
       </div>
     </div>
