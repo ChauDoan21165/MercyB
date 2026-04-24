@@ -1,8 +1,15 @@
 import { defineConfig, devices } from '@playwright/test';
 
 /**
- * Playwright configuration for visual regression testing
- * Runs tests against development server
+ * Playwright configuration for the legacy visual-regression suite
+ * under ./e2e. Runs against the MercyBlade dev server on
+ * 127.0.0.1:3107 (strict port — see package.json `dev` / `dev:frontend`
+ * scripts and CLAUDE.md).
+ *
+ * For the newer end-to-end smoke suite under ./tests/e2e, see
+ * playwright.smoke.config.ts. The two configs are intentionally
+ * separate — different goals (visual regression vs feature flow) and
+ * different directories.
  */
 export default defineConfig({
   testDir: './e2e',
@@ -24,15 +31,15 @@ export default defineConfig({
   
   // Shared settings for all tests
   use: {
-    // Base URL for tests
-    baseURL: 'http://localhost:8080',
-    
+    // Base URL for tests — matches the dev server in package.json
+    baseURL: 'http://127.0.0.1:3107',
+
     // Collect trace when retrying failed test
     trace: 'on-first-retry',
-    
+
     // Screenshot on failure
     screenshot: 'only-on-failure',
-    
+
     // Video on failure
     video: 'retain-on-failure',
   },
@@ -75,10 +82,12 @@ export default defineConfig({
     },
   ],
 
-  // Run local dev server before starting tests
+  // Run local dev server before starting tests. Use dev:frontend (Vite
+  // only) — the grammar server on :3001 isn't needed for visual
+  // regression and skipping it avoids concurrent-process teardown issues.
   webServer: {
-    command: 'npm run dev',
-    url: 'http://localhost:8080',
+    command: 'npm run dev:frontend',
+    url: 'http://127.0.0.1:3107',
     reuseExistingServer: !process.env.CI,
     timeout: 120 * 1000,
   },
