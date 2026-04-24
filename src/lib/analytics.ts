@@ -5,6 +5,7 @@ export type AnalyticsEventName =
   | "checkout_started"
   | "checkout_completed"
   | "entitlement_success"
+  | "l1_hint_learn_more_clicked"
   | "room_pronunciation_practice_opened"
   | "room_pronunciation_practice_closed"
   | `paywall_shown_${string}`;
