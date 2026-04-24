@@ -43,6 +43,21 @@
  *  19. vi_l1_everyone_plural      agreement  (v1.1)
  *  20. vi_l1_make_vs_do           collocation(v1.1)
  *  21. vi_l1_tag_question         style      (v1.1)
+ *  22. vi_l1_past_perfect_missing structural (v1.2)
+ *  23. vi_l1_reported_speech      structural (v1.2)
+ *  24. vi_l1_since_vs_for         usage      (v1.2)
+ *  25. vi_l1_countable_much       agreement  (v1.2)
+ *  26. vi_l1_some_vs_any          usage      (v1.2)
+ *  27. vi_l1_reflexive_missing    usage      (v1.2)
+ *  28. vi_l1_conditional_mix      structural (v1.2)
+ *  29. vi_l1_to_infinitive_after_ing structural (v1.2)
+ *  30. vi_l1_passive_missing_be   structural (v1.2)
+ *  31. vi_l1_relative_pronoun     usage      (v1.2)
+ *  32. vi_l1_used_to_vs_be_used_to usage     (v1.2)
+ *  33. vi_l1_another_vs_other     usage      (v1.2)
+ *  34. vi_l1_look_vs_see_vs_watch collocation(v1.2)
+ *  35. vi_l1_by_vs_with           usage      (v1.2)
+ *  36. vi_l1_time_expressions     usage      (v1.2)
  */
 
 export type L1WeaknessTag =
@@ -65,7 +80,23 @@ export type L1WeaknessTag =
   | 'vi_l1_there_are_singular'
   | 'vi_l1_everyone_plural'
   | 'vi_l1_make_vs_do'
-  | 'vi_l1_tag_question';
+  | 'vi_l1_tag_question'
+  // v1.2 — harder / less-common patterns
+  | 'vi_l1_past_perfect_missing'
+  | 'vi_l1_reported_speech'
+  | 'vi_l1_since_vs_for'
+  | 'vi_l1_countable_much'
+  | 'vi_l1_some_vs_any'
+  | 'vi_l1_reflexive_missing'
+  | 'vi_l1_conditional_mix'
+  | 'vi_l1_to_infinitive_after_ing'
+  | 'vi_l1_passive_missing_be'
+  | 'vi_l1_relative_pronoun'
+  | 'vi_l1_used_to_vs_be_used_to'
+  | 'vi_l1_another_vs_other'
+  | 'vi_l1_look_vs_see_vs_watch'
+  | 'vi_l1_by_vs_with'
+  | 'vi_l1_time_expressions';
 
 export type L1FeedbackText = {
   en: string;
@@ -178,6 +209,69 @@ const RULE_STRINGS: Record<L1WeaknessTag, StringTemplate> = {
   vi_l1_tag_question: {
     en: "Vietnamese tags a question with 'không?' at the end. English builds a **tag question** that mirrors the main verb: *you like coffee, **don't you**?* Try: *{FIX}*.",
     vi: "Tiếng Việt mình thêm 'không?' cuối câu để hỏi lại. Tiếng Anh dùng **tag question** khớp với động từ chính: *you like coffee, **don't you**?* Thử: *{FIX}*.",
+  },
+
+  // ── v1.2 strings ─────────────────────────────────────────────────────
+
+  vi_l1_past_perfect_missing: {
+    en: "Vietnamese often uses **đã** or **trước đó** to mark past. English uses **had + past participle** when one past action happened before another. *When she called, I already ate* → *When she called, I **had** already eaten*. Try: *{FIX}*.",
+    vi: "Tiếng Việt mình hay dùng **đã** hoặc **trước đó**. Tiếng Anh dùng **had + V3** khi một việc xảy ra trước một việc khác trong quá khứ. *When she called, I already ate* → *… I **had** already eaten*. Thử: *{FIX}*.",
+  },
+  vi_l1_reported_speech: {
+    en: "Vietnamese often keeps the original tense or uses **nói rằng**. English **backshifts** the tense after a past reporting verb. *She said she **is** tired* → *She said she **was** tired*. Try: *{FIX}*.",
+    vi: "Tiếng Việt mình hay giữ nguyên thì hoặc dùng **nói rằng**. Tiếng Anh phải **lùi thì** sau động từ tường thuật ở quá khứ. *She said she **was** tired*. Thử: *{FIX}*.",
+  },
+  vi_l1_since_vs_for: {
+    en: "Vietnamese **từ** covers both a starting point and a length of time. English splits them: **since** + point in time, **for** + length of time. Swap **{USER_WORD}** → **{FIX_WORD}**. Try: *{FIX}*.",
+    vi: "Tiếng Việt mình dùng **từ** cho cả mốc thời gian lẫn khoảng thời gian. Tiếng Anh tách rõ: **since** + mốc, **for** + độ dài. Đổi **{USER_WORD}** → **{FIX_WORD}**. Thử: *{FIX}*.",
+  },
+  vi_l1_countable_much: {
+    en: "Vietnamese **nhiều** works with everything. English **much** is only for uncountable nouns; use **many** or **a lot of** for countable plurals. *much books* → *many books*. Try: *{FIX}*.",
+    vi: "Tiếng Việt mình dùng **nhiều** với mọi danh từ. Tiếng Anh **much** chỉ đi với danh từ không đếm được; danh từ đếm được dùng **many** hoặc **a lot of**. *much books* → *many books*. Thử: *{FIX}*.",
+  },
+  vi_l1_some_vs_any: {
+    en: "Vietnamese **một số / chút** works in both positive and negative sentences. English has a clearer rule: **some** in positives, **any** in negatives and questions. *I don't have **some** money* → *I don't have **any** money*. Try: *{FIX}*.",
+    vi: "Tiếng Việt mình dùng **một số / chút** cho cả khẳng định lẫn phủ định. Tiếng Anh có quy tắc rõ: **some** trong khẳng định, **any** trong phủ định và câu hỏi. *I don't have **some** money* → *I don't have **any** money*. Thử: *{FIX}*.",
+  },
+  vi_l1_reflexive_missing: {
+    en: "Vietnamese often omits the reflexive. English needs **myself / yourself / himself …** when the subject acts on itself. *I hurt me* → *I hurt **myself***. Try: *{FIX}*.",
+    vi: "Tiếng Việt mình hay bỏ qua. Tiếng Anh cần **myself / yourself / himself …** khi chủ ngữ và tân ngữ là một. *I hurt me* → *I hurt **myself***. Thử: *{FIX}*.",
+  },
+  vi_l1_conditional_mix: {
+    en: "Vietnamese conditionals are flexible. English has strict forms — never use **will** inside the **if**-clause. *If I **will** have time* → *If I **have** time, I will come*. Try: *{FIX}*.",
+    vi: "Tiếng Việt mình dùng câu điều kiện linh hoạt. Tiếng Anh có quy tắc rõ: **không** dùng **will** trong mệnh đề **if**. *If I **will** have time* → *If I **have** time*. Thử: *{FIX}*.",
+  },
+  vi_l1_to_infinitive_after_ing: {
+    en: "Some English verbs are followed by **to + infinitive** (*decide to go*, *want to learn*). Vietnamese uses a simpler structure. *I want **going*** → *I want **to go***. Try: *{FIX}*.",
+    vi: "Một số động từ tiếng Anh theo sau bởi **to + động từ nguyên mẫu** (*decide to go*, *want to learn*). Tiếng Việt mình dùng cấu trúc đơn giản hơn. *I want **going*** → *I want **to go***. Thử: *{FIX}*.",
+  },
+  vi_l1_passive_missing_be: {
+    en: "Vietnamese passive uses **bị / được**. English passive always needs **be + past participle**. *This house built in 1990* → *This house **was built** in 1990*. Try: *{FIX}*.",
+    vi: "Tiếng Việt mình hay dùng **bị / được**. Tiếng Anh thể bị động luôn cần **be + V3**. *This house built in 1990* → *This house **was built** in 1990*. Thử: *{FIX}*.",
+  },
+  vi_l1_relative_pronoun: {
+    en: "Vietnamese uses one word **mà** for both. English splits: **who** for people, **which / that** for things. *The man **which** came* → *The man **who** came*. Try: *{FIX}*.",
+    vi: "Tiếng Việt mình nối ý bằng một từ **mà** cho cả người lẫn vật. Tiếng Anh phân biệt: **who** cho người, **which / that** cho vật. *The man **which** came* → *The man **who** came*. Thử: *{FIX}*.",
+  },
+  vi_l1_used_to_vs_be_used_to: {
+    en: "Vietnamese **thường** covers both 'past habit' and 'accustomed to'. English separates them: **used to + bare verb** = past habit; **be used to + -ing / noun** = accustomed. *I am used to smoke* → *I **used to** smoke*. Try: *{FIX}*.",
+    vi: "Tiếng Việt mình dùng **thường** cho cả 'thói quen cũ' và 'đã quen với'. Tiếng Anh tách rõ: **used to + V** (thói quen quá khứ) và **be used to + V-ing / danh từ** (đã quen). *I am used to smoke* → *I **used to** smoke*. Thử: *{FIX}*.",
+  },
+  vi_l1_another_vs_other: {
+    en: "Vietnamese **khác** is used broadly. English: **another** = one more (singular), **other** = the rest / additional. *I need **other** pen* → *I need **another** pen*. Try: *{FIX}*.",
+    vi: "Tiếng Việt mình dùng **khác** khá linh hoạt. Tiếng Anh phân biệt: **another** (một cái nữa, số ít), **other** (còn lại / khác). *I need **other** pen* → *I need **another** pen*. Thử: *{FIX}*.",
+  },
+  vi_l1_look_vs_see_vs_watch: {
+    en: "Vietnamese **nhìn** covers many situations. English has three different verbs: **look at** (direct attention), **see** (perceive), **watch** (follow movement). Here **{WRONG}** → **{RIGHT}**. Try: *{FIX}*.",
+    vi: "Tiếng Việt mình dùng **nhìn** cho nhiều tình huống. Tiếng Anh có ba động từ riêng biệt: **look at** (hướng mắt tới), **see** (trông thấy), **watch** (theo dõi chuyển động). Chỗ này **{WRONG}** → **{RIGHT}**. Thử: *{FIX}*.",
+  },
+  vi_l1_by_vs_with: {
+    en: "Vietnamese **bằng** works for both. English splits: **by** = method / agent (*by car*, *written **by** Chau*), **with** = tool / accompaniment (*written **with** a pen*). *{WRONG}* → *{RIGHT}*. Try: *{FIX}*.",
+    vi: "Tiếng Việt mình hay dùng **bằng** cho cả hai. Tiếng Anh phân biệt rõ: **by** (phương tiện / tác nhân), **with** (công cụ / đi cùng). *{WRONG}* → *{RIGHT}*. Thử: *{FIX}*.",
+  },
+  vi_l1_time_expressions: {
+    en: "Vietnamese time expressions are simpler. English picks the preposition by category: **in** the morning, **on** Monday, **at** 7 o'clock. *{USER_PREP}* → *{FIX_PREP}*. Try: *{FIX}*.",
+    vi: "Tiếng Việt mình đơn giản hơn. Tiếng Anh có quy tắc rõ: **in** buổi sáng, **on** thứ Hai, **at** 7 giờ. *{USER_PREP}* → *{FIX_PREP}*. Thử: *{FIX}*.",
   },
 };
 
@@ -399,6 +493,48 @@ const TO_TRIGGER_VERBS = new Set([
   'manage', 'afford', 'promise', 'intend', 'expect',
 ]);
 
+/**
+ * True if `token` is any conjugation of a TO_TRIGGER_VERBS base
+ * (she "wants" / "wanted" / "wanting" all count). Lets rule 11 stay on
+ * bare forms while rule 29 picks up inflections too.
+ */
+function isTriggerVerbForm(token: string): boolean {
+  if (TO_TRIGGER_VERBS.has(token)) return true;
+  if (token.endsWith('s') && TO_TRIGGER_VERBS.has(token.slice(0, -1))) return true;
+  if (token.endsWith('es') && TO_TRIGGER_VERBS.has(token.slice(0, -2))) return true;
+  if (token.endsWith('ed')) {
+    const strip2 = token.slice(0, -2);
+    if (TO_TRIGGER_VERBS.has(strip2)) return true;
+    // Consonant-doubled forms: "planned" → "plan", "preferred" → "prefer".
+    if (
+      strip2.length >= 2 &&
+      strip2[strip2.length - 1] === strip2[strip2.length - 2] &&
+      TO_TRIGGER_VERBS.has(strip2.slice(0, -1))
+    ) {
+      return true;
+    }
+  }
+  if (token.endsWith('d') && TO_TRIGGER_VERBS.has(token.slice(0, -1))) return true;
+  if (token.endsWith('ing')) {
+    const stem = token.slice(0, -3);
+    if (TO_TRIGGER_VERBS.has(stem)) return true;
+    if (TO_TRIGGER_VERBS.has(stem + 'e')) return true; // hoping → hope
+    // Consonant-doubled: "planning" → "plan", "beginning" → "begin"
+    if (
+      stem.length >= 2 &&
+      stem[stem.length - 1] === stem[stem.length - 2] &&
+      TO_TRIGGER_VERBS.has(stem.slice(0, -1))
+    ) {
+      return true;
+    }
+  }
+  if (token.endsWith('ied')) {
+    const stem = token.slice(0, -3) + 'y';
+    if (TO_TRIGGER_VERBS.has(stem)) return true;
+  }
+  return false;
+}
+
 /** Modals after which the main verb must stay bare. */
 const MODAL_VERBS = new Set([
   'can', 'could', 'will', 'would', 'should', 'shall',
@@ -482,6 +618,156 @@ const MAKE_DO_COLLOCATIONS: Array<{
   { wrongVerb: 'do',   rightVerb: 'have', rest: 'a party' },
 ];
 
+// ── v1.2 data ───────────────────────────────────────────────────────────────
+
+/**
+ * Common irregular past participles — used by rules 22 and 30 to spot
+ * "had + pp" and passive-voice "be + pp" constructions. Regular -ed
+ * participles are handled separately (they need a `by` agent to confirm
+ * passive intent, otherwise they could be adjectives like "tired").
+ */
+const IRREGULAR_PARTICIPLES = new Set([
+  'been', 'gone', 'done', 'seen', 'left', 'taken', 'given', 'written',
+  'spoken', 'eaten', 'drunk', 'sung', 'run', 'come', 'become', 'broken',
+  'chosen', 'fallen', 'forgotten', 'known', 'met', 'paid', 'put', 'read',
+  'said', 'sold', 'sent', 'set', 'shown', 'stood', 'thought', 'understood',
+  'worn', 'won', 'got', 'gotten', 'found', 'made', 'had', 'kept',
+  'felt', 'caught', 'brought', 'bought', 'taught', 'told',
+  'slept', 'heard', 'held', 'led', 'lost', 'meant',
+  // Additional common passive participles
+  'stolen', 'built', 'torn', 'flown', 'blown', 'grown', 'drawn',
+  'driven', 'ridden', 'hidden', 'beaten', 'lit', 'fed', 'bled',
+  'spent', 'swept', 'swung', 'hit', 'burst', 'cut', 'shut', 'cost',
+  'struck', 'arisen', 'awoken', 'forgiven', 'frozen',
+]);
+
+/**
+ * Returns true when tokens[idx] genuinely looks like a past participle
+ * *in a passive context* — either it's in the irregular set, or it's
+ * an -ed form that has a `by` agent downstream (canonical passive).
+ *
+ * This is narrower than "ends with -ed" because many adjectives end
+ * in -ed (tired, bored, excited) and we don't want rule 30 to fire on
+ * them, nor rule 4's guard to over-skip.
+ */
+function looksLikePassiveParticiple(tokens: string[], idx: number): boolean {
+  const word = tokens[idx];
+  if (!word) return false;
+  if (IRREGULAR_PARTICIPLES.has(word)) return true;
+  if (word.endsWith('ed') && word.length > 3) {
+    for (let j = idx + 1; j < tokens.length; j++) {
+      if (tokens[j] === 'by') return true;
+    }
+  }
+  return false;
+}
+
+/** Indicator words that strongly imply a past-perfect context (rule 22). */
+const PAST_PERFECT_CONTEXT_WORDS = new Set([
+  'when', 'before', 'after', 'already', 'just', 'by',
+]);
+
+/** Present-form verbs that shift back one tense when reported (rule 23). */
+const REPORTED_SHIFT: Record<string, string[]> = {
+  is:      ['was'],
+  are:     ['were'],
+  am:      ['was'],
+  has:     ['had'],
+  have:    ['had'],
+  do:      ['did'],
+  does:    ['did'],
+  will:    ['would'],
+  can:     ['could'],
+  may:     ['might'],
+};
+
+/** Reflexive-requiring verbs (subject acts on itself). */
+const REFLEXIVE_VERBS = new Set([
+  'enjoy', 'enjoyed', 'enjoys', 'enjoying',
+  'behave', 'behaved', 'behaves', 'behaving',
+  'hurt', 'hurts', 'hurting',
+  'introduce', 'introduced', 'introduces', 'introducing',
+  'pride', 'prided', 'prides',
+  'cut', 'cuts', 'cutting',
+  'help', 'helps', 'helped', 'helping',
+]);
+
+const REFLEXIVE_PRONOUNS = new Set([
+  'myself', 'yourself', 'himself', 'herself', 'itself',
+  'ourselves', 'yourselves', 'themselves',
+]);
+
+/**
+ * Look / see / watch collocation confusions. Each entry is
+ * (wrongVerbPhrase, rightVerbPhrase, rest) so the rule can walk
+ * verb conjugations at match time. `rest` is the object phrase.
+ */
+const LOOK_SEE_WATCH_COLLOCATIONS: Array<{
+  wrongVerb: 'look' | 'see' | 'watch';
+  rightVerb: 'look' | 'see' | 'watch' | 'look at';
+  rest: string;
+}> = [
+  { wrongVerb: 'see',   rightVerb: 'watch',   rest: 'tv' },
+  { wrongVerb: 'see',   rightVerb: 'watch',   rest: 'television' },
+  { wrongVerb: 'see',   rightVerb: 'watch',   rest: 'a movie' },
+  { wrongVerb: 'see',   rightVerb: 'watch',   rest: 'movies' },
+  { wrongVerb: 'see',   rightVerb: 'watch',   rest: 'the match' },
+  { wrongVerb: 'see',   rightVerb: 'watch',   rest: 'football' },
+  { wrongVerb: 'see',   rightVerb: 'watch',   rest: 'the game' },
+  { wrongVerb: 'see',   rightVerb: 'watch',   rest: 'a video' },
+  { wrongVerb: 'watch', rightVerb: 'look at', rest: 'the picture' },
+  { wrongVerb: 'watch', rightVerb: 'look at', rest: 'the photo' },
+  { wrongVerb: 'watch', rightVerb: 'look at', rest: 'the scenery' },
+  { wrongVerb: 'watch', rightVerb: 'see',     rest: 'the doctor' },
+  { wrongVerb: 'look',  rightVerb: 'see',     rest: 'a doctor' },
+  { wrongVerb: 'look',  rightVerb: 'watch',   rest: 'tv' },
+  { wrongVerb: 'look',  rightVerb: 'watch',   rest: 'a movie' },
+  { wrongVerb: 'look',  rightVerb: 'watch',   rest: 'movies' },
+  { wrongVerb: 'see',   rightVerb: 'look at', rest: 'the map' },
+  { wrongVerb: 'see',   rightVerb: 'look at', rest: 'this' },
+  { wrongVerb: 'watch', rightVerb: 'see',     rest: 'the point' },
+  { wrongVerb: 'see',   rightVerb: 'watch',   rest: 'the sunset' },
+];
+
+/** by / with transport + instrument swaps. */
+const BY_WITH_MISMATCHES: Array<{ wrong: string; right: string }> = [
+  { wrong: 'with car',   right: 'by car' },
+  { wrong: 'with bus',   right: 'by bus' },
+  { wrong: 'with train', right: 'by train' },
+  { wrong: 'with plane', right: 'by plane' },
+  { wrong: 'with bike',  right: 'by bike' },
+  { wrong: 'by foot',    right: 'on foot' },
+  { wrong: 'with foot',  right: 'on foot' },
+  { wrong: 'by pen',     right: 'with a pen' },
+  { wrong: 'by pencil',  right: 'with a pencil' },
+  { wrong: 'by hand',    right: 'by hand' }, // correct; excluded below
+];
+
+/** Time-preposition mismatches beyond the weekday case rule 9 already handles. */
+const TIME_PREP_MISMATCHES: Array<{ wrong: string; right: string }> = [
+  { wrong: 'on 2020',  right: 'in 2020' },
+  { wrong: 'on 2021',  right: 'in 2021' },
+  { wrong: 'on 2022',  right: 'in 2022' },
+  { wrong: 'on 2023',  right: 'in 2023' },
+  { wrong: 'on 2024',  right: 'in 2024' },
+  { wrong: 'on 2025',  right: 'in 2025' },
+  { wrong: 'on 2026',  right: 'in 2026' },
+  { wrong: 'at morning',   right: 'in the morning' },
+  { wrong: 'at afternoon', right: 'in the afternoon' },
+  { wrong: 'at evening',   right: 'in the evening' },
+  { wrong: 'on night',     right: 'at night' },
+  { wrong: 'in night',     right: 'at night' },
+  { wrong: 'at weekend',   right: 'on the weekend' },
+  { wrong: 'in weekend',   right: 'on the weekend' },
+  { wrong: 'in monday',    right: 'on monday' },
+  { wrong: 'in tuesday',   right: 'on tuesday' },
+  { wrong: 'in wednesday', right: 'on wednesday' },
+  { wrong: 'in thursday',  right: 'on thursday' },
+  { wrong: 'in friday',    right: 'on friday' },
+  { wrong: 'in saturday',  right: 'on saturday' },
+  { wrong: 'in sunday',    right: 'on sunday' },
+];
+
 // ────────────────────────────────────────────────────────────────────────────
 // Rule implementations (pure functions — no I/O, no side effects)
 // ────────────────────────────────────────────────────────────────────────────
@@ -556,6 +842,17 @@ const ruleMissingBe: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
 
   for (let i = 0; i < expectedTokens.length; i++) {
     if (!BE_VERBS.has(expectedTokens[i])) continue;
+
+    // Guard: defer to rule 30 (passive_missing_be) when the token AFTER the
+    // be-verb is a REAL past participle (irregular set, or -ed with a
+    // downstream `by` agent). Bare -ed adjectives like "tired" / "bored"
+    // stay here in rule 4.
+    if (looksLikePassiveParticiple(expectedTokens, i + 1)) continue;
+    // Guard: defer to rule 32 (used_to_vs_be_used_to) when we're inside the
+    // "be used to …" construction (accustomed meaning).
+    const next = expectedTokens[i + 1];
+    if (next === 'used' && expectedTokens[i + 2] === 'to') continue;
+
     const withoutBe = expectedTokens.slice(0, i).concat(expectedTokens.slice(i + 1));
     if (
       withoutBe.length === userTokens.length &&
@@ -920,6 +1217,434 @@ const ruleTagQuestion: Rule = ({ userText, rawExpected, expectedText }) => {
   return { tag: 'vi_l1_tag_question', replacements: { FIX: rawExpected } };
 };
 
+// ── v1.2 rules ─────────────────────────────────────────────────────────────
+
+/**
+ * 22. Past perfect missing — expected has `had + past-participle` at a
+ * position where user has just the bare past. Gated by a past-perfect
+ * context word (when / before / after / already / just) in either side
+ * to keep the false-positive rate low.
+ */
+const rulePastPerfectMissing: Rule = ({
+  userTokens, expectedTokens, rawExpected,
+}) => {
+  if (expectedTokens.length !== userTokens.length + 1) return null;
+
+  const hasContext =
+    userTokens.some((t) => PAST_PERFECT_CONTEXT_WORDS.has(t)) ||
+    expectedTokens.some((t) => PAST_PERFECT_CONTEXT_WORDS.has(t));
+  if (!hasContext) return null;
+
+  for (let i = 0; i < expectedTokens.length - 1; i++) {
+    if (expectedTokens[i] !== 'had') continue;
+    const next = expectedTokens[i + 1];
+    const isPp =
+      (next.endsWith('ed') && next.length > 3) ||
+      IRREGULAR_PARTICIPLES.has(next);
+    if (!isPp) continue;
+    // Confirm: expected with this `had` removed equals user.
+    const withoutHad = expectedTokens.slice(0, i).concat(expectedTokens.slice(i + 1));
+    if (
+      withoutHad.length === userTokens.length &&
+      withoutHad.every((t, j) => t === userTokens[j])
+    ) {
+      return {
+        tag: 'vi_l1_past_perfect_missing',
+        replacements: { FIX: rawExpected },
+      };
+    }
+  }
+  return null;
+};
+
+/**
+ * 23. Reported speech — after `said`, present-tense verbs should shift
+ * one step back. User keeps present; expected has past.
+ */
+const ruleReportedSpeech: Rule = ({
+  userTokens, expectedTokens, rawExpected,
+}) => {
+  if (userTokens.length !== expectedTokens.length) return null;
+  const saidIdx = userTokens.indexOf('said');
+  if (saidIdx < 0) return null;
+
+  for (let i = saidIdx + 1; i < userTokens.length; i++) {
+    const u = userTokens[i];
+    const e = expectedTokens[i];
+    if (u === e) continue;
+    const targets = REPORTED_SHIFT[u];
+    if (targets && targets.includes(e)) {
+      return { tag: 'vi_l1_reported_speech', replacements: { FIX: rawExpected } };
+    }
+  }
+  return null;
+};
+
+/**
+ * 24. Since vs for — user says "for YYYY" (year-as-duration) or "since
+ * N years" (duration-as-start-point). Swap.
+ */
+const ruleSinceVsFor: Rule = ({
+  userTokens, expectedTokens, rawExpected,
+}) => {
+  const len = Math.min(userTokens.length, expectedTokens.length);
+  for (let i = 0; i < len; i++) {
+    const u = userTokens[i];
+    const e = expectedTokens[i];
+    if (u === e) continue;
+    if ((u === 'for' && e === 'since') || (u === 'since' && e === 'for')) {
+      return {
+        tag: 'vi_l1_since_vs_for',
+        replacements: {
+          FIX: rawExpected,
+          USER_WORD: u,
+          FIX_WORD: e,
+        },
+      };
+    }
+  }
+  return null;
+};
+
+/**
+ * 25. many / much confusion — user pairs `much` with a plural, or `many`
+ * with an uncountable. Expected swaps the quantifier.
+ */
+const ruleCountableMuch: Rule = ({
+  userTokens, expectedTokens, rawExpected,
+}) => {
+  if (userTokens.length !== expectedTokens.length) return null;
+  for (let i = 0; i < userTokens.length - 1; i++) {
+    const u = userTokens[i];
+    const e = expectedTokens[i];
+    if (u === e) continue;
+    if (!((u === 'much' && e === 'many') || (u === 'many' && e === 'much'))) {
+      continue;
+    }
+    const nextU = userTokens[i + 1];
+    const nextE = expectedTokens[i + 1];
+    if (nextU !== nextE) continue; // noun unchanged — just the quantifier is wrong
+
+    // Extra guard: the noun should actually support the swap direction.
+    const nounLooksPlural = nextU.endsWith('s') && !UNCOUNTABLE_NOUNS.has(nextU);
+    const nounLooksUncount = UNCOUNTABLE_NOUNS.has(nextU);
+    if (u === 'much' && e === 'many' && nounLooksPlural) {
+      return { tag: 'vi_l1_countable_much', replacements: { FIX: rawExpected } };
+    }
+    if (u === 'many' && e === 'much' && nounLooksUncount) {
+      return { tag: 'vi_l1_countable_much', replacements: { FIX: rawExpected } };
+    }
+  }
+  return null;
+};
+
+/** 26. Some → any in questions / negatives. */
+const ruleSomeVsAny: Rule = ({
+  userTokens, expectedTokens, userText, rawExpected,
+}) => {
+  if (userTokens.length !== expectedTokens.length) return null;
+  const isQuestionLike =
+    /\?\s*$/.test(userText) ||
+    userTokens.includes('not') ||
+    userTokens.some((t) => DO_AUX_SET.has(t));
+  if (!isQuestionLike) return null;
+
+  for (let i = 0; i < userTokens.length; i++) {
+    if (userTokens[i] !== 'some') continue;
+    if (expectedTokens[i] !== 'any') continue;
+    return { tag: 'vi_l1_some_vs_any', replacements: { FIX: rawExpected } };
+  }
+  return null;
+};
+
+/** 27. Reflexive pronoun missing after a reflexive-requiring verb. */
+const ruleReflexiveMissing: Rule = ({
+  userTokens, expectedTokens, rawExpected,
+}) => {
+  // Expected is exactly one token longer — the missing reflexive pronoun.
+  if (expectedTokens.length !== userTokens.length + 1) return null;
+  for (let i = 0; i < expectedTokens.length; i++) {
+    if (!REFLEXIVE_PRONOUNS.has(expectedTokens[i])) continue;
+    if (i === 0) continue;
+    // The reflexive must follow a reflexive-requiring verb within 2 positions.
+    const ctxStart = Math.max(0, i - 3);
+    let verbFound = false;
+    for (let j = ctxStart; j < i; j++) {
+      if (REFLEXIVE_VERBS.has(expectedTokens[j])) { verbFound = true; break; }
+    }
+    if (!verbFound) continue;
+
+    const withoutPronoun = expectedTokens.slice(0, i).concat(expectedTokens.slice(i + 1));
+    if (
+      withoutPronoun.length === userTokens.length &&
+      withoutPronoun.every((t, j) => t === userTokens[j])
+    ) {
+      return {
+        tag: 'vi_l1_reflexive_missing',
+        replacements: { FIX: rawExpected },
+      };
+    }
+  }
+  return null;
+};
+
+/** 28. `will` appearing inside an if-clause. */
+const ruleConditionalMix: Rule = ({
+  userTokens, expectedTokens, rawExpected,
+}) => {
+  const ifIdx = userTokens.indexOf('if');
+  if (ifIdx < 0) return null;
+
+  // Scan the stretch from `if` up to the next comma-ish boundary for `will`.
+  // We approximate "clause" as the next ~6 tokens after `if`.
+  const clauseEnd = Math.min(userTokens.length, ifIdx + 6);
+  for (let i = ifIdx + 1; i < clauseEnd; i++) {
+    if (userTokens[i] !== 'will') continue;
+    // Expected must NOT contain `will` at the same index.
+    if (expectedTokens[i] === 'will') continue;
+    return {
+      tag: 'vi_l1_conditional_mix',
+      replacements: { FIX: rawExpected },
+    };
+  }
+  return null;
+};
+
+/** 29. -ing form after `want/need/hope` (should be bare infinitive with `to`). */
+const ruleToInfinitiveAfterIng: Rule = ({
+  userTokens, expectedTokens, rawExpected,
+}) => {
+  for (let i = 1; i < userTokens.length; i++) {
+    const prev = userTokens[i - 1];
+    // Accept any conjugated form of a trigger verb ("needs", "wanted", …)
+    if (!isTriggerVerbForm(prev)) continue;
+    const u = userTokens[i];
+    if (!u.endsWith('ing') || u.length <= 4) continue;
+    const baseGuess = u.slice(0, -3);
+    // Expected should have `to + baseGuess` somewhere downstream.
+    const idx = expectedTokens.indexOf('to');
+    if (idx < 0) return null;
+    if (expectedTokens[idx + 1] !== baseGuess && expectedTokens[idx + 1] !== baseGuess + 'e') {
+      continue;
+    }
+    return {
+      tag: 'vi_l1_to_infinitive_after_ing',
+      replacements: { FIX: rawExpected },
+    };
+  }
+  return null;
+};
+
+/** 30. Passive voice missing `be` before the past participle. */
+const rulePassiveMissingBe: Rule = ({
+  userTokens, expectedTokens, rawExpected,
+}) => {
+  // Expected inserts a be-verb (was/were/is/are) that user lacks.
+  if (expectedTokens.length !== userTokens.length + 1) return null;
+
+  for (let i = 0; i < expectedTokens.length - 1; i++) {
+    if (!BE_VERBS.has(expectedTokens[i])) continue;
+    // Guard: "be used to" is idiomatic — defer to rule 32.
+    const next = expectedTokens[i + 1];
+    if (next === 'used' && expectedTokens[i + 2] === 'to') continue;
+
+    if (!looksLikePassiveParticiple(expectedTokens, i + 1)) continue;
+
+    const withoutBe = expectedTokens.slice(0, i).concat(expectedTokens.slice(i + 1));
+    if (
+      withoutBe.length === userTokens.length &&
+      withoutBe.every((t, j) => t === userTokens[j])
+    ) {
+      return {
+        tag: 'vi_l1_passive_missing_be',
+        replacements: { FIX: rawExpected },
+      };
+    }
+  }
+  return null;
+};
+
+/** 31. `which` used where `who` is correct (people antecedent). */
+const ruleRelativePronoun: Rule = ({
+  userTokens, expectedTokens, rawExpected,
+}) => {
+  const PEOPLE_NOUNS = new Set([
+    'man', 'woman', 'boy', 'girl', 'teacher', 'student', 'doctor',
+    'friend', 'brother', 'sister', 'mother', 'father', 'child',
+    'people', 'person', 'neighbor', 'boss', 'colleague', 'guy',
+  ]);
+  if (userTokens.length !== expectedTokens.length) return null;
+  for (let i = 1; i < userTokens.length; i++) {
+    const u = userTokens[i];
+    const e = expectedTokens[i];
+    if (u === e) continue;
+    if (u === 'which' && e === 'who') {
+      // Prev token should be a person noun (and the/a/an before it).
+      const prev1 = userTokens[i - 1];
+      const prev2 = i >= 2 ? userTokens[i - 2] : '';
+      if (PEOPLE_NOUNS.has(prev1) || PEOPLE_NOUNS.has(prev2)) {
+        return {
+          tag: 'vi_l1_relative_pronoun',
+          replacements: { FIX: rawExpected },
+        };
+      }
+    }
+  }
+  return null;
+};
+
+/** 32. used to vs be used to confusion (two distinct patterns). */
+const ruleUsedToVsBeUsedTo: Rule = ({
+  userTokens, expectedTokens, userText, rawExpected,
+}) => {
+  // Pattern A: user has "am/is/are used to + bare verb"; expected has
+  //            "used to + bare verb" (past habit).
+  // Pattern B: user has "used to + -ing / noun"; expected has
+  //            "am/is/are used to + -ing" (accustomed).
+  const userLower = userText.toLowerCase();
+  const expectedLower = (expectedTokens || []).join(' ');
+
+  // Pattern A: "(am|is|are) used to <bareVerb>"
+  const aMatch = /\b(am|is|are)\s+used\s+to\s+(\w+)/i.exec(userLower);
+  if (aMatch) {
+    const afterTo = aMatch[2];
+    if (!afterTo.endsWith('ing')) {
+      // Expected should have "used to <same bare verb>" without the be-verb.
+      if (new RegExp(`\\bused\\s+to\\s+${afterTo}\\b`, 'i').test(expectedLower)) {
+        return {
+          tag: 'vi_l1_used_to_vs_be_used_to',
+          replacements: { FIX: rawExpected },
+        };
+      }
+    }
+  }
+
+  // Pattern B: "used to <-ing>" — expected has "(am|is|are) used to <-ing>"
+  const bMatch = /\bused\s+to\s+(\w+ing)\b/i.exec(userLower);
+  if (bMatch) {
+    const gerund = bMatch[1];
+    if (new RegExp(`\\b(am|is|are)\\s+used\\s+to\\s+${gerund}\\b`, 'i').test(expectedLower)) {
+      return {
+        tag: 'vi_l1_used_to_vs_be_used_to',
+        replacements: { FIX: rawExpected },
+      };
+    }
+  }
+  return null;
+};
+
+/** 33. `other` where `another` is correct. */
+const ruleAnotherVsOther: Rule = ({
+  userText, userTokens, expectedTokens, rawExpected,
+}) => {
+  const userLower = userText.toLowerCase();
+  // User says "other one more", "one other", "other one" in a singular slot.
+  if (!/\bother\b/.test(userLower)) return null;
+
+  // Expected has "another" where user has "other".
+  if (userTokens.length !== expectedTokens.length) return null;
+  for (let i = 0; i < userTokens.length; i++) {
+    if (userTokens[i] === 'other' && expectedTokens[i] === 'another') {
+      return {
+        tag: 'vi_l1_another_vs_other',
+        replacements: { FIX: rawExpected },
+      };
+    }
+  }
+  return null;
+};
+
+/** 34. look / see / watch collocation confusion. Walks verb conjugations. */
+const ruleLookSeeWatch: Rule = ({ userText, rawExpected, expectedText }) => {
+  const LOOK_FORMS  = ['look', 'looks', 'looked', 'looking'];
+  const SEE_FORMS   = ['see', 'sees', 'saw', 'seen', 'seeing'];
+  const WATCH_FORMS = ['watch', 'watches', 'watched', 'watching'];
+  const formsOf = (v: 'look' | 'see' | 'watch' | 'look at'): readonly string[] => {
+    if (v === 'look') return LOOK_FORMS;
+    if (v === 'see') return SEE_FORMS;
+    if (v === 'watch') return WATCH_FORMS;
+    return LOOK_FORMS.map((f) => `${f} at`);
+  };
+
+  const userLower = userText.toLowerCase();
+  const expectedLower = expectedText.toLowerCase();
+
+  for (const pair of LOOK_SEE_WATCH_COLLOCATIONS) {
+    const wrongForms = formsOf(pair.wrongVerb);
+    const rightForms = formsOf(pair.rightVerb);
+
+    let userHit: { form: string } | null = null;
+    for (const f of wrongForms) {
+      if (userLower.includes(`${f} ${pair.rest}`)) {
+        userHit = { form: f };
+        break;
+      }
+    }
+    if (!userHit) continue;
+
+    let expectedHit: { form: string } | null = null;
+    for (const f of rightForms) {
+      if (expectedLower.includes(`${f} ${pair.rest}`)) {
+        expectedHit = { form: f };
+        break;
+      }
+    }
+    if (!expectedHit) continue;
+
+    return {
+      tag: 'vi_l1_look_vs_see_vs_watch',
+      replacements: {
+        FIX: rawExpected,
+        WRONG: `${userHit.form} ${pair.rest}`,
+        RIGHT: `${expectedHit.form} ${pair.rest}`,
+      },
+    };
+  }
+  return null;
+};
+
+/** 35. by / with confusion on transport / instrument. */
+const ruleByVsWith: Rule = ({ userText, expectedText, rawExpected }) => {
+  const userLower = userText.toLowerCase();
+  const expectedLower = expectedText.toLowerCase();
+  for (const m of BY_WITH_MISMATCHES) {
+    if (m.wrong === m.right) continue; // skip the correct-entry guard
+    if (userLower.includes(m.wrong) && expectedLower.includes(m.right)) {
+      return {
+        tag: 'vi_l1_by_vs_with',
+        replacements: {
+          FIX: rawExpected,
+          WRONG: m.wrong,
+          RIGHT: m.right,
+        },
+      };
+    }
+  }
+  return null;
+};
+
+/** 36. Time preposition mismatches (year, parts of day, weekday). */
+const ruleTimeExpressions: Rule = ({ userText, expectedText, rawExpected }) => {
+  const userLower = userText.toLowerCase();
+  const expectedLower = expectedText.toLowerCase();
+  for (const m of TIME_PREP_MISMATCHES) {
+    if (userLower.includes(m.wrong) && expectedLower.includes(m.right)) {
+      // Extract a short USER_PREP / FIX_PREP pair for the feedback template.
+      const userPrep = m.wrong.split(/\s+/)[0];
+      const fixPrep = m.right.split(/\s+/)[0];
+      return {
+        tag: 'vi_l1_time_expressions',
+        replacements: {
+          FIX: rawExpected,
+          USER_PREP: userPrep,
+          FIX_PREP: fixPrep,
+        },
+      };
+    }
+  }
+  return null;
+};
+
 // ────────────────────────────────────────────────────────────────────────────
 // Registry — fixed priority order. First match wins.
 // ────────────────────────────────────────────────────────────────────────────
@@ -928,8 +1653,16 @@ const RULE_REGISTRY: Rule[] = [
   ruleThirdPersonS,          // 1
   rulePastEd,                // 2
   rulePluralS,               // 3
+  // 30 runs BEFORE 4 so "the cake eaten" → "the cake was eaten" lands
+  // on passive-voice feedback instead of generic missing-be.
+  rulePassiveMissingBe,      // 30
   ruleMissingBe,             // 4
   ruleQuestionNoAux,         // 5
+  // 35 + 36 run BEFORE 6 + 9 so specific by/with and time-preposition
+  // patterns win over the general "missing article" / "preposition swap"
+  // rules when there's an overlap.
+  ruleByVsWith,              // 35
+  ruleTimeExpressions,       // 36
   ruleMissingArticle,        // 6
   rulePossessiveGender,      // 8
   rulePrepositionTransfer,   // 9
@@ -945,6 +1678,18 @@ const RULE_REGISTRY: Rule[] = [
   ruleEveryonePlural,        // 19
   ruleMakeVsDo,              // 20
   ruleTagQuestion,           // 21
+  rulePastPerfectMissing,    // 22
+  ruleReportedSpeech,        // 23
+  ruleConditionalMix,        // 28
+  ruleToInfinitiveAfterIng,  // 29
+  ruleReflexiveMissing,      // 27
+  ruleUsedToVsBeUsedTo,      // 32
+  ruleRelativePronoun,       // 31
+  ruleSomeVsAny,             // 26
+  ruleCountableMuch,         // 25
+  ruleSinceVsFor,            // 24
+  ruleAnotherVsOther,        // 33
+  ruleLookSeeWatch,          // 34
 ];
 
 // ────────────────────────────────────────────────────────────────────────────
