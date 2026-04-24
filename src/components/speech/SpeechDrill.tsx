@@ -13,7 +13,7 @@
 // a calm pulsing mic and a "listening" label.
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Mic, MicOff, RefreshCw, ArrowRight } from 'lucide-react';
+import { Mic, MicOff, RefreshCw, ArrowRight, Volume2 } from 'lucide-react';
 
 import {
   isSpeechRecognitionSupported,
@@ -27,6 +27,11 @@ import {
   type WordScore,
   type WordStatus,
 } from '@/lib/pronunciation/scorer';
+import {
+  speak as ttsSpeak,
+  cancelSpeech as ttsCancel,
+  isSupported as ttsSupported,
+} from '@/lib/pronunciation/tts';
 
 export type DrillState = 'unsupported' | 'idle' | 'listening' | 'scoring' | 'result' | 'error';
 
@@ -262,6 +267,7 @@ export function SpeechDrill({
   // doesn't have SpeechRecognition, the entire component body renders
   // the fallback instead of the mic/result chrome.
   const supported = useMemo(() => isSpeechRecognitionSupported(), []);
+  const ttsAvailable = useMemo(() => ttsSupported(), []);
 
   const [state, setState] = useState<DrillState>(supported ? 'idle' : 'unsupported');
   const [score, setScore] = useState<ScoreResult | null>(null);
@@ -370,6 +376,10 @@ export function SpeechDrill({
         {targetSentenceVi ? <p style={targetViStyle}>{targetSentenceVi}</p> : null}
       </div>
 
+      {ttsAvailable ? (
+        <ListenControls text={targetSentence} />
+      ) : null}
+
       <button
         type="button"
         aria-label={state === 'listening' ? 'Listening' : 'Start recording'}
@@ -400,7 +410,11 @@ export function SpeechDrill({
       </div>
 
       {state === 'result' && score ? (
-        <ResultBlock score={score} onPracticeWord={onPracticeWord} />
+        <ResultBlock
+          score={score}
+          onPracticeWord={onPracticeWord}
+          ttsAvailable={ttsAvailable}
+        />
       ) : null}
 
       {state === 'result' || state === 'error' ? (
@@ -453,9 +467,11 @@ export function SpeechDrill({
 function ResultBlock({
   score,
   onPracticeWord,
+  ttsAvailable,
 }: {
   score: ScoreResult;
   onPracticeWord?: (word: string) => void;
+  ttsAvailable: boolean;
 }) {
   return (
     <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 14 }}>
@@ -475,7 +491,7 @@ function ResultBlock({
         </span>
       </div>
 
-      <WordRow words={score.wordScores} />
+      <WordRow words={score.wordScores} ttsAvailable={ttsAvailable} />
 
       <div style={{ fontSize: 14, lineHeight: 1.55, color: '#475569' }}>
         {score.feedback.en}
@@ -663,7 +679,7 @@ function PhonemeFeedbackSection({
   );
 }
 
-function WordRow({ words }: { words: WordScore[] }) {
+function WordRow({ words, ttsAvailable }: { words: WordScore[]; ttsAvailable: boolean }) {
   return (
     <div
       style={{
@@ -677,10 +693,18 @@ function WordRow({ words }: { words: WordScore[] }) {
       {words.map((w, i) => {
         const color = wordColor(w.status);
         const showStrike = w.status === 'missed';
+        const label = w.word || w.heard || '—';
+        // Per-word Listen only for target words the learner didn't get right.
+        // Extra heard slots (empty target) have nothing useful to play back.
+        const showWordListen =
+          ttsAvailable && !!w.word && w.status !== 'correct';
         return (
           <span
             key={`${w.word}-${i}`}
             style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 4,
               fontSize: 15,
               fontWeight: 700,
               color,
@@ -693,10 +717,167 @@ function WordRow({ words }: { words: WordScore[] }) {
             title={w.hint ? `${w.hint.en} · ${w.hint.vi}` : undefined}
             data-status={w.status}
           >
-            {w.word || w.heard || '—'}
+            {label}
+            {showWordListen ? (
+              <button
+                type="button"
+                aria-label={`Listen to ${w.word}`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  void ttsSpeak({ text: w.word, rate: 0.8 });
+                }}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: 'transparent',
+                  border: 'none',
+                  padding: 0,
+                  marginLeft: 2,
+                  cursor: 'pointer',
+                  color,
+                  opacity: 0.78,
+                }}
+                data-word-listen={w.word}
+              >
+                <Volume2 size={14} aria-hidden />
+              </button>
+            ) : null}
           </span>
         );
       })}
+    </div>
+  );
+}
+
+// ── Listen button: tap = 0.8x, long press = 0.5x ─────────────────
+
+const LONG_PRESS_MS = 350;
+
+const listenPrimaryBtn: React.CSSProperties = {
+  display: 'inline-flex',
+  alignItems: 'center',
+  gap: 8,
+  background: 'white',
+  color: 'rgba(0,0,0,0.82)',
+  border: '1px solid rgba(0,0,0,0.14)',
+  borderRadius: 9999,
+  padding: '10px 18px',
+  fontSize: 14,
+  fontWeight: 800,
+  cursor: 'pointer',
+  fontFamily: 'inherit',
+  minHeight: 40,
+  userSelect: 'none',
+  touchAction: 'manipulation',
+};
+
+const listenGhostLink: React.CSSProperties = {
+  background: 'none',
+  border: 'none',
+  color: '#64748b',
+  fontSize: 12,
+  fontWeight: 700,
+  cursor: 'pointer',
+  padding: '4px 6px',
+  marginTop: 2,
+  fontFamily: 'inherit',
+};
+
+function ListenControls({
+  text,
+  onPlaying,
+}: {
+  text: string;
+  onPlaying?: (playing: boolean) => void;
+}) {
+  const longPressTimer = useRef<number | null>(null);
+  const longPressTriggered = useRef(false);
+
+  const play = useCallback(
+    async (rate: number) => {
+      try {
+        onPlaying?.(true);
+        await ttsSpeak({ text, rate });
+      } catch (err) {
+        console.warn('[SpeechDrill] TTS playback failed:', err);
+      } finally {
+        onPlaying?.(false);
+      }
+    },
+    [text, onPlaying],
+  );
+
+  const cancelTimer = () => {
+    if (longPressTimer.current !== null) {
+      clearTimeout(longPressTimer.current);
+      longPressTimer.current = null;
+    }
+  };
+
+  const handlePointerDown: React.PointerEventHandler<HTMLButtonElement> = () => {
+    longPressTriggered.current = false;
+    cancelTimer();
+    longPressTimer.current = window.setTimeout(() => {
+      longPressTriggered.current = true;
+      void play(0.5);
+    }, LONG_PRESS_MS);
+  };
+
+  const handlePointerUp: React.PointerEventHandler<HTMLButtonElement> = () => {
+    const wasLongPress = longPressTriggered.current;
+    cancelTimer();
+    if (!wasLongPress) void play(0.8);
+    longPressTriggered.current = false;
+  };
+
+  const handlePointerCancel: React.PointerEventHandler<HTMLButtonElement> = () => {
+    cancelTimer();
+    longPressTriggered.current = false;
+  };
+
+  useEffect(() => () => {
+    cancelTimer();
+    // Make sure playback doesn't outlive the component.
+    ttsCancel();
+  }, []);
+
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: 2,
+      }}
+    >
+      <button
+        type="button"
+        aria-label="Listen"
+        onPointerDown={handlePointerDown}
+        onPointerUp={handlePointerUp}
+        onPointerLeave={handlePointerCancel}
+        onPointerCancel={handlePointerCancel}
+        // Prevent the browser's built-in context menu on long press
+        // (otherwise mobile Safari steals the gesture).
+        onContextMenu={(e) => e.preventDefault()}
+        style={listenPrimaryBtn}
+        data-testid="tts-listen-primary"
+      >
+        <Volume2 size={16} aria-hidden />
+        Listen
+        <span style={{ fontSize: 11, fontWeight: 500, color: '#94a3b8', marginLeft: 4 }}>
+          · Nghe
+        </span>
+      </button>
+      <button
+        type="button"
+        onClick={() => void play(0.5)}
+        style={listenGhostLink}
+        data-testid="tts-listen-slow"
+      >
+        Listen slowly · Nghe chậm
+      </button>
     </div>
   );
 }
