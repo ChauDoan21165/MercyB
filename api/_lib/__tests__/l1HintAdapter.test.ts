@@ -1,7 +1,9 @@
 // Regression tests for the defensive behaviour of firstL1HintFromIssues.
-// Grammar API serverless function returned 500 in production (PR #19 was
-// the prime suspect). This suite proves the adapter never throws when
-// upstream (OpenAI JSON parse, malformed issues[]) feeds it junk.
+// Grammar API serverless function returned 500 in production — the real
+// root cause was Vercel's bundler failing on the old server/mercy/
+// import path (see fix/grammar-api-import-path, which moved this file
+// to api/_lib/). This suite also locks in the defensive handling of
+// junk inputs so no malformed OpenAI response can re-break the endpoint.
 
 import { describe, expect, it } from 'vitest';
 import { firstL1HintFromIssues } from '../l1HintAdapter';
