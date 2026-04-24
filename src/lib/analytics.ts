@@ -5,6 +5,7 @@ export type AnalyticsEventName =
   | "checkout_started"
   | "checkout_completed"
   | "entitlement_success"
+  | "l1_hint_learn_more_clicked"
   | `paywall_shown_${string}`;
 
 export type AnalyticsPayload = Record<string, unknown>;
