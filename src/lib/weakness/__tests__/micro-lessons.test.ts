@@ -17,6 +17,7 @@ import {
 import { isKnownWeaknessTag } from "../weakness-catalog";
 
 const EXPECTED_TAGS = [
+  // Original 10 (MICRO_LESSONS v1)
   "vi_l1_3rd_person_s",
   "vi_l1_past_ed",
   "vi_l1_plural_s",
@@ -27,6 +28,28 @@ const EXPECTED_TAGS = [
   "vi_l1_comparative_double",
   "vi_l1_everyone_plural",
   "vi_l1_make_vs_do",
+  // Round 5 expansion (+20) — must stay in sync with MICRO_LESSONS in
+  // src/lib/weakness/micro-lessons.ts.
+  "vi_l1_question_no_aux",
+  "vi_l1_possessive_gender",
+  "vi_l1_preposition_transfer",
+  "vi_l1_countable",
+  "vi_l1_can_no_infinitive",
+  "vi_l1_possessive_s_missing",
+  "vi_l1_adjective_order",
+  "vi_l1_very_much_placement",
+  "vi_l1_there_are_singular",
+  "vi_l1_tag_question",
+  "vi_l1_past_perfect_missing",
+  "vi_l1_reported_speech",
+  "vi_l1_since_vs_for",
+  "vi_l1_countable_much",
+  "vi_l1_some_vs_any",
+  "vi_l1_reflexive_missing",
+  "vi_l1_conditional_mix",
+  "vi_l1_to_infinitive_after_ing",
+  "vi_l1_passive_missing_be",
+  "vi_l1_relative_pronoun",
 ];
 
 function allLessons(): MicroLesson[] {
@@ -38,9 +61,9 @@ function allLessons(): MicroLesson[] {
 }
 
 describe("MICRO_LESSONS shape", () => {
-  it("ships lessons for the 10 highest-impact tags", () => {
+  it("ships lessons for the 30 target tags (10 original + 20 Round 5)", () => {
     expect([...MICRO_LESSON_TAGS].sort()).toEqual([...EXPECTED_TAGS].sort());
-    expect(MICRO_LESSON_TAGS.length).toBe(10);
+    expect(MICRO_LESSON_TAGS.length).toBe(30);
   });
 
   it("every lesson tag exists in WEAKNESS_CATALOG", () => {
@@ -127,8 +150,9 @@ describe("getMicroLesson", () => {
   });
 
   it("returns null for a catalog tag that has no lesson", () => {
-    // vi_l1_tag_question is in the catalog but NOT in MICRO_LESSONS.
-    expect(getMicroLesson("vi_l1_tag_question")).toBeNull();
+    // vi_l1_used_to_vs_be_used_to is in the catalog but NOT in MICRO_LESSONS
+    // (Round 5 left it uncovered; re-check after CC3's new rules land).
+    expect(getMicroLesson("vi_l1_used_to_vs_be_used_to")).toBeNull();
   });
 
   it("returns null for a completely unknown tag", () => {
