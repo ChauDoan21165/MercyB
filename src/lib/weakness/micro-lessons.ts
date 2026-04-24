@@ -64,12 +64,12 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
   vi_l1_3rd_person_s: {
     tag: "vi_l1_3rd_person_s",
     title: {
-      en: "Add **-s** after he, she, it",
-      vi: "Thêm **-s** sau he, she, it",
+      en: "Add **-s** for he/she/it",
+      vi: "Thêm **-s** cho he/she/it",
     },
     concept: {
-      en: "Vietnamese verbs don't change by person — **tôi đi**, **cô ấy đi** both use the same verb. In English, when the subject is **he**, **she**, or **it**, the present-tense verb takes an **-s**: **he goes**, **she works**, **it runs**.",
-      vi: "Động từ tiếng Việt không đổi theo ngôi — **tôi đi**, **cô ấy đi** cùng một động từ. Trong tiếng Anh, khi chủ ngữ là **he**, **she**, **it**, động từ ở thì hiện tại phải thêm **-s**: **he goes**, **she works**, **it runs**.",
+      en: "Vietnamese verbs never change form. In English, we add **-s** (or **-es**) when the subject is he, she, or it.",
+      vi: "Tiếng Việt động từ không đổi. Tiếng Anh phải thêm **-s** (hoặc **-es**) khi chủ ngữ là he, she, it.",
     },
     examples: [
       {
@@ -119,8 +119,8 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
       { prompt: "My mother ___ (teach) English.", answer: "teaches" },
     ],
     tip: {
-      en: "**He / She / It → verb + s.** If you can swap the subject for **he**, the verb needs an **-s**.",
-      vi: "**He / She / It → động từ + s.** Nếu đổi chủ ngữ được sang **he**, động từ phải có **-s**.",
+      en: "If you can replace the subject with 'he', remember to add **-s** to the verb.",
+      vi: "Nếu thay chủ ngữ bằng 'he' được thì động từ phải thêm **-s**.",
     },
   },
 
@@ -131,12 +131,12 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
   vi_l1_past_ed: {
     tag: "vi_l1_past_ed",
     title: {
-      en: "Past tense: add **-ed**",
-      vi: "Quá khứ: thêm **-ed**",
+      en: "Past tense — change the verb",
+      vi: "Quá khứ — phải đổi động từ",
     },
     concept: {
-      en: "Vietnamese shows past time with words like **hôm qua** or **đã** — the verb itself stays the same. In English the verb changes: **work → worked**, **watch → watched**. Irregular verbs change shape: **go → went**, **see → saw**.",
-      vi: "Tiếng Việt mình diễn tả quá khứ bằng các từ như **hôm qua** hoặc **đã** — động từ không đổi. Tiếng Anh chính động từ đổi: **work → worked**, **watch → watched**. Động từ bất quy tắc đổi hẳn: **go → went**, **see → saw**.",
+      en: "Vietnamese often only needs a time word like 'hôm qua'. English **always** changes the verb for past tense.",
+      vi: "Tiếng Việt mình hay chỉ cần từ chỉ thời gian như 'hôm qua'. Tiếng Anh **luôn phải đổi** động từ sang quá khứ.",
     },
     examples: [
       {
@@ -186,8 +186,8 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
       { prompt: "My friend ___ (not / come) to the party.", answer: "didn't come" },
     ],
     tip: {
-      en: "Past in Vietnamese = a time word. Past in English = change the verb. **Always** change the verb, even when the time word is already there.",
-      vi: "Quá khứ trong tiếng Việt = từ chỉ thời gian. Quá khứ trong tiếng Anh = đổi động từ. **Luôn** đổi động từ, kể cả khi đã có từ chỉ thời gian.",
+      en: "Time word alone is not enough in English. Always change the verb!",
+      vi: "Chỉ có từ chỉ thời gian chưa đủ. Phải đổi động từ luôn nhé!",
     },
   },
 
@@ -198,12 +198,12 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
   vi_l1_plural_s: {
     tag: "vi_l1_plural_s",
     title: {
-      en: "Plural nouns: add **-s**",
-      vi: "Danh từ số nhiều: thêm **-s**",
+      en: "Plural nouns — add **-s**",
+      vi: "Danh từ số nhiều — thêm **-s**",
     },
     concept: {
-      en: "Vietnamese nouns don't change for number — **một cuốn sách** and **ba cuốn sách** use the same word **sách**. English adds **-s** to most nouns when there's more than one: **book → books**, **friend → friends**.",
-      vi: "Danh từ tiếng Việt không đổi theo số — **một cuốn sách**, **ba cuốn sách** đều là **sách**. Tiếng Anh thêm **-s** vào hầu hết danh từ khi có nhiều hơn một: **book → books**, **friend → friends**.",
+      en: "Vietnamese nouns usually stay the same. English nouns almost always add **-s** or **-es** in plural form.",
+      vi: "Tiếng Việt danh từ ít khi đổi. Tiếng Anh hầu như luôn thêm **-s** hoặc **-es** khi số nhiều.",
     },
     examples: [
       {
@@ -261,12 +261,12 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
   vi_l1_missing_be: {
     tag: "vi_l1_missing_be",
     title: {
-      en: 'Every sentence needs a verb: use **"to be"**',
-      vi: 'Mọi câu cần có động từ: dùng **"to be"**',
+      en: "Don't forget **am / is / are**",
+      vi: "Đừng quên **am / is / are**",
     },
     concept: {
-      en: "Vietnamese often leaves out the **to be** verb — **Cô ấy giáo viên** is a complete sentence. English always needs one: **am / is / are** for present, **was / were** for past. Without it, the sentence isn't finished.",
-      vi: "Tiếng Việt mình hay bỏ động từ **to be** — **Cô ấy giáo viên** là đủ. Tiếng Anh luôn cần có: **am / is / are** cho hiện tại, **was / were** cho quá khứ. Thiếu nó là câu chưa xong.",
+      en: "Vietnamese often drops the verb 'to be'. English nearly always needs **am, is,** or **are**.",
+      vi: "Tiếng Việt mình hay bỏ động từ 'to be'. Tiếng Anh gần như luôn cần **am, is, are**.",
     },
     examples: [
       {
@@ -320,12 +320,12 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
   vi_l1_missing_article: {
     tag: "vi_l1_missing_article",
     title: {
-      en: "Use **a / an / the** before singular nouns",
-      vi: "Dùng **a / an / the** trước danh từ số ít",
+      en: "Articles: **a / an / the**",
+      vi: "Mạo từ: **a / an / the**",
     },
     concept: {
-      en: "Vietnamese has no articles — nouns stand alone. English almost always needs one before a singular countable noun: **a** before a consonant sound (**a car**), **an** before a vowel sound (**an apple**), **the** when both speaker and listener know which one (**the car over there**).",
-      vi: "Tiếng Việt mình không có mạo từ — danh từ đứng một mình là được. Tiếng Anh gần như luôn cần một từ đi trước danh từ đếm được số ít: **a** trước phụ âm (**a car**), **an** trước nguyên âm (**an apple**), **the** khi cả hai người đều biết cái nào (**the car over there**).",
+      en: "Vietnamese has no articles. English requires **a / an** (general) or **the** (specific).",
+      vi: "Tiếng Việt không có mạo từ. Tiếng Anh cần **a / an** (chung chung) hoặc **the** (xác định).",
     },
     examples: [
       {
@@ -387,12 +387,12 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
   vi_l1_to_verb_confusion: {
     tag: "vi_l1_to_verb_confusion",
     title: {
-      en: "After **want / need / plan** → use **to + verb**",
-      vi: "Sau **want / need / plan** → dùng **to + verb**",
+      en: "**to + verb** (infinitive)",
+      vi: "**to + động từ**",
     },
     concept: {
-      en: "Vietnamese doesn't mark an infinitive — **tôi muốn đi** has just a plain verb. In English, verbs like **want**, **need**, **plan**, **decide**, **hope**, **try** take **to + verb**: **I want to go**, not **I want go**.",
-      vi: "Tiếng Việt mình không có dạng động từ nguyên mẫu — **tôi muốn đi** chỉ dùng động từ gốc. Tiếng Anh, các verb như **want**, **need**, **plan**, **decide**, **hope**, **try** đi với **to + verb**: **I want to go**, không phải **I want go**.",
+      en: "Many English verbs must be followed by **to + verb** (want to learn, decide to go).",
+      vi: "Nhiều động từ tiếng Anh phải theo sau bởi **to + V** (want to learn, decide to go).",
     },
     examples: [
       {
@@ -442,12 +442,12 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
   vi_l1_double_past: {
     tag: "vi_l1_double_past",
     title: {
-      en: "Past tense: one marker per verb, not two",
-      vi: "Quá khứ: chỉ một dấu hiệu cho mỗi động từ",
+      en: "Don't use two past tenses",
+      vi: "Không dùng hai thì quá khứ cùng lúc",
     },
     concept: {
-      en: "Vietnamese often stacks **đã** together with a past time word. In English, once you use **did** (for questions or negatives), the main verb goes back to its base form: **Did you eat?**, not **Did you ate?** — **I didn't go**, not **I didn't went**.",
-      vi: "Tiếng Việt mình hay ghép **đã** với trạng từ thời gian quá khứ. Tiếng Anh khi có **did** (trong câu hỏi hoặc phủ định), động từ chính trở về dạng nguyên thể: **Did you eat?**, không phải **Did you ate?** — **I didn't go**, không phải **I didn't went**.",
+      en: "After 'did / was / were', use the base form of the verb (not past tense again).",
+      vi: "Sau 'did / was / were', dùng dạng nguyên thể của động từ (không dùng thì quá khứ lần nữa).",
     },
     examples: [
       {
@@ -497,12 +497,12 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
   vi_l1_comparative_double: {
     tag: "vi_l1_comparative_double",
     title: {
-      en: "Comparative: **-er** OR **more**, never both",
-      vi: "So sánh: **-er** HOẶC **more**, không dùng cả hai",
+      en: "Comparatives: more / -er (not both)",
+      vi: "So sánh hơn: more / -er (không dùng cả hai)",
     },
     concept: {
-      en: "Vietnamese layers **hơn** with intensifiers freely. English picks **one** comparative form: short adjectives take **-er** (**bigger**, **faster**); longer adjectives take **more** (**more beautiful**). Irregulars like **better** and **worse** stand alone — never **more better**.",
-      vi: "Tiếng Việt mình ghép **hơn** với nhiều từ nhấn mạnh tự nhiên. Tiếng Anh chọn **một** dạng so sánh: tính từ ngắn thêm **-er** (**bigger**, **faster**); tính từ dài dùng **more** (**more beautiful**). Bất quy tắc như **better**, **worse** đứng một mình — không bao giờ **more better**.",
+      en: "Use either **more** or **-er**, not both at the same time.",
+      vi: "Dùng **more** hoặc **-er**, không dùng cả hai cùng lúc.",
     },
     examples: [
       {
@@ -552,12 +552,12 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
   vi_l1_everyone_plural: {
     tag: "vi_l1_everyone_plural",
     title: {
-      en: "**Everyone / everybody** takes a singular verb",
-      vi: "**Everyone / everybody** đi với động từ số ít",
+      en: "**Everyone / Somebody** is singular",
+      vi: "**Everyone / Somebody** là ngôi thứ ba số ít",
     },
     concept: {
-      en: "Vietnamese **mọi người** feels plural because it talks about many people. In English, **everyone**, **everybody**, **someone**, **nobody** all count as singular: the verb takes the **he / she / it** form — **everyone is**, not **everyone are**.",
-      vi: "Tiếng Việt mình **mọi người** nghe như số nhiều vì chỉ nhiều người. Tiếng Anh, **everyone**, **everybody**, **someone**, **nobody** đều tính là số ít: động từ chia theo **he / she / it** — **everyone is**, không phải **everyone are**.",
+      en: "Words like everyone, somebody, nobody are singular in English, even though they feel plural.",
+      vi: "Các từ everyone, somebody, nobody là ngôi thứ ba số ít trong tiếng Anh, dù nghe có vẻ số nhiều.",
     },
     examples: [
       {
@@ -611,12 +611,12 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
   vi_l1_make_vs_do: {
     tag: "vi_l1_make_vs_do",
     title: {
-      en: "**Make** for creating, **do** for activities",
-      vi: "**Make** để tạo ra, **do** để làm hoạt động",
+      en: "**Make** vs **Do**",
+      vi: "**Make** vs **Do**",
     },
     concept: {
-      en: "Vietnamese **làm** covers every kind of doing. English splits: **make** is for creating or producing something (**make a cake**, **make a decision**, **make a mistake**); **do** is for activities, tasks, jobs (**do homework**, **do the dishes**, **do exercise**).",
-      vi: "Tiếng Việt mình chỉ cần **làm** cho mọi thứ. Tiếng Anh chia hai: **make** khi tạo ra / sản xuất (**make a cake**, **make a decision**, **make a mistake**); **do** cho hoạt động, công việc, nhiệm vụ (**do homework**, **do the dishes**, **do exercise**).",
+      en: "English uses **make** and **do** differently. We **make** decisions / progress, we **do** homework / exercises.",
+      vi: "Tiếng Anh dùng **make** và **do** khác nhau. Thường **make** decision / progress, **do** homework / exercise.",
     },
     examples: [
       {
