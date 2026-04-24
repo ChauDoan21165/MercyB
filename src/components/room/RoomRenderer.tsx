@@ -86,6 +86,7 @@ import { getSignedAudio } from "@/lib/audio/getSignedAudio";
 import { addStudyLogEntry } from "@/services/studyLog";
 import { awardPoints } from "@/services/pointsService";
 import { trackRoomEntry, updateRoomProgress } from "@/services/roomProgress";
+import { RoomPronunciationPractice } from "@/components/room/RoomPronunciationPractice";
 
 import { prettifyRoomIdEN, isBadAutoTitle } from "@/components/room/roomIdUtils";
 import { fetchRoomEntriesDb, coerceRoomEntryRowToEntry } from "@/components/room/roomEntriesDb";
@@ -1614,6 +1615,14 @@ export default function RoomRenderer({
                     );
                   })}
                 </div>
+              ) : null}
+
+              {effectiveRoomId ? (
+                <RoomPronunciationPractice
+                  roomId={effectiveRoomId}
+                  keywordsEn={kw.en}
+                  keywordsVi={kw.vi}
+                />
               ) : null}
             </section>
 
