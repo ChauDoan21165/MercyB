@@ -32,6 +32,9 @@ import {
   migrateLocalStreakOnce,
   writeBrowserTimezoneOnce,
 } from "@/lib/streakMigration";
+import { heartbeatSession, logUserSession } from "@/services/userSessions";
+
+const SESSION_HEARTBEAT_MS = 5 * 60 * 1000;
 
 /**
  * Keep RevenueCat's App User ID in sync with the current Supabase user.
@@ -204,6 +207,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             // feature flag is off. Runs per-session on verified sessions,
             // but each task is internally idempotent.
             void runStreakBootTasksOnAuth(verifiedId);
+            // Log user_sessions row on every verified auth event.
+            // Gated internally by behaviorTrackingEnabled flag.
+            const verifiedToken =
+              getVerifiedSession(nextSession ?? null)?.access_token ?? null;
+            void logUserSession(verifiedId, verifiedToken);
           },
         );
 
@@ -245,6 +253,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       unsubRef.current = null;
     };
   }, [applySession, safeSetLoading, safeSetSession]);
+
+  // Heartbeat: touch user_sessions.last_activity every 5 minutes while a
+  // verified session is active. Ensures the admin "live users" view sees
+  // fresh activity instead of just the sign-in timestamp.
+  useEffect(() => {
+    const verifiedUserId = getVerifiedSession(session)?.user?.id ?? null;
+    if (!verifiedUserId) return;
+
+    const intervalId = setInterval(() => {
+      void heartbeatSession(verifiedUserId);
+    }, SESSION_HEARTBEAT_MS);
+
+    return () => clearInterval(intervalId);
+  }, [session]);
 
   const value = useMemo<AuthContextValue>(
     () => ({

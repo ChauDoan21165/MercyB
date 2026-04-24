@@ -86,6 +86,7 @@ import { getSignedAudio } from "@/lib/audio/getSignedAudio";
 import { addStudyLogEntry } from "@/services/studyLog";
 import { awardPoints } from "@/services/pointsService";
 import { trackRoomEntry, updateRoomProgress } from "@/services/roomProgress";
+import { trackKeyword, trackRoomVisit } from "@/services/userBehavior";
 import { RoomPronunciationPractice } from "@/components/room/RoomPronunciationPractice";
 
 import { prettifyRoomIdEN, isBadAutoTitle } from "@/components/room/roomIdUtils";
@@ -1100,6 +1101,8 @@ export default function RoomRenderer({
   useEffect(() => {
     if (!authUserId || !effectiveRoomId) return;
     void trackRoomEntry(authUserId, effectiveRoomId);
+    // user_behavior_tracking — gated on behaviorTrackingEnabled flag.
+    void trackRoomVisit(authUserId, effectiveRoomId);
   }, [authUserId, effectiveRoomId]);
 
   // user_room_progress: when the user picks a keyword, update last_keyword_en
@@ -1123,6 +1126,8 @@ export default function RoomRenderer({
       entryId,
       progressPct,
     });
+    // user_behavior_tracking — gated on behaviorTrackingEnabled flag.
+    void trackKeyword(authUserId, effectiveRoomId, keyword);
   }, [authUserId, effectiveRoomId, activeKeyword, activeEntry, allEntries]);
 
   // Log study activity when user picks a keyword
