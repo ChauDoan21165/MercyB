@@ -17,7 +17,7 @@
 // placeholder — keeps the feature fully invisible until launch.
 
 import React, { useEffect, useMemo, useState } from 'react';
-import { Navigate, useSearchParams } from 'react-router-dom';
+import { Navigate, useNavigate, useSearchParams } from 'react-router-dom';
 
 import { useFeatureFlag } from '@/hooks/useFeatureFlag';
 import { SpeechDrill } from '@/components/speech/SpeechDrill';
@@ -173,6 +173,7 @@ function contextLabel(context: string): string {
 export default function SpeechDrillPage() {
   const { enabled, loading } = useFeatureFlag('pronunciationScoringEnabled', false);
   const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
 
   const urlLevel: LevelSelection = parseCefrParam(searchParams.get('cefr'));
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -332,6 +333,7 @@ export default function SpeechDrillPage() {
               context: { extra: { source: 'speech_drill_page' } },
             });
           }}
+          onViewHistory={() => navigate('/speech/history')}
         />
       </div>
     </div>

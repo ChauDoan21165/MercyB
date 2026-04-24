@@ -179,6 +179,11 @@ export default function AccountPage() {
     "placement_test_enabled",
     false,
   );
+  // ── Pronunciation history (same flag as /speak) ────────────────────
+  const { enabled: pronunciationFlagEnabled } = useFeatureFlag(
+    "pronunciationScoringEnabled",
+    false,
+  );
   const [placementInfo, setPlacementInfo] = useState<{
     completedAt: string | null;
     cefr: string | null;
@@ -504,6 +509,20 @@ export default function AccountPage() {
                   ) : (
                     <BiLabel en="Take placement test" vi="Làm bài đánh giá" />
                   )}
+                </button>
+              ) : null}
+
+              {pronunciationFlagEnabled ? (
+                <button
+                  type="button"
+                  style={buttonBase}
+                  onClick={() => nav("/speech/history")}
+                  aria-label="My pronunciation history"
+                >
+                  <BiLabel
+                    en="My pronunciation history"
+                    vi="Lịch sử phát âm của tôi"
+                  />
                 </button>
               ) : null}
 

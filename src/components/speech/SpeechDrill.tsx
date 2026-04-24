@@ -58,6 +58,11 @@ export type SpeechDrillProps = {
    * ignore this, and persistence callers can get the richer payload.
    */
   onAttempt?: (event: SpeechAttemptEvent) => void;
+  /**
+   * Called when the user taps "View your history" after a score lands.
+   * Omit to hide the link — the component does no routing of its own.
+   */
+  onViewHistory?: () => void;
 };
 
 // ── Style tokens (match AccountPage / placement work) ───────────────
@@ -242,6 +247,7 @@ export function SpeechDrill({
   onNext,
   onScore,
   onAttempt,
+  onViewHistory,
 }: SpeechDrillProps) {
   // Gate the whole UI on support detection. Run once — if the browser
   // doesn't have SpeechRecognition, the entire component body renders
@@ -409,6 +415,27 @@ export function SpeechDrill({
             </button>
           ) : null}
         </div>
+      ) : null}
+
+      {state === 'result' && onViewHistory ? (
+        <button
+          type="button"
+          onClick={onViewHistory}
+          style={{
+            marginTop: 4,
+            background: 'transparent',
+            border: 'none',
+            color: '#475569',
+            fontSize: 13,
+            fontWeight: 600,
+            cursor: 'pointer',
+            textDecoration: 'underline',
+          }}
+          aria-label="View your pronunciation history"
+          data-testid="speech-drill-view-history"
+        >
+          View your history · Xem lịch sử →
+        </button>
       ) : null}
     </div>
   );
