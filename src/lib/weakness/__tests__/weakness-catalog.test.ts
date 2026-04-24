@@ -20,6 +20,10 @@ import {
 const PUBLIC_DATA = resolve(__dirname, "../../../../public/data");
 
 describe("WEAKNESS_CATALOG shape", () => {
+  it("contains the expected total count (35 = 3 placement + 6 PR #19 + 11 v2 + 15 v3)", () => {
+    expect(ALL_WEAKNESS_TAGS.length).toBe(35);
+  });
+
   it("exposes every tag in ALL_WEAKNESS_TAGS", () => {
     const catalogKeys = Object.keys(WEAKNESS_CATALOG).sort();
     const allTags = [...ALL_WEAKNESS_TAGS].sort();

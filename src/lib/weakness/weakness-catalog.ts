@@ -57,7 +57,23 @@ export type WeaknessTag =
   | "vi_l1_there_are_singular"
   | "vi_l1_everyone_plural"
   | "vi_l1_make_vs_do"
-  | "vi_l1_tag_question";
+  | "vi_l1_tag_question"
+  // L1 detector v3 expansion (CC1 feat/l1-rules-v3-expansion, 2026-04-24+)
+  | "vi_l1_past_perfect_missing"
+  | "vi_l1_reported_speech"
+  | "vi_l1_since_vs_for"
+  | "vi_l1_countable_much"
+  | "vi_l1_some_vs_any"
+  | "vi_l1_reflexive_missing"
+  | "vi_l1_conditional_mix"
+  | "vi_l1_to_infinitive_after_ing"
+  | "vi_l1_passive_missing_be"
+  | "vi_l1_relative_pronoun"
+  | "vi_l1_used_to_vs_be_used_to"
+  | "vi_l1_another_vs_other"
+  | "vi_l1_look_vs_see_vs_watch"
+  | "vi_l1_by_vs_with"
+  | "vi_l1_time_expressions";
 
 export type BilingualText = {
   /** English surface — may contain `**word**` markdown bolding. */
@@ -401,6 +417,239 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     },
     exampleWrong: "You are Vietnamese, you are?",
     exampleRight: "You are Vietnamese, aren't you?",
+    linkedRoomId: null,
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
+  // L1 detector v3 expansion (CC1 feat/l1-rules-v3-expansion, 2026-04-24)
+  // All 15 entries are draft strings pending Chau review. linkedRoomId is
+  // null across the board — these are B1+ grammar topics and the current
+  // room catalog is general-fluency, not topic-dedicated. Revisit when
+  // content adds dedicated grammar rooms.
+  // ────────────────────────────────────────────────────────────────────────
+
+  vi_l1_past_perfect_missing: {
+    tag: "vi_l1_past_perfect_missing",
+    shortLabel: {
+      en: "Past perfect (**had + V3**)",
+      vi: "Quá khứ hoàn thành (**had + V3**)",
+    },
+    longDescription: {
+      en: "Vietnamese stacks time words like **trước đó** to show one past event happened before another. English uses **had + past participle** — **I had already eaten when she called**.",
+      vi: "Tiếng Việt mình dùng **trước đó** để chỉ việc nào xảy ra trước. Tiếng Anh dùng **had + V3** — **I had already eaten when she called** (Tôi đã ăn xong trước khi cô ấy gọi).",
+    },
+    exampleWrong: "When she called, I already ate.",
+    exampleRight: "When she called, I had already eaten.",
+    linkedRoomId: null,
+  },
+
+  vi_l1_reported_speech: {
+    tag: "vi_l1_reported_speech",
+    shortLabel: {
+      en: "Reported speech",
+      vi: "Câu tường thuật",
+    },
+    longDescription: {
+      en: "Vietnamese often quotes directly or uses **nói rằng** without shifting the verb. English backshifts the tense: **She said she was tired** — not **she is tired**.",
+      vi: "Tiếng Việt mình nói lại lời người khác thường giữ nguyên thì, hoặc dùng **nói rằng**. Tiếng Anh lùi thì một bậc: **She said she was tired**, không phải **she is tired**.",
+    },
+    exampleWrong: "She said she is tired.",
+    exampleRight: "She said she was tired.",
+    linkedRoomId: null,
+  },
+
+  vi_l1_since_vs_for: {
+    tag: "vi_l1_since_vs_for",
+    shortLabel: {
+      en: "**Since** vs **for**",
+      vi: "**Since** vs **for**",
+    },
+    longDescription: {
+      en: "Vietnamese **từ** covers both a starting point and a duration. English splits: **since** points to a moment (**since 2020**); **for** measures length (**for three years**).",
+      vi: "Tiếng Việt mình **từ** dùng cho cả điểm bắt đầu lẫn khoảng thời gian. Tiếng Anh tách ra: **since** chỉ mốc (**since 2020**); **for** chỉ độ dài (**for three years**).",
+    },
+    exampleWrong: "I have lived here since three years.",
+    exampleRight: "I have lived here for three years.",
+    linkedRoomId: null,
+  },
+
+  vi_l1_countable_much: {
+    tag: "vi_l1_countable_much",
+    shortLabel: {
+      en: "**Much** with uncountable only",
+      vi: "**Much** chỉ đi với không đếm được",
+    },
+    longDescription: {
+      en: "Vietnamese **nhiều** works with anything — **nhiều bạn**, **nhiều nước**. English **much** only pairs with uncountable nouns: **much water**, **much time** — but NOT **much friends** (use **many** or **a lot of**).",
+      vi: "Tiếng Việt mình dùng **nhiều** với mọi danh từ. Tiếng Anh **much** chỉ đi với danh từ không đếm được: **much water**, **much time** — KHÔNG dùng **much friends** (phải là **many** hoặc **a lot of**).",
+    },
+    exampleWrong: "I have much friends here.",
+    exampleRight: "I have many friends here.",
+    linkedRoomId: null,
+  },
+
+  vi_l1_some_vs_any: {
+    tag: "vi_l1_some_vs_any",
+    shortLabel: {
+      en: "**Some** vs **any**",
+      vi: "**Some** vs **any**",
+    },
+    longDescription: {
+      en: "Vietnamese uses **một vài** or **chút** in every sentence type. English switches: **some** in positives (**I have some questions**); **any** in negatives and most questions (**Do you have any questions?**).",
+      vi: "Tiếng Việt mình dùng **một vài** hay **chút** cho mọi loại câu. Tiếng Anh đổi: **some** cho câu khẳng định (**I have some questions**); **any** cho phủ định và đa số câu hỏi (**Do you have any questions?**).",
+    },
+    exampleWrong: "Do you have some questions?",
+    exampleRight: "Do you have any questions?",
+    linkedRoomId: null,
+  },
+
+  vi_l1_reflexive_missing: {
+    tag: "vi_l1_reflexive_missing",
+    shortLabel: {
+      en: "Reflexive pronouns (**myself**)",
+      vi: "Đại từ phản thân (**myself**)",
+    },
+    longDescription: {
+      en: "Vietnamese uses **tự** before the verb: **tự học**. English needs a reflexive pronoun after the verb: **I taught myself**, **she hurt herself**.",
+      vi: "Tiếng Việt mình đặt **tự** trước động từ: **tự học**. Tiếng Anh cần đại từ phản thân sau động từ: **I taught myself**, **she hurt herself**.",
+    },
+    exampleWrong: "I taught English by me.",
+    exampleRight: "I taught myself English.",
+    linkedRoomId: null,
+  },
+
+  vi_l1_conditional_mix: {
+    tag: "vi_l1_conditional_mix",
+    shortLabel: {
+      en: "**If** clauses — match the tenses",
+      vi: "Câu **If** — hợp thì",
+    },
+    longDescription: {
+      en: "Vietnamese **nếu… thì…** keeps verbs unchanged. English matches the pattern: real = **If + present, will + V**; unreal = **If + past, would + V** — never mix past with **will**.",
+      vi: "Tiếng Việt mình **nếu… thì…** không đổi động từ. Tiếng Anh ghép đôi: có thật = **If + hiện tại, will + V**; không có thật = **If + quá khứ, would + V** — không trộn quá khứ với **will**.",
+    },
+    exampleWrong: "If I had money, I will buy a car.",
+    exampleRight: "If I had money, I would buy a car.",
+    linkedRoomId: null,
+  },
+
+  vi_l1_to_infinitive_after_ing: {
+    tag: "vi_l1_to_infinitive_after_ing",
+    shortLabel: {
+      en: "**-ing** vs **to + verb**",
+      vi: "**-ing** vs **to + verb**",
+    },
+    longDescription: {
+      en: "Vietnamese uses the plain verb everywhere. English picks one: verbs like **enjoy**, **finish**, **avoid** take **-ing** (**I enjoy swimming**); verbs like **want**, **plan**, **decide** take **to + verb** (**I want to swim**).",
+      vi: "Tiếng Việt mình chỉ dùng động từ gốc. Tiếng Anh chia hai: các verb như **enjoy**, **finish**, **avoid** đi với **-ing** (**I enjoy swimming**); **want**, **plan**, **decide** đi với **to + verb** (**I want to swim**).",
+    },
+    exampleWrong: "I enjoy to swim.",
+    exampleRight: "I enjoy swimming.",
+    linkedRoomId: null,
+  },
+
+  vi_l1_passive_missing_be: {
+    tag: "vi_l1_passive_missing_be",
+    shortLabel: {
+      en: "Passive needs **be + V3**",
+      vi: "Bị động cần **be + V3**",
+    },
+    longDescription: {
+      en: "Vietnamese marks the passive with **bị** or **được** before the verb. English needs a form of **be** plus the past participle: **The letter was written**, not **The letter written**.",
+      vi: "Tiếng Việt mình dùng **bị** hoặc **được** trước động từ là thành bị động. Tiếng Anh cần dạng **be** + V3: **The letter was written**, không phải **The letter written**.",
+    },
+    exampleWrong: "The letter written yesterday.",
+    exampleRight: "The letter was written yesterday.",
+    linkedRoomId: null,
+  },
+
+  vi_l1_relative_pronoun: {
+    tag: "vi_l1_relative_pronoun",
+    shortLabel: {
+      en: "**Who / which / that**",
+      vi: "**Who / which / that**",
+    },
+    longDescription: {
+      en: "Vietnamese joins clauses with **mà** for everything. English picks the relative pronoun by what it refers to: **who** for people, **which** for things, **that** for both in defining clauses.",
+      vi: "Tiếng Việt mình dùng **mà** nối câu cho mọi thứ. Tiếng Anh chọn đại từ theo đối tượng: **who** cho người, **which** cho vật, **that** cho cả hai ở mệnh đề xác định.",
+    },
+    exampleWrong: "The man which called you is here.",
+    exampleRight: "The man who called you is here.",
+    linkedRoomId: null,
+  },
+
+  vi_l1_used_to_vs_be_used_to: {
+    tag: "vi_l1_used_to_vs_be_used_to",
+    shortLabel: {
+      en: "**Used to** vs **be used to**",
+      vi: "**Used to** vs **be used to**",
+    },
+    longDescription: {
+      en: "Two English patterns look alike but mean different things. **Used to + V** = a past habit that stopped (**I used to smoke**). **Be used to + V-ing** = now familiar with (**I'm used to waking up early**).",
+      vi: "Hai cấu trúc tiếng Anh nhìn giống nhau nhưng khác nghĩa. **Used to + V** = thói quen cũ đã bỏ (**I used to smoke**). **Be used to + V-ing** = giờ đã quen với (**I'm used to waking up early**).",
+    },
+    exampleWrong: "I am used to smoke, but I stopped.",
+    exampleRight: "I used to smoke, but I stopped.",
+    linkedRoomId: null,
+  },
+
+  vi_l1_another_vs_other: {
+    tag: "vi_l1_another_vs_other",
+    shortLabel: {
+      en: "**Another** vs **other / others**",
+      vi: "**Another** vs **other / others**",
+    },
+    longDescription: {
+      en: "Vietnamese **khác** serves every case. English splits: **another** + singular noun (**another book**); **other** + plural (**other books**); **others** stands alone (**I have others**).",
+      vi: "Tiếng Việt mình chỉ cần **khác**. Tiếng Anh chia ba: **another** + danh từ số ít (**another book**); **other** + số nhiều (**other books**); **others** đứng một mình (**I have others**).",
+    },
+    exampleWrong: "I need another books.",
+    exampleRight: "I need other books.",
+    linkedRoomId: null,
+  },
+
+  vi_l1_look_vs_see_vs_watch: {
+    tag: "vi_l1_look_vs_see_vs_watch",
+    shortLabel: {
+      en: "**Look / see / watch**",
+      vi: "**Look / see / watch**",
+    },
+    longDescription: {
+      en: "Vietnamese **nhìn** / **xem** covers all three. English separates: **look (at)** = direct your eyes on purpose; **see** = notice, perceive; **watch** = follow something moving over time (a film, a game).",
+      vi: "Tiếng Việt mình **nhìn** / **xem** dùng chung. Tiếng Anh tách ra: **look (at)** = chủ động hướng mắt; **see** = nhận thấy, thấy; **watch** = theo dõi thứ gì đó đang chuyển động (phim, trận đấu).",
+    },
+    exampleWrong: "I looked a movie last night.",
+    exampleRight: "I watched a movie last night.",
+    linkedRoomId: null,
+  },
+
+  vi_l1_by_vs_with: {
+    tag: "vi_l1_by_vs_with",
+    shortLabel: {
+      en: "**By** vs **with**",
+      vi: "**By** vs **with**",
+    },
+    longDescription: {
+      en: "Vietnamese **bằng** covers both means of transport and tools. English splits: **by** for method or transport (**by bus**, **by email**); **with** for the tool held (**cut with a knife**, **write with a pen**).",
+      vi: "Tiếng Việt mình **bằng** dùng cho cả phương tiện và công cụ. Tiếng Anh tách ra: **by** cho phương thức hay phương tiện (**by bus**, **by email**); **with** cho dụng cụ cầm trong tay (**cut with a knife**, **write with a pen**).",
+    },
+    exampleWrong: "I cut the bread by a knife.",
+    exampleRight: "I cut the bread with a knife.",
+    linkedRoomId: null,
+  },
+
+  vi_l1_time_expressions: {
+    tag: "vi_l1_time_expressions",
+    shortLabel: {
+      en: "Time words: **ago / last / in**",
+      vi: "Từ chỉ thời gian: **ago / last / in**",
+    },
+    longDescription: {
+      en: "Vietnamese can stack **cách đây**, **trước** freely. English chooses: **ago** after a duration from now (**two days ago**); **last** before a period (**last Monday**); **in** for future gaps (**in two hours**).",
+      vi: "Tiếng Việt mình ghép **cách đây**, **trước** tự nhiên. Tiếng Anh chọn: **ago** sau khoảng thời gian tính từ bây giờ (**two days ago**); **last** trước kỳ gần nhất (**last Monday**); **in** cho khoảng tương lai (**in two hours**).",
+    },
+    exampleWrong: "I saw him before two days.",
+    exampleRight: "I saw him two days ago.",
     linkedRoomId: null,
   },
 };
