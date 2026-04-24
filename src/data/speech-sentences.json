@@ -1,0 +1,805 @@
+{
+  "version": 1,
+  "sentences": [
+    {
+      "id": "s_a1_001",
+      "cefr": "A1",
+      "target_en": "Hello, how are you doing today?",
+      "target_vi": "Xin chào, hôm nay bạn khỏe không?",
+      "context": "greeting",
+      "difficulty_hints": ["rising intonation on question", "initial h-"]
+    },
+    {
+      "id": "s_a1_002",
+      "cefr": "A1",
+      "target_en": "Good morning, nice to meet you.",
+      "target_vi": "Chào buổi sáng, rất vui được gặp bạn.",
+      "context": "greeting",
+      "difficulty_hints": ["final -ng", "/t/ cluster in 'meet you'"]
+    },
+    {
+      "id": "s_a1_003",
+      "cefr": "A1",
+      "target_en": "Have a nice day, see you later.",
+      "target_vi": "Chúc một ngày tốt lành, hẹn gặp lại.",
+      "context": "greeting",
+      "difficulty_hints": ["final -s in 'nice'", "diphthong in 'day'"]
+    },
+    {
+      "id": "s_a1_004",
+      "cefr": "A1",
+      "target_en": "Thank you very much for your help.",
+      "target_vi": "Cảm ơn bạn rất nhiều vì đã giúp đỡ.",
+      "context": "greeting",
+      "difficulty_hints": ["voiceless th- in 'thank'", "/v/ in 'very'"]
+    },
+    {
+      "id": "s_a1_005",
+      "cefr": "A1",
+      "target_en": "Goodbye, have a wonderful evening my friend.",
+      "target_vi": "Tạm biệt, chúc bạn một buổi tối tuyệt vời của tôi.",
+      "context": "greeting",
+      "difficulty_hints": ["final -nd in 'friend'", "/v/ in 'wonderful'"]
+    },
+    {
+      "id": "s_a1_006",
+      "cefr": "A1",
+      "target_en": "My name is Minh and I am a student.",
+      "target_vi": "Tên tôi là Minh và tôi là sinh viên.",
+      "context": "introduction",
+      "difficulty_hints": ["final -s in 'is'", "final -t in 'student'"]
+    },
+    {
+      "id": "s_a1_007",
+      "cefr": "A1",
+      "target_en": "I am from Vietnam, I live in Hanoi.",
+      "target_vi": "Tôi đến từ Việt Nam, tôi sống ở Hà Nội.",
+      "context": "introduction",
+      "difficulty_hints": ["/v/ at start of 'Vietnam'", "/v/ in 'live'"]
+    },
+    {
+      "id": "s_a1_008",
+      "cefr": "A1",
+      "target_en": "Nice to meet you, welcome to our school.",
+      "target_vi": "Rất vui được gặp bạn, chào mừng đến trường chúng tôi.",
+      "context": "introduction",
+      "difficulty_hints": ["/w/ in 'welcome'", "/sk/ cluster in 'school'"]
+    },
+    {
+      "id": "s_a1_009",
+      "cefr": "A1",
+      "target_en": "I work as a teacher in this city.",
+      "target_vi": "Tôi làm giáo viên ở thành phố này.",
+      "context": "introduction",
+      "difficulty_hints": ["/r/ in 'work'", "voiced th- in 'this'"]
+    },
+    {
+      "id": "s_a1_010",
+      "cefr": "A1",
+      "target_en": "My sister is a doctor at the hospital.",
+      "target_vi": "Chị tôi là bác sĩ ở bệnh viện.",
+      "context": "introduction",
+      "difficulty_hints": ["/s/ plus /t/ in 'sister'", "/r/ in 'doctor'"]
+    },
+    {
+      "id": "s_a1_011",
+      "cefr": "A1",
+      "target_en": "I have three brothers and two sisters.",
+      "target_vi": "Tôi có ba anh trai và hai chị gái.",
+      "context": "numbers",
+      "difficulty_hints": ["th- in 'three'", "final -s plural"]
+    },
+    {
+      "id": "s_a1_012",
+      "cefr": "A1",
+      "target_en": "My birthday is on the fifth of June.",
+      "target_vi": "Sinh nhật của tôi vào ngày mùng năm tháng Sáu.",
+      "context": "numbers",
+      "difficulty_hints": ["th- in 'birthday' and 'fifth'", "final -f cluster"]
+    },
+    {
+      "id": "s_a1_013",
+      "cefr": "A1",
+      "target_en": "The meeting starts at nine in the morning.",
+      "target_vi": "Cuộc họp bắt đầu lúc chín giờ sáng.",
+      "context": "numbers",
+      "difficulty_hints": ["voiced th- in 'the'", "final -ng"]
+    },
+    {
+      "id": "s_a1_014",
+      "cefr": "A1",
+      "target_en": "I am twenty years old this year.",
+      "target_vi": "Năm nay tôi hai mươi tuổi.",
+      "context": "numbers",
+      "difficulty_hints": ["final -rs plural", "voiced th- in 'this'"]
+    },
+    {
+      "id": "s_a1_015",
+      "cefr": "A1",
+      "target_en": "We have class from Monday to Friday.",
+      "target_vi": "Chúng tôi học từ thứ Hai đến thứ Sáu.",
+      "context": "numbers",
+      "difficulty_hints": ["/kl/ cluster in 'class'", "/fr/ in 'Friday'"]
+    },
+    {
+      "id": "s_a1_016",
+      "cefr": "A1",
+      "target_en": "I drink coffee every morning before work.",
+      "target_vi": "Tôi uống cà phê mỗi sáng trước khi đi làm.",
+      "context": "daily",
+      "difficulty_hints": ["final -nk in 'drink'", "/fr/ cluster"]
+    },
+    {
+      "id": "s_a1_017",
+      "cefr": "A1",
+      "target_en": "She likes to read books in the library.",
+      "target_vi": "Cô ấy thích đọc sách trong thư viện.",
+      "context": "daily",
+      "difficulty_hints": ["/ʃ/ in 'She'", "final -s 3rd person", "final -ks plural"]
+    },
+    {
+      "id": "s_a1_018",
+      "cefr": "A1",
+      "target_en": "We eat dinner together at seven o'clock.",
+      "target_vi": "Chúng tôi ăn tối cùng nhau lúc bảy giờ.",
+      "context": "daily",
+      "difficulty_hints": ["voiced th- in 'together'", "/kl/ cluster"]
+    },
+    {
+      "id": "s_a1_019",
+      "cefr": "A1",
+      "target_en": "The children are playing in the park.",
+      "target_vi": "Bọn trẻ đang chơi trong công viên.",
+      "context": "daily",
+      "difficulty_hints": ["/tʃ/ in 'children'", "/pl/ cluster"]
+    },
+    {
+      "id": "s_a1_020",
+      "cefr": "A1",
+      "target_en": "My mother cooks delicious food every weekend.",
+      "target_vi": "Mẹ tôi nấu món ngon mỗi cuối tuần.",
+      "context": "daily",
+      "difficulty_hints": ["voiced th- in 'mother'", "final -s 3rd person", "final -d"]
+    },
+    {
+      "id": "s_a1_021",
+      "cefr": "A1",
+      "target_en": "I go to school by bus every day.",
+      "target_vi": "Tôi đi học bằng xe buýt mỗi ngày.",
+      "context": "daily",
+      "difficulty_hints": ["/sk/ cluster", "final -s in 'bus'"]
+    },
+    {
+      "id": "s_a1_022",
+      "cefr": "A1",
+      "target_en": "He washes his car on Saturday afternoon.",
+      "target_vi": "Anh ấy rửa xe vào chiều thứ Bảy.",
+      "context": "daily",
+      "difficulty_hints": ["/ʃ/ plus /ɪz/ ending on 'washes'", "/z/ in 'his'"]
+    },
+    {
+      "id": "s_a1_023",
+      "cefr": "A1",
+      "target_en": "Please close the door and turn off the light.",
+      "target_vi": "Làm ơn đóng cửa và tắt đèn.",
+      "context": "daily",
+      "difficulty_hints": ["/pl/ cluster", "final -rn", "voiced th- in 'the'"]
+    },
+    {
+      "id": "s_a1_024",
+      "cefr": "A1",
+      "target_en": "We need to buy some bread and milk.",
+      "target_vi": "Chúng tôi cần mua một ít bánh mì và sữa.",
+      "context": "daily",
+      "difficulty_hints": ["/br/ cluster", "final -d in 'bread'", "final -lk in 'milk'"]
+    },
+    {
+      "id": "s_a1_025",
+      "cefr": "A1",
+      "target_en": "I always brush my teeth before I sleep.",
+      "target_vi": "Tôi luôn đánh răng trước khi đi ngủ.",
+      "context": "daily",
+      "difficulty_hints": ["/br/ cluster", "th- in 'teeth'", "/sl/ cluster"]
+    },
+    {
+      "id": "s_a2_001",
+      "cefr": "A2",
+      "target_en": "She goes to the gym three times a week.",
+      "target_vi": "Cô ấy đi tập gym ba lần một tuần.",
+      "context": "routine",
+      "difficulty_hints": ["/z/ ending on 'goes'", "th- in 'three'"]
+    },
+    {
+      "id": "s_a2_002",
+      "cefr": "A2",
+      "target_en": "I usually wake up at six thirty every morning.",
+      "target_vi": "Tôi thường thức dậy lúc sáu giờ rưỡi mỗi sáng.",
+      "context": "routine",
+      "difficulty_hints": ["/ʒ/ in 'usually'", "th- in 'thirty'"]
+    },
+    {
+      "id": "s_a2_003",
+      "cefr": "A2",
+      "target_en": "After dinner we watch the news on television.",
+      "target_vi": "Sau bữa tối chúng tôi xem tin tức trên tivi.",
+      "context": "routine",
+      "difficulty_hints": ["/ft/ cluster", "/tʃ/ in 'watch'", "/v/ in 'television'"]
+    },
+    {
+      "id": "s_a2_004",
+      "cefr": "A2",
+      "target_en": "He walks his dog in the park every evening.",
+      "target_vi": "Anh ấy dắt chó đi dạo trong công viên mỗi tối.",
+      "context": "routine",
+      "difficulty_hints": ["/lk/ cluster plus -s 3rd person", "/z/ in 'his'"]
+    },
+    {
+      "id": "s_a2_005",
+      "cefr": "A2",
+      "target_en": "On Sundays I relax and read a good book.",
+      "target_vi": "Vào Chủ nhật tôi thư giãn và đọc một quyển sách hay.",
+      "context": "routine",
+      "difficulty_hints": ["/nd/ plus -s plural", "final -d in 'read' past"]
+    },
+    {
+      "id": "s_a2_006",
+      "cefr": "A2",
+      "target_en": "My grandmother lives in the countryside with her sister.",
+      "target_vi": "Bà tôi sống ở vùng quê với em gái của bà.",
+      "context": "family",
+      "difficulty_hints": ["/gr/ cluster", "voiced th- in 'with'"]
+    },
+    {
+      "id": "s_a2_007",
+      "cefr": "A2",
+      "target_en": "We visit my uncle's house during the holidays.",
+      "target_vi": "Chúng tôi thăm nhà chú vào dịp lễ.",
+      "context": "family",
+      "difficulty_hints": ["/v/ in 'visit'", "possessive -'s"]
+    },
+    {
+      "id": "s_a2_008",
+      "cefr": "A2",
+      "target_en": "His daughter studies medicine at a famous university.",
+      "target_vi": "Con gái ông ấy học y ở một trường đại học nổi tiếng.",
+      "context": "family",
+      "difficulty_hints": ["/z/ 3rd person 'studies'", "final -s in 'famous'"]
+    },
+    {
+      "id": "s_a2_009",
+      "cefr": "A2",
+      "target_en": "My parents have been married for thirty years.",
+      "target_vi": "Bố mẹ tôi đã kết hôn được ba mươi năm.",
+      "context": "family",
+      "difficulty_hints": ["final -d past in 'married'", "th- in 'thirty'"]
+    },
+    {
+      "id": "s_a2_010",
+      "cefr": "A2",
+      "target_en": "Our cousin is moving to Canada next month.",
+      "target_vi": "Anh họ của chúng tôi sắp chuyển đến Canada tháng sau.",
+      "context": "family",
+      "difficulty_hints": ["/nt/ cluster in 'next'", "final -nθ in 'month'"]
+    },
+    {
+      "id": "s_a2_011",
+      "cefr": "A2",
+      "target_en": "Could you pass the salt and pepper, please?",
+      "target_vi": "Bạn có thể đưa giúp muối và tiêu không?",
+      "context": "food",
+      "difficulty_hints": ["/ld/ cluster in 'could'", "/lt/ cluster in 'salt'"]
+    },
+    {
+      "id": "s_a2_012",
+      "cefr": "A2",
+      "target_en": "This soup tastes too salty for my liking.",
+      "target_vi": "Món súp này quá mặn so với khẩu vị của tôi.",
+      "context": "food",
+      "difficulty_hints": ["voiced th- in 'this'", "/sts/ ending on 'tastes'"]
+    },
+    {
+      "id": "s_a2_013",
+      "cefr": "A2",
+      "target_en": "I would like to try the grilled chicken dish.",
+      "target_vi": "Tôi muốn thử món gà nướng.",
+      "context": "food",
+      "difficulty_hints": ["/gr/ cluster", "final -d past on 'grilled'", "/tʃ/ twice"]
+    },
+    {
+      "id": "s_a2_014",
+      "cefr": "A2",
+      "target_en": "She bakes fresh bread every single weekend afternoon.",
+      "target_vi": "Cô ấy nướng bánh mì mới mỗi chiều cuối tuần.",
+      "context": "food",
+      "difficulty_hints": ["/ʃ/ in 'She'", "/fr/ and /br/ clusters"]
+    },
+    {
+      "id": "s_a2_015",
+      "cefr": "A2",
+      "target_en": "The restaurant serves excellent seafood by the beach.",
+      "target_vi": "Nhà hàng đó phục vụ hải sản ngon cạnh bãi biển.",
+      "context": "food",
+      "difficulty_hints": ["/str/ cluster", "/v/ in 'serves'", "/tʃ/ in 'beach'"]
+    },
+    {
+      "id": "s_a2_016",
+      "cefr": "A2",
+      "target_en": "Turn left at the traffic lights, then go straight.",
+      "target_vi": "Rẽ trái ở đèn giao thông rồi đi thẳng.",
+      "context": "travel",
+      "difficulty_hints": ["/tr/ cluster", "/str/ cluster in 'straight'"]
+    },
+    {
+      "id": "s_a2_017",
+      "cefr": "A2",
+      "target_en": "The airport is about ten kilometers from here.",
+      "target_vi": "Sân bay cách đây khoảng mười cây số.",
+      "context": "travel",
+      "difficulty_hints": ["/rp/ cluster in 'airport'", "initial vowel in 'airport'"]
+    },
+    {
+      "id": "s_a2_018",
+      "cefr": "A2",
+      "target_en": "I'd like a return ticket to Da Nang, please.",
+      "target_vi": "Cho tôi một vé khứ hồi đi Đà Nẵng.",
+      "context": "travel",
+      "difficulty_hints": ["/rn/ final in 'return'", "/tk/ cluster"]
+    },
+    {
+      "id": "s_a2_019",
+      "cefr": "A2",
+      "target_en": "We missed the last train back to the city.",
+      "target_vi": "Chúng tôi bị lỡ chuyến tàu cuối về thành phố.",
+      "context": "travel",
+      "difficulty_hints": ["/st/ cluster in 'missed' and 'last'", "/tr/ cluster"]
+    },
+    {
+      "id": "s_a2_020",
+      "cefr": "A2",
+      "target_en": "How long does it take to walk there?",
+      "target_vi": "Đi bộ đến đó mất bao lâu?",
+      "context": "travel",
+      "difficulty_hints": ["final -ng", "/lk/ cluster in 'walk'"]
+    },
+    {
+      "id": "s_a2_021",
+      "cefr": "A2",
+      "target_en": "How much does this beautiful blue shirt cost?",
+      "target_vi": "Chiếc áo sơ mi xanh đẹp này giá bao nhiêu?",
+      "context": "shopping",
+      "difficulty_hints": ["voiced th- in 'this'", "/bl/ cluster", "/ʃ/ in 'shirt'"]
+    },
+    {
+      "id": "s_a2_022",
+      "cefr": "A2",
+      "target_en": "These shoes are too expensive for my budget.",
+      "target_vi": "Đôi giày này quá đắt so với ngân sách của tôi.",
+      "context": "shopping",
+      "difficulty_hints": ["voiced th- in 'these'", "/ʃ/ in 'shoes'", "final -ks cluster"]
+    },
+    {
+      "id": "s_a2_023",
+      "cefr": "A2",
+      "target_en": "Do you accept credit cards or only cash?",
+      "target_vi": "Bạn có nhận thẻ tín dụng hay chỉ tiền mặt?",
+      "context": "shopping",
+      "difficulty_hints": ["/ks/ in 'accept'", "/kr/ cluster"]
+    },
+    {
+      "id": "s_a2_024",
+      "cefr": "A2",
+      "target_en": "I'm looking for a smaller size in black.",
+      "target_vi": "Tôi tìm một cỡ nhỏ hơn màu đen.",
+      "context": "shopping",
+      "difficulty_hints": ["/sm/ cluster", "/bl/ cluster", "final -k in 'black'"]
+    },
+    {
+      "id": "s_a2_025",
+      "cefr": "A2",
+      "target_en": "The store closes at nine every Sunday evening.",
+      "target_vi": "Cửa hàng đóng cửa lúc chín giờ tối Chủ nhật.",
+      "context": "shopping",
+      "difficulty_hints": ["/st/ cluster", "/z/ 3rd person in 'closes'"]
+    },
+    {
+      "id": "s_b1_001",
+      "cefr": "B1",
+      "target_en": "I think learning new languages really opens your mind.",
+      "target_vi": "Tôi nghĩ học ngôn ngữ mới thực sự mở mang đầu óc.",
+      "context": "opinion",
+      "difficulty_hints": ["th- in 'think'", "final -z in 'languages' and 'opens'"]
+    },
+    {
+      "id": "s_b1_002",
+      "cefr": "B1",
+      "target_en": "Honestly, I believe that exercise makes people happier.",
+      "target_vi": "Thành thật mà nói, tôi tin tập thể dục khiến người ta hạnh phúc hơn.",
+      "context": "opinion",
+      "difficulty_hints": ["silent h- in 'honestly'", "voiced th- in 'that'"]
+    },
+    {
+      "id": "s_b1_003",
+      "cefr": "B1",
+      "target_en": "In my opinion, this movie deserves more recognition.",
+      "target_vi": "Theo ý tôi, phim này xứng đáng được biết đến nhiều hơn.",
+      "context": "opinion",
+      "difficulty_hints": ["/v/ in 'movie'", "/z/ 3rd person in 'deserves'"]
+    },
+    {
+      "id": "s_b1_004",
+      "cefr": "B1",
+      "target_en": "I strongly agree that travel broadens our horizons.",
+      "target_vi": "Tôi hoàn toàn đồng ý rằng du lịch mở rộng tầm nhìn.",
+      "context": "opinion",
+      "difficulty_hints": ["/str/ cluster", "/tr/ cluster", "/br/ cluster"]
+    },
+    {
+      "id": "s_b1_005",
+      "cefr": "B1",
+      "target_en": "Personally, I find classical music very relaxing indeed.",
+      "target_vi": "Cá nhân tôi thấy nhạc cổ điển rất thư giãn.",
+      "context": "opinion",
+      "difficulty_hints": ["/kl/ cluster in 'classical'", "/v/ in 'very'"]
+    },
+    {
+      "id": "s_b1_006",
+      "cefr": "B1",
+      "target_en": "Most people would rather avoid difficult conversations altogether.",
+      "target_vi": "Hầu hết mọi người thà tránh những cuộc trò chuyện khó chịu.",
+      "context": "opinion",
+      "difficulty_hints": ["/st/ cluster in 'most'", "/v/ in 'avoid'"]
+    },
+    {
+      "id": "s_b1_007",
+      "cefr": "B1",
+      "target_en": "I have never tried skydiving but I'd like to.",
+      "target_vi": "Tôi chưa bao giờ thử nhảy dù nhưng tôi muốn thử.",
+      "context": "experience",
+      "difficulty_hints": ["/v/ in 'have' and 'never'", "/sk/ cluster"]
+    },
+    {
+      "id": "s_b1_008",
+      "cefr": "B1",
+      "target_en": "She has traveled to more than twenty countries already.",
+      "target_vi": "Cô ấy đã đi hơn hai mươi quốc gia rồi.",
+      "context": "experience",
+      "difficulty_hints": ["/z/ in 'has'", "final -d past", "th- in 'than'"]
+    },
+    {
+      "id": "s_b1_009",
+      "cefr": "B1",
+      "target_en": "We spent two weeks exploring the mountains of Nepal.",
+      "target_vi": "Chúng tôi dành hai tuần khám phá những ngọn núi ở Nepal.",
+      "context": "experience",
+      "difficulty_hints": ["/sp/ cluster", "final -ks plural", "/pl/ cluster"]
+    },
+    {
+      "id": "s_b1_010",
+      "cefr": "B1",
+      "target_en": "Have you ever eaten authentic Vietnamese pho before?",
+      "target_vi": "Bạn đã bao giờ ăn phở Việt Nam chính gốc chưa?",
+      "context": "experience",
+      "difficulty_hints": ["/v/ in 'Have' and 'Vietnamese'", "th- in 'authentic'"]
+    },
+    {
+      "id": "s_b1_011",
+      "cefr": "B1",
+      "target_en": "Last summer I learned how to play the guitar.",
+      "target_vi": "Mùa hè năm ngoái tôi đã học chơi guitar.",
+      "context": "experience",
+      "difficulty_hints": ["/st/ cluster", "final -d past", "/pl/ cluster"]
+    },
+    {
+      "id": "s_b1_012",
+      "cefr": "B1",
+      "target_en": "I've been working from home since the pandemic started.",
+      "target_vi": "Tôi làm việc ở nhà kể từ khi đại dịch bắt đầu.",
+      "context": "experience",
+      "difficulty_hints": ["/v/ in 'I've'", "final -ng", "/st/ cluster"]
+    },
+    {
+      "id": "s_b1_013",
+      "cefr": "B1",
+      "target_en": "If I had more time, I would learn another language.",
+      "target_vi": "Nếu tôi có nhiều thời gian hơn, tôi sẽ học thêm ngôn ngữ khác.",
+      "context": "hypothetical",
+      "difficulty_hints": ["final -d in 'had'", "voiced th- in 'another'"]
+    },
+    {
+      "id": "s_b1_014",
+      "cefr": "B1",
+      "target_en": "I wish I could speak English as fluently as you.",
+      "target_vi": "Tôi ước mình có thể nói tiếng Anh trôi chảy như bạn.",
+      "context": "hypothetical",
+      "difficulty_hints": ["/ʃ/ in 'wish'", "/sp/ and /fl/ clusters"]
+    },
+    {
+      "id": "s_b1_015",
+      "cefr": "B1",
+      "target_en": "If it rains tomorrow, we'll stay inside and read.",
+      "target_vi": "Nếu mai trời mưa, chúng tôi sẽ ở trong nhà và đọc sách.",
+      "context": "hypothetical",
+      "difficulty_hints": ["final -nz in 'rains'", "/st/ cluster"]
+    },
+    {
+      "id": "s_b1_016",
+      "cefr": "B1",
+      "target_en": "Would you rather live in the mountains or by the sea?",
+      "target_vi": "Bạn thích sống ở vùng núi hay ven biển hơn?",
+      "context": "hypothetical",
+      "difficulty_hints": ["voiced th- in 'rather' and 'the'", "final -nz plural"]
+    },
+    {
+      "id": "s_b1_017",
+      "cefr": "B1",
+      "target_en": "If he studied harder, he might pass the final exam.",
+      "target_vi": "Nếu anh ấy học chăm hơn, anh có thể đỗ kỳ thi cuối.",
+      "context": "hypothetical",
+      "difficulty_hints": ["final -d past", "/ks/ in 'exam'"]
+    },
+    {
+      "id": "s_b1_018",
+      "cefr": "B1",
+      "target_en": "I'd rather not say anything unless I'm completely sure.",
+      "target_vi": "Tôi thà không nói gì trừ khi tôi hoàn toàn chắc chắn.",
+      "context": "hypothetical",
+      "difficulty_hints": ["voiced th- in 'rather'", "final -ng", "/ʃ/ in 'sure'"]
+    },
+    {
+      "id": "s_b1_019",
+      "cefr": "B1",
+      "target_en": "I feel quite excited about the upcoming trip abroad.",
+      "target_vi": "Tôi cảm thấy khá hào hứng về chuyến đi nước ngoài sắp tới.",
+      "context": "feeling",
+      "difficulty_hints": ["/ks/ in 'excited'", "/tr/ and /br/ clusters"]
+    },
+    {
+      "id": "s_b1_020",
+      "cefr": "B1",
+      "target_en": "She seemed really disappointed with the exam results yesterday.",
+      "target_vi": "Cô ấy có vẻ thực sự thất vọng về kết quả thi hôm qua.",
+      "context": "feeling",
+      "difficulty_hints": ["final -d past twice", "/ks/ in 'exam'"]
+    },
+    {
+      "id": "s_b1_021",
+      "cefr": "B1",
+      "target_en": "I'm not sure whether to feel proud or embarrassed.",
+      "target_vi": "Tôi không chắc nên cảm thấy tự hào hay xấu hổ.",
+      "context": "feeling",
+      "difficulty_hints": ["voiced th- in 'whether'", "/pr/ cluster", "final -st in 'embarrassed'"]
+    },
+    {
+      "id": "s_b1_022",
+      "cefr": "B1",
+      "target_en": "He looks absolutely thrilled to receive the award tonight.",
+      "target_vi": "Anh ấy trông vui mừng thực sự khi nhận giải thưởng tối nay.",
+      "context": "feeling",
+      "difficulty_hints": ["/ks/ 3rd person in 'looks'", "/θr/ in 'thrilled'"]
+    },
+    {
+      "id": "s_b1_023",
+      "cefr": "B1",
+      "target_en": "Sometimes I feel overwhelmed by all the responsibilities.",
+      "target_vi": "Đôi khi tôi cảm thấy quá tải với tất cả trách nhiệm.",
+      "context": "feeling",
+      "difficulty_hints": ["/v/ in 'overwhelmed'", "final -d past"]
+    },
+    {
+      "id": "s_b1_024",
+      "cefr": "B1",
+      "target_en": "Her kindness always brightens up my whole day tremendously.",
+      "target_vi": "Lòng tốt của cô ấy luôn làm cả ngày tôi vui hẳn lên.",
+      "context": "feeling",
+      "difficulty_hints": ["/nd/ cluster in 'kindness'", "/br/ cluster", "silent gh in 'brightens'"]
+    },
+    {
+      "id": "s_b1_025",
+      "cefr": "B1",
+      "target_en": "I often feel nostalgic when I hear old songs.",
+      "target_vi": "Tôi thường thấy hoài niệm khi nghe các bài hát cũ.",
+      "context": "feeling",
+      "difficulty_hints": ["/ft/ cluster", "/lg/ cluster", "final -z plural"]
+    },
+    {
+      "id": "s_b2_001",
+      "cefr": "B2",
+      "target_en": "The concept of freedom varies across different cultures worldwide.",
+      "target_vi": "Khái niệm tự do khác nhau ở mỗi nền văn hoá trên thế giới.",
+      "context": "abstract",
+      "difficulty_hints": ["/nc/ cluster", "/v/ in 'varies'", "voiced th- in 'the'"]
+    },
+    {
+      "id": "s_b2_002",
+      "cefr": "B2",
+      "target_en": "Education shapes not only careers but also character deeply.",
+      "target_vi": "Giáo dục định hình không chỉ sự nghiệp mà còn cả nhân cách.",
+      "context": "abstract",
+      "difficulty_hints": ["/ʃ/ in 'shapes'", "/tʃ/ in 'character'"]
+    },
+    {
+      "id": "s_b2_003",
+      "cefr": "B2",
+      "target_en": "Technology continues to transform how we communicate each day.",
+      "target_vi": "Công nghệ tiếp tục thay đổi cách chúng ta giao tiếp mỗi ngày.",
+      "context": "abstract",
+      "difficulty_hints": ["/tʃ/ in 'technology' and 'each'", "/tr/ in 'transform'"]
+    },
+    {
+      "id": "s_b2_004",
+      "cefr": "B2",
+      "target_en": "Creativity often emerges from constraints rather than freedom.",
+      "target_vi": "Sáng tạo thường nảy sinh từ giới hạn chứ không phải tự do.",
+      "context": "abstract",
+      "difficulty_hints": ["/kr/ cluster", "/str/ cluster", "voiced th- in 'than'"]
+    },
+    {
+      "id": "s_b2_005",
+      "cefr": "B2",
+      "target_en": "True happiness rarely depends on material possessions alone.",
+      "target_vi": "Hạnh phúc thật sự hiếm khi chỉ phụ thuộc vào vật chất.",
+      "context": "abstract",
+      "difficulty_hints": ["/tr/ cluster", "final -lz and -nz plural"]
+    },
+    {
+      "id": "s_b2_006",
+      "cefr": "B2",
+      "target_en": "Climate change poses one of humanity's greatest challenges today.",
+      "target_vi": "Biến đổi khí hậu là một trong những thách thức lớn nhất của nhân loại.",
+      "context": "abstract",
+      "difficulty_hints": ["/kl/ cluster", "/tʃ/ in 'change'", "/z/ in 'poses'"]
+    },
+    {
+      "id": "s_b2_007",
+      "cefr": "B2",
+      "target_en": "Curiosity is perhaps the most powerful engine of learning.",
+      "target_vi": "Tò mò có lẽ là động cơ mạnh mẽ nhất của việc học.",
+      "context": "abstract",
+      "difficulty_hints": ["/st/ cluster in 'most'", "sentence-level stress on 'perhaps'"]
+    },
+    {
+      "id": "s_b2_008",
+      "cefr": "B2",
+      "target_en": "Had I known earlier, I would have called you immediately.",
+      "target_vi": "Nếu biết sớm hơn, tôi đã gọi cho bạn ngay.",
+      "context": "conditional",
+      "difficulty_hints": ["inversion stress", "final -d past twice"]
+    },
+    {
+      "id": "s_b2_009",
+      "cefr": "B2",
+      "target_en": "Were I in your position, I'd handle it differently.",
+      "target_vi": "Nếu tôi ở vị trí của bạn, tôi sẽ xử lý khác.",
+      "context": "conditional",
+      "difficulty_hints": ["inversion 'Were I'", "/ʃ/ in 'position'"]
+    },
+    {
+      "id": "s_b2_010",
+      "cefr": "B2",
+      "target_en": "If technology had advanced faster, many problems might disappear.",
+      "target_vi": "Nếu công nghệ tiến bộ nhanh hơn, nhiều vấn đề có thể biến mất.",
+      "context": "conditional",
+      "difficulty_hints": ["/nst/ cluster in 'advanced'", "/pr/ cluster"]
+    },
+    {
+      "id": "s_b2_011",
+      "cefr": "B2",
+      "target_en": "Should the meeting be postponed, please notify everyone immediately.",
+      "target_vi": "Nếu cuộc họp bị hoãn, xin thông báo cho mọi người ngay.",
+      "context": "conditional",
+      "difficulty_hints": ["inversion 'Should'", "/stp/ cluster 'postponed'"]
+    },
+    {
+      "id": "s_b2_012",
+      "cefr": "B2",
+      "target_en": "Unless we act decisively, the situation could worsen significantly.",
+      "target_vi": "Trừ khi chúng ta hành động quyết liệt, tình hình có thể xấu đi nhiều.",
+      "context": "conditional",
+      "difficulty_hints": ["/ns/ cluster in 'Unless'", "/kt/ cluster in 'act'"]
+    },
+    {
+      "id": "s_b2_013",
+      "cefr": "B2",
+      "target_en": "Provided you arrive early, we'll secure good seats together.",
+      "target_vi": "Miễn là bạn đến sớm, chúng ta sẽ giữ được chỗ tốt cùng nhau.",
+      "context": "conditional",
+      "difficulty_hints": ["/pr/ cluster", "/rl/ cluster in 'early'"]
+    },
+    {
+      "id": "s_b2_014",
+      "cefr": "B2",
+      "target_en": "By next year, she will have completed her master's degree.",
+      "target_vi": "Đến năm sau, cô ấy sẽ hoàn thành bằng thạc sĩ.",
+      "context": "complex_tense",
+      "difficulty_hints": ["/kst/ cluster", "final -d past in 'completed'"]
+    },
+    {
+      "id": "s_b2_015",
+      "cefr": "B2",
+      "target_en": "I had been waiting for hours before the news arrived.",
+      "target_vi": "Tôi đã chờ hàng giờ trước khi tin tức đến.",
+      "context": "complex_tense",
+      "difficulty_hints": ["final -d in 'had' and 'arrived'", "final -rz plural"]
+    },
+    {
+      "id": "s_b2_016",
+      "cefr": "B2",
+      "target_en": "They were being watched the entire time, without realizing.",
+      "target_vi": "Họ bị theo dõi suốt thời gian đó mà không hề hay biết.",
+      "context": "complex_tense",
+      "difficulty_hints": ["/tʃ/ in 'watched'", "voiced th- in 'the'"]
+    },
+    {
+      "id": "s_b2_017",
+      "cefr": "B2",
+      "target_en": "She'll have been teaching for thirty years by December.",
+      "target_vi": "Đến tháng Mười Hai cô ấy sẽ dạy học được ba mươi năm.",
+      "context": "complex_tense",
+      "difficulty_hints": ["/ʃl/ in 'She'll'", "th- in 'thirty'"]
+    },
+    {
+      "id": "s_b2_018",
+      "cefr": "B2",
+      "target_en": "Had you arrived earlier, you would have seen the performance.",
+      "target_vi": "Nếu bạn đến sớm hơn, bạn đã được xem buổi biểu diễn.",
+      "context": "complex_tense",
+      "difficulty_hints": ["inversion 'Had'", "/rf/ cluster in 'performance'"]
+    },
+    {
+      "id": "s_b2_019",
+      "cefr": "B2",
+      "target_en": "We have been considering multiple options throughout the discussion.",
+      "target_vi": "Chúng tôi đã cân nhắc nhiều phương án trong suốt cuộc thảo luận.",
+      "context": "complex_tense",
+      "difficulty_hints": ["/nd/ cluster", "/pl/ cluster", "voiceless th- in 'throughout'"]
+    },
+    {
+      "id": "s_b2_020",
+      "cefr": "B2",
+      "target_en": "It seems rather unlikely that we'll reach a consensus today.",
+      "target_vi": "Có vẻ khó có khả năng hôm nay chúng ta sẽ đạt được sự đồng thuận.",
+      "context": "nuance",
+      "difficulty_hints": ["voiced th- in 'rather' and 'that'", "/tʃ/ in 'reach'"]
+    },
+    {
+      "id": "s_b2_021",
+      "cefr": "B2",
+      "target_en": "One could argue that democracy remains a fragile institution.",
+      "target_vi": "Có thể nói dân chủ vẫn là một thể chế mong manh.",
+      "context": "nuance",
+      "difficulty_hints": ["/rg/ cluster in 'argue'", "/fr/ cluster in 'fragile'"]
+    },
+    {
+      "id": "s_b2_022",
+      "cefr": "B2",
+      "target_en": "Arguably, his approach tends to oversimplify complex issues.",
+      "target_vi": "Có thể nói, cách tiếp cận của anh ấy có xu hướng đơn giản hoá vấn đề phức tạp.",
+      "context": "nuance",
+      "difficulty_hints": ["/tʃ/ in 'approach'", "/pl/ cluster", "/ʃ/ plus -z in 'issues'"]
+    },
+    {
+      "id": "s_b2_023",
+      "cefr": "B2",
+      "target_en": "Nothing could be further from the truth, in my view.",
+      "target_vi": "Không gì có thể xa sự thật hơn thế, theo tôi.",
+      "context": "nuance",
+      "difficulty_hints": ["voiceless th- in 'Nothing', 'further', 'truth'", "/v/ in 'view'"]
+    },
+    {
+      "id": "s_b2_024",
+      "cefr": "B2",
+      "target_en": "Generally speaking, such assumptions are rarely entirely accurate.",
+      "target_vi": "Nói chung, những giả định như vậy hiếm khi hoàn toàn chính xác.",
+      "context": "nuance",
+      "difficulty_hints": ["/dʒ/ in 'generally'", "/sp/ cluster", "final -nz plural"]
+    },
+    {
+      "id": "s_b2_025",
+      "cefr": "B2",
+      "target_en": "Perhaps we've been underestimating the difficulty all along.",
+      "target_vi": "Có lẽ chúng ta đã đánh giá thấp mức độ khó khăn bấy lâu nay.",
+      "context": "nuance",
+      "difficulty_hints": ["/v/ in 'we've'", "voiced th- in 'the'", "final -ng"]
+    }
+  ]
+}
