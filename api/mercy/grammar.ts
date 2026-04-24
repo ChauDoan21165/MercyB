@@ -1,8 +1,12 @@
 // File: api/mercy/grammar.ts
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { createClient } from "@supabase/supabase-js";
-import { firstL1HintFromIssues, type L1HintPayload } from "../../server/mercy/l1HintAdapter";
-import { isFlagEnabledForUser } from "../../src/lib/featureFlags";
+// Imports resolved to api/_lib/ — Vercel's serverless bundler failed to
+// trace relative imports outside the api/ subtree (see
+// fix/grammar-api-import-path for the ERR_MODULE_NOT_FOUND outage that
+// returned 500 on every grammar request until this move).
+import { firstL1HintFromIssues, type L1HintPayload } from "../_lib/l1HintAdapter";
+import { isFlagEnabledForUser } from "../_lib/featureFlags";
 
 type GrammarBody = {
   text?: string; context?: string; mode?: string;
