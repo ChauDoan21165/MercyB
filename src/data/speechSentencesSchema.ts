@@ -19,6 +19,42 @@ export type SentenceCefr = (typeof SENTENCE_CEFR_LEVELS)[number];
 // ID pattern: s_<cefr-lower>_<3-digit>. Example: s_a1_001, s_b2_014.
 const ID_PATTERN = /^s_(a1|a2|b1|b2)_\d{3}$/;
 
+/**
+ * Round 5 topic labels. New records written after 2026-04-28 use one of
+ * the first 6 values (work/daily/texting/email/shopping/money). The rest
+ * are the free-form `context` values already present in the original 100
+ * records — kept in the allow-list so legacy rows still validate. When
+ * more topics appear in future rounds, extend this array.
+ */
+export const SENTENCE_TOPICS = [
+  // Round 5 — CC1 batch (daily life & work)
+  'work',
+  'daily',
+  'texting',
+  'email',
+  'shopping',
+  'money',
+  // Legacy context labels present in the original 100 records — kept so
+  // those rows still validate. Do not add new legacy labels here; any
+  // new record should use one of the Round-5 topics above.
+  'greeting',
+  'numbers',
+  'introduction',
+  'family',
+  'food',
+  'feeling',
+  'opinion',
+  'routine',
+  'travel',
+  'experience',
+  'abstract',
+  'conditional',
+  'complex_tense',
+  'hypothetical',
+  'nuance',
+] as const;
+export type SentenceTopic = (typeof SENTENCE_TOPICS)[number];
+
 export const SpeechSentenceSchema = z.object({
   id: z.string().regex(ID_PATTERN, 'id must match s_<cefr>_<nnn>'),
   cefr: z.enum(SENTENCE_CEFR_LEVELS),
@@ -27,6 +63,24 @@ export const SpeechSentenceSchema = z.object({
   context: z.string().min(1),
   /** Short notes to coaches / future difficulty-tuning. Never shown to users. */
   difficulty_hints: z.array(z.string().min(1)).default([]),
+  /**
+   * L1-interference rule IDs the sentence exercises. Match the tags in
+   * src/lib/feedback/l1-error-detector.ts (L1WeaknessTag). Optional —
+   * pre-Round-5 records predate the detector wiring and leave this absent.
+   */
+  l1_rule_ids: z.array(z.string().min(1)).optional(),
+  /**
+   * Short Vietnamese-facing note on a tricky grammar or cultural point.
+   * Shown to learners next to the translation in future lesson UI. Null
+   * or omitted when nothing is tricky.
+   */
+  vn_note: z.string().min(1).nullable().optional(),
+  /**
+   * Author flag — set true when the writer is uncertain about the
+   * translation, CEFR level, or cultural fit and wants Chau to review
+   * before the sentence ships to learners.
+   */
+  needs_review: z.boolean().optional(),
 });
 
 export type SpeechSentence = z.infer<typeof SpeechSentenceSchema>;
