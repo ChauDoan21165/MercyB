@@ -1,6 +1,6 @@
 // src/pages/speech/SpeechHistoryPage.tsx
 //
-// Route: /speech/history — "Your pronunciation journey / Hành trình phát âm của bạn".
+// Route: /speech/history — "My Pronunciation History / Lịch sử phát âm của tôi".
 //
 // Top block: big average score + 7/30/90-day windows + trend arrow.
 // Middle:    newest-first attempt list with tap-to-expand word breakdown.
@@ -179,10 +179,10 @@ function TrendBadge({ trend }: { trend: Trend }) {
   }
   const label =
     trend === "improving"
-      ? { arrow: "↗", en: "Improving", vi: "Đang tiến bộ", color: "#059669" }
+      ? { en: "Improving 🔥", vi: "Đang tiến bộ 🔥", a11y: "Improving", color: "#059669" }
       : trend === "declining"
-        ? { arrow: "↘", en: "Declining", vi: "Đang giảm", color: "#dc2626" }
-        : { arrow: "→", en: "Stable", vi: "Ổn định", color: "#64748b" };
+        ? { en: "Room to improve", vi: "Còn có thể tiến bộ hơn", a11y: "Room to improve", color: "#dc2626" }
+        : { en: "Stable ✓", vi: "Ổn định ✓", a11y: "Stable", color: "#64748b" };
   return (
     <span
       style={{
@@ -193,11 +193,8 @@ function TrendBadge({ trend }: { trend: Trend }) {
         color: label.color,
         fontWeight: 700,
       }}
-      aria-label={`Trend: ${label.en}`}
+      aria-label={`Trend: ${label.a11y}`}
     >
-      <span aria-hidden style={{ fontSize: 16 }}>
-        {label.arrow}
-      </span>
       {label.en} · {label.vi}
     </span>
   );
@@ -279,8 +276,8 @@ export default function SpeechHistoryPage() {
     <div style={wrap}>
       <div style={column}>
         <header>
-          <h1 style={heading}>Your pronunciation journey</h1>
-          <div style={headingVi}>Hành trình phát âm của bạn</div>
+          <h1 style={heading}>My Pronunciation History</h1>
+          <div style={headingVi}>Lịch sử phát âm của tôi</div>
         </header>
 
         {error ? (
@@ -316,7 +313,7 @@ export default function SpeechHistoryPage() {
                 color: "rgba(0,0,0,0.55)",
               }}
             >
-              Average score · Điểm trung bình
+              Average last 90 days · Điểm trung bình 90 ngày qua
             </div>
             <div
               style={{
@@ -349,20 +346,20 @@ export default function SpeechHistoryPage() {
               }}
             >
               <StatCell
-                labelEn="This week"
-                labelVi="Tuần này"
+                labelEn="Last 7 days"
+                labelVi="7 ngày gần nhất"
                 attempts={stats.attempts_7d}
                 avg={stats.avg_score_7d}
               />
               <StatCell
-                labelEn="This month"
-                labelVi="Tháng này"
+                labelEn="Last 30 days"
+                labelVi="30 ngày gần nhất"
                 attempts={stats.attempts_30d}
                 avg={stats.avg_score_30d}
               />
               <StatCell
-                labelEn="All time · 90d"
-                labelVi="90 ngày"
+                labelEn="Total attempts"
+                labelVi="Tổng số lần luyện"
                 attempts={stats.attempts_90d}
                 avg={stats.avg_score_90d}
               />
@@ -421,7 +418,7 @@ export default function SpeechHistoryPage() {
                   onClick={() => void loadMore()}
                   disabled={loadingMore}
                 >
-                  {loadingMore ? "Loading…" : "Load more · Xem thêm"}
+                  {loadingMore ? "Loading…" : "Load more attempts · Tải thêm"}
                 </button>
               </div>
             ) : null}
@@ -437,14 +434,25 @@ export default function SpeechHistoryPage() {
             <div style={{ fontSize: 48 }} aria-hidden>
               🎤
             </div>
-            <div style={{ marginTop: 8, fontSize: 16, fontWeight: 800 }}>
-              No attempts yet.
+            <div
+              style={{
+                marginTop: 8,
+                fontSize: 16,
+                fontWeight: 800,
+                whiteSpace: "pre-line",
+              }}
+            >
+              {"You haven't practiced pronunciation yet.\nGo to the Speak page to record your first attempt."}
             </div>
-            <div style={{ marginTop: 4, fontSize: 13, color: "#94a3b8" }}>
-              Chưa có lần thử nào.
-            </div>
-            <div style={{ marginTop: 14, fontSize: 13, color: "#475569" }}>
-              Try <code>/speak</code> to start.
+            <div
+              style={{
+                marginTop: 8,
+                fontSize: 13,
+                color: "#94a3b8",
+                whiteSpace: "pre-line",
+              }}
+            >
+              {"Bạn chưa luyện phát âm lần nào.\nHãy vào trang Speak để ghi âm lần đầu nhé!"}
             </div>
           </section>
         ) : null}
@@ -458,7 +466,7 @@ export default function SpeechHistoryPage() {
               onClick={() => navigate("/speak")}
               aria-label="Practice more"
             >
-              Practice more · Luyện thêm
+              Practice more · Luyện thêm ngay
             </button>
           </div>
         ) : null}

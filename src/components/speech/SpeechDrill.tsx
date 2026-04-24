@@ -434,7 +434,7 @@ export function SpeechDrill({
           aria-label="View your pronunciation history"
           data-testid="speech-drill-view-history"
         >
-          View your history · Xem lịch sử →
+          View history · Xem lịch sử
         </button>
       ) : null}
     </div>

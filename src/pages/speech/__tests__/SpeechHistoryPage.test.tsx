@@ -111,8 +111,8 @@ describe("SpeechHistoryPage — happy path", () => {
       expect(screen.getByLabelText(/Average score 75 out of 100/i)).toBeTruthy();
     });
     // window labels
-    expect(screen.getByText("This week")).toBeTruthy();
-    expect(screen.getByText("Tuần này")).toBeTruthy();
+    expect(screen.getByText("Last 7 days")).toBeTruthy();
+    expect(screen.getByText("7 ngày gần nhất")).toBeTruthy();
     // attempt rendered
     expect(screen.getByText(/The word is water/i)).toBeTruthy();
   });
@@ -154,8 +154,12 @@ describe("SpeechHistoryPage — happy path", () => {
     await waitFor(() => {
       expect(screen.getByTestId("speech-history-empty")).toBeTruthy();
     });
-    expect(screen.getByText("No attempts yet.")).toBeTruthy();
-    expect(screen.getByText("Chưa có lần thử nào.")).toBeTruthy();
+    expect(
+      screen.getByText(/You haven't practiced pronunciation yet/i),
+    ).toBeTruthy();
+    expect(
+      screen.getByText(/Bạn chưa luyện phát âm lần nào/i),
+    ).toBeTruthy();
   });
 
   it("expands a row on click to show the word-by-word breakdown", async () => {
