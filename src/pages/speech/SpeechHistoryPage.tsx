@@ -23,6 +23,44 @@ import {
   EMPTY_STATS,
 } from "@/services/speechHistory";
 
+// ── Copy (bilingual, single source of truth) ─────────────────────────
+
+const pageTitle = "My Pronunciation History · Lịch sử phát âm của tôi";
+
+const averageLabel = "Average last 90 days · Điểm trung bình 90 ngày qua";
+
+const statLabels = {
+  sevenDays: "Last 7 days · 7 ngày gần nhất",
+  thirtyDays: "Last 30 days · 30 ngày gần nhất",
+  totalAttempts: "Total attempts · Tổng số lần luyện",
+};
+
+const trendMessages = {
+  improving: "Improving 🔥 · Đang tiến bộ 🔥",
+  stable: "Stable ✓ · Ổn định ✓",
+  declining: "Room to improve 📈 · Còn có thể tiến bộ hơn",
+  insufficient: "Not enough data yet · Chưa đủ dữ liệu",
+};
+
+// Emoji-free a11y labels for screen readers (aria-label shouldn't read emoji).
+const trendA11y = {
+  improving: "Improving",
+  stable: "Stable",
+  declining: "Room to improve",
+  insufficient: "Not enough data yet",
+};
+
+const emptyState = {
+  en: "You haven't practiced pronunciation yet.\nGo to the Speak page to record your first attempt.",
+  vi: "Bạn chưa luyện phát âm lần nào.\nHãy vào trang Speak để ghi âm lần đầu nhé!",
+};
+
+const buttons = {
+  viewHistory: "View history · Xem lịch sử",
+  loadMore: "Load more attempts · Tải thêm",
+  practiceMore: "Practice more · Luyện thêm ngay",
+};
+
 // ── Styling tokens (match SpeechDrillPage / AccountPage palette) ──────
 
 const wrap: React.CSSProperties = {
@@ -55,13 +93,6 @@ const heading: React.CSSProperties = {
   letterSpacing: -0.3,
   margin: 0,
   color: "rgba(10,10,10,0.94)",
-};
-
-const headingVi: React.CSSProperties = {
-  marginTop: 4,
-  fontSize: 13,
-  fontWeight: 500,
-  color: "#94a3b8",
 };
 
 const primaryBtn: React.CSSProperties = {
@@ -169,33 +200,29 @@ function computeTrend(stats: UserPronunciationStats): Trend {
   return "stable";
 }
 
+const trendColor: Record<Trend, string> = {
+  improving: "#059669",
+  stable: "#64748b",
+  declining: "#dc2626",
+  insufficient: "#94a3b8",
+};
+
 function TrendBadge({ trend }: { trend: Trend }) {
-  if (trend === "insufficient") {
-    return (
-      <span style={{ fontSize: 12, color: "#94a3b8" }}>
-        Not enough data yet · Chưa đủ dữ liệu
-      </span>
-    );
-  }
-  const label =
-    trend === "improving"
-      ? { en: "Improving 🔥", vi: "Đang tiến bộ 🔥", a11y: "Improving", color: "#059669" }
-      : trend === "declining"
-        ? { en: "Room to improve", vi: "Còn có thể tiến bộ hơn", a11y: "Room to improve", color: "#dc2626" }
-        : { en: "Stable ✓", vi: "Ổn định ✓", a11y: "Stable", color: "#64748b" };
+  const fontSize = trend === "insufficient" ? 12 : 13;
+  const fontWeight = trend === "insufficient" ? 400 : 700;
   return (
     <span
       style={{
         display: "inline-flex",
         alignItems: "center",
         gap: 6,
-        fontSize: 13,
-        color: label.color,
-        fontWeight: 700,
+        fontSize,
+        color: trendColor[trend],
+        fontWeight,
       }}
-      aria-label={`Trend: ${label.a11y}`}
+      aria-label={`Trend: ${trendA11y[trend]}`}
     >
-      {label.en} · {label.vi}
+      {trendMessages[trend]}
     </span>
   );
 }
@@ -276,8 +303,7 @@ export default function SpeechHistoryPage() {
     <div style={wrap}>
       <div style={column}>
         <header>
-          <h1 style={heading}>My Pronunciation History</h1>
-          <div style={headingVi}>Lịch sử phát âm của tôi</div>
+          <h1 style={heading}>{pageTitle}</h1>
         </header>
 
         {error ? (
@@ -313,7 +339,7 @@ export default function SpeechHistoryPage() {
                 color: "rgba(0,0,0,0.55)",
               }}
             >
-              Average last 90 days · Điểm trung bình 90 ngày qua
+              {averageLabel}
             </div>
             <div
               style={{
@@ -346,20 +372,17 @@ export default function SpeechHistoryPage() {
               }}
             >
               <StatCell
-                labelEn="Last 7 days"
-                labelVi="7 ngày gần nhất"
+                label={statLabels.sevenDays}
                 attempts={stats.attempts_7d}
                 avg={stats.avg_score_7d}
               />
               <StatCell
-                labelEn="Last 30 days"
-                labelVi="30 ngày gần nhất"
+                label={statLabels.thirtyDays}
                 attempts={stats.attempts_30d}
                 avg={stats.avg_score_30d}
               />
               <StatCell
-                labelEn="Total attempts"
-                labelVi="Tổng số lần luyện"
+                label={statLabels.totalAttempts}
                 attempts={stats.attempts_90d}
                 avg={stats.avg_score_90d}
               />
@@ -418,7 +441,7 @@ export default function SpeechHistoryPage() {
                   onClick={() => void loadMore()}
                   disabled={loadingMore}
                 >
-                  {loadingMore ? "Loading…" : "Load more attempts · Tải thêm"}
+                  {loadingMore ? "Loading…" : buttons.loadMore}
                 </button>
               </div>
             ) : null}
@@ -442,7 +465,7 @@ export default function SpeechHistoryPage() {
                 whiteSpace: "pre-line",
               }}
             >
-              {"You haven't practiced pronunciation yet.\nGo to the Speak page to record your first attempt."}
+              {emptyState.en}
             </div>
             <div
               style={{
@@ -452,7 +475,7 @@ export default function SpeechHistoryPage() {
                 whiteSpace: "pre-line",
               }}
             >
-              {"Bạn chưa luyện phát âm lần nào.\nHãy vào trang Speak để ghi âm lần đầu nhé!"}
+              {emptyState.vi}
             </div>
           </section>
         ) : null}
@@ -466,7 +489,7 @@ export default function SpeechHistoryPage() {
               onClick={() => navigate("/speak")}
               aria-label="Practice more"
             >
-              Practice more · Luyện thêm ngay
+              {buttons.practiceMore}
             </button>
           </div>
         ) : null}
@@ -478,13 +501,11 @@ export default function SpeechHistoryPage() {
 // ── Small sub-components ───────────────────────────────────────────────
 
 function StatCell({
-  labelEn,
-  labelVi,
+  label,
   attempts,
   avg,
 }: {
-  labelEn: string;
-  labelVi: string;
+  label: string;
   attempts: number;
   avg: number | null;
 }) {
@@ -501,9 +522,8 @@ function StatCell({
       }}
     >
       <div style={{ fontSize: 11, fontWeight: 700, color: "rgba(0,0,0,0.55)" }}>
-        {labelEn}
+        {label}
       </div>
-      <div style={{ fontSize: 10, color: "#94a3b8" }}>{labelVi}</div>
       <div
         style={{
           marginTop: 4,
