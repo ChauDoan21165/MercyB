@@ -58,6 +58,10 @@ const BlogPost  = lazy(() => import("@/pages/blog/BlogPost"));
 const PublicProfilePage   = lazy(() => import("@/pages/profile/PublicProfilePage"));
 const ShareProgressPage   = lazy(() => import("@/pages/profile/ShareProgressPage"));
 
+const GroupsIndex          = lazy(() => import("@/pages/groups/GroupsIndex"));
+const GroupPage            = lazy(() => import("@/pages/groups/GroupPage"));
+const CreateGroupPage      = lazy(() => import("@/pages/groups/CreateGroupPage"));
+
 const AdminDashboard          = lazy(() => import("@/pages/admin/AdminDashboard"));
 const AdminUsersPage          = lazy(() => import("@/pages/admin/AdminUsersPage"));
 const AdminPaymentsPage       = lazy(() => import("@/pages/admin/AdminPaymentsPage"));
@@ -462,6 +466,29 @@ export default function AppRouter() {
             element={
               <RequireAuth>
                 <LazyPage><SpeechHistoryPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+
+          {/* Study groups (Step 6 / Community) — auth-gated; data RLS is auth-only too */}
+          <Route path="/groups"
+            element={
+              <RequireAuth>
+                <LazyPage><GroupsIndex /></LazyPage>
+              </RequireAuth>
+            }
+          />
+          <Route path="/groups/new"
+            element={
+              <RequireAuth>
+                <LazyPage><CreateGroupPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+          <Route path="/groups/:id"
+            element={
+              <RequireAuth>
+                <LazyPage><GroupPage /></LazyPage>
               </RequireAuth>
             }
           />
