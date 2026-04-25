@@ -1,0 +1,72 @@
+// src/components/pricing/variants/sharedTierData.ts
+//
+// Shared tier copy + price labels for the paywall A/B variants.
+//
+// Single source of truth — every variant reads from here so that
+// when Chau adjusts the price string or the bullet copy, all five
+// variants update at once. The actual Stripe price ids stay where
+// they are (in `src/screens/Pricing.tsx`); this file only holds
+// the display surface.
+//
+// VN-first per project policy: bilingual copy, VN as the primary
+// emotional surface, EN as the support text.
+
+export type SharedPlanKey = "month" | "year";
+
+export type SharedPlan = {
+  key: SharedPlanKey;
+  title_en: string;
+  title_vi: string;
+  price_label: string;
+  price_subtitle_vi: string;
+  cta_en: string;
+  cta_vi: string;
+  bullets_vi: string[];
+  bullets_en: string[];
+};
+
+export const SHARED_PLANS: readonly SharedPlan[] = Object.freeze([
+  {
+    key: "month",
+    title_en: "Monthly",
+    title_vi: "Hàng tháng",
+    price_label: "200 000 VND",
+    price_subtitle_vi: "mỗi tháng — hủy bất cứ lúc nào",
+    cta_en: "Start monthly",
+    cta_vi: "Bắt đầu theo tháng",
+    bullets_vi: [
+      "Toàn quyền truy cập mọi phòng premium",
+      "Linh hoạt — hủy bất cứ lúc nào",
+      "Phù hợp khi muốn thử trước cam kết dài",
+    ],
+    bullets_en: [
+      "Full access to every premium room",
+      "Flexible — cancel anytime",
+      "Best to try before a longer commit",
+    ],
+  },
+  {
+    key: "year",
+    title_en: "Yearly",
+    title_vi: "Hàng năm",
+    price_label: "2 000 000 VND",
+    price_subtitle_vi: "mỗi năm — tiết kiệm 17% (gần 2 tháng miễn phí)",
+    cta_en: "Save with yearly",
+    cta_vi: "Tiết kiệm với gói năm",
+    bullets_vi: [
+      "Tiết kiệm hơn 400.000 VND so với gói tháng",
+      "Toàn quyền truy cập suốt năm — không gián đoạn",
+      "Ít rắc rối thanh toán — yên tâm học",
+    ],
+    bullets_en: [
+      "Save 400,000 VND vs monthly billing",
+      "Full access all year — no interruptions",
+      "Less billing friction — focus on learning",
+    ],
+  },
+]);
+
+export const SHARED_GUARANTEE_VI =
+  "Thanh toán an toàn qua Stripe. Hủy bất cứ lúc nào. Không phí ẩn.";
+export const SHARED_GUARANTEE_EN =
+  "Secure Stripe checkout. Cancel anytime. No hidden fees.";
