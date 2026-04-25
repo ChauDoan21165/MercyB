@@ -57,6 +57,9 @@ const SeoLoiTiengAnhNguoiVietPage    = lazy(() => import("@/pages/seo/LoiTiengAn
 const SeoPhongVanTiengAnhPage        = lazy(() => import("@/pages/seo/PhongVanTiengAnhPage"));
 const SeoHocTiengAnhMienPhiPage      = lazy(() => import("@/pages/seo/HocTiengAnhMienPhiPage"));
 
+// Developer portal — Step 11 public API.
+const DeveloperPortalPage = lazy(() => import("@/pages/dev/DeveloperPortalPage"));
+
 const BlogIndex = lazy(() => import("@/pages/blog/BlogIndex"));
 const BlogPost  = lazy(() => import("@/pages/blog/BlogPost"));
 
@@ -449,6 +452,10 @@ export default function AppRouter() {
             element={<LazyPage><SeoPhongVanTiengAnhPage /></LazyPage>} />
           <Route path="/seo/hoc-tieng-anh-mien-phi"
             element={<LazyPage><SeoHocTiengAnhMienPhiPage /></LazyPage>} />
+
+          {/* Developer portal — Step 11 public API; intentionally public. */}
+          <Route path="/dev/api"
+            element={<LazyPage><DeveloperPortalPage /></LazyPage>} />
 
           {/* Placement test — requires auth (profile writes keyed on user.id) */}
           <Route path="/placement"
