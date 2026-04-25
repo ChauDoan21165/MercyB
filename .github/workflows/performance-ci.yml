@@ -80,9 +80,11 @@ jobs:
       - name: Run Lighthouse CI
         uses: treosh/lighthouse-ci-action@v9
         with:
-          urls: |
-            http://localhost:5173
-            http://localhost:5173/vip/vip1
-            http://localhost:5173/admin
+          # Static-dir mode (issue #56 option 2): no live server needed.
+          # Lighthouse spins up an internal static server over `./dist`,
+          # produced by the preceding `npm run build` step. Sidesteps the
+          # deprecated /vip/vip1 URL reference; that route cleanup lands
+          # separately under the VIP-audit issue (#60).
+          staticDistDir: ./dist
           uploadArtifacts: true
           temporaryPublicStorage: true
