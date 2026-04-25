@@ -22,6 +22,10 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>MercyBlade cần truy cập micro để giúp bạn luyện phát âm tiếng Anh. / MercyBlade needs microphone access to help you practice English pronunciation.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>MercyBlade dùng nhận dạng giọng nói để chấm điểm phát âm cho bạn. / MercyBlade uses speech recognition to score your pronunciation.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
