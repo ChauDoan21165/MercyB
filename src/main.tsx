@@ -14,6 +14,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 
 import AppRouter from "@/router/AppRouter";
+import OfflineIndicator from "@/components/offline/OfflineIndicator";
 import "@/index.css";
 import { supabase } from "@/lib/supabaseClient";
 import { AuthProvider } from "@/providers/AuthProvider";
@@ -320,6 +321,7 @@ if (!w.__MB_REACT_ROOT__ || w.__MB_REACT_ROOT_EL__ !== root) {
 w.__MB_REACT_ROOT__.render(
   <BrowserRouter>
     <AuthProvider>
+      <OfflineIndicator />
       <AppRouter />
     </AuthProvider>
   </BrowserRouter>,
