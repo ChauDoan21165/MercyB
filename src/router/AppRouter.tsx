@@ -45,6 +45,13 @@ const PlacementResultsPage = lazy(() => import("@/pages/placement/ResultsPage"))
 const SpeechDrillPage      = lazy(() => import("@/pages/SpeechDrillPage"));
 const SpeechHistoryPage    = lazy(() => import("@/pages/speech/SpeechHistoryPage"));
 
+// SEO landing pages — Vietnamese-keyword targeted, public, no auth required.
+const SeoHocTiengAnhChoNguoiVietPage = lazy(() => import("@/pages/seo/HocTiengAnhChoNguoiVietPage"));
+const SeoSuaPhatAmTiengAnhPage       = lazy(() => import("@/pages/seo/SuaPhatAmTiengAnhPage"));
+const SeoLoiTiengAnhNguoiVietPage    = lazy(() => import("@/pages/seo/LoiTiengAnhNguoiVietHaySaiPage"));
+const SeoPhongVanTiengAnhPage        = lazy(() => import("@/pages/seo/PhongVanTiengAnhPage"));
+const SeoHocTiengAnhMienPhiPage      = lazy(() => import("@/pages/seo/HocTiengAnhMienPhiPage"));
+
 const AdminDashboard          = lazy(() => import("@/pages/admin/AdminDashboard"));
 const AdminUsersPage          = lazy(() => import("@/pages/admin/AdminUsersPage"));
 const AdminPaymentsPage       = lazy(() => import("@/pages/admin/AdminPaymentsPage"));
@@ -388,6 +395,18 @@ export default function AppRouter() {
           <Route path="/tiers/:tierId" element={<LazyPage><TierDetail /></LazyPage>} />
           <Route path="/redeem"     element={<RedeemRedirect />} />
           <Route path="/promo-code" element={<RedeemRedirect />} />
+
+          {/* SEO landing pages — public, Vietnamese-keyword targeted */}
+          <Route path="/seo/hoc-tieng-anh-cho-nguoi-viet"
+            element={<LazyPage><SeoHocTiengAnhChoNguoiVietPage /></LazyPage>} />
+          <Route path="/seo/sua-phat-am-tieng-anh"
+            element={<LazyPage><SeoSuaPhatAmTiengAnhPage /></LazyPage>} />
+          <Route path="/seo/loi-tieng-anh-nguoi-viet-hay-sai"
+            element={<LazyPage><SeoLoiTiengAnhNguoiVietPage /></LazyPage>} />
+          <Route path="/seo/phong-van-tieng-anh"
+            element={<LazyPage><SeoPhongVanTiengAnhPage /></LazyPage>} />
+          <Route path="/seo/hoc-tieng-anh-mien-phi"
+            element={<LazyPage><SeoHocTiengAnhMienPhiPage /></LazyPage>} />
 
           {/* Placement test — requires auth (profile writes keyed on user.id) */}
           <Route path="/placement"
