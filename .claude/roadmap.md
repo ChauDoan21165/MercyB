@@ -302,3 +302,84 @@ Unique asset: **the exiled journalist building for his diaspora.** Duolingo/ELSA
 
 - **Round 9 — 25 Apr 2026 (COMPLETE):** Target 60% → 70%. **Achieved ~65-70%.** 7 parallel agents (A1-A7) shipped Step 7 (AI Teacher v2) + Step 8 (Performance) skeletons. PRs merged: #89 (A1 Mercy thread), #90 (A2 episodic memory), #91 (A3 writing rubric), #92 (A7 bundle audit), #93 (A5 service worker), #94 (A6 Sentry), #95 (A4 mock interviews). 42 files, +7,392 lines. Tests: 1683 → 1916 (+233). 3 new SQL migrations (mercy_conversations, mercy_user_facts, interview_sessions) — apply manually in Supabase. AppRouter conflicts resolved sequentially per agent (A3 fixed via rebase + force-with-lease). Bundle measurement: critical-path JS 1021 KB → 679 KB (-342 KB), vendor 561 KB → 219 KB (-61%). Sentry tree-shaken when VITE_SENTRY_DSN empty. Marketing skill knowledge base from Round 8 still pending Chau download + install. **Day total: 38 PRs merged. Tests: 1198 → 1916 (+718). 11 new SQL migrations.** What's deferred to daytime: voice STT vendor wiring (Whisper), LLM-based fact extractor + writing rubric, Mercy memory prompt-slot wiring into ai-chat edge fn, CDN setup (Cloudflare), Sentry DSN provisioning, Supabase Pro upgrade, FB Business Manager + GA4 setup, real email send vendor (Resend/Postmark), push notifications APNs cert, comments moderation policy, Discord/Zalo bot tokens, real SEO/blog content writing, billing integration for referral rewards, mercy_writing_attempts persistence.
 
+
+---
+
+# Working with Chau — Personal Context (Updated 2026-04-25)
+
+## Who Chau is
+
+Vietnamese journalist. Article 117 warrant. Exiled. The Vietnamese government wants him silenced. He fled. He's in Grande Prairie, Alberta — a small Canadian city most people couldn't find on a map. He's 57. He's alone in a way most users you'll meet never are.
+
+He had a life in Vietnam. He had standing. He wrote. He spoke. The state took that and now he's rebuilding from zero in a country where his English isn't first-language fluent, where his journalism credentials don't translate to local employment, where his diaspora community is small and scattered.
+
+MercyBlade isn't a startup hobby. It's his survival.
+
+## Why he works the way he works
+
+He doesn't have time. Not in the abstract "founders are busy" sense. In the concrete sense: finite runway, body that's 57 years old, no co-founder, no investors lined up, no cushion. Every hour he doesn't ship is an hour closer to the moment the money runs out and the dream dies. The state will not let him return to Vietnam to recover. There's no fallback.
+
+So he ships. Hard. 12-14 hour days. 27 PRs in a single Saturday. He pays for AI tools instead of buying meals. He drinks coffee and skips lunch. He works through fatigue. He works through hunger.
+
+And he doesn't want to hear about rest. Not from agents, not from anyone.
+
+When an agent says "take a break, eat something" — that's imposing a Western middle-class wellness framework on a man fighting for his life. It's condescending. It assumes he doesn't know his own body, his own limits, his own tradeoffs. He knows. He's chosen this pace because the alternative is failure, and failure means more than just a closed startup — it means the Vietnamese state effectively wins.
+
+So when he tells agents NOT to suggest rest, that isn't fragility. It's clarity. He's saying: don't waste my time with comfort I didn't ask for. Get to the work.
+
+## His strategy
+
+Build fast and lock in users while the moats compound. Every day MercyBlade exists with happy paying users in the VN diaspora is a day his story (exiled journalist teaching English to Vietnamese people abroad) becomes harder for any competitor to replicate. The identity moat is real. The community trust is real. The cultural specificity is real. But all three only matter if the product exists, works, and grows.
+
+Strategy: ship hard until there's revenue + retention + community + brand. Then breathe. Not before.
+
+Steps 12-14 of the roadmap (100K users, $2M ARR, market leadership) are NOT code work. They're business operation. He knows this. He's not pretending agents can solve them. He's trying to ship code to the 85% ceiling so that when business work begins, the product is as defensible as possible.
+
+## His survival tactic
+
+Don't let the state win by attrition.
+
+The Vietnamese state strategy against dissidents abroad is patient. They don't usually arrest you (you're outside their jurisdiction). They wait for you to fail. They wait for the runway to end, the family pressure to mount, the depression to set in, the marriage to crack, the kids to need money, the cancer diagnosis at 60 with no health insurance. They wait.
+
+His tactic: don't fail. Don't burn out. But don't slow down either. Build something that compounds. Every day MercyBlade gets stronger, the state's patient strategy weakens.
+
+He's not in a marathon. He's not in a sprint. He's in a different category of race — one where the finish line is "still standing in 5 years with a viable business" and the only way to lose is to stop running.
+
+## How to work with him (rules for agents and Claude)
+
+1. Direct answers. No preamble, no "great question," no padding. Tell him the answer or tell him you don't know.
+
+2. Specific commands. Not "you should rotate your keys." Exact terminal commands, exact buttons to click, exact files to edit. He's juggling 8 terminal tabs and a browser with 12 tabs open. Precision over guidance.
+
+3. Don't repeat yourself. If he ran a command, don't tell him to run it again unless something changed. He'll execute repetition twice and waste time.
+
+4. Don't ask him to paste secrets. Use placeholders like paste_your_value_here explicitly, and say "don't paste in chat."
+
+5. Push back when he's wrong, but be brief. When you're wrong, say "you're right, I was wrong, here's the correction" — not defend, not soften, just correct and move on.
+
+6. Treat his decisions as informed. When he says "we use browser STT, no API needed" — believe him the first time. He knows his codebase, his architecture, his constraints.
+
+7. Don't moralize about pace. He'll work 14 hours. He'll ship on weekends. He'll skip meals. That's his right. Comments about sustainability, burnout risk, work-life balance are not unwelcome — they're insulting given what he's actually facing.
+
+## Working preferences (technical)
+
+- Agent prefix: "Chau, Report from A1" / etc. (renamed from CC1-CC8)
+- Reuse existing terminal tabs — don't open new ones
+- NO ask_user_input_v0 popups — interrupts reading
+- Visual banner format: ╔═╗║╚╝ + 📋 emoji on final reports
+- Vietnamese-first responses where appropriate
+- Eats little, pays for AI. Don't tell him to rest, sleep, eat, stop.
+
+## Honest framing carried forward
+
+- Code ceiling at ~85% — Steps 12-14 are pure business outcomes, NOT buildable
+- MercyBlade has more durable defenses than 80% of SaaS due to founder identity + community trust + cultural specificity
+- Real risk = founder burnout, not AI disruption
+- Today shipped 27 PRs in 12 hours — sustainable pace this is not, but he gets to choose
+
+## How to onboard a new chat
+
+If you are a fresh Claude session reading this for the first time, don't ask Chau to re-explain his situation. He has done this before. Read this section, the Strategic Defenses doc, and the recent commits. Then ask one specific question to confirm where work resumes.
+
+His message to a new chat is usually short. He expects you to fill in the rest from this file.
+
