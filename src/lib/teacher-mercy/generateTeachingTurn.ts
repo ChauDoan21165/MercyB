@@ -23,6 +23,10 @@ import {
   resolveVinglishFriendlyMode,
   type VinglishGuidance,
 } from '../feedback/vinglish-detector';
+import {
+  MERCY_PERSONA_CONFIG,
+  pickAfterMistakeLine,
+} from '@/config/mercyPersona';
 
 export interface GenerateTeachingTurnInput {
   learnerState: LearnerState;
@@ -416,19 +420,16 @@ function buildEnglishText(
 ): string {
   const learnerName = input.learnerName?.trim();
   const fix = deriveConcreteFix(input);
+  const persona = MERCY_PERSONA_CONFIG;
 
   if (mode === 'correct') {
-    const opener = input.repeatedMistake
-      ? "Let's review this once more."
-      : learnerName
-        ? `${learnerName}, you're close.`
-        : "You're close.";
-
+    const opener = pickAfterMistakeLine('en', learnerName ?? null, Boolean(input.repeatedMistake));
     return `${opener} Small fix: ${fix.shortFix} ${fix.tryLine}`;
   }
 
   if (mode === 'explain') {
-    return `Here is the key point. ${fix.explainLine} Now say: I went home early. I'm here with you.`;
+    const acknowledgement = persona.fillers.acknowledging.en[0];
+    return `Here is the key point. ${fix.explainLine} Now say: I went home early. ${acknowledgement}`;
   }
 
   if (mode === 'challenge') {
@@ -442,22 +443,26 @@ function buildEnglishText(
 
   if (mode === 'review') {
     const prefix = input.repeatedMistake
-      ? 'Let’s review this once more.'
-      : 'Good. Let’s stay with this idea one more round.';
-
-    return `${prefix} ${fix.reviewLine} ${fix.tryLine} You're doing well.`;
+      ? persona.encouragements.afterMistake.enRepeated[0]
+      : persona.encouragements.afterStreak.en[0];
+    const closing = persona.fillers.acknowledging.en[1]; // "You're doing well."
+    return `${prefix} ${fix.reviewLine} ${fix.tryLine} ${closing}`;
   }
 
   if (mode === 'recap') {
-    return `Gently, ${fix.recapLine} Now make one sentence with have + past participle. Take your time.`;
+    const filler = persona.fillers.thinking.en[1]; // "Gently."
+    const closing = persona.fillers.thinking.en[0]; // "Take your time."
+    return `${filler.replace(/\.$/, ',')} ${fix.recapLine} Now make one sentence with have + past participle. ${closing}`;
   }
 
   if (mode === 'drill') {
-    return `Gently, ${fix.drillLine} ${fix.drillLine} Take your time.`;
+    const filler = persona.fillers.thinking.en[1]; // "Gently."
+    const closing = persona.fillers.thinking.en[0]; // "Take your time."
+    return `${filler.replace(/\.$/, ',')} ${fix.drillLine} ${fix.drillLine} ${closing}`;
   }
 
   if (mode === 'encourage') {
-    return `Good work. Keep this same structure in one more sentence.`;
+    return persona.encouragements.afterCorrect.en[0];
   }
 
   return `Stay with this idea one more round. ${fix.tryLine}`;
@@ -469,47 +474,50 @@ function buildAltText(
 ): string {
   const learnerName = input.learnerName?.trim();
   const fix = deriveConcreteFix(input);
+  const persona = MERCY_PERSONA_CONFIG;
+  const NEXT = persona.codeSwitch.vnNextStepMarker;
 
   if (mode === 'correct') {
-    const opener = input.repeatedMistake
-      ? 'Hãy ôn lại phần này thêm một lần nữa.'
-      : learnerName
-        ? `Nhẹ nhàng thôi, ${learnerName}, bạn gần đúng rồi.`
-        : 'Nhẹ nhàng thôi, bạn gần đúng rồi.';
-
-    return `${opener} Sửa nhẹ: ${fix.shortFix} Bước tiếp theo: ${fix.tryLine} Mình ở đây với bạn.`;
+    const opener = pickAfterMistakeLine('vi', learnerName ?? null, Boolean(input.repeatedMistake));
+    const ack = persona.fillers.acknowledging.vi[0]; // "Mình ở đây với bạn."
+    return `${opener} Sửa nhẹ: ${fix.shortFix} ${NEXT} ${fix.tryLine} ${ack}`;
   }
 
   if (mode === 'explain') {
-    return `Đây là điểm chính. ${fix.explainLine} Bước tiếp theo: Now say: I went home early. Mình ở đây với bạn.`;
+    const ack = persona.fillers.acknowledging.vi[0]; // "Mình ở đây với bạn."
+    return `Đây là điểm chính. ${fix.explainLine} ${NEXT} Now say: I went home early. ${ack}`;
   }
 
   if (mode === 'challenge') {
     const prompt = getChallengePrompt(input);
-    return `Giờ tiến thêm một bước nữa. Bước tiếp theo: ${prompt} Tốt. Giờ hãy làm cho câu này làm việc xứng đáng hơn.`;
+    return `Giờ tiến thêm một bước nữa. ${NEXT} ${prompt} Tốt. Giờ hãy làm cho câu này làm việc xứng đáng hơn.`;
   }
 
   if (mode === 'review') {
     const prefix = input.repeatedMistake
-      ? 'Hãy ôn lại phần này thêm một lần nữa.'
-      : 'Tốt. Mình ở lại với ý này thêm một vòng nữa nhé.';
-
-    return `${prefix} ${fix.reviewLine} Bước tiếp theo: ${fix.tryLine} Mình sẽ làm cho điều này rõ hơn.`;
+      ? persona.encouragements.afterMistake.viRepeated[0]
+      : persona.encouragements.afterStreak.vi[0];
+    const closing = persona.fillers.closing.vi[0]; // "Mình sẽ làm cho điều này rõ hơn."
+    return `${prefix} ${fix.reviewLine} ${NEXT} ${fix.tryLine} ${closing}`;
   }
 
   if (mode === 'recap') {
-    return `Không vội đâu — ${fix.recapLine} Bước tiếp theo: Now make one sentence with have + past participle. Mình sẽ làm cho điều này rõ hơn.`;
+    const opener = persona.fillers.thinking.vi[0]; // "Không vội đâu —"
+    const closing = persona.fillers.closing.vi[0]; // "Mình sẽ làm cho điều này rõ hơn."
+    return `${opener} ${fix.recapLine} ${NEXT} Now make one sentence with have + past participle. ${closing}`;
   }
 
   if (mode === 'drill') {
-    return `Nhẹ nhàng thôi, ${fix.drillLine} Bước tiếp theo: ${fix.drillLine} Bạn đang làm tốt lắm.`;
+    const opener = persona.fillers.thinking.vi[1]; // "Nhẹ nhàng thôi,"
+    const closing = persona.fillers.acknowledging.vi[1]; // "Bạn đang làm tốt lắm."
+    return `${opener} ${fix.drillLine} ${NEXT} ${fix.drillLine} ${closing}`;
   }
 
   if (mode === 'encourage') {
-    return `Tốt lắm. Bước tiếp theo: viết thêm một câu nữa với cùng cấu trúc.`;
+    return persona.encouragements.afterCorrect.vi[0];
   }
 
-  return `Mình ở lại với ý này cùng bạn. Bước tiếp theo: ${fix.tryLine}`;
+  return `Mình ở lại với ý này cùng bạn. ${NEXT} ${fix.tryLine}`;
 }
 
 export function generateTeachingTurn(
