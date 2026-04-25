@@ -62,6 +62,10 @@ const GroupsIndex          = lazy(() => import("@/pages/groups/GroupsIndex"));
 const GroupPage            = lazy(() => import("@/pages/groups/GroupPage"));
 const CreateGroupPage      = lazy(() => import("@/pages/groups/CreateGroupPage"));
 
+const InterviewIndex         = lazy(() => import("@/pages/interview/InterviewIndex"));
+const InterviewSessionPage   = lazy(() => import("@/pages/interview/InterviewSessionPage"));
+const InterviewSummaryPage   = lazy(() => import("@/pages/interview/InterviewSummaryPage"));
+
 const ContributeSentencePage = lazy(() => import("@/pages/contribute/ContributeSentencePage"));
 const MySubmissionsPage      = lazy(() => import("@/pages/contribute/MySubmissionsPage"));
 const PendingSentencesPage   = lazy(() => import("@/pages/admin/PendingSentencesPage"));
@@ -493,6 +497,29 @@ export default function AppRouter() {
             element={
               <RequireAuth>
                 <LazyPage><GroupPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+
+          {/* Mock interviews (Step 7 / AI Teacher v2) — auth-gated; data RLS owner-only */}
+          <Route path="/interview"
+            element={
+              <RequireAuth>
+                <LazyPage><InterviewIndex /></LazyPage>
+              </RequireAuth>
+            }
+          />
+          <Route path="/interview/:slug"
+            element={
+              <RequireAuth>
+                <LazyPage><InterviewSessionPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+          <Route path="/interview/:slug/summary"
+            element={
+              <RequireAuth>
+                <LazyPage><InterviewSummaryPage /></LazyPage>
               </RequireAuth>
             }
           />
