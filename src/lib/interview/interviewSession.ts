@@ -6,48 +6,63 @@
 //   - startSession: create an interview_sessions row tied to the user
 //     and a scenario slug.
 //   - submitAnswer: append the user's answer for question N into
-//     `answers` jsonb, run scoreEssay (currently a stub — A3's writing
-//     rubric PR will replace it), and upsert per-question feedback.
+//     `answers` jsonb, score it with the writing-feedback rubric, and
+//     persist the per-answer feedback alongside the raw rubric so the
+//     summary page can render dimension-level breakdowns.
 //   - getSessionFeedback: project the saved row into structured per-
-//     question feedback for the summary screen.
+//     question feedback for the summary screen, plus an aggregated
+//     rubric, top-3 issue list across all answers, and 1–2 micro-lesson
+//     suggestions tied to those issues.
 //
 // Design notes:
-//   - We use jsonb arrays for `answers` because the schema is small,
-//     append-only per session, and we want zero migrations when we
-//     extend the per-answer payload later.
+//   - The `EssayScore` shape is preserved so the persisted jsonb
+//     remains backwards-compatible with sessions written before the
+//     real rubric wiring. The rubric is added as an OPTIONAL field on
+//     the score so legacy rows still load.
+//   - `interview_sessions` schema is unchanged — answers stays jsonb.
 //   - Errors degrade gracefully — every public function returns a
-//     tagged result, never throws. Mock interview is a "nice to have"
-//     surface; a Supabase outage must not crash the page.
+//     tagged result, never throws.
 //   - All Supabase access is concentrated here so the page components
 //     stay declarative.
 //
-// scoreEssay stub:
-//   The real implementation (A3 — writing rubric) returns a numeric
-//   grammar/clarity/relevance breakdown plus an L1 weakness tag.
-//   Until that lands, the stub returns sensible defaults — enough for
-//   the UI to render a credible feedback block. When A3's PR merges,
-//   swap the stub import for `@/lib/writing/scoreEssay` and the call
-//   sites here stay identical.
+// Spoken-style leniency:
+//   The rubric was designed for written essays. Interview answers are
+//   short and conversational, so we cap the structure-dimension floor
+//   at 2 before blending it into the overall — a 60-word spoken reply
+//   shouldn't be punished for having no "in conclusion" closer.
 
 import { supabase } from "@/lib/supabaseClient";
 import {
   getScenarioBySlug,
   type InterviewScenario,
 } from "@/data/mock-interviews/scenarios";
+import { scoreEssay } from "@/lib/writing-feedback/scoreEssay";
+import { emptyRubric, type WritingRubric } from "@/lib/writing-feedback/rubric";
+import type { L1WeaknessTag } from "@/lib/feedback/l1-error-detector";
+import {
+  MICRO_LESSONS,
+  type MicroLesson,
+} from "@/lib/weakness/micro-lessons";
+import type { WeaknessTag } from "@/lib/weakness/weakness-catalog";
 
 // ── Types ─────────────────────────────────────────────────────────────────
 
 export type EssayScore = {
-  /** 0..1 overall score. */
+  /** 0..1 overall score (blended dimensions, with spoken-style leniency). */
   overall: number;
   grammar: number;
   clarity: number;
   relevance: number;
-  /** L1-rule tag if a known Vietnamese-transfer mistake is detected. */
-  l1WeaknessTag: string | null;
+  /** First L1 issue surfaced by the rubric, if any. */
+  l1WeaknessTag: L1WeaknessTag | null;
   /** Short bilingual summary the UI surfaces verbatim. */
   feedback_vi: string;
   feedback_en: string;
+  /**
+   * Full per-answer rubric. Optional only because rows written before
+   * this PR don't have it; new submissions always populate it.
+   */
+  rubric?: WritingRubric;
 };
 
 export type InterviewAnswer = {
@@ -56,7 +71,7 @@ export type InterviewAnswer = {
   text: string;
   /** Wall-clock submission time (used for rate-limiting in future). */
   submittedAt: string;
-  /** Score from `scoreEssay`. Frozen on submit so re-renders are stable. */
+  /** Score from the writing rubric. Frozen on submit so re-renders are stable. */
   score: EssayScore;
 };
 
@@ -78,6 +93,12 @@ export type SubmitAnswerResult =
   | { ok: true; session: InterviewSession; answer: InterviewAnswer }
   | { ok: false; error: "session_not_found" | "invalid_question" | "db_error" };
 
+export type MicroLessonSuggestion = {
+  tag: WeaknessTag;
+  title_vi: string;
+  title_en: string;
+};
+
 export type SessionFeedback = {
   session: InterviewSession;
   scenario: InterviewScenario;
@@ -92,25 +113,41 @@ export type SessionFeedback = {
     what_to_listen_for: string[];
     common_mistakes_vi: string[];
   }>;
+  /**
+   * Mean-of-dimensions rubric across answered questions. Empty rubric
+   * when no answers have been submitted yet.
+   */
+  aggregatedRubric: WritingRubric;
+  /** Up to 3 most-common L1 grammar issues across answers, in count order. */
+  topIssues: L1WeaknessTag[];
+  /**
+   * 1–2 micro-lesson cards tied to topIssues. Only includes tags that
+   * exist in MICRO_LESSONS — unknown tags are skipped silently.
+   */
+  microLessonSuggestions: MicroLessonSuggestion[];
 };
 
-// ── scoreEssay STUB (replaced when A3's writing-rubric PR lands) ─────────
+// ── Rubric → EssayScore adapter (pure) ────────────────────────────────────
 
 /**
- * Stub for A3's `scoreEssay`. Returns deterministic defaults so the
- * UI has something credible to render. Remove this and import the
- * real `scoreEssay` from `@/lib/writing/scoreEssay` once it ships.
- *
- * Heuristics in the stub (just to make the score move with input):
- *   - Empty / very short answer → low score.
- *   - Answer with at least one full sentence → mid score.
- *   - Otherwise → solid baseline so the UI doesn't look broken.
+ * Spoken-style structure leniency: short interview answers shouldn't be
+ * punished hard for missing "in conclusion" closers or multi-paragraph
+ * structure. We floor the structure dimension at 2 before blending it
+ * into the overall, so a perfectly clear 60-word reply still scores well.
  */
-const scoreEssay = (input: { text: string }): EssayScore => {
-  const trimmed = (input.text ?? "").trim();
-  const wordCount = trimmed ? trimmed.split(/\s+/).length : 0;
+const STRUCTURE_FLOOR_FOR_SPOKEN = 2;
 
-  if (wordCount === 0) {
+/**
+ * Pure adapter that maps the writing rubric onto the persisted
+ * EssayScore shape. Exported so unit tests can pin behaviour without
+ * spinning up Supabase.
+ */
+export function rubricToEssayScore(
+  text: string,
+  rubric: WritingRubric,
+): EssayScore {
+  const trimmed = (text ?? "").trim();
+  if (!trimmed) {
     return {
       overall: 0,
       grammar: 0,
@@ -119,34 +156,253 @@ const scoreEssay = (input: { text: string }): EssayScore => {
       l1WeaknessTag: null,
       feedback_vi: "Em chưa nhập câu trả lời. Hãy thử lại nhé.",
       feedback_en: "No answer was submitted. Try again.",
+      rubric,
     };
   }
-  if (wordCount < 10) {
+
+  // Spoken-style leniency: cap the structure penalty.
+  const lenientStructure = Math.max(
+    rubric.structure.score,
+    STRUCTURE_FLOOR_FOR_SPOKEN,
+  );
+  const blendedSum =
+    rubric.grammar.score +
+    rubric.vocabulary.score +
+    lenientStructure +
+    rubric.spelling_punctuation.score +
+    rubric.coherence.score;
+  const overall = clamp01(blendedSum / 25); // five dims × 5
+
+  const grammar = clamp01(rubric.grammar.score / 5);
+  const clarity = clamp01(rubric.coherence.score / 5);
+  // No "expected answer" exists for free-form interviews, so we treat
+  // vocabulary range as the closest stand-in for relevance — a learner
+  // who reaches for richer words is usually closer to the prompt than
+  // someone repeating "good, good, good".
+  const relevance = clamp01(rubric.vocabulary.score / 5);
+
+  const firstIssue = rubric.grammar.issues[0] ?? null;
+  const issueCount = rubric.grammar.issues.length;
+  const spellingErrorCount = rubric.spelling_punctuation.errors.length;
+
+  const { feedback_vi, feedback_en } = buildFeedback({
+    overall,
+    issueCount,
+    spellingErrorCount,
+    firstIssue,
+    notes: rubric.coherence.notes,
+  });
+
+  return {
+    overall,
+    grammar,
+    clarity,
+    relevance,
+    l1WeaknessTag: firstIssue,
+    feedback_vi,
+    feedback_en,
+    rubric,
+  };
+}
+
+function buildFeedback(args: {
+  overall: number;
+  issueCount: number;
+  spellingErrorCount: number;
+  firstIssue: L1WeaknessTag | null;
+  notes: string[];
+}): { feedback_vi: string; feedback_en: string } {
+  const { overall, issueCount, spellingErrorCount, firstIssue, notes } = args;
+
+  if (overall >= 0.85 && issueCount === 0 && spellingErrorCount === 0) {
     return {
-      overall: 0.35,
-      grammar: 0.4,
-      clarity: 0.3,
-      relevance: 0.4,
-      l1WeaknessTag: null,
-      feedback_vi:
-        "Câu trả lời còn ngắn — phỏng vấn thực tế cần thêm ví dụ cụ thể.",
-      feedback_en: "Answer is short — a real interview wants a concrete example.",
+      feedback_vi: "Câu trả lời rất tốt — rõ ràng, đúng ngữ pháp, có ví dụ.",
+      feedback_en: "Strong answer — clear, accurate, and concrete.",
+    };
+  }
+  if (overall >= 0.65) {
+    const note = notes[0] ?? "";
+    return {
+      feedback_vi: note
+        ? `Khá tốt. ${note}`
+        : "Khá tốt — tiếp tục luyện để câu trả lời tự nhiên hơn.",
+      feedback_en:
+        "Solid answer — keep practising for a more natural delivery.",
+    };
+  }
+  if (overall >= 0.4) {
+    const issuesPart = firstIssue
+      ? ` Để ý lỗi ${labelForTag(firstIssue)}.`
+      : "";
+    return {
+      feedback_vi: `Tạm ổn nhưng còn vài chỗ chỉnh được.${issuesPart}`,
+      feedback_en: firstIssue
+        ? `Okay — watch out for "${firstIssue}" in your next attempt.`
+        : "Okay — try expanding your answer with one concrete example.",
     };
   }
   return {
-    overall: 0.7,
-    grammar: 0.7,
-    clarity: 0.75,
-    relevance: 0.7,
-    l1WeaknessTag: null,
     feedback_vi:
-      "Câu trả lời ổn về độ dài. Khi A3 ship rubric chấm điểm thật, em sẽ thấy phản hồi chi tiết hơn.",
+      "Câu trả lời cần luyện thêm — thử trả lời dài hơn và chắc ngữ pháp.",
     feedback_en:
-      "Solid length. When A3's writing rubric lands, you'll see a deeper breakdown.",
+      "More practice needed — aim for a longer answer with cleaner grammar.",
   };
-};
+}
 
-// ── Helpers ──────────────────────────────────────────────────────────────
+function labelForTag(tag: L1WeaknessTag): string {
+  // Short VN labels for the UI feedback line. Only the few tags that
+  // appear most often need polished labels — others fall through to
+  // the raw tag string, which is still readable.
+  const map: Partial<Record<L1WeaknessTag, string>> = {
+    vi_l1_3rd_person_s: "thiếu -s ngôi 3 (he/she/it)",
+    vi_l1_past_ed: "thiếu -ed quá khứ",
+    vi_l1_plural_s: "thiếu -s số nhiều",
+    vi_l1_missing_be: "thiếu động từ to be",
+    vi_l1_question_no_aux: "câu hỏi thiếu trợ động từ",
+    vi_l1_missing_article: "thiếu mạo từ a/an/the",
+    vi_l1_can_no_infinitive: "sau modal phải dùng động từ nguyên thể",
+    vi_l1_double_past: "thì quá khứ kép (did + V-ed)",
+    vi_l1_a_vs_an_vowel: "a vs an trước nguyên âm",
+    vi_l1_comparative_double: "so sánh kép (more better)",
+  };
+  return map[tag] ?? tag;
+}
+
+function clamp01(n: number): number {
+  if (!Number.isFinite(n)) return 0;
+  return Math.max(0, Math.min(1, n));
+}
+
+// ── Aggregation helpers (pure) ────────────────────────────────────────────
+
+/**
+ * Mean rubric across the answered questions. Returns `emptyRubric()`
+ * when no answers have a rubric attached. Issues + spelling errors are
+ * concatenated then deduplicated. Notes are concatenated as-is — the
+ * UI is responsible for rendering them sensibly.
+ */
+export function aggregateRubric(
+  answers: readonly InterviewAnswer[],
+): WritingRubric {
+  const withRubric = answers
+    .map((a) => a.score.rubric)
+    .filter((r): r is WritingRubric => !!r);
+  if (withRubric.length === 0) return emptyRubric();
+
+  const mean = (pick: (r: WritingRubric) => number) =>
+    withRubric.reduce((s, r) => s + pick(r), 0) / withRubric.length;
+
+  const dedup = <T>(arr: T[]): T[] => Array.from(new Set(arr));
+
+  const issues = dedup(withRubric.flatMap((r) => r.grammar.issues));
+  const errors = dedup(withRubric.flatMap((r) => r.spelling_punctuation.errors));
+  const vocabNotes = dedup(withRubric.flatMap((r) => r.vocabulary.notes));
+  const coherenceNotes = dedup(withRubric.flatMap((r) => r.coherence.notes));
+
+  // The aggregated CEFR estimate is the floor across the answers — the
+  // weakest answer caps the session estimate.
+  const cefrOrder = ["A1", "A2", "B1", "B2", "C1", "C2"] as const;
+  const lowestCefr = withRubric.reduce<typeof cefrOrder[number]>(
+    (lo, r) => {
+      const idx = cefrOrder.indexOf(r.vocabulary.level_estimate);
+      const loIdx = cefrOrder.indexOf(lo);
+      return idx < loIdx ? r.vocabulary.level_estimate : lo;
+    },
+    "C2",
+  );
+
+  // toDimensionScore lives in rubric.ts; we re-implement its clamp inline
+  // to avoid importing for one-off rounding.
+  const toScore = (n: number) => Math.max(0, Math.min(5, Math.round(n))) as
+    | 0 | 1 | 2 | 3 | 4 | 5;
+
+  return {
+    grammar: {
+      score: toScore(mean((r) => r.grammar.score)),
+      issues,
+    },
+    vocabulary: {
+      score: toScore(mean((r) => r.vocabulary.score)),
+      level_estimate: lowestCefr,
+      notes: vocabNotes,
+    },
+    structure: {
+      score: toScore(mean((r) => r.structure.score)),
+      has_intro: withRubric.some((r) => r.structure.has_intro),
+      has_conclusion: withRubric.some((r) => r.structure.has_conclusion),
+      paragraph_count: withRubric.reduce(
+        (s, r) => s + r.structure.paragraph_count,
+        0,
+      ),
+    },
+    spelling_punctuation: {
+      score: toScore(mean((r) => r.spelling_punctuation.score)),
+      errors,
+    },
+    coherence: {
+      score: toScore(mean((r) => r.coherence.score)),
+      notes: coherenceNotes,
+    },
+  };
+}
+
+/**
+ * Top-N L1 grammar issues across the session, ranked by frequency.
+ * Ties are broken by first appearance (questionIndex order) so the
+ * "study this first" suggestion is stable for a given submission.
+ */
+export function topIssuesAcross(
+  answers: readonly InterviewAnswer[],
+  limit = 3,
+): L1WeaknessTag[] {
+  const counts = new Map<L1WeaknessTag, { count: number; first: number }>();
+  for (const a of answers) {
+    const issues = a.score.rubric?.grammar.issues ?? [];
+    for (const tag of issues) {
+      const prev = counts.get(tag);
+      if (prev) {
+        prev.count += 1;
+      } else {
+        counts.set(tag, { count: 1, first: a.questionIndex });
+      }
+    }
+  }
+  const sorted = Array.from(counts.entries()).sort((a, b) => {
+    if (b[1].count !== a[1].count) return b[1].count - a[1].count;
+    return a[1].first - b[1].first;
+  });
+  return sorted.slice(0, limit).map(([tag]) => tag);
+}
+
+/**
+ * Look up micro-lesson suggestions for a list of L1 tags. Returns at
+ * most 2 suggestions — more than that and the summary screen starts
+ * feeling like a lecture. Tags that don't have a MICRO_LESSONS entry
+ * are skipped silently.
+ */
+export function microLessonsForTags(
+  tags: readonly L1WeaknessTag[],
+  limit = 2,
+): MicroLessonSuggestion[] {
+  const out: MicroLessonSuggestion[] = [];
+  for (const tag of tags) {
+    if (out.length >= limit) break;
+    // L1WeaknessTag and WeaknessTag share the same string values for
+    // the tags MICRO_LESSONS covers; the cast is intentional and the
+    // lookup is safe because of the union.
+    const lesson: MicroLesson | undefined =
+      MICRO_LESSONS[tag as WeaknessTag];
+    if (!lesson) continue;
+    out.push({
+      tag: lesson.tag,
+      title_vi: lesson.title.vi,
+      title_en: lesson.title.en,
+    });
+  }
+  return out;
+}
+
+// ── Storage helpers ──────────────────────────────────────────────────────
 
 function isInterviewAnswer(value: unknown): value is InterviewAnswer {
   if (!value || typeof value !== "object") return false;
@@ -234,8 +490,6 @@ export async function submitAnswer(
   if (!sessionId) return { ok: false, error: "session_not_found" };
 
   try {
-    // 1. Read current session so we can validate the question index
-    //    against the scenario length and merge answers locally.
     const { data: row, error: readErr } = await supabase
       .from("interview_sessions")
       .select("*")
@@ -250,7 +504,8 @@ export async function submitAnswer(
       return { ok: false, error: "invalid_question" };
     }
 
-    const score = scoreEssay({ text: userAnswer });
+    const rubric = scoreEssay(userAnswer);
+    const score = rubricToEssayScore(userAnswer, rubric);
     const newAnswer: InterviewAnswer = {
       questionIndex,
       text: userAnswer,
@@ -266,7 +521,6 @@ export async function submitAnswer(
     const overall = computeOverall(merged);
     const completed = merged.length === scenario.questions.length;
 
-    // 2. Persist. Use update (not insert) — session row already exists.
     const { data: updated, error: updateErr } = await supabase
       .from("interview_sessions")
       .update({
@@ -335,16 +589,19 @@ export async function getSessionFeedback(
       };
     });
 
-    return { session, scenario, perQuestion };
+    const aggregatedRubric = aggregateRubric(session.answers);
+    const topIssues = topIssuesAcross(session.answers, 3);
+    const microLessonSuggestions = microLessonsForTags(topIssues, 2);
+
+    return {
+      session,
+      scenario,
+      perQuestion,
+      aggregatedRubric,
+      topIssues,
+      microLessonSuggestions,
+    };
   } catch {
     return null;
   }
 }
-
-// ── Test-only ────────────────────────────────────────────────────────────
-
-/**
- * Test-only: expose the stub so it can be referenced in unit tests.
- * Will be removed when A3's real `scoreEssay` lands.
- */
-export const __scoreEssayStubForTests = scoreEssay;
