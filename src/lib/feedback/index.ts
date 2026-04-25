@@ -23,8 +23,8 @@ import {
   detectErrors,
   type L1DetectionInput,
   type L1DetectionResult,
-} from './l1-error-detector';
-import { VN_RULE_PACK } from './rule-packs/vi';
+} from './l1-error-detector.js';
+import { VN_RULE_PACK } from './rule-packs/vi/index.js';
 
 /**
  * Convenience adapter — runs detection against the Vietnamese pack.
@@ -46,17 +46,17 @@ export {
   type RuleArgs,
   type RuleHit,
   type StringTemplate,
-} from './l1-error-detector';
+} from './l1-error-detector.js';
 
-export { VN_RULE_PACK } from './rule-packs/vi';
+export { VN_RULE_PACK } from './rule-packs/vi/index.js';
 export {
   RULE_PACKS,
   DEFAULT_RULE_PACK,
   resolveRulePack,
-} from './rule-packs';
+} from './rule-packs/index.js';
 export {
   type L1Explanation,
   type L1RulePack,
   validateRulePack,
   explanationsByTag,
-} from './rule-pack-types';
+} from './rule-pack-types.js';

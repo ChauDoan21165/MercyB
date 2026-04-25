@@ -32,7 +32,7 @@
  * should be verified by Chau before they ship in user-facing copy.
  */
 
-import type { L1VnExplanation } from "./l1-vn-explanations";
+import type { L1VnExplanation } from "./l1-vn-explanations.js";
 
 // ── Public types ──────────────────────────────────────────────────────────
 

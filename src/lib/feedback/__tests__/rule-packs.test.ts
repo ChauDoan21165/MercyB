@@ -21,7 +21,7 @@ import {
   type L1DetectionInput,
   type L1Rule,
   type L1RulePack,
-} from '..';
+} from '../index.js';
 
 // ──────────────────────────────────────────────────────────────────────
 // 1. validateRulePack

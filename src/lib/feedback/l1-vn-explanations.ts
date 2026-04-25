@@ -36,7 +36,7 @@
  * handoff plan.
  */
 
-import type { L1WeaknessTag } from "./l1-error-detector";
+import type { L1WeaknessTag } from "./l1-error-detector.js";
 
 export type L1VnExplanation = {
   /** Short, natural Vietnamese rule name. */

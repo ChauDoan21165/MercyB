@@ -11,9 +11,9 @@
  * authored history, not just count.
  */
 
-import type { L1RulePack } from '../../rule-pack-types';
-import { VN_RULES } from './rules';
-import { VN_EXPLANATIONS } from './explanations';
+import type { L1RulePack } from '../../rule-pack-types.js';
+import { VN_RULES } from './rules.js';
+import { VN_EXPLANATIONS } from './explanations.js';
 
 export const VN_RULE_PACK: L1RulePack = {
   l1Code: 'vi',
@@ -29,5 +29,5 @@ export const VN_RULE_PACK: L1RulePack = {
 
 export default VN_RULE_PACK;
 
-export { VN_RULES } from './rules';
-export { VN_EXPLANATIONS } from './explanations';
+export { VN_RULES } from './rules.js';
+export { VN_EXPLANATIONS } from './explanations.js';

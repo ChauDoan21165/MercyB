@@ -14,7 +14,7 @@ import {
   VN_DIALECT_RULES,
   type DialectSignals,
   type VNDialectErrorTag,
-} from "../dialect-detection";
+} from "../dialect-detection.js";
 
 // ── Spelling classifier — Northern ─────────────────────────────────────
 

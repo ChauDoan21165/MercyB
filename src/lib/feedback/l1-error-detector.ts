@@ -2325,8 +2325,8 @@ export const ruleIfWill: Rule = ({ userText, expectedText, rawExpected }) => {
 // Public entry — language-agnostic engine
 // ────────────────────────────────────────────────────────────────────────────
 
-import type { L1RulePack } from './rule-pack-types';
-import { explanationsByTag } from './rule-pack-types';
+import type { L1RulePack } from './rule-pack-types.js';
+import { explanationsByTag } from './rule-pack-types.js';
 
 /**
  * Run detection against an arbitrary rule pack. The engine itself is

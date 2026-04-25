@@ -14,7 +14,7 @@ import {
   detectL1Error,
   type L1DetectionInput,
   type L1WeaknessTag,
-} from '..';
+} from '../index.js';
 
 function run(
   user: string,

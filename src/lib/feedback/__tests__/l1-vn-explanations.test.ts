@@ -6,7 +6,7 @@ import {
   getL1VnExplanation,
   listCoveredVnTags,
   type L1VnExplanation,
-} from "../l1-vn-explanations";
+} from "../l1-vn-explanations.js";
 
 // The canonical list of tags the detector currently supports (v1.2 = 35).
 // Kept inline on purpose so a missed tag in l1-error-detector.ts doesn't
