@@ -9,14 +9,14 @@ import React from "react";
 
 import SeoMeta from "@/components/seo/SeoMeta";
 import { SeoLayout } from "@/pages/seo/SeoLayout";
+import { PRODUCT_CONFIG } from "@/config/product";
 
 const SLUG = "loi-tieng-anh-nguoi-viet-hay-sai";
-const CANONICAL = `https://mercyblade.com/seo/${SLUG}`;
-const OG_IMAGE = "https://mercyblade.com/og/seo-default.png";
+const CANONICAL = `https://${PRODUCT_CONFIG.domain}/seo/${SLUG}`;
+const OG_IMAGE = `https://${PRODUCT_CONFIG.domain}/og/seo-default.png`;
 
-const TITLE = "Lỗi tiếng Anh người Việt hay sai — Tổng hợp & cách sửa | MercyBlade";
-const DESCRIPTION =
-  "Tổng hợp các lỗi tiếng Anh phổ biến nhất ở người Việt: bỏ âm cuối, sai thì, dùng sai mạo từ. MercyBlade chỉ rõ vì sao bạn sai và cách sửa.";
+const TITLE = `Lỗi tiếng Anh người Việt hay sai — Tổng hợp & cách sửa | ${PRODUCT_CONFIG.name}`;
+const DESCRIPTION = `Tổng hợp các lỗi tiếng Anh phổ biến nhất ở người Việt: bỏ âm cuối, sai thì, dùng sai mạo từ. ${PRODUCT_CONFIG.name} chỉ rõ vì sao bạn sai và cách sửa.`;
 
 const STRUCTURED_DATA = {
   "@context": "https://schema.org",
@@ -27,8 +27,8 @@ const STRUCTURED_DATA = {
   "inLanguage": "vi-VN",
   "isPartOf": {
     "@type": "WebSite",
-    "name": "MercyBlade",
-    "url": "https://mercyblade.com",
+    "name": PRODUCT_CONFIG.name,
+    "url": `https://${PRODUCT_CONFIG.domain}`,
   },
 };
 
@@ -45,7 +45,7 @@ export default function LoiTiengAnhNguoiVietHaySaiPage() {
       />
       <SeoLayout
         h1="Lỗi tiếng Anh người Việt hay sai"
-        subheader="Đa số lỗi tiếng Anh của người Việt không phải vì bạn dở — mà vì tiếng Việt và tiếng Anh khác nhau ở một vài điểm cốt lõi. MercyBlade nhận diện đúng lỗi đó và đưa cách sửa cụ thể."
+        subheader={`Đa số lỗi tiếng Anh của người Việt không phải vì bạn dở — mà vì tiếng Việt và tiếng Anh khác nhau ở một vài điểm cốt lõi. ${PRODUCT_CONFIG.name} nhận diện đúng lỗi đó và đưa cách sửa cụ thể.`}
         utmCampaign={SLUG}
       >
         {/* CHAU TODO: replace with real content */}

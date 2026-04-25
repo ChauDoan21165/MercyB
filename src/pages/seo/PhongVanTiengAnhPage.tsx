@@ -10,14 +10,14 @@ import React from "react";
 
 import SeoMeta from "@/components/seo/SeoMeta";
 import { SeoLayout } from "@/pages/seo/SeoLayout";
+import { PRODUCT_CONFIG } from "@/config/product";
 
 const SLUG = "phong-van-tieng-anh";
-const CANONICAL = `https://mercyblade.com/seo/${SLUG}`;
-const OG_IMAGE = "https://mercyblade.com/og/seo-default.png";
+const CANONICAL = `https://${PRODUCT_CONFIG.domain}/seo/${SLUG}`;
+const OG_IMAGE = `https://${PRODUCT_CONFIG.domain}/og/seo-default.png`;
 
-const TITLE = "Phỏng vấn tiếng Anh — Cách chuẩn bị bài bản | MercyBlade";
-const DESCRIPTION =
-  "Chuẩn bị phỏng vấn tiếng Anh xin việc, du học, định cư. MercyBlade luyện cho bạn các câu hỏi thực tế, sửa phát âm và sửa cách trả lời theo từng câu.";
+const TITLE = `Phỏng vấn tiếng Anh — Cách chuẩn bị bài bản | ${PRODUCT_CONFIG.name}`;
+const DESCRIPTION = `Chuẩn bị phỏng vấn tiếng Anh xin việc, du học, định cư. ${PRODUCT_CONFIG.name} luyện cho bạn các câu hỏi thực tế, sửa phát âm và sửa cách trả lời theo từng câu.`;
 
 const STRUCTURED_DATA = {
   "@context": "https://schema.org",
@@ -28,8 +28,8 @@ const STRUCTURED_DATA = {
   "inLanguage": "vi-VN",
   "isPartOf": {
     "@type": "WebSite",
-    "name": "MercyBlade",
-    "url": "https://mercyblade.com",
+    "name": PRODUCT_CONFIG.name,
+    "url": `https://${PRODUCT_CONFIG.domain}`,
   },
 };
 
@@ -46,7 +46,7 @@ export default function PhongVanTiengAnhPage() {
       />
       <SeoLayout
         h1="Chuẩn bị phỏng vấn tiếng Anh"
-        subheader="Phỏng vấn xin việc, du học, hay định cư đều cần tiếng Anh thực tế — không phải bài học sách giáo khoa. MercyBlade luyện đúng các câu hỏi bạn sẽ gặp và sửa từng câu trả lời của bạn."
+        subheader={`Phỏng vấn xin việc, du học, hay định cư đều cần tiếng Anh thực tế — không phải bài học sách giáo khoa. ${PRODUCT_CONFIG.name} luyện đúng các câu hỏi bạn sẽ gặp và sửa từng câu trả lời của bạn.`}
         utmCampaign={SLUG}
       >
         {/* CHAU TODO: replace with real content */}
@@ -80,12 +80,12 @@ export default function PhongVanTiengAnhPage() {
         {/* CHAU TODO: replace with real content */}
         <section>
           <h2 className="text-2xl font-bold text-slate-900 mb-3">
-            Luyện phỏng vấn với MercyBlade
+            Luyện phỏng vấn với {PRODUCT_CONFIG.name}
           </h2>
           <p>
             {/* CHAU TODO: walk through the practice flow — pick a question, record
                 your answer, get scoring + specific edit suggestions, redo. */}
-            Chọn câu hỏi, ghi âm câu trả lời của bạn, MercyBlade chấm phát âm và
+            Chọn câu hỏi, ghi âm câu trả lời của bạn, {PRODUCT_CONFIG.name} chấm phát âm và
             đưa gợi ý sửa từng câu. Bạn luyện đến khi tự tin với câu trả lời đó.
           </p>
         </section>
