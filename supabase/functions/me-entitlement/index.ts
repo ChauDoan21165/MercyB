@@ -239,6 +239,7 @@ const GRANDFATHER_CUTOFF_ISO = "2026-04-22T00:00:00Z";
 function computeTrialStatus(
   createdAtRaw: unknown,
   isPremium: boolean,
+  trialExtensionDaysRaw: unknown = 0,
 ): { trial_expires_at: string | null; is_trial_expired: boolean } {
   if (isPremium) {
     return { trial_expires_at: null, is_trial_expired: false };
@@ -258,7 +259,16 @@ function computeTrialStatus(
     return { trial_expires_at: null, is_trial_expired: false };
   }
 
-  const trialEndsMs = createdAtMs + TRIAL_DAYS * 24 * 60 * 60 * 1000;
+  // Referral rewards (and any future grants) accumulate in
+  // profiles.trial_extension_days. Defensive clamp: ignore non-finite or
+  // negative values rather than corrupting the formula.
+  const extensionDaysNum = Number(trialExtensionDaysRaw);
+  const extensionDays = Number.isFinite(extensionDaysNum) && extensionDaysNum > 0
+    ? extensionDaysNum
+    : 0;
+
+  const totalTrialDays = TRIAL_DAYS + extensionDays;
+  const trialEndsMs = createdAtMs + totalTrialDays * 24 * 60 * 60 * 1000;
   return {
     trial_expires_at: new Date(trialEndsMs).toISOString(),
     is_trial_expired: Date.now() > trialEndsMs,
@@ -333,19 +343,25 @@ Deno.serve(async (req) => {
     }
 
     let profileCreatedAt: unknown = null;
+    let profileTrialExtensionDays: unknown = 0;
     try {
       const { data: profile } = await adminClient
         .from("profiles")
-        .select("created_at")
+        .select("created_at, trial_extension_days")
         .eq("id", user.id)
         .maybeSingle();
       profileCreatedAt = profile?.created_at ?? null;
+      profileTrialExtensionDays = profile?.trial_extension_days ?? 0;
     } catch {
       // fail open: missing profile → grandfathered
     }
 
     const entitlement = normalizeEntitlement(subscriptions ?? []);
-    const trial = computeTrialStatus(profileCreatedAt, entitlement.is_premium);
+    const trial = computeTrialStatus(
+      profileCreatedAt,
+      entitlement.is_premium,
+      profileTrialExtensionDays,
+    );
 
     return json({ ...entitlement, ...trial });
   } catch (error) {
