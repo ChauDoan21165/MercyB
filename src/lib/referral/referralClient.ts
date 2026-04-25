@@ -116,12 +116,82 @@ export async function applyReferralCode(
 
   const status = result.data.status as ApplyStatus | undefined;
   if (result.data.ok && status === "applied") {
+    // Reward delivery is best-effort and intentionally not awaited. If the
+    // grant RPC fails (network, transient DB error), the apply still
+    // succeeded — admins can retry via grantReferralReward later. The
+    // alternative (failing the apply on grant failure) would force a user
+    // to re-enter the code only to hit `already_used`.
+    void grantReferralReward(_referredUserId).catch((err) => {
+      console.warn("[referral] reward grant failed after apply:", err);
+    });
     return { ok: true, status: "applied" };
   }
   if (status === "self_referral" || status === "already_used" || status === "invalid_code") {
     return { ok: false, status };
   }
   return { ok: false, status: "invalid_code" };
+}
+
+// ── Reward delivery ──────────────────────────────────────────────────────
+
+export type GrantRewardResult =
+  | { ok: true; grantedReferred: boolean; grantedOwner: boolean }
+  | { ok: false; error: GrantRewardError };
+
+export type GrantRewardError =
+  | "not_signed_in"
+  | "not_self"
+  | "no_referral_use"
+  | "orphan_code"
+  | "rpc_failed";
+
+type GrantResponse = {
+  data: {
+    ok?: boolean;
+    error?: string;
+    granted_referred?: boolean;
+    granted_owner?: boolean;
+  } | null;
+  error: { message: string } | null;
+};
+
+/**
+ * Grants the 7-day trial extension to BOTH the referred user (the caller)
+ * and the code owner. Idempotent — safe to call multiple times; the RPC
+ * skips already-granted rewards.
+ *
+ * The trial extension lands on profiles.trial_extension_days; the
+ * me-entitlement edge function adds it to the 3-day base trial.
+ */
+export async function grantReferralReward(
+  referredUserId: string,
+): Promise<GrantRewardResult> {
+  const result = (await (supabase as unknown as {
+    rpc: (fn: string, args: Record<string, unknown>) => Promise<GrantResponse | undefined>;
+  }).rpc("grant_referral_reward", { p_referred_user_id: referredUserId }));
+
+  if (!result || result.error || !result.data) {
+    return { ok: false, error: "rpc_failed" };
+  }
+
+  if (result.data.ok) {
+    return {
+      ok: true,
+      grantedReferred: Boolean(result.data.granted_referred),
+      grantedOwner: Boolean(result.data.granted_owner),
+    };
+  }
+
+  const err = result.data.error as GrantRewardError | undefined;
+  if (
+    err === "not_signed_in" ||
+    err === "not_self" ||
+    err === "no_referral_use" ||
+    err === "orphan_code"
+  ) {
+    return { ok: false, error: err };
+  }
+  return { ok: false, error: "rpc_failed" };
 }
 
 // ── Stats — count uses + reward eligibility ───────────────────────────────
