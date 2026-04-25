@@ -18,6 +18,7 @@ import OfflineIndicator from "@/components/offline/OfflineIndicator";
 import "@/index.css";
 import { supabase } from "@/lib/supabaseClient";
 import { AuthProvider } from "@/providers/AuthProvider";
+import { initSentry } from "@/lib/monitoring/sentryInit";
 
 declare global {
   interface Window {
@@ -36,6 +37,10 @@ const MB_ENTRY_VERSION = "2026-04-08-main-chunk-recovery-v1";
 const CHUNK_RELOAD_SESSION_KEY = "__mb_chunk_reload_once__";
 
 try { window.__MB_ENTRY_VERSION__ = MB_ENTRY_VERSION; } catch { /* ignore */ }
+
+// Sentry — DSN-gated. No-op when VITE_SENTRY_DSN is unset (default today).
+// Called first so the boot IIFEs below are inside the error-capture window.
+initSentry();
 
 const devLog = (...args: unknown[]) => {
   if (import.meta.env.DEV) console.log(...args);
