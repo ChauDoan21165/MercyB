@@ -6,6 +6,12 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { logAiUsage as logAiUsageEvent } from "../_shared/aiUsage.ts";
+import {
+  EdgeUserFact,
+  MAX_FACTS_IN_PROMPT,
+  formatUserFactsSection,
+  selectTopFacts,
+} from "./factSlotting.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -99,6 +105,66 @@ function estimateOpenAICostVnd(params: {
   const totalVnd = (inputUsd + outputUsd) * usdToVnd;
 
   return Number(totalVnd.toFixed(2));
+}
+
+// ---------------------------
+// Mercy episodic memory — fact loading + write-back
+// ---------------------------
+
+/**
+ * Read the top active facts for this user. Mirrors the JS client in
+ * `src/lib/mercy/userFacts.ts` (confidence DESC, last_referenced_at DESC),
+ * but issues a server-side query through the admin client so the edge
+ * function doesn't need a separate auth round-trip.
+ */
+async function loadActiveFactsForUser(
+  userId: string,
+  limit: number = MAX_FACTS_IN_PROMPT,
+): Promise<EdgeUserFact[]> {
+  if (!userId) return [];
+
+  try {
+    const { data, error } = await supabaseAdmin
+      .from("mercy_user_facts")
+      .select("id, fact_type, content, confidence, last_referenced_at")
+      .eq("user_id", userId)
+      .is("superseded_by", null)
+      .order("confidence", { ascending: false })
+      .order("last_referenced_at", { ascending: false, nullsFirst: false })
+      .limit(limit);
+
+    if (error) {
+      console.warn("[ai-chat] loadActiveFactsForUser error:", error.message);
+      return [];
+    }
+    if (!Array.isArray(data)) return [];
+    // Re-run selectTopFacts so the in-process filter (drop < 0.3 confidence)
+    // applies even if the DB sort returns low-confidence rows.
+    return selectTopFacts(data as EdgeUserFact[], limit);
+  } catch (e) {
+    console.warn("[ai-chat] loadActiveFactsForUser threw:", e);
+    return [];
+  }
+}
+
+/**
+ * Bump `last_referenced_at` on a batch of fact ids. Heuristic per the
+ * brief: mark ALL fetched facts as referenced when the response
+ * succeeds. We split into individual updates so a partial failure
+ * doesn't roll the whole batch back, and we keep this fire-and-forget
+ * inside the existing background task.
+ */
+async function markFactsReferencedBatch(factIds: string[]): Promise<void> {
+  if (factIds.length === 0) return;
+  const now = new Date().toISOString();
+  await Promise.allSettled(
+    factIds.map((id) =>
+      supabaseAdmin
+        .from("mercy_user_facts")
+        .update({ last_referenced_at: now })
+        .eq("id", id),
+    ),
+  );
 }
 
 async function logAiUsageLog(params: {
@@ -438,7 +504,15 @@ serve(async (req) => {
       contextInfo += `Room Overview (EN): ${roomData.room_essay.en}\nRoom Overview (VI): ${roomData.room_essay.vi}\n\n`;
     }
 
-    const systemPrompt = `${contextInfo}
+    // Step 7 — episodic user-fact memory. Load the top-N active facts
+    // for this user and slot them into the system prompt. When the user
+    // has zero facts (new account, freshly reset memory), the helper
+    // returns "" and the prompt is unchanged.
+    const activeFacts = await loadActiveFactsForUser(user.id);
+    const factsSection = formatUserFactsSection(activeFacts);
+    const factsBlock = factsSection ? `\n\n${factsSection}\n\n` : "";
+
+    const systemPrompt = `${contextInfo}${factsBlock}
     CRITICAL INSTRUCTIONS:
     - Respond in BOTH English and Vietnamese.
     - Base guidance on room data.
@@ -510,6 +584,11 @@ serve(async (req) => {
           outputTokens: completionTokens,
           estimatedCostVnd,
         }),
+        // Step 7 — bump last_referenced_at on every fact we slotted into
+        // this turn's prompt. Heuristic per the brief: mark ALL fetched
+        // facts as referenced when the response stream completes (no
+        // LLM-detected "substantively used" attribution yet).
+        markFactsReferencedBatch(activeFacts.map((f) => f.id)),
       ]);
     })();
 
