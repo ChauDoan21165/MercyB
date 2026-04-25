@@ -10,6 +10,7 @@ import { X, Sparkles, Volume2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import type { TeacherMercyEngine } from '@/lib/teacher-mercy/types';
+import { MERCY_PERSONA_CONFIG } from '@/config/mercyPersona';
 
 interface TeacherMercyGreetingProps {
   mercy: TeacherMercyEngine;
@@ -38,15 +39,15 @@ export function TeacherMercyGreeting({ mercy, className }: TeacherMercyGreetingP
           size="icon"
           onClick={mercy.reopen}
           className="h-10 w-10 rounded-full bg-background/95 backdrop-blur-sm border-border shadow-lg hover:bg-accent"
-          title="Show Mercy's greeting"
-          aria-label="Show Mercy's greeting"
+          title={MERCY_PERSONA_CONFIG.uiLabels.showGreeting}
+          aria-label={MERCY_PERSONA_CONFIG.uiLabels.showGreeting}
         >
           <Sparkles className="h-5 w-5 text-primary" />
         </Button>
       </div>
     );
   }
-  
+
   // No greeting text yet
   if (!mercy.greetingText) {
     return null;
@@ -84,7 +85,7 @@ export function TeacherMercyGreeting({ mercy, className }: TeacherMercyGreetingP
           size="icon"
           onClick={handleDismiss}
           className="absolute top-2 right-2 h-6 w-6 rounded-full opacity-60 hover:opacity-100"
-          aria-label="Dismiss greeting"
+          aria-label={MERCY_PERSONA_CONFIG.uiLabels.dismissGreeting}
         >
           <X className="h-4 w-4" />
         </Button>
@@ -135,7 +136,9 @@ export function TeacherMercyGreeting({ mercy, className }: TeacherMercyGreetingP
             className="text-xs h-7 px-2 opacity-60 hover:opacity-100"
           >
             <Volume2 className="h-3 w-3 mr-1" />
-            {mercy.isPlaying ? 'Playing...' : 'Hear Mercy'}
+            {mercy.isPlaying
+              ? MERCY_PERSONA_CONFIG.uiLabels.playing
+              : MERCY_PERSONA_CONFIG.uiLabels.hearMercy}
           </Button>
         </div>
       </div>
@@ -210,7 +213,7 @@ export function LegacyTeacherMercyGreeting({
           size="icon"
           onClick={onReopen}
           className="h-10 w-10 rounded-full bg-background/95 backdrop-blur-sm border-border shadow-lg hover:bg-accent"
-          title="Show Mercy's greeting"
+          title={MERCY_PERSONA_CONFIG.uiLabels.showGreeting}
         >
           <Sparkles className="h-5 w-5 text-primary" />
         </Button>
