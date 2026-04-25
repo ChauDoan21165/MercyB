@@ -3,7 +3,7 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.mercyapps.mercyblade',
+  appId: 'com.chaudoan.mercyblade',
   appName: 'Mercy Blade',
   webDir: 'dist',
 };
