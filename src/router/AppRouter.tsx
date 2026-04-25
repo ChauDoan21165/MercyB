@@ -77,6 +77,10 @@ const PendingSentencesPage   = lazy(() => import("@/pages/admin/PendingSentences
 
 const FamilyPlanPage         = lazy(() => import("@/pages/family/FamilyPlanPage"));
 
+const CorporateDashboardPage = lazy(() => import("@/pages/corporate/CorporateDashboardPage"));
+const CreateCorporatePage    = lazy(() => import("@/pages/corporate/CreateCorporatePage"));
+const JoinCorporatePage      = lazy(() => import("@/pages/corporate/JoinCorporatePage"));
+
 const AdminDashboard          = lazy(() => import("@/pages/admin/AdminDashboard"));
 const AdminUsersPage          = lazy(() => import("@/pages/admin/AdminUsersPage"));
 const AdminPaymentsPage       = lazy(() => import("@/pages/admin/AdminPaymentsPage"));
@@ -605,6 +609,29 @@ export default function AppRouter() {
             element={
               <RequireAuth>
                 <LazyPage><FamilyPlanPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+
+          {/* Corporate / school multi-seat (Step 9) */}
+          <Route path="/corporate"
+            element={
+              <RequireAuth>
+                <LazyPage><CorporateDashboardPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+          <Route path="/corporate/setup"
+            element={
+              <RequireAuth>
+                <LazyPage><CreateCorporatePage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+          <Route path="/corporate/join"
+            element={
+              <RequireAuth>
+                <LazyPage><JoinCorporatePage /></LazyPage>
               </RequireAuth>
             }
           />
