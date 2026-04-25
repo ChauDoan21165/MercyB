@@ -55,6 +55,9 @@ const SeoHocTiengAnhMienPhiPage      = lazy(() => import("@/pages/seo/HocTiengAn
 const BlogIndex = lazy(() => import("@/pages/blog/BlogIndex"));
 const BlogPost  = lazy(() => import("@/pages/blog/BlogPost"));
 
+const PublicProfilePage   = lazy(() => import("@/pages/profile/PublicProfilePage"));
+const ShareProgressPage   = lazy(() => import("@/pages/profile/ShareProgressPage"));
+
 const AdminDashboard          = lazy(() => import("@/pages/admin/AdminDashboard"));
 const AdminUsersPage          = lazy(() => import("@/pages/admin/AdminUsersPage"));
 const AdminPaymentsPage       = lazy(() => import("@/pages/admin/AdminPaymentsPage"));
@@ -482,6 +485,18 @@ export default function AppRouter() {
             element={
               <RequireAuth>
                 <LazyPage><BillingSuccessPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+
+          {/* Public profile (anon-readable when is_public=true) */}
+          <Route path="/u/:username" element={<LazyPage><PublicProfilePage /></LazyPage>} />
+
+          {/* Share progress (auth-required — own stats) */}
+          <Route path="/share/progress"
+            element={
+              <RequireAuth>
+                <LazyPage><ShareProgressPage /></LazyPage>
               </RequireAuth>
             }
           />
