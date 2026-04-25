@@ -59,8 +59,8 @@ describe("L1_VN_EXPLANATIONS — coverage", () => {
     expect(missing).toEqual([]);
   });
 
-  it("has exactly 35 entries — flags drift if the count changes unexpectedly", () => {
-    expect(listCoveredVnTags()).toHaveLength(35);
+  it("has exactly 60 entries — flags drift if the count changes unexpectedly", () => {
+    expect(listCoveredVnTags()).toHaveLength(60);
   });
 });
 
