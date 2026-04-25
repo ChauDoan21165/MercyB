@@ -3,7 +3,7 @@
 > **Goal:** #1 English learning app for Vietnamese people (5-6M diaspora globally).
 > **Owner:** Chau Doan (solo dev, Grande Prairie AB, exiled Vietnamese journalist, Article 117 warrant).
 > **App:** mercyblade.com · Bundle `com.chaudoan.mercyblade` · App ID `6762480486`
-> **Last updated:** 25 Apr 2026 (early hours — Round 8 complete, ~55-58% reached)
+> **Last updated:** 25 Apr 2026 (Round 9 complete, ~65-70% reached)
 
 Each step is worth ~5%. Steps are intentionally coarse — the work inside each step is what agents tackle in parallel "rounds."
 
@@ -134,6 +134,8 @@ _Original brief:_ - Phoneme-level feedback (not just word-level)
 
 ## STEP 7 → 65% — AI Teacher Mercy v2
 
+**Status: ~70% complete (25 Apr 2026 — Round 9 A1-A4).** ✅ Multi-turn conversation thread + persistence (mercy_conversations + mercy_messages, RLS, /mercy page) PR #89. ✅ Episodic memory layer (mercy_user_facts with supersede chain + heuristic EN+VN fact extractor) PR #90. ✅ Rule-based writing rubric (5-dimension scorer with 10 essay-specific L1 detectors, /writing-feedback page) PR #91. ✅ Mock interview scenarios (5 bilingual VN diaspora scenarios — tech support, restaurant, nail salon, tutor, office admin — 28 questions, /interview pages) PR #95. ❌ Voice STT/TTS pipeline wiring (existing TTS works; STT needs Whisper API integration). ❌ LLM-based fact extractor (heuristic in place, LLM swap is daytime work). ❌ LLM-based writing rubric (rule-based foundation in place, LLM enhancement deferred). ❌ Real Mercy memory feeding into ai-chat edge function prompts (schema ready, prompt-slot wiring is daytime work).
+
 - Voice conversations (multi-turn)
 - Personalized lesson plans (Mercy builds curriculum from placement + weaknesses)
 - Writing feedback (essay → rubric grading)
@@ -150,6 +152,8 @@ _Original brief:_ - Phoneme-level feedback (not just word-level)
 ---
 
 ## STEP 8 → 70% — Scale & Performance
+
+**Status: ~80% complete (25 Apr 2026 — Round 9 A5-A7).** ✅ Service worker + offline lesson cache (VitePWA runtime caches; 35-room precache; OfflineIndicator banner VN-first) PR #93. ✅ Sentry SDK skeleton (DSN-gated, privacy-safe with PII scrubbing, tree-shaken when DSN empty) PR #94. ✅ Bundle audit + recharts code-split (-342 KB critical-path JS, -61% vendor chunk) PR #92. ❌ CDN setup (Cloudflare account + DNS — your hands). ❌ Sentry DSN provisioning + production env vars (your hands; runbook ready). ❌ Supabase Pro tier upgrade for read replicas (your billing decision). ❌ Real load testing 10K concurrent (needs auth + budget). ❌ App size measurement on real iOS/Android builds.
 
 - CDN: sub-1s load in VN, US, AU, DE, FR
 - Offline mode (core 100 lessons)
@@ -295,4 +299,6 @@ Unique asset: **the exiled journalist building for his diaspora.** Duolingo/ELSA
 - **Round 7 — 24 Apr 2026 late evening (COMPLETE):** Target 40% → 50%. **Achieved ~45-48%.** 7 parallel agents (A1-A7) shipped Step 3 + Step 4 work in one night with proper worktree isolation (lesson learned from Round 6 race condition). PRs merged: #75 (A5 richer lessons), #76 (A7 phoneme drills, self-merged), #77 (A3 daily/XP), #78 (A4 recommendation), #79 (A1 streaks v2), #80 (A2 leaderboard), #81 (A6 email skeleton). 37 files, +5,289 lines of code. Tests: 1426 → 1551 (+125 from this round alone, +353 total today). 4 new SQL migrations (streaks_v2, leaderboard_weekly, xp_and_daily, email_sends_log) — apply manually in Supabase before production use. Marketing skill knowledge base built and delivered (Julian Shapiro startup handbook distilled + VN diaspora context written). Day total: 24 PRs merged, 1198 → 1551 tests, 35 → 60 L1 rules with full VN coverage, +400 sentences, +20 micro-lessons + 3 rich-format pilots. Worktree isolation pattern proved out — no race conditions this round (vs. Round 6 stash chaos). Step 3 still needs Whisper API wiring + STT model. Step 4 still needs APNs cert + email vendor pick (both daytime work, not agent-able tonight).
 
 - **Round 8 — 24-25 Apr 2026 night-into-early-morning (COMPLETE):** Target 50% → 60%. **Achieved ~55-58%.** 7 parallel agents (A1-A7) shipped Step 5 + Step 6 skeletons in one session with full worktree isolation. PRs merged: #82 (A1 SEO), #83 (A3 referral), #84 (A2 blog), #85 (A5 public profiles), #86 (A4 tracking), #87 (A6 study groups), #88 (A7 user-generated sentences). 62 files, +8,832 lines. Tests: 1551 → 1683 (+132). 4 new SQL migrations (public_profiles, referrals, study_groups, user_sentences) — apply manually in Supabase before production use. AppRouter conflicts resolved sequentially as each PR merged (A2, A5, A6, A7 each fixed via rebase + force-with-lease — no race condition issues thanks to worktree pattern). Pattern that worked: hook block on push forced explicit Chau approval, preventing race condition replay. Day total: 31 PRs merged in one day. Tests: 1198 → 1683 (+485). Verified Grammar Help still works on production (PR #62 fix intact post-merge — verify-only check by A1). What's deferred to daytime: real SEO/blog content writing, billing integration for referral rewards, FB Business Manager + GA4 account setup, Discord/Zalo bot tokens, push notification APNs cert, real email send (Resend/Postmark pick), STT vendor wiring (Whisper API), comments moderation policy.
+
+- **Round 9 — 25 Apr 2026 (COMPLETE):** Target 60% → 70%. **Achieved ~65-70%.** 7 parallel agents (A1-A7) shipped Step 7 (AI Teacher v2) + Step 8 (Performance) skeletons. PRs merged: #89 (A1 Mercy thread), #90 (A2 episodic memory), #91 (A3 writing rubric), #92 (A7 bundle audit), #93 (A5 service worker), #94 (A6 Sentry), #95 (A4 mock interviews). 42 files, +7,392 lines. Tests: 1683 → 1916 (+233). 3 new SQL migrations (mercy_conversations, mercy_user_facts, interview_sessions) — apply manually in Supabase. AppRouter conflicts resolved sequentially per agent (A3 fixed via rebase + force-with-lease). Bundle measurement: critical-path JS 1021 KB → 679 KB (-342 KB), vendor 561 KB → 219 KB (-61%). Sentry tree-shaken when VITE_SENTRY_DSN empty. Marketing skill knowledge base from Round 8 still pending Chau download + install. **Day total: 38 PRs merged. Tests: 1198 → 1916 (+718). 11 new SQL migrations.** What's deferred to daytime: voice STT vendor wiring (Whisper), LLM-based fact extractor + writing rubric, Mercy memory prompt-slot wiring into ai-chat edge fn, CDN setup (Cloudflare), Sentry DSN provisioning, Supabase Pro upgrade, FB Business Manager + GA4 setup, real email send vendor (Resend/Postmark), push notifications APNs cert, comments moderation policy, Discord/Zalo bot tokens, real SEO/blog content writing, billing integration for referral rewards, mercy_writing_attempts persistence.
 
