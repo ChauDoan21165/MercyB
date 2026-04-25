@@ -75,6 +75,8 @@ const InterviewIndex         = lazy(() => import("@/pages/interview/InterviewInd
 const InterviewSessionPage   = lazy(() => import("@/pages/interview/InterviewSessionPage"));
 const InterviewSummaryPage   = lazy(() => import("@/pages/interview/InterviewSummaryPage"));
 
+const NailTechnicianPage     = lazy(() => import("@/pages/profession-packs/NailTechnicianPage"));
+
 const ContributeSentencePage = lazy(() => import("@/pages/contribute/ContributeSentencePage"));
 const MySubmissionsPage      = lazy(() => import("@/pages/contribute/MySubmissionsPage"));
 const PendingSentencesPage   = lazy(() => import("@/pages/admin/PendingSentencesPage"));
@@ -553,6 +555,15 @@ export default function AppRouter() {
             element={
               <RequireAuth>
                 <LazyPage><InterviewSummaryPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+
+          {/* Profession packs (Step 10 / VN moat) — auth-gated; per-page paywall gate */}
+          <Route path="/pack/nail-tech"
+            element={
+              <RequireAuth>
+                <LazyPage><NailTechnicianPage /></LazyPage>
               </RequireAuth>
             }
           />
