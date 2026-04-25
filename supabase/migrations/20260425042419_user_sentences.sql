@@ -11,7 +11,7 @@
 -- Access model:
 --   - Authenticated users can INSERT rows where submitter_user_id = auth.uid().
 --   - Submitter can SELECT their own rows (any status).
---   - Admins (public.is_admin(auth.uid())) can SELECT all rows and UPDATE
+--   - Admins (public.get_admin_level(auth.uid()) >= 9) can SELECT all rows and UPDATE
 --     status / reviewed_at / reviewed_by_user_id / review_notes.
 --   - No DELETE for anyone via RLS (hard delete requires SQL editor / role).
 
@@ -79,7 +79,7 @@ create unique index if not exists user_submitted_sentences_dedup_daily_idx
   on public.user_submitted_sentences (
     submitter_user_id,
     lower(trim(en)),
-    (date_trunc('day', submitted_at))
+    (date_trunc('day', submitted_at AT TIME ZONE 'UTC'))
   )
   where submitter_user_id is not null;
 
@@ -123,7 +123,7 @@ create policy user_sentences_select_admin
   on public.user_submitted_sentences
   for select
   to authenticated
-  using (public.is_admin(auth.uid()));
+  using (public.get_admin_level(auth.uid()) >= 9);
 
 -- Admin updates status + review metadata. `with check` limits what an
 -- admin can mutate — they cannot edit the original en/vi content,
@@ -132,9 +132,9 @@ create policy user_sentences_update_admin
   on public.user_submitted_sentences
   for update
   to authenticated
-  using (public.is_admin(auth.uid()))
+  using (public.get_admin_level(auth.uid()) >= 9)
   with check (
-    public.is_admin(auth.uid())
+    public.get_admin_level(auth.uid()) >= 9
     and submitter_user_id is not distinct from submitter_user_id
     and en = en
     and vi = vi
