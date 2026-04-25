@@ -266,7 +266,6 @@ export const ROOM_IDS = [
   "master_english_high_efficiency_vip2",
   "master_english_high_efficiency_vip3",
   "master_english_high_efficiency_vip3_ii",
-  "matchmaker_traits",
   "math_words_kids_l2",
   "meaning_of_life_free",
   "meaning_of_life_vip1_vip1",
@@ -442,7 +441,6 @@ export const ROOM_IDS = [
   "travel_transport_kids_l2",
   "trigger_point_release_vip1",
   "universe_with_us_free",
-  "user_profile_dashboard",
   "vip3_ii_english_specialization_mastery_vip3",
   "vip6_abandonment_wound",
   "vip6_attachment_trauma",
@@ -2257,13 +2255,6 @@ const __ROOM_LIST: RoomListItem[] = [
     "hasData": true
   },
   {
-    "id": "matchmaker_traits",
-    "title_en": "matchmaker_traits",
-    "title_vi": "matchmaker_traits",
-    "tier": "free",
-    "hasData": true
-  },
-  {
     "id": "math_words_kids_l2",
     "title_en": "Math Words for Kids",
     "title_vi": "Từ Vựng Toán Học Cho Trẻ",
@@ -3485,13 +3476,6 @@ const __ROOM_LIST: RoomListItem[] = [
     "id": "universe_with_us_free",
     "title_en": "Universe With US",
     "title_vi": "Vũ Trụ Ở Cùng Chúng Ta",
-    "tier": "free",
-    "hasData": true
-  },
-  {
-    "id": "user_profile_dashboard",
-    "title_en": "user_profile_dashboard",
-    "title_vi": "Phòng Mercy Blade về quản lý hồ sơ người dùng và bảng điều khiển học tập",
     "tier": "free",
     "hasData": true
   },
