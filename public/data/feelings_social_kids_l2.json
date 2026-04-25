@@ -37,7 +37,7 @@
         "kids",
         "level2"
       ],
-      "audio": ""
+      "audio": null
     },
     {
       "slug": "kind-words",
@@ -62,7 +62,7 @@
         "polite",
         "social"
       ],
-      "audio": ""
+      "audio": null
     },
     {
       "slug": "making-friends",
@@ -86,7 +86,7 @@
         "friendship",
         "social-skills"
       ],
-      "audio": ""
+      "audio": null
     }
   ],
   "domain": "Kids",

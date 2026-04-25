@@ -33,7 +33,7 @@
         "art",
         "creativity"
       ],
-      "audio": ""
+      "audio": null
     },
     {
       "slug": "what-if-game",
@@ -57,7 +57,7 @@
         "imagination",
         "games"
       ],
-      "audio": ""
+      "audio": null
     },
     {
       "slug": "new-game-ideas",
@@ -81,7 +81,7 @@
         "games",
         "creative-thinking"
       ],
-      "audio": ""
+      "audio": null
     }
   ],
   "domain": "Kids",
