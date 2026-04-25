@@ -15,6 +15,7 @@ import { useAuth } from "@/providers/AuthProvider";
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 import { supabase } from "@/lib/supabaseClient";
 import FocusAreasCard from "@/components/home/FocusAreasCard";
+import LeaderboardCard from "@/components/leaderboard/LeaderboardCard";
 import { StreakBadge } from "@/components/streak/StreakBadge";
 
 const LS_PLACEMENT_BANNER_DISMISSED = "mb.placement.banner.dismissed";
@@ -66,6 +67,8 @@ export default function Home() {
   const { user } = useAuth();
   const { enabled: placementFlagEnabled, loading: placementFlagLoading } =
     useFeatureFlag("placement_test_enabled", false);
+  const { enabled: leaderboardEnabled } =
+    useFeatureFlag("mercyblade_leaderboard_enabled", false);
 
   const [placementBannerDismissed, setPlacementBannerDismissed] = useState<boolean>(() => {
     try {
@@ -489,6 +492,9 @@ export default function Home() {
 
           {/* Focus areas — tertiary (feature-flagged) */}
           <FocusAreasCard />
+
+          {/* Weekly leaderboard — Step 4 retention card (feature-flagged) */}
+          {leaderboardEnabled && Boolean(user) && <LeaderboardCard />}
         </section>
 
         {/* Floating bubbles */}
