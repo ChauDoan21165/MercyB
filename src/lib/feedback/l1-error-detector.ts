@@ -58,6 +58,36 @@
  *  34. vi_l1_look_vs_see_vs_watch collocation(v1.2)
  *  35. vi_l1_by_vs_with           usage      (v1.2)
  *  36. vi_l1_time_expressions     usage      (v1.2)
+ *
+ *  Round 5 additions — rules 37–61 (25 new). Public IDs L1-036..L1-060
+ *  are published in shared/l1-rule-ids-round5.md (coordination contract
+ *  with CC1/CC2/CC4/CC5). All 25 are pattern-match only, low-FP bias.
+ *
+ *  37. vi_l1_present_perfect_vs_past  aspect       B1
+ *  38. vi_l1_subjunctive_were         structural   B2
+ *  39. vi_l1_embedded_question_order  word-order   B1
+ *  40. vi_l1_do_support_3ps           agreement    A2
+ *  41. vi_l1_subject_relative_omit    structural   B1
+ *  42. vi_l1_gerund_after_verb        structural   B1
+ *  43. vi_l1_modal_perfect            structural   B2
+ *  44. vi_l1_phrasal_pronoun_order    word-order   B1
+ *  45. vi_l1_comparative_more_long    morphology   A2
+ *  46. vi_l1_many_with_uncount        agreement    A2
+ *  47. vi_l1_geographical_article     usage        B1
+ *  48. vi_l1_generic_plural           usage        A2
+ *  49. vi_l1_double_negative          structural   A2
+ *  50. vi_l1_negative_inversion       word-order   C1
+ *  51. vi_l1_adverb_before_subject    word-order   A2
+ *  52. vi_l1_make_let_bare            structural   B1
+ *  53. vi_l1_too_vs_very              usage        A2
+ *  54. vi_l1_a_vs_an_vowel            morphology   A1
+ *  55. vi_l1_one_of_the_singular      agreement    B1
+ *  56. vi_l1_each_singular            agreement    B1
+ *  57. vi_l1_been_vs_gone             usage        B2
+ *  58. vi_l1_tag_polarity             structural   B1
+ *  59. vi_l1_no_article_generic       usage        A2
+ *  60. vi_l1_superlative_the          usage        A2
+ *  61. vi_l1_if_will                  structural   B1
  */
 
 export type L1WeaknessTag =
@@ -96,7 +126,33 @@ export type L1WeaknessTag =
   | 'vi_l1_another_vs_other'
   | 'vi_l1_look_vs_see_vs_watch'
   | 'vi_l1_by_vs_with'
-  | 'vi_l1_time_expressions';
+  | 'vi_l1_time_expressions'
+  // Round 5 — CC3 25-rule expansion (public IDs L1-036..L1-060)
+  | 'vi_l1_present_perfect_vs_past'   // L1-036 B1
+  | 'vi_l1_subjunctive_were'          // L1-037 B2
+  | 'vi_l1_embedded_question_order'   // L1-038 B1
+  | 'vi_l1_do_support_3ps'            // L1-039 A2
+  | 'vi_l1_subject_relative_omit'     // L1-040 B1
+  | 'vi_l1_gerund_after_verb'         // L1-041 B1
+  | 'vi_l1_modal_perfect'             // L1-042 B2
+  | 'vi_l1_phrasal_pronoun_order'     // L1-043 B1
+  | 'vi_l1_comparative_more_long'     // L1-044 A2
+  | 'vi_l1_many_with_uncount'         // L1-045 A2
+  | 'vi_l1_geographical_article'      // L1-046 B1
+  | 'vi_l1_generic_plural'            // L1-047 A2
+  | 'vi_l1_double_negative'           // L1-048 A2
+  | 'vi_l1_negative_inversion'        // L1-049 C1
+  | 'vi_l1_adverb_before_subject'     // L1-050 A2
+  | 'vi_l1_make_let_bare'             // L1-051 B1
+  | 'vi_l1_too_vs_very'               // L1-052 A2
+  | 'vi_l1_a_vs_an_vowel'             // L1-053 A1
+  | 'vi_l1_one_of_the_singular'       // L1-054 B1
+  | 'vi_l1_each_singular'             // L1-055 B1
+  | 'vi_l1_been_vs_gone'              // L1-056 B2
+  | 'vi_l1_tag_polarity'              // L1-057 B1
+  | 'vi_l1_no_article_generic'        // L1-058 A2
+  | 'vi_l1_superlative_the'           // L1-059 A2
+  | 'vi_l1_if_will';                  // L1-060 B1
 
 export type L1FeedbackText = {
   en: string;
@@ -272,6 +328,115 @@ const RULE_STRINGS: Record<L1WeaknessTag, StringTemplate> = {
   vi_l1_time_expressions: {
     en: "Vietnamese time expressions are simpler. English picks the preposition by category: **in** the morning, **on** Monday, **at** 7 o'clock. *{USER_PREP}* → *{FIX_PREP}*. Try: *{FIX}*.",
     vi: "Tiếng Việt mình đơn giản hơn. Tiếng Anh có quy tắc rõ: **in** buổi sáng, **on** thứ Hai, **at** 7 giờ. *{USER_PREP}* → *{FIX_PREP}*. Thử: *{FIX}*.",
+  },
+
+  // ── Round 5 additions (L1-036..L1-060) ────────────────────────────────
+  // EN strings are CC3 placeholders. CC4 will author the VN strings
+  // for all 25 in a separate PR; the VN string here is a minimal
+  // stub (English key + [VI TBD]) so the type contract holds and
+  // tests can assert a non-empty VN string length.
+  vi_l1_present_perfect_vs_past: {
+    en: "When you point to a specific past time — **yesterday**, **last week**, **in 1990** — English uses simple past, not present perfect. *I have eaten it yesterday* → *I ate it yesterday*. Try: *{FIX}*.",
+    vi: "[VI TBD — CC4] Dùng quá khứ đơn với mốc thời gian cụ thể. Thử: *{FIX}*.",
+  },
+  vi_l1_subjunctive_were: {
+    en: "After **if** or **wish**, use **were** for every subject when you're imagining something not real. *If I was you* → *If I **were** you*. Try: *{FIX}*.",
+    vi: "[VI TBD — CC4] Sau **if / wish** ở tình huống giả định, dùng **were** cho mọi chủ ngữ. Thử: *{FIX}*.",
+  },
+  vi_l1_embedded_question_order: {
+    en: "Once a question sits inside another sentence, English drops the question word order. *I don't know what **is this*** → *I don't know what **this is***. Try: *{FIX}*.",
+    vi: "[VI TBD — CC4] Câu hỏi lồng trong câu khác không giữ trật tự câu hỏi. Thử: *{FIX}*.",
+  },
+  vi_l1_do_support_3ps: {
+    en: "After **he**, **she**, or **it**, the helper is **doesn't** — not **don't**. The **-s** already lives on the helper, so the main verb stays bare. Try: *{FIX}*.",
+    vi: "[VI TBD — CC4] Với **he / she / it** phải dùng **doesn't**, không phải **don't**. Thử: *{FIX}*.",
+  },
+  vi_l1_subject_relative_omit: {
+    en: "English can't drop the **subject** relative pronoun. *The man came yesterday is my uncle* → *The man **who** came yesterday is my uncle*. Try: *{FIX}*.",
+    vi: "[VI TBD — CC4] Không thể bỏ đại từ quan hệ làm chủ ngữ. Thử: *{FIX}*.",
+  },
+  vi_l1_gerund_after_verb: {
+    en: "After **enjoy / avoid / finish / keep / mind / suggest / practise**, English wants **-ing**, not **to + V**. *I enjoy **to swim*** → *I enjoy **swimming***. Try: *{FIX}*.",
+    vi: "[VI TBD — CC4] Sau enjoy/avoid/finish/keep/mind, dùng V-ing thay vì to V. Thử: *{FIX}*.",
+  },
+  vi_l1_modal_perfect: {
+    en: "To talk about the past with a modal, English uses **modal + have + past participle** — not modal + past verb. *I should **did** it* → *I should **have done** it*. Try: *{FIX}*.",
+    vi: "[VI TBD — CC4] Modal quá khứ dùng **modal + have + V3**. Thử: *{FIX}*.",
+  },
+  vi_l1_phrasal_pronoun_order: {
+    en: "When the object of a separable phrasal verb is a pronoun, it goes **between** the verb and the particle. *I picked up **him*** → *I picked **him** up*. Try: *{FIX}*.",
+    vi: "[VI TBD — CC4] Với phrasal verb tách được, đại từ chen vào giữa. Thử: *{FIX}*.",
+  },
+  vi_l1_comparative_more_long: {
+    en: "Two-or-more-syllable adjectives take **more** — not an **-er** ending. *more beautifuler* / *beautifuler* → **more beautiful**. Try: *{FIX}*.",
+    vi: "[VI TBD — CC4] Tính từ dài 2+ âm tiết dùng **more**, không thêm **-er**. Thử: *{FIX}*.",
+  },
+  vi_l1_many_with_uncount: {
+    en: "Use **much** (not **many**) with uncountable nouns — **water**, **money**, **advice**, **music**. *many water* → **much water**. Try: *{FIX}*.",
+    vi: "[VI TBD — CC4] Dùng **much** với danh từ không đếm được. Thử: *{FIX}*.",
+  },
+  vi_l1_geographical_article: {
+    en: "Most country names take **no article**, but a few plural-sounding ones do — **the Philippines**, **the USA**, **the Netherlands**. *the Vietnam* → *Vietnam*; *Philippines* → *the Philippines*. Try: *{FIX}*.",
+    vi: "[VI TBD — CC4] Hầu hết tên quốc gia không có **the**; vài nước ngoại lệ (the Philippines, the USA...). Thử: *{FIX}*.",
+  },
+  vi_l1_generic_plural: {
+    en: "To talk about something in general, English uses the **plural** without **the**. *I like dog* → *I like **dogs***. Try: *{FIX}*.",
+    vi: "[VI TBD — CC4] Nói khái quát trong tiếng Anh dùng số nhiều không **the**. Thử: *{FIX}*.",
+  },
+  vi_l1_double_negative: {
+    en: "English uses only **one** negative in a clause. *I don't have **no** money* → *I don't have **any** money*. Try: *{FIX}*.",
+    vi: "[VI TBD — CC4] Tiếng Anh chỉ dùng một phủ định trong một mệnh đề. Thử: *{FIX}*.",
+  },
+  vi_l1_negative_inversion: {
+    en: "When a negative word like **never**, **seldom**, **rarely** starts the sentence, English flips the subject and auxiliary. *Never I have seen it* → *Never **have I** seen it*. Try: *{FIX}*.",
+    vi: "[VI TBD — CC4] Khi câu mở đầu bằng **never / seldom / rarely**, đảo chủ ngữ và trợ động từ. Thử: *{FIX}*.",
+  },
+  vi_l1_adverb_before_subject: {
+    en: "Frequency adverbs like **always**, **usually**, **sometimes** go **after** the subject, not before it. *Always I go* → *I **always** go*. Try: *{FIX}*.",
+    vi: "[VI TBD — CC4] Trạng từ tần suất đi sau chủ ngữ, không đứng trước. Thử: *{FIX}*.",
+  },
+  vi_l1_make_let_bare: {
+    // NOTE FOR CC4: the causative "had + obj + bare verb" (e.g., "I had
+    // my friend drive me") is rarer than make/let in the wild. Keep the
+    // VN explanation focused on make / made / let. Per CC7 peer review.
+    en: "After **make**, **let**, or **have** in this meaning, English uses the **bare verb** — no **to**. *She made me **to cry*** → *She made me **cry***. Try: *{FIX}*.",
+    vi: "[VI TBD — CC4] Sau **make / let / have** (sai khiến), dùng động từ nguyên mẫu không **to**. Thử: *{FIX}*.",
+  },
+  vi_l1_too_vs_very: {
+    en: "**Too** means excessive (there's a problem). For a simple strong intensifier, use **very**. *I am **too** happy to see you* → *I am **very** happy to see you*. Try: *{FIX}*.",
+    vi: "[VI TBD — CC4] **Too** nghĩa là quá mức (tiêu cực). Muốn nhấn mạnh tích cực, dùng **very**. Thử: *{FIX}*.",
+  },
+  vi_l1_a_vs_an_vowel: {
+    en: "Use **a** before a consonant **sound**, **an** before a vowel **sound** — listen, don't just look. *a apple* → *an apple*; *an book* → *a book*. Try: *{FIX}*.",
+    vi: "[VI TBD — CC4] Dùng **a** trước phụ âm, **an** trước nguyên âm — theo âm thanh, không phải chữ. Thử: *{FIX}*.",
+  },
+  vi_l1_one_of_the_singular: {
+    en: "After **one of the / my / her / their**, the noun is **plural** even though the whole phrase refers to one item. *one of the student* → *one of the **students***. Try: *{FIX}*.",
+    vi: "[VI TBD — CC4] Sau **one of the / my / ...** dùng danh từ số nhiều. Thử: *{FIX}*.",
+  },
+  vi_l1_each_singular: {
+    en: "**Each** and **every** always take a **singular** noun and a **singular** verb. *Each **students are** happy* → *Each **student is** happy*. Try: *{FIX}*.",
+    vi: "[VI TBD — CC4] **Each / every** đi với danh từ số ít và động từ số ít. Thử: *{FIX}*.",
+  },
+  vi_l1_been_vs_gone: {
+    en: "**Gone to** = went there and hasn't come back. **Been to** = visited, came back. *He has **gone** to Paris three times* → *He has **been** to Paris three times*. Try: *{FIX}*.",
+    vi: "[VI TBD — CC4] **gone to** = đi chưa về; **been to** = đã từng ghé qua. Thử: *{FIX}*.",
+  },
+  vi_l1_tag_polarity: {
+    en: "Tag questions flip polarity: positive statement + negative tag, negative statement + positive tag. *You like it, **do you***? → *You like it, **don't you***? Try: *{FIX}*.",
+    vi: "[VI TBD — CC4] Câu hỏi đuôi đảo dấu: mệnh đề khẳng định + đuôi phủ định (và ngược lại). Thử: *{FIX}*.",
+  },
+  vi_l1_no_article_generic: {
+    en: "Abstract nouns and generic plurals usually take **no** article in English. *The life is hard* → *Life is hard*. Try: *{FIX}*.",
+    vi: "[VI TBD — CC4] Danh từ trừu tượng nói chung không dùng **the**. Thử: *{FIX}*.",
+  },
+  vi_l1_superlative_the: {
+    en: "Superlatives (**best**, **tallest**, **most beautiful**) almost always come with **the**. *She is best student* → *She is **the best** student*. Try: *{FIX}*.",
+    vi: "[VI TBD — CC4] Trước cấp cao nhất gần như luôn dùng **the**. Thử: *{FIX}*.",
+  },
+  vi_l1_if_will: {
+    en: "In a 1st-conditional **if**-clause, English uses **present simple** — not **will**. *If I **will go** tomorrow, I will tell you* → *If I **go** tomorrow, I will tell you*. Try: *{FIX}*.",
+    vi: "[VI TBD — CC4] Mệnh đề **if** (điều kiện loại 1) dùng hiện tại đơn, không dùng **will**. Thử: *{FIX}*.",
   },
 };
 
@@ -1646,6 +1811,755 @@ const ruleTimeExpressions: Rule = ({ userText, expectedText, rawExpected }) => {
 };
 
 // ────────────────────────────────────────────────────────────────────────────
+// Round 5 additions — rules 37–61. Shared constants + rule bodies.
+// Pattern-match only. Low-FP bias: when unsure, return null.
+// ────────────────────────────────────────────────────────────────────────────
+
+// Irregular past-participle forms paired with the simple-past form the
+// learner "meant" when they point to a specific past time. Keys are
+// forms that might appear after "have/has/had" in the user's sentence.
+const PAST_PARTICIPLES_TO_SIMPLE = new Map<string, string>([
+  ['been', 'was'],
+  ['done', 'did'],
+  ['gone', 'went'],
+  ['eaten', 'ate'],
+  ['seen', 'saw'],
+  ['taken', 'took'],
+  ['written', 'wrote'],
+  ['spoken', 'spoke'],
+  ['broken', 'broke'],
+  ['chosen', 'chose'],
+  ['forgotten', 'forgot'],
+  ['given', 'gave'],
+  ['gotten', 'got'],
+  ['known', 'knew'],
+  ['met', 'met'],
+  ['read', 'read'],
+  ['said', 'said'],
+  ['told', 'told'],
+  ['thought', 'thought'],
+  ['bought', 'bought'],
+  ['caught', 'caught'],
+  ['brought', 'brought'],
+  ['drunk', 'drank'],
+  ['sung', 'sang'],
+  ['swum', 'swam'],
+  ['run', 'ran'],
+  ['flown', 'flew'],
+  ['driven', 'drove'],
+  ['made', 'made'],
+  ['found', 'found'],
+  ['left', 'left'],
+  ['felt', 'felt'],
+  ['heard', 'heard'],
+]);
+
+// Verbs that REQUIRE a gerund complement in modern English. Using
+// "to + V" after these is the classic VN-learner pattern.
+const GERUND_REQUIRING_VERBS = new Set([
+  'enjoy', 'enjoys', 'enjoyed',
+  'avoid', 'avoids', 'avoided',
+  'finish', 'finishes', 'finished',
+  'keep', 'keeps', 'kept',
+  'mind', 'minds', 'minded',
+  'suggest', 'suggests', 'suggested',
+  'consider', 'considers', 'considered',
+  'practise', 'practises', 'practised',
+  'practice', 'practices', 'practiced',
+  'quit', 'quits', 'quitted',
+  'admit', 'admits', 'admitted',
+]);
+
+// Past-tense or past-participle forms that should not sit directly
+// after a modal like "should". Paired with "modal + have + V3" fix.
+const PAST_ISH_AFTER_MODAL = new Set([
+  'did', 'went', 'saw', 'took', 'gave', 'made', 'knew', 'brought',
+  'bought', 'taught', 'thought', 'caught', 'told', 'said', 'ate',
+  'drove', 'wrote', 'sang', 'ran', 'came', 'had', 'got', 'got-ten',
+  'became', 'began', 'broke', 'chose', 'drew', 'forgot', 'grew',
+  'heard', 'kept', 'left', 'lost', 'met', 'paid', 'read', 'sat',
+  'slept', 'spoke', 'spent', 'stood', 'stole', 'swam', 'threw',
+  'understood', 'wore', 'won',
+]);
+
+// Subset of modals for the "modal + past → modal + have + V3" rule.
+// (The full MODAL_VERBS set lives above; this one is scoped to rule 43.)
+const MODAL_PERFECT_MODALS = new Set(['should', 'could', 'would', 'might', 'must']);
+
+// Separable-phrasal-verb particles. (We don't claim to cover all English
+// particles — just the high-frequency separable ones.)
+const PHRASAL_PARTICLES = new Set([
+  'up', 'out', 'on', 'off', 'in', 'away', 'back', 'over', 'down',
+  'around', 'about', 'across',
+]);
+
+// Verbs that take those particles in their separable sense.
+const SEPARABLE_PHRASAL_VERBS = new Set([
+  'pick', 'picks', 'picked', 'picking',
+  'put', 'puts', 'putting',
+  'turn', 'turns', 'turned', 'turning',
+  'take', 'takes', 'took', 'taken', 'taking',
+  'give', 'gives', 'gave', 'given', 'giving',
+  'call', 'calls', 'called', 'calling',
+  'hand', 'hands', 'handed', 'handing',
+  'bring', 'brings', 'brought', 'bringing',
+  'wake', 'wakes', 'woke', 'woken', 'waking',
+  'shut', 'shuts', 'shutting',
+  'switch', 'switches', 'switched', 'switching',
+  'throw', 'throws', 'threw', 'thrown', 'throwing',
+  'try', 'tries', 'tried', 'trying',
+  'figure', 'figures', 'figured', 'figuring',
+  'fill', 'fills', 'filled', 'filling',
+  'write', 'writes', 'wrote', 'written', 'writing',
+]);
+
+const OBJECT_PRONOUNS = new Set(['him', 'her', 'it', 'them', 'me', 'us', 'you']);
+
+// Multi-syllable adjectives mistakenly given an -er or -est ending.
+const LONG_ADJECTIVES = [
+  'beautiful', 'important', 'difficult', 'interesting', 'wonderful',
+  'expensive', 'dangerous', 'careful', 'comfortable', 'delicious',
+  'terrible', 'horrible', 'useful', 'powerful', 'successful',
+  'popular', 'possible', 'impossible', 'modern', 'famous',
+  'generous',
+];
+
+const UNCOUNTABLE_FOR_MANY = new Set([
+  'water', 'money', 'advice', 'information', 'furniture', 'news',
+  'music', 'rice', 'bread', 'sugar', 'coffee', 'milk', 'time',
+  'homework', 'work', 'luggage', 'equipment', 'traffic', 'weather',
+]);
+
+// Country names where "the" is WRONG.
+const COUNTRIES_NO_THE = new Set([
+  'vietnam', 'japan', 'china', 'korea', 'france', 'germany',
+  'england', 'italy', 'spain', 'russia', 'canada', 'australia',
+  'brazil', 'mexico', 'india', 'thailand', 'singapore', 'malaysia',
+  'indonesia', 'laos', 'cambodia',
+]);
+
+// Country names where "the" is REQUIRED.
+const COUNTRIES_WITH_THE = new Set([
+  'philippines', 'netherlands', 'usa', 'uk',
+]);
+
+// Generic singular countable nouns that learners drop the plural on.
+const GENERIC_SINGULAR_NOUNS = new Set([
+  'dog', 'cat', 'book', 'apple', 'banana', 'car', 'horse', 'child',
+  'flower', 'song', 'movie', 'student', 'computer',
+]);
+
+// Adjectives that are positive / neutral enough that "too X" is
+// almost certainly a misuse of "too" for "very".
+const POSITIVE_ADJECTIVES_FOR_TOO = new Set([
+  'happy', 'beautiful', 'good', 'nice', 'kind', 'clever',
+  'interesting', 'exciting', 'delicious', 'wonderful', 'lovely',
+  'smart',
+]);
+
+// Singular nouns frequently placed after "one of the / my / her".
+const COMMON_SINGULAR_NOUNS_AFTER_ONE_OF = new Set([
+  'student', 'book', 'friend', 'boy', 'girl', 'man', 'woman',
+  'teacher', 'doctor', 'child', 'apple', 'car', 'house', 'room',
+  'dog', 'cat', 'movie', 'song', 'problem', 'question',
+]);
+
+// Countable nouns that should be PLURAL-ised as a wrong form after "each".
+const WRONG_EACH_PLURALS = new Set([
+  'students', 'books', 'friends', 'boys', 'girls', 'men', 'women',
+  'teachers', 'doctors', 'children', 'people', 'cats', 'dogs',
+]);
+
+// Abstract / generic nouns frequently preceded by an incorrect "the"
+// when they're meant generically.
+const ABSTRACT_GENERIC_NOUNS = new Set([
+  'life', 'love', 'music', 'art', 'nature', 'time', 'happiness',
+  'history', 'science', 'knowledge', 'freedom', 'peace', 'money',
+  'friendship',
+]);
+
+// Regular superlative spellings + common irregulars.
+const IRREGULAR_SUPERLATIVES = new Set(['best', 'worst', 'least', 'most']);
+
+// Helper: does the word look like a regular "-est" superlative?
+function isRegularSuperlative(word: string): boolean {
+  if (word.length < 5) return false;
+  if (!word.endsWith('est')) return false;
+  // Filter out common false positives ("west", "test", "rest", etc. already
+  // filtered by length + are also excluded by the earlier "-est suffix" check
+  // of 3 letters; here we guard a few common false friends).
+  const stopset = new Set(['test', 'rest', 'west', 'best', 'chest', 'guest', 'nest']);
+  if (stopset.has(word)) return false;
+  return true;
+}
+
+// Helper: is `word` a simple vowel-initial word (AEIOU)? Conservative — we
+// skip known silent-h / y-consonant exceptions to keep FPs down.
+const SILENT_H_WORDS = new Set(['hour', 'honest', 'honor', 'honour', 'heir']);
+const U_CONSONANT_SOUND = new Set([
+  'university', 'user', 'useful', 'unique', 'uniform', 'unit', 'one',
+  'euro', 'european', 'useless',
+]);
+function startsWithVowelSound(word: string): boolean {
+  if (!word) return false;
+  const w = word.toLowerCase();
+  if (SILENT_H_WORDS.has(w)) return true;
+  if (U_CONSONANT_SOUND.has(w)) return false;
+  return /^[aeiou]/.test(w);
+}
+
+function joinTokens(tokens: string[]): string {
+  return tokens.join(' ');
+}
+
+/** 37. Present perfect used with a specific past-time marker — B1. */
+const rulePresentPerfectVsPast: Rule = ({
+  userTokens,
+  expectedTokens,
+  userText,
+  expectedText,
+  rawExpected,
+}) => {
+  // Must: user has "have/has" + past-participle AND a past-time marker,
+  //       expected does NOT use have/has in the same slot.
+  if (!/\b(have|has)\s+\w+/.test(userText)) return null;
+  if (!hasPastTimeMarker(userTokens)) return null;
+  // Expected should use simple past (no have/has + participle form).
+  if (/\b(have|has)\s+\w+/.test(expectedText)) return null;
+  // Scan the user tokens for a "have/has + PP" pair.
+  for (let i = 1; i < userTokens.length; i++) {
+    const aux = userTokens[i - 1];
+    if (aux !== 'have' && aux !== 'has') continue;
+    const next = userTokens[i];
+    if (PAST_PARTICIPLES_TO_SIMPLE.has(next)) {
+      return {
+        tag: 'vi_l1_present_perfect_vs_past',
+        replacements: { FIX: rawExpected },
+      };
+    }
+    // Regular -ed participle form.
+    if (/^\w+ed$/.test(next) && expectedTokens.includes(next)) {
+      return {
+        tag: 'vi_l1_present_perfect_vs_past',
+        replacements: { FIX: rawExpected },
+      };
+    }
+  }
+  return null;
+};
+
+/** 38. "if/wish + subject + was" → "were" — B2. */
+const ruleSubjunctiveWere: Rule = ({ userText, expectedText, rawExpected }) => {
+  const userLower = userText.toLowerCase();
+  const expectedLower = expectedText.toLowerCase();
+  if (!/\b(if|wish)\s+(i|he|she|it)\s+was\b/.test(userLower)) return null;
+  if (!/\b(if|wish)\s+(i|he|she|it)\s+were\b/.test(expectedLower)) return null;
+  return {
+    tag: 'vi_l1_subjunctive_were',
+    replacements: { FIX: rawExpected },
+  };
+};
+
+/** 39. Embedded-question inverted word order — B1. */
+const ruleEmbeddedQuestionOrder: Rule = ({ userText, expectedText, rawExpected }) => {
+  const userLower = userText.toLowerCase();
+  const expectedLower = expectedText.toLowerCase();
+  // The wrong side is distinctive enough on its own: a reporting verb
+  // ("tell me", "I don't know", "wonder") followed later by
+  // wh + aux + subject — i.e., question-inversion inside the embedded
+  // clause.
+  const reportingVerbs = '(know|wonder|tell|ask|understand|remember|see|explain|find\\s+out)';
+  const whWords = '(what|where|when|why|how|who|which)';
+  const auxes = '(is|are|was|were|do|does|did|can|could|will|would|has|have|had)';
+  const subjects = '(this|that|these|those|he|she|it|they|we|i|you)';
+  const wrongPattern = new RegExp(
+    `\\b${reportingVerbs}.*\\b${whWords}\\s+${auxes}\\s+${subjects}\\b`,
+  );
+  const m = wrongPattern.exec(userLower);
+  if (!m) return null;
+  // Sanity: the expected contains the same wh-word but does NOT have
+  // the aux immediately following it (i.e., inversion is removed).
+  // m[2] here is the wh-word group (reportingVerbs is group 1).
+  const whWord = m[2];
+  if (!expectedLower.includes(whWord)) return null;
+  // Reject if the expected still has `wh + aux` — that would mean both
+  // sides are inverted and this isn't the L1 pattern we're looking for.
+  const stillInverted = new RegExp(`\\b${whWord}\\s+${auxes}\\s+${subjects}\\b`);
+  if (stillInverted.test(expectedLower)) return null;
+  return {
+    tag: 'vi_l1_embedded_question_order',
+    replacements: { FIX: rawExpected },
+  };
+};
+
+/** 40. "she/he/it don't" → "doesn't" — A2. */
+const ruleDoSupport3ps: Rule = ({ userText, expectedText, rawExpected }) => {
+  // normalizeContractions already collapses don't → dont, doesn't → doesnt.
+  const userLower = userText.toLowerCase();
+  const expectedLower = expectedText.toLowerCase();
+  if (!/\b(she|he|it)\s+dont\b/.test(userLower)) return null;
+  if (!/\b(she|he|it)\s+doesnt\b/.test(expectedLower)) return null;
+  return {
+    tag: 'vi_l1_do_support_3ps',
+    replacements: { FIX: rawExpected },
+  };
+};
+
+/** 41. Missing subject relative pronoun (who/which/that) — B1. */
+const ruleSubjectRelativeOmit: Rule = ({ userText, expectedText, rawExpected }) => {
+  const expectedLower = expectedText.toLowerCase();
+  const userLower = userText.toLowerCase();
+  // Expected must carry a subject relative after a noun.
+  const relHeads = '(man|woman|person|people|boy|girl|student|teacher|friend|book|car|house|thing|dog|cat|movie|song)';
+  const pattern = new RegExp(
+    `\\b${relHeads}\\s+(who|which|that)\\s+\\w+`,
+  );
+  if (!pattern.test(expectedLower)) return null;
+  // User version drops the relative.
+  const stripped = expectedLower.replace(/\b(who|which|that)\s+/g, '');
+  // If user roughly matches the "stripped" variant and DOES NOT carry any
+  // relative pronoun, flag.
+  if (/\b(who|which|that)\b/.test(userLower)) return null;
+  // Cheap similarity check: user shares at least 4 consecutive tokens with
+  // the stripped expected. Keeps FPs down on totally unrelated sentences.
+  const userStripped = userLower.replace(/\s+/g, ' ');
+  const pieces = stripped.split(/\s+/).filter(Boolean);
+  for (let i = 0; i + 3 < pieces.length; i++) {
+    const chunk = pieces.slice(i, i + 4).join(' ');
+    if (userStripped.includes(chunk)) {
+      return {
+        tag: 'vi_l1_subject_relative_omit',
+        replacements: { FIX: rawExpected },
+      };
+    }
+  }
+  return null;
+};
+
+/** 42. Gerund required after enjoy/avoid/finish/keep/mind/... — B1. */
+const ruleGerundAfterVerb: Rule = ({ userTokens, expectedText, rawExpected }) => {
+  // Look for the wrong pattern directly: <gerund-verb> <to> <verb>.
+  // Expected must contain an -ing form whose stem overlaps with the
+  // user's bare verb. We accept three common English -ing shapes:
+  //   take + ing → taking        (drop trailing 'e')
+  //   swim + ing → swimming      (double final consonant, CVC)
+  //   walk + ing → walking       (plain append)
+  // A permissive check that also catches irregulars like "lie → lying"
+  // falls back to "expected has an -ing word whose first 3 letters
+  // match the user's verb".
+  const expLower = expectedText.toLowerCase();
+  for (let i = 0; i + 2 < userTokens.length; i++) {
+    const v = userTokens[i];
+    if (!GERUND_REQUIRING_VERBS.has(v)) continue;
+    if (userTokens[i + 1] !== 'to') continue;
+    const next = userTokens[i + 2];
+    if (!/^[a-z]+$/.test(next)) continue;
+    const candidates = new Set<string>();
+    candidates.add(next + 'ing');
+    if (next.endsWith('e')) candidates.add(next.slice(0, -1) + 'ing');
+    candidates.add(next + next[next.length - 1] + 'ing');
+    let matched = false;
+    for (const c of candidates) {
+      if (expLower.includes(c)) { matched = true; break; }
+    }
+    if (!matched && next.length >= 3) {
+      // Fallback: any -ing word in expected whose first 3 letters match.
+      const prefix = next.slice(0, 3);
+      const ingRe = new RegExp(`\\b${prefix}\\w*ing\\b`);
+      if (ingRe.test(expLower)) matched = true;
+    }
+    if (!matched) continue;
+    return {
+      tag: 'vi_l1_gerund_after_verb',
+      replacements: { FIX: rawExpected },
+    };
+  }
+  return null;
+};
+
+/** 43. "modal + past-tense verb" → "modal + have + V3" — B2. */
+const ruleModalPerfect: Rule = ({ userTokens, expectedText, rawExpected }) => {
+  for (let i = 1; i < userTokens.length; i++) {
+    if (!MODAL_PERFECT_MODALS.has(userTokens[i - 1])) continue;
+    const next = userTokens[i];
+    if (!PAST_ISH_AFTER_MODAL.has(next)) continue;
+    // Expected should include "have" right after the modal.
+    const modalHavePattern = new RegExp(`\\b${userTokens[i - 1]}\\s+have\\b`, 'i');
+    if (!modalHavePattern.test(expectedText)) continue;
+    return {
+      tag: 'vi_l1_modal_perfect',
+      replacements: { FIX: rawExpected },
+    };
+  }
+  return null;
+};
+
+/** 44. Separable phrasal verb + particle + pronoun → pronoun between — B1. */
+const rulePhrasalPronounOrder: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
+  // Wrong: <verb> <particle> <pronoun>
+  // Right: <verb> <pronoun> <particle>
+  for (let i = 0; i + 2 < userTokens.length; i++) {
+    if (!SEPARABLE_PHRASAL_VERBS.has(userTokens[i])) continue;
+    if (!PHRASAL_PARTICLES.has(userTokens[i + 1])) continue;
+    if (!OBJECT_PRONOUNS.has(userTokens[i + 2])) continue;
+    // Sanity: expected flips the particle and pronoun.
+    for (let j = 0; j + 2 < expectedTokens.length; j++) {
+      if (expectedTokens[j] !== userTokens[i]) continue;
+      if (expectedTokens[j + 1] !== userTokens[i + 2]) continue;
+      if (expectedTokens[j + 2] !== userTokens[i + 1]) continue;
+      return {
+        tag: 'vi_l1_phrasal_pronoun_order',
+        replacements: { FIX: rawExpected },
+      };
+    }
+  }
+  return null;
+};
+
+/** 45. "more {beautifuler / importanter / …}" or bare "beautifuler" — A2. */
+const ruleComparativeMoreLong: Rule = ({ userText, expectedText, rawExpected }) => {
+  const userLower = userText.toLowerCase();
+  const expectedLower = expectedText.toLowerCase();
+  for (const adj of LONG_ADJECTIVES) {
+    // Wrong form: "adj + er" (e.g., beautifuler).
+    const wrongEr = new RegExp(`\\b${adj}er\\b`);
+    if (wrongEr.test(userLower) && expectedLower.includes(`more ${adj}`)) {
+      return {
+        tag: 'vi_l1_comparative_more_long',
+        replacements: { FIX: rawExpected },
+      };
+    }
+    // Wrong form: "more + adj + er" (doubled).
+    const wrongMoreEr = new RegExp(`\\bmore ${adj}er\\b`);
+    if (wrongMoreEr.test(userLower) && expectedLower.includes(`more ${adj}`)) {
+      return {
+        tag: 'vi_l1_comparative_more_long',
+        replacements: { FIX: rawExpected },
+      };
+    }
+  }
+  return null;
+};
+
+/** 46. "many {water/money/...}" → "much" — A2. */
+const ruleManyWithUncount: Rule = ({ userTokens, expectedText, rawExpected }) => {
+  for (let i = 0; i + 1 < userTokens.length; i++) {
+    if (userTokens[i] !== 'many') continue;
+    const next = userTokens[i + 1];
+    if (!UNCOUNTABLE_FOR_MANY.has(next)) continue;
+    if (!expectedText.toLowerCase().includes(`much ${next}`)) continue;
+    return {
+      tag: 'vi_l1_many_with_uncount',
+      replacements: { FIX: rawExpected },
+    };
+  }
+  return null;
+};
+
+/** 47. Wrong article with geographical names — B1. */
+const ruleGeographicalArticle: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
+  // (a) "the <bare-country-name>" in user but expected drops "the".
+  for (let i = 0; i + 1 < userTokens.length; i++) {
+    if (userTokens[i] !== 'the') continue;
+    if (!COUNTRIES_NO_THE.has(userTokens[i + 1])) continue;
+    // Expected must have the bare country without preceding "the".
+    const idx = expectedTokens.indexOf(userTokens[i + 1]);
+    if (idx < 0) continue;
+    if (idx > 0 && expectedTokens[idx - 1] === 'the') continue;
+    return {
+      tag: 'vi_l1_geographical_article',
+      replacements: { FIX: rawExpected },
+    };
+  }
+  // (b) Missing "the" before a plural-sounding country.
+  for (let i = 0; i < userTokens.length; i++) {
+    if (!COUNTRIES_WITH_THE.has(userTokens[i])) continue;
+    if (i > 0 && userTokens[i - 1] === 'the') continue;
+    // Expected must have the "the".
+    const expIdx = expectedTokens.indexOf(userTokens[i]);
+    if (expIdx <= 0) continue;
+    if (expectedTokens[expIdx - 1] !== 'the') continue;
+    return {
+      tag: 'vi_l1_geographical_article',
+      replacements: { FIX: rawExpected },
+    };
+  }
+  return null;
+};
+
+/** 48. Generic statements should use plural — "I like dog" → "dogs" — A2. */
+const ruleGenericPlural: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
+  const feelVerbs = new Set(['like', 'love', 'enjoy', 'hate', 'prefer']);
+  const subjectSet = new Set(['i', 'we', 'they', 'you']);
+  for (let i = 0; i + 2 < userTokens.length; i++) {
+    if (!subjectSet.has(userTokens[i])) continue;
+    if (!feelVerbs.has(userTokens[i + 1])) continue;
+    const noun = userTokens[i + 2];
+    if (!GENERIC_SINGULAR_NOUNS.has(noun)) continue;
+    // Expected must have the plural.
+    const plural = noun + 's';
+    if (!expectedTokens.includes(plural)) continue;
+    return {
+      tag: 'vi_l1_generic_plural',
+      replacements: { FIX: rawExpected },
+    };
+  }
+  return null;
+};
+
+/** 49. Double negative in a clause — A2. */
+const ruleDoubleNegative: Rule = ({ userText, rawExpected }) => {
+  const userLower = userText.toLowerCase();
+  // Collapse contractions are already handled. Look for "<negation-aux>
+  // ... <no|nothing|never>" in a short window.
+  const pattern = /\b(dont|doesnt|didnt|cant|wont|shouldnt|wouldnt|couldnt|isnt|arent|wasnt|werent|hasnt|havent|hadnt|not)\b[^.?!]{0,40}\b(no|nothing|nobody|never|none)\b/;
+  if (!pattern.test(userLower)) return null;
+  return {
+    tag: 'vi_l1_double_negative',
+    replacements: { FIX: rawExpected },
+  };
+};
+
+/** 50. Fronted negative adverbial without inversion — C1. */
+const ruleNegativeInversion: Rule = ({ userText, expectedText, rawExpected }) => {
+  const userLower = userText.toLowerCase().trim();
+  const expectedLower = expectedText.toLowerCase().trim();
+  // User starts with negative adverbial but keeps SVO order.
+  const wrongHead = /^(never|seldom|rarely|hardly|not only|little)\s+(i|he|she|we|they|you|it)\s+(have|has|had|am|is|are|was|were|do|does|did|can|could|will|would)\b/;
+  if (!wrongHead.test(userLower)) return null;
+  // Expected starts with the adverbial followed by the auxiliary (inverted).
+  const rightHead = /^(never|seldom|rarely|hardly|not only|little)\s+(have|has|had|am|is|are|was|were|do|does|did|can|could|will|would)\s+(i|he|she|we|they|you|it)\b/;
+  if (!rightHead.test(expectedLower)) return null;
+  return {
+    tag: 'vi_l1_negative_inversion',
+    replacements: { FIX: rawExpected },
+  };
+};
+
+/** 51. Frequency adverb placed before the subject — A2. */
+const ruleAdverbBeforeSubject: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
+  const freq = new Set(['always', 'usually', 'sometimes', 'often', 'rarely', 'never']);
+  const subjects = new Set(['i', 'he', 'she', 'we', 'they', 'you', 'it']);
+  if (userTokens.length < 3) return null;
+  if (!freq.has(userTokens[0])) return null;
+  if (!subjects.has(userTokens[1])) return null;
+  // Expected should start with the subject and have the adverb after it.
+  if (expectedTokens[0] !== userTokens[1]) return null;
+  if (!expectedTokens.includes(userTokens[0])) return null;
+  return {
+    tag: 'vi_l1_adverb_before_subject',
+    replacements: { FIX: rawExpected },
+  };
+};
+
+/** 52. "make/let/had + obj + to V" → bare verb — B1. */
+const ruleMakeLetBare: Rule = ({ userText, expectedText, rawExpected }) => {
+  const userLower = userText.toLowerCase();
+  const pattern = /\b(make|makes|made|let|lets|had)\s+(me|him|her|us|them|you|it)\s+to\s+(\w+)/;
+  const m = pattern.exec(userLower);
+  if (!m) return null;
+  const verb = m[3];
+  if (!expectedText.toLowerCase().includes(`${m[1]} ${m[2]} ${verb}`)) return null;
+  return {
+    tag: 'vi_l1_make_let_bare',
+    replacements: { FIX: rawExpected },
+  };
+};
+
+/** 53. "too + positive adjective" where expected uses "very" — A2. */
+const ruleTooVsVery: Rule = ({ userTokens, expectedText, rawExpected }) => {
+  for (let i = 0; i + 1 < userTokens.length; i++) {
+    if (userTokens[i] !== 'too') continue;
+    const adj = userTokens[i + 1];
+    if (!POSITIVE_ADJECTIVES_FOR_TOO.has(adj)) continue;
+    // Expected must use "very + adj".
+    if (!expectedText.toLowerCase().includes(`very ${adj}`)) continue;
+    // Skip the legitimate "too X to Y" construction.
+    const following = joinTokens(userTokens.slice(i + 2));
+    if (/^to\s+\w+/.test(following) && !expectedText.toLowerCase().includes(`very ${adj} to`)) {
+      continue;
+    }
+    return {
+      tag: 'vi_l1_too_vs_very',
+      replacements: { FIX: rawExpected },
+    };
+  }
+  return null;
+};
+
+/** 54. "a" before vowel sound / "an" before consonant sound — A1. */
+const ruleAvsAnVowel: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
+  for (let i = 0; i + 1 < userTokens.length; i++) {
+    const art = userTokens[i];
+    if (art !== 'a' && art !== 'an') continue;
+    const next = userTokens[i + 1];
+    if (!/^[a-z]+$/.test(next)) continue;
+    const isVowel = startsWithVowelSound(next);
+    const wrong = (art === 'a' && isVowel) || (art === 'an' && !isVowel);
+    if (!wrong) continue;
+    // Expected must have the right article paired with the same word.
+    const correctArt = isVowel ? 'an' : 'a';
+    for (let j = 0; j + 1 < expectedTokens.length; j++) {
+      if (expectedTokens[j] === correctArt && expectedTokens[j + 1] === next) {
+        return {
+          tag: 'vi_l1_a_vs_an_vowel',
+          replacements: { FIX: rawExpected },
+        };
+      }
+    }
+  }
+  return null;
+};
+
+/** 55. "one of the + singular noun" → plural — B1. */
+const ruleOneOfTheSingular: Rule = ({ userText, expectedText, rawExpected }) => {
+  const userLower = userText.toLowerCase();
+  const determiners = '(the|my|his|her|your|our|their)';
+  const pattern = new RegExp(`\\bone of ${determiners}\\s+(\\w+)`);
+  const m = pattern.exec(userLower);
+  if (!m) return null;
+  const noun = m[2];
+  if (!COMMON_SINGULAR_NOUNS_AFTER_ONE_OF.has(noun)) return null;
+  const plural = /(s|x|z|ch|sh)$/.test(noun) ? noun + 'es' : noun + 's';
+  if (!expectedText.toLowerCase().includes(plural)) return null;
+  return {
+    tag: 'vi_l1_one_of_the_singular',
+    replacements: { FIX: rawExpected },
+  };
+};
+
+/** 56. "each + plural noun" → singular — B1. */
+const ruleEachSingular: Rule = ({ userTokens, expectedText, rawExpected }) => {
+  for (let i = 0; i + 1 < userTokens.length; i++) {
+    if (userTokens[i] !== 'each' && userTokens[i] !== 'every') continue;
+    const next = userTokens[i + 1];
+    if (!WRONG_EACH_PLURALS.has(next)) continue;
+    // Expected should have the singular form.
+    const singular = next === 'children' ? 'child'
+      : next === 'people' ? 'person'
+      : next === 'women' ? 'woman'
+      : next === 'men' ? 'man'
+      : next.endsWith('s') ? next.slice(0, -1)
+      : next;
+    if (!expectedText.toLowerCase().includes(`${userTokens[i]} ${singular}`)) continue;
+    return {
+      tag: 'vi_l1_each_singular',
+      replacements: { FIX: rawExpected },
+    };
+  }
+  return null;
+};
+
+/** 57. "have/has/had + gone to X" in a "visited" context — B2. */
+const ruleBeenVsGone: Rule = ({ userText, expectedText, rawExpected }) => {
+  const userLower = userText.toLowerCase();
+  // Allow up to 3 intervening words between the auxiliary and the
+  // participle, so "have you ever gone", "has he never gone", etc.
+  // all match alongside the simpler "have gone".
+  const userGone = /\b(have|has|had)(?:\s+\w+){0,3}\s+gone\b/;
+  if (!userGone.test(userLower)) return null;
+  // Visit-ish cues: "times", "before", "ever", "never" — imply the person
+  // came back, so "been to" is correct.
+  const visitCue = /\b(times|before|ever|never|twice|once|many times|several times)\b/;
+  if (!visitCue.test(userLower)) return null;
+  const expBeenTo = /\b(have|has|had)(?:\s+\w+){0,3}\s+been\s+to\b/;
+  if (!expBeenTo.test(expectedText.toLowerCase())) return null;
+  return {
+    tag: 'vi_l1_been_vs_gone',
+    replacements: { FIX: rawExpected },
+  };
+};
+
+/** 58. Tag question with same-polarity tag — B1. */
+const ruleTagPolarity: Rule = ({ userText, expectedText, rawExpected }) => {
+  const userLower = userText.toLowerCase().replace(/\?\s*$/, '').trim();
+  const expectedLower = expectedText.toLowerCase().replace(/\?\s*$/, '').trim();
+  // Last comma splits the main clause and tag.
+  const commaIdx = userLower.lastIndexOf(',');
+  if (commaIdx < 0) return null;
+  const mainClause = userLower.slice(0, commaIdx).trim();
+  const tag = userLower.slice(commaIdx + 1).trim();
+  if (!tag) return null;
+  const mainIsNeg = /\b(dont|doesnt|didnt|cant|wont|shouldnt|isnt|arent|wasnt|werent|not)\b/.test(mainClause);
+  const tagIsNeg = /\b(dont|doesnt|didnt|cant|wont|shouldnt|isnt|arent|wasnt|werent|not)\b/.test(tag);
+  // Same polarity both ways = wrong. Matches the VN-L1 pattern.
+  if (mainIsNeg !== tagIsNeg) return null;
+  // Expected must differ: expected tag flips polarity vs main.
+  const expCommaIdx = expectedLower.lastIndexOf(',');
+  if (expCommaIdx < 0) return null;
+  const expMain = expectedLower.slice(0, expCommaIdx).trim();
+  const expTag = expectedLower.slice(expCommaIdx + 1).trim();
+  const expMainNeg = /\b(dont|doesnt|didnt|cant|wont|shouldnt|isnt|arent|wasnt|werent|not)\b/.test(expMain);
+  const expTagNeg = /\b(dont|doesnt|didnt|cant|wont|shouldnt|isnt|arent|wasnt|werent|not)\b/.test(expTag);
+  if (expMainNeg === expTagNeg) return null;
+  return {
+    tag: 'vi_l1_tag_polarity',
+    replacements: { FIX: rawExpected },
+  };
+};
+
+/** 59. "the" before an abstract / generic noun that should be bare — A2. */
+const ruleNoArticleGeneric: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
+  for (let i = 0; i + 1 < userTokens.length; i++) {
+    if (userTokens[i] !== 'the') continue;
+    const noun = userTokens[i + 1];
+    if (!ABSTRACT_GENERIC_NOUNS.has(noun)) continue;
+    // Expected must have the noun WITHOUT preceding "the".
+    const idx = expectedTokens.indexOf(noun);
+    if (idx < 0) continue;
+    if (idx > 0 && expectedTokens[idx - 1] === 'the') continue;
+    return {
+      tag: 'vi_l1_no_article_generic',
+      replacements: { FIX: rawExpected },
+    };
+  }
+  return null;
+};
+
+/** 60. Missing "the" before a superlative — A2. */
+const ruleSuperlativeThe: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
+  for (let i = 0; i < userTokens.length; i++) {
+    const w = userTokens[i];
+    const isSuper =
+      IRREGULAR_SUPERLATIVES.has(w) ||
+      isRegularSuperlative(w) ||
+      (w === 'most' && i + 1 < userTokens.length && userTokens[i + 1] !== 'of');
+    if (!isSuper) continue;
+    // If user already has "the" (or "my / her / his / their") before, skip.
+    if (i > 0) {
+      const prev = userTokens[i - 1];
+      if (['the', 'my', 'his', 'her', 'your', 'our', 'their'].includes(prev)) continue;
+    }
+    // Expected must include "the <super>".
+    const expIdx = expectedTokens.indexOf(w);
+    if (expIdx <= 0) continue;
+    if (expectedTokens[expIdx - 1] !== 'the') continue;
+    return {
+      tag: 'vi_l1_superlative_the',
+      replacements: { FIX: rawExpected },
+    };
+  }
+  return null;
+};
+
+/** 61. "If + subject + will" → present simple in the if-clause — B1. */
+const ruleIfWill: Rule = ({ userText, expectedText, rawExpected }) => {
+  const userLower = userText.toLowerCase();
+  const expectedLower = expectedText.toLowerCase();
+  if (!/\bif\s+(i|he|she|we|they|you|it)\s+will\s+\w+/.test(userLower)) return null;
+  // Expected has "if + subject + (present simple)" (no "will" in the
+  // if-clause). Conservative test: expected has "if + subject" NOT followed
+  // by "will" within 2 tokens.
+  const m = /\bif\s+(i|he|she|we|they|you|it)\s+(\w+)/.exec(expectedLower);
+  if (!m) return null;
+  if (m[2] === 'will') return null;
+  return {
+    tag: 'vi_l1_if_will',
+    replacements: { FIX: rawExpected },
+  };
+};
+
+// ────────────────────────────────────────────────────────────────────────────
 // Registry — fixed priority order. First match wins.
 // ────────────────────────────────────────────────────────────────────────────
 
@@ -1663,6 +2577,11 @@ const RULE_REGISTRY: Rule[] = [
   // rules when there's an overlap.
   ruleByVsWith,              // 35
   ruleTimeExpressions,       // 36
+  // Round 5: run geographical-article + superlative-the before the
+  // generic missing_article so learners get the more specific teaching
+  // message when both rules could fire.
+  ruleGeographicalArticle,   // 47
+  ruleSuperlativeThe,        // 60
   ruleMissingArticle,        // 6
   rulePossessiveGender,      // 8
   rulePrepositionTransfer,   // 9
@@ -1690,6 +2609,37 @@ const RULE_REGISTRY: Rule[] = [
   ruleSinceVsFor,            // 24
   ruleAnotherVsOther,        // 33
   ruleLookSeeWatch,          // 34
+
+  // ── Round 5 additions (rules 37–61). Placed after the v1.2 block so
+  //    existing feedback strings keep winning on shared patterns. Within
+  //    the new block: structural / morphological patterns (more specific)
+  //    run before usage / agreement patterns.
+  rulePresentPerfectVsPast,  // 37
+  ruleSubjunctiveWere,       // 38
+  ruleEmbeddedQuestionOrder, // 39
+  ruleDoSupport3ps,          // 40
+  ruleSubjectRelativeOmit,   // 41
+  ruleGerundAfterVerb,       // 42
+  ruleModalPerfect,          // 43
+  rulePhrasalPronounOrder,   // 44
+  ruleComparativeMoreLong,   // 45
+  ruleManyWithUncount,       // 46
+  ruleNegativeInversion,     // 50 — run before 51 (adverb before subject)
+  ruleAdverbBeforeSubject,   // 51
+  ruleMakeLetBare,           // 52
+  ruleTooVsVery,             // 53
+  ruleAvsAnVowel,            // 54
+  ruleOneOfTheSingular,      // 55
+  ruleEachSingular,          // 56
+  ruleBeenVsGone,            // 57
+  ruleTagPolarity,           // 58
+  // ruleGeographicalArticle and ruleSuperlativeThe are registered
+  // higher up (before ruleMissingArticle) so their specific feedback
+  // wins over the generic missing-article message.
+  ruleNoArticleGeneric,      // 59
+  ruleIfWill,                // 61
+  ruleGenericPlural,         // 48 — last: loses to plural_s (existing) by design
+  ruleDoubleNegative,        // 49 — last among A2 structural
 ];
 
 // ────────────────────────────────────────────────────────────────────────────
