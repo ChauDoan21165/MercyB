@@ -89,6 +89,10 @@ const PendingSentencesPage   = lazy(() => import("@/pages/admin/PendingSentences
 
 const FamilyPlanPage         = lazy(() => import("@/pages/family/FamilyPlanPage"));
 
+const TOEICIndexPage         = lazy(() => import("@/pages/exam-prep/TOEICIndexPage"));
+const TOEICPracticePage      = lazy(() => import("@/pages/exam-prep/TOEICPracticePage"));
+const TOEICEstimatorPage     = lazy(() => import("@/pages/exam-prep/TOEICEstimatorPage"));
+
 const CorporateDashboardPage = lazy(() => import("@/pages/corporate/CorporateDashboardPage"));
 const CreateCorporatePage    = lazy(() => import("@/pages/corporate/CreateCorporatePage"));
 const JoinCorporatePage      = lazy(() => import("@/pages/corporate/JoinCorporatePage"));
@@ -665,6 +669,29 @@ export default function AppRouter() {
             element={
               <RequireAuth>
                 <LazyPage><FamilyPlanPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+
+          {/* TOEIC prep (Step 11 — premium-gated; gate is inside the page) */}
+          <Route path="/exam/toeic"
+            element={
+              <RequireAuth>
+                <LazyPage><TOEICIndexPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+          <Route path="/exam/toeic/practice/:sectionId"
+            element={
+              <RequireAuth>
+                <LazyPage><TOEICPracticePage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+          <Route path="/exam/toeic/estimator"
+            element={
+              <RequireAuth>
+                <LazyPage><TOEICEstimatorPage /></LazyPage>
               </RequireAuth>
             }
           />
