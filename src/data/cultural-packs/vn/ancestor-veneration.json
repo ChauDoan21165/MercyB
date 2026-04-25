@@ -1,0 +1,142 @@
+{
+  "id": "ancestor-veneration",
+  "title_vn": "Bàn thờ tổ tiên",
+  "title_en": "Ancestor altar and veneration",
+  "summary_vn": "Cách giải thích bàn thờ, thắp hương, và lòng kính trọng tổ tiên cho bạn không phải người Việt.",
+  "summary_en": "How to explain the family altar, lighting incense, and ancestor veneration to non-Vietnamese friends.",
+  "tone": "sacred",
+  "regional_note": "Bàn thờ thường có ở mọi gia đình Việt, kể cả gia đình theo Phật giáo, đạo Cao Đài, hay không tôn giáo. Các gia đình Công giáo Việt có thể thay bằng bàn thờ với hình Chúa hoặc Đức Mẹ — tinh thần kính trọng tổ tiên vẫn giữ nguyên.",
+  "phrases": [
+    {
+      "id": "altar-not-shrine",
+      "vn_moment": "Đây là bàn thờ tổ tiên, không phải đền chùa",
+      "context": "Bạn không phải người Việt hỏi 'có phải bàn thờ Phật không'.",
+      "english": "This is our family ancestor altar — it's not a religious shrine, even though it can look like one. We have one in almost every Vietnamese home, regardless of religion.",
+      "cultural_note": "Don't conflate the family altar with Buddhist temple worship. They serve different purposes — the altar is about lineage and family memory."
+    },
+    {
+      "id": "incense-three-bows",
+      "vn_moment": "Ba nén hương — ba lạy",
+      "context": "Khách hỏi quy trình thắp hương.",
+      "english": "When we light incense, we hold three sticks at our forehead, bow three times to the altar, then place them in the bowl. The three bows acknowledge the deceased, the family, and the wider line of ancestors.",
+      "cultural_note": "If a guest is invited to light incense, this is a sign of close inclusion. Watch the host once, then mirror — don't improvise."
+    },
+    {
+      "id": "everyday-offerings",
+      "vn_moment": "Mâm cơm cúng",
+      "context": "Giải thích vì sao đặt đĩa cơm hoặc trái cây trên bàn thờ.",
+      "english": "On special days, my mom places a small plate of food on the altar before we eat — a symbolic offering to the ancestors. After the incense burns down, we take the food back and share it at the table.",
+      "cultural_note": "It's not 'food for ghosts.' The act of offering, not the food itself, is what matters. The family eats afterward."
+    },
+    {
+      "id": "altar-photos",
+      "vn_moment": "Ảnh ông bà trên bàn thờ",
+      "context": "Khách thấy ảnh đen trắng của người đã khuất.",
+      "english": "The photos on the altar are family members who've passed — usually grandparents, sometimes great-grandparents. The black ribbon means they've passed within the last year.",
+      "cultural_note": "Don't pick up or move photos on a family altar without invitation. They're placed deliberately."
+    },
+    {
+      "id": "tet-ancestor-priority",
+      "vn_moment": "Cúng tổ tiên đêm Giao thừa",
+      "context": "Giải thích vì sao đêm Giao thừa Tết quan trọng.",
+      "english": "On Tết Eve, the family lights incense at midnight — that's when we formally invite the ancestors back to share the new year with us. The first day of Tết includes meals at the altar.",
+      "cultural_note": "Tết Eve incense is one of the most important moments of the year. If you're a guest in a Vietnamese home that night, don't be surprised by the quiet around midnight — that's the moment."
+    },
+    {
+      "id": "death-anniversary-ritual",
+      "vn_moment": "Ngày giỗ — đốt vàng mã",
+      "context": "Giải thích vì sao có giấy đốt cuối ngày giỗ.",
+      "english": "On death anniversaries, some families burn 'votive paper' — paper imitations of money or goods — as a symbolic offering. The smoke is what carries the gesture, not the paper itself.",
+      "cultural_note": "Ash and burnt paper near a Vietnamese home around an anniversary date is normal. Don't sweep it up or comment on the smell."
+    },
+    {
+      "id": "ancestor-as-witness",
+      "vn_moment": "Báo cáo với tổ tiên",
+      "context": "Giải thích vì sao thắp hương khi có chuyện lớn trong gia đình.",
+      "english": "Big life events — graduations, weddings, a new baby, a job offer abroad — get announced to the ancestors at the altar. We light incense, bow, and tell them the news. It's how family decisions stay tied to the family line.",
+      "cultural_note": "If a Vietnamese friend says 'I have to tell my grandmother before I leave,' they may mean the altar — not a phone call."
+    },
+    {
+      "id": "respect-not-worship",
+      "vn_moment": "Kính trọng — không thờ phụng",
+      "context": "Giải thích nét khác biệt với khái niệm 'worship' tiếng Anh.",
+      "english": "We don't 'worship' our ancestors — that's a translation that overstates it. It's closer to 'remembering with reverence' or 'staying in relationship.' The dead are still part of the family.",
+      "cultural_note": "The English word 'worship' implies a god relationship. Vietnamese ancestor veneration is closer to family love that doesn't end at death."
+    },
+    {
+      "id": "altar-position-home",
+      "vn_moment": "Vị trí bàn thờ trong nhà",
+      "context": "Khách hỏi vì sao bàn thờ đặt ở chỗ cao và trang trọng.",
+      "english": "The altar is always in a high, clean, quiet spot — usually facing the front door or in the most respected room. Walking past with food or facing it inappropriately is avoided.",
+      "cultural_note": "Don't sit with your back to the altar if you can help it. Don't put bags or coats on it. It's a small gesture of respect that registers."
+    },
+    {
+      "id": "guest-no-need-to-bow",
+      "vn_moment": "Khách không cần thắp hương",
+      "context": "Bạn nước ngoài tự hỏi có nên thắp hương không.",
+      "english": "Guests aren't expected to light incense at the altar. A respectful glance, a small nod when passing, is enough. Don't feel pressured to participate in rituals you don't fully understand.",
+      "cultural_note": "Forced or awkward participation feels worse than respectful distance. The host will invite if they want you involved."
+    },
+    {
+      "id": "incense-burning-down",
+      "vn_moment": "Đợi hương cháy hết",
+      "context": "Giải thích vì sao mâm cúng đợi cả tiếng.",
+      "english": "After we light the incense, we wait for it to burn down before we eat the offered food. That's roughly 30 to 60 minutes — the ancestors have 'finished' once the smoke is done.",
+      "cultural_note": "Don't be impatient with the wait time at family meals on offering days. The tempo is part of the ritual."
+    },
+    {
+      "id": "altar-not-for-pictures",
+      "vn_moment": "Đừng chụp ảnh bàn thờ",
+      "context": "Bạn không phải người Việt muốn chụp ảnh.",
+      "english": "Please don't take photos of the altar without asking. Even if it's beautiful, it's a private family space — closer to a personal letter than a decoration.",
+      "cultural_note": "The altar isn't a tourist sight. Asking and getting yes is fine; assuming and snapping is a real misstep."
+    },
+    {
+      "id": "lunar-vs-solar-dates",
+      "vn_moment": "Ngày âm lịch của giỗ",
+      "context": "Giải thích vì sao đám giỗ vào ngày khác nhau hằng năm theo lịch dương.",
+      "english": "Death anniversaries follow the lunar calendar, so they shift on the Western calendar each year. My grandfather's anniversary lands in April some years, March others.",
+      "cultural_note": "If a Vietnamese friend says 'next month is my dad's giỗ,' don't mark a fixed date — the date moves on the Gregorian calendar."
+    },
+    {
+      "id": "candy-and-tea-altar",
+      "vn_moment": "Trà, kẹo, hoa trên bàn thờ",
+      "context": "Khách hỏi sao trên bàn thờ có kẹo.",
+      "english": "Tea, candy, and fresh fruit go on the altar regularly — they're not random; many of them were favorites of the deceased. We replace them when they wilt or stale.",
+      "cultural_note": "If you visit on a normal day and see fresh treats on the altar, don't help yourself. They're for the ancestors until the family takes them down."
+    },
+    {
+      "id": "no-religion-still-altar",
+      "vn_moment": "Gia đình không tôn giáo vẫn có bàn thờ",
+      "context": "Bạn nói 'tôi không theo đạo nào' nhưng vẫn có bàn thờ.",
+      "english": "I don't practice a religion in the strict sense, but we still keep an altar. It's a family-history thing, not a faith thing — most Vietnamese homes have one regardless of belief.",
+      "cultural_note": "Western friends often map 'altar' to 'religious practice.' For Vietnamese families, it's a cultural baseline that crosses Buddhist, Catholic, atheist, and other lines."
+    }
+  ],
+  "dialogues": [
+    {
+      "title": "Friend visits your home for the first time",
+      "setting": "A friend notices the altar in your living room.",
+      "lines": [
+        { "speaker": "Friend", "english": "I noticed the altar by the window. I don't want to be rude — what is it for, exactly?" },
+        { "speaker": "You", "english": "It's our family ancestor altar. The photos are my grandparents and great-grandparents. Most Vietnamese homes have one — it's a cultural thing more than a religious one. We light incense on important days to remember them." },
+        { "speaker": "Friend", "english": "Is it considered worship?" },
+        { "speaker": "You", "english": "Not really — that word overstates it. It's closer to staying in relationship with people who've passed. We tell them about big news, light incense at Tết, share food on death anniversaries." },
+        { "speaker": "Friend", "english": "Should I do anything when I walk past it?" },
+        { "speaker": "You", "english": "A respectful nod is enough. Just don't put your bag on it or sit with your back to it if you can help it." }
+      ]
+    },
+    {
+      "title": "Explaining 'I have to tell my grandmother'",
+      "setting": "You're announcing a big move at work; a coworker overhears.",
+      "lines": [
+        { "speaker": "You", "english": "I'll need to tell my grandmother before I confirm the move." },
+        { "speaker": "Coworker", "english": "Is she going to be upset about you moving abroad?" },
+        { "speaker": "You", "english": "She passed three years ago. I mean I have to announce it at our family altar — light incense and let her know. It's how big news gets shared in Vietnamese culture." },
+        { "speaker": "Coworker", "english": "Oh — I'm sorry, I didn't realize." },
+        { "speaker": "You", "english": "No worries. It's a Vietnamese thing — family decisions get told to the line of ancestors, even after they've passed. It's how I'd want to hear from my grandkids one day." },
+        { "speaker": "Coworker", "english": "That's actually really beautiful." }
+      ]
+    }
+  ]
+}

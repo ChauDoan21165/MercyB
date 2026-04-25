@@ -1,0 +1,142 @@
+{
+  "id": "tet-lunar-new-year",
+  "title_vn": "Tết — Năm mới âm lịch",
+  "title_en": "Tết — Lunar New Year",
+  "summary_vn": "Cách giải thích Tết với đồng nghiệp, hàng xóm, và bạn bè không phải người Việt.",
+  "summary_en": "How to explain Tết to coworkers, neighbors, and non-Vietnamese friends.",
+  "tone": "festive",
+  "regional_note": "Phong tục Tết khác nhau giữa Hà Nội và Sài Gòn. Miền Bắc có hoa đào và bánh chưng vuông; miền Nam có hoa mai và bánh tét hình ống. Cả hai đều đúng — nói rõ vùng miền khi giải thích để tránh nhầm lẫn.",
+  "phrases": [
+    {
+      "id": "tet-greeting",
+      "vn_moment": "Chúc mừng năm mới",
+      "context": "Lời chào đầu tiên khi gặp ai đó vào dịp Tết, cả qua tin nhắn lẫn trực tiếp.",
+      "english": "I'm sending you Tết wishes — that's our Lunar New Year. Wishing you a healthy, lucky year ahead.",
+      "cultural_note": "Tết is a multi-day national holiday in Vietnam, usually late January to mid-February. The greeting carries genuine weight — it's not a casual 'Happy New Year' equivalent."
+    },
+    {
+      "id": "tet-when",
+      "vn_moment": "Khi nào là Tết?",
+      "context": "Đồng nghiệp hỏi vì sao cần nghỉ phép.",
+      "english": "Tết follows the lunar calendar, so the date shifts every year — it lands somewhere between late January and mid-February.",
+      "cultural_note": "Most Western calendars don't show the lunar date, so coworkers genuinely don't know. Be specific about this year's Western date when asking for time off."
+    },
+    {
+      "id": "tet-li-xi",
+      "vn_moment": "Lì xì (mừng tuổi)",
+      "context": "Giải thích phong bao đỏ cho hàng xóm hoặc đồng nghiệp.",
+      "english": "We give red envelopes called lì xì — small amounts of money — to children and elders. It's about wishing them luck for the year, not the cash itself.",
+      "cultural_note": "The amount is symbolic. New, crisp bills are preferred. The exchange is two-way: kids receive from adults, but adults also gift parents and grandparents."
+    },
+    {
+      "id": "tet-li-xi-amount",
+      "vn_moment": "Lì xì bao nhiêu?",
+      "context": "Trả lời khi đồng nghiệp hỏi giá trị tiền trong phong bao.",
+      "english": "The amount isn't the point — even a small new bill counts. What matters is the wish that comes with it.",
+      "cultural_note": "Quoting amounts feels gauche in this culture. Steer the explanation back to symbolism."
+    },
+    {
+      "id": "tet-banh-chung",
+      "vn_moment": "Bánh chưng và bánh tét",
+      "context": "Mời đồng nghiệp ăn bánh hôm nào đó vào dịp Tết.",
+      "english": "This is bánh chưng — sticky rice, mung bean, and pork wrapped in banana leaves and boiled for hours. In the south we make a long cylindrical version called bánh tét.",
+      "cultural_note": "Bánh chưng (square, North) and bánh tét (cylindrical, South) are not interchangeable in tradition — they map to different regional histories. Mention which one you grew up with."
+    },
+    {
+      "id": "tet-flowers-north",
+      "vn_moment": "Hoa đào (miền Bắc)",
+      "context": "Giải thích vì sao có cây hoa đào trong nhà dịp Tết.",
+      "english": "In northern Vietnam, families display peach blossom branches at Tết. The pink flowers are believed to ward off bad luck for the new year.",
+      "cultural_note": "This is a Northern Vietnam custom. Friends from southern Vietnam will display yellow apricot blossoms (hoa mai) instead — same purpose, different flower."
+    },
+    {
+      "id": "tet-flowers-south",
+      "vn_moment": "Hoa mai (miền Nam)",
+      "context": "Giải thích cây hoa mai vàng trong nhà.",
+      "english": "Down south we have yellow apricot blossoms — hoa mai. Yellow is the color of luck, so families compete to get their tree to bloom right at midnight on the first day of Tết.",
+      "cultural_note": "If a Southern family's mai blooms early or late, that's a quiet disappointment — the timing matters. Don't joke about it."
+    },
+    {
+      "id": "tet-first-foot",
+      "vn_moment": "Xông đất / xông nhà",
+      "context": "Giải thích vì sao chọn người vào nhà đầu năm cẩn thận.",
+      "english": "The first person to step into the house in the new year sets the tone for the whole year. Families pre-arrange a 'lucky' first-footer — someone with good fortune in their own life.",
+      "cultural_note": "This is a serious custom in many families. Don't drop in unannounced on the first day of Tết — you might be 'taking' someone's chosen first-footer slot."
+    },
+    {
+      "id": "tet-altar-offerings",
+      "vn_moment": "Mâm ngũ quả",
+      "context": "Mâm trái cây trên bàn thờ trong nhà.",
+      "english": "We place a five-fruit tray on the family altar — the choice of fruits is symbolic. In the south, families often pick fruits whose names sound like 'just enough to use,' as a wish for sufficiency.",
+      "cultural_note": "Hà Nội and Sài Gòn use different fruit selections. Ask before assuming what should be on the tray — there's no single 'correct' set."
+    },
+    {
+      "id": "tet-elder-visits",
+      "vn_moment": "Mùng một Tết cha, mùng hai Tết mẹ, mùng ba Tết thầy",
+      "context": "Giải thích lịch thăm thân ngày đầu năm.",
+      "english": "There's a saying: first day of Tết for father's family, second day for mother's family, third day for your teachers. The order matters more than people realize.",
+      "cultural_note": "If your family follows this, plan around it. Skipping the order is read as disrespect even by relatives who would never say it out loud."
+    },
+    {
+      "id": "tet-lucky-money-blessing",
+      "vn_moment": "Lời chúc khi mừng tuổi",
+      "context": "Câu nói khi đưa lì xì cho trẻ em.",
+      "english": "When we hand the envelope, we say something like 'I wish you health, good grades this year, and that you grow taller than your mom.'",
+      "cultural_note": "Wishes are personalised — not generic. Health and study come first; height and 'finding a good husband/wife' are common but optional."
+    },
+    {
+      "id": "tet-no-sweeping",
+      "vn_moment": "Không quét nhà ngày mùng một",
+      "context": "Giải thích vì sao không quét sàn ngày đầu năm.",
+      "english": "We don't sweep the floor on the first day of Tết — there's a belief that you'd sweep your luck out the door with the dust.",
+      "cultural_note": "It's not just a saying — many families genuinely won't pick up a broom that day. If you're a guest, don't offer to help clean."
+    },
+    {
+      "id": "tet-no-arguing",
+      "vn_moment": "Tránh cãi nhau ngày Tết",
+      "context": "Giải thích vì sao tâm trạng khi tiếp khách cần nhẹ nhàng.",
+      "english": "We avoid arguing or saying anything heavy on the first day. Whatever happens at Tết is supposed to forecast the rest of the year.",
+      "cultural_note": "Many topics are off-limits during Tết visits — money troubles, family fights, health diagnoses. Save the heavy conversation for after the holiday."
+    },
+    {
+      "id": "tet-leave-home",
+      "vn_moment": "Về quê ăn Tết",
+      "context": "Giải thích vì sao xin nghỉ dài ngày để về quê.",
+      "english": "Tết is the one time of year people travel back to where their parents live, even if it's a 12-hour train ride. It's the closest thing we have to a Western Christmas in scale.",
+      "cultural_note": "If a Vietnamese coworker is requesting a full week off around lunar new year, this is what's happening. Treat it as non-negotiable family time."
+    },
+    {
+      "id": "tet-end",
+      "vn_moment": "Hết Tết",
+      "context": "Đồng nghiệp hỏi khi nào đi làm lại.",
+      "english": "The official Tết holiday is around three days, but many families stretch it through to the seventh day of the lunar new year. After that, work resumes.",
+      "cultural_note": "The seventh-day cutoff is a soft line — different families return to normal routines on different days. Don't be surprised if 'after Tết' means slightly different things to different people."
+    }
+  ],
+  "dialogues": [
+    {
+      "title": "Asking the boss for time off",
+      "setting": "You stop by your manager's desk a few weeks before Tết.",
+      "lines": [
+        { "speaker": "You", "english": "Hey, do you have a minute? I wanted to flag a holiday request for late January." },
+        { "speaker": "Manager", "english": "Sure, what's the dates?" },
+        { "speaker": "You", "english": "It's for Tết — Lunar New Year. The exact dates shift each year because it's a lunar calendar holiday. This year it falls Jan 28 through Feb 3, and most Vietnamese families travel back home for it. I'd like to take that whole week if possible." },
+        { "speaker": "Manager", "english": "Got it — like a Vietnamese Christmas?" },
+        { "speaker": "You", "english": "That's a good comparison, yeah. It's the one time a year people travel back to their parents' hometown.", "vn": "Về quê ăn Tết." },
+        { "speaker": "Manager", "english": "No problem. Send me the dates and I'll get them on the calendar." }
+      ]
+    },
+    {
+      "title": "Coworker drops by your desk",
+      "setting": "A coworker sees the lì xì envelope on your desk.",
+      "lines": [
+        { "speaker": "Coworker", "english": "Hey, what's the red envelope? Looks fancy." },
+        { "speaker": "You", "english": "It's a lì xì — a Tết tradition. Adults give kids a small amount of new bills inside a red envelope. The money is more about the luck-wishing than the amount.", "vn": "Mừng tuổi." },
+        { "speaker": "Coworker", "english": "Oh nice. So it's like a Christmas card with cash inside?" },
+        { "speaker": "You", "english": "Sort of — but it's not just kids. We give them to grandparents too. The wish goes both directions." },
+        { "speaker": "Coworker", "english": "That's a lovely tradition. Happy Tết, then." },
+        { "speaker": "You", "english": "Thank you — Chúc mừng năm mới." }
+      ]
+    }
+  ]
+}

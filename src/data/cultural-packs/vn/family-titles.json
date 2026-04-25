@@ -1,0 +1,149 @@
+{
+  "id": "family-titles",
+  "title_vn": "Cách xưng hô gia đình",
+  "title_en": "Vietnamese family titles in English",
+  "summary_vn": "Anh, chị, em, cô, chú, bác, cậu, mợ, dì — giải thích bằng tiếng Anh.",
+  "summary_en": "Anh, chị, em, cô, chú, bác, cậu, mợ, dì — explained for English-speaking listeners.",
+  "tone": "practical",
+  "regional_note": "Cách xưng hô vùng miền có khác biệt nhỏ — miền Bắc dùng 'bác' rộng hơn, miền Nam đôi khi gọi cô chú thay cho bác. Trong tiếng Anh thì gom hết về 'aunt' / 'uncle' và bù bằng giải thích cụ thể.",
+  "phrases": [
+    {
+      "id": "anh-younger-brother",
+      "vn_moment": "Tại sao gọi 'anh' chứ không phải 'brother'?",
+      "context": "Khi nhắc đến anh trai trong câu chuyện với bạn không phải người Việt.",
+      "english": "In Vietnamese we have different words for older brother and younger brother — that's why I called him 'anh'. He's two years older than me.",
+      "cultural_note": "English collapses age order. Vietnamese encodes it. Mentioning age difference quickly clarifies why the speaker keeps using a specific term."
+    },
+    {
+      "id": "chi-older-sister",
+      "vn_moment": "Chị — chị gái lớn tuổi hơn",
+      "context": "Giới thiệu chị gái với đồng nghiệp.",
+      "english": "I always call her 'chị' — that's older sister. The word comes with respect built in. I'd never just call her by her first name in our family.",
+      "cultural_note": "Calling an older sibling by first name alone reads as cold or rude. The title is part of the name, not optional."
+    },
+    {
+      "id": "em-younger",
+      "vn_moment": "Em — em trai / em gái",
+      "context": "Giải thích vì sao gọi em ruột là 'em' chứ không phân biệt nam nữ.",
+      "english": "'Em' covers younger brother and younger sister — same word for both. Gender shows up in context. We add 'trai' (boy) or 'gái' (girl) only when clarification is needed.",
+      "cultural_note": "Western listeners sometimes try to map 'em' to a gender-specific term. There isn't one — it's deliberately gender-neutral."
+    },
+    {
+      "id": "co-aunt-fathers-younger-sister",
+      "vn_moment": "Cô — em gái của bố",
+      "context": "Khi giới thiệu một người dì với bạn.",
+      "english": "She's my 'cô' — that's my dad's younger sister. In English we'd just say 'aunt,' but in Vietnamese the title tells you exactly which side of the family and the age order.",
+      "cultural_note": "Cô = father's younger sister. The exact mapping matters when discussing family with VN listeners; in English, 'aunt' is fine."
+    },
+    {
+      "id": "chu-uncle-fathers-younger-brother",
+      "vn_moment": "Chú — em trai của bố",
+      "context": "Giới thiệu chú với bạn cùng trường.",
+      "english": "He's my 'chú' — my dad's younger brother. In Vietnamese we'd never just say 'uncle' — the title spells out which uncle.",
+      "cultural_note": "Chú is reserved for father's younger brother. Confusing 'chú' with 'bác' shifts meaning and respect register."
+    },
+    {
+      "id": "bac-older-uncle-aunt",
+      "vn_moment": "Bác — anh / chị của bố hoặc mẹ",
+      "context": "Giới thiệu bác lớn tuổi.",
+      "english": "My uncle is technically my dad's older brother, so we call him 'bác' — that's a sign of respect that comes with being older. It's not just 'uncle.'",
+      "cultural_note": "Bác is gender-neutral and covers older siblings of either parent. Demoting a 'bác' to 'chú' implies they're younger — small in English, big in Vietnamese."
+    },
+    {
+      "id": "cau-mothers-brother",
+      "vn_moment": "Cậu — anh / em trai của mẹ",
+      "context": "Khi nói về cậu họ trong gia đình.",
+      "english": "We call him 'cậu' — that's my mom's brother. The mother's side has its own set of family titles, distinct from the father's side.",
+      "cultural_note": "Father's-side and mother's-side titles are different in Vietnamese. English just uses 'uncle' — but if a Vietnamese person says 'cậu,' they mean specifically a maternal-side relative."
+    },
+    {
+      "id": "di-mothers-younger-sister",
+      "vn_moment": "Dì — em gái của mẹ",
+      "context": "Giới thiệu dì với hàng xóm.",
+      "english": "She's my 'dì' — my mom's younger sister. Same English word as 'aunt,' but Vietnamese specifies the side and age order.",
+      "cultural_note": "Dì = mother's younger sister. Mother's older sister is also 'bác' (gender-neutral)."
+    },
+    {
+      "id": "older-versus-younger-rule",
+      "vn_moment": "Luật theo tuổi, không theo vai vế",
+      "context": "Giải thích vì sao gọi cùng một người bằng những từ khác nhau theo thời gian.",
+      "english": "The titles are mostly based on age order, not generational position. If someone is younger than my parent but older than me, the address can shift depending on whose perspective we're taking.",
+      "cultural_note": "Titles are relational, not absolute. The same uncle is 'chú' to me but 'cậu' to my cousin if their relationship to him goes through their mother."
+    },
+    {
+      "id": "title-with-strangers",
+      "vn_moment": "Xưng hô với người lạ",
+      "context": "Giải thích cách gọi người không phải họ hàng nhưng lớn tuổi hơn.",
+      "english": "We use family titles with strangers too. A waitress my mom's age I'd call 'cô' — even though we're not related. It's how respect gets shown.",
+      "cultural_note": "This often surprises English speakers — calling a stranger 'aunt' or 'uncle' would feel forced in English. In Vietnamese it's the default."
+    },
+    {
+      "id": "calling-cousin-by-title",
+      "vn_moment": "Anh em họ",
+      "context": "Phân biệt anh em họ với anh em ruột.",
+      "english": "Cousins also use anh / chị / em — the word for 'cousin' is the same as for sibling. We add 'họ' (extended family) when we need to clarify.",
+      "cultural_note": "If a Vietnamese friend introduces 'my brother,' check whether they mean a sibling or a cousin — both translate to the same English word from a 'em' / 'anh' / 'chị' base."
+    },
+    {
+      "id": "respectful-i-when-younger",
+      "vn_moment": "Xưng 'em' với người lớn hơn",
+      "context": "Giải thích vì sao gọi mình là 'em' khi nói với người lớn tuổi.",
+      "english": "When I talk to someone older, I refer to myself as 'em' — younger sibling. It's how we encode respect while we speak. English doesn't have anything like it.",
+      "cultural_note": "This is one of the hardest things to explain. The first-person pronoun changes based on who you're talking to. There's no 'I' that works in every situation."
+    },
+    {
+      "id": "calling-parents",
+      "vn_moment": "Gọi bố mẹ — bố / ba / mẹ / má / mẹ",
+      "context": "Giải thích vì sao có nhiều cách gọi bố mẹ.",
+      "english": "Northern families say 'bố' for dad; southern families say 'ba.' For mom, it's 'mẹ' in the north, 'má' in the south. Both are correct — it's a regional thing.",
+      "cultural_note": "Don't 'correct' a southerner's 'ba' to 'bố' — that's not a mistake, it's a regional norm. Same with 'má' / 'mẹ.'"
+    },
+    {
+      "id": "grandparents",
+      "vn_moment": "Ông bà",
+      "context": "Giới thiệu ông bà với hàng xóm.",
+      "english": "Grandparents are 'ông' (grandfather) and 'bà' (grandmother). We add 'nội' for the dad's side and 'ngoại' for the mom's side — 'ông nội' is paternal grandfather.",
+      "cultural_note": "Vietnamese tracks both lineages explicitly. There's no neutral 'grandfather' — you specify whose side."
+    },
+    {
+      "id": "kids-saying-thank-you",
+      "vn_moment": "Dạ — đầu câu kính trọng",
+      "context": "Trẻ em trả lời người lớn.",
+      "english": "When a Vietnamese kid answers an adult, they often start with 'dạ' — like a verbal nod of respect before they actually answer.",
+      "cultural_note": "Without 'dạ' in front, even a polite answer can sound flat or rude to a Vietnamese ear. It's not optional in formal exchanges."
+    },
+    {
+      "id": "introducing-spouse-family",
+      "vn_moment": "Giới thiệu nhà chồng / nhà vợ",
+      "context": "Giới thiệu gia đình bên vợ/chồng với bạn không phải người Việt.",
+      "english": "On my husband's side, his parents are 'bố mẹ chồng' — my husband's parents. They expect me to call them just 'bố' and 'mẹ' once we're family.",
+      "cultural_note": "Calling your in-laws 'mom' and 'dad' is the default once married — distance reads as coldness."
+    }
+  ],
+  "dialogues": [
+    {
+      "title": "Coworker meets your brother",
+      "setting": "Your coworker stops by while your brother is visiting.",
+      "lines": [
+        { "speaker": "Coworker", "english": "Hi! Is this your brother?" },
+        { "speaker": "You", "english": "Yeah, this is my brother. He's older than me — that's why I keep calling him 'anh.' In Vietnamese we have different words for older and younger brother." },
+        { "speaker": "Coworker", "english": "Oh interesting. So 'anh' literally means older brother?" },
+        { "speaker": "You", "english": "Right. And it's not optional — I wouldn't call him by his first name in front of my parents. The title is part of the respect." },
+        { "speaker": "Brother", "english": "She still has to address me that way. House rule." },
+        { "speaker": "Coworker", "english": "That's fascinating. Nice to meet you, anh." }
+      ]
+    },
+    {
+      "title": "Explaining 'why so many uncles'",
+      "setting": "A neighbor sees you greet several relatives at a family gathering.",
+      "lines": [
+        { "speaker": "Neighbor", "english": "Wait — you have like four uncles? Are they all your dad's brothers?" },
+        { "speaker": "You", "english": "Two are my dad's brothers, two are my mom's. In Vietnamese they have different titles — 'chú' for dad's younger brother, 'bác' for dad's older brother, 'cậu' for mom's brother. So when you hear me switching, that's why." },
+        { "speaker": "Neighbor", "english": "And the women?" },
+        { "speaker": "You", "english": "'Cô' is dad's younger sister, 'dì' is mom's younger sister, 'bác' covers older sisters on either side. Bác is gender-neutral when it's the older generation." },
+        { "speaker": "Neighbor", "english": "I think I'd just lose track immediately." },
+        { "speaker": "You", "english": "We grow up with it — by the time you're five, you can place a relative in the family tree from one word." }
+      ]
+    }
+  ]
+}
