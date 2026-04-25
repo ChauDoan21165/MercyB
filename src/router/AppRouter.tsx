@@ -75,6 +75,8 @@ const ContributeSentencePage = lazy(() => import("@/pages/contribute/ContributeS
 const MySubmissionsPage      = lazy(() => import("@/pages/contribute/MySubmissionsPage"));
 const PendingSentencesPage   = lazy(() => import("@/pages/admin/PendingSentencesPage"));
 
+const FamilyPlanPage         = lazy(() => import("@/pages/family/FamilyPlanPage"));
+
 const AdminDashboard          = lazy(() => import("@/pages/admin/AdminDashboard"));
 const AdminUsersPage          = lazy(() => import("@/pages/admin/AdminUsersPage"));
 const AdminPaymentsPage       = lazy(() => import("@/pages/admin/AdminPaymentsPage"));
@@ -594,6 +596,15 @@ export default function AppRouter() {
             element={
               <RequireAuth>
                 <LazyPage><MySubmissionsPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+
+          {/* Family plan (Step 9 monetization) */}
+          <Route path="/family"
+            element={
+              <RequireAuth>
+                <LazyPage><FamilyPlanPage /></LazyPage>
               </RequireAuth>
             }
           />
