@@ -18,6 +18,11 @@ import type { DifficultyDirection } from './difficultyScaler';
 import type { LearnerState } from './learnerState';
 import type { TeacherEmotionState } from './teacherEmotionModel';
 import type { TeachingMode } from './teachingModes';
+import {
+  buildVinglishGuidance,
+  resolveVinglishFriendlyMode,
+  type VinglishGuidance,
+} from '../feedback/vinglish-detector';
 
 export interface GenerateTeachingTurnInput {
   learnerState: LearnerState;
@@ -46,6 +51,13 @@ export interface GenerateTeachingTurnInput {
 
   adaptive?: AdaptiveTeachingAdjustment;
   lessonFlow?: AdaptiveLessonFlowResult;
+
+  // Vinglish (VN-EN code-switching) inputs. Both optional and additive —
+  // omitting them preserves the pre-Step-10 behaviour exactly.
+  /** User's CEFR level (pre_a1 | a1 | a2 | b1 | b2 | c1 | c2). */
+  learnerCefrLevel?: string | null;
+  /** profiles.vinglish_friendly_mode override. NULL → infer from CEFR. */
+  vinglishFriendlyToggle?: boolean | null;
 }
 
 export interface TeachingTurnPlan {
@@ -87,6 +99,15 @@ export interface GeneratedTeachingTurn {
   shouldReviewConcept: boolean;
   concept?: string | null;
   mistake?: string | null;
+
+  /**
+   * Populated when the learner's text contains VN-EN code-switching AND
+   * Vinglish-friendly mode is on for this user. Null otherwise. Consumers
+   * (UI / chat composer) can render the gentle modeling alongside or
+   * instead of `text` without changing the existing strict-correction
+   * path. See src/lib/feedback/vinglish-detector.ts.
+   */
+  vinglishGuidance?: VinglishGuidance | null;
 }
 
 export interface TeachingTurnSummary {
@@ -590,6 +611,19 @@ export function generateTeachingTurn(
   const text = buildEnglishText(teachingMode, toneStyle, input);
   const textAlt = buildAltText(teachingMode, input);
 
+  // Vinglish detection runs unconditionally so we can collect signal even
+  // when the toggle is off; the buildVinglishGuidance call returns null
+  // when the toggle is off, so consumers see no behavioural change for
+  // strict-mode users. See src/lib/feedback/vinglish-detector.ts.
+  const vinglishFriendlyEnabled = resolveVinglishFriendlyMode({
+    explicitToggle: input.vinglishFriendlyToggle,
+    cefrLevel: input.learnerCefrLevel,
+  });
+  const vinglishGuidance = buildVinglishGuidance({
+    learnerText: input.learnerText,
+    vinglishFriendlyEnabled,
+  });
+
   return {
     text,
     textAlt,
@@ -601,6 +635,7 @@ export function generateTeachingTurn(
     repeatedMistake: Boolean(input.repeatedMistake),
     shouldReviewConcept: Boolean(input.shouldReviewConcept),
     concept: input.concept ?? null,
+    vinglishGuidance,
     mistake: input.mistake ?? null,
   };
 }
