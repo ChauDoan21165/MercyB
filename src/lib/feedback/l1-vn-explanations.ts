@@ -52,7 +52,7 @@ export type L1VnExplanation = {
 /** Mobile-display budget. Enforced by a test in __tests__/. */
 export const L1_VN_EXPLANATION_MAX_CHARS = 300;
 
-export const L1_VN_EXPLANATIONS: Record<L1WeaknessTag, L1VnExplanation> = {
+export const L1_VN_EXPLANATIONS: Partial<Record<L1WeaknessTag, L1VnExplanation>> = {
   // ── v1.0 core structural ───────────────────────────────────────────────
   vi_l1_3rd_person_s: {
     name_vi: "Quên thêm -s sau he / she / it",
