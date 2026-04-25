@@ -174,271 +174,16 @@ export type L1DetectionResult =
   | { matched: false; weaknessTag: null; feedback: null };
 
 // ────────────────────────────────────────────────────────────────────────────
-// Feedback string registry — approved by Chau (native Vietnamese speaker)
+// String-template type used by rule packs and the fillTemplate helper.
+// The actual VN rule strings now live in `rule-packs/vi/explanations.ts`.
 // ────────────────────────────────────────────────────────────────────────────
 
-type StringTemplate = {
+export type StringTemplate = {
   en: string;
   vi: string;
 };
 
-const RULE_STRINGS: Record<L1WeaknessTag, StringTemplate> = {
-  vi_l1_3rd_person_s: {
-    en: 'In English, verbs change after **she**, **he**, or **it** — we add **-s**. Vietnamese keeps the verb the same. Try: *{FIX}*.',
-    vi: 'Trong tiếng Anh, động từ đi với **she / he / it** phải thêm **-s**. Tiếng Việt mình không có quy tắc này. Thử: *{FIX}*.',
-  },
-  vi_l1_past_ed: {
-    en: 'When you use a past-time word like **yesterday** or **last week**, English also changes the verb — add **-ed**. Vietnamese leaves the verb alone. *work* → *worked*. Try: *{FIX}*.',
-    vi: 'Tiếng Việt mình chỉ cần nói **hôm qua** là đủ. Tiếng Anh còn phải thêm **-ed** vào động từ. *work* → *worked*. Thử: *{FIX}*.',
-  },
-  vi_l1_plural_s: {
-    en: 'English marks plurals on the noun itself — add **-s**. In tư duy Việt, \'hai quyển sách\' lets the number do the work, so the noun stays the same. English needs both. Try: *{FIX}*.',
-    vi: 'Trong tư duy Việt, \'hai quyển sách\' là đủ — danh từ không đổi. Tiếng Anh phải thêm **-s** vào chính danh từ. Thử: *{FIX}*.',
-  },
-  vi_l1_missing_be: {
-    en: "Vietnamese says 'tôi mệt' — adjective alone is fine. English needs a **be**-verb: **am / is / are**. Try: *{FIX}*.",
-    vi: "Tiếng Việt mình nói 'tôi mệt' là xong. Tiếng Anh cần thêm **am / is / are** giữa chủ ngữ và tính từ. Thử: *{FIX}*.",
-  },
-  vi_l1_question_no_aux: {
-    en: 'Vietnamese makes a question by adding **không** at the end. English moves a helper verb — **do**, **does**, or **did** — to the front. Try: *{FIX}*.',
-    vi: 'Tiếng Việt mình thêm **không** cuối câu là thành câu hỏi. Tiếng Anh phải đưa **do / does / did** lên đầu. Thử: *{FIX}*.',
-  },
-  vi_l1_missing_article: {
-    en: 'Vietnamese has no articles. English usually needs **a**, **an**, or **the** before a noun. Example: **the book** (a specific one), **a book** (any one). Try: *{FIX}*.',
-    vi: 'Tiếng Việt mình không có mạo từ. Tiếng Anh thường cần **a / an / the** trước danh từ. Ví dụ: **the book** (cuốn sách đó), **a book** (một cuốn sách). Thử: *{FIX}*.',
-  },
-  vi_l1_possessive_gender: {
-    en: 'Vietnamese uses **của anh ấy** or **của cô ấy** — same structure regardless of the owner. English changes the possessive word itself: **his** for a man, **her** for a woman. Try: *{FIX}*.',
-    vi: 'Tiếng Việt mình dùng **của anh ấy** hoặc **của cô ấy** — cấu trúc giống nhau. Tiếng Anh đổi từ sở hữu theo giới tính: **his** cho nam, **her** cho nữ. Thử: *{FIX}*.',
-  },
-  vi_l1_preposition_transfer: {
-    en: "English prepositions don't translate one-to-one from Vietnamese. Here, swap **{USER_PREP}** for **{FIX_PREP}**. Try: *{FIX}*.",
-    vi: 'Mỗi giới từ tiếng Anh có cách dùng riêng, không dịch trực tiếp từ tiếng Việt được. Chỗ này đổi **{USER_PREP}** thành **{FIX_PREP}**. Thử: *{FIX}*.',
-  },
-  vi_l1_countable: {
-    en: "In English some nouns don't count — **advice**, **information**, **furniture**, **news**. No **a / an** and no plural **-s**. Vietnamese counts them normally. Try: *{FIX}*.",
-    vi: 'Tiếng Anh có những danh từ không đếm được — **advice**, **information**, **furniture**, **news**. Không dùng **a / an**, không thêm **-s**. Tiếng Việt mình đếm bình thường. Thử: *{FIX}*.',
-  },
-
-  // ── v1.1 rules ─────────────────────────────────────────────────────────
-
-  vi_l1_to_verb_confusion: {
-    en: "After verbs like **want**, **need**, **try**, **hope**, English inserts **to** before the next verb. Tiếng Việt mình nói 'tôi muốn đi' — một mạch. English takes the extra step. Try: *{FIX}*.",
-    vi: "Sau các động từ như **want / need / try / hope**, tiếng Anh cần **to** trước động từ tiếp theo. Tiếng Việt mình nói 'tôi muốn đi' thẳng một mạch — tiếng Anh cần thêm bước. Thử: *{FIX}*.",
-  },
-  vi_l1_can_no_infinitive: {
-    en: 'After a modal — **can**, **could**, **will**, **should** — English keeps the next verb in its bare form. No **-s**, no **-ed**, no **-ing**. Vietnamese keeps verbs unchanged too, so let the modal carry the meaning. Try: *{FIX}*.',
-    vi: 'Sau trợ động từ **can / could / will / should**, tiếng Anh giữ động từ ở dạng gốc — không thêm **-s**, **-ed**, **-ing**. Tiếng Việt mình cũng để động từ nguyên. Thử: *{FIX}*.',
-  },
-  vi_l1_double_past: {
-    en: "English marks past tense **once**. If you already said **did** or **didn't**, the main verb stays bare. *I didn't went* → *I didn't go*. Try: *{FIX}*.",
-    vi: "Tiếng Anh chỉ đánh dấu quá khứ **một lần**. **did / didn't** đã là quá khứ rồi, nên động từ chính giữ nguyên dạng gốc. *I didn't went* → *I didn't go*. Thử: *{FIX}*.",
-  },
-  vi_l1_possessive_s_missing: {
-    en: "Vietnamese says 'nhà của mẹ' or just 'nhà mẹ' — two nouns can touch. English puts **'s** between them: *my mother's house*. Try: *{FIX}*.",
-    vi: "Tiếng Việt mình nói 'nhà của mẹ' hoặc 'nhà mẹ' — hai danh từ ghép được. Tiếng Anh thêm **'s** vào giữa: *my mother's house*. Thử: *{FIX}*.",
-  },
-  vi_l1_comparative_double: {
-    en: 'Use **more** OR the **-er** ending — never both. *more better* → *better*. *more faster* → *faster*. Try: *{FIX}*.',
-    vi: 'Tiếng Anh dùng **more** HOẶC đuôi **-er**, không dùng cả hai cùng lúc. *more better* → *better*. *more faster* → *faster*. Thử: *{FIX}*.',
-  },
-  vi_l1_adjective_order: {
-    en: "In English, adjectives come **before** the noun — *red car*, not *car red*. Tiếng Việt mình đặt tính từ sau danh từ ('xe đỏ'); English flips the order. Try: *{FIX}*.",
-    vi: "Trong tiếng Anh, tính từ đứng **trước** danh từ — *red car*, không phải *car red*. Tiếng Việt mình đặt tính từ sau ('xe đỏ'), tiếng Anh đảo ngược lại. Thử: *{FIX}*.",
-  },
-  vi_l1_very_much_placement: {
-    en: 'In English, **very much** usually comes after the verb or object, not before it. *I very much like it* → *I like it very much*. Try: *{FIX}*.',
-    vi: 'Trong tiếng Anh, **very much** thường đứng sau động từ hoặc tân ngữ, không đứng trước. *I very much like it* → *I like it very much*. Thử: *{FIX}*.',
-  },
-  vi_l1_there_are_singular: {
-    en: '**There is** goes with singular — *a book*, *an apple*, *one cat*. **There are** is only for plural. Try: *{FIX}*.',
-    vi: '**There is** đi với số ít — *a book*, *an apple*, *one cat*. **There are** chỉ dùng cho số nhiều. Thử: *{FIX}*.',
-  },
-  vi_l1_everyone_plural: {
-    en: "Words like **everyone**, **someone**, **nobody** look plural but take a **singular** verb in English — *everyone **is** here*, not *are*. Try: *{FIX}*.",
-    vi: "Các từ **everyone / someone / nobody** nghe như số nhiều nhưng tiếng Anh đi với động từ **số ít** — *everyone **is** here*, không phải *are*. Thử: *{FIX}*.",
-  },
-  vi_l1_make_vs_do: {
-    en: "**Make** and **do** both translate to **làm** in Vietnamese, but English picks one based on the noun. Here, **{WRONG}** should be **{RIGHT}**. Try: *{FIX}*.",
-    vi: "**Make** và **do** đều dịch là **làm** trong tiếng Việt, nhưng tiếng Anh chọn từ nào tùy danh từ đi kèm. Chỗ này **{WRONG}** → **{RIGHT}**. Thử: *{FIX}*.",
-  },
-  vi_l1_tag_question: {
-    en: "Vietnamese tags a question with 'không?' at the end. English builds a **tag question** that mirrors the main verb: *you like coffee, **don't you**?* Try: *{FIX}*.",
-    vi: "Tiếng Việt mình thêm 'không?' cuối câu để hỏi lại. Tiếng Anh dùng **tag question** khớp với động từ chính: *you like coffee, **don't you**?* Thử: *{FIX}*.",
-  },
-
-  // ── v1.2 strings ─────────────────────────────────────────────────────
-
-  vi_l1_past_perfect_missing: {
-    en: "Vietnamese often uses **đã** or **trước đó** to mark past. English uses **had + past participle** when one past action happened before another. *When she called, I already ate* → *When she called, I **had** already eaten*. Try: *{FIX}*.",
-    vi: "Tiếng Việt mình hay dùng **đã** hoặc **trước đó**. Tiếng Anh dùng **had + V3** khi một việc xảy ra trước một việc khác trong quá khứ. *When she called, I already ate* → *… I **had** already eaten*. Thử: *{FIX}*.",
-  },
-  vi_l1_reported_speech: {
-    en: "Vietnamese often keeps the original tense or uses **nói rằng**. English **backshifts** the tense after a past reporting verb. *She said she **is** tired* → *She said she **was** tired*. Try: *{FIX}*.",
-    vi: "Tiếng Việt mình hay giữ nguyên thì hoặc dùng **nói rằng**. Tiếng Anh phải **lùi thì** sau động từ tường thuật ở quá khứ. *She said she **was** tired*. Thử: *{FIX}*.",
-  },
-  vi_l1_since_vs_for: {
-    en: "Vietnamese **từ** covers both a starting point and a length of time. English splits them: **since** + point in time, **for** + length of time. Swap **{USER_WORD}** → **{FIX_WORD}**. Try: *{FIX}*.",
-    vi: "Tiếng Việt mình dùng **từ** cho cả mốc thời gian lẫn khoảng thời gian. Tiếng Anh tách rõ: **since** + mốc, **for** + độ dài. Đổi **{USER_WORD}** → **{FIX_WORD}**. Thử: *{FIX}*.",
-  },
-  vi_l1_countable_much: {
-    en: "Vietnamese **nhiều** works with everything. English **much** is only for uncountable nouns; use **many** or **a lot of** for countable plurals. *much books* → *many books*. Try: *{FIX}*.",
-    vi: "Tiếng Việt mình dùng **nhiều** với mọi danh từ. Tiếng Anh **much** chỉ đi với danh từ không đếm được; danh từ đếm được dùng **many** hoặc **a lot of**. *much books* → *many books*. Thử: *{FIX}*.",
-  },
-  vi_l1_some_vs_any: {
-    en: "Vietnamese **một số / chút** works in both positive and negative sentences. English has a clearer rule: **some** in positives, **any** in negatives and questions. *I don't have **some** money* → *I don't have **any** money*. Try: *{FIX}*.",
-    vi: "Tiếng Việt mình dùng **một số / chút** cho cả khẳng định lẫn phủ định. Tiếng Anh có quy tắc rõ: **some** trong khẳng định, **any** trong phủ định và câu hỏi. *I don't have **some** money* → *I don't have **any** money*. Thử: *{FIX}*.",
-  },
-  vi_l1_reflexive_missing: {
-    en: "Vietnamese often omits the reflexive. English needs **myself / yourself / himself …** when the subject acts on itself. *I hurt me* → *I hurt **myself***. Try: *{FIX}*.",
-    vi: "Tiếng Việt mình hay bỏ qua. Tiếng Anh cần **myself / yourself / himself …** khi chủ ngữ và tân ngữ là một. *I hurt me* → *I hurt **myself***. Thử: *{FIX}*.",
-  },
-  vi_l1_conditional_mix: {
-    en: "Vietnamese conditionals are flexible. English has strict forms — never use **will** inside the **if**-clause. *If I **will** have time* → *If I **have** time, I will come*. Try: *{FIX}*.",
-    vi: "Tiếng Việt mình dùng câu điều kiện linh hoạt. Tiếng Anh có quy tắc rõ: **không** dùng **will** trong mệnh đề **if**. *If I **will** have time* → *If I **have** time*. Thử: *{FIX}*.",
-  },
-  vi_l1_to_infinitive_after_ing: {
-    en: "Some English verbs are followed by **to + infinitive** (*decide to go*, *want to learn*). Vietnamese uses a simpler structure. *I want **going*** → *I want **to go***. Try: *{FIX}*.",
-    vi: "Một số động từ tiếng Anh theo sau bởi **to + động từ nguyên mẫu** (*decide to go*, *want to learn*). Tiếng Việt mình dùng cấu trúc đơn giản hơn. *I want **going*** → *I want **to go***. Thử: *{FIX}*.",
-  },
-  vi_l1_passive_missing_be: {
-    en: "Vietnamese passive uses **bị / được**. English passive always needs **be + past participle**. *This house built in 1990* → *This house **was built** in 1990*. Try: *{FIX}*.",
-    vi: "Tiếng Việt mình hay dùng **bị / được**. Tiếng Anh thể bị động luôn cần **be + V3**. *This house built in 1990* → *This house **was built** in 1990*. Thử: *{FIX}*.",
-  },
-  vi_l1_relative_pronoun: {
-    en: "Vietnamese uses one word **mà** for both. English splits: **who** for people, **which / that** for things. *The man **which** came* → *The man **who** came*. Try: *{FIX}*.",
-    vi: "Tiếng Việt mình nối ý bằng một từ **mà** cho cả người lẫn vật. Tiếng Anh phân biệt: **who** cho người, **which / that** cho vật. *The man **which** came* → *The man **who** came*. Thử: *{FIX}*.",
-  },
-  vi_l1_used_to_vs_be_used_to: {
-    en: "Vietnamese **thường** covers both 'past habit' and 'accustomed to'. English separates them: **used to + bare verb** = past habit; **be used to + -ing / noun** = accustomed. *I am used to smoke* → *I **used to** smoke*. Try: *{FIX}*.",
-    vi: "Tiếng Việt mình dùng **thường** cho cả 'thói quen cũ' và 'đã quen với'. Tiếng Anh tách rõ: **used to + V** (thói quen quá khứ) và **be used to + V-ing / danh từ** (đã quen). *I am used to smoke* → *I **used to** smoke*. Thử: *{FIX}*.",
-  },
-  vi_l1_another_vs_other: {
-    en: "Vietnamese **khác** is used broadly. English: **another** = one more (singular), **other** = the rest / additional. *I need **other** pen* → *I need **another** pen*. Try: *{FIX}*.",
-    vi: "Tiếng Việt mình dùng **khác** khá linh hoạt. Tiếng Anh phân biệt: **another** (một cái nữa, số ít), **other** (còn lại / khác). *I need **other** pen* → *I need **another** pen*. Thử: *{FIX}*.",
-  },
-  vi_l1_look_vs_see_vs_watch: {
-    en: "Vietnamese **nhìn** covers many situations. English has three different verbs: **look at** (direct attention), **see** (perceive), **watch** (follow movement). Here **{WRONG}** → **{RIGHT}**. Try: *{FIX}*.",
-    vi: "Tiếng Việt mình dùng **nhìn** cho nhiều tình huống. Tiếng Anh có ba động từ riêng biệt: **look at** (hướng mắt tới), **see** (trông thấy), **watch** (theo dõi chuyển động). Chỗ này **{WRONG}** → **{RIGHT}**. Thử: *{FIX}*.",
-  },
-  vi_l1_by_vs_with: {
-    en: "Vietnamese **bằng** works for both. English splits: **by** = method / agent (*by car*, *written **by** Chau*), **with** = tool / accompaniment (*written **with** a pen*). *{WRONG}* → *{RIGHT}*. Try: *{FIX}*.",
-    vi: "Tiếng Việt mình hay dùng **bằng** cho cả hai. Tiếng Anh phân biệt rõ: **by** (phương tiện / tác nhân), **with** (công cụ / đi cùng). *{WRONG}* → *{RIGHT}*. Thử: *{FIX}*.",
-  },
-  vi_l1_time_expressions: {
-    en: "Vietnamese time expressions are simpler. English picks the preposition by category: **in** the morning, **on** Monday, **at** 7 o'clock. *{USER_PREP}* → *{FIX_PREP}*. Try: *{FIX}*.",
-    vi: "Tiếng Việt mình đơn giản hơn. Tiếng Anh có quy tắc rõ: **in** buổi sáng, **on** thứ Hai, **at** 7 giờ. *{USER_PREP}* → *{FIX_PREP}*. Thử: *{FIX}*.",
-  },
-
-  // ── Round 5 additions (L1-036..L1-060) ────────────────────────────────
-  // EN strings are CC3 placeholders. CC4 will author the VN strings
-  // for all 25 in a separate PR; the VN string here is a minimal
-  // stub (English key + [VI TBD]) so the type contract holds and
-  // tests can assert a non-empty VN string length.
-  vi_l1_present_perfect_vs_past: {
-    en: "When you point to a specific past time — **yesterday**, **last week**, **in 1990** — English uses simple past, not present perfect. *I have eaten it yesterday* → *I ate it yesterday*. Try: *{FIX}*.",
-    vi: "[VI TBD — CC4] Dùng quá khứ đơn với mốc thời gian cụ thể. Thử: *{FIX}*.",
-  },
-  vi_l1_subjunctive_were: {
-    en: "After **if** or **wish**, use **were** for every subject when you're imagining something not real. *If I was you* → *If I **were** you*. Try: *{FIX}*.",
-    vi: "[VI TBD — CC4] Sau **if / wish** ở tình huống giả định, dùng **were** cho mọi chủ ngữ. Thử: *{FIX}*.",
-  },
-  vi_l1_embedded_question_order: {
-    en: "Once a question sits inside another sentence, English drops the question word order. *I don't know what **is this*** → *I don't know what **this is***. Try: *{FIX}*.",
-    vi: "[VI TBD — CC4] Câu hỏi lồng trong câu khác không giữ trật tự câu hỏi. Thử: *{FIX}*.",
-  },
-  vi_l1_do_support_3ps: {
-    en: "After **he**, **she**, or **it**, the helper is **doesn't** — not **don't**. The **-s** already lives on the helper, so the main verb stays bare. Try: *{FIX}*.",
-    vi: "[VI TBD — CC4] Với **he / she / it** phải dùng **doesn't**, không phải **don't**. Thử: *{FIX}*.",
-  },
-  vi_l1_subject_relative_omit: {
-    en: "English can't drop the **subject** relative pronoun. *The man came yesterday is my uncle* → *The man **who** came yesterday is my uncle*. Try: *{FIX}*.",
-    vi: "[VI TBD — CC4] Không thể bỏ đại từ quan hệ làm chủ ngữ. Thử: *{FIX}*.",
-  },
-  vi_l1_gerund_after_verb: {
-    en: "After **enjoy / avoid / finish / keep / mind / suggest / practise**, English wants **-ing**, not **to + V**. *I enjoy **to swim*** → *I enjoy **swimming***. Try: *{FIX}*.",
-    vi: "[VI TBD — CC4] Sau enjoy/avoid/finish/keep/mind, dùng V-ing thay vì to V. Thử: *{FIX}*.",
-  },
-  vi_l1_modal_perfect: {
-    en: "To talk about the past with a modal, English uses **modal + have + past participle** — not modal + past verb. *I should **did** it* → *I should **have done** it*. Try: *{FIX}*.",
-    vi: "[VI TBD — CC4] Modal quá khứ dùng **modal + have + V3**. Thử: *{FIX}*.",
-  },
-  vi_l1_phrasal_pronoun_order: {
-    en: "When the object of a separable phrasal verb is a pronoun, it goes **between** the verb and the particle. *I picked up **him*** → *I picked **him** up*. Try: *{FIX}*.",
-    vi: "[VI TBD — CC4] Với phrasal verb tách được, đại từ chen vào giữa. Thử: *{FIX}*.",
-  },
-  vi_l1_comparative_more_long: {
-    en: "Two-or-more-syllable adjectives take **more** — not an **-er** ending. *more beautifuler* / *beautifuler* → **more beautiful**. Try: *{FIX}*.",
-    vi: "[VI TBD — CC4] Tính từ dài 2+ âm tiết dùng **more**, không thêm **-er**. Thử: *{FIX}*.",
-  },
-  vi_l1_many_with_uncount: {
-    en: "Use **much** (not **many**) with uncountable nouns — **water**, **money**, **advice**, **music**. *many water* → **much water**. Try: *{FIX}*.",
-    vi: "[VI TBD — CC4] Dùng **much** với danh từ không đếm được. Thử: *{FIX}*.",
-  },
-  vi_l1_geographical_article: {
-    en: "Most country names take **no article**, but a few plural-sounding ones do — **the Philippines**, **the USA**, **the Netherlands**. *the Vietnam* → *Vietnam*; *Philippines* → *the Philippines*. Try: *{FIX}*.",
-    vi: "[VI TBD — CC4] Hầu hết tên quốc gia không có **the**; vài nước ngoại lệ (the Philippines, the USA...). Thử: *{FIX}*.",
-  },
-  vi_l1_generic_plural: {
-    en: "To talk about something in general, English uses the **plural** without **the**. *I like dog* → *I like **dogs***. Try: *{FIX}*.",
-    vi: "[VI TBD — CC4] Nói khái quát trong tiếng Anh dùng số nhiều không **the**. Thử: *{FIX}*.",
-  },
-  vi_l1_double_negative: {
-    en: "English uses only **one** negative in a clause. *I don't have **no** money* → *I don't have **any** money*. Try: *{FIX}*.",
-    vi: "[VI TBD — CC4] Tiếng Anh chỉ dùng một phủ định trong một mệnh đề. Thử: *{FIX}*.",
-  },
-  vi_l1_negative_inversion: {
-    en: "When a negative word like **never**, **seldom**, **rarely** starts the sentence, English flips the subject and auxiliary. *Never I have seen it* → *Never **have I** seen it*. Try: *{FIX}*.",
-    vi: "[VI TBD — CC4] Khi câu mở đầu bằng **never / seldom / rarely**, đảo chủ ngữ và trợ động từ. Thử: *{FIX}*.",
-  },
-  vi_l1_adverb_before_subject: {
-    en: "Frequency adverbs like **always**, **usually**, **sometimes** go **after** the subject, not before it. *Always I go* → *I **always** go*. Try: *{FIX}*.",
-    vi: "[VI TBD — CC4] Trạng từ tần suất đi sau chủ ngữ, không đứng trước. Thử: *{FIX}*.",
-  },
-  vi_l1_make_let_bare: {
-    // NOTE FOR CC4: the causative "had + obj + bare verb" (e.g., "I had
-    // my friend drive me") is rarer than make/let in the wild. Keep the
-    // VN explanation focused on make / made / let. Per CC7 peer review.
-    en: "After **make**, **let**, or **have** in this meaning, English uses the **bare verb** — no **to**. *She made me **to cry*** → *She made me **cry***. Try: *{FIX}*.",
-    vi: "[VI TBD — CC4] Sau **make / let / have** (sai khiến), dùng động từ nguyên mẫu không **to**. Thử: *{FIX}*.",
-  },
-  vi_l1_too_vs_very: {
-    en: "**Too** means excessive (there's a problem). For a simple strong intensifier, use **very**. *I am **too** happy to see you* → *I am **very** happy to see you*. Try: *{FIX}*.",
-    vi: "[VI TBD — CC4] **Too** nghĩa là quá mức (tiêu cực). Muốn nhấn mạnh tích cực, dùng **very**. Thử: *{FIX}*.",
-  },
-  vi_l1_a_vs_an_vowel: {
-    en: "Use **a** before a consonant **sound**, **an** before a vowel **sound** — listen, don't just look. *a apple* → *an apple*; *an book* → *a book*. Try: *{FIX}*.",
-    vi: "[VI TBD — CC4] Dùng **a** trước phụ âm, **an** trước nguyên âm — theo âm thanh, không phải chữ. Thử: *{FIX}*.",
-  },
-  vi_l1_one_of_the_singular: {
-    en: "After **one of the / my / her / their**, the noun is **plural** even though the whole phrase refers to one item. *one of the student* → *one of the **students***. Try: *{FIX}*.",
-    vi: "[VI TBD — CC4] Sau **one of the / my / ...** dùng danh từ số nhiều. Thử: *{FIX}*.",
-  },
-  vi_l1_each_singular: {
-    en: "**Each** and **every** always take a **singular** noun and a **singular** verb. *Each **students are** happy* → *Each **student is** happy*. Try: *{FIX}*.",
-    vi: "[VI TBD — CC4] **Each / every** đi với danh từ số ít và động từ số ít. Thử: *{FIX}*.",
-  },
-  vi_l1_been_vs_gone: {
-    en: "**Gone to** = went there and hasn't come back. **Been to** = visited, came back. *He has **gone** to Paris three times* → *He has **been** to Paris three times*. Try: *{FIX}*.",
-    vi: "[VI TBD — CC4] **gone to** = đi chưa về; **been to** = đã từng ghé qua. Thử: *{FIX}*.",
-  },
-  vi_l1_tag_polarity: {
-    en: "Tag questions flip polarity: positive statement + negative tag, negative statement + positive tag. *You like it, **do you***? → *You like it, **don't you***? Try: *{FIX}*.",
-    vi: "[VI TBD — CC4] Câu hỏi đuôi đảo dấu: mệnh đề khẳng định + đuôi phủ định (và ngược lại). Thử: *{FIX}*.",
-  },
-  vi_l1_no_article_generic: {
-    en: "Abstract nouns and generic plurals usually take **no** article in English. *The life is hard* → *Life is hard*. Try: *{FIX}*.",
-    vi: "[VI TBD — CC4] Danh từ trừu tượng nói chung không dùng **the**. Thử: *{FIX}*.",
-  },
-  vi_l1_superlative_the: {
-    en: "Superlatives (**best**, **tallest**, **most beautiful**) almost always come with **the**. *She is best student* → *She is **the best** student*. Try: *{FIX}*.",
-    vi: "[VI TBD — CC4] Trước cấp cao nhất gần như luôn dùng **the**. Thử: *{FIX}*.",
-  },
-  vi_l1_if_will: {
-    en: "In a 1st-conditional **if**-clause, English uses **present simple** — not **will**. *If I **will go** tomorrow, I will tell you* → *If I **go** tomorrow, I will tell you*. Try: *{FIX}*.",
-    vi: "[VI TBD — CC4] Mệnh đề **if** (điều kiện loại 1) dùng hiện tại đơn, không dùng **will**. Thử: *{FIX}*.",
-  },
-};
+// (RULE_STRINGS extracted to src/lib/feedback/rule-packs/vi/explanations.ts)
 
 // ────────────────────────────────────────────────────────────────────────────
 // Tokenization + tiny utilities
@@ -937,12 +682,22 @@ const TIME_PREP_MISMATCHES: Array<{ wrong: string; right: string }> = [
 // Rule implementations (pure functions — no I/O, no side effects)
 // ────────────────────────────────────────────────────────────────────────────
 
-type RuleHit = {
-  tag: L1WeaknessTag;
+/**
+ * What a rule emits when it fires. `tag` is `string` (not the
+ * VN-specific `L1WeaknessTag` union) so cross-language packs can
+ * declare their own tag namespaces without widening the engine. The
+ * VN pack still returns concrete `vi_l1_*` literals — TypeScript
+ * narrows fine.
+ */
+export type RuleHit = {
+  tag: string;
   replacements: Record<string, string>;
 };
 
-type Rule = (args: {
+/**
+ * Arguments passed to every rule. Stable across packs.
+ */
+export type RuleArgs = {
   userTokens: string[];
   expectedTokens: string[];
   /** Contraction-normalised user text (apostrophes stripped). */
@@ -954,10 +709,17 @@ type Rule = (args: {
   /** ORIGINAL expected answer before normalisation — use in FIX replacements. */
   rawExpected: string;
   ctx: NonNullable<L1DetectionInput['questionContext']>;
-}) => RuleHit | null;
+};
+
+/** Pure rule function. First match wins; order is set by the pack. */
+export type L1Rule = (args: RuleArgs) => RuleHit | null;
+
+// Internal alias kept for backwards-compatibility with the existing rule
+// declarations (they're typed as `Rule` throughout the file).
+type Rule = L1Rule;
 
 /** 1. Missing third-person -s. */
-const ruleThirdPersonS: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
+export const ruleThirdPersonS: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
   const len = Math.min(userTokens.length, expectedTokens.length);
   for (let i = 1; i < len; i++) {
     const prev = userTokens[i - 1];
@@ -975,7 +737,7 @@ const ruleThirdPersonS: Rule = ({ userTokens, expectedTokens, rawExpected }) => 
 };
 
 /** 2. Missing past -ed when a past-time marker is present. */
-const rulePastEd: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
+export const rulePastEd: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
   if (!hasPastTimeMarker(userTokens) && !hasPastTimeMarker(expectedTokens)) {
     return null;
   }
@@ -989,7 +751,7 @@ const rulePastEd: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
 };
 
 /** 3. Plural -s missing after a plural quantifier. */
-const rulePluralS: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
+export const rulePluralS: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
   const len = Math.min(userTokens.length, expectedTokens.length);
   for (let i = 1; i < len; i++) {
     const prev = userTokens[i - 1];
@@ -1002,7 +764,7 @@ const rulePluralS: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
 };
 
 /** 4. Missing be-verb between subject and adjective/NP. */
-const ruleMissingBe: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
+export const ruleMissingBe: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
   if (expectedTokens.length !== userTokens.length + 1) return null;
 
   for (let i = 0; i < expectedTokens.length; i++) {
@@ -1030,7 +792,7 @@ const ruleMissingBe: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
 };
 
 /** 5. Question formed without fronted auxiliary. */
-const ruleQuestionNoAux: Rule = ({ userText, rawExpected, userTokens, expectedTokens, ctx }) => {
+export const ruleQuestionNoAux: Rule = ({ userText, rawExpected, userTokens, expectedTokens, ctx }) => {
   const isQuestion = ctx.isQuestion === true || hasQuestionMark(userText);
   if (!isQuestion) return null;
 
@@ -1044,7 +806,7 @@ const ruleQuestionNoAux: Rule = ({ userText, rawExpected, userTokens, expectedTo
 };
 
 /** 6. Missing article (a/an/the). */
-const ruleMissingArticle: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
+export const ruleMissingArticle: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
   const userArticleCount = userTokens.filter((t) => ARTICLES.has(t)).length;
   const expectedArticleCount = expectedTokens.filter((t) => ARTICLES.has(t)).length;
   if (expectedArticleCount <= userArticleCount) return null;
@@ -1053,7 +815,7 @@ const ruleMissingArticle: Rule = ({ userTokens, expectedTokens, rawExpected }) =
 };
 
 /** 8. Possessive gender swap (his/her). */
-const rulePossessiveGender: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
+export const rulePossessiveGender: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
   const len = Math.min(userTokens.length, expectedTokens.length);
   for (let i = 0; i < len; i++) {
     const u = userTokens[i];
@@ -1067,7 +829,7 @@ const rulePossessiveGender: Rule = ({ userTokens, expectedTokens, rawExpected })
 };
 
 /** 9. Preposition transfer. */
-const rulePrepositionTransfer: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
+export const rulePrepositionTransfer: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
   const len = Math.min(userTokens.length, expectedTokens.length);
 
   for (let i = 0; i < len; i++) {
@@ -1113,7 +875,7 @@ const rulePrepositionTransfer: Rule = ({ userTokens, expectedTokens, rawExpected
 };
 
 /** 10. Uncountable noun used with a/an or with plural -s. */
-const ruleCountable: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
+export const ruleCountable: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
   for (let i = 0; i < userTokens.length; i++) {
     const raw = userTokens[i];
 
@@ -1150,7 +912,7 @@ const ruleCountable: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
 // ── v1.1 rules ─────────────────────────────────────────────────────────────
 
 /** 11. Missing `to` between a trigger verb and the following verb. */
-const ruleToVerbConfusion: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
+export const ruleToVerbConfusion: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
   // Expected must be exactly one token longer (the extra `to`).
   if (expectedTokens.length !== userTokens.length + 1) return null;
 
@@ -1173,7 +935,7 @@ const ruleToVerbConfusion: Rule = ({ userTokens, expectedTokens, rawExpected }) 
 };
 
 /** 12. Inflected verb after a modal (should be bare). */
-const ruleCanNoInfinitive: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
+export const ruleCanNoInfinitive: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
   if (userTokens.length !== expectedTokens.length) return null;
   for (let i = 1; i < userTokens.length; i++) {
     const prev = userTokens[i - 1];
@@ -1196,7 +958,7 @@ const ruleCanNoInfinitive: Rule = ({ userTokens, expectedTokens, rawExpected }) 
 /** 13. Double past marking — do-support + past-form verb.
  *  Scans up to 4 tokens AFTER the do-auxiliary because in questions the
  *  subject sits between ("does he likes" → "does he like"). */
-const ruleDoublePast: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
+export const ruleDoublePast: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
   if (userTokens.length !== expectedTokens.length) return null;
   for (let auxIdx = 0; auxIdx < userTokens.length; auxIdx++) {
     if (!DO_AUX_SET.has(userTokens[auxIdx])) continue;
@@ -1214,7 +976,7 @@ const ruleDoublePast: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
 };
 
 /** 14. Possessive 's missing. Regex-on-raw-text since tokenize strips apostrophes. */
-const rulePossessiveSMissing: Rule = ({ userText, rawExpected, expectedText }) => {
+export const rulePossessiveSMissing: Rule = ({ userText, rawExpected, expectedText }) => {
   const expectedMatch = /\b(\w+)[’']s\s+(\w+)/i.exec(expectedText);
   if (!expectedMatch) return null;
   const possessor = expectedMatch[1];
@@ -1235,7 +997,7 @@ const rulePossessiveSMissing: Rule = ({ userText, rawExpected, expectedText }) =
 };
 
 /** 15. Double comparative: `more` + comparative form. */
-const ruleComparativeDouble: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
+export const ruleComparativeDouble: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
   // User has exactly one extra token (the redundant "more").
   if (userTokens.length !== expectedTokens.length + 1) return null;
   for (let i = 0; i < userTokens.length - 1; i++) {
@@ -1257,7 +1019,7 @@ const ruleComparativeDouble: Rule = ({ userTokens, expectedTokens, rawExpected }
 };
 
 /** 16. Adjective order — noun + adjective swapped to adjective + noun. */
-const ruleAdjectiveOrder: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
+export const ruleAdjectiveOrder: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
   if (userTokens.length !== expectedTokens.length) return null;
   for (let i = 0; i < userTokens.length - 1; i++) {
     const u1 = userTokens[i];
@@ -1279,7 +1041,7 @@ const ruleAdjectiveOrder: Rule = ({ userTokens, expectedTokens, rawExpected }) =
 };
 
 /** 17. "very much" placed before a verb instead of after it. */
-const ruleVeryMuchPlacement: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
+export const ruleVeryMuchPlacement: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
   const findVeryMuch = (tokens: string[]): number => {
     for (let i = 0; i < tokens.length - 1; i++) {
       if (tokens[i] === 'very' && tokens[i + 1] === 'much') return i;
@@ -1300,14 +1062,14 @@ const ruleVeryMuchPlacement: Rule = ({ userTokens, expectedTokens, rawExpected }
 };
 
 /** 18. "there are" used with a singular (a/an/one). */
-const ruleThereAreSingular: Rule = ({ userText, rawExpected, expectedText }) => {
+export const ruleThereAreSingular: Rule = ({ userText, rawExpected, expectedText }) => {
   if (!/\bthere\s+are\s+(a|an|one)\b/i.test(userText)) return null;
   if (!/\bthere\s+is\s+(a|an|one)\b/i.test(expectedText)) return null;
   return { tag: 'vi_l1_there_are_singular', replacements: { FIX: rawExpected } };
 };
 
 /** 19. Indefinite pronoun + plural-looking verb. */
-const ruleEveryonePlural: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
+export const ruleEveryonePlural: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
   if (userTokens.length !== expectedTokens.length) return null;
   const PLURAL_TO_SINGULAR: Record<string, string[]> = {
     are:  ['is'],
@@ -1333,7 +1095,7 @@ const ruleEveryonePlural: Rule = ({ userTokens, expectedTokens, rawExpected }) =
 };
 
 /** 20. Make / do / have collocation confusion — walks verb conjugations. */
-const ruleMakeVsDo: Rule = ({ userText, rawExpected, expectedText }) => {
+export const ruleMakeVsDo: Rule = ({ userText, rawExpected, expectedText }) => {
   const userLower = userText.toLowerCase();
   const expectedLower = expectedText.toLowerCase();
 
@@ -1374,7 +1136,7 @@ const ruleMakeVsDo: Rule = ({ userText, rawExpected, expectedText }) => {
 };
 
 /** 21. Tag question rendered as ", no?" / ", yes?". */
-const ruleTagQuestion: Rule = ({ userText, rawExpected, expectedText }) => {
+export const ruleTagQuestion: Rule = ({ userText, rawExpected, expectedText }) => {
   if (!/,\s*(no|yes)\s*\?\s*$/i.test(userText)) return null;
   // Guard: if the expected answer also ends with ", no?", this is evidently
   // the target form — don't flag it.
@@ -1390,7 +1152,7 @@ const ruleTagQuestion: Rule = ({ userText, rawExpected, expectedText }) => {
  * context word (when / before / after / already / just) in either side
  * to keep the false-positive rate low.
  */
-const rulePastPerfectMissing: Rule = ({
+export const rulePastPerfectMissing: Rule = ({
   userTokens, expectedTokens, rawExpected,
 }) => {
   if (expectedTokens.length !== userTokens.length + 1) return null;
@@ -1426,7 +1188,7 @@ const rulePastPerfectMissing: Rule = ({
  * 23. Reported speech — after `said`, present-tense verbs should shift
  * one step back. User keeps present; expected has past.
  */
-const ruleReportedSpeech: Rule = ({
+export const ruleReportedSpeech: Rule = ({
   userTokens, expectedTokens, rawExpected,
 }) => {
   if (userTokens.length !== expectedTokens.length) return null;
@@ -1449,7 +1211,7 @@ const ruleReportedSpeech: Rule = ({
  * 24. Since vs for — user says "for YYYY" (year-as-duration) or "since
  * N years" (duration-as-start-point). Swap.
  */
-const ruleSinceVsFor: Rule = ({
+export const ruleSinceVsFor: Rule = ({
   userTokens, expectedTokens, rawExpected,
 }) => {
   const len = Math.min(userTokens.length, expectedTokens.length);
@@ -1475,7 +1237,7 @@ const ruleSinceVsFor: Rule = ({
  * 25. many / much confusion — user pairs `much` with a plural, or `many`
  * with an uncountable. Expected swaps the quantifier.
  */
-const ruleCountableMuch: Rule = ({
+export const ruleCountableMuch: Rule = ({
   userTokens, expectedTokens, rawExpected,
 }) => {
   if (userTokens.length !== expectedTokens.length) return null;
@@ -1504,7 +1266,7 @@ const ruleCountableMuch: Rule = ({
 };
 
 /** 26. Some → any in questions / negatives. */
-const ruleSomeVsAny: Rule = ({
+export const ruleSomeVsAny: Rule = ({
   userTokens, expectedTokens, userText, rawExpected,
 }) => {
   if (userTokens.length !== expectedTokens.length) return null;
@@ -1523,7 +1285,7 @@ const ruleSomeVsAny: Rule = ({
 };
 
 /** 27. Reflexive pronoun missing after a reflexive-requiring verb. */
-const ruleReflexiveMissing: Rule = ({
+export const ruleReflexiveMissing: Rule = ({
   userTokens, expectedTokens, rawExpected,
 }) => {
   // Expected is exactly one token longer — the missing reflexive pronoun.
@@ -1554,7 +1316,7 @@ const ruleReflexiveMissing: Rule = ({
 };
 
 /** 28. `will` appearing inside an if-clause. */
-const ruleConditionalMix: Rule = ({
+export const ruleConditionalMix: Rule = ({
   userTokens, expectedTokens, rawExpected,
 }) => {
   const ifIdx = userTokens.indexOf('if');
@@ -1576,7 +1338,7 @@ const ruleConditionalMix: Rule = ({
 };
 
 /** 29. -ing form after `want/need/hope` (should be bare infinitive with `to`). */
-const ruleToInfinitiveAfterIng: Rule = ({
+export const ruleToInfinitiveAfterIng: Rule = ({
   userTokens, expectedTokens, rawExpected,
 }) => {
   for (let i = 1; i < userTokens.length; i++) {
@@ -1601,7 +1363,7 @@ const ruleToInfinitiveAfterIng: Rule = ({
 };
 
 /** 30. Passive voice missing `be` before the past participle. */
-const rulePassiveMissingBe: Rule = ({
+export const rulePassiveMissingBe: Rule = ({
   userTokens, expectedTokens, rawExpected,
 }) => {
   // Expected inserts a be-verb (was/were/is/are) that user lacks.
@@ -1630,7 +1392,7 @@ const rulePassiveMissingBe: Rule = ({
 };
 
 /** 31. `which` used where `who` is correct (people antecedent). */
-const ruleRelativePronoun: Rule = ({
+export const ruleRelativePronoun: Rule = ({
   userTokens, expectedTokens, rawExpected,
 }) => {
   const PEOPLE_NOUNS = new Set([
@@ -1659,7 +1421,7 @@ const ruleRelativePronoun: Rule = ({
 };
 
 /** 32. used to vs be used to confusion (two distinct patterns). */
-const ruleUsedToVsBeUsedTo: Rule = ({
+export const ruleUsedToVsBeUsedTo: Rule = ({
   userTokens, expectedTokens, userText, rawExpected,
 }) => {
   // Pattern A: user has "am/is/are used to + bare verb"; expected has
@@ -1699,7 +1461,7 @@ const ruleUsedToVsBeUsedTo: Rule = ({
 };
 
 /** 33. `other` where `another` is correct. */
-const ruleAnotherVsOther: Rule = ({
+export const ruleAnotherVsOther: Rule = ({
   userText, userTokens, expectedTokens, rawExpected,
 }) => {
   const userLower = userText.toLowerCase();
@@ -1720,7 +1482,7 @@ const ruleAnotherVsOther: Rule = ({
 };
 
 /** 34. look / see / watch collocation confusion. Walks verb conjugations. */
-const ruleLookSeeWatch: Rule = ({ userText, rawExpected, expectedText }) => {
+export const ruleLookSeeWatch: Rule = ({ userText, rawExpected, expectedText }) => {
   const LOOK_FORMS  = ['look', 'looks', 'looked', 'looking'];
   const SEE_FORMS   = ['see', 'sees', 'saw', 'seen', 'seeing'];
   const WATCH_FORMS = ['watch', 'watches', 'watched', 'watching'];
@@ -1769,7 +1531,7 @@ const ruleLookSeeWatch: Rule = ({ userText, rawExpected, expectedText }) => {
 };
 
 /** 35. by / with confusion on transport / instrument. */
-const ruleByVsWith: Rule = ({ userText, expectedText, rawExpected }) => {
+export const ruleByVsWith: Rule = ({ userText, expectedText, rawExpected }) => {
   const userLower = userText.toLowerCase();
   const expectedLower = expectedText.toLowerCase();
   for (const m of BY_WITH_MISMATCHES) {
@@ -1789,7 +1551,7 @@ const ruleByVsWith: Rule = ({ userText, expectedText, rawExpected }) => {
 };
 
 /** 36. Time preposition mismatches (year, parts of day, weekday). */
-const ruleTimeExpressions: Rule = ({ userText, expectedText, rawExpected }) => {
+export const ruleTimeExpressions: Rule = ({ userText, expectedText, rawExpected }) => {
   const userLower = userText.toLowerCase();
   const expectedLower = expectedText.toLowerCase();
   for (const m of TIME_PREP_MISMATCHES) {
@@ -2013,7 +1775,7 @@ function joinTokens(tokens: string[]): string {
 }
 
 /** 37. Present perfect used with a specific past-time marker — B1. */
-const rulePresentPerfectVsPast: Rule = ({
+export const rulePresentPerfectVsPast: Rule = ({
   userTokens,
   expectedTokens,
   userText,
@@ -2049,7 +1811,7 @@ const rulePresentPerfectVsPast: Rule = ({
 };
 
 /** 38. "if/wish + subject + was" → "were" — B2. */
-const ruleSubjunctiveWere: Rule = ({ userText, expectedText, rawExpected }) => {
+export const ruleSubjunctiveWere: Rule = ({ userText, expectedText, rawExpected }) => {
   const userLower = userText.toLowerCase();
   const expectedLower = expectedText.toLowerCase();
   if (!/\b(if|wish)\s+(i|he|she|it)\s+was\b/.test(userLower)) return null;
@@ -2061,7 +1823,7 @@ const ruleSubjunctiveWere: Rule = ({ userText, expectedText, rawExpected }) => {
 };
 
 /** 39. Embedded-question inverted word order — B1. */
-const ruleEmbeddedQuestionOrder: Rule = ({ userText, expectedText, rawExpected }) => {
+export const ruleEmbeddedQuestionOrder: Rule = ({ userText, expectedText, rawExpected }) => {
   const userLower = userText.toLowerCase();
   const expectedLower = expectedText.toLowerCase();
   // The wrong side is distinctive enough on its own: a reporting verb
@@ -2093,7 +1855,7 @@ const ruleEmbeddedQuestionOrder: Rule = ({ userText, expectedText, rawExpected }
 };
 
 /** 40. "she/he/it don't" → "doesn't" — A2. */
-const ruleDoSupport3ps: Rule = ({ userText, expectedText, rawExpected }) => {
+export const ruleDoSupport3ps: Rule = ({ userText, expectedText, rawExpected }) => {
   // normalizeContractions already collapses don't → dont, doesn't → doesnt.
   const userLower = userText.toLowerCase();
   const expectedLower = expectedText.toLowerCase();
@@ -2106,7 +1868,7 @@ const ruleDoSupport3ps: Rule = ({ userText, expectedText, rawExpected }) => {
 };
 
 /** 41. Missing subject relative pronoun (who/which/that) — B1. */
-const ruleSubjectRelativeOmit: Rule = ({ userText, expectedText, rawExpected }) => {
+export const ruleSubjectRelativeOmit: Rule = ({ userText, expectedText, rawExpected }) => {
   const expectedLower = expectedText.toLowerCase();
   const userLower = userText.toLowerCase();
   // Expected must carry a subject relative after a noun.
@@ -2137,7 +1899,7 @@ const ruleSubjectRelativeOmit: Rule = ({ userText, expectedText, rawExpected }) 
 };
 
 /** 42. Gerund required after enjoy/avoid/finish/keep/mind/... — B1. */
-const ruleGerundAfterVerb: Rule = ({ userTokens, expectedText, rawExpected }) => {
+export const ruleGerundAfterVerb: Rule = ({ userTokens, expectedText, rawExpected }) => {
   // Look for the wrong pattern directly: <gerund-verb> <to> <verb>.
   // Expected must contain an -ing form whose stem overlaps with the
   // user's bare verb. We accept three common English -ing shapes:
@@ -2178,7 +1940,7 @@ const ruleGerundAfterVerb: Rule = ({ userTokens, expectedText, rawExpected }) =>
 };
 
 /** 43. "modal + past-tense verb" → "modal + have + V3" — B2. */
-const ruleModalPerfect: Rule = ({ userTokens, expectedText, rawExpected }) => {
+export const ruleModalPerfect: Rule = ({ userTokens, expectedText, rawExpected }) => {
   for (let i = 1; i < userTokens.length; i++) {
     if (!MODAL_PERFECT_MODALS.has(userTokens[i - 1])) continue;
     const next = userTokens[i];
@@ -2195,7 +1957,7 @@ const ruleModalPerfect: Rule = ({ userTokens, expectedText, rawExpected }) => {
 };
 
 /** 44. Separable phrasal verb + particle + pronoun → pronoun between — B1. */
-const rulePhrasalPronounOrder: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
+export const rulePhrasalPronounOrder: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
   // Wrong: <verb> <particle> <pronoun>
   // Right: <verb> <pronoun> <particle>
   for (let i = 0; i + 2 < userTokens.length; i++) {
@@ -2217,7 +1979,7 @@ const rulePhrasalPronounOrder: Rule = ({ userTokens, expectedTokens, rawExpected
 };
 
 /** 45. "more {beautifuler / importanter / …}" or bare "beautifuler" — A2. */
-const ruleComparativeMoreLong: Rule = ({ userText, expectedText, rawExpected }) => {
+export const ruleComparativeMoreLong: Rule = ({ userText, expectedText, rawExpected }) => {
   const userLower = userText.toLowerCase();
   const expectedLower = expectedText.toLowerCase();
   for (const adj of LONG_ADJECTIVES) {
@@ -2242,7 +2004,7 @@ const ruleComparativeMoreLong: Rule = ({ userText, expectedText, rawExpected }) 
 };
 
 /** 46. "many {water/money/...}" → "much" — A2. */
-const ruleManyWithUncount: Rule = ({ userTokens, expectedText, rawExpected }) => {
+export const ruleManyWithUncount: Rule = ({ userTokens, expectedText, rawExpected }) => {
   for (let i = 0; i + 1 < userTokens.length; i++) {
     if (userTokens[i] !== 'many') continue;
     const next = userTokens[i + 1];
@@ -2257,7 +2019,7 @@ const ruleManyWithUncount: Rule = ({ userTokens, expectedText, rawExpected }) =>
 };
 
 /** 47. Wrong article with geographical names — B1. */
-const ruleGeographicalArticle: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
+export const ruleGeographicalArticle: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
   // (a) "the <bare-country-name>" in user but expected drops "the".
   for (let i = 0; i + 1 < userTokens.length; i++) {
     if (userTokens[i] !== 'the') continue;
@@ -2288,7 +2050,7 @@ const ruleGeographicalArticle: Rule = ({ userTokens, expectedTokens, rawExpected
 };
 
 /** 48. Generic statements should use plural — "I like dog" → "dogs" — A2. */
-const ruleGenericPlural: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
+export const ruleGenericPlural: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
   const feelVerbs = new Set(['like', 'love', 'enjoy', 'hate', 'prefer']);
   const subjectSet = new Set(['i', 'we', 'they', 'you']);
   for (let i = 0; i + 2 < userTokens.length; i++) {
@@ -2308,7 +2070,7 @@ const ruleGenericPlural: Rule = ({ userTokens, expectedTokens, rawExpected }) =>
 };
 
 /** 49. Double negative in a clause — A2. */
-const ruleDoubleNegative: Rule = ({ userText, rawExpected }) => {
+export const ruleDoubleNegative: Rule = ({ userText, rawExpected }) => {
   const userLower = userText.toLowerCase();
   // Collapse contractions are already handled. Look for "<negation-aux>
   // ... <no|nothing|never>" in a short window.
@@ -2321,7 +2083,7 @@ const ruleDoubleNegative: Rule = ({ userText, rawExpected }) => {
 };
 
 /** 50. Fronted negative adverbial without inversion — C1. */
-const ruleNegativeInversion: Rule = ({ userText, expectedText, rawExpected }) => {
+export const ruleNegativeInversion: Rule = ({ userText, expectedText, rawExpected }) => {
   const userLower = userText.toLowerCase().trim();
   const expectedLower = expectedText.toLowerCase().trim();
   // User starts with negative adverbial but keeps SVO order.
@@ -2337,7 +2099,7 @@ const ruleNegativeInversion: Rule = ({ userText, expectedText, rawExpected }) =>
 };
 
 /** 51. Frequency adverb placed before the subject — A2. */
-const ruleAdverbBeforeSubject: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
+export const ruleAdverbBeforeSubject: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
   const freq = new Set(['always', 'usually', 'sometimes', 'often', 'rarely', 'never']);
   const subjects = new Set(['i', 'he', 'she', 'we', 'they', 'you', 'it']);
   if (userTokens.length < 3) return null;
@@ -2353,7 +2115,7 @@ const ruleAdverbBeforeSubject: Rule = ({ userTokens, expectedTokens, rawExpected
 };
 
 /** 52. "make/let/had + obj + to V" → bare verb — B1. */
-const ruleMakeLetBare: Rule = ({ userText, expectedText, rawExpected }) => {
+export const ruleMakeLetBare: Rule = ({ userText, expectedText, rawExpected }) => {
   const userLower = userText.toLowerCase();
   const pattern = /\b(make|makes|made|let|lets|had)\s+(me|him|her|us|them|you|it)\s+to\s+(\w+)/;
   const m = pattern.exec(userLower);
@@ -2367,7 +2129,7 @@ const ruleMakeLetBare: Rule = ({ userText, expectedText, rawExpected }) => {
 };
 
 /** 53. "too + positive adjective" where expected uses "very" — A2. */
-const ruleTooVsVery: Rule = ({ userTokens, expectedText, rawExpected }) => {
+export const ruleTooVsVery: Rule = ({ userTokens, expectedText, rawExpected }) => {
   for (let i = 0; i + 1 < userTokens.length; i++) {
     if (userTokens[i] !== 'too') continue;
     const adj = userTokens[i + 1];
@@ -2388,7 +2150,7 @@ const ruleTooVsVery: Rule = ({ userTokens, expectedText, rawExpected }) => {
 };
 
 /** 54. "a" before vowel sound / "an" before consonant sound — A1. */
-const ruleAvsAnVowel: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
+export const ruleAvsAnVowel: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
   for (let i = 0; i + 1 < userTokens.length; i++) {
     const art = userTokens[i];
     if (art !== 'a' && art !== 'an') continue;
@@ -2412,7 +2174,7 @@ const ruleAvsAnVowel: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
 };
 
 /** 55. "one of the + singular noun" → plural — B1. */
-const ruleOneOfTheSingular: Rule = ({ userText, expectedText, rawExpected }) => {
+export const ruleOneOfTheSingular: Rule = ({ userText, expectedText, rawExpected }) => {
   const userLower = userText.toLowerCase();
   const determiners = '(the|my|his|her|your|our|their)';
   const pattern = new RegExp(`\\bone of ${determiners}\\s+(\\w+)`);
@@ -2429,7 +2191,7 @@ const ruleOneOfTheSingular: Rule = ({ userText, expectedText, rawExpected }) => 
 };
 
 /** 56. "each + plural noun" → singular — B1. */
-const ruleEachSingular: Rule = ({ userTokens, expectedText, rawExpected }) => {
+export const ruleEachSingular: Rule = ({ userTokens, expectedText, rawExpected }) => {
   for (let i = 0; i + 1 < userTokens.length; i++) {
     if (userTokens[i] !== 'each' && userTokens[i] !== 'every') continue;
     const next = userTokens[i + 1];
@@ -2451,7 +2213,7 @@ const ruleEachSingular: Rule = ({ userTokens, expectedText, rawExpected }) => {
 };
 
 /** 57. "have/has/had + gone to X" in a "visited" context — B2. */
-const ruleBeenVsGone: Rule = ({ userText, expectedText, rawExpected }) => {
+export const ruleBeenVsGone: Rule = ({ userText, expectedText, rawExpected }) => {
   const userLower = userText.toLowerCase();
   // Allow up to 3 intervening words between the auxiliary and the
   // participle, so "have you ever gone", "has he never gone", etc.
@@ -2471,7 +2233,7 @@ const ruleBeenVsGone: Rule = ({ userText, expectedText, rawExpected }) => {
 };
 
 /** 58. Tag question with same-polarity tag — B1. */
-const ruleTagPolarity: Rule = ({ userText, expectedText, rawExpected }) => {
+export const ruleTagPolarity: Rule = ({ userText, expectedText, rawExpected }) => {
   const userLower = userText.toLowerCase().replace(/\?\s*$/, '').trim();
   const expectedLower = expectedText.toLowerCase().replace(/\?\s*$/, '').trim();
   // Last comma splits the main clause and tag.
@@ -2499,7 +2261,7 @@ const ruleTagPolarity: Rule = ({ userText, expectedText, rawExpected }) => {
 };
 
 /** 59. "the" before an abstract / generic noun that should be bare — A2. */
-const ruleNoArticleGeneric: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
+export const ruleNoArticleGeneric: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
   for (let i = 0; i + 1 < userTokens.length; i++) {
     if (userTokens[i] !== 'the') continue;
     const noun = userTokens[i + 1];
@@ -2517,7 +2279,7 @@ const ruleNoArticleGeneric: Rule = ({ userTokens, expectedTokens, rawExpected })
 };
 
 /** 60. Missing "the" before a superlative — A2. */
-const ruleSuperlativeThe: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
+export const ruleSuperlativeThe: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
   for (let i = 0; i < userTokens.length; i++) {
     const w = userTokens[i];
     const isSuper =
@@ -2543,7 +2305,7 @@ const ruleSuperlativeThe: Rule = ({ userTokens, expectedTokens, rawExpected }) =
 };
 
 /** 61. "If + subject + will" → present simple in the if-clause — B1. */
-const ruleIfWill: Rule = ({ userText, expectedText, rawExpected }) => {
+export const ruleIfWill: Rule = ({ userText, expectedText, rawExpected }) => {
   const userLower = userText.toLowerCase();
   const expectedLower = expectedText.toLowerCase();
   if (!/\bif\s+(i|he|she|we|they|you|it)\s+will\s+\w+/.test(userLower)) return null;
@@ -2560,93 +2322,21 @@ const ruleIfWill: Rule = ({ userText, expectedText, rawExpected }) => {
 };
 
 // ────────────────────────────────────────────────────────────────────────────
-// Registry — fixed priority order. First match wins.
+// Public entry — language-agnostic engine
 // ────────────────────────────────────────────────────────────────────────────
 
-const RULE_REGISTRY: Rule[] = [
-  ruleThirdPersonS,          // 1
-  rulePastEd,                // 2
-  rulePluralS,               // 3
-  // 30 runs BEFORE 4 so "the cake eaten" → "the cake was eaten" lands
-  // on passive-voice feedback instead of generic missing-be.
-  rulePassiveMissingBe,      // 30
-  ruleMissingBe,             // 4
-  ruleQuestionNoAux,         // 5
-  // 35 + 36 run BEFORE 6 + 9 so specific by/with and time-preposition
-  // patterns win over the general "missing article" / "preposition swap"
-  // rules when there's an overlap.
-  ruleByVsWith,              // 35
-  ruleTimeExpressions,       // 36
-  // Round 5: run geographical-article + superlative-the before the
-  // generic missing_article so learners get the more specific teaching
-  // message when both rules could fire.
-  ruleGeographicalArticle,   // 47
-  ruleSuperlativeThe,        // 60
-  ruleMissingArticle,        // 6
-  rulePossessiveGender,      // 8
-  rulePrepositionTransfer,   // 9
-  ruleCountable,             // 10
-  ruleToVerbConfusion,       // 11
-  ruleCanNoInfinitive,       // 12
-  ruleDoublePast,            // 13
-  rulePossessiveSMissing,    // 14
-  ruleComparativeDouble,     // 15
-  ruleAdjectiveOrder,        // 16
-  ruleVeryMuchPlacement,     // 17
-  ruleThereAreSingular,      // 18
-  ruleEveryonePlural,        // 19
-  ruleMakeVsDo,              // 20
-  ruleTagQuestion,           // 21
-  rulePastPerfectMissing,    // 22
-  ruleReportedSpeech,        // 23
-  ruleConditionalMix,        // 28
-  ruleToInfinitiveAfterIng,  // 29
-  ruleReflexiveMissing,      // 27
-  ruleUsedToVsBeUsedTo,      // 32
-  ruleRelativePronoun,       // 31
-  ruleSomeVsAny,             // 26
-  ruleCountableMuch,         // 25
-  ruleSinceVsFor,            // 24
-  ruleAnotherVsOther,        // 33
-  ruleLookSeeWatch,          // 34
+import type { L1RulePack } from './rule-pack-types';
+import { explanationsByTag } from './rule-pack-types';
 
-  // ── Round 5 additions (rules 37–61). Placed after the v1.2 block so
-  //    existing feedback strings keep winning on shared patterns. Within
-  //    the new block: structural / morphological patterns (more specific)
-  //    run before usage / agreement patterns.
-  rulePresentPerfectVsPast,  // 37
-  ruleSubjunctiveWere,       // 38
-  ruleEmbeddedQuestionOrder, // 39
-  ruleDoSupport3ps,          // 40
-  ruleSubjectRelativeOmit,   // 41
-  ruleGerundAfterVerb,       // 42
-  ruleModalPerfect,          // 43
-  rulePhrasalPronounOrder,   // 44
-  ruleComparativeMoreLong,   // 45
-  ruleManyWithUncount,       // 46
-  ruleNegativeInversion,     // 50 — run before 51 (adverb before subject)
-  ruleAdverbBeforeSubject,   // 51
-  ruleMakeLetBare,           // 52
-  ruleTooVsVery,             // 53
-  ruleAvsAnVowel,            // 54
-  ruleOneOfTheSingular,      // 55
-  ruleEachSingular,          // 56
-  ruleBeenVsGone,            // 57
-  ruleTagPolarity,           // 58
-  // ruleGeographicalArticle and ruleSuperlativeThe are registered
-  // higher up (before ruleMissingArticle) so their specific feedback
-  // wins over the generic missing-article message.
-  ruleNoArticleGeneric,      // 59
-  ruleIfWill,                // 61
-  ruleGenericPlural,         // 48 — last: loses to plural_s (existing) by design
-  ruleDoubleNegative,        // 49 — last among A2 structural
-];
-
-// ────────────────────────────────────────────────────────────────────────────
-// Public entry point
-// ────────────────────────────────────────────────────────────────────────────
-
-export function detectL1Error(input: L1DetectionInput): L1DetectionResult {
+/**
+ * Run detection against an arbitrary rule pack. The engine itself is
+ * language-agnostic: rule order, rule fn implementations, and feedback
+ * strings all come from the pack. First match wins.
+ */
+export function detectErrors(
+  input: L1DetectionInput,
+  pack: L1RulePack,
+): L1DetectionResult {
   const rawUser = String(input.userAnswer ?? '').trim();
   const rawExpected = String(input.expectedAnswer ?? '').trim();
   const ctx = input.questionContext ?? {};
@@ -2667,7 +2357,9 @@ export function detectL1Error(input: L1DetectionInput): L1DetectionResult {
   const userTokens = tokenize(userText);
   const expectedTokens = tokenize(expectedText);
 
-  for (const rule of RULE_REGISTRY) {
+  const stringMap = explanationsByTag(pack);
+
+  for (const rule of pack.rules) {
     const hit = rule({
       userTokens,
       expectedTokens,
@@ -2678,10 +2370,17 @@ export function detectL1Error(input: L1DetectionInput): L1DetectionResult {
       ctx,
     });
     if (hit) {
+      const template = stringMap[hit.tag];
+      if (!template) {
+        // A rule fired but the pack has no template for its tag —
+        // fail open with no match rather than crash. Pack validation
+        // (validateRulePack) catches this at authoring time.
+        return { matched: false, weaknessTag: null, feedback: null };
+      }
       return {
         matched: true,
-        weaknessTag: hit.tag,
-        feedback: fillTemplate(RULE_STRINGS[hit.tag], hit.replacements),
+        weaknessTag: hit.tag as L1WeaknessTag,
+        feedback: fillTemplate(template, hit.replacements),
       };
     }
   }

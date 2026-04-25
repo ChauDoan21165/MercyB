@@ -21,10 +21,14 @@
 
 // Explicit `.js` extension — same ESM resolver requirement as the top
 // of api/mercy/grammar.ts. See fix/grammar-esm-extensions.
+//
+// Step 10 refactor: detectL1Error now lives on the feedback barrel
+// rather than the detector module — the engine itself is
+// language-agnostic; the barrel wires the Vietnamese default pack.
 import {
   detectL1Error,
   type L1DetectionResult,
-} from '../../src/lib/feedback/l1-error-detector.js';
+} from '../../src/lib/feedback/index.js';
 
 export type GrammarIssueLike = {
   before?: string;
