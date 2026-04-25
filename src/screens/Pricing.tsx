@@ -23,6 +23,7 @@ import {
   YEARLY_PRICE_VND,
 } from "@/lib/pricing/displayPrices";
 import { LifetimeTierCard } from "@/components/pricing/LifetimeTierCard";
+import PaywallExperiment from "@/components/pricing/PaywallExperiment";
 import { useAuth } from "@/providers/AuthProvider";
 
 type PlanKey = "level0" | "month" | "year";
@@ -163,6 +164,17 @@ export default function Pricing() {
   const canceled = useMemo(() => {
     const params = new URLSearchParams(window.location.search);
     return params.get("canceled") === "1";
+  }, []);
+
+  // ?ab=1 opt-in for the Step 9 paywall A/B framework. Default
+  // behavior is unchanged: without the query param, the existing
+  // bilingual pricing layout renders. With the param, the
+  // PaywallExperiment container picks one of five variants
+  // deterministically and falls back to the existing layout for
+  // the implicit "control" bucket.
+  const useExperiment = useMemo(() => {
+    if (typeof window === "undefined") return false;
+    return new URLSearchParams(window.location.search).get("ab") === "1";
   }, []);
 
   const configWarning = useMemo(() => {
@@ -613,7 +625,7 @@ export default function Pricing() {
     );
   }
 
-  return (
+  const defaultPricingMarkup = (
     <div style={{ maxWidth: PAGE_MAX, margin: "0 auto", padding: "12px 16px 40px" }}>
 
       {/* ── Hero banner ─────────────────────────────────────── */}
@@ -898,5 +910,16 @@ export default function Pricing() {
         </div>
       </div>
     </div>
+  );
+
+  if (!useExperiment) return defaultPricingMarkup;
+
+  return (
+    <PaywallExperiment
+      userId={user?.id ?? null}
+      trialExpiresAt={entitlement?.expires_at ?? null}
+      onSelectPlan={(key) => void handlePaidPlan(key)}
+      controlFallback={defaultPricingMarkup}
+    />
   );
 }
