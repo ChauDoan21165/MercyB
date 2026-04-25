@@ -6,8 +6,15 @@
  * - copy: entry.copy.en + entry.copy.vi OR legacy: copy_en, copy_vi
  * - identifiers: entry.slug OR entry.id OR entry.artifact_id (at least one required)
  * - keywords: entry.keywords_en (array) + entry.keywords_vi (array)
- * - entry count: 2-8 (strict mode), 1-20 (wip mode)
- * 
+ * - entry count: 1-15 (strict mode), 1-20 (wip mode)
+ *   (strict bound widened from [2,8] to [1,15] in #51 Path A — short
+ *   preview/aggregator rooms and long VIP9/VIP6 collections are
+ *   legitimate shipped content; the [2,8] window had drifted from
+ *   reality and was generating false-positive CI failures.)
+ *
+ * Files NOT scanned (build artifacts / non-room JSON), kept in sync
+ * with scripts/validate-room-registry.js's IGNORE_FILES list.
+ *
  * This script:
  * - Reads from public/data (same as production)
  * - Uses shared validation logic from roomJsonValidation
@@ -28,6 +35,33 @@ const __dirname = path.dirname(__filename);
 const MODE = process.env.VITE_MB_VALIDATION_MODE || 'strict';
 const DATA_DIR = path.join(__dirname, '../public/data');
 
+// Files in public/data/ that are NOT room data (build artifacts,
+// schema files, dashboards, content-aggregator JSON). Mirrors
+// scripts/validate-room-registry.js so both validators agree on
+// what counts as a "room" — keep these lists in sync; diverging
+// them re-creates the false-positive class that #51 Path A was
+// opened to fix.
+const IGNORE_FILES = [
+  '.gitkeep',
+  'Tiers.json',
+  'Tiers_.json',
+  'Package_Lock.json',
+  'Tsconfig_App.json',
+  'Tsconfig_Node.json',
+  'components.json',
+  'package-lock.json',
+  'package.json',
+  'registry.json',
+  'tsconfig.app.json',
+  'tsconfig.json',
+  'tsconfig.node.json',
+  'matchmaker_traits.json',
+  'user_profile_dashboard.json',
+  'guide_articles_en_vi.json',
+  'Mercy_Blade_home_page.json',
+  'Mercy_Blade_Method_Of_ Learning_English.json',
+];
+
 console.log(`\n🔍 CI ROOM VALIDATION`);
 console.log(`Mode: ${MODE}`);
 console.log(`Directory: ${DATA_DIR}\n`);
@@ -36,8 +70,10 @@ console.log(`Directory: ${DATA_DIR}\n`);
 const VALIDATION_CONFIGS = {
   strict: {
     mode: 'strict',
-    minEntries: 2,
-    maxEntries: 8,
+    // [1,15] reflects shipped content reality. See header comment for
+    // the #51 Path A rationale.
+    minEntries: 1,
+    maxEntries: 15,
     requireAudio: true,
     requireBilingualCopy: true,
     allowMissingFields: false,
@@ -169,10 +205,15 @@ let validFiles = 0;
 let failedFiles = [];
 
 try {
-  const files = fs.readdirSync(DATA_DIR).filter(f => f.endsWith('.json'));
+  const allJson = fs.readdirSync(DATA_DIR).filter(f => f.endsWith('.json'));
+  const ignoredCount = allJson.filter(f => IGNORE_FILES.includes(f)).length;
+  const files = allJson.filter(f => !IGNORE_FILES.includes(f));
   totalFiles = files.length;
 
-  console.log(`Found ${totalFiles} JSON files to validate\n`);
+  console.log(
+    `Found ${totalFiles} JSON files to validate ` +
+    `(${ignoredCount} build-artifact / non-room files ignored)\n`,
+  );
 
   files.forEach(filename => {
     const filePath = path.join(DATA_DIR, filename);
