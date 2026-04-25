@@ -52,7 +52,7 @@ export type L1VnExplanation = {
 /** Mobile-display budget. Enforced by a test in __tests__/. */
 export const L1_VN_EXPLANATION_MAX_CHARS = 300;
 
-export const L1_VN_EXPLANATIONS: Partial<Record<L1WeaknessTag, L1VnExplanation>> = {
+export const L1_VN_EXPLANATIONS: Record<L1WeaknessTag, L1VnExplanation> = {
   // ── v1.0 core structural ───────────────────────────────────────────────
   vi_l1_3rd_person_s: {
     name_vi: "Quên thêm -s sau he / she / it",
@@ -336,6 +336,208 @@ export const L1_VN_EXPLANATIONS: Partial<Record<L1WeaknessTag, L1VnExplanation>>
       "Tiếng Việt 'vào / lúc' dùng chung cho mọi thời điểm. Tiếng Anh có quy tắc rõ: **at** cho giờ (at 6pm); **on** cho ngày (on Monday, on July 5th); **in** cho tháng / năm / thế kỷ (in May, in 2024). Giờ → at; ngày → on; khoảng dài → in.",
     example_wrong_vi_gloss:
       "I'll see you in Monday → 'Tôi sẽ gặp bạn + vào + thứ Hai' (ngày cụ thể → phải là 'on Monday', không phải 'in')",
+    needs_review: false,
+  },
+
+  // ── Round 5 — CC3's 25-rule expansion (L1-036..L1-060) ──────────────────
+  vi_l1_present_perfect_vs_past: {
+    name_vi: "Có 'yesterday' / 'last week' phải dùng quá khứ đơn",
+    explanation_vi:
+      "Tiếng Việt mình chỉ có một cách báo quá khứ — chữ 'đã' hoặc trạng ngữ thời gian. Tiếng Anh tách rõ: trong câu có mốc cụ thể như **yesterday**, **last week**, **in 1990**, phải dùng **quá khứ đơn**, không dùng **have + V3**. Mốc cụ thể → past simple.",
+    example_wrong_vi_gloss:
+      "I have eaten it yesterday → 'Tôi + đã ăn + nó + hôm qua' (thấy 'đã' nên chọn 'have eaten'; có 'yesterday' rồi thì phải là 'I ate it yesterday')",
+    needs_review: false,
+  },
+  vi_l1_subjunctive_were: {
+    name_vi: "If / wish giả định dùng 'were' cho mọi chủ ngữ",
+    explanation_vi:
+      "Tiếng Việt mình nói 'Nếu tôi là bạn' — không phân biệt thật hay giả định. Tiếng Anh có quy tắc đặc biệt: sau **if** hoặc **wish** ở tình huống không có thật, dùng **were** cho **tất cả** chủ ngữ — kể cả I, he, she, it. *If I **were** you*.",
+    example_wrong_vi_gloss:
+      "If I was you → 'Nếu + tôi + là + bạn' (mình quen 'I was' ở quá khứ; câu giả định phải dùng 'were' bất kể chủ ngữ là gì)",
+    needs_review: false,
+  },
+  vi_l1_embedded_question_order: {
+    name_vi: "Câu hỏi lồng trong câu — bỏ trật tự câu hỏi",
+    explanation_vi:
+      "Tiếng Việt mình nói 'Tôi không biết cái này là gì' — trật tự không đổi dù câu hỏi hay câu lồng. Tiếng Anh khi đưa câu hỏi vào trong câu khác, đổi về trật tự câu kể: **chủ ngữ trước, động từ sau**. *what is this* → *what this is*.",
+    example_wrong_vi_gloss:
+      "I don't know what is this → 'Tôi không biết + cái gì là + cái này' (giữ nguyên 'what is this' của câu hỏi gốc; phải đổi thành 'what this is')",
+    needs_review: false,
+  },
+  vi_l1_do_support_3ps: {
+    name_vi: "He / she / it dùng 'doesn't', không phải 'don't'",
+    explanation_vi:
+      "Tiếng Việt mình không chia động từ — 'cô ấy không biết', 'tôi không biết' giống nhau. Tiếng Anh hiện tại đơn, sau **he / she / it** phải dùng **doesn't**, không phải **don't**. **-s** đã ở 'doesn't' rồi, nên động từ chính giữ nguyên dạng gốc.",
+    example_wrong_vi_gloss:
+      "She don't know → 'Cô ấy + không + biết' (dịch 'không' thành 'don't' cho mọi chủ ngữ; với 'she' phải đổi thành 'doesn't know')",
+    needs_review: false,
+  },
+  vi_l1_subject_relative_omit: {
+    name_vi: "Không bỏ được đại từ quan hệ làm chủ ngữ",
+    explanation_vi:
+      "Tiếng Việt mình hay bỏ 'mà' khi nghe vẫn rõ: 'người đàn ông đến hôm qua'. Tiếng Anh khi đại từ quan hệ làm **chủ ngữ** của mệnh đề (who / which / that) thì **không bỏ được**. *The man came* → *The man **who** came*. Đại từ quan hệ làm tân ngữ thì mới bỏ được.",
+    example_wrong_vi_gloss:
+      "The man came yesterday is my uncle → 'Người đàn ông + đến + hôm qua + là + chú tôi' (bỏ 'mà' như tiếng Việt; tiếng Anh phải có 'who came')",
+    needs_review: false,
+  },
+  vi_l1_gerund_after_verb: {
+    name_vi: "Sau enjoy / avoid / finish dùng V-ing, không 'to V'",
+    explanation_vi:
+      "Tiếng Việt mình chỉ có một cách nối hai động từ — 'thích bơi', 'tránh đi'. Tiếng Anh sau **enjoy / avoid / finish / keep / mind / suggest / practise** phải dùng **V-ing**, không dùng **to + V**. *I enjoy **swimming***. Đây là nhóm cần học thuộc — không suy ra theo công thức được.",
+    example_wrong_vi_gloss:
+      "I enjoy to swim → 'Tôi + thích + bơi' (quen công thức 'verb + to + V' từ 'want to'; 'enjoy' lại thuộc nhóm cần V-ing)",
+    needs_review: true,
+  },
+  vi_l1_modal_perfect: {
+    name_vi: "Modal nói về quá khứ: should/could/would + have + V3",
+    explanation_vi:
+      "Tiếng Việt mình nói 'đáng lẽ tôi đã làm' — ghép thẳng modal với động từ quá khứ. Tiếng Anh phải dùng cấu trúc **modal + have + V3** để nói về quá khứ: *should have done*, *could have gone*, *would have known*. Sau modal vẫn là 'have' nguyên mẫu, không phải 'had'.",
+    example_wrong_vi_gloss:
+      "I should did it → 'Tôi + đáng lẽ + đã làm + nó' (ghép 'should' với 'did' vì cả hai mang ý quá khứ; đúng là 'should have done it')",
+    needs_review: false,
+  },
+  vi_l1_phrasal_pronoun_order: {
+    name_vi: "Phrasal verb tách được: đại từ chen vào giữa",
+    explanation_vi:
+      "Tiếng Việt mình nói 'đón anh ấy', 'gọi cô ấy' — động từ liền tân ngữ. Tiếng Anh có **phrasal verb tách được** (pick up, call back, turn off): khi tân ngữ là **đại từ** (him / her / it / them), phải chen vào **giữa** động từ và phụ từ. *I picked **him** up*.",
+    example_wrong_vi_gloss:
+      "I picked up him → 'Tôi + đón + anh ấy' (giữ 'pick up' liền nhau như cụm; tiếng Anh phải tách ra: 'pick him up')",
+    needs_review: false,
+  },
+  vi_l1_comparative_more_long: {
+    name_vi: "Tính từ 2+ âm tiết dùng 'more', không thêm '-er'",
+    explanation_vi:
+      "Tiếng Việt mình dùng 'hơn' cho tất cả: 'đẹp hơn', 'thông minh hơn'. Tiếng Anh chia hai loại: tính từ ngắn (1 âm tiết) thêm **-er** (taller, faster); tính từ dài (2+ âm tiết) dùng **more** (more beautiful, more intelligent). Không thêm **-er** vào tính từ dài.",
+    example_wrong_vi_gloss:
+      "She is beautifuler → 'Cô ấy + đẹp + hơn' (thấy 'beautiful' rồi thêm '-er' theo công thức ngắn; 'beautiful' dài → phải là 'more beautiful')",
+    needs_review: false,
+  },
+  vi_l1_many_with_uncount: {
+    name_vi: "Danh từ không đếm được dùng 'much', không 'many'",
+    explanation_vi:
+      "Tiếng Việt mình nói 'nhiều' cho mọi thứ — 'nhiều sách', 'nhiều nước'. Tiếng Anh tách rõ: **many** đi với danh từ đếm được (many books); **much** đi với danh từ không đếm được (much water, much money, much advice). Đếm được → many; không đếm được → much.",
+    example_wrong_vi_gloss:
+      "She drinks many water → 'Cô ấy + uống + nhiều + nước' (quen dùng 'nhiều' cho cả 'water'; nước không đếm được → phải là 'much water')",
+    needs_review: false,
+  },
+  vi_l1_geographical_article: {
+    name_vi: "Tên quốc gia: hầu hết không có 'the'",
+    explanation_vi:
+      "Tiếng Việt mình không có mạo từ trước tên nước. Tiếng Anh đa số tên quốc gia cũng **không** có **the** (Vietnam, France, Japan), trừ vài nước nghe như số nhiều hoặc có 'United / Kingdom': **the Philippines**, **the United States**, **the Netherlands**, **the UK**.",
+    example_wrong_vi_gloss:
+      "I live in the Vietnam → 'Tôi sống + ở + Việt Nam' (học 'the' xong cẩn thận thêm vào tên nước; Vietnam thuộc nhóm không cần 'the')",
+    needs_review: false,
+  },
+  vi_l1_generic_plural: {
+    name_vi: "Nói khái quát dùng số nhiều, không 'the'",
+    explanation_vi:
+      "Tiếng Việt mình nói 'tôi thích chó' — danh từ giữ nguyên. Tiếng Anh khi nói khái quát về cả loài, dùng **danh từ số nhiều, không kèm 'the'**. *I like dogs*, *Cats are clever*. Đừng nói 'I like dog' (chỉ một con) hay 'I like the dog' (con cụ thể).",
+    example_wrong_vi_gloss:
+      "I like dog → 'Tôi + thích + chó' (dịch trực tiếp; nói khái quát 'chó nói chung' phải là số nhiều: 'dogs')",
+    needs_review: false,
+  },
+  vi_l1_double_negative: {
+    name_vi: "Một mệnh đề tiếng Anh chỉ có một phủ định",
+    explanation_vi:
+      "Tiếng Việt mình hay dùng phủ định kép cho nhấn mạnh: 'tôi không có tiền nào cả'. Tiếng Anh chỉ dùng **một** từ phủ định trong một mệnh đề. Đã có **don't / doesn't / didn't** rồi thì thay 'no' bằng **any**. *I don't have **any** money*, không phải 'no money'.",
+    example_wrong_vi_gloss:
+      "I don't have no money → 'Tôi + không có + không + tiền' (nhấn 'không' hai lần như tiếng Việt; tiếng Anh chỉ một phủ định: don't + any)",
+    needs_review: false,
+  },
+  vi_l1_negative_inversion: {
+    name_vi: "Mở đầu bằng 'never / seldom / rarely' — đảo ngữ",
+    explanation_vi:
+      "Tiếng Việt mình hay đẩy 'chưa bao giờ', 'hiếm khi' lên đầu câu — chủ ngữ vẫn đứng sau bình thường. Tiếng Anh khi mở đầu câu bằng **never / seldom / rarely / hardly**, phải đảo trợ động từ lên trước chủ ngữ. *Never **have I** seen it*. Đây là cách viết trang trọng.",
+    example_wrong_vi_gloss:
+      "Never I have seen it → 'Chưa bao giờ + tôi + đã thấy + nó' (giữ chủ ngữ đứng trước trợ động từ như tiếng Việt; phải đảo: 'Never have I seen')",
+    needs_review: true,
+  },
+  vi_l1_adverb_before_subject: {
+    name_vi: "Trạng từ tần suất đứng sau chủ ngữ",
+    explanation_vi:
+      "Tiếng Việt mình đặt 'luôn luôn', 'thường', 'đôi khi' linh hoạt — đầu câu hay giữa câu đều được. Tiếng Anh trong câu thông thường, các trạng từ này đứng **sau chủ ngữ, trước động từ chính**: *I **always** go*, *She **usually** comes late*. Đừng đặt trước chủ ngữ.",
+    example_wrong_vi_gloss:
+      "Always I go to school early → 'Luôn luôn + tôi + đi học sớm' (đẩy 'luôn luôn' lên đầu như tiếng Việt; tiếng Anh phải là 'I always go')",
+    needs_review: false,
+  },
+  vi_l1_make_let_bare: {
+    name_vi: "Sau make / let / have (sai khiến) dùng động từ nguyên mẫu",
+    explanation_vi:
+      "Tiếng Việt mình nói 'khiến tôi khóc', 'cho tôi đi' — không có từ nối. Tiếng Anh sau **make / let / have** (theo nghĩa sai khiến) cần **động từ nguyên mẫu không 'to'**. *She made me **cry***, không phải *to cry*. Khác với 'want / need / try' phải có 'to'.",
+    example_wrong_vi_gloss:
+      "She made me to cry → 'Cô ấy + làm + tôi + khóc' (quen công thức 'verb + to + V' từ 'want to'; 'make' thuộc nhóm bare verb)",
+    needs_review: false,
+  },
+  vi_l1_too_vs_very: {
+    name_vi: "'Too' là tiêu cực (quá mức), 'very' là tích cực",
+    explanation_vi:
+      "Tiếng Việt 'quá' dùng được cả nghĩa tích cực ('quá vui') lẫn tiêu cực ('quá nóng, không chịu được'). Tiếng Anh tách: **very** = rất (tích cực, trung tính); **too** = quá mức gây vấn đề. *I am **very** happy* — vui ơi là vui; *I am too happy* nghe lạ vì hàm ý có vấn đề.",
+    example_wrong_vi_gloss:
+      "I am too happy to see you → 'Tôi + quá + vui + được gặp bạn' (dịch 'quá' thành 'too'; ý chỉ là 'rất vui' → phải dùng 'very happy')",
+    needs_review: false,
+  },
+  vi_l1_a_vs_an_vowel: {
+    name_vi: "Nguyên âm dùng 'an', phụ âm dùng 'a' — theo âm đọc",
+    explanation_vi:
+      "Tiếng Việt mình không có mạo từ. Tiếng Anh dùng **a** trước âm phụ âm, **an** trước âm nguyên âm — nghe theo **âm**, không nhìn theo **chữ**. *an apple*, *an hour* (h câm), *a university* ('y' đọc như 'you'). Quy tắc: tránh hai nguyên âm va vào nhau khi đọc.",
+    example_wrong_vi_gloss:
+      "I want a apple → 'Tôi muốn + một + quả táo' (mặc định 'a' cho tất cả; 'apple' bắt đầu nguyên âm → phải là 'an apple')",
+    needs_review: false,
+  },
+  vi_l1_one_of_the_singular: {
+    name_vi: "Sau 'one of the / my / her' dùng danh từ số nhiều",
+    explanation_vi:
+      "Tiếng Việt mình nói 'một trong các học sinh' — chữ 'các' đã làm số nhiều. Tiếng Anh sau **one of the / my / her / their** phải có **danh từ số nhiều**, dù cả cụm chỉ một người: *one of the **students***, *one of my **friends***. Cụm chỉ một, danh từ vẫn số nhiều.",
+    example_wrong_vi_gloss:
+      "She is one of the student → 'Cô ấy là + một + trong + học sinh' (thấy 'một' nên giữ 'student' số ít; sau 'one of the' phải là 'students')",
+    needs_review: false,
+  },
+  vi_l1_each_singular: {
+    name_vi: "Sau 'each / every' dùng danh từ và động từ số ít",
+    explanation_vi:
+      "Tiếng Việt mình nói 'mỗi học sinh đều vui' — 'mỗi' chỉ ra từng người trong nhiều. Tiếng Anh **each / every** đi với **danh từ số ít** và **động từ số ít**: *Each **student is** happy*, *Every **child has** a book*. Dù nói về nhiều người, ngữ pháp vẫn số ít.",
+    example_wrong_vi_gloss:
+      "Each students are happy → 'Mỗi + các học sinh + đều + vui' (cảm giác 'mỗi' = nhiều người nên dùng 'students are'; phải số ít: 'student is')",
+    needs_review: false,
+  },
+  vi_l1_been_vs_gone: {
+    name_vi: "Đã từng ghé qua: 'been to', không phải 'gone to'",
+    explanation_vi:
+      "Tiếng Việt mình nói 'đã đi Paris' cho cả nghĩa 'từng tới đó' lẫn 'đang trên đường'. Tiếng Anh tách: **been to** = đã từng tới và quay về; **gone to** = đi rồi chưa về. Khi nói số lần ghé qua (*three times*, *before*, *ever*), phải dùng **been to**.",
+    example_wrong_vi_gloss:
+      "He has gone to Paris three times → 'Anh ấy + đã đi + Paris + ba lần' (dịch 'đã đi' → 'has gone'; nói số lần ghé qua phải là 'has been to')",
+    needs_review: false,
+  },
+  vi_l1_tag_polarity: {
+    name_vi: "Câu hỏi đuôi: đảo dấu so với mệnh đề chính",
+    explanation_vi:
+      "Tiếng Việt mình thêm 'phải không' / 'đúng không' cho mọi câu — không phân biệt khẳng định hay phủ định. Tiếng Anh đuôi câu hỏi phải **đảo dấu**: câu khẳng định + đuôi phủ định (*you like it, **don't you**?*); câu phủ định + đuôi khẳng định (*you don't like it, **do you**?*).",
+    example_wrong_vi_gloss:
+      "You like it, do you? → 'Bạn + thích + nó + đúng không?' (dịch 'đúng không' thành 'do you'; câu khẳng định phải có đuôi phủ định: 'don't you')",
+    needs_review: false,
+  },
+  vi_l1_no_article_generic: {
+    name_vi: "Danh từ trừu tượng nói khái quát không 'the'",
+    explanation_vi:
+      "Tiếng Việt mình nói 'Cuộc đời thì khó', 'Tình yêu là tuyệt vời' — danh từ đứng trần. Tiếng Anh nói khái quát về **danh từ trừu tượng** (life, love, music, time, money, happiness) cũng **không dùng 'the'**: *Life is hard*, không phải *The life is hard*.",
+    example_wrong_vi_gloss:
+      "The life is hard → 'Cuộc đời + thì + khó' (học 'the' xong cẩn thận thêm vào; danh từ trừu tượng nói khái quát không cần 'the')",
+    needs_review: false,
+  },
+  vi_l1_superlative_the: {
+    name_vi: "Trước cấp cao nhất phải có 'the'",
+    explanation_vi:
+      "Tiếng Việt mình nói 'học sinh giỏi nhất' — không cần mạo từ. Tiếng Anh trước **cấp cao nhất** (best, tallest, most beautiful) gần như **luôn có 'the'**: *She is **the** best student*, *Mount Everest is **the** highest mountain*. Cấp cao nhất là duy nhất → phải dùng 'the'.",
+    example_wrong_vi_gloss:
+      "She is best student → 'Cô ấy là + giỏi nhất + học sinh' (dịch trực tiếp; cấp cao nhất 'best' phải có 'the' đứng trước)",
+    needs_review: false,
+  },
+  vi_l1_if_will: {
+    name_vi: "Mệnh đề 'if' (điều kiện loại 1) không dùng 'will'",
+    explanation_vi:
+      "Tiếng Việt mình nói 'Nếu mai tôi đi' hoặc 'Nếu tôi sẽ đi' — đều được. Tiếng Anh trong mệnh đề **if** (điều kiện loại 1) dùng **hiện tại đơn**, không dùng **will** — dù ý nói tương lai. *If I **go** tomorrow, I will tell you*. 'Will' chỉ ở mệnh đề chính.",
+    example_wrong_vi_gloss:
+      "If I will go tomorrow, I will tell you → 'Nếu + tôi + sẽ đi + ngày mai...' (dịch 'sẽ' thành 'will' cho cả hai mệnh đề; mệnh đề 'if' phải dùng 'go')",
     needs_review: false,
   },
 };
