@@ -142,3 +142,141 @@ export async function computeEntitlementForUser(
     family_plan_id: membership.family_plan_id,
   };
 }
+
+// ── Corporate-seat entitlement (Step 9 multi-seat) ────────────────────────
+//
+// A corporate seat means the user belongs to an organisation with an
+// active stripe subscription on `corporate_accounts`. When that's true,
+// entitlement flows through to the seat-holder transparently — no
+// separate billing relationship for the user themselves.
+//
+// Standalone from family-plan logic (different tables, different
+// constraints). The two systems are independent: a learner can in
+// theory be in a family plan AND a corporate seat, but each is
+// tracked in its own table and either grants premium independently.
+//
+// All functions accept the supabase client as an optional second
+// argument so tests can pass a mock without ESM dynamic-import
+// gymnastics. In production callers, omit it and the singleton is
+// imported on demand.
+
+/** Minimal subset of the supabase-js client surface we need here. */
+export interface CorporateEntitlementSupabase {
+  from: (table: string) => {
+    select: (columns: string) => {
+      eq: (column: string, value: string) => {
+        maybeSingle: () => Promise<{
+          data: unknown;
+          error: { message: string } | null;
+        }>;
+      };
+    };
+  };
+}
+
+async function loadDefaultSupabase(): Promise<CorporateEntitlementSupabase> {
+  const dynamicImport = Function("path", "return import(path)") as (
+    path: string,
+  ) => Promise<unknown>;
+  const mod = await dynamicImport("@/lib/supabaseClient");
+  return (mod as { supabase: CorporateEntitlementSupabase }).supabase;
+}
+
+type CorporateSeatRow = {
+  corporate_account_id: string;
+};
+
+type CorporateAccountRow = {
+  id: string;
+  active: boolean;
+  stripe_subscription_id: string | null;
+};
+
+/**
+ * Returns true when the user holds an active seat in a corporate
+ * account. Resolves false on any error (no seat, RLS denial, etc.) —
+ * never throws — so callers can fold this into wider entitlement
+ * decisions safely.
+ */
+export async function isCorporateSeat(
+  userId: string,
+  supabase?: CorporateEntitlementSupabase,
+): Promise<boolean> {
+  if (!userId) return false;
+  const client = supabase ?? (await loadDefaultSupabase());
+  try {
+    const { data, error } = await client
+      .from("corporate_seats")
+      .select("corporate_account_id")
+      .eq("user_id", userId)
+      .maybeSingle();
+    if (error) return false;
+    return !!data;
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Project a user's corporate-seat membership into an EntitlementResult.
+ *
+ * Returns:
+ *   - `null` when the user is NOT a corporate seat. The caller should
+ *     fall back to subscription-based entitlement.
+ *   - `{ status: 'active', source: 'stripe', expires_at: null }` when
+ *     the user IS a seat AND the account has an active stripe
+ *     subscription linked. Expiration mirrors the family-plan model:
+ *     the seat is good as long as the account stays active.
+ *   - `{ status: 'inactive', source: null, expires_at: null }` when
+ *     the user is in an account that is `active = false` or has no
+ *     stripe subscription linked yet (e.g. pre-sales accounts created
+ *     in the admin shell before the Stripe product exists).
+ *
+ * No throws — errors degrade to `null` so subscription entitlement
+ * can take over.
+ */
+export async function getCorporateSeatEntitlement(
+  userId: string,
+  supabase?: CorporateEntitlementSupabase,
+): Promise<EntitlementResult | null> {
+  if (!userId) return null;
+  const client = supabase ?? (await loadDefaultSupabase());
+
+  let seat: CorporateSeatRow | null = null;
+  try {
+    const { data, error } = await client
+      .from("corporate_seats")
+      .select("corporate_account_id")
+      .eq("user_id", userId)
+      .maybeSingle();
+    if (error) return null;
+    seat = (data as CorporateSeatRow | null) ?? null;
+  } catch {
+    return null;
+  }
+  if (!seat) return null;
+
+  let account: CorporateAccountRow | null = null;
+  try {
+    const { data, error } = await client
+      .from("corporate_accounts")
+      .select("id,active,stripe_subscription_id")
+      .eq("id", seat.corporate_account_id)
+      .maybeSingle();
+    if (error) return null;
+    account = (data as CorporateAccountRow | null) ?? null;
+  } catch {
+    return null;
+  }
+  if (!account) return null;
+
+  if (account.active && account.stripe_subscription_id) {
+    return {
+      status: "active",
+      source: "stripe",
+      expires_at: null,
+    };
+  }
+
+  return { status: "inactive", source: null, expires_at: null };
+}
