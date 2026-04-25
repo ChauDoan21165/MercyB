@@ -12,15 +12,29 @@
   },
   "entries": [
     {
-      "id": "ef01_entry_01",
-      "title": {
-        "en": "The English Alphabet (A–Z)",
-        "vi": "Bảng Chữ Cái Tiếng Anh (A–Z)"
-      },
-      "content": {
+      "slug": "alphabet-a-to-z",
+      "keywords_en": [
+        "alphabet",
+        "letters",
+        "A to Z",
+        "pronunciation"
+      ],
+      "keywords_vi": [
+        "bảng chữ cái",
+        "chữ cái",
+        "A đến Z",
+        "phát âm"
+      ],
+      "copy": {
         "en": "English has 26 letters. Read them slowly from A to Z. Do not rush. Focus on clarity, not speed.",
         "vi": "Tiếng Anh có 26 chữ cái. Hãy đọc chậm từ A đến Z. Đừng vội. Tập trung vào sự rõ ràng, không phải tốc độ."
-      }
+      },
+      "tags": [
+        "alphabet",
+        "beginner",
+        "pronunciation",
+        "foundation"
+      ]
     }
   ],
   "domain_image": "/images/domains/english.svg"
