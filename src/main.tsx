@@ -15,6 +15,8 @@ import { BrowserRouter } from "react-router-dom";
 
 import AppRouter from "@/router/AppRouter";
 import OfflineIndicator from "@/components/offline/OfflineIndicator";
+import ShortcutHelpOverlay from "@/components/keyboard/ShortcutHelpOverlay";
+import GlobalNavigationShortcuts from "@/components/keyboard/GlobalNavigationShortcuts";
 import "@/index.css";
 import { supabase } from "@/lib/supabaseClient";
 import { AuthProvider } from "@/providers/AuthProvider";
@@ -327,6 +329,8 @@ w.__MB_REACT_ROOT__.render(
   <BrowserRouter>
     <AuthProvider>
       <OfflineIndicator />
+      <GlobalNavigationShortcuts />
+      <ShortcutHelpOverlay />
       <AppRouter />
     </AuthProvider>
   </BrowserRouter>,
