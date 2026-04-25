@@ -9,13 +9,24 @@
  *
  * Tap → scroll-to-anchor on /account#streaks (where the detailed
  * StreakHistoryPanel lives). No new route needed.
+ *
+ * Streaks v2: optional props let the parent decorate the pill with
+ * forgiveness-mechanism status icons:
+ *   ❄️  freeze active for today
+ *   🏖️  vacation mode on
+ *   🛡️  insurance available (count rendered next to the shield)
  */
 
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { useServerStreak } from "@/hooks/useServerStreak";
-import { formatStreakTooltip } from "@/components/streak/streakCopy";
+import {
+  formatStreakTooltip,
+  freezeMessage,
+  vacationMessage,
+  insuranceMessage,
+} from "@/components/streak/streakCopy";
 
 const pillStyle: React.CSSProperties = {
   display: "inline-flex",
@@ -61,12 +72,36 @@ const tooltipViStyle: React.CSSProperties = {
   opacity: 0.85,
 };
 
+const v2IconStyle: React.CSSProperties = {
+  marginLeft: 4,
+  fontSize: 12,
+  lineHeight: 1,
+};
+
+const insuranceCountStyle: React.CSSProperties = {
+  marginLeft: 1,
+  fontSize: 11,
+  fontWeight: 700,
+  opacity: 0.8,
+};
+
 export type StreakBadgeProps = {
   /** Override the link target if mounted somewhere with a custom destination. */
   href?: string;
+  /** Streaks v2 — show ❄️ when the user has a freeze active today. */
+  freezeActive?: boolean;
+  /** Streaks v2 — show 🏖️ when the user is in their vacation window. */
+  onVacation?: boolean;
+  /** Streaks v2 — show 🛡️ × N when N insurance uses are available. */
+  insuranceAvailable?: number;
 };
 
-export function StreakBadge({ href = "/account#streaks" }: StreakBadgeProps) {
+export function StreakBadge({
+  href = "/account#streaks",
+  freezeActive = false,
+  onVacation = false,
+  insuranceAvailable = 0,
+}: StreakBadgeProps) {
   const streak = useServerStreak();
   const [showTip, setShowTip] = useState(false);
 
@@ -74,6 +109,14 @@ export function StreakBadge({ href = "/account#streaks" }: StreakBadgeProps) {
   if (streak.loading) return null;
   if (streak.error) return null;
   if (streak.current <= 0) return null;
+
+  const v2Tooltip = onVacation
+    ? vacationMessage
+    : freezeActive
+      ? freezeMessage
+      : insuranceAvailable > 0
+        ? insuranceMessage
+        : null;
 
   return (
     <div
@@ -92,10 +135,26 @@ export function StreakBadge({ href = "/account#streaks" }: StreakBadgeProps) {
       >
         <span aria-hidden>🔥</span>
         <span>{streak.current}</span>
+        {onVacation ? (
+          <span aria-hidden style={v2IconStyle} data-testid="streak-badge-vacation">
+            🏖️
+          </span>
+        ) : freezeActive ? (
+          <span aria-hidden style={v2IconStyle} data-testid="streak-badge-freeze">
+            ❄️
+          </span>
+        ) : null}
+        {!onVacation && insuranceAvailable > 0 ? (
+          <span style={v2IconStyle} data-testid="streak-badge-insurance">
+            <span aria-hidden>🛡️</span>
+            <span style={insuranceCountStyle}>{insuranceAvailable}</span>
+          </span>
+        ) : null}
       </Link>
 
       {showTip ? (() => {
-        const tip = formatStreakTooltip(streak.current);
+        const baseTip = formatStreakTooltip(streak.current);
+        const tip = v2Tooltip ?? baseTip;
         return (
           <div role="tooltip" style={tooltipStyle} data-testid="streak-badge-tooltip">
             {tip.en}

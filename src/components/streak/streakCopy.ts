@@ -37,6 +37,28 @@ export const emptyState = {
 };
 
 /**
+ * Streaks v2 — copy for the three forgiveness mechanisms surfaced on the
+ * StreakBadge and StreakHistoryPanel. Voice rules:
+ *   - Warm, never punitive. We do not reference "losing" or "broken".
+ *   - VN first-person: dùng "bạn" (familiar), tránh từ kỹ thuật.
+ *   - Each key is exactly 3 features × {en, vi} = 6 strings.
+ */
+export const freezeMessage = {
+  en: "Freeze day on. Your streak is safe today — no need to study.",
+  vi: "Đã đóng băng ngày hôm nay. Chuỗi của bạn vẫn an toàn — không cần học hôm nay.",
+};
+
+export const vacationMessage = {
+  en: "Vacation mode on. Your streak is paused until you're back.",
+  vi: "Chế độ nghỉ phép đang bật. Chuỗi của bạn được giữ nguyên đến khi bạn quay lại.",
+};
+
+export const insuranceMessage = {
+  en: "Streak insurance available. Tap to bring your streak back this once.",
+  vi: "Bạn có 1 lượt bảo hiểm chuỗi. Nhấn để khôi phục chuỗi — chỉ dùng được một lần trong tháng.",
+};
+
+/**
  * Interpolate `{{count}}` placeholders in either side of the tooltip.
  * Kept simple — no general-purpose templating lib.
  */
