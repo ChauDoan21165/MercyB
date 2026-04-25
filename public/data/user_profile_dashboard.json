@@ -136,7 +136,8 @@
       ],
       "keywords_vi": [
         "Customize_profile"
-      ]
+      ],
+      "audio": null
     },
     {
       "slug": "track_progress",
@@ -171,7 +172,8 @@
       ],
       "keywords_vi": [
         "Track_progress"
-      ]
+      ],
+      "audio": null
     },
     {
       "slug": "community_engagement",
@@ -206,7 +208,8 @@
       ],
       "keywords_vi": [
         "Community_engagement"
-      ]
+      ],
+      "audio": null
     }
   ],
   "ui_triggers": {

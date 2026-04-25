@@ -35,7 +35,7 @@
         "kids",
         "level2"
       ],
-      "audio": ""
+      "audio": null
     },
     {
       "slug": "states-of-matter",
@@ -63,7 +63,7 @@
         "science",
         "matter"
       ],
-      "audio": ""
+      "audio": null
     },
     {
       "slug": "simple-experiments",
@@ -87,7 +87,7 @@
         "experiments",
         "science"
       ],
-      "audio": ""
+      "audio": null
     }
   ],
   "domain": "Kids",
