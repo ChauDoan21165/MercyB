@@ -276,7 +276,7 @@ describe("markFactReferenced", () => {
   });
 
   it("issues an update with last_referenced_at = now-ish", async () => {
-    const updateSpy = vi.fn(function (this: any) {
+    const updateSpy = vi.fn(function (this: any, _patch: Record<string, unknown>) {
       return this;
     });
     const c = chain({ data: null, error: null });

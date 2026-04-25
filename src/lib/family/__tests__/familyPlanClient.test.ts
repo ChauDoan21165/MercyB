@@ -109,7 +109,7 @@ describe("inviteMember", () => {
   });
 
   it("inserts an invite with a generated 8-char code", async () => {
-    const insertSpy = vi.fn(function (this: any) {
+    const insertSpy = vi.fn(function (this: any, _row: Record<string, unknown>) {
       return this;
     });
     const c = chain({
@@ -136,7 +136,7 @@ describe("inviteMember", () => {
   });
 
   it("normalizes empty/whitespace email to null", async () => {
-    const insertSpy = vi.fn(function (this: any) {
+    const insertSpy = vi.fn(function (this: any, _row: Record<string, unknown>) {
       return this;
     });
     const c = chain({
