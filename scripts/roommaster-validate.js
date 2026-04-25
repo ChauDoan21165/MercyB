@@ -10,12 +10,37 @@ const __dirname = path.dirname(__filename);
 
 const PUBLIC_DATA_DIR = path.join(__dirname, '../public/data');
 
+// Files that live in public/data/ but are not room JSON. Mirror of
+// IGNORE_FILES in scripts/validate-room-registry.js — keep in sync.
+const IGNORE_FILES = [
+  '.gitkeep',
+  'Tiers.json',
+  'Tiers_.json',
+  'Package_Lock.json',
+  'Tsconfig_App.json',
+  'Tsconfig_Node.json',
+  'components.json',
+  'package-lock.json',
+  'package.json',
+  'registry.json',
+  'tsconfig.app.json',
+  'tsconfig.json',
+  'tsconfig.node.json',
+  'matchmaker_traits.json',
+  'user_profile_dashboard.json',
+  'Mercy_Blade_home_page.json',
+  'Mercy_Blade_Method_Of_ Learning_English.json'
+];
+
 async function main() {
   console.log('🔍 RoomMaster Validation');
   console.log('========================\n');
 
   // Load all JSON files
-  const files = fs.readdirSync(PUBLIC_DATA_DIR).filter(f => f.endsWith('.json'));
+  const files = fs
+    .readdirSync(PUBLIC_DATA_DIR)
+    .filter(f => f.endsWith('.json'))
+    .filter(f => !IGNORE_FILES.includes(f));
   
   console.log(`Found ${files.length} JSON files\n`);
 
