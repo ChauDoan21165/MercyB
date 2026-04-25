@@ -67,6 +67,9 @@ const PurchaseGiftPage    = lazy(() => import("@/pages/gift/PurchaseGiftPage"));
 const RedeemGiftPage      = lazy(() => import("@/pages/gift/RedeemGiftPage"));
 const MyGiftsPage         = lazy(() => import("@/pages/gift/MyGiftsPage"));
 
+const VNCulturalIndexPage = lazy(() => import("@/pages/cultural-packs/VNCulturalIndexPage"));
+const VNCulturalPackPage  = lazy(() => import("@/pages/cultural-packs/VNCulturalPackPage"));
+
 const GroupsIndex          = lazy(() => import("@/pages/groups/GroupsIndex"));
 const GroupPage            = lazy(() => import("@/pages/groups/GroupPage"));
 const CreateGroupPage      = lazy(() => import("@/pages/groups/CreateGroupPage"));
@@ -613,6 +616,14 @@ export default function AppRouter() {
                 <LazyPage><MyGiftsPage /></LazyPage>
               </RequireAuth>
             }
+          />
+
+          {/* VN cultural packs (Step 10) — public, no auth needed */}
+          <Route path="/culture/vn"
+            element={<LazyPage><VNCulturalIndexPage /></LazyPage>}
+          />
+          <Route path="/culture/vn/:packId"
+            element={<LazyPage><VNCulturalPackPage /></LazyPage>}
           />
 
           {/* Community: user-generated sentences (Step 6) */}
