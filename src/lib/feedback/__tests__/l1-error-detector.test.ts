@@ -3,7 +3,7 @@ import {
   detectL1Error,
   type L1DetectionInput,
   type L1WeaknessTag,
-} from '../l1-error-detector';
+} from '..';
 
 // ────────────────────────────────────────────────────────────────────────────
 // Helpers
