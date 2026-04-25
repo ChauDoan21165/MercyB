@@ -38,6 +38,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 import { visualizer } from 'rollup-plugin-visualizer';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { OFFLINE_PRECACHE_LESSONS } from './src/lib/offline/precacheManifest';
 
 // ESM-safe __dirname
 const __filename = fileURLToPath(import.meta.url);
@@ -94,6 +95,14 @@ export default defineConfig({
         'icons/icon-maskable-512.png',
       ],
       workbox: {
+        // Step 8 — pre-cache the core 50 room JSON files so first-time
+        // offline visitors can still open a familiar lesson. Audio files
+        // are intentionally NOT precached (size budget); they ride the
+        // runtime caches below on first play.
+        additionalManifestEntries: OFFLINE_PRECACHE_LESSONS.map((roomId) => ({
+          url: `/data/${roomId}.json`,
+          revision: null,
+        })),
         runtimeCaching: [
           {
             urlPattern: /\/audio\/kids\/.*\.mp3$/,
@@ -130,17 +139,55 @@ export default defineConfig({
               cacheableResponse: { statuses: [0, 200] },
             },
           },
+          {
+            // Step 8 — generic adult-room audio (any /assets/audio/* or /audio/*.mp3)
+            // routed through cache-first with the 200-entry / 30-day budget the
+            // brief calls out. Sits below the kids/music/images patterns above so
+            // those keep their dedicated caches.
+            urlPattern: /\/(?:assets\/)?audio\/(?!kids\/|music\/).*\.mp3$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'lesson-audio',
+              expiration: { maxEntries: 200, maxAgeSeconds: 60 * 60 * 24 * 30 },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
+          {
+            // Step 8 — API responses. Network-first with a 5s timeout so users
+            // on flaky connections still see the cached body, valid for 7 days.
+            urlPattern: /\/api\/.*/,
+            handler: 'NetworkFirst',
+            options: {
+              cacheName: 'api',
+              networkTimeoutSeconds: 5,
+              expiration: { maxEntries: 200, maxAgeSeconds: 60 * 60 * 24 * 7 },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
+          {
+            // Step 8 — lesson content (room JSON + auxiliary lesson assets).
+            // Stale-while-revalidate so the page paints instantly from cache
+            // and quietly refreshes in the background when online.
+            urlPattern: /\/(?:lessons|data)\/.*\.json$/,
+            handler: 'StaleWhileRevalidate',
+            options: {
+              cacheName: 'lessons',
+              expiration: { maxEntries: 200, maxAgeSeconds: 60 * 60 * 24 * 14 },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
         ],
       },
       manifest: {
-        name: 'Mercy Blade',
-        short_name: 'Mercy Blade',
+        name: 'MercyBlade',
+        short_name: 'Mercy',
+        lang: 'vi',
         start_url: '/',
         scope: '/',
         display: 'standalone',
         background_color: '#0a0a0a',
         theme_color: '#0a0a0a',
-        description: 'Mercy Blade web app',
+        description: 'Học tiếng Anh dành cho người Việt — MercyBlade',
         icons: [
           {
             src: 'icons/icon-192.png',
