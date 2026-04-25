@@ -1,0 +1,10 @@
+{
+  "campaign": "reengagement_30d",
+  "bucket": "cold",
+  "tone": "empathetic, no guilt — give the user permission to come back when ready",
+  "subject_vi": "Quay lại khi nào bạn sẵn sàng — không vội",
+  "subject_en": "Come back when you're ready — no rush",
+  "body_vi": "Chào bạn,\n\nĐã hơn một tháng rồi. Có lẽ tháng vừa qua bận, hoặc có thể MercyBlade chưa đủ phù hợp — cả hai đều ổn.\n\nMercy không muốn đuổi theo bạn bằng email. Đây là tin nhắn cuối trong loạt nhắc nhở này. Tài khoản của bạn vẫn còn, dữ liệu học của bạn vẫn còn — bất cứ khi nào bạn muốn quay lại, mọi thứ vẫn ở đúng chỗ cũ:\n\nhttps://mercyblade.com\n\nNếu bạn muốn dừng nhận email từ Mercy, chỉ cần trả lời email này nói 'dừng' — Mercy sẽ tôn trọng.\n\nMercy 💚",
+  "body_en": "Hi there,\n\nIt's been over a month. Maybe life has been busy, or maybe MercyBlade just wasn't the right fit — both are fine.\n\nMercy isn't going to chase you with emails. This is the last reminder in this series. Your account is still here, your learning data is still here — whenever you're ready to come back, everything will be right where you left it:\n\nhttps://mercyblade.com\n\nIf you'd rather stop hearing from Mercy, just reply 'stop' to this email — Mercy will respect that.\n\nMercy 💚",
+  "notes": "Empathetic + permission to leave. Explicit 'this is the last reminder' to avoid the dark pattern of escalating frequency. Reply-based unsubscribe is a stopgap until the real unsubscribe system ships (see runbook)."
+}
