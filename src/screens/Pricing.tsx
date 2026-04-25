@@ -15,6 +15,13 @@ import {
 import { getPlatform } from "@/lib/platform";
 import { APPLE_MANAGE_SUBSCRIPTIONS_URL } from "@/lib/iap";
 import IapPlanCard from "@/components/pricing/IapPlanCard";
+import { SavingsBadge } from "@/components/pricing/SavingsBadge";
+import {
+  computeYearlySavingsPct,
+  formatPrice,
+  MONTHLY_PRICE_VND,
+  YEARLY_PRICE_VND,
+} from "@/lib/pricing/displayPrices";
 
 type PlanKey = "level0" | "month" | "year";
 type PaidPlanKey = "month" | "year";
@@ -186,7 +193,7 @@ export default function Pricing() {
       eyebrow: "Flexible",
       title: "Full Access — Monthly",
       titleVi: "Toàn quyền — Hàng tháng",
-      price: "200 000 VND / month",
+      price: `${formatPrice(MONTHLY_PRICE_VND, "VND")} / month`,
       subtitleEn: "Flexible recurring access with monthly billing.",
       subtitleVi: "Toàn quyền truy cập linh hoạt với thanh toán hàng tháng.",
       bodyEn: "Good for learners who want every premium room without a longer commitment.",
@@ -204,7 +211,7 @@ export default function Pricing() {
       eyebrow: "Best value",
       title: "Full Access — Yearly",
       titleVi: "Toàn quyền — Hàng năm",
-      price: "2 000 000 VND / year",
+      price: `${formatPrice(YEARLY_PRICE_VND, "VND")} / year`,
       subtitleEn: "Save more and stay fully unlocked all year.",
       subtitleVi: "Tiết kiệm hơn và giữ toàn bộ quyền truy cập suốt cả năm.",
       bodyEn: "Best long-term value for steady learning without billing friction.",
@@ -216,7 +223,10 @@ export default function Pricing() {
         "Full premium access all year",
         "Less billing friction",
       ],
-      savingsBadge: "Save 17% • 2 months free",
+      // Replaced the legacy "Save 17%" string with the SavingsBadge
+      // component (rendered in the card body below). This field is
+      // intentionally left unset so the per-card render path skips the
+      // generic string and uses the computed badge instead.
     },
   ], []);
 
@@ -570,13 +580,16 @@ export default function Pricing() {
             {plan.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}
           </ul>
         ) : null}
-        {plan.savingsBadge ? (
+        {plan.key === "year" ? (
+          <SavingsBadge
+            monthlyAmount={MONTHLY_PRICE_VND}
+            yearlyAmount={YEARLY_PRICE_VND}
+            currency="VND"
+            variant="full"
+          />
+        ) : plan.savingsBadge ? (
           <div style={{ fontSize: 13, fontWeight: 800, color: "#065f46", background: "rgba(16,185,129,0.10)", borderRadius: 12, padding: "8px 10px" }}>
             {plan.savingsBadge}
-          </div>
-        ) : plan.key === "year" ? (
-          <div style={{ fontSize: 13, fontWeight: 800, color: "#065f46", background: "rgba(16,185,129,0.10)", borderRadius: 12, padding: "8px 10px" }}>
-            Better long-term value for steady practice.
           </div>
         ) : null}
         <button
@@ -754,6 +767,89 @@ export default function Pricing() {
         <div style={{ marginBottom: 14, padding: "12px 14px", borderRadius: 14, border: "1px solid rgba(239,68,68,0.20)", background: "rgba(254,242,242,0.95)" }}>
           <div style={{ fontWeight: 700, color: "#991b1b" }}>{errorText}</div>
           <div style={{ fontSize: 12, color: "#b91c1c", marginTop: 2 }}>Có lỗi xảy ra. Vui lòng thử lại.</div>
+        </div>
+      ) : null}
+
+      {/* ── Yearly vs Monthly comparison block ──────────────────
+          Spelled out so the savings math is unambiguous: 12× monthly
+          on the left, yearly on the right (highlighted), with the
+          delta + percent saved between them. VN-first copy. */}
+      {!isIos ? (
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr auto 1fr",
+            gap: 12,
+            alignItems: "stretch",
+            margin: "8px 0 18px",
+          }}
+          aria-label="Monthly vs yearly comparison"
+        >
+          {(() => {
+            const monthlyTotal = MONTHLY_PRICE_VND * 12;
+            const savings = monthlyTotal - YEARLY_PRICE_VND;
+            const pct = computeYearlySavingsPct(MONTHLY_PRICE_VND, YEARLY_PRICE_VND);
+            const cellBase: React.CSSProperties = {
+              borderRadius: 14,
+              padding: "12px 14px",
+              border: "1px solid rgba(15,23,42,0.10)",
+              background: "#ffffff",
+            };
+            const cellHighlight: React.CSSProperties = {
+              ...cellBase,
+              background: "linear-gradient(180deg, rgba(236,253,245,0.98) 0%, rgba(240,253,250,0.96) 100%)",
+              borderColor: "rgba(16,185,129,0.30)",
+              boxShadow: "0 8px 22px rgba(16,185,129,0.12)",
+            };
+            const labelEnStyle: React.CSSProperties = { fontSize: 12, fontWeight: 700, color: "#475569", textTransform: "uppercase", letterSpacing: "0.06em" };
+            const labelViStyle: React.CSSProperties = { fontSize: 11, fontWeight: 500, color: "#94a3b8", marginTop: 1 };
+            const figureStyle: React.CSSProperties = { fontSize: 22, fontWeight: 950, color: "#0f172a", marginTop: 6, lineHeight: 1.1 };
+            const subFigureStyle: React.CSSProperties = { fontSize: 12, color: "#64748b", marginTop: 4 };
+            const arrowStyle: React.CSSProperties = {
+              alignSelf: "center",
+              justifySelf: "center",
+              fontSize: 22,
+              fontWeight: 900,
+              color: "#0f766e",
+              padding: "0 8px",
+              userSelect: "none",
+            };
+
+            return (
+              <>
+                <div style={cellBase}>
+                  <div style={labelEnStyle}>If paid monthly</div>
+                  <div style={labelViStyle}>Nếu trả theo tháng (12 tháng)</div>
+                  <div style={figureStyle}>{formatPrice(monthlyTotal, "VND")}</div>
+                  <div style={subFigureStyle}>
+                    {formatPrice(MONTHLY_PRICE_VND, "VND")} × 12 tháng
+                  </div>
+                </div>
+
+                <div style={arrowStyle} aria-hidden>
+                  →
+                </div>
+
+                <div style={cellHighlight}>
+                  <div style={{ ...labelEnStyle, color: "#065f46" }}>Yearly plan</div>
+                  <div style={{ ...labelViStyle, color: "#0f766e" }}>Gói hàng năm</div>
+                  <div style={figureStyle}>{formatPrice(YEARLY_PRICE_VND, "VND")}</div>
+                  <div style={{ ...subFigureStyle, color: "#0f766e", fontWeight: 700 }}>
+                    Tiết kiệm {pct}% — chỉ {formatPrice(YEARLY_PRICE_VND / 12, "VND")}/tháng
+                  </div>
+                  <div style={{ fontSize: 11, color: "#64748b", marginTop: 2 }}>
+                    Save {pct}% · ≈ {formatPrice(YEARLY_PRICE_VND / 12, "VND")}/month
+                  </div>
+                  <div style={{ marginTop: 8, fontSize: 12, fontWeight: 700, color: "#065f46" }}>
+                    You save {formatPrice(savings, "VND")} per year
+                  </div>
+                  <div style={{ fontSize: 11, color: "#0f766e", marginTop: 1 }}>
+                    Tiết kiệm {formatPrice(savings, "VND")} mỗi năm
+                  </div>
+                </div>
+              </>
+            );
+          })()}
         </div>
       ) : null}
 
