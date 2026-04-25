@@ -5,6 +5,8 @@ import {
   getSessionFeedback,
   type SessionFeedback,
 } from "@/lib/interview/interviewSession";
+import type { WritingRubric } from "@/lib/writing-feedback/rubric";
+import type { L1WeaknessTag } from "@/lib/feedback/l1-error-detector";
 
 export default function InterviewSummaryPage() {
   const { slug = "" } = useParams<{ slug: string }>();
@@ -92,6 +94,17 @@ export default function InterviewSummaryPage() {
         </ul>
       </section>
 
+      {answeredCount > 0 && (
+        <RubricCard rubric={feedback.aggregatedRubric} />
+      )}
+
+      {feedback.topIssues.length > 0 && (
+        <PracticeCard
+          tags={feedback.topIssues}
+          suggestions={feedback.microLessonSuggestions}
+        />
+      )}
+
       <h2 className="text-base font-semibold text-black/90 mb-3">
         Chi tiết từng câu
       </h2>
@@ -131,6 +144,17 @@ export default function InterviewSummaryPage() {
 
               <p className="text-sm text-black/85">{p.score.feedback_vi}</p>
 
+              {p.score.rubric && (
+                <details className="mt-3">
+                  <summary className="text-xs text-emerald-700 cursor-pointer">
+                    Xem rubric chi tiết
+                  </summary>
+                  <div className="mt-2">
+                    <RubricBars rubric={p.score.rubric} compact />
+                  </div>
+                </details>
+              )}
+
               <details className="mt-3">
                 <summary className="text-xs text-emerald-700 cursor-pointer">
                   Xem mẫu câu trả lời
@@ -160,5 +184,130 @@ export default function InterviewSummaryPage() {
         </Link>
       </div>
     </div>
+  );
+}
+
+// ──────────────────────────────────────────────────────────────────────
+// Sub-components
+// ──────────────────────────────────────────────────────────────────────
+
+const DIMENSION_LABELS: Array<{
+  key: keyof WritingRubric;
+  label_vi: string;
+  label_en: string;
+}> = [
+  { key: "grammar",              label_vi: "Ngữ pháp",            label_en: "Grammar" },
+  { key: "vocabulary",           label_vi: "Từ vựng",             label_en: "Vocabulary" },
+  { key: "structure",            label_vi: "Cấu trúc",            label_en: "Structure" },
+  { key: "spelling_punctuation", label_vi: "Chính tả & dấu câu",  label_en: "Spelling & punctuation" },
+  { key: "coherence",            label_vi: "Mạch văn",            label_en: "Coherence" },
+];
+
+function RubricBars({
+  rubric,
+  compact = false,
+}: {
+  rubric: WritingRubric;
+  compact?: boolean;
+}) {
+  return (
+    <ul className={`space-y-${compact ? 1 : 2}`}>
+      {DIMENSION_LABELS.map(({ key, label_vi, label_en }) => {
+        const dim = rubric[key];
+        const score = dim.score;
+        return (
+          <li key={key} className="flex items-center gap-3 text-xs">
+            <span className="w-32 shrink-0 text-black/70">
+              {label_vi}
+              <span className="text-black/40 italic ml-1">{label_en}</span>
+            </span>
+            <span
+              className="flex gap-1"
+              role="img"
+              aria-label={`${label_en} score ${score} out of 5`}
+            >
+              {[1, 2, 3, 4, 5].map((pip) => (
+                <span
+                  key={pip}
+                  className={`inline-block w-3 h-3 rounded-sm ${
+                    pip <= score ? "bg-emerald-500" : "bg-black/10"
+                  }`}
+                />
+              ))}
+            </span>
+            <span className="text-black/50 font-mono">{score}/5</span>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
+function RubricCard({ rubric }: { rubric: WritingRubric }) {
+  return (
+    <section className="rounded-xl border border-black/10 bg-white p-4 mb-6">
+      <h2 className="text-sm font-semibold text-black/90 mb-3">
+        Đánh giá theo rubric (trung bình toàn phiên)
+      </h2>
+      <RubricBars rubric={rubric} />
+      <p className="text-xs text-black/55 italic mt-3">
+        Mức CEFR ước tính (theo từ vựng): <strong>{rubric.vocabulary.level_estimate}</strong>.
+        Đây là số tham khảo, không phải kết quả chính thức.
+      </p>
+    </section>
+  );
+}
+
+const TAG_LABELS_VI: Partial<Record<L1WeaknessTag, string>> = {
+  vi_l1_3rd_person_s: "Thiếu -s ngôi 3 (he/she/it)",
+  vi_l1_past_ed: "Thiếu -ed quá khứ",
+  vi_l1_plural_s: "Thiếu -s số nhiều",
+  vi_l1_missing_be: "Thiếu động từ to be",
+  vi_l1_question_no_aux: "Câu hỏi thiếu trợ động từ",
+  vi_l1_missing_article: "Thiếu mạo từ a/an/the",
+  vi_l1_can_no_infinitive: "Sau modal phải dùng động từ nguyên thể",
+  vi_l1_double_past: "Thì quá khứ kép (did + V-ed)",
+  vi_l1_a_vs_an_vowel: "a vs an trước nguyên âm",
+  vi_l1_comparative_double: "So sánh kép (more better)",
+};
+
+function PracticeCard({
+  tags,
+  suggestions,
+}: {
+  tags: L1WeaknessTag[];
+  suggestions: SessionFeedback["microLessonSuggestions"];
+}) {
+  return (
+    <section className="rounded-xl border border-amber-200 bg-amber-50 p-4 mb-6">
+      <h2 className="text-sm font-semibold text-amber-900 mb-2">
+        3 lỗi nên luyện tiếp
+      </h2>
+      <ul className="text-sm text-amber-900 list-disc pl-5 space-y-1">
+        {tags.map((tag) => (
+          <li key={tag}>
+            {TAG_LABELS_VI[tag] ?? tag}
+          </li>
+        ))}
+      </ul>
+      {suggestions.length > 0 && (
+        <div className="mt-4">
+          <div className="text-xs font-semibold text-amber-900 mb-2">
+            Gợi ý bài học ngắn:
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {suggestions.map((s) => (
+              <Link
+                key={s.tag}
+                to={`/learn/micro/${s.tag}`}
+                className="inline-flex items-center px-3 py-1.5 rounded-lg bg-white border border-amber-300 text-amber-900 text-xs font-semibold no-underline hover:bg-amber-100"
+              >
+                {s.title_vi}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+    </section>
   );
 }
