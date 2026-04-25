@@ -41,6 +41,10 @@ import {
   type RoomPopularityRow,
 } from "@/services/analyticsAdmin";
 
+import { CohortRetentionChart } from "@/components/analytics/CohortRetentionChart";
+import { L1RuleEffectivenessTable } from "@/components/analytics/L1RuleEffectivenessTable";
+import { WeaknessTrendsChart } from "@/components/analytics/WeaknessTrendsChart";
+
 const wrap: React.CSSProperties = {
   width: "100%",
   minHeight: "100vh",
@@ -484,7 +488,70 @@ export default function AdminAnalyticsPage() {
         {loading ? (
           <p style={{ opacity: 0.5, fontSize: 13 }}>Refreshing…</p>
         ) : null}
+
+        <CompoundingAnalyticsSection />
       </div>
+    </div>
+  );
+}
+
+// ──────────────────────────────────────────────────────────────────────
+// Step 11 — compounding analytics
+// ──────────────────────────────────────────────────────────────────────
+//
+// Adds three sub-tabs (Cohorts / L1 rules / Weakness trends) below the
+// existing usage dashboard. Kept inline rather than refactoring the
+// page into a router-based tab system — this matches the file's
+// inline-style aesthetic and avoids the large diff.
+
+type CompoundingTab = "cohorts" | "l1" | "weakness";
+
+const COMPOUNDING_TABS: Array<{ key: CompoundingTab; label: string }> = [
+  { key: "cohorts",  label: "Cohorts" },
+  { key: "l1",       label: "L1 rules" },
+  { key: "weakness", label: "Weakness trends" },
+];
+
+function CompoundingAnalyticsSection() {
+  const [tab, setTab] = useState<CompoundingTab>("cohorts");
+
+  return (
+    <div style={card} data-testid="compounding-analytics">
+      <h2 style={heading}>Compounding analytics</h2>
+      <p style={subHeading}>
+        Each user makes the product smarter for the next. Admin-only (level 9+).
+      </p>
+
+      <div style={{ display: "flex", gap: 8, marginBottom: 16, flexWrap: "wrap" }}>
+        {COMPOUNDING_TABS.map((t) => {
+          const active = tab === t.key;
+          return (
+            <button
+              key={t.key}
+              type="button"
+              onClick={() => setTab(t.key)}
+              data-testid={`compounding-tab-${t.key}`}
+              data-active={active ? "true" : "false"}
+              style={{
+                padding: "6px 12px",
+                fontSize: 13,
+                fontWeight: 600,
+                borderRadius: 999,
+                border: "1px solid rgba(0,0,0,0.12)",
+                background: active ? "#0f172a" : "white",
+                color: active ? "white" : "#0f172a",
+                cursor: "pointer",
+              }}
+            >
+              {t.label}
+            </button>
+          );
+        })}
+      </div>
+
+      {tab === "cohorts"  && <CohortRetentionChart />}
+      {tab === "l1"       && <L1RuleEffectivenessTable />}
+      {tab === "weakness" && <WeaknessTrendsChart />}
     </div>
   );
 }
