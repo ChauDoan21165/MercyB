@@ -9,6 +9,8 @@ import { useAdminAccess } from "@/hooks/admin/useAdminAccess";
 import { GiftCodeModal } from "@/components/GiftCodeModal";
 import { supabase } from "@/lib/supabaseClient";
 import { StreakHistoryPanel } from "@/components/streak/StreakHistoryPanel";
+import { ReferralCard } from "@/components/referral/ReferralCard";
+import { ApplyReferralCodeForm } from "@/components/referral/ApplyReferralCodeForm";
 
 function formatDateTime(value: string | null | undefined): string {
   if (!value) return "—";
@@ -662,6 +664,14 @@ export default function AccountPage() {
         {/* ── My Progress (streaks) ────────────────────────────── */}
         <div style={{ marginTop: 18 }}>
           <StreakHistoryPanel />
+        </div>
+
+        {/* ── Referral (Step 5 Marketing) ──────────────────────── */}
+        <div style={{ marginTop: 18 }}>
+          <ReferralCard userId={user?.id} />
+        </div>
+        <div style={{ marginTop: 12 }}>
+          <ApplyReferralCodeForm userId={user?.id} />
         </div>
 
         {/* ── Legal + account deletion ─────────────────────────── */}
