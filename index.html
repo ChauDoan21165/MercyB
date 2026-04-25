@@ -44,6 +44,16 @@
 
     <!-- Theme Loader - Prevents flicker during hydration -->
     <script src="/theme-loader.js"></script>
+
+    <!--
+      Marketing tracking slots (UTM + Facebook Pixel + GA4) are
+      injected programmatically by src/lib/tracking/* at boot, gated
+      on consent + env vars (VITE_FB_PIXEL_ID, VITE_GA4_MEASUREMENT_ID).
+      When env vars are unset (dev / staging) nothing loads here.
+      See reports/a4-tracking-runbook.md for the full pipeline.
+    -->
+    <!-- mb:tracking-slot:fb-pixel -->
+    <!-- mb:tracking-slot:ga4 -->
   </head>
   <body>
     <div id="root"></div>

@@ -14,7 +14,10 @@ export type AnalyticsPayload = Record<string, unknown>;
 
 declare global {
   interface Window {
-    dataLayer?: Array<Record<string, unknown>>;
+    // dataLayer accepts either gtag-style argument tuples (arrays) or
+    // GTM-style event objects — `unknown` covers both. See
+    // `src/lib/tracking/ga4.ts` for the gtag-tuple pattern.
+    dataLayer?: unknown[];
     gtag?: (...args: unknown[]) => void;
     plausible?: (
       eventName: string,

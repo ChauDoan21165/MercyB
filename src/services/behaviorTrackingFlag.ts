@@ -13,6 +13,20 @@
  * Result is cached in-memory per userId for TTL_MS to keep the flag
  * lookup off the hot path — behavior writes happen on every keyword
  * tap, so we must not issue a Supabase request per event.
+ *
+ * ── Marketing tracking ─────────────────────────────────────────────
+ *
+ * `isMarketingTrackingEnabled` and `setMarketingConsent` (below) gate
+ * UTM capture, Facebook Pixel, and GA4. They run BEFORE auth (so they
+ * can't depend on `userId`) and BEFORE the network is touched (so a
+ * Supabase outage doesn't leak a tracker). They use localStorage
+ * because consent is per-device, not per-session.
+ *
+ * Default posture: tracking is ON unless the user explicitly opts
+ * out. MercyBlade currently markets only inside Vietnam and the US;
+ * neither GDPR (EU) nor LGPD (Brazil) hard-applies. If we open EU
+ * traffic, swap the default to OFF and gate behind a banner — see
+ * the runbook (`reports/a4-tracking-runbook.md`).
  */
 import { supabase } from "@/lib/supabaseClient";
 
@@ -62,5 +76,111 @@ export async function isTrackingEnabled(
   } catch {
     cache.set(userId, { enabled: false, expiresAt: Date.now() + TTL_MS });
     return false;
+  }
+}
+
+// ── Marketing-tracking consent (UTM + Pixel + GA4) ─────────────────────────
+
+const MARKETING_OPT_OUT_KEY = "mb_marketing_opt_out";
+
+function safeLocalStorage(): Storage | null {
+  if (typeof window === "undefined") return null;
+  try {
+    return window.localStorage;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Synchronous consent check. Returns `true` unless the user has
+ * explicitly opted out. Used by the tracking init path before auth
+ * is resolved, so it can't be async.
+ */
+export function isMarketingTrackingEnabled(): boolean {
+  const ls = safeLocalStorage();
+  if (!ls) return false;
+  try {
+    return ls.getItem(MARKETING_OPT_OUT_KEY) !== "1";
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Store the user's consent decision. Pass `false` to opt out — the
+ * loader will skip Pixel + GA4 script injection on next boot.
+ *
+ * Note: existing in-flight scripts already on the page won't unload
+ * mid-session. Reload after toggling to fully stop tracking.
+ */
+export function setMarketingConsent(consent: boolean): void {
+  const ls = safeLocalStorage();
+  if (!ls) return;
+  try {
+    if (consent) {
+      ls.removeItem(MARKETING_OPT_OUT_KEY);
+    } else {
+      ls.setItem(MARKETING_OPT_OUT_KEY, "1");
+    }
+  } catch {
+    /* ignore */
+  }
+}
+
+/**
+ * One-shot initializer for marketing tracking. Capture UTM →
+ * Pixel + GA4 → fire the initial pageview. Always safe to call
+ * multiple times (each loader is idempotent) and from any boot
+ * order.
+ *
+ * Returns a small status object that the runbook documents — useful
+ * when debugging "did Pixel actually load on production?"
+ */
+export async function initMarketingTracking(): Promise<{
+  consent: boolean;
+  utmCaptured: boolean;
+  pixelLoaded: boolean;
+  ga4Loaded: boolean;
+}> {
+  const consent = isMarketingTrackingEnabled();
+  if (!consent) {
+    return { consent: false, utmCaptured: false, pixelLoaded: false, ga4Loaded: false };
+  }
+
+  // Lazy-load the tracking modules so the consent-off branch never
+  // even pulls in their script-injection code.
+  const [{ captureUtmFromCurrentUrl }, { initPixel, pixelTrackPageView }, { initGa4, gaPageView }] =
+    await Promise.all([
+      import("@/lib/tracking/utm"),
+      import("@/lib/tracking/pixel"),
+      import("@/lib/tracking/ga4"),
+    ]);
+
+  const utm = captureUtmFromCurrentUrl();
+  const pixelLoaded = initPixel();
+  const ga4Loaded = initGa4();
+
+  if (pixelLoaded) pixelTrackPageView();
+  if (ga4Loaded) gaPageView();
+
+  return {
+    consent: true,
+    utmCaptured: utm !== null,
+    pixelLoaded,
+    ga4Loaded,
+  };
+}
+
+/**
+ * Test-only: clear localStorage opt-out so tests are deterministic.
+ */
+export function __resetMarketingConsentForTests(): void {
+  const ls = safeLocalStorage();
+  if (!ls) return;
+  try {
+    ls.removeItem(MARKETING_OPT_OUT_KEY);
+  } catch {
+    /* ignore */
   }
 }
