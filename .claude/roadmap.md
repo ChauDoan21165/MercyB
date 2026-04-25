@@ -3,7 +3,7 @@
 > **Goal:** #1 English learning app for Vietnamese people (5-6M diaspora globally).
 > **Owner:** Chau Doan (solo dev, Grande Prairie AB, exiled Vietnamese journalist, Article 117 warrant).
 > **App:** mercyblade.com · Bundle `com.chaudoan.mercyblade` · App ID `6762480486`
-> **Last updated:** 24 Apr 2026 (late evening — Round 7 complete, ~45-48% reached)
+> **Last updated:** 25 Apr 2026 (early hours — Round 8 complete, ~55-58% reached)
 
 Each step is worth ~5%. Steps are intentionally coarse — the work inside each step is what agents tackle in parallel "rounds."
 
@@ -95,6 +95,8 @@ _Original brief:_ - Phoneme-level feedback (not just word-level)
 
 ## STEP 5 → 55% — Marketing Infrastructure
 
+**Status: ~70% complete (25 Apr 2026 early — Round 8 A1-A4).** ✅ SEO landing page system + 5 VN-keyword pages PR #82 (Chau fills real content). ✅ Vietnamese blog system + 3 starter post outlines PR #84 (Chau fills bodies). ✅ Referral system (codes + uses + UI) PR #83 (reward delivery deferred — needs billing integration). ✅ UTM + FB Pixel + GA4 (consent-gated, env-no-op) PR #86. ❌ Vietnamese YouTube content (your filming, not agent-able). ❌ Press outreach to VN diaspora outlets (your relationships). ❌ Real content body for SEO + blog posts (CHAU TODO markers in place; daytime content writing).
+
 - 20 SEO landing pages targeting "học tiếng Anh [topic]"
 - Vietnamese blog (journalist background is edge — weekly cadence)
 - Facebook Pixel + UTM tracking
@@ -111,6 +113,8 @@ _Original brief:_ - Phoneme-level feedback (not just word-level)
 ---
 
 ## STEP 6 → 60% — Social + Community
+
+**Status: ~65% complete (25 Apr 2026 early — Round 8 A5-A7).** ✅ Public user profiles + progress sharing PR #85 (privacy default OFF). ✅ Study groups (schema + UI + RPCs) PR #87 (group chat deferred). ✅ User-generated sentence submission + admin approval PR #88 (export-to-JSON deferred). ❌ Comments on lessons (moderation policy needed first). ❌ Community Q&A (deferred). ❌ Weekly cash prize tournament (legal + payment ops). ❌ Discord/Zalo bot integration (account + tokens — your hands).
 
 - User profiles + progress sharing
 - Study groups (private rooms)
@@ -289,4 +293,6 @@ Unique asset: **the exiled journalist building for his diaspora.** Duolingo/ELSA
 - **Round 6 — 24 Apr 2026 evening (COMPLETE):** Target 30% → 40%. **Achieved 40%.** Track A (Step 1, partial): iOS Build 8 uploaded with RevenueCat production key + Grammar Help iOS Capacitor fix; Android Build 4 approved + LIVE in Closed Testing (177 countries, 13K phones). Track B (Step 2, complete): Content Depth v1 fully shipped via 17 merged PRs in one day. Round 5 content (CC1-CC5) + Round 6 cleanup (CC1-CC8 second wave) + CC4b followup. New tooling: agent-status.sh board script for parallel agent monitoring (PR #74). Lesson learned: parallel agents on shared working tree → race conditions; mandate `git worktree add` per agent going forward (CC4b's worktree at /tmp/cc4b-worktree was the only race-immune agent of the night). Critical bugs averted: RevenueCat test-key in production build (caught Build 6, fixed Build 7), Grammar Help iOS Capacitor fetch failure (caught + fixed in PR #62), Partial<>/Record<> typecheck regression after content merges (commit 85e2dc48 + 617e5476). Stash drawer cleaned (4 race-condition stashes dropped, 1 backup kept).
 
 - **Round 7 — 24 Apr 2026 late evening (COMPLETE):** Target 40% → 50%. **Achieved ~45-48%.** 7 parallel agents (A1-A7) shipped Step 3 + Step 4 work in one night with proper worktree isolation (lesson learned from Round 6 race condition). PRs merged: #75 (A5 richer lessons), #76 (A7 phoneme drills, self-merged), #77 (A3 daily/XP), #78 (A4 recommendation), #79 (A1 streaks v2), #80 (A2 leaderboard), #81 (A6 email skeleton). 37 files, +5,289 lines of code. Tests: 1426 → 1551 (+125 from this round alone, +353 total today). 4 new SQL migrations (streaks_v2, leaderboard_weekly, xp_and_daily, email_sends_log) — apply manually in Supabase before production use. Marketing skill knowledge base built and delivered (Julian Shapiro startup handbook distilled + VN diaspora context written). Day total: 24 PRs merged, 1198 → 1551 tests, 35 → 60 L1 rules with full VN coverage, +400 sentences, +20 micro-lessons + 3 rich-format pilots. Worktree isolation pattern proved out — no race conditions this round (vs. Round 6 stash chaos). Step 3 still needs Whisper API wiring + STT model. Step 4 still needs APNs cert + email vendor pick (both daytime work, not agent-able tonight).
+
+- **Round 8 — 24-25 Apr 2026 night-into-early-morning (COMPLETE):** Target 50% → 60%. **Achieved ~55-58%.** 7 parallel agents (A1-A7) shipped Step 5 + Step 6 skeletons in one session with full worktree isolation. PRs merged: #82 (A1 SEO), #83 (A3 referral), #84 (A2 blog), #85 (A5 public profiles), #86 (A4 tracking), #87 (A6 study groups), #88 (A7 user-generated sentences). 62 files, +8,832 lines. Tests: 1551 → 1683 (+132). 4 new SQL migrations (public_profiles, referrals, study_groups, user_sentences) — apply manually in Supabase before production use. AppRouter conflicts resolved sequentially as each PR merged (A2, A5, A6, A7 each fixed via rebase + force-with-lease — no race condition issues thanks to worktree pattern). Pattern that worked: hook block on push forced explicit Chau approval, preventing race condition replay. Day total: 31 PRs merged in one day. Tests: 1198 → 1683 (+485). Verified Grammar Help still works on production (PR #62 fix intact post-merge — verify-only check by A1). What's deferred to daytime: real SEO/blog content writing, billing integration for referral rewards, FB Business Manager + GA4 account setup, Discord/Zalo bot tokens, push notification APNs cert, real email send (Resend/Postmark pick), STT vendor wiring (Whisper API), comments moderation policy.
 
