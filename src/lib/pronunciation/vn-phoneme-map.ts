@@ -393,3 +393,236 @@ export function inferPhonemeForWord(
 function findTip(phoneme: string): PhonemeTip | null {
   return PHONEME_TIPS.find((t) => t.phoneme === phoneme) ?? null;
 }
+
+// ────────────────────────────────────────────────────────────────────────
+// Problem-pair drill sets — minimal pairs (or near-minimal contrasts) the
+// Vietnamese learner should distinguish out loud. Consumed by
+// soundPairDrills.ts and SoundPairDrillCard.
+//
+// `audioTarget` / `audioContrast` are path slots. null means "no
+// pre-recorded asset yet — caller should fall back to Web Speech TTS."
+// Additive to the file; does not touch PHONEME_SUBSTITUTIONS or
+// WORD_OVERRIDES above.
+// ────────────────────────────────────────────────────────────────────────
+
+export interface ProblemPair {
+  /** The word the learner is asked to pronounce — carries the target phoneme. */
+  target: string;
+  /** The word it commonly collapses into — what we DON'T want. */
+  contrast: string;
+  /** Phoneme focus key, matches PHONEME_TIPS.phoneme where useful. */
+  phoneme: string;
+  /** Optional pre-recorded model audio for `target`. null → fall back to TTS. */
+  audioTarget: string | null;
+  /** Optional pre-recorded model audio for `contrast`. */
+  audioContrast: string | null;
+  /** One-sentence VN explanation of why the pair collapses for VN speakers. */
+  vnWhyConfused: string;
+}
+
+/** voiceless th vs t — three/tree, thin/tin, etc. */
+export const PROBLEM_PAIRS_TH_T: ProblemPair[] = [
+  {
+    target: 'three', contrast: 'tree', phoneme: 'th-voiceless',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: 'Không có âm "th" trong tiếng Việt — dễ đọc "three" thành "tree".',
+  },
+  {
+    target: 'thin', contrast: 'tin', phoneme: 'th-voiceless',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: '"thin" cần lưỡi giữa răng; "tin" thì lưỡi chạm lợi trên.',
+  },
+  {
+    target: 'thick', contrast: 'tick', phoneme: 'th-voiceless',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: 'Đầu lưỡi nằm giữa hai hàm răng khi bắt đầu "thick"; "tick" thì không.',
+  },
+  {
+    target: 'thought', contrast: 'taught', phoneme: 'th-voiceless',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: 'Nguyên âm giống nhau; khác nhau chỉ ở âm đầu "th" vs "t".',
+  },
+  {
+    target: 'theme', contrast: 'team', phoneme: 'th-voiceless',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: '"theme" bắt đầu bằng hơi thổi qua răng; "team" là âm "t" bình thường.',
+  },
+  {
+    target: 'bath', contrast: 'bat', phoneme: 'th-voiceless',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: 'Âm cuối "th" hay bị cắt thành "t" — "bath" nghe như "bat".',
+  },
+  {
+    target: 'path', contrast: 'pat', phoneme: 'th-voiceless',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: '"path" kết thúc bằng hơi qua răng; "pat" chỉ là âm "t" gọn.',
+  },
+  {
+    target: 'thigh', contrast: 'tie', phoneme: 'th-voiceless',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: '"thigh" = đùi; "tie" = cà vạt. Phát âm sai đổi nghĩa hoàn toàn.',
+  },
+  {
+    target: 'thread', contrast: 'tread', phoneme: 'th-voiceless',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: 'Chỉ khác âm đầu — nhưng đủ để người nghe hiểu khác hẳn.',
+  },
+];
+
+/** r vs l — rice/lice, right/light, etc. */
+export const PROBLEM_PAIRS_R_L: ProblemPair[] = [
+  {
+    target: 'rice', contrast: 'lice', phoneme: 'r-vs-l',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: '"rice" = cơm; "lice" = chấy rận. Đảo âm đổi nghĩa nhạy cảm.',
+  },
+  {
+    target: 'river', contrast: 'liver', phoneme: 'r-vs-l',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: '"river" = sông; "liver" = gan. Một số miền Việt Nam trộn r/l.',
+  },
+  {
+    target: 'right', contrast: 'light', phoneme: 'r-vs-l',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: '"right" = đúng/phải; "light" = sáng/nhẹ. Đừng cong lưỡi thành "l".',
+  },
+  {
+    target: 'read', contrast: 'lead', phoneme: 'r-vs-l',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: '"read" cong đầu lưỡi về sau; "lead" đầu lưỡi chạm lợi trên.',
+  },
+  {
+    target: 'road', contrast: 'load', phoneme: 'r-vs-l',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: '"road" = đường; "load" = tải hàng. Âm đầu quyết định ý nghĩa.',
+  },
+  {
+    target: 'rock', contrast: 'lock', phoneme: 'r-vs-l',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: '"rock" = đá; "lock" = khoá. "r" không chạm vòm miệng; "l" có chạm.',
+  },
+  {
+    target: 'ram', contrast: 'lamb', phoneme: 'r-vs-l',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: '"ram" = cừu đực; "lamb" = cừu non. Dùng sai sẽ hiểu nhầm nghĩa.',
+  },
+  {
+    target: 'rake', contrast: 'lake', phoneme: 'r-vs-l',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: '"rake" = cái cào; "lake" = hồ. Cong đầu lưỡi cho "r", không chạm cho "l".',
+  },
+  {
+    target: 'race', contrast: 'lace', phoneme: 'r-vs-l',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: '"race" = cuộc đua; "lace" = dây ren. Âm "r" không rung như tiếng Việt.',
+  },
+];
+
+/** -ed endings: past tense vs present. */
+export const PROBLEM_PAIRS_ED_ENDINGS: ProblemPair[] = [
+  {
+    target: 'worked', contrast: 'work', phoneme: 'final-ed',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: '"worked" kết thúc bằng "t" nhẹ — nếu bỏ, nghe như hiện tại.',
+  },
+  {
+    target: 'walked', contrast: 'walk', phoneme: 'final-ed',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: 'Tiếng Việt không phát âm cuối rõ — "walked" dễ bị nuốt thành "walk".',
+  },
+  {
+    target: 'played', contrast: 'play', phoneme: 'final-ed',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: '"played" kết thúc bằng "d" có rung; đừng bỏ qua.',
+  },
+  {
+    target: 'called', contrast: 'call', phoneme: 'final-ed',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: '"called" = đã gọi; "call" = đang gọi. Âm "d" cuối quyết định thì.',
+  },
+  {
+    target: 'learned', contrast: 'learn', phoneme: 'final-ed',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: 'Phát rõ "d" cuối "learned" để người nghe biết chuyện đã xong.',
+  },
+  {
+    target: 'finished', contrast: 'finish', phoneme: 'final-ed',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: '"finished" kết thúc bằng "t" nhẹ sau "sh". Nuốt âm → mất thì quá khứ.',
+  },
+  {
+    target: 'watched', contrast: 'watch', phoneme: 'final-ed',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: 'Chỉ khác âm "t" cuối — nhưng đó là dấu hiệu thì quá khứ.',
+  },
+  {
+    target: 'helped', contrast: 'help', phoneme: 'final-ed',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: 'Âm "t" cuối "helped" phải được thả ra, không giữ lại.',
+  },
+  {
+    target: 'started', contrast: 'start', phoneme: 'final-ed',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: '"started" thêm cả âm "ed" đầy đủ (/-ɪd/); luyện phát trọn.',
+  },
+  {
+    target: 'needed', contrast: 'need', phoneme: 'final-ed',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: '"needed" phát "-ed" thành 2 âm tiết (/nee-did/); đừng rút gọn.',
+  },
+];
+
+/** -s plurals: plural vs singular. */
+export const PROBLEM_PAIRS_S_PLURALS: ProblemPair[] = [
+  {
+    target: 'cats', contrast: 'cat', phoneme: 'final-s',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: '"cats" kết thúc bằng "s" hơi gió — bỏ là mất dấu số nhiều.',
+  },
+  {
+    target: 'dogs', contrast: 'dog', phoneme: 'final-s',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: '"dogs" có "s" phát thành /z/ rung giọng sau âm "g".',
+  },
+  {
+    target: 'books', contrast: 'book', phoneme: 'final-s',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: '"books" kết thúc bằng "s" nhẹ; tiếng Việt hay bỏ âm cuối.',
+  },
+  {
+    target: 'friends', contrast: 'friend', phoneme: 'final-s',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: '"friends" có cụm "nds" — phát đủ cả 3 âm cuối mới đúng.',
+  },
+  {
+    target: 'foxes', contrast: 'fox', phoneme: 'final-s',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: '"foxes" thêm nguyên âm trước "s" (/-iz/); không phải chỉ "fox+s".',
+  },
+  {
+    target: 'boxes', contrast: 'box', phoneme: 'final-s',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: 'Sau "-x", "-es" phát là /-iz/ — thành 2 âm tiết.',
+  },
+  {
+    target: 'apples', contrast: 'apple', phoneme: 'final-s',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: '"apples" kết thúc bằng /-lz/; đừng dừng ở "apple".',
+  },
+  {
+    target: 'watches', contrast: 'watch', phoneme: 'final-s',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: 'Sau "-ch", "-es" phát là /-iz/ — "watch-iz" rõ ràng.',
+  },
+  {
+    target: 'girls', contrast: 'girl', phoneme: 'final-s',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: '"girls" có /-lz/ cuối; tiếng Việt dễ cắt "s".',
+  },
+  {
+    target: 'trees', contrast: 'tree', phoneme: 'final-s',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: '"trees" kết thúc bằng "z" rung giọng sau nguyên âm.',
+  },
+];
+
