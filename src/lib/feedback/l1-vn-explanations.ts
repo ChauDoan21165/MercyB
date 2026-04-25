@@ -47,6 +47,13 @@ export type L1VnExplanation = {
   example_wrong_vi_gloss: string;
   /** Flip to true when the VN grammar claim needs Chau's verification. */
   needs_review: boolean;
+  /**
+   * Optional region-aware sentence prepended by the UI when the user's
+   * detected dialect (see `dialect-detection.ts`) matches the rule's
+   * dialect bias. Existing entries leave this undefined; only
+   * dialect-specific rules in VN_DIALECT_EXPLANATIONS set it.
+   */
+  dialect_note?: string;
 };
 
 /** Mobile-display budget. Enforced by a test in __tests__/. */
