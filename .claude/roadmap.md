@@ -3,7 +3,7 @@
 > **Goal:** #1 English learning app for Vietnamese people (5-6M diaspora globally).
 > **Owner:** Chau Doan (solo dev, Grande Prairie AB, exiled Vietnamese journalist, Article 117 warrant).
 > **App:** mercyblade.com · Bundle `com.chaudoan.mercyblade` · App ID `6762480486`
-> **Last updated:** 24 Apr 2026 (evening — Round 6 complete, 40% reached)
+> **Last updated:** 24 Apr 2026 (late evening — Round 7 complete, ~45-48% reached)
 
 Each step is worth ~5%. Steps are intentionally coarse — the work inside each step is what agents tackle in parallel "rounds."
 
@@ -57,7 +57,9 @@ _Original brief:_ Build 6 approved by Apple. Google Play Build 3 approved. Both 
 
 ## STEP 3 → 45% — Pronunciation Excellence
 
-- Phoneme-level feedback (not just word-level)
+**Status: ~50% complete (24 Apr 2026 evening — Round 7 A7).** ✅ VN-EN sound pair drills shipped (th/t, r/l, -ed, -s); SoundPairDrillCard component; vn-phoneme-map extended with 4 problem-pair sets. ❌ Real STT scoring (Whisper API wiring); daily pronunciation challenge UI; weekly pronunciation leaderboard; VN accent model. Runbook at reports/a7-phoneme-runbook.md (recommends Whisper for MVP, ~$4/mo).
+
+_Original brief:_ - Phoneme-level feedback (not just word-level)
 - VN-EN sound pair drills (th/t, r/l, -ed endings, -s plurals)
 - Daily pronunciation challenge (60-second drill)
 - Weekly pronunciation leaderboard
@@ -72,6 +74,8 @@ _Original brief:_ Build 6 approved by Apple. Google Play Build 3 approved. Both 
 ---
 
 ## STEP 4 → 50% — Retention Engine
+
+**Status: ~85% complete (24 Apr 2026 evening — Round 7 A1-A6).** ✅ Streaks v2 (freeze + vacation + insurance) PR #79. ✅ Daily challenge + XP system PR #77. ✅ Weekly leaderboard schema + UI (behind flag) PR #80. ✅ Recommendation engine v2 (cold-start + weakness density) PR #78. ✅ Richer lesson format (5-section + quiz + adapter for legacy) PR #75. ✅ Email re-engagement skeleton (no real send yet) PR #81. ❌ Push notifications (deferred — needs APNs cert + Firebase config). ❌ Real email send (deferred — needs vendor: Resend or Postmark; runbook at reports/a6-email-runbook.md).
 
 - Streaks v2 (freeze days, vacation mode, streak insurance)
 - Daily challenges with XP
@@ -283,4 +287,6 @@ Unique asset: **the exiled journalist building for his diaspora.** Duolingo/ELSA
 - **Sat 25 Apr 2026 (morning) — Apple Sign In web (Services ID setup).** Web Sign-in-with-Apple on mercyblade.com fails with `invalid_request — Invalid client id or web redirect url`. Diagnosis (CC2, `reports/apple-signin-diagnosis.md`): Supabase Apple provider is sending the iOS App ID `com.chaudoan.mercyblade` to Apple's web `/auth/authorize` endpoint, which only accepts a Services ID. **No code change required.** Fix path is Apple Developer + Supabase dashboard per `docs/APPLE_SIGNIN_CONFIG.md`: create / verify Services ID `com.chaudoan.mercyblade.signin`, verify domain `mercyblade.com` (publish `apple-developer-domain-association.txt` to `public/.well-known/` — directory does not yet exist in repo), create `.p8` key + record Team ID + Key ID, generate the secret JWT, paste both Client IDs comma-separated into Supabase. ETA 20–30 min if Services ID + `.p8` already exist; 2–4 hours starting from scratch (domain verification is the bottleneck). Owner: Chau (needs Apple Developer + Supabase dashboard access).
 
 - **Round 6 — 24 Apr 2026 evening (COMPLETE):** Target 30% → 40%. **Achieved 40%.** Track A (Step 1, partial): iOS Build 8 uploaded with RevenueCat production key + Grammar Help iOS Capacitor fix; Android Build 4 approved + LIVE in Closed Testing (177 countries, 13K phones). Track B (Step 2, complete): Content Depth v1 fully shipped via 17 merged PRs in one day. Round 5 content (CC1-CC5) + Round 6 cleanup (CC1-CC8 second wave) + CC4b followup. New tooling: agent-status.sh board script for parallel agent monitoring (PR #74). Lesson learned: parallel agents on shared working tree → race conditions; mandate `git worktree add` per agent going forward (CC4b's worktree at /tmp/cc4b-worktree was the only race-immune agent of the night). Critical bugs averted: RevenueCat test-key in production build (caught Build 6, fixed Build 7), Grammar Help iOS Capacitor fetch failure (caught + fixed in PR #62), Partial<>/Record<> typecheck regression after content merges (commit 85e2dc48 + 617e5476). Stash drawer cleaned (4 race-condition stashes dropped, 1 backup kept).
+
+- **Round 7 — 24 Apr 2026 late evening (COMPLETE):** Target 40% → 50%. **Achieved ~45-48%.** 7 parallel agents (A1-A7) shipped Step 3 + Step 4 work in one night with proper worktree isolation (lesson learned from Round 6 race condition). PRs merged: #75 (A5 richer lessons), #76 (A7 phoneme drills, self-merged), #77 (A3 daily/XP), #78 (A4 recommendation), #79 (A1 streaks v2), #80 (A2 leaderboard), #81 (A6 email skeleton). 37 files, +5,289 lines of code. Tests: 1426 → 1551 (+125 from this round alone, +353 total today). 4 new SQL migrations (streaks_v2, leaderboard_weekly, xp_and_daily, email_sends_log) — apply manually in Supabase before production use. Marketing skill knowledge base built and delivered (Julian Shapiro startup handbook distilled + VN diaspora context written). Day total: 24 PRs merged, 1198 → 1551 tests, 35 → 60 L1 rules with full VN coverage, +400 sentences, +20 micro-lessons + 3 rich-format pilots. Worktree isolation pattern proved out — no race conditions this round (vs. Round 6 stash chaos). Step 3 still needs Whisper API wiring + STT model. Step 4 still needs APNs cert + email vendor pick (both daytime work, not agent-able tonight).
 
