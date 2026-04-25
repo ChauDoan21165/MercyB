@@ -62,6 +62,10 @@ const GroupsIndex          = lazy(() => import("@/pages/groups/GroupsIndex"));
 const GroupPage            = lazy(() => import("@/pages/groups/GroupPage"));
 const CreateGroupPage      = lazy(() => import("@/pages/groups/CreateGroupPage"));
 
+const ContributeSentencePage = lazy(() => import("@/pages/contribute/ContributeSentencePage"));
+const MySubmissionsPage      = lazy(() => import("@/pages/contribute/MySubmissionsPage"));
+const PendingSentencesPage   = lazy(() => import("@/pages/admin/PendingSentencesPage"));
+
 const AdminDashboard          = lazy(() => import("@/pages/admin/AdminDashboard"));
 const AdminUsersPage          = lazy(() => import("@/pages/admin/AdminUsersPage"));
 const AdminPaymentsPage       = lazy(() => import("@/pages/admin/AdminPaymentsPage"));
@@ -528,6 +532,22 @@ export default function AppRouter() {
             }
           />
 
+          {/* Community: user-generated sentences (Step 6) */}
+          <Route path="/contribute"
+            element={
+              <RequireAuth>
+                <LazyPage><ContributeSentencePage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+          <Route path="/contribute/my-submissions"
+            element={
+              <RequireAuth>
+                <LazyPage><MySubmissionsPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+
           {/* Room alias redirects */}
           <Route path="/room/room/:roomId" element={<RoomRoomRedirect />} />
           <Route path="/room"              element={<RoomIndexRedirect />} />
@@ -558,6 +578,7 @@ export default function AppRouter() {
               <Route path="subscriptions"        element={<LazyPage><AdminSubscriptions /></LazyPage>} />
               <Route path="feature-flags"        element={<LazyPage><FeatureFlagsAdmin /></LazyPage>} />
               <Route path="analytics"            element={<LazyPage><AdminAnalyticsPage /></LazyPage>} />
+              <Route path="pending-sentences"    element={<LazyPage><PendingSentencesPage /></LazyPage>} />
               <Route path="room-load-diagnostics" element={<LazyPage><RoomLoadDiagnostics /></LazyPage>} />
               <Route path="*" element={<LazyPage><AdminDashboard /></LazyPage>} />
             </Route>
