@@ -292,6 +292,18 @@ function scheduleOneTimeChunkReload(): boolean {
   } catch { /* never block boot */ }
 })();
 
+(function bootMarketingTracking() {
+  // UTM capture + Facebook Pixel + GA4. Lazy import so the consent-off
+  // / no-env-vars path never even pulls the loader code into the
+  // initial bundle. Never block boot — if anything throws we just
+  // skip tracking. See src/services/behaviorTrackingFlag.ts.
+  try {
+    void import("@/services/behaviorTrackingFlag")
+      .then((mod) => mod.initMarketingTracking())
+      .catch(() => { /* never block boot on a tracker failure */ });
+  } catch { /* ignore */ }
+})();
+
 (function clearChunkReloadMarkerAfterHealthyBoot() {
   window.setTimeout(() => { clearChunkRecoveryAttempt(); }, 8000);
 })();
