@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+Allow: /seo/
+
+# Don't index auth, account, or billing screens — they're not useful to crawlers
+# and can leak query parameters into search results.
+Disallow: /signin
+Disallow: /login
+Disallow: /reset-password
+Disallow: /auth/
+Disallow: /account
+Disallow: /billing
+Disallow: /admin/
+
+Sitemap: https://mercyblade.com/sitemap.xml
