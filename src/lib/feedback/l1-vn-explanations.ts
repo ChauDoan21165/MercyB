@@ -386,7 +386,7 @@ export const L1_VN_EXPLANATIONS: Record<L1WeaknessTag, L1VnExplanation> = {
       "Tiếng Việt mình chỉ có một cách nối hai động từ — 'thích bơi', 'tránh đi'. Tiếng Anh sau **enjoy / avoid / finish / keep / mind / suggest / practise** phải dùng **V-ing**, không dùng **to + V**. *I enjoy **swimming***. Đây là nhóm cần học thuộc — không suy ra theo công thức được.",
     example_wrong_vi_gloss:
       "I enjoy to swim → 'Tôi + thích + bơi' (quen công thức 'verb + to + V' từ 'want to'; 'enjoy' lại thuộc nhóm cần V-ing)",
-    needs_review: true,
+    needs_review: false,
   },
   vi_l1_modal_perfect: {
     name_vi: "Modal nói về quá khứ: should/could/would + have + V3",
@@ -450,7 +450,7 @@ export const L1_VN_EXPLANATIONS: Record<L1WeaknessTag, L1VnExplanation> = {
       "Tiếng Việt mình hay đẩy 'chưa bao giờ', 'hiếm khi' lên đầu câu — chủ ngữ vẫn đứng sau bình thường. Tiếng Anh khi mở đầu câu bằng **never / seldom / rarely / hardly**, phải đảo trợ động từ lên trước chủ ngữ. *Never **have I** seen it*. Đây là cách viết trang trọng.",
     example_wrong_vi_gloss:
       "Never I have seen it → 'Chưa bao giờ + tôi + đã thấy + nó' (giữ chủ ngữ đứng trước trợ động từ như tiếng Việt; phải đảo: 'Never have I seen')",
-    needs_review: true,
+    needs_review: false,
   },
   vi_l1_adverb_before_subject: {
     name_vi: "Trạng từ tần suất đứng sau chủ ngữ",
