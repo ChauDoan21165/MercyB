@@ -3,13 +3,13 @@
 > **Goal:** #1 English learning app for Vietnamese people (5-6M diaspora globally).
 > **Owner:** Chau Doan (solo dev, Grande Prairie AB, exiled Vietnamese journalist, Article 117 warrant).
 > **App:** mercyblade.com · Bundle `com.chaudoan.mercyblade` · App ID `6762480486`
-> **Last updated:** 24 Apr 2026
+> **Last updated:** 24 Apr 2026 (evening — Round 6 complete, 40% reached)
 
 Each step is worth ~5%. Steps are intentionally coarse — the work inside each step is what agents tackle in parallel "rounds."
 
 ---
 
-## STEP 0 — WHERE YOU ARE (30%)
+## STEP 0 — WHERE YOU WERE (30% on 24 Apr morning)
 
 **You have:** 122 users, 6 paying (Stripe), iOS Build 6 uploaded 24 Apr 11:00 AM, 35 L1 rules, 100 sentences, pronunciation scorer, admin dashboard, session tracking (PR #44), speech history, TTS playback, admin analytics. Infrastructure solid. mercyblade.com live.
 
@@ -19,7 +19,9 @@ Each step is worth ~5%. Steps are intentionally coarse — the work inside each 
 
 ## STEP 1 → 35% — iOS + Android Live in Stores
 
-Build 6 approved by Apple. Google Play Build 3 approved. Both stores searchable for "English Vietnamese" keywords.
+**Status: 60% complete (24 Apr 2026 evening).** ✅ Google Play Build 4 LIVE in Closed Testing (approved 5:56 PM). 🟡 iOS Build 8 uploaded, awaiting Apple processing + App Store submission. ❌ Apple IAPs rejected (Guideline 2.1(b) — need binary attached, will resubmit with Build 8).
+
+_Original brief:_ Build 6 approved by Apple. Google Play Build 3 approved. Both stores searchable for "English Vietnamese" keywords.
 
 **Why 5%:** Mobile = 80% of Vietnamese diaspora device usage. Without app stores, you're invisible.
 
@@ -31,9 +33,19 @@ Build 6 approved by Apple. Google Play Build 3 approved. Both stores searchable 
 
 ## STEP 2 → 40% — Content Depth v1
 
+**Status: ✅ COMPLETE (24 Apr 2026 evening).** All targets shipped to main.
+
 - 100 sentences → 500 sentences
 - 35 L1 rules → 60 rules (each with Vietnamese explanation of *why* VN speakers make the mistake)
 - 10 micro-lessons → 30 micro-lessons
+
+**Delivered:**
+- ✅ 100 → 500+ bilingual sentences (PRs #46, #47)
+- ✅ 35 → 60 L1 rules with detector logic + tests (PR #61)
+- ✅ 60/60 Vietnamese teacher-voice explanations (PRs #45, #73 — CC4 + CC4b)
+- ✅ 10 → 30 micro-lessons (PR #48)
+- ✅ Tests: 1198 → 1410 passing
+- ⚠️ 2 entries flagged needs_review:true awaiting Chau VN grammar verification (vi_l1_gerund_after_verb, vi_l1_negative_inversion)
 
 **Why 5%:** Vietnamese-specific content is the moat. Duolingo has generic content; you have VN-specific.
 
@@ -269,3 +281,6 @@ Unique asset: **the exiled journalist building for his diaspora.** Duolingo/ELSA
 ## Round 5 polish — scheduled
 
 - **Sat 25 Apr 2026 (morning) — Apple Sign In web (Services ID setup).** Web Sign-in-with-Apple on mercyblade.com fails with `invalid_request — Invalid client id or web redirect url`. Diagnosis (CC2, `reports/apple-signin-diagnosis.md`): Supabase Apple provider is sending the iOS App ID `com.chaudoan.mercyblade` to Apple's web `/auth/authorize` endpoint, which only accepts a Services ID. **No code change required.** Fix path is Apple Developer + Supabase dashboard per `docs/APPLE_SIGNIN_CONFIG.md`: create / verify Services ID `com.chaudoan.mercyblade.signin`, verify domain `mercyblade.com` (publish `apple-developer-domain-association.txt` to `public/.well-known/` — directory does not yet exist in repo), create `.p8` key + record Team ID + Key ID, generate the secret JWT, paste both Client IDs comma-separated into Supabase. ETA 20–30 min if Services ID + `.p8` already exist; 2–4 hours starting from scratch (domain verification is the bottleneck). Owner: Chau (needs Apple Developer + Supabase dashboard access).
+
+- **Round 6 — 24 Apr 2026 evening (COMPLETE):** Target 30% → 40%. **Achieved 40%.** Track A (Step 1, partial): iOS Build 8 uploaded with RevenueCat production key + Grammar Help iOS Capacitor fix; Android Build 4 approved + LIVE in Closed Testing (177 countries, 13K phones). Track B (Step 2, complete): Content Depth v1 fully shipped via 17 merged PRs in one day. Round 5 content (CC1-CC5) + Round 6 cleanup (CC1-CC8 second wave) + CC4b followup. New tooling: agent-status.sh board script for parallel agent monitoring (PR #74). Lesson learned: parallel agents on shared working tree → race conditions; mandate `git worktree add` per agent going forward (CC4b's worktree at /tmp/cc4b-worktree was the only race-immune agent of the night). Critical bugs averted: RevenueCat test-key in production build (caught Build 6, fixed Build 7), Grammar Help iOS Capacitor fetch failure (caught + fixed in PR #62), Partial<>/Record<> typecheck regression after content merges (commit 85e2dc48 + 617e5476). Stash drawer cleaned (4 race-condition stashes dropped, 1 backup kept).
+
