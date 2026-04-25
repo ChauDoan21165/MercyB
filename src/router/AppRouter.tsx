@@ -50,6 +50,14 @@ const MercyThreadPage      = lazy(() => import("@/pages/mercy/MercyThreadPage"))
 
 const WritingFeedbackPage  = lazy(() => import("@/pages/writing/WritingFeedbackPage"));
 
+// IELTS prep mode (Step 11 — premium-gated; gate enforced per-page).
+const IELTSIndexPage      = lazy(() => import("@/pages/exam-prep/IELTSIndexPage"));
+const IELTSWritingPage    = lazy(() => import("@/pages/exam-prep/IELTSWritingPage"));
+const IELTSSpeakingPage   = lazy(() => import("@/pages/exam-prep/IELTSSpeakingPage"));
+const IELTSListeningPage  = lazy(() => import("@/pages/exam-prep/IELTSListeningPage"));
+const IELTSReadingPage    = lazy(() => import("@/pages/exam-prep/IELTSReadingPage"));
+const IELTSEstimatorPage  = lazy(() => import("@/pages/exam-prep/IELTSEstimatorPage"));
+
 // SEO landing pages — Vietnamese-keyword targeted, public, no auth required.
 const SeoHocTiengAnhChoNguoiVietPage = lazy(() => import("@/pages/seo/HocTiengAnhChoNguoiVietPage"));
 const SeoSuaPhatAmTiengAnhPage       = lazy(() => import("@/pages/seo/SuaPhatAmTiengAnhPage"));
@@ -512,6 +520,50 @@ export default function AppRouter() {
             element={
               <RequireAuth>
                 <LazyPage><WritingFeedbackPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+
+          {/* IELTS prep (Step 11) — auth-required; premium gate is in-page. */}
+          <Route path="/exam/ielts"
+            element={
+              <RequireAuth>
+                <LazyPage><IELTSIndexPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+          <Route path="/exam/ielts/writing"
+            element={
+              <RequireAuth>
+                <LazyPage><IELTSWritingPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+          <Route path="/exam/ielts/speaking"
+            element={
+              <RequireAuth>
+                <LazyPage><IELTSSpeakingPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+          <Route path="/exam/ielts/listening"
+            element={
+              <RequireAuth>
+                <LazyPage><IELTSListeningPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+          <Route path="/exam/ielts/reading"
+            element={
+              <RequireAuth>
+                <LazyPage><IELTSReadingPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+          <Route path="/exam/ielts/estimator"
+            element={
+              <RequireAuth>
+                <LazyPage><IELTSEstimatorPage /></LazyPage>
               </RequireAuth>
             }
           />
