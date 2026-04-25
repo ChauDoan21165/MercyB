@@ -78,3 +78,65 @@ export function deriveStateFromSource(
 
   return { status: "weaknesses", entries };
 }
+
+// ─── Pure history primitives (A4 — recommendation engine v2) ───────────────
+//
+// These small functions operate on a flat history shape so the recommendation
+// engine and any future analytics layer can share a single source of truth.
+// They do NOT touch Supabase. Tests must cover edge cases (empty history,
+// unknown tags, never-seen rules) — see `recommendationEngine.test.ts`.
+
+/**
+ * One row of weakness signal for a single rule. Shape is intentionally
+ * minimal so it can be hydrated cheaply from `mb_user_weakness_profile`
+ * (frequency → errorCount, last_seen → lastSeenAt).
+ */
+export type AttemptRecord = {
+  ruleTag: string;
+  errorCount: number;
+  lastSeenAt: string | null;
+};
+
+/**
+ * Returns a map of tag → density (this rule's share of the user's total
+ * errors, 0..1). Empty history → empty map. Tags absent from `records`
+ * are absent from the result; callers should treat absence as density 0.
+ */
+export function computeWeaknessDensity(
+  records: readonly AttemptRecord[],
+): Map<string, number> {
+  const out = new Map<string, number>();
+  let total = 0;
+  for (const r of records) total += Math.max(0, r.errorCount);
+  if (total === 0) return out;
+  for (const r of records) {
+    const n = Math.max(0, r.errorCount);
+    if (n === 0) continue;
+    const prev = out.get(r.ruleTag) ?? 0;
+    out.set(r.ruleTag, prev + n / total);
+  }
+  return out;
+}
+
+/**
+ * Days elapsed since the most recent attempt of `ruleTag`. Returns
+ * `Number.POSITIVE_INFINITY` when the rule has no recorded attempts —
+ * callers should treat that as "never seen, no recency signal."
+ */
+export function timeSinceLastAttempt(
+  records: readonly AttemptRecord[],
+  ruleTag: string,
+  now: Date = new Date(),
+): number {
+  let mostRecentMs: number | null = null;
+  for (const r of records) {
+    if (r.ruleTag !== ruleTag) continue;
+    if (!r.lastSeenAt) continue;
+    const t = Date.parse(r.lastSeenAt);
+    if (Number.isNaN(t)) continue;
+    if (mostRecentMs === null || t > mostRecentMs) mostRecentMs = t;
+  }
+  if (mostRecentMs === null) return Number.POSITIVE_INFINITY;
+  const diffMs = now.getTime() - mostRecentMs;
+  return Math.max(0, diffMs) / (1000 * 60 * 60 * 24);
+}
