@@ -52,6 +52,9 @@ const SeoLoiTiengAnhNguoiVietPage    = lazy(() => import("@/pages/seo/LoiTiengAn
 const SeoPhongVanTiengAnhPage        = lazy(() => import("@/pages/seo/PhongVanTiengAnhPage"));
 const SeoHocTiengAnhMienPhiPage      = lazy(() => import("@/pages/seo/HocTiengAnhMienPhiPage"));
 
+const BlogIndex = lazy(() => import("@/pages/blog/BlogIndex"));
+const BlogPost  = lazy(() => import("@/pages/blog/BlogPost"));
+
 const AdminDashboard          = lazy(() => import("@/pages/admin/AdminDashboard"));
 const AdminUsersPage          = lazy(() => import("@/pages/admin/AdminUsersPage"));
 const AdminPaymentsPage       = lazy(() => import("@/pages/admin/AdminPaymentsPage"));
@@ -391,6 +394,10 @@ export default function AppRouter() {
           <Route path="/pricing" element={<LazyPage><Pricing /></LazyPage>} />
           <Route path="/upgrade" element={<LazyPage><Pricing /></LazyPage>} />
           <Route path="/rooms"   element={<LazyPage><AllRooms /></LazyPage>} />
+
+          {/* Public blog */}
+          <Route path="/blog"        element={<LazyPage><BlogIndex /></LazyPage>} />
+          <Route path="/blog/:slug"  element={<LazyPage><BlogPost /></LazyPage>} />
           <Route path="/tiers"   element={<LazyPage><TierIndex /></LazyPage>} />
           <Route path="/tiers/:tierId" element={<LazyPage><TierDetail /></LazyPage>} />
           <Route path="/redeem"     element={<RedeemRedirect />} />
