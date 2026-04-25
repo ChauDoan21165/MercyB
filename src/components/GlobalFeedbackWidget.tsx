@@ -11,6 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/lib/supabaseClient";
 import { cn } from "@/lib/utils";
+import { classifyFeedbackSentiment } from "@/lib/feedback/sentimentHeuristic";
 
 export const GlobalFeedbackWidget = () => {
   const [isOpen, setIsOpen]         = useState(false);
@@ -33,12 +34,19 @@ export const GlobalFeedbackWidget = () => {
     try {
       const { data: { user } } = await supabase.auth.getUser();
 
+      // Best-effort sentiment + topic-tag classification (Step 11 / VoC).
+      // Pure heuristic — never blocks submission. Admin can override
+      // during triage. See src/lib/feedback/sentimentHeuristic.ts.
+      const heuristic = classifyFeedbackSentiment(message);
+
       const { error: insertError } = await supabase.from("feedback").insert({
         user_id: user?.id ?? null,
         message: message.trim(),
         status: "new",
         priority: "normal",
         category: "general",
+        sentiment: heuristic.sentiment,
+        sentiment_tags: heuristic.tags,
       });
 
       if (insertError) {

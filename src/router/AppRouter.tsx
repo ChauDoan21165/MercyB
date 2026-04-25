@@ -87,6 +87,9 @@ const GroupsIndex          = lazy(() => import("@/pages/groups/GroupsIndex"));
 const GroupPage            = lazy(() => import("@/pages/groups/GroupPage"));
 const CreateGroupPage      = lazy(() => import("@/pages/groups/CreateGroupPage"));
 
+const PublicRoadmapPage    = lazy(() => import("@/pages/roadmap/PublicRoadmapPage"));
+const FeedbackTriagePage   = lazy(() => import("@/pages/admin/FeedbackTriagePage"));
+
 const InterviewIndex         = lazy(() => import("@/pages/interview/InterviewIndex"));
 const InterviewSessionPage   = lazy(() => import("@/pages/interview/InterviewSessionPage"));
 const InterviewSummaryPage   = lazy(() => import("@/pages/interview/InterviewSummaryPage"));
@@ -584,6 +587,16 @@ export default function AppRouter() {
             }
           />
 
+          {/* Public roadmap (Step 11 / Trust moat) — visible to anyone signed in;
+              vote button degrades to "sign in to vote" for anon users. */}
+          <Route path="/roadmap"
+            element={
+              <RequireAuth>
+                <LazyPage><PublicRoadmapPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+
           {/* Study groups (Step 6 / Community) — auth-gated; data RLS is auth-only too */}
           <Route path="/groups"
             element={
@@ -805,6 +818,7 @@ export default function AppRouter() {
               <Route path="feedback"             element={<LazyPage><AdminFeedbackPage /></LazyPage>} />
               <Route path="subscriptions"        element={<LazyPage><AdminSubscriptions /></LazyPage>} />
               <Route path="feature-flags"        element={<LazyPage><FeatureFlagsAdmin /></LazyPage>} />
+              <Route path="feedback-triage"      element={<LazyPage><FeedbackTriagePage /></LazyPage>} />
               <Route path="analytics"            element={<LazyPage><AdminAnalyticsPage /></LazyPage>} />
               <Route path="pending-sentences"    element={<LazyPage><PendingSentencesPage /></LazyPage>} />
               <Route path="room-load-diagnostics" element={<LazyPage><RoomLoadDiagnostics /></LazyPage>} />
