@@ -7,6 +7,7 @@ import { useEntitlements } from "@/lib/useEntitlements";
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 import { useAdminAccess } from "@/hooks/admin/useAdminAccess";
 import { GiftCodeModal } from "@/components/GiftCodeModal";
+import PowerUserSection from "@/components/account/PowerUserSection";
 import { supabase } from "@/lib/supabaseClient";
 import { StreakHistoryPanel } from "@/components/streak/StreakHistoryPanel";
 import { ReferralCard } from "@/components/referral/ReferralCard";
@@ -901,6 +902,13 @@ export default function AccountPage() {
           ) : null}
         </div>
       </div>
+
+      {user?.id ? (
+        <PowerUserSection
+          userId={user.id}
+          displayName={user.email?.split("@")[0] ?? "MercyBlade learner"}
+        />
+      ) : null}
 
       <GiftCodeModal open={showGiftModal} onOpenChange={setShowGiftModal} />
     </div>
