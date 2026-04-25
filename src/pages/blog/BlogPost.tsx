@@ -8,6 +8,8 @@ import { ArrowLeft, Share2, Copy, Check } from "lucide-react";
 import { getPostBySlug, splitBilingualBody } from "@/lib/blog/blogManifest";
 import { renderMarkdown } from "@/lib/blog/markdownRenderer";
 import type { BlogLocale } from "@/lib/blog/blogTypes";
+import FounderSignature from "@/components/founder/FounderSignature";
+import { PRODUCT_CONFIG } from "@/config/product";
 
 export default function BlogPost() {
   const { slug = "" } = useParams<{ slug: string }>();
@@ -146,6 +148,13 @@ export default function BlogPost() {
 
       {/* Body */}
       <div style={{ marginTop: 6 }}>{renderMarkdown(body, locale)}</div>
+
+      {/* Founder signature — only for Chau-authored posts */}
+      {post.author === PRODUCT_CONFIG.founder.name ? (
+        <div style={{ marginTop: 28 }}>
+          <FounderSignature size="md" />
+        </div>
+      ) : null}
 
       {/* Share footer */}
       <div
