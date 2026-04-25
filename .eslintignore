@@ -11,3 +11,10 @@ supabase/.output
 scripts/_scratch/**
 **/*.min.js
 **/*.map
+
+# Capacitor-generated native bundles (mirrors eslint.config.js — flat
+# config is authoritative; this file kept in sync for anyone reading
+# the legacy ignores).
+ios/App/App/public/
+android/app/src/main/assets/public/
+android/app/build/

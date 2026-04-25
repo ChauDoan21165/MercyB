@@ -30,6 +30,15 @@ export default [
       // repo-root stray files (not in src)
       "public/**",
       ".husky/**",
+
+      // Capacitor-generated native bundles. These are minified copies
+      // of the vite build, dropped into ios/ and android/ by
+      // `npx cap sync`. They're committed to the repo so the iOS
+      // and Android Studio projects open without a fresh sync, but
+      // they're not source — never lint them.
+      "ios/App/App/public/**",
+      "android/app/src/main/assets/public/**",
+      "android/app/build/**",
     ],
   },
 
