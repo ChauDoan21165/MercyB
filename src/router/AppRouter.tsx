@@ -48,6 +48,8 @@ const SpeechHistoryPage    = lazy(() => import("@/pages/speech/SpeechHistoryPage
 // Mercy v2 — multi-turn conversation thread page (auth-required).
 const MercyThreadPage      = lazy(() => import("@/pages/mercy/MercyThreadPage"));
 
+const WritingFeedbackPage  = lazy(() => import("@/pages/writing/WritingFeedbackPage"));
+
 // SEO landing pages — Vietnamese-keyword targeted, public, no auth required.
 const SeoHocTiengAnhChoNguoiVietPage = lazy(() => import("@/pages/seo/HocTiengAnhChoNguoiVietPage"));
 const SeoSuaPhatAmTiengAnhPage       = lazy(() => import("@/pages/seo/SuaPhatAmTiengAnhPage"));
@@ -482,6 +484,15 @@ export default function AppRouter() {
             element={
               <RequireAuth>
                 <LazyPage><MercyThreadPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+
+          {/* Writing feedback (Step 7 / AI Teacher v2 — rule-based MVP) */}
+          <Route path="/writing-feedback"
+            element={
+              <RequireAuth>
+                <LazyPage><WritingFeedbackPage /></LazyPage>
               </RequireAuth>
             }
           />
