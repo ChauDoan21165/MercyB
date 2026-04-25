@@ -46,6 +46,7 @@ import { KID_PAGE_33_ITEMS } from './kids/kidPage33Data';
 import { KID_PAGE_34_ITEMS } from './kids/kidPage34Data';
 import { awardSpeakPoints } from '@/services/pointsService';
 import { resolveRoomAudioUrl } from '@/lib/roomAudioResolver';
+import { deriveWordChips } from './wordChips';
 import type { StudentMercyMemoryUpdate, LearningSupportMode } from './types';
 import type {
   SpeechRecognitionLike as BaseSpeechRecognitionLike,
@@ -678,11 +679,14 @@ export function MercySpeakTab({
   const generatedTroubleWords = useMemo(() => detectTroubleWords(transcript, practiceText), [practiceText, transcript]);
   const displayedTroubleWords = useMemo(() => generatedTroubleWords.length > 0 ? generatedTroubleWords : scopedMemoryTroubleWords, [generatedTroubleWords, scopedMemoryTroubleWords]);
 
-  const kidsWordChips = useMemo(() => {
-    if (!isKidsMode) return [];
-    if (displayedTroubleWords.length > 0) return displayedTroubleWords;
-    return normalizeForCompare(practiceText).split(/\s+/).filter(Boolean).filter((word, index, array) => array.indexOf(word) === index).slice(0, 4);
-  }, [displayedTroubleWords, isKidsMode, practiceText]);
+  // Word chips power the "Lặp lại / Repeat" tap-to-hear row beneath the
+  // YOU score bar. Originally kids-only; commit 48ff1ad0 accidentally
+  // removed the rendering. Re-rendered for both modes; pure derivation
+  // lives in ./wordChips for unit testing without mounting the component.
+  const wordChips = useMemo(
+    () => deriveWordChips(displayedTroubleWords, practiceText, isKidsMode),
+    [displayedTroubleWords, isKidsMode, practiceText],
+  );
 
   useEffect(() => {
     if (!transcript || !practiceText || !onMemoryUpdate) return;
@@ -872,6 +876,43 @@ export function MercySpeakTab({
       };
       synth.speak(u);
     });
+  }
+
+  // Single-word "tap to hear" used by the Repeat chip row.
+  // Uses the browser SpeechSynthesis API directly so the call is bound to
+  // the user gesture (some browsers gate speak() on a recent gesture).
+  // Falls back to handleSpeak if the synth API is unavailable or throws.
+  //
+  // UX guard: pause the kids mp3 element before speaking so the two audio
+  // sources don't overlap. speechSynthesis.cancel() only cancels other
+  // in-flight synth utterances — it does NOT touch <audio> playback,
+  // hence the explicit pause. Recording/listening states gate the
+  // button itself (disabled prop in the JSX below) to prevent the chip
+  // TTS from echoing into the mic stream.
+  function speakWordChip(word: string) {
+    const text = cleanText(word);
+    if (!text || typeof window === 'undefined') return;
+    try {
+      if (kidsAudioRef.current) {
+        try { kidsAudioRef.current.pause(); } catch { /* ignore */ }
+      }
+      window.speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = 'en-US';
+      u.rate = 0.85;
+      u.volume = 1.0;
+      const voices = window.speechSynthesis.getVoices();
+      const voice =
+        voices.find((v) => v.lang === 'en-US' && v.name.includes('Samantha')) ||
+        voices.find((v) => v.lang === 'en-US') ||
+        voices[0];
+      if (voice) u.voice = voice;
+      window.speechSynthesis.speak(u);
+    } catch {
+      // Synth unavailable / blocked — fall back to the full handleSpeak
+      // pipeline which has its own kids-mp3 fallback.
+      void handleSpeak(text);
+    }
   }
 
   async function handleSpeak(textOverride?: string) {
@@ -1199,6 +1240,29 @@ export function MercySpeakTab({
                 </div>
               </div>
 
+              {/* Restored from commit 48ff1ad0: tap-to-hear word chip row.
+                  Kids-friendly cream/peach styling. Browser TTS only. */}
+              {wordChips.length > 0 ? (
+                <div className="mt-2 flex items-center gap-2 overflow-x-auto pb-0.5">
+                  <span className="shrink-0 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500">
+                    Lặp lại · Repeat
+                  </span>
+                  {wordChips.map((word) => (
+                    <button
+                      key={word}
+                      type="button"
+                      onClick={() => speakWordChip(word)}
+                      disabled={isRecording || isListening}
+                      aria-label={`Hear pronunciation of ${word}`}
+                      className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-[#F2DDD0] bg-gradient-to-r from-[#FFF5EF] to-white px-2.5 py-1 text-xs font-semibold text-[#875E4B] shadow-sm transition hover:border-[#F0C8B3] hover:bg-[#FFF8F4] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#EFAF95] focus-visible:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                    >
+                      <Volume2 className="h-3.5 w-3.5" />
+                      <span>{word}</span>
+                    </button>
+                  ))}
+                </div>
+              ) : null}
+
               <audio ref={recordedAudioRef} className="hidden" src={recordedAudioUrl || undefined} preload="metadata">Your browser does not support audio playback.</audio>
             </div>
           </div>
@@ -1295,6 +1359,30 @@ export function MercySpeakTab({
             <p className="text-xs font-semibold uppercase tracking-wide text-slate-700">{transcriptLabel}</p>
             <p className="mt-2 min-h-[60px] text-sm leading-8 text-slate-950">{transcript || 'Your transcript will appear here after you speak.'}</p>
           </div>
+
+          {/* Restored from commit 48ff1ad0 — tap-to-hear word chip row,
+              extended to adult mode. Refined slate palette to fit the
+              adult-mode visual language; same browser-TTS handler. */}
+          {wordChips.length > 0 ? (
+            <div className="flex items-center gap-2 overflow-x-auto pb-0.5">
+              <span className="shrink-0 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500">
+                Lặp lại · Repeat
+              </span>
+              {wordChips.map((word) => (
+                <button
+                  key={word}
+                  type="button"
+                  onClick={() => speakWordChip(word)}
+                  disabled={isRecording || isListening}
+                  aria-label={`Hear pronunciation of ${word}`}
+                  className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-slate-200 bg-white px-2.5 py-1 text-[11px] font-semibold text-slate-700 shadow-sm transition hover:border-slate-300 hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  <Volume2 className="h-3.5 w-3.5" />
+                  <span>{word}</span>
+                </button>
+              ))}
+            </div>
+          ) : null}
 
           <audio ref={recordedAudioRef} className="hidden" src={recordedAudioUrl || undefined} preload="metadata">Your browser does not support audio playback.</audio>
         </div>
