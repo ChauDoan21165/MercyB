@@ -19,6 +19,7 @@ const IGNORE_FILES = [
   'components.json',
   'package-lock.json',
   'package.json',
+  'registry.json',
   'tsconfig.app.json',
   'tsconfig.json',
   'tsconfig.node.json',
