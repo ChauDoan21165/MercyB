@@ -17,7 +17,7 @@
  * inside the detector module.
  */
 
-import type { L1Rule } from '../../rule-pack-types';
+import type { L1Rule } from '../../rule-pack-types.js';
 
 import {
   ruleAdjectiveOrder,
@@ -80,7 +80,7 @@ import {
   ruleToVerbConfusion,
   ruleUsedToVsBeUsedTo,
   ruleVeryMuchPlacement,
-} from '../../l1-error-detector';
+} from '../../l1-error-detector.js';
 
 /**
  * Ordered VN rule registry. Numeric comments are the rule's stable

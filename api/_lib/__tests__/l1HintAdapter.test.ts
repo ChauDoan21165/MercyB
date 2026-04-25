@@ -6,7 +6,7 @@
 // junk inputs so no malformed OpenAI response can re-break the endpoint.
 
 import { describe, expect, it } from 'vitest';
-import { firstL1HintFromIssues } from '../l1HintAdapter';
+import { firstL1HintFromIssues } from '../l1HintAdapter.js';
 
 describe('firstL1HintFromIssues — defensive behaviour', () => {
   it('returns null when issues is undefined', () => {

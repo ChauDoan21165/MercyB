@@ -12,8 +12,8 @@
  *      VN-leaning teaching, which is correct for our cohort.
  */
 
-import type { L1RulePack } from '../rule-pack-types';
-import { VN_RULE_PACK } from './vi';
+import type { L1RulePack } from '../rule-pack-types.js';
+import { VN_RULE_PACK } from './vi/index.js';
 
 export const RULE_PACKS: Record<string, L1RulePack> = {
   vi: VN_RULE_PACK,
@@ -34,4 +34,4 @@ export function resolveRulePack(
   return RULE_PACKS[normalised] ?? DEFAULT_RULE_PACK;
 }
 
-export { VN_RULE_PACK } from './vi';
+export { VN_RULE_PACK } from './vi/index.js';

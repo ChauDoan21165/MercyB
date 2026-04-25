@@ -4,7 +4,7 @@ import {
   resolveVinglishFriendlyMode,
   shouldReverseFramingForL1,
   buildVinglishGuidance,
-} from "../vinglish-detector";
+} from "../vinglish-detector.js";
 
 describe("detectVNEnglishCodeSwitch — pure English (no change in behavior)", () => {
   it("returns hasVNTokens=false for plain English sentence", () => {

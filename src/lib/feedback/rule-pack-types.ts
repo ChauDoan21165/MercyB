@@ -31,7 +31,7 @@ import type {
   RuleArgs,
   RuleHit,
   StringTemplate,
-} from "./l1-error-detector";
+} from "./l1-error-detector.js";
 
 export type { L1Rule, RuleArgs, RuleHit, StringTemplate };
 

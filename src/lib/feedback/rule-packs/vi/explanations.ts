@@ -16,7 +16,7 @@
  * cross-language `L1Explanation[]` shape.
  */
 
-import type { L1Explanation } from '../../rule-pack-types';
+import type { L1Explanation } from '../../rule-pack-types.js';
 
 export const VN_EXPLANATIONS: L1Explanation[] = [
   {

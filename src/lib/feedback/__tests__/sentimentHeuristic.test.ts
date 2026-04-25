@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { classifyFeedbackSentiment } from "../sentimentHeuristic";
+import { classifyFeedbackSentiment } from "../sentimentHeuristic.js";
 
 describe("classifyFeedbackSentiment — sentiment buckets", () => {
   it("returns null sentiment for too-short input (< 4 chars)", () => {
