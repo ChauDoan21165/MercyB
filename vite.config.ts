@@ -35,6 +35,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
+import { visualizer } from 'rollup-plugin-visualizer';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -66,6 +67,24 @@ export default defineConfig({
     react({
       jsxRuntime: 'automatic',
     }),
+
+    // Bundle treemap report — only enabled when explicitly requested via
+    // `MB_BUNDLE_VIZ=1 npm run build`. Off by default so production builds
+    // in CI/Vercel don't generate or ship dist/bundle-stats.html. Used
+    // for the bundle audit (reports/a7-bundle-audit.md).
+    ...(process.env.MB_BUNDLE_VIZ === '1'
+      ? [
+          visualizer({
+            filename: 'dist/bundle-stats.html',
+            template: 'treemap',
+            gzipSize: true,
+            brotliSize: false,
+            emitFile: false,
+            open: false,
+            sourcemap: false,
+          }) as never,
+        ]
+      : []),
 
     VitePWA({
       registerType: 'autoUpdate',
@@ -176,6 +195,32 @@ export default defineConfig({
 
           if (isReactPath(s)) return 'react';
           if (s.includes('/node_modules/@supabase/')) return 'supabase';
+
+          // Charts: recharts + transitive d3/decimal/immer/redux that
+          // recharts hauls in. Keeping these out of `vendor` saves ~210 KB
+          // gzip on the home/landing critical path — these libs are only
+          // imported by admin analytics pages today.
+          if (
+            s.includes('/node_modules/recharts/') ||
+            s.includes('/node_modules/d3-scale/') ||
+            s.includes('/node_modules/d3-shape/') ||
+            s.includes('/node_modules/d3-array/') ||
+            s.includes('/node_modules/d3-color/') ||
+            s.includes('/node_modules/d3-format/') ||
+            s.includes('/node_modules/d3-interpolate/') ||
+            s.includes('/node_modules/d3-path/') ||
+            s.includes('/node_modules/d3-time/') ||
+            s.includes('/node_modules/d3-time-format/') ||
+            s.includes('/node_modules/internmap/') ||
+            s.includes('/node_modules/decimal.js-light/') ||
+            s.includes('/node_modules/victory-vendor/') ||
+            s.includes('/node_modules/immer/') ||
+            s.includes('/node_modules/@reduxjs/') ||
+            s.includes('/node_modules/redux/') ||
+            s.includes('/node_modules/reselect/')
+          ) {
+            return 'charts';
+          }
 
           if (
             s.includes('/node_modules/@radix-ui/') ||
