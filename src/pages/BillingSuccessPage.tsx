@@ -43,7 +43,27 @@ export default function BillingSuccessPage() {
 
   useEffect(() => {
     if (!user) return;
-    void refreshEntitlements();
+    // V9 fix (audit-user-journey-v9 Path 4 R8): a single refresh on
+    // mount can land before the Stripe webhook updates the row,
+    // briefly showing "Free access" on a page that says "Your premium
+    // access is now active." Mirror the polling pattern used in
+    // Billing.tsx (pollEntitlementAfterBilling, lines 228–236):
+    // [0, 1.2s, 2.5s, 4.5s] — caps at ~8 s of waiting.
+    let cancelled = false;
+    const delays = [0, 1200, 2500, 4500];
+    (async () => {
+      for (const delay of delays) {
+        if (cancelled) return;
+        if (delay > 0) {
+          await new Promise((resolve) => window.setTimeout(resolve, delay));
+        }
+        if (cancelled) return;
+        await refreshEntitlements();
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
   }, [user, refreshEntitlements]);
 
   const isPremium = useMemo(() => ent?.is_premium === true, [ent]);

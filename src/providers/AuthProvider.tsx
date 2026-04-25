@@ -62,6 +62,53 @@ async function syncRevenueCatOnAuth(userId: string | null): Promise<void> {
 }
 
 /**
+ * V9 fix (audit-user-journey-v9 Path 1 R1): the `handle_new_user()`
+ * SQL trigger inserts a `profiles` row on every new `auth.users`
+ * insert, but has no error handler. If that insert silently fails
+ * (constraint, permissions, transient outage) the user exists in
+ * `auth.users` but no `profiles` row does — premium status, leaderboard,
+ * streak, and Mercy memory all read blank for the rest of the session.
+ *
+ * Backfill on every verified-session event. Idempotent: the SELECT
+ * short-circuits when the row already exists, so we add at most one
+ * round-trip per sign-in. Errors are swallowed (dev-warn only) so a
+ * Supabase hiccup never blocks auth UX.
+ */
+async function backfillProfileRowOnAuth(
+  userId: string | null,
+  email: string | null,
+): Promise<void> {
+  if (!userId) return;
+  try {
+    const { data: existing, error: selectError } = await supabase
+      .from("profiles")
+      .select("id")
+      .eq("id", userId)
+      .maybeSingle();
+    if (selectError) {
+      if (import.meta.env.DEV) {
+        console.warn("[auth] profile backfill check failed:", selectError.message);
+      }
+      return;
+    }
+    if (existing) return;
+    const { error: upsertError } = await supabase
+      .from("profiles")
+      .upsert(
+        { id: userId, email: email ?? null },
+        { onConflict: "id" },
+      );
+    if (upsertError && import.meta.env.DEV) {
+      console.warn("[auth] profile backfill upsert failed:", upsertError.message);
+    }
+  } catch (err) {
+    if (import.meta.env.DEV) {
+      console.warn("[auth] backfillProfileRowOnAuth crashed:", err);
+    }
+  }
+}
+
+/**
  * Fire-and-forget tasks tied to a verified session: push browser timezone
  * on first login, and run the one-time localStorage → server streak
  * migration. Both functions are internally idempotent and guarded by the
@@ -200,9 +247,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             // Sync RevenueCat App User ID with the fresh Supabase session.
             // Uses verified-session filter so unverified emails do not get
             // identified to RevenueCat. Fire-and-forget; no-op on web.
-            const verifiedId =
-              getVerifiedSession(nextSession ?? null)?.user?.id ?? null;
+            const verifiedSession = getVerifiedSession(nextSession ?? null);
+            const verifiedId = verifiedSession?.user?.id ?? null;
+            const verifiedEmail = verifiedSession?.user?.email ?? null;
             void syncRevenueCatOnAuth(verifiedId);
+            // V9 fix: ensure a profiles row exists even if the
+            // handle_new_user() trigger silently failed. Idempotent and
+            // fire-and-forget. See backfillProfileRowOnAuth above.
+            void backfillProfileRowOnAuth(verifiedId, verifiedEmail);
             // Wave 2 Step 2: server-streaks boot tasks. No-op when the
             // feature flag is off. Runs per-session on verified sessions,
             // but each task is internally idempotent.

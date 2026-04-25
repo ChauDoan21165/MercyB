@@ -1064,7 +1064,12 @@ export function MercySpeakTab({
         setIsRecording(false);
         if (!mediaChunksRef.current.length) { setRecordingError('No recording was captured. Please try again.'); stopActiveStream(); return; }
         // Use the recorder's actual mime type so the Blob matches what was encoded.
-        const blobType = recorder.mimeType || supportedType || 'audio/webm';
+        // V9 fix (audit-user-journey-v9 Path 3 R1): on iOS Safari WebView,
+        // recorder.mimeType is sometimes an empty string. Defaulting to
+        // 'audio/webm' there yields a 0-byte / unplayable blob because
+        // iOS Safari can't actually produce webm. Prefer mp4 as the
+        // last-resort fallback — every iOS WebView can decode it.
+        const blobType = recorder.mimeType || supportedType || 'audio/mp4';
         const blob = new Blob(mediaChunksRef.current, { type: blobType });
         setRecordedAudioUrl(URL.createObjectURL(blob));
         stopActiveStream();
