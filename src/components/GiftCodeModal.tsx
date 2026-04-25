@@ -226,6 +226,19 @@ export function GiftCodeModal({
               <li>Premium access is granted based on code duration</li>
               <li>Each code can only be used once</li>
             </ul>
+            <p className="mt-2">
+              Có mã 12 ký tự từ người thân tặng?{" "}
+              <button
+                type="button"
+                onClick={() => {
+                  onOpenChange(false);
+                  navigate("/gift/redeem");
+                }}
+                className="text-primary underline"
+              >
+                Kích hoạt tại /gift/redeem
+              </button>
+            </p>
           </div>
         </div>
       </DialogContent>

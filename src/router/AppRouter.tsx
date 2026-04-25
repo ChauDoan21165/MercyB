@@ -63,6 +63,10 @@ const BlogPost  = lazy(() => import("@/pages/blog/BlogPost"));
 const PublicProfilePage   = lazy(() => import("@/pages/profile/PublicProfilePage"));
 const ShareProgressPage   = lazy(() => import("@/pages/profile/ShareProgressPage"));
 
+const PurchaseGiftPage    = lazy(() => import("@/pages/gift/PurchaseGiftPage"));
+const RedeemGiftPage      = lazy(() => import("@/pages/gift/RedeemGiftPage"));
+const MyGiftsPage         = lazy(() => import("@/pages/gift/MyGiftsPage"));
+
 const GroupsIndex          = lazy(() => import("@/pages/groups/GroupsIndex"));
 const GroupPage            = lazy(() => import("@/pages/groups/GroupPage"));
 const CreateGroupPage      = lazy(() => import("@/pages/groups/CreateGroupPage"));
@@ -584,6 +588,29 @@ export default function AppRouter() {
             element={
               <RequireAuth>
                 <LazyPage><ShareProgressPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+
+          {/* Gift subscriptions (Step 9) — auth-required for all three */}
+          <Route path="/gift"
+            element={
+              <RequireAuth>
+                <LazyPage><PurchaseGiftPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+          <Route path="/gift/redeem"
+            element={
+              <RequireAuth>
+                <LazyPage><RedeemGiftPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+          <Route path="/gift/my"
+            element={
+              <RequireAuth>
+                <LazyPage><MyGiftsPage /></LazyPage>
               </RequireAuth>
             }
           />
