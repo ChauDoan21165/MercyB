@@ -9,14 +9,15 @@ import React from "react";
 
 import SeoMeta from "@/components/seo/SeoMeta";
 import { SeoLayout } from "@/pages/seo/SeoLayout";
+import { PRODUCT_CONFIG } from "@/config/product";
 
 const SLUG = "sua-phat-am-tieng-anh";
-const CANONICAL = `https://mercyblade.com/seo/${SLUG}`;
-const OG_IMAGE = "https://mercyblade.com/og/seo-default.png";
+const CANONICAL = `https://${PRODUCT_CONFIG.domain}/seo/${SLUG}`;
+const OG_IMAGE = `https://${PRODUCT_CONFIG.domain}/og/seo-default.png`;
 
-const TITLE = "Sửa phát âm tiếng Anh cho người Việt — MercyBlade";
+const TITLE = `Sửa phát âm tiếng Anh cho người Việt — ${PRODUCT_CONFIG.name}`;
 const DESCRIPTION =
-  "Sửa phát âm tiếng Anh theo đúng các lỗi người Việt hay mắc — âm cuối, /th/, /r/, trọng âm. Giáo viên Mercy chấm điểm và chỉ chỗ sai trong từng câu.";
+  `Sửa phát âm tiếng Anh theo đúng các lỗi người Việt hay mắc — âm cuối, /th/, /r/, trọng âm. Giáo viên ${PRODUCT_CONFIG.teacher.name} chấm điểm và chỉ chỗ sai trong từng câu.`;
 
 const STRUCTURED_DATA = {
   "@context": "https://schema.org",
@@ -27,8 +28,8 @@ const STRUCTURED_DATA = {
   "inLanguage": "vi-VN",
   "isPartOf": {
     "@type": "WebSite",
-    "name": "MercyBlade",
-    "url": "https://mercyblade.com",
+    "name": PRODUCT_CONFIG.name,
+    "url": `https://${PRODUCT_CONFIG.domain}`,
   },
 };
 
@@ -45,7 +46,7 @@ export default function SuaPhatAmTiengAnhPage() {
       />
       <SeoLayout
         h1="Sửa phát âm tiếng Anh"
-        subheader="MercyBlade chấm điểm phát âm từng câu của bạn và chỉ ra đúng âm bạn đang mắc lỗi — không phải điểm chung chung. Bạn nghe lại giọng mình so với giọng giáo viên trong cùng một màn hình."
+        subheader={`${PRODUCT_CONFIG.name} chấm điểm phát âm từng câu của bạn và chỉ ra đúng âm bạn đang mắc lỗi — không phải điểm chung chung. Bạn nghe lại giọng mình so với giọng giáo viên trong cùng một màn hình.`}
         utmCampaign={SLUG}
       >
         {/* CHAU TODO: replace with real content */}
@@ -65,13 +66,13 @@ export default function SuaPhatAmTiengAnhPage() {
         {/* CHAU TODO: replace with real content */}
         <section>
           <h2 className="text-2xl font-bold text-slate-900 mb-3">
-            MercyBlade chấm phát âm như thế nào?
+            {PRODUCT_CONFIG.name} chấm phát âm như thế nào?
           </h2>
           <p>
             {/* CHAU TODO: explain pronunciation scoring pipeline — record, get
                 phoneme-level feedback, compare with teacher voice. Mention this
                 is feature-flag gated currently if relevant. */}
-            Bạn ghi âm một câu, MercyBlade phân tích từng âm và so sánh với mẫu
+            Bạn ghi âm một câu, {PRODUCT_CONFIG.name} phân tích từng âm và so sánh với mẫu
             giáo viên — chỉ chính xác chỗ bạn sai, không chỉ đưa điểm tổng.
           </p>
         </section>
