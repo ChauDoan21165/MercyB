@@ -1,0 +1,156 @@
+[
+  {
+    "en": "Hi, welcome in! What service today?",
+    "vi": "Dạ, chào cô, hôm nay cô làm gì ạ?",
+    "register": "greeting",
+    "when_to_use_vi": "Câu mở đầu khi khách bước vào — ngắn, giọng tươi, không 'thank you very much' đầu câu (nghe sách giáo khoa)."
+  },
+  {
+    "en": "Have a seat right here, please.",
+    "vi": "Mời cô ngồi ghế này ạ.",
+    "register": "greeting",
+    "when_to_use_vi": "Mời khách ngồi vào ghế chỉ định. 'Right here' nghe ấm hơn 'over there'."
+  },
+  {
+    "en": "Do you have an appointment, or are you a walk-in?",
+    "vi": "Cô có hẹn trước không, hay walk-in ạ?",
+    "register": "greeting",
+    "when_to_use_vi": "Hỏi để check lịch — quản lý quý người làm rõ ngay từ đầu."
+  },
+  {
+    "en": "Are you allergic to anything?",
+    "vi": "Cô có dị ứng gì không ạ?",
+    "register": "service",
+    "when_to_use_vi": "Bắt buộc hỏi trước khi đụng acetone, gel, hay sáp parafin. Bảo vệ tiệm khỏi rắc rối pháp lý.",
+    "common_response_en": "No, I'm fine."
+  },
+  {
+    "en": "What color are you thinking?",
+    "vi": "Cô tính chọn màu nào ạ?",
+    "register": "service",
+    "when_to_use_vi": "Hỏi mở để khách dẫn dắt. Tự nhiên hơn 'What color do you want?'.",
+    "common_response_en": "Maybe something pink — do you have suggestions?"
+  },
+  {
+    "en": "Would you like square, round, or almond?",
+    "vi": "Cô muốn kiểu vuông, tròn, hay hạnh nhân ạ?",
+    "register": "service",
+    "when_to_use_vi": "Hỏi dáng móng. Đưa ba lựa chọn cụ thể giúp khách quyết nhanh.",
+    "common_response_en": "Square, please."
+  },
+  {
+    "en": "How is the temperature? Too hot?",
+    "vi": "Nước có nóng quá không cô?",
+    "register": "service",
+    "when_to_use_vi": "Khi khách vừa thả chân vào bồn pedicure. Hỏi sớm trước khi khách ngại nói."
+  },
+  {
+    "en": "Let me know if it hurts at all.",
+    "vi": "Có đau là cô báo em ngay nha.",
+    "register": "service",
+    "when_to_use_vi": "Trước khi cắt da hay dũa. Khách quý người chủ động xin phản hồi."
+  },
+  {
+    "en": "Your cuticles are a little dry — would you like cuticle oil?",
+    "vi": "Da quanh móng cô hơi khô — em xài thêm dầu dưỡng cho cô được không ạ?",
+    "register": "upsell",
+    "when_to_use_vi": "Upsell tự nhiên: nêu một vấn đề có thật, đề nghị giải pháp cụ thể. Không ép."
+  },
+  {
+    "en": "We have a paraffin treatment that helps with dry skin — want to try it today?",
+    "vi": "Tiệm em có ngâm sáp parafin giúp mềm da — cô thử bữa nay không ạ?",
+    "register": "upsell",
+    "when_to_use_vi": "Upsell có context (skin khô). Câu chốt 'today' tạo ưu đãi nhẹ."
+  },
+  {
+    "en": "Would you like to add a quick massage at the end?",
+    "vi": "Cuối buổi cô có muốn em xoa bóp nhanh thêm không ạ?",
+    "register": "upsell",
+    "when_to_use_vi": "Upsell cuối — nhẹ, dễ từ chối. 'Quick' giảm áp lực thời gian."
+  },
+  {
+    "en": "I'm sorry — let me fix that for you right now.",
+    "vi": "Em xin lỗi — để em sửa cho cô liền.",
+    "register": "complaint",
+    "when_to_use_vi": "Khách phàn nàn (sơn lệch, móng không đều). Xin lỗi + hành động ngay, không đổ lỗi."
+  },
+  {
+    "en": "Can you show me which one isn't right?",
+    "vi": "Cô chỉ cho em chỗ nào chưa được ạ?",
+    "register": "complaint",
+    "when_to_use_vi": "Yêu cầu khách chỉ rõ. Tránh sửa nhầm chỗ + cho khách cảm giác được lắng nghe."
+  },
+  {
+    "en": "I'll redo it — no charge.",
+    "vi": "Em làm lại — không tính tiền thêm ạ.",
+    "register": "complaint",
+    "when_to_use_vi": "Khi tiệm có lỗi rõ. 'No charge' nói thẳng để khách yên tâm."
+  },
+  {
+    "en": "I see — let me ask the owner about that.",
+    "vi": "Dạ em nghe rồi — để em hỏi chủ về việc này ạ.",
+    "register": "complaint",
+    "when_to_use_vi": "Khi khách yêu cầu giảm giá hay đổi chính sách. Đừng tự hứa khi không có quyền."
+  },
+  {
+    "en": "All set! Take a look — happy with everything?",
+    "vi": "Xong rồi cô! Cô xem lại có vừa ý hết không ạ?",
+    "register": "closing",
+    "when_to_use_vi": "Câu chốt khi xong dịch vụ. Khách kiểm tra ngay tốt hơn để sau khi rời tiệm.",
+    "common_response_en": "It looks great, thank you!"
+  },
+  {
+    "en": "Please be careful — the polish needs about ten more minutes to fully dry.",
+    "vi": "Cô đi nhẹ giúp em — sơn cần khoảng mười phút nữa mới khô hẳn.",
+    "register": "closing",
+    "when_to_use_vi": "Trước khi khách rời ghế. Cụ thể về thời gian giúp khách giữ móng đẹp lâu hơn."
+  },
+  {
+    "en": "Cash, card, or Zelle?",
+    "vi": "Cô trả tiền mặt, thẻ, hay Zelle ạ?",
+    "register": "closing",
+    "when_to_use_vi": "Hỏi phương thức thanh toán. Liệt kê ba lựa chọn phổ biến giúp khách quyết nhanh."
+  },
+  {
+    "en": "Your total comes to forty-five dollars.",
+    "vi": "Tổng cộng bốn lăm đô la ạ.",
+    "register": "closing",
+    "when_to_use_vi": "Báo giá tổng. Đọc rõ con số, không nuốt phụ âm cuối ('forty-five' không phải 'forty fi')."
+  },
+  {
+    "en": "Tip is appreciated but never required — whatever feels right.",
+    "vi": "Tip cô tùy lòng — em rất cảm ơn, nhưng không bắt buộc ạ.",
+    "register": "tip",
+    "when_to_use_vi": "Khi khách hỏi 'how much should I tip?'. Câu này tôn trọng, không ép."
+  },
+  {
+    "en": "Most of our customers tip around fifteen to twenty percent — but really, it's up to you.",
+    "vi": "Khách của tiệm hay tip mười lăm đến hai mươi phần trăm — nhưng tùy cô ạ.",
+    "register": "tip",
+    "when_to_use_vi": "Khi khách hỏi cụ thể bao nhiêu là phù hợp. Đưa khoảng phổ biến + tôn trọng quyết định khách."
+  },
+  {
+    "en": "Thank you so much! Have a wonderful day.",
+    "vi": "Em cảm ơn cô nhiều ạ! Chúc cô một ngày vui.",
+    "register": "closing",
+    "when_to_use_vi": "Câu tiễn khách. 'Wonderful day' tự nhiên hơn 'good day' (sách giáo khoa)."
+  },
+  {
+    "en": "See you in two to three weeks for your next fill?",
+    "vi": "Hẹn gặp lại cô trong hai ba tuần để dặm móng nha?",
+    "register": "closing",
+    "when_to_use_vi": "Xây thói quen quay lại. Hỏi mở (rising tone) — cảm giác mời chứ không bắt buộc."
+  },
+  {
+    "en": "Would you like a business card so you can ask for me next time?",
+    "vi": "Cô lấy danh thiếp để lần sau hỏi đúng em được không ạ?",
+    "register": "closing",
+    "when_to_use_vi": "Xây khách quen của riêng mình. Tip thường tăng cho thợ được khách 'request'."
+  },
+  {
+    "en": "I noticed something on your nail — you might want to see a doctor.",
+    "vi": "Em thấy móng cô có chỗ hơi lạ — có lẽ cô nên đi khám bác sĩ ạ.",
+    "register": "complaint",
+    "when_to_use_vi": "Khi nghi ngờ nấm hoặc nhiễm trùng. KHÔNG dùng từ 'fungus' / 'infection' trực tiếp — gây hoảng. 'Something' nhẹ nhàng + đề nghị bác sĩ."
+  }
+]
