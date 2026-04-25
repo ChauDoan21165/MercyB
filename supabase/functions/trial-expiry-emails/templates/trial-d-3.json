@@ -1,0 +1,10 @@
+{
+  "campaign": "trial_expiry_d_minus_3",
+  "stage": "D_minus_3",
+  "tone": "warm, optimistic, teacher excitement",
+  "subject_vi": "Còn 3 ngày nữa thôi — Mercy đã chuẩn bị một bài hay",
+  "subject_en": "3 days to go — Mercy has something good lined up for you",
+  "body_vi": "Chào {{first_name}},\n\nHôm nay là ngày thứ 1 trong tuần dùng thử của bạn. Mercy thấy vui khi có bạn ở đây.\n\nCòn 3 ngày nữa là hết tuần dùng thử. Mercy đã chuẩn bị một vài phòng học rất hợp với trình độ của bạn — bạn thử ghé qua nhé:\n\n• Một bài luyện phát âm 10 phút\n• Một bài hội thoại tiếng Anh ngắn\n• Một bài chữa lỗi nhỏ mà người Việt hay mắc\n\nMở MercyBlade: https://mercyblade.com\n\nKhông áp lực gì — chỉ là Mercy không muốn bạn bỏ lỡ.\n\nMercy 💚",
+  "body_en": "Hi {{first_name}},\n\nToday is day 1 of your trial week. Mercy is glad to have you here.\n\n3 days from now your trial wraps up. Mercy lined up a few rooms that fit your level — pop in when you have a moment:\n\n• A 10-minute pronunciation drill\n• A short English conversation\n• One of the mistakes Vietnamese speakers make most often\n\nOpen MercyBlade: https://mercyblade.com\n\nNo pressure — Mercy just doesn't want you to miss it.\n\nMercy 💚",
+  "notes": "D-3 is the 'we're excited' beat. Tone: teacher who prepared for class. NO countdown clocks, NO 'don't lose your progress' language, NO upgrade CTA buttons. Just a warm reminder that there's something to come back for."
+}

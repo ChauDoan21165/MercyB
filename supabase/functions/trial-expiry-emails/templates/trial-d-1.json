@@ -1,0 +1,10 @@
+{
+  "campaign": "trial_expiry_d_minus_1",
+  "stage": "D_minus_1",
+  "tone": "gentle, honest, low-friction",
+  "subject_vi": "Tuần dùng thử của bạn còn 24 giờ",
+  "subject_en": "Your trial wraps up in about 24 hours",
+  "body_vi": "Chào {{first_name}},\n\nTuần dùng thử MercyBlade của bạn sắp kết thúc — còn khoảng 24 giờ nữa.\n\nNếu tuần này bạn bận quá chưa thử được, không sao cả. Mercy chỉ muốn bạn biết:\n\n• Tài khoản của bạn vẫn còn nguyên — đăng nhập là dùng lại được.\n• Sau khi tuần dùng thử kết thúc, các phòng học cao cấp sẽ tạm khoá. Phần miễn phí (kids mode + một số phòng cơ bản) vẫn dùng được bình thường.\n• Nếu thích thì nâng cấp lúc nào cũng được — không vội: https://mercyblade.com/pricing\n\nDù bạn quay lại hay không, Mercy cảm ơn bạn đã cho thử nha.\n\nMercy 💚",
+  "body_en": "Hi {{first_name}},\n\nYour MercyBlade trial wraps up in about 24 hours.\n\nIf this week was too busy to try anything yet, no problem. Mercy just wants you to know:\n\n• Your account stays — sign back in any time.\n• After the trial ends, premium rooms pause. Kids mode and a few free rooms keep working as before.\n• If you'd like to upgrade, any time works — no rush: https://mercyblade.com/pricing\n\nWhether you come back or not, thanks for giving it a try.\n\nMercy 💚",
+  "notes": "D-1 is the 'gentle honest' beat. Includes the upgrade link but also explicitly says 'no rush'. Mentions that the account stays — softens the loss-aversion fear that closing is final. NO red banners, NO 'last chance', NO countdown timer."
+}
