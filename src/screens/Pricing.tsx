@@ -25,6 +25,7 @@ import {
 import { LifetimeTierCard } from "@/components/pricing/LifetimeTierCard";
 import PaywallExperiment from "@/components/pricing/PaywallExperiment";
 import { useAuth } from "@/providers/AuthProvider";
+import FounderQuoteCard from "@/components/founder/FounderQuoteCard";
 
 type PlanKey = "level0" | "month" | "year";
 type PaidPlanKey = "month" | "year";
@@ -895,6 +896,11 @@ export default function Pricing() {
           ? "Subscriptions are billed through your Apple ID and managed in Apple ID → Subscriptions."
           : "Payments are processed securely through Stripe. Existing subscribers are managed through Stripe Billing Portal."}
       </p>
+
+      {/* Founder voice — short Chau quote for paywall conviction (Step 11). */}
+      <div style={{ marginTop: 20 }}>
+        <FounderQuoteCard context="pricing" seed="pricing-screen" />
+      </div>
 
       {/* Subscription disclosure — required by Apple 3.1.2(c) + Google Play */}
       <div style={{ marginTop: 20, padding: 14, borderRadius: 12, border: "1px solid rgba(0,0,0,0.08)", background: "#f8fafc", fontSize: 12, lineHeight: 1.6, color: "#475569" }}>
