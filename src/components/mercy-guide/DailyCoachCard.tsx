@@ -5,13 +5,14 @@
  */
 
 import React from "react";
-import { CheckCircle2, RefreshCw, Sparkles } from "lucide-react";
+import { CheckCircle2, RefreshCw, Sparkles, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import type { CompanionProfile } from "@/services/companion";
 import type { TroubleWord } from "./shared";
 import type { UseSpeakPracticeResult } from "./hooks/useSpeakPractice";
 import { useDailyCoach } from "./hooks/useDailyCoach";
+import { DAILY_COACH_COPY } from "./hooks/dailyCoachCopy";
 
 interface DailyCoachCardProps {
   profile: CompanionProfile;
@@ -19,6 +20,12 @@ interface DailyCoachCardProps {
   troubleWords: TroubleWord[] | any[];
   speakPractice: UseSpeakPracticeResult;
   onOpenSpeak: () => void;
+  /**
+   * Authenticated user id. When supplied, the card surfaces today's
+   * daily challenge + XP earned. Guests/unauthenticated views can omit
+   * this and the challenge sub-card is hidden.
+   */
+  userId?: string | null;
 }
 
 export function DailyCoachCard({
@@ -27,6 +34,7 @@ export function DailyCoachCard({
   troubleWords,
   speakPractice,
   onOpenSpeak,
+  userId,
 }: DailyCoachCardProps) {
   const coach = useDailyCoach({
     profile: {
@@ -39,10 +47,85 @@ export function DailyCoachCard({
     troubleWords: troubleWords as any,
     speakPractice: speakPractice as any,
     onOpenSpeak,
+    userId,
   });
+
+  const challengeVisible = userId && coach.challenge !== null;
+  const challengeKindBadge =
+    coach.challenge?.challenge_kind ?? null;
+  const challengePromptVi =
+    (coach.challenge?.challenge_payload as { prompt_vi?: string } | null)?.prompt_vi ?? null;
 
   return (
     <div className="rounded-xl border border-primary/15 bg-primary/5 p-4">
+      {challengeVisible && (
+        <div className="mb-3 rounded-lg border border-primary/15 bg-white/80 p-3">
+          <div className="flex items-start gap-2">
+            <Trophy className="mt-0.5 h-4 w-4 text-primary" />
+            <div className="min-w-0 flex-1">
+              <div className="flex items-center justify-between gap-2">
+                <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                  {DAILY_COACH_COPY.challengeHeading.vi}
+                </p>
+                {challengeKindBadge && (
+                  <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-medium uppercase text-primary">
+                    {challengeKindBadge}
+                  </span>
+                )}
+              </div>
+
+              {coach.challengeUiState === "loading" && (
+                <p className="mt-1 text-sm text-muted-foreground">
+                  {DAILY_COACH_COPY.loading.vi}
+                </p>
+              )}
+
+              {coach.challengeUiState !== "loading" && challengePromptVi && (
+                <p className="mt-1 text-sm font-medium text-foreground">
+                  {challengePromptVi}
+                </p>
+              )}
+
+              {coach.challengeUiState === "pending" && (
+                <>
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    {DAILY_COACH_COPY.pendingHint.vi}
+                  </p>
+                  <Button
+                    size="sm"
+                    className="mt-2"
+                    onClick={() => void coach.markChallengeDone()}
+                  >
+                    {DAILY_COACH_COPY.markDoneCta.vi}
+                  </Button>
+                </>
+              )}
+
+              {coach.challengeUiState === "in-progress" && (
+                <p className="mt-1 text-xs text-muted-foreground">
+                  {DAILY_COACH_COPY.inProgressLabel.vi}
+                </p>
+              )}
+
+              {coach.challengeUiState === "done" && (
+                <div className="mt-1 flex items-center gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-primary" />
+                  <p className="text-xs font-medium text-primary">
+                    {DAILY_COACH_COPY.doneLabel.vi}
+                    {coach.challengeXpAwarded > 0 && (
+                      <>
+                        {" · "}
+                        {DAILY_COACH_COPY.earnedXp(coach.challengeXpAwarded).vi}
+                      </>
+                    )}
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="flex items-start gap-3">
         <div className="rounded-full bg-white/80 p-2 shadow-sm">
           {coach.state === "complete" ? (

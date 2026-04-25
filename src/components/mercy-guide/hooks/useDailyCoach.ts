@@ -3,6 +3,11 @@
  */
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import {
+  completeDaily,
+  generateDaily,
+  type DailyChallengeRow,
+} from '@/lib/xp/dailyChallenge';
 
 type DailyCoachState = 'idle' | 'intro' | 'feedback' | 'complete';
 
@@ -46,7 +51,15 @@ interface UseDailyCoachParams {
   troubleWords?: TroubleWordLike[] | string[];
   speakPractice: SpeakPracticeLike;
   onOpenSpeak: () => void;
+  /**
+   * When provided, the hook surfaces today's challenge row from
+   * daily_challenges and exposes a markChallengeDone callback.
+   * Omitted for guests/unauthenticated views — challenge stays null.
+   */
+  userId?: string | null;
 }
+
+export type ChallengeUiState = 'loading' | 'pending' | 'in-progress' | 'done';
 
 const STORAGE_KEY_PREFIX = 'mercy-daily-coach';
 const FALLBACK_PHRASES = [
@@ -256,6 +269,7 @@ export function useDailyCoach({
   troubleWords,
   speakPractice,
   onOpenSpeak,
+  userId,
 }: UseDailyCoachParams) {
   const [manualState, setManualState] = useState<Exclude<DailyCoachState, 'feedback'>>(() =>
     loadCompletedToday(profile) ? 'complete' : 'idle'
@@ -369,6 +383,59 @@ export function useDailyCoach({
     setManualState('idle');
   }, [phraseCandidates.length, profile, speakPractice]);
 
+  // ── Daily challenge layer (only when a userId is supplied) ─────────────
+  const todayISO = getTodayKey();
+  const [challenge, setChallenge] = useState<DailyChallengeRow | null>(null);
+  const [challengeLoading, setChallengeLoading] = useState<boolean>(Boolean(userId));
+  const [challengeMutating, setChallengeMutating] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (!userId) {
+      setChallenge(null);
+      setChallengeLoading(false);
+      return;
+    }
+
+    let cancelled = false;
+    setChallengeLoading(true);
+    void generateDaily(userId, todayISO).then((row) => {
+      if (cancelled) return;
+      setChallenge(row);
+      setChallengeLoading(false);
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [userId, todayISO]);
+
+  const challengeUiState: ChallengeUiState = challengeLoading
+    ? 'loading'
+    : challenge?.completed
+      ? 'done'
+      : challengeMutating
+        ? 'in-progress'
+        : 'pending';
+
+  const markChallengeDone = useCallback(async () => {
+    if (!userId || !challenge || challenge.completed) return;
+    setChallengeMutating(true);
+    const result = await completeDaily(userId, todayISO);
+    if (result.ok) {
+      setChallenge((prev) =>
+        prev
+          ? {
+              ...prev,
+              completed: true,
+              completed_at: new Date().toISOString(),
+              xp_awarded: result.xpAwarded,
+            }
+          : prev,
+      );
+    }
+    setChallengeMutating(false);
+  }, [challenge, todayISO, userId]);
+
   return {
     state,
     phrase,
@@ -385,5 +452,9 @@ export function useDailyCoach({
     tryOnceMore,
     finishToday,
     practiceAnother,
+    challenge,
+    challengeUiState,
+    challengeXpAwarded: challenge?.xp_awarded ?? 0,
+    markChallengeDone,
   };
 }
