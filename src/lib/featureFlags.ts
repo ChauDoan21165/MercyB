@@ -57,6 +57,42 @@ export const FEATURE_FLAGS = {
 };
 
 /**
+ * Stable hash bucket for percentage-based feature-flag rollout.
+ *
+ * Returns a deterministic integer in [0, 99] for any non-empty user id.
+ * The same userId always returns the same bucket — across page loads,
+ * across machines, and across server/client boundaries — so a user
+ * who is in cohort < N stays in cohort < N as the percentage advances.
+ *
+ * Implementation: 32-bit FNV-1a over the string's char codes, then
+ * `% 100`. FNV-1a is fast, dependency-free, and produces a near-uniform
+ * distribution for UUID-shaped inputs (verified by the companion test).
+ *
+ * @throws TypeError when `userId` is null, undefined, or empty/whitespace.
+ *   Empty inputs are an integration bug — silently returning bucket 0
+ *   would hide the bug and quietly enable the flag for one user out of
+ *   every hundred who hit the unauthenticated path.
+ */
+export function getUserHashBucket(userId: string | null | undefined): number {
+  if (typeof userId !== "string" || userId.trim().length === 0) {
+    throw new TypeError(
+      "getUserHashBucket: userId must be a non-empty string",
+    );
+  }
+
+  // 32-bit FNV-1a hash.
+  // Constants per http://www.isthe.com/chongo/tech/comp/fnv/
+  let hash = 0x811c9dc5; // FNV offset basis
+  for (let i = 0; i < userId.length; i++) {
+    hash ^= userId.charCodeAt(i) & 0xff;
+    // Multiply by FNV prime (0x01000193) modulo 2^32.
+    hash = Math.imul(hash, 0x01000193) >>> 0;
+  }
+
+  return hash % 100;
+}
+
+/**
  * Minimal structural type for a Supabase client — accepts both the browser
  * singleton from `@/lib/supabaseClient` and a server-side client built with
  * the service-role key. We only need the `.from(...).select(...).eq(...)`
@@ -72,7 +108,11 @@ type MinimalSupabaseClient = {
       ) => {
         maybeSingle: () => Promise<{
           data:
-            | { is_enabled: boolean | null; enabled_user_ids: string[] | null }
+            | {
+                is_enabled: boolean | null;
+                enabled_user_ids: string[] | null;
+                rollout_percentage?: number | null;
+              }
             | null;
           error: { message: string } | null;
         }>;
@@ -83,16 +123,19 @@ type MinimalSupabaseClient = {
 
 /**
  * Server-side flag resolver. Resolution order (kept in sync with the
- * migration at supabase/migrations/20260424010000_feature_flags_per_user_cohort.sql
- * and the browser hook at src/hooks/useFeatureFlag.ts):
+ * migrations at supabase/migrations/20260424010000_feature_flags_per_user_cohort.sql
+ * and 20260426010000_feature_flags_rollout_percentage.sql, and the browser
+ * hook at src/hooks/useFeatureFlag.ts):
  *
- *   1. If enabled_user_ids contains userId             → ON
- *   2. Else if is_enabled = true                       → ON (global)
- *   3. Else (row missing, error, or null userId)       → OFF
+ *   1. enabled_user_ids contains userId                                    → ON
+ *   2. rollout_percentage IS NOT NULL AND bucket(userId) < percentage      → ON  (new)
+ *   3. is_enabled = true                                                   → ON (global)
+ *   4. else (row missing, error, or null userId)                           → OFF
  *
  * Safe to call with a null/undefined userId — unauthenticated callers fall
- * through to the global toggle only. Never throws; any error is logged and
- * the function returns false so a misconfigured flag always fails closed.
+ * through to the global toggle only (the percentage step is skipped because
+ * we can't bucket without a stable id). Never throws; any error is logged
+ * and the function returns false so a misconfigured flag always fails closed.
  */
 export async function isFlagEnabledForUser(
   client: MinimalSupabaseClient,
@@ -102,7 +145,7 @@ export async function isFlagEnabledForUser(
   try {
     const { data, error } = await client
       .from("feature_flags")
-      .select("is_enabled, enabled_user_ids")
+      .select("is_enabled, enabled_user_ids, rollout_percentage")
       .eq("flag_key", flagKey)
       .maybeSingle();
 
@@ -119,6 +162,13 @@ export async function isFlagEnabledForUser(
       ? data.enabled_user_ids
       : [];
     if (userId && cohort.includes(userId)) return true;
+
+    const percentage =
+      typeof data.rollout_percentage === "number" ? data.rollout_percentage : null;
+    if (percentage !== null && userId) {
+      const bucket = getUserHashBucket(userId);
+      if (bucket < percentage) return true;
+    }
 
     return !!data.is_enabled;
   } catch (err) {
