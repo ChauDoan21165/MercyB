@@ -312,10 +312,27 @@ export default function Home() {
   };
 
   const handleTeacherMercy = () => {
-    if (typeof window !== "undefined") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      window.dispatchEvent(new CustomEvent("mercy-guide:focus"));
+    if (typeof window === "undefined" || typeof document === "undefined") return;
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    // Find the floating Mercy bubble and click it to open the panel.
+    // The bubble has aria-label "Open Mercy Guide" or "Open Teacher Mercy for kids".
+    const bubble =
+      document.querySelector<HTMLButtonElement>('[aria-label="Open Mercy Guide"]') ||
+      document.querySelector<HTMLButtonElement>('[aria-label="Open Teacher Mercy for kids"]');
+
+    if (bubble) {
+      bubble.click();
+    } else {
+      console.warn(
+        "[Home] Teacher Mercy bubble not found; cannot open panel. " +
+        "User may be unauthenticated or trial expired."
+      );
     }
+
+    // Backwards-compat custom event (no current listener; kept for future).
+    window.dispatchEvent(new CustomEvent("mercy-guide:focus"));
   };
 
   // ── Teacher Mercy hero card ────────────────────────────────────────────────
