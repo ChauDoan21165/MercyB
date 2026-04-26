@@ -366,7 +366,6 @@ export async function handleRequest(req: Request, deps: Deps): Promise<Response>
         ReferenceText: targetText,
         GradingSystem: "HundredMark",
         Granularity: "Phoneme",
-        Dimension: "Comprehensive",
         EnableMiscue: true,
       };
       // Azure's Pronunciation-Assessment header requires base64url
