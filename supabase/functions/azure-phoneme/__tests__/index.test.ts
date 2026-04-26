@@ -75,14 +75,27 @@ function buildSilentWav(seconds: number): Uint8Array {
 
 // ── Deps factory ──────────────────────────────────────────────────────────
 
+/**
+ * Default profile shape for tests: free tier (0), trial active for the
+ * next hour. Override via `makeDeps({ fetchUserProfile: ... })`.
+ */
+function activeTrialProfile() {
+  const oneHourFromNow = new Date(Date.now() + 60 * 60 * 1000).toISOString();
+  return {
+    trial_expires_at: oneHourFromNow,
+    trial_ends_at: null,
+    trial_end: null,
+    tier: 0,
+  };
+}
+
 function makeDeps(overrides: Partial<Deps> = {}): Deps {
   return {
     getUserFromAuthHeader: vi.fn().mockResolvedValue({ id: "user-1" }),
     rateLimit: vi.fn().mockResolvedValue(undefined),
     fetch: vi.fn(),
     checkAiBudget: vi.fn().mockResolvedValue({ allowed: true }),
-    getUserTier: vi.fn().mockResolvedValue(0),
-    countOkAttemptsToday: vi.fn().mockResolvedValue(0),
+    fetchUserProfile: vi.fn().mockResolvedValue(activeTrialProfile()),
     sumGlobalCostToday: vi.fn().mockResolvedValue(0),
     audit: vi.fn().mockResolvedValue(undefined),
     logAttempt: vi.fn().mockResolvedValue(undefined),
@@ -93,6 +106,24 @@ function makeDeps(overrides: Partial<Deps> = {}): Deps {
     azureTimeoutMs: 50,
     ...overrides,
   };
+}
+
+/** Synthetic Azure happy-path response builder. */
+function azureSuccessResponse(): Response {
+  return new Response(
+    JSON.stringify({
+      RecognitionStatus: "Success",
+      DisplayText: "I think this is going to work",
+      NBest: [{
+        PronunciationAssessment: { AccuracyScore: 89 },
+        Words: [
+          { Word: "I", PronunciationAssessment: { AccuracyScore: 90 }, Phonemes: [] },
+          { Word: "think", PronunciationAssessment: { AccuracyScore: 67 }, Phonemes: [] },
+        ],
+      }],
+    }),
+    { status: 200, headers: { "Content-Type": "application/json" } },
+  );
 }
 
 function makeRequest(audio?: Uint8Array, target = "I think this is going to work"): Request {
@@ -368,7 +399,144 @@ describe("AZURE_PHONEME_LIMITS", () => {
   it("exports the constants the Day-2 client needs to align with", () => {
     expect(AZURE_PHONEME_LIMITS.MAX_AUDIO_SECONDS).toBe(60);
     expect(AZURE_PHONEME_LIMITS.MAX_BYTES).toBe(2 * 1024 * 1024);
-    expect(AZURE_PHONEME_LIMITS.DAILY_CAP_FREE).toBe(10);
-    expect(AZURE_PHONEME_LIMITS.DAILY_CAP_PAID).toBe(60);
+    expect(AZURE_PHONEME_LIMITS.RATE_LIMIT_MAX_CALLS).toBe(30);
+    expect(AZURE_PHONEME_LIMITS.AZURE_TIMEOUT_MS).toBe(15_000);
+  });
+
+  it("does NOT export per-day attempt caps anymore — trial is the gate", () => {
+    expect(
+      (AZURE_PHONEME_LIMITS as Record<string, unknown>).DAILY_CAP_FREE,
+    ).toBeUndefined();
+    expect(
+      (AZURE_PHONEME_LIMITS as Record<string, unknown>).DAILY_CAP_PAID,
+    ).toBeUndefined();
+  });
+});
+
+// ── Trial gating ──────────────────────────────────────────────────────────
+
+describe("handleRequest — trial gating", () => {
+  it("trial-expired free user → 200 use_local:true reason='trial_expired'", async () => {
+    const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000).toISOString();
+    const deps = makeDeps({
+      fetchUserProfile: vi.fn().mockResolvedValue({
+        trial_expires_at: oneHourAgo,
+        trial_ends_at: null,
+        trial_end: null,
+        tier: 0,
+      }),
+      // Azure fetch should NOT be called when trial is expired.
+      fetch: vi.fn(),
+    });
+    const req = makeRequest(buildSilentWav(2));
+    const res = await handleRequest(req, deps);
+
+    expect(res.status).toBe(200);
+    const body = (await res.json()) as { ok: boolean; use_local: boolean; reason: string };
+    expect(body.ok).toBe(false);
+    expect(body.use_local).toBe(true);
+    expect(body.reason).toBe("trial_expired");
+    // No Azure call on the trial-expired path.
+    expect(deps.fetch).not.toHaveBeenCalled();
+    expect(deps.logAttempt).not.toHaveBeenCalled();
+    // Audited as budget_exceeded with the trial_expired marker.
+    expect(deps.audit).toHaveBeenCalledWith(
+      expect.objectContaining({
+        status: "budget_exceeded",
+        errorMsg: "trial_expired",
+      }),
+    );
+  });
+
+  it("trial-active free user → cloud succeeds (200, ok:true)", async () => {
+    const deps = makeDeps({
+      // Default makeDeps already gives an active-trial profile.
+      fetch: vi.fn().mockResolvedValue(azureSuccessResponse()),
+    });
+    const req = makeRequest(buildSilentWav(2));
+    const res = await handleRequest(req, deps);
+
+    expect(res.status).toBe(200);
+    const body = (await res.json()) as { ok: boolean; provider: string };
+    expect(body.ok).toBe(true);
+    expect(body.provider).toBe("azure");
+    expect(deps.fetch).toHaveBeenCalledOnce();
+  });
+
+  it("paid user (tier >= 1) → cloud succeeds even when all trial dates are in the past", async () => {
+    const longExpired = new Date("2020-01-01T00:00:00Z").toISOString();
+    const deps = makeDeps({
+      fetchUserProfile: vi.fn().mockResolvedValue({
+        trial_expires_at: longExpired,
+        trial_ends_at: longExpired,
+        trial_end: longExpired,
+        tier: 2, // premium subscriber
+      }),
+      fetch: vi.fn().mockResolvedValue(azureSuccessResponse()),
+    });
+    const req = makeRequest(buildSilentWav(2));
+    const res = await handleRequest(req, deps);
+
+    expect(res.status).toBe(200);
+    const body = (await res.json()) as { ok: boolean; provider: string };
+    expect(body.ok).toBe(true);
+    expect(body.provider).toBe("azure");
+    // The trial-expired sentinel was NOT returned despite expired dates.
+  });
+
+  it("user profile fetch fails → cloud still allowed (don't block on infra error)", async () => {
+    const deps = makeDeps({
+      fetchUserProfile: vi
+        .fn()
+        .mockRejectedValue(new Error("postgres_unreachable")),
+      fetch: vi.fn().mockResolvedValue(azureSuccessResponse()),
+    });
+    const req = makeRequest(buildSilentWav(2));
+    const res = await handleRequest(req, deps);
+
+    expect(res.status).toBe(200);
+    const body = (await res.json()) as { ok: boolean };
+    expect(body.ok).toBe(true);
+    expect(deps.fetch).toHaveBeenCalledOnce();
+    // The infra error was logged via audit so we can spot it later.
+    const profileAudit = (deps.audit as ReturnType<typeof vi.fn>).mock.calls.find(
+      (call) =>
+        typeof (call[0] as { errorMsg?: string }).errorMsg === "string" &&
+        ((call[0] as { errorMsg: string }).errorMsg.startsWith(
+          "trial_check_profile_threw",
+        )),
+    );
+    expect(profileAudit).toBeDefined();
+  });
+
+  it("missing profile row (null) → cloud still allowed (legacy users)", async () => {
+    const deps = makeDeps({
+      fetchUserProfile: vi.fn().mockResolvedValue(null),
+      fetch: vi.fn().mockResolvedValue(azureSuccessResponse()),
+    });
+    const req = makeRequest(buildSilentWav(2));
+    const res = await handleRequest(req, deps);
+
+    expect(res.status).toBe(200);
+    const body = (await res.json()) as { ok: boolean };
+    expect(body.ok).toBe(true);
+  });
+
+  it("all trial timestamps null → treated as not expired (legacy free users)", async () => {
+    const deps = makeDeps({
+      fetchUserProfile: vi.fn().mockResolvedValue({
+        trial_expires_at: null,
+        trial_ends_at: null,
+        trial_end: null,
+        tier: 0,
+      }),
+      fetch: vi.fn().mockResolvedValue(azureSuccessResponse()),
+    });
+    const req = makeRequest(buildSilentWav(2));
+    const res = await handleRequest(req, deps);
+
+    expect(res.status).toBe(200);
+    const body = (await res.json()) as { ok: boolean };
+    expect(body.ok).toBe(true);
   });
 });

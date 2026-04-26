@@ -26,6 +26,7 @@ import {
   type AuditParams,
   type Deps,
   type LogAttemptParams,
+  type UserProfileRow,
 } from "./core.ts";
 
 // ── Singleton clients ────────────────────────────────────────────────────
@@ -109,37 +110,44 @@ async function checkAiBudget(
   }
 }
 
-async function getUserTier(userId: string): Promise<number> {
+/**
+ * Fetch the trial / tier columns from `profiles` for the calling user.
+ * Returns null on miss / error so `checkTrialAccess` can fail-open.
+ *
+ * Trial column name set is historical noise — the schema accumulated
+ * three names (trial_end, trial_ends_at, trial_expires_at). Reading
+ * all three lets the trial check walk them in priority order without
+ * forcing a column rename migration.
+ */
+async function fetchUserProfile(userId: string): Promise<UserProfileRow | null> {
   try {
     const { data, error } = await supabase
       .from("profiles")
-      .select("tier")
+      .select("trial_expires_at, trial_ends_at, trial_end, tier")
       .eq("id", userId)
       .maybeSingle();
-    if (error) return 0;
-    const tier = (data as { tier?: number } | null)?.tier ?? 0;
-    return Number.isFinite(tier) ? Number(tier) : 0;
+    if (error) {
+      console.error("fetchUserProfile error", error);
+      return null;
+    }
+    if (!data) return null;
+    const row = data as Record<string, unknown>;
+    return {
+      trial_expires_at: toIsoOrNull(row.trial_expires_at),
+      trial_ends_at: toIsoOrNull(row.trial_ends_at),
+      trial_end: toIsoOrNull(row.trial_end),
+      tier: typeof row.tier === "number" ? row.tier : null,
+    };
   } catch (err) {
-    console.error("getUserTier threw", err);
-    return 0;
+    console.error("fetchUserProfile threw", err);
+    return null;
   }
 }
 
-async function countOkAttemptsToday(userId: string): Promise<number> {
-  try {
-    const since = startOfUtcDay();
-    const { count, error } = await supabase
-      .from("speech_analysis_logs")
-      .select("*", { count: "exact", head: true })
-      .eq("user_id", userId)
-      .eq("status", "ok")
-      .gte("created_at", since);
-    if (error) return 0;
-    return count ?? 0;
-  } catch (err) {
-    console.error("countOkAttemptsToday threw", err);
-    return 0;
-  }
+function toIsoOrNull(v: unknown): string | null {
+  if (typeof v !== "string") return null;
+  const trimmed = v.trim();
+  return trimmed.length > 0 ? trimmed : null;
 }
 
 async function sumGlobalCostToday(): Promise<number> {
@@ -176,8 +184,7 @@ const productionDeps: Deps = {
   rateLimit: (key, max, windowMs) => rateLimit(key, max, windowMs),
   fetch: (input, init) => fetch(input, init),
   checkAiBudget,
-  getUserTier,
-  countOkAttemptsToday,
+  fetchUserProfile,
   sumGlobalCostToday,
   audit,
   logAttempt,

@@ -28,8 +28,6 @@ const MAX_AUDIO_SECONDS = 60;
 const AZURE_USD_PER_MINUTE = 1 / 60;
 const RATE_LIMIT_MAX_CALLS = 30;
 const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000;
-const DAILY_CAP_FREE = 10;
-const DAILY_CAP_PAID = 60;
 const AZURE_TIMEOUT_MS = 15_000;
 
 // ── Types ─────────────────────────────────────────────────────────────────
@@ -87,11 +85,23 @@ export type SuccessResponse = {
 };
 
 export type SentinelReason =
-  | "daily_cap_reached"
+  | "trial_expired"
+  | "global_daily_cap_reached"
   | "azure_no_match"
   | "azure_timeout"
   | "azure_error"
   | "audio_decode_error";
+
+export type UserProfileRow = {
+  trial_expires_at: string | null;
+  trial_ends_at: string | null;
+  trial_end: string | null;
+  tier: number | null;
+};
+
+export type TrialAccessResult =
+  | { allowed: true }
+  | { allowed: false; reason: "trial_expired" };
 
 export type SentinelResponse = {
   ok: false;
@@ -130,10 +140,14 @@ export interface Deps {
   fetch: (input: string, init: RequestInit) => Promise<Response>;
   /** AI-budget reservation RPC. */
   checkAiBudget: (userId: string, reserveVnd: number) => Promise<AiBudgetResult>;
-  /** Profile tier lookup; 0 = free, ≥1 = paid. */
-  getUserTier: (userId: string) => Promise<number>;
-  /** Count of today's `status='ok'` rows in speech_analysis_logs for this user. */
-  countOkAttemptsToday: (userId: string) => Promise<number>;
+  /**
+   * Read the trial / tier columns from the `profiles` row for this user.
+   * Returns null on missing row or query error so `checkTrialAccess` can
+   * decide the conservative thing (allow — local rate-limit + budget
+   * still protect us; we don't want to block legitimate users on a
+   * Postgres blip).
+   */
+  fetchUserProfile: (userId: string) => Promise<UserProfileRow | null>;
   /** Sum of today's openai_cost_usd in speech_analysis_logs across all users. */
   sumGlobalCostToday: () => Promise<number>;
   /** Insert one row into speech_analysis_logs. Best-effort; never throws. */
@@ -289,18 +303,25 @@ export async function handleRequest(req: Request, deps: Deps): Promise<Response>
       );
     }
 
-    // 3. Per-user daily attempt cap (free=10, paid=60). Sentinel, NOT 4xx.
-    const userTier = await deps.getUserTier(userId);
-    const dailyCap = userTier > 0 ? DAILY_CAP_PAID : DAILY_CAP_FREE;
-    const todayCount = await deps.countOkAttemptsToday(userId);
-    if (todayCount >= dailyCap) {
+    // 3. Trial gating. Cloud is allowed when the user is paid (tier >= 1)
+    //    OR their trial has not yet expired. Otherwise fall back to the
+    //    local scorer via the use_local sentinel — never a 4xx, since
+    //    "scoring still works, just locally" is the user-visible reality.
+    //    Profile fetch errors fail-open: rate limit + budget still
+    //    protect us; blocking legitimate users on a Postgres blip is the
+    //    worse outcome.
+    const trialAccess = await checkTrialAccess(
+      { fetchUserProfile: deps.fetchUserProfile, audit: deps.audit },
+      userId,
+    );
+    if (!trialAccess.allowed) {
       await deps.audit({
         userId,
         status: "budget_exceeded",
         audioSeconds,
-        errorMsg: `daily_cap_reached:${todayCount}/${dailyCap}`,
+        errorMsg: `trial_expired`,
       });
-      return sentinel("daily_cap_reached");
+      return sentinel("trial_expired");
     }
 
     // 4. Global daily ceiling.
@@ -312,7 +333,7 @@ export async function handleRequest(req: Request, deps: Deps): Promise<Response>
         audioSeconds,
         errorMsg: `global_cap_reached:${todayGlobalUsd.toFixed(4)}`,
       });
-      return sentinel("daily_cap_reached");
+      return sentinel("global_daily_cap_reached");
     }
 
     // 5. AI budget reservation.
@@ -614,13 +635,100 @@ function truncate(s: string, max: number): string {
   return s.length <= max ? s : s.slice(0, max);
 }
 
+/**
+ * Decide whether the calling user is allowed to use cloud scoring.
+ *
+ * Allow when EITHER:
+ *   - they're paid (`tier >= 1`), OR
+ *   - their trial has not yet expired
+ *
+ * "Trial expired" = `now > <first non-null of trial_expires_at,
+ * trial_ends_at, trial_end>`. All three columns null = treat as not
+ * expired (legacy users on the new column can still score).
+ *
+ * Profile-fetch failures fail-OPEN: rate limit (30/h) and the
+ * AI-budget RPC still protect the function from runaway abuse, so
+ * blocking real users on a Postgres blip is the worse trade.
+ */
+export async function checkTrialAccess(
+  deps: {
+    fetchUserProfile: (userId: string) => Promise<UserProfileRow | null>;
+    audit?: (params: AuditParams) => Promise<void>;
+  },
+  userId: string,
+): Promise<TrialAccessResult> {
+  let profile: UserProfileRow | null;
+  try {
+    profile = await deps.fetchUserProfile(userId);
+  } catch (err) {
+    // Fail-open. Note in audit log if available so we can spot a
+    // recurring infra problem.
+    const msg = err instanceof Error ? err.message : "fetch_profile_threw";
+    if (deps.audit) {
+      try {
+        await deps.audit({
+          userId,
+          status: "whisper_error",
+          errorMsg: `trial_check_profile_threw:${truncate(msg, 80)}`,
+        });
+      } catch {
+        /* audit is best-effort */
+      }
+    }
+    return { allowed: true };
+  }
+
+  if (!profile) {
+    // Row missing. Same fail-open rationale.
+    if (deps.audit) {
+      try {
+        await deps.audit({
+          userId,
+          status: "whisper_error",
+          errorMsg: "trial_check_profile_missing",
+        });
+      } catch {
+        /* audit is best-effort */
+      }
+    }
+    return { allowed: true };
+  }
+
+  const tier = typeof profile.tier === "number" ? profile.tier : 0;
+  if (tier >= 1) return { allowed: true };
+
+  const trialIso =
+    profile.trial_expires_at ??
+    profile.trial_ends_at ??
+    profile.trial_end ??
+    null;
+
+  if (!trialIso) {
+    // No trial timestamp set anywhere. Treat as not-yet-expired —
+    // matches the web app's `inferTrialExpired` fallback in
+    // src/hooks/useUserAccess.ts.
+    return { allowed: true };
+  }
+
+  const expiresMs = Date.parse(trialIso);
+  if (!Number.isFinite(expiresMs)) {
+    // Unparseable timestamp — fail-open same as above.
+    return { allowed: true };
+  }
+
+  if (Date.now() > expiresMs) {
+    return { allowed: false, reason: "trial_expired" };
+  }
+  return { allowed: true };
+}
+
 // Re-exports of the validation constants for tests + Day-2 client agreement.
+// Per-user-per-day caps (DAILY_CAP_FREE / DAILY_CAP_PAID) were removed in
+// fix/azure-phoneme-trial-gating: trial state is the new gate.
 export const AZURE_PHONEME_LIMITS = {
   MAX_BYTES,
   MAX_AUDIO_SECONDS,
   RATE_LIMIT_MAX_CALLS,
   RATE_LIMIT_WINDOW_MS,
-  DAILY_CAP_FREE,
-  DAILY_CAP_PAID,
   AZURE_TIMEOUT_MS,
 } as const;
