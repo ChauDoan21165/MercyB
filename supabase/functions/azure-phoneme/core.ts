@@ -380,9 +380,17 @@ export async function handleRequest(req: Request, deps: Deps): Promise<Response>
         ReferenceText: targetText,
         GradingSystem: "HundredMark",
         Granularity: "Phoneme",
+        Dimension: "Comprehensive",
         EnableMiscue: true,
       };
-      const headerValue = btoa(JSON.stringify(config));
+      // Azure's Pronunciation-Assessment header requires base64url
+      // (RFC 4648 §5): no padding, "-" for "+", "_" for "/". Plain btoa()
+      // produces standard base64 which Azure silently rejects, falling
+      // back to vanilla speech recognition (every score = 0).
+      const headerValue = btoa(JSON.stringify(config))
+        .replace(/\+/g, "-")
+        .replace(/\//g, "_")
+        .replace(/=+$/, "");
       const controller = new AbortController();
       const timer = setTimeout(() => {
         timedOut = true;
