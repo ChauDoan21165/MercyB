@@ -402,6 +402,14 @@ export async function handleRequest(req: Request, deps: Deps): Promise<Response>
       } catch (e) {
         console.error("[bytes-debug] failed:", e);
       }
+      // [DEBUG] Log the exact Pronunciation-Assessment header value
+      console.error(
+        "[header-debug]",
+        "ref=", JSON.stringify(referenceText),
+        "ref_len=", referenceText.length,
+        "ref_bytes=", Array.from(new TextEncoder().encode(referenceText)).join(","),
+        "header_b64url=", headerValue,
+      );
       const controller = new AbortController();
       const timer = setTimeout(() => {
         timedOut = true;
