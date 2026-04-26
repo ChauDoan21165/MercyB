@@ -17,7 +17,6 @@ import { supabase } from "@/lib/supabaseClient";
 import FocusAreasCard from "@/components/home/FocusAreasCard";
 import LeaderboardCard from "@/components/leaderboard/LeaderboardCard";
 import { StreakBadge } from "@/components/streak/StreakBadge";
-import FounderStoryCallout from "@/components/founder/FounderStoryCallout";
 
 const LS_PLACEMENT_BANNER_DISMISSED = "mb.placement.banner.dismissed";
 const LS_PLACEMENT_REDIRECT_SEEN    = "mb.placement.redirect.seen";
@@ -496,9 +495,6 @@ export default function Home() {
 
           {/* Weekly leaderboard — Step 4 retention card (feature-flagged) */}
           {leaderboardEnabled && Boolean(user) && <LeaderboardCard />}
-
-          {/* Founder identity moment (Step 11). Public; no gating. */}
-          <FounderStoryCallout />
         </section>
 
         {/* Floating bubbles */}

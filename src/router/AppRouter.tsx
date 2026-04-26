@@ -71,7 +71,6 @@ const DeveloperPortalPage = lazy(() => import("@/pages/dev/DeveloperPortalPage")
 const BlogIndex = lazy(() => import("@/pages/blog/BlogIndex"));
 const BlogPost  = lazy(() => import("@/pages/blog/BlogPost"));
 
-const AboutChauPage = lazy(() => import("@/pages/about/AboutChauPage"));
 
 const PublicProfilePage   = lazy(() => import("@/pages/profile/PublicProfilePage"));
 const ShareProgressPage   = lazy(() => import("@/pages/profile/ShareProgressPage"));
@@ -454,8 +453,6 @@ export default function AppRouter() {
           <Route path="/blog"        element={<LazyPage><BlogIndex /></LazyPage>} />
           <Route path="/blog/:slug"  element={<LazyPage><BlogPost /></LazyPage>} />
 
-          {/* About Chau (Step 11 — founder identity layer). Public; no gating. */}
-          <Route path="/about/chau"  element={<LazyPage><AboutChauPage /></LazyPage>} />
           <Route path="/tiers"   element={<LazyPage><TierIndex /></LazyPage>} />
           <Route path="/tiers/:tierId" element={<LazyPage><TierDetail /></LazyPage>} />
           <Route path="/redeem"     element={<RedeemRedirect />} />

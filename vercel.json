@@ -11,6 +11,11 @@
       "dest": "/api/mercy/grammar.ts"
     },
     {
+      "src": "/about/chau",
+      "status": 302,
+      "headers": { "Location": "/" }
+    },
+    {
       "handle": "filesystem"
     },
     {

@@ -1,10 +1,10 @@
 // src/components/pricing/variants/StoryVariant.tsx
 //
-// Variant 5 — "Story". Lead with a short note from Chau (the
-// founder, an exiled Vietnamese journalist) explaining why
-// MercyBlade exists. Hypothesis: visitors who respond to founder
-// authenticity convert at a higher rate when the paywall doesn't
-// feel transactional.
+// Variant 5 — "Story". Lead with a short note from the founder
+// explaining why MercyBlade exists. Hypothesis: visitors who respond
+// to founder authenticity convert at a higher rate when the paywall
+// doesn't feel transactional. (Biographical detail removed per
+// 2026-04-25 safety takedown.)
 //
 // The story copy in this shell is a teacher-warm draft — Chau
 // will replace with his own voice before this variant ships to
@@ -22,11 +22,12 @@ import {
   SECONDARY_CTA,
 } from "./variantStyles";
 
-// Placeholder story — Chau to replace with his own voice.
+// Placeholder story — sanitised 2026-04-25 to remove biographical
+// detail (safety takedown). Chau replaces with his own voice later.
 const STORY_PARAGRAPHS_VI: ReadonlyArray<string> = [
-  "[Đoạn 1 — về việc Chau là nhà báo Việt lưu vong, lý do anh xây MercyBlade. Một câu hook, một câu sự thật, không sáo rỗng.]",
-  "[Đoạn 2 — vì sao Mercy phải hiểu lỗi tiếng Việt cụ thể, không phải app dịch chung chung. Liên kết với người Việt diaspora đang vật lộn với phỏng vấn, IELTS, công việc.]",
-  "[Đoạn 3 — lời mời rõ ràng: nếu câu chuyện này chạm bạn, hãy đồng hành. Premium giúp dự án sống và mở rộng nội dung tiếng Việt.]",
+  "MercyBlade được làm cho người Việt — không phải app dịch chung chung.",
+  "Mercy hiểu đúng lỗi tiếng Việt cụ thể, đồng hành cùng diaspora trên hành trình phỏng vấn, IELTS, công việc.",
+  "Nếu cách tiếp cận này chạm bạn, Premium giúp dự án sống và mở rộng nội dung tiếng Việt.",
 ];
 
 const SIGN_OFF_VI = "— Chau, founder";

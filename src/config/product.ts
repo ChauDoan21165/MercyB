@@ -40,16 +40,16 @@ export const PRODUCT_CONFIG = {
     pronouns: "she/her",
   },
 
-  /** The human behind the product — referenced in About, founder-letter copy. */
+  /**
+   * Founder reference — kept name-only for byline use (blog post authorship).
+   * Detailed biographical fields removed for personal-safety reasons; do
+   * NOT re-introduce exile / Article 117 / location detail without
+   * Chau's explicit OK.
+   */
   founder: {
     name: "Chau Doan",
-    /**
-     * Short, factual identifier — usable in JSX without paraphrasing.
-     * Keep it unembellished; richer biography belongs in CMS, not config.
-     */
-    story: "exiled Vietnamese journalist",
-    /** Where the story comes from, in two unmistakable beats. */
-    backgroundShort: "Article 117, Grande Prairie",
+    story: "",
+    backgroundShort: "",
   },
 
   /** Learner's first language — the Vietnamese-first invariant. */
