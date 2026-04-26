@@ -362,8 +362,13 @@ export async function handleRequest(req: Request, deps: Deps): Promise<Response>
     let azureError: string | null = null;
     let timedOut = false;
     try {
+      // Azure rejects ReferenceText that ends with punctuation
+      // (".", "?", "!" etc) with HTTP 400 "Bad request". Practice
+      // lines in MercySpeakTab routinely end with periods, so strip
+      // trailing terminal punctuation + whitespace before sending.
+      const referenceText = targetText.replace(/[\s.?!,;:]+$/, "");
       const config = {
-        ReferenceText: targetText,
+        ReferenceText: referenceText,
         GradingSystem: "HundredMark",
         Granularity: "Phoneme",
         EnableMiscue: true,
