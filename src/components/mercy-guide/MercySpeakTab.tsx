@@ -47,6 +47,9 @@ import { KID_PAGE_34_ITEMS } from './kids/kidPage34Data';
 import { awardSpeakPoints } from '@/services/pointsService';
 import { resolveRoomAudioUrl } from '@/lib/roomAudioResolver';
 import { deriveWordChips } from './wordChips';
+import { useFeatureFlag } from '@/hooks/useFeatureFlag';
+import { scoreCloud } from '@/lib/pronunciation/cloudScorer';
+import { supabase } from '@/lib/supabaseClient';
 import type { StudentMercyMemoryUpdate, LearningSupportMode } from './types';
 import type {
   SpeechRecognitionLike as BaseSpeechRecognitionLike,
@@ -611,6 +614,11 @@ export function MercySpeakTab({
   const mediaChunksRef    = useRef<BlobPart[]>([]);
   const activeStreamRef   = useRef<MediaStream | null>(null);
   const recordedAudioRef  = useRef<HTMLAudioElement | null>(null);
+  // Day 2 phoneme scoring: keep the raw recorded blob so we can post it
+  // to the azure-phoneme edge function when the feature flag is on.
+  // The blob URL stored in `recordedAudioUrl` is one-way (URL.createObjectURL)
+  // and not suitable for posting back as multipart.
+  const recordedAudioBlobRef = useRef<Blob | null>(null);
 
   // Pre-warmed mic stream + live input-level meter (for "we hear you" feedback)
   const prewarmStreamRef  = useRef<MediaStream | null>(null);
@@ -675,7 +683,63 @@ export function MercySpeakTab({
 
   const memoryTroubleWords = useMemo(() => extractTroubleWords(troubleWords), [troubleWords]);
   const scopedMemoryTroubleWords = useMemo(() => filterTroubleWordsForPractice(memoryTroubleWords, practiceText), [memoryTroubleWords, practiceText]);
-  const matchScore = useMemo(() => calculateMatchScore(practiceText, transcript), [practiceText, transcript]);
+  // Local word-bag score — runs synchronously on every transcript update.
+  // Day 2: when the `azure_phoneme_scoring` flag is ON for this user and
+  // a recording is available, the cloud-derived score below overrides
+  // this. Never throws, never awaits — the local path stays the visible
+  // floor.
+  const localMatchScore = useMemo(() => calculateMatchScore(practiceText, transcript), [practiceText, transcript]);
+
+  // Day 2 cloud-scoring wire-in (Azure Pronunciation Assessment).
+  // Default OFF; the feature flag is set per-user in Supabase. When the
+  // cloud path returns a score, it replaces `localMatchScore` for the
+  // visible YOU bar + chip row. When it errors, sentinels, or is OFF,
+  // we keep `localMatchScore`. Single visible UI shape regardless.
+  const azurePhonemeScoringEnabled = useFeatureFlag('azure_phoneme_scoring', false);
+  const [cloudOverrideScore, setCloudOverrideScore] = useState<number | null>(null);
+  const cloudAttemptKeyRef = useRef<string>('');
+  useEffect(() => {
+    if (!azurePhonemeScoringEnabled) return;
+    if (!practiceText || !transcript) return;
+    if (isRecording || isListening) return;
+    const blob = recordedAudioBlobRef.current;
+    if (!blob || blob.size === 0) return;
+
+    // Re-fire only on a fresh attempt (new transcript or new practice
+    // line); avoid triggering on unrelated re-renders.
+    const attemptKey = `${practiceText}__${transcript}__${blob.size}`;
+    if (cloudAttemptKeyRef.current === attemptKey) return;
+    cloudAttemptKeyRef.current = attemptKey;
+
+    let cancelled = false;
+    void (async () => {
+      try {
+        const { data: sessionData } = await supabase.auth.getSession();
+        const jwt = sessionData?.session?.access_token;
+        if (!jwt) return;
+        const result = await scoreCloud({
+          audioBlob: blob,
+          target: practiceText,
+          userJwt: jwt,
+          transcript,
+        });
+        if (cancelled) return;
+        setCloudOverrideScore(result.overallScore);
+      } catch (err) {
+        // 401 propagates from cloudScorer; everything else is silently
+        // local-fallback so we don't reach this branch in practice.
+        // Logged but not surfaced — the local score keeps the UI alive.
+        if (!cancelled) {
+          console.warn('[MercySpeak] cloud scoring error:', err);
+        }
+      }
+    })();
+    return () => { cancelled = true; };
+  }, [azurePhonemeScoringEnabled, practiceText, transcript, isRecording, isListening]);
+
+  // Effective score the rest of the file consumes — cloud takes
+  // precedence when present.
+  const matchScore = cloudOverrideScore ?? localMatchScore;
   const generatedTroubleWords = useMemo(() => detectTroubleWords(transcript, practiceText), [practiceText, transcript]);
   const displayedTroubleWords = useMemo(() => generatedTroubleWords.length > 0 ? generatedTroubleWords : scopedMemoryTroubleWords, [generatedTroubleWords, scopedMemoryTroubleWords]);
 
@@ -1071,6 +1135,7 @@ export function MercySpeakTab({
         // last-resort fallback — every iOS WebView can decode it.
         const blobType = recorder.mimeType || supportedType || 'audio/mp4';
         const blob = new Blob(mediaChunksRef.current, { type: blobType });
+        recordedAudioBlobRef.current = blob;
         setRecordedAudioUrl(URL.createObjectURL(blob));
         stopActiveStream();
       };
@@ -1087,6 +1152,9 @@ export function MercySpeakTab({
 
   function handleResetAttempt() {
     setTranscript(''); setRecognitionError(''); setRecordingError(''); setCopySuccess(false);
+    setCloudOverrideScore(null);
+    cloudAttemptKeyRef.current = '';
+    recordedAudioBlobRef.current = null;
     stopListening(); stopSpeaking(); stopRecordedAudioPlayback(true);
     if (isRecording) stopRecording();
     revokeRecordedAudioUrl();
