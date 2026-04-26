@@ -6,7 +6,7 @@ export default function Privacy() {
       <h1>Privacy Policy</h1>
 
       <p>
-        <strong>Last updated:</strong> March 24, 2026
+        <strong>Last updated:</strong> April 26, 2026
       </p>
 
       <p>
@@ -65,6 +65,57 @@ export default function Privacy() {
         authentication, customer support, and payments. We may also disclose
         information if required by law, to protect users, or to protect our
         rights and systems.
+      </p>
+
+      <h2>4a. Pronunciation Audio Processing (Azure)</h2>
+      <p>
+        When you use our pronunciation practice feature, we send a short
+        recording of your spoken practice line — together with the reference
+        text you were asked to read — to Microsoft Azure Cognitive Services
+        (Speech) so Azure can return phoneme-level pronunciation scores.
+        Recordings are typically five seconds or less, in standard
+        16&nbsp;kHz mono WAV format. Audio is processed in Microsoft’s
+        Southeast Asia region (Singapore datacenter). Per Microsoft’s
+        published Speech Services policy, audio sent to this API is not
+        retained by Microsoft and is not used to train Microsoft’s models.
+      </p>
+      <p>
+        Mercy Blade stores the resulting pronunciation scores (numeric
+        phoneme-level results) in our database so we can show you your
+        progress over time. <strong>We do not store the audio recording
+        itself.</strong> The recording exists only long enough to be sent to
+        Azure and scored.
+      </p>
+      <p>
+        This feature is controlled by a per-cohort feature flag. When it is
+        disabled — for your account, your cohort, or globally — pronunciation
+        is scored locally in your browser instead of being sent to Azure.
+        You can also opt out at any time by emailing{" "}
+        <strong>admin@mercyblade.com</strong>; we will disable cloud scoring
+        for your account and you will continue to receive local-only scoring.
+        Our legal basis for processing this audio is our legitimate interest
+        in providing accurate, useful pronunciation feedback to learners.
+      </p>
+
+      <p style={{ fontStyle: "italic", color: "#475569" }}>
+        <strong>Tiếng Việt — Xử lý âm thanh phát âm (Azure):</strong> Khi
+        bạn dùng tính năng luyện phát âm, chúng tôi gửi một đoạn ghi âm
+        ngắn câu bạn vừa đọc — kèm theo nội dung câu mẫu được yêu cầu đọc
+        — đến Microsoft Azure Cognitive Services (Speech) để nhận điểm
+        phát âm chi tiết theo từng âm vị. Đoạn ghi âm thường dưới 5 giây,
+        ở định dạng WAV chuẩn 16 kHz mono, và được xử lý tại trung tâm dữ
+        liệu của Microsoft ở khu vực Đông Nam Á (Singapore). Theo chính
+        sách công khai của Microsoft, âm thanh gửi đến API này không được
+        Microsoft giữ lại và không được dùng để huấn luyện mô hình của họ.
+        Mercy Blade chỉ lưu lại kết quả điểm phát âm trong cơ sở dữ liệu
+        để bạn theo dõi tiến bộ — <strong>chúng tôi không lưu đoạn ghi âm
+        của bạn</strong>. Tính năng này được kiểm soát bằng cờ tính năng
+        theo nhóm; khi tắt, việc chấm điểm sẽ chạy ngay trong trình duyệt
+        thay vì gửi lên Azure. Bạn có thể yêu cầu tắt cho tài khoản của
+        mình bằng cách gửi email cho{" "}
+        <strong>admin@mercyblade.com</strong>. Cơ sở pháp lý cho việc xử
+        lý này là lợi ích chính đáng trong việc giúp người học cải thiện
+        phát âm.
       </p>
 
       <h2>5. Data Retention</h2>
