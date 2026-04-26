@@ -381,6 +381,27 @@ export async function handleRequest(req: Request, deps: Deps): Promise<Response>
         .replace(/\+/g, "-")
         .replace(/\//g, "_")
         .replace(/=+$/, "");
+      // [DEBUG] Dump bytes to compare against curl-tested WAV
+      try {
+        const u8 = new Uint8Array(arrayBuffer);
+        const toHex = (bytes: Uint8Array) =>
+          Array.from(bytes)
+            .map((b) => b.toString(16).padStart(2, "0"))
+            .join("");
+        const head = toHex(u8.slice(0, 64));
+        const tail = toHex(u8.slice(-32));
+        const hashBuf = await crypto.subtle.digest("SHA-256", arrayBuffer);
+        const hash = toHex(new Uint8Array(hashBuf));
+        console.error(
+          "[bytes-debug]",
+          "size=", arrayBuffer.byteLength,
+          "head=", head,
+          "tail=", tail,
+          "sha256=", hash,
+        );
+      } catch (e) {
+        console.error("[bytes-debug] failed:", e);
+      }
       const controller = new AbortController();
       const timer = setTimeout(() => {
         timedOut = true;
