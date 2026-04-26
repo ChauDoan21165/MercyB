@@ -6,6 +6,7 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { logAiUsage as logAiUsageEvent } from "../_shared/aiUsage.ts";
+import { streamChatWithFailover } from "../_shared/aiProvider.ts";
 import {
   EdgeUserFact,
   MAX_FACTS_IN_PROMPT,
@@ -529,27 +530,31 @@ serve(async (req) => {
       );
     }
 
-    const OPENAI_API_KEY = Deno.env.get("OPENAI_API_KEY")!;
-    const aiResponse = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${OPENAI_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: AI_MODEL,
-        messages: [{ role: "system", content: systemPrompt }, ...messages],
-        stream: true,
-        stream_options: { include_usage: true },
-        temperature: 0.4,
-      }),
+    // Failover-aware streaming. Tries OpenAI first; on connection-
+    // establishment failure (timeout, 429, 5xx, network) falls over to
+    // Gemini and translates Gemini's SSE chunks into OpenAI shape so
+    // the client + cost tracker pipeline below work unchanged.
+    const streamResult = await streamChatWithFailover({
+      systemPrompt,
+      userMessage: messages[messages.length - 1]?.content ?? "",
+      messages: [{ role: "system", content: systemPrompt }, ...messages],
+      openaiModel: AI_MODEL,
+      temperature: 0.4,
+      includeUsage: true,
     });
 
-    if (!aiResponse.ok) {
+    if ("ok" in streamResult && streamResult.ok === false) {
+      console.error(
+        `[ai-chat] both providers failed errorKind=${streamResult.errorKind} attempts=[${streamResult.attempts.join(",")}]`,
+      );
       throw new Error("AI provider error");
     }
 
-    const [clientStream, parseStream] = aiResponse.body!.tee();
+    console.log(
+      `[ai-chat] provider=${streamResult.provider} attempts=[${streamResult.attempts.join(",")}]`,
+    );
+
+    const [clientStream, parseStream] = streamResult.body.tee();
 
     const backgroundTask = (async () => {
       let promptTokens = 0;

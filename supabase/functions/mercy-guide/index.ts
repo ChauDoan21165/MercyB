@@ -1,6 +1,7 @@
 // PATH: supabase/functions/mercy-guide/index.ts
 
 import { serve } from "https://deno.land/std@0.224.0/http/server.ts";
+import { chatJsonWithFailover } from "../_shared/aiProvider.ts";
 
 type ChatRequest = {
   message?: string;
@@ -152,7 +153,10 @@ serve(async (req) => {
 
     const history = Array.isArray(body.history) ? body.history.slice(-6) : [];
 
-    const inputMessages = [
+    const messageHistory: Array<{
+      role: "system" | "user" | "assistant";
+      content: string;
+    }> = [
       { role: "system", content: systemPrompt },
       ...history.map((item) => ({
         role: item.role,
@@ -161,26 +165,22 @@ serve(async (req) => {
       { role: "user", content: message },
     ];
 
-    const response = await fetch(
-      "https://api.openai.com/v1/chat/completions",
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${openaiApiKey}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          model: "gpt-4o-mini",
-          temperature: 0.3,
-          response_format: { type: "json_object" },
-          messages: inputMessages,
-        }),
-      }
+    const result = await chatJsonWithFailover({
+      systemPrompt,
+      userMessage: message,
+      messages: messageHistory,
+      openaiModel: "gpt-4o-mini",
+      temperature: 0.3,
+    });
+
+    console.log(
+      "[mercy-guide] provider=",
+      result.provider,
+      "latencyMs=",
+      result.latencyMs,
     );
 
-    if (!response.ok) {
-      console.error("OpenAI error:", await response.text());
-
+    if (!result.ok) {
       return json({
         reply:
           language === "vi"
@@ -192,16 +192,7 @@ serve(async (req) => {
       } satisfies MercyResponse);
     }
 
-    const data = await response.json();
-    const raw = data?.choices?.[0]?.message?.content ?? "{}";
-
-    let parsed: Partial<MercyResponse> = {};
-
-    try {
-      parsed = JSON.parse(raw);
-    } catch {
-      console.warn("Invalid JSON from model:", raw);
-    }
+    const parsed = result.json as Partial<MercyResponse>;
 
     const reply = cleanText(parsed.reply);
     const outLanguage = parsed.language === "vi" ? "vi" : language;

@@ -14,6 +14,7 @@ import { createClient } from "@supabase/supabase-js";
 // actually looks up at request time.
 import { firstL1HintFromIssues, type L1HintPayload } from "../_lib/l1HintAdapter.js";
 import { isFlagEnabledForUser } from "../_lib/featureFlags.js";
+import { chatJsonWithFailover } from "../_lib/aiProvider.js";
 
 type GrammarBody = {
   text?: string; context?: string; mode?: string;
@@ -103,8 +104,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     if (!text) return sendJson(res, 400, { ok: false, error: "Missing text" });
 
-    const apiKey = process.env.OPENAI_API_KEY;
-    if (!apiKey) return sendJson(res, 503, { ok: false, error: "Missing OPENAI_API_KEY" });
+    if (!process.env.OPENAI_API_KEY) {
+      return sendJson(res, 503, { ok: false, error: "Missing OPENAI_API_KEY" });
+    }
 
     const userMessage = [
       originalText && originalText !== text ? `Original: ${originalText}` : "",
@@ -113,74 +115,76 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       focus ? `Focus: ${focus}` : "",
     ].filter(Boolean).join("\n");
 
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 15000);
+    const result = await chatJsonWithFailover({
+      systemPrompt: buildSystemPrompt(level, isRevision),
+      userMessage,
+      timeoutMs: 15000,
+      openaiModel: process.env.OPENAI_GRAMMAR_MODEL || "gpt-4o-mini",
+      temperature: 0.15,
+      maxTokens: 800,
+    });
 
-    try {
-      const upstream = await fetch("https://api.openai.com/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Authorization: `Bearer ${apiKey}` },
-        signal: controller.signal,
-        body: JSON.stringify({
-          model: process.env.OPENAI_GRAMMAR_MODEL || "gpt-4o-mini",
-          temperature: 0.15, max_tokens: 800,
-          response_format: { type: "json_object" },
-          messages: [
-            { role: "system", content: buildSystemPrompt(level, isRevision) },
-            { role: "user", content: userMessage },
-          ],
-        }),
-      });
+    console.log("[grammar] provider=", result.provider, "latencyMs=", result.latencyMs);
 
-      if (!upstream.ok) {
-        return sendJson(res, 200, { ok: false, correctedText: text,
-          feedback: upstream.status === 429 ? "Grammar service is busy. Please try again." : "Grammar service temporarily unavailable." });
-      }
-
-      const data = await upstream.json();
-      const raw = data?.choices?.[0]?.message?.content ?? "";
-      let parsed: any = {};
-      try { parsed = JSON.parse(raw); } catch { parsed = { correctedText: text, feedback: raw }; }
-
-      const issues = Array.isArray(parsed.issues) ? parsed.issues : [];
-
-      // ── L1 detector (feature-flagged, default OFF globally) ─────────
-      // Broad try/catch: the detector path must NEVER kill the core grammar
-      // response. If anything here throws — Supabase auth, flag lookup,
-      // rule regex, template fill — log and degrade to l1Hint = null.
-      const userId = asString(body.userId, 64);
-      let l1Hint: L1HintPayload | null = null;
-      try {
-        if (userId) {
-          const sb = getSupabaseClient();
-          if (sb) {
-            const flagOn = await isFlagEnabledForUser(sb, L1_FLAG_KEY, userId);
-            if (flagOn) l1Hint = firstL1HintFromIssues(issues);
-          }
-        }
-      } catch (err) {
-        // Never fail the request over L1 hint problems. The grammar core
-        // response below is still returned successfully.
-        console.warn("[grammar] L1 hint generation failed (degraded):", err);
-        l1Hint = null;
-      }
-
+    if (!result.ok) {
+      const friendly =
+        result.errorKind === "rate_limit"
+          ? "Grammar service is busy. Please try again."
+          : result.errorKind === "timeout"
+            ? "Grammar check took too long. Please try again."
+            : result.errorKind === "parse_error"
+              ? "Grammar service had a temporary error."
+              : "Grammar service temporarily unavailable.";
       return sendJson(res, 200, {
-        ok: true,
-        correctedText: parsed.correctedText || text,
-        enhancedText: parsed.enhancedText || parsed.correctedText || text,
-        explanation: parsed.explanation || "",
-        feedback: parsed.feedback || "Good effort! Keep going.",
-        grammarPoints: Array.isArray(parsed.grammarPoints) ? parsed.grammarPoints : [],
-        tenseAnalysis: parsed.tenseAnalysis || {},
-        issues,
-        ...(l1Hint ? { l1Hint } : {}),
+        ok: false,
+        correctedText: text,
+        feedback: friendly,
       });
-    } catch (error) {
-      const isAbort = error instanceof Error && error.name === "AbortError";
-      return sendJson(res, 200, { ok: false, correctedText: text,
-        feedback: isAbort ? "Grammar check took too long. Please try again." : "Grammar service had a temporary error." });
-    } finally { clearTimeout(timeoutId); }
+    }
+
+    const parsed = result.json as {
+      correctedText?: string;
+      enhancedText?: string;
+      explanation?: string;
+      feedback?: string;
+      grammarPoints?: unknown;
+      tenseAnalysis?: { likelyMainTense?: string };
+      issues?: unknown;
+    };
+    const issues = Array.isArray(parsed.issues) ? parsed.issues : [];
+
+    // ── L1 detector (feature-flagged, default OFF globally) ─────────
+    // Broad try/catch: the detector path must NEVER kill the core grammar
+    // response. If anything here throws — Supabase auth, flag lookup,
+    // rule regex, template fill — log and degrade to l1Hint = null.
+    const userId = asString(body.userId, 64);
+    let l1Hint: L1HintPayload | null = null;
+    try {
+      if (userId) {
+        const sb = getSupabaseClient();
+        if (sb) {
+          const flagOn = await isFlagEnabledForUser(sb, L1_FLAG_KEY, userId);
+          if (flagOn) l1Hint = firstL1HintFromIssues(issues);
+        }
+      }
+    } catch (err) {
+      // Never fail the request over L1 hint problems. The grammar core
+      // response below is still returned successfully.
+      console.warn("[grammar] L1 hint generation failed (degraded):", err);
+      l1Hint = null;
+    }
+
+    return sendJson(res, 200, {
+      ok: true,
+      correctedText: parsed.correctedText || text,
+      enhancedText: parsed.enhancedText || parsed.correctedText || text,
+      explanation: parsed.explanation || "",
+      feedback: parsed.feedback || "Good effort! Keep going.",
+      grammarPoints: Array.isArray(parsed.grammarPoints) ? (parsed.grammarPoints as string[]) : [],
+      tenseAnalysis: parsed.tenseAnalysis || {},
+      issues: issues as Array<{ original: string; corrected: string; reason: string }>,
+      ...(l1Hint ? { l1Hint } : {}),
+    });
   } catch (outerErr) {
     // Log the real stack so Vercel's function logs show what actually
     // failed — previous version swallowed the error silently.
