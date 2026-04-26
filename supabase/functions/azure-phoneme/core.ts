@@ -392,14 +392,14 @@ export async function handleRequest(req: Request, deps: Deps): Promise<Response>
         headers: {
           "Ocp-Apim-Subscription-Key": deps.azureKey,
           "Content-Type": "audio/wav; codecs=audio/pcm; samplerate=16000",
-          "Content-Length": String(fileBuffer.byteLength),
           "Pronunciation-Assessment": headerValue,
           Accept: "application/json",
         },
-        // Wrap in Blob to force Deno to send Content-Length instead of
-        // Transfer-Encoding: chunked. Azure's Speech endpoint rejects
-        // chunked POST with 400 "Bad request".
-        body: new Blob([fileBuffer], { type: "audio/wav" }),
+        // Send the raw ArrayBuffer directly. Deno's fetch will set
+        // Content-Length automatically and not chunk. Earlier
+        // observation that Uint8Array body chunks may have been
+        // wrong; ArrayBuffer reliably sends fixed-length.
+        body: arrayBuffer,
         signal: controller.signal,
       });
       clearTimeout(timer);
