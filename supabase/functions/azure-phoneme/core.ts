@@ -396,6 +396,17 @@ export async function handleRequest(req: Request, deps: Deps): Promise<Response>
       clearTimeout(timer);
 
       if (!response.ok) {
+        let bodyText = "";
+        try {
+          bodyText = await response.text();
+        } catch {
+          bodyText = "<read failed>";
+        }
+        console.error(
+          `azure ${response.status}`,
+          "ct=", response.headers.get("content-type"),
+          "body=", truncate(bodyText, 500),
+        );
         azureError = `azure_${response.status}`;
       } else {
         azureBody = (await response.json()) as AzureResponse;
