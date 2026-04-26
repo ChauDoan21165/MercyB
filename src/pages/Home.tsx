@@ -5,7 +5,7 @@
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { BookOpen, LibraryBig } from "lucide-react";
+import { BookOpen, ChevronRight, Compass, LibraryBig } from "lucide-react";
 
 import BottomMusicBar from "@/components/audio/BottomMusicBar";
 import { MercyGuide } from "@/components/MercyGuide";
@@ -19,7 +19,6 @@ import LeaderboardCard from "@/components/leaderboard/LeaderboardCard";
 import { StreakBadge } from "@/components/streak/StreakBadge";
 
 const LS_PLACEMENT_BANNER_DISMISSED = "mb.placement.banner.dismissed";
-const LS_PLACEMENT_REDIRECT_SEEN    = "mb.placement.redirect.seen";
 
 const PAGE_MAX = 980;
 const LS_ZOOM  = "mb.ui.zoom";
@@ -138,24 +137,15 @@ export default function Home() {
   // ── Placement test integration (feature-flagged) ────────────────────────
   //
   // On mount, for authenticated users only, check whether they've ever
-  // completed the placement test. If NOT, and they haven't already been
-  // redirected once this session (to avoid ping-pong), send them to
-  // /placement. If YES, show the dismissible banner instead.
-  //
-  // Diagnostic console logs are intentional — feature flags + auth +
-  // profile fetch is a three-way race that's a pain to debug blind.
-  // Safe to keep in prod; they're prefixed and rare.
+  // completed the placement test. The result drives the dismissible
+  // banner state — `placementCompleted === false` makes the banner
+  // visible (when not already dismissed). The page no longer
+  // auto-redirects to /placement; users land on home and can tap the
+  // Placement card under Library if they want to take it.
   useEffect(() => {
-    if (placementFlagLoading) {
-      console.log("[Home/placement] flag still resolving, waiting");
-      return;
-    }
-    if (!placementFlagEnabled) {
-      console.log("[Home/placement] flag disabled for this user");
-      return;
-    }
+    if (placementFlagLoading) return;
+    if (!placementFlagEnabled) return;
     if (!user?.id) {
-      console.log("[Home/placement] no authenticated user");
       setPlacementCompleted(null);
       return;
     }
@@ -176,35 +166,12 @@ export default function Home() {
       const completedAt =
         (data as { placement_completed_at?: string | null } | null)
           ?.placement_completed_at ?? null;
-      const completed = Boolean(completedAt);
-      setPlacementCompleted(completed);
-
-      if (completed) {
-        console.log("[Home/placement] already completed at", completedAt);
-        return;
-      }
-
-      let alreadyRedirected = false;
-      try {
-        alreadyRedirected =
-          window.sessionStorage.getItem(LS_PLACEMENT_REDIRECT_SEEN) === "1";
-      } catch { /* ignore */ }
-
-      if (alreadyRedirected) {
-        console.log("[Home/placement] redirect already seen this session — showing banner instead");
-        return;
-      }
-
-      try {
-        window.sessionStorage.setItem(LS_PLACEMENT_REDIRECT_SEEN, "1");
-      } catch { /* ignore */ }
-      console.log("[Home/placement] redirecting to /placement");
-      nav("/placement", { replace: true });
+      setPlacementCompleted(Boolean(completedAt));
     })();
     return () => {
       cancelled = true;
     };
-  }, [placementFlagLoading, placementFlagEnabled, user?.id, nav]);
+  }, [placementFlagLoading, placementFlagEnabled, user?.id]);
 
   const dismissPlacementBanner = () => {
     try {
@@ -324,25 +291,19 @@ export default function Home() {
     window.scrollTo({ top: 0, behavior: "smooth" });
 
     // Find the floating Mercy bubble.
-    // The bubble uses onPointerDown (not onClick), so .click() doesn't
-    // trigger the React handler. We dispatch a real pointerdown event,
-    // and as a fallback also send an Enter keydown which the bubble's
-    // onKeyDown handler converts to handleOpenGuideFromBubble.
+    // Earlier (commit b0d0153a) this code dispatched a synthetic
+    // PointerEvent("pointerdown") to force-open the bubble — but
+    // synthesized PointerEvents have no active pointer, so the
+    // bubble's onPointerDown handler crashed when calling
+    // setPointerCapture(event.pointerId) → NotFoundError caught by
+    // the page-level error boundary. Removing the synthetic dispatch:
+    // focus + Enter keydown alone reliably opens the bubble (matches
+    // the bubble's onKeyDown handler) and never touches pointer state.
     const bubble =
       document.querySelector<HTMLElement>('[aria-label="Open Mercy Guide"]') ||
       document.querySelector<HTMLElement>('[aria-label="Open Teacher Mercy for kids"]');
 
     if (bubble) {
-      // Primary: pointerdown event (matches the bubble's onPointerDown handler)
-      bubble.dispatchEvent(
-        new PointerEvent("pointerdown", {
-          bubbles: true,
-          cancelable: true,
-          pointerType: "mouse",
-          button: 0,
-        })
-      );
-      // Fallback: focus + Enter keydown (matches the bubble's onKeyDown handler)
       bubble.focus();
       bubble.dispatchEvent(
         new KeyboardEvent("keydown", {
@@ -445,6 +406,42 @@ export default function Home() {
     </button>
   );
 
+  // ── Placement test invitation card ─────────────────────────────────────────
+  // Visual rhythm: Teacher Mercy → Library → Placement test. Mirrors
+  // libraryCard's structure (icon-badge left, EN+VI text, chevron right)
+  // with a sky/blue palette so the three cards read as distinct.
+  const placementCard = (
+    <button type="button" onClick={() => nav("/placement")} aria-label="Placement test"
+      style={{ width: "100%", background: "none", border: "none", padding: 0, cursor: "pointer" }}>
+      <div style={{
+        borderRadius: 20, padding: isPhone ? "16px 18px" : "18px 20px",
+        background: "linear-gradient(150deg, rgba(236,246,255,0.96) 0%, rgba(244,250,255,0.94) 100%)",
+        border: "1px solid rgba(14,165,233,0.16)",
+        boxShadow: "0 10px 28px rgba(14,165,233,0.08)",
+        display: "flex", alignItems: "center", gap: 16, textAlign: "left",
+      }}>
+        <div style={{ width: 52, height: 52, borderRadius: 9999, background: "linear-gradient(180deg, #38BDF8 0%, #0EA5E9 100%)", display: "grid", placeItems: "center", boxShadow: "0 8px 20px rgba(14,165,233,0.20)", flexShrink: 0 }}>
+          <Compass size={24} color="white" />
+        </div>
+
+        <div style={{ minWidth: 0, flex: 1 }}>
+          <div style={{ fontSize: isPhone ? z(18) : z(20), fontWeight: 900, color: "rgba(7,89,133,0.92)", letterSpacing: -0.3 }}>Placement test</div>
+          <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(7,89,133,0.55)", marginTop: 2 }}>Bài đánh giá</div>
+          <div style={{ marginTop: 6, fontSize: z(14), fontWeight: 700, color: "rgba(0,0,0,0.62)", lineHeight: 1.45 }}>
+            Find your starting level. About 6–9 minutes.
+          </div>
+          <div style={{ marginTop: 3, fontSize: z(12), fontWeight: 600, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
+            Tìm điểm bắt đầu phù hợp. Khoảng 6–9 phút.
+          </div>
+        </div>
+
+        <div style={{ color: "rgba(14,165,233,0.70)", flexShrink: 0 }}>
+          <ChevronRight size={22} />
+        </div>
+      </div>
+    </button>
+  );
+
   const placementBanner = showPlacementBanner ? (
     <div
       style={{
@@ -540,6 +537,9 @@ export default function Home() {
 
           {/* Library — secondary */}
           {libraryCard}
+
+          {/* Placement test — invitation card (always visible; /placement route still gates auth) */}
+          {placementCard}
 
           {/* Focus areas — tertiary (feature-flagged) */}
           <FocusAreasCard />
