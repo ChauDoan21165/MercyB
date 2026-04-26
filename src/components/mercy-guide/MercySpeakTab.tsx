@@ -701,8 +701,8 @@ export function MercySpeakTab({
   useEffect(() => {
     console.log('[cloud-debug] effect running; flag=', azurePhonemeScoringEnabled);
     if (!azurePhonemeScoringEnabled) return;
-    console.log('[cloud-debug] flag passed; practiceText=', !!practiceText, 'transcript=', !!transcript);
-    if (!practiceText || !transcript) return;
+    console.log('[cloud-debug] flag passed; practiceText=', !!practiceText);
+    if (!practiceText) return;
     console.log('[cloud-debug] text passed; isRecording=', isRecording, 'isListening=', isListening);
     if (isRecording || isListening) return;
     const blob = recordedAudioBlobRef.current;
@@ -725,7 +725,10 @@ export function MercySpeakTab({
           audioBlob: blob,
           target: practiceText,
           userJwt: jwt,
-          transcript,
+          // webkitSpeechRecognition is unreliable in this code path; pass
+          // empty string so cloudScorer's local-fallback treats recognition
+          // as empty rather than partially-populated.
+          transcript: '',
         });
         if (cancelled) return;
         setCloudOverrideScore(result.overallScore);
@@ -739,7 +742,7 @@ export function MercySpeakTab({
       }
     })();
     return () => { cancelled = true; };
-  }, [azurePhonemeScoringEnabled, practiceText, transcript, isRecording, isListening]);
+  }, [azurePhonemeScoringEnabled, practiceText, isRecording, isListening]);
 
   // Effective score the rest of the file consumes — cloud takes
   // precedence when present.
