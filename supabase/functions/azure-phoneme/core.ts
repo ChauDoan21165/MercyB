@@ -387,10 +387,14 @@ export async function handleRequest(req: Request, deps: Deps): Promise<Response>
         headers: {
           "Ocp-Apim-Subscription-Key": deps.azureKey,
           "Content-Type": "audio/wav; codecs=audio/pcm; samplerate=16000",
+          "Content-Length": String(fileBuffer.byteLength),
           "Pronunciation-Assessment": headerValue,
           Accept: "application/json",
         },
-        body: fileBuffer,
+        // Wrap in Blob to force Deno to send Content-Length instead of
+        // Transfer-Encoding: chunked. Azure's Speech endpoint rejects
+        // chunked POST with 400 "Bad request".
+        body: new Blob([fileBuffer], { type: "audio/wav" }),
         signal: controller.signal,
       });
       clearTimeout(timer);
