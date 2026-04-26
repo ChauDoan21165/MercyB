@@ -115,10 +115,10 @@ function azureSuccessResponse(): Response {
       RecognitionStatus: "Success",
       DisplayText: "I think this is going to work",
       NBest: [{
-        PronunciationAssessment: { AccuracyScore: 89 },
+        AccuracyScore: 89,
         Words: [
-          { Word: "I", PronunciationAssessment: { AccuracyScore: 90 }, Phonemes: [] },
-          { Word: "think", PronunciationAssessment: { AccuracyScore: 67 }, Phonemes: [] },
+          { Word: "I", AccuracyScore: 90, Phonemes: [] },
+          { Word: "think", AccuracyScore: 67, Phonemes: [] },
         ],
       }],
     }),
@@ -224,27 +224,27 @@ describe("handleRequest — Azure happy path", () => {
       DisplayText: "I think this is going to work",
       NBest: [{
         Display: "I think this is going to work",
-        PronunciationAssessment: { AccuracyScore: 89 },
+        AccuracyScore: 89,
         Words: [
           {
             Word: "I",
-            PronunciationAssessment: { AccuracyScore: 88 },
-            Phonemes: [{ Phoneme: "ay", PronunciationAssessment: { AccuracyScore: 88 } }],
+            AccuracyScore: 88,
+            Phonemes: [{ Phoneme: "ay", AccuracyScore: 88 }],
           },
           {
             Word: "think",
-            PronunciationAssessment: { AccuracyScore: 67 },
+            AccuracyScore: 67,
             Phonemes: [
-              { Phoneme: "th", PronunciationAssessment: { AccuracyScore: 48 } },
-              { Phoneme: "ih", PronunciationAssessment: { AccuracyScore: 42 } },
-              { Phoneme: "ng", PronunciationAssessment: { AccuracyScore: 100 } },
-              { Phoneme: "k",  PronunciationAssessment: { AccuracyScore: 53 } },
+              { Phoneme: "th", AccuracyScore: 48 },
+              { Phoneme: "ih", AccuracyScore: 42 },
+              { Phoneme: "ng", AccuracyScore: 100 },
+              { Phoneme: "k",  AccuracyScore: 53 },
             ],
           },
           {
             Word: "this",
-            PronunciationAssessment: { AccuracyScore: 94 },
-            Phonemes: [{ Phoneme: "dh", PronunciationAssessment: { AccuracyScore: 94 } }],
+            AccuracyScore: 94,
+            Phonemes: [{ Phoneme: "dh", AccuracyScore: 94 }],
           },
         ],
       }],
@@ -375,11 +375,11 @@ describe("projectAzureResponse", () => {
     const projected = projectAzureResponse({
       RecognitionStatus: "Success",
       NBest: [{
-        PronunciationAssessment: { AccuracyScore: 84.6 },
+        AccuracyScore: 84.6,
         Words: [
-          { Word: "ok", PronunciationAssessment: { AccuracyScore: 99 }, Phonemes: [] },
-          { Word: "fine", PronunciationAssessment: { AccuracyScore: 70 }, Phonemes: [] },
-          { Word: "bad", PronunciationAssessment: { AccuracyScore: 30 }, Phonemes: [] },
+          { Word: "ok", AccuracyScore: 99, Phonemes: [] },
+          { Word: "fine", AccuracyScore: 70, Phonemes: [] },
+          { Word: "bad", AccuracyScore: 30, Phonemes: [] },
         ],
       }],
     });
