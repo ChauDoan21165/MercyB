@@ -336,28 +336,14 @@ export async function handleRequest(req: Request, deps: Deps): Promise<Response>
       return sentinel("global_daily_cap_reached");
     }
 
-    // 5. AI budget reservation.
+    // 5. Cost computation only — the AI budget RPC is not used for phoneme
+    //    scoring. Phoneme scoring has its own cost controls (per-user rate
+    //    limit + global daily cap + trial gating + 2MB/60s audio caps), and
+    //    the AI budget RPC was designed for chat models with different
+    //    economics. Leaving the call in place rejected legitimate trial
+    //    users with "available in paid plans", which contradicts the
+    //    trial-gating policy already enforced above.
     const costUsd = computeCostUsd(audioSeconds);
-    const reserveVnd = Math.max(1, Math.ceil(costUsd * deps.usdToVnd));
-    const budget = await deps.checkAiBudget(userId, reserveVnd);
-    if (!budget.allowed) {
-      await deps.audit({
-        userId,
-        status: "budget_exceeded",
-        audioSeconds,
-        openaiCostUsd: costUsd,
-        errorMsg: budget.message ?? "ai_budget_exceeded",
-      });
-      return json(
-        {
-          error: "budget_exceeded",
-          message:
-            budget.message ?? "Daily AI budget reached. Try again later.",
-          reset_at: budget.reset_at ?? null,
-        },
-        402,
-      );
-    }
 
     if (!deps.azureKey) {
       console.error("AZURE_SPEECH_KEY is missing");
