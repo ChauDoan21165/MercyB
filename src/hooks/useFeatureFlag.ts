@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 
 /**
@@ -65,5 +65,5 @@ export const useFeatureFlag = (key: string, defaultValue = false) => {
     };
   }, [key]);
 
-  return { enabled, loading };
+  return useMemo(() => ({ enabled, loading }), [enabled, loading]);
 };
