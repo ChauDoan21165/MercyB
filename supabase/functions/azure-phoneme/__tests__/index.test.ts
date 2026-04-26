@@ -14,7 +14,7 @@
 // Five required tests per the Day-1 spec:
 //   1. Missing JWT → 401.
 //   2. 31 calls in 1h → 429 (rate-limit subsystem throws).
-//   3. Budget exceeded → 402 (check_ai_budget returns allowed:false).
+//   3. Budget bypass — denied check_ai_budget no longer short-circuits.
 //   4. Azure 200 happy path → 200 with unified shape including phonemes.
 //   5. Azure timeout → 200 with `use_local: true` sentinel.
 //
@@ -186,23 +186,34 @@ describe("handleRequest — rate limit", () => {
   });
 });
 
-describe("handleRequest — budget", () => {
-  it("returns 402 when check_ai_budget denies the request", async () => {
+describe("handleRequest — budget bypass (chat-RPC no longer gates phoneme)", () => {
+  it("ignores check_ai_budget result and proceeds to Azure", async () => {
+    // The chat-models AI-budget RPC (`check_ai_budget`) is no longer
+    // consulted by the phoneme scorer — phoneme cost is bounded by the
+    // upstream rate limit + global daily cap + trial gate + audio caps.
+    // A denied budget should NOT short-circuit the request anymore.
     const deps = makeDeps({
       checkAiBudget: vi
         .fn()
         .mockResolvedValue({ allowed: false, message: "Daily budget reached." }),
+      fetch: vi.fn().mockResolvedValue(azureSuccessResponse()),
     });
     const req = makeRequest(buildSilentWav(2));
     const res = await handleRequest(req, deps);
-    expect(res.status).toBe(402);
-    const body = (await res.json()) as { error: string; message: string };
-    expect(body.error).toBe("budget_exceeded");
-    expect(body.message).toBe("Daily budget reached.");
-    expect(deps.audit).toHaveBeenCalledWith(
-      expect.objectContaining({ status: "budget_exceeded" }),
+
+    expect(res.status).toBe(200);
+    const body = (await res.json()) as { ok: boolean; provider: string };
+    expect(body.ok).toBe(true);
+    expect(body.provider).toBe("azure");
+    // Azure WAS called (the budget reject didn't short-circuit).
+    expect(deps.fetch).toHaveBeenCalledOnce();
+    // No `budget_exceeded` audit row — the path is gone.
+    const budgetAudit = (deps.audit as ReturnType<typeof vi.fn>).mock.calls.find(
+      (call) =>
+        (call[0] as { status: string }).status === "budget_exceeded" &&
+        (call[0] as { errorMsg?: string }).errorMsg === "ai_budget_exceeded",
     );
-    expect(deps.fetch).not.toHaveBeenCalled();
+    expect(budgetAudit).toBeUndefined();
   });
 });
 
