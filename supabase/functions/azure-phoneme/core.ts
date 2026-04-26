@@ -111,18 +111,19 @@ export type SentinelResponse = {
 
 type AzurePhoneme = {
   Phoneme?: string;
-  PronunciationAssessment?: { AccuracyScore?: number };
+  AccuracyScore?: number;
 };
 type AzureWord = {
   Word?: string;
   Offset?: number;
   Duration?: number;
-  PronunciationAssessment?: { AccuracyScore?: number; ErrorType?: string };
+  AccuracyScore?: number;
+  ErrorType?: string;
   Phonemes?: AzurePhoneme[];
 };
 type AzureNBest = {
   Display?: string;
-  PronunciationAssessment?: { AccuracyScore?: number };
+  AccuracyScore?: number;
   Words?: AzureWord[];
 };
 export type AzureResponse = {
@@ -395,7 +396,7 @@ export async function handleRequest(req: Request, deps: Deps): Promise<Response>
           "Pronunciation-Assessment": headerValue,
           Accept: "application/json",
         },
-        body: fileBuffer,
+        body: arrayBuffer,
         signal: controller.signal,
       });
       clearTimeout(timer);
@@ -592,15 +593,15 @@ export function projectAzureResponse(body: AzureResponse): {
   phonemeScores: unknown;
 } {
   const nbest = body.NBest?.[0];
-  const overallRaw = nbest?.PronunciationAssessment?.AccuracyScore ?? 0;
+  const overallRaw = nbest?.AccuracyScore ?? 0;
   const overallScore = clampScore(overallRaw);
 
   const wordScores: UnifiedWordScore[] = (nbest?.Words ?? []).map((w) => {
     const wordText = (w.Word ?? "").trim();
-    const wordScore = clampScore(w.PronunciationAssessment?.AccuracyScore ?? 0);
+    const wordScore = clampScore(w.AccuracyScore ?? 0);
     const phonemes = (w.Phonemes ?? []).map((ph) => ({
       phoneme: (ph.Phoneme ?? "").trim(),
-      score: clampScore(ph.PronunciationAssessment?.AccuracyScore ?? 0),
+      score: clampScore(ph.AccuracyScore ?? 0),
     }));
     return {
       word: wordText,
