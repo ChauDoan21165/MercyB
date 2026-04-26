@@ -695,7 +695,7 @@ export function MercySpeakTab({
   // cloud path returns a score, it replaces `localMatchScore` for the
   // visible YOU bar + chip row. When it errors, sentinels, or is OFF,
   // we keep `localMatchScore`. Single visible UI shape regardless.
-  const azurePhonemeScoringEnabled = useFeatureFlag('azure_phoneme_scoring', false);
+  const { enabled: azurePhonemeScoringEnabled } = useFeatureFlag('azure_phoneme_scoring', false);
   const [cloudOverrideScore, setCloudOverrideScore] = useState<number | null>(null);
   const cloudAttemptKeyRef = useRef<string>('');
   useEffect(() => {
