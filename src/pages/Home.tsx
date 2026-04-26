@@ -314,6 +314,13 @@ export default function Home() {
   const handleTeacherMercy = () => {
     if (typeof window === "undefined" || typeof document === "undefined") return;
 
+    // Signed-out users: route to sign-in instead of trying to open the
+    // Mercy bubble (which never renders for them).
+    if (!access.isAuthenticated) {
+      nav("/signin");
+      return;
+    }
+
     window.scrollTo({ top: 0, behavior: "smooth" });
 
     // Find the floating Mercy bubble.
@@ -392,8 +399,15 @@ export default function Home() {
         </div>
 
         <div style={{ marginTop: 18, display: "inline-flex", alignItems: "center", gap: 8, padding: "10px 20px", borderRadius: 9999, background: "rgba(180,60,100,0.10)", border: "1px solid rgba(180,60,100,0.18)", color: "rgba(120,30,60,0.90)", fontWeight: 900, fontSize: z(14) }}>
-          Open Teacher Mercy →
+          {!access.isAuthenticated
+            ? "Sign in to chat with Teacher Mercy →"
+            : "Open Teacher Mercy →"}
         </div>
+        {!access.isAuthenticated && (
+          <div style={{ marginTop: 6, fontSize: z(13), fontWeight: 600, color: "rgba(140,60,90,0.58)", lineHeight: 1.5 }}>
+            Đăng nhập để học cùng Mercy →
+          </div>
+        )}
       </div>
     </button>
   );
