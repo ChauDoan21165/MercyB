@@ -699,14 +699,10 @@ export function MercySpeakTab({
   const [cloudOverrideScore, setCloudOverrideScore] = useState<number | null>(null);
   const cloudAttemptKeyRef = useRef<string>('');
   useEffect(() => {
-    console.log('[cloud-debug] effect running; flag=', azurePhonemeScoringEnabled);
     if (!azurePhonemeScoringEnabled) return;
-    console.log('[cloud-debug] flag passed; practiceText=', !!practiceText);
     if (!practiceText) return;
-    console.log('[cloud-debug] text passed; isRecording=', isRecording, 'isListening=', isListening);
     if (isRecording || isListening) return;
     const blob = recordedAudioBlobRef.current;
-    console.log('[cloud-debug] state passed; blob=', blob, 'size=', blob?.size);
     if (!blob || blob.size === 0) return;
 
     // Re-fire only on a fresh attempt (new transcript or new practice
