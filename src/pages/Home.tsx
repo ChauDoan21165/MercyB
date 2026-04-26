@@ -316,14 +316,34 @@ export default function Home() {
 
     window.scrollTo({ top: 0, behavior: "smooth" });
 
-    // Find the floating Mercy bubble and click it to open the panel.
-    // The bubble has aria-label "Open Mercy Guide" or "Open Teacher Mercy for kids".
+    // Find the floating Mercy bubble.
+    // The bubble uses onPointerDown (not onClick), so .click() doesn't
+    // trigger the React handler. We dispatch a real pointerdown event,
+    // and as a fallback also send an Enter keydown which the bubble's
+    // onKeyDown handler converts to handleOpenGuideFromBubble.
     const bubble =
-      document.querySelector<HTMLButtonElement>('[aria-label="Open Mercy Guide"]') ||
-      document.querySelector<HTMLButtonElement>('[aria-label="Open Teacher Mercy for kids"]');
+      document.querySelector<HTMLElement>('[aria-label="Open Mercy Guide"]') ||
+      document.querySelector<HTMLElement>('[aria-label="Open Teacher Mercy for kids"]');
 
     if (bubble) {
-      bubble.click();
+      // Primary: pointerdown event (matches the bubble's onPointerDown handler)
+      bubble.dispatchEvent(
+        new PointerEvent("pointerdown", {
+          bubbles: true,
+          cancelable: true,
+          pointerType: "mouse",
+          button: 0,
+        })
+      );
+      // Fallback: focus + Enter keydown (matches the bubble's onKeyDown handler)
+      bubble.focus();
+      bubble.dispatchEvent(
+        new KeyboardEvent("keydown", {
+          bubbles: true,
+          cancelable: true,
+          key: "Enter",
+        })
+      );
     } else {
       console.warn(
         "[Home] Teacher Mercy bubble not found; cannot open panel. " +
