@@ -447,7 +447,16 @@ export async function handleRequest(req: Request, deps: Deps): Promise<Response>
         );
         azureError = `azure_${response.status}`;
       } else {
-        azureBody = (await response.json()) as AzureResponse;
+        const bodyText = await response.text();
+        console.error(
+          "[azure-200-debug] body=",
+          truncate(bodyText, 2000),
+        );
+        try {
+          azureBody = JSON.parse(bodyText) as AzureResponse;
+        } catch (e) {
+          azureError = `azure_parse:${e instanceof Error ? e.message : String(e)}`;
+        }
       }
     } catch (err) {
       if (timedOut) {
