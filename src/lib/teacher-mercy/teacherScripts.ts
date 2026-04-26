@@ -368,7 +368,6 @@ export function buildTeacherPlan(input: TeacherResponseInput): TeacherPlan {
     'boss',
     'joke',
     'roast me',
-    'friend of chau doan',
   ]);
 
   const wantsChallenge =

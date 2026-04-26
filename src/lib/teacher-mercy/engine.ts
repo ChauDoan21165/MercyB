@@ -33,7 +33,6 @@ import { getMartialCoachTip, inferMartialDiscipline, type MartialCoachLevel, typ
 import { logEvent } from './logs';
 import {
   applyPersonality,
-  detectFriendOfBossJoke,
   detectPronunciationRequest,
   detectUserFrustration,
   getPersonalityLine,
@@ -190,7 +189,6 @@ export function createMercyEngine(
       | 'user_frustrated'
       | 'user_lazy'
       | 'user_improving'
-      | 'friend_of_boss'
       | 'returning_user'
       | 'pronunciation_not_ready'
       | 'teacher_wit'
@@ -333,7 +331,6 @@ export function createMercyEngine(
       | 'user_frustrated'
       | 'user_lazy'
       | 'user_improving'
-      | 'friend_of_boss'
       | 'returning_user'
       | 'pronunciation_not_ready'
       | 'teacher_wit'
@@ -692,30 +689,6 @@ export function createMercyEngine(
       if (!canProcess) return;
 
       const userText = typeof payload?.userText === 'string' ? payload.userText : '';
-
-      // Friend-of-the-boss joke handling
-      if (userText && detectFriendOfBossJoke(userText) && !state.silenceMode) {
-        const line = getPersonalityLine('friend_of_boss');
-
-        setState((s) => ({
-          ...s,
-          currentAnimation: 'glow',
-          presenceState: 'active'
-        }));
-
-        showTeacherHint(line, 'friend_of_boss');
-        resetIdleTimer();
-
-        logEvent({
-          type: 'chat_message',
-          extra: {
-            personalityIntent: 'friend_of_boss',
-            userText
-          }
-        });
-
-        return;
-      }
 
       // Pronunciation request handling (honest capability response)
       if (userText && detectPronunciationRequest(userText) && !state.silenceMode) {

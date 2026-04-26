@@ -178,20 +178,6 @@ const HUMOR_LINES: HumorLine[] = [
     en: 'Good. Again, but cleaner.',
     vi: 'Tốt. Lại lần nữa, nhưng gọn hơn.',
   },
-  {
-    id: 'boss_joke_1',
-    style: 'teacher_wit',
-    context: 'boss_joke',
-    en: 'Ah yes, the legendary friend of Chau Doan clause.',
-    vi: 'À vâng, điều khoản huyền thoại bạn của Chau Doan.',
-  },
-  {
-    id: 'boss_joke_2',
-    style: 'teacher_wit',
-    context: 'boss_joke',
-    en: 'Careful. That sounds suspiciously like executive grammar.',
-    vi: 'Cẩn thận. Nghe khá giống ngữ pháp cấp điều hành đấy.',
-  },
 ];
 
 function normalizeText(input: string): string {
@@ -222,8 +208,6 @@ export function detectBossJoke(input?: string | null): boolean {
   const text = normalizeText(input || '');
 
   return includesAny(text, [
-    'friend of chau doan',
-    'chau doan',
     'boss joke',
     'boss mode',
     'executive grammar',

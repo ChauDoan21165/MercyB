@@ -47,7 +47,7 @@ export const PRODUCT_CONFIG = {
    * Chau's explicit OK.
    */
   founder: {
-    name: "Chau Doan",
+    name: "MercyBlade",
     story: "",
     backgroundShort: "",
   },

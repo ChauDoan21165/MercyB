@@ -14,7 +14,7 @@
 //   published_at: 2026-04-24
 //   tags: [vietnamese, learning]
 //   cover_image: /blog/cover.jpg
-//   author: Chau Doan
+//   author: MercyBlade
 //   ---
 //
 // Body follows after the closing `---` and contains both languages
@@ -80,7 +80,7 @@ function parsePost(path: string, raw: string): BlogPost | null {
     published_at: String(fm.published_at ?? ""),
     tags: Array.isArray(fm.tags) ? fm.tags.map(String) : [],
     cover_image: fm.cover_image ? String(fm.cover_image) : null,
-    author: String(fm.author ?? "Chau Doan"),
+    author: String(fm.author ?? "MercyBlade"),
   };
 }
 

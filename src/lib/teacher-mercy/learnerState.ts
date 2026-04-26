@@ -41,7 +41,6 @@ export function inferLearnerState(input: string): LearnerState {
     "lol",
     "haha",
     "boss",
-    "friend of chau doan",
     "joke",
     "roast me",
   ]);

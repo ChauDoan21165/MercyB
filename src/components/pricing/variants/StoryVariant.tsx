@@ -30,7 +30,6 @@ const STORY_PARAGRAPHS_VI: ReadonlyArray<string> = [
   "Nếu cách tiếp cận này chạm bạn, Premium giúp dự án sống và mở rộng nội dung tiếng Việt.",
 ];
 
-const SIGN_OFF_VI = "— Chau, founder";
 
 export type StoryVariantProps = {
   onSelectPlan: (key: "month" | "year") => void;
@@ -54,7 +53,6 @@ export default function StoryVariant({ onSelectPlan }: StoryVariantProps) {
             {p}
           </p>
         ))}
-        <p className="text-sm text-black/65 italic">{SIGN_OFF_VI}</p>
       </section>
 
       <h2 className="text-base font-bold text-black/90 mb-3">

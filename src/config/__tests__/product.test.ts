@@ -19,11 +19,10 @@ describe("PRODUCT_CONFIG", () => {
     expect(PRODUCT_NAME).toBe("MercyBlade");
   });
 
-  it("describes Mercy + Chau by name and pronouns/story", () => {
+  it("describes Mercy by name and pronouns", () => {
     expect(PRODUCT_CONFIG.teacher.name).toBe("Mercy");
     expect(PRODUCT_CONFIG.teacher.pronouns).toBe("she/her");
-    expect(PRODUCT_CONFIG.founder.name).toBe("Chau Doan");
-    expect(PRODUCT_CONFIG.founder.story).toContain("Vietnamese");
+    expect(PRODUCT_CONFIG.founder.name).toBe("MercyBlade");
   });
 
   it("declares L1 = Vietnamese, L2 = English", () => {

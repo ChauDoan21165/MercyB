@@ -135,7 +135,7 @@ export default function ShareableStreakCard({
 
     ctx.fillStyle = "rgba(154, 52, 18, 0.65)";
     ctx.font = "400 22px system-ui, -apple-system, Helvetica, Arial, sans-serif";
-    ctx.fillText("Made by Chau · for the VN diaspora", CARD_WIDTH / 2, CARD_HEIGHT - 90);
+    ctx.fillText("MercyBlade · for the VN diaspora", CARD_WIDTH / 2, CARD_HEIGHT - 90);
 
     // Update the visible preview.
     setPreviewUrl(canvas.toDataURL("image/png"));

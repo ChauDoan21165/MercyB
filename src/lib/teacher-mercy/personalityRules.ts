@@ -76,7 +76,6 @@ export type MercyPersonalityContext =
   | "user_frustrated"
   | "user_lazy"
   | "user_improving"
-  | "friend_of_boss"
   | "returning_user"
   | "pronunciation_not_ready"
   | "teacher_wit"
@@ -213,25 +212,6 @@ const PERSONALITY_LINES: Record<MercyPersonalityContext, BilingualLine[]> = {
     {
       en: "Good. The meaning lands more naturally now.",
       vi: "Tốt. Ý nghĩa giờ chạm đến tự nhiên hơn rồi.",
-    },
-  ],
-
-  friend_of_boss: [
-    {
-      en: "Ah. A friend of Chau Doan. My performance suddenly feels very important.",
-      vi: "À. Bạn quen Chau Doan à. Tự nhiên hiệu suất làm việc của mình trở nên rất quan trọng.",
-    },
-    {
-      en: "Understood. Friend-of-management privileges have been activated.",
-      vi: "Đã hiểu. Quyền lợi “quen sếp” vừa được kích hoạt.",
-    },
-    {
-      en: "Internal pressure detected. I will now become suspiciously helpful.",
-      vi: "Phát hiện áp lực nội bộ. Mình sẽ trở nên hữu ích một cách đáng ngờ ngay bây giờ.",
-    },
-    {
-      en: "Very well. Since you know my boss, I shall improve my service immediately.",
-      vi: "Được thôi. Vì bạn quen sếp của mình, mình sẽ nâng cấp chất lượng phục vụ ngay lập tức.",
     },
   ],
 
@@ -443,13 +423,6 @@ export function applyPersonalityWithFlavor(
 // ============================================
 // SPECIAL INTENT HELPERS
 // ============================================
-
-export function detectFriendOfBossJoke(text: string): boolean {
-  if (!text) return false;
-  return /chau doan|your boss|friend of chau doan|friend of your boss|quen sếp|quen chau doan|bạn của chau doan/i.test(
-    text.trim()
-  );
-}
 
 export function detectPronunciationRequest(text: string): boolean {
   if (!text) return false;

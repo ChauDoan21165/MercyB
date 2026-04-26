@@ -7,7 +7,7 @@ summary_en: One of the first mistakes every Vietnamese learner makes — and als
 published_at: 2026-04-23
 tags: [grammar, beginner, l1-transfer]
 cover_image: /blog/i-am-go-cover.jpg
-author: Chau Doan
+author: MercyBlade
 ---
 
 <!-- CHAU TODO: rewrite body with real content. Outline below is real. -->

@@ -7,7 +7,7 @@ summary_en: Why do Vietnamese speakers often pronounce "think" as "tink"? Why do
 published_at: 2026-04-22
 tags: [pronunciation, beginner, vietnamese-english]
 cover_image: /blog/pronunciation-cover.jpg
-author: Chau Doan
+author: MercyBlade
 ---
 
 <!-- CHAU TODO: rewrite body with real content. This is a structural skeleton, every section is real outline. -->
