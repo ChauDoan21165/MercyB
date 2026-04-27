@@ -22,6 +22,8 @@
 // sounding like a coach who's making things up.
 
 import { getWeeklyProgressSummary } from "@/lib/analytics/speechProgress";
+import { getPhonemeHeatmap } from "@/lib/pronunciation/phonemeHeatmap";
+import { generateInsights } from "@/lib/pronunciation/heatmapInsights";
 
 /** Minimum attempts this week before we surface progress at all. */
 export const MIN_WEEKLY_ATTEMPTS_FOR_CONTEXT = 3;
@@ -53,6 +55,21 @@ export type ProgressContext = {
     | null;
   /** Server-side current streak (profiles.streak_current). */
   streak: number;
+  /**
+   * One-line snapshot from the 30-day phoneme heatmap, populated
+   * lazily when a heatmap snapshot exists for the user. The shape is
+   * deliberately minimal: just enough for Mercy to say "tôi thấy bạn
+   * đã cải thiện /θ/ — tăng từ 65 lên 82 trong 2 tuần" without
+   * inventing numbers.
+   */
+  heatmapHighlight:
+    | {
+        kind: "most_improved" | "plateau" | "needs_work" | "doing_well";
+        phoneme: string;
+        averageScore: number;
+        delta: number | null;
+      }
+    | null;
   /** When this snapshot was built (epoch ms). Used for client-side cache TTL. */
   builtAt: number;
 };
@@ -87,6 +104,33 @@ export async function buildProgressContext(
   const top = summary.mostImproved[0];
   const weakest = summary.weakest[0];
 
+  // Heatmap snapshot is best-effort. A failure here must NOT prevent
+  // the rest of the progress context from being returned — the chat
+  // turn already factored Mercy's response on the weekly summary.
+  let heatmapHighlight: ProgressContext["heatmapHighlight"] = null;
+  try {
+    const heatmap = await getPhonemeHeatmap(userId, 30);
+    if (heatmap) {
+      const insights = generateInsights(heatmap);
+      // Prefer most_improved (it's the most quotable). Fall back to
+      // needs_work for users who haven't shown gains yet.
+      const top =
+        insights.find((i) => i.kind === "most_improved") ??
+        insights.find((i) => i.kind === "needs_work") ??
+        insights[0];
+      if (top) {
+        heatmapHighlight = {
+          kind: top.kind,
+          phoneme: top.phoneme,
+          averageScore: top.averageScore,
+          delta: top.delta,
+        };
+      }
+    }
+  } catch (err) {
+    console.warn("[mercy/progressContext] heatmap projection failed:", err);
+  }
+
   const ctx: ProgressContext = {
     attemptsThisWeek: summary.thisWeek.attempts,
     averageScoreThisWeek: summary.thisWeek.averageScore,
@@ -106,6 +150,7 @@ export async function buildProgressContext(
         }
       : null,
     streak: summary.streak,
+    heatmapHighlight,
     builtAt: Date.now(),
   };
 
@@ -152,6 +197,21 @@ export function formatProgressContextForPrompt(
   }
   if (ctx.streak > 0) {
     lines.push(`- Current streak: ${ctx.streak} days`);
+  }
+  if (ctx.heatmapHighlight) {
+    const h = ctx.heatmapHighlight;
+    const tag =
+      h.kind === "most_improved"
+        ? "30-day improving"
+        : h.kind === "plateau"
+        ? "30-day plateau"
+        : h.kind === "needs_work"
+        ? "30-day low"
+        : "30-day strong";
+    const deltaPart = h.delta !== null ? ` (delta ${h.delta >= 0 ? "+" : ""}${h.delta})` : "";
+    lines.push(
+      `- Heatmap (${tag}): /${h.phoneme}/ at ${h.averageScore}/100${deltaPart}`,
+    );
   }
 
   return lines.join("\n");

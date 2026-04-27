@@ -35,6 +35,7 @@ const Privacy             = lazy(() => import("@/pages/Privacy"));
 const Terms                = lazy(() => import("@/pages/Terms"));
 const Support             = lazy(() => import("@/pages/Support"));
 const AccountPage         = lazy(() => import("@/pages/AccountPage"));
+const PushPreferencesPage = lazy(() => import("@/pages/account/PushPreferences"));
 const ReferralPage        = lazy(() => import("@/pages/Referral"));
 const BillingPage         = lazy(() => import("@/pages/Billing"));
 const BillingSuccessPage  = lazy(() => import("@/pages/BillingSuccessPage"));
@@ -59,11 +60,14 @@ const SpeechDrillPage      = lazy(() => import("@/pages/SpeechDrillPage"));
 const SpeechHistoryPage    = lazy(() => import("@/pages/speech/SpeechHistoryPage"));
 const ProgressPage         = lazy(() => import("@/pages/Progress"));
 const LeaderboardPage      = lazy(() => import("@/pages/LeaderboardPage"));
+const MonthlyReferralLeaderboard = lazy(() => import("@/pages/leaderboards/MonthlyReferralLeaderboard"));
 const ProfessionsIndexPage = lazy(() => import("@/pages/professions/ProfessionsIndexPage"));
 const NailTechLessonsPage  = lazy(() => import("@/pages/professions/NailTechLessonsPage"));
 const RestaurantLessonsPage = lazy(() => import("@/pages/professions/RestaurantLessonsPage"));
 const CustomerServiceLessonsPage = lazy(() => import("@/pages/professions/CustomerServiceLessonsPage"));
 const TechWorkerLessonsPage = lazy(() => import("@/pages/professions/TechWorkerLessonsPage"));
+const HealthcareLessonsPage = lazy(() => import("@/pages/professions/HealthcareLessonsPage"));
+const DriversLessonsPage = lazy(() => import("@/pages/professions/DriversLessonsPage"));
 
 // Mercy v2 — multi-turn conversation thread page (auth-required).
 const MercyThreadPage      = lazy(() => import("@/pages/mercy/MercyThreadPage"));
@@ -151,6 +155,8 @@ const TOEICEstimatorPage     = lazy(() => import("@/pages/exam-prep/TOEICEstimat
 const TOEICPracticePackPage  = lazy(() => import("@/pages/exam-prep/toeic/Practice"));
 const IELTSSpeakingContentPage      = lazy(() => import("@/pages/exam-prep/ielts/Speaking"));
 const IELTSSpeakingTopicPage        = lazy(() => import("@/pages/exam-prep/ielts/SpeakingTopic"));
+const IELTSListeningContentPage     = lazy(() => import("@/pages/exam-prep/ielts/Listening"));
+const IELTSListeningItemPage        = lazy(() => import("@/pages/exam-prep/ielts/ListeningItem"));
 
 const CorporateDashboardPage = lazy(() => import("@/pages/corporate/CorporateDashboardPage"));
 const CreateCorporatePage    = lazy(() => import("@/pages/corporate/CreateCorporatePage"));
@@ -166,6 +172,9 @@ const AdminSubscriptions      = lazy(() => import("@/pages/admin/AdminSubscripti
 const FeatureFlagsAdmin       = lazy(() => import("@/pages/admin/FeatureFlagsAdmin"));
 const AdminAnalyticsPage      = lazy(() => import("@/pages/admin/AdminAnalyticsPage"));
 const LatencyMonitoring       = lazy(() => import("@/pages/admin/LatencyMonitoring"));
+const SloDashboard            = lazy(() => import("@/pages/admin/SloDashboard"));
+const SloDetail               = lazy(() => import("@/pages/admin/SloDetail"));
+const CostMonitoring          = lazy(() => import("@/pages/admin/CostMonitoring"));
 const RoomLoadDiagnostics     = lazy(() =>
   import("@/components/admin/RoomLoadDiagnostics").then((m) => ({
     default: m.RoomLoadDiagnostics,
@@ -606,6 +615,11 @@ export default function AppRouter() {
             element={<LazyPage><LeaderboardPage /></LazyPage>}
           />
 
+          {/* Public monthly referral leaderboard — anon-viewable */}
+          <Route path="/leaderboard/referral"
+            element={<LazyPage><MonthlyReferralLeaderboard /></LazyPage>}
+          />
+
           {/* Profession packs — vocational English verticals (anon-viewable). */}
           <Route path="/professions"
             element={<LazyPage><ProfessionsIndexPage /></LazyPage>}
@@ -621,6 +635,12 @@ export default function AppRouter() {
           />
           <Route path="/professions/tech-worker"
             element={<LazyPage><TechWorkerLessonsPage /></LazyPage>}
+          />
+          <Route path="/professions/healthcare"
+            element={<LazyPage><HealthcareLessonsPage /></LazyPage>}
+          />
+          <Route path="/professions/drivers"
+            element={<LazyPage><DriversLessonsPage /></LazyPage>}
           />
 
           {/* Mercy v2 — multi-turn conversation thread (Step 7) */}
@@ -837,6 +857,14 @@ export default function AppRouter() {
               </RequireAuth>
             }
           />
+          {/* Push notification preferences (auth-required) */}
+          <Route path="/account/push-preferences"
+            element={
+              <RequireAuth>
+                <LazyPage><PushPreferencesPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
           {/* Public token-based one-click unsubscribe. NO auth — the token
               IS the credential. Linked from every marketing email footer
               and from the List-Unsubscribe header. */}
@@ -969,6 +997,17 @@ export default function AppRouter() {
             element={<LazyPage><IELTSSpeakingTopicPage /></LazyPage>}
           />
 
+          {/* IELTS Listening content pack — open marketing surface. 30 items
+              across all 4 sections with VN-listener strategies, vocab, and
+              ElevenLabs-backed audio practice. Premium-gated practice route
+              is /exam/ielts/listening. */}
+          <Route path="/exam-prep/ielts/listening"
+            element={<LazyPage><IELTSListeningContentPage /></LazyPage>}
+          />
+          <Route path="/exam-prep/ielts/listening/:itemId"
+            element={<LazyPage><IELTSListeningItemPage /></LazyPage>}
+          />
+
           {/* TOEIC prep (Step 11 — premium-gated; gate is inside the page) */}
           <Route path="/exam/toeic"
             element={
@@ -1047,6 +1086,9 @@ export default function AppRouter() {
               <Route path="feedback-triage"      element={<LazyPage><FeedbackTriagePage /></LazyPage>} />
               <Route path="analytics"            element={<LazyPage><AdminAnalyticsPage /></LazyPage>} />
               <Route path="latency"              element={<LazyPage><LatencyMonitoring /></LazyPage>} />
+              <Route path="slo"                  element={<LazyPage><SloDashboard /></LazyPage>} />
+              <Route path="slo/:sloId"           element={<LazyPage><SloDetail /></LazyPage>} />
+              <Route path="cost-monitoring"      element={<LazyPage><CostMonitoring /></LazyPage>} />
               <Route path="pending-sentences"    element={<LazyPage><PendingSentencesPage /></LazyPage>} />
               <Route path="stories"              element={<LazyPage><StoryModerationPage /></LazyPage>} />
               <Route path="room-load-diagnostics" element={<LazyPage><RoomLoadDiagnostics /></LazyPage>} />

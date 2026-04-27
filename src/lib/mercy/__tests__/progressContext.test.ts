@@ -18,6 +18,7 @@ function fullCtx(): ProgressContext {
     },
     weakestPhoneme: { phoneme: "r", averageScore: 55 },
     streak: 4,
+    heatmapHighlight: null,
     builtAt: Date.now(),
   };
 }
@@ -75,5 +76,26 @@ describe("formatProgressContextForPrompt", () => {
       weakestPhoneme: null,
     });
     expect(text).not.toContain("Still working on");
+  });
+
+  it("includes a heatmap highlight line when present", () => {
+    const text = formatProgressContextForPrompt({
+      ...fullCtx(),
+      heatmapHighlight: {
+        kind: "most_improved",
+        phoneme: "th",
+        averageScore: 78,
+        delta: 12,
+      },
+    });
+    expect(text).toContain("Heatmap (30-day improving): /th/ at 78/100 (delta +12)");
+  });
+
+  it("omits the heatmap line when null", () => {
+    const text = formatProgressContextForPrompt({
+      ...fullCtx(),
+      heatmapHighlight: null,
+    });
+    expect(text).not.toContain("Heatmap (");
   });
 });

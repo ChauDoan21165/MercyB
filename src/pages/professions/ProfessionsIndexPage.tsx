@@ -1,12 +1,21 @@
 // src/pages/professions/ProfessionsIndexPage.tsx — /professions
 //
-// Vocational-English landing. Today: Nail Technician, Restaurant,
-// Customer Service, and Tech Worker — all active. Each card opens a
-// focused vertical.
+// Vocational-English landing. Six active verticals: Nail Technician,
+// Restaurant, Customer Service, Tech Worker, Healthcare, Drivers.
+// Each card opens a focused vertical with 50 lessons.
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { Sparkles, Utensils, Headset, Code2, ArrowRight, Lock } from "lucide-react";
+import {
+  Sparkles,
+  Utensils,
+  Headset,
+  Code2,
+  HeartPulse,
+  Car,
+  ArrowRight,
+  Lock,
+} from "lucide-react";
 
 const HERO_VI = "Tiếng Anh nghề nghiệp cho người Việt";
 const HERO_EN = "Vocational English for Vietnamese workers";
@@ -69,6 +78,28 @@ const CARDS: Card[] = [
     Icon: Code2,
     accent: "indigo",
   },
+  {
+    slug: "healthcare",
+    title_vi: "Tiếng Anh nhân viên y tế",
+    title_en: "Healthcare",
+    blurb_vi:
+      "50 bài: tiếp nhận, đánh giá đau, trao đổi thuốc, chăm người lớn tuổi/dementia, khẩn cấp, ghi hồ sơ. Giao tiếp — không phải training y khoa.",
+    href: "/professions/healthcare",
+    status: "active",
+    Icon: HeartPulse,
+    accent: "emerald",
+  },
+  {
+    slug: "drivers",
+    title_vi: "Tiếng Anh dành cho tài xế",
+    title_en: "Drivers",
+    blurb_vi:
+      "50 bài: đón khách, trò chuyện, GPS reroute, va chạm, gọi 911, trạm cân, DOT inspection, qua biên giới, giữ rating 4.8+.",
+    href: "/professions/drivers",
+    status: "active",
+    Icon: Car,
+    accent: "teal",
+  },
 ];
 
 const ACCENT_CLASSES: Record<string, { border: string; bg: string; icon: string }> = {
@@ -91,6 +122,16 @@ const ACCENT_CLASSES: Record<string, { border: string; bg: string; icon: string 
     border: "border-indigo-200",
     bg: "bg-gradient-to-br from-indigo-50 via-violet-50 to-blue-50",
     icon: "text-indigo-600",
+  },
+  emerald: {
+    border: "border-emerald-200",
+    bg: "bg-gradient-to-br from-emerald-50 via-teal-50 to-sky-50",
+    icon: "text-emerald-600",
+  },
+  teal: {
+    border: "border-teal-200",
+    bg: "bg-gradient-to-br from-teal-50 via-cyan-50 to-blue-50",
+    icon: "text-teal-600",
   },
 };
 

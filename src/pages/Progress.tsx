@@ -37,6 +37,7 @@ import {
 
 import { useAuth } from "@/providers/AuthProvider";
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
+import PhonemeHeatmapSection from "@/components/pronunciation/PhonemeHeatmapSection";
 import {
   CANONICAL_PHONEMES,
   exportAttemptsCsv,
@@ -507,6 +508,10 @@ export default function ProgressPage() {
 
         {/* Most-improved + still-working badges */}
         {summary ? <BadgesRow summary={summary} /> : null}
+
+        {/* Phoneme heatmap — per-day per-phoneme grid + insights.
+            Self-fetching; hidden until user has 5+ attempts in window. */}
+        <PhonemeHeatmapSection userId={user?.id ?? null} />
 
         {/* Recent attempts */}
         {recent.length > 0 ? <RecentAttemptsCard rows={recent} /> : null}
