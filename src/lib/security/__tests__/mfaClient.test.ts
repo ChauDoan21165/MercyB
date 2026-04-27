@@ -11,6 +11,7 @@ vi.mock("@/lib/supabaseClient", () => ({
         unenroll: vi.fn(),
         challenge: vi.fn(),
         verify: vi.fn(),
+        getAuthenticatorAssuranceLevel: vi.fn(),
       },
     },
   },
@@ -30,9 +31,11 @@ import {
   disableTotpFactor,
   enrollTotp,
   findFirstVerifiedTotp,
+  getAal,
   hasVerifiedTotpFactor,
   humanizeMfaError,
   listMfaFactors,
+  needsAal2Upgrade,
   verifyChallenge,
   verifyEnrollment,
   type MfaFactor,
@@ -46,6 +49,7 @@ const sb = supabase as unknown as {
       unenroll: ReturnType<typeof vi.fn>;
       challenge: ReturnType<typeof vi.fn>;
       verify: ReturnType<typeof vi.fn>;
+      getAuthenticatorAssuranceLevel: ReturnType<typeof vi.fn>;
     };
   };
 };
@@ -278,5 +282,77 @@ describe("humanizeMfaError — bilingual messages", () => {
   it("works on non-Error throws (string, undefined)", () => {
     expect(humanizeMfaError("Invalid TOTP code").en).toContain("didn't match");
     expect(humanizeMfaError(undefined).en).toContain("Something went wrong");
+  });
+});
+
+describe("getAal — assurance level wrapper", () => {
+  it("returns currentLevel + nextLevel from the SDK", async () => {
+    sb.auth.mfa.getAuthenticatorAssuranceLevel.mockResolvedValue({
+      data: { currentLevel: "aal1", nextLevel: "aal2" },
+      error: null,
+    });
+    const out = await getAal();
+    expect(out.currentLevel).toBe("aal1");
+    expect(out.nextLevel).toBe("aal2");
+  });
+
+  it("returns null fields when SDK returns no data", async () => {
+    sb.auth.mfa.getAuthenticatorAssuranceLevel.mockResolvedValue({
+      data: null,
+      error: null,
+    });
+    const out = await getAal();
+    expect(out.currentLevel).toBeNull();
+    expect(out.nextLevel).toBeNull();
+  });
+
+  it("rejects when SDK returns an error", async () => {
+    sb.auth.mfa.getAuthenticatorAssuranceLevel.mockResolvedValue({
+      data: null,
+      error: { message: "boom" },
+    });
+    await expect(getAal()).rejects.toBeTruthy();
+  });
+});
+
+describe("needsAal2Upgrade — the route-guard predicate", () => {
+  it("returns TRUE when currentLevel='aal1' && nextLevel='aal2' (challenge required)", async () => {
+    sb.auth.mfa.getAuthenticatorAssuranceLevel.mockResolvedValue({
+      data: { currentLevel: "aal1", nextLevel: "aal2" },
+      error: null,
+    });
+    expect(await needsAal2Upgrade()).toBe(true);
+  });
+
+  it("returns FALSE when both levels are aal2 (already MFA-authed)", async () => {
+    sb.auth.mfa.getAuthenticatorAssuranceLevel.mockResolvedValue({
+      data: { currentLevel: "aal2", nextLevel: "aal2" },
+      error: null,
+    });
+    expect(await needsAal2Upgrade()).toBe(false);
+  });
+
+  it("returns FALSE when both levels are aal1 (no MFA enrolled)", async () => {
+    sb.auth.mfa.getAuthenticatorAssuranceLevel.mockResolvedValue({
+      data: { currentLevel: "aal1", nextLevel: "aal1" },
+      error: null,
+    });
+    expect(await needsAal2Upgrade()).toBe(false);
+  });
+
+  it("returns FALSE on SDK error (fail-permissive — RLS is the actual gate)", async () => {
+    sb.auth.mfa.getAuthenticatorAssuranceLevel.mockResolvedValue({
+      data: null,
+      error: { message: "transient" },
+    });
+    expect(await needsAal2Upgrade()).toBe(false);
+  });
+
+  it("returns FALSE when nextLevel is null (no factor configured)", async () => {
+    sb.auth.mfa.getAuthenticatorAssuranceLevel.mockResolvedValue({
+      data: { currentLevel: "aal1", nextLevel: null },
+      error: null,
+    });
+    expect(await needsAal2Upgrade()).toBe(false);
   });
 });
