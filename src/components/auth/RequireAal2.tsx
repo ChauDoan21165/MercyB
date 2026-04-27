@@ -2,7 +2,7 @@
  * Path: src/components/auth/RequireAal2.tsx
  *
  * Route guard that forces aal=2 for users who have a verified MFA
- * factor enrolled. The companion to migration 20260524 — that
+ * factor enrolled. The companion to migration 20260528 — that
  * migration enforces the same rule at the database layer via RLS;
  * this component enforces it at the UX layer so users see a clear
  * "enter your code" page rather than blank/error pages from RLS-
@@ -63,7 +63,7 @@ export default function RequireAal2({
         // needsAal2Upgrade swallows errors and returns false; if we
         // somehow get here, fall through to the permissive branch so
         // an SDK hiccup doesn't lock legit users out of their account.
-        // The RLS gate from migration 20260524 still blocks the
+        // The RLS gate from migration 20260528 still blocks the
         // sensitive reads even if this client check is permissive.
         if (alive) setStatus("ok");
       }

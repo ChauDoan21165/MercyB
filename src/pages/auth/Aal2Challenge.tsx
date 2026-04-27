@@ -13,7 +13,7 @@
  * dangling aal=1 session can't be reused via direct URL navigation.
  *
  * This page is the UX half of the aal=1 bypass fix from the security
- * review. The other half is migration 20260524 which adds the
+ * review. The other half is migration 20260528 which adds the
  * "require_aal2_when_factor_present" RESTRICTIVE policy at the
  * database layer — that's the actual security boundary.
  */

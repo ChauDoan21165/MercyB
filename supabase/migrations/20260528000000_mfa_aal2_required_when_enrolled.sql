@@ -1,4 +1,4 @@
--- Path: supabase/migrations/20260524000000_mfa_aal2_required_when_enrolled.sql
+-- Path: supabase/migrations/20260528000000_mfa_aal2_required_when_enrolled.sql
 --
 -- 2FA Phase 1 — server-side enforcement of aal=2 for users with a
 -- verified MFA factor.
