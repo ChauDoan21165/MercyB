@@ -21,6 +21,10 @@ import { useAuth } from "@/providers/AuthProvider";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import TrialExpiredScreen from "@/components/TrialExpiredScreen";
 import ChatSupportButton from "@/components/support/ChatSupportButton";
+// 2FA Phase 1 — route guard that forces aal=2 when the user has a
+// verified MFA factor. Pairs with the RLS gate from migration
+// 20260524 so neither layer is the only line of defense.
+import RequireAal2 from "@/components/auth/RequireAal2";
 
 const MB_ROUTER_VERSION = "2026-04-11-app-router-room-alias-hardening";
 
@@ -95,6 +99,7 @@ const DeveloperPortalPage = lazy(() => import("@/pages/dev/DeveloperPortalPage")
 // 2FA Phase 1 — paid-tier gated, both routes RequireAuth-wrapped.
 const SecuritySettingsPage = lazy(() => import("@/pages/account/SecuritySettings"));
 const Enable2FAPage = lazy(() => import("@/pages/auth/Enable2FA"));
+const Aal2ChallengePage = lazy(() => import("@/pages/auth/Aal2Challenge"));
 
 const BlogIndex = lazy(() => import("@/pages/blog/BlogIndex"));
 const BlogPost  = lazy(() => import("@/pages/blog/BlogPost"));
@@ -775,10 +780,15 @@ export default function AppRouter() {
           />
 
           {/* Protected pages — redirect to /signin if not authenticated */}
+          {/* /account exposes billing + security surfaces; gated behind
+              RequireAal2 so an aal=1 session cannot reach them when the
+              user has MFA enrolled. */}
           <Route path="/account"
             element={
               <RequireAuth>
-                <LazyPage><AccountPage /></LazyPage>
+                <RequireAal2>
+                  <LazyPage><AccountPage /></LazyPage>
+                </RequireAal2>
               </RequireAuth>
             }
           />
@@ -790,19 +800,40 @@ export default function AppRouter() {
               </RequireAuth>
             }
           />
-          {/* 2FA Phase 1 — security settings (paid-tier gated inside the page). */}
+          {/* 2FA Phase 1 — security settings (paid-tier gated inside the page).
+              RequireAal2 forces a TOTP challenge if the user has a verified
+              factor but the session is at aal=1 — closes the post-password
+              navigation bypass identified in the security review. */}
           <Route path="/account/security"
             element={
               <RequireAuth>
-                <LazyPage><SecuritySettingsPage /></LazyPage>
+                <RequireAal2>
+                  <LazyPage><SecuritySettingsPage /></LazyPage>
+                </RequireAal2>
               </RequireAuth>
             }
           />
-          {/* 2FA enrollment flow — paid-tier gated inside the page. */}
+          {/* 2FA enrollment flow — paid-tier gated inside the page.
+              No RequireAal2 here: a user enrolling for the first time has
+              no verified factor yet, so the guard's predicate is always
+              false. Disabling MFA from /account/security flows back through
+              that route and is gated. */}
           <Route path="/auth/security"
             element={
               <RequireAuth>
                 <LazyPage><Enable2FAPage /></LazyPage>
+              </RequireAuth>
+            }
+          />
+          {/* 2FA Phase 1 — forced TOTP challenge for aal=1 sessions
+              that have a verified factor. Reached via the RequireAal2
+              guard on protected routes. RequireAuth-wrapped (a logged-out
+              visitor has nothing to challenge), but NOT RequireAal2-wrapped
+              (this IS the page that satisfies the requirement). */}
+          <Route path="/auth/challenge"
+            element={
+              <RequireAuth>
+                <LazyPage><Aal2ChallengePage /></LazyPage>
               </RequireAuth>
             }
           />
