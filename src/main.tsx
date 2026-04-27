@@ -257,6 +257,17 @@ function scheduleOneTimeChunkReload(): boolean {
   } catch { /* ignore */ }
 })();
 
+// A9 — capture ?ref=ABC234 before any auth round-trip eats the URL.
+// Stashes the code in sessionStorage; AuthProvider auto-applies it on
+// the first verified login. Idempotent — safe on every boot.
+(function captureReferralCodeOnBoot() {
+  try {
+    void import("@/lib/referral/referralClient").then((mod) => {
+      mod.capturePendingReferralFromUrl();
+    });
+  } catch { /* ignore */ }
+})();
+
 (function restoreDeepLinkFromSessionStorage() {
   try {
     const redirect = sessionStorage.getItem("redirect");

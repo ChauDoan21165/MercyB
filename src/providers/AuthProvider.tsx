@@ -33,6 +33,10 @@ import {
   writeBrowserTimezoneOnce,
 } from "@/lib/streakMigration";
 import { heartbeatSession, logUserSession } from "@/services/userSessions";
+import {
+  applyPendingReferralOnAuth,
+  retryReferralRewardOnAuth,
+} from "@/lib/referral/referralClient";
 
 const SESSION_HEARTBEAT_MS = 5 * 60 * 1000;
 
@@ -115,6 +119,31 @@ async function backfillProfileRowOnAuth(
  * SERVER_STREAKS_ENABLED feature flag — this function is a no-op when the
  * flag is off.
  */
+/**
+ * A9 — Referral wiring. Two passes per verified auth event:
+ *   1. apply: if a `?ref=` code was captured before signup, redeem it
+ *      now (the redeem fires the immediate referred-user grant via the
+ *      apply RPC).
+ *   2. retry: re-attempt the owner-side reward, which is held until
+ *      the referred user reaches Day 3. Idempotent — a no-op once
+ *      both sides are granted or while still inside the gate.
+ * Errors are swallowed (dev-warn) so a referral hiccup never blocks
+ * auth UX.
+ */
+async function processReferralOnAuth(userId: string | null): Promise<void> {
+  if (!userId) return;
+  try {
+    await applyPendingReferralOnAuth(userId);
+  } catch (err) {
+    if (import.meta.env.DEV) console.warn("[auth] applyPendingReferral:", err);
+  }
+  try {
+    await retryReferralRewardOnAuth(userId);
+  } catch (err) {
+    if (import.meta.env.DEV) console.warn("[auth] retryReferralReward:", err);
+  }
+}
+
 async function runStreakBootTasksOnAuth(userId: string | null): Promise<void> {
   if (!userId) return;
   try {
@@ -255,6 +284,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             // handle_new_user() trigger silently failed. Idempotent and
             // fire-and-forget. See backfillProfileRowOnAuth above.
             void backfillProfileRowOnAuth(verifiedId, verifiedEmail);
+            // A9 referral: apply pending ?ref= code + retry owner-side
+            // reward (Day-3 gated). Both calls are idempotent.
+            void processReferralOnAuth(verifiedId);
             // Wave 2 Step 2: server-streaks boot tasks. No-op when the
             // feature flag is off. Runs per-session on verified sessions,
             // but each task is internally idempotent.

@@ -135,7 +135,13 @@ export async function applyReferralCode(
 // ── Reward delivery ──────────────────────────────────────────────────────
 
 export type GrantRewardResult =
-  | { ok: true; grantedReferred: boolean; grantedOwner: boolean }
+  | {
+      ok: true;
+      grantedReferred: boolean;
+      grantedOwner: boolean;
+      ownerPendingDay3?: boolean;
+      ownerAtCap?: boolean;
+    }
   | { ok: false; error: GrantRewardError };
 
 export type GrantRewardError =
@@ -151,6 +157,8 @@ type GrantResponse = {
     error?: string;
     granted_referred?: boolean;
     granted_owner?: boolean;
+    owner_pending_day3?: boolean;
+    owner_at_cap?: boolean;
   } | null;
   error: { message: string } | null;
 };
@@ -179,6 +187,8 @@ export async function grantReferralReward(
       ok: true,
       grantedReferred: Boolean(result.data.granted_referred),
       grantedOwner: Boolean(result.data.granted_owner),
+      ownerPendingDay3: Boolean(result.data.owner_pending_day3),
+      ownerAtCap: Boolean(result.data.owner_at_cap),
     };
   }
 
@@ -202,9 +212,13 @@ export type ReferralStats = {
   /**
    * Reward eligibility is "did anyone redeem your code AND has the
    * reward not been delivered yet?" — we check `reward_granted_owner =
-   * false` rows. The actual reward delivery is out of scope here.
+   * false` rows.
    */
   pendingOwnerRewards: number;
+  /** Number of completed owner-side rewards (already granted). */
+  completedOwnerRewards: number;
+  /** Days of free time the owner has earned in total (7 × completed). */
+  totalDaysEarned: number;
 };
 
 type StatsCodeRow = { code: string; uses_count: number } | null;
@@ -227,7 +241,13 @@ export async function getReferralStats(userId: string): Promise<ReferralStats> {
     .maybeSingle();
 
   if (codeRowQ.error || !codeRowQ.data) {
-    return { code: null, usesCount: 0, pendingOwnerRewards: 0 };
+    return {
+      code: null,
+      usesCount: 0,
+      pendingOwnerRewards: 0,
+      completedOwnerRewards: 0,
+      totalDaysEarned: 0,
+    };
   }
 
   const usesQ: { data: StatsUsesRow[] | null; error: { message: string } | null } =
@@ -247,11 +267,14 @@ export async function getReferralStats(userId: string): Promise<ReferralStats> {
       .eq("reward_granted_owner", false);
 
   const pending = usesQ.error || !usesQ.data ? 0 : usesQ.data.length;
+  const completed = Math.max(0, (codeRowQ.data.uses_count ?? 0) - pending);
 
   return {
     code: codeRowQ.data.code,
     usesCount: codeRowQ.data.uses_count ?? 0,
     pendingOwnerRewards: pending,
+    completedOwnerRewards: completed,
+    totalDaysEarned: completed * 7,
   };
 }
 
@@ -283,5 +306,117 @@ export function readReferralCodeFromUrl(href?: string): string | null {
     return isValidReferralCodeShape(norm) ? norm : null;
   } catch {
     return null;
+  }
+}
+
+// ── Pending-referral capture (cross-signup persistence) ───────────────────
+//
+// When a user lands on `/?ref=ABC234` they may not be signed in yet —
+// they'll go through the signup or OAuth flow first. We stash the code
+// in sessionStorage so it survives the round-trip, then auto-apply on
+// the first verified auth event.
+//
+// sessionStorage (not localStorage) so the capture dies with the tab —
+// avoids a referral leaking across users on a shared device.
+
+const PENDING_REFERRAL_STORAGE_KEY = "mb.pendingReferralCode";
+
+export function capturePendingReferralFromUrl(href?: string): string | null {
+  if (typeof window === "undefined") return null;
+  const code = readReferralCodeFromUrl(href);
+  if (!code) return null;
+  try {
+    window.sessionStorage.setItem(PENDING_REFERRAL_STORAGE_KEY, code);
+  } catch {
+    // Private mode / quota errors → silently skip; the user can still
+    // type the code on /referral.
+  }
+  return code;
+}
+
+export function readPendingReferralCode(): string | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const raw = window.sessionStorage.getItem(PENDING_REFERRAL_STORAGE_KEY);
+    if (!raw) return null;
+    const norm = normalizeReferralCode(raw);
+    return isValidReferralCodeShape(norm) ? norm : null;
+  } catch {
+    return null;
+  }
+}
+
+export function clearPendingReferralCode(): void {
+  if (typeof window === "undefined") return;
+  try {
+    window.sessionStorage.removeItem(PENDING_REFERRAL_STORAGE_KEY);
+  } catch {
+    // ignore
+  }
+}
+
+/**
+ * Apply any pending referral code captured before signup. Called from
+ * AuthProvider on the first verified auth event. Best-effort:
+ *   - already_used / self_referral / invalid_code → clear and move on
+ *   - applied → clear (the apply RPC also fires the grant in background)
+ *
+ * Returns the apply result for telemetry; safe to ignore.
+ */
+export async function applyPendingReferralOnAuth(
+  userId: string,
+): Promise<ApplyReferralCodeResult | null> {
+  const code = readPendingReferralCode();
+  if (!code) return null;
+
+  const result = await applyReferralCode(userId, code);
+  // Clear regardless of outcome — terminal states all warrant removing
+  // the pending code (success consumed it; failure means the code is
+  // not redeemable and re-trying won't change that).
+  clearPendingReferralCode();
+  return result;
+}
+
+/**
+ * Re-attempt the owner-side reward grant. Used on every verified login
+ * to flush the Day-3 gate once the referred user has aged in. Idempotent;
+ * the SQL function short-circuits when both sides are already granted
+ * or the gate hasn't lifted yet.
+ */
+export async function retryReferralRewardOnAuth(
+  userId: string,
+): Promise<GrantRewardResult | null> {
+  // Cheap pre-check: if there's no referral_uses row for this user the
+  // RPC will return 'no_referral_use'. Skipping the RPC entirely when
+  // we know there's no row keeps the boot path quiet.
+  const exists = await hasPendingReferralUse(userId);
+  if (!exists) return null;
+  return await grantReferralReward(userId);
+}
+
+type ExistsRow = { id: string } | null;
+
+async function hasPendingReferralUse(userId: string): Promise<boolean> {
+  try {
+    const q = await (supabase
+      .from("referral_uses") as unknown as {
+        select: (cols: string) => {
+          eq: (col: string, val: string) => {
+            eq: (col: string, val: boolean) => {
+              maybeSingle: () => Promise<{
+                data: ExistsRow;
+                error: { message: string } | null;
+              }>;
+            };
+          };
+        };
+      })
+      .select("id")
+      .eq("referred_user_id", userId)
+      .eq("reward_granted_owner", false)
+      .maybeSingle();
+    return !q.error && q.data != null;
+  } catch {
+    return false;
   }
 }

@@ -41,6 +41,8 @@ describe("grantReferralReward", () => {
       ok: true,
       grantedReferred: true,
       grantedOwner: true,
+      ownerPendingDay3: false,
+      ownerAtCap: false,
     });
   });
 
@@ -55,6 +57,8 @@ describe("grantReferralReward", () => {
       ok: true,
       grantedReferred: true,
       grantedOwner: false,
+      ownerPendingDay3: false,
+      ownerAtCap: false,
     });
   });
 
@@ -69,6 +73,52 @@ describe("grantReferralReward", () => {
       ok: true,
       grantedReferred: false,
       grantedOwner: false,
+      ownerPendingDay3: false,
+      ownerAtCap: false,
+    });
+  });
+
+  it("surfaces ownerPendingDay3 when owner reward is held by Day-3 gate", async () => {
+    supabaseMock.rpc.mockResolvedValueOnce({
+      data: {
+        ok: true,
+        granted_referred: true,
+        granted_owner: false,
+        owner_pending_day3: true,
+        owner_at_cap: false,
+      },
+      error: null,
+    });
+
+    const result = await grantReferralReward("user-1");
+    expect(result).toEqual({
+      ok: true,
+      grantedReferred: true,
+      grantedOwner: false,
+      ownerPendingDay3: true,
+      ownerAtCap: false,
+    });
+  });
+
+  it("surfaces ownerAtCap when referrer hit the 90-day/year cap", async () => {
+    supabaseMock.rpc.mockResolvedValueOnce({
+      data: {
+        ok: true,
+        granted_referred: true,
+        granted_owner: false,
+        owner_pending_day3: false,
+        owner_at_cap: true,
+      },
+      error: null,
+    });
+
+    const result = await grantReferralReward("user-1");
+    expect(result).toEqual({
+      ok: true,
+      grantedReferred: true,
+      grantedOwner: false,
+      ownerPendingDay3: false,
+      ownerAtCap: true,
     });
   });
 

@@ -7,6 +7,7 @@ import { describe, it, expect } from "vitest";
 
 import {
   buildFacebookSharerUrl,
+  buildLandingUrl,
   shareCaption,
   canWebShareWithFiles,
 } from "../facebookShare";
@@ -50,5 +51,34 @@ describe("canWebShareWithFiles", () => {
     // realistic baseline.
     const blob = new Blob(["x"], { type: "image/png" });
     expect(canWebShareWithFiles(blob)).toBe(false);
+  });
+});
+
+describe("buildLandingUrl (A9 referral)", () => {
+  it("returns the bare home URL when no code is supplied", () => {
+    expect(buildLandingUrl(null)).toBe("https://mercyblade.com");
+  });
+
+  it("appends ?ref=CODE when a code is supplied", () => {
+    expect(buildLandingUrl("ABC234")).toBe("https://mercyblade.com/?ref=ABC234");
+  });
+});
+
+describe("shareCaption with referral", () => {
+  it("includes the Vietnamese invite line and landing URL when a code is supplied", () => {
+    const caption = shareCaption(
+      88,
+      "ABC234",
+      "https://mercyblade.com/?ref=ABC234",
+    );
+    expect(caption).toContain("88/100");
+    expect(caption).toContain("Đăng ký bằng link này để được thêm 7 ngày miễn phí");
+    expect(caption).toContain("https://mercyblade.com/?ref=ABC234");
+  });
+
+  it("falls back to the plain domain line when no code is supplied", () => {
+    const caption = shareCaption(88);
+    expect(caption).toContain("mercyblade.com");
+    expect(caption).not.toContain("Đăng ký bằng link này");
   });
 });
