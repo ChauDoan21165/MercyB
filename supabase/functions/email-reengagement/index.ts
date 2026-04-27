@@ -36,6 +36,10 @@ import {
   type ReengagementUserRow,
   type RecentActivity,
 } from "./categorizeUsers.ts";
+import {
+  buildListUnsubscribeHeaders,
+  withFooter,
+} from "../_shared/unsubscribe.ts";
 
 import warmTemplate from "./templates/warm.json" with { type: "json" };
 import coolTemplate from "./templates/cool.json" with { type: "json" };
@@ -186,7 +190,13 @@ async function loadCapState(
 
 interface SendableRow {
   logId: string;
-  user: { id: string; email: string; preferred_name?: string | null };
+  user: {
+    id: string;
+    email: string;
+    preferred_name?: string | null;
+    /** Required by withFooter / buildListUnsubscribeHeaders. */
+    email_unsubscribe_token?: string | null;
+  };
   campaign: string;
 }
 
@@ -241,13 +251,30 @@ async function dispatchSends(
     const firstName = pickFirstName(user);
     const vars = { first_name: firstName, ...templateVars(campaign) };
     const subject = bilingualSubject(template, vars);
-    const { text, html } = bilingualBody(template, vars);
+    const baseBody = bilingualBody(template, vars);
 
     if (!resend) {
       // Skeleton mode: leave row 'pending' so a future configured run can
       // pick it up. Mirrors the original A6 behavior.
       continue;
     }
+
+    // Every marketing email gets the bilingual unsubscribe footer and
+    // List-Unsubscribe headers. Skip the send if the user has no token
+    // (defensive — the migration backfilled all rows + the trigger
+    // generates one on insert) rather than emit footer-less mail.
+    const token = user.email_unsubscribe_token ?? null;
+    if (!token) {
+      const msg = "missing_unsubscribe_token";
+      console.warn("[email-reengagement] skipping send:", { user_id: user.id, msg });
+      await adminClient
+        .from("email_sends_log")
+        .update({ status: "skipped", error_message: msg, sent_at: new Date().toISOString() })
+        .eq("id", logId);
+      continue;
+    }
+    const { text, html } = withFooter(baseBody, token);
+    const headers = buildListUnsubscribeHeaders(token);
 
     try {
       const { data: emailData, error: emailError } = await resend.emails.send({
@@ -257,6 +284,7 @@ async function dispatchSends(
         subject,
         text,
         html,
+        headers,
       });
 
       if (emailError) {
@@ -355,6 +383,10 @@ interface ProfileWithSubscription {
   preferred_name: string | null;
   last_active_at: string | null;
   tier: number | null;
+  /** Per-user opt-out gate; default true. */
+  email_re_engagement_enabled: boolean | null;
+  /** Required for the unsubscribe footer + List-Unsubscribe header. */
+  email_unsubscribe_token: string | null;
   subscriptions:
     | {
         status: string | null;
@@ -368,6 +400,8 @@ interface ProfileWithSubscription {
 
 function flattenSubscription(p: ProfileWithSubscription): ReengagementUserRow & {
   preferred_name: string | null;
+  email_re_engagement_enabled: boolean | null;
+  email_unsubscribe_token: string | null;
 } {
   const sub = p.subscriptions?.[0] ?? null;
   return {
@@ -381,6 +415,8 @@ function flattenSubscription(p: ProfileWithSubscription): ReengagementUserRow & 
     trial_ends_at: sub?.trial_ends_at ?? null,
     current_period_start_at: sub?.current_period_start_at ?? null,
     current_period_end_at: sub?.current_period_end_at ?? null,
+    email_re_engagement_enabled: p.email_re_engagement_enabled,
+    email_unsubscribe_token: p.email_unsubscribe_token,
   };
 }
 
@@ -503,7 +539,9 @@ Deno.serve(async (req) => {
       const since90 = new Date(now.getTime() - 90 * 86400_000).toISOString();
       const { data: profiles, error: profilesError } = await adminClient
         .from("profiles")
-        .select("id, email, preferred_name, last_active_at")
+        .select(
+          "id, email, preferred_name, last_active_at, email_re_engagement_enabled, email_unsubscribe_token",
+        )
         .gte("last_active_at", since90);
 
       if (profilesError) {
@@ -515,32 +553,56 @@ Deno.serve(async (req) => {
       let queued = 0;
       let alreadyQueued = 0;
       let cappedOut = 0;
+      let optedOut = 0;
 
       for (const p of (profiles ?? []) as Array<{
         id: string;
         email: string | null;
         preferred_name: string | null;
+        email_re_engagement_enabled: boolean | null;
+        email_unsubscribe_token: string | null;
       }>) {
         if (!p.email) continue;
+        if (p.email_re_engagement_enabled === false) {
+          optedOut++;
+          continue;
+        }
         if (cap.recentByUserCampaign.has(`${p.id}:${campaign}`)) {
           cappedOut++;
           continue;
         }
         const { logId, alreadyQueued: dup } = await queuePending(
           adminClient,
-          { id: p.id, email: p.email, preferred_name: p.preferred_name },
+          {
+            id: p.id,
+            email: p.email,
+            preferred_name: p.preferred_name,
+          },
           campaign,
           "reengagement",
         );
         if (logId) {
           sendable.push({
             logId,
-            user: { id: p.id, email: p.email, preferred_name: p.preferred_name },
+            user: {
+              id: p.id,
+              email: p.email,
+              preferred_name: p.preferred_name,
+              email_unsubscribe_token: p.email_unsubscribe_token,
+            },
             campaign,
           });
           if (dup) alreadyQueued++;
           else queued++;
         }
+      }
+
+      if (optedOut > 0) {
+        console.log("[email-reengagement] skipped:user_unsubscribed", {
+          count: optedOut,
+          category: "re_engagement",
+          action: "monthly_broadcast",
+        });
       }
 
       const { sent, failed, throttled, errors } = await dispatchSends(
@@ -562,6 +624,7 @@ Deno.serve(async (req) => {
         queued,
         already_queued: alreadyQueued,
         capped_out: cappedOut,
+        opted_out: optedOut,
         sent,
         failed,
         throttled,
@@ -574,7 +637,7 @@ Deno.serve(async (req) => {
     const { data: profilesRaw, error: profilesError } = await adminClient
       .from("profiles")
       .select(
-        "id, email, preferred_name, last_active_at, tier, subscriptions:subscriptions(status,trial_started_at,trial_ends_at,current_period_start_at,current_period_end_at)",
+        "id, email, preferred_name, last_active_at, tier, email_re_engagement_enabled, email_unsubscribe_token, subscriptions:subscriptions(status,trial_started_at,trial_ends_at,current_period_start_at,current_period_end_at)",
       );
 
     if (profilesError) {
@@ -582,7 +645,25 @@ Deno.serve(async (req) => {
       return send({ ok: false, error: "Failed to query profiles" });
     }
 
-    const profiles = (profilesRaw ?? []) as ProfileWithSubscription[];
+    const profilesAll = (profilesRaw ?? []) as ProfileWithSubscription[];
+    // Honor per-user opt-out before any bucketing. Anyone who turned off
+    // re-engagement email never enters the buckets, so we never queue
+    // a pending row that would later be silently dropped.
+    let dailyOptedOut = 0;
+    const profiles = profilesAll.filter((p) => {
+      if (p.email_re_engagement_enabled === false) {
+        dailyOptedOut++;
+        return false;
+      }
+      return true;
+    });
+    if (dailyOptedOut > 0) {
+      console.log("[email-reengagement] skipped:user_unsubscribed", {
+        count: dailyOptedOut,
+        category: "re_engagement",
+        action: "daily",
+      });
+    }
     const flattened = profiles.map(flattenSubscription);
 
     // ── Pass 1 (back-compat) — time-based queue (no Resend send) ────────
@@ -643,17 +724,32 @@ Deno.serve(async (req) => {
     const behaviorBuckets = categorizeUsersForReengagement(flattened, now, activityByUser);
 
     const behaviorQueueable: Array<{
-      user: { id: string; email: string; preferred_name: string | null };
+      user: {
+        id: string;
+        email: string;
+        preferred_name: string | null;
+        email_unsubscribe_token: string | null;
+      };
       campaign: string;
     }> = [];
     for (const [bucket, users] of Object.entries(behaviorBuckets)) {
       if (bucket === "skipped") continue;
       const campaign =
         REENGAGEMENT_BUCKET_TO_CAMPAIGN[bucket as keyof typeof REENGAGEMENT_BUCKET_TO_CAMPAIGN];
-      for (const u of users as Array<ReengagementUserRow & { preferred_name: string | null }>) {
+      for (const u of users as Array<
+        ReengagementUserRow & {
+          preferred_name: string | null;
+          email_unsubscribe_token: string | null;
+        }
+      >) {
         if (!u.email) continue;
         behaviorQueueable.push({
-          user: { id: u.id, email: u.email, preferred_name: u.preferred_name },
+          user: {
+            id: u.id,
+            email: u.email,
+            preferred_name: u.preferred_name,
+            email_unsubscribe_token: u.email_unsubscribe_token,
+          },
           campaign,
         });
       }
@@ -696,6 +792,7 @@ Deno.serve(async (req) => {
       ok: true,
       action: "daily",
       scanned: flattened.length,
+      opted_out: dailyOptedOut,
       time_based: {
         warm: timeBuckets.warm.length,
         cool: timeBuckets.cool.length,
