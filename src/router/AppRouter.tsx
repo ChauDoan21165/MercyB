@@ -125,6 +125,8 @@ const TOEICIndexPage         = lazy(() => import("@/pages/exam-prep/TOEICIndexPa
 const TOEICPracticePage      = lazy(() => import("@/pages/exam-prep/TOEICPracticePage"));
 const TOEICEstimatorPage     = lazy(() => import("@/pages/exam-prep/TOEICEstimatorPage"));
 const TOEICPracticePackPage  = lazy(() => import("@/pages/exam-prep/toeic/Practice"));
+const IELTSSpeakingContentPage      = lazy(() => import("@/pages/exam-prep/ielts/Speaking"));
+const IELTSSpeakingTopicPage        = lazy(() => import("@/pages/exam-prep/ielts/SpeakingTopic"));
 
 const CorporateDashboardPage = lazy(() => import("@/pages/corporate/CorporateDashboardPage"));
 const CreateCorporatePage    = lazy(() => import("@/pages/corporate/CreateCorporatePage"));
@@ -848,6 +850,17 @@ export default function AppRouter() {
               lives at /exam/toeic. */}
           <Route path="/exam-prep/toeic"
             element={<LazyPage><TOEICPracticePackPage /></LazyPage>}
+          />
+
+          {/* IELTS Speaking content pack — open marketing surface (no auth, no
+              paywall). 30 topics across all 3 parts with VN-speaker
+              strategies, vocabulary by band, and band-7/band-5 sample
+              answers. The premium-gated practice route is /exam/ielts/speaking. */}
+          <Route path="/exam-prep/ielts/speaking"
+            element={<LazyPage><IELTSSpeakingContentPage /></LazyPage>}
+          />
+          <Route path="/exam-prep/ielts/speaking/:topicId"
+            element={<LazyPage><IELTSSpeakingTopicPage /></LazyPage>}
           />
 
           {/* TOEIC prep (Step 11 — premium-gated; gate is inside the page) */}
