@@ -5,7 +5,7 @@
 **Domain:** mercyblade.com
 **Supabase project:** buemdfxyhxunzpgdoqin
 **User UUID:** 9957f25a-7b58-4a17-a3f2-4b91e63e69ae (admin level 10)
-**Last updated:** 2026-04-26
+**Last updated:** 2026-04-26 21:50
 
 This file tracks: known issues, deferred work, configuration tasks, and decisions that are pending. Update as you discover things or make decisions.
 
@@ -15,19 +15,29 @@ This file tracks: known issues, deferred work, configuration tasks, and decision
 
 ### Gmail self-sender dedupe (testing only, not production)
 
-**Problem:** Trial-expiry emails from `admin@mercyblade.com` to `cd12536@gmail.com` get deduplicated by Gmail because mercyblade.com is routed via Cloudflare Email Routing back to the same Gmail. Gmail sees you sending to yourself and silently drops the duplicate.
+**Problem:** Trial-expiry emails from `admin@mercyblade.com` to `cd12536@gmail.com` get deduplicated by Gmail because mercyblade.com is routed via Cloudflare Email Routing back to the same Gmail.
 
-**Impact:** ONLY affects testing with your own admin@mercyblade.com → cd12536@gmail.com flow. Real users get emails fine. This is a test-only issue.
+**Impact:** ONLY affects testing with your own admin@mercyblade.com → cd12536@gmail.com flow. Real users get emails fine.
 
 **Workaround for testing:** Use a separate email account (any non-cd12536 Gmail, or Outlook/Yahoo/ProtonMail).
 
-**Long-term fix (defer):** Switch FROM address to `noreply@mercyblade.com` (or `mercy@mercyblade.com`) in `supabase/functions/trial-expiry-emails/index.ts`. Requires adding the new sender as verified in Resend. ~30 min agent task.
+**Long-term fix (defer):** Switch FROM address to `noreply@mercyblade.com` in `supabase/functions/trial-expiry-emails/index.ts`.
+
+---
+
+### Anonymous auth would create runaway profiles rows
+
+**Problem:** A1's audit found that `handle_new_user` trigger fires on every `auth.users` INSERT — including anonymous. At 1k visits/day = 30k anon profile rows/month. Real cost-explosion vector.
+
+**Decision:** Ship anon auth dark (feature flag OFF) in the upcoming PR. Cleanup migration must land BEFORE the flag is flipped on. Per-IP rate limit also needed before flag-on (current 30/h is per user_id, bots cycling anon sessions can bypass).
+
+**Status:** A1 will ship dark-default PR. Cleanup migration = follow-up PR. Per-IP rate limit = follow-up PR.
 
 ---
 
 ### Trial-emails sending duplicate per invocation
 
-**Problem:** Function reports `sent: 1` on each curl call, even when the user is the same. Need to verify if `email_sends_log` has a unique constraint preventing duplicates per user per stage. If not, when daily cron runs, users could receive the same D-1 email multiple times.
+**Problem:** Function reports `sent: 1` on each curl call. Need to verify if `email_sends_log` has a unique constraint preventing duplicates per user per stage.
 
 **To verify:**
 ```sql
@@ -37,34 +47,36 @@ ORDER BY created_at DESC
 LIMIT 10;
 ```
 
-If multiple `sent` rows for the same campaign+user exist → bug. Need a unique index on (user_id, campaign_type) where status='sent'.
-
 **Status:** Not yet verified. Check tomorrow.
+
+---
+
+### Conversation cost cap not enforced
+
+**Problem:** A4's audit found `$0.05` per-conversation OpenAI cap is logged via `logAiUsageEvent` but not enforced. Runaway conversation could cost real money.
+
+**Status:** Agent dispatched to enforce as 402 Payment Required gate. Branch: `feat/conversation-cost-cap`.
 
 ---
 
 ### Sentry not configured
 
-**Problem:** `[sentry] disabled — VITE_SENTRY_DSN not set` in console. Skeleton wired but no DSN provisioned.
+**Problem:** `[sentry] disabled — VITE_SENTRY_DSN not set`. Skeleton wired but no DSN.
 
-**Impact:** Production crashes only surface via user complaints. No analytics on errors.
-
-**Fix:** A8 agent task ready to dispatch (in agent task list). Chau provisions Sentry account separately.
+**Fix:** A8 agent task ready. Chau provisions Sentry account separately.
 
 ---
 
 ### `profiles.preferred_name` empty for own account
 
-**Problem:** Trial email opened with "Chào bạn" instead of "Chào Chau" because preferred_name is null.
+**Problem:** Trial email opened with "Chào bạn" instead of "Chào Chau".
 
-**Fix (run in Supabase SQL editor):**
+**Fix:**
 ```sql
 UPDATE profiles
 SET preferred_name = 'Chau'
 WHERE user_id = '9957f25a-7b58-4a17-a3f2-4b91e63e69ae';
 ```
-
-**Note:** Most users won't set this either. The "Chào bạn" fallback is acceptable for now.
 
 ---
 
@@ -76,24 +88,30 @@ WHERE user_id = '9957f25a-7b58-4a17-a3f2-4b91e63e69ae';
 - ✅ SPF record verified
 - ✅ MX record verified
 - ✅ DMARC record set (`p=none` — monitoring mode)
-- ⏳ **Gmail "Not Spam" mark** — click "Report not spam" on the trial-expiry email in your spam folder to teach Gmail this domain is legit
-- ⏳ **DMARC tightening** — after a few weeks of clean sends, upgrade `p=none` → `p=quarantine` → `p=reject`
-- ⏳ **Cron schedule for daily trial emails** — pg_cron at 09:00 UTC (16:00 ICT). Requires service-role JWT in Supabase Vault. Defer until tomorrow.
+- ⏳ **Gmail "Not Spam" mark** — click "Report not spam" on the trial-expiry email in spam folder
+- ⏳ **DMARC tightening** — after weeks of clean sends, upgrade `p=none` → `p=quarantine` → `p=reject`
+- ⏳ **Cron schedule for daily trial emails** — pg_cron at 09:00 UTC. Requires service-role JWT in Supabase Vault.
+
+### Supabase Auth (before flipping anon auth flag)
+
+- ⏳ Enable Anonymous Sign-Ins: Supabase Dashboard → Authentication → Providers → Anonymous → ON
+- ⏳ Apply 30-day cleanup migration (after A1's dark PR ships)
+- ⏳ Apply per-IP rate limit (follow-up PR)
+- ⏳ Flip `anonymous_auth_enabled` feature flag to true via admin panel
 
 ### Sentry
 
 - ⏳ Sign up at https://sentry.io
 - ⏳ Create project (React + Capacitor)
-- ⏳ Copy DSN
-- ⏳ Set Vercel env vars: `VITE_SENTRY_DSN`, `VITE_APP_ENV=production`, `SENTRY_AUTH_TOKEN`
+- ⏳ Copy DSN, set Vercel env vars: `VITE_SENTRY_DSN`, `VITE_APP_ENV=production`, `SENTRY_AUTH_TOKEN`
 - ⏳ Verify first error appears in dashboard
 
 ### App Store submission
 
-- ⏳ Capture 5-7 screenshots per device class (iPhone 6.7", iPad 12.9", Android phone) per A6's shot list in `reports/app-store-submission-package-2026-04-26.md`
-- ⏳ Add caption overlays to screenshots (Figma / Canva, copy from §6 of A6 report)
-- ⏳ Provision demo reviewer account: `appstore-reviewer@mercyblade.com`, tier 2, seeded learning history (do NOT auto-create from code)
-- ⏳ TestFlight verification: account deletion path + 3 screenshots
+- ⏳ Capture 5-7 screenshots per device class per A6's shot list
+- ⏳ Add caption overlays (Figma / Canva)
+- ⏳ Provision demo reviewer account: `appstore-reviewer@mercyblade.com`, tier 2, seeded learning history
+- ⏳ TestFlight verification: account deletion path
 - ⏳ Verify "Restore Purchases" button visible on iOS
 - ⏳ RevenueCat dashboard: subscription products configuration
 - ⏳ Stripe products for web billing
@@ -113,19 +131,18 @@ WHERE user_id = '9957f25a-7b58-4a17-a3f2-4b91e63e69ae';
 
 ## 🎯 Strategic agent task list (A1-A9)
 
-Dispatch in batches of 3 to avoid file conflicts. Priority order:
-
-| # | Task | Status | Strategic value |
+| # | Task | Status | Notes |
 |---|---|---|---|
-| A1 | Anonymous Supabase auth for instant Azure scoring | ⏳ Not dispatched | Highest — turns 12s magic moment into real Azure-powered demo |
-| A2 | Zalo + Messenger + email floating support | ⏳ Not dispatched | Trust signal, ELSA differentiator |
-| A6 | Daily 5-minute lesson card on Home | ⏳ Not dispatched | Engagement loop without notifications |
-| A8 | Sentry crash monitoring | ⏳ Not dispatched | Must-have for launch operations |
-| A9 | Referral system (revive worktree) | ⏳ Not dispatched | Viral acquisition completion |
-| A3 | Public weekly leaderboard (opt-in) | ⏳ Not dispatched | Viral fuel, Vietnamese culture fit |
-| A5 | ElevenLabs Vietnamese TTS | ⏳ Not dispatched | Perceived quality lift |
-| A7 | IELTS Speaking content pack (20 topics) | ⏳ Not dispatched | High-intent vertical, monetization fuel |
-| A4 | Mercy multi-turn conversation (revive 4 worktrees) | ⏳ Not dispatched | Largest scope, defer to v1.1 |
+| A1 | Anonymous Supabase auth | ⏳ Awaiting "small" reply | Dark-default PR pending |
+| A2 | Zalo + Messenger + email floating support | ⏳ Dispatched, working | |
+| A3 | Public weekly leaderboard (opt-in) | ✅ Shipped (PR #156) | Migration applied |
+| A4 | Mercy multi-turn conversation | ✅ Already shipped | PRs #89/#90/#97/#108 |
+| A5 | ElevenLabs Vietnamese TTS | ⏳ Dispatched, working | |
+| A6 | Daily 5-minute lesson card | ⏳ Dispatched, working | |
+| A7 | IELTS Speaking content pack | ⏳ Awaiting "Path C" reply | Skeleton-only path |
+| A8 | Sentry crash monitoring | ⏳ Needs re-dispatch | Got mis-pasted to A7 |
+| A9 | Referral system | ⏳ Awaiting "fresh worktree" reply | Avoid A3's old worktree |
+| Bonus | Conversation cost cap enforcement | ⏳ Dispatched, working | Branch: feat/conversation-cost-cap |
 
 ---
 
@@ -136,15 +153,30 @@ Dispatch in batches of 3 to avoid file conflicts. Priority order:
 | #148 | Per-phoneme tooltip | THE launch story feature |
 | #150 | Facebook share card | Viral acquisition |
 | #151 | Share-cards migration cleanup | Post-deploy fix |
-| #152 | App Store launch blockers (bundle ID + /support + iOS payment) | Submission unblocker |
+| #152 | App Store launch blockers | Submission unblocker |
 | #149 | Trial-emails wired to Resend | Trustworthy renewal funnel |
 | #154 | Trial-emails schema fix (is_premium → tier) | Runtime fix |
-| #155 | Trial-emails 3-day trial fix (drop D-3) | Correct funnel cadence |
-| #146 | Privacy Azure Cognitive Services disclosure | Submission requirement |
+| #155 | Trial-emails 3-day trial fix | Correct funnel cadence |
+| #146 | Privacy Azure disclosure | Submission requirement |
 | #147 | Privacy section 6 + RTBF cleanup | Hygiene |
-| #153 | Onboarding "Try one word" card + anon CTA | Fast magic moment |
-| #144 | Stop auto-redirect to placement, add Placement card | Home UX |
+| #153 | Onboarding "Try one word" card | Fast magic moment |
+| #156 | Weekly public leaderboard | Viral fuel |
+| #144 | Stop auto-redirect to placement | Home UX |
 | #145 | Remove redundant top placement banner | Home UX |
+| - | PROJECT_NOTES.md added | Operational continuity |
+
+---
+
+## ✅ Already shipped earlier (discovered today)
+
+| PR | Title |
+|---|---|
+| #79 | Streaks v2 (freeze/vacation/insurance) |
+| #89 | Mercy multi-turn threading |
+| #90 | Mercy episodic memory |
+| #97 | Mercy memory prompt slot |
+| #107 | Vinglish-friendly Mercy mode |
+| #108 | Mercy persona config |
 
 ---
 
@@ -152,15 +184,17 @@ Dispatch in batches of 3 to avoid file conflicts. Priority order:
 
 | Decision | Why |
 |---|---|
-| Pricing: 200K/month, 2M/year, no lifetime | Half of ELSA's price, no lifetime to avoid undercutting recurring revenue |
-| Use Facebook (220K followers) for share, NOT Zalo | Chau's distribution channel; share button targets Facebook |
-| No staging environment | Cohort flag + sentinel + 5-second rollback adequate for solo dev |
-| Mercy conversation work defers to v1.1 | Too big to ship cleanly in launch window; 2-4 week post-launch marketing beat |
-| Push notifications deferred indefinitely | Facebook handles re-engagement; APNs/FCM complexity not worth it |
-| 3-day trial (not 7-day or 14-day) | Decision made; templates updated to match |
-| Drop D-3 email stage | For 3-day trial, D-3 fires on signup day; awkward; D-1 + D+1 cleaner |
-| Bundle ID: com.chaudoan.mercyblade (both iOS + Android) | Aligned today via PR #152 |
-| OAuth deep-link scheme stays com.mercyapps.mercyblade | Decoupled from bundle ID, registered with Supabase, changing breaks signin |
+| Pricing: 200K/month, 2M/year, no lifetime | Half of ELSA's price, no lifetime to avoid undercutting recurring |
+| Use Facebook (220K followers) for share, NOT Zalo | Chau's distribution channel |
+| No staging environment | Cohort flag + sentinel + 5-second rollback adequate |
+| Push notifications deferred indefinitely | Facebook handles re-engagement |
+| 3-day trial (not 7-day) | Decision locked; templates updated to match |
+| Drop D-3 email stage | For 3-day trial, D-3 fires on signup day |
+| Bundle ID: com.chaudoan.mercyblade (both iOS + Android) | Aligned PR #152 |
+| OAuth deep-link scheme stays com.mercyapps.mercyblade | Decoupled from bundle ID, registered with Supabase |
+| Anonymous auth ships dark (flag OFF) first | Cleanup migration + rate limit needed before flag-on |
+| IELTS Path C: skeleton-only, content TODO | Avoids copyright on Cambridge/IDP/British Council material |
+| Mercy v1 (multi-turn + memory + persona) is launch-ready | Already shipped earlier — discovered via A4 audit |
 
 ---
 
@@ -168,17 +202,16 @@ Dispatch in batches of 3 to avoid file conflicts. Priority order:
 
 - Whether to extend trial from 3 days to 7 days based on launch data
 - Whether to enable `azure_phoneme_scoring` feature flag globally vs cohort
-- Whether to add anonymous Supabase auth (A1 task — leaning yes)
-- Whether to ship Mercy conversation in v1.0 or v1.1
+- When to flip `anonymous_auth_enabled` flag (after cleanup + rate limit ship)
 - Sentry sample rate for Performance monitoring (cost vs visibility)
+- IELTS sample answers source (licensed prep books vs IELTS examiner contractor)
 
 ---
 
-## 📋 Open PRs (currently open as of last check)
+## 📋 Open PRs (currently open)
 
 - #131 — Yesterday's CI cleanup (separate, leave alone)
-
-(Other PRs from today are all merged.)
+- (Active agent PRs land here as they open)
 
 ---
 
@@ -218,6 +251,11 @@ supabase functions deploy <function-name> --project-ref buemdfxyhxunzpgdoqin
 ### Check Supabase secrets
 ```bash
 supabase secrets list --project-ref buemdfxyhxunzpgdoqin
+```
+
+### Apply migrations to remote
+```bash
+supabase db push --linked
 ```
 
 ---
