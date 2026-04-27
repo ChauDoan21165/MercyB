@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import {
@@ -12,6 +12,11 @@ import {
   recordStart,
   type GateStatus,
 } from "@/lib/mock-interview/rateLimit";
+import {
+  endMockInterviewSession,
+  startMockInterviewSession,
+  type StartGateResult,
+} from "@/lib/mock-interview/serverGate";
 
 const DEPTH_LABEL_VI: Record<string, string> = {
   surface: "Câu mở",
@@ -45,12 +50,35 @@ export default function MockInterviewRoom() {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<string[]>([]);
   const [draft, setDraft] = useState("");
+  const [serverBlock, setServerBlock] = useState<{
+    messageVi: string;
+    messageEn: string;
+    resetsAt: string;
+    usedThisPeriod: number;
+    limit: number;
+  } | null>(null);
+  const [starting, setStarting] = useState(false);
+  const sessionIdRef = useRef<string | null>(null);
 
-  // Compute the gate the moment entitlements settle.
+  // Compute the local soft-gate the moment entitlements settle. Server
+  // gate (the authoritative one) fires when the user clicks "Bắt đầu".
   useEffect(() => {
     if (entLoading) return;
     setGate(checkGate({ isPaid, isTrial }));
   }, [entLoading, isPaid, isTrial]);
+
+  // Best-effort end-session call when the room unmounts mid-interview.
+  // The server-side reaper handles this for stale rows but the explicit
+  // call gives us cleaner telemetry.
+  useEffect(() => {
+    return () => {
+      const id = sessionIdRef.current;
+      if (id) {
+        void endMockInterviewSession(id);
+        sessionIdRef.current = null;
+      }
+    };
+  }, []);
 
   if (!scenario) {
     return <NotFoundPanel onBack={() => navigate("/mock-interview")} />;
@@ -64,6 +92,20 @@ export default function MockInterviewRoom() {
     );
   }
 
+  // Server gate (authoritative) takes precedence over the localStorage
+  // soft gate. If the server says blocked, render the bilingual upgrade
+  // panel from its message; otherwise fall back to the localStorage
+  // gate while in transition (per the brief, localStorage stays as a
+  // backstop until the server-side path soaks for a week).
+  if (serverBlock && phase === "intro") {
+    return (
+      <ServerGateLockedPanel
+        scenario={scenario}
+        block={serverBlock}
+        onBack={() => navigate("/mock-interview")}
+      />
+    );
+  }
   if (!gate.allowed && phase === "intro") {
     return (
       <GateLockedPanel
@@ -74,14 +116,48 @@ export default function MockInterviewRoom() {
     );
   }
 
+  const handleStart = async () => {
+    if (starting) return;
+    setStarting(true);
+    try {
+      const result: StartGateResult = await startMockInterviewSession(
+        scenario.id,
+      );
+      if (result.kind === "allowed") {
+        sessionIdRef.current = result.sessionId;
+        // Keep the localStorage soft-counter in sync so the legacy gate
+        // remains accurate during the transition window.
+        if (!isPaid && !isTrial) recordStart();
+        setPhase("asking");
+        return;
+      }
+      if (result.kind === "blocked") {
+        setServerBlock({
+          messageVi: result.messageVi,
+          messageEn: result.messageEn,
+          resetsAt: result.resetsAt,
+          usedThisPeriod: result.usedThisPeriod,
+          limit: result.limit,
+        });
+        return;
+      }
+      // Server unreachable / unexpected. Fall back to the legacy
+      // localStorage gate — soft cap remains in force, no revenue lost
+      // on a brief outage. recordStart updates the local counter.
+      if (!isPaid && !isTrial) recordStart();
+      setPhase("asking");
+    } finally {
+      setStarting(false);
+    }
+  };
+
   if (phase === "intro") {
     return (
       <IntroPanel
         scenario={scenario}
-        onStart={() => {
-          if (!isPaid && !isTrial) recordStart();
-          setPhase("asking");
-        }}
+        showFreeTierBadge={!isPaid && !isTrial}
+        onStart={handleStart}
+        starting={starting}
         onBack={() => navigate("/mock-interview")}
       />
     );
@@ -209,10 +285,14 @@ function IntroPanel({
   scenario,
   onStart,
   onBack,
+  showFreeTierBadge,
+  starting,
 }: {
   scenario: ProInterviewScenario;
   onStart: () => void;
   onBack: () => void;
+  showFreeTierBadge: boolean;
+  starting: boolean;
 }) {
   return (
     <div className="px-4 py-6 max-w-3xl mx-auto">
@@ -224,6 +304,15 @@ function IntroPanel({
       </button>
       <h1 className="text-xl font-bold mt-2">{scenario.title_vi}</h1>
       <p className="text-xs text-black/55 italic mb-4">{scenario.title_en}</p>
+      {showFreeTierBadge ? (
+        <div
+          className="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-xs text-amber-900"
+          data-testid="mock-interview-free-tier-badge"
+        >
+          <span className="font-semibold">Free</span>
+          <span>1 phỏng vấn / tuần · 1 mock interview / week</span>
+        </div>
+      ) : null}
 
       <section className="rounded-xl border border-black/10 bg-white p-4 mb-4">
         <h2 className="text-sm font-semibold text-black/90 mb-1">
@@ -256,10 +345,10 @@ function IntroPanel({
 
       <button
         onClick={onStart}
-        className="px-5 py-2.5 rounded-lg bg-emerald-600 text-white text-sm font-semibold"
+        disabled={starting}
+        className="px-5 py-2.5 rounded-lg bg-emerald-600 text-white text-sm font-semibold disabled:opacity-50"
       >
-        Bắt đầu phỏng vấn — {scenario.typical_questions.length} câu, ~
-        {scenario.estimated_time_minutes} phút
+        {starting ? "Đang chuẩn bị…" : `Bắt đầu phỏng vấn — ${scenario.typical_questions.length} câu, ~${scenario.estimated_time_minutes} phút`}
       </button>
     </div>
   );
@@ -476,6 +565,75 @@ function GateLockedPanel({
             className="px-4 py-2 rounded-lg bg-emerald-600 text-white text-sm font-semibold"
           >
             Nâng cấp gói trả phí
+          </a>
+          <button
+            onClick={onBack}
+            className="px-4 py-2 rounded-lg border border-black/15 text-sm font-semibold"
+          >
+            Quay lại danh sách
+          </button>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function ServerGateLockedPanel({
+  scenario,
+  block,
+  onBack,
+}: {
+  scenario: ProInterviewScenario;
+  block: {
+    messageVi: string;
+    messageEn: string;
+    resetsAt: string;
+    usedThisPeriod: number;
+    limit: number;
+  };
+  onBack: () => void;
+}) {
+  const resetLabel = block.resetsAt
+    ? new Date(block.resetsAt).toLocaleDateString("vi-VN", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+      })
+    : null;
+
+  return (
+    <div className="px-4 py-6 max-w-3xl mx-auto">
+      <button
+        onClick={onBack}
+        className="text-xs text-black/50 hover:text-black/80"
+      >
+        ← Tất cả kịch bản
+      </button>
+      <h1 className="text-xl font-bold mt-2">{scenario.title_vi}</h1>
+      <p className="text-xs text-black/55 italic mb-4">{scenario.title_en}</p>
+
+      <section
+        className="rounded-xl border border-amber-200 bg-amber-50 p-5"
+        data-testid="mock-interview-server-block-panel"
+      >
+        <h2 className="text-base font-semibold text-amber-900 mb-1">
+          Đã hết lượt mock interview tuần này
+        </h2>
+        <p className="text-xs text-amber-800/80 italic mb-3">
+          Out of mock interviews this week
+        </p>
+        <p className="text-sm text-black/80">{block.messageVi}</p>
+        <p className="text-xs text-black/55 italic mt-1">{block.messageEn}</p>
+        <p className="text-xs text-black/60 mt-3">
+          Đã dùng: {block.usedThisPeriod} / {block.limit} tuần này
+          {resetLabel ? ` · Tuần mới bắt đầu ${resetLabel}` : ""}.
+        </p>
+        <div className="flex flex-wrap gap-3 mt-4">
+          <a
+            href="/pricing"
+            className="px-4 py-2 rounded-lg bg-emerald-600 text-white text-sm font-semibold"
+          >
+            Bắt đầu trial 3 ngày · Start 3-day trial
           </a>
           <button
             onClick={onBack}
