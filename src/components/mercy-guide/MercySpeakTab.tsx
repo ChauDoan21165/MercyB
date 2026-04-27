@@ -59,6 +59,8 @@ import { deriveWordChips } from './wordChips';
 import { useFeatureFlag } from '@/hooks/useFeatureFlag';
 import { useMercyVoice } from '@/hooks/useMercyVoice';
 import { scoreCloud } from '@/lib/pronunciation/cloudScorer';
+import { useStreamingPronunciation } from '@/lib/pronunciation/useStreamingPronunciation';
+import StreamingFeedback from '@/components/pronunciation/StreamingFeedback';
 import { breadcrumbSpeakAttempt } from '@/lib/monitoring/breadcrumbs';
 import { captureError } from '@/lib/monitoring/captureException';
 import type { WordScore } from '@/lib/pronunciation/scorer';
@@ -741,6 +743,17 @@ export function MercySpeakTab({
   // visible YOU bar + chip row. When it errors, sentinels, or is OFF,
   // we keep `localMatchScore`. Single visible UI shape regardless.
   const { enabled: azurePhonemeScoringEnabled } = useFeatureFlag('azure_phoneme_scoring', false);
+  // Real-time streaming feedback (PR feat/pronunciation-streaming).
+  // Default OFF — Chau flips per user_id once the WebSocket + AudioWorklet
+  // path is verified end-to-end against the staging Azure region. Stream
+  // runs in PARALLEL to the existing post-recording flow; on any failure
+  // (connect timeout, slow first partial, websocket error) the existing
+  // batch path is unchanged and produces the source-of-truth score.
+  const { enabled: pronunciationStreamingEnabled } = useFeatureFlag('pronunciation_streaming_enabled', false);
+  const streamingPronunciation = useStreamingPronunciation({
+    enabled: pronunciationStreamingEnabled,
+    referenceText: practiceText,
+  });
   const [cloudOverrideScore, setCloudOverrideScore] = useState<number | null>(null);
   const [cloudWordScores, setCloudWordScores] = useState<WordScore[]>([]);
   const [expandedWordIdx, setExpandedWordIdx] = useState<number | null>(null);
@@ -1337,6 +1350,25 @@ export function MercySpeakTab({
       stopActiveStream();
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       activeStreamRef.current = stream;
+
+      // Fire the streaming session in PARALLEL to the post-recording flow.
+      // No await — the JWT fetch + WebSocket open should not delay the
+      // local MediaRecorder. On any streaming failure the user just
+      // doesn't see the live preview; the post-recording batch path is
+      // the source of truth and runs unchanged.
+      if (pronunciationStreamingEnabled && practiceText) {
+        void supabase.auth
+          .getSession()
+          .then(({ data }) => {
+            const jwt = data?.session?.access_token;
+            if (!jwt) return;
+            return streamingPronunciation.start({
+              mediaStream: stream,
+              authToken: jwt,
+            });
+          })
+          .catch(() => undefined);
+      }
       // Pick a mime type the browser actually supports. iOS Safari wants mp4/aac,
       // Chrome/Firefox want webm/opus. Let the browser pick from this ordered list.
       const preferredTypes = [
@@ -1385,6 +1417,9 @@ export function MercySpeakTab({
   }
 
   function stopRecording() {
+    // Tell the streaming session to finalise. Safe to call when the
+    // hook is disabled or never started — it's a no-op in those cases.
+    try { streamingPronunciation.stop(); } catch { /* ignore */ }
     try { if (mediaRecorderRef.current && mediaRecorderRef.current.state !== 'inactive') mediaRecorderRef.current.stop(); }
     catch { setRecordingError('Recording could not be stopped cleanly. Please try again.'); setIsRecording(false); stopActiveStream(); }
   }
@@ -1831,6 +1866,21 @@ export function MercySpeakTab({
               </div>
             ) : null}
           </div>
+
+          {/* Real-time streaming feedback (PR feat/pronunciation-streaming).
+              Renders only while a stream is active OR has produced a partial
+              result — invisible when the flag is off. The post-recording
+              flow above is the source of truth; this is a live preview. */}
+          {pronunciationStreamingEnabled &&
+          (streamingPronunciation.isActive ||
+            streamingPronunciation.partial ||
+            streamingPronunciation.error) ? (
+            <StreamingFeedback
+              partial={streamingPronunciation.partial}
+              isStreaming={streamingPronunciation.isActive}
+              error={streamingPronunciation.error}
+            />
+          ) : null}
 
           {/* Speech-vs-reference waveform overlay (lazy on user expand). */}
           {transcript && recordedAudioUrl ? (
