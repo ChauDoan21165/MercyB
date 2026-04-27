@@ -27,8 +27,11 @@ const row = (overrides: Partial<TrialUserRow> = {}): TrialUserRow => ({
   email: "user@example.com",
   preferred_name: "Lan",
   created_at: minusDays(0),
-  is_premium: false,
+  tier: 0,
   trial_extension_days: 0,
+  trial_expires_at: null,
+  trial_ends_at: null,
+  trial_end: null,
   ...overrides,
 });
 
@@ -104,9 +107,45 @@ describe("stageFor", () => {
     expect(stageFor(row({ created_at: minusDays(10) }), NOW)).toBe("not_in_window");
   });
 
-  it("never emails premium users", () => {
-    const r = row({ created_at: minusDays(0), is_premium: true });
+  it("never emails premium users (tier >= 1)", () => {
+    const r = row({ created_at: minusDays(0), tier: 1 });
     expect(stageFor(r, NOW)).toBe("not_in_window");
+  });
+
+  it("treats tier as a string ('1') the same as the integer (DB types surface tier as string)", () => {
+    const r = row({ created_at: minusDays(0), tier: "1" });
+    expect(stageFor(r, NOW)).toBe("not_in_window");
+  });
+
+  it("treats tier 0 (default trial) as eligible for the funnel", () => {
+    expect(stageFor(row({ created_at: minusDays(0), tier: 0 }), NOW)).toBe(
+      "D_minus_3",
+    );
+  });
+
+  it("treats null tier as eligible for the funnel", () => {
+    expect(stageFor(row({ created_at: minusDays(0), tier: null }), NOW)).toBe(
+      "D_minus_3",
+    );
+  });
+
+  it("prefers an explicit trial_expires_at when set", () => {
+    // created 0 days ago would normally yield D-3, but if trial_expires_at
+    // says the trial already ended yesterday, the user should land in D+1.
+    const r = row({
+      created_at: minusDays(0),
+      trial_expires_at: minusDays(0.75), // 0.75d in the past
+    });
+    expect(stageFor(r, NOW)).toBe("D_plus_1");
+  });
+
+  it("falls through to trial_ends_at when trial_expires_at is null", () => {
+    const r = row({
+      created_at: minusDays(0),
+      trial_expires_at: null,
+      trial_ends_at: minusDays(0.75),
+    });
+    expect(stageFor(r, NOW)).toBe("D_plus_1");
   });
 
   it("never emails users with no email address", () => {
@@ -155,7 +194,7 @@ describe("categorizeForTrialExpiry", () => {
       row({ id: "u-d1", created_at: minusDays(2) }),
       row({ id: "u-plus1", created_at: minusDays(3.75) }),
       row({ id: "u-mid", created_at: minusDays(1) }), // not_in_window
-      row({ id: "u-prem", created_at: minusDays(0), is_premium: true }),
+      row({ id: "u-prem", created_at: minusDays(0), tier: 1 }),
       row({ id: "u-no-email", created_at: minusDays(0), email: null }),
       row({ id: "u-stale", created_at: minusDays(20) }),
     ];

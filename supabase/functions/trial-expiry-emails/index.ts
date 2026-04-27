@@ -178,7 +178,15 @@ Deno.serve(async (req) => {
     // ── Scan profiles ────────────────────────────────────────────────────
     const { data: profiles, error: profilesError } = await adminClient
       .from("profiles")
-      .select("id, email, preferred_name, created_at, is_premium, trial_extension_days");
+      // Schema notes: profiles uses `tier` (integer column; types.ts surfaces
+      // it as string), not `is_premium`. The trial-expiry timestamp may live
+      // in any of trial_expires_at / trial_ends_at / trial_end (historical
+      // schema accumulation — same fall-through pattern as azure-phoneme/
+      // checkTrialAccess). categorizeForTrialExpiry walks them in priority
+      // order and falls back to created_at + FREE_TRIAL_DAYS + extension.
+      .select(
+        "id, email, preferred_name, created_at, tier, trial_extension_days, trial_expires_at, trial_ends_at, trial_end",
+      );
 
     if (profilesError) {
       console.error("[trial-expiry-emails] profiles query failed:", profilesError);
