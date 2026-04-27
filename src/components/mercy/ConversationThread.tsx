@@ -19,7 +19,7 @@
  */
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { askMercyApi } from "@/components/mercy-guide/api/askMercyApi";
 import {
@@ -35,11 +35,17 @@ import {
 import { useAuth } from "@/providers/AuthProvider";
 import { buildProgressContext, type ProgressContext } from "@/lib/mercy/progressContext";
 import {
+  classifyTrigger,
   incrementMessageCounter,
   readMentionState,
   recordProgressMention,
   shouldProactivelyMentionProgress,
 } from "@/lib/mercy/progressTriggers";
+import {
+  getRecommendation,
+  recordRecommendationShown,
+  type Recommendation,
+} from "@/lib/mercy/practiceRecommendations";
 
 type ViewLang = "both" | "en" | "vi";
 
@@ -219,8 +225,104 @@ function MessageBubble({
   );
 }
 
+// Compact practice-recommendation card rendered below a Mercy reply
+// when the user explicitly asked "what should I practice?". Mirrors
+// the Home card's content but tighter, since chat is already framed
+// as a response. Tapping "Bắt đầu" navigates to rec.target.
+function InlinePracticeRecCard({
+  rec,
+  onStart,
+}: {
+  rec: Recommendation;
+  onStart: (target: string | null) => void;
+}) {
+  return (
+    <div
+      style={inlineRecCardStyle}
+      role="region"
+      aria-label="Gợi ý luyện tập của Mercy · Mercy's practice recommendation"
+      data-testid="inline-practice-rec"
+    >
+      <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
+        <span aria-hidden style={{ fontSize: 14 }}>🧭</span>
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div style={inlineRecTitleViStyle}>{rec.title_vi}</div>
+          <div style={inlineRecTitleEnStyle}>{rec.title_en}</div>
+        </div>
+        <span style={inlineRecMinChipStyle}>{rec.estimated_minutes}m</span>
+      </div>
+      <p style={inlineRecDescStyle}>{rec.description_vi}</p>
+      <button
+        type="button"
+        onClick={() => onStart(rec.target)}
+        disabled={!rec.target}
+        style={inlineRecBtnStyle(!rec.target)}
+        data-testid="inline-practice-rec-start"
+      >
+        Bắt đầu · Start →
+      </button>
+    </div>
+  );
+}
+
+const inlineRecCardStyle: React.CSSProperties = {
+  marginTop: -4,
+  marginBottom: 12,
+  marginLeft: 4,
+  maxWidth: "80%",
+  padding: "10px 12px",
+  borderRadius: 12,
+  background:
+    "linear-gradient(150deg, rgba(238,242,255,0.96) 0%, rgba(252,252,255,0.96) 100%)",
+  border: "1px solid rgba(99,102,241,0.20)",
+  boxShadow: "0 4px 12px rgba(79,70,229,0.06)",
+};
+
+const inlineRecTitleViStyle: React.CSSProperties = {
+  fontSize: 13,
+  fontWeight: 800,
+  color: "rgba(15,23,42,0.92)",
+};
+
+const inlineRecTitleEnStyle: React.CSSProperties = {
+  marginTop: 1,
+  fontSize: 11,
+  fontWeight: 700,
+  color: "rgba(67,56,202,0.65)",
+};
+
+const inlineRecMinChipStyle: React.CSSProperties = {
+  padding: "2px 8px",
+  borderRadius: 9999,
+  background: "rgba(99,102,241,0.10)",
+  color: "rgba(67,56,202,0.85)",
+  fontSize: 10,
+  fontWeight: 800,
+};
+
+const inlineRecDescStyle: React.CSSProperties = {
+  marginTop: 8,
+  marginBottom: 8,
+  fontSize: 12,
+  lineHeight: 1.45,
+  color: "rgba(0,0,0,0.66)",
+};
+
+const inlineRecBtnStyle = (disabled: boolean): React.CSSProperties => ({
+  padding: "6px 12px",
+  borderRadius: 9999,
+  background: disabled ? "#cbd5e1" : "linear-gradient(150deg, #6366F1 0%, #4F46E5 100%)",
+  color: "white",
+  border: "none",
+  fontSize: 12,
+  fontWeight: 800,
+  cursor: disabled ? "not-allowed" : "pointer",
+  boxShadow: disabled ? "none" : "0 4px 10px rgba(79,70,229,0.20)",
+});
+
 export function ConversationThread({ conversationId, onCleared }: ConversationThreadProps) {
   const { user } = useAuth();
+  const nav = useNavigate();
   const [messages, setMessages] = useState<MercyMessage[]>([]);
   const [loading, setLoading] = useState(false);
   const [pending, setPending] = useState(false);
@@ -230,7 +332,25 @@ export function ConversationThread({ conversationId, onCleared }: ConversationTh
   // injection. Drives the small 📊 badge below those messages. Ephemeral
   // (lives only as long as the component) — not persisted to the DB.
   const [progressAwareIds, setProgressAwareIds] = useState<Set<string>>(() => new Set());
+  // Map mercy-message-id → Recommendation for inline practice cards.
+  // Populated when the user's preceding message classified as
+  // `practice_ask` AND the recommendation engine returned a rec.
+  const [recsByMessageId, setRecsByMessageId] = useState<Map<string, Recommendation>>(
+    () => new Map(),
+  );
   const scrollerRef = useRef<HTMLDivElement | null>(null);
+
+  const onPracticeStart = useCallback(
+    (target: string | null) => {
+      if (!target) return;
+      if (target.startsWith("/")) {
+        nav(target);
+      } else {
+        nav(`/room/${target}`);
+      }
+    },
+    [nav],
+  );
 
   // Load history whenever the active conversation changes.
   useEffect(() => {
@@ -329,12 +449,32 @@ export function ConversationThread({ conversationId, onCleared }: ConversationTh
           return next;
         });
       }
+
+      // ── Practice recommendation gate ────────────────────────────────
+      // When the user explicitly asked what to practice, surface a
+      // concrete suggestion as an inline card under Mercy's reply.
+      // Engine handles its own cooldown — null just means no card.
+      if (user?.id && classifyTrigger(text) === "practice_ask") {
+        try {
+          const rec = await getRecommendation(user.id);
+          if (rec) {
+            setRecsByMessageId((prev) => {
+              const next = new Map(prev);
+              next.set(mercyTurn.id, rec);
+              return next;
+            });
+            recordRecommendationShown(user.id, rec);
+          }
+        } catch (err) {
+          console.warn("[ConversationThread] practice-rec fetch failed:", err);
+        }
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong.");
     } finally {
       setPending(false);
     }
-  }, [conversationId, input, pending]);
+  }, [conversationId, input, pending, user?.id]);
 
   const handleClear = useCallback(async () => {
     if (!conversationId) return;
@@ -401,24 +541,28 @@ export function ConversationThread({ conversationId, onCleared }: ConversationTh
           </div>
         ) : null}
 
-        {messages.map((m) => (
-          <React.Fragment key={m.id}>
-            <MessageBubble message={m} defaultLang="both" />
-            {m.role === "mercy" && progressAwareIds.has(m.id) ? (
-              <div style={progressBadgeRowStyle}>
-                <Link
-                  to="/progress"
-                  aria-label="Mercy đã tham khảo tiến độ của bạn — mở /progress · Mercy referenced your progress — open /progress"
-                  title="Mercy đã thấy tiến độ của bạn · Mercy saw your progress"
-                  style={progressBadgeStyle}
-                >
-                  <span aria-hidden style={{ fontSize: 14 }}>📊</span>
-                  <span>Tiến độ · Progress</span>
-                </Link>
-              </div>
-            ) : null}
-          </React.Fragment>
-        ))}
+        {messages.map((m) => {
+          const rec = m.role === "mercy" ? recsByMessageId.get(m.id) ?? null : null;
+          return (
+            <React.Fragment key={m.id}>
+              <MessageBubble message={m} defaultLang="both" />
+              {m.role === "mercy" && progressAwareIds.has(m.id) ? (
+                <div style={progressBadgeRowStyle}>
+                  <Link
+                    to="/progress"
+                    aria-label="Mercy đã tham khảo tiến độ của bạn — mở /progress · Mercy referenced your progress — open /progress"
+                    title="Mercy đã thấy tiến độ của bạn · Mercy saw your progress"
+                    style={progressBadgeStyle}
+                  >
+                    <span aria-hidden style={{ fontSize: 14 }}>📊</span>
+                    <span>Tiến độ · Progress</span>
+                  </Link>
+                </div>
+              ) : null}
+              {rec ? <InlinePracticeRecCard rec={rec} onStart={onPracticeStart} /> : null}
+            </React.Fragment>
+          );
+        })}
 
         {pending ? (
           <div style={messageRowStyle("mercy")}>
