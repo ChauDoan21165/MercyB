@@ -15,10 +15,23 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
 // ⚠️ IMPORTANT: env values can include trailing whitespace/newlines in deployments.
 // We MUST trim to avoid apikey ending with %0A (newline) → Realtime fails + REST 403.
-const supabaseUrl = String(import.meta.env.VITE_SUPABASE_URL ?? "").trim();
-const supabaseAnonKey = String(
+const rawSupabaseUrl = String(import.meta.env.VITE_SUPABASE_URL ?? "").trim();
+const rawSupabaseAnonKey = String(
   import.meta.env.VITE_SUPABASE_ANON_KEY ?? "",
 ).trim();
+
+// Test-environment fallback. supabase-js's `createClient` throws
+// "supabaseUrl is required" when either argument is empty, which would
+// crash every test file that transitively imports this module — even
+// tests that mock the client further down. We hand `createClient` an
+// obviously-fake URL so the singleton can be constructed. Real prod
+// behavior is preserved: the `console.warn` below still fires, and any
+// actual Supabase call against the placeholder will fail loudly.
+const FALLBACK_SUPABASE_URL = "https://placeholder.invalid.supabase.co";
+const FALLBACK_SUPABASE_ANON_KEY = "placeholder-anon-key-not-real";
+
+const supabaseUrl = rawSupabaseUrl || FALLBACK_SUPABASE_URL;
+const supabaseAnonKey = rawSupabaseAnonKey || FALLBACK_SUPABASE_ANON_KEY;
 
 type EnvSnapshot = {
   supabaseUrl: string;
@@ -83,10 +96,12 @@ const storage =
     ? window.localStorage
     : undefined;
 
-if (!supabaseUrl || !supabaseAnonKey) {
+if (!rawSupabaseUrl || !rawSupabaseAnonKey) {
+  // Warn loudly so a misconfigured prod deploy is obvious in logs,
+  // even though the fallback values keep the module load alive.
   console.warn("[supabaseClient] Missing env vars", {
-    supabaseUrl: !!supabaseUrl,
-    supabaseAnonKey: !!supabaseAnonKey,
+    supabaseUrl: !!rawSupabaseUrl,
+    supabaseAnonKey: !!rawSupabaseAnonKey,
   });
 } else if (/\s$/.test(String(import.meta.env.VITE_SUPABASE_ANON_KEY ?? ""))) {
   console.warn(
